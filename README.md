@@ -26,6 +26,24 @@ dist\RoConstruct.exe --headless
 
 GUI uses compact dark neon controls: `Setup` → `Start server` → `Add jobs` → `Start worker`. `Refresh` shows queue, completed work, worker count, current job, speed, and errors.
 
+### Load 2008 data
+
+Public repo intentionally contains no Roblox binary or private DB. Use authorized local files. Existing local 2008 data can be selected without copying:
+
+```powershell
+$env:ROCONSTRUCT_DATA_ROOT = 'C:\Users\colin\RBXBanland\work\re'
+dist\RoConstruct-GUI.exe
+```
+
+Expected files:
+
+```text
+<DATA_ROOT>\rbx2008m.db
+<DATA_ROOT>\bin\RobloxApp_client.exe
+```
+
+`rbx2008m.db` is created by Ghidra export + ingest. From a project containing the authorized client and Ghidra project, run `powershell -File scripts\re\start-re.ps1 -Headless`; this exports functions, ingests SQLite, and runs summaries. GUI `Check data` reports exact missing file and next action. Each worker needs matching local DB + client; coordinator never receives them.
+
 ## Distributed workers
 
 Build GUI controller:

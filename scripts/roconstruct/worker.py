@@ -32,7 +32,7 @@ def work(root, job, model):
     import sys
     sys.path.insert(0, str(root / "scripts" / "re"))
     import rebuild as R
-    db = root / "work" / "re" / "rbx2008m.db"
+    db = Path(os.environ.get("ROCONSTRUCT_DATA_ROOT", str(root / "work" / "re"))) / "rbx2008m.db"
     conn = sqlite3.connect(db)
     fn = conn.execute("SELECT program,addr,name,decompiled FROM functions WHERE program=? AND addr=?",
                       (job["program"], job["address"])).fetchone()

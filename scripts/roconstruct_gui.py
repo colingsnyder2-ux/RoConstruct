@@ -24,6 +24,7 @@ ROOT = find_root()
 SERVICE = ROOT / "scripts" / "roconstruct"
 TOKEN = os.environ.get("ROCONSTRUCT_TOKEN", "")
 PROJECT = os.environ.get("ROCONSTRUCT_PROJECT", "default")
+DATA_ROOT = Path(os.environ.get("ROCONSTRUCT_DATA_ROOT", str(ROOT / "work" / "re"))).resolve()
 
 
 class App(tk.Tk):
@@ -54,14 +55,14 @@ class App(tk.Tk):
         ttk.Label(top, text="ROCONSTRUCT", style="Title.TLabel").pack(anchor="w")
         ttk.Label(top, text="Distributed source reconstruction lab  //  keep client files local", style="Sub.TLabel").pack(anchor="w")
         actions = ttk.LabelFrame(self, text="CONTROL", padding=8); actions.pack(fill="x", padx=16, pady=8)
-        for text, fn in (("1  Setup", self.setup), ("2  Start server", self.start),
-                         ("3  Start worker", self.start_worker), ("4  Add jobs", self.seed),
+        for text, fn in (("1  Setup", self.setup), ("2  Check data", self.check_data), ("3  Start server", self.start),
+                         ("4  Start worker", self.start_worker), ("5  Add jobs", self.seed),
                          ("↻  Refresh", self.refresh), ("■  Stop", self.stop)):
             ttk.Button(actions, text=text, command=fn).pack(side="left", padx=(0, 5))
         self.status = tk.StringVar(value="OFFLINE  // click Start server")
         ttk.Label(actions, textvariable=self.status, style="Sub.TLabel").pack(side="right", padx=4)
         info = ttk.LabelFrame(self, text="QUICK GUIDE", padding=8); info.pack(fill="x", padx=16)
-        ttk.Label(info, justify="left", text="Setup → Start server → Add jobs → Start worker.\nEach worker uses its own local client/database; server shares only IDs, source, logs, evidence.").pack(anchor="w")
+        ttk.Label(info, justify="left", text="Check data → Start server → Add jobs → Start worker.\nData folder: %s\nEach worker uses its own local client/database; server shares only IDs, source, logs, evidence." % DATA_ROOT).pack(anchor="w")
         box = ttk.LabelFrame(self, text="LIVE FEED", padding=6); box.pack(fill="both", expand=True, padx=16, pady=8)
         self.log = scrolledtext.ScrolledText(box, state="disabled", bg="#070b16", fg="#7dfff1", insertbackground="#7dfff1", relief="flat", font=("Cascadia Mono", 8), height=12)
         self.log.pack(fill="both", expand=True)
@@ -89,6 +90,13 @@ class App(tk.Tk):
         except Exception as error:
             messagebox.showerror("Setup", str(error))
 
+    def check_data(self):
+        db = DATA_ROOT / "rbx2008m.db"
+        client = DATA_ROOT / "bin" / "RobloxApp_client.exe"
+        self.write("DATA ROOT: %s" % DATA_ROOT)
+        self.write("2008 DB: %s" % ("READY" if db.exists() else "MISSING  (run summarize.py ingest)"))
+        self.write("2008 client: %s" % ("READY" if client.exists() else "MISSING  (place authorized EXE in data\\bin)"))
+
     def launcher(self):
         if not getattr(sys, "frozen", False): return [sys.executable]
         import shutil
@@ -109,8 +117,8 @@ class App(tk.Tk):
         for line in self.worker_proc.stdout: self.events.put("worker: " + line.rstrip())
 
     def seed(self):
-        db = ROOT / "work" / "re" / "rbx2008m.db"
-        binary = ROOT / "work" / "re" / "bin" / "RobloxApp_client.exe"
+        db = DATA_ROOT / "rbx2008m.db"
+        binary = DATA_ROOT / "bin" / "RobloxApp_client.exe"
         if not db.exists() or not binary.exists():
             self.write("Seed needs local Ghidra DB + client binary")
             return

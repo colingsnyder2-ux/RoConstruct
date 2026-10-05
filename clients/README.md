@@ -12,3 +12,5 @@ clients/
 ```
 
 Only use files you are authorized to possess and analyze. Tracked source contains no client binaries.
+
+The public repo also contains no 2008 database. Keep both files outside Git, then point RoConstruct at their folder with `ROCONSTRUCT_DATA_ROOT`. For 2008M, folder must contain `rbx2008m.db` and `bin\RobloxApp_client.exe`.

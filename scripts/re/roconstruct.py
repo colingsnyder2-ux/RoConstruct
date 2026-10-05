@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """RoConstruct colored terminal console."""
 import shutil
+import os
 import sqlite3
 import subprocess
 import sys
@@ -26,7 +27,7 @@ def find_root():
 
 ROOT = find_root()
 RE_DIR = ROOT / "scripts" / "re"
-DB = ROOT / "work" / "re" / "rbx2008m.db"
+DB = Path(os.environ.get("ROCONSTRUCT_DATA_ROOT", str(ROOT / "work" / "re"))) / "rbx2008m.db"
 
 
 def say(color, text):
