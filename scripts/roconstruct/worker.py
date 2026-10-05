@@ -34,7 +34,10 @@ def work(root, job, model):
         if not code:
             return {"ok": False, "error": "model returned no code"}
         good, error = R.compile_c(code, "worker_%s" % job["id"])
+        summary = conn.execute("SELECT summary FROM functions WHERE program=? AND addr=?",
+                               (job["program"], job["address"])).fetchone()[0]
         return {"ok": good, "error": None if good else error[-4000:],
+                "pseudocode": fn[3], "summary": summary or "",
                 "source": code if good else "",
                 "evidence": [{"kind": "compiler", "value": "clean" if good else error[-1000:],
                               "score": 1 if good else 0}]}

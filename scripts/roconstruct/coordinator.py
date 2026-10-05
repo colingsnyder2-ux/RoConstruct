@@ -112,6 +112,15 @@ class Store:
             self.db.commit()
         return len(proposals)
 
+    def ranked_types(self):
+        with self.lock:
+            rows = self.db.execute(
+                "SELECT binary_hash,type_name,field_offset,field_type,AVG(score) AS avg_score,COUNT(DISTINCT worker) AS voices "
+                "FROM type_proposals GROUP BY binary_hash,type_name,field_offset,field_type "
+                "ORDER BY (avg_score + MIN(voices,10)/10.0) DESC").fetchall()
+        return [{"binary_hash": r[0], "type_name": r[1], "field_offset": r[2],
+                 "field_type": r[3], "score": round(r[4], 3), "voices": r[5]} for r in rows]
+
     def status(self):
         with self.lock:
             counts = dict(self.db.execute("SELECT state,COUNT(*) FROM jobs GROUP BY state").fetchall())
@@ -153,6 +162,8 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         if urlparse(self.path).path == "/v1/status":
             return self.send_json(200, self.store.status())
+        if urlparse(self.path).path == "/v1/types":
+            return self.send_json(200, {"proposals": self.store.ranked_types()})
         self.send_json(404, {"error": "not found"})
 
     def do_POST(self):

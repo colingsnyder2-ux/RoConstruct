@@ -124,4 +124,10 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    if len(sys.argv) > 1 and sys.argv[1] in ("worker", "coordinator"):
+        mode = sys.argv.pop(1)
+        sys.path.insert(0, str(ROOT / "scripts" / "roconstruct"))
+        module = __import__(mode)
+        module.main()
+    else:
+        main()
