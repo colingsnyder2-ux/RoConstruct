@@ -42,7 +42,7 @@ Expected files:
 <DATA_ROOT>\bin\RobloxApp_client.exe
 ```
 
-`rbx2008m.db` is created by Ghidra export + ingest. From a project containing the authorized client and Ghidra project, run `powershell -File scripts\re\start-re.ps1 -Headless`; this exports functions, ingests SQLite, and runs summaries. GUI `Check data` reports exact missing file and next action. Each worker needs matching local DB + client; coordinator never receives them.
+`rbx2008m.db` is created by Ghidra export + ingest. To create one from scratch, place authorized client/project under this checkout's `work\re` layout, then run `powershell -File scripts\re\start-re.ps1 -Headless`; this exports functions, ingests SQLite, and runs summaries. `ROCONSTRUCT_DATA_ROOT` is for reusing an already-built data folder. GUI `Check data` reports exact missing file and next action. Each worker needs matching local DB + client; coordinator never receives them.
 
 ## Distributed workers
 
