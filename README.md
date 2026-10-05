@@ -24,7 +24,7 @@ No-menu/headless status check:
 dist\RoConstruct.exe --headless
 ```
 
-GUI uses compact dark neon controls: `Setup` → `Start server` → `Add jobs` → `Start worker`. `Refresh` shows queue, completed work, worker count, current job, speed, and errors.
+GUI main window stays simple: `Client setup`, `Server`, `Worker`, `Run demo`. Each opens its own focused window. Server window queues/refreshes jobs; worker window starts/stops processing; client window selects local DB/EXE. Progress bar shows completed/total work.
 
 ### Load 2008 data
 
