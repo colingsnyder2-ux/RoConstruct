@@ -28,7 +28,15 @@ powershell -ExecutionPolicy Bypass -File scripts\build_gui.ps1
 
 Run `dist\RoConstruct-GUI.exe`, start coordinator, seed jobs, then start one worker per fast PC. Each worker needs the matching local client/database; coordinator receives only stable IDs, generated source, compiler logs, and evidence. Leases expire and retry. `scripts\roconstruct\coordinator.py` uses SQLite first; protocol is HTTP JSON, so Redis/PostgreSQL can replace storage later.
 
-Workers may submit type/field proposals through the coordinator. Status exposes active worker hardware metadata and evidence counts for future conflict promotion.
+Workers may submit type/field proposals through coordinator. Every lease gets unique attempt ID, so stale workers cannot overwrite newer results. Heartbeats renew leases and expose current job/hardware metadata. Set `ROCONSTRUCT_TOKEN` and `ROCONSTRUCT_PROJECT` on coordinator and workers for token + project isolation.
+
+Runtime/differential checks can report evidence through result payloads:
+
+```json
+{"kind":"runtime","value":"trace matched","score":3}
+```
+
+Compiler score is `1`; cross-function/field-offset/runtime evidence can raise ranking before promotion.
 
 Promote compiler-clean results into a reviewable branch:
 

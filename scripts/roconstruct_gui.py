@@ -7,6 +7,7 @@ import subprocess
 import sys
 import threading
 import tkinter as tk
+import os
 import urllib.request
 from pathlib import Path
 from tkinter import messagebox, scrolledtext, ttk
@@ -21,6 +22,8 @@ def find_root():
 
 ROOT = find_root()
 SERVICE = ROOT / "scripts" / "roconstruct"
+TOKEN = os.environ.get("ROCONSTRUCT_TOKEN", "")
+PROJECT = os.environ.get("ROCONSTRUCT_PROJECT", "default")
 
 
 class App(tk.Tk):
@@ -60,7 +63,9 @@ class App(tk.Tk):
     def start(self):
         if self.proc and self.proc.poll() is None: return
         try:
-            self.proc = subprocess.Popen([*self.launcher(), str(SERVICE / "coordinator.py"), "--db", str(ROOT / "coordinator.db")],
+            args = [*self.launcher(), str(SERVICE / "coordinator.py"), "--db", str(ROOT / "coordinator.db"), "--project", PROJECT]
+            if TOKEN: args += ["--token", TOKEN]
+            self.proc = subprocess.Popen(args,
                                          cwd=ROOT, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
             threading.Thread(target=self.read, daemon=True).start(); self.status.set("Coordinator running on http://127.0.0.1:8765")
         except Exception as error:
@@ -107,7 +112,9 @@ class App(tk.Tk):
         with sqlite3.connect(db) as conn:
             rows = conn.execute("SELECT program,addr FROM scope WHERE in_scope=1 ORDER BY indeg DESC LIMIT 200").fetchall()
         payload = {"jobs": [{"binary_hash": digest.hexdigest(), "program": p, "address": a} for p, a in rows]}
-        request = urllib.request.Request("http://127.0.0.1:8765/v1/jobs/seed", json.dumps(payload).encode(), {"Content-Type": "application/json"})
+        request = urllib.request.Request("http://127.0.0.1:8765/v1/jobs/seed", json.dumps(payload).encode(),
+                                         {"Content-Type": "application/json", "X-Worker-Token": TOKEN,
+                                          "X-RoConstruct-Project": PROJECT})
         try:
             with urllib.request.urlopen(request, timeout=5) as response: self.write(response.read().decode())
         except Exception as error: self.write("seed unavailable: %s" % error)
@@ -122,7 +129,9 @@ class App(tk.Tk):
 
     def refresh(self):
         try:
-            with urllib.request.urlopen("http://127.0.0.1:8765/v1/status", timeout=2) as response:
+            request = urllib.request.Request("http://127.0.0.1:8765/v1/status", headers={
+                "X-Worker-Token": TOKEN, "X-RoConstruct-Project": PROJECT})
+            with urllib.request.urlopen(request, timeout=2) as response:
                 data = json.load(response)
                 workers = data.get("workers", [])
                 self.status.set("Coordinator: %s | workers online: %s | queued: %s" %

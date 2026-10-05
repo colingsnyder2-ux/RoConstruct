@@ -7,14 +7,16 @@ import os
 import socket
 import platform
 import sqlite3
+import threading
 import time
 import urllib.request
 from pathlib import Path
 
 
-def call(url, payload, token):
+def call(url, payload, token, project):
     req = urllib.request.Request(url, json.dumps(payload).encode(),
-                                 {"Content-Type": "application/json", "X-Worker-Token": token})
+                                 {"Content-Type": "application/json", "X-Worker-Token": token,
+                                  "X-RoConstruct-Project": project})
     with urllib.request.urlopen(req, timeout=30) as response:
         return json.loads(response.read())
 
@@ -50,28 +52,62 @@ def main():
     ap.add_argument("--server", default="http://127.0.0.1:8765")
     ap.add_argument("--worker-id", default=socket.gethostname())
     ap.add_argument("--token", default=os.environ.get("ROCONSTRUCT_TOKEN", ""))
+    ap.add_argument("--project", default=os.environ.get("ROCONSTRUCT_PROJECT", "default"))
     ap.add_argument("--model", default="qwen2.5-coder:7b-instruct")
     ap.add_argument("--poll", type=int, default=5)
     ap.add_argument("--once", action="store_true")
     ap.add_argument("--root", default=str(Path(__file__).resolve().parents[2]))
     a = ap.parse_args()
     root = Path(a.root).resolve()
+    completed = failed = 0
     while True:
         lease = call(a.server.rstrip("/") + "/v1/lease", {
             "worker": a.worker_id,
             "meta": {"hostname": socket.gethostname(), "model": a.model,
                      "cpu_count": os.cpu_count(), "gpu": os.environ.get("ROCONSTRUCT_GPU", "unknown"),
                      "platform": platform.platform()}
-        }, a.token)
+        }, a.token, a.project)
         job = lease.get("job")
         if not job:
             if a.once:
                 return
             time.sleep(a.poll)
             continue
-        payload = work(root, job, a.model)
+        payload = {"worker": a.worker_id, "lease_id": job.get("lease_id", ""), "ok": False}
+        done = threading.Event()
+        started = time.time()
+        meta = {"hostname": socket.gethostname(), "model": a.model,
+                "cpu_count": os.cpu_count(), "gpu": os.environ.get("ROCONSTRUCT_GPU", "unknown"),
+                "platform": platform.platform(), "current_job": job["id"], "state": "working",
+                "completed": completed, "failed": failed}
+        def heartbeat():
+            while not done.wait(15):
+                try:
+                    call(a.server.rstrip("/") + "/v1/heartbeat", {
+                        "job": job["id"], "lease_id": job.get("lease_id", ""), "worker": a.worker_id,
+                        "lease": 900, "meta": meta}, a.token, a.project)
+                except Exception:
+                    pass
+        thread = threading.Thread(target=heartbeat, daemon=True)
+        thread.start()
+        try:
+            payload.update(work(root, job, a.model))
+        finally:
+            done.set()
+        payload["elapsed"] = round(time.time() - started, 2)
         payload["worker"] = a.worker_id
-        call(a.server.rstrip("/") + "/v1/jobs/%s/result" % job["id"], payload, a.token)
+        payload["lease_id"] = job.get("lease_id", "")
+        completed += int(bool(payload.get("ok")))
+        failed += int(not payload.get("ok"))
+        meta.update({"current_job": None, "state": "idle", "last_elapsed": payload["elapsed"],
+                     "completed": completed, "failed": failed,
+                     "speed_per_min": round(completed / max((time.time() - started) / 60, 1 / 60), 2)})
+        try:
+            call(a.server.rstrip("/") + "/v1/heartbeat", {"job": job["id"], "lease_id": job.get("lease_id", ""),
+                "worker": a.worker_id, "lease": 900, "meta": meta}, a.token, a.project)
+        except Exception:
+            pass
+        call(a.server.rstrip("/") + "/v1/jobs/%s/result" % job["id"], payload, a.token, a.project)
         if a.once:
             return
 

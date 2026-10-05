@@ -7,6 +7,7 @@ import os
 import sqlite3
 import threading
 import time
+import uuid
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlparse
 
@@ -15,12 +16,12 @@ SCHEMA = """
 CREATE TABLE IF NOT EXISTS jobs(
  id TEXT PRIMARY KEY, binary_hash TEXT NOT NULL, program TEXT NOT NULL,
  address TEXT NOT NULL, state TEXT NOT NULL DEFAULT 'queued', worker TEXT,
- lease_until REAL, attempts INTEGER NOT NULL DEFAULT 0,
+ lease_until REAL, lease_id TEXT, attempts INTEGER NOT NULL DEFAULT 0,
  result TEXT, created REAL NOT NULL, updated REAL NOT NULL
 );
 CREATE TABLE IF NOT EXISTS attempts(
  id INTEGER PRIMARY KEY AUTOINCREMENT, job_id TEXT NOT NULL, worker TEXT NOT NULL,
- started REAL NOT NULL, finished REAL, ok INTEGER, error TEXT, result TEXT
+ lease_id TEXT, started REAL NOT NULL, finished REAL, ok INTEGER, error TEXT, result TEXT
 );
 CREATE TABLE IF NOT EXISTS evidence(
  id INTEGER PRIMARY KEY AUTOINCREMENT, job_id TEXT NOT NULL, worker TEXT NOT NULL,
@@ -47,7 +48,18 @@ class Store:
     def __init__(self, path):
         self.db = sqlite3.connect(path, check_same_thread=False)
         self.db.executescript(SCHEMA)
+        self._migrate()
         self.lock = threading.RLock()
+
+    def _migrate(self):
+        for table, column, definition in (
+            ("jobs", "lease_id", "TEXT"),
+            ("attempts", "lease_id", "TEXT"),
+        ):
+            columns = {row[1] for row in self.db.execute("PRAGMA table_info(%s)" % table)}
+            if column not in columns:
+                self.db.execute("ALTER TABLE %s ADD COLUMN %s %s" % (table, column, definition))
+        self.db.commit()
 
     def seed(self, jobs):
         now = time.time()
@@ -72,28 +84,41 @@ class Store:
             if not row:
                 return None
             jid, binary_hash, program, address, attempts = row
-            self.db.execute("UPDATE jobs SET state='leased',worker=?,lease_until=?,attempts=attempts+1,updated=? WHERE id=?",
-                            (worker, now + lease, now, jid))
-            self.db.execute("INSERT INTO attempts(job_id,worker,started) VALUES(?,?,?)", (jid, worker, now))
+            lease_id = uuid.uuid4().hex
+            self.db.execute("UPDATE jobs SET state='leased',worker=?,lease_until=?,lease_id=?,attempts=attempts+1,updated=? WHERE id=?",
+                            (worker, now + lease, lease_id, now, jid))
+            self.db.execute("INSERT INTO attempts(job_id,worker,lease_id,started) VALUES(?,?,?,?)", (jid, worker, lease_id, now))
             self.db.execute("INSERT OR REPLACE INTO workers(id,last_seen,meta) VALUES(?,?,?)",
                             (worker, now, json.dumps(meta or {}, separators=(",", ":"))))
             self.db.commit()
             return {"id": jid, "binary_hash": binary_hash, "program": program,
-                    "address": address, "attempts": attempts + 1}
+                    "address": address, "attempts": attempts + 1, "lease_id": lease_id}
 
-    def result(self, jid, worker, payload):
+    def heartbeat(self, jid, worker, lease_id, lease, meta):
+        now = time.time()
+        with self.lock:
+            row = self.db.execute("SELECT worker,state,lease_id FROM jobs WHERE id=?", (jid,)).fetchone()
+            if not row or row != (worker, "leased", lease_id):
+                return False
+            self.db.execute("UPDATE jobs SET lease_until=?,updated=? WHERE id=?", (now + lease, now, jid))
+            self.db.execute("INSERT OR REPLACE INTO workers(id,last_seen,meta) VALUES(?,?,?)",
+                            (worker, now, json.dumps(meta or {}, separators=(",", ":"))))
+            self.db.commit()
+        return True
+
+    def result(self, jid, worker, lease_id, payload):
         now = time.time()
         ok = bool(payload.get("ok"))
         encoded = json.dumps(payload, separators=(",", ":"))
         with self.lock:
-            row = self.db.execute("SELECT worker,state FROM jobs WHERE id=?", (jid,)).fetchone()
-            if not row or row[0] != worker or row[1] != "leased":
+            row = self.db.execute("SELECT worker,state,lease_id FROM jobs WHERE id=?", (jid,)).fetchone()
+            if not row or row != (worker, "leased", lease_id):
                 return False
             self.db.execute("UPDATE jobs SET state=?,result=?,lease_until=NULL,updated=? WHERE id=?",
                             ("done" if ok else "queued", encoded, now, jid))
             self.db.execute("UPDATE attempts SET finished=?,ok=?,error=?,result=? "
-                            "WHERE job_id=? AND worker=? AND finished IS NULL",
-                            (now, 1 if ok else 0, payload.get("error"), encoded, jid, worker))
+                            "WHERE job_id=? AND worker=? AND lease_id=? AND finished IS NULL",
+                            (now, 1 if ok else 0, payload.get("error"), encoded, jid, worker, lease_id))
             for item in payload.get("evidence", []):
                 self.db.execute("INSERT INTO evidence(job_id,worker,kind,value,score,created) VALUES(?,?,?,?,?,?)",
                                 (jid, worker, item.get("kind", "unknown"), item.get("value", ""),
@@ -140,12 +165,14 @@ class Store:
 class Handler(BaseHTTPRequestHandler):
     store = None
     token = ""
+    project = "default"
 
     def log_message(self, fmt, *args):
         return
 
     def auth(self):
-        return not self.token or self.headers.get("X-Worker-Token") == self.token
+        return ((not self.token or self.headers.get("X-Worker-Token") == self.token)
+                and self.headers.get("X-RoConstruct-Project", "default") == self.project)
 
     def send_json(self, code, value):
         data = json.dumps(value).encode()
@@ -160,6 +187,8 @@ class Handler(BaseHTTPRequestHandler):
         return json.loads(self.rfile.read(length) or b"{}")
 
     def do_GET(self):
+        if not self.auth():
+            return self.send_json(401, {"error": "worker token/project required"})
         if urlparse(self.path).path == "/v1/status":
             return self.send_json(200, self.store.status())
         if urlparse(self.path).path == "/v1/types":
@@ -176,13 +205,18 @@ class Handler(BaseHTTPRequestHandler):
             body = self.body()
             job = self.store.claim(body.get("worker", "unknown"), int(body.get("lease", 900)), body.get("meta"))
             return self.send_json(200, {"job": job})
+        if path == "/v1/heartbeat":
+            body = self.body()
+            ok = self.store.heartbeat(body.get("job"), body.get("worker", ""), body.get("lease_id", ""),
+                                       int(body.get("lease", 900)), body.get("meta"))
+            return self.send_json(200 if ok else 409, {"accepted": ok})
         if path == "/v1/types/propose":
             body = self.body()
             return self.send_json(200, {"added": self.store.propose_types(body.get("worker", "unknown"), body.get("proposals", []))})
         if path.startswith("/v1/jobs/") and path.endswith("/result"):
             jid = path.split("/")[3]
             body = self.body()
-            ok = self.store.result(jid, body.get("worker", ""), body)
+            ok = self.store.result(jid, body.get("worker", ""), body.get("lease_id", ""), body)
             return self.send_json(200 if ok else 409, {"accepted": ok})
         self.send_json(404, {"error": "not found"})
 
@@ -193,9 +227,11 @@ def main():
     ap.add_argument("--port", type=int, default=8765)
     ap.add_argument("--db", default="coordinator.db")
     ap.add_argument("--token", default=os.environ.get("ROCONSTRUCT_TOKEN", ""))
+    ap.add_argument("--project", default=os.environ.get("ROCONSTRUCT_PROJECT", "default"))
     a = ap.parse_args()
     Handler.store = Store(a.db)
     Handler.token = a.token
+    Handler.project = a.project
     server = ThreadingHTTPServer((a.host, a.port), Handler)
     print("RoConstruct coordinator: http://%s:%d" % (a.host, a.port), flush=True)
     server.serve_forever()
