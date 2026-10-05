@@ -10,7 +10,7 @@ import tkinter as tk
 import os
 import urllib.request
 from pathlib import Path
-from tkinter import filedialog, messagebox, scrolledtext, ttk
+from tkinter import filedialog, messagebox, scrolledtext, simpledialog, ttk
 
 def find_root():
     start = Path(sys.executable).resolve().parent if getattr(sys, "frozen", False) else Path(__file__).resolve()
@@ -58,6 +58,7 @@ class App(tk.Tk):
         self.client_label = self.settings.get("client_label", "2008M")
         self.build()
         self.poll()
+        self.after(2000, self.auto_refresh)
 
     def load_settings(self):
         try:
@@ -79,7 +80,7 @@ class App(tk.Tk):
         actions = ttk.LabelFrame(self, text="CONTROL", padding=8); actions.pack(fill="x", padx=16, pady=8)
         for text, fn in (("1  Setup", self.setup), ("2  Check data", self.check_data), ("3  Start server", self.start),
                          ("4  Start worker", self.start_worker), ("5  Add jobs", self.seed),
-                         ("Public list", self.public_list), ("↻  Refresh", self.refresh), ("■  Stop", self.stop)):
+                         ("New client...", self.new_client), ("Public list", self.public_list), ("↻  Refresh", self.refresh), ("■  Stop", self.stop)):
             ttk.Button(actions, text=text, command=fn).pack(side="left", padx=(0, 5))
         self.status = tk.StringVar(value="OFFLINE  // click Check data")
         ttk.Label(actions, textvariable=self.status, style="Sub.TLabel").pack(side="right", padx=4)
@@ -100,7 +101,7 @@ class App(tk.Tk):
         details.columnconfigure(1, weight=1); details.columnconfigure(3, weight=2)
         self.update_paths()
         info = ttk.LabelFrame(self, text="QUICK GUIDE", padding=8); info.pack(fill="x", padx=16)
-        ttk.Label(info, justify="left", text="Select DB + client → Check data → Start server → Add jobs → Start worker.\nFiles stay on this PC. Server card publishes name/description only; no client upload.").pack(anchor="w")
+        ttk.Label(info, justify="left", text="Select DB + client → Check data → Start server → Add jobs → Start worker.\nNew client... guides 2008M/2010L setup. Files stay on this PC; server publishes name/description only.").pack(anchor="w")
         box = ttk.LabelFrame(self, text="LIVE FEED", padding=6); box.pack(fill="both", expand=True, padx=16, pady=8)
         self.log = scrolledtext.ScrolledText(box, state="disabled", bg="#070b16", fg="#7dfff1", insertbackground="#7dfff1", relief="flat", font=("Cascadia Mono", 8), height=12)
         self.log.pack(fill="both", expand=True)
@@ -153,6 +154,16 @@ class App(tk.Tk):
         if path:
             self.client_path = Path(path).resolve(); self.save_settings(); self.update_paths(); self.check_data()
 
+    def new_client(self):
+        label = simpledialog.askstring("New client", "Client label (example: 2010L):", initialvalue=self.client_label_var.get())
+        if not label:
+            return
+        self.client_label_var.set(label.strip())
+        self.select_client()
+        self.write("CLIENT PROFILE: %s" % label.strip())
+        self.write("Next: create matching Ghidra export + SQLite DB, then select that DB. Existing worker can process it.")
+        self.write("Use an authorized client only. RoConstruct never uploads the executable.")
+
     def spawn(self, args):
         env = os.environ.copy(); env["ROCONSTRUCT_DATA_ROOT"] = str(self.data_root)
         flags = getattr(subprocess, "CREATE_NO_WINDOW", 0)
@@ -169,7 +180,11 @@ class App(tk.Tk):
     def start_worker(self):
         if self.worker_proc and self.worker_proc.poll() is None: return
         try:
+            if not self.db_path.exists():
+                self.write("Worker blocked: select valid DB first")
+                return
             self.worker_proc = self.spawn([*self.launcher(), str(SERVICE / "worker.py"), "--root", str(ROOT),
+                                           "--db", str(self.db_path), "--client-label", self.client_label_var.get(),
                                            "--project", PROJECT, "--token", TOKEN])
             threading.Thread(target=self.read_worker, daemon=True).start()
             self.status.set("Worker running")
@@ -195,7 +210,10 @@ class App(tk.Tk):
                                          {"Content-Type": "application/json", "X-Worker-Token": TOKEN,
                                           "X-RoConstruct-Project": PROJECT})
         try:
-            with urllib.request.urlopen(request, timeout=5) as response: self.write(response.read().decode())
+            with urllib.request.urlopen(request, timeout=5) as response:
+                result = json.load(response)
+                added = result.get("added", 0)
+                self.write("JOBS: added %s new; existing jobs kept (0 means already seeded)." % added)
         except Exception as error: self.write("seed unavailable: %s" % error)
 
     def read(self):
@@ -207,18 +225,27 @@ class App(tk.Tk):
         self.status.set("Coordinator stopped")
 
     def refresh(self):
+        self.refresh_status(True)
+
+    def refresh_status(self, silent=False):
         try:
             request = urllib.request.Request("http://127.0.0.1:8765/v1/status", headers={
                 "X-Worker-Token": TOKEN, "X-RoConstruct-Project": PROJECT})
             with urllib.request.urlopen(request, timeout=2) as response:
                 data = json.load(response)
-                workers = data.get("workers", [])
                 jobs = data.get("jobs", {})
-                self.status.set("ONLINE  // workers %s  // queue %s  // done %s" %
-                                (data.get("workers_online", 0), jobs.get("queued", 0), jobs.get("done", 0)))
-                self.write(json.dumps(data, indent=2))
+                workers = data.get("workers", [])
+                active = sum(1 for item in workers if item.get("meta", {}).get("state") == "working")
+                phase = "WORKING" if active else ("IDLE" if not jobs.get("queued", 0) else "WAITING")
+                self.status.set("%s  // workers %s  // queue %s  // done %s" %
+                                (phase, data.get("workers_online", 0), jobs.get("queued", 0), jobs.get("done", 0)))
+                if not silent: self.write(json.dumps(data, indent=2))
         except Exception as error:
-            self.write("status unavailable: %s" % error)
+            if not silent: self.write("status unavailable: %s" % error)
+
+    def auto_refresh(self):
+        self.refresh_status(True)
+        self.after(2000, self.auto_refresh)
 
     def public_list(self):
         if not DIRECTORY_URL:

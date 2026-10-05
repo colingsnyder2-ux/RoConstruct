@@ -94,8 +94,10 @@ class Store:
         with self.lock:
             row = self.db.execute(
                 "SELECT id,binary_hash,program,address,attempts FROM jobs "
-                "WHERE state='queued' OR (state='leased' AND lease_until<?) "
-                "ORDER BY attempts,created LIMIT 1", (now,)).fetchone()
+                "WHERE (state='queued' OR (state='leased' AND lease_until<?)) "
+                "AND NOT EXISTS (SELECT 1 FROM jobs active WHERE active.worker=? "
+                "AND active.state='leased' AND active.lease_until>=?) "
+                "ORDER BY attempts,created LIMIT 1", (now, worker, now)).fetchone()
             if not row:
                 return None
             jid, binary_hash, program, address, attempts = row

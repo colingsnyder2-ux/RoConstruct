@@ -28,11 +28,11 @@ def status(url, token, project):
         return json.loads(response.read())
 
 
-def work(root, job, model):
+def work(root, job, model, db_path):
     import sys
     sys.path.insert(0, str(root / "scripts" / "re"))
     import rebuild as R
-    db = Path(os.environ.get("ROCONSTRUCT_DATA_ROOT", str(root / "work" / "re"))) / "rbx2008m.db"
+    db = Path(db_path)
     conn = sqlite3.connect(db)
     fn = conn.execute("SELECT program,addr,name,decompiled FROM functions WHERE program=? AND addr=?",
                       (job["program"], job["address"])).fetchone()
@@ -57,18 +57,24 @@ def work(root, job, model):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--server", default="http://127.0.0.1:8765")
-    ap.add_argument("--worker-id", default=socket.gethostname())
+    ap.add_argument("--worker-id", default="")
     ap.add_argument("--token", default=os.environ.get("ROCONSTRUCT_TOKEN", ""))
     ap.add_argument("--project", default=os.environ.get("ROCONSTRUCT_PROJECT", "default"))
+    ap.add_argument("--db", default="")
+    ap.add_argument("--client-label", default=os.environ.get("ROCONSTRUCT_CLIENT", "2008M"))
     ap.add_argument("--model", default="qwen2.5-coder:7b-instruct")
     ap.add_argument("--poll", type=int, default=5)
     ap.add_argument("--once", action="store_true")
     ap.add_argument("--root", default=str(Path(__file__).resolve().parents[2]))
     a = ap.parse_args()
+    if not a.worker_id:
+        a.worker_id = "%s-%s" % (socket.gethostname(), os.getpid())
     root = Path(a.root).resolve()
+    data_root = Path(os.environ.get("ROCONSTRUCT_DATA_ROOT", str(root / "work" / "re")))
+    db_path = Path(a.db).resolve() if a.db else data_root / "rbx2008m.db"
     completed = failed = 0
-    print("RoConstruct worker // %s // CPU %s // GPU %s" %
-          (a.worker_id, os.cpu_count(), os.environ.get("ROCONSTRUCT_GPU", "unknown")), flush=True)
+    print("RoConstruct worker // %s // client %s // CPU %s // GPU %s" %
+          (a.worker_id, a.client_label, os.cpu_count(), os.environ.get("ROCONSTRUCT_GPU", "unknown")), flush=True)
     while True:
         lease = call(a.server.rstrip("/") + "/v1/lease", {
             "worker": a.worker_id,
@@ -107,7 +113,7 @@ def main():
         thread = threading.Thread(target=heartbeat, daemon=True)
         thread.start()
         try:
-            payload.update(work(root, job, a.model))
+            payload.update(work(root, job, a.model, db_path))
         finally:
             done.set()
         payload["elapsed"] = round(time.time() - started, 2)
