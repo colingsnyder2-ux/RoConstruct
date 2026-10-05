@@ -1,0 +1,31 @@
+# Secrets and live runtime state
+server/config.json
+server/data/
+server/tls/*.pem
+work/testdata/
+work/*.log
+
+# Generated/downloaded game payloads
+site/data/*.zip
+site/emu/*.wasm
+site/emu-mt/*.wasm
+site/emu-prof/*.wasm
+
+# Local tooling/cache
+node_modules/
+__pycache__/
+*.pyc
+.DS_Store
+build/
+dist/
+*.spec
+
+# Local emulator downloads/builds/runtime; keep source notes only
+work/*
+!work/novetus-src/
+!work/novetus-src/script2008M.lua
+
+# Proprietary client samples stay local.
+clients/*/*.exe
+clients/*/*.dll
+clients/*/*.rbxl
