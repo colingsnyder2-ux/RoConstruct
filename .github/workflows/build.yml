@@ -14,8 +14,8 @@ jobs:
         with:
           python-version: "3.11"
       - run: python -m pip install pyinstaller
-      - run: pyinstaller --noconfirm --clean --console --onefile --name RoConstruct scripts/re/roconstruct.py
+      - run: pyinstaller --noconfirm --clean --windowed --onefile --name RoConstruct-GUI scripts/roconstruct_gui.py
       - uses: actions/upload-artifact@v4
         with:
           name: RoConstruct-windows
-          path: dist/RoConstruct.exe
+          path: dist/RoConstruct-GUI.exe

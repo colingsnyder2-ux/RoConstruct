@@ -1,0 +1,138 @@
+#!/usr/bin/env python3
+"""RoConstruct desktop control panel. Tkinter stdlib; no GUI dependency."""
+import json
+import hashlib
+import queue
+import subprocess
+import sys
+import threading
+import tkinter as tk
+import urllib.request
+from pathlib import Path
+from tkinter import messagebox, scrolledtext, ttk
+
+def find_root():
+    start = Path(sys.executable).resolve().parent if getattr(sys, "frozen", False) else Path(__file__).resolve()
+    for parent in (start, *start.parents):
+        if (parent / "scripts" / "re" / "rebuild.py").exists():
+            return parent
+    return Path(__file__).resolve().parents[1]
+
+
+ROOT = find_root()
+SERVICE = ROOT / "scripts" / "roconstruct"
+
+
+class App(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.title("RoConstruct distributed reconstruction")
+        self.geometry("980x680")
+        self.events = queue.Queue()
+        self.proc = None
+        self.worker_proc = None
+        self.build()
+        self.poll()
+
+    def build(self):
+        top = ttk.Frame(self, padding=12); top.pack(fill="x")
+        ttk.Label(top, text="RoConstruct", font=("Segoe UI", 20, "bold")).pack(anchor="w")
+        ttk.Label(top, text="Many PCs → leased function jobs → evidence-ranked source results").pack(anchor="w")
+        actions = ttk.LabelFrame(self, text="Coordinator", padding=10); actions.pack(fill="x", padx=12, pady=8)
+        for text, fn in (("Setup tools", self.setup), ("Start coordinator", self.start),
+                         ("Start worker", self.start_worker), ("Seed 200 jobs", self.seed),
+                         ("Refresh", self.refresh), ("Stop", self.stop)):
+            ttk.Button(actions, text=text, command=fn).pack(side="left", padx=(0, 8))
+        self.status = tk.StringVar(value="Coordinator stopped")
+        ttk.Label(actions, textvariable=self.status).pack(side="left", padx=10)
+        info = ttk.LabelFrame(self, text="How it works", padding=10); info.pack(fill="x", padx=12)
+        ttk.Label(info, justify="left", wraplength=920, text=(
+            "Coordinator stores metadata and job leases only. Each worker keeps client binaries local, "
+            "claims one stable binary_hash + program + address job, runs Ghidra/model/MSVC locally, "
+            "then sends hashes, generated source, compiler result, and evidence. Expired leases retry."
+        )).pack(anchor="w")
+        box = ttk.LabelFrame(self, text="Live log", padding=8); box.pack(fill="both", expand=True, padx=12, pady=10)
+        self.log = scrolledtext.ScrolledText(box, state="disabled", font=("Cascadia Mono", 9)); self.log.pack(fill="both", expand=True)
+
+    def write(self, text):
+        self.log.configure(state="normal"); self.log.insert("end", text + "\n"); self.log.see("end"); self.log.configure(state="disabled")
+
+    def start(self):
+        if self.proc and self.proc.poll() is None: return
+        try:
+            self.proc = subprocess.Popen([*self.launcher(), str(SERVICE / "coordinator.py"), "--db", str(ROOT / "coordinator.db")],
+                                         cwd=ROOT, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+            threading.Thread(target=self.read, daemon=True).start(); self.status.set("Coordinator running on http://127.0.0.1:8765")
+        except Exception as error:
+            messagebox.showerror("Coordinator", str(error))
+
+    def setup(self):
+        try:
+            sys.path.insert(0, str(ROOT / "scripts" / "re"))
+            import bootstrap
+            bootstrap.install()
+            self.write("setup complete; restart app if Python/MSVC was added")
+        except Exception as error:
+            messagebox.showerror("Setup", str(error))
+
+    def launcher(self):
+        if not getattr(sys, "frozen", False): return [sys.executable]
+        import shutil
+        for name in ("py", "python"):
+            if shutil.which(name): return [name]
+        raise RuntimeError("Python missing; run first-run setup")
+
+    def start_worker(self):
+        if self.worker_proc and self.worker_proc.poll() is None: return
+        try:
+            self.worker_proc = subprocess.Popen([*self.launcher(), str(SERVICE / "worker.py"), "--root", str(ROOT)],
+                                                cwd=ROOT, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+            threading.Thread(target=self.read_worker, daemon=True).start()
+            self.status.set("Worker running")
+        except Exception as error: messagebox.showerror("Worker", str(error))
+
+    def read_worker(self):
+        for line in self.worker_proc.stdout: self.events.put("worker: " + line.rstrip())
+
+    def seed(self):
+        db = ROOT / "work" / "re" / "rbx2008m.db"
+        binary = ROOT / "work" / "re" / "bin" / "RobloxApp_client.exe"
+        if not db.exists() or not binary.exists():
+            self.write("Seed needs local Ghidra DB + client binary")
+            return
+        digest = hashlib.sha256()
+        with binary.open("rb") as stream:
+            for chunk in iter(lambda: stream.read(1024 * 1024), b""): digest.update(chunk)
+        import sqlite3
+        with sqlite3.connect(db) as conn:
+            rows = conn.execute("SELECT program,addr FROM scope WHERE in_scope=1 ORDER BY indeg DESC LIMIT 200").fetchall()
+        payload = {"jobs": [{"binary_hash": digest.hexdigest(), "program": p, "address": a} for p, a in rows]}
+        request = urllib.request.Request("http://127.0.0.1:8765/v1/jobs/seed", json.dumps(payload).encode(), {"Content-Type": "application/json"})
+        try:
+            with urllib.request.urlopen(request, timeout=5) as response: self.write(response.read().decode())
+        except Exception as error: self.write("seed unavailable: %s" % error)
+
+    def read(self):
+        for line in self.proc.stdout: self.events.put(line.rstrip())
+
+    def stop(self):
+        if self.proc and self.proc.poll() is None: self.proc.terminate()
+        if self.worker_proc and self.worker_proc.poll() is None: self.worker_proc.terminate()
+        self.status.set("Coordinator stopped")
+
+    def refresh(self):
+        try:
+            with urllib.request.urlopen("http://127.0.0.1:8765/v1/status", timeout=2) as response:
+                self.write(json.dumps(json.load(response), indent=2))
+        except Exception as error:
+            self.write("status unavailable: %s" % error)
+
+    def poll(self):
+        try:
+            while True: self.write(self.events.get_nowait())
+        except queue.Empty: pass
+        self.after(150, self.poll)
+
+
+if __name__ == "__main__":
+    App().mainloop()

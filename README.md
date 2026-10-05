@@ -18,6 +18,16 @@ powershell -ExecutionPolicy Bypass -File scripts\re\build.ps1
 
 Output: `dist\RoConstruct.exe`. Keep EXE in checkout's `dist` folder so it finds pipeline scripts. Reverse-engineering data and client binaries stay local. Nothing uploads.
 
+## Distributed workers
+
+Build GUI controller:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts\build_gui.ps1
+```
+
+Run `dist\RoConstruct-GUI.exe`, start coordinator, seed jobs, then start one worker per fast PC. Each worker needs the matching local client/database; coordinator receives only stable IDs, generated source, compiler logs, and evidence. Leases expire and retry. `scripts\roconstruct\coordinator.py` uses SQLite first; protocol is HTTP JSON, so Redis/PostgreSQL can replace storage later.
+
 Client slots: `clients\README.md`. Do not publish proprietary Roblox client binaries in this repo.
 
 Pipeline details: `scripts\re\README.md`. Working findings: `work\re\findings.md` (local, ignored).
