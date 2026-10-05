@@ -107,3 +107,5 @@ py scripts\roconstruct\promote.py --db coordinator.db --repo .
 Client slots: `clients\README.md`. Do not publish proprietary Roblox client binaries in this repo.
 
 Pipeline details: `scripts\re\README.md`. Working findings: `work\re\findings.md` (local, ignored).
+
+Playable-build roadmap: `docs\PLAYABLE.md`.
