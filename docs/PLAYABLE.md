@@ -6,6 +6,10 @@ use.
 
 ## Build layers
 
+If complete authorized source exists, skip binary analysis entirely: place it
+under `source/` or set `ROCONSTRUCT_SOURCE_ROOT`, then package/build it. No
+Ghidra is needed in that source-first path.
+
 1. **Source set** — promoted C/C++ functions, shared headers, type universe,
    globals, startup code, and third-party dependencies.
 2. **Executable** — x86-compatible build, linker map, resource files, DLLs,

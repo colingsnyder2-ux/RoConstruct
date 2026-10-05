@@ -2,6 +2,7 @@
 """Assemble an offline sandbox package without copying client binaries."""
 import argparse
 import json
+import os
 import shutil
 from pathlib import Path
 
@@ -25,6 +26,13 @@ def main():
     for path in (demo / "demo_source.c", demo / "demo_main.c", demo / "CMakeLists.txt"):
         if path.exists():
             shutil.copy2(path, source / path.name); copied.append(str(source / path.name))
+    source_root = Path(os.environ.get("ROCONSTRUCT_SOURCE_ROOT", str(ROOT / "source")))
+    if source_root.exists():
+        for path in source_root.rglob("*"):
+            if path.is_file() and path.suffix.lower() in (".c", ".cc", ".cpp", ".h", ".hpp"):
+                target = source / "client" / path.relative_to(source_root)
+                target.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(path, target); copied.append(str(target))
     manifest = json.loads((ROOT / "third_party" / "manifest.json").read_text(encoding="utf-8"))
     missing = [item["name"] for item in manifest["dependencies"]
                if not (ROOT / "third_party" / item["name"].lower().replace(" ", "-")).exists()

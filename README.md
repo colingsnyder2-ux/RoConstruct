@@ -118,3 +118,16 @@ py scripts\roconstruct\package.py
 
 This copies reconstructed/demo source, checks open-source dependency folders,
 writes `work\playable\build-report.json`, and never copies client binaries.
+
+### Source-first mode
+
+If authorized C/C++ source exists, use it directly—no Ghidra required:
+
+```powershell
+$env:ROCONSTRUCT_SOURCE_ROOT = 'C:\path\to\authorized\source'
+py scripts\roconstruct\package.py
+```
+
+Ghidra is only needed for binary → decompiler export. Python GUI/worker EXE
+users do not need Ghidra or a compiler after a package is already built; the
+compiler/toolchain is needed only on build machines creating the executable.
