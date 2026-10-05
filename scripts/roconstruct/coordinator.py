@@ -8,6 +8,7 @@ import sqlite3
 import threading
 import time
 import uuid
+import urllib.request
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlparse
 
@@ -43,6 +44,19 @@ EVIDENCE_WEIGHT = {"compiler": 1.0, "cross_function": 2.0, "field_offset": 2.0, 
 def job_id(binary_hash, program, address):
     raw = "%s:%s:%s" % (binary_hash.lower(), program, address.lower())
     return hashlib.sha256(raw.encode()).hexdigest()[:32]
+
+
+def advertise(url, token, name, description, client, project, public_url):
+    payload = json.dumps({"name": name, "url": public_url, "description": description,
+                          "client": client, "project": project}).encode()
+    while True:
+        try:
+            request = urllib.request.Request(url.rstrip("/") + "/v1/register", payload,
+                                             {"Content-Type": "application/json", "X-Directory-Token": token})
+            urllib.request.urlopen(request, timeout=10).close()
+        except (OSError, ValueError):
+            pass
+        time.sleep(60)
 
 
 class Store:
@@ -172,6 +186,9 @@ class Handler(BaseHTTPRequestHandler):
     store = None
     token = ""
     project = "default"
+    name = "RoConstruct server"
+    description = ""
+    client = "2008M"
 
     def log_message(self, fmt, *args):
         return
@@ -193,10 +210,15 @@ class Handler(BaseHTTPRequestHandler):
         return json.loads(self.rfile.read(length) or b"{}")
 
     def do_GET(self):
+        if urlparse(self.path).path == "/v1/info":
+            return self.send_json(200, {"name": self.name, "description": self.description,
+                                        "client": self.client, "project": self.project})
         if not self.auth():
             return self.send_json(401, {"error": "worker token/project required"})
         if urlparse(self.path).path == "/v1/status":
-            return self.send_json(200, self.store.status())
+            value = self.store.status()
+            value["server"] = {"name": self.name, "description": self.description, "client": self.client}
+            return self.send_json(200, value)
         if urlparse(self.path).path == "/v1/types":
             return self.send_json(200, {"proposals": self.store.ranked_types()})
         self.send_json(404, {"error": "not found"})
@@ -234,10 +256,22 @@ def main():
     ap.add_argument("--db", default="coordinator.db")
     ap.add_argument("--token", default=os.environ.get("ROCONSTRUCT_TOKEN", ""))
     ap.add_argument("--project", default=os.environ.get("ROCONSTRUCT_PROJECT", "default"))
+    ap.add_argument("--name", default=os.environ.get("ROCONSTRUCT_SERVER_NAME", "RoConstruct server"))
+    ap.add_argument("--description", default=os.environ.get("ROCONSTRUCT_SERVER_DESCRIPTION", ""))
+    ap.add_argument("--client", default=os.environ.get("ROCONSTRUCT_CLIENT", "2008M"))
+    ap.add_argument("--directory-url", default=os.environ.get("ROCONSTRUCT_DIRECTORY_URL", ""))
+    ap.add_argument("--directory-token", default=os.environ.get("ROCONSTRUCT_DIRECTORY_TOKEN", ""))
+    ap.add_argument("--public-url", default=os.environ.get("ROCONSTRUCT_PUBLIC_URL", ""))
     a = ap.parse_args()
     Handler.store = Store(a.db)
     Handler.token = a.token
     Handler.project = a.project
+    Handler.name = a.name
+    Handler.description = a.description
+    Handler.client = a.client
+    if a.directory_url and a.public_url:
+        threading.Thread(target=advertise, args=(a.directory_url, a.directory_token, a.name,
+                         a.description, a.client, a.project, a.public_url), daemon=True).start()
     server = ThreadingHTTPServer((a.host, a.port), Handler)
     print("RoConstruct coordinator: http://%s:%d" % (a.host, a.port), flush=True)
     server.serve_forever()

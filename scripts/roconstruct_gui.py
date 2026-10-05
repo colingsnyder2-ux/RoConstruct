@@ -10,7 +10,7 @@ import tkinter as tk
 import os
 import urllib.request
 from pathlib import Path
-from tkinter import messagebox, scrolledtext, ttk
+from tkinter import filedialog, messagebox, scrolledtext, ttk
 
 def find_root():
     start = Path(sys.executable).resolve().parent if getattr(sys, "frozen", False) else Path(__file__).resolve()
@@ -25,6 +25,8 @@ SERVICE = ROOT / "scripts" / "roconstruct"
 TOKEN = os.environ.get("ROCONSTRUCT_TOKEN", "")
 PROJECT = os.environ.get("ROCONSTRUCT_PROJECT", "default")
 DATA_ROOT = Path(os.environ.get("ROCONSTRUCT_DATA_ROOT", str(ROOT / "work" / "re"))).resolve()
+SETTINGS = ROOT / "roconstruct-settings.json"
+DIRECTORY_URL = os.environ.get("ROCONSTRUCT_DIRECTORY_URL", "")
 
 
 class App(tk.Tk):
@@ -47,8 +49,28 @@ class App(tk.Tk):
         self.events = queue.Queue()
         self.proc = None
         self.worker_proc = None
+        self.settings = self.load_settings()
+        self.data_root = Path(self.settings.get("data_root", str(DATA_ROOT))).resolve()
+        self.db_path = Path(self.settings.get("db_path", str(self.data_root / "rbx2008m.db"))).resolve()
+        self.client_path = Path(self.settings.get("client_path", str(self.data_root / "bin" / "RobloxApp_client.exe"))).resolve()
+        self.server_name = self.settings.get("server_name", "RoConstruct 2008M")
+        self.server_description = self.settings.get("server_description", "Shared reconstruction jobs")
+        self.client_label = self.settings.get("client_label", "2008M")
         self.build()
         self.poll()
+
+    def load_settings(self):
+        try:
+            return json.loads(SETTINGS.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            return {}
+
+    def save_settings(self):
+        self.data_root = self.db_path.parent
+        SETTINGS.write_text(json.dumps({"data_root": str(self.data_root), "db_path": str(self.db_path),
+                                        "client_path": str(self.client_path), "server_name": self.server_name,
+                                        "server_description": self.server_description, "client_label": self.client_label},
+                                       indent=2), encoding="utf-8")
 
     def build(self):
         top = ttk.Frame(self, padding=(16, 12, 16, 4)); top.pack(fill="x")
@@ -57,12 +79,28 @@ class App(tk.Tk):
         actions = ttk.LabelFrame(self, text="CONTROL", padding=8); actions.pack(fill="x", padx=16, pady=8)
         for text, fn in (("1  Setup", self.setup), ("2  Check data", self.check_data), ("3  Start server", self.start),
                          ("4  Start worker", self.start_worker), ("5  Add jobs", self.seed),
-                         ("↻  Refresh", self.refresh), ("■  Stop", self.stop)):
+                         ("Public list", self.public_list), ("↻  Refresh", self.refresh), ("■  Stop", self.stop)):
             ttk.Button(actions, text=text, command=fn).pack(side="left", padx=(0, 5))
-        self.status = tk.StringVar(value="OFFLINE  // click Start server")
+        self.status = tk.StringVar(value="OFFLINE  // click Check data")
         ttk.Label(actions, textvariable=self.status, style="Sub.TLabel").pack(side="right", padx=4)
+        details = ttk.LabelFrame(self, text="SERVER CARD + LOCAL FILES", padding=7); details.pack(fill="x", padx=16, pady=(0, 8))
+        self.server_name_var = tk.StringVar(value=self.server_name)
+        self.server_desc_var = tk.StringVar(value=self.server_description)
+        self.client_label_var = tk.StringVar(value=self.client_label)
+        ttk.Label(details, text="Name").grid(row=0, column=0, sticky="w")
+        ttk.Entry(details, textvariable=self.server_name_var, width=24).grid(row=0, column=1, padx=5, sticky="ew")
+        ttk.Label(details, text="Description").grid(row=0, column=2, sticky="w")
+        ttk.Entry(details, textvariable=self.server_desc_var, width=32).grid(row=0, column=3, padx=5, sticky="ew")
+        ttk.Label(details, text="Client").grid(row=1, column=0, sticky="w", pady=(5, 0))
+        ttk.Entry(details, textvariable=self.client_label_var, width=24).grid(row=1, column=1, padx=5, pady=(5, 0), sticky="ew")
+        ttk.Button(details, text="Select DB...", command=self.select_db).grid(row=1, column=2, padx=5, pady=(5, 0), sticky="w")
+        ttk.Button(details, text="Select client...", command=self.select_client).grid(row=1, column=3, padx=5, pady=(5, 0), sticky="w")
+        self.paths = tk.StringVar()
+        ttk.Label(details, textvariable=self.paths, style="Sub.TLabel").grid(row=2, column=0, columnspan=4, sticky="w", pady=(5, 0))
+        details.columnconfigure(1, weight=1); details.columnconfigure(3, weight=2)
+        self.update_paths()
         info = ttk.LabelFrame(self, text="QUICK GUIDE", padding=8); info.pack(fill="x", padx=16)
-        ttk.Label(info, justify="left", text="Check data → Start server → Add jobs → Start worker.\nData folder: %s\nEach worker uses its own local client/database; server shares only IDs, source, logs, evidence." % DATA_ROOT).pack(anchor="w")
+        ttk.Label(info, justify="left", text="Select DB + client → Check data → Start server → Add jobs → Start worker.\nFiles stay on this PC. Server card publishes name/description only; no client upload.").pack(anchor="w")
         box = ttk.LabelFrame(self, text="LIVE FEED", padding=6); box.pack(fill="both", expand=True, padx=16, pady=8)
         self.log = scrolledtext.ScrolledText(box, state="disabled", bg="#070b16", fg="#7dfff1", insertbackground="#7dfff1", relief="flat", font=("Cascadia Mono", 8), height=12)
         self.log.pack(fill="both", expand=True)
@@ -73,10 +111,14 @@ class App(tk.Tk):
     def start(self):
         if self.proc and self.proc.poll() is None: return
         try:
-            args = [*self.launcher(), str(SERVICE / "coordinator.py"), "--db", str(ROOT / "coordinator.db"), "--project", PROJECT]
+            self.server_name = self.server_name_var.get().strip() or "RoConstruct server"
+            self.server_description = self.server_desc_var.get().strip()
+            self.client_label = self.client_label_var.get().strip() or "2008M"
+            self.save_settings()
+            args = [*self.launcher(), str(SERVICE / "coordinator.py"), "--db", str(ROOT / "coordinator.db"), "--project", PROJECT,
+                    "--name", self.server_name, "--description", self.server_description, "--client", self.client_label]
             if TOKEN: args += ["--token", TOKEN]
-            self.proc = subprocess.Popen(args,
-                                         cwd=ROOT, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+            self.proc = self.spawn(args)
             threading.Thread(target=self.read, daemon=True).start(); self.status.set("Coordinator running on http://127.0.0.1:8765")
         except Exception as error:
             messagebox.showerror("Coordinator", str(error))
@@ -91,11 +133,31 @@ class App(tk.Tk):
             messagebox.showerror("Setup", str(error))
 
     def check_data(self):
-        db = DATA_ROOT / "rbx2008m.db"
-        client = DATA_ROOT / "bin" / "RobloxApp_client.exe"
-        self.write("DATA ROOT: %s" % DATA_ROOT)
+        db = self.db_path
+        client = self.client_path
+        self.write("DATA ROOT: %s" % self.data_root)
         self.write("2008 DB: %s" % ("READY" if db.exists() else "MISSING  (run summarize.py ingest)"))
         self.write("2008 client: %s" % ("READY" if client.exists() else "MISSING  (place authorized EXE in data\\bin)"))
+        self.status.set("DATA READY" if db.exists() and client.exists() else "DATA INCOMPLETE")
+
+    def update_paths(self):
+        self.paths.set("DB: %s   |   client: %s" % (self.db_path.name, self.client_path.name))
+
+    def select_db(self):
+        path = filedialog.askopenfilename(title="Select 2008 SQLite database", filetypes=[("SQLite DB", "*.db"), ("All files", "*.*")])
+        if path:
+            self.db_path = Path(path).resolve(); self.data_root = self.db_path.parent; self.save_settings(); self.update_paths(); self.check_data()
+
+    def select_client(self):
+        path = filedialog.askopenfilename(title="Select authorized 2008 client", filetypes=[("Windows client", "*.exe"), ("All files", "*.*")])
+        if path:
+            self.client_path = Path(path).resolve(); self.save_settings(); self.update_paths(); self.check_data()
+
+    def spawn(self, args):
+        env = os.environ.copy(); env["ROCONSTRUCT_DATA_ROOT"] = str(self.data_root)
+        flags = getattr(subprocess, "CREATE_NO_WINDOW", 0)
+        return subprocess.Popen(args, cwd=ROOT, env=env, creationflags=flags,
+                                stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
 
     def launcher(self):
         if not getattr(sys, "frozen", False): return [sys.executable]
@@ -107,8 +169,8 @@ class App(tk.Tk):
     def start_worker(self):
         if self.worker_proc and self.worker_proc.poll() is None: return
         try:
-            self.worker_proc = subprocess.Popen([*self.launcher(), str(SERVICE / "worker.py"), "--root", str(ROOT)],
-                                                cwd=ROOT, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+            self.worker_proc = self.spawn([*self.launcher(), str(SERVICE / "worker.py"), "--root", str(ROOT),
+                                           "--project", PROJECT, "--token", TOKEN])
             threading.Thread(target=self.read_worker, daemon=True).start()
             self.status.set("Worker running")
         except Exception as error: messagebox.showerror("Worker", str(error))
@@ -117,8 +179,8 @@ class App(tk.Tk):
         for line in self.worker_proc.stdout: self.events.put("worker: " + line.rstrip())
 
     def seed(self):
-        db = DATA_ROOT / "rbx2008m.db"
-        binary = DATA_ROOT / "bin" / "RobloxApp_client.exe"
+        db = self.db_path
+        binary = self.client_path
         if not db.exists() or not binary.exists():
             self.write("Seed needs local Ghidra DB + client binary")
             return
@@ -157,6 +219,16 @@ class App(tk.Tk):
                 self.write(json.dumps(data, indent=2))
         except Exception as error:
             self.write("status unavailable: %s" % error)
+
+    def public_list(self):
+        if not DIRECTORY_URL:
+            self.write("public list disabled; set ROCONSTRUCT_DIRECTORY_URL to metadata directory")
+            return
+        try:
+            with urllib.request.urlopen(DIRECTORY_URL.rstrip("/") + "/v1/servers", timeout=5) as response:
+                self.write(json.dumps(json.load(response), indent=2))
+        except Exception as error:
+            self.write("public list unavailable: %s" % error)
 
     def poll(self):
         try:

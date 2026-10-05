@@ -22,6 +22,8 @@ dist/
 coordinator.db
 test-coordinator.db
 coordinator-*.db
+directory.db
+roconstruct-settings.json
 
 # Local emulator downloads/builds/runtime; keep source notes only
 work/*

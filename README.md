@@ -44,6 +44,20 @@ Expected files:
 
 `rbx2008m.db` is created by Ghidra export + ingest. To create one from scratch, place authorized client/project under this checkout's `work\re` layout, then run `powershell -File scripts\re\start-re.ps1 -Headless`; this exports functions, ingests SQLite, and runs summaries. `ROCONSTRUCT_DATA_ROOT` is for reusing an already-built data folder. GUI `Check data` reports exact missing file and next action. Each worker needs matching local DB + client; coordinator never receives them.
 
+### Public server list
+
+Use separate, opt-in metadata directory. It stores server name, URL, description, project, and client label only—not binaries, DBs, pseudocode, or tokens:
+
+```powershell
+$env:ROCONSTRUCT_DIRECTORY_TOKEN = 'change-me'
+py scripts\roconstruct\directory.py --host 0.0.0.0 --token $env:ROCONSTRUCT_DIRECTORY_TOKEN
+$env:ROCONSTRUCT_DIRECTORY_URL = 'https://directory.example'
+$env:ROCONSTRUCT_PUBLIC_URL = 'https://my-server.example:8765'
+dist\RoConstruct-GUI.exe
+```
+
+Click `Public list` to view live entries. Keep directory HTTPS/authenticated/rate-limited. Public discovery must never carry client files or DB uploads.
+
 ## Distributed workers
 
 Build GUI controller:
