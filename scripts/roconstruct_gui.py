@@ -123,7 +123,11 @@ class App(tk.Tk):
     def refresh(self):
         try:
             with urllib.request.urlopen("http://127.0.0.1:8765/v1/status", timeout=2) as response:
-                self.write(json.dumps(json.load(response), indent=2))
+                data = json.load(response)
+                workers = data.get("workers", [])
+                self.status.set("Coordinator: %s | workers online: %s | queued: %s" %
+                                ("running", data.get("workers_online", 0), data.get("jobs", {}).get("queued", 0)))
+                self.write(json.dumps(data, indent=2))
         except Exception as error:
             self.write("status unavailable: %s" % error)
 

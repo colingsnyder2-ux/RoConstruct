@@ -21,6 +21,7 @@ dist/
 *.spec
 coordinator.db
 test-coordinator.db
+coordinator-*.db
 
 # Local emulator downloads/builds/runtime; keep source notes only
 work/*

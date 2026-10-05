@@ -30,6 +30,11 @@ CREATE TABLE IF NOT EXISTS evidence(
 CREATE TABLE IF NOT EXISTS workers(
  id TEXT PRIMARY KEY, last_seen REAL NOT NULL, meta TEXT NOT NULL
 );
+CREATE TABLE IF NOT EXISTS type_proposals(
+ id INTEGER PRIMARY KEY AUTOINCREMENT, binary_hash TEXT NOT NULL,
+ type_name TEXT NOT NULL, field_offset INTEGER, field_type TEXT NOT NULL,
+ worker TEXT NOT NULL, score REAL NOT NULL DEFAULT 0, created REAL NOT NULL
+);
 """
 
 
@@ -57,7 +62,7 @@ class Store:
             self.db.commit()
         return added
 
-    def claim(self, worker, lease):
+    def claim(self, worker, lease, meta=None):
         now = time.time()
         with self.lock:
             row = self.db.execute(
@@ -71,7 +76,7 @@ class Store:
                             (worker, now + lease, now, jid))
             self.db.execute("INSERT INTO attempts(job_id,worker,started) VALUES(?,?,?)", (jid, worker, now))
             self.db.execute("INSERT OR REPLACE INTO workers(id,last_seen,meta) VALUES(?,?,?)",
-                            (worker, now, "{}"))
+                            (worker, now, json.dumps(meta or {}, separators=(",", ":"))))
             self.db.commit()
             return {"id": jid, "binary_hash": binary_hash, "program": program,
                     "address": address, "attempts": attempts + 1}
@@ -96,6 +101,17 @@ class Store:
             self.db.commit()
         return True
 
+    def propose_types(self, worker, proposals):
+        now = time.time()
+        with self.lock:
+            for item in proposals:
+                self.db.execute(
+                    "INSERT INTO type_proposals(binary_hash,type_name,field_offset,field_type,worker,score,created) "
+                    "VALUES(?,?,?,?,?,?,?)", (item["binary_hash"], item["type_name"], item.get("field_offset"),
+                    item["field_type"], worker, float(item.get("score", 0)), now))
+            self.db.commit()
+        return len(proposals)
+
     def status(self):
         with self.lock:
             counts = dict(self.db.execute("SELECT state,COUNT(*) FROM jobs GROUP BY state").fetchall())
@@ -104,8 +120,12 @@ class Store:
             best = self.db.execute(
                 "SELECT COUNT(*) FROM (SELECT job_id,MAX(score) FROM evidence GROUP BY job_id)"
             ).fetchone()[0]
+            proposals = self.db.execute("SELECT COUNT(*) FROM type_proposals").fetchone()[0]
+            worker_rows = self.db.execute("SELECT id,meta FROM workers WHERE last_seen>?",
+                                          (time.time() - 60,)).fetchall()
         return {"jobs": counts, "workers_online": workers, "evidence": evidence,
-                "jobs_with_ranked_evidence": best}
+                "jobs_with_ranked_evidence": best, "type_proposals": proposals,
+                "workers": [{"id": wid, "meta": json.loads(meta)} for wid, meta in worker_rows]}
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -143,8 +163,11 @@ class Handler(BaseHTTPRequestHandler):
             return self.send_json(200, {"added": self.store.seed(self.body().get("jobs", []))})
         if path == "/v1/lease":
             body = self.body()
-            job = self.store.claim(body.get("worker", "unknown"), int(body.get("lease", 900)))
+            job = self.store.claim(body.get("worker", "unknown"), int(body.get("lease", 900)), body.get("meta"))
             return self.send_json(200, {"job": job})
+        if path == "/v1/types/propose":
+            body = self.body()
+            return self.send_json(200, {"added": self.store.propose_types(body.get("worker", "unknown"), body.get("proposals", []))})
         if path.startswith("/v1/jobs/") and path.endswith("/result"):
             jid = path.split("/")[3]
             body = self.body()

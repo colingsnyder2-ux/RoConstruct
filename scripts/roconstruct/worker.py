@@ -5,6 +5,7 @@ import hashlib
 import json
 import os
 import socket
+import platform
 import sqlite3
 import time
 import urllib.request
@@ -55,7 +56,9 @@ def main():
     while True:
         lease = call(a.server.rstrip("/") + "/v1/lease", {
             "worker": a.worker_id,
-            "meta": {"hostname": socket.gethostname(), "model": a.model}
+            "meta": {"hostname": socket.gethostname(), "model": a.model,
+                     "cpu_count": os.cpu_count(), "gpu": os.environ.get("ROCONSTRUCT_GPU", "unknown"),
+                     "platform": platform.platform()}
         }, a.token)
         job = lease.get("job")
         if not job:
