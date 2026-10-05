@@ -62,6 +62,16 @@ GUI `Select DB...` and `Select client...` buttons set local paths and save them 
 
 `Add jobs` may report `added 0`: stable function IDs already exist in coordinator DB. Not stall. `WORKING` means active processing, `WAITING` means queue exists but worker unavailable, `IDLE` means no queued work.
 
+### Try without Roblox data
+
+Run safe tiny C demo:
+
+```powershell
+py scripts\roconstruct\demo.py
+```
+
+It uses `examples\tiny_demo` and writes reconstructed files to `work\demo\reconstructed`. This tests queue/lease/result/evidence flow without Ghidra, Ollama, MSVC, or client binaries.
+
 Build GUI controller:
 
 ```powershell

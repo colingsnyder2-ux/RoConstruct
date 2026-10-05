@@ -1,0 +1,5 @@
+[
+  {"program":"tiny_demo.exe", "address":"00001000", "name":"add_score", "pseudocode":"int add_score(int score, int points) { return score + points; }"},
+  {"program":"tiny_demo.exe", "address":"00001020", "name":"clamp_health", "pseudocode":"int clamp_health(int health) { if (health < 0) return 0; if (health > 100) return 100; return health; }"},
+  {"program":"tiny_demo.exe", "address":"00001050", "name":"player_is_alive", "pseudocode":"int player_is_alive(int health) { return health > 0; }"}
+]
