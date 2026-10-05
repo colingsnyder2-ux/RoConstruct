@@ -74,7 +74,10 @@ else:
 print("=== add_opaque_universe (C2440 class pointers)")
 src = "void f(void){ StringInterface *p; *(uint32_t*)p = 1; }"
 out = R.add_opaque_universe(src)
-check("StringInterface aliased", out, "typedef void StringInterface;")
+if os.path.exists(R.OPAQUE_HEADER):
+    check("StringInterface aliased", out, "typedef void StringInterface;")
+else:
+    print("  %-22s SKIP (run opaque.py build first)" % "StringInterface aliased")
 
 print("=== add_seh_globals")
 src = "void f(void){ ExceptionList = 0; }"
