@@ -18,6 +18,14 @@ powershell -ExecutionPolicy Bypass -File scripts\re\build.ps1
 
 Output: `dist\RoConstruct.exe`. Keep EXE in checkout's `dist` folder so it finds pipeline scripts. Reverse-engineering data and client binaries stay local. Nothing uploads.
 
+No-menu/headless status check:
+
+```powershell
+dist\RoConstruct.exe --headless
+```
+
+GUI uses compact dark neon controls: `Setup` → `Start server` → `Add jobs` → `Start worker`. `Refresh` shows queue, completed work, worker count, current job, speed, and errors.
+
 ## Distributed workers
 
 Build GUI controller:
