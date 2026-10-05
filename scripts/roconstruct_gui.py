@@ -60,6 +60,9 @@ class App(tk.Tk):
         self.client_label = self.settings.get("client_label", "2008M")
         self.demo_done = 0
         self.demo_total = 0
+        self.server_name_var = tk.StringVar(value=self.server_name)
+        self.server_desc_var = tk.StringVar(value=self.server_description)
+        self.client_label_var = tk.StringVar(value=self.client_label)
         self.build()
         self.poll()
         self.after(2000, self.auto_refresh)
@@ -78,39 +81,63 @@ class App(tk.Tk):
                                        indent=2), encoding="utf-8")
 
     def build(self):
-        top = ttk.Frame(self, padding=(16, 12, 16, 4)); top.pack(fill="x")
+        top = ttk.Frame(self, padding=(24, 20, 24, 8)); top.pack(fill="x")
         ttk.Label(top, text="ROCONSTRUCT", style="Title.TLabel").pack(anchor="w")
-        ttk.Label(top, text="Distributed source reconstruction lab  //  keep client files local", style="Sub.TLabel").pack(anchor="w")
-        actions = ttk.LabelFrame(self, text="CONTROL", padding=8); actions.pack(fill="x", padx=16, pady=8)
-        for text, fn in (("1  Setup", self.setup), ("2  Check data", self.check_data), ("3  Start server", self.start),
-                         ("4  Start worker", self.start_worker), ("5  Add jobs", self.seed), ("Demo", self.run_demo), ("Build sandbox", self.build_sandbox),
-                         ("New client...", self.new_client), ("Public list", self.public_list), ("↻  Refresh", self.refresh), ("■  Stop", self.stop)):
-            ttk.Button(actions, text=text, command=fn).pack(side="left", padx=(0, 5))
-        self.status = tk.StringVar(value="OFFLINE  // click Check data")
-        ttk.Label(actions, textvariable=self.status, style="Sub.TLabel").pack(side="right", padx=4)
+        ttk.Label(top, text="Simple launcher for client setup, server, worker, and demo.", style="Sub.TLabel").pack(anchor="w")
+        actions = ttk.LabelFrame(self, text="START HERE", padding=12); actions.pack(fill="x", padx=24, pady=10)
+        for text, fn in (("Client setup", self.open_client_panel), ("Server", self.open_server_panel),
+                         ("Worker", self.open_worker_panel), ("Run demo", self.run_demo)):
+            ttk.Button(actions, text=text, command=fn, width=18).pack(side="left", padx=(0, 8), ipady=8)
+        self.status = tk.StringVar(value="Ready  // choose Client setup or Run demo")
+        ttk.Label(self, textvariable=self.status, style="Sub.TLabel").pack(anchor="w", padx=26)
         self.progress = ttk.Progressbar(self, mode="determinate", maximum=1, value=0)
-        self.progress.pack(fill="x", padx=16, pady=(0, 6))
-        details = ttk.LabelFrame(self, text="SERVER CARD + LOCAL FILES", padding=7); details.pack(fill="x", padx=16, pady=(0, 8))
-        self.server_name_var = tk.StringVar(value=self.server_name)
-        self.server_desc_var = tk.StringVar(value=self.server_description)
-        self.client_label_var = tk.StringVar(value=self.client_label)
-        ttk.Label(details, text="Name").grid(row=0, column=0, sticky="w")
-        ttk.Entry(details, textvariable=self.server_name_var, width=24).grid(row=0, column=1, padx=5, sticky="ew")
-        ttk.Label(details, text="Description").grid(row=0, column=2, sticky="w")
-        ttk.Entry(details, textvariable=self.server_desc_var, width=32).grid(row=0, column=3, padx=5, sticky="ew")
-        ttk.Label(details, text="Client").grid(row=1, column=0, sticky="w", pady=(5, 0))
-        ttk.Entry(details, textvariable=self.client_label_var, width=24).grid(row=1, column=1, padx=5, pady=(5, 0), sticky="ew")
-        ttk.Button(details, text="Select DB...", command=self.select_db).grid(row=1, column=2, padx=5, pady=(5, 0), sticky="w")
-        ttk.Button(details, text="Select client...", command=self.select_client).grid(row=1, column=3, padx=5, pady=(5, 0), sticky="w")
-        self.paths = tk.StringVar()
-        ttk.Label(details, textvariable=self.paths, style="Sub.TLabel").grid(row=2, column=0, columnspan=4, sticky="w", pady=(5, 0))
-        details.columnconfigure(1, weight=1); details.columnconfigure(3, weight=2)
-        self.update_paths()
-        info = ttk.LabelFrame(self, text="QUICK GUIDE", padding=8); info.pack(fill="x", padx=16)
-        ttk.Label(info, justify="left", text="Select DB + client → Check data → Start server → Add jobs → Start worker.\nNew client... guides 2008M/2010L setup. Files stay on this PC; server publishes name/description only.").pack(anchor="w")
-        box = ttk.LabelFrame(self, text="LIVE FEED", padding=6); box.pack(fill="both", expand=True, padx=16, pady=8)
+        self.progress.pack(fill="x", padx=24, pady=(0, 12))
+        info = ttk.LabelFrame(self, text="HOW IT WORKS", padding=12); info.pack(fill="x", padx=24)
+        ttk.Label(info, justify="left", text="Client setup = choose local DB + client.\nServer = queue jobs. Worker = process jobs. Run demo = safe test with no client files.\nPrivate files stay on this PC.").pack(anchor="w")
+        box = ttk.LabelFrame(self, text="ACTIVITY", padding=8); box.pack(fill="both", expand=True, padx=24, pady=12)
         self.log = scrolledtext.ScrolledText(box, state="disabled", bg="#070b16", fg="#7dfff1", insertbackground="#7dfff1", relief="flat", font=("Cascadia Mono", 8), height=12)
         self.log.pack(fill="both", expand=True)
+
+    def panel(self, title, size="520x300"):
+        window = tk.Toplevel(self)
+        window.title("RoConstruct // " + title)
+        window.geometry(size)
+        window.configure(bg="#0b1020")
+        ttk.Label(window, text=title.upper(), style="Title.TLabel").pack(anchor="w", padx=18, pady=(16, 8))
+        return window
+
+    def open_client_panel(self):
+        window = self.panel("Client setup", "620x300")
+        box = ttk.LabelFrame(window, text="LOCAL FILES", padding=12); box.pack(fill="x", padx=18, pady=8)
+        ttk.Label(box, text="Client label").grid(row=0, column=0, sticky="w")
+        ttk.Entry(box, textvariable=self.client_label_var, width=28).grid(row=0, column=1, padx=8, sticky="w")
+        ttk.Button(box, text="Select SQLite DB...", command=self.select_db).grid(row=1, column=0, pady=8, sticky="w")
+        ttk.Button(box, text="Select client EXE...", command=self.select_client).grid(row=1, column=1, pady=8, sticky="w")
+        self.paths = tk.StringVar(); ttk.Label(box, textvariable=self.paths, style="Sub.TLabel").grid(row=2, column=0, columnspan=2, sticky="w")
+        self.update_paths()
+        ttk.Button(window, text="Check files", command=self.check_data).pack(anchor="w", padx=18, pady=8)
+        ttk.Label(window, text="For new client: enter label (example 2010L), select its DB + EXE.", style="Sub.TLabel").pack(anchor="w", padx=18)
+
+    def open_server_panel(self):
+        window = self.panel("Server", "620x360")
+        box = ttk.LabelFrame(window, text="SERVER CARD", padding=12); box.pack(fill="x", padx=18, pady=8)
+        for row, label, variable in ((0, "Name", self.server_name_var), (1, "Description", self.server_desc_var)):
+            ttk.Label(box, text=label).grid(row=row, column=0, sticky="w", pady=4)
+            ttk.Entry(box, textvariable=variable, width=52).grid(row=row, column=1, padx=8, sticky="ew")
+        box.columnconfigure(1, weight=1)
+        controls = ttk.Frame(window); controls.pack(fill="x", padx=18, pady=8)
+        for text, fn in (("Start server", self.start), ("Add jobs", self.seed), ("Refresh", self.refresh), ("Stop", self.stop)):
+            ttk.Button(controls, text=text, command=fn).pack(side="left", padx=(0, 8), ipady=5)
+        ttk.Label(window, text="Server stores job metadata/results only. Client files stay local.", style="Sub.TLabel").pack(anchor="w", padx=18)
+
+    def open_worker_panel(self):
+        window = self.panel("Worker", "520x240")
+        ttk.Label(window, text="Worker processes selected DB functions on this PC.").pack(anchor="w", padx=18, pady=8)
+        ttk.Label(window, text="DB: %s" % self.db_path.name, style="Sub.TLabel").pack(anchor="w", padx=18)
+        controls = ttk.Frame(window); controls.pack(fill="x", padx=18, pady=12)
+        ttk.Button(controls, text="Start worker", command=self.start_worker).pack(side="left", padx=(0, 8), ipady=5)
+        ttk.Button(controls, text="Stop", command=self.stop).pack(side="left", ipady=5)
+        ttk.Label(window, text="Progress appears in main Activity window.", style="Sub.TLabel").pack(anchor="w", padx=18)
 
     def write(self, text):
         self.log.configure(state="normal"); self.log.insert("end", text + "\n"); self.log.see("end"); self.log.configure(state="disabled")
