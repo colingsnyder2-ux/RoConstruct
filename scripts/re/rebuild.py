@@ -44,7 +44,7 @@ def find_vcvars():
     for candidate in candidates:
         if os.path.isfile(candidate):
             return candidate
-    raise FileNotFoundError("MSVC x86 tools missing. Run RoConstruct setup tools.")
+    return ""
 
 
 VCVARS = find_vcvars()
@@ -1186,6 +1186,9 @@ def vc_toolchain():
     """
     if _CL_CACHE:
         return _CL_CACHE["cl"], _CL_CACHE["env"]
+
+    if not VCVARS:
+        raise FileNotFoundError("MSVC x86 tools missing. Run RoConstruct setup tools.")
 
     os.makedirs(BUILD_DIR, exist_ok=True)
     envtxt = os.path.join(BUILD_DIR, "_vcenv.txt")
