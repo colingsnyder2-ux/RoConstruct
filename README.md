@@ -56,7 +56,7 @@ $env:ROCONSTRUCT_PUBLIC_URL = 'https://my-server.example:8765'
 dist\RoConstruct-GUI.exe
 ```
 
-Click `Public list` to view live entries. Keep directory HTTPS/authenticated/rate-limited. Public discovery must never carry client files or DB uploads.
+GUI `Select DB...` and `Select client...` buttons set local paths and save them in ignored `roconstruct-settings.json`; they do not upload files. Click `Public list` to view live entries. Keep directory HTTPS/authenticated/rate-limited. Public discovery must never carry client files or DB uploads.
 
 ## Distributed workers
 
