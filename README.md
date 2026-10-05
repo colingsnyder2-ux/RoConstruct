@@ -60,6 +60,8 @@ GUI `Select DB...` and `Select client...` buttons set local paths and save them 
 
 ## Distributed workers
 
+`Add jobs` may report `added 0`: stable function IDs already exist in coordinator DB. Not stall. `WORKING` means active processing, `WAITING` means queue exists but worker unavailable, `IDLE` means no queued work.
+
 Build GUI controller:
 
 ```powershell
