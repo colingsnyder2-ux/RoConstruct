@@ -46,6 +46,14 @@ Runtime/differential checks can report evidence through result payloads:
 
 Compiler score is `1`; cross-function/field-offset/runtime evidence can raise ranking before promotion.
 
+Compare reconstructed runtime traces:
+
+```powershell
+py scripts\roconstruct\differential.py expected.json actual.json
+```
+
+Promotion accepts compiler-clean jobs by default; use `--require-runtime` to require matching differential evidence.
+
 Promote compiler-clean results into a reviewable branch:
 
 ```powershell
