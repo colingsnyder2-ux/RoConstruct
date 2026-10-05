@@ -11,4 +11,5 @@ py -m PyInstaller --noconfirm --clean --windowed --onefile `
     --distpath (Join-Path $root 'dist') `
     --workpath (Join-Path $root 'build\RoConstruct-GUI') `
     (Join-Path $root 'scripts\roconstruct_gui.py')
+if ($LASTEXITCODE -ne 0) { throw "PyInstaller failed with exit code $LASTEXITCODE" }
 Write-Host "Built: $(Join-Path $root 'dist\RoConstruct-GUI.exe')"
