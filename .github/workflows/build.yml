@@ -1,0 +1,21 @@
+name: build-windows
+
+on:
+  workflow_dispatch:
+  push:
+    tags: ["v*"]
+
+jobs:
+  exe:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install pyinstaller
+      - run: pyinstaller --noconfirm --clean --console --onefile --name RoConstruct scripts/re/roconstruct.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: RoConstruct-windows
+          path: dist/RoConstruct.exe
