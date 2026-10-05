@@ -57,6 +57,8 @@ class App(tk.Tk):
         self.server_name = self.settings.get("server_name", "RoConstruct 2008M")
         self.server_description = self.settings.get("server_description", "Shared reconstruction jobs")
         self.client_label = self.settings.get("client_label", "2008M")
+        self.demo_done = 0
+        self.demo_total = 0
         self.build()
         self.poll()
         self.after(2000, self.auto_refresh)
@@ -85,6 +87,8 @@ class App(tk.Tk):
             ttk.Button(actions, text=text, command=fn).pack(side="left", padx=(0, 5))
         self.status = tk.StringVar(value="OFFLINE  // click Check data")
         ttk.Label(actions, textvariable=self.status, style="Sub.TLabel").pack(side="right", padx=4)
+        self.progress = ttk.Progressbar(self, mode="determinate", maximum=1, value=0)
+        self.progress.pack(fill="x", padx=16, pady=(0, 6))
         details = ttk.LabelFrame(self, text="SERVER CARD + LOCAL FILES", padding=7); details.pack(fill="x", padx=16, pady=(0, 8))
         self.server_name_var = tk.StringVar(value=self.server_name)
         self.server_desc_var = tk.StringVar(value=self.server_description)
@@ -195,6 +199,8 @@ class App(tk.Tk):
         if self.demo_proc and self.demo_proc.poll() is None:
             return
         try:
+            self.demo_done = 0; self.demo_total = 3; self.progress.configure(maximum=3, value=0)
+            self.status.set("DEMO  //  0/3")
             self.demo_proc = self.spawn([*self.launcher(), str(SERVICE / "demo.py")])
             threading.Thread(target=self.read_demo, daemon=True).start()
             self.write("DEMO started: safe non-Roblox pipeline")
@@ -253,6 +259,8 @@ class App(tk.Tk):
                 workers = data.get("workers", [])
                 active = sum(1 for item in workers if item.get("meta", {}).get("state") == "working")
                 phase = "WORKING" if active else ("IDLE" if not jobs.get("queued", 0) else "WAITING")
+                total = sum(jobs.values())
+                self.progress.configure(maximum=max(total, 1), value=jobs.get("done", 0))
                 self.status.set("%s  // workers %s  // queue %s  // done %s" %
                                 (phase, data.get("workers_online", 0), jobs.get("queued", 0), jobs.get("done", 0)))
                 if not silent: self.write(json.dumps(data, indent=2))
@@ -275,7 +283,16 @@ class App(tk.Tk):
 
     def poll(self):
         try:
-            while True: self.write(self.events.get_nowait())
+            while True:
+                line = self.events.get_nowait()
+                self.write(line)
+                if "demo: DEMO //" in line and "// OK" in line:
+                    self.demo_done += 1
+                    self.progress.configure(value=self.demo_done)
+                    self.status.set("DEMO  //  %s/%s" % (self.demo_done, self.demo_total))
+                elif "demo: demo // complete" in line.lower():
+                    self.progress.configure(value=self.demo_total)
+                    self.status.set("DEMO COMPLETE")
         except queue.Empty: pass
         self.after(150, self.poll)
 

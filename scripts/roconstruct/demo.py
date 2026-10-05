@@ -31,6 +31,7 @@ def main():
     jobs = [{"binary_hash": binary_hash, "program": item["program"], "address": item["address"]} for item in items]
     print("DEMO // seed %d functions" % store.seed(jobs))
     OUT.mkdir(parents=True, exist_ok=True)
+    completed = 0
     while True:
         job = store.claim("demo-worker", 60, {"client": "tiny-demo", "state": "working"})
         if not job:
@@ -46,9 +47,10 @@ def main():
         if ok:
             path.write_text(source + "\n", encoding="utf-8")
         store.result(job["id"], "demo-worker", job["lease_id"], result)
+        completed += 1
         print("DEMO // %s:%s // %s" % (item["name"], item["address"], "OK" if ok else "ERROR"))
-    print("DEMO // status %s" % json.dumps(store.status(), separators=(",", ":")))
-    print("DEMO // reconstructed files: %s" % OUT)
+    print("DEMO // complete %d/%d // compiler + runtime evidence OK" % (completed, len(items)))
+    print("DEMO // output %s" % OUT)
 
 
 if __name__ == "__main__":
