@@ -50,6 +50,7 @@ class App(tk.Tk):
         self.proc = None
         self.worker_proc = None
         self.demo_proc = None
+        self.package_proc = None
         self.settings = self.load_settings()
         self.data_root = Path(self.settings.get("data_root", str(DATA_ROOT))).resolve()
         self.db_path = Path(self.settings.get("db_path", str(self.data_root / "rbx2008m.db"))).resolve()
@@ -82,7 +83,7 @@ class App(tk.Tk):
         ttk.Label(top, text="Distributed source reconstruction lab  //  keep client files local", style="Sub.TLabel").pack(anchor="w")
         actions = ttk.LabelFrame(self, text="CONTROL", padding=8); actions.pack(fill="x", padx=16, pady=8)
         for text, fn in (("1  Setup", self.setup), ("2  Check data", self.check_data), ("3  Start server", self.start),
-                         ("4  Start worker", self.start_worker), ("5  Add jobs", self.seed), ("Demo", self.run_demo),
+                         ("4  Start worker", self.start_worker), ("5  Add jobs", self.seed), ("Demo", self.run_demo), ("Build sandbox", self.build_sandbox),
                          ("New client...", self.new_client), ("Public list", self.public_list), ("↻  Refresh", self.refresh), ("■  Stop", self.stop)):
             ttk.Button(actions, text=text, command=fn).pack(side="left", padx=(0, 5))
         self.status = tk.StringVar(value="OFFLINE  // click Check data")
@@ -211,6 +212,20 @@ class App(tk.Tk):
         for line in self.demo_proc.stdout:
             self.events.put("demo: " + line.rstrip())
 
+    def build_sandbox(self):
+        if self.package_proc and self.package_proc.poll() is None:
+            return
+        try:
+            self.package_proc = self.spawn([*self.launcher(), str(SERVICE / "package.py")])
+            threading.Thread(target=self.read_package, daemon=True).start()
+            self.write("SANDBOX started: checking source + open-source dependencies")
+        except Exception as error:
+            messagebox.showerror("Sandbox", str(error))
+
+    def read_package(self):
+        for line in self.package_proc.stdout:
+            self.events.put("sandbox: " + line.rstrip())
+
     def read_worker(self):
         for line in self.worker_proc.stdout: self.events.put("worker: " + line.rstrip())
 
@@ -244,6 +259,7 @@ class App(tk.Tk):
         if self.proc and self.proc.poll() is None: self.proc.terminate()
         if self.worker_proc and self.worker_proc.poll() is None: self.worker_proc.terminate()
         if self.demo_proc and self.demo_proc.poll() is None: self.demo_proc.terminate()
+        if self.package_proc and self.package_proc.poll() is None: self.package_proc.terminate()
         self.status.set("Coordinator stopped")
 
     def refresh(self):

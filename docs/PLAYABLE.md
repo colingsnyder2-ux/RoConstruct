@@ -45,3 +45,8 @@ queued functions -> compiler-clean source -> evidence review
 `promote.py` creates reviewable source branches. It does not claim full client
 playability; missing symbols, assets, protocols, and runtime behavior remain
 explicit blockers in the build report.
+
+Use `py scripts\roconstruct\package.py` or GUI `Build sandbox` to assemble a
+local package. It checks Ogre3D/SDL2/zlib/OpenAL Soft folders and reports what
+must be built. It never bundles unknown `rg*.dll`, client binaries, or private
+assets automatically.

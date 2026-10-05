@@ -1,0 +1,8 @@
+{
+  "dependencies": [
+    {"name": "Ogre3D", "source": "", "license": "MIT", "required_for": "renderer"},
+    {"name": "SDL2", "source": "", "license": "zlib", "required_for": "window/input"},
+    {"name": "zlib", "source": "", "license": "zlib", "required_for": "compression"},
+    {"name": "OpenAL Soft", "source": "", "license": "LGPL-2.1", "required_for": "audio", "optional": true}
+  ]
+}

@@ -109,3 +109,12 @@ Client slots: `clients\README.md`. Do not publish proprietary Roblox client bina
 Pipeline details: `scripts\re\README.md`. Working findings: `work\re\findings.md` (local, ignored).
 
 Playable-build roadmap: `docs\PLAYABLE.md`.
+
+Automatic offline package assembly:
+
+```powershell
+py scripts\roconstruct\package.py
+```
+
+This copies reconstructed/demo source, checks open-source dependency folders,
+writes `work\playable\build-report.json`, and never copies client binaries.
