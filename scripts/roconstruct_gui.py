@@ -29,8 +29,20 @@ PROJECT = os.environ.get("ROCONSTRUCT_PROJECT", "default")
 class App(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title("RoConstruct distributed reconstruction")
-        self.geometry("980x680")
+        self.title("RoConstruct // distributed lab")
+        self.geometry("760x520")
+        self.minsize(700, 460)
+        self.configure(bg="#0b1020")
+        style = ttk.Style(self)
+        style.theme_use("clam")
+        style.configure("TFrame", background="#0b1020")
+        style.configure("TLabel", background="#0b1020", foreground="#c9d7ff")
+        style.configure("Title.TLabel", foreground="#61f4ff", font=("Segoe UI", 18, "bold"))
+        style.configure("Sub.TLabel", foreground="#8391b8", font=("Segoe UI", 9))
+        style.configure("TButton", background="#182448", foreground="#d9e2ff", padding=(8, 5), borderwidth=0)
+        style.map("TButton", background=[("active", "#25407a")], foreground=[("active", "#7dfff1")])
+        style.configure("TLabelframe", background="#0b1020", foreground="#61f4ff")
+        style.configure("TLabelframe.Label", background="#0b1020", foreground="#61f4ff")
         self.events = queue.Queue()
         self.proc = None
         self.worker_proc = None
@@ -38,24 +50,21 @@ class App(tk.Tk):
         self.poll()
 
     def build(self):
-        top = ttk.Frame(self, padding=12); top.pack(fill="x")
-        ttk.Label(top, text="RoConstruct", font=("Segoe UI", 20, "bold")).pack(anchor="w")
-        ttk.Label(top, text="Many PCs → leased function jobs → evidence-ranked source results").pack(anchor="w")
-        actions = ttk.LabelFrame(self, text="Coordinator", padding=10); actions.pack(fill="x", padx=12, pady=8)
-        for text, fn in (("Setup tools", self.setup), ("Start coordinator", self.start),
-                         ("Start worker", self.start_worker), ("Seed 200 jobs", self.seed),
-                         ("Refresh", self.refresh), ("Stop", self.stop)):
-            ttk.Button(actions, text=text, command=fn).pack(side="left", padx=(0, 8))
-        self.status = tk.StringVar(value="Coordinator stopped")
-        ttk.Label(actions, textvariable=self.status).pack(side="left", padx=10)
-        info = ttk.LabelFrame(self, text="How it works", padding=10); info.pack(fill="x", padx=12)
-        ttk.Label(info, justify="left", wraplength=920, text=(
-            "Coordinator stores metadata and job leases only. Each worker keeps client binaries local, "
-            "claims one stable binary_hash + program + address job, runs Ghidra/model/MSVC locally, "
-            "then sends hashes, generated source, compiler result, and evidence. Expired leases retry."
-        )).pack(anchor="w")
-        box = ttk.LabelFrame(self, text="Live log", padding=8); box.pack(fill="both", expand=True, padx=12, pady=10)
-        self.log = scrolledtext.ScrolledText(box, state="disabled", font=("Cascadia Mono", 9)); self.log.pack(fill="both", expand=True)
+        top = ttk.Frame(self, padding=(16, 12, 16, 4)); top.pack(fill="x")
+        ttk.Label(top, text="ROCONSTRUCT", style="Title.TLabel").pack(anchor="w")
+        ttk.Label(top, text="Distributed source reconstruction lab  //  keep client files local", style="Sub.TLabel").pack(anchor="w")
+        actions = ttk.LabelFrame(self, text="CONTROL", padding=8); actions.pack(fill="x", padx=16, pady=8)
+        for text, fn in (("1  Setup", self.setup), ("2  Start server", self.start),
+                         ("3  Start worker", self.start_worker), ("4  Add jobs", self.seed),
+                         ("↻  Refresh", self.refresh), ("■  Stop", self.stop)):
+            ttk.Button(actions, text=text, command=fn).pack(side="left", padx=(0, 5))
+        self.status = tk.StringVar(value="OFFLINE  // click Start server")
+        ttk.Label(actions, textvariable=self.status, style="Sub.TLabel").pack(side="right", padx=4)
+        info = ttk.LabelFrame(self, text="QUICK GUIDE", padding=8); info.pack(fill="x", padx=16)
+        ttk.Label(info, justify="left", text="Setup → Start server → Add jobs → Start worker.\nEach worker uses its own local client/database; server shares only IDs, source, logs, evidence.").pack(anchor="w")
+        box = ttk.LabelFrame(self, text="LIVE FEED", padding=6); box.pack(fill="both", expand=True, padx=16, pady=8)
+        self.log = scrolledtext.ScrolledText(box, state="disabled", bg="#070b16", fg="#7dfff1", insertbackground="#7dfff1", relief="flat", font=("Cascadia Mono", 8), height=12)
+        self.log.pack(fill="both", expand=True)
 
     def write(self, text):
         self.log.configure(state="normal"); self.log.insert("end", text + "\n"); self.log.see("end"); self.log.configure(state="disabled")
@@ -134,8 +143,9 @@ class App(tk.Tk):
             with urllib.request.urlopen(request, timeout=2) as response:
                 data = json.load(response)
                 workers = data.get("workers", [])
-                self.status.set("Coordinator: %s | workers online: %s | queued: %s" %
-                                ("running", data.get("workers_online", 0), data.get("jobs", {}).get("queued", 0)))
+                jobs = data.get("jobs", {})
+                self.status.set("ONLINE  // workers %s  // queue %s  // done %s" %
+                                (data.get("workers_online", 0), jobs.get("queued", 0), jobs.get("done", 0)))
                 self.write(json.dumps(data, indent=2))
         except Exception as error:
             self.write("status unavailable: %s" % error)

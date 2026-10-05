@@ -94,6 +94,9 @@ def first_run():
 
 
 def main():
+    if "--headless" in sys.argv or (len(sys.argv) > 1 and sys.argv[1] == "status"):
+        status()
+        return
     first_run()
     while True:
         print("\n" + Color.BOLD + Color.CYAN + "RoConstruct" + Color.RESET)
@@ -129,5 +132,7 @@ if __name__ == "__main__":
         sys.path.insert(0, str(ROOT / "scripts" / "roconstruct"))
         module = __import__(mode)
         module.main()
+    elif len(sys.argv) > 1 and sys.argv[1] in ("--headless", "status"):
+        main()
     else:
         main()
