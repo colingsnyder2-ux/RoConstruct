@@ -85,7 +85,7 @@ class Store:
             if not row or row[0] != worker or row[1] != "leased":
                 return False
             self.db.execute("UPDATE jobs SET state=?,result=?,lease_until=NULL,updated=? WHERE id=?",
-                            ("done" if ok else "failed", encoded, now, jid))
+                            ("done" if ok else "queued", encoded, now, jid))
             self.db.execute("UPDATE attempts SET finished=?,ok=?,error=?,result=? "
                             "WHERE job_id=? AND worker=? AND finished IS NULL",
                             (now, 1 if ok else 0, payload.get("error"), encoded, jid, worker))
@@ -101,7 +101,11 @@ class Store:
             counts = dict(self.db.execute("SELECT state,COUNT(*) FROM jobs GROUP BY state").fetchall())
             workers = self.db.execute("SELECT COUNT(*) FROM workers WHERE last_seen>?", (time.time() - 60,)).fetchone()[0]
             evidence = self.db.execute("SELECT COUNT(*) FROM evidence").fetchone()[0]
-        return {"jobs": counts, "workers_online": workers, "evidence": evidence}
+            best = self.db.execute(
+                "SELECT COUNT(*) FROM (SELECT job_id,MAX(score) FROM evidence GROUP BY job_id)"
+            ).fetchone()[0]
+        return {"jobs": counts, "workers_online": workers, "evidence": evidence,
+                "jobs_with_ranked_evidence": best}
 
 
 class Handler(BaseHTTPRequestHandler):

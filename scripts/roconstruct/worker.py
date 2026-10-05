@@ -53,7 +53,10 @@ def main():
     a = ap.parse_args()
     root = Path(a.root).resolve()
     while True:
-        lease = call(a.server.rstrip("/") + "/v1/lease", {"worker": a.worker_id}, a.token)
+        lease = call(a.server.rstrip("/") + "/v1/lease", {
+            "worker": a.worker_id,
+            "meta": {"hostname": socket.gethostname(), "model": a.model}
+        }, a.token)
         job = lease.get("job")
         if not job:
             if a.once:
