@@ -60,6 +60,8 @@ def main():
     a = ap.parse_args()
     root = Path(a.root).resolve()
     completed = failed = 0
+    print("RoConstruct worker // %s // CPU %s // GPU %s" %
+          (a.worker_id, os.cpu_count(), os.environ.get("ROCONSTRUCT_GPU", "unknown")), flush=True)
     while True:
         lease = call(a.server.rstrip("/") + "/v1/lease", {
             "worker": a.worker_id,
@@ -71,8 +73,10 @@ def main():
         if not job:
             if a.once:
                 return
+            print("IDLE // no queued jobs", flush=True)
             time.sleep(a.poll)
             continue
+        print("CLAIM // %s:%s // attempt %s" % (job["program"], job["address"], job["attempts"]), flush=True)
         payload = {"worker": a.worker_id, "lease_id": job.get("lease_id", ""), "ok": False}
         done = threading.Event()
         started = time.time()
@@ -108,6 +112,9 @@ def main():
         except Exception:
             pass
         call(a.server.rstrip("/") + "/v1/jobs/%s/result" % job["id"], payload, a.token, a.project)
+        print("DONE // %s:%s // %s // %.2fs // completed=%s failed=%s" %
+              (job["program"], job["address"], "OK" if payload.get("ok") else "ERROR",
+               payload["elapsed"], completed, failed), flush=True)
         if a.once:
             return
 

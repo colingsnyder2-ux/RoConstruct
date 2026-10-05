@@ -37,6 +37,7 @@ CREATE TABLE IF NOT EXISTS type_proposals(
  worker TEXT NOT NULL, score REAL NOT NULL DEFAULT 0, created REAL NOT NULL
 );
 """
+EVIDENCE_WEIGHT = {"compiler": 1.0, "cross_function": 2.0, "field_offset": 2.0, "runtime": 3.0}
 
 
 def job_id(binary_hash, program, address):
@@ -120,9 +121,10 @@ class Store:
                             "WHERE job_id=? AND worker=? AND lease_id=? AND finished IS NULL",
                             (now, 1 if ok else 0, payload.get("error"), encoded, jid, worker, lease_id))
             for item in payload.get("evidence", []):
+                kind = item.get("kind", "unknown")
                 self.db.execute("INSERT INTO evidence(job_id,worker,kind,value,score,created) VALUES(?,?,?,?,?,?)",
-                                (jid, worker, item.get("kind", "unknown"), item.get("value", ""),
-                                 float(item.get("score", 0)), now))
+                                (jid, worker, kind, item.get("value", ""),
+                                 float(item.get("score", EVIDENCE_WEIGHT.get(kind, 0))), now))
             self.db.commit()
         return True
 
@@ -157,9 +159,13 @@ class Store:
             proposals = self.db.execute("SELECT COUNT(*) FROM type_proposals").fetchone()[0]
             worker_rows = self.db.execute("SELECT id,meta FROM workers WHERE last_seen>?",
                                           (time.time() - 60,)).fetchall()
+            ranked = self.db.execute(
+                "SELECT job_id,kind,MAX(score) AS score FROM evidence GROUP BY job_id,kind "
+                "ORDER BY score DESC LIMIT 100").fetchall()
         return {"jobs": counts, "workers_online": workers, "evidence": evidence,
                 "jobs_with_ranked_evidence": best, "type_proposals": proposals,
-                "workers": [{"id": wid, "meta": json.loads(meta)} for wid, meta in worker_rows]}
+                "workers": [{"id": wid, "meta": json.loads(meta)} for wid, meta in worker_rows],
+                "evidence_ranking": [{"job": jid, "kind": kind, "score": score} for jid, kind, score in ranked]}
 
 
 class Handler(BaseHTTPRequestHandler):
