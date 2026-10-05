@@ -21,6 +21,13 @@ def call(url, payload, token, project):
         return json.loads(response.read())
 
 
+def status(url, token, project):
+    request = urllib.request.Request(url, headers={"X-Worker-Token": token,
+                                                    "X-RoConstruct-Project": project})
+    with urllib.request.urlopen(request, timeout=10) as response:
+        return json.loads(response.read())
+
+
 def work(root, job, model):
     import sys
     sys.path.insert(0, str(root / "scripts" / "re"))
@@ -73,7 +80,12 @@ def main():
         if not job:
             if a.once:
                 return
-            print("IDLE // no queued jobs", flush=True)
+            try:
+                counts = status(a.server.rstrip("/") + "/v1/status", a.token, a.project).get("jobs", {})
+                print("IDLE // queue=%s done=%s failed=%s" %
+                      (counts.get("queued", 0), counts.get("done", 0), counts.get("failed", 0)), flush=True)
+            except Exception:
+                print("IDLE // no queued jobs", flush=True)
             time.sleep(a.poll)
             continue
         print("CLAIM // %s:%s // attempt %s" % (job["program"], job["address"], job["attempts"]), flush=True)
