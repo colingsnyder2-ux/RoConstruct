@@ -30,6 +30,12 @@ Run `dist\RoConstruct-GUI.exe`, start coordinator, seed jobs, then start one wor
 
 Workers may submit type/field proposals through the coordinator. Status exposes active worker hardware metadata and evidence counts for future conflict promotion.
 
+Promote compiler-clean results into a reviewable branch:
+
+```powershell
+py scripts\roconstruct\promote.py --db coordinator.db --repo .
+```
+
 Client slots: `clients\README.md`. Do not publish proprietary Roblox client binaries in this repo.
 
 Pipeline details: `scripts\re\README.md`. Working findings: `work\re\findings.md` (local, ignored).
