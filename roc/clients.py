@@ -3,6 +3,7 @@ import hashlib
 import json
 import re
 import shutil
+import sys
 from collections import Counter
 from pathlib import Path
 
@@ -81,6 +82,37 @@ def add(name, exe, allow_modified=False):
     reg[name] = entry
     save(reg)
     return entry
+
+
+def remove(name, purge=False):
+    """Drop a client from the shared registry. purge also deletes its local copies,
+    so the next command that needs it has to fetch it again.
+
+    Files go first: if one is locked by a running process we abort with the registry
+    untouched, rather than unregistering a client we failed to clean up."""
+    reg = load()
+    if name not in reg:
+        raise SystemExit("%s is not registered. See:  roc client list" % name)
+    gone, locked = [], []
+    if purge:
+        for folder in (ROOT / "clients" / name, ROOT / "work" / name):
+            if not folder.is_dir():
+                continue
+            try:
+                shutil.rmtree(folder)
+            except (PermissionError, OSError) as error:
+                locked.append((folder, error))
+                continue
+            gone.append(str(folder.relative_to(ROOT)))
+        if locked:
+            for folder, error in locked:
+                print("Could not delete %s: %s" % (folder, error.strerror or error), file=sys.stderr)
+            print("\nClose anything using the client (running worker, editor, Explorer window) "
+                  "and try again. %s is still registered." % name, file=sys.stderr)
+            return []
+    del reg[name]
+    save(reg)
+    return gone
 
 
 def status(name, entry):

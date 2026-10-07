@@ -102,6 +102,21 @@ def cmd_client_sources(a):
     sources.index_drive(folder, dry_run=a.dry_run)
 
 
+def cmd_client_remove(a):
+    """Unregister a client. --purge deletes the local copies too, which makes the
+    next command that needs it download it again."""
+    gone = clients.remove(a.name, a.purge)
+    if not gone and a.purge:
+        sys.exit(1)  # remove() already explained which folder is locked
+    print("%s removed from clients/clients.json" % a.name)
+    for folder in gone:
+        print("deleted %s" % folder)
+    if a.purge:
+        print("It will be fetched again on demand:  roc client-fetch %s" % a.name)
+    else:
+        print("Local files kept in clients/%s/. Commit clients/clients.json." % a.name)
+
+
 def cmd_client_verify(a):
     """Hash + PE checksum: same build as the group, and not modified."""
     bad = 0
@@ -125,9 +140,9 @@ def ready(name):
     entry = clients.load().get(name)
     if not entry or clients.status(name, entry) == "ok":
         return True
-    if name in sources.load_sources():
-        return sources.ensure(name)
-    print("%s: exe %s (fetch it with: roc client fetch %s)" % (name, clients.status(name, entry), name))
+    if sources.ensure(name):
+        return True
+    print("%s: exe %s (fetch it with: roc client-fetch %s)" % (name, clients.status(name, entry), name))
     return False
 
 
@@ -392,6 +407,11 @@ def main(argv=None):
             (["--dry-run", "-n"], {"action": "store_true"}))
     p.set_defaults(folder=None)
     c.add_parser("list", help="registered clients and whether you have them").set_defaults(fn=cmd_client_list)
+    p = c.add_parser("remove", help="unregister a client (--purge deletes its local copies)")
+    p.add_argument("name")
+    p.add_argument("--purge", action="store_true",
+                   help="also delete clients/<name>/ and work/<name>/ (it re-downloads on demand)")
+    p.set_defaults(fn=cmd_client_remove)
     cmd("analyze", cmd_analyze, "split a client exe into functions ('all' for every client)", (["name"], {}))
     cmd("next", cmd_next, "list the easiest open functions", (["name"], {}), (["-n"], {"type": int, "default": 20}))
     cmd("claim", cmd_claim, "start a function: writes src/<client>/<addr>.cpp",
