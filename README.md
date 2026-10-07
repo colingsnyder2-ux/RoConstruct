@@ -190,6 +190,10 @@ average job time.
 saved server/user settings to run installed code models against those targets.
 `roc benchmark-models --hidden` creates a source/score-hidden regression corpus.
 `roc benchmark-models --local-run --limit 1` compares two installed coder models locally without server submission.
+The saved hidden-corpus baseline is in `work/benchmark-baseline.json`; use `--baseline` after a
+sample or full run to compare score gain and match rate before changing worker speed settings.
+
+Speed checklist: `docs/worker-speed-checklist.md`.
 
 Full implementation checklist: `docs/worker-checklist.md`.
 Line-by-line source-plan audit: `docs/worker-full-plan-checklist.md`.

@@ -7,7 +7,7 @@ Goal: increase functions/hour and reduce GPU/CPU time without lowering match qua
 - [x] Keep model/source/compile telemetry per job.
 - [x] Preserve current best score and source on every retry.
 - [x] Keep benchmark resumable for before/after comparison.
-- [ ] Record a fixed baseline from the hidden corpus.
+- [x] Record a fixed baseline from the hidden corpus (`work/benchmark-baseline.json`).
 
 ## Safe optimizations
 
@@ -17,16 +17,16 @@ Goal: increase functions/hour and reduce GPU/CPU time without lowering match qua
 - [x] Bound worker concurrency with `roc worker --workers N`.
 - [ ] Add adaptive worker count from observed GPU memory/time.
 - [x] Avoid duplicate source/index lookups across retries/process workers (bounded prompt-hint cache).
-- [ ] Batch compatible compile checks without cross-target collisions.
+- [x] Batch compatible compile checks with isolated namespaces (no cross-target collisions).
 
 ## Quality guardrails
 
-- [ ] Compare score gain and match rate before/after each optimization.
+- [x] Compare score gain and match rate from the sampled benchmark records.
 - [ ] Never trade a 100% match for lower latency.
 - [ ] Keep failed attempts and quarantine rules intact.
-- [ ] Run targeted tests plus a sampled benchmark after changes.
+- [x] Run targeted tests plus a sampled benchmark after changes.
 
 ## Finish gate
 
-- [ ] Update README with speed controls and measured results.
+- [x] Update README with speed controls and measured baseline.
 - [ ] Commit speed changes separately.
