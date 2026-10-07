@@ -1,85 +1,99 @@
 {
- "updated": "2026-10-07 02:53 UTC",
+ "updated": "2026-10-07 03:10 UTC",
  "clients": [
   {
    "name": "2007-08",
    "compiler": "VS2005 (cl 14.00.50727)",
    "started": true,
-   "functions": 23345,
-   "matched": 636,
+   "functions": 20155,
+   "matched": 1799,
    "partial": 0,
-   "bytes": 3100893,
-   "matched_bytes": 4015,
+   "bytes": 3012756,
+   "matched_bytes": 13824,
    "data_bytes": 1361658,
+   "data_matched_bytes": 0,
    "classes": 1391,
-   "generated": 13626
+   "generated": 16816
   },
   {
    "name": "2008-06",
    "compiler": "VS2008 RTM (cl 15.00.21022)",
    "started": true,
-   "functions": 24723,
-   "matched": 698,
-   "partial": 1,
-   "bytes": 3516063,
-   "matched_bytes": 4540,
+   "functions": 22553,
+   "matched": 2054,
+   "partial": 0,
+   "bytes": 3459433,
+   "matched_bytes": 15735,
    "data_bytes": 1559926,
+   "data_matched_bytes": 0,
    "classes": 1488,
-   "generated": 17490
+   "generated": 19660
   },
   {
    "name": "2009-06",
    "compiler": "VS2008 SP1 (cl 15.00.30729)",
    "started": true,
-   "functions": 28529,
-   "matched": 928,
+   "functions": 26394,
+   "matched": 2419,
    "partial": 0,
-   "bytes": 4046411,
-   "matched_bytes": 4357,
+   "bytes": 3991965,
+   "matched_bytes": 17001,
    "data_bytes": 1809822,
+   "data_matched_bytes": 0,
    "classes": 1624,
-   "generated": 18549
+   "generated": 20684
   },
   {
    "name": "2010-06",
    "compiler": "VS2008 SP1 (cl 15.00.30729)",
    "started": true,
-   "functions": 35685,
-   "matched": 1213,
+   "functions": 33278,
+   "matched": 3195,
    "partial": 0,
-   "bytes": 5193679,
-   "matched_bytes": 5270,
+   "bytes": 5133697,
+   "matched_bytes": 21911,
    "data_bytes": 2369604,
+   "data_matched_bytes": 0,
    "classes": 2012,
-   "generated": 23399
+   "generated": 25806
   },
   {
    "name": "2011-06",
    "compiler": "VS2008 RTM (cl 15.00.21022)",
    "started": true,
-   "functions": 39056,
-   "matched": 1307,
+   "functions": 36576,
+   "matched": 3515,
    "partial": 0,
-   "bytes": 5401926,
-   "matched_bytes": 5652,
+   "bytes": 5341521,
+   "matched_bytes": 23882,
    "data_bytes": 3009972,
+   "data_matched_bytes": 0,
    "classes": 2230,
-   "generated": 25514
+   "generated": 27994
   },
   {
    "name": "2012-06",
    "compiler": "VS2008 SP1 (cl 15.00.30729)",
    "started": true,
-   "functions": 42567,
-   "matched": 1324,
+   "functions": 39945,
+   "matched": 3898,
    "partial": 0,
-   "bytes": 6302111,
-   "matched_bytes": 5140,
+   "bytes": 6238592,
+   "matched_bytes": 26614,
    "data_bytes": 3396596,
+   "data_matched_bytes": 0,
    "classes": 2176,
-   "generated": 27476
+   "generated": 30098
   }
  ],
- "leaderboard": [],
- "server": null
+ "leaderboard": [
+  {
+   "user": "auto",
+   "matched": 16875,
+   "points": 1687500,
+   "submissions": 16875,
+   "last": 1791342625.6908865
+  }
+ ],
+ "server": "https://panels-enjoy-metres-receptors.trycloudflare.com"
 }
