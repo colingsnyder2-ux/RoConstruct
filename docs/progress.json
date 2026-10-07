@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-07 19:38 UTC",
+ "updated": "2026-10-07 19:41 UTC",
  "clients": [
   {
    "name": "2007-08",
@@ -7,10 +7,10 @@
    "built": "2007-08-19",
    "started": true,
    "functions": 19998,
-   "matched": 5470,
+   "matched": 5482,
    "partial": 17,
    "bytes": 3009279,
-   "matched_bytes": 399210,
+   "matched_bytes": 401180,
    "data_bytes": 1361658,
    "leaderboard": [
     {
@@ -35,7 +35,7 @@
      "last": 1791352017.9738536
     }
    ],
-   "data_matched_bytes": 30088,
+   "data_matched_bytes": 30092,
    "classes": 1391,
    "generated": 16973
   },
