@@ -26,6 +26,11 @@ py -3.12 -m pip install --user -q --disable-pip-version-check pefile capstone ||
 )
 
 py -3.12 roc.py install
+if errorlevel 1 (
+  echo.
+  echo Some downloads did not finish. Run install.cmd again: it picks up where it stopped.
+  pause & exit /b 1
+)
 echo.
 echo Done. Put your client exe in clients\^<name^>\ and double-click roc.cmd.
 pause

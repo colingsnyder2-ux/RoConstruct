@@ -33,9 +33,9 @@ def need(value, what, hint):
 
 def cmd_install(a):
     from roc import link, setup
-    setup.install(ask=(lambda q: "y") if a.yes else input)
     if os.name == "nt":
         link.install()
+    setup.install(ask=(lambda q: "y") if a.yes else input)
 
 
 def cmd_link(a):

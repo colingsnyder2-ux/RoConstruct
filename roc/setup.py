@@ -11,6 +11,7 @@ import re
 import shutil
 import subprocess
 import sys
+import time
 import urllib.request
 from pathlib import Path
 
@@ -67,23 +68,39 @@ def compilers():
 
 # ---------- downloads ----------
 
-def download(url, dest):
+def download(url, dest, tries=6):
+    """Download with resume (HTTP Range) and retries: archive.org drops big transfers."""
     if dest.exists() and dest.stat().st_size > 0:
         return dest
     dest.parent.mkdir(parents=True, exist_ok=True)
     part = dest.with_suffix(dest.suffix + ".part")
     print("Downloading %s ..." % dest.name)
-    with urllib.request.urlopen(url, timeout=120) as r, open(part, "wb") as f:
-        total = int(r.headers.get("Content-Length") or 0)
-        done = 0
-        while chunk := r.read(1 << 20):
-            f.write(chunk)
-            done += len(chunk)
-            if total:
-                print("\r  %d / %d MB" % (done >> 20, total >> 20), end="", flush=True)
-    print()
-    part.replace(dest)
-    return dest
+    for attempt in range(1, tries + 1):
+        have = part.stat().st_size if part.exists() else 0
+        req = urllib.request.Request(url, headers={"Range": "bytes=%d-" % have} if have else {})
+        try:
+            with urllib.request.urlopen(req, timeout=120) as r:
+                if have and r.status != 206:  # server ignored Range: start over
+                    have = 0
+                total = have + int(r.headers.get("Content-Length") or 0)
+                with open(part, "ab" if have else "wb") as f:
+                    done, shown = have, -1
+                    while chunk := r.read(1 << 20):
+                        f.write(chunk)
+                        done += len(chunk)
+                        if total and done * 20 // total != shown:
+                            shown = done * 20 // total
+                            print("\r  %d / %d MB" % (done >> 20, total >> 20), end="", flush=True)
+            print()
+            part.replace(dest)
+            return dest
+        except (OSError, ValueError) as error:  # URLError/HTTPError/timeouts are OSError
+            if attempt == tries:
+                raise SystemExit("Download of %s failed (%s). Run install.cmd again: it resumes." % (dest.name, error))
+            wait = 10 * attempt
+            print()
+            print("  %s, retrying in %d s (attempt %d/%d)..." % (error, wait, attempt + 1, tries))
+            time.sleep(wait)
 
 
 def sha1(path):
@@ -257,15 +274,19 @@ def install(ask=input, only=None):
     for build in needed_builds():
         if build in have or build not in FETCHERS or (only and build not in only):
             continue
-        if ask("Download compiler %s (%s)? [Y/n] " % (NAMES[build], SIZES[build])).strip().lower() in ("", "y", "yes"):
-            FETCHERS[build]()
+        if not ask("Download compiler %s (%s)? [Y/n] " % (NAMES[build], SIZES[build])).strip().lower().startswith("n"):
+            try:
+                FETCHERS[build]()
+            except SystemExit as error:  # one failed download must not stop the others
+                print(error)
             compilers.cache_clear()
     if shutil.which("winget"):
         for label, package, exe in OPTIONAL:
-            if not shutil.which(exe) and ask("Install %s? [y/N] " % label).strip().lower() == "y":
+            if not shutil.which(exe) and ask("Install %s? [y/N] " % label).strip().lower().startswith("y"):
                 subprocess.run(["winget", "install", "--id", package, "-e",
                                 "--accept-package-agreements", "--accept-source-agreements"])
-    report()
+    if not report():
+        raise SystemExit(1)
 
 
 def report():
@@ -279,3 +300,4 @@ def report():
     print("AI drafts (Ollama):", model or "not available (optional: install Ollama, then  ollama pull qwen2.5-coder:7b)")
     print("Rev.ng hints (Docker):", "ready" if draft.revng_available() else
           "not available (optional: Docker Desktop, then  docker pull revng/revng)")
+    return all(e.get("compiler_build") in have for e in clients.load().values())
