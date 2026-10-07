@@ -2,7 +2,7 @@
 
 Matching decompilation of old Roblox clients (2007–2012), done as a group.
 
-**Progress:** https://colingsnyder2-ux.github.io/RoConstruct/
+**Progress:** https://colingsnyder2-ux.github.io/RoConstruct/ · **Discord:** https://discord.gg/Tayg763nrG
 
 ## Overview
 
