@@ -85,7 +85,8 @@ for _v, _sha in [("1.2.5", "58ec845f95ff351c8a25bfbfa667a8f3924bb0f1a1ec572cc7e0
 RECIPES["g3d-6.09"] = dict(url="https://archive.org/download/g3d-src-6_09/g3d-src-6_09.zip",
                            sha256="d8036ded1a9730d80c5a2f5397efc958d6613ca41a1c7b842b212c3be7e0b6ff",
                            unpack="g3d-6.09", src="g3d-6.09/source", langs=["cpp"],
-                           grid=["/O2 /GS- /EHsc /MD", "/O2 /GS- /MD"],
+                           grid=["/O2 /GS- /EHsc /MD /arch:SSE2 /fp:fast", "/O2 /GS- /EHsc /MD",
+                                 "/O2 /GS- /MD /arch:SSE2 /fp:fast", "/O2 /GS- /MD"],
                            include=["g3d-6.09/source/include", "g3d-6.09/source/boost/include", "WINSDK",
                                     "SDL-1.2.11/include"],
                            needs=["sdl-1.2.11"], files="G3Dcpp/*.cpp GLG3Dcpp/*.cpp")
@@ -161,6 +162,47 @@ for _b in ("1_34_1", "1_40_0"):
                                            needs=["boost-" + _b.replace("_", ".")])
 
 
+STDINT = """/* stdint.h for VS2005/VS2008, which lack it. */
+#pragma once
+typedef signed char int8_t; typedef short int16_t; typedef int int32_t; typedef __int64 int64_t;
+typedef unsigned char uint8_t; typedef unsigned short uint16_t; typedef unsigned int uint32_t;
+typedef unsigned __int64 uint64_t; typedef int intptr_t; typedef unsigned int uintptr_t;
+#define INT8_MIN (-127i8 - 1)
+#define INT16_MIN (-32767i16 - 1)
+#define INT32_MIN (-2147483647i32 - 1)
+#define INT64_MIN (-9223372036854775807i64 - 1)
+#define INT8_MAX 127i8
+#define INT16_MAX 32767i16
+#define INT32_MAX 2147483647i32
+#define INT64_MAX 9223372036854775807i64
+#define UINT8_MAX 0xffui8
+#define UINT16_MAX 0xffffui16
+#define UINT32_MAX 0xffffffffui32
+#define UINT64_MAX 0xffffffffffffffffui64
+"""
+RECIPES["compat"] = dict(generate=lambda: {"stdint.h": STDINT}, src="compat", langs=[], files=[])
+
+# Roblox's own 2016 source tree (roc/refsource.py) keeps the forks the clients were built
+# from: G3D 8.00 (gone from the web), their modified Lua 5.1.4, RakNet, libjpeg and libpng.
+# Code unchanged since 2012 compiles to the same bytes with the client's compiler.
+# These recipes have no URL: the tree has to be extracted locally.
+REF = "../roblox2016/src/ROBLOX2016-main/"
+_REF_INC = [REF + "Rendering/g3d/include", REF + "Rendering/g3d/include/png", REF + "Rendering/g3d/ijg",
+            "compat", "boost_1_40_0", "zlib-1.2.3", "WINSDK"]
+_REF_NEEDS = ["compat", "boost-1.40.0", "zlib-1.2.3"]
+# Roblox built the float-heavy G3D math with SSE2: /arch:SSE2 /fp:fast is what matches it.
+_REF_GRID = ["/O2 /GS- /EHsc /MD /arch:SSE2 /fp:fast", "/O2 /GS- /EHsc /MD /arch:SSE2",
+             "/O2 /GS- /EHsc /MD", "/O2 /GS- /MD /arch:SSE2 /fp:fast"]
+RECIPES["rbx2016-g3d"] = dict(src=REF + "Rendering/g3d/g3dcpp", langs=["cpp"], files="*.cpp",
+                              grid=_REF_GRID, include=_REF_INC, needs=_REF_NEEDS)
+RECIPES["rbx2016-lua"] = dict(src=REF + "App/Lua-5.1.4/src", langs=["c", "cpp"], files=[f + ".c" for f in _LUA],
+                              grid=FAST + ["/O2 /GS- /EHsc /MD"], include=_REF_INC, needs=_REF_NEEDS)
+RECIPES["rbx2016-jpeg"] = dict(src=REF + "Rendering/g3d/ijg", langs=["c"], files="j*.c", grid=FAST,
+                               include=_REF_INC, needs=_REF_NEEDS)
+RECIPES["rbx2016-png"] = dict(src=REF + "Rendering/g3d/png", langs=["c"], files="png*.c", grid=FAST,
+                              include=_REF_INC, needs=_REF_NEEDS)
+
+
 def fetch(name):
     """Download + verify + unpack a recipe's source into tools/libs/. Returns the source folder."""
     r = RECIPES[name]
@@ -173,6 +215,9 @@ def fetch(name):
             if not (folder / fname).exists() or (folder / fname).read_text() != text:
                 (folder / fname).write_text(text)
         return folder
+    if not folder.exists() and "url" not in r:
+        raise SystemExit("%s needs %s: extract the Roblox 2016 source tree there (see roc/refsource.py)"
+                         % (name, folder.resolve()))
     if not folder.exists():
         archive = setup.download(r["url"], LIBS / r.get("archive", Path(r["url"]).name))
         digest = hashlib.sha256(archive.read_bytes()).hexdigest()
@@ -245,8 +290,14 @@ def run(names, targets, log=print):
     tgts = {c: fingerprint.Target(c) for c in targets}
     new = {c: 0 for c in targets}
     for name in names:
-        folder = fetch(name)
         r = RECIPES[name]
+        try:
+            folder = fetch(name)
+        except SystemExit as e:
+            if "url" in r or r.get("generate"):
+                raise
+            log("%s: skipped, %s" % (name, e))  # local-only source not on this PC
+            continue
         t0, hits = time.time(), 0
         for build in [b for b in BUILDS if b in have]:
             for f in files_of(r, folder):

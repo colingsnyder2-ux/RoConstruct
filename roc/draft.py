@@ -138,6 +138,11 @@ def prompt_for(client, addr, row, asm, hint, attempt, flags=None, examples=()):
           "Target assembly:", "\n".join(asm)]
     if hint:
         p += ["", "Rev.ng decompiler output (generic types, hint only):", hint]
+    from roc import refsource
+    ref = refsource.hint(row["unit"])
+    if ref:
+        p += ["", "The same class in Roblox's 2016 source (real names; layout may have changed since):",
+              "```cpp", ref, "```"]
     if attempt:
         src, score, feedback = attempt
         p += ["", "Your previous attempt scored %d%%:" % score, "```cpp", src.strip(), "```",
