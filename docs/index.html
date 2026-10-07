@@ -227,7 +227,7 @@ async function client(name) {
     return;
   }
   const c = statsFor(latest);
-  if (!cache.has(name)) cache.set(name, await (await fetch(`data/${encodeURIComponent(name)}.json`)).json());
+  if (!cache.has(name)) cache.set(name, await (await fetch(`data/${encodeURIComponent(name)}.json`, {cache: "no-cache"})).json());
   const data = cache.get(name), units = data.units;
   const byUnit = new Map();
   for (const f of data.funcs) {
@@ -340,8 +340,8 @@ function route(top = true) {
 }
 
 Promise.all([
-  fetch("progress.json").then(r => r.json()),
-  fetch("history.json").then(r => r.ok ? r.json() : []).catch(() => []),
+  fetch("progress.json", {cache: "no-cache"}).then(r => r.json()),
+  fetch("history.json", {cache: "no-cache"}).then(r => r.ok ? r.json() : []).catch(() => []),
 ]).then(([p, h]) => {
   progress = p; history = h; hIdx = h.length - 1;
   route();
