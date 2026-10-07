@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-07 15:09 UTC",
+ "updated": "2026-10-07 16:10 UTC",
  "clients": [
   {
    "name": "2007-08",
@@ -45,10 +45,10 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22396,
-   "matched": 4590,
+   "matched": 4593,
    "partial": 0,
    "bytes": 3449717,
-   "matched_bytes": 382059,
+   "matched_bytes": 382593,
    "data_bytes": 1559926,
    "leaderboard": [
     {
@@ -76,10 +76,10 @@
    "built": "2009-06-16",
    "started": true,
    "functions": 26230,
-   "matched": 5467,
+   "matched": 5470,
    "partial": 0,
    "bytes": 3981798,
-   "matched_bytes": 400244,
+   "matched_bytes": 400778,
    "data_bytes": 1809822,
    "leaderboard": [
     {
@@ -100,10 +100,10 @@
    "built": "2010-06-18",
    "started": true,
    "functions": 33026,
-   "matched": 6699,
+   "matched": 6808,
    "partial": 7,
    "bytes": 5117528,
-   "matched_bytes": 439547,
+   "matched_bytes": 466800,
    "data_bytes": 2369604,
    "leaderboard": [
     {
@@ -121,7 +121,7 @@
      "last": 1791350944.373746
     }
    ],
-   "data_matched_bytes": 18658,
+   "data_matched_bytes": 18985,
    "classes": 2012,
    "generated": 26058
   },
@@ -131,10 +131,10 @@
    "built": "2011-06-24",
    "started": true,
    "functions": 36526,
-   "matched": 5533,
+   "matched": 5544,
    "partial": 0,
    "bytes": 5338110,
-   "matched_bytes": 237597,
+   "matched_bytes": 239166,
    "data_bytes": 3009972,
    "leaderboard": [
     {
@@ -145,7 +145,7 @@
      "last": 1791360550.5185559
     }
    ],
-   "data_matched_bytes": 13107,
+   "data_matched_bytes": 13119,
    "classes": 2230,
    "generated": 28044
   },
@@ -155,10 +155,10 @@
    "built": "2012-06-13",
    "started": true,
    "functions": 39895,
-   "matched": 6674,
+   "matched": 6688,
    "partial": 0,
    "bytes": 6235360,
-   "matched_bytes": 258447,
+   "matched_bytes": 260117,
    "data_bytes": 3396596,
    "leaderboard": [
     {
@@ -169,7 +169,7 @@
      "last": 1791360571.9448597
     }
    ],
-   "data_matched_bytes": 13095,
+   "data_matched_bytes": 13107,
    "classes": 2176,
    "generated": 30148
   }
