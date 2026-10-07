@@ -42,6 +42,8 @@ The first click asks for a username. After that it runs on its own: leave the wi
 
 > **Heads up:** a worker runs an AI model and the compiler nonstop. Expect high GPU/CPU use, fan noise and power draw (laptops: plug in). Close the window to stop.
 
+To undo the install later, double-click **`uninstall.cmd`**. It lists everything first with sizes, then asks before each step. RoConstruct's own files default to yes (about 3.2 GB of compilers and caches); shared software defaults to no. Your other Ollama models are never touched — only the coder models this project uses are offered.
+
 ### Ways to help
 
 | You have | Do this |
