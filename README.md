@@ -34,7 +34,7 @@ When every function matches, the result is a source tree that rebuilds the origi
 
 1. **Download** this repo (Code → Download ZIP) and unzip it.
 2. Double-click **`install.cmd`**. It installs Python and the old compilers (each one verified) and enables one-click links. No admin rights needed.
-3. Put your own copy of a client in its folder, for example `clients\2008-06\Roblox.exe`. `roc client verify` checks it's the right, unmodified build.
+3. Fetch the clients you want to work on: `roc client-fetch 2008-06` (or `all`). They download and verify themselves; `roc client verify` re-checks the hash and that the build isn't modified. You can also drop your own copy in `clients\<name>\` instead.
 4. On the [progress site](https://colingsnyder2-ux.github.io/RoConstruct/), click **Start helping** on a client.
 
 The first click asks for a username. After that it runs on its own: leave the window open overnight, and your matches show up on the leaderboard.
@@ -96,6 +96,8 @@ Find easy targets with `roc next 2008-06`, and get everyone else's work with `ro
 roc install                     download compilers, check tools, enable links
 roc client list | verify        your clients, and whether they're the right builds
 roc client add <name> <exe>     register a new client
+roc client-fetch <name|all>     download a client and verify it (happens automatically)
+roc client-sources <folder>     index a Drive folder as a fetch fallback
 roc analyze <client|all>        split an exe into functions
 roc auto <client|all>           auto-match trivial functions
 roc next <client>               easiest open functions

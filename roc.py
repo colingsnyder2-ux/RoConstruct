@@ -74,6 +74,34 @@ def cmd_client_list(a):
         print("%-6s %-14s %s" % (name, clients.status(name, e), e["compiler"]))
 
 
+def cmd_client_fetch(a):
+    """Download a client's files from Drive into clients/<name>/ and verify them."""
+    from roc import sources
+    reg = clients.load()
+    names = sorted(reg) if a.name == "all" else [a.name]
+    bad = 0
+    for name in names:
+        if name not in reg:
+            sys.exit("%s is not registered. See:  roc client list" % name)
+        try:
+            sources.fetch(name)
+        except sources.FetchError as error:
+            print("%-8s %s" % (name, error))
+            bad += 1
+    if bad:
+        sys.exit("%d client(s) could not be fetched." % bad)
+
+
+def cmd_client_sources(a):
+    """Point clients/sources.json at a bundle zip, or re-index a public Drive folder."""
+    from roc import sources
+    if a.bundle:
+        sources.set_bundle(a.bundle)
+        return
+    folder = a.folder.split("/folders/")[-1].split("?")[0].strip("/")
+    sources.index_drive(folder, dry_run=a.dry_run)
+
+
 def cmd_client_verify(a):
     """Hash + PE checksum: same build as the group, and not modified."""
     bad = 0
@@ -91,6 +119,18 @@ def cmd_client_verify(a):
         sys.exit("%d client(s) differ from the registered builds." % bad)
 
 
+def ready(name):
+    """Make sure the client is on disk before working on it: fetch it if we can."""
+    from roc import sources
+    entry = clients.load().get(name)
+    if not entry or clients.status(name, entry) == "ok":
+        return True
+    if name in sources.load_sources():
+        return sources.ensure(name)
+    print("%s: exe %s (fetch it with: roc client fetch %s)" % (name, clients.status(name, entry), name))
+    return False
+
+
 def cmd_analyze(a):
     from roc import analyze
     names = sorted(clients.load()) if a.name == "all" else [a.name]
@@ -98,8 +138,8 @@ def cmd_analyze(a):
         entry = clients.load().get(name)
         if not entry:
             sys.exit("%s is not registered. See:  roc client list" % name)
-        if clients.status(name, entry) != "ok":
-            print("%s: skipped, exe %s (put your copy in clients/%s/)" % (name, clients.status(name, entry), name))
+        if not ready(name) or clients.status(name, entry) != "ok":
+            print("%s: skipped, exe %s" % (name, clients.status(name, entry)))
             continue
         out, funcs = analyze.analyze(name, clients.exe_path(name, entry))
         real = sum(1 for f in funcs if f["kind"] == "code")
@@ -109,6 +149,8 @@ def cmd_analyze(a):
 def cmd_next(a):
     import json
     from roc import match
+    if not ready(a.name):
+        sys.exit("%s: no verified exe, cannot list functions." % a.name)
     scores_file = ROOT / "work" / a.name / "scores.json"
     scores = json.loads(scores_file.read_text()) if scores_file.exists() else {}
     rows = [r for r in match._functions(a.name).values() if r["kind"] == "code" and scores.get(r["addr"], 0) < 100]
@@ -120,6 +162,8 @@ def cmd_next(a):
 
 def cmd_claim(a):
     from roc import match
+    if not ready(a.name):
+        sys.exit("%s: no verified exe, nothing to claim." % a.name)
     path = match.claim(a.name, a.addr)
     print("Edit this file:", path)
     print("Then run:       roc check %s %s" % (a.name, path.stem))
@@ -341,6 +385,12 @@ def main(argv=None):
     p.add_argument("--allow-modified", action="store_true", help="accept an exe whose PE checksum is wrong")
     p.set_defaults(fn=cmd_client_add)
     c.add_parser("verify", help="check your exes: same build as registered, not modified").set_defaults(fn=cmd_client_verify)
+    cmd("client-fetch", cmd_client_fetch, "download a client from Drive and verify it ('all' for every client)",
+        (["name"], {}))
+    p = cmd("client-sources", cmd_client_sources, "set the clients.zip bundle, or index a Drive folder",
+            (["folder"], {"nargs": "?"}), (["--bundle"], {"help": "local clients.zip to hash and record"}),
+            (["--dry-run", "-n"], {"action": "store_true"}))
+    p.set_defaults(folder=None)
     c.add_parser("list", help="registered clients and whether you have them").set_defaults(fn=cmd_client_list)
     cmd("analyze", cmd_analyze, "split a client exe into functions ('all' for every client)", (["name"], {}))
     cmd("next", cmd_next, "list the easiest open functions", (["name"], {}), (["-n"], {"type": int, "default": 20}))

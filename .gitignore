@@ -1,7 +1,8 @@
-# Client files are proprietary: only the registry and docs are tracked.
+# Client files are proprietary: only the registry, sources, and docs are tracked.
 clients/*
 !clients/README.md
 !clients/clients.json
+!clients/sources.json
 
 # Matched sources reproduce Roblox code. Kept local until the group decides to
 # publish them (takedown risk). Delete this line to track src/.

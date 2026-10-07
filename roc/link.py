@@ -67,10 +67,20 @@ def keep_awake():
 
 
 def wait_for_exe(client, log=print):
-    from roc import clients
+    from roc import clients, sources
     entry = clients.load()[client]
     if clients.status(client, entry) == "ok":
         return
+    # A link click means the helper wants this one client: download it from Drive
+    # (falling back to clients.zip) before asking them to find it by hand.
+    if client in sources.load_sources().get("drive", {}) or sources.load_sources().get("bundle"):
+        log("Downloading %s (%s)..." % (client, entry["exe"]))
+        try:
+            sources.fetch(client, quiet=False)
+            return
+        except sources.FetchError as error:
+            log("Automatic download failed: %s" % error)
+            log("Put your own copy in the folder below and RoConstruct will carry on.")
     folder = ROOT / "clients" / client
     folder.mkdir(parents=True, exist_ok=True)
     log("Put your copy of %s in this folder:\n  %s\n(it must be the exact %s build). Waiting..."

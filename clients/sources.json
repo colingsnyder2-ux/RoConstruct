@@ -1,0 +1,599 @@
+{
+  "bundle": {
+    "sha256": "591f07ecc4b10597484fc49acd2244db46c1f167e3b1f7747346b9d992bf63b1",
+    "size": 78431270,
+    "slots": [
+      "2007-08",
+      "2008-06",
+      "2009-06",
+      "2010-06",
+      "2011-06",
+      "2012-06"
+    ],
+    "url": "https://cdn.discordapp.com/attachments/1557245347317813328/1557251534851674142/clients.zip?ex=6ac71f02&is=6ac5cd82&hm=f1930ae7357609c01857bb1b3a5cd439b0382054566da58891ddfdfbc396364a&"
+  },
+  "drive": {
+    "2007-08": {
+      "builds": [
+        {
+          "files": [
+            {
+              "id": "1fSaL84gSaXjjPUhHN51pYwGTLdmDHa5f",
+              "path": "AppSettings.xml"
+            },
+            {
+              "id": "1prYBvEg2r2mKkA6Ix4IE9RES_iEUBX1I",
+              "path": "ReflectionMetadata.xml"
+            },
+            {
+              "id": "1aeYqjCxPnmtulOm9jNPzvbRhROAKX8IN",
+              "path": "Roblox.exe"
+            },
+            {
+              "id": "1N-_55EmMvCKdOFNYT5O8GTPVbqdEnHsq",
+              "path": "SciLexer.dll"
+            },
+            {
+              "id": "1fe3rtr_ZruD0RUC-LK700iAuG1H4WQCB",
+              "path": "copyrights.txt"
+            },
+            {
+              "id": "1mFra4GO-H-fjHt5Ostc7SV0Kd_cMJffJ",
+              "path": "fmodex.dll"
+            }
+          ],
+          "label": "8.2007/August 18 (0.3.488.0)"
+        },
+        {
+          "files": [
+            {
+              "id": "1VCiCMj2rG-zUXC5uN13qQBvfjJMjeegM",
+              "path": "AppSettings.xml"
+            },
+            {
+              "id": "1HgjISoLVfvRxqQZqJx0UciqFV7ujbuZ9",
+              "path": "ReflectionMetadata.xml"
+            },
+            {
+              "id": "1mwjo2oYN5hWGu2hcpAHF0mYCrIygwKnP",
+              "path": "Roblox.exe"
+            },
+            {
+              "id": "1EN5IC8yHR-GsNPLLJNVmrbE_npUIx8LZ",
+              "path": "SciLexer.dll"
+            },
+            {
+              "id": "1Hv1lUXQHEvbr4gOoql7HN5koc4ENnbra",
+              "path": "copyrights.txt"
+            },
+            {
+              "id": "1LcnQUThIDEpTD8dwW2s2KnReDaittFQ5",
+              "path": "fmodex.dll"
+            }
+          ],
+          "label": "8.2007/August 29 (0.3.512.0)"
+        }
+      ]
+    },
+    "2008-06": {
+      "builds": [
+        {
+          "files": [
+            {
+              "id": "1ybg_YeCslTfTove6WMQz-ZhjFFzAmnyi",
+              "path": "AppSettings.xml"
+            },
+            {
+              "id": "1UhH4EEwR5ogCPW79Zv97F1bd9cXN2iVS",
+              "path": "ReflectionMetadata.xml"
+            },
+            {
+              "id": "1eIqBSQsXBlzFr3X13jK1apqt0dIi0W2d",
+              "path": "Roblox.exe"
+            },
+            {
+              "id": "1ZQT3-a7vRmzaa0G6vENen_XCMRsrlsSS",
+              "path": "RobloxInstall.dll"
+            },
+            {
+              "id": "1uKwm11fo4_gwDTwO1V-4hYMtTfLSFdhw",
+              "path": "RobloxLauncher.dll"
+            },
+            {
+              "id": "1U99uo_fS1EwTaKyUGU6AE65CyOV-p-dw",
+              "path": "SciLexer.dll"
+            },
+            {
+              "id": "1OfAz4XVmyQxkfGZbRb3-vgKtVPdDGZnY",
+              "path": "copyrights.txt"
+            },
+            {
+              "id": "1N5LCb1rutUlrfnq6CfExzpOMbUEBaPw9",
+              "path": "fmodex.dll"
+            },
+            {
+              "id": "14LoxFe2N4AAbzmjryl_x_8TWbnDxuBaF",
+              "path": "rgdx.dll"
+            },
+            {
+              "id": "1EpPMiaiVtl0PIBC1HImjGr-O99CBbFgO",
+              "path": "rggl.dll"
+            },
+            {
+              "id": "1E5OJ4_S1gNSrRKSBLXRVGIZf3qiY3JkB",
+              "path": "rgmain.dll"
+            },
+            {
+              "id": "1Kh1VrQCHo-6dCExr_jp-lFKPEW0jk7JQ",
+              "path": "rgpar.dll"
+            }
+          ],
+          "label": "6.2008/June 17 (0.3.807.0)"
+        },
+        {
+          "files": [
+            {
+              "id": "1Ico7OpMpYl58bwB7TRdbJlF4LlBxTKpo",
+              "path": "AppSettings.xml"
+            },
+            {
+              "id": "1QYkjZwrQ2yORg-qhVuRjs-klTVRjnOs2",
+              "path": "ReflectionMetadata.xml"
+            },
+            {
+              "id": "1iJH0iU3-3ssnJOPPJgdBISLegSJwT1t0",
+              "path": "Roblox.exe"
+            },
+            {
+              "id": "18i0Tr7GBb0qmVx7XId-EhjIXgTpMt3Jg",
+              "path": "RobloxInstall.dll"
+            },
+            {
+              "id": "1vcx_gDkc9Z0hB5sAIrhgpgnwkdkL_9Aj",
+              "path": "RobloxLauncher.dll"
+            },
+            {
+              "id": "1fbTEwZ442VjFfUl1tZz5ko3A46KlqgHb",
+              "path": "SciLexer.dll"
+            },
+            {
+              "id": "1z67mgSeJGqG0Bs7yNzwh6JYjrUMp6AKN",
+              "path": "copyrights.txt"
+            },
+            {
+              "id": "14JaHUXUe9U_hg_gJQmmskIerDCbaCnj0",
+              "path": "fmodex.dll"
+            },
+            {
+              "id": "1y6PLrKxK19wH_1fPSEB8i27WFVIgWcNH",
+              "path": "rgdx.dll"
+            },
+            {
+              "id": "1rHyXj9txE2hPYI3ffZUMtc-seV8mmhsh",
+              "path": "rggl.dll"
+            },
+            {
+              "id": "13VUURgzZw59w92Bo5HA1XrZd3sEl2qr8",
+              "path": "rgmain.dll"
+            },
+            {
+              "id": "1-kQtN9f8WOz6xoAhtWPa2nUIhWNKm-Ps",
+              "path": "rgpar.dll"
+            }
+          ],
+          "label": "6.2008/June 22 (0.3.809.0)"
+        }
+      ]
+    },
+    "2009-06": {
+      "builds": [
+        {
+          "files": [
+            {
+              "id": "1brY5gY-FEbv2bkn9XZgrzrG7cWbiuxPh",
+              "path": "AppSettings.xml"
+            },
+            {
+              "id": "1VKtOtpti5PNumWlbG3J-yyvwqO4i18F6",
+              "path": "Plugin_CgProgramManager.dll"
+            },
+            {
+              "id": "1n2t8vHiZE0TLK3YiyCFvi__fmvsp-K1X",
+              "path": "ReflectionMetadata.xml"
+            },
+            {
+              "id": "1H-6ypzZWRbUPm9-EjYWPdAuDSJXnZDoY",
+              "path": "RobloxApp.exe"
+            },
+            {
+              "id": "1N-7KPGK_KgdgsOB2yOdW2yzZ-uxYsigt",
+              "path": "SciLexer.dll"
+            },
+            {
+              "id": "1j9AUIdTrYd13qks0Q-E0bkTYJdVsED5A",
+              "path": "cg.dll"
+            },
+            {
+              "id": "1m5hvzLnt2YQ3BLiDgtxJJBWdDKDPlHu6",
+              "path": "copyrights.txt"
+            },
+            {
+              "id": "1HldkQlcXzcWgte8JdB24WaDo787Br1Bj",
+              "path": "fmodex.dll"
+            },
+            {
+              "id": "14Hu5_qT3gqG39LBsXLXe-Obe5fF1t0VC",
+              "path": "rgdx.dll"
+            },
+            {
+              "id": "133avxWPTZP6g8LfhgtQO1hVdAmHuJAYF",
+              "path": "rggl.dll"
+            },
+            {
+              "id": "1k1U5sjNZ7DMy_mGSxD4ndkPvV3vvnYTX",
+              "path": "rgmain.dll"
+            },
+            {
+              "id": "1vfF474I3wmWPnYFMLOvT6v1_6i6fswij",
+              "path": "rgpar.dll"
+            },
+            {
+              "id": "1SWizjROstHVZiVtAfvIgjUo_WAr90lCt",
+              "path": "tbb.dll"
+            },
+            {
+              "id": "1x9oM53kiwQ_tM9u-K138z-iBroCwLxLm",
+              "path": "tbbmalloc.dll"
+            }
+          ],
+          "label": "6.2009/June 18 (0.16.11.0)/version-c7acb996eb9344da"
+        },
+        {
+          "files": [
+            {
+              "id": "1n1zzWsBiCHd05U_5qnhhqnB0vDUK-UEe",
+              "path": "AppSettings.xml"
+            },
+            {
+              "id": "1dvNogj4Rpc_qBpGHm6oPBkiWVIMS42Fq",
+              "path": "Plugin_CgProgramManager.dll"
+            },
+            {
+              "id": "1nnQCXoNvWO1D25x6bOLVfrrN9en_krf7",
+              "path": "ReflectionMetadata.xml"
+            },
+            {
+              "id": "1h1GC-4n5jeJmbN3SeX8rqHHiCpNRA6iX",
+              "path": "RobloxApp.exe"
+            },
+            {
+              "id": "1Akk0QZZ4bvQkCOsq1SKd9sq7f87obnjc",
+              "path": "SciLexer.dll"
+            },
+            {
+              "id": "1TABt9gGKBu4YAcJtFgsdR_32BYpa1oVZ",
+              "path": "cg.dll"
+            },
+            {
+              "id": "1MyF8dyg3k3cQyZz5XhldkFuPSbFZoDd3",
+              "path": "copyrights.txt"
+            },
+            {
+              "id": "1k_iswav3Em4IZ-R7-PQEbR9duYcbY-0G",
+              "path": "fmodex.dll"
+            },
+            {
+              "id": "1NCiRuPPJAzu-D9EZJr8-EWpB212g5vY7",
+              "path": "rgdx.dll"
+            },
+            {
+              "id": "16MiHAJmed5qHrZY4te07cB5atru2zRsj",
+              "path": "rggl.dll"
+            },
+            {
+              "id": "1ToFSJLbGx00nSABwRswpTASrX78RmLoZ",
+              "path": "rgmain.dll"
+            },
+            {
+              "id": "16ONAV7Z4Jdppi39zKDFUWxDTEirWgnth",
+              "path": "rgpar.dll"
+            },
+            {
+              "id": "1Tg07byJgwp0B9-K1wskuOfB_nPfnsXMk",
+              "path": "tbb.dll"
+            },
+            {
+              "id": "1JEZl7mgaFtwyhuR-B8Q_qEAIfOt6Zug9",
+              "path": "tbbmalloc.dll"
+            }
+          ],
+          "label": "6.2009/June 19 (0.16.11.1)/version-6947f7c78484483d"
+        },
+        {
+          "files": [
+            {
+              "id": "1eJILMoXJkgqKRPDIMo7WwGFWXs0qowuc",
+              "path": "AppSettings.xml"
+            },
+            {
+              "id": "1MVYnsMkEnRAyAogfx7neaHYmNry3Jzn5",
+              "path": "Plugin_CgProgramManager.dll"
+            },
+            {
+              "id": "1rOnBxr_LZ39Y4JZBOsm_C9ngbxdw7Dil",
+              "path": "ReflectionMetadata.xml"
+            },
+            {
+              "id": "1AjxQfFoTcWHRL-xHPG-LF2rRYHU89b7V",
+              "path": "RobloxApp.exe"
+            },
+            {
+              "id": "1N5AirRRvD3-vNY6CmpgDNTojIgJeI-Zp",
+              "path": "SciLexer.dll"
+            },
+            {
+              "id": "12S1A5f7sppndtC4iV8iR1roRgxd_N8s_",
+              "path": "cg.dll"
+            },
+            {
+              "id": "1Dv53fU-3hAsKBpptbH-izGJ4Goyv-3d5",
+              "path": "copyrights.txt"
+            },
+            {
+              "id": "1X92yTBsvStQxTeCQyA6Pb3BFKtKP9Wsu",
+              "path": "fmodex.dll"
+            },
+            {
+              "id": "1mUNWlKWp11Vi-taJ9TXQcIz6YKv8Om_J",
+              "path": "rgdx.dll"
+            },
+            {
+              "id": "1uNi3JspZu9WQKkjA-vHf4i_UMDcklSix",
+              "path": "rggl.dll"
+            },
+            {
+              "id": "1PqTJwnCG7psv2GExOLzTm6DWARnInTqE",
+              "path": "rgmain.dll"
+            },
+            {
+              "id": "1U6xvIA5bE8fE1vpd8xH6ehvTb48R9JeC",
+              "path": "rgpar.dll"
+            },
+            {
+              "id": "1KfUG6vc6UC33AnYACmi9g6sOdDfCPryR",
+              "path": "tbb.dll"
+            },
+            {
+              "id": "1GT3ZBXNXO8jFGXMLzAXnZbG4n5i-ZUGv",
+              "path": "tbbmalloc.dll"
+            }
+          ],
+          "label": "6.2009/June 3 (0.15.7.0)/version-22522b40eade46a7"
+        }
+      ]
+    },
+    "2010-06": {
+      "builds": [
+        {
+          "files": [
+            {
+              "id": "15-8-5W1G5q0_AGo4J2XQvLlx-VE-G2UA",
+              "path": "AppSettings.xml"
+            },
+            {
+              "id": "12EC3sYZYnUWdyrvDsyDxpCyio0flkLoC",
+              "path": "OgreMain.dll"
+            },
+            {
+              "id": "10jPqbQzAWwwnls3FyXr9JWX5pVod1JU_",
+              "path": "Plugin_CgProgramManager.dll"
+            },
+            {
+              "id": "1KE-1NsbeukhbcNq5EVP5MDCUHPrZlOoM",
+              "path": "Plugin_ParticleFX.dll"
+            },
+            {
+              "id": "1jflHNcLnu4XDcBJeqKIAwda-KkWcWIWH",
+              "path": "ReflectionMetadata.xml"
+            },
+            {
+              "id": "1JPxB_oY9csqWyo2_UpWTZI6hjHXRH2Kc",
+              "path": "RenderSystem_Direct3D9.dll"
+            },
+            {
+              "id": "1R8JddsJCGn-dUlyPPv_rClF9pPhut9QI",
+              "path": "RenderSystem_GL.dll"
+            },
+            {
+              "id": "153yd1rPI3P4Bro1tW9V4bF5GLJ3ftt5I",
+              "path": "RobloxApp.exe"
+            },
+            {
+              "id": "1RtT0Ep-AXYdK0sWWDepu_PAvVcy0C7Gt",
+              "path": "SciLexer.dll"
+            },
+            {
+              "id": "1qAY2VJsQSGLqtEfw4g_bVlp93l1oECVh",
+              "path": "boost.dll"
+            },
+            {
+              "id": "1grqZWhz252o31n9VUtlPxoi3ecs020Zo",
+              "path": "cg.dll"
+            },
+            {
+              "id": "1oxPBUIMyF06m3I8SmaFEhGtqFIsPxx1W",
+              "path": "copyrights.txt"
+            },
+            {
+              "id": "1Lsi9_QiH1bK8wY8BdxfVXvK46UK31DnB",
+              "path": "fmodex.dll"
+            },
+            {
+              "id": "1xnlC8Mil0CvSTZbX79UKD4-vIi1nGXsz",
+              "path": "tbb.dll"
+            },
+            {
+              "id": "1tYm8h1JJTumE0d1s4cWHDuYcpwJvG1la",
+              "path": "tbbmalloc.dll"
+            }
+          ],
+          "label": "6.2010/June 18 (0.22.11.9)/version-38688219c12c4bc8"
+        }
+      ]
+    },
+    "2011-06": {
+      "builds": [
+        {
+          "files": [
+            {
+              "id": "1v-9QAClAvrOMyKfzpTLl3AVl3QmlM2Bx",
+              "path": "AppSettings.xml"
+            },
+            {
+              "id": "1D3OKm6VnugzuN5PQWyDmWI5z42IDkBOX",
+              "path": "OgreMain.dll"
+            },
+            {
+              "id": "1Iz7Z-FZZJobdyDSatYVJl7uG-8FVtPxZ",
+              "path": "Plugin_CgProgramManager.dll"
+            },
+            {
+              "id": "1iaGxOjaOJ0b9rU70aYi-vXdxyCbNHLiu",
+              "path": "Plugin_ParticleFX.dll"
+            },
+            {
+              "id": "1WG_peZdUbSz-M0lqlOdMip1ARjaNGRAS",
+              "path": "ReflectionMetadata.xml"
+            },
+            {
+              "id": "1xiCV19iHLj95vd5SBw7woTRtlx0BWTFf",
+              "path": "RenderSystem_Direct3D9.dll"
+            },
+            {
+              "id": "1Sc1029zwO0apGO0N2f4ISkn9U2xUHanp",
+              "path": "RenderSystem_GL.dll"
+            },
+            {
+              "id": "1jxPF1IuH6ET3EhmgGFbcfK1ywOERtZoU",
+              "path": "RobloxApp.exe"
+            },
+            {
+              "id": "1V7O-HVe0awclaBMPGV5IO6dJRRQUvaOA",
+              "path": "RobloxProxy.dll"
+            },
+            {
+              "id": "1ylXQoUZn__M4_1mZ4TB1Wyf9_HJdzeg2",
+              "path": "SciLexer.dll"
+            },
+            {
+              "id": "1a3jX8sKYaRwLlhbPXd68-rNrve2TWKXc",
+              "path": "boost.dll"
+            },
+            {
+              "id": "1RGyeEXUkBzhM-C8AHaAm6o5M0F578Mjr",
+              "path": "cg.dll"
+            },
+            {
+              "id": "1F6WnbT3MKaYtv209bpZlrKVOfOGurJLW",
+              "path": "copyrights.txt"
+            },
+            {
+              "id": "1H_p-EAVt08bNisQEqun1GT5QDiM-BOCy",
+              "path": "fmodex.dll"
+            },
+            {
+              "id": "19O9NYNF6TSePTRyEUNkXJDAiEHfsytsT",
+              "path": "tbb.dll"
+            },
+            {
+              "id": "18MFPYdD_s2CbBrbxNHiRt08_gMGSFwbz",
+              "path": "tbbmalloc.dll"
+            }
+          ],
+          "label": "6.2011/June 27 (0.42.0.238)/version-5ce51d8367464075"
+        }
+      ]
+    },
+    "2012-06": {
+      "builds": [
+        {
+          "files": [
+            {
+              "id": "1Kla9gsj7fyUXlxEz6zewbbIbgH4KX9hq",
+              "path": "AppSettings.xml"
+            },
+            {
+              "id": "1BoeqtwxZZm06SdrH73FHoTvvsUT30IzN",
+              "path": "Log.dll"
+            },
+            {
+              "id": "1vqzGy27XxFOA5nk55WOYQybQCHrjIBPq",
+              "path": "OgreMain.dll"
+            },
+            {
+              "id": "1WfZ_XUwr9KwObaZ6-aOSdtGcxIUaZTZq",
+              "path": "Plugin_CgProgramManager.dll"
+            },
+            {
+              "id": "1TavQeuy10IiA-lS6WlqFobLJqrrJRaDQ",
+              "path": "Plugin_ParticleFX.dll"
+            },
+            {
+              "id": "1yP3UXL88HpCSvB__sLGoRYE1UDD0114h",
+              "path": "ReflectionMetadata.xml"
+            },
+            {
+              "id": "1YFA9AEakpkoDpLSLYMHfrx55OI4u46gI",
+              "path": "RenderSystem_Direct3D9.dll"
+            },
+            {
+              "id": "1jZWXcVB9P0Pjx33DI4M-6CvO-htHG9mH",
+              "path": "RenderSystem_GL.dll"
+            },
+            {
+              "id": "1_1oFoi_qRum9BAiXYyvvoqjV92m6NKHd",
+              "path": "RobloxApp.exe"
+            },
+            {
+              "id": "1Ya2cQcoqncqJ1Lhsva0UHsbSl-XtSnhZ",
+              "path": "RobloxProxy.dll"
+            },
+            {
+              "id": "1vlAwNzRSV4Up4rRe4yRcdwhjWPaGZ3xg",
+              "path": "SciLexer.dll"
+            },
+            {
+              "id": "1Nj8d0Kkm71aYMx5NuMawBhfWl1Ub8Gey",
+              "path": "VMProtectSDK32.dll"
+            },
+            {
+              "id": "1WCLXw4oBhqg98-UjjTw699EQCt3u6jL7",
+              "path": "boost.dll"
+            },
+            {
+              "id": "1e-Z_CTuUANya3QPzQhTL9QM0cCN-otMw",
+              "path": "cg.dll"
+            },
+            {
+              "id": "1I9FIvxFO20eUvIxdzxpV1wTc_IAUu-uN",
+              "path": "copyrights.txt"
+            },
+            {
+              "id": "1lObbnlczZqoSrvLC3BLcNlhU80CN6a3W",
+              "path": "fmodex.dll"
+            },
+            {
+              "id": "1QQP3QkiqPVnV5X8WOghSmgmJWAc5rmbb",
+              "path": "tbb.dll"
+            },
+            {
+              "id": "1UgoEuLVFBjIV8yf8WxsQ4LSrK9FZEzmN",
+              "path": "tbbmalloc.dll"
+            }
+          ],
+          "label": "6.2012/June 14 (0.63.0.591)/version-e029025a3614426d"
+        }
+      ]
+    }
+  }
+}

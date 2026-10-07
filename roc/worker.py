@@ -78,22 +78,39 @@ class Api:
 
 
 def usable_clients(info, log=print):
-    """Clients this machine can work on: same exe hash as the server, compiler present."""
+    """Clients this machine can work on: same exe hash as the server, compiler present.
+
+    A client that is registered but not on disk yet is fetched once, rather than
+    silently dropped, so starting a worker is enough to get set up.
+    """
     have, compilers = [], setup.compilers()
     local = clients.load()
+    from roc import sources
+    manifest = sources.load_sources()
     for name, remote in sorted(info["clients"].items()):
         entry = local.get(name)
         if not entry or entry.get("sha256") != remote.get("sha256"):
             log("  skip %s: clients.json differs from server (git pull)" % name)
-        elif clients.status(name, entry) != "ok":
-            log("  skip %s: put the exe listed in clients.json into clients/%s/ (status: %s)"
-                % (name, name, clients.status(name, entry)))
-        elif not (Path(ROOT / "work" / name / "functions.jsonl")).exists():
+            continue
+        if clients.status(name, entry) != "ok":
+            if name in manifest.get("drive", {}) or manifest.get("bundle"):
+                log("  fetching %s (%s)..." % (name, clients.status(name, entry)))
+                try:
+                    sources.fetch(name)
+                except sources.FetchError as error:
+                    log("  skip %s: %s" % (name, error))
+                    continue
+            if clients.status(name, entry) != "ok":
+                log("  skip %s: put the exe listed in clients.json into clients/%s/ (status: %s)"
+                    % (name, name, clients.status(name, entry)))
+                continue
+        if not (Path(ROOT / "work" / name / "functions.jsonl")).exists():
             log("  skip %s: run  roc analyze %s" % (name, name))
-        elif remote.get("compiler_build") not in compilers:
+            continue
+        if remote.get("compiler_build") not in compilers:
             log("  skip %s: compiler %s missing (roc install)" % (name, remote.get("compiler")))
-        else:
-            have.append(name)
+            continue
+        have.append(name)
     return have
 
 
