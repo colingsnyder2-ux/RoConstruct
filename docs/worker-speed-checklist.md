@@ -33,6 +33,6 @@ Goal: increase functions/hour and reduce GPU/CPU time without lowering match qua
 
 ## Current measured tradeoff
 
-- 7B: 17 jobs, 1 match, 8.4 seconds/job, 2.4 GPU minutes/match.
-- 14B: 18 jobs, 2 matches, 28.8 seconds/job, 4.3 GPU minutes/match.
+- 7B: 22 jobs, 1 match, 10.9 seconds/job, 4.0 GPU minutes/match.
+- 14B: 23 jobs, 2 matches, 35.3 seconds/job, 6.8 GPU minutes/match.
 - Routing keeps larger-model quality where telemetry supports it; `--workers auto` stays conservative.
