@@ -34,8 +34,9 @@ When every function matches, the result is a source tree that rebuilds the origi
 
 1. **Download** this repo (Code → Download ZIP) and unzip it.
 2. Double-click **`install.cmd`**. It installs Python and the old compilers (each one verified) and enables one-click links. No admin rights needed.
-3. Fetch the clients you want to work on: `roc client-fetch 2008-06` (or `all`). They download and verify themselves; `roc client verify` re-checks the hash and that the build isn't modified. You can also drop your own copy in `clients\<name>\` instead.
-4. On the [progress site](https://colingsnyder2-ux.github.io/RoConstruct/), click **Start helping** on a client.
+3. On the [progress site](https://colingsnyder2-ux.github.io/RoConstruct/), click **Start helping** on a client.
+
+You don't need to download any clients yourself. Whatever you pick — a one-click link, `roc analyze`, `roc next`, or the worker — fetches that client from Google Drive first, then checks its SHA-256 against the registered build before using it. If a file goes missing you get the same treatment: it re-downloads on the next command. To fetch up front instead, run `roc client-fetch all`.
 
 The first click asks for a username. After that it runs on its own: leave the window open overnight, and your matches show up on the leaderboard.
 
@@ -96,6 +97,7 @@ Find easy targets with `roc next 2008-06`, and get everyone else's work with `ro
 roc install                     download compilers, check tools, enable links
 roc client list | verify        your clients, and whether they're the right builds
 roc client add <name> <exe>     register a new client
+roc client remove <name>        unregister a client (--purge deletes its local copies)
 roc client-fetch <name|all>     download a client and verify it (happens automatically)
 roc client-sources <folder>     index a Drive folder as a fetch fallback
 roc analyze <client|all>        split an exe into functions
@@ -168,7 +170,8 @@ The remaining steps:
 
 | Message | Fix |
 |---|---|
-| `exe missing` / `hash mismatch` | Use the exact client build listed in `clients/clients.json`. |
+| `exe missing` | It should download itself. If it didn't, run `roc client-fetch <name>`. |
+| `hash mismatch` | Wrong build on disk. `roc client remove <name> --purge`, then run the command again to re-download. |
 | `looks modified` | That exe was patched; get an unmodified copy. |
 | `Missing compiler` | Run `roc install` (re-running resumes downloads). |
 | `cannot reach server` | The server may be offline; workers retry automatically. |
