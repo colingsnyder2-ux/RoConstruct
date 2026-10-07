@@ -113,11 +113,13 @@ class Store:
             self.db.commit()
             return score, True
 
-    def leaderboard(self):
+    def leaderboard(self, client=None):
+        """Overall ranking, or one client's when client is given."""
+        where, args = ("WHERE client = ?", (client,)) if client else ("", ())
         with self.lock:
             rows = self.db.execute(
                 "SELECT user, SUM(new = 100 AND old < 100), SUM(new - old), COUNT(*), MAX(ts) "
-                "FROM events GROUP BY user ORDER BY 2 DESC, 3 DESC").fetchall()
+                "FROM events %s GROUP BY user ORDER BY 2 DESC, 3 DESC" % where, args).fetchall()
         return [{"user": u, "matched": m or 0, "points": p or 0, "submissions": n, "last": t}
                 for u, m, p, n, t in rows]
 
@@ -169,6 +171,13 @@ class Store:
         return [{"addr": a, "score": s, "user": u, "source": src} for a, s, u, src in rows]
 
 
+def export(store):
+    """Everything the website needs from the database."""
+    scores = store.scores()
+    return {"scores": scores, "data": store.data(), "leaderboard": store.leaderboard(),
+            "leaderboards": {c: store.leaderboard(c)[:20] for c in scores}}
+
+
 def make_handler(store, token, can_verify):
     class Handler(BaseHTTPRequestHandler):
         def log_message(self, fmt, *args):
@@ -195,7 +204,7 @@ def make_handler(store, token, can_verify):
             if url.path == "/v1/leaderboard":
                 return self.send(200, store.leaderboard())
             if url.path == "/v1/export":
-                return self.send(200, {"scores": store.scores(), "data": store.data(), "leaderboard": store.leaderboard()})
+                return self.send(200, export(store))
             if url.path == "/v1/source":
                 best = store.best(q.get("client", ""), q.get("addr", ""))
                 return self.send(200 if best else 404, best or {"error": "unknown function"})
@@ -294,6 +303,10 @@ def start_tunnel(port, log=print):
     ponytail: the URL changes on every restart; workers re-read it from the site.
     A named tunnel (cloudflared login) gives a fixed address if that hurts."""
     exe = setup.get_cloudflared()
+    # A tunnel left over from a closed server window answers "Bad Gateway": remove it.
+    setup.powershell("Get-CimInstance Win32_Process -Filter \"Name='cloudflared.exe'\" | Where-Object "
+                     "{ $_.CommandLine -match '127.0.0.1:%d' } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force }"
+                     % port)
     proc = subprocess.Popen([exe, "tunnel", "--no-autoupdate", "--url", "http://127.0.0.1:%d" % port],
                             stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, text=True,
                             creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
@@ -313,8 +326,7 @@ def start_tunnel(port, log=print):
 def publish_once(store, public_url, log=print):
     """Rebuild docs/ from the live database and push it, if anything changed."""
     from roc import progress
-    progress.build(public_server=public_url, remote={"scores": store.scores(), "data": store.data(),
-                                                     "leaderboard": store.leaderboard()})
+    progress.build(public_server=public_url, remote=export(store))
     git = lambda *a: subprocess.run(["git", *a], cwd=ROOT, capture_output=True, text=True)
     git("add", "docs")
     if git("diff", "--cached", "--quiet").returncode == 0:

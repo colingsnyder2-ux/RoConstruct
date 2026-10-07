@@ -115,6 +115,7 @@ def test_server_store():
     assert st.submit("C", "00401000", "bob", 100, "z") == (100, True)
     board = {r["user"]: r for r in st.leaderboard()}
     assert board["bob"]["matched"] == 1 and board["alice"]["points"] == 60
+    assert [r["user"] for r in st.leaderboard("C")] == ["bob", "alice"] and st.leaderboard("other") == []
     assert st.lease("dave", "w4", ["C"], "ai", 4) is None  # matched one never handed out again
 
 

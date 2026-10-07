@@ -100,6 +100,7 @@ def build(server=None, token=None, public_server=None, remote=None):
                 {"name": name, "compiler": entry["compiler"], "units": units, "funcs": funcs},
                 separators=(",", ":")))
             row.update(summarize(funcs), started=True, data_bytes=meta.get("data_bytes", 0),
+                       leaderboard=remote.get("leaderboards", {}).get(name, []),
                        data_matched_bytes=union_bytes(v for a, v in spans.items() if scores.get(a) == 100),
                        classes=meta.get("classes", 0), generated=generated)
             stats[name] = {k: row[k] for k in STATS}

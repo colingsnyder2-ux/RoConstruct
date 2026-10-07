@@ -35,7 +35,12 @@ def cmd_install(a):
     from roc import link, setup
     if os.name == "nt":
         link.install()
-    setup.install(ask=(lambda q: "y") if a.yes else input)
+    def ask(question):
+        try:
+            return input(question)
+        except EOFError:  # no console (piped / scheduled): take the default
+            return ""
+    setup.install(ask=(lambda q: "y") if a.yes else ask)
 
 
 def cmd_link(a):
