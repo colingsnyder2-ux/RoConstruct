@@ -48,10 +48,11 @@ roc next <client>               easiest open functions
 roc claim <client> <addr>       start one: src/<client>/<addr>.cpp
 roc check <client> [addr]       compile, score, show the asm diff
 roc submit <client> [addr...]   send your sources to the server
+roc pull <client|all> [--force] download everyone's sources from the server
 roc flags <client>              infer compiler flags from matched code
 roc config --user U --server S [--token T] [--public-server HOST:PORT]
 roc worker [--jobs N] [--rounds N]
-roc server [--port 8765] [--token T]
+roc server [--tunnel] [--publish] [--startup] [--token T]
 roc status                      progress, active workers, leaderboard
 roc progress                    write the website data to docs/
 roc link install | remove       roconstruct:// one-click links
@@ -105,19 +106,20 @@ An existing Visual Studio 2005/2008 install is detected automatically; otherwise
 
 ## Hosting
 
-```
-roc server --token <password>
-roc config --public-server your.host:8765
-roc progress
-```
+Double-click **`host.cmd`** on a PC that stays on. It runs `roc server --tunnel --publish`:
 
-After `roc progress`, commit and push `docs/`.
+- **`--tunnel`**: public HTTPS address through a Cloudflare quick tunnel. No account and no router setup. `cloudflared` is downloaded once and its signature checked.
+- **`--publish`**: rebuilds `docs/` from the live database every hour, then commits and pushes. The site always shows the current server address, and workers follow it if the tunnel address changes.
 
-- Forward TCP 8765, or use Tailscale or ngrok.
+`roc server --startup` starts `host.cmd` at login. To undo that, delete `RoConstruct server.cmd` from `shell:startup`.
+
+- No password is needed for a public server: it re-checks every submission with the real compiler and exe, so scores can't be faked. Use `--token` for a private group.
 - Back up `work/server.db`.
 - Abandoned jobs free themselves after 15 minutes.
-- If the server has the compilers and exes, it re-checks every submission.
-- The site is served by GitHub Pages from `/docs`.
+
+## Data check
+
+When a function matches, the strings and constants its source defines (string literals, float constants, initialized tables) are compared with the exe too. Wrong data scores 99%, and `roc check` shows the difference. Verified bytes fill the site's Data bar. `extern` declarations aren't compared.
 
 ## Rules
 
