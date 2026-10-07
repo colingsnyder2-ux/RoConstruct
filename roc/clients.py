@@ -43,6 +43,12 @@ def compiler_build(exe):
     return counts.most_common(1)[0][0] if counts else None
 
 
+def built(exe):
+    """Build date from the PE header timestamp, e.g. '2009-06-16'."""
+    import time
+    return time.strftime("%Y-%m-%d", time.gmtime(pefile.PE(str(exe), fast_load=True).FILE_HEADER.TimeDateStamp))
+
+
 def exe_path(name, entry):
     return ROOT / "clients" / name / entry["exe"]
 
@@ -69,7 +75,7 @@ def add(name, exe, allow_modified=False):
         dest.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(exe, dest)
     build = compiler_build(dest)
-    entry = {"exe": exe.name, "sha256": sha256(dest), "compiler_build": build,
+    entry = {"exe": exe.name, "sha256": sha256(dest), "compiler_build": build, "built": built(dest),
              "compiler": COMPILERS.get(build, "unknown build %s" % build)}
     reg = load()
     reg[name] = entry

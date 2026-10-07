@@ -320,7 +320,7 @@ def publish_once(store, public_url, log=print):
     if git("diff", "--cached", "--quiet").returncode == 0:
         return log("Site unchanged.")
     git("commit", "-m", "Update progress")
-    push = git("push")
+    push = git("push", "origin", "HEAD")
     log("Site published." if push.returncode == 0 else "Site push failed: %s" % push.stderr.strip()[-300:])
 
 

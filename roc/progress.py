@@ -74,7 +74,7 @@ def build(server=None, token=None, public_server=None, remote=None):
     out, stats = [], {}
     for name, entry in sorted(clients.load().items()):
         work = ROOT / "work" / name
-        row = {"name": name, "compiler": entry["compiler"], "started": False}
+        row = {"name": name, "compiler": entry["compiler"], "built": entry.get("built"), "started": False}
         if (work / "functions.jsonl").exists():
             scores_file = work / "scores.json"
             scores = json.loads(scores_file.read_text()) if scores_file.exists() else {}

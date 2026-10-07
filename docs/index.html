@@ -16,6 +16,7 @@ main { max-width: 880px; margin: 0 auto; padding: 32px 16px 64px; }
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 h1 { font: 900 clamp(32px, 8vw, 56px)/1 system-ui, sans-serif; letter-spacing: .02em; text-align: center; margin: 24px 0 8px; text-transform: uppercase; }
+.logo img { display: block; width: min(100%, 640px); height: auto; margin: 0 auto; }
 .sub { font-family: var(--mono); color: var(--dim); text-align: center; font-size: clamp(14px, 3vw, 20px); margin: 0 0 32px; }
 .stats { display: flex; justify-content: center; gap: clamp(24px, 8vw, 72px); flex-wrap: wrap; text-align: center; margin-bottom: 24px; }
 .stat b { display: block; font-size: clamp(32px, 7vw, 48px); font-weight: 800; line-height: 1.1; font-variant-numeric: tabular-nums; }
@@ -76,6 +77,15 @@ const hex = n => n.toString(16).padStart(8, "0");
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
 const cache = new Map();
 let progress, history = [], hIdx = -1;
+const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
+                "November", "December"];
+// Title = build year; the full build date goes in the descriptor line.
+const title = c => c.built ? c.built.slice(0, 4) : c.name;
+const builtOn = c => {
+  if (!c.built) return "";
+  const [y, m, d] = c.built.split("-").map(Number);
+  return `Built ${MONTHS[m - 1]} ${d}, ${y} · `;
+};
 
 // Stats for a client at the selected history snapshot (latest = progress.json).
 function statsFor(c) {
@@ -91,7 +101,8 @@ function bar(m, p, total, cls = "") {
 function joinLink(name) {
   if (!progress.server) return "";
   const url = `roconstruct://work?client=${encodeURIComponent(name)}&server=${encodeURIComponent(progress.server)}`;
-  return `<a class="join" href="${esc(url)}">Help on ${esc(name)} with one click</a>`;
+  const c = progress.clients.find(c => c.name === name) || {name};
+  return `<a class="join" href="${esc(url)}">Help on ${esc(title(c))} with one click</a>`;
 }
 
 function joinHelp() {
@@ -124,8 +135,8 @@ function overview() {
   const sum = k => started.reduce((a, c) => a + c[k], 0);
   const funcs = sum("functions"), matched = sum("matched"), bytes = sum("bytes"), mbytes = sum("matched_bytes");
   app.innerHTML = `
-    <h1>Roblox</h1>
-    <p class="sub">Client Decompilation Progress — <a href="${REPO}">github</a></p>
+    <h1 class="logo"><img src="logo.png" alt="RoConstruct" onerror="this.replaceWith('RoConstruct')"></h1>
+    <p class="sub">Old Roblox Client Decompilation — <a href="${REPO}">github</a></p>
     <div class="stats">
       <div class="stat"><b>${fmt(matched)}</b><span>Functions matched</span></div>
       <div class="stat"><b>${fmt(funcs - matched)}</b><span>Remaining</span></div>
@@ -137,8 +148,8 @@ function overview() {
     ${joinHelp()}
     <div class="cards">${progress.clients.map(statsFor).map(c => `
       <a class="card" href="#${esc(c.name)}">
-        <h3>${esc(c.name)}</h3>
-        <div class="meta">${esc(c.compiler)}</div>
+        <h3>${esc(title(c))}</h3>
+        <div class="meta">${esc(builtOn(c))}${esc(c.compiler)}</div>
         ${c.started ? bar(c.matched_bytes, 0, c.bytes) +
           `<div class="pct"><span>${fmt(c.matched)} / ${fmt(c.functions)}</span><span>${pct(c.matched_bytes, c.bytes)}</span></div>`
           : `<div class="pct"><span>not started</span></div>`}
@@ -222,8 +233,8 @@ async function client(name) {
   const latest = progress.clients.find(c => c.name === name);
   if (!latest) return overview();
   if (!latest.started) {
-    app.innerHTML = `<p class="back"><a href="#">← all clients</a></p><h1>${esc(name)}</h1>
-      <p class="sub">${esc(latest.compiler)} — not started. Run <code>roc analyze ${esc(name)}</code>.</p>`;
+    app.innerHTML = `<p class="back"><a href="#">← all clients</a></p><h1>${esc(title(latest))}</h1>
+      <p class="sub">${esc(builtOn(latest))}${esc(latest.compiler)} — not started. Run <code>roc analyze ${esc(name)}</code>.</p>`;
     return;
   }
   const c = statsFor(latest);
@@ -238,8 +249,8 @@ async function client(name) {
   const unitOrder = [...byUnit.keys()].sort((a, b) => unitSize(b) - unitSize(a));
   app.innerHTML = `
     <p class="back"><a href="#">← all clients</a></p>
-    <h1>${esc(name)}</h1>
-    <p class="sub">${esc(latest.compiler)} · ${fmt(latest.classes || 0)} classes · ${fmt(latest.generated || 0)} compiler stubs skipped</p>
+    <h1>${esc(title(latest))}</h1>
+    <p class="sub">${esc(builtOn(latest))}${esc(latest.compiler)} · ${fmt(latest.classes || 0)} classes · ${fmt(latest.generated || 0)} compiler stubs skipped</p>
     <div class="joins">${joinLink(name)}</div>
     <div class="stats">
       <div class="stat"><b>${fmt(c.matched)}</b><span>Matched</span></div>
