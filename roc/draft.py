@@ -11,6 +11,7 @@ import struct
 import subprocess
 import tempfile
 import urllib.request
+import functools
 from pathlib import Path
 
 from roc import match
@@ -33,9 +34,11 @@ def mini_elf(code, va):
     return head + b"\0" * (0x1000 - len(head)) + b"\0" * pad + code
 
 
+@functools.lru_cache(maxsize=1)
 def _docker():
-    """Docker's path. winget puts it outside the running process's PATH, so which()
-    alone reports a freshly installed Docker Desktop as missing."""
+    """Docker's path, resolved once. winget puts it outside the running process's
+    PATH, so which() alone reports a freshly installed Docker Desktop as missing.
+    Cached: this is called per function in a worker run, and PATH lookups are not free."""
     from roc import setup
     setup.refresh_path()
     return setup.find_exe("docker")

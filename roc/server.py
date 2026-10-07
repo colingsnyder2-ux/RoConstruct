@@ -184,13 +184,21 @@ def make_handler(store, token, can_verify):
             pass
 
         def send(self, code, obj):
+            """Write a response. A worker that gave up and closed the socket (timeout,
+            restart, laptop sleep) is normal, not an error: the request was handled and
+            there is simply nobody left to tell. Failing here raised
+            ConnectionAbortedError out of the handler thread and printed a traceback for
+            every abandoned request."""
             body = json.dumps(obj).encode()
-            self.send_response(code)
-            self.send_header("Content-Type", "application/json")
-            self.send_header("Content-Length", str(len(body)))
-            self.send_header("Access-Control-Allow-Origin", "*")
-            self.end_headers()
-            self.wfile.write(body)
+            try:
+                self.send_response(code)
+                self.send_header("Content-Type", "application/json")
+                self.send_header("Content-Length", str(len(body)))
+                self.send_header("Access-Control-Allow-Origin", "*")
+                self.end_headers()
+                self.wfile.write(body)
+            except (ConnectionAbortedError, ConnectionResetError, BrokenPipeError):
+                self.close_connection = True
 
         def do_GET(self):
             url = urlparse(self.path)

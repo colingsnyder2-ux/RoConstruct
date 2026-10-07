@@ -47,13 +47,21 @@ EXTRA_PATHS = [LOCAL / r"Programs\Ollama",
                LOCAL / r"Programs\Python\Python312\Scripts"]
 OLLAMA_API = "http://127.0.0.1:11434/api/tags"
 
+# The PATH this process started with, kept so refresh_path can rebuild instead of
+# accumulating. Prepending to the live PATH on every call grows it without bound, and
+# Windows caps a single environment variable at 32767 characters - after ~20 calls
+# every cl.exe invocation died with "the environment variable is longer than 32767
+# characters", silently failing every compile in a worker run.
+_ORIGINAL_PATH = os.environ.get("PATH", "")
+
 
 def refresh_path():
     """Re-read PATH from the registry and add the usual install dirs.
 
     winget does not update the PATH of the process that started it, so a program it
-    just installed stays invisible to shutil.which until this runs. That mismatch is
-    why a fresh install looked broken and offered to install Ollama again every time.
+    just installed stays invisible to shutil.which until this runs.
+
+    Idempotent: rebuilt from the original PATH each call, never appended to itself.
     """
     import winreg
     parts = []
@@ -67,8 +75,14 @@ def refresh_path():
                     parts.append(value)
         except OSError:
             pass
-    merged = os.pathsep.join(parts + [str(p) for p in EXTRA_PATHS if p.is_dir()])
-    os.environ["PATH"] = merged + os.pathsep + os.environ.get("PATH", "")
+    seen, ordered = set(), []
+    for part in [str(p) for p in EXTRA_PATHS if p.is_dir()] + parts + [_ORIGINAL_PATH]:
+        for one in part.split(os.pathsep):
+            key = one.strip().rstrip("\\").lower()
+            if one and key not in seen:
+                seen.add(key)
+                ordered.append(one)
+    os.environ["PATH"] = os.pathsep.join(ordered)
     return os.environ["PATH"]
 
 
