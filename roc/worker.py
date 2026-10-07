@@ -150,7 +150,7 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
         try:
             job = api.call("/v1/lease", {"user": user, "worker": worker, "clients": have,
                                          "mode": "ai", "max_size": max_size})["job"]
-        except RuntimeError as error:
+        except (Exception, SystemExit) as error:  # overnight: nothing short of Ctrl+C stops the loop
             if not forever:
                 raise
             if not reconnect(api, log):

@@ -73,7 +73,7 @@ class Store:
             marks = ",".join("?" * len(have))
             row = self.db.execute(
                 "SELECT client, addr, size, unit, score, source FROM funcs f "
-                "WHERE client IN (%s) AND score < 100 AND size <= ? AND NOT EXISTS "
+                "WHERE client IN (%s) AND score < 100 AND size BETWEEN 6 AND ? AND NOT EXISTS "
                 "(SELECT 1 FROM leases l WHERE l.client = f.client AND l.addr = f.addr) "
                 "ORDER BY attempts, size LIMIT 1" % marks, (*have, max_size)).fetchone()
             if not row:

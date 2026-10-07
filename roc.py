@@ -310,7 +310,7 @@ def cmd_worker(a):
     user = need(a.user or s.get("user"), "username", "Use --user NAME or: roc config --user NAME")
     worker.save_settings(user=user, server=srv)
     worker.run(srv, user, a.token or s.get("token"), a.model or s.get("model"), a.rounds, a.max_size,
-               not a.no_revng, a.jobs)
+               not a.no_revng, a.jobs, forever=True)
 
 
 def cmd_status(a):

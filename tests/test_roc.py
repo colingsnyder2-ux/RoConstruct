@@ -117,11 +117,11 @@ def test_draft_helpers():
 def test_server_store():
     st = Store(":memory:", lease_seconds=1)
     st.db.executemany("INSERT INTO funcs(client,addr,size,unit) VALUES(?,?,?,?)",
-                      [("C", "00401000", 4, "A"), ("C", "00401010", 8, "B")])
+                      [("C", "00401000", 6, "A"), ("C", "00401010", 8, "B"), ("C", "00401020", 4, "T")])
     a = st.lease("alice", "w1", ["C"], "ai", 256)
     b = st.lease("bob", "w2", ["C"], "ai", 256)
-    assert {a["addr"], b["addr"]} == {"00401000", "00401010"}
-    assert st.lease("carol", "w3", ["C"], "ai", 256) is None      # both leased
+    assert {a["addr"], b["addr"]} == {"00401000", "00401010"}     # 4-byte 00401020 below the match floor, never leased
+    assert st.lease("carol", "w3", ["C"], "ai", 256) is None      # both leasable ones leased
     time.sleep(1.1)                                                  # nobody heartbeats
     assert st.lease("carol", "w3", ["C"], "ai", 256) is not None  # expired lease frees up
     assert st.submit("C", "00401000", "alice", 60, "x") == (60, True)
