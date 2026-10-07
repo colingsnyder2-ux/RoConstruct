@@ -116,7 +116,8 @@ def run(url):
     if not draft.pick_model(s.get("model")):
         ensure_model()
     keep_awake()
-    print("Working. Leave this window open overnight; close it to stop.\n")
+    print("Working. This uses your GPU and CPU heavily (fans, heat, power draw; laptops: plug in).")
+    print("Leave this window open overnight; close it to stop at any time.\n")
     worker.run(server, user, token, s.get("model"), forever=True, only=[client])
 
 

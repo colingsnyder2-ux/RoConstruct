@@ -28,6 +28,8 @@ When every function matches, the result is a source tree that rebuilds the origi
 3. Put your copy of the client in its folder, for example `clients\2008-06\Roblox.exe`. Run `roc client verify` to check it's the right, unmodified build.
 4. Click **"Help on 2008-06"** on the progress site, or double-click **`roc.cmd`** for a menu.
 
+**Heads up:** a worker runs an AI model and the compiler nonstop. Expect high GPU and CPU use, fan noise, heat and extra power draw (laptops: plug in). Close the worker window to stop at any time.
+
 The one-click link asks for a username once, sets up anything missing, keeps the PC awake, and runs a worker until you close the window. Leave it running overnight. Your matches show up on the leaderboard.
 
 | You have | Do this |

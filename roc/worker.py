@@ -127,6 +127,7 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
     worker = uuid.uuid4().hex[:12]
     log("Worker %s as '%s' on %s | model %s | Rev.ng %s" % (worker, user, ", ".join(have), model,
                                                          "on" if revng else "off"))
+    log("Note: workers keep the GPU and CPU busy (fans, heat, power). Ctrl+C or close the window to stop.")
     done = matched = 0
     while max_jobs is None or done < max_jobs:
         try:
