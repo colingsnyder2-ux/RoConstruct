@@ -6,24 +6,20 @@ A group project to turn old Roblox clients (2007–2010) back into readable C++ 
 
 ---
 
-## What is this? (the simple version)
+## Overview
 
-A game like Roblox starts as **source code**: text that programmers write. A program called a **compiler** turns that text into the `.exe` file your computer runs. The exe is just numbers. People can't easily read it, and you can't easily change it.
+The clients only exist as compiled x86 executables. Compilation is lossy: names, types, comments and structure are gone, and only machine code remains. A general-purpose decompiler (Ghidra, Rev.ng) can turn that machine code back into C, but the output is approximate. Nothing proves it means the same thing as the original, and it can't be rebuilt into the same program.
 
-The original source code for these old clients isn't available. We're **rebuilding it**.
+RoConstruct uses **matching decompilation**, the method used to fully reconstruct Super Mario 64, Ocarina of Time and Super Smash Bros.:
 
-Think of it like a cake. We have the cake (the exe) but not the recipe (the source). So we:
+1. **Partition.** The executable is split into individual functions (about 25,000–37,000 per client), using control-flow analysis, base relocations and MSVC RTTI. Compiler-generated stubs are set aside.
+2. **Hypothesize.** For one function, someone writes C++ believed to be its source. That can be a person, an LLM, or a pattern matcher for trivial cases.
+3. **Compile with the original toolchain.** The candidate is built with the *exact* compiler version that produced the client. The version is identified from the executable's Rich header: VS2005 14.00.50727, VS2008 RTM 15.00.21022, or VS2008 SP1 15.00.30729.
+4. **Verify.** The resulting machine code is compared byte for byte with the original. Fields the linker patches (absolute addresses, call targets) are masked out. An identical result is a **match**: the source is provably equivalent to the original function. Otherwise the instruction-level diff shows where it differs, and the candidate is revised.
 
-1. **Cut the cake into slices.** RoConstruct splits the exe into its ~40,000 pieces, called **functions**. Each one is a small job, like "get this part's color" or "play this sound".
-2. **Guess the recipe for one slice.** Someone writes C++ code they think produced that function. That someone can be a person or an AI.
-3. **Bake it with the original oven.** We compile the guess with the **exact same compiler Roblox used in 2008**.
-4. **Compare.** If our slice is identical to the original, down to every byte, the recipe is proven correct. That's a **match**. If not, the tool shows exactly which instructions differ, and we try again.
+A match is a correctness proof, not a guess. Because the compiler is deterministic, identical output means the source expresses the same computation, data layout and calling convention as the code Roblox shipped. When every function matches, the result is a complete source tree that rebuilds the original client.
 
-Once every function matches, we have the complete recipe: real source code that rebuilds the same client.
-
-This approach is called **matching decompilation**. Fan projects have used it to fully rebuild Super Mario 64, Zelda: Ocarina of Time and Super Smash Bros.
-
-## Why bother? What this unlocks
+## Motivation
 
 - **Security fixes.** Old clients have known exploits, and running them today is risky. With the source, those holes can be patched properly instead of hacked around.
 - **Run it in a web browser.** With source, the client can be compiled to **WebAssembly**, so a 2008 client could run in a browser tab with no download.
@@ -32,9 +28,9 @@ This approach is called **matching decompilation**. Fan projects have used it to
 - **Preservation.** The history of how Roblox worked is kept in a form people can read and learn from, not as a binary that slowly stops running.
 - **Modding.** Changing behavior means editing readable code, not patching bytes in a hex editor.
 
-## What happens after everything is 100%?
+## After 100%: remaining work
 
-Matching every function is the biggest step, but not the last:
+Function matching is the largest phase, but a full reconstruction also requires:
 
 1. **Match the data.** Text, tables and constants (the "Data" bar on the site) need to match too.
 2. **Rebuild the whole exe.** Link all the matched pieces in the original order and get an exe identical to the original. This proves nothing was missed.
