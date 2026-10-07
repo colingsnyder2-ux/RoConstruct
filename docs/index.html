@@ -165,8 +165,8 @@ function overview() {
   wireNav();
 }
 
-function leaderboard() {
-  const all = progress.leaderboard || [];
+function leaderboard(rows) {
+  const all = rows || progress.leaderboard || [];
   const bot = all.find(r => r.user === "auto");
   const rows = all.filter(r => r.user !== "auto");
   if (!all.length) return "";
@@ -275,6 +275,7 @@ async function client(name) {
     <div class="legend"><span><i style="background:#3fb950"></i>matched</span>
       <span><i style="background:rgb(49,100,64)"></i>partial</span><span><i style="background:#3a3d45"></i>not matched</span></div>
     <div class="detail" id="detail">Click a box for details.</div>
+    ${leaderboard(latest.leaderboard || [])}
     <h2>Easiest remaining</h2>
     <div class="table"><table><thead><tr><th>Address</th><th>Size</th><th>Score</th><th>Unit</th><th>Claim</th></tr></thead>
       <tbody id="easy"></tbody></table></div>
