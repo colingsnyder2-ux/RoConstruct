@@ -69,7 +69,7 @@ Nothing above can record a wrong match: a result counts only when it is byte-ide
 ### Recovered findings
 
 The recovered per-client function outputs are published separately, so normal
-RoConstruct clones stay small: [RoConstruct-findings](https://github.com/colingsnyder2-ux/RoConstruct-findings).
+RoConstruct clones stay small. Browse [RoConstruct-findings](https://github.com/colingsnyder2-ux/RoConstruct-findings), or download only the recovered `src/` as the [latest ZIP](https://github.com/colingsnyder2-ux/RoConstruct-findings/releases/download/findings-latest/roconstruct-findings-src.zip).
 
 ## Reference
 
