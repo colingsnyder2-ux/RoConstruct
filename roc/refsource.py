@@ -39,8 +39,9 @@ SKIP_DIRS = {".git", "ThirdParty", "ThirdPartyIncluded", "UnitTest", "UnitTests"
 
 CLASS_RE = re.compile(r"\b(?:class|struct)\s+([A-Za-z_]\w*)")
 NAMESPACE_RE = re.compile(r"^\s*namespace\s+([A-Za-z_]\w*)", re.M)
-FUNC_RE = re.compile(r"^\s*(?:[A-Za-z_][\w:<>,\s\*&]*?\s+)?([A-Za-z_]\w*)\s*\(", re.M)
-DECL_RE = re.compile(r"^\s*(?:[A-Za-z_][\w:<>,\s\*&]*?\s+)+([A-Za-z_]\w*)\s*\([^;{]*\)\s*(?:const\s*)?;", re.M)
+# One flat character class, no nested quantifiers: the old nested form backtracked
+# exponentially on long declaration lines and never finished indexing the tree.
+FUNC_RE = re.compile(r"^[ \t]*[\w:<>,*& \t]*?\b([A-Za-z_]\w*)[ \t]*\(", re.M)
 
 
 def _walk(root):
@@ -77,7 +78,7 @@ def build_index(force=False, log=print):
         for name in found:
             if len(name) > 2 and not name.startswith(("std", "boost")):
                 classes[name].append(rel)
-        for name in set(DECL_RE.findall(text)) | set(FUNC_RE.findall(text)):
+        for name in set(FUNC_RE.findall(text)):
             if len(name) > 2:
                 funcs[name].append(rel)
     data = {"files": str(TREE),
