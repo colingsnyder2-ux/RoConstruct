@@ -50,6 +50,23 @@ Matching every function is the biggest step, but not the last:
 2. **Double-click `install.cmd`.** It installs Python if needed and downloads the old Microsoft compilers. Each download is checked against Microsoft's signature or a known fingerprint. Nothing is installed system-wide and no admin rights are needed.
 3. **Put your own copy of the client** in its folder, for example `clients\2008M\RobloxApp_client.exe`. Then double-click `roc.cmd`.
 
+### One-click: leave it running overnight
+
+After `install.cmd` has run once, the website's **"Help on 2008M with one click"** buttons work. The first click asks for a username. After that, everything is automatic:
+
+- missing compilers are downloaded
+- you're shown which folder to drop the client exe into
+- the AI model is fetched
+- the worker starts
+
+It keeps your PC awake, retries if the server or internet drops out, and runs until you close the window.
+
+Links look like `roconstruct://work?client=2008M&server=host:8765`. They're registered for your Windows user only; `roc link remove` turns them off. The first time a link points at a new server, the address is shown before anything starts. Code that comes from a server is screened before compiling (no `#import`, no quoted `#include`, no inline asm).
+
+Server owners: `roc config --public-server your.host:8765`, then `roc progress` adds the buttons to the site.
+
+### The menu
+
 `roc.cmd` opens a menu:
 
 ```
@@ -118,6 +135,7 @@ roc flags <client>                work out the client's compiler flags from matc
 roc config --user NAME --server URL [--token PW] [--model M]   save your settings
 roc worker [--jobs N] [--rounds N] [--max-size BYTES]          AI worker
 roc server [--port 8765] [--token PW]                          host the group server
+roc link install | remove         enable / disable roconstruct:// one-click links
 roc status                        server progress, active workers, leaderboard
 roc progress                      write website data (pulls scores from your server)
 ```

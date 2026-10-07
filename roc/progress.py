@@ -54,7 +54,7 @@ def fetch_server(server, token=None):
     return Api(server, token).call("/v1/export")
 
 
-def build(server=None, token=None):
+def build(server=None, token=None, public_server=None):
     """server: pull scores + leaderboard from the group server (else local scores only)."""
     (DOCS / "data").mkdir(parents=True, exist_ok=True)
     remote = fetch_server(server, token) if server else {"scores": {}, "leaderboard": []}
@@ -88,7 +88,8 @@ def build(server=None, token=None):
             stats[name] = {k: row[k] for k in STATS}
         out.append(row)
     updated = time.strftime("%Y-%m-%d %H:%M UTC", time.gmtime())
-    progress = {"updated": updated, "clients": out, "leaderboard": remote["leaderboard"][:50]}
+    progress = {"updated": updated, "clients": out, "leaderboard": remote["leaderboard"][:50],
+                "server": public_server}
     (DOCS / "progress.json").write_text(json.dumps(progress, indent=1) + "\n")
     add_history(stats, updated)
     return progress

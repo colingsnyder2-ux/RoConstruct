@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-07 02:22 UTC",
+ "updated": "2026-10-07 02:28 UTC",
  "clients": [
   {
    "name": "2007M",
@@ -54,5 +54,6 @@
    "generated": 23283
   }
  ],
- "leaderboard": []
+ "leaderboard": [],
+ "server": null
 }

@@ -32,8 +32,26 @@ def need(value, what, hint):
 # ---------- commands ----------
 
 def cmd_install(a):
-    from roc import setup
+    from roc import link, setup
     setup.install(ask=(lambda q: "y") if a.yes else input)
+    if os.name == "nt":
+        link.install()
+
+
+def cmd_link(a):
+    from roc import link
+    if a.target == "install":
+        return link.install()
+    if a.target == "remove":
+        return link.remove()
+    try:
+        link.run(a.target)
+    except (SystemExit, Exception) as error:  # link windows close on exit: keep the message visible
+        code = getattr(error, "code", error)
+        if code not in (None, 0):
+            print()
+            print(code)
+            input("Press Enter to close.")
 
 
 def cmd_client_add(a):
@@ -138,7 +156,7 @@ def cmd_config(a):
     from roc.worker import save_settings, USER_RE
     if a.user and not USER_RE.match(a.user):
         sys.exit("Username must be 2-32 letters, digits, _ . -")
-    s = save_settings(user=a.user, server=a.server, token=a.token, model=a.model)
+    s = save_settings(user=a.user, server=a.server, token=a.token, model=a.model, public_server=a.public_server)
     print("Saved: " + ", ".join("%s=%s" % (k, "***" if k == "token" else v) for k, v in s.items()))
 
 
@@ -189,7 +207,7 @@ def cmd_progress(a):
     from roc import progress
     s = settings()
     srv = a.server or s.get("server")
-    p = progress.build(srv, a.token or s.get("token"))
+    p = progress.build(srv, a.token or s.get("token"), s.get("public_server"))
     for c in p["clients"]:
         if c["started"]:
             print("%-6s %d/%d matched, %.2f%% of code" % (
@@ -288,7 +306,9 @@ def main(argv=None):
         (["name"], {}), (["--max-size"], {"type": int, "default": 24}))
     cmd("flags", cmd_flags, "find the client's compiler flags from matched sources", (["name"], {}))
     cmd("config", cmd_config, "save username / server / password / model",
-        (["--user"], {}), (["--server"], {}), (["--token"], {}), (["--model"], {}))
+        (["--user"], {}), (["--server"], {}), (["--token"], {}), (["--model"], {}),
+        (["--public-server"], {"help": "address shown in website join links (host:port)"}))
+    cmd("link", cmd_link, "one-click links: 'install', 'remove', or a roconstruct:// URL", (["target"], {}))
     cmd("submit", cmd_submit, "send hand-written sources to the server",
         (["name"], {}), (["addr"], {"nargs": "*"}), (["--server"], {}), (["--user"], {}), (["--token"], {}))
     cmd("server", cmd_server, "host the group server",

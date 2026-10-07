@@ -121,9 +121,13 @@ def target(client, addr):
 
 
 def reject_asm(text):
-    """Inline asm would 'match' without decompiling anything."""
+    """Inline asm would 'match' without decompiling anything. Sources also arrive
+    from servers and AI, so anything that reads other files on this PC is refused
+    (only `#include <system header>` is allowed)."""
     if re.search(r"__asm|\b_asm\b|\b_emit\b|#pragma\s+code_seg", text):
         raise CompileError("inline asm / _emit is not allowed: write C++")
+    if re.search(r'#\s*(import|using)\b|#\s*include\s*"|#\s*pragma\s+(comment|include_alias)', text):
+        raise CompileError('#import, #using, #include "file" and #pragma comment are not allowed')
 
 
 def compile_text(client, text, flags=None):

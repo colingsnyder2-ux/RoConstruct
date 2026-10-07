@@ -77,11 +77,23 @@ def usable_clients(info, log=print):
 
 
 def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=True,
-        max_jobs=None, log=print):
+        max_jobs=None, log=print, forever=False, only=None):
+    """forever: survive server/network outages (retry every minute) for overnight runs.
+    only: restrict to these clients (one-click links)."""
     if not USER_RE.match(user or ""):
         raise SystemExit("Pick a username: 2-32 letters, digits, _ . -")
     api = Api(server, token)
-    info = api.call("/v1/info")
+    while True:
+        try:
+            info = api.call("/v1/info")
+            break
+        except RuntimeError as error:
+            if not forever:
+                raise
+            log("%s  Retrying in 60 s." % error)
+            time.sleep(60)
+    if only:
+        info["clients"] = {k: v for k, v in info["clients"].items() if k in only}
     have = usable_clients(info, log)
     if not have:
         raise SystemExit("Nothing to work on from this PC yet (see the skip reasons above).")
@@ -93,10 +105,17 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
     worker = uuid.uuid4().hex[:12]
     log("Worker %s as '%s' on %s | model %s | Rev.ng %s" % (worker, user, ", ".join(have), model,
                                                          "on" if revng else "off"))
-    done = 0
+    done = matched = 0
     while max_jobs is None or done < max_jobs:
-        job = api.call("/v1/lease", {"user": user, "worker": worker, "clients": have,
-                                     "mode": "ai", "max_size": max_size})["job"]
+        try:
+            job = api.call("/v1/lease", {"user": user, "worker": worker, "clients": have,
+                                         "mode": "ai", "max_size": max_size})["job"]
+        except RuntimeError as error:
+            if not forever:
+                raise
+            log("%s  Retrying in 60 s." % error)
+            time.sleep(60)
+            continue
         if not job:
             if max_jobs is not None:
                 break
@@ -104,8 +123,10 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
             time.sleep(60)
             continue
         done += 1
-        work_one(api, user, job, info, model, rounds, revng, log)
-    log("Worker finished %d job(s)." % done)
+        matched += work_one(api, user, job, info, model, rounds, revng, log) == 100
+        if done % 10 == 0:
+            log("== %s: %d functions tried, %d matched this session ==" % (time.strftime("%H:%M"), done, matched))
+    log("Worker finished %d job(s), %d matched." % (done, matched))
 
 
 def work_one(api, user, job, info, model, rounds, revng, log):
@@ -132,15 +153,17 @@ def work_one(api, user, job, info, model, rounds, revng, log):
             r = api.call("/v1/submit", {"lease": job["lease"], "user": user, "client": client,
                                         "addr": addr, "score": score, "source": src})
             log("  submitted %d%% (%s)" % (r["stored"], "verified by server" if r["verified"] else "not re-checked"))
-        else:
-            api.call("/v1/release", {"lease": job["lease"]})
-            log("  no improvement (best %d%%), released" % job["score"])
-    except Exception as error:  # never leave a lease hanging on a crash
+            return r["stored"]
+        api.call("/v1/release", {"lease": job["lease"]})
+        log("  no improvement (best %d%%), released" % job["score"])
+        return job["score"]
+    except (Exception, SystemExit) as error:  # never leave a lease hanging on a crash
         log("  error: %s" % error)
         try:
             api.call("/v1/release", {"lease": job["lease"]})
         except RuntimeError:
             pass
+        return 0
     finally:
         stop.set()
 

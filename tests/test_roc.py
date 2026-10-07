@@ -65,7 +65,9 @@ def test_match():
     assert score(bytes.fromhex("e812345678c3"), [], code, relocs) == 100
     assert score(bytes.fromhex("e812345678c2"), [], code, relocs) < 100
     assert asm_lines(bytes.fromhex("a100104000c3"), [1]) == ["mov eax, dword ptr [sym]", "ret "]
-    for bad in ("__asm { nop }", "_emit 0x90"):
+    reject_asm("#include <string>\n")
+    for bad in ("__asm { nop }", "_emit 0x90", '#include "C:/secret.txt"', "#import <x.tlb>",
+                '#pragma comment(lib, "x")'):
         try:
             reject_asm(bad)
             raise AssertionError(bad)

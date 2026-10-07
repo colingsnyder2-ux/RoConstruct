@@ -58,6 +58,10 @@ th { color: var(--dim); font-weight: 400; }
 .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; }
 .foot { font-family: var(--mono); color: var(--dim); font-size: 13px; margin-top: 32px; }
 .back { font-family: var(--mono); font-size: 14px; }
+.joins { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 16px 0; }
+.join { background: linear-gradient(90deg, var(--accent), var(--accent2)); color: #fff; font-weight: 700;
+  padding: 10px 18px; border-radius: 99px; }
+.join:hover { text-decoration: none; filter: brightness(1.1); }
 </style>
 </head>
 <body>
@@ -82,6 +86,19 @@ function statsFor(c) {
 function bar(m, p, total, cls = "") {
   return `<div class="bar ${cls}"><i class="m" style="width:${100 * m / total || 0}%"></i>` +
          `<i class="p" style="width:${100 * p / total || 0}%"></i></div>`;
+}
+
+function joinLink(name) {
+  if (!progress.server) return "";
+  const url = `roconstruct://work?client=${encodeURIComponent(name)}&server=${encodeURIComponent(progress.server)}`;
+  return `<a class="join" href="${esc(url)}">Help on ${esc(name)} with one click</a>`;
+}
+
+function joinHelp() {
+  if (!progress.server) return "";
+  return `<p class="foot">First time? <a href="${REPO}/archive/refs/heads/main.zip">Download RoConstruct</a>, unzip it,
+    double-click <code>install.cmd</code> (this also enables the one-click links), then click a "Help" button.
+    Your PC keeps working until you close the window, so it's fine to leave running overnight.</p>`;
 }
 
 function historyNav() {
@@ -117,6 +134,7 @@ function overview() {
     ${bar(mbytes, 0, bytes)}
     ${historyNav()}
     <h2>Clients</h2>
+    ${joinHelp()}
     <div class="cards">${progress.clients.map(statsFor).map(c => `
       <a class="card" href="#${esc(c.name)}">
         <h3>${esc(c.name)}</h3>
@@ -125,6 +143,8 @@ function overview() {
           `<div class="pct"><span>${fmt(c.matched)} / ${fmt(c.functions)}</span><span>${pct(c.matched_bytes, c.bytes)}</span></div>`
           : `<div class="pct"><span>not started</span></div>`}
       </a>`).join("")}
+    </div>
+    <div class="joins">${progress.clients.filter(c => c.started).map(c => joinLink(c.name)).join("")}
     </div>
     ${leaderboard()}
     <p class="foot">Matched = compiles byte-identical with the original MSVC. Compiler-generated stubs are not counted.
@@ -220,6 +240,7 @@ async function client(name) {
     <p class="back"><a href="#">← all clients</a></p>
     <h1>${esc(name)}</h1>
     <p class="sub">${esc(latest.compiler)} · ${fmt(latest.classes || 0)} classes · ${fmt(latest.generated || 0)} compiler stubs skipped</p>
+    <div class="joins">${joinLink(name)}</div>
     <div class="stats">
       <div class="stat"><b>${fmt(c.matched)}</b><span>Matched</span></div>
       <div class="stat"><b>${fmt(c.partial)}</b><span>Partial</span></div>

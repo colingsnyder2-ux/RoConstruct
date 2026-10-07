@@ -225,8 +225,11 @@ def make_handler(store, token, can_verify):
                         return self.send(400, {"error": "does not compile here: %s" % str(error)[:500]})
                     except SystemExit as error:
                         return self.send(400, {"error": str(error)})
-                elif re.search(r"__asm|\b_asm\b|\b_emit\b", source):
-                    return self.send(400, {"error": "inline asm is not allowed"})
+                else:
+                    try:
+                        match.reject_asm(source)
+                    except match.CompileError as error:
+                        return self.send(400, {"error": str(error)})
                 try:
                     stored, improved = store.submit(client, addr, user, max(0, min(100, score)), source)
                 except ValueError as error:
