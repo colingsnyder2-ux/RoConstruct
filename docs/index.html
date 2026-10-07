@@ -248,8 +248,9 @@ async function client(name) {
     </div>
     <div class="label">Code <small>(${mb(c.bytes)}) — ${pct(c.matched_bytes, c.bytes)}</small></div>
     ${bar(c.matched_bytes, 0, c.bytes, "g")}
-    <div class="label">Data <small>(${mb(latest.data_bytes || 0)}) — not tracked yet</small></div>
-    ${bar(0, 0, 1, "b")}
+    <div class="label">Data <small>(${mb(latest.data_bytes || 0)}) — ${pct(latest.data_matched_bytes || 0, latest.data_bytes)}
+      verified (strings and constants used by matched functions)</small></div>
+    ${bar(latest.data_matched_bytes || 0, 0, latest.data_bytes || 1, "b")}
     ${historyNav()}
     <div class="label">Units <small>(${fmt(units.length)}; map always shows latest)</small></div>
     <div class="controls">

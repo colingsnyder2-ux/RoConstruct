@@ -50,6 +50,75 @@ def coff_functions(obj):
     return out
 
 
+def coff_data_refs(obj, func_name):
+    """Data a function's source defines and points to with absolute (DIR32) relocations:
+    [(offset in function, data bytes, reloc offsets inside the data)]. Only data with
+    contents in this .obj (string literals, constants, initialised globals) is listed;
+    `extern` declarations have none and are not compared."""
+    _, nsec, _, symptr, nsym, optsz, _ = struct.unpack_from("<HHIIIHH", obj, 0)
+    strtab = symptr + nsym * 18
+    secs = [struct.unpack_from("<8sIIIIIIHHI", obj, 20 + optsz + 40 * i) for i in range(nsec)]
+    syms, i = {}, 0
+    while i < nsym:
+        raw, value, secnum, typ, _, naux = struct.unpack_from("<8sIhHBB", obj, symptr + 18 * i)
+        if raw[:4] == b"\0\0\0\0":
+            off = strtab + struct.unpack_from("<I", raw, 4)[0]
+            raw = obj[off:obj.index(b"\0", off)]
+        syms[i] = (raw.rstrip(b"\0").decode("latin-1"), value, secnum, typ)
+        i += 1 + naux
+
+    def relocs_of(sec):
+        _, _, _, _, _, relptr, _, nrel, _, _ = secs[sec]
+        return [struct.unpack_from("<IIH", obj, relptr + 10 * k) for k in range(nrel)]
+
+    func = next(((v, s - 1) for n, v, s, t in syms.values() if n == func_name and s > 0), None)
+    if func is None:
+        return []
+    fvalue, fsec = func
+    out = []
+    for off, symidx, typ in relocs_of(fsec):
+        if typ != 6 or symidx not in syms:  # 6 = IMAGE_REL_I386_DIR32 (absolute address)
+            continue
+        name, value, secnum, _ = syms[symidx]
+        if secnum <= 0:
+            continue  # extern: no contents here
+        _, _, _, rawsize, rawptr, _, _, _, _, chars = secs[secnum - 1]
+        if chars & 0x20 or not chars & 0x40 or not rawptr:  # code, or no initialised data
+            continue
+        nxt = min([v for n, v, s, t in syms.values() if s == secnum and v > value] + [rawsize])
+        inner = [r - value for r, _, _ in relocs_of(secnum - 1) if value <= r < nxt]
+        out.append((off - fvalue, obj[rawptr + value:rawptr + nxt], inner))
+    return out
+
+
+@functools.lru_cache(maxsize=None)
+def _base_relocs(client):
+    from roc.analyze import reloc_sites
+    entry = clients.load()[client]
+    return frozenset(reloc_sites(pefile.PE(str(clients.exe_path(client, entry)))))
+
+
+def data_check(client, addr, code, refs):
+    """Compare referenced data against the exe. Returns (matched [(va, len)], mismatch notes)."""
+    base, image = _image(client)
+    exe_relocs = _base_relocs(client)
+    ok, bad = [], []
+    for off, data, inner in refs:
+        if off + 4 > len(code):
+            continue
+        va = int.from_bytes(code[off:off + 4], "little")
+        rva = va - base
+        if not 0 <= rva < len(image) or not data:
+            continue
+        exe = bytes(image[rva:rva + len(data)])
+        mask = set(inner) | {r - va for r in exe_relocs if va <= r < va + len(data)}
+        if masked(exe, mask) == masked(data, mask):
+            ok.append((va, len(data)))
+        else:
+            bad.append("data at %08x differs: exe %r, yours %r" % (va, exe[:40], data[:40]))
+    return ok, bad
+
+
 def masked(code, relocs):
     b = bytearray(code)
     for r in relocs:
@@ -71,7 +140,7 @@ def asm_lines(code, relocs):
     out = []
     for a, s, m, o in Cs(CS_ARCH_X86, CS_MODE_32).disasm_lite(code, 0):
         if any(a <= r < a + s for r in relocs):
-            o = re.sub(r"0x[0-9a-f]+|(?<=\[)0(?=\])", "sym", o)
+            o = re.sub(r"0x[0-9a-f]+|(?<=\[)0(?=\])|(?<=, )0$", "sym", o)
         elif m.startswith(("j", "call")) and o.startswith("0x") and not 0 <= int(o, 16) < len(code):
             o = "sym"
         out.append("%s %s" % (m, o))
@@ -151,13 +220,30 @@ def compile_text(client, text, flags=None):
 
 
 def check_text(client, addr, text, flags=None):
-    """(score, symbol, asm diff) for the best function in text vs the target."""
+    """(score, symbol, asm diff, data spans) for the best function in text vs the target.
+    A byte-identical function whose own strings/constants differ from the exe scores 99."""
     code, relocs, _ = target(client, addr)
-    funcs = coff_functions(compile_text(client, text, flags))
+    obj = compile_text(client, text, flags)
+    funcs = coff_functions(obj)
     if not funcs:
-        return 0, None, "no functions compiled (is the function body empty or inline?)"
+        return 0, None, "no functions compiled (is the function body empty or inline?)", []
     best = max(funcs, key=lambda f: score(code, relocs, f[1], f[2]))
-    return score(code, relocs, best[1], best[2]), best[0], diff(code, relocs, best[1], best[2])
+    value, d, spans = score(code, relocs, best[1], best[2]), diff(code, relocs, best[1], best[2]), []
+    if value == 100:
+        spans, bad = data_check(client, addr, code, coff_data_refs(obj, best[0]))
+        if bad:
+            value, d = 99, "Code matches, but data your source defines does not:\n" + "\n".join(bad)
+    return value, best[0], d, spans
+
+
+def save_data(client, addr, spans):
+    """Record verified data (va, length) per function in work/<client>/data.json."""
+    if not spans:
+        return
+    path = ROOT / "work" / client / "data.json"
+    data = json.loads(path.read_text()) if path.exists() else {}
+    data[addr] = spans
+    path.write_text(json.dumps(data, separators=(",", ":")))
 
 
 def check(client, addr, src, flags=None):

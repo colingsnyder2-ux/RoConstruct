@@ -65,10 +65,68 @@ def returns(body):
     return out
 
 
+def shape_candidates(full):
+    """Whole-function shapes: tail calls, global-object calls, destructors, wrappers.
+    full = asm lines joined with ' ; ' (relocated operands shown as sym)."""
+    out = []
+    o = r"(?: \+ (0x[0-9a-f]+|\d+))?"
+    if full == "jmp sym":
+        out.append("extern void G1_NAME();\nvoid NAME()\n{\n    G1_NAME();\n}\n")
+        out.append("struct S_NAME { void f(); void g(); };\nvoid S_NAME::f()\n{\n    g();\n}\n")
+    if full in ("mov ecx, sym ; jmp sym", "mov ecx, sym ; jmp dword ptr [sym]"):
+        imp = "__declspec(dllimport) " if "[sym]" in full else ""
+        out.append("struct %sT_NAME { void m(); };\nextern T_NAME G1_NAME;\nvoid NAME()\n{\n    G1_NAME.m();\n}\n" % imp)
+    if full == "mov dword ptr [ecx], sym ; ret":
+        out.append("struct S_NAME { virtual ~S_NAME(); };\nS_NAME::~S_NAME()\n{\n}\n")
+    if full in ("mov dword ptr [ecx], sym ; jmp sym", "mov dword ptr [ecx], sym ; jmp dword ptr [sym]"):
+        imp = "__declspec(dllimport) " if "[sym]" in full else ""
+        out.append("struct %sB_NAME { virtual ~B_NAME(); };\nstruct S_NAME : B_NAME { ~S_NAME(); };\n"
+                   "S_NAME::~S_NAME()\n{\n}\n" % imp)
+        out.append("struct %sM_NAME { ~M_NAME(); };\nstruct S_NAME { virtual ~S_NAME(); M_NAME m; };\n"
+                   "S_NAME::~S_NAME()\n{\n}\n" % imp)
+    if full == "mov dword ptr [sym], sym ; ret":
+        out.append("extern void* G1_NAME;\nextern char G2_NAME;\nvoid NAME()\n{\n    G1_NAME = &G2_NAME;\n}\n")
+    m = re.fullmatch(r"fld (dword|qword) ptr \[ecx%s\] ; ret" % o, full)
+    if m:
+        t = "float" if m.group(1) == "dword" else "double"
+        pad = off(m.group(2))
+        out.append("struct S_NAME {\n%s    %s m_x;\n    %s f();\n};\n%s S_NAME::f()\n{\n    return m_x;\n}\n"
+                   % ("    char pad[%d];\n" % pad if pad else "", t, t, t))
+    m = re.fullmatch(r"mov ecx, dword ptr \[ecx%s\] ; jmp sym" % o, full)
+    if m:
+        pad = off(m.group(1))
+        out.append("struct P_NAME { void g(); };\nstruct S_NAME {\n%s    P_NAME* m_p;\n    void f();\n};\n"
+                   "void S_NAME::f()\n{\n    m_p->g();\n}\n" % ("    char pad[%d];\n" % pad if pad else ""))
+    m = re.fullmatch(r"mov eax, dword ptr \[ecx%s\] ; mov eax, dword ptr \[eax%s\] ; ret" % (o, o), full)
+    if m:
+        p1, p2 = off(m.group(1)), off(m.group(2))
+        out.append("struct I_NAME {\n%s    int m_x;\n};\nstruct S_NAME {\n%s    I_NAME* m_p;\n    int f();\n};\n"
+                   "int S_NAME::f()\n{\n    return m_p->m_x;\n}\n"
+                   % ("    char pad[%d];\n" % p2 if p2 else "", "    char pad[%d];\n" % p1 if p1 else ""))
+    if full == "call sym ; push eax ; call sym ; ret":
+        out.append("extern int G1_NAME();\nextern int __stdcall G2_NAME(int);\nint NAME()\n{\n    return G2_NAME(G1_NAME());\n}\n")
+        out.append("extern int G1_NAME();\nextern void __stdcall G2_NAME(int);\nvoid NAME()\n{\n    G2_NAME(G1_NAME());\n}\n")
+    if full == "push sym ; call sym ; pop ecx ; ret":
+        out.append("extern char G2_NAME;\nextern void G1_NAME(void*);\nvoid NAME()\n{\n    G1_NAME(&G2_NAME);\n}\n")
+        out.append("extern char G2_NAME;\nextern int G1_NAME(void*);\nint NAME()\n{\n    return G1_NAME(&G2_NAME);\n}\n")
+    if full == "push esi ; mov esi, ecx ; call sym ; mov ecx, esi ; pop esi ; jmp sym":
+        out.append("struct S_NAME { void f(); void a(); void b(); };\nvoid S_NAME::f()\n{\n    a();\n    b();\n}\n")
+    m = re.fullmatch(r"mov dword ptr \[ecx\], sym ; mov ecx, dword ptr \[ecx \+ (0x[0-9a-f]+|\d+)\] ; test ecx, ecx ; "
+                     r"je 0x[0-9a-f]+ ; push ecx ; call sym ; pop ecx ; ret", full)
+    if m:
+        pad = off(m.group(1)) - 4
+        out.append("extern \"C\" void __cdecl G1_NAME(void*);\nstruct S_NAME {\n    virtual ~S_NAME();\n%s    void* m_p;\n};\n"
+                   "S_NAME::~S_NAME()\n{\n    if (m_p)\n        G1_NAME(m_p);\n}\n" % ("    char pad[%d];\n" % pad if pad else ""))
+    return out
+
+
 def candidates(lines):
     """C++ snippets (with NAME placeholder) that might compile to these asm lines."""
     if not lines:
         return []
+    shapes = shape_candidates(" ; ".join(l.strip() for l in lines))
+    if shapes:
+        return shapes
     m = re.fullmatch(r"ret (0x[0-9a-f]+|\d+)?\s*", lines[-1])
     if not m:
         return []
@@ -114,7 +172,7 @@ def build_unit(snippets):
     return "extern char G;\n\n" + "\n".join(s.replace("NAME", tag) for tag, s in snippets)
 
 
-def solve(client, max_size=24, skip=(), log=print):
+def solve(client, max_size=48, skip=(), log=print):
     """Try pattern candidates on every small open function. Returns {addr: source}."""
     rows = [r for r in match._functions(client).values()
             if r["kind"] == "code" and r["size"] <= max_size and r["addr"] not in skip]
@@ -149,12 +207,15 @@ def solve(client, max_size=24, skip=(), log=print):
 
 
 def save(client, found):
-    """Write matches into src/<client>/ (keeps existing hand-written files)."""
+    """Write matches into src/<client>/ (keeps existing hand-written files). Returns new count."""
+    new = 0
     for addr, src in found.items():
         path = ROOT / "src" / client / ("%s.cpp" % addr)
         if path.exists():
             continue
+        new += 1
         header = match.template(client, addr).split("\n\n")[0]
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(header + "\n// auto-matched from its assembly shape\n\n" + src)
         match.save_score(client, addr, 100)
+    return new

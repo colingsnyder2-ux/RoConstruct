@@ -136,11 +136,13 @@ def cmd_check(a):
     matched = 0
     for src in srcs:
         try:
-            value, name, asm_diff = match.check(a.name, src.stem, src)
+            value, name, asm_diff, spans = match.check(a.name, src.stem, src)
         except match.CompileError as error:
             print("%s  does not compile:\n%s" % (src.stem, error))
             continue
         best = match.save_score(a.name, src.stem, value)
+        match.save_data(a.name, src.stem, spans)
+        match.save_data(a.name, src.stem, spans)
         matched += value == 100
         print("%s  %3d%%  %s%s" % (src.stem, value, name or "-", "  MATCH" if value == 100 else "  (best %d%%)" % best))
         if value < 100 and len(srcs) == 1:
@@ -160,8 +162,7 @@ def cmd_auto(a):
             print("%s: skipped (needs the exe and its compiler)" % name)
             continue
         found = auto.solve(name, a.max_size)
-        auto.save(name, found)
-        print("%s: wrote %d matched files to src/%s/" % (name, len(found), name))
+        print("%s: %d new files in src/%s/" % (name, auto.save(name, found), name))
 
 
 def cmd_flags(a):
@@ -185,9 +186,31 @@ def cmd_submit(a):
                         a.name, a.addr or None, a.token or s.get("token"))
 
 
+def cmd_pull(a):
+    from roc import worker
+    s = settings()
+    srv = need(a.server or s.get("server"), "server", "Use --server or: roc config --server URL")
+    names = sorted(clients.load()) if a.name == "all" else [a.name]
+    for name in names:
+        worker.pull_files(srv, name, a.token or s.get("token"), a.force)
+
+
 def cmd_server(a):
     from roc import server
+    if a.startup:
+        startup = Path(os.environ["APPDATA"]) / r"Microsoft\Windows\Start Menu\Programs\Startup" / "RoConstruct server.cmd"
+        startup.write_text('@start "RoConstruct server" /min "%s"
+' % (ROOT / "host.cmd"))
+        return print("The server will start when you log in: %s" % startup)
     httpd = server.serve(a.host, a.port, token=a.token, lease_seconds=a.lease)
+    public = a.public_server or settings().get("public_server")
+    if a.tunnel:
+        public, _ = server.start_tunnel(a.port)
+    if a.publish:
+        if not public:
+            sys.exit("--publish needs a public address: use --tunnel or --public-server HOST:PORT")
+        import threading
+        threading.Thread(target=server.publish_loop, args=(httpd.store, public, a.publish_every), daemon=True).start()
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:
@@ -322,7 +345,7 @@ def main(argv=None):
     cmd("check", cmd_check, "compile src/<client>/*.cpp and score against the exe",
         (["name"], {}), (["addr"], {"nargs": "?"}))
     cmd("auto", cmd_auto, "auto-match trivial functions (getters, setters, empty...) ('all' for every client)",
-        (["name"], {}), (["--max-size"], {"type": int, "default": 24}))
+        (["name"], {}), (["--max-size"], {"type": int, "default": 48}))
     cmd("flags", cmd_flags, "find the client's compiler flags from matched sources", (["name"], {}))
     cmd("config", cmd_config, "save username / server / password / model",
         (["--user"], {}), (["--server"], {}), (["--token"], {}), (["--model"], {}),
@@ -330,10 +353,18 @@ def main(argv=None):
     cmd("link", cmd_link, "one-click links: 'install', 'remove', or a roconstruct:// URL", (["target"], {}))
     cmd("submit", cmd_submit, "send hand-written sources to the server",
         (["name"], {}), (["addr"], {"nargs": "*"}), (["--server"], {}), (["--user"], {}), (["--token"], {}))
+    cmd("pull", cmd_pull, "download everyone's sources from the server into src/ ('all' for every client)",
+        (["name"], {}), (["--force"], {"action": "store_true", "help": "replace your local files"}),
+        (["--server"], {}), (["--token"], {}))
     cmd("server", cmd_server, "host the group server",
         (["--port"], {"type": int, "default": 8765}), (["--host"], {"default": "0.0.0.0"}),
         (["--token"], {"help": "password workers must send"}),
-        (["--lease"], {"type": int, "default": 900, "help": "seconds before an abandoned job frees up"}))
+        (["--lease"], {"type": int, "default": 900, "help": "seconds before an abandoned job frees up"}),
+        (["--tunnel"], {"action": "store_true", "help": "public HTTPS address via Cloudflare (no router setup)"}),
+        (["--publish"], {"action": "store_true", "help": "update + push the website regularly"}),
+        (["--publish-every"], {"type": int, "default": 3600, "help": "seconds between site updates"}),
+        (["--public-server"], {"help": "address shown on the site (if not using --tunnel)"}),
+        (["--startup"], {"action": "store_true", "help": "start host.cmd automatically when you log in"}))
     cmd("worker", cmd_worker, "help automatically: AI drafts, compile, submit",
         (["--server"], {}), (["--user"], {}), (["--token"], {}), (["--model"], {}),
         (["--rounds"], {"type": int, "default": 4, "help": "AI tries per function"}),

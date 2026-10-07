@@ -99,11 +99,24 @@ def powershell(cmd):
                           capture_output=True, text=True).stdout.strip()
 
 
-def require_microsoft_signature(path):
+def require_signature(path, org="Microsoft Corporation"):
     out = powershell("$s=Get-AuthenticodeSignature '%s'; \"$($s.Status)|$($s.SignerCertificate.Subject)\"" % path)
-    if not out.startswith("Valid|") or "O=Microsoft Corporation" not in out:
+    if not out.startswith("Valid|") or not re.search(r'O="?%s' % re.escape(org), out):
         path.unlink(missing_ok=True)
-        raise SystemExit("REFUSED %s: not validly signed by Microsoft (%s). Deleted it." % (path.name, out))
+        raise SystemExit("REFUSED %s: not validly signed by %s (%s). Deleted it." % (path.name, org, out))
+
+
+require_microsoft_signature = require_signature
+CLOUDFLARED_URL = "https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-windows-amd64.exe"
+
+
+def get_cloudflared():
+    """Cloudflare's tunnel client, for HTTPS without opening router ports."""
+    exe = TOOLS / "cloudflared" / "cloudflared.exe"
+    if not exe.exists():
+        download(CLOUDFLARED_URL, exe)
+        require_signature(exe, "Cloudflare, Inc.")
+    return str(exe)
 
 
 def require_sha1(path, want):

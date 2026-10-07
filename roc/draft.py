@@ -138,7 +138,7 @@ def llm_rounds(client, addr, model, rounds=4, hint=None, start=None, log=print, 
     attempt = None
     if best[1]:
         try:
-            attempt = (best[1],) + match.check_text(client, addr, best[1], flags)[::2]
+            attempt = (best[1],) + match.check_text(client, addr, best[1], flags)[0:3:2]
         except match.CompileError as error:
             attempt = (best[1], 0, str(error)[-1500:])
     for i in range(rounds):
@@ -147,7 +147,7 @@ def llm_rounds(client, addr, model, rounds=4, hint=None, start=None, log=print, 
             log("  round %d: no code in reply" % (i + 1))
             continue
         try:
-            score, _, d = match.check_text(client, addr, src, flags)
+            score, _, d, _ = match.check_text(client, addr, src, flags)
             this = (src, score, d)
         except match.CompileError as error:
             score, this = 0, (src, 0, str(error)[-1500:])

@@ -84,6 +84,15 @@ def test_auto_candidates():
     assert candidates(["push ebp", "call sym"]) == []
 
 
+def test_shapes_and_data():
+    from roc.progress import union_bytes
+    assert any("G1_NAME();" in c for c in candidates(["jmp sym"]))
+    assert any("~S_NAME()" in c for c in candidates(["mov dword ptr [ecx], sym", "ret "]))
+    eh = bytes.fromhex("8b5424088d42e88b4ae433c8e88d31ecffb8600c9000e97128ecff")  # real __ehhandler
+    assert kind_of(eh, []) == "gen"
+    assert union_bytes([[[100, 10], [105, 10]], [[200, 4]]]) == 19
+
+
 def test_draft_helpers():
     assert extract_code("text\n```cpp\nint f();\n```\nmore") == "int f();\n"
     assert extract_code("no code") is None

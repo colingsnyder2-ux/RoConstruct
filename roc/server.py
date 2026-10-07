@@ -8,6 +8,7 @@ are re-scored here when this machine has the client's compiler.
 import json
 import re
 import sqlite3
+import subprocess
 import threading
 import time
 import uuid
@@ -35,6 +36,8 @@ class Store:
     def __init__(self, path, lease_seconds):
         self.db = sqlite3.connect(path, check_same_thread=False)
         self.db.executescript(SCHEMA)
+        if "data" not in {r[1] for r in self.db.execute("PRAGMA table_info(funcs)")}:
+            self.db.execute("ALTER TABLE funcs ADD COLUMN data TEXT")  # verified data spans, JSON
         self.lock = threading.Lock()
         self.lease_seconds = lease_seconds
 
@@ -95,7 +98,7 @@ class Store:
             self.db.execute("DELETE FROM leases WHERE id = ?", (lease,))
             self.db.commit()
 
-    def submit(self, client, addr, user, score, source):
+    def submit(self, client, addr, user, score, source, data=None):
         """Keep the source if it beats the stored score. Returns (stored score, improved)."""
         now = time.time()
         with self.lock:
@@ -104,8 +107,8 @@ class Store:
                 raise ValueError("unknown function %s %s" % (client, addr))
             if score <= row[0]:
                 return row[0], False
-            self.db.execute("UPDATE funcs SET score=?, source=?, user=?, updated=? WHERE client=? AND addr=?",
-                            (score, source, user, now, client, addr))
+            self.db.execute("UPDATE funcs SET score=?, source=?, user=?, updated=?, data=? WHERE client=? AND addr=?",
+                            (score, source, user, now, json.dumps(data) if data else None, client, addr))
             self.db.execute("INSERT INTO events VALUES(?,?,?,?,?,?)", (now, client, addr, user, row[0], score))
             self.db.commit()
             return score, True
@@ -124,6 +127,14 @@ class Store:
         out = {}
         for c, a, s in rows:
             out.setdefault(c, {})[a] = s
+        return out
+
+    def data(self):
+        with self.lock:
+            rows = self.db.execute("SELECT client, addr, data FROM funcs WHERE data IS NOT NULL").fetchall()
+        out = {}
+        for c, a, d in rows:
+            out.setdefault(c, {})[a] = json.loads(d)
         return out
 
     def status(self):
@@ -149,6 +160,13 @@ class Store:
             rows = self.db.execute("SELECT addr, source FROM funcs WHERE client = ? AND score = 100 "
                                    "AND source IS NOT NULL ORDER BY RANDOM() LIMIT ?", (client, n)).fetchall()
         return [{"addr": a, "source": s} for a, s in rows]
+
+    def sources(self, client, min_score=1):
+        """Every stored source for a client (for `roc pull`)."""
+        with self.lock:
+            rows = self.db.execute("SELECT addr, score, user, source FROM funcs WHERE client = ? AND score >= ? "
+                                   "AND source IS NOT NULL ORDER BY addr", (client, min_score)).fetchall()
+        return [{"addr": a, "score": s, "user": u, "source": src} for a, s, u, src in rows]
 
 
 def make_handler(store, token, can_verify):
@@ -177,10 +195,12 @@ def make_handler(store, token, can_verify):
             if url.path == "/v1/leaderboard":
                 return self.send(200, store.leaderboard())
             if url.path == "/v1/export":
-                return self.send(200, {"scores": store.scores(), "leaderboard": store.leaderboard()})
+                return self.send(200, {"scores": store.scores(), "data": store.data(), "leaderboard": store.leaderboard()})
             if url.path == "/v1/source":
                 best = store.best(q.get("client", ""), q.get("addr", ""))
                 return self.send(200 if best else 404, best or {"error": "unknown function"})
+            if url.path == "/v1/sources":
+                return self.send(200, store.sources(q.get("client", ""), int(q.get("min_score", 1))))
             if url.path == "/v1/examples":
                 return self.send(200, store.examples(q.get("client", ""), min(int(q.get("n", 3)), 10)))
             self.send(404, {"error": "unknown endpoint"})
@@ -216,10 +236,10 @@ def make_handler(store, token, can_verify):
                 source, claimed = str(body.get("source", "")), int(body.get("score", 0))
                 if not source.strip() or len(source) > 200_000:
                     return self.send(400, {"error": "empty or huge source"})
-                score, verified = claimed, False
+                score, verified, spans = claimed, False, None
                 if client in can_verify:
                     try:
-                        score, _, _ = match.check_text(client, addr, source)
+                        score, _, _, spans = match.check_text(client, addr, source)
                         verified = True
                     except match.CompileError as error:
                         return self.send(400, {"error": "does not compile here: %s" % str(error)[:500]})
@@ -231,7 +251,7 @@ def make_handler(store, token, can_verify):
                     except match.CompileError as error:
                         return self.send(400, {"error": str(error)})
                 try:
-                    stored, improved = store.submit(client, addr, user, max(0, min(100, score)), source)
+                    stored, improved = store.submit(client, addr, user, max(0, min(100, score)), source, spans)
                 except ValueError as error:
                     return self.send(400, {"error": str(error)})
                 if body.get("lease"):
@@ -263,6 +283,51 @@ def serve(host="0.0.0.0", port=8765, db=None, token=None, lease_seconds=900, log
         if found:
             log("Auto-matched %d trivial functions for %s (credited to 'auto')" % (len(found), name))
     httpd = ThreadingHTTPServer((host, port), make_handler(store, token, can_verify))
+    httpd.store = store
     log("RoConstruct server running on port %d. Workers connect with:  roc worker --server http://<this-pc>:%d"
         % (port, port))
     return httpd
+
+
+def start_tunnel(port, log=print):
+    """Cloudflare quick tunnel: public HTTPS URL, no account, no router setup.
+    ponytail: the URL changes on every restart; workers re-read it from the site.
+    A named tunnel (cloudflared login) gives a fixed address if that hurts."""
+    exe = setup.get_cloudflared()
+    proc = subprocess.Popen([exe, "tunnel", "--no-autoupdate", "--url", "http://127.0.0.1:%d" % port],
+                            stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, text=True,
+                            creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
+    url = None
+    for line in proc.stderr:
+        m = re.search(r"https://[a-z0-9-]+\.trycloudflare\.com", line)
+        if m:
+            url = m.group(0)
+            break
+    if not url:
+        raise SystemExit("cloudflared exited without a tunnel URL")
+    threading.Thread(target=lambda: [None for _ in proc.stderr], daemon=True).start()  # keep pipe drained
+    log("Public HTTPS address: %s" % url)
+    return url, proc
+
+
+def publish_once(store, public_url, log=print):
+    """Rebuild docs/ from the live database and push it, if anything changed."""
+    from roc import progress
+    progress.build(public_server=public_url, remote={"scores": store.scores(), "data": store.data(),
+                                                     "leaderboard": store.leaderboard()})
+    git = lambda *a: subprocess.run(["git", *a], cwd=ROOT, capture_output=True, text=True)
+    git("add", "docs")
+    if git("diff", "--cached", "--quiet").returncode == 0:
+        return log("Site unchanged.")
+    git("commit", "-m", "Update progress")
+    push = git("push")
+    log("Site published." if push.returncode == 0 else "Site push failed: %s" % push.stderr.strip()[-300:])
+
+
+def publish_loop(store, public_url, every, log=print):
+    while True:
+        try:
+            publish_once(store, public_url, log)
+        except Exception as error:  # keep serving even if a publish fails
+            log("Publish failed: %s" % error)
+        time.sleep(every)

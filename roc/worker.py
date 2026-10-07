@@ -14,6 +14,27 @@ from roc import clients, draft, match, setup
 ROOT = Path(__file__).resolve().parent.parent
 SETTINGS = ROOT / "roconstruct-settings.json"
 USER_RE = re.compile(r"^[A-Za-z0-9_.-]{2,32}$")
+SITE = "https://colingsnyder2-ux.github.io/RoConstruct/"
+
+
+def site_server():
+    """Current public server address as published on the progress site (tunnel URLs change)."""
+    try:
+        with urllib.request.urlopen(SITE + "progress.json", timeout=20) as r:
+            return json.loads(r.read()).get("server")
+    except (OSError, ValueError):
+        return None
+
+
+def reconnect(api, log):
+    """Server unreachable: switch to the address the site lists now, if it moved."""
+    new = site_server()
+    if new and Api(new).server != api.server:
+        log("Server moved to %s, switching." % new)
+        api.server = Api(new).server
+        save_settings(server=new)
+        return True
+    return False
 
 
 def load_settings():
@@ -90,8 +111,9 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
         except RuntimeError as error:
             if not forever:
                 raise
-            log("%s  Retrying in 60 s." % error)
-            time.sleep(60)
+            if not reconnect(api, log):
+                log("%s  Retrying in 60 s." % error)
+                time.sleep(60)
     if only:
         info["clients"] = {k: v for k, v in info["clients"].items() if k in only}
     have = usable_clients(info, log)
@@ -113,8 +135,9 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
         except RuntimeError as error:
             if not forever:
                 raise
-            log("%s  Retrying in 60 s." % error)
-            time.sleep(60)
+            if not reconnect(api, log):
+                log("%s  Retrying in 60 s." % error)
+                time.sleep(60)
             continue
         if not job:
             if max_jobs is not None:
@@ -168,6 +191,34 @@ def work_one(api, user, job, info, model, rounds, revng, log):
         stop.set()
 
 
+def pull_files(server, client, token=None, force=False, log=print):
+    """Download every stored source for a client into src/<client>/.
+    Local files are kept unless force; scores.json is updated either way."""
+    api = Api(server, token)
+    rows = api.call("/v1/sources?client=%s" % client, timeout=300)
+    folder = ROOT / "src" / client
+    folder.mkdir(parents=True, exist_ok=True)
+    written = kept = 0
+    for r in rows:
+        if not re.match(r"^[0-9a-f]{8}$", r["addr"]):
+            continue
+        path = folder / ("%s.cpp" % r["addr"])
+        match.save_score(client, r["addr"], r["score"])
+        if path.exists() and not force:
+            kept += 1
+            continue
+        src = r["source"]
+        if not src.lstrip().startswith("// roc"):
+            try:
+                src = match.template(client, r["addr"]).split("\n\n")[0] + "\n\n" + src
+            except SystemExit:
+                pass  # no local exe/analysis: write the source without the asm header
+        path.write_text("// from server: %d%% by %s\n%s" % (r["score"], r["user"], src))
+        written += 1
+    log("%s: %d sources from the server, %d written to %s, %d local files kept%s"
+        % (client, len(rows), written, folder, kept, " (use --force to replace them)" if kept else ""))
+
+
 def submit_files(server, user, client, addrs=None, token=None, log=print):
     """Upload hand-written src/<client>/*.cpp to the server (checked locally first)."""
     api = Api(server, token)
@@ -176,7 +227,7 @@ def submit_files(server, user, client, addrs=None, token=None, log=print):
         paths = [p for p in paths if p.stem in addrs]
     for p in paths:
         try:
-            score, _, _ = match.check(client, p.stem, p)
+            score, _, _, _ = match.check(client, p.stem, p)
         except match.CompileError as error:
             log("%s  skipped, does not compile: %s" % (p.stem, str(error).splitlines()[0]))
             continue

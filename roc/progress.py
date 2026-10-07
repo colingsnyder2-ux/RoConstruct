@@ -49,15 +49,28 @@ def add_history(stats, updated):
     path.write_text(json.dumps(hist, separators=(",", ":")) + "\n")
 
 
+def union_bytes(span_lists):
+    """Total bytes covered by [va, len] spans; overlaps (shared strings) count once."""
+    spans = sorted((va, va + n) for lst in span_lists for va, n in lst)
+    total, end = 0, 0
+    for a, b in spans:
+        if b > end:
+            total += b - max(a, end)
+            end = b
+    return total
+
+
 def fetch_server(server, token=None):
     from roc.worker import Api
     return Api(server, token).call("/v1/export")
 
 
-def build(server=None, token=None, public_server=None):
-    """server: pull scores + leaderboard from the group server (else local scores only)."""
+def build(server=None, token=None, public_server=None, remote=None):
+    """server: pull scores + leaderboard from the group server (else local scores only).
+    remote: the same export passed in directly (the server publishing itself)."""
     (DOCS / "data").mkdir(parents=True, exist_ok=True)
-    remote = fetch_server(server, token) if server else {"scores": {}, "leaderboard": []}
+    if remote is None:
+        remote = fetch_server(server, token) if server else {"scores": {}, "leaderboard": []}
     out, stats = [], {}
     for name, entry in sorted(clients.load().items()):
         work = ROOT / "work" / name
@@ -67,6 +80,9 @@ def build(server=None, token=None, public_server=None):
             scores = json.loads(scores_file.read_text()) if scores_file.exists() else {}
             for addr, value in remote["scores"].get(name, {}).items():
                 scores[addr] = max(value, scores.get(addr, 0))
+            data_file = work / "data.json"
+            spans = json.loads(data_file.read_text()) if data_file.exists() else {}
+            spans.update(remote.get("data", {}).get(name, {}))
             meta_file = work / "meta.json"
             meta = json.loads(meta_file.read_text()) if meta_file.exists() else {}
             units, unit_ids, funcs, generated = [], {}, [], 0
@@ -84,6 +100,7 @@ def build(server=None, token=None, public_server=None):
                 {"name": name, "compiler": entry["compiler"], "units": units, "funcs": funcs},
                 separators=(",", ":")))
             row.update(summarize(funcs), started=True, data_bytes=meta.get("data_bytes", 0),
+                       data_matched_bytes=union_bytes(v for a, v in spans.items() if scores.get(a) == 100),
                        classes=meta.get("classes", 0), generated=generated)
             stats[name] = {k: row[k] for k in STATS}
         out.append(row)
