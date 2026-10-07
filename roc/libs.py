@@ -76,7 +76,7 @@ for _v, _sha in [("1.2.5", "58ec845f95ff351c8a25bfbfa667a8f3924bb0f1a1ec572cc7e0
                  ("1.2.44", "e9860400efce466ab05f053505e4deb3a7dc93e8a6cd5b24447e681d332c32a7")]:
     RECIPES["libpng-" + _v] = dict(url="https://github.com/pnggroup/libpng/archive/refs/tags/v%s.tar.gz" % _v,
                                    archive="libpng-%s.tar.gz" % _v, sha256=_sha, src="libpng-" + _v,
-                                   langs=["c"], grid=FAST, include=["zlib-1.2.3"],
+                                   langs=["c"], grid=FAST + ["/O2 /GS /MD"], include=["zlib-1.2.3"],
                                    files=[f + ".c" for f in _PNG])
 
 
@@ -85,7 +85,8 @@ for _v, _sha in [("1.2.5", "58ec845f95ff351c8a25bfbfa667a8f3924bb0f1a1ec572cc7e0
 RECIPES["g3d-6.09"] = dict(url="https://archive.org/download/g3d-src-6_09/g3d-src-6_09.zip",
                            sha256="d8036ded1a9730d80c5a2f5397efc958d6613ca41a1c7b842b212c3be7e0b6ff",
                            unpack="g3d-6.09", src="g3d-6.09/source", langs=["cpp"],
-                           grid=["/O2 /GS- /EHsc /MD /arch:SSE2 /fp:fast", "/O2 /GS- /EHsc /MD",
+                           # /GS on (VS2005's default) is how G3D's own VC8 build was compiled.
+                           grid=["/O2 /GS /EHsc /MD", "/O2 /GS- /EHsc /MD /arch:SSE2 /fp:fast", "/O2 /GS- /EHsc /MD",
                                  "/O2 /GS- /MD /arch:SSE2 /fp:fast", "/O2 /GS- /MD"],
                            include=["g3d-6.09/source/include", "g3d-6.09/source/boost/include", "WINSDK",
                                     "SDL-1.2.11/include"],
