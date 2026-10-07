@@ -22,11 +22,11 @@ Goal: increase functions/hour and reduce GPU/CPU time without lowering match qua
 ## Quality guardrails
 
 - [x] Compare score gain and match rate from the sampled benchmark records.
-- [ ] Never trade a 100% match for lower latency.
-- [ ] Keep failed attempts and quarantine rules intact.
+- [x] Never trade a 100% match for lower latency (best-score preservation + server scoring guard).
+- [x] Keep failed attempts and quarantine rules intact (metrics promotion/quarantine pipeline).
 - [x] Run targeted tests plus a sampled benchmark after changes.
 
 ## Finish gate
 
 - [x] Update README with speed controls and measured baseline.
-- [ ] Commit speed changes separately.
+- [x] Commit speed changes separately (`dfd2be8e`, `7a2a37fb`).
