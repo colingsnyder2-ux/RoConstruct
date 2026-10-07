@@ -113,6 +113,8 @@ Double-click **`host.cmd`** on a PC that stays on. It runs `roc server --tunnel 
 - **`--tunnel`**: public HTTPS address through a Cloudflare quick tunnel. No account and no router setup. `cloudflared` is downloaded once and its signature checked.
 - **`--publish`**: rebuilds `docs/` from the live database every hour, then commits and pushes. The site always shows the current server address, and workers follow it if the tunnel address changes.
 
+**Fixed address (recommended):** install Tailscale, then run `tailscale funnel --bg 8765` once and approve the link it prints. Save the address with `roc config --public-server https://<pc>.<tailnet>.ts.net`. A saved address takes priority over the Cloudflare tunnel.
+
 `roc server --startup` starts `host.cmd` at login. To undo that, delete `RoConstruct server.cmd` from `shell:startup`.
 
 - No password is needed for a public server: it re-checks every submission with the real compiler and exe, so scores can't be faked. Use `--token` for a private group.

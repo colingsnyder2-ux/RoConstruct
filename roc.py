@@ -208,7 +208,7 @@ def cmd_server(a):
         return print("The server will start when you log in: %s" % startup)
     httpd = server.serve(a.host, a.port, token=a.token, lease_seconds=a.lease)
     public = a.public_server or settings().get("public_server")
-    if a.tunnel:
+    if a.tunnel and not public:  # a saved fixed address (e.g. Tailscale Funnel) wins over a quick tunnel
         public, _ = server.start_tunnel(a.port)
     if a.publish:
         if not public:
