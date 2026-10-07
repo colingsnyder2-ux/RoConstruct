@@ -125,10 +125,46 @@ def run(url):
         analyze.analyze(client, clients.exe_path(client, clients.load()[client]))
     if not draft.pick_model(s.get("model")):
         ensure_model()
+    model, rounds, max_size, use_revng, workers = choose_options(s)
     keep_awake()
     print("Working. This uses your GPU and CPU heavily (fans, heat, power draw; laptops: plug in).")
     print("Leave this window open overnight; close it to stop at any time.\n")
-    worker.run(server, user, token, s.get("model"), forever=True, only=[client])
+    worker.run_concurrent(server, user, token, model, rounds, max_size, use_revng,
+                          workers=workers, source_only=False)
+
+
+def choose_options(settings):
+    """Let each link launch choose runtime options while keeping safe defaults."""
+    from roc import draft
+    installed = draft.ollama_models()
+    default_model = draft.pick_model(settings.get("model")) or "none"
+    print("\nWorker options (Enter keeps the default):")
+    print("Installed models: " + ", ".join(installed or ["none"]))
+    model = input("Model [%s]: " % default_model).strip() or default_model
+    if model == "default":
+        model = None
+    elif model not in installed:
+        raise SystemExit("Model '%s' is not installed. Run: roc model" % model)
+    preset = (input("Preset [balanced] (fast/balanced/deep): ").strip().lower() or "balanced")
+    if preset not in ("fast", "balanced", "deep"):
+        raise SystemExit("Preset must be fast, balanced, or deep")
+    rounds, max_size, use_revng = 4, 256, True
+    if preset == "fast":
+        rounds, max_size, use_revng = 2, 96, False
+    elif preset == "deep":
+        rounds, max_size = 6, 512
+    workers = input("Workers [1] (1-8 or auto): ").strip() or "1"
+    if workers != "auto":
+        try:
+            workers = max(1, min(int(workers), 8))
+        except ValueError:
+            raise SystemExit("Workers must be 1-8 or auto")
+    revng = input("Rev.ng [%s] (y/n): " % ("on" if use_revng else "off")).strip().lower()
+    if revng in ("y", "yes"):
+        use_revng = True
+    elif revng in ("n", "no"):
+        use_revng = False
+    return model, rounds, max_size, use_revng, workers
 
 
 def ensure_model():

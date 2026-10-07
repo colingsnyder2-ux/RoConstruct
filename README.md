@@ -193,6 +193,9 @@ saved server/user settings to run installed code models against those targets.
 The saved hidden-corpus baseline is in `work/benchmark-baseline.json`; use `--baseline` after a
 sample or full run to compare score gain and match rate before changing worker speed settings.
 
+One-click worker links ask each time for model, preset, worker count, and Rev.ng. Press Enter to
+keep the shown defaults.
+
 Speed checklist: `docs/worker-speed-checklist.md`.
 
 Full implementation checklist: `docs/worker-checklist.md`.
