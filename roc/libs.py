@@ -180,7 +180,28 @@ typedef unsigned __int64 uint64_t; typedef int intptr_t; typedef unsigned int ui
 #define UINT32_MAX 0xffffffffui32
 #define UINT64_MAX 0xffffffffffffffffui64
 """
-RECIPES["compat"] = dict(generate=lambda: {"stdint.h": STDINT}, src="compat", langs=[], files=[])
+# Roblox's 2016 logging/fast-flag header, absent from the tree. The 2007-2012 clients
+# predate it, so log calls compile to nothing and flags are plain globals.
+FASTLOG = """#pragma once
+#define LOGGROUP(n)
+#define DYNAMIC_LOGGROUP(n)
+#define FASTLOG(...) ((void)0)
+#define FASTLOG1(...) ((void)0)
+#define FASTLOG2(...) ((void)0)
+#define FASTLOG3(...) ((void)0)
+#define FASTLOG4(...) ((void)0)
+#define FASTLOG5(...) ((void)0)
+#define FASTLOGS(...) ((void)0)
+#define FASTLOG1F(...) ((void)0)
+#define DYNAMIC_FASTINT(n) namespace DFInt { extern int n; }
+#define DYNAMIC_FASTINTVARIABLE(n, v) namespace DFInt { int n = v; }
+#define DYNAMIC_FASTFLAG(n) namespace DFFlag { extern bool n; }
+#define DYNAMIC_FASTFLAGVARIABLE(n, v) namespace DFFlag { bool n = v; }
+#define FASTINT(n) namespace FInt { extern int n; }
+#define FASTFLAG(n) namespace FFlag { extern bool n; }
+#define FASTFLAGVARIABLE(n, v) namespace FFlag { bool n = v; }
+"""
+RECIPES["compat"] = dict(generate=lambda: {"stdint.h": STDINT, "FastLog.h": FASTLOG}, src="compat", langs=[], files=[])
 
 # Roblox's own 2016 source tree (roc/refsource.py) keeps the forks the clients were built
 # from: G3D 8.00 (gone from the web), their modified Lua 5.1.4, RakNet, libjpeg and libpng.
@@ -201,6 +222,10 @@ RECIPES["rbx2016-jpeg"] = dict(src=REF + "Rendering/g3d/ijg", langs=["c"], files
                                include=_REF_INC, needs=_REF_NEEDS)
 RECIPES["rbx2016-png"] = dict(src=REF + "Rendering/g3d/png", langs=["c"], files="png*.c", grid=FAST,
                               include=_REF_INC, needs=_REF_NEEDS)
+# Roblox's RakNet fork (RakNet::RakPeer and friends in the 2009-2012 RTTI).
+RECIPES["rbx2016-raknet"] = dict(src=REF + "Network/raknet/Source", langs=["cpp"], files="*.cpp",
+                                 grid=["/O2 /GS- /EHsc /MD", "/O2 /GS- /MD", "/O2 /GS- /EHsc /MD /arch:SSE2"],
+                                 include=_REF_INC, needs=_REF_NEEDS)
 
 
 # MFC static library source. Each client statically links the MFC build that shipped with
