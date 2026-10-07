@@ -4,8 +4,9 @@ clients/*
 !clients/clients.json
 !clients/sources.json
 
-# Matched sources reproduce Roblox code. Kept local until the group decides to
-# publish them (takedown risk). Delete this line to track src/.
+# Matched-source findings live in the separate RoConstruct-findings repository.
+# Keep the local findings checkout ignored here so normal RoConstruct clones
+# stay small.
 src/
 
 # Local runtime state and output

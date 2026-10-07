@@ -99,7 +99,10 @@ def cmd_client_sources(a):
         sources.set_bundle(a.bundle)
         return
     folder = a.folder.split("/folders/")[-1].split("?")[0].strip("/")
-    sources.index_drive(folder, dry_run=a.dry_run)
+    extra = [s.strip() for s in (a.also or "").split(",") if s.strip()]
+    if extra:
+        print("also indexing: %s (not in clients.json yet)" % ", ".join(extra))
+    sources.index_drive(folder, dry_run=a.dry_run, extra_slots=extra)
 
 
 def cmd_client_remove(a):
@@ -227,6 +230,39 @@ def cmd_auto(a):
             continue
         found = auto.solve(name, a.max_size)
         print("%s: %d new files in src/%s/" % (name, auto.save(name, found), name))
+
+
+def cmd_xcopy(a):
+    """Copy every stored match to the other clients that contain the same function.
+
+    Cheap and worth re-running often: each new match is a candidate for every other
+    client, so this multiplies whatever else is finding."""
+    from roc import xcopy
+    names = None if a.name == "all" else [n.strip() for n in a.name.split(",") if n.strip()]
+    reg = clients.load()
+    for name in names or []:
+        if name not in reg:
+            sys.exit("%s is not registered. See:  roc client list" % name)
+    result = xcopy.run(targets=names, limit=a.limit, dry_run=a.dry_run)
+    print("\nClient       new files   newly matched")
+    files = scored = 0
+    for name in sorted(result):
+        new_files, new_matches = result[name]
+        print("  %-8s %8d %14d" % (name, new_files, new_matches))
+        files += new_files
+        scored += new_matches
+    print("  %-8s %8d %14d" % ("total", files, scored))
+
+
+def cmd_ref(a):
+    """Resolve a client function to the 2016 Roblox source that probably produced it."""
+    from roc import refsource
+    if a.summarise:
+        refsource.summarise(a.client)
+        return
+    if not a.unit:
+        sys.exit("Give a unit name, or use --summarise. See:  roc ref --help")
+    refsource.report(a.unit, a.limit)
 
 
 def cmd_libs(a):
@@ -427,6 +463,8 @@ def main(argv=None):
         (["name"], {}))
     p = cmd("client-sources", cmd_client_sources, "set the clients.zip bundle, or index a Drive folder",
             (["folder"], {"nargs": "?"}), (["--bundle"], {"help": "local clients.zip to hash and record"}),
+            (["--also"], {"help": "comma-separated months to index even though they are not "
+                                   "registered yet, e.g. 2016-06"}),
             (["--dry-run", "-n"], {"action": "store_true"}))
     p.set_defaults(folder=None)
     c.add_parser("list", help="registered clients and whether you have them").set_defaults(fn=cmd_client_list)
@@ -443,6 +481,15 @@ def main(argv=None):
         (["name"], {}), (["addr"], {"nargs": "?"}))
     cmd("auto", cmd_auto, "auto-match trivial functions (getters, setters, empty...) ('all' for every client)",
         (["name"], {}), (["--max-size"], {"type": int, "default": 48}))
+    cmd("xcopy", cmd_xcopy, "copy stored matches to the other clients that share the function",
+        (["name"], {}), (["--limit"], {"type": int, "default": None,
+                                       "help": "try only the first N candidate sources (testing)"}),
+        (["--dry-run", "-n"], {"action": "store_true", "help": "report what would match, write nothing"}))
+    cmd("ref", cmd_ref, "find the 2016 Roblox source behind a client function",
+        (["unit"], {"nargs": "?"}), (["--summarise"], {"action": "store_true",
+                                                       "help": "how much of each client the 2016 tree explains"}),
+        (["--client"], {"help": "restrict --summarise to one client"}),
+        (["--limit"], {"type": int, "default": 5}))
     cmd("libs", cmd_libs, "match open-source library code from its real source ('all' or recipe names)",
         (["names"], {"nargs": "+"}), (["--client"], {"default": "all"}))
     cmd("mass", cmd_mass, "run every automatic matcher (runtime, STL, libraries, shapes); takes a while",

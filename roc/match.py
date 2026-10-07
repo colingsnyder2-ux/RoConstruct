@@ -202,7 +202,7 @@ def reject_asm(text):
 def directives(text):
     """`// roc-<key>: value` lines: lang (c|cpp), flags, cl (compiler build), lib (recipe + file).
     Library code matched with its own build settings carries them, so anyone re-checks it the same way."""
-    return dict(re.findall(r"(?m)^//\s*roc-(lang|flags|cl|lib):\s*(.+?)\s*$", text))
+    return dict(re.findall(r"(?m)^//\s*roc-(lang|flags|cl|lib|archive):\s*(.+?)\s*$", text))
 
 
 def compile_text(client, text, flags=None, build=None):
@@ -211,6 +211,10 @@ def compile_text(client, text, flags=None, build=None):
     entry = clients.load()[client]
     d = directives(text)
     build = build or (int(d["cl"]) if d.get("cl", "").isdigit() else entry["compiler_build"])
+    if "archive" in d:  # exact CRT/STL COFF member from matching installed compiler
+        from roc import libs
+        recipe, _, path = d["archive"].partition(" ")
+        return libs.archive_unit(recipe, path.strip(), build)
     if "lib" in d:  # library file: rebuilt from the pinned, hash-checked source in tools/libs
         from roc import libs
         recipe, _, path = d["lib"].partition(" ")

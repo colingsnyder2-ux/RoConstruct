@@ -255,8 +255,8 @@ def list_folder(folder_id):
     return out
 
 
-def _slot_for(parts):
-    """Drive path -> (registered client name, build folder depth), or (None, 0).
+def _slot_for(parts, extra=()):
+    """Drive path -> (client name, build folder depth), or (None, 0).
 
     Drive:  2008/6.2008/June 20 (0.5.x)/version-<hash>/RobloxApp.exe
     Ours:  2008-06
@@ -264,6 +264,9 @@ def _slot_for(parts):
     Several different builds live under one month (2008/6.2008 holds more than one
     dated folder), so the month only narrows it down. The build folder is the last
     path part before the files start, which is what we key candidate builds on.
+
+    `extra` lets a caller index months that are not registered yet, so a client can be
+    discovered and fetched before anyone commits it to clients.json.
     """
     reg = clients.load()
     year = re.search(r"(20\d\d)", parts[0]) if parts else None
@@ -282,15 +285,28 @@ def _slot_for(parts):
     if month is None:
         return None, 0
     slot = "%s-%02d" % (year.group(1), month)
-    return (slot, len(parts)) if slot in reg else (None, 0)
+    known = set(reg) | set(extra)
+    return (slot, len(parts)) if slot in known else (None, 0)
 
 
-def index_drive(folder_id, dry_run=False):
+def _exe_name_for(slot, reg):
+    """Exe name for a slot. Registered clients know their own; for a month being
+    discovered the era decides it: Roblox.exe up to 2008, RobloxApp.exe from 2009."""
+    if slot in reg:
+        return reg[slot]["exe"]
+    year = int(slot.split("-")[0])
+    return "Roblox.exe" if year <= 2008 else "RobloxApp.exe"
+
+
+def index_drive(folder_id, dry_run=False, extra_slots=()):
     """Walk a public Drive folder, fill the drive section of clients/sources.json.
 
     Every build found for a month is kept as its own candidate. Which one is the
     registered build is decided at fetch time by hashing the exe, not by guessing
     from the folder name.
+
+    `extra_slots` names months to record even though they are not in clients.json, so a
+    client can be fetched and registered before it is committed.
     """
     reg = clients.load()
     found = {}
@@ -306,7 +322,7 @@ def index_drive(folder_id, dry_run=False):
                         continue
                 walk(fid, parts + [clean], depth + 1)
                 continue
-            slot, build_depth = _slot_for(parts)
+            slot, build_depth = _slot_for(parts, extra_slots)
             if not slot:
                 continue
             rel = "/".join([p for p in parts[build_depth:] if not VERSION_DIR.match(p)] + [clean])
@@ -319,11 +335,11 @@ def index_drive(folder_id, dry_run=False):
     out = {}
     for slot, builds in found.items():
         rows = []
+        exe_name = _exe_name_for(slot, reg)
         for label in sorted(builds):
             files = sorted(builds[label]["files"], key=lambda f: f["path"])
-            exe_name = reg[slot]["exe"]
             if not any(f["path"].split("/")[-1] == exe_name for f in files):
-                continue  # a build without the registered exe is not this client
+                continue  # a build without the client exe is not this client
             rows.append({"label": label, "files": files})
         if rows:
             out[slot] = {"builds": rows}

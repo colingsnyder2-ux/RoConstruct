@@ -101,7 +101,11 @@ _BOOST_SRC = ("libs/signals/src/*.cpp libs/thread/src/*.cpp libs/thread/src/win3
               "libs/date_time/src/posix_time/*.cpp libs/regex/src/*.cpp libs/program_options/src/*.cpp")
 for _v, _sha in [("1.34.1", "ef99062117068a0d641f4045c421661768657262a3d119c4a272c97a3e7ae5b3"),
                  ("1.36.0", "7f790b1636c2fdad23c0134db4c28433f90524c981ac752d8a9c8041a00b942c"),
-                 ("1.40.0", "10f1ae33c9c25105554653aa7e86052e7afc9fe797c3cf188a5c8951965ae0d7")]:
+                 ("1.35.0", "c0816cf644653a7bf8b41993261156249bd888840a12d828f3df8329277521f4"),
+                 ("1.38.0", "ff8c3fc932b21453ca31d28903419617f41b2110aba341256eb31be3435843af"),
+                 ("1.40.0", "10f1ae33c9c25105554653aa7e86052e7afc9fe797c3cf188a5c8951965ae0d7"),
+                 ("1.44.0", "7fbb6c9698335968a9e7f468a2b39ac25cc5b62a9c7b2cd9d6acc35c808d7451"),
+                 ("1.47.0", "73d62846091af316cfe4efbc112f21d02b7c2cfe8511737be5e497bcb61ce1a3")]:
     _u = _v.replace(".", "_")
     RECIPES["boost-" + _v] = dict(url="https://archives.boost.io/release/%s/source/boost_%s.tar.gz" % (_v, _u),
                                   sha256=_sha, src="boost_" + _u, langs=["cpp"], grid=["/O2 /GS- /EHsc /MD"],
@@ -118,6 +122,58 @@ def files_of(r, folder):
     if isinstance(r["files"], str):
         return sorted(str(p.relative_to(folder)) for pat in r["files"].split() for p in folder.glob(pat))
     return r["files"]
+
+
+def archive_members(path):
+    """(member name, COFF bytes) from a Microsoft .lib archive."""
+    data = path.read_bytes()
+    if not data.startswith(b"!<arch>\n"):
+        raise match.CompileError("not a COFF archive: %s" % path)
+    names, off = b"", 8
+    while off + 60 <= len(data):
+        head = data[off:off + 60]
+        try:
+            size = int(head[48:58].decode("ascii").strip())
+        except ValueError:
+            raise match.CompileError("bad COFF archive: %s" % path)
+        raw = head[:16].rstrip()
+        body = data[off + 60:off + 60 + size]
+        off += 60 + size + (size & 1)
+        if raw == b"//":
+            names = body
+            continue
+        if raw == b"/":
+            continue
+        if raw.startswith(b"/") and raw[1:].isdigit():
+            start = int(raw[1:])
+            end = names.find(b"\0", start)
+            raw = names[start:end if end >= 0 else len(names)]
+        elif raw.startswith(b"#1/"):
+            length = int(raw[3:])
+            raw, body = body[:length], body[length:]
+        yield raw.decode("latin-1").rstrip("/"), body
+
+
+def archive_unit(name, path, build):
+    """Exact COFF member named by a saved CRT match."""
+    r = RECIPES.get(name)
+    if not r or not r.get("archive"):
+        raise match.CompileError("unknown archive %r" % name)
+    library, _, member = path.partition("/")
+    cl = setup.compilers().get(build)
+    if not cl or library not in r["files"]:
+        raise match.CompileError("no archive %r for compiler %s" % library, build)
+    lib = Path(cl).parents[1] / "lib" / library
+    for found, obj in archive_members(lib):
+        if found == member:
+            return obj
+    raise match.CompileError("no member %r in %s" % (member, lib))
+
+
+def archive_files(r, build):
+    cl = setup.compilers()[build]
+    folder = Path(cl).parents[1] / "lib"
+    return [(lib, member, obj) for lib in r["files"] for member, obj in archive_members(folder / lib)]
 
 
 def template_units():
@@ -156,7 +212,7 @@ def template_units():
     return out
 
 
-for _b in ("1_34_1", "1_40_0"):
+for _b in ("1_34_1", "1_40_0", "1_44_0", "1_47_0"):
     RECIPES["templates-boost-" + _b] = dict(generate=template_units, src="templates-boost-" + _b,
                                            langs=["cpp"], grid=["/O2 /GS- /EHsc /MD"],
                                            include=["boost_" + _b, "WINSDK"], files="*.cpp",
@@ -203,6 +259,38 @@ FASTLOG = """#pragma once
 #define FASTFLAGVARIABLE(n, v) namespace FFlag { bool n = v; }
 """
 RECIPES["compat"] = dict(generate=lambda: {"stdint.h": STDINT, "FastLog.h": FASTLOG}, src="compat", langs=[], files=[])
+
+# RBLXDecomp/RBXGSdecomp: a matching decompilation of Roblox's OWN code (RBXGS 0.3.634.0,
+# Nov 2007, VS2005 SP1 50727 - our 2007-08 client's compiler). This is real RBX:: source
+# (v8kernel, v8world, humanoid, reflection, script), the biggest open bucket, that no
+# library ships. Cloned with submodules into tools/rbxgs (git submodule update --init).
+# Its ReleaseAssert config built with these defines; code unchanged since 2007 compiles
+# to the same bytes under each client's compiler, so match_obj tries every client.
+_RBXGS = "../rbxgs/Client/"
+_RBXGS_INC = [_RBXGS + d for d in ("App/include", "RbxGraphics/include", "Network/include",
+              "RbxView/include", "Rendering/png", "Rendering/g3d/include",
+              "Rendering/g3d/zlib", "Rendering/RenderLib/include", "Rendering/AppDraw/include",
+              "boost_1_34_1/src", "App/lua-5.1.1/src", "Rendering/SDL-1.2.6/include")] + ["WINSDK"]
+_RBXGS_DEF = "WIN32 NDEBUG _LIB _RELEASE _RELEASEASSERT _VC80_UPGRADE=0x0710"
+_RBXGS_GRID = ["/O2 /Ob2 /Oy /GF /GS- /EHsc /MD", "/O2 /Oy /Gy /GS- /EHsc /MD",
+               "/O2 /GS- /EHsc /MD", "/O1 /Ob2 /Oy /GS- /EHsc /MD"]
+RECIPES["rbxgs"] = dict(src=_RBXGS + "App", langs=["cpp"], files="**/*.cpp",
+                        grid=_RBXGS_GRID, include=_RBXGS_INC, defines=_RBXGS_DEF)
+
+# Exact CRT/STL objects from each installed compiler. Fingerprint archive members directly.
+RECIPES["msvc-crt"] = dict(archive=True, builds=[50727, 21022, 30729],
+                            files=["libcmt.lib", "libcpmt.lib"])
+
+# OGRE 1.7.0 (Cthugha), public source archive. Useful for stock Ogre symbols in the
+# older clients; Roblox-specific Rbx/Gfx subclasses remain outside this tree.
+RECIPES["ogre-1.7.0"] = dict(
+    url="https://downloads.sourceforge.net/project/ogre/ogre/1.7/ogre-v1-7-0.zip",
+    archive="ogre-v1-7-0.zip", sha256="4abb420aa30047c32ec99ad3cace59d9014e808ef2adfc36e84b819a8e0641f4",
+    unpack="ogre-1.7.0", src="ogre-1.7.0/ogre/OgreMain/src", langs=["cpp"],
+    builds=[50727, 21022, 30729],
+    include=["ogre-1.7.0/ogre/OgreMain/include", "WINSDK"],
+    grid=["/O2 /GS- /EHsc /MD", "/O2 /GS /EHsc /MD"], files="*.cpp",
+    write={"../include/OgreBuildSettings.h": """#ifndef __Custom_Config_H_\n#define __Custom_Config_H_\n#define OGRE_CONFIG_LITTLE_ENDIAN\n#define OGRE_DOUBLE_PRECISION 0\n#define OGRE_MEMORY_ALLOCATOR 4\n#define OGRE_CONTAINERS_USE_CUSTOM_MEMORY_ALLOCATOR 0\n#define OGRE_STRING_USE_CUSTOM_MEMORY_ALLOCATOR 0\n#define OGRE_MEMORY_TRACKER_DEBUG_MODE 0\n#define OGRE_MEMORY_TRACKER_RELEASE_MODE 0\n#define OGRE_THREAD_SUPPORT 0\n#define OGRE_THREAD_PROVIDER 0\n#define OGRE_NO_FREEIMAGE 0\n#define OGRE_NO_DDS_CODEC 0\n#define OGRE_NO_PVRTC_CODEC 0\n#define OGRE_NO_ZIP_ARCHIVE 0\n#define OGRE_NO_VIEWPORT_ORIENTATIONMODE 0\n#define OGRE_USE_NEW_COMPILERS 0\n#define OGRE_USE_BOOST 0\n#define OGRE_PROFILING 0\n#endif\n"""})
 
 # Roblox's own 2016 source tree (roc/refsource.py) keeps the forks the clients were built
 # from: G3D 8.00 (gone from the web), their modified Lua 5.1.4, RakNet, libjpeg and libpng.
@@ -311,11 +399,13 @@ def fetch(name):
     return folder
 
 
-def preprocess(build, path, include):
+def preprocess(build, path, include, defines=""):
     """One self-contained translation unit: headers inlined, link-only pragmas dropped."""
     cl = setup.compilers()[build]
     env = setup.cl_env(cl)
     env["INCLUDE"] = "%s;%s" % (include, env["INCLUDE"])
+    if defines:
+        env["CL"] = " ".join("/D" + d for d in defines.split())
     run = subprocess.run([cl, "/nologo", "/EP", str(path)], capture_output=True, text=True,
                          env=env, errors="replace")
     if run.returncode:
@@ -343,7 +433,7 @@ def unit(name, path, build):
     r = RECIPES[name]
     include = ";".join([str(folder)] + [winsdk_include() if i == "WINSDK" else str(LIBS / i)
                                         for i in r.get("include", [])])
-    body = preprocess(build, src, include)
+    body = preprocess(build, src, include, r.get("defines", ""))
     cache.parent.mkdir(parents=True, exist_ok=True)
     cache.write_text(body)
     return body
@@ -351,8 +441,9 @@ def unit(name, path, build):
 
 def source_for(name, path, lang, build, flags):
     """The small matched-source text: settings plus a pointer to the library file."""
-    return ("// roc-lang: %s\n// roc-cl: %d\n// roc-flags: %s\n// roc-lib: %s %s\n"
-            % (lang, build, flags, name, path.replace("\\", "/")))
+    kind = "archive" if RECIPES[name].get("archive") is True else "lib"
+    return ("// roc-lang: %s\n// roc-cl: %d\n// roc-flags: %s\n// roc-%s: %s %s\n"
+            % (lang, build, flags, kind, name, path.replace("\\", "/")))
 
 
 def run(names, targets, log=print):
@@ -362,6 +453,18 @@ def run(names, targets, log=print):
     new = {c: 0 for c in targets}
     for name in names:
         r = RECIPES[name]
+        if r.get("archive") is True:
+            t0, hits = time.time(), 0
+            for build in [b for b in r["builds"] if b in have]:
+                for library, member, obj in archive_files(r, build):
+                    src = source_for(name, "%s/%s" % (library, member), "cpp", build, "")
+                    for c, t in tgts.items():
+                        found = t.match_obj(obj, src)
+                        if found:
+                            hits += len(found)
+                            new[c] += fingerprint.save(c, found, "CRT %s/%s" % (library, member))
+            log("%s: done (%.0fs), new so far %s" % (name, time.time() - t0, new))
+            continue
         try:
             folder = fetch(name)
         except SystemExit as e:

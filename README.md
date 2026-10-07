@@ -54,6 +54,23 @@ To undo the install later, double-click **`uninstall.cmd`**. It lists everything
 
 Double-click **`roc.cmd`** for a menu with everything.
 
+### Getting matches without writing any C++
+
+Most functions are not worth hand-writing, because the code is either public or machine-generated. Three commands cover those, and they compose:
+
+| Command | What it does |
+|---|---|
+| **Library matching** | Compiles zlib, libjpeg, Lua and the rest from their real source with the client's own compiler, then matches by fingerprint. Matched code carries `// roc-lang` / `// roc-flags` / `// roc-cl` lines so anyone re-checks it with the settings that matched. |
+| **`roc xcopy <client\|all>`** | The clients share code: a function that is byte-identical in two exes is the same function. This takes every stored match and tries it against every other client's open functions. It only runs where the compiler can reproduce the same bytes, so it works within a compiler group (2008-06↔2011-06, or 2009/2010/2012-06). Re-run it whenever new matches land — every new match is a candidate everywhere else. |
+| **`roc shapes <client\|all>`** | Counts the assembly shapes of what's still unmatched, with addresses and immediates generalised away, so the next pattern template is chosen from counts instead of guesses. |
+
+Nothing above can record a wrong match: a result counts only when it is byte-identical, so a bad guess costs compile time and nothing else.
+
+### Recovered findings
+
+The recovered per-client function outputs are published separately, so normal
+RoConstruct clones stay small: [RoConstruct-findings](https://github.com/colingsnyder2-ux/RoConstruct-findings).
+
 ## Reference
 
 <details>
@@ -104,6 +121,8 @@ roc client-fetch <name|all>     download a client and verify it (happens automat
 roc client-sources <folder>     index a Drive folder as a fetch fallback
 roc analyze <client|all>        split an exe into functions
 roc auto <client|all>           auto-match trivial functions
+roc shapes <client|all>         count unmatched assembly shapes (picks the next templates)
+roc xcopy <client|all>          copy every match to the other clients that share the function
 roc next <client>               easiest open functions
 roc claim <client> <addr>       start a function: src/<client>/<addr>.cpp
 roc check <client> [addr]       compile, score, show the diff
