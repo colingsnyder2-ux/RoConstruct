@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-07 08:06 UTC",
+ "updated": "2026-10-07 08:09 UTC",
  "clients": [
   {
    "name": "2007-08",
@@ -15,10 +15,10 @@
    "leaderboard": [
     {
      "user": "auto",
-     "matched": 1799,
-     "points": 179900,
-     "submissions": 1799,
-     "last": 1791342555.2709458
+     "matched": 4100,
+     "points": 408239,
+     "submissions": 4100,
+     "last": 1791360445.9956686
     },
     {
      "user": "colin",
@@ -53,10 +53,10 @@
    "leaderboard": [
     {
      "user": "auto",
-     "matched": 2049,
-     "points": 204900,
-     "submissions": 2049,
-     "last": 1791342565.0359824
+     "matched": 4575,
+     "points": 457500,
+     "submissions": 4575,
+     "last": 1791360469.6306887
     },
     {
      "user": "colin",
@@ -84,10 +84,10 @@
    "leaderboard": [
     {
      "user": "auto",
-     "matched": 2419,
-     "points": 241900,
-     "submissions": 2419,
-     "last": 1791342576.1000705
+     "matched": 5449,
+     "points": 544900,
+     "submissions": 5449,
+     "last": 1791360497.4079716
     }
    ],
    "data_matched_bytes": 17887,
@@ -108,10 +108,10 @@
    "leaderboard": [
     {
      "user": "auto",
-     "matched": 3195,
-     "points": 319500,
-     "submissions": 3195,
-     "last": 1791342590.7554386
+     "matched": 6641,
+     "points": 664100,
+     "submissions": 6641,
+     "last": 1791360529.6723053
     },
     {
      "user": "colin",
@@ -139,10 +139,10 @@
    "leaderboard": [
     {
      "user": "auto",
-     "matched": 3515,
-     "points": 351500,
-     "submissions": 3515,
-     "last": 1791342606.8636682
+     "matched": 5415,
+     "points": 541500,
+     "submissions": 5415,
+     "last": 1791360550.5185559
     }
    ],
    "data_matched_bytes": 12909,
@@ -163,10 +163,10 @@
    "leaderboard": [
     {
      "user": "auto",
-     "matched": 3898,
-     "points": 389800,
-     "submissions": 3898,
-     "last": 1791342625.6908865
+     "matched": 6552,
+     "points": 655200,
+     "submissions": 6552,
+     "last": 1791360571.9448597
     }
    ],
    "data_matched_bytes": 12885,
@@ -177,10 +177,10 @@
  "leaderboard": [
   {
    "user": "auto",
-   "matched": 16875,
-   "points": 1687500,
-   "submissions": 16875,
-   "last": 1791342625.6908865
+   "matched": 32732,
+   "points": 3271439,
+   "submissions": 32732,
+   "last": 1791360571.9448597
   },
   {
    "user": "colin",
