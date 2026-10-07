@@ -62,7 +62,7 @@ def checksum_ok(exe):
     return None if stored == 0 else stored == pe.generate_checksum()
 
 
-def add(name, exe, allow_modified=False):
+def add(name, exe, allow_modified=False, donor=False):
     if not re.match(r"^[A-Za-z0-9_-]{1,32}$", name):
         raise SystemExit("Client name: letters, digits, - and _ only (e.g. 2008-06)")
     exe = Path(exe).resolve()
@@ -78,6 +78,8 @@ def add(name, exe, allow_modified=False):
     build = compiler_build(dest)
     entry = {"exe": exe.name, "sha256": sha256(dest), "compiler_build": build, "built": built(dest),
              "compiler": COMPILERS.get(build, "unknown build %s" % build)}
+    if donor:  # a reference binary used to match the real clients, not a progress target of its own
+        entry["donor"] = True
     reg = load()
     reg[name] = entry
     save(reg)

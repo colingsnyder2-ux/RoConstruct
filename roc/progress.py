@@ -73,6 +73,8 @@ def build(server=None, token=None, public_server=None, remote=None):
         remote = fetch_server(server, token) if server else {"scores": {}, "leaderboard": []}
     out, stats = [], {}
     for name, entry in sorted(clients.load().items()):
+        if entry.get("donor"):  # donor binaries are matching/test fixtures, not shown on the site
+            continue
         work = ROOT / "work" / name
         row = {"name": name, "compiler": entry["compiler"], "built": entry.get("built"), "started": False}
         if (work / "functions.jsonl").exists():
