@@ -234,6 +234,9 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
     Server leases make workers safe to run in parallel.  Keep the default at one
     process/thread so laptop users do not accidentally oversubscribe GPU/CPU.
     """
+    if str(workers).lower() == "auto":
+        # Conservative: small models can overlap; large models stay serial.
+        workers = 2 if "7b" in str(model).lower() else 1
     workers = max(1, min(int(workers or 1), 8))
     if workers == 1:
         return run(server, user, token, model, rounds, max_size, use_revng,

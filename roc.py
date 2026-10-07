@@ -368,9 +368,9 @@ def cmd_worker(a):
     if a.dry_run:
         info = worker.Api(srv, a.token or s.get("token")).call("/v1/info")
         have = worker.usable_clients(info)
-        print("Worker preview: user=%s model=%s clients=%s rounds=%d max-size=%d Rev.ng=%s workers=%d" %
+        print("Worker preview: user=%s model=%s clients=%s rounds=%d max-size=%d Rev.ng=%s workers=%s" %
               (user, draft.pick_model(chosen) or "none", ", ".join(have) or "none",
-               a.rounds, a.max_size, "off" if a.no_revng else "auto", max(1, min(a.workers, 8))))
+               a.rounds, a.max_size, "off" if a.no_revng else "auto", a.workers))
         return
     worker.save_settings(user=user, server=srv, model=a.model)
     worker.run_concurrent(srv, user, a.token or s.get("token"), chosen, a.rounds, a.max_size,
@@ -722,8 +722,8 @@ def main(argv=None):
         (["--rounds"], {"type": int, "default": 4, "help": "AI tries per function"}),
         (["--max-size"], {"type": int, "default": 256, "help": "skip functions bigger than this (bytes)"}),
         (["--jobs"], {"type": int, "help": "stop after this many functions"}),
-        (["--workers"], {"type": int, "default": 1,
-                          "help": "bounded concurrent lease loops (1-8; avoid GPU oversubscription)"}),
+        (["--workers"], {"default": "1",
+                          "help": "bounded concurrent lease loops (1-8 or auto)"}),
         (["--no-revng"], {"action": "store_true"}),
         (["--preset"], {"choices": ["fast", "balanced", "deep"], "default": "balanced"}),
         (["--dry-run"], {"action": "store_true", "help": "show worker setup without leasing a job"}),

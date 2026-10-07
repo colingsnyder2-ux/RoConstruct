@@ -15,7 +15,7 @@ Goal: increase functions/hour and reduce GPU/CPU time without lowering match qua
 - [x] Skip Rev.ng for tiny/simple functions.
 - [x] Cache source hints, compiler environments, and compile failures.
 - [x] Bound worker concurrency with `roc worker --workers N`.
-- [ ] Add adaptive worker count from observed GPU memory/time.
+- [x] Add conservative model-aware worker count with `--workers auto`.
 - [x] Avoid duplicate source/index lookups across retries/process workers (bounded prompt-hint cache).
 - [x] Batch compatible compile checks with isolated namespaces (no cross-target collisions).
 

@@ -133,7 +133,7 @@ roc config --user U --server S  save your settings
 roc model [name|default]         show or choose AI model
 roc worker [--jobs N]           run an AI worker (`--workers N` for bounded parallel loops)
 roc worker --dry-run             check worker setup without taking a job
-roc worker --workers 2           run bounded parallel lease loops (1-8)
+roc worker --workers 2           run bounded parallel lease loops (1-8, or auto)
 roc worker --preset fast|deep    choose speed or source-heavy mode
 roc worker --source-only         run deterministic candidates only
 roc doctor                       check compilers, Ollama, Docker, clients
