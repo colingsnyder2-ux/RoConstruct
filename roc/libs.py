@@ -203,6 +203,31 @@ RECIPES["rbx2016-png"] = dict(src=REF + "Rendering/g3d/png", langs=["c"], files=
                               include=_REF_INC, needs=_REF_NEEDS)
 
 
+# MFC static library source. Each client statically links the MFC build that shipped with
+# its compiler, so the source compiled with the same cl.exe fingerprint-matches ~1600/client.
+# MFC 8.0 (_MFC_VER 0x0800) is VS2005 -> the 2007-08 client only. No URL: extracted locally
+# from github.com/pixelspark/corespark (Libraries/atlmfc) into tools/libs/mfc-8.0/.
+_MFC80_INC = ["mfc-8.0/atlmfc/src/mfc", "mfc-8.0/atlmfc/include", "WINSDK"]
+_MFC_GRID = ["/O2 /GS- /MD", "/O2 /GS- /MT", "/O1 /GS- /MD", "/O2 /GF /Gy /GS- /MD"]
+RECIPES["mfc-8.0"] = dict(src="mfc-8.0", langs=["cpp"], builds=[50727], include=_MFC80_INC,
+                          grid=_MFC_GRID, files="atlmfc/src/mfc/*.cpp")
+# MFC 9.0 (0x0900) = VS2008. Commit 9.00.30729 (SP1) matches the 30729 clients exactly; the
+# RTM 21022 clients (2008-06, 2011-06) differ by SP but share most functions, so try both.
+_MFC90_INC = ["mfc-9.0/atlmfc/src/mfc", "mfc-9.0/atlmfc/include", "WINSDK"]
+RECIPES["mfc-9.0"] = dict(src="mfc-9.0", langs=["cpp"], builds=[30729, 21022], include=_MFC90_INC,
+                          grid=_MFC_GRID, files="atlmfc/src/mfc/*.cpp")
+
+# Codejock Xtreme Toolkit Pro, statically linked by the clients (the CXTP* units). XTP is built
+# on MFC, so it needs the matching MFC headers. v15.2.1 is (c)1998-2011 -> the 2011-06/2012-06
+# clients. No URL: extracted locally from github.com/mavaL/NeoEngine (Dependency/XTP) into
+# tools/libs/xtp-15.2.1/, with a one-line Source/StdAfx.h (#include "XTToolkitPro.h") added, since
+# every XTP .cpp opens with #include "StdAfx.h" and the umbrella header lives at Source root.
+_XTP_INC = ["xtp-15.2.1/Source", "mfc-9.0/atlmfc/include", "WINSDK"]
+RECIPES["xtp-15.2.1"] = dict(src="xtp-15.2.1", langs=["cpp"], builds=[30729, 21022], include=_XTP_INC,
+                             grid=_MFC_GRID, files="Source/**/*.cpp",
+                             write={"Source/StdAfx.h": '#include "XTToolkitPro.h"\n'})
+
+
 def fetch(name):
     """Download + verify + unpack a recipe's source into tools/libs/. Returns the source folder."""
     r = RECIPES[name]
@@ -237,6 +262,11 @@ def fetch(name):
     for src, dst in r.get("prepare", []):
         if not (folder / dst).exists():
             shutil.copyfile(folder / src, folder / dst)
+    for rel, text in r.get("write", {}).items():          # small generated files (e.g. XTP's StdAfx.h)
+        if (folder / rel).exists() and (folder / rel).read_text() == text:
+            continue
+        (folder / rel).parent.mkdir(parents=True, exist_ok=True)
+        (folder / rel).write_text(text)
     return folder
 
 
@@ -299,7 +329,7 @@ def run(names, targets, log=print):
             log("%s: skipped, %s" % (name, e))  # local-only source not on this PC
             continue
         t0, hits = time.time(), 0
-        for build in [b for b in BUILDS if b in have]:
+        for build in [b for b in r.get("builds", BUILDS) if b in have]:
             for f in files_of(r, folder):
                 try:
                     unit(name, f, build)  # preprocess once (cached); skip files that don't
