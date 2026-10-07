@@ -1,68 +1,62 @@
-# RoConstruct
+<p align="center">
+  <img src="docs/logo.png" alt="RoConstruct" width="560">
+</p>
 
-Matching decompilation of old Roblox clients (2007–2012), done as a group.
+<p align="center">
+  <b>Rebuilding classic Roblox clients (2007–2012) as real C++ source, together.</b><br>
+  <a href="https://colingsnyder2-ux.github.io/RoConstruct/">Progress site</a> ·
+  <a href="https://discord.gg/Tayg763nrG">Discord</a> ·
+  <a href="#get-started">Get started</a>
+</p>
 
-**Progress:** https://colingsnyder2-ux.github.io/RoConstruct/ · **Discord:** https://discord.gg/Tayg763nrG
+---
 
-## Overview
+## What is this?
 
-The clients only exist as compiled x86 executables. Compilation throws away names, types and structure. Ordinary decompilers (Ghidra, Rev.ng) produce approximate C that can't be proven correct or rebuilt into the same program.
+The old Roblox clients only survive as compiled `.exe` files. Compiling throws away names, types and structure, so normal decompilers only give approximate code that can't be rebuilt into the same program.
 
-RoConstruct uses **matching decompilation**, the method behind the Super Mario 64 and Ocarina of Time reconstructions:
+RoConstruct uses **matching decompilation**, the method behind the Super Mario 64 and Ocarina of Time projects:
 
-1. **Partition** the exe into functions (25k–37k per client) using control flow, base relocations and MSVC RTTI. Compiler-generated stubs are excluded.
-2. **Hypothesize** C++ source for one function, written by a person, an LLM, or a pattern matcher for trivial cases.
-3. **Compile** it with the *exact* original compiler, identified from the exe's Rich header.
-4. **Verify** it byte for byte against the original, with linker-patched fields masked. Identical output is a **match**: the source is equivalent to what shipped. Otherwise the instruction diff shows what to fix.
+| Step | What happens |
+|---|---|
+| 1. Split | The exe is cut into functions (20k–40k per client). Compiler-generated stubs are skipped. |
+| 2. Guess | Someone writes C++ for one function: a person, an AI worker, or the pattern matcher. |
+| 3. Compile | The guess is built with the **exact** compiler Roblox used (detected from the exe). |
+| 4. Compare | The result is checked byte for byte. Identical means **matched**: the source provably equals what shipped. Otherwise the diff shows what to fix. |
 
-When every function matches, the result is a source tree that rebuilds the original client.
+When every function matches, the result is a source tree that rebuilds the original client. That opens the door to:
 
-**Why:** proper security patches for known exploits, WebAssembly and native ports (Linux, macOS), bug fixes, modding, and preservation.
+- **Security fixes** for known exploits
+- **Ports:** a browser version via WebAssembly, plus Linux and macOS
+- **Bug fixes, modding and preservation**
 
-**After 100%:** match the data sections, relink a byte-identical exe, name types and functions, replace third-party code (open-source Ogre, G3D, Lua, RakNet and boost with their real source; proprietary MFC, Codejock and FMOD with open alternatives), then build non-matching ports (Emscripten/WebGL, Linux, macOS).
+## Get started
 
-## Quick start
+1. **Download** this repo (Code → Download ZIP) and unzip it.
+2. Double-click **`install.cmd`**. It installs Python and the old compilers (each one verified) and enables one-click links. No admin rights needed.
+3. Put your own copy of a client in its folder, for example `clients\2008-06\Roblox.exe`. `roc client verify` checks it's the right, unmodified build.
+4. On the [progress site](https://colingsnyder2-ux.github.io/RoConstruct/), click **Start helping** on a client.
 
-1. Download this repo (Code → Download ZIP) and unzip it.
-2. Double-click **`install.cmd`**. It installs Python 3.12, downloads and verifies the compilers, and enables one-click links. No admin rights needed.
-3. Put your copy of the client in its folder, for example `clients\2008-06\Roblox.exe`. Run `roc client verify` to check it's the right, unmodified build.
-4. Click **"Help on 2008-06"** on the progress site, or double-click **`roc.cmd`** for a menu.
+The first click asks for a username. After that it runs on its own: leave the window open overnight, and your matches show up on the leaderboard.
 
-**Heads up:** a worker runs an AI model and the compiler nonstop. Expect high GPU and CPU use, fan noise, heat and extra power draw (laptops: plug in). Close the worker window to stop at any time.
+> **Heads up:** a worker runs an AI model and the compiler nonstop. Expect high GPU/CPU use, fan noise and power draw (laptops: plug in). Close the window to stop.
 
-The one-click link asks for a username once, sets up anything missing, keeps the PC awake, and runs a worker until you close the window. Leave it running overnight. Your matches show up on the leaderboard.
+### Ways to help
 
 | You have | Do this |
 |---|---|
-| GPU with 8 GB+ | AI worker: install [Ollama](https://ollama.com), then `ollama pull qwen2.5-coder:7b`. Optional: [Docker](https://www.docker.com/products/docker-desktop/) + `docker pull revng/revng` for decompiler hints. |
-| C++ knowledge | Match functions by hand (below). |
-| An always-on PC | Host the server. |
+| A GPU with 8 GB+ | Run an **AI worker**: install [Ollama](https://ollama.com), then `ollama pull qwen2.5-coder:7b`, then click Start helping. Optional: [Docker](https://www.docker.com/products/docker-desktop/) + `docker pull revng/revng` for extra decompiler hints. |
+| C++ knowledge | **Match by hand**: see below. |
+| A PC that's always on | **Host the server**: see below. |
 
-## Commands
+Double-click **`roc.cmd`** for a menu with everything.
 
-```
-roc install                     download compilers, check tools, enable links
-roc client list | add <n> <exe> clients you have / register a new one
-roc client verify               check your exes: same build as the group, not modified
-roc analyze <client|all>        split an exe into functions
-roc auto <client|all>           auto-match trivial functions (getters, setters, empty bodies)
-roc next <client>               easiest open functions
-roc claim <client> <addr>       start one: src/<client>/<addr>.cpp
-roc check <client> [addr]       compile, score, show the asm diff
-roc submit <client> [addr...]   send your sources to the server
-roc pull <client|all> [--force] download everyone's sources from the server
-roc flags <client>              infer compiler flags from matched code
-roc config --user U --server S [--token T] [--public-server HOST:PORT]
-roc worker [--jobs N] [--rounds N]
-roc server [--tunnel] [--publish] [--startup] [--token T]
-roc status                      progress, active workers, leaderboard
-roc progress                    write the website data to docs/
-roc link install | remove       roconstruct:// one-click links
-```
+## Reference
 
-## Matching by hand
+<details>
+<summary><b>Matching by hand</b></summary>
 
-`roc claim 2008-06 006e5040` writes a file with the target assembly as comments:
+`roc claim 2008-06 006e5040` writes a file with the target assembly as comments. Write C++ under it:
 
 ```cpp
 // 006e5040  8b81d0000000   mov eax, dword ptr [ecx + 0xd0]
@@ -82,63 +76,105 @@ int CXTPControls::GetId()
 }
 ```
 
-`roc check 2008-06 006e5040` then prints `100%  MATCH`.
+`roc check 2008-06 006e5040` prints `100%  MATCH`, or a diff showing what's different. When done, `roc submit 2008-06`.
 
-- `ecx` used before it's set means `this`.
-- `ret N` means N bytes of arguments.
-- `call dword ptr [...]` is an import: declare it `__declspec(dllimport)`.
-- Addresses are masked, so names don't matter.
+Tips:
+- `ecx` used before it's set means `this`, so write a member function.
+- `ret N` means the function takes N bytes of arguments.
+- `call dword ptr [...]` is an imported function: declare it `__declspec(dllimport)`.
+- Addresses are ignored, so names don't matter.
 - Inline asm is rejected.
+- Strings and constants your source defines are checked too. Wrong data scores 99%.
 
-## Compilers
+Find easy targets with `roc next 2008-06`, and get everyone else's work with `roc pull 2008-06`.
+</details>
 
-`roc install` fetches these into `tools/`. A download that fails its check is deleted.
+<details>
+<summary><b>All commands</b></summary>
 
-| Client | Compiler | Source |
+```
+roc install                     download compilers, check tools, enable links
+roc client list | verify        your clients, and whether they're the right builds
+roc client add <name> <exe>     register a new client
+roc analyze <client|all>        split an exe into functions
+roc auto <client|all>           auto-match trivial functions
+roc next <client>               easiest open functions
+roc claim <client> <addr>       start a function: src/<client>/<addr>.cpp
+roc check <client> [addr]       compile, score, show the diff
+roc submit <client> [addr...]   send your sources to the server
+roc pull <client|all> [--force] download everyone's sources
+roc flags <client>              work out compiler flags from matched code
+roc config --user U --server S  save your settings
+roc worker [--jobs N]           run an AI worker
+roc server [--publish] [--startup] [--tunnel]   host the group server
+roc status                      progress, active workers, leaderboard
+roc progress                    rebuild the website data in docs/
+roc link install | remove       one-click links on/off
+```
+</details>
+
+<details>
+<summary><b>Compilers</b></summary>
+
+`roc install` downloads these into `tools/`. Each download is checked against a Microsoft signature or a known hash, and deleted if the check fails.
+
+| Clients | Compiler | Source |
 |---|---|---|
-| 2008-06, 2011-06 | VS2008 RTM 15.00.21022 | [VS2008 Express DVD (2007)](https://archive.org/details/VisualStudioExpressEditionsDVD2007), SHA-1 + Microsoft signature |
-| 2009-06, 2010-06, 2012-06 | VS2008 SP1 15.00.30729 | [VCForPython27.msi](https://web.archive.org/web/20210106040224/https://download.microsoft.com/download/7/9/6/796EF2E4-801B-4FC4-AB28-B59FBF6D907B/VCForPython27.msi), Microsoft signature |
-| 2007-08 | VS2005 14.00.50727 | [Visual C++ 2005 Express](https://archive.org/details/MS_VisualCPPExpress-2005), SHA-1 + Microsoft signature |
+| 2008, 2011 | VS2008 RTM 15.00.21022 | [VS2008 Express DVD (2007)](https://archive.org/details/VisualStudioExpressEditionsDVD2007) |
+| 2009, 2010, 2012 | VS2008 SP1 15.00.30729 | [VCForPython27.msi](https://web.archive.org/web/20210106040224/https://download.microsoft.com/download/7/9/6/796EF2E4-801B-4FC4-AB28-B59FBF6D907B/VCForPython27.msi) |
+| 2007 | VS2005 14.00.50727 | [Visual C++ 2005 Express](https://archive.org/details/MS_VisualCPPExpress-2005) |
 
-An existing Visual Studio 2005/2008 install is detected automatically; otherwise set `ROC_CL` to its `cl.exe` path.
+An existing Visual Studio 2005/2008 install is found automatically. Otherwise, set `ROC_CL` to the `cl.exe` path.
+</details>
 
-## New client
+<details>
+<summary><b>Hosting the server</b></summary>
 
-`roc client add 2013-01 <path to RobloxApp.exe>` records the exe's hash and compiler and analyzes it. Exes whose PE checksum doesn't match (patched or modded) are refused. Commit `clients/clients.json` and restart the server.
+Double-click **`host.cmd`** on a PC that stays on.
+- It runs the server and updates and pushes the website every hour.
+- `roc server --startup` makes it start at login.
 
-## Hosting
+To give it a public address:
+1. Install [Tailscale](https://tailscale.com).
+2. Run `tailscale funnel --bg 8765` and approve the link it prints.
+3. Save the address: `roc config --public-server https://<pc>.<tailnet>.ts.net`.
 
-Double-click **`host.cmd`** on a PC that stays on. It runs `roc server --tunnel --publish`:
+Without a saved address, `--tunnel` uses a temporary Cloudflare address instead. The site and workers follow it automatically when it changes.
 
-- **`--tunnel`**: public HTTPS address through a Cloudflare quick tunnel. No account and no router setup. `cloudflared` is downloaded once and its signature checked.
-- **`--publish`**: rebuilds `docs/` from the live database every hour, then commits and pushes. The site always shows the current server address, and workers follow it if the tunnel address changes.
+The server re-checks every submission with the real compiler and exe, so scores can't be faked. Back up `work/server.db`.
+</details>
 
-**Fixed address (recommended):** install Tailscale, then run `tailscale funnel --bg 8765` once and approve the link it prints. Save the address with `roc config --public-server https://<pc>.<tailnet>.ts.net`. A saved address takes priority over the Cloudflare tunnel.
+<details>
+<summary><b>Adding a new client</b></summary>
 
-`roc server --startup` starts `host.cmd` at login. To undo that, delete `RoConstruct server.cmd` from `shell:startup`.
+`roc client add 2013-01 <path to RobloxApp.exe>` records the exe's hash, build date and compiler, then analyzes it. Patched or modded exes are refused: their PE checksum doesn't match. Commit `clients/clients.json` and restart the server.
+</details>
 
-- No password is needed for a public server: it re-checks every submission with the real compiler and exe, so scores can't be faked. Use `--token` for a private group.
-- Back up `work/server.db`.
-- Abandoned jobs free themselves after 15 minutes.
+<details>
+<summary><b>After 100%</b></summary>
 
-## Data check
+The remaining steps:
+1. Match the data sections.
+2. Relink a byte-identical exe.
+3. Name the types and functions.
+4. Swap third-party code for its real source. The open-source parts are Ogre, G3D, Lua, RakNet and boost. MFC, Codejock and FMOD get open alternatives.
+5. Build ports: WebAssembly/WebGL, Linux and macOS.
+</details>
 
-When a function matches, the strings and constants its source defines (string literals, float constants, initialized tables) are compared with the exe too. Wrong data scores 99%, and `roc check` shows the difference. Verified bytes fill the site's Data bar. `extern` declarations aren't compared.
-
-## Rules
-
-- Never commit client exes, DLLs or game content. `.gitignore` blocks them.
-- `src/` is git-ignored: matched source reproduces Roblox code and risks a takedown if published. The server keeps the sources.
-- Only use client files you're allowed to have.
-
-## Troubleshooting
+<details>
+<summary><b>Troubleshooting</b></summary>
 
 | Message | Fix |
 |---|---|
-| `exe missing` / `hash mismatch` | Use the exact client build in `clients/<name>/` (see `clients/clients.json` for each exe name and hash). |
+| `exe missing` / `hash mismatch` | Use the exact client build listed in `clients/clients.json`. |
 | `looks modified` | That exe was patched; get an unmodified copy. |
-| `Missing compiler` | `roc install` |
-| `cannot reach server` | Check the address, port forwarding, and that the server is running. |
-| `wrong or missing server password` | `roc config --token <password>` |
+| `Missing compiler` | Run `roc install` (re-running resumes downloads). |
+| `cannot reach server` | The server may be offline; workers retry automatically. |
 | `AI workers need Ollama` | Install Ollama, then `ollama pull qwen2.5-coder:7b`. |
-| `needs Python 3.12 or older` | Run `install.cmd`, which installs 3.12. |
+</details>
+
+## Rules
+
+- **Never commit or share Roblox client files.** Everyone brings their own copy.
+- `src/` (matched sources) stays out of git: publishing Roblox code risks a takedown. The server keeps the sources.
+- Be friendly. Join us on [Discord](https://discord.gg/Tayg763nrG).
