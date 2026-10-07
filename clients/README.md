@@ -5,9 +5,9 @@ Do not commit Roblox executables, DLLs, or game content here. They are proprieta
 `clients.json` is the shared registry: exe name, SHA-256, and the compiler that built it. Each contributor supplies their own copy:
 
 ```text
-clients/<name>/RobloxApp_client.exe
+clients/<name>/<exe from clients.json>
 ```
 
-`roc client list` checks your copy's hash. Work is only valid against the exact registered binary.
+`roc client verify` checks your copy's hash and that it isn't modified (PE checksum). Work is only valid against the exact registered binary.
 
-To start a new client: `roc client add <name> path\to\RobloxApp_client.exe`, then commit `clients.json`.
+To start a new client: `roc client add <name> path\to\RobloxApp.exe`, then commit `clients.json`.

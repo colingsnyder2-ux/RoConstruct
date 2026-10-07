@@ -1,28 +1,39 @@
 {
-  "2007M": {
+  "2007-08": {
     "compiler": "VS2005 (cl 14.00.50727)",
     "compiler_build": 50727,
-    "exe": "RobloxApp_client.exe",
-    "sha256": "25db9378e3dafe47966c3ea94f9cf943974f9ed92d79fa143df6d76d896a9171"
+    "exe": "Roblox.exe",
+    "sha256": "2ac01655a2c0dc1739e6e9e6dc048565ae3379265437b4183b85d6f1c02dbfa0"
   },
-  "2008M": {
+  "2008-06": {
     "compiler": "VS2008 RTM (cl 15.00.21022)",
     "compiler_build": 21022,
-    "exe": "RobloxApp_client.exe",
+    "exe": "Roblox.exe",
     "flags": "/O2 /GS- /EHsc /MD",
-    "sha256": "0567a5f72321f496da04f46ba378f1b4cc7f045aa1c29f79748cb984d718a420"
+    "sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764"
   },
-  "2009E": {
+  "2009-06": {
     "compiler": "VS2008 SP1 (cl 15.00.30729)",
     "compiler_build": 30729,
-    "exe": "RobloxApp_client.exe",
-    "flags": "/O2 /GS- /EHsc /MD",
-    "sha256": "0d27db33efef20c1da8a7e748851c2745a10b10afff3891c1434669efe205703"
+    "exe": "RobloxApp.exe",
+    "sha256": "7f2509399ddad475e051ce15260099c8ad1c94c89b2ee41a2c7c9ef31eb7348a"
   },
-  "2010L": {
+  "2010-06": {
+    "compiler": "VS2008 SP1 (cl 15.00.30729)",
+    "compiler_build": 30729,
+    "exe": "RobloxApp.exe",
+    "sha256": "b60e77cf6d18ab309e62bada241f53a7a7f57e9cf0af547d09e546303481961e"
+  },
+  "2011-06": {
     "compiler": "VS2008 RTM (cl 15.00.21022)",
     "compiler_build": 21022,
-    "exe": "RobloxApp_client.exe",
-    "sha256": "f17512b1532599b61383346b18bff393af2231e7272ac5cf7601cb73e14a8440"
+    "exe": "RobloxApp.exe",
+    "sha256": "40245a1fedced7c1df40314b5ee82ffcf2ba81cd15efcf1f76a15320262678a6"
+  },
+  "2012-06": {
+    "compiler": "VS2008 SP1 (cl 15.00.30729)",
+    "compiler_build": 30729,
+    "exe": "RobloxApp.exe",
+    "sha256": "ba59714b4aafa47ac5d3891cc232b2d251d687938256c125561426593768d727"
   }
 }

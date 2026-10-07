@@ -1,4 +1,4 @@
-"""One-click links: roconstruct://work?client=2008M&server=host:8765
+"""One-click links: roconstruct://work?client=2008-06&server=host:8765
 
 `roc link install` registers the roconstruct:// scheme for the current
 Windows user (HKCU, no admin). Clicking a link opens a console that sets up

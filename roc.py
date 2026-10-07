@@ -55,7 +55,7 @@ def cmd_link(a):
 
 
 def cmd_client_add(a):
-    e = clients.add(a.name, a.exe)
+    e = clients.add(a.name, a.exe, a.allow_modified)
     print("%s registered: compiler %s" % (a.name, e["compiler"]))
     cmd_analyze(a)
     print("Commit clients/clients.json so others can join this client.")
@@ -64,9 +64,26 @@ def cmd_client_add(a):
 def cmd_client_list(a):
     reg = clients.load()
     if not reg:
-        print("No clients registered. Add one:  roc client add <name> <path to RobloxApp_client.exe>")
+        print("No clients registered. Add one:  roc client add <name> <path to RobloxApp.exe>")
     for name, e in sorted(reg.items()):
         print("%-6s %-14s %s" % (name, clients.status(name, e), e["compiler"]))
+
+
+def cmd_client_verify(a):
+    """Hash + PE checksum: same build as the group, and not modified."""
+    bad = 0
+    for name, e in sorted(clients.load().items()):
+        st = clients.status(name, e)
+        if st != "ok":
+            print("%-8s %s" % (name, st))
+            bad += st == "hash mismatch"
+            continue
+        ok = clients.checksum_ok(clients.exe_path(name, e))
+        print("%-8s ok, hash matches registry, %s" % (name, {True: "unmodified (PE checksum valid)",
+              False: "MODIFIED (PE checksum mismatch)", None: "no PE checksum to check"}[ok]))
+        bad += ok is False
+    if bad:
+        sys.exit("%d client(s) differ from the registered builds." % bad)
 
 
 def cmd_analyze(a):
@@ -229,13 +246,13 @@ def menu():
         ("First-time setup (downloads compilers, checks everything)", lambda: main(["install"])),
         ("Help automatically with AI (start a worker)", menu_worker),
         ("Work on a function by hand", menu_hand),
-        ("Check my hand-written functions", lambda: main(["check", ask("Client", "2008M")])),
-        ("Send my hand-written functions to the server", lambda: main(["submit", ask("Client", "2008M")])),
+        ("Check my hand-written functions", lambda: main(["check", ask("Client", "2008-06")])),
+        ("Send my hand-written functions to the server", lambda: main(["submit", ask("Client", "2008-06")])),
         ("Host the group server", lambda: main(["server"])),
         ("Server status and leaderboard", lambda: main(["status"])),
         ("Update the progress website files", lambda: main(["progress"])),
-        ("Add a new Roblox client", lambda: main(["client", "add", ask("Short name (e.g. 2011E)"),
-                                                  ask("Path to RobloxApp_client.exe")])),
+        ("Add a new Roblox client", lambda: main(["client", "add", ask("Short name (e.g. 2013-01)"),
+                                                  ask("Path to RobloxApp.exe or Roblox.exe")])),
         ("Auto-match easy functions", lambda: main(["auto", "all"])),
     ]
     while True:
@@ -270,7 +287,7 @@ def menu_worker():
 
 
 def menu_hand():
-    client = ask("Client", "2008M")
+    client = ask("Client", "2008-06")
     main(["next", client])
     addr = ask("Address to claim (copy one from the list)")
     if addr:
@@ -294,7 +311,9 @@ def main(argv=None):
     p = c.add_parser("add", help="register a client exe and analyze it")
     p.add_argument("name")
     p.add_argument("exe")
+    p.add_argument("--allow-modified", action="store_true", help="accept an exe whose PE checksum is wrong")
     p.set_defaults(fn=cmd_client_add)
+    c.add_parser("verify", help="check your exes: same build as registered, not modified").set_defaults(fn=cmd_client_verify)
     c.add_parser("list", help="registered clients and whether you have them").set_defaults(fn=cmd_client_list)
     cmd("analyze", cmd_analyze, "split a client exe into functions ('all' for every client)", (["name"], {}))
     cmd("next", cmd_next, "list the easiest open functions", (["name"], {}), (["-n"], {"type": int, "default": 20}))

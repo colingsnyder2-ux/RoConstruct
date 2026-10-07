@@ -1,6 +1,6 @@
 # RoConstruct
 
-Matching decompilation of old Roblox clients (2007–2010), done as a group.
+Matching decompilation of old Roblox clients (2007–2012), done as a group.
 
 **Progress:** https://colingsnyder2-ux.github.io/RoConstruct/
 
@@ -25,8 +25,8 @@ When every function matches, the result is a source tree that rebuilds the origi
 
 1. Download this repo (Code → Download ZIP) and unzip it.
 2. Double-click **`install.cmd`**. It installs Python 3.12, downloads and verifies the compilers, and enables one-click links. No admin rights needed.
-3. Put your copy of the client in its folder, for example `clients\2008M\RobloxApp_client.exe`.
-4. Click **"Help on 2008M"** on the progress site, or double-click **`roc.cmd`** for a menu.
+3. Put your copy of the client in its folder, for example `clients\2008-06\Roblox.exe`. Run `roc client verify` to check it's the right, unmodified build.
+4. Click **"Help on 2008-06"** on the progress site, or double-click **`roc.cmd`** for a menu.
 
 The one-click link asks for a username once, sets up anything missing, keeps the PC awake, and runs a worker until you close the window. Leave it running overnight. Your matches show up on the leaderboard.
 
@@ -41,6 +41,7 @@ The one-click link asks for a username once, sets up anything missing, keeps the
 ```
 roc install                     download compilers, check tools, enable links
 roc client list | add <n> <exe> clients you have / register a new one
+roc client verify               check your exes: same build as the group, not modified
 roc analyze <client|all>        split an exe into functions
 roc auto <client|all>           auto-match trivial functions (getters, setters, empty bodies)
 roc next <client>               easiest open functions
@@ -58,7 +59,7 @@ roc link install | remove       roconstruct:// one-click links
 
 ## Matching by hand
 
-`roc claim 2008M 006e5040` writes a file with the target assembly as comments:
+`roc claim 2008-06 006e5040` writes a file with the target assembly as comments:
 
 ```cpp
 // 006e5040  8b81d0000000   mov eax, dword ptr [ecx + 0xd0]
@@ -78,7 +79,7 @@ int CXTPControls::GetId()
 }
 ```
 
-`roc check 2008M 006e5040` then prints `100%  MATCH`.
+`roc check 2008-06 006e5040` then prints `100%  MATCH`.
 
 - `ecx` used before it's set means `this`.
 - `ret N` means N bytes of arguments.
@@ -92,15 +93,15 @@ int CXTPControls::GetId()
 
 | Client | Compiler | Source |
 |---|---|---|
-| 2008M, 2010L | VS2008 RTM 15.00.21022 | [VS2008 Express DVD (2007)](https://archive.org/details/VisualStudioExpressEditionsDVD2007), SHA-1 + Microsoft signature |
-| 2009E | VS2008 SP1 15.00.30729 | [VCForPython27.msi](https://web.archive.org/web/20210106040224/https://download.microsoft.com/download/7/9/6/796EF2E4-801B-4FC4-AB28-B59FBF6D907B/VCForPython27.msi), Microsoft signature |
-| 2007M | VS2005 14.00.50727 | [Visual C++ 2005 Express](https://archive.org/details/MS_VisualCPPExpress-2005), SHA-1 + Microsoft signature |
+| 2008-06, 2011-06 | VS2008 RTM 15.00.21022 | [VS2008 Express DVD (2007)](https://archive.org/details/VisualStudioExpressEditionsDVD2007), SHA-1 + Microsoft signature |
+| 2009-06, 2010-06, 2012-06 | VS2008 SP1 15.00.30729 | [VCForPython27.msi](https://web.archive.org/web/20210106040224/https://download.microsoft.com/download/7/9/6/796EF2E4-801B-4FC4-AB28-B59FBF6D907B/VCForPython27.msi), Microsoft signature |
+| 2007-08 | VS2005 14.00.50727 | [Visual C++ 2005 Express](https://archive.org/details/MS_VisualCPPExpress-2005), SHA-1 + Microsoft signature |
 
 An existing Visual Studio 2005/2008 install is detected automatically; otherwise set `ROC_CL` to its `cl.exe` path.
 
 ## New client
 
-`roc client add 2011E <path to RobloxApp_client.exe>` records the exe's hash and compiler and analyzes it. Commit `clients/clients.json` and restart the server.
+`roc client add 2013-01 <path to RobloxApp.exe>` records the exe's hash and compiler and analyzes it. Exes whose PE checksum doesn't match (patched or modded) are refused. Commit `clients/clients.json` and restart the server.
 
 ## Hosting
 
@@ -128,7 +129,8 @@ After `roc progress`, commit and push `docs/`.
 
 | Message | Fix |
 |---|---|
-| `exe missing` / `hash mismatch` | Use the exact client build in `clients/<name>/`. |
+| `exe missing` / `hash mismatch` | Use the exact client build in `clients/<name>/` (see `clients/clients.json` for each exe name and hash). |
+| `looks modified` | That exe was patched; get an unmodified copy. |
 | `Missing compiler` | `roc install` |
 | `cannot reach server` | Check the address, port forwarding, and that the server is running. |
 | `wrong or missing server password` | `roc config --token <password>` |

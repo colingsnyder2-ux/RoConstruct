@@ -65,7 +65,7 @@ def usable_clients(info, log=print):
         if not entry or entry.get("sha256") != remote.get("sha256"):
             log("  skip %s: clients.json differs from server (git pull)" % name)
         elif clients.status(name, entry) != "ok":
-            log("  skip %s: put your RobloxApp_client.exe in clients/%s/ (status: %s)"
+            log("  skip %s: put the exe listed in clients.json into clients/%s/ (status: %s)"
                 % (name, name, clients.status(name, entry)))
         elif not (Path(ROOT / "work" / name / "functions.jsonl")).exists():
             log("  skip %s: run  roc analyze %s" % (name, name))

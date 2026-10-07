@@ -1,6 +1,7 @@
 """Client registry: clients/clients.json is shared, the exes stay local."""
 import hashlib
 import json
+import re
 import shutil
 from collections import Counter
 from pathlib import Path
@@ -46,8 +47,23 @@ def exe_path(name, entry):
     return ROOT / "clients" / name / entry["exe"]
 
 
-def add(name, exe):
+def checksum_ok(exe):
+    """True if the PE header checksum still matches the file. The linker writes
+    it; patched/modded exes almost never recompute it. None = no checksum set."""
+    pe = pefile.PE(str(exe))
+    stored = pe.OPTIONAL_HEADER.CheckSum
+    return None if stored == 0 else stored == pe.generate_checksum()
+
+
+def add(name, exe, allow_modified=False):
+    if not re.match(r"^[A-Za-z0-9_-]{1,32}$", name):
+        raise SystemExit("Client name: letters, digits, - and _ only (e.g. 2008-06)")
     exe = Path(exe).resolve()
+    if not exe.is_file():
+        raise SystemExit("No such file: %s" % exe)
+    if checksum_ok(exe) is False and not allow_modified:
+        raise SystemExit("%s looks modified (PE checksum mismatch). Use an unmodified client, "
+                         "or pass --allow-modified if you are sure." % exe.name)
     dest = ROOT / "clients" / name / exe.name
     if exe != dest:
         dest.parent.mkdir(parents=True, exist_ok=True)
