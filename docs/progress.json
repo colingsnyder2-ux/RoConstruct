@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-07 22:15 UTC",
+ "updated": "2026-10-07 22:30 UTC",
  "clients": [
   {
    "name": "2007-08",
@@ -7,18 +7,18 @@
    "built": "2007-08-19",
    "started": true,
    "functions": 19998,
-   "matched": 7741,
-   "partial": 14,
+   "matched": 7912,
+   "partial": 17,
    "bytes": 3009279,
-   "matched_bytes": 645113,
+   "matched_bytes": 667953,
    "data_bytes": 1361658,
    "leaderboard": [
     {
      "user": "auto",
-     "matched": 7293,
-     "points": 726970,
-     "submissions": 7293,
-     "last": 1791411320.5608423
+     "matched": 7464,
+     "points": 744070,
+     "submissions": 7464,
+     "last": 1791412209.7362359
     },
     {
      "user": "colin",
@@ -28,6 +28,13 @@
      "last": 1791355634.1087701
     },
     {
+     "user": "virility92",
+     "matched": 0,
+     "points": 134,
+     "submissions": 3,
+     "last": 1791411660.1501815
+    },
+    {
      "user": "jazz",
      "matched": 0,
      "points": 104,
@@ -35,7 +42,7 @@
      "last": 1791352017.9738536
     }
    ],
-   "data_matched_bytes": 68107,
+   "data_matched_bytes": 68355,
    "classes": 1391,
    "generated": 16973
   },
@@ -45,18 +52,18 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22296,
-   "matched": 8323,
+   "matched": 8423,
    "partial": 0,
    "bytes": 3448631,
-   "matched_bytes": 704271,
+   "matched_bytes": 713744,
    "data_bytes": 1559926,
    "leaderboard": [
     {
      "user": "auto",
-     "matched": 7551,
-     "points": 755100,
-     "submissions": 7551,
-     "last": 1791411324.5327857
+     "matched": 7651,
+     "points": 765100,
+     "submissions": 7651,
+     "last": 1791412214.9406903
     },
     {
      "user": "colin",
@@ -66,7 +73,7 @@
      "last": 1791342981.986327
     }
    ],
-   "data_matched_bytes": 62695,
+   "data_matched_bytes": 63743,
    "classes": 1488,
    "generated": 19917
   },
@@ -76,21 +83,21 @@
    "built": "2009-06-16",
    "started": true,
    "functions": 26156,
-   "matched": 6873,
+   "matched": 6932,
    "partial": 0,
    "bytes": 3981050,
-   "matched_bytes": 507086,
+   "matched_bytes": 513351,
    "data_bytes": 1809822,
    "leaderboard": [
     {
      "user": "auto",
-     "matched": 6551,
-     "points": 655100,
-     "submissions": 6551,
-     "last": 1791411328.8422203
+     "matched": 6610,
+     "points": 661000,
+     "submissions": 6610,
+     "last": 1791412219.1169488
     }
    ],
-   "data_matched_bytes": 27434,
+   "data_matched_bytes": 28414,
    "classes": 1624,
    "generated": 20922
   },
@@ -100,18 +107,18 @@
    "built": "2010-06-18",
    "started": true,
    "functions": 32947,
-   "matched": 9187,
+   "matched": 9267,
    "partial": 7,
    "bytes": 5116758,
-   "matched_bytes": 625317,
+   "matched_bytes": 636006,
    "data_bytes": 2369604,
    "leaderboard": [
     {
      "user": "auto",
-     "matched": 8844,
-     "points": 884400,
-     "submissions": 8844,
-     "last": 1791411334.1458573
+     "matched": 8924,
+     "points": 892400,
+     "submissions": 8924,
+     "last": 1791412223.6783576
     },
     {
      "user": "colin",
@@ -121,7 +128,7 @@
      "last": 1791350944.373746
     }
    ],
-   "data_matched_bytes": 42891,
+   "data_matched_bytes": 43915,
    "classes": 2012,
    "generated": 26137
   },
@@ -131,18 +138,18 @@
    "built": "2011-06-24",
    "started": true,
    "functions": 36419,
-   "matched": 8683,
+   "matched": 8690,
    "partial": 0,
    "bytes": 5337037,
-   "matched_bytes": 430861,
+   "matched_bytes": 431333,
    "data_bytes": 3009972,
    "leaderboard": [
     {
      "user": "auto",
-     "matched": 7453,
-     "points": 745300,
-     "submissions": 7453,
-     "last": 1791411339.135645
+     "matched": 7460,
+     "points": 746000,
+     "submissions": 7460,
+     "last": 1791412228.5552173
     }
    ],
    "data_matched_bytes": 34239,
@@ -155,18 +162,18 @@
    "built": "2012-06-13",
    "started": true,
    "functions": 39811,
-   "matched": 9322,
+   "matched": 9327,
    "partial": 0,
    "bytes": 6234528,
-   "matched_bytes": 447510,
+   "matched_bytes": 447814,
    "data_bytes": 3396596,
    "leaderboard": [
     {
      "user": "auto",
-     "matched": 8690,
-     "points": 869000,
-     "submissions": 8690,
-     "last": 1791411341.5890772
+     "matched": 8695,
+     "points": 869500,
+     "submissions": 8695,
+     "last": 1791412233.1722825
     }
    ],
    "data_matched_bytes": 33350,
@@ -177,10 +184,10 @@
  "leaderboard": [
   {
    "user": "auto",
-   "matched": 46382,
-   "points": 4635870,
-   "submissions": 46382,
-   "last": 1791411341.5890772
+   "matched": 46804,
+   "points": 4678070,
+   "submissions": 46804,
+   "last": 1791412233.1722825
   },
   {
    "user": "colin",
@@ -188,6 +195,13 @@
    "points": 5312,
    "submissions": 78,
    "last": 1791355634.1087701
+  },
+  {
+   "user": "virility92",
+   "matched": 0,
+   "points": 134,
+   "submissions": 3,
+   "last": 1791411660.1501815
   },
   {
    "user": "jazz",
