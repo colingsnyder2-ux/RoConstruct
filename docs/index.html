@@ -31,11 +31,11 @@ a:hover { text-decoration: underline; }
 code { color: var(--accent2); font-family: var(--mono); font-size: .92em; }
 
 /* top bar */
-.top { box-shadow: 0 0 27px rgba(47, 107, 255, 0.10), inset 0 0 10px rgba(56, 200, 255, 0.02); display: flex; align-items: center; gap: 24px; margin: 8px auto 0; padding: 10px 18px; border: 1px solid var(--line);
+.top { box-shadow: 0 0 27px rgba(47, 107, 255, 0.10), inset 0 0 10px rgba(56, 200, 255, 0.02); display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; align-items: center; gap: 14px; margin: 8px auto 0; padding: 10px 18px; border: 1px solid var(--line);
   border-radius: 12px; background: rgba(15, 21, 32, .85); backdrop-filter: blur(6px); position: sticky; top: 8px; z-index: 5; }
 .top .brand img { height: 26px; display: block; }
-.top nav { display: flex; gap: 4px; flex: 1; justify-content: center; flex-wrap: wrap; }
-.top nav a { color: var(--dim); padding: 6px 14px; font-size: 14px; border-bottom: 2px solid transparent; }
+.top nav { display: flex; gap: 2px; justify-content: flex-end; min-width: 0; white-space: nowrap; }
+.top nav a { color: var(--dim); padding: 6px 10px; font-size: 13px; border-bottom: 2px solid transparent; }
 .top nav a:hover { color: var(--text); text-decoration: none; }
 .top nav a.on { color: var(--text); border-bottom-color: var(--accent2); text-shadow: 0 0 9px rgba(56, 200, 255, 0.20); box-shadow: 0 6px 12px -8px var(--accent2); }
 .btn { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line2); border-radius: 8px;
@@ -44,7 +44,7 @@ code { color: var(--accent2); font-family: var(--mono); font-size: .92em; }
 .btn:hover { border-color: var(--accent2); box-shadow: 0 0 20px rgba(56, 200, 255, 0.17); text-decoration: none; }
 .btn svg { width: 18px; height: 18px; flex: none; }
 .btn.discord svg { color: #8c9eff; }
-.top .btn + .btn { margin-left: -12px; }
+.top .btn + .btn { margin-left: 0; }
 
 /* hero */
 .hero { text-align: center; padding: 40px 0 8px; }
@@ -146,6 +146,7 @@ input { flex: 2 1 240px; }
 canvas { display: block; width: 100%; height: min(70vh, 560px); background: var(--grey); border-radius: 8px; cursor: pointer; }
 .tip { position: absolute; pointer-events: none; background: #f2f3f5; color: #111; font: 12px var(--mono); padding: 3px 8px; border-radius: 4px; white-space: nowrap; display: none; }
 .detail { border: 1px solid var(--line2); border-radius: 10px; background: var(--panel); padding: 12px 16px; margin-top: 12px; font: 13px var(--mono); overflow-wrap: anywhere; }
+.detail a { display: inline-block; margin-top: 8px; font-family: var(--sans); }
 .legend { display: flex; gap: 16px; color: var(--dim); font-size: 13px; margin-top: 8px; flex-wrap: wrap; }
 .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; }
 .note { color: var(--dim); font: 12px var(--mono); margin-top: 12px; }
@@ -159,8 +160,8 @@ footer .love { color: var(--dim); font-size: 13px; border-left: 1px solid var(--
 footer .love b { color: var(--accent); }
 
 @media (max-width: 640px) {
-  .top { gap: 10px; flex-wrap: wrap; justify-content: space-between; }
-  .top nav { order: 3; flex-basis: 100%; }
+  .top { display: flex; gap: 10px; flex-wrap: wrap; justify-content: space-between; }
+  .top nav { order: 3; flex-basis: 100%; justify-content: center; white-space: normal; }
   .top nav a { padding: 4px 8px; }
   .stat { padding: 16px; }
 }
@@ -197,11 +198,13 @@ footer .love b { color: var(--accent); }
 </footer>
 <script>
 const REPO = "https://github.com/colingsnyder2-ux/RoConstruct";
+const FINDINGS = "https://github.com/colingsnyder2-ux/RoConstruct-findings";
 const app = document.getElementById("app");
 const fmt = n => n.toLocaleString("en-US");
 const pct = (a, b) => b ? (100 * a / b).toFixed(2) + "%" : "0.00%";
 const mb = n => (n / 1048576).toFixed(2) + " MB";
 const hex = n => n.toString(16).padStart(8, "0");
+const sourceUrl = (client, address) => `${FINDINGS}/blob/main/src/${encodeURIComponent(client)}/${hex(address)}.cpp`;
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
 const cache = new Map();
 let progress, history = [], hIdx = -1;
@@ -415,10 +418,10 @@ async function client(name) {
     <div class="map"><canvas id="cv"></canvas><div class="tip" id="tip"></div></div>
     <div class="legend"><span><i style="background:#3fb950"></i>matched</span>
       <span><i style="background:rgb(49,100,64)"></i>partial</span><span><i style="background:#3a3d45"></i>not matched</span></div>
-    <div class="detail" id="detail">Click a box for details.</div>
+    <div class="detail" id="detail">Click a tile to see its function address, match score, and recovered source.</div>
     ${leaderboard(latest.leaderboard)}
     <div class="head"><h2><small>Pick one</small>Easiest remaining</h2></div>
-    <div class="table"><table><thead><tr><th>Address</th><th>Size</th><th>Score</th><th>Unit</th><th>Claim</th></tr></thead>
+    <div class="table"><table><thead><tr><th>Address</th><th>Size</th><th>Score</th><th>Unit</th><th>Source</th><th>Claim</th></tr></thead>
       <tbody id="easy"></tbody></table></div>
     <p class="note">Last updated: ${esc(progress.updated)}</p>`;
   wireNav();
@@ -463,7 +466,7 @@ async function client(name) {
   cv.onmousemove = e => {
     const {x, y, b} = hit(e);
     if (!b) { tip.style.display = "none"; return; }
-    tip.textContent = `${units[b.f[3]]}/${hex(b.f[0])} • ${fmt(b.f[1])} B • ${b.f[2]}%`;
+    tip.textContent = `${units[b.f[3]]} • ${hex(b.f[0])} • ${fmt(b.f[1])} B • ${b.f[2]}%`;
     tip.style.display = "block";
     tip.style.left = Math.max(0, Math.min(x + 12, cv.clientWidth - tip.offsetWidth)) + "px";
     tip.style.top = (y + 16) + "px";
@@ -473,9 +476,10 @@ async function client(name) {
     const {b} = hit(e);
     if (!b) return;
     const f = b.f;
+    const source = f[2] ? `<a href="${sourceUrl(name, f[0])}" target="_blank" rel="noopener">Open recovered source ↗</a>` : "No recovered source yet";
     document.getElementById("detail").innerHTML =
-      `${esc(units[f[3]])} / ${hex(f[0])} • ${fmt(f[1])} bytes • ${f[2]}% matched<br>` +
-      `Work on it: <code>roc claim ${esc(name)} ${hex(f[0])}</code>`;
+      `<strong>${esc(units[f[3]])}</strong><br>${hex(f[0])} • ${fmt(f[1])} bytes • ${f[2]}% matched<br>` +
+      `${source}<br>Work on it: <code>roc claim ${esc(name)} ${hex(f[0])}</code>`;
   };
   unitSel.onchange = layout;
   filter.oninput = () => { keep = parseFilter(filter.value, units); draw(); };
@@ -485,6 +489,7 @@ async function client(name) {
   const easy = data.funcs.filter(f => f[2] < 100).sort((a, b) => a[1] - b[1] || b[2] - a[2]).slice(0, 25);
   document.getElementById("easy").innerHTML = easy.map(f =>
     `<tr><td>${hex(f[0])}</td><td>${f[1]} B</td><td>${f[2]}%</td><td>${esc(units[f[3]])}</td>` +
+    `<td>${f[2] ? `<a href="${sourceUrl(name, f[0])}" target="_blank" rel="noopener">open</a>` : "—"}</td>` +
     `<td><code>roc claim ${esc(name)} ${hex(f[0])}</code></td></tr>`).join("");
 }
 
