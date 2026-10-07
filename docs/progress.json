@@ -1,16 +1,32 @@
 {
- "updated": "2026-10-07 22:30 UTC",
+ "updated": "2026-10-07 23:30 UTC",
  "clients": [
+  {
+   "name": "2007-03",
+   "compiler": "VS2005 (cl 14.00.50727)",
+   "built": "2007-03-26",
+   "started": true,
+   "functions": 19362,
+   "matched": 3939,
+   "partial": 0,
+   "bytes": 3050237,
+   "matched_bytes": 276439,
+   "data_bytes": 1332936,
+   "leaderboard": [],
+   "data_matched_bytes": 18618,
+   "classes": 0,
+   "generated": 6340
+  },
   {
    "name": "2007-08",
    "compiler": "VS2005 (cl 14.00.50727)",
    "built": "2007-08-19",
    "started": true,
    "functions": 19998,
-   "matched": 7912,
-   "partial": 17,
+   "matched": 7995,
+   "partial": 19,
    "bytes": 3009279,
-   "matched_bytes": 667953,
+   "matched_bytes": 679804,
    "data_bytes": 1361658,
    "leaderboard": [
     {
@@ -30,9 +46,9 @@
     {
      "user": "virility92",
      "matched": 0,
-     "points": 134,
-     "submissions": 3,
-     "last": 1791411660.1501815
+     "points": 245,
+     "submissions": 6,
+     "last": 1791412533.2559323
     },
     {
      "user": "jazz",
@@ -42,7 +58,7 @@
      "last": 1791352017.9738536
     }
    ],
-   "data_matched_bytes": 68355,
+   "data_matched_bytes": 68427,
    "classes": 1391,
    "generated": 16973
   },
@@ -52,10 +68,10 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22296,
-   "matched": 8423,
+   "matched": 8526,
    "partial": 0,
    "bytes": 3448631,
-   "matched_bytes": 713744,
+   "matched_bytes": 727963,
    "data_bytes": 1559926,
    "leaderboard": [
     {
@@ -73,7 +89,7 @@
      "last": 1791342981.986327
     }
    ],
-   "data_matched_bytes": 63743,
+   "data_matched_bytes": 68844,
    "classes": 1488,
    "generated": 19917
   },
@@ -83,10 +99,10 @@
    "built": "2009-06-16",
    "started": true,
    "functions": 26156,
-   "matched": 6932,
+   "matched": 7004,
    "partial": 0,
    "bytes": 3981050,
-   "matched_bytes": 513351,
+   "matched_bytes": 526043,
    "data_bytes": 1809822,
    "leaderboard": [
     {
@@ -97,7 +113,7 @@
      "last": 1791412219.1169488
     }
    ],
-   "data_matched_bytes": 28414,
+   "data_matched_bytes": 33409,
    "classes": 1624,
    "generated": 20922
   },
@@ -107,10 +123,10 @@
    "built": "2010-06-18",
    "started": true,
    "functions": 32947,
-   "matched": 9267,
+   "matched": 9438,
    "partial": 7,
    "bytes": 5116758,
-   "matched_bytes": 636006,
+   "matched_bytes": 658956,
    "data_bytes": 2369604,
    "leaderboard": [
     {
@@ -128,7 +144,7 @@
      "last": 1791350944.373746
     }
    ],
-   "data_matched_bytes": 43915,
+   "data_matched_bytes": 47484,
    "classes": 2012,
    "generated": 26137
   },
@@ -138,10 +154,10 @@
    "built": "2011-06-24",
    "started": true,
    "functions": 36419,
-   "matched": 8690,
+   "matched": 8751,
    "partial": 0,
    "bytes": 5337037,
-   "matched_bytes": 431333,
+   "matched_bytes": 434804,
    "data_bytes": 3009972,
    "leaderboard": [
     {
@@ -152,7 +168,7 @@
      "last": 1791412228.5552173
     }
    ],
-   "data_matched_bytes": 34239,
+   "data_matched_bytes": 34347,
    "classes": 2230,
    "generated": 28151
   },
@@ -162,10 +178,10 @@
    "built": "2012-06-13",
    "started": true,
    "functions": 39811,
-   "matched": 9327,
+   "matched": 9386,
    "partial": 0,
    "bytes": 6234528,
-   "matched_bytes": 447814,
+   "matched_bytes": 451193,
    "data_bytes": 3396596,
    "leaderboard": [
     {
@@ -176,7 +192,7 @@
      "last": 1791412233.1722825
     }
    ],
-   "data_matched_bytes": 33350,
+   "data_matched_bytes": 33458,
    "classes": 2176,
    "generated": 30232
   }
@@ -199,9 +215,9 @@
   {
    "user": "virility92",
    "matched": 0,
-   "points": 134,
-   "submissions": 3,
-   "last": 1791411660.1501815
+   "points": 245,
+   "submissions": 6,
+   "last": 1791412533.2559323
   },
   {
    "user": "jazz",
