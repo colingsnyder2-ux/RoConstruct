@@ -3,6 +3,7 @@ import struct
 import json
 import sys
 import time
+from unittest.mock import patch
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -143,6 +144,14 @@ def test_model_choice(monkeypatch):
     assert draft.pick_model("default") == "qwen2.5-coder:7b"
     monkeypatch.setattr(draft, "ollama_models", lambda: ["my-model"])
     assert draft.pick_model() == "my-model"
+
+
+def test_link_options():
+    from roc.link import choose_options
+    with patch("roc.draft.ollama_models", return_value=["qwen2.5-coder:14b", "qwen2.5-coder:7b"]), \
+         patch("roc.draft.pick_model", return_value="qwen2.5-coder:14b"), \
+         patch("builtins.input", side_effect=["qwen2.5-coder:7b", "fast", "auto", "n"]):
+        assert choose_options({"model": "qwen2.5-coder:14b"}) == ("qwen2.5-coder:7b", 2, 96, False, "auto")
 
 
 def test_server_store():
