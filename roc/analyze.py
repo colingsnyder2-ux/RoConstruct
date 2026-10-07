@@ -107,6 +107,15 @@ GENERATED = [re.compile(p) for p in (
 )]
 
 
+# Linker/compiler thunks no source can produce; workers would burn rounds on them.
+THUNKS = [(k, re.compile(p)) for k, p in (
+    ("thunk", r"^jmp dword ptr \[N\]( ; jmp dword ptr \[N\])+$"),               # glued import thunks
+    ("thunk", r"^mov eax, dword ptr \[(ecx|esp \+ 4)\] ; jmp dword ptr \[eax( \+ \w+)?\]$"),  # vcall
+    ("adjustor", r"^sub dword ptr \[esp \+ 4\], \w+ ; jmp N$"),                  # this-adjustor
+    ("adjustor", r"^sub ecx, dword ptr \[ecx - 4\] ; sub ecx, \w+ ; jmp N$"),    # vtordisp
+)]
+
+
 def kind_of(code, relocs):
     """'thunk' (import jump), 'adjustor' (this-pointer fixup + jmp), 'gen' (EH handler, deleting dtor, guard reset), 'eh'
     (unwind funclet / exception handler stub) or 'code'. Only 'code' counts
@@ -124,6 +133,9 @@ def kind_of(code, relocs):
     shape = " ; ".join(re.sub(r"0x[0-9a-f]+", "N", "%s %s" % (m, o)).strip() for _, _, m, o in insns)
     if any(p.search(shape) for p in GENERATED):
         return "gen"
+    for kind, p in THUNKS:
+        if p.search(shape):
+            return kind
     first, last = insns[0], insns[-1]
     if len(insns) == 1 and first[2] == "jmp" and first[3].startswith("dword ptr [0x"):
         return "thunk"
@@ -212,7 +224,7 @@ def analyze(client, exe):
     if scores_file.exists():
         matched = {a for a, s in json.loads(scores_file.read_text()).items() if s == 100}
         for f in funcs:
-            if f["kind"] == "gen" and f["addr"] in matched:
+            if f["kind"] in ("gen", "thunk", "adjustor") and f["addr"] in matched:
                 f["kind"] = "code"
     data = sum(s.Misc_VirtualSize for s in pe.sections
                if s.Name.rstrip(b"\0") in (b".rdata", b".data", b".tls"))

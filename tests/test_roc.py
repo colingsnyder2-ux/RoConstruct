@@ -36,6 +36,10 @@ def test_find_functions():
 def test_kinds():
     assert kind_of(bytes.fromhex("ff2500104000"), [2]) == "thunk"
     assert kind_of(bytes.fromhex("83e960e938ffffff"), []) == "adjustor"
+    assert kind_of(bytes.fromhex("8b442404ff20"), []) == "thunk"                  # vcall thunk
+    assert kind_of(bytes.fromhex("ff2500104000ff2504104000"), [2, 8]) == "thunk"  # glued import thunks
+    assert kind_of(bytes.fromhex("836c240408e900000000"), []) == "adjustor"       # this-adjustor
+    assert kind_of(bytes.fromhex("8b442404c3"), []) == "code"                     # real getter stays code
     assert kind_of(bytes.fromhex("8b4dd8e9d868c7ff"), []) == "eh"
     assert kind_of(bytes.fromhex("ff"), []) == "bad"
     assert kind_of(bytes.fromhex("8b4144c3"), []) == "code"
