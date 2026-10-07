@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-07 08:09 UTC",
+ "updated": "2026-10-07 09:09 UTC",
  "clients": [
   {
    "name": "2007-08",
@@ -7,10 +7,10 @@
    "built": "2007-08-19",
    "started": true,
    "functions": 20120,
-   "matched": 4120,
+   "matched": 4128,
    "partial": 27,
    "bytes": 3010600,
-   "matched_bytes": 300496,
+   "matched_bytes": 300698,
    "data_bytes": 1361658,
    "leaderboard": [
     {
@@ -45,10 +45,10 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22396,
-   "matched": 4581,
+   "matched": 4590,
    "partial": 0,
    "bytes": 3449717,
-   "matched_bytes": 381903,
+   "matched_bytes": 382059,
    "data_bytes": 1559926,
    "leaderboard": [
     {
@@ -76,10 +76,10 @@
    "built": "2009-06-16",
    "started": true,
    "functions": 26230,
-   "matched": 5454,
+   "matched": 5467,
    "partial": 0,
    "bytes": 3981798,
-   "matched_bytes": 400002,
+   "matched_bytes": 400244,
    "data_bytes": 1809822,
    "leaderboard": [
     {
@@ -100,10 +100,10 @@
    "built": "2010-06-18",
    "started": true,
    "functions": 33026,
-   "matched": 6649,
+   "matched": 6699,
    "partial": 7,
    "bytes": 5117528,
-   "matched_bytes": 434685,
+   "matched_bytes": 439547,
    "data_bytes": 2369604,
    "leaderboard": [
     {
@@ -121,7 +121,7 @@
      "last": 1791350944.373746
     }
    ],
-   "data_matched_bytes": 18618,
+   "data_matched_bytes": 18658,
    "classes": 2012,
    "generated": 26058
   },
@@ -131,10 +131,10 @@
    "built": "2011-06-24",
    "started": true,
    "functions": 36526,
-   "matched": 5420,
+   "matched": 5533,
    "partial": 0,
    "bytes": 5338110,
-   "matched_bytes": 224503,
+   "matched_bytes": 237597,
    "data_bytes": 3009972,
    "leaderboard": [
     {
@@ -145,7 +145,7 @@
      "last": 1791360550.5185559
     }
    ],
-   "data_matched_bytes": 12909,
+   "data_matched_bytes": 13107,
    "classes": 2230,
    "generated": 28044
   },
@@ -155,10 +155,10 @@
    "built": "2012-06-13",
    "started": true,
    "functions": 39895,
-   "matched": 6557,
+   "matched": 6674,
    "partial": 0,
    "bytes": 6235360,
-   "matched_bytes": 245065,
+   "matched_bytes": 258447,
    "data_bytes": 3396596,
    "leaderboard": [
     {
@@ -169,7 +169,7 @@
      "last": 1791360571.9448597
     }
    ],
-   "data_matched_bytes": 12885,
+   "data_matched_bytes": 13095,
    "classes": 2176,
    "generated": 30148
   }
