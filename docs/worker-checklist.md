@@ -60,7 +60,7 @@ Not yet automated end-to-end:
 - [x] Partial source matches become the LLM repair baseline; exact matches submit immediately.
 - [x] 2016 source candidate compiles use a bounded two-thread CPU pool.
 - [x] Vtable-slot clues and source inheritance metadata; complete call-graph semantics/full data-reference extraction remain.
-- [ ] Full persisted source-token/AST similarity index (bounded token metadata + asm-shape retrieval implemented).
+- [x] Persisted source-token hashes/declarations for 80,351 files; [ ] full AST structural similarity index.
 - [ ] Model benchmark/routing by measured match rate (fixed-target `--run` exists; no full run verified yet).
 - [x] Hard 180-second Ollama request boundary; [ ] OS-level kill for a separately hung model process.
 - [x] Compiler and preprocessor subprocesses have 120-second hard timeouts.
@@ -78,7 +78,7 @@ Master-plan coverage:
 - [x] Phase 4 binary facts: calls, imports, `this` offsets, returns, strings/global refs, vtable clues, persisted call edges/callers.
 - [ ] Complete call-graph semantics and full data-reference recovery; core references/edges are persisted.
 - [x] Phase 5 unit-nearest examples, size cap, fallback examples, per-session cache.
-- [x] Phase 5 asm-shape nearest-example retrieval; source-token/AST index remains.
+- [x] Phase 5 asm-shape nearest-example retrieval + persisted source-token metadata; [ ] AST index.
 - [x] Phase 6 existing deterministic candidate generators run before LLM.
 - [ ] Phase 6 complete constructor/thunk/STL/MFC/XTP/math/template expansion.
 - [x] Phase 7 staged compile-repair vs diff-repair prompts, source clues, output schema/cap.
