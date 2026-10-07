@@ -199,8 +199,7 @@ def cmd_server(a):
     from roc import server
     if a.startup:
         startup = Path(os.environ["APPDATA"]) / r"Microsoft\Windows\Start Menu\Programs\Startup" / "RoConstruct server.cmd"
-        startup.write_text('@start "RoConstruct server" /min "%s"
-' % (ROOT / "host.cmd"))
+        startup.write_text('@start "RoConstruct server" /min "%s"' % (ROOT / "host.cmd"))
         return print("The server will start when you log in: %s" % startup)
     httpd = server.serve(a.host, a.port, token=a.token, lease_seconds=a.lease)
     public = a.public_server or settings().get("public_server")
