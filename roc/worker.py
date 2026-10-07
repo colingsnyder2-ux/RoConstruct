@@ -4,17 +4,26 @@ import json
 import re
 import threading
 import time
+import traceback
 import urllib.error
 import urllib.request
+from urllib.parse import quote
 import uuid
 from pathlib import Path
 
-from roc import clients, draft, match, setup
+from roc import clients, draft, match, metrics, setup
 
 ROOT = Path(__file__).resolve().parent.parent
 SETTINGS = ROOT / "roconstruct-settings.json"
 USER_RE = re.compile(r"^[A-Za-z0-9_.-]{2,32}$")
 SITE = "https://colingsnyder2-ux.github.io/RoConstruct/"
+
+
+class ApiFailure(RuntimeError):
+    """Short, machine-readable server/network failure for telemetry and UI."""
+    def __init__(self, category, message):
+        self.category = category
+        super().__init__("%s: %s" % (category, message))
 
 
 def site_server():
@@ -51,6 +60,24 @@ def save_settings(**changes):
     return s
 
 
+def clear_setting(name):
+    s = load_settings()
+    s.pop(name, None)
+    SETTINGS.write_text(json.dumps(s, indent=1))
+    return s
+
+
+def save_session_state(worker, user, model, done, matched, failures=0):
+    path = ROOT / "work" / "worker-sessions" / (worker + ".json")
+    try:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps({"worker": worker, "user": user, "model": model,
+                                    "completed": done, "matched": matched, "failures": failures,
+                                    "updated": time.time()}, indent=1))
+    except OSError:
+        pass
+
+
 class Api:
     def __init__(self, server, token=None):
         self.server = server.rstrip("/")
@@ -63,18 +90,27 @@ class Api:
         req = urllib.request.Request(self.server + path, data=data, headers={"Content-Type": "application/json"})
         if self.token:
             req.add_header("X-Roc-Token", self.token)
-        try:
-            with urllib.request.urlopen(req, timeout=timeout) as r:
-                return json.loads(r.read())
-        except urllib.error.HTTPError as error:
+        tries = 3 if payload is None else 1  # safe retries only for idempotent GETs
+        for attempt in range(tries):
             try:
-                msg = json.loads(error.read()).get("error")
-            except ValueError:
-                msg = error.reason
-            raise RuntimeError("server said: %s" % msg)
-        except urllib.error.URLError as error:
-            raise RuntimeError("cannot reach server %s (%s). Is it running? Right address?"
-                               % (self.server, error.reason))
+                with urllib.request.urlopen(req, timeout=timeout) as r:
+                    return json.loads(r.read())
+            except urllib.error.HTTPError as error:
+                try:
+                    msg = json.loads(error.read()).get("error")
+                except ValueError:
+                    msg = error.reason
+                if error.code >= 500 and attempt + 1 < tries:
+                    time.sleep(0.5 * (attempt + 1))
+                    continue
+                category = "auth_fail" if error.code in (401, 403) else \
+                           "bad_request" if 400 <= error.code < 500 else "server_fail"
+                raise ApiFailure(category, msg)
+            except (urllib.error.URLError, OSError, ValueError) as error:
+                if attempt + 1 == tries:
+                    raise ApiFailure("offline", "cannot reach server %s (%s). Is it running? Right address?"
+                                     % (self.server, getattr(error, "reason", error)))
+                time.sleep(0.5 * (attempt + 1))
 
 
 def usable_clients(info, log=print):
@@ -115,7 +151,7 @@ def usable_clients(info, log=print):
 
 
 def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=True,
-        max_jobs=None, log=print, forever=False, only=None):
+        max_jobs=None, log=print, forever=False, only=None, source_only=False, targets=None):
     """forever: survive server/network outages (retry every minute) for overnight runs.
     only: restrict to these clients (one-click links)."""
     if not USER_RE.match(user or ""):
@@ -136,26 +172,35 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
     have = usable_clients(info, log)
     if not have:
         raise SystemExit("Nothing to work on from this PC yet (see the skip reasons above).")
-    model = draft.pick_model(model)
-    if not model:
+    auto_model = model is None and not source_only
+    model = draft.pick_model(model) if not source_only else "none"
+    if not model and not source_only:
         raise SystemExit("AI workers need Ollama with a code model:  ollama pull qwen2.5-coder:7b\n"
                          "No GPU? You can still help by hand: roc claim / roc check / roc submit.")
-    revng = use_revng and draft.revng_available()
+    revng = not source_only and use_revng and draft.revng_available()
     worker = uuid.uuid4().hex[:12]
+    session = uuid.uuid4().hex[:12]
     log("Worker %s as '%s' on %s | model %s | Rev.ng %s" % (worker, user, ", ".join(have), model,
                                                          "on" if revng else "off"))
     log("Note: workers keep the GPU and CPU busy (fans, heat, power). Ctrl+C or close the window to stop.")
     done = matched = 0
+    failures = 0
+    examples_cache = {}
+    source_cache = {}
     while max_jobs is None or done < max_jobs:
         try:
             job = api.call("/v1/lease", {"user": user, "worker": worker, "clients": have,
-                                         "mode": "ai", "max_size": max_size})["job"]
+                                         "mode": "ai", "model": model, "max_size": max_size,
+                                         "targets": targets})["job"]
         except (Exception, SystemExit) as error:  # overnight: nothing short of Ctrl+C stops the loop
             if not forever:
                 raise
             if not reconnect(api, log):
                 log("%s  Retrying in 60 s." % error)
                 time.sleep(60)
+            else:
+                info = api.call("/v1/info")
+                have = usable_clients(info, log)
             continue
         if not job:
             if max_jobs is not None:
@@ -164,49 +209,235 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
             time.sleep(60)
             continue
         done += 1
-        matched += work_one(api, user, job, info, model, rounds, revng, log) == 100
+        job_model = draft.route_model(model, job) if auto_model else model
+        score = work_one(api, user, job, info, job_model, rounds, revng, log, examples_cache, source_cache,
+                         session, source_only)
+        matched += score == 100
+        failures += score == 0
+        save_session_state(worker, user, model, done, matched, failures)
         if done % 10 == 0:
             log("== %s: %d functions tried, %d matched this session ==" % (time.strftime("%H:%M"), done, matched))
+            report = metrics.summary(session)
+            if report:
+                log(report)
     log("Worker finished %d job(s), %d matched." % (done, matched))
+    report = metrics.summary(session)
+    if report:
+        log(report)
 
 
-def work_one(api, user, job, info, model, rounds, revng, log):
+def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
+                   use_revng=True, max_jobs=None, workers=1, log=print,
+                   source_only=False):
+    """Run a bounded number of independent lease loops.
+
+    Server leases make workers safe to run in parallel.  Keep the default at one
+    process/thread so laptop users do not accidentally oversubscribe GPU/CPU.
+    """
+    workers = max(1, min(int(workers or 1), 8))
+    if workers == 1:
+        return run(server, user, token, model, rounds, max_size, use_revng,
+                   max_jobs, log, forever=True, source_only=source_only)
+    if max_jobs is None:
+        quotas = [None] * workers
+    else:
+        base, extra = divmod(max(0, int(max_jobs)), workers)
+        quotas = [base + (i < extra) for i in range(workers)]
+    errors = []
+
+    def worker_loop(index):
+        try:
+            run(server, user, token, model, rounds, max_size, use_revng,
+                quotas[index], log, forever=True, source_only=source_only)
+        except BaseException as error:
+            errors.append(error)
+
+    threads = [threading.Thread(target=worker_loop, args=(i,),
+                                name="roc-worker-%d" % (i + 1), daemon=True)
+               for i in range(workers)]
+    log("Starting %d bounded worker loops (server leases prevent duplicates)." % workers)
+    for thread in threads:
+        thread.start()
+    try:
+        for thread in threads:
+            thread.join()
+    except KeyboardInterrupt:
+        log("Stopping worker loops; active leases will release on heartbeat expiry.")
+        raise
+    if errors:
+        raise errors[0]
+
+
+def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=None,
+             source_cache=None, session=None, source_only=False):
     client, addr = job["client"], job["addr"]
     flags = info["clients"][client].get("flags")
     log("[%s %s] %d bytes, %s, best so far %d%%" % (client, addr, job["size"], job["unit"], job["score"]))
     stop = threading.Event()
+    started = time.monotonic()
+    result, improved, failure = 0, False, None
+    source_candidate = None
+    phase_seconds = {}
+    failure_reason = None
+    round_stats = []
+    lease_lost = threading.Event()
+    deadline = started + 600
 
     def beat():
         while not stop.wait(job.get("heartbeat", 60)):
             try:
-                api.call("/v1/heartbeat", {"lease": job["lease"]})
+                if not api.call("/v1/heartbeat", {"lease": job["lease"]}).get("ok"):
+                    lease_lost.set()
+                    return
             except RuntimeError:
-                pass
+                lease_lost.set()
+                return
+
+    def ensure_lease():
+        if lease_lost.is_set():
+            raise RuntimeError("lease lost; abandoning job")
+        if time.monotonic() >= deadline:
+            raise TimeoutError("job exceeded 600-second worker limit")
 
     threading.Thread(target=beat, daemon=True).start()
     try:
-        examples = [e["source"] for e in api.call("/v1/examples?client=%s&n=3" % client)]
-        code, _, _ = match.target(client, addr)
-        hint = draft.revng_c(code, int(addr, 16)) if revng else None
-        score, src = draft.llm_rounds(client, addr, model, rounds, hint, (job["source"], job["score"]),
-                                      log, flags, examples)
+        code, relocs, _ = match.target(client, addr)
+        asm = match.disasm(code, int(addr, 16))
+        facts = draft.facts_from_asm(asm)
+        facts.update(draft.target_data_facts(client, code, relocs))
+        row = match._functions(client)[addr]
+        facts.update({k: row[k] for k in ("call_targets", "callers", "external_calls", "imports", "strings", "data_refs",
+                                           "global_reads", "global_writes",
+                                           "virtual_slots", "stack_args", "this_reads", "this_writes",
+                                           "calling_convention", "branches", "constants", "siblings") if row.get(k)})
+        from roc import auto
+        phase_started = time.monotonic()
+        for candidate in auto.candidates(asm):
+            ensure_lease()
+            try:
+                candidate_score, _, _, _ = match.check_text(client, addr, candidate, flags)
+            except match.CompileError:
+                continue
+            if candidate_score > job["score"]:
+                r = api.call("/v1/submit", {"lease": job["lease"], "user": user, "client": client,
+                                            "addr": addr, "score": candidate_score, "source": candidate})
+                log("  deterministic candidate submitted %d%%" % r["stored"])
+                result, improved = r["stored"], True
+                return r["stored"]
+        from roc import refsource
+        ensure_lease()
+        source_candidate = refsource.compile_candidates(client, addr, job["unit"], flags, limit=2, log=log)
+        phase_seconds["source_compile"] = round(time.monotonic() - phase_started, 3)
+        if source_candidate and source_candidate[0] == 100:
+            candidate_score, candidate_source, candidate_path = source_candidate
+            r = api.call("/v1/submit", {"lease": job["lease"], "user": user, "client": client,
+                                        "addr": addr, "score": candidate_score, "source": candidate_source})
+            log("  2016 source candidate %d%% (%s)" % (r["stored"], candidate_path))
+            result, improved = r["stored"], True
+            return r["stored"]
+        if source_candidate:
+            log("  2016 source candidate scored %d%%; using as LLM base" % source_candidate[0])
+        if source_only:
+            api.call("/v1/release", {"lease": job["lease"], "cooldown": 30})
+            result = job["score"]
+            failure_reason = "no_gain"
+            log("  no deterministic improvement (best %d%%), released" % job["score"])
+            return result
+        if examples_cache is None:
+            examples_cache = {}
+        if source_cache is None:
+            source_cache = {}
+        if client not in examples_cache:
+            examples_cache[client] = {}
+        example_key = (job["unit"], job.get("shape"))
+        if example_key not in examples_cache[client]:
+            path = "/v1/examples?client=%s&unit=%s&shape=%s&n=2" % (
+                quote(client), quote(job["unit"]), quote(job.get("shape") or ""))
+            quarantined = metrics.quarantined_keys()
+            examples_cache[client][example_key] = [e["source"] for e in api.call(path)
+                                                   if (client, e.get("addr")) not in quarantined]
+        examples = examples_cache[client][example_key]
+        source_key = (client, job["unit"], tuple(facts.get("strings", ())))
+        if source_key not in source_cache:
+            source_cache[source_key] = refsource.prompt_hints(job["unit"], target_facts=facts)
+        source_hints = source_cache[source_key]
+        # Tiny leaf functions are cheaper to solve from direct asm/source facts;
+        # reserve Rev.ng CPU time for larger or structurally uncertain targets.
+        run_revng = revng and (job.get("size", 0) > 48 or job.get("calls", 0) or
+                               not job.get("source_confidence", 0))
+        revng_started = time.monotonic()
+        hint = draft.revng_c(code, int(addr, 16)) if run_revng else None
+        phase_seconds["revng"] = round(time.monotonic() - revng_started, 3)
+        llm_started = time.monotonic()
+        llm_start = (job["source"], job["score"])
+        if source_candidate and source_candidate[0] > job["score"]:
+            llm_start = (source_candidate[1], source_candidate[0])
+        score, src = draft.llm_rounds(client, addr, model, draft.model_rounds(model, rounds), hint, llm_start,
+                                      log, flags, examples, source_hints, facts, round_stats)
+        ensure_lease()
+        phase_seconds["llm"] = round(time.monotonic() - llm_started, 3)
         if src and score > job["score"]:
             r = api.call("/v1/submit", {"lease": job["lease"], "user": user, "client": client,
                                         "addr": addr, "score": score, "source": src})
             log("  submitted %d%% (%s)" % (r["stored"], "verified by server" if r["verified"] else "not re-checked"))
+            result, improved = r["stored"], True
             return r["stored"]
-        api.call("/v1/release", {"lease": job["lease"]})
+        failure_reason = "bad_reply" if not src else "no_gain"
+        if source_candidate and source_candidate[0] > job["score"]:
+            candidate_score, candidate_source, candidate_path = source_candidate
+            r = api.call("/v1/submit", {"lease": job["lease"], "user": user, "client": client,
+                                        "addr": addr, "score": candidate_score, "source": candidate_source})
+            log("  retained partial 2016 source candidate %d%% (%s)" % (r["stored"], candidate_path))
+            result, improved = r["stored"], r["stored"] > job["score"]
+            return r["stored"]
+        api.call("/v1/release", {"lease": job["lease"], "cooldown": 60})
         log("  no improvement (best %d%%), released" % job["score"])
-        return job["score"]
+        result = job["score"]
+        return result
     except (Exception, SystemExit) as error:  # never leave a lease hanging on a crash
+        failure = str(error)[:300]
+        if isinstance(error, match.CompileError):
+            failure_reason = "compile_fail"
+        elif isinstance(error, TimeoutError) or "timed out" in failure.lower() or "timeout" in failure.lower():
+            failure_reason = "timeout"
+        elif isinstance(error, ApiFailure):
+            failure_reason = error.category
+        elif isinstance(error, RuntimeError):
+            failure_reason = "api"
+        else:
+            failure_reason = "worker_error"
+        if session:
+            metrics.record(session, event="error", client=client, addr=addr,
+                           reason=failure_reason, detail=traceback.format_exc())
         log("  error: %s" % error)
         try:
-            api.call("/v1/release", {"lease": job["lease"]})
+            api.call("/v1/release", {"lease": job["lease"], "cooldown": 120})
         except RuntimeError:
             pass
         return 0
+    except KeyboardInterrupt:
+        try:
+            api.call("/v1/release", {"lease": job["lease"], "cooldown": 120})
+        finally:
+            raise
     finally:
         stop.set()
+        if session:
+            metrics.record(session, event="job", client=client, addr=addr, unit=job["unit"], model=model,
+                           size=job.get("size", 0), base_score=job.get("score", 0), score=result,
+                           score_gain=max(result - job.get("score", 0), 0), improved=improved,
+                           source_hints=len(source_hints) if 'source_hints' in locals() else 0,
+                           source_candidate=bool(source_candidate),
+                           source_candidate_score=source_candidate[0] if source_candidate else 0,
+                           source_candidate_hit=bool(source_candidate and source_candidate[0] == 100),
+                           revng=bool(run_revng if 'run_revng' in locals() else revng),
+                           prompt_profile=draft.model_profile(model), rounds=round_stats,
+                           seconds=round(time.monotonic() - started, 2),
+                           phase_seconds=phase_seconds,
+                           compile_seconds=round(sum(r.get("compile_seconds", 0) for r in round_stats) +
+                                                 phase_seconds.get("source_compile", 0), 3),
+                           failure_reason=failure_reason,
+                           failure=failure)
 
 
 def pull_files(server, client, token=None, force=False, log=print):

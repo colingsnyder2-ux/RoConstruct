@@ -1,8 +1,8 @@
 """Split a client exe into functions: work/<client>/functions.jsonl + meta.json.
 
 Each row: addr, size, relocs (offsets of 4-byte fields the loader patches,
-masked when diffing), calls (direct call count; 0 = leaf), unit (RTTI class
-or seg_<64 KB block>).
+masked when diffing), calls (direct call count; 0 = leaf), call_targets/callers,
+unit (RTTI class or seg_<64 KB block>).
 """
 import json
 import re
@@ -14,6 +14,18 @@ from capstone import CS_ARCH_X86, CS_MODE_32, Cs
 
 ROOT = Path(__file__).resolve().parent.parent
 STOP = {"ret", "retf", "int3", "hlt", "ud2"}
+PRINTABLE = re.compile(rb"[ -~]{4,}")
+
+
+def asm_shape(code, va):
+    """Stable instruction shape for nearest-function retrieval."""
+    md = Cs(CS_ARCH_X86, CS_MODE_32)
+    lines = []
+    for insn in md.disasm(code, va):
+        op = re.sub(r"0x[0-9a-f]+", "N", insn.op_str.lower())
+        op = re.sub(r"\b\d+\b", "N", op)
+        lines.append((insn.mnemonic + (" " + op if op else "")).strip())
+    return " ; ".join(lines)
 
 
 def reloc_sites(pe):
@@ -195,6 +207,83 @@ def assign_units(funcs, classes, reach=0x4000):
         f["unit"] = cur or "seg_%08x" % (va - va % 0x10000)
 
 
+def binary_facts(pe, image, base, body, start, imports, local_targets=None):
+    """Small structured clues from one function; bounded for prompt/index use."""
+    md = Cs(CS_ARCH_X86, CS_MODE_32)
+    data_refs, strings, imported_names, external_calls, global_reads, global_writes = [], [], [], [], [], []
+    virtual_slots, stack_args, branches, constants = [], [], 0, []
+    this_reads, this_writes = [], []
+    vtable_regs = set()
+    seen = set()
+    for insn in md.disasm(body, start):
+        text = insn.op_str.lower()
+        if insn.mnemonic in ("call", "jmp"):
+            for address in re.findall(r"0x[0-9a-f]+", text):
+                target = int(address, 16)
+                if target in imports:
+                    external_calls.append(imports[int(address, 16)])
+                elif insn.mnemonic == "call" and local_targets is not None and target not in local_targets:
+                    external_calls.append(address)
+        for raw in re.findall(r"\[ecx(?: \+ (0x[0-9a-f]+|\d+))?\]", text):
+            offset = int(raw or "0", 0)
+            (this_writes if insn.mnemonic == "mov" and text.startswith("mov") and text.split(",", 1)[0].endswith("]")
+             else this_reads).append(offset)
+        if insn.mnemonic.startswith(("j", "loop")):
+            branches += 1
+        mload = re.match(r"mov\s+(e[a-d]x|e[sd]i|e[bs]p),\s*dword ptr \[ecx\]", text)
+        if mload:
+            vtable_regs.add(mload.group(1))
+        if insn.mnemonic in ("call", "jmp") and vtable_regs:
+            m = re.search(r"\[(%s) \+ (0x[0-9a-f]+|\d+)\]" % "|".join(vtable_regs), text)
+            if m:
+                try:
+                    virtual_slots.append(int(m.group(1), 0) // 4)
+                except ValueError:
+                    pass
+        for raw in re.findall(r"0x[0-9a-f]+", text):
+            value = int(raw, 16)
+            if value in imports:
+                data_refs.append(raw)
+                imported_names.append(imports[value])
+                continue
+            if not (base <= value < base + len(image)):
+                continue
+            if value in seen:
+                continue
+            seen.add(value)
+            data_refs.append(raw)
+            (global_writes if insn.mnemonic == "mov" and text.split(",", 1)[0].startswith("dword ptr [")
+             else global_reads).append(raw)
+            chunk = image[value - base:value - base + 128]
+            match = PRINTABLE.search(chunk)
+            if match:
+                strings.append(match.group().decode("latin-1"))
+        stack_args.extend(int(x, 0) for x in re.findall(r"\[esp \+ (0x[0-9a-f]+|\d+)\]", text))
+        for raw in re.findall(r"(?<![+\w])-?\b\d+\b", text):
+            try:
+                n = int(raw)
+                if n > 3:
+                    constants.append(n)
+            except ValueError:
+                pass
+    return {
+        "imports": sorted(set(imported_names))[:12],
+        "external_calls": sorted(set(external_calls))[:12],
+        "strings": sorted(set(s for s in strings if len(s) >= 4))[:12],
+        "data_refs": sorted(set(data_refs))[:16],
+        "global_reads": sorted(set(global_reads))[:16],
+        "global_writes": sorted(set(global_writes))[:16],
+        "virtual_slots": sorted(set(virtual_slots))[:8],
+        "stack_args": sorted(set(stack_args))[:8],
+        "this_reads": sorted(set(this_reads))[:16],
+        "this_writes": sorted(set(this_writes))[:16],
+        "calling_convention": "callee" if any(i.mnemonic == "ret" and i.op_str.strip()
+                                                 for i in md.disasm(body, start)) else "caller",
+        "branches": branches,
+        "constants": sorted(set(constants))[:16],
+    }
+
+
 def analyze(client, exe):
     pe = pefile.PE(str(exe))
     base = pe.OPTIONAL_HEADER.ImageBase
@@ -205,13 +294,49 @@ def analyze(client, exe):
     image = pe.get_memory_mapped_image()
     read = lambda va, n: image[va - base:va - base + n] if 0 <= va - base < len(image) else b""
     relocs = reloc_sites(pe)
+    imports = {}
+    for dll in getattr(pe, "DIRECTORY_ENTRY_IMPORT", []):
+        for item in dll.imports:
+            if item.address and item.name:
+                imports[item.address] = "%s!%s" % (dll.dll.decode("latin-1"), item.name.decode("latin-1"))
     seeds = {base + pe.OPTIONAL_HEADER.AddressOfEntryPoint}
     # Pointers stored outside .text (vtables, callback tables) into .text.
     seeds.update(v for v in (int.from_bytes(read(s, 4), "little") for s in relocs if not in_text(s))
                  if in_text(v))
     funcs = find_functions(code, text_va, seeds, relocs)
+    # Persist direct-call edges so source retrieval can use neighboring functions.
+    by_addr = {int(f["addr"], 16): f for f in funcs}
+    md = Cs(CS_ARCH_X86, CS_MODE_32)
+    for f in funcs:
+        start = int(f["addr"], 16)
+        body = code[start - text_va:start - text_va + f["size"]]
+        targets = []
+        for insn in md.disasm(body, start):
+            if insn.mnemonic == "call" and insn.op_str.startswith("0x"):
+                target = int(insn.op_str, 16)
+                if target in by_addr:
+                    targets.append("%08x" % target)
+        f["call_targets"] = sorted(set(targets))
+        f["shape"] = asm_shape(body, start)
+    callers = {}
+    for f in funcs:
+        for target in f["call_targets"]:
+            callers.setdefault(target, []).append(f["addr"])
+    for f in funcs:
+        f["callers"] = callers.get(f["addr"], [])
+        start = int(f["addr"], 16)
+        body = code[start - text_va:start - text_va + f["size"]]
+        f.update(binary_facts(pe, image, base, body, start, imports, by_addr))
     classes = rtti_classes(read, relocs, in_text)
     assign_units(funcs, classes)
+    siblings = {}
+    for f in funcs:
+        siblings.setdefault(f["unit"], []).append(f["addr"])
+    sibling_index = {unit: {addr: i for i, addr in enumerate(peers)} for unit, peers in siblings.items()}
+    for f in funcs:
+        peers = siblings.get(f["unit"], [])
+        index = sibling_index[f["unit"]][f["addr"]]
+        f["siblings"] = peers[max(0, index - 2):index] + peers[index + 1:index + 3]
     # Functions found in the compiler's own prebuilt libraries (`roc mass`) are not Roblox code.
     libmatch = ROOT / "work" / client / "libmatch.json"
     if libmatch.exists():

@@ -62,6 +62,24 @@ def returns(body):
     m = re.fullmatch(r"lea eax, \[ecx%s\]" % OFF, b)
     if m:
         out.append(("int*", "&m_x", [(off(m.group(1)), "int", "m_x")], True))
+    m = re.fullmatch(r"mov eax, dword ptr \[ecx%s\]; imul eax, eax, (0x[0-9a-f]+|\d+)" % OFF, b)
+    if m:
+        out.append(("int", "m_x * %s" % m.group(2), [(off(m.group(1)), "int", "m_x")], True))
+    m = re.fullmatch(r"mov eax, dword ptr \[ecx%s\]; add eax, (0x[0-9a-f]+|\d+)" % OFF, b)
+    if m:
+        out.append(("int", "m_x + %s" % m.group(2), [(off(m.group(1)), "int", "m_x")], True))
+    m = re.fullmatch(r"mov eax, dword ptr \[ecx%s\]; sub eax, (0x[0-9a-f]+|\d+)" % OFF, b)
+    if m:
+        out.append(("int", "m_x - %s" % m.group(2), [(off(m.group(1)), "int", "m_x")], True))
+    m = re.fullmatch(r"mov eax, dword ptr \[ecx%s\]; xor eax, (0x[0-9a-f]+|\d+)" % OFF, b)
+    if m:
+        out.append(("int", "m_x ^ %s" % m.group(2), [(off(m.group(1)), "int", "m_x")], True))
+    m = re.fullmatch(r"mov eax, dword ptr \[ecx%s\]; neg eax" % OFF, b)
+    if m:
+        out.append(("int", "-m_x", [(off(m.group(1)), "int", "m_x")], True))
+    m = re.fullmatch(r"cmp dword ptr \[ecx%s\], 0; setne al; movzx eax, al" % OFF, b)
+    if m:
+        out.append(("bool", "m_x != 0", [(off(m.group(1)), "int", "m_x")], True))
     return out
 
 

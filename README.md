@@ -48,7 +48,7 @@ To undo the install later, double-click **`uninstall.cmd`**. It lists everything
 
 | You have | Do this |
 |---|---|
-| A GPU with 8 GB+ | Run an **AI worker**: install [Ollama](https://ollama.com), then `ollama pull qwen2.5-coder:7b`, then click Start helping. Optional: [Docker](https://www.docker.com/products/docker-desktop/) + `docker pull revng/revng` for extra decompiler hints. |
+| A GPU with 8 GB+ | Run an **AI worker**: install [Ollama](https://ollama.com), then `ollama pull qwen2.5-coder:7b`, then click Start helping. `roc model` shows installed models; `roc model <name>` picks yours; `roc model default` restores automatic choice. Optional: [Docker](https://www.docker.com/products/docker-desktop/) + `docker pull revng/revng` for extra decompiler hints. |
 | C++ knowledge | **Match by hand**: see below. |
 | A PC that's always on | **Host the server**: see below. |
 
@@ -130,7 +130,20 @@ roc submit <client> [addr...]   send your sources to the server
 roc pull <client|all> [--force] download everyone's sources
 roc flags <client>              work out compiler flags from matched code
 roc config --user U --server S  save your settings
-roc worker [--jobs N]           run an AI worker
+roc model [name|default]         show or choose AI model
+roc worker [--jobs N]           run an AI worker (`--workers N` for bounded parallel loops)
+roc worker --dry-run             check worker setup without taking a job
+roc worker --workers 2           run bounded parallel lease loops (1-8)
+roc worker --preset fast|deep    choose speed or source-heavy mode
+roc worker --source-only         run deterministic candidates only
+roc doctor                       check compilers, Ollama, Docker, clients
+roc model-stats                  compare models from worker telemetry
+roc benchmark-models             create fixed targets + compare telemetry
+roc benchmark-models --local-run --full --resume
+                                 resumable full local model comparison
+roc benchmark-models --progress  show saved benchmark records only
+roc failures                     show recurring worker failures
+roc source-status                show 2016 source-name coverage
 roc server [--publish] [--startup] [--tunnel]   host the group server
 roc status                      progress, active workers, leaderboard
 roc progress                    rebuild the website data in docs/
@@ -167,6 +180,19 @@ To give it a public address:
 Without a saved address, `--tunnel` uses a temporary Cloudflare address instead. The site and workers follow it automatically when it changes.
 
 The server re-checks every submission with the real compiler and exe, so scores can't be faked. Back up `work/server.db`.
+
+Workers try deterministic candidates and matching 2016 library source first, then retrieve related
+source names/snippets and nearby matched examples before asking Ollama. Per-job telemetry is appended to
+`work/worker-metrics.jsonl`; session summaries show matches, improvements, source guidance, and
+average job time.
+
+`roc benchmark-models --generate` creates repeatable tiny/medium/large targets. Add `--run` with
+saved server/user settings to run installed code models against those targets.
+`roc benchmark-models --hidden` creates a source/score-hidden regression corpus.
+`roc benchmark-models --local-run --limit 1` compares two installed coder models locally without server submission.
+
+Full implementation checklist: `docs/worker-checklist.md`.
+Line-by-line source-plan audit: `docs/worker-full-plan-checklist.md`.
 </details>
 
 <details>
@@ -196,7 +222,7 @@ The remaining steps:
 | `looks modified` | That exe was patched; get an unmodified copy. |
 | `Missing compiler` | Run `roc install` (re-running resumes downloads). |
 | `cannot reach server` | The server may be offline; workers retry automatically. |
-| `AI workers need Ollama` | Install Ollama, then `ollama pull qwen2.5-coder:7b`. |
+| `AI workers need Ollama` | Install Ollama, then `ollama pull qwen2.5-coder:7b`; check with `roc doctor`. |
 </details>
 
 ## Rules

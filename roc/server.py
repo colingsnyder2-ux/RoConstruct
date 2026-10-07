@@ -22,7 +22,9 @@ ROOT = Path(__file__).resolve().parent.parent
 USER_RE = re.compile(r"^[A-Za-z0-9_.-]{2,32}$")
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS funcs(client TEXT, addr TEXT, size INT, unit TEXT,
-  score INT DEFAULT 0, source TEXT, user TEXT, attempts INT DEFAULT 0, updated REAL,
+  score INT DEFAULT 0, source TEXT, user TEXT, attempts INT DEFAULT 0, updated REAL, shape TEXT,
+  cooldown REAL DEFAULT 0, calls INT DEFAULT 0, source_confidence INT DEFAULT 0,
+  difficulty REAL DEFAULT 0, attempts_by_model TEXT DEFAULT '{}',
   PRIMARY KEY(client, addr));
 CREATE TABLE IF NOT EXISTS leases(id TEXT PRIMARY KEY, client TEXT, addr TEXT,
   user TEXT, worker TEXT, expires REAL);
@@ -36,8 +38,21 @@ class Store:
     def __init__(self, path, lease_seconds):
         self.db = sqlite3.connect(path, check_same_thread=False)
         self.db.executescript(SCHEMA)
-        if "data" not in {r[1] for r in self.db.execute("PRAGMA table_info(funcs)")}:
+        columns = {r[1] for r in self.db.execute("PRAGMA table_info(funcs)")}
+        if "data" not in columns:
             self.db.execute("ALTER TABLE funcs ADD COLUMN data TEXT")  # verified data spans, JSON
+        if "shape" not in columns:
+            self.db.execute("ALTER TABLE funcs ADD COLUMN shape TEXT")
+        if "cooldown" not in columns:
+            self.db.execute("ALTER TABLE funcs ADD COLUMN cooldown REAL DEFAULT 0")
+        if "calls" not in columns:
+            self.db.execute("ALTER TABLE funcs ADD COLUMN calls INT DEFAULT 0")
+        if "source_confidence" not in columns:
+            self.db.execute("ALTER TABLE funcs ADD COLUMN source_confidence INT DEFAULT 0")
+        if "difficulty" not in columns:
+            self.db.execute("ALTER TABLE funcs ADD COLUMN difficulty REAL DEFAULT 0")
+        if "attempts_by_model" not in columns:
+            self.db.execute("ALTER TABLE funcs ADD COLUMN attempts_by_model TEXT DEFAULT '{}'")
         self.lock = threading.Lock()
         self.lease_seconds = lease_seconds
 
@@ -50,12 +65,20 @@ class Store:
         for line in path.open():
             f = json.loads(line)
             if f.get("kind", "code") == "code":
-                rows.append((client, f["addr"], f["size"], f["unit"]))
+                calls = int(f.get("calls", 0) or 0)
+                unit = f["unit"]
+                rows.append((client, f["addr"], f["size"], unit, f.get("shape"), calls,
+                             0 if unit.startswith("seg_") else 1, f["size"] + calls * 4))
         keep = {r[1] for r in rows}
         with self.lock:
             before = self.db.total_changes
-            self.db.executemany("INSERT OR IGNORE INTO funcs(client,addr,size,unit) VALUES(?,?,?,?)", rows)
+            self.db.executemany("INSERT OR IGNORE INTO funcs(client,addr,size,unit,shape,calls,source_confidence,difficulty) VALUES(?,?,?,?,?,?,?,?)", rows)
             added = self.db.total_changes - before
+            self.db.executemany("UPDATE funcs SET shape = ? WHERE client = ? AND addr = ?",
+                                [(shape, client, addr) for client, addr, _size, _unit, shape, _calls, _confidence, _difficulty in rows if shape])
+            self.db.executemany("UPDATE funcs SET calls=?, source_confidence=?, difficulty=? WHERE client=? AND addr=?",
+                                [(calls, confidence, difficulty, client, addr)
+                                 for client, addr, _size, _unit, _shape, calls, confidence, difficulty in rows])
             # Re-analysis may drop junk "functions"; forget them unless someone worked on them.
             stale = [(client, a) for (a,) in self.db.execute(
                 "SELECT addr FROM funcs WHERE client = ? AND source IS NULL", (client,)) if a not in keep]
@@ -63,7 +86,7 @@ class Store:
             self.db.commit()
             return added
 
-    def lease(self, user, worker, have, mode, max_size):
+    def lease(self, user, worker, have, mode, max_size, model=None, targets=None):
         now = time.time()
         with self.lock:
             self.db.execute("DELETE FROM leases WHERE expires < ?", (now,))
@@ -71,21 +94,51 @@ class Store:
             # One live lease per worker: a restarted worker gets a fresh job, old one frees up.
             self.db.execute("DELETE FROM leases WHERE worker = ?", (worker,))
             marks = ",".join("?" * len(have))
-            row = self.db.execute(
-                "SELECT client, addr, size, unit, score, source FROM funcs f "
-                "WHERE client IN (%s) AND score < 100 AND size BETWEEN 6 AND ? AND NOT EXISTS "
+            target_sql, target_args = "", []
+            if targets:
+                pairs = [(str(t.get("client", "")), str(t.get("addr", "")))
+                         for t in targets if isinstance(t, dict)]
+                pairs = [(c, a) for c, a in pairs if c in have and re.match(r"^[0-9a-f]{8}$", a)]
+                if pairs:
+                    target_sql = " AND (" + " OR ".join("(f.client = ? AND f.addr = ?)" for _ in pairs) + ")"
+                    target_args = [v for pair in pairs for v in pair]
+                else:
+                    self.db.commit()
+                    return None
+            candidates = self.db.execute(
+                "SELECT client, addr, size, unit, score, source, shape, calls, source_confidence, difficulty, attempts_by_model FROM funcs f "
+                "WHERE client IN (%s) AND score < 100 AND size BETWEEN 6 AND ? AND cooldown <= ? %s AND NOT EXISTS "
                 "(SELECT 1 FROM leases l WHERE l.client = f.client AND l.addr = f.addr) "
-                "ORDER BY attempts, size LIMIT 1" % marks, (*have, max_size)).fetchone()
+                "ORDER BY source_confidence DESC, (score >= 90) DESC, (unit NOT LIKE 'seg_%%') DESC, difficulty, attempts, size LIMIT 64" % (marks, target_sql),
+                (*have, max_size, now, *target_args)).fetchall()
+            row = None
+            if candidates:
+                # Do not burn the same model repeatedly on a stubborn target when
+                # another eligible target exists.  Two attempts is enough to force
+                # a different profile/model while still allowing recovery later.
+                for candidate in candidates:
+                    tried = json.loads(candidate[10] or "{}")
+                    if not model or int(tried.get(model, 0)) < 2:
+                        row = candidate
+                        break
+                row = row or candidates[0]
             if not row:
                 self.db.commit()
                 return None
             lease = uuid.uuid4().hex
             self.db.execute("INSERT INTO leases VALUES(?,?,?,?,?,?)",
                             (lease, row[0], row[1], user, worker, now + self.lease_seconds))
-            self.db.execute("UPDATE funcs SET attempts = attempts + 1 WHERE client = ? AND addr = ?", row[:2])
+            current = self.db.execute("SELECT attempts_by_model FROM funcs WHERE client = ? AND addr = ?", row[:2]).fetchone()[0]
+            by_model = json.loads(current or "{}")
+            if model:
+                by_model[model] = int(by_model.get(model, 0)) + 1
+            self.db.execute("UPDATE funcs SET attempts = attempts + 1, attempts_by_model = ? WHERE client = ? AND addr = ?",
+                            (json.dumps(by_model, separators=(",", ":")), row[0], row[1]))
             self.db.commit()
         return {"lease": lease, "client": row[0], "addr": row[1], "size": row[2], "unit": row[3],
-                "score": row[4], "source": row[5], "heartbeat": max(5, self.lease_seconds // 3)}
+                "score": row[4], "source": row[5], "shape": row[6], "calls": row[7],
+                "source_confidence": row[8], "difficulty": row[9], "attempts_by_model": json.loads(row[10] or "{}"),
+                "heartbeat": max(5, self.lease_seconds // 3)}
 
     def heartbeat(self, lease):
         with self.lock:
@@ -93,15 +146,32 @@ class Store:
             self.db.commit()
             return cur.rowcount == 1
 
-    def release(self, lease):
+    def release(self, lease, cooldown=0):
         with self.lock:
+            row = self.db.execute("SELECT l.client, l.addr, f.attempts FROM leases l "
+                                  "LEFT JOIN funcs f ON f.client = l.client AND f.addr = l.addr "
+                                  "WHERE l.id = ?", (lease,)).fetchone()
             self.db.execute("DELETE FROM leases WHERE id = ?", (lease,))
+            try:
+                delay = min(max(float(cooldown), 0), 3600)
+            except (TypeError, ValueError):
+                delay = 0
+            if row and (row[2] or 0) >= 3 and delay:
+                delay = min(delay * (2 ** min((row[2] or 0) - 2, 4)), 3600)
+            if row and delay:
+                self.db.execute("UPDATE funcs SET cooldown = ? WHERE client = ? AND addr = ?",
+                                (time.time() + delay, row[0], row[1]))
             self.db.commit()
 
-    def submit(self, client, addr, user, score, source, data=None):
+    def submit(self, client, addr, user, score, source, data=None, lease=None):
         """Keep the source if it beats the stored score. Returns (stored score, improved)."""
         now = time.time()
         with self.lock:
+            if lease:
+                owned = self.db.execute("SELECT 1 FROM leases WHERE id = ? AND client = ? AND addr = ? "
+                                        "AND expires >= ?", (lease, client, addr, now)).fetchone()
+                if not owned:
+                    raise ValueError("lease missing, expired, or belongs to another target")
             row = self.db.execute("SELECT score FROM funcs WHERE client = ? AND addr = ?", (client, addr)).fetchone()
             if not row:
                 raise ValueError("unknown function %s %s" % (client, addr))
@@ -156,11 +226,20 @@ class Store:
                                   (client, addr)).fetchone()
         return {"score": row[0], "source": row[1], "user": row[2]} if row else None
 
-    def examples(self, client, n=3):
+    def examples(self, client, n=3, unit=None, shape=None):
         """Small matched sources, used as few-shot examples for AI workers."""
         with self.lock:
+            unit_sql = " AND unit = ?" if unit else ""
+            shape_sql = " AND shape = ?" if shape else ""
+            args = (client, unit, shape, n) if unit and shape else ((client, unit, n) if unit else ((client, shape, n) if shape else (client, n)))
             rows = self.db.execute("SELECT addr, source FROM funcs WHERE client = ? AND score = 100 "
-                                   "AND source IS NOT NULL ORDER BY RANDOM() LIMIT ?", (client, n)).fetchall()
+                                   "AND source IS NOT NULL AND LENGTH(source) <= 6000 "
+                                   + unit_sql + shape_sql + " ORDER BY RANDOM() LIMIT ?", args).fetchall()
+            if (unit or shape) and not rows:
+                rows = self.db.execute("SELECT addr, source FROM funcs WHERE client = ? AND score = 100 "
+                                       "AND source IS NOT NULL AND LENGTH(source) <= 6000 "
+                                       " ORDER BY RANDOM() LIMIT ?",
+                                       (client, n)).fetchall()
         return [{"addr": a, "source": s} for a, s in rows]
 
     def sources(self, client, min_score=1):
@@ -219,7 +298,8 @@ def make_handler(store, token, can_verify):
             if url.path == "/v1/sources":
                 return self.send(200, store.sources(q.get("client", ""), int(q.get("min_score", 1))))
             if url.path == "/v1/examples":
-                return self.send(200, store.examples(q.get("client", ""), min(int(q.get("n", 3)), 10)))
+                return self.send(200, store.examples(q.get("client", ""), min(int(q.get("n", 3)), 10),
+                                                     q.get("unit"), q.get("shape")))
             self.send(404, {"error": "unknown endpoint"})
 
         def do_POST(self):
@@ -241,12 +321,14 @@ def make_handler(store, token, can_verify):
                 if not have:
                     return self.send(400, {"error": "no clients"})
                 job = store.lease(user, str(body.get("worker", ""))[:64], have,
-                                  str(body.get("mode", ""))[:16], int(body.get("max_size", 256)))
+                                  str(body.get("mode", ""))[:16], int(body.get("max_size", 256)),
+                                  str(body.get("model", ""))[:120] or None,
+                                  body.get("targets"))
                 return self.send(200, {"job": job})
             if path == "/v1/heartbeat":
                 return self.send(200, {"ok": store.heartbeat(str(body.get("lease", "")))})
             if path == "/v1/release":
-                store.release(str(body.get("lease", "")))
+                store.release(str(body.get("lease", "")), body.get("cooldown", 0))
                 return self.send(200, {"ok": True})
             if path == "/v1/submit":
                 client, addr = str(body.get("client", "")), str(body.get("addr", ""))
@@ -268,7 +350,8 @@ def make_handler(store, token, can_verify):
                     except match.CompileError as error:
                         return self.send(400, {"error": str(error)})
                 try:
-                    stored, improved = store.submit(client, addr, user, max(0, min(100, score)), source, spans)
+                    stored, improved = store.submit(client, addr, user, max(0, min(100, score)), source, spans,
+                                                    str(body.get("lease", "")) or None)
                 except ValueError as error:
                     return self.send(400, {"error": str(error)})
                 if body.get("lease"):
@@ -283,7 +366,9 @@ def serve(host="0.0.0.0", port=8765, db=None, token=None, lease_seconds=900, log
     db = db or str(ROOT / "work" / "server.db")
     Path(db).parent.mkdir(parents=True, exist_ok=True)
     store = Store(db, lease_seconds)
-    for name in clients.load():
+    for name, entry in clients.load().items():
+        if entry.get("donor"):  # donor binaries feed matching/spread only, never a progress target
+            continue
         added = store.seed(name)
         if added:
             log("Loaded %d functions for %s" % (added, name))

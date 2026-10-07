@@ -3,7 +3,9 @@
 Run with no arguments (or double-click roc.cmd) for a menu.
 """
 import argparse
+import json
 import os
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -60,8 +62,8 @@ def cmd_link(a):
 
 
 def cmd_client_add(a):
-    e = clients.add(a.name, a.exe, a.allow_modified)
-    print("%s registered: compiler %s" % (a.name, e["compiler"]))
+    e = clients.add(a.name, a.exe, a.allow_modified, getattr(a, "donor", False))
+    print("%s registered%s: compiler %s" % (a.name, " (donor)" if e.get("donor") else "", e["compiler"]))
     cmd_analyze(a)
     print("Commit clients/clients.json so others can join this client.")
 
@@ -294,9 +296,17 @@ def cmd_flags(a):
 
 
 def cmd_config(a):
-    from roc.worker import save_settings, USER_RE
+    from roc import draft
+    from roc.worker import clear_setting, save_settings, USER_RE
     if a.user and not USER_RE.match(a.user):
         sys.exit("Username must be 2-32 letters, digits, _ . -")
+    if a.model and a.model != "default" and not draft.pick_model(a.model):
+        choices = draft.ollama_models()
+        sys.exit("Model '%s' is not installed. Installed: %s" %
+                 (a.model, ", ".join(choices) or "none (run: ollama pull <model>)"))
+    if a.model == "default":
+        clear_setting("model")
+        a.model = None
     s = save_settings(user=a.user, server=a.server, token=a.token, model=a.model, public_server=a.public_server)
     print("Saved: " + ", ".join("%s=%s" % (k, "***" if k == "token" else v) for k, v in s.items()))
 
@@ -340,13 +350,163 @@ def cmd_server(a):
 
 
 def cmd_worker(a):
-    from roc import worker
+    from roc import draft, worker
     s = settings()
     srv = need(a.server or s.get("server"), "server", "Use --server URL or: roc config --server URL")
     user = need(a.user or s.get("user"), "username", "Use --user NAME or: roc config --user NAME")
-    worker.save_settings(user=user, server=srv)
-    worker.run(srv, user, a.token or s.get("token"), a.model or s.get("model"), a.rounds, a.max_size,
-               not a.no_revng, a.jobs, forever=True)
+    if a.model and a.model != "default" and not draft.pick_model(a.model):
+        sys.exit("Model '%s' is not installed. See: roc model" % a.model)
+    if a.model == "default":
+        worker.clear_setting("model")
+        a.model = None
+        s.pop("model", None)
+    if a.preset == "fast":
+        a.rounds, a.max_size, a.no_revng = min(a.rounds, 2), min(a.max_size, 96), True
+    elif a.preset == "deep":
+        a.rounds, a.max_size = max(a.rounds, 6), max(a.max_size, 512)
+    chosen = a.model or s.get("model")
+    if a.dry_run:
+        info = worker.Api(srv, a.token or s.get("token")).call("/v1/info")
+        have = worker.usable_clients(info)
+        print("Worker preview: user=%s model=%s clients=%s rounds=%d max-size=%d Rev.ng=%s workers=%d" %
+              (user, draft.pick_model(chosen) or "none", ", ".join(have) or "none",
+               a.rounds, a.max_size, "off" if a.no_revng else "auto", max(1, min(a.workers, 8))))
+        return
+    worker.save_settings(user=user, server=srv, model=a.model)
+    worker.run_concurrent(srv, user, a.token or s.get("token"), chosen, a.rounds, a.max_size,
+                          not a.no_revng, a.jobs, a.workers, source_only=a.source_only)
+
+
+def cmd_doctor(a):
+    from roc import draft, setup
+    print("Python: %s" % sys.version.split()[0])
+    print("Compilers: %s" % (", ".join(str(k) for k in sorted(setup.compilers())) or "none"))
+    models = draft.ollama_models()
+    print("Ollama models: %s" % (", ".join(models) or "none/offline"))
+    print("Default model: %s" % (draft.pick_model() or "none"))
+    print("Docker: %s" % ("ready" if shutil.which("docker") else "not installed (optional)"))
+    print("2016 source: %s" % ("ready" if (ROOT / "tools" / "roblox2016" / "src").is_dir() else "missing"))
+    print("Rev.ng: %s" % ("ready" if draft.revng_available() else "not available"))
+    print("Clients:")
+    for name, entry in sorted(clients.load().items()):
+        print("  %-10s %s" % (name, clients.status(name, entry)))
+
+
+def cmd_model_stats(a):
+    from roc import metrics
+    rows = metrics.model_stats()
+    if not rows:
+        print("No worker telemetry yet: run a worker first.")
+        return
+    print("Model                                  jobs matched improved rate gain avg-sec gpu-min/match")
+    for row in rows:
+        print("%-38s %4d %7d %8d %4.1f%% %4d %7.1f %14.1f" %
+              (row["model"], row["jobs"], row["matched"], row["improved"], row["match_rate"],
+               row["score_gain"], row["avg_seconds"], row["gpu_minutes_per_match"]))
+
+
+def cmd_failures(a):
+    from roc import metrics
+    if a.promote:
+        rules = metrics.promote_failures()
+        print("Promoted %d recurring failure rule suggestion(s) to %s" % (len(rules), metrics.RULES))
+        return
+    rows = metrics.failure_clusters()
+    if not rows:
+        print("No worker failures recorded.")
+        return
+    print("Failure cluster                                      count")
+    for row in rows:
+        print("%-52s %5d" % (row["reason"], row["count"]))
+
+
+def cmd_benchmark_models(a):
+    from roc import benchmark, metrics, draft, worker
+    if a.progress:
+        rows = metrics.corpus_stats(benchmark.build_hidden(a.limit))
+        total = sum(r["jobs"] for r in rows)
+        print("Benchmark records: %d (resume with --local-run --full --resume)" % total)
+        for row in rows:
+            print("  %s %-6s source=%s jobs=%d matches=%d gain=%d" %
+                  (row["model"], row["bucket"], row["source_present"], row["jobs"],
+                   row["matched"], row["score_gain"]))
+        return
+    if a.hidden:
+        hidden = benchmark.build_hidden(a.limit)
+        print("Hidden benchmark corpus: %d targets (%s)" % (len(hidden), benchmark.HIDDEN))
+        return
+    if a.local_run:
+        hidden = benchmark.build_hidden(a.limit)
+        models = [m for m in draft.ollama_models() if "qwen2.5-coder" in m]
+        if not models:
+            raise SystemExit("no qwen2.5-coder model installed")
+        corpus = hidden if a.full else hidden[:a.limit]
+        print("Running local benchmark: %d targets, %d models%s" %
+              (len(corpus), min(2, len(models)), " (resumable)" if a.resume else ""))
+        benchmark.run_local(corpus, models[:2], rounds=1, resume=a.resume)
+        return
+    if a.baseline:
+        hidden = benchmark.build_hidden(a.limit)
+        current = metrics.corpus_stats(hidden)
+        path = ROOT / "work" / "benchmark-baseline.json"
+        if path.exists():
+            print("Previous baseline:", path.read_text())
+            print("Current:", current)
+        path.write_text(json.dumps(current, indent=1))
+        print("Saved benchmark baseline: %s" % path)
+        return
+    rows = benchmark.build(a.limit) if a.generate or not benchmark.CORPUS.exists() else benchmark.load()
+    print("Benchmark corpus: %d fixed targets (%s)" % (len(rows), benchmark.CORPUS))
+    for bucket in ("tiny", "medium", "large"):
+        print("  %-6s %d" % (bucket, sum(r["bucket"] == bucket for r in rows)))
+    stats = metrics.model_stats()
+    if stats:
+        print("Model telemetry (run workers on this corpus to compare):")
+        for row in stats:
+            print("  %-36s jobs=%d 100%%=%d improved=%d avg=%.1fs" %
+                  (row["model"], row["jobs"], row["matched"], row["improved"], row["avg_seconds"]))
+    if a.run:
+        settings = worker.load_settings()
+        server = a.server or settings.get("server")
+        user = a.user or settings.get("user")
+        if not server or not user:
+            raise SystemExit("benchmark run needs --server/--user or saved worker config")
+        targets = [{"client": row["client"], "addr": row["addr"]} for row in rows]
+        models = [m for m in draft.ollama_models() if "embed" not in m.lower()]
+        if not models:
+            raise SystemExit("no Ollama models installed")
+        for model in models:
+            print("Running fixed corpus with %s" % model)
+            worker.run(server, user, model=model, max_jobs=len(targets), max_size=256,
+                       use_revng=False, rounds=2, targets=targets)
+
+
+def cmd_source_status(a):
+    import json
+    from roc import refsource
+    classes, funcs = refsource.build_index()
+    if a.build_meta:
+        print("2016 source metadata: %d files" % refsource.build_meta())
+    print("2016 source index: %d classes/namespaces, %d functions" % (len(classes), len(funcs)))
+    for name, entry in sorted(clients.load().items()):
+        rows = match_rows = 0
+        explained = set()
+        path = ROOT / "work" / name / "functions.jsonl"
+        if not path.exists():
+            continue
+        for line in path.read_text(errors="replace").splitlines():
+            try:
+                row = json.loads(line)
+            except ValueError:
+                continue
+            if row.get("kind", "code") != "code":
+                continue
+            rows += 1
+            ids = refsource.identifiers(row.get("unit", ""))
+            if any(i and i[0].isupper() and (i in classes or i in funcs) for i in ids):
+                explained.add(row.get("unit"))
+        match_rows = len(explained)
+        print("  %-10s %6d code funcs, %6d source-mapped units" % (name, rows, match_rows))
 
 
 def cmd_status(a):
@@ -363,6 +523,32 @@ def cmd_status(a):
     print("Top contributors:")
     for i, row in enumerate(api.call("/v1/leaderboard")[:10], 1):
         print("  %2d. %-20s %5d matched  %6d points" % (i, row["user"], row["matched"], row["points"]))
+
+
+def cmd_model(a):
+    from roc import draft
+    from roc.worker import clear_setting, save_settings
+    models = draft.ollama_models()
+    if a.name:
+        if a.name == "default":
+            clear_setting("model")
+            print("Model: default (%s)" % (draft.pick_model() or "none installed"))
+            return
+        if a.name not in models:
+            sys.exit("Model '%s' is not installed. Installed: %s" %
+                     (a.name, ", ".join(models) or "none (run: ollama pull <model>)"))
+        save_settings(model=a.name)
+        print("Model: %s" % a.name)
+        return
+    selected = settings().get("model")
+    default = draft.pick_model()
+    print("Worker model: %s%s" % (selected or default or "none installed",
+                                   " (default)" if not selected else ""))
+    if models:
+        print("Installed: " + ", ".join(models))
+        print("Change: roc model <name>   Reset: roc model default")
+    else:
+        print("Install one: ollama pull qwen2.5-coder:7b")
 
 
 def cmd_progress(a):
@@ -425,9 +611,24 @@ def menu():
 
 
 def menu_worker():
+    from roc import draft
+    from roc import worker
     s = settings()
     user = ask("Your username (shows on the leaderboard)", s.get("user"))
     srv = ask("Server address (ask the group)", s.get("server"))
+    default = s.get("model") or draft.pick_model()
+    models = draft.ollama_models()
+    if models:
+        print("Models: " + ", ".join(models))
+    model = ask("Model (Enter = %s)" % (default or "install one first"))
+    if model:
+        if model == "default":
+            worker.clear_setting("model")
+        elif model in models:
+            worker.save_settings(model=model)
+        else:
+            print("Model not installed. Use: ollama pull %s" % model)
+            return
     main(["worker", "--user", user, "--server", srv])
 
 
@@ -457,6 +658,7 @@ def main(argv=None):
     p.add_argument("name")
     p.add_argument("exe")
     p.add_argument("--allow-modified", action="store_true", help="accept an exe whose PE checksum is wrong")
+    p.add_argument("--donor", action="store_true", help="reference binary for matching/testing only, not shown on the site")
     p.set_defaults(fn=cmd_client_add)
     c.add_parser("verify", help="check your exes: same build as registered, not modified").set_defaults(fn=cmd_client_verify)
     cmd("client-fetch", cmd_client_fetch, "download a client from Drive and verify it ('all' for every client)",
@@ -498,6 +700,8 @@ def main(argv=None):
     cmd("config", cmd_config, "save username / server / password / model",
         (["--user"], {}), (["--server"], {}), (["--token"], {}), (["--model"], {}),
         (["--public-server"], {"help": "address shown in website join links (host:port)"}))
+    cmd("model", cmd_model, "show or choose worker model (default = automatic choice)",
+        (["name"], {"nargs": "?"}))
     cmd("link", cmd_link, "one-click links: 'install', 'remove', or a roconstruct:// URL", (["target"], {}))
     cmd("submit", cmd_submit, "send hand-written sources to the server",
         (["name"], {}), (["addr"], {"nargs": "*"}), (["--server"], {}), (["--user"], {}), (["--token"], {}))
@@ -518,7 +722,29 @@ def main(argv=None):
         (["--rounds"], {"type": int, "default": 4, "help": "AI tries per function"}),
         (["--max-size"], {"type": int, "default": 256, "help": "skip functions bigger than this (bytes)"}),
         (["--jobs"], {"type": int, "help": "stop after this many functions"}),
-        (["--no-revng"], {"action": "store_true"}))
+        (["--workers"], {"type": int, "default": 1,
+                          "help": "bounded concurrent lease loops (1-8; avoid GPU oversubscription)"}),
+        (["--no-revng"], {"action": "store_true"}),
+        (["--preset"], {"choices": ["fast", "balanced", "deep"], "default": "balanced"}),
+        (["--dry-run"], {"action": "store_true", "help": "show worker setup without leasing a job"}),
+        (["--source-only"], {"action": "store_true", "help": "run deterministic candidates; never call Ollama"}))
+    cmd("doctor", cmd_doctor, "check worker dependencies and local source setup")
+    cmd("model-stats", cmd_model_stats, "compare models using worker telemetry")
+    cmd("failures", cmd_failures, "show recurring worker compile/API failures",
+        (["--promote"], {"action": "store_true", "help": "save repeated failure rule suggestions"}))
+    cmd("benchmark-models", cmd_benchmark_models, "create fixed targets and compare model telemetry",
+        (["--generate"], {"action": "store_true"}),
+        (["--hidden"], {"action": "store_true", "help": "build source/score-hidden solved targets"}),
+        (["--local-run"], {"action": "store_true", "help": "run two installed coder models locally without submit"}),
+        (["--full"], {"action": "store_true", "help": "use the complete fixed/hidden corpus (can take hours)"}),
+        (["--resume"], {"action": "store_true", "help": "skip local benchmark targets already recorded"}),
+        (["--progress"], {"action": "store_true", "help": "show resumable benchmark records without running models"}),
+        (["--baseline"], {"action": "store_true", "help": "save/compare hidden-corpus regression baseline"}),
+        (["--run"], {"action": "store_true", "help": "run installed models on the fixed targets"}),
+        (["--limit"], {"type": int, "default": 8}),
+        (["--server"], {}), (["--user"], {}))
+    cmd("source-status", cmd_source_status, "show 2016 source-name coverage",
+        (["--build-meta"], {"action": "store_true", "help": "build persisted token/declaration metadata"}))
     cmd("status", cmd_status, "server progress, workers, leaderboard", (["--server"], {}), (["--token"], {}))
     cmd("progress", cmd_progress, "write docs/ data for the website", (["--server"], {}), (["--token"], {}))
     a = ap.parse_args(argv)

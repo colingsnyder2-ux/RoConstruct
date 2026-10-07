@@ -138,7 +138,8 @@ def ensure_ollama(exe):
         return []
 
 
-def cl_env(cl):
+@functools.lru_cache(maxsize=16)
+def _cached_cl_env(cl):
     """Environment that lets an old cl.exe find its DLLs and headers."""
     cl = Path(cl)
     env = dict(os.environ)
@@ -146,6 +147,11 @@ def cl_env(cl):
     inc = cl.parents[1] / "include"
     env["INCLUDE"] = str(inc) if inc.exists() else ""
     return env
+
+
+def cl_env(cl):
+    # Callers add per-invocation include/define values; never share that mutation.
+    return dict(_cached_cl_env(str(cl)))
 
 
 @functools.lru_cache(maxsize=None)

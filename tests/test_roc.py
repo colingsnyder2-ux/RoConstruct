@@ -1,5 +1,6 @@
 """Smoke tests that need no client exe and no compiler. Run: python tests/test_roc.py"""
 import struct
+import json
 import sys
 import time
 from pathlib import Path
@@ -7,7 +8,9 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from roc import auto, shapes, xcopy
 from roc.analyze import find_functions, kind_of, demangle_class
+from roc.analyze import asm_shape
 from roc.auto import candidates
+from roc import draft
 from roc.draft import extract_code, mini_elf
 from roc.match import coff_functions, score, asm_lines, reject_asm, CompileError
 from roc.progress import summarize
@@ -31,6 +34,7 @@ def test_find_functions():
         {"addr": "0000100c", "size": 3, "relocs": [], "calls": 0, "kind": "code"},
         {"addr": "00001010", "size": 1, "relocs": [], "calls": 0, "kind": "code"},
     ], funcs
+    assert asm_shape(bytes.fromhex("8b442404c3"), 0x1000) == "mov eax, dword ptr [esp + N] ; ret"
 
 
 def test_kinds():
@@ -85,6 +89,12 @@ def test_auto_candidates():
     assert any("return m_x;" in c and "pad0[68]" in c
                for c in candidates(["mov eax, dword ptr [ecx + 0x44]", "ret "]))
     assert any("{\n}" in c for c in candidates(["ret "]))
+    assert any("m_x * 3" in c for c in candidates([
+        "mov eax, dword ptr [ecx + 0x4]", "imul eax, eax, 3", "ret "]))
+    assert any("m_x != 0" in c for c in candidates([
+        "cmp dword ptr [ecx + 0x4], 0", "setne al", "movzx eax, al", "ret "]))
+    assert any("m_x - 3" in c for c in candidates([
+        "mov eax, dword ptr [ecx + 0x4]", "sub eax, 3", "ret "]))
     assert any("__stdcall" in c and "int a2" in c for c in candidates(["ret 8"]))
     assert candidates(["push ebp", "call sym"]) == []
 
@@ -116,6 +126,23 @@ def test_draft_helpers():
     assert extract_code("no code") is None
     elf = mini_elf(b"\xc3", 0x401234)
     assert elf[:4] == b"\x7fELF" and elf[0x1000 + 0x234] == 0xC3
+    facts = draft.facts_from_asm(["mov eax, dword ptr [ecx + 0x34]", "call dword ptr [sym]", "ret 8"])
+    assert facts["calls"] == 1 and facts["this_offsets"] == ["0x34"] and facts["returns"] == ["ret 8"]
+    assert draft.model_profile("qwen2.5-coder:7b") == {"num_ctx": 6144, "num_predict": 1536}
+    assert draft.model_profile("custom") == {"num_ctx": 8192, "num_predict": 2048}
+    assert draft.model_rounds("qwen2.5-coder:7b-instruct", 9) == 3
+    assert draft.classify_target(["mov eax, dword ptr [ecx + 0x4]", "ret "]) == "leaf/getter"
+    assert draft.classify_target(["call sym", "ret "]) == "wrapper/thunk"
+
+
+def test_model_choice(monkeypatch):
+    from roc import draft
+    monkeypatch.setattr(draft, "ollama_models", lambda: ["my-model", "qwen2.5-coder:7b"])
+    assert draft.pick_model() == "qwen2.5-coder:7b"
+    assert draft.pick_model("my-model") == "my-model"
+    assert draft.pick_model("default") == "qwen2.5-coder:7b"
+    monkeypatch.setattr(draft, "ollama_models", lambda: ["my-model"])
+    assert draft.pick_model() == "my-model"
 
 
 def test_server_store():
@@ -135,6 +162,31 @@ def test_server_store():
     assert board["bob"]["matched"] == 1 and board["alice"]["points"] == 60
     assert [r["user"] for r in st.leaderboard("C")] == ["bob", "alice"] and st.leaderboard("other") == []
     assert st.lease("dave", "w4", ["C"], "ai", 4) is None  # matched one never handed out again
+    assert st.examples("C", unit="A") and st.examples("C", unit="missing")
+    st.db.execute("UPDATE funcs SET shape = 'same' WHERE addr = '00401000'")
+    assert st.examples("C", shape="same")
+    cool = Store(":memory:", lease_seconds=10)
+    cool.db.execute("INSERT INTO funcs(client,addr,size,unit) VALUES('C','x',6,'A')")
+    lease = cool.lease("alice", "cool", ["C"], "ai", 256)
+    cool.release(lease["lease"], 30)
+    assert cool.lease("bob", "next", ["C"], "ai", 256) is None
+    fixed = Store(":memory:", lease_seconds=10)
+    fixed.db.executemany("INSERT INTO funcs(client,addr,size,unit) VALUES(?,?,?,?)",
+                         [("C", "00401000", 6, "A"), ("C", "00401010", 6, "B")])
+    picked = fixed.lease("bench", "fixed", ["C"], "ai", 256,
+                         model="qwen2.5-coder:7b",
+                         targets=[{"client": "C", "addr": "00401010"}])
+    assert picked["addr"] == "00401010"
+    assert json.loads(fixed.db.execute("SELECT attempts_by_model FROM funcs WHERE addr='00401010'").fetchone()[0])
+    guarded = Store(":memory:", lease_seconds=10)
+    guarded.db.execute("INSERT INTO funcs(client,addr,size,unit) VALUES('C','00401000',6,'A')")
+    lease = guarded.lease("alice", "guard", ["C"], "ai", 256)
+    try:
+        guarded.submit("C", "00401000", "alice", 100, "x", lease="wrong")
+        raise AssertionError("expired/foreign lease accepted")
+    except ValueError:
+        pass
+    assert guarded.submit("C", "00401000", "alice", 100, "x", lease=lease["lease"]) == (100, True)
 
 
 def test_shape_normalisation():
@@ -221,6 +273,19 @@ def test_refsource_name_recovery():
     assert not [n for n in anon if n and n[0].isupper()]
     # _plausible keeps only names present in the tree, longest first
     assert refsource._plausible(["nstance", "VInstance"], {"VInstance": []}) == ["VInstance"]
+    if refsource.TREE.exists():
+        body = refsource.extract_method("ROBLOX2016-main\\Network\\raknet\\Source\\RakPeer.cpp", "RakPeer")
+        assert body and len(body) <= 6000
+        context = refsource.extract_method_context("ROBLOX2016-main\\Network\\raknet\\Source\\RakPeer.cpp", "RakPeer")
+        assert context and len(context) <= 12000
+
+
+def test_model_routing():
+    from roc import draft
+    assert draft.route_model("qwen2.5-coder:14b", {"size": 32, "calls": 0},
+                             ["qwen2.5-coder:7b"]) == "qwen2.5-coder:7b"
+    assert draft.route_model("custom", {"size": 32, "calls": 0},
+                             ["qwen2.5-coder:7b"], automatic=False) == "custom"
 
 
 def test_refsource_hint_without_tree(tmp_path, monkeypatch):
@@ -230,6 +295,7 @@ def test_refsource_hint_without_tree(tmp_path, monkeypatch):
     monkeypatch.setattr(refsource, "TREE", tmp_path / "nope")
     monkeypatch.setattr(refsource, "CACHE", tmp_path / "cache.json")
     assert refsource.hint("RBX::Network::Replicator") is None
+    assert refsource.prompt_hints("seg_00400000") == []
 
 
 if __name__ == "__main__":

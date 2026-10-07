@@ -4,6 +4,7 @@ Score 100 = byte-identical once relocated fields are masked on both sides.
 """
 import difflib
 import functools
+import hashlib
 import json
 import os
 import re
@@ -20,12 +21,35 @@ from roc import clients, setup
 ROOT = Path(__file__).resolve().parent.parent
 # Starting point only: `roc flags <client>` tunes this into clients.json.
 DEFAULT_FLAGS = "/O2 /GS- /EHsc /MD"
+COMPILE_ERRORS = ROOT / "work" / "compile-errors.json"
+_COMPILE_ERRORS = None
 
 
 class CompileError(RuntimeError):
     pass
 
 
+def _compile_error_cache():
+    global _COMPILE_ERRORS
+    if _COMPILE_ERRORS is None:
+        try:
+            _COMPILE_ERRORS = json.loads(COMPILE_ERRORS.read_text())
+        except (OSError, ValueError):
+            _COMPILE_ERRORS = {}
+    return _COMPILE_ERRORS
+
+
+def _remember_compile_error(key, message):
+    cache = _compile_error_cache()
+    cache[key] = message[-1200:]
+    try:
+        COMPILE_ERRORS.parent.mkdir(parents=True, exist_ok=True)
+        COMPILE_ERRORS.write_text(json.dumps(cache, separators=(",", ":")))
+    except OSError:
+        pass
+
+
+@functools.lru_cache(maxsize=512)
 def coff_functions(obj):
     """[(name, bytes, reloc offsets)] for every function symbol in a COFF .obj."""
     _, nsec, _, symptr, nsym, optsz, _ = struct.unpack_from("<HHIIIHH", obj, 0)
@@ -205,12 +229,17 @@ def directives(text):
     return dict(re.findall(r"(?m)^//\s*roc-(lang|flags|cl|lib|archive):\s*(.+?)\s*$", text))
 
 
+@functools.lru_cache(maxsize=512)
 def compile_text(client, text, flags=None, build=None):
     """Compile source text to COFF bytes with the client's compiler (or `build`)."""
     reject_asm(text)
     entry = clients.load()[client]
     d = directives(text)
     build = build or (int(d["cl"]) if d.get("cl", "").isdigit() else entry["compiler_build"])
+    error_key = hashlib.sha1((client + "\0" + str(build) + "\0" + (flags or "") + "\0" + text).encode()).hexdigest()
+    known_error = _compile_error_cache().get(error_key)
+    if known_error:
+        raise CompileError(known_error)
     if "archive" in d:  # exact CRT/STL COFF member from matching installed compiler
         from roc import libs
         recipe, _, path = d["archive"].partition(" ")
@@ -227,11 +256,18 @@ def compile_text(client, text, flags=None, build=None):
     with tempfile.TemporaryDirectory() as tmp:
         src, obj = Path(tmp) / ("f.c" if d.get("lang") == "c" else "f.cpp"), Path(tmp) / "f.obj"
         src.write_text(text)
-        run = subprocess.run([str(cl), "/nologo", "/c", "/Gy", *flags, "/Fo" + str(obj), str(src)],
-                             capture_output=True, text=True, env=env, cwd=tmp)
+        try:
+            run = subprocess.run([str(cl), "/nologo", "/c", "/Gy", *flags, "/Fo" + str(obj), str(src)],
+                                 capture_output=True, text=True, env=env, cwd=tmp, timeout=120)
+        except subprocess.TimeoutExpired:
+            message = "compiler timeout after 120 seconds"
+            _remember_compile_error(error_key, message)
+            raise CompileError(message)
         if run.returncode:
             out = (run.stdout + run.stderr).replace(str(src), "source").strip()
-            raise CompileError("\n".join(l for l in out.splitlines() if l.strip() not in ("f.cpp", "f.c")))
+            message = "\n".join(l for l in out.splitlines() if l.strip() not in ("f.cpp", "f.c"))
+            _remember_compile_error(error_key, message)
+            raise CompileError(message)
         return obj.read_bytes()
 
 

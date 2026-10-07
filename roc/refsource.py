@@ -23,6 +23,7 @@ The tree is only indexed once and cached, because it is tens of thousands of fil
 import functools
 import json
 import re
+from concurrent.futures import ThreadPoolExecutor
 from collections import defaultdict
 from pathlib import Path
 
@@ -31,6 +32,9 @@ from roc import clients, match
 ROOT = Path(__file__).resolve().parent.parent
 TREE = ROOT / "tools" / "roblox2016" / "src"
 CACHE = ROOT / "work" / "refsource.json"
+META_CACHE = ROOT / "work" / "refsource-meta.json"
+_INDEX = None
+_INDEX_KEY = None
 
 SOURCE_SUFFIXES = {".cpp", ".c", ".h", ".hpp", ".inl", ".cc", ".cxx"}
 # The repo nests everything under ROBLOX2016-main/<Module>/...
@@ -39,6 +43,10 @@ SKIP_DIRS = {".git", "ThirdParty", "ThirdPartyIncluded", "UnitTest", "UnitTests"
 
 CLASS_RE = re.compile(r"\b(?:class|struct)\s+([A-Za-z_]\w*)")
 NAMESPACE_RE = re.compile(r"^\s*namespace\s+([A-Za-z_]\w*)", re.M)
+INCLUDE_RE = re.compile(r"^\s*#\s*include\s+[<\"]([^>\"]+)[>\"]", re.M)
+INHERIT_RE = re.compile(r"\b(?:class|struct)\s+([A-Za-z_]\w*)\s*:\s*([^\{]+)\{")
+STRING_RE = re.compile(r"(?:\"([^\"\\]*(?:\\.[^\"\\]*)*)\"|'([^'\\]*(?:\\.[^'\\]*)*)')")
+TOKEN_RE = re.compile(r"[A-Za-z_]\w*|\d+(?:\.\d+)?|==|!=|<=|>=|->|\+\+|--|&&|\|\||[^\s]")
 # One flat character class, no nested quantifiers: the old nested form backtracked
 # exponentially on long declaration lines and never finished indexing the tree.
 FUNC_RE = re.compile(r"^[ \t]*[\w:<>,*& \t]*?\b([A-Za-z_]\w*)[ \t]*\(", re.M)
@@ -55,11 +63,17 @@ def _walk(root):
 
 def build_index(force=False, log=print):
     """{class name: [paths]}, {function name: [paths]} over the 2016 source tree."""
+    global _INDEX, _INDEX_KEY
+    key = (str(TREE), str(CACHE))
+    if _INDEX is not None and _INDEX_KEY == key and not force:
+        return _INDEX
     if CACHE.exists() and not force:
         try:
             data = json.loads(CACHE.read_text())
             if data.get("files") == str(TREE):
-                return data["classes"], data["funcs"]
+                _INDEX = (data["classes"], data["funcs"])
+                _INDEX_KEY = key
+                return _INDEX
         except (OSError, ValueError, KeyError):
             pass
     if not TREE.is_dir():
@@ -88,7 +102,9 @@ def build_index(force=False, log=print):
     CACHE.write_text(json.dumps(data, separators=(",", ":")))
     log("indexed %d source file(s): %d class/namespace name(s), %d function name(s)"
         % (n, len(data["classes"]), len(data["funcs"])))
-    return data["classes"], data["funcs"]
+    _INDEX = (data["classes"], data["funcs"])
+    _INDEX_KEY = key
+    return _INDEX
 
 
 # ---------- name resolution ----------
@@ -147,7 +163,7 @@ def sources_for(unit, limit=5, log=None):
             if rel in seen:
                 continue
             seen.add(rel)
-            found.append((100 + len(name), rel, snippet(rel)))
+            found.append((100 + len(name), rel, snippet(rel, focus=name)))
     for name in _plausible(names, funcs):
         if len(found) >= limit * 2:
             break
@@ -155,19 +171,172 @@ def sources_for(unit, limit=5, log=None):
             if rel in seen:
                 continue
             seen.add(rel)
-            found.append((50 + len(name), rel, snippet(rel)))
+            found.append((50 + len(name), rel, snippet(rel, focus=name)))
     found.sort(key=lambda r: -r[0])
     return found
 
 
-def snippet(rel, lines=6):
-    """First few lines of a file, for a hint in a prompt."""
+def snippet(rel, lines=12, focus=None):
+    """Small relevant source window for a hint in a prompt."""
     path = TREE / rel
     try:
-        head = path.read_text(errors="replace").splitlines()[:lines]
+        rows = path.read_text(errors="replace").splitlines()
     except OSError:
         return ""
-    return "\n".join(head)
+    if focus:
+        matches = [i for i, row in enumerate(rows) if re.search(r"\b%s\b" % re.escape(focus), row)]
+        if matches:
+            center = matches[0]
+            start = max(0, center - lines // 3)
+            return "\n".join(rows[start:start + lines])
+    return "\n".join(rows[:lines])
+
+
+@functools.lru_cache(maxsize=2048)
+def source_facts(rel):
+    """Bounded declarations/body clues for a retrieved source file."""
+    try:
+        text = (TREE / rel).read_text(errors="replace")
+    except OSError:
+        return {}
+    names = sorted(set(CLASS_RE.findall(text)))[:32]
+    methods = sorted(set(FUNC_RE.findall(text)))[:48]
+    inherits = ["%s:%s" % (name, bases.strip()) for name, bases in INHERIT_RE.findall(text)][:16]
+    literals = []
+    for left, right in STRING_RE.findall(text):
+        value = left or right
+        if len(value) >= 4:
+            literals.append(value[:120])
+    tokens = TOKEN_RE.findall(re.sub(r"//[^\n]*|/\*.*?\*/", " ", text, flags=re.S))
+    shape = " ".join("I" if re.match(r"^[A-Za-z_]", token) else
+                      "N" if re.match(r"^\d", token) else token for token in tokens[:512])
+    clean = re.sub(r"//[^\n]*|/\*.*?\*/", " ", text, flags=re.S)
+    nodes = []
+    for match in re.finditer(r"\b(class|struct|namespace)\s+([A-Za-z_]\w*)", clean):
+        nodes.append({"kind": match.group(1), "name": match.group(2),
+                      "offset": match.start()})
+    for match in re.finditer(r"\b([A-Za-z_]\w*(?:::\w+)*)\s*\([^;{}]{0,240}\)\s*\{", clean):
+        name = match.group(1).split("::")[-1]
+        if name not in ("if", "for", "while", "switch", "catch"):
+            nodes.append({"kind": "function", "name": name, "offset": match.start()})
+    nodes.sort(key=lambda node: node["offset"])
+    return {"classes": names, "methods": methods,
+            "includes": sorted(set(INCLUDE_RE.findall(text)))[:24],
+            "inherits": inherits, "literals": sorted(set(literals))[:24],
+            "tokens": sorted(set(re.findall(r"\b[A-Za-z_]\w{2,}\b", text)))[:96],
+            "ast_shape": shape, "ast_nodes": nodes[:256],
+            "parser": "roc-cpp-structure-v1"}
+
+
+def build_meta(force=False, log=print):
+    """Persist compact source-token/declaration metadata for similarity retrieval."""
+    if META_CACHE.exists() and not force:
+        try:
+            data = json.loads(META_CACHE.read_text())
+            if data.get("files") == str(TREE):
+                return len(data.get("rows", {}))
+        except (OSError, ValueError, KeyError):
+            pass
+    import hashlib
+    paths = list(_walk(TREE))
+    partial = META_CACHE.with_suffix(".partial.json")
+    rows = {}
+    if force and partial.exists():
+        try:
+            saved = json.loads(partial.read_text())
+            if saved.get("files") == str(TREE):
+                rows = saved.get("rows", {})
+                log("resuming source metadata: %d files" % len(rows))
+        except (OSError, ValueError, KeyError):
+            rows = {}
+    paths = [path for path in paths if str(path.relative_to(TREE)) not in rows]
+
+    def one(path):
+        rel = str(path.relative_to(TREE))
+        facts = source_facts(rel)
+        tokens = " ".join(facts.get("tokens", []))
+        row = {k: facts.get(k, []) for k in ("classes", "methods", "includes", "inherits", "literals", "ast_nodes")}
+        row["token_hash"] = hashlib.sha256(tokens.encode()).hexdigest()
+        row["ast_shape"] = facts.get("ast_shape", "")
+        row["parser"] = facts.get("parser", "roc-cpp-structure-v1")
+        row["token_count"] = len(facts.get("tokens", []))
+        return rel, row
+
+    from concurrent.futures import ThreadPoolExecutor
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        for i, (rel, row) in enumerate(pool.map(one, paths), 1):
+            rows[rel] = row
+            if i % 5000 == 0:
+                log("source metadata: %d files" % i)
+            if force and i % 2000 == 0:
+                partial.write_text(json.dumps({"files": str(TREE), "rows": rows}, separators=(",", ":")))
+    data = {"files": str(TREE), "rows": rows}
+    META_CACHE.parent.mkdir(parents=True, exist_ok=True)
+    META_CACHE.write_text(json.dumps(data, separators=(",", ":")))
+    try:
+        partial.unlink()
+    except OSError:
+        pass
+    return len(rows)
+
+
+def extract_method(rel, name, max_chars=6000):
+    """Return one bounded C/C++ method body from a source file, if present."""
+    try:
+        text = (TREE / rel).read_text(errors="replace")
+    except OSError:
+        return ""
+    match = re.search(r"\b%s\s*\([^;{}]*\)\s*(?:const\s*)?\{" % re.escape(name), text)
+    if not match:
+        return ""
+    open_brace = text.find("{", match.start(), match.end())
+    depth, i, quote = 0, open_brace, None
+    while i < len(text):
+        ch = text[i]
+        if quote:
+            if ch == "\\":
+                i += 2
+                continue
+            if ch == quote:
+                quote = None
+        elif ch in "\"'":
+            quote = ch
+        elif ch == "{":
+            depth += 1
+        elif ch == "}":
+            depth -= 1
+            if depth == 0:
+                return text[match.start():min(i + 1, match.start() + max_chars)]
+        i += 1
+    return text[match.start():match.start() + max_chars]
+
+
+def extract_method_context(rel, name, max_chars=12000):
+    """Return a method plus its nearest in-file class declaration when available."""
+    method = extract_method(rel, name, max_chars=max_chars)
+    if not method:
+        return ""
+    try:
+        text = (TREE / rel).read_text(errors="replace")
+    except OSError:
+        return method
+    at = text.find(method[: min(80, len(method))])
+    if at < 0:
+        return method
+    classes = list(re.finditer(r"\b(?:class|struct)\s+[A-Za-z_]\w*\s*\{", text[:at]))
+    if not classes:
+        return method
+    start = classes[-1].start()
+    brace = text.find("{", start, at)
+    depth, i = 0, brace
+    while i < at:
+        if text[i] == "{":
+            depth += 1
+        elif text[i] == "}":
+            depth -= 1
+        i += 1
+    declaration = text[start:at] if depth > 0 else ""
+    return (declaration + method)[-max_chars:] if declaration else method
 
 
 @functools.lru_cache(maxsize=1024)
@@ -176,6 +345,8 @@ def hint(unit, lines=60):
 
     Innermost name first (`RBX::Network::Replicator` -> Replicator), headers before .cpp,
     and only a real `class X {` / `struct X {` counts, so namespaces never qualify."""
+    if not unit or unit.startswith("seg_"):
+        return None
     try:
         classes, _funcs = build_index(log=lambda *a: None)
     except SystemExit:
@@ -195,6 +366,113 @@ def hint(unit, lines=60):
             if m:
                 return "// %s\n%s" % (rel.replace("\\", "/"), "\n".join(text[m.start():].splitlines()[:lines]))
     return None
+
+
+def prompt_hints(unit, limit=3, max_chars=1800, target_facts=None):
+    """Compact 2016 source clues for an AI prompt.
+
+    Keep snippets bounded: source names help the model, while whole files waste
+    context and hide the target assembly.
+    """
+    out = []
+    if not unit or unit.startswith("seg_"):
+        return []
+    try:
+        rows = sources_for(unit, limit=limit)
+    except SystemExit:
+        return []
+    wanted = set(identifiers(unit))
+    wanted_strings = set((target_facts or {}).get("strings", []))
+    for score, rel, text in rows:
+        text = text.strip()
+        if not text:
+            continue
+        facts = source_facts(rel)
+        overlap = len(wanted.intersection(facts.get("classes", []) + facts.get("methods", [])))
+        overlap += 2 * len(wanted_strings.intersection(facts.get("literals", [])))
+        focus = next((name for name in identifiers(unit)
+                      if name in facts.get("methods", []) or name in facts.get("classes", [])), None)
+        body = extract_method(rel, focus, max_chars=max_chars * 3) if focus else ""
+        out.append({"path": rel.replace("\\", "/"), "score": score + overlap,
+                    "text": text[:max_chars], "method": body[:max_chars], "facts": facts})
+    out.sort(key=lambda row: -row["score"])
+    return out
+
+
+def compile_candidates(client, addr, unit, flags=None, limit=2, log=None):
+    """Try source-tree files directly with the target client's compiler.
+
+    Returns ``(score, source, path)`` for the best verified candidate, or None.
+    Only files belonging to a local rbx2016 library recipe are considered; source
+    outside those recipes remains prompt-only evidence.
+    """
+    try:
+        from roc import libs
+        info = clients.load()[client]
+        build = int(info["compiler_build"])
+        flags = flags or info.get("flags", "")
+        best = None
+        candidates = []
+        direct_attempts = 0
+        tried = 0
+        for _hint_score, rel, _snippet in sources_for(unit, limit=max(limit * 4, limit), log=log):
+            if Path(rel).suffix.lower() not in {".c", ".cc", ".cpp", ".cxx"}:
+                continue
+            target = (TREE / rel).resolve()
+            recipe = None
+            for name, row in libs.RECIPES.items():
+                if not name.startswith("rbx2016-"):
+                    continue
+                folder = (libs.LIBS / row["src"]).resolve()
+                if target.is_relative_to(folder):
+                    recipe = (name, row, target.relative_to(folder))
+                    break
+            if not recipe:
+                if direct_attempts >= 2:
+                    continue
+                direct_attempts += 1
+                try:
+                    root = TREE / "ROBLOX2016-main"
+                    include = ";".join(str(p) for p in (root, root / "Rendering/g3d/include",
+                                                           root / "Network/raknet/Source"))
+                    body = libs.preprocess(build, target, include)
+                    candidates.append(("// roc-lang: cpp\n// roc-cl: %d\n// roc-flags: %s\n%s" %
+                                      (build, flags, body), rel))
+                    focus = next((n for n in identifiers(unit) if n in source_facts(rel).get("methods", [])), None)
+                    context = extract_method_context(rel, focus) if focus else ""
+                    if context:
+                        candidates.append(("// roc-lang: cpp\n// roc-cl: %d\n// roc-flags: %s\n%s" %
+                                           (build, flags, context), rel + "#method"))
+                except (match.CompileError, OSError, SystemExit):
+                    pass
+                continue
+            tried += 1
+            if tried > limit:
+                break
+            name, row, path = recipe
+            if row.get("builds") and build not in row["builds"]:
+                continue
+            lang = row.get("langs", ["cpp"])[0]
+            relpath = str(path).replace("\\", "/")
+            source = libs.source_for(name, relpath, lang, build, flags)
+            candidates.append((source, rel))
+
+        def verify(item):
+            source, rel = item
+            try:
+                score, _ = match.check_text(client, addr, source, flags)
+            except (match.CompileError, OSError, SystemExit):
+                return None
+            return score, source, rel
+
+        if candidates:
+            with ThreadPoolExecutor(max_workers=min(2, len(candidates))) as pool:
+                for result in pool.map(verify, candidates):
+                    if result and (best is None or result[0] > best[0]):
+                        best = result
+        return best
+    except (KeyError, OSError, SystemExit, ValueError):
+        return None
 
 
 def report(unit, limit=5):
