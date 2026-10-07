@@ -74,7 +74,7 @@ Master-plan coverage:
 - [x] Phase 2 selection: known-unit and near-100% priority; unit-aware examples.
 - [ ] Phase 2 full difficulty model/per-model retry policy; [x] stored difficulty, model-attempt counts, capability routing, cooldown.
 - [x] Phase 3 source index: class/function/path lookup, cached 114 MB index, focused snippets, prompt integration.
-- [ ] Phase 3 arbitrary app-method compile; [x] focused method extraction and recipe/source compile-before-LLM.
+- [ ] Phase 3 minimum-declaration arbitrary app-method compile; [x] focused method extraction plus bounded arbitrary-file/recipe compile attempts.
 - [x] Phase 4 binary facts: calls, imports, `this` offsets, returns, strings/global refs, vtable clues, persisted call edges/callers.
 - [ ] Complete call-graph semantics and full data-reference recovery; core references/edges are persisted.
 - [x] Phase 5 unit-nearest examples, size cap, fallback examples, per-session cache.
