@@ -57,6 +57,7 @@ Verified evidence:
 Not yet automated end-to-end:
 
 - [x] Compile matching 2016 library files directly before LLM (RakNet/G3D/Lua/JPEG/PNG); arbitrary app methods still need extraction.
+- [x] Partial source matches become the LLM repair baseline; exact matches submit immediately.
 - [x] 2016 source candidate compiles use a bounded two-thread CPU pool.
 - [x] Vtable-slot clues and source inheritance metadata; complete call-graph semantics/full data-reference extraction remain.
 - [ ] Full persisted source-token/AST similarity index (bounded token metadata + asm-shape retrieval implemented).
