@@ -199,23 +199,35 @@ def reject_asm(text):
         raise CompileError('#import, #using, #include "file" and #pragma comment are not allowed')
 
 
-def compile_text(client, text, flags=None):
-    """Compile C++ source text to COFF bytes with the client's compiler."""
+def directives(text):
+    """`// roc-<key>: value` lines: lang (c|cpp), flags, cl (compiler build), lib (recipe + file).
+    Library code matched with its own build settings carries them, so anyone re-checks it the same way."""
+    return dict(re.findall(r"(?m)^//\s*roc-(lang|flags|cl|lib):\s*(.+?)\s*$", text))
+
+
+def compile_text(client, text, flags=None, build=None):
+    """Compile source text to COFF bytes with the client's compiler (or `build`)."""
     reject_asm(text)
     entry = clients.load()[client]
-    cl = setup.compilers().get(entry["compiler_build"])
+    d = directives(text)
+    build = build or (int(d["cl"]) if d.get("cl", "").isdigit() else entry["compiler_build"])
+    if "lib" in d:  # library file: rebuilt from the pinned, hash-checked source in tools/libs
+        from roc import libs
+        recipe, _, path = d["lib"].partition(" ")
+        text = "%s\n%s" % (text, libs.unit(recipe, path.strip(), build))
+    cl = setup.compilers().get(build)
     if not cl:
-        raise SystemExit("Missing compiler %s for %s. Run: roc install" % (entry["compiler"], client))
+        raise SystemExit("Missing compiler build %s for %s. Run: roc install" % (build, client))
     env = setup.cl_env(cl)
-    flags = (flags or entry.get("flags") or DEFAULT_FLAGS).split()
+    flags = (flags or d.get("flags") or entry.get("flags") or DEFAULT_FLAGS).split()
     with tempfile.TemporaryDirectory() as tmp:
-        src, obj = Path(tmp) / "f.cpp", Path(tmp) / "f.obj"
+        src, obj = Path(tmp) / ("f.c" if d.get("lang") == "c" else "f.cpp"), Path(tmp) / "f.obj"
         src.write_text(text)
         run = subprocess.run([str(cl), "/nologo", "/c", "/Gy", *flags, "/Fo" + str(obj), str(src)],
                              capture_output=True, text=True, env=env, cwd=tmp)
         if run.returncode:
             out = (run.stdout + run.stderr).replace(str(src), "source").strip()
-            raise CompileError("\n".join(l for l in out.splitlines() if l.strip() != "f.cpp"))
+            raise CompileError("\n".join(l for l in out.splitlines() if l.strip() not in ("f.cpp", "f.c")))
         return obj.read_bytes()
 
 

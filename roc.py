@@ -229,6 +229,29 @@ def cmd_auto(a):
         print("%s: %d new files in src/%s/" % (name, auto.save(name, found), name))
 
 
+def cmd_libs(a):
+    """Match open-source library code (zlib, libjpeg, libpng, Lua, G3D, boost, templates)."""
+    from roc import libs
+    names = list(libs.RECIPES) if a.names == ["all"] else a.names
+    unknown = [n for n in names if n not in libs.RECIPES]
+    if unknown:
+        sys.exit("Unknown library: %s. Known: %s" % (", ".join(unknown), ", ".join(libs.RECIPES)))
+    targets = libs.default_targets() if a.client == "all" else [a.client]
+    print(libs.run([n for n in names if libs.RECIPES[n].get("files")], targets))
+
+
+def cmd_mass(a):
+    """Everything automatic: compiler runtime tagging, STL, all libraries, then auto shapes."""
+    from roc import libs, mass
+    targets = libs.default_targets() if a.client == "all" else [a.client]
+    mass.staticlibs(targets)
+    mass.stl(targets)
+    libs.run([n for n, r in libs.RECIPES.items() if r.get("files")], targets)
+    for name in targets:
+        main(["analyze", name])  # picks up the runtime tags
+        main(["auto", name])
+
+
 def cmd_flags(a):
     from roc import flags
     flags.tune(a.name)
@@ -420,6 +443,10 @@ def main(argv=None):
         (["name"], {}), (["addr"], {"nargs": "?"}))
     cmd("auto", cmd_auto, "auto-match trivial functions (getters, setters, empty...) ('all' for every client)",
         (["name"], {}), (["--max-size"], {"type": int, "default": 48}))
+    cmd("libs", cmd_libs, "match open-source library code from its real source ('all' or recipe names)",
+        (["names"], {"nargs": "+"}), (["--client"], {"default": "all"}))
+    cmd("mass", cmd_mass, "run every automatic matcher (runtime, STL, libraries, shapes); takes a while",
+        (["--client"], {"default": "all"}))
     cmd("flags", cmd_flags, "find the client's compiler flags from matched sources", (["name"], {}))
     cmd("config", cmd_config, "save username / server / password / model",
         (["--user"], {}), (["--server"], {}), (["--token"], {}), (["--model"], {}),

@@ -299,6 +299,23 @@ def serve(host="0.0.0.0", port=8765, db=None, token=None, lease_seconds=900, log
             store.submit(name, addr, "auto", 100, src)
         if found:
             log("Auto-matched %d trivial functions for %s (credited to 'auto')" % (len(found), name))
+        # Matches made on this PC by `roc libs` / `roc mass` (library and template code).
+        scores_file = ROOT / "work" / name / "scores.json"
+        local = json.loads(scores_file.read_text()) if scores_file.exists() else {}
+        done = {a for a, s in store.scores().get(name, {}).items() if s == 100}
+        imported = 0
+        for addr, score in local.items():
+            path = ROOT / "src" / name / ("%s.cpp" % addr)
+            if score == 100 and addr not in done and path.exists():
+                text = path.read_text(errors="replace")
+                if "// roc-lib:" in text or "// standard library" in text:
+                    try:
+                        store.submit(name, addr, "auto", 100, text)
+                        imported += 1
+                    except ValueError:
+                        pass  # function no longer in the analysis
+        if imported:
+            log("Imported %d library matches for %s (credited to 'auto')" % (imported, name))
     httpd = ThreadingHTTPServer((host, port), make_handler(store, token, can_verify))
     httpd.store = store
     log("RoConstruct server running on port %d. Workers connect with:  roc worker --server http://<this-pc>:%d"

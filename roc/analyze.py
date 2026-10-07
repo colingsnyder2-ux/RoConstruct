@@ -102,6 +102,8 @@ GENERATED = [re.compile(p) for p in (
     r"call (dword ptr \[N\]|N) ; add esp, 4 ; mov eax, esi ; pop esi ; ret 4$",
     # static-local guard reset in unwind code: $S &= ~bit
     r"^mov eax, dword ptr \[N\] ; and eax, N ; mov dword ptr \[N\], eax ; ret$",
+    # EH-guarded dynamic initializer of a global object
+    r"^mov eax, dword ptr fs:\[0\] ; push -1 ; push N ; push eax ; mov dword ptr fs:\[0\], esp ; mov ecx, N ; .* ; mov dword ptr fs:\[0\], ecx ; add esp, \w+ ; ret$",
 )]
 
 
@@ -198,6 +200,20 @@ def analyze(client, exe):
     funcs = find_functions(code, text_va, seeds, relocs)
     classes = rtti_classes(read, relocs, in_text)
     assign_units(funcs, classes)
+    # Functions found in the compiler's own prebuilt libraries (`roc mass`) are not Roblox code.
+    libmatch = ROOT / "work" / client / "libmatch.json"
+    if libmatch.exists():
+        runtime = set(json.loads(libmatch.read_text()))
+        for f in funcs:
+            if f["addr"] in runtime:
+                f["kind"] = "gen"
+    # Anything already byte-matched by real source is code, whatever a pattern guessed.
+    scores_file = ROOT / "work" / client / "scores.json"
+    if scores_file.exists():
+        matched = {a for a, s in json.loads(scores_file.read_text()).items() if s == 100}
+        for f in funcs:
+            if f["kind"] == "gen" and f["addr"] in matched:
+                f["kind"] = "code"
     data = sum(s.Misc_VirtualSize for s in pe.sections
                if s.Name.rstrip(b"\0") in (b".rdata", b".data", b".tls"))
     out = ROOT / "work" / client
