@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RoConstruct Progress</title>
+<style>
+:root {
+  --bg: #12141a; --panel: #1b1e26; --line: #2c303b; --text: #e8e9ee; --dim: #8b90a0;
+  --accent: #e2574c; --accent2: #e0784a; --green: #3fb950; --blue: #3b8eea; --grey: #3a3d45;
+  --mono: ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.5 system-ui, "Segoe UI", sans-serif; }
+main { max-width: 880px; margin: 0 auto; padding: 32px 16px 64px; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+h1 { font: 900 clamp(32px, 8vw, 56px)/1 system-ui, sans-serif; letter-spacing: .02em; text-align: center; margin: 24px 0 8px; text-transform: uppercase; }
+.sub { font-family: var(--mono); color: var(--dim); text-align: center; font-size: clamp(14px, 3vw, 20px); margin: 0 0 32px; }
+.stats { display: flex; justify-content: center; gap: clamp(24px, 8vw, 72px); flex-wrap: wrap; text-align: center; margin-bottom: 24px; }
+.stat b { display: block; font-size: clamp(32px, 7vw, 48px); font-weight: 800; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.stat span { font-family: var(--mono); color: var(--dim); letter-spacing: .15em; text-transform: uppercase; font-size: 13px; }
+.bar { height: 16px; background: var(--panel); border: 1px solid var(--line); border-radius: 99px; overflow: hidden; display: flex; }
+.bar i { display: block; height: 100%; }
+.bar .m { background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+.bar.g .m { background: var(--green); }
+.bar.b .m { background: var(--blue); }
+.bar .p { background: color-mix(in srgb, var(--green) 35%, var(--panel)); }
+h2 { text-transform: uppercase; letter-spacing: .06em; font-size: 20px; margin: 48px 0 16px; padding-left: 12px; border-left: 4px solid var(--accent); color: #c9cbd6; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+.card { display: block; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; color: var(--text); }
+.card:hover { border-color: var(--accent); text-decoration: none; }
+.card h3 { margin: 0; font-size: 22px; }
+.card .meta { color: var(--dim); font-family: var(--mono); font-size: 12px; margin: 2px 0 12px; }
+.card .pct { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 13px; color: var(--dim); margin-top: 8px; }
+.label { font-weight: 600; margin: 20px 0 6px; }
+.label small { color: var(--dim); font-weight: 400; }
+.commit { font-family: var(--mono); font-size: 13px; color: var(--dim); background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 8px 12px; margin-top: 6px; overflow-wrap: anywhere; }
+.nav { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 12px; }
+.nav button { background: var(--bg); color: var(--text); border: 1px solid var(--line); padding: 12px; font: inherit; cursor: pointer; }
+.nav button:first-child { border-radius: 6px 0 0 6px; }
+.nav button:last-child { border-radius: 0 6px 6px 0; background: #1d4060; border-color: #1d4060; }
+.nav button:disabled { color: var(--dim); cursor: default; opacity: .6; }
+.controls { display: flex; gap: 8px; margin: 24px 0 12px; flex-wrap: wrap; }
+select, input { background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; font: inherit; min-width: 0; }
+select { flex: 1 1 200px; }
+input { flex: 2 1 240px; }
+.map { position: relative; }
+canvas { display: block; width: 100%; height: min(70vh, 560px); background: var(--grey); border-radius: 4px; cursor: pointer; }
+.tip { position: absolute; pointer-events: none; background: #f2f3f5; color: #111; font: 12px var(--mono); padding: 3px 8px; border-radius: 4px; white-space: nowrap; display: none; }
+.detail { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px; margin-top: 12px; font-family: var(--mono); font-size: 13px; overflow-wrap: anywhere; }
+code { color: var(--accent2); font-family: var(--mono); }
+.table { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-family: var(--mono); font-size: 13px; }
+td, th { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th { color: var(--dim); font-weight: 400; }
+.legend { display: flex; gap: 16px; color: var(--dim); font-size: 13px; margin-top: 8px; flex-wrap: wrap; }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; }
+.foot { font-family: var(--mono); color: var(--dim); font-size: 13px; margin-top: 32px; }
+.back { font-family: var(--mono); font-size: 14px; }
+</style>
+</head>
+<body>
+<main id="app">Loading…</main>
+<script>
+const REPO = "https://github.com/colingsnyder2-ux/RoConstruct";
+const app = document.getElementById("app");
+const fmt = n => n.toLocaleString("en-US");
+const pct = (a, b) => b ? (100 * a / b).toFixed(2) + "%" : "0.00%";
+const mb = n => (n / 1048576).toFixed(2) + " MB";
+const hex = n => n.toString(16).padStart(8, "0");
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
+const cache = new Map();
+let progress, history = [], hIdx = -1;
+
+// Stats for a client at the selected history snapshot (latest = progress.json).
+function statsFor(c) {
+  const snap = history[hIdx];
+  return hIdx === history.length - 1 || !snap ? c : {...c, ...(snap.clients[c.name] || {})};
+}
+
+function bar(m, p, total, cls = "") {
+  return `<div class="bar ${cls}"><i class="m" style="width:${100 * m / total || 0}%"></i>` +
+         `<i class="p" style="width:${100 * p / total || 0}%"></i></div>`;
+}
+
+function historyNav() {
+  if (!history.length) return "";
+  const s = history[hIdx];
+  const commit = s.commit ? `<a href="${REPO}/commit/${esc(s.commit)}">${esc(s.commit)}</a> | ${esc(s.subject)}` : "no commit";
+  return `<div class="label">Commit <small>(${hIdx + 1} of ${history.length}, ${esc(s.date)})</small></div>
+    <div class="commit">${commit}</div>
+    <div class="nav"><button data-h="-1" ${hIdx ? "" : "disabled"}>‹ Previous</button>
+      <button data-h="1" ${hIdx < history.length - 1 ? "" : "disabled"}>Next ›</button>
+      <button data-h="latest">Latest</button></div>`;
+}
+
+function wireNav() {
+  app.querySelectorAll("[data-h]").forEach(b => b.onclick = () => {
+    hIdx = b.dataset.h === "latest" ? history.length - 1 : hIdx + +b.dataset.h;
+    route(false);
+  });
+}
+
+function overview() {
+  const started = progress.clients.filter(c => c.started).map(statsFor);
+  const sum = k => started.reduce((a, c) => a + c[k], 0);
+  const funcs = sum("functions"), matched = sum("matched"), bytes = sum("bytes"), mbytes = sum("matched_bytes");
+  app.innerHTML = `
+    <h1>Roblox</h1>
+    <p class="sub">Client Decompilation Progress — <a href="${REPO}">github</a></p>
+    <div class="stats">
+      <div class="stat"><b>${fmt(matched)}</b><span>Functions matched</span></div>
+      <div class="stat"><b>${fmt(funcs - matched)}</b><span>Remaining</span></div>
+    </div>
+    <div class="stats"><div class="stat"><b>${pct(mbytes, bytes)}</b><span>Complete</span></div></div>
+    ${bar(mbytes, 0, bytes)}
+    ${historyNav()}
+    <h2>Clients</h2>
+    <div class="cards">${progress.clients.map(statsFor).map(c => `
+      <a class="card" href="#${esc(c.name)}">
+        <h3>${esc(c.name)}</h3>
+        <div class="meta">${esc(c.compiler)}</div>
+        ${c.started ? bar(c.matched_bytes, 0, c.bytes) +
+          `<div class="pct"><span>${fmt(c.matched)} / ${fmt(c.functions)}</span><span>${pct(c.matched_bytes, c.bytes)}</span></div>`
+          : `<div class="pct"><span>not started</span></div>`}
+      </a>`).join("")}
+    </div>
+    ${leaderboard()}
+    <p class="foot">Matched = compiles byte-identical with the original MSVC. Compiler-generated stubs are not counted.
+      Last updated: ${esc(progress.updated)}</p>`;
+  wireNav();
+}
+
+function leaderboard() {
+  const all = progress.leaderboard || [];
+  const bot = all.find(r => r.user === "auto");
+  const rows = all.filter(r => r.user !== "auto");
+  if (!all.length) return "";
+  return `<h2>Top contributors</h2>
+    <div class="table"><table><thead><tr><th>#</th><th>User</th><th>Matched</th><th>Points</th><th>Submissions</th></tr></thead>
+    <tbody>${rows.slice(0, 20).map((r, i) => `<tr><td>${i + 1}</td><td>${esc(r.user)}</td><td>${fmt(r.matched)}</td>
+      <td>${fmt(r.points)}</td><td>${fmt(r.submissions)}</td></tr>`).join("")}</tbody></table></div>
+    <p class="foot">Points = total percentage improvement across all functions someone made better.
+      ${bot ? `${fmt(bot.matched)} trivial functions were matched automatically by pattern (not ranked).` : ""}</p>`;
+}
+
+// Squarified treemap: lays items ({v}) into rect, writes x,y,w,h onto each.
+function squarify(items, x, y, w, h) {
+  const total = items.reduce((a, it) => a + it.v, 0);
+  if (!total) return;
+  const scale = w * h / total;
+  let i = 0;
+  while (i < items.length) {
+    const side = Math.min(w, h);
+    let sum = 0, min = Infinity, max = 0, worst = Infinity, j = i;
+    while (j < items.length) {
+      const a = items[j].v * scale;
+      const s = sum + a, mn = Math.min(min, a), mx = Math.max(max, a);
+      const wst = Math.max(side * side * mx / (s * s), s * s / (side * side * mn));
+      if (j > i && wst > worst) break;
+      sum = s; min = mn; max = mx; worst = wst; j++;
+    }
+    const thick = sum / side;
+    let off = 0;
+    for (let k = i; k < j; k++) {
+      const len = items[k].v * scale / thick;
+      if (w >= h) Object.assign(items[k], {x: x, y: y + off, w: thick, h: len});
+      else Object.assign(items[k], {x: x + off, y: y, w: len, h: thick});
+      off += len;
+    }
+    if (w >= h) { x += thick; w -= thick; } else { y += thick; h -= thick; }
+    i = j;
+  }
+}
+
+// Filter tokens: <70% >1kb <200b, anything else matches address or unit name.
+function parseFilter(text, units) {
+  const tests = [];
+  for (const tok of text.toLowerCase().split(/\s+/).filter(Boolean)) {
+    const m = tok.match(/^([<>])(\d+(?:\.\d+)?)(%|kb|b)$/);
+    if (!m) {
+      const t = tok.replace(/^0x/, "");
+      tests.push(f => hex(f[0]).includes(t) || units[f[3]].toLowerCase().includes(tok));
+      continue;
+    }
+    const n = parseFloat(m[2]) * (m[3] === "kb" ? 1024 : 1);
+    const val = m[3] === "%" ? f => f[2] : f => f[1];
+    tests.push(m[1] === "<" ? f => val(f) < n : f => val(f) > n);
+  }
+  return f => tests.every(t => t(f));
+}
+
+function color(score) {
+  if (!score) return "#3a3d45";
+  if (score === 100) return "#3fb950";
+  const t = score / 100;  // partial: grey -> green
+  return `rgb(${58 + (40 - 58) * t | 0},${61 + (140 - 61) * t | 0},${69 + (60 - 69) * t | 0})`;
+}
+
+async function client(name) {
+  const latest = progress.clients.find(c => c.name === name);
+  if (!latest) return overview();
+  if (!latest.started) {
+    app.innerHTML = `<p class="back"><a href="#">← all clients</a></p><h1>${esc(name)}</h1>
+      <p class="sub">${esc(latest.compiler)} — not started. Run <code>roc analyze ${esc(name)}</code>.</p>`;
+    return;
+  }
+  const c = statsFor(latest);
+  if (!cache.has(name)) cache.set(name, await (await fetch(`data/${encodeURIComponent(name)}.json`)).json());
+  const data = cache.get(name), units = data.units;
+  const byUnit = new Map();
+  for (const f of data.funcs) {
+    if (!byUnit.has(f[3])) byUnit.set(f[3], []);
+    byUnit.get(f[3]).push(f);
+  }
+  const unitSize = u => byUnit.get(u).reduce((a, f) => a + f[1], 0);
+  const unitOrder = [...byUnit.keys()].sort((a, b) => unitSize(b) - unitSize(a));
+  app.innerHTML = `
+    <p class="back"><a href="#">← all clients</a></p>
+    <h1>${esc(name)}</h1>
+    <p class="sub">${esc(latest.compiler)} · ${fmt(latest.classes || 0)} classes · ${fmt(latest.generated || 0)} compiler stubs skipped</p>
+    <div class="stats">
+      <div class="stat"><b>${fmt(c.matched)}</b><span>Matched</span></div>
+      <div class="stat"><b>${fmt(c.partial)}</b><span>Partial</span></div>
+      <div class="stat"><b>${fmt(c.functions - c.matched)}</b><span>Remaining</span></div>
+    </div>
+    <div class="label">Code <small>(${mb(c.bytes)}) — ${pct(c.matched_bytes, c.bytes)}</small></div>
+    ${bar(c.matched_bytes, 0, c.bytes, "g")}
+    <div class="label">Data <small>(${mb(latest.data_bytes || 0)}) — not tracked yet</small></div>
+    ${bar(0, 0, 1, "b")}
+    ${historyNav()}
+    <div class="label">Units <small>(${fmt(units.length)}; map always shows latest)</small></div>
+    <div class="controls">
+      <select id="unit"><option value="">All</option>${unitOrder.map(u =>
+        `<option value="${u}">${esc(units[u])}</option>`).join("")}</select>
+      <input id="filter" placeholder="Filter, e.g.: 'Instance <70% >1kb'">
+    </div>
+    <div class="map"><canvas id="cv"></canvas><div class="tip" id="tip"></div></div>
+    <div class="legend"><span><i style="background:#3fb950"></i>matched</span>
+      <span><i style="background:rgb(49,100,64)"></i>partial</span><span><i style="background:#3a3d45"></i>not matched</span></div>
+    <div class="detail" id="detail">Click a box for details.</div>
+    <h2>Easiest remaining</h2>
+    <div class="table"><table><thead><tr><th>Address</th><th>Size</th><th>Score</th><th>Unit</th><th>Claim</th></tr></thead>
+      <tbody id="easy"></tbody></table></div>
+    <p class="foot">Last updated: ${esc(progress.updated)}</p>`;
+  wireNav();
+
+  const cv = document.getElementById("cv"), tip = document.getElementById("tip");
+  const unitSel = document.getElementById("unit"), filter = document.getElementById("filter");
+  let boxes = [], frames = [], keep = () => true;
+
+  function layout() {
+    const r = cv.getBoundingClientRect(), dpr = devicePixelRatio || 1;
+    cv.width = r.width * dpr; cv.height = r.height * dpr;
+    const pick = unitSel.value ? [+unitSel.value] : unitOrder;
+    frames = pick.map(u => ({u, v: unitSize(u)}));
+    squarify(frames, 0, 0, r.width, r.height);
+    boxes = [];
+    for (const fr of frames) {
+      const items = byUnit.get(fr.u).map(f => ({f, v: f[1]})).sort((a, b) => b.v - a.v);
+      squarify(items, fr.x + 1, fr.y + 1, Math.max(fr.w - 2, 0), Math.max(fr.h - 2, 0));
+      boxes.push(...items);
+    }
+    draw();
+  }
+
+  function draw() {
+    const g = cv.getContext("2d"), dpr = devicePixelRatio || 1;
+    g.setTransform(dpr, 0, 0, dpr, 0, 0);
+    g.fillStyle = "#1d1f24"; g.fillRect(0, 0, cv.width, cv.height);
+    for (const b of boxes) {
+      g.globalAlpha = keep(b.f) ? 1 : 0.2;
+      g.fillStyle = color(b.f[2]);
+      g.fillRect(b.x, b.y, b.w, b.h);
+      if (b.w > 4 && b.h > 4) { g.strokeStyle = "#2a2c33"; g.lineWidth = 0.5; g.strokeRect(b.x, b.y, b.w, b.h); }
+    }
+    g.globalAlpha = 1;
+    for (const fr of frames) { g.strokeStyle = "#16181d"; g.lineWidth = 2; g.strokeRect(fr.x, fr.y, fr.w, fr.h); }
+  }
+
+  const hit = e => {
+    const r = cv.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+    return {x, y, b: boxes.find(b => x >= b.x && x < b.x + b.w && y >= b.y && y < b.y + b.h)};
+  };
+  cv.onmousemove = e => {
+    const {x, y, b} = hit(e);
+    if (!b) { tip.style.display = "none"; return; }
+    tip.textContent = `${units[b.f[3]]}/${hex(b.f[0])} • ${fmt(b.f[1])} B • ${b.f[2]}%`;
+    tip.style.display = "block";
+    tip.style.left = Math.max(0, Math.min(x + 12, cv.clientWidth - tip.offsetWidth)) + "px";
+    tip.style.top = (y + 16) + "px";
+  };
+  cv.onmouseleave = () => { tip.style.display = "none"; };
+  cv.onclick = e => {
+    const {b} = hit(e);
+    if (!b) return;
+    const f = b.f;
+    document.getElementById("detail").innerHTML =
+      `${esc(units[f[3]])} / ${hex(f[0])} • ${fmt(f[1])} bytes • ${f[2]}% matched<br>` +
+      `Work on it: <code>roc claim ${esc(name)} ${hex(f[0])}</code>`;
+  };
+  unitSel.onchange = layout;
+  filter.oninput = () => { keep = parseFilter(filter.value, units); draw(); };
+  onresize = layout;
+  layout();
+
+  const easy = data.funcs.filter(f => f[2] < 100).sort((a, b) => a[1] - b[1] || b[2] - a[2]).slice(0, 25);
+  document.getElementById("easy").innerHTML = easy.map(f =>
+    `<tr><td>${hex(f[0])}</td><td>${f[1]} B</td><td>${f[2]}%</td><td>${esc(units[f[3]])}</td>` +
+    `<td><code>roc claim ${esc(name)} ${hex(f[0])}</code></td></tr>`).join("");
+}
+
+function route(top = true) {
+  onresize = null;
+  const name = decodeURIComponent(location.hash.slice(1));
+  name ? client(name) : overview();
+  if (top) scrollTo(0, 0);
+}
+
+Promise.all([
+  fetch("progress.json").then(r => r.json()),
+  fetch("history.json").then(r => r.ok ? r.json() : []).catch(() => []),
+]).then(([p, h]) => {
+  progress = p; history = h; hIdx = h.length - 1;
+  route();
+  addEventListener("hashchange", () => route());
+}).catch(() => { app.textContent = "progress.json missing: run `roc progress`."; });
+</script>
+</body>
+</html>

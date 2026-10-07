@@ -1,0 +1,58 @@
+{
+ "updated": "2026-10-07 02:22 UTC",
+ "clients": [
+  {
+   "name": "2007M",
+   "compiler": "VS2005 (cl 14.00.50727)",
+   "started": true,
+   "functions": 23544,
+   "matched": 623,
+   "partial": 0,
+   "bytes": 3173067,
+   "matched_bytes": 3937,
+   "data_bytes": 1364182,
+   "classes": 1390,
+   "generated": 13691
+  },
+  {
+   "name": "2008M",
+   "compiler": "VS2008 RTM (cl 15.00.21022)",
+   "started": true,
+   "functions": 24723,
+   "matched": 698,
+   "partial": 1,
+   "bytes": 3516063,
+   "matched_bytes": 4540,
+   "data_bytes": 1559926,
+   "classes": 1488,
+   "generated": 17490
+  },
+  {
+   "name": "2009E",
+   "compiler": "VS2008 SP1 (cl 15.00.30729)",
+   "started": true,
+   "functions": 27634,
+   "matched": 895,
+   "partial": 1,
+   "bytes": 3939843,
+   "matched_bytes": 4233,
+   "data_bytes": 1746194,
+   "classes": 1582,
+   "generated": 17529
+  },
+  {
+   "name": "2010L",
+   "compiler": "VS2008 RTM (cl 15.00.21022)",
+   "started": true,
+   "functions": 37067,
+   "matched": 1194,
+   "partial": 0,
+   "bytes": 5388999,
+   "matched_bytes": 5269,
+   "data_bytes": 2649070,
+   "classes": 2089,
+   "generated": 23283
+  }
+ ],
+ "leaderboard": []
+}

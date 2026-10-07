@@ -1,0 +1,31 @@
+@echo off
+setlocal
+cd /d "%~dp0"
+title RoConstruct setup
+
+rem RoConstruct needs Python 3.12 (3.13 removed msilib, used to unpack the compilers).
+py -3.12 -c "import sys" >nul 2>nul
+if errorlevel 1 (
+  echo Python 3.12 not found. Installing it with winget...
+  where winget >nul 2>nul || (
+    echo winget is missing. Install "App Installer" from the Microsoft Store, or Python 3.12 from python.org, then run this again.
+    pause & exit /b 1
+  )
+  winget install --id Python.Python.3.12 -e --scope user --accept-package-agreements --accept-source-agreements
+  py -3.12 -c "import sys" >nul 2>nul || (
+    echo.
+    echo Python was installed. Close this window and double-click install.cmd again.
+    pause & exit /b 0
+  )
+)
+
+echo Installing Python packages...
+py -3.12 -m pip install --user -q --disable-pip-version-check pefile capstone || (
+  echo pip failed. Check your internet connection and run this again.
+  pause & exit /b 1
+)
+
+py -3.12 roc.py install
+echo.
+echo Done. Put your client exe in clients\^<name^>\ and double-click roc.cmd.
+pause
