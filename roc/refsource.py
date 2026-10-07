@@ -374,6 +374,13 @@ def prompt_hints(unit, limit=3, max_chars=1800, target_facts=None):
     Keep snippets bounded: source names help the model, while whole files waste
     context and hide the target assembly.
     """
+    strings = tuple(sorted((target_facts or {}).get("strings", [])))
+    return _prompt_hints_cached(unit, limit, max_chars, strings)
+
+
+@functools.lru_cache(maxsize=2048)
+def _prompt_hints_cached(unit, limit=3, max_chars=1800, wanted_strings=()):
+    """Cached prompt lookup; workers often revisit the same unit across retries."""
     out = []
     if not unit or unit.startswith("seg_"):
         return []
@@ -382,7 +389,7 @@ def prompt_hints(unit, limit=3, max_chars=1800, target_facts=None):
     except SystemExit:
         return []
     wanted = set(identifiers(unit))
-    wanted_strings = set((target_facts or {}).get("strings", []))
+    wanted_strings = set(wanted_strings)
     for score, rel, text in rows:
         text = text.strip()
         if not text:
