@@ -294,6 +294,16 @@ RECIPES["rbxgs-view"] = dict(src=_RBXGS + "RbxView", langs=["cpp"], files="*.cpp
                              grid=_RBXGS_GRID, include=_RBXGS_VIEW_INC, defines=_RBXGS_DEF)
 RECIPES["rbxgs-render"] = dict(src=_RBXGS + "Rendering/RenderLib", langs=["cpp"], files="*.cpp",
                                grid=_RBXGS_GRID, include=_RBXGS_VIEW_INC, defines=_RBXGS_DEF)
+# RBXGSdecomp's own g3d fork: the exact G3D the RBXGS build linked (patched by Roblox),
+# which may byte-match where generic g3d-6.09 does not. G3D is float-heavy -> SSE2 grid.
+_RBXGS_G3D = _RBXGS + "Rendering/g3d/"
+_RBXGS_G3D_INC = [_RBXGS_G3D + d for d in ("include", "zlib", "png", "IJG", "boost")] + \
+                 [_RBXGS + "Rendering/SDL-1.2.6/include", "WINSDK"]
+_RBXGS_G3D_GRID = ["/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /arch:SSE2 /fp:fast",
+                   "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD", "/O2 /GS- /EHsc /MD /arch:SSE2 /fp:fast",
+                   "/O2 /GS- /EHsc /MD"]
+RECIPES["rbxgs-g3d"] = dict(src=_RBXGS_G3D.rstrip("/"), langs=["cpp"], files="G3Dcpp/*.cpp GLG3Dcpp/*.cpp",
+                            grid=_RBXGS_G3D_GRID, include=_RBXGS_G3D_INC, defines=_RBXGS_DEF)
 
 # Exact CRT/STL objects from each installed compiler. Fingerprint archive members directly.
 RECIPES["msvc-crt"] = dict(archive=True, builds=[50727, 21022, 30729],
