@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-07 19:12 UTC",
+ "updated": "2026-10-07 19:38 UTC",
  "clients": [
   {
    "name": "2007-08",
@@ -7,10 +7,10 @@
    "built": "2007-08-19",
    "started": true,
    "functions": 19998,
-   "matched": 5437,
+   "matched": 5470,
    "partial": 17,
    "bytes": 3009279,
-   "matched_bytes": 396945,
+   "matched_bytes": 399210,
    "data_bytes": 1361658,
    "leaderboard": [
     {
@@ -35,7 +35,7 @@
      "last": 1791352017.9738536
     }
    ],
-   "data_matched_bytes": 30080,
+   "data_matched_bytes": 30088,
    "classes": 1391,
    "generated": 16973
   },
@@ -45,10 +45,10 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22296,
-   "matched": 6480,
+   "matched": 6529,
    "partial": 0,
    "bytes": 3448631,
-   "matched_bytes": 554249,
+   "matched_bytes": 558624,
    "data_bytes": 1559926,
    "leaderboard": [
     {
@@ -66,7 +66,7 @@
      "last": 1791342981.986327
     }
    ],
-   "data_matched_bytes": 47826,
+   "data_matched_bytes": 47836,
    "classes": 1488,
    "generated": 19917
   },
@@ -76,10 +76,10 @@
    "built": "2009-06-16",
    "started": true,
    "functions": 26156,
-   "matched": 5758,
+   "matched": 5829,
    "partial": 0,
    "bytes": 3981050,
-   "matched_bytes": 412592,
+   "matched_bytes": 422016,
    "data_bytes": 1809822,
    "leaderboard": [
     {
@@ -90,7 +90,7 @@
      "last": 1791398638.294146
     }
    ],
-   "data_matched_bytes": 20290,
+   "data_matched_bytes": 20317,
    "classes": 1624,
    "generated": 20922
   },
@@ -100,10 +100,10 @@
    "built": "2010-06-18",
    "started": true,
    "functions": 32947,
-   "matched": 7981,
+   "matched": 8051,
    "partial": 7,
    "bytes": 5116758,
-   "matched_bytes": 546616,
+   "matched_bytes": 556021,
    "data_bytes": 2369604,
    "leaderboard": [
     {
@@ -121,7 +121,7 @@
      "last": 1791350944.373746
     }
    ],
-   "data_matched_bytes": 38071,
+   "data_matched_bytes": 38098,
    "classes": 2012,
    "generated": 26137
   },
@@ -131,10 +131,10 @@
    "built": "2011-06-24",
    "started": true,
    "functions": 36419,
-   "matched": 6629,
+   "matched": 6814,
    "partial": 0,
    "bytes": 5337037,
-   "matched_bytes": 306415,
+   "matched_bytes": 330826,
    "data_bytes": 3009972,
    "leaderboard": [
     {
@@ -145,7 +145,7 @@
      "last": 1791400355.652591
     }
    ],
-   "data_matched_bytes": 26912,
+   "data_matched_bytes": 27087,
    "classes": 2230,
    "generated": 28151
   },
@@ -155,10 +155,10 @@
    "built": "2012-06-13",
    "started": true,
    "functions": 39811,
-   "matched": 7935,
+   "matched": 8253,
    "partial": 0,
    "bytes": 6234528,
-   "matched_bytes": 329283,
+   "matched_bytes": 368500,
    "data_bytes": 3396596,
    "leaderboard": [
     {
@@ -169,7 +169,7 @@
      "last": 1791398693.5159655
     }
    ],
-   "data_matched_bytes": 27052,
+   "data_matched_bytes": 27273,
    "classes": 2176,
    "generated": 30232
   }
