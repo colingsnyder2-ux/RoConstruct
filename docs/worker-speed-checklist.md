@@ -30,3 +30,9 @@ Goal: increase functions/hour and reduce GPU/CPU time without lowering match qua
 
 - [x] Update README with speed controls and measured baseline.
 - [x] Commit speed changes separately (`dfd2be8e`, `7a2a37fb`).
+
+## Current measured tradeoff
+
+- 7B: 17 jobs, 1 match, 8.4 seconds/job, 2.4 GPU minutes/match.
+- 14B: 18 jobs, 2 matches, 28.8 seconds/job, 4.3 GPU minutes/match.
+- Routing keeps larger-model quality where telemetry supports it; `--workers auto` stays conservative.
