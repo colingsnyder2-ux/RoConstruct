@@ -6,6 +6,7 @@ and unpacked into tools/ instead of being installed.
 """
 import functools
 import hashlib
+import json
 import os
 import re
 import shutil
@@ -34,6 +35,93 @@ VS2005_URL = "https://archive.org/download/MS_VisualCPPExpress-2005/Micorosft_Vi
 VS2005_SHA1 = "1ae44e4eaf8c61c3a39e573fd6efd9889e940529"
 OPTIONAL = [("Ollama (AI drafts, needs a decent GPU)", "Ollama.Ollama", "ollama"),
             ("Docker Desktop (Rev.ng hints)", "Docker.DockerDesktop", "docker")]
+
+# winget installs these under LOCALAPPDATA and appends them to the *user* PATH in the
+# registry. The process running install.cmd already has its PATH, so which() cannot
+# see them until we re-read it. That mismatch is why a fresh install looked like it
+# had failed and asked again on every run.
+EXTRA_PATHS = [LOCAL / r"Programs\Ollama",
+               LOCAL / r"Microsoft\WinGet\Links",
+               LOCAL / r"Programs\Docker\Docker\resources\bin",
+               Path(r"C:\Program Files\Docker\Docker\resources\bin"),
+               LOCAL / r"Programs\Python\Python312\Scripts"]
+OLLAMA_API = "http://127.0.0.1:11434/api/tags"
+
+
+def refresh_path():
+    """Re-read PATH from the registry and add the usual install dirs.
+
+    winget does not update the PATH of the process that started it, so a program it
+    just installed stays invisible to shutil.which until this runs. That mismatch is
+    why a fresh install looked broken and offered to install Ollama again every time.
+    """
+    import winreg
+    parts = []
+    for hive, key in ((winreg.HKEY_CURRENT_USER, "Environment"),
+                      (winreg.HKEY_LOCAL_MACHINE,
+                       r"SYSTEM\CurrentControlSet\Control\Session Manager\Environment")):
+        try:
+            with winreg.OpenKey(hive, key) as k:
+                value, _ = winreg.QueryValueEx(k, "PATH")
+                if value:
+                    parts.append(value)
+        except OSError:
+            pass
+    merged = os.pathsep.join(parts + [str(p) for p in EXTRA_PATHS if p.is_dir()])
+    os.environ["PATH"] = merged + os.pathsep + os.environ.get("PATH", "")
+    return os.environ["PATH"]
+
+
+def find_exe(name):
+    """Locate a program on PATH, in the registry PATH, or in a known install dir."""
+    found = shutil.which(name)
+    if found:
+        return found
+    for folder in EXTRA_PATHS:
+        candidate = folder / (name + ".exe")
+        if candidate.is_file():
+            return str(candidate)
+    for var in ("ProgramFiles", "ProgramFiles(x86)", "LOCALAPPDATA"):
+        base = os.environ.get(var)
+        if not base:
+            continue
+        for pattern in (r"Programs\Ollama", r"Ollama", r"Docker\Docker\resources\bin"):
+            candidate = Path(base) / pattern / (name + ".exe")
+            if candidate.is_file():
+                return str(candidate)
+    return None
+
+
+def wait_for_http(url, timeout=60, interval=2):
+    """Poll until the endpoint answers. True if it came up in time."""
+    deadline = time.time() + timeout
+    while time.time() < deadline:
+        try:
+            with urllib.request.urlopen(url, timeout=4):
+                return True
+        except OSError:
+            time.sleep(interval)
+    return False
+
+
+def start_ollama(exe):
+    """Bring the Ollama server up if the installer did not start it."""
+    print("Starting the Ollama server...")
+    subprocess.Popen([exe, "serve"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                     creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
+    return wait_for_http(OLLAMA_API, timeout=90)
+
+
+def ensure_ollama(exe):
+    """Ollama is only usable once its HTTP API answers: start it if needed, then report."""
+    if not wait_for_http(OLLAMA_API, timeout=3, interval=1) and not start_ollama(exe):
+        raise SystemExit("Ollama is installed but its server did not start.\n"
+                         "Start it from the Start menu, then run this again.")
+    try:
+        with urllib.request.urlopen(OLLAMA_API, timeout=15) as r:
+            return json.loads(r.read()).get("models", [])
+    except (OSError, ValueError):
+        return []
 
 
 def cl_env(cl):
@@ -280,13 +368,45 @@ def install(ask=input, only=None):
             except SystemExit as error:  # one failed download must not stop the others
                 print(error)
             compilers.cache_clear()
-    if shutil.which("winget"):
-        for label, package, exe in OPTIONAL:
-            if not shutil.which(exe) and ask("Install %s? [y/N] " % label).strip().lower().startswith("y"):
-                subprocess.run(["winget", "install", "--id", package, "-e",
-                                "--accept-package-agreements", "--accept-source-agreements"])
+    refresh_path()
+    optional(ask)
     if not report():
         raise SystemExit(1)
+
+
+def optional(ask):
+    """Install Ollama and Docker if they are missing, then prove they actually work.
+
+    Detection is by resolved path, not shutil.which: winget appends to the registry
+    PATH and the running process never sees it. After installing we start Ollama's
+    server if it is not listening yet, because "installed" and "answering API calls"
+    are different states and only the second one lets the worker draft sources."""
+    if not shutil.which("winget"):
+        print("\nwinget is missing, so Ollama and Docker must be installed by hand.")
+        return
+    for label, package, exe in OPTIONAL:
+        if find_exe(exe):
+            continue
+        if not ask("Install %s? [y/N] " % label).strip().lower().startswith("y"):
+            continue
+        print("Installing %s..." % label.split(" (")[0])
+        subprocess.run(["winget", "install", "--id", package, "-e", "--silent",
+                        "--accept-package-agreements", "--accept-source-agreements"])
+        refresh_path()
+        found = find_exe(exe)
+        if not found:
+            print("  %s still not found. Restart Windows and run this again." % exe)
+            continue
+        if exe == "ollama":
+            try:
+                models = ensure_ollama(found)
+            except SystemExit as error:
+                print("  %s" % error)
+                continue
+            print("  Ollama is installed and running (%d model(s))." % len(models))
+            if not models:
+                print("  No models yet. Pull one to let the worker draft sources:")
+                print("    ollama pull qwen2.5-coder:7b")
 
 
 def report():
@@ -297,7 +417,15 @@ def report():
         build = entry.get("compiler_build")
         print("  %-6s %-28s %s" % (name, entry.get("compiler"), "ready" if build in have else "MISSING (roc install)"))
     model = draft.pick_model()
-    print("AI drafts (Ollama):", model or "not available (optional: install Ollama, then  ollama pull qwen2.5-coder:7b)")
+    if model:
+        print("AI drafts (Ollama): ready, %s" % model)
+    elif not find_exe("ollama"):
+        print("AI drafts (Ollama): not installed (optional: run  roc install)")
+    elif not wait_for_http(OLLAMA_API, timeout=5, interval=1):
+        print("AI drafts (Ollama): installed but not running.")
+        print("  Start it from the Start menu, or run:  ollama serve")
+    else:
+        print("AI drafts (Ollama): running, but no model. Run:  ollama pull qwen2.5-coder:7b")
     print("Rev.ng hints (Docker):", "ready" if draft.revng_available() else
           "not available (optional: Docker Desktop, then  docker pull revng/revng)")
     return all(e.get("compiler_build") in have for e in clients.load().values())

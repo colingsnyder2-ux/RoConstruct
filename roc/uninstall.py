@@ -98,12 +98,16 @@ class Console:
 
 
 def which(name):
-    return shutil.which(name)
+    """Resolve a program the same way install.cmd does, so a program winget installed
+    into the registry PATH is still found by the uninstaller."""
+    from roc import setup
+    setup.refresh_path()
+    return setup.find_exe(name)
 
 
 def python_312():
     """True if the py launcher can start 3.12, the interpreter install.cmd installs."""
-    if os.name != "nt" or not which("py"):
+    if os.name != "nt" or not shutil.which("py"):
         return False
     try:
         done = subprocess.run(["py", "-3.12", "-c", "import sys"], capture_output=True, timeout=30)
@@ -260,22 +264,25 @@ def run(assume_yes=False):
             continue
 
         if kind == "model":
+            ollama = which("ollama")
             print("\n%s:" % label)
             print("   Your other Ollama models are not touched.")
             for name, model_size in items:
-                if console.ask("   Remove model %s (%s)?" % (name, model_size)):
-                    if console.run(name, ["ollama", "rm", name]):
-                        console.removed.append("model %s (%s)" % (name, model_size))
-                    else:
-                        print("   could not remove %s" % name)
+                if not console.ask("   Remove model %s (%s)?" % (name, model_size)):
+                    continue
+                if ollama and console.run(name, [ollama, "rm", name]):
+                    console.removed.append("model %s (%s)" % (name, model_size))
+                else:
+                    print("   could not remove %s" % name)
             continue
 
         if kind == "docker":
-            images = console.run("docker images", ["docker", "images", "--format", "{{.Repository}}:{{.Tag}}"])
-            del images  # presence of docker is enough; the pull is explicit below
+            docker = which("docker")
             if console.ask("Remove the %s image?" % REVNG_IMAGE):
-                if console.run(REVNG_IMAGE, ["docker", "rmi", REVNG_IMAGE]):
+                if docker and console.run(REVNG_IMAGE, [docker, "rmi", REVNG_IMAGE]):
                     console.removed.append("docker image %s" % REVNG_IMAGE)
+                else:
+                    print("   could not remove %s" % REVNG_IMAGE)
             else:
                 console.kept.append("docker image %s" % REVNG_IMAGE)
             continue

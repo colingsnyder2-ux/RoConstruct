@@ -325,9 +325,13 @@ def start_tunnel(port, log=print):
 
 def publish_once(store, public_url, log=print):
     """Rebuild docs/ from the live database and push it, if anything changed."""
-    from roc import progress
+    from roc import progress, setup
     progress.build(public_server=public_url, remote=export(store))
-    git = lambda *a: subprocess.run(["git", *a], cwd=ROOT, capture_output=True, text=True)
+    setup.refresh_path()
+    git_exe = setup.find_exe("git")
+    if not git_exe:
+        return log("git not found, so the site was not published. docs/ is updated locally.")
+    git = lambda *a: subprocess.run([git_exe, *a], cwd=ROOT, capture_output=True, text=True)
     git("add", "docs")
     if git("diff", "--cached", "--quiet").returncode == 0:
         return log("Site unchanged.")

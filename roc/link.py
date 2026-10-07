@@ -132,18 +132,26 @@ def run(url):
 
 
 def ensure_model():
-    import shutil
+    """Ollama plus one model, installed on demand. Called from a link click, where the
+    user has just installed software, so PATH can be stale: resolve the exe, not which()."""
     import subprocess
-    from roc import draft
-    if not shutil.which("ollama"):
+    from roc import draft, setup
+    exe = setup.find_exe("ollama")
+    if not exe:
         if input("AI workers need Ollama (free). Install it now? [Y/n] ").strip().lower() in ("", "y", "yes"):
-            subprocess.run(["winget", "install", "--id", "Ollama.Ollama", "-e",
+            subprocess.run(["winget", "install", "--id", "Ollama.Ollama", "-e", "--silent",
                             "--accept-package-agreements", "--accept-source-agreements"])
-        if not shutil.which("ollama"):
-            raise SystemExit("Ollama is installed: close this window and click the link again.")
+        setup.refresh_path()
+        exe = setup.find_exe("ollama")
+        if not exe:
+            raise SystemExit("Ollama was not found. Restart Windows, then click the link again.")
     if not draft.ollama_models():
-        subprocess.Popen(["ollama", "serve"], creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
-        time.sleep(3)
+        print("Starting the Ollama server...")
+        subprocess.Popen([exe, "serve"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                         creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
+        if not setup.wait_for_http(setup.OLLAMA_API, timeout=90):
+            raise SystemExit("Ollama is installed but its server did not start.\n"
+                             "Start it from the Start menu, then click the link again.")
     if not draft.pick_model():
         print("Downloading the AI model qwen2.5-coder:7b (about 4.7 GB, one time)...")
-        subprocess.run(["ollama", "pull", "qwen2.5-coder:7b"], check=True)
+        subprocess.run([exe, "pull", "qwen2.5-coder:7b"], check=True)

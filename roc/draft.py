@@ -33,10 +33,22 @@ def mini_elf(code, va):
     return head + b"\0" * (0x1000 - len(head)) + b"\0" * pad + code
 
 
+def _docker():
+    """Docker's path. winget puts it outside the running process's PATH, so which()
+    alone reports a freshly installed Docker Desktop as missing."""
+    from roc import setup
+    setup.refresh_path()
+    return setup.find_exe("docker")
+
+
 def revng_available():
-    if not shutil.which("docker"):
+    docker = _docker()
+    if not docker:
         return False
-    run = subprocess.run(["docker", "image", "inspect", REVNG_IMAGE], capture_output=True)
+    try:
+        run = subprocess.run([docker, "image", "inspect", REVNG_IMAGE], capture_output=True, timeout=30)
+    except (OSError, subprocess.TimeoutExpired):
+        return False
     return run.returncode == 0
 
 
@@ -44,12 +56,15 @@ def revng_c(code, va, timeout=300):
     """Rev.ng's C for one function, or None. Types are generic; it is a hint."""
     with tempfile.TemporaryDirectory() as tmp:
         Path(tmp, "f.elf").write_bytes(mini_elf(code, va))
+        docker = _docker()
+        if not docker:
+            return None
         try:
             run = subprocess.run(
-                ["docker", "run", "--rm", "-v", "%s:/w" % tmp, REVNG_IMAGE, "bash", "-lc",
+                [docker, "run", "--rm", "-v", "%s:/w" % tmp, REVNG_IMAGE, "bash", "-lc",
                  "cd /w && revng quick artifact emit-c-as-single-file f.elf"],
                 capture_output=True, text=True, timeout=timeout)
-        except subprocess.TimeoutExpired:
+        except (OSError, subprocess.TimeoutExpired):
             return None
     if run.returncode or "function_0x" not in run.stdout:
         return None
