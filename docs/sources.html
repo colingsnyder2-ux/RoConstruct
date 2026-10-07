@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RoConstruct Sources</title>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0e15; --panel: #0f1520; --panel2: #121a27; --line: #1b2a45; --line2: #2a4372;
+  --text: #e8eef6; --dim: #8a97a8; --accent: #2f6bff; --accent2: #38c8ff; --glow: rgba(47, 107, 255, .35); --cyan: #33d6ea;
+  --green: #3fb950; --amber: #d8a63a; --red: #e5534b; --grey: #3a3d45;
+  --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  --head: "Chakra Petch", "Segoe UI", sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; color: var(--text); font: 15px/1.6 Inter, system-ui, "Segoe UI", sans-serif;
+  background: var(--bg) radial-gradient(1200px 600px at 50% -10%, rgba(47, 107, 255, .22), transparent 60%) no-repeat; min-height: 100vh; }
+a { color: var(--accent2); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap { max-width: 1000px; margin: 0 auto; padding: 0 16px; }
+code { color: var(--accent2); font-family: var(--mono); font-size: .9em; }
+.top { box-shadow: 0 0 27px rgba(47,107,255,.10), inset 0 0 10px rgba(56,200,255,.02); display: flex; align-items: center; gap: 6px; margin: 8px auto 0; padding: 10px 18px; border: 1px solid var(--line); border-radius: 12px; background: rgba(15,21,32,.85); backdrop-filter: blur(6px); position: sticky; top: 8px; z-index: 5; }
+.top .brand img { height: 26px; display: block; }
+.top nav { display: flex; gap: 5px; flex: 1 1 auto; justify-content: flex-end; white-space: nowrap; }
+.top nav a { color: var(--dim); padding: 6px 8px; font-size: 13px; border-bottom: 2px solid transparent; }
+.top nav a:hover { color: var(--text); text-decoration: none; }
+.top nav a.on { color: var(--text); border-bottom-color: var(--accent2); }
+.hero { text-align: center; padding: 34px 0 6px; }
+.hero h1 { font: 700 clamp(26px,5vw,38px) var(--head); letter-spacing: .04em; margin: 0 0 6px; }
+.lede { color: #b7c2d0; max-width: 620px; margin: 0 auto 10px; }
+h2 { font: 700 20px var(--head); letter-spacing: .03em; margin: 34px 0 4px; display: flex; align-items: center; gap: 10px; }
+h2 .pill { font: 500 11px var(--mono); letter-spacing: .1em; text-transform: uppercase; padding: 3px 9px; border-radius: 20px; border: 1px solid var(--line2); color: var(--dim); }
+.sub { color: var(--dim); margin: 0 0 14px; font-size: 14px; }
+.card { border: 1px solid var(--line2); border-radius: 12px; background: linear-gradient(180deg, rgba(51,214,234,.04), rgba(15,21,32,.9)); padding: 2px 18px; margin: 12px 0; box-shadow: 0 0 22px rgba(47,107,255,.07); }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th { text-align: left; font: 600 12px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--cyan); padding: 14px 10px 8px; border-bottom: 1px solid var(--line); }
+td { padding: 10px; border-bottom: 1px solid rgba(27,42,69,.5); vertical-align: top; }
+tr:last-child td { border-bottom: none; }
+td.name { font-family: var(--mono); color: var(--text); white-space: nowrap; }
+.tag { font: 600 11px var(--mono); padding: 2px 8px; border-radius: 6px; white-space: nowrap; }
+.tag.ok { color: var(--green); background: rgba(63,185,80,.12); border: 1px solid rgba(63,185,80,.3); }
+.tag.part { color: var(--amber); background: rgba(216,166,58,.12); border: 1px solid rgba(216,166,58,.3); }
+.tag.no { color: var(--red); background: rgba(229,83,75,.12); border: 1px solid rgba(229,83,75,.3); }
+.foot { color: var(--dim); text-align: center; margin: 40px 0 24px; font-size: 13px; }
+.note { color: var(--dim); font-size: 13px; margin: 6px 0 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="index.html"><img src="logo.png" alt="RoConstruct"></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#clients">Clients</a>
+      <a href="index.html#contributors">Contributors</a>
+      <a href="sources.html" class="on">Sources</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h1>Sources</h1>
+    <p class="lede">Every source we compile to match functions in the clients, plus what we still
+      need and cannot find. A function counts as matched only when source compiled with the client's
+      exact compiler produces byte-identical machine code. These sources are where those bytes come from.</p>
+  </div>
+
+  <h2>Roblox's own source <span class="pill">biggest win</span></h2>
+  <p class="sub">Real Roblox code. No library ships it; it has to come from a leak or a community decompilation.</p>
+  <div class="card"><table>
+    <tr><th>Source</th><th>What it gives</th><th>Status</th></tr>
+    <tr><td class="name">RBXGSdecomp</td><td><a href="https://github.com/RBLXDecomp/RBXGSdecomp">RBLXDecomp/RBXGSdecomp</a> — a matching decompilation of RBXGS 0.3.634.0 (Nov 2007), VS2005 SP1. App (v8kernel, v8world, humanoid, reflection, script), Network (Replicator, Player, Server), RbxView (Part, meshes), RenderLib, and its patched G3D fork. Recipes <code>rbxgs</code>, <code>rbxgs-net</code>, <code>rbxgs-view</code>, <code>rbxgs-render</code>, <code>rbxgs-g3d</code>.</td><td><span class="tag ok">used</span></td></tr>
+    <tr><td class="name">2016 leak forks</td><td>Roblox's forks of G3D 8.00, Lua 5.1.4, libjpeg, libpng and RakNet from the 2016 source tree. Recipes <code>rbx2016-g3d</code>, <code>rbx2016-lua</code>, <code>rbx2016-jpeg</code>, <code>rbx2016-png</code>, <code>rbx2016-raknet</code>. Code unchanged since the client era matches byte-for-byte.</td><td><span class="tag ok">used</span></td></tr>
+  </table></div>
+
+  <h2>Open-source libraries</h2>
+  <p class="sub">Third-party code statically linked into the clients. Pinned by SHA-256, preprocessed, compiled across a flag grid, then fingerprinted.</p>
+  <div class="card"><table>
+    <tr><th>Library</th><th>Versions</th><th>Status</th></tr>
+    <tr><td class="name">zlib</td><td>1.1.4, 1.2.3 (deflate/inflate)</td><td><span class="tag ok">used</span></td></tr>
+    <tr><td class="name">libjpeg</td><td>6b</td><td><span class="tag ok">used</span></td></tr>
+    <tr><td class="name">libpng</td><td>1.2.5 – 1.2.44 (16 versions swept)</td><td><span class="tag ok">used</span></td></tr>
+    <tr><td class="name">Lua</td><td>5.1.0 – 5.1.4</td><td><span class="tag ok">used</span></td></tr>
+    <tr><td class="name">G3D</td><td>6.09 (source) + 6.10 prebuilt VC8 .lib</td><td><span class="tag ok">used</span></td></tr>
+    <tr><td class="name">boost</td><td>1.34.1, 1.35, 1.36, 1.38, 1.40, 1.44, 1.47 (+ shared_ptr / function / signal template instantiations)</td><td><span class="tag ok">used</span></td></tr>
+    <tr><td class="name">RakNet</td><td>public 4.081 (few matches); Roblox's fork via the 2016 tree</td><td><span class="tag part">partial</span></td></tr>
+    <tr><td class="name">SDL</td><td>1.2.11 (headers only — the rest is in SDL.dll)</td><td><span class="tag part">headers</span></td></tr>
+    <tr><td class="name">Ogre</td><td>1.7.0 "Cthugha" VC8 SDK. The engine is in OgreMain.dll; only inline/template Ogre code is in the exe, and the bulk of the exe's Ogre classes are Roblox's own <code>Ogre::Rbx*</code> subclasses (no public source).</td><td><span class="tag part">partial</span></td></tr>
+  </table></div>
+
+  <h2>Compiler runtime &amp; UI toolkits</h2>
+  <p class="sub">Code the Microsoft toolchain and the UI library compiled into the exe. Matched from the exact installed compiler or the toolkit source.</p>
+  <div class="card"><table>
+    <tr><th>Source</th><th>What it gives</th><th>Status</th></tr>
+    <tr><td class="name">MFC</td><td>8.0 (VS2005), 9.0 (VS2008) — the static MFC that ships with each compiler</td><td><span class="tag ok">used</span></td></tr>
+    <tr><td class="name">Codejock XTP</td><td>Xtreme Toolkit Pro 11.2.2, 13.2.1, 15.2.1 (the <code>CXTP*</code> UI classes), built on MFC</td><td><span class="tag ok">used</span></td></tr>
+    <tr><td class="name">STL templates</td><td>Explicit instantiations of std::vector/list/map/set/string etc. from the VC headers (<code>templates-boost-*</code>, STL grid)</td><td><span class="tag ok">used</span></td></tr>
+    <tr><td class="name">libcmt / libcpmt</td><td>Static CRT/STL (<code>msvc-crt</code>). <strong>0 matches</strong> — the clients link the DLL runtime (<code>/MD</code> → msvcr80/90, msvcp80/90), so the static CRT objects are not in the exe.</td><td><span class="tag no">0 — /MD</span></td></tr>
+  </table></div>
+
+  <h2>Techniques (no external source)</h2>
+  <div class="card"><table>
+    <tr><th>Method</th><th>What it does</th></tr>
+    <tr><td class="name">cross-client copy</td><td>Every matched source is recompiled against every other client; byte-identical functions shared between clients (and duplicate functions inside one client) match for free. <code>roc xcopy</code>.</td></tr>
+    <tr><td class="name">auto shapes</td><td>Trivial compiler-stereotyped functions (thunks, forwarders, small accessors) matched from their assembly shape. <code>roc auto</code>.</td></tr>
+    <tr><td class="name">AI workers</td><td>A local code model drafts C++ for one function, compiles, diffs the assembly and retries — with a Rev.ng hint and the 2016 source for the class. <code>roc worker</code>.</td></tr>
+  </table></div>
+
+  <h2>Donor binaries <span class="pill">not a progress target</span></h2>
+  <p class="sub">Extra client builds used to match the real clients and for testing, not decompiled for their own sake.</p>
+  <div class="card"><table>
+    <tr><th>Binary</th><th>Use</th></tr>
+    <tr><td class="name">0.3.368.0 (Mar 2007)</td><td>Earliest archived client (now also shown as a client). Closest build to RBXGSdecomp's 0.3.634.0, so the RBX source matches it best; its matches spread to the later clients.</td></tr>
+  </table></div>
+
+  <h2>Needed, but not found</h2>
+  <p class="sub">Sources that would unlock more matches. If you have any of these, drop them in the Discord.</p>
+  <div class="card"><table>
+    <tr><th>Source</th><th>Why it would help</th><th>Status</th></tr>
+    <tr><td class="name">G3D 8.00 / 8.01 source</td><td>The 2010–2012 clients link G3D 8.x. The official source zips were deleted from SourceForge and never captured by the Wayback Machine or mirrored to GitHub. The 2016 leak has a partial copy (used), but a clean 8.00/8.01 tree would match more of the rendering code.</td><td><span class="tag no">missing</span></td></tr>
+    <tr><td class="name">Client PDB / MAP</td><td>Symbols for any client exe would give exact function boundaries and real names — a huge boost to the AI workers and to unit assignment. None exist: the RBXGS installers carry only <code>WebService.pdb</code> (the grid service, a different binary), and the only leaked Roblox PDB is from 2022 (wrong era).</td><td><span class="tag no">missing</span></td></tr>
+    <tr><td class="name">Roblox's Ogre subclass source</td><td>~950 <code>Ogre::Rbx*</code> functions per late client are Roblox's own Ogre subclasses (RbxSceneManager, RbxEntity, RbxCluster…). Ogre was dropped before the 2016 leak, so this source exists nowhere public.</td><td><span class="tag no">missing</span></td></tr>
+    <tr><td class="name">Exact per-TU compiler flags</td><td>Roblox built different translation units with different optimisation flags. We sweep a grid, but the real per-file flags (from a build log or project files) would match the functions the grid misses.</td><td><span class="tag part">partial</span></td></tr>
+    <tr><td class="name">More community decompilations</td><td>RBXGSdecomp covers Nov 2007. A matching decompilation of a later build (2009–2012) would directly supply RBX source for the newer clients, where the 2007 source has drifted.</td><td><span class="tag part">wanted</span></td></tr>
+  </table></div>
+
+  <h2>Checked, not useful</h2>
+  <p class="sub">Leads that were investigated and ruled out, recorded so they are not chased again.</p>
+  <div class="card"><table>
+    <tr><th>Lead</th><th>Why not</th></tr>
+    <tr><td class="name">VS2005/2008 CRT ISOs</td><td>Only provide static <code>libcmt</code>/<code>libcpmt</code> — 0 matches against <code>/MD</code> clients.</td></tr>
+    <tr><td class="name">rccservice-decompile</td><td>RCCService is the server binary; it uses gSOAP, which the desktop clients do not link. No overlap.</td></tr>
+    <tr><td class="name">ODE / Open Dynamics Engine</td><td>Not linked — no ODE RTTI classes or version strings in the clients. Roblox used its own physics.</td></tr>
+    <tr><td class="name">RomkoSI/G3D, elfprince13/G3D10</td><td>Both are G3D 10 (2016+), far past the 6.x–8.x the clients use.</td></tr>
+    <tr><td class="name">2022 RobloxStudio PDB leak</td><td>Right artifact, wrong era by a decade.</td></tr>
+  </table></div>
+
+  <p class="foot">Recipes live in <a href="https://github.com/colingsnyder2-ux/RoConstruct/blob/main/roc/libs.py"><code>roc/libs.py</code></a>.
+    Have a source we are missing? <a href="https://discord.gg/Tayg763nrG">Join the Discord.</a></p>
+</div>
+</body>
+</html>
