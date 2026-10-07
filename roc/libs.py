@@ -276,6 +276,13 @@ _RBXGS_GRID = ["/O2 /Ob2 /Oy /GF /GS- /EHsc /MD", "/O2 /Oy /Gy /GS- /EHsc /MD",
                "/O2 /GS- /EHsc /MD", "/O1 /Ob2 /Oy /GS- /EHsc /MD"]
 RECIPES["rbxgs"] = dict(src=_RBXGS + "App", langs=["cpp"], files="**/*.cpp",
                         grid=_RBXGS_GRID, include=_RBXGS_INC, defines=_RBXGS_DEF)
+# The Network project: Roblox's networking (RBX::Network::Replicator, Player, Server).
+_RBXGS_NET_INC = [_RBXGS + d for d in ("Network/include", "Network/include/network", "App/include",
+                  "Network/RakNet30/source", "Rendering/g3d/include", "Rendering/g3d/zlib",
+                  "Rendering/png", "boost_1_34_1/src", "App/lua-5.1.1/src", "Rendering/AppDraw/include",
+                  "Rendering/SDL-1.2.6/include", "Rendering/RenderLib/include", "RbxGraphics/include")] + ["WINSDK"]
+RECIPES["rbxgs-net"] = dict(src=_RBXGS + "Network", langs=["cpp"], files="*.cpp",
+                            grid=_RBXGS_GRID, include=_RBXGS_NET_INC, defines=_RBXGS_DEF)
 
 # Exact CRT/STL objects from each installed compiler. Fingerprint archive members directly.
 RECIPES["msvc-crt"] = dict(archive=True, builds=[50727, 21022, 30729],
@@ -406,8 +413,11 @@ def preprocess(build, path, include, defines=""):
     env["INCLUDE"] = "%s;%s" % (include, env["INCLUDE"])
     if defines:
         env["CL"] = " ".join("/D" + d for d in defines.split())
-    run = subprocess.run([cl, "/nologo", "/EP", str(path)], capture_output=True, text=True,
-                         env=env, errors="replace")
+    try:
+        run = subprocess.run([cl, "/nologo", "/EP", str(path)], capture_output=True, text=True,
+                             env=env, errors="replace", timeout=120)
+    except subprocess.TimeoutExpired:
+        raise match.CompileError("preprocessor timeout after 120 seconds")
     if run.returncode:
         raise match.CompileError(run.stderr[-500:])
     # Link-only pragmas can span several lines (the CRT manifest one does): drop them whole.
