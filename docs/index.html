@@ -29,8 +29,11 @@ h1 { font: 900 clamp(32px, 8vw, 56px)/1 system-ui, sans-serif; letter-spacing: .
 .bar .p { background: color-mix(in srgb, var(--green) 35%, var(--panel)); }
 h2 { text-transform: uppercase; letter-spacing: .06em; font-size: 20px; margin: 48px 0 16px; padding-left: 12px; border-left: 4px solid var(--accent); color: #c9cbd6; }
 .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
-.card { display: block; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; color: var(--text); }
-.card:hover { border-color: var(--accent); text-decoration: none; }
+.card { position: relative; display: block; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; color: var(--text); }
+.card:hover { border-color: var(--accent); }
+.card .open { color: var(--text); }
+.card .open::after { content: ""; position: absolute; inset: 0; }  /* whole card opens the client page */
+.card .join { position: relative; display: block; text-align: center; margin-top: 14px; }  /* above the card link */
 .card h3 { margin: 0; font-size: 22px; }
 .card .meta { color: var(--dim); font-family: var(--mono); font-size: 12px; margin: 2px 0 12px; }
 .card .pct { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 13px; color: var(--dim); margin-top: 8px; }
@@ -98,17 +101,17 @@ function bar(m, p, total, cls = "") {
          `<i class="p" style="width:${100 * p / total || 0}%"></i></div>`;
 }
 
-function joinLink(name) {
+function joinLink(name, short) {
   if (!progress.server) return "";
   const url = `roconstruct://work?client=${encodeURIComponent(name)}&server=${encodeURIComponent(progress.server)}`;
   const c = progress.clients.find(c => c.name === name) || {name};
-  return `<a class="join" href="${esc(url)}">Help on ${esc(title(c))} with one click</a>`;
+  return `<a class="join" href="${esc(url)}">${short ? "Start helping" : "Start helping on " + esc(title(c))}</a>`;
 }
 
 function joinHelp() {
   if (!progress.server) return "";
   return `<p class="foot">First time? <a href="${REPO}/archive/refs/heads/main.zip">Download RoConstruct</a>, unzip it,
-    double-click <code>install.cmd</code> (this also enables the one-click links), then click a "Help" button.
+    double-click <code>install.cmd</code> (this also enables the one-click links), then click "Start helping" on a client.
     Your PC keeps working until you close the window, so it's fine to leave running overnight.</p>`;
 }
 
@@ -147,15 +150,14 @@ function overview() {
     <h2>Clients</h2>
     ${joinHelp()}
     <div class="cards">${progress.clients.map(statsFor).map(c => `
-      <a class="card" href="#${esc(c.name)}">
-        <h3>${esc(title(c))}</h3>
+      <div class="card">
+        <h3><a class="open" href="#${esc(c.name)}">${esc(title(c))}</a></h3>
         <div class="meta">${esc(builtOn(c))}${esc(c.compiler)}</div>
         ${c.started ? bar(c.matched_bytes, 0, c.bytes) +
           `<div class="pct"><span>${fmt(c.matched)} / ${fmt(c.functions)}</span><span>${pct(c.matched_bytes, c.bytes)}</span></div>`
           : `<div class="pct"><span>not started</span></div>`}
-      </a>`).join("")}
-    </div>
-    <div class="joins">${progress.clients.filter(c => c.started).map(c => joinLink(c.name)).join("")}
+        ${c.started ? joinLink(c.name, true) : ""}
+      </div>`).join("")}
     </div>
     ${leaderboard()}
     <p class="foot">Matched = compiles byte-identical with the original MSVC. Compiler-generated stubs are not counted.
