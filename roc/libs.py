@@ -223,9 +223,24 @@ RECIPES["mfc-9.0"] = dict(src="mfc-9.0", langs=["cpp"], builds=[30729, 21022], i
 # tools/libs/xtp-15.2.1/, with a one-line Source/StdAfx.h (#include "XTToolkitPro.h") added, since
 # every XTP .cpp opens with #include "StdAfx.h" and the umbrella header lives at Source root.
 _XTP_INC = ["xtp-15.2.1/Source", "mfc-9.0/atlmfc/include", "WINSDK"]
+_XTP_STDAFX = {"Source/StdAfx.h": '#include "XTToolkitPro.h"\n'}
 RECIPES["xtp-15.2.1"] = dict(src="xtp-15.2.1", langs=["cpp"], builds=[30729, 21022], include=_XTP_INC,
-                             grid=_MFC_GRID, files="Source/**/*.cpp",
-                             write={"Source/StdAfx.h": '#include "XTToolkitPro.h"\n'})
+                             grid=_MFC_GRID, files="Source/**/*.cpp", write=_XTP_STDAFX)
+
+# Older XTP for the older clients (archive.org): v13.2.1 (2010) -> 2010-06, v11.2.2 (2008) ->
+# 2008-06. Both build on MFC 9.0. v11 also builds on MFC 8.0 (VS2005) for the 2007-08 client,
+# whose own XTP release (v9.60) shipped headers only, no source.
+def _xtp_inc(ver, mfc):
+    return ["%s/Source" % ver, "%s/atlmfc/include" % mfc, "WINSDK"]
+RECIPES["xtp-13.2.1"] = dict(src="xtp-13.2.1", langs=["cpp"], builds=[30729, 21022],
+                             include=_xtp_inc("xtp-13.2.1", "mfc-9.0"), grid=_MFC_GRID,
+                             files="Source/**/*.cpp", write=_XTP_STDAFX)
+RECIPES["xtp-11.2.2"] = dict(src="xtp-11.2.2", langs=["cpp"], builds=[30729, 21022],
+                             include=_xtp_inc("xtp-11.2.2", "mfc-9.0"), grid=_MFC_GRID,
+                             files="Source/**/*.cpp", write=_XTP_STDAFX)
+RECIPES["xtp-11.2.2-vc8"] = dict(src="xtp-11.2.2", langs=["cpp"], builds=[50727],
+                                 include=_xtp_inc("xtp-11.2.2", "mfc-8.0"), grid=_MFC_GRID,
+                                 files="Source/**/*.cpp", write=_XTP_STDAFX)
 
 
 def fetch(name):
