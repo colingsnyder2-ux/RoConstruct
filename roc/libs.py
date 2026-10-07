@@ -283,6 +283,17 @@ _RBXGS_NET_INC = [_RBXGS + d for d in ("Network/include", "Network/include/netwo
                   "Rendering/SDL-1.2.6/include", "Rendering/RenderLib/include", "RbxGraphics/include")] + ["WINSDK"]
 RECIPES["rbxgs-net"] = dict(src=_RBXGS + "Network", langs=["cpp"], files="*.cpp",
                             grid=_RBXGS_GRID, include=_RBXGS_NET_INC, defines=_RBXGS_DEF)
+# RbxView (Part, meshes = the Ogre::Rbx* render classes) and RenderLib (Clusterer,
+# RenderScene). Broad include covers every sibling project they pull headers from.
+_RBXGS_VIEW_INC = [_RBXGS + d for d in ("RbxView/include", "RbxViewBase", "App/include",
+                   "RbxGraphics/include", "Network/include", "Rendering/RenderLib/include",
+                   "Rendering/AppDraw/include", "Rendering/g3d/include", "Rendering/g3d/zlib",
+                   "Rendering/png", "boost_1_34_1/src", "App/lua-5.1.1/src",
+                   "Rendering/SDL-1.2.6/include")] + ["WINSDK"]
+RECIPES["rbxgs-view"] = dict(src=_RBXGS + "RbxView", langs=["cpp"], files="*.cpp",
+                             grid=_RBXGS_GRID, include=_RBXGS_VIEW_INC, defines=_RBXGS_DEF)
+RECIPES["rbxgs-render"] = dict(src=_RBXGS + "Rendering/RenderLib", langs=["cpp"], files="*.cpp",
+                               grid=_RBXGS_GRID, include=_RBXGS_VIEW_INC, defines=_RBXGS_DEF)
 
 # Exact CRT/STL objects from each installed compiler. Fingerprint archive members directly.
 RECIPES["msvc-crt"] = dict(archive=True, builds=[50727, 21022, 30729],
