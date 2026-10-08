@@ -397,9 +397,9 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
             if fallback:
                 job_model = fallback
                 log("  route: %d-byte job -> local fallback %s" % (job.get("size", 0), job_model))
-        think, effort = auto_reasoning(job, thinking, reasoning_effort)
+        think, effort = auto_reasoning(job, thinking, reasoning_effort, job_model)
         if thinking == "auto" and think == "disabled":
-            log("  auto-think: tiny job, thinking disabled")
+            log("  auto-think: thinking disabled")
         provider_options = {"allow_cloud": cloud_allowed, "budget": cloud_budget,
                             "gate": cloud_gate, "diverse_candidates": diverse_candidates,
                             "seed": seed, "max_tokens": max_tokens}
@@ -700,16 +700,17 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                            failure=failure)
 
 
-def auto_reasoning(job, thinking=None, reasoning_effort=None):
-    """Resolve 'auto' reasoning per job: tiny leaf jobs think less.
+def auto_reasoning(job, thinking=None, reasoning_effort=None, model=None):
+    """Resolve auto reasoning; explicit values pass through untouched.
 
     Tiny getters/setters truncate when reasoning eats the output budget,
     so auto disables thinking (and drops effort to low) for them. Anything
-    else keeps the provider default. Explicit values pass through untouched.
+    else keeps the provider default, except DeepSeek: source-hidden trials
+    repeatedly exhausted its reasoning budget without returning source.
     """
     tiny = not (job.get("size", 999999) > 64 or job.get("calls", 0))
     if thinking == "auto":
-        thinking = "disabled" if tiny else None
+        thinking = "disabled" if tiny or (model or "").startswith("deepseek:") else None
     if reasoning_effort == "auto":
         reasoning_effort = "low" if tiny else None
     return thinking, reasoning_effort

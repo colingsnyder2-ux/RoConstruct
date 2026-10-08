@@ -433,7 +433,8 @@ def test_deepseek_openai_compatible_provider():
         calls.append((url, body, headers))
         return {"id": "ds-1", "choices": [{"message": {"content": "ok"},
                                                 "finish_reason": "stop"}],
-                "usage": {"prompt_tokens": 2, "completion_tokens": 3}}, {}
+                "usage": {"prompt_tokens": 2, "completion_tokens": 3,
+                          "completion_tokens_details": {"reasoning_tokens": 2}}}, {}
     try:
         providers._post = fake_post
         out = providers.generate("deepseek:deepseek-flash", "Reply ok",
@@ -444,6 +445,8 @@ def test_deepseek_openai_compatible_provider():
         assert calls[0][2]["Authorization"] == "Bearer test-deepseek"
         assert calls[0][1]["thinking"] == {"type": "enabled"}
         assert calls[0][1]["reasoning_effort"] == "high"
+        assert out.output_tokens == 3 and out.telemetry()["reasoning_tokens"] == 2
+        assert providers.Generation("", None).telemetry()["reasoning_tokens"] is None
     finally:
         providers._post = old_post
         if old_key is None:
@@ -483,6 +486,8 @@ def test_auto_reasoning():
     from roc.worker import auto_reasoning
     assert auto_reasoning({"size": 11}, "auto", "auto") == ("disabled", "low")
     assert auto_reasoning({"size": 200, "calls": 2}, "auto", "auto") == (None, None)
+    assert auto_reasoning({"size": 200, "calls": 2}, "auto", "auto", "deepseek:deepseek-flash") == ("disabled", None)
+    assert auto_reasoning({"size": 200}, "enabled", "high", "deepseek:deepseek-flash") == ("enabled", "high")
     assert auto_reasoning({"size": 11}, "enabled", "high") == ("enabled", "high")
     assert auto_reasoning({"size": 11}, None, None) == (None, None)
 

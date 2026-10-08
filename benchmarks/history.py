@@ -17,6 +17,8 @@ def main():
     parser.add_argument("--session", default="history-ablation-20261008")
     parser.add_argument("--keep", nargs="+", type=int, default=[2, 0])
     parser.add_argument("--repeats", type=int, default=2)
+    parser.add_argument("--rounds", type=int, default=2)
+    parser.add_argument("--reasoning", action="store_true")
     parser.add_argument("--compact-rules", action="store_true")
     parser.add_argument("--strategy", choices=["direct", "structured", "reference"], default="direct")
     args = parser.parse_args()
@@ -35,9 +37,12 @@ def main():
                 options["history_keep_last"] = keep
 
             def run(target):
-                benchmark.run_local([target], ["deepseek:deepseek-flash"], rounds=2,
+                target_options = dict(options)
+                if args.reasoning and target["size"] > 48:
+                    target_options.update(thinking="enabled", max_tokens=8192)
+                benchmark.run_local([target], ["deepseek:deepseek-flash"], rounds=args.rounds,
                                     resume=True, session=session, strategies=(args.strategy,),
-                                    provider_options=options,
+                                    provider_options=target_options,
                                     log=lambda line: print(line, flush=True)
                                     if line.startswith("  deepseek:") else None)
 

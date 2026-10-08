@@ -56,13 +56,15 @@ class Generation:
     finish_reason: str = ""
     retries: int = 0
     cost: object = None
+    reasoning_tokens: object = None
 
     def telemetry(self):
         return {"provider": self.provider, "provider_model": self.model,
                 "request_id": self.request_id, "input_tokens": self.input_tokens,
                 "output_tokens": self.output_tokens, "cached_tokens": self.cached_tokens,
                 "generation_seconds": round(self.latency_s, 3), "finish_reason": self.finish_reason,
-                "provider_retries": self.retries, "estimated_cost": self.cost}
+                "provider_retries": self.retries, "estimated_cost": self.cost,
+                "reasoning_tokens": self.reasoning_tokens}
 
 
 class CloudBudget:
@@ -341,7 +343,8 @@ def _openai_chat(provider, remote, config, prompt, state, options):
                       output_tokens=_usage(data, "completion_tokens", "output_tokens"),
                       cached_tokens=_usage(data, "cached_tokens"), provider=provider, model=remote,
                       request_id=headers.get("x-request-id", data.get("id", "")),
-                      finish_reason=choice.get("finish_reason", ""))
+                      finish_reason=choice.get("finish_reason", ""),
+                      reasoning_tokens=((data.get("usage") or {}).get("completion_tokens_details") or {}).get("reasoning_tokens"))
 
 
 def _openai_responses(provider, remote, config, prompt, state, options):

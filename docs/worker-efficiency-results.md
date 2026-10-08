@@ -60,6 +60,29 @@ of 64 simultaneous requests returned 64/64 correct replies in 1.270s and 1.233s,
 using 1,856 tokens each. CLI cloud concurrency now follows worker count by default;
 explicit `--cloud-concurrency` overrides it. URI workers share the same limiter.
 
+Single-round thinking-enabled generation (8,192-token cap for targets over 48
+bytes; tiny targets thinking-disabled): 36 jobs, 8 exact, 16 compilable,
+256,213 tokens. Twenty requests hit the token cap with no source output.
+Sessions: `single-reasoned-20261008-k2-r{1,2}`. This is not a paired causal
+estimate against two-round controls, but demonstrates severe reasoning-budget
+starvation. Worker `thinking=auto` now disables thinking for DeepSeek on all
+sizes; explicit enabled remains honored. Other providers retain their policy.
+OpenAI-chat telemetry records provider-reported reasoning tokens separately
+when available (null otherwise); these are a subset of output tokens, not
+additional tokens to charge or add to totals.
+
+Assembly column-padding compression was tested without removing addresses,
+instruction bytes, or operands. Compressed: 36 jobs, 7 exact, 32 compilable,
+178,939 tokens. Unchanged control: 36 jobs, 8 exact, 34 compilable, 181,825
+tokens. Savings were only 1.6%, with worse observed quality; the experiment hook
+was removed. Sessions: `asm-padding[-control]-20261008-k2-r{1,2}`.
+
+ABI-corrected structured reconstruction: 36 jobs, 7 exact, 36 compilable,
+204,361 tokens. Reference-guided reconstruction: 36 jobs, 5 exact, 34 compilable,
+159,318 tokens. Both remain optional strategies; neither demonstrates an
+exact-match gain over the direct-generation controls above. These small samples
+are exploratory, not proof of statistically reliable differences.
+
 Reproduce: `python benchmarks/history.py --session UNIQUE --keep 2 0 --repeats 2`.
 The runner reads the existing hidden corpus and records isolated telemetry. Keep
 the corpus and compiler flags fixed across arms. Historical pre-guidance results
