@@ -131,7 +131,7 @@ def run(url):
     print("Working. This uses your GPU and CPU heavily (fans, heat, power draw; laptops: plug in).")
     print("Leave this window open overnight; close it to stop at any time.\n")
     worker.run_concurrent(server, user, token, model, rounds, max_size, use_revng,
-                          workers=workers, source_only=False, targets=[client])
+                          workers=workers, source_only=False, only=[client])
 
 
 def choose_options(settings):
