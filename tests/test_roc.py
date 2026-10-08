@@ -567,9 +567,11 @@ def test_mine_digest():
         log.flush()
         assert len(sent) == 1
     embed = sent[0]["embeds"][0]
-    assert "2 updates" in embed["title"] and "a1" in embed["fields"][0]["value"]
-    assert "60 pts" in embed["footer"]["text"] and "2 left" in embed["footer"]["text"]
-    assert "ETA" in embed["footer"]["text"]
+    assert embed["title"] == "⛏️ RoConstruct Mining Digest"
+    assert "33.33%" in embed["description"] and "1 / 3 matched" in embed["description"]
+    assert "a1" in embed["fields"][0]["value"] and "a2" in embed["fields"][1]["value"]
+    assert "60 pts" in embed["fields"][3]["value"]
+    assert embed["footer"]["text"].startswith("ETA:")
 
 
 def test_concurrent_shares_caches_and_clamps():

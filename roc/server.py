@@ -285,7 +285,7 @@ def export(store):
             "leaderboards": {c: store.leaderboard(c)[:20] for c in scores}}
 
 
-def make_handler(store, token, can_verify, discord_webhook=None, mine_log=None):
+def make_handler(store, token, can_verify, mine_log=None):
     class Handler(BaseHTTPRequestHandler):
         # Api keeps one HTTP connection per worker. HTTP/1.0 closes it after
         # every response, rapidly exhausting Windows ephemeral ports locally.
@@ -395,11 +395,6 @@ def make_handler(store, token, can_verify, discord_webhook=None, mine_log=None):
                                         str(body.get("worker", ""))[:64],
                                         str(body.get("model", ""))[:120] or "auto",
                                         stored, stored - previous)
-                    else:
-                        from roc.discord import mined
-                        mined(discord_webhook, store.function_info(client, addr), user,
-                              str(body.get("worker", ""))[:64], str(body.get("model", ""))[:120] or "auto",
-                              stored, stored - previous, "✅ Function score updated")
                 return self.send(200, {"score": score, "stored": stored, "improved": improved, "verified": verified})
             self.send(404, {"error": "unknown endpoint"})
 
@@ -468,8 +463,7 @@ def serve(host="0.0.0.0", port=8765, db=None, token=None, lease_seconds=900,
                         pass  # function no longer in the analysis
         if imported:
             log("Imported %d library matches for %s (credited to 'auto')" % (imported, name))
-    httpd = ThreadingHTTPServer((host, port), make_handler(store, token, can_verify, discord_webhook,
-                                                      mine_log=mine_log))
+    httpd = ThreadingHTTPServer((host, port), make_handler(store, token, can_verify, mine_log=mine_log))
     httpd.store = store
     log("RoConstruct server running on port %d. Workers connect with:  roc worker --server http://<this-pc>:%d"
         % (port, port))
