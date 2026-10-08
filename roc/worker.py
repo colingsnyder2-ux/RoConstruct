@@ -219,7 +219,9 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
     if not have:
         raise SystemExit("Nothing to work on from this PC yet (see the skip reasons above).")
     auto_model = model is None and not source_only
-    model = draft.pick_model(model) if not source_only else "none"
+    # Link UI already verified an explicit choice. Do not turn a brief
+    # /api/tags outage between setup and this point into a false no-model exit.
+    model = (draft.pick_model(model) or model) if not source_only else "none"
     if not model and not source_only:
         raise SystemExit("AI workers need Ollama with a code model:  ollama pull qwen2.5-coder:7b\n"
                          "No GPU? You can still help by hand: roc claim / roc check / roc submit.")
