@@ -127,7 +127,7 @@ def run(url):
     from roc import providers
     if not draft.pick_model(s.get("model")) and not (s.get("model") and providers.is_cloud(s["model"])):
         ensure_model()
-    model, rounds, max_size, use_revng, workers, output_budget = choose_options(s)
+    model, rounds, max_size, use_revng, workers, output_budget, thinking = choose_options(s)
     if providers.is_cloud(model) and not s.get("cloud_allowed"):
         raise SystemExit("Cloud model selected. Run: roc config --allow-cloud")
     keep_awake()
@@ -139,7 +139,7 @@ def run(url):
     worker.run_concurrent(server, user, token, model, rounds, max_size, use_revng,
                           workers=workers, source_only=False, only=[client],
                           cloud_allowed=bool(s.get("cloud_allowed")),
-                          max_tokens=output_budget)
+                          max_tokens=output_budget, thinking=thinking)
 
 
 def choose_options(settings):
@@ -191,32 +191,55 @@ def choose_options(settings):
             workers = max(1, min(int(workers), 8))
         except ValueError:
             raise SystemExit("Workers must be 1-8 or auto")
-    if preset == settings.get("worker_preset") and settings.get("worker_revng") is not None:
-        rev_default = "on" if settings.get("worker_revng") else "off"
+    if (input("Advanced (rounds, tokens, Rev.ng, thinking)? [Enter=skip, y=show]: ").strip().lower()
+            in ("y", "yes", "advanced")):
+        picked = input("Rounds [auto=%d]: " % rounds).strip().lower() or "auto"
+        if picked != "auto":
+            try:
+                rounds = max(1, min(int(picked), 12))
+            except ValueError:
+                raise SystemExit("Rounds must be auto or 1-12")
+        last_budget = settings.get("worker_output_budget", 2048)
+        picked = input("Output budget [auto=%s tokens]: " % last_budget).strip().lower() or "auto"
+        if picked == "auto":
+            output_budget = last_budget if isinstance(last_budget, int) else 2048
+        else:
+            try:
+                output_budget = int(picked)
+            except ValueError:
+                raise SystemExit("Output budget must be auto or 128-8192")
+            if not 128 <= output_budget <= 8192:
+                raise SystemExit("Output budget must be auto or 128-8192")
+        if preset == settings.get("worker_preset") and settings.get("worker_revng") is not None:
+            rev_default = "on" if settings.get("worker_revng") else "off"
+        else:
+            rev_default = "on" if use_revng else "off"
+        revng = input("Rev.ng [%s] (y/n): " % rev_default).strip().lower()
+        if revng in ("y", "yes"):
+            use_revng = True
+        elif revng in ("n", "no"):
+            use_revng = False
+        else:
+            use_revng = rev_default == "on"
+        last_thinking = settings.get("worker_thinking", "auto")
+        thinking = input("Thinking [%s] (auto/enabled/disabled): " % last_thinking).strip().lower() or last_thinking
+        if thinking not in ("auto", "enabled", "disabled"):
+            raise SystemExit("Thinking must be auto, enabled, or disabled")
     else:
-        rev_default = "on" if use_revng else "off"
-    revng = input("Rev.ng [%s] (y/n): " % rev_default).strip().lower()
-    if revng in ("y", "yes"):
-        use_revng = True
-    elif revng in ("n", "no"):
-        use_revng = False
-    else:
-        use_revng = rev_default == "on"
-    last_budget = settings.get("worker_output_budget", 2048)
-    try:
-        output_budget = int(input("Output budget [%s] tokens per reply: " % last_budget).strip() or last_budget)
-    except ValueError:
-        raise SystemExit("Output budget must be a number")
-    if not 128 <= output_budget <= 8192:
-        raise SystemExit("Output budget must be 128-8192")
+        last_budget = settings.get("worker_output_budget", 2048)
+        output_budget = last_budget if isinstance(last_budget, int) else 2048
+        thinking = settings.get("worker_thinking", "auto")
+        if thinking not in ("auto", "enabled", "disabled"):
+            thinking = "auto"
     from roc import worker
     if model is None:
         worker.clear_setting("model")
     else:
         worker.save_settings(model=model)
     worker.save_settings(worker_preset=preset, worker_workers=workers,
-                         worker_revng=use_revng, worker_output_budget=output_budget)
-    return model, rounds, max_size, use_revng, workers, output_budget
+                         worker_revng=use_revng, worker_output_budget=output_budget,
+                         worker_thinking=thinking)
+    return model, rounds, max_size, use_revng, workers, output_budget, thinking
 
 
 def ensure_model():

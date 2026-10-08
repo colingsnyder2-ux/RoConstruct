@@ -195,6 +195,27 @@ class Store:
         return [{"user": u, "matched": m or 0, "points": p or 0, "submissions": n, "last": t}
                 for u, m, p, n, t in rows]
 
+    def user_points(self, user):
+        """Total leaderboard points for one user (0 when unknown)."""
+        with self.lock:
+            row = self.db.execute("SELECT SUM(new - old) FROM events WHERE user = ?", (user,)).fetchone()
+        return int(row[0] or 0)
+
+    def client_progress(self, client):
+        """(matched, total) functions for one client."""
+        with self.lock:
+            row = self.db.execute("SELECT SUM(score = 100), COUNT(*) FROM funcs WHERE client = ?",
+                                  (client,)).fetchone()
+        return (int(row[0] or 0), int(row[1] or 0))
+
+    def match_rate(self, client, window=86400):
+        """Matches per second over the recent window (0 when idle)."""
+        now = time.time()
+        with self.lock:
+            count = self.db.execute("SELECT COUNT(*) FROM events WHERE client = ? AND ts >= ? "
+                                    "AND new = 100 AND old < 100", (client, now - window)).fetchone()[0]
+        return (count or 0) / window
+
     def scores(self):
         with self.lock:
             rows = self.db.execute("SELECT client, addr, score FROM funcs WHERE score > 0").fetchall()
@@ -264,7 +285,7 @@ def export(store):
             "leaderboards": {c: store.leaderboard(c)[:20] for c in scores}}
 
 
-def make_handler(store, token, can_verify, discord_webhook=None):
+def make_handler(store, token, can_verify, discord_webhook=None, mine_log=None):
     class Handler(BaseHTTPRequestHandler):
         # Api keeps one HTTP connection per worker. HTTP/1.0 closes it after
         # every response, rapidly exhausting Windows ephemeral ports locally.
@@ -369,10 +390,16 @@ def make_handler(store, token, can_verify, discord_webhook=None):
                 if body.get("lease"):
                     store.release(str(body["lease"]))
                 if improved:
-                    from roc.discord import mined
-                    mined(discord_webhook, store.function_info(client, addr), user,
-                          str(body.get("worker", ""))[:64], str(body.get("model", ""))[:120] or "auto",
-                          stored, stored - previous, "✅ Function score updated")
+                    if mine_log is not None:
+                        mine_log.submit(store.function_info(client, addr), user,
+                                        str(body.get("worker", ""))[:64],
+                                        str(body.get("model", ""))[:120] or "auto",
+                                        stored, stored - previous)
+                    else:
+                        from roc.discord import mined
+                        mined(discord_webhook, store.function_info(client, addr), user,
+                              str(body.get("worker", ""))[:64], str(body.get("model", ""))[:120] or "auto",
+                              stored, stored - previous, "✅ Function score updated")
                 return self.send(200, {"score": score, "stored": stored, "improved": improved, "verified": verified})
             self.send(404, {"error": "unknown endpoint"})
 
@@ -416,7 +443,9 @@ def serve(host="0.0.0.0", port=8765, db=None, token=None, lease_seconds=900,
                   if e.get("compiler_build") in have and clients.status(n, e) == "ok"}
     log("Re-checking submissions for: %s" % (", ".join(sorted(can_verify)) or "none (trusting workers)"))
     if discord_webhook:
-        log("Discord mine logs: enabled")
+        log("Discord mine logs: enabled (batched digests)")
+    from roc.discord import MineLog
+    mine_log = MineLog(discord_webhook, store) if discord_webhook else None
     from roc import auto
     for name in sorted(can_verify):
         done = {a for a, s in store.scores().get(name, {}).items() if s == 100}
@@ -439,7 +468,8 @@ def serve(host="0.0.0.0", port=8765, db=None, token=None, lease_seconds=900,
                         pass  # function no longer in the analysis
         if imported:
             log("Imported %d library matches for %s (credited to 'auto')" % (imported, name))
-    httpd = ThreadingHTTPServer((host, port), make_handler(store, token, can_verify, discord_webhook))
+    httpd = ThreadingHTTPServer((host, port), make_handler(store, token, can_verify, discord_webhook,
+                                                      mine_log=mine_log))
     httpd.store = store
     log("RoConstruct server running on port %d. Workers connect with:  roc worker --server http://<this-pc>:%d"
         % (port, port))

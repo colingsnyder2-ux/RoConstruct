@@ -449,16 +449,21 @@ def test_link_options():
     with patch("roc.draft.ollama_models", return_value=["qwen2.5-coder:14b", "qwen2.5-coder:7b"]), \
          patch("roc.draft.pick_model", return_value="qwen2.5-coder:14b"), \
          patch("roc.worker.save_settings") as saved, \
-         patch("builtins.input", side_effect=["qwen2.5-coder:7b", "fast", "auto", "n", ""]):
-        assert choose_options({"model": "qwen2.5-coder:14b"}) == ("qwen2.5-coder:7b", 2, 96, False, "auto", 2048)
+         patch("builtins.input", side_effect=["qwen2.5-coder:7b", "fast", "auto", ""]):
+        assert choose_options({"model": "qwen2.5-coder:14b"}) == ("qwen2.5-coder:7b", 2, 96, False, "auto", 2048, "auto")
         assert saved.call_count == 2
     with patch("roc.draft.ollama_models", return_value=["qwen2.5-coder:14b", "qwen2.5-coder:7b"]), \
          patch("roc.draft.pick_model", return_value="qwen2.5-coder:14b"), \
          patch("roc.worker.save_settings"), \
-         patch("builtins.input", side_effect=["", "", "", "", ""]):
+         patch("builtins.input", side_effect=["", "", "", "y", "", "", "", ""]):
         assert choose_options({"model": "qwen2.5-coder:14b", "worker_preset": "deep",
                                "worker_workers": "auto", "worker_revng": False,
-                               "worker_output_budget": 2048}) == ("qwen2.5-coder:14b", 6, 512, False, "auto", 2048)
+                               "worker_output_budget": 2048}) == ("qwen2.5-coder:14b", 6, 512, False, "auto", 2048, "auto")
+    with patch("roc.draft.ollama_models", return_value=["qwen2.5-coder:14b", "qwen2.5-coder:7b"]), \
+         patch("roc.draft.pick_model", return_value="qwen2.5-coder:14b"), \
+         patch("roc.worker.save_settings"), \
+         patch("builtins.input", side_effect=["", "balanced", "1", "y", "6", "1024", "n", "disabled"]):
+        assert choose_options({}) == ("qwen2.5-coder:14b", 6, 256, False, 1, 1024, "disabled")
 
 
 def test_auto_reasoning():
@@ -528,6 +533,38 @@ def test_clip_example(monkeypatch):
     assert "trimmed" in prompt and big not in prompt and prompt.count("int x;") < 1000
     prompt = draft.prompt_for("C", "1", row, ["ret "], None, None, examples=[short])
     assert short in prompt and "trimmed" not in prompt
+
+
+def test_mine_digest():
+    import time
+    from roc.discord import MineLog, fmt_duration
+    from roc.server import Store
+    assert fmt_duration(45) == "45s" and fmt_duration(300) == "5m"
+    assert fmt_duration(5400) == "1h 30m" and fmt_duration(90000) == "25h 0m"
+    assert fmt_duration(200000) == "2d 7h"
+    st = Store(":memory:", lease_seconds=1)
+    st.db.executemany("INSERT INTO funcs(client,addr,size,unit,score) VALUES(?,?,?,?,?)",
+                      [("C", "a1", 9, "U1", 100), ("C", "a2", 9, "U2", 50), ("C", "a3", 9, "U3", 0)])
+    now = time.time()
+    st.db.executemany("INSERT INTO events(ts,client,addr,user,old,new) VALUES(?,?,?,?,?,?)",
+                      [(now - 3600, "C", "a1", "alice", 90, 100),
+                       (now - 1800, "C", "a2", "alice", 0, 50)])
+    st.db.commit()
+    assert st.user_points("alice") == 60 and st.user_points("nobody") == 0
+    assert st.client_progress("C") == (1, 3)
+    assert st.match_rate("C") > 0 and st.match_rate("other") == 0
+    sent = []
+    log = MineLog("http://example.invalid/hook", st, batch_events=10, batch_seconds=60)
+    with patch("roc.discord._post", side_effect=lambda url, payload: sent.append(payload)):
+        log.submit({"client": "C", "addr": "a1", "unit": "U1", "size": 9}, "alice", "w", "m", 100, 10)
+        log.submit({"client": "C", "addr": "a2", "unit": "U2", "size": 9}, "alice", "w", "m", 50, 50)
+        assert sent == []  # batched, not spammed
+        log.flush()
+        assert len(sent) == 1
+    embed = sent[0]["embeds"][0]
+    assert "2 updates" in embed["title"] and "a1" in embed["fields"][0]["value"]
+    assert "60 pts" in embed["footer"]["text"] and "2 left" in embed["footer"]["text"]
+    assert "ETA" in embed["footer"]["text"]
 
 
 def test_server_store():
