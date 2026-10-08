@@ -73,6 +73,8 @@ RoConstruct clones stay small. Browse [RoConstruct-findings](https://github.com/
 
 ## Reference
 
+**[SOURCES.md](SOURCES.md)** — every source we compile to match functions, what we still need and cannot find, and leads we ruled out. ([live page](https://colingsnyder2-ux.github.io/RoConstruct/sources.html))
+
 <details>
 <summary><b>Matching by hand</b></summary>
 
