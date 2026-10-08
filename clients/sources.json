@@ -1,8 +1,9 @@
 {
   "bundle": {
-    "sha256": "591f07ecc4b10597484fc49acd2244db46c1f167e3b1f7747346b9d992bf63b1",
-    "size": 78431270,
+    "sha256": "b599a1a9f1cab1f7822bfcee483a28421f823337610927753bc99513dfa7291d",
+    "size": 86303507,
     "slots": [
+      "2007-03",
       "2007-08",
       "2008-06",
       "2009-06",
@@ -10,7 +11,7 @@
       "2011-06",
       "2012-06"
     ],
-    "url": "https://cdn.discordapp.com/attachments/1557245347317813328/1557251534851674142/clients.zip?ex=6ac71f02&is=6ac5cd82&hm=f1930ae7357609c01857bb1b3a5cd439b0382054566da58891ddfdfbc396364a&"
+    "url": "https://cdn.discordapp.com/attachments/1557586536172884038/1557589157918933002/clients.zip?ex=6ac85971&is=6ac707f1&hm=821ad1ac59329b4ec4f4d56ee877e1b8ad8bd7700a3dbcf43067c5658d697a5e&"
   },
   "drive": {
     "2007-08": {
