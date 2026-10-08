@@ -84,6 +84,18 @@ exact-match gain over the direct-generation controls above. These small samples
 are exploratory, not proof of statistically reliable differences.
 
 Reproduce: `python benchmarks/history.py --session UNIQUE --keep 2 0 --repeats 2`.
+For full generation-and-compilation batch timing, use `--workers N --no-resume`
+with a fresh session. The runner warms the reference index once, as parallel
+workers do, and records warmup separately from batch wall time. Resumed batches
+are explicitly labeled and must not be used as throughput measurements.
+
+The URI setup now offers an optional auto preset: two rounds for functions up
+to 48 bytes, four otherwise, maximum target size 512 bytes, Rev.ng off unless
+explicitly selected. Explicit round overrides remain supported. This is an
+experimental resource policy, not a measured quality improvement; existing
+fast/balanced/deep defaults are unchanged. Benchmark its round policy with
+`--auto-preset`; this local runner does not exercise server leases or Rev.ng.
+
 The runner reads the existing hidden corpus and records isolated telemetry. Keep
 the corpus and compiler flags fixed across arms. Historical pre-guidance results
 require the pre-guidance code; rerunning current code changes both arms.

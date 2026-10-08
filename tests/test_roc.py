@@ -482,8 +482,18 @@ def test_link_options():
         assert choose_options({}) == ("qwen2.5-coder:14b", 4, 256, True, 64, 2048, "auto")
 
 
+    with patch("roc.draft.ollama_models", return_value=["qwen2.5-coder:7b"]), \
+         patch("roc.draft.pick_model", return_value="qwen2.5-coder:7b"), \
+         patch("roc.worker.save_settings"), \
+         patch("builtins.input", side_effect=["", "auto", "1", ""]):
+        assert choose_options({}) == ("qwen2.5-coder:7b", "auto", 512, False, 1, 2048, "auto")
+
+
 def test_auto_reasoning():
-    from roc.worker import auto_reasoning
+    from roc.worker import auto_reasoning, resolve_rounds
+    assert resolve_rounds({"size": 48}, "auto") == 2
+    assert resolve_rounds({"size": 49}, "auto") == 4
+    assert resolve_rounds({"size": 512}, 6) == 6
     assert auto_reasoning({"size": 11}, "auto", "auto") == ("disabled", "low")
     assert auto_reasoning({"size": 200, "calls": 2}, "auto", "auto") == (None, None)
     assert auto_reasoning({"size": 200, "calls": 2}, "auto", "auto", "deepseek:deepseek-flash") == ("disabled", None)

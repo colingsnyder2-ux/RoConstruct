@@ -176,14 +176,16 @@ def choose_options(settings):
     elif model not in installed:
         raise SystemExit("Model '%s' is not installed. Run: roc model" % model)
     last_preset = settings.get("worker_preset", "balanced")
-    preset = (input("Preset [%s] (fast/balanced/deep): " % last_preset).strip().lower() or last_preset)
-    if preset not in ("fast", "balanced", "deep"):
-        raise SystemExit("Preset must be fast, balanced, or deep")
+    preset = (input("Preset [%s] (auto/fast/balanced/deep): " % last_preset).strip().lower() or last_preset)
+    if preset not in ("auto", "fast", "balanced", "deep"):
+        raise SystemExit("Preset must be auto, fast, balanced, or deep")
     rounds, max_size, use_revng = 4, 256, True
     if preset == "fast":
         rounds, max_size, use_revng = 2, 96, False
     elif preset == "deep":
         rounds, max_size = 6, 512
+    elif preset == "auto":
+        rounds, max_size, use_revng = "auto", 512, False
     last_workers = settings.get("worker_workers", "1")
     workers = input("Workers [%s] (1-%d or auto): " % (last_workers, worker.MAX_WORKERS)).strip() or last_workers
     if workers != "auto":
@@ -193,7 +195,7 @@ def choose_options(settings):
             raise SystemExit("Workers must be 1-%d or auto" % worker.MAX_WORKERS)
     if (input("Advanced (rounds, tokens, Rev.ng, thinking)? [Enter=skip, y=show]: ").strip().lower()
             in ("y", "yes", "advanced")):
-        picked = input("Rounds [auto=%d]: " % rounds).strip().lower() or "auto"
+        picked = input("Rounds [auto=%s]: " % rounds).strip().lower() or "auto"
         if picked != "auto":
             try:
                 rounds = max(1, min(int(picked), 12))

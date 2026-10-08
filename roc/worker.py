@@ -608,7 +608,8 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
         llm_start = (job["source"], job["score"])
         if source_candidate and source_candidate[0] > job["score"]:
             llm_start = (source_candidate[1], source_candidate[0])
-        score, src = draft.llm_rounds(client, addr, model, draft.model_rounds(model, rounds), hint, llm_start,
+        job_rounds = resolve_rounds(job, rounds)
+        score, src = draft.llm_rounds(client, addr, model, draft.model_rounds(model, job_rounds), hint, llm_start,
                                       log, flags, examples, source_hints, facts, round_stats, strategy=strategy,
                                       provider_options=provider_options)
         ensure_lease()
@@ -698,6 +699,10 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                            estimated_cost=metrics.known_generation_cost(generated),
                            failure_reason=failure_reason,
                            failure=failure)
+
+
+def resolve_rounds(job, rounds):
+    return (2 if job.get("size", 0) <= 48 else 4) if rounds == "auto" else rounds
 
 
 def auto_reasoning(job, thinking=None, reasoning_effort=None, model=None):
