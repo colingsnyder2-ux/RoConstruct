@@ -823,6 +823,15 @@ def test_exact_match_separate_from_fuzzy():
     assert "xor" in d["opcode_delta"] or "mov" in d["opcode_delta"]
 
 
+def test_diagnose_call_argument_order():
+    from roc import match
+    target = bytes.fromhex("6a016a02ff1500000000c3")
+    candidate = bytes.fromhex("6a026a01ff1500000000c3")
+    diag = match.diagnose(target, [], candidate, [])
+    assert diag["call_argument_diffs"] == [
+        {"call": 1, "target": ["2", "1"], "candidate": ["1", "2"]}]
+
+
 def test_mutate_validated():
     src = "struct S{ char m_x; }; int S::f(){ return m_x != 0; }"
     vs = mutate.variants(src)
@@ -1022,7 +1031,7 @@ def test_auto_import_skips_dropped_functions():
 
 def test_truncated_generation_history_reset():
     from roc import draft
-    for enabled in (False, True):
+    for enabled in (False, True, None):
         contexts, attempts = [], []
 
         def ask(model, prompt, context=None, options=None, details=False):
@@ -1041,11 +1050,39 @@ def test_truncated_generation_history_reset():
              patch.object(draft.match, "target", return_value=(b"\xc3", [], {"size": 9, "unit": "S"})), \
              patch.object(draft.match, "disasm", return_value=["ret"]), \
              patch.object(draft.match, "check_text", return_value=(100, None, "", [])):
+            options = {} if enabled is None else {"reset_truncated": enabled}
             score, _ = draft.llm_rounds("C", "1", "deepseek:deepseek-flash", 2,
-                                        log=lambda _: None, provider_options={"reset_truncated": enabled})
+                                        log=lambda _: None, provider_options=options)
         assert score == 100 and len(contexts) == 2
-        assert contexts[1] == (None if enabled else {"malformed": True})
-        assert bool(attempts[1]) == enabled
+        reset = enabled is not False
+        assert contexts[1] == (None if reset else {"malformed": True})
+        assert bool(attempts[1]) == reset
+
+
+def test_truncated_partial_code_history_reset():
+    from roc import draft
+    for enabled in (False, True, None):
+        contexts, attempts = [], []
+
+        def ask(model, prompt, context=None, options=None, details=False):
+            contexts.append(context)
+            if len(contexts) == 1:
+                return "```cpp\nstruct S { int field;\n```", {"malformed": True}, {
+                    "finish_reason": "length", "output_tokens": 1024}
+            return "```cpp\nint f() { return 1; }\n```", None, {"finish_reason": "stop", "output_tokens": 12}
+
+        with patch.object(draft, "_ask_context", side_effect=ask), \
+             patch.object(draft, "prompt_for", side_effect=lambda *args, **kwargs: attempts.append(args[5]) or "target"), \
+             patch.object(draft.match, "target", return_value=(b"\xc3", [], {"size": 9, "unit": "S"})), \
+             patch.object(draft.match, "disasm", return_value=["ret"]), \
+             patch.object(draft.match, "check_text", return_value=(100, None, "", [])):
+            options = {} if enabled is None else {"reset_truncated": enabled}
+            score, _ = draft.llm_rounds("C", "1", "deepseek:deepseek-flash", 2,
+                                        log=lambda _: None, provider_options=options)
+        assert score == 100 and len(contexts) == 2
+        reset = enabled is not False
+        assert contexts[1] == (None if reset else {"malformed": True})
+        assert bool(attempts[1]) == reset
 
 
 if __name__ == "__main__":

@@ -656,6 +656,9 @@ def _diagnose_note(client, addr, src, flags, limit=400):
         ts, cs = diag["stack_refs"]["target"], diag["stack_refs"]["cand"]
         if ts != cs:
             bits.append("stack refs target=%d yours=%d" % (ts, cs))
+        for call in diag.get("call_argument_diffs", [])[:2]:
+            bits.append("call #%d stack args (C++ order) target=%s yours=%s" % (
+                call["call"], ",".join(call["target"]), ",".join(call["candidate"])))
         if not bits:
             return ""
         return ("\n[Mismatch: %s. Fix structure first; same ops with different "
@@ -743,12 +746,27 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
         generation = dict(asked[2] if len(asked) > 2 else {})
         generated_tokens = generation.pop("output_tokens", 0)
         src = extract_code(reply)
+        finish = generation.get("finish_reason", "")
+        incomplete = source_contract_error(src) if src and finish == "length" else ""
+        if incomplete in ("unbalanced braces", "missing function definition"):
+            log("  round %d: truncated before complete function" % (i + 1))
+            if (provider_options or {}).get("reset_truncated", True):
+                context = None
+                if attempt is None:
+                    attempt = ("// Previous response was truncated before a complete function.", 0,
+                               "Output exceeded the token budget. Emit minimal declarations and one complete "
+                               "function; never enumerate numbered filler fields.")
+            if stats is not None:
+                stats.append({"round": i + 1, "candidate_mode": "independent" if independent else "repair",
+                              "score": 0, "output_chars": len(reply),
+                              "output_tokens": generated_tokens or max(1, len(reply or "") // 4),
+                              "code": False, "truncated_incomplete": True, **generation})
+            continue
         if not src:
-            finish = generation.get("finish_reason", "")
             if finish == "length":
                 log("  round %d: truncated at max_tokens=%s (%d chars); reasoning may be eating the budget" % (
                     i + 1, ask_options.get("max_tokens"), len(reply or "")))
-                if (provider_options or {}).get("reset_truncated"):
+                if (provider_options or {}).get("reset_truncated", True):
                     context = None
                     if attempt is None:
                         attempt = ("// Previous response ended before a complete function.", 0,

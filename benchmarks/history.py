@@ -19,6 +19,7 @@ def main():
     parser.add_argument("--session", default="history-ablation-20261008")
     parser.add_argument("--corpus", type=Path, default=benchmark.HIDDEN)
     parser.add_argument("--client", default="2007-08")
+    parser.add_argument("--min-size", type=int)
     parser.add_argument("--max-size", type=int)
     parser.add_argument("--model", default="deepseek:deepseek-flash")
     parser.add_argument("--keep", nargs="+", type=int, default=[2, 0])
@@ -40,6 +41,8 @@ def main():
     args = parser.parse_args()
     corpus = json.loads(args.corpus.read_text())
     corpus = [row for row in corpus if row["client"] == args.client]
+    if args.min_size is not None:
+        corpus = [row for row in corpus if row["size"] >= args.min_size]
     if args.max_size is not None:
         corpus = [row for row in corpus if row["size"] <= args.max_size]
     if not corpus:
@@ -86,7 +89,8 @@ def main():
             configuration = {key: value for key, value in options.items() if key != "gate"}
             configuration.update(strategy=args.strategy, reasoning=args.reasoning,
                                  rounds="auto" if args.auto_preset else args.rounds,
-                                 client=args.client, model=args.model, max_size=args.max_size)
+                                 client=args.client, model=args.model,
+                                 min_size=args.min_size, max_size=args.max_size)
             metrics.record(session, event="benchmark_start", corpus_sha256=corpus_sha256,
                            configuration=configuration, workers=args.workers,
                            targets=len(corpus), resume=not args.no_resume)

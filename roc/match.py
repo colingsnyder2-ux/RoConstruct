@@ -188,6 +188,21 @@ def _insn_parts(code):
         return []
 
 
+def _call_pushes(code, relocs):
+    ins = list(Cs(CS_ARCH_X86, CS_MODE_32).disasm_lite(code, 0))
+    lines = asm_lines(code, relocs)
+    calls, pending = [], []
+    for i, (_, _, mnemonic, operands) in enumerate(ins):
+        if mnemonic == "push":
+            pending.append(operands)
+        elif mnemonic == "call":
+            calls.append((lines[i].partition(" ")[2], pending))
+            pending = []
+        else:
+            pending = []
+    return calls
+
+
 _REGS = ("eax", "ebx", "ecx", "edx", "esi", "edi", "ebp", "esp",
          "ax", "bx", "cx", "dx", "si", "di", "bp", "sp",
          "al", "bl", "cl", "dl", "ah", "bh", "ch", "dh")
@@ -238,6 +253,14 @@ def diagnose(target_code, target_relocs, cand, cand_relocs):
                sum(1 for m, _ in ins if m in ("call",))
     t_br, c_br = branches(t_ins), branches(c_ins)
     diff_lines = [l for l in difflib.unified_diff(t_lines, c_lines, "target", "yours", lineterm="", n=3)]
+    t_calls = _call_pushes(target_code, target_relocs)
+    c_calls = _call_pushes(cand, cand_relocs)
+    call_argument_diffs = []
+    for i, (target_call, cand_call) in enumerate(zip(t_calls, c_calls)):
+        target_args, cand_args = target_call[1][::-1], cand_call[1][::-1]
+        if (target_call[0] == cand_call[0] and len(target_args) >= 2 and
+                len(target_args) == len(cand_args) and target_args != cand_args):
+            call_argument_diffs.append({"call": i + 1, "target": target_args, "candidate": cand_args})
     return {"exact": exact_match(target_code, target_relocs, cand, cand_relocs),
             "similarity": round(similarity_ratio(target_code, target_relocs, cand, cand_relocs), 4),
             "target_insns": len(t_ins), "cand_insns": len(c_ins),
@@ -247,6 +270,7 @@ def diagnose(target_code, target_relocs, cand, cand_relocs):
             "branches": {"target_jcc": t_br[0], "cand_jcc": c_br[0],
                          "target_jmp": t_br[1], "cand_jmp": c_br[1],
                          "target_call": t_br[2], "cand_call": c_br[2]},
+            "call_argument_diffs": call_argument_diffs,
             "diff_preview": diff_lines[:40]}
 
 

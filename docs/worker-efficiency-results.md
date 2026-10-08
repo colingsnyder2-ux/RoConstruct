@@ -192,8 +192,13 @@ was then tested at unchanged caps/rounds: 72 jobs, 4 exact, 66 compilable,
 sample, but no demonstrated match gain. This opt-in discards malformed history
 and asks for one compact function in the existing next round; it does not add
 rounds or rewrite source. Session: `holdout-reset-truncated-20261008-k2-r{1,2,3,4}`.
-Reproduce with `--reset-truncated`. Defaults remain unchanged pending additional
-validation; this follow-up was tuned on the holdout and is exploratory.
+Fresh 2009-06 medium/large targets: reset vs no-reset each 48 jobs; exact 7 vs 8,
+compilable 47 vs 45, incomplete truncations 0 vs 2, total tokens 334,576 vs
+340,741. Thus reset prevented incomplete generations and modestly reduced cost,
+but exact matches moved down by one; on 12 targets this is inconclusive, not a
+quality gain. Production now resets by default; `reset_truncated: false` keeps
+the old history behavior. Benchmark runner passes the selected flag explicitly
+so both control and treatment remain reproducible.
 
 The runner reads the existing hidden corpus and records isolated telemetry. Keep
 the corpus and compiler flags fixed across arms. Historical pre-guidance results
@@ -220,6 +225,19 @@ input tokens; tokens per exact match fell about 5%. These are repeated draws on
 12 functions, not independent 96-function evidence. Promising for cloud DeepSeek
 tiny targets; not yet enough to change default.
 
+Fresh, previously unmeasured 2009-12 tiny targets did not reproduce the gain:
+direct 39/48 exact, 48 compilable, 73,819 input + 4,751 output tokens; structured
+31/48 exact, 48 compilable, 100,381 input + 5,020 output tokens. Mean batch
+latency was 2.1s direct vs 2.7s structured at 18 workers. This unseen-client
+check rejects automatic tiny structured routing for now; repeated samples remain
+correlated within six functions. Sessions: `fresh-tiny-{direct,structured}-20261008`.
+
+The diff feedback now also compares same-target call sites' contiguous stack
+pushes, reverses them into C++ argument order, and reports differing orders to
+the repair prompt. This targets argument-order mistakes without generic API
+instructions. A synthetic swapped-two-argument test verifies diagnostic order;
+measure exact-match conversion rate before attributing a worker gain.
+
 Local `qwen2.5-coder:7b-instruct` tiny check on the same six 2008-06 functions:
 direct four repeats produced 4/24 exact, 15/24 compilable, and 2,506 output
 tokens. Structured first repeat produced 0/6 exact, 4/6 compilable; one request
@@ -227,7 +245,7 @@ hit its 180s timeout. Stopped remaining repeats because latency contradicted the
 speed objective. This argues against globally routing all models through
 structured mode. Input-token usage is unavailable from the local provider.
 
-`benchmarks/history.py` supports `--model`, `--client`, `--max-size`, and
+`benchmarks/history.py` supports `--model`, `--client`, `--min-size`, `--max-size`, and
 `--diverse-candidates` to reproduce these stratified tests. Do not treat the
 exploratory runs as an automatic-tuning result; keep direct as default until a
 larger, model-specific holdout confirms quality and latency gains.
