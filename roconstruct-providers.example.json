@@ -1,0 +1,13 @@
+{
+  "providers": {
+    "my-provider": {
+      "kind": "openai-chat",
+      "base_url": "https://example.com/v1",
+      "key_env": "MY_PROVIDER_API_KEY",
+      "pricing": {
+        "input_per_million": 0,
+        "output_per_million": 0
+      }
+    }
+  }
+}

@@ -379,6 +379,26 @@ def make_handler(store, token, can_verify, discord_webhook=None):
     return Handler
 
 
+def import_auto_matches(store, name, found, log=print):
+    """Credit auto-matches, skipping functions re-analysis dropped.
+
+    A single stale addr must never stop the server (startup crash loop).
+    Returns (imported, skipped).
+    """
+    imported = skipped = 0
+    for addr, src in found.items():
+        try:
+            store.submit(name, addr, "auto", 100, src)
+            imported += 1
+        except ValueError:
+            skipped += 1  # re-analysis dropped the function; must not stop the server
+    if found:
+        log("Auto-matched %d trivial functions for %s (credited to 'auto'%s)" % (
+            imported, name,
+            "; skipped %d dropped by re-analysis" % skipped if skipped else ""))
+    return imported, skipped
+
+
 def serve(host="0.0.0.0", port=8765, db=None, token=None, lease_seconds=900,
           discord_webhook=None, log=print):
     discord_webhook = discord_webhook or os.environ.get("ROCONSTRUCT_DISCORD_WEBHOOK")
@@ -401,10 +421,7 @@ def serve(host="0.0.0.0", port=8765, db=None, token=None, lease_seconds=900,
     for name in sorted(can_verify):
         done = {a for a, s in store.scores().get(name, {}).items() if s == 100}
         found = auto.solve(name, skip=done, log=lambda *a: None)
-        for addr, src in found.items():
-            store.submit(name, addr, "auto", 100, src)
-        if found:
-            log("Auto-matched %d trivial functions for %s (credited to 'auto')" % (len(found), name))
+        import_auto_matches(store, name, found, log)
         # Matches made on this PC by `roc libs` / `roc mass` (library and template code).
         scores_file = ROOT / "work" / name / "scores.json"
         local = json.loads(scores_file.read_text()) if scores_file.exists() else {}

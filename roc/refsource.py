@@ -368,18 +368,43 @@ def hint(unit, lines=60):
     return None
 
 
-def prompt_hints(unit, limit=3, max_chars=1800, target_facts=None):
+def _target_terms(facts):
+    """Identifiers from observed calls/imports only; never invent source names."""
+    text = " ".join(str(value) for key, value in (facts or {}).items()
+                     if key in {"call_targets", "external_calls", "imports", "siblings"})
+    return tuple(sorted(set(re.findall(r"\b[A-Za-z_]\w{2,}\b", text))))
+
+
+def _client_year(client):
+    match = re.match(r"^(20\d\d)", str(client or ""))
+    return int(match.group(1)) if match else None
+
+
+def prompt_hints(unit, limit=3, max_chars=1800, target_facts=None, client=None):
     """Compact 2016 source clues for an AI prompt.
 
     Keep snippets bounded: source names help the model, while whole files waste
     context and hide the target assembly.
     """
-    strings = tuple(sorted((target_facts or {}).get("strings", [])))
-    return _prompt_hints_cached(unit, limit, max_chars, strings)
+    facts = target_facts or {}
+    strings = tuple(sorted(facts.get("strings", [])))
+    return _prompt_hints_cached(unit, limit, max_chars, strings, _target_terms(facts),
+                                int(facts.get("calls", 0) or 0), int(facts.get("branch_count", 0) or 0),
+                                _client_year(client))
 
 
 @functools.lru_cache(maxsize=2048)
-def _prompt_hints_cached(unit, limit=3, max_chars=1800, wanted_strings=()):
+def _method_shape(text):
+    """Source-level control/call shape; no guessed semantics."""
+    clean = re.sub(r"//[^\n]*|/\*.*?\*/", " ", text or "", flags=re.S)
+    branches = len(re.findall(r"\b(?:if|for|while|switch|catch)\s*\(", clean))
+    calls = max(0, len(re.findall(r"\b[A-Za-z_]\w*(?:::[A-Za-z_]\w*)?\s*\(", clean)) - branches)
+    return calls, branches
+
+
+@functools.lru_cache(maxsize=2048)
+def _prompt_hints_cached(unit, limit=3, max_chars=1800, wanted_strings=(), wanted_calls=(),
+                         target_calls=0, target_branches=0, client_year=None):
     """Cached prompt lookup; workers often revisit the same unit across retries."""
     out = []
     if not unit or unit.startswith("seg_"):
@@ -390,6 +415,7 @@ def _prompt_hints_cached(unit, limit=3, max_chars=1800, wanted_strings=()):
         return []
     wanted = set(identifiers(unit))
     wanted_strings = set(wanted_strings)
+    wanted_calls = set(wanted_calls)
     for score, rel, text in rows:
         text = text.strip()
         if not text:
@@ -397,12 +423,20 @@ def _prompt_hints_cached(unit, limit=3, max_chars=1800, wanted_strings=()):
         facts = source_facts(rel)
         overlap = len(wanted.intersection(facts.get("classes", []) + facts.get("methods", [])))
         overlap += 2 * len(wanted_strings.intersection(facts.get("literals", [])))
+        overlap += 2 * len(wanted_calls.intersection(facts.get("methods", []) + facts.get("tokens", [])))
         focus = next((name for name in identifiers(unit)
                       if name in facts.get("methods", []) or name in facts.get("classes", [])), None)
         body = extract_method(rel, focus, max_chars=max_chars * 3) if focus else ""
-        out.append({"path": rel.replace("\\", "/"), "score": score + overlap,
+        method_calls, method_branches = _method_shape(body or text)
+        shape = max(0, 4 - abs(target_calls - method_calls))
+        shape += max(0, 4 - abs(target_branches - method_branches))
+        out.append({"path": rel.replace("\\", "/"), "score": score + overlap + shape,
                     "text": text[:max_chars], "method": body[:max_chars], "facts": facts})
     out.sort(key=lambda row: -row["score"])
+    for item in out:
+        item["source_year"] = 2016
+        item["client_year"] = client_year
+        item["age_delta"] = 2016 - client_year if client_year else None
     return out
 
 

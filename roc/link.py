@@ -124,19 +124,23 @@ def run(url):
     if not (ROOT / "work" / client / "functions.jsonl").exists():
         print("Analyzing %s (one time, about 10 seconds)..." % client)
         analyze.analyze(client, clients.exe_path(client, clients.load()[client]))
-    if not draft.pick_model(s.get("model")):
+    from roc import providers
+    if not draft.pick_model(s.get("model")) and not (s.get("model") and providers.is_cloud(s["model"])):
         ensure_model()
     model, rounds, max_size, use_revng, workers = choose_options(s)
+    if providers.is_cloud(model) and not s.get("cloud_allowed"):
+        raise SystemExit("Cloud model selected. Run: roc config --allow-cloud")
     keep_awake()
     print("Working. This uses your GPU and CPU heavily (fans, heat, power draw; laptops: plug in).")
     print("Leave this window open overnight; close it to stop at any time.\n")
     worker.run_concurrent(server, user, token, model, rounds, max_size, use_revng,
-                          workers=workers, source_only=False, only=[client])
+                          workers=workers, source_only=False, only=[client],
+                          cloud_allowed=bool(s.get("cloud_allowed")))
 
 
 def choose_options(settings):
     """Let each link launch choose runtime options while keeping safe defaults."""
-    from roc import draft
+    from roc import draft, providers
     installed = draft.ollama_models()
     default_model = draft.pick_model(settings.get("model")) or "none"
     print("\nWorker options (Enter keeps the default):")
@@ -144,6 +148,10 @@ def choose_options(settings):
     model = input("Model [%s]: " % default_model).strip() or default_model
     if model == "default":
         model = None
+    elif providers.is_cloud(model):
+        if not providers.available(model):
+            _provider, _remote, config = providers.parse_model(model)
+            raise SystemExit("Cloud key is missing: set %s" % config["key_env"])
     elif model not in installed:
         raise SystemExit("Model '%s' is not installed. Run: roc model" % model)
     preset = (input("Preset [balanced] (fast/balanced/deep): ").strip().lower() or "balanced")

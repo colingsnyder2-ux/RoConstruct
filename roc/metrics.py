@@ -73,6 +73,15 @@ def _coded_rounds(rounds):
     return out
 
 
+def known_generation_cost(rounds):
+    """Return cost only when every cloud generation reported real pricing."""
+    generated = [row for row in rounds or [] if isinstance(row, dict) and isinstance(row.get("round"), int)]
+    cloud = [row for row in generated if row.get("provider") and row.get("provider") != "local"]
+    if any(row.get("estimated_cost") is None for row in cloud):
+        return None
+    return round(sum(row.get("estimated_cost", 0) or 0 for row in generated), 8) if generated else None
+
+
 def compile_success(rounds):
     """Fraction of code-bearing rounds that compiled (no compile_error)."""
     coded = _coded_rounds(rounds)
@@ -104,6 +113,14 @@ def summarize_runs(jobs):
     rates = [compile_success(r.get("rounds", [])) for r in jobs]
     with_compile = sum(compile_success(r.get("rounds", [])) > 0 for r in jobs)
     tokens = [sum(a.get("output_tokens", 0) for a in _coded_rounds(r.get("rounds", []))) for r in jobs]
+    attempts = [len(_coded_rounds(r.get("rounds", []))) for r in jobs]
+    rejected_asm = sum(a.get("rejected_asm", False) for r in jobs for a in _coded_rounds(r.get("rounds", [])))
+    rejected_qualified = sum(a.get("rejected_qualified_type", False) for r in jobs for a in _coded_rounds(r.get("rounds", [])))
+    rejected_contract = sum(a.get("rejected_contract", False) for r in jobs for a in _coded_rounds(r.get("rounds", [])))
+    cost_known = [r.get("estimated_cost") for r in jobs if r.get("estimated_cost") is not None]
+    total_cost = round(sum(cost_known), 8) if cost_known else None
+    scores = sorted(r.get("score", 0) for r in jobs)
+    median = scores[len(scores) // 2] if scores else 0
     codes = {}
     for r in jobs:
         for code, n in error_code_counts(r.get("rounds", [])).items():
@@ -116,7 +133,16 @@ def summarize_runs(jobs):
             "jobs_with_compile": with_compile,
             "compile_job_rate": round(100.0 * with_compile / max(len(jobs), 1), 2),
             "avg_score": round(sum(r.get("score", 0) for r in jobs) / max(len(jobs), 1), 2),
+            "median_score": median,
             "tokens_per_job": round(sum(tokens) / max(len(tokens), 1), 1),
+            "compile_attempts": sum(attempts),
+            "rejected_inline_asm": rejected_asm,
+            "rejected_qualified_type": rejected_qualified,
+            "rejected_contract": rejected_contract,
+            "generation_seconds": round(sum(r.get("generation_seconds", 0) for r in jobs), 3),
+            "estimated_cost": total_cost,
+            "exact_matches_per_dollar": round(matched / total_cost, 4) if total_cost else None,
+            "exact_matches_per_wall_hour": round(matched / (seconds / 3600), 4) if seconds else None,
             "errors_by_code": dict(sorted(codes.items(), key=lambda i: -i[1]))}
 
 

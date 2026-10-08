@@ -1,9 +1,12 @@
 """Smoke tests that need no client exe and no compiler. Run: python tests/test_roc.py"""
 import re
+import os
+import shutil
 import struct
 import json
 import sys
 import time
+import tempfile
 from unittest.mock import patch
 from pathlib import Path
 
@@ -182,6 +185,69 @@ def test_draft_helpers():
     assert draft.model_rounds("qwen2.5-coder:7b-instruct", 9) == 3
     assert draft.classify_target(["mov eax, dword ptr [ecx + 0x4]", "ret "]) == "leaf/getter"
     assert draft.classify_target(["call sym", "ret "]) == "wrapper/thunk"
+    assert "struct Namespace::Type" in draft.RULES
+    outline = draft.reconstruction_outline(["mov eax, dword ptr [ecx + 4]", "jne sym", "ret 8"])
+    assert "member thiscall" in outline and "callee pops 2" in outline and "jne sym" in outline
+    outlined = draft.reconstruction_outline(["00401000  8b4104               mov eax, dword ptr [ecx + 4]",
+                                              "00401003  7502                 jne 0x401007", "00401005  c20800               ret 8"])
+    assert "branches: jne 0x401007" in outlined
+    cfg = draft.cfg_outline(["00401000  7502                 jne 0x401004", "00401002  c3                   ret ",
+                             "00401004  ebfa                 jmp 0x401000"])
+    assert "B0@00401000:B2/B1" in cfg and "loops=B2->B0" in cfg
+    constraints = draft.type_constraints(["jb sym", "ret 8"], {"this_reads": [4], "stack_args": [8],
+                                                            "virtual_slots": [3], "returns": ["ret 8"]})
+    assert "ECX receiver" in constraints and "unsigned branch" in constraints and "virtual slots 3" in constraints
+    ir = draft.structure_ir(["00401000  8b4104               mov eax, dword ptr [ecx + 4]",
+                             "00401003  7202                 jb 0x401007", "00401005  c20800               ret 8"], facts)
+    assert ir["branches"][0]["unsigned"] and ir["receiver_offsets"] == ["0x34"]
+    assert ir["signature"]["receiver"] and ir["signature"]["return_instruction"] == "ret 8"
+    assert draft.source_contract_error("struct S { int x; };") == "missing function definition"
+    assert not draft.source_contract_error("int f(){ return 0; }")
+    assert "pseudo-instruction" in draft.source_contract_error("int f(){ push(1); return 0; }")
+    assert draft.compile_failure_class("error C2227") == "receiver/object pointer misuse"
+
+
+def test_draft_rejects_inline_asm(monkeypatch):
+    from roc import draft
+    calls = []
+    def ask(*args):
+        calls.append(args)
+        return "```cpp\nvoid f(){ __asm { nop } }\n```", "old-context"
+    monkeypatch.setattr(draft, "_ask_context", ask)
+    monkeypatch.setattr(draft.match, "target", lambda *args: (b"\xc3", [], {"size": 1, "unit": "x"}))
+    monkeypatch.setattr(draft.match, "disasm", lambda *args: ["ret "])
+    monkeypatch.setattr(draft, "prompt_for", lambda *args: args[5][0] if args[5] else "initial")
+    stats = []
+    score, source = draft.llm_rounds("C", "1", "model", 2, stats=stats, log=lambda *_: None)
+    assert score == 0 and source is None and stats[0]["rejected_asm"]
+    assert [call[2] for call in calls] == [None, None]
+    assert "__asm" not in calls[1][1]
+
+
+def test_draft_stops_at_code_fence(monkeypatch):
+    from roc import draft
+    class Stream:
+        def __init__(self):
+            self.rows = iter([b'{"response":"```cpp\\nint f(){}\\n```"}\n',
+                              b'{"response":"ignored"}\n'])
+        def __enter__(self): return self
+        def __exit__(self, *_): return None
+        def __iter__(self): return self
+        def __next__(self): return next(self.rows)
+    monkeypatch.setattr(draft.urllib.request, "urlopen", lambda *args, **kwargs: Stream())
+    reply, context = draft._ask_context("model", "prompt")
+    assert reply.endswith("```") and context is None
+
+
+def test_reference_prompt_is_bounded(monkeypatch):
+    from roc import draft, refsource
+    monkeypatch.setattr(draft.match.clients, "load", lambda: {"C": {"compiler": "cl", "flags": "/O2"}})
+    monkeypatch.setattr(refsource, "hint", lambda *_: "must not appear")
+    row = {"size": 8, "unit": "Thing"}
+    source = {"path": "Thing.cpp", "text": "text" * 1000, "method": "method" * 1000,
+              "facts": {"classes": ["Thing"]}}
+    prompt = draft.prompt_for("C", "1", row, ["ret "], None, None, source_hints=[source], strategy="reference")
+    assert "must not appear" not in prompt and "method" * 150 in prompt and "method" * 151 not in prompt
 
 
 def test_model_choice(monkeypatch):
@@ -189,9 +255,163 @@ def test_model_choice(monkeypatch):
     monkeypatch.setattr(draft, "ollama_models", lambda: ["my-model", "qwen2.5-coder:7b"])
     assert draft.pick_model() == "qwen2.5-coder:7b"
     assert draft.pick_model("my-model") == "my-model"
+    assert draft.pick_model("local:my-model") == "local:my-model"
     assert draft.pick_model("default") == "qwen2.5-coder:7b"
     monkeypatch.setattr(draft, "ollama_models", lambda: ["my-model"])
     assert draft.pick_model() == "my-model"
+    assert draft.pick_model("local:my-model") == "local:my-model"
+
+
+def test_cloud_provider_core():
+    from roc import providers
+    old_post = providers._post
+    old_key = os.environ.get("NVIDIA_API_KEY")
+    os.environ["NVIDIA_API_KEY"] = "test-key"
+    try:
+        providers._post = lambda *args: ({"id": "req1", "choices": [{"message": {"content": "```cpp\\nint f(){}\\n```"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 4, "completion_tokens": 7}}, {"x-request-id": "req1"})
+        out = providers.generate("nvidia:qwen/test", r"C:\Users\alice\secret", options={"allow_cloud": True, "max_tokens": 8})
+        assert out.provider == "nvidia" and out.model == "qwen/test" and out.input_tokens == 4
+        assert "alice" not in out.state["messages"][0]["content"]
+        listed = providers.generate("nvidia:qwen/test", [{"role": "system", "content": "short"},
+                                                            {"role": "user", "content": "message-list"}],
+                                    options={"allow_cloud": True, "max_tokens": 8})
+        assert listed.text and listed.state["messages"][0]["role"] == "system"
+        history = providers.generate("nvidia:qwen/test", [{"role": "system", "content": r"C:\Users\alice\private"},
+                                                             {"role": "user", "content": "message-list"}],
+                                      options={"allow_cloud": True, "max_tokens": 8})
+        assert "alice" not in history.state["messages"][0]["content"]
+        assert "private" not in providers.sanitize_prompt("token=private-token-value")
+        try:
+            providers.save_provider("bad", "openai-chat", "https://example.com/v1?token=x", "BAD_KEY")
+            raise AssertionError("secret query URL was accepted")
+        except ValueError:
+            pass
+        try:
+            providers.generate("nvidia:qwen/test", "x", options={})
+            raise AssertionError("cloud request was not blocked")
+        except providers.ProviderError as error:
+            assert error.category == "cloud_disabled"
+        budget = providers.CloudBudget(requests=1, tokens=20)
+        ticket = budget.reserve(8)
+        budget.settle(ticket, 10)
+        assert budget.requests == 1 and budget.tokens == 10
+        try:
+            budget.reserve(1)
+            raise AssertionError("request budget was not enforced")
+        except providers.ProviderError:
+            pass
+        gate = providers.CloudGate(concurrency=1, failures=1)
+        lock = gate.enter("nvidia")
+        lock.release()
+        gate.done("nvidia", False)
+        try:
+            gate.enter("nvidia")
+            raise AssertionError("circuit breaker was not enforced")
+        except providers.ProviderError as error:
+            assert error.category == "provider_circuit"
+    finally:
+        providers._post = old_post
+        if old_key is None:
+            os.environ.pop("NVIDIA_API_KEY", None)
+        else:
+            os.environ["NVIDIA_API_KEY"] = old_key
+
+
+def test_native_cloud_adapters():
+    from roc import providers
+    names = {"OPENAI_API_KEY": "test-openai", "ANTHROPIC_API_KEY": "test-anthropic",
+             "GEMINI_API_KEY": "test-gemini"}
+    before = {name: os.environ.get(name) for name in names}
+    old_post = providers._post
+    calls = []
+    def fake_post(url, body, headers, timeout):
+        calls.append((url, body, headers))
+        if url.endswith("/responses"):
+            return {"id": "openai-r", "output_text": "openai", "status": "completed",
+                    "usage": {"input_tokens": 3, "output_tokens": 4}}, {}
+        if url.endswith("/messages"):
+            return {"id": "anthropic-r", "content": [{"type": "text", "text": "anthropic"}],
+                    "stop_reason": "end_turn", "usage": {"input_tokens": 5, "output_tokens": 6}}, {}
+        return {"candidates": [{"content": {"parts": [{"text": "gemini"}]}, "finishReason": "STOP"}],
+                "usageMetadata": {"promptTokenCount": 7, "candidatesTokenCount": 8}}, {}
+    try:
+        os.environ.update(names)
+        providers._post = fake_post
+        assert providers.generate("openai:gpt-test", "p", options={"allow_cloud": True}).text == "openai"
+        assert providers.generate("anthropic:claude-test", "p", options={"allow_cloud": True}).text == "anthropic"
+        assert providers.generate("gemini:gemini-test", "p", options={"allow_cloud": True}).text == "gemini"
+        assert calls[0][1]["store"] is False and calls[1][2]["anthropic-version"]
+        assert "x-goog-api-key" in calls[2][2]
+    finally:
+        providers._post = old_post
+        for name, value in before.items():
+            if value is None:
+                os.environ.pop(name, None)
+            else:
+                os.environ[name] = value
+
+
+def test_cloud_retry_and_budget_do_not_trip_circuit():
+    from roc import providers
+    old_key = os.environ.get("NVIDIA_API_KEY")
+    old_post = providers._post
+    calls = []
+    os.environ["NVIDIA_API_KEY"] = "test-key"
+    def flaky(*args):
+        calls.append(1)
+        if len(calls) < 3:
+            raise providers.ProviderError("provider_retry", "temporary", 503)
+        return {"id": "ok", "choices": [{"message": {"content": "ok"}}]}, {}
+    try:
+        providers._post = flaky
+        gate = providers.CloudGate(concurrency=1, failures=1)
+        out = providers.generate("nvidia:qwen/test", "p", options={"allow_cloud": True,
+                                                                       "retries": 2, "gate": gate})
+        assert out.text == "ok" and out.retries == 2 and len(calls) == 3
+        budget = providers.CloudBudget(requests=0)
+        try:
+            providers.generate("nvidia:qwen/test", "p", options={"allow_cloud": True,
+                                                                      "gate": gate, "budget": budget})
+            raise AssertionError("budget did not stop request")
+        except providers.ProviderError as error:
+            assert error.category == "cloud_budget"
+        lock = gate.enter("nvidia")
+        lock.release()
+    finally:
+        providers._post = old_post
+        if old_key is None:
+            os.environ.pop("NVIDIA_API_KEY", None)
+        else:
+            os.environ["NVIDIA_API_KEY"] = old_key
+
+
+def test_deepseek_openai_compatible_provider():
+    from roc import providers
+    old_key = os.environ.get("DEEPSEEK_API_KEY")
+    old_post = providers._post
+    calls = []
+    os.environ["DEEPSEEK_API_KEY"] = "test-deepseek"
+    def fake_post(url, body, headers, timeout):
+        calls.append((url, body, headers))
+        return {"id": "ds-1", "choices": [{"message": {"content": "ok"},
+                                                "finish_reason": "stop"}],
+                "usage": {"prompt_tokens": 2, "completion_tokens": 3}}, {}
+    try:
+        providers._post = fake_post
+        out = providers.generate("deepseek:deepseek-flash", "Reply ok",
+                                 options={"allow_cloud": True, "max_tokens": 8,
+                                          "thinking": "enabled", "reasoning_effort": "high"})
+        assert out.provider == "deepseek" and out.model == "deepseek-flash"
+        assert calls[0][0] == "https://api.deepseek.com/chat/completions"
+        assert calls[0][2]["Authorization"] == "Bearer test-deepseek"
+        assert calls[0][1]["thinking"] == {"type": "enabled"}
+        assert calls[0][1]["reasoning_effort"] == "high"
+    finally:
+        providers._post = old_post
+        if old_key is None:
+            os.environ.pop("DEEPSEEK_API_KEY", None)
+        else:
+            os.environ["DEEPSEEK_API_KEY"] = old_key
 
 
 def test_link_options():
@@ -356,6 +576,24 @@ def test_refsource_hint_without_tree(tmp_path, monkeypatch):
     assert refsource.prompt_hints("seg_00400000") == []
 
 
+def test_dataset_audit_project_split():
+    from roc import dataset
+    with tempfile.TemporaryDirectory() as folder:
+        root = Path(folder)
+        (root / "f.cpp").write_text("int f(){return 0;}\n")
+        (root / "f.obj").write_bytes(b"x" * 8)
+        (root / "f.relocs.json").write_text("[0]")
+        entry = {"project": "p", "split": "train", "license": "MIT", "source": "f.cpp",
+                 "client": "2008-06", "addr": "00401000", "size": 4, "compiler": "msvc-2008",
+                 "flags": "/O2", "binary": "f.obj", "relocations": "f.relocs.json"}
+        manifest = root / "manifest.json"
+        manifest.write_text(json.dumps({"format": "roconstruct-msvc-pilot-v1", "entries": [entry]}))
+        assert dataset.audit(manifest, strict=False)["ok"]
+        leaked = dict(entry, split="test", addr="00401004")
+        manifest.write_text(json.dumps({"format": "roconstruct-msvc-pilot-v1", "entries": [entry, leaked]}))
+        assert not dataset.audit(manifest, strict=False)["ok"]
+
+
 def test_exact_match_separate_from_fuzzy():
     a = bytes.fromhex("8b442404c3")
     assert exact_match(a, [], a, []) and score(a, [], a, []) == 100
@@ -379,11 +617,20 @@ def test_mutate_validated():
         if "unsigned char" in t:
             return (90, None, None, None)
         return (50, None, None, None)
-    best, out, tried = mutate.improve("C", "1", src, check=fake_check)
+    result = mutate.improve("C", "1", src, check=fake_check)
+    best, out, tried, spec = result[0], result[1], result[2], result.speculative
     assert (best, tried) == (90, len(vs)) and "unsigned char" in out
+    assert spec is False  # signedness toggle is semantics-preserving
+    # old 3-unpacking callers keep working (mixed-version safety)
+    legacy_score, legacy_src, legacy_tried = mutate.improve("C", "1", src, check=fake_check)
+    assert (legacy_score, legacy_tried) == (90, len(vs))
     def boom(c, a, t, f=None):
         raise CompileError("nope")
     assert mutate.improve("C", "1", src, check=boom)[0] == 0
+    neg = "int f(int a, int b)\n{\n    return a == b;\n}\n"
+    def prefer_neg(c, a, t, f=None):
+        return (80 if "!=" in t else 10, None, None, None)
+    assert mutate.improve("C", "1", neg, check=prefer_neg).speculative is True
 
 
 def test_topk_and_benchmark_summary():
@@ -395,6 +642,90 @@ def test_topk_and_benchmark_summary():
     s = _metrics.summarize_runs(jobs)
     assert s["jobs"] == 2 and s["matched"] == 1 and s["seconds_per_match"] == 30.0
     assert s["compile_success_rate"] == 0.5
+    assert s["compile_attempts"] == 2 and s["rejected_inline_asm"] == 0
+    assert _metrics.known_generation_cost([{"round": 1, "provider": "nvidia", "estimated_cost": None}]) is None
+    assert _metrics.known_generation_cost([{"round": 1, "provider": "nvidia", "estimated_cost": 0.25}]) == 0.25
+
+
+def test_qualified_type_definition_rejected():
+    from roc import draft
+    assert draft.invalid_qualified_definition("struct RBX::FaceInstance { int x; };")
+    assert not draft.invalid_qualified_definition("namespace RBX { struct FaceInstance { int x; }; }")
+    assert "numeric address" in draft.source_contract_error("int f(){ return 0x401000(1); }")
+
+
+def test_selfupdate():
+    from roc import selfupdate
+    import subprocess
+    real_which, real_run = shutil.which, subprocess.run
+
+    class Done:
+        def __init__(self, code=0, out=""):
+            self.returncode, self.stdout = code, out
+
+    def run_case(which, sides, raises=None):
+        import roc.selfupdate as su
+        su.shutil.which = lambda *a: which
+        def fake_run(*args, **k):
+            if raises:
+                raise raises
+            return sides.pop(0)
+        su.subprocess.run = fake_run
+        try:
+            return su.try_update(log=lambda *a: None)
+        finally:
+            su.shutil.which, su.subprocess.run = real_which, real_run
+
+    assert "git not installed" in run_case(None, [])
+    with patch.object(Path, "exists", return_value=False):
+        assert "not a git checkout" in run_case("git", [])
+    assert "local source edits" in run_case("git", [Done(1)])                       # diff --quiet
+    assert "offline" in run_case("git", [Done(0), Done(1)])                          # fetch fails
+    assert "current" in run_case("git", [Done(0), Done(0), Done(0, "0\n")])          # behind 0
+    assert run_case("git", [Done(0), Done(0), Done(0, "3\n"), Done(0)]) == "updated"  # pull ok
+    assert "as-is" in run_case("git", [Done(0), Done(0), Done(0, "3\n"), Done(1)])   # pull fails
+    assert "as-is" in run_case("git", [], raises=subprocess.TimeoutExpired("git", 1))
+    assert "as-is" in run_case("git", [], raises=OSError("nope"))
+
+
+def test_repair_safety_guards():
+    # namespaced qualifiers are never renamed, even with one class present
+    ns = "struct V {\n    int x;\n};\nint RBX::VInstance::Create()\n{\n    return 0;\n}\n"
+    assert _repair.ensure_member_declared(ns) is None
+    # STL qualifiers are never renamed
+    stl = "struct E {\n    int v[4];\n};\nint vector::size()\n{\n    return 0;\n}\n"
+    assert _repair.ensure_member_declared(stl) is None
+    # calling convention survives into the inserted declaration
+    conv = "struct S {\n    int x;\n};\nint __stdcall S::f(int a)\n{\n    return a;\n}\n"
+    fixed = _repair.ensure_member_declared(conv)
+    assert fixed is not None and "int __stdcall f(int a);" in fixed
+    # win typedefs only for identifiers the compiler reported missing
+    wsrc = "struct W {\n    DWORD d;\n    int e;\n};\nint W::f()\n{\n    return d;\n}\n"
+    assert _repair.add_win_typedefs(wsrc, "error C2065: 'DWORD' : undeclared") is not None
+    assert _repair.add_win_typedefs(wsrc, "error C2065: 'HANDLE' : undeclared") is None
+    assert "struct HDC__; typedef struct HDC__ *HDC;" in _repair.add_win_typedefs(
+        "HDC h;", "error C2065: 'HDC' : undeclared")
+    # `this` rename still fires with std:: mentions but no qualified definition
+    free = "int g(std::vector<int>* v, X* this)\n{\n    return this->x;\n}\n"
+    assert _repair.rename_this_identifier(free) is not None
+    assert _repair.rename_this_identifier(
+        "struct S {\n    int f();\n};\nint S::f()\n{\n    return this->x;\n}\n") is None
+
+
+def test_auto_import_skips_dropped_functions():
+    from roc.server import Store, import_auto_matches
+    st = Store(":memory:", lease_seconds=1)
+    st.db.execute("INSERT INTO funcs(client,addr,size,unit) VALUES('C','00401000',6,'A')")
+    st.db.commit()
+    # 00401040 was dropped by re-analysis (the 2009-12 startup crash): skipped, server lives.
+    assert import_auto_matches(st, "C", {"00401000": "void f(){}\n", "00401040": "void g(){}\n"},
+                               log=lambda *a: None) == (1, 1)
+    assert st.scores() == {"C": {"00401000": 100}}
+    try:
+        st.submit("C", "00401040", "alice", 100, "x")
+        raise AssertionError("unknown function accepted")
+    except ValueError:
+        pass
 
 
 if __name__ == "__main__":

@@ -1,0 +1,439 @@
+"""Provider-neutral text generation for local and cloud worker models.
+
+Keys are read only from environment variables.  This module deliberately owns
+all provider HTTP details so matching, MSVC compilation, and server leases stay
+local and provider-agnostic.
+"""
+import json
+import os
+import re
+import threading
+import time
+import urllib.error
+import urllib.request
+from urllib.parse import urlparse
+from dataclasses import dataclass
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+CONFIG = ROOT / "roconstruct-providers.json"
+OLLAMA = "http://127.0.0.1:11434"
+
+BUILTINS = {
+    "nvidia": {"kind": "openai-chat", "base_url": "https://integrate.api.nvidia.com/v1",
+               "key_env": "NVIDIA_API_KEY"},
+    "deepseek": {"kind": "openai-chat", "base_url": "https://api.deepseek.com",
+                 "key_env": "DEEPSEEK_API_KEY"},
+    "openai": {"kind": "openai-responses", "base_url": "https://api.openai.com/v1",
+               "key_env": "OPENAI_API_KEY"},
+    "anthropic": {"kind": "anthropic-messages", "base_url": "https://api.anthropic.com/v1",
+                  "key_env": "ANTHROPIC_API_KEY", "api_version": "2023-06-01"},
+    "gemini": {"kind": "gemini", "base_url": "https://generativelanguage.googleapis.com/v1beta",
+                "key_env": "GEMINI_API_KEY"},
+}
+KINDS = {"openai-chat", "openai-responses", "anthropic-messages", "gemini"}
+SYSTEM = "Reconstruct compact valid C++ only. Never emit inline assembly. Follow the user task exactly."
+
+
+class ProviderError(RuntimeError):
+    """Safe error: never carries an Authorization header or provider body."""
+    def __init__(self, category, message, status=None):
+        self.category, self.status = category, status
+        super().__init__("%s: %s" % (category, message))
+
+
+@dataclass
+class Generation:
+    text: str
+    state: object
+    input_tokens: int = 0
+    output_tokens: int = 0
+    cached_tokens: int = 0
+    latency_s: float = 0.0
+    provider: str = "local"
+    model: str = ""
+    request_id: str = ""
+    finish_reason: str = ""
+    retries: int = 0
+    cost: object = None
+
+    def telemetry(self):
+        return {"provider": self.provider, "provider_model": self.model,
+                "request_id": self.request_id, "input_tokens": self.input_tokens,
+                "output_tokens": self.output_tokens, "cached_tokens": self.cached_tokens,
+                "generation_seconds": round(self.latency_s, 3), "finish_reason": self.finish_reason,
+                "provider_retries": self.retries, "estimated_cost": self.cost}
+
+
+class CloudBudget:
+    """Thread-safe, conservative request/token/cost guard shared by worker loops."""
+    def __init__(self, requests=None, tokens=None, cost=None):
+        self.max_requests = requests
+        self.max_tokens = tokens
+        self.max_cost = cost
+        self.requests = self.tokens = 0
+        self.cost = 0.0
+        self._lock = threading.Lock()
+
+    def reserve(self, estimate_tokens=0, estimate_cost=0.0):
+        with self._lock:
+            if self.max_requests is not None and self.requests >= self.max_requests:
+                raise ProviderError("cloud_budget", "cloud request limit reached")
+            if self.max_tokens is not None and self.tokens + estimate_tokens > self.max_tokens:
+                raise ProviderError("cloud_budget", "cloud token limit reached")
+            if self.max_cost is not None and self.cost + estimate_cost > self.max_cost:
+                raise ProviderError("cloud_budget", "cloud cost limit reached")
+            self.requests += 1
+            self.tokens += estimate_tokens
+            self.cost += estimate_cost
+            return estimate_tokens, estimate_cost
+
+    def settle(self, ticket, tokens=0, cost=None):
+        with self._lock:
+            old_tokens, old_cost = ticket
+            self.tokens += max(0, int(tokens) - old_tokens)
+            if cost is not None:
+                self.cost += max(0.0, float(cost) - old_cost)
+
+
+class CloudGate:
+    """Shared provider limiter and short circuit breaker for concurrent workers."""
+    def __init__(self, concurrency=1, failures=3):
+        self.concurrency = max(1, int(concurrency or 1))
+        self.failures = max(1, int(failures or 3))
+        self._locks, self._failed, self._lock = {}, {}, threading.Lock()
+
+    def enter(self, provider):
+        with self._lock:
+            if self._failed.get(provider, 0) >= self.failures:
+                raise ProviderError("provider_circuit", "%s circuit is open" % provider)
+            lock = self._locks.setdefault(provider, threading.BoundedSemaphore(self.concurrency))
+        lock.acquire()
+        return lock
+
+    def done(self, provider, ok):
+        with self._lock:
+            self._failed[provider] = 0 if ok else self._failed.get(provider, 0) + 1
+
+
+def _read_config():
+    try:
+        loaded = json.loads(CONFIG.read_text(encoding="utf-8"))
+        configured = loaded.get("providers", {})
+    except (OSError, ValueError, TypeError):
+        configured = {}
+    out = {name: dict(value) for name, value in BUILTINS.items()}
+    for name, value in configured.items():
+        if (isinstance(value, dict) and value.get("kind") in KINDS and _safe_base_url(value.get("base_url"))
+                and value.get("key_env")):
+            out[name] = dict(value)
+    return out
+
+
+def providers():
+    """Public non-secret provider registry."""
+    return _read_config()
+
+
+def _safe_base_url(value):
+    """Provider config must never persist userinfo or query-string secrets."""
+    parsed = urlparse(str(value or ""))
+    return (parsed.scheme == "https" and bool(parsed.netloc) and not parsed.username and
+            not parsed.password and not parsed.query and not parsed.fragment)
+
+
+def save_provider(name, kind, base_url, key_env, **extra):
+    if not re.match(r"^[A-Za-z][A-Za-z0-9_-]{0,63}$", name or ""):
+        raise ValueError("provider name must be letters, digits, _ or -")
+    if kind not in KINDS:
+        raise ValueError("unknown provider kind")
+    if not _safe_base_url(base_url):
+        raise ValueError("provider URL must be https without credentials, query, or fragment")
+    if not re.match(r"^[A-Za-z_][A-Za-z0-9_]*$", key_env or ""):
+        raise ValueError("key environment variable is invalid")
+    try:
+        data = json.loads(CONFIG.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        data = {}
+    data.setdefault("providers", {})[name] = {"kind": kind, "base_url": base_url.rstrip("/"),
+                                                  "key_env": key_env, **extra}
+    CONFIG.write_text(json.dumps(data, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+
+def remove_provider(name):
+    """Remove a user override; built-in names fall back to their safe defaults."""
+    try:
+        data = json.loads(CONFIG.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return False
+    removed = bool(data.get("providers", {}).pop(name, None))
+    CONFIG.write_text(json.dumps(data, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    return removed
+
+
+def parse_model(model):
+    """Return (provider, remote-model, config); bare names retain Ollama compatibility."""
+    model = model or ""
+    if model.startswith("local:"):
+        return "local", model[6:], {"kind": "ollama", "base_url": OLLAMA}
+    head, sep, tail = model.partition(":")
+    registry = _read_config()
+    if head == "hosted" and sep:
+        provider, slash, remote = tail.partition("/")
+        if provider in registry and slash and remote:
+            return provider, remote, registry[provider]
+        raise ProviderError("provider_config", "hosted model must be hosted:provider/MODEL")
+    if sep and head in registry:
+        if not tail:
+            raise ProviderError("provider_config", "cloud model name is missing")
+        return head, tail, registry[head]
+    return "local", model, {"kind": "ollama", "base_url": OLLAMA}
+
+
+def is_cloud(model):
+    return parse_model(model)[0] != "local"
+
+
+def available(model):
+    provider, _remote, config = parse_model(model)
+    if provider == "local":
+        return True
+    return bool(os.environ.get(config["key_env"]))
+
+
+def sanitize_prompt(text):
+    """Remove accidental local-user paths and likely secret values, not source facts."""
+    text = str(text or "")
+    text = re.sub(r"(?i)\b[A-Z]:\\Users\\[^\s\r\n]+", r"C:\\Users\\<redacted>", text)
+    text = re.sub(r"(?i)\b[A-Z]:\\(?:[^\\/:*?\"<>|\r\n]+[\\/])+[^\s\r\n]*", r"<local-path>", text)
+    text = re.sub(r"(?i)/Users/[^/\s]+", "/Users/<redacted>", text)
+    text = re.sub(r"(?i)(?:sk|nvapi|AIza)[-_A-Za-z0-9]{16,}", "<redacted-key>", text)
+    text = re.sub(r"(?i)\b(api[_-]?key|authorization|token|password|secret)\s*[:=]\s*['\"]?[^\s'\"]{12,}",
+                  r"\1=<redacted>", text)
+    return text
+
+
+def _url(config, suffix):
+    return config["base_url"].rstrip("/") + suffix
+
+
+def _post(url, body, headers, timeout):
+    req = urllib.request.Request(url, data=json.dumps(body).encode("utf-8"), headers=headers, method="POST")
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as response:
+            return json.loads(response.read()), dict(response.headers)
+    except urllib.error.HTTPError as error:
+        retry = error.code in (408, 429) or error.code >= 500
+        raise ProviderError("provider_retry" if retry else "provider_auth" if error.code in (401, 403) else "provider_error",
+                            "HTTP %d" % error.code, error.code)
+    except (urllib.error.URLError, OSError, ValueError) as error:
+        raise ProviderError("provider_retry", type(error).__name__)
+
+
+def _usage(data, *names):
+    usage = data.get("usage") or data.get("usageMetadata") or {}
+    for name in names:
+        if name in usage and isinstance(usage[name], (int, float)):
+            return int(usage[name])
+    return 0
+
+
+def _cost(config, inp, out):
+    prices = config.get("pricing") or {}
+    if not prices:
+        return None
+    return round((inp * float(prices.get("input_per_million", 0)) +
+                  out * float(prices.get("output_per_million", 0))) / 1000000, 8)
+
+
+def _cloud_messages(prompt, state):
+    messages = []
+    for message in (state or {}).get("messages", ()):
+        if not isinstance(message, dict) or not message.get("content"):
+            continue
+        messages.append({"role": str(message.get("role", "user")),
+                         "content": sanitize_prompt(message.get("content", ""))})
+    if not any(message.get("role") == "system" for message in messages if isinstance(message, dict)):
+        messages.insert(0, {"role": "system", "content": SYSTEM})
+    messages.append({"role": "user", "content": sanitize_prompt(prompt)})
+    return messages
+
+
+def _openai_chat(provider, remote, config, prompt, state, options):
+    messages = _cloud_messages(prompt, state)
+    key = os.environ.get(config["key_env"])
+    if not key:
+        raise ProviderError("provider_key", "%s is not set" % config["key_env"])
+    body = {"model": remote, "messages": messages, "temperature": options.get("temperature", 0.2),
+            "max_tokens": options.get("max_tokens", 1024), "stream": False}
+    if options.get("seed") is not None:
+        body["seed"] = int(options["seed"])
+    if options.get("thinking") is not None:
+        body["thinking"] = (options["thinking"] if isinstance(options["thinking"], dict)
+                             else {"type": str(options["thinking"])})
+    if options.get("reasoning_effort") is not None:
+        body["reasoning_effort"] = str(options["reasoning_effort"])
+    data, headers = _post(_url(config, "/chat/completions"), body,
+                          {"Content-Type": "application/json", "Authorization": "Bearer " + key}, options["timeout"])
+    choice = (data.get("choices") or [{}])[0]
+    text = (choice.get("message") or {}).get("content") or ""
+    return Generation(text, {"messages": messages + [{"role": "assistant", "content": text}]},
+                      input_tokens=_usage(data, "prompt_tokens", "input_tokens"),
+                      output_tokens=_usage(data, "completion_tokens", "output_tokens"),
+                      cached_tokens=_usage(data, "cached_tokens"), provider=provider, model=remote,
+                      request_id=headers.get("x-request-id", data.get("id", "")),
+                      finish_reason=choice.get("finish_reason", ""))
+
+
+def _openai_responses(provider, remote, config, prompt, state, options):
+    messages = _cloud_messages(prompt, state)
+    key = os.environ.get(config["key_env"])
+    if not key:
+        raise ProviderError("provider_key", "%s is not set" % config["key_env"])
+    body = {"model": remote, "input": messages, "max_output_tokens": options.get("max_tokens", 1024),
+            "temperature": options.get("temperature", 0.2), "store": False}
+    data, headers = _post(_url(config, "/responses"), body,
+                          {"Content-Type": "application/json", "Authorization": "Bearer " + key}, options["timeout"])
+    text = data.get("output_text", "")
+    if not text:
+        text = "".join(part.get("text", "") for item in data.get("output", [])
+                       for part in item.get("content", []) if part.get("type") in ("output_text", "text"))
+    return Generation(text, {"messages": messages + [{"role": "assistant", "content": text}]},
+                      input_tokens=_usage(data, "input_tokens"), output_tokens=_usage(data, "output_tokens"),
+                      cached_tokens=_usage(data, "cached_tokens"), provider=provider, model=remote,
+                      request_id=headers.get("x-request-id", data.get("id", "")), finish_reason=data.get("status", ""))
+
+
+def _anthropic(provider, remote, config, prompt, state, options):
+    messages = _cloud_messages(prompt, state)
+    key = os.environ.get(config["key_env"])
+    if not key:
+        raise ProviderError("provider_key", "%s is not set" % config["key_env"])
+    system = "\n".join(message["content"] for message in messages if message["role"] == "system")
+    body = {"model": remote, "messages": [message for message in messages if message["role"] != "system"],
+            "system": system, "max_tokens": options.get("max_tokens", 1024),
+            "temperature": options.get("temperature", 0.2)}
+    data, headers = _post(_url(config, "/messages"), body, {"Content-Type": "application/json",
+                          "x-api-key": key, "anthropic-version": config.get("api_version", "2023-06-01")}, options["timeout"])
+    text = "".join(part.get("text", "") for part in data.get("content", []) if part.get("type") == "text")
+    return Generation(text, {"messages": messages + [{"role": "assistant", "content": text}]},
+                      input_tokens=_usage(data, "input_tokens"), output_tokens=_usage(data, "output_tokens"),
+                      provider=provider, model=remote, request_id=headers.get("request-id", data.get("id", "")),
+                      finish_reason=data.get("stop_reason", ""))
+
+
+def _gemini(provider, remote, config, prompt, state, options):
+    messages = _cloud_messages(prompt, state)
+    key = os.environ.get(config["key_env"])
+    if not key:
+        raise ProviderError("provider_key", "%s is not set" % config["key_env"])
+    contents = [{"role": "model" if m["role"] == "assistant" else "user", "parts": [{"text": m["content"]}]}
+                for m in messages if m["role"] != "system"]
+    body = {"contents": contents, "systemInstruction": {"parts": [{"text": "\n".join(
+            m["content"] for m in messages if m["role"] == "system")}]},
+            "generationConfig": {"temperature": options.get("temperature", 0.2),
+            "maxOutputTokens": options.get("max_tokens", 1024)}}
+    data, headers = _post(_url(config, "/models/%s:generateContent" % remote), body,
+                          {"Content-Type": "application/json", "x-goog-api-key": key}, options["timeout"])
+    candidate = (data.get("candidates") or [{}])[0]
+    text = "".join(part.get("text", "") for part in (candidate.get("content") or {}).get("parts", []))
+    return Generation(text, {"messages": messages + [{"role": "assistant", "content": text}]},
+                      input_tokens=_usage(data, "promptTokenCount"), output_tokens=_usage(data, "candidatesTokenCount"),
+                      cached_tokens=_usage(data, "cachedContentTokenCount"), provider=provider, model=remote,
+                      request_id=headers.get("x-request-id", ""), finish_reason=candidate.get("finishReason", ""))
+
+
+def _ollama(remote, prompt, state, options):
+    request = {"model": remote, "prompt": prompt, "stream": True, "keep_alive": "10m",
+               "options": {"temperature": options.get("temperature", 0.2), **options.get("profile", {})}}
+    if options.get("seed") is not None:
+        request["options"]["seed"] = int(options["seed"])
+    if state:
+        request["context"] = state
+    req = urllib.request.Request(OLLAMA + "/api/generate", data=json.dumps(request).encode(),
+                                 headers={"Content-Type": "application/json"})
+    pieces, fences, returned, final = [], 0, None, {}
+    started = time.monotonic()
+    try:
+        with urllib.request.urlopen(req, timeout=options["timeout"]) as response:
+            for raw in response:
+                try:
+                    item = json.loads(raw)
+                except ValueError:
+                    continue
+                piece = item.get("response", "")
+                pieces.append(piece)
+                fences += piece.count("```")
+                if item.get("context"):
+                    returned = item["context"]
+                final = item
+                if fences >= 2:
+                    break
+    except urllib.error.HTTPError as error:
+        raise ProviderError("provider_error", "Ollama HTTP %d" % error.code, error.code)
+    return Generation("".join(pieces), returned, int(final.get("prompt_eval_count", 0) or 0),
+                      int(final.get("eval_count", 0) or 0), int(final.get("prompt_eval_cached_count", 0) or 0),
+                      time.monotonic() - started, "local", remote, "", final.get("done_reason", ""))
+
+
+def generate(model, messages, options=None, state=None):
+    """Generate once from a prompt or explicit message list. Cloud requires consent."""
+    if isinstance(messages, (list, tuple)):
+        history = [dict(item) for item in messages if isinstance(item, dict) and item.get("content")]
+        last = next((item for item in reversed(history) if item.get("role") == "user"), None)
+        if not last:
+            raise ProviderError("provider_input", "message list needs a user message")
+        prompt = str(last["content"])
+        state = {"messages": history[:history.index(last)]} if state is None else state
+    else:
+        prompt = str(messages or "")
+    options = dict(options or {})
+    options.setdefault("timeout", 180)
+    options.setdefault("max_tokens", 1024)
+    options.setdefault("temperature", 0.2)
+    provider, remote, config = parse_model(model)
+    if provider == "local":
+        return _ollama(remote, prompt, state, options)
+    if not options.get("allow_cloud"):
+        raise ProviderError("cloud_disabled", "pass --allow-cloud before sending prompts to cloud providers")
+    gate, lock = options.get("gate"), None
+    budget = options.get("budget")
+    estimate_input = max(1, len(sanitize_prompt(prompt)) // 3)
+    estimate_tokens = estimate_input + int(options["max_tokens"])
+    if budget and budget.max_cost is not None and not (config.get("pricing") or {}):
+        raise ProviderError("cloud_budget", "--max-cloud-cost needs provider pricing; cost is unknown")
+    if gate:
+        lock = gate.enter(provider)
+    started, retries = time.monotonic(), 0
+    try:
+        for attempt in range(int(options.get("retries", 2)) + 1):
+            ticket = None
+            try:
+                if budget:
+                    ticket = budget.reserve(estimate_tokens, _cost(config, estimate_input, int(options["max_tokens"])) or 0.0)
+                fn = {"openai-chat": _openai_chat, "openai-responses": _openai_responses,
+                      "anthropic-messages": _anthropic, "gemini": _gemini}[config["kind"]]
+                out = fn(provider, remote, config, prompt, state, options)
+                out.latency_s = time.monotonic() - started
+                out.retries = retries
+                out.cost = _cost(config, out.input_tokens, out.output_tokens)
+                if budget:
+                    budget.settle(ticket, out.input_tokens + out.output_tokens, out.cost)
+                if gate:
+                    gate.done(provider, True)
+                return out
+            except ProviderError as error:
+                if error.category != "provider_retry" or attempt >= int(options.get("retries", 2)):
+                    if gate and error.category != "cloud_budget":
+                        gate.done(provider, False)
+                    raise
+                retries += 1
+                time.sleep(min(8, 0.5 * (2 ** attempt)))
+    finally:
+        if lock:
+            lock.release()
+
+
+def test_provider(name, model):
+    """Small opt-in probe; no model source, assembly, or key is displayed."""
+    return generate("%s:%s" % (name, model), "Reply with exactly: ok", options={"allow_cloud": True, "max_tokens": 8})

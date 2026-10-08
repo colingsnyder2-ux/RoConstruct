@@ -51,7 +51,8 @@ To undo the install later, double-click **`uninstall.cmd`**. It lists everything
 
 | You have | Do this |
 |---|---|
-| A GPU with 8 GB+ | Run an **AI worker**: install [Ollama](https://ollama.com), then `ollama pull qwen2.5-coder:7b`, then click Start helping. `roc model` shows installed models; `roc model <name>` picks yours; `roc model default` restores automatic choice. Optional: [Docker](https://www.docker.com/products/docker-desktop/) + `docker pull revng/revng` for extra decompiler hints. |
+| A GPU with 8 GB+ | Run an **AI worker**: install [Ollama](https://ollama.com), then `ollama pull qwen2.5-coder:7b-instruct`, then click Start helping. `roc model` shows installed models; `roc model <name>` picks yours; `roc model default` restores automatic choice. Optional: [Docker](https://www.docker.com/products/docker-desktop/) + `docker pull revng/revng` for extra decompiler hints. |
+| A cloud model key | Run `roc provider list`, export the provider key, then select a model such as `roc model nvidia:qwen/qwen2.5-coder-32b-instruct` or `deepseek:deepseek-flash`. Cloud prompts contain bounded disassembly and source clues, so first save consent with `roc config --allow-cloud`. Keys never go in RoConstruct settings or the group server. Run `roc provider test <provider> --model <model>` before a worker. |
 | C++ knowledge | **Match by hand**: see below. |
 | A PC that's always on | **Host the server**: see below. |
 
@@ -147,11 +148,21 @@ roc worker --dry-run             check worker setup without taking a job
 roc worker --workers 2           run bounded parallel lease loops (1-8, or auto)
 roc worker --preset fast|deep    choose speed or source-heavy mode
 roc worker --source-only         run deterministic candidates only
+roc worker --model nvidia:MODEL --allow-cloud --cloud-min-size 97 --cloud-fallback qwen2.5-coder:7b-instruct
+                                 spend cloud only on medium/large jobs
+roc worker --model qwen2.5-coder:7b-instruct --cloud-escalate nvidia:MODEL --allow-cloud
+                                 escalate stalled hard jobs after 2 attempts
+roc worker --model deepseek:deepseek-v4-pro --allow-cloud --thinking enabled --reasoning-effort high
+                                 opt into DeepSeek reasoning for measured hard-target runs
+roc dataset init pilot.json       make legal MSVC training-pilot manifest
+roc dataset audit pilot.json      verify source/binary files + project-held-out split
 roc doctor                       check compilers, Ollama, Docker, clients
 roc model-stats                  compare models from worker telemetry
 roc benchmark-models             create fixed targets + compare telemetry
 roc benchmark-models --local-run --full --resume
                                  resumable full local model comparison
+roc benchmark-models --local-run --strategies structured --diverse-candidates 3
+                                 measure hard-target candidate diversity
 roc benchmark-models --progress  show saved benchmark records only
 roc failures                     show recurring worker failures
 roc source-status                show 2016 source-name coverage
@@ -247,7 +258,7 @@ The remaining steps:
 | `looks modified` | That exe was patched; get an unmodified copy. |
 | `Missing compiler` | Run `roc install` (re-running resumes downloads). |
 | `cannot reach server` | The server may be offline; workers retry automatically. |
-| `AI workers need Ollama` | Install Ollama, then `ollama pull qwen2.5-coder:7b`; check with `roc doctor`. |
+| `AI workers need Ollama` | Install Ollama, then `ollama pull qwen2.5-coder:7b-instruct`; check with `roc doctor`. |
 </details>
 
 ## Rules

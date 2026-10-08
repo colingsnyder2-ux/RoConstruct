@@ -296,18 +296,22 @@ def cmd_flags(a):
 
 
 def cmd_config(a):
-    from roc import draft
+    from roc import draft, providers
     from roc.worker import clear_setting, save_settings, USER_RE
     if a.user and not USER_RE.match(a.user):
         sys.exit("Username must be 2-32 letters, digits, _ . -")
     if a.model and a.model != "default" and not draft.pick_model(a.model):
+        if providers.is_cloud(a.model):
+            _provider, _remote, config = providers.parse_model(a.model)
+            sys.exit("Cloud key is missing: set %s" % config["key_env"])
         choices = draft.ollama_models()
         sys.exit("Model '%s' is not installed. Installed: %s" %
                  (a.model, ", ".join(choices) or "none (run: ollama pull <model>)"))
     if a.model == "default":
         clear_setting("model")
         a.model = None
-    s = save_settings(user=a.user, server=a.server, token=a.token, model=a.model, public_server=a.public_server)
+    s = save_settings(user=a.user, server=a.server, token=a.token, model=a.model,
+                      public_server=a.public_server, cloud_allowed=a.allow_cloud)
     print("Saved: " + ", ".join("%s=%s" % (k, "***" if k == "token" else v) for k, v in s.items()))
 
 
@@ -351,11 +355,16 @@ def cmd_server(a):
 
 
 def cmd_worker(a):
-    from roc import draft, worker
+    from roc import draft, providers, selfupdate, worker
+    if not a.no_update:
+        print("Checking for updates: %s" % selfupdate.try_update())
     s = settings()
     srv = need(a.server or s.get("server"), "server", "Use --server URL or: roc config --server URL")
     user = need(a.user or s.get("user"), "username", "Use --user NAME or: roc config --user NAME")
     if a.model and a.model != "default" and not draft.pick_model(a.model):
+        if providers.is_cloud(a.model):
+            _provider, _remote, config = providers.parse_model(a.model)
+            sys.exit("Cloud key is missing: set %s" % config["key_env"])
         sys.exit("Model '%s' is not installed. See: roc model" % a.model)
     if a.model == "default":
         worker.clear_setting("model")
@@ -366,6 +375,28 @@ def cmd_worker(a):
     elif a.preset == "deep":
         a.rounds, a.max_size = max(a.rounds, 6), max(a.max_size, 512)
     chosen = a.model or s.get("model")
+    cloud_allowed = bool(a.allow_cloud or s.get("cloud_allowed"))
+    if chosen and providers.is_cloud(chosen) and not cloud_allowed:
+        sys.exit("Cloud models send prompts outside this PC. Pass --allow-cloud to continue.")
+    if a.cloud_escalate:
+        if not providers.is_cloud(a.cloud_escalate):
+            raise SystemExit("--cloud-escalate needs a cloud model")
+        if not cloud_allowed:
+            raise SystemExit("Cloud escalation needs --allow-cloud")
+        if not providers.available(a.cloud_escalate):
+            _provider, _remote, config = providers.parse_model(a.cloud_escalate)
+            raise SystemExit("Cloud key is missing: set %s" % config["key_env"])
+    budget = providers.CloudBudget(a.max_cloud_requests, a.max_cloud_tokens, a.max_cloud_cost)
+    gate = providers.CloudGate(a.cloud_concurrency)
+    if a.cloud_fallback:
+        if providers.is_cloud(a.cloud_fallback):
+            if not cloud_allowed:
+                raise SystemExit("Cloud fallback needs --allow-cloud")
+            if not providers.available(a.cloud_fallback):
+                _provider, _remote, config = providers.parse_model(a.cloud_fallback)
+                raise SystemExit("Cloud key is missing: set %s" % config["key_env"])
+        elif not draft.pick_model(a.cloud_fallback):
+            raise SystemExit("Cloud fallback model is not installed: %s" % a.cloud_fallback)
     if a.dry_run:
         info = worker.Api(srv, a.token or s.get("token")).call("/v1/info")
         have = worker.usable_clients(info)
@@ -375,7 +406,53 @@ def cmd_worker(a):
         return
     worker.save_settings(user=user, server=srv, model=a.model)
     worker.run_concurrent(srv, user, a.token or s.get("token"), chosen, a.rounds, a.max_size,
-                          not a.no_revng, a.jobs, a.workers, source_only=a.source_only)
+                          not a.no_revng, a.jobs, a.workers, source_only=a.source_only,
+                          only=[a.client] if a.client else None, strategy=a.strategy,
+                          cloud_allowed=cloud_allowed, cloud_budget=budget, cloud_gate=gate,
+                          diverse_candidates=a.diverse_candidates, cloud_min_size=a.cloud_min_size,
+                          cloud_fallback=a.cloud_fallback, seed=a.seed,
+                          cloud_escalate=a.cloud_escalate, cloud_escalate_after=a.cloud_escalate_after,
+                          thinking=a.thinking, reasoning_effort=a.reasoning_effort)
+
+
+def cmd_provider(a):
+    from roc import providers
+    if a.sub == "list":
+        for name, config in sorted(providers.providers().items()):
+            print("%-12s %-18s %s (%s=%s)" % (name, config["kind"], config["base_url"],
+                                                config["key_env"], "set" if os.environ.get(config["key_env"]) else "missing"))
+        return
+    if a.sub == "add":
+        providers.save_provider(a.name, a.kind, a.base_url, a.key_env)
+        print("Saved provider %s. Key stays in %s." % (a.name, a.key_env))
+        return
+    if a.sub == "remove":
+        print("Removed provider override %s." % a.name if providers.remove_provider(a.name) else "No saved provider override: %s" % a.name)
+        return
+    if a.sub == "test":
+        print("Privacy: provider test sends only a fixed two-word prompt; no source or executable.")
+        out = providers.test_provider(a.name, a.model)
+        print("%s:%s %.2fs in=%d out=%d finish=%s reply=%r" %
+              (out.provider, out.model, out.latency_s, out.input_tokens, out.output_tokens,
+              out.finish_reason or "unknown", out.text[:80]))
+
+
+def cmd_dataset(a):
+    from roc import dataset
+    if a.sub == "init":
+        path = Path(a.path)
+        if path.exists():
+            raise SystemExit("manifest exists: %s" % path)
+        path.write_text(json.dumps(dataset.template(), indent=2) + "\n", encoding="utf-8")
+        print("Wrote legal-source manifest template: %s" % path)
+        return
+    report = dataset.audit(a.path, strict=not a.allow_partial)
+    print("Dataset audit: %s | entries=%d projects=%d splits=%s" %
+          ("PASS" if report["ok"] else "FAIL", report["entries"], report.get("projects", 0), report.get("splits", {})))
+    for error in report["errors"]:
+        print("  " + error)
+    if not report["ok"]:
+        raise SystemExit(1)
 
 
 def cmd_doctor(a):
@@ -422,7 +499,7 @@ def cmd_failures(a):
 
 
 def cmd_benchmark_models(a):
-    from roc import benchmark, metrics, draft, worker
+    from roc import benchmark, metrics, draft, providers, worker
     if a.progress:
         rows = metrics.corpus_stats(benchmark.build_hidden(a.limit))
         total = sum(r["jobs"] for r in rows)
@@ -436,15 +513,39 @@ def cmd_benchmark_models(a):
         hidden = benchmark.build_hidden(a.limit)
         print("Hidden benchmark corpus: %d targets (%s)" % (len(hidden), benchmark.HIDDEN))
         return
-    if a.local_run:
+    if a.local_run or a.model:
         hidden = benchmark.build_hidden(a.limit)
-        models = [m for m in draft.ollama_models() if "qwen2.5-coder" in m]
+        models = a.model or [m for m in draft.ollama_models() if "qwen2.5-coder" in m]
         if not models:
             raise SystemExit("no qwen2.5-coder model installed")
+        for model in models:
+            if providers.is_cloud(model):
+                if not a.allow_cloud:
+                    raise SystemExit("Cloud benchmark sends prompts outside this PC. Pass --allow-cloud.")
+                if not providers.available(model):
+                    _provider, _remote, config = providers.parse_model(model)
+                    raise SystemExit("Cloud key is missing: set %s" % config["key_env"])
+            elif not draft.pick_model(model):
+                raise SystemExit("Model is not installed: %s" % model)
+        if any(providers.is_cloud(model) for model in models):
+            print("Privacy: cloud benchmark sends bounded assembly, symbols, prompts, and source hints. "
+                  "No executable or provider key leaves this PC.")
         corpus = hidden if a.full else hidden[:a.limit]
-        print("Running local benchmark: %d targets, %d models%s" %
-              (len(corpus), min(2, len(models)), " (resumable)" if a.resume else ""))
-        benchmark.run_local(corpus, models[:2], rounds=1, resume=a.resume)
+        print("Running benchmark: %d targets, %d models%s" %
+              (len(corpus), len(models), " (resumable)" if a.resume else ""))
+        strategies = tuple(a.strategies.split(","))
+        bad = set(strategies).difference({"direct", "structured", "reference"})
+        if bad:
+            raise SystemExit("unknown strategy: %s" % ", ".join(sorted(bad)))
+        budget = providers.CloudBudget(a.max_cloud_requests, a.max_cloud_tokens, a.max_cloud_cost)
+        gate = providers.CloudGate(a.cloud_concurrency)
+        for repeat in range(max(1, a.repeats)):
+            session = a.session if a.repeats == 1 else "%s-r%d" % (a.session, repeat + 1)
+            benchmark.run_local(corpus, models, rounds=a.rounds, resume=a.resume, session=session,
+                                strategies=strategies, provider_options={"allow_cloud": a.allow_cloud,
+                                "budget": budget, "gate": gate, "seed": a.seed,
+                                "diverse_candidates": a.diverse_candidates,
+                                "thinking": a.thinking, "reasoning_effort": a.reasoning_effort})
         return
     if a.baseline:
         hidden = benchmark.build_hidden(a.limit)
@@ -527,7 +628,7 @@ def cmd_status(a):
 
 
 def cmd_model(a):
-    from roc import draft
+    from roc import draft, providers
     from roc.worker import clear_setting, save_settings
     models = draft.ollama_models()
     if a.name:
@@ -535,7 +636,15 @@ def cmd_model(a):
             clear_setting("model")
             print("Model: default (%s)" % (draft.pick_model() or "none installed"))
             return
-        if a.name not in models:
+        if providers.is_cloud(a.name):
+            if not providers.available(a.name):
+                _provider, _remote, config = providers.parse_model(a.name)
+                sys.exit("Cloud key is missing: set %s" % config["key_env"])
+            save_settings(model=a.name)
+            print("Model: %s (cloud)" % a.name)
+            return
+        local_name = a.name[6:] if a.name.startswith("local:") else a.name
+        if local_name not in models:
             sys.exit("Model '%s' is not installed. Installed: %s" %
                      (a.name, ", ".join(models) or "none (run: ollama pull <model>)"))
         save_settings(model=a.name)
@@ -700,9 +809,36 @@ def main(argv=None):
     cmd("flags", cmd_flags, "find the client's compiler flags from matched sources", (["name"], {}))
     cmd("config", cmd_config, "save username / server / password / model",
         (["--user"], {}), (["--server"], {}), (["--token"], {}), (["--model"], {}),
-        (["--public-server"], {"help": "address shown in website join links (host:port)"}))
+        (["--public-server"], {"help": "address shown in website join links (host:port)"}),
+        (["--allow-cloud"], {"action": "store_true", "default": None,
+                              "help": "save approval to send worker prompts to cloud models"}))
     cmd("model", cmd_model, "show or choose worker model (default = automatic choice)",
         (["name"], {"nargs": "?"}))
+    p = sub.add_parser("provider", help="configure or test non-secret cloud model providers")
+    ps = p.add_subparsers(dest="sub", required=True)
+    ps.add_parser("list", help="show providers and whether their key environment variable is set").set_defaults(fn=cmd_provider)
+    pa = ps.add_parser("add", help="add an OpenAI-compatible or native cloud endpoint (no key saved)")
+    pa.add_argument("name")
+    pa.add_argument("--kind", required=True, choices=["openai-chat", "openai-responses", "anthropic-messages", "gemini"])
+    pa.add_argument("--base-url", required=True)
+    pa.add_argument("--key-env", required=True)
+    pa.set_defaults(fn=cmd_provider)
+    pr = ps.add_parser("remove", help="remove a custom provider override")
+    pr.add_argument("name")
+    pr.set_defaults(fn=cmd_provider)
+    pt = ps.add_parser("test", help="send a tiny opt-in provider probe")
+    pt.add_argument("name")
+    pt.add_argument("--model", required=True)
+    pt.set_defaults(fn=cmd_provider)
+    p = sub.add_parser("dataset", help="create or audit legal MSVC training-pilot manifests")
+    ds = p.add_subparsers(dest="sub", required=True)
+    di = ds.add_parser("init", help="write a legal-source-only manifest template")
+    di.add_argument("path")
+    di.set_defaults(fn=cmd_dataset)
+    da = ds.add_parser("audit", help="validate compiler data and project-held-out splits")
+    da.add_argument("path")
+    da.add_argument("--allow-partial", action="store_true", help="check structure before 100-300 pair pilot is complete")
+    da.set_defaults(fn=cmd_dataset)
     cmd("link", cmd_link, "one-click links: 'install', 'remove', or a roconstruct:// URL", (["target"], {}))
     cmd("submit", cmd_submit, "send hand-written sources to the server",
         (["name"], {}), (["addr"], {"nargs": "*"}), (["--server"], {}), (["--user"], {}), (["--token"], {}))
@@ -721,15 +857,38 @@ def main(argv=None):
         (["--startup"], {"action": "store_true", "help": "start host.cmd automatically when you log in"}))
     cmd("worker", cmd_worker, "help automatically: AI drafts, compile, submit",
         (["--server"], {}), (["--user"], {}), (["--token"], {}), (["--model"], {}),
+        (["--client"], {"help": "restrict work to one registered client (for example 2008-06)"}),
         (["--rounds"], {"type": int, "default": 4, "help": "AI tries per function"}),
+        (["--strategy"], {"choices": ["direct", "structured", "reference"], "default": "direct",
+                            "help": "candidate-generation prompt strategy"}),
         (["--max-size"], {"type": int, "default": 256, "help": "skip functions bigger than this (bytes)"}),
         (["--jobs"], {"type": int, "help": "stop after this many functions"}),
         (["--workers"], {"default": "1",
                           "help": "bounded concurrent lease loops (1-8 or auto)"}),
+        (["--allow-cloud"], {"action": "store_true", "help": "allow prompt data to leave this PC"}),
+        (["--max-cloud-requests"], {"type": int, "help": "cloud request budget for this worker"}),
+        (["--max-cloud-tokens"], {"type": int, "help": "cloud token budget for this worker"}),
+        (["--max-cloud-cost"], {"type": float, "help": "cloud cost budget when provider pricing is configured"}),
+        (["--cloud-concurrency"], {"type": int, "default": 1,
+                                     "help": "maximum simultaneous requests per cloud provider"}),
+        (["--diverse-candidates"], {"type": int, "default": 1,
+                                      "help": "independent samples for hard functions; default 1"}),
+        (["--cloud-min-size"], {"type": int, "default": 97,
+                                  "help": "use local 7B fallback below this byte size; 0 disables routing"}),
+        (["--cloud-fallback"], {"help": "installed local model for --cloud-min-size jobs"}),
+        (["--cloud-escalate"], {"help": "cloud model for medium/large jobs stalled by primary model"}),
+        (["--cloud-escalate-after"], {"type": int, "default": 2,
+                                        "help": "primary attempts before cloud escalation"}),
+        (["--seed"], {"type": int, "help": "generation seed where provider supports it"}),
+        (["--thinking"], {"choices": ["enabled", "disabled"],
+                            "help": "explicit provider reasoning mode (DeepSeek-compatible providers)"}),
+        (["--reasoning-effort"], {"choices": ["low", "medium", "high", "max"],
+                                    "help": "explicit provider reasoning effort for hard targets"}),
         (["--no-revng"], {"action": "store_true"}),
         (["--preset"], {"choices": ["fast", "balanced", "deep"], "default": "balanced"}),
         (["--dry-run"], {"action": "store_true", "help": "show worker setup without leasing a job"}),
-        (["--source-only"], {"action": "store_true", "help": "run deterministic candidates; never call Ollama"}))
+        (["--source-only"], {"action": "store_true", "help": "run deterministic candidates; never call Ollama"}),
+        (["--no-update"], {"action": "store_true", "help": "skip the pre-run source update check"}))
     cmd("doctor", cmd_doctor, "check worker dependencies and local source setup")
     cmd("model-stats", cmd_model_stats, "compare models using worker telemetry")
     cmd("failures", cmd_failures, "show recurring worker compile/API failures",
@@ -738,8 +897,26 @@ def main(argv=None):
         (["--generate"], {"action": "store_true"}),
         (["--hidden"], {"action": "store_true", "help": "build source/score-hidden solved targets"}),
         (["--local-run"], {"action": "store_true", "help": "run two installed coder models locally without submit"}),
+        (["--model"], {"action": "append", "help": "model arm; repeat for local/cloud models"}),
+        (["--session"], {"default": "benchmark", "help": "telemetry session id; use one per benchmark arm"}),
+        (["--repeats"], {"type": int, "default": 1, "help": "independent benchmark repeats"}),
+        (["--rounds"], {"type": int, "default": 1, "help": "generation rounds per target"}),
+        (["--diverse-candidates"], {"type": int, "default": 1,
+                                      "help": "independent candidates for hard-target benchmark arms"}),
+        (["--seed"], {"type": int, "help": "generation seed where provider supports it"}),
+        (["--thinking"], {"choices": ["enabled", "disabled"],
+                            "help": "explicit provider reasoning mode for measured arms"}),
+        (["--reasoning-effort"], {"choices": ["low", "medium", "high", "max"],
+                                    "help": "explicit provider reasoning effort for measured arms"}),
+        (["--allow-cloud"], {"action": "store_true", "help": "allow cloud benchmark prompt sending"}),
+        (["--max-cloud-requests"], {"type": int}),
+        (["--max-cloud-tokens"], {"type": int}),
+        (["--max-cloud-cost"], {"type": float}),
+        (["--cloud-concurrency"], {"type": int, "default": 1}),
         (["--full"], {"action": "store_true", "help": "use the complete fixed/hidden corpus (can take hours)"}),
         (["--resume"], {"action": "store_true", "help": "skip local benchmark targets already recorded"}),
+        (["--strategies"], {"default": "direct,structured,reference",
+                              "help": "comma-separated: direct,structured,reference"}),
         (["--progress"], {"action": "store_true", "help": "show resumable benchmark records without running models"}),
         (["--baseline"], {"action": "store_true", "help": "save/compare hidden-corpus regression baseline"}),
         (["--run"], {"action": "store_true", "help": "run installed models on the fixed targets"}),

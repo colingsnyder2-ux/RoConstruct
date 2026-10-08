@@ -73,18 +73,23 @@ def build_hidden(limit=8):
     return out
 
 
-def run_local(corpus, models, rounds=1, log=print, resume=False):
-    """Benchmark models locally without submitting or changing server state."""
+def run_local(corpus, models, rounds=1, log=print, resume=False, session="benchmark", strategies=("direct",),
+              provider_options=None):
+    """Benchmark configured models without submitting or changing server state.
+
+    session isolates one measured run: pass a unique id per arm (e.g.
+    "bench-<date>-<label>") so background worker jobs sharing the metrics
+    file can never contaminate the comparison. Filter rows by session.
+    """
     import time
-    from roc import clients, draft, match, metrics, refsource
-    session = "benchmark"
+    from roc import clients, draft, match, metrics, providers, refsource
     done = set()
     if resume:
         try:
             for line in metrics.PATH.read_text(encoding="utf-8").splitlines():
                 row = json.loads(line)
                 if row.get("session") == session and row.get("event") == "job":
-                    done.add((row.get("client"), row.get("addr"), row.get("model")))
+                    done.add((row.get("client"), row.get("addr"), row.get("model"), row.get("strategy", "direct")))
         except (OSError, ValueError):
             pass
     for target in corpus:
@@ -93,22 +98,44 @@ def run_local(corpus, models, rounds=1, log=print, resume=False):
         asm = match.disasm(code, int(addr, 16))
         facts = draft.facts_from_asm(asm)
         facts.update(draft.target_data_facts(client, code, relocs))
+        facts.update({k: row[k] for k in ("call_targets", "external_calls", "imports", "strings",
+                                          "global_reads", "global_writes", "virtual_slots", "stack_args",
+                                          "this_reads", "this_writes", "calling_convention", "branches",
+                                          "constants") if row.get(k)})
         for model in models:
-            if (client, addr, model) in done:
-                log("  skip %s %s (already measured)" % (model, addr))
-                continue
-            started = time.monotonic()
-            stats = []
-            try:
-                score, _src = draft.llm_rounds(client, addr, model, rounds, None, (None, 0),
-                                               log, clients.load()[client].get("flags"), (),
-                                               refsource.prompt_hints(row.get("unit", ""), target_facts=facts),
-                                               facts, stats)
-                failure = None
-            except Exception as error:
-                score, failure = 0, str(error)[:300]
-            metrics.record(session, event="job", client=client, addr=addr, unit=row.get("unit"),
-                           model=model, size=row.get("size", 0), base_score=0, score=score,
-                           score_gain=score, improved=score > 0, rounds=stats,
-                           seconds=round(time.monotonic() - started, 2), failure=failure)
-            log("  %s %s %d%% %.1fs" % (model, addr, score, time.monotonic() - started))
+            for strategy in strategies:
+                if (client, addr, model, strategy) in done:
+                    log("  skip %s %s (already measured)" % (model, addr))
+                    continue
+                started = time.monotonic()
+                stats = []
+                try:
+                    score, _src = draft.llm_rounds(client, addr, model, rounds, None, (None, 0),
+                                                   log, clients.load()[client].get("flags"), (),
+                                                   refsource.prompt_hints(row.get("unit", ""), target_facts=facts, client=client),
+                                                   facts, stats, strategy=strategy, provider_options=provider_options)
+                    failure = None
+                except Exception as error:
+                    score, failure = 0, str(error)[:300]
+                generated = [item for item in stats if isinstance(item.get("round"), int)]
+                coded = [item for item in generated if item.get("code")]
+                provider_row = next((item for item in reversed(generated) if item.get("provider")), {})
+                _name, _remote, config = providers.parse_model(model)
+                metrics.record(session, event="job", client=client, addr=addr, unit=row.get("unit"),
+                               model=model, strategy=strategy, size=row.get("size", 0), base_score=0, score=score,
+                               score_gain=score, improved=score > 0, rounds=stats,
+                               seconds=round(time.monotonic() - started, 2), failure=failure,
+                               compiler_flags=clients.load()[client].get("flags"),
+                               provider=provider_row.get("provider", _name),
+                               provider_model=provider_row.get("provider_model", _remote),
+                               provider_endpoint_kind=config.get("kind", "ollama"),
+                               seed=(provider_options or {}).get("seed"),
+                               input_tokens=sum(item.get("input_tokens", 0) for item in generated),
+                               output_tokens=sum(item.get("output_tokens", 0) for item in generated),
+                               cached_tokens=sum(item.get("cached_tokens", 0) for item in generated),
+                               generation_seconds=round(sum(item.get("generation_seconds", 0) for item in generated), 3),
+                               compile_seconds=round(sum(item.get("compile_seconds", 0) for item in coded), 3),
+                               compile_attempts=len(coded),
+                               compile_ok=sum(not item.get("compile_error") for item in coded),
+                               estimated_cost=metrics.known_generation_cost(generated))
+                log("  %s/%s %s %d%% %.1fs" % (model, strategy, addr, score, time.monotonic() - started))

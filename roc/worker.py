@@ -197,7 +197,10 @@ def usable_clients(info, log=print):
 
 
 def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=True,
-        max_jobs=None, log=pretty_log, forever=False, only=None, source_only=False, targets=None):
+        max_jobs=None, log=pretty_log, forever=False, only=None, source_only=False, targets=None,
+        strategy="direct", cloud_allowed=False, cloud_budget=None, cloud_gate=None,
+        diverse_candidates=1, cloud_min_size=0, cloud_fallback=None, seed=None,
+        cloud_escalate=None, cloud_escalate_after=2, thinking=None, reasoning_effort=None):
     """forever: survive server/network outages (retry every minute) for overnight runs.
     only: restrict to these clients (one-click links)."""
     if not USER_RE.match(user or ""):
@@ -218,6 +221,7 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
     have = usable_clients(info, log)
     if not have:
         raise SystemExit("Nothing to work on from this PC yet (see the skip reasons above).")
+    from roc import providers
     auto_model = model is None and not source_only
     # Link UI already verified an explicit choice. Do not turn a brief
     # /api/tags outage between setup and this point into a false no-model exit.
@@ -225,6 +229,25 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
     if not model and not source_only:
         raise SystemExit("AI workers need Ollama with a code model:  ollama pull qwen2.5-coder:7b\n"
                          "No GPU? You can still help by hand: roc claim / roc check / roc submit.")
+    if not source_only and providers.is_cloud(model):
+        if not cloud_allowed:
+            raise SystemExit("Cloud model sends prompts outside this PC. Re-run with --allow-cloud.")
+        if not providers.available(model):
+            _provider, _remote, config = providers.parse_model(model)
+            raise SystemExit("Cloud key is missing: set %s." % config["key_env"])
+        log("Privacy: cloud worker sends bounded assembly, symbols, prompts, and source hints to %s. "
+            "No executable, key, or server lease leaves this PC." % providers.parse_model(model)[0])
+    if cloud_escalate:
+        if not providers.is_cloud(cloud_escalate):
+            raise SystemExit("cloud_escalate must be a cloud model")
+        if not cloud_allowed:
+            raise SystemExit("Cloud escalation needs --allow-cloud")
+        if not providers.available(cloud_escalate):
+            _provider, _remote, config = providers.parse_model(cloud_escalate)
+            raise SystemExit("Cloud key is missing: set %s" % config["key_env"])
+        if not providers.is_cloud(model):
+            log("Privacy: escalation may send bounded prompts to %s after repeated local stalls."
+                % providers.parse_model(cloud_escalate)[0])
     revng = not source_only and use_revng and draft.revng_available()
     worker = uuid.uuid4().hex[:12]
     session = uuid.uuid4().hex[:12]
@@ -258,8 +281,27 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
             continue
         done += 1
         job_model = draft.route_model(model, job) if auto_model else model
+        if (cloud_escalate and job.get("size", 0) >= cloud_min_size and
+                int((job.get("attempts_by_model") or {}).get(model, 0)) >= cloud_escalate_after):
+            job_model = cloud_escalate
+            log("  escalate: %s stalled on %d-byte job -> %s" % (model, job.get("size", 0), job_model))
+        if providers.is_cloud(job_model) and job.get("size", 0) < cloud_min_size:
+            fallback = cloud_fallback
+            if not fallback:
+                fallback = next((name for name in draft.ollama_models()
+                                 if name == "qwen2.5-coder:7b" or name.startswith("qwen2.5-coder:7b")), None)
+            if fallback:
+                job_model = fallback
+                log("  route: %d-byte job -> local fallback %s" % (job.get("size", 0), job_model))
+        provider_options = {"allow_cloud": cloud_allowed, "budget": cloud_budget,
+                            "gate": cloud_gate, "diverse_candidates": diverse_candidates,
+                            "seed": seed}
+        if thinking is not None:
+            provider_options["thinking"] = thinking
+        if reasoning_effort is not None:
+            provider_options["reasoning_effort"] = reasoning_effort
         score = work_one(api, user, job, info, job_model, rounds, revng, log, examples_cache, source_cache,
-                         session, source_only)
+                         session, source_only, strategy, provider_options)
         matched += score == 100
         failures += score == 0
         save_session_state(worker, user, model, done, matched, failures)
@@ -276,7 +318,10 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
 
 def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
                    use_revng=True, max_jobs=None, workers=1, log=pretty_log,
-                   source_only=False, targets=None, only=None):
+                   source_only=False, targets=None, only=None, strategy="direct", cloud_allowed=False,
+                   cloud_budget=None, cloud_gate=None, diverse_candidates=1,
+                   cloud_min_size=0, cloud_fallback=None, seed=None,
+                   cloud_escalate=None, cloud_escalate_after=2, thinking=None, reasoning_effort=None):
     """Run a bounded number of independent lease loops.
 
     Server leases make workers safe to run in parallel.  Keep the default at one
@@ -288,7 +333,12 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
     workers = max(1, min(int(workers or 1), 8))
     if workers == 1:
         return run(server, user, token, model, rounds, max_size, use_revng,
-                   max_jobs, log, forever=True, only=only, source_only=source_only, targets=targets)
+                   max_jobs, log, forever=True, only=only, source_only=source_only, targets=targets,
+                   strategy=strategy, cloud_allowed=cloud_allowed, cloud_budget=cloud_budget, cloud_gate=cloud_gate,
+                   diverse_candidates=diverse_candidates, cloud_min_size=cloud_min_size,
+                   cloud_fallback=cloud_fallback, seed=seed, cloud_escalate=cloud_escalate,
+                   cloud_escalate_after=cloud_escalate_after, thinking=thinking,
+                   reasoning_effort=reasoning_effort)
     if max_jobs is None:
         quotas = [None] * workers
     else:
@@ -299,7 +349,12 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
     def worker_loop(index):
         try:
             run(server, user, token, model, rounds, max_size, use_revng,
-                quotas[index], log, forever=True, only=only, source_only=source_only, targets=targets)
+                quotas[index], log, forever=True, only=only, source_only=source_only, targets=targets,
+                strategy=strategy, cloud_allowed=cloud_allowed, cloud_budget=cloud_budget, cloud_gate=cloud_gate,
+                diverse_candidates=diverse_candidates, cloud_min_size=cloud_min_size,
+                cloud_fallback=cloud_fallback, seed=seed, cloud_escalate=cloud_escalate,
+                cloud_escalate_after=cloud_escalate_after, thinking=thinking,
+                reasoning_effort=reasoning_effort)
         except BaseException as error:
             errors.append(error)
 
@@ -320,7 +375,8 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
 
 
 def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=None,
-             source_cache=None, session=None, source_only=False):
+             source_cache=None, session=None, source_only=False, strategy="direct", provider_options=None):
+    from roc import providers
     client, addr = job["client"], job["addr"]
     flags = info["clients"][client].get("flags")
     log("[%s %s] %d bytes, %s, best so far %d%%" % (client, addr, job["size"], job["unit"], job["score"]))
@@ -414,9 +470,11 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
             examples_cache[client][example_key] = [e["source"] for e in api.call(path)
                                                    if (client, e.get("addr")) not in quarantined]
         examples = examples_cache[client][example_key]
-        source_key = (client, job["unit"], tuple(facts.get("strings", ())))
+        source_key = (client, job["unit"], tuple(facts.get("strings", ())),
+                      tuple(refsource._target_terms(facts)), int(facts.get("calls", 0) or 0),
+                      int(facts.get("branch_count", 0) or 0))
         if source_key not in source_cache:
-            source_cache[source_key] = refsource.prompt_hints(job["unit"], target_facts=facts)
+            source_cache[source_key] = refsource.prompt_hints(job["unit"], target_facts=facts, client=client)
         source_hints = source_cache[source_key]
         # Tiny leaf functions are cheaper to solve from direct asm/source facts;
         # reserve Rev.ng CPU time for larger or structurally uncertain targets.
@@ -430,7 +488,8 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
         if source_candidate and source_candidate[0] > job["score"]:
             llm_start = (source_candidate[1], source_candidate[0])
         score, src = draft.llm_rounds(client, addr, model, draft.model_rounds(model, rounds), hint, llm_start,
-                                      log, flags, examples, source_hints, facts, round_stats)
+                                      log, flags, examples, source_hints, facts, round_stats, strategy=strategy,
+                                      provider_options=provider_options)
         ensure_lease()
         phase_seconds["llm"] = round(time.monotonic() - llm_started, 3)
         if src and score > job["score"]:
@@ -461,6 +520,8 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
             failure_reason = "timeout"
         elif isinstance(error, ApiFailure):
             failure_reason = error.category
+        elif getattr(error, "category", ""):
+            failure_reason = error.category
         elif isinstance(error, RuntimeError):
             failure_reason = "api"
         else:
@@ -483,7 +544,10 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
         stop.set()
         if session:
             coded = [r for r in round_stats if isinstance(r.get("round"), int) and r.get("code")]
+            generated = [r for r in round_stats if isinstance(r.get("round"), int)]
+            provider_row = next((r for r in reversed(generated) if r.get("provider")), {})
             metrics.record(session, event="job", client=client, addr=addr, unit=job["unit"], model=model,
+                           strategy=strategy,
                            size=job.get("size", 0), base_score=job.get("score", 0), score=result,
                            score_gain=max(result - job.get("score", 0), 0), improved=improved,
                            source_hints=len(source_hints) if 'source_hints' in locals() else 0,
@@ -498,6 +562,15 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                                                  phase_seconds.get("source_compile", 0), 3),
                            compile_attempts=sum(1 for r in coded),
                            compile_ok=sum(1 for r in coded if not r.get("compile_error")),
+                           provider=provider_row.get("provider", "local"),
+                           provider_model=provider_row.get("provider_model", model),
+                           provider_endpoint_kind=providers.parse_model(model)[2].get("kind", "ollama"),
+                           compiler_flags=flags, seed=(provider_options or {}).get("seed"),
+                           input_tokens=sum(r.get("input_tokens", 0) for r in generated),
+                           output_tokens=sum(r.get("output_tokens", 0) for r in generated),
+                           cached_tokens=sum(r.get("cached_tokens", 0) for r in generated),
+                           generation_seconds=round(sum(r.get("generation_seconds", 0) for r in generated), 3),
+                           estimated_cost=metrics.known_generation_cost(generated),
                            failure_reason=failure_reason,
                            failure=failure)
 
