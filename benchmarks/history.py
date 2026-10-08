@@ -10,7 +10,7 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from roc import benchmark, metrics, providers, refsource, worker
+from roc import benchmark, metrics, providers, refsource, setup, worker
 
 
 def main():
@@ -32,10 +32,11 @@ def main():
         raise SystemExit("No 2007-08 hidden targets; generate the hidden corpus first.")
     gate = providers.CloudGate(args.workers)
     startup = time.monotonic()
+    setup.compilers()
     if refsource.TREE.is_dir():
         refsource.build_index(log=lambda line: None)
     startup = time.monotonic() - startup
-    print("Source-index warmup: %.3fs" % startup, flush=True)
+    print("Compiler/source warmup: %.3fs" % startup, flush=True)
     for repeat in range(args.repeats):
         for keep in args.keep:
             session = "%s-k%d-r%d" % (args.session, keep, repeat + 1)

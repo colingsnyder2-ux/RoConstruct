@@ -104,6 +104,19 @@ executable-image caches now serialize initial loads. Reproduce with
 `python benchmarks/target_startup.py --workers 8`. This is local startup time,
 not an end-to-end throughput multiplier.
 
+Compiler discovery was a second cold-start race: concurrent cache misses each
+recursively searched the tools tree and probed compiler executables. Parallel
+workers now discover compilers once before launching loops. Fixed-corpus
+18-thread validation: startup 3.125s, batches 7.781s and 4.828s. The preceding
+single-load-only run took 59.172s cold and 7.062s warm. Including startup, the
+new first batch was 10.906s. These are exploratory local generation/compilation
+measurements, not server mining throughput or a universal multiplier.
+Compiler-warmup arm: 36 jobs, 10 exact, 34 compilable, 174,415 tokens;
+serial comparison: 36 jobs, 8 exact, 36 compilable, 168,309 tokens, batches
+57.828s and 52.047s. Different draws and execution order prevent attributing
+quality differences to concurrency. Sessions: `throughput-compilerwarm18-20261008`
+and `throughput-warmed1-20261008`, each suffixed `-k2-r{1,2}`.
+
 The runner reads the existing hidden corpus and records isolated telemetry. Keep
 the corpus and compiler flags fixed across arms. Historical pre-guidance results
 require the pre-guidance code; rerunning current code changes both arms.

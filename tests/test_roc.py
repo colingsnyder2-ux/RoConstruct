@@ -606,8 +606,9 @@ def test_concurrent_shares_caches_and_clamps():
         calls.append((args, kwargs))
         return 0
 
-    with patch("roc.worker.run", side_effect=fake_run):
+    with patch("roc.worker.run", side_effect=fake_run), patch("roc.setup.compilers") as warmed:
         worker.run_concurrent("http://x", "u", model="m", max_jobs=3, workers=3, log=lambda *a: None)
+        warmed.assert_called_once()
     assert len(calls) == 3
     assert {c[1]["examples_cache"] is calls[0][1]["examples_cache"] for c in calls} == {True}
     assert {c[1]["source_cache"] is calls[0][1]["source_cache"] for c in calls} == {True}
