@@ -5,17 +5,25 @@ import threading
 import urllib.request
 
 
-def mined(webhook, job, user, worker, model):
+def mined(webhook, job, user, worker, model, score, points):
     url = webhook or os.environ.get("ROCONSTRUCT_DISCORD_WEBHOOK")
     if not url or not job:
         return
-    content = ("⛏️ **Function mined** | `%s %s` | `%s` | user `%s` | worker `%s` | model `%s` | %d bytes" %
-               (job.get("client", "?"), job.get("addr", "?"), job.get("unit", "?"),
-                user, worker, model or "auto", int(job.get("size", 0))))
+    color = 0x3FB950 if int(score) == 100 else 0xF2C14E
+    embed = {"title": "⛏️ Function mined", "color": color,
+             "fields": [
+                 {"name": "Function", "value": "`%s`" % job.get("unit", "?"), "inline": False},
+                 {"name": "Client", "value": "`%s`" % job.get("client", "?"), "inline": True},
+                 {"name": "Address", "value": "`%s`" % job.get("addr", "?"), "inline": True},
+                 {"name": "Score", "value": "%d%%" % int(score), "inline": True},
+                 {"name": "Points earned", "value": "+%d" % int(points), "inline": True},
+                 {"name": "User", "value": "`%s`" % user, "inline": True},
+                 {"name": "Model", "value": "`%s`" % (model or "auto"), "inline": True},
+             ], "footer": {"text": "%d bytes | worker %s" % (int(job.get("size", 0)), worker)}}
 
     def send():
         try:
-            body = json.dumps({"content": content[:1900]}).encode()
+            body = json.dumps({"embeds": [embed]}).encode()
             req = urllib.request.Request(url, data=body,
                                          headers={"Content-Type": "application/json"})
             with urllib.request.urlopen(req, timeout=5):

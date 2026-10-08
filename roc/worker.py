@@ -322,8 +322,9 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
             except match.CompileError:
                 continue
             if candidate_score > job["score"]:
-                r = api.call("/v1/submit", {"lease": job["lease"], "user": user, "client": client,
-                                            "addr": addr, "score": candidate_score, "source": candidate})
+                r = api.call("/v1/submit", {"lease": job["lease"], "user": user, "worker": job.get("worker"),
+                                            "model": job.get("model"), "client": client, "addr": addr,
+                                            "score": candidate_score, "source": candidate})
                 log("  deterministic candidate submitted %d%%" % r["stored"])
                 result, improved = r["stored"], True
                 return r["stored"]
@@ -333,8 +334,9 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
         phase_seconds["source_compile"] = round(time.monotonic() - phase_started, 3)
         if source_candidate and source_candidate[0] == 100:
             candidate_score, candidate_source, candidate_path = source_candidate
-            r = api.call("/v1/submit", {"lease": job["lease"], "user": user, "client": client,
-                                        "addr": addr, "score": candidate_score, "source": candidate_source})
+            r = api.call("/v1/submit", {"lease": job["lease"], "user": user, "worker": job.get("worker"),
+                                        "model": job.get("model"), "client": client, "addr": addr,
+                                        "score": candidate_score, "source": candidate_source})
             log("  2016 source candidate %d%% (%s)" % (r["stored"], candidate_path))
             result, improved = r["stored"], True
             return r["stored"]
@@ -380,16 +382,18 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
         ensure_lease()
         phase_seconds["llm"] = round(time.monotonic() - llm_started, 3)
         if src and score > job["score"]:
-            r = api.call("/v1/submit", {"lease": job["lease"], "user": user, "client": client,
-                                        "addr": addr, "score": score, "source": src})
+            r = api.call("/v1/submit", {"lease": job["lease"], "user": user, "worker": job.get("worker"),
+                                        "model": job.get("model"), "client": client, "addr": addr,
+                                        "score": score, "source": src})
             log("  submitted %d%% (%s)" % (r["stored"], "verified by server" if r["verified"] else "not re-checked"))
             result, improved = r["stored"], True
             return r["stored"]
         failure_reason = "bad_reply" if not src else "no_gain"
         if source_candidate and source_candidate[0] > job["score"]:
             candidate_score, candidate_source, candidate_path = source_candidate
-            r = api.call("/v1/submit", {"lease": job["lease"], "user": user, "client": client,
-                                        "addr": addr, "score": candidate_score, "source": candidate_source})
+            r = api.call("/v1/submit", {"lease": job["lease"], "user": user, "worker": job.get("worker"),
+                                        "model": job.get("model"), "client": client, "addr": addr,
+                                        "score": candidate_score, "source": candidate_source})
             log("  retained partial 2016 source candidate %d%% (%s)" % (r["stored"], candidate_path))
             result, improved = r["stored"], r["stored"] > job["score"]
             return r["stored"]

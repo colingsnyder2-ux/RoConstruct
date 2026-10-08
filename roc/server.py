@@ -136,6 +136,7 @@ class Store:
                             (json.dumps(by_model, separators=(",", ":")), row[0], row[1]))
             self.db.commit()
         return {"lease": lease, "client": row[0], "addr": row[1], "size": row[2], "unit": row[3],
+                "worker": worker, "model": model or "auto",
                 "score": row[4], "source": row[5], "shape": row[6], "calls": row[7],
                 "source_confidence": row[8], "difficulty": row[9], "attempts_by_model": json.loads(row[10] or "{}"),
                 "heartbeat": max(5, self.lease_seconds // 3)}
@@ -225,6 +226,11 @@ class Store:
             row = self.db.execute("SELECT score, source, user FROM funcs WHERE client = ? AND addr = ?",
                                   (client, addr)).fetchone()
         return {"score": row[0], "source": row[1], "user": row[2]} if row else None
+
+    def function_info(self, client, addr):
+        with self.lock:
+            row = self.db.execute("SELECT size, unit FROM funcs WHERE client = ? AND addr = ?", (client, addr)).fetchone()
+        return {"client": client, "addr": addr, "size": row[0], "unit": row[1]} if row else None
 
     def examples(self, client, n=3, unit=None, shape=None):
         """Small matched sources, used as few-shot examples for AI workers."""
@@ -324,10 +330,6 @@ def make_handler(store, token, can_verify, discord_webhook=None):
                                   str(body.get("mode", ""))[:16], int(body.get("max_size", 256)),
                                   str(body.get("model", ""))[:120] or None,
                                   body.get("targets"))
-                if job:
-                    from roc.discord import mined
-                    mined(discord_webhook, job, user, str(body.get("worker", ""))[:64],
-                          str(body.get("model", ""))[:120] or "auto")
                 return self.send(200, {"job": job})
             if path == "/v1/heartbeat":
                 return self.send(200, {"ok": store.heartbeat(str(body.get("lease", "")))})
@@ -340,6 +342,7 @@ def make_handler(store, token, can_verify, discord_webhook=None):
                 if not source.strip() or len(source) > 200_000:
                     return self.send(400, {"error": "empty or huge source"})
                 score, verified, spans = claimed, False, None
+                previous = (store.best(client, addr) or {}).get("score", 0)
                 if client in can_verify:
                     try:
                         score, _, _, spans = match.check_text(client, addr, source)
@@ -360,6 +363,11 @@ def make_handler(store, token, can_verify, discord_webhook=None):
                     return self.send(400, {"error": str(error)})
                 if body.get("lease"):
                     store.release(str(body["lease"]))
+                if improved:
+                    from roc.discord import mined
+                    mined(discord_webhook, store.function_info(client, addr), user,
+                          str(body.get("worker", ""))[:64], str(body.get("model", ""))[:120] or "auto",
+                          stored, stored - previous)
                 return self.send(200, {"score": score, "stored": stored, "improved": improved, "verified": verified})
             self.send(404, {"error": "unknown endpoint"})
 
