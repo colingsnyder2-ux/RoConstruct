@@ -637,7 +637,13 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
             prompt = full_prompt[full_prompt.index("Your previous attempt scored"):]
         ask_options = dict(provider_options or {})
         ask_options.pop("diverse_candidates", None)
-        ask_options.setdefault("max_tokens", output_budget(row.get("size", 0)))
+        try:
+            from roc import providers as _providers
+            cloud = _providers.is_cloud(model)
+        except (ValueError, RuntimeError):
+            cloud = False
+        floor = 1024 if cloud else 0
+        ask_options.setdefault("max_tokens", max(output_budget(row.get("size", 0)), floor))
         if strategy == "structured":
             ask_options.setdefault("temperature", 0.05)
         if independent:
@@ -652,7 +658,12 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
         generated_tokens = generation.pop("output_tokens", 0)
         src = extract_code(reply)
         if not src:
-            log("  round %d: no code in reply" % (i + 1))
+            finish = generation.get("finish_reason", "")
+            if finish == "length":
+                log("  round %d: truncated at max_tokens=%s (%d chars); raise output budget" % (
+                    i + 1, ask_options.get("max_tokens"), len(reply or "")))
+            else:
+                log("  round %d: no code in reply" % (i + 1))
             if stats is not None:
                 stats.append({"round": i + 1, "candidate_mode": "independent" if independent else "repair", "score": 0, "output_chars": len(reply),
                               "output_tokens": generated_tokens or max(1, len(reply) // 4),

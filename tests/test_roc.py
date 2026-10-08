@@ -241,6 +241,23 @@ def test_draft_stops_at_code_fence(monkeypatch):
     assert reply.endswith("```") and context is None
 
 
+def test_cloud_tiny_job_keeps_full_output_budget(monkeypatch):
+    from roc import draft
+    seen = []
+    def ask(model, prompt, context=None, options=None, details=False):
+        seen.append(dict(options or {}))
+        return "no code here", None, {"output_tokens": 1, "finish_reason": "stop"}
+    monkeypatch.setattr(draft, "_ask_context", ask)
+    monkeypatch.setattr(draft.match, "target", lambda *args: (b"\xc3", [], {"size": 9, "unit": "x"}))
+    monkeypatch.setattr(draft.match, "disasm", lambda *args: ["ret "])
+    logs = []
+    draft.llm_rounds("C", "1", "deepseek:deepseek-flash", 1, log=logs.append,
+                     provider_options={"allow_cloud": True})
+    assert seen and seen[0].get("max_tokens", 0) >= 1024
+    draft.llm_rounds("C", "1", "qwen2.5-coder:7b", 1, log=lambda *_: None)
+    assert seen[-1].get("max_tokens", 0) == draft.output_budget(9)
+
+
 def test_reference_prompt_is_bounded(monkeypatch):
     from roc import draft, refsource
     monkeypatch.setattr(draft.match.clients, "load", lambda: {"C": {"compiler": "cl", "flags": "/O2"}})
