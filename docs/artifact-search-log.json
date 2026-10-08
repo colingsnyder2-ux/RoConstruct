@@ -839,6 +839,13 @@
       "target": "VC80 SP1 library inventory 8.0.50727.163",
       "url": "https://www.betaarchive.com/wiki/index.php/Microsoft_KB_Archive/923610",
       "evidence": "Archived Microsoft KB file table lists VC80 libcpmt.lib (8,197,088 bytes) and related CRT/MFC artifacts from June 2006; no direct library payload exposed."
+    },
+    {
+      "checked_at": "2026-10-08T20:10:00-04:00",
+      "status": "metadata-only",
+      "target": "RobloxApp.exe PDB metadata (2011 build 0.38.0.169)",
+      "url": "https://www.hybrid-analysis.com/sample/3d5815dea0e4631038d27296d48e3369da85a25990eabf9774f9605040cf2c79/5b4d24ac7ca3e1737605a103",
+      "evidence": "Sandbox records PDB path d:\\roblox-build\\Trunk\\Client\\Roblox\\Win32\\Release\\RobloxApp.pdb, GUID 16ECA0E44CFD4CD29E306BFF337D710B, timestamp 2011-04-20, plus 2008/2005 compiler and LIB metadata. No PDB payload exposed."
     }
   ],
   "version": 1

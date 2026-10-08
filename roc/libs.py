@@ -306,6 +306,11 @@ _RBXGS_RAK_INC = [_RBXGS + d for d in ("Network/RakNet30/Source", "Network/inclu
                   "boost_1_34_1/src")] + ["compat", "WINSDK"]
 RECIPES["rbxgs-raknet"] = dict(src=_RBXGS + "Network/RakNet30/Source", langs=["cpp"], files="*.cpp",
                                grid=_RBXGS_GRID, include=_RBXGS_RAK_INC, defines=_RBXGS_DEF)
+# Public RakNet 4.081.  The checked-in source is byte-identical to Facebook's archived
+# upstream RakPeer.cpp; later Roblox clients retain a small amount of this core code.
+RECIPES["raknet-4.081"] = dict(src="RakNet-master/Source", langs=["cpp"], files="*.cpp",
+                                grid=["/O2 /GS- /EHsc /MD", "/O2 /GS- /MD", "/O1 /GS- /EHsc /MD"],
+                                include=["RakNet-master/Source", "WINSDK"], defines="WIN32 _WIN32")
 # RbxView (Part, meshes = the Ogre::Rbx* render classes) and RenderLib (Clusterer,
 # RenderScene). Broad include covers every sibling project they pull headers from.
 _RBXGS_VIEW_INC = [_RBXGS + d for d in ("RbxView/include", "RbxViewBase", "App/include",
