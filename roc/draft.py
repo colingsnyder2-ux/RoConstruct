@@ -474,6 +474,29 @@ RULES = """Rules:
 - Reply with ONE ```cpp code block and nothing else."""
 
 
+def _trim_hint_facts(hint_facts, terms, max_methods=16):
+    """Trim hint metadata without losing the names likely to matter.
+
+    Method lists (up to 48 alphabetical entries) dominate hint bytes. Keep
+    the ones overlapping observed target terms or the unit name first, then
+    fill alphabetically. Classes/inherits stay whole: small and structural.
+    """
+    out = dict(hint_facts or {})
+    methods = list(out.get("methods", []))
+    if len(methods) > max_methods:
+        lowered = [t.lower() for t in terms if t]
+        def rank(name):
+            text = str(name).lower()
+            return (-sum(1 for t in lowered if t in text), str(name))
+        methods = sorted(methods, key=rank)[:max_methods]
+        out["methods"] = methods
+    for key, cap in (("literals", 12), ("includes", 12)):
+        values = list(out.get(key, []))
+        if len(values) > cap:
+            out[key] = values[:cap]
+    return out
+
+
 def prompt_for(client, addr, row, asm, hint, attempt, flags=None, examples=(), source_hints=(), facts=None,
                strategy="direct"):
     entry = match.clients.load()[client]
@@ -496,6 +519,7 @@ def prompt_for(client, addr, row, asm, hint, attempt, flags=None, examples=(), s
     if hint:
         p += ["", "Rev.ng decompiler output (generic types, hint only):", hint]
     from roc import refsource
+    terms = list(refsource._target_terms(facts)) + re.findall(r"[A-Za-z_]\w{2,}", row.get("unit", ""))
     ref = refsource.hint(row["unit"]) if strategy != "reference" else None
     if ref:
         p += ["", "The same class in Roblox's 2016 source (real names; layout may have changed since):",
@@ -508,7 +532,7 @@ def prompt_for(client, addr, row, asm, hint, attempt, flags=None, examples=(), s
             p += ["", "Related-source evidence only (may differ; do not copy it): %s" % source["path"],
                   "```cpp", clue, "```"]
             if source.get("facts"):
-                p += ["Source metadata:", json.dumps({k: source["facts"].get(k, [])
+                p += ["Source metadata:", json.dumps({k: _trim_hint_facts(source["facts"], terms).get(k, [])
                                                          for k in ("classes", "methods", "inherits", "literals")
                                                          if source["facts"].get(k)}, separators=(",", ":"))]
             if source.get("age_delta") is not None:
@@ -519,7 +543,7 @@ def prompt_for(client, addr, row, asm, hint, attempt, flags=None, examples=(), s
         if source.get("method") and source["method"] != source["text"]:
             p += ["Relevant source method body:", "```cpp", source["method"], "```"]
         if source.get("facts"):
-            p += ["Source metadata:", json.dumps({k: source["facts"].get(k, [])
+            p += ["Source metadata:", json.dumps({k: _trim_hint_facts(source["facts"], terms).get(k, [])
                                                     for k in ("classes", "methods", "includes", "inherits", "literals")
                                                     if source["facts"].get(k)}, separators=(",", ":"))]
     if attempt:

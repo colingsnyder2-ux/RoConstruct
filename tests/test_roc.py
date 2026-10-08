@@ -505,6 +505,16 @@ def test_cloud_history_is_bounded():
     assert providers._cloud_messages("p", None)[0]["role"] == "system"
 
 
+def test_trim_hint_facts():
+    from roc.draft import _trim_hint_facts
+    methods = ["alpha%d" % i for i in range(30)] + ["BlockRender", "blockUpdate"]
+    trimmed = _trim_hint_facts({"methods": methods, "classes": ["C"],
+                                "literals": list(map(str, range(20)))}, ["block"])
+    assert len(trimmed["methods"]) == 16
+    assert "BlockRender" in trimmed["methods"] and "blockUpdate" in trimmed["methods"]
+    assert len(trimmed["literals"]) == 12 and trimmed["classes"] == ["C"]
+
+
 def test_server_store():
     st = Store(":memory:", lease_seconds=1)
     assert make_handler(st, None, set()).protocol_version == "HTTP/1.1"
