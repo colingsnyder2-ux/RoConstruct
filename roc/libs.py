@@ -283,6 +283,12 @@ _RBXGS_NET_INC = [_RBXGS + d for d in ("Network/include", "Network/include/netwo
                   "Rendering/SDL-1.2.6/include", "Rendering/RenderLib/include", "RbxGraphics/include")] + ["WINSDK"]
 RECIPES["rbxgs-net"] = dict(src=_RBXGS + "Network", langs=["cpp"], files="*.cpp",
                             grid=_RBXGS_GRID, include=_RBXGS_NET_INC, defines=_RBXGS_DEF)
+# RakNet 3.0 core source (RBXGSdecomp's raknet30 submodule) - the RakNet the 2007 clients
+# actually linked, older than the 2016 fork (rbx2016-raknet).
+_RBXGS_RAK_INC = [_RBXGS + d for d in ("Network/RakNet30/Source", "Network/include", "App/include",
+                  "boost_1_34_1/src")] + ["compat", "WINSDK"]
+RECIPES["rbxgs-raknet"] = dict(src=_RBXGS + "Network/RakNet30/Source", langs=["cpp"], files="*.cpp",
+                               grid=_RBXGS_GRID, include=_RBXGS_RAK_INC, defines=_RBXGS_DEF)
 # RbxView (Part, meshes = the Ogre::Rbx* render classes) and RenderLib (Clusterer,
 # RenderScene). Broad include covers every sibling project they pull headers from.
 _RBXGS_VIEW_INC = [_RBXGS + d for d in ("RbxView/include", "RbxViewBase", "App/include",
