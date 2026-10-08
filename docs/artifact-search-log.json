@@ -875,6 +875,14 @@
       "url": "https://hybrid-analysis.com/sample/9fe969fb89e67d1434cc3485ecd8816589c26b855e255dd8ecf0cb37d7533ea6/5915a1f2aac2ed6c565a17d3",
       "evidence": "Hybrid Analysis exposes Trunk2012 installer PDB paths for RobloxPlayerLauncher.exe, including D:\\BuildAgent\\work\\Trunk2012\\Client\\Installer\\BootstrapperClient\\bin\\Release\\RobloxPlayerLauncher.pdb. No PDB payload exposed."
     }
+    },
+    {
+      "checked_at": "2026-10-08T20:55:00-04:00",
+      "status": "metadata-only",
+      "target": "Roblox 2008.12.17 bootstrapper PDB metadata",
+      "url": "https://any.run/report/0f6aa09a2b074d220b5de17cc1e665e0d8ab9664d03b07b750a4fb2a11547572/30892134-8575-4216-861a-f4a61942eecd",
+      "evidence": "ANY.RUN identifies a 2008-12-17 Roblox.exe bootstrapper and exposes a matching Client\\Installer\\Bootstrapper\\bin\\Release\\Roblox.pdb path. No PDB payload exposed; useful exact-era build-path confirmation."
+    }
   ],
   "version": 1
 }
