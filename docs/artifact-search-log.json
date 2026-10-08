@@ -867,6 +867,13 @@
       "target": "Roblox RCC.exe VC8 server build object inventory",
       "url": "https://www.hybrid-analysis.com/sample/f3da1d3b6add6228327eaa396efa5dc7a96042eb8838de72457ec4d9077ebb90/62af9fc65e8ea37a0e16c347",
       "evidence": "Hybrid Analysis exposes a Roblox RCC build with PDB metadata and compiler inventory: 43 VC9 LIBs, 108 COFF OBJ files, 116 OMF OBJ files, and 42 VS5 OMF objects. No object/library payload is exposed; server-side rather than target client."
+    },
+    {
+      "checked_at": "2026-10-08T20:45:00-04:00",
+      "status": "metadata-only",
+      "target": "Roblox 2012 launcher PDB metadata",
+      "url": "https://hybrid-analysis.com/sample/9fe969fb89e67d1434cc3485ecd8816589c26b855e255dd8ecf0cb37d7533ea6/5915a1f2aac2ed6c565a17d3",
+      "evidence": "Hybrid Analysis exposes Trunk2012 installer PDB paths for RobloxPlayerLauncher.exe, including D:\\BuildAgent\\work\\Trunk2012\\Client\\Installer\\BootstrapperClient\\bin\\Release\\RobloxPlayerLauncher.pdb. No PDB payload exposed."
     }
   ],
   "version": 1
