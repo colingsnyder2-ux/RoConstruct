@@ -51,6 +51,21 @@ for _v, _sha in [("5.1", "7f5bb9061eb3b9ba1e406a5aa68001a66cb82bac95748839dc02dd
     RECIPES["lua-" + _v] = dict(url="https://www.lua.org/ftp/lua-%s.tar.gz" % _v, sha256=_sha,
                                 src="lua-%s/src" % _v, langs=["c", "cpp"], files=[f + ".c" for f in _LUA])
 
+# Roblox 2009's shipped copyrights.txt names Lua 5.0 specifically.  Its source layout
+# predates 5.1 (notably ltests.c and no linit.c), so keep an exact file list.
+RECIPES["lua-5.0"] = dict(url="https://www.lua.org/ftp/lua-5.0.tar.gz",
+                           sha256="4a23b3bcb812538c653033cd39fe9c9bd8030286b945c56eff280d452e4e244e",
+                           src="lua-5.0/src", langs=["c"], include=["lua-5.0/include"],
+                           files=[f + ".c" for f in ("lapi lcode ldebug ldo ldump lfunc lgc llex lmem lobject "
+                                                        "lopcodes lparser lstate lstring ltable ltests ltm lundump lvm "
+                                                        "lzio lauxlib lbaselib ldblib liolib lmathlib ltablib lstrlib loadlib").split()])
+for _v, _sha in [("5.0.1", "7a09d0e70dcaff7feae97cf9c154da05b1e5b92eaea2df7150b54bcaf8f3b9c6"),
+                 ("5.0.2", "a6c85d85f912e1c321723084389d63dee7660b81b8292452b190ea7190dd73bc"),
+                 ("5.0.3", "1193a61b0e08acaa6eee0eecf29709179ee49c71baebc59b682a25c3b5a45671")]:
+    RECIPES["lua-" + _v] = dict(url="https://www.lua.org/ftp/lua-%s.tar.gz" % _v, sha256=_sha,
+                                 src="lua-%s/src" % _v, langs=["c"], include=["lua-%s/include" % _v],
+                                 files=RECIPES["lua-5.0"]["files"])
+
 
 _PNG = ("png pngerror pngget pngmem pngpread pngread pngrio pngrtran pngrutil pngset pngtrans pngwio "
         "pngwrite pngwtran pngwutil").split()
@@ -102,7 +117,9 @@ _BOOST_SRC = ("libs/signals/src/*.cpp libs/thread/src/*.cpp libs/thread/src/win3
 for _v, _sha in [("1.34.1", "ef99062117068a0d641f4045c421661768657262a3d119c4a272c97a3e7ae5b3"),
                  ("1.36.0", "7f790b1636c2fdad23c0134db4c28433f90524c981ac752d8a9c8041a00b942c"),
                  ("1.35.0", "c0816cf644653a7bf8b41993261156249bd888840a12d828f3df8329277521f4"),
+                 ("1.37.0", "222816baed23e460dcdec299d5621be5e83285369a02205dcab8d7ee4cbaa883"),
                  ("1.38.0", "ff8c3fc932b21453ca31d28903419617f41b2110aba341256eb31be3435843af"),
+                 ("1.39.0", "6479e019463d3ac55624905ea159cad68cd36b5ff56a91c5e796a26df97b447f"),
                  ("1.40.0", "10f1ae33c9c25105554653aa7e86052e7afc9fe797c3cf188a5c8951965ae0d7"),
                  ("1.44.0", "7fbb6c9698335968a9e7f468a2b39ac25cc5b62a9c7b2cd9d6acc35c808d7451"),
                  ("1.47.0", "73d62846091af316cfe4efbc112f21d02b7c2cfe8511737be5e497bcb61ce1a3")]:
@@ -326,6 +343,27 @@ RECIPES["ogre-1.7.0"] = dict(
     grid=["/O2 /GS- /EHsc /MD", "/O2 /GS /EHsc /MD"], files="*.cpp",
     write={"../include/OgreBuildSettings.h": """#ifndef __Custom_Config_H_\n#define __Custom_Config_H_\n#define OGRE_CONFIG_LITTLE_ENDIAN\n#define OGRE_DOUBLE_PRECISION 0\n#define OGRE_MEMORY_ALLOCATOR 4\n#define OGRE_CONTAINERS_USE_CUSTOM_MEMORY_ALLOCATOR 0\n#define OGRE_STRING_USE_CUSTOM_MEMORY_ALLOCATOR 0\n#define OGRE_MEMORY_TRACKER_DEBUG_MODE 0\n#define OGRE_MEMORY_TRACKER_RELEASE_MODE 0\n#define OGRE_THREAD_SUPPORT 0\n#define OGRE_THREAD_PROVIDER 0\n#define OGRE_NO_FREEIMAGE 0\n#define OGRE_NO_DDS_CODEC 0\n#define OGRE_NO_PVRTC_CODEC 0\n#define OGRE_NO_ZIP_ARCHIVE 0\n#define OGRE_NO_VIEWPORT_ORIENTATIONMODE 0\n#define OGRE_USE_NEW_COMPILERS 0\n#define OGRE_USE_BOOST 0\n#define OGRE_PROFILING 0\n#endif\n"""})
 
+# The 2010 Plugin_CgProgramManager PDB path names ogre-v1-6-4 exactly.  This is
+# the matching VC9-era stock Ogre release, useful for inline/template code in clients.
+RECIPES["ogre-1.6.4"] = dict(
+    url="https://downloads.sourceforge.net/project/ogre/ogre/1.6.4/ogre-v1-6-4.tar.bz2",
+    archive="ogre-v1-6-4.tar.bz2", sha256="af348dc278ff53f5eec966073d1eb8a87ad5c29215339713ce91eda1501bf12e",
+    src="ogre/OgreMain/src", langs=["cpp"], builds=[50727, 21022, 30729],
+    include=["ogre/OgreMain/include", "WINSDK"],
+    defines="WIN32 NDEBUG _USRDLL _MT OGRE_NONCLIENT_BUILD",
+    grid=["/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MT",
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"], files="*.cpp")
+
+# 2009's rgpar.dll and Plugin_CgProgramManager.dll PDB paths name ogre-v1-4-9.
+RECIPES["ogre-1.4.9"] = dict(
+    url="https://downloads.sourceforge.net/project/ogre/ogre/1.4.9/ogre-v1-4-9.tar.bz2",
+    archive="ogre-v1-4-9.tar.bz2", sha256="38b17826b6b34e70bf1bab17d4791ab1d485409c938cf71e1e5f866f3391c35b",
+    unpack="ogre-1.4.9", src="ogre-1.4.9/ogre/OgreMain/src", langs=["cpp"], builds=[50727, 21022, 30729],
+    include=["ogre-1.4.9/ogre/OgreMain/include", "WINSDK"],
+    defines="WIN32 NDEBUG _USRDLL _MT OGRE_NONCLIENT_BUILD",
+    grid=["/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MT",
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"], files="*.cpp")
+
 # Roblox's own 2016 source tree (roc/refsource.py) keeps the forks the clients were built
 # from: G3D 8.00 (gone from the web), their modified Lua 5.1.4, RakNet, libjpeg and libpng.
 # Code unchanged since 2012 compiles to the same bytes with the client's compiler.
@@ -365,6 +403,15 @@ _MFC90_INC = ["mfc-9.0/atlmfc/src/mfc", "mfc-9.0/atlmfc/include", "WINSDK"]
 RECIPES["mfc-9.0"] = dict(src="mfc-9.0", langs=["cpp"], builds=[30729, 21022], include=_MFC90_INC,
                           grid=_MFC_GRID, files="atlmfc/src/mfc/*.cpp")
 
+# ATL implementation units are separate from MFC.  The clients contain named ATL::CRegObject
+# code, so compile the shipped ATL sources with the same toolchain headers.
+RECIPES["atl-8.0"] = dict(src="mfc-8.0/atlmfc/src/atl", langs=["cpp"], builds=[50727],
+                           include=["mfc-8.0/atlmfc/src/atl", "mfc-8.0/atlmfc/include", "WINSDK"],
+                           grid=_MFC_GRID, files="*.cpp")
+RECIPES["atl-9.0"] = dict(src="mfc-9.0/atlmfc/src/atl", langs=["cpp"], builds=[30729, 21022],
+                           include=["mfc-9.0/atlmfc/src/atl", "mfc-9.0/atlmfc/include", "WINSDK"],
+                           grid=_MFC_GRID, files="*.cpp")
+
 # Codejock Xtreme Toolkit Pro, statically linked by the clients (the CXTP* units). XTP is built
 # on MFC, so it needs the matching MFC headers. v15.2.1 is (c)1998-2011 -> the 2011-06/2012-06
 # clients. No URL: extracted locally from github.com/mavaL/NeoEngine (Dependency/XTP) into
@@ -389,6 +436,62 @@ RECIPES["xtp-11.2.2"] = dict(src="xtp-11.2.2", langs=["cpp"], builds=[30729, 210
 RECIPES["xtp-11.2.2-vc8"] = dict(src="xtp-11.2.2", langs=["cpp"], builds=[50727],
                                  include=_xtp_inc("xtp-11.2.2", "mfc-8.0"), grid=_MFC_GRID,
                                  files="Source/**/*.cpp", write=_XTP_STDAFX)
+
+# PJ Naughter's CScintillaCtrl/CScintillaView v1.20, synchronized to Scintilla 1.76
+# (the version shipped beside the 2009 client).  Keep this local: its license permits
+# binary use but restricts source redistribution.  Provenance is TeXnicCenter commit
+# 881e059d254b2cb921c0d239b5be16d97ad317ce; preserve its copyright headers.
+_SCINTILLA_MFC_STDAFX = {"stdafx.h": "#pragma once\n#include <afxwin.h>\n#include <afxext.h>\n#include <afxdtctl.h>\n#include <afxtempl.h>\n#include <afxpriv.h>\n#include <afxmt.h>\n#include <afxcview.h>\n#include <afxcmn.h>\n#include \"Platform.h\"\n#include \"Scintilla.h\"\n#include \"SciLexer.h\"\n", "resource.h": "#pragma once\n#define IDS_SCINTILLA_DEFAULT_PRINT_FOOTER 40\n#define IDS_SCINTILLA_DEFAULT_PRINT_HEADER 41\n#define IDD_SCINTILLA_FINDDLGORD 328\n#define IDD_SCINTILLA_REPLACEDLGORD 329\n#define IDC_REGULAR_EXPRESSION 8606\n"}
+RECIPES["scintilla-mfc-1.20"] = dict(src="scintilla-mfc-1.20", langs=["cpp"], builds=[21022, 30729],
+                                       include=["scintilla-mfc-1.20", "mfc-9.0/atlmfc/include", "WINSDK"],
+                                       grid=_MFC_GRID, files=["ScintillaCtrl.cpp", "ScintillaDocView.cpp"],
+                                       write=_SCINTILLA_MFC_STDAFX, strip_header_asm="stripped-v2")
+RECIPES["scintilla-mfc-1.20-vc8"] = dict(src="scintilla-mfc-1.20", langs=["cpp"], builds=[50727],
+                                           include=["scintilla-mfc-1.20", "mfc-8.0/atlmfc/include", "WINSDK"],
+                                           grid=_MFC_GRID, files=["ScintillaCtrl.cpp", "ScintillaDocView.cpp"],
+                                           write=_SCINTILLA_MFC_STDAFX, strip_header_asm="stripped-v2")
+
+# Magic Software's Wild Magic 2 (2003), named directly in the 2009 client's
+# copyrights.txt.  Its non-transferable license prohibits source redistribution,
+# so this is a local-only recipe.  The archived tree is the public kucgbowling
+# mirror commit 65e40b6f33c5511bddf0fa350c1eefc647ace48a; retain all headers.
+RECIPES["wildmagic-2-core"] = dict(
+    src="wildmagic-2", langs=["cpp"], builds=[50727, 21022, 30729],
+    include=["wildmagic-2/Approximation", "wildmagic-2/Containment", "wildmagic-2/Curves",
+             "wildmagic-2/Distance", "wildmagic-2/Geometry", "wildmagic-2/Graphics",
+             "wildmagic-2/ImageAnalysis", "wildmagic-2/Interpolation", "wildmagic-2/Intersection",
+             "wildmagic-2/Math", "wildmagic-2/Meshes", "wildmagic-2/Numerics",
+             "wildmagic-2/RationalArithmetic", "wildmagic-2/Surfaces", "wildmagic-2/System",
+             "wildmagic-2/Tessellation"],
+    defines="WIN32 NDEBUG _LIB",
+    grid=["/O2 /Ob1 /GS- /MT", "/O2 /Ob1 /GS- /MD", "/O2 /Ob2 /GS- /MD", "/Od /Ob1 /GS- /MT"],
+    files="Math/*.cpp Distance/*.cpp Intersection/*.cpp Geometry/*.cpp Containment/*.cpp")
+
+
+# LAME MP3 encoder, statically linked in the 2011-06 and 2012-06 clients
+# (copyrights.txt: "This program uses Lame (www.mp3dev.org)"; no lame.dll import).
+# vc9_libmp3lame.vcproj Release|Win32: /Ox /Ob2 /Ot /MD.
+# configMS.h is the Windows config.h substitute; prepare copies it into the src folder
+# so #include <config.h> (guarded by HAVE_CONFIG_H) resolves correctly.
+# 3.98.4 (2010-04-14) matches the 2011-06 client; 3.99.5 (2012-02-28) targets 2012-06.
+RECIPES["lame-3.98.4"] = dict(
+    url="https://downloads.sourceforge.net/project/lame/lame/3.98.4/lame-3.98.4.tar.gz",
+    sha256="ac3144c76617223a9be4aaa3e28a66b51bcab28141050c3af04cb06836f772c8",
+    src="lame-3.98.4/libmp3lame", langs=["c"], builds=[21022, 30729],
+    include=["lame-3.98.4/include", "lame-3.98.4/mpglib", "lame-3.98.4", "WINSDK"],
+    defines="NDEBUG _WINDOWS HAVE_MPGLIB WIN32 HAVE_CONFIG_H",
+    prepare=[("../configMS.h", "config.h")],
+    grid=["/Ox /Ob2 /Ot /GS- /MD", "/O2 /Ob2 /GS- /MD", "/Ox /GS- /MD", "/O2 /GS- /MD"],
+    files="*.c")
+RECIPES["lame-3.99.5"] = dict(
+    url="https://downloads.sourceforge.net/project/lame/lame/3.99/lame-3.99.5.tar.gz",
+    sha256="24346b4158e4af3bd9f2e194bb23eb473c75fb7377011523353196b19b9a23ff",
+    src="lame-3.99.5/libmp3lame", langs=["c"], builds=[21022, 30729],
+    include=["lame-3.99.5/include", "lame-3.99.5/mpglib", "lame-3.99.5", "WINSDK"],
+    defines="NDEBUG _WINDOWS HAVE_MPGLIB WIN32 HAVE_CONFIG_H",
+    prepare=[("../configMS.h", "config.h")],
+    grid=["/Ox /Ob2 /Ot /GS- /MD", "/O2 /Ob2 /GS- /MD", "/Ox /GS- /MD", "/O2 /GS- /MD"],
+    files="*.c")
 
 
 def fetch(name):
@@ -421,7 +524,14 @@ def fetch(name):
                         z.extract(member, target)
         else:
             with tarfile.open(archive) as tar:
-                tar.extractall(LIBS, filter="data")
+                target = (LIBS / r.get("unpack", "")).resolve()
+                for member in tar:
+                    # A few historical source releases ship editor/test symlinks.  They are
+                    # irrelevant to ROC and Python's safe filter rejects absolute ones.
+                    if member.issym() or member.islnk():
+                        continue
+                    if (target / member.name).resolve().is_relative_to(target):
+                        tar.extract(member, target, filter="data")
     for src, dst in r.get("prepare", []):
         if not (folder / dst).exists():
             shutil.copyfile(folder / src, folder / dst)
@@ -464,13 +574,16 @@ def unit(name, path, build):
     src = (folder / path).resolve()
     if not src.is_relative_to(folder) or not src.is_file():
         raise match.CompileError("no file %r in library %s" % (path, name))
-    cache = ROOT / "work" / "libcache" / name / str(build) / (path.replace("\\", "/").replace("/", "__") + ".i")
+    r = RECIPES[name]
+    suffix = ".%s.i" % r["strip_header_asm"] if r.get("strip_header_asm") else ".i"
+    cache = ROOT / "work" / "libcache" / name / str(build) / (path.replace("\\", "/").replace("/", "__") + suffix)
     if cache.exists():
         return cache.read_text(errors="replace")
-    r = RECIPES[name]
     include = ";".join([str(folder)] + [winsdk_include() if i == "WINSDK" else str(LIBS / i)
                                         for i in r.get("include", [])])
     body = preprocess(build, src, include, r.get("defines", ""))
+    if r.get("strip_header_asm"):
+        body = re.sub(r"__asm\s*\{.*?\}", "", body, flags=re.S)
     cache.parent.mkdir(parents=True, exist_ok=True)
     cache.write_text(body)
     return body

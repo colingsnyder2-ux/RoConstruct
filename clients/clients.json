@@ -29,6 +29,14 @@
     "exe": "RobloxApp.exe",
     "sha256": "7f2509399ddad475e051ce15260099c8ad1c94c89b2ee41a2c7c9ef31eb7348a"
   },
+  "2009-12": {
+    "built": "2010-02-02",
+    "compiler": "VS2008 SP1 (cl 15.00.30729)",
+    "compiler_build": 30729,
+    "donor": true,
+    "exe": "RobloxApp.exe",
+    "sha256": "84669b5c6eca99f52ebaf670e16e955c46f4515c9d5f75192905077e5b711186"
+  },
   "2010-06": {
     "built": "2010-06-18",
     "compiler": "VS2008 SP1 (cl 15.00.30729)",
