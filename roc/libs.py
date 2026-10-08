@@ -317,6 +317,10 @@ RECIPES["rbxgs-view"] = dict(src=_RBXGS + "RbxView", langs=["cpp"], files="*.cpp
                              grid=_RBXGS_GRID, include=_RBXGS_VIEW_INC, defines=_RBXGS_DEF)
 RECIPES["rbxgs-render"] = dict(src=_RBXGS + "Rendering/RenderLib", langs=["cpp"], files="*.cpp",
                                grid=_RBXGS_GRID, include=_RBXGS_VIEW_INC, defines=_RBXGS_DEF)
+# AppDraw (drawing utilities, adornments, fonts): source path AppDraw\ appears in 2012-06
+# debug strings but has no recipe. Include set is the same as the main rbxgs project.
+RECIPES["rbxgs-appdraw"] = dict(src=_RBXGS + "Rendering/AppDraw", langs=["cpp"], files="*.cpp",
+                                grid=_RBXGS_GRID, include=_RBXGS_INC, defines=_RBXGS_DEF)
 # RBXGSdecomp's own g3d fork: the exact G3D the RBXGS build linked (patched by Roblox),
 # which may byte-match where generic g3d-6.09 does not. G3D is float-heavy -> SSE2 grid.
 _RBXGS_G3D = _RBXGS + "Rendering/g3d/"

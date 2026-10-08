@@ -1,15 +1,17 @@
 """Worker: lease a function from the server, draft C++ with AI, compile, diff,
 retry with feedback, submit the best result under your username."""
+import http.client
 import json
 import os
 import re
+import ssl
 import sys
 import threading
 import time
 import traceback
 import urllib.error
 import urllib.request
-from urllib.parse import quote
+from urllib.parse import quote, urlparse
 import uuid
 from pathlib import Path
 
@@ -61,7 +63,7 @@ def reconnect(api, log):
     new = site_server()
     if new and Api(new).server != api.server:
         log("Server moved to %s, switching." % new)
-        api.server = Api(new).server
+        api.__init__(new, api.token)
         save_settings(server=new)
         return True
     return False
@@ -105,32 +107,55 @@ class Api:
         if not self.server.startswith("http"):
             self.server = "http://" + self.server
         self.token = token
+        parsed = urlparse(self.server)
+        self._host = parsed.hostname
+        self._port = parsed.port or (443 if parsed.scheme == "https" else 80)
+        self._https = parsed.scheme == "https"
+        self._prefix = parsed.path.rstrip("/")
+        self._conn = None
+
+    def _get_conn(self, timeout=60):
+        if self._conn is None:
+            if self._https:
+                self._conn = http.client.HTTPSConnection(self._host, self._port, timeout=timeout,
+                                                         context=ssl.create_default_context())
+            else:
+                self._conn = http.client.HTTPConnection(self._host, self._port, timeout=timeout)
+        return self._conn
 
     def call(self, path, payload=None, timeout=60):
         data = json.dumps(payload).encode() if payload is not None else None
-        req = urllib.request.Request(self.server + path, data=data, headers={"Content-Type": "application/json"})
+        headers = {"Content-Type": "application/json"}
         if self.token:
-            req.add_header("X-Roc-Token", self.token)
+            headers["X-Roc-Token"] = self.token
+        method = "POST" if data is not None else "GET"
         tries = 3 if payload is None else 1  # safe retries only for idempotent GETs
         for attempt in range(tries):
             try:
-                with urllib.request.urlopen(req, timeout=timeout) as r:
-                    return json.loads(r.read())
-            except urllib.error.HTTPError as error:
-                try:
-                    msg = json.loads(error.read()).get("error")
-                except ValueError:
-                    msg = error.reason
-                if error.code >= 500 and attempt + 1 < tries:
-                    time.sleep(0.5 * (attempt + 1))
-                    continue
-                category = "auth_fail" if error.code in (401, 403) else \
-                           "bad_request" if 400 <= error.code < 500 else "server_fail"
-                raise ApiFailure(category, msg)
-            except (urllib.error.URLError, OSError, ValueError) as error:
+                conn = self._get_conn(timeout)
+                conn.request(method, self._prefix + path, body=data, headers=headers)
+                resp = conn.getresponse()
+                body = resp.read()
+                if resp.status >= 400:
+                    try:
+                        msg = json.loads(body).get("error")
+                    except (ValueError, AttributeError):
+                        msg = resp.reason
+                    category = "auth_fail" if resp.status in (401, 403) else \
+                               "bad_request" if 400 <= resp.status < 500 else "server_fail"
+                    if resp.status >= 500 and attempt + 1 < tries:
+                        self._conn = None
+                        time.sleep(0.5 * (attempt + 1))
+                        continue
+                    raise ApiFailure(category, msg)
+                return json.loads(body)
+            except ApiFailure:
+                raise
+            except (http.client.HTTPException, OSError, ValueError) as error:
+                self._conn = None  # force reconnect on next attempt
                 if attempt + 1 == tries:
                     raise ApiFailure("offline", "cannot reach server %s (%s). Is it running? Right address?"
-                                     % (self.server, getattr(error, "reason", error)))
+                                     % (self.server, error))
                 time.sleep(0.5 * (attempt + 1))
 
 
