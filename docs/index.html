@@ -246,9 +246,10 @@ const WARNING = `<p class="warn">Heads up: a worker runs an AI model and the com
 function joinHelp() {
   if (!progress.server) return "";
   return `<div><p><a href="${REPO}/archive/refs/heads/main.zip">Download RoConstruct</a>, unzip it, then run
-    <code>install.cmd</code> (this also enables the one-click links). Click "Start helping" on a client. Your PC keeps
-    working until you close the window, so it's fine to leave it running overnight.
-    Questions? Join the <a href="https://discord.gg/Tayg763nrG">Discord</a>.</p>${WARNING}</div>`;
+    <code>install.cmd</code> (this also enables the one-click links). Once it's installed, come back here and click
+    "Start helping" on any client to run the worker &mdash; the link downloads that client for you automatically, so
+    you never fetch one yourself. Your PC keeps working until you close the window, so it's fine to leave it running
+    overnight. Questions? Join the <a href="https://discord.gg/Tayg763nrG">Discord</a>.</p>${WARNING}</div>`;
 }
 
 function commitPanel() {

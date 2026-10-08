@@ -34,9 +34,9 @@ When every function matches, the result is a source tree that rebuilds the origi
 
 1. **Download** this repo (Code → Download ZIP) and unzip it.
 2. Double-click **`install.cmd`**. It installs Python and the old compilers (each one verified) and enables one-click links. No admin rights needed.
-3. On the [progress site](https://colingsnyder2-ux.github.io/RoConstruct/), click **Start helping** on a client.
+3. Once everything is installed, go to the [RoConstruct website](https://colingsnyder2-ux.github.io/RoConstruct/) and click **Start helping** on any client. That launches the worker.
 
-You don't need to download any clients yourself. Whatever you pick — a one-click link, `roc analyze`, `roc next`, or the worker — fetches that client from Google Drive first, then checks its SHA-256 against the registered build before using it. If a file goes missing you get the same treatment: it re-downloads on the next command. To fetch up front instead, run `roc client-fetch all`.
+**You never download a client yourself — clicking the link does it for you.** The first thing the worker does is fetch that client from Google Drive, then check its SHA-256 against the registered build before using it. If a file ever goes missing it re-downloads on the next command. To fetch them all up front instead, run `roc client-fetch all`.
 
 The first click asks for a username. After that it runs on its own: leave the window open overnight, and your matches show up on the leaderboard.
 
