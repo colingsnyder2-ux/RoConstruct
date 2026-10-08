@@ -4,8 +4,7 @@
     "compiler": "VS2005 (cl 14.00.50727)",
     "compiler_build": 50727,
     "exe": "Roblox.exe",
-    "sha256": "edafe044090f0fea7d039cf2489ac13ad4aaf90266f74ba1ad32a091b36aadf1",
-    "donor": true
+    "sha256": "edafe044090f0fea7d039cf2489ac13ad4aaf90266f74ba1ad32a091b36aadf1"
   },
   "2007-08": {
     "built": "2007-08-19",
