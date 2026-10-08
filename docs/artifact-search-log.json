@@ -825,6 +825,13 @@
       "target": "2007 Roblox PDB bundle",
       "url": "https://forum.ragezone.com/threads/re-uploaded-pdb-matching-exe-for-easy-finding-and-tutorial-on-why-they-are-so-useful.704095/",
       "evidence": "2010 forum post claims matching 2007 runnable PDBs, but the linked download is gated behind forum login and no file URL is exposed."
+    },
+    {
+      "checked_at": "2026-10-08T18:47:47-04:00",
+      "status": "reference-no-download",
+      "target": "VC80 CRT/STL library inventory",
+      "url": "https://support.microsoft.com/lt-lt/servicing/visual-studio/hotfix/2017/01/fix-hresult-0x80073715-error-when-you-install-an-application-by-using-an-msi-file-if-the-file-is-mer",
+      "evidence": "Microsoft page inventories multiple x86 VC80 libcmt.lib/libcpmt.lib builds and exact byte sizes, but exposes no downloadable library archive."
     }
   ],
   "version": 1
