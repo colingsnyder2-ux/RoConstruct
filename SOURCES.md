@@ -20,6 +20,7 @@ The clients and their compilers:
 | 2007-08 | 0.3.x | VS2005 SP1 (cl 14.00.50727) |
 | 2008-06 | | VS2008 RTM (cl 15.00.21022) |
 | 2009-06 | | VS2008 SP1 (cl 15.00.30729) |
+| 2009-12 | Releases/2009.12.14 | VS2008 SP1 (cl 15.00.30729) |
 | 2010-06 | | VS2008 SP1 (cl 15.00.30729) |
 | 2011-06 | | VS2008 RTM (cl 15.00.21022) |
 | 2012-06 | | VS2008 SP1 (cl 15.00.30729) |
@@ -75,13 +76,15 @@ until the bytes line up.
 | zlib | 1.1.4, 1.2.3 | deflate/inflate |
 | libjpeg | 6b | |
 | libpng | 1.2.5 – 1.2.44 (16 swept) | kept whichever version matched |
-| Lua | 5.1.0 – 5.1.4 | tried as both C and C++ |
-| G3D | 6.09 source + 6.10 prebuilt VC8 `.lib` | float math built with `/arch:SSE2 /fp:fast` |
-| boost | 1.34.1, 1.35, 1.36, 1.38, 1.40, 1.44, 1.47 | plus explicit template instantiations |
+| Lua | 5.0–5.0.3, 5.1.0 – 5.1.4 | Lua 5.0 is named in the 2009 client `copyrights.txt`; all official 5.0 point releases are queued as C. 5.0 archive SHA-256 `4a23b3bcb812538c653033cd39fe9c9bd8030286b945c56eff280d452e4e244e`. |
+| G3D | 6.09 source (rbxgs-g3d) + Roblox 2016 fork (rbx2016-g3d) | float math `/arch:SSE2 /fp:fast`. G3D version by client: 2007-08 = 6.x (VARArea only); 2009–2010 = 7.x (VARArea + VertexBuffer coexist); 2011–2012 = 8.x (VertexBuffer only, VARArea gone). All clients embed `G3Dcpp/`/`glg3dcpp/` source paths — Roblox's fork predates the 8.x reorganization to `G3D.lib/source/`. 6.10 prebuilt VC8 `.lib` no longer used (replaced by rbx2016-g3d). |
+| boost | 1.34.1, 1.35–1.40, 1.44, 1.47 | plus explicit template instantiations; 1.37 and 1.39 pending ROC run |
 | RakNet | public 4.081 (few) + Roblox's fork | most matches come from the fork |
 | SDL | 1.2.11 headers | the rest is in SDL.dll |
-| Ogre | 1.7.0 "Cthugha" VC8 SDK | see note below |
-| Scintilla (MFC wrapper) | — | **untried.** The editor is in SciLexer.dll, but the exe carries the MFC wrapper (`CScintillaCtrl`, `CScintillaView`, ~130 functions). Thin wrapper, uncertain exact source (Codejock / Scintilla MFC wrapper). |
+| Ogre | 1.4.9, 1.6.4, 1.7.0 "Cthugha" VC8 SDK | 2009-06 plugin PDB paths name exact 1.4.9 (verified: all five Ogre DLLs embed `C:\Users\ncoder\roblox\Trunk\Client\Rendering\ogre-v1-4-9\lib\*.pdb`, age=1); 2009-06 imports the DLL as `rgmain.dll` (Roblox's renamed OgreMain). 2009-12 OgreMain.dll already uses 1.6.4 (`d:\Roblox\Releases\2009.12.14\Client\Rendering\ogre-v1-6-4\lib\OgreMain.pdb`); 2009-12+ imports standard `ogremain.dll`. 2010–2012 also 1.6.4. Transition 1.4.9→1.6.4 + rename rgmain→ogremain happened between June and December 2009. Recipes use their VC project flags. See note below. |
+| LAME | 3.98.4, 3.99.5 | `lame-3.98.4` / `lame-3.99.5`; named in 2011-06 and 2012-06 `copyrights.txt` ("This program uses Lame"); no `lame.dll` import → statically linked. vc9_libmp3lame.vcproj Release: `/Ox /Ob2 /Ot /MD`. configMS.h provides the Windows `config.h`. New recipe added 2026-10-07; pending ROC run. |
+| Scintilla MFC wrapper | PJ Naughter v1.20 | `scintilla-mfc-1.20` / `scintilla-mfc-1.20-vc8`; source synced to Scintilla 1.76, exact DLL version beside 2009 client. Local-only due source redistribution terms; provenance: TeXnicCenter commit `881e059d254b2cb921c0d239b5be16d97ad317ce`. Pending ROC run. |
+| Wild Magic | Magic Software Wild Magic 2, 2003 | `wildmagic-2-core`; named in 2009 `copyrights.txt`. Local-only: its non-transferable license prohibits source redistribution. Source: `argapratama/kucgbowling` commit `65e40b6f33c5511bddf0fa350c1eefc647ace48a`, `Term/WildMagic2/Source`; VC7 project builds a static `/MT` library. License PDF SHA-256: `e9d9342ac59f43947aac782ac3b21dc8f0a533251c938cea15bb1146430e1192`. Pending ROC run. |
 
 **On `/GS`:** VS2005 defaults to `/GS` on. 830 functions in the 2007-08 exe carry the
 stack-cookie prologue, so that client is compiled with `/GS` and existing matches pin
@@ -92,9 +95,29 @@ the exe. Worse, most of the exe's Ogre classes are Roblox's own `Ogre::Rbx*` sub
 (RbxSceneManager, RbxEntity, RbxCluster…), whose source is not public. So Ogre is only a
 partial source.
 
+**Ogre 1.4.9 PDB evidence (2009 client, verified 2026-10-07):** all five Ogre DLLs shipped
+with the 2009 client embed CodeView RSDS records pointing to the same Roblox build machine:
+
+| DLL | RSDS GUID | age | PDB path |
+|-----|-----------|-----|---------|
+| `Plugin_CgProgramManager.dll` | `28849752fcf19f44bb95c761ac217485` | 1 | `C:\Users\ncoder\roblox\Trunk\Client\Rendering\ogre-v1-4-9\lib\Plugin_CgProgramManager.pdb` |
+| `rgpar.dll` | `e811acb2909acb45be3a8e93f98e3e36` | 1 | `C:\Users\ncoder\roblox\Trunk\Client\Rendering\ogre-v1-4-9\lib\rgpar.pdb` |
+| `rgdx.dll` | `6431084fee279740b530e719be878b52` | 1 | `C:\Users\ncoder\roblox\Trunk\Client\Rendering\ogre-v1-4-9\lib\rgdx.pdb` |
+| `rggl.dll` | `763812a8aa13dc4f8b193045ac00f15b` | 1 | `C:\Users\ncoder\roblox\Trunk\Client\Rendering\ogre-v1-4-9\lib\rggl.pdb` |
+| `rgmain.dll` | `b1679eda89276b48ad26e62e078295c1` | 1 | `C:\Users\ncoder\roblox\Trunk\Client\Rendering\ogre-v1-4-9\lib\rgmain.pdb` |
+
+The path `Rendering\ogre-v1-4-9` confirms the exact release as a directory-named drop
+(matching the 1.6.4 pattern `Rendering\ogre-v1-6-4` in the 2010 client). The `ncoder`
+username is the Roblox developer who built the 2009 client. No corresponding PDB was found
+on the Microsoft symbol server (same GUID+age search returned 404 for all five).
+
 ---
 
 ## 3. Compiler runtime & UI toolkits
+
+ATL source ships alongside the existing local MFC 8.0/9.0 source trees. The clients contain
+named `ATL::CRegObject` functions, so `atl-8.0` and `atl-9.0` compile its four ATL translation
+units with the matching VS2005/VS2008 headers. Pending ROC run.
 
 Code the toolchain and the UI library compiled into the exe.
 
@@ -128,10 +151,14 @@ Code the toolchain and the UI library compiled into the exe.
 
 If you can find any of these, drop them in the [Discord](https://discord.gg/Tayg763nrG).
 
-- **G3D 8.00 / 8.01 source.** The 2010–2012 clients link G3D 8.x. The official source zips
-  were deleted from SourceForge and were never captured by the Wayback Machine or mirrored
-  to GitHub (only the redirect pages survive). The 2016 leak has a partial copy (used), but
-  a clean 8.00/8.01 tree would match more rendering code.
+- **G3D 7.x / 8.01 source.** The 2009-06/2009-12/2010-06 clients link G3D 7.x (both
+  `VARArea` and `VertexBuffer` present — the transitional era where both names coexisted);
+  the 2011-06/2012-06 clients link G3D 8.x (`VARArea` removed, `VertexBuffer` only). All
+  clients embed source paths under `G3Dcpp/`/`glg3dcpp/` (the G3D 6.x/7.x layout), so
+  Roblox's fork branched before the G3D 8.x reorganization into `G3D.lib/source/`. The
+  official G3D 8.01-src.zip was deleted from SourceForge (only version 10.00 remains); G3D
+  7.x source is also gone. The 2016 Roblox leak contains a partial fork (recipe
+  `rbx2016-g3d`), but clean G3D 7.x or 8.01 source would match more rendering code.
 - **A client PDB or MAP file.** Symbols for any client exe would give exact function
   boundaries and real names — the single biggest multiplier for the AI workers and for unit
   assignment. None are known to exist: the RBXGS installers carry only `WebService.pdb` (the
@@ -168,6 +195,7 @@ Recorded so they are not chased again.
 | RomkoSI/G3D, elfprince13/G3D10 | both are G3D 10 (2016+), far past the 6.x–8.x the clients use |
 | 2022 RobloxStudio PDB leak | right artifact, wrong era by a decade |
 | OgreSDK VC8 prebuilt libs | the Ogre clients are VC9, and stock Ogre is in the DLL, not the exe |
+| Microsoft symbol server PDB probe (2026-10-07) | 2007-03, 2009-06, 2011-06 and 2012-06 embedded CodeView GUID+age paths all returned HTTP 404; no public Microsoft-symbol copy |
 
 ---
 
