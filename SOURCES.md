@@ -123,20 +123,7 @@ Code the toolchain and the UI library compiled into the exe.
 
 ---
 
-## 5. Donor binaries
-
-Extra client builds used **to match the real clients and for testing**, not decompiled for
-their own sake. Registered with `roc client add --donor <name> <exe>`; a donor is excluded
-from the progress site and never handed to workers, but still participates in matching and
-cross-client copy.
-
-- **0.3.368.0 (Mar 2007)** — the earliest archived client. (Now also shown as the client
-  `2007-03`.) It is the closest build to RBXGSdecomp's 0.3.634.0, so the RBX source matches
-  it best, and those matches spread to the later clients.
-
----
-
-## 6. Needed, but not found
+## 5. Needed, but not found
 
 If you can find any of these, drop them in the [Discord](https://discord.gg/Tayg763nrG).
 
@@ -159,7 +146,7 @@ If you can find any of these, drop them in the [Discord](https://discord.gg/Tayg
 
 ---
 
-## 7. Checked, not useful
+## 6. Checked, not useful
 
 Recorded so they are not chased again.
 
