@@ -186,7 +186,39 @@ def ask(model, prompt):
 
 def extract_code(reply):
     blocks = re.findall(r"```(?:cpp|c\+\+|c)?\s*\n(.*?)```", reply, re.S)
-    return max(blocks, key=len).strip() + "\n" if blocks else None
+    if blocks:
+        return max(blocks, key=len).strip() + "\n"
+    # Some providers ignore the fence contract and return plain C++. Recover a
+    # balanced function only when its signature is unmistakable; never pass prose
+    # or a partial brace block to the compiler.
+    text = str(reply or "").strip()
+    match = re.search(r"(?m)^[ \t]*(?:[A-Za-z_]\w*[ \t*&]+)?[A-Za-z_]\w*(?:\s*::\s*[A-Za-z_]\w*)?\s*\([^;{}]*\)\s*(?:const\s*)?\{", text)
+    if not match:
+        return None
+    start = match.start()
+    prior = text[:start]
+    declaration = list(re.finditer(r"(?m)^[ \t]*(?:struct|class)\s+[A-Za-z_]\w*\s*\{", prior))
+    if declaration and re.search(r"\};\s*$", prior[declaration[-1].start():]):
+        start = declaration[-1].start()
+    open_brace = text.find("{", match.start())
+    depth, quote, end = 0, None, None
+    for index in range(open_brace, len(text)):
+        char = text[index]
+        if quote:
+            if char == "\\":
+                continue
+            if char == quote:
+                quote = None
+        elif char in "\"'":
+            quote = char
+        elif char == "{":
+            depth += 1
+        elif char == "}":
+            depth -= 1
+            if depth == 0:
+                end = index + 1
+                break
+    return text[start:end].strip() + "\n" if end else None
 
 
 def invalid_qualified_definition(src):

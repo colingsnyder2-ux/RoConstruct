@@ -176,6 +176,8 @@ def test_mass_helpers():
 def test_draft_helpers():
     assert extract_code("text\n```cpp\nint f();\n```\nmore") == "int f();\n"
     assert extract_code("no code") is None
+    assert extract_code("Here is the answer:\nint f() { return 1; }\n") == "int f() { return 1; }\n"
+    assert "struct S" in extract_code("struct S { int f(); };\nint S::f() { return 1; }\n")
     elf = mini_elf(b"\xc3", 0x401234)
     assert elf[:4] == b"\x7fELF" and elf[0x1000 + 0x234] == 0xC3
     facts = draft.facts_from_asm(["mov eax, dword ptr [ecx + 0x34]", "call dword ptr [sym]", "ret 8"])
