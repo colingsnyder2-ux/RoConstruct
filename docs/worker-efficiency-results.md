@@ -232,6 +232,24 @@ latency was 2.1s direct vs 2.7s structured at 18 workers. This unseen-client
 check rejects automatic tiny structured routing for now; repeated samples remain
 correlated within six functions. Sessions: `fresh-tiny-{direct,structured}-20261008`.
 
+Second untouched tiny holdout, 2012-06 (six functions, four draws each), also
+favored direct: 17/24 exact vs structured 12/24; both compiled 24/24. Direct
+used 36,081 input + 2,356 output tokens; structured used 50,516 + 2,504 (38%
+more total tokens). Mean per-function batch time after first warm batch was
+2.24s direct vs 2.46s structured at 64 worker slots. Estimates at published
+DeepSeek Flash rates are about $0.0068–$0.0137 direct vs $0.0091–$0.0182
+structured, depending on peak/off-peak pricing; provider did not report billed
+cost, so these are estimates, not invoices. Sessions:
+`unseen2012-tiny-{direct,structured}-64w-k2-r{1,2,3,4}`. Sample remains small
+and repeated per function; do not claim generalization beyond this holdout.
+
+Provider throughput smoke test used 64 identical fixed two-token prompts at
+each concurrency, forward and reverse order. 64/64 replies were valid each
+time; batch times: 8-way 6.67/6.45s, 32-way 2.04/1.93s, 64-way 1.20/1.28s.
+This supports allowing 64 workers for this cloud provider, not assuming 64 is
+optimal for every provider or compiler-bound workload. Test:
+`python benchmarks/concurrency.py --requests 64 --limits 8 32 64`.
+
 The diff feedback now also compares same-target call sites' contiguous stack
 pushes, reverses them into C++ argument order, and reports differing orders to
 the repair prompt. This targets argument-order mistakes without generic API
