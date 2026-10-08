@@ -2,6 +2,7 @@
 import json
 import os
 import threading
+import urllib.error
 import urllib.request
 
 
@@ -25,9 +26,13 @@ def mined(webhook, job, user, worker, model, score, points, title="⛏️ Functi
         try:
             body = json.dumps({"embeds": [embed]}).encode()
             req = urllib.request.Request(url, data=body,
-                                         headers={"Content-Type": "application/json"})
+                                         headers={"Content-Type": "application/json",
+                                                  "User-Agent": "RoConstruct/1.0"})
             with urllib.request.urlopen(req, timeout=5):
                 print("Discord mine log sent")
+        except urllib.error.HTTPError as error:
+            detail = error.read().decode("utf-8", "replace")[:300]
+            print("Discord mine log failed: HTTP %d: %s" % (error.code, detail))
         except (OSError, ValueError) as error:
             print("Discord mine log failed: %s" % error)
 
