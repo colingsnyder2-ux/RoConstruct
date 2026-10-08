@@ -423,7 +423,14 @@ def cmd_provider(a):
                                                 config["key_env"], "set" if providers.key_available(config["key_env"]) else "missing"))
         return
     if a.sub == "secrets":
-        print("Local secret file: %s" % providers.secrets_path())
+        path = providers.secrets_path()
+        if getattr(a, "open", False):
+            path.parent.mkdir(parents=True, exist_ok=True)
+            if not path.exists():
+                path.write_text("{}\n", encoding="utf-8")
+            if os.name == "nt":
+                os.startfile(path)
+        print("Local secret file: %s" % path)
         print('Format: {"DEEPSEEK_API_KEY":"paste-key"}')
         return
     if a.sub == "add":
@@ -821,7 +828,9 @@ def main(argv=None):
     p = sub.add_parser("provider", help="configure or test non-secret cloud model providers")
     ps = p.add_subparsers(dest="sub", required=True)
     ps.add_parser("list", help="show providers and whether their key environment variable is set").set_defaults(fn=cmd_provider)
-    ps.add_parser("secrets", help="show safe user-local API-key file path").set_defaults(fn=cmd_provider)
+    psecret = ps.add_parser("secrets", help="show safe user-local API-key file path")
+    psecret.add_argument("--open", action="store_true", help="create and open the file in Notepad")
+    psecret.set_defaults(fn=cmd_provider)
     pa = ps.add_parser("add", help="add an OpenAI-compatible or native cloud endpoint (no key saved)")
     pa.add_argument("name")
     pa.add_argument("--kind", required=True, choices=["openai-chat", "openai-responses", "anthropic-messages", "gemini"])
