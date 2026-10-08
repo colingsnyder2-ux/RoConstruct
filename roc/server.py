@@ -331,11 +331,6 @@ def make_handler(store, token, can_verify, discord_webhook=None):
                                   str(body.get("mode", ""))[:16], int(body.get("max_size", 256)),
                                   str(body.get("model", ""))[:120] or None,
                                   body.get("targets"))
-                if job:
-                    from roc.discord import mined
-                    mined(discord_webhook, job, user, str(body.get("worker", ""))[:64],
-                          str(body.get("model", ""))[:120] or "auto", job.get("score", 0), 0,
-                          "⛏️ Function leased")
                 return self.send(200, {"job": job})
             if path == "/v1/heartbeat":
                 return self.send(200, {"ok": store.heartbeat(str(body.get("lease", "")))})

@@ -8,7 +8,7 @@ import urllib.request
 
 def mined(webhook, job, user, worker, model, score, points, title="⛏️ Function mined"):
     url = webhook or os.environ.get("ROCONSTRUCT_DISCORD_WEBHOOK")
-    if not url or not job:
+    if not url or not job or int(score) <= 0:
         return
     color = 0x3FB950 if int(score) == 100 else 0xF2C14E
     embed = {"title": title, "color": color,
