@@ -1,8 +1,8 @@
 """Provider-neutral text generation for local and cloud worker models.
 
-Keys are read only from environment variables.  This module deliberately owns
-all provider HTTP details so matching, MSVC compilation, and server leases stay
-local and provider-agnostic.
+Keys are read from environment variables first, or a user-local secrets file
+outside the repository. This module owns provider HTTP details so matching,
+MSVC compilation, and server leases stay local and provider-agnostic.
 """
 import json
 import os
@@ -135,6 +135,55 @@ def providers():
     return _read_config()
 
 
+def secrets_path():
+    """User-local key file; never the repository settings/config file."""
+    override = os.environ.get("ROCONSTRUCT_SECRETS_FILE")
+    if override:
+        return Path(override).expanduser()
+    root = Path(os.environ.get("APPDATA", Path.home() / ".roconstruct"))
+    return root / "roconstruct-secrets.json"
+
+
+def secret(key_env):
+    """Return an environment key, then a local JSON secret, without logging it."""
+    value = os.environ.get(key_env)
+    if value:
+        return value
+    try:
+        data = json.loads(secrets_path().read_text(encoding="utf-8"))
+    except (OSError, ValueError, TypeError):
+        return ""
+    value = data.get(key_env) if isinstance(data, dict) else ""
+    return value if isinstance(value, str) else ""
+
+
+def key_available(key_env):
+    return bool(secret(key_env))
+
+
+def save_secret(key_env, value):
+    """Save one key in the user-local file, atomically; never print the value."""
+    if not re.match(r"^[A-Za-z_][A-Za-z0-9_]*$", key_env or "") or not str(value or "").strip():
+        raise ValueError("invalid secret")
+    path = secrets_path()
+    try:
+        data = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+    except (OSError, ValueError, TypeError):
+        data = {}
+    if not isinstance(data, dict):
+        data = {}
+    data[key_env] = str(value).strip()
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_name(path.name + ".tmp")
+    temporary.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
+    temporary.replace(path)
+    if os.name != "nt":
+        try:
+            path.chmod(0o600)
+        except OSError:
+            pass
+
+
 def _safe_base_url(value):
     """Provider config must never persist userinfo or query-string secrets."""
     parsed = urlparse(str(value or ""))
@@ -198,7 +247,7 @@ def available(model):
     provider, _remote, config = parse_model(model)
     if provider == "local":
         return True
-    return bool(os.environ.get(config["key_env"]))
+    return key_available(config["key_env"])
 
 
 def sanitize_prompt(text):
@@ -261,7 +310,7 @@ def _cloud_messages(prompt, state):
 
 def _openai_chat(provider, remote, config, prompt, state, options):
     messages = _cloud_messages(prompt, state)
-    key = os.environ.get(config["key_env"])
+    key = secret(config["key_env"])
     if not key:
         raise ProviderError("provider_key", "%s is not set" % config["key_env"])
     body = {"model": remote, "messages": messages, "temperature": options.get("temperature", 0.2),
@@ -287,7 +336,7 @@ def _openai_chat(provider, remote, config, prompt, state, options):
 
 def _openai_responses(provider, remote, config, prompt, state, options):
     messages = _cloud_messages(prompt, state)
-    key = os.environ.get(config["key_env"])
+    key = secret(config["key_env"])
     if not key:
         raise ProviderError("provider_key", "%s is not set" % config["key_env"])
     body = {"model": remote, "input": messages, "max_output_tokens": options.get("max_tokens", 1024),
@@ -306,7 +355,7 @@ def _openai_responses(provider, remote, config, prompt, state, options):
 
 def _anthropic(provider, remote, config, prompt, state, options):
     messages = _cloud_messages(prompt, state)
-    key = os.environ.get(config["key_env"])
+    key = secret(config["key_env"])
     if not key:
         raise ProviderError("provider_key", "%s is not set" % config["key_env"])
     system = "\n".join(message["content"] for message in messages if message["role"] == "system")
@@ -324,7 +373,7 @@ def _anthropic(provider, remote, config, prompt, state, options):
 
 def _gemini(provider, remote, config, prompt, state, options):
     messages = _cloud_messages(prompt, state)
-    key = os.environ.get(config["key_env"])
+    key = secret(config["key_env"])
     if not key:
         raise ProviderError("provider_key", "%s is not set" % config["key_env"])
     contents = [{"role": "model" if m["role"] == "assistant" else "user", "parts": [{"text": m["content"]}]}

@@ -69,7 +69,7 @@ Add a non-secret `roconstruct-providers.json` file:
 }
 ```
 
-Never store a key in this file, `roconstruct-settings.json`, a server lease, candidate source, telemetry, command history, or logs. Keys live only in environment variables or the user's OS secret store. Add `.example` and git-ignore the real file.
+Never store a key in this file, `roconstruct-settings.json`, a server lease, candidate source, telemetry, command history, or logs. Keys live in environment variables or the user-local secrets file outside the repository (`roc provider secrets`); the real file is git-ignored.
 
 CLI:
 

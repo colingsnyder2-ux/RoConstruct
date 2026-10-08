@@ -420,7 +420,11 @@ def cmd_provider(a):
     if a.sub == "list":
         for name, config in sorted(providers.providers().items()):
             print("%-12s %-18s %s (%s=%s)" % (name, config["kind"], config["base_url"],
-                                                config["key_env"], "set" if os.environ.get(config["key_env"]) else "missing"))
+                                                config["key_env"], "set" if providers.key_available(config["key_env"]) else "missing"))
+        return
+    if a.sub == "secrets":
+        print("Local secret file: %s" % providers.secrets_path())
+        print('Format: {"DEEPSEEK_API_KEY":"paste-key"}')
         return
     if a.sub == "add":
         providers.save_provider(a.name, a.kind, a.base_url, a.key_env)
@@ -817,6 +821,7 @@ def main(argv=None):
     p = sub.add_parser("provider", help="configure or test non-secret cloud model providers")
     ps = p.add_subparsers(dest="sub", required=True)
     ps.add_parser("list", help="show providers and whether their key environment variable is set").set_defaults(fn=cmd_provider)
+    ps.add_parser("secrets", help="show safe user-local API-key file path").set_defaults(fn=cmd_provider)
     pa = ps.add_parser("add", help="add an OpenAI-compatible or native cloud endpoint (no key saved)")
     pa.add_argument("name")
     pa.add_argument("--kind", required=True, choices=["openai-chat", "openai-responses", "anthropic-messages", "gemini"])

@@ -145,13 +145,31 @@ def choose_options(settings):
     default_model = draft.pick_model(settings.get("model")) or "none"
     print("\nWorker options (Enter keeps the default):")
     print("Installed models: " + ", ".join(installed or ["none"]))
+    print("Cloud models: deepseek:deepseek-flash, nvidia:qwen/qwen2.5-coder-32b-instruct, "
+          "openai:gpt-5, anthropic:MODEL, gemini:MODEL")
     model = input("Model [%s]: " % default_model).strip() or default_model
     if model == "default":
         model = None
     elif providers.is_cloud(model):
         if not providers.available(model):
             _provider, _remote, config = providers.parse_model(model)
-            raise SystemExit("Cloud key is missing: set %s" % config["key_env"])
+            path = providers.secrets_path()
+            path.parent.mkdir(parents=True, exist_ok=True)
+            if not path.exists():
+                path.write_text("{}\n", encoding="utf-8")
+            print("Paste %s into this local file: %s" % (config["key_env"], path))
+            if os.name == "nt":
+                os.startfile(path)
+            input("Press Enter after saving the key (or Ctrl+C to cancel): ")
+            if not providers.available(model):
+                raise SystemExit("Cloud key still missing: %s" % config["key_env"])
+        if not settings.get("cloud_allowed"):
+            consent = input("Cloud sends bounded assembly/source clues off this PC. Continue? [y/N] ")
+            if consent.strip().lower() not in ("y", "yes"):
+                raise SystemExit("Cloud use cancelled.")
+            settings["cloud_allowed"] = True
+            from roc import worker
+            worker.save_settings(cloud_allowed=True)
     elif model not in installed:
         raise SystemExit("Model '%s' is not installed. Run: roc model" % model)
     preset = (input("Preset [balanced] (fast/balanced/deep): ").strip().lower() or "balanced")

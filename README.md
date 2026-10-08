@@ -217,7 +217,9 @@ The saved hidden-corpus baseline is in `work/benchmark-baseline.json`; use `--ba
 sample or full run to compare score gain and match rate before changing worker speed settings.
 
 One-click worker links ask each time for model, preset, worker count, and Rev.ng. Press Enter to
-keep the shown defaults.
+keep the shown defaults. Cloud choices include DeepSeek, NVIDIA, OpenAI, Anthropic, and Gemini.
+If a selected cloud key is missing, the link opens a user-local `roconstruct-secrets.json` file;
+paste the matching key there, save, and press Enter. Show its path with `roc provider secrets`.
 
 Discord mine logs: run `C:\Users\colin\RoConstruct-discord\discord_setup.py` with the bot token.
 It creates `#mine-logs` and prints a private webhook URL. Start the server with `--discord-webhook URL`

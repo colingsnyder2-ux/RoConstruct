@@ -283,6 +283,17 @@ def test_cloud_provider_core():
                                       options={"allow_cloud": True, "max_tokens": 8})
         assert "alice" not in history.state["messages"][0]["content"]
         assert "private" not in providers.sanitize_prompt("token=private-token-value")
+        old_secret_path = os.environ.get("ROCONSTRUCT_SECRETS_FILE")
+        with tempfile.TemporaryDirectory() as temp:
+            secret_path = Path(temp) / "secrets.json"
+            secret_path.write_text(json.dumps({"DEEPSEEK_API_KEY": "file-key"}))
+            os.environ["ROCONSTRUCT_SECRETS_FILE"] = str(secret_path)
+            assert providers.key_available("DEEPSEEK_API_KEY")
+            assert providers.secret("DEEPSEEK_API_KEY") == "file-key"
+        if old_secret_path is None:
+            os.environ.pop("ROCONSTRUCT_SECRETS_FILE", None)
+        else:
+            os.environ["ROCONSTRUCT_SECRETS_FILE"] = old_secret_path
         try:
             providers.save_provider("bad", "openai-chat", "https://example.com/v1?token=x", "BAD_KEY")
             raise AssertionError("secret query URL was accepted")
