@@ -661,6 +661,7 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
                    int((facts or {}).get("branch_count", 0) or 0) > 1)
     diverse_rounds = min(rounds, requested_diversity) if hard_target else 1
     no_think = False  # set after a truncation: reasoning likely ate the budget
+    asm_strikes = 0  # repeat asm dumps rarely learn: 72% repeat after the first
     for i in range(rounds):
         independent = i < diverse_rounds
         full_prompt = prompt_for(client, addr, row, asm, hint,
@@ -729,6 +730,13 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
             context = None
             attempt = ("// Previous output rejected: it used inline asm.", 0, error)
             err_codes.append("inline-asm")
+            asm_strikes += 1
+            if asm_strikes >= 2:
+                log("  stopping early: inline asm twice in a row, model is not learning")
+                if stats is not None:
+                    stats.append({"round": "early-stop",
+                                  "reason": "inline asm x2", "code": "inline-asm"})
+                break
             continue
         if invalid_qualified_definition(src):
             error = ("Candidate rejected: qualified struct/class definitions are invalid C++. "
@@ -756,6 +764,7 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
             attempt = ("// Previous output rejected: %s." % contract_error, 0, error)
             err_codes.append("source-contract")
             continue
+        asm_strikes = 0  # reached real compile: any later asm dump is a new streak
         compile_error = None
         repaired, duplicate = [], False
         reply_src = src  # unmodified LLM output, kept for comparison

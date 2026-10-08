@@ -82,7 +82,7 @@ Not yet automated end-to-end:
 - [x] Fixed-target local benchmark supports resumable full-corpus model comparison (`--full --resume`); smoke run measured qwen14b/qwen7b.
 - [x] Hard 180-second Ollama request boundary; streamed socket closes on timeout (no worker-side hung process).
 - [x] Compiler and preprocessor subprocesses have 120-second hard timeouts.
-- [x] Bounded parallel compiler candidate pool and bounded worker loops via `roc worker --workers N` (1-8).
+- [x] Bounded parallel compiler candidate pool and bounded worker loops via `roc worker --workers N` (1-32).
 - [x] Failure clustering classifies recurring errors; `roc failures --promote` saves rule, template, and quarantine files.
 
 Master-plan coverage:

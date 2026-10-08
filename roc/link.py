@@ -148,7 +148,7 @@ def choose_options(settings):
     Defaults come from the last run (saved in settings), so Enter repeats
     the previous launch; any prompt still accepts a new value.
     """
-    from roc import draft, providers
+    from roc import draft, providers, worker
     installed = draft.ollama_models()
     default_model = draft.pick_model(settings.get("model")) or "none"
     print("\nWorker options (Enter keeps the default):")
@@ -185,12 +185,12 @@ def choose_options(settings):
     elif preset == "deep":
         rounds, max_size = 6, 512
     last_workers = settings.get("worker_workers", "1")
-    workers = input("Workers [%s] (1-8 or auto): " % last_workers).strip() or last_workers
+    workers = input("Workers [%s] (1-%d or auto): " % (last_workers, worker.MAX_WORKERS)).strip() or last_workers
     if workers != "auto":
         try:
-            workers = max(1, min(int(workers), 8))
+            workers = max(1, min(int(workers), worker.MAX_WORKERS))
         except ValueError:
-            raise SystemExit("Workers must be 1-8 or auto")
+            raise SystemExit("Workers must be 1-%d or auto" % worker.MAX_WORKERS)
     if (input("Advanced (rounds, tokens, Rev.ng, thinking)? [Enter=skip, y=show]: ").strip().lower()
             in ("y", "yes", "advanced")):
         picked = input("Rounds [auto=%d]: " % rounds).strip().lower() or "auto"

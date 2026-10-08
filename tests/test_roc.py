@@ -464,6 +464,11 @@ def test_link_options():
          patch("roc.worker.save_settings"), \
          patch("builtins.input", side_effect=["", "balanced", "1", "y", "6", "1024", "n", "disabled"]):
         assert choose_options({}) == ("qwen2.5-coder:14b", 6, 256, False, 1, 1024, "disabled")
+    with patch("roc.draft.ollama_models", return_value=["qwen2.5-coder:14b", "qwen2.5-coder:7b"]), \
+         patch("roc.draft.pick_model", return_value="qwen2.5-coder:14b"), \
+         patch("roc.worker.save_settings"), \
+         patch("builtins.input", side_effect=["", "balanced", "99", ""]):
+        assert choose_options({}) == ("qwen2.5-coder:14b", 4, 256, True, 32, 2048, "auto")
 
 
 def test_auto_reasoning():
@@ -565,6 +570,27 @@ def test_mine_digest():
     assert "2 updates" in embed["title"] and "a1" in embed["fields"][0]["value"]
     assert "60 pts" in embed["footer"]["text"] and "2 left" in embed["footer"]["text"]
     assert "ETA" in embed["footer"]["text"]
+
+
+def test_concurrent_shares_caches_and_clamps():
+    from roc import worker
+    assert worker.MAX_WORKERS == 32
+    calls = []
+
+    def fake_run(*args, **kwargs):
+        calls.append((args, kwargs))
+        return 0
+
+    with patch("roc.worker.run", side_effect=fake_run):
+        worker.run_concurrent("http://x", "u", model="m", max_jobs=3, workers=3, log=lambda *a: None)
+    assert len(calls) == 3
+    assert {c[1]["examples_cache"] is calls[0][1]["examples_cache"] for c in calls} == {True}
+    assert {c[1]["source_cache"] is calls[0][1]["source_cache"] for c in calls} == {True}
+    assert sorted(c[0][7] for c in calls) == [1, 1, 1]
+    calls.clear()
+    with patch("roc.worker.run", side_effect=fake_run):
+        worker.run_concurrent("http://x", "u", model="m", max_jobs=0, workers=99, log=lambda *a: None)
+    assert len(calls) == 32
 
 
 def test_server_store():
@@ -828,6 +854,44 @@ def test_truncation_disables_thinking(monkeypatch):
     assert score == 100 and len(seen) == 2
     assert seen[1].get("thinking") == "disabled" and "reasoning_effort" not in seen[1]
     assert any("thinking disabled" in message for message in logs)
+
+
+def test_asm_strikes_stop_early(monkeypatch):
+    from roc import draft
+    calls = []
+
+    def ask(model, prompt, context=None, options=None, details=False):
+        calls.append(prompt)
+        return "```cpp\nvoid f() { __asm { nop } }\n```", None, {"output_tokens": 10}
+
+    monkeypatch.setattr(draft, "_ask_context", ask)
+    monkeypatch.setattr(draft.match, "target", lambda *args: (b"\xc3", [], {"size": 9, "unit": "x"}))
+    monkeypatch.setattr(draft.match, "disasm", lambda *args: ["ret "])
+    monkeypatch.setattr(draft, "prompt_for", lambda *args: "p")
+    stats, logs = [], []
+    score, source = draft.llm_rounds("C", "1", "m", 4, log=logs.append, stats=stats)
+    assert score == 0 and source is None and len(calls) == 2
+    assert any("inline asm twice" in message for message in logs)
+    assert any(s.get("reason") == "inline asm x2" for s in stats)
+
+
+def test_asm_strikes_stop_early(monkeypatch):
+    from roc import draft
+    calls = []
+
+    def ask(model, prompt, context=None, options=None, details=False):
+        calls.append(prompt)
+        return "```cpp\nvoid f() { __asm { nop } }\n```", None, {"output_tokens": 10}
+
+    monkeypatch.setattr(draft, "_ask_context", ask)
+    monkeypatch.setattr(draft.match, "target", lambda *args: (b"\xc3", [], {"size": 9, "unit": "x"}))
+    monkeypatch.setattr(draft.match, "disasm", lambda *args: ["ret "])
+    monkeypatch.setattr(draft, "prompt_for", lambda *args: "p")
+    stats, logs = [], []
+    score, source = draft.llm_rounds("C", "1", "m", 4, log=logs.append, stats=stats)
+    assert score == 0 and source is None and len(calls) == 2
+    assert any("inline asm twice" in message for message in logs)
+    assert any(s.get("reason") == "inline asm x2" for s in stats)
 
 
 def test_qualified_type_definition_rejected():

@@ -19,6 +19,7 @@ from roc import clients, draft, match, metrics, setup
 
 ROOT = Path(__file__).resolve().parent.parent
 SETTINGS = ROOT / "roconstruct-settings.json"
+MAX_WORKERS = 32
 USER_RE = re.compile(r"^[A-Za-z0-9_.-]{2,32}$")
 SITE = "https://colingsnyder2-ux.github.io/RoConstruct/"
 
@@ -218,9 +219,11 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
         strategy="direct", cloud_allowed=False, cloud_budget=None, cloud_gate=None,
         diverse_candidates=1, cloud_min_size=0, cloud_fallback=None, seed=None,
         cloud_escalate=None, cloud_escalate_after=2, thinking=None, reasoning_effort=None,
-        max_tokens=2048):
+        max_tokens=2048, examples_cache=None, source_cache=None):
     """forever: survive server/network outages (retry every minute) for overnight runs.
-    only: restrict to these clients (one-click links)."""
+    only: restrict to these clients (one-click links).
+    examples_cache/source_cache: shared across parallel loops so N workers do
+    one /v1/examples fetch and one prompt-hint build per unit instead of N."""
     if not USER_RE.match(user or ""):
         raise SystemExit("Pick a username: 2-32 letters, digits, _ . -")
     api = Api(server, token)
@@ -281,8 +284,10 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
                       "Note: workers keep the GPU and CPU busy (fans, heat, power). Ctrl+C or close the window to stop.")
     done = matched = 0
     failures = 0
-    examples_cache = {}
-    source_cache = {}
+    if examples_cache is None:
+        examples_cache = {}
+    if source_cache is None:
+        source_cache = {}
     while max_jobs is None or done < max_jobs:
         try:
             job = api.call("/v1/lease", {"user": user, "worker": worker, "clients": have,
@@ -353,13 +358,15 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
                    max_tokens=2048):
     """Run a bounded number of independent lease loops.
 
-    Server leases make workers safe to run in parallel.  Keep the default at one
-    process/thread so laptop users do not accidentally oversubscribe GPU/CPU.
+    Server leases make workers safe to run in parallel. Cloud loops are
+    I/O-bound (remote inference), so the cap is generous; local GPU loops
+    should stay low so laptop users do not oversubscribe.
     """
     if str(workers).lower() == "auto":
         # Conservative: small models can overlap; large models stay serial.
         workers = 2 if "7b" in str(model).lower() else 1
-    workers = max(1, min(int(workers or 1), 8))
+    workers = max(1, min(int(workers or 1), MAX_WORKERS))
+    shared_examples, shared_sources = {}, {}
     if workers == 1:
         return run(server, user, token, model, rounds, max_size, use_revng,
                    max_jobs, log, forever=True, only=only, source_only=source_only, targets=targets,
@@ -367,7 +374,8 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
                    diverse_candidates=diverse_candidates, cloud_min_size=cloud_min_size,
                    cloud_fallback=cloud_fallback, seed=seed, cloud_escalate=cloud_escalate,
                    cloud_escalate_after=cloud_escalate_after, thinking=thinking,
-                   reasoning_effort=reasoning_effort, max_tokens=max_tokens)
+                   reasoning_effort=reasoning_effort, max_tokens=max_tokens,
+                   examples_cache=shared_examples, source_cache=shared_sources)
     if max_jobs is None:
         quotas = [None] * workers
     else:
@@ -383,7 +391,8 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
                 diverse_candidates=diverse_candidates, cloud_min_size=cloud_min_size,
                 cloud_fallback=cloud_fallback, seed=seed, cloud_escalate=cloud_escalate,
                 cloud_escalate_after=cloud_escalate_after, thinking=thinking,
-                reasoning_effort=reasoning_effort, max_tokens=max_tokens)
+                reasoning_effort=reasoning_effort, max_tokens=max_tokens,
+                examples_cache=shared_examples, source_cache=shared_sources)
         except BaseException as error:
             errors.append(error)
 

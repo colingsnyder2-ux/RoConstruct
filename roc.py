@@ -905,7 +905,7 @@ def main(argv=None):
                                "help": "max tokens per LLM reply (128-8192)"}),
         (["--jobs"], {"type": int, "help": "stop after this many functions"}),
         (["--workers"], {"default": "1",
-                          "help": "bounded concurrent lease loops (1-8 or auto)"}),
+                          "help": "bounded concurrent lease loops (1-32 or auto)"}),
         (["--allow-cloud"], {"action": "store_true", "help": "allow prompt data to leave this PC"}),
         (["--max-cloud-requests"], {"type": int, "help": "cloud request budget for this worker"}),
         (["--max-cloud-tokens"], {"type": int, "help": "cloud token budget for this worker"}),
