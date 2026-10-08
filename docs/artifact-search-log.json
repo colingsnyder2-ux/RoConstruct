@@ -860,6 +860,13 @@
       "target": "Roblox 2010 map-extraction discussion",
       "url": "https://cheatengine.org/forum/viewtopic.php?p=4902855&sid=",
       "evidence": "Search index exposes a 2010.05.05 Roblox build PDB path, G3D headers, VC9 ATL/MFC headers, and embedded zlib/JPEG strings; forum page is currently 403 and no downloadable map/PDB was exposed."
+    },
+    {
+      "checked_at": "2026-10-08T20:40:00-04:00",
+      "status": "metadata-only",
+      "target": "Roblox RCC.exe VC8 server build object inventory",
+      "url": "https://www.hybrid-analysis.com/sample/f3da1d3b6add6228327eaa396efa5dc7a96042eb8838de72457ec4d9077ebb90/62af9fc65e8ea37a0e16c347",
+      "evidence": "Hybrid Analysis exposes a Roblox RCC build with PDB metadata and compiler inventory: 43 VC9 LIBs, 108 COFF OBJ files, 116 OMF OBJ files, and 42 VS5 OMF objects. No object/library payload is exposed; server-side rather than target client."
     }
   ],
   "version": 1
