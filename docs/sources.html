@@ -75,6 +75,7 @@ td.name { font-family: var(--mono); color: var(--text); white-space: nowrap; }
   <div class="card"><table>
     <tr><th>Source</th><th>What it gives</th><th>Status</th></tr>
     <tr><td class="name">RBXGSdecomp</td><td><a href="https://github.com/RBLXDecomp/RBXGSdecomp">RBLXDecomp/RBXGSdecomp</a> — a matching decompilation of RBXGS 0.3.634.0 (Nov 2007), VS2005 SP1. App (v8kernel, v8world, humanoid, reflection, script), Network (Replicator, Player, Server), RbxView (Part, meshes), RenderLib, and its patched G3D fork. Recipes <code>rbxgs</code>, <code>rbxgs-net</code>, <code>rbxgs-view</code>, <code>rbxgs-render</code>, <code>rbxgs-g3d</code>.</td><td><span class="tag ok">used</span></td></tr>
+    <tr><td class="name">RCCService decompile</td><td><a href="https://github.com/verify-stack/rccservice-decompile">verify-stack/rccservice-decompile</a> — May 2008 server source using the same Boost/G3D/RakNet/Lua stack. Experimental client fingerprint run produced <strong>+2</strong> (<code>2008-06</code>, <code>2009-06</code>); not a full client tree.</td><td><span class="tag part">experimental</span></td></tr>
     <tr><td class="name">2016 leak forks</td><td>Roblox's forks of G3D 8.00, Lua 5.1.4, libjpeg, libpng and RakNet from the 2016 source tree. Recipes <code>rbx2016-g3d</code>, <code>rbx2016-lua</code>, <code>rbx2016-jpeg</code>, <code>rbx2016-png</code>, <code>rbx2016-raknet</code>. Code unchanged since the client era matches byte-for-byte.</td><td><span class="tag ok">used</span></td></tr>
   </table></div>
 
@@ -114,6 +115,7 @@ td.name { font-family: var(--mono); color: var(--text); white-space: nowrap; }
   <h2>Techniques (no external source)</h2>
   <div class="card"><table>
     <tr><th>Method</th><th>What it does</th></tr>
+    <tr><td class="name">mass fingerprinting</td><td><code>roc mass</code> compiles every configured source recipe with matching old MSVC builds and flag grids, compares machine code byte-for-byte against every client, then re-analyzes and runs auto-matching.</td></tr>
     <tr><td class="name">cross-client copy</td><td>Every matched source is recompiled against every other client; byte-identical functions shared between clients (and duplicate functions inside one client) match for free. <code>roc xcopy</code>.</td></tr>
     <tr><td class="name">auto shapes</td><td>Trivial compiler-stereotyped functions (thunks, forwarders, small accessors) matched from their assembly shape. <code>roc auto</code>.</td></tr>
     <tr><td class="name">AI workers</td><td>A local code model drafts C++ for one function, compiles, diffs the assembly and retries — with a Rev.ng hint and the 2016 source for the class. <code>roc worker</code>.</td></tr>

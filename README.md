@@ -122,6 +122,7 @@ roc client remove <name>        unregister a client (--purge deletes its local c
 roc client-fetch <name|all>     download a client and verify it (happens automatically)
 roc client-sources <folder>     index a Drive folder as a fetch fallback
 roc analyze <client|all>        split an exe into functions
+roc mass <client|all>           compile every known source recipe, fingerprint, analyze and auto-match
 roc auto <client|all>           auto-match trivial functions
 roc shapes <client|all>         count unmatched assembly shapes (picks the next templates)
 roc xcopy <client|all>          copy every match to the other clients that share the function
