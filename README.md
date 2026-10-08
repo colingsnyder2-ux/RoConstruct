@@ -78,6 +78,11 @@ RoConstruct clones stay small. Browse [RoConstruct-findings](https://github.com/
 
 **[SOURCES.md](SOURCES.md)** — every source we compile to match functions, what we still need and cannot find, and leads we ruled out. ([live page](https://colingsnyder2-ux.github.io/RoConstruct/sources.html))
 
+The metadata-only artifact scout (`py -3 scripts/scout_sources.py`) checks
+Common Crawl, Wayback CDX, and Sourcegraph for high-value PDB/MAP/LIB/OBJ
+artifacts. It records checked queries in `docs/artifact-search-log.json` and
+does not download client binaries.
+
 <details>
 <summary><b>Matching by hand</b></summary>
 

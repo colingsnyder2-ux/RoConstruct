@@ -1,0 +1,295 @@
+{
+  "last_run": "2026-10-08T07:19:39.905975+00:00",
+  "queries": [
+    {
+      "checked_at": "2026-10-08T07:18:45.888324+00:00",
+      "key": "Common Crawl|RobloxPlayer.pdb|https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2ARobloxPlayer.pdb%2A&output=json&filter=status:200",
+      "source": "Common Crawl",
+      "status": 0,
+      "target": "RobloxPlayer.pdb",
+      "url": "https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2ARobloxPlayer.pdb%2A&output=json&filter=status:200"
+    },
+    {
+      "checked_at": "2026-10-08T07:18:49.116657+00:00",
+      "key": "Common Crawl|RobloxPlayer.map|https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2ARobloxPlayer.map%2A&output=json&filter=status:200",
+      "source": "Common Crawl",
+      "status": 0,
+      "target": "RobloxPlayer.map",
+      "url": "https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2ARobloxPlayer.map%2A&output=json&filter=status:200"
+    },
+    {
+      "checked_at": "2026-10-08T07:18:51.054474+00:00",
+      "key": "Wayback CDX|RobloxApp.pdb|https://web.archive.org/cdx/search/cdx?url=%2ARobloxApp.pdb&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest",
+      "source": "Wayback CDX",
+      "status": 0,
+      "target": "RobloxApp.pdb",
+      "url": "https://web.archive.org/cdx/search/cdx?url=%2ARobloxApp.pdb&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest"
+    },
+    {
+      "checked_at": "2026-10-08T07:18:53.861888+00:00",
+      "key": "Common Crawl|RobloxApp.pdb|https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2ARobloxApp.pdb%2A&output=json&filter=status:200",
+      "source": "Common Crawl",
+      "status": 0,
+      "target": "RobloxApp.pdb",
+      "url": "https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2ARobloxApp.pdb%2A&output=json&filter=status:200"
+    },
+    {
+      "checked_at": "2026-10-08T07:18:53.969609+00:00",
+      "key": "Wayback CDX|RobloxPlayer.pdb|https://web.archive.org/cdx/search/cdx?url=%2ARobloxPlayer.pdb&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest",
+      "source": "Wayback CDX",
+      "status": 0,
+      "target": "RobloxPlayer.pdb",
+      "url": "https://web.archive.org/cdx/search/cdx?url=%2ARobloxPlayer.pdb&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest"
+    },
+    {
+      "checked_at": "2026-10-08T07:18:53.970113+00:00",
+      "key": "Wayback CDX|RobloxPlayer.map|https://web.archive.org/cdx/search/cdx?url=%2ARobloxPlayer.map&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest",
+      "source": "Wayback CDX",
+      "status": 0,
+      "target": "RobloxPlayer.map",
+      "url": "https://web.archive.org/cdx/search/cdx?url=%2ARobloxPlayer.map&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest"
+    },
+    {
+      "checked_at": "2026-10-08T07:18:56.325347+00:00",
+      "key": "Wayback CDX|RobloxApp.map|https://web.archive.org/cdx/search/cdx?url=%2ARobloxApp.map&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest",
+      "source": "Wayback CDX",
+      "status": 0,
+      "target": "RobloxApp.map",
+      "url": "https://web.archive.org/cdx/search/cdx?url=%2ARobloxApp.map&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest"
+    },
+    {
+      "checked_at": "2026-10-08T07:18:56.456238+00:00",
+      "key": "Common Crawl|RobloxApp.map|https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2ARobloxApp.map%2A&output=json&filter=status:200",
+      "source": "Common Crawl",
+      "status": 0,
+      "target": "RobloxApp.map",
+      "url": "https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2ARobloxApp.map%2A&output=json&filter=status:200"
+    },
+    {
+      "checked_at": "2026-10-08T07:18:59.230707+00:00",
+      "key": "Wayback CDX|libcpmt.lib|https://web.archive.org/cdx/search/cdx?url=%2Alibcpmt.lib&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest",
+      "source": "Wayback CDX",
+      "status": 0,
+      "target": "libcpmt.lib",
+      "url": "https://web.archive.org/cdx/search/cdx?url=%2Alibcpmt.lib&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest"
+    },
+    {
+      "checked_at": "2026-10-08T07:19:02.047103+00:00",
+      "key": "Common Crawl|libcpmt.lib|https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2Alibcpmt.lib%2A&output=json&filter=status:200",
+      "source": "Common Crawl",
+      "status": 0,
+      "target": "libcpmt.lib",
+      "url": "https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2Alibcpmt.lib%2A&output=json&filter=status:200"
+    },
+    {
+      "checked_at": "2026-10-08T07:19:02.631256+00:00",
+      "key": "Common Crawl|libcmt.lib|https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2Alibcmt.lib%2A&output=json&filter=status:200",
+      "source": "Common Crawl",
+      "status": 0,
+      "target": "libcmt.lib",
+      "url": "https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2Alibcmt.lib%2A&output=json&filter=status:200"
+    },
+    {
+      "checked_at": "2026-10-08T07:19:06.017351+00:00",
+      "key": "Sourcegraph|libcmt.lib|https://sourcegraph.com/search/stream?q=%22libcmt.lib%22&v=V3",
+      "source": "Sourcegraph",
+      "status": 200,
+      "target": "libcmt.lib",
+      "url": "https://sourcegraph.com/search/stream?q=%22libcmt.lib%22&v=V3"
+    },
+    {
+      "checked_at": "2026-10-08T07:19:06.937225+00:00",
+      "key": "Sourcegraph|RobloxPlayer.pdb|https://sourcegraph.com/search/stream?q=%22RobloxPlayer.pdb%22&v=V3",
+      "source": "Sourcegraph",
+      "status": 200,
+      "target": "RobloxPlayer.pdb",
+      "url": "https://sourcegraph.com/search/stream?q=%22RobloxPlayer.pdb%22&v=V3"
+    },
+    {
+      "checked_at": "2026-10-08T07:19:07.371108+00:00",
+      "key": "Sourcegraph|RobloxApp.pdb|https://sourcegraph.com/search/stream?q=%22RobloxApp.pdb%22&v=V3",
+      "source": "Sourcegraph",
+      "status": 200,
+      "target": "RobloxApp.pdb",
+      "url": "https://sourcegraph.com/search/stream?q=%22RobloxApp.pdb%22&v=V3"
+    },
+    {
+      "checked_at": "2026-10-08T07:19:07.451465+00:00",
+      "key": "Wayback CDX|libcmt.lib|https://web.archive.org/cdx/search/cdx?url=%2Alibcmt.lib&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest",
+      "source": "Wayback CDX",
+      "status": 0,
+      "target": "libcmt.lib",
+      "url": "https://web.archive.org/cdx/search/cdx?url=%2Alibcmt.lib&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest"
+    },
+    {
+      "checked_at": "2026-10-08T07:19:08.708253+00:00",
+      "key": "Common Crawl|msvcprt.lib|https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2Amsvcprt.lib%2A&output=json&filter=status:200",
+      "source": "Common Crawl",
+      "status": 0,
+      "target": "msvcprt.lib",
+      "url": "https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2Amsvcprt.lib%2A&output=json&filter=status:200"
+    },
+    {
+      "checked_at": "2026-10-08T07:19:10.581918+00:00",
+      "key": "Common Crawl|vc80.pdb|https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2Avc80.pdb%2A&output=json&filter=status:200",
+      "source": "Common Crawl",
+      "status": 0,
+      "target": "vc80.pdb",
+      "url": "https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2Avc80.pdb%2A&output=json&filter=status:200"
+    },
+    {
+      "checked_at": "2026-10-08T07:19:11.279323+00:00",
+      "key": "Wayback CDX|msvcprt.lib|https://web.archive.org/cdx/search/cdx?url=%2Amsvcprt.lib&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest",
+      "source": "Wayback CDX",
+      "status": 0,
+      "target": "msvcprt.lib",
+      "url": "https://web.archive.org/cdx/search/cdx?url=%2Amsvcprt.lib&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest"
+    },
+    {
+      "checked_at": "2026-10-08T07:19:12.910246+00:00",
+      "key": "Sourcegraph|RobloxPlayer.map|https://sourcegraph.com/search/stream?q=%22RobloxPlayer.map%22&v=V3",
+      "source": "Sourcegraph",
+      "status": 200,
+      "target": "RobloxPlayer.map",
+      "url": "https://sourcegraph.com/search/stream?q=%22RobloxPlayer.map%22&v=V3"
+    },
+    {
+      "checked_at": "2026-10-08T07:19:15.649819+00:00",
+      "key": "Wayback CDX|vc80.pdb|https://web.archive.org/cdx/search/cdx?url=%2Avc80.pdb&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest",
+      "source": "Wayback CDX",
+      "status": 0,
+      "target": "vc80.pdb",
+      "url": "https://web.archive.org/cdx/search/cdx?url=%2Avc80.pdb&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest"
+    },
+    {
+      "checked_at": "2026-10-08T07:19:15.884248+00:00",
+      "key": "Sourcegraph|vc90.pdb|https://sourcegraph.com/search/stream?q=%22vc90.pdb%22&v=V3",
+      "source": "Sourcegraph",
+      "status": 200,
+      "target": "vc90.pdb",
+      "url": "https://sourcegraph.com/search/stream?q=%22vc90.pdb%22&v=V3"
+    },
+    {
+      "checked_at": "2026-10-08T07:19:15.962820+00:00",
+      "key": "Common Crawl|vc90.pdb|https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2Avc90.pdb%2A&output=json&filter=status:200",
+      "source": "Common Crawl",
+      "status": 0,
+      "target": "vc90.pdb",
+      "url": "https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2Avc90.pdb%2A&output=json&filter=status:200"
+    },
+    {
+      "checked_at": "2026-10-08T07:19:15.985560+00:00",
+      "key": "Common Crawl|.vcproj|https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2A.vcproj%2A&output=json&filter=status:200",
+      "source": "Common Crawl",
+      "status": 0,
+      "target": ".vcproj",
+      "url": "https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2A.vcproj%2A&output=json&filter=status:200"
+    },
+    {
+      "checked_at": "2026-10-08T07:19:16.053182+00:00",
+      "key": "Sourcegraph|RobloxApp.map|https://sourcegraph.com/search/stream?q=%22RobloxApp.map%22&v=V3",
+      "source": "Sourcegraph",
+      "status": 200,
+      "target": "RobloxApp.map",
+      "url": "https://sourcegraph.com/search/stream?q=%22RobloxApp.map%22&v=V3"
+    },
+    {
+      "checked_at": "2026-10-08T07:19:16.578013+00:00",
+      "key": "Wayback CDX|vc90.pdb|https://web.archive.org/cdx/search/cdx?url=%2Avc90.pdb&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest",
+      "source": "Wayback CDX",
+      "status": 0,
+      "target": "vc90.pdb",
+      "url": "https://web.archive.org/cdx/search/cdx?url=%2Avc90.pdb&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest"
+    },
+    {
+      "checked_at": "2026-10-08T07:19:17.199776+00:00",
+      "key": "Common Crawl|RobloxPlayer.obj|https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2ARobloxPlayer.obj%2A&output=json&filter=status:200",
+      "source": "Common Crawl",
+      "status": 0,
+      "target": "RobloxPlayer.obj",
+      "url": "https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2ARobloxPlayer.obj%2A&output=json&filter=status:200"
+    },
+    {
+      "checked_at": "2026-10-08T07:19:18.708383+00:00",
+      "key": "Common Crawl|RobloxApp.obj|https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2ARobloxApp.obj%2A&output=json&filter=status:200",
+      "source": "Common Crawl",
+      "status": 0,
+      "target": "RobloxApp.obj",
+      "url": "https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2ARobloxApp.obj%2A&output=json&filter=status:200"
+    },
+    {
+      "checked_at": "2026-10-08T07:19:19.552097+00:00",
+      "key": "Sourcegraph|.vcproj|https://sourcegraph.com/search/stream?q=%22.vcproj%22&v=V3",
+      "source": "Sourcegraph",
+      "status": 200,
+      "target": ".vcproj",
+      "url": "https://sourcegraph.com/search/stream?q=%22.vcproj%22&v=V3"
+    },
+    {
+      "checked_at": "2026-10-08T07:19:21.164405+00:00",
+      "key": "Wayback CDX|.vcproj|https://web.archive.org/cdx/search/cdx?url=%2A.vcproj&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest",
+      "source": "Wayback CDX",
+      "status": 0,
+      "target": ".vcproj",
+      "url": "https://web.archive.org/cdx/search/cdx?url=%2A.vcproj&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest"
+    },
+    {
+      "checked_at": "2026-10-08T07:19:21.333666+00:00",
+      "key": "Wayback CDX|RobloxPlayer.obj|https://web.archive.org/cdx/search/cdx?url=%2ARobloxPlayer.obj&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest",
+      "source": "Wayback CDX",
+      "status": 0,
+      "target": "RobloxPlayer.obj",
+      "url": "https://web.archive.org/cdx/search/cdx?url=%2ARobloxPlayer.obj&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest"
+    },
+    {
+      "checked_at": "2026-10-08T07:19:22.565937+00:00",
+      "key": "Sourcegraph|libcpmt.lib|https://sourcegraph.com/search/stream?q=%22libcpmt.lib%22&v=V3",
+      "source": "Sourcegraph",
+      "status": 200,
+      "target": "libcpmt.lib",
+      "url": "https://sourcegraph.com/search/stream?q=%22libcpmt.lib%22&v=V3"
+    },
+    {
+      "checked_at": "2026-10-08T07:19:24.022231+00:00",
+      "key": "Wayback CDX|RobloxApp.obj|https://web.archive.org/cdx/search/cdx?url=%2ARobloxApp.obj&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest",
+      "source": "Wayback CDX",
+      "status": 0,
+      "target": "RobloxApp.obj",
+      "url": "https://web.archive.org/cdx/search/cdx?url=%2ARobloxApp.obj&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest"
+    },
+    {
+      "checked_at": "2026-10-08T07:19:27.546315+00:00",
+      "key": "Sourcegraph|msvcprt.lib|https://sourcegraph.com/search/stream?q=%22msvcprt.lib%22&v=V3",
+      "source": "Sourcegraph",
+      "status": 200,
+      "target": "msvcprt.lib",
+      "url": "https://sourcegraph.com/search/stream?q=%22msvcprt.lib%22&v=V3"
+    },
+    {
+      "checked_at": "2026-10-08T07:19:29.244669+00:00",
+      "key": "Sourcegraph|vc80.pdb|https://sourcegraph.com/search/stream?q=%22vc80.pdb%22&v=V3",
+      "source": "Sourcegraph",
+      "status": 200,
+      "target": "vc80.pdb",
+      "url": "https://sourcegraph.com/search/stream?q=%22vc80.pdb%22&v=V3"
+    },
+    {
+      "checked_at": "2026-10-08T07:19:38.889704+00:00",
+      "key": "Sourcegraph|RobloxPlayer.obj|https://sourcegraph.com/search/stream?q=%22RobloxPlayer.obj%22&v=V3",
+      "source": "Sourcegraph",
+      "status": 200,
+      "target": "RobloxPlayer.obj",
+      "url": "https://sourcegraph.com/search/stream?q=%22RobloxPlayer.obj%22&v=V3"
+    },
+    {
+      "checked_at": "2026-10-08T07:19:39.905975+00:00",
+      "key": "Sourcegraph|RobloxApp.obj|https://sourcegraph.com/search/stream?q=%22RobloxApp.obj%22&v=V3",
+      "source": "Sourcegraph",
+      "status": 200,
+      "target": "RobloxApp.obj",
+      "url": "https://sourcegraph.com/search/stream?q=%22RobloxApp.obj%22&v=V3"
+    }
+  ],
+  "results": [],
+  "version": 1
+}
