@@ -388,6 +388,10 @@ def cmd_worker(a):
             raise SystemExit("Cloud key is missing: set %s" % config["key_env"])
     budget = providers.CloudBudget(a.max_cloud_requests, a.max_cloud_tokens, a.max_cloud_cost)
     gate = providers.CloudGate(a.cloud_concurrency)
+    if a.output_budget is None:
+        a.output_budget = 1024
+    if not 128 <= a.output_budget <= 8192:
+        raise SystemExit("--output-budget must be 128-8192")
     if a.cloud_fallback:
         if providers.is_cloud(a.cloud_fallback):
             if not cloud_allowed:
@@ -400,9 +404,9 @@ def cmd_worker(a):
     if a.dry_run:
         info = worker.Api(srv, a.token or s.get("token")).call("/v1/info")
         have = worker.usable_clients(info)
-        print("Worker preview: user=%s model=%s clients=%s rounds=%d max-size=%d Rev.ng=%s workers=%s" %
+        print("Worker preview: user=%s model=%s clients=%s rounds=%d max-size=%d Rev.ng=%s workers=%s output-budget=%d" %
               (user, draft.pick_model(chosen) or "none", ", ".join(have) or "none",
-               a.rounds, a.max_size, "off" if a.no_revng else "auto", a.workers))
+               a.rounds, a.max_size, "off" if a.no_revng else "auto", a.workers, a.output_budget))
         return
     worker.save_settings(user=user, server=srv, model=a.model)
     worker.run_concurrent(srv, user, a.token or s.get("token"), chosen, a.rounds, a.max_size,
@@ -412,7 +416,8 @@ def cmd_worker(a):
                           diverse_candidates=a.diverse_candidates, cloud_min_size=a.cloud_min_size,
                           cloud_fallback=a.cloud_fallback, seed=a.seed,
                           cloud_escalate=a.cloud_escalate, cloud_escalate_after=a.cloud_escalate_after,
-                          thinking=a.thinking, reasoning_effort=a.reasoning_effort)
+                          thinking=a.thinking, reasoning_effort=a.reasoning_effort,
+                          max_tokens=a.output_budget)
 
 
 def cmd_provider(a):
@@ -896,6 +901,8 @@ def main(argv=None):
         (["--strategy"], {"choices": ["direct", "structured", "reference"], "default": "direct",
                             "help": "candidate-generation prompt strategy"}),
         (["--max-size"], {"type": int, "default": 256, "help": "skip functions bigger than this (bytes)"}),
+        (["--output-budget"], {"type": int, "default": 1024,
+                               "help": "max tokens per LLM reply (128-8192)"}),
         (["--jobs"], {"type": int, "help": "stop after this many functions"}),
         (["--workers"], {"default": "1",
                           "help": "bounded concurrent lease loops (1-8 or auto)"}),

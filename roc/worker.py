@@ -200,7 +200,8 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
         max_jobs=None, log=pretty_log, forever=False, only=None, source_only=False, targets=None,
         strategy="direct", cloud_allowed=False, cloud_budget=None, cloud_gate=None,
         diverse_candidates=1, cloud_min_size=0, cloud_fallback=None, seed=None,
-        cloud_escalate=None, cloud_escalate_after=2, thinking=None, reasoning_effort=None):
+        cloud_escalate=None, cloud_escalate_after=2, thinking=None, reasoning_effort=None,
+        max_tokens=1024):
     """forever: survive server/network outages (retry every minute) for overnight runs.
     only: restrict to these clients (one-click links)."""
     if not USER_RE.match(user or ""):
@@ -253,7 +254,10 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
     session = uuid.uuid4().hex[:12]
     log("Worker %s as '%s' on %s | model %s | Rev.ng %s" % (worker, user, ", ".join(have), model,
                                                          "on" if revng else "off"))
-    log("Note: workers keep the GPU and CPU busy (fans, heat, power). Ctrl+C or close the window to stop.")
+    if providers.is_cloud(model):
+        log("Cloud model: work runs remotely; this PC stays idle. Ctrl+C or close the window to stop.")
+    else:
+        log("Note: workers keep the GPU and CPU busy (fans, heat, power). Ctrl+C or close the window to stop.")
     done = matched = 0
     failures = 0
     examples_cache = {}
@@ -295,7 +299,7 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
                 log("  route: %d-byte job -> local fallback %s" % (job.get("size", 0), job_model))
         provider_options = {"allow_cloud": cloud_allowed, "budget": cloud_budget,
                             "gate": cloud_gate, "diverse_candidates": diverse_candidates,
-                            "seed": seed}
+                            "seed": seed, "max_tokens": max_tokens}
         if thinking is not None:
             provider_options["thinking"] = thinking
         if reasoning_effort is not None:
@@ -321,7 +325,8 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
                    source_only=False, targets=None, only=None, strategy="direct", cloud_allowed=False,
                    cloud_budget=None, cloud_gate=None, diverse_candidates=1,
                    cloud_min_size=0, cloud_fallback=None, seed=None,
-                   cloud_escalate=None, cloud_escalate_after=2, thinking=None, reasoning_effort=None):
+                   cloud_escalate=None, cloud_escalate_after=2, thinking=None, reasoning_effort=None,
+                   max_tokens=1024):
     """Run a bounded number of independent lease loops.
 
     Server leases make workers safe to run in parallel.  Keep the default at one
@@ -338,7 +343,7 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
                    diverse_candidates=diverse_candidates, cloud_min_size=cloud_min_size,
                    cloud_fallback=cloud_fallback, seed=seed, cloud_escalate=cloud_escalate,
                    cloud_escalate_after=cloud_escalate_after, thinking=thinking,
-                   reasoning_effort=reasoning_effort)
+                   reasoning_effort=reasoning_effort, max_tokens=max_tokens)
     if max_jobs is None:
         quotas = [None] * workers
     else:
@@ -354,7 +359,7 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
                 diverse_candidates=diverse_candidates, cloud_min_size=cloud_min_size,
                 cloud_fallback=cloud_fallback, seed=seed, cloud_escalate=cloud_escalate,
                 cloud_escalate_after=cloud_escalate_after, thinking=thinking,
-                reasoning_effort=reasoning_effort)
+                reasoning_effort=reasoning_effort, max_tokens=max_tokens)
         except BaseException as error:
             errors.append(error)
 

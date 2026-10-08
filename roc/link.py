@@ -127,15 +127,19 @@ def run(url):
     from roc import providers
     if not draft.pick_model(s.get("model")) and not (s.get("model") and providers.is_cloud(s["model"])):
         ensure_model()
-    model, rounds, max_size, use_revng, workers = choose_options(s)
+    model, rounds, max_size, use_revng, workers, output_budget = choose_options(s)
     if providers.is_cloud(model) and not s.get("cloud_allowed"):
         raise SystemExit("Cloud model selected. Run: roc config --allow-cloud")
     keep_awake()
-    print("Working. This uses your GPU and CPU heavily (fans, heat, power draw; laptops: plug in).")
+    if providers.is_cloud(model):
+        print("Cloud model: work runs remotely; this PC stays idle.")
+    else:
+        print("Working. This uses your GPU and CPU heavily (fans, heat, power draw; laptops: plug in).")
     print("Leave this window open overnight; close it to stop at any time.\n")
     worker.run_concurrent(server, user, token, model, rounds, max_size, use_revng,
                           workers=workers, source_only=False, only=[client],
-                          cloud_allowed=bool(s.get("cloud_allowed")))
+                          cloud_allowed=bool(s.get("cloud_allowed")),
+                          max_tokens=output_budget)
 
 
 def choose_options(settings):
@@ -186,7 +190,13 @@ def choose_options(settings):
         use_revng = True
     elif revng in ("n", "no"):
         use_revng = False
-    return model, rounds, max_size, use_revng, workers
+    try:
+        output_budget = int(input("Output budget [1024] tokens per reply: ").strip() or "1024")
+    except ValueError:
+        raise SystemExit("Output budget must be a number")
+    if not 128 <= output_budget <= 8192:
+        raise SystemExit("Output budget must be 128-8192")
+    return model, rounds, max_size, use_revng, workers, output_budget
 
 
 def ensure_model():
