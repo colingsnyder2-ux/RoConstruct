@@ -853,6 +853,13 @@
       "target": "Roblox bootstrapper PDB metadata (2011)",
       "url": "https://any.run/report/1263451af26d78f1b568418b04f50428d48fa24213f1de3501b8f7871d82d7fb/0b7a0b20-8696-4de3-bdb2-b8576ac51e7e",
       "evidence": "ANY.RUN exposes d:\\roblox-build\\Trunk\\Client\\Installer\\BootstrapperClient\\bin\\Release\\Roblox.pdb for a 2011 Roblox bootstrapper (build date 2011-04-07), but no PDB download is exposed. Useful confirmation of another build artifact/path only."
+    },
+    {
+      "checked_at": "2026-10-08T20:30:00-04:00",
+      "status": "historical-reference-403",
+      "target": "Roblox 2010 map-extraction discussion",
+      "url": "https://cheatengine.org/forum/viewtopic.php?p=4902855&sid=",
+      "evidence": "Search index exposes a 2010.05.05 Roblox build PDB path, G3D headers, VC9 ATL/MFC headers, and embedded zlib/JPEG strings; forum page is currently 403 and no downloadable map/PDB was exposed."
     }
   ],
   "version": 1
