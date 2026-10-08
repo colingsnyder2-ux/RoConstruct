@@ -296,8 +296,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
              source_cache=None, session=None, source_only=False):
     client, addr = job["client"], job["addr"]
     flags = info["clients"][client].get("flags")
-    best = "best so far %d%%" % job["score"] if job["score"] else "new function"
-    log("[%s %s] %d bytes, %s, %s" % (client, addr, job["size"], job["unit"], best))
+    log("[%s %s] %d bytes, %s, best so far %d%%" % (client, addr, job["size"], job["unit"], job["score"]))
     stop = threading.Event()
     started = time.monotonic()
     result, improved, failure = 0, False, None
@@ -347,8 +346,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                 r = api.call("/v1/submit", {"lease": job["lease"], "user": user, "worker": job.get("worker"),
                                             "model": job.get("model"), "client": client, "addr": addr,
                                             "score": candidate_score, "source": candidate})
-                if r["stored"]:
-                    log("  deterministic candidate submitted %d%%" % r["stored"])
+                log("  deterministic candidate submitted %d%%" % r["stored"])
                 result, improved = r["stored"], True
                 return r["stored"]
         from roc import refsource
@@ -360,19 +358,16 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
             r = api.call("/v1/submit", {"lease": job["lease"], "user": user, "worker": job.get("worker"),
                                         "model": job.get("model"), "client": client, "addr": addr,
                                         "score": candidate_score, "source": candidate_source})
-            if r["stored"]:
-                log("  2016 source candidate %d%% (%s)" % (r["stored"], candidate_path))
+            log("  2016 source candidate %d%% (%s)" % (r["stored"], candidate_path))
             result, improved = r["stored"], True
             return r["stored"]
         if source_candidate:
-            if source_candidate[0]:
-                log("  2016 source candidate scored %d%%; using as LLM base" % source_candidate[0])
+            log("  2016 source candidate scored %d%%; using as LLM base" % source_candidate[0])
         if source_only:
             api.call("/v1/release", {"lease": job["lease"], "cooldown": 30})
             result = job["score"]
             failure_reason = "no_gain"
-            log("  no deterministic improvement, released" if not job["score"] else
-                "  no deterministic improvement (best %d%%), released" % job["score"])
+            log("  no deterministic improvement (best %d%%), released" % job["score"])
             return result
         if examples_cache is None:
             examples_cache = {}
@@ -424,8 +419,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
             result, improved = r["stored"], r["stored"] > job["score"]
             return r["stored"]
         api.call("/v1/release", {"lease": job["lease"], "cooldown": 60})
-        log("  no improvement, released" if not job["score"] else
-            "  no improvement (best %d%%), released" % job["score"])
+        log("  no improvement (best %d%%), released" % job["score"])
         result = job["score"]
         return result
     except (Exception, SystemExit) as error:  # never leave a lease hanging on a crash

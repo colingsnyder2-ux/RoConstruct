@@ -345,8 +345,7 @@ def llm_rounds(client, addr, model, rounds=4, hint=None, start=None, log=print, 
         except match.CompileError as error:
             compile_error = str(error)[-500:]
             score, this = 0, (src, 0, str(error)[-1500:])
-        if score:
-            log("  round %d: %d%%" % (i + 1, score))
+        log("  round %d: %d%%" % (i + 1, score))
         if stats is not None:
             stats.append({"round": i + 1, "score": score, "output_chars": len(reply),
                           "output_tokens": max(1, len(reply) // 4), "code": True,
@@ -359,7 +358,7 @@ def llm_rounds(client, addr, model, rounds=4, hint=None, start=None, log=print, 
             best = (score, src)
         if score == 100:
             break
-    if os.environ.get("ROCONSTRUCT_LIVE_CODE", "1") != "0" and best[1] and best[0]:
+    if os.environ.get("ROCONSTRUCT_LIVE_CODE", "1") != "0" and best[1]:
         preview = "\n".join(best[1].splitlines()[:24])
         if len(best[1].splitlines()) > 24:
             preview += "\n..."
