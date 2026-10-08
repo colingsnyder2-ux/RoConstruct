@@ -468,7 +468,7 @@ def test_link_options():
          patch("roc.draft.pick_model", return_value="qwen2.5-coder:14b"), \
          patch("roc.worker.save_settings"), \
          patch("builtins.input", side_effect=["", "balanced", "99", ""]):
-        assert choose_options({}) == ("qwen2.5-coder:14b", 4, 256, True, 32, 2048, "auto")
+        assert choose_options({}) == ("qwen2.5-coder:14b", 4, 256, True, 64, 2048, "auto")
 
 
 def test_auto_reasoning():
@@ -576,7 +576,7 @@ def test_mine_digest():
 
 def test_concurrent_shares_caches_and_clamps():
     from roc import worker
-    assert worker.MAX_WORKERS == 32
+    assert worker.MAX_WORKERS == 64
     calls = []
 
     def fake_run(*args, **kwargs):
@@ -592,7 +592,7 @@ def test_concurrent_shares_caches_and_clamps():
     calls.clear()
     with patch("roc.worker.run", side_effect=fake_run):
         worker.run_concurrent("http://x", "u", model="m", max_jobs=0, workers=99, log=lambda *a: None)
-    assert len(calls) == 32
+    assert len(calls) == 64
 
 
 def test_compact_worker_log():

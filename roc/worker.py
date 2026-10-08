@@ -19,7 +19,7 @@ from roc import clients, draft, match, metrics, setup
 
 ROOT = Path(__file__).resolve().parent.parent
 SETTINGS = ROOT / "roconstruct-settings.json"
-MAX_WORKERS = 32
+MAX_WORKERS = 64
 USER_RE = re.compile(r"^[A-Za-z0-9_.-]{2,32}$")
 SITE = "https://colingsnyder2-ux.github.io/RoConstruct/"
 
@@ -69,7 +69,7 @@ class CompactLog:
             if job:
                 self.current[thread] = (job.group(1), job.group(2), job.group(3), int(job.group(4)))
                 return
-            if text.startswith("  2016 source candidate"):
+            if text.startswith("  2016 source candidate") and "using as LLM base" not in text:
                 score = re.search(r"(\d+)%", text)
                 self._finish(int(score.group(1)) if score else 0)
                 return
@@ -612,7 +612,8 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                                         "model": job.get("model"), "client": client, "addr": addr,
                                         "score": score, "source": src})
             log("  submitted %d%% (%s)" % (r["stored"], "verified by server" if r["verified"] else "not re-checked"))
-            log(_usage_line(session, round_stats))
+            if not isinstance(log, CompactLog):
+                log(_usage_line(session, round_stats))
             result, improved = r["stored"], True
             return r["stored"]
         failure_reason = "bad_reply" if not src else "no_gain"
@@ -622,7 +623,8 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                                         "model": job.get("model"), "client": client, "addr": addr,
                                         "score": candidate_score, "source": candidate_source})
             log("  retained partial 2016 source candidate %d%% (%s)" % (r["stored"], candidate_path))
-            log(_usage_line(session, round_stats))
+            if not isinstance(log, CompactLog):
+                log(_usage_line(session, round_stats))
             result, improved = r["stored"], r["stored"] > job["score"]
             return r["stored"]
         api.call("/v1/release", {"lease": job["lease"], "cooldown": 60})
