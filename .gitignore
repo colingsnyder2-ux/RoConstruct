@@ -16,6 +16,15 @@ tools/
 *.log
 roconstruct-settings.json
 
+# Local investigation scratch / downloaded archives
+check_*.py
+final_status.py
+investigate*.py
+test_out.txt
+clients.zip
+r2009.zip
+docs/decompilation-research.md
+
 # Old pre-rewrite scripts, kept on disk until the port is done
 scripts/
 
