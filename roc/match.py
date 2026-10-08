@@ -150,12 +150,103 @@ def masked(code, relocs):
     return bytes(b)
 
 
-def score(target, target_relocs, cand, cand_relocs):
+def exact_match(target, target_relocs, cand, cand_relocs):
+    """Byte-identical once relocated fields are masked on both sides.
+
+    This is the only verification signal. Everything else is a fuzzy hint.
+    """
+    mask = set(target_relocs) | set(cand_relocs)
+    return masked(target, mask) == masked(cand, mask)
+
+
+def similarity_ratio(target, target_relocs, cand, cand_relocs):
+    """Fuzzy 0.0-1.0 byte similarity. Guides search only; never verifies.
+
+    Known limits: rewards common prologues/zero bytes, ignores instruction
+    boundaries, and the union mask can hide position-shifted relocs. Do not
+    treat a high value as near-correct code.
+    """
     mask = set(target_relocs) | set(cand_relocs)
     a, b = masked(target, mask), masked(cand, mask)
     if a == b:
+        return 1.0
+    return difflib.SequenceMatcher(None, a, b, autojunk=False).ratio()
+
+
+def score(target, target_relocs, cand, cand_relocs):
+    if exact_match(target, target_relocs, cand, cand_relocs):
         return 100
-    return min(99, int(100 * difflib.SequenceMatcher(None, a, b, autojunk=False).ratio()))
+    return min(99, int(100 * similarity_ratio(target, target_relocs, cand, cand_relocs)))
+
+
+def _insn_parts(code):
+    """[(mnemonic, operands)] via capstone; never raises on bad bytes."""
+    try:
+        return [(m, o) for _, _, m, o in Cs(CS_ARCH_X86, CS_MODE_32).disasm_lite(code, 0)]
+    except (ValueError, TypeError):
+        return []
+
+
+_REGS = ("eax", "ebx", "ecx", "edx", "esi", "edi", "ebp", "esp",
+         "ax", "bx", "cx", "dx", "si", "di", "bp", "sp",
+         "al", "bl", "cl", "dl", "ah", "bh", "ch", "dh")
+
+
+def diagnose(target_code, target_relocs, cand, cand_relocs):
+    """Instruction-aware mismatch diagnostics (no exe needed).
+
+    Returns opcode/operand-class deltas plus focused register, stack-offset,
+    and branch-difference notes for prompts and the mismatch classifier.
+    """
+    t_lines = asm_lines(target_code, target_relocs)
+    c_lines = asm_lines(cand, cand_relocs)
+    t_ins = _insn_parts(target_code)
+    c_ins = _insn_parts(cand)
+
+    def hist(ins, idx):
+        out = {}
+        for part in ins:
+            out[part[idx]] = out.get(part[idx], 0) + 1
+        return out
+
+    t_op, c_op = hist(t_ins, 0), hist(c_ins, 0)
+    ops = sorted(set(t_op) | set(c_op))
+    opcode_delta = {o: c_op.get(o, 0) - t_op.get(o, 0) for o in ops if c_op.get(o, 0) != t_op.get(o, 0)}
+
+    def reg_use(ins):
+        out = {}
+        for _, o in ins:
+            low = " " + o.lower() + " "
+            for r in _REGS:
+                if re.search(r"\b%s\b" % r, low):
+                    out[r] = out.get(r, 0) + 1
+        return out
+
+    t_reg, c_reg = reg_use(t_ins), reg_use(c_ins)
+    regs = sorted(set(t_reg) | set(c_reg))
+    register_delta = {r: c_reg.get(r, 0) - t_reg.get(r, 0) for r in regs if c_reg.get(r, 0) != t_reg.get(r, 0)}
+
+    def stack_offsets(ins):
+        return sorted(set(re.findall(r"\[esp \+ ([^\]]+)\]|\[ebp ([+-]) ([^\]]+)\]", " ".join(o for _, o in ins))))
+    t_stk = re.findall(r"esp|ebp", " ".join(o for _, o in t_ins).lower())
+    c_stk = re.findall(r"esp|ebp", " ".join(o for _, o in c_ins).lower())
+
+    def branches(ins):
+        return sum(1 for m, _ in ins if m.startswith("j") and m != "jmp"), \
+               sum(1 for m, _ in ins if m == "jmp"), \
+               sum(1 for m, _ in ins if m in ("call",))
+    t_br, c_br = branches(t_ins), branches(c_ins)
+    diff_lines = [l for l in difflib.unified_diff(t_lines, c_lines, "target", "yours", lineterm="", n=3)]
+    return {"exact": exact_match(target_code, target_relocs, cand, cand_relocs),
+            "similarity": round(similarity_ratio(target_code, target_relocs, cand, cand_relocs), 4),
+            "target_insns": len(t_ins), "cand_insns": len(c_ins),
+            "opcode_delta": opcode_delta,
+            "register_delta": register_delta,
+            "stack_refs": {"target": len(t_stk), "cand": len(c_stk)},
+            "branches": {"target_jcc": t_br[0], "cand_jcc": c_br[0],
+                         "target_jmp": t_br[1], "cand_jmp": c_br[1],
+                         "target_call": t_br[2], "cand_call": c_br[2]},
+            "diff_preview": diff_lines[:40]}
 
 
 def asm_lines(code, relocs):

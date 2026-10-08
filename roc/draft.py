@@ -250,7 +250,13 @@ def target_data_facts(client, code, relocs):
 RULES = """Rules:
 - 32-bit x86, Microsoft Visual C++ ({compiler}), flags: {flags}.
 - Write C++ that compiles to EXACTLY the target machine code. Inline asm is forbidden.
+- VS2005/VS2008 only: no `nullptr` (use 0), no `auto`, no `static_assert`.
+- No `#include`, no `uint8_t`/`size_t` unless you declare them yourself.
+- Never emit `// roc-lib:` or `// roc-archive:` lines.
 - If ecx is used before being set, it is `this`: write a member function of a struct.
+- Declare every member inside the struct before defining it outside
+  (`struct S {{ int f(); }}; int S::f() {{ ... }}`).
+- Never use `this` as a variable or parameter name.
 - Define the function OUTSIDE the struct (`int S::f() {{ ... }}`). A body written inside
   the struct is inline and never gets compiled, which scores 0.
 - `ret N` means the callee pops N bytes of arguments (thiscall/stdcall).
@@ -306,21 +312,84 @@ def prompt_for(client, addr, row, asm, hint, attempt, flags=None, examples=(), s
     return "\n".join(p)
 
 
-def llm_rounds(client, addr, model, rounds=4, hint=None, start=None, log=print, flags=None,
-               examples=(), source_hints=(), facts=None, stats=None):
-    """Ask/compile/diff loop. Returns (best score, best source)."""
+def _norm_src(src):
+    return re.sub(r"\s+", " ", (src or "").strip())
+
+
+def select_topk(scored, k=3):
+    """Best-k diverse (score, source) pairs: score desc, text-deduplicated."""
+    seen, out = set(), []
+    for score, src in sorted(scored, key=lambda t: -t[0]):
+        key = _norm_src(src)
+        if not key or key in seen:
+            continue
+        seen.add(key)
+        out.append((score, src))
+        if len(out) >= max(1, k):
+            break
+    return out
+
+
+def _diagnose_note(client, addr, src, flags, limit=400):
+    """One-line instruction-level mismatch note for the next repair prompt.
+
+    Compiles are served from match.compile_text's cache, so this costs no
+    extra compiler run after check_text. Empty on any failure.
+    """
+    try:
+        target_code, target_relocs, _ = match.target(client, addr)
+        obj = match.compile_text(client, src, flags)
+        funcs = match.coff_functions(obj)
+        if not funcs:
+            return ""
+        best = max(funcs, key=lambda f: match.score(target_code, target_relocs, f[1], f[2]))
+        diag = match.diagnose(target_code, target_relocs, best[1], best[2])
+        bits = []
+        if diag["opcode_delta"]:
+            bits.append("opcode %s" % ", ".join(
+                "%s%+d" % item for item in sorted(diag["opcode_delta"].items())[:6]))
+        if diag["register_delta"]:
+            bits.append("regs %s" % ", ".join(
+                "%s%+d" % item for item in sorted(diag["register_delta"].items())[:6]))
+        tb, cb = diag["branches"]["target_jcc"], diag["branches"]["cand_jcc"]
+        if tb != cb:
+            bits.append("branches target=%d yours=%d" % (tb, cb))
+        ts, cs = diag["stack_refs"]["target"], diag["stack_refs"]["cand"]
+        if ts != cs:
+            bits.append("stack refs target=%d yours=%d" % (ts, cs))
+        if not bits:
+            return ""
+        return ("\n[Mismatch: %s. Fix structure first; same ops with different "
+                "registers need no change.]" % "; ".join(bits))[:limit]
+    except (ValueError, KeyError, match.CompileError):
+        return ""
+
+
+def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print, flags=None,
+                 examples=(), source_hints=(), facts=None, stats=None, keep=3):
+    """Ask/compile/diff loop. Returns (best score, best source, top-k list)."""
+    from roc import repair as _repair
+    from roc import mutate as _mutate
     code, _, row = match.target(client, addr)
     asm = match.disasm(code, int(addr, 16))
     best = (start[1], start[0]) if start and start[0] else (0, None)
-    # Feedback always comes from the best attempt so far (a worse round never
-    # becomes the new baseline); compile errors are fed back until something scores.
-    attempt = None
-    context = None
+    scored = [(best[0], best[1])] if best[1] else []
+    seen = {}
+    if best[1]:
+        seen[_norm_src(best[1])] = best
+    compiled_best = None
     if best[1]:
         try:
             attempt = (best[1],) + match.check_text(client, addr, best[1], flags)[0:3:2]
+            compiled_best = best
         except match.CompileError as error:
             attempt = (best[1], 0, str(error)[-1500:])
+    else:
+        attempt = None
+    context = None
+    # Feedback always comes from the best attempt so far (a worse round never
+    # becomes the new baseline); compile errors are fed back until something scores.
+    err_codes, compiled_any = [], compiled_best is not None
     for i in range(rounds):
         full_prompt = prompt_for(client, addr, row, asm, hint, attempt, flags,
                                  examples, source_hints, facts or facts_from_asm(asm))
@@ -339,28 +408,95 @@ def llm_rounds(client, addr, model, rounds=4, hint=None, start=None, log=print, 
             continue
         compile_started = time.monotonic()
         compile_error = None
-        try:
-            score, _, d, _ = match.check_text(client, addr, src, flags)
-            this = (src, score, d)
-        except match.CompileError as error:
-            compile_error = str(error)[-500:]
-            score, this = 0, (src, 0, str(error)[-1500:])
+        repaired, duplicate = [], False
+        san, dropped = _repair.sanitize(src)
+        if dropped:
+            src = san
+            repaired.append("sanitize-directives")
+        key = _norm_src(src)
+        if key in seen:
+            score, src = seen[key][:2]
+            duplicate = True
+            this = (src, score, "duplicate candidate; previous result reused")
+            compile_error = None if score else "duplicate of failed candidate"
+        else:
+            try:
+                score, _, d, _ = match.check_text(client, addr, src, flags)
+                this = (src, score, d)
+                if 0 < score < 100:
+                    note = _diagnose_note(client, addr, src, flags)
+                    if note:
+                        this = (src, score, d + note)
+            except match.CompileError as error:
+                raw = str(error)
+                rscore, rsrc, _, rdiff, _, applied, rerr = _repair.repair_loop(
+                    client, addr, src, flags, check=match.check_text)
+                if applied:
+                    repaired.extend(applied)
+                if rerr is None:
+                    score, src = rscore, rsrc
+                    this = (src, score, rdiff)
+                    if 0 < score < 100:
+                        note = _diagnose_note(client, addr, src, flags)
+                        if note:
+                            this = (src, score, rdiff + note)
+                else:
+                    compile_error = rerr[-500:]
+                    score, this = 0, (src, 0, rerr[-1500:])
+            seen[key] = (score, src)
+            if key != _norm_src(this[0]):
+                seen[_norm_src(this[0])] = (this[1], this[0])
         log("  round %d: %d%%" % (i + 1, score))
         if stats is not None:
             stats.append({"round": i + 1, "score": score, "output_chars": len(reply),
                           "output_tokens": max(1, len(reply) // 4), "code": True,
                           "source": src,
                           "compile_seconds": round(time.monotonic() - compile_started, 3),
-                          "compile_error": compile_error})
+                          "compile_error": compile_error, "repaired": repaired,
+                          "duplicate": duplicate})
+        if compile_error is None and not duplicate:
+            compiled_any = True
+            if compiled_best is None or score > compiled_best[0]:
+                compiled_best = (score, src)
+        elif compile_error:
+            err_codes.append((_repair.parse_error_codes(compile_error) or ["?"])[0])
         if attempt is None or score > attempt[1] or (score == 0 and attempt[1] == 0):
             attempt = this
         if score > best[0] or best[1] is None:
             best = (score, src)
+        scored.append((score, src))
         if score == 100:
             break
+        if (not compiled_any and len(err_codes) >= 3
+                and err_codes[-1] != "?" and err_codes[-3:] == [err_codes[-1]] * 3):
+            log("  stopping early: 3 straight %s compile failures, nothing compiled yet"
+                % err_codes[-1])
+            if stats is not None:
+                stats.append({"round": "early-stop",
+                              "reason": "same compile error x3", "code": err_codes[-1]})
+            break
+    if compiled_best is not None and best[0] < 100:
+        mscore, msrc, tried = _mutate.improve(client, addr, compiled_best[1], flags)
+        if stats is not None:
+            stats.append({"round": "mutate", "score": mscore, "code": True,
+                          "source": msrc, "tried": tried})
+        if mscore > best[0]:
+            best = (mscore, msrc)
+        scored.append((mscore, msrc))
     if os.environ.get("ROCONSTRUCT_LIVE_CODE", "1") != "0" and best[1]:
         preview = "\n".join(best[1].splitlines()[:24])
         if len(best[1].splitlines()) > 24:
             preview += "\n..."
         log("  generated source (final %d%%):\n%s" % (best[0], preview))
-    return best
+    topk = select_topk(scored, keep)
+    if stats is not None:
+        stats.append({"round": "topk", "topk": [{"score": s, "source": s_src} for s, s_src in topk]})
+    return best[0], best[1], topk
+
+
+def llm_rounds(client, addr, model, rounds=4, hint=None, start=None, log=print, flags=None,
+               examples=(), source_hints=(), facts=None, stats=None):
+    """Ask/compile/diff loop. Returns (best score, best source). Keeps top-3 in stats."""
+    score, src, _ = llm_rounds_k(client, addr, model, rounds, hint, start, log, flags,
+                                 examples, source_hints, facts, stats)
+    return score, src

@@ -1,17 +1,18 @@
 {
   "bundle": {
-    "sha256": "b599a1a9f1cab1f7822bfcee483a28421f823337610927753bc99513dfa7291d",
-    "size": 86303507,
+    "sha256": "273e5eb0a888a0064e73c04e445902e93bcc5ba5b8ed32becf0b4b6c8b8adb46",
+    "size": 85942212,
     "slots": [
       "2007-03",
       "2007-08",
       "2008-06",
       "2009-06",
+      "2009-12",
       "2010-06",
       "2011-06",
       "2012-06"
     ],
-    "url": "https://cdn.discordapp.com/attachments/1557586536172884038/1557589157918933002/clients.zip?ex=6ac85971&is=6ac707f1&hm=821ad1ac59329b4ec4f4d56ee877e1b8ad8bd7700a3dbcf43067c5658d697a5e&"
+    "url": "REPLACE_WITH_NEW_CDN_URL"
   },
   "drive": {
     "2007-08": {

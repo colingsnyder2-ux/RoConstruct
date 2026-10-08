@@ -62,6 +62,64 @@ def summary(session):
             " tokens=%d" % tokens + tail)
 
 
+def _coded_rounds(rounds):
+    """Code-bearing attempt rounds, excluding telemetry metas (topk/mutate/early-stop)."""
+    out = []
+    for a in rounds or []:
+        if not isinstance(a, dict) or not isinstance(a.get("round"), int):
+            continue
+        if a.get("code"):
+            out.append(a)
+    return out
+
+
+def compile_success(rounds):
+    """Fraction of code-bearing rounds that compiled (no compile_error)."""
+    coded = _coded_rounds(rounds)
+    if not coded:
+        return 0.0
+    return round(sum(not a.get("compile_error") for a in coded) / len(coded), 4)
+
+
+def error_code_counts(rounds):
+    """MSVC error-code histogram over failed rounds: {'2039': n}."""
+    from roc.repair import parse_error_codes
+    out = {}
+    for a in _coded_rounds(rounds):
+        if a.get("compile_error"):
+            for code in parse_error_codes(a["compile_error"])[:1]:
+                out[code] = out.get(code, 0) + 1
+    return out
+
+
+def summarize_runs(jobs):
+    """Per-change benchmark summary: exact matches, time/match, compile rate.
+
+    jobs: worker-metrics job rows for one fixed target set. No estimates,
+    only measured counts over the given rows.
+    """
+    jobs = list(jobs)
+    matched = sum(r.get("score", 0) == 100 for r in jobs)
+    seconds = sum(r.get("seconds", 0) for r in jobs)
+    rates = [compile_success(r.get("rounds", [])) for r in jobs]
+    with_compile = sum(compile_success(r.get("rounds", [])) > 0 for r in jobs)
+    tokens = [sum(a.get("output_tokens", 0) for a in _coded_rounds(r.get("rounds", []))) for r in jobs]
+    codes = {}
+    for r in jobs:
+        for code, n in error_code_counts(r.get("rounds", [])).items():
+            codes[code] = codes.get(code, 0) + n
+    return {"jobs": len(jobs), "matched": matched,
+            "match_rate": round(100.0 * matched / max(len(jobs), 1), 2),
+            "seconds_per_job": round(seconds / max(len(jobs), 1), 2),
+            "seconds_per_match": round(seconds / matched, 2) if matched else None,
+            "compile_success_rate": round(sum(rates) / max(len(rates), 1), 4),
+            "jobs_with_compile": with_compile,
+            "compile_job_rate": round(100.0 * with_compile / max(len(jobs), 1), 2),
+            "avg_score": round(sum(r.get("score", 0) for r in jobs) / max(len(jobs), 1), 2),
+            "tokens_per_job": round(sum(tokens) / max(len(tokens), 1), 1),
+            "errors_by_code": dict(sorted(codes.items(), key=lambda i: -i[1]))}
+
+
 def model_stats():
     rows = []
     try:

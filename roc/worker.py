@@ -480,6 +480,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
     finally:
         stop.set()
         if session:
+            coded = [r for r in round_stats if isinstance(r.get("round"), int) and r.get("code")]
             metrics.record(session, event="job", client=client, addr=addr, unit=job["unit"], model=model,
                            size=job.get("size", 0), base_score=job.get("score", 0), score=result,
                            score_gain=max(result - job.get("score", 0), 0), improved=improved,
@@ -493,6 +494,8 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                            phase_seconds=phase_seconds,
                            compile_seconds=round(sum(r.get("compile_seconds", 0) for r in round_stats) +
                                                  phase_seconds.get("source_compile", 0), 3),
+                           compile_attempts=sum(1 for r in coded),
+                           compile_ok=sum(1 for r in coded if not r.get("compile_error")),
                            failure_reason=failure_reason,
                            failure=failure)
 

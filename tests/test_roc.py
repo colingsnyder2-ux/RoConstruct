@@ -1,4 +1,5 @@
 """Smoke tests that need no client exe and no compiler. Run: python tests/test_roc.py"""
+import re
 import struct
 import json
 import sys
@@ -14,6 +15,53 @@ from roc.auto import candidates
 from roc import draft
 from roc.draft import extract_code, mini_elf
 from roc.match import coff_functions, score, asm_lines, reject_asm, CompileError
+from roc.match import exact_match, similarity_ratio, diagnose
+from roc import mutate
+from roc import repair as _repair
+from roc.draft import select_topk
+from roc import metrics as _metrics
+
+
+def test_repair_member_decl():
+    fixed = _repair.ensure_member_declared("struct PAVX {\n    int* vtable;\n};\nint PAVX::f()\n{\n    return 0;\n}\n")
+    assert fixed is not None and "int f();" in fixed
+    # qualifier mismatch with a single class: S::f -> PAVX::f plus decl
+    bad = "struct PAVX {\n    int* vtable;\n};\nint S::f()\n{\n    return 0;\n}\n"
+    fixed = _repair.ensure_member_declared(bad)
+    assert fixed is not None and "S::" not in fixed and "PAVX::f" in fixed
+    # ambiguous with two classes: untouched
+    two = "struct A {};\nstruct B {};\nint S::f()\n{\n    return 0;\n}\n"
+    assert _repair.ensure_member_declared(two) is None
+
+
+def test_repair_this_and_types():
+    free = "int linked_f(Linked* this)\n{\n    return this->x;\n}\n"
+    fixed = _repair.rename_this_identifier(free)
+    assert fixed is not None and "this_" in fixed and re.search(r"\bthis\b", fixed) is None
+    member = "struct S {\n    int f();\n};\nint S::f()\n{\n    return this->x;\n}\n"
+    assert _repair.rename_this_identifier(member) is None  # valid use untouched
+    typed = "struct H {\n    uint8_t b[4];\n    size_t n;\n};\nint H::g()\n{\n    return 0;\n}\n"
+    fixed = _repair.add_fixedwidth_typedefs(typed)
+    assert fixed is not None and "typedef unsigned char uint8_t;" in fixed
+    assert _repair.nullptr_to_zero("int* p = nullptr;") == "int* p = 0;"
+    assert _repair.parse_error_codes("source(7) : error C2039: x  source(8) : error C2143: y") == ["2039", "2143"]
+
+
+def test_repair_sanitize_and_loop():
+    src = "// roc-lib: seg_00430000\nint f()\n{\n    return 0;\n}\n"
+    san, dropped = _repair.sanitize(src)
+    assert dropped == 1 and "roc-lib" not in san
+    calls = []
+    def fake_check(client, addr, text, flags=None):
+        calls.append(text)
+        if "uint8_t" in text and "typedef" not in text:
+            raise CompileError("source(4) : error C4430: missing type specifier")
+        return 71, "f", "diff", []
+    score, out, _, _, _, applied, err = _repair.repair_loop(
+        "C", "1", "struct H {\n    uint8_t b;\n};\nint H::g()\n{\n    return 1;\n}\n",
+        check=fake_check)
+    assert err is None and score == 71 and "fixedwidth-typedefs" in applied
+    assert len(calls) == 2  # no retry loop: one fail, one fixed recheck
 from roc.progress import summarize
 from roc.server import Store
 
@@ -305,6 +353,47 @@ def test_refsource_hint_without_tree(tmp_path, monkeypatch):
     monkeypatch.setattr(refsource, "CACHE", tmp_path / "cache.json")
     assert refsource.hint("RBX::Network::Replicator") is None
     assert refsource.prompt_hints("seg_00400000") == []
+
+
+def test_exact_match_separate_from_fuzzy():
+    a = bytes.fromhex("8b442404c3")
+    assert exact_match(a, [], a, []) and score(a, [], a, []) == 100
+    assert similarity_ratio(a, [], a, []) == 1.0
+    b = bytes.fromhex("33c0c3")
+    assert not exact_match(b, [], a, [])
+    assert 0.0 <= similarity_ratio(b, [], a, []) < 1.0
+    assert score(b, [], a, []) < 100
+    d = diagnose(b, [], a, [])
+    assert d["exact"] is False and d["target_insns"] == 2
+    assert "xor" in d["opcode_delta"] or "mov" in d["opcode_delta"]
+
+
+def test_mutate_validated():
+    src = "struct S{ char m_x; }; int S::f(){ return m_x != 0; }"
+    vs = mutate.variants(src)
+    assert 1 <= len(vs) <= 4 and any("unsigned char" in v for v in vs)
+    calls = []
+    def fake_check(c, a, t, f=None):
+        calls.append(t)
+        if "unsigned char" in t:
+            return (90, None, None, None)
+        return (50, None, None, None)
+    best, out, tried = mutate.improve("C", "1", src, check=fake_check)
+    assert (best, tried) == (90, len(vs)) and "unsigned char" in out
+    def boom(c, a, t, f=None):
+        raise CompileError("nope")
+    assert mutate.improve("C", "1", src, check=boom)[0] == 0
+
+
+def test_topk_and_benchmark_summary():
+    topk = select_topk([(50, "a"), (90, "b"), (90, "b "), (70, "c")])
+    assert topk == [(90, "b"), (70, "c"), (50, "a")]
+    jobs = [{"score": 100, "seconds": 10.0, "rounds": [{"round": 1, "score": 100, "code": True}]},
+            {"score": 0, "seconds": 20.0, "rounds": [{"round": 1, "score": 0, "code": True,
+                                                      "compile_error": "C2039"}]}]
+    s = _metrics.summarize_runs(jobs)
+    assert s["jobs"] == 2 and s["matched"] == 1 and s["seconds_per_match"] == 30.0
+    assert s["compile_success_rate"] == 0.5
 
 
 if __name__ == "__main__":
