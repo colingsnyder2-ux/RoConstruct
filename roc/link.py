@@ -103,6 +103,7 @@ def run(url):
     known = s.get("known_servers", [])
     user = s.get("user")
     print("RoConstruct: help decompile Roblox %s" % client)
+    print("Selected client: %s (worker will only mine this client)" % client)
     print("Server: %s" % server)
     if server not in known or not user:
         if server not in known:
@@ -130,7 +131,7 @@ def run(url):
     print("Working. This uses your GPU and CPU heavily (fans, heat, power draw; laptops: plug in).")
     print("Leave this window open overnight; close it to stop at any time.\n")
     worker.run_concurrent(server, user, token, model, rounds, max_size, use_revng,
-                          workers=workers, source_only=False)
+                          workers=workers, source_only=False, targets=[client])
 
 
 def choose_options(settings):

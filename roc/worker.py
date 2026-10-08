@@ -249,7 +249,7 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
 
 def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
                    use_revng=True, max_jobs=None, workers=1, log=pretty_log,
-                   source_only=False):
+                   source_only=False, targets=None):
     """Run a bounded number of independent lease loops.
 
     Server leases make workers safe to run in parallel.  Keep the default at one
@@ -261,7 +261,7 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
     workers = max(1, min(int(workers or 1), 8))
     if workers == 1:
         return run(server, user, token, model, rounds, max_size, use_revng,
-                   max_jobs, log, forever=True, source_only=source_only)
+                   max_jobs, log, forever=True, source_only=source_only, targets=targets)
     if max_jobs is None:
         quotas = [None] * workers
     else:
@@ -272,7 +272,7 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
     def worker_loop(index):
         try:
             run(server, user, token, model, rounds, max_size, use_revng,
-                quotas[index], log, forever=True, source_only=source_only)
+                quotas[index], log, forever=True, source_only=source_only, targets=targets)
         except BaseException as error:
             errors.append(error)
 
