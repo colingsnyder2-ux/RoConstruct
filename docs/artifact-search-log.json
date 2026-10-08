@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-10-08T07:19:39.905975+00:00",
+  "last_run": "2026-10-08T07:25:15.527305+00:00",
   "queries": [
     {
       "checked_at": "2026-10-08T07:18:45.888324+00:00",
@@ -288,6 +288,534 @@
       "status": 200,
       "target": "RobloxApp.obj",
       "url": "https://sourcegraph.com/search/stream?q=%22RobloxApp.obj%22&v=V3"
+    },
+    {
+      "checked_at": "2026-10-08T07:23:42.798529+00:00",
+      "key": "Common Crawl|G3D 7.x|https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2AG3D%207.x%2A&output=json&filter=status:200",
+      "source": "Common Crawl",
+      "status": 0,
+      "target": "G3D 7.x",
+      "url": "https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2AG3D%207.x%2A&output=json&filter=status:200"
+    },
+    {
+      "checked_at": "2026-10-08T07:23:42.816532+00:00",
+      "key": "Common Crawl|G3Dcpp|https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2AG3Dcpp%2A&output=json&filter=status:200",
+      "source": "Common Crawl",
+      "status": 0,
+      "target": "G3Dcpp",
+      "url": "https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2AG3Dcpp%2A&output=json&filter=status:200"
+    },
+    {
+      "checked_at": "2026-10-08T07:23:42.829492+00:00",
+      "key": "Common Crawl|glg3dcpp|https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2Aglg3dcpp%2A&output=json&filter=status:200",
+      "source": "Common Crawl",
+      "status": 0,
+      "target": "glg3dcpp",
+      "url": "https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2Aglg3dcpp%2A&output=json&filter=status:200"
+    },
+    {
+      "checked_at": "2026-10-08T07:23:43.530778+00:00",
+      "key": "Common Crawl|G3D 8.01|https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2AG3D%208.01%2A&output=json&filter=status:200",
+      "source": "Common Crawl",
+      "status": 0,
+      "target": "G3D 8.01",
+      "url": "https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2AG3D%208.01%2A&output=json&filter=status:200"
+    },
+    {
+      "checked_at": "2026-10-08T07:23:47.694759+00:00",
+      "key": "Sourcegraph|G3D 7.x|https://sourcegraph.com/search/stream?q=%22G3D+7.x%22&v=V3",
+      "source": "Sourcegraph",
+      "status": 200,
+      "target": "G3D 7.x",
+      "url": "https://sourcegraph.com/search/stream?q=%22G3D+7.x%22&v=V3"
+    },
+    {
+      "checked_at": "2026-10-08T07:23:47.953227+00:00",
+      "key": "Wayback CDX|G3D 7.x|https://web.archive.org/cdx/search/cdx?url=%2AG3D+7.x&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest",
+      "source": "Wayback CDX",
+      "status": 0,
+      "target": "G3D 7.x",
+      "url": "https://web.archive.org/cdx/search/cdx?url=%2AG3D+7.x&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest"
+    },
+    {
+      "checked_at": "2026-10-08T07:23:50.862088+00:00",
+      "key": "Wayback CDX|G3Dcpp|https://web.archive.org/cdx/search/cdx?url=%2AG3Dcpp&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest",
+      "source": "Wayback CDX",
+      "status": 0,
+      "target": "G3Dcpp",
+      "url": "https://web.archive.org/cdx/search/cdx?url=%2AG3Dcpp&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest"
+    },
+    {
+      "checked_at": "2026-10-08T07:23:50.909093+00:00",
+      "key": "Wayback CDX|glg3dcpp|https://web.archive.org/cdx/search/cdx?url=%2Aglg3dcpp&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest",
+      "source": "Wayback CDX",
+      "status": 0,
+      "target": "glg3dcpp",
+      "url": "https://web.archive.org/cdx/search/cdx?url=%2Aglg3dcpp&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest"
+    },
+    {
+      "checked_at": "2026-10-08T07:23:51.052306+00:00",
+      "key": "Wayback CDX|G3D 8.01|https://web.archive.org/cdx/search/cdx?url=%2AG3D+8.01&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest",
+      "source": "Wayback CDX",
+      "status": 0,
+      "target": "G3D 8.01",
+      "url": "https://web.archive.org/cdx/search/cdx?url=%2AG3D+8.01&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest"
+    },
+    {
+      "checked_at": "2026-10-08T07:23:51.137652+00:00",
+      "key": "Common Crawl|RbxSceneManager|https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2ARbxSceneManager%2A&output=json&filter=status:200",
+      "source": "Common Crawl",
+      "status": 0,
+      "target": "RbxSceneManager",
+      "url": "https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2ARbxSceneManager%2A&output=json&filter=status:200"
+    },
+    {
+      "checked_at": "2026-10-08T07:23:53.129370+00:00",
+      "key": "Common Crawl|G3D.lib/source|https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2AG3D.lib%2Fsource%2A&output=json&filter=status:200",
+      "source": "Common Crawl",
+      "status": 0,
+      "target": "G3D.lib/source",
+      "url": "https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2AG3D.lib%2Fsource%2A&output=json&filter=status:200"
+    },
+    {
+      "checked_at": "2026-10-08T07:23:53.866760+00:00",
+      "key": "Sourcegraph|G3D.lib/source|https://sourcegraph.com/search/stream?q=%22G3D.lib%2Fsource%22&v=V3",
+      "source": "Sourcegraph",
+      "status": 200,
+      "target": "G3D.lib/source",
+      "url": "https://sourcegraph.com/search/stream?q=%22G3D.lib%2Fsource%22&v=V3"
+    },
+    {
+      "checked_at": "2026-10-08T07:23:54.934535+00:00",
+      "key": "Common Crawl|RbxEntity|https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2ARbxEntity%2A&output=json&filter=status:200",
+      "source": "Common Crawl",
+      "status": 0,
+      "target": "RbxEntity",
+      "url": "https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2ARbxEntity%2A&output=json&filter=status:200"
+    },
+    {
+      "checked_at": "2026-10-08T07:23:56.169072+00:00",
+      "key": "Wayback CDX|G3D.lib/source|https://web.archive.org/cdx/search/cdx?url=%2AG3D.lib%2Fsource&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest",
+      "source": "Wayback CDX",
+      "status": 0,
+      "target": "G3D.lib/source",
+      "url": "https://web.archive.org/cdx/search/cdx?url=%2AG3D.lib%2Fsource&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest"
+    },
+    {
+      "checked_at": "2026-10-08T07:23:57.861938+00:00",
+      "key": "Wayback CDX|RbxSceneManager|https://web.archive.org/cdx/search/cdx?url=%2ARbxSceneManager&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest",
+      "source": "Wayback CDX",
+      "status": 200,
+      "target": "RbxSceneManager",
+      "url": "https://web.archive.org/cdx/search/cdx?url=%2ARbxSceneManager&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest"
+    },
+    {
+      "checked_at": "2026-10-08T07:23:58.812459+00:00",
+      "key": "Common Crawl|RbxCluster|https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2ARbxCluster%2A&output=json&filter=status:200",
+      "source": "Common Crawl",
+      "status": 0,
+      "target": "RbxCluster",
+      "url": "https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2ARbxCluster%2A&output=json&filter=status:200"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:02.048210+00:00",
+      "key": "Wayback CDX|RbxEntity|https://web.archive.org/cdx/search/cdx?url=%2ARbxEntity&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest",
+      "source": "Wayback CDX",
+      "status": 0,
+      "target": "RbxEntity",
+      "url": "https://web.archive.org/cdx/search/cdx?url=%2ARbxEntity&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:03.610896+00:00",
+      "key": "Common Crawl|Rbx|https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2ARbx%2A&output=json&filter=status:200",
+      "source": "Common Crawl",
+      "status": 0,
+      "target": "Rbx",
+      "url": "https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2ARbx%2A&output=json&filter=status:200"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:04.759429+00:00",
+      "key": "Sourcegraph|G3D 8.01|https://sourcegraph.com/search/stream?q=%22G3D+8.01%22&v=V3",
+      "source": "Sourcegraph",
+      "status": 200,
+      "target": "G3D 8.01",
+      "url": "https://sourcegraph.com/search/stream?q=%22G3D+8.01%22&v=V3"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:05.709741+00:00",
+      "key": "Sourcegraph|glg3dcpp|https://sourcegraph.com/search/stream?q=%22glg3dcpp%22&v=V3",
+      "source": "Sourcegraph",
+      "status": 200,
+      "target": "glg3dcpp",
+      "url": "https://sourcegraph.com/search/stream?q=%22glg3dcpp%22&v=V3"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:06.041299+00:00",
+      "key": "Wayback CDX|RbxCluster|https://web.archive.org/cdx/search/cdx?url=%2ARbxCluster&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest",
+      "source": "Wayback CDX",
+      "status": 0,
+      "target": "RbxCluster",
+      "url": "https://web.archive.org/cdx/search/cdx?url=%2ARbxCluster&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:06.116673+00:00",
+      "key": "Common Crawl|Gfx|https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2AGfx%2A&output=json&filter=status:200",
+      "source": "Common Crawl",
+      "status": 0,
+      "target": "Gfx",
+      "url": "https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2AGfx%2A&output=json&filter=status:200"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:07.129168+00:00",
+      "key": "Sourcegraph|Rbx|https://sourcegraph.com/search/stream?q=%22Rbx%22&v=V3",
+      "source": "Sourcegraph",
+      "status": 200,
+      "target": "Rbx",
+      "url": "https://sourcegraph.com/search/stream?q=%22Rbx%22&v=V3"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:08.195160+00:00",
+      "key": "Common Crawl|ogre-v1-4-9|https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2Aogre-v1-4-9%2A&output=json&filter=status:200",
+      "source": "Common Crawl",
+      "status": 0,
+      "target": "ogre-v1-4-9",
+      "url": "https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2Aogre-v1-4-9%2A&output=json&filter=status:200"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:09.365793+00:00",
+      "key": "Sourcegraph|G3Dcpp|https://sourcegraph.com/search/stream?q=%22G3Dcpp%22&v=V3",
+      "source": "Sourcegraph",
+      "status": 200,
+      "target": "G3Dcpp",
+      "url": "https://sourcegraph.com/search/stream?q=%22G3Dcpp%22&v=V3"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:09.475242+00:00",
+      "key": "Sourcegraph|Gfx|https://sourcegraph.com/search/stream?q=%22Gfx%22&v=V3",
+      "source": "Sourcegraph",
+      "status": 200,
+      "target": "Gfx",
+      "url": "https://sourcegraph.com/search/stream?q=%22Gfx%22&v=V3"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:09.742068+00:00",
+      "key": "Common Crawl|ogre-v1-6-4|https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2Aogre-v1-6-4%2A&output=json&filter=status:200",
+      "source": "Common Crawl",
+      "status": 0,
+      "target": "ogre-v1-6-4",
+      "url": "https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2Aogre-v1-6-4%2A&output=json&filter=status:200"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:11.793890+00:00",
+      "key": "Wayback CDX|Rbx|https://web.archive.org/cdx/search/cdx?url=%2ARbx&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest",
+      "source": "Wayback CDX",
+      "status": 0,
+      "target": "Rbx",
+      "url": "https://web.archive.org/cdx/search/cdx?url=%2ARbx&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:13.496957+00:00",
+      "key": "Wayback CDX|ogre-v1-4-9|https://web.archive.org/cdx/search/cdx?url=%2Aogre-v1-4-9&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest",
+      "source": "Wayback CDX",
+      "status": 0,
+      "target": "ogre-v1-4-9",
+      "url": "https://web.archive.org/cdx/search/cdx?url=%2Aogre-v1-4-9&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:13.948424+00:00",
+      "key": "Common Crawl|ogre-v1-7-0|https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2Aogre-v1-7-0%2A&output=json&filter=status:200",
+      "source": "Common Crawl",
+      "status": 0,
+      "target": "ogre-v1-7-0",
+      "url": "https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2Aogre-v1-7-0%2A&output=json&filter=status:200"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:14.262297+00:00",
+      "key": "Wayback CDX|Gfx|https://web.archive.org/cdx/search/cdx?url=%2AGfx&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest",
+      "source": "Wayback CDX",
+      "status": 0,
+      "target": "Gfx",
+      "url": "https://web.archive.org/cdx/search/cdx?url=%2AGfx&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:15.258555+00:00",
+      "key": "Sourcegraph|RbxEntity|https://sourcegraph.com/search/stream?q=%22RbxEntity%22&v=V3",
+      "source": "Sourcegraph",
+      "status": 200,
+      "target": "RbxEntity",
+      "url": "https://sourcegraph.com/search/stream?q=%22RbxEntity%22&v=V3"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:16.683125+00:00",
+      "key": "Common Crawl|OgreMain.pdb|https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2AOgreMain.pdb%2A&output=json&filter=status:200",
+      "source": "Common Crawl",
+      "status": 0,
+      "target": "OgreMain.pdb",
+      "url": "https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2AOgreMain.pdb%2A&output=json&filter=status:200"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:17.958148+00:00",
+      "key": "Wayback CDX|ogre-v1-6-4|https://web.archive.org/cdx/search/cdx?url=%2Aogre-v1-6-4&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest",
+      "source": "Wayback CDX",
+      "status": 0,
+      "target": "ogre-v1-6-4",
+      "url": "https://web.archive.org/cdx/search/cdx?url=%2Aogre-v1-6-4&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:19.042732+00:00",
+      "key": "Sourcegraph|RbxSceneManager|https://sourcegraph.com/search/stream?q=%22RbxSceneManager%22&v=V3",
+      "source": "Sourcegraph",
+      "status": 200,
+      "target": "RbxSceneManager",
+      "url": "https://sourcegraph.com/search/stream?q=%22RbxSceneManager%22&v=V3"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:19.778511+00:00",
+      "key": "Sourcegraph|ogre-v1-7-0|https://sourcegraph.com/search/stream?q=%22ogre-v1-7-0%22&v=V3",
+      "source": "Sourcegraph",
+      "status": 200,
+      "target": "ogre-v1-7-0",
+      "url": "https://sourcegraph.com/search/stream?q=%22ogre-v1-7-0%22&v=V3"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:19.844469+00:00",
+      "key": "Sourcegraph|RbxCluster|https://sourcegraph.com/search/stream?q=%22RbxCluster%22&v=V3",
+      "source": "Sourcegraph",
+      "status": 200,
+      "target": "RbxCluster",
+      "url": "https://sourcegraph.com/search/stream?q=%22RbxCluster%22&v=V3"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:21.017690+00:00",
+      "key": "Common Crawl|scintilla-mfc-1.20|https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2Ascintilla-mfc-1.20%2A&output=json&filter=status:200",
+      "source": "Common Crawl",
+      "status": 0,
+      "target": "scintilla-mfc-1.20",
+      "url": "https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2Ascintilla-mfc-1.20%2A&output=json&filter=status:200"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:22.029206+00:00",
+      "key": "Wayback CDX|OgreMain.pdb|https://web.archive.org/cdx/search/cdx?url=%2AOgreMain.pdb&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest",
+      "source": "Wayback CDX",
+      "status": 0,
+      "target": "OgreMain.pdb",
+      "url": "https://web.archive.org/cdx/search/cdx?url=%2AOgreMain.pdb&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:22.211994+00:00",
+      "key": "Wayback CDX|ogre-v1-7-0|https://web.archive.org/cdx/search/cdx?url=%2Aogre-v1-7-0&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest",
+      "source": "Wayback CDX",
+      "status": 0,
+      "target": "ogre-v1-7-0",
+      "url": "https://web.archive.org/cdx/search/cdx?url=%2Aogre-v1-7-0&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:23.248916+00:00",
+      "key": "Common Crawl|WildMagic2|https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2AWildMagic2%2A&output=json&filter=status:200",
+      "source": "Common Crawl",
+      "status": 0,
+      "target": "WildMagic2",
+      "url": "https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2AWildMagic2%2A&output=json&filter=status:200"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:24.146466+00:00",
+      "key": "Common Crawl|Wild Magic 2|https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2AWild%20Magic%202%2A&output=json&filter=status:200",
+      "source": "Common Crawl",
+      "status": 0,
+      "target": "Wild Magic 2",
+      "url": "https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2AWild%20Magic%202%2A&output=json&filter=status:200"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:27.983941+00:00",
+      "key": "Wayback CDX|scintilla-mfc-1.20|https://web.archive.org/cdx/search/cdx?url=%2Ascintilla-mfc-1.20&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest",
+      "source": "Wayback CDX",
+      "status": 0,
+      "target": "scintilla-mfc-1.20",
+      "url": "https://web.archive.org/cdx/search/cdx?url=%2Ascintilla-mfc-1.20&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:30.268987+00:00",
+      "key": "Wayback CDX|WildMagic2|https://web.archive.org/cdx/search/cdx?url=%2AWildMagic2&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest",
+      "source": "Wayback CDX",
+      "status": 0,
+      "target": "WildMagic2",
+      "url": "https://web.archive.org/cdx/search/cdx?url=%2AWildMagic2&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:30.401415+00:00",
+      "key": "Wayback CDX|Wild Magic 2|https://web.archive.org/cdx/search/cdx?url=%2AWild+Magic+2&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest",
+      "source": "Wayback CDX",
+      "status": 200,
+      "target": "Wild Magic 2",
+      "url": "https://web.archive.org/cdx/search/cdx?url=%2AWild+Magic+2&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:30.985505+00:00",
+      "key": "Common Crawl|ATL 8.0|https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2AATL%208.0%2A&output=json&filter=status:200",
+      "source": "Common Crawl",
+      "status": 0,
+      "target": "ATL 8.0",
+      "url": "https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2AATL%208.0%2A&output=json&filter=status:200"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:35.657677+00:00",
+      "key": "Wayback CDX|ATL 8.0|https://web.archive.org/cdx/search/cdx?url=%2AATL+8.0&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest",
+      "source": "Wayback CDX",
+      "status": 0,
+      "target": "ATL 8.0",
+      "url": "https://web.archive.org/cdx/search/cdx?url=%2AATL+8.0&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:36.105213+00:00",
+      "key": "Common Crawl|MFC 8.0|https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2AMFC%208.0%2A&output=json&filter=status:200",
+      "source": "Common Crawl",
+      "status": 0,
+      "target": "MFC 8.0",
+      "url": "https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2AMFC%208.0%2A&output=json&filter=status:200"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:36.226634+00:00",
+      "key": "Sourcegraph|ogre-v1-6-4|https://sourcegraph.com/search/stream?q=%22ogre-v1-6-4%22&v=V3",
+      "source": "Sourcegraph",
+      "status": 200,
+      "target": "ogre-v1-6-4",
+      "url": "https://sourcegraph.com/search/stream?q=%22ogre-v1-6-4%22&v=V3"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:36.391921+00:00",
+      "key": "Sourcegraph|ogre-v1-4-9|https://sourcegraph.com/search/stream?q=%22ogre-v1-4-9%22&v=V3",
+      "source": "Sourcegraph",
+      "status": 200,
+      "target": "ogre-v1-4-9",
+      "url": "https://sourcegraph.com/search/stream?q=%22ogre-v1-4-9%22&v=V3"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:37.013078+00:00",
+      "key": "Common Crawl|MFC 9.0|https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2AMFC%209.0%2A&output=json&filter=status:200",
+      "source": "Common Crawl",
+      "status": 0,
+      "target": "MFC 9.0",
+      "url": "https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2AMFC%209.0%2A&output=json&filter=status:200"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:41.022028+00:00",
+      "key": "Sourcegraph|OgreMain.pdb|https://sourcegraph.com/search/stream?q=%22OgreMain.pdb%22&v=V3",
+      "source": "Sourcegraph",
+      "status": 200,
+      "target": "OgreMain.pdb",
+      "url": "https://sourcegraph.com/search/stream?q=%22OgreMain.pdb%22&v=V3"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:41.480748+00:00",
+      "key": "Wayback CDX|MFC 8.0|https://web.archive.org/cdx/search/cdx?url=%2AMFC+8.0&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest",
+      "source": "Wayback CDX",
+      "status": 0,
+      "target": "MFC 8.0",
+      "url": "https://web.archive.org/cdx/search/cdx?url=%2AMFC+8.0&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:42.802258+00:00",
+      "key": "Common Crawl|Roblox Trunk Client Rendering|https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2ARoblox%20Trunk%20Client%20Rendering%2A&output=json&filter=status:200",
+      "source": "Common Crawl",
+      "status": 0,
+      "target": "Roblox Trunk Client Rendering",
+      "url": "https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2ARoblox%20Trunk%20Client%20Rendering%2A&output=json&filter=status:200"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:45.263585+00:00",
+      "key": "Wayback CDX|Roblox Trunk Client Rendering|https://web.archive.org/cdx/search/cdx?url=%2ARoblox+Trunk+Client+Rendering&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest",
+      "source": "Wayback CDX",
+      "status": 0,
+      "target": "Roblox Trunk Client Rendering",
+      "url": "https://web.archive.org/cdx/search/cdx?url=%2ARoblox+Trunk+Client+Rendering&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:45.329889+00:00",
+      "key": "Wayback CDX|MFC 9.0|https://web.archive.org/cdx/search/cdx?url=%2AMFC+9.0&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest",
+      "source": "Wayback CDX",
+      "status": 0,
+      "target": "MFC 9.0",
+      "url": "https://web.archive.org/cdx/search/cdx?url=%2AMFC+9.0&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:46.113767+00:00",
+      "key": "Sourcegraph|MFC 9.0|https://sourcegraph.com/search/stream?q=%22MFC+9.0%22&v=V3",
+      "source": "Sourcegraph",
+      "status": 200,
+      "target": "MFC 9.0",
+      "url": "https://sourcegraph.com/search/stream?q=%22MFC+9.0%22&v=V3"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:47.254120+00:00",
+      "key": "Sourcegraph|scintilla-mfc-1.20|https://sourcegraph.com/search/stream?q=%22scintilla-mfc-1.20%22&v=V3",
+      "source": "Sourcegraph",
+      "status": 200,
+      "target": "scintilla-mfc-1.20",
+      "url": "https://sourcegraph.com/search/stream?q=%22scintilla-mfc-1.20%22&v=V3"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:48.675489+00:00",
+      "key": "Wayback CDX|FastLog.h|https://web.archive.org/cdx/search/cdx?url=%2AFastLog.h&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest",
+      "source": "Wayback CDX",
+      "status": 0,
+      "target": "FastLog.h",
+      "url": "https://web.archive.org/cdx/search/cdx?url=%2AFastLog.h&output=json&filter=statuscode%3A200&fl=original%2Cstatuscode%2Cmimetype%2Cdigest%2Ctimestamp&collapse=digest"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:50.604929+00:00",
+      "key": "Sourcegraph|WildMagic2|https://sourcegraph.com/search/stream?q=%22WildMagic2%22&v=V3",
+      "source": "Sourcegraph",
+      "status": 200,
+      "target": "WildMagic2",
+      "url": "https://sourcegraph.com/search/stream?q=%22WildMagic2%22&v=V3"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:51.898999+00:00",
+      "key": "Common Crawl|FastLog.h|https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2AFastLog.h%2A&output=json&filter=status:200",
+      "source": "Common Crawl",
+      "status": 0,
+      "target": "FastLog.h",
+      "url": "https://index.commoncrawl.org/CC-MAIN-2026-30-index?url=%2AFastLog.h%2A&output=json&filter=status:200"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:52.193005+00:00",
+      "key": "Sourcegraph|Wild Magic 2|https://sourcegraph.com/search/stream?q=%22Wild+Magic+2%22&v=V3",
+      "source": "Sourcegraph",
+      "status": 200,
+      "target": "Wild Magic 2",
+      "url": "https://sourcegraph.com/search/stream?q=%22Wild+Magic+2%22&v=V3"
+    },
+    {
+      "checked_at": "2026-10-08T07:24:54.569767+00:00",
+      "key": "Sourcegraph|ATL 8.0|https://sourcegraph.com/search/stream?q=%22ATL+8.0%22&v=V3",
+      "source": "Sourcegraph",
+      "status": 200,
+      "target": "ATL 8.0",
+      "url": "https://sourcegraph.com/search/stream?q=%22ATL+8.0%22&v=V3"
+    },
+    {
+      "checked_at": "2026-10-08T07:25:01.182594+00:00",
+      "key": "Sourcegraph|MFC 8.0|https://sourcegraph.com/search/stream?q=%22MFC+8.0%22&v=V3",
+      "source": "Sourcegraph",
+      "status": 200,
+      "target": "MFC 8.0",
+      "url": "https://sourcegraph.com/search/stream?q=%22MFC+8.0%22&v=V3"
+    },
+    {
+      "checked_at": "2026-10-08T07:25:07.726960+00:00",
+      "key": "Sourcegraph|Roblox Trunk Client Rendering|https://sourcegraph.com/search/stream?q=%22Roblox+Trunk+Client+Rendering%22&v=V3",
+      "source": "Sourcegraph",
+      "status": 200,
+      "target": "Roblox Trunk Client Rendering",
+      "url": "https://sourcegraph.com/search/stream?q=%22Roblox+Trunk+Client+Rendering%22&v=V3"
+    },
+    {
+      "checked_at": "2026-10-08T07:25:15.526306+00:00",
+      "key": "Sourcegraph|FastLog.h|https://sourcegraph.com/search/stream?q=%22FastLog.h%22&v=V3",
+      "source": "Sourcegraph",
+      "status": 200,
+      "target": "FastLog.h",
+      "url": "https://sourcegraph.com/search/stream?q=%22FastLog.h%22&v=V3"
     }
   ],
   "results": [],

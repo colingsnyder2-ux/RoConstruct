@@ -23,6 +23,12 @@ TARGETS = [
     "RobloxPlayer.pdb", "RobloxApp.pdb", "RobloxPlayer.map", "RobloxApp.map",
     "libcpmt.lib", "libcmt.lib", "msvcprt.lib", "vc80.pdb", "vc90.pdb",
     ".vcproj", "RobloxPlayer.obj", "RobloxApp.obj",
+    # Missing source families called out in SOURCES.md.
+    "G3Dcpp", "glg3dcpp", "G3D 7.x", "G3D 8.01", "G3D.lib/source",
+    "RbxSceneManager", "RbxEntity", "RbxCluster", "Rbx", "Gfx",
+    "ogre-v1-4-9", "ogre-v1-6-4", "ogre-v1-7-0", "OgreMain.pdb",
+    "scintilla-mfc-1.20", "WildMagic2", "Wild Magic 2", "ATL 8.0",
+    "MFC 8.0", "MFC 9.0", "Roblox Trunk Client Rendering", "FastLog.h",
 ]
 UA = "RoConstruct-artifact-scout/1.0 (public preservation research)"
 CTX = ssl.create_default_context()
