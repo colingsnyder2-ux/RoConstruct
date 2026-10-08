@@ -26,17 +26,18 @@ def pretty_log(message):
     if not sys.stdout.isatty() or os.environ.get("NO_COLOR"):
         print(text)
         return
-    color = "\x1b[36m"
     low = text.lower()
-    if "submitted" in low or "score updated" in low:
-        color = "\x1b[32m"
+    if "generated source" in low:
+        header, _, source = text.partition("\n")
+        print("\x1b[36m" + header + "\x1b[0m")
+        if source:
+            print("\x1b[96m" + source + "\x1b[0m")
+    elif "submitted" in low or "score updated" in low:
+        print("\x1b[32m" + text + "\x1b[0m")
     elif "error" in low or "offline" in low or "timeout" in low:
-        color = "\x1b[31m"
-    elif "no improvement" in low or "released" in low:
-        color = "\x1b[90m"
-    elif "round" in low or "generated source" in low:
-        color = "\x1b[33m"
-    print(color + text + "\x1b[0m")
+        print("\x1b[31m" + text + "\x1b[0m")
+    else:
+        print(text)
 
 
 class ApiFailure(RuntimeError):

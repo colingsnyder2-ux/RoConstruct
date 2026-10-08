@@ -346,11 +346,6 @@ def llm_rounds(client, addr, model, rounds=4, hint=None, start=None, log=print, 
             compile_error = str(error)[-500:]
             score, this = 0, (src, 0, str(error)[-1500:])
         log("  round %d: %d%%" % (i + 1, score))
-        if os.environ.get("ROCONSTRUCT_LIVE_CODE", "1") != "0":
-            preview = "\n".join(src.splitlines()[:24])
-            if len(src.splitlines()) > 24:
-                preview += "\n..."
-            log("  generated source:\n" + preview)
         if stats is not None:
             stats.append({"round": i + 1, "score": score, "output_chars": len(reply),
                           "output_tokens": max(1, len(reply) // 4), "code": True,
@@ -363,4 +358,9 @@ def llm_rounds(client, addr, model, rounds=4, hint=None, start=None, log=print, 
             best = (score, src)
         if score == 100:
             break
+    if os.environ.get("ROCONSTRUCT_LIVE_CODE", "1") != "0" and best[1]:
+        preview = "\n".join(best[1].splitlines()[:24])
+        if len(best[1].splitlines()) > 24:
+            preview += "\n..."
+        log("  generated source (final %d%%):\n%s" % (best[0], preview))
     return best
