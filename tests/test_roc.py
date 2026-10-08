@@ -604,6 +604,8 @@ def test_compact_worker_log():
     log("  submitted 100% (verified by server)")
     log("[C 00401030] 8 bytes, Unit2, best so far 0%")
     log("  no improvement (best 0%), released")
+    log("  thinking disabled for remaining rounds")
+    log("  tokens used: 100")
     log.finish()
     assert "✓ C 00401020 100% Unit" in out
     assert out[-1] == "⛏ 32w finished | 2 done | 1 matched | 1 improved | 0 errors"

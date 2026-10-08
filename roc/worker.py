@@ -30,7 +30,15 @@ def pretty_log(message):
         print(text)
         return
     low = text.lower()
-    if "generated source" in low:
+    if text.startswith("✓ "):
+        print("\x1b[92m" + text + "\x1b[0m")
+    elif text.startswith("↑ "):
+        print("\x1b[93m" + text + "\x1b[0m")
+    elif text.startswith("· "):
+        print("\x1b[90m" + text + "\x1b[0m")
+    elif text.startswith("⛏ "):
+        print("\x1b[96m" + text + "\x1b[0m")
+    elif "generated source" in low:
         header, _, source = text.partition("\n")
         print("\x1b[36m" + header + "\x1b[0m")
         if source:
@@ -70,7 +78,9 @@ class CompactLog:
                     text.startswith("  no improvement") or text.startswith("  retained") or
                     text.startswith("  2016 source") or text.startswith("Session:") or
                     text.startswith("== ") or text.startswith("Worker finished") or
-                    text.startswith("Cloud model:") or text.startswith("Privacy:")):
+                    text.startswith("Cloud model:") or text.startswith("Privacy:") or
+                    text.startswith("  tokens used:") or
+                    text.startswith("  thinking disabled")):
                 if text.startswith("  no improvement") or text.startswith("  retained"):
                     score = re.search(r"(\d+)%", text)
                     self._finish(int(score.group(1)) if text.startswith("  retained") and score else None)
