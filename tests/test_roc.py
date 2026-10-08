@@ -490,6 +490,21 @@ def test_announce_once():
     worker._ANNOUNCED.clear()
 
 
+def test_cloud_history_is_bounded():
+    from roc import providers
+    history = [{"role": "system", "content": "sys"},
+               {"role": "user", "content": "first-target-facts"},
+               {"role": "assistant", "content": "try1"},
+               {"role": "user", "content": "feedback1"},
+               {"role": "assistant", "content": "try2"},
+               {"role": "user", "content": "feedback2"}]
+    messages = providers._cloud_messages("new-feedback", {"messages": history})
+    assert [m["content"] for m in messages] == ["sys", "first-target-facts", "try2",
+                                                "feedback2", "new-feedback"]
+    assert len(providers._cloud_messages("p", {"messages": history}, keep_last=0)) == 3
+    assert providers._cloud_messages("p", None)[0]["role"] == "system"
+
+
 def test_server_store():
     st = Store(":memory:", lease_seconds=1)
     assert make_handler(st, None, set()).protocol_version == "HTTP/1.1"

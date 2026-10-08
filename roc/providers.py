@@ -295,21 +295,31 @@ def _cost(config, inp, out):
                   out * float(prices.get("output_per_million", 0))) / 1000000, 8)
 
 
-def _cloud_messages(prompt, state):
-    messages = []
+def _cloud_messages(prompt, state, keep_last=2):
+    """Bounded history: system + first user (target facts) + tail exchanges.
+
+    Repair rounds otherwise resend every prior full prompt, so input tokens
+    grow linearly per round (~3.6k/round observed). The new prompt already
+    carries the latest attempt and feedback inline, so older exchanges add
+    cost without evidence. keep_last counts tail messages (one exchange = 2).
+    """
+    history = []
     for message in (state or {}).get("messages", ()):
         if not isinstance(message, dict) or not message.get("content"):
             continue
-        messages.append({"role": str(message.get("role", "user")),
-                         "content": sanitize_prompt(message.get("content", ""))})
-    if not any(message.get("role") == "system" for message in messages if isinstance(message, dict)):
-        messages.insert(0, {"role": "system", "content": SYSTEM})
+        history.append({"role": str(message.get("role", "user")),
+                        "content": sanitize_prompt(message.get("content", ""))})
+    system = next((m for m in history if m["role"] == "system"), None)
+    others = [m for m in history if m["role"] != "system"]
+    if len(others) > 1 + max(0, keep_last):
+        others = [others[0]] + others[-keep_last:] if keep_last > 0 else [others[0]]
+    messages = ([system] if system else [{"role": "system", "content": SYSTEM}]) + others
     messages.append({"role": "user", "content": sanitize_prompt(prompt)})
     return messages
 
 
 def _openai_chat(provider, remote, config, prompt, state, options):
-    messages = _cloud_messages(prompt, state)
+    messages = _cloud_messages(prompt, state, options.get("history_keep_last", 2))
     key = secret(config["key_env"])
     if not key:
         raise ProviderError("provider_key", "%s is not set" % config["key_env"])
@@ -335,7 +345,7 @@ def _openai_chat(provider, remote, config, prompt, state, options):
 
 
 def _openai_responses(provider, remote, config, prompt, state, options):
-    messages = _cloud_messages(prompt, state)
+    messages = _cloud_messages(prompt, state, options.get("history_keep_last", 2))
     key = secret(config["key_env"])
     if not key:
         raise ProviderError("provider_key", "%s is not set" % config["key_env"])
@@ -354,7 +364,7 @@ def _openai_responses(provider, remote, config, prompt, state, options):
 
 
 def _anthropic(provider, remote, config, prompt, state, options):
-    messages = _cloud_messages(prompt, state)
+    messages = _cloud_messages(prompt, state, options.get("history_keep_last", 2))
     key = secret(config["key_env"])
     if not key:
         raise ProviderError("provider_key", "%s is not set" % config["key_env"])
@@ -372,7 +382,7 @@ def _anthropic(provider, remote, config, prompt, state, options):
 
 
 def _gemini(provider, remote, config, prompt, state, options):
-    messages = _cloud_messages(prompt, state)
+    messages = _cloud_messages(prompt, state, options.get("history_keep_last", 2))
     key = secret(config["key_env"])
     if not key:
         raise ProviderError("provider_key", "%s is not set" % config["key_env"])
