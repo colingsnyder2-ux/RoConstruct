@@ -89,12 +89,21 @@ with a fresh session. The runner warms the reference index once, as parallel
 workers do, and records warmup separately from batch wall time. Resumed batches
 are explicitly labeled and must not be used as throughput measurements.
 
-The URI setup now offers an optional auto preset: two rounds for functions up
-to 48 bytes, four otherwise, maximum target size 512 bytes, Rev.ng off unless
+The URI setup now offers an optional auto preset: two rounds for DeepSeek or
+functions up to 48 bytes, four otherwise, maximum target size 512 bytes, Rev.ng off unless
 explicitly selected. Explicit round overrides remain supported. This is an
 experimental resource policy, not a measured quality improvement; existing
 fast/balanced/deep defaults are unchanged. Benchmark its round policy with
 `--auto-preset`; this local runner does not exercise server leases or Rev.ng.
+
+The initial size-only auto policy (two tiny/four larger rounds) used 398,581
+tokens for 36 jobs, with 10 exact and 36 compilable; batches 12.016s/10.062s.
+All exact matches occurred by round two. Compared with the two-round
+compiler-warmup control (174,415 tokens, 10 exact, 34 compilable), this did
+not justify 2.3x tokens. Auto now caps DeepSeek at two rounds regardless of
+size; explicit fast/balanced/deep or advanced round overrides remain unchanged.
+Session: `auto-preset-20261008-k2-r{1,2}`. Other models' four-round policy
+is not validated by this DeepSeek-only experiment.
 
 Cold target-function cache validation: eight simultaneous readers of the real
 41MB, 36,971-row function index previously opened it eight times in 5.906s,

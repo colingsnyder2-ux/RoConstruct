@@ -610,7 +610,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
         llm_start = (job["source"], job["score"])
         if source_candidate and source_candidate[0] > job["score"]:
             llm_start = (source_candidate[1], source_candidate[0])
-        job_rounds = resolve_rounds(job, rounds)
+        job_rounds = resolve_rounds(job, rounds, model)
         score, src = draft.llm_rounds(client, addr, model, draft.model_rounds(model, job_rounds), hint, llm_start,
                                       log, flags, examples, source_hints, facts, round_stats, strategy=strategy,
                                       provider_options=provider_options)
@@ -703,8 +703,10 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                            failure=failure)
 
 
-def resolve_rounds(job, rounds):
-    return (2 if job.get("size", 0) <= 48 else 4) if rounds == "auto" else rounds
+def resolve_rounds(job, rounds, model=None):
+    if rounds != "auto":
+        return rounds
+    return 2 if job.get("size", 0) <= 48 or (model or "").startswith("deepseek:") else 4
 
 
 def auto_reasoning(job, thinking=None, reasoning_effort=None, model=None):

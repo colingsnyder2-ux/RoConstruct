@@ -493,6 +493,7 @@ def test_auto_reasoning():
     from roc.worker import auto_reasoning, resolve_rounds
     assert resolve_rounds({"size": 48}, "auto") == 2
     assert resolve_rounds({"size": 49}, "auto") == 4
+    assert resolve_rounds({"size": 512}, "auto", "deepseek:deepseek-flash") == 2
     assert resolve_rounds({"size": 512}, 6) == 6
     assert auto_reasoning({"size": 11}, "auto", "auto") == ("disabled", "low")
     assert auto_reasoning({"size": 200, "calls": 2}, "auto", "auto") == (None, None)

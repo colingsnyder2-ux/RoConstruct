@@ -50,7 +50,8 @@ def main():
                 target_options = dict(options)
                 if args.reasoning and target["size"] > 48:
                     target_options.update(thinking="enabled", max_tokens=8192)
-                rounds = worker.resolve_rounds(target, "auto" if args.auto_preset else args.rounds)
+                rounds = worker.resolve_rounds(target, "auto" if args.auto_preset else args.rounds,
+                                              "deepseek:deepseek-flash")
                 benchmark.run_local([target], ["deepseek:deepseek-flash"], rounds=rounds,
                                     resume=not args.no_resume, session=session, strategies=(args.strategy,),
                                     provider_options=target_options,
