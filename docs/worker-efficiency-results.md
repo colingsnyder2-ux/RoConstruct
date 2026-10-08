@@ -126,6 +126,19 @@ serial comparison: 36 jobs, 8 exact, 36 compilable, 168,309 tokens, batches
 quality differences to concurrency. Sessions: `throughput-compilerwarm18-20261008`
 and `throughput-warmed1-20261008`, each suffixed `-k2-r{1,2}`.
 
+Binary-only prompt ablation omits later-version source clues but retains full
+assembly, extracted facts and rules. Validation: 36 jobs, 8 exact, 35 compilable,
+147,981 tokens (15.2% below the compiler-warmup control); batches 9.266s/5.250s.
+No demonstrated exact-match gain, so source clues remain default. Reproduce
+with `--binary-only`; sessions `binary-only-20261008-k2-r{1,2}`.
+
+Temperature zero: 36 jobs, 6 exact, 35 compilable, 172,453 tokens;
+both batches 5.781s. It saved only 1.1% versus the compiler-warmup control,
+with fewer observed matches. Default temperature remains 0.2; the benchmark
+runner accepts `--temperature` for explicit experiments. Sessions:
+`temperature-zero-20261008-k2-r{1,2}`. Temperature zero is not fully deterministic
+across provider calls, and this small sample does not establish causality.
+
 The runner reads the existing hidden corpus and records isolated telemetry. Keep
 the corpus and compiler flags fixed across arms. Historical pre-guidance results
 require the pre-guidance code; rerunning current code changes both arms.

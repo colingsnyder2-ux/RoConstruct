@@ -24,6 +24,8 @@ def main():
     parser.add_argument("--no-resume", action="store_true")
     parser.add_argument("--reasoning", action="store_true")
     parser.add_argument("--compact-rules", action="store_true")
+    parser.add_argument("--binary-only", action="store_true")
+    parser.add_argument("--temperature", type=float)
     parser.add_argument("--strategy", choices=["direct", "structured", "reference"], default="direct")
     args = parser.parse_args()
     corpus = json.loads(benchmark.HIDDEN.read_text())
@@ -42,9 +44,11 @@ def main():
             session = "%s-k%d-r%d" % (args.session, keep, repeat + 1)
             options = {"allow_cloud": True, "thinking": "disabled",
                        "gate": gate,
-                       "compact_rules": args.compact_rules}
+                       "compact_rules": args.compact_rules, "binary_only": args.binary_only}
             if keep >= 0:
                 options["history_keep_last"] = keep
+            if args.temperature is not None:
+                options["temperature"] = args.temperature
 
             def run(target):
                 target_options = dict(options)

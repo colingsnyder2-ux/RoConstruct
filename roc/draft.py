@@ -528,7 +528,7 @@ Assembly is ground truth; later source and RTTI names are clues only. Preserve c
 
 
 def prompt_for(client, addr, row, asm, hint, attempt, flags=None, examples=(), source_hints=(), facts=None,
-               strategy="direct", compact_rules=False):
+               strategy="direct", compact_rules=False, binary_only=False):
     entry = match.clients.load()[client]
     p = ["You are doing matching decompilation of a function from an old Roblox client.",
          (COMPACT_RULES if compact_rules else RULES).format(
@@ -562,11 +562,11 @@ def prompt_for(client, addr, row, asm, hint, attempt, flags=None, examples=(), s
         p += ["", "Rev.ng decompiler output (generic types, hint only):", hint]
     from roc import refsource
     terms = list(refsource._target_terms(facts)) + re.findall(r"[A-Za-z_]\w{2,}", row.get("unit", ""))
-    ref = refsource.hint(row["unit"]) if strategy != "reference" else None
+    ref = refsource.hint(row["unit"]) if strategy != "reference" and not binary_only else None
     if ref:
         p += ["", "The same class in Roblox's 2016 source (real names; layout may have changed since):",
               "```cpp", ref, "```"]
-    for source in source_hints[:1 if strategy == "reference" else 3]:
+    for source in (() if binary_only else source_hints[:1 if strategy == "reference" else 3]):
         if strategy == "reference":
             # Later-version source is evidence, not a template. A short method window
             # avoids teaching the model to paste an incompatible whole class.
@@ -695,7 +695,8 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
         full_prompt = prompt_for(client, addr, row, asm, hint,
                                  None if independent else attempt, flags,
                                  examples, source_hints, facts or facts_from_asm(asm), strategy,
-                                 compact_rules=(provider_options or {}).get("compact_rules", False))
+                                 compact_rules=(provider_options or {}).get("compact_rules", False),
+                                 binary_only=(provider_options or {}).get("binary_only", False))
         if independent and i:
             full_prompt += ("\n\nIndependent candidate %d/%d: use different compact C++ control flow. "
                             "Still emit exactly one function." % (i + 1, diverse_rounds))
@@ -707,6 +708,7 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
         ask_options = dict(provider_options or {})
         ask_options.pop("diverse_candidates", None)
         ask_options.pop("compact_rules", None)
+        ask_options.pop("binary_only", None)
         try:
             from roc import providers as _providers
             cloud = _providers.is_cloud(model)
