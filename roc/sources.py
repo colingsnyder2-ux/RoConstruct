@@ -199,12 +199,15 @@ def _bundle_archive(info):
     want = info.get("sha256")
     if CACHE.is_file() and want and clients.sha256(CACHE) == want:
         return CACHE
+    url = str(info.get("url") or "").strip()
+    if not url or url.startswith("REPLACE_WITH_") or not urllib.parse.urlparse(url).scheme:
+        raise FetchError("clients/sources.json bundle URL is not configured; Drive is the only automatic source")
     if not info.get("url"):
         raise FetchError("clients/sources.json has no bundle url")
     if not info.get("sha256"):
         raise FetchError("clients/sources.json has no bundle sha256: refusing an unverified download")
     print("downloading clients.zip (%.1f MB)..." % (info.get("size", 0) / 1048576))
-    download(info["url"], CACHE)
+    download(url, CACHE)
     got = clients.sha256(CACHE)
     if got != info["sha256"]:
         CACHE.unlink(missing_ok=True)
