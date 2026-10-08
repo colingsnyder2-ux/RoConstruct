@@ -895,6 +895,13 @@
       "target": "Lure legacy Roblox hook implementations",
       "url": "https://github.com/lrre-foss/lure",
       "evidence": "Open-source legacy-client hooks name and detour CRobloxApp, Http, ServerReplicator, StandardOut, and related routines; README says 2011 releases were tested. Not original source, but useful symbol/function anchors for unmatched client groups."
+    },
+    {
+      "checked_at": "2026-10-08T21:30:00-04:00",
+      "status": "source-reference-no-download",
+      "target": "Roblox 2012 source build guide",
+      "url": "https://finobe.lol/article.php?path=knowledge/compile-robloxsrc",
+      "evidence": "Community guide explicitly names ogrobloxsrc.zip/robloxsrc.zip and Client_2012.sln, with VS2012 build requirements and contrib layout. Page exposes no archive URL, but confirms a separate 2012 source bundle/build tree worth locating."
     }
   ],
   "version": 1
