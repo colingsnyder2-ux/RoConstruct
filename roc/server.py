@@ -6,6 +6,7 @@ heartbeating, so crashed workers never leave a function stuck. Submissions
 are re-scored here when this machine has the client's compiler.
 """
 import json
+import os
 import re
 import sqlite3
 import subprocess
@@ -376,6 +377,7 @@ def make_handler(store, token, can_verify, discord_webhook=None):
 
 def serve(host="0.0.0.0", port=8765, db=None, token=None, lease_seconds=900,
           discord_webhook=None, log=print):
+    discord_webhook = discord_webhook or os.environ.get("ROCONSTRUCT_DISCORD_WEBHOOK")
     db = db or str(ROOT / "work" / "server.db")
     Path(db).parent.mkdir(parents=True, exist_ok=True)
     store = Store(db, lease_seconds)
@@ -389,6 +391,8 @@ def serve(host="0.0.0.0", port=8765, db=None, token=None, lease_seconds=900,
     can_verify = {n for n, e in clients.load().items()
                   if e.get("compiler_build") in have and clients.status(n, e) == "ok"}
     log("Re-checking submissions for: %s" % (", ".join(sorted(can_verify)) or "none (trusting workers)"))
+    if discord_webhook:
+        log("Discord mine logs: enabled")
     from roc import auto
     for name in sorted(can_verify):
         done = {a for a, s in store.scores().get(name, {}).items() if s == 100}
