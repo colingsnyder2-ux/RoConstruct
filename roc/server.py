@@ -266,6 +266,10 @@ def export(store):
 
 def make_handler(store, token, can_verify, discord_webhook=None):
     class Handler(BaseHTTPRequestHandler):
+        # Api keeps one HTTP connection per worker. HTTP/1.0 closes it after
+        # every response, rapidly exhausting Windows ephemeral ports locally.
+        protocol_version = "HTTP/1.1"
+
         def log_message(self, fmt, *args):
             pass
 

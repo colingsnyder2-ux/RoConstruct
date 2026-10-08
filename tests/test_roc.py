@@ -63,7 +63,7 @@ def test_repair_sanitize_and_loop():
     assert err is None and score == 71 and "fixedwidth-typedefs" in applied
     assert len(calls) == 2  # no retry loop: one fail, one fixed recheck
 from roc.progress import summarize
-from roc.server import Store
+from roc.server import Store, make_handler
 
 
 def test_find_functions():
@@ -204,6 +204,7 @@ def test_link_options():
 
 def test_server_store():
     st = Store(":memory:", lease_seconds=1)
+    assert make_handler(st, None, set()).protocol_version == "HTTP/1.1"
     st.db.executemany("INSERT INTO funcs(client,addr,size,unit) VALUES(?,?,?,?)",
                       [("C", "00401000", 6, "A"), ("C", "00401010", 8, "B"), ("C", "00401020", 4, "T")])
     a = st.lease("alice", "w1", ["C"], "ai", 256)
