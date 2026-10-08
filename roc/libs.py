@@ -332,6 +332,22 @@ _RBXGS_G3D_GRID = ["/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /arch:SSE2 /fp:fast",
 RECIPES["rbxgs-g3d"] = dict(src=_RBXGS_G3D.rstrip("/"), langs=["cpp"], files="G3Dcpp/*.cpp GLG3Dcpp/*.cpp",
                             grid=_RBXGS_G3D_GRID, include=_RBXGS_G3D_INC, defines=_RBXGS_DEF)
 
+# Asphaltian/OpenRBX: instruction-accurate December 2007 client decompilation.
+# Keep this separate from RBXGSdecomp: it follows PDB-recorded Client paths and
+# contains newer, still-being-recovered translation units.
+_OPENRBX = "../openrbx/"
+_OPENRBX_INC = [_OPENRBX + d for d in (
+    "Client/App/include", "Client/Network/include", "Client/RbxView/include",
+    "Client/RbxViewBase", "Client/Rendering/RenderLib/include",
+    "Client/Rendering/AppDraw/include", "Client/RbxGraphics/include",
+    "3rdparty/RakNet30/Source", "util", "3rdparty/boost_1_34_1",
+    "3rdparty/g3d/source/include", "3rdparty/lua-5.1.1/src",
+    "3rdparty/g3d/source/png", "3rdparty/g3d/source/zlib",
+    "3rdparty/SDL-1.2.6/include")] + ["WINSDK"]
+RECIPES["openrbx-client"] = dict(src=_OPENRBX + "Client", langs=["cpp"], files="**/*.cpp",
+                                  grid=_RBXGS_GRID, include=_OPENRBX_INC,
+                                  defines="WIN32 NDEBUG _LIB _VC80_UPGRADE=0x0710 _MBCS")
+
 # Exact CRT/STL objects from each installed compiler. Fingerprint archive members directly.
 RECIPES["msvc-crt"] = dict(archive=True, builds=[50727, 21022, 30729],
                             files=["libcmt.lib", "libcpmt.lib"])
