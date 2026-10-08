@@ -90,6 +90,23 @@ def clear_setting(name):
     return s
 
 
+_ANNOUNCE_LOCK = threading.Lock()
+_ANNOUNCED = set()
+
+
+def announce_once(key, log, message):
+    """Log a shared startup notice only once per process.
+
+    Parallel worker loops would otherwise print the same privacy/idle
+    notice once each. The first loop to arrive prints; the rest skip.
+    """
+    with _ANNOUNCE_LOCK:
+        if key in _ANNOUNCED:
+            return
+        _ANNOUNCED.add(key)
+    log(message)
+
+
 def save_session_state(worker, user, model, done, matched, failures=0):
     path = ROOT / "work" / "worker-sessions" / (worker + ".json")
     try:
@@ -236,8 +253,9 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
         if not providers.available(model):
             _provider, _remote, config = providers.parse_model(model)
             raise SystemExit("Cloud key is missing: set %s." % config["key_env"])
-        log("Privacy: cloud worker sends bounded assembly, symbols, prompts, and source hints to %s. "
-            "No executable, key, or server lease leaves this PC." % providers.parse_model(model)[0])
+        announce_once(("privacy-cloud", providers.parse_model(model)[0]), log,
+                        "Privacy: cloud worker sends bounded assembly, symbols, prompts, and source hints to %s. "
+                        "No executable, key, or server lease leaves this PC." % providers.parse_model(model)[0])
     if cloud_escalate:
         if not providers.is_cloud(cloud_escalate):
             raise SystemExit("cloud_escalate must be a cloud model")
@@ -247,17 +265,20 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
             _provider, _remote, config = providers.parse_model(cloud_escalate)
             raise SystemExit("Cloud key is missing: set %s" % config["key_env"])
         if not providers.is_cloud(model):
-            log("Privacy: escalation may send bounded prompts to %s after repeated local stalls."
-                % providers.parse_model(cloud_escalate)[0])
+            announce_once(("privacy-escalate", providers.parse_model(cloud_escalate)[0]), log,
+                          "Privacy: escalation may send bounded prompts to %s after repeated local stalls."
+                          % providers.parse_model(cloud_escalate)[0])
     revng = not source_only and use_revng and draft.revng_available()
     worker = uuid.uuid4().hex[:12]
     session = uuid.uuid4().hex[:12]
     log("Worker %s as '%s' on %s | model %s | Rev.ng %s" % (worker, user, ", ".join(have), model,
                                                          "on" if revng else "off"))
     if providers.is_cloud(model):
-        log("Cloud model: work runs remotely; this PC stays idle. Ctrl+C or close the window to stop.")
+        announce_once(("startup-note", "cloud"), log,
+                      "Cloud model: work runs remotely; this PC stays idle. Ctrl+C or close the window to stop.")
     else:
-        log("Note: workers keep the GPU and CPU busy (fans, heat, power). Ctrl+C or close the window to stop.")
+        announce_once(("startup-note", "local"), log,
+                      "Note: workers keep the GPU and CPU busy (fans, heat, power). Ctrl+C or close the window to stop.")
     done = matched = 0
     failures = 0
     examples_cache = {}

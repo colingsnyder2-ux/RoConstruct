@@ -469,6 +469,27 @@ def test_auto_reasoning():
     assert auto_reasoning({"size": 11}, None, None) == (None, None)
 
 
+def test_announce_once():
+    import threading
+    from roc import worker
+    worker._ANNOUNCED.clear()
+    logged = []
+    lock = threading.Lock()
+    def log(message):
+        with lock:
+            logged.append(message)
+    threads = [threading.Thread(target=worker.announce_once, args=(("k", "v"), log, "hello"))
+               for _ in range(8)]
+    for thread in threads:
+        thread.start()
+    for thread in threads:
+        thread.join()
+    assert logged == ["hello"]
+    worker.announce_once(("other",), log, "world")
+    assert logged == ["hello", "world"]
+    worker._ANNOUNCED.clear()
+
+
 def test_server_store():
     st = Store(":memory:", lease_seconds=1)
     assert make_handler(st, None, set()).protocol_version == "HTTP/1.1"
