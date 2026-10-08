@@ -197,6 +197,23 @@ Recorded so they are not chased again.
 | OgreSDK VC8 prebuilt libs | the Ogre clients are VC9, and stock Ogre is in the DLL, not the exe |
 | Microsoft symbol server PDB probe (2026-10-07) | 2007-03, 2009-06, 2011-06 and 2012-06 embedded CodeView GUID+age paths all returned HTTP 404; no public Microsoft-symbol copy |
 
+## 7. Artifact search log
+
+High-value PDB/MAP/object/build-artifact searches are logged here to avoid repeating the
+same sites. Checked 2026-10-08:
+
+| Site | Result |
+|------|--------|
+| [MaximumADHD/Roblox_0.3.368.0](https://github.com/MaximumADHD/Roblox_0.3.368.0) | Authentic March 2007 client archive; indexed tree shows client/extra only, no obvious client PDB, MAP, OBJ or LIB artifacts. |
+| [MaximumADHD/Roblox-2009-Client](https://github.com/MaximumADHD/Roblox-2009-Client) | Late-2009 client archive with RobloxApp.exe, DLLs and VC90 redistributable folders; no obvious PDB/MAP/OBJ/LIB in indexed tree. |
+| [ROBLOX Archive / roblonium](https://archive.roblonium.com/Client/Windows/RobloxApp/2009/) | Binary client archive; useful for checking alternate builds, but directory listings expose no symbol artifacts. |
+| [robloxarchive](https://archive.robloxopolis.com/archive/) | Large read-only archive index advertises client ZIP collections; automated fetch returned 403, so manual/community access may still be worth trying. |
+| [Anaminus ROBLOX Client Data](https://anaminus.github.io/rbx/) | Historical client/API metadata only; no PDB/MAP/build objects found. |
+
+No new downloadable client PDB, MAP, Roblox `.obj`/`.lib`, or original `.vcproj` was validated
+in this pass. Do not count ordinary client archives as new leads unless their file listing
+contains symbol/build artifacts.
+
 ---
 
 ## Adding a source
