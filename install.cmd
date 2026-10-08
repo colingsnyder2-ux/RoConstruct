@@ -32,5 +32,12 @@ if errorlevel 1 (
   pause & exit /b 1
 )
 echo.
-echo Done. Put your client exe in clients\^<name^>\ and double-click roc.cmd.
-pause
+echo Done! Go to the RoConstruct website and click "Start helping" on any client to run the worker.
+echo The client downloads automatically when you click - you don't need to add any exe yourself.
+echo.
+echo   https://colingsnyder2-ux.github.io/RoConstruct/index.html
+echo.
+choice /c YN /m "Start work now (opens the website)"
+if errorlevel 2 goto done
+start "" "https://colingsnyder2-ux.github.io/RoConstruct/index.html"
+:done
