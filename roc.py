@@ -334,7 +334,8 @@ def cmd_server(a):
         startup = Path(os.environ["APPDATA"]) / r"Microsoft\Windows\Start Menu\Programs\Startup" / "RoConstruct server.cmd"
         startup.write_text('@start "RoConstruct server" /min "%s"' % (ROOT / "host.cmd"))
         return print("The server will start when you log in: %s" % startup)
-    httpd = server.serve(a.host, a.port, token=a.token, lease_seconds=a.lease)
+    httpd = server.serve(a.host, a.port, token=a.token, lease_seconds=a.lease,
+                         discord_webhook=a.discord_webhook)
     public = a.public_server or settings().get("public_server")
     if a.tunnel and not public:  # a saved fixed address (e.g. Tailscale Funnel) wins over a quick tunnel
         public, _ = server.start_tunnel(a.port)
@@ -711,6 +712,7 @@ def main(argv=None):
     cmd("server", cmd_server, "host the group server",
         (["--port"], {"type": int, "default": 8765}), (["--host"], {"default": "0.0.0.0"}),
         (["--token"], {"help": "password workers must send"}),
+        (["--discord-webhook"], {"help": "Discord mine-log webhook URL (or ROCONSTRUCT_DISCORD_WEBHOOK)"}),
         (["--lease"], {"type": int, "default": 900, "help": "seconds before an abandoned job frees up"}),
         (["--tunnel"], {"action": "store_true", "help": "public HTTPS address via Cloudflare (no router setup)"}),
         (["--publish"], {"action": "store_true", "help": "update + push the website regularly"}),

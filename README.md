@@ -147,6 +147,7 @@ roc benchmark-models --progress  show saved benchmark records only
 roc failures                     show recurring worker failures
 roc source-status                show 2016 source-name coverage
 roc server [--publish] [--startup] [--tunnel]   host the group server
+roc server --discord-webhook URL                log leased functions to Discord
 roc status                      progress, active workers, leaderboard
 roc progress                    rebuild the website data in docs/
 roc link install | remove       one-click links on/off
@@ -197,6 +198,10 @@ sample or full run to compare score gain and match rate before changing worker s
 
 One-click worker links ask each time for model, preset, worker count, and Rev.ng. Press Enter to
 keep the shown defaults.
+
+Discord mine logs: run `C:\Users\colin\RoConstruct-discord\discord_setup.py` with the bot token.
+It creates `#mine-logs` and prints a private webhook URL. Start the server with `--discord-webhook URL`
+or set `ROCONSTRUCT_DISCORD_WEBHOOK`; notifications run asynchronously and do not block workers.
 
 Speed checklist: `docs/worker-speed-checklist.md`.
 

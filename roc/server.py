@@ -257,7 +257,7 @@ def export(store):
             "leaderboards": {c: store.leaderboard(c)[:20] for c in scores}}
 
 
-def make_handler(store, token, can_verify):
+def make_handler(store, token, can_verify, discord_webhook=None):
     class Handler(BaseHTTPRequestHandler):
         def log_message(self, fmt, *args):
             pass
@@ -324,6 +324,10 @@ def make_handler(store, token, can_verify):
                                   str(body.get("mode", ""))[:16], int(body.get("max_size", 256)),
                                   str(body.get("model", ""))[:120] or None,
                                   body.get("targets"))
+                if job:
+                    from roc.discord import mined
+                    mined(discord_webhook, job, user, str(body.get("worker", ""))[:64],
+                          str(body.get("model", ""))[:120] or "auto")
                 return self.send(200, {"job": job})
             if path == "/v1/heartbeat":
                 return self.send(200, {"ok": store.heartbeat(str(body.get("lease", "")))})
@@ -362,7 +366,8 @@ def make_handler(store, token, can_verify):
     return Handler
 
 
-def serve(host="0.0.0.0", port=8765, db=None, token=None, lease_seconds=900, log=print):
+def serve(host="0.0.0.0", port=8765, db=None, token=None, lease_seconds=900,
+          discord_webhook=None, log=print):
     db = db or str(ROOT / "work" / "server.db")
     Path(db).parent.mkdir(parents=True, exist_ok=True)
     store = Store(db, lease_seconds)
@@ -401,7 +406,7 @@ def serve(host="0.0.0.0", port=8765, db=None, token=None, lease_seconds=900, log
                         pass  # function no longer in the analysis
         if imported:
             log("Imported %d library matches for %s (credited to 'auto')" % (imported, name))
-    httpd = ThreadingHTTPServer((host, port), make_handler(store, token, can_verify))
+    httpd = ThreadingHTTPServer((host, port), make_handler(store, token, can_verify, discord_webhook))
     httpd.store = store
     log("RoConstruct server running on port %d. Workers connect with:  roc worker --server http://<this-pc>:%d"
         % (port, port))
