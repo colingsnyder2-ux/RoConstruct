@@ -658,6 +658,16 @@ def test_topk_and_benchmark_summary():
     assert s["compile_attempts"] == 2 and s["rejected_inline_asm"] == 0
     assert _metrics.known_generation_cost([{"round": 1, "provider": "nvidia", "estimated_cost": None}]) is None
     assert _metrics.known_generation_cost([{"round": 1, "provider": "nvidia", "estimated_cost": 0.25}]) == 0.25
+    old_path = _metrics.PATH
+    with tempfile.TemporaryDirectory() as temp:
+        _metrics.PATH = Path(temp) / "metrics.jsonl"
+        _metrics.record("token-summary", event="job", score=0, improved=False, seconds=1,
+                        source_hints=0, source_candidate=False, source_candidate_hit=False,
+                        phase_seconds={}, compile_seconds=0, provider="deepseek",
+                        input_tokens=12, output_tokens=7, cached_tokens=3, estimated_cost=None)
+        text = _metrics.summary("token-summary")
+        assert "tokens=in:12 out:7 cached:3" in text and "cost=unknown" in text
+    _metrics.PATH = old_path
 
 
 def test_qualified_type_definition_rejected():

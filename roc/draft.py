@@ -620,7 +620,7 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
     err_codes, compiled_any = [], compiled_best is not None
     requested_diversity = max(1, int((provider_options or {}).get("diverse_candidates", 1) or 1))
     hard_target = (row.get("size", 0) > 96 or (facts or {}).get("calls", 0) or
-                   len((facts or {}).get("branches", ())) > 1)
+                   int((facts or {}).get("branch_count", 0) or 0) > 1)
     diverse_rounds = min(rounds, requested_diversity) if hard_target else 1
     for i in range(rounds):
         independent = i < diverse_rounds

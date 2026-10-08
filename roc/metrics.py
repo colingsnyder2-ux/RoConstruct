@@ -55,11 +55,18 @@ def summary(session):
     tail = "" if not failures else ", failures=" + ";".join("%s:%d" % item for item in failures.items())
     llm = sum(r.get("phase_seconds", {}).get("llm", 0) for r in done)
     compile_time = sum(r.get("compile_seconds", 0) for r in done)
-    tokens = sum(a.get("output_tokens", 0) for r in done for a in r.get("rounds", []))
+    input_tokens = sum(r.get("input_tokens", 0) or 0 for r in done)
+    output_tokens = sum(r.get("output_tokens", 0) or 0 for r in done)
+    cached_tokens = sum(r.get("cached_tokens", 0) or 0 for r in done)
+    cloud = [r for r in done if r.get("provider") and r.get("provider") != "local"]
+    costs = [r.get("estimated_cost") for r in cloud]
+    cost = None if any(value is None for value in costs) else sum(costs or [0])
+    token_line = " tokens=in:%d out:%d cached:%d" % (input_tokens, output_tokens, cached_tokens)
+    cost_line = " cost=unknown" if cloud and cost is None else " cost=$%.6f" % cost
     return (("Session: %d jobs, %d matched, %d improved, source hits %d, AI hits %d, %d source-guided, %.1fs avg (LLM %.1fs, compile %.1fs)"
              % (len(done), matched, improved, source_hits, ai_hits, source_candidates,
                 sum(r.get("seconds", 0) for r in done) / max(len(done), 1), llm, compile_time)) +
-            " tokens=%d" % tokens + tail)
+            token_line + cost_line + tail)
 
 
 def _coded_rounds(rounds):
