@@ -824,12 +824,25 @@ def test_exact_match_separate_from_fuzzy():
 
 
 def test_diagnose_call_argument_order():
-    from roc import match
+    from roc import draft, match
     target = bytes.fromhex("6a016a02ff1500000000c3")
     candidate = bytes.fromhex("6a026a01ff1500000000c3")
     diag = match.diagnose(target, [], candidate, [])
     assert diag["call_argument_diffs"] == [
         {"call": 1, "target": ["2", "1"], "candidate": ["1", "2"]}]
+    target_registers = bytes.fromhex("5052ff1500000000c3")
+    candidate_registers = bytes.fromhex("5153ff1500000000c3")
+    assert match.diagnose(target_registers, [], candidate_registers, [])["call_argument_diffs"] == []
+    near = match.diagnose(target, [], bytes.fromhex("6a016a03ff1500000000c3"), [])
+    assert near["byte_diffs"] == [{"offset": 3, "target": 2, "candidate": 3}]
+    note_diag = {"similarity": 0.9, "byte_diffs": near["byte_diffs"],
+                 "opcode_delta": {}, "register_delta": {},
+                 "branches": {"target_jcc": 0, "cand_jcc": 0},
+                 "stack_refs": {"target": 0, "cand": 0}, "call_argument_diffs": []}
+    assert "same-length byte diffs target>yours +3:02>03" in draft._diagnose_note(
+        "unused", "unused", "", None, diagnosis=note_diag)
+    assert not draft._diagnose_note("unused", "unused", "", None,
+                                    diagnosis=note_diag, byte_feedback=False)
 
 
 def test_mutate_validated():

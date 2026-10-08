@@ -256,6 +256,26 @@ the repair prompt. This targets argument-order mistakes without generic API
 instructions. A synthetic swapped-two-argument test verifies diagnostic order;
 measure exact-match conversion rate before attributing a worker gain.
 
+Byte-feedback ablation added same-length byte offsets for high-similarity partial
+matches (relocation bytes excluded); only first six mismatches enter the prompt.
+Numeric call-argument hints are restricted to immediate stack arguments so
+register-allocation differences cannot masquerade as argument swaps. On two
+untouched medium/large holdouts (2012-06 and 2010-06, 12 functions each, four
+draws per function/arm), byte feedback on/off both produced 16/96 exact matches
+and 92/96 jobs with a compiling candidate. Byte arm used 626,997 vs 636,011
+tokens (1.4% less), but summed batch wall time was 56.5s vs 53.0s (6.6% slower).
+Only eight first-round candidates qualified for byte hints; all eight targets
+also reached exact on the no-byte arm, so these runs show no exact-match gain.
+Keep hint gated to equal-length >=90%-similar candidates; this remains
+exploratory, not evidence of improved match rate. Reproduce with
+`--without-byte-feedback` control and default treatment. Sessions:
+`fresh201{0,2}-ml-{no-byte,byte}-64w-k2-r{1,2,3,4}`.
+
+Passing a compiled candidate's diagnostics out of `check_text` avoids repeating
+COFF parse/score work when formatting its repair note. Exact candidates skip
+diagnostic generation entirely. This is a local efficiency reduction; no
+separate speedup claim without paired timing.
+
 Local `qwen2.5-coder:7b-instruct` tiny check on the same six 2008-06 functions:
 direct four repeats produced 4/24 exact, 15/24 compilable, and 2,506 output
 tokens. Structured first repeat produced 0/6 exact, 4/6 compilable; one request

@@ -629,20 +629,21 @@ def select_topk(scored, k=3):
     return out
 
 
-def _diagnose_note(client, addr, src, flags, limit=400):
+def _diagnose_note(client, addr, src, flags, limit=400, diagnosis=None, byte_feedback=True):
     """One-line instruction-level mismatch note for the next repair prompt.
 
-    Compiles are served from match.compile_text's cache, so this costs no
-    extra compiler run after check_text. Empty on any failure.
+    Reuses check_text's diagnostic when available; empty on any failure.
     """
     try:
-        target_code, target_relocs, _ = match.target(client, addr)
-        obj = match.compile_text(client, src, flags)
-        funcs = match.coff_functions(obj)
-        if not funcs:
-            return ""
-        best = max(funcs, key=lambda f: match.score(target_code, target_relocs, f[1], f[2]))
-        diag = match.diagnose(target_code, target_relocs, best[1], best[2])
+        if diagnosis is None:
+            target_code, target_relocs, _ = match.target(client, addr)
+            obj = match.compile_text(client, src, flags)
+            funcs = match.coff_functions(obj)
+            if not funcs:
+                return ""
+            best = max(funcs, key=lambda f: match.score(target_code, target_relocs, f[1], f[2]))
+            diagnosis = match.diagnose(target_code, target_relocs, best[1], best[2])
+        diag = diagnosis
         bits = []
         if diag["opcode_delta"]:
             bits.append("opcode %s" % ", ".join(
@@ -656,9 +657,14 @@ def _diagnose_note(client, addr, src, flags, limit=400):
         ts, cs = diag["stack_refs"]["target"], diag["stack_refs"]["cand"]
         if ts != cs:
             bits.append("stack refs target=%d yours=%d" % (ts, cs))
-        for call in diag.get("call_argument_diffs", [])[:2]:
-            bits.append("call #%d stack args (C++ order) target=%s yours=%s" % (
-                call["call"], ",".join(call["target"]), ",".join(call["candidate"])))
+        if byte_feedback and diag["similarity"] >= 0.9 and diag.get("byte_diffs"):
+            bytes_note = ",".join("+%x:%02x>%02x" % (
+                b["offset"], b["target"], b["candidate"]) for b in diag["byte_diffs"][:6])
+            bits.append("same-length byte diffs target>yours %s" % bytes_note)
+        if byte_feedback:
+            for call in diag.get("call_argument_diffs", [])[:2]:
+                bits.append("call #%d stack args (C++ order) target=%s yours=%s" % (
+                    call["call"], ",".join(call["target"]), ",".join(call["candidate"])))
         if not bits:
             return ""
         return ("\n[Mismatch: %s. Fix structure first; same ops with different "
@@ -723,6 +729,7 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
         ask_options.pop("source_hint_max_size", None)
         ask_options.pop("minimal_layout", None)
         ask_options.pop("reset_truncated", None)
+        ask_options.pop("byte_feedback", None)
         try:
             from roc import providers as _providers
             cloud = _providers.is_cloud(model)
@@ -848,10 +855,13 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
             compile_error = None if score else "duplicate of failed candidate"
         else:
             try:
-                score, _, d, _ = match.check_text(client, addr, src, flags)
+                checked = match.check_text(client, addr, src, flags, include_diagnosis=True)
+                score, _, d, _ = checked[:4]
+                diag = checked[4] if len(checked) > 4 else None
                 this = (src, score, d)
                 if 0 < score < 100:
-                    note = _diagnose_note(client, addr, src, flags)
+                    note = _diagnose_note(client, addr, src, flags, diagnosis=diag,
+                                          byte_feedback=(provider_options or {}).get("byte_feedback", True))
                     if note:
                         this = (src, score, d + note)
             except match.CompileError as error:
@@ -863,8 +873,9 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
                 if rerr is None:
                     score, src = rscore, rsrc
                     this = (src, score, rdiff)
-                    if 0 < score < 100:
-                        note = _diagnose_note(client, addr, src, flags)
+                    if 0 < score < 100 and (provider_options or {}).get("byte_feedback", True):
+                        note = _diagnose_note(client, addr, src, flags,
+                                              byte_feedback=(provider_options or {}).get("byte_feedback", True))
                         if note:
                             this = (src, score, rdiff + note)
                 else:

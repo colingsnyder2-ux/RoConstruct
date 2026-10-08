@@ -36,6 +36,7 @@ def main():
     parser.add_argument("--max-tokens", type=int)
     parser.add_argument("--minimal-layout", action="store_true")
     parser.add_argument("--reset-truncated", action="store_true")
+    parser.add_argument("--without-byte-feedback", action="store_true")
     parser.add_argument("--diverse-candidates", type=int)
     parser.add_argument("--strategy", choices=["direct", "structured", "reference"], default="direct")
     args = parser.parse_args()
@@ -61,7 +62,8 @@ def main():
             options = {"allow_cloud": True, "thinking": "disabled",
                        "gate": gate,
                        "compact_rules": args.compact_rules, "binary_only": args.binary_only,
-                       "minimal_layout": args.minimal_layout, "reset_truncated": args.reset_truncated}
+                       "minimal_layout": args.minimal_layout, "reset_truncated": args.reset_truncated,
+                       "byte_feedback": not args.without_byte_feedback}
             if args.diverse_candidates is not None:
                 options["diverse_candidates"] = args.diverse_candidates
             if keep >= 0:

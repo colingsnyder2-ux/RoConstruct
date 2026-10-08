@@ -258,9 +258,17 @@ def diagnose(target_code, target_relocs, cand, cand_relocs):
     call_argument_diffs = []
     for i, (target_call, cand_call) in enumerate(zip(t_calls, c_calls)):
         target_args, cand_args = target_call[1][::-1], cand_call[1][::-1]
+        immediate_args = all(re.fullmatch(r"(?:0x[0-9a-f]+|-?\d+)", arg, re.I)
+                             for arg in target_args + cand_args)
         if (target_call[0] == cand_call[0] and len(target_args) >= 2 and
-                len(target_args) == len(cand_args) and target_args != cand_args):
+                len(target_args) == len(cand_args) and target_args != cand_args and immediate_args):
             call_argument_diffs.append({"call": i + 1, "target": target_args, "candidate": cand_args})
+    byte_diffs = []
+    if len(target_code) == len(cand):
+        masked_offsets = {r + i for r in target_relocs + cand_relocs for i in range(4)}
+        for offset, (target_byte, candidate_byte) in enumerate(zip(target_code, cand)):
+            if offset not in masked_offsets and target_byte != candidate_byte:
+                byte_diffs.append({"offset": offset, "target": target_byte, "candidate": candidate_byte})
     return {"exact": exact_match(target_code, target_relocs, cand, cand_relocs),
             "similarity": round(similarity_ratio(target_code, target_relocs, cand, cand_relocs), 4),
             "target_insns": len(t_ins), "cand_insns": len(c_ins),
@@ -271,6 +279,7 @@ def diagnose(target_code, target_relocs, cand, cand_relocs):
                          "target_jmp": t_br[1], "cand_jmp": c_br[1],
                          "target_call": t_br[2], "cand_call": c_br[2]},
             "call_argument_diffs": call_argument_diffs,
+            "byte_diffs": byte_diffs,
             "diff_preview": diff_lines[:40]}
 
 
@@ -399,21 +408,24 @@ def compile_text(client, text, flags=None, build=None):
         return obj.read_bytes()
 
 
-def check_text(client, addr, text, flags=None):
+def check_text(client, addr, text, flags=None, include_diagnosis=False):
     """(score, symbol, asm diff, data spans) for the best function in text vs the target.
     A byte-identical function whose own strings/constants differ from the exe scores 99."""
     code, relocs, _ = target(client, addr)
     obj = compile_text(client, text, flags)
     funcs = coff_functions(obj)
     if not funcs:
-        return 0, None, "no functions compiled (is the function body empty or inline?)", []
+        result = (0, None, "no functions compiled (is the function body empty or inline?)", [])
+        return result + ({},) if include_diagnosis else result
     best = max(funcs, key=lambda f: score(code, relocs, f[1], f[2]))
     value, d, spans = score(code, relocs, best[1], best[2]), diff(code, relocs, best[1], best[2]), []
     if value == 100:
         spans, bad = data_check(client, addr, code, coff_data_refs(obj, best[0]))
         if bad:
             value, d = 99, "Code matches, but data your source defines does not:\n" + "\n".join(bad)
-    return value, best[0], d, spans
+    result = (value, best[0], d, spans)
+    diagnosis = diagnose(code, relocs, best[1], best[2]) if include_diagnosis and value < 100 else {}
+    return result + (diagnosis,) if include_diagnosis else result
 
 
 def save_data(client, addr, spans):
