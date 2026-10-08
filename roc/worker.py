@@ -43,6 +43,70 @@ def pretty_log(message):
         print(text)
 
 
+class CompactLog:
+    """Keep high-parallel cloud workers readable without hiding outcomes."""
+    def __init__(self, workers, output=pretty_log):
+        self.workers = workers
+        self.output = output
+        self.lock = threading.Lock()
+        self.jobs = self.improved = self.matched = self.failures = 0
+        self.current = {}
+        self.next_report = max(10, workers)
+
+    def __call__(self, message):
+        text = str(message)
+        thread = threading.get_ident()
+        job = re.match(r"\[([^ ]+) ([^\]]+)\].*?, (.*?), best so far (\d+)%", text)
+        with self.lock:
+            if job:
+                self.current[thread] = (job.group(1), job.group(2), job.group(3), int(job.group(4)))
+                return
+            if text.startswith("  2016 source candidate"):
+                score = re.search(r"(\d+)%", text)
+                self._finish(int(score.group(1)) if score else 0)
+                return
+            if (text.startswith("Worker ") or text.startswith("  auto-think:") or
+                    text.startswith("  round ") or text.startswith("  generated source") or
+                    text.startswith("  no improvement") or text.startswith("  retained") or
+                    text.startswith("  2016 source") or text.startswith("Session:") or
+                    text.startswith("== ") or text.startswith("Worker finished") or
+                    text.startswith("Cloud model:") or text.startswith("Privacy:")):
+                if text.startswith("  no improvement") or text.startswith("  retained"):
+                    score = re.search(r"(\d+)%", text)
+                    self._finish(int(score.group(1)) if text.startswith("  retained") and score else None)
+                return
+            if "submitted " in text or "candidate submitted" in text:
+                score = re.search(r"(\d+)%", text)
+                score = int(score.group(1)) if score else 0
+                self._finish(score)
+                return
+            if text.lstrip().startswith("error:") or text.startswith("server_fail:"):
+                self.failures += 1
+                if self.failures == 1:
+                    self.output("! worker error; retrying. Further errors summarized.")
+                return
+            self.output(text)
+
+    def _finish(self, score=None):
+        self.jobs += 1
+        self.improved += score is not None and score > 0
+        self.matched += score == 100
+        client, addr, unit, best = self.current.pop(threading.get_ident(), ("?", "?", "?", 0))
+        if score is None:
+            self.output("· %s %s no gain (best %d%%) %s" % (client, addr, best, unit))
+        else:
+            self.output("%s %s %s %d%% %s" % ("✓" if score == 100 else "↑",
+                        client, addr, score, unit))
+        if self.jobs >= self.next_report:
+            self.output("⛏ %dw | %d done | %d matched | %d improved | %d errors" %
+                        (self.workers, self.jobs, self.matched, self.improved, self.failures))
+            self.next_report += max(10, self.workers)
+
+    def finish(self):
+        self.output("⛏ %dw finished | %d done | %d matched | %d improved | %d errors" %
+                    (self.workers, self.jobs, self.matched, self.improved, self.failures))
+
+
 class ApiFailure(RuntimeError):
     """Short, machine-readable server/network failure for telemetry and UI."""
     def __init__(self, category, message):
@@ -382,11 +446,12 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
         base, extra = divmod(max(0, int(max_jobs)), workers)
         quotas = [base + (i < extra) for i in range(workers)]
     errors = []
+    worker_log = CompactLog(workers, log) if workers > 3 else log
 
     def worker_loop(index):
         try:
             run(server, user, token, model, rounds, max_size, use_revng,
-                quotas[index], log, forever=True, only=only, source_only=source_only, targets=targets,
+                quotas[index], worker_log, forever=True, only=only, source_only=source_only, targets=targets,
                 strategy=strategy, cloud_allowed=cloud_allowed, cloud_budget=cloud_budget, cloud_gate=cloud_gate,
                 diverse_candidates=diverse_candidates, cloud_min_size=cloud_min_size,
                 cloud_fallback=cloud_fallback, seed=seed, cloud_escalate=cloud_escalate,
@@ -410,6 +475,8 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
         raise
     if errors:
         raise errors[0]
+    if workers > 3:
+        worker_log.finish()
 
 
 def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=None,

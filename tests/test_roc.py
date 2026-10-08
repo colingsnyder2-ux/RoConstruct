@@ -595,6 +595,20 @@ def test_concurrent_shares_caches_and_clamps():
     assert len(calls) == 32
 
 
+def test_compact_worker_log():
+    from roc.worker import CompactLog
+    out = []
+    log = CompactLog(32, out.append)
+    log("[C 00401020] 8 bytes, Unit, best so far 0%")
+    log("  round 1: 100%")
+    log("  submitted 100% (verified by server)")
+    log("[C 00401030] 8 bytes, Unit2, best so far 0%")
+    log("  no improvement (best 0%), released")
+    log.finish()
+    assert "✓ C 00401020 100% Unit" in out
+    assert out[-1] == "⛏ 32w finished | 2 done | 1 matched | 1 improved | 0 errors"
+
+
 def test_server_store():
     st = Store(":memory:", lease_seconds=1)
     assert make_handler(st, None, set()).protocol_version == "HTTP/1.1"
