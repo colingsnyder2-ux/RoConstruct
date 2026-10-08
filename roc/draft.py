@@ -497,13 +497,27 @@ def _trim_hint_facts(hint_facts, terms, max_methods=16):
     return out
 
 
+def _clip_example(text, limit=1500):
+    """Bound example bytes: matched sources run to 90k chars.
+
+    Two whole examples can dwarf the target assembly, blowing cloud budgets
+    and the local context window. The head carries the format lesson (fence,
+    struct declarations, signature); the marker keeps a hard cut from
+    looking like a complete, copyable answer.
+    """
+    text = (text or "").strip()
+    if len(text) <= limit:
+        return text
+    return text[:limit].rstrip() + "\n// (example trimmed: full source matched, shown for shape only)"
+
+
 def prompt_for(client, addr, row, asm, hint, attempt, flags=None, examples=(), source_hints=(), facts=None,
                strategy="direct"):
     entry = match.clients.load()[client]
     p = ["You are doing matching decompilation of a function from an old Roblox client.",
          RULES.format(compiler=entry["compiler"], flags=flags or entry.get("flags") or match.DEFAULT_FLAGS)]
     for ex in examples[:2 if strategy == "direct" else 1]:
-        p += ["", "Example of an already matched function from this client:", "```cpp", ex.strip(), "```"]
+        p += ["", "Example of an already matched function from this client:", "```cpp", _clip_example(ex), "```"]
     p += ["", "Stage: %s. Function %s, %d bytes, class (from RTTI, may be a guess): %s" %
           (classify_target(asm, facts), addr, row["size"], row["unit"]),
           "Target assembly (read-only evidence; do not copy it into the answer):", "\n".join(asm)]

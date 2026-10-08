@@ -515,6 +515,21 @@ def test_trim_hint_facts():
     assert len(trimmed["literals"]) == 12 and trimmed["classes"] == ["C"]
 
 
+def test_clip_example(monkeypatch):
+    from roc import draft
+    short = "int f() { return 1; }"
+    assert draft._clip_example(short) == short
+    big = "struct S { int f(); };\n" + "int x;\n" * 1000
+    clipped = draft._clip_example(big)
+    assert len(clipped) < len(big) and "trimmed" in clipped and clipped.startswith("struct S")
+    monkeypatch.setattr(draft.match.clients, "load", lambda: {"C": {"compiler": "cl", "flags": "/O2"}})
+    row = {"size": 8, "unit": "Thing"}
+    prompt = draft.prompt_for("C", "1", row, ["ret "], None, None, examples=[big])
+    assert "trimmed" in prompt and big not in prompt and prompt.count("int x;") < 1000
+    prompt = draft.prompt_for("C", "1", row, ["ret "], None, None, examples=[short])
+    assert short in prompt and "trimmed" not in prompt
+
+
 def test_server_store():
     st = Store(":memory:", lease_seconds=1)
     assert make_handler(st, None, set()).protocol_version == "HTTP/1.1"
