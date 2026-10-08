@@ -1,7 +1,9 @@
 """Worker: lease a function from the server, draft C++ with AI, compile, diff,
 retry with feedback, submit the best result under your username."""
 import json
+import os
 import re
+import sys
 import threading
 import time
 import traceback
@@ -17,6 +19,24 @@ ROOT = Path(__file__).resolve().parent.parent
 SETTINGS = ROOT / "roconstruct-settings.json"
 USER_RE = re.compile(r"^[A-Za-z0-9_.-]{2,32}$")
 SITE = "https://colingsnyder2-ux.github.io/RoConstruct/"
+
+
+def pretty_log(message):
+    text = str(message)
+    if not sys.stdout.isatty() or os.environ.get("NO_COLOR"):
+        print(text)
+        return
+    color = "\x1b[36m"
+    low = text.lower()
+    if "submitted" in low or "score updated" in low:
+        color = "\x1b[32m"
+    elif "error" in low or "offline" in low or "timeout" in low:
+        color = "\x1b[31m"
+    elif "no improvement" in low or "released" in low:
+        color = "\x1b[90m"
+    elif "round" in low or "generated source" in low:
+        color = "\x1b[33m"
+    print(color + text + "\x1b[0m")
 
 
 class ApiFailure(RuntimeError):
@@ -151,7 +171,7 @@ def usable_clients(info, log=print):
 
 
 def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=True,
-        max_jobs=None, log=print, forever=False, only=None, source_only=False, targets=None):
+        max_jobs=None, log=pretty_log, forever=False, only=None, source_only=False, targets=None):
     """forever: survive server/network outages (retry every minute) for overnight runs.
     only: restrict to these clients (one-click links)."""
     if not USER_RE.match(user or ""):
@@ -227,7 +247,7 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
 
 
 def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
-                   use_revng=True, max_jobs=None, workers=1, log=print,
+                   use_revng=True, max_jobs=None, workers=1, log=pretty_log,
                    source_only=False):
     """Run a bounded number of independent lease loops.
 

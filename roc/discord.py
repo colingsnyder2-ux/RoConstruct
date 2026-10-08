@@ -27,8 +27,8 @@ def mined(webhook, job, user, worker, model, score, points, title="⛏️ Functi
             req = urllib.request.Request(url, data=body,
                                          headers={"Content-Type": "application/json"})
             with urllib.request.urlopen(req, timeout=5):
-                pass
-        except (OSError, ValueError):
-            pass
+                print("Discord mine log sent")
+        except (OSError, ValueError) as error:
+            print("Discord mine log failed: %s" % error)
 
     threading.Thread(target=send, daemon=True).start()

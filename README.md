@@ -203,6 +203,8 @@ keep the shown defaults.
 Discord mine logs: run `C:\Users\colin\RoConstruct-discord\discord_setup.py` with the bot token.
 It creates `#mine-logs` and prints a private webhook URL. Start the server with `--discord-webhook URL`
 or set `ROCONSTRUCT_DISCORD_WEBHOOK`; notifications run asynchronously and do not block workers.
+Worker terminals use color when interactive and show each generated source preview live. Set
+`ROCONSTRUCT_LIVE_CODE=0` to hide source previews; set `NO_COLOR=1` for plain logs.
 
 Speed checklist: `docs/worker-speed-checklist.md`.
 
