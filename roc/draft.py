@@ -333,9 +333,11 @@ def reconstruction_outline(asm, facts=None):
     insns = [_insn(line) for line in asm]
     branches = [line for line in insns if re.match(r"j(?:mp|[a-z]+)\b", line)]
     ret = (facts.get("returns") or ["ret"])[-1]
-    stack = re.search(r"ret\s+(\d+)", ret)
-    args = int(stack.group(1)) // 4 if stack else 0
-    signature = "member thiscall" if any("[ecx" in line for line in insns) else "free cdecl"
+    stack = re.search(r"ret\s+(0x[0-9a-fA-F]+|\d+)\b", ret)
+    args = int(stack.group(1), 0) // 4 if stack else 0
+    signature = facts.get("calling_convention", "unknown convention")
+    if any("[ecx" in line for line in insns):
+        signature += ", ECX dereferenced (verify whether live on entry)"
     if stack:
         signature += ", callee pops %d stack arg(s)" % args
     blocks = 1 + sum(1 for line in insns if re.match(r"(?:j(?:mp|[a-z]+)|ret)\b", line))
@@ -390,7 +392,7 @@ def type_constraints(asm, facts=None):
     if facts.get("stack_args"):
         out.append("stack memory accessed at " + ", ".join(map(str, facts["stack_args"][:8])))
     ret = (facts.get("returns") or [""])[-1]
-    if re.search(r"ret\s+\d+", ret):
+    if re.search(r"ret\s+(?:0x[0-9a-fA-F]+|\d+)\b", ret):
         out.append("callee stack cleanup")
     if facts.get("virtual_slots"):
         out.append("virtual slots " + ", ".join(map(str, facts["virtual_slots"][:8])))

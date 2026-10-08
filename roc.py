@@ -387,7 +387,7 @@ def cmd_worker(a):
             _provider, _remote, config = providers.parse_model(a.cloud_escalate)
             raise SystemExit("Cloud key is missing: set %s" % config["key_env"])
     budget = providers.CloudBudget(a.max_cloud_requests, a.max_cloud_tokens, a.max_cloud_cost)
-    gate = providers.CloudGate(a.cloud_concurrency)
+    gate = providers.CloudGate(a.cloud_concurrency) if a.cloud_concurrency is not None else None
     if a.output_budget is None:
         a.output_budget = 2048
     if not 128 <= a.output_budget <= 8192:
@@ -910,8 +910,8 @@ def main(argv=None):
         (["--max-cloud-requests"], {"type": int, "help": "cloud request budget for this worker"}),
         (["--max-cloud-tokens"], {"type": int, "help": "cloud token budget for this worker"}),
         (["--max-cloud-cost"], {"type": float, "help": "cloud cost budget when provider pricing is configured"}),
-        (["--cloud-concurrency"], {"type": int, "default": 1,
-                                     "help": "maximum simultaneous requests per cloud provider"}),
+        (["--cloud-concurrency"], {"type": int,
+                                     "help": "maximum cloud requests; defaults to worker count"}),
         (["--diverse-candidates"], {"type": int, "default": 1,
                                       "help": "independent samples for hard functions; default 1"}),
         (["--cloud-min-size"], {"type": int, "default": 97,

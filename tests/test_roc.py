@@ -174,6 +174,9 @@ def test_mass_helpers():
 
 
 def test_draft_helpers():
+    from roc.draft import reconstruction_outline
+    outline = reconstruction_outline(["ret 0x10"])
+    assert "callee pops 4 stack arg(s)" in outline and "cdecl" not in outline
     assert extract_code("text\n```cpp\nint f();\n```\nmore") == "int f();\n"
     assert extract_code("no code") is None
     assert extract_code("Here is the answer:\nint f() { return 1; }\n") == "int f() { return 1; }\n"
@@ -194,7 +197,7 @@ def test_draft_helpers():
     assert draft.classify_target(["call sym", "ret "]) == "wrapper/thunk"
     assert "struct Namespace::Type" in draft.RULES
     outline = draft.reconstruction_outline(["mov eax, dword ptr [ecx + 4]", "jne sym", "ret 8"])
-    assert "member thiscall" in outline and "callee pops 2" in outline and "jne sym" in outline
+    assert "ECX dereferenced" in outline and "callee pops 2" in outline and "jne sym" in outline
     outlined = draft.reconstruction_outline(["00401000  8b4104               mov eax, dword ptr [ecx + 4]",
                                               "00401003  7502                 jne 0x401007", "00401005  c20800               ret 8"])
     assert "branches: jne 0x401007" in outlined

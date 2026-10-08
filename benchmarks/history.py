@@ -29,8 +29,10 @@ def main():
         for keep in args.keep:
             session = "%s-k%d-r%d" % (args.session, keep, repeat + 1)
             options = {"allow_cloud": True, "thinking": "disabled",
-                       "history_keep_last": keep, "gate": gate,
+                       "gate": gate,
                        "compact_rules": args.compact_rules}
+            if keep >= 0:
+                options["history_keep_last"] = keep
 
             def run(target):
                 benchmark.run_local([target], ["deepseek:deepseek-flash"], rounds=2,

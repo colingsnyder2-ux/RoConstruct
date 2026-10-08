@@ -48,6 +48,18 @@ duplicate loads, not end-to-end mining throughput. Reproduce with
 `python benchmarks/startup.py`. Worker startup now warms the index once before
 parallel loops.
 
+Adaptive tiny-only history follow-up: 36 jobs, 10 exact, 31 compilable, 170,639
+tokens. It did not sustain the earlier tiny-only benefit across the complete
+run; default history remains unchanged. Both all-target and tiny-only lean
+history are experimental benchmark options.
+
+Live fixed-prompt concurrency test (not decompilation throughput): eight requests
+with concurrency one took 6.428s and 6.958s; concurrency eight took 0.966s and
+1.056s. Every batch returned 8/8 correct replies and used 232 tokens. Two batches
+of 64 simultaneous requests returned 64/64 correct replies in 1.270s and 1.233s,
+using 1,856 tokens each. CLI cloud concurrency now follows worker count by default;
+explicit `--cloud-concurrency` overrides it. URI workers share the same limiter.
+
 Reproduce: `python benchmarks/history.py --session UNIQUE --keep 2 0 --repeats 2`.
 The runner reads the existing hidden corpus and records isolated telemetry. Keep
 the corpus and compiler flags fixed across arms. Historical pre-guidance results

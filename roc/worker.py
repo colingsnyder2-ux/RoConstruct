@@ -440,6 +440,9 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
         # Conservative: small models can overlap; large models stay serial.
         workers = 2 if "7b" in str(model).lower() else 1
     workers = max(1, min(int(workers or 1), MAX_WORKERS))
+    if cloud_gate is None:
+        from roc import providers
+        cloud_gate = providers.CloudGate(workers)
     shared_examples, shared_sources = {}, {}
     if workers == 1:
         return run(server, user, token, model, rounds, max_size, use_revng,
