@@ -96,6 +96,14 @@ experimental resource policy, not a measured quality improvement; existing
 fast/balanced/deep defaults are unchanged. Benchmark its round policy with
 `--auto-preset`; this local runner does not exercise server leases or Rev.ng.
 
+Cold target-function cache validation: eight simultaneous readers of the real
+41MB, 36,971-row function index previously opened it eight times in 5.906s,
+returning separate objects. Single-load locking opened it once in 0.372s and
+returned the identical object to all threads. Both function-index and mapped
+executable-image caches now serialize initial loads. Reproduce with
+`python benchmarks/target_startup.py --workers 8`. This is local startup time,
+not an end-to-end throughput multiplier.
+
 The runner reads the existing hidden corpus and records isolated telemetry. Keep
 the corpus and compiler flags fixed across arms. Historical pre-guidance results
 require the pre-guidance code; rerunning current code changes both arms.

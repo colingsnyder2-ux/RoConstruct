@@ -11,6 +11,7 @@ import re
 import struct
 import subprocess
 import tempfile
+import threading
 from pathlib import Path
 
 import pefile
@@ -273,6 +274,17 @@ def disasm(code, addr):
             for a, s, m, o in md.disasm_lite(code, addr)]
 
 
+def _single_load(fn):
+    lock = threading.Lock()
+    @functools.wraps(fn)
+    def cached(*args):
+        with lock:
+            return fn(*args)
+    cached.cache_clear = fn.cache_clear
+    return cached
+
+
+@_single_load
 @functools.lru_cache(maxsize=None)
 def _functions(client):
     rows = {}
@@ -282,6 +294,7 @@ def _functions(client):
     return rows
 
 
+@_single_load
 @functools.lru_cache(maxsize=None)
 def _image(client):
     entry = clients.load()[client]
