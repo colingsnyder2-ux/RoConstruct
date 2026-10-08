@@ -433,6 +433,25 @@ def cmd_provider(a):
         print("Local secret file: %s" % path)
         print('Format: {"DEEPSEEK_API_KEY":"paste-key"}')
         return
+    if a.sub == "setup":
+        import getpass
+        configs = providers.providers()
+        names = sorted(configs)
+        print("Cloud providers:")
+        for index, name in enumerate(names, 1):
+            config = configs[name]
+            state = "set" if providers.key_available(config["key_env"]) else "missing"
+            print("  %d) %s (%s: %s)" % (index, name, config["key_env"], state))
+        choice = input("Choose provider name or number: ").strip().lower()
+        if choice.isdigit() and 1 <= int(choice) <= len(names):
+            choice = names[int(choice) - 1]
+        if choice not in configs:
+            raise SystemExit("Unknown provider: %s" % choice)
+        key_env = configs[choice]["key_env"]
+        key = getpass.getpass("Paste %s (hidden): " % key_env).strip()
+        providers.save_secret(key_env, key)
+        print("Saved %s in %s" % (key_env, providers.secrets_path()))
+        return
     if a.sub == "add":
         providers.save_provider(a.name, a.kind, a.base_url, a.key_env)
         print("Saved provider %s. Key stays in %s." % (a.name, a.key_env))
@@ -831,6 +850,7 @@ def main(argv=None):
     psecret = ps.add_parser("secrets", help="show safe user-local API-key file path")
     psecret.add_argument("--open", action="store_true", help="create and open the file in Notepad")
     psecret.set_defaults(fn=cmd_provider)
+    ps.add_parser("setup", help="choose a provider and save its key interactively").set_defaults(fn=cmd_provider)
     pa = ps.add_parser("add", help="add an OpenAI-compatible or native cloud endpoint (no key saved)")
     pa.add_argument("name")
     pa.add_argument("--kind", required=True, choices=["openai-chat", "openai-responses", "anthropic-messages", "gemini"])

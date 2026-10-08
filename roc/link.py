@@ -152,15 +152,10 @@ def choose_options(settings):
         model = None
     elif providers.is_cloud(model):
         if not providers.available(model):
+            import getpass
             _provider, _remote, config = providers.parse_model(model)
-            path = providers.secrets_path()
-            path.parent.mkdir(parents=True, exist_ok=True)
-            if not path.exists():
-                path.write_text("{}\n", encoding="utf-8")
-            print("Paste %s into this local file: %s" % (config["key_env"], path))
-            if os.name == "nt":
-                os.startfile(path)
-            input("Press Enter after saving the key (or Ctrl+C to cancel): ")
+            key = getpass.getpass("Paste %s (hidden): " % config["key_env"]).strip()
+            providers.save_secret(config["key_env"], key)
             if not providers.available(model):
                 raise SystemExit("Cloud key still missing: %s" % config["key_env"])
         if not settings.get("cloud_allowed"):
