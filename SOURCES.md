@@ -212,6 +212,7 @@ same sites. Checked 2026-10-08:
 | [Robloxopolis Clients/RBXGS archive](https://archive.robloxopolis.com/archive/Clients/RBXGS/) | **New high-priority lead:** archive index reports a 549 MB RBXGS package with 48 files. The 2007/08 RBXGS leak is reported to include PDBs; inspect package contents for symbols before downloading. Automated fetch currently returns 403. |
 | [Robloxopolis Pre-DeployHistory](https://archive.robloxopolis.com/archive/Clients/Pre-DeployHistory/) | **New archive lead:** index exposes Original-Files (46 files) and Packages (16 files), together ~208 MB; inspect for RCC/RBXGS sidecars and PDBs. Automated fetch currently returns 403. |
 | [RBXGS/RCCService PDB report](https://www.tumlook.com/ytrlls) | Community report explicitly says the 2007/08 RBXGS leak included PDB files with symbols, addresses and line information; download URL is hidden by the mirror, so provenance still needs validation. |
+| [Hybrid Analysis RCCService report](https://www.hybrid-analysis.com/sample/f3da1d3b6add6228327eaa396efa5dc7a96042eb8838de72457ec4d9077ebb90/62af9fc65e8ea37a0e16c347) | Useful metadata, not the target client: RCCService 0.339 reports VC8 build 30729, a PDB path/GUID, 43 LIBs and 108 COFF OBJs. Could guide exact-era artifact hunting; no downloadable original objects validated. |
 
 No new downloadable client PDB, MAP, Roblox `.obj`/`.lib`, or original `.vcproj` was validated
 in this pass. Do not count ordinary client archives as new leads unless their file listing
