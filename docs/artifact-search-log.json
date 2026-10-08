@@ -818,6 +818,14 @@
       "url": "https://sourcegraph.com/search/stream?q=%22FastLog.h%22&v=V3"
     }
   ],
-  "results": [],
+  "results": [
+    {
+      "checked_at": "2026-10-08T15:43:45-04:00",
+      "status": "historical-lead-no-download",
+      "target": "2007 Roblox PDB bundle",
+      "url": "https://forum.ragezone.com/threads/re-uploaded-pdb-matching-exe-for-easy-finding-and-tutorial-on-why-they-are-so-useful.704095/",
+      "evidence": "2010 forum post claims matching 2007 runnable PDBs, but the linked download is gated behind forum login and no file URL is exposed."
+    }
+  ],
   "version": 1
 }
