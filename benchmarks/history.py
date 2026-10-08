@@ -3,6 +3,7 @@
 Run from the repository root: python benchmarks/history.py
 """
 import argparse
+import hashlib
 import json
 import sys
 import time
@@ -16,6 +17,7 @@ from roc import benchmark, metrics, providers, refsource, setup, worker
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--session", default="history-ablation-20261008")
+    parser.add_argument("--corpus", type=Path, default=benchmark.HIDDEN)
     parser.add_argument("--keep", nargs="+", type=int, default=[2, 0])
     parser.add_argument("--repeats", type=int, default=2)
     parser.add_argument("--rounds", type=int, default=2)
@@ -29,10 +31,11 @@ def main():
     parser.add_argument("--temperature", type=float)
     parser.add_argument("--strategy", choices=["direct", "structured", "reference"], default="direct")
     args = parser.parse_args()
-    corpus = json.loads(benchmark.HIDDEN.read_text())
+    corpus = json.loads(args.corpus.read_text())
     corpus = [row for row in corpus if row["client"] == "2007-08"]
     if not corpus:
         raise SystemExit("No 2007-08 hidden targets; generate the hidden corpus first.")
+    corpus_sha256 = hashlib.sha256(json.dumps(corpus, sort_keys=True).encode()).hexdigest()
     gate = providers.CloudGate(args.workers)
     startup = time.monotonic()
     setup.compilers()
@@ -66,6 +69,12 @@ def main():
                                     if line.startswith("  deepseek:") else None)
 
             print("%s: %d targets" % (session, len(corpus)), flush=True)
+            configuration = {key: value for key, value in options.items() if key != "gate"}
+            configuration.update(strategy=args.strategy, reasoning=args.reasoning,
+                                 rounds="auto" if args.auto_preset else args.rounds)
+            metrics.record(session, event="benchmark_start", corpus_sha256=corpus_sha256,
+                           configuration=configuration, workers=args.workers,
+                           targets=len(corpus), resume=not args.no_resume)
             started = time.monotonic()
             with ThreadPoolExecutor(max_workers=args.workers) as pool:
                 list(pool.map(run, corpus))
@@ -73,6 +82,7 @@ def main():
             metrics.record(session, event="benchmark_batch", workers=args.workers,
                            targets=len(corpus), rounds="auto" if args.auto_preset else args.rounds,
                            startup_seconds=round(startup, 3),
+                           corpus_sha256=corpus_sha256, configuration=configuration,
                            resume=not args.no_resume, seconds=round(elapsed, 3))
             print("%s: %dw batch %.3fs%s" % (session, args.workers, elapsed,
                   " (may include resumed jobs)" if not args.no_resume else ""), flush=True)

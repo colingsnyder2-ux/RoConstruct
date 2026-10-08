@@ -155,6 +155,21 @@ retain source clues. Reproduce with `--source-hint-max-size 128`; sessions
 `selective-source[-control]-20261008-k2-r{1,2,3,4}`. This was selected on the
 same corpus and still needs separate-corpus validation before broader defaults.
 
+Separate holdout validation is now complete. `benchmarks/holdout-2007-08.json`
+contains six locally solved functions per size bucket, excludes all RTTI units
+from the tuning corpus, and chooses the first address per unit per bucket
+before taking six in address order. No candidate source is supplied. Frozen
+before either arm ran; four repeats per arm, 72 jobs each. Selective: 6 exact,
+60 compilable, 510,072 tokens. Control: 7 exact, 59 compilable, 574,859 tokens.
+Savings: 11.3% overall; large-only 18.8% (258,168 vs 318,131 tokens), with
+20 vs 19 compilable and zero exact in both. All exacts were on unchanged tiny
+prompts; small draw differences do not prove improvement or regression.
+Selective batch times: 10.266/7.562/7.984/7.157s; control:
+12.032/8.093/7.469/8.469s. Execution order/provider jitter remain confounders.
+Sessions: `holdout-{selective,control}-20261008-k2-r{1,2,3,4}`. Use `--corpus`
+to reproduce without overwriting the tuning corpus. Future benchmark start/end
+records include corpus SHA-256 and non-secret generation configuration.
+
 The runner reads the existing hidden corpus and records isolated telemetry. Keep
 the corpus and compiler flags fixed across arms. Historical pre-guidance results
 require the pre-guidance code; rerunning current code changes both arms.

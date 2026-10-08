@@ -1,0 +1,20 @@
+[
+ {"client":"2007-08","addr":"004019f0","size":27,"unit":"VCContent::?$CComObject","bucket":"tiny"},
+ {"client":"2007-08","addr":"00403270","size":15,"unit":"ATL::CRegObject","bucket":"tiny"},
+ {"client":"2007-08","addr":"00403640","size":10,"unit":"VCWorkspace::?$CComContainedObject","bucket":"tiny"},
+ {"client":"2007-08","addr":"00403d00","size":25,"unit":"ATL::CComClassFactory","bucket":"tiny"},
+ {"client":"2007-08","addr":"00404860","size":17,"unit":"ATL::VCComClassFactory::?$CComObjectNoLock","bucket":"tiny"},
+ {"client":"2007-08","addr":"004074a0","size":13,"unit":"boost::detail::sp_counted_base","bucket":"tiny"},
+ {"client":"2007-08","addr":"00403c90","size":101,"unit":"ATL::CComClassFactory","bucket":"medium"},
+ {"client":"2007-08","addr":"00407220","size":106,"unit":"UIEnumConnectionPoints::V?$CComEnum::?$CComObject","bucket":"medium"},
+ {"client":"2007-08","addr":"00408740","size":103,"unit":"VCApp::?$CComObject","bucket":"medium"},
+ {"client":"2007-08","addr":"00408bc0","size":52,"unit":"boost::thread_exception","bucket":"medium"},
+ {"client":"2007-08","addr":"0040ab00","size":60,"unit":"VCSecureHtmlView::?$CXTPCommandBarsSiteBase","bucket":"medium"},
+ {"client":"2007-08","addr":"0040b710","size":124,"unit":"VCBrowserViewExternal::?$CComObjectNoLock","bucket":"medium"},
+ {"client":"2007-08","addr":"004166c0","size":343,"unit":"VCLuaFunction::?$CComObject","bucket":"large"},
+ {"client":"2007-08","addr":"0041b6d0","size":343,"unit":"VDHTMLWindow::?$SignalDesc","bucket":"large"},
+ {"client":"2007-08","addr":"004212b0","size":493,"unit":"CSelectionTreeCtrl","bucket":"large"},
+ {"client":"2007-08","addr":"00428950","size":134,"unit":"COleException","bucket":"large"},
+ {"client":"2007-08","addr":"00429310","size":494,"unit":"ThreadLogManager","bucket":"large"},
+ {"client":"2007-08","addr":"0042a8d0","size":157,"unit":"CLuaHtmlView","bucket":"large"}
+]
