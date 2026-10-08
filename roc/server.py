@@ -498,11 +498,13 @@ def start_tunnel(port, log=print):
 def publish_once(store, public_url, log=print):
     """Rebuild docs/ from the live database and push it, if anything changed."""
     from roc import progress, setup
-    progress.build(public_server=public_url, remote=export(store))
     setup.refresh_path()
     git_exe = setup.find_exe("git")
     if not git_exe:
-        return log("git not found, so the site was not published. docs/ is updated locally.")
+        progress.build(public_server=public_url, remote=export(store))
+        return log("git not found, so site and findings were not published. docs/ is updated locally.")
+    publish_findings(git_exe, log)
+    progress.build(public_server=public_url, remote=export(store))
     git = lambda *a: subprocess.run([git_exe, *a], cwd=ROOT, capture_output=True, text=True)
     git("add", "docs")
     if git("diff", "--cached", "--quiet").returncode == 0:
@@ -510,6 +512,43 @@ def publish_once(store, public_url, log=print):
     git("commit", "-m", "Update progress")
     push = git("push", "origin", "HEAD")
     log("Site published." if push.returncode == 0 else "Site push failed: %s" % push.stderr.strip()[-300:])
+
+
+def publish_findings(git_exe, log=print):
+    """Copy local recovered sources into the separate findings repository."""
+    source = ROOT / "src"
+    if not source.exists():
+        return
+    index = ROOT / "work" / ("findings-index-" + uuid.uuid4().hex)
+    index.parent.mkdir(exist_ok=True)
+    env = os.environ.copy()
+    env["GIT_INDEX_FILE"] = str(index)
+    git = lambda *a: subprocess.run([git_exe, *a], cwd=ROOT, env=env, capture_output=True, text=True)
+    try:
+        fetched = git("fetch", "findings", "main")
+        if fetched.returncode:
+            return log("Findings fetch failed: %s" % fetched.stderr.strip()[-300:])
+        parent = git("rev-parse", "FETCH_HEAD")
+        if parent.returncode:
+            return log("Findings revision unavailable: %s" % parent.stderr.strip()[-300:])
+        parent = parent.stdout.strip()
+        if git("read-tree", parent).returncode or git("add", "-f", "src").returncode:
+            return log("Findings source staging failed.")
+        tree = git("write-tree")
+        if tree.returncode:
+            return log("Findings tree creation failed: %s" % tree.stderr.strip()[-300:])
+        tree = tree.stdout.strip()
+        old_tree = git("rev-parse", parent + "^{tree}")
+        if tree == old_tree.stdout.strip():
+            return
+        commit = git("commit-tree", tree, "-p", parent, "-m", "Publish recovered findings")
+        if commit.returncode:
+            return log("Findings commit failed: %s" % commit.stderr.strip()[-300:])
+        pushed = git("push", "findings", commit.stdout.strip() + ":refs/heads/main")
+        log("Findings published." if not pushed.returncode else "Findings push failed: %s" % pushed.stderr.strip()[-300:])
+    finally:
+        if index.exists():
+            index.unlink()
 
 
 def publish_loop(store, public_url, every, log=print):
