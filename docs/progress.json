@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-08 19:03 UTC",
+ "updated": "2026-10-08 19:55 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -53,10 +53,10 @@
    "leaderboard": [
     {
      "user": "auto",
-     "matched": 7831,
-     "points": 780646,
-     "submissions": 7831,
-     "last": 1791441579.7145565
+     "matched": 8281,
+     "points": 825431,
+     "submissions": 8281,
+     "last": 1791489301.7993674
     },
     {
      "user": "colin",
@@ -98,7 +98,7 @@
    "started": true,
    "functions": 22296,
    "matched": 8838,
-   "partial": 45,
+   "partial": 46,
    "bytes": 3448631,
    "matched_bytes": 760763,
    "data_bytes": 1559926,
@@ -113,9 +113,9 @@
     {
      "user": "colin",
      "matched": 2,
-     "points": 2363,
-     "submissions": 54,
-     "last": 1791482151.1677277
+     "points": 2388,
+     "submissions": 55,
+     "last": 1791486534.5403337
     }
    ],
    "data_matched_bytes": 80799,
@@ -250,17 +250,17 @@
  "leaderboard": [
   {
    "user": "auto",
-   "matched": 58299,
-   "points": 5827138,
-   "submissions": 58299,
-   "last": 1791442918.4233031
+   "matched": 58749,
+   "points": 5871923,
+   "submissions": 58749,
+   "last": 1791489301.7993674
   },
   {
    "user": "colin",
    "matched": 22,
-   "points": 10601,
-   "submissions": 194,
-   "last": 1791482151.1677277
+   "points": 10626,
+   "submissions": 195,
+   "last": 1791486534.5403337
   },
   {
    "user": "colinlaptop",
