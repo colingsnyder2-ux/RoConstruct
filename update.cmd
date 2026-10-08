@@ -9,10 +9,27 @@ where git >nul 2>nul || (
   exit /b 1
 )
 if not exist ".git\HEAD" (
-  echo This copy is not a Git checkout.
-  echo Download a fresh release ZIP, or clone the repository first.
+  echo This copy was downloaded as a ZIP. Linking it to the repository so it can update...
+  git init -q
+  git remote remove origin >nul 2>nul
+  git remote add origin https://github.com/colingsnyder2-ux/RoConstruct.git
+  git fetch --depth 1 origin main || (
+    echo Could not reach the repository. Check your internet connection and run update.cmd again.
+    pause
+    exit /b 1
+  )
+  rem reset --hard only touches tracked files; your clients, mined work, models and settings are untracked and stay.
+  git reset --hard origin/main || (
+    echo Linking failed. No files were removed.
+    pause
+    exit /b 1
+  )
+  git branch -M main >nul 2>nul
+  echo.
+  echo Done. This copy is now a Git checkout and will update with update.cmd from now on.
+  echo Preserved clients, work, downloaded models, and settings.
   pause
-  exit /b 1
+  exit /b 0
 )
 
 rem Never overwrite local tracked edits. Untracked clients, work, and settings stay untouched.
