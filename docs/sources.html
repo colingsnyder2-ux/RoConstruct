@@ -103,9 +103,11 @@ body > footer:first-of-type { display: none; }
     <tr><td class="name">G3D</td><td>6.09 (source) + 6.10 prebuilt VC8 .lib</td><td><span class="tag ok">used</span></td></tr>
     <tr><td class="name">boost</td><td>1.34.1, 1.35, 1.36, 1.38, 1.40, 1.44, 1.47 (+ shared_ptr / function / signal template instantiations)</td><td><span class="tag ok">used</span></td></tr>
     <tr><td class="name">RakNet</td><td>3.0 (<a href="https://github.com/RBLXDecomp/raknet">RBLXDecomp/raknet</a>) for early RBXGS clients; public 4.081 and Roblox's 2016 fork for later clients</td><td><span class="tag ok">used</span></td></tr>
+    <tr><td class="name">LAME</td><td>3.98.4 and 3.99.5, named in 2011–2012 client copyright manifests; statically linked libmp3lame</td><td><span class="tag part">recipe added</span></td></tr>
     <tr><td class="name">SDL</td><td>1.2.11 (headers only — the rest is in SDL.dll)</td><td><span class="tag part">headers</span></td></tr>
-    <tr><td class="name">Ogre</td><td>1.7.0 "Cthugha" VC8 SDK. The engine is in OgreMain.dll; only inline/template Ogre code is in the exe, and the bulk of the exe's Ogre classes are Roblox's own <code>Ogre::Rbx*</code> subclasses (no public source).</td><td><span class="tag part">partial</span></td></tr>
-    <tr><td class="name">Scintilla</td><td>The editor is in SciLexer.dll, but the exe carries the MFC wrapper (<code>CScintillaCtrl</code>, <code>CScintillaView</code>, ~130 functions). Not yet recipe'd — thin wrapper, uncertain exact source (Codejock / Scintilla MFC wrapper).</td><td><span class="tag part">untried</span></td></tr>
+    <tr><td class="name">Ogre</td><td>1.4.9, 1.6.4 and 1.7.0 SDKs. PDB paths identify 1.4.9 in 2009-06 and 1.6.4 from 2009-12 onward. The engine is in OgreMain.dll; only inline/template Ogre code is in the exe, plus Roblox's own <code>Ogre::Rbx*</code> subclasses.</td><td><span class="tag part">partial</span></td></tr>
+    <tr><td class="name">Scintilla MFC wrapper</td><td>PJ Naughter v1.20 / Scintilla 1.76; the exe carries the wrapper (<code>CScintillaCtrl</code>, <code>CScintillaView</code>) while SciLexer.dll holds the editor.</td><td><span class="tag part">recipe added</span></td></tr>
+    <tr><td class="name">Wild Magic</td><td>Magic Software Wild Magic 2 core, named in 2009 client copyrights; local-only source due license terms.</td><td><span class="tag part">recipe added</span></td></tr>
   </table></div>
 
   <h2>Hard limits</h2>
@@ -121,6 +123,7 @@ body > footer:first-of-type { display: none; }
     <tr><th>Source</th><th>What it gives</th><th>Status</th></tr>
     <tr><td class="name">MFC</td><td>8.0 (VS2005), 9.0 (VS2008) — the static MFC that ships with each compiler</td><td><span class="tag ok">used</span></td></tr>
     <tr><td class="name">Codejock XTP</td><td>Xtreme Toolkit Pro 11.2.2, 13.2.1, 15.2.1 (the <code>CXTP*</code> UI classes), built on MFC</td><td><span class="tag ok">used</span></td></tr>
+    <tr><td class="name">ATL</td><td>ATL 8.0 and 9.0 headers/source from the matching Visual Studio installs</td><td><span class="tag part">recipe added</span></td></tr>
     <tr><td class="name">STL templates</td><td>Explicit instantiations of std::vector/list/map/set/string etc. from the VC headers (<code>templates-boost-*</code>, STL grid)</td><td><span class="tag ok">used</span></td></tr>
     <tr><td class="name">libcmt / libcpmt</td><td>Static CRT/STL (<code>msvc-crt</code>). <strong>0 matches</strong> — the clients link the DLL runtime (<code>/MD</code> → msvcr80/90, msvcp80/90), so the static CRT objects are not in the exe.</td><td><span class="tag no">0 — /MD</span></td></tr>
   </table></div>
@@ -129,7 +132,7 @@ body > footer:first-of-type { display: none; }
   <div class="card"><table>
     <tr><th>Method</th><th>What it does</th></tr>
     <tr><td class="name">mass fingerprinting</td><td><code>roc mass</code> compiles every configured source recipe with matching old MSVC builds and flag grids, compares machine code byte-for-byte against every client, then re-analyzes and runs auto-matching.</td></tr>
-    <tr><td class="name">cross-client copy</td><td>Every matched source is recompiled against every other client; byte-identical functions shared between clients (and duplicate functions inside one client) match for free. <code>roc xcopy</code>.</td></tr>
+    <tr><td class="name">cross-client copy</td><td>Every matched source is recompiled against every other client; byte-identical functions shared between clients (and duplicate functions inside one client) match for free. Run separately with <code>roc xcopy</code>; mass does not invoke it automatically.</td></tr>
     <tr><td class="name">auto shapes</td><td>Trivial compiler-stereotyped functions (thunks, forwarders, small accessors) matched from their assembly shape. <code>roc auto</code>.</td></tr>
     <tr><td class="name">AI workers</td><td>A local code model drafts C++ for one function, compiles, diffs the assembly and retries — with a Rev.ng hint and the 2016 source for the class. <code>roc worker</code>.</td></tr>
   </table></div>
@@ -150,7 +153,7 @@ body > footer:first-of-type { display: none; }
   <div class="card"><table>
     <tr><th>Lead</th><th>Why not</th></tr>
     <tr><td class="name">VS2005/2008 CRT ISOs</td><td>Only provide static <code>libcmt</code>/<code>libcpmt</code> — 0 matches against <code>/MD</code> clients.</td></tr>
-    <tr><td class="name">rccservice-decompile</td><td>RCCService is the server binary; it uses gSOAP, which the desktop clients do not link. No overlap.</td></tr>
+    <tr><td class="name">rccservice-decompile</td><td>RCCService is the server binary and uses gSOAP, which desktop clients do not link. One isolated run still produced +2 incidental matches; not a broad client source.</td></tr>
     <tr><td class="name">ODE / Open Dynamics Engine</td><td>Not linked — no ODE RTTI classes or version strings in the clients. Roblox used its own physics.</td></tr>
     <tr><td class="name">RomkoSI/G3D, elfprince13/G3D10</td><td>Both are G3D 10 (2016+), far past the 6.x–8.x the clients use.</td></tr>
     <tr><td class="name">2022 RobloxStudio PDB leak</td><td>Right artifact, wrong era by a decade.</td></tr>
