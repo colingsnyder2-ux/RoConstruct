@@ -622,6 +622,7 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
     hard_target = (row.get("size", 0) > 96 or (facts or {}).get("calls", 0) or
                    int((facts or {}).get("branch_count", 0) or 0) > 1)
     diverse_rounds = min(rounds, requested_diversity) if hard_target else 1
+    no_think = False  # set after a truncation: reasoning likely ate the budget
     for i in range(rounds):
         independent = i < diverse_rounds
         full_prompt = prompt_for(client, addr, row, asm, hint,
@@ -644,6 +645,9 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
             cloud = False
         floor = 1024 if cloud else 0
         ask_options.setdefault("max_tokens", max(output_budget(row.get("size", 0)), floor))
+        if no_think:
+            ask_options["thinking"] = "disabled"
+            ask_options.pop("reasoning_effort", None)
         if strategy == "structured":
             ask_options.setdefault("temperature", 0.05)
         if independent:
@@ -660,8 +664,11 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
         if not src:
             finish = generation.get("finish_reason", "")
             if finish == "length":
-                log("  round %d: truncated at max_tokens=%s (%d chars); raise output budget" % (
+                log("  round %d: truncated at max_tokens=%s (%d chars); reasoning may be eating the budget" % (
                     i + 1, ask_options.get("max_tokens"), len(reply or "")))
+                if cloud and not no_think and (provider_options or {}).get("thinking") != "enabled":
+                    no_think = True
+                    log("  thinking disabled for remaining rounds")
             else:
                 log("  round %d: no code in reply" % (i + 1))
             if stats is not None:

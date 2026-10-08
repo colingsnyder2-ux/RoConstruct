@@ -693,7 +693,35 @@ def test_topk_and_benchmark_summary():
                         input_tokens=12, output_tokens=7, cached_tokens=3, estimated_cost=None)
         text = _metrics.summary("token-summary")
         assert "tokens=in:12 out:7 cached:3" in text and "cost=unknown" in text
+        totals = _metrics.session_totals("token-summary")
+        assert (totals["input_tokens"], totals["output_tokens"], totals["jobs"]) == (12, 7, 1)
+        from roc import worker as _worker
+        line = _worker._usage_line("token-summary", [{"round": 1, "input_tokens": 10, "output_tokens": 5}])
+        assert line == "  tokens used: 15 (in:10 out:5), total usage: 34 (in:22 out:12)"
     _metrics.PATH = old_path
+
+
+def test_truncation_disables_thinking(monkeypatch):
+    from roc import draft
+    seen = []
+    replies = iter(["thinking..." * 500, "```cpp\nint f() { return 1; }\n```"])
+    def ask(model, prompt, context=None, options=None, details=False):
+        seen.append(dict(options or {}))
+        reply = next(replies)
+        if "```" not in reply:
+            return reply, None, {"output_tokens": 3000, "finish_reason": "length"}
+        return reply, None, {"output_tokens": 20, "finish_reason": "stop"}
+    monkeypatch.setattr(draft, "_ask_context", ask)
+    monkeypatch.setattr(draft.match, "target", lambda *args: (b"\xc3", [], {"size": 9, "unit": "x"}))
+    monkeypatch.setattr(draft.match, "disasm", lambda *args: ["ret "])
+    monkeypatch.setattr(draft, "prompt_for", lambda *args: "p")
+    monkeypatch.setattr(draft.match, "check_text", lambda *args: (100, None, "", None))
+    logs = []
+    score, _ = draft.llm_rounds("C", "1", "deepseek:deepseek-flash", 2, log=logs.append,
+                                 provider_options={"allow_cloud": True})
+    assert score == 100 and len(seen) == 2
+    assert seen[1].get("thinking") == "disabled" and "reasoning_effort" not in seen[1]
+    assert any("thinking disabled" in message for message in logs)
 
 
 def test_qualified_type_definition_rejected():

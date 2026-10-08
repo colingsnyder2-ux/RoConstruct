@@ -29,6 +29,33 @@ def record(session, **data):
     return row
 
 
+def session_totals(session):
+    """Running token/cost totals for one worker session (prior recorded jobs)."""
+    totals = {"jobs": 0, "input_tokens": 0, "output_tokens": 0,
+              "cached_tokens": 0, "estimated_cost": 0, "cloud_jobs": 0}
+    try:
+        lines = PATH.read_text(encoding="utf-8").splitlines()[-5000:]
+    except OSError:
+        return totals
+    done = []
+    for line in lines:
+        try:
+            row = json.loads(line)
+        except ValueError:
+            continue
+        if row.get("session") == session and row.get("event") == "job":
+            done.append(row)
+    cloud = [r for r in done if r.get("provider") and r.get("provider") != "local"]
+    costs = [r.get("estimated_cost") for r in cloud]
+    totals.update(jobs=len(done),
+                  input_tokens=sum(r.get("input_tokens", 0) or 0 for r in done),
+                  output_tokens=sum(r.get("output_tokens", 0) or 0 for r in done),
+                  cached_tokens=sum(r.get("cached_tokens", 0) or 0 for r in done),
+                  estimated_cost=(None if any(v is None for v in costs) else sum(costs or [0])),
+                  cloud_jobs=len(cloud))
+    return totals
+
+
 def summary(session):
     rows = []
     try:
@@ -55,12 +82,10 @@ def summary(session):
     tail = "" if not failures else ", failures=" + ";".join("%s:%d" % item for item in failures.items())
     llm = sum(r.get("phase_seconds", {}).get("llm", 0) for r in done)
     compile_time = sum(r.get("compile_seconds", 0) for r in done)
-    input_tokens = sum(r.get("input_tokens", 0) or 0 for r in done)
-    output_tokens = sum(r.get("output_tokens", 0) or 0 for r in done)
-    cached_tokens = sum(r.get("cached_tokens", 0) or 0 for r in done)
-    cloud = [r for r in done if r.get("provider") and r.get("provider") != "local"]
-    costs = [r.get("estimated_cost") for r in cloud]
-    cost = None if any(value is None for value in costs) else sum(costs or [0])
+    totals = session_totals(session)
+    input_tokens, output_tokens, cached_tokens = (totals["input_tokens"], totals["output_tokens"],
+                                                  totals["cached_tokens"])
+    cloud, cost = totals["cloud_jobs"], totals["estimated_cost"]
     token_line = " tokens=in:%d out:%d cached:%d" % (input_tokens, output_tokens, cached_tokens)
     cost_line = " cost=unknown" if cloud and cost is None else " cost=$%.6f" % cost
     return (("Session: %d jobs, %d matched, %d improved, source hits %d, AI hits %d, %d source-guided, %.1fs avg (LLM %.1fs, compile %.1fs)"

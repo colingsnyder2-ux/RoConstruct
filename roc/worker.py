@@ -502,6 +502,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                                         "model": job.get("model"), "client": client, "addr": addr,
                                         "score": score, "source": src})
             log("  submitted %d%% (%s)" % (r["stored"], "verified by server" if r["verified"] else "not re-checked"))
+            log(_usage_line(session, round_stats))
             result, improved = r["stored"], True
             return r["stored"]
         failure_reason = "bad_reply" if not src else "no_gain"
@@ -511,6 +512,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                                         "model": job.get("model"), "client": client, "addr": addr,
                                         "score": candidate_score, "source": candidate_source})
             log("  retained partial 2016 source candidate %d%% (%s)" % (r["stored"], candidate_path))
+            log(_usage_line(session, round_stats))
             result, improved = r["stored"], r["stored"] > job["score"]
             return r["stored"]
         api.call("/v1/release", {"lease": job["lease"], "cooldown": 60})
@@ -578,6 +580,19 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                            estimated_cost=metrics.known_generation_cost(generated),
                            failure_reason=failure_reason,
                            failure=failure)
+
+
+def _usage_line(session, round_stats):
+    """Per-job tokens plus running session total (including this job)."""
+    generated = [r for r in round_stats if isinstance(r.get("round"), int)]
+    job_in = sum(r.get("input_tokens", 0) or 0 for r in generated)
+    job_out = sum(r.get("output_tokens", 0) or 0 for r in generated)
+    if not session:
+        return "  tokens used: %d (in:%d out:%d)" % (job_in + job_out, job_in, job_out)
+    prior = metrics.session_totals(session)
+    total_in, total_out = prior["input_tokens"] + job_in, prior["output_tokens"] + job_out
+    return ("  tokens used: %d (in:%d out:%d), total usage: %d (in:%d out:%d)" %
+            (job_in + job_out, job_in, job_out, total_in + total_out, total_in, total_out))
 
 
 def pull_files(server, client, token=None, force=False, log=print):
