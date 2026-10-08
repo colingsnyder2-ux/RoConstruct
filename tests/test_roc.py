@@ -448,8 +448,17 @@ def test_link_options():
     from roc.link import choose_options
     with patch("roc.draft.ollama_models", return_value=["qwen2.5-coder:14b", "qwen2.5-coder:7b"]), \
          patch("roc.draft.pick_model", return_value="qwen2.5-coder:14b"), \
+         patch("roc.worker.save_settings") as saved, \
          patch("builtins.input", side_effect=["qwen2.5-coder:7b", "fast", "auto", "n", "1024"]):
         assert choose_options({"model": "qwen2.5-coder:14b"}) == ("qwen2.5-coder:7b", 2, 96, False, "auto", 1024)
+        assert saved.call_count == 2
+    with patch("roc.draft.ollama_models", return_value=["qwen2.5-coder:14b", "qwen2.5-coder:7b"]), \
+         patch("roc.draft.pick_model", return_value="qwen2.5-coder:14b"), \
+         patch("roc.worker.save_settings"), \
+         patch("builtins.input", side_effect=["", "", "", "", ""]):
+        assert choose_options({"model": "qwen2.5-coder:14b", "worker_preset": "deep",
+                               "worker_workers": "auto", "worker_revng": False,
+                               "worker_output_budget": 2048}) == ("qwen2.5-coder:14b", 6, 512, False, "auto", 2048)
 
 
 def test_server_store():

@@ -143,7 +143,11 @@ def run(url):
 
 
 def choose_options(settings):
-    """Let each link launch choose runtime options while keeping safe defaults."""
+    """Let each link launch choose runtime options while keeping safe defaults.
+
+    Defaults come from the last run (saved in settings), so Enter repeats
+    the previous launch; any prompt still accepts a new value.
+    """
     from roc import draft, providers
     installed = draft.ollama_models()
     default_model = draft.pick_model(settings.get("model")) or "none"
@@ -171,7 +175,8 @@ def choose_options(settings):
             worker.save_settings(cloud_allowed=True)
     elif model not in installed:
         raise SystemExit("Model '%s' is not installed. Run: roc model" % model)
-    preset = (input("Preset [balanced] (fast/balanced/deep): ").strip().lower() or "balanced")
+    last_preset = settings.get("worker_preset", "balanced")
+    preset = (input("Preset [%s] (fast/balanced/deep): " % last_preset).strip().lower() or last_preset)
     if preset not in ("fast", "balanced", "deep"):
         raise SystemExit("Preset must be fast, balanced, or deep")
     rounds, max_size, use_revng = 4, 256, True
@@ -179,23 +184,38 @@ def choose_options(settings):
         rounds, max_size, use_revng = 2, 96, False
     elif preset == "deep":
         rounds, max_size = 6, 512
-    workers = input("Workers [1] (1-8 or auto): ").strip() or "1"
+    last_workers = settings.get("worker_workers", "1")
+    workers = input("Workers [%s] (1-8 or auto): " % last_workers).strip() or last_workers
     if workers != "auto":
         try:
             workers = max(1, min(int(workers), 8))
         except ValueError:
             raise SystemExit("Workers must be 1-8 or auto")
-    revng = input("Rev.ng [%s] (y/n): " % ("on" if use_revng else "off")).strip().lower()
+    if preset == settings.get("worker_preset") and settings.get("worker_revng") is not None:
+        rev_default = "on" if settings.get("worker_revng") else "off"
+    else:
+        rev_default = "on" if use_revng else "off"
+    revng = input("Rev.ng [%s] (y/n): " % rev_default).strip().lower()
     if revng in ("y", "yes"):
         use_revng = True
     elif revng in ("n", "no"):
         use_revng = False
+    else:
+        use_revng = rev_default == "on"
+    last_budget = settings.get("worker_output_budget", 1024)
     try:
-        output_budget = int(input("Output budget [1024] tokens per reply: ").strip() or "1024")
+        output_budget = int(input("Output budget [%s] tokens per reply: " % last_budget).strip() or last_budget)
     except ValueError:
         raise SystemExit("Output budget must be a number")
     if not 128 <= output_budget <= 8192:
         raise SystemExit("Output budget must be 128-8192")
+    from roc import worker
+    if model is None:
+        worker.clear_setting("model")
+    else:
+        worker.save_settings(model=model)
+    worker.save_settings(worker_preset=preset, worker_workers=workers,
+                         worker_revng=use_revng, worker_output_budget=output_budget)
     return model, rounds, max_size, use_revng, workers, output_budget
 
 
