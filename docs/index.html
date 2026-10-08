@@ -298,7 +298,7 @@ function overview() {
         <div class="meta">${esc(builtOn(c))}${esc(c.compiler)}</div>
         ${c.started ? `<div class="row">${bar(c.matched_bytes, 0, c.bytes)}<span>${pct(c.matched_bytes, c.bytes)}</span></div>
           <div class="count">${fmt(c.matched)} / ${fmt(c.functions)}</div>` : `<div class="count">not started</div>`}
-        ${c.started ? joinLink(c.name, false) : ""}
+        ${c.started ? joinLink(c.name, true) : ""}
       </div>`).join("")}
     </div>
     ${leaderboard(progress.leaderboard, "contributors")}
