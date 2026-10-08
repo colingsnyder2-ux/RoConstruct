@@ -170,6 +170,31 @@ Sessions: `holdout-{selective,control}-20261008-k2-r{1,2,3,4}`. Use `--corpus`
 to reproduce without overwriting the tuning corpus. Future benchmark start/end
 records include corpus SHA-256 and non-secret generation configuration.
 
+Holdout output-cap trial (2,048 rather than implicit 1,024 tokens): 72 jobs,
+6 exact, 59 compilable, 554,829 tokens, 24 truncated replies. Selective control:
+6 exact, 60 compilable, 510,072 tokens, 25 truncated replies. Higher cap did
+not fix runaway class expansion and increased tokens 8.8%. Worker URI already
+uses a 2,048-token default; this experiment does not justify changing it.
+Session: `holdout-budget2048-20261008-k2-r{1,2,3,4}`.
+
+Minimal-layout instruction trial at 1,024 tokens: 72 jobs, 5 exact,
+63 compilable, 510,344 tokens, 16 truncated replies. It reduced truncation
+but did not demonstrate an exact-match gain; remains experimental. Session:
+`holdout-minimal-layout-20261008-k2-r{1,2,3,4}`. A direct diagnostic on the
+25-byte `00403d00` showed a 2,048-token response listing 204 invented numbered
+fields without emitting the function. This is generation bloat, not evidence
+that the actual function needs a larger output budget.
+
+Resetting chat history only after a truncated reply with no complete function
+was then tested at unchanged caps/rounds: 72 jobs, 4 exact, 66 compilable,
+467,832 tokens, 14 truncations. Selective control was 6 exact, 60 compilable,
+510,072 tokens, 25 truncations. Savings 8.3%; compilation improved in this
+sample, but no demonstrated match gain. This opt-in discards malformed history
+and asks for one compact function in the existing next round; it does not add
+rounds or rewrite source. Session: `holdout-reset-truncated-20261008-k2-r{1,2,3,4}`.
+Reproduce with `--reset-truncated`. Defaults remain unchanged pending additional
+validation; this follow-up was tuned on the holdout and is exploratory.
+
 The runner reads the existing hidden corpus and records isolated telemetry. Keep
 the corpus and compiler flags fixed across arms. Historical pre-guidance results
 require the pre-guidance code; rerunning current code changes both arms.

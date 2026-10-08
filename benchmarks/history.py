@@ -29,6 +29,9 @@ def main():
     parser.add_argument("--binary-only", action="store_true")
     parser.add_argument("--source-hint-max-size", type=int)
     parser.add_argument("--temperature", type=float)
+    parser.add_argument("--max-tokens", type=int)
+    parser.add_argument("--minimal-layout", action="store_true")
+    parser.add_argument("--reset-truncated", action="store_true")
     parser.add_argument("--strategy", choices=["direct", "structured", "reference"], default="direct")
     args = parser.parse_args()
     corpus = json.loads(args.corpus.read_text())
@@ -48,11 +51,14 @@ def main():
             session = "%s-k%d-r%d" % (args.session, keep, repeat + 1)
             options = {"allow_cloud": True, "thinking": "disabled",
                        "gate": gate,
-                       "compact_rules": args.compact_rules, "binary_only": args.binary_only}
+                       "compact_rules": args.compact_rules, "binary_only": args.binary_only,
+                       "minimal_layout": args.minimal_layout, "reset_truncated": args.reset_truncated}
             if keep >= 0:
                 options["history_keep_last"] = keep
             if args.temperature is not None:
                 options["temperature"] = args.temperature
+            if args.max_tokens is not None:
+                options["max_tokens"] = args.max_tokens
             if args.source_hint_max_size is not None:
                 options["source_hint_max_size"] = args.source_hint_max_size
 

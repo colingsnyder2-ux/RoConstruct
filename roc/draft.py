@@ -528,7 +528,7 @@ Assembly is ground truth; later source and RTTI names are clues only. Preserve c
 
 
 def prompt_for(client, addr, row, asm, hint, attempt, flags=None, examples=(), source_hints=(), facts=None,
-               strategy="direct", compact_rules=False, binary_only=False):
+               strategy="direct", compact_rules=False, binary_only=False, minimal_layout=False):
     entry = match.clients.load()[client]
     p = ["You are doing matching decompilation of a function from an old Roblox client.",
          (COMPACT_RULES if compact_rules else RULES).format(
@@ -538,6 +538,12 @@ def prompt_for(client, addr, row, asm, hint, attempt, flags=None, examples=(), s
     p += ["", "Stage: %s. Function %s, %d bytes, class (from RTTI, may be a guess): %s" %
           (classify_target(asm, facts), addr, row["size"], row["unit"]),
           "Target assembly (read-only evidence; do not copy it into the answer):", "\n".join(asm)]
+    if minimal_layout:
+        p += ["Reconstruct only this function, not the full RTTI class. "
+              "Declare only fields accessed by this function. Represent each unknown layout gap "
+              "with one char padding array of the required byte length; never enumerate numbered "
+              "filler fields. Preserve observed offsets. Emit minimal declarations followed by "
+              "one complete out-of-class function body; no unrelated methods or class expansion."]
     if any(re.search(r"\b(lock|xadd|cmpxchg)\b", line) for line in asm):
         p += ["Atomic instructions: use MSVC intrinsics, never asm placeholders. "
               "For lock xadd use: extern \"C\" long __cdecl _InterlockedExchangeAdd(volatile long*, long); "
@@ -697,7 +703,8 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
                                  examples, source_hints, facts or facts_from_asm(asm), strategy,
                                  compact_rules=(provider_options or {}).get("compact_rules", False),
                                  binary_only=((provider_options or {}).get("binary_only", False) or
-                                              row.get("size", 0) > (provider_options or {}).get("source_hint_max_size", float("inf"))))
+                                              row.get("size", 0) > (provider_options or {}).get("source_hint_max_size", float("inf"))),
+                                 minimal_layout=(provider_options or {}).get("minimal_layout", False))
         if independent and i:
             full_prompt += ("\n\nIndependent candidate %d/%d: use different compact C++ control flow. "
                             "Still emit exactly one function." % (i + 1, diverse_rounds))
@@ -711,6 +718,8 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
         ask_options.pop("compact_rules", None)
         ask_options.pop("binary_only", None)
         ask_options.pop("source_hint_max_size", None)
+        ask_options.pop("minimal_layout", None)
+        ask_options.pop("reset_truncated", None)
         try:
             from roc import providers as _providers
             cloud = _providers.is_cloud(model)
@@ -739,6 +748,13 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
             if finish == "length":
                 log("  round %d: truncated at max_tokens=%s (%d chars); reasoning may be eating the budget" % (
                     i + 1, ask_options.get("max_tokens"), len(reply or "")))
+                if (provider_options or {}).get("reset_truncated"):
+                    context = None
+                    if attempt is None:
+                        attempt = ("// Previous response ended before a complete function.", 0,
+                                   "Output exceeded the token budget. Emit minimal declarations and one complete "
+                                   "function, not the full class. Use char padding arrays for unknown layout gaps; "
+                                   "never enumerate numbered filler fields.")
                 if cloud and not no_think and (provider_options or {}).get("thinking") != "enabled":
                     no_think = True
                     log("  thinking disabled for remaining rounds")
