@@ -881,6 +881,12 @@
       "target": "Roblox 2008.12.17 bootstrapper PDB metadata",
       "url": "https://any.run/report/0f6aa09a2b074d220b5de17cc1e665e0d8ab9664d03b07b750a4fb2a11547572/30892134-8575-4216-861a-f4a61942eecd",
       "evidence": "ANY.RUN identifies a 2008-12-17 Roblox.exe bootstrapper and exposes a matching Client\\Installer\\Bootstrapper\\bin\\Release\\Roblox.pdb path. No PDB payload exposed; useful exact-era build-path confirmation."
+    },
+      "checked_at": "2026-10-08T21:10:00-04:00",
+      "status": "medium-value-reference",
+      "target": "NTx86 Local2012Roblox client hooks",
+      "url": "https://github.com/NTx86/Local2012Roblox",
+      "evidence": "Open-source VS2008 DLL project targeting the June 14, 2012 client. Contains ContentProvider/RBXHTTP hooks and client address tables; not original Roblox source, but may provide names, offsets, and behavioral anchors for 2012 unmatched functions."
     }
   ],
   "version": 1
