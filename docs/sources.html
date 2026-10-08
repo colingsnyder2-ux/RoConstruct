@@ -88,7 +88,7 @@ td.name { font-family: var(--mono); color: var(--text); white-space: nowrap; }
     <tr><td class="name">Lua</td><td>5.1.0 – 5.1.4</td><td><span class="tag ok">used</span></td></tr>
     <tr><td class="name">G3D</td><td>6.09 (source) + 6.10 prebuilt VC8 .lib</td><td><span class="tag ok">used</span></td></tr>
     <tr><td class="name">boost</td><td>1.34.1, 1.35, 1.36, 1.38, 1.40, 1.44, 1.47 (+ shared_ptr / function / signal template instantiations)</td><td><span class="tag ok">used</span></td></tr>
-    <tr><td class="name">RakNet</td><td>public 4.081 (few matches); Roblox's fork via the 2016 tree</td><td><span class="tag part">partial</span></td></tr>
+    <tr><td class="name">RakNet</td><td>3.0 (<a href="https://github.com/RBLXDecomp/raknet">RBLXDecomp/raknet</a>) for early RBXGS clients; public 4.081 and Roblox's 2016 fork for later clients</td><td><span class="tag ok">used</span></td></tr>
     <tr><td class="name">SDL</td><td>1.2.11 (headers only — the rest is in SDL.dll)</td><td><span class="tag part">headers</span></td></tr>
     <tr><td class="name">Ogre</td><td>1.7.0 "Cthugha" VC8 SDK. The engine is in OgreMain.dll; only inline/template Ogre code is in the exe, and the bulk of the exe's Ogre classes are Roblox's own <code>Ogre::Rbx*</code> subclasses (no public source).</td><td><span class="tag part">partial</span></td></tr>
     <tr><td class="name">Scintilla</td><td>The editor is in SciLexer.dll, but the exe carries the MFC wrapper (<code>CScintillaCtrl</code>, <code>CScintillaView</code>, ~130 functions). Not yet recipe'd — thin wrapper, uncertain exact source (Codejock / Scintilla MFC wrapper).</td><td><span class="tag part">untried</span></td></tr>

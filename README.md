@@ -60,7 +60,7 @@ Most functions are not worth hand-writing, because the code is either public or 
 
 | Command | What it does |
 |---|---|
-| **Library matching** | Compiles zlib, libjpeg, Lua and the rest from their real source with the client's own compiler, then matches by fingerprint. Matched code carries `// roc-lang` / `// roc-flags` / `// roc-cl` lines so anyone re-checks it with the settings that matched. |
+| **Library matching** | Compiles zlib, libjpeg, Lua, RakNet 3.0 and the rest from their real source with the client's own compiler, then matches by fingerprint. RakNet 3.0 targets the early RBXGS clients; later clients use their newer fork. Matched code carries `// roc-lang` / `// roc-flags` / `// roc-cl` lines so anyone re-checks it with the settings that matched. |
 | **`roc xcopy <client\|all>`** | The clients share code: a function that is byte-identical in two exes is the same function. This takes every stored match and tries it against every other client's open functions. It only runs where the compiler can reproduce the same bytes, so it works within a compiler group (2008-06↔2011-06, or 2009/2010/2012-06). Re-run it whenever new matches land — every new match is a candidate everywhere else. |
 | **`roc shapes <client\|all>`** | Counts the assembly shapes of what's still unmatched, with addresses and immediates generalised away, so the next pattern template is chosen from counts instead of guesses. |
 
