@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RoConstruct Findings</title>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root { --bg:#0a0e15; --panel:#0f1520; --panel2:#121a27; --line:#1b2a45; --line2:#2a4372; --text:#e8eef6; --dim:#8a97a8; --accent:#2f6bff; --accent2:#38c8ff; --cyan:#33d6ea; --green:#3fb950; --mono:"JetBrains Mono",ui-monospace,Consolas,monospace; --head:"Chakra Petch","Segoe UI",sans-serif; }
+* { box-sizing:border-box; }
+body { margin:0; color:var(--text); font:15px/1.65 Inter,system-ui,"Segoe UI",sans-serif; background:var(--bg) radial-gradient(1200px 600px at 50% -10%,rgba(47,107,255,.22),transparent 60%) no-repeat; min-height:100vh; }
+a { color:var(--accent2); text-decoration:none; } a:hover { text-decoration:underline; }
+.wrap { max-width:1000px; margin:0 auto; padding:0 16px; }
+code { color:var(--accent2); font-family:var(--mono); font-size:.9em; }
+.top { box-shadow:0 0 27px rgba(47,107,255,.1),inset 0 0 10px rgba(56,200,255,.02); display:flex; align-items:center; gap:6px; margin:8px auto 0; padding:10px 18px; border:1px solid var(--line); border-radius:12px; background:rgba(15,21,32,.85); backdrop-filter:blur(6px); position:sticky; top:8px; z-index:5; }
+.brand img { height:26px; display:block; } nav { display:flex; gap:5px; flex:1 1 auto; justify-content:flex-end; white-space:nowrap; } nav a { color:var(--dim); padding:6px 8px; font-size:13px; border-bottom:2px solid transparent; } nav a:hover { color:var(--text); text-decoration:none; } nav a.on { color:var(--text); border-bottom-color:var(--accent2); }
+.hero { text-align:center; padding:38px 0 12px; } h1 { font:700 clamp(30px,6vw,48px)/1 var(--head); letter-spacing:.03em; margin:0 0 10px; } .lede { color:#b7c2d0; max-width:700px; margin:0 auto; }
+h2 { font:700 22px var(--head); letter-spacing:.03em; margin:34px 0 8px; padding-left:16px; border-left:4px solid var(--accent2); } p { margin:8px 0 14px; } .card { border:1px solid var(--line2); border-radius:12px; background:linear-gradient(180deg,rgba(51,214,234,.04),rgba(15,21,32,.9)); padding:20px 22px; margin:14px 0; box-shadow:0 0 22px rgba(47,107,255,.07); }
+.steps { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; } .step { border:1px solid var(--line); border-radius:10px; padding:15px; background:rgba(18,26,39,.7); } .step b { display:block; color:var(--cyan); font:600 13px var(--mono); margin-bottom:5px; } .muted { color:var(--dim); } .download { display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap; } .btn { display:inline-flex; align-items:center; border:1px solid var(--accent2); border-radius:8px; padding:10px 16px; color:#fff; font-weight:600; background:linear-gradient(90deg,var(--accent),var(--accent2)); box-shadow:0 0 20px rgba(56,200,255,.18); } .btn:hover { text-decoration:none; filter:brightness(1.12); }
+footer { border-top:1px solid var(--line); margin-top:58px; padding:28px 0; } footer .wrap { display:flex; align-items:center; justify-content:center; gap:12px; flex-wrap:wrap; } footer img { height:30px; }
+@media(max-width:640px) { .top { flex-wrap:wrap; gap:10px; justify-content:space-between; } nav { order:3; flex-basis:100%; justify-content:center; white-space:normal; } nav a { padding:4px 7px; } .card { padding:16px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="index.html"><img src="logo.png" alt="RoConstruct"></a>
+    <nav>
+      <a href="index.html">Home</a><a href="index.html#clients">Clients</a><a href="index.html#contributors">Contributors</a><a href="sources.html">Sources</a><a href="findings.html" class="on">Findings</a><a href="https://github.com/colingsnyder2-ux/RoConstruct#overview">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Findings</h1>
+      <p class="lede">Recovered function bodies from old Roblox clients. This page explains what the files are, why they look unusual, and how they become a usable codebase.</p>
+    </section>
+
+    <section class="card download">
+      <div><strong>Download latest findings</strong><br><span class="muted">Separate repository. Main RoConstruct download stays small.</span></div>
+      <a class="btn" href="https://github.com/colingsnyder2-ux/RoConstruct-findings/releases/download/findings-latest/roconstruct-findings-src.zip">Download findings ZIP</a>
+    </section>
+
+    <h2>What these files are</h2>
+    <div class="card">
+      <p>Each <code>.cpp</code> file is one function recovered by matching compiled machine code from a client against source we can rebuild. It is evidence-backed source, not a normal hand-organized project tree yet.</p>
+      <p>Files live under a client folder such as <code>src/2008-06/</code>. Comments at the top preserve compiler version, flags, library, and match provenance so results can be checked later.</p>
+    </div>
+
+    <h2>Why names look random</h2>
+    <div class="card">
+      <p>Names like <code>00546900.cpp</code> are hexadecimal function addresses from the original executable. Address naming avoids inventing fake Roblox names and keeps every result traceable to its exact client location.</p>
+      <p>Many original symbols are stripped. Until a PDB, MAP, or reliable community name appears, random address names are more honest than guesses. Same address + same client means same recovered function.</p>
+    </div>
+
+    <h2>How matching works</h2>
+    <div class="steps">
+      <div class="step"><b>1 · Build candidates</b> Compile leaked, community, and open-source code with period-correct MSVC.</div>
+      <div class="step"><b>2 · Fingerprint bytes</b> Compare compiler output against each client function.</div>
+      <div class="step"><b>3 · Save proof</b> Write matching source and compiler metadata beside the function.</div>
+      <div class="step"><b>4 · Review</b> Analyze, classify, and improve names as new evidence arrives.</div>
+    </div>
+
+    <h2>What happens at 100%</h2>
+    <div class="card">
+      <p>“100% matched” means every detected function has a source-backed match. It does <strong>not</strong> mean the project is instantly buildable.</p>
+      <p>Next work: reintegrate files into modules and classes, replace address names with verified symbols, merge duplicate code across clients, restore missing headers/build scripts, resolve dependencies, then compile and test a reconstructed client.</p>
+      <p class="muted">Until that work is complete, findings ZIP is a forensic corpus: useful for research, comparison, and continued decompilation.</p>
+    </div>
+
+    <h2>Keep findings separate</h2>
+    <div class="card">
+      <p>The findings repository is intentionally separate from RoConstruct. Main project downloads stay lightweight; researchers can download the large ZIP only when they need recovered source.</p>
+      <p><a href="https://github.com/colingsnyder2-ux/RoConstruct-findings">Browse findings repository →</a> · <a href="sources.html">See source provenance →</a></p>
+    </div>
+  </main>
+</div>
+<footer><div class="wrap"><img src="logo.png" alt="RoConstruct"><span class="muted">Community preservation project</span></div></footer>
+</body>
+</html>
