@@ -145,7 +145,7 @@ roc config --user U --server S  save your settings
 roc model [name|default]         show or choose AI model
 roc worker [--jobs N]           run an AI worker (`--workers N` for bounded parallel loops)
 roc worker --dry-run             check worker setup without taking a job
-roc worker --workers 2           run bounded parallel lease loops (1-32, or auto)
+roc worker --workers 2           run bounded parallel lease loops (1-256, or auto)
 roc worker --preset fast|deep    choose speed or source-heavy mode
 roc worker --source-only         run deterministic candidates only
 roc worker --model nvidia:MODEL --allow-cloud --cloud-min-size 97 --cloud-fallback qwen2.5-coder:7b-instruct

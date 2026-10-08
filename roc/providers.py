@@ -289,6 +289,19 @@ def _usage(data, *names):
     return 0
 
 
+def _cached_tokens(data):
+    usage = data.get("usage") or data.get("usageMetadata") or {}
+    for name in ("cached_tokens", "prompt_cache_hit_tokens", "cachedContentTokenCount",
+                 "cache_read_input_tokens"):
+        if isinstance(usage.get(name), (int, float)):
+            return int(usage[name])
+    for name in ("prompt_tokens_details", "input_tokens_details"):
+        details = usage.get(name) or {}
+        if isinstance(details.get("cached_tokens"), (int, float)):
+            return int(details["cached_tokens"])
+    return 0
+
+
 def _cost(config, inp, out):
     prices = config.get("pricing") or {}
     if not prices:
@@ -341,7 +354,7 @@ def _openai_chat(provider, remote, config, prompt, state, options):
     return Generation(text, {"messages": messages + [{"role": "assistant", "content": text}]},
                       input_tokens=_usage(data, "prompt_tokens", "input_tokens"),
                       output_tokens=_usage(data, "completion_tokens", "output_tokens"),
-                      cached_tokens=_usage(data, "cached_tokens"), provider=provider, model=remote,
+                      cached_tokens=_cached_tokens(data), provider=provider, model=remote,
                       request_id=headers.get("x-request-id", data.get("id", "")),
                       finish_reason=choice.get("finish_reason", ""),
                       reasoning_tokens=((data.get("usage") or {}).get("completion_tokens_details") or {}).get("reasoning_tokens"))
@@ -362,7 +375,7 @@ def _openai_responses(provider, remote, config, prompt, state, options):
                        for part in item.get("content", []) if part.get("type") in ("output_text", "text"))
     return Generation(text, {"messages": messages + [{"role": "assistant", "content": text}]},
                       input_tokens=_usage(data, "input_tokens"), output_tokens=_usage(data, "output_tokens"),
-                      cached_tokens=_usage(data, "cached_tokens"), provider=provider, model=remote,
+                      cached_tokens=_cached_tokens(data), provider=provider, model=remote,
                       request_id=headers.get("x-request-id", data.get("id", "")), finish_reason=data.get("status", ""))
 
 
@@ -380,7 +393,8 @@ def _anthropic(provider, remote, config, prompt, state, options):
     text = "".join(part.get("text", "") for part in data.get("content", []) if part.get("type") == "text")
     return Generation(text, {"messages": messages + [{"role": "assistant", "content": text}]},
                       input_tokens=_usage(data, "input_tokens"), output_tokens=_usage(data, "output_tokens"),
-                      provider=provider, model=remote, request_id=headers.get("request-id", data.get("id", "")),
+                      cached_tokens=_cached_tokens(data), provider=provider, model=remote,
+                      request_id=headers.get("request-id", data.get("id", "")),
                       finish_reason=data.get("stop_reason", ""))
 
 
@@ -401,7 +415,7 @@ def _gemini(provider, remote, config, prompt, state, options):
     text = "".join(part.get("text", "") for part in (candidate.get("content") or {}).get("parts", []))
     return Generation(text, {"messages": messages + [{"role": "assistant", "content": text}]},
                       input_tokens=_usage(data, "promptTokenCount"), output_tokens=_usage(data, "candidatesTokenCount"),
-                      cached_tokens=_usage(data, "cachedContentTokenCount"), provider=provider, model=remote,
+                      cached_tokens=_cached_tokens(data), provider=provider, model=remote,
                       request_id=headers.get("x-request-id", ""), finish_reason=candidate.get("finishReason", ""))
 
 

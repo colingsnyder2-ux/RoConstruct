@@ -358,28 +358,38 @@ def test_cloud_provider_core():
 def test_native_cloud_adapters():
     from roc import providers
     names = {"OPENAI_API_KEY": "test-openai", "ANTHROPIC_API_KEY": "test-anthropic",
-             "GEMINI_API_KEY": "test-gemini"}
+             "GEMINI_API_KEY": "test-gemini", "DEEPSEEK_API_KEY": "test-deepseek"}
     before = {name: os.environ.get(name) for name in names}
     old_post = providers._post
     calls = []
     def fake_post(url, body, headers, timeout):
         calls.append((url, body, headers))
+        if url.endswith("/chat/completions"):
+            return {"choices": [{"message": {"content": "deepseek"}, "finish_reason": "stop"}],
+                    "usage": {"prompt_tokens": 11, "completion_tokens": 1,
+                              "prompt_cache_hit_tokens": 7}}, {}
         if url.endswith("/responses"):
             return {"id": "openai-r", "output_text": "openai", "status": "completed",
-                    "usage": {"input_tokens": 3, "output_tokens": 4}}, {}
+                    "usage": {"input_tokens": 3, "output_tokens": 4,
+                              "input_tokens_details": {"cached_tokens": 2}}}, {}
         if url.endswith("/messages"):
             return {"id": "anthropic-r", "content": [{"type": "text", "text": "anthropic"}],
-                    "stop_reason": "end_turn", "usage": {"input_tokens": 5, "output_tokens": 6}}, {}
+                    "stop_reason": "end_turn", "usage": {"input_tokens": 5, "output_tokens": 6,
+                                                             "cache_read_input_tokens": 4}}, {}
         return {"candidates": [{"content": {"parts": [{"text": "gemini"}]}, "finishReason": "STOP"}],
-                "usageMetadata": {"promptTokenCount": 7, "candidatesTokenCount": 8}}, {}
+                "usageMetadata": {"promptTokenCount": 7, "candidatesTokenCount": 8,
+                                   "cachedContentTokenCount": 3}}, {}
     try:
         os.environ.update(names)
         providers._post = fake_post
-        assert providers.generate("openai:gpt-test", "p", options={"allow_cloud": True}).text == "openai"
-        assert providers.generate("anthropic:claude-test", "p", options={"allow_cloud": True}).text == "anthropic"
-        assert providers.generate("gemini:gemini-test", "p", options={"allow_cloud": True}).text == "gemini"
-        assert calls[0][1]["store"] is False and calls[1][2]["anthropic-version"]
-        assert "x-goog-api-key" in calls[2][2]
+        deepseek = providers.generate("deepseek:deepseek-flash", "p", options={"allow_cloud": True})
+        openai = providers.generate("openai:gpt-test", "p", options={"allow_cloud": True})
+        anthropic = providers.generate("anthropic:claude-test", "p", options={"allow_cloud": True})
+        gemini = providers.generate("gemini:gemini-test", "p", options={"allow_cloud": True})
+        assert [deepseek.cached_tokens, openai.cached_tokens,
+                anthropic.cached_tokens, gemini.cached_tokens] == [7, 2, 4, 3]
+        assert calls[1][1]["store"] is False and calls[2][2]["anthropic-version"]
+        assert "x-goog-api-key" in calls[3][2]
     finally:
         providers._post = old_post
         for name, value in before.items():
@@ -479,7 +489,7 @@ def test_link_options():
          patch("roc.draft.pick_model", return_value="qwen2.5-coder:14b"), \
          patch("roc.worker.save_settings"), \
          patch("builtins.input", side_effect=["", "balanced", "99", ""]):
-        assert choose_options({}) == ("qwen2.5-coder:14b", 4, 256, True, 64, 2048, "auto")
+        assert choose_options({}) == ("qwen2.5-coder:14b", 4, 256, True, 99, 2048, "auto")
 
 
     with patch("roc.draft.ollama_models", return_value=["qwen2.5-coder:7b"]), \
@@ -601,7 +611,7 @@ def test_mine_digest():
 
 def test_concurrent_shares_caches_and_clamps():
     from roc import worker
-    assert worker.MAX_WORKERS == 64
+    assert worker.MAX_WORKERS == 256
     calls = []
 
     def fake_run(*args, **kwargs):
@@ -618,7 +628,7 @@ def test_concurrent_shares_caches_and_clamps():
     calls.clear()
     with patch("roc.worker.run", side_effect=fake_run):
         worker.run_concurrent("http://x", "u", model="m", max_jobs=0, workers=99, log=lambda *a: None)
-    assert len(calls) == 64
+    assert len(calls) == 99
 
 
 def test_compact_worker_log():

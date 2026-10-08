@@ -19,7 +19,7 @@ from roc import clients, draft, match, metrics, setup
 
 ROOT = Path(__file__).resolve().parent.parent
 SETTINGS = ROOT / "roconstruct-settings.json"
-MAX_WORKERS = 64
+MAX_WORKERS = 256
 USER_RE = re.compile(r"^[A-Za-z0-9_.-]{2,32}$")
 SITE = "https://colingsnyder2-ux.github.io/RoConstruct/"
 
