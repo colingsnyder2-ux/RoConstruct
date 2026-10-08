@@ -888,6 +888,13 @@
       "target": "NTx86 Local2012Roblox client hooks",
       "url": "https://github.com/NTx86/Local2012Roblox",
       "evidence": "Open-source VS2008 DLL project targeting the June 14, 2012 client. Contains ContentProvider/RBXHTTP hooks and client address tables; not original Roblox source, but may provide names, offsets, and behavioral anchors for 2012 unmatched functions."
+    },
+    {
+      "checked_at": "2026-10-08T21:20:00-04:00",
+      "status": "medium-value-reference",
+      "target": "Lure legacy Roblox hook implementations",
+      "url": "https://github.com/lrre-foss/lure",
+      "evidence": "Open-source legacy-client hooks name and detour CRobloxApp, Http, ServerReplicator, StandardOut, and related routines; README says 2011 releases were tested. Not original source, but useful symbol/function anchors for unmatched client groups."
     }
   ],
   "version": 1
