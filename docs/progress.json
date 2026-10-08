@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-08 00:39 UTC",
+ "updated": "2026-10-08 00:56 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -31,18 +31,18 @@
    "built": "2007-08-19",
    "started": true,
    "functions": 19998,
-   "matched": 8081,
+   "matched": 8110,
    "partial": 18,
    "bytes": 3009279,
-   "matched_bytes": 694730,
+   "matched_bytes": 696182,
    "data_bytes": 1361658,
    "leaderboard": [
     {
      "user": "auto",
-     "matched": 7633,
-     "points": 760904,
-     "submissions": 7633,
-     "last": 1791419895.290352
+     "matched": 7661,
+     "points": 763704,
+     "submissions": 7661,
+     "last": 1791420949.4970465
     },
     {
      "user": "colin",
@@ -76,18 +76,18 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22296,
-   "matched": 8648,
+   "matched": 8656,
    "partial": 0,
    "bytes": 3448631,
-   "matched_bytes": 751939,
+   "matched_bytes": 752246,
    "data_bytes": 1559926,
    "leaderboard": [
     {
      "user": "auto",
-     "matched": 7876,
-     "points": 787600,
-     "submissions": 7876,
-     "last": 1791419901.640645
+     "matched": 7884,
+     "points": 788400,
+     "submissions": 7884,
+     "last": 1791420953.9347775
     },
     {
      "user": "colin",
@@ -107,21 +107,21 @@
    "built": "2009-06-16",
    "started": true,
    "functions": 26156,
-   "matched": 7102,
+   "matched": 7527,
    "partial": 0,
    "bytes": 3981050,
-   "matched_bytes": 536962,
+   "matched_bytes": 566973,
    "data_bytes": 1809822,
    "leaderboard": [
     {
      "user": "auto",
-     "matched": 6780,
-     "points": 678000,
-     "submissions": 6780,
-     "last": 1791419907.4704323
+     "matched": 7201,
+     "points": 720100,
+     "submissions": 7201,
+     "last": 1791420960.0814104
     }
    ],
-   "data_matched_bytes": 38157,
+   "data_matched_bytes": 45600,
    "classes": 1624,
    "generated": 20922
   },
@@ -208,10 +208,10 @@
  "leaderboard": [
   {
    "user": "auto",
-   "matched": 53491,
-   "points": 5346704,
-   "submissions": 53491,
-   "last": 1791419925.4793532
+   "matched": 53948,
+   "points": 5392404,
+   "submissions": 53948,
+   "last": 1791420960.0814104
   },
   {
    "user": "colin",
