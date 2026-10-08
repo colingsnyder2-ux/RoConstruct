@@ -91,6 +91,14 @@ td.name { font-family: var(--mono); color: var(--text); white-space: nowrap; }
     <tr><td class="name">RakNet</td><td>public 4.081 (few matches); Roblox's fork via the 2016 tree</td><td><span class="tag part">partial</span></td></tr>
     <tr><td class="name">SDL</td><td>1.2.11 (headers only — the rest is in SDL.dll)</td><td><span class="tag part">headers</span></td></tr>
     <tr><td class="name">Ogre</td><td>1.7.0 "Cthugha" VC8 SDK. The engine is in OgreMain.dll; only inline/template Ogre code is in the exe, and the bulk of the exe's Ogre classes are Roblox's own <code>Ogre::Rbx*</code> subclasses (no public source).</td><td><span class="tag part">partial</span></td></tr>
+    <tr><td class="name">Scintilla</td><td>The editor is in SciLexer.dll, but the exe carries the MFC wrapper (<code>CScintillaCtrl</code>, <code>CScintillaView</code>, ~130 functions). Not yet recipe'd — thin wrapper, uncertain exact source (Codejock / Scintilla MFC wrapper).</td><td><span class="tag part">untried</span></td></tr>
+  </table></div>
+
+  <h2>Hard limits</h2>
+  <p class="sub">Functions that cannot be matched no matter what source we find.</p>
+  <div class="card"><table>
+    <tr><th>Limit</th><th>Effect</th></tr>
+    <tr><td class="name">VMProtect</td><td>The later clients import <code>vmprotectsdk32.dll</code> and virtualize selected anti-tamper functions. Virtualized code is a VM bytecode blob, not real x86 — no C++ source reproduces its bytes, so those functions are permanently unmatchable. A small set (license / integrity checks), not the bulk.</td></tr>
   </table></div>
 
   <h2>Compiler runtime &amp; UI toolkits</h2>

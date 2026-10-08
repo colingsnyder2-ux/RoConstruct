@@ -81,6 +81,7 @@ until the bytes line up.
 | RakNet | public 4.081 (few) + Roblox's fork | most matches come from the fork |
 | SDL | 1.2.11 headers | the rest is in SDL.dll |
 | Ogre | 1.7.0 "Cthugha" VC8 SDK | see note below |
+| Scintilla (MFC wrapper) | — | **untried.** The editor is in SciLexer.dll, but the exe carries the MFC wrapper (`CScintillaCtrl`, `CScintillaView`, ~130 functions). Thin wrapper, uncertain exact source (Codejock / Scintilla MFC wrapper). |
 
 **On `/GS`:** VS2005 defaults to `/GS` on. 830 functions in the 2007-08 exe carry the
 stack-cookie prologue, so that client is compiled with `/GS` and existing matches pin
@@ -145,6 +146,15 @@ If you can find any of these, drop them in the [Discord](https://discord.gg/Tayg
   drifted.
 
 ---
+
+## Hard limits
+
+Functions that cannot be matched no matter what source we find.
+
+- **VMProtect.** The later clients import `vmprotectsdk32.dll` and virtualize selected
+  anti-tamper functions. Virtualized code is a VM bytecode blob, not real x86 — no C++
+  source reproduces its bytes, so those functions are permanently unmatchable. It is a
+  small set (license / integrity checks), not the bulk.
 
 ## 6. Checked, not useful
 
