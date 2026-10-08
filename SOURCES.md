@@ -209,6 +209,9 @@ same sites. Checked 2026-10-08:
 | [ROBLOX Archive / roblonium](https://archive.roblonium.com/Client/Windows/RobloxApp/2009/) | Binary client archive; useful for checking alternate builds, but directory listings expose no symbol artifacts. |
 | [robloxarchive](https://archive.robloxopolis.com/archive/) | Large read-only archive index advertises client ZIP collections; automated fetch returned 403, so manual/community access may still be worth trying. |
 | [Anaminus ROBLOX Client Data](https://anaminus.github.io/rbx/) | Historical client/API metadata only; no PDB/MAP/build objects found. |
+| [Robloxopolis Clients/RBXGS archive](https://archive.robloxopolis.com/archive/Clients/RBXGS/) | **New high-priority lead:** archive index reports a 549 MB RBXGS package with 48 files. The 2007/08 RBXGS leak is reported to include PDBs; inspect package contents for symbols before downloading. Automated fetch currently returns 403. |
+| [Robloxopolis Pre-DeployHistory](https://archive.robloxopolis.com/archive/Clients/Pre-DeployHistory/) | **New archive lead:** index exposes Original-Files (46 files) and Packages (16 files), together ~208 MB; inspect for RCC/RBXGS sidecars and PDBs. Automated fetch currently returns 403. |
+| [RBXGS/RCCService PDB report](https://www.tumlook.com/ytrlls) | Community report explicitly says the 2007/08 RBXGS leak included PDB files with symbols, addresses and line information; download URL is hidden by the mirror, so provenance still needs validation. |
 
 No new downloadable client PDB, MAP, Roblox `.obj`/`.lib`, or original `.vcproj` was validated
 in this pass. Do not count ordinary client archives as new leads unless their file listing
