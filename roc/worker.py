@@ -64,10 +64,11 @@ class CompactLog:
     def __call__(self, message):
         text = str(message)
         thread = threading.get_ident()
-        job = re.match(r"\[([^ ]+) ([^\]]+)\].*?, (.*?), best so far (\d+)%", text)
+        job = re.match(r"\[([^ ]+) ([^\]]+)\]\s+(\d+)\s*(?:bytes|B),\s*(.*?), best so far (\d+)%", text)
         with self.lock:
             if job:
-                self.current[thread] = (job.group(1), job.group(2), job.group(3), int(job.group(4)))
+                self.current[thread] = (job.group(1), job.group(2), int(job.group(3)),
+                                        job.group(4), int(job.group(5)))
                 return
             if text.startswith("  2016 source candidate") and "using as LLM base" not in text:
                 score = re.search(r"(\d+)%", text)
@@ -101,12 +102,13 @@ class CompactLog:
         self.jobs += 1
         self.improved += score is not None and score > 0
         self.matched += score == 100
-        client, addr, unit, best = self.current.pop(threading.get_ident(), ("?", "?", "?", 0))
+        client, addr, size, unit, best = self.current.pop(threading.get_ident(), ("?", "?", None, "?", 0))
+        size_text = "%d B " % size if size is not None else ""
         if score is None:
-            self.output("· %s %s no gain (best %d%%) %s" % (client, addr, best, unit))
+            self.output("· %s %s %sno gain (best %d%%) %s" % (client, addr, size_text, best, unit))
         else:
-            self.output("%s %s %s %d%% %s" % ("✓" if score == 100 else "↑",
-                        client, addr, score, unit))
+            self.output("%s %s %s %s%d%% %s" % ("✓" if score == 100 else "↑",
+                        client, addr, size_text, score, unit))
         if self.jobs >= self.next_report:
             self.output("⛏ %dw | %d done | %d matched | %d improved | %d errors" %
                         (self.workers, self.jobs, self.matched, self.improved, self.failures))
@@ -504,7 +506,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
     from roc import providers
     client, addr = job["client"], job["addr"]
     flags = info["clients"][client].get("flags")
-    log("[%s %s] %d bytes, %s, best so far %d%%" % (client, addr, job["size"], job["unit"], job["score"]))
+    log("[%s %s] %d B, %s, best so far %d%%" % (client, addr, job["size"], job["unit"], job["score"]))
     stop = threading.Event()
     started = time.monotonic()
     result, improved, failure = 0, False, None

@@ -594,6 +594,7 @@ def test_mine_digest():
     assert embed["title"] == "⛏️ RoConstruct Mining Digest"
     assert "33.33%" in embed["description"] and "1 / 3 matched" in embed["description"]
     assert "a1" in embed["fields"][0]["value"] and "a2" in embed["fields"][1]["value"]
+    assert "9 B" in embed["fields"][0]["value"] and "9 B" in embed["fields"][1]["value"]
     assert "60 pts" in embed["fields"][3]["value"]
     assert embed["footer"]["text"].startswith("ETA:")
 
@@ -624,7 +625,7 @@ def test_compact_worker_log():
     from roc.worker import CompactLog
     out = []
     log = CompactLog(32, out.append)
-    log("[C 00401020] 8 bytes, Unit, best so far 0%")
+    log("[C 00401020] 8 B, Unit, best so far 0%")
     log("  round 1: 100%")
     log("  submitted 100% (verified by server)")
     log("[C 00401030] 8 bytes, Unit2, best so far 0%")
@@ -632,7 +633,8 @@ def test_compact_worker_log():
     log("  thinking disabled for remaining rounds")
     log("  tokens used: 100")
     log.finish()
-    assert "✓ C 00401020 100% Unit" in out
+    assert "✓ C 00401020 8 B 100% Unit" in out
+    assert "· C 00401030 8 B no gain (best 0%) Unit2" in out
     assert out[-1] == "⛏ 32w finished | 2 done | 1 matched | 1 improved | 0 errors"
 
 
@@ -1016,6 +1018,34 @@ def test_auto_import_skips_dropped_functions():
         raise AssertionError("unknown function accepted")
     except ValueError:
         pass
+
+
+def test_truncated_generation_history_reset():
+    from roc import draft
+    for enabled in (False, True):
+        contexts, attempts = [], []
+
+        def ask(model, prompt, context=None, options=None, details=False):
+            contexts.append(context)
+            assert "reset_truncated" not in options
+            if len(contexts) == 1:
+                return "struct S {", {"malformed": True}, {"finish_reason": "length", "output_tokens": 1024}
+            return "```cpp\nint f() { return 1; }\n```", None, {"finish_reason": "stop", "output_tokens": 12}
+
+        def prompt(*args, **kwargs):
+            attempts.append(args[5])
+            return "target"
+
+        with patch.object(draft, "_ask_context", side_effect=ask), \
+             patch.object(draft, "prompt_for", side_effect=prompt), \
+             patch.object(draft.match, "target", return_value=(b"\xc3", [], {"size": 9, "unit": "S"})), \
+             patch.object(draft.match, "disasm", return_value=["ret"]), \
+             patch.object(draft.match, "check_text", return_value=(100, None, "", [])):
+            score, _ = draft.llm_rounds("C", "1", "deepseek:deepseek-flash", 2,
+                                        log=lambda _: None, provider_options={"reset_truncated": enabled})
+        assert score == 100 and len(contexts) == 2
+        assert contexts[1] == (None if enabled else {"malformed": True})
+        assert bool(attempts[1]) == enabled
 
 
 if __name__ == "__main__":

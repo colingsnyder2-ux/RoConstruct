@@ -198,3 +198,36 @@ validation; this follow-up was tuned on the holdout and is exploratory.
 The runner reads the existing hidden corpus and records isolated telemetry. Keep
 the corpus and compiler flags fixed across arms. Historical pre-guidance results
 require the pre-guidance code; rerunning current code changes both arms.
+
+Follow-up strategy checks (all DeepSeek Flash, 18 workers, four repeats, 72 jobs
+unless noted; same compiler, holdout, 2 rounds, 2,048 output cap, truncated-history
+reset, selective source hints): direct reset-only control: 7 exact, 66 compilable,
+422,816 input tokens. Combining reset with minimal layout: 4 exact, 64 compilable,
+425,042 tokens. Two independent candidates on hard functions: 4 exact, 63
+compilable, 341,346 input tokens. Reference strategy: 5 exact, 67 compilable,
+369,789 input tokens. No broad strategy wins on exact count and compilation
+together; leave production strategy unchanged. Sessions use prefixes
+`holdout-{reset2048-control,combined,diverse2,structured,reference}-20261008`.
+
+Structured tiny-only check (`size <= 32`) showed a promising DeepSeek result. On
+the 2007-08 tiny holdout, eight repeats: direct 14/48 exact and 47/48
+compilable at 176,742 input tokens; structured 19/48 exact and 46/48 compilable
+at 213,464 tokens. On six separate 2008-06 tiny functions with the 2008 compiler,
+eight repeats: direct 25/48 exact, 47/48 compilable, 82,043 tokens; structured
+29/48 exact, 48/48 compilable, 89,949 tokens. Combined, structured raised exact
+matches 39→48 and compile conversions were neutral (94/96 each), with 17.2% more
+input tokens; tokens per exact match fell about 5%. These are repeated draws on
+12 functions, not independent 96-function evidence. Promising for cloud DeepSeek
+tiny targets; not yet enough to change default.
+
+Local `qwen2.5-coder:7b-instruct` tiny check on the same six 2008-06 functions:
+direct four repeats produced 4/24 exact, 15/24 compilable, and 2,506 output
+tokens. Structured first repeat produced 0/6 exact, 4/6 compilable; one request
+hit its 180s timeout. Stopped remaining repeats because latency contradicted the
+speed objective. This argues against globally routing all models through
+structured mode. Input-token usage is unavailable from the local provider.
+
+`benchmarks/history.py` supports `--model`, `--client`, `--max-size`, and
+`--diverse-candidates` to reproduce these stratified tests. Do not treat the
+exploratory runs as an automatic-tuning result; keep direct as default until a
+larger, model-specific holdout confirms quality and latency gains.

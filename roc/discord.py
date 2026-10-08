@@ -106,8 +106,9 @@ class MineLog:
         partial = [e for e in events if e["score"] < 100]
 
         def lines(rows):
-            out = ["%s **%d%%** `%s` %s" % ("🟢" if e["score"] == 100 else "🟡",
-                   e["score"], e["job"].get("addr", "?"), e["job"].get("unit", "?"))
+            out = ["%s **%d%%** `%s` %s · %s B" % ("🟢" if e["score"] == 100 else "🟡",
+                   e["score"], e["job"].get("addr", "?"), e["job"].get("unit", "?"),
+                   e["job"].get("size", "?"))
                    for e in rows[:10]]
             if len(rows) > 10:
                 out.append("…and %d more" % (len(rows) - 10))

@@ -18,6 +18,9 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--session", default="history-ablation-20261008")
     parser.add_argument("--corpus", type=Path, default=benchmark.HIDDEN)
+    parser.add_argument("--client", default="2007-08")
+    parser.add_argument("--max-size", type=int)
+    parser.add_argument("--model", default="deepseek:deepseek-flash")
     parser.add_argument("--keep", nargs="+", type=int, default=[2, 0])
     parser.add_argument("--repeats", type=int, default=2)
     parser.add_argument("--rounds", type=int, default=2)
@@ -32,12 +35,15 @@ def main():
     parser.add_argument("--max-tokens", type=int)
     parser.add_argument("--minimal-layout", action="store_true")
     parser.add_argument("--reset-truncated", action="store_true")
+    parser.add_argument("--diverse-candidates", type=int)
     parser.add_argument("--strategy", choices=["direct", "structured", "reference"], default="direct")
     args = parser.parse_args()
     corpus = json.loads(args.corpus.read_text())
-    corpus = [row for row in corpus if row["client"] == "2007-08"]
+    corpus = [row for row in corpus if row["client"] == args.client]
+    if args.max_size is not None:
+        corpus = [row for row in corpus if row["size"] <= args.max_size]
     if not corpus:
-        raise SystemExit("No 2007-08 hidden targets; generate the hidden corpus first.")
+        raise SystemExit("No %s hidden targets; generate the hidden corpus first." % args.client)
     corpus_sha256 = hashlib.sha256(json.dumps(corpus, sort_keys=True).encode()).hexdigest()
     gate = providers.CloudGate(args.workers)
     startup = time.monotonic()
@@ -53,6 +59,8 @@ def main():
                        "gate": gate,
                        "compact_rules": args.compact_rules, "binary_only": args.binary_only,
                        "minimal_layout": args.minimal_layout, "reset_truncated": args.reset_truncated}
+            if args.diverse_candidates is not None:
+                options["diverse_candidates"] = args.diverse_candidates
             if keep >= 0:
                 options["history_keep_last"] = keep
             if args.temperature is not None:
@@ -67,8 +75,8 @@ def main():
                 if args.reasoning and target["size"] > 48:
                     target_options.update(thinking="enabled", max_tokens=8192)
                 rounds = worker.resolve_rounds(target, "auto" if args.auto_preset else args.rounds,
-                                              "deepseek:deepseek-flash")
-                benchmark.run_local([target], ["deepseek:deepseek-flash"], rounds=rounds,
+                                              args.model)
+                benchmark.run_local([target], [args.model], rounds=rounds,
                                     resume=not args.no_resume, session=session, strategies=(args.strategy,),
                                     provider_options=target_options,
                                     log=lambda line: print(line, flush=True)
@@ -77,7 +85,8 @@ def main():
             print("%s: %d targets" % (session, len(corpus)), flush=True)
             configuration = {key: value for key, value in options.items() if key != "gate"}
             configuration.update(strategy=args.strategy, reasoning=args.reasoning,
-                                 rounds="auto" if args.auto_preset else args.rounds)
+                                 rounds="auto" if args.auto_preset else args.rounds,
+                                 client=args.client, model=args.model, max_size=args.max_size)
             metrics.record(session, event="benchmark_start", corpus_sha256=corpus_sha256,
                            configuration=configuration, workers=args.workers,
                            targets=len(corpus), resume=not args.no_resume)
