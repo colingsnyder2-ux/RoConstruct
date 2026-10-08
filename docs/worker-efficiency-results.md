@@ -139,6 +139,22 @@ runner accepts `--temperature` for explicit experiments. Sessions:
 `temperature-zero-20261008-k2-r{1,2}`. Temperature zero is not fully deterministic
 across provider calls, and this small sample does not establish causality.
 
+Generic pre-call push-order hints were also rejected: 36 jobs, 7 exact,
+35 compilable, 183,917 tokens. The experimental hook was removed. A separate
+real-compiler diagnostic on `004017c0` confirmed that swapping two API call
+arguments alone converts one 98% candidate to 100%; the model did not reliably
+learn that correction from the generic hints. Sessions: `call-stack-20261008-k2-r{1,2}`.
+
+Selective source clues (only targets up to 128 bytes) were checked with four
+repeats against a four-repeat control: 72 jobs per arm. Selective: 19 exact,
+70 compilable, 303,936 tokens. Control: 17 exact, 70 compilable, 337,816
+tokens. Token use fell 10.0%; the two-match difference is not proof of a
+match-rate gain. These are repeated draws over 18 targets, not 72 independent
+functions. Optional DeepSeek auto now applies this cutoff; explicit presets
+retain source clues. Reproduce with `--source-hint-max-size 128`; sessions
+`selective-source[-control]-20261008-k2-r{1,2,3,4}`. This was selected on the
+same corpus and still needs separate-corpus validation before broader defaults.
+
 The runner reads the existing hidden corpus and records isolated telemetry. Keep
 the corpus and compiler flags fixed across arms. Historical pre-guidance results
 require the pre-guidance code; rerunning current code changes both arms.

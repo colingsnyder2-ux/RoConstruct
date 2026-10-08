@@ -696,7 +696,8 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
                                  None if independent else attempt, flags,
                                  examples, source_hints, facts or facts_from_asm(asm), strategy,
                                  compact_rules=(provider_options or {}).get("compact_rules", False),
-                                 binary_only=(provider_options or {}).get("binary_only", False))
+                                 binary_only=((provider_options or {}).get("binary_only", False) or
+                                              row.get("size", 0) > (provider_options or {}).get("source_hint_max_size", float("inf"))))
         if independent and i:
             full_prompt += ("\n\nIndependent candidate %d/%d: use different compact C++ control flow. "
                             "Still emit exactly one function." % (i + 1, diverse_rounds))
@@ -709,6 +710,7 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
         ask_options.pop("diverse_candidates", None)
         ask_options.pop("compact_rules", None)
         ask_options.pop("binary_only", None)
+        ask_options.pop("source_hint_max_size", None)
         try:
             from roc import providers as _providers
             cloud = _providers.is_cloud(model)

@@ -403,6 +403,8 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
         provider_options = {"allow_cloud": cloud_allowed, "budget": cloud_budget,
                             "gate": cloud_gate, "diverse_candidates": diverse_candidates,
                             "seed": seed, "max_tokens": max_tokens}
+        if rounds == "auto" and (job_model or "").startswith("deepseek:"):
+            provider_options["source_hint_max_size"] = 128
         if think is not None:
             provider_options["thinking"] = think
         if effort is not None:

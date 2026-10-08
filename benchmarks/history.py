@@ -25,6 +25,7 @@ def main():
     parser.add_argument("--reasoning", action="store_true")
     parser.add_argument("--compact-rules", action="store_true")
     parser.add_argument("--binary-only", action="store_true")
+    parser.add_argument("--source-hint-max-size", type=int)
     parser.add_argument("--temperature", type=float)
     parser.add_argument("--strategy", choices=["direct", "structured", "reference"], default="direct")
     args = parser.parse_args()
@@ -49,6 +50,8 @@ def main():
                 options["history_keep_last"] = keep
             if args.temperature is not None:
                 options["temperature"] = args.temperature
+            if args.source_hint_max_size is not None:
+                options["source_hint_max_size"] = args.source_hint_max_size
 
             def run(target):
                 target_options = dict(options)
