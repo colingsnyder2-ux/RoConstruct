@@ -202,7 +202,7 @@ def choose_options(settings):
         use_revng = False
     else:
         use_revng = rev_default == "on"
-    last_budget = settings.get("worker_output_budget", 1024)
+    last_budget = settings.get("worker_output_budget", 2048)
     try:
         output_budget = int(input("Output budget [%s] tokens per reply: " % last_budget).strip() or last_budget)
     except ValueError:

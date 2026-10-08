@@ -201,7 +201,7 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
         strategy="direct", cloud_allowed=False, cloud_budget=None, cloud_gate=None,
         diverse_candidates=1, cloud_min_size=0, cloud_fallback=None, seed=None,
         cloud_escalate=None, cloud_escalate_after=2, thinking=None, reasoning_effort=None,
-        max_tokens=1024):
+        max_tokens=2048):
     """forever: survive server/network outages (retry every minute) for overnight runs.
     only: restrict to these clients (one-click links)."""
     if not USER_RE.match(user or ""):
@@ -297,13 +297,16 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
             if fallback:
                 job_model = fallback
                 log("  route: %d-byte job -> local fallback %s" % (job.get("size", 0), job_model))
+        think, effort = auto_reasoning(job, thinking, reasoning_effort)
+        if thinking == "auto" and think == "disabled":
+            log("  auto-think: tiny job, thinking disabled")
         provider_options = {"allow_cloud": cloud_allowed, "budget": cloud_budget,
                             "gate": cloud_gate, "diverse_candidates": diverse_candidates,
                             "seed": seed, "max_tokens": max_tokens}
-        if thinking is not None:
-            provider_options["thinking"] = thinking
-        if reasoning_effort is not None:
-            provider_options["reasoning_effort"] = reasoning_effort
+        if think is not None:
+            provider_options["thinking"] = think
+        if effort is not None:
+            provider_options["reasoning_effort"] = effort
         score = work_one(api, user, job, info, job_model, rounds, revng, log, examples_cache, source_cache,
                          session, source_only, strategy, provider_options)
         matched += score == 100
@@ -326,7 +329,7 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
                    cloud_budget=None, cloud_gate=None, diverse_candidates=1,
                    cloud_min_size=0, cloud_fallback=None, seed=None,
                    cloud_escalate=None, cloud_escalate_after=2, thinking=None, reasoning_effort=None,
-                   max_tokens=1024):
+                   max_tokens=2048):
     """Run a bounded number of independent lease loops.
 
     Server leases make workers safe to run in parallel.  Keep the default at one
@@ -580,6 +583,21 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                            estimated_cost=metrics.known_generation_cost(generated),
                            failure_reason=failure_reason,
                            failure=failure)
+
+
+def auto_reasoning(job, thinking=None, reasoning_effort=None):
+    """Resolve 'auto' reasoning per job: tiny leaf jobs think less.
+
+    Tiny getters/setters truncate when reasoning eats the output budget,
+    so auto disables thinking (and drops effort to low) for them. Anything
+    else keeps the provider default. Explicit values pass through untouched.
+    """
+    tiny = not (job.get("size", 999999) > 64 or job.get("calls", 0))
+    if thinking == "auto":
+        thinking = "disabled" if tiny else None
+    if reasoning_effort == "auto":
+        reasoning_effort = "low" if tiny else None
+    return thinking, reasoning_effort
 
 
 def _usage_line(session, round_stats):

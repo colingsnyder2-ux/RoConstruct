@@ -389,7 +389,7 @@ def cmd_worker(a):
     budget = providers.CloudBudget(a.max_cloud_requests, a.max_cloud_tokens, a.max_cloud_cost)
     gate = providers.CloudGate(a.cloud_concurrency)
     if a.output_budget is None:
-        a.output_budget = 1024
+        a.output_budget = 2048
     if not 128 <= a.output_budget <= 8192:
         raise SystemExit("--output-budget must be 128-8192")
     if a.cloud_fallback:
@@ -901,7 +901,7 @@ def main(argv=None):
         (["--strategy"], {"choices": ["direct", "structured", "reference"], "default": "direct",
                             "help": "candidate-generation prompt strategy"}),
         (["--max-size"], {"type": int, "default": 256, "help": "skip functions bigger than this (bytes)"}),
-        (["--output-budget"], {"type": int, "default": 1024,
+        (["--output-budget"], {"type": int, "default": 2048,
                                "help": "max tokens per LLM reply (128-8192)"}),
         (["--jobs"], {"type": int, "help": "stop after this many functions"}),
         (["--workers"], {"default": "1",
@@ -921,10 +921,10 @@ def main(argv=None):
         (["--cloud-escalate-after"], {"type": int, "default": 2,
                                         "help": "primary attempts before cloud escalation"}),
         (["--seed"], {"type": int, "help": "generation seed where provider supports it"}),
-        (["--thinking"], {"choices": ["enabled", "disabled"],
-                            "help": "explicit provider reasoning mode (DeepSeek-compatible providers)"}),
-        (["--reasoning-effort"], {"choices": ["low", "medium", "high", "max"],
-                                    "help": "explicit provider reasoning effort for hard targets"}),
+        (["--thinking"], {"choices": ["auto", "enabled", "disabled"], "default": "auto",
+                            "help": "provider reasoning mode; auto disables it for tiny jobs"}),
+        (["--reasoning-effort"], {"choices": ["auto", "low", "medium", "high", "max"],
+                                    "help": "provider reasoning effort; auto uses low for tiny jobs"}),
         (["--no-revng"], {"action": "store_true"}),
         (["--preset"], {"choices": ["fast", "balanced", "deep"], "default": "balanced"}),
         (["--dry-run"], {"action": "store_true", "help": "show worker setup without leasing a job"}),
