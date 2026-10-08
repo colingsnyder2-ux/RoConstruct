@@ -477,7 +477,7 @@ async function client(name) {
     const {b} = hit(e);
     if (!b) return;
     const f = b.f;
-    const source = f[2] ? `<a href="${sourceUrl(name, f[0])}" target="_blank" rel="noopener">Open recovered source ↗</a>` : "No recovered source yet";
+    const source = f[4] ? `<a href="${sourceUrl(name, f[0])}" target="_blank" rel="noopener">Open recovered source ↗</a>` : "No recovered source published yet";
     document.getElementById("detail").innerHTML =
       `<strong>${esc(units[f[3]])}</strong><br>${hex(f[0])} • ${fmt(f[1])} bytes • ${f[2]}% matched<br>` +
       `${source}<br>Work on it: <code>roc claim ${esc(name)} ${hex(f[0])}</code>`;
@@ -490,7 +490,7 @@ async function client(name) {
   const easy = data.funcs.filter(f => f[2] < 100).sort((a, b) => a[1] - b[1] || b[2] - a[2]).slice(0, 25);
   document.getElementById("easy").innerHTML = easy.map(f =>
     `<tr><td>${hex(f[0])}</td><td>${f[1]} B</td><td>${f[2]}%</td><td>${esc(units[f[3]])}</td>` +
-    `<td>${f[2] ? `<a href="${sourceUrl(name, f[0])}" target="_blank" rel="noopener">open</a>` : "—"}</td>` +
+    `<td>${f[4] ? `<a href="${sourceUrl(name, f[0])}" target="_blank" rel="noopener">open</a>` : "—"}</td>` +
     `<td><code>roc claim ${esc(name)} ${hex(f[0])}</code></td></tr>`).join("");
 }
 

@@ -97,7 +97,9 @@ def build(server=None, token=None, public_server=None, remote=None):
                 if unit not in unit_ids:
                     unit_ids[unit] = len(units)
                     units.append(unit)
-                funcs.append([int(f["addr"], 16), f["size"], scores.get(f["addr"], 0), unit_ids[unit]])
+                addr = f["addr"]
+                funcs.append([int(addr, 16), f["size"], scores.get(addr, 0), unit_ids[unit],
+                              (ROOT / "src" / name / (addr + ".cpp")).exists()])
             (DOCS / "data" / ("%s.json" % name)).write_text(json.dumps(
                 {"name": name, "compiler": entry["compiler"], "units": units, "funcs": funcs},
                 separators=(",", ":")))
