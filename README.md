@@ -34,7 +34,8 @@ When every function matches, the result is a source tree that rebuilds the origi
 
 1. **Download** this repo (Code → Download ZIP) and unzip it.
 2. Double-click **`install.cmd`**. It installs Python and the old compilers (each one verified) and enables one-click links. No admin rights needed.
-3. Once everything is installed, go to the [RoConstruct website](https://colingsnyder2-ux.github.io/RoConstruct/) and click **Start helping** on any client. That launches the worker.
+
+Once everything is installed, go to the **[RoConstruct website](https://colingsnyder2-ux.github.io/RoConstruct/index.html)** and click **Start helping** on any client to run the worker.
 
 **You never download a client yourself — clicking the link does it for you.** The first thing the worker does is fetch that client from Google Drive, then check its SHA-256 against the registered build before using it. If a file ever goes missing it re-downloads on the next command. To fetch them all up front instead, run `roc client-fetch all`.
 
