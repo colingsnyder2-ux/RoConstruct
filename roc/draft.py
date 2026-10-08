@@ -197,9 +197,11 @@ def extract_code(reply):
         return None
     start = match.start()
     prior = text[:start]
-    declaration = list(re.finditer(r"(?m)^[ \t]*(?:struct|class)\s+[A-Za-z_]\w*\s*\{", prior))
-    if declaration and re.search(r"\};\s*$", prior[declaration[-1].start():]):
-        start = declaration[-1].start()
+    declaration = re.search(
+        r'(?m)^[ \t]*(?:(?:struct|class|namespace)\s+[A-Za-z_]\w*\s*\{|'
+        r'extern\s+(?:"C"\s+)?[^\n]+;|typedef\s+[^\n]+;|#pragma\s+[^\n]+)', prior)
+    if declaration:
+        start = declaration.start()
     open_brace = text.find("{", match.start())
     depth, quote, end = 0, None, None
     for index in range(open_brace, len(text)):
@@ -511,16 +513,40 @@ def _clip_example(text, limit=1500):
     return text[:limit].rstrip() + "\n// (example trimmed: full source matched, shown for shape only)"
 
 
+COMPACT_RULES = """Generate byte-exact x86 C++ for Microsoft Visual C++ {compiler}, flags {flags}.
+Return one cpp fenced block, one function plus required declarations, no explanation.
+No includes, inline asm, instruction dumps/comments, numeric-address calls, or roc-lib/roc-archive tags.
+Use VS2005/2008 syntax: no auto, nullptr, static_assert, modern STL.
+Declare every used type, field and helper. Use minimal local struct names, not undeclared RTTI namespaces.
+ECX live on entry means this: declare a struct member, define its body OUTSIDE the struct.
+Never name a parameter this. ret N implies callee-pop ABI; preserve arguments, call conventions,
+field offsets, signedness and branch conditions. Declare known imports at global scope with extern C
+and observed calling convention; no dllimport. Use symbolic helper declarations, never address casts.
+Assembly is ground truth; later source and RTTI names are clues only. Preserve correct bytes in repairs."""
+
+
 def prompt_for(client, addr, row, asm, hint, attempt, flags=None, examples=(), source_hints=(), facts=None,
-               strategy="direct"):
+               strategy="direct", compact_rules=False):
     entry = match.clients.load()[client]
     p = ["You are doing matching decompilation of a function from an old Roblox client.",
-         RULES.format(compiler=entry["compiler"], flags=flags or entry.get("flags") or match.DEFAULT_FLAGS)]
+         (COMPACT_RULES if compact_rules else RULES).format(
+             compiler=entry["compiler"], flags=flags or entry.get("flags") or match.DEFAULT_FLAGS)]
     for ex in examples[:2 if strategy == "direct" else 1]:
         p += ["", "Example of an already matched function from this client:", "```cpp", _clip_example(ex), "```"]
     p += ["", "Stage: %s. Function %s, %d bytes, class (from RTTI, may be a guess): %s" %
           (classify_target(asm, facts), addr, row["size"], row["unit"]),
           "Target assembly (read-only evidence; do not copy it into the answer):", "\n".join(asm)]
+    if any(re.search(r"\b(lock|xadd|cmpxchg)\b", line) for line in asm):
+        p += ["Atomic instructions: use MSVC intrinsics, never asm placeholders. "
+              "For lock xadd use: extern \"C\" long __cdecl _InterlockedExchangeAdd(volatile long*, long); "
+              "#pragma intrinsic(_InterlockedExchangeAdd). It returns the OLD value; preserve the target's "
+              "comparison against that old value. For decrement: cmp returned_register,1 means "
+              "_InterlockedExchangeAdd(ptr,-1)==1, NOT ==0. A virtual C++ struct inserts a vptr: "
+              "keep refcount offsets relative to the object exactly as in assembly. "
+              "Declare all helper structs at global scope, never inside the function. "
+              "Include this exact declaration/pragma preamble in your output; it is not supplied by headers:",
+              'extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);',
+              "#pragma intrinsic(_InterlockedExchangeAdd)"]
     if strategy == "structured":
         p += ["", "STRUCTURED MODE: write the C++ from this control-flow IR first. "
               "Use assembly only to verify operators, calls, and ABI. Never emit assembly or instruction comments. "
@@ -666,7 +692,8 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
         independent = i < diverse_rounds
         full_prompt = prompt_for(client, addr, row, asm, hint,
                                  None if independent else attempt, flags,
-                                 examples, source_hints, facts or facts_from_asm(asm), strategy)
+                                 examples, source_hints, facts or facts_from_asm(asm), strategy,
+                                 compact_rules=(provider_options or {}).get("compact_rules", False))
         if independent and i:
             full_prompt += ("\n\nIndependent candidate %d/%d: use different compact C++ control flow. "
                             "Still emit exactly one function." % (i + 1, diverse_rounds))
@@ -677,6 +704,7 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
             prompt = full_prompt[full_prompt.index("Your previous attempt scored"):]
         ask_options = dict(provider_options or {})
         ask_options.pop("diverse_candidates", None)
+        ask_options.pop("compact_rules", None)
         try:
             from roc import providers as _providers
             cloud = _providers.is_cloud(model)

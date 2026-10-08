@@ -1,0 +1,48 @@
+"""Paired DeepSeek history ablation on a fixed, source-hidden corpus.
+
+Run from the repository root: python benchmarks/history.py
+"""
+import argparse
+import json
+import sys
+from concurrent.futures import ThreadPoolExecutor
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from roc import benchmark, providers
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--session", default="history-ablation-20261008")
+    parser.add_argument("--keep", nargs="+", type=int, default=[2, 0])
+    parser.add_argument("--repeats", type=int, default=2)
+    parser.add_argument("--compact-rules", action="store_true")
+    parser.add_argument("--strategy", choices=["direct", "structured", "reference"], default="direct")
+    args = parser.parse_args()
+    corpus = json.loads(benchmark.HIDDEN.read_text())
+    corpus = [row for row in corpus if row["client"] == "2007-08"]
+    if not corpus:
+        raise SystemExit("No 2007-08 hidden targets; generate the hidden corpus first.")
+    gate = providers.CloudGate(4)
+    for repeat in range(args.repeats):
+        for keep in args.keep:
+            session = "%s-k%d-r%d" % (args.session, keep, repeat + 1)
+            options = {"allow_cloud": True, "thinking": "disabled",
+                       "history_keep_last": keep, "gate": gate,
+                       "compact_rules": args.compact_rules}
+
+            def run(target):
+                benchmark.run_local([target], ["deepseek:deepseek-flash"], rounds=2,
+                                    resume=True, session=session, strategies=(args.strategy,),
+                                    provider_options=options,
+                                    log=lambda line: print(line, flush=True)
+                                    if line.startswith("  deepseek:") else None)
+
+            print("%s: %d targets" % (session, len(corpus)), flush=True)
+            with ThreadPoolExecutor(max_workers=4) as pool:
+                list(pool.map(run, corpus))
+
+
+if __name__ == "__main__":
+    main()

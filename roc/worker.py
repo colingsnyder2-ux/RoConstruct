@@ -457,6 +457,9 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
         quotas = [base + (i < extra) for i in range(workers)]
     errors = []
     worker_log = CompactLog(workers, log) if workers > 3 else log
+    from roc import refsource
+    if refsource.TREE.is_dir():
+        refsource.build_index(log=log)
 
     def worker_loop(index):
         try:
