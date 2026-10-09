@@ -208,6 +208,16 @@ class Store:
                                   (client,)).fetchone()
         return (int(row[0] or 0), int(row[1] or 0))
 
+    def digest_progress(self, client):
+        """Exact source, mined, retry, and total counts for a digest bar."""
+        with self.lock:
+            row = self.db.execute(
+                "SELECT SUM(score = 100 AND source LIKE '%roc-lib:%'), "
+                "SUM(score = 100 AND (source IS NULL OR source NOT LIKE '%roc-lib:%')), "
+                "SUM((score > 0 AND score < 100) OR (score = 0 AND attempts > 0)), COUNT(*) "
+                "FROM funcs WHERE client = ?", (client,)).fetchone()
+        return tuple(int(value or 0) for value in row)
+
     def match_rate(self, client, window=86400):
         """Matches per second over the recent window (0 when idle)."""
         now = time.time()
