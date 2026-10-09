@@ -75,6 +75,9 @@ code { color: var(--accent2); font-family: var(--mono); font-size: .92em; }
 .bar.g .m { background: var(--green); }
 .bar.b .m { background: var(--blue); }
 .bar .p { background: color-mix(in srgb, var(--green) 35%, var(--panel)); }
+.bar.code .s { background: var(--blue); }
+.bar.code .m { background: var(--green); box-shadow: none; }
+.bar.code .p { background: repeating-linear-gradient(135deg, #205d38 0 5px, #173f29 5px 10px); }
 
 /* panels and sections */
 .panel { box-shadow: 0 0 28px rgba(47, 107, 255, 0.09), inset 0 0 14px rgba(56, 200, 255, 0.02); border: 1px solid var(--line2); border-radius: 14px; background: rgba(15, 21, 32, .7); padding: 14px; }
@@ -241,6 +244,12 @@ function bar(m, p, total, cls = "") {
          `<i class="p" style="width:${100 * p / total || 0}%"></i></div>`;
 }
 
+function codeBar(source, mined, partial, total) {
+  const width = n => total ? 100 * n / total : 0;
+  return `<div class="bar code"><i class="s" style="width:${width(source)}%"></i>` +
+         `<i class="m" style="width:${width(mined)}%"></i><i class="p" style="width:${width(partial)}%"></i></div>`;
+}
+
 function joinLink(name, short) {
   if (!progress.server) return "";
   const url = `roconstruct://work?client=${encodeURIComponent(name)}&server=${encodeURIComponent(progress.server)}`;
@@ -283,8 +292,9 @@ function wireNav() {
 
 function overview() {
   const started = progress.clients.filter(c => c.started).map(statsFor);
-  const sum = k => started.reduce((a, c) => a + c[k], 0);
+  const sum = k => started.reduce((a, c) => a + (c[k] || 0), 0);
   const funcs = sum("functions"), matched = sum("matched"), bytes = sum("bytes"), mbytes = sum("matched_bytes");
+  const sourceBytes = sum("source_bytes"), minedBytes = sum("mined_bytes"), partialBytes = sum("partial_bytes");
   const years = progress.clients.map(title).sort();
   app.innerHTML = `
     <section class="hero">
@@ -298,14 +308,14 @@ function overview() {
       <div class="stat red"><div class="ico">${ICON.file}</div><div><b>${fmt(funcs - matched)}</b><span>Remaining functions</span></div></div>
       <div class="stat"><div class="ico">${ICON.chart}</div><div><b>${pct(mbytes, bytes)}</b><span>Complete</span></div></div>
     </div>
-    <div class="overall">${bar(mbytes, 0, bytes)}<span>${pct(mbytes, bytes)}</span></div>
+    <div class="overall">${codeBar(sourceBytes, minedBytes, partialBytes, bytes)}<span>${pct(mbytes, bytes)}</span></div>
     ${commitPanel()}
     <div class="head" id="clients"><h2><small>Explore</small>Clients</h2>${joinHelp()}</div>
     <div class="cards">${progress.clients.map(statsFor).map(c => `
       <div class="card">
         <h3><a href="#${esc(c.name)}">${esc(title(c))}</a><span class="chev">›</span></h3>
         <div class="meta">${esc(builtOn(c))}${esc(c.compiler)}</div>
-        ${c.started ? `<div class="row">${bar(c.matched_bytes, 0, c.bytes)}<span>${pct(c.matched_bytes, c.bytes)}</span></div>
+        ${c.started ? `<div class="row">${codeBar(c.source_bytes || 0, c.mined_bytes ?? c.matched_bytes, c.partial_bytes || 0, c.bytes)}<span>${pct(c.matched_bytes, c.bytes)}</span></div>
           <div class="count">${fmt(c.matched)} / ${fmt(c.functions)}</div>` : `<div class="count">not started</div>`}
         ${c.started ? joinLink(c.name, true) : ""}
       </div>`).join("")}
@@ -414,7 +424,8 @@ async function client(name) {
       <div class="stat red"><div class="ico">${ICON.file}</div><div><b>${fmt(c.functions - c.matched)}</b><span>Remaining</span></div></div>
     </div>
     <div class="label">Code <small>(${mb(c.bytes)}) — ${pct(c.matched_bytes, c.bytes)}</small></div>
-    ${bar(c.matched_bytes, 0, c.bytes, "g")}
+    ${codeBar(c.source_bytes || 0, c.mined_bytes ?? c.matched_bytes, c.partial_bytes || 0, c.bytes)}
+    <div class="legend"><span><i style="background:#58a6ff"></i>source-backed</span><span><i style="background:#3fb950"></i>mined</span><span><i style="background:repeating-linear-gradient(135deg,#205d38 0 5px,#173f29 5px 10px)"></i>in progress</span></div>
     <div class="label">Data <small>(${mb(latest.data_bytes || 0)}) — ${pct(latest.data_matched_bytes || 0, latest.data_bytes)}
       verified (strings and constants used by matched functions)</small></div>
     ${bar(latest.data_matched_bytes || 0, 0, latest.data_bytes || 1, "b")}

@@ -37,7 +37,10 @@
    ],
    "data_matched_bytes": 41546,
    "classes": 0,
-   "generated": 6361
+   "generated": 6361,
+   "source_bytes": 515868,
+   "mined_bytes": 37732,
+   "partial_bytes": 120
   },
   {
    "name": "2007-08",
@@ -89,7 +92,10 @@
    ],
    "data_matched_bytes": 75467,
    "classes": 1391,
-   "generated": 16973
+   "generated": 16973,
+   "source_bytes": 609539,
+   "mined_bytes": 206576,
+   "partial_bytes": 165732
   },
   {
    "name": "2008-06",
@@ -120,7 +126,10 @@
    ],
    "data_matched_bytes": 80799,
    "classes": 1488,
-   "generated": 19917
+   "generated": 19917,
+   "source_bytes": 598444,
+   "mined_bytes": 169973,
+   "partial_bytes": 385
   },
   {
    "name": "2009-06",
@@ -151,7 +160,10 @@
    ],
    "data_matched_bytes": 64271,
    "classes": 1624,
-   "generated": 20922
+   "generated": 20922,
+   "source_bytes": 549038,
+   "mined_bytes": 155414,
+   "partial_bytes": 14
   },
   {
    "name": "2010-06",
@@ -182,7 +194,10 @@
    ],
    "data_matched_bytes": 62873,
    "classes": 2012,
-   "generated": 26137
+   "generated": 26137,
+   "source_bytes": 558428,
+   "mined_bytes": 201366,
+   "partial_bytes": 52
   },
   {
    "name": "2011-06",
@@ -213,7 +228,10 @@
    ],
    "data_matched_bytes": 50268,
    "classes": 2230,
-   "generated": 28151
+   "generated": 28151,
+   "source_bytes": 422236,
+   "mined_bytes": 105713,
+   "partial_bytes": 28
   },
   {
    "name": "2012-06",
@@ -244,7 +262,10 @@
    ],
    "data_matched_bytes": 49291,
    "classes": 2176,
-   "generated": 30232
+   "generated": 30232,
+   "source_bytes": 414731,
+   "mined_bytes": 126086,
+   "partial_bytes": 0
   }
  ],
  "leaderboard": [
