@@ -263,7 +263,10 @@ def failure_clusters(limit=20):
             row = json.loads(line)
         except ValueError:
             continue
-        for attempt in row.get("rounds", []):
+        attempts = row.get("rounds", [])
+        if not isinstance(attempts, list):
+            attempts = []
+        for attempt in attempts:
             error = attempt.get("compile_error")
             if error:
                 compact = " ".join(error.split())
