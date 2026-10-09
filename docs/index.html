@@ -78,7 +78,7 @@ code { color: var(--accent2); font-family: var(--mono); font-size: .92em; }
 .bar.code .s { background: var(--blue); }
 .bar.code .m { background: var(--green); box-shadow: none; }
 .bar.code .s, .bar.code .m, .bar.code .p { border-radius: 0; }
-.bar.code .p { background: repeating-linear-gradient(135deg, #205d38 0 5px, #173f29 5px 10px); background-size: 14px 14px; animation: progress-stripes .8s linear infinite; }
+.bar.code .p { background: repeating-linear-gradient(135deg, #245b9e 0 5px, #17395f 5px 10px); background-size: 14px 14px; animation: progress-stripes .8s linear infinite; }
 @keyframes progress-stripes { to { background-position: 14px 0; } }
 @media (prefers-reduced-motion: reduce) { .bar.code .p { animation: none; } }
 
@@ -405,8 +405,8 @@ function color(score, original, harness) {
   if (original) return "#58a6ff";
   if (!score) return "#3a3d45";
   if (score === 100) return "#3fb950";
-  const t = score / 100;  // partial: grey -> green
-  return `rgb(${58 + (40 - 58) * t | 0},${61 + (140 - 61) * t | 0},${69 + (60 - 69) * t | 0})`;
+  const t = score / 100;  // partial: grey -> dark blue
+  return `rgb(${58 + (24 - 58) * t | 0},${61 + (79 - 61) * t | 0},${69 + (147 - 69) * t | 0})`;
 }
 
 async function client(name) {
@@ -439,7 +439,7 @@ async function client(name) {
     </div>
     <div class="label">Code <small>(${mb(c.bytes)}) — ${pct(c.matched_bytes, c.bytes)}</small></div>
     ${codeBar(c.source_bytes || 0, c.mined_bytes ?? c.matched_bytes, c.partial_bytes || 0, c.bytes)}
-    <div class="legend"><span><i style="background:#58a6ff"></i>original source</span><span><i style="background:#3fb950"></i>mined</span><span><i style="background:repeating-linear-gradient(135deg,#205d38 0 5px,#173f29 5px 10px)"></i>in progress</span></div>
+    <div class="legend"><span><i style="background:#58a6ff"></i>original source</span><span><i style="background:#3fb950"></i>mined</span><span><i style="background:repeating-linear-gradient(135deg,#245b9e 0 5px,#17395f 5px 10px)"></i>partial source</span></div>
     <div class="label">Data <small>(${mb(latest.data_bytes || 0)}) — ${pct(latest.data_matched_bytes || 0, latest.data_bytes)}
       verified (strings and constants used by matched functions)</small></div>
     ${bar(latest.data_matched_bytes || 0, 0, latest.data_bytes || 1, "b")}
@@ -452,7 +452,7 @@ async function client(name) {
     </div>
     <div class="map"><canvas id="cv"></canvas><div class="tip" id="tip"></div></div>
     <div class="legend"><span><i style="background:#58a6ff"></i>original source</span><span><i style="background:#3fb950"></i>mined match</span>
-      <span><i style="background:rgb(49,100,64)"></i>partial</span><span><i style="background:#3a3d45"></i>source pending</span></div>
+      <span><i style="background:#184f93"></i>partial source</span><span><i style="background:#3a3d45"></i>source pending</span></div>
     <div class="detail" id="detail">Click a tile to see its function address, match score, and recovered source.</div>
     ${leaderboard(latest.leaderboard)}
     <div class="head"><h2><small>Pick one</small>Easiest remaining</h2></div>
