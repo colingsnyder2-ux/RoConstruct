@@ -135,3 +135,6 @@ hypotheses. No standalone Unicode gain; do not promote.
 Data triage: 10 stored XTP 99% candidates across 2007-08 were recompiled and
 checked. All remained code 99%; none reached code 100%, so none qualified for a
 data-only mismatch test. Do not spend typed-table recovery budget on these rows.
+
+2009 scale shard: `CXTPPropExchangeXMLNode` from XTP 15.2.1 yielded 9/10 exact
+results under shared MFC; one improved 90→91. Added recipe and test coverage.

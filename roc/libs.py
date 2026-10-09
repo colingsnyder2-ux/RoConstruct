@@ -450,6 +450,10 @@ _XTP_INC = ["xtp-15.2.1/Source", "mfc-9.0/atlmfc/include", "WINSDK"]
 _XTP_STDAFX = {"Source/StdAfx.h": '#include "XTToolkitPro.h"\n'}
 RECIPES["xtp-15.2.1"] = dict(src="xtp-15.2.1", langs=["cpp"], builds=[30729, 21022], include=_XTP_INC,
                              grid=_MFC_GRID, files="Source/**/*.cpp", write=_XTP_STDAFX)
+RECIPES["xtp-15.2.1-shared-mfc"] = dict(
+    src="xtp-15.2.1", langs=["cpp"], builds=[30729, 21022], include=_XTP_INC,
+    defines="_AFXDLL _XTP_STATICLINK _DLL", grid=["/O2 /GS- /MD", "/O1 /GS- /MD"],
+    files="Source/**/*.cpp", write=_XTP_STDAFX)
 
 # Older XTP for the older clients (archive.org): v13.2.1 (2010) -> 2010-06, v11.2.2 (2008) ->
 # 2008-06. Both build on MFC 9.0. v11 also builds on MFC 8.0 (VS2005) for the 2007-08 client,

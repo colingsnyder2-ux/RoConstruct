@@ -16,6 +16,7 @@ def test_shared_mfc_recipe_uses_real_macros_and_dynamic_crt():
     assert mfc['src'] == libs.RECIPES['mfc-9.0']['src']
     assert libs.RECIPES['xtp-13.2.1-shared-mfc']['src'] == 'xtp-13.2.1'
     assert libs.RECIPES['xtp-11.2.2-vc8-shared-mfc']['builds'] == [50727]
+    assert libs.RECIPES['xtp-15.2.1-shared-mfc']['src'] == 'xtp-15.2.1'
 
 
 def test_macro_configuration_has_separate_preprocessing_cache(tmp_path):
