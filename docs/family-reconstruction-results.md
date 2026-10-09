@@ -84,6 +84,11 @@ bias:
 | 2008-06 `seg_007f0000` (19) | 18 exact | 19 exact | −21% |
 | 2009-06 `seg_00890000` (15) | 8 exact | 15 exact | −40% |
 
+A genuine random 2008-06 worker sample (12 completed jobs before cloud retries)
+produced 0 exact, 10 improved, and 100% family fingerprint coverage. It is a
+hard mixed-function sample, so it does not prove family gain by itself; it does
+prove runtime index/telemetry wiring.
+
 ## Deterministic propagation replay
 
 Compiler-gated address-literal propagation was replayed across all verified
