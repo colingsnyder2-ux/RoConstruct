@@ -1,0 +1,194 @@
+[
+ {
+  "client": "2007-03",
+  "addr": "0050e560",
+  "size": 148,
+  "unit": "seg_00500000",
+  "bucket": "large",
+  "source_present": false
+ },
+ {
+  "client": "2007-03",
+  "addr": "00535620",
+  "size": 83,
+  "unit": "seg_00530000",
+  "bucket": "medium",
+  "source_present": false
+ },
+ {
+  "client": "2007-03",
+  "addr": "0047e960",
+  "size": 47,
+  "unit": "seg_00470000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2007-08",
+  "addr": "0051bbd0",
+  "size": 366,
+  "unit": "seg_00510000",
+  "bucket": "large",
+  "source_present": false
+ },
+ {
+  "client": "2007-08",
+  "addr": "00778da0",
+  "size": 64,
+  "unit": "seg_00770000",
+  "bucket": "medium",
+  "source_present": false
+ },
+ {
+  "client": "2007-08",
+  "addr": "004a36e0",
+  "size": 6,
+  "unit": "seg_004a0000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2008-06",
+  "addr": "0052f080",
+  "size": 347,
+  "unit": "seg_00520000",
+  "bucket": "large",
+  "source_present": false
+ },
+ {
+  "client": "2008-06",
+  "addr": "007f7f10",
+  "size": 56,
+  "unit": "seg_007f0000",
+  "bucket": "medium",
+  "source_present": false
+ },
+ {
+  "client": "2008-06",
+  "addr": "00801880",
+  "size": 10,
+  "unit": "seg_00800000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "00590480",
+  "size": 537,
+  "unit": "seg_00590000",
+  "bucket": "large",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "00584780",
+  "size": 75,
+  "unit": "seg_00580000",
+  "bucket": "medium",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "008858c0",
+  "size": 19,
+  "unit": "seg_00880000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-12",
+  "addr": "0061d590",
+  "size": 534,
+  "unit": "seg_00610000",
+  "bucket": "large",
+  "source_present": false
+ },
+ {
+  "client": "2009-12",
+  "addr": "00792880",
+  "size": 61,
+  "unit": "seg_00790000",
+  "bucket": "medium",
+  "source_present": false
+ },
+ {
+  "client": "2009-12",
+  "addr": "00982380",
+  "size": 1,
+  "unit": "seg_00980000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2010-06",
+  "addr": "00585fb0",
+  "size": 192,
+  "unit": "seg_00580000",
+  "bucket": "large",
+  "source_present": false
+ },
+ {
+  "client": "2010-06",
+  "addr": "00556140",
+  "size": 68,
+  "unit": "seg_00550000",
+  "bucket": "medium",
+  "source_present": false
+ },
+ {
+  "client": "2010-06",
+  "addr": "009c2b80",
+  "size": 5,
+  "unit": "seg_009c0000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2011-06",
+  "addr": "00581ba0",
+  "size": 1740,
+  "unit": "seg_00580000",
+  "bucket": "large",
+  "source_present": false
+ },
+ {
+  "client": "2011-06",
+  "addr": "005595c0",
+  "size": 86,
+  "unit": "seg_00550000",
+  "bucket": "medium",
+  "source_present": false
+ },
+ {
+  "client": "2011-06",
+  "addr": "00a2fa70",
+  "size": 12,
+  "unit": "seg_00a20000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2012-06",
+  "addr": "006697c0",
+  "size": 146,
+  "unit": "seg_00660000",
+  "bucket": "large",
+  "source_present": false
+ },
+ {
+  "client": "2012-06",
+  "addr": "0083e0b0",
+  "size": 61,
+  "unit": "seg_00830000",
+  "bucket": "medium",
+  "source_present": false
+ },
+ {
+  "client": "2012-06",
+  "addr": "00af8170",
+  "size": 22,
+  "unit": "seg_00af0000",
+  "bucket": "tiny",
+  "source_present": false
+ }
+]

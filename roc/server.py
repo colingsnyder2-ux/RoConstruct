@@ -21,6 +21,40 @@ from roc import clients, match, setup
 
 ROOT = Path(__file__).resolve().parent.parent
 USER_RE = re.compile(r"^[A-Za-z0-9_.-]{2,32}$")
+
+# Which function a worker gets next. "best" is the long-standing ranking and
+# "auto" is the default: finish the near-complete ones, then take the untouched
+# ones, then spread out. The rest let a worker pin one strategy.
+ORDER_SQL = {
+    # most confident evidence first, near-complete next, then cheap
+    "best": "source_confidence DESC, (score >= 90) DESC, (unit NOT LIKE 'seg_%') DESC, "
+            "difficulty, attempts, size",
+    # highest score first: finish the almost-done functions
+    "matched": "score DESC, source_confidence DESC, difficulty, size",
+    # untouched first: functions still sitting at 0%, fewest tries first
+    "unmatched": "(score = 0) DESC, attempts, difficulty, size",
+    # cheapest first, ignoring how confident the evidence is
+    "easiest": "difficulty, size, source_confidence DESC",
+    # spread named functions first; anonymous segments are only a fallback
+    "random": "(unit LIKE 'seg_%'), RANDOM()",
+}
+ORDERS = tuple(sorted(ORDER_SQL)) + ("auto",)
+
+
+def resolve_order(order, db):
+    """Turn "auto" into a concrete order from what is actually left to do."""
+    if order != "auto":
+        return order if order in ORDER_SQL else "best"
+    # near-complete functions are the cheapest 100% wins: always take them
+    near = db.execute("SELECT COUNT(*) FROM funcs WHERE score >= 90 AND score < 100").fetchone()[0]
+    if near:
+        return "matched"
+    # otherwise start on the untouched ones so nothing is left unstarted
+    untouched = db.execute("SELECT COUNT(*) FROM funcs WHERE score = 0").fetchone()[0]
+    if untouched:
+        return "unmatched"
+    # only hard leftovers: spread so parallel workers do not collide
+    return "random"
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS funcs(client TEXT, addr TEXT, size INT, unit TEXT,
   score INT DEFAULT 0, source TEXT, user TEXT, attempts INT DEFAULT 0, updated REAL, shape TEXT,
@@ -87,7 +121,7 @@ class Store:
             self.db.commit()
             return added
 
-    def lease(self, user, worker, have, mode, max_size, model=None, targets=None):
+    def lease(self, user, worker, have, mode, max_size, model=None, targets=None, order="best"):
         now = time.time()
         with self.lock:
             self.db.execute("DELETE FROM leases WHERE expires < ?", (now,))
@@ -110,7 +144,8 @@ class Store:
                 "SELECT client, addr, size, unit, score, source, shape, calls, source_confidence, difficulty, attempts_by_model FROM funcs f "
                 "WHERE client IN (%s) AND score < 100 AND size BETWEEN 6 AND ? AND cooldown <= ? %s AND NOT EXISTS "
                 "(SELECT 1 FROM leases l WHERE l.client = f.client AND l.addr = f.addr) "
-                "ORDER BY source_confidence DESC, (score >= 90) DESC, (unit NOT LIKE 'seg_%%') DESC, difficulty, attempts, size LIMIT 64" % (marks, target_sql),
+                "ORDER BY %s LIMIT 64" % (marks, target_sql,
+                                          ORDER_SQL[resolve_order(order, self.db)]),
                 (*have, max_size, now, *target_args)).fetchall()
             row = None
             if candidates:
@@ -284,7 +319,7 @@ class Store:
             row = self.db.execute("SELECT size, unit FROM funcs WHERE client = ? AND addr = ?", (client, addr)).fetchone()
         return {"client": client, "addr": addr, "size": row[0], "unit": row[1]} if row else None
 
-    def examples(self, client, n=3, unit=None, shape=None):
+    def examples(self, client, n=3, unit=None, shape=None, strict=False):
         """Small matched sources, used as few-shot examples for AI workers."""
         with self.lock:
             unit_sql = " AND unit = ?" if unit else ""
@@ -293,7 +328,7 @@ class Store:
             rows = self.db.execute("SELECT addr, source FROM funcs WHERE client = ? AND score = 100 "
                                    "AND source IS NOT NULL AND LENGTH(source) <= 6000 "
                                    + unit_sql + shape_sql + " ORDER BY RANDOM() LIMIT ?", args).fetchall()
-            if (unit or shape) and not rows:
+            if (unit or shape) and not rows and not strict:
                 rows = self.db.execute("SELECT addr, source FROM funcs WHERE client = ? AND score = 100 "
                                        "AND source IS NOT NULL AND LENGTH(source) <= 6000 "
                                        " ORDER BY RANDOM() LIMIT ?",
@@ -361,7 +396,8 @@ def make_handler(store, token, can_verify, mine_log=None):
                 return self.send(200, store.sources(q.get("client", ""), int(q.get("min_score", 1))))
             if url.path == "/v1/examples":
                 return self.send(200, store.examples(q.get("client", ""), min(int(q.get("n", 3)), 10),
-                                                     q.get("unit"), q.get("shape")))
+                                                     q.get("unit"), q.get("shape"),
+                                                     q.get("strict") == "1"))
             self.send(404, {"error": "unknown endpoint"})
 
         def do_POST(self):
@@ -385,7 +421,8 @@ def make_handler(store, token, can_verify, mine_log=None):
                 job = store.lease(user, str(body.get("worker", ""))[:64], have,
                                   str(body.get("mode", ""))[:16], int(body.get("max_size", 256)),
                                   str(body.get("model", ""))[:120] or None,
-                                  body.get("targets"))
+                                  body.get("targets"),
+                                  order=str(body.get("order", "best"))[:16])
                 return self.send(200, {"job": job})
             if path == "/v1/heartbeat":
                 return self.send(200, {"ok": store.heartbeat(str(body.get("lease", "")))})

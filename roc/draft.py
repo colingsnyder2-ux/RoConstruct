@@ -611,13 +611,20 @@ Assembly is ground truth; later source and RTTI names are clues only. Preserve c
 
 
 def prompt_for(client, addr, row, asm, hint, attempt, flags=None, examples=(), source_hints=(), facts=None,
-               strategy="direct", compact_rules=False, binary_only=False, minimal_layout=False):
+               strategy="direct", compact_rules=False, binary_only=False, minimal_layout=False,
+               family_exemplars=False):
     entry = match.clients.load()[client]
     p = ["You are doing matching decompilation of a function from an old Roblox client.",
          (COMPACT_RULES if compact_rules else RULES).format(
              compiler=entry["compiler"], flags=flags or entry.get("flags") or match.DEFAULT_FLAGS)]
-    for ex in examples[:2 if strategy == "direct" else 1]:
-        p += ["", "Example of an already matched function from this client:", "```cpp", _clip_example(ex), "```"]
+    for ex in examples[:1 if family_exemplars else (2 if strategy == "direct" else 1)]:
+        label = ("Verified same-family exemplar from this client. Adapt operands, offsets, and names; "
+                 "preserve its control-flow pattern only." if family_exemplars else
+                 "Example of an already matched function from this client:")
+        p += ["", label, "```cpp", _clip_example(ex), "```"]
+    if family_exemplars:
+        p += ["Use exemplar as structural evidence, not answer text. Emit only target function. "
+              "Do not expand unrelated class fields or paste assembly."]
     p += ["", "Stage: %s. Function %s, %d bytes, class (from RTTI, may be a guess): %s" %
           (classify_target(asm, facts), addr, row["size"], row["unit"]),
           "Target assembly (read-only evidence; do not copy it into the answer):", "\n".join(asm)]
@@ -694,6 +701,14 @@ def prompt_for(client, addr, row, asm, hint, attempt, flags=None, examples=(), s
     return "\n".join(p)
 
 
+def select_generation_strategy(strategy, model, row):
+    """Pick the evidence-backed opt-in strategy without changing direct default."""
+    if strategy != "auto":
+        return strategy
+    name = str(model or "").lower()
+    return "structured" if "deepseek" in name and int(row.get("size", 0) or 0) <= 32 else "direct"
+
+
 def _norm_src(src):
     return re.sub(r"\s+", " ", (src or "").strip())
 
@@ -763,6 +778,7 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
     from roc import repair as _repair
     from roc import mutate as _mutate
     code, _, row = match.target(client, addr)
+    strategy = select_generation_strategy(strategy, model, row)
     asm = match.disasm(code, int(addr, 16))
     best = (start[1], start[0]) if start and start[0] else (0, None)
     scored = [(best[0], best[1])] if best[1] else []
@@ -796,7 +812,8 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
                                  compact_rules=(provider_options or {}).get("compact_rules", False),
                                  binary_only=((provider_options or {}).get("binary_only", False) or
                                               row.get("size", 0) > (provider_options or {}).get("source_hint_max_size", float("inf"))),
-                                 minimal_layout=(provider_options or {}).get("minimal_layout", False))
+                                 minimal_layout=(provider_options or {}).get("minimal_layout", False),
+                                 family_exemplars=(provider_options or {}).get("family_exemplars", False))
         if independent and i:
             full_prompt += ("\n\nIndependent candidate %d/%d: use different compact C++ control flow. "
                             "Still emit exactly one function." % (i + 1, diverse_rounds))

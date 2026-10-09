@@ -75,8 +75,11 @@ def build_hidden(limit=8, persist=True):
 
 
 def run_local(corpus, models, rounds=1, log=print, resume=False, session="benchmark", strategies=("direct",),
-              provider_options=None):
+              provider_options=None, family_examples=None):
     """Benchmark configured models without submitting or changing server state.
+
+    ``family_examples`` optionally maps ``(client, addr)`` to verified source
+    exemplars for controlled sibling experiments; normal runs pass none.
 
     session isolates one measured run: pass a unique id per arm (e.g.
     "bench-<date>-<label>") so background worker jobs sharing the metrics
@@ -111,8 +114,9 @@ def run_local(corpus, models, rounds=1, log=print, resume=False, session="benchm
                 started = time.monotonic()
                 stats = []
                 try:
+                    examples = (family_examples or {}).get((client, addr), ())
                     score, _src = draft.llm_rounds(client, addr, model, rounds, None, (None, 0),
-                                                   log, clients.load()[client].get("flags"), (),
+                                                   log, clients.load()[client].get("flags"), examples,
                                                    refsource.prompt_hints(row.get("unit", ""), target_facts=facts, client=client),
                                                    facts, stats, strategy=strategy, provider_options=provider_options)
                     failure = None

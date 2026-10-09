@@ -578,14 +578,17 @@ def cmd_worker(a):
                 raise SystemExit("Cloud key is missing: set %s" % config["key_env"])
         elif not draft.pick_model(a.cloud_fallback):
             raise SystemExit("Cloud fallback model is not installed: %s" % a.cloud_fallback)
+    order = a.order or "auto"
+    if order not in ("auto", "best", "matched", "unmatched", "easiest", "random"):
+        sys.exit("--order must be one of: auto, best, matched, unmatched, easiest, random")
     if a.dry_run:
         info = worker.Api(srv, a.token or s.get("token")).call("/v1/info")
         have = worker.usable_clients(info)
-        print("Worker preview: user=%s model=%s clients=%s rounds=%d max-size=%d Rev.ng=%s workers=%s output-budget=%d" %
+        print("Worker preview: user=%s model=%s clients=%s rounds=%d max-size=%d Rev.ng=%s workers=%s output-budget=%d order=%s" %
               (user, draft.pick_model(chosen) or "none", ", ".join(have) or "none",
-               a.rounds, a.max_size, "off" if a.no_revng else "auto", a.workers, a.output_budget))
+               a.rounds, a.max_size, "off" if a.no_revng else "auto", a.workers, a.output_budget, order))
         return
-    worker.save_settings(user=user, server=srv, model=a.model)
+    worker.save_settings(user=user, server=srv, model=a.model, order=order)
     worker.run_concurrent(srv, user, a.token or s.get("token"), chosen, a.rounds, a.max_size,
                           not a.no_revng, a.jobs, a.workers, source_only=a.source_only,
                           only=[a.client] if a.client else None, strategy=a.strategy,
@@ -594,7 +597,8 @@ def cmd_worker(a):
                           cloud_fallback=a.cloud_fallback, seed=a.seed,
                           cloud_escalate=a.cloud_escalate, cloud_escalate_after=a.cloud_escalate_after,
                           thinking=a.thinking, reasoning_effort=a.reasoning_effort,
-                          max_tokens=a.output_budget, guided_mutations=a.guided_mutations)
+                          max_tokens=a.output_budget, guided_mutations=a.guided_mutations,
+                          order=order, family_exemplars=a.family_exemplars)
 
 
 def cmd_provider(a):
@@ -735,7 +739,7 @@ def cmd_benchmark_models(a):
         print("Running benchmark: %d targets, %d models%s" %
               (len(corpus), len(models), " (resumable)" if a.resume else ""))
         strategies = tuple(a.strategies.split(","))
-        bad = set(strategies).difference({"direct", "structured", "reference"})
+        bad = set(strategies).difference({"auto", "direct", "structured", "reference"})
         if bad:
             raise SystemExit("unknown strategy: %s" % ", ".join(sorted(bad)))
         budget = providers.CloudBudget(a.max_cloud_requests, a.max_cloud_tokens, a.max_cloud_cost)
@@ -1129,6 +1133,8 @@ def main(argv=None):
         (["--public-server"], {"help": "address shown on the site (if not using --tunnel)"}),
         (["--startup"], {"action": "store_true", "help": "start host.cmd automatically when you log in"}))
     cmd("worker", cmd_worker, "help automatically: AI drafts, compile, submit",
+            (["--order"], {"choices": ["auto", "best", "matched", "unmatched", "easiest", "random"], "default": "auto",
+                           "help": "which functions first: most-matched (score high to low), random, unmatched (0%% first), easiest, best evidence, or auto"}),
         (["--server"], {}), (["--user"], {}), (["--token"], {}), (["--model"], {}),
         (["--client"], {"help": "restrict work to one registered client (for example 2008-06)"}),
         (["--rounds"], {"type": int, "default": 4, "help": "AI tries per function"}),
@@ -1157,6 +1163,8 @@ def main(argv=None):
         (["--seed"], {"type": int, "help": "generation seed where provider supports it"}),
         (["--thinking"], {"choices": ["auto", "enabled", "disabled"], "default": "auto",
                             "help": "provider reasoning mode; auto disables it for tiny jobs"}),
+        (["--family-exemplars"], {"action": "store_true", "default": True,
+                                    "help": "use verified same-shape sources as compact family exemplars (default)"}),
         (["--reasoning-effort"], {"choices": ["auto", "low", "medium", "high", "max"],
                                     "help": "provider reasoning effort; auto uses low for tiny jobs"}),
         (["--no-revng"], {"action": "store_true"}),

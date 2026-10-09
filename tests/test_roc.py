@@ -194,6 +194,9 @@ def test_draft_helpers():
     assert draft.model_profile("qwen2.5-coder:7b") == {"num_ctx": 6144, "num_predict": 1536}
     assert draft.model_profile("custom") == {"num_ctx": 8192, "num_predict": 2048}
     assert draft.model_rounds("qwen2.5-coder:7b-instruct", 9) == 3
+    assert draft.select_generation_strategy("auto", "deepseek:deepseek-flash", {"size": 32}) == "structured"
+    assert draft.select_generation_strategy("auto", "deepseek:deepseek-flash", {"size": 33}) == "direct"
+    assert draft.select_generation_strategy("auto", "qwen2.5-coder:7b", {"size": 16}) == "direct"
     assert draft.classify_target(["mov eax, dword ptr [ecx + 0x4]", "ret "]) == "leaf/getter"
     assert draft.classify_target(["call sym", "ret "]) == "wrapper/thunk"
     assert "struct Namespace::Type" in draft.RULES
@@ -224,6 +227,17 @@ def test_draft_helpers():
     sprawl = "struct S {\n" + "\n".join("int field_%d;" % i for i in range(20)) + "\n};\nint f(){return 0;}"
     assert "numbered-field" in draft.source_contract_error(sprawl)
     assert draft.compile_failure_class("error C2227") == "receiver/object pointer misuse"
+
+
+def test_opcode_family_grouping():
+    from roc import families
+    asm = ["00401000  8b01                 mov eax, [ecx]",
+           "00401002  c3                   ret"]
+    assert families.opcode_shape(asm) == ("mov", "ret")
+    rows = [{"addr": "00401000", "size": 3}, {"addr": "00401010", "size": 3},
+            {"addr": "00401020", "size": 5}]
+    reps = families.representatives(rows, lambda row: asm if row["size"] == 3 else ["ret"])
+    assert len(reps) == 1 and reps[0][2][0]["addr"] == "00401000"
 
 
 def test_draft_rejects_inline_asm(monkeypatch):
@@ -586,14 +600,14 @@ def test_link_options():
     with patch("roc.draft.ollama_models", return_value=["qwen2.5-coder:14b", "qwen2.5-coder:7b"]), \
          patch("roc.draft.pick_model", return_value="qwen2.5-coder:14b"), \
          patch("roc.worker.save_settings"), \
-         patch("builtins.input", side_effect=["", "", "", "y", "", "", "", "", "direct"]):
+         patch("builtins.input", side_effect=["", "", "", "y", "", "512", "", "", "", "direct", "", ""]):
         assert choose_options({"model": "qwen2.5-coder:14b", "worker_preset": "deep",
                                "worker_workers": "auto", "worker_revng": False,
                                "worker_output_budget": 2048}) == ("qwen2.5-coder:14b", 6, 512, False, "auto", 2048, "auto")
     with patch("roc.draft.ollama_models", return_value=["qwen2.5-coder:14b", "qwen2.5-coder:7b"]), \
          patch("roc.draft.pick_model", return_value="qwen2.5-coder:14b"), \
          patch("roc.worker.save_settings"), \
-         patch("builtins.input", side_effect=["", "balanced", "1", "y", "6", "1024", "n", "disabled", "direct"]):
+         patch("builtins.input", side_effect=["", "balanced", "1", "y", "6", "256", "1024", "n", "disabled", "direct", "matched", "compact"]):
         assert choose_options({}) == ("qwen2.5-coder:14b", 6, 256, False, 1, 1024, "disabled")
     with patch("roc.draft.ollama_models", return_value=["qwen2.5-coder:14b", "qwen2.5-coder:7b"]), \
          patch("roc.draft.pick_model", return_value="qwen2.5-coder:14b"), \
@@ -624,6 +638,8 @@ def test_uri_link_checks_updates_before_launch():
 
 def test_optimizer_split_and_one_time_profile():
     from roc import optimizer
+    assert any(config["name"] == "auto" and config["strategy"] == "auto"
+               for config in optimizer.CONFIGS)
     targets = [{"client": "C", "addr": "%08x" % n} for n in range(6)]
     calibration, validation = optimizer.split_targets(targets)
     assert len(calibration) == 4 and len(validation) == 2
@@ -983,6 +999,22 @@ def test_server_store():
     except ValueError:
         pass
     assert guarded.submit("C", "00401000", "alice", 100, "x", lease=lease["lease"]) == (100, True)
+
+
+def test_server_ordering():
+    st = Store(":memory:", lease_seconds=10)
+    st.db.executemany("INSERT INTO funcs(client,addr,size,unit,score,source_confidence,difficulty) VALUES(?,?,?,?,?,?,?)",
+                      [("C", "00401000", 30, "A", 0, 0, 30),
+                       ("C", "00401010", 10, "B", 50, 1, 10),
+                       ("C", "00401020", 50, "C", 90, 2, 50)])
+    for order, addr in (("matched", "00401020"), ("unmatched", "00401000"),
+                        ("easiest", "00401010"), ("best", "00401020"), ("auto", "00401020")):
+        job = st.lease("alice", order, ["C"], "ai", 256, order=order)
+        assert job["addr"] == addr
+        st.release(job["lease"], 0)
+    st.db.execute("UPDATE funcs SET unit='seg_00400000' WHERE addr='00401000'")
+    job = st.lease("alice", "random", ["C"], "ai", 256, order="random")
+    assert not job["unit"].startswith("seg_")
 
 
 def test_shape_normalisation():

@@ -118,7 +118,9 @@ def run(url):
                            mode="cloud" if cloud else "local", cloud=cloud, model=model)
     print("Saved a signed setup: %s" % handoff.config_path())
     worker.keep_awake()
-    return worker.main_args(payload, knobs(rounds, max_size, use_revng, workers))
+    return worker.main_args(payload, knobs(rounds, max_size, use_revng, workers,
+                                           worker.load_settings().get("worker_order", "auto"),
+                                           worker.load_settings().get("worker_verbosity", "auto")))
 
 
 def choose_worker(settings, mode):
@@ -150,9 +152,9 @@ def choose_worker(settings, mode):
     return choose_options(fresh)
 
 
-def knobs(rounds, max_size, use_revng, workers):
+def knobs(rounds, max_size, use_revng, workers, order="auto", verbosity="auto"):
     """The chosen options as CLI flags for worker.main_args."""
-    argv = ["--workers", str(workers)]
+    argv = ["--workers", str(workers), "--order", order, "--verbosity", verbosity]
     if isinstance(rounds, int):
         argv += ["--rounds", str(rounds)]
     if isinstance(max_size, int):
@@ -401,6 +403,7 @@ def choose_options(settings):
         output_budget = profile.get("max_tokens", settings.get("worker_output_budget", 2048))
     strategy = (settings.get("worker_strategy") if settings.get("worker_strategy_model") == model else
                 profile.get("strategy", settings.get("worker_strategy", "direct")))
+    order = settings.get("worker_order", "auto")
     last_workers = (profile.get("workers", settings.get("worker_workers", "1"))
                     if profile and settings.get("worker_workers_model") != model
                     else settings.get("worker_workers", "1"))
@@ -420,6 +423,14 @@ def choose_options(settings):
                 rounds = max(1, min(int(picked), 12))
             except ValueError:
                 raise SystemExit("Rounds must be auto or 1-12")
+        default_max_size = settings.get("worker_max_size", 96)
+        picked = input("Max function size [%s bytes]: " % default_max_size).strip() or str(default_max_size)
+        try:
+            max_size = int(picked)
+        except ValueError:
+            raise SystemExit("Max function size must be a positive byte count")
+        if max_size < 6:
+            raise SystemExit("Max function size must be at least 6 bytes")
         last_budget = (settings.get("worker_output_budget") if settings.get("worker_output_budget_model") == model
                        else profile.get("max_tokens", settings.get("worker_output_budget", 2048)))
         picked = input("Output budget [auto=%s tokens]: " % last_budget).strip().lower() or "auto"
@@ -447,9 +458,15 @@ def choose_options(settings):
         thinking = input("Thinking [%s] (auto/enabled/disabled): " % last_thinking).strip().lower() or last_thinking
         if thinking not in ("auto", "enabled", "disabled"):
             raise SystemExit("Thinking must be auto, enabled, or disabled")
-        strategy = input("Generation strategy [%s] (direct/structured/reference): " % strategy).strip().lower() or strategy
-        if strategy not in ("direct", "structured", "reference"):
-            raise SystemExit("Strategy must be direct, structured, or reference")
+        strategy = input("Generation strategy [%s] (auto/direct/structured/reference): " % strategy).strip().lower() or strategy
+        if strategy not in ("auto", "direct", "structured", "reference"):
+            raise SystemExit("Strategy must be auto, direct, structured, or reference")
+        order = input("Work order [%s] (auto/best/matched/unmatched/easiest/random): " % order).strip().lower() or order
+        if order not in ("auto", "best", "matched", "unmatched", "easiest", "random"):
+            raise SystemExit("Work order must be auto, best, matched, unmatched, easiest, or random")
+        verbosity = input("Console verbosity [auto] (auto/verbose/compact): ").strip().lower() or "auto"
+        if verbosity not in ("auto", "verbose", "compact"):
+            raise SystemExit("Console verbosity must be auto, verbose, or compact")
     else:
         last_budget = (settings.get("worker_output_budget") if settings.get("worker_output_budget_model") == model
                        else profile.get("max_tokens", settings.get("worker_output_budget", 2048)))
@@ -459,6 +476,7 @@ def choose_options(settings):
         thinking = settings.get("worker_thinking", "auto")
         if thinking not in ("auto", "enabled", "disabled"):
             thinking = "auto"
+        verbosity = settings.get("worker_verbosity", "auto")
     from roc import worker
     if model is None:
         worker.clear_setting("model")
@@ -467,6 +485,7 @@ def choose_options(settings):
     worker.save_settings(worker_preset=preset, worker_workers=workers,
                          worker_revng=use_revng, worker_output_budget=output_budget,
                          worker_thinking=thinking, worker_strategy=strategy,
+                         worker_order=order, worker_verbosity=verbosity, worker_max_size=max_size,
                          worker_rounds=rounds, worker_launcher_configured=True,
                          worker_preset_model=model, worker_rounds_model=model,
                          worker_workers_model=model, worker_output_budget_model=model,

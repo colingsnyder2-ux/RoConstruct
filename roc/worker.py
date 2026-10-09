@@ -251,7 +251,13 @@ def main_args(payload, argv=()):
     ap.add_argument("--rounds", type=int, help="AI tries per function")
     ap.add_argument("--max-size", type=int, help="skip functions bigger than this")
     ap.add_argument("--jobs", type=int, help="stop after this many functions")
+    ap.add_argument("--order", choices=["auto", "best", "matched", "unmatched", "easiest", "random"],
+                    help="which functions to lease first")
+    ap.add_argument("--verbosity", choices=["auto", "verbose", "compact"],
+                    help="console detail; auto is verbose below 3 workers")
     ap.add_argument("--no-revng", action="store_true", help="never use Rev.ng hints")
+    ap.add_argument("--family-exemplars", action="store_true", default=True,
+                    help="use verified same-shape sources as compact family exemplars (default)")
     ap.add_argument("--dry-run", action="store_true", help="print the plan without leasing a job")
     given = ap.parse_args(list(argv))
 
@@ -268,7 +274,10 @@ def main_args(payload, argv=()):
     rounds = given.rounds if given.rounds else 4
     max_size = given.max_size if given.max_size else 256
     workers = given.workers or ("auto" if is_cloud else 1)
-    save_settings(user=user, server=server, token=token, cloud_allowed=cloud_allowed or None, model=model)
+    order = given.order or load_settings().get("worker_order", "auto")
+    verbosity = given.verbosity or load_settings().get("worker_verbosity", "auto")
+    save_settings(user=user, server=server, token=token, cloud_allowed=cloud_allowed or None, model=model,
+                  worker_order=order, worker_verbosity=verbosity)
     budget = providers.CloudBudget(HANDOFF_CLOUD_REQUESTS, HANDOFF_CLOUD_TOKENS,
                                    HANDOFF_CLOUD_COST_USD if providers.has_pricing(model) else None)
     print("Signed setup: user=%s client=%s server=%s model=%s (%s) workers=%s" %
@@ -284,7 +293,9 @@ def main_args(payload, argv=()):
     return run_concurrent(server, user, token, model, rounds, max_size, not given.no_revng,
                           given.jobs, workers=workers, only=[client] if client else None,
                           cloud_allowed=cloud_allowed, cloud_budget=budget,
-                          max_tokens=2048, thinking="auto")
+                          max_tokens=2048, thinking="auto", order=order,
+                          verbosity=verbosity,
+                          family_exemplars=given.family_exemplars)
 
 
 _ANNOUNCE_LOCK = threading.Lock()
@@ -415,7 +426,8 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
         strategy="direct", cloud_allowed=False, cloud_budget=None, cloud_gate=None,
         diverse_candidates=1, cloud_min_size=0, cloud_fallback=None, seed=None,
         cloud_escalate=None, cloud_escalate_after=2, thinking=None, reasoning_effort=None,
-        max_tokens=2048, examples_cache=None, source_cache=None, guided_mutations=False):
+        max_tokens=2048, examples_cache=None, source_cache=None, guided_mutations=False,
+        order="auto", family_exemplars=True):
     """forever: survive server/network outages (retry every minute) for overnight runs.
     only: restrict to these clients (one-click links).
     examples_cache/source_cache: shared across parallel loops so N workers do
@@ -488,7 +500,7 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
         try:
             job = api.call("/v1/lease", {"user": user, "worker": worker, "clients": have,
                                          "mode": "ai", "model": model, "max_size": max_size,
-                                         "targets": targets})["job"]
+                                         "targets": targets, "order": order})["job"]
         except (Exception, SystemExit) as error:  # overnight: nothing short of Ctrl+C stops the loop
             if not forever:
                 raise
@@ -525,7 +537,8 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
         provider_options = {"allow_cloud": cloud_allowed, "budget": cloud_budget,
                             "gate": cloud_gate, "diverse_candidates": diverse_candidates,
                             "seed": seed, "max_tokens": max_tokens,
-                            "guided_mutations": guided_mutations}
+                            "guided_mutations": guided_mutations,
+                            "family_exemplars": family_exemplars}
         if rounds == "auto" and (job_model or "").startswith("deepseek:"):
             provider_options["source_hint_max_size"] = 128
         if think is not None:
@@ -554,7 +567,8 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
                    cloud_budget=None, cloud_gate=None, diverse_candidates=1,
                    cloud_min_size=0, cloud_fallback=None, seed=None,
                    cloud_escalate=None, cloud_escalate_after=2, thinking=None, reasoning_effort=None,
-                   max_tokens=2048, guided_mutations=False):
+                   max_tokens=2048, guided_mutations=False, order="auto", verbosity="auto",
+                   family_exemplars=True):
     """Run a bounded number of independent lease loops.
 
     Server leases make workers safe to run in parallel. Cloud loops are
@@ -570,22 +584,27 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
         cloud_gate = providers.CloudGate(workers)
     shared_examples, shared_sources = {}, {}
     if workers == 1:
-        return run(server, user, token, model, rounds, max_size, use_revng,
-                   max_jobs, log, forever=True, only=only, source_only=source_only, targets=targets,
-                   strategy=strategy, cloud_allowed=cloud_allowed, cloud_budget=cloud_budget, cloud_gate=cloud_gate,
-                   diverse_candidates=diverse_candidates, cloud_min_size=cloud_min_size,
-                   cloud_fallback=cloud_fallback, seed=seed, cloud_escalate=cloud_escalate,
-                   cloud_escalate_after=cloud_escalate_after, thinking=thinking,
-                   reasoning_effort=reasoning_effort, max_tokens=max_tokens,
-                   guided_mutations=guided_mutations,
-                   examples_cache=shared_examples, source_cache=shared_sources)
+        worker_log = CompactLog(1, log) if verbosity == "compact" else log
+        result = run(server, user, token, model, rounds, max_size, use_revng,
+                     max_jobs, worker_log, forever=True, only=only, source_only=source_only, targets=targets,
+                     strategy=strategy, cloud_allowed=cloud_allowed, cloud_budget=cloud_budget, cloud_gate=cloud_gate,
+                     diverse_candidates=diverse_candidates, cloud_min_size=cloud_min_size,
+                     cloud_fallback=cloud_fallback, seed=seed, cloud_escalate=cloud_escalate,
+                     cloud_escalate_after=cloud_escalate_after, thinking=thinking,
+                     reasoning_effort=reasoning_effort, max_tokens=max_tokens,
+                     guided_mutations=guided_mutations, order=order,
+                     family_exemplars=family_exemplars,
+                     examples_cache=shared_examples, source_cache=shared_sources)
+        if verbosity == "compact":
+            worker_log.finish()
+        return result
     if max_jobs is None:
         quotas = [None] * workers
     else:
         base, extra = divmod(max(0, int(max_jobs)), workers)
         quotas = [base + (i < extra) for i in range(workers)]
     errors = []
-    worker_log = CompactLog(workers, log) if workers > 3 else log
+    worker_log = CompactLog(workers, log) if verbosity == "compact" or (verbosity == "auto" and workers >= 3) else log
     if not source_only:
         setup.compilers()
     from roc import refsource
@@ -601,7 +620,8 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
                 cloud_fallback=cloud_fallback, seed=seed, cloud_escalate=cloud_escalate,
                 cloud_escalate_after=cloud_escalate_after, thinking=thinking,
                 reasoning_effort=reasoning_effort, max_tokens=max_tokens,
-                guided_mutations=guided_mutations,
+                guided_mutations=guided_mutations, order=order,
+                family_exemplars=family_exemplars,
                 examples_cache=shared_examples, source_cache=shared_sources)
         except BaseException as error:
             errors.append(error)
@@ -627,6 +647,7 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
 def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=None,
              source_cache=None, session=None, source_only=False, strategy="direct", provider_options=None):
     from roc import providers
+    family_exemplars = bool((provider_options or {}).get("family_exemplars"))
     client, addr = job["client"], job["addr"]
     flags = info["clients"][client].get("flags")
     log("[%s %s] %d B, %s, best so far %d%%" % (client, addr, job["size"], job["unit"], job["score"]))
@@ -714,11 +735,16 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
             examples_cache[client] = {}
         example_key = (job["unit"], job.get("shape"))
         if example_key not in examples_cache[client]:
-            path = "/v1/examples?client=%s&unit=%s&shape=%s&n=2" % (
-                quote(client), quote(job["unit"]), quote(job.get("shape") or ""))
             quarantined = metrics.quarantined_keys()
-            examples_cache[client][example_key] = [e["source"] for e in api.call(path)
-                                                   if (client, e.get("addr")) not in quarantined]
+            if family_exemplars and not job.get("shape"):
+                examples_cache[client][example_key] = []
+            else:
+                strict = "&strict=1" if family_exemplars else ""
+                path = "/v1/examples?client=%s&unit=%s&shape=%s&n=%d%s" % (
+                    quote(client), quote(job["unit"]), quote(job.get("shape") or ""),
+                    1 if family_exemplars else 2, strict)
+                examples_cache[client][example_key] = [e["source"] for e in api.call(path)
+                                                       if (client, e.get("addr")) not in quarantined]
         examples = examples_cache[client][example_key]
         source_key = (client, job["unit"], tuple(facts.get("strings", ())),
                       tuple(refsource._target_terms(facts)), int(facts.get("calls", 0) or 0),

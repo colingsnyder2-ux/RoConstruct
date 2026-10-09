@@ -12,6 +12,7 @@ CONFIGS = (
     {"name": "fast", "rounds": 2, "max_tokens": 1024, "strategy": "direct"},
     {"name": "balanced", "rounds": 4, "max_tokens": 2048, "strategy": "direct"},
     {"name": "structured", "rounds": 4, "max_tokens": 2048, "strategy": "structured"},
+    {"name": "auto", "rounds": 4, "max_tokens": 2048, "strategy": "auto"},
 )
 
 

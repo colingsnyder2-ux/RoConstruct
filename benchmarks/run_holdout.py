@@ -14,7 +14,7 @@ def main():
     parser.add_argument("manifest", type=Path)
     parser.add_argument("--model", required=True)
     parser.add_argument("--rounds", type=int, default=2)
-    parser.add_argument("--strategy", choices=("direct", "structured"), default="direct")
+    parser.add_argument("--strategy", choices=("auto", "direct", "structured"), default="direct")
     parser.add_argument("--session", default="holdout-" + time.strftime("%Y%m%d-%H%M%S"))
     parser.add_argument("--allow-cloud", action="store_true")
     parser.add_argument("--max-tokens", type=int,
