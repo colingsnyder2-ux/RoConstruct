@@ -507,6 +507,14 @@ def test_model_pricing_is_exact_and_usable_for_caps():
         assert not providers.has_pricing("deepseek:other")
 
 
+def test_case_path_resolves_windows_authored_names(tmp_path):
+    from roc import libs
+    (tmp_path / "Network" / "raknet30" / "Source").mkdir(parents=True)
+    resolved = libs._case_path(tmp_path / "Network" / "RakNet30" / "Source")
+    assert resolved == tmp_path / "Network" / "raknet30" / "Source"
+    assert libs._case_path(tmp_path / "does-not-exist") == tmp_path / "does-not-exist"
+
+
 def test_lib_compile_variants_stops_at_first_failure():
     from roc import libs, match
     recipe = {"grid": ["/O2", "/Ox", "/O1"], "langs": ["c"]}

@@ -521,10 +521,37 @@ RECIPES["lame-3.99.5"] = dict(
     files="*.c")
 
 
+def _case_path(path):
+    """The on-disk path for a possibly differently-cased recipe path.
+
+    Recipes were written on Windows, where Network/RakNet30 and Network/raknet30
+    are the same directory. On Linux the checkout's real casing must be used or
+    the file is simply not found (rbxgs-raknet failed exactly this way).
+    """
+    path = Path(path)
+    if path.exists():
+        return path
+    current = Path(path.anchor) if path.is_absolute() else Path()
+    parts = path.parts[1:] if path.is_absolute() else path.parts
+    for part in parts:
+        candidate = current / part
+        if part in (".", "..") or candidate.exists():
+            current = candidate
+            continue
+        parent = candidate.parent
+        if not parent.is_dir():
+            return path
+        match = next((entry for entry in parent.iterdir() if entry.name.lower() == part.lower()), None)
+        if match is None:
+            return path
+        current = match
+    return current
+
+
 def fetch(name):
     """Download + verify + unpack a recipe's source into tools/libs/. Returns the source folder."""
     r = RECIPES[name]
-    folder = LIBS / r["src"]
+    folder = _case_path(LIBS / r["src"])
     for dep in r.get("needs", []):
         fetch(dep)
     if r.get("generate"):  # deterministic generated sources: same files on every machine
@@ -609,7 +636,7 @@ def unit(name, path, build):
     cache = ROOT / "work" / "libcache" / name / str(build) / (path.replace("\\", "/").replace("/", "__") + suffix)
     if cache.exists():
         return cache.read_text(errors="replace")
-    include = ";".join([str(folder)] + [winsdk_include() if i == "WINSDK" else str(LIBS / i)
+    include = ";".join([str(folder)] + [winsdk_include() if i == "WINSDK" else str(_case_path(LIBS / i))
                                         for i in r.get("include", [])])
     body = preprocess(build, src, include, r.get("defines", ""))
     if r.get("strip_header_asm"):
