@@ -692,7 +692,10 @@ def cmd_submit(a):
     for name in names:
         if not (ROOT / "src" / name).is_dir():
             continue
-        worker.submit_files(srv, user, name, a.addr or None, a.token or s.get("token"))
+        try:
+            worker.submit_files(srv, user, name, a.addr or None, a.token or s.get("token"))
+        except worker.ApiFailure as error:
+            print("%s: submit failed: %s" % (name, error))
 
 
 def cmd_pull(a):

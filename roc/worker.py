@@ -1299,17 +1299,33 @@ def pull_files(server, client, token=None, force=False, log=print):
 
 
 def submit_files(server, user, client, addrs=None, token=None, log=print):
-    """Upload hand-written src/<client>/*.cpp to the server (checked locally first)."""
+    """Upload hand-written src/<client>/*.cpp to the server (checked locally first).
+
+    Files pulled from the server ("// from server:" header) are skipped when
+    submitting a whole client: they are already there, and one rejected file
+    (e.g. a client the server has not imported yet) must not abort the run.
+    """
     api = Api(server, token)
     paths = sorted((ROOT / "src" / client).glob("*.cpp"))
     if addrs:
         paths = [p for p in paths if p.stem in addrs]
+    skipped = 0
     for p in paths:
+        text = p.read_text(errors="replace")
+        if not addrs and text.startswith("// from server:"):
+            skipped += 1
+            continue
         try:
             score, _, _, _ = match.check(client, p.stem, p)
         except match.CompileError as error:
             log("%s  skipped, does not compile: %s" % (p.stem, str(error).splitlines()[0]))
             continue
-        r = api.call("/v1/submit", {"user": user, "client": client, "addr": p.stem,
-                                    "score": score, "source": p.read_text()})
+        try:
+            r = api.call("/v1/submit", {"user": user, "client": client, "addr": p.stem,
+                                        "score": score, "source": text})
+        except ApiFailure as error:
+            log("%s  not accepted: %s" % (p.stem, error))
+            continue
         log("%s  %3d%%  %s" % (p.stem, r["stored"], "new best" if r["improved"] else "server already has this or better"))
+    if skipped:
+        log("%s: %d pulled source(s) already on the server, skipped" % (client, skipped))
