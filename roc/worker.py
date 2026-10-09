@@ -382,7 +382,7 @@ def main_args(payload, argv=()):
     rounds = given.rounds if given.rounds else 4
     max_size = given.max_size if given.max_size else 256
     workers = given.workers or ("auto" if is_cloud else 1)
-if given.allow_cloud:
+    if given.allow_cloud:
         cloud_allowed = True
     escalate = given.cloud_escalate
     if escalate:

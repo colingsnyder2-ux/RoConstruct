@@ -25,10 +25,10 @@ DIST = ROOT / "dist"
 # Every module a working cloud worker needs (transitive closure of worker, link,
 # handoff, doctor, setup, analyze, draft, optimizer and the matchers).
 WORKER_MODULES = [
-    "analyze", "auto", "benchmark", "clients", "doctor", "draft", "fingerprint",
-    "flags", "handoff", "libs", "link", "mass", "match", "metrics", "mutate",
+    "analyze", "angr_facts", "auto", "benchmark", "clients", "doctor", "draft", "fingerprint",
+    "flags", "handoff", "libs", "link", "ltcg", "mass", "match", "metrics", "mutate",
     "optimizer", "providers", "refsource", "repair", "selfupdate", "setup",
-    "shapes", "sources", "uninstall", "worker", "xcopy",
+    "shapes", "sources", "uninstall", "verify_window", "worker", "xcopy",
 ]
 # Only the maintainer's server needs these, so they stay out of the helper zips.
 SERVER_MODULES = ["dataset", "discord", "progress", "server"]

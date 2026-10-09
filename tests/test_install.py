@@ -413,7 +413,7 @@ def test_packages_audit_rejects_a_missing_helper_module():
 
 def test_packages_audit_allows_the_maintainer_modules():
     build = load_build()
-    assert build.audit(ROOT, build.PACKAGES["worker"]) == ["dataset", "progress", "server"]
+    assert build.audit(ROOT, build.PACKAGES["worker"]) == ["dataset", "discord", "progress", "server"]
     assert build.audit(ROOT, build.PACKAGES["server"]) == []
 
 
