@@ -25,8 +25,8 @@ def summarize(funcs):
         "partial": sum(1 for f in funcs if 0 < f[2] < 100),
         "bytes": total,
         "matched_bytes": sum(f[1] for f in funcs if f[2] == 100),
-        "source_bytes": sum(f[1] for f in funcs if f[2] == 100 and len(f) > 4 and f[4]),
-        "mined_bytes": sum(f[1] for f in funcs if f[2] == 100 and not (len(f) > 4 and f[4])),
+        "source_bytes": sum(f[1] for f in funcs if f[2] == 100 and len(f) > 5 and f[5]),
+        "mined_bytes": sum(f[1] for f in funcs if f[2] == 100 and not (len(f) > 5 and f[5])),
         "partial_bytes": sum(f[1] for f in funcs if 0 < f[2] < 100),
     }
 
