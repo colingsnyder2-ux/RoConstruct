@@ -42,7 +42,8 @@ def main():
         return match.disasm(code, int(row["addr"], 16))
 
     totals = {"families": 0, "verified_families": 0, "siblings": 0,
-              "rewritten": 0, "compiled": 0, "exact": 0, "conversions": 0}
+              "attempted": 0, "rewritten": 0, "compiled": 0, "exact": 0,
+              "conversions": 0}
     details = []
     for key, representative, members in families.representatives(rows, disassemble):
         source = source_for(args.representative_session, representative["addr"])
@@ -61,8 +62,12 @@ def main():
             for row in pending:
                 code, _, _ = match.target(args.client, row["addr"])
                 asm = match.disasm(code, int(row["addr"], 16))
-                candidate = next((auto.family_propagate(asm, ex) for ex in exemplars
-                                  if auto.family_propagate(asm, ex)), None)
+                candidate = None
+                for exemplar in exemplars:
+                    totals["attempted"] += 1
+                    candidate = auto.family_propagate(asm, exemplar)
+                    if candidate:
+                        break
                 if not candidate:
                     next_pending.append(row)
                     continue
