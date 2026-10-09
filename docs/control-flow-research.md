@@ -105,6 +105,8 @@ pytest -q tests/test_roc.py
 python benchmarks/run_holdout.py benchmarks/holdout-fresh-100-20261008.json --model deepseek:deepseek-flash --rounds 1 --strategy direct --allow-cloud --max-cloud-requests 100 --max-cloud-tokens 250000 --max-cloud-cost 1.00
 python benchmarks/run_holdout.py benchmarks/holdout-fresh-100-20261008.json --model deepseek:deepseek-flash --rounds 1 --strategy structured --allow-cloud --max-cloud-requests 100 --max-cloud-tokens 250000 --max-cloud-cost 1.00
 python benchmarks/repairs.py --corpus benchmarks/holdout-fresh-100-20261008.json --model deepseek:deepseek-flash
+python benchmarks/fresh_holdout.py --count 24 --output benchmarks/holdout-fresh-auto24-20261009.json
+python benchmarks/run_holdout.py benchmarks/holdout-fresh-auto24-20261009.json --model deepseek:deepseek-flash --rounds 2 --strategy auto --allow-cloud --thinking disabled --max-cloud-cost 0.50
 ```
 
 ## Conclusion
@@ -112,3 +114,46 @@ python benchmarks/repairs.py --corpus benchmarks/holdout-fresh-100-20261008.json
 CFG facts are worth keeping as compact structured evidence. Full external
 decompiler integration is not justified yet. Next bottleneck is first-pass
 generation on medium/large functions and token truncation, not CFG readability.
+
+## Selective strategy (2026-10-09)
+
+`roc/draft.py:select_generation_strategy` adds opt-in `auto` routing. It uses
+structured generation only for DeepSeek targets at 32 bytes or fewer, where the
+existing 100-target evidence showed the only repeatable exact-match signal;
+larger targets and other models stay direct. The normal `direct` default is
+unchanged. The launcher accepts `auto` through `roc/link.py`.
+
+This is a routing hypothesis, not a proven improvement. Run a fresh paired
+holdout before saving it as a default profile.
+
+Fresh paired routing smoke (`holdout-fresh-auto12-20261009`, fingerprint
+`7d130d583c1905fadebbb091eaca784990c9b1d845a2d85a6b2c7077e5f6849`) used 12
+never-seen targets, two rounds, DeepSeek Flash, and thinking disabled:
+
+| arm | exact | compilable | avg score | tokens | cost |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| direct | 1/12 | 9/12 | 58.50 | 49,643 | $0.020026 |
+| structured | 2/12 | 8/12 | 43.17 | 49,171 | $0.018512 |
+| auto | 2/12 | 10/12 | 59.75 | 48,829 | $0.020366 |
+
+Auto improved one exact and one compiling job versus direct on this tiny
+sample, while spending essentially the same tokens. The gain is not
+statistically proven; keep `auto` opt-in and repeat on a larger frozen holdout.
+
+The repeat on a larger fresh manifest (`holdout-fresh-auto24-20261009`,
+fingerprint `9f8053e0fef25985c7efacc929621a594948e7979ca2b60911deec5b960ce5e8`)
+used 24 targets with the same settings:
+
+| arm | exact | compilable | avg score | tokens | cost | truncated |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| direct | 4/24 | 15/24 | 43.21 | 98,405 | $0.041766 | 7 |
+| auto | 5/24 | 19/24 | 55.21 | 97,863 | $0.040199 | 3 |
+
+All five auto exact matches were tiny; medium/large exact count stayed zero
+in both arms. Auto reduced truncations and compile failures while using 0.6%
+fewer tokens, but one 24-target repeat is still insufficient to make it the
+default. It is the strongest current candidate for opt-in routing.
+
+`roc/optimizer.py` includes `auto` in optional per-model calibration. It now
+competes with fast, balanced, and structured, then validates the winner on
+held-out targets. No saved profile or default changes without that validation.
