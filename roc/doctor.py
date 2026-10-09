@@ -132,6 +132,12 @@ def cloud_check(network=True):
     available = [name for name, config in sorted(providers.providers().items())
                  if providers.key_available(config["key_env"])]
     model = worker.cloud_default()
+    if not model:
+        # A custom OpenAI-compatible provider has no built-in default, so fall
+        # back to the model the user actually saved.
+        saved = worker.load_settings().get("model")
+        if saved and providers.is_cloud(saved) and providers.available(saved):
+            model = saved
     if model:
         detail.append("cloud model %s ready" % model)
     elif available:
