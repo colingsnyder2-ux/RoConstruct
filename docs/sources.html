@@ -83,6 +83,33 @@ body > footer:first-of-type { display: none; }
       exact compiler produces byte-identical machine code. These sources are where those bytes come from.</p>
   </div>
 
+  <h2>Per-client sources <span class="pill">what exists now</span></h2>
+  <p class="sub">Each list separates an exact identified version from a compatible source tree. <span class="tag ok">source present</span> means code is local and compilable; it does not promise every function matches. <span class="tag no">missing</span> means the exact source is not available. <span class="tag part">not pinned</span> means binary evidence has not identified the exact version yet.</p>
+  <div class="card"><table>
+    <tr><th>Client</th><th>Sources / exact version</th><th>Code status</th></tr>
+    <tr><td class="name">2007-03</td><td><code>VS2005 SP1</code>, MFC/ATL <code>8.0</code>; XTP version <strong>not pinned</strong> (9.60-era possible); G3D <code>6.x</code>; RakNet <code>3.0</code>; RBXGSdecomp (Nov 2007) is nearby Roblox source, not same build.</td><td><span class="tag ok">MFC/ATL, G3D, RakNet</span> <span class="tag part">Roblox nearby</span> <span class="tag part">XTP not pinned</span></td></tr>
+    <tr><td class="name">2007-08</td><td><code>VS2005 SP1</code>, MFC/ATL <code>8.0</code>; Codejock XTP <code>9.60/9.60.1</code>; G3D <code>6.x</code>; RakNet <code>3.0</code>; RBXGSdecomp (Nov 2007) nearby.</td><td><span class="tag ok">MFC/ATL, G3D, RakNet</span> <span class="tag no">XTP 9.60 source missing</span> <span class="tag part">Roblox nearby</span></td></tr>
+    <tr><td class="name">2008-06</td><td><code>VS2008 RTM</code>, MFC/ATL <code>9.0</code>; Codejock XTP <code>11.2.2</code>; G3D <code>6.x</code>; RakNet version not pinned; RBXGSdecomp only compatible Roblox source.</td><td><span class="tag ok">MFC/ATL, XTP 11.2.2</span> <span class="tag part">G3D/RakNet/Roblox compatible</span></td></tr>
+    <tr><td class="name">2009-06</td><td><code>VS2008 SP1</code>, MFC/ATL <code>9.0</code>; XTP version not pinned (local <code>11.2.2</code>/<code>13.2.1</code> candidates); G3D <code>7.x</code>; Ogre <code>1.4.9</code>; RakNet fork version not pinned.</td><td><span class="tag ok">MFC/ATL, Ogre 1.4.9</span> <span class="tag part">XTP candidates</span> <span class="tag no">G3D 7.x exact source missing</span></td></tr>
+    <tr><td class="name">2009-12</td><td><code>VS2008 SP1</code>, MFC/ATL <code>9.0</code>; XTP version not pinned; G3D <code>7.x</code>; Ogre <code>1.6.4</code>; RakNet fork version not pinned.</td><td><span class="tag ok">MFC/ATL, Ogre 1.6.4</span> <span class="tag part">XTP/RakNet candidates</span> <span class="tag no">G3D 7.x exact source missing</span></td></tr>
+    <tr><td class="name">2010-06</td><td><code>VS2008 SP1</code>, MFC/ATL <code>9.0</code>; Codejock XTP <code>13.2.1</code>; G3D <code>7.x</code>; Ogre <code>1.6.4</code>; RakNet fork version not pinned.</td><td><span class="tag ok">MFC/ATL, XTP 13.2.1, Ogre 1.6.4</span> <span class="tag no">G3D 7.x exact source missing</span></td></tr>
+    <tr><td class="name">2011-06</td><td><code>VS2008 RTM</code>, MFC/ATL <code>9.0</code>; Codejock XTP <code>15.2.1</code>; G3D <code>8.x</code>; Ogre <code>1.6.4</code>; LAME <code>3.98.4/3.99.5</code>; RakNet fork version not pinned.</td><td><span class="tag ok">MFC/ATL, XTP 15.2.1, Ogre, LAME</span> <span class="tag part">G3D 8.00 partial local</span></td></tr>
+    <tr><td class="name">2012-06</td><td><code>VS2008 SP1</code>, MFC/ATL <code>9.0</code>; Codejock XTP <code>15.2.1</code>; G3D <code>8.x</code>; Ogre <code>1.6.4</code>; LAME <code>3.98.4/3.99.5</code>; RakNet fork version not pinned.</td><td><span class="tag ok">MFC/ATL, XTP 15.2.1, Ogre, LAME</span> <span class="tag part">G3D 8.00 partial local</span></td></tr>
+  </table></div>
+  <p class="note">All clients also have local zlib, libjpeg, libpng, Lua and Boost source candidates. Their exact release is shown only where binary evidence pins it; unpinned candidates remain compile-tested leads, not claimed originals.</p>
+
+  <h2>2007-08 focus <span class="pill">VS2005 SP1</span></h2>
+  <p class="sub">The August 2007 client uses <code>cl 14.00.50727</code>. Its best source lead is
+    RBXGSdecomp (November 2007), plus MFC 8.0, ATL 8.0, G3D 6.x, early RakNet, Lua and Boost.
+    The current 2016-tree name index explains 10,846 of 19,998 client units (54.2%); names guide
+    research, but only a compiler-verified byte match changes progress.</p>
+  <div class="card"><table>
+    <tr><th>Evidence class</th><th>How RoConstruct uses it</th></tr>
+    <tr><td class="name">exact source</td><td>Compile with the client compiler and flag grid; submit only byte-identical code.</td></tr>
+    <tr><td class="name">compatible source</td><td>Older/newer source can reveal class, methods and structure, but never counts without an exact compile result.</td></tr>
+    <tr><td class="name">binary evidence</td><td>RTTI, vtables, imports, PDB paths, strings and repeated opcode families prioritize a search; they are not source.</td></tr>
+  </table></div>
+
   <h2>Roblox's own source <span class="pill">biggest win</span></h2>
   <p class="sub">Real Roblox code. No library ships it; it has to come from a leak or a community decompilation.</p>
   <div class="card"><table>
@@ -122,7 +149,7 @@ body > footer:first-of-type { display: none; }
   <div class="card"><table>
     <tr><th>Source</th><th>What it gives</th><th>Status</th></tr>
     <tr><td class="name">MFC</td><td>8.0 (VS2005), 9.0 (VS2008) — the static MFC that ships with each compiler</td><td><span class="tag ok">used</span></td></tr>
-    <tr><td class="name">Codejock XTP</td><td>Xtreme Toolkit Pro 11.2.2, 13.2.1, 15.2.1 (the <code>CXTP*</code> UI classes), built on MFC</td><td><span class="tag ok">used</span></td></tr>
+    <tr><td class="name">Codejock XTP</td><td>Commercial Xtreme Toolkit Pro. 2007-08 identifies as the older 9.60/9.60.1 line; its exact implementation source is still missing. Local 11.2.2 VC8, 13.2.1 and 15.2.1 trees provide <code>CXTP*</code> family/method clues and are compile-tested, never treated as an exact 9.60 substitute. Codejock's <a href="https://codejock.com/products/releasenotes/older/release_notes.asp?cyn6s14z=zsp">release notes</a> date 9.60.1 to March 3, 2005.</td><td><span class="tag part">partial</span></td></tr>
     <tr><td class="name">ATL</td><td>ATL 8.0 and 9.0 headers/source from the matching Visual Studio installs</td><td><span class="tag part">recipe added</span></td></tr>
     <tr><td class="name">STL templates</td><td>Explicit instantiations of std::vector/list/map/set/string etc. from the VC headers (<code>templates-boost-*</code>, STL grid)</td><td><span class="tag ok">used</span></td></tr>
     <tr><td class="name">libcmt / libcpmt</td><td>Static CRT/STL (<code>msvc-crt</code>). <strong>0 matches</strong> — the clients link the DLL runtime (<code>/MD</code> → msvcr80/90, msvcp80/90), so the static CRT objects are not in the exe.</td><td><span class="tag no">0 — /MD</span></td></tr>
@@ -146,6 +173,7 @@ body > footer:first-of-type { display: none; }
     <tr><td class="name">Roblox's Ogre subclass source</td><td>~950 <code>Ogre::Rbx*</code> functions per late client are Roblox's own Ogre subclasses (RbxSceneManager, RbxEntity, RbxCluster…). Ogre was dropped before the 2016 leak, so this source exists nowhere public.</td><td><span class="tag no">missing</span></td></tr>
     <tr><td class="name">Exact per-TU compiler flags</td><td>Roblox built different translation units with different optimisation flags. We sweep a grid, but the real per-file flags (from a build log or project files) would match the functions the grid misses.</td><td><span class="tag part">partial</span></td></tr>
     <tr><td class="name">More community decompilations</td><td>RBXGSdecomp covers Nov 2007. A matching decompilation of a later build (2009–2012) would directly supply RBX source for the newer clients, where the 2007 source has drifted.</td><td><span class="tag part">wanted</span></td></tr>
+    <tr><td class="name">Codejock XTP 9.60 / 9.60.1 source</td><td>2007-08's <code>CXTP*</code> classes, including <code>CXTPOffice2007Theme</code>, come from this commercial version. Searches found version/API evidence and later source trees, but no public exact source archive or repository. A licensed copy or original installer/source bundle would make this a high-value VC8 sweep.</td><td><span class="tag no">missing</span></td></tr>
   </table></div>
 
   <h2>Checked, not useful</h2>

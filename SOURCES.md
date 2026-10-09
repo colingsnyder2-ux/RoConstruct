@@ -28,6 +28,26 @@ The clients and their compilers:
 All recipes live in [`roc/libs.py`](roc/libs.py). Running them: `roc libs <recipe|all>`,
 or `roc mass` for the full automatic pass (runtime tagging + STL + every library + auto shapes).
 
+## Per-client source inventory
+
+`source present` means a local compilable tree exists. It does **not** mean that every
+function matches. `not pinned` means binary evidence has not yet identified the exact
+release, so candidate source is not claimed to be original source.
+
+| Client | Identified components | Exact/source status |
+|---|---|---|
+| 2007-03 | VS2005 SP1; MFC/ATL 8.0; G3D 6.x; RakNet 3.0; XTP not pinned (9.60-era possible) | MFC/ATL, G3D and RakNet source present. RBXGSdecomp is Nov-2007 nearby source. XTP exact source unknown/missing. |
+| 2007-08 | VS2005 SP1; MFC/ATL 8.0; XTP 9.60/9.60.1; G3D 6.x; RakNet 3.0 | MFC/ATL, G3D and RakNet source present. XTP 9.60 implementation source missing. RBXGSdecomp is Nov-2007 nearby source. |
+| 2008-06 | VS2008 RTM; MFC/ATL 9.0; XTP 11.2.2; G3D 6.x | MFC/ATL and XTP 11.2.2 source present. RakNet exact release not pinned; RBXGSdecomp is compatible-only Roblox source. |
+| 2009-06 | VS2008 SP1; MFC/ATL 9.0; G3D 7.x; Ogre 1.4.9; XTP not pinned | MFC/ATL and Ogre 1.4.9 source present. G3D 7.x exact source missing. XTP 11.2.2/13.2.1 are candidates only. |
+| 2009-12 | VS2008 SP1; MFC/ATL 9.0; G3D 7.x; Ogre 1.6.4; XTP not pinned | MFC/ATL and Ogre 1.6.4 source present. G3D 7.x exact source missing. |
+| 2010-06 | VS2008 SP1; MFC/ATL 9.0; XTP 13.2.1; G3D 7.x; Ogre 1.6.4 | MFC/ATL, XTP 13.2.1 and Ogre source present. G3D 7.x exact source missing. |
+| 2011-06 | VS2008 RTM; MFC/ATL 9.0; XTP 15.2.1; G3D 8.x; Ogre 1.6.4; LAME 3.98.4/3.99.5 | MFC/ATL, XTP, Ogre and LAME source present. G3D 8.00 is partial local source, not clean exact release. |
+| 2012-06 | VS2008 SP1; MFC/ATL 9.0; XTP 15.2.1; G3D 8.x; Ogre 1.6.4; LAME 3.98.4/3.99.5 | MFC/ATL, XTP, Ogre and LAME source present. G3D 8.00 is partial local source, not clean exact release. |
+
+All clients also have local zlib, libjpeg, libpng, Lua and Boost candidate source trees.
+The exact release is only listed when pinned by binary evidence.
+
 ---
 
 ## 1. Roblox's own source — the biggest win
@@ -122,7 +142,11 @@ units with the matching VS2005/VS2008 headers. Pending ROC run.
 Code the toolchain and the UI library compiled into the exe.
 
 - **MFC** 8.0 (VS2005) and 9.0 (VS2008) — the static MFC that ships with each compiler.
-- **Codejock XTP** 11.2.2 / 13.2.1 / 15.2.1 — the `CXTP*` UI classes, built on MFC.
+- **Codejock XTP** — the `CXTP*` UI classes, built on MFC. The 2007-08 client identifies
+  with the older 9.60/9.60.1 line (Codejock dates 9.60.1 to 2005-03-03), whose implementation
+  source is still missing. Local 11.2.2 VC8, 13.2.1 and 15.2.1 trees are compatible-source
+  evidence only: they can supply class/method clues and are compiler-tested, but cannot count
+  as 9.60 matches without byte verification.
 - **STL templates** — explicit instantiations of `std::vector/list/map/set/string`… from
   the VC headers. Explicit instantiation emits every member, so one TU fingerprints a
   whole container family.
