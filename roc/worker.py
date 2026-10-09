@@ -889,7 +889,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
             return result
         from roc import refsource
         source_candidate = None
-        if not job.get("near_repair", False):
+        if not (provider_options or {}).get("near_repair", False):
             ensure_lease()
             stage("checking 2016 source candidates")
             source_candidate = refsource.compile_candidates(client, addr, job["unit"], flags, limit=2, log=log)
