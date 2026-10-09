@@ -26,7 +26,9 @@ USER_RE = re.compile(r"^[A-Za-z0-9_.-]{2,32}$")
 def _source_class_token(source):
     path = source.rsplit(": ", 1)[-1].split(" ", 1)[-1]
     token = re.sub(r"[^a-z0-9]", "", Path(path).stem.lower())
-    for prefix in ("cxtp", "xtp", "rbx", "c"):
+    recipe = source.rsplit(": ", 1)[-1].split(" ", 1)[0].lower()
+    prefixes = ("ogre",) if recipe.startswith("ogre-") else ("cxtp", "xtp", "rbx", "c")
+    for prefix in prefixes:
         if token.startswith(prefix) and len(token) > len(prefix) + 3:
             token = token[len(prefix):]
             break

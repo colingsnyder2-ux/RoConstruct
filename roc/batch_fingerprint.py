@@ -62,7 +62,8 @@ def unit_family(unit):
 def source_class(source):
     path = source.rsplit(": ", 1)[-1].split(" ", 1)[-1]
     token = re.sub(r"[^a-z0-9]", "", Path(path).stem.lower())
-    for prefix in ("cxtp", "xtp", "rbx", "c"):
+    prefixes = ("ogre",) if source_family(source) == "ogre" else ("cxtp", "xtp", "rbx", "c")
+    for prefix in prefixes:
         if token.startswith(prefix) and len(token) > len(prefix) + 3:
             token = token[len(prefix):]
             break
@@ -81,7 +82,8 @@ def unit_has_class(unit, token):
 def unit_class(unit):
     """Strict leaf class token, excluding containing namespaces."""
     value = re.sub(r"[^a-z0-9]", "", unit.rsplit("::", 1)[-1].lower())
-    for prefix in ("cxtp", "xtp", "rbx", "c"):
+    prefixes = ("ogre",) if unit_family(unit) == "ogre" else ("cxtp", "xtp", "rbx", "c")
+    for prefix in prefixes:
         if value.startswith(prefix) and len(value) > len(prefix) + 3:
             return value[len(prefix):]
     return value

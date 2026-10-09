@@ -5,10 +5,23 @@ import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from roc.batch_fingerprint import flag_batches, unit_class, unit_family
+from roc.batch_fingerprint import flag_batches, source_class, unit_class, unit_family
 
 
 class FingerprintFamilyTests(unittest.TestCase):
+    def test_ogre_filename_prefix_stays_family_scoped(self):
+        from roc.server import _source_class_token
+        source = '// roc-lib: ogre-1.7.0 OgreMain/src/OgreSceneManager.cpp'
+        self.assertEqual(source_class(source), 'scenemanager')
+        self.assertEqual(_source_class_token(source), 'scenemanager')
+        self.assertEqual(unit_class('Ogre::SceneManager'), 'scenemanager')
+        self.assertEqual(unit_class('OgreSceneManager'), 'scenemanager')
+        self.assertEqual(source_class(source.replace('ogre-1.7.0', 'rbxgs')), 'ogrescenemanager')
+        self.assertEqual(unit_class('RBX::OgreSceneManager'), 'ogrescenemanager')
+        camera = source.replace('SceneManager', 'Camera')
+        self.assertEqual(source_class(camera), unit_class('Ogre::Camera'))
+        self.assertEqual(_source_class_token(camera), unit_class('Ogre::Camera'))
+
     def test_xtp_theme_namespace(self):
         self.assertEqual(unit_family('XTPPaintThemes::CXTPOffice2003Theme'), 'xtp')
         self.assertEqual(unit_class('XTPPaintThemes::CXTPOffice2003Theme'), 'office2003theme')
