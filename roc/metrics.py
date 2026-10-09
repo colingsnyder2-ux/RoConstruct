@@ -244,10 +244,15 @@ def family_stats():
     cost = sum(r.get("estimated_cost", 0) or 0 for r in rows)
     tokens = sum((r.get("input_tokens", 0) or 0) + (r.get("output_tokens", 0) or 0) for r in rows)
     matched = sum(r.get("score") == 100 for r in rows)
+    clients = {r.get("client") for r in rows if r.get("client")}
+    families = {r.get("family_id") for r in rows if r.get("family_id")}
+    exemplar_jobs = sum(bool(r.get("family_exemplar")) for r in rows)
     return {"jobs": len(rows), "matched": matched,
             "match_rate": round(100 * matched / max(len(rows), 1), 2),
             "propagated": sum(bool(r.get("family_propagated")) for r in rows),
-            "tokens": tokens, "cost": round(cost, 8),
+            "exemplar_jobs": exemplar_jobs, "clients": len(clients),
+            "families": len(families), "tokens": tokens, "cost": round(cost, 8),
+            "exact_per_100k_tokens": round(100000 * matched / tokens, 4) if tokens else None,
             "exact_per_dollar": round(matched / cost, 4) if cost else None}
 
 

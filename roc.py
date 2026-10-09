@@ -694,9 +694,11 @@ def cmd_family_stats(a):
     if not row["jobs"]:
         print("No family telemetry yet.")
         return
-    print("Family jobs=%d exact=%d rate=%.2f%% propagated=%d tokens=%d cost=$%.6f exact/$=%s" %
-          (row["jobs"], row["matched"], row["match_rate"], row["propagated"], row["tokens"],
-           row["cost"], "unknown" if row["exact_per_dollar"] is None else row["exact_per_dollar"]))
+    print("Family jobs=%d exact=%d rate=%.2f%% clients=%d families=%d exemplars=%d propagated=%d tokens=%d cost=$%.6f exact/$=%s exact/100k=%s" %
+          (row["jobs"], row["matched"], row["match_rate"], row["clients"], row["families"],
+           row["exemplar_jobs"], row["propagated"], row["tokens"], row["cost"],
+           "unknown" if row["exact_per_dollar"] is None else row["exact_per_dollar"],
+           "unknown" if row["exact_per_100k_tokens"] is None else row["exact_per_100k_tokens"]))
 
 
 def cmd_failures(a):
