@@ -38,7 +38,7 @@ def source_family(source):
 
 
 def unit_family(unit):
-    if unit.startswith(("CXTP", "CXT")):
+    if unit.startswith(("CXTP", "CXT", "XTPPaintThemes::")):
         return "xtp"
     if unit.startswith("boost::"):
         return "boost"
