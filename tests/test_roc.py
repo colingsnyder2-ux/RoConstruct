@@ -205,6 +205,10 @@ def test_draft_helpers():
     cfg = draft.cfg_outline(["00401000  7502                 jne 0x401004", "00401002  c3                   ret ",
                              "00401004  ebfa                 jmp 0x401000"])
     assert "B0@00401000:B2/B1" in cfg and "loops=B2->B0" in cfg
+    graph = draft.cfg_facts(["00401000  7502                 jne 0x401004", "00401002  c3                   ret ",
+                            "00401004  ebfa                 jmp 0x401000"])
+    assert graph["reachable"] == [0, 1, 2] and graph["loop_headers"] == [0]
+    assert graph["dominators"]["2"] == [0, 2]
     constraints = draft.type_constraints(["jb sym", "ret 8"], {"this_reads": [4], "stack_args": [8],
                                                             "virtual_slots": [3], "returns": ["ret 8"]})
     assert "ECX receiver" in constraints and "unsigned branch" in constraints and "virtual slots 3" in constraints

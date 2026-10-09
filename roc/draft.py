@@ -271,15 +271,16 @@ def _insn(line):
     return re.sub(r"^[0-9a-fA-F]{8}\s+[0-9a-fA-F]+\s+", "", line or "").strip()
 
 
-def cfg_outline(asm, limit=12):
-    """Compact CFG from match.disasm output; plain asm intentionally yields none."""
+def cfg_facts(asm, limit=24):
+    """Return bounded CFG facts; no source-level structure is guessed."""
     decoded = []
     for line in asm:
         m = re.match(r"^([0-9a-fA-F]{8})\s+([0-9a-fA-F]+)\s+(.*)$", line or "")
         if m:
             decoded.append((int(m.group(1), 16), len(m.group(2)) // 2, m.group(3).strip()))
     if not decoded:
-        return "CFG unavailable (assembly has no addresses)"
+        return {"available": False, "blocks": [], "edges": [], "reachable": [],
+                "dominators": {}, "loop_headers": [], "returns": []}
     addresses = {addr for addr, _size, _text in decoded}
     starts = {decoded[0][0]}
     for i, (addr, size, text) in enumerate(decoded):
@@ -290,8 +291,9 @@ def cfg_outline(asm, limit=12):
         if (op.startswith("j") or op == "ret") and i + 1 < len(decoded):
             starts.add(decoded[i + 1][0])
     starts = sorted(starts)
+    starts = starts[:limit]
     index = {addr: i for i, addr in enumerate(starts)}
-    blocks, loops = [], []
+    blocks, edges, returns = [], [], []
     for i, start in enumerate(starts[:limit]):
         end = starts[i + 1] if i + 1 < len(starts) else None
         lines = [row for row in decoded if row[0] >= start and (end is None or row[0] < end)]
@@ -300,23 +302,67 @@ def cfg_outline(asm, limit=12):
         _addr, _size, text = lines[-1]
         op = text.split(None, 1)[0] if text else ""
         target = re.search(r"\b0x([0-9a-fA-F]+)\b", text)
-        edges = []
+        block_edges = []
         if op.startswith("j"):
             dst = int(target.group(1), 16) if target else None
             if dst in index:
-                edges.append("B%d" % index[dst])
-                if index[dst] <= i:
-                    loops.append("B%d->B%d" % (i, index[dst]))
+                block_edges.append((index[dst], "branch"))
             elif dst is not None:
-                edges.append("external")
+                block_edges.append((None, "external"))
             if op != "jmp" and i + 1 < len(starts):
-                edges.append("B%d" % (i + 1))
+                block_edges.append((i + 1, "fallthrough"))
         elif op == "ret":
-            edges.append("return")
+            returns.append(i)
         elif i + 1 < len(starts):
-            edges.append("B%d" % (i + 1))
-        blocks.append("B%d@%08x:%s" % (i, start, "/".join(edges) or "end"))
-    suffix = " loops=" + ",".join(loops[:4]) if loops else ""
+            block_edges.append((i + 1, "fallthrough"))
+        blocks.append({"id": i, "start": "%08x" % start, "end_op": op,
+                       "edges": [{"to": dst, "kind": kind} for dst, kind in block_edges]})
+        edges.extend({"from": i, "to": dst, "kind": kind} for dst, kind in block_edges)
+    adjacency = {i: {edge["to"] for edge in edges if edge["from"] == i and edge["to"] is not None}
+                 for i in range(len(blocks))}
+    reachable, work = set(), [0] if blocks else []
+    while work:
+        node = work.pop()
+        if node in reachable:
+            continue
+        reachable.add(node)
+        work.extend(adjacency.get(node, ()) - reachable)
+    predecessors = {i: {src for src, dst in ((e["from"], e["to"]) for e in edges)
+                         if dst == i and src in reachable} for i in reachable}
+    dominators = {0: {0}} if 0 in reachable else {}
+    for node in reachable - {0}:
+        dominators[node] = set(reachable)
+    changed = True
+    while changed:
+        changed = False
+        for node in sorted(reachable - {0}):
+            incoming = predecessors.get(node, set())
+            value = ({node} | set.intersection(*(dominators[p] for p in incoming))) if incoming else {node}
+            if value != dominators[node]:
+                dominators[node] = value
+                changed = True
+    loop_edges = [(edge["from"], edge["to"]) for edge in edges
+                  if edge["to"] is not None and edge["to"] in dominators.get(edge["from"], set())]
+    return {"available": True, "blocks": blocks, "edges": edges,
+            "reachable": sorted(reachable),
+            "dominators": {str(node): sorted(value) for node, value in sorted(dominators.items())},
+            "loop_headers": sorted({dst for _src, dst in loop_edges}),
+            "back_edges": [{"from": src, "to": dst} for src, dst in loop_edges],
+            "returns": returns}
+
+
+def cfg_outline(asm, limit=12):
+    """Compact CFG from match.disasm output; plain asm intentionally yields none."""
+    facts = cfg_facts(asm, limit)
+    if not facts["available"]:
+        return "CFG unavailable (assembly has no addresses)"
+    blocks = []
+    for block in facts["blocks"]:
+        labels = ["B%d" % edge["to"] if edge["to"] is not None else edge["kind"]
+                  for edge in block["edges"]]
+        blocks.append("B%d@%s:%s" % (block["id"], block["start"], "/".join(labels) or "end"))
+    suffix = " loops=" + ",".join("B%d->B%d" % (edge["from"], edge["to"])
+                                  for edge in facts["back_edges"][:4]) if facts["back_edges"] else ""
     return " ".join(blocks) + suffix
 
 
@@ -368,7 +414,11 @@ def structure_ir(asm, facts=None):
         stack.update(re.findall(r"\[(?:esp|ebp)(?:\s*[+-]\s*(?:0x[0-9a-fA-F]+|\d+))?\]", line))
         constants.update(re.findall(r"\b(?:0x[0-9a-fA-F]+|\d+)\b", line))
     ret = (facts.get("returns") or [""])[-1]
-    return {"cfg": cfg_outline(asm, 12), "signature": {
+    cfg = cfg_facts(asm, 24)
+    return {"cfg": cfg_outline(asm, 12), "cfg_facts": {
+            "reachable": cfg["reachable"], "dominators": cfg["dominators"],
+            "loop_headers": cfg["loop_headers"], "back_edges": cfg["back_edges"][:8],
+            "returns": cfg["returns"]}, "signature": {
             "calling_convention": facts.get("calling_convention", "unknown"),
             "receiver": bool(facts.get("this_reads") or facts.get("this_offsets") or
                               any("[ecx" in line for line in insns)),
