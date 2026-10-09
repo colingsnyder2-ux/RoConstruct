@@ -144,7 +144,9 @@ def stage(slug, spec, out):
             raise SystemExit("missing file for %s: %s" % (slug, relative))
         target = out / relative
         target.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copyfile(source, target)
+        shutil.copy2(source, target)  # keeps the mode, so install.sh/roc.sh stay executable
+        if target.suffix == ".sh":
+            target.chmod(0o755)  # a Windows checkout may have lost the bit
     for module in spec["modules"]:
         source = ROOT / "roc" / ("%s.py" % module)
         if not source.is_file():

@@ -577,11 +577,16 @@ def generate(model, messages, options=None, state=None):
                 out.cost = _cost(config, out.input_tokens, out.output_tokens, remote)
                 if budget:
                     budget.settle(ticket, out.input_tokens + out.output_tokens, out.cost)
+                if dropped_knobs:
+                    # Only a successful retry proves the knobs caused the 400;
+                    # remember it so later requests skip the round trip.
+                    NO_THINKING.add(provider)
                 if gate:
                     gate.done(provider, True)
                 return out
             except ProviderError as error:
                 if (error.status == 400 and not dropped_knobs
+                        and config.get("kind") == "openai-chat"
                         and ("thinking" in options or "reasoning_effort" in options)):
                     # Some OpenAI-compatible gateways reject the thinking/reasoning
                     # knobs on /chat/completions with a 400 ("thinking is not
@@ -594,7 +599,6 @@ def generate(model, messages, options=None, state=None):
                                     or str(think).lower() == "disabled")
                         options["reasoning_effort"] = "low" if disabled else "high"
                     dropped_knobs = True
-                    NO_THINKING.add(provider)  # do not repeat the guaranteed 400
                     retries += 1
                     if budget and ticket:
                         budget.settle(ticket, 0, 0.0)  # the provider did not bill this

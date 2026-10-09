@@ -574,6 +574,24 @@ def test_openai_chat_retries_without_unsupported_thinking():
         assert calls[0].get("reasoning_effort") == "low"
 
 
+def test_openai_chat_does_not_blame_unrelated_400s():
+    from roc import providers
+
+    def always_400(url, body, headers, timeout):
+        raise providers.ProviderError("provider_error", "HTTP 400", 400)
+
+    with patch.dict(os.environ, {"DEEPSEEK_API_KEY": "x"}), \
+         patch("roc.providers.NO_THINKING", set()), \
+         patch("roc.providers._post", side_effect=always_400):
+        try:
+            providers.generate("deepseek:deepseek-flash", "p",
+                               options={"allow_cloud": True, "thinking": "disabled", "max_tokens": 16})
+            assert False, "a 400 must surface"
+        except providers.ProviderError:
+            pass
+        assert not providers.NO_THINKING, "only a successful knob-free retry proves the cause"
+
+
 def test_provider_post_sends_a_user_agent():
     """Some OpenAI-compatible gateways reject the default Python-urllib UA (Cloudflare 1010)."""
     from roc import providers

@@ -30,6 +30,9 @@ class CompileError(RuntimeError):
     pass
 
 
+_COMPILE_ERRORS_LOCK = threading.Lock()
+
+
 def _compile_error_cache():
     global _COMPILE_ERRORS
     if _COMPILE_ERRORS is None:
@@ -41,13 +44,16 @@ def _compile_error_cache():
 
 
 def _remember_compile_error(key, message):
-    cache = _compile_error_cache()
-    cache[key] = message[-1200:]
-    try:
-        COMPILE_ERRORS.parent.mkdir(parents=True, exist_ok=True)
-        COMPILE_ERRORS.write_text(json.dumps(cache, separators=(",", ":")))
-    except OSError:
-        pass
+    # Parallel library/STL/submit compiles can fail at the same time; without a
+    # lock two threads rewriting the JSON file can truncate or lose entries.
+    with _COMPILE_ERRORS_LOCK:
+        cache = _compile_error_cache()
+        cache[key] = message[-1200:]
+        try:
+            COMPILE_ERRORS.parent.mkdir(parents=True, exist_ok=True)
+            COMPILE_ERRORS.write_text(json.dumps(cache, separators=(",", ":")))
+        except OSError:
+            pass
 
 
 @functools.lru_cache(maxsize=512)

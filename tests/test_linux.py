@@ -120,6 +120,19 @@ def test_cloudflared_url_matches_the_platform():
         with patch("roc.setup.WINDOWS", False), patch("roc.setup.sys.platform", "linux"), \
              patch("roc.setup.platform.machine", return_value="aarch64"):
             assert setup.cloudflared_url().endswith("linux-arm64")
+        with patch("roc.setup.WINDOWS", False), patch("roc.setup.sys.platform", "linux"), \
+             patch("roc.setup.platform.machine", return_value="armv7l"):
+            assert setup.cloudflared_url().endswith("linux-arm"), "32-bit Pi must not get amd64"
+        with patch("roc.setup.WINDOWS", False), patch("roc.setup.sys.platform", "darwin"):
+            assert setup.cloudflared_url() is None, "darwin ships a .tgz we do not unpack"
+
+
+def test_has_compiler_detects_partial_extraction(tmp_path):
+    from roc import setup
+    (tmp_path / "VC" / "bin").mkdir(parents=True)
+    assert setup._has_compiler(tmp_path) is False
+    (tmp_path / "VC" / "bin" / "cl.exe").write_bytes(b"MZ")
+    assert setup._has_compiler(tmp_path) is True
 
 
 def test_msi_admin_extract_prefers_wine_on_linux(tmp_path):

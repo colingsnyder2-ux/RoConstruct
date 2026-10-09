@@ -506,7 +506,8 @@ def cmd_libs(a):
 def cmd_mass(a):
     """Everything automatic: compiler runtime tagging, STL, all libraries, then auto shapes."""
     from roc import libs, mass
-    targets = libs.default_targets() if a.client == "all" else [a.client]
+    choice = getattr(a, "client_name", None) or a.client or "all"
+    targets = libs.default_targets() if choice == "all" else [choice]
     def stage(message):
         if os.environ.get("ROC_GUI_EVENTS"):
             print("ROC_EVENT " + json.dumps({"event": "stage", "message": message}), flush=True)
@@ -1361,7 +1362,7 @@ def main(argv=None):
     cmd("libs", cmd_libs, "match open-source library code from its real source ('all' or recipe names)",
         (["names"], {"nargs": "+"}), (["--client"], {"default": "all"}))
     cmd("mass", cmd_mass, "run every automatic matcher (runtime, STL, libraries, shapes); takes a while",
-        (["client"], {"nargs": "?", "default": "all"}), (["--client"], {"default": "all"}))
+        (["client_name"], {"nargs": "?"}), (["--client"], {"default": "all"}))
     cmd("flags", cmd_flags, "find the client's compiler flags from matched sources",
         (["name"], {}), (["--sweep"], {"action": "store_true",
         "help": "try interacting flag combinations; stop on exact corpus"}),

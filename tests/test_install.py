@@ -672,6 +672,28 @@ def test_launch_command_detaches_into_its_own_console():
     assert "start \"RoConstruct worker\"" in line and line.rstrip().endswith("roc.cmd\" launch"), line
 
 
+def test_mass_client_flag_is_not_overwritten_by_positional():
+    """`roc mass --client X` must not silently run against all clients."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("roc_cli_mass_flag_test", ROOT / "roc.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    with patch("roc.libs.default_targets", side_effect=AssertionError("expanded to all")), \
+         patch("roc.mass.staticlibs") as static, \
+         patch("roc.mass.stl"), \
+         patch("roc.libs.run"), \
+         patch.object(module, "ready", return_value=True), \
+         patch("roc.analyze.analyze", return_value=("out", [])), \
+         patch("roc.clients.load", return_value={"2009-06": {"compiler_build": 30729}}), \
+         patch("roc.clients.status", return_value="ok"), \
+         patch("roc.clients.exe_path", return_value="x"), \
+         patch("roc.setup.compilers", return_value={30729: "cl"}), \
+         patch("roc.auto.solve", return_value={}), \
+         patch("roc.auto.save", return_value=0):
+        module.main(["mass", "--client", "2009-06"])
+    assert static.call_args.args[0] == ["2009-06"], "the --client value must win"
+
+
 def test_mass_and_submit_accept_all(tmp_path):
     """README says `roc mass all` / `roc submit all`; both must parse and dispatch."""
     import importlib.util
