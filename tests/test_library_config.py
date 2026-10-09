@@ -1,5 +1,6 @@
 """Library configurations must replay their own preprocessed declarations."""
 from unittest.mock import patch
+import subprocess
 
 from roc import libs
 
@@ -37,3 +38,18 @@ def test_shared_mfc_source_descriptor_preserves_configuration():
     source = libs.source_for('xtp-11.2.2-shared-mfc',
                             'Source/ReportControl/XTPReportControl.cpp', 'cpp', 30729, '/O2 /GS- /MD')
     assert '// roc-lib: xtp-11.2.2-shared-mfc Source/ReportControl/XTPReportControl.cpp' in source
+
+
+def test_shared_preprocess_forces_md_when_macro_env_has_no_runtime_flag(tmp_path):
+    seen = {}
+    def fake_run(argv, **kwargs):
+        seen['cl'] = kwargs['env']['CL']
+        return subprocess.CompletedProcess(argv, 0, 'int x;', '')
+    with patch.object(libs.setup, 'compilers', return_value={30729: 'cl'}), \
+            patch.object(libs.setup, 'cl_env', return_value={'CL': ''}), \
+            patch.object(libs.setup, 'cl_command', return_value=['cl']), \
+            patch.object(libs.setup, 'cl_path', side_effect=str), \
+            patch.object(libs.subprocess, 'run', side_effect=fake_run):
+        libs.preprocess(30729, tmp_path / 'x.cpp', 'inc', '_AFXDLL _DLL')
+    assert '/D_AFXDLL' in seen['cl'] and '/D_DLL' in seen['cl']
+    assert '/MD' in seen['cl'] and '/MT' not in seen['cl']

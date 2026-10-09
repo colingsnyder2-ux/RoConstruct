@@ -598,6 +598,8 @@ def preprocess(build, path, include, defines=""):
     env["INCLUDE"] = "%s;%s" % (include, env["INCLUDE"])
     if defines:
         env["CL"] = " ".join("/D" + d for d in defines.split())
+        if "_AFXDLL" in defines.split() and "/MD" not in env["CL"] and "/MT" not in env["CL"]:
+            env["CL"] += " /MD"
     try:
         run = subprocess.run([*setup.cl_command(cl), "/nologo", "/EP", setup.cl_path(path)],
                              capture_output=True, text=True,
