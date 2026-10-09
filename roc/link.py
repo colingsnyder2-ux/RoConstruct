@@ -128,6 +128,11 @@ def run(url):
     if not draft.pick_model(s.get("model")) and not (s.get("model") and providers.is_cloud(s["model"])):
         ensure_model()
     model, rounds, max_size, use_revng, workers, output_budget, thinking = choose_options(s)
+    from roc import optimizer
+    profile = optimizer.profile(model, worker.load_settings())
+    print("Worker setup: %s | %s workers | %s" %
+          (model or "automatic model", workers,
+           "optimized profile: " + profile["name"] if profile else "manual/default profile"))
     if providers.is_cloud(model) and not s.get("cloud_allowed"):
         raise SystemExit("Cloud model selected. Run: roc config --allow-cloud")
     keep_awake()
@@ -139,7 +144,53 @@ def run(url):
     worker.run_concurrent(server, user, token, model, rounds, max_size, use_revng,
                           workers=workers, source_only=False, only=[client],
                           cloud_allowed=bool(s.get("cloud_allowed")),
-                          max_tokens=output_budget, thinking=thinking)
+                          max_tokens=output_budget, thinking=thinking,
+                          strategy=worker.load_settings().get("worker_strategy", "direct"))
+
+
+def _saved_worker_options(settings, installed):
+    from roc import draft, optimizer, providers, worker
+    model = settings.get("model")
+    if model and providers.is_cloud(model):
+        if not providers.available(model):
+            return None
+    else:
+        model = draft.pick_model(model)
+        if not model:
+            return None
+    if not providers.is_cloud(model) and model not in installed:
+        return None
+    profile = optimizer.profile(model, settings) or {}
+    manual_preset = settings.get("worker_preset_model") == model
+    preset = (settings.get("worker_preset") if manual_preset else
+              profile.get("name", settings.get("worker_preset", "balanced")))
+    preset = preset if preset in ("fast", "balanced", "deep", "auto") else "balanced"
+    rounds, max_size, use_revng = 4, 256, True
+    if preset == "fast":
+        rounds, max_size, use_revng = 2, 96, False
+    elif preset == "deep":
+        rounds, max_size = 6, 512
+    elif preset == "auto":
+        rounds, max_size, use_revng = "auto", 512, False
+    rounds = (settings.get("worker_rounds") if settings.get("worker_rounds_model") == model else
+              profile.get("rounds", settings.get("worker_rounds", rounds)))
+    output_budget = (settings.get("worker_output_budget") if settings.get("worker_output_budget_model") == model else
+                     profile.get("max_tokens", settings.get("worker_output_budget", 2048)))
+    if not isinstance(output_budget, int):
+        output_budget = 2048
+    workers = (settings.get("worker_workers") if settings.get("worker_workers_model") == model else
+               profile.get("workers", settings.get("worker_workers", "1")))
+    if workers != "auto":
+        try:
+            workers = max(1, min(int(workers), worker.MAX_WORKERS))
+        except (TypeError, ValueError):
+            return None
+    use_revng = settings.get("worker_revng", use_revng)
+    thinking = settings.get("worker_thinking", "auto")
+    strategy = (settings.get("worker_strategy") if settings.get("worker_strategy_model") == model else
+                profile.get("strategy", settings.get("worker_strategy", "direct")))
+    worker.save_settings(worker_strategy=strategy)
+    return model, rounds, max_size, use_revng, workers, output_budget, thinking
 
 
 def choose_options(settings):
@@ -150,12 +201,66 @@ def choose_options(settings):
     """
     from roc import draft, providers, worker
     installed = draft.ollama_models()
-    default_model = draft.pick_model(settings.get("model")) or "none"
-    print("\nWorker options (Enter keeps the default):")
-    print("Installed models: " + ", ".join(installed or ["none"]))
-    print("Cloud models: deepseek:deepseek-flash, nvidia:qwen/qwen2.5-coder-32b-instruct, "
-          "openai:gpt-5, anthropic:MODEL, gemini:MODEL")
-    model = input("Model [%s]: " % default_model).strip() or default_model
+    from roc import optimizer
+    saved = _saved_worker_options(settings, installed) if settings.get("worker_launcher_configured") else None
+    if saved:
+        model = saved[0]
+        profile = optimizer.profile(model, settings)
+        mode = "optimized %s" % profile["name"] if profile else settings.get("worker_preset", "balanced")
+        print("Saved setup: %s | %s | %s workers. Enter=start, 2=change, 3=optimize." %
+              (model, mode, saved[4]))
+        action = input("[1]: ").strip().lower()
+        if action in ("", "1"):
+            return saved
+        if action == "3":
+            cost_cap = None
+            if providers.is_cloud(model):
+                raw_cap = input("Optimizer cloud spend cap in USD [0.25]: ").strip() or "0.25"
+                try:
+                    cost_cap = float(raw_cap)
+                except ValueError:
+                    raise SystemExit("Spend cap must be a positive dollar amount")
+                if cost_cap <= 0:
+                    raise SystemExit("Spend cap must be a positive dollar amount")
+            profile = optimizer.run(model, allow_cloud=bool(settings.get("cloud_allowed")),
+                                    max_cloud_cost=cost_cap, force=bool(optimizer.profile(model, settings)))
+            settings = dict(settings)
+            settings.setdefault("optimizer_profiles", {})[model] = profile
+            for key in ("worker_preset_model", "worker_rounds_model", "worker_workers_model",
+                        "worker_output_budget_model", "worker_strategy_model"):
+                settings[key] = ""
+            return _saved_worker_options(settings, installed)
+        if action not in ("2", "options", "change"):
+            raise SystemExit("Choose 1 to start, 2 to change options, or 3 to optimize.")
+    cloud = ["deepseek:deepseek-flash", "nvidia:qwen/qwen2.5-coder-32b-instruct", "openai:gpt-5"]
+    previous = [name for name in settings.get("worker_model_choices", []) if isinstance(name, str)]
+    choices = list(dict.fromkeys(installed + cloud + previous +
+                                 ([settings["model"]] if settings.get("model") and settings["model"] not in installed + cloud else [])))
+    default_model = draft.pick_model(settings.get("model")) or settings.get("model") or "none"
+    print("\nChoose model (number or model name; Enter keeps saved choice):")
+    for index, name in enumerate(choices, 1):
+        print("  %d) %s%s" % (index, name, " [optimizer profile]" if optimizer.profile(name, settings) else ""))
+    print("  %d) Add / configure cloud model" % (len(choices) + 1))
+    print("  %d) Install another local model" % (len(choices) + 2))
+    picked = input("Model [%s]: " % default_model).strip()
+    if picked.isdigit() and int(picked) == len(choices) + 1:
+        model = input("Cloud model (provider:MODEL): ").strip()
+    elif picked.isdigit() and int(picked) == len(choices) + 2:
+        name = input("Ollama model tag to install: ").strip()
+        if not name:
+            raise SystemExit("Model tag required")
+        from roc import setup
+        import subprocess
+        exe = setup.find_exe("ollama")
+        if not exe:
+            raise SystemExit("Install Ollama first, then run: ollama pull %s" % name)
+        subprocess.run([exe, "pull", name], check=True)
+        installed = draft.ollama_models()
+        model = next((tag for tag in installed if tag == name), None)
+        if not model:
+            raise SystemExit("Model pull finished, but Ollama did not list %s." % name)
+    else:
+        model = choices[int(picked) - 1] if picked.isdigit() and 1 <= int(picked) <= len(choices) else (picked or default_model)
     if model == "default":
         model = None
     elif providers.is_cloud(model):
@@ -175,8 +280,31 @@ def choose_options(settings):
             worker.save_settings(cloud_allowed=True)
     elif model not in installed:
         raise SystemExit("Model '%s' is not installed. Run: roc model" % model)
+    profile = optimizer.profile(model, settings) or {}
     last_preset = settings.get("worker_preset", "balanced")
-    preset = (input("Preset [%s] (auto/fast/balanced/deep): " % last_preset).strip().lower() or last_preset)
+    recommended = (last_preset if settings.get("worker_preset_model") == model else
+                   profile.get("name", last_preset))
+    if recommended not in ("fast", "balanced", "deep"):
+        recommended = "balanced"
+    print("Worker mode: 1) Recommended  2) Fast  3) Deep  4) Advanced  5) Optimize model")
+    picked_mode = input("Mode [%s]: " % ("1" if profile else last_preset)).strip().lower()
+    if picked_mode == "5":
+        cost_cap = None
+        if providers.is_cloud(model):
+            raw_cap = input("Optimizer cloud spend cap in USD [0.25]: ").strip() or "0.25"
+            try:
+                cost_cap = float(raw_cap)
+            except ValueError:
+                raise SystemExit("Spend cap must be a positive dollar amount")
+            if cost_cap <= 0:
+                raise SystemExit("Spend cap must be a positive dollar amount")
+        print("Calibrating %s before worker starts; no mining jobs will be submitted." % model)
+        profile = optimizer.run(model, allow_cloud=bool(settings.get("cloud_allowed")),
+                                max_cloud_cost=cost_cap, force=bool(profile))
+        picked_mode = "1"
+    preset = ({"1": recommended, "2": "fast", "3": "deep", "4": "balanced"}.get(
+        picked_mode, picked_mode or recommended))
+    show_advanced = picked_mode == "4"
     if preset not in ("auto", "fast", "balanced", "deep"):
         raise SystemExit("Preset must be auto, fast, balanced, or deep")
     rounds, max_size, use_revng = 4, 256, True
@@ -186,22 +314,32 @@ def choose_options(settings):
         rounds, max_size = 6, 512
     elif preset == "auto":
         rounds, max_size, use_revng = "auto", 512, False
-    last_workers = settings.get("worker_workers", "1")
+    if profile and picked_mode in ("", "1", "4"):
+        rounds = profile.get("rounds", rounds)
+        output_budget = profile.get("max_tokens", settings.get("worker_output_budget", 2048))
+    strategy = (settings.get("worker_strategy") if settings.get("worker_strategy_model") == model else
+                profile.get("strategy", settings.get("worker_strategy", "direct")))
+    last_workers = (profile.get("workers", settings.get("worker_workers", "1"))
+                    if profile and settings.get("worker_workers_model") != model
+                    else settings.get("worker_workers", "1"))
     workers = input("Workers [%s] (1-%d or auto): " % (last_workers, worker.MAX_WORKERS)).strip() or last_workers
     if workers != "auto":
         try:
             workers = max(1, min(int(workers), worker.MAX_WORKERS))
         except ValueError:
             raise SystemExit("Workers must be 1-%d or auto" % worker.MAX_WORKERS)
-    if (input("Advanced (rounds, tokens, Rev.ng, thinking)? [Enter=skip, y=show]: ").strip().lower()
+    if (show_advanced or input("Advanced options? [Enter=skip, y=show]: ").strip().lower()
             in ("y", "yes", "advanced")):
-        picked = input("Rounds [auto=%s]: " % rounds).strip().lower() or "auto"
+        default_rounds = (settings.get("worker_rounds") if settings.get("worker_rounds_model") == model
+                          else rounds)
+        picked = input("Rounds [%s]: " % default_rounds).strip().lower() or str(default_rounds)
         if picked != "auto":
             try:
                 rounds = max(1, min(int(picked), 12))
             except ValueError:
                 raise SystemExit("Rounds must be auto or 1-12")
-        last_budget = settings.get("worker_output_budget", 2048)
+        last_budget = (settings.get("worker_output_budget") if settings.get("worker_output_budget_model") == model
+                       else profile.get("max_tokens", settings.get("worker_output_budget", 2048)))
         picked = input("Output budget [auto=%s tokens]: " % last_budget).strip().lower() or "auto"
         if picked == "auto":
             output_budget = last_budget if isinstance(last_budget, int) else 2048
@@ -227,9 +365,15 @@ def choose_options(settings):
         thinking = input("Thinking [%s] (auto/enabled/disabled): " % last_thinking).strip().lower() or last_thinking
         if thinking not in ("auto", "enabled", "disabled"):
             raise SystemExit("Thinking must be auto, enabled, or disabled")
+        strategy = input("Generation strategy [%s] (direct/structured/reference): " % strategy).strip().lower() or strategy
+        if strategy not in ("direct", "structured", "reference"):
+            raise SystemExit("Strategy must be direct, structured, or reference")
     else:
-        last_budget = settings.get("worker_output_budget", 2048)
-        output_budget = last_budget if isinstance(last_budget, int) else 2048
+        last_budget = (settings.get("worker_output_budget") if settings.get("worker_output_budget_model") == model
+                       else profile.get("max_tokens", settings.get("worker_output_budget", 2048)))
+        output_budget = (profile.get("max_tokens", last_budget) if profile and picked_mode in ("", "1")
+                         else last_budget)
+        output_budget = output_budget if isinstance(output_budget, int) else 2048
         thinking = settings.get("worker_thinking", "auto")
         if thinking not in ("auto", "enabled", "disabled"):
             thinking = "auto"
@@ -240,7 +384,12 @@ def choose_options(settings):
         worker.save_settings(model=model)
     worker.save_settings(worker_preset=preset, worker_workers=workers,
                          worker_revng=use_revng, worker_output_budget=output_budget,
-                         worker_thinking=thinking)
+                         worker_thinking=thinking, worker_strategy=strategy,
+                         worker_rounds=rounds, worker_launcher_configured=True,
+                         worker_preset_model=model, worker_rounds_model=model,
+                         worker_workers_model=model, worker_output_budget_model=model,
+                         worker_strategy_model=model,
+                         worker_model_choices=list(dict.fromkeys(previous + ([model] if model else []))))
     return model, rounds, max_size, use_revng, workers, output_budget, thinking
 
 

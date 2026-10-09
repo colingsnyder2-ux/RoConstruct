@@ -46,7 +46,7 @@ def load():
         return []
 
 
-def build_hidden(limit=8):
+def build_hidden(limit=8, persist=True):
     """Sample locally solved functions while omitting their source/score metadata."""
     out = []
     for client in sorted(clients.load()):
@@ -68,8 +68,9 @@ def build_hidden(limit=8):
                 out.append({"client": client, "addr": row["addr"], "size": row["size"],
                             "unit": row.get("unit"), "bucket": bucket,
                             "source_present": not str(row.get("unit", "")).startswith("seg_")})
-    HIDDEN.parent.mkdir(parents=True, exist_ok=True)
-    HIDDEN.write_text(json.dumps(out, indent=1))
+    if persist:
+        HIDDEN.parent.mkdir(parents=True, exist_ok=True)
+        HIDDEN.write_text(json.dumps(out, indent=1))
     return out
 
 

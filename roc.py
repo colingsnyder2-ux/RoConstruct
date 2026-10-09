@@ -470,6 +470,10 @@ def cmd_provider(a):
         print("%s:%s %.2fs in=%d out=%d finish=%s reply=%r" %
               (out.provider, out.model, out.latency_s, out.input_tokens, out.output_tokens,
               out.finish_reason or "unknown", out.text[:80]))
+        return
+    if a.sub == "pricing":
+        providers.save_pricing(a.name, a.model, a.input_per_million, a.output_per_million)
+        print("Saved stated USD/million-token rates for %s:%s." % (a.name, a.model))
 
 
 def cmd_dataset(a):
@@ -696,6 +700,23 @@ def cmd_model(a):
         print("Install one: ollama pull qwen2.5-coder:7b")
 
 
+def cmd_optimize(a):
+    from roc import optimizer
+    model = a.model or settings().get("model")
+    if not model:
+        from roc import draft
+        model = draft.pick_model()
+    if not model:
+        raise SystemExit("Choose a model first: roc model")
+    if a.clear:
+        print("Cleared optimizer profile for %s." % model if optimizer.clear_profile(model)
+              else "No optimizer profile saved for %s." % model)
+        return
+    optimizer.run(model, allow_cloud=a.allow_cloud, max_cloud_requests=a.max_cloud_requests,
+                  max_cloud_tokens=a.max_cloud_tokens, max_cloud_cost=a.max_cloud_cost,
+                  force=a.force, target_count=a.targets)
+
+
 def cmd_progress(a):
     from roc import progress
     s = settings()
@@ -849,12 +870,26 @@ def main(argv=None):
                               "help": "save approval to send worker prompts to cloud models"}))
     cmd("model", cmd_model, "show or choose worker model (default = automatic choice)",
         (["name"], {"nargs": "?"}))
+    cmd("optimize", cmd_optimize, "calibrate and save one model's worker profile",
+        (["--model"], {}), (["--allow-cloud"], {"action": "store_true"}),
+        (["--max-cloud-requests"], {"type": int, "default": 300}),
+        (["--max-cloud-tokens"], {"type": int, "default": 500000}),
+        (["--targets"], {"type": int, "default": 12, "help": "fresh local targets (6-24; default 12)"}),
+        (["--max-cloud-cost"], {"type": float}),
+        (["--clear"], {"action": "store_true", "help": "remove saved profile without benchmarking"}),
+        (["--force"], {"action": "store_true", "help": "replace existing profile"}))
     p = sub.add_parser("provider", help="configure or test non-secret cloud model providers")
     ps = p.add_subparsers(dest="sub", required=True)
     ps.add_parser("list", help="show providers and whether their key environment variable is set").set_defaults(fn=cmd_provider)
     psecret = ps.add_parser("secrets", help="show safe user-local API-key file path")
     psecret.add_argument("--open", action="store_true", help="create and open the file in Notepad")
     psecret.set_defaults(fn=cmd_provider)
+    ppricing = ps.add_parser("pricing", help="set user-supplied model token prices for spend caps")
+    ppricing.add_argument("name")
+    ppricing.add_argument("--model", required=True, help="exact provider model name")
+    ppricing.add_argument("--input-per-million", type=float, required=True, help="USD per million input tokens")
+    ppricing.add_argument("--output-per-million", type=float, required=True, help="USD per million output tokens")
+    ppricing.set_defaults(fn=cmd_provider)
     ps.add_parser("setup", help="choose a provider and save its key interactively").set_defaults(fn=cmd_provider)
     pa = ps.add_parser("add", help="add an OpenAI-compatible or native cloud endpoint (no key saved)")
     pa.add_argument("name")

@@ -287,3 +287,28 @@ structured mode. Input-token usage is unavailable from the local provider.
 `--diverse-candidates` to reproduce these stratified tests. Do not treat the
 exploratory runs as an automatic-tuning result; keep direct as default until a
 larger, model-specific holdout confirms quality and latency gains.
+
+DeepSeek tiny-target comparison (API name `deepseek-flash`, currently routed to
+V4.1-Flash): direct vs structured, two rounds, 1024-token cap. Samples were
+source-hidden and fresh for this model. A history audit found four of the 20
+targets had earlier attempts by another model; on the 16 globally unattempted
+targets, direct reached 10/16 exact and structured 11/16, both compiling on
+15/16. Their estimated generation costs were $0.0308 and $0.0306 ($0.00308 vs
+$0.00278 per exact), with 113.7s vs 96.1s summed job time. Calibration's 9
+globally unseen targets favored structured 6/9 to 5/9; separate 7-target
+holdout tied at 5/7. This is a one-match calibration edge, not confirmed
+structured quality gain. Sessions: `deepseek-tiny-20261008` and
+`deepseek-tiny-holdout-20261008`.
+
+On six additional fresh tiny targets, `thinking=auto` (provider default,
+then disable after truncation) and thinking disabled from round one each gave
+2/6 exact per strategy. Starting disabled reduced direct summed job time from
+59.0s to 14.8s and estimated cost from $0.0160 to $0.0067; structured fell
+44.6s to 14.8s and $0.0145 to $0.0075. Compiling jobs were 6/6 vs 6/6 direct
+and 5/6 vs 6/6 structured. Small sample favors disabling automatic reasoning
+for tiny cloud functions; explicit user `enabled` remains honored. DeepSeek
+rejects `thinking: auto` with HTTP 422, so the adapter now omits that override.
+Peak uncached rates ($0.30/M input, $1.20/M output) were used for conservative
+caps, based on [official DeepSeek pricing](https://api-docs.deepseek.com/quick_start/pricing/).
+Combined budget reservation stayed below $0.25. Optimizer now excludes targets
+previously attempted by any model, not only the selected model.

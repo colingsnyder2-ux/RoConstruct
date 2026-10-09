@@ -215,6 +215,8 @@ def test_draft_helpers():
     assert draft.source_contract_error("struct S { int x; };") == "missing function definition"
     assert not draft.source_contract_error("int f(){ return 0; }")
     assert "pseudo-instruction" in draft.source_contract_error("int f(){ push(1); return 0; }")
+    sprawl = "struct S {\n" + "\n".join("int field_%d;" % i for i in range(20)) + "\n};\nint f(){return 0;}"
+    assert "numbered-field" in draft.source_contract_error(sprawl)
     assert draft.compile_failure_class("error C2227") == "receiver/object pointer misuse"
 
 
@@ -356,6 +358,18 @@ def test_cloud_provider_core():
             os.environ["NVIDIA_API_KEY"] = old_key
 
 
+def test_model_pricing_is_exact_and_usable_for_caps():
+    from roc import providers
+    config = {"pricing": {"models": {"flash": {
+        "input_per_million": 1.0, "output_per_million": 2.0}}}}
+    assert providers._cost(config, 2, 3, "flash") == 0.000008
+    assert providers._cost(config, 2, 3, "unknown") is None
+    with patch("roc.providers.parse_model", return_value=("deepseek", "flash", config)):
+        assert providers.has_pricing("deepseek:flash")
+    with patch("roc.providers.parse_model", return_value=("deepseek", "other", config)):
+        assert not providers.has_pricing("deepseek:other")
+
+
 def test_native_cloud_adapters():
     from roc import providers
     names = {"OPENAI_API_KEY": "test-openai", "ANTHROPIC_API_KEY": "test-anthropic",
@@ -384,13 +398,19 @@ def test_native_cloud_adapters():
         os.environ.update(names)
         providers._post = fake_post
         deepseek = providers.generate("deepseek:deepseek-flash", "p", options={"allow_cloud": True})
+        auto = providers.generate("deepseek:deepseek-flash", "p",
+                                  options={"allow_cloud": True, "thinking": "auto"})
+        disabled = providers.generate("deepseek:deepseek-flash", "p",
+                                      options={"allow_cloud": True, "thinking": "disabled"})
         openai = providers.generate("openai:gpt-test", "p", options={"allow_cloud": True})
         anthropic = providers.generate("anthropic:claude-test", "p", options={"allow_cloud": True})
         gemini = providers.generate("gemini:gemini-test", "p", options={"allow_cloud": True})
         assert [deepseek.cached_tokens, openai.cached_tokens,
                 anthropic.cached_tokens, gemini.cached_tokens] == [7, 2, 4, 3]
-        assert calls[1][1]["store"] is False and calls[2][2]["anthropic-version"]
-        assert "x-goog-api-key" in calls[3][2]
+        assert "thinking" not in calls[0][1] and "thinking" not in calls[1][1]
+        assert calls[2][1]["thinking"] == {"type": "disabled"}
+        assert calls[3][1]["store"] is False and calls[4][2]["anthropic-version"]
+        assert "x-goog-api-key" in calls[5][2]
     finally:
         providers._post = old_post
         for name, value in before.items():
@@ -477,14 +497,14 @@ def test_link_options():
     with patch("roc.draft.ollama_models", return_value=["qwen2.5-coder:14b", "qwen2.5-coder:7b"]), \
          patch("roc.draft.pick_model", return_value="qwen2.5-coder:14b"), \
          patch("roc.worker.save_settings"), \
-         patch("builtins.input", side_effect=["", "", "", "y", "", "", "", ""]):
+         patch("builtins.input", side_effect=["", "", "", "y", "", "", "", "", "direct"]):
         assert choose_options({"model": "qwen2.5-coder:14b", "worker_preset": "deep",
                                "worker_workers": "auto", "worker_revng": False,
                                "worker_output_budget": 2048}) == ("qwen2.5-coder:14b", 6, 512, False, "auto", 2048, "auto")
     with patch("roc.draft.ollama_models", return_value=["qwen2.5-coder:14b", "qwen2.5-coder:7b"]), \
          patch("roc.draft.pick_model", return_value="qwen2.5-coder:14b"), \
          patch("roc.worker.save_settings"), \
-         patch("builtins.input", side_effect=["", "balanced", "1", "y", "6", "1024", "n", "disabled"]):
+         patch("builtins.input", side_effect=["", "balanced", "1", "y", "6", "1024", "n", "disabled", "direct"]):
         assert choose_options({}) == ("qwen2.5-coder:14b", 6, 256, False, 1, 1024, "disabled")
     with patch("roc.draft.ollama_models", return_value=["qwen2.5-coder:14b", "qwen2.5-coder:7b"]), \
          patch("roc.draft.pick_model", return_value="qwen2.5-coder:14b"), \
@@ -498,6 +518,139 @@ def test_link_options():
          patch("roc.worker.save_settings"), \
          patch("builtins.input", side_effect=["", "auto", "1", ""]):
         assert choose_options({}) == ("qwen2.5-coder:7b", "auto", 512, False, 1, 2048, "auto")
+
+
+def test_optimizer_split_and_one_time_profile():
+    from roc import optimizer
+    targets = [{"client": "C", "addr": "%08x" % n} for n in range(6)]
+    calibration, validation = optimizer.split_targets(targets)
+    assert len(calibration) == 4 and len(validation) == 2
+    assert not ({row["addr"] for row in calibration} & {row["addr"] for row in validation})
+    with patch("roc.optimizer.profile", return_value=None), \
+         patch("roc.draft.pick_model", return_value="local-model"), \
+         patch("roc.providers.is_cloud", return_value=False), \
+         patch("roc.benchmark.build_hidden", return_value=targets), \
+         patch("roc.optimizer._local_targets", return_value=targets), \
+         patch("roc.benchmark.run_local"), \
+         patch("roc.optimizer._fresh_targets", return_value=targets), \
+         patch("roc.optimizer._concurrency", return_value=(4, [{"workers": 4, "valid": 6}])), \
+         patch("roc.optimizer.fingerprint", return_value="model-fingerprint"), \
+         patch("roc.optimizer._session_rows", side_effect=lambda session: [
+             {"score": 100 if "structured" in session else 0, "seconds": 1,
+              "rounds": [{"round": 1, "code": True, "compile_error": ""}]}
+             for _ in range(2 if "-v-" in session else 4)]), \
+         patch("roc.worker.load_settings", return_value={}), \
+         patch("roc.worker.save_settings") as saved:
+        result = optimizer.run("local-model", log=lambda *args: None)
+    assert result["name"] == "structured"
+    assert result["validated"] and result["sample_count"] == 6
+    assert saved.call_args.kwargs["optimizer_profiles"]["local-model"] == result
+    with patch("roc.optimizer.fingerprint", return_value="new-version"):
+        assert optimizer.profile("local-model", {"optimizer_profiles": {
+            "local-model": {"fingerprint": "old-version"}}}) is None
+    from types import SimpleNamespace
+    with patch("roc.metrics.PATH", SimpleNamespace(read_text=lambda **_kwargs: (
+            '{"event":"job","client":"C","addr":"00000000","model":"local-model"}\n'
+            '{"event":"job","client":"C","addr":"00000001","model":"other-model"}\n'))):
+        assert {row["addr"] for row in optimizer._fresh_targets(targets, "local-model")} == {
+            row["addr"] for row in targets if row["addr"] not in ("00000000", "00000001")}
+
+
+def test_optimizer_concurrency_probe():
+    from types import SimpleNamespace
+    from roc.optimizer import _concurrency
+    with patch("roc.providers.generate", return_value=SimpleNamespace(text="OK")) as generate:
+        workers, rows = _concurrency("local-model", False, None, lambda *args: None)
+    assert workers in (1, 4, 8)
+    assert len(rows) == 3 and all(row["valid"] == 6 for row in rows)
+    assert generate.call_count == 19
+
+
+def test_optimizer_cloud_and_incomplete_safety():
+    from roc import optimizer
+    with patch("roc.worker.load_settings", return_value={}), \
+         patch("roc.providers.is_cloud", return_value=True), \
+         patch("roc.providers.available", return_value=True):
+        try:
+            optimizer.run("deepseek:deepseek-flash")
+            assert False, "cloud consent required"
+        except SystemExit as error:
+            assert "--allow-cloud" in str(error)
+        try:
+            optimizer.run("deepseek:deepseek-flash", allow_cloud=True)
+            assert False, "cloud cost cap required"
+        except SystemExit as error:
+            assert "--max-cloud-cost" in str(error)
+        with patch("roc.providers.parse_model", return_value=("deepseek", "deepseek-flash", {
+                "key_env": "DEEPSEEK_API_KEY", "pricing": {}})):
+            try:
+                optimizer.run("deepseek:deepseek-flash", allow_cloud=True, max_cloud_cost=0.25)
+                assert False, "unpriced cloud spend cannot be capped"
+            except SystemExit as error:
+                assert "pricing" in str(error)
+    targets = [{"client": "C", "addr": "%08x" % n} for n in range(2)]
+    with patch("roc.worker.load_settings", return_value={}), \
+         patch("roc.draft.pick_model", return_value="local-model"), \
+         patch("roc.providers.is_cloud", return_value=False), \
+         patch("roc.benchmark.build_hidden", return_value=targets), \
+         patch("roc.optimizer._local_targets", return_value=targets), \
+         patch("roc.optimizer._fresh_targets", return_value=targets), \
+         patch("roc.optimizer._concurrency", return_value=(1, [{"workers": 1, "valid": 6}])), \
+         patch("roc.benchmark.run_local"), \
+         patch("roc.optimizer._session_rows", return_value=[]), \
+         patch("roc.worker.save_settings") as saved:
+        try:
+            optimizer.run("local-model", log=lambda *args: None)
+            assert False, "incomplete optimizer must not save"
+        except SystemExit as error:
+            assert "no profile saved" in str(error)
+    saved.assert_not_called()
+
+
+def test_optimizer_profile_clear():
+    from roc.optimizer import clear_profile
+    profiles = {"model-a": {"name": "fast"}, "model-b": {"name": "deep"}}
+    with patch("roc.worker.load_settings", return_value={"optimizer_profiles": profiles}), \
+         patch("roc.worker.save_settings") as saved:
+        assert clear_profile("model-a")
+    assert saved.call_args.kwargs["optimizer_profiles"] == {"model-b": {"name": "deep"}}
+
+
+def test_launcher_can_optimize_before_worker():
+    from roc.link import choose_options
+    profile = {"name": "structured", "rounds": 2, "max_tokens": 1536, "strategy": "structured"}
+    with patch("roc.draft.ollama_models", return_value=["local-model"]), \
+         patch("roc.draft.pick_model", return_value="local-model"), \
+         patch("roc.worker.save_settings"), \
+         patch("roc.optimizer.run", return_value=profile) as optimize, \
+         patch("builtins.input", side_effect=["", "5", "", ""]):
+        result = choose_options({"model": "local-model"})
+    optimize.assert_called_once()
+    assert result == ("local-model", 2, 256, True, 1, 1536, "auto")
+
+
+def test_launcher_saved_setup_starts_with_one_enter():
+    from roc.link import choose_options
+    settings = {"model": "local-model", "worker_launcher_configured": True,
+                "worker_preset": "balanced", "worker_rounds": 3, "worker_workers": 7,
+                "worker_output_budget": 1536, "worker_revng": False,
+                "worker_thinking": "disabled", "worker_strategy": "structured"}
+    with patch("roc.draft.ollama_models", return_value=["local-model"]), \
+         patch("roc.draft.pick_model", return_value="local-model"), \
+         patch("roc.worker.save_settings"), \
+         patch("roc.optimizer.profile", return_value=None), \
+         patch("builtins.input", side_effect=[""]):
+        assert choose_options(settings) == (
+            "local-model", 3, 256, False, 7, 1536, "disabled")
+
+
+def test_launcher_numbered_model_and_fast_mode():
+    from roc.link import choose_options
+    with patch("roc.draft.ollama_models", return_value=["model-a", "model-b"]), \
+         patch("roc.draft.pick_model", return_value="model-a"), \
+         patch("roc.worker.save_settings"), \
+         patch("builtins.input", side_effect=["2", "2", "1", ""]):
+        assert choose_options({}) == ("model-b", 2, 96, False, 1, 2048, "auto")
 
 
 def test_auto_reasoning():
@@ -835,7 +988,7 @@ def test_exact_match_separate_from_fuzzy():
 
 
 def test_diagnose_call_argument_order():
-    from roc import draft, match
+    from roc import draft, match, mutate
     target = bytes.fromhex("6a016a02ff1500000000c3")
     candidate = bytes.fromhex("6a026a01ff1500000000c3")
     diag = match.diagnose(target, [], candidate, [])
@@ -854,6 +1007,16 @@ def test_diagnose_call_argument_order():
         "unused", "unused", "", None, diagnosis=note_diag)
     assert not draft._diagnose_note("unused", "unused", "", None,
                                     diagnosis=note_diag, byte_feedback=False)
+    args_diag = {"call_argument_diffs": [{"target": ["2", "1"], "candidate": ["1", "2"]}]}
+    def check_args(_client, _addr, source, _flags=None, include_diagnosis=False):
+        score = 100 if "callee(b, a)" in source else 98
+        row = (score, None, None, None)
+        return row + (args_diag,) if include_diagnosis else row
+    improved = mutate.improve("C", "1", "int f(){ return callee(a, b); }", check=check_args)
+    assert improved[0] == 100 and "callee(b, a)" in improved[1] and improved.speculative
+    nested = "int f(){ return callee(make(a, 1), obj.value); }"
+    swapped = mutate.swap_call_argument_variants(nested)
+    assert any("callee(obj.value, make(a, 1))" in variant for variant in swapped)
 
 
 def test_mutate_validated():
@@ -932,6 +1095,22 @@ def test_truncation_disables_thinking(monkeypatch):
     assert score == 100 and len(seen) == 2
     assert seen[1].get("thinking") == "disabled" and "reasoning_effort" not in seen[1]
     assert any("thinking disabled" in message for message in logs)
+
+
+def test_tiny_cloud_auto_thinking_starts_disabled(monkeypatch):
+    from roc import draft
+    seen = []
+    def ask(model, prompt, context=None, options=None, details=False):
+        seen.append(dict(options or {}))
+        return "```cpp\nint f(){return 1;}\n```", None, {"finish_reason": "stop"}
+    monkeypatch.setattr(draft, "_ask_context", ask)
+    monkeypatch.setattr(draft.match, "target", lambda *args: (b"\xc3", [], {"size": 12, "unit": "x"}))
+    monkeypatch.setattr(draft.match, "disasm", lambda *args: ["ret "])
+    monkeypatch.setattr(draft, "prompt_for", lambda *args: "p")
+    monkeypatch.setattr(draft.match, "check_text", lambda *args: (100, None, "", None))
+    draft.llm_rounds("C", "1", "deepseek:deepseek-flash", 1,
+                     provider_options={"allow_cloud": True, "thinking": "auto"}, log=lambda *_: None)
+    assert seen[0].get("thinking") == "disabled"
 
 
 def test_asm_strikes_stop_early(monkeypatch):

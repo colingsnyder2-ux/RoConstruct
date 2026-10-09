@@ -143,6 +143,7 @@ roc pull <client|all> [--force] download everyone's sources
 roc flags <client>              work out compiler flags from matched code
 roc config --user U --server S  save your settings
 roc model [name|default]         show or choose AI model
+roc optimize [--model MODEL]     benchmark once, save model-specific worker settings
 roc worker [--jobs N]           run an AI worker (`--workers N` for bounded parallel loops)
 roc worker --dry-run             check worker setup without taking a job
 roc worker --workers 2           run bounded parallel lease loops (1-256, or auto)
@@ -172,6 +173,20 @@ roc status                      progress, active workers, leaderboard
 roc progress                    rebuild the website data in docs/
 roc link install | remove       one-click links on/off
 ```
+
+`roc optimize --model MODEL` compares bounded generation profiles on disjoint
+calibration/validation sets of up to 12 globally unattempted verified local matches (use
+`--targets 24` for broader evidence). It never submits to the
+mining server. It saves best-observed settings in local worker config; rerun
+with `--force` to recalibrate, or use `roc optimize --clear --model MODEL` to remove profile.
+Cloud optimization also needs `--allow-cloud`
+and explicit `--max-cloud-cost` (request/token caps apply). One-click worker
+startup offers numbered model choices and Recommended/Fast/Deep modes; Advanced
+keeps manual controls. Launcher also offers optional “Optimize model” before
+starting; it saves a per-model profile. Profiles are corpus-specific, not guaranteed optimal.
+Cloud dollar caps need user-supplied exact-model rates, for example:
+`roc provider pricing deepseek --model deepseek-flash --input-per-million INPUT_USD --output-per-million OUTPUT_USD`.
+Replace placeholders with provider's current rate card; rates are saved locally, not fetched automatically.
 </details>
 
 <details>
@@ -216,11 +231,13 @@ saved server/user settings to run installed code models against those targets.
 The saved hidden-corpus baseline is in `work/benchmark-baseline.json`; use `--baseline` after a
 sample or full run to compare score gain and match rate before changing worker speed settings.
 
-One-click worker links ask each time for model, preset, worker count, and Rev.ng. Press Enter to
-keep the shown defaults. Cloud choices include DeepSeek, NVIDIA, OpenAI, Anthropic, and Gemini.
-If a selected cloud key is missing, run `add-api-key.cmd`: choose a provider and paste the key
-into a hidden prompt. The key is saved in the user-local secrets file. Show its path with
-`roc provider secrets`.
+One-click worker links show numbered model choices and Recommended/Fast/Deep/Advanced modes,
+plus optional “Optimize model” before starting. After setup, Enter starts saved config; type `2`
+to change it or `3` to recalibrate. Press Enter to keep choices while editing. Run
+`roc optimize --model MODEL` or choose launcher option to calibrate once; startup then uses its
+saved best-observed profile. Cloud models not listed can still be
+entered by provider:model. If a cloud key is missing, `add-api-key.cmd` opens the user-local
+secrets file; show its path with `roc provider secrets`.
 
 Discord mine logs: run `C:\Users\colin\RoConstruct-discord\discord_setup.py` with the bot token.
 It creates `#mine-logs` and prints a private webhook URL. Start the server with `--discord-webhook URL`

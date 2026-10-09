@@ -57,6 +57,64 @@ MUTATORS = (toggle_char_signedness, toggle_int_signedness,
 SPECULATIVE = {"negate_comparison", "swap_add_operands"}
 
 
+def swap_call_argument_variants(src):
+    """Swap two top-level call args; caller needs byte-level reversal evidence."""
+    src = src or ""
+    out = []
+    for opening, char in enumerate(src):
+        if char != "(":
+            continue
+        name = re.search(r"([A-Za-z_]\w*(?:::[A-Za-z_]\w*)*)\s*$", src[:opening])
+        if not name or name.group(1) in {"if", "while", "for", "switch", "catch", "sizeof", "decltype"}:
+            continue
+        depth, quote, escaped, commas, closing = 1, "", False, [], None
+        for i in range(opening + 1, len(src)):
+            c = src[i]
+            if quote:
+                if escaped:
+                    escaped = False
+                elif c == "\\":
+                    escaped = True
+                elif c == quote:
+                    quote = ""
+                continue
+            if c in "\"'":
+                quote = c
+            elif c in "([{":
+                depth += 1
+            elif c in ")]}" :
+                depth -= 1
+                if depth == 0:
+                    closing = i
+                    break
+            elif c == "," and depth == 1:
+                commas.append(i)
+        if closing is None or len(commas) != 1 or re.match(r"\s*(?:const\s*)?\{", src[closing + 1:]):
+            continue
+        left_start, left_end = opening + 1, commas[0]
+        right_start, right_end = commas[0] + 1, closing
+        while left_start < left_end and src[left_start].isspace():
+            left_start += 1
+        while left_end > left_start and src[left_end - 1].isspace():
+            left_end -= 1
+        while right_start < right_end and src[right_start].isspace():
+            right_start += 1
+        while right_end > right_start and src[right_end - 1].isspace():
+            right_end -= 1
+        left, right = src[left_start:left_end], src[right_start:right_end]
+        if left and right and left != right:
+            out.append(src[:left_start] + right + src[left_end:right_start] + left + src[right_end:])
+        if len(out) == 4:
+            break
+    return out
+
+
+def _reversed_call_order(diagnosis):
+    return any(len(row.get("target", [])) == 2 and len(row.get("candidate", [])) == 2 and
+               row["target"] == row["candidate"][::-1]
+               for row in (diagnosis or {}).get("call_argument_diffs", []))
+
+
 class ImproveResult(tuple):
     """(score, src, tried) plus `.speculative`; unpacks like the old 3-tuple."""
     def __new__(cls, score, src, tried, speculative=False):
@@ -90,8 +148,14 @@ def improve(client, addr, src, flags=None, check=None):
     """
     from roc import match
     check = check or match.check_text
+    diagnosis = None
     try:
-        base, _, _, _ = check(client, addr, src, flags)
+        try:
+            measured = check(client, addr, src, flags, include_diagnosis=True)
+        except TypeError:
+            measured = check(client, addr, src, flags)
+        base = measured[0]
+        diagnosis = measured[4] if len(measured) > 4 else None
     except match.CompileError:
         base = 0
     best, tried, speculative = (base, src), 0, False
@@ -110,4 +174,15 @@ def improve(client, addr, src, flags=None, check=None):
         if s > best[0]:
             best = (s, v)
             speculative = fn.__name__ in SPECULATIVE
+    if _reversed_call_order(diagnosis):
+        for v in swap_call_argument_variants(src):
+            if v == src:
+                continue
+            tried += 1
+            try:
+                s, _, _, _ = check(client, addr, v, flags)
+            except match.CompileError:
+                continue
+            if s > best[0]:
+                best, speculative = (s, v), True
     return ImproveResult(best[0], best[1], tried, speculative)

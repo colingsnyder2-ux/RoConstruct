@@ -5,6 +5,7 @@ outside the repository. This module owns provider HTTP details so matching,
 MSVC compilation, and server leases stay local and provider-agnostic.
 """
 import json
+import math
 import os
 import re
 import threading
@@ -211,6 +212,30 @@ def save_provider(name, kind, base_url, key_env, **extra):
     CONFIG.write_text(json.dumps(data, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
+def save_pricing(name, model, input_per_million, output_per_million):
+    """Save user-supplied USD rates for one exact remote model name."""
+    config = _read_config().get(name)
+    if not config or not str(model or "").strip():
+        raise ValueError("unknown provider")
+    rates = (float(input_per_million), float(output_per_million))
+    if any(not math.isfinite(rate) or rate < 0 for rate in rates):
+        raise ValueError("token rates must be finite, non-negative USD amounts")
+    try:
+        data = json.loads(CONFIG.read_text(encoding="utf-8")) if CONFIG.exists() else {}
+    except (OSError, ValueError):
+        data = {}
+    providers_data = data.setdefault("providers", {})
+    entry = dict(providers_data.get(name) or config)
+    pricing = dict(entry.get("pricing") or {})
+    models = dict(pricing.get("models") or {})
+    models[model] = {"input_per_million": rates[0], "output_per_million": rates[1]}
+    entry["pricing"] = {"default": pricing.get("default"), "models": models}
+    if entry["pricing"]["default"] is None:
+        entry["pricing"].pop("default")
+    providers_data[name] = entry
+    CONFIG.write_text(json.dumps(data, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+
 def remove_provider(name):
     """Remove a user override; built-in names fall back to their safe defaults."""
     try:
@@ -302,8 +327,26 @@ def _cached_tokens(data):
     return 0
 
 
-def _cost(config, inp, out):
+def _pricing(config, model):
     prices = config.get("pricing") or {}
+    if "models" in prices:
+        prices = prices["models"].get(model) or prices.get("default")
+    if not isinstance(prices, dict):
+        return None
+    try:
+        values = [float(prices[name]) for name in ("input_per_million", "output_per_million")]
+    except (KeyError, TypeError, ValueError):
+        return None
+    return prices if all(math.isfinite(value) and value >= 0 for value in values) else None
+
+
+def has_pricing(model):
+    provider, remote, config = parse_model(model)
+    return provider != "local" and bool(_pricing(config, remote))
+
+
+def _cost(config, inp, out, model=None):
+    prices = _pricing(config, model)
     if not prices:
         return None
     return round((inp * float(prices.get("input_per_million", 0)) +
@@ -342,7 +385,7 @@ def _openai_chat(provider, remote, config, prompt, state, options):
             "max_tokens": options.get("max_tokens", 1024), "stream": False}
     if options.get("seed") is not None:
         body["seed"] = int(options["seed"])
-    if options.get("thinking") is not None:
+    if options.get("thinking") is not None and str(options["thinking"]).lower() != "auto":
         body["thinking"] = (options["thinking"] if isinstance(options["thinking"], dict)
                              else {"type": str(options["thinking"])})
     if options.get("reasoning_effort") is not None:
@@ -476,7 +519,7 @@ def generate(model, messages, options=None, state=None):
     budget = options.get("budget")
     estimate_input = max(1, len(sanitize_prompt(prompt)) // 3)
     estimate_tokens = estimate_input + int(options["max_tokens"])
-    if budget and budget.max_cost is not None and not (config.get("pricing") or {}):
+    if budget and budget.max_cost is not None and not _pricing(config, remote):
         raise ProviderError("cloud_budget", "--max-cloud-cost needs provider pricing; cost is unknown")
     if gate:
         lock = gate.enter(provider)
@@ -486,13 +529,14 @@ def generate(model, messages, options=None, state=None):
             ticket = None
             try:
                 if budget:
-                    ticket = budget.reserve(estimate_tokens, _cost(config, estimate_input, int(options["max_tokens"])) or 0.0)
+                    ticket = budget.reserve(estimate_tokens,
+                                            _cost(config, estimate_input, int(options["max_tokens"]), remote) or 0.0)
                 fn = {"openai-chat": _openai_chat, "openai-responses": _openai_responses,
                       "anthropic-messages": _anthropic, "gemini": _gemini}[config["kind"]]
                 out = fn(provider, remote, config, prompt, state, options)
                 out.latency_s = time.monotonic() - started
                 out.retries = retries
-                out.cost = _cost(config, out.input_tokens, out.output_tokens)
+                out.cost = _cost(config, out.input_tokens, out.output_tokens, remote)
                 if budget:
                     budget.settle(ticket, out.input_tokens + out.output_tokens, out.cost)
                 if gate:

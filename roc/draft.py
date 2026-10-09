@@ -231,6 +231,11 @@ def invalid_qualified_definition(src):
 def source_contract_error(src):
     """Cheap invalid-output gate; no guessed C++ rewrite is performed here."""
     src = src or ""
+    numbered_fields = re.findall(
+        r"(?m)^\s*[^;\n]*\b(?:field|unknown|unk|padding|gap|member)[_0-9]+\s*(?:\[[^]]+\])?\s*;",
+        src, re.I)
+    if len(numbered_fields) >= 12:
+        return "invented numbered-field layout"
     if src.count("{") != src.count("}"):
         return "unbalanced braces"
     if re.search(r"\b0x[0-9A-Fa-f]+\s*\(", src):
@@ -735,6 +740,8 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
             cloud = _providers.is_cloud(model)
         except (ValueError, RuntimeError):
             cloud = False
+        if cloud and row.get("size", 0) <= 32 and (provider_options or {}).get("thinking", "auto") == "auto":
+            no_think = True
         floor = 1024 if cloud else 0
         ask_options.setdefault("max_tokens", max(output_budget(row.get("size", 0)), floor))
         if no_think:
@@ -829,6 +836,8 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
         contract_error = source_contract_error(src)
         if contract_error:
             error = "Candidate rejected: %s. Emit one complete C++ function definition." % contract_error
+            if contract_error == "invented numbered-field layout":
+                error += " Use one char padding array per gap; do not enumerate filler fields."
             log("  round %d: rejected %s" % (i + 1, contract_error))
             if stats is not None:
                 stats.append({"round": i + 1, "strategy": strategy, "score": 0,
