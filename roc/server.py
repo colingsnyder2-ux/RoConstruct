@@ -56,7 +56,9 @@ def check_many_text(client, addrs, source):
         if not candidates:
             results.append((addr, 0, []))
             continue
-        best = max(candidates, key=lambda row: match.score(code, relocs, row[1], row[2]))
+        best = next((row for row in candidates if match.exact_match(code, relocs, row[1], row[2])), None)
+        if best is None:
+            best = max(candidates, key=lambda row: match.score(code, relocs, row[1], row[2]))
         score = match.score(code, relocs, best[1], best[2])
         spans = []
         if score == 100:

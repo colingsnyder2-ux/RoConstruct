@@ -1125,6 +1125,23 @@ def test_fingerprint_c_scope():
     assert list(batches(st.db)) == [("C", source, ["00401010"])]
 
 
+def test_server_fingerprint_exact_first_keeps_data_verification():
+    from roc import match, server
+    code = b"A" * 12
+    funcs = [("fuzzy", b"B" * 12, []), ("first_exact", code, []), ("second_exact", code, [])]
+    for bad in ([], ["constant differs"]):
+        with patch("roc.server.match.compile_text", return_value=b"obj"), \
+             patch("roc.server.match.coff_functions", return_value=funcs), \
+             patch("roc.server.match.target", return_value=(code, [], {})), \
+             patch("roc.server.match.score", wraps=match.score) as scored, \
+             patch("roc.server.match.coff_data_refs", return_value=[]) as refs, \
+             patch("roc.server.match.data_check", return_value=([(123, 4)], bad)):
+            rows = server.check_many_text("C", ["00401000"], "source")
+            assert rows == [("00401000", 99 if bad else 100, [] if bad else [(123, 4)])]
+            refs.assert_called_once_with(b"obj", "first_exact")
+            assert scored.call_count == 1
+
+
 def test_shape_normalisation():
     # Same code with different constants must collapse to one shape, or the counts that
     # decide which template to write next are meaningless.
