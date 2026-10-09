@@ -434,6 +434,7 @@ def structure_ir(asm, facts=None):
             facts.get("this_offsets") or ()))[:12], "returns": list(facts.get("returns") or ())[-2:],
             "constants": sorted(constants, key=lambda v: (len(v), v))[:16],
             "type_evidence": type_constraints(asm, facts),
+            "semantic_facts": semantic_facts(asm),
             "calling_convention": facts.get("calling_convention", "unknown")}
 
 
@@ -461,6 +462,31 @@ def type_constraints(asm, facts=None):
     if unsigned:
         out.append("unsigned branch evidence " + ", ".join(unsigned))
     return "; ".join(out) or "no safe source-level type claim"
+
+
+def semantic_facts(asm, limit=12):
+    """Recover direct register expressions; never invent control flow or types."""
+    values, out = {}, []
+    for line in (_insn(item) for item in asm):
+        bits = line.split(None, 1)
+        if len(bits) != 2:
+            continue
+        op, operands = bits
+        args = [item.strip() for item in operands.split(",", 1)]
+        if len(args) != 2 or not re.fullmatch(r"e(?:ax|bx|cx|dx|si|di|bp|sp)", args[0], re.I):
+            continue
+        reg, rhs = args[0].lower(), args[1]
+        if op == "xor" and rhs.lower() == reg:
+            values[reg] = "0"
+        elif op in ("mov", "lea"):
+            values[reg] = rhs
+        elif op in ("add", "sub") and reg in values:
+            symbol = "+" if op == "add" else "-"
+            values[reg] = "(%s %s %s)" % (values[reg], symbol, rhs)
+        else:
+            continue
+        out.append("%s=%s" % (reg, values[reg]))
+    return out[-limit:]
 
 
 def classify_target(asm, facts=None):

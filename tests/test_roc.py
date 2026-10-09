@@ -209,6 +209,8 @@ def test_draft_helpers():
                             "00401004  ebfa                 jmp 0x401000"])
     assert graph["reachable"] == [0, 1, 2] and graph["loop_headers"] == [0]
     assert graph["dominators"]["2"] == [0, 2]
+    assert draft.semantic_facts(["mov eax, 4", "add eax, 8", "xor ecx, ecx"]) == [
+        "eax=4", "eax=(4 + 8)", "ecx=0"]
     constraints = draft.type_constraints(["jb sym", "ret 8"], {"this_reads": [4], "stack_args": [8],
                                                             "virtual_slots": [3], "returns": ["ret 8"]})
     assert "ECX receiver" in constraints and "unsigned branch" in constraints and "virtual slots 3" in constraints

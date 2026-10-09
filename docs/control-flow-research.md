@@ -39,6 +39,11 @@ still makes this opt-in through structured generation; direct generation is
 unchanged. Facts never force an ambiguous CFG into an if/loop: they report
 observed edges and dominance only.
 
+It also adds `semantic_facts(asm)`: a twelve-entry cap over direct `mov`,
+`lea`, `add`, `sub`, and zeroing-register expressions. This is a small
+Miasm-inspired data-flow hint, not a general symbolic executor or type
+inference engine.
+
 ## Benchmark evidence
 
 Frozen manifest: `benchmarks/holdout-fresh-100-20261008.json` (100 unseen
@@ -71,6 +76,20 @@ Repair replay converted 0/10 structured non-exact candidates. This small
 paired result is a regression for the new CFG prompt fields, not evidence to
 make them default. Keep them experimental and test on a larger fresh arm
 before tuning the representation further.
+
+The follow-up semantic-facts smoke holdout
+(`holdout-fresh-sem12-20261009`, fingerprint
+`a6181d1ef11f6dfcdc47769ae88a5b0e42157d1915cdb2d886a518f2058847ec`) produced:
+
+| arm | exact | compilable | tokens | cost | runtime |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| direct | 1/12 | 7/12 | 23,426 | $0.010833 | 27.35s |
+| structured + CFG + semantics | 1/12 | 9/12 | 30,414 | $0.012597 | 28.31s |
+
+Semantic guidance added two compiling candidates but no exact match and used
+30% more tokens. Repair replay converted 1/9 structured candidates in both
+arms via argument-order evidence. Keep semantic/CFG guidance experimental;
+current evidence supports compile-rate improvement, not byte-exact gain.
 
 Repair replay on the latest 52 compilable non-exact structured candidates:
 existing arm 0 conversions; guided arm 2 calling-convention conversions,
