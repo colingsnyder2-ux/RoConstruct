@@ -53,6 +53,10 @@ Both arms matched only tiny functions. Structured gained +2 exact matches
 (13 vs 11) at slightly fewer dollars but slightly more tokens. 24 jobs in the
 structured arm hit the 250k token guard; those are failures, not zero-score
 model outputs. This is promising but not enough to make structured default.
+The 100-target runs completed before the new dominator fields were added, so
+they validate existing structured mode, not a claimed post-change CFG gain.
+The next controlled arm must use a fresh manifest or a clearly labeled tuning
+set.
 
 Repair replay on the latest 52 compilable non-exact structured candidates:
 existing arm 0 conversions; guided arm 2 calling-convention conversions,
