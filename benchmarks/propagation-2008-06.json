@@ -1,0 +1,72 @@
+{
+ "client": "2008-06",
+ "unit": "seg_007f0000",
+ "session": "families-2008-06-seg7f-auto-20261009",
+ "totals": {
+  "families": 36,
+  "verified_families": 8,
+  "siblings": 368,
+  "rewritten": 32,
+  "compiled": 32,
+  "exact": 32,
+  "conversions": 32
+ },
+ "families": [
+  {
+   "representative": "007f5c30",
+   "members": 1,
+   "rewritten": 0,
+   "compiled": 0,
+   "exact": 0
+  },
+  {
+   "representative": "007f9120",
+   "members": 4,
+   "rewritten": 0,
+   "compiled": 0,
+   "exact": 0
+  },
+  {
+   "representative": "007fb110",
+   "members": 32,
+   "rewritten": 32,
+   "compiled": 32,
+   "exact": 32
+  },
+  {
+   "representative": "007f9170",
+   "members": 49,
+   "rewritten": 0,
+   "compiled": 0,
+   "exact": 0
+  },
+  {
+   "representative": "007fa9c0",
+   "members": 1,
+   "rewritten": 0,
+   "compiled": 0,
+   "exact": 0
+  },
+  {
+   "representative": "007f37c0",
+   "members": 35,
+   "rewritten": 0,
+   "compiled": 0,
+   "exact": 0
+  },
+  {
+   "representative": "007fa230",
+   "members": 244,
+   "rewritten": 0,
+   "compiled": 0,
+   "exact": 0
+  },
+  {
+   "representative": "007fb0f0",
+   "members": 2,
+   "rewritten": 0,
+   "compiled": 0,
+   "exact": 0
+  }
+ ]
+}

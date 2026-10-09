@@ -41,6 +41,7 @@ def main():
     parser.add_argument("--max-cloud-tokens", type=int, default=100000)
     parser.add_argument("--max-cloud-cost", type=float, default=0.50)
     parser.add_argument("--session-prefix", default="family-replay-" + time.strftime("%Y%m%d-%H%M%S"))
+    parser.add_argument("--model", default="deepseek:deepseek-flash")
     args = parser.parse_args()
     used = set()
     try:
@@ -82,8 +83,9 @@ def main():
           (len(selected), len(candidates), fingerprint))
     if not selected:
         raise SystemExit("no unseen siblings with verified exemplars")
-    model = "deepseek:deepseek-flash"
-    options = {"allow_cloud": True, "max_tokens": 2048,
+    model = args.model
+    is_cloud = providers.is_cloud(model)
+    options = {"allow_cloud": is_cloud, "max_tokens": 2048,
                "budget": providers.CloudBudget(args.max_cloud_requests,
                                                  args.max_cloud_tokens,
                                                  args.max_cloud_cost),

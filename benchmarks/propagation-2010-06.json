@@ -1,0 +1,51 @@
+{
+ "client": "2010-06",
+ "unit": "seg_009e0000",
+ "session": "families-2010-06-seg_009e0000-20261009",
+ "totals": {
+  "families": 12,
+  "verified_families": 5,
+  "siblings": 560,
+  "rewritten": 0,
+  "compiled": 0,
+  "exact": 0,
+  "conversions": 0
+ },
+ "families": [
+  {
+   "representative": "009e0000",
+   "members": 121,
+   "rewritten": 0,
+   "compiled": 0,
+   "exact": 0
+  },
+  {
+   "representative": "009e1fa0",
+   "members": 21,
+   "rewritten": 0,
+   "compiled": 0,
+   "exact": 0
+  },
+  {
+   "representative": "009e21e0",
+   "members": 415,
+   "rewritten": 0,
+   "compiled": 0,
+   "exact": 0
+  },
+  {
+   "representative": "009e8f40",
+   "members": 2,
+   "rewritten": 0,
+   "compiled": 0,
+   "exact": 0
+  },
+  {
+   "representative": "009e8fd0",
+   "members": 1,
+   "rewritten": 0,
+   "compiled": 0,
+   "exact": 0
+  }
+ ]
+}

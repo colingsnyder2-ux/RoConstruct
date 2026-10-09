@@ -31,12 +31,16 @@ Additional paired holdouts: 2009-06 improved 12/15 → 15/15; 2010-06 improved
 10/12 → 12/12. All compiled. Four client versions now support default-on mode,
 though random whole-client validation remains.
 
+Propagation replay produced 32 exact conversions on 2008-06 and 37 on 2009-06;
+2007-08 and 2010-06 had no safe literal rewrites. This validates fast-path
+value, not universal family coverage.
+
 ## Next gates
 
 1. Run paired family-vs-direct holdouts on 2008 and a fresh client.
 2. Promote default only if exact matches improve and cost/exact does not worsen.
-3. Measure propagation conversion rate on fresh functions; disable path if it
-   adds compile cost without exact wins.
+3. Measure propagation conversion rate on fresh worker jobs; current replay is
+   positive, but continue monitoring compile cost.
 4. Track exact, compile, tokens, cost/exact, family coverage, and propagation
    conversions separately.
 

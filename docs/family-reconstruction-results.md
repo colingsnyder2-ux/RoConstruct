@@ -71,6 +71,22 @@ DeepSeek paired sibling checks on additional clients:
 All jobs compiled in both arms. Evidence now spans four client versions, but
 samples remain repeated wrapper/thunk families, not random whole-client draws.
 
+## Deterministic propagation replay
+
+Compiler-gated address-literal propagation was replayed across all verified
+families. It never submits without `cl.exe` verification:
+
+| client/section | siblings | rewritten | compiled exact | conversions |
+| --- | ---: | ---: | ---: | ---: |
+| 2007-08 `seg_00770000` | 431 | 0 | 0 | 0 |
+| 2008-06 `seg_007f0000` | 368 | 32 | 32 | 32 |
+| 2009-06 `seg_00890000` | 1,062 | 37 | 37 | 37 |
+| 2010-06 `seg_009e0000` | 560 | 0 | 0 | 0 |
+
+Zero rows mean no safe equal-literal rewrite, not failure. Propagation is
+therefore useful for address-heavy wrapper families, but remains a bounded
+fast path before LLM generation.
+
 ## Reproduction
 
 ```text

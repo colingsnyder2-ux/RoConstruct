@@ -1,0 +1,93 @@
+{
+ "client": "2007-08",
+ "unit": "seg_00770000",
+ "session": "families-2007-08-seg770000-auto-20261009",
+ "totals": {
+  "families": 38,
+  "verified_families": 11,
+  "siblings": 431,
+  "rewritten": 0,
+  "compiled": 0,
+  "exact": 0,
+  "conversions": 0
+ },
+ "families": [
+  {
+   "representative": "00779020",
+   "members": 2,
+   "rewritten": 0,
+   "compiled": 0,
+   "exact": 0
+  },
+  {
+   "representative": "00773250",
+   "members": 2,
+   "rewritten": 0,
+   "compiled": 0,
+   "exact": 0
+  },
+  {
+   "representative": "00776230",
+   "members": 4,
+   "rewritten": 0,
+   "compiled": 0,
+   "exact": 0
+  },
+  {
+   "representative": "00778000",
+   "members": 33,
+   "rewritten": 0,
+   "compiled": 0,
+   "exact": 0
+  },
+  {
+   "representative": "00770030",
+   "members": 23,
+   "rewritten": 0,
+   "compiled": 0,
+   "exact": 0
+  },
+  {
+   "representative": "00776280",
+   "members": 46,
+   "rewritten": 0,
+   "compiled": 0,
+   "exact": 0
+  },
+  {
+   "representative": "00777970",
+   "members": 1,
+   "rewritten": 0,
+   "compiled": 0,
+   "exact": 0
+  },
+  {
+   "representative": "00771500",
+   "members": 37,
+   "rewritten": 0,
+   "compiled": 0,
+   "exact": 0
+  },
+  {
+   "representative": "00777a70",
+   "members": 274,
+   "rewritten": 0,
+   "compiled": 0,
+   "exact": 0
+  },
+  {
+   "representative": "00777fe0",
+   "members": 8,
+   "rewritten": 0,
+   "compiled": 0,
+   "exact": 0
+  },
+  {
+   "representative": "0077cb50",
+   "members": 1,
+   "rewritten": 0,
+   "compiled": 0,
+   "exact": 0
+  }
+ ]
+}
