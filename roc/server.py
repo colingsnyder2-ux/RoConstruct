@@ -328,6 +328,14 @@ class Store:
             self.db.commit()
         return True
 
+    def register_families(self, rows):
+        with self.lock:
+            self.db.executemany("UPDATE funcs SET family = ? WHERE client = ? AND addr = ?",
+                                [(str(r.get("family", "")), str(r.get("client", "")),
+                                  str(r.get("addr", ""))) for r in rows if r.get("family")])
+            self.db.commit()
+        return len(rows)
+
     def examples(self, client, n=3, unit=None, shape=None, strict=False, family=None):
         """Small matched sources, used as few-shot examples for AI workers."""
         with self.lock:
@@ -435,6 +443,11 @@ def make_handler(store, token, can_verify, mine_log=None):
                 return self.send(200, store.register_family(str(body.get("client", "")),
                                                              str(body.get("addr", "")),
                                                              str(body.get("family", ""))))
+            if path == "/v1/families":
+                rows = body.get("rows", [])
+                if not isinstance(rows, list) or len(rows) > 5000:
+                    return self.send(400, {"error": "rows must be list <= 5000"})
+                return self.send(200, {"registered": store.register_families(rows)})
             if path in ("/v1/lease", "/v1/submit") and not USER_RE.match(user):
                 return self.send(400, {"error": "username must be 2-32 letters, digits, _ . -"})
             if path == "/v1/lease":
