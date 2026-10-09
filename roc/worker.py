@@ -581,7 +581,7 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
                    cloud_min_size=0, cloud_fallback=None, seed=None,
                    cloud_escalate=None, cloud_escalate_after=2, thinking=None, reasoning_effort=None,
                    max_tokens=2048, guided_mutations=False, order="auto", verbosity="auto",
-                   family_exemplars=True):
+                   family_exemplars=True, lease_mode="function"):
     """Run a bounded number of independent lease loops.
 
     Server leases make workers safe to run in parallel. Cloud loops are
