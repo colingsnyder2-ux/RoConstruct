@@ -723,7 +723,8 @@ def cmd_worker(a):
         a.rounds, a.max_size, a.no_revng = min(a.rounds, 2), min(a.max_size, 96), True
     elif a.preset == "deep":
         a.rounds, a.max_size = max(a.rounds, 6), max(a.max_size, 512)
-    chosen = a.model or s.get("model")
+    # Deterministic repair must never inherit a saved cloud model.
+    chosen = None if a.source_only else (a.model or s.get("model"))
     cloud_allowed = bool(a.allow_cloud or s.get("cloud_allowed"))
     if chosen and providers.is_cloud(chosen) and not cloud_allowed:
         sys.exit("Cloud models send prompts outside this PC. Pass --allow-cloud to continue.")
