@@ -13,6 +13,18 @@ RATE_WINDOW = 15 * 60
 ETA_MIN_RATE = 1.0 / 3600
 
 
+def emoji_bar(source, mined, retry, total):
+    """Fifteen cells: blue source, green mined, red retry, white untouched."""
+    values = (source, mined, retry)
+    cells = [value * 15 // total if total else 0 for value in values]
+    spare = 15 - sum(cells)
+    order = sorted(range(3), key=lambda i: values[i] * 15 % total if total else 0, reverse=True)
+    for i in order[:spare]:
+        cells[i] += 1
+    return (":blue_square:" * cells[0] + ":green_square:" * cells[1] +
+            ":negative_squared_cross_mark:" * cells[2] + ":white_large_square:" * (15 - sum(cells)))
+
+
 def fmt_duration(seconds):
     """Compact ETA: 45s, 12m, 5h 20m, 3d 4h."""
     seconds = max(0, int(seconds))
@@ -100,10 +112,10 @@ class MineLog:
         client = events[-1]["job"].get("client", "?")
         matched, total = self.store.client_progress(client)
         matched_bytes, total_bytes = self.store.client_bytes(client)
+        source, mined, retry, _total = self.store.digest_progress(client)
         left = max(0, total - matched)
         percent = 100.0 * matched_bytes / total_bytes if total_bytes else 0
-        filled = min(20, round(percent / 5))
-        bar = "█" * filled + "░" * (20 - filled)
+        bar = emoji_bar(source, mined, retry, total_bytes)
         rate = self.store.match_rate(client, RATE_WINDOW)
         rate_hr = rate * 3600
         eta = fmt_duration(left / rate) if rate >= ETA_MIN_RATE else "building rate"
@@ -128,8 +140,9 @@ class MineLog:
                     {"name": "🏆 Workers", "value": "%s - %s pts (%+d)" % (
                         contributor, format(self.store.user_points(contributor), ","), batch_points), "inline": True},
                     {"name": "✅ Batch", "value": "%d matched · %d improved" % (len(full), len(partial)), "inline": True},
-                    {"name": "⏱ ETA", "value": eta, "inline": True}],
-                "footer": {"text": "ETA: %s" % eta},
+                    {"name": "⏱ ETA", "value": eta, "inline": True},
+                    ],
+                "footer": {"text": "RoConstruct Mining"},
                 "timestamp": datetime.now(timezone.utc).isoformat()}
 
     def _send(self, events):

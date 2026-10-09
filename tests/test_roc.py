@@ -808,7 +808,7 @@ def test_mine_digest():
     assert embed["fields"][2]["name"] == "⚡ Mining Rate"
     assert embed["fields"][3]["name"] == "🏆 Workers" and embed["fields"][3]["value"] == "alice - 60 pts (+60)"
     assert embed["fields"][4]["value"] == "1 matched · 1 improved"
-    assert embed["footer"]["text"].startswith("ETA:") and "T" in embed["timestamp"]
+    assert embed["footer"]["text"] == "RoConstruct Mining" and "T" in embed["timestamp"]
 
 
 def test_concurrent_shares_caches_and_clamps():
