@@ -16,6 +16,41 @@ TEMPLATES = ROOT / "work" / "worker-templates.json"
 QUARANTINE = ROOT / "work" / "worker-quarantine.json"
 PROMOTED = ROOT / "work" / "worker-promoted.json"
 _LOCK = threading.Lock()
+_RECENT = {"key": None, "rows": []}
+
+
+def recent_rows():
+    """Read the latest 5,000 records once per file change, without loading history."""
+    with _LOCK:
+        try:
+            stat = PATH.stat()
+            key = (PATH, stat.st_ino, stat.st_size, stat.st_mtime_ns)
+            if _RECENT["key"] == key:
+                return _RECENT["rows"]
+            with PATH.open("rb") as stream:
+                position, count, blocks = stat.st_size, 0, []
+                while position and count <= 5000:
+                    size = min(position, 65536)
+                    position -= size
+                    stream.seek(position)
+                    block = stream.read(size)
+                    blocks.append(block)
+                    count += block.count(b"\n")
+            lines = b"".join(reversed(blocks)).splitlines()
+            if position:
+                lines = lines[1:]
+        except OSError:
+            return []
+        rows = []
+        for line in lines[-5000:]:
+            try:
+                row = json.loads(line)
+            except ValueError:
+                continue
+            if isinstance(row, dict):
+                rows.append(row)
+        _RECENT.update(key=key, rows=rows)
+        return rows
 
 
 def record(session, **data):
@@ -33,18 +68,7 @@ def session_totals(session):
     """Running token/cost totals for one worker session (prior recorded jobs)."""
     totals = {"jobs": 0, "input_tokens": 0, "output_tokens": 0,
               "cached_tokens": 0, "estimated_cost": 0, "cloud_jobs": 0}
-    try:
-        lines = PATH.read_text(encoding="utf-8").splitlines()[-5000:]
-    except OSError:
-        return totals
-    done = []
-    for line in lines:
-        try:
-            row = json.loads(line)
-        except ValueError:
-            continue
-        if row.get("session") == session and row.get("event") == "job":
-            done.append(row)
+    done = [row for row in recent_rows() if row.get("session") == session and row.get("event") == "job"]
     cloud = [r for r in done if r.get("provider") and r.get("provider") != "local"]
     costs = [r.get("estimated_cost") for r in cloud]
     totals.update(jobs=len(done),
@@ -58,16 +82,8 @@ def session_totals(session):
 
 def inline_asm_prone(client, addr, threshold=2):
     """True when recent attempts repeatedly emitted forbidden inline asm."""
-    try:
-        lines = PATH.read_text(encoding="utf-8").splitlines()[-5000:]
-    except OSError:
-        return False
     strikes = 0
-    for line in lines:
-        try:
-            row = json.loads(line)
-        except ValueError:
-            continue
+    for row in recent_rows():
         if row.get("event") != "job" or row.get("client") != client or row.get("addr") != addr:
             continue
         strikes += sum(bool(round_row.get("rejected_asm"))
@@ -77,14 +93,7 @@ def inline_asm_prone(client, addr, threshold=2):
 
 
 def summary(session):
-    rows = []
-    try:
-        for line in PATH.read_text(encoding="utf-8").splitlines()[-5000:]:
-            row = json.loads(line)
-            if row.get("session") == session:
-                rows.append(row)
-    except (OSError, ValueError):
-        return ""
+    rows = [row for row in recent_rows() if row.get("session") == session]
     if not rows:
         return ""
     done = [r for r in rows if r.get("event") == "job"]

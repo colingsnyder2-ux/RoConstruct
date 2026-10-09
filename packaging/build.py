@@ -25,15 +25,17 @@ DIST = ROOT / "dist"
 # Every module a working cloud worker needs (transitive closure of worker, link,
 # handoff, doctor, setup, analyze, draft, optimizer and the matchers).
 WORKER_MODULES = [
-    "analyze", "auto", "benchmark", "clients", "doctor", "draft", "fingerprint",
-    "flags", "handoff", "libs", "link", "mass", "match", "metrics", "mutate",
-    "optimizer", "providers", "refsource", "repair", "selfupdate", "setup",
-    "shapes", "sources", "uninstall", "worker", "xcopy",
+    "activity", "analyze", "angr_facts", "auto", "benchmark", "clients", "doctor", "draft", "fingerprint",
+    "flags", "gui", "gui_worker", "handoff", "libs", "link", "mass", "match", "metrics", "mutate",
+    "ltcg", "optimizer", "pressure", "providers", "refsource", "repair", "selfupdate", "setup",
+    "shapes", "sources", "uninstall", "verify_window", "worker", "xcopy",
 ]
 # Only the maintainer's server needs these, so they stay out of the helper zips.
 SERVER_MODULES = ["dataset", "discord", "progress", "server"]
 
-COMMON_FILES = ["roc.py", "roc.cmd", "install.cmd", "uninstall.cmd", "README.md",
+COMMON_FILES = ["roc.py", "roc.cmd", "roc.sh", "install.cmd", "install.sh",
+                "uninstall.cmd", "README.md",
+                "roc/web/index.html", "roc/web/style.css", "roc/web/app.js",
                 "clients/clients.json", "clients/sources.json", "clients/README.md"]
 
 PACKAGES = {
@@ -48,13 +50,15 @@ PACKAGES = {
 
 This is the whole helper install. It is deliberately small:
 
-  1. Run install.cmd. It checks Python 3.12, installs two pip packages
+  1. Run install.cmd (Windows) or install.sh (Linux). It checks Python, installs two pip packages
      (pefile, capstone), downloads the exact MSVC compiler bundles, registers
      the roconstruct:// link, and opens the website.
-  2. Click "Start helping" on the website (or run start.cmd). It asks your
+  2. Click "Start helping" on the website (or run start.cmd; Linux: ./roc.sh launch). It asks your
      username, which client, and whether prompts may go to a cloud model.
   3. The worker runs. Cloud models mean your PC stays idle. Only source that
      compiled and matched is uploaded.
+
+Linux needs Wine plus cabextract or 7z. Use ./roc.sh instead of Windows URI links.
 
 Not installed, on purpose: Ollama, Docker, Rev.ng, any local model.
 Want a local model later? Run local-ai.cmd from RoConstruct Local AI, or:
@@ -143,6 +147,7 @@ def stage(slug, spec, out):
         if not source.is_file():
             raise SystemExit("missing module for %s: roc/%s.py" % (slug, module))
         shutil.copyfile(source, out / "roc" / source.name)
+    shutil.copytree(ROOT / "roc" / "web", out / "roc" / "web", dirs_exist_ok=True)
     (out / "roc" / "__init__.py").write_text("", encoding="utf-8")
     for name, text in spec["docs"].items():
         (out / name).write_text(text, encoding="utf-8")

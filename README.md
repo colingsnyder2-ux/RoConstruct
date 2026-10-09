@@ -35,7 +35,7 @@ When every function matches, the result is a source tree that rebuilds the origi
 The installer is deliberately tiny: **no GPU, no Ollama, no Docker.**
 
 1. **Download** this repo (Code → Download ZIP) and unzip it.
-2. Double-click **`install.cmd`**. It checks for Python 3.12, installs two pip packages (`pefile`, `capstone`), downloads the exact MSVC compiler bundles, and registers `roconstruct://`. It prints the download size and time before it starts. No admin rights needed.
+2. Double-click **`install.cmd`**. It checks for Python 3.12, installs two pip packages (`pefile`, `capstone`), downloads the exact MSVC compiler bundles, and registers `roconstruct://`. It prints the download size and time before it starts. No admin rights needed. **On Linux, run `./install.sh` instead** — same steps, but the compiler bundles are unpacked with Wine plus `cabextract`/`7z` (`msitools` is an optional fallback) and run through Wine (see [Linux](#linux)).
 3. Click **Help out** on any client at the [RoConstruct website](https://colingsnyder2-ux.github.io/RoConstruct/index.html).
 
 That is the whole setup. The click opens a console window that:
@@ -66,6 +66,49 @@ To update an existing Git checkout without removing clients, mined work, or sett
 
 To undo the install later, double-click **`uninstall.cmd`**. It lists everything first with sizes, then asks before each step. RoConstruct's own files default to yes (about 3.2 GB of compilers and caches); shared software defaults to no. Your other Ollama models are never touched — only the coder models this project uses are offered.
 
+### Linux
+
+RoConstruct runs on Linux with the same byte-exact pipeline. The old MSVC
+compilers are Windows programs, so the bundles are unpacked with Wine plus
+`cabextract`/`7z` (`msitools` is an optional fallback) and executed through
+**Wine** with a private prefix in `tools/wineprefix` — your `~/.wine` is never
+touched.
+
+Linux support adapted from [brambora69123's fork](https://github.com/brambora69123/RoConstruct).
+For an emulated Wine loader (for example on ARM), set `ROC_WINE` to its executable
+or wrapper path before running `install.sh` and `roc.sh`.
+
+You need:
+
+| Tool | Why | Install |
+|---|---|---|
+| Python 3.12+ | the CLI, analysis and worker | your package manager |
+| Wine | runs the exact 2005/2008 `cl.exe` | `sudo pacman -S wine` / `sudo apt install wine wine32` / `sudo dnf install wine` |
+| `cabextract` or `7z` | unpacks the compiler archives | `sudo pacman -S cabextract` / `sudo apt install cabextract` |
+
+Then, from the repo folder:
+
+```sh
+./install.sh      # pip packages + exact compilers + doctor; prints sizes first
+./roc.sh launch   # start a worker
+./roc.sh doctor   # what is broken and the exact command that fixes it
+```
+
+`install.sh` puts `pefile`/`capstone` in a private venv at `tools/venv`
+(modern distros refuse user-level pip installs into the system Python), and
+`roc.sh` uses that venv automatically.
+
+Everything else is the same as Windows: `./roc.sh claim 2009-06 006749e0`
+starts a function, `./roc.sh check` compiles it with the client's own compiler
+under Wine and reports `100% MATCH` or a diff, and `./roc.sh submit` uploads
+it. Library matching (`roc libs`), cross-client copy (`roc xcopy`) and the AI
+workers all work unchanged.
+
+Two Windows conveniences do not exist on Linux: `roconstruct://` one-click
+links, and the winget-based Ollama install. Use `./roc.sh` instead of the
+website link, and install Ollama with your package manager (or the script at
+[ollama.com](https://ollama.com/download)) before `./roc.sh local-ai`.
+
 ### Ways to help
 
 | You have | Do this |
@@ -76,6 +119,38 @@ To undo the install later, double-click **`uninstall.cmd`**. It lists everything
 | A PC that's always on | **Host the server**: see below (maintainer package). |
 
 Double-click **`roc.cmd`** for a menu with everything.
+
+### Local workbench
+
+Run **`roc gui`** to open the local dashboard in your browser. No Node, web
+framework, or extra Python package is needed. The dashboard runs on loopback;
+provider credentials remain in ROC's existing user-local secrets file.
+
+- **Workers:** choose a client/model, presets, parallel loops, rounds, output
+  tokens, strategies, score filters and cloud budgets. Tune a running session;
+  each loop applies changes before its next function. Budget changes preserve
+  spent usage. Server, client, cloud consent and lease mode require a new session.
+- **Pause / resume / finish & stop:** pause prevents new leases while active
+  functions finish. Lowering loop count retires extra loops after active work.
+  Immediate stop terminates the process tree; cloud requests already sent may
+  still bill, and unreleased leases expire on the server.
+- **Commands:** run mass, analyze, auto, xcopy, repair, check, fetch, doctor and
+  other tasks with a command preview. Jobs queue serially to protect shared
+  client files. Mass reports its current stage, not an invented percentage.
+- **Console / history:** filter/search logs, follow output, export retained logs,
+  inspect outcomes and save worker presets. History lives in `work/gui/`.
+  Each run retains its latest two 4 MB log segments; live view is bounded.
+
+Website `roconstruct://` links offer **Terminal** or **Webpage** before setup.
+In dashboard **Settings**, choose “Ask every time” or remember either interface.
+The webpage opens with the link's client/server/user and cloud consent filled
+in; it does not automatically start a worker or send cloud prompts.
+
+Closing or refreshing a browser tab leaves jobs running. **Exit ROC dashboard**
+or Ctrl+C in the launch terminal stops the dashboard and its jobs. If the backend
+was interrupted, saved sessions are marked interrupted; rerun explicitly.
+Use `roc gui --port 8766` to choose a port, or `roc gui --no-browser` to print a
+session link. Keep that link private: it authorizes local dashboard controls.
 
 ### Packages
 
@@ -199,6 +274,9 @@ roc worker [--jobs N]           run an AI worker (`--workers N` for bounded para
 roc worker --dry-run             check worker setup without taking a job
 roc worker --workers 2           run bounded parallel lease loops (1-256, or auto)
 roc worker --preset fast|deep    choose speed or source-heavy mode
+roc worker --preset automatic    choose bounded workers, rounds, output and evidence order
+roc worker --rounds auto --output-budget auto
+                                 use per-function budgets; explicit numbers override them
 roc worker --source-only         run deterministic candidates only
 roc worker --model nvidia:MODEL --allow-cloud --cloud-min-size 97 --cloud-fallback qwen2.5-coder:7b-instruct
                                  spend cloud only on medium/large jobs
@@ -342,3 +420,7 @@ Not sure which one applies? **`roc doctor`** prints every check, what it found, 
 - **Never commit or share Roblox client files.** Everyone brings their own copy.
 - `src/` (matched sources) stays out of git: publishing Roblox code risks a takedown. The server keeps the sources.
 - Be friendly. Join us on [Discord](https://discord.gg/Tayg763nrG).
+
+Dashboard **Functions** records new worker attempts locally in `work/function-history.sqlite`. Search/filter the latest 300 attempts; sort by name, address, score, gain, or time. Open an attempt for original leased source, best locally verified source, timeline, actual compiler commands/output, and generation rounds. Worker outcome and best candidate score are separate when submission fails. Older runs have no source snapshots.
+
+Workers uses session tabs and a live chat feed with generated C++, verified candidates, expandable compiler output, code copying, loop filtering, and Compact view. Configure opens a side drawer. Selecting a saved session loads retained logs. Dashboard cloud workers finish their session once the request cap is reached.

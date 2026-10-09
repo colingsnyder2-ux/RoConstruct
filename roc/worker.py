@@ -16,7 +16,7 @@ from urllib.parse import quote, urlparse
 import uuid
 from pathlib import Path
 
-from roc import clients, draft, match, metrics, setup
+from roc import activity, clients, draft, match, metrics, setup
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -146,7 +146,7 @@ class CompactLog:
         self.lock = threading.Lock()
         self.jobs = self.improved = self.matched = self.failures = 0
         self.current = {}
-        self.next_report = max(10, workers)
+        self.started_at = self.last_report = time.monotonic()
 
     def __call__(self, message):
         text = str(message)
@@ -186,20 +186,27 @@ class CompactLog:
             self.output(text)
 
     def _finish(self, score=None):
+        job = self.current.pop(threading.get_ident(), None)
+        if job is None:
+            return
+        client, addr, size, unit, best = job
+        if self.workers > 3:
+            unit = ""
         self.jobs += 1
-        self.improved += score is not None and score > 0
+        self.improved += score is not None and score > best and score != 100
         self.matched += score == 100
-        client, addr, size, unit, best = self.current.pop(threading.get_ident(), ("?", "?", None, "?", 0))
         size_text = "%d B " % size if size is not None else ""
-        if score is None:
-            self.output("· %s %s %sno gain (best %d%%) %s" % (client, addr, size_text, best, unit))
+        if score is None or score <= best and score != 100:
+            self.output(("· %s %s %sno gain (best %d%%) %s" % (client, addr, size_text, best, unit)).rstrip())
         else:
-            self.output("%s %s %s %s%d%% %s" % ("✓" if score == 100 else "↑",
-                        client, addr, size_text, score, unit))
-        if self.jobs >= self.next_report:
-            self.output("⛏ %dw | %d done | %d matched | %d improved | %d errors" %
-                        (self.workers, self.jobs, self.matched, self.improved, self.failures))
-            self.next_report += max(10, self.workers)
+            self.output(("%s %s %s %s%d%% %s" % ("✓" if score == 100 else "↑",
+                        client, addr, size_text, score, unit)).rstrip())
+        now = time.monotonic()
+        if now - self.last_report >= 30:
+            self.output("⛏ %dw | %d done | %.1f fn/min | %d matched | %d improved | %d errors" %
+                        (self.workers, self.jobs, self.jobs * 60 / max(now - self.started_at, 1),
+                         self.matched, self.improved, self.failures))
+            self.last_report = now
 
     def finish(self):
         self.output("⛏ %dw finished | %d done | %d matched | %d improved | %d errors" %
@@ -323,7 +330,10 @@ def main_args(payload, argv=()):
     ap.add_argument("--client", help="override the client from the config")
     ap.add_argument("--model", help="override the model from the config")
     ap.add_argument("--workers", help="bounded concurrent lease loops (1-256 or auto)")
-    ap.add_argument("--rounds", type=int, help="AI tries per function")
+    ap.add_argument("--rounds", type=lambda value: value if value == "auto" else int(value), help="AI tries per function (or auto)")
+    ap.add_argument("--output-budget", type=lambda value: value if value == "auto" else int(value), help="output tokens (or auto)")
+    ap.add_argument("--strategy", choices=["auto", "direct", "structured", "reference"])
+    ap.add_argument("--thinking", choices=["auto", "enabled", "disabled"])
     ap.add_argument("--max-size", type=int, help="skip functions bigger than this")
     ap.add_argument("--jobs", type=int, help="stop after this many functions")
     ap.add_argument("--order", choices=["auto", "best", "matched", "unmatched", "easiest", "random"],
@@ -351,9 +361,16 @@ def main_args(payload, argv=()):
     client = given.client or payload.get("client")
     model, cloud_allowed = resolve_model(payload)
     is_cloud = providers.is_cloud(model)
-    rounds = given.rounds if given.rounds else 4
-    max_size = given.max_size if given.max_size else 256
-    workers = given.workers or ("auto" if is_cloud else 1)
+    runtime = load_settings()
+    runtime = runtime if runtime.get("model") == model else {}
+    rounds = given.rounds if given.rounds is not None else runtime.get("worker_rounds", 4)
+    max_tokens = given.output_budget if given.output_budget is not None else runtime.get("worker_output_budget", 2048)
+    if rounds != "auto" and not 1 <= rounds <= 100:
+        raise SystemExit("Rounds must be auto or 1-100")
+    if max_tokens != "auto" and not 128 <= max_tokens <= 8192:
+        raise SystemExit("Output budget must be auto or 128-8192")
+    max_size = given.max_size if given.max_size is not None else runtime.get("worker_max_size", 256)
+    workers = given.workers or runtime.get("worker_workers", "auto" if is_cloud else 1)
     order = given.order or load_settings().get("worker_order", "random")
     verbosity = given.verbosity or load_settings().get("worker_verbosity", "auto")
     family_id = given.family_id or (family_from_example(given.family_example) if given.family_example else None)
@@ -381,10 +398,12 @@ def main_args(payload, argv=()):
     if given.dry_run:
         return None
     keep_awake()
-    return run_concurrent(server, user, token, model, rounds, max_size, not given.no_revng,
+    return run_concurrent(server, user, token, model, rounds, max_size,
+                          not given.no_revng and runtime.get("worker_revng", True),
                           given.jobs, workers=workers, only=[client] if client else None,
                           cloud_allowed=cloud_allowed, cloud_budget=budget,
-                          max_tokens=2048, thinking="auto", order=order,
+                          max_tokens=max_tokens, thinking=given.thinking or runtime.get("worker_thinking", "auto"),
+                          strategy=given.strategy or runtime.get("worker_strategy", "direct"), order=order,
                           verbosity=verbosity,
                           family_exemplars=given.family_exemplars,
                           lease_mode="family" if family_id else given.lease_mode,
@@ -442,6 +461,8 @@ class Api:
         return self._conn
 
     def call(self, path, payload=None, timeout=60):
+        if path == "/v1/submit" and payload and payload.get("source"):
+            activity.candidate(payload["source"], payload.get("score", 0))
         data = json.dumps(payload).encode() if payload is not None else None
         headers = {"Content-Type": "application/json"}
         if self.token:
@@ -671,7 +692,7 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
             log("  auto-think: thinking disabled")
         provider_options = {"allow_cloud": cloud_allowed, "budget": cloud_budget,
                             "gate": cloud_gate, "diverse_candidates": diverse_candidates,
-                            "seed": seed, "max_tokens": max_tokens,
+                            "seed": seed, "max_tokens": resolve_output_tokens(job, max_tokens),
                             "guided_mutations": guided_mutations,
                             "family_exemplars": family_exemplars,
                             "near_repair": near_repair,
@@ -696,6 +717,11 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
         if control is not None:
             control.finished(slot, job, score)
         save_session_state(worker, user, model, done, matched, failures)
+        if provider_options.get("budget_exhausted"):
+            log("Cloud budget cannot fund another request; finishing session.")
+            if control is not None:
+                control.command({"action": "stop"})
+            break
         if done % 10 == 0:
             log("== %s: %d functions tried, %d matched this session ==" % (time.strftime("%H:%M"), done, matched))
             report = metrics.summary(session)
@@ -722,10 +748,7 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
     I/O-bound (remote inference), so the cap is generous; local GPU loops
     should stay low so laptop users do not oversubscribe.
     """
-    if str(workers).lower() == "auto":
-        # Conservative: small models can overlap; large models stay serial.
-        workers = 2 if "7b" in str(model).lower() else 1
-    workers = max(1, min(int(workers or 1), MAX_WORKERS))
+    workers = resolve_workers(workers, model, source_only)
     if cloud_gate is None:
         from roc import providers
         cloud_gate = providers.CloudGate(workers)
@@ -800,13 +823,14 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
         raise
     if errors:
         raise errors[0]
-    if workers > 3:
+    if isinstance(worker_log, CompactLog):
         worker_log.finish()
 
 
 def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=None,
              source_cache=None, session=None, source_only=False, strategy="direct", provider_options=None):
     from roc import providers
+    activity.begin(job, model, session)
     compact_log = isinstance(log, CompactLog)
     output = log
     progress = {"stage": "starting", "at": time.monotonic(), "began": time.monotonic()}
@@ -819,6 +843,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
 
     def job_log(message):
         progress["at"] = time.monotonic()
+        activity.event(message)
         output(message)
 
     log = job_log
@@ -832,7 +857,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
     log("[%s %s] %d B, %s, best so far %d%%" % (client, addr, job["size"], job["unit"], job["score"]))
     stop = threading.Event()
     started = time.monotonic()
-    result, improved, failure = 0, False, None
+    result, improved, failure = job.get("score", 0), False, None
     family_propagated = False
     source_candidate = None
     phase_seconds = {}
@@ -1116,6 +1141,8 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
             failure_reason = "api"
         else:
             failure_reason = "worker_error"
+        if failure_reason == "cloud_budget" and provider_options is not None:
+            provider_options["budget_exhausted"] = True
         if getattr(error, "category", "") == "provider_circuit":
             provider, _remote, _config = providers.parse_model(model)
             log("  cloud circuit open; waiting 60s before retrying %s." % provider)
@@ -1131,7 +1158,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
             api.call("/v1/release", {"lease": job["lease"], "cooldown": 120})
         except RuntimeError:
             pass
-        return 0
+        return job.get("score", 0)
     except KeyboardInterrupt:
         try:
             api.call("/v1/release", {"lease": job["lease"], "cooldown": 120})
@@ -1139,6 +1166,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
             raise
     finally:
         stop.set()
+        activity.finish(result, failure, round_stats)
         if session:
             coded = [r for r in round_stats if isinstance(r.get("round"), int) and r.get("code")]
             generated = [r for r in round_stats if isinstance(r.get("round"), int)]
@@ -1175,6 +1203,24 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                            estimated_cost=metrics.known_generation_cost(generated),
                            failure_reason=failure_reason,
                            failure=failure)
+
+
+def resolve_workers(workers, model=None, source_only=False):
+    from roc import providers
+    if str(workers).lower() == "auto":
+        if source_only:
+            workers = 1
+        elif providers.is_cloud(model):
+            workers = 8 if str(model).startswith("deepseek:") else 4
+        else:
+            workers = 2 if re.search(r":7b(?:-|$)", str(model).lower()) else 1
+    return max(1, min(int(workers or 1), MAX_WORKERS))
+
+
+def resolve_output_tokens(job, max_tokens):
+    if max_tokens != "auto":
+        return max_tokens
+    return 1024 if job.get("size", 999999) <= 64 and not job.get("calls", 0) else 2048
 
 
 def resolve_rounds(job, rounds, model=None):

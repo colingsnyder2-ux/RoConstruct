@@ -458,6 +458,13 @@ RECIPES["xtp-13.2.1"] = dict(src="xtp-13.2.1", langs=["cpp"], builds=[30729, 210
 RECIPES["xtp-11.2.2"] = dict(src="xtp-11.2.2", langs=["cpp"], builds=[30729, 21022],
                              include=_xtp_inc("xtp-11.2.2", "mfc-9.0"), grid=_MFC_GRID,
                              files="Source/**/*.cpp", write=_XTP_STDAFX)
+# Shared release MFC retains CObject::AssertValid/Dump virtual slots. Keep the
+# configuration in a separate recipe so preprocessing and source replay agree.
+RECIPES["xtp-11.2.2-shared-mfc"] = dict(
+    src="xtp-11.2.2", langs=["cpp"], builds=[30729, 21022],
+    include=_xtp_inc("xtp-11.2.2", "mfc-9.0"),
+    defines="_AFXDLL _XTP_STATICLINK _DLL", grid=["/O2 /GS- /MD", "/O1 /GS- /MD"],
+    files="Source/**/*.cpp", write=_XTP_STDAFX)
 RECIPES["xtp-11.2.2-vc8"] = dict(src="xtp-11.2.2", langs=["cpp"], builds=[50727],
                                  include=_xtp_inc("xtp-11.2.2", "mfc-8.0"), grid=_MFC_GRID,
                                  files="Source/**/*.cpp", write=_XTP_STDAFX)
@@ -572,11 +579,14 @@ def preprocess(build, path, include, defines=""):
     """One self-contained translation unit: headers inlined, link-only pragmas dropped."""
     cl = setup.compilers()[build]
     env = setup.cl_env(cl)
+    if not setup.WINDOWS:  # Wine needs Windows-style include paths inside INCLUDE
+        include = ";".join(setup.to_wine_path(p) for p in include.split(";") if p)
     env["INCLUDE"] = "%s;%s" % (include, env["INCLUDE"])
     if defines:
         env["CL"] = " ".join("/D" + d for d in defines.split())
     try:
-        run = subprocess.run([cl, "/nologo", "/EP", str(path)], capture_output=True, text=True,
+        run = subprocess.run([*setup.cl_command(cl), "/nologo", "/EP", setup.cl_path(path)],
+                             capture_output=True, text=True,
                              env=env, errors="replace", timeout=120)
     except subprocess.TimeoutExpired:
         raise match.CompileError("preprocessor timeout after 120 seconds")

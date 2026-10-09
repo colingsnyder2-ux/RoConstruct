@@ -665,14 +665,23 @@ def compile_text(client, text, flags=None, build=None):
         src, obj = Path(tmp) / ("f.c" if d.get("lang") == "c" else "f.cpp"), Path(tmp) / "f.obj"
         src.write_text(text)
         try:
-            run = subprocess.run([str(cl), "/nologo", "/c", "/Gy", *flags, "/Fo" + str(obj), str(src)],
+            argv = [*setup.cl_command(cl), "/nologo", "/c", "/Gy", *flags,
+                    "/Fo" + setup.cl_path(obj), setup.cl_path(src)]
+            run = subprocess.run(argv,
                                  capture_output=True, text=True, env=env, cwd=tmp, timeout=120)
         except subprocess.TimeoutExpired:
+            from roc import activity
+            activity.command(argv, tmp, subprocess.CompletedProcess(argv, -1, "", "Compiler timeout after 120 seconds"))
             message = "compiler timeout after 120 seconds"
             _remember_compile_error(error_key, message)
             raise CompileError(message)
+        from roc import activity
+        activity.command(argv, tmp, run)
         if run.returncode:
-            out = (run.stdout + run.stderr).replace(str(src), "source").strip()
+            out = run.stdout + run.stderr
+            for shown in {str(src), setup.cl_path(src)}:  # Wine echoes the Z:\ form
+                out = out.replace(shown, "source")
+            out = out.strip()
             message = "\n".join(l for l in out.splitlines() if l.strip() not in ("f.cpp", "f.c"))
             _remember_compile_error(error_key, message)
             raise CompileError(message)
@@ -711,12 +720,19 @@ def check_text(client, addr, text, flags=None, include_diagnosis=False):
     best = max((f for value, f in scored if value == highest),
                key=lambda f: rank_candidate(code, relocs, f[1], f[2]))
     value, d, spans = score(code, relocs, best[1], best[2]), diff(code, relocs, best[1], best[2]), []
+    bad = []
     if value == 100:
         spans, bad = data_check(client, addr, code, coff_data_refs(obj, best[0]))
         if bad:
             value, d = 99, "Code matches, but data your source defines does not:\n" + "\n".join(bad)
+    from roc import activity
+    activity.candidate(text, value)
     result = (value, best[0], d, spans)
     diagnosis = diagnose(code, relocs, best[1], best[2]) if include_diagnosis and value < 100 else {}
+    if include_diagnosis and bad:
+        diagnosis.update(exact=False, code_exact=True, mismatch_class="referenced-data mismatch",
+                         data_mismatches=bad, classifications=[{
+                             "category": "referenced-data mismatch", "confidence": 1.0, "evidence": bad}])
     return result + (diagnosis,) if include_diagnosis else result
 
 

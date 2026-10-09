@@ -1082,9 +1082,9 @@ def test_compact_worker_log():
     log("  thinking disabled for remaining rounds")
     log("  tokens used: 100")
     log.finish()
-    assert "✓ C 00401020 8 B 100% Unit" in out
-    assert "· C 00401030 8 B no gain (best 0%) Unit2" in out
-    assert out[-1] == "⛏ 32w finished | 2 done | 1 matched | 1 improved | 0 errors"
+    assert "✓ C 00401020 8 B 100%" in out
+    assert "· C 00401030 8 B no gain (best 0%)" in out
+    assert out[-1] == "⛏ 32w finished | 2 done | 1 matched | 0 improved | 0 errors"
 
 
 def test_server_store():

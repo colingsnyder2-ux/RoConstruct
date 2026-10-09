@@ -182,7 +182,7 @@ def _forwarded(a):
     """Flags on `a` that the worker entry point understands, as a CLI list."""
     forwarded = []
     for name in ("client", "model", "workers", "rounds", "max_size", "jobs", "lease_mode",
-                 "family_id", "family_example", "unit"):
+                 "family_id", "family_example", "unit", "output_budget", "strategy", "thinking"):
         value = getattr(a, name, None)
         if value is not None:
             forwarded += ["--%s" % name.replace("_", "-"), str(value)]
@@ -471,6 +471,11 @@ def cmd_xcopy(a):
                      {"name": "Clients", "value": ", ".join(sorted(result)), "inline": True}])
 
 
+def cmd_shapes(a):
+    from roc import shapes
+    shapes.report([a.name], max_size=a.size, show=a.show, top=a.top)
+
+
 def cmd_ref(a):
     """Resolve a client function to the 2016 Roblox source that probably produced it."""
     from roc import refsource
@@ -693,6 +698,10 @@ def cmd_pull(a):
 def cmd_server(a):
     server = need_module("server", "The group server")
     if a.startup:
+        if os.name != "nt":
+            sys.exit("--startup is Windows-only. On Linux, run the server from a systemd user "
+                     "unit or cron instead, for example:\n"
+                     "  ExecStart=%s %s server --port %d" % (sys.executable, ROOT / "roc.py", a.port))
         startup = Path(os.environ["APPDATA"]) / r"Microsoft\Windows\Start Menu\Programs\Startup" / "RoConstruct server.cmd"
         startup.write_text('@start "RoConstruct server" /min "%s"' % (ROOT / "host.cmd"))
         return print("The server will start when you log in: %s" % startup)
@@ -729,10 +738,22 @@ def cmd_worker(a):
         worker.clear_setting("model")
         a.model = None
         s.pop("model", None)
-    if a.preset == "fast":
-        a.rounds, a.max_size, a.no_revng = min(a.rounds, 2), min(a.max_size, 96), True
+    explicit_rounds = a.rounds is not None
+    a.rounds = a.rounds if explicit_rounds else 4
+    if a.rounds != "auto" and not 1 <= a.rounds <= 100:
+        raise SystemExit("--rounds must be auto or 1-100")
+    a.max_size = a.max_size if a.max_size is not None else (512 if a.preset in ("auto", "automatic") else 256)
+    if a.preset in ("auto", "automatic"):
+        if not explicit_rounds:
+            a.rounds = "auto"
+        a.no_revng = True
+        if a.preset == "automatic":
+            a.workers = a.workers or "auto"
+            a.order = a.order or "auto"
+    elif a.preset == "fast":
+        a.rounds, a.max_size, a.no_revng = min(4 if a.rounds == "auto" else a.rounds, 2), min(a.max_size, 96), True
     elif a.preset == "deep":
-        a.rounds, a.max_size = max(a.rounds, 6), max(a.max_size, 512)
+        a.rounds, a.max_size = max(4 if a.rounds == "auto" else a.rounds, 6), max(a.max_size, 512)
     if a.min_score is not None and not 0 <= a.min_score <= 100:
         raise SystemExit("--min-score must be 0-100")
     if a.max_score is not None and not 0 <= a.max_score <= 100:
@@ -755,9 +776,11 @@ def cmd_worker(a):
     budget = providers.CloudBudget(a.max_cloud_requests, a.max_cloud_tokens, a.max_cloud_cost)
     gate = providers.CloudGate(a.cloud_concurrency) if a.cloud_concurrency is not None else None
     if a.output_budget is None:
-        a.output_budget = 2048
-    if not 128 <= a.output_budget <= 8192:
-        raise SystemExit("--output-budget must be 128-8192")
+        a.output_budget = "auto" if a.preset == "automatic" else 2048
+    if a.output_budget != "auto" and not 128 <= a.output_budget <= 8192:
+        raise SystemExit("--output-budget must be auto or 128-8192")
+    if a.cloud_min_size is None:
+        a.cloud_min_size = 0 if a.preset == "automatic" else 97
     if a.cloud_fallback:
         if providers.is_cloud(a.cloud_fallback):
             if not cloud_allowed:
@@ -788,7 +811,7 @@ def cmd_worker(a):
     if a.dry_run:
         info = worker.Api(srv, a.token or s.get("token")).call("/v1/info")
         have = worker.usable_clients(info)
-        print("Worker preview: user=%s model=%s clients=%s rounds=%d max-size=%d Rev.ng=%s workers=%s output-budget=%d order=%s" %
+        print("Worker preview: user=%s model=%s clients=%s rounds=%s max-size=%d Rev.ng=%s workers=%s output-budget=%s order=%s" %
               (user, draft.pick_model(chosen) or "none", ", ".join(have) or "none",
                a.rounds, a.max_size, "off" if a.no_revng else "auto", a.workers, a.output_budget, order))
         return
@@ -796,7 +819,7 @@ def cmd_worker(a):
         raise SystemExit("Unit lease needs --unit NAME")
     worker.save_settings(user=user, server=srv, model=a.model, order=order)
     worker.run_concurrent(srv, user, a.token or s.get("token"), chosen, a.rounds, a.max_size,
-                          not a.no_revng, a.jobs, a.workers, source_only=a.source_only,
+                          not a.no_revng, a.jobs, a.workers or "1", source_only=a.source_only,
                           only=[a.client] if a.client else None, strategy=a.strategy,
                           cloud_allowed=cloud_allowed, cloud_budget=budget, cloud_gate=gate,
                           diverse_candidates=a.diverse_candidates, cloud_min_size=a.cloud_min_size,
@@ -1237,7 +1260,10 @@ def main(argv=None):
     p.add_argument("--client", help="override the client from the config")
     p.add_argument("--model", help="override the model from the config")
     p.add_argument("--workers", help="bounded concurrent lease loops (1-256 or auto)")
-    p.add_argument("--rounds", type=int, help="AI tries per function")
+    p.add_argument("--rounds", type=lambda value: value if value == "auto" else int(value), help="AI tries per function (or auto)")
+    p.add_argument("--output-budget", type=lambda value: value if value == "auto" else int(value), help="output tokens (or auto)")
+    p.add_argument("--strategy", choices=["auto", "direct", "structured", "reference"])
+    p.add_argument("--thinking", choices=["auto", "enabled", "disabled"])
     p.add_argument("--max-size", dest="max_size", type=int, help="skip functions bigger than this")
     p.add_argument("--jobs", type=int, help="stop after this many functions")
     p.add_argument("--lease-mode", choices=["function", "family", "unit"], default=None,
@@ -1312,6 +1338,11 @@ def main(argv=None):
                                                        "help": "how much of each client the 2016 tree explains"}),
         (["--client"], {"help": "restrict --summarise to one client"}),
         (["--limit"], {"type": int, "default": 5}))
+    cmd("shapes", cmd_shapes, "count unmatched assembly shapes",
+        (["name"], {"nargs": "?", "default": "all"}),
+        (["--size"], {"type": int, "default": 48}),
+        (["--top"], {"type": int, "default": 25}),
+        (["--show"], {"type": int, "default": 3}))
     cmd("libs", cmd_libs, "match open-source library code from its real source ('all' or recipe names)",
         (["names"], {"nargs": "+"}), (["--client"], {"default": "all"}))
     cmd("mass", cmd_mass, "run every automatic matcher (runtime, STL, libraries, shapes); takes a while",
@@ -1411,21 +1442,21 @@ def main(argv=None):
         (["--public-server"], {"help": "address shown on the site (if not using --tunnel)"}),
         (["--startup"], {"action": "store_true", "help": "start host.cmd automatically when you log in"}))
     cmd("worker", cmd_worker, "help automatically: AI drafts, compile, submit",
-            (["--order"], {"choices": ["auto", "best", "matched", "unmatched", "easiest", "random"], "default": "random",
+            (["--order"], {"choices": ["auto", "best", "matched", "unmatched", "easiest", "random"],
                            "help": "which functions first: random named units (default), most-matched, unmatched, easiest, best evidence, or auto"}),
         (["--server"], {}), (["--user"], {}), (["--token"], {}), (["--model"], {}),
         (["--client"], {"help": "restrict work to one registered client (for example 2008-06)"}),
         (["--addr"], {"action": "append", "help": "pin AI work to one or more client function addresses"}),
-        (["--rounds"], {"type": int, "default": 4, "help": "AI tries per function"}),
-        (["--strategy"], {"choices": ["direct", "structured", "reference"], "default": "direct",
+        (["--rounds"], {"type": lambda value: value if value == "auto" else int(value), "help": "AI tries per function (1-100 or auto; default 4)"}),
+        (["--strategy"], {"choices": ["auto", "direct", "structured", "reference"], "default": "direct",
                             "help": "candidate-generation prompt strategy"}),
-        (["--max-size"], {"type": int, "default": 256, "help": "skip functions bigger than this (bytes)"}),
+        (["--max-size"], {"type": int, "help": "skip functions bigger than this (bytes; default 256, automatic 512)"}),
         (["--min-score"], {"type": int, "help": "lease only functions at or above this score"}),
         (["--max-score"], {"type": int, "help": "lease only functions at or below this score"}),
-        (["--output-budget"], {"type": int, "default": 2048,
-                               "help": "max tokens per LLM reply (128-8192)"}),
+        (["--output-budget"], {"type": lambda value: value if value == "auto" else int(value),
+                               "help": "max tokens per LLM reply (128-8192 or auto)"}),
         (["--jobs"], {"type": int, "help": "stop after this many functions"}),
-        (["--workers"], {"default": "1",
+        (["--workers"], {
                           "help": "bounded concurrent lease loops (1-256 or auto)"}),
         (["--lease-mode"], {"choices": ["function", "family", "unit"], "default": "function",
                               "help": "lease one function, strict family, or whole unit"}),
@@ -1440,7 +1471,7 @@ def main(argv=None):
                                      "help": "maximum cloud requests; defaults to worker count"}),
         (["--diverse-candidates"], {"type": int, "default": 1,
                                       "help": "independent samples for hard functions; default 1"}),
-        (["--cloud-min-size"], {"type": int, "default": 97,
+        (["--cloud-min-size"], {"type": int,
                                   "help": "use local 7B fallback below this byte size; 0 disables routing"}),
         (["--cloud-fallback"], {"help": "installed local model for --cloud-min-size jobs"}),
         (["--cloud-escalate"], {"help": "cloud model for medium/large jobs stalled by primary model"}),
@@ -1448,18 +1479,18 @@ def main(argv=None):
                                         "help": "primary attempts before cloud escalation"}),
         (["--seed"], {"type": int, "help": "generation seed where provider supports it"}),
         (["--thinking"], {"choices": ["auto", "enabled", "disabled"], "default": "auto",
-                            "help": "provider reasoning mode; auto disables it for tiny jobs"}),
+                            "help": "provider reasoning mode; auto disables it for tiny jobs and DeepSeek"}),
         (["--family-exemplars"], {"action": "store_true", "default": True,
                                     "help": "use verified same-shape sources as compact family exemplars (default)"}),
         (["--reasoning-effort"], {"choices": ["auto", "low", "medium", "high", "max"],
                                     "help": "provider reasoning effort; auto uses low for tiny jobs"}),
         (["--no-revng"], {"action": "store_true"}),
-        (["--preset"], {"choices": ["fast", "balanced", "deep"], "default": "balanced"}),
+        (["--preset"], {"choices": ["automatic", "auto", "fast", "balanced", "deep"], "default": "balanced"}),
         (["--dry-run"], {"action": "store_true", "help": "show worker setup without leasing a job"}),
         (["--source-only"], {"action": "store_true", "help": "run deterministic candidates; never call Ollama"}),
         (["--guided-mutations"], {"action": "store_true", "help": "enable evidence-guided source mutations after compilation"}),
         (["--abi-only"], {"action": "store_true", "help": "limit compiler mutations to ABI/return/type families"}),
-        (["--near-repair"], {"action": "store_true", "help": "preserve 90%+ source; ask for one minimal evidence-backed change"}),
+        (["--near-repair"], {"action": "store_true", "help": "preserve 90%%+ source; ask for one minimal evidence-backed change"}),
         (["--no-update"], {"action": "store_true", "help": "skip the pre-run source update check"}))
     cmd("model-stats", cmd_model_stats, "compare models using worker telemetry")
     cmd("family-stats", cmd_family_stats, "show family coverage, propagation, cost, and exact rate")

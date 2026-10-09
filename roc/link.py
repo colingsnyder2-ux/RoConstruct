@@ -20,6 +20,9 @@ HANDOFF_FIELDS = ("user", "client", "server", "token", "mode", "model", "cloud")
 
 
 def install():
+    if os.name != "nt":
+        print("One-click roconstruct:// links are Windows-only; on Linux start a worker with: roc launch")
+        return False
     import winreg
     cmd = '"%s" link "%%1"' % (ROOT / "roc.cmd")
     with winreg.CreateKey(winreg.HKEY_CURRENT_USER, r"Software\Classes\%s" % SCHEME) as k:
@@ -31,6 +34,9 @@ def install():
 
 
 def remove():
+    if os.name != "nt":
+        print("One-click links are Windows-only; nothing to remove.")
+        return False
     import winreg
     for sub in (r"shell\open\command", r"shell\open", "shell", ""):
         try:
@@ -41,6 +47,8 @@ def remove():
 
 
 def installed():
+    if os.name != "nt":
+        return False
     try:
         import winreg
         with winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Software\Classes\%s\shell\open\command" % SCHEME) as k:
@@ -75,6 +83,35 @@ def keep_awake():
     """Stop Windows sleeping while the worker runs (screen may still turn off)."""
     from roc import worker
     return worker.keep_awake()
+
+
+def launch(url, ask=input):
+    """Choose terminal/webpage before any setup or worker starts."""
+    from roc import gui, selfupdate, worker
+    parts = parse_full(url)
+    settings = worker.load_settings()
+    interface = settings.get("uri_interface", "ask")
+    if interface not in ("terminal", "web"):
+        print("\nRoConstruct interface: 1) Terminal  2) Webpage")
+        try:
+            choice = ask("Open [1/2, default 2]: ").strip().lower()
+        except EOFError:
+            choice = "2"
+        interface = "terminal" if choice in ("1", "terminal", "t") else "web"
+    if interface == "web":
+        # No cloud request or saved handoff until the user starts from the page.
+        initial = {key: value for key, value in parts.items() if key in ("user", "client", "server", "model", "token")}
+        initial["cloud_allowed"] = parts.get("cloud") == "1"
+        if not initial.get("model"):
+            saved_model = settings.get("model")
+            from roc import providers
+            if parts.get("mode") == "local":
+                initial["model"] = saved_model if saved_model and not providers.is_cloud(saved_model) else ""
+            else:
+                initial["model"] = saved_model if saved_model and providers.is_cloud(saved_model) else worker.cloud_default() or ""
+        return gui.serve(initial=initial)
+    print("Checking for updates: %s" % selfupdate.try_update())
+    return run(url)
 
 
 def run(url):
@@ -166,7 +203,7 @@ def knobs(rounds, max_size, use_revng, workers, order="auto", verbosity="auto", 
     """The chosen options as CLI flags for worker.main_args."""
     argv = ["--workers", str(workers), "--order", order, "--verbosity", verbosity,
             "--lease-mode", lease_mode]
-    if isinstance(rounds, int):
+    if rounds == "auto" or isinstance(rounds, int):
         argv += ["--rounds", str(rounds)]
     if isinstance(max_size, int):
         argv += ["--max-size", str(max_size)]
@@ -255,19 +292,19 @@ def _saved_worker_options(settings, installed):
     manual_preset = settings.get("worker_preset_model") == model
     preset = (settings.get("worker_preset") if manual_preset else
               profile.get("name", settings.get("worker_preset", "balanced")))
-    preset = preset if preset in ("fast", "balanced", "deep", "auto") else "balanced"
+    preset = preset if preset in ("fast", "balanced", "deep", "auto", "automatic") else "balanced"
     rounds, max_size, use_revng = 4, 256, True
     if preset == "fast":
         rounds, max_size, use_revng = 2, 96, False
     elif preset == "deep":
         rounds, max_size = 6, 512
-    elif preset == "auto":
+    elif preset in ("auto", "automatic"):
         rounds, max_size, use_revng = "auto", 512, False
     rounds = (settings.get("worker_rounds") if settings.get("worker_rounds_model") == model else
               profile.get("rounds", settings.get("worker_rounds", rounds)))
     output_budget = (settings.get("worker_output_budget") if settings.get("worker_output_budget_model") == model else
                      profile.get("max_tokens", settings.get("worker_output_budget", 2048)))
-    if not isinstance(output_budget, int):
+    if output_budget != "auto" and not isinstance(output_budget, int):
         output_budget = 2048
     workers = (settings.get("worker_workers") if settings.get("worker_workers_model") == model else
                profile.get("workers", settings.get("worker_workers", "1")))
@@ -385,9 +422,9 @@ def choose_options(settings):
     last_preset = settings.get("worker_preset", "balanced")
     recommended = (last_preset if settings.get("worker_preset_model") == model else
                    profile.get("name", last_preset))
-    if recommended not in ("fast", "balanced", "deep"):
+    if recommended not in ("fast", "balanced", "deep", "auto", "automatic"):
         recommended = "balanced"
-    print("Worker mode: 1) Recommended  2) Fast  3) Deep  4) Advanced  5) Optimize model")
+    print("Worker mode: 1) Recommended  2) Fast  3) Deep  4) Advanced  5) Optimize model  6) Automatic")
     picked_mode = input("Mode [%s]: " % ("1" if profile else last_preset)).strip().lower()
     if picked_mode == "5":
         cost_cap = None
@@ -403,17 +440,17 @@ def choose_options(settings):
         profile = optimizer.run(model, allow_cloud=bool(settings.get("cloud_allowed")),
                                 max_cloud_cost=cost_cap, force=bool(profile))
         picked_mode = "1"
-    preset = ({"1": recommended, "2": "fast", "3": "deep", "4": "balanced"}.get(
+    preset = ({"1": recommended, "2": "fast", "3": "deep", "4": "balanced", "6": "automatic"}.get(
         picked_mode, picked_mode or recommended))
     show_advanced = picked_mode == "4"
-    if preset not in ("auto", "fast", "balanced", "deep"):
-        raise SystemExit("Preset must be auto, fast, balanced, or deep")
+    if preset not in ("automatic", "auto", "fast", "balanced", "deep"):
+        raise SystemExit("Preset must be automatic, auto, fast, balanced, or deep")
     rounds, max_size, use_revng = 4, 256, True
     if preset == "fast":
         rounds, max_size, use_revng = 2, 96, False
     elif preset == "deep":
         rounds, max_size = 6, 512
-    elif preset == "auto":
+    elif preset in ("auto", "automatic"):
         rounds, max_size, use_revng = "auto", 512, False
     if profile and picked_mode in ("", "1", "4"):
         rounds = profile.get("rounds", rounds)
@@ -428,18 +465,20 @@ def choose_options(settings):
     last_workers = (profile.get("workers", settings.get("worker_workers", "1"))
                     if profile and settings.get("worker_workers_model") != model
                     else settings.get("worker_workers", "1"))
-    workers = input("Workers [%s] (1-%d or auto): " % (last_workers, worker.MAX_WORKERS)).strip() or last_workers
+    workers = "auto" if preset == "automatic" else input("Workers [%s] (1-%d or auto): " % (last_workers, worker.MAX_WORKERS)).strip() or last_workers
     if workers != "auto":
         try:
             workers = max(1, min(int(workers), worker.MAX_WORKERS))
         except ValueError:
             raise SystemExit("Workers must be 1-%d or auto" % worker.MAX_WORKERS)
-    if (show_advanced or input("Advanced options? [Enter=skip, y=show]: ").strip().lower()
-            in ("y", "yes", "advanced")):
+    if (show_advanced or (preset != "automatic" and input("Advanced options? [Enter=skip, y=show]: ").strip().lower()
+            in ("y", "yes", "advanced"))):
         default_rounds = (settings.get("worker_rounds") if settings.get("worker_rounds_model") == model
                           else rounds)
         picked = input("Rounds [%s]: " % default_rounds).strip().lower() or str(default_rounds)
-        if picked != "auto":
+        if picked == "auto":
+            rounds = "auto"
+        else:
             try:
                 rounds = max(1, min(int(picked), 12))
             except ValueError:
@@ -454,9 +493,9 @@ def choose_options(settings):
             raise SystemExit("Max function size must be at least 6 bytes")
         last_budget = (settings.get("worker_output_budget") if settings.get("worker_output_budget_model") == model
                        else profile.get("max_tokens", settings.get("worker_output_budget", 2048)))
-        picked = input("Output budget [auto=%s tokens]: " % last_budget).strip().lower() or "auto"
+        picked = input("Output budget [%s] (auto or 128-8192): " % last_budget).strip().lower() or str(last_budget)
         if picked == "auto":
-            output_budget = last_budget if isinstance(last_budget, int) else 2048
+            output_budget = "auto"
         else:
             try:
                 output_budget = int(picked)
@@ -515,11 +554,14 @@ def choose_options(settings):
                        else profile.get("max_tokens", settings.get("worker_output_budget", 2048)))
         output_budget = (profile.get("max_tokens", last_budget) if profile and picked_mode in ("", "1")
                          else last_budget)
-        output_budget = output_budget if isinstance(output_budget, int) else 2048
+        output_budget = output_budget if output_budget == "auto" or isinstance(output_budget, int) else 2048
         thinking = settings.get("worker_thinking", "auto")
         if thinking not in ("auto", "enabled", "disabled"):
             thinking = "auto"
         verbosity = settings.get("worker_verbosity", "auto")
+    if preset == "automatic":
+        rounds, output_budget, thinking, strategy, order = "auto", "auto", "auto", "direct", "auto"
+        lease_mode, family_id, family_example, unit_name = "function", None, None, None
     from roc import worker
     if model is None:
         worker.clear_setting("model")

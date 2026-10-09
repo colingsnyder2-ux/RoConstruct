@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RoConstruct Dashboard</title><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/fonts.css"><link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script></head>
+<body>
+<svg class="icon-defs" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs>
+<symbol id="i-chart" viewBox="0 0 24 24"><rect x="4" y="12" width="3.2" height="8" rx="1" fill="currentColor" stroke="none"/><rect x="10.4" y="7" width="3.2" height="13" rx="1" fill="currentColor" stroke="none"/><rect x="16.8" y="3" width="3.2" height="17" rx="1" fill="currentColor" stroke="none"/></symbol>
+<symbol id="i-code" viewBox="0 0 24 24"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-2.5-12-3 14"/></symbol>
+<symbol id="i-file" viewBox="0 0 24 24"><path d="M6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z"/><path d="M14 2v6h6M8 12h8M8 16h8"/></symbol>
+<symbol id="i-branch" viewBox="0 0 24 24"><circle cx="6" cy="5" r="2.5"/><circle cx="6" cy="19" r="2.5"/><circle cx="18" cy="7" r="2.5"/><path d="M6 7.5v9M18 9.5c0 4-6 3.5-11 7.5"/></symbol>
+<symbol id="i-cpu" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 2v3m6-3v3M9 19v3m6-3v3M2 9h3m-3 6h3m14-6h3m-3 6h3"/></symbol>
+<symbol id="i-terminal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="m7 9 3 3-3 3m6 0h4"/></symbol>
+<symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+<symbol id="i-history" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4L3 8m0-5v5h5m4-1v5l3 2"/></symbol>
+<symbol id="i-settings" viewBox="0 0 24 24"><path d="m9 3-.6 2.4-2 .9L4 5.5 2 9l1.8 1.6v2.8L2 15l2 3.5 2.4-.8 2 .9L9 21h6l.6-2.4 2-.9 2.4.8 2-3.5-1.8-1.6v-2.8L22 9l-2-3.5-2.4.8-2-.9L15 3Z"/><circle cx="12" cy="12" r="3"/></symbol>
+<symbol id="i-play" viewBox="0 0 24 24"><path d="m8 4 12 8-12 8Z"/></symbol>
+<symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+<symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h6m4 0h6M4 17h10m4 0h2"/><circle cx="12" cy="7" r="2"/><circle cx="16" cy="17" r="2"/></symbol>
+<symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></symbol>
+<symbol id="i-stop" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="1"/></symbol>
+<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></symbol>
+<symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+</defs></svg>
+<aside class="sidebar">
+  <a class="brand" href="#overview" aria-label="RoConstruct overview"><img class="brand-logo" src="/logo.png" alt="RoConstruct"><img class="brand-mobile" src="/favicon.png" alt=""><small>LOCAL DASHBOARD</small></a>
+  <div class="nav-label">WORKSPACE</div>
+  <nav aria-label="Main navigation">
+    <button data-page="overview" class="active"><svg class="icon" aria-hidden="true"><use href="#i-chart"/></svg>Overview</button>
+    <button data-page="workers"><svg class="icon" aria-hidden="true"><use href="#i-cpu"/></svg>Workers<span id="worker-count" class="nav-count">0</span></button>
+    <button data-page="commands"><svg class="icon" aria-hidden="true"><use href="#i-terminal"/></svg>Commands</button>
+    <button data-page="clients"><svg class="icon" aria-hidden="true"><use href="#i-grid"/></svg>Clients</button>
+    <button data-page="functions"><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg>Functions</button>
+    <button data-page="history"><svg class="icon" aria-hidden="true"><use href="#i-history"/></svg>Run history</button>
+  </nav>
+  <div class="sidebar-bottom"><button data-page="settings"><svg class="icon" aria-hidden="true"><use href="#i-settings"/></svg>Settings</button><div class="local-note"><span class="dot"></span>Local instance<small>127.0.0.1</small></div></div>
+</aside>
+<div class="workspace">
+  <header><div class="breadcrumb">RoConstruct <span>/</span> <b id="page-name">Overview</b></div><div class="header-right"><span id="connection" class="connection"><span class="dot"></span>Connecting</span><button id="theme-button" class="icon-button" aria-label="Switch theme"><svg class="icon" aria-hidden="true"><use href="#i-sun"/></svg></button></div></header>
+  <main id="main" tabindex="-1"><div class="loading">Loading dashboard…</div></main>
+  <section class="console" aria-label="Live console">
+    <div class="console-top"><div class="console-title"><svg class="icon" aria-hidden="true"><use href="#i-terminal"/></svg>Console <span id="console-count">0 events</span></div><div class="console-actions"><span id="console-end-run"></span><button id="clear-console" class="text-button">Clear view</button><button id="export-console" class="text-button"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>Export</button><button id="collapse-console" class="icon-button" aria-label="Collapse console"><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></button></div></div>
+    <div class="console-tools"><select id="log-job" aria-label="Filter console by job"><option value="">All runs</option></select><select id="log-level" aria-label="Filter console by event"><option value="">All events</option><option value="error">Errors</option><option value="match">Exact matches</option><option value="stage">Stages</option><option value="control">Controls</option></select><input id="log-search" placeholder="Search console…" aria-label="Search console"><label class="inline-check"><input id="log-wrap" type="checkbox">Wrap</label><button id="follow-console" class="text-button selected">↓ Following</button></div>
+    <div id="log-scroll" class="log-scroll" tabindex="0" role="log" aria-label="Worker and command output"><div id="log-rows"></div></div>
+    <div class="console-bottom"><span id="console-hint">No active jobs.</span><span>RoConstruct · local console</span></div>
+  </section>
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+<dialog id="confirm-dialog"><h2>Stop immediately?</h2><p>Active compilation will be interrupted. Cloud requests may still incur charges. Unreleased leases expire on the server.</p><div class="button-row"><button id="confirm-cancel" class="button secondary">Keep running</button><button id="confirm-stop" class="button danger">Stop now</button></div></dialog>
+</body></html>

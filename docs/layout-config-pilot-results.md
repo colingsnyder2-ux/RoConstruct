@@ -1,0 +1,96 @@
+# Class-layout/configuration pilot
+
+Offline experiment, 2026-10-09. No server submissions, source-library edits,
+database writes, or cloud-model calls. Reproduction script and detailed output:
+`work/layout_config_pilot.py`, `work/layout-config-pilot.json` (ignored lab files).
+
+## Corrected diagnosis
+
+The initial displacement probe did not track pointer origins. Its shared +8
+differences were not sufficient evidence for eight missing bytes of object fields.
+Inspection of `006cc4d0` (`CXTPReportControl::SetFocusedColumn`) and `006ef9a0`
+(`CXTPPopupBar`) shows the sampled differences through pointers loaded from the
+object's vptr: virtual-function-table offsets. Ordinary object-member offsets in
+these baseline methods already agree with the target.
+
+The cached MFC declaration already contains both optional OLE-control pointers.
+Restoring the two real `m_nOffset` fields conditionally omitted by
+`_AFX_NO_NESTED_DERIVATION` worsened many methods. Reject that hypothesis.
+
+## Successful, still provisional reconstruction
+
+Add two **declarations only** at the beginning of CWnd's virtual declarations in
+an isolated preprocessed translation unit. Names `__rocUnknownSlot01/02` are
+explicit placeholders; original names, signatures and origin remain unknown.
+No function bodies, byte patches, inline assembly additions, scoring changes,
+or relaxed relocation/data checks were introduced.
+
+Both units use XTP 11.2.2, compiler 30729, `/O2 /GS- /MD`, client 2008-06.
+Targets were frozen before testing: alternating training/held-out partials and
+up to ten stored-exact guards per unit. Each variant compiles the whole unit.
+The candidate declaration was not tuned on withheld methods.
+
+| Unit | Partial targets | Improved | Newly code/data exact | Held-out improved / newly exact | Regressions |
+|---|---:|---:|---:|---:|---:|
+| CXTPReportControl | 20 | 10 | 6 | 7 / 4 | 0 |
+| CXTPPopupBar | 19 | 12 | 8 | 7 / 4 | 0 |
+| Total | 39 | 22 | 14 | 14 / 8 | 0 |
+
+Twenty additional stored-exact guards had no regression relative to this
+recipe's frozen baseline. That baseline reproduced 17/20 as exact; three guards
+were not exact under this particular recipe, so this is not a claim that every
+stored exact source was independently reproduced.
+
+The 14 new exacts are **offline candidate results**, not uploaded matches or
+proof that the original CWnd declarations were recovered. Equality of compiled
+caller bytes verifies call offsets, not the unknown virtual methods' behavior.
+The placeholders are not production-ready recovered source.
+
+An initial zero-gain run was invalidated because `compile_text` memoized identical
+recipe descriptors across different in-process expansions. Final runs include a
+distinct variant marker in their compile key. Only corrected results count.
+
+## Next gates
+
+1. Identify the two actual virtual declarations using available MFC headers,
+   project overrides, RTTI/vtable evidence and referenced source archives.
+2. Expand the frozen test to remaining siblings and a non-XTP CWnd-derived unit.
+   Do not assume the same change applies to every client or every vtable slot.
+3. Add reproducible, source-hashed overlay/configuration provenance before any
+   publishing. Existing unmodified `roc-lib` descriptors cannot reproduce this
+   experiment and must not be submitted as if they could.
+4. Treat August 2007 separately: observed nonuniform differences still require
+   member/vtable/subobject classification before proposing declarations.
+
+## Follow-up: real configuration identified
+
+Inspection of the installed MFC 9.0 `afx.h` found the real declarations:
+`CObject::AssertValid() const` and `CObject::Dump(CDumpContext&) const`, guarded
+by `defined(_DEBUG) || defined(_AFXDLL)`. Shared release MFC therefore retains
+two virtual slots absent from the original static release recipe. This explains
+why a provisional two-slot insertion helped without requiring any object fields.
+
+Fresh preprocessing of both complete XTP units with
+`_AFXDLL _XTP_STATICLINK _DLL` outperformed the placeholder overlay:
+
+| Unit | Training improved / new exact | Held-out improved / new exact | Partial regressions | Guard regressions |
+|---|---:|---:|---:|---:|
+| CXTPReportControl | 9 / 9 | 9 / 9 | 1 | 0 |
+| CXTPPopupBar | 10 / 10 | 9 / 8 | 0 | 0 |
+
+There are 36 newly exact candidates relative to the recipe baselines, plus one
+non-exact partial improvement. One ReportControl partial regresses; this recipe
+is an alternative, not a global replacement. Scores compare frozen compiled
+baselines, not mutable live-worker progress.
+
+Added the reproducible `xtp-11.2.2-shared-mfc` recipe. Its independent recipe name
+provides a separate preprocessed cache and persists the configuration in source
+descriptors. Original recipes and vendor headers remain unchanged. Dynamic CRT
+flags are required; its grid excludes `/MT`. Three focused tests cover these
+invariants. No unknown virtual placeholders appear in this recipe.
+
+Normal recipe-path replay is recorded separately in `work/shared-mfc-replay.json`;
+`work/replay_shared_mfc.py` recompiles without in-process expansion overrides and
+requires both existing code scoring and data checks to pass for each stored
+partial candidate. No server submissions were made. Further macro combinations,
+non-XTP validation and the remaining research pilots are still pending.

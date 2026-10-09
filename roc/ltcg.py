@@ -14,25 +14,25 @@ def build_dll(build, source, output, map_output=None, force_unresolved=False,
     cl = setup.compilers()[build]
     env = setup.cl_env(cl)
     vc = Path(cl).parents[1]
-    env["LIB"] = str(vc / "lib")
+    env["LIB"] = setup.cl_path(vc / "lib")
     output = Path(output).resolve()
     output.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory() as tmp:
         objects = []
         for i, extra in enumerate(opaque_sources):
             obj = Path(tmp) / ("opaque%d.obj" % i)
-            run = subprocess.run([str(cl), "/nologo", "/c", *flags, "/Fo" + str(obj),
-                                  str(Path(extra).resolve())], capture_output=True,
+            run = subprocess.run([*setup.cl_command(cl), "/nologo", "/c", *flags,
+                                  "/Fo" + setup.cl_path(obj), setup.cl_path(Path(extra).resolve())], capture_output=True,
                                  text=True, env=env, cwd=output.parent, timeout=120)
             if run.returncode:
                 raise RuntimeError((run.stdout + run.stderr).strip())
-            objects.append(str(obj))
-        cmd = [str(cl), "/nologo", "/LD", *flags, "/GL", "/Fe" + str(output),
-               str(Path(source).resolve()),
-               *(str(Path(x).resolve()) for x in extra_sources), *objects,
-               "/link", "/LTCG", "/LIBPATH:" + str(vc / "lib")]
+            objects.append(setup.cl_path(obj))
+        cmd = [*setup.cl_command(cl), "/nologo", "/LD", *flags, "/GL", "/Fe" + setup.cl_path(output),
+               setup.cl_path(Path(source).resolve()),
+               *(setup.cl_path(Path(x).resolve()) for x in extra_sources), *objects,
+               "/link", "/LTCG", "/LIBPATH:" + setup.cl_path(vc / "lib")]
         if map_output:
-            cmd.append("/MAP:" + str(Path(map_output).resolve()))
+            cmd.append("/MAP:" + setup.cl_path(Path(map_output).resolve()))
         if force_unresolved:
             cmd.append("/FORCE:UNRESOLVED")
         if export_symbol:

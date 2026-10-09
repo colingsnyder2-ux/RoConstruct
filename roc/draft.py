@@ -819,8 +819,8 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
     else:
         attempt = None
     context = None
-    # Feedback always comes from the best attempt so far (a worse round never
-    # becomes the new baseline); compile errors are fed back until something scores.
+    # Preserve the best candidate, but feed a failed compile back immediately
+    # even when a previous candidate already had a high byte score.
     err_codes, compiled_any = [], compiled_best is not None
     requested_diversity = max(1, int((provider_options or {}).get("diverse_candidates", 1) or 1))
     hard_target = (row.get("size", 0) > 96 or (facts or {}).get("calls", 0) or
@@ -860,7 +860,9 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
             cloud = _providers.is_cloud(model)
         except (ValueError, RuntimeError):
             cloud = False
-        if cloud and (provider_options or {}).get("thinking", "auto") == "auto":
+        if (cloud and (provider_options or {}).get("thinking", "auto") == "auto" and
+                (model.startswith("deepseek:") or
+                 (row.get("size", 999999) <= 64 and not (facts or row).get("calls", 0)))):
             # Measured 2026-10-09: with thinking on, DeepSeek reasoning expands
             # to fill any output budget (4096/8192 fully consumed, 0 output
             # chars) and medium/large targets emit no code at all. Disabling
@@ -884,6 +886,9 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
         generation = dict(asked[2] if len(asked) > 2 else {})
         generated_tokens = generation.pop("output_tokens", 0)
         src = extract_code(reply)
+        from roc import activity
+        if src and getattr(activity.local, "emit", None):
+            activity.local.emit("draft", round=i + 1, code=src, model=model)
         finish = generation.get("finish_reason", "")
         incomplete = source_contract_error(src) if src and finish == "length" else ""
         if incomplete in ("unbalanced braces", "missing function definition"):
@@ -978,8 +983,8 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
         diag = None
         repaired, duplicate = [], False
         reply_src = src  # unmodified LLM output, kept for comparison
-        san, dropped = _repair.sanitize(src)
-        if dropped:
+        san = re.sub(r"(?m)^\s*//\s*roc-(?:lib|archive|cl|flags|lang):[^\r\n]*", "", src)
+        if san != src:
             src = san
             repaired.append("sanitize-directives")
         key = _norm_src(src)
@@ -1040,7 +1045,7 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
                 compiled_best = (score, src)
         elif compile_error:
             err_codes.append((_repair.parse_error_codes(compile_error) or ["?"])[0])
-        if attempt is None or score > attempt[1] or (score == 0 and attempt[1] == 0):
+        if compile_error or attempt is None or score > attempt[1] or (score == 0 and attempt[1] == 0):
             attempt = this
         if score > best[0] or best[1] is None:
             best = (score, src)

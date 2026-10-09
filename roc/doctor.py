@@ -20,24 +20,28 @@ def check(name, state, detail, fix=()):
 
 
 def python_check():
-    """Version, the two required pip packages, and msilib for unpacking compilers."""
+    """Version, the two required pip packages, and (Windows) msilib for unpacking compilers."""
     from roc import setup
     version = ".".join(str(part) for part in sys.version_info[:3])
     missing = setup.missing_packages()
     state, detail, fix = OK, "Python %s" % version, []
-    if sys.version_info[:2] != (3, 12):
-        detail += " (expected 3.12)"
-        fix.append("Python 3.13 dropped msilib, which unpacks the compilers. "
-                   "Re-run install.cmd to get 3.12.")
-        state = FAIL
+    if setup.WINDOWS:
+        # msilib is how install.cmd unpacks the compiler MSIs, and Python 3.13
+        # dropped it. Linux unpacks with msitools/Wine instead, so it is fine there.
+        if sys.version_info[:2] != (3, 12):
+            detail += " (expected 3.12)"
+            fix.append("Python 3.13 dropped msilib, which unpacks the compilers. "
+                       "Re-run install.cmd to get 3.12.")
+            state = FAIL
+        if not setup.has_module("msilib"):
+            state = FAIL
+            detail += ", msilib unavailable"
+            if not any("3.12" in step for step in fix):
+                fix.append("Use Python 3.12 (install.cmd does this for you).")
     if missing:
         state = FAIL
         detail += ", missing packages: %s" % ", ".join(missing)
-        fix.append('py -3.12 -m pip install --user %s' % " ".join(missing))
-    if not setup.has_module("msilib") and state != FAIL:
-        state = FAIL
-        detail += ", msilib unavailable"
-        fix.append("Use Python 3.12 (install.cmd does this for you).")
+        fix.append('%s -m pip install --user %s' % (sys.executable, " ".join(missing)))
     if state == OK:
         detail += ", pefile and capstone installed"
     return check("python", state, detail, fix)
@@ -46,6 +50,11 @@ def python_check():
 def compilers_check():
     """Every compiler build the registered clients need."""
     from roc import clients, setup
+    if not setup.compiler_ready():
+        return check("compilers", FAIL, "Wine is missing, so the old cl.exe cannot run",
+                     ["Arch: sudo pacman -S wine",
+                      "Debian/Ubuntu: sudo apt install wine wine32",
+                      "Then run: roc doctor"])
     have = setup.compilers()
     registry = clients.load()
     missing = sorted({e.get("compiler_build") for e in registry.values()} - set(have) - {None})
@@ -58,7 +67,7 @@ def compilers_check():
     total = sum(setup.BUNDLES[b][0] for b in missing if b in setup.BUNDLES)
     return check("compilers", FAIL,
                  "missing %s (%d MB to download)" % (", ".join(names), total),
-                 ["Run install.cmd again, or: roc install",
+                 ["Run: roc install (Windows: install.cmd)",
                   "It resumes an interrupted download and never reinstalls a compiler you already have."])
 
 
