@@ -58,6 +58,20 @@ they validate existing structured mode, not a claimed post-change CFG gain.
 The next controlled arm must use a fresh manifest or a clearly labeled tuning
 set.
 
+Post-change paired smoke holdout (`holdout-fresh-cfg12-20261009`, fingerprint
+`8a16397896bc8c8d791fd1023beaa0d020fe0e678f352c8ec381d1e6a63b4fd9`) used the
+same 12 unseen targets and one round per arm:
+
+| arm | exact | compilable | tokens | cost | runtime |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| direct | 1/12 | 10/12 | 20,751 | $0.008973 | 23.93s |
+| structured + dominators | 0/12 | 9/12 | 27,541 | $0.011192 | 24.73s |
+
+Repair replay converted 0/10 structured non-exact candidates. This small
+paired result is a regression for the new CFG prompt fields, not evidence to
+make them default. Keep them experimental and test on a larger fresh arm
+before tuning the representation further.
+
 Repair replay on the latest 52 compilable non-exact structured candidates:
 existing arm 0 conversions; guided arm 2 calling-convention conversions,
 including one 90–99% and one 75–89% candidate. Guided replay spent no LLM
