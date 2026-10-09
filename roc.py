@@ -181,7 +181,7 @@ def cmd_launch(a):
 def _forwarded(a):
     """Flags on `a` that the worker entry point understands, as a CLI list."""
     forwarded = []
-    for name in ("client", "model", "workers", "rounds", "max_size", "jobs"):
+    for name in ("client", "model", "workers", "rounds", "max_size", "jobs", "lease_mode"):
         value = getattr(a, name, None)
         if value is not None:
             forwarded += ["--%s" % name.replace("_", "-"), str(value)]
@@ -1027,6 +1027,8 @@ def main(argv=None):
     p.add_argument("--rounds", type=int, help="AI tries per function")
     p.add_argument("--max-size", dest="max_size", type=int, help="skip functions bigger than this")
     p.add_argument("--jobs", type=int, help="stop after this many functions")
+    p.add_argument("--lease-mode", choices=["function", "family"], default=None,
+                   help="lease one function, or stay on one strict family")
     p.add_argument("--no-revng", dest="no_revng", action="store_true", help="never use Rev.ng hints")
     p.add_argument("--dry-run", dest="dry_run", action="store_true",
                    help="print the plan without leasing a job")
