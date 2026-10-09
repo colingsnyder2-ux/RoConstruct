@@ -888,11 +888,13 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
             log("  no deterministic improvement (best %d%%), released" % job["score"])
             return result
         from roc import refsource
-        ensure_lease()
-        stage("checking 2016 source candidates")
-        source_candidate = refsource.compile_candidates(client, addr, job["unit"], flags, limit=2, log=log)
-        ensure_lease()
-        phase_seconds["source_compile"] = round(time.monotonic() - phase_started, 3)
+        source_candidate = None
+        if not near_repair:
+            ensure_lease()
+            stage("checking 2016 source candidates")
+            source_candidate = refsource.compile_candidates(client, addr, job["unit"], flags, limit=2, log=log)
+            ensure_lease()
+            phase_seconds["source_compile"] = round(time.monotonic() - phase_started, 3)
         if source_candidate and source_candidate[0] == 100:
             candidate_score, candidate_source, candidate_path = source_candidate
             r = api.call("/v1/submit", {"lease": job["lease"], "user": user, "worker": job.get("worker"),
