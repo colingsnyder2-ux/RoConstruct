@@ -113,6 +113,7 @@ def run(url):
         analyze.analyze(client, clients.exe_path(client, clients.load()[client]))
 
     model, rounds, max_size, use_revng, workers, budget, thinking = choose_worker(s, mode)
+    lease_mode = worker.load_settings().get("worker_lease_mode", "function")
     cloud = providers.is_cloud(model)
     payload = handoff.save(user=user, client=client, server=server, token=token,
                            mode="cloud" if cloud else "local", cloud=cloud, model=model)
@@ -120,7 +121,7 @@ def run(url):
     worker.keep_awake()
     return worker.main_args(payload, knobs(rounds, max_size, use_revng, workers,
                                            worker.load_settings().get("worker_order", "auto"),
-                                           worker.load_settings().get("worker_verbosity", "auto")))
+                                           worker.load_settings().get("worker_verbosity", "auto"), lease_mode))
 
 
 def choose_worker(settings, mode):
@@ -152,9 +153,10 @@ def choose_worker(settings, mode):
     return choose_options(fresh)
 
 
-def knobs(rounds, max_size, use_revng, workers, order="auto", verbosity="auto"):
+def knobs(rounds, max_size, use_revng, workers, order="auto", verbosity="auto", lease_mode="function"):
     """The chosen options as CLI flags for worker.main_args."""
-    argv = ["--workers", str(workers), "--order", order, "--verbosity", verbosity]
+    argv = ["--workers", str(workers), "--order", order, "--verbosity", verbosity,
+            "--lease-mode", lease_mode]
     if isinstance(rounds, int):
         argv += ["--rounds", str(rounds)]
     if isinstance(max_size, int):
@@ -404,6 +406,7 @@ def choose_options(settings):
     strategy = (settings.get("worker_strategy") if settings.get("worker_strategy_model") == model else
                 profile.get("strategy", settings.get("worker_strategy", "direct")))
     order = settings.get("worker_order", "auto")
+    lease_mode = settings.get("worker_lease_mode", "function")
     last_workers = (profile.get("workers", settings.get("worker_workers", "1"))
                     if profile and settings.get("worker_workers_model") != model
                     else settings.get("worker_workers", "1"))
@@ -461,9 +464,15 @@ def choose_options(settings):
         strategy = input("Generation strategy [%s] (auto/direct/structured/reference): " % strategy).strip().lower() or strategy
         if strategy not in ("auto", "direct", "structured", "reference"):
             raise SystemExit("Strategy must be auto, direct, structured, or reference")
-        order = input("Work order [%s] (auto/best/matched/unmatched/easiest/random): " % order).strip().lower() or order
+        work_order = input("Work order [%s] (auto/best/matched/unmatched/easiest/random/family): " %
+                           ("family" if lease_mode == "family" else order)).strip().lower()
+        work_order = work_order or ("family" if lease_mode == "family" else order)
+        if work_order == "family":
+            lease_mode, order = "family", "auto"
+        else:
+            lease_mode, order = "function", work_order
         if order not in ("auto", "best", "matched", "unmatched", "easiest", "random"):
-            raise SystemExit("Work order must be auto, best, matched, unmatched, easiest, or random")
+            raise SystemExit("Work order must be auto, best, matched, unmatched, easiest, random, or family")
         verbosity = input("Console verbosity [auto] (auto/verbose/compact): ").strip().lower() or "auto"
         if verbosity not in ("auto", "verbose", "compact"):
             raise SystemExit("Console verbosity must be auto, verbose, or compact")
@@ -486,6 +495,7 @@ def choose_options(settings):
                          worker_revng=use_revng, worker_output_budget=output_budget,
                          worker_thinking=thinking, worker_strategy=strategy,
                          worker_order=order, worker_verbosity=verbosity, worker_max_size=max_size,
+                         worker_lease_mode=lease_mode,
                          worker_rounds=rounds, worker_launcher_configured=True,
                          worker_preset_model=model, worker_rounds_model=model,
                          worker_workers_model=model, worker_output_budget_model=model,

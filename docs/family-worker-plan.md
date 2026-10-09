@@ -52,6 +52,10 @@ Other-section check, 2009 `seg_00580000` (4 siblings), improved exacts
 `$0.00324 → $0.00414`. Family guidance can improve exacts outside main
 sections, but needs cost-aware routing.
 
+Second-model smoke holdout, local `qwen2.5-coder:14b` on 2010 (4 siblings),
+improved `0/4 → 3/4` with family exemplars. Local Ollama token telemetry is
+not cost-priced, so this proves model portability, not spend efficiency.
+
 Propagation replay produced 32 exact conversions on 2008-06 and 37 on 2009-06;
 2007-08 and 2010-06 had no safe literal rewrites. This validates fast-path
 value, not universal family coverage.

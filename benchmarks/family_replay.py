@@ -58,6 +58,8 @@ def main():
     parser.add_argument("--session-prefix", default="family-replay-" + time.strftime("%Y%m%d-%H%M%S"))
     parser.add_argument("--model", default="deepseek:deepseek-flash")
     parser.add_argument("--random-seed", type=int, help="shuffle families/siblings before selection")
+    parser.add_argument("--reuse-used", action="store_true",
+                        help="allow targets previously measured by another model")
     args = parser.parse_args()
     used = set()
     try:
@@ -83,7 +85,7 @@ def main():
             continue
         siblings = [row for row in sorted(members, key=lambda row: row["addr"])
                     if row["addr"] != representative["addr"] and
-                    (row["client"], row["addr"]) not in used]
+                    (args.reuse_used or (row["client"], row["addr"]) not in used)]
         if siblings:
             candidates.append((len(members), key, representative, source, siblings))
     candidates.sort(key=lambda item: (-item[0], item[2]["addr"]))
