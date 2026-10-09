@@ -16,7 +16,7 @@ from roc.analyze import find_functions, kind_of, demangle_class
 from roc.analyze import asm_shape
 from roc.auto import candidates
 from roc import draft
-from roc.draft import extract_code, mini_elf
+from roc.draft import extract_code, mini_elf, clean_repair_context
 from roc.match import coff_functions, score, asm_lines, reject_asm, CompileError
 from roc.match import exact_match, similarity_ratio, diagnose
 from roc import mutate
@@ -42,6 +42,12 @@ def test_exact_callee_source_hints_are_bounded():
     hints = callee_source_hints(api, "2007-08", ["00401010", "00401011", "bad", "00401012", "00401013", "00401014"])
     assert len(hints) == 1 and hints[0]["addr"] == "00401010"
     assert len(api.paths) == 3
+
+
+def test_near_repair_context_drops_stale_assembly_header():
+    src = "// roc 2007-08 00770a40\n// 00770a40  68d4797800 push N\nint f() { return 1; }\n"
+    cleaned = clean_repair_context(src)
+    assert "00770a40" not in cleaned and "int f()" in cleaned
 
 
 def test_repair_member_decl():

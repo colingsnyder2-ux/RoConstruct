@@ -223,6 +223,18 @@ def extract_code(reply):
     return text[start:end].strip() + "\n" if end else None
 
 
+def clean_repair_context(src):
+    """Remove stale generated headers/assembly comments before near-repair."""
+    kept = []
+    leading = True
+    for line in (src or "").splitlines():
+        if leading and (not line.strip() or line.lstrip().startswith("//")):
+            continue
+        leading = False
+        kept.append(line)
+    return "\n".join(kept).strip() + "\n" if kept else ""
+
+
 def invalid_qualified_definition(src):
     """C++ forbids defining a class with a qualified declarator."""
     return bool(re.search(r"\b(?:struct|class|enum)\s+[A-Za-z_]\w*(?:::[A-Za-z_]\w*)+\s*\{", src or ""))

@@ -1000,7 +1000,8 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
         hint = draft.revng_c(code, int(addr, 16)) if run_revng else None
         phase_seconds["revng"] = round(time.monotonic() - revng_started, 3)
         llm_started = time.monotonic()
-        llm_start = (job["source"], job["score"])
+        base_source = draft.clean_repair_context(job["source"]) if (provider_options or {}).get("near_repair") else job["source"]
+        llm_start = (base_source, job["score"])
         if source_candidate and source_candidate[0] > job["score"]:
             llm_start = (source_candidate[1], source_candidate[0])
         job_rounds = resolve_rounds(job, rounds, model)
