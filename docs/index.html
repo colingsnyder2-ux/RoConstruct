@@ -225,8 +225,7 @@ footer img { height: 30px; }
 </div>
 <dialog class="setup" id="setup">
   <div class="inner">
-    <h3>Start helping</h3>
-    <p class="sub">Three questions, then the worker runs. Nothing else gets installed.</p>
+    <h3>Worker setup</h3>
     <div class="fields">
       <div class="field">
         <label for="su-user">Your username<small>Shown on the leaderboard. Letters, digits, . _ -</small></label>
@@ -236,12 +235,10 @@ footer img { height: 30px; }
         <label for="su-client">Which client<small>You can switch later without reinstalling anything</small></label>
         <select id="su-client"></select>
       </div>
-      <div class="size" id="su-size"></div>
       <div class="field">
         <div class="choice">
-          <input type="checkbox" id="su-cloud" checked>
-          <span>Use a cloud model<em> &mdash; the default. Your PC stays idle: no GPU, no Ollama, no Docker.
-            Only accepted source and match results are uploaded.</em></span>
+          <input type="checkbox" id="su-cloud">
+          <span>Use a cloud model<em> &mdash; optional. Your PC stays idle: no GPU, no Ollama, no Docker.</em></span>
         </div>
         <div class="local" id="su-local"></div>
       </div>
@@ -249,7 +246,7 @@ footer img { height: 30px; }
     <p class="err" id="su-err"></p>
     <div class="actions">
       <button class="btn" id="su-cancel" type="button">Cancel</button>
-      <button class="btn go" id="su-go" type="button">Start the worker</button>
+      <button class="btn go" id="su-go" type="button">Save my choices</button>
     </div>
     <p class="starting" id="su-starting"></p>
   </div>
@@ -322,16 +319,14 @@ function joinLink(name, short) {
   if (!progress.server) return "";
   const c = progress.clients.find(c => c.name === name) || {name};
   return `<button class="join${short ? "" : " solid"}" data-join="${esc(name)}" type="button">${
-    short ? "Start helping" : "Start helping on " + esc(title(c))} →</button>`;
+    short ? "Help out" : "Help out on " + esc(title(c))} →</button>`;
 }
 
-/* "Start helping": username, client, cloud consent -> a roconstruct:// link that
-   installs nothing extra and launches the worker. Answers are remembered so a
-   second click is one button. */
+/* Worker setup: optional username + client + cloud choice, saved to localStorage
+   so the worker terminal can pick them up. Nothing installs and nothing launches
+   from the browser - the user starts the worker themselves with `roc launch`. */
 const SETUP_KEY = "roc.setup.v1";
 const USER_RE = /^[A-Za-z0-9_.-]{2,32}$/;
-// What install.cmd puts on disk once: the exact MSVC bundles. Nothing else.
-const COMPILER_MB = 85 + 940 + 460;
 
 const setupDialog = () => document.getElementById("setup");
 
@@ -351,15 +346,12 @@ function openSetup(client) {
     const c = progress.clients.find(c => c.name === name) || {name};
     return `<option value="${esc(name)}">${esc(title(c))} &mdash; ${esc(name)}</option>`;
   }).join("");
-  const cloud = saved.cloud !== undefined ? !!saved.cloud : true;
+  const cloud = saved.cloud !== undefined ? !!saved.cloud : false;
   select.value = names.includes(saved.client) ? saved.client : (names.includes(client) ? client : names[0]);
   document.getElementById("su-user").value = saved.user || "";
   document.getElementById("su-cloud").checked = cloud;
   document.getElementById("su-err").textContent = "";
   dlg.classList.remove("done");
-  document.getElementById("su-size").textContent =
-    `First run downloads about ${(COMPILER_MB / 1000).toFixed(1)} GB of compilers and the ~11 MB client exe. `
-    + `Then it starts the worker. Re-running is safe: downloads resume and your work is kept.`;
   syncLocalNote();
   dlg.showModal();
   document.getElementById("su-user").focus();
@@ -370,34 +362,32 @@ function syncLocalNote() {
   const note = document.getElementById("su-local");
   note.classList.toggle("on", !cloud);
   note.textContent = cloud
-    ? "Cloud consent given. Bounded prompts leave this PC; only accepted source and match results come back."
-    : "Local model: install.cmd installed nothing for it, so RoConstruct will ask before downloading "
-      + "Ollama (~1.5 GB with a model) on first run. Docker and Rev.ng stay off unless you ask later.";
+    ? ""
+    : "Local model: RoConstruct will ask before downloading Ollama on first run. Docker and Rev.ng stay off unless you ask later.";
 }
 
-function setupUrl() {
+function validateSetup() {
   const user = document.getElementById("su-user").value.trim();
   if (!USER_RE.test(user)) return {error: "Pick a username of 2-32 letters, digits, dot, underscore or dash."};
   const client = document.getElementById("su-client").value;
   if (!client) return {error: "Pick a client."};
   const cloud = document.getElementById("su-cloud").checked;
   rememberSetup({user, client, cloud});
-  const q = new URLSearchParams({user, client, server: progress.server,
-                                  mode: cloud ? "cloud" : "local", cloud: cloud ? "1" : "0"});
-  return {url: `roconstruct://work?${q.toString()}`};
+  return {ok: true};
 }
 
 function launchSetup() {
-  const {url, error} = setupUrl();
+  const {ok, error} = validateSetup();
   const err = document.getElementById("su-err");
   if (error) { err.textContent = error; return; }
   err.textContent = "";
   const dlg = setupDialog();
   dlg.classList.add("done");
-  document.getElementById("su-starting").textContent =
-    "Opening RoConstruct now. A console window appears and the worker starts in it. "
-    + "If your browser asks which app to use, pick roc.cmd. Close that window to stop the worker.";
-  location.href = url;
+  document.getElementById("su-starting").innerHTML =
+    "Saved. When you are ready, open a terminal in the RoConstruct folder and run:<br>"
+    + `<code>roc launch</code><br><br>`
+    + "That opens the worker setup where you can pick the model, worker count and client. "
+    + "Nothing runs until you start it yourself.";
 }
 
 function wireSetup() {
@@ -411,17 +401,14 @@ function wireSetup() {
   setupDialog().addEventListener("cancel", () => setupDialog().classList.remove("done"));
 }
 
-const WARNING = `<p class="warn">A cloud worker leaves your PC mostly idle: it sends bounded prompts to a cloud model
-  and uploads only source that compiled and matched. Local models are opt-in and do use your GPU.</p>`;
-
 function joinHelp() {
   if (!progress.server) return "";
   return `<div><p><a href="${REPO}/archive/refs/heads/main.zip">Download RoConstruct</a>, unzip it, then run
     <code>install.cmd</code> &mdash; a small bootstrap that checks Python 3.12, installs two pip packages, downloads the
-    exact compiler bundles, registers <code>roconstruct://</code>, and opens this page. It does not install Ollama,
-    Docker or any model. Then click "Start helping": it asks your username, which client, and whether you are happy
-    for prompts to go to a cloud model, then starts the worker. The client exe downloads itself when needed, and
-    running install.cmd again never reinstalls anything or touches your work.</p>${WARNING}</div>`;
+    exact compiler bundles and registers <code>roconstruct://</code>. It does not install Ollama,
+    Docker or any model. Then run <code>roc launch</code> to start the worker and pick your options.
+    The client exe downloads itself when needed, and running install.cmd again never reinstalls anything
+    or touches your work.</p></div>`;
 }
 
 function commitPanel() {
