@@ -56,6 +56,10 @@ Second-model smoke holdout, local `qwen2.5-coder:14b` on 2010 (4 siblings),
 improved `0/4 → 3/4` with family exemplars. Local Ollama token telemetry is
 not cost-priced, so this proves model portability, not spend efficiency.
 
+Local `qwen2.5-coder:7b-instruct` repeated the 2010 smoke holdout: `0/4 → 3/4`
+with family exemplars. This supports portability across both installed Qwen
+sizes; samples remain small.
+
 Propagation replay produced 32 exact conversions on 2008-06 and 37 on 2009-06;
 2007-08 and 2010-06 had no safe literal rewrites. This validates fast-path
 value, not universal family coverage.
