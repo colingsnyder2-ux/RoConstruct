@@ -46,7 +46,7 @@ def test_shared_preprocess_forces_md_when_macro_env_has_no_runtime_flag(tmp_path
         seen['cl'] = kwargs['env']['CL']
         return subprocess.CompletedProcess(argv, 0, 'int x;', '')
     with patch.object(libs.setup, 'compilers', return_value={30729: 'cl'}), \
-            patch.object(libs.setup, 'cl_env', return_value={'CL': ''}), \
+            patch.object(libs.setup, 'cl_env', return_value={'CL': '', 'INCLUDE': ''}), \
             patch.object(libs.setup, 'cl_command', return_value=['cl']), \
             patch.object(libs.setup, 'cl_path', side_effect=str), \
             patch.object(libs.subprocess, 'run', side_effect=fake_run):
