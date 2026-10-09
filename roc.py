@@ -598,7 +598,8 @@ def cmd_worker(a):
                           cloud_escalate=a.cloud_escalate, cloud_escalate_after=a.cloud_escalate_after,
                           thinking=a.thinking, reasoning_effort=a.reasoning_effort,
                           max_tokens=a.output_budget, guided_mutations=a.guided_mutations,
-                          order=order, family_exemplars=a.family_exemplars)
+                          order=order, family_exemplars=a.family_exemplars,
+                          lease_mode=a.lease_mode)
 
 
 def cmd_provider(a):
@@ -1159,6 +1160,8 @@ def main(argv=None):
         (["--jobs"], {"type": int, "help": "stop after this many functions"}),
         (["--workers"], {"default": "1",
                           "help": "bounded concurrent lease loops (1-256 or auto)"}),
+        (["--lease-mode"], {"choices": ["function", "family"], "default": "function",
+                              "help": "lease one function, or stay on one strict family until exhausted"}),
         (["--allow-cloud"], {"action": "store_true", "help": "allow prompt data to leave this PC"}),
         (["--max-cloud-requests"], {"type": int, "help": "cloud request budget for this worker"}),
         (["--max-cloud-tokens"], {"type": int, "help": "cloud token budget for this worker"}),

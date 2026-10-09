@@ -433,7 +433,7 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
         diverse_candidates=1, cloud_min_size=0, cloud_fallback=None, seed=None,
         cloud_escalate=None, cloud_escalate_after=2, thinking=None, reasoning_effort=None,
         max_tokens=2048, examples_cache=None, source_cache=None, guided_mutations=False,
-        order="auto", family_exemplars=True):
+        order="auto", family_exemplars=True, lease_mode="function"):
     """forever: survive server/network outages (retry every minute) for overnight runs.
     only: restrict to these clients (one-click links).
     examples_cache/source_cache: shared across parallel loops so N workers do
@@ -498,6 +498,7 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
                       "Note: workers keep the GPU and CPU busy (fans, heat, power). Ctrl+C or close the window to stop.")
     done = matched = 0
     failures = 0
+    family_hint = None
     if examples_cache is None:
         examples_cache = {}
     if source_cache is None:
@@ -506,7 +507,8 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
         try:
             job = api.call("/v1/lease", {"user": user, "worker": worker, "clients": have,
                                          "mode": "ai", "model": model, "max_size": max_size,
-                                         "targets": targets, "order": order})["job"]
+                                         "targets": targets, "order": order,
+                                         "family": family_hint if lease_mode == "family" else None})["job"]
         except (Exception, SystemExit) as error:  # overnight: nothing short of Ctrl+C stops the loop
             if not forever:
                 raise
@@ -518,12 +520,17 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
                 have = usable_clients(info, log)
             continue
         if not job:
+            if lease_mode == "family" and family_hint:
+                family_hint = None
+                continue
             if max_jobs is not None:
                 break
             log("No open functions right now; checking again in 60 s.")
             time.sleep(60)
             continue
         done += 1
+        if lease_mode == "family":
+            family_hint = job.get("family") or None
         job_model = draft.route_model(model, job) if auto_model else model
         if (cloud_escalate and job.get("size", 0) >= cloud_min_size and
                 int((job.get("attempts_by_model") or {}).get(model, 0)) >= cloud_escalate_after):
@@ -545,6 +552,10 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
                             "seed": seed, "max_tokens": max_tokens,
                             "guided_mutations": guided_mutations,
                             "family_exemplars": family_exemplars}
+        if providers.is_cloud(job_model):
+            provider_options["retry_forever"] = True
+            provider_options["on_retry"] = lambda error, retries, delay: log(
+                "  cloud retry %d (%s); waiting %ds." % (retries, error, delay))
         if rounds == "auto" and (job_model or "").startswith("deepseek:"):
             provider_options["source_hint_max_size"] = 128
         if think is not None:
@@ -574,7 +585,7 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
                    cloud_min_size=0, cloud_fallback=None, seed=None,
                    cloud_escalate=None, cloud_escalate_after=2, thinking=None, reasoning_effort=None,
                    max_tokens=2048, guided_mutations=False, order="auto", verbosity="auto",
-                   family_exemplars=True):
+                   family_exemplars=True, lease_mode="function"):
     """Run a bounded number of independent lease loops.
 
     Server leases make workers safe to run in parallel. Cloud loops are
@@ -600,6 +611,7 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
                      reasoning_effort=reasoning_effort, max_tokens=max_tokens,
                      guided_mutations=guided_mutations, order=order,
                      family_exemplars=family_exemplars,
+                     lease_mode=lease_mode,
                      examples_cache=shared_examples, source_cache=shared_sources)
         if verbosity == "compact":
             worker_log.finish()
@@ -628,6 +640,7 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
                 reasoning_effort=reasoning_effort, max_tokens=max_tokens,
                 guided_mutations=guided_mutations, order=order,
                 family_exemplars=family_exemplars,
+                lease_mode=lease_mode,
                 examples_cache=shared_examples, source_cache=shared_sources)
         except BaseException as error:
             errors.append(error)
@@ -653,6 +666,19 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
 def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=None,
              source_cache=None, session=None, source_only=False, strategy="direct", provider_options=None):
     from roc import providers
+    compact_log = isinstance(log, CompactLog)
+    output = log
+    progress = {"stage": "starting", "at": time.monotonic()}
+
+    def stage(name):
+        progress["stage"] = name
+        progress["at"] = time.monotonic()
+
+    def job_log(message):
+        progress["at"] = time.monotonic()
+        output(message)
+
+    log = job_log
     family_exemplars = bool((provider_options or {}).get("family_exemplars"))
     client, addr = job["client"], job["addr"]
     flags = info["clients"][client].get("flags")
@@ -688,8 +714,17 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
         if time.monotonic() >= deadline:
             raise TimeoutError("job exceeded 600-second worker limit")
 
+    def watchdog():
+        while not stop.wait(30):
+            quiet = int(time.monotonic() - progress["at"])
+            if quiet >= 30:
+                output("  still working (%ds): %s." % (quiet, progress["stage"]))
+                progress["at"] = time.monotonic()
+
     threading.Thread(target=beat, daemon=True).start()
+    threading.Thread(target=watchdog, daemon=True).start()
     try:
+        stage("reading target")
         code, relocs, _ = match.target(client, addr)
         asm = match.disasm(code, int(addr, 16))
         facts = draft.facts_from_asm(asm)
@@ -710,6 +745,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                                            "virtual_slots", "stack_args", "this_reads", "this_writes",
                                            "calling_convention", "branches", "constants", "siblings") if row.get(k)})
         from roc import auto
+        stage("checking deterministic candidates")
         phase_started = time.monotonic()
         for candidate in auto.candidates(asm):
             ensure_lease()
@@ -726,6 +762,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                 return r["stored"]
         from roc import refsource
         ensure_lease()
+        stage("checking 2016 source candidates")
         source_candidate = refsource.compile_candidates(client, addr, job["unit"], flags, limit=2, log=log)
         phase_seconds["source_compile"] = round(time.monotonic() - phase_started, 3)
         if source_candidate and source_candidate[0] == 100:
@@ -761,6 +798,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                 path = "/v1/examples?client=%s&unit=%s&shape=%s&n=%d%s%s" % (
                     quote(client), quote(job["unit"]), quote(job.get("shape") or ""),
                     1 if family_exemplars else 2, strict, family_query)
+                stage("loading verified examples")
                 examples_cache[client][example_key] = [e["source"] for e in api.call(path)
                                                        if (client, e.get("addr")) not in quarantined]
         examples = examples_cache[client][example_key]
@@ -768,6 +806,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
             from roc import auto as _auto
             propagated = _auto.family_propagate(asm, examples[0])
             if propagated:
+                stage("testing family source")
                 try:
                     propagated_score, _, _, _ = match.check_text(client, addr, propagated, flags)
                 except match.CompileError:
@@ -792,6 +831,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
         run_revng = revng and (job.get("size", 0) > 48 or job.get("calls", 0) or
                                not job.get("source_confidence", 0))
         revng_started = time.monotonic()
+        stage("running Rev.ng" if run_revng else "preparing model prompt")
         hint = draft.revng_c(code, int(addr, 16)) if run_revng else None
         phase_seconds["revng"] = round(time.monotonic() - revng_started, 3)
         llm_started = time.monotonic()
@@ -799,6 +839,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
         if source_candidate and source_candidate[0] > job["score"]:
             llm_start = (source_candidate[1], source_candidate[0])
         job_rounds = resolve_rounds(job, rounds, model)
+        stage("waiting for cloud model" if providers.is_cloud(model) else "waiting for local model")
         score, src = draft.llm_rounds(client, addr, model, draft.model_rounds(model, job_rounds), hint, llm_start,
                                       log, flags, examples, source_hints, facts, round_stats, strategy=strategy,
                                       provider_options=provider_options)
@@ -809,7 +850,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                                         "model": job.get("model"), "client": client, "addr": addr,
                                         "score": score, "source": src})
             log("  submitted %d%% (%s)" % (r["stored"], "verified by server" if r["verified"] else "not re-checked"))
-            if not isinstance(log, CompactLog):
+            if not compact_log:
                 log(_usage_line(session, round_stats))
             result, improved = r["stored"], True
             return r["stored"]
@@ -820,7 +861,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                                         "model": job.get("model"), "client": client, "addr": addr,
                                         "score": candidate_score, "source": candidate_source})
             log("  retained partial 2016 source candidate %d%% (%s)" % (r["stored"], candidate_path))
-            if not isinstance(log, CompactLog):
+            if not compact_log:
                 log(_usage_line(session, round_stats))
             result, improved = r["stored"], r["stored"] > job["score"]
             return r["stored"]

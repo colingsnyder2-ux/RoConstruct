@@ -61,6 +61,10 @@ Fresh full-section compiler-gated replays using DB-backed exact exemplars found
 2009 `seg_00890000` (1,136 siblings). Recursive mode stayed bounded; no
 non-exact candidate became trusted.
 
+2010 `seg_009e0000` replay found 8 exact zero-LLM conversions across 948
+siblings. Propagation is therefore useful across all tested client versions,
+but coverage varies sharply by family and section.
+
 ## Next gates
 
 1. Run random whole-client holdout, not only repeated-family targets.
@@ -87,5 +91,15 @@ generation.
 ```text
 python roc.py worker --model deepseek:deepseek-flash --allow-cloud
 ```
+
+Optional family-local leasing keeps one worker on a strict fingerprint until
+no eligible siblings remain, then rotates normally:
+
+```text
+python roc.py worker --lease-mode family --model deepseek:deepseek-flash --allow-cloud
+```
+
+Server still verifies each lease independently; family mode changes scheduling
+only, never trust or exact-match rules.
 
 Launcher/signed worker can use the same `--family-exemplars` option.

@@ -123,7 +123,7 @@ class Store:
             self.db.commit()
             return added
 
-    def lease(self, user, worker, have, mode, max_size, model=None, targets=None, order="best"):
+    def lease(self, user, worker, have, mode, max_size, model=None, targets=None, order="best", family=None):
         now = time.time()
         with self.lock:
             self.db.execute("DELETE FROM leases WHERE expires < ?", (now,))
@@ -132,6 +132,7 @@ class Store:
             self.db.execute("DELETE FROM leases WHERE worker = ?", (worker,))
             marks = ",".join("?" * len(have))
             target_sql, target_args = "", []
+            family_sql, family_args = (" AND f.family = ?", [family]) if family else ("", [])
             if targets:
                 pairs = [(str(t.get("client", "")), str(t.get("addr", "")))
                          for t in targets if isinstance(t, dict)]
@@ -143,12 +144,12 @@ class Store:
                     self.db.commit()
                     return None
             candidates = self.db.execute(
-                "SELECT client, addr, size, unit, score, source, shape, calls, source_confidence, difficulty, attempts_by_model FROM funcs f "
-                "WHERE client IN (%s) AND score < 100 AND size BETWEEN 6 AND ? AND cooldown <= ? %s AND NOT EXISTS "
+                "SELECT client, addr, size, unit, score, source, shape, calls, source_confidence, difficulty, attempts_by_model, family FROM funcs f "
+                "WHERE client IN (%s) AND score < 100 AND size BETWEEN 6 AND ? AND cooldown <= ? %s%s AND NOT EXISTS "
                 "(SELECT 1 FROM leases l WHERE l.client = f.client AND l.addr = f.addr) "
-                "ORDER BY %s LIMIT 64" % (marks, target_sql,
+                "ORDER BY %s LIMIT 64" % (marks, target_sql, family_sql,
                                           ORDER_SQL[resolve_order(order, self.db)]),
-                (*have, max_size, now, *target_args)).fetchall()
+                (*have, max_size, now, *target_args, *family_args)).fetchall()
             row = None
             if candidates:
                 # Do not burn the same model repeatedly on a stubborn target when
@@ -177,6 +178,7 @@ class Store:
                 "worker": worker, "model": model or "auto",
                 "score": row[4], "source": row[5], "shape": row[6], "calls": row[7],
                 "source_confidence": row[8], "difficulty": row[9], "attempts_by_model": json.loads(row[10] or "{}"),
+                "family": row[11],
                 "heartbeat": max(5, self.lease_seconds // 3)}
 
     def heartbeat(self, lease):
@@ -458,7 +460,8 @@ def make_handler(store, token, can_verify, mine_log=None):
                                   str(body.get("mode", ""))[:16], int(body.get("max_size", 256)),
                                   str(body.get("model", ""))[:120] or None,
                                   body.get("targets"),
-                                  order=str(body.get("order", "best"))[:16])
+                                  order=str(body.get("order", "best"))[:16],
+                                  family=str(body.get("family", ""))[:64] or None)
                 return self.send(200, {"job": job})
             if path == "/v1/heartbeat":
                 return self.send(200, {"ok": store.heartbeat(str(body.get("lease", "")))})
