@@ -436,7 +436,7 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
         diverse_candidates=1, cloud_min_size=0, cloud_fallback=None, seed=None,
         cloud_escalate=None, cloud_escalate_after=2, thinking=None, reasoning_effort=None,
         max_tokens=2048, examples_cache=None, source_cache=None, guided_mutations=False,
-        order="auto", family_exemplars=True):
+        order="auto", family_exemplars=True, lease_mode="function"):
     """forever: survive server/network outages (retry every minute) for overnight runs.
     only: restrict to these clients (one-click links).
     examples_cache/source_cache: shared across parallel loops so N workers do
@@ -501,15 +501,18 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
                       "Note: workers keep the GPU and CPU busy (fans, heat, power). Ctrl+C or close the window to stop.")
     done = matched = 0
     failures = 0
+    family_hint = None
     if examples_cache is None:
         examples_cache = {}
     if source_cache is None:
         source_cache = {}
     while max_jobs is None or done < max_jobs:
         try:
+            lease_order = "random" if lease_mode == "family" else order
             job = api.call("/v1/lease", {"user": user, "worker": worker, "clients": have,
                                          "mode": "ai", "model": model, "max_size": max_size,
-                                         "targets": targets, "order": order})["job"]
+                                         "targets": targets, "order": lease_order,
+                                         "family": family_hint if lease_mode == "family" else None})["job"]
         except (Exception, SystemExit) as error:  # overnight: nothing short of Ctrl+C stops the loop
             if not forever:
                 raise
@@ -521,12 +524,17 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
                 have = usable_clients(info, log)
             continue
         if not job:
+            if lease_mode == "family" and family_hint:
+                family_hint = None
+                continue
             if max_jobs is not None:
                 break
             log("No open functions right now; checking again in 60 s.")
             time.sleep(60)
             continue
         done += 1
+        if lease_mode == "family":
+            family_hint = job.get("family") or None
         job_model = draft.route_model(model, job) if auto_model else model
         if (cloud_escalate and job.get("size", 0) >= cloud_min_size and
                 int((job.get("attempts_by_model") or {}).get(model, 0)) >= cloud_escalate_after):
@@ -607,6 +615,7 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
                      reasoning_effort=reasoning_effort, max_tokens=max_tokens,
                      guided_mutations=guided_mutations, order=order,
                      family_exemplars=family_exemplars,
+                     lease_mode=lease_mode,
                      examples_cache=shared_examples, source_cache=shared_sources)
         if verbosity == "compact":
             worker_log.finish()
@@ -635,6 +644,7 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
                 reasoning_effort=reasoning_effort, max_tokens=max_tokens,
                 guided_mutations=guided_mutations, order=order,
                 family_exemplars=family_exemplars,
+                lease_mode=lease_mode,
                 examples_cache=shared_examples, source_cache=shared_sources)
         except BaseException as error:
             errors.append(error)
