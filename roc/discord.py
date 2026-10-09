@@ -6,8 +6,10 @@ import time
 import urllib.error
 import urllib.request
 from datetime import datetime, timezone
+from pathlib import Path
 
-BATCH_EVENTS = 10
+ROOT = Path(__file__).resolve().parent.parent
+
 BATCH_SECONDS = 90
 RATE_WINDOW = 15 * 60
 ETA_MIN_RATE = 1.0 / 3600
@@ -55,13 +57,37 @@ def _post(url, payload):
         print("Discord mine log failed: %s" % error)
 
 
+def server_mines_webhook():
+    """Dedicated feed for server-side automatic mining."""
+    configured = os.environ.get("ROCONSTRUCT_SERVER_MINES_WEBHOOK")
+    if configured:
+        return configured
+    try:
+        return json.loads((ROOT / "roconstruct-settings.json").read_text()).get("server_mines_webhook")
+    except (OSError, ValueError):
+        return None
+
+
+def tool_digest(tool, description, fields=()):
+    """One asynchronous summary for local mining tools such as xcopy and repair."""
+    webhook = server_mines_webhook()
+    if not webhook:
+        return
+    embed = {"title": "⛏️ Server Mine: %s" % tool,
+             "description": description,
+             "color": 0x245B9E,
+             "fields": list(fields),
+             "footer": {"text": "RoConstruct Server Mines"},
+             "timestamp": datetime.now(timezone.utc).isoformat()}
+    threading.Thread(target=_post, args=(webhook, {"embeds": [embed]}), daemon=True).start()
+
+
 class MineLog:
     """Thread-safe submit batcher. submit() never blocks the request handler."""
 
-    def __init__(self, webhook, store, batch_events=BATCH_EVENTS, batch_seconds=BATCH_SECONDS):
+    def __init__(self, webhook, store, batch_events=None, batch_seconds=BATCH_SECONDS):
         self.webhook = webhook
         self.store = store
-        self.batch_events = batch_events
         self.batch_seconds = batch_seconds
         self._lock = threading.Lock()
         self._buffer = []
@@ -73,19 +99,10 @@ class MineLog:
         with self._lock:
             self._buffer.append({"job": dict(job), "user": user, "worker": worker,
                                  "model": model, "score": int(score), "points": int(points)})
-            flush_now = len(self._buffer) >= self.batch_events
-            if flush_now:
-                events = self._buffer
-                self._buffer = []
-                self._cancel_timer()
-            else:
-                events = None
-                if self._timer is None:
-                    self._timer = threading.Timer(self.batch_seconds, self._timed_flush)
-                    self._timer.daemon = True
-                    self._timer.start()
-        if flush_now:
-            self._send(events)
+            if self._timer is None:
+                self._timer = threading.Timer(self.batch_seconds, self._timed_flush)
+                self._timer.daemon = True
+                self._timer.start()
 
     def _cancel_timer(self):
         if self._timer is not None:
@@ -118,10 +135,9 @@ class MineLog:
         rate = self.store.match_rate(client, RATE_WINDOW)
         rate_hr = rate * 3600
         eta = fmt_duration(left / rate) if rate >= ETA_MIN_RATE else "building rate"
-        contributor = events[-1]["user"]
-        batch_points = sum(e["points"] for e in events if e["user"] == contributor)
         full = [e for e in events if e["score"] == 100]
         partial = [e for e in events if e["score"] < 100]
+        models = ", ".join(sorted({e["model"] for e in events if e["model"]})) or "auto"
 
         def lines(rows):
             return "\n".join("%s **%d%%** `%s` %s · %s B" % (
@@ -129,11 +145,13 @@ class MineLog:
                 e["job"].get("unit", "?"), e["job"].get("size", "?")) for e in rows[:10]) or "None"
 
         fields = [{"name": "🟢 Fully Matched", "value": lines(full), "inline": False}]
-        fields += [{"name": "🟡 Partially Matched", "value": lines(partial), "inline": False},
+        fields += [{"name": "🟡 Partially Matched",
+                    "value": "x%d partially matched" % len(partial) if len(partial) > 10 else lines(partial),
+                    "inline": False},
                    {"name": "⚡ Mining Rate", "value": "%d functions/hr · ETA %s" % (round(rate_hr), eta), "inline": True},
-                   {"name": "🏆 Workers", "value": "%s · %s pts (%+d)" % (
-                       contributor, format(self.store.user_points(contributor), ","), batch_points), "inline": True},
-                   {"name": "✅ Batch", "value": "%d full · %d improved" % (len(full), len(partial)), "inline": True}]
+                   {"name": "⚙️ Verification", "value": "server-verified", "inline": True},
+                   {"name": "✅ Batch", "value": "%d full · %d improved" % (len(full), len(partial)), "inline": True},
+                   {"name": "🤖 Models", "value": models[:1024], "inline": True}]
         return {"title": "⛏️ RoConstruct Mining Digest",
                 "description": "**%s Client**\n%s / %s matched · %s remaining\n\n%s **%.2f%%**\n\n🟦 source · 🟩 mined · ❎ partial · ⬜ remaining" % (
                     client, format(matched, ","), format(total, ","), format(left, ","), bar, percent),

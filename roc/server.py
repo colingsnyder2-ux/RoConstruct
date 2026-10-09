@@ -22,6 +22,50 @@ from roc import clients, match, setup
 ROOT = Path(__file__).resolve().parent.parent
 USER_RE = re.compile(r"^[A-Za-z0-9_.-]{2,32}$")
 
+
+def _source_class_token(source):
+    path = source.rsplit(": ", 1)[-1].split(" ", 1)[-1]
+    token = re.sub(r"[^a-z0-9]", "", Path(path).stem.lower())
+    for prefix in ("cxtp", "xtp", "rbx", "c"):
+        if token.startswith(prefix) and len(token) > len(prefix) + 3:
+            token = token[len(prefix):]
+            break
+    return token if len(token) >= 5 else None
+
+
+def check_many_text(client, addrs, source):
+    """Compile one source once, then score it against many client functions."""
+    obj = match.compile_text(client, source)
+    funcs = match.coff_functions(obj)
+    token = _source_class_token(source)
+    class_funcs = [row for row in funcs if token and token in re.sub(r"[^a-z0-9]", "", row[0].lower())]
+    if class_funcs:
+        funcs = class_funcs
+    by_size = {}
+    for row in funcs:
+        by_size.setdefault(len(row[1]), []).append(row)
+    results = []
+    for addr in addrs:
+        code, relocs, _ = match.target(client, addr)
+        if not funcs:
+            results.append((addr, 0, []))
+            continue
+        wiggle = max(8, len(code) // 4)
+        candidates = [row for size in range(max(1, len(code) - wiggle), len(code) + wiggle + 1)
+                      for row in by_size.get(size, ())]
+        if not candidates:
+            results.append((addr, 0, []))
+            continue
+        best = max(candidates, key=lambda row: match.score(code, relocs, row[1], row[2]))
+        score = match.score(code, relocs, best[1], best[2])
+        spans = []
+        if score == 100:
+            spans, bad = match.data_check(client, addr, code, match.coff_data_refs(obj, best[0]))
+            if bad:
+                score, spans = 99, []
+        results.append((addr, score, spans))
+    return results
+
 # Which function a worker gets next. "best" is the long-standing ranking and
 # "auto" is the default: finish the near-complete ones, then take the untouched
 # ones, then spread out. The rest let a worker pin one strategy.
@@ -455,7 +499,7 @@ def make_handler(store, token, can_verify, mine_log=None):
                 if not isinstance(rows, list) or len(rows) > 5000:
                     return self.send(400, {"error": "rows must be list <= 5000"})
                 return self.send(200, {"registered": store.register_families(rows)})
-            if path in ("/v1/lease", "/v1/submit") and not USER_RE.match(user):
+            if path in ("/v1/lease", "/v1/submit", "/v1/submit-batch") and not USER_RE.match(user):
                 return self.send(400, {"error": "username must be 2-32 letters, digits, _ . -"})
             if path == "/v1/lease":
                 have = [c for c in body.get("clients", []) if isinstance(c, str)]
@@ -508,6 +552,32 @@ def make_handler(store, token, can_verify, mine_log=None):
                                         str(body.get("model", ""))[:120] or "auto",
                                         stored, stored - previous)
                 return self.send(200, {"score": score, "stored": stored, "improved": improved, "verified": verified})
+            if path == "/v1/submit-batch":
+                client, source = str(body.get("client", "")), str(body.get("source", ""))
+                addrs = body.get("addrs", [])
+                if (client not in can_verify or not source.strip() or len(source) > 200_000 or
+                        not isinstance(addrs, list) or not 1 <= len(addrs) <= 1000 or
+                        not all(isinstance(addr, str) and re.fullmatch(r"[0-9a-fA-F]{8}", addr) for addr in addrs)):
+                    return self.send(400, {"error": "need verifiable client, source, and 1-1000 addresses"})
+                try:
+                    checked = check_many_text(client, addrs, source)
+                except match.CompileError as error:
+                    return self.send(400, {"error": "does not compile here: %s" % str(error)[:500]})
+                except SystemExit as error:
+                    return self.send(400, {"error": str(error)})
+                results = []
+                for addr, score, spans in checked:
+                    previous = (store.best(client, addr) or {}).get("score", 0)
+                    try:
+                        stored, improved = store.submit(client, addr, user, score, source, spans)
+                    except ValueError as error:
+                        return self.send(400, {"error": str(error)})
+                    if improved and mine_log is not None:
+                        mine_log.submit(store.function_info(client, addr), user,
+                                        str(body.get("worker", ""))[:64],
+                                        str(body.get("model", ""))[:120] or "auto", stored, stored - previous)
+                    results.append({"addr": addr, "score": score, "stored": stored, "improved": improved})
+                return self.send(200, {"verified": True, "results": results})
             self.send(404, {"error": "unknown endpoint"})
 
     return Handler
@@ -560,7 +630,8 @@ def import_startup_matches(store, can_verify, log=print):
 
 def serve(host="0.0.0.0", port=8765, db=None, token=None, lease_seconds=900,
           discord_webhook=None, log=print):
-    discord_webhook = discord_webhook or os.environ.get("ROCONSTRUCT_DISCORD_WEBHOOK")
+    from roc.discord import MineLog, server_mines_webhook
+    discord_webhook = server_mines_webhook() or discord_webhook or os.environ.get("ROCONSTRUCT_DISCORD_WEBHOOK")
     db = db or str(ROOT / "work" / "server.db")
     Path(db).parent.mkdir(parents=True, exist_ok=True)
     store = Store(db, lease_seconds)
@@ -576,7 +647,6 @@ def serve(host="0.0.0.0", port=8765, db=None, token=None, lease_seconds=900,
     log("Re-checking submissions for: %s" % (", ".join(sorted(can_verify)) or "none (trusting workers)"))
     if discord_webhook:
         log("Discord mine logs: enabled (batched digests)")
-    from roc.discord import MineLog
     mine_log = MineLog(discord_webhook, store) if discord_webhook else None
     httpd = ThreadingHTTPServer((host, port), make_handler(store, token, can_verify, mine_log=mine_log))
     httpd.store = store

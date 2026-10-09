@@ -612,7 +612,7 @@ Assembly is ground truth; later source and RTTI names are clues only. Preserve c
 
 def prompt_for(client, addr, row, asm, hint, attempt, flags=None, examples=(), source_hints=(), facts=None,
                strategy="direct", compact_rules=False, binary_only=False, minimal_layout=False,
-               family_exemplars=False):
+               family_exemplars=False, near_repair=False):
     entry = match.clients.load()[client]
     p = ["You are doing matching decompilation of a function from an old Roblox client.",
          (COMPACT_RULES if compact_rules else RULES).format(
@@ -690,6 +690,11 @@ def prompt_for(client, addr, row, asm, hint, attempt, flags=None, examples=(), s
         p += ["", "Your previous attempt scored %d%%:" % score, "```cpp", src.strip(), "```",
               "Problem (assembly diff '-' target '+' yours, or compiler error):", feedback,
               "Perform %s. Preserve correct bytes; change only what fixes the problem." % phase]
+        if near_repair:
+            p += ["NEAR-REPAIR MODE: source already matches 90%+. Preserve every correct declaration, call, "
+                  "constant, branch, and field offset. Make one minimal source-shape change supported by the "
+                  "diff (ABI/type/lifetime/order). Do not rewrite function or add speculative logic. Emit the "
+                  "complete compilable source, not a patch and not explanation."]
     try:
         from roc import metrics
         rules = json.loads(metrics.TEMPLATES.read_text())
@@ -813,7 +818,8 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
                                  binary_only=((provider_options or {}).get("binary_only", False) or
                                               row.get("size", 0) > (provider_options or {}).get("source_hint_max_size", float("inf"))),
                                  minimal_layout=(provider_options or {}).get("minimal_layout", False),
-                                 family_exemplars=(provider_options or {}).get("family_exemplars", False))
+                                 family_exemplars=(provider_options or {}).get("family_exemplars", False),
+                                 near_repair=(provider_options or {}).get("near_repair", False))
         if independent and i:
             full_prompt += ("\n\nIndependent candidate %d/%d: use different compact C++ control flow. "
                             "Still emit exactly one function." % (i + 1, diverse_rounds))

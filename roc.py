@@ -398,6 +398,37 @@ def cmd_check(a):
         print("%d / %d match." % (matched, len(srcs)))
 
 
+def cmd_verify_window(a):
+    from roc.verify_window import prove
+    if a.batch:
+        rows = json.loads(Path(a.batch).read_text())
+        out = []
+        for row in rows:
+            pairs = [tuple(x.lower().split("=")) for x in row.get("equal", [])]
+            out.append(prove(row["left"], row["right"], pairs))
+        print(json.dumps(out, sort_keys=True))
+        return
+    pairs = [tuple(x.lower().split("=")) for x in a.equal]
+    print(json.dumps(prove(a.left, a.right, pairs), sort_keys=True))
+
+
+def cmd_classify(a):
+    """Compile one source and emit conservative mismatch evidence as JSON."""
+    from roc import match
+    source = Path(a.source).read_text(errors="replace")
+    score, symbol, diff, spans, diagnosis = match.check_text(
+        a.client, a.addr, source, include_diagnosis=True)
+    print(json.dumps({"client": a.client, "addr": a.addr, "score": score,
+                      "symbol": symbol, "diagnosis": diagnosis}, sort_keys=True))
+
+
+def cmd_ltcg(a):
+    from roc.ltcg import build_dll
+    out = build_dll(a.build, a.source, a.output, a.map, a.force_unresolved,
+                    a.export_symbol, a.extra, tuple(a.flags.split()), a.opaque_extra)
+    print("built", out)
+
+
 def cmd_auto(a):
     from roc import auto, setup
     names = sorted(clients.load()) if a.name == "all" else [a.name]
@@ -431,6 +462,11 @@ def cmd_xcopy(a):
         files += new_files
         scored += new_matches
     print("  %-8s %8d %14d" % ("total", files, scored))
+    if scored and not a.dry_run:
+        from roc.discord import tool_digest
+        tool_digest("xcopy", "**%d verified cross-client matches**" % scored,
+                    [{"name": "New source files", "value": str(files), "inline": True},
+                     {"name": "Clients", "value": ", ".join(sorted(result)), "inline": True}])
 
 
 def cmd_ref(a):
@@ -475,6 +511,43 @@ def cmd_flags(a):
         flags.tune(a.name)
 
 
+def cmd_angr_facts(a):
+    from roc import angr_facts
+    try:
+        print(angr_facts.dump(a.binary, int(a.address, 0), a.size))
+    except (OSError, ValueError, RuntimeError) as error:
+        raise SystemExit(str(error))
+
+
+def cmd_angr_batch(a):
+    import json
+    import re
+    from roc import angr_facts, clients
+    root = Path(__file__).resolve().parent
+    scores_path = root / "work" / a.name / "scores.json"
+    scores = json.loads(scores_path.read_text())
+    rows = []
+    for path in sorted((root / "src" / a.name).glob("*.cpp"),
+                       key=lambda item: (-scores.get(item.stem, 0), item.name)):
+        score = scores.get(path.stem, 0)
+        if not a.min_score <= score < 100:
+            continue
+        head = path.read_text(errors="replace")[:1200]
+        match = re.search(r"size:\s*(\d+)\s*bytes", head)
+        if not match:
+            continue
+        rows.append({"address": int(path.stem, 16), "size": int(match.group(1)),
+                     "score": score, "source": str(path)})
+        if len(rows) >= a.limit:
+            break
+    facts = angr_facts.analyze_many(clients.exe_path(a.name, clients.load()[a.name]),
+                                    [(row["address"], row["size"]) for row in rows])
+    for row, fact in zip(rows, facts):
+        row["angr"] = fact
+    payload = {"tool": "angr", "client": a.name, "count": len(rows), "rows": rows}
+    print(json.dumps(payload, indent=2, sort_keys=True))
+
+
 def cmd_repair(a):
     """Run bounded compiler-backed source mutations over partial matches."""
     from datetime import date
@@ -485,19 +558,25 @@ def cmd_repair(a):
     if a.addresses:
         wanted = {x.lower().replace("0x", "").zfill(8) for x in a.addresses}
         paths = [p for p in paths if p.stem.lower() in wanted]
+    if a.offset:
+        paths = paths[a.offset:]
     if a.limit:
         paths = paths[:a.limit]
     log_path = root / "docs" / "matching-findings.md"
     scores_path = root / "work" / a.name / "scores.json"
     saved_scores = json.loads(scores_path.read_text()) if scores_path.exists() else {}
     scores_changed = False
+    report = []
     for path in paths:
         addr = path.stem
         source = path.read_text(errors="replace")
         try:
             before = saved_scores.get(addr)
-            if before is None:
+            if before is None or a.refresh_all:
                 before = match.check_text(a.name, addr, source)[0]
+                if saved_scores.get(addr) != before:
+                    saved_scores[addr] = before
+                    scores_changed = True
             if before >= 100 or before < a.min_score:
                 continue
             # Refresh score only for saved partials; avoids recompiling exact corpus.
@@ -508,13 +587,34 @@ def cmd_repair(a):
             if before < a.min_score:
                 continue
             result = mutate.improve(a.name, addr, source, guided=True,
+                                    guided_categories=a.categories,
+                                    guided_fallback=not bool(a.categories),
                                     permute=a.permute)
         except (match.CompileError, SystemExit, KeyError):
             continue
         after, updated, tried = result
+        mutations = list(result.mutations)
+        if getattr(a, "chain", False) and after > before and after < 100:
+            # One extra evidence refresh lets a safe two-step ABI repair chain
+            # (e.g. convention then return propagation) finish without an
+            # unbounded mutation loop.
+            chained = mutate.improve(a.name, addr, updated, guided=True,
+                                     guided_categories=a.categories,
+                                     guided_fallback=not bool(a.categories),
+                                     permute=False)
+            tried += chained[2]
+            mutations.extend(chained.mutations)
+            if chained[0] > after:
+                after, updated = chained[0], chained[1]
+        report.append({"addr": addr, "before": before, "after": after,
+                       "tried": tried,
+                       "mutations": [{"category": m.get("category"),
+                                      "score": m.get("score"),
+                                      "compile_error": m.get("compile_error", False)}
+                                     for m in mutations]})
         print("%-8s %d -> %d tried=%d" % (addr, before, after, tried), flush=True)
         trials = ", ".join("%s=%s" % (m.get("category"), m.get("score"))
-                            for m in result.mutations)
+                            for m in mutations)
         with log_path.open("a", encoding="utf-8") as log:
             log.write("- %s: `roc repair %s %s`: %d -> %d, tried %d variants [%s]%s.\n" %
                       (date.today(), a.name, addr, before, after, tried, trials,
@@ -526,6 +626,21 @@ def cmd_repair(a):
             scores_changed = True
     if scores_changed and not a.dry_run:
         scores_path.write_text(json.dumps(saved_scores, indent=0, sort_keys=True))
+    improved = [row for row in report if row["after"] > row["before"]]
+    if improved and not a.dry_run:
+        from roc.discord import tool_digest
+        lines = "\n".join("`%s` %d%% → **%d%%**" % (row["addr"], row["before"], row["after"])
+                          for row in improved[:10])
+        tool_digest("repair", "**%s**: %d source repair gain(s)\n%s" % (a.name, len(improved), lines),
+                    [{"name": "Best score", "value": "%d%%" % max(row["after"] for row in improved),
+                      "inline": True}])
+    if a.json:
+        print(json.dumps(report, sort_keys=True))
+    if a.json_out:
+        report_path = root / a.json_out
+        report_path.parent.mkdir(parents=True, exist_ok=True)
+        report_path.write_text(json.dumps(report, indent=2, sort_keys=True),
+                               encoding="utf-8")
 
 
 def cmd_config(a):
@@ -642,6 +757,13 @@ def cmd_worker(a):
                                 if a.family_example else None)
     if a.family_example and not family_id:
         raise SystemExit("Unknown family example; use CLIENT:ADDRESS")
+    targets = None
+    if a.addr:
+        if not a.client:
+            raise SystemExit("--addr needs --client CLIENT")
+        targets = [{"client": a.client, "addr": addr.lower().removeprefix("0x")} for addr in a.addr]
+        if any(len(row["addr"]) != 8 or any(c not in "0123456789abcdef" for c in row["addr"]) for row in targets):
+            raise SystemExit("--addr must be an 8-digit hex address")
     if family_id and a.client:
         ready = worker.register_family_targets(srv, a.token or s.get("token"), a.client, family_id)
         if ready:
@@ -667,7 +789,8 @@ def cmd_worker(a):
                           max_tokens=a.output_budget, guided_mutations=a.guided_mutations,
                           order=order, family_exemplars=a.family_exemplars,
                           lease_mode=a.lease_mode,
-                          family_id=family_id, unit_name=a.unit)
+                          family_id=family_id, unit_name=a.unit, targets=targets,
+                          near_repair=a.near_repair)
 
 
 def cmd_provider(a):
@@ -1137,6 +1260,25 @@ def main(argv=None):
         (["name"], {}), (["addr"], {}), (["--open"], {"action": "store_true", "help": "open in Notepad"}))
     cmd("check", cmd_check, "compile src/<client>/*.cpp and score against the exe",
         (["name"], {}), (["addr"], {"nargs": "?"}))
+    cmd("verify-window", cmd_verify_window, "prove a tiny register-only window with SMT",
+        (["left"], {"nargs": "?"}), (["right"], {"nargs": "?"}),
+        (["--batch"], {"help": "JSON array of {left,right,equal} windows"}),
+        (["--equal"], {"action": "append", "default": [],
+                        "help": "proven register equality, e.g. eax=esi"}))
+    cmd("classify", cmd_classify, "compile a source and classify target/candidate mismatch",
+        (["client"], {}), (["addr"], {}), (["source"], {}))
+    cmd("ltcg", cmd_ltcg, "build a linker-aware x86 DLL with /GL + /LTCG",
+        (["build"], {"type": int}), (["source"], {}), (["output"], {}),
+        (["--map"], {"help": "optional MSVC map output"}),
+        (["--force-unresolved"], {"action": "store_true",
+                                   "help": "experimental: let linker emit unresolved references"}),
+        (["--export-symbol"], {"help": "experimental decorated symbol to retain/export"}),
+        (["--extra"], {"action": "append", "default": [],
+                        "help": "extra source file linked into the LTCG unit"}),
+        (["--flags"], {"default": "/O2 /GS /EHsc /MD",
+                        "help": "compiler flags for linked unit"}),
+        (["--opaque-extra"], {"action": "append", "default": [],
+                               "help": "extra source compiled without /GL, then linked"}))
     cmd("auto", cmd_auto, "auto-match trivial functions (getters, setters, empty...) ('all' for every client)",
         (["name"], {}), (["--max-size"], {"type": int, "default": 48}))
     cmd("xcopy", cmd_xcopy, "copy stored matches to the other clients that share the function",
@@ -1156,12 +1298,29 @@ def main(argv=None):
         (["name"], {}), (["--sweep"], {"action": "store_true",
         "help": "try interacting flag combinations; stop on exact corpus"}),
         (["--limit"], {"type": int, "help": "sweep only smallest N sources"}))
+    cmd("angr-facts", cmd_angr_facts, "optional angr CFG/instruction facts for one binary function",
+        (["binary"], {}), (["address"], {"help": "virtual address, e.g. 0x401000"}),
+        (["--size"], {"type": int, "default": 128, "help": "bounded bytes to lift"}))
+    cmd("angr-batch", cmd_angr_batch, "bounded angr facts for a high-partial source sample",
+        (["name"], {}), (["--limit"], {"type": int, "default": 20}),
+        (["--min-score"], {"type": int, "default": 90}))
     cmd("repair", cmd_repair, "run bounded compiler-backed mutations over partial sources",
         (["name"], {}), (["--addr"], {"dest": "addresses", "action": "append"}),
         (["--limit"], {"type": int}),
+        (["--offset"], {"type": int, "default": 0,
+                        "help": "skip this many sorted sources before --limit"}),
         (["--min-score"], {"type": int, "default": 80}),
         (["--permute"], {"action": "store_true",
                           "help": "also try semantics-preserving source permutations"}),
+        (["--category"], {"dest": "categories", "action": "append",
+                           "help": "restrict guided repair to this mutation category"}),
+        (["--refresh-all"], {"action": "store_true",
+                              "help": "refresh every score before filtering"}),
+        (["--json"], {"action": "store_true",
+                       "help": "print machine-readable result report"}),
+        (["--json-out"], {"help": "save machine-readable report under repository root"}),
+        (["--chain"], {"action": "store_true",
+                        "help": "run one refreshed guided repair after an improvement"}),
         (["--dry-run", "-n"], {"action": "store_true"}))
     cmd("config", cmd_config, "save username / server / password / model",
         (["--user"], {}), (["--server"], {}), (["--token"], {}), (["--model"], {}),
@@ -1234,6 +1393,7 @@ def main(argv=None):
                            "help": "which functions first: most-matched (score high to low), random, unmatched (0%% first), easiest, best evidence, or auto"}),
         (["--server"], {}), (["--user"], {}), (["--token"], {}), (["--model"], {}),
         (["--client"], {"help": "restrict work to one registered client (for example 2008-06)"}),
+        (["--addr"], {"action": "append", "help": "pin AI work to one or more client function addresses"}),
         (["--rounds"], {"type": int, "default": 4, "help": "AI tries per function"}),
         (["--strategy"], {"choices": ["direct", "structured", "reference"], "default": "direct",
                             "help": "candidate-generation prompt strategy"}),
@@ -1274,6 +1434,7 @@ def main(argv=None):
         (["--dry-run"], {"action": "store_true", "help": "show worker setup without leasing a job"}),
         (["--source-only"], {"action": "store_true", "help": "run deterministic candidates; never call Ollama"}),
         (["--guided-mutations"], {"action": "store_true", "help": "enable evidence-guided source mutations after compilation"}),
+        (["--near-repair"], {"action": "store_true", "help": "preserve 90%+ source; ask for one minimal evidence-backed change"}),
         (["--no-update"], {"action": "store_true", "help": "skip the pre-run source update check"}))
     cmd("model-stats", cmd_model_stats, "compare models using worker telemetry")
     cmd("family-stats", cmd_family_stats, "show family coverage, propagation, cost, and exact rate")

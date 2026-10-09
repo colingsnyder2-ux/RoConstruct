@@ -952,7 +952,7 @@ def test_mine_digest():
     assert "33.33%" in embed["description"] and "1 / 3 matched" in embed["description"]
     assert "a1" in embed["fields"][0]["value"] and "a2" in embed["fields"][1]["value"]
     assert embed["fields"][2]["name"] == "⚡ Mining Rate"
-    assert embed["fields"][3]["name"] == "🏆 Workers" and embed["fields"][3]["value"] == "alice · 60 pts (+60)"
+    assert embed["fields"][3]["name"] == "⚙️ Verification" and embed["fields"][3]["value"] == "server-verified"
     assert embed["fields"][4]["value"] == "1 full · 1 improved"
     assert embed["footer"]["text"] == "RoConstruct Mining" and "T" in embed["timestamp"]
 
@@ -1195,6 +1195,19 @@ def test_exact_match_separate_from_fuzzy():
     d = diagnose(b, [], a, [])
     assert d["exact"] is False and d["target_insns"] == 2
     assert "xor" in d["opcode_delta"] or "mov" in d["opcode_delta"]
+    assert d["classifications"][0]["category"] != "exact"
+    assert d["classifications"][-1]["confidence"] >= 0
+
+
+def test_repair_pattern_registry_is_measured_and_deterministic():
+    from roc.repair_patterns import load, rank_categories
+    rows = load()
+    assert any(row["name"] == "typed-member-return" for row in rows)
+    diag = {"mismatch_class": "branch-condition mismatch",
+            "classifications": [{"category": "branch-condition mismatch", "confidence": .95}]}
+    first = rank_categories(diag, ["allocation_result", "branch_condition"])
+    assert first[0][1] == "allocation_result"
+    assert first == rank_categories(diag, ["allocation_result", "branch_condition"])
 
 
 def test_diagnose_call_argument_order():
@@ -1267,6 +1280,28 @@ def test_guided_category_filter_disables_fallback():
     assert result[0] == 100 and result[2] == 1
 
 
+def test_structural_low_score_skips_blind_legacy_fallback():
+    from roc import mutate
+    diagnosis = {"mismatch_class": "missing/extra instruction"}
+    assert mutate.legacy_fallback_allowed(74, diagnosis) is False
+    assert mutate.legacy_fallback_allowed(75, diagnosis) is True
+    assert mutate.legacy_fallback_allowed(60, {"mismatch_class": "register allocation difference"}) is True
+    assert mutate.legacy_fallback_allowed(
+        98, {"mismatch_class": "register allocation difference",
+             "register_delta": {"ecx": 1}}) is False
+    assert mutate.legacy_fallback_allowed(
+        97, {"mismatch_class": "code-size mismatch",
+             "receiver_call_diffs": [{"target": "ecx", "candidate": "push"}]}) is False
+    calls = []
+    def check(_client, _addr, source, _flags=None, include_diagnosis=False):
+        calls.append(source)
+        row = (40, None, "", [])
+        return row + (diagnosis,) if include_diagnosis else row
+    result = mutate.improve("C", "1", "int f(){ return x + 1; }", check=check,
+                            guided=True)
+    assert result[2] == 0 and len(calls) == 1
+
+
 def test_remaining_guided_mutation_evidence():
     from roc import match, mutate
     branch = match.diagnose(bytes.fromhex("7500c3"), [], bytes.fromhex("7400c3"), [])
@@ -1283,6 +1318,78 @@ def test_remaining_guided_mutation_evidence():
         "calling_convention", "int __stdcall S::f(int a){ return a; }")
     assert not any(category == "calling_convention" for category, _ in
                    mutate.guided_variants("void f(int a){ }", cleanup))
+    receiver = {"mismatch_class": "instruction-selection mismatch",
+                "receiver_call_diffs": [{"target": "ecx, sym", "candidate": "0"}]}
+    pointer = 'extern "C" bool (__stdcall *p)(const T*, const T*);'
+    assert mutate.function_pointer_convention_variants(pointer, receiver) == [
+        'extern "C" bool (__thiscall *p)(const T*, const T*);']
+    pointer_call = ('extern "C" bool (__stdcall *sub_77e708)(void*, const T*);\n'
+                    'bool f(void* q) { return sub_77e708(q, (const T*)0x10); }')
+    pointer_variants = mutate.function_pointer_convention_variants(pointer_call, receiver)
+    assert len(pointer_variants) == 2 and "sub_77e708((const T*)0x10, q)" in pointer_variants[1]
+    direct = ('struct S { int f(int); };\n'
+              'extern "C" int __stdcall sub(void*, int);\n'
+              'int S::f(int x) { return sub(this, x); }')
+    direct_variants = mutate.direct_member_receiver_variants(direct, receiver)
+    assert len(direct_variants) == 1 and 'int sub(int);' in direct_variants[0]
+    assert 'return sub(x);' in direct_variants[0] and 'extern "C"' not in direct_variants[0]
+    direct_noarg = ('struct S { int f(int); };\n'
+                    'extern "C" void __stdcall sub();\n'
+                    'int S::f(int x) { sub(); return x; }')
+    direct_noarg_diag = {"receiver_call_diffs": [{"direct": True}]}
+    noarg_variants = mutate.direct_member_noarg_variants(direct_noarg, direct_noarg_diag)
+    assert len(noarg_variants) == 1 and 'void sub();' in noarg_variants[0]
+    assert 'extern "C"' not in noarg_variants[0]
+    static = ('extern "C" bool __stdcall check(void*, void*);\n'
+              'bool f(void* q) { return check((void*)0x1234, q); }')
+    static_variants = mutate.static_receiver_pointer_variants(static, receiver)
+    assert len(static_variants) == 1 and "(__thiscall *check)" in static_variants[0]
+    static_return = ('extern "C" void* __stdcall check(void*, const void*);\n'
+                     'bool f(void* q) { check(q, (const void*)0x1234); return true; }')
+    receiver_return = dict(receiver, register_delta={"al": 1})
+    variants = mutate.static_receiver_pointer_variants(static_return, receiver_return)
+    assert len(variants) == 2 and "return check((const void*)0x1234, q);" in variants[1]
+    indirect = ('extern "C" void* (__thiscall *check)(void*, void*);\n'
+                'bool f(void* q) { check((void*)0x1234, q); return true; }')
+    assert "return check((void*)0x1234, q);" in mutate.indirect_return_variants(
+        indirect, receiver_return)[0]
+    virtual_view = ("struct VNode { int vtbl; int ref; };\n"
+                    "void f(void* old) {\n"
+                    "    int* vtable = *(int**)old;\n"
+                    "    void (__stdcall *release)(int) = (void (__stdcall *)(int))*vtable;\n"
+                    "    release(1);\n} ")
+    virtual_diag = {"mismatch_class": "register allocation difference",
+                    "register_delta": {"ecx": -1, "edx": 1}}
+    virtual_variants = mutate.virtual_call_view_variants(virtual_view, virtual_diag)
+    assert len(virtual_variants) == 1 and "VNodeCall" in virtual_variants[0]
+    assert "((VNodeCall*)old)->release(1);" in virtual_variants[0]
+    slot_source = ("struct S { int f(void*); };\n"
+                   "int S::f(void* arg) {\n"
+                   "    if (((int (__thiscall*)(void*))*(void**)(*(char**)this + 0x14))(arg))\n"
+                   "        return 1;\n    return 0;\n}")
+    slot_diag = {"mismatch_class": "code-size mismatch",
+                 "opcode_delta": {"mov": 1, "push": -1},
+                 "register_delta": {"ecx": 1}}
+    slot_variants = mutate.virtual_slot_view_variants(slot_source, slot_diag)
+    assert len(slot_variants) == 1 and "virtual int slot4();" in slot_variants[0]
+    assert "((VTableCallView*)this)->call(arg))" in slot_variants[0]
+    carrier = ('extern "C" void* __stdcall check(void*);\n'
+               'extern "C" int make(void*);\n'
+               'bool f(void* q) {\n    make(q);\n    check((void*)0x1234);\n    return true;\n}')
+    carrier_diag = {"return_carrier_call_diffs": [{"carried": "eax"}]}
+    assert "return check((void*)0x1234, make(q));" in mutate.return_carrier_variants(
+        carrier, carrier_diag)[0]
+    rtti = ('struct T { bool operator==(const T&); };\n'
+            'extern T typeinfo;\nextern "C" void* __cdecl sub_631392(void*);\n'
+            'bool f(void* q) { return typeinfo == *(T*)q; }')
+    rtti_variant = mutate.rtti_operator_variants(rtti, {"indirect_call_diffs": [{}]})[0]
+    assert "__thiscall *sub_77e708" in rtti_variant and "return sub_77e708(&typeinfo" in rtti_variant
+    def check_pointer(_client, _addr, source, _flags=None, include_diagnosis=False):
+        value = 100 if "__thiscall *" in source else 97
+        row = (value, None, "", [])
+        return row + (receiver,) if include_diagnosis else row
+    fixed = mutate.improve("C", "1", pointer, check=check_pointer, guided=True)
+    assert fixed[0] == 100 and fixed.mutations[0]["category"] == "function_pointer_convention"
     stack = match.diagnose(bytes.fromhex("8b442408c3"), [], bytes.fromhex("8b442404c3"), [])
     assert stack["mismatch_class"] == "stack-frame/layout mismatch"
     assert mutate.guided_variants("struct S { char pad[4]; }; int f(){ return pad[0]; }", stack) == [
@@ -1717,6 +1824,26 @@ def test_truncated_generation_history_reset():
         reset = enabled is not False
         assert contexts[1] == (None if reset else {"malformed": True})
         assert bool(attempts[1]) == reset
+
+
+def test_base_padding_variant_uses_decoded_field_delta():
+    from roc import mutate
+    src = "struct S : B { char pad[0x11c - 8]; int field; };"
+    diagnosis = {"stack_offset_diffs": [{"candidate": "0x11c", "target": "0x124"}]}
+    assert mutate.guided_variants(src, diagnosis) == [
+        ("base_padding", "struct S : B { char pad[0x124 - 8]; int field; };")]
+
+
+def test_hidden_exact_sources_stay_byte_exact():
+    from roc import match
+    for addr in ("00401880", "0041eb40", "0041faa0", "0042d840", "0044a1d0",
+                 "00460120", "00460190", "00472e90", "004aca90", "004c1b50",
+                 "00530880", "00549000", "00580f90", "00580fb0", "0059c7d0",
+                 "005f9ff0", "005fc710", "00608490", "006274b0", "0063dcb0",
+                 "0064ec50", "0065eb30", "00662440", "006692b0", "00690a90",
+                 "004b8aa0", "004d06b0", "006a79f0", "006c79f0"):
+        source = Path("src/2007-08/%s.cpp" % addr).read_text()
+        assert match.check_text("2007-08", addr, source)[0] == 100
 
 
 def test_truncated_partial_code_history_reset():

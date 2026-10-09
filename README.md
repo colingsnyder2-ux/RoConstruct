@@ -184,6 +184,14 @@ roc launch --workers 4           override the worker count for this run
 roc launch --dry-run             show the plan without taking a job
 roc link "roconstruct://..."     what a website "Help out" click runs
 roc doctor [--json] [--no-check] diagnose this install and print repair steps
+roc repair CLIENT [--min-score 80] [--limit N] [--addr HEX] [--permute]
+                                 mass-test compiler-backed source mutations; log every result
+roc repair CLIENT --refresh-all  refresh saved scores before filtering stale partials
+roc repair CLIENT --offset N --limit B
+                                   process repeatable corpus batch N..N+B
+roc repair CLIENT --json           print machine-readable results incl. compile failures
+roc repair CLIENT --json-out FILE  save report for unattended batch processing
+roc repair CLIENT --category NAME  restrict guided trials to one mutation family
 roc local-ai [--docker]         opt-in: Ollama for local models, Docker/Rev.ng only if asked
 roc model [name|default]         show or choose AI model
 roc optimize [--model MODEL]     benchmark once, save model-specific worker settings

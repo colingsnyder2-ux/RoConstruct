@@ -139,7 +139,7 @@ class CompactLog:
             if (text.startswith("Worker ") or text.startswith("  auto-think:") or
                     text.startswith("  round ") or text.startswith("  generated source") or
                     text.startswith("  no improvement") or text.startswith("  retained") or
-                    text.startswith("  2016 source") or text.startswith("Session:") or
+                    text.startswith("  preparing 2016 source") or text.startswith("  2016 source") or text.startswith("Session:") or
                     text.startswith("== ") or text.startswith("Worker finished") or
                     text.startswith("Cloud model:") or text.startswith("Privacy:") or
                     text.startswith("  tokens used:") or
@@ -199,6 +199,11 @@ def site_server():
 
 def reconnect(api, log):
     """Server unreachable: switch to the address the site lists now, if it moved."""
+    # A local repair batch must stay on its local server.  Falling through to
+    # the public tunnel turns transient local contention into Bad Gateway and
+    # loses the pinned-worker guarantee.
+    if api.server.startswith("http://127.0.0.1:") or api.server.startswith("http://localhost:"):
+        return False
     new = site_server()
     if new and Api(new).server != api.server:
         log("Server moved to %s, switching." % new)
@@ -491,7 +496,7 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
         cloud_escalate=None, cloud_escalate_after=2, thinking=None, reasoning_effort=None,
         max_tokens=2048, examples_cache=None, source_cache=None, guided_mutations=False,
         order="auto", family_exemplars=True, lease_mode="function", family_state=None,
-        family_lock=None, family_id=None, unit_name=None):
+        family_lock=None, family_id=None, unit_name=None, near_repair=False):
     """forever: survive server/network outages (retry every minute) for overnight runs.
     only: restrict to these clients (one-click links).
     examples_cache/source_cache: shared across parallel loops so N workers do
@@ -518,7 +523,7 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
     auto_model = model is None and not source_only
     # Link UI already verified an explicit choice. Do not turn a brief
     # /api/tags outage between setup and this point into a false no-model exit.
-    model = (draft.pick_model(model) or model) if not source_only else "none"
+    model = (draft.pick_model(model) or model) if not source_only else "roc repair"
     if not model and not source_only:
         raise SystemExit("AI workers need Ollama with a code model:  ollama pull qwen2.5-coder:7b\n"
                          "No GPU? You can still help by hand: roc claim / roc check / roc submit.")
@@ -615,9 +620,13 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
                             "gate": cloud_gate, "diverse_candidates": diverse_candidates,
                             "seed": seed, "max_tokens": max_tokens,
                             "guided_mutations": guided_mutations,
-                            "family_exemplars": family_exemplars}
+                            "family_exemplars": family_exemplars,
+                            "near_repair": near_repair}
         if providers.is_cloud(job_model):
-            provider_options["retry_forever"] = True
+            # Near-repair batches are bounded experiments; never let one
+            # unavailable cloud endpoint hold every pinned worker forever.
+            provider_options["retry_forever"] = not near_repair
+            provider_options["retries"] = 2
             provider_options["on_retry"] = lambda error, retries, delay: log(
                 "  cloud retry %d (%s); waiting %ds." % (retries, error, delay))
         if rounds == "auto" and (job_model or "").startswith("deepseek:"):
@@ -649,7 +658,8 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
                    cloud_min_size=0, cloud_fallback=None, seed=None,
                    cloud_escalate=None, cloud_escalate_after=2, thinking=None, reasoning_effort=None,
                    max_tokens=2048, guided_mutations=False, order="auto", verbosity="auto",
-                   family_exemplars=True, lease_mode="function", family_id=None, unit_name=None):
+                   family_exemplars=True, lease_mode="function", family_id=None, unit_name=None,
+                   near_repair=False):
     """Run a bounded number of independent lease loops.
 
     Server leases make workers safe to run in parallel. Cloud loops are
@@ -679,6 +689,7 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
                      lease_mode=lease_mode,
                      family_state=family_state, family_lock=family_lock,
                      family_id=family_id, unit_name=unit_name,
+                     near_repair=near_repair,
                      examples_cache=shared_examples, source_cache=shared_sources)
         if verbosity == "compact":
             worker_log.finish()
@@ -710,6 +721,7 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
                 lease_mode=lease_mode,
                 family_state=family_state, family_lock=family_lock,
                 family_id=family_id, unit_name=unit_name,
+                near_repair=near_repair,
                 examples_cache=shared_examples, source_cache=shared_sources)
         except BaseException as error:
             errors.append(error)
@@ -837,6 +849,40 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                 log("  deterministic candidate submitted %d%%" % r["stored"])
                 result, improved = r["stored"], True
                 return r["stored"]
+        # Every partial gets one bounded, compiler-only repair pass before
+        # source mining or LLM work. This keeps cheap evidence-guided fixes in
+        # front of expensive generation and preserves exact validation.
+        repair_source = job.get("source") or ""
+        if repair_source and int(job.get("score", 0)) < 100:
+            from roc import mutate
+            ensure_lease()
+            stage("compiler repair")
+            repair_started = time.monotonic()
+            repaired = mutate.improve(client, addr, repair_source, flags, guided=True)
+            repair_seconds = round(time.monotonic() - repair_started, 3)
+            phase_seconds["repair"] = repair_seconds
+            round_stats.append({"round": "mutate", "score": repaired[0],
+                                "mutations": repaired.mutations,
+                                "tried": repaired[2],
+                                "compile_seconds": repair_seconds})
+            log("  compiler repair: %d%% -> %d%%, tried %d" %
+                (job["score"], repaired[0], repaired[2]))
+            if repaired[0] > job["score"]:
+                r = api.call("/v1/submit", {"lease": job["lease"], "user": user,
+                                            "worker": job.get("worker"), "model": job.get("model"),
+                                            "client": client, "addr": addr,
+                                            "score": repaired[0], "source": repaired[1]})
+                log("  compiler repair submitted %d%%" % r["stored"])
+                result, improved = r["stored"], True
+                return r["stored"]
+        # Source-only repair workers must not spend time compiling unrelated
+        # 2016 reference candidates; those belong to the normal worker path.
+        if source_only:
+            api.call("/v1/release", {"lease": job["lease"], "cooldown": 30})
+            result = job["score"]
+            failure_reason = "no_gain"
+            log("  no deterministic improvement (best %d%%), released" % job["score"])
+            return result
         from roc import refsource
         ensure_lease()
         stage("checking 2016 source candidates")
@@ -853,12 +899,6 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
             return r["stored"]
         if source_candidate:
             log("  2016 source candidate scored %d%%; using as LLM base" % source_candidate[0])
-        if source_only:
-            api.call("/v1/release", {"lease": job["lease"], "cooldown": 30})
-            result = job["score"]
-            failure_reason = "no_gain"
-            log("  no deterministic improvement (best %d%%), released" % job["score"])
-            return result
         if examples_cache is None:
             examples_cache = {}
         if source_cache is None:
@@ -934,6 +974,22 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                                       provider_options=llm_options)
         ensure_lease()
         phase_seconds["llm"] = round(time.monotonic() - llm_started, 3)
+        # LLM partial is not final: run same bounded compiler repair before
+        # submitting it, so repair can convert 98/99% candidates to exact.
+        if src and score < 100:
+            from roc import mutate
+            stage("repairing generated partial")
+            repair_started = time.monotonic()
+            repaired = mutate.improve(client, addr, src, flags, guided=True)
+            repair_seconds = round(time.monotonic() - repair_started, 3)
+            phase_seconds["repair_generated"] = repair_seconds
+            round_stats.append({"round": "mutate", "source": "llm_partial",
+                                "score": repaired[0], "mutations": repaired.mutations,
+                                "tried": repaired[2], "compile_seconds": repair_seconds})
+            log("  generated partial repair: %d%% -> %d%%, tried %d" %
+                (score, repaired[0], repaired[2]))
+            if repaired[0] > score:
+                score, src = repaired[0], repaired[1]
         if src and score > job["score"]:
             r = api.call("/v1/submit", {"lease": job["lease"], "user": user, "worker": job.get("worker"),
                                         "model": job.get("model"), "client": client, "addr": addr,

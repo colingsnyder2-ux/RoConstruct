@@ -864,6 +864,23 @@ Append-only experiment log.
 - 2026-10-09: `roc repair 2007-08 0059c7d0`: 91 -> 91, tried 3 variants [toggle_int_signedness=0, negate_comparison=0, swap_add_operands=91].
 - 2026-10-09: `roc repair 2007-08 0059e8b0`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=82, negate_comparison=81].
 - 2026-10-09: `roc repair 2007-08 0059f2e0`: 96 -> 96, tried 2 variants [toggle_char_signedness=96, toggle_int_signedness=96].
+- 2026-10-09: Compiler prepass `00506dd0,00437570,004a7b10,004befb0,0059f2e0`: 0 gains; all remained 96 locally (server best `00506dd0`=98).
+- 2026-10-09: DeepSeek batch same 5: `00506dd0` 98 no gain, `004befb0` 96 no gain, `004a7b10` 96 no gain; server disconnected before remaining 2. No accepted source changes.
+- 2026-10-09: Added bounded `base_padding` compiler mutator from `0043e550` evidence. Full legacy test runner stopped at pre-existing `test_mine_digest` encoding assertion before new test; direct mutator check required.
+- 2026-10-09: Compiler prepass `00724ed2,00460090,0057bfd0,0062d5f0,00637440`: 0 gains; scores stayed 98/97.
+- 2026-10-09: DeepSeek pinned batch same 5: 0 exact, 0 accepted. Model preserved 98/97 sources but made no verified improvement.
+- 2026-10-09: Compiler prepass `006773e0,006a4210,006b46a0,006f23d0,006f2400`: 0 gains; scores stayed 97.
+- 2026-10-09: DeepSeek pinned batch same 5: 0 exact, 0 accepted. Repeated 97% semantic reconstructions; no new source pattern.
+- 2026-10-09: Mixed-family compiler prepass `006857e0,006d2bf0,00692040,006a79a0,0070a090`: 0 gains; all local 96%. `006857e0` excluded from AI because server baseline stale at 80%.
+- 2026-10-09: DeepSeek mixed-family batch `006d2bf0,00692040,006a79a0,0070a090`: 0 exact, 0 accepted. Regalloc, instruction-selection, layout outputs stayed 96%; no reusable change.
+- 2026-10-09: Compiler prepass `00680590,0067a660,006319e0,00421090,0064f210`: 0 gains; local scores 94–96.
+- 2026-10-09: DeepSeek batch leased 4/5 (`00680590,0067a660,00421090,0064f210`): 0 exact, 0 accepted. `006319e0` not leased; no source changes.
+- 2026-10-09: Server-wide hidden-exact mining found 5 stored 100% sources (`00401880,0041eb40,0041faa0,0042d840,0044a1d0`) against local 90–94%; retrieved without new model request, locally compiled/verified, manually applied. All five `roc check` = MATCH; exact count 10007→10012.
+- 2026-10-09: Hidden-exact source diffs: `00401880` cdecl imported function + typed return; `0041eb40` typed loop/helper ABI; `0041faa0` typed global receiver + virtual thiscall; `0042d840` virtual slot declaration + destroy flag; `0044a1d0` dllimport + stdcall helper cleanup. No unverified edits kept.
+- 2026-10-09: Added regression test `test_hidden_exact_sources_stay_byte_exact`; full `python -B tests\\test_roc.py` passed after five applications.
+- 2026-10-09: Second hidden-exact batch: `00460120` 91→100, `00460190` 91→100, `00472e90` 90→100, `004aca90` 92→100, `004c1b50` 94→100. Retrieved stored server sources, locally verified, applied; exact count 10012→10017.
+- 2026-10-09: Source diffs classified: paired script helpers use stdcall producer + fastcall consumer and typed integer handle; VARArea uses declared virtual release + typed global receiver; DeleteInstanceItem uses cdecl helper; RakPeer uses cdecl helper plus reversed arguments. No new LLM calls.
+- 2026-10-09: `python -B tests\\test_roc.py`: all tests passed, including new `base_padding` regression. Plain cached run showed stale replacement-character byte; `-B` confirmed source/tests clean.
 - 2026-10-09: `roc repair 2007-08 0059fce0`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, toggle_int_signedness=80].
 - 2026-10-09: `roc repair 2007-08 005a3fa0`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=86, negate_comparison=83].
 - 2026-10-09: `roc repair 2007-08 005a6270`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=81].
@@ -2455,6 +2472,11 @@ Append-only experiment log.
 - 2026-10-09: `roc repair 2007-08 006f23d0`: 97 -> 97, tried 2 variants [toggle_int_signedness=97, negate_comparison=0].
 - 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 3 variants [immediate_constant=97, toggle_int_signedness=97, negate_comparison=0].
 - 2026-10-09: `roc repair 2007-08 00724ed2`: 98 -> 98, tried 3 variants [toggle_int_signedness=0, negate_comparison=96, swap_add_operands=98].
+- 2026-10-09: Additional server DeepSeek wins validated locally: `0062dba0` 97 -> 100 by selecting parameter `b` for vtable call; `006d81d0` 97 -> 100 by swapping output parameter declaration order; `0067d8b0` 97 -> 100 by removing explicit `this` from helper ABI. Exact total `9998` -> `10001`.
+- 2026-10-09: Two more server exacts validated locally: `004a7760` 96 -> 100 by modeling `free` as an indirect function pointer; `00580ef0` 96 -> 100 by moving `0x14` padding into nested `Sub` layout. Exact total `10001` -> `10003`.
+- 2026-10-09: Server DeepSeek exact validated locally: `005de0d0` 96 -> 100. Pointer parameters plus indexed array comparison reproduced target loop/register shape. Exact total `10003` -> `10004`.
+- 2026-10-09: Hidden server exact validated locally: `0063d410` 96 -> 100. Same branch flow had wrong selected constants; changing ternary `0xf/0x9` to `0x5/0xf` reproduced bytes. Exact total `10004` -> `10005`.
+- 2026-10-09: Near-96 batch: compiler repair tried 10 targets, 0 gains; DeepSeek tried `00421090`, `004a7b10`, `00506dd0`, `0059f2e0`, `0064f210`, 0 gains. `00506dd0` server source rose only to 98%, not accepted.
 - 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 1 variants [toggle_int_signedness=94].
 - 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 2 variants [toggle_char_signedness=95, toggle_int_signedness=0].
 - 2026-10-09: `roc repair 2007-08 004021e0`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=0, negate_comparison=87].
@@ -2950,10 +2972,21 @@ Append-only experiment log.
 - 2026-10-09: `roc repair 2007-08 0042b460`: 95 -> 95, tried 0 variants [].
 - 2026-10-09: `roc repair 2007-08 004356b0`: 95 -> 95, tried 0 variants [].
 - 2026-10-09: `roc repair 2007-08 00437570`: 96 -> 96, tried 0 variants [].
+- 2026-10-09: Sixth hidden-exact batch: `0069dac0` 93→100, `006a3fe0` 92→100, `006a5a00` 95→100, `006efeb0` 93→100, `00712bd0` 91→100. All local `roc check` MATCH; exact count 10032→10037.
+- 2026-10-09: Diffs: typed member-function pointer call; nested constructor subobjects/vtables; typed subobject receiver; repeated vtable reload; typed receiver plus local out-parameters. No new model request.
+- 2026-10-09: Repair webhook added. Each leased-partial and LLM-partial compiler repair emits async Discord payload with client/address, before→after score, stage, tried count, seconds, categories; source omitted.
+- 2026-10-09: Server rescan found 4 remaining hidden exacts: `004b8aa0` 91→100, `004d06b0` 94→100, `006a79f0` 94→100, `006c79f0` 92→100. Retrieved sources all local `roc check` MATCH; exact count 10037→10041.
+- 2026-10-09: Diffs: typed free pointer cleanup; explicit bool ternary; typed tail receiver; imported Windows API function pointers. No new model request.
 - 2026-10-09: `roc repair 2007-08 0043ba80`: 95 -> 95, tried 0 variants [].
 - 2026-10-09: `roc repair 2007-08 0043e4f0`: 95 -> 95, tried 0 variants [].
 - 2026-10-09: `roc repair 2007-08 0043e550`: 95 -> 95, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=95].
 - 2026-10-09: `roc repair 2007-08 0043f260`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: Server source query found hidden exact `004356b0` (95 -> 100). DeepSeek source changed Qt-like declarations to exact unit/method declarations; local `roc check` = MATCH. Applied to `src/2007-08/004356b0.cpp`.
+- 2026-10-09: DeepSeek pinned batch `00401990,0040a820,00412f20,004204d0,0042b460`: compiler prepass 95→95; AI 0 exact, 0 accepted. Outputs repeated semantic approximations / truncation; no source change.
+- 2026-10-09: DeepSeek found `0043e550` server-verified 100% (95 -> 100). One source-shape change: base padding boundary `0x11c - 8` -> `0x124 - 8`; local check MATCH. Exact count 10007.
+- 2026-10-09: Compiler prepass `00506dd0,00437570,004a7b10,004befb0,0059f2e0`: 0 gains; all remained 96 locally (server best 00506dd0=98).
+- 2026-10-09: DeepSeek batch same 5: `00506dd0` 98 no gain, `004befb0` 96 no gain, `004a7b10` 96 no gain; server disconnected before remaining 2. No accepted source changes.
+- 2026-10-09: Added bounded `base_padding` compiler mutator from 0043e550 evidence. Full legacy test runner stopped at pre-existing `test_mine_digest` encoding assertion before new test; direct mutator check required.
 - 2026-10-09: `roc repair 2007-08 00460090`: 97 -> 97, tried 0 variants [].
 - 2026-10-09: `roc repair 2007-08 004a7760`: 96 -> 96, tried 0 variants [].
 - 2026-10-09: `roc repair 2007-08 004a7b10`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=77].
@@ -2966,5 +2999,119 @@ Append-only experiment log.
 - 2026-10-09: `00460090` 97% classified as missing/extra + indirect-call selection mismatch; guided repair produced zero applicable candidates. No source change accepted.
 - 2026-10-09: `00724ed2` 98% has exact control flow except compiler-emitted trailing `int3` after noreturn imported exception call. Three bounded mutations plus removing/replacing `__assume(0)` stayed 98%; no accepted change.
 - 2026-10-09: Added `roc worker --addr` target pinning. AI repair can now isolate exact near-partial addresses instead of leasing unrelated queue work. Local server/Ollama restarted; DeepSeek retry was blocked by stale lease cooldown before generation, so no match claimed.
+- 2026-10-09: Clean single-server retry pinned `00675890`, `00724ed2`, `00460090` to DeepSeek. Requests stalled before reply; no source/full-match change. Stale lease released; exact total remains `9997`.
+- 2026-10-09: DeepSeek near-partial retry completed: `00724ed2` generated identical 98% source via fallback; forced DeepSeek on `00675890` generated identical 98% source; forced DeepSeek on `00460090` truncated at 1536 tokens and stayed 97%. No source accepted, exact total remains `9997`.
+- 2026-10-09: Removed near-partial LLM bottleneck: added `roc worker --near-repair`, preserving 90%+ source and requesting one minimal evidence-backed change; output cap can reach 8192. DeepSeek test on `00675890` still repeated source at 98%, proving prompt/output bottleneck fixed but source-shape ambiguity remains.
+- 2026-10-09: DeepSeek found exact `00675890` 98% -> 100% after compiler prepass. Source changes: helper returns modeled as `int`, returned value explicitly cast to receiver for member call, final pointer store inlined, flag temporary removed. Reproduced without LLM via `near_return_shape_variants`; local `roc check` confirms `MATCH`. Exact total `9997` -> `9998`.
 - 2026-10-09: `roc repair 2007-08 00460090`: 97 -> 97, tried 0 variants [].
 - 2026-10-09: `roc repair 2007-08 00724ed2`: 98 -> 98, tried 3 variants [toggle_int_signedness=0, negate_comparison=96, swap_add_operands=98].
+- 2026-10-09: `roc repair 2007-08 00460090`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0057bfd0`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0062d5f0`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=95].
+- 2026-10-09: `roc repair 2007-08 0062dba0`: 97 -> 97, tried 2 variants [toggle_char_signedness=97, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00637440`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 006773e0`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0067d8b0`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 006a4210`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 006b46a0`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 006d81d0`: 97 -> 97, tried 5 variants [stack_layout=95, toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=89, swap_add_operands=97].
+- 2026-10-09: `roc repair 2007-08 006f23d0`: 97 -> 97, tried 2 variants [toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 3 variants [immediate_constant=97, toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00724ed2`: 98 -> 98, tried 3 variants [toggle_int_signedness=0, negate_comparison=96, swap_add_operands=98].
+- 2026-10-09: `roc repair 2007-08 00460090`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0057bfd0`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0062d5f0`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=95].
+- 2026-10-09: `roc repair 2007-08 00637440`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 006773e0`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 006a4210`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 006b46a0`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 006f23d0`: 97 -> 97, tried 2 variants [toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 3 variants [immediate_constant=97, toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00724ed2`: 98 -> 98, tried 3 variants [toggle_int_signedness=0, negate_comparison=96, swap_add_operands=98].
+- 2026-10-09: `roc repair 2007-08 00421090`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=77].
+- 2026-10-09: `roc repair 2007-08 00437570`: 96 -> 96, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004a7760`: 96 -> 96, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004a7b10`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=77].
+- 2026-10-09: `roc repair 2007-08 004befb0`: 96 -> 96, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00506dd0`: 96 -> 96, tried 2 variants [immediate_constant=96, toggle_int_signedness=96].
+- 2026-10-09: `roc repair 2007-08 00580ef0`: 96 -> 96, tried 1 variants [toggle_char_signedness=96].
+- 2026-10-09: `roc repair 2007-08 0059f2e0`: 96 -> 96, tried 2 variants [toggle_char_signedness=96, toggle_int_signedness=96].
+- 2026-10-09: `roc repair 2007-08 005de0d0`: 96 -> 96, tried 3 variants [toggle_int_signedness=0, negate_comparison=17, swap_add_operands=96].
+- 2026-10-09: `roc repair 2007-08 006319e0`: 96 -> 96, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00421090`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=77].
+- 2026-10-09: `roc repair 2007-08 004a7b10`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=77].
+- 2026-10-09: `roc repair 2007-08 00506dd0`: 96 -> 96, tried 2 variants [immediate_constant=96, toggle_int_signedness=96].
+- 2026-10-09: `roc repair 2007-08 0059f2e0`: 96 -> 96, tried 2 variants [toggle_char_signedness=96, toggle_int_signedness=96].
+- 2026-10-09: `roc repair 2007-08 0063d410`: 96 -> 96, tried 3 variants [immediate_constant=58, toggle_int_signedness=96, negate_comparison=94].
+- 2026-10-09: `roc repair 2007-08 0064f210`: 96 -> 96, tried 2 variants [toggle_char_signedness=96, toggle_int_signedness=96].
+- 2026-10-09: `roc repair 2007-08 00653ef0`: 96 -> 96, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0067a660`: 96 -> 96, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00680590`: 96 -> 96, tried 0 variants [].
+- 2026-10-09: Second-batch exact regression sources all locally MATCH. Full suite currently stops at existing `test_mine_digest`: current Discord payload has `Verification` field before `Workers`, while test expects old field indexes. Hidden-exact regression passes when called directly.
+- 2026-10-09: Third hidden-exact batch: `00530880` 90→100, `00549000` 92→100, `00580f90` 94→100, `00580fb0` 94→100, `0059c7d0` 91→100. All stored server sources locally compiled/MATCH; exact count 10017→10022.
+- 2026-10-09: Diffs classified: typed model/helper fastcall; indirect destructor function pointer; nested subobject method layout (two variants); switch normalization from subtract-and-switch to direct mode cases. No new model request.
+- 2026-10-09: Fourth hidden-exact batch: `005f9ff0` 95→100, `005fc710` 95→100, `00608490` 95→100, `006274b0` 92→100, `0063dcb0` 92→100. All local `roc check` MATCH; exact count 10022→10027.
+- 2026-10-09: Diffs: imported free function pointer; guarded method forwards original arg; typed receiver call; nested child/final target receiver types; typed global pointer plus void return. No new model request.
+- 2026-10-09: Worker pipeline changed: every leased partial with source now runs bounded guided `mutate.improve` before refsource/LLM. Verified gains submit immediately; 100% stops job. Mutation attempt/time enters worker metrics as `round: mutate`; defaults preserved for source-only and AI workers.
+- 2026-10-09: Fifth hidden-exact batch: `0064ec50` 93→100, `0065eb30` 94→100, `00662440` 93→100, `006692b0` 95→100, `00690a90` 96→100. All local `roc check` MATCH; exact count 10027→10032.
+- 2026-10-09: Worker now also repairs each newly generated LLM partial before submit. Pinned source-only proof `00437570`: `96% -> 96%, tried 0`, released; no model cost.
+- 2026-10-09: `roc repair 2007-08 006857e0`: 96 -> 96, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 2 variants [toggle_char_signedness=95, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 0040a820`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00412f20`: 95 -> 95, tried 1 variants [toggle_int_signedness=95].
+- 2026-10-09: `roc repair 2007-08 004204d0`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0042b460`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004356b0`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0043ba80`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0043e4f0`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0043e550`: 95 -> 95, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=95].
+- 2026-10-09: `roc repair 2007-08 0043f260`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00437570`: 96 -> 96, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004a7b10`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=77].
+- 2026-10-09: `roc repair 2007-08 004befb0`: 96 -> 96, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00506dd0`: 96 -> 96, tried 2 variants [immediate_constant=96, toggle_int_signedness=96].
+- 2026-10-09: `roc repair 2007-08 0059f2e0`: 96 -> 96, tried 2 variants [toggle_char_signedness=96, toggle_int_signedness=96].
+- 2026-10-09: `roc repair 2007-08 00460090`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0057bfd0`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0062d5f0`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=95].
+- 2026-10-09: `roc repair 2007-08 00637440`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00724ed2`: 98 -> 98, tried 3 variants [toggle_int_signedness=0, negate_comparison=96, swap_add_operands=98].
+- 2026-10-09: `roc repair 2007-08 006773e0`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 006b46a0`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 006f23d0`: 97 -> 97, tried 2 variants [toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 3 variants [immediate_constant=97, toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006a4210`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 006857e0`: 96 -> 96, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00692040`: 96 -> 96, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 006a79a0`: 96 -> 96, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 006d2bf0`: 96 -> 96, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0070a090`: 96 -> 96, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00421090`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=77].
+- 2026-10-09: `roc repair 2007-08 006319e0`: 96 -> 96, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0064f210`: 96 -> 96, tried 2 variants [toggle_char_signedness=96, toggle_int_signedness=96].
+- 2026-10-09: `roc repair 2007-08 0067a660`: 96 -> 96, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00680590`: 96 -> 96, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004a9140`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004a91a0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004b8df0`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004b8e40`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004c1880`: 95 -> 95, tried 4 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=92, swap_add_operands=95].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 2 variants [toggle_char_signedness=95, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 004021e0`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=0, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 0040a820`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040a9d0`: 94 -> 94, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040ac50`: 92 -> 92, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040b2a0`: 92 -> 92, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040f4f0`: 94 -> 94, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040f750`: 93 -> 93, tried 0 variants [].
+- 2026-10-09: Removed separate per-repair Discord webhook. Verified match submissions now use the existing batched server Mining Digest webhook; repair details remain in JSON reports and local findings logs, avoiding webhook spam.
+- 2026-10-09: Launched mass compiler-only near-match pass for all 507 stored 2007-08 functions scoring 90-99%, pinned by address, 16 workers, guided mutations, no model/cloud. Initial state: 9,804 exact and 507 near; no early exact conversion observed. Survivors will be sent to DeepSeek only after this pass completes.
+- 2026-10-09: Found mass-pass bottleneck: source-only workers still ran expensive unrelated 2016 reference compilation before release. Moved source-only release immediately after compiler repair; normal model workers retain reference-candidate path.
+- 2026-10-09: Method labels fixed: deterministic workers now report `roc repair` instead of model `none`; batch fingerprint submissions report `roc fingerprint`. Mining Digest model field now describes the actual method.
+- 2026-10-09: Mass compiler repair pass reached terminal: 507-target pinned job set, 40 completed in this server window, 23 exact events in the final event window; current authoritative pool is 9,827 exact and 486 near (90-99%). Some targets were concurrently claimed by existing server workers, so DeepSeek phase pins the current 486 survivor set.
+- 2026-10-09: DeepSeek exact `00651ee0` (90→100), locally recompiled/verified 100. Accepted source uses typed `void*` receivers plus explicit `__thiscall` virtual-slot expressions at `0x18c/4` then `0x16c/4`; classified virtual receiver + slot ABI. Prior source unavailable in server history, so no claimed byte-level source diff; pattern recorded for future compiler reproduction.
+- 2026-10-09: Reproduction gate for `00651ee0`: accepted DeepSeek source baseline 100%; `mutate.improve(..., guided=True)` retained 100% with 0 candidates, and local `match.check_text` confirmed exact bytes. No unverified source applied.
+- 2026-10-09: DeepSeek mass run encountered tunnel Bad Gateway after 96 jobs (12 errors); no source accepted from failed requests. Resumed local pinned high shard for all 74 current 98-99% survivors with 8 workers, fallback disabled, 409,600-token/$25 cap.
+- 2026-10-09: Hardened local worker reconnect: `127.0.0.1`/`localhost` workers no longer switch to the public tunnel after transient errors, preventing Bad Gateway from interrupting pinned DeepSeek batches. Remote workers retain tunnel migration.
+- 2026-10-09: Near-repair cloud calls now use two bounded retries instead of infinite retry. This prevents one DeepSeek/tunnel outage from pinning the whole batch indefinitely; normal non-repair cloud workers preserve retry-forever behavior.

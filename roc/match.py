@@ -334,6 +334,14 @@ def diagnose(target_code, target_relocs, cand, cand_relocs):
     c_lines = asm_lines(cand, cand_relocs)
     t_ins = _insn_parts(target_code)
     c_ins = _insn_parts(cand)
+    from roc import pressure
+    t_asm, c_asm = "\n".join(t_lines), "\n".join(c_lines)
+    flow = {"target": {"blocks": len(pressure.blocks(t_asm)),
+                        "branch_targets": pressure.branch_targets(t_asm),
+                        "pressure": pressure.block_pressure(t_asm)},
+            "candidate": {"blocks": len(pressure.blocks(c_asm)),
+                          "branch_targets": pressure.branch_targets(c_asm),
+                          "pressure": pressure.block_pressure(c_asm)}}
 
     def hist(ins, idx):
         out = {}
@@ -415,6 +423,36 @@ def diagnose(target_code, target_relocs, cand, cand_relocs):
         tm == cm or inverted.get(tm) == cm for (tm, _), (cm, _) in zip(t_ins, c_ins)))
     t_ret = next((o for m, o in reversed(t_ins) if m == "ret"), None)
     c_ret = next((o for m, o in reversed(c_ins) if m == "ret"), None)
+    receiver_call_diffs = []
+    for index in range(min(len(t_ins), len(c_ins)) - 1):
+        tm, to = t_ins[index]
+        cm, co = c_ins[index]
+        if (tm, cm) == ("mov", "push") and to.lower().startswith("ecx,") and \
+                index + 1 < len(t_ins) and index + 1 < len(c_ins) and \
+                t_ins[index + 1][0] == c_ins[index + 1][0] == "call":
+            receiver_call_diffs.append({"instruction": index, "target": to,
+                                        "candidate": co, "call": t_ins[index + 1][1]})
+        elif tm == "mov" and cm == "call" and to.lower().startswith("ecx,") and \
+                index + 1 < len(t_ins) and t_ins[index + 1][0] == "call":
+            receiver_call_diffs.append({"instruction": index, "target": to,
+                                        "candidate": co, "call": t_ins[index + 1][1],
+                                        "direct": True})
+    return_carrier_call_diffs = []
+    for index in range(len(t_ins) - 2):
+        if (t_ins[index][0], t_ins[index][1].lower()) == ("push", "eax") and \
+                t_ins[index + 1][0] == "mov" and t_ins[index + 1][1].lower().startswith("ecx,") and \
+                t_ins[index + 2][0] == "call":
+            if any(c_m == "push" and c_o.lower() in ("0", "0x0") for c_m, c_o in c_ins) and \
+                    any(c_m == "mov" and c_o.lower().startswith("al,") for c_m, c_o in c_ins):
+                return_carrier_call_diffs.append({"instruction": index,
+                                                   "receiver": t_ins[index + 1][1],
+                                                   "call": t_ins[index + 2][1],
+                                                   "carried": "eax"})
+    indirect_call_diffs = []
+    for index, ((tm, to), (cm, co)) in enumerate(zip(t_ins, c_ins)):
+        if tm == cm == "call" and (to.lower().startswith("dword ptr [") !=
+                                    co.lower().startswith("dword ptr [")):
+            indirect_call_diffs.append({"instruction": index, "target": to, "candidate": co})
     missing_return_value = None
     for index, (mnemonic, operands) in enumerate(t_ins[:-1]):
         if mnemonic != "mov" or not re.fullmatch(r"eax, (e?[abcd]x|e[sd]i|ebp)", operands):
@@ -425,6 +463,9 @@ def diagnose(target_code, target_relocs, cand, cand_relocs):
             missing_return_value = {"register": operands.split(",", 1)[1].strip(),
                                     "instruction": index}
             break
+    alignment = align_insns(target_code, target_relocs, cand, cand_relocs)
+    step_counts = {name: sum(step["op"] == name for step in alignment["steps"])
+                   for name in ("same", "regalloc", "args", "del", "ins", "reorder")}
     if exact_match(target_code, target_relocs, cand, cand_relocs):
         mismatch = "exact"
     elif call_argument_diffs:
@@ -453,6 +494,32 @@ def diagnose(target_code, target_relocs, cand, cand_relocs):
         mismatch = "instruction-selection mismatch"
     else:
         mismatch = "unknown"
+    evidence = []
+    def add_class(category, confidence, facts):
+        evidence.append({"category": category, "confidence": round(confidence, 2),
+                         "evidence": facts})
+    if mismatch == "exact":
+        add_class("exact", 1.0, ["relocation-masked bytes identical"])
+    if call_argument_diffs:
+        add_class("argument-order mismatch", 0.98, ["decoded immediate push order differs"])
+    if t_ret != c_ret:
+        add_class("calling-convention mismatch", 0.98, ["ret cleanup differs"])
+    if stack_offset_diffs or t_frame != c_frame or t_stk != c_stk:
+        add_class("stack-frame/layout mismatch", 0.9, ["stack references or frame size differ"])
+    if branch_condition_diff:
+        add_class("branch-condition mismatch", 0.95, ["paired conditional branch is inverted"])
+    if immediate_diffs:
+        add_class("immediate/constant mismatch", 0.94, ["same opcode/shape, numeric operand differs"])
+    if step_counts["regalloc"] and not step_counts["args"] and not step_counts["del"] and not step_counts["ins"]:
+        add_class("register allocation difference", 0.82,
+                  ["alignment pairs same opcodes with register-only operand changes",
+                   "register deltas=%s" % sorted(register_delta)])
+    if len(t_ins) != len(c_ins):
+        add_class("missing/extra instruction", 0.9, ["instruction counts differ"])
+    if t_op != c_op:
+        add_class("instruction-selection mismatch", 0.78, ["opcode histograms differ"])
+    if not evidence and mismatch != "exact":
+        add_class("unknown", 0.0, ["no conservative rule matched"])
     byte_diffs = []
     if len(target_code) == len(cand):
         masked_offsets = {r + i for r in target_relocs + cand_relocs for i in range(4)}
@@ -473,9 +540,15 @@ def diagnose(target_code, target_relocs, cand, cand_relocs):
             "stack_offset_diffs": stack_offset_diffs,
             "branch_condition_diff": branch_condition_diff,
             "return_cleanup": {"target": t_ret, "candidate": c_ret},
+            "receiver_call_diffs": receiver_call_diffs,
+            "return_carrier_call_diffs": return_carrier_call_diffs,
+            "indirect_call_diffs": indirect_call_diffs,
             "frame_size": {"target": t_frame, "candidate": c_frame},
             "missing_return_value": missing_return_value,
             "mismatch_class": mismatch,
+            "classifications": evidence,
+            "alignment": {"cost": alignment["cost"], "steps": step_counts},
+            "flow": flow,
             "mismatch_is_hypothesis": mismatch not in ("exact", "argument-order mismatch"),
             "byte_diffs": byte_diffs,
             "diff_preview": diff_lines[:40]}

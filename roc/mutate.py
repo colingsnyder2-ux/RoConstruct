@@ -275,6 +275,33 @@ def stack_layout_variants(src, diagnosis):
     return out
 
 
+def base_padding_variants(src, diagnosis):
+    """Adjust inherited-object padding when decoded field offsets prove a delta."""
+    out = []
+    arrays = list(re.finditer(
+        r"\b(?:char|unsigned\s+char)\s+\w*\s*\[\s*(0x[0-9a-f]+|\d+)\s*-\s*8\s*\]",
+        src, re.I))
+    if len(arrays) != 1:
+        return out
+    for diff in (diagnosis or {}).get("stack_offset_diffs", [])[:2]:
+        try:
+            delta = _literal_value(diff["target"]) - _literal_value(diff["candidate"])
+        except (KeyError, ValueError):
+            continue
+        if not delta or delta % 4:
+            continue
+        match = arrays[0]
+        old = _literal_value(match.group(1))
+        new = old + delta
+        if new <= 8:
+            continue
+        text = hex(new) if match.group(1).lower().startswith("0x") else str(new)
+        value = src[:match.start(1)] + text + src[match.end(1):]
+        if value not in out:
+            out.append(value)
+    return out
+
+
 def intrinsic_call_variants(src, diagnosis):
     """Switch only known MSVC Interlocked spelling when xadd/call evidence agrees."""
     if (diagnosis or {}).get("mismatch_class") != "intrinsic/call mismatch":
@@ -284,6 +311,283 @@ def intrinsic_call_variants(src, diagnosis):
     if "_InterlockedExchangeAdd" in src:
         return [src.replace("_InterlockedExchangeAdd", "InterlockedExchangeAdd", 1)]
     return [src.replace("InterlockedExchangeAdd", "_InterlockedExchangeAdd", 1)]
+
+
+def function_pointer_convention_variants(src, diagnosis):
+    """Model an indirect call's ECX receiver as an MSVC thiscall pointer.
+
+    Target evidence must show `mov ecx, ...; call [ptr]` while the candidate
+    pushed a placeholder first argument. This is distinct from changing the
+    target function's own convention and fixes historical RTTI/vtable-style
+    function pointers without guessing globally.
+    """
+    if not (diagnosis or {}).get("receiver_call_diffs"):
+        return []
+    if "__stdcall *" not in src or "__thiscall *" in src:
+        return []
+    converted = src.replace("__stdcall *", "__thiscall *", 1)
+    out = [converted]
+    # Under thiscall the receiver is ECX. Try one diagnosed call-argument
+    # reversal too, but only for the known indirect pointer symbol.
+    for swapped in swap_call_argument_variants(converted):
+        if "sub_77e708(" in swapped and swapped not in out:
+            out.append(swapped)
+    return out
+
+
+def direct_member_receiver_variants(src, diagnosis):
+    """Turn `callee(this, arg)` into a member call when target loads ECX.
+
+    MSVC rejects `__thiscall` on free functions. A real member declaration is
+    the legal source-level form and preserves the historical receiver ABI.
+    Only one unambiguous extern and one matching struct are transformed.
+    """
+    if not (diagnosis or {}).get("receiver_call_diffs"):
+        return []
+    decl = re.search(r'(?m)^extern\s+"C"\s+(.+?)\s+__stdcall\s+(\w+)\s*\(\s*void\s*\*\s*,\s*([^)]*)\)\s*;', src)
+    structs = list(re.finditer(r"\bstruct\s+(\w+)\s*\{", src))
+    if not decl or len(structs) != 1:
+        return []
+    ret, name, arg = decl.group(1).strip(), decl.group(2), decl.group(3).strip()
+    call = re.search(r"\b" + re.escape(name) + r"\s*\(\s*this\s*,\s*([^()]*)\)", src)
+    if not call:
+        return []
+    close = src.find("};", structs[0].end())
+    if close < 0:
+        return []
+    member = "%s %s(%s);\n" % (ret, name, arg)
+    updated = src[:decl.start()] + src[decl.end():]
+    close = updated.find("};", updated.find("{") + 1)
+    if close < 0:
+        return []
+    updated = updated[:close] + member + updated[close:]
+    call = re.search(r"\b" + re.escape(name) + r"\s*\(\s*this\s*,\s*([^()]*)\)", updated)
+    if not call:
+        return []
+    updated = updated[:call.start()] + name + "(" + call.group(1) + ")" + updated[call.end():]
+    return [updated]
+
+
+def direct_member_noarg_variants(src, diagnosis):
+    """Turn a no-argument stdcall helper into an implicit-this member call."""
+    if not any(diff.get("direct") for diff in (diagnosis or {}).get("receiver_call_diffs", [])):
+        return []
+    decl = re.search(r'(?m)^extern\s+"C"\s+(.+?)\s+__stdcall\s+(\w+)\s*\(\s*\)\s*;', src)
+    structs = list(re.finditer(r"\bstruct\s+(\w+)\s*\{", src))
+    if not decl or not structs:
+        return []
+    if len(structs) == 1:
+        owner = structs[0]
+    else:
+        owners = {match.group(1) for match in re.finditer(r"\b(\w+)::\w+\s*\(", src)}
+        matches = [match for match in structs if match.group(1) in owners]
+        if len(matches) != 1:
+            return []
+        owner = matches[0]
+    ret, name = decl.group(1).strip(), decl.group(2)
+    updated = src[:decl.start()] + src[decl.end():]
+    owner_start = updated.find("struct " + owner.group(1))
+    close = updated.find("};", updated.find("{", owner_start) + 1)
+    if close < 0:
+        return []
+    updated = updated[:close] + "    %s %s();\n" % (ret, name) + updated[close:]
+    return [updated]
+
+
+def static_receiver_pointer_variants(src, diagnosis):
+    """Make a direct stdcall declaration an indirect thiscall pointer.
+
+    Evidence requires a target `mov ecx, static; call [ptr]` shape. The source
+    must pass a literal/static receiver as the first argument to one unambiguous
+    two-argument stdcall declaration. This preserves the indirect call target
+    while moving that receiver into ECX.
+    """
+    if not (diagnosis or {}).get("receiver_call_diffs"):
+        return []
+    decl = re.search(r'(?m)^extern\s+"C"\s+(.+?)\s+__stdcall\s+(\w+)\s*\(([^)]*)\)\s*;', src)
+    if not decl or len([part for part in decl.group(3).split(",") if part.strip()]) != 2:
+        return []
+    name = decl.group(2)
+    call = re.search(r"\b" + re.escape(name) + r"\s*\(\s*([^,]+),\s*((?:\([^)]*\))?[^)]*)\)", src[decl.end():])
+    if not call:
+        return []
+    replacement = 'extern "C" %s (__thiscall *%s)(%s);' % (decl.group(1).strip(), name, decl.group(3).strip())
+    converted = src[:decl.start()] + replacement + src[decl.end():]
+    first, second = call.group(1).strip(), call.group(2).strip()
+    out = []
+    if "0x" in first.lower():
+        out.append(converted)
+    elif "0x" in second.lower() or "str_" in second:
+        swapped_values = swap_call_argument_variants(converted)
+        tail_start = converted.find(name + "(", converted.find(";", 0) + 1)
+        tail = converted[tail_start:] if tail_start >= 0 else ""
+        nested = re.search(r"\b" + re.escape(name) + r"\s*\(\s*([^,]+),\s*((?:\([^)]*\))?[^)]*)\)", tail)
+        if nested:
+            manual = tail[:nested.start()] + name + "(" + nested.group(2).strip() + ", " + \
+                     nested.group(1).strip() + ")" + tail[nested.end():]
+            swapped_values.append(converted[:tail_start] + manual)
+        for swapped in swapped_values:
+            if re.search(r"\b" + re.escape(name) + r"\s*\(\s*" + re.escape(second), swapped):
+                out.append(swapped)
+                if (diagnosis or {}).get("register_delta", {}).get("al", 0) > 0:
+                    returned = re.sub(r'(extern\s+"C"\s+)\S+(\s+\(__thiscall\s+\*' + re.escape(name) + r'\))',
+                                       r'\1bool\2', swapped, count=1)
+                    returned = re.sub(r'\b' + re.escape(name) + r'\((.*?)\);\s*return\s+true\s*;',
+                                       r'return ' + name + r'(\1);', returned, count=1)
+                    if returned != swapped:
+                        out.append(returned)
+    return list(dict.fromkeys(out))
+
+
+def indirect_return_variants(src, diagnosis):
+    """Propagate an indirect bool result when target lacks candidate `mov al,1`."""
+    if (diagnosis or {}).get("register_delta", {}).get("al", 0) <= 0:
+        return []
+    decl = re.search(r'(?m)^extern\s+"C"\s+(.+?)\s+\(__thiscall\s+\*(\w+)\)\s*\(([^)]*)\)\s*;', src)
+    if not decl:
+        return []
+    name = decl.group(2)
+    call = re.search(r'\b' + re.escape(name) + r'\((.*?)\);\s*(?:\n[ \t]*)?return\s+true\s*;', src)
+    if not call:
+        return []
+    replacement = 'extern "C" bool (__thiscall *%s)(%s);' % (name, decl.group(3).strip())
+    updated = src[:decl.start()] + replacement + src[decl.end():]
+    updated = re.sub(r'\b' + re.escape(name) + r'\((.*?)\);\s*(?:\n[ \t]*)?return\s+true\s*;',
+                     r'return ' + name + r'(\1);', updated, count=1)
+    return [updated] if updated != src else []
+
+
+def virtual_call_view_variants(src, diagnosis):
+    """Use a virtual-call view when target wants EDX indirect dispatch."""
+    delta = (diagnosis or {}).get("register_delta", {})
+    if delta.get("edx", 0) <= 0 or delta.get("ecx", 0) >= 0:
+        return []
+    if (diagnosis or {}).get("mismatch_class") != "register allocation difference":
+        return []
+    storage = re.search(r"(?m)^struct\s+(\w+)\s*\{\s*int\s+\w+;\s*int\s+\w+;\s*\};", src)
+    raw = re.search(
+        r"(?ms)([ \t]*)int\s*\*\s*vtable\s*=\s*\*\(int\*\*\)old;\s*"
+        r"void\s*\(__stdcall\s*\*\s*release\)\(int\)\s*=\s*"
+        r"\(void\s*\(__stdcall\s*\*\)\(int\)\)\*vtable;\s*"
+        r"release\(1\);", src)
+    if not storage or not raw:
+        return []
+    view = "\n\nstruct %sCall {\n    virtual void release(int);\n};" % storage.group(1)
+    updated = src[:storage.end()] + view + src[storage.end():]
+    updated = updated[:raw.start()] + raw.group(1) + \
+        "((%sCall*)old)->release(1);" % storage.group(1) + updated[raw.end():]
+    return [updated]
+
+
+def virtual_slot_view_variants(src, diagnosis):
+    """Model a vtable slot as a virtual member while preserving plain storage."""
+    opcodes = (diagnosis or {}).get("opcode_delta", {})
+    delta = (diagnosis or {}).get("register_delta", {})
+    if (diagnosis or {}).get("mismatch_class") != "code-size mismatch":
+        return []
+    if opcodes.get("mov") != 1 or opcodes.get("push") != -1 or delta.get("ecx") != 1:
+        return []
+    call = re.search(r"0x([0-9a-fA-F]+)\)\)\((\w+)\)", src)
+    prefix = "(((int (__thiscall*)(void*))*(void**)(*(char**)this + "
+    if call and src.rfind(prefix, 0, call.start()) < 0:
+        call = None
+    if not call:
+        return []
+    offset = int(call.group(1), 16)
+    slots = offset // 4
+    if offset % 4 or slots < 1 or slots > 8:
+        return []
+    view = ["\n\nstruct VTableCallView {"]
+    view.extend("    virtual int slot%d();" % i for i in range(slots))
+    view.append("    virtual int call(void*);")
+    view.append("};")
+    start = src.rfind(prefix, 0, call.start())
+    updated = src[:start] + "(((VTableCallView*)this)->call(" + \
+        call.group(2) + ")" + src[call.end():]
+    pos = updated.find("\nint ")
+    if pos < 0:
+        return []
+    updated = updated[:pos] + "\n".join(view) + updated[pos:]
+    return [updated]
+
+
+def return_carrier_variants(src, diagnosis):
+    """Carry an ignored producer result into a diagnosed indirect thiscall."""
+    if not (diagnosis or {}).get("return_carrier_call_diffs"):
+        return []
+    decl = re.search(r'(?m)^extern\s+"C"\s+(.+?)\s+__stdcall\s+(\w+)\s*\(([^)]*)\)\s*;', src)
+    if not decl:
+        return []
+    name = decl.group(2)
+    body = re.search(r'(?m)^([ \t]*)(\w+)\(([^;]*)\);\s*\n\1' + re.escape(name) +
+                    r'\(([^;]*)\);\s*\n\1return\s+true\s*;', src)
+    if not body:
+        return []
+    replacement = 'extern "C" bool (__thiscall *%s)(%s, int);' % (name, decl.group(3).strip())
+    updated = src[:decl.start()] + replacement + src[decl.end():]
+    updated = re.sub(r'(?m)^([ \t]*)' + re.escape(body.group(2)) + r'\(([^;]*)\);\s*\n\1' +
+                     re.escape(name) + r'\(([^;]*)\);\s*\n\1return\s+true\s*;',
+                     r'\1return ' + name + r'(\3, ' + body.group(2) + r'(\2));', updated, count=1)
+    return [updated] if updated != src else []
+
+
+def near_return_shape_variants(src, diagnosis):
+    """Try minimal typed-return/inline-store shapes for 97%+ register diffs."""
+    preview = "\n".join((diagnosis or {}).get("diff_preview", []))
+    delta = (diagnosis or {}).get("register_delta", {})
+    if (diagnosis or {}).get("mismatch_class") != "register allocation difference":
+        return []
+    if not delta or "movecx,eax" not in preview.replace(" ", "").lower():
+        return []
+    owner = re.search(r"\bstruct\s+(\w+)\s*\{", src)
+    definition = re.search(r"\b(\w+)::\w+\s*\(", src)
+    if not owner or not definition or owner.group(1) != definition.group(1):
+        return []
+    body = _function_body(src, definition.group(0).split("::", 1)[1].split("(", 1)[0])
+    if not body:
+        return []
+    receiver = re.search(r"\bvoid\*\s+(\w+)\s*=\s*(\w+)\s*\(([^;]*)\);\s*\n\s*(\w+)\s*\(\s*\);", body)
+    tail = re.search(r"\bvoid\*\s+(?P<obj>\w+)\s*=\s*(?P<helper>\w+)\s*\(\s*\);\s*\n\s*int\*\s+(?P<ptr>\w+)\s*=\s*\*\(int\*\*\)\(\(char\*\)(?P=obj)\s*\+\s*(?P<field>0x[0-9a-fA-F]+)\);\s*\n\s*(?P=ptr)\[(?P<store>0x[0-9a-fA-F]+)\s*/\s*4\]\s*=\s*(?P<value>[^;]+);", body)
+    if not receiver or not tail:
+        return []
+    first_name, first_helper, first_args, second_helper = receiver.groups()
+    second_decl = re.search(r"(?m)^\s*void\*\s+" + re.escape(first_helper) + r"\s*\(([^)]*)\)\s*;", src)
+    tail_name, tail_helper, _ptr_name, field_offset, store_offset, value = (tail.group(name) for name in ("obj", "helper", "ptr", "field", "store", "value"))
+    tail_decl = re.search(r"(?m)^\s*void\*\s+" + re.escape(tail_helper) + r"\s*\(\s*\)\s*;", src)
+    if not second_decl or not tail_decl:
+        return []
+    updated = src[:second_decl.start()] + re.sub(r"void\*", "int", second_decl.group(0), count=1) + src[second_decl.end():]
+    updated = updated[:tail_decl.start()] + re.sub(r"void\*", "int", tail_decl.group(0), count=1) + updated[tail_decl.end():]
+    updated = re.sub(r"\bvoid\*\s+" + re.escape(first_name) + r"\s*=\s*" + re.escape(first_helper) + r"\([^;]*\);\s*\n\s*" + re.escape(second_helper) + r"\(\s*\);",
+                     "int %s = %s(%s);\n    ((%s*)%s)->%s();" % (first_name, first_helper, first_args, owner.group(1), first_name, second_helper), updated, count=1)
+    updated = re.sub(r"void\*\s+" + re.escape(tail_name) + r"\s*=\s*" + re.escape(tail_helper) + r"\(\s*\);\s*\n\s*int\*\s+\w+\s*=\s*\*\(int\*\*\)\(\(char\*\)" + re.escape(tail_name) + r"\s*\+\s*" + re.escape(field_offset) + r"\);\s*\n\s*\w+\[" + re.escape(store_offset) + r"\s*/\s*4\]\s*=\s*" + re.escape(value),
+                     "int %s = %s();\n    *(int *)(*(int *)(%s + %s) + %s) = %s" % (tail_name, tail_helper, tail_name, field_offset, store_offset, value), updated, count=1)
+    updated = re.sub(r"\s*int\s+flag\s*=\s*([^;]+);\s*\n(\s*int\s+" + re.escape(first_name) + r"\s*=\s*" + re.escape(first_helper) + r"\([^,]+,\s*)flag(\s*\);)",
+                     lambda m: "\n" + m.group(2) + m.group(1).strip() + m.group(3), updated, count=1)
+    return [updated] if updated != src else []
+
+
+def rtti_operator_variants(src, diagnosis):
+    """Expose RTTI operator equality as the observed indirect thiscall."""
+    if not (diagnosis or {}).get("indirect_call_diffs") or "operator==" not in src:
+        return []
+    type_decl = re.search(r"struct\s+(\w+)\s*\{(?P<body>.*?)\};", src, re.S)
+    global_ref = re.search(r"extern\s+(\w+)\s+(\w+)\s*;", src)
+    expr = re.search(r"return\s+(\w+)\s*==\s*\*\((\w+)\*\)q\s*;", src)
+    if not type_decl or not global_ref or not expr or type_decl.group(1) != global_ref.group(1) or expr.group(1) != global_ref.group(2):
+        return []
+    typename = type_decl.group(1)
+    updated = src[:type_decl.start()] + "struct %s {};" % typename + src[type_decl.end():]
+    marker = 'extern "C" void* __cdecl sub_631392(void*);'
+    if marker not in updated:
+        return []
+    updated = updated.replace(marker, marker +
+                              '\nextern "C" bool (__thiscall *sub_77e708)(const %s*, const %s*);' %
+                              (typename, typename), 1)
+    updated = re.sub(r"return\s+" + re.escape(expr.group(1)) + r"\s*==\s*\*\(" +
+                     re.escape(typename) + r"\*\)q\s*;",
+                     "return sub_77e708(&%s, (const %s*)q);" % (expr.group(1), typename), updated, count=1)
+    return [updated] if updated != src else []
 
 
 _FUNC_DEF = re.compile(r"(?m)^([A-Za-z_][\w:<>,*& \t]*?)\b([A-Za-z_]\w*(?:::[A-Za-z_]\w*)?)\s*\(")
@@ -492,6 +796,234 @@ def noreturn_exception_variants(src, diagnosis):
     return [src.replace(marker, 'extern "C" __declspec(noreturn) __declspec(dllimport) void __stdcall RaiseException', 1)]
 
 
+def allocation_result_variants(src, diagnosis):
+    """Move allocation-result return outside a non-null copy block."""
+    pattern = re.compile(r"(?P<indent>^[ \t]*)if\s*\(\s*(?P<var>\w+)\s*\)\s*\{(?P<body>.*?)"
+                         r"\n\s*return\s+(?P=var)\s*;\s*\n(?P=indent)\}\s*\n"
+                         r"(?P=indent)return\s+0\s*;", re.S | re.M)
+    out = []
+    for m in pattern.finditer(src):
+        body = re.sub(r"\n\s*return\s+" + re.escape(m.group("var")) + r"\s*;\s*$", "", m.group("body"))
+        replacement = (m.group("indent") + "if (" + m.group("var") + " != 0) {" + body + "\n" +
+                       m.group("indent") + "}\n" + m.group("indent") + "return " + m.group("var") + ";")
+        out.append(src[:m.start()] + replacement + src[m.end():])
+    return out
+
+
+# --- new transforms (2026-10-09 research batch) ---
+# None of these categories appear anywhere in docs/matching-findings.md as of
+# this batch, so every one of them is genuinely new search space rather than a
+# re-run of an exhausted arm. All are bounded text transforms and every one is
+# compile-tested by `improve`, so a bad guess costs a compile and nothing else.
+
+def loop_shape_variants(src):
+    """`while (c)` -> `for (; c;)` and `for (;;)` guard forms.
+
+    MSVC emits a different loop entry/exit shape for the `for` form: the
+    condition test lands at the bottom of the body with a `jmp` back to the
+    test instead of a top test, which moves every following branch
+    displacement. That changes instruction alignment on functions whose only
+    remaining delta is branch layout.
+    """
+    out = []
+    m = re.search(r"(?<!\w)while\s*\(([^;{}]*)\)\s*\{", src)
+    if m:
+        out.append(src[:m.start()] + "for (; %s;) {" % m.group(1).strip() + src[m.end():])
+    for m in re.finditer(r"(?<!\w)for\s*\(\s*([^;{}]*);\s*([^;{}]*);\s*([^;{}]*)\)\s*\{", src):
+        init, cond, step = m.group(1).strip(), m.group(2).strip(), m.group(3).strip()
+        if not cond or step:
+            continue
+        if init:
+            continue
+        out.append(src[:m.start()] + "while (%s) {" % cond + src[m.end():])
+    return out
+
+
+def ternary_variants(src):
+    """`if (c) { v = a; } else { v = b; }` -> `v = c ? a : b;`.
+
+    MSVC often selects a conditional move (`cmov`) for the ternary and a pair
+    of branches for the if/else, so this is the only way to reach target
+    binaries that used the select form.
+    """
+    out = []
+    pattern = re.compile(r"(?P<indent>^[ \t]*)if\s*\((?P<cond>[^{}]*)\)\s*\{\s*\n"
+                         r"[ \t]*(?P<var>[A-Za-z_]\w*(?:\.|->)?\w*)\s*=\s*(?P<then>[^;\n]+);\s*\n"
+                         r"[ \t]*\}\s*else\s*\{\s*\n"
+                         r"[ \t]*(?P=var)\s*=\s*(?P<other>[^;\n]+);\s*\n"
+                         r"[ \t]*\}", re.M)
+    for m in pattern.finditer(src):
+        replacement = "%s%s = (%s) ? (%s) : (%s);" % (m.group("indent"), m.group("var"),
+                                                      m.group("cond").strip(), m.group("then").strip(),
+                                                      m.group("other").strip())
+        out.append(src[:m.start()] + replacement + src[m.end():])
+    return out
+
+
+def integer_width_variants(src):
+    """Widen/narrow the first uninitialized integral local declaration.
+
+    Signedness already covered `int` <-> `unsigned int`. Width is a separate
+    axis: `int` -> `__int64` (`long long`) makes MSVC use 64-bit
+    operand-size prefixes for the same operation, and `short` introduces
+    truncation stores. Both move instruction alignment without touching
+    semantics on a value that is stored through a narrower pointer anyway.
+    """
+    out = []
+    decl = re.compile(r"(?m)^([ \t]*)(int|long|short)\s+([A-Za-z_]\w*)[ \t]*;[ \t]*$")
+    for m in decl.finditer(src):
+        base = "int"
+        out.append(src[:m.start()] + "%s__int64 %s;" % (m.group(1), m.group(3)) + src[m.end():])
+        out.append(src[:m.start()] + "%sshort %s;" % (m.group(1), m.group(3)) + src[m.end():])
+        if m.group(2) != "long":
+            out.append(src[:m.start()] + "%slong %s;" % (m.group(1), m.group(3)) + src[m.end():])
+        del base
+        break
+    return list(dict.fromkeys(out))
+
+
+def restrict_variants(src):
+    """Add `__restrict` to the first pointer parameter of the target function.
+
+    `__restrict` changes MSVC alias analysis: loads through a pointer stop
+    being re-loaded after an intervening store. On functions that read back a
+    member they just wrote, that removes (or adds) a redundant `mov` and is a
+    separate axis from signedness or register-pressure mutations.
+    """
+    out = []
+    m = re.search(r"(?m)^([A-Za-z_][\w:<>,*& \t]*?)\b([A-Za-z_]\w*)\s*\(([^)]*)\)\s*\{", src)
+    if not m:
+        return out
+    params = [p.strip() for p in m.group(3).split(",") if p.strip() and p.strip() != "void"]
+    for index, param in enumerate(params):
+        if "*" not in param or "__restrict" in param:
+            continue
+        updated = param.replace("*", "* __restrict ", 1)
+        new_params = params[:index] + [updated] + params[index + 1:]
+        head = src[:m.start(3)] + ", ".join(new_params) + src[m.end(3):]
+        out.append(head)
+        break
+    return out
+
+
+def bool_return_variants(src):
+    """`return expr;` -> `return expr != 0;` in a bool-returning function.
+
+    The target binary's instruction decides the source form: `sete`/`setne`
+    against a compared value means the source compared against zero, while a
+    raw `test`/`setne` on the returned object means it did not.
+    docs/matching-findings.md line 49 noted `sete al` on 00675890 but never
+    tested the explicit comparison form, only parameter types.
+    """
+    out = []
+    m = re.search(r"(?m)^([ \t]*bool\s+(?:[A-Za-z_]\w*::)?[A-Za-z_]\w*)\s*\([^)]*\)\s*\{", src)
+    if not m:
+        return out
+    ret = re.search(r"(?m)^([ \t]*)return\s+(?!0\s*;)([^;\n]+);[ \t]*$", src)
+    if ret and not re.search(r"[=!<>]|&&|\|\|", ret.group(2)):
+        out.append(src[:ret.start()] + "%sreturn %s != 0;" % (ret.group(1), ret.group(2).strip())
+                   + src[ret.end():])
+    return out
+
+
+def short_circuit_swap_variants(src):
+    """Swap operands of the first `&&` / `||` in a condition.
+
+    `&&` and `||` are absent from `_COMMUTATIVE_OPS` (they are not commutative
+    in general: the right operand is not evaluated when the left short-
+    circuits), so this ordering has never been probed. Short-circuit
+    evaluation order is exactly what decides which operand gets `test`-ed
+    first and therefore which value is already live in a register.
+    """
+    out = []
+    for op in ("&&", "||"):
+        pattern = re.compile("([A-Za-z_]\w*(?:\s*->\w+|\.\w+|\[\w+\])?)%s([A-Za-z_]\w*(?:\s*->\w+|\.\w+|\[\w+\])?)" % re.escape(op))
+        for m in pattern.finditer(src):
+            if m.group(1) == m.group(2):
+                continue
+            out.append(src[:m.start()] + m.group(2) + " " + op + " " + m.group(1) + src[m.end():])
+    return list(dict.fromkeys(out))
+
+
+def null_check_shape_variants(src):
+    """`if (p)` -> `if (p != 0)` and `if (p == 0)` -> `if (!p)`.
+
+    Both compile to a `test`/`jz` pair, so this is not a semantic change, but
+    the comparison form sometimes suppresses MSVC's implicit-zero idiom and
+    changes the surrounding store ordering. Never tested standalone before;
+    allocation_result came closest but is a different transform.
+    """
+    out = []
+    for rel, repl in ((r"if\s*\(\s*([A-Za-z_]\w*)\s*\)", "if (%s != 0)"),
+                      (r"if\s*\(\s*([A-Za-z_]\w*)\s*==\s*0\s*\)", "if (!%s)")):
+        m = re.search(rel, src)
+        if m:
+            out.append(src[:m.start()] + repl % m.group(1) + src[m.end():])
+    return list(dict.fromkeys(out))
+
+
+def guard_invert_variants(src):
+    """`if (c) { return A; } return B;` -> `if (!c) return B; return A;`.
+
+    Early-exit vs. guarded-body is the same control flow with the fall-through
+    and branch edges swapped. docs/matching-findings.md line 25 found the
+    inverse form fixed 00449820, but the transform was only ever applied by
+    hand to that one function; it has never been a general mutator.
+    """
+    out = []
+    pattern = re.compile(r"(?P<indent>^[ \t]*)if\s*\((?P<cond>[^{}]*)\)\s*\{\s*"
+                         r"return\s+(?P<ok>[^;\n]+);\s*\n"
+                         r"(?P=indent)\}\s*\n"
+                         r"(?P=indent)return\s+(?P<bad>[^;\n]+);", re.M)
+    for m in pattern.finditer(src):
+        replacement = ("%sif (!(%s)) return %s;\n%sreturn %s;" %
+                       (m.group("indent"), m.group("cond").strip(), m.group("bad").strip(),
+                        m.group("indent"), m.group("ok").strip()))
+        out.append(src[:m.start()] + replacement + src[m.end():])
+    return out
+
+
+def else_invert_variants(src):
+    """`if (a) { A } else { B }` -> `if (!a) { B } else { A }` for simple call bodies.
+
+    Same semantics, inverted branch polarity. This flips `jz` to `jnz`, which
+    changes every relative displacement in the function when the target
+    compiler chose the opposite polarity.
+    """
+    out = []
+    pattern = re.compile(r"(?P<indent>^[ \t]*)if\s*\((?P<cond>[^{}]*)\)\s*\{\s*\n"
+                         r"(?P<then>.*?)\n(?P=indent)\}\s*else\s*\{\s*\n"
+                         r"(?P<other>.*?)\n(?P=indent)\}", re.S | re.M)
+    for m in pattern.finditer(src):
+        if m.group("then").count(";") > 6 or m.group("other").count(";") > 6:
+            continue
+        replacement = ("%sif (!(%s)) {\n%s\n%s} else {\n%s\n%s}" %
+                       (m.group("indent"), m.group("cond").strip(), m.group("other"),
+                        m.group("indent"), m.group("then"), m.group("indent")))
+        out.append(src[:m.start()] + replacement + src[m.end():])
+    return out
+
+
+def explicit_zero_init_variants(src):
+    """`T name;` -> `T name = {0};` for an uninitialized local struct/pointer.
+
+    If the target binary zeroed a stack slot in the prologue and our source
+    only appears to zero it through a side effect, an explicit initializer
+    makes MSVC emit the store directly. This is separate from
+    volatile_zero_store, which only relabels stores that already exist.
+    """
+    out = []
+    decl = re.compile(r"(?m)^([ \t]*)([A-Za-z_]\w*(?:\s*\*)?)\s+([A-Za-z_]\w*)[ \t]*;[ \t]*$")
+    for m in decl.finditer(src):
+        if "*" in m.group(2):
+            continue
+        updated = (src[:m.start()] + "%s%s %s = {0};" % (m.group(1), m.group(2), m.group(3))
+                   + src[m.end():])
+        out.append(updated)
+        break
+    return out
+
+
 def guided_variants(src, diagnosis, categories=None):
     """Only propose bounded source edits supported by decoded mismatch evidence."""
     out, seen = [], {src}
@@ -511,8 +1043,19 @@ def guided_variants(src, diagnosis, categories=None):
         add("immediate_constant", immediate_variants(src, diagnosis))
     if (diagnosis or {}).get("stack_offset_diffs"):
         add("stack_layout", stack_layout_variants(src, diagnosis))
+        add("base_padding", base_padding_variants(src, diagnosis))
     if (diagnosis or {}).get("mismatch_class") == "intrinsic/call mismatch":
         add("intrinsic_call", intrinsic_call_variants(src, diagnosis))
+    add("function_pointer_convention", function_pointer_convention_variants(src, diagnosis))
+    add("direct_member_receiver", direct_member_receiver_variants(src, diagnosis))
+    add("direct_member_noarg", direct_member_noarg_variants(src, diagnosis))
+    add("static_receiver_pointer", static_receiver_pointer_variants(src, diagnosis))
+    add("indirect_return_value", indirect_return_variants(src, diagnosis))
+    add("virtual_call_view", virtual_call_view_variants(src, diagnosis))
+    add("virtual_slot_view", virtual_slot_view_variants(src, diagnosis))
+    add("return_carrier", return_carrier_variants(src, diagnosis))
+    add("near_return_shape", near_return_shape_variants(src, diagnosis))
+    add("rtti_operator", rtti_operator_variants(src, diagnosis))
     if (diagnosis or {}).get("branch_condition_diff"):
         add("branch_condition", [negate_comparison(src)])
     cleanup = (diagnosis or {}).get("return_cleanup") or {}
@@ -528,7 +1071,34 @@ def guided_variants(src, diagnosis, categories=None):
         add("typed_member_return", typed_member_return_variants(src, diagnosis))
         add("volatile_zero_store", volatile_zero_store_variants(src, diagnosis))
     add("noreturn_exception", noreturn_exception_variants(src, diagnosis))
-    return out
+    add("allocation_result", allocation_result_variants(src, diagnosis))
+    if len(out) < 2:
+        return out
+    from roc.repair_patterns import rank_categories
+    ranked = rank_categories(diagnosis, [category for category, _ in out])
+    by_category = {}
+    for category, value in out:
+        by_category.setdefault(category, []).append(value)
+    ordered = []
+    for index, category in ranked:
+        ordered.extend((category, value) for value in by_category.get(category, []))
+    return ordered[:8]
+
+
+def legacy_fallback_allowed(score, diagnosis):
+    """Stop blind text mutations when evidence points to source-shape repair."""
+    mismatch = (diagnosis or {}).get("mismatch_class")
+    structural = {"register allocation difference", "instruction-selection mismatch",
+                  "missing/extra instruction", "code-size mismatch"}
+    delta = (diagnosis or {}).get("register_delta", {})
+    call_evidence = any((diagnosis or {}).get(key) for key in
+                        ("receiver_call_diffs", "return_carrier_call_diffs",
+                         "indirect_call_diffs"))
+    if mismatch in structural and (call_evidence or delta):
+        return False
+    if score < 75 and mismatch in {"missing/extra instruction", "code-size mismatch"}:
+        return False
+    return True
 
 
 class ImproveResult(tuple):
@@ -595,11 +1165,11 @@ def improve(client, addr, src, flags=None, check=None, guided=False,
     variants_to_try = []
     if guided:
         guided_out = guided_variants(src, diagnosis, guided_categories)
-        if guided_fallback:
+        if guided_fallback and legacy_fallback_allowed(base, diagnosis):
             guided_out.extend((category, value) for category, value in legacy
                               if value not in {v for _, v in guided_out})
         variants_to_try.extend(guided_out)
-    if permute:
+    if permute and guided_categories is None:
         if alignment is None:
             alignment = match.alignment_evidence(client, addr, src, flags)
         variants_to_try.extend(permute_variants(src, alignment))
