@@ -55,17 +55,26 @@ vm.runInContext(source.slice(source.indexOf("function renderWorkerChat("),source
 for(const loops of [3,4,100]) {
   feedContext.jobs=[{id:"run",kind:"worker",status:"running",config:{client:"C"},slots:Object.fromEntries(Array.from({length:loops},(_,i)=>[i,{}]))}];
   feedContext.logs=[{job:"run",seq:1,time:1,event:"log",message:"compile chatter"},
+    {job:"run",seq:4,time:1,event:"log",startup:true,message:"Worker started"},
+    {job:"run",seq:5,time:1,event:"log",startup:true,message:"Privacy: bounded prompts"},
     {job:"run",seq:2,time:2,event:"job_finished",slot:0,client:"C",addr:"00401000",unit:"LongUnit",previous:50,score:60,seconds:3},
     {job:"run",seq:3,time:3,event:"benchmark",workers:loops,completed:1,per_minute:2,matched:0,improved:1,errors:0}];
   feedContext.chatSignature="";feedContext.renderWorkerChat();
-  assert.equal(feedContext.items.length,loops>3 ? 2 : 3);
+  assert.equal(feedContext.items.length,loops>3 ? 4 : 5);
+  assert.ok(feedContext.items.some(([,html])=>html.includes("Worker started")));
+  assert.ok(feedContext.items.some(([,html])=>html.includes("Privacy: bounded prompts")));
+  assert.match(feedNodes["#worker-tabs"].innerHTML,/dot running/);
+  assert.doesNotMatch(feedNodes["#worker-tabs"].innerHTML,/data-remove-run/);
   const result=feedContext.items.find(([key])=>key.startsWith("run:2"))[1];
   assert.match(result,/C 00401000/);assert.match(result,/50% → 60%/);
   assert.equal(result.includes("LongUnit"),loops===3);
   assert.match(feedContext.items.at(-1)[1],/2 fn\/min/);
 }
 feedContext.jobs[0].slots={0:{}};feedContext.chatCompact=true;feedContext.chatSignature="";
-feedContext.renderWorkerChat();assert.equal(feedContext.items.length,2);
+feedContext.renderWorkerChat();assert.equal(feedContext.items.length,4);
+feedContext.jobs[0].status="completed";feedContext.renderWorkerChat();
+assert.match(feedNodes["#worker-tabs"].innerHTML,/dot completed/);
+assert.match(feedNodes["#worker-tabs"].innerHTML,/data-remove-run="run"/);
 console.log("Compact: one result per function, benchmarks, 3/4/100-loop boundary passed");
 (async()=>{
   context.fetch=async()=>{throw new TypeError("Failed to fetch");};

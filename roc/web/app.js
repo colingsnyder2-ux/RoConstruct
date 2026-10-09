@@ -138,7 +138,7 @@ function renderWorkerChat() {
   const node=$("#worker-chat");if(!node)return;
   const workerJobs=jobs.filter(j=>j.kind==="worker");
   const tabs=$("#worker-tabs"),tabSignature=workerJobs.map(j=>j.id+j.status).join()+workerRun;
-  if(tabs.dataset.signature!==tabSignature) {tabs.innerHTML=`<button role="tab" aria-selected="${!workerRun}" class="worker-tab ${!workerRun ? "selected" : ""}" data-worker-tab="all">All workers</button>`+workerJobs.slice(-12).map(j=>`<button role="tab" aria-selected="${workerRun===j.id}" class="worker-tab ${workerRun===j.id ? "selected" : ""}" data-worker-tab="${j.id}"><span class="dot"></span>${esc(j.config.client)} <span>${j.id.slice(0,5)}</span><small>${esc(j.status)}</small></button>`).join("");tabs.dataset.signature=tabSignature;}
+  if(tabs.dataset.signature!==tabSignature) {tabs.innerHTML=`<button role="tab" aria-selected="${!workerRun}" class="worker-tab ${!workerRun ? "selected" : ""}" data-worker-tab="all">All workers</button>`+workerJobs.slice(-12).map(j=>`<div class="worker-tab-group"><button role="tab" aria-selected="${workerRun===j.id}" class="worker-tab ${workerRun===j.id ? "selected" : ""}" data-worker-tab="${j.id}"><span class="dot ${esc(j.status)}"></span>${esc(j.config.client)} <span>${j.id.slice(0,5)}</span><small>${esc(j.status)}</small></button>${!active(j)&&j.status!=="queued" ? `<button class="worker-tab-close" data-remove-run="${j.id}" aria-label="Remove finished run ${j.id}" title="Remove from run history">×</button>` : ""}</div>`).join("");tabs.dataset.signature=tabSignature;}
   const status=$("#worker-status"),statusHTML=workerCards();if(status.innerHTML!==statusHTML)status.innerHTML=statusHTML;
   const loopCount=workerJobs.filter(j=>active(j)&&(!workerRun||j.id===workerRun)).reduce((sum,j)=>sum+Object.keys(j.slots).length,0);
   const supercompact=loopCount>3, compact=chatCompact || supercompact;
@@ -146,7 +146,7 @@ function renderWorkerChat() {
   $("#chat-compact").textContent=supercompact ? "Supercompact · auto" : chatCompact ? "Regular" : "Compact";
   const foldSource=compact;
   const ids=new Set(workerJobs.map(job=>job.id));
-  const rows=logs.filter(r=>ids.has(r.job)&&(!workerRun||r.job===workerRun)&&(workerLoop===""||String(r.slot)===workerLoop||r.event==="benchmark")&&(compact ? ["job_finished","benchmark","error","rejected"].includes(r.event) : !["control","applied","usage"].includes(r.event))).slice(-180);
+  const rows=logs.filter(r=>ids.has(r.job)&&(!workerRun||r.job===workerRun)&&(workerLoop===""||String(r.slot)===workerLoop||r.event==="benchmark")&&(compact ? r.startup || ["job_finished","benchmark","error","rejected"].includes(r.event) : !["control","applied","usage"].includes(r.event))).slice(-180);
   const signature=compact+":"+supercompact+":"+rows.map(r=>r.job+":"+r.seq).join();
   setChatFollow(chatFollow);
   const viewFilter=workerRun+":"+workerLoop+":"+compact+":"+supercompact;
@@ -161,7 +161,7 @@ function renderWorkerChat() {
   }
   for(const row of grouped) {
     if(row.event==="job_started")functions.set(row.job+":"+row.slot,row);
-    if(row.event==="log" && /auto-think:|^\[.*best so far|Privacy:|Cloud model:|^thinking disabled for remaining rounds|^no improvement/.test(row.message.trim()))continue;
+    if(row.event==="log" && !row.startup && /auto-think:|^\[.*best so far|Privacy:|Cloud model:|^thinking disabled for remaining rounds|^no improvement/.test(row.message.trim()))continue;
     items.push([row.job+":"+row.seq+":"+foldSource,terminalMessage(supercompact ? {...row,supercompact:true} : row,functions,foldSource)]);
   }
   if(!items.length)items.push(["empty",empty(loopCount ? "Working…" : "Ready for work", compact ? "One line per completed function. Benchmarks every 30 seconds while functions finish." : "Configure a session. Function activity and verified source appear here.")]);
@@ -236,7 +236,7 @@ function renderLogs() {
 async function poll() {
   let more=false;
   try {
-    const state=await api("state?after="+cursor);
+    const state=await api("state?after="+cursor+"&wait=1");
     if(!online) { online=true; $("#connection").classList.remove("offline"); $("#connection").innerHTML='<span class="dot"></span>Local · connected'; }
     const previous = new Map(jobs.map(job=>[job.id,job.status]));
     jobs=state.jobs;
@@ -254,11 +254,20 @@ async function poll() {
     renderWorkerChat();
     renderLogs();
   } catch(error) { online=false;$("#connection").classList.add("offline");$("#connection").innerHTML='<span class="dot"></span>Disconnected';$("#console-hint").textContent=error.message+". Reconnecting…"; }
-  setTimeout(poll,online ? (more ? 50 : 700) : 2000);
+  setTimeout(poll,online ? 0 : 2000);
 }
 document.addEventListener("click", event=>act(async()=>{
   if(event.target.closest(".brand")) { event.preventDefault();navigate("overview");return; }
   const target=event.target.closest("button,[data-log]");if(!target)return;
+  if(target.dataset.removeRun) {
+    const id=target.dataset.removeRun;
+    await api("control",{id,action:"remove"});
+    jobs=jobs.filter(job=>job.id!==id);logs=logs.filter(row=>row.job!==id);
+    if(workerRun===id)workerRun="";
+    $("#worker-run").querySelector(`option[value="${id}"]`)?.remove();
+    $("#worker-run").value=workerRun;
+    chatSignature="";renderWorkerChat();renderLogs();return;
+  }
   if(target.dataset.workerTab) {await selectWorker(target.dataset.workerTab==="all" ? "" : target.dataset.workerTab);return;}
   if(target.id==="chat-compact") {chatCompact=!chatCompact;target.textContent=chatCompact ? "Regular" : "Compact";renderWorkerChat();}
   if(target.dataset.page) navigate(target.dataset.page);

@@ -1,5 +1,6 @@
 """Dashboard/control regression tests. No provider calls, binaries or compilers."""
 import json
+import io
 import queue
 import sys
 import tempfile
@@ -9,7 +10,7 @@ import unittest
 import urllib.error
 import urllib.request
 from pathlib import Path
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from roc import gui, gui_worker, link, worker
@@ -247,6 +248,39 @@ class DashboardTests(unittest.TestCase):
             state=self.app.snapshot(cursor);seen.extend(r["seq"] for r in state["events"]);cursor=state["sequence"]
             if not state["more"]:break
         self.assertEqual(seen,list(range(1,2001)))
+
+    def test_live_snapshot_wakes_on_new_event(self):
+        result = []
+        thread = threading.Thread(target=lambda: result.append(self.app.snapshot(0, wait=1)))
+        thread.start()
+        self.app.event(None, message="Live output")
+        thread.join(0.5)
+        self.assertFalse(thread.is_alive())
+        self.assertEqual(result[0]["events"][0]["message"], "Live output")
+
+    def test_startup_logs_end_when_each_slot_leases_first_function(self):
+        with patch.object(self.app, "schedule"):
+            job_id = self.app.start({"kind": "worker", "config": config()})
+            rows = [dict(event="log", slot=0, message="Worker ready"),
+                    dict(event="job_started", slot=0, client="C", addr="00401000"),
+                    dict(event="log", slot=0, message="compile chatter"),
+                    dict(event="log", slot=1, message="Worker ready")]
+            process = Mock(stdout=io.StringIO("".join("ROC_EVENT " + json.dumps(row) + "\n" for row in rows)), stdin=None)
+            process.wait.return_value = 0
+            self.app.consume(job_id, process)
+        logs = [row for row in self.app.events if row["event"] == "log"]
+        self.assertEqual([row["startup"] for row in logs], [True, False, True])
+
+    def test_remove_finished_run_persists_and_rejects_active(self):
+        with patch.object(self.app, "schedule"):
+            job_id = self.app.start({"command": "doctor"})
+        with self.assertRaises(ValueError):
+            self.app.control({"id": job_id, "action": "remove"})
+        self.app.jobs[job_id]["status"] = "completed"
+        self.app.control({"id": job_id, "action": "remove"})
+        self.assertNotIn(job_id, self.app.jobs)
+        other = gui.Dashboard(directory=self.app.directory)
+        self.assertNotIn(job_id, other.jobs)
 
     def test_restart_marks_active_interrupted(self):
         with patch.object(self.app, "schedule"):

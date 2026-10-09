@@ -86,6 +86,7 @@ class Dashboard:
         self.directory = directory or ROOT / "work" / "gui"
         self.directory.mkdir(parents=True, exist_ok=True)
         self.lock = threading.RLock()
+        self.changed = threading.Condition(self.lock)
         self.jobs = {}
         self.processes = {}
         self.events = collections.deque(maxlen=3000)
@@ -147,6 +148,7 @@ class Dashboard:
                 fields["message"] = self.redact(fields["message"])
             row = dict(seq=self.sequence, time=time.time(), job=job_id, event=kind, **fields)
             self.events.append(row)
+            self.changed.notify_all()
             if job_id:
                 path = self.directory / (job_id + ".jsonl")
                 if path.exists() and path.stat().st_size > 4 * 1024 * 1024:
@@ -168,8 +170,10 @@ class Dashboard:
                 "commands": [{"name": name, "title": row[0], "description": row[1], "target": row[2]}
                              for name, row in COMMANDS.items()]}
 
-    def snapshot(self, after=0):
-        with self.lock:
+    def snapshot(self, after=0, wait=0):
+        with self.changed:
+            if wait:
+                self.changed.wait_for(lambda: self.sequence > after or self.closed, timeout=wait)
             pending = [row for row in self.events if row["seq"] > after]
             rows = pending[:500]
             return {"jobs": list(self.jobs.values()), "events": rows,
@@ -234,6 +238,7 @@ class Dashboard:
         threading.Thread(target=self.consume, args=(job_id, process), daemon=True).start()
 
     def consume(self, job_id, process):
+        started_slots = set()
         for line in process.stdout:
             text = line.rstrip()
             if text.startswith("ROC_EVENT "):
@@ -246,6 +251,10 @@ class Dashboard:
                 kind, fields = "log", {"message": text}
             with self.lock:
                 job = self.jobs[job_id]
+                if kind == "job_started":
+                    started_slots.add(fields.get("slot"))
+                elif kind == "log" and job["kind"] == "worker":
+                    fields["startup"] = fields.get("slot") not in started_slots
                 if kind == "control":
                     job.update(config=fields["config"], revision=fields["revision"],
                                status="stopping" if fields["stopping"] else "paused" if fields["paused"] else "running")
@@ -290,6 +299,13 @@ class Dashboard:
             if not job:
                 raise ValueError("Unknown job")
             action = data.get("action")
+            if action == "remove":
+                if job["status"] in ("queued", "running", "paused", "stopping") or job["id"] in self.processes:
+                    raise ValueError("Only finished runs can be removed")
+                del self.jobs[job["id"]]
+                self.save()
+                self.event(None, "state", message="Run removed from history")
+                return
             if action == "cancel" and job["status"] == "queued":
                 job.update(status="cancelled", ended=time.time())
                 self.save()
@@ -339,6 +355,7 @@ class Dashboard:
     def shutdown(self):
         with self.lock:
             self.closed = True
+            self.changed.notify_all()
             for job in self.jobs.values():
                 if job["status"] == "queued":
                     job.update(status="cancelled", ended=time.time())
@@ -383,7 +400,8 @@ class Handler(BaseHTTPRequestHandler):
                     return self.send(200, app.metadata())
                 if parsed.path == "/api/state":
                     after = int(parse_qs(parsed.query).get("after", [0])[0])
-                    return self.send(200, app.snapshot(after))
+                    wait = min(1, max(0, float(parse_qs(parsed.query).get("wait", [0])[0])))
+                    return self.send(200, app.snapshot(after, wait))
                 if parsed.path == "/api/functions":
                     from roc import activity
                     identifier = parse_qs(parsed.query).get("id", [None])[0]

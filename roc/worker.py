@@ -109,10 +109,10 @@ def pretty_log(message):
     text = str(message)
     def emit(value):
         try:
-            print(value)
+            print(value, flush=True)
         except UnicodeEncodeError:
             encoding = getattr(sys.stdout, "encoding", None) or "utf-8"
-            print(value.encode(encoding, "replace").decode(encoding, "replace"))
+            print(value.encode(encoding, "replace").decode(encoding, "replace"), flush=True)
     if not sys.stdout.isatty() or os.environ.get("NO_COLOR"):
         emit(text)
         return
@@ -161,12 +161,11 @@ class CompactLog:
                 score = re.search(r"(\d+)%", text)
                 self._finish(int(score.group(1)) if score else 0)
                 return
-            if (text.startswith("Worker ") or text.startswith("  auto-think:") or
+            if (text.startswith("  auto-think:") or
                     text.startswith("  round ") or text.startswith("  generated source") or
                     text.startswith("  no improvement") or text.startswith("  retained") or
                     text.startswith("  preparing 2016 source") or text.startswith("  2016 source") or text.startswith("Session:") or
                     text.startswith("== ") or text.startswith("Worker finished") or
-                    text.startswith("Cloud model:") or text.startswith("Privacy:") or
                     text.startswith("  tokens used:") or
                     text.startswith("  thinking disabled")):
                 if text.startswith("  no improvement") or text.startswith("  retained"):
