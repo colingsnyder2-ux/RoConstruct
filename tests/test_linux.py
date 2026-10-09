@@ -161,6 +161,15 @@ def test_copy_from_iso_unix_extracts_one_file(tmp_path):
     assert dest.read_bytes() == b"MZ"
 
 
+def test_wine_exe_honors_roc_wine_override():
+    from roc import setup
+    with patch.dict("os.environ", {"ROC_WINE": "/opt/box86-wine"}):
+        assert setup.wine_exe() == "/opt/box86-wine"
+    with patch.dict("os.environ", {"ROC_WINE": ""}), \
+         patch("roc.setup.shutil.which", return_value="/usr/bin/wine"):
+        assert setup.wine_exe() == "/usr/bin/wine"
+
+
 def test_msi_string_pool_decodes_ids():
     from roc import setup
     # entry 0 is the codepage; later entries are (length, refcount) pairs, with an

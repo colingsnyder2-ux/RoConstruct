@@ -68,7 +68,14 @@ _ORIGINAL_PATH = os.environ.get("PATH", "")
 # ---------- Wine (Linux) ----------
 
 def wine_exe():
-    """The Wine loader, or None. `wine` first: the old cl.exe is 32-bit."""
+    """The Wine loader, or None. `wine` first: the old cl.exe is 32-bit.
+
+    ROC_WINE overrides it, which is how ARM boards run the x86 cl.exe: point it
+    at a wrapper that starts Box86/FEX with Wine (or at an x86 Wine binary).
+    """
+    override = os.environ.get("ROC_WINE")
+    if override:
+        return shutil.which(override) or override
     for name in ("wine", "wine64"):
         found = shutil.which(name)
         if found:
