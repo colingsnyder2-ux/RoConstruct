@@ -394,8 +394,9 @@ function parseFilter(text, units) {
   return f => tests.every(t => t(f));
 }
 
-function color(score, source) {
-  if (source) return "#58a6ff";
+function color(score, original, harness) {
+  if (score === 100 && !original && !harness) return "#3a3d45";
+  if (original) return "#58a6ff";
   if (!score) return "#3a3d45";
   if (score === 100) return "#3fb950";
   const t = score / 100;  // partial: grey -> green
@@ -445,7 +446,7 @@ async function client(name) {
     </div>
     <div class="map"><canvas id="cv"></canvas><div class="tip" id="tip"></div></div>
     <div class="legend"><span><i style="background:#58a6ff"></i>original source</span><span><i style="background:#3fb950"></i>mined match</span>
-      <span><i style="background:rgb(49,100,64)"></i>partial</span><span><i style="background:#3a3d45"></i>not matched</span></div>
+      <span><i style="background:rgb(49,100,64)"></i>partial</span><span><i style="background:#3a3d45"></i>source pending</span></div>
     <div class="detail" id="detail">Click a tile to see its function address, match score, and recovered source.</div>
     ${leaderboard(latest.leaderboard)}
     <div class="head"><h2><small>Pick one</small>Easiest remaining</h2></div>
@@ -479,7 +480,7 @@ async function client(name) {
     g.fillStyle = "#1d1f24"; g.fillRect(0, 0, cv.width, cv.height);
     for (const b of boxes) {
       g.globalAlpha = keep(b.f) ? 1 : 0.2;
-      g.fillStyle = color(b.f[2], b.f[5]);
+      g.fillStyle = color(b.f[2], b.f[5], b.f[4]);
       g.fillRect(b.x, b.y, b.w, b.h);
       if (b.w > 4 && b.h > 4) { g.strokeStyle = "#2a2c33"; g.lineWidth = 0.5; g.strokeRect(b.x, b.y, b.w, b.h); }
     }
