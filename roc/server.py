@@ -301,15 +301,23 @@ class Store:
             out.setdefault(c, {})[a] = json.loads(d)
         return out
 
+    def families(self):
+        with self.lock:
+            rows = self.db.execute("SELECT client, addr, family FROM funcs WHERE family IS NOT NULL AND family != ''").fetchall()
+        out = {}
+        for c, a, f in rows:
+            out.setdefault(c, {})[a] = f
+        return out
+
     def status(self):
         now = time.time()
         with self.lock:
             per = self.db.execute("SELECT client, COUNT(*), SUM(score = 100), SUM(score > 0 AND score < 100) "
                                   "FROM funcs GROUP BY client").fetchall()
-            leases = self.db.execute("SELECT client, addr, user, expires FROM leases WHERE expires >= ?", (now,)).fetchall()
+            leases = self.db.execute("SELECT l.client, l.addr, l.user, l.expires, f.family FROM leases l LEFT JOIN funcs f ON f.client = l.client AND f.addr = l.addr WHERE l.expires >= ?", (now,)).fetchall()
             workers = self.db.execute("SELECT user, mode, last_seen FROM workers WHERE last_seen > ?", (now - 900,)).fetchall()
         return {"clients": [{"client": c, "functions": n, "matched": m or 0, "partial": p or 0} for c, n, m, p in per],
-                "leases": [{"client": c, "addr": a, "user": u, "expires_in": int(e - now)} for c, a, u, e in leases],
+                "leases": [{"client": c, "addr": a, "user": u, "expires_in": int(e - now), "family": f} for c, a, u, e, f in leases],
                 "workers": [{"user": u, "mode": m, "seen_ago": int(now - t)} for u, m, t in workers]}
 
     def best(self, client, addr):
@@ -320,8 +328,8 @@ class Store:
 
     def function_info(self, client, addr):
         with self.lock:
-            row = self.db.execute("SELECT size, unit FROM funcs WHERE client = ? AND addr = ?", (client, addr)).fetchone()
-        return {"client": client, "addr": addr, "size": row[0], "unit": row[1]} if row else None
+            row = self.db.execute("SELECT size, unit, family FROM funcs WHERE client = ? AND addr = ?", (client, addr)).fetchone()
+        return {"client": client, "addr": addr, "size": row[0], "unit": row[1], "family": row[2]} if row else None
 
     def register_family(self, client, addr, family):
         with self.lock:
@@ -372,7 +380,7 @@ class Store:
 def export(store):
     """Everything the website needs from the database."""
     scores = store.scores()
-    return {"scores": scores, "data": store.data(), "leaderboard": store.leaderboard(),
+    return {"scores": scores, "data": store.data(), "families": store.families(), "leaderboard": store.leaderboard(),
             "leaderboards": {c: store.leaderboard(c)[:20] for c in scores}}
 
 

@@ -501,7 +501,7 @@ async function client(name) {
   cv.onmousemove = e => {
     const {x, y, b} = hit(e);
     if (!b) { tip.style.display = "none"; return; }
-    tip.textContent = `${units[b.f[3]]} • ${hex(b.f[0])} • ${fmt(b.f[1])} B • ${b.f[2]}%`;
+    tip.textContent = `${units[b.f[3]]} • ${hex(b.f[0])} • ${fmt(b.f[1])} B • ${b.f[2]}%` + (b.f[6] ? ` • family ${b.f[6]}` : "");
     tip.style.display = "block";
     tip.style.left = Math.max(0, Math.min(x + 12, cv.clientWidth - tip.offsetWidth)) + "px";
     tip.style.top = (y + 16) + "px";
@@ -513,7 +513,8 @@ async function client(name) {
     const f = b.f;
     const source = sourceLinks(name, f);
     document.getElementById("detail").innerHTML =
-      `<strong>${esc(units[f[3]])}</strong><br>${hex(f[0])} • ${fmt(f[1])} bytes • ${f[2]}% matched<br>` +
+      `<strong>${esc(units[f[3]])}</strong><br>${hex(f[0])} • ${fmt(f[1])} bytes • ${f[2]}% matched` +
+      (f[6] ? `<br>Family: <code>${esc(f[6])}</code>` : "") + `<br>` +
       `${source}<br>Work on it: <code>roc claim ${esc(name)} ${hex(f[0])}</code>`;
   };
   unitSel.onchange = layout;

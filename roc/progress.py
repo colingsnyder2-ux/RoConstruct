@@ -113,6 +113,7 @@ def build(server=None, token=None, public_server=None, remote=None):
             meta = json.loads(meta_file.read_text()) if meta_file.exists() else {}
             units, unit_ids, funcs, generated = [], {}, [], 0
             sources = {p.stem: p for p in (ROOT / "src" / name).glob("*.cpp")}
+            families = remote.get("families", {}).get(name, {})
             for line in (work / "functions.jsonl").open():
                 f = json.loads(line)
                 if f.get("kind", "code") != "code":  # compiler/linker stubs don't count
@@ -125,7 +126,7 @@ def build(server=None, token=None, public_server=None, remote=None):
                 addr = f["addr"]
                 source = sources.get(addr)
                 funcs.append([int(addr, 16), f["size"], scores.get(addr, 0), unit_ids[unit],
-                              bool(source), library.get((name, addr))])
+                              bool(source), library.get((name, addr)), families.get(addr)])
             (DOCS / "data" / ("%s.json" % name)).write_text(json.dumps(
                 {"name": name, "compiler": entry["compiler"], "units": units, "funcs": funcs},
                 separators=(",", ":")))
