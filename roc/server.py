@@ -431,6 +431,31 @@ def import_auto_matches(store, name, found, log=print):
     return imported, skipped
 
 
+def import_startup_matches(store, can_verify, log=print):
+    """Import local automatic/library matches without delaying server startup."""
+    from roc import auto
+    for name in sorted(can_verify):
+        done = {a for a, s in store.scores().get(name, {}).items() if s == 100}
+        found = auto.solve(name, skip=done, log=lambda *a: None)
+        import_auto_matches(store, name, found, log)
+        scores_file = ROOT / "work" / name / "scores.json"
+        local = json.loads(scores_file.read_text()) if scores_file.exists() else {}
+        done = {a for a, s in store.scores().get(name, {}).items() if s == 100}
+        imported = 0
+        for addr, score in local.items():
+            path = ROOT / "src" / name / ("%s.cpp" % addr)
+            if score == 100 and addr not in done and path.exists():
+                text = path.read_text(errors="replace")
+                if "// roc-lib:" in text or "// standard library" in text:
+                    try:
+                        store.submit(name, addr, "auto", 100, text)
+                        imported += 1
+                    except ValueError:
+                        pass
+        if imported:
+            log("Imported %d library matches for %s (credited to 'auto')" % (imported, name))
+
+
 def serve(host="0.0.0.0", port=8765, db=None, token=None, lease_seconds=900,
           discord_webhook=None, log=print):
     discord_webhook = discord_webhook or os.environ.get("ROCONSTRUCT_DISCORD_WEBHOOK")
@@ -451,32 +476,11 @@ def serve(host="0.0.0.0", port=8765, db=None, token=None, lease_seconds=900,
         log("Discord mine logs: enabled (batched digests)")
     from roc.discord import MineLog
     mine_log = MineLog(discord_webhook, store) if discord_webhook else None
-    from roc import auto
-    for name in sorted(can_verify):
-        done = {a for a, s in store.scores().get(name, {}).items() if s == 100}
-        found = auto.solve(name, skip=done, log=lambda *a: None)
-        import_auto_matches(store, name, found, log)
-        # Matches made on this PC by `roc libs` / `roc mass` (library and template code).
-        scores_file = ROOT / "work" / name / "scores.json"
-        local = json.loads(scores_file.read_text()) if scores_file.exists() else {}
-        done = {a for a, s in store.scores().get(name, {}).items() if s == 100}
-        imported = 0
-        for addr, score in local.items():
-            path = ROOT / "src" / name / ("%s.cpp" % addr)
-            if score == 100 and addr not in done and path.exists():
-                text = path.read_text(errors="replace")
-                if "// roc-lib:" in text or "// standard library" in text:
-                    try:
-                        store.submit(name, addr, "auto", 100, text)
-                        imported += 1
-                    except ValueError:
-                        pass  # function no longer in the analysis
-        if imported:
-            log("Imported %d library matches for %s (credited to 'auto')" % (imported, name))
     httpd = ThreadingHTTPServer((host, port), make_handler(store, token, can_verify, mine_log=mine_log))
     httpd.store = store
     log("RoConstruct server running on port %d. Workers connect with:  roc worker --server http://<this-pc>:%d"
         % (port, port))
+    threading.Thread(target=import_startup_matches, args=(store, can_verify, log), daemon=True).start()
     return httpd
 
 
