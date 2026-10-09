@@ -52,6 +52,18 @@ value, not universal family coverage.
 4. Track exact, compile, tokens, cost/exact, family coverage, and propagation
    conversions separately.
 
+## Whole-section snapshot
+
+`python benchmarks/family_coverage.py --client 2007-08 --unit seg_00770000`
+reports current corpus state without changing scores. Current local snapshot:
+1,354 functions; 1,062 exact; 292 unmatched; 51 detected families; 1,319
+family members; 42 families contain at least one verified source; 1,150
+members sit inside those verified families (84.93% section coverage). This is
+historical coverage, not a claim that propagation solved all 1,150 members.
+The remaining proof is a fresh, fixed-manifest hybrid run separating existing
+matches, deterministic conversions, exemplar-guided LLM results, and normal
+generation.
+
 ## Usage
 
 ```text
