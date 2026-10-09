@@ -39,6 +39,10 @@ exact; exemplar used 13.5% fewer tokens/cost.
 Fixed-seed randomized sibling checks improved 2008 `18/19 → 19/19` and 2009
 `8/15 → 15/15`, while reducing tokens/cost 21% and 40%.
 
+Fresh 2010 holdout (12 previously unused siblings, DB-backed verified
+exemplars) improved direct `8/12 → 12/12`; exemplar mode used 15,853 → 11,826
+tokens and estimated cost `$0.00536 → $0.00406`.
+
 Propagation replay produced 32 exact conversions on 2008-06 and 37 on 2009-06;
 2007-08 and 2010-06 had no safe literal rewrites. This validates fast-path
 value, not universal family coverage.
