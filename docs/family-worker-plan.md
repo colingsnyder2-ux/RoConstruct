@@ -47,6 +47,11 @@ Fresh 2009 holdout (16 siblings) held exact rate at `10/16 → 10/16`, but
 exemplar guidance cut tokens `27,303 → 10,105` and cost `$0.00931 → $0.00352`.
 This is a cost/reuse win, not an exact-rate win; promotion must track both.
 
+Other-section check, 2009 `seg_00580000` (4 siblings), improved exacts
+`1/4 → 3/4`; tokens were nearly flat (`8,931 → 9,419`) and cost rose
+`$0.00324 → $0.00414`. Family guidance can improve exacts outside main
+sections, but needs cost-aware routing.
+
 Propagation replay produced 32 exact conversions on 2008-06 and 37 on 2009-06;
 2007-08 and 2010-06 had no safe literal rewrites. This validates fast-path
 value, not universal family coverage.
