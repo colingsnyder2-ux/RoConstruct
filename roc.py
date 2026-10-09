@@ -5,7 +5,6 @@ Run with no arguments (or double-click roc.cmd) for a menu.
 import argparse
 import json
 import os
-import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -31,18 +30,192 @@ def need(value, what, hint):
     return value
 
 
+def need_module(name, what):
+    """Import a module that only ships in one package, with a clear reason.
+
+    The three packages share the roc/ package, but the server-only modules are
+    left out of the Worker and Local AI zips. Saying so is better than a
+    traceback when someone types a maintainer command.
+    """
+    import importlib
+    try:
+        return importlib.import_module("roc." + name)
+    except ImportError:
+        sys.exit("%s ships in RoConstruct Server (maintainer-only). "
+                 "Ask a maintainer if you need it." % what)
+
+
 # ---------- commands ----------
 
+def ask_setup_question(question):
+    """A prompt that survives a piped/scheduled run: an empty answer means no."""
+    try:
+        return input(question)
+    except EOFError:
+        return "n"
+
+
 def cmd_install(a):
-    from roc import link, setup
-    if os.name == "nt":
-        link.install()
+    """Cloud-first bootstrap: packages, exact compiler bundles, link, website."""
+    from roc import setup
+
     def ask(question):
         try:
             return input(question)
         except EOFError:  # no console (piped / scheduled): take the default
             return ""
-    setup.install(ask=(lambda q: "y") if a.yes else ask)
+    if os.name == "nt":
+        from roc import link
+        link.install()
+    ok = setup.install(ask=(lambda q: "y") if a.yes else ask, assume_yes=a.yes, client=a.client)
+    if a.open_site and os.name == "nt":
+        import webbrowser
+        from roc import worker
+        webbrowser.open(worker.SITE + "index.html")
+    if not ok:
+        raise SystemExit(1)
+
+
+def cmd_local_ai(a):
+    """Opt-in extras: Ollama now, Docker / Rev.ng only if asked."""
+    from roc import setup
+
+    if not setup.local_ai(ask=ask_setup_question, docker=a.docker, model=a.model or None):
+        raise SystemExit(1)
+
+
+def cmd_setup(a, run=None):
+    """Ask the setup questions here in the terminal and save a signed worker config.
+
+    run=None keeps whatever --launch / --no-launch said; run=True always starts the
+    worker in this terminal when the answers are in.
+    """
+    from roc import handoff, worker
+    url = getattr(a, "url", None)
+    if url:
+        payload = handoff.from_url(url)
+        print("Accepted a website link: user=%s client=%s server=%s mode=%s cloud=%s" %
+              (payload["user"], payload["client"], payload["server"], payload["mode"],
+               "yes" if payload["cloud"] else "no"))
+        handoff.apply(url)
+        return finish_setup(handoff, a, run=run)
+    s = worker.load_settings()
+    default_user = s.get("user") or ""
+    default_client = getattr(a, "client", None) or s.get("handoff_client") or ""
+    user = getattr(a, "user", None) or default_user
+    if not user:
+        while True:
+            user = input("Username for the leaderboard (letters/digits/._-, 2-32): ").strip()
+            if worker.USER_RE.match(user):
+                break
+            print("  Use 2-32 letters, digits, dot, underscore or dash.")
+    client = default_client or ask_client()
+    if not client:
+        raise SystemExit("Choose a client first: roc client list")
+    cloud = getattr(a, "cloud", None)
+    if cloud is None:
+        answer = input("Use a cloud model? (no Ollama, no GPU needed) [y/N] ").strip().lower()
+        cloud = answer.startswith("y")
+    mode = "cloud" if cloud else "local"
+    if not cloud:
+        from roc import setup as setup_module
+        print("\nLocal mode. Nothing is installed for it yet, so Ollama is offered now -")
+        print("you can also skip it and just do the mining by hand (roc claim / roc check / roc submit).")
+        setup_module.local_ai(ask=ask_setup_question, docker=bool(getattr(a, "docker", False)),
+                              model=getattr(a, "model", None) or "qwen2.5-coder:7b")
+    server = getattr(a, "server", None) or s.get("server") or worker.site_server()
+    if not server:
+        raise SystemExit("No server address known. Pass --server HOST:PORT (the site lists the current one).")
+    payload = handoff.save(user=user, client=client, server=server,
+                           token=(getattr(a, "token", None) or s.get("token")),
+                           mode=mode, cloud=cloud, model=getattr(a, "model", None))
+    print("Saved a signed setup: %s" % handoff.config_path())
+    return finish_setup(handoff, a, run=run)
+
+
+def ask_client():
+    from roc import clients
+    registry = sorted(clients.load())
+    if not registry:
+        return None
+    print("\nWhich client do you want to help with?")
+    for index, name in enumerate(registry, 1):
+        entry = clients.load()[name]
+        print("  %d) %s  (%s, compiler %s)" % (index, name, entry.get("compiler"), entry.get("compiler_build")))
+    picked = input("Client [1]: ").strip() or "1"
+    if picked.isdigit() and 1 <= int(picked) <= len(registry):
+        return registry[int(picked) - 1]
+    if picked in clients.load():
+        return picked
+    raise SystemExit("Unknown client: %s" % picked)
+
+
+def finish_setup(handoff, a, run=None):
+    from roc import doctor
+    payload = handoff.load()
+    if not payload:
+        raise SystemExit("The setup could not be saved (signature check failed). Run: roc setup")
+    print()
+    doctor_report(doctor.all_checks(network=not getattr(a, "no_check", False)))
+    if run is None:
+        run = bool(getattr(a, "launch", False))
+    if run:
+        # run in this terminal: the knobs stay visible and closeable here
+        return handoff.run_now(_forwarded(a))
+    print("Start the worker with: roc launch")
+
+
+def doctor_report(checks):
+    from roc import doctor
+    print(doctor.format_report(checks))
+    return doctor.failed(checks)
+
+
+def cmd_launch(a):
+    """Configure and run the worker in this terminal.
+
+    No saved setup, or you want to change something? It just asks here: username,
+    client, cloud consent, then the knobs (model, workers, rounds, size). Nothing
+    is installed that you did not ask for, and nothing starts until you answer.
+    """
+def _forwarded(a):
+    """Flags on `a` that the worker entry point understands, as a CLI list."""
+    forwarded = []
+    for name in ("client", "model", "workers", "rounds", "max_size", "jobs"):
+        value = getattr(a, name, None)
+        if value is not None:
+            forwarded += ["--%s" % name.replace("_", "-"), str(value)]
+    for flag, name in (("no-revng", "no_revng"), ("dry-run", "dry_run")):
+        if getattr(a, name, False):
+            forwarded.append("--%s" % flag)
+    return forwarded
+
+
+def cmd_launch(a):
+    """Configure and run the worker in this terminal.
+
+    With a saved setup it runs straight away and the flags on this command
+    override it. Without one - or with --setup - the questions are asked right
+    here: username, client, cloud model, then the worker knobs. Nothing is
+    installed that you did not ask for, and nothing starts until you answer.
+    """
+    from roc import handoff
+    if not handoff.load():
+        print("No saved setup yet. Answering here - nothing installs until you pick a model.\n")
+    if getattr(a, "setup", False) or not handoff.load():
+        return cmd_setup(a, run=True)
+    return handoff.run_now(_forwarded(a))
+
+
+def cmd_doctor(a):
+    from roc import doctor
+    checks = doctor.all_checks(network=not a.no_check)
+    if a.json:
+        print(json.dumps(checks, indent=1))
+    else:
+        print(doctor.format_report(checks))
+    if doctor.failed(checks):
+        raise SystemExit(1)
 
 
 def cmd_link(a):
@@ -336,7 +509,7 @@ def cmd_pull(a):
 
 
 def cmd_server(a):
-    from roc import server
+    server = need_module("server", "The group server")
     if a.startup:
         startup = Path(os.environ["APPDATA"]) / r"Microsoft\Windows\Start Menu\Programs\Startup" / "RoConstruct server.cmd"
         startup.write_text('@start "RoConstruct server" /min "%s"' % (ROOT / "host.cmd"))
@@ -481,7 +654,7 @@ def cmd_provider(a):
 
 
 def cmd_dataset(a):
-    from roc import dataset
+    dataset = need_module("dataset", "Dataset manifests")
     if a.sub == "init":
         path = Path(a.path)
         if path.exists():
@@ -496,21 +669,6 @@ def cmd_dataset(a):
         print("  " + error)
     if not report["ok"]:
         raise SystemExit(1)
-
-
-def cmd_doctor(a):
-    from roc import draft, setup
-    print("Python: %s" % sys.version.split()[0])
-    print("Compilers: %s" % (", ".join(str(k) for k in sorted(setup.compilers())) or "none"))
-    models = draft.ollama_models()
-    print("Ollama models: %s" % (", ".join(models) or "none/offline"))
-    print("Default model: %s" % (draft.pick_model() or "none"))
-    print("Docker: %s" % ("ready" if shutil.which("docker") else "not installed (optional)"))
-    print("2016 source: %s" % ("ready" if (ROOT / "tools" / "roblox2016" / "src").is_dir() else "missing"))
-    print("Rev.ng: %s" % ("ready" if draft.revng_available() else "not available"))
-    print("Clients:")
-    for name, entry in sorted(clients.load().items()):
-        print("  %-10s %s" % (name, clients.status(name, entry)))
 
 
 def cmd_model_stats(a):
@@ -722,7 +880,7 @@ def cmd_optimize(a):
 
 
 def cmd_progress(a):
-    from roc import progress
+    progress = need_module("progress", "Publishing the website")
     s = settings()
     srv = a.server or s.get("server")
     p = progress.build(srv, a.token or s.get("token"), s.get("public_server"))
@@ -744,8 +902,11 @@ def ask(prompt, default=None):
 
 def menu():
     items = [
-        ("First-time setup (downloads compilers, checks everything)", lambda: main(["install"])),
+        ("First-time setup (packages, compilers, links - no Ollama/Docker)", lambda: main(["install"])),
+        ("Set up my worker (username, client, cloud)", lambda: main(["setup"])),
         ("Help automatically with AI (start a worker)", menu_worker),
+        ("Check what needs fixing", lambda: main(["doctor"])),
+        ("Install local AI instead (optional: Ollama, then Docker)", lambda: main(["local-ai"])),
         ("Work on a function by hand", menu_hand),
         ("Check my hand-written functions", lambda: main(["check", ask("Client", "2008-06")])),
         ("Send my hand-written functions to the server", lambda: main(["submit", ask("Client", "2008-06")])),
@@ -781,25 +942,24 @@ def menu():
 
 
 def menu_worker():
-    from roc import draft
-    from roc import worker
+    """Cloud by default; a local model is one answer away, never assumed."""
+    from roc import draft, handoff, worker
     s = settings()
-    user = ask("Your username (shows on the leaderboard)", s.get("user"))
-    srv = ask("Server address (ask the group)", s.get("server"))
-    default = s.get("model") or draft.pick_model()
-    models = draft.ollama_models()
-    if models:
-        print("Models: " + ", ".join(models))
-    model = ask("Model (Enter = %s)" % (default or "install one first"))
-    if model:
-        if model == "default":
-            worker.clear_setting("model")
-        elif model in models:
-            worker.save_settings(model=model)
-        else:
-            print("Model not installed. Use: ollama pull %s" % model)
-            return
-    main(["worker", "--user", user, "--server", srv])
+    if handoff.load():
+        print("Saved setup: %s (%s)" % (handoff.status()["detail"],
+                                        ", ".join("%s=%s" % (k, handoff.load()[k])
+                                                  for k in ("user", "client", "server", "mode")
+                                                  if handoff.load().get(k))))
+        if ask("Run it? [Y/n] ", "y").lower().startswith("n"):
+            return main(["setup"])
+        return main(["launch"])
+    cloud = worker.cloud_default()
+    local = draft.pick_model()
+    print("Cloud model: %s (no GPU needed)" % (cloud or "none set - run: roc provider setup"))
+    print("Local model: %s" % (local or "not installed (optional: roc local-ai)"))
+    if not cloud:
+        return main(["setup"])
+    return main(["setup", "--launch"])
 
 
 def menu_hand():
@@ -822,7 +982,42 @@ def main(argv=None):
         p.set_defaults(fn=fn)
         return p
 
-    cmd("install", cmd_install, "download compilers + check tools", (["--yes", "-y"], {"action": "store_true"}))
+    cmd("install", cmd_install, "cloud-first bootstrap: packages, exact compilers, link, website",
+        (["--yes", "-y"], {"action": "store_true", "help": "accept every download without asking"}),
+        (["--client"], {"help": "client you plan to work on, so the size estimate can include its exe"}),
+        (["--open-site", "--open"], {"action": "store_true", "dest": "open_site",
+                                     "help": "open the website when the install finishes"}))
+    cmd("local-ai", cmd_local_ai, "opt-in extras: install Ollama (--docker also adds Docker/Rev.ng)",
+        (["--docker"], {"action": "store_true", "help": "also offer Docker Desktop + Rev.ng hints"}),
+        (["--model"], {"help": "model tag to pull once Ollama is installed"}))
+    cmd("setup", cmd_setup, "ask username / client / cloud, save a signed config, start the worker",
+        (["url"], {"nargs": "?", "help": "a roconstruct:// link from the website"}),
+        (["--user"], {}), (["--client"], {}), (["--server"], {}), (["--token"], {}),
+        (["--model"], {}),
+        (["--cloud"], {"action": "store_true", "default": None, "dest": "cloud",
+                       "help": "cloud model (opt-in, no GPU)"}),
+        (["--local"], {"action": "store_false", "dest": "cloud",
+                       "help": "use a local model instead (asks before installing Ollama)"}),
+        (["--launch", "-l"], {"action": "store_true", "help": "start the worker immediately"}),
+        (["--docker"], {"action": "store_true",
+                        "help": "local mode: also offer Docker Desktop + Rev.ng hints"}),
+        (["--no-check"], {"action": "store_true", "help": "skip the doctor checks before launching"}))
+    p = cmd("launch", cmd_launch, "configure the worker in this terminal and run it")
+    p.add_argument("--client", help="override the client from the config")
+    p.add_argument("--model", help="override the model from the config")
+    p.add_argument("--workers", help="bounded concurrent lease loops (1-256 or auto)")
+    p.add_argument("--rounds", type=int, help="AI tries per function")
+    p.add_argument("--max-size", dest="max_size", type=int, help="skip functions bigger than this")
+    p.add_argument("--jobs", type=int, help="stop after this many functions")
+    p.add_argument("--no-revng", dest="no_revng", action="store_true", help="never use Rev.ng hints")
+    p.add_argument("--dry-run", dest="dry_run", action="store_true",
+                   help="print the plan without leasing a job")
+    p.add_argument("--setup", dest="setup", action="store_true",
+                   help="ignore the saved config and answer the setup questions again")
+    cmd("doctor", cmd_doctor, "diagnose this install and print repair steps",
+        (["--json"], {"action": "store_true", "help": "machine-readable output"}),
+        (["--no-check", "--no-network"], {"action": "store_true", "dest": "no_check",
+                                           "help": "skip the network checks"}))
     c = sub.add_parser("client", help="add or list Roblox clients").add_subparsers(dest="sub", required=True)
     p = c.add_parser("add", help="register a client exe and analyze it")
     p.add_argument("name")
@@ -970,7 +1165,6 @@ def main(argv=None):
         (["--source-only"], {"action": "store_true", "help": "run deterministic candidates; never call Ollama"}),
         (["--guided-mutations"], {"action": "store_true", "help": "enable evidence-guided source mutations after compilation"}),
         (["--no-update"], {"action": "store_true", "help": "skip the pre-run source update check"}))
-    cmd("doctor", cmd_doctor, "check worker dependencies and local source setup")
     cmd("model-stats", cmd_model_stats, "compare models using worker telemetry")
     cmd("failures", cmd_failures, "show recurring worker compile/API failures",
         (["--promote"], {"action": "store_true", "help": "save repeated failure rule suggestions"}))
@@ -1007,7 +1201,9 @@ def main(argv=None):
         (["--build-meta"], {"action": "store_true", "help": "build persisted token/declaration metadata"}))
     cmd("status", cmd_status, "server progress, workers, leaderboard", (["--server"], {}), (["--token"], {}))
     cmd("progress", cmd_progress, "write docs/ data for the website", (["--server"], {}), (["--token"], {}))
-    a = ap.parse_args(argv)
+    a, unknown = ap.parse_known_args(argv)
+    if unknown:
+        ap.error("unrecognized arguments: %s" % " ".join(unknown))
     if not a.cmd:
         return menu()
     a.fn(a)

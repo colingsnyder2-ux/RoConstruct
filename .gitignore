@@ -17,6 +17,7 @@ tools/
 roconstruct-settings.json
 roconstruct-providers.json
 roconstruct-secrets.json
+roconstruct-worker.json
 
 # Local investigation scratch / downloaded archives
 check_*.py

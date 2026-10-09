@@ -4,7 +4,6 @@
 Windows user (HKCU, no admin). Clicking a link opens a console that sets up
 whatever is missing, asks for a username once, and runs a worker until closed.
 """
-import ctypes
 import os
 import re
 import sys
@@ -16,6 +15,8 @@ ROOT = Path(__file__).resolve().parent.parent
 SCHEME = "roconstruct"
 CLIENT_RE = re.compile(r"^[A-Za-z0-9_-]{1,32}$")
 SERVER_RE = re.compile(r"^(https?://)?[A-Za-z0-9.-]+(:\d{1,5})?/?$")
+# The whole vocabulary of a work link. A link may carry nothing else.
+HANDOFF_FIELDS = ("user", "client", "server", "token", "mode", "model", "cloud")
 
 
 def install():
@@ -48,8 +49,12 @@ def installed():
         return False
 
 
-def parse(url):
-    """Validate a link. Only client, server and token are read; nothing else."""
+def parse_full(url):
+    """Validate a link and return every query value it carried.
+
+    Only the fields in HANDOFF_FIELDS are returned; a crafted link cannot smuggle
+    in flags or extra hosts, and nothing is written or launched here.
+    """
     u = urlparse(url)
     if u.scheme != SCHEME or (u.netloc or u.path.strip("/")) != "work":
         raise SystemExit("Not a RoConstruct work link: %s" % url)
@@ -57,13 +62,96 @@ def parse(url):
     client, server = q.get("client", ""), q.get("server", "")
     if not CLIENT_RE.match(client) or not SERVER_RE.match(server):
         raise SystemExit("Link has a bad client or server value.")
-    return client, server, q.get("token")
+    return {key: q.get(key) for key in HANDOFF_FIELDS if key in q}
+
+
+def parse(url):
+    """Client, server and token from a work link."""
+    q = parse_full(url)
+    return q.get("client", ""), q.get("server", ""), q.get("token")
 
 
 def keep_awake():
     """Stop Windows sleeping while the worker runs (screen may still turn off)."""
-    if os.name == "nt":
-        ctypes.windll.kernel32.SetThreadExecutionState(0x80000000 | 0x00000001)
+    from roc import worker
+    return worker.keep_awake()
+
+
+def run(url):
+    """Everything a link click does, in order.
+
+    The website sends a username, client, server and cloud consent. Those are
+    validated here and written to a signed local config (roc.handoff), so the
+    worker that starts runs exactly what was agreed. Cloud is the default path:
+    no Ollama, no Docker, no GPU.
+    """
+    from roc import analyze, clients, handoff, setup, worker
+    parts = parse_full(url)
+    client, server, token = parts["client"], parts["server"].rstrip("/"), parts.get("token")
+    mode = parts.get("mode") if parts.get("mode") in handoff.MODES else "cloud"
+    cloud_allowed = parts.get("cloud") == "1"
+    s = worker.load_settings()
+    known = s.get("known_servers", [])
+    user = parts.get("user") or s.get("user")
+    print("RoConstruct: help decompile Roblox %s" % client)
+    if server not in known:
+        print("First time you're joining %s. Only continue if you trust this link." % server)
+    while not worker.USER_RE.match(user or ""):
+        user = input("Pick a username for the leaderboard (letters/digits, 2-32): ").strip()
+    worker.save_settings(known_servers=known + [server] if server not in known else known)
+
+    if client not in clients.load():
+        raise SystemExit("This copy of RoConstruct doesn't know %s. Download the latest version." % client)
+    build = clients.load()[client]["compiler_build"]
+    if build not in setup.compilers():
+        print("Downloading the compiler for %s (one time, this is the only big download)..." % client)
+        setup.FETCHERS[build]()
+        setup.compilers.cache_clear()
+    wait_for_exe(client)
+    if not (ROOT / "work" / client / "functions.jsonl").exists():
+        print("Analyzing %s (one time, about 10 seconds)..." % client)
+        analyze.analyze(client, clients.exe_path(client, clients.load()[client]))
+
+    model = parts.get("model")
+    if mode == "local":
+        # The helper asked for a local model, so offer Ollama here and nowhere else.
+        model, _rounds, _size, _revng, _workers, _budget, _think = choose_local(s, model)
+    else:
+        model = cloud_model(s, cloud_allowed)
+    payload = handoff.save(user=user, client=client, server=server, token=token,
+                           mode=mode, cloud=cloud_allowed, model=model)
+    print("Saved a signed setup: %s" % handoff.config_path())
+    worker.keep_awake()
+    return worker.main_args(payload)
+
+
+def choose_local(settings, wanted):
+    """Local mode: only reached when the helper explicitly asked for a local model."""
+    from roc import draft
+    if not draft.pick_model(wanted):
+        ensure_model()
+    return choose_options(dict(settings, model=wanted, worker_launcher_configured=False))
+
+
+def cloud_model(settings, cloud_allowed):
+    """Cloud-first model choice: no Ollama prompt unless the helper opted out."""
+    from roc import draft, providers, worker
+    saved = settings.get("model")
+    if saved and providers.is_cloud(saved) and providers.available(saved):
+        if not cloud_allowed:
+            raise SystemExit("Saved model %s is a cloud model. Run: roc setup" % saved)
+        return saved
+    if worker.cloud_default():
+        if not cloud_allowed:
+            raise SystemExit("This worker uses cloud models by default. Run: roc setup to agree, "
+                             "or choose 'Use local model'.")
+        return worker.cloud_default()
+    if draft.pick_model(saved):
+        return draft.pick_model(saved)
+    if input("No cloud model key is set. Save one now? [Y/n] ").strip().lower().startswith("n"):
+        raise SystemExit("No model available. Save a cloud key (roc provider setup) or run: roc local-ai")
+    raise SystemExit("Save your cloud key, then click the link again:\n"
+                     "  roc provider setup")
 
 
 def wait_for_exe(client, log=print):
@@ -93,59 +181,6 @@ def wait_for_exe(client, log=print):
             time.sleep(10)
         time.sleep(3)
     log("Found it.")
-
-
-def run(url):
-    """Everything a link click does, in order."""
-    from roc import analyze, clients, draft, setup, worker
-    client, server, token = parse(url)
-    s = worker.load_settings()
-    known = s.get("known_servers", [])
-    user = s.get("user")
-    print("RoConstruct: help decompile Roblox %s" % client)
-    print("Selected client: %s (worker will only mine this client)" % client)
-    print("Server: %s" % server)
-    if server not in known or not user:
-        if server not in known:
-            print("This is the first time you're joining this server. Only continue if you trust the link.")
-        while not worker.USER_RE.match(user or ""):
-            user = input("Pick a username for the leaderboard (letters/digits, 2-32): ").strip()
-        worker.save_settings(known_servers=known + [server] if server not in known else known)
-    worker.save_settings(user=user, server=server, token=token)
-
-    if client not in clients.load():
-        raise SystemExit("This copy of RoConstruct doesn't know %s. Download the latest version." % client)
-    build = clients.load()[client]["compiler_build"]
-    if build not in setup.compilers():
-        print("Downloading the compiler for %s (one time)..." % client)
-        setup.FETCHERS[build]()
-        setup.compilers.cache_clear()
-    wait_for_exe(client)
-    if not (ROOT / "work" / client / "functions.jsonl").exists():
-        print("Analyzing %s (one time, about 10 seconds)..." % client)
-        analyze.analyze(client, clients.exe_path(client, clients.load()[client]))
-    from roc import providers
-    if not draft.pick_model(s.get("model")) and not (s.get("model") and providers.is_cloud(s["model"])):
-        ensure_model()
-    model, rounds, max_size, use_revng, workers, output_budget, thinking = choose_options(s)
-    from roc import optimizer
-    profile = optimizer.profile(model, worker.load_settings())
-    print("Worker setup: %s | %s workers | %s" %
-          (model or "automatic model", workers,
-           "optimized profile: " + profile["name"] if profile else "manual/default profile"))
-    if providers.is_cloud(model) and not s.get("cloud_allowed"):
-        raise SystemExit("Cloud model selected. Run: roc config --allow-cloud")
-    keep_awake()
-    if providers.is_cloud(model):
-        print("Cloud model: work runs remotely; this PC stays idle.")
-    else:
-        print("Working. This uses your GPU and CPU heavily (fans, heat, power draw; laptops: plug in).")
-    print("Leave this window open overnight; close it to stop at any time.\n")
-    worker.run_concurrent(server, user, token, model, rounds, max_size, use_revng,
-                          workers=workers, source_only=False, only=[client],
-                          cloud_allowed=bool(s.get("cloud_allowed")),
-                          max_tokens=output_budget, thinking=thinking,
-                          strategy=worker.load_settings().get("worker_strategy", "direct"))
 
 
 def _saved_worker_options(settings, installed):

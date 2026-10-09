@@ -19,6 +19,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 TOOLS = ROOT / "tools"
 DL = TOOLS / "dl"
+STATE = TOOLS / "install-state.json"
 PF86 = Path(r"C:\Program Files (x86)")
 LOCAL = Path(os.environ.get("LOCALAPPDATA", ""))
 CL_PATHS = [PF86 / r"Microsoft Visual Studio 8\VC\bin\cl.exe",
@@ -33,8 +34,6 @@ VS2008_URL = "https://archive.org/download/VisualStudioExpressEditionsDVD2007/DV
 VS2008_SHA1 = "65ebdd88136275768d778d1795d41a7fcc12a47e"
 VS2005_URL = "https://archive.org/download/MS_VisualCPPExpress-2005/Micorosft_Visual_C%2B%2B_2005_Express.iso"
 VS2005_SHA1 = "1ae44e4eaf8c61c3a39e573fd6efd9889e940529"
-OPTIONAL = [("Ollama (AI drafts, needs a decent GPU)", "Ollama.Ollama", "ollama"),
-            ("Docker Desktop (Rev.ng hints)", "Docker.DockerDesktop", "docker")]
 
 # winget installs these under LOCALAPPDATA and appends them to the *user* PATH in the
 # registry. The process running install.cmd already has its PATH, so which() cannot
@@ -356,10 +355,98 @@ def get_vs2005():
 
 
 FETCHERS = {30729: get_vs2008_sp1, 21022: get_vs2008_rtm, 50727: get_vs2005}
-SIZES = {30729: "85 MB", 21022: "940 MB", 50727: "460 MB"}
+# download MB, unpacked MB, and minutes to fetch + unpack at roughly 8 MB/s.
+# Shown to the user before anything is downloaded, so nobody is surprised by 1.5 GB.
+BUNDLES = {30729: (85, 250, 3), 21022: (940, 2900, 14), 50727: (460, 1400, 8)}
+SIZES = {build: "%d MB" % spec[0] for build, spec in BUNDLES.items()}
 
 
 # ---------- install ----------
+
+# What a re-install must never touch: mined source, claims and settings are the
+# user's work, not installer output.
+PRESERVE = ("work", "src", "roconstruct-settings.json")
+PIP_PACKAGES = ("pefile", "capstone")
+
+
+def state():
+    """Recorded install steps, so a second run knows what it already did."""
+    try:
+        return json.loads(STATE.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+
+
+def save_state(**changes):
+    current = state()
+    current.update({k: v for k, v in changes.items() if v is not None})
+    try:
+        STATE.parent.mkdir(parents=True, exist_ok=True)
+        STATE.write_text(json.dumps(current, indent=1), encoding="utf-8")
+    except OSError:
+        pass
+    return current
+
+
+def step_done(name):
+    return bool(state().get(name, {}).get("done"))
+
+
+def mark_done(step, **fields):
+    # `step` rather than `name`: callers record {"name": "VS2008 SP1 ..."}, and a
+    # parameter called `name` would collide with that keyword on a fresh install.
+    entry = {"done": True, "at": int(time.time())}
+    entry.update(fields)
+    return save_state(**{step: entry})
+
+
+def clear_step(name):
+    """Forget a recorded step, so the next run retries it (used after a bad fetch)."""
+    current = state()
+    if current.pop(name, None) is not None:
+        return save_state(**current)
+    return current
+
+
+def snapshot(paths=PRESERVE, deep=False):
+    """Fingerprint of the things a re-install must leave alone.
+
+    Cheap by default (one stat per entry, so install stays quick on a tree with
+    tens of thousands of source files). `deep=True` records every file, which is
+    what the tests use to prove nothing under work/ was touched.
+    """
+    out = {}
+    for name in paths:
+        target = ROOT / name
+        try:
+            stat = target.stat()
+        except OSError:
+            out[name] = None
+            continue
+        if target.is_file():
+            out[name] = [stat.st_size, int(stat.st_mtime)]
+            continue
+        if not deep:
+            try:
+                out[name] = [len(list(target.iterdir())), int(stat.st_mtime)]
+            except OSError:
+                out[name] = None
+            continue
+        for path in sorted(target.rglob("*")):
+            if path.is_file():
+                stat = path.stat()
+                out["%s/%s" % (name, path.relative_to(target).as_posix())] = [stat.st_size, int(stat.st_mtime)]
+    return out
+
+
+def changed_since(before, paths=PRESERVE, deep=False):
+    """Names under work/, src/ and the settings file that differ from `before`."""
+    after = snapshot(paths, deep=deep)
+    return sorted(key for key in set(before) | set(after) if before.get(key) != after.get(key))
+
+
+
+
 
 def has_module(name):
     try:
@@ -369,83 +456,238 @@ def has_module(name):
         return False
 
 
+def missing_packages():
+    return [name for name in PIP_PACKAGES if not has_module(name)]
+
+
+def ensure_packages(install=True):
+    """Install only the packages that are actually absent (pefile, capstone)."""
+    missing = missing_packages()
+    if not missing:
+        return []
+    if not install:
+        return missing
+    print("Installing Python packages: %s" % ", ".join(missing))
+    run = subprocess.run([sys.executable, "-m", "pip", "install", "--user", "-q", *missing])
+    if run.returncode or missing_packages():
+        raise SystemExit("pip could not install %s. Check your internet connection and run this again."
+                         % ", ".join(missing))
+    mark_done("pip", packages=list(PIP_PACKAGES))
+    return missing
+
+
 def needed_builds():
     from roc import clients
     return sorted({e.get("compiler_build") for e in clients.load().values()} - {None})
 
 
-def install(ask=input, only=None):
-    if not (has_module("pefile") and has_module("capstone")):
-        print("Installing Python packages...")
-        subprocess.run([sys.executable, "-m", "pip", "install", "--user", "-q", "pefile", "capstone"], check=True)
+def client_mb(name=None):
+    """Rough size of the client exe a worker needs for byte matching."""
+    if not name:
+        return 0
+    from roc import sources
+    bundle = sources.load_sources().get("bundle") or {}
+    size, slots = bundle.get("size"), bundle.get("slots") or []
+    if size and slots:
+        return int(size / len(slots) / 1048576) + 1
+    return 12
+
+
+def missing_builds():
     have = compilers()
-    for build in needed_builds():
-        if build in have or build not in FETCHERS or (only and build not in only):
+    return [build for build in needed_builds() if build in FETCHERS and build not in have]
+
+
+def plan(client=None):
+    """Everything a fresh install on this machine would download, in one dict."""
+    builds = missing_builds()
+    return {"packages": missing_packages(),
+            "compilers": builds,
+            "download_mb": sum(BUNDLES[b][0] for b in builds),
+            "disk_mb": sum(BUNDLES[b][1] for b in builds) + client_mb(client),
+            "client_mb": client_mb(client),
+            "minutes": sum(BUNDLES[b][2] for b in builds),
+            "present": sorted(compilers())}
+
+
+def show_plan(current):
+    """Print the size and time cost before any download starts."""
+    print("\nWhat this install needs")
+    print("  Python 3.12          %s" % ("ready" if has_module("msilib") else
+                                        "WRONG: 3.13+ cannot unpack compilers (run install.cmd)"))
+    print("  pip packages        %s" % (", ".join(current["packages"]) if current["packages"]
+                                        else "already installed (%s)" % ", ".join(PIP_PACKAGES)))
+    if current["compilers"]:
+        for build in current["compilers"]:
+            print("  %-20s %s download, about %d MB unpacked" % (NAMES[build], SIZES[build], BUNDLES[build][1]))
+    else:
+        print("  compilers           already installed, nothing to download")
+    print("  ---")
+    print("  Total download %d MB | disk %d MB | about %d min" %
+          (current["download_mb"], current["disk_mb"], current["minutes"]))
+    if current["client_mb"]:
+        print("  Plus about %d MB for the client exe when the worker starts." % current["client_mb"])
+    print("  Not installed: Ollama, Docker, local models. Those are opt-in "
+          "('Use local model'), so no GPU is needed.")
+
+
+def install_compilers(only=None, ask=input, assume_yes=False):
+    """Fetch only the compiler bundles that are missing. Never reinstalls one."""
+    done = []
+    for build in missing_builds():
+        if only and build not in only:
             continue
-        if not ask("Download compiler %s (%s)? [Y/n] " % (NAMES[build], SIZES[build])).strip().lower().startswith("n"):
-            try:
-                FETCHERS[build]()
-            except SystemExit as error:  # one failed download must not stop the others
-                print(error)
-            compilers.cache_clear()
+        if step_done("compiler-%d" % build):
+            print("Compiler %s already installed, skipping." % NAMES[build])
+            continue
+        if not assume_yes and ask("Download compiler %s (%s)? [Y/n] " % (NAMES[build], SIZES[build])
+                                  ).strip().lower().startswith("n"):
+            print("  Skipped. Run this again whenever you want it; downloads resume.")
+            continue
+        try:
+            FETCHERS[build]()
+            mark_done("compiler-%d" % build, name=NAMES[build])
+            done.append(build)
+        except SystemExit as error:  # one failed download must not stop the others
+            print(error)
+        compilers.cache_clear()
+    return done
+
+
+def register_link():
+    """Register roconstruct:// for this user, so the website can launch the worker."""
+    if os.name != "nt":
+        print("roconstruct:// links need Windows; skipping registration.")
+        return False
+    from roc import link
+    if link.installed():
+        print("One-click links already registered: roconstruct://")
+        return True
+    link.install()
+    mark_done("link")
+    return True
+
+
+def install(ask=input, only=None, assume_yes=False, client=None):
+    """The tiny first-run install: packages, exact compiler bundles, link, website.
+
+    No Ollama, no Docker, no local model. `local_ai` is a separate opt-in step.
+    """
+    before = snapshot()
+    ensure_packages()
+    show_plan(plan(client))
+    install_compilers(only=only, ask=ask, assume_yes=assume_yes)
     refresh_path()
-    optional(ask)
-    if not report():
-        raise SystemExit(1)
+    register_link()
+    ok = report()
+    print("\nPreserved your work: %s" % describe(before))
+    changed = changed_since(before)
+    if changed:
+        print("  %d entr(y/ies) changed while this ran (a worker was probably running): %s"
+              % (len(changed), ", ".join(changed[:5])))
+    return ok
 
 
-def optional(ask):
-    """Install Ollama and Docker if they are missing, then prove they actually work.
+def describe(snap):
+    """One line about what a snapshot covered, e.g. 'work/ (412 files), settings'."""
+    parts = []
+    for name in sorted(snap):
+        value = snap[name]
+        if value is None:
+            continue
+        if (ROOT / name).is_dir():
+            parts.append("%s (%d entries)" % (name, value[0]))
+        else:
+            parts.append("%s (%d bytes)" % (name, value[0]))
+    return ", ".join(parts) or "nothing on disk yet"
 
-    Detection is by resolved path, not shutil.which: winget appends to the registry
-    PATH and the running process never sees it. After installing we start Ollama's
-    server if it is not listening yet, because "installed" and "answering API calls"
-    are different states and only the second one lets the worker draft sources."""
+
+def local_ai(ask=input, docker=False, model="qwen2.5-coder:7b"):
+    """Opt-in local AI. Never called by the default install.
+
+    Ollama is offered here and only here. Docker / Rev.ng is a second, later
+    question because it costs gigabytes of disk and needs a bigger setup.
+    """
     if not shutil.which("winget"):
-        print("\nwinget is missing, so Ollama and Docker must be installed by hand.")
-        return
-    for label, package, exe in OPTIONAL:
-        if find_exe(exe):
-            continue
-        if not ask("Install %s? [y/N] " % label).strip().lower().startswith("y"):
-            continue
-        print("Installing %s..." % label.split(" (")[0])
-        subprocess.run(["winget", "install", "--id", package, "-e", "--silent",
+        print("\nwinget is missing, so Ollama must be installed by hand: https://ollama.com/download")
+        return False
+    exe = find_exe("ollama")
+    if not exe:
+        if not ask("Install Ollama for local models? [y/N] ").strip().lower().startswith("y"):
+            print("Skipped. Cloud models work without it.")
+            return False
+        print("Installing Ollama...")
+        subprocess.run(["winget", "install", "--id", "Ollama.Ollama", "-e", "--silent",
                         "--accept-package-agreements", "--accept-source-agreements"])
         refresh_path()
-        found = find_exe(exe)
-        if not found:
-            print("  %s still not found. Restart Windows and run this again." % exe)
-            continue
-        if exe == "ollama":
-            try:
-                models = ensure_ollama(found)
-            except SystemExit as error:
-                print("  %s" % error)
-                continue
-            print("  Ollama is installed and running (%d model(s))." % len(models))
-            if not models:
-                print("  No models yet. Pull one to let the worker draft sources:")
-                print("    ollama pull qwen2.5-coder:7b")
+        exe = find_exe("ollama")
+        if not exe:
+            print("  Ollama still not found. Restart Windows, then run: roc local-ai")
+            return False
+    try:
+        models = ensure_ollama(exe)
+    except SystemExit as error:
+        print("  %s" % error)
+        return False
+    print("  Ollama is installed and running (%d model(s))." % len(models))
+    if model and model not in models:
+        if not ask("Download the %s model (~4.7 GB, one time)? [y/N] " % model
+                   ).strip().lower().startswith("y"):
+            print("  No models yet. Pull one later: ollama pull %s" % model)
+        else:
+            subprocess.run([exe, "pull", model], check=False)
+    mark_done("local-ai")
+    if docker:
+        extras(ask)
+    return True
+
+
+def extras(ask):
+    """Docker + Rev.ng: only offered after local AI, never during a normal install."""
+    if draft_revng_ready():
+        print("Rev.ng hints: already ready.")
+        return True
+    if not ask("Install Docker Desktop for Rev.ng hints (~5 GB, needs a restart)? [y/N] "
+               ).strip().lower().startswith("y"):
+        print("Skipped. Rev.ng hints stay off; matching still works.")
+        return False
+    if not shutil.which("winget"):
+        print("winget is missing, so Docker must be installed by hand: https://docker.com")
+        return False
+    print("Installing Docker Desktop...")
+    subprocess.run(["winget", "install", "--id", "Docker.DockerDesktop", "-e", "--silent",
+                    "--accept-package-agreements", "--accept-source-agreements"])
+    refresh_path()
+    mark_done("docker")
+    print("  Start Docker Desktop, then: docker pull revng/revng")
+    return True
+
+
+def draft_revng_ready():
+    from roc import draft
+    return draft.revng_available()
 
 
 def report():
+    """What this machine can do right now, without implying anything is missing."""
     from roc import clients, draft
     have = compilers()
     print("\nCompilers:")
     for name, entry in sorted(clients.load().items()):
         build = entry.get("compiler_build")
-        print("  %-6s %-28s %s" % (name, entry.get("compiler"), "ready" if build in have else "MISSING (roc install)"))
+        print("  %-6s %-28s %s" % (name, entry.get("compiler"),
+                                    "ready" if build in have else "missing (roc install)"))
     model = draft.pick_model()
     if model:
-        print("AI drafts (Ollama): ready, %s" % model)
-    elif not find_exe("ollama"):
-        print("AI drafts (Ollama): not installed (optional: run  roc install)")
-    elif not wait_for_http(OLLAMA_API, timeout=5, interval=1):
-        print("AI drafts (Ollama): installed but not running.")
-        print("  Start it from the Start menu, or run:  ollama serve")
+        print("Local AI drafts (Ollama): ready, %s" % model)
+    elif find_exe("ollama"):
+        if not wait_for_http(OLLAMA_API, timeout=5, interval=1):
+            print("Local AI drafts (Ollama): installed but not running. Run: ollama serve")
+        else:
+            print("Local AI drafts (Ollama): running, but no model. Run: ollama pull qwen2.5-coder:7b")
     else:
-        print("AI drafts (Ollama): running, but no model. Run:  ollama pull qwen2.5-coder:7b")
-    print("Rev.ng hints (Docker):", "ready" if draft.revng_available() else
-          "not available (optional: Docker Desktop, then  docker pull revng/revng)")
+        print("Local AI drafts (Ollama): not installed. Cloud models work without it: roc local-ai")
+    print("Rev.ng hints (Docker): %s" % ("ready" if draft.revng_available() else
+          "off (optional: roc local-ai --docker)"))
+    print("Cloud worker: ready, no GPU or local model needed.")
     return all(e.get("compiler_build") in have for e in clients.load().values())

@@ -32,18 +32,29 @@ When every function matches, the result is a source tree that rebuilds the origi
 
 ## Get started
 
+The installer is deliberately tiny: **no GPU, no Ollama, no Docker.**
+
 1. **Download** this repo (Code → Download ZIP) and unzip it.
-2. Double-click **`install.cmd`**. It installs Python and the old compilers (each one verified) and enables one-click links. No admin rights needed.
+2. Double-click **`install.cmd`**. It checks for Python 3.12, installs two pip packages (`pefile`, `capstone`), downloads the exact MSVC compiler bundles, and registers `roconstruct://`. It prints the download size and time before it starts. No admin rights needed.
+3. Click **Help out** on any client at the [RoConstruct website](https://colingsnyder2-ux.github.io/RoConstruct/index.html).
 
-Once everything is installed, go to the **[RoConstruct website](https://colingsnyder2-ux.github.io/RoConstruct/index.html)** and click **Start helping** on any client to run the worker.
+That is the whole setup. The click opens a console window that fetches the client exe and its compiler (the only big downloads, the first time), analyses the binary, and starts the worker. Close the window to stop.
 
-**You never download a client yourself — clicking the link does it for you.** The first thing the worker does is fetch that client from Google Drive, then check its SHA-256 against the registered build before using it. If a file ever goes missing it re-downloads on the next command. To fetch them all up front instead, run `roc client-fetch all`.
+Prefer to choose your own options first? Run `roc launch` in the RoConstruct folder instead — it asks the same questions in the terminal (username, client, cloud model) plus the worker knobs, then runs the worker in that window. Your saved answers are reused, so a repeat `roc launch` starts with one Enter.
 
-The first click asks for a username. After that it runs on its own: leave the window open overnight, and your matches show up on the leaderboard.
+**install.cmd installs nothing else.** No Ollama, no Docker, no local model, no model weights. Local AI is opt-in and lives in its own package (see [packages](#packages)) or behind `roc local-ai`.
+
+**You never download a client yourself** — the link does it for you. The worker fetches that client from Google Drive, then checks its SHA-256 against the registered build before using it. If a file ever goes missing it re-downloads on the next command. To fetch them all up front instead, run `roc client-fetch all`.
+
+The client exe and its compiler are the only large downloads, and they are needed either way: byte matching requires compiling against the same 2008-era toolchain the client shipped with.
+
+Running `install.cmd` again is safe. Interrupted downloads resume, an existing compiler or client is never re-downloaded, and `work/`, `src/` and your settings are left untouched.
+
+Once set up, the website link starts the worker directly, and `roc launch` runs it again from the signed setup. **`roc doctor`** prints what is broken and the exact command that fixes it.
 
 To update an existing Git checkout without removing clients, mined work, or settings, double-click **`update.cmd`**.
 
-> **Heads up:** a worker runs an AI model and the compiler nonstop. Expect high GPU/CPU use, fan noise and power draw (laptops: plug in). Close the window to stop.
+> **Heads up:** a cloud worker keeps your PC mostly idle — it sends bounded prompts to a cloud model and uploads only source that compiled and matched. Local models are opt-in and do use your GPU and CPU hard (fans, heat, power draw; laptops: plug in). Close the worker window to stop.
 
 To undo the install later, double-click **`uninstall.cmd`**. It lists everything first with sizes, then asks before each step. RoConstruct's own files default to yes (about 3.2 GB of compilers and caches); shared software defaults to no. Your other Ollama models are never touched — only the coder models this project uses are offered.
 
@@ -51,12 +62,24 @@ To undo the install later, double-click **`uninstall.cmd`**. It lists everything
 
 | You have | Do this |
 |---|---|
-| A GPU with 8 GB+ | Run an **AI worker**: install [Ollama](https://ollama.com), then `ollama pull qwen2.5-coder:7b-instruct`, then click Start helping. `roc model` shows installed models; `roc model <name>` picks yours; `roc model default` restores automatic choice. Optional: [Docker](https://www.docker.com/products/docker-desktop/) + `docker pull revng/revng` for extra decompiler hints. |
-| A cloud model key | Run `roc provider list`, export the provider key, then select a model such as `roc model nvidia:qwen/qwen2.5-coder-32b-instruct` or `deepseek:deepseek-flash`. Cloud prompts contain bounded disassembly and source clues, so first save consent with `roc config --allow-cloud`. Keys never go in RoConstruct settings or the group server. Run `roc provider test <provider> --model <model>` before a worker. |
+| Nothing but a PC | **Run a cloud worker**: `roc launch`, then answer *yes* to "use a cloud model". `roc provider setup` saves a key (DeepSeek, OpenAI, Anthropic, Gemini or NVIDIA); `roc provider list` shows which are set; `roc provider test <name> --model <model>` sends one two-word probe. Keys never go in RoConstruct settings or the group server. |
+| A GPU with 8 GB+ | **A local model**, if you prefer to keep it on your own machine: `roc local-ai` (asks first), then `roc launch` and answer *no* to the cloud question. `roc model` shows installed models; `roc model <name>` picks yours; `roc model default` restores automatic choice. Optional later: `roc local-ai --docker` for Docker Desktop + `docker pull revng/revng` extra decompiler hints. |
 | C++ knowledge | **Match by hand**: see below. |
-| A PC that's always on | **Host the server**: see below. |
+| A PC that's always on | **Host the server**: see below (maintainer package). |
 
 Double-click **`roc.cmd`** for a menu with everything.
+
+### Packages
+
+`py -3.12 packaging/build.py` builds three zips, and a helper only needs the first:
+
+| Package | What it is |
+|---|---|
+| **RoConstruct Worker** | The small cloud worker: bootstrap, compilers, client registry, the worker itself. |
+| **RoConstruct Local AI** | Opt-in extras over the Worker: Ollama for local models, and Docker/Rev.ng only if you ask. |
+| **RoConstruct Server** | Maintainer-only: the group server and website publishing. Helper packages leave those modules out, and a maintainer command typed from a Worker install says so instead of crashing. |
+
+Each build stages its package, imports every module it contains, and fails rather than shipping a broken download. See [packaging/README.md](packaging/README.md).
 
 ### Getting matches without writing any C++
 
@@ -142,6 +165,17 @@ roc submit <client> [addr...]   send your sources to the server
 roc pull <client|all> [--force] download everyone's sources
 roc flags <client>              work out compiler flags from matched code
 roc config --user U --server S  save your settings
+roc install                     cloud-first bootstrap: packages, exact compilers, links
+roc install --yes --client C    skip the questions, and include C's exe in the size estimate
+roc setup [link]                ask username / client / cloud, save a signed config
+roc setup --launch              do all that and start the worker
+roc setup --local               choose a local model instead (asks before installing Ollama)
+roc launch                       configure the worker in this terminal and run it
+roc launch --setup               answer the setup questions again, then run
+roc launch --workers 4           override the worker count for this run
+roc launch --dry-run             show the plan without taking a job
+roc doctor [--json] [--no-check] diagnose this install and print repair steps
+roc local-ai [--docker]         opt-in: Ollama for local models, Docker/Rev.ng only if asked
 roc model [name|default]         show or choose AI model
 roc optimize [--model MODEL]     benchmark once, save model-specific worker settings
 roc worker [--jobs N]           run an AI worker (`--workers N` for bounded parallel loops)
@@ -157,7 +191,7 @@ roc worker --model deepseek:deepseek-v4-pro --allow-cloud --thinking enabled --r
                                  opt into DeepSeek reasoning for measured hard-target runs
 roc dataset init pilot.json       make legal MSVC training-pilot manifest
 roc dataset audit pilot.json      verify source/binary files + project-held-out split
-roc doctor                       check compilers, Ollama, Docker, clients
+roc doctor                       (see above: diagnoses and prints repair steps)
 roc model-stats                  compare models from worker telemetry
 roc benchmark-models             create fixed targets + compare telemetry
 roc benchmark-models --local-run --full --resume
@@ -277,9 +311,13 @@ The remaining steps:
 | `exe missing` | It should download itself. If it didn't, run `roc client-fetch <name>`. |
 | `hash mismatch` | Wrong build on disk. `roc client remove <name> --purge`, then run the command again to re-download. |
 | `looks modified` | That exe was patched; get an unmodified copy. |
-| `Missing compiler` | Run `roc install` (re-running resumes downloads). |
+| `missing VS2005 / VS2008 ...` | Run `roc install` again: downloads resume and anything already installed is left alone. |
 | `cannot reach server` | The server may be offline; workers retry automatically. |
-| `AI workers need Ollama` | Install Ollama, then `ollama pull qwen2.5-coder:7b-instruct`; check with `roc doctor`. |
+| `no cloud model key is set` | Run `roc provider setup` to save a key, or `roc local-ai` if you would rather run a model locally. |
+| `worker config was edited` | `roconstruct-worker.json` no longer matches its signature. Delete it and run `roc setup`. |
+| `Local mode needs an installed model` | Run `roc local-ai` (it asks before downloading anything). |
+
+Not sure which one applies? **`roc doctor`** prints every check, what it found, and the exact command that fixes it, and exits non-zero if anything needs repair. `roc doctor --json` is the same thing for scripts.
 </details>
 
 ## Rules

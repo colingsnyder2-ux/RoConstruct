@@ -126,7 +126,7 @@ code { color: var(--accent2); font-family: var(--mono); font-size: .92em; }
   text-shadow: 0 0 8px rgba(56, 200, 255, 0.22); }
 .join:hover { box-shadow: 0 0 26px rgba(56, 200, 255, 0.22), inset 0 0 12px rgba(56, 200, 255, 0.09); }
 .join.solid { display: inline-flex; background: linear-gradient(90deg, var(--accent), var(--accent2)); border: 0; padding: 10px 20px; box-shadow: 0 0 27px rgba(56, 200, 255, 0.20); }
-button.join { font: inherit; cursor: pointer; }
+a.join { font: inherit; cursor: pointer; }
 
 /* tables */
 .table { box-shadow: 0 0 27px rgba(47, 107, 255, 0.09); overflow-x: auto; border: 1px solid var(--line2); border-radius: 12px; background: rgba(15, 21, 32, .7); }
@@ -161,34 +161,7 @@ canvas { display: block; width: 100%; height: min(70vh, 560px); background: var(
 .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; }
 .note { color: var(--dim); font: 12px var(--mono); margin-top: 12px; }
 
-/* setup dialog */
-dialog.setup { color: var(--text); border: 1px solid var(--line2); border-radius: 14px; padding: 0;
-  background: var(--panel); box-shadow: 0 0 60px rgba(47, 107, 255, .28); max-width: 460px; width: calc(100% - 32px); }
-dialog.setup::backdrop { background: rgba(4, 8, 14, .72); backdrop-filter: blur(3px); }
-dialog.setup .inner { padding: 22px 24px 20px; }
-dialog.setup h3 { margin: 0 0 4px; font: 700 24px/1.2 var(--head); text-transform: uppercase; letter-spacing: .02em; }
-dialog.setup .sub { text-align: left; margin: 0 0 18px; }
-dialog.setup .field { margin-bottom: 16px; }
-dialog.setup label { display: block; font: 600 13px/1.4 Inter, sans-serif; margin-bottom: 6px; }
-dialog.setup label small { display: block; font-weight: 400; color: var(--dim); }
-dialog.setup input[type=text], dialog.setup select { width: 100%; }
-dialog.setup .choice { display: flex; gap: 10px; align-items: flex-start; padding: 12px; border: 1px solid var(--line2);
-  border-radius: 10px; background: var(--panel2); }
-dialog.setup .choice input { flex: none; margin-top: 3px; width: auto; }
-dialog.setup .choice span { font-size: 14px; }
-dialog.setup .choice em { color: var(--dim); font-style: normal; font-size: 13px; }
-dialog.setup .local { margin-top: 10px; padding: 10px 12px; border-left: 3px solid var(--line2); color: var(--dim); font-size: 13px; }
-dialog.setup .local.on { border-left-color: var(--accent2); color: #b7c2d0; }
-dialog.setup .size { margin: 0 0 16px; padding: 10px 12px; border: 1px dashed var(--line2); border-radius: 10px;
-  font: 12px/1.6 var(--mono); color: var(--dim); }
-dialog.setup .actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 4px; }
-dialog.setup .actions .btn { cursor: pointer; }
-dialog.setup .go { border: 0; padding: 10px 20px; background: linear-gradient(90deg, var(--accent), var(--accent2));
-  color: #fff; font-weight: 700; }
-dialog.setup .err { color: #ff9d9d; font: 12px var(--mono); min-height: 16px; }
-dialog.setup .starting { display: none; padding: 4px 0 0; font-size: 14px; color: var(--dim); }
-dialog.setup.done .fields, dialog.setup.done .actions { display: none; }
-dialog.setup.done .starting { display: block; }
+/* footer */
 
 /* footer */
 footer { border-top: 1px solid var(--line); margin-top: 64px; padding: 28px 0; }
@@ -223,34 +196,6 @@ footer img { height: 30px; }
   </header>
   <main id="app">Loading…</main>
 </div>
-<dialog class="setup" id="setup">
-  <div class="inner">
-    <h3>Worker setup</h3>
-    <div class="fields">
-      <div class="field">
-        <label for="su-user">Your username<small>Shown on the leaderboard. Letters, digits, . _ -</small></label>
-        <input type="text" id="su-user" autocomplete="nickname" spellcheck="false" maxlength="32" placeholder="e.g. colin">
-      </div>
-      <div class="field">
-        <label for="su-client">Which client<small>You can switch later without reinstalling anything</small></label>
-        <select id="su-client"></select>
-      </div>
-      <div class="field">
-        <div class="choice">
-          <input type="checkbox" id="su-cloud">
-          <span>Use a cloud model<em> &mdash; optional. Your PC stays idle: no GPU, no Ollama, no Docker.</em></span>
-        </div>
-        <div class="local" id="su-local"></div>
-      </div>
-    </div>
-    <p class="err" id="su-err"></p>
-    <div class="actions">
-      <button class="btn" id="su-cancel" type="button">Cancel</button>
-      <button class="btn go" id="su-go" type="button">Save my choices</button>
-    </div>
-    <p class="starting" id="su-starting"></p>
-  </div>
-</dialog>
 <footer>
   <div class="wrap">
     <img src="logo.png" alt="RoConstruct">
@@ -315,100 +260,26 @@ function codeBar(source, mined, partial, total) {
          `<i class="m" style="width:${width(mined)}%"></i><i class="p" style="width:${width(partial)}%"></i></div>`;
 }
 
+/* One click opens the console, which then asks the two things that matter:
+   cloud or local model, and how the worker should run. The link only carries
+   which client and which server - every other choice stays in the terminal,
+   where `roc launch` repeats it later. */
 function joinLink(name, short) {
   if (!progress.server) return "";
   const c = progress.clients.find(c => c.name === name) || {name};
-  return `<button class="join${short ? "" : " solid"}" data-join="${esc(name)}" type="button">${
-    short ? "Help out" : "Help out on " + esc(title(c))} →</button>`;
-}
-
-/* Worker setup: optional username + client + cloud choice, saved to localStorage
-   so the worker terminal can pick them up. Nothing installs and nothing launches
-   from the browser - the user starts the worker themselves with `roc launch`. */
-const SETUP_KEY = "roc.setup.v1";
-const USER_RE = /^[A-Za-z0-9_.-]{2,32}$/;
-
-const setupDialog = () => document.getElementById("setup");
-
-function savedSetup() {
-  try { return JSON.parse(localStorage.getItem(SETUP_KEY)) || {}; } catch { return {}; }
-}
-
-function rememberSetup(value) {
-  try { localStorage.setItem(SETUP_KEY, JSON.stringify(value)); } catch { /* private mode */ }
-}
-
-function openSetup(client) {
-  const dlg = setupDialog(), saved = savedSetup();
-  const names = progress.clients.map(c => c.name);
-  const select = document.getElementById("su-client");
-  select.innerHTML = names.map(name => {
-    const c = progress.clients.find(c => c.name === name) || {name};
-    return `<option value="${esc(name)}">${esc(title(c))} &mdash; ${esc(name)}</option>`;
-  }).join("");
-  const cloud = saved.cloud !== undefined ? !!saved.cloud : false;
-  select.value = names.includes(saved.client) ? saved.client : (names.includes(client) ? client : names[0]);
-  document.getElementById("su-user").value = saved.user || "";
-  document.getElementById("su-cloud").checked = cloud;
-  document.getElementById("su-err").textContent = "";
-  dlg.classList.remove("done");
-  syncLocalNote();
-  dlg.showModal();
-  document.getElementById("su-user").focus();
-}
-
-function syncLocalNote() {
-  const cloud = document.getElementById("su-cloud").checked;
-  const note = document.getElementById("su-local");
-  note.classList.toggle("on", !cloud);
-  note.textContent = cloud
-    ? ""
-    : "Local model: RoConstruct will ask before downloading Ollama on first run. Docker and Rev.ng stay off unless you ask later.";
-}
-
-function validateSetup() {
-  const user = document.getElementById("su-user").value.trim();
-  if (!USER_RE.test(user)) return {error: "Pick a username of 2-32 letters, digits, dot, underscore or dash."};
-  const client = document.getElementById("su-client").value;
-  if (!client) return {error: "Pick a client."};
-  const cloud = document.getElementById("su-cloud").checked;
-  rememberSetup({user, client, cloud});
-  return {ok: true};
-}
-
-function launchSetup() {
-  const {ok, error} = validateSetup();
-  const err = document.getElementById("su-err");
-  if (error) { err.textContent = error; return; }
-  err.textContent = "";
-  const dlg = setupDialog();
-  dlg.classList.add("done");
-  document.getElementById("su-starting").innerHTML =
-    "Saved. When you are ready, open a terminal in the RoConstruct folder and run:<br>"
-    + `<code>roc launch</code><br><br>`
-    + "That opens the worker setup where you can pick the model, worker count and client. "
-    + "Nothing runs until you start it yourself.";
-}
-
-function wireSetup() {
-  document.addEventListener("click", e => {
-    const button = e.target.closest("[data-join]");
-    if (button) { e.preventDefault(); openSetup(button.dataset.join); }
-  });
-  document.getElementById("su-cancel").onclick = () => setupDialog().close();
-  document.getElementById("su-go").onclick = launchSetup;
-  document.getElementById("su-cloud").onchange = syncLocalNote;
-  setupDialog().addEventListener("cancel", () => setupDialog().classList.remove("done"));
+  const q = new URLSearchParams({client: name, server: progress.server});
+  return `<a class="join${short ? "" : " solid"}" href="roconstruct://work?${q}" `
+       + `title="Set up a worker for ${esc(title(c))}">${
+          short ? "Help out" : "Help out on " + esc(title(c))} →</a>`;
 }
 
 function joinHelp() {
   if (!progress.server) return "";
   return `<div><p><a href="${REPO}/archive/refs/heads/main.zip">Download RoConstruct</a>, unzip it, then run
     <code>install.cmd</code> &mdash; a small bootstrap that checks Python 3.12, installs two pip packages, downloads the
-    exact compiler bundles and registers <code>roconstruct://</code>. It does not install Ollama,
-    Docker or any model. Then run <code>roc launch</code> to start the worker and pick your options.
-    The client exe downloads itself when needed, and running install.cmd again never reinstalls anything
-    or touches your work.</p></div>`;
+    exact compiler bundles and registers <code>roconstruct://</code>. It installs no Ollama, Docker or model.
+    Then click "Help out": the worker starts in a console window, fetching the client exe and its compiler
+    the first time. Running install.cmd again never reinstalls anything or touches your work.</p></div>`;
 }
 
 function commitPanel() {
@@ -675,7 +546,6 @@ Promise.all([
   fetch("history.json", {cache: "no-cache"}).then(r => r.ok ? r.json() : []).catch(() => []),
 ]).then(([p, h]) => {
   progress = p; history = h; hIdx = h.length - 1;
-  wireSetup();
   route();
   addEventListener("hashchange", () => route());
 }).catch(() => { app.textContent = "progress.json missing: run `roc progress`."; });

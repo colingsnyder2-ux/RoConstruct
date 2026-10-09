@@ -173,6 +173,11 @@ def plan():
                                                                           size_of(settings))],
                       size_of(settings)))
 
+    handoff_config = ROOT / "roconstruct-worker.json"
+    if handoff_config.exists():
+        steps.append(("files", "The signed worker setup (roc setup saves this)",
+                      [("roconstruct-worker.json", size_of(handoff_config))], size_of(handoff_config)))
+
     from roc import link
     if os.name == "nt" and link.installed():
         steps.append(("registry", "One-click roconstruct:// links (Windows registry)", [], 0))

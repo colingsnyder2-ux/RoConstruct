@@ -22,6 +22,23 @@ SETTINGS = ROOT / "roconstruct-settings.json"
 MAX_WORKERS = 256
 USER_RE = re.compile(r"^[A-Za-z0-9_.-]{2,32}$")
 SITE = "https://colingsnyder2-ux.github.io/RoConstruct/"
+# Tried in order when a cloud worker did not pick a model: cheap first, then the
+# stronger coder models. Every entry needs only its provider's API key.
+CLOUD_DEFAULTS = ("deepseek:deepseek-flash", "nvidia:qwen/qwen2.5-coder-32b-instruct",
+                  "openai:gpt-5-mini", "gemini:gemini-2.5-flash")
+
+
+def cloud_default():
+    """The cheapest cloud model whose key is already set, or None."""
+    from roc import providers
+    for model in CLOUD_DEFAULTS:
+        if providers.is_cloud(model) and providers.available(model):
+            return model
+    for name, config in sorted(providers.providers().items()):
+        remote = (config.get("defaults") or [None])[0]
+        if remote and providers.key_available(config["key_env"]):
+            return "%s:%s" % (name, remote)
+    return None
 
 
 def pretty_log(message):
@@ -165,6 +182,109 @@ def clear_setting(name):
     s.pop(name, None)
     SETTINGS.write_text(json.dumps(s, indent=1))
     return s
+
+
+# Conservative ceilings for a worker someone started from a link: bounded prompts,
+# bounded spend, and a cost cap when the provider has known pricing.
+HANDOFF_CLOUD_REQUESTS = 1000
+HANDOFF_CLOUD_TOKENS = 2000000
+HANDOFF_CLOUD_COST_USD = 1.0
+
+
+def keep_awake():
+    """Stop Windows sleeping while the worker runs (screen may still turn off)."""
+    if os.name == "nt":
+        import ctypes
+        ctypes.windll.kernel32.SetThreadExecutionState(0x80000000 | 0x00000001)
+
+
+def resolve_model(payload):
+    """Model for a signed handoff: cloud by default, local only when asked for.
+
+    Returns (model, cloud_allowed). Raises SystemExit with a repair hint when the
+    config asks for something this machine cannot do, so `roc doctor` and the
+    worker agree on why.
+    """
+    from roc import providers
+    mode = payload.get("mode") or "cloud"
+    model = payload.get("model") or None
+    cloud_allowed = bool(payload.get("cloud"))
+    if providers.is_cloud(model or "") and not cloud_allowed:
+        raise SystemExit("This setup chose a cloud model but cloud consent was not given. Run: roc setup")
+    if mode == "cloud" and not cloud_allowed:
+        # Never quietly load a multi-gigabyte local model instead: local is opt-in.
+        raise SystemExit("A cloud worker needs cloud consent. Run: roc setup, or pick 'Use local model'.")
+    if model and providers.is_cloud(model):
+        if not providers.available(model):
+            _provider, _remote, config = providers.parse_model(model)
+            raise SystemExit("Cloud key missing: set %s (roc provider setup)" % config["key_env"])
+        return model, cloud_allowed
+    if mode == "local":
+        local = draft.pick_model(model)
+        if not local:
+            raise SystemExit("Local mode needs an installed model. Run: roc local-ai")
+        return local, cloud_allowed
+    # Cloud-first: an installed local model is ignored unless the link named it.
+    model = cloud_default()
+    if model:
+        return model, cloud_allowed
+    local = draft.pick_model(model)
+    if local:
+        return local, cloud_allowed
+    raise SystemExit("No cloud model key is set, and no local model is installed.\n"
+                     "  Save a cloud key:      roc provider setup\n"
+                     "  Or use a local model:  roc local-ai")
+
+
+def main_args(payload, argv=()):
+    """Run a worker described by a signed handoff config (see roc.handoff).
+
+    Cloud is the default: no Ollama, no Docker, no GPU. Local mode is only used
+    when the config asked for it explicitly.
+    """
+    import argparse
+    from roc import providers
+    ap = argparse.ArgumentParser(prog="roc launch", description="Run the worker from the signed setup config.")
+    ap.add_argument("--client", help="override the client from the config")
+    ap.add_argument("--model", help="override the model from the config")
+    ap.add_argument("--workers", help="bounded concurrent lease loops (1-256 or auto)")
+    ap.add_argument("--rounds", type=int, help="AI tries per function")
+    ap.add_argument("--max-size", type=int, help="skip functions bigger than this")
+    ap.add_argument("--jobs", type=int, help="stop after this many functions")
+    ap.add_argument("--no-revng", action="store_true", help="never use Rev.ng hints")
+    ap.add_argument("--dry-run", action="store_true", help="print the plan without leasing a job")
+    given = ap.parse_args(list(argv))
+
+    user = payload.get("user") or ""
+    server = (payload.get("server") or "").rstrip("/")
+    if not USER_RE.match(user):
+        raise SystemExit("Saved username is missing or invalid. Run: roc setup")
+    if not server:
+        raise SystemExit("No server address saved. Run: roc setup")
+    token = payload.get("token") or None
+    client = given.client or payload.get("client")
+    model, cloud_allowed = resolve_model(payload)
+    is_cloud = providers.is_cloud(model)
+    rounds = given.rounds if given.rounds else 4
+    max_size = given.max_size if given.max_size else 256
+    workers = given.workers or ("auto" if is_cloud else 1)
+    save_settings(user=user, server=server, token=token, cloud_allowed=cloud_allowed or None, model=model)
+    budget = providers.CloudBudget(HANDOFF_CLOUD_REQUESTS, HANDOFF_CLOUD_TOKENS,
+                                   HANDOFF_CLOUD_COST_USD if providers.has_pricing(model) else None)
+    print("Signed setup: user=%s client=%s server=%s model=%s (%s) workers=%s" %
+          (user, client or "any", server, model, "cloud" if is_cloud else "local", workers))
+    if is_cloud:
+        print("Cloud model: prompts are bounded and leave this PC. Only accepted source is uploaded.")
+    else:
+        print("Local model: this PC does the work (heavy GPU and CPU load).")
+    print("Leave this window open as long as you want to help. Close it to stop at any time.\n")
+    if given.dry_run:
+        return None
+    keep_awake()
+    return run_concurrent(server, user, token, model, rounds, max_size, not given.no_revng,
+                          given.jobs, workers=workers, only=[client] if client else None,
+                          cloud_allowed=cloud_allowed, cloud_budget=budget,
+                          max_tokens=2048, thinking="auto")
 
 
 _ANNOUNCE_LOCK = threading.Lock()
