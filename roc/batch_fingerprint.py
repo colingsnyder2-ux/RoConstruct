@@ -146,6 +146,39 @@ def batches(db, partials=False):
                 yield client, source, group
 
 
+def flag_batches(db):
+    """Try measured frame/inlining flags on exact-evidenced named classes."""
+    evidence = set()
+    for unit, source in db.execute("SELECT unit,source FROM funcs WHERE score=100 AND source IS NOT NULL"):
+        found = REF.search(source)
+        if not unit or not found:
+            continue
+        source = found.group(1)
+        family, token = source_family(source), source_class(source)
+        if token and unit_family(unit) == family and unit_class(unit) == token:
+            evidence.add((family, token, source.rsplit(": ", 1)[-1]))
+    groups = {}
+    for client, addr, unit, source in db.execute(
+            "SELECT client,addr,unit,source FROM funcs WHERE score BETWEEN 40 AND 99 AND source IS NOT NULL"):
+        found = REF.search(source)
+        if not unit or not found:
+            continue
+        source = found.group(1)
+        family, token = source_family(source), source_class(source)
+        if (family not in {"xtp", "roblox"} or unit_family(unit) != family or unit_class(unit) != token
+                or (family, token, source.rsplit(": ", 1)[-1]) not in evidence):
+            continue
+        flags = re.search(r"// roc-flags: ([^\n]+)", source).group(1)
+        flags = " ".join(flag for flag in flags.split() if not flag.startswith(("/Ob", "/Oy"))) + " /Ob1 /Oy-"
+        candidate = re.sub(r"// roc-flags: [^\n]+", "// roc-flags: " + flags, source)
+        if candidate != source:
+            groups.setdefault((client, candidate), set()).add(addr)
+    for (client, source), addrs in sorted(groups.items()):
+        addrs = sorted(addrs)
+        for start in range(0, len(addrs), 1000):
+            yield client, source, addrs[start:start + 1000]
+
+
 def key(client, source, addrs):
     return hashlib.sha256((client + "\0" + source + "\0" + ",".join(addrs)).encode()).hexdigest()
 
@@ -191,19 +224,23 @@ def main():
                       help="try foreign exact sources against identical named classes/families")
     mode.add_argument("--c-sources", action="store_true",
                       help="fingerprint C library sources using exact same-unit evidence")
+    mode.add_argument("--frame-flags", action="store_true",
+                      help="try measured /Ob1 /Oy- flags on exact-evidenced XTP/Roblox classes")
     parser.add_argument("--server", help="override saved server address")
     args = parser.parse_args()
     settings = worker.load_settings()
-    state_name = "batch-fingerprint-c.json" if args.c_sources else (
+    state_name = "batch-fingerprint-flags.json" if args.frame_flags else (
+        "batch-fingerprint-c.json" if args.c_sources else (
         "batch-fingerprint-cross-client.json" if args.cross_client else (
         "batch-fingerprint-partials.json" if args.partials else "batch-fingerprint.json")
-    )
+    ))
     state_path = ROOT / "work" / state_name
     state = json.loads(state_path.read_text()) if state_path.exists() else {"done": []}
     done = set(state.get("done", []))
     checked = {marker: set(addrs) for marker, addrs in state.get("checked", {}).items()}
     db = sqlite3.connect("file:work/server.db?mode=ro", uri=True)
-    planned = cross_client_batches(db) if args.cross_client else batches(db, partials=args.partials)
+    planned = (flag_batches(db) if args.frame_flags else
+               cross_client_batches(db) if args.cross_client else batches(db, partials=args.partials))
     if args.c_sources:
         planned = (item for item in planned if item[1].startswith("// roc-lang: c\n"))
     todo = list(pending_batches(planned, state))
