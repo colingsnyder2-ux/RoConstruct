@@ -85,7 +85,7 @@ def run(url):
     worker that starts runs exactly what was agreed. Cloud is the default path:
     no Ollama, no Docker, no GPU.
     """
-    from roc import analyze, clients, handoff, setup, worker
+    from roc import analyze, clients, handoff, providers, setup, worker
     parts = parse_full(url)
     client, server, token = parts["client"], parts["server"].rstrip("/"), parts.get("token")
     mode = parts.get("mode") if parts.get("mode") in handoff.MODES else "cloud"
@@ -112,17 +112,54 @@ def run(url):
         print("Analyzing %s (one time, about 10 seconds)..." % client)
         analyze.analyze(client, clients.exe_path(client, clients.load()[client]))
 
-    model = parts.get("model")
-    if mode == "local":
-        # The helper asked for a local model, so offer Ollama here and nowhere else.
-        model, _rounds, _size, _revng, _workers, _budget, _think = choose_local(s, model)
-    else:
-        model = cloud_model(s, cloud_allowed)
+    model, rounds, max_size, use_revng, workers, budget, thinking = choose_worker(s, mode)
+    cloud = providers.is_cloud(model)
     payload = handoff.save(user=user, client=client, server=server, token=token,
-                           mode=mode, cloud=cloud_allowed, model=model)
+                           mode="cloud" if cloud else "local", cloud=cloud, model=model)
     print("Saved a signed setup: %s" % handoff.config_path())
     worker.keep_awake()
-    return worker.main_args(payload)
+    return worker.main_args(payload, knobs(rounds, max_size, use_revng, workers))
+
+
+def choose_worker(settings, mode):
+    """The model path, then the worker knobs - what a link click asks in the console.
+
+    One question picks cloud or local. Then choose_options asks the model, the
+    worker mode, how many workers to run, and whether to open the advanced
+    options. Enter at each step keeps the last answer. Ollama is only ever
+    offered on the local branch, and Docker/Rev.ng not at all from here.
+    """
+    from roc import providers, worker as worker_module
+    if mode == "local":
+        return choose_local(settings, settings.get("model"))
+    # Cloud-first, but the helper still gets to say no: a silent default was the
+    # thing nobody asked for, so ask - and remember the answer.
+    cloud_allowed = bool(settings.get("cloud_allowed"))
+    if not cloud_allowed:
+        print("\nCloud models send bounded assembly and source clues off this PC.")
+        print("Your PC stays idle: no GPU, no Ollama, no Docker.")
+        if input("Use a cloud model? [y/N] ").strip().lower() not in ("y", "yes"):
+            print("Using a local model instead.")
+            return choose_local(settings, settings.get("model"))
+        cloud_allowed = True
+        worker_module.save_settings(cloud_allowed=True)
+    default_cloud = worker_module.cloud_default() or settings.get("model")
+    # force the questions every click: model, worker mode, worker count, advanced
+    fresh = dict(settings, model=default_cloud, worker_launcher_configured=False,
+                 cloud_allowed=cloud_allowed)
+    return choose_options(fresh)
+
+
+def knobs(rounds, max_size, use_revng, workers):
+    """The chosen options as CLI flags for worker.main_args."""
+    argv = ["--workers", str(workers)]
+    if isinstance(rounds, int):
+        argv += ["--rounds", str(rounds)]
+    if isinstance(max_size, int):
+        argv += ["--max-size", str(max_size)]
+    if not use_revng:
+        argv.append("--no-revng")
+    return argv
 
 
 def choose_local(settings, wanted):

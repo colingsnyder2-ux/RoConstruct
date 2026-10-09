@@ -53,9 +53,10 @@ echo  RoConstruct is installed and ready.
 echo.
 echo  Next: click "Help out" on any client at
 echo    https://colingsnyder2-ux.github.io/RoConstruct/index.html
-echo  That opens the worker in a console window and starts it.
+echo  A console opens and asks: cloud or local model, which model,
+echo  worker mode, how many workers, then start or edit the options.
 echo.
-echo  To pick your own options first, run instead:
+echo  Same questions any time from this folder:
 echo    py -3.12 roc.py launch
 echo.
 echo Something wrong? Run:  py -3.12 roc.py doctor

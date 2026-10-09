@@ -529,9 +529,14 @@ def test_doctor_flags_a_missing_python_package():
 def test_link_click_downloads_the_compiler_once_then_stops():
     """A link click fetches the compiler the client was built with, exactly once."""
     from roc import link
-    url = ("roconstruct://work?user=colin&client=2008-06&server=host:8765&mode=cloud&cloud=1")
+    url = ("roconstruct://work?user=colin&client=2008-06&server=host:8765")
     fetched = []
     entry = {"exe": "Roblox.exe", "sha256": "abc", "compiler_build": 21022, "compiler": "VS2008 RTM"}
+    # cloud? yes, then Enter through the model / mode / workers / advanced menus
+    def answers(prompt=""):
+        if "cloud model" in prompt:
+            return "y"
+        return ""
 
     def click(compilers):
         with temp_config() as handoff, \
@@ -551,7 +556,9 @@ def test_link_click_downloads_the_compiler_once_then_stops():
              patch("roc.providers.available", return_value=True), \
              patch("roc.worker.cloud_default", return_value="deepseek:deepseek-flash"), \
              patch("roc.draft.ollama_models", return_value=[]), \
-             patch("roc.draft.pick_model", return_value=None):
+             patch("roc.draft.pick_model", return_value="deepseek:deepseek-flash"), \
+             patch("roc.optimizer.profile", return_value=None), \
+             patch("builtins.input", answers):
             link.run(url)
         return run_worker.call_args
 
@@ -692,39 +699,119 @@ def test_website_starts_the_worker_with_one_click():
     assert 'id="app"' in page, "the page needs its main container"
     # the links are built from the live client list and the published server
     assert 'href="roconstruct://work?${q}"' in page, "Help out must be a protocol link"
-    assert 'new URLSearchParams({client: name, server: progress.server,' in flat
-    assert 'mode: "cloud", cloud: "1"' in flat, "the link says which model path to use"
-    assert "joins through `roc launch`" in flat or "roc launch" in flat
+    assert "new URLSearchParams({client: name, server: progress.server})" in flat
+    # the link decides nothing about the model: that is asked in the console
+    assert 'mode: "cloud"' not in flat, "the link must not pre-pick the model path"
+    assert 'cloud: "1"' not in flat, "the link must not pre-give cloud consent"
+    assert "roc launch" in flat
     # ... and nothing that used to stand between the click and the worker
     for gone in ('<dialog', "id=\"setup\"", "showModal()", "location.href = url",
                  "localStorage", "su-user", "su-cloud"):
         assert gone not in page, "the setup prompt is back: %s" % gone
 
 
-def test_a_website_link_reaches_the_worker_without_asking_anything_else():
-    """parse_full must accept exactly what the site builds, and run() must launch."""
+def test_a_website_link_asks_cloud_or_local_then_runs():
+    """The link carries client+server only; the console picks the model path.
+
+    Answering the cloud question yes must send the chosen options through to the
+    worker; answering no must go down the local branch, where Ollama is offered.
+    """
     from roc import link
-    url = ("roconstruct://work?client=2007-08"
-           "&server=https%3A%2F%2Fcolinpc.tail2879d0.ts.net&mode=cloud&cloud=1")
+    url = "roconstruct://work?client=2007-08&server=https%3A%2F%2Fcolinpc.tail2879d0.ts.net"
     parts = link.parse_full(url)
-    assert parts == {"client": "2007-08", "server": "https://colinpc.tail2879d0.ts.net",
-                     "mode": "cloud", "cloud": "1"}, parts
+    assert parts == {"client": "2007-08", "server": "https://colinpc.tail2879d0.ts.net"}, parts
+
+    def run_click(answer, settings, stub_local, stub_cloud):
+        with temp_config() as handoff, \
+             patch("roc.link.parse_full", return_value=parts), \
+             patch("roc.link.wait_for_exe"), \
+             patch("roc.worker.load_settings", return_value=settings), \
+             patch("roc.worker.save_settings"), \
+             patch("roc.clients.load", return_value={"2007-08": {"compiler_build": 21022,
+                                                                 "compiler": "VS2008 RTM"}}), \
+             patch("roc.setup.compilers", return_value={21022: "cl"}), \
+             patch("roc.link.choose_options", side_effect=stub_cloud), \
+             patch("roc.link.choose_local", side_effect=stub_local), \
+             patch("roc.worker.keep_awake"), \
+             patch("roc.worker.main_args", return_value="ran") as run, \
+             patch("builtins.input", lambda prompt="": answer):
+            link.run(url)
+        return run
+
+    def cloud_choices(settings):
+        return "deepseek:deepseek-flash", 4, 256, True, 6, 4096, "auto"
+
+    def local_choices(settings, wanted):
+        raise AssertionError("cloud was chosen, so the local branch must not run")
+
+    run = run_click("y", {"user": "colin", "known_servers": []}, local_choices, cloud_choices)
+    assert run.called, "a click must reach the worker"
+    payload, argv = run.call_args.args
+    assert payload["client"] == "2007-08" and payload["cloud"] is True
+    assert payload["mode"] == "cloud" and payload["model"] == "deepseek:deepseek-flash"
+    assert argv == ["--workers", "6", "--rounds", "4", "--max-size", "256"]
+
+    def cloud_refused(settings):
+        raise AssertionError("the local branch must run when cloud is declined")
+
+    def local_choices(settings, wanted):
+        return "qwen2.5-coder:7b", 2, 96, False, 1, 2048, "auto"
+
+    run = run_click("", {"user": "colin", "known_servers": []}, local_choices, cloud_refused)
+    payload, argv = run.call_args.args
+    assert payload["cloud"] is False and payload["mode"] == "local"
+    assert payload["model"] == "qwen2.5-coder:7b"
+    assert argv == ["--workers", "1", "--rounds", "2", "--max-size", "96", "--no-revng"]
+
+
+def test_cloud_consent_is_asked_once_and_remembered():
+    """Declining or agreeing must not re-ask on every click."""
+    from roc import link
+    url = "roconstruct://work?client=2007-08&server=host:8765"
+    parts = link.parse_full(url)
+    asked = []
+
+    def choose_options(settings):
+        return "deepseek:deepseek-flash", 4, 256, True, 1, 2048, "auto"
+
     with temp_config() as handoff, \
          patch("roc.link.parse_full", return_value=parts), \
          patch("roc.link.wait_for_exe"), \
-         patch("roc.worker.load_settings", return_value={"user": "colin", "known_servers": []}), \
+         patch("roc.worker.load_settings",
+               return_value={"user": "colin", "known_servers": [], "cloud_allowed": False}), \
+         patch("roc.worker.save_settings") as saved, \
+         patch("roc.clients.load", return_value={"2007-08": {"compiler_build": 21022,
+                                                             "compiler": "VS2008 RTM"}}), \
+         patch("roc.setup.compilers", return_value={21022: "cl"}), \
+         patch("roc.link.choose_options", side_effect=choose_options), \
+         patch("roc.worker.keep_awake"), \
+         patch("roc.worker.main_args", return_value="ran"), \
+         patch("builtins.input",
+               lambda prompt="": asked.append(prompt) or ("y" if "cloud model" in prompt else "")):
+        link.run(url)
+    consent = [p for p in asked if "cloud model" in p]
+    assert len(consent) == 1, "the cloud question must be asked exactly once: %s" % asked
+    assert saved.call_args_list, "the answer must be remembered"
+    assert any(kw.get("cloud_allowed") is True
+               for _args, kw in saved.call_args_list), saved.call_args_list
+    # second click: consent already recorded, no question
+    asked.clear()
+    with temp_config() as handoff, \
+         patch("roc.link.parse_full", return_value=parts), \
+         patch("roc.link.wait_for_exe"), \
+         patch("roc.worker.load_settings",
+               return_value={"user": "colin", "known_servers": [], "cloud_allowed": True}), \
          patch("roc.worker.save_settings"), \
          patch("roc.clients.load", return_value={"2007-08": {"compiler_build": 21022,
                                                              "compiler": "VS2008 RTM"}}), \
          patch("roc.setup.compilers", return_value={21022: "cl"}), \
-         patch("roc.link.cloud_model", return_value="deepseek:deepseek-flash"), \
+         patch("roc.link.choose_options", side_effect=choose_options), \
          patch("roc.worker.keep_awake"), \
-         patch("roc.worker.main_args", return_value="ran") as run:
+         patch("roc.worker.main_args", return_value="ran"), \
+         patch("builtins.input", lambda prompt="": asked.append(prompt) or ""):
         link.run(url)
-    assert run.called, "a click must reach the worker"
-    payload = run.call_args.args[0]
-    assert payload["client"] == "2007-08" and payload["cloud"] is True
-    assert payload["mode"] == "cloud" and payload["model"] == "deepseek:deepseek-flash"
+    assert not [p for p in asked if "cloud model" in p], \
+        "consent is remembered, so the second click must not ask again"
 
 
 if __name__ == "__main__":

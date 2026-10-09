@@ -38,9 +38,17 @@ The installer is deliberately tiny: **no GPU, no Ollama, no Docker.**
 2. Double-click **`install.cmd`**. It checks for Python 3.12, installs two pip packages (`pefile`, `capstone`), downloads the exact MSVC compiler bundles, and registers `roconstruct://`. It prints the download size and time before it starts. No admin rights needed.
 3. Click **Help out** on any client at the [RoConstruct website](https://colingsnyder2-ux.github.io/RoConstruct/index.html).
 
-That is the whole setup. The click opens a console window that fetches the client exe and its compiler (the only big downloads, the first time), analyses the binary, and starts the worker. Close the window to stop.
+That is the whole setup. The click opens a console window that:
 
-Prefer to choose your own options first? Run `roc launch` in the RoConstruct folder instead — it asks the same questions in the terminal (username, client, cloud model) plus the worker knobs, then runs the worker in that window. Your saved answers are reused, so a repeat `roc launch` starts with one Enter.
+1. asks **cloud or local model** — cloud is the light one (your PC stays idle, no GPU, no Ollama, no Docker); local uses your GPU and offers Ollama there and only there;
+2. asks which **model** from a numbered list, Enter keeps the default;
+3. asks the **worker mode** (Recommended / Fast / Deep / Advanced / Optimize);
+4. asks **how many workers** to run (`1`–`256`, or `auto`);
+5. asks whether to **open the advanced options** — Enter skips them and starts, `y` lets you edit rounds, output budget, Rev.ng, thinking and strategy.
+
+The same console fetches the client exe and its compiler (the only big downloads, the first time), analyses the binary, then runs the worker. Close the window to stop.
+
+`roc launch` does the same thing any time, without needing the website.
 
 **install.cmd installs nothing else.** No Ollama, no Docker, no local model, no model weights. Local AI is opt-in and lives in its own package (see [packages](#packages)) or behind `roc local-ai`.
 
@@ -50,7 +58,7 @@ The client exe and its compiler are the only large downloads, and they are neede
 
 Running `install.cmd` again is safe. Interrupted downloads resume, an existing compiler or client is never re-downloaded, and `work/`, `src/` and your settings are left untouched.
 
-Once set up, the website link starts the worker directly, and `roc launch` runs it again from the signed setup. **`roc doctor`** prints what is broken and the exact command that fixes it.
+Once set up, the website link asks those five questions again each time, and `roc launch` does the same from the terminal. **`roc doctor`** prints what is broken and the exact command that fixes it.
 
 To update an existing Git checkout without removing clients, mined work, or settings, double-click **`update.cmd`**.
 
@@ -170,10 +178,11 @@ roc install --yes --client C    skip the questions, and include C's exe in the s
 roc setup [link]                ask username / client / cloud, save a signed config
 roc setup --launch              do all that and start the worker
 roc setup --local               choose a local model instead (asks before installing Ollama)
-roc launch                       configure the worker in this terminal and run it
+roc launch                       ask cloud/local, model, workers, options; then run
 roc launch --setup               answer the setup questions again, then run
 roc launch --workers 4           override the worker count for this run
 roc launch --dry-run             show the plan without taking a job
+roc link "roconstruct://..."     what a website "Help out" click runs
 roc doctor [--json] [--no-check] diagnose this install and print repair steps
 roc local-ai [--docker]         opt-in: Ollama for local models, Docker/Rev.ng only if asked
 roc model [name|default]         show or choose AI model
