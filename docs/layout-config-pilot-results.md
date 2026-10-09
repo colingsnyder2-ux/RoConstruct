@@ -131,3 +131,7 @@ Unicode/MBCS shard: fresh `UNICODE _UNICODE` and `_MBCS` preprocessing matched
 baseline on six ReportControl targets (`91,92,93,94,95,64`). Combining Unicode
 with shared-MFC yielded (`93,94,99,96,100,64`): one new exact, but mixed
 hypotheses. No standalone Unicode gain; do not promote.
+
+Data triage: 10 stored XTP 99% candidates across 2007-08 were recompiled and
+checked. All remained code 99%; none reached code 100%, so none qualified for a
+data-only mismatch test. Do not spend typed-table recovery budget on these rows.
