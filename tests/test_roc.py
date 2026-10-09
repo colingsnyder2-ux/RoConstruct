@@ -1609,6 +1609,16 @@ def test_mutate_validated():
     assert mutate.improve("C", "1", neg, check=prefer_neg).speculative is True
 
 
+def test_mutate_preserves_diagnosis_metadata():
+    def diagnosed_check(c, a, t, f=None, include_diagnosis=False):
+        result = (50, None, None, None)
+        return result + ({"mismatch_class": "calling convention mismatch",
+                          "classifications": ["return cleanup"]},) if include_diagnosis else result
+    result = mutate.improve("C", "1", "int f(){ return 1; }", check=diagnosed_check)
+    assert result.diagnosis["mismatch_class"] == "calling convention mismatch"
+    assert result.diagnosis["classifications"] == ["return cleanup"]
+
+
 def test_topk_and_benchmark_summary():
     topk = select_topk([(50, "a"), (90, "b"), (90, "b "), (70, "c")])
     assert topk == [(90, "b"), (70, "c"), (50, "a")]

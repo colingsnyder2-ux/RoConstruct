@@ -774,6 +774,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
     phase_seconds = {}
     failure_reason = None
     round_stats = []
+    baseline_diagnosis = {}
     lease_lost = threading.Event()
     deadline = started + 600
 
@@ -859,10 +860,13 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
             stage("compiler repair")
             repair_started = time.monotonic()
             repaired = mutate.improve(client, addr, repair_source, flags, guided=True)
+            baseline_diagnosis = repaired.diagnosis
             repair_seconds = round(time.monotonic() - repair_started, 3)
             phase_seconds["repair"] = repair_seconds
             round_stats.append({"round": "mutate", "score": repaired[0],
                                 "mutations": repaired.mutations,
+                                "mismatch_class": baseline_diagnosis.get("mismatch_class"),
+                                "classifications": baseline_diagnosis.get("classifications", [])[:8],
                                 "tried": repaired[2],
                                 "compile_seconds": repair_seconds})
             log("  compiler repair: %d%% -> %d%%, tried %d" %
@@ -981,10 +985,14 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
             stage("repairing generated partial")
             repair_started = time.monotonic()
             repaired = mutate.improve(client, addr, src, flags, guided=True)
+            if not baseline_diagnosis:
+                baseline_diagnosis = repaired.diagnosis
             repair_seconds = round(time.monotonic() - repair_started, 3)
             phase_seconds["repair_generated"] = repair_seconds
             round_stats.append({"round": "mutate", "source": "llm_partial",
                                 "score": repaired[0], "mutations": repaired.mutations,
+                                "mismatch_class": repaired.diagnosis.get("mismatch_class"),
+                                "classifications": repaired.diagnosis.get("classifications", [])[:8],
                                 "tried": repaired[2], "compile_seconds": repair_seconds})
             log("  generated partial repair: %d%% -> %d%%, tried %d" %
                 (score, repaired[0], repaired[2]))
@@ -1059,6 +1067,8 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                            strategy=strategy,
                            size=job.get("size", 0), base_score=job.get("score", 0), score=result,
                            score_gain=max(result - job.get("score", 0), 0), improved=improved,
+                           mismatch_class=baseline_diagnosis.get("mismatch_class"),
+                           mismatch_evidence=baseline_diagnosis.get("classifications", [])[:8],
                            source_hints=len(source_hints) if 'source_hints' in locals() else 0,
                            family_id=family_id if 'family_id' in locals() else None,
                            family_exemplar=bool(('examples' in locals()) and examples and family_id),

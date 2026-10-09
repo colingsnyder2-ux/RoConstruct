@@ -1102,11 +1102,12 @@ def legacy_fallback_allowed(score, diagnosis):
 
 
 class ImproveResult(tuple):
-    """(score, src, tried) plus `.speculative`; unpacks like the old 3-tuple."""
-    def __new__(cls, score, src, tried, speculative=False, mutations=()):
+    """(score, src, tried) plus evidence metadata; old unpacking stays valid."""
+    def __new__(cls, score, src, tried, speculative=False, mutations=(), diagnosis=None):
         self = super().__new__(cls, (score, src, tried))
         self.speculative = speculative
         self.mutations = list(mutations)
+        self.diagnosis = diagnosis or {}
         return self
 
 
@@ -1151,7 +1152,7 @@ def improve(client, addr, src, flags=None, check=None, guided=False,
         base = 0
     best, tried, speculative, mutations = (base, src), 0, False, []
     if base == 100:
-        return ImproveResult(base, src, 0, mutations=mutations)
+        return ImproveResult(base, src, 0, mutations=mutations, diagnosis=diagnosis)
     legacy = []
     for fn in MUTATORS:
         try:
@@ -1193,4 +1194,4 @@ def improve(client, addr, src, flags=None, check=None, guided=False,
                                                                   "branch_condition", "calling_convention")
         if s == 100:
             break
-    return ImproveResult(best[0], best[1], tried, speculative, mutations)
+    return ImproveResult(best[0], best[1], tried, speculative, mutations, diagnosis)
