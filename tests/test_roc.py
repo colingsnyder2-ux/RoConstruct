@@ -507,6 +507,23 @@ def test_model_pricing_is_exact_and_usable_for_caps():
         assert not providers.has_pricing("deepseek:other")
 
 
+def test_lib_compile_variants_stops_at_first_failure():
+    from roc import libs, match
+    recipe = {"grid": ["/O2", "/Ox", "/O1"], "langs": ["c"]}
+    calls = []
+
+    def fake_compile(client, src, flags=None, build=None):
+        calls.append(flags)
+        if flags == "/Ox":
+            raise match.CompileError("nope")
+        return b"obj"
+
+    with patch("roc.match.compile_text", side_effect=fake_compile):
+        out = libs._compile_variants("2009-06", "zlib-1.2.3", "f.c", "c", 30729, recipe)
+    assert calls == ["/O2", "/Ox"], "must stop at the first flag that fails"
+    assert len(out) == 1
+
+
 def test_strip_reasoning_drops_think_blocks():
     from roc import providers
     open_tag, close_tag = "<" + "thinking>", "</" + "thinking>"

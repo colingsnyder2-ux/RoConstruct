@@ -8,11 +8,13 @@ against every client. The matched source carries `// roc-lang/cl/flags` lines, s
 Sources are downloaded from the projects' own sites and checked against pinned SHA-256.
 """
 import hashlib
+import os
 import re
 import shutil
 import subprocess
 import tarfile
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 from roc import clients, fingerprint, match, setup
@@ -624,11 +626,29 @@ def source_for(name, path, lang, build, flags):
             % (lang, build, flags, kind, name, path.replace("\\", "/")))
 
 
+def _compile_variants(client, name, f, lang, build, r):
+    """One file across a recipe's flag grid; run in parallel with other files.
+
+    Keeps the sequential break: the first flag that fails to compile means the
+    remaining flags will not help either.
+    """
+    out = []
+    for flags in r.get("grid", GRID):
+        src = source_for(name, f, lang, build, flags)
+        try:
+            obj = match.compile_text(client, src, flags=flags, build=build)
+        except match.CompileError:
+            break
+        out.append((src, obj))
+    return out
+
+
 def run(names, targets, log=print):
     """Try every library recipe in `names` against the given client names. Returns {client: new}."""
     have = setup.compilers()
     tgts = {c: fingerprint.Target(c) for c in targets}
     new = {c: 0 for c in targets}
+    jobs = int(os.environ.get("ROC_JOBS") or 0) or min(12, os.cpu_count() or 4)
     for name in names:
         r = RECIPES[name]
         if r.get("archive") is True:
@@ -652,18 +672,26 @@ def run(names, targets, log=print):
             continue
         t0, hits = time.time(), 0
         for build in [b for b in r.get("builds", BUILDS) if b in have]:
+            ready = []
             for f in files_of(r, folder):
                 try:
                     unit(name, f, build)  # preprocess once (cached); skip files that don't
                 except match.CompileError:
                     continue
-                for lang in r["langs"]:
-                    for flags in r.get("grid", GRID):
-                        src = source_for(name, f, lang, build, flags)
-                        try:
-                            obj = match.compile_text(targets[0], src, flags=flags, build=build)
-                        except match.CompileError:
-                            break  # this language can't compile the file: other flags won't help
+                ready.extend((f, lang) for lang in r["langs"])
+            # Compiles dominate this pass (~0.3s each, tens of thousands of them),
+            # so run them concurrently and keep matching/saving serial: the
+            # fingerprint index is shared state.
+            with ThreadPoolExecutor(max_workers=jobs) as pool:
+                futures = {pool.submit(_compile_variants, targets[0], name, f, lang, build, r): f
+                           for f, lang in ready}
+                for future in as_completed(futures):
+                    f = futures[future]
+                    try:
+                        variants = future.result()
+                    except Exception:
+                        continue
+                    for src, obj in variants:
                         for c, t in tgts.items():
                             found = t.match_obj(obj, src)
                             if found:
