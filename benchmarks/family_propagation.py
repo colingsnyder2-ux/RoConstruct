@@ -1,6 +1,7 @@
 """Compiler-gated deterministic family-source propagation replay."""
 import argparse
 import json
+import sqlite3
 import sys
 from pathlib import Path
 
@@ -26,6 +27,18 @@ def source_for(session, addr):
     return None
 
 
+def db_source(client, addr):
+    path = Path(__file__).resolve().parents[1] / "work" / "server.db"
+    try:
+        db = sqlite3.connect("file:%s?mode=ro" % path, uri=True)
+        row = db.execute("SELECT source FROM funcs WHERE client=? AND addr=? AND score=100",
+                         (client, addr)).fetchone()
+        db.close()
+    except (OSError, sqlite3.Error):
+        return None
+    return row[0] if row and row[0] else None
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--client", required=True)
@@ -46,7 +59,8 @@ def main():
               "conversions": 0}
     details = []
     for key, representative, members in families.representatives(rows, disassemble):
-        source = source_for(args.representative_session, representative["addr"])
+        source = (source_for(args.representative_session, representative["addr"])
+                  or db_source(args.client, representative["addr"]))
         totals["families"] += 1
         if not source:
             continue

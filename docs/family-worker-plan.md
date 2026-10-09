@@ -56,6 +56,11 @@ Propagation replay produced 32 exact conversions on 2008-06 and 37 on 2009-06;
 2007-08 and 2010-06 had no safe literal rewrites. This validates fast-path
 value, not universal family coverage.
 
+Fresh full-section compiler-gated replays using DB-backed exact exemplars found
+45 exact zero-LLM conversions on 2008 `seg_007f0000` (547 siblings) and 35 on
+2009 `seg_00890000` (1,136 siblings). Recursive mode stayed bounded; no
+non-exact candidate became trusted.
+
 ## Next gates
 
 1. Run random whole-client holdout, not only repeated-family targets.
