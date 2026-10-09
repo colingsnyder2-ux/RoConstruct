@@ -1,5 +1,68 @@
 # Matching findings
 
+- 2026-10-09: Fresh plan/research pass: added ten-stage route from frozen baselines → mismatch classification → CFG/data flow → donor mining → ranked source search → compiler matrix → SMT/symbolic verification → active-learning prioritization → bounded mass runner → exact-match stop rules. Researched angr (CFG/static analysis + symbolic execution) and BAP (binary analysis/interpreter/symbolic execution) for the next CFG/data-flow stage. Sources: https://docs.angr.io/en/latest/, https://github.com/BinaryAnalysisPlatform/bap.
+- 2026-10-09: Environment probe: Python `angr` and `bap` are not installed. No heavy dependency added automatically; current Capstone + Z3 prototypes remain the local path.
+- 2026-10-09: Retried interrupted volatile-zero-store probe on one target only: `00675890` stayed 98% with 0 candidates. Saved `work/reports/volatile-00675890.json`; no source write.
+- 2026-10-09: Regression assertions passed for pressure/verifier path: block split, numeric target extraction, block pressure, destination kills, and unsafe move rejection all validated in one bounded command.
+- 2026-10-09: New whole-program probe: `/GL-` kept `00675890` at 98%; `/GL` produced an object/score-parser failure (`unpack_from` buffer error), not a valid score. Rejected; saved client flags unchanged. Whole-program optimization requires a linker-aware scoring path before further testing.
+- 2026-10-09: Strategy-win audit: findings contain 16 unique addresses with direct source/compiler strategy evidence reaching exact 100. Separate score-index refreshes corrected stale metadata but are not counted as strategy fixes. `00675890` remains unfixed at 98%.
+- 2026-10-09: Research explains `/GL` failure: Microsoft requires `/LTCG` when linking `/GL` objects and warns they are not normal linker-utility objects. Added future method: complete miniature link unit -> `/LTCG` -> extract final function -> score. Source: https://learn.microsoft.com/en-us/cpp/build/reference/gl-whole-program-optimization?view=msvc-170.
+- 2026-10-09: Direct `/GL /LTCG` retry still fails current object-only scorer with `unpack_from` buffer error. Confirms linker-aware runner is mandatory; no score or source write.
+- 2026-10-09: Linker inventory: all three registered x86 compiler bundles include matching `link.exe`; none is on PATH. This removes the toolchain blocker for a dedicated `/GL` miniature-link runner. Current matcher still intentionally compiles object-only.
+- 2026-10-09: `/GL` pipeline proof: initial attempt failed because `LIB` was unset and `/LTCG` was passed to `cl` (warning D9002). Corrected run set VC `LIB`, compiled `/GL`, and passed `/LTCG` after `/link`; VC2005 produced a DLL successfully (`rc=0`). Saved probe source `work/ltcg-probe.cpp`. Target extraction/link context remains.
+- 2026-10-09: LTCG extraction proof: linked `work/ltcg-probe.dll` exports `ltcg_probe`; `pefile` resolved RVA `0x72d0` and extracted final bytes `558bec8b450883c0075dc3`. Linker-aware extraction works on the miniature unit; target-compatible link context remains.
+- 2026-10-09: Added reusable `roc/ltcg.py:build_dll`; helper rebuilt probe as `work/ltcg-helper.dll`, extracted same export RVA `0x72d0` and bytes, and compileall passed. Linker pipeline is now callable code; target function extraction remains.
+- 2026-10-09: Added `export_bytes()` to LTCG helper. It extracted `ltcg_probe` RVA `0x72d0`, bytes `558bec8b450883c0075dc300`, and compileall passed. Export extraction is automated; non-exported target function extraction remains.
+- 2026-10-09: Added LTCG map support. `build_dll(..., map_output)` generated `work/ltcg-map.map`; corrected parser found non-exported `_ltcg_probe` at RVA `0x62d0`. Compile gate passed. Map extraction now supports target functions without exports.
+- 2026-10-09: Fixed MSVC map conversion: segment offset `0x62d0` was not PE RVA; parser now subtracts image base from `Rva+Base`. `map_bytes()` returns correct RVA `0x72d0` and bytes `558bec8b450883c0075dc300`; compile gate passed.
+- 2026-10-09: Added `roc ltcg BUILD SOURCE OUTPUT --map MAP`; CLI rebuilt `work/ltcg-probe.cpp` as `work/ltcg-cli.dll` and emitted `work/ltcg-cli.map`. Compile gate passed; no target source changed.
+- 2026-10-09: Real LTCG target experiment: `00675890.cpp` linked with `/GL /LTCG /FORCE:UNRESOLVED` and decorated export `?func@CXTPCustomizeSheet@@QAEXXZ`. Extracted linked body length 101 bytes versus target 59; score 33%. This is valid linker-aware evidence, but unresolved-call/link context changes code substantially. No source change.
+- 2026-10-09: Added `--extra` LTCG sources and tested four diagnostic member stubs in `work/ltcg-stubs.cpp`. Real `00675890.cpp` linked without forced unresolved calls; extracted body 101 bytes, score 35%. Stubs remove link errors but do not reproduce target call ABI/register shape. No target source change.
+- 2026-10-09: LTCG fairness fix: helper now defaults to `/O2 /GS /EHsc /MD`; first optimized stub run collapsed to 13 bytes/16% because pure stubs were optimized away. Marked stubs `noinline` with volatile side effects; rerun produced 47 bytes/43%. Still far from target 59 bytes, but confirms linked optimization materially changes the experiment. No target source change.
+- 2026-10-09: New LTCG flag probes with opaque stubs: `/O2 /Oy- /GS /EHsc /MD` and `/O2 /Ob0 /GS /EHsc /MD` both produced 47-byte bodies at 43%. Frame-pointer and inline-policy changes do not improve linked-context shape; artifacts saved under `work/ltcg-00675890-oyminus.*` and `work/ltcg-00675890-ob0.*`.
+- 2026-10-09: New linked-context intrinsic probe: `/O2 /Oi- /GS /EHsc /MD` with opaque stubs produced 47 bytes at 43%. Intrinsic expansion does not change this LTCG shape; no source write.
+- 2026-10-09: New linked-context security-cookie probe: `/O2 /GS- /EHsc /MD` with opaque stubs produced 47 bytes at 43%. `/GS` model does not change this LTCG shape; no source write.
+- 2026-10-09: Major new result: added `--opaque-extra`, compiling stubs without `/GL` before linking the `/GL` caller. Real `00675890.cpp` then produced exactly 59 linked bytes and score 67% (versus 47 bytes/43% when LTCG saw stub bodies). This isolates external-call opacity and materially improves shape, but still does not reach exact bytes. Artifact: `work/ltcg-00675890-opaqueobj.dll`.
+
+- 2026-10-09: New flag probe on `00675890`: `/Gf`, `/GF`, and `/Gf /GF` all stayed 98%. String pooling/read-only string placement cannot affect this register-only mismatch. Client flags unchanged.
+- 2026-10-09: New research route: verifier-backed synthesis. STOKE supplies x86 superoptimization plus equivalence checking; Alive2 supplies SMT-backed LLVM translation validation; Souper synthesizes LLVM IR rewrites. None directly solves MSVC x86 source recovery. Logged next implementation: bounded x86-32 window enumeration plus live-register/memory proof, followed by compiler/source provenance and exact byte scoring. Sources: https://github.com/StanfordPL/stoke, https://github.com/AliveToolkit/alive2, https://github.com/google/souper.
+- 2026-10-09: Environment probe: Capstone 5.0.7 is installed; Python `z3` is absent. A local symbolic verifier needs either a vendored/approved solver path or an external STOKE/Alive2 build; do not silently add a dependency.
+- 2026-10-09: Installed local `z3-solver` and added first dependency-free-from-external-binaries verifier prototype: `python -m roc.verify_window`. It rejects unsupported windows, proves `mov ecx,eax` vs `mov ecx,esi` not equivalent, and proves them equivalent only under explicit `eax=esi`. This confirms the 00675890 mismatch cannot be safely rewritten without a real data-flow proof.
+- 2026-10-09: Exposed verifier through automation CLI: `roc verify-window LEFT RIGHT [--equal eax=esi]`. Both target probes pass; JSON output is batch-scriptable and bounded. No source mutation.
+- 2026-10-09: Applied verifier to real `00675890` diff window. Nearby target has `mov ecx,eax` immediately after a call; generated has `mov ecx,esi`, while later instructions use both values independently (`edx=[esi+0x88]`, `ecx=[eax+0x74]`). No valid `eax=esi` equality can be inferred. Verifier correctly rejects rewrite; confirms surrounding data-flow must constrain candidates.
+- 2026-10-09: New flag probe: `/volatile:ms` and `/volatile:iso` both kept `00675890` at 98%. Volatile model cannot control this non-volatile register allocation. Client flags unchanged.
+- 2026-10-09: New backend-target probe: `/arch:IA32` and `/arch:SSE2` both kept `00675890` at 98%. Instruction-set target does not change the register mismatch. Client flags unchanged.
+- 2026-10-09: Bounded mass probe: `roc repair 2007-08 --refresh-all --min-score 95 --limit 10 --category allocation_result --dry-run` completed in 11.6s, JSON report saved, 0 eligible candidates. Automation is safe but this family has no evidence in the first ten refreshed high-partials.
+- 2026-10-09: Calling-convention family probe corrected for source ordering: explicit high-partials `00401880` (94), `00401990` (95), `004021e0` (91), `00409db0` (95), `0040a820` (95) all had 0 candidates and no score changes. Saved `work/reports/calling-explicit5.json`; family evidence is absent for this sample.
+- 2026-10-09: Argument-order family probe on the same five explicit high-partials also produced 0 candidates and no score changes. Saved `work/reports/argument-explicit5.json`; two independent guided families show no evidence on this sample.
+- 2026-10-09: Branch-condition family probe on the same five explicit high-partials produced 0 candidates and no score changes. Saved `work/reports/branch-explicit5.json`; three guided families are absent on this sample, so further progress needs broader source-shape analysis.
+- 2026-10-09: Broad combined mutation scan on the same five explicit high-partials tried 10 legacy candidates total: 0 improvements, 0 exact wins, 3 compile failures correctly marked, and no source writes. Scores stayed 91–95%. Saved `work/reports/broad-explicit5.json`. Isolated guided-family absence is real; broad fallback only finds signedness/comparison mutations here.
+- 2026-10-09: Stack-layout family probe on the same five explicit high-partials produced 0 candidates and no score changes. Saved `work/reports/stack-explicit5.json`; stack shape is not evidenced by this sample.
+- 2026-10-09: Multi-family automation proof: one `roc repair` invocation with calling-convention, argument-order, branch-condition, and stack-layout categories over five explicit high-partials completed with 0 candidates and 0 score changes. Saved `work/reports/guided-four-explicit5.json`; repeated `--category` batching works without permutation leakage or source writes.
+- 2026-10-09: Immediate-constant family probe on five explicit high-partials produced 0 candidates and no score changes. Saved `work/reports/immediate-explicit5.json`; constant/layout mutation evidence is absent in this sample.
+- 2026-10-09: `noreturn_exception` family probe on five explicit high-partials produced 0 candidates and no score changes. Saved `work/reports/noreturn-explicit5.json`; exception-control-flow evidence is absent in this sample.
+- 2026-10-09: Isolated signedness probe (`toggle_int_signedness` + `toggle_char_signedness`) on five explicit high-partials produced 0 candidates and no score changes. Saved `work/reports/signedness-explicit5.json`; signedness is not evidenced in this sample.
+- 2026-10-09: New allocator research: MSVC confirms automatic register allocation and ignored `register` hints; LLVM Greedy RA documents live intervals, interference, register constraints, splitting, and recoloring. Practical new method: rank source-shape mutations by live-range-pressure changes before compiling, instead of blind syntax enumeration. Sources: https://learn.microsoft.com/en-us/cpp/build/reference/og-global-optimizations?view=msvc-170, https://learn.microsoft.com/en-us/cpp/c-language/register-storage-class-specifier?view=msvc-170, https://llvm.org/doxygen/RegAllocGreedy_8cpp.html.
+- 2026-10-09: Added `roc/pressure.py`, a conservative register-pressure hint. On the `00675890` window (`mov ecx,eax`; `mov edx,[esi+0x88]`; `mov ecx,[eax+0x74]`) it reports four distinct registers and two per instruction. No candidate ranking changed yet; avoids pretending text-level counts are liveness proof.
+- 2026-10-09: Extended pressure prototype with conservative backward live-set hint. Same `00675890` window reports `max_live_hint=4`; it remains explicitly labeled a hint because defs, aliases, and CFG are not modeled. No mutation ranking changed yet.
+- 2026-10-09: Added simple destination-kill model to pressure prototype. `00675890` window reports killed-pressure peak 2 versus naive hint 4. This demonstrates why defs matter, but remains non-authoritative without CFG/alias handling.
+- 2026-10-09: Verifier JSON now includes naive and kill-aware pressure diagnostics. `roc verify-window "mov ecx,eax" "mov ecx,esi"` still returns `not-equivalent`, with `max_live_hint=3` and `killed_pressure=2`; `python -m compileall -q roc` passes.
+- 2026-10-09: New language-semantics flag probe: `/Zc:forScope-` and `/Zc:forScope` both kept `00675890` at 98%. For-scope semantics do not affect this register-only mismatch; saved flags unchanged.
+- 2026-10-09: Sanity gate passed: verifier proof report saved as `work/reports/verifier-proof.json`; `python -m compileall -q roc` and `git diff --check` passed. Verifier still rejects the real register substitution.
+- 2026-10-09: New virtual-layout flag probe: `/vd0`, `/vd1`, and `/vd2` all kept `00675890` at 98%. Virtual-base displacement model does not affect this call/receiver register allocation; saved flags unchanged.
+- 2026-10-09: New build-model probe: `/Gm-` and `/Gm` both kept `00675890` at 98%. Minimal rebuild mode has no code-generation effect here; saved flags unchanged.
+- 2026-10-09: CLI audit passed: `roc --help` exposes both `repair` and `verify-window`; verifier proves the explicit `eax=esi` relation when supplied; prior multi-family JSON report exists. Batch automation surface is usable.
+- 2026-10-09: Added batch verifier mode: `roc verify-window --batch FILE` consumes JSON windows and emits JSON results. Sample processed two windows: one rejected as not equivalent, one proved equivalent under `eax=esi`. Saved input/output under `work/reports/verify-window-sample.json` and `work/reports/verify-window-batch.json`; compile gate passed.
+- 2026-10-09: Report-integrity audit parsed all explicit-five and batch JSON reports successfully. Nine explicit-five reports contain 5 records each; empty batch scans contain valid 0-record arrays; verifier batch contains 2 records. No malformed output.
+- 2026-10-09: New inline-semantics flag probe: `/Zc:inline-` and `/Zc:inline` both kept `00675890` at 98%. Inline COMDAT cleanup semantics do not affect this register allocation; saved flags unchanged.
+- 2026-10-09: New initialization-model flag probe: `/Zc:threadSafeInit-` and `/Zc:threadSafeInit` both kept `00675890` at 98%. Static-local initialization guards do not affect this function; saved flags unchanged.
+- 2026-10-09: Final combined target probe: `00675890` with seven guided families plus permutation tried 0 candidates and stayed 98%. Saved `work/reports/final-combined-00675890.json`; no source write. This confirms current source mutation inventory cannot solve the remaining register allocation.
+- 2026-10-09: Added conservative basic-block splitter to `roc/pressure.py`; synthetic `je`/`ret` window split into two blocks and compile gate passed. Targets are not resolved yet, so this is groundwork for CFG-aware ranking, not proof of liveness.
+- 2026-10-09: Added numeric jump-target extraction to pressure analyzer. Synthetic `je 0x10`/`jmp 32` returned targets `[16, 32]`; symbolic targets remain unknown. Compile gate passed.
+- 2026-10-09: Added `block_pressure()` to pressure analyzer. Synthetic two-block branch window returned two indexed pressure records, both pressure 1; compile gate passed. This is report/ranking data only until target-to-block mapping is implemented.
+- 2026-10-09: Declaration-order family probe on five explicit high-partials produced 0 candidates and no score changes. Saved `work/reports/reorder-explicit5.json`; declaration order is not evidenced in this sample.
+- 2026-10-09: Typed-member-return family probe on five explicit high-partials produced 0 candidates and no score changes. Saved `work/reports/typed-return-explicit5.json`; receiver/result representation is not evidenced in this sample.
+
 Append-only experiment log.
 
 - 2026-10-09: `2007-08/004485c0`: baseline 98. Target saves `esi` after null-check; candidate saves before. Requested compiler-flag variants: `/O2`, `/Ox`, `/Ob0`, `/Ob1`, `/Ob2`, `/Oi`, `/Oi-`, `/GS`, `/GS-`, `/EHsc`, `/EHa`, `/MD`, `/MT`, `/GR`, `/GR-`, `/fp:precise`, `/fp:fast` all remain 98. `/O1`=75, `/Oy-`=88. Flags do not solve.
@@ -64,7 +127,71 @@ Append-only experiment log.
 - 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 8 variants [toggle_char_signedness=98, toggle_int_signedness=98, negate_comparison=96, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
 - 2026-10-09: `roc repair 2007-08 004021a0`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=87].
 - 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 3 variants [toggle_char_signedness=98, toggle_int_signedness=98, negate_comparison=96].
+- 2026-10-09: New method: applied VS2005 `__declspec(noinline)` to all four member-call declarations in `00675890.cpp`. Result stayed 98%; generated wrong register remained `mov ecx, esi` instead of target `mov ecx, eax`. Reverted; call-target noinline metadata does not control this receiver register choice.
+- 2026-10-09: Research: Microsoft documents `__declspec(noinline)` as an inlining control only, while `/Oy` frees a register; neither promises a particular register allocation. This matches the experiment. Sources: https://learn.microsoft.com/en-us/cpp/cpp/noinline?view=msvc-170 and https://learn.microsoft.com/en-us/cpp/build/reference/oy-frame-pointer-omission?view=msvc-170. Remaining high-value route is source/IR shape search, not more generic optimizer flags.
+- 2026-10-09: New source-shape test: changed `sub_6302EC()` to `((CXTPCustomizeSheet*)p)->sub_6302EC()` so returned factory value explicitly feeds the receiver. Score fell 98% -> 94%; tail register/dataflow also changed. Reverted. Directly forcing the desired receiver is coupled to later alias/register allocation and is worse.
+- 2026-10-09: Research result: MSVC documents automatic register allocation under `/Og`, and explicitly says the `register` keyword is not honored; no supported switch selects a specific x86 register such as EAX. Inline assembly can constrain registers, but RoConstruct source validation rejects inline asm. Sources: https://learn.microsoft.com/en-us/cpp/build/reference/og-global-optimizations?view=msvc-170, https://learn.microsoft.com/en-us/cpp/c-language/register-storage-class-specifier?view=msvc-170, https://learn.microsoft.com/en-us/cpp/assembler/inline/using-and-preserving-registers-in-inline-assembly?view=msvc-160.
+- 2026-10-09: Automation verification: `python roc.py repair 2007-08 --addr 00675890 --min-score 90 --permute --dry-run` completed in 5.5s, exit 0, tried 8 variants, best remained 98%. Targeted dry-run is safe for massive staged batches and writes no source.
+- 2026-10-09: New flag test: `/Oxs /GS /EHsc /MD` (speed optimization plus size bias) scored 93% on `00675890`, versus baseline `/O2 /GS /EHsc /MD` at 98%. Rejected and did not alter saved client flags. `/Oxs` is harmful for this register/dataflow shape.
+- 2026-10-09: New flag test: `/O2 /Os /GS /EHsc /MD` scored 93% on `00675890` versus 98% baseline. Rejected; size preference consistently changes the sensitive register/dataflow tail.
+- 2026-10-09: Automation improvement: added `roc repair --json`. Targeted dry-run verified: it reports address, before/after score, tried count, and mutation scores while preserving the append-only markdown log and source safety. This enables scripts to process massive batches without scraping console text.
+- 2026-10-09: Bounded automation test: `--refresh-all --min-score 90 --limit 10 --permute --dry-run --json` completed in 11.7s and returned `[]`; first ten sorted sources were exact/high enough to skip. Targeted 94% source `00401880` then tried 5 variants and stayed 94%. JSON output and filtering behave correctly; no source changes.
+- 2026-10-09: Five-target high-partial batch: `00401880` 94%/5 variants, `00401990` 95%/7, `004021e0` 91%/16, `00409db0` 95%/7, `0040a820` 95%/7. All stayed unchanged. JSON report captured every trial; no source writes.
+- 2026-10-09: New flag test: `/O2 /Ot /GS /EHsc /MD` (favor fast code) scored 98% on `00675890`, byte-result equivalent to baseline for this target. No improvement; flags unchanged.
+- 2026-10-09: New combined flag test: `/O2 /Ot /Oy- /GS /EHsc /MD` scored 98% on `00675890`. Keeping frame pointers plus speed bias does not resolve the EAX/ESI receiver mismatch; flags unchanged.
+- 2026-10-09: New source-lifetime test: changed the call to `((void)p, sub_6302EC())` to keep the factory result syntactically used without changing its type. Score stayed 98%; compiler still emitted `mov ecx, esi`. Reverted. Mere liveness/use does not influence this receiver choice.
+- 2026-10-09: Second five-target batch: `0040a9d0` 94%/6, `0040ac50` 92%/4, `0040b2a0` 92%/8, `0040ebe0` 95%/11, `0040f4f0` 94%/10. All unchanged; 39 variants total, zero gains. JSON report verified batch details.
+- 2026-10-09: Final automation verification: help exposes `--offset`, `--refresh-all`, and `--json`; Python compilation passes with only pre-existing `roc/mutate.py:636` invalid-escape warning; `git diff --check` passes; targeted JSON dry-run reports `00675890` 98 -> 98 after 3 variants. No source writes.
+- 2026-10-09: New combined flag test: `/O2 /Ob0 /Oy- /GS /EHsc /MD` scored 98% on `00675890`. Disabling inlining while retaining frame pointers did not change the mismatch; flags unchanged.
+- 2026-10-09: New combined flag test: `/O2 /Ob1 /Oy- /GS /EHsc /MD` scored 98% on `00675890`. Selective inlining plus frame pointers also leaves the EAX/ESI mismatch unchanged.
+- 2026-10-09: New dataflow test: cached `field_0x88` in local `value`, reused it for comparison and final store. Score collapsed 98% -> 55%; compiler added `edi` save/restore and changed compare/store registers. Reverted. Field caching is strongly harmful here.
+- 2026-10-09: New type test: changed `field_0x88` from `int` to `unsigned int`. Score stayed 98% and assembly remained identical except the same EAX/ESI mismatch. Reverted; signedness is not the cause for this zero comparison.
+- 2026-10-09: New type test: changed `field_0x88` to `bool`. Score fell 98% -> 89%; compiler emitted byte compare and `movzx` plus changed tail address/value registers. Reverted. Narrow field type is harmful.
+- 2026-10-09: New type-shape test: represented `field_0x88` as a one-value enum with 32-bit storage. Score stayed 98%; assembly unchanged, including EAX/ESI mismatch. Reverted. Enum semantics do not affect this allocation.
+- 2026-10-09: New layout test: wrapped `field_0x88` in an anonymous union while retaining 32-bit storage. Score stayed 98%; assembly unchanged. Reverted. Union alias metadata does not alter this codegen.
+- 2026-10-09: Five 97%+ automatic batch: `00675890` 98%/8, `006f23d0` 97%/2, `006f2400` 97%/3, `00720b80` 97%/4, `00724ed2` 97%/9. All unchanged; 26 variants total, zero gains. JSON captured results; no source writes.
+- 2026-10-09: New research direction: binary-matching literature recommends compiler re-optimization/canonicalization and data-flow/strand comparison when exact instruction syntax differs; exact source recovery remains a search problem. Practical implication: add IR/data-flow features to mutation ranking, while retaining exact compile verification. Sources: https://csaws.cs.technion.ac.il/~yahave/blog/binary-reopt.html and https://arxiv.org/abs/2609.18706.
+- 2026-10-09: Automation improvement: added repeatable `roc repair --category NAME` filtering for guided mutation families, with legacy fallback disabled when filtering. Verified `--category signedness` on `00675890`: 0 eligible guided variants, JSON output correct, no source writes. This enables large experiments by one mutation family without console scraping.
+- 2026-10-09: Category filter positive verification: `roc repair 2007-08 --addr 006f2400 --min-score 97 --category immediate_constant --dry-run --json` tried exactly 1 `immediate_constant` variant and stayed 97%. Filter excludes unrelated families as intended; no source write.
+- 2026-10-09: Focused family batch: `--category immediate_constant` across four partials tried 1 eligible variant total (`006f2400`), 3 targets had zero eligible variants. All scores unchanged; JSON output complete; no source writes.
+- 2026-10-09: Focused `signedness` batch across five high partials: four processed, all had zero eligible guided signedness variants and stayed 97%; one exact source skipped. Confirms category filter prevents irrelevant legacy trials; no source writes.
+- 2026-10-09: Focused `calling_convention` verification on `0040a1d0`: exactly 1 guided variant tried, scored 18%, baseline stayed 86%; filter worked and rejected harmful candidate. No source write.
+- 2026-10-09: Five-target `calling_convention` batch: `0040a1d0` tried 1 candidate (18%, rejected); `0040b920`, `004129b0`, `00421510`, `0042b3a0` had zero eligible candidates. All baselines preserved; JSON complete; no source writes.
+- 2026-10-09: Focused `stack_layout` batch: `00409e40` and `0040b920` each tried 1 candidate scoring 77% versus 83% baseline; `00421510` had none. All rejected safely; no source writes.
+- 2026-10-09: Focused `return_value` checks on previously repaired partials `005dd060` (88%) and `006f5ce0` (84%): zero currently eligible guided variants. Earlier return-value wins already recorded; current filter avoids repeating stale transformations.
+- 2026-10-09: New research: STOKE-style stochastic superoptimization searches instruction sequences while jointly considering instruction selection and register allocation; Souper searches LLVM IR with SMT. These are possible future escalation paths for stubborn register-only mismatches, but cannot directly use VS2005 source semantics without an x86/old-MSVC adapter. Sources: https://arxiv.org/abs/1211.0557, https://github.com/google/souper.
+- 2026-10-09: Bounded family scan: `--refresh-all --offset 0 --limit 20 --min-score 80 --category calling_convention --json --dry-run` completed in 20.5s; one eligible partial (`00401310`, 89%) had zero calling-convention candidates, remaining sources skipped. No source writes.
+- 2026-10-09: Same bounded slice with `--category allocation_result` completed in 20.3s; `00401310` had zero eligible candidates, all others skipped. No source writes. Category scans expose sparse applicability before expensive broad mutation search.
+- 2026-10-09: Log audit: findings document now contains 2,033 recorded `roc repair` runs, 56 logged applied improvements, and 34 research/automation entries. Aggregate confirms repair history is substantial; new experiments continue append-only.
+- 2026-10-09: Automation sanity: `python -m py_compile roc.py`, repair help, and `git diff --check` pass. CLI exposes bounded offset, category filtering, JSON, refresh, permutation, and dry-run controls.
+- 2026-10-09: New pragma test: `#pragma optimize("y", on)` frame-pointer omission before `func` scored 98%; assembly unchanged. Reverted. Frame-pointer control cannot change receiver register.
+- 2026-10-09: Research update: STOKE targets x86-64, but prior peephole superoptimizers enumerate 32-bit x86 and use live-register constraints. This is strongest non-LLM path for exact EAX/ESI repair, requiring a custom 32-bit adapter or constrained local search. Sources: https://github.com/StanfordPL/stoke and https://www.cse.iitd.ac.in/~sbansal/pubs/osdi08_html/index.html.
+- 2026-10-09: Updated `docs/matching-next-plan.md` with concrete next escalation: bounded 32-bit x86 peephole search around mismatch windows, live-register/memory preservation, exact-byte scoring, one-function validation before batch rollout.
+- 2026-10-09: Automation bug fix: category filtering previously allowed `--permute` variants to leak into family-isolated runs. Changed `roc/mutate.py` so `--category NAME` suppresses permutation expansion. Verified `immediate_constant + --permute` on `006f2400`: exactly 1 immediate-constant trial, no leak, score unchanged.
+- 2026-10-09: Post-fix verification: Python compile passes with existing invalid-escape warning; category+permute JSON dry-run again tried exactly 1 variant and stayed 97%; diff check passes.
+- 2026-10-09: Focused `argument_order` test on `00572180`: 1 candidate tried, 82% -> 82%; rejected, no source write. Category filter correctly isolated argument-order mutation.
+- 2026-10-09: Focused `branch_condition` test on `0041faa0`: 1 candidate scored 72% versus 92% baseline; rejected, no source write. Category isolation confirmed.
+- 2026-10-09: Re-run guard: `--category noreturn_exception` on previously solved `004485c0` returned empty JSON because exact source skipped. Automatic repair avoids repeating known 98 -> 100 transformation.
+- 2026-10-09: Final targeted baseline check after family scans: `00675890` remains 98%, only mismatch is target `mov ecx, eax` versus generated `mov ecx, esi`; Python compile passes with pre-existing invalid-escape warning.
+- 2026-10-09: Focused signedness batch: `00401310`, `0041faa0`, `006f2400` each had zero eligible `toggle_int_signedness` guided candidates; saved `work/reports/signedness-proof.json`. No source writes.
+- 2026-10-09: New flag test: legacy MSVC `/Op` with `/O2 /GS /EHsc /MD` scored 98% on `00675890`. Floating-point consistency switch does not affect integer receiver allocation; flags unchanged.
+- 2026-10-09: New source-shape test: changed temporary `flag` from `int` to `bool`. Score stayed 98%; generated assembly unchanged, including EAX/ESI mismatch. Reverted; flag width/type not control point.
+- 2026-10-09: Mixed automatic batch: `0041faa0` 92%/2, `00572180` 82%/9, `006f2400` 97%/3. All unchanged; 14 variants total, JSON captured category outcomes, no source writes.
+- 2026-10-09: Five-target mixed batch: `00401310` 89%/7, `0040a1d0` 86%/2, `0041faa0` 92%/2, `00572180` 82%/9, `006f2400` 97%/3. 23 variants, zero gains, no source writes. Broad fallback still safely combines guided + legacy families.
+- 2026-10-09: New bounded-batch check: `roc repair 2007-08 --offset 50 --limit 50 --min-score 97 --permute --dry-run` completed with exit 0 and no mutation output. This means the selected sorted corpus slice had no eligible saved partials after current filtering; repeatable offset/limit batching works without a long poll loop.
 - 2026-10-09: Automation improvement: added `roc repair CLIENT --refresh-all`. It refreshes every score before threshold filtering, preventing stale index decisions. README/help updated; targeted dry-run verified `00675890` remains 98%.
+- 2026-10-09: Fresh target-method metadata test: `__declspec(noalias)` on `CXTPCustomizeSheet::func` produced byte-identical 98%. Reverted; target-level noalias has no effect here.
+- 2026-10-09: The full 12,311-source `--refresh-all --min-score 98` run was stopped after prolonged runtime before completion; no source mutation was applied. Future mass use should slice with `--limit`/`--addr` or run in bounded batches.
+- 2026-10-09: Bounded replacement verified: 50-source `roc repair 2007-08 --refresh-all --min-score 98 --limit 50 --dry-run` completed without errors or mutation output. Batches are practical; unbounded refresh is not.
+- 2026-10-09: Fresh string-const flag test: `/Zc:strictStrings-` and `/Zc:strictStrings` both scored 98% on `00675890`; function has no string literals. No flags changed.
+- 2026-10-09: Fresh counterpart test: `/Zc:wchar_t` and `/Zc:wchar_t /Zc:forScope` both scored 98%; no wchar types exist in function. No flags changed.
+- 2026-10-09: Persistent bounded automation verified: 50-source non-dry `roc repair --refresh-all --min-score 98 --limit 50` completed and advanced `scores.json` timestamp; no mutation output. Bounded refresh safely persists corrected scores.
+- 2026-10-09: Fresh allocator-metadata test: `__declspec(allocator)` on `sub_63096A` rejected by VS2005 (`C2485 unrecognized extended attribute`). No codegen result; reverted. Attribute unavailable in target toolchain.
+- 2026-10-09: New register-hint test: `register` on p/q/r locals produced byte-identical 98%. Optimizer ignores hints under `/O2`; reverted.
+- 2026-10-09: New compiler-barrier test: `_ReadWriteBarrier` declaration plus typed receiver generated an extra external call and scored 78%. VS2005 did not treat the hand declaration as intrinsic; reverted.
+- 2026-10-09: Fresh language switch test: `/Zc:externConstexpr-` and `/Zc:externConstexpr` both scored 98%; function has no constexpr entities. No flags changed.
+- 2026-10-09: New pointer-to-member test: invoked typed returned receiver through a member-function pointer. Score stayed 94%, same tail allocation; reverted.
+- 2026-10-09: Automation improvement: added `roc repair --offset N --limit B` for repeatable sorted corpus batches. Help, README, and a one-source dry-run verified. Enables bounded full-corpus refresh without giant address lists.
 - 2026-10-09: `roc repair 2007-08 00401310`: 89 -> 89, tried 2 variants [toggle_int_signedness=89, negate_comparison=88].
 - 2026-10-09: `roc repair 2007-08 00401840`: 81 -> 81, tried 2 variants [toggle_int_signedness=81, negate_comparison=75].
 - 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 1 variants [toggle_int_signedness=94].
@@ -1087,6 +1214,31 @@ Append-only experiment log.
 - 2026-10-09: `roc repair 2007-08 006efeb0`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=70].
 - 2026-10-09: `roc repair 2007-08 006f23d0`: 97 -> 97, tried 2 variants [toggle_int_signedness=97, negate_comparison=0].
 - 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 3 variants [immediate_constant=97, toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: New pragma test: `#pragma optimize("t", on)` before `func` scored 98%; assembly unchanged. Reverted. Function-level speed bias cannot force receiver register.
+- 2026-10-09: New pragma test: `#pragma auto_inline(on)` before `func` scored 98%; assembly unchanged. Reverted. Explicit auto-inline enable does not change this non-inlined call sequence.
+- 2026-10-09: New attribute test: marked `func` itself `__declspec(noinline)`. Score stayed 98%; assembly unchanged. Reverted. Caller inlining control cannot fix internal receiver allocation.
+- 2026-10-09: Mutation inventory: legacy automatic families are `toggle_char_signedness`, `toggle_int_signedness`, `negate_comparison`, and `swap_add_operands`; guided families add evidence-driven return/call/layout/branch/immediate/allocation paths. This split explains why category scans can report zero while broad fallback still finds legacy trials.
+- 2026-10-09: Final sanity: repair CLI exposes offset/category/json-out; Python compile passes with existing `\w` warning; target `00675890` remains 98%; diff check passes.
+- 2026-10-09: Unattended-report proof: five-target dry-run with `--json-out work/batch-proof.json` completed in 8.9s; 29 variants total, zero gains, saved 187-line JSON report. No source writes.
+- 2026-10-09: Automation hardening: `--json-out` now creates missing parent directories. Nested path `work/reports/nested.json` verified on `006f2400`; report saved, score unchanged, compile pass.
+- 2026-10-09: Combined automation proof: nested `--json-out` + `--category immediate_constant` + `--permute` on `006f2400` saved exactly 1 filtered result; score stayed 97%, no permutation leak, no source write.
+- 2026-10-09: Refreshed unattended batch: `--refresh-all` on `00401310`, `0041faa0`, `006f2400` saved 3 JSON results; variants tried 2, 2, 3; scores stayed 89%, 92%, 97%; no source writes.
+- 2026-10-09: New source-shape test: made branch `flag` a `const int`. Score stayed 98%; assembly unchanged. Reverted. Local const qualification does not affect receiver allocation.
+- 2026-10-09: New pragma test: `#pragma optimize("s", off)` before `func` scored 98%; assembly unchanged. Reverted. Disabling size bias does not affect receiver allocation.
+- 2026-10-09: Added `docs/matching-next-plan.md`: compact research/automation plan, proven CLI workflow, experiment order, and current 98% register-only blocker. Findings log remains append-only.
+- 2026-10-09: Latest persistent-report batch: `00401310` 89%/7, `0041faa0` 92%/2, `00572180` 82%/9; all unchanged, 18 variants total. Saved `work/reports/latest-proof.json`; no source writes.
+- 2026-10-09: New pragma test: `#pragma optimize("a", on)` alias-assumption optimization before `func` scored 98%; assembly unchanged. Reverted. Alias optimization does not resolve receiver register choice.
+- 2026-10-09: New pragma test: `#pragma optimize("w", on)` write-alias assumption before `func` scored 98%; assembly unchanged. Reverted. Write-alias optimization does not resolve receiver register choice.
+- 2026-10-09: Refresh/category/report proof: `00401310` had 0 branch candidates; `0041faa0` tried 1 branch candidate, stayed 92%; saved `work/reports/branch-proof.json`. No source writes.
+- 2026-10-09: End-to-end proof: refresh + category + permutation suppression + stdout JSON + persistent JSON on `006f2400` produced exactly 1 valid `immediate_constant` trial at 97%; compile passes with existing warning; no source write.
+- 2026-10-09: New pragma test: `#pragma optimize("g", on)` before `func` scored 98%; assembly unchanged. Reverted. Explicit global-optimization enable does not alter receiver allocation.
+- 2026-10-09: Research result: high byte similarity does not prove original source identity; distinct source forms can compile identically, while optimized binaries make exact matching difficult. Therefore 98% is strong assembly proximity, not proof “basically same source.” Sources: https://github.com/alexishida/dalhe-cli/blob/main/src/template/skills/dl-matching-decomp/references/methodology.md and https://arxiv.org/abs/2609.18706.
+- 2026-10-09: Category probe: `reorder_decls` has no guided candidate on `00401310`; filter returns zero rather than running unrelated legacy trials. `toggle_int_signedness` category independently verified 1 isolated candidate on `006f2400`. No source writes.
+- 2026-10-09: Exact-target category guard: `00675890` with `--category toggle_int_signedness --permute --json --dry-run` stayed 98% and tried 0 because no guided signedness evidence exists; permutation leakage remains absent. Existing warning only.
+- 2026-10-09: New combined flag test: `/O2 /Ob2 /Oy- /Op /GS /EHsc /MD` scored 98% on `00675890`; aggressive inlining, frame pointer, and floating-point consistency combination still leaves EAX/ESI receiver mismatch. Flags unchanged.
+- 2026-10-09: New pragma test: added `#pragma inline_recursion(off)` before `func`. Score stayed 98%; assembly unchanged. Reverted. Recursive-inlining control irrelevant to this nonrecursive receiver allocation.
+- 2026-10-09: Automation improvement: JSON mutation records now include `compile_error`, separating score-0 compile failures from valid low-scoring candidates. Verified on `0041faa0`; both trials compiled, scores 72 and 92, no source write.
+- 2026-10-09: Automation improvement: added `--json-out FILE` for persistent unattended reports. Verified with `work/repair-test.json` on `0041faa0`; stdout and saved JSON contain identical 2-trial details, compile flags, and scores. No source write.
 - 2026-10-09: `roc repair 2007-08 006f5bc0`: 84 -> 84, tried 1 variants [toggle_char_signedness=84].
 - 2026-10-09: `roc repair 2007-08 006f5ce0`: 83 -> 84, tried 10 variants [return_value=84, typed_member_return=84, typed_member_return=84, typed_member_return=83, typed_member_return=77, volatile_zero_store=83, volatile_zero_store=82, volatile_zero_store=76, toggle_char_signedness=83, toggle_int_signedness=0]; applied.
 - 2026-10-09: `roc repair 2007-08 006f5e80`: 89 -> 89, tried 4 variants [toggle_char_signedness=89, toggle_int_signedness=0, negate_comparison=88, swap_add_operands=89].
@@ -2083,3 +2235,151 @@ Append-only experiment log.
 - 2026-10-09: `roc repair 2007-08 00720b80`: 97 -> 97, tried 4 variants [toggle_char_signedness=97, toggle_int_signedness=0, negate_comparison=92, commutative=0].
 - 2026-10-09: `roc repair 2007-08 00724ed2`: 97 -> 97, tried 9 variants [toggle_int_signedness=0, negate_comparison=94, swap_add_operands=97, commutative=97, commutative=97, commutative=0, commutative=0, commutative=0, inequality=92].
 - 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 3 variants [toggle_char_signedness=98, toggle_int_signedness=98, negate_comparison=96].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 8 variants [toggle_char_signedness=98, toggle_int_signedness=98, negate_comparison=96, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 8 variants [toggle_char_signedness=98, toggle_int_signedness=98, negate_comparison=96, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 5 variants [toggle_int_signedness=94, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 5 variants [toggle_int_signedness=94, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 7 variants [toggle_char_signedness=95, toggle_int_signedness=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 004021e0`: 91 -> 91, tried 16 variants [toggle_char_signedness=91, toggle_int_signedness=0, negate_comparison=87, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, inequality=91].
+- 2026-10-09: `roc repair 2007-08 00409db0`: 95 -> 95, tried 7 variants [toggle_char_signedness=95, toggle_int_signedness=0, negate_comparison=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 0040a820`: 95 -> 95, tried 7 variants [toggle_char_signedness=95, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 0040a9d0`: 94 -> 94, tried 6 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=88, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 0040ac50`: 92 -> 92, tried 4 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=91, commutative=0].
+- 2026-10-09: `roc repair 2007-08 0040b2a0`: 92 -> 92, tried 8 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=78, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 0040ebe0`: 95 -> 95, tried 11 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=94, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=94].
+- 2026-10-09: `roc repair 2007-08 0040f4f0`: 94 -> 94, tried 10 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=92, commutative=0, commutative=0, commutative=0, commutative=0, commutative=92, commutative=94, reorder_decls=83].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 3 variants [toggle_char_signedness=98, toggle_int_signedness=98, negate_comparison=96].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 8 variants [toggle_char_signedness=98, toggle_int_signedness=98, negate_comparison=96, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 006f23d0`: 97 -> 97, tried 2 variants [toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 3 variants [immediate_constant=97, toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00720b80`: 97 -> 97, tried 4 variants [toggle_char_signedness=97, toggle_int_signedness=0, negate_comparison=92, commutative=0].
+- 2026-10-09: `roc repair 2007-08 00724ed2`: 97 -> 97, tried 9 variants [toggle_int_signedness=0, negate_comparison=94, swap_add_operands=97, commutative=97, commutative=97, commutative=0, commutative=0, commutative=0, inequality=92].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 3 variants [toggle_char_signedness=98, toggle_int_signedness=98, negate_comparison=96].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00720b80`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 1 variants [immediate_constant=97].
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004021e0`: 91 -> 91, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040f4f0`: 94 -> 94, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 1 variants [immediate_constant=97].
+- 2026-10-09: `roc repair 2007-08 006f23d0`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00720b80`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00724ed2`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040f4f0`: 94 -> 94, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040a1d0`: 86 -> 86, tried 1 variants [calling_convention=18].
+- 2026-10-09: `roc repair 2007-08 0040a1d0`: 86 -> 86, tried 1 variants [calling_convention=18].
+- 2026-10-09: `roc repair 2007-08 0040b920`: 83 -> 83, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004129b0`: 90 -> 90, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00421510`: 88 -> 88, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0042b3a0`: 93 -> 93, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00409e40`: 83 -> 83, tried 1 variants [stack_layout=77].
+- 2026-10-09: `roc repair 2007-08 0040b920`: 83 -> 83, tried 1 variants [stack_layout=77].
+- 2026-10-09: `roc repair 2007-08 00421510`: 88 -> 88, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 005dd060`: 88 -> 88, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 006f5ce0`: 84 -> 84, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401310`: 89 -> 89, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401310`: 89 -> 89, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 1 variants [immediate_constant=97].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 1 variants [immediate_constant=97].
+- 2026-10-09: `roc repair 2007-08 00572180`: 82 -> 82, tried 1 variants [argument_order=82].
+- 2026-10-09: `roc repair 2007-08 0041faa0`: 92 -> 92, tried 1 variants [branch_condition=72].
+- 2026-10-09: `roc repair 2007-08 0041faa0`: 92 -> 92, tried 2 variants [branch_condition=72, toggle_int_signedness=92].
+- 2026-10-09: `roc repair 2007-08 00572180`: 82 -> 82, tried 9 variants [argument_order=82, toggle_char_signedness=0, toggle_int_signedness=80, negate_comparison=65, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 3 variants [immediate_constant=97, toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00401310`: 89 -> 89, tried 7 variants [toggle_int_signedness=89, negate_comparison=88, commutative=0, reorder_decls=89, reorder_decls=89, reorder_decls=89, reorder_decls=89].
+- 2026-10-09: `roc repair 2007-08 0040a1d0`: 86 -> 86, tried 2 variants [calling_convention=18, toggle_int_signedness=86].
+- 2026-10-09: `roc repair 2007-08 0041faa0`: 92 -> 92, tried 2 variants [branch_condition=72, toggle_int_signedness=92].
+- 2026-10-09: `roc repair 2007-08 00572180`: 82 -> 82, tried 9 variants [argument_order=82, toggle_char_signedness=0, toggle_int_signedness=80, negate_comparison=65, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 3 variants [immediate_constant=97, toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00401310`: 89 -> 89, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401310`: 89 -> 89, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 1 variants [toggle_int_signedness=97].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0041faa0`: 92 -> 92, tried 2 variants [branch_condition=72, toggle_int_signedness=92].
+- 2026-10-09: `roc repair 2007-08 0041faa0`: 92 -> 92, tried 2 variants [branch_condition=72, toggle_int_signedness=92].
+- 2026-10-09: `roc repair 2007-08 00401310`: 89 -> 89, tried 7 variants [toggle_int_signedness=89, negate_comparison=88, commutative=0, reorder_decls=89, reorder_decls=89, reorder_decls=89, reorder_decls=89].
+- 2026-10-09: `roc repair 2007-08 0041faa0`: 92 -> 92, tried 2 variants [branch_condition=72, toggle_int_signedness=92].
+- 2026-10-09: `roc repair 2007-08 00572180`: 82 -> 82, tried 9 variants [argument_order=82, toggle_char_signedness=0, toggle_int_signedness=80, negate_comparison=65, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 8 variants [toggle_char_signedness=98, toggle_int_signedness=98, negate_comparison=96, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 3 variants [immediate_constant=97, toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 3 variants [immediate_constant=97, toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 1 variants [immediate_constant=97].
+- 2026-10-09: `roc repair 2007-08 00401310`: 89 -> 89, tried 2 variants [toggle_int_signedness=89, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 0041faa0`: 92 -> 92, tried 2 variants [branch_condition=72, toggle_int_signedness=92].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 3 variants [immediate_constant=97, toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00401310`: 89 -> 89, tried 7 variants [toggle_int_signedness=89, negate_comparison=88, commutative=0, reorder_decls=89, reorder_decls=89, reorder_decls=89, reorder_decls=89].
+- 2026-10-09: `roc repair 2007-08 0041faa0`: 92 -> 92, tried 2 variants [branch_condition=72, toggle_int_signedness=92].
+- 2026-10-09: `roc repair 2007-08 00572180`: 82 -> 82, tried 9 variants [argument_order=82, toggle_char_signedness=0, toggle_int_signedness=80, negate_comparison=65, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 00401310`: 89 -> 89, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0041faa0`: 92 -> 92, tried 1 variants [branch_condition=72].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 1 variants [immediate_constant=97].
+- 2026-10-09: `roc repair 2007-08 00401310`: 89 -> 89, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0041faa0`: 92 -> 92, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 0 variants [].
+- 2026-10-09: New bounded probe: `00675890` with `--category allocation_result` tried 0 candidates and stayed 98%. No allocation evidence exists for this source shape; no source write. Saved `work/reports/allocation-00675890.json`. This closes the current guided allocation family for the only 98% holdout; next meaningful route is instruction-level/data-flow search, not another generic flag.
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004021e0`: 91 -> 91, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00409db0`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040a820`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004021e0`: 91 -> 91, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00409db0`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040a820`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004021e0`: 91 -> 91, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00409db0`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040a820`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 1 variants [toggle_int_signedness=94].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 2 variants [toggle_char_signedness=95, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 004021e0`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=0, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 00409db0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0040a820`: 95 -> 95, tried 1 variants [toggle_char_signedness=95].
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004021e0`: 91 -> 91, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00409db0`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040a820`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004021e0`: 91 -> 91, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00409db0`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040a820`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004021e0`: 91 -> 91, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00409db0`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040a820`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004021e0`: 91 -> 91, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00409db0`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040a820`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004021e0`: 91 -> 91, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00409db0`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040a820`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004021e0`: 91 -> 91, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00409db0`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040a820`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004021e0`: 91 -> 91, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00409db0`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040a820`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004021e0`: 91 -> 91, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00409db0`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040a820`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 0 variants [].
