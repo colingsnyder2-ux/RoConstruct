@@ -12,6 +12,7 @@ import time
 import traceback
 import urllib.error
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from urllib.parse import quote, urlparse
 import uuid
 from pathlib import Path
@@ -1304,22 +1305,33 @@ def submit_files(server, user, client, addrs=None, token=None, log=print):
     Files pulled from the server ("// from server:" header) are skipped when
     submitting a whole client: they are already there, and one rejected file
     (e.g. a client the server has not imported yet) must not abort the run.
+    Local re-checks (one compile each) run in parallel; uploads stay serial.
     """
     api = Api(server, token)
     paths = sorted((ROOT / "src" / client).glob("*.cpp"))
     if addrs:
         paths = [p for p in paths if p.stem in addrs]
     skipped = 0
+    candidates = []
     for p in paths:
         text = p.read_text(errors="replace")
         if not addrs and text.startswith("// from server:"):
             skipped += 1
             continue
-        try:
-            score, _, _, _ = match.check(client, p.stem, p)
-        except match.CompileError as error:
-            log("%s  skipped, does not compile: %s" % (p.stem, str(error).splitlines()[0]))
-            continue
+        candidates.append((p, text))
+    jobs = int(os.environ.get("ROC_JOBS") or 0) or min(12, os.cpu_count() or 4)
+    checked = []
+    with ThreadPoolExecutor(max_workers=jobs) as pool:
+        futures = {pool.submit(match.check, client, p.stem, p): (p, text) for p, text in candidates}
+        for future in as_completed(futures):
+            p, text = futures[future]
+            try:
+                score, _, _, _ = future.result()
+            except match.CompileError as error:
+                log("%s  skipped, does not compile: %s" % (p.stem, str(error).splitlines()[0]))
+                continue
+            checked.append((p, text, score))
+    for p, text, score in sorted(checked, key=lambda item: item[0].stem):
         try:
             r = api.call("/v1/submit", {"user": user, "client": client, "addr": p.stem,
                                         "score": score, "source": text})
