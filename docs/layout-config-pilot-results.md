@@ -126,3 +126,8 @@ August 2007 VC8 shard (`CXTPReportControl`, 10 partials) scored
 `91,94,99,93,95,94,94,94,97,53` under shared MFC. Only two improved; one
 reached 99; several stayed flat; one regressed badly. Nonuniform August layout
 remains unresolved. Added VC8 shared recipe, but reject broad rollout.
+
+Unicode/MBCS shard: fresh `UNICODE _UNICODE` and `_MBCS` preprocessing matched
+baseline on six ReportControl targets (`91,92,93,94,95,64`). Combining Unicode
+with shared-MFC yielded (`93,94,99,96,100,64`): one new exact, but mixed
+hypotheses. No standalone Unicode gain; do not promote.
