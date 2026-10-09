@@ -496,7 +496,8 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
         cloud_escalate=None, cloud_escalate_after=2, thinking=None, reasoning_effort=None,
         max_tokens=2048, examples_cache=None, source_cache=None, guided_mutations=False,
         order="random", family_exemplars=True, lease_mode="function", family_state=None,
-        family_lock=None, family_id=None, unit_name=None, near_repair=False):
+        family_lock=None, family_id=None, unit_name=None, near_repair=False,
+        min_score=None, max_score=None):
     """forever: survive server/network outages (retry every minute) for overnight runs.
     only: restrict to these clients (one-click links).
     examples_cache/source_cache: shared across parallel loops so N workers do
@@ -576,7 +577,8 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
                                              "mode": "ai", "model": model, "max_size": max_size,
                                              "targets": targets, "order": lease_order,
                                              "family": family_hint,
-                                             "unit": unit_name if lease_mode == "unit" else None})["job"]
+                                             "unit": unit_name if lease_mode == "unit" else None,
+                                             "min_score": min_score, "max_score": max_score})["job"]
                 if lease_mode == "family" and job and job.get("family"):
                     family_state["id"] = job["family"]
         except (Exception, SystemExit) as error:  # overnight: nothing short of Ctrl+C stops the loop
@@ -659,7 +661,7 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
                    cloud_escalate=None, cloud_escalate_after=2, thinking=None, reasoning_effort=None,
                    max_tokens=2048, guided_mutations=False, order="random", verbosity="auto",
                    family_exemplars=True, lease_mode="function", family_id=None, unit_name=None,
-                   near_repair=False):
+                   near_repair=False, min_score=None, max_score=None):
     """Run a bounded number of independent lease loops.
 
     Server leases make workers safe to run in parallel. Cloud loops are
@@ -690,6 +692,7 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
                      family_state=family_state, family_lock=family_lock,
                      family_id=family_id, unit_name=unit_name,
                      near_repair=near_repair,
+                     min_score=min_score, max_score=max_score,
                      examples_cache=shared_examples, source_cache=shared_sources)
         if verbosity == "compact":
             worker_log.finish()
@@ -722,6 +725,7 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
                 family_state=family_state, family_lock=family_lock,
                 family_id=family_id, unit_name=unit_name,
                 near_repair=near_repair,
+                min_score=min_score, max_score=max_score,
                 examples_cache=shared_examples, source_cache=shared_sources)
         except BaseException as error:
             errors.append(error)

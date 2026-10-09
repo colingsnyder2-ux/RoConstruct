@@ -166,7 +166,8 @@ class Store:
             self.db.commit()
             return added
 
-    def lease(self, user, worker, have, mode, max_size, model=None, targets=None, order="random", family=None, unit=None):
+    def lease(self, user, worker, have, mode, max_size, model=None, targets=None, order="random", family=None, unit=None,
+              min_score=None, max_score=None):
         now = time.time()
         with self.lock:
             self.db.execute("DELETE FROM leases WHERE expires < ?", (now,))
@@ -177,6 +178,10 @@ class Store:
             target_sql, target_args = "", []
             family_sql, family_args = (" AND f.family = ?", [family]) if family else ("", [])
             unit_sql, unit_args = (" AND f.unit = ?", [unit]) if unit else ("", [])
+            score_sql, score_args = (" AND f.score >= ?", [min_score]) if min_score is not None else ("", [])
+            if max_score is not None:
+                score_sql += " AND f.score <= ?"
+                score_args.append(max_score)
             if targets:
                 pairs = [(str(t.get("client", "")), str(t.get("addr", "")))
                          for t in targets if isinstance(t, dict)]
@@ -189,11 +194,11 @@ class Store:
                     return None
             candidates = self.db.execute(
                 "SELECT client, addr, size, unit, score, source, shape, calls, source_confidence, difficulty, attempts_by_model, family FROM funcs f "
-                "WHERE client IN (%s) AND score < 100 AND size BETWEEN 6 AND ? AND cooldown <= ? %s%s AND NOT EXISTS "
+                "WHERE client IN (%s) AND score < 100 AND size BETWEEN 6 AND ? AND cooldown <= ? %s%s%s%s AND NOT EXISTS "
                 "(SELECT 1 FROM leases l WHERE l.client = f.client AND l.addr = f.addr) "
-                "ORDER BY %s LIMIT 64" % (marks, target_sql, family_sql + unit_sql,
+                "ORDER BY %s LIMIT 64" % (marks, target_sql, family_sql, unit_sql, score_sql,
                                           ORDER_SQL[resolve_order(order, self.db)]),
-                (*have, max_size, now, *target_args, *family_args, *unit_args)).fetchall()
+                (*have, max_size, now, *target_args, *family_args, *unit_args, *score_args)).fetchall()
             row = None
             if candidates:
                 # Do not burn the same model repeatedly on a stubborn target when
@@ -510,7 +515,9 @@ def make_handler(store, token, can_verify, mine_log=None):
                                   body.get("targets"),
                                   order=str(body.get("order", "random"))[:16],
                                   family=(str(body["family"])[:64] if body.get("family") else None),
-                                  unit=(str(body["unit"])[:160] if body.get("unit") else None))
+                                  unit=(str(body["unit"])[:160] if body.get("unit") else None),
+                                  min_score=(int(body["min_score"]) if body.get("min_score") is not None else None),
+                                  max_score=(int(body["max_score"]) if body.get("max_score") is not None else None))
                 return self.send(200, {"job": job})
             if path == "/v1/heartbeat":
                 return self.send(200, {"ok": store.heartbeat(str(body.get("lease", "")))})

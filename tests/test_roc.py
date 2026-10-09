@@ -1058,6 +1058,9 @@ def test_server_ordering():
     st.release(job["lease"], 0)
     job = st.lease("alice", "default", ["C"], "ai", 256)
     assert not job["unit"].startswith("seg_")
+    st.release(job["lease"], 0)
+    job = st.lease("alice", "range", ["C"], "ai", 256, min_score=90, max_score=99)
+    assert 90 <= job["score"] <= 99
 
 
 def test_fingerprint_partial_scope():
@@ -1094,6 +1097,18 @@ def test_fingerprint_crossclient_scope():
         ("B", "00401060", 20, "seg_00400000", 0, None),
     ])
     assert list(cross_client_batches(st.db)) == [("B", source, ["00401010", "00401020"])]
+
+
+def test_fingerprint_resume_changed_batch():
+    from roc.batch_fingerprint import key, pending_batches
+    state = {"done": [key("C", "source", ["a", "b"])],
+             "checked": {key("C", "source", []): ["a", "b"]}}
+    planned = [("C", "source", ["b", "c"]), ("D", "source", ["a"]),
+               ("C", "other source", ["a"])]
+    result = list(pending_batches(planned, state))
+    assert [item for item, _ in result] == [("C", "source", ["c"]), ("D", "source", ["a"]),
+                                          ("C", "other source", ["a"])]
+    assert list(pending_batches([("C", "source", ["a", "b"])], state)) == []
 
 
 def test_shape_normalisation():

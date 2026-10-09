@@ -723,6 +723,12 @@ def cmd_worker(a):
         a.rounds, a.max_size, a.no_revng = min(a.rounds, 2), min(a.max_size, 96), True
     elif a.preset == "deep":
         a.rounds, a.max_size = max(a.rounds, 6), max(a.max_size, 512)
+    if a.min_score is not None and not 0 <= a.min_score <= 100:
+        raise SystemExit("--min-score must be 0-100")
+    if a.max_score is not None and not 0 <= a.max_score <= 100:
+        raise SystemExit("--max-score must be 0-100")
+    if a.min_score is not None and a.max_score is not None and a.min_score > a.max_score:
+        raise SystemExit("--min-score cannot exceed --max-score")
     # Deterministic repair must never inherit a saved cloud model.
     chosen = None if a.source_only else (a.model or s.get("model"))
     cloud_allowed = bool(a.allow_cloud or s.get("cloud_allowed"))
@@ -791,7 +797,7 @@ def cmd_worker(a):
                           order=order, family_exemplars=a.family_exemplars,
                           lease_mode=a.lease_mode,
                           family_id=family_id, unit_name=a.unit, targets=targets,
-                          near_repair=a.near_repair)
+                          near_repair=a.near_repair, min_score=a.min_score, max_score=a.max_score)
 
 
 def cmd_provider(a):
@@ -1399,6 +1405,8 @@ def main(argv=None):
         (["--strategy"], {"choices": ["direct", "structured", "reference"], "default": "direct",
                             "help": "candidate-generation prompt strategy"}),
         (["--max-size"], {"type": int, "default": 256, "help": "skip functions bigger than this (bytes)"}),
+        (["--min-score"], {"type": int, "help": "lease only functions at or above this score"}),
+        (["--max-score"], {"type": int, "help": "lease only functions at or below this score"}),
         (["--output-budget"], {"type": int, "default": 2048,
                                "help": "max tokens per LLM reply (128-8192)"}),
         (["--jobs"], {"type": int, "help": "stop after this many functions"}),
