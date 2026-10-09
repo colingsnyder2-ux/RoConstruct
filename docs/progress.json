@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-09 10:17 UTC",
+ "updated": "2026-10-09 11:17 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -7,13 +7,13 @@
    "built": "2007-03-26",
    "started": true,
    "functions": 19341,
-   "matched": 6900,
-   "partial": 10,
+   "matched": 6973,
+   "partial": 9,
    "bytes": 3048608,
-   "matched_bytes": 595844,
-   "source_bytes": 558079,
-   "mined_bytes": 37765,
-   "partial_bytes": 87,
+   "matched_bytes": 598638,
+   "source_bytes": 560864,
+   "mined_bytes": 37774,
+   "partial_bytes": 78,
    "data_bytes": 1332936,
    "leaderboard": [
     {
@@ -38,7 +38,7 @@
      "last": 1791430276.2224836
     }
    ],
-   "data_matched_bytes": 43163,
+   "data_matched_bytes": 43365,
    "classes": 0,
    "generated": 6361
   },
@@ -137,11 +137,11 @@
    "built": "2009-06-16",
    "started": true,
    "functions": 26156,
-   "matched": 9452,
+   "matched": 9453,
    "partial": 4,
    "bytes": 3981050,
-   "matched_bytes": 751661,
-   "source_bytes": 589184,
+   "matched_bytes": 751893,
+   "source_bytes": 589416,
    "mined_bytes": 162477,
    "partial_bytes": 295,
    "data_bytes": 1809822,
@@ -171,11 +171,11 @@
    "built": "2010-06-18",
    "started": true,
    "functions": 32947,
-   "matched": 10636,
+   "matched": 10640,
    "partial": 6,
    "bytes": 5116758,
-   "matched_bytes": 786325,
-   "source_bytes": 578017,
+   "matched_bytes": 787673,
+   "source_bytes": 579365,
    "mined_bytes": 208308,
    "partial_bytes": 35,
    "data_bytes": 2369604,
@@ -239,13 +239,13 @@
    "built": "2012-06-13",
    "started": true,
    "functions": 39811,
-   "matched": 10465,
-   "partial": 33,
+   "matched": 10467,
+   "partial": 59,
    "bytes": 6234528,
-   "matched_bytes": 551130,
+   "matched_bytes": 551156,
    "source_bytes": 417820,
-   "mined_bytes": 133310,
-   "partial_bytes": 334,
+   "mined_bytes": 133336,
+   "partial_bytes": 636,
    "data_bytes": 3396596,
    "leaderboard": [
     {
@@ -257,10 +257,10 @@
     },
     {
      "user": "Intel",
-     "matched": 68,
-     "points": 9145,
-     "submissions": 131,
-     "last": 1791540807.4491706
+     "matched": 70,
+     "points": 10893,
+     "submissions": 167,
+     "last": 1791544590.3431907
     },
     {
      "user": "colin",
@@ -292,10 +292,10 @@
   },
   {
    "user": "Intel",
-   "matched": 68,
-   "points": 9145,
-   "submissions": 131,
-   "last": 1791540807.4491706
+   "matched": 70,
+   "points": 10893,
+   "submissions": 167,
+   "last": 1791544590.3431907
   },
   {
    "user": "colinlaptop",
