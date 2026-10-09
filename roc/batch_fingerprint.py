@@ -78,6 +78,43 @@ def unit_has_class(unit, token):
     return token in value
 
 
+def unit_class(unit):
+    """Strict leaf class token, excluding containing namespaces."""
+    value = re.sub(r"[^a-z0-9]", "", unit.rsplit("::", 1)[-1].lower())
+    for prefix in ("cxtp", "xtp", "rbx", "c"):
+        if value.startswith(prefix) and len(value) > len(prefix) + 3:
+            return value[len(prefix):]
+    return value
+
+
+def cross_client_batches(db):
+    """Transfer exact source evidence only between identical named class families."""
+    refs = {}
+    for client, unit, source in db.execute("SELECT client,unit,source FROM funcs WHERE score=100 AND source IS NOT NULL"):
+        found = REF.search(source)
+        if not unit or not found:
+            continue
+        source = found.group(1)
+        family, token = source_family(source), source_class(source)
+        if token and unit_family(unit) == family and unit_class(unit) == token:
+            refs.setdefault((family, token, source), set()).add(client)
+    targets = {}
+    for client, unit, addr, source in db.execute(
+            "SELECT client,unit,addr,source FROM funcs WHERE score<100 ORDER BY client,unit,addr"):
+        if not unit or not unit_family(unit):
+            continue
+        found = REF.search(source or "")
+        targets.setdefault((unit_family(unit), unit_class(unit)), {}).setdefault(client, []).append(
+            (addr, found.group(1) if found else None))
+    for (family, token, source), origins in sorted(refs.items()):
+        for client, rows in targets.get((family, token), {}).items():
+            if client in origins:
+                continue
+            addrs = sorted(addr for addr, previous in rows if previous != source)
+            for start in range(0, len(addrs), 1000):
+                yield client, source, addrs[start:start + 1000]
+
+
 def batches(db, partials=False):
     refs = {}
     labels = {}
@@ -133,16 +170,22 @@ def main():
     parser = argparse.ArgumentParser(description="Batch-score known library sources against open same-unit functions.")
     parser.add_argument("--workers", type=int, default=2)
     parser.add_argument("--max-batches", type=int, default=0)
-    parser.add_argument("--partials", action="store_true",
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--partials", action="store_true",
                         help="try other exact same-unit sources against existing partial matches")
+    mode.add_argument("--cross-client", action="store_true",
+                      help="try foreign exact sources against identical named classes/families")
     parser.add_argument("--server", help="override saved server address")
     args = parser.parse_args()
     settings = worker.load_settings()
-    state_path = ROOT / "work" / ("batch-fingerprint-partials.json" if args.partials else "batch-fingerprint.json")
+    state_name = "batch-fingerprint-cross-client.json" if args.cross_client else (
+        "batch-fingerprint-partials.json" if args.partials else "batch-fingerprint.json")
+    state_path = ROOT / "work" / state_name
     state = json.loads(state_path.read_text()) if state_path.exists() else {"done": []}
     done = set(state.get("done", []))
     db = sqlite3.connect("file:work/server.db?mode=ro", uri=True)
-    todo = [(item, key(*item)) for item in batches(db, partials=args.partials)]
+    planned = cross_client_batches(db) if args.cross_client else batches(db, partials=args.partials)
+    todo = [(item, key(*item)) for item in planned]
     todo = [(item, marker) for item, marker in todo if marker not in done]
     if args.max_batches:
         todo = todo[:args.max_batches]
