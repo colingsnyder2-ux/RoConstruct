@@ -51,11 +51,122 @@ def swap_add_operands(src):
 
 
 MUTATORS = (toggle_char_signedness, toggle_int_signedness,
-            negate_comparison, swap_add_operands)
+             negate_comparison, swap_add_operands)
 # Mutations that can change program behavior: valid search moves, but a
 # higher fuzzy score from one is never evidence of correctness. Only an
 # exact compiler-backed match verifies.
 SPECULATIVE = {"negate_comparison", "swap_add_operands"}
+# Compile budget per repair round. 8 keeps a single arm fast; combining the
+# permutation engine with guided repair needs a larger budget or the guided
+# variants get crowded out (measured: 10 -> 8 improved at 8).
+MAX_VARIANTS = 16
+
+# --- permutation transforms (semantics-preserving) ---
+# Adapted from decomp-permuter's PERM list (MIT): commutative operands,
+# reversed inequalities, and adjacent independent declaration reordering.
+# Text-level and conservative: each transform only reorders forms that
+# compile to the same semantics so the compiler's own codegen choice is
+# what changes.
+
+_COMMUTATIVE_OPS = ("+", "*", "&", "|", "^", "==", "!=")
+# longest first so "<=" is not shadowed by "<"
+_INEQUALITIES = (("<=", ">="), (">=", "<="), ("<", ">"), (">", "<"))
+_OPERAND = r"[A-Za-z_]\w*(?:\s*\([^()]*\)|->\w+|\.\w+|\[\w+\])?"
+# relational swaps also compare against numeric literals (a >= 2 -> 2 <= a)
+_REL_OPERAND = r"[A-Za-z_0-9]\w*(?:\s*\([^()]*\)|->\w+|\.\w+|\[\w+\])?"
+_SWAP = r"\s*%s\s*"
+
+
+def commutative_swap_variants(src):
+    """Swap operands of every commutative operator, at every site.
+
+    A function usually has several, and each swap is an independent variant
+    worth trying: the compiler may allocate registers differently for one
+    ordering than another. Operands may be calls or member accesses, which
+    is what the generated code actually looks like.
+    """
+    out = []
+    for op in _COMMUTATIVE_OPS:
+        pattern = re.compile("(%s)%s(%s)" % (_OPERAND, _SWAP % re.escape(op), _OPERAND))
+        for m in pattern.finditer(src):
+            if m.group(1) == m.group(2):
+                continue  # a + a swaps to itself
+            out.append(src[:m.start()] + m.group(2) + " " + op + " "
+                        + m.group(1) + src[m.end():])
+    return list(dict.fromkeys(out))
+
+
+def inequality_swap_variant(src):
+    """a < b -> b > a (and friends) for the first relational operator."""
+    for op, flipped in _INEQUALITIES:
+        m = re.compile("(%s)%s(%s)" % (_REL_OPERAND, _SWAP % re.escape(op), _REL_OPERAND)).search(src)
+        if m and m.group(1) != m.group(2):
+            return src[:m.start()] + m.group(2) + " " + flipped + " " + m.group(1) + src[m.end():]
+    return None
+
+
+def reorder_decls_variants(src):
+    """Swap two adjacent same-type scalar locals with no initializers.
+
+    Declaration order drives MSVC stack slot and (in practice) register
+    allocation, which the instruction alignment sees as regalloc deltas.
+    Only trivially independent declarations are touched.
+    """
+    decl = re.compile(r"(?m)^([ \t]*)([A-Za-z_]\w*(?:\s+[A-Za-z_]\w*)?)\s+([A-Za-z_]\w*)[ \t]*;$")
+    matches = list(decl.finditer(src))
+    out = []
+    for a, b in zip(matches, matches[1:]):
+        if a.group(2) != b.group(2) or src[a.end():b.start()].strip():
+            continue
+        if a.group(3) == b.group(3):
+            continue
+        swapped = (b.group(1) + b.group(2) + " " + b.group(3) + ";" +
+                   src[a.end():b.start()] +
+                   a.group(1) + a.group(2) + " " + a.group(3) + ";")
+        out.append(src[:a.start()] + swapped + src[b.end():])
+        if len(out) >= 4:
+            break
+    return out
+
+
+def permute_variants(src, alignment=None):
+    """Ordered semantics-preserving variants ranked by alignment evidence.
+
+    alignment is match.align_insns evidence from the best-compiled candidate:
+    regalloc-dominated mismatches try declaration reordering first (it is what
+    moves MSVC allocation), args-dominated try operand swaps, and value/branch
+    differences try the comparison forms. Without evidence the canonical
+    transform order is used.
+    """
+    ranked = []
+    ranked.extend(("commutative", v) for v in commutative_swap_variants(src))
+    ineq = inequality_swap_variant(src)
+    if ineq:
+        ranked.append(("inequality", ineq))
+    ranked.extend(("reorder_decls", v) for v in reorder_decls_variants(src))
+    if not alignment or not alignment.get("steps"):
+        out, seen = [], {src}
+        for category, value in ranked:
+            if value not in seen:
+                seen.add(value)
+                out.append((category, value))
+        return out
+    counts = {"regalloc": 0, "args": 0, "del": 0, "ins": 0, "same": 0}
+    for step in alignment["steps"]:
+        if step["op"] in counts:
+            counts[step["op"]] += 1
+    if counts["regalloc"] >= counts["args"]:
+        first = ("reorder_decls",)
+    else:
+        first = ("commutative", "inequality")
+    ordered = ([r for r in ranked if r[0] in first] +
+               [r for r in ranked if r[0] not in first])
+    out, seen = [], {src}
+    for category, value in ordered:
+        if value not in seen:
+            seen.add(value)
+            out.append((category, value))
+    return out
 
 
 def swap_call_argument_variants(src):
@@ -398,7 +509,8 @@ def variants(src):
 
 
 def improve(client, addr, src, flags=None, check=None, guided=False,
-            guided_categories=None, guided_fallback=True):
+            guided_categories=None, guided_fallback=True, permute=False,
+            alignment=None):
     """Compile-and-test bounded variants; guided mode requires mismatch evidence.
 
     ImproveResult is a 3-tuple (score, src, tried) with a `.speculative`
@@ -406,6 +518,8 @@ def improve(client, addr, src, flags=None, check=None, guided=False,
     mutator. The tuple form keeps old 3-unpacking callers working.
     check is injectable as check(client, addr, text, flags) -> (score, ...);
     defaults to match.check_text. Variants raising CompileError are skipped.
+    permute enables the semantics-preserving permutation variants ranked by
+    instruction-alignment evidence (opt-in).
     """
     from roc import match
     check = check or match.check_text
@@ -432,14 +546,20 @@ def improve(client, addr, src, flags=None, check=None, guided=False,
             legacy.append((fn.__name__, value))
     if _reversed_call_order(diagnosis):
         legacy.extend(("argument_order", value) for value in swap_call_argument_variants(src))
+    variants_to_try = []
     if guided:
-        variants_to_try = guided_variants(src, diagnosis, guided_categories)
-        known = {value for _, value in variants_to_try}
+        guided_out = guided_variants(src, diagnosis, guided_categories)
         if guided_fallback:
-            variants_to_try.extend((category, value) for category, value in legacy if value not in known)
-        variants_to_try = variants_to_try[:8]
-    else:
+            guided_out.extend((category, value) for category, value in legacy
+                              if value not in {v for _, v in guided_out})
+        variants_to_try.extend(guided_out)
+    if permute:
+        if alignment is None:
+            alignment = match.alignment_evidence(client, addr, src, flags)
+        variants_to_try.extend(permute_variants(src, alignment))
+    elif not guided:
         variants_to_try = legacy
+    variants_to_try = variants_to_try[:MAX_VARIANTS]
     for category, v in variants_to_try:
         tried += 1
         started = time.monotonic()

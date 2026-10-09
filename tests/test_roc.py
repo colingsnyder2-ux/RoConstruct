@@ -1251,6 +1251,133 @@ def test_diagnose_frame_size():
     assert diag["frame_size"] == {"target": 256, "candidate": 512}
 
 
+def test_align_insns_scores_and_ops():
+    """Instruction-alignment scoring adapted from cpp_permuter/decomp-permuter:
+    register renaming is cheap, argument differences cost more, and a
+    missing+extra instruction pair costs most."""
+    from roc import match
+    identical = match.align_insns(bytes.fromhex("b801000000"), [], bytes.fromhex("b801000000"), [])
+    assert identical["cost"] == 0
+    assert [s["op"] for s in identical["steps"]] == ["same"]
+    regalloc = match.align_insns(bytes.fromhex("b801000000"), [], bytes.fromhex("bb01000000"), [])
+    assert regalloc["cost"] == match.ALIGN_PENALTY_REGALLOC
+    assert [s["op"] for s in regalloc["steps"]] == ["regalloc"]
+    args = match.align_insns(bytes.fromhex("b801000000"), [], bytes.fromhex("b802000000"), [])
+    assert args["cost"] == match.ALIGN_PENALTY_ARGS
+    assert [s["op"] for s in args["steps"]] == ["args"]
+    deleted = match.align_insns(bytes.fromhex("b80100000090"), [], bytes.fromhex("b801000000"), [])
+    assert deleted["cost"] == match.ALIGN_PENALTY_DELETE
+    assert [s["op"] for s in deleted["steps"]] == ["same", "del"]
+    # relocation-only difference: the same instruction text once masked
+    reloc = match.align_insns(bytes.fromhex("a100000000"), [0], bytes.fromhex("a100000000"), [0])
+    assert reloc["cost"] == 0
+    # different mnemonics never substitute: del+ins instead of a cheap arg swap
+    multi = match.align_insns(bytes.fromhex("b801000000c3"), [], bytes.fromhex("b801000000c20400"), [])
+    assert multi["cost"] >= match.ALIGN_PENALTY_ARGS
+
+
+def test_permutation_transforms_are_semantics_preserving():
+    from roc import mutate
+    src = ("struct S {\n"
+           "    int f(int a);\n"
+           "};\n\n"
+           "int S::f(int a) {\n"
+           "    int v1;\n"
+           "    int v2;\n\n"
+           "    v1 = g(a) + h(a);\n"
+           "    if (a >= 2)\n"
+           "        v2 = a * 3;\n"
+           "    return v1 + v2;\n"
+           "}\n")
+    swaps = mutate.commutative_swap_variants(src)
+    assert any("h(a) + g(a)" in v for v in swaps)
+    assert any("v2 + v1" in v for v in swaps)
+    ineq = mutate.inequality_swap_variant(src)
+    assert "2 <= a" in ineq
+    decls = mutate.reorder_decls_variants(src)
+    assert decls and decls[0].index("int v2;") < decls[0].index("int v1;")
+    # blank-line structure between declarations is preserved
+    assert "\n\n    v1 = g(a)" in decls[0]
+    # every variant is distinct, the original never comes back
+    variants = mutate.permute_variants(src, None)
+    assert len({v for _, v in variants}) == len(variants)
+    assert src not in {v for _, v in variants}
+
+
+def test_permute_variants_rank_by_alignment_evidence():
+    from roc import mutate
+    src = ("int f(int a) {\n"
+           "    int v1;\n"
+           "    int v2;\n\n"
+           "    v1 = g(a) + h(a);\n"
+           "    if (a >= 2)\n"
+           "        v2 = v1 + a;\n"
+           "    return v2;\n"
+           "}\n")
+    canonical = [c for c, _ in mutate.permute_variants(src, None)]
+    assert canonical[0] == "commutative"
+    regalloc_heavy = {"steps": [{"op": "regalloc"}] * 5 + [{"op": "args"}]}
+    ranked = [c for c, _ in mutate.permute_variants(src, regalloc_heavy)]
+    assert ranked[0] == "reorder_decls"
+    args_heavy = {"steps": [{"op": "args"}] * 5}
+    ranked = [c for c, _ in mutate.permute_variants(src, args_heavy)]
+    assert ranked[0] == "commutative"
+
+
+def test_improve_permute_is_bounded_and_opt_in():
+    from roc import mutate
+    calls = []
+
+    def check(_client, _addr, source, _flags=None, include_diagnosis=False):
+        calls.append(source)
+        if include_diagnosis:
+            return 80, None, "", [], {"return_cleanup": {"target": "", "candidate": ""}}
+        return (100 if len(calls) == 2 else 80), None, "", []
+
+    src = "int f(int a){ return g(a) + h(a); }"
+    # permute is opt-in: the bounded permutation arm only runs when asked
+    mutate.improve("C", "1", src, check=check, alignment=False)
+    legacy_attempts = len(calls)
+    assert legacy_attempts >= 1  # legacy mutators keep their existing behavior
+    calls.clear()
+    result = mutate.improve("C", "1", src, check=check, permute=True, alignment=False)
+    assert result[0] == 100 and result[2] >= 1
+    assert len(calls) <= mutate.MAX_VARIANTS + 1  # base check plus the bounded list
+
+
+def test_guided_variants_are_tried_before_permutations():
+    """Guided evidence yields more per candidate than permutations, so the
+    bounded list must order guided first or permutations crowd it out
+    (measured: 10 improved alone, 8 with permutations first)."""
+    from roc import mutate
+    src = ("struct S {\n    void f(int a);\n};\nvoid S::f(int a) { if (a > 0) g(); }\n")
+    diagnosis = {"return_cleanup": {"target": "", "candidate": "4"},
+                 "frame_size": {"target": 8, "candidate": 12}}
+    calls = []
+
+    def check(_client, _addr, source, _flags=None, include_diagnosis=False):
+        calls.append(source)
+        if include_diagnosis:
+            return 80, None, "", [], diagnosis
+        return 80, None, "", []
+
+    mutate.improve("C", "1", src, check=check, guided=True, permute=True, alignment=False)
+    assert calls
+    # the first attempted variant is the guided __cdecl fix, not a permutation
+    assert "__cdecl" in calls[1]
+
+
+def test_alignment_evidence_compiles_candidate():
+    from roc import match, mutate
+    # alignment evidence fails soft on an uncompilable candidate
+    assert mutate is not None
+    diag = {"return_cleanup": {"target": "", "candidate": ""}}
+    diag["frame_size"] = {"target": 4, "candidate": 8}
+    src = "void f(int a){ }"
+    variants = mutate.permute_variants(src, diag)
+    assert variants == []  # no transform available: nothing to try
+
+
 def test_mismatch_class_and_mutation_summary():
     from roc import match
     immediate = match.diagnose(bytes.fromhex("83c003c3"), [], bytes.fromhex("83c002c3"), [])

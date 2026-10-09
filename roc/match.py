@@ -180,6 +180,110 @@ def score(target, target_relocs, cand, cand_relocs):
     return min(99, int(100 * similarity_ratio(target, target_relocs, cand, cand_relocs)))
 
 
+# Instruction-alignment penalties (adapted from cpp_permuter's scorer.cpp and
+# decomp-permuter's Scorer tiers): register renaming is cheap, argument
+# differences cost more, insert/delete cost most, and a matched delete/insert
+# pair is a cheap reorder rather than a missing+extra instruction.
+ALIGN_PENALTY_REGALLOC = 1
+ALIGN_PENALTY_ARGS = 5
+ALIGN_PENALTY_DELETE = 100
+ALIGN_PENALTY_INSERT = 100
+ALIGN_PENALTY_REORDER = 60
+
+
+def _squash_regs(operands):
+    """Registers collapse to r so renaming alone scores as regalloc delta."""
+    out = []
+    for token in re.split(r"(\W)", operands.lower()):
+        out.append("r" if token in _REGS else token)
+    return "".join(out)
+
+
+def align_insns(target, target_relocs, cand, cand_relocs):
+    """Needleman-Wunsch alignment of target vs candidate instructions.
+
+    Returns {cost, steps} where steps is the opcode path (same/regalloc/args/
+    del/ins/reorder). Never verifies; it only ranks mismatch causes so repair
+    hypotheses can be prioritized. A per-byte score stays the verification
+    signal via exact_match.
+    """
+    t_lines = asm_lines(target, target_relocs)
+    c_lines = asm_lines(cand, cand_relocs)
+    n, m = len(t_lines), len(c_lines)
+    if not n and not m:
+        return {"cost": 0, "steps": []}
+    dp = [0] * ((n + 1) * (m + 1))
+    for i in range(n + 1):
+        dp[i * (m + 1)] = i * ALIGN_PENALTY_DELETE
+    for j in range(m + 1):
+        dp[j] = j * ALIGN_PENALTY_INSERT
+
+    def at(i, j):
+        return dp[i * (m + 1) + j]
+
+    for i in range(1, n + 1):
+        t_mnem, _, t_key = t_lines[i - 1].partition(" ")
+        for j in range(1, m + 1):
+            c_mnem, _, c_key = c_lines[j - 1].partition(" ")
+            best = min(at(i - 1, j) + ALIGN_PENALTY_DELETE,
+                       at(i, j - 1) + ALIGN_PENALTY_INSERT)
+            if t_mnem == c_mnem:
+                if t_key == c_key:
+                    sub = 0
+                elif _squash_regs(t_key) == _squash_regs(c_key):
+                    sub = ALIGN_PENALTY_REGALLOC
+                else:
+                    sub = ALIGN_PENALTY_ARGS
+                best = min(best, at(i - 1, j - 1) + sub)
+            dp[i * (m + 1) + j] = best
+
+    steps = []
+    i, j = n, m
+    while i > 0 or j > 0:
+        current = at(i, j)
+        if i > 0 and j > 0:
+            t_mnem, _, t_key = t_lines[i - 1].partition(" ")
+            c_mnem, _, c_key = c_lines[j - 1].partition(" ")
+            if t_mnem == c_mnem:
+                prev = at(i - 1, j - 1)
+                if t_key == c_key and current == prev:
+                    steps.append({"op": "same", "i": i - 1, "j": j - 1})
+                    i, j = i - 1, j - 1
+                    continue
+                if _squash_regs(t_key) == _squash_regs(c_key) and \
+                        current == prev + ALIGN_PENALTY_REGALLOC:
+                    steps.append({"op": "regalloc", "i": i - 1, "j": j - 1})
+                    i, j = i - 1, j - 1
+                    continue
+                if current == prev + ALIGN_PENALTY_ARGS:
+                    steps.append({"op": "args", "i": i - 1, "j": j - 1})
+                    i, j = i - 1, j - 1
+                    continue
+        if i > 0 and current == at(i - 1, j) + ALIGN_PENALTY_DELETE:
+            steps.append({"op": "del", "i": i - 1})
+            i -= 1
+        else:
+            steps.append({"op": "ins", "j": j - 1})
+            j -= 1
+    steps.reverse()
+    # A delete and an insertion of the identical instruction is a reorder:
+    # cheaper than a missing+extra pair.
+    cost = at(n, m)
+    dels = [s for s in steps if s["op"] == "del"]
+    inss = [s for s in steps if s["op"] == "ins"]
+    used = set()
+    for d in dels:
+        for k, ins in enumerate(inss):
+            if k in used:
+                continue
+            if t_lines[d["i"]] == c_lines[ins["j"]]:
+                used.add(k)
+                d["op"] = ins["op"] = "reorder"
+                cost -= ALIGN_PENALTY_DELETE + ALIGN_PENALTY_INSERT - ALIGN_PENALTY_REORDER
+                break
+    return {"cost": cost, "steps": steps}
+
+
 def _insn_parts(code):
     """[(mnemonic, operands)] via capstone; never raises on bad bytes."""
     try:
@@ -488,6 +592,23 @@ def compile_text(client, text, flags=None, build=None):
             _remember_compile_error(error_key, message)
             raise CompileError(message)
         return obj.read_bytes()
+
+
+def alignment_evidence(client, addr, src, flags=None):
+    """Instruction-alignment evidence for one source vs its target (or None).
+
+    Used to rank permutation hypotheses; never verifies matches.
+    """
+    try:
+        code, relocs, _ = target(client, addr)
+        obj = compile_text(client, src, flags)
+        funcs = coff_functions(obj)
+        if not funcs:
+            return None
+        best = max(funcs, key=lambda f: score(code, relocs, f[1], f[2]))
+        return align_insns(code, relocs, best[1], best[2])
+    except (CompileError, ValueError):
+        return None
 
 
 def check_text(client, addr, text, flags=None, include_diagnosis=False):
