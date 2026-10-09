@@ -3,6 +3,7 @@ import argparse
 import hashlib
 import json
 import random
+import sqlite3
 import sys
 import time
 from pathlib import Path
@@ -27,6 +28,19 @@ def metric_source(session, addr):
             if isinstance(attempt, dict) and attempt.get("score") == 100 and attempt.get("source"):
                 return attempt["source"]
     return None
+
+
+def db_source(client, addr):
+    """Read current exact source when metrics session predates this replay."""
+    path = Path(__file__).resolve().parents[1] / "work" / "server.db"
+    try:
+        db = sqlite3.connect("file:%s?mode=ro" % path, uri=True)
+        row = db.execute("SELECT source FROM funcs WHERE client=? AND addr=? AND score=100",
+                         (client, addr)).fetchone()
+        db.close()
+    except (OSError, sqlite3.Error):
+        return None
+    return row[0] if row and row[0] else None
 
 
 def main():
@@ -63,7 +77,8 @@ def main():
     groups = families.representatives(rows, disassemble)
     candidates = []
     for key, representative, members in groups:
-        source = metric_source(args.representative_session, representative["addr"])
+        source = (metric_source(args.representative_session, representative["addr"])
+                  or db_source(args.client, representative["addr"]))
         if not source:
             continue
         siblings = [row for row in sorted(members, key=lambda row: row["addr"])
