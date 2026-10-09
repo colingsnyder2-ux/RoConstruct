@@ -644,6 +644,39 @@ def test_launcher_saved_setup_starts_with_one_enter():
             "local-model", 3, 256, False, 7, 1536, "disabled")
 
 
+def test_launcher_workers_edit_separate_from_saved_setup():
+    from roc.link import choose_options
+    settings = {"model": "local-model", "worker_launcher_configured": True,
+                "worker_preset": "balanced", "worker_rounds": 3, "worker_workers": 7,
+                "worker_output_budget": 1536, "worker_revng": False,
+                "worker_thinking": "disabled", "worker_strategy": "structured"}
+    with patch("roc.draft.ollama_models", return_value=["local-model"]), \
+         patch("roc.draft.pick_model", return_value="local-model"), \
+         patch("roc.worker.save_settings") as saved, \
+         patch("roc.optimizer.profile", return_value=None), \
+         patch("builtins.input", side_effect=["3", "12"]), \
+         patch("builtins.print") as printed:
+        result = choose_options(settings)
+    assert result[4] == 12
+    assert saved.call_args.kwargs == {"worker_workers": 12, "worker_workers_model": "local-model"}
+    assert "Saved setup: local-model | balanced." in printed.call_args.args[0]
+    assert "7 workers" not in printed.call_args.args[0]
+
+
+def test_launcher_saved_setup_optimize_action_four():
+    from roc.link import choose_options
+    settings = {"model": "local-model", "worker_launcher_configured": True,
+                "worker_preset": "balanced", "worker_workers": 2}
+    with patch("roc.draft.ollama_models", return_value=["local-model"]), \
+         patch("roc.draft.pick_model", return_value="local-model"), \
+         patch("roc.worker.save_settings"), \
+         patch("roc.optimizer.profile", return_value=None), \
+         patch("roc.optimizer.run", return_value={"name": "fast"}) as optimize, \
+         patch("builtins.input", side_effect=["4"]):
+        choose_options(settings)
+    optimize.assert_called_once_with("local-model", allow_cloud=False, max_cloud_cost=None, force=False)
+
+
 def test_launcher_numbered_model_and_fast_mode():
     from roc.link import choose_options
     with patch("roc.draft.ollama_models", return_value=["model-a", "model-b"]), \

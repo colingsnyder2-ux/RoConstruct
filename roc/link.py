@@ -207,12 +207,22 @@ def choose_options(settings):
         model = saved[0]
         profile = optimizer.profile(model, settings)
         mode = "optimized %s" % profile["name"] if profile else settings.get("worker_preset", "balanced")
-        print("Saved setup: %s | %s | %s workers. Enter=start, 2=change, 3=optimize." %
-              (model, mode, saved[4]))
+        print("Saved setup: %s | %s. Enter=start, 2=setup, 3=workers, 4=optimize." %
+              (model, mode))
         action = input("[1]: ").strip().lower()
         if action in ("", "1"):
             return saved
         if action == "3":
+            picked_workers = input("Workers [%s] (1-%d or auto): " %
+                                   (saved[4], worker.MAX_WORKERS)).strip() or saved[4]
+            if picked_workers != "auto":
+                try:
+                    picked_workers = max(1, min(int(picked_workers), worker.MAX_WORKERS))
+                except ValueError:
+                    raise SystemExit("Workers must be 1-%d or auto" % worker.MAX_WORKERS)
+            worker.save_settings(worker_workers=picked_workers, worker_workers_model=model)
+            return saved[:4] + (picked_workers,) + saved[5:]
+        if action == "4":
             cost_cap = None
             if providers.is_cloud(model):
                 raw_cap = input("Optimizer cloud spend cap in USD [0.25]: ").strip() or "0.25"
@@ -231,7 +241,7 @@ def choose_options(settings):
                 settings[key] = ""
             return _saved_worker_options(settings, installed)
         if action not in ("2", "options", "change"):
-            raise SystemExit("Choose 1 to start, 2 to change options, or 3 to optimize.")
+            raise SystemExit("Choose 1 to start, 2 to change setup, 3 to change workers, or 4 to optimize.")
     cloud = ["deepseek:deepseek-flash", "nvidia:qwen/qwen2.5-coder-32b-instruct", "openai:gpt-5"]
     previous = [name for name in settings.get("worker_model_choices", []) if isinstance(name, str)]
     choices = list(dict.fromkeys(installed + cloud + previous +

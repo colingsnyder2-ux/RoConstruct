@@ -233,7 +233,8 @@ sample or full run to compare score gain and match rate before changing worker s
 
 One-click worker links show numbered model choices and Recommended/Fast/Deep/Advanced modes,
 plus optional “Optimize model” before starting. After setup, Enter starts saved config; type `2`
-to change it or `3` to recalibrate. Press Enter to keep choices while editing. Run
+to change setup, `3` to change worker count, or `4` to recalibrate. Press Enter to keep choices
+while editing. Run
 `roc optimize --model MODEL` or choose launcher option to calibrate once; startup then uses its
 saved best-observed profile. Cloud models not listed can still be
 entered by provider:model. If a cloud key is missing, `add-api-key.cmd` opens the user-local
