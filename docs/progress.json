@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-09 06:09 UTC",
+ "updated": "2026-10-09 06:30 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -48,13 +48,13 @@
    "built": "2007-08-19",
    "started": true,
    "functions": 19998,
-   "matched": 10058,
-   "partial": 3125,
+   "matched": 10067,
+   "partial": 3224,
    "bytes": 3009279,
-   "matched_bytes": 824661,
+   "matched_bytes": 825462,
    "source_bytes": 609667,
-   "mined_bytes": 214994,
-   "partial_bytes": 198483,
+   "mined_bytes": 215795,
+   "partial_bytes": 224298,
    "data_bytes": 1361658,
    "leaderboard": [
     {
@@ -66,10 +66,10 @@
     },
     {
      "user": "colin",
-     "matched": 1393,
-     "points": 368738,
-     "submissions": 10039,
-     "last": 1791525830.8734026
+     "matched": 1402,
+     "points": 373071,
+     "submissions": 10159,
+     "last": 1791527372.7590253
     },
     {
      "user": "colinlaptop",
@@ -103,28 +103,28 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22296,
-   "matched": 10382,
-   "partial": 30,
+   "matched": 10385,
+   "partial": 38,
    "bytes": 3448631,
-   "matched_bytes": 926557,
-   "source_bytes": 756535,
-   "mined_bytes": 170022,
-   "partial_bytes": 336,
+   "matched_bytes": 926631,
+   "source_bytes": 756583,
+   "mined_bytes": 170048,
+   "partial_bytes": 1264,
    "data_bytes": 1559926,
    "leaderboard": [
     {
      "user": "auto",
-     "matched": 9344,
-     "points": 934315,
-     "submissions": 9344,
-     "last": 1791526075.369901
+     "matched": 9345,
+     "points": 934415,
+     "submissions": 9345,
+     "last": 1791527408.9044662
     },
     {
      "user": "colin",
-     "matched": 3,
-     "points": 2398,
-     "submissions": 56,
-     "last": 1791511366.444874
+     "matched": 5,
+     "points": 2992,
+     "submissions": 70,
+     "last": 1791527324.53957
     }
    ],
    "data_matched_bytes": 118782,
@@ -137,21 +137,21 @@
    "built": "2009-06-16",
    "started": true,
    "functions": 26156,
-   "matched": 9432,
+   "matched": 9435,
    "partial": 1,
    "bytes": 3981050,
-   "matched_bytes": 748798,
-   "source_bytes": 586321,
+   "matched_bytes": 749414,
+   "source_bytes": 586937,
    "mined_bytes": 162477,
    "partial_bytes": 7,
    "data_bytes": 1809822,
    "leaderboard": [
     {
      "user": "auto",
-     "matched": 8877,
-     "points": 887589,
-     "submissions": 8877,
-     "last": 1791526078.9321914
+     "matched": 8880,
+     "points": 887889,
+     "submissions": 8880,
+     "last": 1791527412.4587607
     },
     {
      "user": "colin",
@@ -239,13 +239,13 @@
    "built": "2012-06-13",
    "started": true,
    "functions": 39811,
-   "matched": 10404,
-   "partial": 0,
+   "matched": 10420,
+   "partial": 6,
    "bytes": 6234528,
-   "matched_bytes": 550427,
+   "matched_bytes": 550551,
    "source_bytes": 417656,
-   "mined_bytes": 132771,
-   "partial_bytes": 0,
+   "mined_bytes": 132895,
+   "partial_bytes": 55,
    "data_bytes": 3396596,
    "leaderboard": [
     {
@@ -254,6 +254,13 @@
      "points": 955715,
      "submissions": 9558,
      "last": 1791526156.8584018
+    },
+    {
+     "user": "Intel",
+     "matched": 19,
+     "points": 2343,
+     "submissions": 27,
+     "last": 1791527401.6998699
     },
     {
      "user": "colin",
@@ -271,17 +278,24 @@
  "leaderboard": [
   {
    "user": "auto",
-   "matched": 61028,
-   "points": 6099765,
-   "submissions": 61028,
-   "last": 1791526156.8584018
+   "matched": 61032,
+   "points": 6100165,
+   "submissions": 61032,
+   "last": 1791527412.4587607
   },
   {
    "user": "colin",
-   "matched": 1400,
-   "points": 373424,
-   "submissions": 10135,
-   "last": 1791525830.8734026
+   "matched": 1411,
+   "points": 378351,
+   "submissions": 10269,
+   "last": 1791527372.7590253
+  },
+  {
+   "user": "Intel",
+   "matched": 19,
+   "points": 2343,
+   "submissions": 27,
+   "last": 1791527401.6998699
   },
   {
    "user": "colinlaptop",
