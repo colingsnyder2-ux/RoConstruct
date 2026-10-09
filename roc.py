@@ -112,6 +112,10 @@ def cmd_setup(a, run=None):
     client = default_client or ask_client()
     if not client:
         raise SystemExit("Choose a client first: roc client list")
+    if client == "all":
+        print("\nAll clients: the worker takes jobs from every client that is ready and")
+        print("fetches each missing exe itself. Analyze them once so none are skipped:")
+        print("  roc client-fetch all && roc analyze all")
     cloud = getattr(a, "cloud", None)
     if cloud is None:
         answer = input("Use a cloud model? (no Ollama, no GPU needed) [y/N] ").strip().lower()
@@ -142,7 +146,10 @@ def ask_client():
     for index, name in enumerate(registry, 1):
         entry = clients.load()[name]
         print("  %d) %s  (%s, compiler %s)" % (index, name, entry.get("compiler"), entry.get("compiler_build")))
+    print("  a) all of them  (every client with its exe, compiler and analysis ready)")
     picked = input("Client [1]: ").strip() or "1"
+    if picked.lower() in ("a", "all"):
+        return "all"
     if picked.isdigit() and 1 <= int(picked) <= len(registry):
         return registry[int(picked) - 1]
     if picked in clients.load():
@@ -780,12 +787,12 @@ def cmd_worker(a):
         raise SystemExit("Unknown family example; use CLIENT:ADDRESS")
     targets = None
     if a.addr:
-        if not a.client:
+        if not a.client or a.client == "all":
             raise SystemExit("--addr needs --client CLIENT")
         targets = [{"client": a.client, "addr": addr.lower().removeprefix("0x")} for addr in a.addr]
         if any(len(row["addr"]) != 8 or any(c not in "0123456789abcdef" for c in row["addr"]) for row in targets):
             raise SystemExit("--addr must be an 8-digit hex address")
-    if family_id and a.client:
+    if family_id and a.client and a.client != "all":
         ready = worker.register_family_targets(srv, a.token or s.get("token"), a.client, family_id)
         if ready:
             print("Family %s ready: %d sibling targets" % (family_id, ready))
@@ -801,7 +808,7 @@ def cmd_worker(a):
     worker.save_settings(user=user, server=srv, model=a.model, order=order)
     worker.run_concurrent(srv, user, a.token or s.get("token"), chosen, a.rounds, a.max_size,
                           not a.no_revng, a.jobs, a.workers, source_only=a.source_only,
-                          only=[a.client] if a.client else None, strategy=a.strategy,
+                          only=worker.only_clients(a.client), strategy=a.strategy,
                           cloud_allowed=cloud_allowed, cloud_budget=budget, cloud_gate=gate,
                           diverse_candidates=a.diverse_candidates, cloud_min_size=a.cloud_min_size,
                           cloud_fallback=a.cloud_fallback, seed=a.seed,
@@ -1418,7 +1425,7 @@ def main(argv=None):
             (["--order"], {"choices": ["auto", "best", "matched", "unmatched", "easiest", "random"], "default": "random",
                            "help": "which functions first: random named units (default), most-matched, unmatched, easiest, best evidence, or auto"}),
         (["--server"], {}), (["--user"], {}), (["--token"], {}), (["--model"], {}),
-        (["--client"], {"help": "restrict work to one registered client (for example 2008-06)"}),
+(["--client"], {"help": "restrict work to one registered client, or 'all' for every ready one"}),
         (["--addr"], {"action": "append", "help": "pin AI work to one or more client function addresses"}),
         (["--rounds"], {"type": int, "default": 4, "help": "AI tries per function"}),
         (["--strategy"], {"choices": ["direct", "structured", "reference"], "default": "direct",

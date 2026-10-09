@@ -171,6 +171,24 @@ def test_local_ai_is_opt_in_and_asks_first():
     assert not run.called, "declining must not install anything"
 
 
+def test_worker_all_clients_means_no_filter():
+    from roc import worker
+    assert worker.only_clients("all") is None, "'all' must not filter to a client named all"
+    assert worker.only_clients(None) is None
+    assert worker.only_clients("2009-06") == ["2009-06"]
+
+
+def test_ask_client_accepts_all():
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("roc_cli_all_test", ROOT / "roc.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    with patch("builtins.input", return_value="all"):
+        assert module.ask_client() == "all"
+    with patch("builtins.input", return_value="a"):
+        assert module.ask_client() == "all"
+
+
 def test_handoff_signature_round_trip_and_tamper():
     with temp_config() as handoff:
         url = handoff.link("colin", "2008-06", "https://server.example:443", cloud=True)

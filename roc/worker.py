@@ -311,6 +311,17 @@ def resolve_model(payload):
                      "  Or use a local model:  roc local-ai")
 
 
+def only_clients(client):
+    """The lease filter for a client choice: None means every usable client.
+
+    "all" (or no choice) lets the server hand out work from any client whose
+    exe, compiler and analysis are ready.
+    """
+    if not client or str(client).lower() == "all":
+        return None
+    return [client]
+
+
 def main_args(payload, argv=()):
     """Run a worker described by a signed handoff config (see roc.handoff).
 
@@ -320,7 +331,7 @@ def main_args(payload, argv=()):
     import argparse
     from roc import providers
     ap = argparse.ArgumentParser(prog="roc launch", description="Run the worker from the signed setup config.")
-    ap.add_argument("--client", help="override the client from the config")
+    ap.add_argument("--client", help="override the client from the config ('all' means every ready client)")
     ap.add_argument("--model", help="override the model from the config")
     ap.add_argument("--workers", help="bounded concurrent lease loops (1-256 or auto)")
     ap.add_argument("--rounds", type=int, help="AI tries per function")
@@ -349,6 +360,8 @@ def main_args(payload, argv=()):
         raise SystemExit("No server address saved. Run: roc setup")
     token = payload.get("token") or None
     client = given.client or payload.get("client")
+    if client and str(client).lower() == "all":
+        client = None
     model, cloud_allowed = resolve_model(payload)
     is_cloud = providers.is_cloud(model)
     rounds = given.rounds if given.rounds else 4
@@ -382,7 +395,7 @@ def main_args(payload, argv=()):
         return None
     keep_awake()
     return run_concurrent(server, user, token, model, rounds, max_size, not given.no_revng,
-                          given.jobs, workers=workers, only=[client] if client else None,
+                          given.jobs, workers=workers, only=only_clients(client),
                           cloud_allowed=cloud_allowed, cloud_budget=budget,
                           max_tokens=2048, thinking="auto", order=order,
                           verbosity=verbosity,
