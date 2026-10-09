@@ -14,4 +14,5 @@
  ,{"name":"rtti-operator-indirect","categories":["rtti_operator"],"evidence":["immediate/constant mismatch","instruction-selection mismatch"],"exact":1,"improved":0,"conditions":"source uses one RTTI operator== expression; target has an indirect call with static receiver"}
  ,{"name":"virtual-call-view","categories":["virtual_call_view"],"evidence":["register allocation difference"],"exact":1,"improved":0,"conditions":"plain two-int vtable-backed storage; target EDX positive and ECX negative delta; raw indirect release call"}
  ,{"name":"virtual-slot-view","categories":["virtual_slot_view"],"evidence":["code-size mismatch","instruction-selection mismatch"],"exact":1,"improved":0,"conditions":"raw __thiscall vtable expression; target has one pushed argument and candidate moves it to ECX; bounded slot offset"}
+ ,{"name":"direct-member-noarg","categories":["direct_member_noarg"],"evidence":["register allocation difference","missing/extra instruction"],"exact":1,"improved":0,"conditions":"target loads ECX before direct no-argument helper; source declares extern __stdcall helper called from one struct member"}
 ]

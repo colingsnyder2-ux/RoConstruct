@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-09 19:39 UTC",
+ "updated": "2026-10-09 19:53 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -18,10 +18,10 @@
    "leaderboard": [
     {
      "user": "auto",
-     "matched": 6520,
-     "points": 652000,
-     "submissions": 6520,
-     "last": 1791526068.760575
+     "matched": 7941,
+     "points": 794100,
+     "submissions": 7941,
+     "last": 1791575579.6513953
     },
     {
      "user": "colin",
@@ -48,35 +48,35 @@
    "built": "2007-08-19",
    "started": true,
    "functions": 19998,
-   "matched": 10220,
-   "partial": 9539,
+   "matched": 10225,
+   "partial": 9536,
    "bytes": 3009279,
-   "matched_bytes": 841716,
+   "matched_bytes": 842152,
    "source_bytes": 613231,
-   "mined_bytes": 228485,
-   "partial_bytes": 1969964,
+   "mined_bytes": 228921,
+   "partial_bytes": 1971248,
    "data_bytes": 1361658,
    "leaderboard": [
     {
      "user": "auto",
-     "matched": 8285,
-     "points": 825729,
-     "submissions": 8285,
-     "last": 1791531023.2188904
+     "matched": 8310,
+     "points": 826777,
+     "submissions": 8310,
+     "last": 1791575581.550594
     },
     {
      "user": "colin",
      "matched": 1458,
-     "points": 650321,
-     "submissions": 18666,
-     "last": 1791574720.4021027
+     "points": 652189,
+     "submissions": 18880,
+     "last": 1791575423.4231212
     },
     {
      "user": "atomic.potato",
-     "matched": 32,
-     "points": 80,
-     "submissions": 35,
-     "last": 1791574484.9209354
+     "matched": 38,
+     "points": 127,
+     "submissions": 45,
+     "last": 1791575307.8130887
     },
     {
      "user": "colinlaptop",
@@ -121,10 +121,10 @@
    "leaderboard": [
     {
      "user": "auto",
-     "matched": 9363,
-     "points": 936215,
-     "submissions": 9363,
-     "last": 1791533131.630865
+     "matched": 9473,
+     "points": 947153,
+     "submissions": 9473,
+     "last": 1791575587.1365309
     },
     {
      "user": "Cezant64gamejr",
@@ -306,17 +306,17 @@
  "leaderboard": [
   {
    "user": "auto",
-   "matched": 61071,
-   "points": 6103963,
-   "submissions": 61071,
-   "last": 1791533702.6025324
+   "matched": 62627,
+   "points": 6258049,
+   "submissions": 62627,
+   "last": 1791575587.1365309
   },
   {
    "user": "colin",
    "matched": 1546,
-   "points": 663711,
-   "submissions": 18859,
-   "last": 1791574720.4021027
+   "points": 665579,
+   "submissions": 19073,
+   "last": 1791575423.4231212
   },
   {
    "user": "why2",
@@ -334,10 +334,10 @@
   },
   {
    "user": "atomic.potato",
-   "matched": 32,
-   "points": 80,
-   "submissions": 35,
-   "last": 1791574484.9209354
+   "matched": 38,
+   "points": 127,
+   "submissions": 45,
+   "last": 1791575307.8130887
   },
   {
    "user": "Cezant64gamejr",
