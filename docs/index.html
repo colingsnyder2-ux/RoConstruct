@@ -160,13 +160,6 @@ canvas { display: block; width: 100%; height: min(70vh, 560px); background: var(
 .legend { display: flex; gap: 16px; color: var(--dim); font-size: 13px; margin-top: 8px; flex-wrap: wrap; }
 .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; }
 .note { color: var(--dim); font: 12px var(--mono); margin-top: 12px; }
-.source-list { margin-top: 20px; }
-.source-list ul { margin: 10px 0 0; padding-left: 20px; }
-.source-list li { margin: 7px 0; color: #c9d4e2; }
-.src-state { display: inline-block; border: 1px solid; border-radius: 5px; font: 600 11px var(--mono); margin-left: 7px; padding: 1px 6px; white-space: nowrap; }
-.src-state.yes { color: #3fb950; border-color: rgba(63,185,80,.4); background: rgba(63,185,80,.1); }
-.src-state.no { color: #e5534b; border-color: rgba(229,83,75,.4); background: rgba(229,83,75,.1); }
-.src-state.maybe { color: #d8a63a; border-color: rgba(216,166,58,.4); background: rgba(216,166,58,.1); }
 
 /* footer */
 
@@ -216,56 +209,6 @@ footer img { height: 30px; }
 const REPO = "https://github.com/colingsnyder2-ux/RoConstruct";
 const FINDINGS = "https://github.com/colingsnyder2-ux/RoConstruct-findings";
 const app = document.getElementById("app");
-const CLIENT_SOURCES = {
-  "2007-03": [
-    ["VS2005 SP1; MFC/ATL 8.0", "source present", "yes"],
-    ["Codejock XTP: exact version not pinned (9.60-era possible)", "exact source unknown", "maybe"],
-    ["G3D 6.x and RakNet 3.0", "source present", "yes"],
-    ["Roblox app: RBXGSdecomp, Nov 2007", "nearby build", "maybe"],
-  ],
-  "2007-08": [
-    ["VS2005 SP1; MFC/ATL 8.0", "source present", "yes"],
-    ["Codejock XTP 9.60/9.60.1", "exact source missing", "no"],
-    ["G3D 6.x and RakNet 3.0", "source present", "yes"],
-    ["Roblox app: RBXGSdecomp, Nov 2007", "nearby build", "maybe"],
-  ],
-  "2008-06": [
-    ["VS2008 RTM; MFC/ATL 9.0", "source present", "yes"],
-    ["Codejock XTP 11.2.2", "source present", "yes"],
-    ["G3D 6.x; RakNet exact version not pinned", "candidate source", "maybe"],
-    ["Roblox app: RBXGSdecomp", "compatible only", "maybe"],
-  ],
-  "2009-06": [
-    ["VS2008 SP1; MFC/ATL 9.0", "source present", "yes"],
-    ["Codejock XTP: exact version not pinned (11.2.2/13.2.1 candidates)", "candidate source", "maybe"],
-    ["G3D 7.x", "exact source missing", "no"],
-    ["Ogre 1.4.9", "source present", "yes"],
-  ],
-  "2009-12": [
-    ["VS2008 SP1; MFC/ATL 9.0", "source present", "yes"],
-    ["Codejock XTP and RakNet: exact version not pinned", "candidate source", "maybe"],
-    ["G3D 7.x", "exact source missing", "no"],
-    ["Ogre 1.6.4", "source present", "yes"],
-  ],
-  "2010-06": [
-    ["VS2008 SP1; MFC/ATL 9.0", "source present", "yes"],
-    ["Codejock XTP 13.2.1", "source present", "yes"],
-    ["G3D 7.x", "exact source missing", "no"],
-    ["Ogre 1.6.4", "source present", "yes"],
-  ],
-  "2011-06": [
-    ["VS2008 RTM; MFC/ATL 9.0", "source present", "yes"],
-    ["Codejock XTP 15.2.1; Ogre 1.6.4; LAME 3.98.4/3.99.5", "source present", "yes"],
-    ["G3D 8.x / local 8.00 fork", "partial source", "maybe"],
-  ],
-  "2012-06": [
-    ["VS2008 SP1; MFC/ATL 9.0", "source present", "yes"],
-    ["Codejock XTP 15.2.1; Ogre 1.6.4; LAME 3.98.4/3.99.5", "source present", "yes"],
-    ["G3D 8.x / local 8.00 fork", "partial source", "maybe"],
-  ],
-};
-const sourceInventory = name => (CLIENT_SOURCES[name] || []).map(([what, state, kind]) =>
-  `<li>${esc(what)}<span class="src-state ${kind}">${esc(state)}</span></li>`).join("");
 const fmt = n => n.toLocaleString("en-US");
 const pct = (a, b) => b ? (100 * a / b).toFixed(2) + "%" : "0.00%";
 const mb = n => (n / 1048576).toFixed(2) + " MB";
@@ -501,8 +444,6 @@ async function client(name) {
       verified (strings and constants used by matched functions)</small></div>
     ${bar(latest.data_matched_bytes || 0, 0, latest.data_bytes || 1, "b")}
     <div style="margin-top:20px">${commitPanel()}</div>
-    <div class="head source-list"><h2><small>Available</small>Sources</h2><p>Exact version only where binary evidence pins it. Candidate source never counts without byte match.</p></div>
-    <div class="detail"><ul>${sourceInventory(name)}</ul></div>
     <div class="head"><h2><small>Map</small>Units</h2><p>${fmt(units.length)} units (classes from RTTI). The map always shows the latest state.</p></div>
     <div class="controls">
       <select id="unit"><option value="">All</option>${unitOrder.map(u =>
