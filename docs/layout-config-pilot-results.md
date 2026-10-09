@@ -94,3 +94,21 @@ Normal recipe-path replay is recorded separately in `work/shared-mfc-replay.json
 requires both existing code scoring and data checks to pass for each stored
 partial candidate. No server submissions were made. Further macro combinations,
 non-XTP validation and the remaining research pilots are still pending.
+
+Added matching `mfc-9.0-shared` recipe (`_AFXDLL _DLL`, `/MD` only) for planned
+non-XTP control. First `dlgdhtml.cpp` probe found no directly named
+`CAboutRobloxDialog` symbol in standalone MFC object, so no gain counted. Recipe
+tests pass; non-XTP validation remains open.
+
+Second additional shard: `CXTPTabClientWnd`, same 2008-06 recipe. Of 12 frozen
+partials, 10 became exact, one remained 98, and one regressed to 68. Again,
+shared-MFC effect is strong but not universal; no broad replacement authorized.
+
+Third shard: `CXTPRibbonTheme`. 11 frozen partials yielded 10 code-exact
+results, with one unchanged at 96%; no regressions. One 92% candidate gained
+to exact. This unit further confirms config-specific benefit.
+
+Additional shard: `CXTPPropertyGrid` (2008-06, XTP 11.2.2, `/O2 /GS- /MD`).
+Shared-MFC recipe compiled 10 frozen partial targets: 8 became code-exact, one
+stayed 99, one dropped to 88. This supports unit/family relevance, not global
+replacement. Better stored candidates remain protected. No submission made.

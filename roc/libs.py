@@ -427,6 +427,10 @@ RECIPES["mfc-8.0"] = dict(src="mfc-8.0", langs=["cpp"], builds=[50727], include=
 _MFC90_INC = ["mfc-9.0/atlmfc/src/mfc", "mfc-9.0/atlmfc/include", "WINSDK"]
 RECIPES["mfc-9.0"] = dict(src="mfc-9.0", langs=["cpp"], builds=[30729, 21022], include=_MFC90_INC,
                           grid=_MFC_GRID, files="atlmfc/src/mfc/*.cpp")
+RECIPES["mfc-9.0-shared"] = dict(src="mfc-9.0", langs=["cpp"], builds=[30729, 21022],
+                                 include=_MFC90_INC,
+                                 defines="_AFXDLL _DLL", grid=["/O2 /GS- /MD", "/O1 /GS- /MD"],
+                                 files="atlmfc/src/mfc/*.cpp")
 
 # ATL implementation units are separate from MFC.  The clients contain named ATL::CRegObject
 # code, so compile the shipped ATL sources with the same toolchain headers.
