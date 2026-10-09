@@ -114,6 +114,8 @@ def run(url):
 
     model, rounds, max_size, use_revng, workers, budget, thinking = choose_worker(s, mode)
     lease_mode = worker.load_settings().get("worker_lease_mode", "function")
+    family_id = worker.load_settings().get("worker_family_id")
+    family_example = worker.load_settings().get("worker_family_example")
     cloud = providers.is_cloud(model)
     payload = handoff.save(user=user, client=client, server=server, token=token,
                            mode="cloud" if cloud else "local", cloud=cloud, model=model)
@@ -121,7 +123,8 @@ def run(url):
     worker.keep_awake()
     return worker.main_args(payload, knobs(rounds, max_size, use_revng, workers,
                                            worker.load_settings().get("worker_order", "auto"),
-                                           worker.load_settings().get("worker_verbosity", "auto"), lease_mode))
+                                           worker.load_settings().get("worker_verbosity", "auto"), lease_mode,
+                                           family_id, family_example))
 
 
 def choose_worker(settings, mode):
@@ -153,7 +156,8 @@ def choose_worker(settings, mode):
     return choose_options(fresh)
 
 
-def knobs(rounds, max_size, use_revng, workers, order="auto", verbosity="auto", lease_mode="function"):
+def knobs(rounds, max_size, use_revng, workers, order="auto", verbosity="auto", lease_mode="function",
+          family_id=None, family_example=None):
     """The chosen options as CLI flags for worker.main_args."""
     argv = ["--workers", str(workers), "--order", order, "--verbosity", verbosity,
             "--lease-mode", lease_mode]
@@ -163,6 +167,10 @@ def knobs(rounds, max_size, use_revng, workers, order="auto", verbosity="auto", 
         argv += ["--max-size", str(max_size)]
     if not use_revng:
         argv.append("--no-revng")
+    if family_id:
+        argv += ["--family-id", family_id]
+    if family_example:
+        argv += ["--family-example", family_example]
     return argv
 
 
@@ -407,6 +415,8 @@ def choose_options(settings):
                 profile.get("strategy", settings.get("worker_strategy", "direct")))
     order = settings.get("worker_order", "auto")
     lease_mode = settings.get("worker_lease_mode", "function")
+    family_id = settings.get("worker_family_id")
+    family_example = settings.get("worker_family_example")
     last_workers = (profile.get("workers", settings.get("worker_workers", "1"))
                     if profile and settings.get("worker_workers_model") != model
                     else settings.get("worker_workers", "1"))
@@ -469,6 +479,13 @@ def choose_options(settings):
         work_order = work_order or ("family" if lease_mode == "family" else order)
         if work_order == "family":
             lease_mode, order = "family", "auto"
+            target = input("Family target [random] (random, fingerprint, or CLIENT:ADDRESS): ").strip()
+            family_id = None
+            family_example = None
+            if target and ":" in target:
+                family_example = target
+            elif target and target.lower() != "random":
+                family_id = target.lower()
         else:
             lease_mode, order = "function", work_order
         if order not in ("auto", "best", "matched", "unmatched", "easiest", "random"):
@@ -496,6 +513,7 @@ def choose_options(settings):
                          worker_thinking=thinking, worker_strategy=strategy,
                          worker_order=order, worker_verbosity=verbosity, worker_max_size=max_size,
                          worker_lease_mode=lease_mode,
+                         worker_family_id=family_id, worker_family_example=family_example,
                          worker_rounds=rounds, worker_launcher_configured=True,
                          worker_preset_model=model, worker_rounds_model=model,
                          worker_workers_model=model, worker_output_budget_model=model,
