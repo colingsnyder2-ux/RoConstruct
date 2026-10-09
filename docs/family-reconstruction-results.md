@@ -59,6 +59,18 @@ exact, 36/36 compilable, 105,304 tokens, $0.042758. On 28 unseen siblings:
 Exemplar gain: +6 exact, −25% tokens/cost. Evidence now spans two clients, but
 still covers repeated wrapper-heavy sections and one cloud model.
 
+## 2009/2010 broader holdouts
+
+DeepSeek paired sibling checks on additional clients:
+
+| client/section | direct | family exemplar | token/cost change |
+| --- | ---: | ---: | ---: |
+| 2009-06 `seg_00890000` (15) | 12 exact | 15 exact | −24% |
+| 2010-06 `seg_009e0000` (12) | 10 exact | 12 exact | −31% |
+
+All jobs compiled in both arms. Evidence now spans four client versions, but
+samples remain repeated wrapper/thunk families, not random whole-client draws.
+
 ## Reproduction
 
 ```text

@@ -688,6 +688,16 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
         facts = draft.facts_from_asm(asm)
         facts.update(draft.target_data_facts(client, code, relocs))
         row = match._functions(client)[addr]
+        family_id = None
+        if family_exemplars:
+            from roc import families
+            family_id = families.fingerprint(row, asm)
+            try:
+                api.call("/v1/family", {"client": client, "addr": addr, "family": family_id})
+            except RuntimeError:
+                # Older servers lack fingerprint registration; shape mode below
+                # remains compatible until server restart/update.
+                family_id = None
         facts.update({k: row[k] for k in ("call_targets", "callers", "external_calls", "imports", "strings", "data_refs",
                                            "global_reads", "global_writes",
                                            "virtual_slots", "stack_args", "this_reads", "this_writes",
@@ -733,16 +743,17 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
             source_cache = {}
         if client not in examples_cache:
             examples_cache[client] = {}
-        example_key = (job["unit"], job.get("shape"))
+        example_key = (job["unit"], job.get("shape"), family_id)
         if example_key not in examples_cache[client]:
             quarantined = metrics.quarantined_keys()
-            if family_exemplars and not job.get("shape"):
+            if family_exemplars and not family_id:
                 examples_cache[client][example_key] = []
             else:
                 strict = "&strict=1" if family_exemplars else ""
-                path = "/v1/examples?client=%s&unit=%s&shape=%s&n=%d%s" % (
+                family_query = "&family=%s" % quote(family_id) if family_id else ""
+                path = "/v1/examples?client=%s&unit=%s&shape=%s&n=%d%s%s" % (
                     quote(client), quote(job["unit"]), quote(job.get("shape") or ""),
-                    1 if family_exemplars else 2, strict)
+                    1 if family_exemplars else 2, strict, family_query)
                 examples_cache[client][example_key] = [e["source"] for e in api.call(path)
                                                        if (client, e.get("addr")) not in quarantined]
         examples = examples_cache[client][example_key]
@@ -832,6 +843,8 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                            size=job.get("size", 0), base_score=job.get("score", 0), score=result,
                            score_gain=max(result - job.get("score", 0), 0), improved=improved,
                            source_hints=len(source_hints) if 'source_hints' in locals() else 0,
+                           family_id=family_id if 'family_id' in locals() else None,
+                           family_exemplar=bool(('examples' in locals()) and examples and family_id),
                            source_candidate=bool(source_candidate),
                            source_candidate_score=source_candidate[0] if source_candidate else 0,
                            source_candidate_hit=bool(source_candidate and source_candidate[0] == 100),

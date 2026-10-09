@@ -1,0 +1,398 @@
+[
+ {
+  "client": "2009-06",
+  "addr": "008939b0",
+  "size": 1,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false,
+  "family_size": 285,
+  "family_shape": [
+   "ret"
+  ]
+ },
+ {
+  "client": "2009-06",
+  "addr": "00890120",
+  "size": 5,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false,
+  "family_size": 7,
+  "family_shape": [
+   "jmp"
+  ]
+ },
+ {
+  "client": "2009-06",
+  "addr": "00893920",
+  "size": 10,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false,
+  "family_size": 296,
+  "family_shape": [
+   "mov",
+   "jmp"
+  ]
+ },
+ {
+  "client": "2009-06",
+  "addr": "008929f0",
+  "size": 11,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false,
+  "family_size": 5,
+  "family_shape": [
+   "call",
+   "mov",
+   "ret"
+  ]
+ },
+ {
+  "client": "2009-06",
+  "addr": "008940b0",
+  "size": 11,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false,
+  "family_size": 46,
+  "family_shape": [
+   "mov",
+   "jmp"
+  ]
+ },
+ {
+  "client": "2009-06",
+  "addr": "00894fe0",
+  "size": 11,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false,
+  "family_size": 38,
+  "family_shape": [
+   "mov",
+   "ret"
+  ]
+ },
+ {
+  "client": "2009-06",
+  "addr": "00891210",
+  "size": 12,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false,
+  "family_size": 20,
+  "family_shape": [
+   "push",
+   "call",
+   "pop",
+   "ret"
+  ]
+ },
+ {
+  "client": "2009-06",
+  "addr": "008929a0",
+  "size": 12,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false,
+  "family_size": 50,
+  "family_shape": [
+   "call",
+   "push",
+   "call",
+   "ret"
+  ]
+ },
+ {
+  "client": "2009-06",
+  "addr": "00892a50",
+  "size": 18,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false,
+  "family_size": 2,
+  "family_shape": [
+   "push",
+   "call",
+   "mov",
+   "ret"
+  ]
+ },
+ {
+  "client": "2009-06",
+  "addr": "00894890",
+  "size": 19,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false,
+  "family_size": 2,
+  "family_shape": [
+   "mov",
+   "test",
+   "je",
+   "mov",
+   "mov",
+   "push",
+   "call",
+   "ret"
+  ]
+ },
+ {
+  "client": "2009-06",
+  "addr": "00894f30",
+  "size": 20,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false,
+  "family_size": 2,
+  "family_shape": [
+   "mov",
+   "mov",
+   "jmp"
+  ]
+ },
+ {
+  "client": "2009-06",
+  "addr": "00891130",
+  "size": 22,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false,
+  "family_size": 6,
+  "family_shape": [
+   "mov",
+   "call",
+   "push",
+   "call",
+   "pop",
+   "ret"
+  ]
+ },
+ {
+  "client": "2009-06",
+  "addr": "008938e0",
+  "size": 22,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false,
+  "family_size": 11,
+  "family_shape": [
+   "mov",
+   "call",
+   "push",
+   "call",
+   "ret"
+  ]
+ },
+ {
+  "client": "2009-06",
+  "addr": "00891050",
+  "size": 23,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false,
+  "family_size": 5,
+  "family_shape": [
+   "mov",
+   "call",
+   "push",
+   "call",
+   "pop",
+   "ret"
+  ]
+ },
+ {
+  "client": "2009-06",
+  "addr": "00893b60",
+  "size": 25,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false,
+  "family_size": 366,
+  "family_shape": [
+   "mov",
+   "push",
+   "call",
+   "add",
+   "mov",
+   "ret"
+  ]
+ },
+ {
+  "client": "2009-06",
+  "addr": "00896a20",
+  "size": 29,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false,
+  "family_size": 5,
+  "family_shape": [
+   "mov",
+   "push",
+   "mov",
+   "test",
+   "je",
+   "call",
+   "push",
+   "call",
+   "add",
+   "pop",
+   "ret"
+  ]
+ },
+ {
+  "client": "2009-06",
+  "addr": "00894fa0",
+  "size": 32,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false,
+  "family_size": 3,
+  "family_shape": [
+   "mov",
+   "push",
+   "call",
+   "xor",
+   "add",
+   "mov",
+   "mov",
+   "mov",
+   "ret"
+  ]
+ },
+ {
+  "client": "2009-06",
+  "addr": "0089d380",
+  "size": 46,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false,
+  "family_size": 3,
+  "family_shape": [
+   "cmp",
+   "mov",
+   "jne",
+   "mov",
+   "test",
+   "je",
+   "push",
+   "call",
+   "mov",
+   "ret"
+  ]
+ },
+ {
+  "client": "2009-06",
+  "addr": "0089d410",
+  "size": 51,
+  "unit": "seg_00890000",
+  "bucket": "medium",
+  "source_present": false,
+  "family_size": 2,
+  "family_shape": [
+   "mov",
+   "call",
+   "cmp",
+   "jne",
+   "mov",
+   "test",
+   "je",
+   "push",
+   "call",
+   "mov",
+   "ret"
+  ]
+ },
+ {
+  "client": "2009-06",
+  "addr": "008939d0",
+  "size": 56,
+  "unit": "seg_00890000",
+  "bucket": "medium",
+  "source_present": false,
+  "family_size": 8,
+  "family_shape": [
+   "push",
+   "mov",
+   "test",
+   "je",
+   "lea",
+   "or",
+   "lock",
+   "jne",
+   "mov",
+   "mov",
+   "mov",
+   "call",
+   "lea",
+   "or",
+   "lock",
+   "jne",
+   "mov",
+   "mov",
+   "mov",
+   "pop",
+   "jmp",
+   "pop",
+   "ret"
+  ]
+ },
+ {
+  "client": "2009-06",
+  "addr": "00895ed0",
+  "size": 61,
+  "unit": "seg_00890000",
+  "bucket": "medium",
+  "source_present": false,
+  "family_size": 17,
+  "family_shape": [
+   "mov",
+   "test",
+   "je",
+   "push",
+   "call",
+   "add",
+   "mov",
+   "push",
+   "mov",
+   "mov",
+   "mov",
+   "call",
+   "pop",
+   "ret"
+  ]
+ },
+ {
+  "client": "2009-06",
+  "addr": "008964d0",
+  "size": 63,
+  "unit": "seg_00890000",
+  "bucket": "medium",
+  "source_present": false,
+  "family_size": 5,
+  "family_shape": [
+   "mov",
+   "test",
+   "je",
+   "add",
+   "push",
+   "call",
+   "test",
+   "jne",
+   "mov",
+   "call",
+   "mov",
+   "test",
+   "je",
+   "mov",
+   "mov",
+   "push",
+   "call",
+   "mov",
+   "ret"
+  ]
+ }
+]

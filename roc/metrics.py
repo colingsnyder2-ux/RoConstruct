@@ -70,7 +70,9 @@ def summary(session):
     done = [r for r in rows if r.get("event") == "job"]
     matched = sum(r.get("score", 0) == 100 for r in done)
     improved = sum(r.get("improved") for r in done)
-    source = sum(r.get("source_hints") for r in done)
+    source = sum(r.get("source_hints", 0) or 0 for r in done)
+    family_jobs = sum(bool(r.get("family_id")) for r in done)
+    family_examples = sum(bool(r.get("family_exemplar")) for r in done)
     source_candidates = sum(bool(r.get("source_candidate")) for r in done)
     source_hits = sum(bool(r.get("source_candidate_hit")) for r in done)
     ai_hits = sum(bool(r.get("improved")) and not bool(r.get("source_candidate_hit")) for r in done)
@@ -88,8 +90,8 @@ def summary(session):
     cloud, cost = totals["cloud_jobs"], totals["estimated_cost"]
     token_line = " tokens=in:%d out:%d cached:%d" % (input_tokens, output_tokens, cached_tokens)
     cost_line = " cost=unknown" if cloud and cost is None else " cost=$%.6f" % cost
-    return (("Session: %d jobs, %d matched, %d improved, source hits %d, AI hits %d, %d source-guided, %.1fs avg (LLM %.1fs, compile %.1fs)"
-             % (len(done), matched, improved, source_hits, ai_hits, source_candidates,
+    return (("Session: %d jobs, %d matched, %d improved, family %d/%d, source hits %d, AI hits %d, %d source-guided, %.1fs avg (LLM %.1fs, compile %.1fs)"
+             % (len(done), matched, improved, family_examples, family_jobs, source_hits, ai_hits, source_candidates,
                 sum(r.get("seconds", 0) for r in done) / max(len(done), 1), llm, compile_time)) +
             token_line + cost_line + tail)
 

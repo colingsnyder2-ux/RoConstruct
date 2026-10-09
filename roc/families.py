@@ -1,5 +1,6 @@
 """Small clean-room grouping for repeated machine-code function shapes."""
 import re
+import hashlib
 from collections import defaultdict
 
 
@@ -15,6 +16,13 @@ def opcode_shape(asm):
 def family_key(row, asm):
     """Group same-sized functions with the same opcode sequence."""
     return (int(row.get("size", 0) or 0), opcode_shape(asm))
+
+
+def fingerprint(row, asm):
+    """Stable wire-safe family id: size plus ordered opcode shape."""
+    size, ops = family_key(row, asm)
+    text = "%d:%s" % (size, ",".join(ops))
+    return hashlib.sha256(text.encode("ascii")).hexdigest()[:24]
 
 
 def representatives(rows, disassemble, minimum=2):

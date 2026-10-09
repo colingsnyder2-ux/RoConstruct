@@ -57,7 +57,7 @@ def resolve_order(order, db):
     return "random"
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS funcs(client TEXT, addr TEXT, size INT, unit TEXT,
-  score INT DEFAULT 0, source TEXT, user TEXT, attempts INT DEFAULT 0, updated REAL, shape TEXT,
+  score INT DEFAULT 0, source TEXT, user TEXT, attempts INT DEFAULT 0, updated REAL, shape TEXT, family TEXT,
   cooldown REAL DEFAULT 0, calls INT DEFAULT 0, source_confidence INT DEFAULT 0,
   difficulty REAL DEFAULT 0, attempts_by_model TEXT DEFAULT '{}',
   PRIMARY KEY(client, addr));
@@ -78,6 +78,8 @@ class Store:
             self.db.execute("ALTER TABLE funcs ADD COLUMN data TEXT")  # verified data spans, JSON
         if "shape" not in columns:
             self.db.execute("ALTER TABLE funcs ADD COLUMN shape TEXT")
+        if "family" not in columns:
+            self.db.execute("ALTER TABLE funcs ADD COLUMN family TEXT")
         if "cooldown" not in columns:
             self.db.execute("ALTER TABLE funcs ADD COLUMN cooldown REAL DEFAULT 0")
         if "calls" not in columns:
@@ -319,16 +321,30 @@ class Store:
             row = self.db.execute("SELECT size, unit FROM funcs WHERE client = ? AND addr = ?", (client, addr)).fetchone()
         return {"client": client, "addr": addr, "size": row[0], "unit": row[1]} if row else None
 
-    def examples(self, client, n=3, unit=None, shape=None, strict=False):
+    def register_family(self, client, addr, family):
+        with self.lock:
+            self.db.execute("UPDATE funcs SET family = ? WHERE client = ? AND addr = ?",
+                            (family, client, addr))
+            self.db.commit()
+        return True
+
+    def examples(self, client, n=3, unit=None, shape=None, strict=False, family=None):
         """Small matched sources, used as few-shot examples for AI workers."""
         with self.lock:
             unit_sql = " AND unit = ?" if unit else ""
             shape_sql = " AND shape = ?" if shape else ""
-            args = (client, unit, shape, n) if unit and shape else ((client, unit, n) if unit else ((client, shape, n) if shape else (client, n)))
+            family_sql = " AND family = ?" if family else ""
+            args = ((client, unit, shape, family, n) if unit and shape and family else
+                    (client, unit, family, n) if unit and family else
+                    (client, shape, family, n) if shape and family else
+                    (client, family, n) if family else
+                    (client, unit, shape, n) if unit and shape else
+                    (client, unit, n) if unit else
+                    (client, shape, n) if shape else (client, n))
             rows = self.db.execute("SELECT addr, source FROM funcs WHERE client = ? AND score = 100 "
                                    "AND source IS NOT NULL AND LENGTH(source) <= 6000 "
-                                   + unit_sql + shape_sql + " ORDER BY RANDOM() LIMIT ?", args).fetchall()
-            if (unit or shape) and not rows and not strict:
+                                   + unit_sql + shape_sql + family_sql + " ORDER BY RANDOM() LIMIT ?", args).fetchall()
+            if (unit or shape or family) and not rows and not strict:
                 rows = self.db.execute("SELECT addr, source FROM funcs WHERE client = ? AND score = 100 "
                                        "AND source IS NOT NULL AND LENGTH(source) <= 6000 "
                                        " ORDER BY RANDOM() LIMIT ?",
@@ -397,7 +413,10 @@ def make_handler(store, token, can_verify, mine_log=None):
             if url.path == "/v1/examples":
                 return self.send(200, store.examples(q.get("client", ""), min(int(q.get("n", 3)), 10),
                                                      q.get("unit"), q.get("shape"),
-                                                     q.get("strict") == "1"))
+                                                     q.get("strict") == "1", q.get("family")))
+            if url.path == "/v1/family":
+                return self.send(200, store.register_family(q.get("client", ""), q.get("addr", ""),
+                                                             q.get("family", "")))
             self.send(404, {"error": "unknown endpoint"})
 
         def do_POST(self):
@@ -412,6 +431,10 @@ def make_handler(store, token, can_verify, mine_log=None):
                 return self.send(400, {"error": "bad json"})
             path = urlparse(self.path).path
             user = str(body.get("user", ""))
+            if path == "/v1/family":
+                return self.send(200, store.register_family(str(body.get("client", "")),
+                                                             str(body.get("addr", "")),
+                                                             str(body.get("family", ""))))
             if path in ("/v1/lease", "/v1/submit") and not USER_RE.match(user):
                 return self.send(400, {"error": "username must be 2-32 letters, digits, _ . -"})
             if path == "/v1/lease":

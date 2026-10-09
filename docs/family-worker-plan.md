@@ -13,6 +13,8 @@ opcode shape, so one verified source can teach siblings their compact C++ form.
 - Worker flag `--family-exemplars` fetches only strict same-shape verified sources.
 - Prompt labels exemplar as structural evidence, limits it to one source, and
   forbids unrelated class expansion or assembly dumps.
+- Worker registers exact size/opcode fingerprints with server; strict family
+  lookup uses fingerprint plus same-client verified source.
 - Family mode is now default-on for worker launches; flag remains accepted for
   backward-compatible launcher configs.
 
@@ -23,15 +25,17 @@ family exemplar scored 68/68, with 40% fewer tokens/cost. A 2008-06 holdout
 also improved 22/28 → 28/28, with 25% fewer tokens/cost. Strong evidence, but
 still wrapper-heavy sections and one model.
 
+Additional paired holdouts: 2009-06 improved 12/15 → 15/15; 2010-06 improved
+10/12 → 12/12. All compiled. Four client versions now support default-on mode,
+though random whole-client validation remains.
+
 ## Next gates
 
 1. Run paired family-vs-direct holdouts on 2008 and a fresh client.
 2. Promote default only if exact matches improve and cost/exact does not worsen.
-3. Add a verified exemplar index keyed by strict family fingerprint when server
-   can store opcode fingerprints; never fall back to unrelated examples in mode.
-4. Add deterministic thunk/wrapper propagation only where compiler verification
+3. Add deterministic thunk/wrapper propagation only where compiler verification
    proves byte equality; reuse `roc/auto.py`, do not duplicate repair logic.
-5. Track exact, compile, tokens, cost/exact, and family coverage separately.
+4. Track exact, compile, tokens, cost/exact, and family coverage separately.
 
 ## Usage
 
