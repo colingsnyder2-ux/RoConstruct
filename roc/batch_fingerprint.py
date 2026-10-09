@@ -11,7 +11,7 @@ from pathlib import Path
 from roc import worker
 
 ROOT = Path(__file__).resolve().parent.parent
-REF = re.compile(r"(// roc-lang: cpp\n// roc-cl: \d+\n// roc-flags: [^\n]+\n// roc-(?:lib|archive): [^\n]+)")
+REF = re.compile(r"(// roc-lang: (?:c|cpp)\n// roc-cl: \d+\n// roc-flags: [^\n]+\n// roc-(?:lib|archive): [^\n]+)")
 
 
 def source_family(source):
@@ -150,6 +150,20 @@ def key(client, source, addrs):
     return hashlib.sha256((client + "\0" + source + "\0" + ",".join(addrs)).encode()).hexdigest()
 
 
+def pending_batches(planned, state):
+    """Resume by source/target pair even when progress changes batch membership."""
+    done = set(state.get("done", []))
+    checked = state.get("checked", {})
+    for client, source, addrs in planned:
+        if key(client, source, addrs) in done:
+            continue
+        previous = set(checked.get(key(client, source, []), ()))
+        remaining = [addr for addr in addrs if addr not in previous]
+        if remaining:
+            item = client, source, remaining
+            yield item, key(*item)
+
+
 def run_one(server, token, user, item):
     client, source, addrs = item
     payload = {"user": user, "worker": "batch-fingerprint", "model": "roc fingerprint",
@@ -175,32 +189,43 @@ def main():
                         help="try other exact same-unit sources against existing partial matches")
     mode.add_argument("--cross-client", action="store_true",
                       help="try foreign exact sources against identical named classes/families")
+    mode.add_argument("--c-sources", action="store_true",
+                      help="fingerprint C library sources using exact same-unit evidence")
     parser.add_argument("--server", help="override saved server address")
     args = parser.parse_args()
     settings = worker.load_settings()
-    state_name = "batch-fingerprint-cross-client.json" if args.cross_client else (
+    state_name = "batch-fingerprint-c.json" if args.c_sources else (
+        "batch-fingerprint-cross-client.json" if args.cross_client else (
         "batch-fingerprint-partials.json" if args.partials else "batch-fingerprint.json")
+    )
     state_path = ROOT / "work" / state_name
     state = json.loads(state_path.read_text()) if state_path.exists() else {"done": []}
     done = set(state.get("done", []))
+    checked = {marker: set(addrs) for marker, addrs in state.get("checked", {}).items()}
     db = sqlite3.connect("file:work/server.db?mode=ro", uri=True)
     planned = cross_client_batches(db) if args.cross_client else batches(db, partials=args.partials)
-    todo = [(item, key(*item)) for item in planned]
-    todo = [(item, marker) for item, marker in todo if marker not in done]
+    if args.c_sources:
+        planned = (item for item in planned if item[1].startswith("// roc-lang: c\n"))
+    todo = list(pending_batches(planned, state))
     if args.max_batches:
         todo = todo[:args.max_batches]
     print("queued", len(todo), flush=True)
     with ThreadPoolExecutor(max_workers=max(1, args.workers)) as pool:
-        jobs = {pool.submit(run_one, args.server or settings["server"], settings.get("token"), settings["user"], item): marker
+        jobs = {pool.submit(run_one, args.server or settings["server"], settings.get("token"), settings["user"], item): (item, marker)
                 for item, marker in todo}
         for future in as_completed(jobs):
-            marker = jobs[future]
+            item, marker = jobs[future]
             try:
                 client, source, targets, improved, best = future.result()
                 print(client, source_family(source), targets, "improved", improved, "best", best,
                       source.splitlines()[-1], flush=True)
                 done.add(marker)
-                state_path.write_text(json.dumps({"done": sorted(done)}, separators=(",", ":")))
+                checked.setdefault(key(client, source, []), set()).update(item[2])
+                temporary = state_path.with_suffix(".json.tmp")
+                temporary.write_text(json.dumps({"done": sorted(done),
+                                                "checked": {k: sorted(v) for k, v in checked.items()}},
+                                               separators=(",", ":")))
+                temporary.replace(state_path)
             except Exception as error:
                 print("ERROR", repr(error), flush=True)
 

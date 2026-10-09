@@ -1111,6 +1111,20 @@ def test_fingerprint_resume_changed_batch():
     assert list(pending_batches([("C", "source", ["a", "b"])], state)) == []
 
 
+def test_fingerprint_c_scope():
+    from roc.batch_fingerprint import batches
+    st = Store(":memory:", lease_seconds=10)
+    source = "// roc-lang: c\n// roc-cl: 21022\n// roc-flags: /O2\n// roc-lib: lua-5.1.4 lcode.c"
+    st.db.executemany("INSERT INTO funcs(client,addr,size,unit,score,source) VALUES(?,?,?,?,?,?)", [
+        ("C", "00401000", 20, "seg_00400000", 100, source),
+        ("C", "00401010", 20, "seg_00400000", 0, None),
+        ("C", "00401020", 20, "seg_00500000", 0, None),
+        ("C", "00401030", 20, "RBX::Instance", 100, source),
+        ("C", "00401040", 20, "RBX::Instance", 0, None),
+    ])
+    assert list(batches(st.db)) == [("C", source, ["00401010"])]
+
+
 def test_shape_normalisation():
     # Same code with different constants must collapse to one shape, or the counts that
     # decide which template to write next are meaningless.
