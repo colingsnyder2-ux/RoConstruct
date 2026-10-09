@@ -264,6 +264,8 @@ def main_args(payload, argv=()):
     ap.add_argument("--no-revng", action="store_true", help="never use Rev.ng hints")
     ap.add_argument("--family-exemplars", action="store_true", default=True,
                     help="use verified same-shape sources as compact family exemplars (default)")
+    ap.add_argument("--lease-mode", choices=["function", "family"], default="function",
+                    help="lease one function, or stay on one strict family")
     ap.add_argument("--dry-run", action="store_true", help="print the plan without leasing a job")
     given = ap.parse_args(list(argv))
 
@@ -301,7 +303,8 @@ def main_args(payload, argv=()):
                           cloud_allowed=cloud_allowed, cloud_budget=budget,
                           max_tokens=2048, thinking="auto", order=order,
                           verbosity=verbosity,
-                          family_exemplars=given.family_exemplars)
+                          family_exemplars=given.family_exemplars,
+                          lease_mode=given.lease_mode)
 
 
 _ANNOUNCE_LOCK = threading.Lock()
