@@ -535,19 +535,26 @@ def test_openai_chat_retries_without_unsupported_thinking():
 
     def fake_post(url, body, headers, timeout):
         calls.append(body)
-        if len(calls) == 1:
+        if "thinking" in body:
             raise providers.ProviderError("provider_error", "HTTP 400", 400)
         return {"choices": [{"message": {"content": "ok"}, "finish_reason": "stop"}],
                 "usage": {"prompt_tokens": 1, "completion_tokens": 1}}, {}
 
     with patch.dict(os.environ, {"DEEPSEEK_API_KEY": "x"}), \
+         patch("roc.providers.NO_THINKING", set()), \
          patch("roc.providers._post", side_effect=fake_post):
         out = providers.generate("deepseek:deepseek-flash", "p",
                                  options={"allow_cloud": True, "thinking": "disabled", "max_tokens": 16})
-    assert out.text == "ok"
-    assert len(calls) == 2, "the 400 must be retried once"
-    assert "thinking" not in calls[1], "the unsupported field must be dropped"
-    assert calls[1].get("reasoning_effort") == "low"
+        assert out.text == "ok"
+        assert len(calls) == 2, "the 400 must be retried once"
+        assert "thinking" not in calls[1], "the unsupported field must be dropped"
+        assert calls[1].get("reasoning_effort") == "low"
+        # The provider is remembered: the next call skips the guaranteed 400.
+        calls.clear()
+        providers.generate("deepseek:deepseek-flash", "p",
+                           options={"allow_cloud": True, "thinking": "disabled", "max_tokens": 16})
+        assert len(calls) == 1 and "thinking" not in calls[0]
+        assert calls[0].get("reasoning_effort") == "low"
 
 
 def test_provider_post_sends_a_user_agent():

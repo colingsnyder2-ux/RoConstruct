@@ -35,6 +35,8 @@ BUILTINS = {
 KINDS = {"openai-chat", "openai-responses", "anthropic-messages", "gemini"}
 SYSTEM = "Reconstruct compact valid C++ only. Never emit inline assembly. Follow the user task exactly."
 USER_AGENT = "RoConstruct/1.0"
+# Providers that rejected the thinking field once; the process skips it after that.
+NO_THINKING = set()
 
 
 class ProviderError(RuntimeError):
@@ -411,9 +413,16 @@ def _openai_chat(provider, remote, config, prompt, state, options):
             "max_tokens": options.get("max_tokens", 1024), "stream": False}
     if options.get("seed") is not None:
         body["seed"] = int(options["seed"])
-    if options.get("thinking") is not None and str(options["thinking"]).lower() != "auto":
-        body["thinking"] = (options["thinking"] if isinstance(options["thinking"], dict)
-                             else {"type": str(options["thinking"])})
+    think = options.get("thinking")
+    if think is not None and str(think).lower() != "auto":
+        disabled = ((isinstance(think, dict) and think.get("type") == "disabled")
+                    or str(think).lower() == "disabled")
+        if provider in NO_THINKING:
+            # This gateway already rejected the thinking field once; skip the
+            # guaranteed 400 and use the knob it does support.
+            body.setdefault("reasoning_effort", "low" if disabled else "high")
+        else:
+            body["thinking"] = think if isinstance(think, dict) else {"type": str(think)}
     if options.get("reasoning_effort") is not None:
         body["reasoning_effort"] = str(options["reasoning_effort"])
     data, headers = _post(_url(config, "/chat/completions"), body,
@@ -585,6 +594,7 @@ def generate(model, messages, options=None, state=None):
                                     or str(think).lower() == "disabled")
                         options["reasoning_effort"] = "low" if disabled else "high"
                     dropped_knobs = True
+                    NO_THINKING.add(provider)  # do not repeat the guaranteed 400
                     retries += 1
                     if budget and ticket:
                         budget.settle(ticket, 0, 0.0)  # the provider did not bill this
