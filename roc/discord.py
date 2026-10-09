@@ -13,18 +13,6 @@ RATE_WINDOW = 15 * 60
 ETA_MIN_RATE = 1.0 / 3600
 
 
-def emoji_bar(source, mined, retry, total):
-    """Fifteen cells: blue source, green mined, red retry, white untouched."""
-    values = (source, mined, retry)
-    cells = [value * 15 // total if total else 0 for value in values]
-    spare = 15 - sum(cells)
-    order = sorted(range(3), key=lambda i: values[i] * 15 % total if total else 0, reverse=True)
-    for i in order[:spare]:
-        cells[i] += 1
-    return (":blue_square:" * cells[0] + ":green_square:" * cells[1] +
-            ":negative_squared_cross_mark:" * cells[2] + ":white_large_square:" * (15 - sum(cells)))
-
-
 def fmt_duration(seconds):
     """Compact ETA: 45s, 12m, 5h 20m, 3d 4h."""
     seconds = max(0, int(seconds))
@@ -111,30 +99,36 @@ class MineLog:
         """One consistent digest shape; never send per-function webhook spam."""
         client = events[-1]["job"].get("client", "?")
         matched, total = self.store.client_progress(client)
-        source, mined, retry, _total = self.store.digest_progress(client)
+        matched_bytes, total_bytes = self.store.client_bytes(client)
         left = max(0, total - matched)
-        percent = 100.0 * matched / total if total else 0
-        bar = emoji_bar(source, mined, retry, total)
+        percent = 100.0 * matched_bytes / total_bytes if total_bytes else 0
+        filled = min(20, round(percent / 5))
+        bar = "█" * filled + "░" * (20 - filled)
         rate = self.store.match_rate(client, RATE_WINDOW)
         rate_hr = rate * 3600
         eta = fmt_duration(left / rate) if rate >= ETA_MIN_RATE else "building rate"
         contributor = events[-1]["user"]
         batch_points = sum(e["points"] for e in events if e["user"] == contributor)
-        full = sum(e["score"] == 100 for e in events)
-        partial = len(events) - full
+        full = [e for e in events if e["score"] == 100]
+        partial = [e for e in events if e["score"] < 100]
+
+        def lines(rows):
+            return "\n".join("%s **%d%%** `%s` %s · %s B" % (
+                "🟢" if e["score"] == 100 else "🟡", e["score"], e["job"].get("addr", "?"),
+                e["job"].get("unit", "?"), e["job"].get("size", "?")) for e in rows[:10]) or "None"
+
         return {"title": "⛏️ RoConstruct Mining Digest",
                 "description": "**%s Client**\n\n%s **%.2f%%**\n%s / %s matched · %s remaining" % (
                     client, bar, percent, format(matched, ","), format(total, ","), format(left, ",")),
                 "color": 0x58A6FF,
                 "fields": [
-                    {"name": "✅ Batch", "value": "%d fully matched · %d improved" % (full, partial), "inline": True},
-                    {"name": "⚡ 15 min Mine Rate", "value": "%d functions/hr" % round(rate_hr), "inline": True},
+                    {"name": "🟢 Fully Matched", "value": lines(full), "inline": False},
+                    {"name": "🟡 Partially Matched", "value": lines(partial), "inline": False},
+                    {"name": "⚡ Mining Rate", "value": "%d functions/hr" % round(rate_hr), "inline": True},
                     {"name": "🏆 Contributor", "value": "%s - %s pts (%+d)" % (
                         contributor, format(self.store.user_points(contributor), ","), batch_points), "inline": True},
-                    {"name": "⏱ ETA", "value": eta, "inline": True},
-                    {"name": "🧩 Bar", "value": "🟦 %s source · 🟩 %s mined · ❎ %s retry" % (
-                        format(source, ","), format(mined, ","), format(retry, ",")), "inline": False}],
-                "footer": {"text": "RoConstruct Mining"},
+                    ],
+                "footer": {"text": "ETA: %s" % eta},
                 "timestamp": datetime.now(timezone.utc).isoformat()}
 
     def _send(self, events):

@@ -791,6 +791,7 @@ def test_mine_digest():
     st.db.commit()
     assert st.user_points("alice") == 60 and st.user_points("nobody") == 0
     assert st.client_progress("C") == (1, 3)
+    assert st.client_bytes("C") == (9, 27)
     assert st.match_rate("C") > 0 and st.match_rate("other") == 0
     sent = []
     log = MineLog("http://example.invalid/hook", st, batch_events=10, batch_seconds=60)
@@ -803,10 +804,10 @@ def test_mine_digest():
     embed = sent[0]["embeds"][0]
     assert embed["title"] == "⛏️ RoConstruct Mining Digest"
     assert "33.33%" in embed["description"] and "1 / 3 matched" in embed["description"]
-    assert embed["fields"][0]["value"] == "1 fully matched · 1 improved"
-    assert embed["fields"][1]["name"] == "⚡ 15 min Mine Rate"
-    assert embed["fields"][2]["value"] == "alice - 60 pts (+60)"
-    assert "T" in embed["timestamp"] and "example updates" not in embed["footer"]["text"]
+    assert "a1" in embed["fields"][0]["value"] and "a2" in embed["fields"][1]["value"]
+    assert embed["fields"][2]["name"] == "⚡ Mining Rate"
+    assert embed["fields"][3]["value"] == "alice - 60 pts (+60)"
+    assert embed["footer"]["text"].startswith("ETA:") and "T" in embed["timestamp"]
 
 
 def test_concurrent_shares_caches_and_clamps():

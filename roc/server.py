@@ -208,6 +208,13 @@ class Store:
                                   (client,)).fetchone()
         return (int(row[0] or 0), int(row[1] or 0))
 
+    def client_bytes(self, client):
+        """(matched, total) code bytes for accurate percentage progress."""
+        with self.lock:
+            row = self.db.execute("SELECT SUM(CASE WHEN score = 100 THEN size ELSE 0 END), SUM(size) "
+                                  "FROM funcs WHERE client = ?", (client,)).fetchone()
+        return (int(row[0] or 0), int(row[1] or 0))
+
     def digest_progress(self, client):
         """Exact source, mined, retry, and total counts for a digest bar."""
         with self.lock:
