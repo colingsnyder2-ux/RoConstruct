@@ -572,11 +572,14 @@ def preprocess(build, path, include, defines=""):
     """One self-contained translation unit: headers inlined, link-only pragmas dropped."""
     cl = setup.compilers()[build]
     env = setup.cl_env(cl)
+    if not setup.WINDOWS:  # Wine needs Windows-style include paths inside INCLUDE
+        include = ";".join(setup.to_wine_path(p) for p in include.split(";") if p)
     env["INCLUDE"] = "%s;%s" % (include, env["INCLUDE"])
     if defines:
         env["CL"] = " ".join("/D" + d for d in defines.split())
     try:
-        run = subprocess.run([cl, "/nologo", "/EP", str(path)], capture_output=True, text=True,
+        run = subprocess.run([*setup.cl_command(cl), "/nologo", "/EP", setup.cl_path(path)],
+                             capture_output=True, text=True,
                              env=env, errors="replace", timeout=120)
     except subprocess.TimeoutExpired:
         raise match.CompileError("preprocessor timeout after 120 seconds")

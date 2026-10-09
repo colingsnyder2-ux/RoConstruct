@@ -33,7 +33,8 @@ WORKER_MODULES = [
 # Only the maintainer's server needs these, so they stay out of the helper zips.
 SERVER_MODULES = ["dataset", "discord", "progress", "server"]
 
-COMMON_FILES = ["roc.py", "roc.cmd", "install.cmd", "uninstall.cmd", "README.md",
+COMMON_FILES = ["roc.py", "roc.cmd", "roc.sh", "install.cmd", "install.sh",
+                "uninstall.cmd", "README.md",
                 "clients/clients.json", "clients/sources.json", "clients/README.md"]
 
 PACKAGES = {
@@ -48,13 +49,19 @@ PACKAGES = {
 
 This is the whole helper install. It is deliberately small:
 
-  1. Run install.cmd. It checks Python 3.12, installs two pip packages
-     (pefile, capstone), downloads the exact MSVC compiler bundles, registers
-     the roconstruct:// link, and opens the website.
-  2. Click "Start helping" on the website (or run start.cmd). It asks your
-     username, which client, and whether prompts may go to a cloud model.
+  1. Run install.cmd (Windows) or install.sh (Linux). It checks Python,
+     installs two pip packages (pefile, capstone), downloads the exact MSVC
+     compiler bundles, registers the roconstruct:// link on Windows, and
+     opens the website.
+  2. Click "Start helping" on the website (or run start.cmd; on Linux run
+     ./roc.sh launch). It asks your username, which client, and whether
+     prompts may go to a cloud model.
   3. The worker runs. Cloud models mean your PC stays idle. Only source that
      compiled and matched is uploaded.
+
+Linux needs Wine (it runs the old cl.exe) plus cabextract or 7z; install.sh
+checks for both before downloading anything. roconstruct:// links and the
+winget-based Ollama install are Windows-only; on Linux use ./roc.sh.
 
 Not installed, on purpose: Ollama, Docker, Rev.ng, any local model.
 Want a local model later? Run local-ai.cmd from RoConstruct Local AI, or:

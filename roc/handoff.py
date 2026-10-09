@@ -12,6 +12,7 @@ import json
 import os
 import secrets
 import subprocess
+import sys
 import time
 from pathlib import Path
 from urllib.parse import urlencode
@@ -168,7 +169,10 @@ def apply(url=None, **answers):
 # ---------- launching ----------
 
 def launch_command():
-    return [str(ROOT / "roc.cmd"), "launch"]
+    """How a background worker starts: the Windows launcher, or this Python."""
+    if os.name == "nt":
+        return [str(ROOT / "roc.cmd"), "launch"]
+    return [sys.executable, str(ROOT / "roc.py"), "launch"]
 
 
 def start(detached=True, log=print):
@@ -180,7 +184,9 @@ def start(detached=True, log=print):
         line = 'cmd /c start "RoConstruct worker" "%s" launch' % (ROOT / "roc.cmd")
         subprocess.Popen(line, shell=True, creationflags=flags)
     else:
-        subprocess.Popen(launch_command(), creationflags=flags)
+        # Linux has no `start`; a new session keeps the worker alive after the shell exits.
+        subprocess.Popen(launch_command(), creationflags=flags,
+                         start_new_session=os.name != "nt")
     log("Worker starting in a new window. Close that window to stop it.")
     return True
 

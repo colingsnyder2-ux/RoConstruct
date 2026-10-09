@@ -20,6 +20,9 @@ HANDOFF_FIELDS = ("user", "client", "server", "token", "mode", "model", "cloud")
 
 
 def install():
+    if os.name != "nt":
+        print("One-click roconstruct:// links are Windows-only; on Linux start a worker with: roc launch")
+        return False
     import winreg
     cmd = '"%s" link "%%1"' % (ROOT / "roc.cmd")
     with winreg.CreateKey(winreg.HKEY_CURRENT_USER, r"Software\Classes\%s" % SCHEME) as k:
@@ -31,6 +34,9 @@ def install():
 
 
 def remove():
+    if os.name != "nt":
+        print("One-click links are Windows-only; nothing to remove.")
+        return False
     import winreg
     for sub in (r"shell\open\command", r"shell\open", "shell", ""):
         try:
@@ -41,6 +47,8 @@ def remove():
 
 
 def installed():
+    if os.name != "nt":
+        return False
     try:
         import winreg
         with winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Software\Classes\%s\shell\open\command" % SCHEME) as k:

@@ -665,14 +665,18 @@ def compile_text(client, text, flags=None, build=None):
         src, obj = Path(tmp) / ("f.c" if d.get("lang") == "c" else "f.cpp"), Path(tmp) / "f.obj"
         src.write_text(text)
         try:
-            run = subprocess.run([str(cl), "/nologo", "/c", "/Gy", *flags, "/Fo" + str(obj), str(src)],
+            run = subprocess.run([*setup.cl_command(cl), "/nologo", "/c", "/Gy", *flags,
+                                  "/Fo" + setup.cl_path(obj), setup.cl_path(src)],
                                  capture_output=True, text=True, env=env, cwd=tmp, timeout=120)
         except subprocess.TimeoutExpired:
             message = "compiler timeout after 120 seconds"
             _remember_compile_error(error_key, message)
             raise CompileError(message)
         if run.returncode:
-            out = (run.stdout + run.stderr).replace(str(src), "source").strip()
+            out = run.stdout + run.stderr
+            for shown in {str(src), setup.cl_path(src)}:  # Wine echoes the Z:\ form
+                out = out.replace(shown, "source")
+            out = out.strip()
             message = "\n".join(l for l in out.splitlines() if l.strip() not in ("f.cpp", "f.c"))
             _remember_compile_error(error_key, message)
             raise CompileError(message)

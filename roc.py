@@ -693,6 +693,10 @@ def cmd_pull(a):
 def cmd_server(a):
     server = need_module("server", "The group server")
     if a.startup:
+        if os.name != "nt":
+            sys.exit("--startup is Windows-only. On Linux, run the server from a systemd user "
+                     "unit or cron instead, for example:\n"
+                     "  ExecStart=%s %s server --port %d" % (sys.executable, ROOT / "roc.py", a.port))
         startup = Path(os.environ["APPDATA"]) / r"Microsoft\Windows\Start Menu\Programs\Startup" / "RoConstruct server.cmd"
         startup.write_text('@start "RoConstruct server" /min "%s"' % (ROOT / "host.cmd"))
         return print("The server will start when you log in: %s" % startup)

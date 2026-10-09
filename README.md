@@ -35,7 +35,7 @@ When every function matches, the result is a source tree that rebuilds the origi
 The installer is deliberately tiny: **no GPU, no Ollama, no Docker.**
 
 1. **Download** this repo (Code → Download ZIP) and unzip it.
-2. Double-click **`install.cmd`**. It checks for Python 3.12, installs two pip packages (`pefile`, `capstone`), downloads the exact MSVC compiler bundles, and registers `roconstruct://`. It prints the download size and time before it starts. No admin rights needed.
+2. Double-click **`install.cmd`**. It checks for Python 3.12, installs two pip packages (`pefile`, `capstone`), downloads the exact MSVC compiler bundles, and registers `roconstruct://`. It prints the download size and time before it starts. No admin rights needed. **On Linux, run `./install.sh` instead** — same steps, but the compiler bundles are unpacked with Wine plus `cabextract`/`7z` (`msitools` is an optional fallback) and run through Wine (see [Linux](#linux)).
 3. Click **Help out** on any client at the [RoConstruct website](https://colingsnyder2-ux.github.io/RoConstruct/index.html).
 
 That is the whole setup. The click opens a console window that:
@@ -65,6 +65,45 @@ To update an existing Git checkout without removing clients, mined work, or sett
 > **Heads up:** a cloud worker keeps your PC mostly idle — it sends bounded prompts to a cloud model and uploads only source that compiled and matched. Local models are opt-in and do use your GPU and CPU hard (fans, heat, power draw; laptops: plug in). Close the worker window to stop.
 
 To undo the install later, double-click **`uninstall.cmd`**. It lists everything first with sizes, then asks before each step. RoConstruct's own files default to yes (about 3.2 GB of compilers and caches); shared software defaults to no. Your other Ollama models are never touched — only the coder models this project uses are offered.
+
+### Linux
+
+RoConstruct runs on Linux with the same byte-exact pipeline. The old MSVC
+compilers are Windows programs, so the bundles are unpacked with Wine plus
+`cabextract`/`7z` (`msitools` is an optional fallback) and executed through
+**Wine** with a private prefix in `tools/wineprefix` — your `~/.wine` is never
+touched.
+
+You need:
+
+| Tool | Why | Install |
+|---|---|---|
+| Python 3.8+ | the CLI, analysis and worker | your package manager |
+| Wine | runs the exact 2005/2008 `cl.exe` | `sudo pacman -S wine` / `sudo apt install wine wine32` / `sudo dnf install wine` |
+| `cabextract` or `7z` | unpacks the compiler archives | `sudo pacman -S cabextract` / `sudo apt install cabextract` |
+
+Then, from the repo folder:
+
+```sh
+./install.sh      # pip packages + exact compilers + doctor; prints sizes first
+./roc.sh launch   # start a worker
+./roc.sh doctor   # what is broken and the exact command that fixes it
+```
+
+`install.sh` puts `pefile`/`capstone` in a private venv at `tools/venv`
+(modern distros refuse user-level pip installs into the system Python), and
+`roc.sh` uses that venv automatically.
+
+Everything else is the same as Windows: `./roc.sh claim 2009-06 006749e0`
+starts a function, `./roc.sh check` compiles it with the client's own compiler
+under Wine and reports `100% MATCH` or a diff, and `./roc.sh submit` uploads
+it. Library matching (`roc libs`), cross-client copy (`roc xcopy`) and the AI
+workers all work unchanged.
+
+Two Windows conveniences do not exist on Linux: `roconstruct://` one-click
+links, and the winget-based Ollama install. Use `./roc.sh` instead of the
+website link, and install Ollama with your package manager (or the script at
+[ollama.com](https://ollama.com/download)) before `./roc.sh local-ai`.
 
 ### Ways to help
 

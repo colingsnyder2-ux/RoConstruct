@@ -1,0 +1,153 @@
+"""Linux support: the Wine platform layer and the non-Windows install paths.
+
+These tests run on any OS: they patch roc.setup.WINDOWS to False rather than
+depending on the host, so the Linux branches are exercised on Windows CI too.
+"""
+import sys
+from pathlib import Path
+from unittest.mock import patch
+
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
+
+
+def test_refresh_path_is_a_noop_off_windows():
+    from roc import setup
+    with patch("roc.setup.WINDOWS", False), patch.dict("os.environ", {"PATH": "/usr/bin"}):
+        assert setup.refresh_path() == "/usr/bin"
+
+
+def test_wine_paths_are_z_drive_windows_paths():
+    from roc import setup
+    with patch("roc.setup.WINDOWS", False):
+        assert setup.to_wine_path("/tmp/a b/f.cpp") == "z:\\tmp\\a b\\f.cpp"
+        assert setup.cl_path("/tmp/f.cpp") == "z:\\tmp\\f.cpp"
+        with patch.dict("os.environ", {"ROC_WINE_DRIVE": "d:"}):
+            assert setup.to_wine_path("/src/x.cpp") == "d:\\src\\x.cpp"
+
+
+def test_cl_command_uses_wine_on_linux():
+    from roc import setup
+    with patch("roc.setup.WINDOWS", False), \
+         patch("roc.setup.wine_exe", return_value="/usr/bin/wine"):
+        assert setup.cl_command("/tools/vc/VC/bin/cl.exe") == ["/usr/bin/wine", "/tools/vc/VC/bin/cl.exe"]
+    with patch("roc.setup.WINDOWS", False), patch("roc.setup.wine_exe", return_value=None):
+        try:
+            setup.cl_command("/tools/vc/VC/bin/cl.exe")
+            assert False, "missing Wine must be an error, not a silent fallback"
+        except SystemExit as error:
+            assert "Wine" in str(error)
+    with patch("roc.setup.WINDOWS", True):
+        assert setup.cl_command("/tools/vc/VC/bin/cl.exe") == ["/tools/vc/VC/bin/cl.exe"]
+
+
+def test_compilers_returns_empty_without_wine():
+    from roc import setup
+    setup.compilers.cache_clear()
+    with patch("roc.setup.WINDOWS", False), patch("roc.setup.wine_exe", return_value=None):
+        assert setup.compilers() == {}
+    setup.compilers.cache_clear()
+
+
+def test_cl_env_under_wine_uses_windows_include_and_winepath(tmp_path):
+    from roc import setup
+    cl = tmp_path / "VC" / "bin" / "cl.exe"
+    (tmp_path / "VC" / "include").mkdir(parents=True)
+    (tmp_path / "Common7" / "IDE").mkdir(parents=True)
+    setup._cached_cl_env.cache_clear()
+    with patch("roc.setup.WINDOWS", False):
+        env = setup.cl_env(cl)
+    assert env["WINEPATH"].startswith("z:\\")
+    assert ";" in env["WINEPATH"], "Wine needs Windows-style PATH separators"
+    assert env["INCLUDE"] == setup.to_wine_path(tmp_path / "VC" / "include")
+    assert env["WINEPREFIX"]
+    setup._cached_cl_env.cache_clear()
+
+
+def test_ensure_wine_prefix_is_cheap_once_created(tmp_path):
+    from roc import setup
+    prefix = tmp_path / "wineprefix"
+    prefix.mkdir()
+    (prefix / "system.reg").write_text("")
+    with patch("roc.setup.WINDOWS", False), \
+         patch("roc.setup.WINE_PREFIX", prefix), \
+         patch("roc.setup.subprocess.run") as run:
+        assert setup.ensure_wine_prefix(log=lambda _line: None) is True
+        assert not run.called, "an existing prefix must not be re-created"
+
+
+def test_install_refuses_to_start_without_wine(capsys):
+    from roc import setup
+    with patch("roc.setup.compiler_ready", return_value=False), \
+         patch("roc.setup.ensure_packages"):
+        assert setup.install(ask=lambda _q: "y") is False
+    assert "Wine" in capsys.readouterr().out
+
+
+def test_local_ai_linux_explains_how_to_install_ollama(capsys):
+    from roc import setup
+    with patch("roc.setup.WINDOWS", False), patch("roc.setup.find_exe", return_value=None):
+        assert setup.local_ai(ask=lambda _q: "y") is False
+    out = capsys.readouterr().out
+    assert "ollama" in out.lower() and "roc local-ai" in out
+
+
+def test_local_ai_linux_pulls_only_after_asking():
+    from roc import setup
+    asked = []
+    with patch("roc.setup.WINDOWS", False), \
+         patch("roc.setup.find_exe", return_value="/usr/bin/ollama"), \
+         patch("roc.setup.ensure_ollama", return_value=["qwen2.5-coder:14b"]), \
+         patch("roc.setup.mark_done"), \
+         patch("roc.setup.subprocess.run") as run:
+        assert setup.local_ai(ask=lambda q: asked.append(q) or "n") is True
+    assert asked, "a model download is a question"
+    assert not run.called, "declining must not pull anything"
+
+
+def test_cloudflared_url_matches_the_platform():
+    from roc import setup
+    with patch("roc.setup.platform.machine", return_value="x86_64"):
+        with patch("roc.setup.WINDOWS", True):
+            assert setup.cloudflared_url().endswith("windows-amd64.exe")
+        with patch("roc.setup.WINDOWS", False), patch("roc.setup.sys.platform", "linux"):
+            assert setup.cloudflared_url().endswith("linux-amd64")
+        with patch("roc.setup.WINDOWS", False), patch("roc.setup.sys.platform", "linux"), \
+             patch("roc.setup.platform.machine", return_value="aarch64"):
+            assert setup.cloudflared_url().endswith("linux-arm64")
+
+
+def test_msi_admin_extract_prefers_wine_on_linux(tmp_path):
+    from roc import setup
+    target = tmp_path / "out"
+
+    def fake_run(cmd, **kwargs):
+        target.mkdir(parents=True, exist_ok=True)
+        (target / "cl.exe").write_bytes(b"MZ")
+        class Done:
+            returncode = 0
+            stdout = stderr = ""
+        return Done()
+
+    with patch("roc.setup.WINDOWS", False), \
+         patch("roc.setup.ensure_wine_prefix", return_value=True), \
+         patch("roc.setup.wine_exe", return_value="/usr/bin/wine"), \
+         patch("roc.setup.subprocess.run", side_effect=fake_run) as run:
+        setup.msi_admin_extract(tmp_path / "x.msi", target)
+    assert run.call_args.args[0][:3] == ["/usr/bin/wine", "msiexec", "/a"]
+
+
+def test_handoff_launch_command_off_windows():
+    from roc import handoff
+    with patch("roc.handoff.os.name", "posix"):
+        command = handoff.launch_command()
+    assert command[0] == sys.executable
+    assert command[1].endswith("roc.py") and command[2] == "launch"
+
+
+def test_link_install_is_a_noop_off_windows(capsys):
+    from roc import link
+    with patch("roc.link.os.name", "posix"):
+        assert link.install() is False
+        assert link.installed() is False
+    assert "Windows-only" in capsys.readouterr().out

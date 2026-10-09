@@ -678,9 +678,12 @@ def start_tunnel(port, log=print):
     A named tunnel (cloudflared login) gives a fixed address if that hurts."""
     exe = setup.get_cloudflared()
     # A tunnel left over from a closed server window answers "Bad Gateway": remove it.
-    setup.powershell("Get-CimInstance Win32_Process -Filter \"Name='cloudflared.exe'\" | Where-Object "
-                     "{ $_.CommandLine -match '127.0.0.1:%d' } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force }"
-                     % port)
+    if setup.WINDOWS:
+        setup.powershell("Get-CimInstance Win32_Process -Filter \"Name='cloudflared.exe'\" | Where-Object "
+                         "{ $_.CommandLine -match '127.0.0.1:%d' } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force }"
+                         % port)
+    else:
+        subprocess.run(["pkill", "-f", "cloudflared.*127.0.0.1:%d" % port], capture_output=True)
     proc = subprocess.Popen([exe, "tunnel", "--no-autoupdate", "--url", "http://127.0.0.1:%d" % port],
                             stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, text=True,
                             creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))

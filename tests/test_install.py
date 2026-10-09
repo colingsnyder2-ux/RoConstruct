@@ -26,6 +26,7 @@ class temp_root:
         self.patches = [patch("roc.setup.ROOT", self.dir),
                         patch("roc.setup.TOOLS", self.dir / "tools"),
                         patch("roc.setup.DL", self.dir / "tools" / "dl"),
+                        patch("roc.setup.WINE_PREFIX", self.dir / "tools" / "wineprefix"),
                         patch("roc.setup.STATE", self.dir / "tools" / "install-state.json")]
         for item in self.patches:
             item.start()
@@ -43,13 +44,12 @@ class temp_config:
 
     def __enter__(self):
         import roc.handoff as handoff
-        import roc.worker as worker
         self.dir = Path(tempfile.mkdtemp(prefix="roc-handoff-test-"))
-        self.saved = (handoff.CONFIG, worker.SETTINGS)
-        handoff.CONFIG = self.dir / "roconstruct-worker.json"
-        worker.SETTINGS = self.dir / "roconstruct-settings.json"
-        self.patches = [patch("roc.handoff.CONFIG", handoff.CONFIG),
-                        patch("roc.worker.SETTINGS", worker.SETTINGS)]
+        # Patch the module attributes only. Assigning the globals directly and
+        # patching them afterwards leaks the temp paths past __exit__, so every
+        # later test in the process would read settings from a deleted folder.
+        self.patches = [patch("roc.handoff.CONFIG", self.dir / "roconstruct-worker.json"),
+                        patch("roc.worker.SETTINGS", self.dir / "roconstruct-settings.json")]
         for item in self.patches:
             item.start()
         return handoff
@@ -67,6 +67,7 @@ def test_bootstrap_installs_no_ollama_or_docker():
     from roc import setup
     with temp_root(), \
          patch("roc.setup.ensure_packages") as packages, \
+         patch("roc.setup.ensure_wine_prefix", return_value=True), \
          patch("roc.setup.compilers", return_value={21022: "cl.exe", 30729: "cl.exe", 50727: "cl.exe"}), \
          patch("roc.setup.FETCHERS") as fetchers, \
          patch("roc.setup.refresh_path"), \
@@ -140,6 +141,7 @@ def test_bootstrap_keeps_work_settings_and_claims():
     from roc import setup
     with temp_root() as root, \
          patch("roc.setup.ensure_packages"), \
+         patch("roc.setup.ensure_wine_prefix", return_value=True), \
          patch("roc.setup.compilers", return_value={21022: "cl", 30729: "cl", 50727: "cl"}), \
          patch("roc.setup.FETCHERS"), \
          patch("roc.setup.refresh_path"), \
@@ -156,7 +158,10 @@ def test_bootstrap_keeps_work_settings_and_claims():
 def test_local_ai_is_opt_in_and_asks_first():
     from roc import setup
     asked = []
-    with patch("roc.setup.shutil.which", return_value="winget"), \
+    # Force the Windows flow so the winget path is exercised on any OS; the
+    # Linux flow is covered separately in test_linux.py.
+    with patch("roc.setup.WINDOWS", True), \
+         patch("roc.setup.shutil.which", return_value="winget"), \
          patch("roc.setup.find_exe", return_value=None), \
          patch("roc.setup.refresh_path"), \
          patch("roc.setup.subprocess.run") as run:
@@ -262,11 +267,11 @@ def test_cloud_path_never_offers_ollama():
          patch("roc.link.ensure_model") as ensure:
         assert link.cloud_model(settings, True) == "deepseek:deepseek-flash"
         assert not ensure.called, "a cloud worker must not prompt for Ollama"
-    try:
-        link.cloud_model(settings, False)
-        assert False, "a cloud model ran without consent"
-    except SystemExit as error:
-        assert "roc setup" in str(error)
+        try:
+            link.cloud_model(settings, False)
+            assert False, "a cloud model ran without consent"
+        except SystemExit as error:
+            assert "roc setup" in str(error)
 
 
 def test_cloud_worker_sends_bounded_prompts():
@@ -466,6 +471,7 @@ def test_reinstall_never_touches_the_server_so_leases_survive():
     from roc import setup
     with temp_root(), \
          patch("roc.setup.ensure_packages"), \
+         patch("roc.setup.ensure_wine_prefix", return_value=True), \
          patch("roc.setup.compilers", return_value={21022: "cl", 30729: "cl", 50727: "cl"}), \
          patch("roc.setup.FETCHERS"), \
          patch("roc.setup.refresh_path"), \
@@ -481,6 +487,7 @@ def test_size_and_time_are_shown_before_anything_is_downloaded():
     order = []
     with temp_root(), \
          patch("roc.setup.print", side_effect=lambda *a, **k: order.append(str(a[0])) if a else None), \
+         patch("roc.setup.ensure_wine_prefix", return_value=True), \
          patch("roc.setup.report", return_value=True), \
          patch("roc.setup.register_link"), \
          patch("roc.setup.compilers", return_value={}), \
@@ -511,7 +518,9 @@ def test_doctor_flags_a_client_hash_mismatch():
 
 def test_doctor_flags_a_python_that_cannot_unpack_compilers():
     from roc import doctor
-    with patch("roc.setup.has_module", side_effect=lambda name: name != "msilib"):
+    # msilib only matters on Windows; Linux unpacks with msitools/Wine.
+    with patch("roc.setup.WINDOWS", True), \
+         patch("roc.setup.has_module", side_effect=lambda name: name != "msilib"):
         row = doctor.python_check()
     assert row["state"] == "fail"
     assert "msilib" in row["detail"]
@@ -574,7 +583,10 @@ def test_link_click_downloads_the_compiler_once_then_stops():
 
 def test_local_mode_is_the_only_path_that_offers_ollama_and_docker():
     from roc import setup
+    # Force the Windows flow so the winget path is exercised on any OS; the
+    # Linux flow is covered separately in test_linux.py.
     with temp_root(), \
+         patch("roc.setup.WINDOWS", True), \
          patch("roc.setup.shutil.which", return_value="winget"), \
          patch("roc.setup.find_exe", return_value="C:/ollama.exe"), \
          patch("roc.setup.ensure_ollama", return_value=["qwen2.5-coder:14b"]), \
@@ -582,6 +594,7 @@ def test_local_mode_is_the_only_path_that_offers_ollama_and_docker():
         assert setup.local_ai(ask=lambda _q: "n") is True
     assert not extras.called, "Docker is a separate, later question"
     with temp_root(), \
+         patch("roc.setup.WINDOWS", True), \
          patch("roc.setup.shutil.which", return_value="winget"), \
          patch("roc.setup.find_exe", return_value="C:/ollama.exe"), \
          patch("roc.setup.ensure_ollama", return_value=["qwen2.5-coder:14b"]), \
@@ -725,10 +738,12 @@ def test_a_website_link_asks_cloud_or_local_then_runs():
         with temp_config() as handoff, \
              patch("roc.link.parse_full", return_value=parts), \
              patch("roc.link.wait_for_exe"), \
+             patch("roc.analyze.analyze"), \
              patch("roc.worker.load_settings", return_value=settings), \
              patch("roc.worker.save_settings"), \
              patch("roc.clients.load", return_value={"2007-08": {"compiler_build": 21022,
-                                                                 "compiler": "VS2008 RTM"}}), \
+                                                                 "compiler": "VS2008 RTM",
+                                                                 "exe": "RobloxApp.exe"}}), \
              patch("roc.setup.compilers", return_value={21022: "cl"}), \
              patch("roc.link.choose_options", side_effect=stub_cloud), \
              patch("roc.link.choose_local", side_effect=stub_local), \
@@ -749,7 +764,8 @@ def test_a_website_link_asks_cloud_or_local_then_runs():
     payload, argv = run.call_args.args
     assert payload["client"] == "2007-08" and payload["cloud"] is True
     assert payload["mode"] == "cloud" and payload["model"] == "deepseek:deepseek-flash"
-    assert argv == ["--workers", "6", "--rounds", "4", "--max-size", "256"]
+    assert argv == ["--workers", "6", "--order", "auto", "--verbosity", "auto",
+                    "--lease-mode", "function", "--rounds", "4", "--max-size", "256"]
 
     def cloud_refused(settings):
         raise AssertionError("the local branch must run when cloud is declined")
@@ -761,7 +777,8 @@ def test_a_website_link_asks_cloud_or_local_then_runs():
     payload, argv = run.call_args.args
     assert payload["cloud"] is False and payload["mode"] == "local"
     assert payload["model"] == "qwen2.5-coder:7b"
-    assert argv == ["--workers", "1", "--rounds", "2", "--max-size", "96", "--no-revng"]
+    assert argv == ["--workers", "1", "--order", "auto", "--verbosity", "auto",
+                    "--lease-mode", "function", "--rounds", "2", "--max-size", "96", "--no-revng"]
 
 
 def test_cloud_consent_is_asked_once_and_remembered():
@@ -777,11 +794,13 @@ def test_cloud_consent_is_asked_once_and_remembered():
     with temp_config() as handoff, \
          patch("roc.link.parse_full", return_value=parts), \
          patch("roc.link.wait_for_exe"), \
+         patch("roc.analyze.analyze"), \
          patch("roc.worker.load_settings",
                return_value={"user": "colin", "known_servers": [], "cloud_allowed": False}), \
          patch("roc.worker.save_settings") as saved, \
          patch("roc.clients.load", return_value={"2007-08": {"compiler_build": 21022,
-                                                             "compiler": "VS2008 RTM"}}), \
+                                                             "compiler": "VS2008 RTM",
+                                                             "exe": "RobloxApp.exe"}}), \
          patch("roc.setup.compilers", return_value={21022: "cl"}), \
          patch("roc.link.choose_options", side_effect=choose_options), \
          patch("roc.worker.keep_awake"), \
@@ -799,11 +818,13 @@ def test_cloud_consent_is_asked_once_and_remembered():
     with temp_config() as handoff, \
          patch("roc.link.parse_full", return_value=parts), \
          patch("roc.link.wait_for_exe"), \
+         patch("roc.analyze.analyze"), \
          patch("roc.worker.load_settings",
                return_value={"user": "colin", "known_servers": [], "cloud_allowed": True}), \
          patch("roc.worker.save_settings"), \
          patch("roc.clients.load", return_value={"2007-08": {"compiler_build": 21022,
-                                                             "compiler": "VS2008 RTM"}}), \
+                                                             "compiler": "VS2008 RTM",
+                                                             "exe": "RobloxApp.exe"}}), \
          patch("roc.setup.compilers", return_value={21022: "cl"}), \
          patch("roc.link.choose_options", side_effect=choose_options), \
          patch("roc.worker.keep_awake"), \

@@ -3,11 +3,17 @@
 pip packages, optional Ollama/Docker via winget, and the old MSVC compilers:
 downloaded from archive.org, checked (Microsoft signature or pinned SHA-1),
 and unpacked into tools/ instead of being installed.
+
+On Windows that is the whole story. On Linux the same MSI/ISO bundles are
+unpacked with msitools/cabextract/7z, and the old cl.exe is run through Wine
+with a private prefix under tools/wineprefix, so the matching pipeline works
+unchanged.
 """
 import functools
 import hashlib
 import json
 import os
+import platform
 import re
 import shutil
 import subprocess
@@ -20,6 +26,8 @@ ROOT = Path(__file__).resolve().parent.parent
 TOOLS = ROOT / "tools"
 DL = TOOLS / "dl"
 STATE = TOOLS / "install-state.json"
+WINDOWS = os.name == "nt"
+WINE_PREFIX = TOOLS / "wineprefix"
 PF86 = Path(r"C:\Program Files (x86)")
 LOCAL = Path(os.environ.get("LOCALAPPDATA", ""))
 CL_PATHS = [PF86 / r"Microsoft Visual Studio 8\VC\bin\cl.exe",
@@ -30,6 +38,7 @@ NAMES = {50727: "VS2005 (cl 14.00.50727)", 21022: "VS2008 RTM (cl 15.00.21022)",
          30729: "VS2008 SP1 (cl 15.00.30729)"}
 VCPY_URL = ("https://web.archive.org/web/20210106040224id_/https://download.microsoft.com/download/"
             "7/9/6/796EF2E4-801B-4FC4-AB28-B59FBF6D907B/VCForPython27.msi")
+VCPY_SHA256 = "070474db76a2e625513a5835df4595df9324d820f9cc97eab2a596dcbc2f5cbf"
 VS2008_URL = "https://archive.org/download/VisualStudioExpressEditionsDVD2007/DVD1.ISO"
 VS2008_SHA1 = "65ebdd88136275768d778d1795d41a7fcc12a47e"
 VS2005_URL = "https://archive.org/download/MS_VisualCPPExpress-2005/Micorosft_Visual_C%2B%2B_2005_Express.iso"
@@ -54,6 +63,60 @@ OLLAMA_API = "http://127.0.0.1:11434/api/tags"
 _ORIGINAL_PATH = os.environ.get("PATH", "")
 
 
+# ---------- Wine (Linux) ----------
+
+def wine_exe():
+    """The Wine loader, or None. `wine` first: the old cl.exe is 32-bit."""
+    for name in ("wine", "wine64"):
+        found = shutil.which(name)
+        if found:
+            return found
+    return None
+
+
+def to_wine_path(path):
+    """A Unix path as a Windows path Wine can hand to cl.exe (Z: maps to /)."""
+    text = str(path)
+    if WINDOWS:
+        return text
+    drive = os.environ.get("ROC_WINE_DRIVE", "z:")
+    if text.startswith("/"):
+        return drive + text.replace("/", "\\")
+    return text.replace("/", "\\")
+
+
+def wine_env(extra=None):
+    """Environment for Windows programs run through Wine: a private prefix,
+    no debug noise, and Wine's own popups suppressed."""
+    env = dict(os.environ)
+    env["WINEPREFIX"] = str(WINE_PREFIX)
+    env["WINEDEBUG"] = "-all"
+    env.setdefault("WINEDLLOVERRIDES", "mscoree,mshtml=")
+    if extra:
+        env.update(extra)
+    return env
+
+
+def ensure_wine_prefix(log=print):
+    """Create tools/wineprefix once. Returns False when Wine is missing."""
+    if WINDOWS:
+        return True
+    wine = wine_exe()
+    if not wine:
+        return False
+    if (WINE_PREFIX / "system.reg").exists():
+        return True
+    log("Preparing the Wine prefix (first run; takes a minute)...")
+    WINE_PREFIX.mkdir(parents=True, exist_ok=True)
+    try:
+        subprocess.run([wine, "wineboot", "-u"], env=wine_env(),
+                       capture_output=True, timeout=600)
+    except (OSError, subprocess.TimeoutExpired) as error:
+        log("Wine prefix setup failed: %s" % error)
+        return False
+    return (WINE_PREFIX / "system.reg").exists()
+
+
 def refresh_path():
     """Re-read PATH from the registry and add the usual install dirs.
 
@@ -61,7 +124,10 @@ def refresh_path():
     just installed stays invisible to shutil.which until this runs.
 
     Idempotent: rebuilt from the original PATH each call, never appended to itself.
+    Windows-only: Linux installs already land on PATH.
     """
+    if not WINDOWS:
+        return os.environ.get("PATH", "")
     import winreg
     parts = []
     for hive, key in ((winreg.HKEY_CURRENT_USER, "Environment"),
@@ -90,6 +156,8 @@ def find_exe(name):
     found = shutil.which(name)
     if found:
         return found
+    if not WINDOWS:
+        return None  # the extra dirs below are Windows install locations
     for folder in EXTRA_PATHS:
         candidate = folder / (name + ".exe")
         if candidate.is_file():
@@ -139,11 +207,23 @@ def ensure_ollama(exe):
 
 @functools.lru_cache(maxsize=16)
 def _cached_cl_env(cl):
-    """Environment that lets an old cl.exe find its DLLs and headers."""
+    """Environment that lets an old cl.exe find its DLLs and headers.
+
+    Windows passes an inherited PATH. Under Wine the Windows program needs
+    Windows-style WINEPATH/INCLUDE values instead, because a Unix PATH inside
+    the prefix means nothing to cl.exe.
+    """
     cl = Path(cl)
-    env = dict(os.environ)
-    env["PATH"] = os.pathsep.join([str(cl.parent), str(cl.parents[2] / "Common7" / "IDE"), env.get("PATH", "")])
+    ide = cl.parents[2] / "Common7" / "IDE"
     inc = cl.parents[1] / "include"
+    if not WINDOWS:
+        winpath = [to_wine_path(cl.parent)]
+        if ide.is_dir():
+            winpath.append(to_wine_path(ide))
+        return wine_env({"WINEPATH": ";".join(winpath),
+                         "INCLUDE": to_wine_path(inc) if inc.exists() else ""})
+    env = dict(os.environ)
+    env["PATH"] = os.pathsep.join([str(cl.parent), str(ide), env.get("PATH", "")])
     env["INCLUDE"] = str(inc) if inc.exists() else ""
     return env
 
@@ -153,18 +233,46 @@ def cl_env(cl):
     return dict(_cached_cl_env(str(cl)))
 
 
+def cl_command(cl):
+    """How to run this cl.exe: directly on Windows, through Wine on Linux."""
+    if WINDOWS:
+        return [str(cl)]
+    wine = wine_exe()
+    if not wine:
+        raise SystemExit("The old cl.exe needs Wine on Linux. Install it first "
+                         "(Arch: sudo pacman -S wine; Debian/Ubuntu: sudo apt install wine wine32).")
+    return [wine, str(cl)]
+
+
+def cl_path(path):
+    """A path as an argument cl.exe understands: plain on Windows, Z:\\ under Wine.
+
+    A bare Unix path starts with '/', which cl.exe reads as an option name
+    ('cl : Command line warning D9002'), so paths must be converted first.
+    """
+    return str(path) if WINDOWS else to_wine_path(path)
+
+
+def compiler_ready():
+    """True when a cl.exe could run at all: always on Windows, Wine elsewhere."""
+    return WINDOWS or wine_exe() is not None
+
+
 @functools.lru_cache(maxsize=None)
 def compilers():
     """{build: cl.exe path} for every old MSVC found."""
     paths = CL_PATHS + sorted(TOOLS.glob("*/**/VC/bin/cl.exe"))
-    paths += [Path(p) for p in os.environ.get("ROC_CL", "").split(";") if p]
+    paths += [Path(p) for p in os.environ.get("ROC_CL", "").split(os.pathsep) if p]
+    if not compiler_ready():
+        return {}
     found = {}
+    timeout = 30 if WINDOWS else 180  # the first Wine run initialises the prefix
     for cl in paths:
         if not cl.exists():
             continue
         try:
-            banner = subprocess.run([str(cl)], capture_output=True, text=True,
-                                    cwd=cl.parent, env=cl_env(cl), timeout=30).stderr
+            banner = subprocess.run(cl_command(cl), capture_output=True, text=True,
+                                    cwd=cl.parent, env=cl_env(cl), timeout=timeout).stderr
         except (OSError, subprocess.TimeoutExpired):
             continue
         m = re.search(r"Version \d+\.\d+\.(\d+)", banner)
@@ -224,6 +332,10 @@ def powershell(cmd):
 
 
 def require_signature(path, org="Microsoft Corporation"):
+    if not WINDOWS:
+        # Authenticode is a Windows check. On Linux the ISOs carry pinned
+        # SHA-1 hashes and the MSI carries a pinned SHA-256 instead.
+        return
     out = powershell("$s=Get-AuthenticodeSignature '%s'; \"$($s.Status)|$($s.SignerCertificate.Subject)\"" % path)
     if not out.startswith("Valid|") or not re.search(r'O="?%s' % re.escape(org), out):
         path.unlink(missing_ok=True)
@@ -231,15 +343,28 @@ def require_signature(path, org="Microsoft Corporation"):
 
 
 require_microsoft_signature = require_signature
-CLOUDFLARED_URL = "https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-windows-amd64.exe"
+
+
+def cloudflared_url():
+    """The tunnel client for this OS/arch. Windows has an .exe; Linux a bare binary."""
+    machine = platform.machine().lower()
+    arch = "arm64" if machine in ("aarch64", "arm64") else "amd64"
+    base = "https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-"
+    if WINDOWS:
+        return base + "windows-%s.exe" % arch
+    if sys.platform == "darwin":
+        return base + "darwin-%s.tgz" % arch
+    return base + "linux-%s" % arch
 
 
 def get_cloudflared():
     """Cloudflare's tunnel client, for HTTPS without opening router ports."""
-    exe = TOOLS / "cloudflared" / "cloudflared.exe"
+    exe = TOOLS / "cloudflared" / ("cloudflared.exe" if WINDOWS else "cloudflared")
     if not exe.exists():
-        download(CLOUDFLARED_URL, exe)
+        download(cloudflared_url(), exe)
         require_signature(exe, "Cloudflare, Inc.")
+    if not WINDOWS:
+        exe.chmod(0o755)
     return str(exe)
 
 
@@ -250,12 +375,56 @@ def require_sha1(path, want):
         raise SystemExit("REFUSED %s: SHA-1 %s, expected %s. Deleted it; run again." % (path.name, got, want))
 
 
+def sha256(path):
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1 << 20), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def require_sha256(path, want):
+    got = sha256(path)
+    if got != want:
+        path.unlink(missing_ok=True)
+        raise SystemExit("REFUSED %s: SHA-256 %s, expected %s. Deleted it; run again." % (path.name, got, want))
+
+
 def msi_admin_extract(msi, target):
-    subprocess.run(["msiexec", "/a", str(msi), "/qn", "TARGETDIR=%s" % target], check=True)
+    """Extract an MSI's files with their install paths, running no installer logic."""
+    if WINDOWS:
+        subprocess.run(["msiexec", "/a", str(msi), "/qn", "TARGETDIR=%s" % target], check=True)
+        return
+    target.mkdir(parents=True, exist_ok=True)
+    if ensure_wine_prefix():
+        run = subprocess.run([wine_exe(), "msiexec", "/a", to_wine_path(msi), "/qn",
+                              "TARGETDIR=%s" % to_wine_path(target)],
+                             env=wine_env(), capture_output=True, text=True, timeout=900)
+        if run.returncode == 0 and any(target.iterdir()):
+            return
+    if shutil.which("msiextract"):
+        subprocess.run(["msiextract", "-C", str(target), str(msi)], check=True)
+        if any(target.iterdir()):
+            return
+    raise SystemExit("Could not unpack %s on Linux. Install Wine or msitools "
+                     "(msiextract) and run this again." % msi.name)
+
+
+def msi_table(msi, table):
+    """Rows of one MSI table as dicts, via msitools' msiinfo (Linux fallback)."""
+    out = subprocess.run(["msiinfo", "export", str(msi), table],
+                         capture_output=True, text=True, check=True).stdout
+    lines = out.splitlines()
+    if len(lines) < 2:
+        return []
+    columns = lines[0].split("\t")
+    return [dict(zip(columns, line.split("\t"))) for line in lines[2:] if line.strip()]
 
 
 def msi_layout(msi, cab_dir, target):
     """Copy files expanded from an MSI's cab into their install paths (File/Directory tables)."""
+    if not WINDOWS:
+        return msi_layout_unix(msi, cab_dir, target)
     try:
         import msilib
     except ImportError:
@@ -289,25 +458,97 @@ def msi_layout(msi, cab_dir, target):
             shutil.copyfile(src, dst)
 
 
+def msi_layout_unix(msi, cab_dir, target):
+    """The same mapping on Linux without msilib.
+
+    Preferred path is Wine's own msiexec /a: it reads the cab next to the MSI and
+    needs no table parsing. msitools' msiinfo plus a manual copy is the fallback,
+    and it is the only path that uses the already-expanded `cab_dir`.
+    """
+    if ensure_wine_prefix():
+        run = subprocess.run([wine_exe(), "msiexec", "/a", to_wine_path(msi), "/qn",
+                              "TARGETDIR=%s" % to_wine_path(target)],
+                             env=wine_env(), capture_output=True, text=True, timeout=900)
+        if run.returncode == 0 and any(Path(target).iterdir()):
+            return
+    if shutil.which("msiinfo") and Path(cab_dir).is_dir():
+        dirs = {row["Directory"]: (row["Directory_Parent"], row["DefaultDir"].split(":")[0].split("|")[-1])
+                for row in msi_table(msi, "Directory")}
+
+        def path(d):
+            parent, name = dirs[d]
+            if not parent or parent == d:
+                return Path()
+            return path(parent) / ("" if name == "." else name)
+
+        comp = {row["Component"]: row["Directory_"] for row in msi_table(msi, "Component")}
+        for row in msi_table(msi, "File"):
+            src = Path(cab_dir) / row["File"]
+            if src.exists():
+                dst = Path(target) / path(comp[row["Component_"]]) / row["FileName"].split("|")[-1]
+                dst.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(src, dst)
+        return
+    raise SystemExit("Could not unpack %s on Linux. Install Wine or msitools "
+                     "(msiinfo) and run this again." % msi.name)
+
+
 def expand_cab(cab, out):
-    """Windows ships two cab readers that each choke on some cabs; try both."""
+    """Unpack a .cab: Windows ships two readers that each choke on some cabs;
+    Linux uses cabextract with 7z as the fallback."""
     out.mkdir(parents=True, exist_ok=True)
-    system = Path(os.environ["SystemRoot"]) / "System32"
-    for cmd in ([str(system / "tar.exe"), "-xf", str(cab), "-C", str(out)],
-                [str(system / "expand.exe"), str(cab), "-F:*", str(out)]):
+    if WINDOWS:
+        system = Path(os.environ["SystemRoot"]) / "System32"
+        commands = ([str(system / "tar.exe"), "-xf", str(cab), "-C", str(out)],
+                    [str(system / "expand.exe"), str(cab), "-F:*", str(out)])
+    else:
+        commands = ([shutil.which("cabextract"), "-q", "-d", str(out), str(cab)],
+                    [shutil.which("7z"), "x", "-y", "-o" + str(out), str(cab)])
+    for cmd in commands:
+        if not cmd[0]:
+            continue
         if subprocess.run(cmd, capture_output=True).returncode == 0 and any(out.iterdir()):
             return
-    raise SystemExit("Could not unpack %s" % cab)
+    raise SystemExit("Could not unpack %s (Linux needs cabextract or 7z)" % cab)
 
 
 def copy_from_iso(iso, inner, dest):
-    """Mount the ISO (no admin needed on Windows 8+), copy one file out, unmount."""
+    """Mount the ISO (Windows 8+) or extract the one file (Linux), no admin rights."""
+    if not WINDOWS:
+        return copy_from_iso_unix(iso, inner, dest)
     out = powershell(
         "$i=Mount-DiskImage -ImagePath '%s' -PassThru; $d=($i|Get-Volume).DriveLetter; "
         "Copy-Item \"${d}:\\%s\" '%s'; Dismount-DiskImage -ImagePath '%s' | Out-Null; 'ok'"
         % (iso, inner, dest, iso))
     if not Path(dest).exists():
         raise SystemExit("Could not read %s from %s (%s)" % (inner, iso.name, out))
+
+
+def copy_from_iso_unix(iso, inner, dest):
+    """Extract one file from an ISO with 7z or bsdtar. Case may differ on disc."""
+    dest = Path(dest)
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    names = [inner.replace("\\", "/")]
+    upper = "/".join(part.upper() for part in names[0].split("/"))
+    if upper != names[0]:
+        names.append(upper)
+    with tempfile.TemporaryDirectory() as tmp:
+        for tool in ("7z", "bsdtar"):
+            exe = shutil.which(tool)
+            if not exe:
+                continue
+            for name in names:
+                if tool == "7z":
+                    cmd = [exe, "x", "-y", "-o" + tmp, str(iso), name]
+                else:
+                    cmd = [exe, "-xf", str(iso), "-C", tmp, name]
+                if subprocess.run(cmd, capture_output=True).returncode != 0:
+                    continue
+                found = Path(tmp) / name
+                if found.is_file():
+                    shutil.copyfile(found, dest)
+                    return
+    raise SystemExit("Could not read %s from %s (Linux needs 7z or bsdtar)" % (inner, iso.name))
 
 
 def carve_cab(exe, cab):
@@ -321,7 +562,8 @@ def carve_cab(exe, cab):
 
 def get_vs2008_sp1():
     msi = download(VCPY_URL, DL / "VCForPython27.msi")
-    require_microsoft_signature(msi)
+    require_sha256(msi, VCPY_SHA256)
+    require_signature(msi)
     msi_admin_extract(msi, TOOLS / "vc2008sp1")
 
 
@@ -513,8 +755,12 @@ def plan(client=None):
 def show_plan(current):
     """Print the size and time cost before any download starts."""
     print("\nWhat this install needs")
-    print("  Python 3.12          %s" % ("ready" if has_module("msilib") else
-                                        "WRONG: 3.13+ cannot unpack compilers (run install.cmd)"))
+    if WINDOWS:
+        python_line = ("ready" if has_module("msilib") else
+                       "WRONG: 3.13+ cannot unpack compilers (run install.cmd)")
+    else:
+        python_line = "ready (%s; unpacking uses Wine/msitools)" % platform.python_version()
+    print("  Python              %s" % python_line)
     print("  pip packages        %s" % (", ".join(current["packages"]) if current["packages"]
                                         else "already installed (%s)" % ", ".join(PIP_PACKAGES)))
     if current["compilers"]:
@@ -575,6 +821,15 @@ def install(ask=input, only=None, assume_yes=False, client=None):
     """
     before = snapshot()
     ensure_packages()
+    if not compiler_ready():
+        print("\nWine is required on Linux: it runs the exact 2005/2008 cl.exe compilers.")
+        print("  Arch:          sudo pacman -S wine")
+        print("  Debian/Ubuntu: sudo apt install wine wine32")
+        print("  Fedora:        sudo dnf install wine")
+        print("Then run this again.")
+        return False
+    if not ensure_wine_prefix():
+        raise SystemExit("Could not prepare the Wine prefix. Check that wine runs: wine --version")
     show_plan(plan(client))
     install_compilers(only=only, ask=ask, assume_yes=assume_yes)
     refresh_path()
@@ -608,6 +863,8 @@ def local_ai(ask=input, docker=False, model="qwen2.5-coder:7b"):
     Ollama is offered here and only here. Docker / Rev.ng is a second, later
     question because it costs gigabytes of disk and needs a bigger setup.
     """
+    if not WINDOWS:
+        return local_ai_unix(ask=ask, docker=docker, model=model)
     if not shutil.which("winget"):
         print("\nwinget is missing, so Ollama must be installed by hand: https://ollama.com/download")
         return False
@@ -642,6 +899,32 @@ def local_ai(ask=input, docker=False, model="qwen2.5-coder:7b"):
     return True
 
 
+def local_ai_unix(ask=input, docker=False, model="qwen2.5-coder:7b"):
+    """Linux/macOS local AI: Ollama comes from the distro or ollama.com, not winget."""
+    exe = find_exe("ollama")
+    if not exe:
+        print("\nOllama is not installed. Install it with your package manager, or:")
+        print("  curl -fsSL https://ollama.com/install.sh | sh")
+        print("Then run: roc local-ai")
+        return False
+    try:
+        models = ensure_ollama(exe)
+    except SystemExit as error:
+        print("  %s" % error)
+        return False
+    print("  Ollama is installed and running (%d model(s))." % len(models))
+    if model and model not in models:
+        if not ask("Download the %s model (~4.7 GB, one time)? [y/N] " % model
+                   ).strip().lower().startswith("y"):
+            print("  No models yet. Pull one later: ollama pull %s" % model)
+        else:
+            subprocess.run([exe, "pull", model], check=False)
+    mark_done("local-ai")
+    if docker:
+        extras_unix(ask)
+    return True
+
+
 def extras(ask):
     """Docker + Rev.ng: only offered after local AI, never during a normal install."""
     if draft_revng_ready():
@@ -661,6 +944,26 @@ def extras(ask):
     mark_done("docker")
     print("  Start Docker Desktop, then: docker pull revng/revng")
     return True
+
+
+def extras_unix(ask):
+    """Linux/macOS Rev.ng: Docker comes from the distro; only the image is fetched."""
+    if draft_revng_ready():
+        print("Rev.ng hints: already ready.")
+        return True
+    if not shutil.which("docker"):
+        print("Docker is not installed. Install it with your package manager, then run:")
+        print("  docker pull revng/revng")
+        return False
+    if not ask("Download the Rev.ng image for decompiler hints (~2 GB)? [y/N] "
+               ).strip().lower().startswith("y"):
+        print("Skipped. Rev.ng hints stay off; matching still works.")
+        return False
+    print("Pulling revng/revng...")
+    run = subprocess.run(["docker", "pull", "revng/revng"])
+    if run.returncode == 0:
+        mark_done("docker")
+    return run.returncode == 0
 
 
 def draft_revng_ready():
