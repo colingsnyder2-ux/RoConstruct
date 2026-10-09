@@ -43,29 +43,35 @@ def cloud_default():
 
 def pretty_log(message):
     text = str(message)
+    def emit(value):
+        try:
+            print(value)
+        except UnicodeEncodeError:
+            encoding = getattr(sys.stdout, "encoding", None) or "utf-8"
+            print(value.encode(encoding, "replace").decode(encoding, "replace"))
     if not sys.stdout.isatty() or os.environ.get("NO_COLOR"):
-        print(text)
+        emit(text)
         return
     low = text.lower()
     if text.startswith("✓ "):
-        print("\x1b[92m" + text + "\x1b[0m")
+        emit("\x1b[92m" + text + "\x1b[0m")
     elif text.startswith("↑ "):
-        print("\x1b[93m" + text + "\x1b[0m")
+        emit("\x1b[93m" + text + "\x1b[0m")
     elif text.startswith("· "):
-        print("\x1b[90m" + text + "\x1b[0m")
+        emit("\x1b[90m" + text + "\x1b[0m")
     elif text.startswith("⛏ "):
-        print("\x1b[96m" + text + "\x1b[0m")
+        emit("\x1b[96m" + text + "\x1b[0m")
     elif "generated source" in low:
         header, _, source = text.partition("\n")
-        print("\x1b[36m" + header + "\x1b[0m")
+        emit("\x1b[36m" + header + "\x1b[0m")
         if source:
-            print("\x1b[96m" + source + "\x1b[0m")
+            emit("\x1b[96m" + source + "\x1b[0m")
     elif "submitted" in low or "score updated" in low:
-        print("\x1b[32m" + text + "\x1b[0m")
+        emit("\x1b[32m" + text + "\x1b[0m")
     elif "error" in low or "offline" in low or "timeout" in low:
-        print("\x1b[31m" + text + "\x1b[0m")
+        emit("\x1b[31m" + text + "\x1b[0m")
     else:
-        print(text)
+        emit(text)
 
 
 class CompactLog:

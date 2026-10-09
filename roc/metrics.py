@@ -231,12 +231,16 @@ def family_stats():
     """Aggregate family-index worker telemetry for cost/exact reporting."""
     rows = []
     try:
-        for line in PATH.read_text(encoding="utf-8").splitlines():
-            row = json.loads(line)
-            if row.get("event") == "job" and row.get("family_id"):
-                rows.append(row)
-    except (OSError, ValueError):
+        lines = PATH.read_text(encoding="utf-8").splitlines()
+    except OSError:
         return {"jobs": 0, "matched": 0, "propagated": 0, "tokens": 0, "cost": 0}
+    for line in lines:
+        try:
+            row = json.loads(line)
+        except ValueError:
+            continue
+        if row.get("event") == "job" and row.get("family_id"):
+            rows.append(row)
     cost = sum(r.get("estimated_cost", 0) or 0 for r in rows)
     tokens = sum((r.get("input_tokens", 0) or 0) + (r.get("output_tokens", 0) or 0) for r in rows)
     matched = sum(r.get("score") == 100 for r in rows)
