@@ -350,6 +350,17 @@ def main_args(payload, argv=()):
     ap.add_argument("--family-id", help="strict 24-hex family fingerprint")
     ap.add_argument("--family-example", help="seed family from CLIENT:ADDRESS")
     ap.add_argument("--dry-run", action="store_true", help="print the plan without leasing a job")
+    ap.add_argument("--cloud-escalate", help="cloud model for hard jobs stalled by the primary model")
+    ap.add_argument("--cloud-escalate-after", type=int, help="primary attempts before cloud escalation")
+    ap.add_argument("--thinking", choices=["auto", "enabled", "disabled"], help="provider reasoning mode")
+    ap.add_argument("--reasoning-effort", choices=["auto", "low", "medium", "high", "max"],
+                    help="provider reasoning effort")
+    ap.add_argument("--output-budget", type=int, help="max tokens per reply (128-8192)")
+    ap.add_argument("--allow-cloud", action="store_true", help="allow prompts to leave this PC")
+    ap.add_argument("--cloud-concurrency", type=int, help="max concurrent cloud requests")
+    ap.add_argument("--source-only", action="store_true", help="deterministic candidates only")
+    ap.add_argument("--strategy", choices=["direct", "structured", "reference"],
+                    help="candidate-generation prompt strategy")
     given = ap.parse_args(list(argv))
 
     user = payload.get("user") or ""
@@ -367,6 +378,20 @@ def main_args(payload, argv=()):
     rounds = given.rounds if given.rounds else 4
     max_size = given.max_size if given.max_size else 256
     workers = given.workers or ("auto" if is_cloud else 1)
+if given.allow_cloud:
+        cloud_allowed = True
+    escalate = given.cloud_escalate
+    if escalate:
+        if not cloud_allowed:
+            raise SystemExit("--cloud-escalate needs cloud consent (roc setup, or --allow-cloud)")
+        if not providers.available(escalate):
+            _p, _r, config = providers.parse_model(escalate)
+            raise SystemExit("Cloud key missing for %s: set %s" % (escalate, config["key_env"]))
+    max_tokens = given.output_budget or 2048
+    if not 128 <= max_tokens <= 8192:
+        raise SystemExit("--output-budget must be 128-8192")
+    thinking = given.thinking or "auto"
+    gate = providers.CloudGate(given.cloud_concurrency) if given.cloud_concurrency is not None else None
     order = given.order or load_settings().get("worker_order", "random")
     verbosity = given.verbosity or load_settings().get("worker_verbosity", "auto")
     family_id = given.family_id or (family_from_example(given.family_example) if given.family_example else None)
@@ -397,8 +422,13 @@ def main_args(payload, argv=()):
     return run_concurrent(server, user, token, model, rounds, max_size, not given.no_revng,
                           given.jobs, workers=workers, only=only_clients(client),
                           cloud_allowed=cloud_allowed, cloud_budget=budget,
-                          max_tokens=2048, thinking="auto", order=order,
+                          max_tokens=max_tokens, thinking=thinking, order=order,
                           verbosity=verbosity,
+                          reasoning_effort=given.reasoning_effort,
+                          cloud_escalate=escalate,
+                          cloud_escalate_after=given.cloud_escalate_after or 2,
+                          cloud_gate=gate, source_only=given.source_only,
+                          strategy=given.strategy or "direct",
                           family_exemplars=given.family_exemplars,
                           lease_mode="family" if family_id else given.lease_mode,
                           family_id=family_id, unit_name=given.unit)

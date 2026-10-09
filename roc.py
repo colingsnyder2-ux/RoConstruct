@@ -189,11 +189,13 @@ def _forwarded(a):
     """Flags on `a` that the worker entry point understands, as a CLI list."""
     forwarded = []
     for name in ("client", "model", "workers", "rounds", "max_size", "jobs", "lease_mode",
-                 "family_id", "family_example", "unit"):
+                 "family_id", "family_example", "unit", "cloud_escalate", "cloud_escalate_after",
+                 "thinking", "reasoning_effort", "output_budget", "cloud_concurrency", "strategy"):
         value = getattr(a, name, None)
         if value is not None:
             forwarded += ["--%s" % name.replace("_", "-"), str(value)]
-    for flag, name in (("no-revng", "no_revng"), ("dry-run", "dry_run")):
+    for flag, name in (("no-revng", "no_revng"), ("dry-run", "dry_run"),
+                       ("allow-cloud", "allow_cloud"), ("source-only", "source_only")):
         if getattr(a, name, False):
             forwarded.append("--%s" % flag)
     return forwarded
@@ -1261,6 +1263,21 @@ def main(argv=None):
                    help="print the plan without leasing a job")
     p.add_argument("--setup", dest="setup", action="store_true",
                    help="ignore the saved config and answer the setup questions again")
+    p.add_argument("--cloud-escalate", dest="cloud_escalate",
+                   help="cloud model for hard jobs stalled by the primary model")
+    p.add_argument("--cloud-escalate-after", dest="cloud_escalate_after", type=int,
+                   help="primary attempts before cloud escalation")
+    p.add_argument("--thinking", choices=["auto", "enabled", "disabled"], help="provider reasoning mode")
+    p.add_argument("--reasoning-effort", dest="reasoning_effort",
+                   choices=["auto", "low", "medium", "high", "max"], help="provider reasoning effort")
+    p.add_argument("--output-budget", dest="output_budget", type=int, help="max tokens per reply (128-8192)")
+    p.add_argument("--allow-cloud", dest="allow_cloud", action="store_true", help="allow prompts to leave this PC")
+    p.add_argument("--cloud-concurrency", dest="cloud_concurrency", type=int,
+                   help="max concurrent cloud requests")
+    p.add_argument("--source-only", dest="source_only", action="store_true",
+                   help="deterministic candidates only; never call the model")
+    p.add_argument("--strategy", choices=["direct", "structured", "reference"],
+                   help="candidate-generation prompt strategy")
     cmd("doctor", cmd_doctor, "diagnose this install and print repair steps",
         (["--json"], {"action": "store_true", "help": "machine-readable output"}),
         (["--no-check", "--no-network"], {"action": "store_true", "dest": "no_check",

@@ -667,6 +667,24 @@ def test_launch_command_detaches_into_its_own_console():
     assert "start \"RoConstruct worker\"" in line and line.rstrip().endswith("roc.cmd\" launch"), line
 
 
+def test_launch_forwards_cloud_knobs():
+    import argparse
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("roc_cli_fwd_test", ROOT / "roc.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    a = argparse.Namespace(client=None, model=None, workers="4", rounds=None, max_size=None,
+                           jobs=None, lease_mode=None, family_id=None, family_example=None,
+                           unit=None, cloud_escalate="ntech:MiniMax-M2.5", cloud_escalate_after=3,
+                           thinking="enabled", reasoning_effort="high", output_budget=4096,
+                           cloud_concurrency=2, strategy="structured",
+                           no_revng=False, dry_run=True, allow_cloud=True, source_only=False)
+    forwarded = module._forwarded(a)
+    assert "--cloud-escalate" in forwarded and "ntech:MiniMax-M2.5" in forwarded
+    assert "--reasoning-effort" in forwarded and "high" in forwarded
+    assert "--allow-cloud" in forwarded and "--dry-run" in forwarded
+
+
 def test_launch_configures_in_the_terminal_when_nothing_is_saved():
     """`roc launch` must be usable on a fresh machine: it answers the questions
     here instead of telling you to go and run something else first."""
