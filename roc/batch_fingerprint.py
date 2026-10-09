@@ -76,7 +76,7 @@ def unit_has_class(unit, token):
     return token in value
 
 
-def batches(db):
+def batches(db, partials=False):
     refs = {}
     labels = {}
     for client, unit, source in db.execute("SELECT client,unit,source FROM funcs WHERE score=100 AND source IS NOT NULL"):
@@ -86,8 +86,11 @@ def batches(db):
             refs.setdefault((client, source), set()).add(unit)
             labels.setdefault((client, unit), set()).add(source_family(source))
     open_by_unit = {}
-    for client, unit, addr in db.execute("SELECT client,unit,addr FROM funcs WHERE score=0"):
-        open_by_unit.setdefault((client, unit), []).append(addr)
+    condition = "score BETWEEN 1 AND 99" if partials else "score=0"
+    for client, unit, addr, source in db.execute(
+            "SELECT client,unit,addr,source FROM funcs WHERE " + condition + " ORDER BY client,unit,addr"):
+        found = REF.search(source or "")
+        open_by_unit.setdefault((client, unit), []).append((addr, found.group(1) if found else None))
     for (client, source), units in refs.items():
         family = source_family(source)
         units = {unit for unit in units
@@ -96,7 +99,8 @@ def batches(db):
         class_units = {unit for unit in units if token and unit_has_class(unit, token)}
         if class_units:
             units = class_units
-        addrs = [addr for unit in units for addr in open_by_unit.get((client, unit), [])]
+        addrs = sorted(addr for unit in units for addr, previous in open_by_unit.get((client, unit), [])
+                       if not partials or previous != source)
         for start in range(0, len(addrs), 1000):
             group = addrs[start:start + 1000]
             if group:
@@ -127,19 +131,22 @@ def main():
     parser = argparse.ArgumentParser(description="Batch-score known library sources against open same-unit functions.")
     parser.add_argument("--workers", type=int, default=2)
     parser.add_argument("--max-batches", type=int, default=0)
+    parser.add_argument("--partials", action="store_true",
+                        help="try other exact same-unit sources against existing partial matches")
+    parser.add_argument("--server", help="override saved server address")
     args = parser.parse_args()
     settings = worker.load_settings()
-    state_path = ROOT / "work" / "batch-fingerprint.json"
+    state_path = ROOT / "work" / ("batch-fingerprint-partials.json" if args.partials else "batch-fingerprint.json")
     state = json.loads(state_path.read_text()) if state_path.exists() else {"done": []}
     done = set(state.get("done", []))
     db = sqlite3.connect("file:work/server.db?mode=ro", uri=True)
-    todo = [(item, key(*item)) for item in batches(db)]
+    todo = [(item, key(*item)) for item in batches(db, partials=args.partials)]
     todo = [(item, marker) for item, marker in todo if marker not in done]
     if args.max_batches:
         todo = todo[:args.max_batches]
     print("queued", len(todo), flush=True)
     with ThreadPoolExecutor(max_workers=max(1, args.workers)) as pool:
-        jobs = {pool.submit(run_one, settings["server"], settings.get("token"), settings["user"], item): marker
+        jobs = {pool.submit(run_one, args.server or settings["server"], settings.get("token"), settings["user"], item): marker
                 for item, marker in todo}
         for future in as_completed(jobs):
             marker = jobs[future]

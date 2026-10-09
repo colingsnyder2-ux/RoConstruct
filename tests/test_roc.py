@@ -1060,6 +1060,22 @@ def test_server_ordering():
     assert not job["unit"].startswith("seg_")
 
 
+def test_fingerprint_partial_scope():
+    from roc.batch_fingerprint import batches
+    st = Store(":memory:", lease_seconds=10)
+    source = "// roc-lang: cpp\n// roc-cl: 30729\n// roc-flags: /O2\n// roc-lib: xtp-11.2.2 XTPReportControl.cpp"
+    st.db.executemany("INSERT INTO funcs(client,addr,size,unit,score,source) VALUES(?,?,?,?,?,?)", [
+        ("C", "00401000", 20, "CXTPReportControl", 100, source),
+        ("C", "00401010", 20, "CXTPReportControl", 0, None),
+        ("C", "00401020", 20, "CXTPReportControl", 50, "other source"),
+        ("C", "00401030", 20, "CXTPReportControl", 70, source),
+        ("C", "00401040", 20, "RBX::Instance", 100, source),
+        ("C", "00401050", 20, "RBX::Instance", 50, "other source"),
+    ])
+    assert list(batches(st.db)) == [("C", source, ["00401010"])]
+    assert list(batches(st.db, partials=True)) == [("C", source, ["00401020"])]
+
+
 def test_shape_normalisation():
     # Same code with different constants must collapse to one shape, or the counts that
     # decide which template to write next are meaningless.
