@@ -256,17 +256,13 @@ class Store:
         return (int(row[0] or 0), int(row[1] or 0))
 
     def display_progress(self, client):
-        """Function and byte totals using the same local score map as the website."""
-        path = ROOT / "work" / client / "scores.json"
-        if not path.exists():
-            matched, total = self.client_progress(client)
-            matched_bytes, total_bytes = self.client_bytes(client)
-            return matched, total, matched_bytes, total_bytes
-        scores = json.loads(path.read_text())
+        """Function and byte totals from the authoritative server score table."""
         with self.lock:
-            rows = self.db.execute("SELECT addr, size FROM funcs WHERE client = ?", (client,)).fetchall()
-        matched = [(addr, size) for addr, size in rows if scores.get(addr, 0) == 100]
-        return len(matched), len(rows), sum(size for _addr, size in matched), sum(size for _addr, size in rows)
+            row = self.db.execute(
+                "SELECT SUM(score = 100), COUNT(*), "
+                "SUM(CASE WHEN score = 100 THEN size ELSE 0 END), SUM(size) "
+                "FROM funcs WHERE client = ?", (client,)).fetchone()
+        return tuple(int(value or 0) for value in row)
 
     def digest_progress(self, client):
         """Exact source, mined, retry, and total bytes for a digest bar."""
