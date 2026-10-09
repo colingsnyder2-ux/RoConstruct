@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-09 07:42 UTC",
+ "updated": "2026-10-09 07:55 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -48,13 +48,13 @@
    "built": "2007-08-19",
    "started": true,
    "functions": 19998,
-   "matched": 10084,
-   "partial": 4114,
+   "matched": 10090,
+   "partial": 4108,
    "bytes": 3009279,
-   "matched_bytes": 826631,
+   "matched_bytes": 826998,
    "source_bytes": 609809,
-   "mined_bytes": 216822,
-   "partial_bytes": 433396,
+   "mined_bytes": 217189,
+   "partial_bytes": 433029,
    "data_bytes": 1361658,
    "leaderboard": [
     {
@@ -103,21 +103,21 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22296,
-   "matched": 10387,
+   "matched": 10388,
    "partial": 38,
    "bytes": 3448631,
-   "matched_bytes": 926752,
-   "source_bytes": 756704,
+   "matched_bytes": 926772,
+   "source_bytes": 756724,
    "mined_bytes": 170048,
    "partial_bytes": 1264,
    "data_bytes": 1559926,
    "leaderboard": [
     {
      "user": "auto",
-     "matched": 9347,
-     "points": 934615,
-     "submissions": 9347,
-     "last": 1791531025.2238839
+     "matched": 9348,
+     "points": 934715,
+     "submissions": 9348,
+     "last": 1791532497.6712623
     },
     {
      "user": "colin",
@@ -137,21 +137,21 @@
    "built": "2009-06-16",
    "started": true,
    "functions": 26156,
-   "matched": 9438,
+   "matched": 9439,
    "partial": 4,
    "bytes": 3981050,
-   "matched_bytes": 749946,
-   "source_bytes": 587469,
+   "matched_bytes": 749975,
+   "source_bytes": 587498,
    "mined_bytes": 162477,
    "partial_bytes": 295,
    "data_bytes": 1809822,
    "leaderboard": [
     {
      "user": "auto",
-     "matched": 8883,
-     "points": 888189,
-     "submissions": 8883,
-     "last": 1791531027.541351
+     "matched": 8884,
+     "points": 888289,
+     "submissions": 8884,
+     "last": 1791532499.755261
     },
     {
      "user": "colin",
@@ -216,10 +216,10 @@
    "leaderboard": [
     {
      "user": "auto",
-     "matched": 8373,
-     "points": 837300,
-     "submissions": 8373,
-     "last": 1791531206.3782568
+     "matched": 8374,
+     "points": 837400,
+     "submissions": 8374,
+     "last": 1791531733.4321506
     },
     {
      "user": "colin",
@@ -278,10 +278,10 @@
  "leaderboard": [
   {
    "user": "auto",
-   "matched": 61044,
-   "points": 6101263,
-   "submissions": 61044,
-   "last": 1791531209.7489734
+   "matched": 61047,
+   "points": 6101563,
+   "submissions": 61047,
+   "last": 1791532499.755261
   },
   {
    "user": "colin",

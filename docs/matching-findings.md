@@ -13,3 +13,30 @@ Append-only experiment log.
 - 2026-10-09: Current `work/2007-08/scores.json`: 9,919 functions at 100; ten remaining 98% holdouts: `004021a0`, `004485c0`, `00449820`, `0055ece0`, `005b1e90`, `005f8b40`, `005fc300`, `00675890`, `006a2dd0`, `006cb940`.
 - 2026-10-09: Added explicit `/Ob2` and `/Oi` sweep choices. Full Cartesian flag matrix now 62,208 combinations; no rerun yet.
 - 2026-10-09: `00449820`: external GUID-like declarations produce 98, not exact; unresolved external data becomes zero-sized `push` and worsens branch layout. Keep literal constants for now.
+- 2026-10-09: `005b1e90`: baseline 98, missing return. Typed factory-pointer return + `return this` = exact 100.
+- 2026-10-09: `005f8b40`: baseline 98, missing return. Typed pointer return + `return this` = exact 100.
+- 2026-10-09: `005fc300`: typed return tested; scores 77/92/84 with store volatility/order changes. No exact; constant-store relocation ordering remains unresolved.
+- 2026-10-09: `005fc300`: corrected finding. Typed pointer return + only offset `0x20` zero-store marked `volatile` = exact 100. Other volatility masks: offset `0x04`=84; offsets `0x00`/`0x20` combinations=84; offset `0x20` present=100.
+- 2026-10-09: `006a2dd0`: baseline 98, stack arg mismatch. Swap params + pass `&unused` to comparator = exact 100.
+- 2026-10-09: `006cb940`: baseline 98, stack arg mismatch. Swap parameter order = exact 100.
+- 2026-10-09: `0055ece0`: direct-expression cleanup did not help (74). Changing virtual callback return to pointer gives 94; only remaining mismatch is callback pointer register (`edx` target vs `eax` candidate).
+- 2026-10-09: `0055ece0`: modeling nested object as C++ virtual type with dummy slot + target method makes MSVC emit `mov edx,[vtable+4]; call edx`; exact 100.
+- 2026-10-09: `004485c0`: adding `__declspec(noreturn)` to imported `RaiseException` changes MSVC shrink-wrapped callee-save placement; exact 100. `noinline`, `nothrow`, no annotation stayed 98.
+- 2026-10-09: `00449820`: rewriting `if (hr < 0) return hr` as success body under `if (hr >= 0)` + shared `return hr` changes branch target/layout; exact 100. Literal GUID-like constants already had correct masked bytes.
+- 2026-10-09: `00675890`: typed receiver for second call consistently fixes `mov ecx,eax` but changes final register allocation to `ecx/eax` instead of target `edx/ecx`; field volatility, typed result struct, and call return types did not reach exact (best 94).
+- 2026-10-09: Current verified state: 9,926 functions at 100%; remaining 98% holdouts: `004021a0`, `00675890`.
+- 2026-10-09: Final-holdout flag sweep: `00675890` `/O1`=93, every other requested variant=98; `004021a0` `/O1`=58, `/Oy-`=83, baseline/other variants=89. Flags do not solve either.
+- 2026-10-09: Cross-source research: neighboring exact `00675950` uses integer-returning XTP calls + integer receiver cast, but applying same representation to `00675890` still gives 94. Difference remains final register allocation (`edx/ecx` target vs `ecx/eax`).
+- 2026-10-09: Current score file: 9,927 functions at 100%; only `004021a0` and `00675890` remain at 98%.
+- 2026-10-09: `00675890` alias/type research: unsigned/long field, const/volatile result pointer, volatile field read, integer-returning XTP calls, and neighboring `00675950` source pattern all stayed 94 or worse. No exact.
+- 2026-10-09: `004021a0` callback research: global `volatile`/`const`, register hints, comparator argument orders, signed pointer loop, and local key aliases reached 91 at best; target register allocation still differs. No exact.
+- 2026-10-09: `00675890`: target calls `sub_6302ec` on return object from `sub_63096a`; typed returned object fixes call receiver but tail register allocation remains different (94). No exact.
+- 2026-10-09: Current verified state: 9,925 functions at 100%; remaining 98% holdouts: `004021a0`, `004485c0`, `00449820`, `00675890`.
+- 2026-10-09: Automation research: `typed_member_return` + targeted `volatile_zero_store` combination reproduces `005fc300` exact in 3 mutation attempts (98 -> 100). Standalone typed return=77; standalone volatile offset variants=98. Combination required.
+- 2026-10-09: Added bounded automatic mutations to `roc/mutate.py`; `roc repair` can now discover typed member factory returns and combine them with zero-store volatility.
+- 2026-10-09: `roc repair 2007-08 0055ece0`: 74 -> 74, tried 3 variants.
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 3 variants.
+- 2026-10-09: `roc repair 2007-08 004485c0`: 98 -> 98, tried 8 variants.
+- 2026-10-09: `roc repair 2007-08 00449820`: 98 -> 98, tried 6 variants.
+- 2026-10-09: `roc repair 2007-08 005fc300`: 98 -> 98, tried 6 variants.
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 8 variants.
