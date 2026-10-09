@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-09 13:18 UTC",
+ "updated": "2026-10-09 14:19 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -7,13 +7,13 @@
    "built": "2007-03-26",
    "started": true,
    "functions": 19341,
-   "matched": 7552,
-   "partial": 6,
+   "matched": 7719,
+   "partial": 5,
    "bytes": 3048608,
-   "matched_bytes": 630776,
-   "source_bytes": 592974,
-   "mined_bytes": 37802,
-   "partial_bytes": 50,
+   "matched_bytes": 642254,
+   "source_bytes": 604443,
+   "mined_bytes": 37811,
+   "partial_bytes": 41,
    "data_bytes": 1332936,
    "leaderboard": [
     {
@@ -38,7 +38,7 @@
      "last": 1791430276.2224836
     }
    ],
-   "data_matched_bytes": 51474,
+   "data_matched_bytes": 53390,
    "classes": 0,
    "generated": 6361
   },
@@ -129,9 +129,9 @@
     {
      "user": "Intel",
      "matched": 0,
-     "points": 18,
-     "submissions": 1,
-     "last": 1791550325.422407
+     "points": 31,
+     "submissions": 2,
+     "last": 1791552725.8426309
     }
    ],
    "data_matched_bytes": 119087,
@@ -246,13 +246,13 @@
    "built": "2012-06-13",
    "started": true,
    "functions": 39811,
-   "matched": 10512,
-   "partial": 66,
+   "matched": 10513,
+   "partial": 65,
    "bytes": 6234528,
-   "matched_bytes": 555737,
+   "matched_bytes": 555749,
    "source_bytes": 422336,
-   "mined_bytes": 133401,
-   "partial_bytes": 711,
+   "mined_bytes": 133413,
+   "partial_bytes": 699,
    "data_bytes": 3396596,
    "leaderboard": [
     {
@@ -264,10 +264,10 @@
     },
     {
      "user": "Intel",
-     "matched": 76,
-     "points": 11863,
-     "submissions": 196,
-     "last": 1791551376.86973
+     "matched": 77,
+     "points": 11898,
+     "submissions": 198,
+     "last": 1791552464.1188147
     },
     {
      "user": "colin",
@@ -299,10 +299,10 @@
   },
   {
    "user": "Intel",
-   "matched": 76,
-   "points": 11881,
-   "submissions": 197,
-   "last": 1791551376.86973
+   "matched": 77,
+   "points": 11929,
+   "submissions": 200,
+   "last": 1791552725.8426309
   },
   {
    "user": "colinlaptop",
