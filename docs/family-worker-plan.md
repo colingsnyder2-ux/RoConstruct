@@ -15,6 +15,8 @@ opcode shape, so one verified source can teach siblings their compact C++ form.
   forbids unrelated class expansion or assembly dumps.
 - Worker registers exact size/opcode fingerprints with server; strict family
   lookup uses fingerprint plus same-client verified source.
+- `benchmarks/register_families.py` bulk-preseeds fingerprints before mining;
+  2008-06 (42,213), 2009-06 (47,078), and 2010-06 (59,084) registered.
 - Worker tries address-literal propagation from verified exemplar before LLM;
   equal-literal-count and cl.exe score gates reject unsafe rewrites.
 - Family mode is now default-on for worker launches; flag remains accepted for

@@ -89,6 +89,10 @@ produced 0 exact, 10 improved, and 100% family fingerprint coverage. It is a
 hard mixed-function sample, so it does not prove family gain by itself; it does
 prove runtime index/telemetry wiring.
 
+Offline strict-index preseed completed through bulk API: 42,213 functions for
+2008-06, 47,078 for 2009-06, and 59,084 for 2010-06. Workers no longer need
+to touch a sibling first before its fingerprint can be used.
+
 ## Deterministic propagation replay
 
 Compiler-gated address-literal propagation was replayed across all verified
