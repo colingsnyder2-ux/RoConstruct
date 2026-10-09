@@ -68,6 +68,7 @@ def test_bootstrap_installs_no_ollama_or_docker():
     with temp_root(), \
          patch("roc.setup.ensure_packages") as packages, \
          patch("roc.setup.ensure_wine_prefix", return_value=True), \
+         patch("roc.setup.compiler_ready", return_value=True), \
          patch("roc.setup.compilers", return_value={21022: "cl.exe", 30729: "cl.exe", 50727: "cl.exe"}), \
          patch("roc.setup.FETCHERS") as fetchers, \
          patch("roc.setup.refresh_path"), \
@@ -143,6 +144,7 @@ def test_bootstrap_keeps_work_settings_and_claims():
     with temp_root() as root, \
          patch("roc.setup.ensure_packages"), \
          patch("roc.setup.ensure_wine_prefix", return_value=True), \
+         patch("roc.setup.compiler_ready", return_value=True), \
          patch("roc.setup.compilers", return_value={21022: "cl", 30729: "cl", 50727: "cl"}), \
          patch("roc.setup.FETCHERS"), \
          patch("roc.setup.refresh_path"), \
@@ -491,6 +493,7 @@ def test_reinstall_never_touches_the_server_so_leases_survive():
     with temp_root(), \
          patch("roc.setup.ensure_packages"), \
          patch("roc.setup.ensure_wine_prefix", return_value=True), \
+         patch("roc.setup.compiler_ready", return_value=True), \
          patch("roc.setup.compilers", return_value={21022: "cl", 30729: "cl", 50727: "cl"}), \
          patch("roc.setup.FETCHERS"), \
          patch("roc.setup.refresh_path"), \
@@ -507,6 +510,7 @@ def test_size_and_time_are_shown_before_anything_is_downloaded():
     with temp_root(), \
          patch("roc.setup.print", side_effect=lambda *a, **k: order.append(str(a[0])) if a else None), \
          patch("roc.setup.ensure_wine_prefix", return_value=True), \
+         patch("roc.setup.compiler_ready", return_value=True), \
          patch("roc.setup.report", return_value=True), \
          patch("roc.setup.register_link"), \
          patch("roc.setup.compilers", return_value={}), \
@@ -641,7 +645,8 @@ def test_doctor_reports_a_server_it_cannot_reach():
 
 def test_doctor_flags_a_compiler_that_is_missing():
     from roc import doctor
-    with patch("roc.setup.compilers", return_value={}), \
+    with patch("roc.setup.compiler_ready", return_value=True), \
+         patch("roc.setup.compilers", return_value={}), \
          patch("roc.clients.load", return_value={"2008-06": {"compiler": "VS2008 RTM",
                                                             "compiler_build": 21022},
                                                  "2007-03": {"compiler": "VS2005",

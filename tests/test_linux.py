@@ -3,6 +3,7 @@
 These tests run on any OS: they patch roc.setup.WINDOWS to False rather than
 depending on the host, so the Linux branches are exercised on Windows CI too.
 """
+import os
 import struct
 import sys
 from pathlib import Path
@@ -52,6 +53,8 @@ def test_compilers_returns_empty_without_wine():
 
 def test_cl_env_under_wine_uses_windows_include_and_winepath(tmp_path):
     from roc import setup
+    if os.name == "nt":
+        return  # Wine paths only exist on a Unix host; tmp paths here are C:\-shaped
     cl = tmp_path / "VC" / "bin" / "cl.exe"
     (tmp_path / "VC" / "include").mkdir(parents=True)
     (tmp_path / "Common7" / "IDE").mkdir(parents=True)
@@ -72,6 +75,7 @@ def test_ensure_wine_prefix_is_cheap_once_created(tmp_path):
     (prefix / "system.reg").write_text("")
     with patch("roc.setup.WINDOWS", False), \
          patch("roc.setup.WINE_PREFIX", prefix), \
+         patch("roc.setup.wine_exe", return_value="/usr/bin/wine"), \
          patch("roc.setup.subprocess.run") as run:
         assert setup.ensure_wine_prefix(log=lambda _line: None) is True
         assert not run.called, "an existing prefix must not be re-created"
