@@ -1,0 +1,113 @@
+{
+ "client": "2008-06",
+ "unit": "seg_007f0000",
+ "session": "families-2008-06-seg7f-auto-20261009",
+ "totals": {
+  "families": 36,
+  "verified_families": 8,
+  "siblings": 368,
+  "rewritten": 32,
+  "compiled": 32,
+  "exact": 32,
+  "conversions": 32
+ },
+ "families": [
+  {
+   "representative": "007f5c30",
+   "members": 1,
+   "rewritten": 0,
+   "compiled": 0,
+   "exact": 0,
+   "propagation_depth": {}
+  },
+  {
+   "representative": "007f9120",
+   "members": 4,
+   "rewritten": 0,
+   "compiled": 0,
+   "exact": 0,
+   "propagation_depth": {}
+  },
+  {
+   "representative": "007fb110",
+   "members": 32,
+   "rewritten": 32,
+   "compiled": 32,
+   "exact": 32,
+   "propagation_depth": {
+    "007fb7b0": 1,
+    "007fc890": 1,
+    "007fd1b0": 1,
+    "007fd210": 1,
+    "007fd220": 1,
+    "007fd230": 1,
+    "007fd240": 1,
+    "007fd250": 1,
+    "007fd260": 1,
+    "007fd270": 1,
+    "007fd280": 1,
+    "007fd290": 1,
+    "007fd2a0": 1,
+    "007fd2b0": 1,
+    "007fd2c0": 1,
+    "007fd2d0": 1,
+    "007fd2e0": 1,
+    "007fd2f0": 1,
+    "007fd760": 1,
+    "007fda70": 1,
+    "007fdac0": 1,
+    "007fdbb0": 1,
+    "007fdbc0": 1,
+    "007fe0a0": 1,
+    "007ff9e0": 1,
+    "007ffb80": 1,
+    "007ffb90": 1,
+    "007ffba0": 1,
+    "007ffbb0": 1,
+    "007ffbc0": 1,
+    "007ffbd0": 1,
+    "007ffbe0": 1
+   }
+  },
+  {
+   "representative": "007f9170",
+   "members": 49,
+   "rewritten": 0,
+   "compiled": 0,
+   "exact": 0,
+   "propagation_depth": {}
+  },
+  {
+   "representative": "007fa9c0",
+   "members": 1,
+   "rewritten": 0,
+   "compiled": 0,
+   "exact": 0,
+   "propagation_depth": {}
+  },
+  {
+   "representative": "007f37c0",
+   "members": 35,
+   "rewritten": 0,
+   "compiled": 0,
+   "exact": 0,
+   "propagation_depth": {}
+  },
+  {
+   "representative": "007fa230",
+   "members": 244,
+   "rewritten": 0,
+   "compiled": 0,
+   "exact": 0,
+   "propagation_depth": {}
+  },
+  {
+   "representative": "007fb0f0",
+   "members": 2,
+   "rewritten": 0,
+   "compiled": 0,
+   "exact": 0,
+   "propagation_depth": {}
+  }
+ ]
+}

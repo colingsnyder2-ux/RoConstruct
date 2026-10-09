@@ -32,6 +32,7 @@ def main():
     ap.add_argument("--unit", required=True)
     ap.add_argument("--representative-session", required=True)
     ap.add_argument("--output", type=Path, required=True)
+    ap.add_argument("--recursive", action="store_true", help="propagate newly exact siblings, max depth 3")
     args = ap.parse_args()
     rows = [r for r in benchmark.build_hidden(100000, persist=False)
             if r.get("client") == args.client and r.get("unit") == args.unit]
@@ -51,29 +52,41 @@ def main():
         totals["verified_families"] += 1
         family = {"representative": representative["addr"], "members": 0,
                   "rewritten": 0, "compiled": 0, "exact": 0}
-        for row in members:
-            if row["addr"] == representative["addr"]:
-                continue
-            totals["siblings"] += 1
-            family["members"] += 1
-            code, relocs, _ = match.target(args.client, row["addr"])
-            asm = match.disasm(code, int(row["addr"], 16))
-            candidate = auto.family_propagate(asm, source)
-            if not candidate:
-                continue
-            totals["rewritten"] += 1
-            family["rewritten"] += 1
-            try:
-                score, _, _, _ = match.check_text(args.client, row["addr"], candidate)
-            except match.CompileError:
-                continue
-            totals["compiled"] += 1
-            family["compiled"] += 1
-            if score == 100:
-                totals["exact"] += 1
-                family["exact"] += 1
-                if score > row.get("score", 0):
+        pending = [row for row in members if row["addr"] != representative["addr"]]
+        totals["siblings"] += len(pending)
+        family["members"] += len(pending)
+        exemplars, depth = [source], {}
+        for pass_no in range(1, 4 if args.recursive else 2):
+            next_pending = []
+            for row in pending:
+                code, _, _ = match.target(args.client, row["addr"])
+                asm = match.disasm(code, int(row["addr"], 16))
+                candidate = next((auto.family_propagate(asm, ex) for ex in exemplars
+                                  if auto.family_propagate(asm, ex)), None)
+                if not candidate:
+                    next_pending.append(row)
+                    continue
+                totals["rewritten"] += 1
+                family["rewritten"] += 1
+                try:
+                    score, _, _, _ = match.check_text(args.client, row["addr"], candidate)
+                except match.CompileError:
+                    next_pending.append(row)
+                    continue
+                totals["compiled"] += 1
+                family["compiled"] += 1
+                if score == 100:
+                    totals["exact"] += 1
+                    family["exact"] += 1
                     totals["conversions"] += 1
+                    depth[row["addr"]] = pass_no
+                    exemplars.append(candidate)
+                else:
+                    next_pending.append(row)
+            pending = next_pending
+            if not args.recursive or len(pending) == 0:
+                break
+        family["propagation_depth"] = depth
         details.append(family)
     result = {"client": args.client, "unit": args.unit, "session": args.representative_session,
               "totals": totals, "families": details}

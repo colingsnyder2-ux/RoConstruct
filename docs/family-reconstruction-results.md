@@ -93,6 +93,10 @@ Offline strict-index preseed completed through bulk API: 42,213 functions for
 2008-06, 47,078 for 2009-06, and 59,084 for 2010-06. Workers no longer need
 to touch a sibling first before its fingerprint can be used.
 
+Recursive propagation replay (max depth 3) produced same counts as first-pass
+propagation: 32 exact conversions on 2008-06 and 37 on 2009-06, with no
+additional depth-2/3 conversions. Queue is bounded and cycle-safe.
+
 ## Deterministic propagation replay
 
 Compiler-gated address-literal propagation was replayed across all verified

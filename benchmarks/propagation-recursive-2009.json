@@ -1,0 +1,134 @@
+{
+ "client": "2009-06",
+ "unit": "seg_00890000",
+ "session": "families-2009-06-seg_00890000-20261009",
+ "totals": {
+  "families": 22,
+  "verified_families": 10,
+  "siblings": 1062,
+  "rewritten": 37,
+  "compiled": 37,
+  "exact": 37,
+  "conversions": 37
+ },
+ "families": [
+  {
+   "representative": "008939b0",
+   "members": 284,
+   "rewritten": 0,
+   "compiled": 0,
+   "exact": 0,
+   "propagation_depth": {}
+  },
+  {
+   "representative": "00890120",
+   "members": 6,
+   "rewritten": 0,
+   "compiled": 0,
+   "exact": 0,
+   "propagation_depth": {}
+  },
+  {
+   "representative": "00893920",
+   "members": 295,
+   "rewritten": 0,
+   "compiled": 0,
+   "exact": 0,
+   "propagation_depth": {}
+  },
+  {
+   "representative": "008929f0",
+   "members": 4,
+   "rewritten": 0,
+   "compiled": 0,
+   "exact": 0,
+   "propagation_depth": {}
+  },
+  {
+   "representative": "00894fe0",
+   "members": 37,
+   "rewritten": 37,
+   "compiled": 37,
+   "exact": 37,
+   "propagation_depth": {
+    "00895590": 1,
+    "008972a0": 1,
+    "008978f0": 1,
+    "00897900": 1,
+    "00897910": 1,
+    "00897920": 1,
+    "00897930": 1,
+    "00897940": 1,
+    "00897950": 1,
+    "00897960": 1,
+    "00897970": 1,
+    "00897980": 1,
+    "00897990": 1,
+    "008979a0": 1,
+    "008979b0": 1,
+    "008979c0": 1,
+    "008979d0": 1,
+    "008979e0": 1,
+    "008979f0": 1,
+    "00897a00": 1,
+    "008993c0": 1,
+    "00899910": 1,
+    "00899ee0": 1,
+    "0089a010": 1,
+    "0089a930": 1,
+    "0089ad20": 1,
+    "0089ad30": 1,
+    "0089ad40": 1,
+    "0089ad50": 1,
+    "0089ad60": 1,
+    "0089ad70": 1,
+    "0089ad80": 1,
+    "0089c8e0": 1,
+    "0089ca40": 1,
+    "0089d150": 1,
+    "0089d160": 1,
+    "0089d614": 1
+   }
+  },
+  {
+   "representative": "00891210",
+   "members": 19,
+   "rewritten": 0,
+   "compiled": 0,
+   "exact": 0,
+   "propagation_depth": {}
+  },
+  {
+   "representative": "008929a0",
+   "members": 49,
+   "rewritten": 0,
+   "compiled": 0,
+   "exact": 0,
+   "propagation_depth": {}
+  },
+  {
+   "representative": "00893b60",
+   "members": 365,
+   "rewritten": 0,
+   "compiled": 0,
+   "exact": 0,
+   "propagation_depth": {}
+  },
+  {
+   "representative": "00894fa0",
+   "members": 2,
+   "rewritten": 0,
+   "compiled": 0,
+   "exact": 0,
+   "propagation_depth": {}
+  },
+  {
+   "representative": "0089d410",
+   "members": 1,
+   "rewritten": 0,
+   "compiled": 0,
+   "exact": 0,
+   "propagation_depth": {}
+  }
+ ]
+}
