@@ -227,6 +227,26 @@ def model_stats():
             for m, v in sorted(out.items())]
 
 
+def family_stats():
+    """Aggregate family-index worker telemetry for cost/exact reporting."""
+    rows = []
+    try:
+        for line in PATH.read_text(encoding="utf-8").splitlines():
+            row = json.loads(line)
+            if row.get("event") == "job" and row.get("family_id"):
+                rows.append(row)
+    except (OSError, ValueError):
+        return {"jobs": 0, "matched": 0, "propagated": 0, "tokens": 0, "cost": 0}
+    cost = sum(r.get("estimated_cost", 0) or 0 for r in rows)
+    tokens = sum((r.get("input_tokens", 0) or 0) + (r.get("output_tokens", 0) or 0) for r in rows)
+    matched = sum(r.get("score") == 100 for r in rows)
+    return {"jobs": len(rows), "matched": matched,
+            "match_rate": round(100 * matched / max(len(rows), 1), 2),
+            "propagated": sum(bool(r.get("family_propagated")) for r in rows),
+            "tokens": tokens, "cost": round(cost, 8),
+            "exact_per_dollar": round(matched / cost, 4) if cost else None}
+
+
 def failure_clusters(limit=20):
     """Recurring compile/API failure prefixes for deterministic rule work."""
     out = {}

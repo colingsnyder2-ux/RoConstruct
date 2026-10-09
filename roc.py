@@ -688,6 +688,17 @@ def cmd_model_stats(a):
                row["score_gain"], row["avg_seconds"], row["gpu_minutes_per_match"]))
 
 
+def cmd_family_stats(a):
+    from roc import metrics
+    row = metrics.family_stats()
+    if not row["jobs"]:
+        print("No family telemetry yet.")
+        return
+    print("Family jobs=%d exact=%d rate=%.2f%% propagated=%d tokens=%d cost=$%.6f exact/$=%s" %
+          (row["jobs"], row["matched"], row["match_rate"], row["propagated"], row["tokens"],
+           row["cost"], "unknown" if row["exact_per_dollar"] is None else row["exact_per_dollar"]))
+
+
 def cmd_failures(a):
     from roc import metrics
     if a.promote:
@@ -1174,6 +1185,7 @@ def main(argv=None):
         (["--guided-mutations"], {"action": "store_true", "help": "enable evidence-guided source mutations after compilation"}),
         (["--no-update"], {"action": "store_true", "help": "skip the pre-run source update check"}))
     cmd("model-stats", cmd_model_stats, "compare models using worker telemetry")
+    cmd("family-stats", cmd_family_stats, "show family coverage, propagation, cost, and exact rate")
     cmd("failures", cmd_failures, "show recurring worker compile/API failures",
         (["--promote"], {"action": "store_true", "help": "save repeated failure rule suggestions"}))
     cmd("benchmark-models", cmd_benchmark_models, "create fixed targets and compare model telemetry",
