@@ -2965,5 +2965,6 @@ Append-only experiment log.
 - 2026-10-09: `00675890` 98% investigated. Typed return/member receiver shape fixed `mov ecx,eax` middle mismatch, but compiler retained wrong final register order; best tested result 94%, rejected. Needs source ordering/alias evidence, not blind signedness mutations.
 - 2026-10-09: `00460090` 97% classified as missing/extra + indirect-call selection mismatch; guided repair produced zero applicable candidates. No source change accepted.
 - 2026-10-09: `00724ed2` 98% has exact control flow except compiler-emitted trailing `int3` after noreturn imported exception call. Three bounded mutations plus removing/replacing `__assume(0)` stayed 98%; no accepted change.
+- 2026-10-09: Added `roc worker --addr` target pinning. AI repair can now isolate exact near-partial addresses instead of leasing unrelated queue work. Local server/Ollama restarted; DeepSeek retry was blocked by stale lease cooldown before generation, so no match claimed.
 - 2026-10-09: `roc repair 2007-08 00460090`: 97 -> 97, tried 0 variants [].
 - 2026-10-09: `roc repair 2007-08 00724ed2`: 98 -> 98, tried 3 variants [toggle_int_signedness=0, negate_comparison=96, swap_add_operands=98].
