@@ -544,6 +544,7 @@ def generate(model, messages, options=None, state=None):
     started, retries = time.monotonic(), 0
     try:
         attempt = 0
+        dropped_knobs = False
         while True:
             ticket = None
             try:
@@ -562,6 +563,23 @@ def generate(model, messages, options=None, state=None):
                     gate.done(provider, True)
                 return out
             except ProviderError as error:
+                if (error.status == 400 and not dropped_knobs
+                        and ("thinking" in options or "reasoning_effort" in options)):
+                    # Some OpenAI-compatible gateways reject the thinking/reasoning
+                    # knobs on /chat/completions with a 400 ("thinking is not
+                    # supported ... use reasoning_effort"). Retry once without
+                    # them, translating a disabled request to reasoning_effort low.
+                    think = options.pop("thinking", None)
+                    options.pop("reasoning_effort", None)
+                    if think is not None:
+                        disabled = ((isinstance(think, dict) and think.get("type") == "disabled")
+                                    or str(think).lower() == "disabled")
+                        options["reasoning_effort"] = "low" if disabled else "high"
+                    dropped_knobs = True
+                    retries += 1
+                    if budget and ticket:
+                        budget.settle(ticket, 0, 0.0)  # the provider did not bill this
+                    continue
                 if (error.category != "provider_retry" or
                         (not options.get("retry_forever") and attempt >= int(options.get("retries", 2)))):
                     if gate and error.category != "cloud_budget":

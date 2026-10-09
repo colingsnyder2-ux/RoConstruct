@@ -507,6 +507,41 @@ def test_model_pricing_is_exact_and_usable_for_caps():
         assert not providers.has_pricing("deepseek:other")
 
 
+def test_missing_local_library_is_a_compile_error():
+    """A propagated source may cite a local-only tree (rbxgs) not on this PC:
+    that must be a per-function compile failure, not a worker error."""
+    from roc import match
+    text = "// roc-lib: rbxgs Client/App/Some.cpp\nint f() { return 0; }"
+    with patch("roc.clients.load", return_value={"2009-06": {"compiler_build": 30729, "flags": "/O2"}}), \
+         patch("roc.setup.compilers", return_value={30729: "/x/cl.exe"}):
+        try:
+            match.compile_text("2009-06", text)
+            assert False, "a missing local library must not compile silently"
+        except match.CompileError as error:
+            assert "rbxgs" in str(error)
+
+
+def test_openai_chat_retries_without_unsupported_thinking():
+    from roc import providers
+    calls = []
+
+    def fake_post(url, body, headers, timeout):
+        calls.append(body)
+        if len(calls) == 1:
+            raise providers.ProviderError("provider_error", "HTTP 400", 400)
+        return {"choices": [{"message": {"content": "ok"}, "finish_reason": "stop"}],
+                "usage": {"prompt_tokens": 1, "completion_tokens": 1}}, {}
+
+    with patch.dict(os.environ, {"DEEPSEEK_API_KEY": "x"}), \
+         patch("roc.providers._post", side_effect=fake_post):
+        out = providers.generate("deepseek:deepseek-flash", "p",
+                                 options={"allow_cloud": True, "thinking": "disabled", "max_tokens": 16})
+    assert out.text == "ok"
+    assert len(calls) == 2, "the 400 must be retried once"
+    assert "thinking" not in calls[1], "the unsupported field must be dropped"
+    assert calls[1].get("reasoning_effort") == "low"
+
+
 def test_provider_post_sends_a_user_agent():
     """Some OpenAI-compatible gateways reject the default Python-urllib UA (Cloudflare 1010)."""
     from roc import providers

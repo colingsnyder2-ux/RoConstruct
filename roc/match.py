@@ -655,7 +655,10 @@ def compile_text(client, text, flags=None, build=None):
     if "lib" in d:  # library file: rebuilt from the pinned, hash-checked source in tools/libs
         from roc import libs
         recipe, _, path = d["lib"].partition(" ")
-        text = "%s\n%s" % (text, libs.unit(recipe, path.strip(), build))
+        try:
+            text = "%s\n%s" % (text, libs.unit(recipe, path.strip(), build))
+        except SystemExit as error:  # local-only tree (e.g. rbxgs) not on this PC
+            raise CompileError(str(error))
     cl = setup.compilers().get(build)
     if not cl:
         raise SystemExit("Missing compiler build %s for %s. Run: roc install" % (build, client))
