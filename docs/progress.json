@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-09 12:18 UTC",
+ "updated": "2026-10-09 13:18 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -7,13 +7,13 @@
    "built": "2007-03-26",
    "started": true,
    "functions": 19341,
-   "matched": 7394,
-   "partial": 8,
+   "matched": 7552,
+   "partial": 6,
    "bytes": 3048608,
-   "matched_bytes": 622366,
-   "source_bytes": 584584,
-   "mined_bytes": 37782,
-   "partial_bytes": 70,
+   "matched_bytes": 630776,
+   "source_bytes": 592974,
+   "mined_bytes": 37802,
+   "partial_bytes": 50,
    "data_bytes": 1332936,
    "leaderboard": [
     {
@@ -38,7 +38,7 @@
      "last": 1791430276.2224836
     }
    ],
-   "data_matched_bytes": 49877,
+   "data_matched_bytes": 51474,
    "classes": 0,
    "generated": 6361
   },
@@ -125,6 +125,13 @@
      "points": 2992,
      "submissions": 70,
      "last": 1791527324.53957
+    },
+    {
+     "user": "Intel",
+     "matched": 0,
+     "points": 18,
+     "submissions": 1,
+     "last": 1791550325.422407
     }
    ],
    "data_matched_bytes": 119087,
@@ -239,13 +246,13 @@
    "built": "2012-06-13",
    "started": true,
    "functions": 39811,
-   "matched": 10509,
-   "partial": 69,
+   "matched": 10512,
+   "partial": 66,
    "bytes": 6234528,
-   "matched_bytes": 555698,
+   "matched_bytes": 555737,
    "source_bytes": 422336,
-   "mined_bytes": 133362,
-   "partial_bytes": 750,
+   "mined_bytes": 133401,
+   "partial_bytes": 711,
    "data_bytes": 3396596,
    "leaderboard": [
     {
@@ -257,10 +264,10 @@
     },
     {
      "user": "Intel",
-     "matched": 72,
-     "points": 11716,
-     "submissions": 186,
-     "last": 1791547307.7202232
+     "matched": 76,
+     "points": 11863,
+     "submissions": 196,
+     "last": 1791551376.86973
     },
     {
      "user": "colin",
@@ -292,10 +299,10 @@
   },
   {
    "user": "Intel",
-   "matched": 72,
-   "points": 11716,
-   "submissions": 186,
-   "last": 1791547307.7202232
+   "matched": 76,
+   "points": 11881,
+   "submissions": 197,
+   "last": 1791551376.86973
   },
   {
    "user": "colinlaptop",
