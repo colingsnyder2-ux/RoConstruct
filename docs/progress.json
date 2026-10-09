@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-09 09:16 UTC",
+ "updated": "2026-10-09 10:17 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -48,13 +48,13 @@
    "built": "2007-08-19",
    "started": true,
    "functions": 19998,
-   "matched": 10115,
-   "partial": 8653,
+   "matched": 10133,
+   "partial": 9462,
    "bytes": 3009279,
-   "matched_bytes": 830928,
+   "matched_bytes": 832902,
    "source_bytes": 609809,
-   "mined_bytes": 221119,
-   "partial_bytes": 1692529,
+   "mined_bytes": 223093,
+   "partial_bytes": 1905127,
    "data_bytes": 1361658,
    "leaderboard": [
     {
@@ -66,10 +66,10 @@
     },
     {
      "user": "colin",
-     "matched": 1431,
-     "points": 592375,
-     "submissions": 15911,
-     "last": 1791537356.5175676
+     "matched": 1449,
+     "points": 630011,
+     "submissions": 17139,
+     "last": 1791539553.6944191
     },
     {
      "user": "colinlaptop",
@@ -137,11 +137,11 @@
    "built": "2009-06-16",
    "started": true,
    "functions": 26156,
-   "matched": 9450,
+   "matched": 9452,
    "partial": 4,
    "bytes": 3981050,
-   "matched_bytes": 751010,
-   "source_bytes": 588533,
+   "matched_bytes": 751661,
+   "source_bytes": 589184,
    "mined_bytes": 162477,
    "partial_bytes": 295,
    "data_bytes": 1809822,
@@ -239,13 +239,13 @@
    "built": "2012-06-13",
    "started": true,
    "functions": 39811,
-   "matched": 10458,
-   "partial": 37,
+   "matched": 10465,
+   "partial": 33,
    "bytes": 6234528,
-   "matched_bytes": 551054,
+   "matched_bytes": 551130,
    "source_bytes": 417820,
-   "mined_bytes": 133234,
-   "partial_bytes": 381,
+   "mined_bytes": 133310,
+   "partial_bytes": 334,
    "data_bytes": 3396596,
    "leaderboard": [
     {
@@ -257,10 +257,10 @@
     },
     {
      "user": "Intel",
-     "matched": 59,
-     "points": 8579,
-     "submissions": 115,
-     "last": 1791536834.4024234
+     "matched": 68,
+     "points": 9145,
+     "submissions": 131,
+     "last": 1791540807.4491706
     },
     {
      "user": "colin",
@@ -285,17 +285,17 @@
   },
   {
    "user": "colin",
-   "matched": 1440,
-   "points": 597865,
-   "submissions": 16025,
-   "last": 1791537356.5175676
+   "matched": 1458,
+   "points": 635501,
+   "submissions": 17253,
+   "last": 1791539553.6944191
   },
   {
    "user": "Intel",
-   "matched": 59,
-   "points": 8579,
-   "submissions": 115,
-   "last": 1791536834.4024234
+   "matched": 68,
+   "points": 9145,
+   "submissions": 131,
+   "last": 1791540807.4491706
   },
   {
    "user": "colinlaptop",
