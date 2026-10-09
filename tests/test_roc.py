@@ -792,6 +792,7 @@ def test_mine_digest():
     assert st.user_points("alice") == 60 and st.user_points("nobody") == 0
     assert st.client_progress("C") == (1, 3)
     assert st.client_bytes("C") == (9, 27)
+    assert st.display_progress("C") == (1, 3, 9, 27)
     assert st.match_rate("C") > 0 and st.match_rate("other") == 0
     sent = []
     log = MineLog("http://example.invalid/hook", st, batch_events=10, batch_seconds=60)

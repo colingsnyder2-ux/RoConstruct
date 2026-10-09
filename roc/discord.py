@@ -110,8 +110,7 @@ class MineLog:
     def digest(self, events):
         """One consistent digest shape; never send per-function webhook spam."""
         client = events[-1]["job"].get("client", "?")
-        matched, total = self.store.client_progress(client)
-        matched_bytes, total_bytes = self.store.client_bytes(client)
+        matched, total, matched_bytes, total_bytes = self.store.display_progress(client)
         source, mined, retry, _total = self.store.digest_progress(client)
         left = max(0, total - matched)
         percent = 100.0 * matched_bytes / total_bytes if total_bytes else 0
@@ -136,7 +135,7 @@ class MineLog:
                        contributor, format(self.store.user_points(contributor), ","), batch_points), "inline": True},
                    {"name": "✅ Batch", "value": "%d full · %d improved" % (len(full), len(partial)), "inline": True}]
         return {"title": "⛏️ RoConstruct Mining Digest",
-                "description": "**%s Client**\n%s **%.2f%%**\n🟦 source · 🟩 mined · ❎ partial · ⬜ remaining\n%s / %s matched · %s remaining%s" % (
+                "description": "**%s Client**\n\n%s **%.2f%%**\n\n🟦 source · 🟩 mined · ❎ partial · ⬜ remaining\n%s / %s matched · %s remaining%s" % (
                     client, bar, percent, format(matched, ","), format(total, ","), format(left, ","),
                     "\n" + lines(full) if len(full) == 1 else ""),
                 "color": 0x58A6FF,
