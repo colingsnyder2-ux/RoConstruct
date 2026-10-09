@@ -101,7 +101,7 @@ every address seen in metrics across all models. Frozen manifest:
 Run generation only after preserving this manifest and fingerprint:
 
 ```text
-python benchmarks/run_holdout.py benchmarks/holdout-fresh-100-20261008.json --model deepseek:deepseek-flash --rounds 2 --allow-cloud
+python benchmarks/run_holdout.py benchmarks/holdout-fresh-100-20261008.json --model deepseek:deepseek-flash --rounds 2 --allow-cloud --max-cloud-cost 1.00
 ```
 
 ## Verification

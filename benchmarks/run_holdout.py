@@ -6,7 +6,7 @@ import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from roc import benchmark
+from roc import benchmark, providers
 
 
 def main():
@@ -17,13 +17,21 @@ def main():
     parser.add_argument("--strategy", choices=("direct", "structured"), default="direct")
     parser.add_argument("--session", default="holdout-" + time.strftime("%Y%m%d-%H%M%S"))
     parser.add_argument("--allow-cloud", action="store_true")
+    parser.add_argument("--max-cloud-requests", type=int, default=150)
+    parser.add_argument("--max-cloud-tokens", type=int, default=250000)
+    parser.add_argument("--max-cloud-cost", type=float)
     args = parser.parse_args()
     rows = json.loads(args.manifest.read_text(encoding="utf-8"))
+    if providers.is_cloud(args.model) and args.allow_cloud and args.max_cloud_cost is None:
+        raise SystemExit("cloud holdout requires --max-cloud-cost")
+    budget = providers.CloudBudget(args.max_cloud_requests, args.max_cloud_tokens,
+                                   args.max_cloud_cost)
     print("Holdout: %d targets, model=%s, strategy=%s, session=%s" %
           (len(rows), args.model, args.strategy, args.session))
     benchmark.run_local(rows, [args.model], rounds=args.rounds, session=args.session,
                         strategies=(args.strategy,), provider_options={
-                            "allow_cloud": args.allow_cloud})
+                            "allow_cloud": args.allow_cloud, "budget": budget,
+                            "gate": providers.CloudGate(1)})
 
 
 if __name__ == "__main__":
