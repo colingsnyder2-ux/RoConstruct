@@ -288,6 +288,14 @@ def available(model):
     return key_available(config["key_env"])
 
 
+_REASONING_BLOCK = re.compile(r"<think(?:ing)?>.*?</think(?:ing)?>", re.S | re.I)
+
+
+def strip_reasoning(text):
+    """Drop inline reasoning some models leak into content (e.g. MiniMax  thinking...)."""
+    return _REASONING_BLOCK.sub("", str(text or "")).strip()
+
+
 def sanitize_prompt(text):
     """Remove accidental local-user paths and likely secret values, not source facts."""
     text = str(text or "")
@@ -411,7 +419,7 @@ def _openai_chat(provider, remote, config, prompt, state, options):
     data, headers = _post(_url(config, "/chat/completions"), body,
                           {"Content-Type": "application/json", "Authorization": "Bearer " + key}, options["timeout"])
     choice = (data.get("choices") or [{}])[0]
-    text = (choice.get("message") or {}).get("content") or ""
+    text = strip_reasoning((choice.get("message") or {}).get("content") or "")
     return Generation(text, {"messages": messages + [{"role": "assistant", "content": text}]},
                       input_tokens=_usage(data, "prompt_tokens", "input_tokens"),
                       output_tokens=_usage(data, "completion_tokens", "output_tokens"),
@@ -434,6 +442,7 @@ def _openai_responses(provider, remote, config, prompt, state, options):
     if not text:
         text = "".join(part.get("text", "") for item in data.get("output", [])
                        for part in item.get("content", []) if part.get("type") in ("output_text", "text"))
+    text = strip_reasoning(text)
     return Generation(text, {"messages": messages + [{"role": "assistant", "content": text}]},
                       input_tokens=_usage(data, "input_tokens"), output_tokens=_usage(data, "output_tokens"),
                       cached_tokens=_cached_tokens(data), provider=provider, model=remote,

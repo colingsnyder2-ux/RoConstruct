@@ -190,7 +190,8 @@ def _forwarded(a):
     forwarded = []
     for name in ("client", "model", "workers", "rounds", "max_size", "jobs", "lease_mode",
                  "family_id", "family_example", "unit", "cloud_escalate", "cloud_escalate_after",
-                 "thinking", "reasoning_effort", "output_budget", "cloud_concurrency", "strategy"):
+                 "thinking", "reasoning_effort", "output_budget", "cloud_concurrency", "strategy",
+                 "order", "verbosity"):
         value = getattr(a, name, None)
         if value is not None:
             forwarded += ["--%s" % name.replace("_", "-"), str(value)]
@@ -1278,6 +1279,10 @@ def main(argv=None):
                    help="deterministic candidates only; never call the model")
     p.add_argument("--strategy", choices=["direct", "structured", "reference"],
                    help="candidate-generation prompt strategy")
+    p.add_argument("--order", choices=["auto", "best", "matched", "unmatched", "easiest", "random"],
+                   help="which functions to lease first")
+    p.add_argument("--verbosity", choices=["auto", "verbose", "compact"],
+                   help="console detail; verbose shows each generated source")
     cmd("doctor", cmd_doctor, "diagnose this install and print repair steps",
         (["--json"], {"action": "store_true", "help": "machine-readable output"}),
         (["--no-check", "--no-network"], {"action": "store_true", "dest": "no_check",

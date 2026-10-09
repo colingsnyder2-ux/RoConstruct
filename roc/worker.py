@@ -387,7 +387,11 @@ if given.allow_cloud:
         if not providers.available(escalate):
             _p, _r, config = providers.parse_model(escalate)
             raise SystemExit("Cloud key missing for %s: set %s" % (escalate, config["key_env"]))
-    max_tokens = given.output_budget or 2048
+    try:
+        saved_budget = int(load_settings().get("worker_output_budget") or 0)
+    except (TypeError, ValueError):
+        saved_budget = 0
+    max_tokens = given.output_budget or saved_budget or 2048
     if not 128 <= max_tokens <= 8192:
         raise SystemExit("--output-budget must be 128-8192")
     thinking = given.thinking or "auto"

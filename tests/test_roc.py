@@ -507,6 +507,14 @@ def test_model_pricing_is_exact_and_usable_for_caps():
         assert not providers.has_pricing("deepseek:other")
 
 
+def test_strip_reasoning_drops_think_blocks():
+    from roc import providers
+    open_tag, close_tag = "<" + "thinking>", "</" + "thinking>"
+    reply = open_tag + "we reason" + close_tag + "```cpp\nint f(){}\n```"
+    assert providers.strip_reasoning(reply).startswith("```cpp")
+    assert providers.strip_reasoning("int f(){}") == "int f(){}"
+
+
 def test_missing_local_library_is_a_compile_error():
     """A propagated source may cite a local-only tree (rbxgs) not on this PC:
     that must be a per-function compile failure, not a worker error."""
