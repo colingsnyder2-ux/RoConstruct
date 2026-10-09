@@ -20,6 +20,8 @@ def source_family(source):
         return "xtp"
     if recipe.startswith("mfc-") or recipe.startswith("atl-"):
         return "mfc-atl"
+    if "boost" in recipe:
+        return "boost"
     if "g3d" in recipe:
         return "g3d"
     if "raknet" in recipe:
@@ -30,7 +32,7 @@ def source_family(source):
         return "jpeg"
     if "png" in recipe:
         return "png"
-    if recipe.startswith("rbx"):
+    if recipe.startswith(("rbx", "openrbx")):
         return "roblox"
     return recipe.split("-", 1)[0]
 

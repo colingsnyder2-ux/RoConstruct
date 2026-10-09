@@ -1061,7 +1061,10 @@ def test_server_ordering():
 
 
 def test_fingerprint_partial_scope():
-    from roc.batch_fingerprint import batches
+    from roc.batch_fingerprint import batches, source_family
+    assert source_family("// roc-lib: templates-boost-1_34_1 vector_sp.cpp") == "boost"
+    assert source_family("// roc-lib: openrbx-client App/v8tree/Instance.cpp") == "roblox"
+    assert source_family("// roc-lib: rbx2016-g3d MemoryManager.cpp") == "g3d"
     st = Store(":memory:", lease_seconds=10)
     source = "// roc-lang: cpp\n// roc-cl: 30729\n// roc-flags: /O2\n// roc-lib: xtp-11.2.2 XTPReportControl.cpp"
     st.db.executemany("INSERT INTO funcs(client,addr,size,unit,score,source) VALUES(?,?,?,?,?,?)", [
