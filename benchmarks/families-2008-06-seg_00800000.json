@@ -1,0 +1,158 @@
+[
+ {
+  "client": "2008-06",
+  "addr": "00800040",
+  "size": 10,
+  "unit": "seg_00800000",
+  "bucket": "tiny",
+  "source_present": false,
+  "family_size": 51,
+  "family_shape": [
+   "mov",
+   "jmp"
+  ]
+ },
+ {
+  "client": "2008-06",
+  "addr": "008001c0",
+  "size": 11,
+  "unit": "seg_00800000",
+  "bucket": "tiny",
+  "source_present": false,
+  "family_size": 4,
+  "family_shape": [
+   "mov",
+   "ret"
+  ]
+ },
+ {
+  "client": "2008-06",
+  "addr": "00800a60",
+  "size": 11,
+  "unit": "seg_00800000",
+  "bucket": "tiny",
+  "source_present": false,
+  "family_size": 21,
+  "family_shape": [
+   "mov",
+   "jmp"
+  ]
+ },
+ {
+  "client": "2008-06",
+  "addr": "00800000",
+  "size": 29,
+  "unit": "seg_00800000",
+  "bucket": "tiny",
+  "source_present": false,
+  "family_size": 67,
+  "family_shape": [
+   "mov",
+   "test",
+   "je",
+   "push",
+   "call",
+   "add",
+   "mov",
+   "ret"
+  ]
+ },
+ {
+  "client": "2008-06",
+  "addr": "008016c0",
+  "size": 46,
+  "unit": "seg_00800000",
+  "bucket": "tiny",
+  "source_present": false,
+  "family_size": 3,
+  "family_shape": [
+   "cmp",
+   "mov",
+   "jne",
+   "mov",
+   "test",
+   "je",
+   "push",
+   "call",
+   "mov",
+   "ret"
+  ]
+ },
+ {
+  "client": "2008-06",
+  "addr": "00801750",
+  "size": 51,
+  "unit": "seg_00800000",
+  "bucket": "medium",
+  "source_present": false,
+  "family_size": 2,
+  "family_shape": [
+   "mov",
+   "call",
+   "cmp",
+   "jne",
+   "mov",
+   "test",
+   "je",
+   "push",
+   "call",
+   "mov",
+   "ret"
+  ]
+ },
+ {
+  "client": "2008-06",
+  "addr": "008015b0",
+  "size": 61,
+  "unit": "seg_00800000",
+  "bucket": "medium",
+  "source_present": false,
+  "family_size": 3,
+  "family_shape": [
+   "mov",
+   "test",
+   "je",
+   "push",
+   "call",
+   "add",
+   "mov",
+   "push",
+   "mov",
+   "mov",
+   "mov",
+   "call",
+   "pop",
+   "ret"
+  ]
+ },
+ {
+  "client": "2008-06",
+  "addr": "00801510",
+  "size": 63,
+  "unit": "seg_00800000",
+  "bucket": "medium",
+  "source_present": false,
+  "family_size": 3,
+  "family_shape": [
+   "mov",
+   "test",
+   "je",
+   "add",
+   "push",
+   "call",
+   "test",
+   "jne",
+   "mov",
+   "call",
+   "mov",
+   "test",
+   "je",
+   "mov",
+   "mov",
+   "push",
+   "call",
+   "mov",
+   "ret"
+  ]
+ }
+]

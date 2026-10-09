@@ -31,6 +31,9 @@ Additional paired holdouts: 2009-06 improved 12/15 → 15/15; 2010-06 improved
 10/12 → 12/12. All compiled. Four client versions now support default-on mode,
 though random whole-client validation remains.
 
+Second-section check, 2008-06 `seg_00800000`: direct and exemplar both 7/7
+exact; exemplar used 13.5% fewer tokens/cost.
+
 Propagation replay produced 32 exact conversions on 2008-06 and 37 on 2009-06;
 2007-08 and 2010-06 had no safe literal rewrites. This validates fast-path
 value, not universal family coverage.

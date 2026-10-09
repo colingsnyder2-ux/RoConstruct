@@ -1,0 +1,58 @@
+[
+ {
+  "client": "2008-06",
+  "addr": "00800020",
+  "size": 29,
+  "unit": "seg_00800000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2008-06",
+  "addr": "00800150",
+  "size": 29,
+  "unit": "seg_00800000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2008-06",
+  "addr": "00800170",
+  "size": 29,
+  "unit": "seg_00800000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2008-06",
+  "addr": "00801430",
+  "size": 11,
+  "unit": "seg_00800000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2008-06",
+  "addr": "00801440",
+  "size": 11,
+  "unit": "seg_00800000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2008-06",
+  "addr": "0080195e",
+  "size": 11,
+  "unit": "seg_00800000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2008-06",
+  "addr": "00801790",
+  "size": 51,
+  "unit": "seg_00800000",
+  "bucket": "medium",
+  "source_present": false
+ }
+]

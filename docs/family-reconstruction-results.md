@@ -71,6 +71,11 @@ DeepSeek paired sibling checks on additional clients:
 All jobs compiled in both arms. Evidence now spans four client versions, but
 samples remain repeated wrapper/thunk families, not random whole-client draws.
 
+Additional section check, 2008-06 `seg_00800000`: 7 unseen siblings, direct
+and family exemplar both 7/7 exact and 7/7 compilable; exemplar used 13.5%
+fewer tokens/cost. This confirms no regression outside `seg_007f0000`, though
+the sample was already easy.
+
 ## Deterministic propagation replay
 
 Compiler-gated address-literal propagation was replayed across all verified
