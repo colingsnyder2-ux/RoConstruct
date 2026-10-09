@@ -116,3 +116,8 @@ replacement. Better stored candidates remain protected. No submission made.
 2010 scale check (`xtp-13.2.1`, `CXTPReportControl`) failed gate: six stored
 partials scored `61, 97, 64, 98, 99, 99`; no gain. Added recipe for future
 per-client search, but reject shared-MFC config as universal 2010 fix.
+
+August 2007 VC8 shard (`CXTPReportControl`, 10 partials) scored
+`91,94,99,93,95,94,94,94,97,53` under shared MFC. Only two improved; one
+reached 99; several stayed flat; one regressed badly. Nonuniform August layout
+remains unresolved. Added VC8 shared recipe, but reject broad rollout.

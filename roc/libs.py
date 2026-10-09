@@ -477,6 +477,11 @@ RECIPES["xtp-11.2.2-shared-mfc"] = dict(
 RECIPES["xtp-11.2.2-vc8"] = dict(src="xtp-11.2.2", langs=["cpp"], builds=[50727],
                                  include=_xtp_inc("xtp-11.2.2", "mfc-8.0"), grid=_MFC_GRID,
                                  files="Source/**/*.cpp", write=_XTP_STDAFX)
+RECIPES["xtp-11.2.2-vc8-shared-mfc"] = dict(
+    src="xtp-11.2.2", langs=["cpp"], builds=[50727],
+    include=_xtp_inc("xtp-11.2.2", "mfc-8.0"),
+    defines="_AFXDLL _XTP_STATICLINK _DLL", grid=["/O2 /GS- /MD", "/O1 /GS- /MD"],
+    files="Source/**/*.cpp", write=_XTP_STDAFX)
 
 # PJ Naughter's CScintillaCtrl/CScintillaView v1.20, synchronized to Scintilla 1.76
 # (the version shipped beside the 2009 client).  Keep this local: its license permits
