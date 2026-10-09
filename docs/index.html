@@ -238,7 +238,11 @@ const builtOn = c => c.built ? `Built ${longDate(c.built)} · ` : "";
 // Stats for a client at the selected history snapshot (latest = progress.json).
 function statsFor(c) {
   const snap = history[hIdx];
-  return hIdx === history.length - 1 || !snap ? c : {...c, ...(snap.clients[c.name] || {})};
+  if (hIdx === history.length - 1 || !snap || !snap.clients[c.name]) return c;
+  const old = snap.clients[c.name];
+  return {...c, ...old, source_bytes: old.source_bytes || 0,
+          mined_bytes: old.mined_bytes ?? (old.matched_bytes || 0),
+          partial_bytes: old.partial_bytes || 0};
 }
 
 function bar(m, p, total, cls = "") {

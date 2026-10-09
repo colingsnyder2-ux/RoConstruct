@@ -507,6 +507,23 @@ def start_tunnel(port, log=print):
 
 def publish_once(store, public_url, log=print):
     """Rebuild docs/ from the live database and push it, if anything changed."""
+    lock = ROOT / "work" / "publish.lock"
+    try:
+        handle = os.open(lock, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+    except FileExistsError:
+        return log("Publish already running.")
+    try:
+        return _publish_once(store, public_url, log)
+    finally:
+        os.close(handle)
+        try:
+            lock.unlink()
+        except FileNotFoundError:
+            pass
+
+
+def _publish_once(store, public_url, log=print):
+    """Publish implementation, protected by publish_once's cross-process lock."""
     from roc import progress, setup
     setup.refresh_path()
     git_exe = setup.find_exe("git")
