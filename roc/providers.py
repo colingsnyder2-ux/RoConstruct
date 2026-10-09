@@ -34,6 +34,7 @@ BUILTINS = {
 }
 KINDS = {"openai-chat", "openai-responses", "anthropic-messages", "gemini"}
 SYSTEM = "Reconstruct compact valid C++ only. Never emit inline assembly. Follow the user task exactly."
+USER_AGENT = "RoConstruct/1.0"
 
 
 class ProviderError(RuntimeError):
@@ -304,6 +305,10 @@ def _url(config, suffix):
 
 
 def _post(url, body, headers, timeout):
+    headers = dict(headers)
+    # Some OpenAI-compatible gateways sit behind a WAF that rejects the default
+    # Python-urllib User-Agent (Cloudflare "error code: 1010"). Send our own.
+    headers.setdefault("User-Agent", USER_AGENT)
     req = urllib.request.Request(url, data=json.dumps(body).encode("utf-8"), headers=headers, method="POST")
     try:
         with urllib.request.urlopen(req, timeout=timeout) as response:

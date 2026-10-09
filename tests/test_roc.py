@@ -507,6 +507,30 @@ def test_model_pricing_is_exact_and_usable_for_caps():
         assert not providers.has_pricing("deepseek:other")
 
 
+def test_provider_post_sends_a_user_agent():
+    """Some OpenAI-compatible gateways reject the default Python-urllib UA (Cloudflare 1010)."""
+    from roc import providers
+    captured = {}
+
+    class Response:
+        headers = {}
+        def read(self):
+            return b"{}"
+        def __enter__(self):
+            return self
+        def __exit__(self, *exc):
+            return False
+
+    def fake_urlopen(req, timeout=None):
+        captured["ua"] = req.get_header("User-agent")
+        return Response()
+
+    with patch("roc.providers.urllib.request.urlopen", side_effect=fake_urlopen):
+        providers._post("https://example.com/v1/chat/completions", {"x": 1},
+                        {"Content-Type": "application/json"}, 5)
+    assert captured["ua"] == providers.USER_AGENT
+
+
 def test_native_cloud_adapters():
     from roc import providers
     names = {"OPENAI_API_KEY": "test-openai", "ANTHROPIC_API_KEY": "test-anthropic",
