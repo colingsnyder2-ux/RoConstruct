@@ -1890,7 +1890,7 @@ def test_hidden_exact_sources_stay_byte_exact():
                  "00530880", "00549000", "00580f90", "00580fb0", "0059c7d0",
                  "005f9ff0", "005fc710", "00608490", "006274b0", "0063dcb0",
                  "0064ec50", "0065eb30", "00662440", "006692b0", "00690a90",
-                 "004b8aa0", "004d06b0", "006a79f0", "006c79f0", "00775fd0"):
+                 "004b8aa0", "004d06b0", "006a79f0", "006c79f0", "00775fd0", "004aa3f0"):
         source = Path("src/2007-08/%s.cpp" % addr).read_text()
         assert match.check_text("2007-08", addr, source)[0] == 100
 
