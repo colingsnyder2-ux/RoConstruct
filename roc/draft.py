@@ -654,6 +654,11 @@ def prompt_for(client, addr, row, asm, hint, attempt, flags=None, examples=(), s
     if facts:
         p += ["", "Extracted binary facts (use as clues, verify against assembly):",
               json.dumps(facts, separators=(",", ":"))]
+        if facts.get("exact_callee_sources"):
+            p += ["", "Exact matched callee source clues. These are ABI/type evidence; preserve their "
+                  "parameter and return conventions when calling them. Do not copy unrelated bodies:"]
+            for clue in facts["exact_callee_sources"][:4]:
+                p += ["callee %s:" % clue["addr"], "```cpp", clue["source"], "```"]
     if hint:
         p += ["", "Rev.ng decompiler output (generic types, hint only):", hint]
     from roc import refsource

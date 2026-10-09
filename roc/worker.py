@@ -57,6 +57,31 @@ def register_family_targets(server, token, client, family_id):
     for i in range(0, len(rows), 5000):
         total += api.call("/v1/families", {"rows": rows[i:i + 5000]}).get("registered", 0)
     return total
+
+
+def callee_source_hints(api, client, targets, limit=4):
+    """Return compact exact-source clues for direct callees.
+
+    Callee signatures often reveal the target's ABI and return type.  Keep this
+    deliberately small: only exact server sources, only direct targets, and a
+    hard byte cap per clue.
+    """
+    out = []
+    for target in (targets or [])[:limit]:
+        if not re.fullmatch(r"[0-9a-fA-F]{8}", str(target)):
+            continue
+        try:
+            item = api.call("/v1/source?client=%s&addr=%s" % (quote(client), quote(str(target))))
+        except (ApiFailure, OSError, ValueError):
+            continue
+        source = (item or {}).get("source") or ""
+        if int((item or {}).get("score", 0) or 0) != 100 or not source:
+            continue
+        lines = [line.strip() for line in source.splitlines() if line.strip()]
+        clue = "\n".join(lines[:12])[:900]
+        if clue:
+            out.append({"addr": str(target).lower(), "source": clue})
+    return out
 SETTINGS = ROOT / "roconstruct-settings.json"
 MAX_WORKERS = 256
 USER_RE = re.compile(r"^[A-Za-z0-9_.-]{2,32}$")
@@ -838,6 +863,9 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                                            "global_reads", "global_writes",
                                            "virtual_slots", "stack_args", "this_reads", "this_writes",
                                            "calling_convention", "branches", "constants", "siblings") if row.get(k)})
+        callee_hints = callee_source_hints(api, client, row.get("call_targets", []))
+        if callee_hints:
+            facts["exact_callee_sources"] = callee_hints
         from roc import auto
         stage("checking deterministic candidates")
         phase_started = time.monotonic()

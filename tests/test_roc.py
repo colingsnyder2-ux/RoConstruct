@@ -23,6 +23,25 @@ from roc import mutate
 from roc import repair as _repair
 from roc.draft import select_topk
 from roc import metrics as _metrics
+from roc.worker import callee_source_hints
+
+
+class _CalleeApi:
+    def __init__(self):
+        self.paths = []
+
+    def call(self, path):
+        self.paths.append(path)
+        if "00401010" in path:
+            return {"score": 100, "source": "extern \"C\" int __cdecl helper(int x);\nint helper(int x) { return x; }\n"}
+        return {"score": 99, "source": "int partial();"}
+
+
+def test_exact_callee_source_hints_are_bounded():
+    api = _CalleeApi()
+    hints = callee_source_hints(api, "2007-08", ["00401010", "00401011", "bad", "00401012", "00401013", "00401014"])
+    assert len(hints) == 1 and hints[0]["addr"] == "00401010"
+    assert len(api.paths) == 3
 
 
 def test_repair_member_decl():
