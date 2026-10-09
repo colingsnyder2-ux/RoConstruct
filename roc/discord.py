@@ -14,15 +14,15 @@ ETA_MIN_RATE = 1.0 / 3600
 
 
 def emoji_bar(source, mined, retry, total):
-    """Fifteen cells: blue source, green mined, red retry, white untouched."""
+    """Twenty-three cells: blue source, green mined, red retry, white untouched."""
     values = (source, mined, retry)
-    cells = [value * 15 // total if total else 0 for value in values]
-    spare = 15 - sum(cells)
-    order = sorted(range(3), key=lambda i: values[i] * 15 % total if total else 0, reverse=True)
+    cells = [value * 23 // total if total else 0 for value in values]
+    spare = 23 - sum(cells)
+    order = sorted(range(3), key=lambda i: values[i] * 23 % total if total else 0, reverse=True)
     for i in order[:spare]:
         cells[i] += 1
     return (":blue_square:" * cells[0] + ":green_square:" * cells[1] +
-            ":negative_squared_cross_mark:" * cells[2] + ":white_large_square:" * (15 - sum(cells)))
+            ":negative_squared_cross_mark:" * cells[2] + ":white_large_square:" * (23 - sum(cells)))
 
 
 def fmt_duration(seconds):
@@ -129,19 +129,18 @@ class MineLog:
                 "🟢" if e["score"] == 100 else "🟡", e["score"], e["job"].get("addr", "?"),
                 e["job"].get("unit", "?"), e["job"].get("size", "?")) for e in rows[:10]) or "None"
 
+        fields = [] if len(full) == 1 else [{"name": "🟢 Fully Matched", "value": lines(full), "inline": False}]
+        fields += [{"name": "🟡 Partially Matched", "value": lines(partial), "inline": False},
+                   {"name": "⚡ Mining Rate", "value": "%d functions/hr · ETA %s" % (round(rate_hr), eta), "inline": True},
+                   {"name": "🏆 Workers", "value": "%s · %s pts (%+d)" % (
+                       contributor, format(self.store.user_points(contributor), ","), batch_points), "inline": True},
+                   {"name": "✅ Batch", "value": "%d full · %d improved" % (len(full), len(partial)), "inline": True}]
         return {"title": "⛏️ RoConstruct Mining Digest",
-                "description": "**%s Client**\n\n%s **%.2f%%**\n%s / %s matched · %s remaining" % (
-                    client, bar, percent, format(matched, ","), format(total, ","), format(left, ",")),
+                "description": "**%s Client**\n\n%s **%.2f%% code bytes**\n%s / %s matched · %s remaining\n🟦 source · 🟩 mined · ❎ partial · ⬜ remaining%s" % (
+                    client, bar, percent, format(matched, ","), format(total, ","), format(left, ","),
+                    "\n" + lines(full) if len(full) == 1 else ""),
                 "color": 0x58A6FF,
-                "fields": [
-                    {"name": "🟢 Fully Matched", "value": lines(full), "inline": False},
-                    {"name": "🟡 Partially Matched", "value": lines(partial), "inline": False},
-                    {"name": "⚡ Mining Rate", "value": "%d functions/hr" % round(rate_hr), "inline": True},
-                    {"name": "🏆 Workers", "value": "%s - %s pts (%+d)" % (
-                        contributor, format(self.store.user_points(contributor), ","), batch_points), "inline": True},
-                    {"name": "✅ Batch", "value": "%d matched · %d improved" % (len(full), len(partial)), "inline": True},
-                    {"name": "⏱ ETA", "value": eta, "inline": True},
-                    ],
+                "fields": fields,
                 "footer": {"text": "RoConstruct Mining"},
                 "timestamp": datetime.now(timezone.utc).isoformat()}
 
