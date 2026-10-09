@@ -2,6 +2,7 @@
 import argparse
 import hashlib
 import json
+import random
 import sys
 import time
 from pathlib import Path
@@ -42,6 +43,7 @@ def main():
     parser.add_argument("--max-cloud-cost", type=float, default=0.50)
     parser.add_argument("--session-prefix", default="family-replay-" + time.strftime("%Y%m%d-%H%M%S"))
     parser.add_argument("--model", default="deepseek:deepseek-flash")
+    parser.add_argument("--random-seed", type=int, help="shuffle families/siblings before selection")
     args = parser.parse_args()
     used = set()
     try:
@@ -70,9 +72,15 @@ def main():
         if siblings:
             candidates.append((len(members), key, representative, source, siblings))
     candidates.sort(key=lambda item: (-item[0], item[2]["addr"]))
+    if args.random_seed is not None:
+        rng = random.Random(args.random_seed)
+        rng.shuffle(candidates)
     selected, examples = [], {}
     for _size, key, representative, source, siblings in candidates[:args.families]:
-        for row in siblings[:args.siblings]:
+        sibling_rows = list(siblings)
+        if args.random_seed is not None:
+            random.Random(args.random_seed ^ int(representative["addr"], 16)).shuffle(sibling_rows)
+        for row in sibling_rows[:args.siblings]:
             selected.append(row)
             examples[(row["client"], row["addr"])] = (source,)
     args.output.write_text(json.dumps(selected, indent=1) + "\n", encoding="utf8")

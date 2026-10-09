@@ -76,6 +76,14 @@ and family exemplar both 7/7 exact and 7/7 compilable; exemplar used 13.5%
 fewer tokens/cost. This confirms no regression outside `seg_007f0000`, though
 the sample was already easy.
 
+Randomized family-sibling checks (fixed seeds, unseen targets) reduced selection
+bias:
+
+| client/section | direct | family exemplar | token/cost change |
+| --- | ---: | ---: | ---: |
+| 2008-06 `seg_007f0000` (19) | 18 exact | 19 exact | −21% |
+| 2009-06 `seg_00890000` (15) | 8 exact | 15 exact | −40% |
+
 ## Deterministic propagation replay
 
 Compiler-gated address-literal propagation was replayed across all verified

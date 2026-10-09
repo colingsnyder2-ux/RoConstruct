@@ -34,13 +34,16 @@ though random whole-client validation remains.
 Second-section check, 2008-06 `seg_00800000`: direct and exemplar both 7/7
 exact; exemplar used 13.5% fewer tokens/cost.
 
+Fixed-seed randomized sibling checks improved 2008 `18/19 → 19/19` and 2009
+`8/15 → 15/15`, while reducing tokens/cost 21% and 40%.
+
 Propagation replay produced 32 exact conversions on 2008-06 and 37 on 2009-06;
 2007-08 and 2010-06 had no safe literal rewrites. This validates fast-path
 value, not universal family coverage.
 
 ## Next gates
 
-1. Run paired family-vs-direct holdouts on 2008 and a fresh client.
+1. Run random whole-client holdout, not only repeated-family targets.
 2. Promote default only if exact matches improve and cost/exact does not worsen.
 3. Measure propagation conversion rate on fresh worker jobs; current replay is
    positive, but continue monitoring compile cost.

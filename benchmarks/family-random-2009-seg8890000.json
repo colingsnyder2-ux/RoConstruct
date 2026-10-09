@@ -1,0 +1,122 @@
+[
+ {
+  "client": "2009-06",
+  "addr": "00896ab0",
+  "size": 32,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "00896a00",
+  "size": 32,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "00893180",
+  "size": 12,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "00893880",
+  "size": 12,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "0089b3b0",
+  "size": 25,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "0089a520",
+  "size": 25,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "00899ed0",
+  "size": 1,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "00898070",
+  "size": 1,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "008963d0",
+  "size": 5,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "008926f0",
+  "size": 5,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "00892a30",
+  "size": 11,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "00892a10",
+  "size": 11,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "00897220",
+  "size": 10,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "008957c0",
+  "size": 10,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "0089d450",
+  "size": 51,
+  "unit": "seg_00890000",
+  "bucket": "medium",
+  "source_present": false
+ }
+]
