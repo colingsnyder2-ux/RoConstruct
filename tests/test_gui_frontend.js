@@ -26,9 +26,22 @@ vm.runInContext(source.slice(source.indexOf("function field("),source.indexOf("l
 formContext.meta={providers:[],clients:[],preferences:{presets:{}}};formContext.localModels=[];
 formContext.esc=String;formContext.liveKeys=new Set();formContext.button=()=>"";
 const formHTML=formContext.workerForm({...automaticForm,targets:[]});
-for(const key of ["workers","rounds","max_tokens","max_size","order","strategy"])
+assert.ok(formHTML.indexOf('name="workers"')<formHTML.indexOf("Advanced controls"));
+assert.equal((formHTML.match(/name="workers"/g)||[]).length,1);
+for(const key of ["rounds","max_tokens","max_size","order","strategy"])
   assert.ok(formHTML.indexOf(`name="${key}"`)>formHTML.indexOf("Advanced controls"));
 assert.match(formHTML,/data-preset="automatic" class="active"/);
+for(const count of [1,8,100,"auto"]) {
+  formContext.target={dataset:{preset:"automatic"}};
+  formContext.document={querySelectorAll:()=>[]};
+  formContext.readWorker=()=>({...automaticForm,workers:count});
+  formContext.render=config=>formContext.rendered=config;
+  vm.runInContext(source.slice(source.indexOf("  if(target.dataset.preset)"),source.indexOf("  if(target.dataset.action)")),formContext);
+  const config=formContext.rendered;
+  assert.equal(config.workers,count);
+  assert.equal(config.rounds,"auto");
+  assert.match(formContext.workerForm({...automaticForm,...config,targets:[]}),new RegExp(`name="workers" value="${count}"`));
+}
 const feedNodes={};
 for(const id of ["worker-chat","worker-tabs","worker-status","chat-compact","chat-follow","jump-live","worker-chat-rows"])
   feedNodes["#"+id]={dataset:{},innerHTML:"",children:[],classList:{toggle() {}}};

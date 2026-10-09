@@ -10,7 +10,7 @@ const active = job => ["running", "paused", "stopping"].includes(job.status);
 const liveKeys = new Set(["workers","model","rounds","max_size","max_tokens","strategy","order","thinking","reasoning_effort","use_revng","min_score","max_score","diverse_candidates","guided_mutations","near_repair","max_cloud_requests","max_cloud_tokens","max_cloud_cost"]);
 const nullable = new Set(["min_score","max_score","max_cloud_requests","max_cloud_tokens","max_cloud_cost","reasoning_effort","unit_name","family_id"]);
 const numeric = new Set(["workers","rounds","max_size","max_tokens","min_score","max_score","diverse_candidates","cloud_concurrency","max_cloud_requests","max_cloud_tokens","max_cloud_cost"]);
-const automatic = {workers:"auto",rounds:"auto",max_size:512,max_tokens:"auto",order:"auto",strategy:"direct",thinking:"auto",reasoning_effort:"auto",use_revng:false,cloud_concurrency:"auto"};
+const automatic = {rounds:"auto",max_size:512,max_tokens:"auto",order:"auto",strategy:"direct",thinking:"auto",reasoning_effort:"auto",use_revng:false,cloud_concurrency:"auto"};
 
 async function api(path, data) {
   const response = await fetch("/api/" + path, {method:data === undefined ? "GET" : "POST", headers:{"X-ROC-Token":token || "", "Content-Type":"application/json"}, ...(data === undefined ? {} : {body:JSON.stringify(data)})});
@@ -58,8 +58,9 @@ function workerForm(config) {
     field("Client", "client", config.client, {choices:[["","All available clients"],...meta.clients.map(client=>[client.name,client.name])]}) +
     field("Username", "user", config.user) + field("Server", "server", config.server, {full:true,placeholder:"host:8765 or https://server"}) +
     field("Model", "model", config.model, {full:true,list:"models",placeholder:"provider:model or installed Ollama model"}) + `<datalist id="models">${models.map(model=>`<option value="${esc(model)}"></option>`).join("")}</datalist>` +
-    `</div><p class="help-note">Automatic chooses worker count per model, rounds and output per function, prioritizes best evidence, and limits targets to 512 bytes. Advanced values override its defaults.</p><details class="form-section"><summary>Advanced controls</summary><div class="field-grid">` +
-    field("Worker loops", "workers", config.workers, {placeholder:"auto or 1–256"}) + field("Rounds per function", "rounds", config.rounds, {placeholder:"auto or 1–100"}) +
+    field("Worker loops", "workers", config.workers, {placeholder:"auto or 1–256"}) +
+    `</div><p class="help-note">Set worker count above, or use auto to choose per model. Automatic preserves your worker count, chooses rounds and output per function, prioritizes best evidence, and limits targets to 512 bytes. Advanced values override its defaults.</p><details class="form-section"><summary>Advanced controls</summary><div class="field-grid">` +
+    field("Rounds per function", "rounds", config.rounds, {placeholder:"auto or 1–100"}) +
     field("Output tokens", "max_tokens", config.max_tokens, {placeholder:"auto or 128–8192"}) + field("Maximum function bytes", "max_size", config.max_size, {type:"number",min:1}) +
     field("Function order", "order", config.order, {choices:["random","auto","best","matched","unmatched","easiest"]}) + field("Strategy", "strategy", config.strategy, {choices:["auto","direct","structured","reference"]}) +
     field("Thinking", "thinking", config.thinking, {choices:["auto","enabled","disabled"]}) + field("Reasoning effort", "reasoning_effort", config.reasoning_effort, {choices:[["","Provider default"],"auto","low","medium","high","max"]}) +
