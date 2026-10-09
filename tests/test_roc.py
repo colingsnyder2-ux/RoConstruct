@@ -1055,6 +1055,9 @@ def test_server_ordering():
     st.db.execute("UPDATE funcs SET unit='seg_00400000' WHERE addr='00401000'")
     job = st.lease("alice", "random", ["C"], "ai", 256, order="random")
     assert not job["unit"].startswith("seg_")
+    st.release(job["lease"], 0)
+    job = st.lease("alice", "default", ["C"], "ai", 256)
+    assert not job["unit"].startswith("seg_")
 
 
 def test_shape_normalisation():

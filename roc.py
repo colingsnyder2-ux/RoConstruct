@@ -751,7 +751,7 @@ def cmd_worker(a):
                 raise SystemExit("Cloud key is missing: set %s" % config["key_env"])
         elif not draft.pick_model(a.cloud_fallback):
             raise SystemExit("Cloud fallback model is not installed: %s" % a.cloud_fallback)
-    order = a.order or "auto"
+    order = a.order or "random"
     if order not in ("auto", "best", "matched", "unmatched", "easiest", "random"):
         sys.exit("--order must be one of: auto, best, matched, unmatched, easiest, random")
     family_id = a.family_id or (worker.family_from_example(a.family_example)
@@ -1390,8 +1390,8 @@ def main(argv=None):
         (["--public-server"], {"help": "address shown on the site (if not using --tunnel)"}),
         (["--startup"], {"action": "store_true", "help": "start host.cmd automatically when you log in"}))
     cmd("worker", cmd_worker, "help automatically: AI drafts, compile, submit",
-            (["--order"], {"choices": ["auto", "best", "matched", "unmatched", "easiest", "random"], "default": "auto",
-                           "help": "which functions first: most-matched (score high to low), random, unmatched (0%% first), easiest, best evidence, or auto"}),
+            (["--order"], {"choices": ["auto", "best", "matched", "unmatched", "easiest", "random"], "default": "random",
+                           "help": "which functions first: random named units (default), most-matched, unmatched, easiest, best evidence, or auto"}),
         (["--server"], {}), (["--user"], {}), (["--token"], {}), (["--model"], {}),
         (["--client"], {"help": "restrict work to one registered client (for example 2008-06)"}),
         (["--addr"], {"action": "append", "help": "pin AI work to one or more client function addresses"}),

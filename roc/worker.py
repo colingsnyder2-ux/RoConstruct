@@ -329,7 +329,7 @@ def main_args(payload, argv=()):
     rounds = given.rounds if given.rounds else 4
     max_size = given.max_size if given.max_size else 256
     workers = given.workers or ("auto" if is_cloud else 1)
-    order = given.order or load_settings().get("worker_order", "auto")
+    order = given.order or load_settings().get("worker_order", "random")
     verbosity = given.verbosity or load_settings().get("worker_verbosity", "auto")
     family_id = given.family_id or (family_from_example(given.family_example) if given.family_example else None)
     if given.family_example and not family_id:
@@ -495,7 +495,7 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
         diverse_candidates=1, cloud_min_size=0, cloud_fallback=None, seed=None,
         cloud_escalate=None, cloud_escalate_after=2, thinking=None, reasoning_effort=None,
         max_tokens=2048, examples_cache=None, source_cache=None, guided_mutations=False,
-        order="auto", family_exemplars=True, lease_mode="function", family_state=None,
+        order="random", family_exemplars=True, lease_mode="function", family_state=None,
         family_lock=None, family_id=None, unit_name=None, near_repair=False):
     """forever: survive server/network outages (retry every minute) for overnight runs.
     only: restrict to these clients (one-click links).
@@ -657,7 +657,7 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
                    cloud_budget=None, cloud_gate=None, diverse_candidates=1,
                    cloud_min_size=0, cloud_fallback=None, seed=None,
                    cloud_escalate=None, cloud_escalate_after=2, thinking=None, reasoning_effort=None,
-                   max_tokens=2048, guided_mutations=False, order="auto", verbosity="auto",
+                   max_tokens=2048, guided_mutations=False, order="random", verbosity="auto",
                    family_exemplars=True, lease_mode="function", family_id=None, unit_name=None,
                    near_repair=False):
     """Run a bounded number of independent lease loops.

@@ -66,9 +66,8 @@ def check_many_text(client, addrs, source):
         results.append((addr, score, spans))
     return results
 
-# Which function a worker gets next. "best" is the long-standing ranking and
-# "auto" is the default: finish the near-complete ones, then take the untouched
-# ones, then spread out. The rest let a worker pin one strategy.
+# Which function a worker gets next. Random is default so parallel workers spread
+# across real named units instead of draining one ranked segment at a time.
 ORDER_SQL = {
     # most confident evidence first, near-complete next, then cheap
     "best": "source_confidence DESC, (score >= 90) DESC, (unit NOT LIKE 'seg_%') DESC, "
@@ -79,8 +78,8 @@ ORDER_SQL = {
     "unmatched": "(score = 0) DESC, attempts, difficulty, size",
     # cheapest first, ignoring how confident the evidence is
     "easiest": "difficulty, size, source_confidence DESC",
-    # spread named functions first; anonymous segments are only a fallback
-    "random": "(unit LIKE 'seg_%'), RANDOM()",
+    # spread named functions first; anonymous/blank segments are fallback only
+    "random": "CASE WHEN unit IS NULL OR unit = '' OR unit LIKE 'seg_%' THEN 1 ELSE 0 END, RANDOM()",
 }
 ORDERS = tuple(sorted(ORDER_SQL)) + ("auto",)
 
@@ -88,7 +87,7 @@ ORDERS = tuple(sorted(ORDER_SQL)) + ("auto",)
 def resolve_order(order, db):
     """Turn "auto" into a concrete order from what is actually left to do."""
     if order != "auto":
-        return order if order in ORDER_SQL else "best"
+        return order if order in ORDER_SQL else "random"
     # near-complete functions are the cheapest 100% wins: always take them
     near = db.execute("SELECT COUNT(*) FROM funcs WHERE score >= 90 AND score < 100").fetchone()[0]
     if near:
@@ -167,7 +166,7 @@ class Store:
             self.db.commit()
             return added
 
-    def lease(self, user, worker, have, mode, max_size, model=None, targets=None, order="best", family=None, unit=None):
+    def lease(self, user, worker, have, mode, max_size, model=None, targets=None, order="random", family=None, unit=None):
         now = time.time()
         with self.lock:
             self.db.execute("DELETE FROM leases WHERE expires < ?", (now,))
@@ -509,7 +508,7 @@ def make_handler(store, token, can_verify, mine_log=None):
                                   str(body.get("mode", ""))[:16], int(body.get("max_size", 256)),
                                   str(body.get("model", ""))[:120] or None,
                                   body.get("targets"),
-                                  order=str(body.get("order", "best"))[:16],
+                                  order=str(body.get("order", "random"))[:16],
                                   family=(str(body["family"])[:64] if body.get("family") else None),
                                   unit=(str(body["unit"])[:160] if body.get("unit") else None))
                 return self.send(200, {"job": job})
