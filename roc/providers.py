@@ -124,6 +124,10 @@ class CloudGate:
         with self._lock:
             self._failed[provider] = 0 if ok else self._failed.get(provider, 0) + 1
 
+    def reset(self, provider):
+        with self._lock:
+            self._failed.pop(provider, None)
+
 
 def _read_config():
     try:

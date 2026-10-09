@@ -182,7 +182,7 @@ def _forwarded(a):
     """Flags on `a` that the worker entry point understands, as a CLI list."""
     forwarded = []
     for name in ("client", "model", "workers", "rounds", "max_size", "jobs", "lease_mode",
-                 "family_id", "family_example"):
+                 "family_id", "family_example", "unit"):
         value = getattr(a, name, None)
         if value is not None:
             forwarded += ["--%s" % name.replace("_", "-"), str(value)]
@@ -475,6 +475,59 @@ def cmd_flags(a):
         flags.tune(a.name)
 
 
+def cmd_repair(a):
+    """Run bounded compiler-backed source mutations over partial matches."""
+    from datetime import date
+    import json
+    from roc import match, mutate
+    root = Path(__file__).resolve().parent
+    paths = sorted((root / "src" / a.name).glob("*.cpp"))
+    if a.addresses:
+        wanted = {x.lower().replace("0x", "").zfill(8) for x in a.addresses}
+        paths = [p for p in paths if p.stem.lower() in wanted]
+    if a.limit:
+        paths = paths[:a.limit]
+    log_path = root / "docs" / "matching-findings.md"
+    scores_path = root / "work" / a.name / "scores.json"
+    saved_scores = json.loads(scores_path.read_text()) if scores_path.exists() else {}
+    scores_changed = False
+    for path in paths:
+        addr = path.stem
+        source = path.read_text(errors="replace")
+        try:
+            before = saved_scores.get(addr)
+            if before is None:
+                before = match.check_text(a.name, addr, source)[0]
+            if before >= 100 or before < a.min_score:
+                continue
+            # Refresh score only for saved partials; avoids recompiling exact corpus.
+            before = match.check_text(a.name, addr, source)[0]
+            if saved_scores.get(addr) != before:
+                saved_scores[addr] = before
+                scores_changed = True
+            if before < a.min_score:
+                continue
+            result = mutate.improve(a.name, addr, source, guided=True,
+                                    permute=a.permute)
+        except (match.CompileError, SystemExit, KeyError):
+            continue
+        after, updated, tried = result
+        print("%-8s %d -> %d tried=%d" % (addr, before, after, tried), flush=True)
+        trials = ", ".join("%s=%s" % (m.get("category"), m.get("score"))
+                            for m in result.mutations)
+        with log_path.open("a", encoding="utf-8") as log:
+            log.write("- %s: `roc repair %s %s`: %d -> %d, tried %d variants [%s]%s.\n" %
+                      (date.today(), a.name, addr, before, after, tried, trials,
+                       "; applied" if after > before and not a.dry_run else ""))
+        if after > before and not a.dry_run:
+            path.write_text(updated)
+            match.save_score(a.name, addr, after)
+            saved_scores[addr] = after
+            scores_changed = True
+    if scores_changed and not a.dry_run:
+        scores_path.write_text(json.dumps(saved_scores, indent=0, sort_keys=True))
+
+
 def cmd_config(a):
     from roc import draft, providers
     from roc.worker import clear_setting, save_settings, USER_RE
@@ -600,6 +653,8 @@ def cmd_worker(a):
               (user, draft.pick_model(chosen) or "none", ", ".join(have) or "none",
                a.rounds, a.max_size, "off" if a.no_revng else "auto", a.workers, a.output_budget, order))
         return
+    if a.lease_mode == "unit" and not a.unit:
+        raise SystemExit("Unit lease needs --unit NAME")
     worker.save_settings(user=user, server=srv, model=a.model, order=order)
     worker.run_concurrent(srv, user, a.token or s.get("token"), chosen, a.rounds, a.max_size,
                           not a.no_revng, a.jobs, a.workers, source_only=a.source_only,
@@ -612,7 +667,7 @@ def cmd_worker(a):
                           max_tokens=a.output_budget, guided_mutations=a.guided_mutations,
                           order=order, family_exemplars=a.family_exemplars,
                           lease_mode=a.lease_mode,
-                          family_id=family_id)
+                          family_id=family_id, unit_name=a.unit)
 
 
 def cmd_provider(a):
@@ -1040,8 +1095,9 @@ def main(argv=None):
     p.add_argument("--rounds", type=int, help="AI tries per function")
     p.add_argument("--max-size", dest="max_size", type=int, help="skip functions bigger than this")
     p.add_argument("--jobs", type=int, help="stop after this many functions")
-    p.add_argument("--lease-mode", choices=["function", "family"], default=None,
-                   help="lease one function, or stay on one strict family")
+    p.add_argument("--lease-mode", choices=["function", "family", "unit"], default=None,
+                   help="lease one function, strict family, or whole unit")
+    p.add_argument("--unit", help="unit/class name for unit lease mode")
     p.add_argument("--family-id", help="strict 24-hex family fingerprint")
     p.add_argument("--family-example", help="seed family from CLIENT:ADDRESS")
     p.add_argument("--no-revng", dest="no_revng", action="store_true", help="never use Rev.ng hints")
@@ -1100,6 +1156,13 @@ def main(argv=None):
         (["name"], {}), (["--sweep"], {"action": "store_true",
         "help": "try interacting flag combinations; stop on exact corpus"}),
         (["--limit"], {"type": int, "help": "sweep only smallest N sources"}))
+    cmd("repair", cmd_repair, "run bounded compiler-backed mutations over partial sources",
+        (["name"], {}), (["--addr"], {"dest": "addresses", "action": "append"}),
+        (["--limit"], {"type": int}),
+        (["--min-score"], {"type": int, "default": 80}),
+        (["--permute"], {"action": "store_true",
+                          "help": "also try semantics-preserving source permutations"}),
+        (["--dry-run", "-n"], {"action": "store_true"}))
     cmd("config", cmd_config, "save username / server / password / model",
         (["--user"], {}), (["--server"], {}), (["--token"], {}), (["--model"], {}),
         (["--public-server"], {"help": "address shown in website join links (host:port)"}),
@@ -1180,8 +1243,9 @@ def main(argv=None):
         (["--jobs"], {"type": int, "help": "stop after this many functions"}),
         (["--workers"], {"default": "1",
                           "help": "bounded concurrent lease loops (1-256 or auto)"}),
-        (["--lease-mode"], {"choices": ["function", "family"], "default": "function",
-                              "help": "lease one function, or stay on one strict family until exhausted"}),
+        (["--lease-mode"], {"choices": ["function", "family", "unit"], "default": "function",
+                              "help": "lease one function, strict family, or whole unit"}),
+        (["--unit"], {"help": "unit/class name for unit lease mode"}),
         (["--family-id"], {"help": "strict 24-hex family fingerprint"}),
         (["--family-example"], {"help": "seed family from CLIENT:ADDRESS"}),
         (["--allow-cloud"], {"action": "store_true", "help": "allow prompt data to leave this PC"}),

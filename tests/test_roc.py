@@ -435,6 +435,9 @@ def test_cloud_provider_core():
             raise AssertionError("circuit breaker was not enforced")
         except providers.ProviderError as error:
             assert error.category == "provider_circuit"
+        gate.reset("nvidia")
+        lock = gate.enter("nvidia")
+        lock.release()
     finally:
         providers._post = old_post
         if old_key is None:

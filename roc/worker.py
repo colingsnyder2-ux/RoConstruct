@@ -303,8 +303,9 @@ def main_args(payload, argv=()):
     ap.add_argument("--no-revng", action="store_true", help="never use Rev.ng hints")
     ap.add_argument("--family-exemplars", action="store_true", default=True,
                     help="use verified same-shape sources as compact family exemplars (default)")
-    ap.add_argument("--lease-mode", choices=["function", "family"], default="function",
-                    help="lease one function, or stay on one strict family")
+    ap.add_argument("--lease-mode", choices=["function", "family", "unit"], default="function",
+                    help="lease one function, strict family, or whole unit")
+    ap.add_argument("--unit", help="unit/class name for unit lease mode")
     ap.add_argument("--family-id", help="strict 24-hex family fingerprint")
     ap.add_argument("--family-example", help="seed family from CLIENT:ADDRESS")
     ap.add_argument("--dry-run", action="store_true", help="print the plan without leasing a job")
@@ -330,6 +331,8 @@ def main_args(payload, argv=()):
         raise SystemExit("Unknown family example; use CLIENT:ADDRESS")
     if family_id and not re.fullmatch(r"[0-9a-f]{24}", family_id):
         raise SystemExit("Family id must be 24 lowercase hex characters")
+    if given.lease_mode == "unit" and not given.unit:
+        raise SystemExit("Unit lease needs --unit NAME")
     if family_id and client:
         registered = register_family_targets(server, token, client, family_id)
         if registered:
@@ -355,7 +358,7 @@ def main_args(payload, argv=()):
                           verbosity=verbosity,
                           family_exemplars=given.family_exemplars,
                           lease_mode="family" if family_id else given.lease_mode,
-                          family_id=family_id)
+                          family_id=family_id, unit_name=given.unit)
 
 
 _ANNOUNCE_LOCK = threading.Lock()
@@ -488,7 +491,7 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
         cloud_escalate=None, cloud_escalate_after=2, thinking=None, reasoning_effort=None,
         max_tokens=2048, examples_cache=None, source_cache=None, guided_mutations=False,
         order="auto", family_exemplars=True, lease_mode="function", family_state=None,
-        family_lock=None, family_id=None):
+        family_lock=None, family_id=None, unit_name=None):
     """forever: survive server/network outages (retry every minute) for overnight runs.
     only: restrict to these clients (one-click links).
     examples_cache/source_cache: shared across parallel loops so N workers do
@@ -567,7 +570,8 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
                 job = api.call("/v1/lease", {"user": user, "worker": worker, "clients": have,
                                              "mode": "ai", "model": model, "max_size": max_size,
                                              "targets": targets, "order": lease_order,
-                                             "family": family_hint})["job"]
+                                             "family": family_hint,
+                                             "unit": unit_name if lease_mode == "unit" else None})["job"]
                 if lease_mode == "family" and job and job.get("family"):
                     family_state["id"] = job["family"]
         except (Exception, SystemExit) as error:  # overnight: nothing short of Ctrl+C stops the loop
@@ -645,7 +649,7 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
                    cloud_min_size=0, cloud_fallback=None, seed=None,
                    cloud_escalate=None, cloud_escalate_after=2, thinking=None, reasoning_effort=None,
                    max_tokens=2048, guided_mutations=False, order="auto", verbosity="auto",
-                   family_exemplars=True, lease_mode="function", family_id=None):
+                   family_exemplars=True, lease_mode="function", family_id=None, unit_name=None):
     """Run a bounded number of independent lease loops.
 
     Server leases make workers safe to run in parallel. Cloud loops are
@@ -674,7 +678,7 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
                      family_exemplars=family_exemplars,
                      lease_mode=lease_mode,
                      family_state=family_state, family_lock=family_lock,
-                     family_id=family_id,
+                     family_id=family_id, unit_name=unit_name,
                      examples_cache=shared_examples, source_cache=shared_sources)
         if verbosity == "compact":
             worker_log.finish()
@@ -705,7 +709,7 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
                 family_exemplars=family_exemplars,
                 lease_mode=lease_mode,
                 family_state=family_state, family_lock=family_lock,
-                family_id=family_id,
+                family_id=family_id, unit_name=unit_name,
                 examples_cache=shared_examples, source_cache=shared_sources)
         except BaseException as error:
             errors.append(error)
@@ -862,6 +866,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
         if client not in examples_cache:
             examples_cache[client] = {}
         example_key = (job["unit"], job.get("shape"), family_id)
+        strict_family_reference = False
         if example_key not in examples_cache[client]:
             quarantined = metrics.quarantined_keys()
             if family_exemplars and not family_id:
@@ -875,8 +880,16 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                 stage("loading verified examples")
                 examples_cache[client][example_key] = [e["source"] for e in api.call(path)
                                                        if (client, e.get("addr")) not in quarantined]
+                strict_family_reference = bool(examples_cache[client][example_key])
+                # Strict family may be a singleton. Keep family propagation strict,
+                # but still give the model a verified structural example from its unit.
+                if family_exemplars and family_id and not examples_cache[client][example_key]:
+                    fallback = "/v1/examples?client=%s&unit=%s&n=1&strict=1" % (
+                        quote(client), quote(job["unit"]))
+                    examples_cache[client][example_key] = [e["source"] for e in api.call(fallback)
+                                                           if (client, e.get("addr")) not in quarantined]
         examples = examples_cache[client][example_key]
-        if family_exemplars and examples and family_id:
+        if family_exemplars and strict_family_reference and examples and family_id:
             from roc import auto as _auto
             propagated = _auto.family_propagate(asm, examples[0])
             if propagated:
@@ -914,9 +927,11 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
             llm_start = (source_candidate[1], source_candidate[0])
         job_rounds = resolve_rounds(job, rounds, model)
         stage("waiting for cloud model" if providers.is_cloud(model) else "waiting for local model")
+        llm_options = dict(provider_options or {})
+        llm_options["family_exemplars"] = strict_family_reference
         score, src = draft.llm_rounds(client, addr, model, draft.model_rounds(model, job_rounds), hint, llm_start,
                                       log, flags, examples, source_hints, facts, round_stats, strategy=strategy,
-                                      provider_options=provider_options)
+                                      provider_options=llm_options)
         ensure_lease()
         phase_seconds["llm"] = round(time.monotonic() - llm_started, 3)
         if src and score > job["score"]:
@@ -957,6 +972,13 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
             failure_reason = "api"
         else:
             failure_reason = "worker_error"
+        if getattr(error, "category", "") == "provider_circuit":
+            provider, _remote, _config = providers.parse_model(model)
+            log("  cloud circuit open; waiting 60s before retrying %s." % provider)
+            time.sleep(60)
+            gate = (provider_options or {}).get("gate")
+            if gate:
+                gate.reset(provider)
         if session:
             metrics.record(session, event="error", client=client, addr=addr,
                            reason=failure_reason, detail=traceback.format_exc())

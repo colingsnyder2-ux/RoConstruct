@@ -449,6 +449,49 @@ def return_value_variants(src, diagnosis):
     return [updated]
 
 
+def typed_member_return_variants(src, diagnosis):
+    """Return owning struct pointer for void member factories/constructors."""
+    if (diagnosis or {}).get("mismatch_class") != "missing return value":
+        return []
+    names = set(re.findall(r"\bstruct\s+(\w+)\s*\{", src))
+    out = []
+    for name in names:
+        decl = re.compile(r"\bvoid\s+(construct|create|init)\s*\(([^)]*)\)\s*;")
+        definition = re.compile(r"\bvoid\s+" + re.escape(name) +
+                                r"::(construct|create|init)\s*\(")
+        if not decl.search(src) or not definition.search(src):
+            continue
+        updated = decl.sub(lambda m: "%s* %s(%s);" % (name, m.group(1), m.group(2)), src, count=1)
+        updated = definition.sub(lambda m: "%s* %s::%s(" % (name, name, m.group(1)), updated, count=1)
+        close = updated.rfind("}")
+        if close >= 0:
+            typed = updated[:close] + "    return this;\n" + updated[close:]
+            out.append(typed)
+            out.extend(volatile_zero_store_variants(typed, diagnosis))
+    return out
+
+
+def volatile_zero_store_variants(src, diagnosis):
+    """Try volatile only on zero stores; MSVC scheduling can then match target order."""
+    if (diagnosis or {}).get("mismatch_class") != "missing return value":
+        return []
+    out = []
+    pattern = re.compile(r"\*\(int\*\)\(\(char\*\)this\s*\+\s*(0x[0-9a-fA-F]+|\d+)\)\s*=\s*0\s*;")
+    for m in pattern.finditer(src):
+        out.append(src[:m.start()] + m.group().replace("*(int*)", "*(volatile int*)", 1) + src[m.end():])
+    return out
+
+
+def noreturn_exception_variants(src, diagnosis):
+    """MSVC shrink-wrap hint for imported RaiseException-style calls."""
+    if "RaiseException" not in src or "__declspec(noreturn)" in src:
+        return []
+    marker = 'extern "C" __declspec(dllimport) void __stdcall RaiseException'
+    if marker not in src:
+        return []
+    return [src.replace(marker, 'extern "C" __declspec(noreturn) __declspec(dllimport) void __stdcall RaiseException', 1)]
+
+
 def guided_variants(src, diagnosis, categories=None):
     """Only propose bounded source edits supported by decoded mismatch evidence."""
     out, seen = [], {src}
@@ -482,6 +525,9 @@ def guided_variants(src, diagnosis, categories=None):
         add("signedness", [toggle_char_signedness(src), toggle_int_signedness(src)])
     if (diagnosis or {}).get("mismatch_class") == "missing return value":
         add("return_value", return_value_variants(src, diagnosis))
+        add("typed_member_return", typed_member_return_variants(src, diagnosis))
+        add("volatile_zero_store", volatile_zero_store_variants(src, diagnosis))
+    add("noreturn_exception", noreturn_exception_variants(src, diagnosis))
     return out
 
 

@@ -116,6 +116,11 @@ def run(url):
     lease_mode = worker.load_settings().get("worker_lease_mode", "function")
     family_id = worker.load_settings().get("worker_family_id")
     family_example = worker.load_settings().get("worker_family_example")
+    unit_name = worker.load_settings().get("worker_unit")
+    if lease_mode != "family":
+        family_id = family_example = None
+    if lease_mode != "unit":
+        unit_name = None
     cloud = providers.is_cloud(model)
     payload = handoff.save(user=user, client=client, server=server, token=token,
                            mode="cloud" if cloud else "local", cloud=cloud, model=model)
@@ -124,7 +129,7 @@ def run(url):
     return worker.main_args(payload, knobs(rounds, max_size, use_revng, workers,
                                            worker.load_settings().get("worker_order", "auto"),
                                            worker.load_settings().get("worker_verbosity", "auto"), lease_mode,
-                                           family_id, family_example))
+                                           family_id, family_example, unit_name))
 
 
 def choose_worker(settings, mode):
@@ -157,7 +162,7 @@ def choose_worker(settings, mode):
 
 
 def knobs(rounds, max_size, use_revng, workers, order="auto", verbosity="auto", lease_mode="function",
-          family_id=None, family_example=None):
+          family_id=None, family_example=None, unit_name=None):
     """The chosen options as CLI flags for worker.main_args."""
     argv = ["--workers", str(workers), "--order", order, "--verbosity", verbosity,
             "--lease-mode", lease_mode]
@@ -171,6 +176,8 @@ def knobs(rounds, max_size, use_revng, workers, order="auto", verbosity="auto", 
         argv += ["--family-id", family_id]
     if family_example:
         argv += ["--family-example", family_example]
+    if unit_name:
+        argv += ["--unit", unit_name]
     return argv
 
 
@@ -417,6 +424,7 @@ def choose_options(settings):
     lease_mode = settings.get("worker_lease_mode", "function")
     family_id = settings.get("worker_family_id")
     family_example = settings.get("worker_family_example")
+    unit_name = settings.get("worker_unit")
     last_workers = (profile.get("workers", settings.get("worker_workers", "1"))
                     if profile and settings.get("worker_workers_model") != model
                     else settings.get("worker_workers", "1"))
@@ -474,7 +482,7 @@ def choose_options(settings):
         strategy = input("Generation strategy [%s] (auto/direct/structured/reference): " % strategy).strip().lower() or strategy
         if strategy not in ("auto", "direct", "structured", "reference"):
             raise SystemExit("Strategy must be auto, direct, structured, or reference")
-        work_order = input("Work order [%s] (auto/best/matched/unmatched/easiest/random/family): " %
+        work_order = input("Work order [%s] (auto/best/matched/unmatched/easiest/random/family/unit): " %
                            ("family" if lease_mode == "family" else order)).strip().lower()
         work_order = work_order or ("family" if lease_mode == "family" else order)
         if work_order == "family":
@@ -486,10 +494,19 @@ def choose_options(settings):
                 family_example = target
             elif target and target.lower() != "random":
                 family_id = target.lower()
+        elif work_order == "unit":
+            lease_mode, order = "unit", "auto"
+            unit_name = input("Unit/class name: ").strip()
+            if not unit_name:
+                raise SystemExit("Unit lease needs a unit/class name")
         else:
             lease_mode, order = "function", work_order
+            # Choosing a normal work order must clear any old family target.
+            family_id = None
+            family_example = None
+            unit_name = None
         if order not in ("auto", "best", "matched", "unmatched", "easiest", "random"):
-            raise SystemExit("Work order must be auto, best, matched, unmatched, easiest, random, or family")
+            raise SystemExit("Work order must be auto, best, matched, unmatched, easiest, random, family, or unit")
         verbosity = input("Console verbosity [auto] (auto/verbose/compact): ").strip().lower() or "auto"
         if verbosity not in ("auto", "verbose", "compact"):
             raise SystemExit("Console verbosity must be auto, verbose, or compact")
@@ -514,11 +531,17 @@ def choose_options(settings):
                          worker_order=order, worker_verbosity=verbosity, worker_max_size=max_size,
                          worker_lease_mode=lease_mode,
                          worker_family_id=family_id, worker_family_example=family_example,
+                         worker_unit=unit_name,
                          worker_rounds=rounds, worker_launcher_configured=True,
                          worker_preset_model=model, worker_rounds_model=model,
                          worker_workers_model=model, worker_output_budget_model=model,
                          worker_strategy_model=model,
                          worker_model_choices=list(dict.fromkeys(previous + ([model] if model else []))))
+    if family_id is None:
+        worker.clear_setting("worker_family_id")
+        worker.clear_setting("worker_family_example")
+    if unit_name is None:
+        worker.clear_setting("worker_unit")
     return model, rounds, max_size, use_revng, workers, output_budget, thinking
 
 

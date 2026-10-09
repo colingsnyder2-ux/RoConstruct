@@ -16,10 +16,10 @@ GROUPS = [
     ["/GS-", "/GS"],           # buffer security checks
     ["/EHsc", "/EHa", ""],     # exception model
     ["/MD", "/MT"],            # CRT import vs static calls
-    ["", "/Ob1", "/Ob0"],      # inlining
+    ["", "/Ob0", "/Ob1", "/Ob2"], # inlining
     ["", "/GR-"],              # RTTI
     ["", "/Zc:wchar_t-"],
-    ["", "/Oi-"],              # intrinsic expansion
+    ["", "/Oi", "/Oi-"],       # intrinsic expansion
     ["", "/fp:precise", "/fp:fast"],
     ["", "/Gd", "/Gr", "/Gz"], # default calling convention
 ]
