@@ -119,6 +119,69 @@ replayed through both repair arms: 0 conversions, including 0 in the 90–99%
 band. This separates generation quality from repair impact on a larger,
 previously untouched target set.
 
+## Structured DeepSeek arm
+
+Second arm on the same frozen manifest (`--strategy structured`), session
+`holdout100-deepseek-structured-20261008`, same 250k-token / 150-request
+cloud guard. Terminal: 100 job rows, 24 stopped by the token guard, 76
+completed, 0 other failures. Results: 13/100 exact, 22/100 compilable,
+222,967 tokens, $0.117594, 282.13s wall — 5.83 exact per 100k tokens and
+$0.009046 per exact match. All 13 exact matches were tiny; medium/large
+remained 0 exact, 0 compilable.
+
+### Direct vs structured, matched comparison
+
+Both arms are budget-truncated, so raw totals are not a fair comparison —
+structured prompts are larger and it spent the shared 250k-token guard after
+76 completed jobs (direct completed 87). On the 76 targets both arms
+completed:
+
+| metric | direct | structured |
+| --- | ---: | ---: |
+| exact | 10 | 13 |
+| compilable | 21 | 22 |
+| tokens | 184,772 | 222,967 |
+| cost | $0.106282 | $0.117594 |
+
+Exact-set overlap: 10 targets matched by both, 1 only by direct, 3 only by
+structured. Structured converted 3 additional tiny targets while giving up
+none of the shared 10, but needed 21% more tokens to do it; on this subset
+direct yields 5.41 exact/100k tokens vs structured 5.83. This is a small
+sample (10 vs 13 exact) — it supports structured prompting at equal token
+budget, not a broad match-rate claim.
+
+### Why medium/large scored zero
+
+`run_holdout` uses the provider default `max_tokens=1024`. DeepSeek reasoning
+consumed the whole allowance before emitting code: 62/87 direct and 54/76
+structured completed jobs ended `finish_reason=length` with
+`reasoning_tokens=1024` and `output_chars=0`. Every medium/large round in
+both arms produced no code at all (0 compile attempts), so the zero
+medium/large score is a generation-config artifact of this capped harness,
+not evidence that the model cannot decompile those sizes. Re-running with an
+explicit larger `max_tokens` is required before drawing medium/large
+conclusions.
+
+## Repair replay on holdout arms
+
+`benchmarks/repairs.py --from-session` now pins candidate rows to one metrics
+session, so the two arms cannot silently mix. Both replays used
+`--corpus benchmarks/holdout-fresh-100-20261008.json --model
+deepseek:deepseek-flash`, zero model calls:
+
+| arm session | candidates | existing conv. | guided conv. | attempts | replay |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| direct-retry | 13 | 0 | 0 | 13 | 1.5s |
+| structured | 9 | 0 | 0 | 5 | 0.7s |
+
+Independent guided ablations on the 9 structured candidates (no legacy
+fallback): 0 conversions in all 8 categories, 0 attempts outside the paired
+run's `toggle_int_signedness` edits. The 2 structured candidates in the
+90–99% band also converted 0. Across both holdout arms the guided mutator
+has produced 0 conversions from 22 saved compilable candidates — the single
+guided conversion seen in the 18-target fresh holdout does not generalize
+here, so guided repair stays opt-in and makes no claim on this corpus.
+
 ## Verification
 
 Focused repair/diagnostic tests: 4 passed. Full `tests/test_roc.py`: **66

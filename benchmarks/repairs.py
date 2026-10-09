@@ -15,7 +15,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from roc import clients, match, metrics, mutate
 
 
-def candidates(corpus, metrics_path, model=None):
+def candidates(corpus, metrics_path, model=None, session=None):
     targets = {(row["client"], row["addr"]): row for row in corpus}
     selected = {}
     for line in metrics_path.read_text(encoding="utf-8-sig").splitlines():
@@ -27,6 +27,8 @@ def candidates(corpus, metrics_path, model=None):
             continue
         key = (row.get("client"), row.get("addr"))
         if row.get("event") != "job" or key not in targets or (model and row.get("model") != model):
+            continue
+        if session and row.get("session") != session:
             continue
         possible = [attempt for attempt in row.get("rounds", [])
                     if isinstance(attempt, dict) and isinstance(attempt.get("round"), int)
@@ -151,12 +153,14 @@ def main():
     parser.add_argument("--corpus", type=Path, default=Path("benchmarks/holdout-2007-08.json"))
     parser.add_argument("--metrics", type=Path, default=metrics.PATH)
     parser.add_argument("--model")
+    parser.add_argument("--from-session",
+                        help="only take candidates saved by this metrics session")
     parser.add_argument("--ablation", action="store_true",
                         help="run each guided mutation category independently")
     parser.add_argument("--session", default="repair-paired-" + time.strftime("%Y%m%d-%H%M%S"))
     args = parser.parse_args()
     corpus = json.loads(args.corpus.read_text(encoding="utf-8"))
-    rows = candidates(corpus, args.metrics, args.model)
+    rows = candidates(corpus, args.metrics, args.model, args.from_session)
     if not rows:
         raise SystemExit("No saved compilable non-exact candidates found for corpus.")
     fingerprint = hashlib.sha256(json.dumps(
