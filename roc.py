@@ -191,7 +191,7 @@ def _forwarded(a):
     for name in ("client", "model", "workers", "rounds", "max_size", "jobs", "lease_mode",
                  "family_id", "family_example", "unit", "cloud_escalate", "cloud_escalate_after",
                  "thinking", "reasoning_effort", "output_budget", "cloud_concurrency", "strategy",
-                 "order", "verbosity"):
+                 "order", "verbosity", "max_cloud_requests", "max_cloud_tokens", "max_cloud_cost"):
         value = getattr(a, name, None)
         if value is not None:
             forwarded += ["--%s" % name.replace("_", "-"), str(value)]
@@ -1275,6 +1275,12 @@ def main(argv=None):
     p.add_argument("--allow-cloud", dest="allow_cloud", action="store_true", help="allow prompts to leave this PC")
     p.add_argument("--cloud-concurrency", dest="cloud_concurrency", type=int,
                    help="max concurrent cloud requests")
+    p.add_argument("--max-cloud-requests", dest="max_cloud_requests", type=int,
+                   help="cloud request budget for this worker")
+    p.add_argument("--max-cloud-tokens", dest="max_cloud_tokens", type=int,
+                   help="cloud token budget for this worker")
+    p.add_argument("--max-cloud-cost", dest="max_cloud_cost", type=float,
+                   help="cloud cost budget when provider pricing is set")
     p.add_argument("--source-only", dest="source_only", action="store_true",
                    help="deterministic candidates only; never call the model")
     p.add_argument("--strategy", choices=["direct", "structured", "reference"],

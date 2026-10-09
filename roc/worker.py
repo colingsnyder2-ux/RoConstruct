@@ -358,6 +358,9 @@ def main_args(payload, argv=()):
     ap.add_argument("--output-budget", type=int, help="max tokens per reply (128-8192)")
     ap.add_argument("--allow-cloud", action="store_true", help="allow prompts to leave this PC")
     ap.add_argument("--cloud-concurrency", type=int, help="max concurrent cloud requests")
+    ap.add_argument("--max-cloud-requests", type=int, help="cloud request budget for this worker")
+    ap.add_argument("--max-cloud-tokens", type=int, help="cloud token budget for this worker")
+    ap.add_argument("--max-cloud-cost", type=float, help="cloud cost budget when provider pricing is set")
     ap.add_argument("--source-only", action="store_true", help="deterministic candidates only")
     ap.add_argument("--strategy", choices=["direct", "structured", "reference"],
                     help="candidate-generation prompt strategy")
@@ -411,8 +414,16 @@ if given.allow_cloud:
             print("Family %s ready: %d sibling targets" % (family_id, registered))
     save_settings(user=user, server=server, token=token, cloud_allowed=cloud_allowed or None, model=model,
                   worker_order=order, worker_verbosity=verbosity)
-    budget = providers.CloudBudget(HANDOFF_CLOUD_REQUESTS, HANDOFF_CLOUD_TOKENS,
-                                   HANDOFF_CLOUD_COST_USD if providers.has_pricing(model) else None)
+    def _saved_budget(key, fallback):
+        try:
+            return int(load_settings().get(key) or 0) or fallback
+        except (TypeError, ValueError):
+            return fallback
+    budget = providers.CloudBudget(
+        given.max_cloud_requests or _saved_budget("worker_cloud_requests", HANDOFF_CLOUD_REQUESTS),
+        given.max_cloud_tokens or _saved_budget("worker_cloud_tokens", HANDOFF_CLOUD_TOKENS),
+        given.max_cloud_cost if given.max_cloud_cost is not None else
+        (HANDOFF_CLOUD_COST_USD if providers.has_pricing(model) else None))
     print("Signed setup: user=%s client=%s server=%s model=%s (%s) workers=%s" %
           (user, client or "any", server, model, "cloud" if is_cloud else "local", workers))
     if is_cloud:
