@@ -520,6 +520,19 @@ def test_link_options():
         assert choose_options({}) == ("qwen2.5-coder:7b", "auto", 512, False, 1, 2048, "auto")
 
 
+def test_uri_link_checks_updates_before_launch():
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("roc_cli_test", Path(__file__).resolve().parent.parent / "roc.py")
+    cli = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(cli)
+    calls = []
+    with patch("roc.selfupdate.try_update", side_effect=lambda: calls.append("update") or "current"), \
+         patch("roc.link.run", side_effect=lambda target: calls.append("launch")), \
+         patch("builtins.print"):
+        cli.cmd_link(type("Args", (), {"target": "roconstruct://work?client=2008"})())
+    assert calls == ["update", "launch"]
+
+
 def test_optimizer_split_and_one_time_profile():
     from roc import optimizer
     targets = [{"client": "C", "addr": "%08x" % n} for n in range(6)]

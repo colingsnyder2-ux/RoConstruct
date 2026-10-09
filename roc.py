@@ -46,6 +46,9 @@ def cmd_install(a):
 
 
 def cmd_link(a):
+    if a.target not in ("install", "remove"):
+        from roc import selfupdate
+        print("Checking for updates: %s" % selfupdate.try_update())
     from roc import link
     if a.target == "install":
         return link.install()
@@ -355,9 +358,10 @@ def cmd_server(a):
 
 
 def cmd_worker(a):
-    from roc import draft, providers, selfupdate, worker
+    from roc import selfupdate
     if not a.no_update:
         print("Checking for updates: %s" % selfupdate.try_update())
+    from roc import draft, providers, worker
     s = settings()
     srv = need(a.server or s.get("server"), "server", "Use --server URL or: roc config --server URL")
     user = need(a.user or s.get("user"), "username", "Use --user NAME or: roc config --user NAME")
