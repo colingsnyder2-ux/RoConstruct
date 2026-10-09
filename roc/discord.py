@@ -135,9 +135,8 @@ class MineLog:
                        contributor, format(self.store.user_points(contributor), ","), batch_points), "inline": True},
                    {"name": "✅ Batch", "value": "%d full · %d improved" % (len(full), len(partial)), "inline": True}]
         return {"title": "⛏️ RoConstruct Mining Digest",
-                "description": "**%s Client**\n\n%s **%.2f%%**\n\n🟦 source · 🟩 mined · ❎ partial · ⬜ remaining\n\n%s / %s matched · %s remaining%s" % (
-                    client, bar, percent, format(matched, ","), format(total, ","), format(left, ","),
-                    "\n" + lines(full) if len(full) == 1 else ""),
+                "description": "**%s Client**\n%s / %s matched · %s remaining\n\n%s **%.2f%%**\n\n🟦 source · 🟩 mined · ❎ partial · ⬜ remaining" % (
+                    client, format(matched, ","), format(total, ","), format(left, ","), bar, percent),
                 "color": 0x58A6FF,
                 "fields": fields,
                 "footer": {"text": "RoConstruct Mining"},
