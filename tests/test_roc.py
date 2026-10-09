@@ -952,9 +952,50 @@ def test_mine_digest():
     assert "33.33%" in embed["description"] and "1 / 3 matched" in embed["description"]
     assert "a1" in embed["fields"][0]["value"] and "a2" in embed["fields"][1]["value"]
     assert embed["fields"][2]["name"] == "⚡ Mining Rate"
-    assert embed["fields"][3]["name"] == "⚙️ Verification" and embed["fields"][3]["value"] == "server-verified"
+    assert embed["fields"][3]["name"] == "🏆 Workers"
+    assert "alice · 60 pts (+60)" in embed["fields"][3]["value"]
+    assert "1 worker in batch" in embed["fields"][3]["value"]
     assert embed["fields"][4]["value"] == "1 full · 1 improved"
     assert embed["footer"]["text"] == "RoConstruct Mining" and "T" in embed["timestamp"]
+    events = [{"job": {"client": "C", "addr": "a1"}, "user": "alice", "worker": "w", "model": "roc fingerprint",
+               "score": 100, "points": 10}]
+    server_embed = MineLog("http://example.invalid/server", st, server=True).digest(events)
+    assert server_embed["title"] == "⛏️ RoConstruct Server Mining Digest"
+    assert server_embed["fields"][3]["name"] == "⚙️ Verification"
+    assert "alice" not in str(server_embed)
+
+
+def test_mine_feed_routing():
+    import threading
+    import urllib.request
+    from http.server import ThreadingHTTPServer
+    from unittest.mock import Mock
+    from roc import server
+    for dedicated in (True, False):
+        st = Store(":memory:", lease_seconds=10)
+        st.db.execute("INSERT INTO funcs(client,addr,size,unit) VALUES('C','00401000',10,'Unit')")
+        regular, automatic = Mock(), Mock()
+        httpd = ThreadingHTTPServer(("127.0.0.1", 0), server.make_handler(
+            st, None, {"C"}, mine_log=regular, server_mine_log=automatic if dedicated else None))
+        thread = threading.Thread(target=httpd.serve_forever, daemon=True)
+        thread.start()
+        try:
+            with patch("roc.server.match.check_text", side_effect=[(50, "f", "", []), (60, "f", "", [])]), \
+                 patch("roc.server.check_many_text", return_value=[("00401000", 70, [])]):
+                for path, model in (("/v1/submit", "deepseek:model"), ("/v1/submit", "roc repair"),
+                                    ("/v1/submit-batch", "roc fingerprint")):
+                    body = {"user": "alice", "worker": "w", "model": model, "client": "C", "addr": "00401000",
+                            "source": "void f() {}", "score": 50, "addrs": ["00401000"]}
+                    req = urllib.request.Request("http://127.0.0.1:%d%s" % (httpd.server_port, path),
+                                                 data=json.dumps(body).encode(), headers={"Content-Type": "application/json"})
+                    with urllib.request.urlopen(req, timeout=5) as response:
+                        assert response.status == 200
+            assert regular.submit.call_count == 1
+            assert automatic.submit.call_count == (2 if dedicated else 0)
+        finally:
+            httpd.shutdown()
+            httpd.server_close()
+            thread.join(timeout=2)
 
 
 def test_concurrent_shares_caches_and_clamps():

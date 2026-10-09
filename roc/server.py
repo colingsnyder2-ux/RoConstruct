@@ -431,7 +431,7 @@ def export(store):
             "leaderboards": {c: store.leaderboard(c)[:20] for c in scores}}
 
 
-def make_handler(store, token, can_verify, mine_log=None):
+def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None):
     class Handler(BaseHTTPRequestHandler):
         # Api keeps one HTTP connection per worker. HTTP/1.0 closes it after
         # every response, rapidly exhausting Windows ephemeral ports locally.
@@ -554,8 +554,9 @@ def make_handler(store, token, can_verify, mine_log=None):
                 if body.get("lease"):
                     store.release(str(body["lease"]))
                 if improved:
-                    if mine_log is not None:
-                        mine_log.submit(store.function_info(client, addr), user,
+                    feed = server_mine_log if str(body.get("model", "")).startswith("roc ") else mine_log
+                    if feed is not None:
+                        feed.submit(store.function_info(client, addr), user,
                                         str(body.get("worker", ""))[:64],
                                         str(body.get("model", ""))[:120] or "auto",
                                         stored, stored - previous)
@@ -580,8 +581,8 @@ def make_handler(store, token, can_verify, mine_log=None):
                         stored, improved = store.submit(client, addr, user, score, source, spans)
                     except ValueError as error:
                         return self.send(400, {"error": str(error)})
-                    if improved and mine_log is not None:
-                        mine_log.submit(store.function_info(client, addr), user,
+                    if improved and server_mine_log is not None:
+                        server_mine_log.submit(store.function_info(client, addr), user,
                                         str(body.get("worker", ""))[:64],
                                         str(body.get("model", ""))[:120] or "auto", stored, stored - previous)
                     results.append({"addr": addr, "score": score, "stored": stored, "improved": improved})
@@ -639,8 +640,8 @@ def import_startup_matches(store, can_verify, log=print):
 def serve(host="0.0.0.0", port=8765, db=None, token=None, lease_seconds=900,
           discord_webhook=None, log=print):
     from roc.discord import MineLog, server_mines_webhook
-    # Server-created matches stay on dedicated feed. Regular worker feed is separate.
-    discord_webhook = server_mines_webhook()
+    discord_webhook = discord_webhook or os.environ.get("ROCONSTRUCT_DISCORD_WEBHOOK")
+    server_webhook = server_mines_webhook()
     db = db or str(ROOT / "work" / "server.db")
     Path(db).parent.mkdir(parents=True, exist_ok=True)
     store = Store(db, lease_seconds)
@@ -655,9 +656,13 @@ def serve(host="0.0.0.0", port=8765, db=None, token=None, lease_seconds=900,
                   if e.get("compiler_build") in have and clients.status(n, e) == "ok"}
     log("Re-checking submissions for: %s" % (", ".join(sorted(can_verify)) or "none (trusting workers)"))
     if discord_webhook:
-        log("Discord mine logs: enabled (batched digests)")
+        log("Discord worker mine logs: enabled (batched digests)")
+    if server_webhook:
+        log("Discord server mine logs: enabled (separate feed)")
     mine_log = MineLog(discord_webhook, store) if discord_webhook else None
-    httpd = ThreadingHTTPServer((host, port), make_handler(store, token, can_verify, mine_log=mine_log))
+    server_mine_log = MineLog(server_webhook, store, server=True) if server_webhook else None
+    httpd = ThreadingHTTPServer((host, port), make_handler(store, token, can_verify,
+                                                       mine_log=mine_log, server_mine_log=server_mine_log))
     httpd.store = store
     log("RoConstruct server running on port %d. Workers connect with:  roc worker --server http://<this-pc>:%d"
         % (port, port))

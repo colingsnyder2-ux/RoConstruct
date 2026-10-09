@@ -85,10 +85,11 @@ def tool_digest(tool, description, fields=()):
 class MineLog:
     """Thread-safe submit batcher. submit() never blocks the request handler."""
 
-    def __init__(self, webhook, store, batch_events=None, batch_seconds=BATCH_SECONDS):
+    def __init__(self, webhook, store, batch_events=None, batch_seconds=BATCH_SECONDS, server=False):
         self.webhook = webhook
         self.store = store
         self.batch_seconds = batch_seconds
+        self.server = server
         self._lock = threading.Lock()
         self._buffer = []
         self._timer = None
@@ -144,20 +145,30 @@ class MineLog:
                 "🟢" if e["score"] == 100 else "🟡", e["score"], e["job"].get("addr", "?"),
                 e["job"].get("unit", "?"), e["job"].get("size", "?")) for e in rows[:10]) or "None"
 
+        if self.server:
+            people = {"name": "⚙️ Verification", "value": "server-verified", "inline": True}
+        else:
+            contributors = sorted({e["user"] for e in events})
+            workers = len({e["worker"] for e in events if e["worker"]})
+            totals = "\n".join("%s · %s pts (%+d)" % (
+                user, format(self.store.user_points(user), ","),
+                sum(e["points"] for e in events if e["user"] == user)) for user in contributors)
+            people = {"name": "🏆 Workers", "value": ("%d worker%s in batch\n%s" % (workers, "s" if workers != 1 else "", totals))[:1024],
+                      "inline": True}
         fields = [{"name": "🟢 Fully Matched", "value": lines(full), "inline": False}]
         fields += [{"name": "🟡 Partially Matched",
                     "value": "x%d partially matched" % len(partial) if len(partial) > 10 else lines(partial),
                     "inline": False},
                    {"name": "⚡ Mining Rate", "value": "%d functions/hr · ETA %s" % (round(rate_hr), eta), "inline": True},
-                   {"name": "⚙️ Verification", "value": "server-verified", "inline": True},
+                   people,
                    {"name": "✅ Batch", "value": "%d full · %d improved" % (len(full), len(partial)), "inline": True},
                    {"name": "🤖 Models", "value": models[:1024], "inline": True}]
-        return {"title": "⛏️ RoConstruct Mining Digest",
+        return {"title": "⛏️ RoConstruct Server Mining Digest" if self.server else "⛏️ RoConstruct Mining Digest",
                 "description": "**%s Client**\n%s / %s matched · %s remaining\n\n%s **%.2f%%**\n\n🟦 source · 🟩 mined · ❎ partial · ⬜ remaining" % (
                     client, format(matched, ","), format(total, ","), format(left, ","), bar, percent),
                 "color": 0x58A6FF,
                 "fields": fields,
-                "footer": {"text": "RoConstruct Mining"},
+                "footer": {"text": "RoConstruct Server Mines" if self.server else "RoConstruct Mining"},
                 "timestamp": datetime.now(timezone.utc).isoformat()}
 
     def _send(self, events):
