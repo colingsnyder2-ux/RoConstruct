@@ -4,6 +4,12 @@
 
 `roc repair` supports bounded `--offset`/`--limit`, score refresh, permutation trials, mutation-family `--category`, JSON stdout, persistent `--json-out`, dry-run safety, and append-only findings logs.
 
+`roc classify CLIENT ADDR SOURCE` now emits conservative JSON mismatch evidence: confidence-ranked categories, alignment operation counts, register/stack/call/branch evidence, and the existing exact score. Legacy diagnosis fields remain compatible.
+
+`docs/repair-patterns.json` is the measured repair-pattern registry. `roc repair_patterns.rank_categories()` uses it only to order already evidence-supported mutations; it does not create speculative candidates or change exact acceptance.
+
+`roc repair --chain` permits one refreshed guided pass after an improvement, for measured multi-step repairs such as convention -> return propagation. Default remains single-pass.
+
 ## Research order
 
 1. Run small `--dry-run --json-out` batches by mutation family.
