@@ -56,6 +56,26 @@ def session_totals(session):
     return totals
 
 
+def inline_asm_prone(client, addr, threshold=2):
+    """True when recent attempts repeatedly emitted forbidden inline asm."""
+    try:
+        lines = PATH.read_text(encoding="utf-8").splitlines()[-5000:]
+    except OSError:
+        return False
+    strikes = 0
+    for line in lines:
+        try:
+            row = json.loads(line)
+        except ValueError:
+            continue
+        if row.get("event") != "job" or row.get("client") != client or row.get("addr") != addr:
+            continue
+        strikes += sum(bool(round_row.get("rejected_asm"))
+                       for round_row in row.get("rounds", [])
+                       if isinstance(round_row, dict))
+    return strikes >= threshold
+
+
 def summary(session):
     rows = []
     try:

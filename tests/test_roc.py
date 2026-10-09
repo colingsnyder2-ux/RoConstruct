@@ -50,6 +50,18 @@ def test_near_repair_context_drops_stale_assembly_header():
     assert "00770a40" not in cleaned and "int f()" in cleaned
 
 
+def test_inline_asm_prone_after_two_rejections():
+    old_path = _metrics.PATH
+    with tempfile.TemporaryDirectory() as temp:
+        _metrics.PATH = Path(temp) / "metrics.jsonl"
+        for _ in range(2):
+            _metrics.record("asm", event="job", client="2007-08", addr="00488060",
+                            rounds=[{"round": 1, "rejected_asm": True}])
+        assert _metrics.inline_asm_prone("2007-08", "00488060")
+        assert not _metrics.inline_asm_prone("2007-08", "00488061")
+    _metrics.PATH = old_path
+
+
 def test_repair_member_decl():
     fixed = _repair.ensure_member_declared("struct PAVX {\n    int* vtable;\n};\nint PAVX::f()\n{\n    return 0;\n}\n")
     assert fixed is not None and "int f();" in fixed

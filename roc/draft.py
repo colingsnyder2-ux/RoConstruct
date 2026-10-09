@@ -711,7 +711,9 @@ def prompt_for(client, addr, row, asm, hint, attempt, flags=None, examples=(), s
             p += ["NEAR-REPAIR MODE: source already matches 90%+. Preserve every correct declaration, call, "
                   "constant, branch, and field offset. Make one minimal source-shape change supported by the "
                   "diff (ABI/type/lifetime/order). Do not rewrite function or add speculative logic. Emit the "
-                  "complete compilable source, not a patch and not explanation."]
+                  "complete compilable source, not a patch and not explanation. STRICT: emit ordinary C++ only; "
+                  "never use asm, __asm, intrinsics-as-assembly, or an assembly dump. Keep the existing function "
+                  "body and change at most one declaration, cast, lifetime, call order, or return type."]
     try:
         from roc import metrics
         rules = json.loads(metrics.TEMPLATES.read_text())

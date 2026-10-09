@@ -911,6 +911,12 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                 log("  compiler repair submitted %d%%" % r["stored"])
                 result, improved = r["stored"], True
                 return r["stored"]
+        if (provider_options or {}).get("near_repair") and metrics.inline_asm_prone(client, addr):
+            api.call("/v1/release", {"lease": job["lease"], "cooldown": 900})
+            result = job["score"]
+            failure_reason = "inline_asm_quarantine"
+            log("  repeated inline asm; skipping model and quarantining target")
+            return result
         # Source-only repair workers must not spend time compiling unrelated
         # 2016 reference candidates; those belong to the normal worker path.
         if source_only:
