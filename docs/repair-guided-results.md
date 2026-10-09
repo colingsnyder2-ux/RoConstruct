@@ -109,6 +109,16 @@ the provider but returned HTTP 402 for all 100 jobs: 0 generation tokens,
 0 estimated cost, 0 usable candidates. Runner now performs one preflight and
 fails fast on this condition instead of recording a noisy empty holdout.
 
+Retry after credit top-up (`holdout100-deepseek-direct-retry-20261008`) made
+87 provider calls before the 250k-token guard stopped 13 jobs. Results: 11/100
+exact, 24/100 compilable, 217,408 tokens, $0.123552, 332.34s. Thus direct
+generation delivered 5.06 exact matches per 100k tokens and $0.011232 per
+exact match on this capped run. All 11 exact matches were tiny targets; no
+medium/large target matched. The 13 non-exact compilable candidates were
+replayed through both repair arms: 0 conversions, including 0 in the 90–99%
+band. This separates generation quality from repair impact on a larger,
+previously untouched target set.
+
 ## Verification
 
 Focused repair/diagnostic tests: 4 passed. Full `tests/test_roc.py`: **66
