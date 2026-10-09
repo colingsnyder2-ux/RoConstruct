@@ -654,6 +654,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
     stop = threading.Event()
     started = time.monotonic()
     result, improved, failure = 0, False, None
+    family_propagated = False
     source_candidate = None
     phase_seconds = {}
     failure_reason = None
@@ -757,6 +758,23 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                 examples_cache[client][example_key] = [e["source"] for e in api.call(path)
                                                        if (client, e.get("addr")) not in quarantined]
         examples = examples_cache[client][example_key]
+        if family_exemplars and examples and family_id:
+            from roc import auto as _auto
+            propagated = _auto.family_propagate(asm, examples[0])
+            if propagated:
+                try:
+                    propagated_score, _, _, _ = match.check_text(client, addr, propagated, flags)
+                except match.CompileError:
+                    propagated_score = 0
+                if propagated_score > job["score"]:
+                    r = api.call("/v1/submit", {"lease": job["lease"], "user": user,
+                                                "worker": job.get("worker"), "model": job.get("model"),
+                                                "client": client, "addr": addr,
+                                                "score": propagated_score, "source": propagated})
+                    log("  family propagation submitted %d%%" % r["stored"])
+                    family_propagated = True
+                    result, improved = r["stored"], True
+                    return r["stored"]
         source_key = (client, job["unit"], tuple(facts.get("strings", ())),
                       tuple(refsource._target_terms(facts)), int(facts.get("calls", 0) or 0),
                       int(facts.get("branch_count", 0) or 0))
@@ -845,6 +863,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                            source_hints=len(source_hints) if 'source_hints' in locals() else 0,
                            family_id=family_id if 'family_id' in locals() else None,
                            family_exemplar=bool(('examples' in locals()) and examples and family_id),
+                           family_propagated=family_propagated,
                            source_candidate=bool(source_candidate),
                            source_candidate_score=source_candidate[0] if source_candidate else 0,
                            source_candidate_hit=bool(source_candidate and source_candidate[0] == 100),

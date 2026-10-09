@@ -15,6 +15,8 @@ opcode shape, so one verified source can teach siblings their compact C++ form.
   forbids unrelated class expansion or assembly dumps.
 - Worker registers exact size/opcode fingerprints with server; strict family
   lookup uses fingerprint plus same-client verified source.
+- Worker tries address-literal propagation from verified exemplar before LLM;
+  equal-literal-count and cl.exe score gates reject unsafe rewrites.
 - Family mode is now default-on for worker launches; flag remains accepted for
   backward-compatible launcher configs.
 
@@ -33,9 +35,10 @@ though random whole-client validation remains.
 
 1. Run paired family-vs-direct holdouts on 2008 and a fresh client.
 2. Promote default only if exact matches improve and cost/exact does not worsen.
-3. Add deterministic thunk/wrapper propagation only where compiler verification
-   proves byte equality; reuse `roc/auto.py`, do not duplicate repair logic.
-4. Track exact, compile, tokens, cost/exact, and family coverage separately.
+3. Measure propagation conversion rate on fresh functions; disable path if it
+   adds compile cost without exact wins.
+4. Track exact, compile, tokens, cost/exact, family coverage, and propagation
+   conversions separately.
 
 ## Usage
 

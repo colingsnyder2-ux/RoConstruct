@@ -238,6 +238,16 @@ def test_opcode_family_grouping():
             {"addr": "00401020", "size": 5}]
     reps = families.representatives(rows, lambda row: asm if row["size"] == 3 else ["ret"])
     assert len(reps) == 1 and reps[0][2][0]["addr"] == "00401000"
+    assert families.fingerprint(rows[0], asm) == families.fingerprint(rows[1], asm)
+    assert families.fingerprint(rows[0], ["ret"]) != families.fingerprint(rows[0], asm)
+
+
+def test_family_propagation_rewrites_only_equal_literal_shapes():
+    from roc import auto
+    source = "void f(){ *(int*)0x1111 = 0x2222; }"
+    assert auto.family_propagate(["mov dword ptr [0x3333], 0x4444", "ret"], source) == \
+        "void f(){ *(int*)0x3333 = 0x4444; }"
+    assert auto.family_propagate(["ret"], source) is None
 
 
 def test_draft_rejects_inline_asm(monkeypatch):

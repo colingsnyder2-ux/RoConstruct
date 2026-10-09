@@ -10,6 +10,7 @@ from pathlib import Path
 from roc import match
 
 ROOT = Path(__file__).resolve().parent.parent
+HEX = re.compile(r"0x[0-9a-fA-F]+")
 OFF = r"(?: \+ (0x[0-9a-f]+|\d+))?"
 MEM_TYPES = {"dword": "int", "word": "short", "byte": "char"}
 
@@ -263,6 +264,27 @@ def shape_candidates(full):
         out.append("extern \"C\" void __cdecl G1_NAME(void*);\nstruct S_NAME {\n    virtual ~S_NAME();\n%s    void* m_p;\n};\n"
                    "S_NAME::~S_NAME()\n{\n    if (m_p)\n        G1_NAME(m_p);\n}\n" % ("    char pad[%d];\n" % pad if pad else ""))
     return out
+
+
+def family_propagate(asm, exemplar):
+    """Rewrite address literals in verified sibling source, conservatively.
+
+    Only same opcode shape should call this. Equal literal counts are required;
+    compiler/byte scoring remains final authority. Empty result means unsafe.
+    """
+    source = (exemplar or "").strip()
+    target = [m.group(0) for line in asm or () for m in HEX.finditer(line)]
+    old = list(HEX.finditer(source))
+    if not source or not target or len(old) != len(target):
+        return None
+    out, pos = [], 0
+    for match_obj, value in zip(old, target):
+        out.append(source[pos:match_obj.start()])
+        out.append(value)
+        pos = match_obj.end()
+    out.append(source[pos:])
+    candidate = "".join(out)
+    return candidate if candidate != source else None
 
 
 def candidates(lines):
