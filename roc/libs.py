@@ -459,6 +459,11 @@ def _xtp_inc(ver, mfc):
 RECIPES["xtp-13.2.1"] = dict(src="xtp-13.2.1", langs=["cpp"], builds=[30729, 21022],
                              include=_xtp_inc("xtp-13.2.1", "mfc-9.0"), grid=_MFC_GRID,
                              files="Source/**/*.cpp", write=_XTP_STDAFX)
+RECIPES["xtp-13.2.1-shared-mfc"] = dict(
+    src="xtp-13.2.1", langs=["cpp"], builds=[30729, 21022],
+    include=_xtp_inc("xtp-13.2.1", "mfc-9.0"),
+    defines="_AFXDLL _XTP_STATICLINK _DLL", grid=["/O2 /GS- /MD", "/O1 /GS- /MD"],
+    files="Source/**/*.cpp", write=_XTP_STDAFX)
 RECIPES["xtp-11.2.2"] = dict(src="xtp-11.2.2", langs=["cpp"], builds=[30729, 21022],
                              include=_xtp_inc("xtp-11.2.2", "mfc-9.0"), grid=_MFC_GRID,
                              files="Source/**/*.cpp", write=_XTP_STDAFX)

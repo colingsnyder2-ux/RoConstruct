@@ -112,3 +112,7 @@ Additional shard: `CXTPPropertyGrid` (2008-06, XTP 11.2.2, `/O2 /GS- /MD`).
 Shared-MFC recipe compiled 10 frozen partial targets: 8 became code-exact, one
 stayed 99, one dropped to 88. This supports unit/family relevance, not global
 replacement. Better stored candidates remain protected. No submission made.
+
+2010 scale check (`xtp-13.2.1`, `CXTPReportControl`) failed gate: six stored
+partials scored `61, 97, 64, 98, 99, 99`; no gain. Added recipe for future
+per-client search, but reject shared-MFC config as universal 2010 fix.

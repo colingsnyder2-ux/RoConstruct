@@ -13,6 +13,7 @@ def test_shared_mfc_recipe_uses_real_macros_and_dynamic_crt():
     mfc = libs.RECIPES['mfc-9.0-shared']
     assert set(mfc['defines'].split()) == {'_AFXDLL', '_DLL'}
     assert mfc['src'] == libs.RECIPES['mfc-9.0']['src']
+    assert libs.RECIPES['xtp-13.2.1-shared-mfc']['src'] == 'xtp-13.2.1'
 
 
 def test_macro_configuration_has_separate_preprocessing_cache(tmp_path):
