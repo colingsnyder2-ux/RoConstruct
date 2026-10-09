@@ -672,7 +672,7 @@ def test_launch_command_detaches_into_its_own_console():
     assert "start \"RoConstruct worker\"" in line and line.rstrip().endswith("roc.cmd\" launch"), line
 
 
-def test_mass_and_submit_accept_all():
+def test_mass_and_submit_accept_all(tmp_path):
     """README says `roc mass all` / `roc submit all`; both must parse and dispatch."""
     import importlib.util
     spec = importlib.util.spec_from_file_location("roc_cli_all_cmds_test", ROOT / "roc.py")
@@ -683,7 +683,9 @@ def test_mass_and_submit_accept_all():
          patch("roc.mass.stl", return_value={}), \
          patch("roc.libs.run", return_value={}):
         module.main(["mass", "all"])  # must not raise "unrecognized arguments"
-    with patch("roc.worker.load_settings", return_value={"server": "host:8765", "user": "x"}), \
+    (tmp_path / "src" / "2009-06").mkdir(parents=True)  # CI has no src/ (gitignored)
+    with patch.object(module, "ROOT", tmp_path), \
+         patch("roc.worker.load_settings", return_value={"server": "host:8765", "user": "x"}), \
          patch("roc.worker.submit_files") as submit:
         module.main(["submit", "all"])
     assert submit.called, "submit all should walk every client with a src/ folder"
