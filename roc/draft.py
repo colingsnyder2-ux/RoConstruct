@@ -351,18 +351,20 @@ def cfg_facts(asm, limit=24):
             "returns": returns}
 
 
-def cfg_outline(asm, limit=12):
+def cfg_outline(asm, limit=12, facts=None):
     """Compact CFG from match.disasm output; plain asm intentionally yields none."""
-    facts = cfg_facts(asm, limit)
+    facts = facts or cfg_facts(asm, limit)
     if not facts["available"]:
         return "CFG unavailable (assembly has no addresses)"
     blocks = []
-    for block in facts["blocks"]:
+    for block in facts["blocks"][:limit]:
         labels = ["B%d" % edge["to"] if edge["to"] is not None else edge["kind"]
                   for edge in block["edges"]]
         blocks.append("B%d@%s:%s" % (block["id"], block["start"], "/".join(labels) or "end"))
-    suffix = " loops=" + ",".join("B%d->B%d" % (edge["from"], edge["to"])
-                                  for edge in facts["back_edges"][:4]) if facts["back_edges"] else ""
+    loops = ["B%d->B%d" % (edge["from"], edge["to"])
+             for edge in facts["back_edges"]
+             if edge["from"] < limit and edge["to"] < limit]
+    suffix = " loops=" + ",".join(loops[:4]) if loops else ""
     return " ".join(blocks) + suffix
 
 
@@ -415,7 +417,7 @@ def structure_ir(asm, facts=None):
         constants.update(re.findall(r"\b(?:0x[0-9a-fA-F]+|\d+)\b", line))
     ret = (facts.get("returns") or [""])[-1]
     cfg = cfg_facts(asm, 24)
-    return {"cfg": cfg_outline(asm, 12), "cfg_facts": {
+    return {"cfg": cfg_outline(asm, 12, cfg), "cfg_facts": {
             "reachable": cfg["reachable"], "dominators": cfg["dominators"],
             "loop_headers": cfg["loop_headers"], "back_edges": cfg["back_edges"][:8],
             "returns": cfg["returns"]}, "signature": {
