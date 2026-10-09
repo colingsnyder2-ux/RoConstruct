@@ -705,7 +705,11 @@ def check_text(client, addr, text, flags=None, include_diagnosis=False):
     if not funcs:
         result = (0, None, "no functions compiled (is the function body empty or inline?)", [])
         return result + ({},) if include_diagnosis else result
-    best = max(funcs, key=lambda f: rank_candidate(code, relocs, f[1], f[2]))
+    scored = [(score(code, relocs, f[1], f[2]), f) for f in funcs]
+    highest = max(value for value, _ in scored)
+    # Alignment only breaks byte-score ties; don't align losing candidates.
+    best = max((f for value, f in scored if value == highest),
+               key=lambda f: rank_candidate(code, relocs, f[1], f[2]))
     value, d, spans = score(code, relocs, best[1], best[2]), diff(code, relocs, best[1], best[2]), []
     if value == 100:
         spans, bad = data_check(client, addr, code, coff_data_refs(obj, best[0]))
