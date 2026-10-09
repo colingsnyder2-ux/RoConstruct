@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-09 07:34 UTC",
+ "updated": "2026-10-09 07:42 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -48,13 +48,13 @@
    "built": "2007-08-19",
    "started": true,
    "functions": 19998,
-   "matched": 10081,
-   "partial": 4117,
+   "matched": 10084,
+   "partial": 4114,
    "bytes": 3009279,
-   "matched_bytes": 826453,
+   "matched_bytes": 826631,
    "source_bytes": 609809,
-   "mined_bytes": 216644,
-   "partial_bytes": 433574,
+   "mined_bytes": 216822,
+   "partial_bytes": 433396,
    "data_bytes": 1361658,
    "leaderboard": [
     {
@@ -205,11 +205,11 @@
    "built": "2011-06-24",
    "started": true,
    "functions": 36419,
-   "matched": 9826,
+   "matched": 9827,
    "partial": 4,
    "bytes": 5337037,
-   "matched_bytes": 540365,
-   "source_bytes": 427719,
+   "matched_bytes": 540377,
+   "source_bytes": 427731,
    "mined_bytes": 112646,
    "partial_bytes": 28,
    "data_bytes": 3009972,
