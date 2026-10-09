@@ -237,11 +237,14 @@ def return_value_variants(src, diagnosis):
     return [updated]
 
 
-def guided_variants(src, diagnosis):
+def guided_variants(src, diagnosis, categories=None):
     """Only propose bounded source edits supported by decoded mismatch evidence."""
     out, seen = [], {src}
+    allowed = None if categories is None else set(categories)
 
     def add(category, values):
+        if allowed is not None and category not in allowed:
+            return
         for value in values:
             if value and value not in seen and len(out) < 8:
                 seen.add(value)
@@ -298,7 +301,8 @@ def variants(src):
     return out
 
 
-def improve(client, addr, src, flags=None, check=None, guided=False):
+def improve(client, addr, src, flags=None, check=None, guided=False,
+            guided_categories=None, guided_fallback=True):
     """Compile-and-test bounded variants; guided mode requires mismatch evidence.
 
     ImproveResult is a 3-tuple (score, src, tried) with a `.speculative`
@@ -333,9 +337,10 @@ def improve(client, addr, src, flags=None, check=None, guided=False):
     if _reversed_call_order(diagnosis):
         legacy.extend(("argument_order", value) for value in swap_call_argument_variants(src))
     if guided:
-        variants_to_try = guided_variants(src, diagnosis)
+        variants_to_try = guided_variants(src, diagnosis, guided_categories)
         known = {value for _, value in variants_to_try}
-        variants_to_try.extend((category, value) for category, value in legacy if value not in known)
+        if guided_fallback:
+            variants_to_try.extend((category, value) for category, value in legacy if value not in known)
         variants_to_try = variants_to_try[:8]
     else:
         variants_to_try = legacy

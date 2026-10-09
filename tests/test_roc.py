@@ -1090,6 +1090,26 @@ def test_evidence_guided_mutations_are_bounded_and_stop_on_exact():
     assert result.mutations[0]["category"] == "immediate_constant"
     assert result.mutations[0]["exact"] is True and calls[-1] == "int f(){ return x + 3; }"
 
+
+def test_guided_category_filter_disables_fallback():
+    from roc import mutate
+    diagnosis = {"immediate_diffs": [{"candidate": "2", "target": "3"}]}
+    assert mutate.guided_variants("int f(){ return 2; }", diagnosis,
+                                  {"return_value"}) == []
+
+    def check(_client, _addr, source, _flags=None, include_diagnosis=False):
+        if include_diagnosis:
+            return 50, None, "", [], diagnosis
+        return (100 if "return 3" in source else 50), None, "", []
+
+    result = mutate.improve("C", "1", "int f(){ return 2; }", check=check,
+                            guided=True, guided_categories={"immediate_constant"},
+                            guided_fallback=False)
+    assert result[0] == 100 and result[2] == 1
+
+
+def test_remaining_guided_mutation_evidence():
+    from roc import match, mutate
     branch = match.diagnose(bytes.fromhex("7500c3"), [], bytes.fromhex("7400c3"), [])
     assert branch["mismatch_class"] == "branch-condition mismatch"
     assert mutate.guided_variants("int f(int a,int b){ return a == b; }", branch) == [

@@ -69,6 +69,27 @@ this;`. Real MSVC produced 97%→100%. Existing arm produced zero conversions.
 This is one fresh conversion, not broad match-rate proof; guided mode remains
 opt-in. Mutation added 2.51s replay time on this small sample and no LLM cost.
 
+## Score bands and ablations
+
+Fresh holdout replay (15 non-exact candidates) grouped initial scores as:
+
+| initial score | candidates | guided conversions |
+| --- | ---: | ---: |
+| 90–99% | 1 | 1 |
+| 75–89% | 3 | 0 |
+| 50–74% | 2 | 0 |
+| 0–49% | 9 | 0 |
+
+Independent guided ablations, with legacy fallback disabled, found one exact
+conversion from `return_value` (1 attempt). `signedness` and
+`calling_convention` generated attempts but no exact conversion; all other
+categories generated none on this holdout. This supports prioritizing
+last-mile return-value repair while avoiding unsupported speculative edits.
+
+Repair replay now reports generation tokens and exact conversions per 100,000
+tokens. Replay itself spends zero additional LLM tokens; source-generation
+cost remains attributed to saved candidate rows.
+
 ## Verification
 
 Focused repair/diagnostic tests: 4 passed. Full `tests/test_roc.py`: **64
