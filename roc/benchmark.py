@@ -133,6 +133,7 @@ def run_local(corpus, models, rounds=1, log=print, resume=False, session="benchm
                                seed=(provider_options or {}).get("seed"),
                                input_tokens=sum(item.get("input_tokens", 0) for item in generated),
                                output_tokens=sum(item.get("output_tokens", 0) for item in generated),
+                               reasoning_tokens=sum(item.get("reasoning_tokens") or 0 for item in generated),
                                cached_tokens=sum(item.get("cached_tokens", 0) for item in generated),
                                generation_seconds=round(sum(item.get("generation_seconds", 0) for item in generated), 3),
                                compile_seconds=round(sum(item.get("compile_seconds", 0) for item in coded), 3),

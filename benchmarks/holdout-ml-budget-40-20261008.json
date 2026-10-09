@@ -1,0 +1,362 @@
+[
+ {
+  "client": "2007-03",
+  "addr": "004824c0",
+  "size": 217,
+  "unit": "seg_00480000",
+  "bucket": "large",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2007-03",
+  "addr": "004f0af0",
+  "size": 403,
+  "unit": "seg_004f0000",
+  "bucket": "large",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2007-03",
+  "addr": "005a4ef0",
+  "size": 206,
+  "unit": "seg_005a0000",
+  "bucket": "large",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2007-03",
+  "addr": "005c3bd0",
+  "size": 227,
+  "unit": "seg_005c0000",
+  "bucket": "large",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2007-03",
+  "addr": "0073a2f0",
+  "size": 203,
+  "unit": "seg_00730000",
+  "bucket": "large",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2007-08",
+  "addr": "005cac30",
+  "size": 279,
+  "unit": "seg_005c0000",
+  "bucket": "large",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2007-08",
+  "addr": "005e29b0",
+  "size": 185,
+  "unit": "seg_005e0000",
+  "bucket": "large",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2007-08",
+  "addr": "006168a0",
+  "size": 194,
+  "unit": "seg_00610000",
+  "bucket": "large",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2008-06",
+  "addr": "005105b0",
+  "size": 187,
+  "unit": "seg_00510000",
+  "bucket": "large",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2008-06",
+  "addr": "0065f1a0",
+  "size": 189,
+  "unit": "seg_00650000",
+  "bucket": "large",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2009-06",
+  "addr": "0058c090",
+  "size": 214,
+  "unit": "seg_00580000",
+  "bucket": "large",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2009-06",
+  "addr": "006c87b0",
+  "size": 135,
+  "unit": "seg_006c0000",
+  "bucket": "large",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2009-12",
+  "addr": "0060d150",
+  "size": 221,
+  "unit": "seg_00600000",
+  "bucket": "large",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2009-12",
+  "addr": "00623e20",
+  "size": 222,
+  "unit": "seg_00620000",
+  "bucket": "large",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2009-12",
+  "addr": "00624c70",
+  "size": 153,
+  "unit": "seg_00620000",
+  "bucket": "large",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2010-06",
+  "addr": "00588590",
+  "size": 359,
+  "unit": "seg_00580000",
+  "bucket": "large",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2011-06",
+  "addr": "0053abf0",
+  "size": 834,
+  "unit": "seg_00530000",
+  "bucket": "large",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2011-06",
+  "addr": "0056cef0",
+  "size": 233,
+  "unit": "seg_00560000",
+  "bucket": "large",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2011-06",
+  "addr": "00574ac0",
+  "size": 320,
+  "unit": "seg_00570000",
+  "bucket": "large",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2011-06",
+  "addr": "0057a6e0",
+  "size": 332,
+  "unit": "seg_00570000",
+  "bucket": "large",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2007-03",
+  "addr": "00520e80",
+  "size": 126,
+  "unit": "seg_00520000",
+  "bucket": "medium",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2007-03",
+  "addr": "00527420",
+  "size": 58,
+  "unit": "seg_00520000",
+  "bucket": "medium",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2007-03",
+  "addr": "005a8f10",
+  "size": 91,
+  "unit": "seg_005a0000",
+  "bucket": "medium",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2007-03",
+  "addr": "005c6430",
+  "size": 83,
+  "unit": "seg_005c0000",
+  "bucket": "medium",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2007-03",
+  "addr": "005f6250",
+  "size": 104,
+  "unit": "seg_005f0000",
+  "bucket": "medium",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2007-08",
+  "addr": "00770130",
+  "size": 57,
+  "unit": "seg_00770000",
+  "bucket": "medium",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2008-06",
+  "addr": "0053b4a0",
+  "size": 124,
+  "unit": "seg_00530000",
+  "bucket": "medium",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2008-06",
+  "addr": "007f4ca0",
+  "size": 56,
+  "unit": "seg_007f0000",
+  "bucket": "medium",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2009-06",
+  "addr": "005920f0",
+  "size": 74,
+  "unit": "seg_00590000",
+  "bucket": "medium",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2009-06",
+  "addr": "0059f310",
+  "size": 115,
+  "unit": "seg_00590000",
+  "bucket": "medium",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2009-06",
+  "addr": "00896920",
+  "size": 61,
+  "unit": "seg_00890000",
+  "bucket": "medium",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2009-12",
+  "addr": "005f4ec0",
+  "size": 108,
+  "unit": "seg_005f0000",
+  "bucket": "medium",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2010-06",
+  "addr": "0058db40",
+  "size": 107,
+  "unit": "seg_00580000",
+  "bucket": "medium",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2010-06",
+  "addr": "007363a0",
+  "size": 73,
+  "unit": "seg_00730000",
+  "bucket": "medium",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2010-06",
+  "addr": "009c5900",
+  "size": 118,
+  "unit": "seg_009c0000",
+  "bucket": "medium",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2010-06",
+  "addr": "009ddf80",
+  "size": 56,
+  "unit": "seg_009d0000",
+  "bucket": "medium",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2011-06",
+  "addr": "00567dd0",
+  "size": 69,
+  "unit": "seg_00560000",
+  "bucket": "medium",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2011-06",
+  "addr": "0056bb10",
+  "size": 118,
+  "unit": "seg_00560000",
+  "bucket": "medium",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2011-06",
+  "addr": "00a33ad0",
+  "size": 49,
+  "unit": "seg_00a30000",
+  "bucket": "medium",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2012-06",
+  "addr": "00858730",
+  "size": 95,
+  "unit": "seg_00850000",
+  "bucket": "medium",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ }
+]

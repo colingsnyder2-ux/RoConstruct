@@ -92,11 +92,17 @@ class CloudBudget:
             return estimate_tokens, estimate_cost
 
     def settle(self, ticket, tokens=0, cost=None):
+        """Replace the reservation with measured usage; refunds over-estimates.
+
+        reserve() books estimate_input+max_tokens up front, so a large output
+        budget would otherwise permanently shrink the shared cap even when the
+        reply used far fewer tokens.
+        """
         with self._lock:
             old_tokens, old_cost = ticket
-            self.tokens += max(0, int(tokens) - old_tokens)
+            self.tokens = max(0, self.tokens + int(tokens) - old_tokens)
             if cost is not None:
-                self.cost += max(0.0, float(cost) - old_cost)
+                self.cost = max(0.0, self.cost + float(cost) - old_cost)
 
 
 class CloudGate:

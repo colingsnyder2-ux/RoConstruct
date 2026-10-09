@@ -1,0 +1,38 @@
+[
+ {
+  "client": "2007-03",
+  "addr": "00520e80",
+  "size": 126,
+  "unit": "seg_00520000",
+  "bucket": "medium",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2007-03",
+  "addr": "00527420",
+  "size": 58,
+  "unit": "seg_00520000",
+  "bucket": "medium",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2007-03",
+  "addr": "004824c0",
+  "size": 217,
+  "unit": "seg_00480000",
+  "bucket": "large",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ },
+ {
+  "client": "2007-03",
+  "addr": "004f0af0",
+  "size": 403,
+  "unit": "seg_004f0000",
+  "bucket": "large",
+  "source_present": false,
+  "prior_attempt": "holdout-fresh-100: 0 exact, 0 compilable (max_tokens=1024)"
+ }
+]

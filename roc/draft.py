@@ -740,7 +740,11 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
             cloud = _providers.is_cloud(model)
         except (ValueError, RuntimeError):
             cloud = False
-        if cloud and row.get("size", 0) <= 32 and (provider_options or {}).get("thinking", "auto") == "auto":
+        if cloud and (provider_options or {}).get("thinking", "auto") == "auto":
+            # Measured 2026-10-09: with thinking on, DeepSeek reasoning expands
+            # to fill any output budget (4096/8192 fully consumed, 0 output
+            # chars) and medium/large targets emit no code at all. Disabling
+            # it is what lets them generate; "enabled" stays opt-in.
             no_think = True
         floor = 1024 if cloud else 0
         ask_options.setdefault("max_tokens", max(output_budget(row.get("size", 0)), floor))
@@ -774,7 +778,7 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
                 stats.append({"round": i + 1, "candidate_mode": "independent" if independent else "repair",
                               "score": 0, "output_chars": len(reply),
                               "output_tokens": generated_tokens or max(1, len(reply or "") // 4),
-                              "code": False, "truncated_incomplete": True, **generation})
+                              "code": False, "truncated_incomplete": True, "truncated": True, **generation})
             continue
         if not src:
             if finish == "length":
@@ -795,7 +799,8 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
             if stats is not None:
                 stats.append({"round": i + 1, "candidate_mode": "independent" if independent else "repair", "score": 0, "output_chars": len(reply),
                               "output_tokens": generated_tokens or max(1, len(reply) // 4),
-                              "code": False, **generation})
+                              "code": False, "empty_reply": not reply,
+                              "truncated": finish == "length", **generation})
             continue
         compile_started = time.monotonic()
         if _repair.contains_asm(src):

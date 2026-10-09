@@ -271,6 +271,59 @@ def test_cloud_tiny_job_keeps_full_output_budget(monkeypatch):
     assert seen[-1].get("max_tokens", 0) == draft.output_budget(9)
 
 
+def test_budget_refunds_token_overestimate():
+    from roc import providers
+    budget = providers.CloudBudget(requests=5, tokens=20000)
+    ticket = budget.reserve(16000)  # reserve books input estimate + max_tokens
+    budget.settle(ticket, 3000)      # measured usage was much smaller
+    assert budget.tokens == 3000
+    ticket = budget.reserve(16000)   # overestimate refunded: budget still usable
+    assert budget.tokens == 19000
+
+
+def test_output_budget_override_and_truncation_flags(monkeypatch):
+    from roc import draft
+    seen = []
+    def ask(model, prompt, context=None, options=None, details=False):
+        seen.append(dict(options or {}))
+        return "", None, {"output_tokens": 1024, "finish_reason": "length"}
+    monkeypatch.setattr(draft, "_ask_context", ask)
+    monkeypatch.setattr(draft.match, "target", lambda *args: (b"\xc3", [], {"size": 200, "unit": "x"}))
+    monkeypatch.setattr(draft.match, "disasm", lambda *args: ["ret "])
+    monkeypatch.setattr(draft.match.clients, "load", lambda: {"C": {"compiler": "cl", "flags": "/O2"}})
+    monkeypatch.setattr(draft, "prompt_for", lambda *args, **kwargs: "prompt")
+    stats = []
+    draft.llm_rounds("C", "1", "deepseek:deepseek-flash", 1, stats=stats,
+                     log=lambda *_: None,
+                     provider_options={"allow_cloud": True, "max_tokens": 4096})
+    assert seen and seen[0].get("max_tokens") == 4096
+    empty = next(row for row in stats if isinstance(row.get("round"), int))
+    assert empty["truncated"] is True and empty["empty_reply"] is True
+    assert empty["code"] is False and empty["finish_reason"] == "length"
+
+
+def test_thinking_disabled_by_default_for_cloud(monkeypatch):
+    """Reasoning expands to fill any output budget, so cloud generation disables
+    it by default for every size; explicit thinking=enabled stays opt-in."""
+    from roc import draft
+    seen = []
+    def ask(model, prompt, context=None, options=None, details=False):
+        seen.append(dict(options or {}))
+        return "no code", None, {"output_tokens": 1, "finish_reason": "stop"}
+    monkeypatch.setattr(draft, "_ask_context", ask)
+    monkeypatch.setattr(draft.match, "target", lambda *args: (b"\xc3", [], {"size": 200, "unit": "x"}))
+    monkeypatch.setattr(draft.match, "disasm", lambda *args: ["ret "])
+    monkeypatch.setattr(draft.match.clients, "load", lambda: {"C": {"compiler": "cl", "flags": "/O2"}})
+    monkeypatch.setattr(draft, "prompt_for", lambda *args, **kwargs: "prompt")
+    draft.llm_rounds("C", "1", "deepseek:deepseek-flash", 1, log=lambda *_: None,
+                     provider_options={"allow_cloud": True})
+    assert seen and seen[0].get("thinking") == "disabled"
+    seen.clear()
+    draft.llm_rounds("C", "1", "deepseek:deepseek-flash", 1, log=lambda *_: None,
+                     provider_options={"allow_cloud": True, "thinking": "enabled"})
+    assert seen and seen[0].get("thinking") == "enabled"
+
+
 def test_reference_prompt_is_bounded(monkeypatch):
     from roc import draft, refsource
     monkeypatch.setattr(draft.match.clients, "load", lambda: {"C": {"compiler": "cl", "flags": "/O2"}})
@@ -448,6 +501,34 @@ def test_cloud_retry_and_budget_do_not_trip_circuit():
             assert error.category == "cloud_budget"
         lock = gate.enter("nvidia")
         lock.release()
+    finally:
+        providers._post = old_post
+        if old_key is None:
+            os.environ.pop("NVIDIA_API_KEY", None)
+        else:
+            os.environ["NVIDIA_API_KEY"] = old_key
+
+
+def test_non_retryable_http_fails_fast():
+    """A request the provider rejects (e.g. context overflow, HTTP 400) must
+    surface immediately: no retry loop, no repeated spend."""
+    from roc import providers
+    old_key = os.environ.get("NVIDIA_API_KEY")
+    old_post = providers._post
+    calls = []
+    os.environ["NVIDIA_API_KEY"] = "test-key"
+    def rejected(*args):
+        calls.append(1)
+        raise providers.ProviderError("provider_error", "HTTP 400", 400)
+    try:
+        providers._post = rejected
+        try:
+            providers.generate("nvidia:qwen/test", "p",
+                               options={"allow_cloud": True, "retries": 2})
+            raise AssertionError("rejected request did not fail")
+        except providers.ProviderError as error:
+            assert error.category == "provider_error" and error.status == 400
+        assert len(calls) == 1
     finally:
         providers._post = old_post
         if old_key is None:
