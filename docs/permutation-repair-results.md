@@ -171,6 +171,28 @@ more than 8).
 | 2009-06 0059f310 | 115 | 31 | 31 | 31 | 31→26 (regressed) |
 | remaining 15 | — | unchanged | unchanged | unchanged | unchanged |
 
+### Results by function size and mutation category
+
+29 eligible candidates: 16 medium (49–128 bytes) + 13 large (>128). The
+manifest's tiny bucket has no eligible candidates (all tiny targets already
+matched at generation).
+
+| arm | medium improved | large improved |
+| --- | ---: | ---: |
+| existing guided | 4/16 | 6/13 |
+| permutations | 0/16 | 2/13 |
+| guided + permutations | 4/16 | 7/13 |
+
+**Both permutation gains are on large functions** (`00574ac0` 22→41,
+`0073a2f0` 35→38); no medium target improved from permutations that guided
+repair had not already improved. Mutation categories attempted:
+guided `calling_convention` (14), `negate_comparison` (22),
+`toggle_int_signedness` (21), `toggle_char_signedness` (16),
+`swap_add_operands` (6), `signedness` (4), `branch_condition` (1);
+permutations `commutative` (22), `inequality` (13), `reorder_decls` (9).
+The only mutation category that produced a *new* improvement was the
+permutation set, via declaration reorder and operand swap on large functions.
+
 ## Results
 
 - **Newly achieved compiler-verified exact matches: 0**, by every arm,
