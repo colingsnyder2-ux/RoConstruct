@@ -90,9 +90,23 @@ Repair replay now reports generation tokens and exact conversions per 100,000
 tokens. Replay itself spends zero additional LLM tokens; source-generation
 cost remains attributed to saved candidate rows.
 
+## Expanded untouched holdout
+
+`benchmarks/fresh_holdout.py` freezes targets before generation, excluding
+every address seen in metrics across all models. Frozen manifest:
+`benchmarks/holdout-fresh-100-20261008.json` — 100 targets, 8 clients,
+33 tiny / 33 medium / 34 large, fingerprint
+`3ff91c0988fe60b561e5699c2fb2e056b3fc87f1c108f80b7aeb90515b5bfae8`.
+
+Run generation only after preserving this manifest and fingerprint:
+
+```text
+python benchmarks/run_holdout.py benchmarks/holdout-fresh-100-20261008.json --model deepseek:deepseek-flash --rounds 2 --allow-cloud
+```
+
 ## Verification
 
-Focused repair/diagnostic tests: 4 passed. Full `tests/test_roc.py`: **64
+Focused repair/diagnostic tests: 4 passed. Full `tests/test_roc.py`: **66
 passed**. The freshness test now matches current model-specific semantics in
 the existing unstaged optimizer edit.
 
