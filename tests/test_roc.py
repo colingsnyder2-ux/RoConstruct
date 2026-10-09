@@ -1219,6 +1219,38 @@ def test_remaining_guided_mutation_evidence():
         ("return_value", "struct S { void* f(){ \n    return this;\n} };")]
 
 
+def test_cdecl_member_and_free_function_convention_variants():
+    from roc import match, mutate
+    # member thiscall candidate (ret 4) vs __cdecl target (plain ret):
+    # keyword must go on the in-class declaration, not the definition
+    diag = {"return_cleanup": {"target": "", "candidate": "4"}}
+    src = ("struct S {\n    void f(int a);\n};\n\nvoid S::f(int a) { int x = a; }\n")
+    fixes = mutate.cdecl_member_variants(src, diag)
+    assert fixes == ["struct S {\n    void __cdecl f(int a);\n};\n\nvoid S::f(int a) { int x = a; }\n"]
+    assert mutate.cdecl_member_variants("void f(int a){ }", diag) == []
+    # member whose body never uses this can become a free function
+    free = mutate.free_function_variants(src, diag)
+    assert free == ["struct S {\n};\n\nvoid __cdecl f(int a) { int x = a; }\n"]
+    uses_this = "struct S { void f(int a); };\nvoid S::f(int a) { g(this); }\n"
+    assert mutate.free_function_variants(uses_this, diag) == []
+    # evidence-driven trigger: ret cleanup differs even when the classifier
+    # called the mismatch something else
+    mixed = match.diagnose(bytes.fromhex("7400c3"), [], bytes.fromhex("7500c20400"), [])
+    assert mixed["mismatch_class"] == "branch-condition mismatch"
+    assert mixed["return_cleanup"] == {"target": "", "candidate": "4"}
+    variants = mutate.guided_variants(
+        "struct S {\n    void f(int a);\n};\nvoid S::f(int a) { if (a > 0) g(); }", mixed)
+    assert any(category == "calling_convention" for category, _ in variants)
+
+
+def test_diagnose_frame_size():
+    from roc import match
+    target = bytes.fromhex("81ec00010000")          # sub esp, 0x100
+    candidate = bytes.fromhex("81ec00020000")        # sub esp, 0x200
+    diag = match.diagnose(target, [], candidate, [])
+    assert diag["frame_size"] == {"target": 256, "candidate": 512}
+
+
 def test_mismatch_class_and_mutation_summary():
     from roc import match
     immediate = match.diagnose(bytes.fromhex("83c003c3"), [], bytes.fromhex("83c002c3"), [])

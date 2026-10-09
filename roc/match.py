@@ -281,6 +281,16 @@ def diagnose(target_code, target_relocs, cand, cand_relocs):
             if "[esp" in to.lower() or "[ebp" in to.lower():
                 stack_offset_diffs.append({"instruction": i, "mnemonic": tm,
                                            "target": t_nums[0], "candidate": c_nums[0]})
+    def frame_size(ins):
+        for mnemonic, operands in ins:
+            if mnemonic == "sub" and operands.startswith("esp, "):
+                token = operands.split(", ", 1)[1].strip().rstrip("h")
+                try:
+                    return int(token, 16) if token.lower().startswith("0x") else int(token)
+                except ValueError:
+                    return None
+        return None
+    t_frame, c_frame = frame_size(t_ins), frame_size(c_ins)
     inverted = {"je": "jne", "jne": "je", "jz": "jnz", "jnz": "jz", "jl": "jge", "jge": "jl",
                 "jle": "jg", "jg": "jle", "jb": "jae", "jae": "jb", "jbe": "ja", "ja": "jbe",
                 "js": "jns", "jns": "js", "jo": "jno", "jno": "jo", "jp": "jnp", "jnp": "jp"}
@@ -347,6 +357,7 @@ def diagnose(target_code, target_relocs, cand, cand_relocs):
             "stack_offset_diffs": stack_offset_diffs,
             "branch_condition_diff": branch_condition_diff,
             "return_cleanup": {"target": t_ret, "candidate": c_ret},
+            "frame_size": {"target": t_frame, "candidate": c_frame},
             "missing_return_value": missing_return_value,
             "mismatch_class": mismatch,
             "mismatch_is_hypothesis": mismatch not in ("exact", "argument-order mismatch"),

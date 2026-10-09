@@ -175,23 +175,124 @@ def intrinsic_call_variants(src, diagnosis):
     return [src.replace("InterlockedExchangeAdd", "_InterlockedExchangeAdd", 1)]
 
 
+_FUNC_DEF = re.compile(r"(?m)^([A-Za-z_][\w:<>,*& \t]*?)\b([A-Za-z_]\w*(?:::[A-Za-z_]\w*)?)\s*\(")
+_MEMBER_DECL = re.compile(r"(?m)^(\s+[A-Za-z_][\w:<>,*& \t]*?)\b([A-Za-z_]\w*)\s*\([^;{]*\)\s*;")
+
+
+def _target_function_name(src):
+    matches = list(_FUNC_DEF.finditer(src))
+    return matches[-1].group(2) if matches else None
+
+
+def _function_body(src, name):
+    """Brace-delimited body of the definition of name, or None."""
+    m = re.search(r"(?m)^[A-Za-z_][\w:<>,*& \t]*?\b" + re.escape(name) + r"\s*\(", src)
+    if not m:
+        return None
+    opening = src.find("{", m.end() - 1)
+    if opening < 0:
+        return None
+    depth = 0
+    for i in range(opening, len(src)):
+        if src[i] == "{":
+            depth += 1
+        elif src[i] == "}":
+            depth -= 1
+            if depth == 0:
+                return src[opening:i]
+    return None
+
+
+def cdecl_member_variants(src, diagnosis):
+    """Member functions default to thiscall (ret N); targets are often __cdecl
+    members (plain ret). Add __cdecl to the in-class declaration — MSVC
+    rejects the keyword on the out-of-class definition (C2373)."""
+    if not diagnosis:
+        return []
+    cleanup = diagnosis.get("return_cleanup") or {}
+    if cleanup.get("target") or not cleanup.get("candidate"):
+        return []
+    name = _target_function_name(src)
+    if not name or "::" not in name:
+        return []
+    short = name.split("::")[-1]
+    out = []
+    for m in _MEMBER_DECL.finditer(src):
+        if m.group(2) != short or "__cdecl" in m.group(1):
+            continue
+        if "__stdcall" in m.group(1) or "__thiscall" in m.group(1):
+            fixed = re.sub(r"__(?:stdcall|thiscall)", "__cdecl", m.group(1))
+            out.append(src[:m.start()] + fixed + src[m.start():])
+        else:
+            head = src[:m.end(1)]
+            if not head.endswith(" "):
+                head += " "
+            out.append(head + "__cdecl " + src[m.end(1):])
+    return out
+
+
+def free_function_variants(src, diagnosis):
+    """When the target is a free function (no this) but the candidate is a
+    member, converting to a free __cdecl function removes the extra stack
+    argument. Only when the body never uses `this`."""
+    if not diagnosis:
+        return []
+    cleanup = diagnosis.get("return_cleanup") or {}
+    if cleanup.get("target") or not cleanup.get("candidate"):
+        return []
+    name = _target_function_name(src)
+    if not name or "::" not in name:
+        return []
+    short = name.split("::")[-1]
+    body = _function_body(src, name)
+    if body is None or re.search(r"\bthis\b", body):
+        return []
+    out = []
+    for m in _MEMBER_DECL.finditer(src):
+        if m.group(2) == short:
+            tail = src[m.end():]
+            if tail.startswith("\n"):
+                tail = tail[1:]
+            removed = src[:m.start()] + tail
+            m2 = re.search(r"(?m)^([A-Za-z_][\w:<>,*& \t]*?)\b" + re.escape(name) + r"\s*\(", removed)
+            if m2 and "__cdecl" not in m2.group(1):
+                head = removed[:m2.end(1)]
+                if not head.endswith(" "):
+                    head += " "
+                out.append(head + "__cdecl " + removed[m2.end(1):].replace(name, short, 1))
+            break
+    return out
+
+
 def calling_convention_variants(src, diagnosis):
-    """Add/remove explicit MSVC convention only when return cleanup proves it."""
-    if (diagnosis or {}).get("mismatch_class") != "calling-convention mismatch":
+    """Add/remove explicit MSVC convention only when return cleanup proves it.
+    The convention is read from the target function's own declaration and
+    definition, never from unrelated externs in the same file."""
+    if not diagnosis:
         return []
-    cleanup = diagnosis.get("return_cleanup", {})
+    cleanup = diagnosis.get("return_cleanup") or {}
     target_cleans, candidate_cleans = bool(cleanup.get("target")), bool(cleanup.get("candidate"))
-    if target_cleans == candidate_cleans or "__cdecl" in src or "__stdcall" in src:
+    if target_cleans == candidate_cleans:
         return []
-    if not target_cleans:
+    name = _target_function_name(src)
+    if not name:
         return []
-    pattern = re.compile(r"\b([A-Za-z_]\w*(?:\s*\*)?)\s+([A-Za-z_]\w*(?:::[A-Za-z_]\w*)?)\s*\(")
-    matches = list(pattern.finditer(src))
-    if not matches:
-        return []
-    match = matches[-1]
-    return [src[:match.start(1)] + match.group(1) + " __stdcall " +
-            match.group(2) + src[match.end(2):]]
+    out = []
+    if not target_cleans and candidate_cleans:
+        out.extend(cdecl_member_variants(src, diagnosis))
+        out.extend(free_function_variants(src, diagnosis))
+        if "::" not in name:
+            m = re.search(r"(?m)^([A-Za-z_][\w:<>,*& \t]*?)\b" + re.escape(name) + r"\s*\(", src)
+            if m and "__stdcall" in m.group(1):
+                out.append(src[:m.start()] + m.group(1).replace("__stdcall", "__cdecl") + src[m.end(1):])
+    else:
+        m = re.search(r"(?m)^([A-Za-z_][\w:<>,*& \t]*?)\b" + re.escape(name) + r"\s*\(", src)
+        if m and not any(k in m.group(1) for k in ("__cdecl", "__stdcall", "__thiscall")):
+            head = src[:m.end(1)]
+            if not head.endswith(" "):
+                head += " "
+            out.append(head + "__stdcall " + src[m.end(1):])
+    return out
 
 
 def return_value_variants(src, diagnosis):
@@ -260,19 +361,14 @@ def guided_variants(src, diagnosis, categories=None):
         add("intrinsic_call", intrinsic_call_variants(src, diagnosis))
     if (diagnosis or {}).get("branch_condition_diff"):
         add("branch_condition", [negate_comparison(src)])
+    cleanup = (diagnosis or {}).get("return_cleanup") or {}
+    if cleanup.get("target") != cleanup.get("candidate"):
+        add("calling_convention", calling_convention_variants(src, diagnosis))
     opcodes = (diagnosis or {}).get("opcode_delta", {})
     if (opcodes.get("sar", 0) < 0 < opcodes.get("shr", 0) and "unsigned int" in src):
         add("signedness", [toggle_int_signedness(src)])
     elif "movsx" in opcodes or "movzx" in opcodes:
         add("signedness", [toggle_char_signedness(src), toggle_int_signedness(src)])
-    if (diagnosis or {}).get("mismatch_class") == "calling-convention mismatch":
-        add("calling_convention", calling_convention_variants(src, diagnosis))
-        cleanup = diagnosis.get("return_cleanup", {})
-        target_cleans, candidate_cleans = bool(cleanup.get("target")), bool(cleanup.get("candidate"))
-        if "__stdcall" in src and not target_cleans and candidate_cleans:
-            add("calling_convention", [src.replace("__stdcall", "__cdecl", 1)])
-        elif "__cdecl" in src and target_cleans and not candidate_cleans:
-            add("calling_convention", [src.replace("__cdecl", "__stdcall", 1)])
     if (diagnosis or {}).get("mismatch_class") == "missing return value":
         add("return_value", return_value_variants(src, diagnosis))
     return out
