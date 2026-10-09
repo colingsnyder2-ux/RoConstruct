@@ -125,9 +125,10 @@ class MineLog:
                     {"name": "🟢 Fully Matched", "value": lines(full), "inline": False},
                     {"name": "🟡 Partially Matched", "value": lines(partial), "inline": False},
                     {"name": "⚡ Mining Rate", "value": "%d functions/hr" % round(rate_hr), "inline": True},
-                    {"name": "🏆 Contributor", "value": "%s - %s pts (%+d)" % (
+                    {"name": "🏆 Workers", "value": "%s - %s pts (%+d)" % (
                         contributor, format(self.store.user_points(contributor), ","), batch_points), "inline": True},
-                    ],
+                    {"name": "✅ Batch", "value": "%d matched · %d improved" % (len(full), len(partial)), "inline": True},
+                    {"name": "⏱ ETA", "value": eta, "inline": True}],
                 "footer": {"text": "ETA: %s" % eta},
                 "timestamp": datetime.now(timezone.utc).isoformat()}
 

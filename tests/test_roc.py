@@ -806,7 +806,8 @@ def test_mine_digest():
     assert "33.33%" in embed["description"] and "1 / 3 matched" in embed["description"]
     assert "a1" in embed["fields"][0]["value"] and "a2" in embed["fields"][1]["value"]
     assert embed["fields"][2]["name"] == "⚡ Mining Rate"
-    assert embed["fields"][3]["value"] == "alice - 60 pts (+60)"
+    assert embed["fields"][3]["name"] == "🏆 Workers" and embed["fields"][3]["value"] == "alice - 60 pts (+60)"
+    assert embed["fields"][4]["value"] == "1 matched · 1 improved"
     assert embed["footer"]["text"].startswith("ETA:") and "T" in embed["timestamp"]
 
 
