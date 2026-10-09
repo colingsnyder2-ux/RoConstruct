@@ -522,7 +522,7 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
         max_tokens=2048, examples_cache=None, source_cache=None, guided_mutations=False,
         order="random", family_exemplars=True, lease_mode="function", family_state=None,
         family_lock=None, family_id=None, unit_name=None, near_repair=False,
-        min_score=None, max_score=None):
+        min_score=None, max_score=None, abi_only=False, control=None, slot=0):
     """forever: survive server/network outages (retry every minute) for overnight runs.
     only: restrict to these clients (one-click links).
     examples_cache/source_cache: shared across parallel loops so N workers do
@@ -531,6 +531,8 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
         raise SystemExit("Pick a username: 2-32 letters, digits, _ . -")
     api = Api(server, token)
     while True:
+        if control is not None and control.before_lease(slot) is None:
+            return
         try:
             info = api.call("/v1/info")
             break
@@ -539,7 +541,10 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
                 raise
             if not reconnect(api, log):
                 log("%s  Retrying in 60 s." % error)
-                time.sleep(60)
+                if control is not None:
+                    control.wait(60)
+                else:
+                    time.sleep(60)
     if only:
         info["clients"] = {k: v for k, v in info["clients"].items() if k in only}
     have = usable_clients(info, log)
@@ -594,6 +599,19 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
     if source_cache is None:
         source_cache = {}
     while max_jobs is None or done < max_jobs:
+        if control is not None:
+            current = control.before_lease(slot)
+            if current is None:
+                break
+            model = current["model"] if not source_only else "roc repair"
+            auto_model = not model and not source_only
+            rounds, max_size = current["rounds"], current["max_size"]
+            max_tokens, strategy, order = current["max_tokens"], current["strategy"], current["order"]
+            thinking, reasoning_effort = current["thinking"], current["reasoning_effort"]
+            min_score, max_score = current["min_score"], current["max_score"]
+            revng = not source_only and current["use_revng"] and draft.revng_available()
+            diverse_candidates = current["diverse_candidates"]
+            guided_mutations, near_repair = current["guided_mutations"], current["near_repair"]
         try:
             lease_order = "random" if lease_mode == "family" else order
             with family_lock if lease_mode == "family" else contextlib.nullcontext():
@@ -611,7 +629,10 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
                 raise
             if not reconnect(api, log):
                 log("%s  Retrying in 60 s." % error)
-                time.sleep(60)
+                if control is not None:
+                    control.wait(60)
+                else:
+                    time.sleep(60)
             else:
                 info = api.call("/v1/info")
                 have = usable_clients(info, log)
@@ -624,9 +645,14 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
             if max_jobs is not None:
                 break
             log("No open functions right now; checking again in 60 s.")
-            time.sleep(60)
+            if control is not None:
+                control.wait(60)
+            else:
+                time.sleep(60)
             continue
         done += 1
+        if control is not None:
+            control.started(slot, job)
         job_model = draft.route_model(model, job) if auto_model else model
         if (cloud_escalate and job.get("size", 0) >= cloud_min_size and
                 int((job.get("attempts_by_model") or {}).get(model, 0)) >= cloud_escalate_after):
@@ -648,7 +674,8 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
                             "seed": seed, "max_tokens": max_tokens,
                             "guided_mutations": guided_mutations,
                             "family_exemplars": family_exemplars,
-                            "near_repair": near_repair}
+                            "near_repair": near_repair,
+                            "abi_only": abi_only}
         if providers.is_cloud(job_model):
             # Near-repair batches are bounded experiments; never let one
             # unavailable cloud endpoint hold every pinned worker forever.
@@ -666,6 +693,8 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
                          session, source_only, strategy, provider_options)
         matched += score == 100
         failures += score == 0
+        if control is not None:
+            control.finished(slot, job, score)
         save_session_state(worker, user, model, done, matched, failures)
         if done % 10 == 0:
             log("== %s: %d functions tried, %d matched this session ==" % (time.strftime("%H:%M"), done, matched))
@@ -686,7 +715,7 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
                    cloud_escalate=None, cloud_escalate_after=2, thinking=None, reasoning_effort=None,
                    max_tokens=2048, guided_mutations=False, order="random", verbosity="auto",
                    family_exemplars=True, lease_mode="function", family_id=None, unit_name=None,
-                   near_repair=False, min_score=None, max_score=None):
+                   near_repair=False, min_score=None, max_score=None, abi_only=False):
     """Run a bounded number of independent lease loops.
 
     Server leases make workers safe to run in parallel. Cloud loops are
@@ -718,6 +747,7 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
                      family_id=family_id, unit_name=unit_name,
                      near_repair=near_repair,
                      min_score=min_score, max_score=max_score,
+                     abi_only=abi_only,
                      examples_cache=shared_examples, source_cache=shared_sources)
         if verbosity == "compact":
             worker_log.finish()
@@ -749,8 +779,9 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
                 lease_mode=lease_mode,
                 family_state=family_state, family_lock=family_lock,
                 family_id=family_id, unit_name=unit_name,
-                near_repair=near_repair,
-                min_score=min_score, max_score=max_score,
+                     near_repair=near_repair,
+                     min_score=min_score, max_score=max_score,
+                     abi_only=abi_only,
                 examples_cache=shared_examples, source_cache=shared_sources)
         except BaseException as error:
             errors.append(error)
@@ -792,6 +823,10 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
 
     log = job_log
     family_exemplars = bool((provider_options or {}).get("family_exemplars"))
+    abi_categories = ("calling_convention", "function_pointer_convention",
+                      "direct_member_receiver", "direct_member_noarg",
+                      "return_carrier", "return_value", "typed_member_return",
+                      "indirect_return_value")
     client, addr = job["client"], job["addr"]
     flags = info["clients"][client].get("flags")
     log("[%s %s] %d B, %s, best so far %d%%" % (client, addr, job["size"], job["unit"], job["score"]))
@@ -863,6 +898,8 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                                            "global_reads", "global_writes",
                                            "virtual_slots", "stack_args", "this_reads", "this_writes",
                                            "calling_convention", "branches", "constants", "siblings") if row.get(k)})
+        from roc import abi_graph
+        facts["abi_graph"] = abi_graph.target_evidence(api, client, row)
         callee_hints = callee_source_hints(api, client, row.get("call_targets", []))
         if callee_hints:
             facts["exact_callee_sources"] = callee_hints
@@ -891,7 +928,8 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
             ensure_lease()
             stage("compiler repair")
             repair_started = time.monotonic()
-            repaired = mutate.improve(client, addr, repair_source, flags, guided=True)
+            repaired = mutate.improve(client, addr, repair_source, flags, guided=True,
+                                      guided_categories=abi_categories if (provider_options or {}).get("abi_only") else None)
             baseline_diagnosis = repaired.diagnosis
             repair_seconds = round(time.monotonic() - repair_started, 3)
             phase_seconds["repair"] = repair_seconds
@@ -1025,7 +1063,8 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
             from roc import mutate
             stage("repairing generated partial")
             repair_started = time.monotonic()
-            repaired = mutate.improve(client, addr, src, flags, guided=True)
+            repaired = mutate.improve(client, addr, src, flags, guided=True,
+                                      guided_categories=abi_categories if (provider_options or {}).get("abi_only") else None)
             if not baseline_diagnosis:
                 baseline_diagnosis = repaired.diagnosis
             repair_seconds = round(time.monotonic() - repair_started, 3)

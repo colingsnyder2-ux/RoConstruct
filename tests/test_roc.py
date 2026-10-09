@@ -24,6 +24,7 @@ from roc import repair as _repair
 from roc.draft import select_topk
 from roc import metrics as _metrics
 from roc.worker import callee_source_hints
+from roc import abi_graph
 
 
 class _CalleeApi:
@@ -60,6 +61,17 @@ def test_inline_asm_prone_after_two_rejections():
         assert _metrics.inline_asm_prone("2007-08", "00488060")
         assert not _metrics.inline_asm_prone("2007-08", "00488061")
     _metrics.PATH = old_path
+
+
+def test_abi_graph_keeps_only_exact_callee_signatures():
+    api = _CalleeApi()
+    evidence = abi_graph.target_evidence(api, "2007-08",
+                                         {"call_targets": ["00401010", "00401011"],
+                                          "callers": ["00402000"]})
+    assert evidence["caller_count"] == 1
+    assert evidence["callee_count"] == 2
+    assert evidence["exact_callees"][0]["calling_convention"] == "__cdecl"
+    assert evidence["exact_callees"][0]["arity"] == 1
 
 
 def test_repair_member_decl():
@@ -708,8 +720,9 @@ def test_uri_link_checks_updates_before_launch():
     calls = []
     with patch("roc.selfupdate.try_update", side_effect=lambda: calls.append("update") or "current"), \
          patch("roc.link.run", side_effect=lambda target: calls.append("launch")), \
+         patch("roc.worker.load_settings", return_value={"uri_interface": "terminal"}), \
          patch("builtins.print"):
-        cli.cmd_link(type("Args", (), {"target": "roconstruct://work?client=2008"})())
+        cli.cmd_link(type("Args", (), {"target": "roconstruct://work?client=2008&server=localhost:8765"})())
     assert calls == ["update", "launch"]
 
 

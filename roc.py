@@ -219,17 +219,19 @@ def cmd_doctor(a):
         raise SystemExit(1)
 
 
+def cmd_gui(a):
+    from roc import gui
+    gui.serve(port=a.port, open_browser=not a.no_browser)
+
+
 def cmd_link(a):
-    if a.target not in ("install", "remove"):
-        from roc import selfupdate
-        print("Checking for updates: %s" % selfupdate.try_update())
     from roc import link
     if a.target == "install":
         return link.install()
     if a.target == "remove":
         return link.remove()
     try:
-        link.run(a.target)
+        link.launch(a.target)
     except (SystemExit, Exception) as error:  # link windows close on exit: keep the message visible
         code = getattr(error, "code", error)
         if code not in (None, 0):
@@ -495,11 +497,19 @@ def cmd_mass(a):
     """Everything automatic: compiler runtime tagging, STL, all libraries, then auto shapes."""
     from roc import libs, mass
     targets = libs.default_targets() if a.client == "all" else [a.client]
+    def stage(message):
+        if os.environ.get("ROC_GUI_EVENTS"):
+            print("ROC_EVENT " + json.dumps({"event": "stage", "message": message}), flush=True)
+    stage("Static libraries")
     mass.staticlibs(targets)
+    stage("STL")
     mass.stl(targets)
+    stage("Library recipes")
     libs.run([n for n, r in libs.RECIPES.items() if r.get("files")], targets)
     for name in targets:
+        stage("Analyze " + name)
         main(["analyze", name])  # picks up the runtime tags
+        stage("Auto-match " + name)
         main(["auto", name])
 
 
@@ -797,7 +807,8 @@ def cmd_worker(a):
                           order=order, family_exemplars=a.family_exemplars,
                           lease_mode=a.lease_mode,
                           family_id=family_id, unit_name=a.unit, targets=targets,
-                          near_repair=a.near_repair, min_score=a.min_score, max_score=a.max_score)
+                          near_repair=a.near_repair, min_score=a.min_score, max_score=a.max_score,
+                          abi_only=a.abi_only)
 
 
 def cmd_provider(a):
@@ -1132,6 +1143,7 @@ def menu():
         ("Add a new Roblox client", lambda: main(["client", "add", ask("Short name (e.g. 2013-01)"),
                                                   ask("Path to RobloxApp.exe or Roblox.exe")])),
         ("Auto-match easy functions", lambda: main(["auto", "all"])),
+        ("Open local dashboard (webpage)", lambda: main(["gui"])),
     ]
     while True:
         s = settings()
@@ -1198,6 +1210,9 @@ def main(argv=None):
         p.set_defaults(fn=fn)
         return p
 
+    cmd("gui", cmd_gui, "open the local worker and command dashboard",
+        (["--port"], {"type": int, "default": 0, "help": "local port (default: choose a free port)"}),
+        (["--no-browser"], {"action": "store_true", "help": "print session link without opening browser"}))
     cmd("install", cmd_install, "cloud-first bootstrap: packages, exact compilers, link, website",
         (["--yes", "-y"], {"action": "store_true", "help": "accept every download without asking"}),
         (["--client"], {"help": "client you plan to work on, so the size estimate can include its exe"}),
@@ -1443,6 +1458,7 @@ def main(argv=None):
         (["--dry-run"], {"action": "store_true", "help": "show worker setup without leasing a job"}),
         (["--source-only"], {"action": "store_true", "help": "run deterministic candidates; never call Ollama"}),
         (["--guided-mutations"], {"action": "store_true", "help": "enable evidence-guided source mutations after compilation"}),
+        (["--abi-only"], {"action": "store_true", "help": "limit compiler mutations to ABI/return/type families"}),
         (["--near-repair"], {"action": "store_true", "help": "preserve 90%+ source; ask for one minimal evidence-backed change"}),
         (["--no-update"], {"action": "store_true", "help": "skip the pre-run source update check"}))
     cmd("model-stats", cmd_model_stats, "compare models using worker telemetry")
