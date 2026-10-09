@@ -539,6 +539,33 @@ def test_cloud_retry_and_budget_do_not_trip_circuit():
             os.environ["NVIDIA_API_KEY"] = old_key
 
 
+def test_cloud_worker_retries_usage_until_success():
+    from roc import providers
+    old_key = os.environ.get("NVIDIA_API_KEY")
+    old_post, old_sleep = providers._post, providers.time.sleep
+    os.environ["NVIDIA_API_KEY"] = "test-key"
+    calls, retries = [], []
+    def flaky(*args):
+        calls.append(1)
+        if len(calls) < 4:
+            raise providers.ProviderError("provider_retry", "usage limit", 429)
+        return {"id": "ok", "choices": [{"message": {"content": "ok"}}]}, {}
+    providers._post = flaky
+    providers.time.sleep = lambda *_: None
+    try:
+        out = providers.generate("nvidia:qwen/test", "p", options={"allow_cloud": True,
+                                                                         "retries": 0,
+                                                                         "retry_forever": True,
+                                                                         "on_retry": lambda *row: retries.append(row)})
+        assert out.text == "ok" and out.retries == 3 and len(calls) == 4 and len(retries) == 3
+    finally:
+        providers._post, providers.time.sleep = old_post, old_sleep
+        if old_key is None:
+            os.environ.pop("NVIDIA_API_KEY", None)
+        else:
+            os.environ["NVIDIA_API_KEY"] = old_key
+
+
 def test_non_retryable_http_fails_fast():
     """A request the provider rejects (e.g. context overflow, HTTP 400) must
     surface immediately: no retry loop, no repeated spend."""

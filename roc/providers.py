@@ -305,7 +305,10 @@ def _post(url, body, headers, timeout):
         with urllib.request.urlopen(req, timeout=timeout) as response:
             return json.loads(response.read()), dict(response.headers)
     except urllib.error.HTTPError as error:
-        retry = error.code in (408, 429) or error.code >= 500
+        detail = error.read().decode("utf-8", "replace").lower()
+        retry = (error.code in (408, 429) or error.code >= 500 or
+                 any(text in detail for text in ("insufficient_quota", "usage limit", "rate limit",
+                                                  "quota exceeded", "current quota", "insufficient balance")))
         raise ProviderError("provider_retry" if retry else "provider_auth" if error.code in (401, 403) else "provider_error",
                             "HTTP %d" % error.code, error.code)
     except (urllib.error.URLError, OSError, ValueError) as error:
@@ -531,7 +534,8 @@ def generate(model, messages, options=None, state=None):
         lock = gate.enter(provider)
     started, retries = time.monotonic(), 0
     try:
-        for attempt in range(int(options.get("retries", 2)) + 1):
+        attempt = 0
+        while True:
             ticket = None
             try:
                 if budget:
@@ -549,12 +553,17 @@ def generate(model, messages, options=None, state=None):
                     gate.done(provider, True)
                 return out
             except ProviderError as error:
-                if error.category != "provider_retry" or attempt >= int(options.get("retries", 2)):
+                if (error.category != "provider_retry" or
+                        (not options.get("retry_forever") and attempt >= int(options.get("retries", 2)))):
                     if gate and error.category != "cloud_budget":
                         gate.done(provider, False)
                     raise
                 retries += 1
-                time.sleep(min(8, 0.5 * (2 ** attempt)))
+                delay = min(60, 0.5 * (2 ** min(attempt, 7)))
+                if options.get("on_retry"):
+                    options["on_retry"](error, retries, delay)
+                time.sleep(delay)
+                attempt += 1
     finally:
         if lock:
             lock.release()
