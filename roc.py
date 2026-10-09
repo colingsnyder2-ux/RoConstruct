@@ -686,9 +686,13 @@ def cmd_config(a):
 def cmd_submit(a):
     from roc import worker
     s = settings()
-    worker.submit_files(need(a.server or s.get("server"), "server", "Use --server or: roc config --server URL"),
-                        need(a.user or s.get("user"), "username", "Use --user or: roc config --user NAME"),
-                        a.name, a.addr or None, a.token or s.get("token"))
+    srv = need(a.server or s.get("server"), "server", "Use --server or: roc config --server URL")
+    user = need(a.user or s.get("user"), "username", "Use --user or: roc config --user NAME")
+    names = sorted(clients.load()) if a.name == "all" else [a.name]
+    for name in names:
+        if not (ROOT / "src" / name).is_dir():
+            continue
+        worker.submit_files(srv, user, name, a.addr or None, a.token or s.get("token"))
 
 
 def cmd_pull(a):
@@ -1354,7 +1358,7 @@ def main(argv=None):
     cmd("libs", cmd_libs, "match open-source library code from its real source ('all' or recipe names)",
         (["names"], {"nargs": "+"}), (["--client"], {"default": "all"}))
     cmd("mass", cmd_mass, "run every automatic matcher (runtime, STL, libraries, shapes); takes a while",
-        (["--client"], {"default": "all"}))
+        (["client"], {"nargs": "?", "default": "all"}), (["--client"], {"default": "all"}))
     cmd("flags", cmd_flags, "find the client's compiler flags from matched sources",
         (["name"], {}), (["--sweep"], {"action": "store_true",
         "help": "try interacting flag combinations; stop on exact corpus"}),
@@ -1434,7 +1438,7 @@ def main(argv=None):
     da.add_argument("--allow-partial", action="store_true", help="check structure before 100-300 pair pilot is complete")
     da.set_defaults(fn=cmd_dataset)
     cmd("link", cmd_link, "one-click links: 'install', 'remove', or a roconstruct:// URL", (["target"], {}))
-    cmd("submit", cmd_submit, "send hand-written sources to the server",
+    cmd("submit", cmd_submit, "send hand-written sources to the server ('all' for every client)",
         (["name"], {}), (["addr"], {"nargs": "*"}), (["--server"], {}), (["--user"], {}), (["--token"], {}))
     cmd("pull", cmd_pull, "download everyone's sources from the server into src/ ('all' for every client)",
         (["name"], {}), (["--force"], {"action": "store_true", "help": "replace your local files"}),
