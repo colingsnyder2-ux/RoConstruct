@@ -138,3 +138,7 @@ data-only mismatch test. Do not spend typed-table recovery budget on these rows.
 
 2009 scale shard: `CXTPPropExchangeXMLNode` from XTP 15.2.1 yielded 9/10 exact
 results under shared MFC; one improved 90→91. Added recipe and test coverage.
+
+2011 shard: `CXTCaptionButton` / `XTButton.cpp` yielded 4/8 exact gains and
+4 unchanged under shared MFC. No regressions. Benefit extends to 2011, but is
+unit-specific; retain per-source score gating.
