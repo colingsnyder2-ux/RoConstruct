@@ -71,6 +71,8 @@ def source_class(source):
 
 
 def unit_has_class(unit, token):
+    if unit_family(unit) == "ogre":
+        return unit_class(unit) == token
     value = re.sub(r"[^a-z0-9]", "", unit.lower())
     for prefix in ("cxtp", "xtp", "rbx", "c"):
         if value.startswith(prefix) and len(value) > len(prefix) + 3:

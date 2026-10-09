@@ -5,7 +5,7 @@ import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from roc.batch_fingerprint import flag_batches, source_class, unit_class, unit_family
+from roc.batch_fingerprint import flag_batches, source_class, unit_class, unit_family, unit_has_class
 
 
 class FingerprintFamilyTests(unittest.TestCase):
@@ -21,6 +21,8 @@ class FingerprintFamilyTests(unittest.TestCase):
         camera = source.replace('SceneManager', 'Camera')
         self.assertEqual(source_class(camera), unit_class('Ogre::Camera'))
         self.assertEqual(_source_class_token(camera), unit_class('Ogre::Camera'))
+        self.assertTrue(unit_has_class('Ogre::SceneManager', 'scenemanager'))
+        self.assertFalse(unit_has_class('Ogre::RbxSceneManager', 'scenemanager'))
 
     def test_xtp_theme_namespace(self):
         self.assertEqual(unit_family('XTPPaintThemes::CXTPOffice2003Theme'), 'xtp')
