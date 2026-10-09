@@ -205,6 +205,14 @@ const pct = (a, b) => b ? (100 * a / b).toFixed(2) + "%" : "0.00%";
 const mb = n => (n / 1048576).toFixed(2) + " MB";
 const hex = n => n.toString(16).padStart(8, "0");
 const sourceUrl = (client, address) => `${FINDINGS}/blob/main/src/${encodeURIComponent(client)}/${hex(address)}.cpp`;
+const libraryUrl = meta => meta && meta[0].startsWith("libpng-")
+  ? `https://github.com/pnggroup/libpng/blob/v${meta[0].slice(7)}/${meta[1]}` : "";
+const sourceLinks = (client, f, short = false) => {
+  const library = libraryUrl(f[5]);
+  const harness = f[4] ? `<a href="${sourceUrl(client, f[0])}" target="_blank" rel="noopener">${short ? "harness" : "View match harness"} ↗</a>` : "";
+  if (library) return `<a href="${library}" target="_blank" rel="noopener">${short ? "C source" : "View original C source"} ↗</a>${harness ? " · " + harness : ""}`;
+  return harness || "No recovered source published yet";
+};
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
 const cache = new Map();
 let progress, history = [], hIdx = -1;
@@ -477,7 +485,7 @@ async function client(name) {
     const {b} = hit(e);
     if (!b) return;
     const f = b.f;
-    const source = f[4] ? `<a href="${sourceUrl(name, f[0])}" target="_blank" rel="noopener">Open recovered source ↗</a>` : "No recovered source published yet";
+    const source = sourceLinks(name, f);
     document.getElementById("detail").innerHTML =
       `<strong>${esc(units[f[3]])}</strong><br>${hex(f[0])} • ${fmt(f[1])} bytes • ${f[2]}% matched<br>` +
       `${source}<br>Work on it: <code>roc claim ${esc(name)} ${hex(f[0])}</code>`;
@@ -490,7 +498,7 @@ async function client(name) {
   const easy = data.funcs.filter(f => f[2] < 100).sort((a, b) => a[1] - b[1] || b[2] - a[2]).slice(0, 25);
   document.getElementById("easy").innerHTML = easy.map(f =>
     `<tr><td>${hex(f[0])}</td><td>${f[1]} B</td><td>${f[2]}%</td><td>${esc(units[f[3]])}</td>` +
-    `<td>${f[4] ? `<a href="${sourceUrl(name, f[0])}" target="_blank" rel="noopener">open</a>` : "—"}</td>` +
+    `<td>${sourceLinks(name, f, true)}</td>` +
     `<td><code>roc claim ${esc(name)} ${hex(f[0])}</code></td></tr>`).join("");
 }
 

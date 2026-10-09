@@ -4,6 +4,7 @@ docs/data/<client>.json.
 Scores come from work/<client>/scores.json ({addr: 0-100}); 100 = byte match.
 """
 import json
+import re
 import subprocess
 import time
 from pathlib import Path
@@ -60,6 +61,25 @@ def union_bytes(span_lists):
     return total
 
 
+def library_meta():
+    """{(client, address): [library version, source file]} for matched library code."""
+    try:
+        output = subprocess.run(["rg", "--json", "^// roc-lib: ", "src"], cwd=ROOT,
+                                capture_output=True, text=True, check=True).stdout
+    except (OSError, subprocess.CalledProcessError):
+        return {}
+    out = {}
+    for line in output.splitlines():
+        row = json.loads(line)
+        if row["type"] != "match":
+            continue
+        path = Path(row["data"]["path"]["text"])
+        match = re.match(r"// roc-lib: (\S+) (\S+)", row["data"]["lines"]["text"])
+        if match:
+            out[(path.parent.name, path.stem)] = list(match.groups())
+    return out
+
+
 def fetch_server(server, token=None):
     from roc.worker import Api
     return Api(server, token).call("/v1/export")
@@ -71,6 +91,7 @@ def build(server=None, token=None, public_server=None, remote=None):
     (DOCS / "data").mkdir(parents=True, exist_ok=True)
     if remote is None:
         remote = fetch_server(server, token) if server else {"scores": {}, "leaderboard": []}
+    library = library_meta()
     out, stats = [], {}
     for name, entry in sorted(clients.load().items()):
         if entry.get("donor"):  # donor binaries are matching/test fixtures, not shown on the site
@@ -88,6 +109,7 @@ def build(server=None, token=None, public_server=None, remote=None):
             meta_file = work / "meta.json"
             meta = json.loads(meta_file.read_text()) if meta_file.exists() else {}
             units, unit_ids, funcs, generated = [], {}, [], 0
+            sources = {p.stem: p for p in (ROOT / "src" / name).glob("*.cpp")}
             for line in (work / "functions.jsonl").open():
                 f = json.loads(line)
                 if f.get("kind", "code") != "code":  # compiler/linker stubs don't count
@@ -98,8 +120,9 @@ def build(server=None, token=None, public_server=None, remote=None):
                     unit_ids[unit] = len(units)
                     units.append(unit)
                 addr = f["addr"]
+                source = sources.get(addr)
                 funcs.append([int(addr, 16), f["size"], scores.get(addr, 0), unit_ids[unit],
-                              (ROOT / "src" / name / (addr + ".cpp")).exists()])
+                              bool(source), library.get((name, addr))])
             (DOCS / "data" / ("%s.json" % name)).write_text(json.dumps(
                 {"name": name, "compiler": entry["compiler"], "units": units, "funcs": funcs},
                 separators=(",", ":")))
