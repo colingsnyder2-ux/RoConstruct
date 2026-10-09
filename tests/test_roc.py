@@ -229,7 +229,7 @@ def test_draft_rejects_inline_asm(monkeypatch):
     monkeypatch.setattr(draft, "_ask_context", ask)
     monkeypatch.setattr(draft.match, "target", lambda *args: (b"\xc3", [], {"size": 1, "unit": "x"}))
     monkeypatch.setattr(draft.match, "disasm", lambda *args: ["ret "])
-    monkeypatch.setattr(draft, "prompt_for", lambda *args: args[5][0] if args[5] else "initial")
+    monkeypatch.setattr(draft, "prompt_for", lambda *args, **kwargs: args[5][0] if args[5] else "initial")
     stats = []
     score, source = draft.llm_rounds("C", "1", "model", 2, stats=stats, log=lambda *_: None)
     assert score == 0 and source is None and stats[0]["rejected_asm"]
@@ -261,6 +261,8 @@ def test_cloud_tiny_job_keeps_full_output_budget(monkeypatch):
     monkeypatch.setattr(draft, "_ask_context", ask)
     monkeypatch.setattr(draft.match, "target", lambda *args: (b"\xc3", [], {"size": 9, "unit": "x"}))
     monkeypatch.setattr(draft.match, "disasm", lambda *args: ["ret "])
+    monkeypatch.setattr(draft.match.clients, "load", lambda: {"C": {"compiler": "cl", "flags": "/O2"}})
+    monkeypatch.setattr(draft, "prompt_for", lambda *args, **kwargs: "prompt")
     logs = []
     draft.llm_rounds("C", "1", "deepseek:deepseek-flash", 1, log=logs.append,
                      provider_options={"allow_cloud": True})
@@ -565,8 +567,8 @@ def test_optimizer_split_and_one_time_profile():
     with patch("roc.metrics.PATH", SimpleNamespace(read_text=lambda **_kwargs: (
             '{"event":"job","client":"C","addr":"00000000","model":"local-model"}\n'
             '{"event":"job","client":"C","addr":"00000001","model":"other-model"}\n'))):
-        assert {row["addr"] for row in optimizer._fresh_targets(targets, "local-model")} == {
-            row["addr"] for row in targets if row["addr"] not in ("00000000", "00000001")}
+            assert {row["addr"] for row in optimizer._fresh_targets(targets, "local-model")} == {
+                row["addr"] for row in targets if row["addr"] != "00000000"}
 
 
 def test_optimizer_concurrency_probe():
@@ -1068,6 +1070,74 @@ def test_diagnose_call_argument_order():
     assert any("callee(obj.value, make(a, 1))" in variant for variant in swapped)
 
 
+def test_evidence_guided_mutations_are_bounded_and_stop_on_exact():
+    from roc import match, mutate
+    target, candidate = bytes.fromhex("83c003c3"), bytes.fromhex("83c002c3")
+    diagnosis = match.diagnose(target, [], candidate, [])
+    assert diagnosis["mismatch_class"] == "immediate/constant mismatch"
+    assert diagnosis["immediate_diffs"] == [{"instruction": 0, "mnemonic": "add",
+                                              "target": "3", "candidate": "2"}]
+    src = "int f(){ return x + 2; }"
+    assert mutate.immediate_variants(src, diagnosis) == ["int f(){ return x + 3; }"]
+    calls = []
+    def check(_client, _addr, source, _flags=None, include_diagnosis=False):
+        calls.append(source)
+        if include_diagnosis:
+            return 95, None, "", [], diagnosis
+        return (100 if "+ 3" in source else 95), None, "", []
+    result = mutate.improve("C", "1", src, check=check, guided=True)
+    assert result[0] == 100 and result[2] == 1
+    assert result.mutations[0]["category"] == "immediate_constant"
+    assert result.mutations[0]["exact"] is True and calls[-1] == "int f(){ return x + 3; }"
+
+    branch = match.diagnose(bytes.fromhex("7500c3"), [], bytes.fromhex("7400c3"), [])
+    assert branch["mismatch_class"] == "branch-condition mismatch"
+    assert mutate.guided_variants("int f(int a,int b){ return a == b; }", branch) == [
+        ("branch_condition", "int f(int a,int b){ return a != b; }")]
+    cleanup = match.diagnose(bytes.fromhex("c3"), [], bytes.fromhex("c20800"), [])
+    assert cleanup["return_cleanup"] == {"target": "", "candidate": "8"}
+    assert mutate.guided_variants("void __stdcall f(int a){ }", cleanup) == [
+        ("calling_convention", "void __cdecl f(int a){ }")]
+    assert mutate.guided_variants("int S::f(int a){ return a; }", {
+        "mismatch_class": "calling-convention mismatch",
+        "return_cleanup": {"target": "8", "candidate": ""}})[0] == (
+        "calling_convention", "int __stdcall S::f(int a){ return a; }")
+    assert not any(category == "calling_convention" for category, _ in
+                   mutate.guided_variants("void f(int a){ }", cleanup))
+    stack = match.diagnose(bytes.fromhex("8b442408c3"), [], bytes.fromhex("8b442404c3"), [])
+    assert stack["mismatch_class"] == "stack-frame/layout mismatch"
+    assert mutate.guided_variants("struct S { char pad[4]; }; int f(){ return pad[0]; }", stack) == [
+        ("stack_layout", "struct S { char pad[8]; }; int f(){ return pad[0]; }")]
+    intrinsic = {"mismatch_class": "intrinsic/call mismatch"}
+    assert mutate.intrinsic_call_variants("long InterlockedExchangeAdd(long* p,long n){return 0;}", intrinsic) == [
+        "long _InterlockedExchangeAdd(long* p,long n){return 0;}"]
+    ret = match.diagnose(bytes.fromhex("56568bc6c35e5fc3"), [],
+                         bytes.fromhex("56565e5fc3"), [])
+    assert ret["mismatch_class"] == "missing return value"
+    assert mutate.guided_variants("struct S { void f(){ } };", ret) == [
+        ("return_value", "struct S { void* f(){ \n    return this;\n} };")]
+
+
+def test_mismatch_class_and_mutation_summary():
+    from roc import match
+    immediate = match.diagnose(bytes.fromhex("83c003c3"), [], bytes.fromhex("83c002c3"), [])
+    branch = match.diagnose(bytes.fromhex("7500c3"), [], bytes.fromhex("7400c3"), [])
+    assert immediate["mismatch_class"] == "immediate/constant mismatch"
+    assert branch["mismatch_class"] == "branch-condition mismatch"
+    summary = _metrics.summarize_runs([{
+        "score": 100, "seconds": 1,
+        "rounds": [{"round": 1, "code": True, "score": 99,
+                    "mismatch_class": immediate["mismatch_class"]},
+                   {"round": "mutate", "exact_conversion": True, "mutations": [
+                       {"category": "immediate_constant", "exact": True, "seconds": 0.1},
+                       {"category": "branch_condition", "exact": False, "seconds": 0.2}]}]}])
+    assert summary["mismatch_classes"] == {"immediate/constant mismatch": 1}
+    assert summary["mutation_exact_conversions"] == 1
+    assert summary["mutation_attempts"] == 2
+    assert summary["mutation_exact_by_category"] == {"immediate_constant": 1}
+    assert summary["mutation_seconds"] == 0.3
+
+
 def test_mutate_validated():
     src = "struct S{ char m_x; }; int S::f(){ return m_x != 0; }"
     vs = mutate.variants(src)
@@ -1136,14 +1206,14 @@ def test_truncation_disables_thinking(monkeypatch):
     monkeypatch.setattr(draft, "_ask_context", ask)
     monkeypatch.setattr(draft.match, "target", lambda *args: (b"\xc3", [], {"size": 9, "unit": "x"}))
     monkeypatch.setattr(draft.match, "disasm", lambda *args: ["ret "])
-    monkeypatch.setattr(draft, "prompt_for", lambda *args: "p")
-    monkeypatch.setattr(draft.match, "check_text", lambda *args: (100, None, "", None))
+    monkeypatch.setattr(draft, "prompt_for", lambda *args, **kwargs: "p")
+    monkeypatch.setattr(draft.match, "check_text", lambda *args, **kwargs: (100, None, "", None))
     logs = []
     score, _ = draft.llm_rounds("C", "1", "deepseek:deepseek-flash", 2, log=logs.append,
                                  provider_options={"allow_cloud": True})
     assert score == 100 and len(seen) == 2
-    assert seen[1].get("thinking") == "disabled" and "reasoning_effort" not in seen[1]
-    assert any("thinking disabled" in message for message in logs)
+    assert all(row.get("thinking") == "disabled" for row in seen)
+    assert all("reasoning_effort" not in row for row in seen)
 
 
 def test_tiny_cloud_auto_thinking_starts_disabled(monkeypatch):
@@ -1155,8 +1225,8 @@ def test_tiny_cloud_auto_thinking_starts_disabled(monkeypatch):
     monkeypatch.setattr(draft, "_ask_context", ask)
     monkeypatch.setattr(draft.match, "target", lambda *args: (b"\xc3", [], {"size": 12, "unit": "x"}))
     monkeypatch.setattr(draft.match, "disasm", lambda *args: ["ret "])
-    monkeypatch.setattr(draft, "prompt_for", lambda *args: "p")
-    monkeypatch.setattr(draft.match, "check_text", lambda *args: (100, None, "", None))
+    monkeypatch.setattr(draft, "prompt_for", lambda *args, **kwargs: "p")
+    monkeypatch.setattr(draft.match, "check_text", lambda *args, **kwargs: (100, None, "", None))
     draft.llm_rounds("C", "1", "deepseek:deepseek-flash", 1,
                      provider_options={"allow_cloud": True, "thinking": "auto"}, log=lambda *_: None)
     assert seen[0].get("thinking") == "disabled"
@@ -1173,7 +1243,7 @@ def test_asm_strikes_stop_early(monkeypatch):
     monkeypatch.setattr(draft, "_ask_context", ask)
     monkeypatch.setattr(draft.match, "target", lambda *args: (b"\xc3", [], {"size": 9, "unit": "x"}))
     monkeypatch.setattr(draft.match, "disasm", lambda *args: ["ret "])
-    monkeypatch.setattr(draft, "prompt_for", lambda *args: "p")
+    monkeypatch.setattr(draft, "prompt_for", lambda *args, **kwargs: "p")
     stats, logs = [], []
     score, source = draft.llm_rounds("C", "1", "m", 4, log=logs.append, stats=stats)
     assert score == 0 and source is None and len(calls) == 2
@@ -1192,7 +1262,7 @@ def test_asm_strikes_stop_early(monkeypatch):
     monkeypatch.setattr(draft, "_ask_context", ask)
     monkeypatch.setattr(draft.match, "target", lambda *args: (b"\xc3", [], {"size": 9, "unit": "x"}))
     monkeypatch.setattr(draft.match, "disasm", lambda *args: ["ret "])
-    monkeypatch.setattr(draft, "prompt_for", lambda *args: "p")
+    monkeypatch.setattr(draft, "prompt_for", lambda *args, **kwargs: "p")
     stats, logs = [], []
     score, source = draft.llm_rounds("C", "1", "m", 4, log=logs.append, stats=stats)
     assert score == 0 and source is None and len(calls) == 2

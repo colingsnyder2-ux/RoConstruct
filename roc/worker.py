@@ -295,7 +295,7 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
         strategy="direct", cloud_allowed=False, cloud_budget=None, cloud_gate=None,
         diverse_candidates=1, cloud_min_size=0, cloud_fallback=None, seed=None,
         cloud_escalate=None, cloud_escalate_after=2, thinking=None, reasoning_effort=None,
-        max_tokens=2048, examples_cache=None, source_cache=None):
+        max_tokens=2048, examples_cache=None, source_cache=None, guided_mutations=False):
     """forever: survive server/network outages (retry every minute) for overnight runs.
     only: restrict to these clients (one-click links).
     examples_cache/source_cache: shared across parallel loops so N workers do
@@ -404,7 +404,8 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
             log("  auto-think: thinking disabled")
         provider_options = {"allow_cloud": cloud_allowed, "budget": cloud_budget,
                             "gate": cloud_gate, "diverse_candidates": diverse_candidates,
-                            "seed": seed, "max_tokens": max_tokens}
+                            "seed": seed, "max_tokens": max_tokens,
+                            "guided_mutations": guided_mutations}
         if rounds == "auto" and (job_model or "").startswith("deepseek:"):
             provider_options["source_hint_max_size"] = 128
         if think is not None:
@@ -433,7 +434,7 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
                    cloud_budget=None, cloud_gate=None, diverse_candidates=1,
                    cloud_min_size=0, cloud_fallback=None, seed=None,
                    cloud_escalate=None, cloud_escalate_after=2, thinking=None, reasoning_effort=None,
-                   max_tokens=2048):
+                   max_tokens=2048, guided_mutations=False):
     """Run a bounded number of independent lease loops.
 
     Server leases make workers safe to run in parallel. Cloud loops are
@@ -456,6 +457,7 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
                    cloud_fallback=cloud_fallback, seed=seed, cloud_escalate=cloud_escalate,
                    cloud_escalate_after=cloud_escalate_after, thinking=thinking,
                    reasoning_effort=reasoning_effort, max_tokens=max_tokens,
+                   guided_mutations=guided_mutations,
                    examples_cache=shared_examples, source_cache=shared_sources)
     if max_jobs is None:
         quotas = [None] * workers
@@ -479,6 +481,7 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
                 cloud_fallback=cloud_fallback, seed=seed, cloud_escalate=cloud_escalate,
                 cloud_escalate_after=cloud_escalate_after, thinking=thinking,
                 reasoning_effort=reasoning_effort, max_tokens=max_tokens,
+                guided_mutations=guided_mutations,
                 examples_cache=shared_examples, source_cache=shared_sources)
         except BaseException as error:
             errors.append(error)

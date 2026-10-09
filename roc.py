@@ -421,7 +421,7 @@ def cmd_worker(a):
                           cloud_fallback=a.cloud_fallback, seed=a.seed,
                           cloud_escalate=a.cloud_escalate, cloud_escalate_after=a.cloud_escalate_after,
                           thinking=a.thinking, reasoning_effort=a.reasoning_effort,
-                          max_tokens=a.output_budget)
+                          max_tokens=a.output_budget, guided_mutations=a.guided_mutations)
 
 
 def cmd_provider(a):
@@ -968,6 +968,7 @@ def main(argv=None):
         (["--preset"], {"choices": ["fast", "balanced", "deep"], "default": "balanced"}),
         (["--dry-run"], {"action": "store_true", "help": "show worker setup without leasing a job"}),
         (["--source-only"], {"action": "store_true", "help": "run deterministic candidates; never call Ollama"}),
+        (["--guided-mutations"], {"action": "store_true", "help": "enable evidence-guided source mutations after compilation"}),
         (["--no-update"], {"action": "store_true", "help": "skip the pre-run source update check"}))
     cmd("doctor", cmd_doctor, "check worker dependencies and local source setup")
     cmd("model-stats", cmd_model_stats, "compare models using worker telemetry")

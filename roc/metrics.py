@@ -153,10 +153,25 @@ def summarize_runs(jobs):
     total_cost = round(sum(cost_known), 8) if cost_known else None
     scores = sorted(r.get("score", 0) for r in jobs)
     median = scores[len(scores) // 2] if scores else 0
-    codes = {}
+    codes, mutation_attempts, mutation_exact = {}, {}, {}
+    mutation_conversions = mutation_seconds = 0
+    mismatch_classes = {}
     for r in jobs:
         for code, n in error_code_counts(r.get("rounds", [])).items():
             codes[code] = codes.get(code, 0) + n
+        for attempt in r.get("rounds", []):
+            if isinstance(attempt, dict) and attempt.get("round") == "mutate":
+                mutation_conversions += bool(attempt.get("exact_conversion"))
+                for item in attempt.get("mutations", []):
+                    category = item.get("category", "unknown")
+                    mutation_attempts[category] = mutation_attempts.get(category, 0) + 1
+                    mutation_seconds += item.get("seconds", 0) or 0
+                    if item.get("exact"):
+                        mutation_exact[category] = mutation_exact.get(category, 0) + 1
+        for attempt in _coded_rounds(r.get("rounds", [])):
+            category = attempt.get("mismatch_class")
+            if category and category != "exact":
+                mismatch_classes[category] = mismatch_classes.get(category, 0) + 1
     return {"jobs": len(jobs), "matched": matched,
             "match_rate": round(100.0 * matched / max(len(jobs), 1), 2),
             "seconds_per_job": round(seconds / max(len(jobs), 1), 2),
@@ -175,7 +190,13 @@ def summarize_runs(jobs):
             "estimated_cost": total_cost,
             "exact_matches_per_dollar": round(matched / total_cost, 4) if total_cost else None,
             "exact_matches_per_wall_hour": round(matched / (seconds / 3600), 4) if seconds else None,
-            "errors_by_code": dict(sorted(codes.items(), key=lambda i: -i[1]))}
+            "errors_by_code": dict(sorted(codes.items(), key=lambda i: -i[1])),
+            "mismatch_classes": dict(sorted(mismatch_classes.items(), key=lambda i: -i[1])),
+            "mutation_exact_conversions": mutation_conversions,
+            "mutation_attempts": sum(mutation_attempts.values()),
+            "mutation_attempts_by_category": dict(sorted(mutation_attempts.items(), key=lambda i: -i[1])),
+            "mutation_exact_by_category": dict(sorted(mutation_exact.items(), key=lambda i: -i[1])),
+            "mutation_seconds": round(mutation_seconds, 3)}
 
 
 def model_stats():

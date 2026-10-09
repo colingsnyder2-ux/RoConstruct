@@ -6,6 +6,7 @@ check function and keeps the best score, so a bad guess costs compile time
 and nothing else. No LLM, no new models.
 """
 import re
+import time
 
 CMP_FLIP = {"==": "!=", "!=": "==", "<": ">=", ">=": "<", ">": "<=", "<=": ">",
             "&&": "||", "||": "&&"}
@@ -115,11 +116,171 @@ def _reversed_call_order(diagnosis):
                for row in (diagnosis or {}).get("call_argument_diffs", []))
 
 
+def _literal_value(token):
+    token = re.sub(r"(?i)(?:ull|llu|ul|lu|u|ll|l)$", "", token)
+    return int(token, 16 if token.lower().startswith("0x") else 10)
+
+
+def immediate_variants(src, diagnosis):
+    """Replace one uniquely occurring source literal when disassembly agrees."""
+    out = []
+    literal = re.compile(r"(?<![\w.])(?:0[xX][0-9a-fA-F]+|\d+)(?:[uUlL]{1,3})?(?![\w.])")
+    for diff in (diagnosis or {}).get("immediate_diffs", [])[:4]:
+        try:
+            old, new = diff["candidate"], diff["target"]
+            old_value, new_value = _literal_value(old), _literal_value(new)
+        except (KeyError, ValueError):
+            continue
+        matches = [m for m in literal.finditer(src) if _literal_value(m.group()) == old_value]
+        if len(matches) != 1:
+            continue
+        match = matches[0]
+        suffix = re.search(r"[uUlL]+$", match.group())
+        replacement = (hex(new_value) if match.group().lower().startswith("0x") else str(new_value))
+        if suffix:
+            replacement += suffix.group()
+        out.append(src[:match.start()] + replacement + src[match.end():])
+    return out
+
+
+def stack_layout_variants(src, diagnosis):
+    """Adjust one uniquely matching padding array by decoded stack delta."""
+    out = []
+    arrays = list(re.finditer(r"\b(?:char|unsigned\s+char)\s+\w*\s*\[\s*(0x[0-9a-f]+|\d+)\s*\]", src, re.I))
+    for diff in (diagnosis or {}).get("stack_offset_diffs", [])[:2]:
+        try:
+            delta = _literal_value(diff["target"]) - _literal_value(diff["candidate"])
+        except (KeyError, ValueError):
+            continue
+        if not delta or len(arrays) != 1:
+            continue
+        match = arrays[0]
+        old = _literal_value(match.group(1))
+        new = old + delta
+        if new <= 0:
+            continue
+        text = (hex(new) if match.group(1).lower().startswith("0x") else str(new))
+        out.append(src[:match.start(1)] + text + src[match.end(1):])
+    return out
+
+
+def intrinsic_call_variants(src, diagnosis):
+    """Switch only known MSVC Interlocked spelling when xadd/call evidence agrees."""
+    if (diagnosis or {}).get("mismatch_class") != "intrinsic/call mismatch":
+        return []
+    if "InterlockedExchangeAdd" not in src:
+        return []
+    if "_InterlockedExchangeAdd" in src:
+        return [src.replace("_InterlockedExchangeAdd", "InterlockedExchangeAdd", 1)]
+    return [src.replace("InterlockedExchangeAdd", "_InterlockedExchangeAdd", 1)]
+
+
+def calling_convention_variants(src, diagnosis):
+    """Add/remove explicit MSVC convention only when return cleanup proves it."""
+    if (diagnosis or {}).get("mismatch_class") != "calling-convention mismatch":
+        return []
+    cleanup = diagnosis.get("return_cleanup", {})
+    target_cleans, candidate_cleans = bool(cleanup.get("target")), bool(cleanup.get("candidate"))
+    if target_cleans == candidate_cleans or "__cdecl" in src or "__stdcall" in src:
+        return []
+    if not target_cleans:
+        return []
+    pattern = re.compile(r"\b([A-Za-z_]\w*(?:\s*\*)?)\s+([A-Za-z_]\w*(?:::[A-Za-z_]\w*)?)\s*\(")
+    matches = list(pattern.finditer(src))
+    if not matches:
+        return []
+    match = matches[-1]
+    return [src[:match.start(1)] + match.group(1) + " __stdcall " +
+            match.group(2) + src[match.end(2):]]
+
+
+def return_value_variants(src, diagnosis):
+    """Add `return this` for a decoded missing EAX return immediately before epilogue."""
+    info = (diagnosis or {}).get("missing_return_value")
+    if (diagnosis or {}).get("mismatch_class") != "missing return value" or not info:
+        return []
+    if info.get("register") not in {"esi", "edi", "ebx", "ebp", "eax"}:
+        return []
+    matches = list(re.finditer(r"\bvoid(\s+[A-Za-z_]\w*(?:::[A-Za-z_]\w+)?)\s*\([^)]*\)\s*\{", src))
+    if not matches:
+        return []
+    function = matches[-1]
+    opening = src.find("{", function.end() - 1)
+    depth, close = 0, None
+    for index in range(opening, len(src)):
+        if src[index] == "{":
+            depth += 1
+        elif src[index] == "}":
+            depth -= 1
+            if depth == 0:
+                close = index
+                break
+    if opening < 0 or close is None:
+        return []
+    name = function.group(1).strip().split("::")[-1]
+    updated = re.sub(r"\bvoid(\s+(?:[A-Za-z_]\w*::)?" + re.escape(name) + r"\s*\()",
+                     r"void*\1", src)
+    function = list(re.finditer(r"\bvoid\*(\s+[A-Za-z_]\w*(?:::[A-Za-z_]\w+)?)\s*\([^)]*\)\s*\{", updated))[-1]
+    opening = updated.find("{", function.end() - 1)
+    depth, close = 0, None
+    for index in range(opening, len(updated)):
+        if updated[index] == "{":
+            depth += 1
+        elif updated[index] == "}":
+            depth -= 1
+            if depth == 0:
+                close = index
+                break
+    if close is None:
+        return []
+    updated = updated[:close] + "\n    return this;\n" + updated[close:]
+    return [updated]
+
+
+def guided_variants(src, diagnosis):
+    """Only propose bounded source edits supported by decoded mismatch evidence."""
+    out, seen = [], {src}
+
+    def add(category, values):
+        for value in values:
+            if value and value not in seen and len(out) < 8:
+                seen.add(value)
+                out.append((category, value))
+
+    if _reversed_call_order(diagnosis):
+        add("argument_order", swap_call_argument_variants(src))
+    if (diagnosis or {}).get("immediate_diffs") and not (diagnosis or {}).get("stack_offset_diffs"):
+        add("immediate_constant", immediate_variants(src, diagnosis))
+    if (diagnosis or {}).get("stack_offset_diffs"):
+        add("stack_layout", stack_layout_variants(src, diagnosis))
+    if (diagnosis or {}).get("mismatch_class") == "intrinsic/call mismatch":
+        add("intrinsic_call", intrinsic_call_variants(src, diagnosis))
+    if (diagnosis or {}).get("branch_condition_diff"):
+        add("branch_condition", [negate_comparison(src)])
+    opcodes = (diagnosis or {}).get("opcode_delta", {})
+    if (opcodes.get("sar", 0) < 0 < opcodes.get("shr", 0) and "unsigned int" in src):
+        add("signedness", [toggle_int_signedness(src)])
+    elif "movsx" in opcodes or "movzx" in opcodes:
+        add("signedness", [toggle_char_signedness(src), toggle_int_signedness(src)])
+    if (diagnosis or {}).get("mismatch_class") == "calling-convention mismatch":
+        add("calling_convention", calling_convention_variants(src, diagnosis))
+        cleanup = diagnosis.get("return_cleanup", {})
+        target_cleans, candidate_cleans = bool(cleanup.get("target")), bool(cleanup.get("candidate"))
+        if "__stdcall" in src and not target_cleans and candidate_cleans:
+            add("calling_convention", [src.replace("__stdcall", "__cdecl", 1)])
+        elif "__cdecl" in src and target_cleans and not candidate_cleans:
+            add("calling_convention", [src.replace("__cdecl", "__stdcall", 1)])
+    if (diagnosis or {}).get("mismatch_class") == "missing return value":
+        add("return_value", return_value_variants(src, diagnosis))
+    return out
+
+
 class ImproveResult(tuple):
     """(score, src, tried) plus `.speculative`; unpacks like the old 3-tuple."""
-    def __new__(cls, score, src, tried, speculative=False):
+    def __new__(cls, score, src, tried, speculative=False, mutations=()):
         self = super().__new__(cls, (score, src, tried))
         self.speculative = speculative
+        self.mutations = list(mutations)
         return self
 
 
@@ -137,8 +298,8 @@ def variants(src):
     return out
 
 
-def improve(client, addr, src, flags=None, check=None):
-    """Compile-and-test every variant. Returns ImproveResult(score, src, tried).
+def improve(client, addr, src, flags=None, check=None, guided=False):
+    """Compile-and-test bounded variants; guided mode requires mismatch evidence.
 
     ImproveResult is a 3-tuple (score, src, tried) with a `.speculative`
     attribute, True when the winning variant came from a SPECULATIVE
@@ -158,31 +319,41 @@ def improve(client, addr, src, flags=None, check=None):
         diagnosis = measured[4] if len(measured) > 4 else None
     except match.CompileError:
         base = 0
-    best, tried, speculative = (base, src), 0, False
+    best, tried, speculative, mutations = (base, src), 0, False, []
+    if base == 100:
+        return ImproveResult(base, src, 0, mutations=mutations)
+    legacy = []
     for fn in MUTATORS:
         try:
-            v = fn(src)
+            value = fn(src)
         except (ValueError, IndexError):
             continue
-        if not v or v == src:
-            continue
+        if value and value != src:
+            legacy.append((fn.__name__, value))
+    if _reversed_call_order(diagnosis):
+        legacy.extend(("argument_order", value) for value in swap_call_argument_variants(src))
+    if guided:
+        variants_to_try = guided_variants(src, diagnosis)
+        known = {value for _, value in variants_to_try}
+        variants_to_try.extend((category, value) for category, value in legacy if value not in known)
+        variants_to_try = variants_to_try[:8]
+    else:
+        variants_to_try = legacy
+    for category, v in variants_to_try:
         tried += 1
+        started = time.monotonic()
         try:
             s, _, _, _ = check(client, addr, v, flags)
         except match.CompileError:
+            mutations.append({"category": category, "score": 0, "compile_error": True,
+                              "seconds": round(time.monotonic() - started, 3)})
             continue
+        mutations.append({"category": category, "score": s, "compile_error": False,
+                          "exact": s == 100, "seconds": round(time.monotonic() - started, 3)})
         if s > best[0]:
             best = (s, v)
-            speculative = fn.__name__ in SPECULATIVE
-    if _reversed_call_order(diagnosis):
-        for v in swap_call_argument_variants(src):
-            if v == src:
-                continue
-            tried += 1
-            try:
-                s, _, _, _ = check(client, addr, v, flags)
-            except match.CompileError:
-                continue
-            if s > best[0]:
-                best, speculative = (s, v), True
-    return ImproveResult(best[0], best[1], tried, speculative)
+            speculative = category in SPECULATIVE or category in ("argument_order", "immediate_constant",
+                                                                  "branch_condition", "calling_convention")
+        if s == 100:
+            break
+    return ImproveResult(best[0], best[1], tried, speculative, mutations)

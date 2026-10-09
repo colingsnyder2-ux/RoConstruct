@@ -1,0 +1,20 @@
+[
+ {"client":"2007-08","addr":"00401770","size":45,"unit":"CAboutRobloxDialog","bucket":"tiny","source_present":false},
+ {"client":"2007-08","addr":"004017a0","size":32,"unit":"CAboutRobloxDialog","bucket":"tiny","source_present":false},
+ {"client":"2007-08","addr":"0040a260","size":71,"unit":"VCApp::?$CComObject","bucket":"medium","source_present":false},
+ {"client":"2007-08","addr":"0040ad20","size":84,"unit":"VCSecureHtmlView::?$CXTPCommandBarsSiteBase","bucket":"medium","source_present":false},
+ {"client":"2007-08","addr":"00421640","size":185,"unit":"CSelectionTreeCtrl","bucket":"large","source_present":false},
+ {"client":"2007-08","addr":"00421d50","size":203,"unit":"CSelectionTreeCtrl","bucket":"large","source_present":false},
+ {"client":"2008-06","addr":"004010c0","size":33,"unit":"CAboutRobloxDialog","bucket":"tiny","source_present":false},
+ {"client":"2008-06","addr":"00401290","size":43,"unit":"CAboutRobloxDialog","bucket":"tiny","source_present":false},
+ {"client":"2008-06","addr":"00404f30","size":89,"unit":"VCWorkspace::?$CComObject","bucket":"medium","source_present":false},
+ {"client":"2008-06","addr":"00405ce0","size":106,"unit":"VCWorkspace::?$CComObject","bucket":"medium","source_present":false},
+ {"client":"2008-06","addr":"0040af30","size":288,"unit":"RBX::Reflection::_N::?$TypedPropertyDescriptor","bucket":"large","source_present":false},
+ {"client":"2008-06","addr":"0040b050","size":387,"unit":"RBX::Reflection::_N::?$TypedPropertyDescriptor","bucket":"large","source_present":false},
+ {"client":"2012-06","addr":"00401000","size":5,"unit":"seg_00400000","bucket":"tiny","source_present":false},
+ {"client":"2012-06","addr":"004010f0","size":33,"unit":"CAboutRobloxDialog","bucket":"tiny","source_present":false},
+ {"client":"2012-06","addr":"00404100","size":59,"unit":"RBX::Soundscape::VSoundChannel::?$FactoryProduct::Creator","bucket":"medium","source_present":false},
+ {"client":"2012-06","addr":"00404140","size":62,"unit":"RBX::Soundscape::VSoundChannel::?$FactoryProduct::Creator","bucket":"medium","source_present":false},
+ {"client":"2012-06","addr":"0040bac0","size":160,"unit":"boost::exception_detail::clone_base","bucket":"large","source_present":false},
+ {"client":"2012-06","addr":"0040c490","size":240,"unit":"RBX::Instance::ICombinedSignalData","bucket":"large","source_present":false}
+]

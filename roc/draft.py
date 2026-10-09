@@ -850,6 +850,7 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
             continue
         asm_strikes = 0  # reached real compile: any later asm dump is a new streak
         compile_error = None
+        diag = None
         repaired, duplicate = [], False
         reply_src = src  # unmodified LLM output, kept for comparison
         san, dropped = _repair.sanitize(src)
@@ -901,6 +902,7 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
             entry = {"round": i + 1, "strategy": strategy, "candidate_mode": "independent" if independent else "repair", "score": score, "output_chars": len(reply),
                      "output_tokens": generated_tokens or max(1, len(reply) // 4), "code": True,
                      "source": src,
+                     "mismatch_class": diag.get("mismatch_class") if diag else None,
                      "compile_seconds": round(time.monotonic() - compile_started, 3),
                      "compile_error": compile_error, "repaired": repaired,
                      "duplicate": duplicate, **generation}
@@ -929,11 +931,17 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
                               "reason": "same compile error x3", "code": err_codes[-1]})
             break
     if compiled_best is not None and best[0] < 100:
-        result = _mutate.improve(client, addr, compiled_best[1], flags)
+        result = _mutate.improve(client, addr, compiled_best[1], flags,
+                                 guided=bool((provider_options or {}).get("guided_mutations")))
         mscore, msrc, tried = result[0], result[1], result[2]
         if stats is not None:
+            guided = bool((provider_options or {}).get("guided_mutations"))
             stats.append({"round": "mutate", "score": mscore, "code": True,
                           "source": msrc, "tried": tried,
+                          "mutations": result.mutations,
+                          "initial_score": compiled_best[0],
+                          "exact_conversion": compiled_best[0] < 100 and mscore == 100,
+                          "guided": guided,
                           "speculative": result.speculative})
         if mscore > best[0]:
             best = (mscore, msrc)

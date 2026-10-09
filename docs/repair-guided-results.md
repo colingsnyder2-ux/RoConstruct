@@ -13,8 +13,8 @@ is enabled.
   supported by decoded evidence.
 - `roc.mutate.guided_variants` uses bounded evidence-backed edits for immediate
   literals, reversed calls, branch conditions, signedness (`shr`→`sar`), stack
-  padding deltas, known Interlocked spelling, and return cleanup/calling
-  convention. Guided mode tries these first, then keeps
+  padding deltas, known Interlocked spelling, missing `EAX` return values, and
+  return cleanup/calling convention. Guided mode tries these first, then keeps
   the existing bounded mutators as fallback. Exact match stops immediately.
 - Mutation telemetry records category, score, exact result, compile time, and
   exact conversions. `roc.metrics.summarize_runs` reports category totals and
@@ -61,11 +61,13 @@ through both repair arms:
 | arm | candidates | conversions | attempts | mutation time | replay time |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | existing | 15 | 0 | 33 | 1.99s | 2.69s |
-| guided-first + fallback | 15 | 0 | 35 | 1.27s | 1.98s |
+| guided-first + fallback | 15 | 1 | 35 | 4.50s | 5.50s |
 
-No fresh candidate became exact through either repair arm. This is strong
-negative evidence against claiming broad repair gain; guided mode remains
-opt-in and useful mainly where decoded mismatch evidence is high-confidence.
+Guided conversion was one medium 2008-06 destructor-like function: decoded
+missing `mov eax, esi` before epilogue → source `void`→`void*` plus `return
+this;`. Real MSVC produced 97%→100%. Existing arm produced zero conversions.
+This is one fresh conversion, not broad match-rate proof; guided mode remains
+opt-in. Mutation added 2.51s replay time on this small sample and no LLM cost.
 
 ## Verification
 

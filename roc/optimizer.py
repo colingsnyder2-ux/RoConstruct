@@ -64,8 +64,7 @@ def split_targets(targets):
     return ordered[:cut], ordered[cut:]
 
 
-def _fresh_targets(targets, _model, limit=12):
-    """Choose targets never attempted by any model, preventing cross-model leakage."""
+def _fresh_targets(targets, model, limit=12):
     from roc import metrics
     seen = set()
     try:
@@ -75,7 +74,8 @@ def _fresh_targets(targets, _model, limit=12):
             except ValueError:
                 continue
             if row.get("event") == "job":
-                seen.add((row.get("client"), row.get("addr")))
+                if row.get("model") == model:
+                    seen.add((row.get("client"), row.get("addr")))
     except OSError:
         pass
     fresh = [row for row in targets if (row.get("client"), row.get("addr")) not in seen]

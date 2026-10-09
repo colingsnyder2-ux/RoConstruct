@@ -262,7 +262,71 @@ def diagnose(target_code, target_relocs, cand, cand_relocs):
                              for arg in target_args + cand_args)
         if (target_call[0] == cand_call[0] and len(target_args) >= 2 and
                 len(target_args) == len(cand_args) and target_args != cand_args and immediate_args):
-            call_argument_diffs.append({"call": i + 1, "target": target_args, "candidate": cand_args})
+                call_argument_diffs.append({"call": i + 1, "target": target_args, "candidate": cand_args})
+    immediate_diffs = []
+    stack_offset_diffs = []
+    position_aligned = len(t_ins) == len(c_ins) and all(tm == cm for (tm, _), (cm, _) in zip(t_ins, c_ins))
+    if position_aligned:
+        for i, ((tm, to), (cm, co)) in enumerate(zip(t_ins, c_ins)):
+            if tm != cm or tm.startswith("j") or tm == "call":
+                continue
+            t_nums = re.findall(r"0x[0-9a-f]+|\d+", to, re.I)
+            c_nums = re.findall(r"0x[0-9a-f]+|\d+", co, re.I)
+            if len(t_nums) != 1 or len(c_nums) != 1 or t_nums[0].lower() == c_nums[0].lower():
+                continue
+            if re.sub(re.escape(t_nums[0]), "<imm>", to, flags=re.I).lower() == \
+                    re.sub(re.escape(c_nums[0]), "<imm>", co, flags=re.I).lower():
+                immediate_diffs.append({"instruction": i, "mnemonic": tm,
+                                         "target": t_nums[0], "candidate": c_nums[0]})
+            if "[esp" in to.lower() or "[ebp" in to.lower():
+                stack_offset_diffs.append({"instruction": i, "mnemonic": tm,
+                                           "target": t_nums[0], "candidate": c_nums[0]})
+    inverted = {"je": "jne", "jne": "je", "jz": "jnz", "jnz": "jz", "jl": "jge", "jge": "jl",
+                "jle": "jg", "jg": "jle", "jb": "jae", "jae": "jb", "jbe": "ja", "ja": "jbe",
+                "js": "jns", "jns": "js", "jo": "jno", "jno": "jo", "jp": "jnp", "jnp": "jp"}
+    branch_condition_diff = (len(t_ins) == len(c_ins) and any(
+        inverted.get(tm) == cm for (tm, _), (cm, _) in zip(t_ins, c_ins)) and all(
+        tm == cm or inverted.get(tm) == cm for (tm, _), (cm, _) in zip(t_ins, c_ins)))
+    t_ret = next((o for m, o in reversed(t_ins) if m == "ret"), None)
+    c_ret = next((o for m, o in reversed(c_ins) if m == "ret"), None)
+    missing_return_value = None
+    for index, (mnemonic, operands) in enumerate(t_ins[:-1]):
+        if mnemonic != "mov" or not re.fullmatch(r"eax, (e?[abcd]x|e[sd]i|ebp)", operands):
+            continue
+        if index < len(t_ins) - 5 or any(m == "mov" and o == operands for m, o in c_ins):
+            continue
+        if any(m == "pop" for m, _ in t_ins[index + 1:]) and t_ret is not None:
+            missing_return_value = {"register": operands.split(",", 1)[1].strip(),
+                                    "instruction": index}
+            break
+    if exact_match(target_code, target_relocs, cand, cand_relocs):
+        mismatch = "exact"
+    elif call_argument_diffs:
+        mismatch = "argument-order mismatch"
+    elif immediate_diffs and not stack_offset_diffs:
+        mismatch = "immediate/constant mismatch"
+    elif branch_condition_diff:
+        mismatch = "branch-condition mismatch"
+    elif t_ret is not None and c_ret is not None and t_ret != c_ret:
+        mismatch = "calling-convention mismatch"
+    elif stack_offset_diffs:
+        mismatch = "stack-frame/layout mismatch"
+    elif missing_return_value:
+        mismatch = "missing return value"
+    elif (t_br[2] != c_br[2] and (t_op.get("xadd", 0) or c_op.get("xadd", 0))):
+        mismatch = "intrinsic/call mismatch"
+    elif len(t_ins) != len(c_ins):
+        mismatch = "missing/extra instruction"
+    elif len(target_code) != len(cand):
+        mismatch = "code-size mismatch"
+    elif t_stk != c_stk:
+        mismatch = "stack-frame/layout mismatch"
+    elif t_op == c_op and t_reg != c_reg:
+        mismatch = "register allocation difference"
+    elif t_op != c_op:
+        mismatch = "instruction-selection mismatch"
+    else:
+        mismatch = "unknown"
     byte_diffs = []
     if len(target_code) == len(cand):
         masked_offsets = {r + i for r in target_relocs + cand_relocs for i in range(4)}
@@ -279,6 +343,13 @@ def diagnose(target_code, target_relocs, cand, cand_relocs):
                          "target_jmp": t_br[1], "cand_jmp": c_br[1],
                          "target_call": t_br[2], "cand_call": c_br[2]},
             "call_argument_diffs": call_argument_diffs,
+            "immediate_diffs": immediate_diffs,
+            "stack_offset_diffs": stack_offset_diffs,
+            "branch_condition_diff": branch_condition_diff,
+            "return_cleanup": {"target": t_ret, "candidate": c_ret},
+            "missing_return_value": missing_return_value,
+            "mismatch_class": mismatch,
+            "mismatch_is_hypothesis": mismatch not in ("exact", "argument-order mismatch"),
             "byte_diffs": byte_diffs,
             "diff_preview": diff_lines[:40]}
 
