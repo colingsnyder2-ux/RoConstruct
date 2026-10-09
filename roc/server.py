@@ -631,7 +631,8 @@ def import_startup_matches(store, can_verify, log=print):
 def serve(host="0.0.0.0", port=8765, db=None, token=None, lease_seconds=900,
           discord_webhook=None, log=print):
     from roc.discord import MineLog, server_mines_webhook
-    discord_webhook = server_mines_webhook() or discord_webhook or os.environ.get("ROCONSTRUCT_DISCORD_WEBHOOK")
+    # Server-created matches stay on dedicated feed. Regular worker feed is separate.
+    discord_webhook = server_mines_webhook()
     db = db or str(ROOT / "work" / "server.db")
     Path(db).parent.mkdir(parents=True, exist_ok=True)
     store = Store(db, lease_seconds)

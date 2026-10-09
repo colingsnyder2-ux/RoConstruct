@@ -405,8 +405,8 @@ function color(score, original, harness) {
   if (original) return "#58a6ff";
   if (!score) return "#3a3d45";
   if (score === 100) return "#3fb950";
-  const t = score / 100;  // partial: grey -> dark blue
-  return `rgb(${58 + (24 - 58) * t | 0},${61 + (79 - 61) * t | 0},${69 + (147 - 69) * t | 0})`;
+  const t = score / 100;  // partial: grey -> dark green
+  return `rgb(${58 + (25 - 58) * t | 0},${61 + (104 - 61) * t | 0},${69 + (65 - 69) * t | 0})`;
 }
 
 async function client(name) {
@@ -439,7 +439,7 @@ async function client(name) {
     </div>
     <div class="label">Code <small>(${mb(c.bytes)}) — ${pct(c.matched_bytes, c.bytes)}</small></div>
     ${codeBar(c.source_bytes || 0, c.mined_bytes ?? c.matched_bytes, c.partial_bytes || 0, c.bytes)}
-    <div class="legend"><span><i style="background:#58a6ff"></i>original source</span><span><i style="background:#3fb950"></i>mined</span><span><i style="background:repeating-linear-gradient(135deg,#245b9e 0 5px,#17395f 5px 10px)"></i>partial source</span></div>
+    <div class="legend"><span><i style="background:#58a6ff"></i>original source</span><span><i style="background:#3fb950"></i>mined</span><span><i style="background:repeating-linear-gradient(135deg,#216841 0 5px,#193d2a 5px 10px)"></i>partial source</span></div>
     <div class="label">Data <small>(${mb(latest.data_bytes || 0)}) — ${pct(latest.data_matched_bytes || 0, latest.data_bytes)}
       verified (strings and constants used by matched functions)</small></div>
     ${bar(latest.data_matched_bytes || 0, 0, latest.data_bytes || 1, "b")}
@@ -452,7 +452,7 @@ async function client(name) {
     </div>
     <div class="map"><canvas id="cv"></canvas><div class="tip" id="tip"></div></div>
     <div class="legend"><span><i style="background:#58a6ff"></i>original source</span><span><i style="background:#3fb950"></i>mined match</span>
-      <span><i style="background:#184f93"></i>partial source</span><span><i style="background:#3a3d45"></i>source pending</span></div>
+      <span><i style="background:#216841"></i>partial source</span><span><i style="background:#3a3d45"></i>source pending</span></div>
     <div class="detail" id="detail">Click a tile to see its function address, match score, and recovered source.</div>
     ${leaderboard(latest.leaderboard)}
     <div class="head"><h2><small>Pick one</small>Easiest remaining</h2></div>
