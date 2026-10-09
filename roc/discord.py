@@ -129,14 +129,14 @@ class MineLog:
                 "🟢" if e["score"] == 100 else "🟡", e["score"], e["job"].get("addr", "?"),
                 e["job"].get("unit", "?"), e["job"].get("size", "?")) for e in rows[:10]) or "None"
 
-        fields = [] if len(full) == 1 else [{"name": "🟢 Fully Matched", "value": lines(full), "inline": False}]
+        fields = [{"name": "🟢 Fully Matched", "value": lines(full), "inline": False}]
         fields += [{"name": "🟡 Partially Matched", "value": lines(partial), "inline": False},
                    {"name": "⚡ Mining Rate", "value": "%d functions/hr · ETA %s" % (round(rate_hr), eta), "inline": True},
                    {"name": "🏆 Workers", "value": "%s · %s pts (%+d)" % (
                        contributor, format(self.store.user_points(contributor), ","), batch_points), "inline": True},
                    {"name": "✅ Batch", "value": "%d full · %d improved" % (len(full), len(partial)), "inline": True}]
         return {"title": "⛏️ RoConstruct Mining Digest",
-                "description": "**%s Client**\n\n%s **%.2f%% code bytes**\n%s / %s matched · %s remaining\n🟦 source · 🟩 mined · ❎ partial · ⬜ remaining%s" % (
+                "description": "**%s Client**\n%s **%.2f%%**\n🟦 source · 🟩 mined · ❎ partial · ⬜ remaining\n%s / %s matched · %s remaining%s" % (
                     client, bar, percent, format(matched, ","), format(total, ","), format(left, ","),
                     "\n" + lines(full) if len(full) == 1 else ""),
                 "color": 0x58A6FF,

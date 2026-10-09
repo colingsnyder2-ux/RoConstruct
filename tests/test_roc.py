@@ -804,10 +804,10 @@ def test_mine_digest():
     embed = sent[0]["embeds"][0]
     assert embed["title"] == "⛏️ RoConstruct Mining Digest"
     assert "33.33%" in embed["description"] and "1 / 3 matched" in embed["description"]
-    assert "a1" in embed["description"] and "a2" in embed["fields"][0]["value"]
-    assert embed["fields"][1]["name"] == "⚡ Mining Rate"
-    assert embed["fields"][2]["name"] == "🏆 Workers" and embed["fields"][2]["value"] == "alice · 60 pts (+60)"
-    assert embed["fields"][3]["value"] == "1 full · 1 improved"
+    assert "a1" in embed["fields"][0]["value"] and "a2" in embed["fields"][1]["value"]
+    assert embed["fields"][2]["name"] == "⚡ Mining Rate"
+    assert embed["fields"][3]["name"] == "🏆 Workers" and embed["fields"][3]["value"] == "alice · 60 pts (+60)"
+    assert embed["fields"][4]["value"] == "1 full · 1 improved"
     assert embed["footer"]["text"] == "RoConstruct Mining" and "T" in embed["timestamp"]
 
 
