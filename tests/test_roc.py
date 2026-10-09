@@ -104,7 +104,8 @@ def test_kinds():
 
 def test_summarize():
     s = summarize([[0x1000, 10, 100], [0x1010, 5, 40], [0x1020, 5, 0]])
-    assert s == {"functions": 3, "matched": 1, "partial": 1, "bytes": 20, "matched_bytes": 10}, s
+    assert s == {"functions": 3, "matched": 1, "partial": 1, "bytes": 20, "matched_bytes": 10,
+                 "source_bytes": 0, "mined_bytes": 10, "partial_bytes": 5}, s
 
 
 def fake_obj(code, relocs):
@@ -603,10 +604,10 @@ def test_mine_digest():
     embed = sent[0]["embeds"][0]
     assert embed["title"] == "⛏️ RoConstruct Mining Digest"
     assert "33.33%" in embed["description"] and "1 / 3 matched" in embed["description"]
-    assert "a1" in embed["fields"][0]["value"] and "a2" in embed["fields"][1]["value"]
-    assert "9 B" in embed["fields"][0]["value"] and "9 B" in embed["fields"][1]["value"]
-    assert "60 pts" in embed["fields"][3]["value"]
-    assert embed["footer"]["text"].startswith("ETA:")
+    assert embed["fields"][0]["value"] == "1 fully matched · 1 improved"
+    assert embed["fields"][1]["name"] == "⚡ 15 min Mine Rate"
+    assert embed["fields"][2]["value"] == "alice - 60 pts (+60)"
+    assert "T" in embed["timestamp"] and "example updates" not in embed["footer"]["text"]
 
 
 def test_concurrent_shares_caches_and_clamps():

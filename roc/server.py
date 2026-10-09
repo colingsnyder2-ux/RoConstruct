@@ -80,9 +80,9 @@ class Store:
             self.db.executemany("UPDATE funcs SET calls=?, source_confidence=?, difficulty=? WHERE client=? AND addr=?",
                                 [(calls, confidence, difficulty, client, addr)
                                  for client, addr, _size, _unit, _shape, calls, confidence, difficulty in rows])
-            # Re-analysis may drop junk "functions"; forget them unless someone worked on them.
+            # Re-analysis may drop junk "functions"; never count them in progress again.
             stale = [(client, a) for (a,) in self.db.execute(
-                "SELECT addr FROM funcs WHERE client = ? AND source IS NULL", (client,)) if a not in keep]
+                "SELECT addr FROM funcs WHERE client = ?", (client,)) if a not in keep]
             self.db.executemany("DELETE FROM funcs WHERE client = ? AND addr = ?", stale)
             self.db.commit()
             return added

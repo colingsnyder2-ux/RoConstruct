@@ -5,10 +5,11 @@ import threading
 import time
 import urllib.error
 import urllib.request
+from datetime import datetime, timezone
 
 BATCH_EVENTS = 10
 BATCH_SECONDS = 90
-RATE_WINDOW = 24 * 3600
+RATE_WINDOW = 15 * 60
 ETA_MIN_RATE = 1.0 / 3600
 
 
@@ -102,34 +103,25 @@ class MineLog:
         percent = 100.0 * matched / total if total else 0
         filled = min(20, round(percent / 5))
         bar = "█" * filled + "░" * (20 - filled)
-        full = [e for e in events if e["score"] == 100]
-        partial = [e for e in events if e["score"] < 100]
-
-        def lines(rows):
-            out = ["%s **%d%%** `%s` %s · %s B" % ("🟢" if e["score"] == 100 else "🟡",
-                   e["score"], e["job"].get("addr", "?"), e["job"].get("unit", "?"),
-                   e["job"].get("size", "?"))
-                   for e in rows[:10]]
-            if len(rows) > 10:
-                out.append("…and %d more" % (len(rows) - 10))
-            return "\n".join(out) or "None"
-
         rate = self.store.match_rate(client, RATE_WINDOW)
         rate_hr = rate * 3600
         eta = fmt_duration(left / rate) if rate >= ETA_MIN_RATE else "building rate"
-        leaders = self.store.leaderboard(client)
-        leader = leaders[0] if leaders else {"user": "none", "points": 0}
+        contributor = events[-1]["user"]
+        batch_points = sum(e["points"] for e in events if e["user"] == contributor)
+        full = sum(e["score"] == 100 for e in events)
+        partial = len(events) - full
         return {"title": "⛏️ RoConstruct Mining Digest",
                 "description": "**%s Client**\n\n`%s` **%.2f%%**\n%s / %s matched · %s remaining" % (
                     client, bar, percent, format(matched, ","), format(total, ","), format(left, ",")),
-                "color": 0x57F287,
+                "color": 0x58A6FF,
                 "fields": [
-                    {"name": "🟢 Fully Matched", "value": lines(full), "inline": False},
-                    {"name": "🟡 Partially Matched", "value": lines(partial), "inline": False},
-                    {"name": "⚡ Mining Rate", "value": "%d functions/hr" % round(rate_hr), "inline": True},
-                    {"name": "🏆 Contributor", "value": "%s · %s pts" % (
-                        leader["user"], format(leader["points"], ",")), "inline": True}],
-                "footer": {"text": "ETA: %s • %d example updates" % (eta, len(events))}}
+                    {"name": "✅ Batch", "value": "%d fully matched · %d improved" % (full, partial), "inline": True},
+                    {"name": "⚡ 15 min Mine Rate", "value": "%d functions/hr" % round(rate_hr), "inline": True},
+                    {"name": "🏆 Contributor", "value": "%s - %s pts (%+d)" % (
+                        contributor, format(self.store.user_points(contributor), ","), batch_points), "inline": True},
+                    {"name": "⏱ ETA", "value": eta, "inline": True}],
+                "footer": {"text": "RoConstruct Mining"},
+                "timestamp": datetime.now(timezone.utc).isoformat()}
 
     def _send(self, events):
         try:

@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-09 00:20 UTC",
+ "updated": "2026-10-09 00:29 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -11,6 +11,9 @@
    "partial": 14,
    "bytes": 3048608,
    "matched_bytes": 553600,
+   "source_bytes": 553600,
+   "mined_bytes": 0,
+   "partial_bytes": 120,
    "data_bytes": 1332936,
    "leaderboard": [
     {
@@ -37,10 +40,7 @@
    ],
    "data_matched_bytes": 41546,
    "classes": 0,
-   "generated": 6361,
-   "source_bytes": 515868,
-   "mined_bytes": 37732,
-   "partial_bytes": 120
+   "generated": 6361
   },
   {
    "name": "2007-08",
@@ -48,10 +48,13 @@
    "built": "2007-08-19",
    "started": true,
    "functions": 19998,
-   "matched": 9889,
-   "partial": 2670,
+   "matched": 9897,
+   "partial": 2671,
    "bytes": 3009279,
-   "matched_bytes": 816115,
+   "matched_bytes": 816668,
+   "source_bytes": 738879,
+   "mined_bytes": 77789,
+   "partial_bytes": 165997,
    "data_bytes": 1361658,
    "leaderboard": [
     {
@@ -63,10 +66,10 @@
     },
     {
      "user": "colin",
-     "matched": 1211,
-     "points": 314825,
-     "submissions": 8284,
-     "last": 1791505169.197461
+     "matched": 1219,
+     "points": 316040,
+     "submissions": 8391,
+     "last": 1791505476.2650654
     },
     {
      "user": "colinlaptop",
@@ -92,10 +95,7 @@
    ],
    "data_matched_bytes": 75467,
    "classes": 1391,
-   "generated": 16973,
-   "source_bytes": 609539,
-   "mined_bytes": 206576,
-   "partial_bytes": 165732
+   "generated": 16973
   },
   {
    "name": "2008-06",
@@ -107,6 +107,9 @@
    "partial": 35,
    "bytes": 3448631,
    "matched_bytes": 768417,
+   "source_bytes": 711843,
+   "mined_bytes": 56574,
+   "partial_bytes": 385,
    "data_bytes": 1559926,
    "leaderboard": [
     {
@@ -126,10 +129,7 @@
    ],
    "data_matched_bytes": 80799,
    "classes": 1488,
-   "generated": 19917,
-   "source_bytes": 598444,
-   "mined_bytes": 169973,
-   "partial_bytes": 385
+   "generated": 19917
   },
   {
    "name": "2009-06",
@@ -137,10 +137,13 @@
    "built": "2009-06-16",
    "started": true,
    "functions": 26156,
-   "matched": 8890,
+   "matched": 9125,
    "partial": 2,
    "bytes": 3981050,
-   "matched_bytes": 704452,
+   "matched_bytes": 711508,
+   "source_bytes": 683782,
+   "mined_bytes": 27726,
+   "partial_bytes": 14,
    "data_bytes": 1809822,
    "leaderboard": [
     {
@@ -160,10 +163,7 @@
    ],
    "data_matched_bytes": 64271,
    "classes": 1624,
-   "generated": 20922,
-   "source_bytes": 549038,
-   "mined_bytes": 155414,
-   "partial_bytes": 14
+   "generated": 20922
   },
   {
    "name": "2010-06",
@@ -175,6 +175,9 @@
    "partial": 10,
    "bytes": 5116758,
    "matched_bytes": 759794,
+   "source_bytes": 734573,
+   "mined_bytes": 25221,
+   "partial_bytes": 52,
    "data_bytes": 2369604,
    "leaderboard": [
     {
@@ -194,10 +197,7 @@
    ],
    "data_matched_bytes": 62873,
    "classes": 2012,
-   "generated": 26137,
-   "source_bytes": 558428,
-   "mined_bytes": 201366,
-   "partial_bytes": 52
+   "generated": 26137
   },
   {
    "name": "2011-06",
@@ -209,6 +209,9 @@
    "partial": 4,
    "bytes": 5337037,
    "matched_bytes": 527949,
+   "source_bytes": 459681,
+   "mined_bytes": 68268,
+   "partial_bytes": 28,
    "data_bytes": 3009972,
    "leaderboard": [
     {
@@ -228,10 +231,7 @@
    ],
    "data_matched_bytes": 50268,
    "classes": 2230,
-   "generated": 28151,
-   "source_bytes": 422236,
-   "mined_bytes": 105713,
-   "partial_bytes": 28
+   "generated": 28151
   },
   {
    "name": "2012-06",
@@ -243,6 +243,9 @@
    "partial": 0,
    "bytes": 6234528,
    "matched_bytes": 540817,
+   "source_bytes": 474727,
+   "mined_bytes": 66090,
+   "partial_bytes": 0,
    "data_bytes": 3396596,
    "leaderboard": [
     {
@@ -262,10 +265,7 @@
    ],
    "data_matched_bytes": 49291,
    "classes": 2176,
-   "generated": 30232,
-   "source_bytes": 414731,
-   "mined_bytes": 126086,
-   "partial_bytes": 0
+   "generated": 30232
   }
  ],
  "leaderboard": [
@@ -278,10 +278,10 @@
   },
   {
    "user": "colin",
-   "matched": 1217,
-   "points": 319501,
-   "submissions": 8379,
-   "last": 1791505169.197461
+   "matched": 1225,
+   "points": 320716,
+   "submissions": 8486,
+   "last": 1791505476.2650654
   },
   {
    "user": "colinlaptop",
