@@ -19,6 +19,22 @@ from pathlib import Path
 from roc import clients, draft, match, metrics, setup
 
 ROOT = Path(__file__).resolve().parent.parent
+
+
+def family_from_example(spec):
+    """Resolve CLIENT:ADDRESS to strict opcode fingerprint."""
+    from roc import families
+    try:
+        client, addr = spec.split(":", 1)
+        if not re.fullmatch(r"[0-9a-fA-F]{8}", addr):
+            return None
+        row = match._functions(client).get(addr.lower()) or match._functions(client).get(addr.upper())
+        if not row:
+            return None
+        code, _, _ = match.target(client, addr.lower())
+        return families.fingerprint(row, match.disasm(code, int(addr, 16)))
+    except (ValueError, OSError, KeyError):
+        return None
 SETTINGS = ROOT / "roconstruct-settings.json"
 MAX_WORKERS = 256
 USER_RE = re.compile(r"^[A-Za-z0-9_.-]{2,32}$")
@@ -267,6 +283,8 @@ def main_args(payload, argv=()):
                     help="use verified same-shape sources as compact family exemplars (default)")
     ap.add_argument("--lease-mode", choices=["function", "family"], default="function",
                     help="lease one function, or stay on one strict family")
+    ap.add_argument("--family-id", help="strict 24-hex family fingerprint")
+    ap.add_argument("--family-example", help="seed family from CLIENT:ADDRESS")
     ap.add_argument("--dry-run", action="store_true", help="print the plan without leasing a job")
     given = ap.parse_args(list(argv))
 
@@ -285,6 +303,11 @@ def main_args(payload, argv=()):
     workers = given.workers or ("auto" if is_cloud else 1)
     order = given.order or load_settings().get("worker_order", "auto")
     verbosity = given.verbosity or load_settings().get("worker_verbosity", "auto")
+    family_id = given.family_id or (family_from_example(given.family_example) if given.family_example else None)
+    if given.family_example and not family_id:
+        raise SystemExit("Unknown family example; use CLIENT:ADDRESS")
+    if family_id and not re.fullmatch(r"[0-9a-f]{24}", family_id):
+        raise SystemExit("Family id must be 24 lowercase hex characters")
     save_settings(user=user, server=server, token=token, cloud_allowed=cloud_allowed or None, model=model,
                   worker_order=order, worker_verbosity=verbosity)
     budget = providers.CloudBudget(HANDOFF_CLOUD_REQUESTS, HANDOFF_CLOUD_TOKENS,
@@ -305,7 +328,8 @@ def main_args(payload, argv=()):
                           max_tokens=2048, thinking="auto", order=order,
                           verbosity=verbosity,
                           family_exemplars=given.family_exemplars,
-                          lease_mode=given.lease_mode)
+                          lease_mode="family" if family_id else given.lease_mode,
+                          family_id=family_id)
 
 
 _ANNOUNCE_LOCK = threading.Lock()
@@ -438,7 +462,7 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
         cloud_escalate=None, cloud_escalate_after=2, thinking=None, reasoning_effort=None,
         max_tokens=2048, examples_cache=None, source_cache=None, guided_mutations=False,
         order="auto", family_exemplars=True, lease_mode="function", family_state=None,
-        family_lock=None):
+        family_lock=None, family_id=None):
     """forever: survive server/network outages (retry every minute) for overnight runs.
     only: restrict to these clients (one-click links).
     examples_cache/source_cache: shared across parallel loops so N workers do
@@ -595,7 +619,7 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
                    cloud_min_size=0, cloud_fallback=None, seed=None,
                    cloud_escalate=None, cloud_escalate_after=2, thinking=None, reasoning_effort=None,
                    max_tokens=2048, guided_mutations=False, order="auto", verbosity="auto",
-                   family_exemplars=True, lease_mode="function"):
+                   family_exemplars=True, lease_mode="function", family_id=None):
     """Run a bounded number of independent lease loops.
 
     Server leases make workers safe to run in parallel. Cloud loops are
@@ -610,7 +634,7 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
         from roc import providers
         cloud_gate = providers.CloudGate(workers)
     shared_examples, shared_sources = {}, {}
-    family_state, family_lock = {"id": None}, threading.Lock()
+    family_state, family_lock = {"id": family_id}, threading.Lock()
     if workers == 1:
         worker_log = CompactLog(1, log) if verbosity == "compact" else log
         result = run(server, user, token, model, rounds, max_size, use_revng,
@@ -624,6 +648,7 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
                      family_exemplars=family_exemplars,
                      lease_mode=lease_mode,
                      family_state=family_state, family_lock=family_lock,
+                     family_id=family_id,
                      examples_cache=shared_examples, source_cache=shared_sources)
         if verbosity == "compact":
             worker_log.finish()
@@ -654,6 +679,7 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
                 family_exemplars=family_exemplars,
                 lease_mode=lease_mode,
                 family_state=family_state, family_lock=family_lock,
+                family_id=family_id,
                 examples_cache=shared_examples, source_cache=shared_sources)
         except BaseException as error:
             errors.append(error)
