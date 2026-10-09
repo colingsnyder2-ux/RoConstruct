@@ -104,6 +104,11 @@ Run generation only after preserving this manifest and fingerprint:
 python benchmarks/run_holdout.py benchmarks/holdout-fresh-100-20261008.json --model deepseek:deepseek-flash --rounds 2 --allow-cloud --max-cloud-cost 1.00
 ```
 
+First capped DeepSeek attempt (`holdout100-deepseek-direct-20261008`) reached
+the provider but returned HTTP 402 for all 100 jobs: 0 generation tokens,
+0 estimated cost, 0 usable candidates. Runner now performs one preflight and
+fails fast on this condition instead of recording a noisy empty holdout.
+
 ## Verification
 
 Focused repair/diagnostic tests: 4 passed. Full `tests/test_roc.py`: **66

@@ -26,12 +26,19 @@ def main():
         raise SystemExit("cloud holdout requires --max-cloud-cost")
     budget = providers.CloudBudget(args.max_cloud_requests, args.max_cloud_tokens,
                                    args.max_cloud_cost)
+    gate = providers.CloudGate(1)
+    if providers.is_cloud(args.model) and args.allow_cloud:
+        try:
+            providers.generate(args.model, "Reply OK.", options={
+                "allow_cloud": True, "max_tokens": 1, "budget": budget, "gate": gate})
+        except Exception as error:
+            raise SystemExit("cloud preflight failed: %s" % error)
     print("Holdout: %d targets, model=%s, strategy=%s, session=%s" %
           (len(rows), args.model, args.strategy, args.session))
     benchmark.run_local(rows, [args.model], rounds=args.rounds, session=args.session,
                         strategies=(args.strategy,), provider_options={
                             "allow_cloud": args.allow_cloud, "budget": budget,
-                            "gate": providers.CloudGate(1)})
+                            "gate": gate})
 
 
 if __name__ == "__main__":
