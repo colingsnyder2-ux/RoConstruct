@@ -469,10 +469,12 @@ def compile_candidates(client, addr, unit, flags=None, limit=2, log=None):
                     recipe = (name, row, target.relative_to(folder))
                     break
             if not recipe:
-                if direct_attempts >= 2:
+                if direct_attempts >= 1:
                     continue
                 direct_attempts += 1
                 try:
+                    if log:
+                        log("  preparing 2016 source: %s" % rel)
                     root = TREE / "ROBLOX2016-main"
                     include = ";".join(str(p) for p in (root, root / "Rendering/g3d/include",
                                                            root / "Network/raknet/Source"))
@@ -498,8 +500,12 @@ def compile_candidates(client, addr, unit, flags=None, limit=2, log=None):
             source = libs.source_for(name, relpath, lang, build, flags)
             candidates.append((source, rel))
 
+        candidates = candidates[:limit]
+
         def verify(item):
             source, rel = item
+            if log:
+                log("  compiling 2016 source: %s" % rel)
             try:
                 score, _ = match.check_text(client, addr, source, flags)
             except (match.CompileError, OSError, SystemExit):

@@ -181,7 +181,8 @@ def cmd_launch(a):
 def _forwarded(a):
     """Flags on `a` that the worker entry point understands, as a CLI list."""
     forwarded = []
-    for name in ("client", "model", "workers", "rounds", "max_size", "jobs", "lease_mode"):
+    for name in ("client", "model", "workers", "rounds", "max_size", "jobs", "lease_mode",
+                 "family_id", "family_example"):
         value = getattr(a, name, None)
         if value is not None:
             forwarded += ["--%s" % name.replace("_", "-"), str(value)]
@@ -468,7 +469,10 @@ def cmd_mass(a):
 
 def cmd_flags(a):
     from roc import flags
-    flags.tune(a.name)
+    if a.sweep:
+        flags.sweep(a.name, limit=a.limit)
+    else:
+        flags.tune(a.name)
 
 
 def cmd_config(a):
@@ -581,6 +585,14 @@ def cmd_worker(a):
     order = a.order or "auto"
     if order not in ("auto", "best", "matched", "unmatched", "easiest", "random"):
         sys.exit("--order must be one of: auto, best, matched, unmatched, easiest, random")
+    family_id = a.family_id or (worker.family_from_example(a.family_example)
+                                if a.family_example else None)
+    if a.family_example and not family_id:
+        raise SystemExit("Unknown family example; use CLIENT:ADDRESS")
+    if family_id and a.client:
+        ready = worker.register_family_targets(srv, a.token or s.get("token"), a.client, family_id)
+        if ready:
+            print("Family %s ready: %d sibling targets" % (family_id, ready))
     if a.dry_run:
         info = worker.Api(srv, a.token or s.get("token")).call("/v1/info")
         have = worker.usable_clients(info)
@@ -599,7 +611,8 @@ def cmd_worker(a):
                           thinking=a.thinking, reasoning_effort=a.reasoning_effort,
                           max_tokens=a.output_budget, guided_mutations=a.guided_mutations,
                           order=order, family_exemplars=a.family_exemplars,
-                          lease_mode=a.lease_mode)
+                          lease_mode=a.lease_mode,
+                          family_id=family_id)
 
 
 def cmd_provider(a):
@@ -1029,6 +1042,8 @@ def main(argv=None):
     p.add_argument("--jobs", type=int, help="stop after this many functions")
     p.add_argument("--lease-mode", choices=["function", "family"], default=None,
                    help="lease one function, or stay on one strict family")
+    p.add_argument("--family-id", help="strict 24-hex family fingerprint")
+    p.add_argument("--family-example", help="seed family from CLIENT:ADDRESS")
     p.add_argument("--no-revng", dest="no_revng", action="store_true", help="never use Rev.ng hints")
     p.add_argument("--dry-run", dest="dry_run", action="store_true",
                    help="print the plan without leasing a job")
@@ -1081,7 +1096,10 @@ def main(argv=None):
         (["names"], {"nargs": "+"}), (["--client"], {"default": "all"}))
     cmd("mass", cmd_mass, "run every automatic matcher (runtime, STL, libraries, shapes); takes a while",
         (["--client"], {"default": "all"}))
-    cmd("flags", cmd_flags, "find the client's compiler flags from matched sources", (["name"], {}))
+    cmd("flags", cmd_flags, "find the client's compiler flags from matched sources",
+        (["name"], {}), (["--sweep"], {"action": "store_true",
+        "help": "try interacting flag combinations; stop on exact corpus"}),
+        (["--limit"], {"type": int, "help": "sweep only smallest N sources"}))
     cmd("config", cmd_config, "save username / server / password / model",
         (["--user"], {}), (["--server"], {}), (["--token"], {}), (["--model"], {}),
         (["--public-server"], {"help": "address shown in website join links (host:port)"}),
@@ -1164,6 +1182,8 @@ def main(argv=None):
                           "help": "bounded concurrent lease loops (1-256 or auto)"}),
         (["--lease-mode"], {"choices": ["function", "family"], "default": "function",
                               "help": "lease one function, or stay on one strict family until exhausted"}),
+        (["--family-id"], {"help": "strict 24-hex family fingerprint"}),
+        (["--family-example"], {"help": "seed family from CLIENT:ADDRESS"}),
         (["--allow-cloud"], {"action": "store_true", "help": "allow prompt data to leave this PC"}),
         (["--max-cloud-requests"], {"type": int, "help": "cloud request budget for this worker"}),
         (["--max-cloud-tokens"], {"type": int, "help": "cloud token budget for this worker"}),

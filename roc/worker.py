@@ -35,6 +35,28 @@ def family_from_example(spec):
         return families.fingerprint(row, match.disasm(code, int(addr, 16)))
     except (ValueError, OSError, KeyError):
         return None
+
+
+def register_family_targets(server, token, client, family_id):
+    """Publish local family index so a family lease can find its siblings."""
+    path = ROOT / "work" / client / ("family-index-%s.jsonl" % client)
+    if not path.exists():
+        path = ROOT / "work" / ("family-index-%s.jsonl" % client)
+    if not path.exists():
+        return 0
+    rows = []
+    for line in path.read_text(errors="replace").splitlines():
+        try:
+            row = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        if row.get("family") == family_id:
+            rows.append(row)
+    api = Api(server, token)
+    total = 0
+    for i in range(0, len(rows), 5000):
+        total += api.call("/v1/families", {"rows": rows[i:i + 5000]}).get("registered", 0)
+    return total
 SETTINGS = ROOT / "roconstruct-settings.json"
 MAX_WORKERS = 256
 USER_RE = re.compile(r"^[A-Za-z0-9_.-]{2,32}$")
@@ -308,6 +330,10 @@ def main_args(payload, argv=()):
         raise SystemExit("Unknown family example; use CLIENT:ADDRESS")
     if family_id and not re.fullmatch(r"[0-9a-f]{24}", family_id):
         raise SystemExit("Family id must be 24 lowercase hex characters")
+    if family_id and client:
+        registered = register_family_targets(server, token, client, family_id)
+        if registered:
+            print("Family %s ready: %d sibling targets" % (family_id, registered))
     save_settings(user=user, server=server, token=token, cloud_allowed=cloud_allowed or None, model=model,
                   worker_order=order, worker_verbosity=verbosity)
     budget = providers.CloudBudget(HANDOFF_CLOUD_REQUESTS, HANDOFF_CLOUD_TOKENS,
@@ -707,11 +733,13 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
     from roc import providers
     compact_log = isinstance(log, CompactLog)
     output = log
-    progress = {"stage": "starting", "at": time.monotonic()}
+    progress = {"stage": "starting", "at": time.monotonic(), "began": time.monotonic()}
+    stalled = threading.Event()
 
     def stage(name):
         progress["stage"] = name
         progress["at"] = time.monotonic()
+        progress["began"] = progress["at"]
 
     def job_log(message):
         progress["at"] = time.monotonic()
@@ -750,6 +778,8 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
     def ensure_lease():
         if lease_lost.is_set():
             raise RuntimeError("lease lost; abandoning job")
+        if stalled.is_set():
+            raise TimeoutError("job stalled; restarting worker")
         if time.monotonic() >= deadline:
             raise TimeoutError("job exceeded 600-second worker limit")
 
@@ -759,6 +789,10 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
             if quiet >= 30:
                 output("  still working (%ds): %s." % (quiet, progress["stage"]))
                 progress["at"] = time.monotonic()
+            if time.monotonic() - progress["began"] >= 300:
+                stalled.set()
+                output("  stuck 5m in %s; restarting job after current call." % progress["stage"])
+                return
 
     threading.Thread(target=beat, daemon=True).start()
     threading.Thread(target=watchdog, daemon=True).start()
@@ -803,6 +837,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
         ensure_lease()
         stage("checking 2016 source candidates")
         source_candidate = refsource.compile_candidates(client, addr, job["unit"], flags, limit=2, log=log)
+        ensure_lease()
         phase_seconds["source_compile"] = round(time.monotonic() - phase_started, 3)
         if source_candidate and source_candidate[0] == 100:
             candidate_score, candidate_source, candidate_path = source_candidate

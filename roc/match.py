@@ -180,6 +180,18 @@ def score(target, target_relocs, cand, cand_relocs):
     return min(99, int(100 * similarity_ratio(target, target_relocs, cand, cand_relocs)))
 
 
+def rank_candidate(target, target_relocs, cand, cand_relocs):
+    """Rank near-misses by bytes, then instruction structure.
+
+    Exact bytes remain only acceptance signal; alignment only breaks fuzzy ties.
+    """
+    value = score(target, target_relocs, cand, cand_relocs)
+    if value == 100:
+        return (100, 0, 0)
+    aligned = align_insns(target, target_relocs, cand, cand_relocs)
+    return (value, -aligned["cost"], -abs(len(target) - len(cand)))
+
+
 # Instruction-alignment penalties (adapted from cpp_permuter's scorer.cpp and
 # decomp-permuter's Scorer tiers): register renaming is cheap, argument
 # differences cost more, insert/delete cost most, and a matched delete/insert
@@ -605,7 +617,7 @@ def alignment_evidence(client, addr, src, flags=None):
         funcs = coff_functions(obj)
         if not funcs:
             return None
-        best = max(funcs, key=lambda f: score(code, relocs, f[1], f[2]))
+        best = max(funcs, key=lambda f: rank_candidate(code, relocs, f[1], f[2]))
         return align_insns(code, relocs, best[1], best[2])
     except (CompileError, ValueError):
         return None
@@ -620,7 +632,7 @@ def check_text(client, addr, text, flags=None, include_diagnosis=False):
     if not funcs:
         result = (0, None, "no functions compiled (is the function body empty or inline?)", [])
         return result + ({},) if include_diagnosis else result
-    best = max(funcs, key=lambda f: score(code, relocs, f[1], f[2]))
+    best = max(funcs, key=lambda f: rank_candidate(code, relocs, f[1], f[2]))
     value, d, spans = score(code, relocs, best[1], best[2]), diff(code, relocs, best[1], best[2]), []
     if value == 100:
         spans, bad = data_check(client, addr, code, coff_data_refs(obj, best[0]))
