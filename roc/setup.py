@@ -16,8 +16,10 @@ import os
 import platform
 import re
 import shutil
+import struct
 import subprocess
 import sys
+import tempfile
 import time
 import urllib.request
 from pathlib import Path
@@ -395,6 +397,7 @@ def msi_admin_extract(msi, target):
     if WINDOWS:
         subprocess.run(["msiexec", "/a", str(msi), "/qn", "TARGETDIR=%s" % target], check=True)
         return
+    shutil.rmtree(target, ignore_errors=True)  # never mix a failed attempt's files
     target.mkdir(parents=True, exist_ok=True)
     if ensure_wine_prefix():
         run = subprocess.run([wine_exe(), "msiexec", "/a", to_wine_path(msi), "/qn",
@@ -461,16 +464,26 @@ def msi_layout(msi, cab_dir, target):
 def msi_layout_unix(msi, cab_dir, target):
     """The same mapping on Linux without msilib.
 
-    Preferred path is Wine's own msiexec /a: it reads the cab next to the MSI and
-    needs no table parsing. msitools' msiinfo plus a manual copy is the fallback,
-    and it is the only path that uses the already-expanded `cab_dir`.
+    Order: read the table streams with 7z (deterministic, stdlib only), then Wine's
+    msiexec /a, then msitools' msiinfo. The 7z path is what makes the older VS2005
+    MSI work: Wine's msiexec chokes on it and extracts only a handful of files.
     """
+    target = Path(target)
+    shutil.rmtree(target, ignore_errors=True)  # never mix a failed attempt's files
+    try:
+        if _msi_layout_7z(msi, cab_dir, target):
+            return
+    except Exception:  # a non-standard table just means "try the next method"
+        pass
+    shutil.rmtree(target, ignore_errors=True)
     if ensure_wine_prefix():
+        target.mkdir(parents=True, exist_ok=True)
         run = subprocess.run([wine_exe(), "msiexec", "/a", to_wine_path(msi), "/qn",
                               "TARGETDIR=%s" % to_wine_path(target)],
                              env=wine_env(), capture_output=True, text=True, timeout=900)
-        if run.returncode == 0 and any(Path(target).iterdir()):
+        if run.returncode == 0 and any(target.iterdir()):
             return
+        shutil.rmtree(target, ignore_errors=True)
     if shutil.which("msiinfo") and Path(cab_dir).is_dir():
         dirs = {row["Directory"]: (row["Directory_Parent"], row["DefaultDir"].split(":")[0].split("|")[-1])
                 for row in msi_table(msi, "Directory")}
@@ -491,6 +504,119 @@ def msi_layout_unix(msi, cab_dir, target):
         return
     raise SystemExit("Could not unpack %s on Linux. Install Wine or msitools "
                      "(msiinfo) and run this again." % msi.name)
+
+
+# Standard MSI layout tables we need, as (column, kind): 's' is a string reference
+# into the string pool, 'i2'/'i4' are biased integers. The on-disk table stream is
+# column-major; the column definitions live in the _Columns table but these three
+# schemas are fixed by the MSI spec, so they can be hardcoded.
+MSI_LAYOUT_TABLES = {
+    "Directory": [("Directory", "s"), ("Directory_Parent", "s"), ("DefaultDir", "s")],
+    "Component": [("Component", "s"), ("ComponentId", "s"), ("Directory_", "s"),
+                  ("Attributes", "i2"), ("Condition", "s"), ("KeyPath", "s")],
+    "File": [("File", "s"), ("Component_", "s"), ("FileName", "s"), ("FileSize", "i4"),
+             ("Version", "s"), ("Language", "s"), ("Attributes", "i2"), ("Sequence", "i2")],
+}
+
+
+def _msi_strings(pool, data):
+    """({id: text}, bytes-per-string-ref) from the _StringPool/_StringData streams.
+
+    The pool is 4-byte entries: the first is the codepage, each later one is
+    (length, refcount). Strings are stored back to back in _StringData.
+    """
+    words = struct.unpack("<%dH" % (len(pool) // 2), pool)
+    strref = 3 if (len(pool) > 4 and (words[1] & 0x8000)) else 2
+    strings, offset, n, pos = {0: ""}, 0, 1, 4
+    while pos + 4 <= len(pool):
+        length, refs = struct.unpack_from("<HH", pool, pos)
+        pos += 4
+        if length == 0:
+            if refs == 0:  # an empty slot still consumes a string id
+                n += 1
+                continue
+            high = refs  # >64k string: the high length sits in the previous slot
+            length, refs = struct.unpack_from("<HH", pool, pos)
+            pos += 4
+            length |= high << 16
+        strings[n] = data[offset:offset + length].decode("cp1252", "replace")
+        offset += length
+        n += 1
+    return strings, strref
+
+
+def _msi_table_rows(raw, schema, strings, strref):
+    """Rows of one MSI table stream, decoded from its column-major layout."""
+    sizes = [strref if kind == "s" else (2 if kind == "i2" else 4) for _, kind in schema]
+    row_size = sum(sizes)
+    if not row_size or len(raw) % row_size:
+        raise ValueError("unexpected table size %d for row size %d" % (len(raw), row_size))
+    rows = len(raw) // row_size
+    out = []
+    for i in range(rows):
+        row, base = {}, 0
+        for (name, kind), size in zip(schema, sizes):
+            chunk = raw[base + i * size: base + (i + 1) * size]
+            if kind == "s":
+                row[name] = strings.get(int.from_bytes(chunk, "little"), "")
+            elif kind == "i2":
+                row[name] = int.from_bytes(chunk, "little") - 0x8000
+            else:
+                row[name] = int.from_bytes(chunk, "little") ^ 0x80000000
+            base += size * rows
+        out.append(row)
+    return out
+
+
+def _msi_layout_7z(msi, cab_dir, target):
+    """Map an already-expanded cab through the MSI tables using 7z and stdlib.
+
+    Returns False (never raises) when the MSI does not look like the standard
+    layout, so the caller can fall back to Wine or msitools.
+    """
+    seven = shutil.which("7z")
+    if not seven or not Path(cab_dir).is_dir():
+        return False
+    with tempfile.TemporaryDirectory() as tmp:
+        run = subprocess.run([seven, "x", "-y", "-o" + tmp, str(msi), "!*"], capture_output=True)
+        if run.returncode:
+            return False
+
+        def read(name):
+            path = Path(tmp) / name
+            return path.read_bytes() if path.exists() else None
+
+        pool, data = read("!_StringPool"), read("!_StringData")
+        if pool is None or data is None:
+            return False
+        strings, strref = _msi_strings(pool, data)
+        tables = {}
+        for table, schema in MSI_LAYOUT_TABLES.items():
+            raw = read("!" + table)
+            if raw is None:
+                return False
+            tables[table] = _msi_table_rows(raw, schema, strings, strref)
+
+    dirs = {row["Directory"]: (row["Directory_Parent"], row["DefaultDir"].split(":")[0].split("|")[-1])
+            for row in tables["Directory"]}
+
+    def path(d):
+        parent, name = dirs[d]
+        if not parent or parent == d:
+            return Path()
+        return path(parent) / ("" if name == "." else name)
+
+    comp = {row["Component"]: row["Directory_"] for row in tables["Component"]}
+    copied = 0
+    for row in tables["File"]:
+        src = Path(cab_dir) / row["File"]
+        if not src.exists():
+            continue
+        dst = Path(target) / path(comp[row["Component_"]]) / row["FileName"].split("|")[-1]
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(src, dst)
+        copied += 1
+    return copied > 0
 
 
 def expand_cab(cab, out):

@@ -3,6 +3,7 @@
 These tests run on any OS: they patch roc.setup.WINDOWS to False rather than
 depending on the host, so the Linux branches are exercised on Windows CI too.
 """
+import struct
 import sys
 from pathlib import Path
 from unittest.mock import patch
@@ -135,6 +136,51 @@ def test_msi_admin_extract_prefers_wine_on_linux(tmp_path):
          patch("roc.setup.subprocess.run", side_effect=fake_run) as run:
         setup.msi_admin_extract(tmp_path / "x.msi", target)
     assert run.call_args.args[0][:3] == ["/usr/bin/wine", "msiexec", "/a"]
+
+
+def test_copy_from_iso_unix_extracts_one_file(tmp_path):
+    from roc import setup
+    iso = tmp_path / "dvd.iso"
+    iso.write_bytes(b"iso")
+    dest = tmp_path / "out" / "Ixpvc.exe"
+
+    def fake_run(cmd, **kwargs):
+        out = next((Path(part[2:]) for part in cmd if isinstance(part, str) and part.startswith("-o")), None)
+        if out:
+            found = out / "VCExpress" / "Ixpvc.exe"
+            found.parent.mkdir(parents=True, exist_ok=True)
+            found.write_bytes(b"MZ")
+
+        class Done:
+            returncode = 0
+        return Done()
+
+    with patch("roc.setup.shutil.which", side_effect=lambda name: "/usr/bin/7z" if name == "7z" else None), \
+         patch("roc.setup.subprocess.run", side_effect=fake_run):
+        setup.copy_from_iso_unix(iso, r"VCExpress\Ixpvc.exe", dest)
+    assert dest.read_bytes() == b"MZ"
+
+
+def test_msi_string_pool_decodes_ids():
+    from roc import setup
+    # entry 0 is the codepage; later entries are (length, refcount) pairs, with an
+    # empty entry still consuming a string id.
+    pool = (struct.pack("<HH", 0, 0) + struct.pack("<HH", 4, 1) + struct.pack("<HH", 5, 1)
+            + struct.pack("<HH", 0, 0) + struct.pack("<HH", 3, 1))
+    strings, strref = setup._msi_strings(pool, b"NameTableabc")
+    assert strref == 2
+    assert strings[1] == "Name" and strings[2] == "Table"
+    assert 3 not in strings and strings[4] == "abc"
+
+
+def test_msi_table_rows_are_column_major():
+    from roc import setup
+    schema = setup.MSI_LAYOUT_TABLES["Directory"]  # three 2-byte string columns
+    strings = {0: "", 1: "root", 2: "child", 3: "PARENT", 4: "sub", 5: "x"}
+    raw = b"".join(struct.pack("<H", v) for v in [1, 2, 0, 3, 4, 5])
+    rows = setup._msi_table_rows(raw, schema, strings, 2)
+    assert rows[0] == {"Directory": "root", "Directory_Parent": "", "DefaultDir": "sub"}
+    assert rows[1] == {"Directory": "child", "Directory_Parent": "PARENT", "DefaultDir": "x"}
 
 
 def test_handoff_launch_command_off_windows():

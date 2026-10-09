@@ -98,6 +98,7 @@ def test_bootstrap_plans_only_missing_builds():
     assert current["packages"] == []
     fetched = []
     with patch("roc.setup.compilers", return_value={30729: "cl.exe"}), \
+         patch("roc.setup.step_done", return_value=False), \
          patch("roc.setup.FETCHERS", {50727: lambda: fetched.append(50727),
                                       21022: lambda: fetched.append(21022)}), \
          patch("roc.setup.compilers.cache_clear"), \
