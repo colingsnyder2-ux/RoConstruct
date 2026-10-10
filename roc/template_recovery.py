@@ -42,6 +42,10 @@ def instantiation(decoded):
         "boost::any::holder": "boost/any.hpp",
         "boost::enable_shared_from_this": "boost/enable_shared_from_this.hpp",
         "boost::detail::sp_counted_impl_p": "boost/shared_ptr.hpp",
+        "boost::shared_ptr": "boost/shared_ptr.hpp",
+        "boost::weak_ptr": "boost/weak_ptr.hpp",
+        "boost::intrusive_ptr": "boost/intrusive_ptr.hpp",
+        "std::allocator": "memory",
         "std::basic_string": "string", "std::vector": "vector", "std::list": "list",
         "std::map": "map", "std::set": "set", "std::deque": "deque",
     }
@@ -51,7 +55,7 @@ def instantiation(decoded):
     for kind, name in re.findall(r"\b(class|struct)\s+([A-Za-z_]\w*(?:::[A-Za-z_]\w*)*)", decoded):
         if name.startswith(("boost::", "std::")):
             continue
-        if outer != "boost::enable_shared_from_this" and not re.search(re.escape(name) + r"\s*\*", expression):
+        if outer not in ("boost::enable_shared_from_this", "boost::shared_ptr", "boost::weak_ptr") and not re.search(re.escape(name) + r"\s*\*", expression):
             raise ValueError("Unknown value layout: " + name)
         parts = name.split("::")
         if len(parts) > 1 and parts[0] not in ("RBX", "Network", "G3D"):

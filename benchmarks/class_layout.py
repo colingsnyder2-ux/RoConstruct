@@ -7,7 +7,7 @@ from collections import defaultdict
 
 from capstone import Cs, CS_ARCH_X86, CS_MODE_32
 
-from benchmarks.match_campaign import Campaign, digest
+from benchmarks.match_campaign import Campaign, digest, family_index
 from roc import auto, draft, match
 
 
@@ -64,11 +64,11 @@ def candidates(source, mapping):
     return out
 
 
-def run(limit):
+def run(limit, refresh=False):
     campaign = Campaign("work/match-campaign-20261010", "http://127.0.0.1:8765")
     snapshots = campaign.snapshot()
     manifest = campaign.root / "class-layout-manifest.json"
-    if not manifest.exists():
+    if refresh or not manifest.exists():
         eligible = []
         seen = set()
         for row in campaign.previous("propagation"):
@@ -76,14 +76,37 @@ def run(limit):
             if row["client"] not in snapshots or row["donor_client"] not in snapshots or key in seen:
                 continue
             donor = snapshots[row["donor_client"]].get(row["donor_addr"], {})
-            if 40 <= row.get("score", 0) < 100 and donor.get("source"):
+            if 0 < row.get("score", 0) < 100 and donor.get("source"):
                 if not any(k in match.directives(donor["source"]) for k in ("lib", "archive")):
                     eligible.append({k: row[k] for k in ("client", "addr", "donor_client", "donor_addr", "family")})
                     seen.add(key)
+        if refresh:
+            indexes = family_index(campaign)
+            donors = defaultdict(list)
+            for donor_client, sources in snapshots.items():
+                for donor_addr, saved in sources.items():
+                    source = saved.get("source", "")
+                    if saved.get("score") != 100 or not source or any(k in match.directives(source) for k in ("lib", "archive")):
+                        continue
+                    unit = match._functions(donor_client).get(donor_addr, {}).get("unit", "")
+                    if unit and not unit.startswith("seg_") and donor_addr in indexes[donor_client]:
+                        donors[unit, indexes[donor_client][donor_addr]].append((donor_client, donor_addr))
+            for client, index in indexes.items():
+                for addr, family in index.items():
+                    if snapshots[client].get(addr, {}).get("score") == 100:
+                        continue
+                    unit = match._functions(client)[addr].get("unit", "")
+                    for donor_client, donor_addr in donors[unit, family]:
+                        key = (client, addr, donor_client, donor_addr)
+                        if key not in seen:
+                            eligible.append(dict(client=client, addr=addr, donor_client=donor_client,
+                                                 donor_addr=donor_addr, family=family))
+                            seen.add(key)
         random.Random(20261010).shuffle(eligible)
         manifest.write_text(json.dumps(eligible, indent=1), encoding="utf-8")
     done = {(r["client"], r["addr"], r["donor_client"], r["donor_addr"]) for r in campaign.previous("class-layout")}
     evidence = defaultdict(list)
+    verified_donors = set()
     for row in campaign.previous("class-layout"):
         if row.get("winner", {}).get("score") == 100:
             fields = row.get("accepted_mapping", row["mapping"])
@@ -105,8 +128,11 @@ def run(limit):
                 record["skip"] = "already exact on server"
             else:
                 source = snapshots[donor_client][donor_addr]["source"]
-                if match.check_text(donor_client, donor_addr, source)[0] != 100:
-                    raise ValueError("Donor no longer verifies exact")
+                donor_key = (donor_client, donor_addr, digest(source))
+                if donor_key not in verified_donors:
+                    if match.check_text(donor_client, donor_addr, source)[0] != 100:
+                        raise ValueError("Donor no longer verifies exact")
+                    verified_donors.add(donor_key)
                 directives = match.directives(source)
                 body = draft.clean_repair_context(source)
                 rewritten = auto.family_propagate(match.disasm(target, int(addr, 16)), body)
@@ -151,4 +177,6 @@ def run(limit):
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int, default=160)
-    run(ap.parse_args().limit)
+    ap.add_argument("--refresh", action="store_true")
+    args = ap.parse_args()
+    run(args.limit, args.refresh)

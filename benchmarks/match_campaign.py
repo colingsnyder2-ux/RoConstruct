@@ -124,7 +124,7 @@ def family_index(campaign):
     return result
 
 
-def propagate(campaign):
+def propagate(campaign, donor_limit=8):
     snapshots = campaign.snapshot()
     indexes = family_index(campaign)
     donors, pending = defaultdict(list), []
@@ -138,6 +138,15 @@ def propagate(campaign):
     checked = set()
     for row in campaign.previous("propagation"):
         checked.add((row["client"], row["addr"], row["candidate_sha256"]))
+        if row.get("score") == 100 and row.get("client") in indexes:
+            path = row.get("candidate_path")
+            if path and Path(path).exists():
+                donors[row["family"]].append((row["client"], row["addr"], Path(path).read_text(encoding="utf-8")))
+    # Bring exact wins from every campaign stage into subsequent propagation.
+    for path in (campaign.root / "candidates").glob("*/*/*.cpp"):
+        client, addr = path.parent.name, path.stem
+        if client in indexes and addr in indexes[client]:
+            donors[indexes[client][addr]].append((client, addr, path.read_text(encoding="utf-8")))
     verified, attempted, wins = {}, 0, 0
     for depth in range(3):
         additions, remaining = [], []
@@ -164,7 +173,7 @@ def propagate(campaign):
                 if key in distinct:
                     continue
                 distinct.add(key)
-                if len(distinct) > 8:
+                if donor_limit and len(distinct) > donor_limit:
                     break
                 if (client, addr, key) in checked:
                     continue
@@ -201,10 +210,10 @@ def propagate(campaign):
                                               "unresolved": len(pending), "verified_donors": len(verified)})
 
 
-def configuration(campaign):
+def configuration(campaign, scale=False):
     from benchmarks.shared_mfc_verify import verify
     snapshots = campaign.snapshot()
-    manifest = campaign.root / "configuration-manifest.json"
+    manifest = campaign.root / ("configuration-expanded-manifest.json" if scale else "configuration-manifest.json")
     if not manifest.exists():
         groups, guards = defaultdict(list), defaultdict(list)
         for client, rows in snapshots.items():
@@ -215,8 +224,8 @@ def configuration(campaign):
                     guards[client, unit].append(row)
                 d = match.directives(row["source"])
                 recipe, _, path = d.get("lib", "").partition(" ")
-                if recipe.startswith("xtp-") and "shared-mfc" not in recipe and unit.startswith("CXTP"):
-                    if 50 <= row["score"] < 100:
+                if recipe.startswith("xtp-") and "shared-mfc" not in recipe and unit.startswith("CXT"):
+                    if (0 if scale else 50) < row["score"] < 100:
                         groups[client, unit, recipe, path, int(d["cl"])].append(row)
         prior = {("2008-06", "CXTPReportControl"), ("2008-06", "CXTPPopupBar"),
                  ("2008-06", "CXTPPropertyGrid"), ("2008-06", "CXTPTabClientWnd"),
@@ -225,24 +234,28 @@ def configuration(campaign):
         planned, used_units = [], set()
         for key, rows in sorted(groups.items(), key=lambda item: -len(item[1])):
             client, unit, recipe, path, build = key
-            if (client, unit) in prior or unit in used_units or len(rows) < 10 or len(guards[client, unit]) < 3:
+            if not scale and ((client, unit) in prior or unit in used_units or len(rows) < 10 or len(guards[client, unit]) < 3):
                 continue
             shared = recipe + "-shared-mfc"
             if shared not in libs.RECIPES:
                 continue
-            rows = sorted(rows, key=lambda row: digest(client + row["addr"]))[:30]
+            rows = sorted(rows, key=lambda row: digest(client + row["addr"]))
+            if not scale:
+                rows = rows[:30]
             train = min(10, len(rows) // 2)
             planned.append({"client": client, "unit": unit, "recipe": shared, "path": path,
                             "build": build, "rows": [dict(row, split="train" if i < train else "holdout")
                                                         for i, row in enumerate(rows)] +
                             [dict(row, split="guard") for row in guards[client, unit][:10]]})
             used_units.add(unit)
-            if len(planned) == 6:
+            if not scale and len(planned) == 6:
                 break
         manifest.write_text(json.dumps(planned, indent=1), encoding="utf-8")
     done = {(r["client"], r["unit"], r["addr"]) for r in campaign.previous("configuration")}
     for group in json.loads(manifest.read_text(encoding="utf-8")):
         client = group["client"]
+        if client not in campaign.info["clients"] or all((client, group["unit"], r["addr"]) in done for r in group["rows"]):
+            continue
         variants = []
         for flags in ("/O2 /GS- /MD", "/O1 /GS- /MD"):
             source = libs.source_for(group["recipe"], group["path"], "cpp", group["build"], flags)
@@ -274,7 +287,7 @@ def configuration(campaign):
         print("configuration", client, group["unit"], len(group["rows"]), "targets", flush=True)
 
 
-def templates(campaign, limit=20):
+def templates(campaign, limit=20, all_builds=False):
     from roc import fingerprint, template_recovery
     manifest = campaign.root / "templates-manifest.json"
     if not manifest.exists():
@@ -323,24 +336,33 @@ def templates(campaign, limit=20):
     targets = {}
     for client in campaign.info["clients"]:
         target = fingerprint.Target(client)
-        target.index = {size: [a for a in addrs if snapshots[client].get(a, {}).get("score") != 100]
-                        for size, addrs in target.index.items()}
+        # Local score files may be stale; use the server snapshot for eligibility.
+        target.index = {}
+        for addr, function in match._functions(client).items():
+            if function.get("kind", "code") == "code" and snapshots[client].get(addr, {}).get("score") != 100:
+                target.index.setdefault(function["size"], []).append(addr)
         targets[client] = target
     done = {r["variant"] for r in campaign.previous("templates")}
     for row in json.loads(manifest.read_text(encoding="utf-8")):
-        for version in ("1_34_1", "1_40_0", "1_44_0", "1_47_0"):
-            for policy in ("default", "release-iterators"):
+        combinations = [(version, policy, build)
+                        for version in ("1_34_1", "1_40_0", "1_44_0", "1_47_0")
+                        for policy in ("default", "release-iterators")
+                        for build in (sorted({entry["compiler_build"] for client, entry in clients.load().items()
+                                              if client in campaign.info["clients"]}) if all_builds
+                                      else [clients.load()[row["client"]]["compiler_build"]])]
+        for version, policy, build in combinations:
                 recipe = "templates-boost-" + version
                 body = row["source"]
                 if policy == "release-iterators":
                     body = "#define _SECURE_SCL 0\n#define _HAS_ITERATOR_DEBUGGING 0\n" + body
                 filename = "client-rtti-" + digest(body)[:20] + ".cpp"
                 variant = recipe + "/" + filename
+                if build != clients.load()[row["client"]]["compiler_build"]:
+                    variant += "/cl-" + str(build)
                 if variant in done:
                     continue
                 folder = libs.fetch(recipe)
                 (folder / filename).write_text(body, encoding="utf-8")
-                build = clients.load()[row["client"]]["compiler_build"]
                 source = libs.source_for(recipe, filename, "cpp", build, "/O2 /GS- /EHsc /MD")
                 record = {"variant": variant, "client_rtti": row["client"], "raw": row["raw"],
                           "decoded": row["decoded"], "policy": policy, "build": build,
@@ -366,16 +388,19 @@ def main():
     parser.add_argument("--output", default="work/match-campaign-20261010")
     parser.add_argument("--server")
     parser.add_argument("--template-limit", type=int, default=20)
+    parser.add_argument("--scale", action="store_true")
+    parser.add_argument("--donor-limit", type=int, default=8, help="0 tests all distinct donors")
+    parser.add_argument("--all-template-builds", action="store_true")
     args = parser.parse_args()
     campaign = Campaign(args.output, args.server)
     if args.stage == "harvest":
         harvest(campaign)
     elif args.stage == "propagate":
-        propagate(campaign)
+        propagate(campaign, args.donor_limit)
     elif args.stage == "configuration":
-        configuration(campaign)
+        configuration(campaign, args.scale)
     elif args.stage == "templates":
-        templates(campaign, args.template_limit)
+        templates(campaign, args.template_limit, args.all_template_builds)
     else:
         print({c: len(rows) for c, rows in campaign.snapshot().items()})
 
