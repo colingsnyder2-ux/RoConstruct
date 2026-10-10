@@ -114,8 +114,10 @@ stayed 99, one dropped to 88. This supports unit/family relevance, not global
 replacement. Better stored candidates remain protected. No submission made.
 
 2010 scale check (`xtp-13.2.1`, `CXTPReportControl`) failed gate: six stored
-partials scored `61, 97, 64, 98, 99, 99`; no gain. Added recipe for future
-per-client search, but reject shared-MFC config as universal 2010 fix.
+partials scored `61, 97, 64, 98, 99, 99` versus stored scores
+`93,95,96,98,98,98`: three code-score improvements, two regressions, one flat,
+zero new code-exacts. Earlier "no gain" wording was incorrect. Data/source
+replay remains needed for these partials; no universal 2010 replacement.
 
 Metadata triage: workspace has one local `WebService.pdb` under source-cache,
 plus temporary LTCG OBJ/LIB/MAP artifacts. No XTP/client-matched PDB, project,
@@ -123,7 +125,7 @@ or vendor OBJ/LIB archive found. LTCG artifacts are experiment outputs, not
 historical build metadata; do not import types/layouts from them.
 
 August 2007 VC8 shard (`CXTPReportControl`, 10 partials) scored
-`91,94,99,93,95,94,94,94,97,53` under shared MFC. Only two improved; one
+`91,94,99,93,95,94,94,94,97,53` under shared MFC. Five code scores improved; one
 reached 99; several stayed flat; one regressed badly. Nonuniform August layout
 remains unresolved. Added VC8 shared recipe, but reject broad rollout.
 
@@ -144,9 +146,12 @@ results under shared MFC; one improved 90→91. Added recipe and test coverage.
 unit-specific; retain per-source score gating.
 
 2012 scale shard: `CXTPPropExchangeXMLNode` from XTP 15.2.1 (`xtp-15.2.1-shared-mfc`,
-`/O2 /GS- /MD`, compiler 30729). All 136 functions in this unit became exact (100%).
-Overall 2012-06 client: 10,711 exact functions under shared-MFC config. Benefit
-extends to 2012; shared-MFC effect is strong for XTP 15.2.1 on VS2008 SP1.
+`/O2 /GS- /MD`, compiler 30729). Independent replay of all 46 currently cataloged
+CXTPPropExchangeXMLNode targets gives 24 code/data-exact, 22 non-exact; zero new
+exacts over current stored scores. Earlier 136/136 and 10,711 configuration
+attribution claims were unsupported and are withdrawn. Current database stores
+180 exact sources referencing shared-MFC recipes in 2012-06 across units; that
+is a source count, not a measured gain over a frozen pre-run baseline.
 
 ## Experiment 4: Global cross-client graph transfer (pilot)
 
@@ -314,6 +319,35 @@ improvements for score=0 families require family-based source transfer
 2. Integrate SMT solver (Z3) for sketch refinement
 3. Test on 10 plateau functions from Experiments 5/9
 4. Implement counterexample-guided synthesis loop (CEGIS)
+
+## Independent replay audit
+
+Earlier additional-shard "exact" counts based only on byte scores are
+provisional until referenced-data verification passes. A repeatable read-only
+benchmark now exists at `benchmarks/shared_mfc_verify.py`; run with
+`py -3.12 -m benchmarks.shared_mfc_verify --limit 10`. It freezes targets and
+stored sources before compilation, rebuilds baseline sources, records target
+and object hashes, partitions training/held-out rows, and includes ten exact
+guards per unit where available. Results checkpoint to ignored
+`work/shared-mfc-verified-shards.json`.
+
+Identical pointer-return functions can reference different runtime-class data.
+All code-exact symbol ties must undergo the existing referenced-data check
+before declaring a data-only plateau. Two focused tests cover tie selection
+and refusal of bad-data exacts. This benchmark does not alter server state.
+
+Completed replay of six current cohorts: 81 targets (including 60 exact
+guards), 67 code/data-exact candidates, 12 improvements versus frozen stored
+scores. Ten improvements are 2009-06 code/data-exact (five training and five
+held-out). The other two are partial gains: `006fb2d0` 98→99 and `009db3a0`
+90→91. No baseline compilation failed; no genuine data-only plateau remained
+after checking every code-exact symbol tie.
+
+Three guard targets regressed to 72 under this particular whole-unit recipe
+(`006fa530`, `006fa540`, `008f2470`); they matched an emitted exception handler.
+This confirms that applying one recipe to an entire catalog class is unsound.
+Only individual verified improvements qualify for retention. All original
+stored sources remain unchanged; results are offline evidence, not uploads.
 
 ## Experiment 8: Genuine compilation neighborhoods (pilot)
 

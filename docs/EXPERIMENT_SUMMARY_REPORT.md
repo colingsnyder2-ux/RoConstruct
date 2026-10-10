@@ -2,13 +2,13 @@
 
 **Date**: 2026-10-09  
 **Repository**: C:\Users\colin\RoConstruct  
-**Status**: All 10 experiments piloted
+**Status**: Initial probes recorded; several required pilots remain incomplete
 
 ---
 
 ## Executive Summary
 
-All 10 experiments from the research plan have been piloted. The most impactful finding is the **shared-MFC configuration** (`_AFXDLL _XTP_STATICLINK _DLL` with `/MD`), which explains vtable layout differences and yields significant exact matches across multiple clients and XTP versions.
+All ten topics have initial notes, but design probes do not complete the planned implementation, sample sizes, held-out checks, or gain measurements. The strongest verified finding is the shared-MFC configuration (`_AFXDLL _XTP_STATICLINK _DLL` with `/MD`). AST repair, behavioral synthesis and client-specific template recovery remain unfinished.
 
 ---
 
@@ -17,15 +17,15 @@ All 10 experiments from the research plan have been piloted. The most impactful 
 | # | Experiment | Status | Key Finding |
 |---|------------|--------|-------------|
 | 1 | Whole-class layout reconstruction | Partial | Shared-MFC config explains vtable shifts (+2 virtual slots) |
-| 2 | Build macro/configuration recovery | **Done** | `_AFXDLL _XTP_STATICLINK _DLL` + `/MD` |
-| 3 | Shared data repair | **Done** | Triage complete: no data-only 99% cases |
-| 4 | Cross-client graph transfer | **Done** | Works for same-version libraries; blocked cross-version |
-| 5 | Function boundary audit | **Done** | Boundaries correct; plateaus are template families |
+| 2 | Build macro/configuration recovery | Partial | Shared-MFC config found; bounded multi-config pilots still needed |
+| 3 | Shared data repair | Initial triage | No qualifying cases in first small sample; twenty genuine cases not tested |
+| 4 | Cross-client graph transfer | Initial probe | Correspondence investigated; fifty-method global-constraint pilot not completed |
+| 5 | Function boundary audit | Initial probe | Sample findings do not prove every boundary correct; independent audit still needed |
 | 6 | AST/type-safe joint repair | Design pilot | Clang prototype works; needs C++ LibTooling |
 | 7 | Behavior-guided synthesis | Design pilot | Unicorn framework works; needs CEGIS |
-| 8 | Genuine compilation neighborhoods | **Done** | Opaque vs visible callee produces different bytes |
-| 9 | Template specialization recovery | **Done** | 0 matches; needs C++ LibTooling for template args |
-| 10 | Debug metadata inventory | **Done** | No matching PDB found |
+| 8 | Genuine compilation neighborhoods | Synthetic probe | Ten real callers and three contexts not completed |
+| 9 | Template specialization recovery | Existing-recipe probe | Client-specific specialization recovery still needed |
+| 10 | Debug metadata inventory | Local triage | No matching client metadata identified in inspected local paths |
 
 ---
 
@@ -43,8 +43,8 @@ All 10 experiments from the research plan have been piloted. The most impactful 
 | 2008-06 | XTP 11.2.2 | CXTPPropertyGrid | 8/10 exact |
 | 2009-12 | XTP 15.2.1 | CXTPPropExchangeXMLNode | 9/10 exact |
 | 2011-06 | XTP 15.2.1 | CXTCaptionButton | 4/8 exact |
-| 2012-06 | XTP 15.2.1 | CXTPPropExchangeXMLNode | 136/136 exact (100%) |
-| 2012-06 | XTP 15.2.1 | Overall | 10,711 exact |
+| 2012-06 | XTP 15.2.1 | CXTPPropExchangeXMLNode | Replay: 24/46 exact; zero new exacts versus current DB |
+| 2012-06 | Shared-MFC recipes | All stored sources | 180 exact source records; not attributable new gains |
 
 **Root cause**: Shared release MFC retains `CObject::AssertValid()` and `CObject::Dump()` virtual slots (guarded by `defined(_DEBUG) || defined(_AFXDLL)`), absent from static MFC recipe.
 
