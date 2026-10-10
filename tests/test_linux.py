@@ -209,6 +209,47 @@ def test_msi_table_rows_are_column_major():
     assert rows[1] == {"Directory": "child", "Directory_Parent": "PARENT", "DefaultDir": "x"}
 
 
+def test_msi_schemas_take_widths_from_the_columns_table():
+    from roc import setup
+    # VS2008 stores the File table's numeric columns as i4 (including Sequence);
+    # hardcoding i2 made the row size wrong and the 7z path silently fall back.
+    rows = [
+        {"Table": "File", "Number": 1, "Name": "File", "Type": 0x2D48},        # string
+        {"Table": "File", "Number": 4, "Name": "FileSize", "Type": 0x0104},    # i4
+        {"Table": "File", "Number": 7, "Name": "Attributes", "Type": 0x1502},  # i2
+        {"Table": "File", "Number": 8, "Name": "Sequence", "Type": 0x0104},    # i4
+        {"Table": "Directory", "Number": 1, "Name": "Directory", "Type": 0x2D48},
+    ]
+    schemas = setup._msi_schemas(rows, ["File", "Directory"])
+    assert schemas["File"] == [("File", "s"), ("FileSize", "i4"),
+                               ("Attributes", "i2"), ("Sequence", "i4")]
+    assert schemas["Directory"] == [("Directory", "s")]
+
+
+def test_msi_table_ignores_msiinfo_header_rows(tmp_path):
+    from roc import setup
+    # `msiinfo export` writes the column names, the column types, then the table
+    # name plus its primary keys before the data. Those header lines have fewer
+    # fields than a row and used to be read as data (KeyError: 'DefaultDir').
+    out = ("Directory\tDirectory_Parent\tDefaultDir\r\n"
+           "s72\ts72\tl255\r\n"
+           "Directory\tDirectory\r\n"
+           "root\t\tSourceDir\r\n"
+           "child\troot\tsub\r\n")
+
+    class Done:
+        returncode = 0
+        stdout = out
+        stderr = ""
+
+    with patch("roc.setup.subprocess.run", return_value=Done()):
+        rows = setup.msi_table(tmp_path / "x.msi", "Directory")
+    assert rows == [
+        {"Directory": "root", "Directory_Parent": "", "DefaultDir": "SourceDir"},
+        {"Directory": "child", "Directory_Parent": "root", "DefaultDir": "sub"},
+    ]
+
+
 def test_handoff_launch_command_off_windows():
     from roc import handoff
     with patch("roc.handoff.os.name", "posix"):

@@ -846,6 +846,7 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
     errors = []
     worker_log = CompactLog(workers, log) if verbosity == "compact" or (verbosity == "auto" and workers >= 3) else log
     if not source_only:
+        setup.compilers.cache_clear()  # a compiler installed since this process started must be seen
         setup.compilers()
     from roc import refsource
     if refsource.TREE.is_dir():

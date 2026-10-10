@@ -452,14 +452,21 @@ def msi_admin_extract(msi, target):
 
 
 def msi_table(msi, table):
-    """Rows of one MSI table as dicts, via msitools' msiinfo (Linux fallback)."""
+    """Rows of one MSI table as dicts, via msitools' msiinfo (Linux fallback).
+
+    `msiinfo export` writes the table in IDT text form: a line of column names, a
+    line of column types, a line naming the table and its primary keys, then the
+    data. Only the first line lists the columns, and the header lines have fewer
+    fields than a row, so they must not be read as data.
+    """
     out = subprocess.run(["msiinfo", "export", str(msi), table],
                          capture_output=True, text=True, check=True).stdout
     lines = out.splitlines()
-    if len(lines) < 2:
+    if len(lines) < 4:
         return []
     columns = lines[0].split("\t")
-    return [dict(zip(columns, line.split("\t"))) for line in lines[2:] if line.strip()]
+    return [dict(zip(columns, values)) for values in (line.split("\t") for line in lines[3:])
+            if len(values) == len(columns)]
 
 
 def msi_layout(msi, cab_dir, target):
@@ -511,8 +518,8 @@ def msi_layout_unix(msi, cab_dir, target):
     try:
         if _msi_layout_7z(msi, cab_dir, target) and _has_compiler(target):
             return
-    except Exception:  # a non-standard table just means "try the next method"
-        pass
+    except Exception as error:  # a non-standard table just means "try the next method"
+        print("  (7z could not read %s: %s; trying Wine)" % (msi.name, error))
     shutil.rmtree(target, ignore_errors=True)
     if ensure_wine_prefix():
         target.mkdir(parents=True, exist_ok=True)
@@ -523,40 +530,66 @@ def msi_layout_unix(msi, cab_dir, target):
             return
         shutil.rmtree(target, ignore_errors=True)
     if shutil.which("msiinfo") and Path(cab_dir).is_dir():
-        dirs = {row["Directory"]: (row["Directory_Parent"], row["DefaultDir"].split(":")[0].split("|")[-1])
-                for row in msi_table(msi, "Directory")}
+        try:
+            dirs = {row["Directory"]: (row["Directory_Parent"], row["DefaultDir"].split(":")[0].split("|")[-1])
+                    for row in msi_table(msi, "Directory")}
 
-        def path(d):
-            parent, name = dirs[d]
-            if not parent or parent == d:
-                return Path()
-            return path(parent) / ("" if name == "." else name)
+            def path(d):
+                parent, name = dirs[d]
+                if not parent or parent == d:
+                    return Path()
+                return path(parent) / ("" if name == "." else name)
 
-        comp = {row["Component"]: row["Directory_"] for row in msi_table(msi, "Component")}
-        for row in msi_table(msi, "File"):
-            src = Path(cab_dir) / row["File"]
-            if src.exists():
-                dst = Path(target) / path(comp[row["Component_"]]) / row["FileName"].split("|")[-1]
-                dst.parent.mkdir(parents=True, exist_ok=True)
-                shutil.copyfile(src, dst)
-        if _has_compiler(target):
-            return
+            comp = {row["Component"]: row["Directory_"] for row in msi_table(msi, "Component")}
+            for row in msi_table(msi, "File"):
+                src = Path(cab_dir) / row["File"]
+                if src.exists():
+                    dst = Path(target) / path(comp[row["Component_"]]) / row["FileName"].split("|")[-1]
+                    dst.parent.mkdir(parents=True, exist_ok=True)
+                    shutil.copyfile(src, dst)
+            if _has_compiler(target):
+                return
+        except Exception:  # a table msiinfo cannot read just means "give up clearly"
+            pass
         shutil.rmtree(target, ignore_errors=True)
-    raise SystemExit("Could not unpack %s on Linux (no cl.exe was extracted). Install Wine or "
-                     "msitools (msiinfo) and run this again." % msi.name)
+    raise SystemExit("Could not unpack %s on Linux (no cl.exe was extracted). Install 7z and Wine "
+                     "(or msitools' msiinfo) and run this again." % msi.name)
 
 
 # Standard MSI layout tables we need, as (column, kind): 's' is a string reference
 # into the string pool, 'i2'/'i4' are biased integers. The on-disk table stream is
-# column-major; the column definitions live in the _Columns table but these three
-# schemas are fixed by the MSI spec, so they can be hardcoded.
+# column-major. The real column widths are read from the _Columns table at runtime
+# (numeric widths vary between installers, e.g. VS2008's File table stores Sequence
+# as i4); these are the fallback used only when _Columns cannot be read.
 MSI_LAYOUT_TABLES = {
     "Directory": [("Directory", "s"), ("Directory_Parent", "s"), ("DefaultDir", "s")],
     "Component": [("Component", "s"), ("ComponentId", "s"), ("Directory_", "s"),
                   ("Attributes", "i2"), ("Condition", "s"), ("KeyPath", "s")],
     "File": [("File", "s"), ("Component_", "s"), ("FileName", "s"), ("FileSize", "i4"),
-             ("Version", "s"), ("Language", "s"), ("Attributes", "i2"), ("Sequence", "i2")],
+             ("Version", "s"), ("Language", "s"), ("Attributes", "i2"), ("Sequence", "i4")],
 }
+
+# _Columns has a schema fixed by the MSI spec, so it can be read without itself.
+MSI_COLUMNS_TABLE = [("Table", "s"), ("Number", "i2"), ("Name", "s"), ("Type", "i2")]
+
+MSITYPE_STRING = 0x800
+
+
+def _msi_column_kind(coltype):
+    """The on-disk size class of a column, from its _Columns.Type value."""
+    if coltype & MSITYPE_STRING:
+        return "s"
+    return "i2" if (coltype & 0xff) <= 2 else "i4"
+
+
+def _msi_schemas(column_rows, tables):
+    """{table: [(column, kind)]} for the named tables, read from _Columns rows."""
+    schemas = {}
+    for table in tables:
+        columns = sorted((r for r in column_rows if r["Table"] == table),
+                         key=lambda r: r["Number"])
+        schemas[table] = [(r["Name"], _msi_column_kind(r["Type"])) for r in columns]
+    return schemas
 
 
 def _msi_strings(pool, data):
@@ -611,8 +644,9 @@ def _msi_table_rows(raw, schema, strings, strref):
 def _msi_layout_7z(msi, cab_dir, target):
     """Map an already-expanded cab through the MSI tables using 7z and stdlib.
 
-    Returns False (never raises) when the MSI does not look like the standard
-    layout, so the caller can fall back to Wine or msitools.
+    Returns False when 7z is unavailable or the MSI does not look like the standard
+    layout. A table whose stream size does not match its row width raises, and the
+    caller treats that the same way: fall back to Wine or msitools.
     """
     seven = shutil.which("7z")
     if not seven or not Path(cab_dir).is_dir():
@@ -630,12 +664,17 @@ def _msi_layout_7z(msi, cab_dir, target):
         if pool is None or data is None:
             return False
         strings, strref = _msi_strings(pool, data)
+        try:
+            column_rows = _msi_table_rows(read("!_Columns"), MSI_COLUMNS_TABLE, strings, strref)
+        except (TypeError, ValueError):  # no readable _Columns: fall back to fixed widths
+            column_rows = []
+        schemas = _msi_schemas(column_rows, MSI_LAYOUT_TABLES)
         tables = {}
-        for table, schema in MSI_LAYOUT_TABLES.items():
+        for table, fallback in MSI_LAYOUT_TABLES.items():
             raw = read("!" + table)
             if raw is None:
                 return False
-            tables[table] = _msi_table_rows(raw, schema, strings, strref)
+            tables[table] = _msi_table_rows(raw, schemas.get(table) or fallback, strings, strref)
 
     dirs = {row["Directory"]: (row["Directory_Parent"], row["DefaultDir"].split(":")[0].split("|")[-1])
             for row in tables["Directory"]}
