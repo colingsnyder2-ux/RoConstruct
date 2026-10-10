@@ -215,3 +215,40 @@ instantiations, vtable thunks, generated accessors). These are correctly
 identified as separate functions. Boundary corrections not needed; matching
 improvements for score=0 families require family-based source transfer
 (Experiment 6/9), not boundary fixes.
+
+## Experiment 6: AST/type-safe joint repair (design pilot)
+
+**Goal**: Replace regex-based text substitutions with coordinated declaration/body/type edits using Clang LibTooling for structural analysis, MSVC for final compilation.
+
+**Scope**: 20 structurally-close candidates, ≤100 compiles each, paired against existing regex repair engine.
+
+**Key findings from clang prototype**:
+
+1. **Missing member declaration detection works**: Clang accurately identifies out-of-line definitions lacking class declarations (e.g., `int S::f(int y)` without `int f(int y);` in class). Fixed insertion before closing brace compiles cleanly.
+
+2. **Cascading parser errors block multi-struct analysis**: Clang stops at first error, preventing batch analysis. Fix: process one class at a time, re-parse after each fix.
+
+3. **Calling convention mismatch detection needs work**: Clang Python bindings don't expose calling convention on `Type` objects (CLASS_DECL ≠ STRUCT_DECL in Python bindings). Need C++ LibTooling for full access.
+
+4. **Template specialization recovery**: Clang can identify template instantiations and their specializations via `CursorKind.CLASS_TEMPLATE_PARTIAL_SPECIALIZATION` and `TEMPLATE_REF`.
+
+5. **Coordinated edits**: Clang's `Rewriter` can apply coordinated changes to declarations and definitions simultaneously (e.g., add declaration + fix calling convention + adjust return type).
+
+**Integration design**: 
+- Use clang for structural diagnosis (missing declarations, calling conventions, template args)
+- Generate coordinated fixes as text patches
+- Apply patches to source
+- Verify with MSVC (existing ROC `repair_loop`)
+
+**Blockers**:
+- Cascading parser errors require single-class incremental fixing
+- Calling convention detection needs C++ LibTooling (not exposed in Python bindings)
+- Template argument deduction needs `TemplateArgument` access
+
+**Next steps**: 
+1. Build incremental clang repair loop (fix one class → re-parse → repeat)
+2. Port calling convention detection to C++ LibTooling tool
+3. Integrate with ROC `repair_loop` as pre-pass
+4. Test on 20 plateau candidates from Experiment 5 (48-byte families)
+
+**No new exact matches yet** — this is a design/feasibility pilot. Implementation requires C++ LibTooling tool for production use.
