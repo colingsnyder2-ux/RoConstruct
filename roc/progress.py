@@ -43,15 +43,14 @@ def head_commit():
 
 
 def add_history(stats, updated):
-    """One snapshot per run; a run that changes nothing replaces the last one."""
+    """Record snapshots only when client stats change."""
     path = DOCS / "history.json"
     hist = json.loads(path.read_text()) if path.exists() else []
+    if hist and hist[-1]["clients"] == stats:
+        return
     commit, subject = head_commit()
     snap = {"date": updated, "commit": commit, "subject": subject, "clients": stats}
-    if hist and hist[-1]["clients"] == stats:
-        hist[-1] = snap
-    else:
-        hist.append(snap)
+    hist.append(snap)
     path.write_text(json.dumps(hist, separators=(",", ":")) + "\n")
 
 
@@ -173,6 +172,11 @@ def build(server=None, token=None, public_server=None, remote=None):
     updated = time.strftime("%Y-%m-%d %H:%M UTC", time.gmtime())
     progress = {"updated": updated, "clients": out, "leaderboard": remote["leaderboard"][:50],
                 "server": public_server}
-    (DOCS / "progress.json").write_text(json.dumps(progress, indent=1) + "\n")
+    path = DOCS / "progress.json"
+    previous = json.loads(path.read_text()) if path.exists() else {}
+    if {k: v for k, v in previous.items() if k != "updated"} == {
+            k: v for k, v in progress.items() if k != "updated"}:
+        progress["updated"] = previous["updated"]
+    path.write_text(json.dumps(progress, indent=1) + "\n")
     add_history(stats, updated)
     return progress

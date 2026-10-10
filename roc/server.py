@@ -730,7 +730,7 @@ def _publish_once(store, public_url, log=print):
     publish_findings(git_exe, log)
     progress.build(public_server=public_url, remote=export(store))
     git = lambda *a: subprocess.run([git_exe, *a], cwd=ROOT, capture_output=True, text=True)
-    git("add", "docs")
+    git("add", "docs/data", "docs/progress.json", "docs/history.json", "docs/source-links.json")
     if git("diff", "--cached", "--quiet").returncode == 0:
         return log("Site unchanged.")
     git("commit", "-m", "Update progress")
@@ -748,8 +748,8 @@ def sync_findings(store):
             if path.exists() and scores.get(row["addr"], 0) > row["score"]:
                 continue
             text = "// from server: %d%% by %s\n%s" % (row["score"], row["user"], row["source"])
-            if path.exists() and (path.read_text(errors="replace") == text or
-                                  scores.get(row["addr"]) == row["score"]):
+            if path.exists() and (scores.get(row["addr"]) == row["score"] or
+                                  path.read_text(errors="replace") == text):
                 continue
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_text(text)

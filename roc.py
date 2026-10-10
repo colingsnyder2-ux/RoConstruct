@@ -1477,8 +1477,8 @@ def main(argv=None):
         (["--discord-webhook"], {"help": "Discord mine-log webhook URL (or ROCONSTRUCT_DISCORD_WEBHOOK)"}),
         (["--lease"], {"type": int, "default": 900, "help": "seconds before an abandoned job frees up"}),
         (["--tunnel"], {"action": "store_true", "help": "public HTTPS address via Cloudflare (no router setup)"}),
-        (["--publish"], {"action": "store_true", "help": "update + push the website regularly"}),
-        (["--publish-every"], {"type": int, "default": 3600, "help": "seconds between site updates"}),
+        (["--publish"], {"action": "store_true", "help": "publish new sources, partials, mined findings and website changes"}),
+        (["--publish-every"], {"type": int, "default": 3600, "help": "seconds between findings/site checks; unchanged output makes no commit"}),
         (["--public-server"], {"help": "address shown on the site (if not using --tunnel)"}),
         (["--startup"], {"action": "store_true", "help": "start host.cmd automatically when you log in"}))
     cmd("worker", cmd_worker, "help automatically: AI drafts, compile, submit",

@@ -9,6 +9,22 @@ from roc import libs, progress
 
 
 class SourceLinksTests(unittest.TestCase):
+    def test_unchanged_build_preserves_progress_and_history(self):
+        with tempfile.TemporaryDirectory() as folder, \
+             patch.object(progress, "DOCS", Path(folder)), \
+             patch.object(progress.clients, "load", return_value={}), \
+             patch.object(progress, "library_meta", return_value={}), \
+             patch.object(progress, "source_links", return_value={}), \
+             patch.object(progress, "head_commit", return_value=("abc", "test")), \
+             patch.object(progress.time, "strftime", side_effect=["first", "second", "third"]):
+            remote = {"scores": {}, "leaderboard": []}
+            progress.build(remote=remote)
+            before = {p.name: p.read_bytes() for p in Path(folder).glob("*.json")}
+            progress.build(remote=remote)
+            self.assertEqual(before, {p.name: p.read_bytes() for p in Path(folder).glob("*.json")})
+            changed = progress.build(remote=remote, public_server="https://new.example.com")
+            self.assertEqual(changed["updated"], "third")
+
     def test_archive_and_commit_pinned_file(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)

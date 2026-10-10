@@ -181,6 +181,12 @@ Nothing above can record a wrong match: a result counts only when it is byte-ide
 The recovered per-client function outputs are published separately, so normal
 RoConstruct clones stay small. Browse [RoConstruct-findings](https://github.com/colingsnyder2-ux/RoConstruct-findings), or download only the recovered `src/` as the [latest ZIP](https://github.com/colingsnyder2-ux/RoConstruct-findings/releases/download/findings-latest/roconstruct-findings-src.zip).
 
+With `roc server --publish`, each hourly check exports all stored sources (including
+partials and unfinished candidates), publishes new or changed local `src/` findings
+(including mined matches), and updates website data and original-source links.
+Unchanged findings and website output produce no commit. A findings push rebuilds
+the public source ZIP.
+
 ## Reference
 
 **[SOURCES.md](SOURCES.md)** — every source we compile to match functions, what we still need and cannot find, and leads we ruled out. ([live page](https://colingsnyder2-ux.github.io/RoConstruct/sources.html))
