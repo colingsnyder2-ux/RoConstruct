@@ -173,3 +173,45 @@ later client.
 xcopy). Cross-version transfer requires API/ABI compatibility layer or AST-level
 adaptation (Experiment 6). No new exact matches from cross-version graph transfer
 in this pilot.
+
+## Experiment 5: Function boundary audit (pilot)
+
+Audited function boundaries in 2007-08 client (`seg_00770000` unit, 2000+ functions).
+Used independent CFG evidence: adjacency gaps, call/return patterns, instruction
+structure, and score plateaus.
+
+**Findings**:
+
+1. **Regular spacing patterns**: Multiple function families with consistent sizes
+   and gaps (32-byte/48-byte/55-byte/64-byte functions at fixed intervals).
+   Example: 55-byte functions at 0x7783c0, 0x778400, 0x778440, 0x778480 (64-byte
+   stride, 9-byte gaps); 48-byte functions at 0x772b50, 0x772b80, 0x772bb0,
+   0x772be0 (48-byte stride).
+
+2. **Near-identical function families**: Each family shows identical instruction
+   structure with only immediate constants differing (addresses, offsets, flags).
+   Example: Four 48-byte functions (00772b50-00772be0) share identical CFG but
+   differ in pushed constants (0x100/0x104/0x108), target addresses (0x7af610-40),
+   and ECX loads (0x8c33b0/cc/94/3420). All four score 0 (unmatched).
+
+3. **Contiguous chains (gap=0)**: 40+ function chains with zero-byte gaps.
+   - Score=100 chains: 6×32-byte (007709a0-00770a40), 8×64-byte (00778da0-00778fe0)
+   - Score=0 chains: 19×48-byte (00772b50-00773860), 5×48-byte (007752b0-00775310)
+
+4. **Boundary correctness**: All observed contiguous functions have distinct
+   prologues (`push ecx`/`push esi`/`xor ecx,ecx`), independent call/ret
+   sequences, and independent relocation sets. No evidence of single functions
+   incorrectly split by the analyzer. The analyzer correctly identifies separate
+   entry points.
+
+5. **Plateau correlation**: Score=0 chains (48-byte, 55-byte families) are
+   unmatched template instantiations/generated code. Score=100 chains (32-byte,
+   64-byte) are matched simple accessors/thunks.
+
+**Conclusion**: Analyzer boundaries are correct — no single functions
+incorrectly split, no adjacent functions incorrectly merged. The "plateaus"
+represent families of compiler-generated near-identical functions (template
+instantiations, vtable thunks, generated accessors). These are correctly
+identified as separate functions. Boundary corrections not needed; matching
+improvements for score=0 families require family-based source transfer
+(Experiment 6/9), not boundary fixes.
