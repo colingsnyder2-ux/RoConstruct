@@ -1,0 +1,210 @@
+{
+ "zlib-1.2.3": {
+  "url": "https://zlib.net/fossils/zlib-1.2.3.tar.gz",
+  "kind": "archive"
+ },
+ "jpeg-6b": {
+  "url": "https://www.ijg.org/files/jpegsrc.v6b.tar.gz",
+  "kind": "archive"
+ },
+ "lua-5.1": {
+  "url": "https://www.lua.org/ftp/lua-5.1.tar.gz",
+  "kind": "archive"
+ },
+ "lua-5.1.1": {
+  "url": "https://www.lua.org/ftp/lua-5.1.1.tar.gz",
+  "kind": "archive"
+ },
+ "lua-5.1.2": {
+  "url": "https://www.lua.org/ftp/lua-5.1.2.tar.gz",
+  "kind": "archive"
+ },
+ "lua-5.1.3": {
+  "url": "https://www.lua.org/ftp/lua-5.1.3.tar.gz",
+  "kind": "archive"
+ },
+ "lua-5.1.4": {
+  "url": "https://www.lua.org/ftp/lua-5.1.4.tar.gz",
+  "kind": "archive"
+ },
+ "lua-5.0": {
+  "url": "https://www.lua.org/ftp/lua-5.0.tar.gz",
+  "kind": "archive"
+ },
+ "lua-5.0.1": {
+  "url": "https://www.lua.org/ftp/lua-5.0.1.tar.gz",
+  "kind": "archive"
+ },
+ "lua-5.0.2": {
+  "url": "https://www.lua.org/ftp/lua-5.0.2.tar.gz",
+  "kind": "archive"
+ },
+ "lua-5.0.3": {
+  "url": "https://www.lua.org/ftp/lua-5.0.3.tar.gz",
+  "kind": "archive"
+ },
+ "zlib-1.1.4": {
+  "url": "https://zlib.net/fossils/zlib-1.1.4.tar.gz",
+  "kind": "archive"
+ },
+ "libpng-1.2.5": {
+  "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.5.tar.gz",
+  "kind": "archive"
+ },
+ "libpng-1.2.6": {
+  "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.6.tar.gz",
+  "kind": "archive"
+ },
+ "libpng-1.2.7": {
+  "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.7.tar.gz",
+  "kind": "archive"
+ },
+ "libpng-1.2.8": {
+  "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.8.tar.gz",
+  "kind": "archive"
+ },
+ "libpng-1.2.10": {
+  "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.10.tar.gz",
+  "kind": "archive"
+ },
+ "libpng-1.2.12": {
+  "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.12.tar.gz",
+  "kind": "archive"
+ },
+ "libpng-1.2.16": {
+  "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.16.tar.gz",
+  "kind": "archive"
+ },
+ "libpng-1.2.18": {
+  "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.18.tar.gz",
+  "kind": "archive"
+ },
+ "libpng-1.2.22": {
+  "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.22.tar.gz",
+  "kind": "archive"
+ },
+ "libpng-1.2.24": {
+  "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.24.tar.gz",
+  "kind": "archive"
+ },
+ "libpng-1.2.29": {
+  "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.29.tar.gz",
+  "kind": "archive"
+ },
+ "libpng-1.2.32": {
+  "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.32.tar.gz",
+  "kind": "archive"
+ },
+ "libpng-1.2.35": {
+  "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.35.tar.gz",
+  "kind": "archive"
+ },
+ "libpng-1.2.37": {
+  "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.37.tar.gz",
+  "kind": "archive"
+ },
+ "libpng-1.2.40": {
+  "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.40.tar.gz",
+  "kind": "archive"
+ },
+ "libpng-1.2.44": {
+  "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.44.tar.gz",
+  "kind": "archive"
+ },
+ "g3d-6.09": {
+  "url": "https://archive.org/download/g3d-src-6_09/g3d-src-6_09.zip",
+  "kind": "archive"
+ },
+ "sdl-1.2.11": {
+  "url": "https://www.libsdl.org/release/SDL-1.2.11.tar.gz",
+  "kind": "archive"
+ },
+ "boost-1.34.1": {
+  "url": "https://archives.boost.io/release/1.34.1/source/boost_1_34_1.tar.gz",
+  "kind": "archive"
+ },
+ "boost-1.36.0": {
+  "url": "https://archives.boost.io/release/1.36.0/source/boost_1_36_0.tar.gz",
+  "kind": "archive"
+ },
+ "boost-1.35.0": {
+  "url": "https://archives.boost.io/release/1.35.0/source/boost_1_35_0.tar.gz",
+  "kind": "archive"
+ },
+ "boost-1.37.0": {
+  "url": "https://archives.boost.io/release/1.37.0/source/boost_1_37_0.tar.gz",
+  "kind": "archive"
+ },
+ "boost-1.38.0": {
+  "url": "https://archives.boost.io/release/1.38.0/source/boost_1_38_0.tar.gz",
+  "kind": "archive"
+ },
+ "boost-1.39.0": {
+  "url": "https://archives.boost.io/release/1.39.0/source/boost_1_39_0.tar.gz",
+  "kind": "archive"
+ },
+ "boost-1.40.0": {
+  "url": "https://archives.boost.io/release/1.40.0/source/boost_1_40_0.tar.gz",
+  "kind": "archive"
+ },
+ "boost-1.44.0": {
+  "url": "https://archives.boost.io/release/1.44.0/source/boost_1_44_0.tar.gz",
+  "kind": "archive"
+ },
+ "boost-1.47.0": {
+  "url": "https://archives.boost.io/release/1.47.0/source/boost_1_47_0.tar.gz",
+  "kind": "archive"
+ },
+ "rbxgs": {
+  "url": "https://github.com/RBLXDecomp/RBXGSdecomp/blob/5a2df2c77a3088e563b57c51bbc5894218cfbe58/Client/App/",
+  "kind": "file"
+ },
+ "rbxgs-net": {
+  "url": "https://github.com/RBLXDecomp/RBXGSdecomp/blob/5a2df2c77a3088e563b57c51bbc5894218cfbe58/Client/Network/",
+  "kind": "file"
+ },
+ "rbxgs-raknet": {
+  "url": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/",
+  "kind": "file"
+ },
+ "rbxgs-view": {
+  "url": "https://github.com/RBLXDecomp/RBXGSdecomp/blob/5a2df2c77a3088e563b57c51bbc5894218cfbe58/Client/RbxView/",
+  "kind": "file"
+ },
+ "rbxgs-render": {
+  "url": "https://github.com/RBLXDecomp/RBXGSdecomp/blob/5a2df2c77a3088e563b57c51bbc5894218cfbe58/Client/Rendering/RenderLib/",
+  "kind": "file"
+ },
+ "rbxgs-appdraw": {
+  "url": "https://github.com/RBLXDecomp/RBXGSdecomp/blob/5a2df2c77a3088e563b57c51bbc5894218cfbe58/Client/Rendering/AppDraw/",
+  "kind": "file"
+ },
+ "rbxgs-g3d": {
+  "url": "https://github.com/RBLXDecomp/g3d/blob/2a2fc86c37d46e3c9b2b571795d09a6f667154c0/",
+  "kind": "file"
+ },
+ "openrbx-client": {
+  "url": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/Client/",
+  "kind": "file"
+ },
+ "ogre-1.7.0": {
+  "url": "https://downloads.sourceforge.net/project/ogre/ogre/1.7/ogre-v1-7-0.zip",
+  "kind": "archive"
+ },
+ "ogre-1.6.4": {
+  "url": "https://downloads.sourceforge.net/project/ogre/ogre/1.6.4/ogre-v1-6-4.tar.bz2",
+  "kind": "archive"
+ },
+ "ogre-1.4.9": {
+  "url": "https://downloads.sourceforge.net/project/ogre/ogre/1.4.9/ogre-v1-4-9.tar.bz2",
+  "kind": "archive"
+ },
+ "lame-3.98.4": {
+  "url": "https://downloads.sourceforge.net/project/lame/lame/3.98.4/lame-3.98.4.tar.gz",
+  "kind": "archive"
+ },
+ "lame-3.99.5": {
+  "url": "https://downloads.sourceforge.net/project/lame/lame/3.99/lame-3.99.5.tar.gz",
+  "kind": "archive"
+ }
+}

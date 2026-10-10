@@ -214,12 +214,18 @@ const pct = (a, b) => b ? (100 * a / b).toFixed(2) + "%" : "0.00%";
 const mb = n => (n / 1048576).toFixed(2) + " MB";
 const hex = n => n.toString(16).padStart(8, "0");
 const sourceUrl = (client, address) => `${FINDINGS}/blob/main/src/${encodeURIComponent(client)}/${hex(address)}.cpp`;
-const libraryUrl = meta => meta && meta[0].startsWith("libpng-")
-  ? `https://github.com/pnggroup/libpng/blob/v${meta[0].slice(7)}/${meta[1]}` : "";
+let sourceCatalog = {};
+const libraryUrl = meta => {
+  if (!meta) return "";
+  if (meta[0].startsWith("libpng-")) return `https://github.com/pnggroup/libpng/blob/v${meta[0].slice(7)}/${meta[1]}`;
+  const origin = sourceCatalog[meta[0]];
+  return origin ? origin.url + (origin.kind === "file" ? meta[1].split("/").map(encodeURIComponent).join("/") : "") : "";
+};
 const sourceLinks = (client, f, short = false) => {
   const library = libraryUrl(f[5]);
-  const harness = f[4] ? `<a href="${sourceUrl(client, f[0])}" target="_blank" rel="noopener">${f[2] < 100 ? (short ? "partial source" : "View partial source") : (short ? "source" : "View recovered source")} ↗</a>` : "";
-  if (library) return `<a href="${library}" target="_blank" rel="noopener">${short ? "C source" : "View original C source"} ↗</a>${harness ? " · " + harness : ""}`;
+  const harness = f[4] ? `<a href="${sourceUrl(client, f[0])}" target="_blank" rel="noopener">${f[2] < 100 ? (short ? "partial source" : "View partial source") : f[5] ? (short ? "harness" : "View match harness") : (short ? "source" : "View recovered source")} ↗</a>` : "";
+  const archive = f[5] && sourceCatalog[f[5][0]]?.kind === "archive" && !f[5][0].startsWith("libpng-");
+  if (library) return `<a href="${esc(library)}" target="_blank" rel="noopener">${archive ? (short ? "source archive" : "Download original source archive") : (short ? "original source" : "View original source")} ↗</a>${archive ? ` <code>${esc(f[5][1])}</code>` : ""}${harness ? " · " + harness : ""}`;
   return harness || "No recovered source published yet";
 };
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
@@ -545,7 +551,9 @@ function route(top = true) {
 Promise.all([
   fetch("progress.json", {cache: "no-cache"}).then(r => r.json()),
   fetch("history.json", {cache: "no-cache"}).then(r => r.ok ? r.json() : []).catch(() => []),
-]).then(([p, h]) => {
+  fetch("source-links.json", {cache: "no-cache"}).then(r => r.ok ? r.json() : {}).catch(() => ({})),
+]).then(([p, h, sources]) => {
+  sourceCatalog = sources;
   progress = p; history = h; hIdx = h.length - 1;
   route();
   addEventListener("hashchange", () => route());

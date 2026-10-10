@@ -5,9 +5,11 @@ Scores come from work/<client>/scores.json ({addr: 0-100}); 100 = byte match.
 """
 import json
 import re
+import shutil
 import subprocess
 import time
 from pathlib import Path
+from urllib.parse import quote
 
 from roc import clients
 
@@ -88,10 +90,42 @@ def fetch_server(server, token=None):
     return Api(server, token).call("/v1/export")
 
 
+def source_links():
+    """Original recipe archives or commit-pinned files from local upstream clones."""
+    from roc.libs import RECIPES, LIBS
+    links = {}
+    git_exe = shutil.which("git")
+    for name, recipe in RECIPES.items():
+        if recipe.get("url"):
+            links[name] = {"url": recipe["url"], "kind": "archive"}
+            continue
+        if not recipe.get("src"):
+            continue
+        folder = (LIBS / recipe["src"]).resolve()
+        if not folder.is_dir() or not git_exe:
+            continue
+        def git(*args):
+            return subprocess.run([git_exe, "-C", str(folder), *args], capture_output=True,
+                                  text=True).stdout.strip()
+        root = git("rev-parse", "--show-toplevel")
+        if not root or Path(root).resolve() == ROOT.resolve():
+            continue
+        remote = git("remote", "get-url", "origin")
+        remote = remote.replace("git@github.com:", "https://github.com/").removesuffix(".git")
+        if not remote.startswith("https://github.com/"):
+            continue
+        revision = git("rev-parse", "HEAD")
+        prefix = folder.relative_to(Path(root).resolve()).as_posix()
+        links[name] = {"url": remote + "/blob/" + revision + "/" +
+                      (quote(prefix, safe="/") + "/" if prefix != "." else ""), "kind": "file"}
+    return links
+
+
 def build(server=None, token=None, public_server=None, remote=None):
     """server: pull scores + leaderboard from the group server (else local scores only).
     remote: the same export passed in directly (the server publishing itself)."""
     (DOCS / "data").mkdir(parents=True, exist_ok=True)
+    (DOCS / "source-links.json").write_text(json.dumps(source_links(), indent=1) + "\n")
     if remote is None:
         remote = fetch_server(server, token) if server else {"scores": {}, "leaderboard": []}
     library = library_meta()
