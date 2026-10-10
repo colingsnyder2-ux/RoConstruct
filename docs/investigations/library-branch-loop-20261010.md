@@ -123,6 +123,10 @@ Twenty-one compile-error cohorts are unresolved, not evidence of failed matching
 unresolved named targets across clients. All twelve cohorts compiled and yielded
 zero new server exacts. Preserve this negative result to prevent blind repeats.
 
+`codegen-transfer` selectively expanded the one verified `/Oy-` codegen winner
+to all seven allowed clients (2009-12 excluded). It produced zero additional
+exact matches, so the source-specific codegen win remains parked.
+
 After the combined-transfer sweep, this branch ledger held 1,875 unique server
 exacts. The frame/inlining pilot added one; subsequent late-spillover gains are
 recorded separately. These are campaign gains, not a global completion percentage.

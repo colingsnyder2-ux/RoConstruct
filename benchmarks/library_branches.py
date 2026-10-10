@@ -69,6 +69,23 @@ def late_sources():
     return [(sources[k], len(v)) for k, v in sorted(counts.items(), key=lambda x: (-len(x[1]), x[0]))]
 
 
+def codegen_sources():
+    sources, counts = {}, defaultdict(set)
+    path = ROOT / "combo-codegen.jsonl"
+    if not path.exists():
+        return []
+    for row in map(json.loads, path.read_text(encoding="utf-8").splitlines()):
+        for w in row.get("winners", []):
+            s, candidate = w.get("submission", {}), w.get("candidate_path")
+            if w.get("client") == "2009-12" or not (s.get("verified") and s.get("score") == 100 and s.get("improved")) or not candidate or not Path(candidate).exists():
+                continue
+            source = Path(candidate).read_text(encoding="utf-8")
+            sha = digest(source)
+            sources[sha] = source
+            counts[sha].add((w["client"], w["addr"]))
+    return [(sources[k], len(v)) for k, v in sorted(counts.items(), key=lambda x: (-len(x[1]), x[0]))]
+
+
 def variants(source):
     """Single-setting hypotheses. Keep source, compiler, CRT, and ABI unchanged."""
     d = match.directives(source)
@@ -198,8 +215,9 @@ def build_manifest(campaign, stage):
     scores = live(campaign)
     reserved = reserved_shapes()
     plans = []
-    sources = late_sources() if stage == "late-transfer" else winning_sources(settings_only=stage == "variant-spillover",
+    sources = codegen_sources() if stage == "codegen-transfer" else (late_sources() if stage == "late-transfer" else winning_sources(settings_only=stage == "variant-spillover",
                               combination_only=stage in ("combo-spillover", "late-spillover", "recipe-neighbor", "numeric-settings", "combo-codegen", "combo-optimization"))
+    )
     if stage in ("combo-newfiles", "combo-newfiles-diverse"):
         sources = untested_files(campaign)
         if stage == "combo-newfiles-diverse":
@@ -234,11 +252,11 @@ def build_manifest(campaign, stage):
                            if r.get("kind") == "code" and r.get("size", 0) >= 8
                            and r.get("shape") not in reserved
                            and scores[client].get(a, {}).get("score", 0) < 100
-                           and (stage in ("combo-codegen", "combo-optimization", "combo-newfiles", "combo-newfiles-diverse", "late-transfer") or (not r.get("unit", "").startswith("CXT") if spillover else r.get("unit", "").startswith("CXT")))]
+                           and (stage in ("combo-codegen", "combo-optimization", "combo-newfiles", "combo-newfiles-diverse", "late-transfer", "codegen-transfer") or (not r.get("unit", "").startswith("CXT") if spillover else r.get("unit", "").startswith("CXT")))]
     for source, wins in sources:
         if stage == "settings-combination" and digest(source) not in successful_bases:
             continue
-        hypotheses = [("late verified spillover source transfer", source)] if stage == "late-transfer" else (([("unnamed and non-CXT library spillover", source)] if spillover else list(variants(source))))
+        hypotheses = [("verified codegen source transfer", source)] if stage == "codegen-transfer" else (([("late verified spillover source transfer", source)] if stage == "late-transfer" else (([("unnamed and non-CXT library spillover", source)] if spillover else list(variants(source))))))
         if stage in ("settings-combination", "combo-transfer"):
             hypotheses = [("combined proven cookie and exception options", combination(source))]
         elif stage == "native-build":
@@ -321,7 +339,7 @@ def sweep(campaign, stage, plans, limit):
             result.update(object_cached=cached, object_sha256=digest(obj.hex()))
             found = target.match_obj(obj, source)
             # Settings pilots distinguish genuinely new variant gains from baseline wins.
-            if stage in ("library-settings", "proven-settings", "settings-combination", "combo-transfer", "native-build", "recipe-neighbor", "numeric-settings", "combo-codegen", "combo-optimization", "late-transfer") and found:
+            if stage in ("library-settings", "proven-settings", "settings-combination", "combo-transfer", "native-build", "recipe-neighbor", "numeric-settings", "combo-codegen", "combo-optimization", "late-transfer", "codegen-transfer") and found:
                 base_obj, _ = compile_shared(client, group["baseline_source"])
                 baseline_target = fingerprint.Target(client)
                 baseline_target.index = defaultdict(list)
@@ -385,7 +403,7 @@ def run(args):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("stage", choices=["spillover", "library-settings", "variant-spillover", "proven-settings", "settings-combination", "combo-transfer", "combo-spillover", "native-build", "late-spillover", "recipe-neighbor", "numeric-settings", "combo-codegen", "combo-optimization", "combo-newfiles", "combo-newfiles-diverse", "late-transfer"])
+    ap.add_argument("stage", choices=["spillover", "library-settings", "variant-spillover", "proven-settings", "settings-combination", "combo-transfer", "combo-spillover", "native-build", "late-spillover", "recipe-neighbor", "numeric-settings", "combo-codegen", "combo-optimization", "combo-newfiles", "combo-newfiles-diverse", "late-transfer", "codegen-transfer"])
     ap.add_argument("--pilot", type=int, default=12)
     ap.add_argument("--scale-if-wins", action="store_true")
     args = ap.parse_args()
