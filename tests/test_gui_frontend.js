@@ -59,7 +59,7 @@ for(const loops of [3,4,100]) {
   feedContext.logs=[{job:"run",seq:1,time:1,event:"log",message:"compile chatter"},
     {job:"run",seq:4,time:1,event:"log",startup:true,message:"Worker started"},
     {job:"run",seq:5,time:1,event:"log",startup:true,message:"Privacy: bounded prompts"},
-    {job:"run",seq:2,time:2,event:"job_finished",slot:0,client:"C",addr:"00401000",unit:"LongUnit",previous:50,score:60,seconds:3},
+    {job:"run",seq:2,time:2,event:"job_finished",slot:0,client:"C",addr:"00401000",unit:"LongUnit",size:30,previous:50,score:60,seconds:3},
     {job:"run",seq:3,time:3,event:"benchmark",workers:loops,completed:1,per_minute:2,matched:0,improved:1,errors:0}];
   feedContext.chatSignature="";feedContext.renderWorkerChat();
   assert.equal(feedContext.items.length,loops>3 ? 4 : 5);
@@ -84,7 +84,7 @@ console.log("Compact: one result per function, benchmarks, 3/4/100-loop boundary
   assert.equal(context.workerRun,"saved");
   assert.equal(context.control.value,"saved");
   assert.equal(context.renders[0],"saved");
-  assert.match(context.messages[0],/Dashboard disconnected/);
+  assert.match(context.messages[0],/temporarily unavailable|retained output/);
   context.fetch=async()=>({ok:true,text:async()=>JSON.stringify({job:"other",seq:1,time:2,event:"log",message:"recorded"})+"\n"});
   await context.selectWorker("other");
   assert.equal(context.logs[0].message,"recorded");
