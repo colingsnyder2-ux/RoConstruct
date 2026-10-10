@@ -243,7 +243,7 @@ def test_draft_helpers():
     assert draft.model_profile("qwen2.5-coder:7b") == {"num_ctx": 6144, "num_predict": 1536}
     assert draft.model_profile("custom") == {"num_ctx": 8192, "num_predict": 2048}
     assert draft.model_rounds("qwen2.5-coder:7b-instruct", 9) == 3
-    assert draft.select_generation_strategy("auto", "deepseek:deepseek-flash", {"size": 32}) == "structured"
+    assert draft.select_generation_strategy("auto", "deepseek:deepseek-flash", {"size": 32}) == "direct"
     assert draft.select_generation_strategy("auto", "deepseek:deepseek-flash", {"size": 33}) == "direct"
     assert draft.select_generation_strategy("auto", "qwen2.5-coder:7b", {"size": 16}) == "direct"
     assert draft.classify_target(["mov eax, dword ptr [ecx + 0x4]", "ret "]) == "leaf/getter"
@@ -825,8 +825,8 @@ def test_link_options():
     with patch("roc.draft.ollama_models", return_value=["qwen2.5-coder:7b"]), \
          patch("roc.draft.pick_model", return_value="qwen2.5-coder:7b"), \
          patch("roc.worker.save_settings"), \
-         patch("builtins.input", side_effect=["", "auto", "1", ""]):
-        assert choose_options({}) == ("qwen2.5-coder:7b", "auto", 512, False, 1, 2048, "auto")
+         patch("builtins.input", side_effect=["", "auto"]):
+        assert choose_options({}) == ("qwen2.5-coder:7b", "auto", 512, False, "auto", "auto", "auto")
 
 
 def test_uri_link_checks_updates_before_launch():
@@ -1061,6 +1061,20 @@ def test_cloud_history_is_bounded():
     assert providers._cloud_messages("p", None)[0]["role"] == "system"
 
 
+def test_cloud_budget_counts_history_before_request(monkeypatch):
+    import pytest
+    from roc import providers
+    monkeypatch.setattr(providers, "_pricing", lambda *_: {"input_per_million": 1,
+                                                         "output_per_million": 1})
+    monkeypatch.setattr(providers, "_post", lambda *_: pytest.fail("over-budget request sent"))
+    state = {"messages": [{"role": "user", "content": "target" * 1000}]}
+    for budget in (providers.CloudBudget(tokens=1000), providers.CloudBudget(cost=0.001)):
+        with pytest.raises(providers.ProviderError, match="cloud .* limit reached"):
+            providers.generate("deepseek:deepseek-flash", "repair", state=state,
+                               options={"allow_cloud": True, "budget": budget, "max_tokens": 128})
+        assert budget.requests == 0
+
+
 def test_trim_hint_facts():
     from roc.draft import _trim_hint_facts
     methods = ["alpha%d" % i for i in range(30)] + ["BlockRender", "blockUpdate"]
@@ -1256,10 +1270,13 @@ def test_server_ordering():
                        ("C", "00401010", 10, "B", 50, 1, 10),
                        ("C", "00401020", 50, "C", 90, 2, 50)])
     for order, addr in (("matched", "00401020"), ("unmatched", "00401000"),
-                        ("easiest", "00401010"), ("best", "00401020"), ("auto", "00401020")):
+                        ("easiest", "00401010"), ("best", "00401020")):
         job = st.lease("alice", order, ["C"], "ai", 256, order=order)
         assert job["addr"] == addr
         st.release(job["lease"], 0)
+    job = st.lease("alice", "auto", ["C"], "ai", 256, order="auto")
+    assert job["addr"] in {"00401000", "00401010", "00401020"}
+    st.release(job["lease"], 0)
     st.db.execute("UPDATE funcs SET unit='seg_00400000' WHERE addr='00401000'")
     job = st.lease("alice", "random", ["C"], "ai", 256, order="random")
     assert not job["unit"].startswith("seg_")
@@ -2129,6 +2146,30 @@ def test_truncated_generation_history_reset():
         reset = enabled is not False
         assert contexts[1] == (None if reset else {"malformed": True})
         assert bool(attempts[1]) == reset
+
+
+def test_auto_output_grows_only_after_truncation():
+    from roc import draft
+    for auto, initial, expected in ((True, 1024, [1024, 2048, 4096, 4096]),
+                                    (False, 1024, [1024] * 4),
+                                    (True, 8192, [8192] * 4)):
+        caps = []
+
+        def ask(model, prompt, context=None, options=None, details=False):
+            assert "auto_output" not in options
+            caps.append(options["max_tokens"])
+            if len(caps) < 4:
+                return "struct S {", {"broken": True}, {"finish_reason": "length"}
+            return "```cpp\nint f() { return 1; }\n```", None, {"finish_reason": "stop"}
+
+        with patch.object(draft, "_ask_context", side_effect=ask), \
+             patch.object(draft, "prompt_for", return_value="target"), \
+             patch.object(draft.match, "target", return_value=(b"\xc3", [], {"size": 9, "unit": "S"})), \
+             patch.object(draft.match, "disasm", return_value=["ret"]), \
+             patch.object(draft.match, "check_text", return_value=(100, None, "", [])):
+            assert draft.llm_rounds("C", "1", "deepseek:deepseek-flash", 4,
+                log=lambda _: None, provider_options={"auto_output": auto, "max_tokens": initial})[0] == 100
+        assert caps == expected
 
 
 def test_base_padding_variant_uses_decoded_field_delta():

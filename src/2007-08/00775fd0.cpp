@@ -1,6 +1,4 @@
-// from DeepSeek/server: 100% by colin
-// roc 2007-08 00775fd0  unit: seg_00770000  size: 43 bytes
-
+// from server: 100% by colin
 struct S {
     void Init(int a, int b);
 };

@@ -1,0 +1,50 @@
+[
+ {
+  "client": "2007-08",
+  "addr": "00401180",
+  "size": 149,
+  "base_score": 41,
+  "source_path": "work\\worker-history-holdout-20261010\\worker-history-holdout-20261010-control-r1\\2007-08\\00401180-direct.cpp",
+  "source_sha256": "ba34bd3b5c2f39549a93689bf57a035b10a524842d18498c92c8a0de83a4209c"
+ },
+ {
+  "client": "2007-08",
+  "addr": "00401220",
+  "size": 50,
+  "base_score": 88,
+  "source_path": "work\\worker-history-holdout-20261010\\worker-history-holdout-20261010-control-r1\\2007-08\\00401220-direct.cpp",
+  "source_sha256": "4b58a3ad5ffde9550db8156a80f0ea829ba55a2151e09dc6f62da71cdb0294e3"
+ },
+ {
+  "client": "2007-08",
+  "addr": "004016e0",
+  "size": 133,
+  "base_score": 52,
+  "source_path": "work\\worker-history-holdout-20261010\\worker-history-holdout-20261010-control-r1\\2007-08\\004016e0-direct.cpp",
+  "source_sha256": "f615e302b970f0c20a2560d631fca536ed3e8db9db0f997715246c893b1783bb"
+ },
+ {
+  "client": "2007-08",
+  "addr": "004017c0",
+  "size": 60,
+  "base_score": 96,
+  "source_path": "work\\worker-history-holdout-20261010\\worker-history-holdout-20261010-control-r1\\2007-08\\004017c0-direct.cpp",
+  "source_sha256": "a77b0f51e357baba7ca605732769250a0f8503164a4bb3a1e37bb391264f3f47"
+ },
+ {
+  "client": "2007-08",
+  "addr": "00401800",
+  "size": 62,
+  "base_score": 91,
+  "source_path": "work\\worker-history-holdout-20261010\\worker-history-holdout-20261010-control-r1\\2007-08\\00401800-direct.cpp",
+  "source_sha256": "a23bc012a24827e41b2ea5d3812dc97b0d13071c58ad217357eae5e55831d4a8"
+ },
+ {
+  "client": "2007-08",
+  "addr": "00401e10",
+  "size": 150,
+  "base_score": 60,
+  "source_path": "work\\worker-history-holdout-20261010\\worker-history-holdout-20261010-control-r1\\2007-08\\00401e10-direct.cpp",
+  "source_sha256": "b0a68aa75f55f6a7147a43772f78181fb51a75e79f2760d4e82140a435feba86"
+ }
+]

@@ -38,7 +38,7 @@ def main():
                 row = match._functions(target["client"])[target["addr"]]
                 thinking, effort = worker.auto_reasoning(row, "auto", "auto", args.model)
                 options = dict(allow_cloud=args.allow_cloud, budget=budget, gate=gate,
-                               thinking=thinking, reasoning_effort=effort, seed=42,
+                               thinking=thinking, reasoning_effort=effort, seed=42, auto_output=arm == "automatic",
                                max_tokens=worker.resolve_output_tokens(row, "auto") if arm == "automatic" else 2048)
                 if arm == "automatic" and args.model.startswith("deepseek:"):
                     options["source_hint_max_size"] = 128

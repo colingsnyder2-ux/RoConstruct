@@ -1,0 +1,66 @@
+[
+ {
+  "client": "2007-08",
+  "addr": "0043c7a0",
+  "size": 545,
+  "base_score": 9,
+  "source_path": "work\\worker-history-20261010\\worker-history-20261010-control-r1\\2007-08\\0043c7a0-direct.cpp",
+  "source_sha256": "ceb9754da7dab9c8edc9f2eb7243d4e04e39b27820149a9bff9e0a6b58660c46"
+ },
+ {
+  "client": "2007-08",
+  "addr": "005b0270",
+  "size": 23,
+  "base_score": 88,
+  "source_path": "work\\worker-history-20261010\\worker-history-20261010-control-r1\\2007-08\\005b0270-direct.cpp",
+  "source_sha256": "921d65e2c188dc1735afa108942d9cf345412a84e5d87c19297bb4b0465cb54e"
+ },
+ {
+  "client": "2007-08",
+  "addr": "005b22f0",
+  "size": 94,
+  "base_score": 50,
+  "source_path": "work\\worker-history-20261010\\worker-history-20261010-control-r1\\2007-08\\005b22f0-direct.cpp",
+  "source_sha256": "a070dac2b7aaa7cc58829a50ade748e170143ed492533f37fe88da9973cd43c7"
+ },
+ {
+  "client": "2007-08",
+  "addr": "00634580",
+  "size": 186,
+  "base_score": 56,
+  "source_path": "work\\worker-history-20261010\\worker-history-20261010-control-r1\\2007-08\\00634580-direct.cpp",
+  "source_sha256": "5703f49b48b55491ed4390752b01798133d68c61ade4cedf7f4ca00e0a1d094f"
+ },
+ {
+  "client": "2007-08",
+  "addr": "0064c610",
+  "size": 104,
+  "base_score": 7,
+  "source_path": "work\\worker-history-20261010\\worker-history-20261010-control-r1\\2007-08\\0064c610-direct.cpp",
+  "source_sha256": "32d0e0ff5a4e336d1f2d643f606e169f86c493deaf2a82d2a8a39987aba032be"
+ },
+ {
+  "client": "2007-08",
+  "addr": "0068e630",
+  "size": 327,
+  "base_score": 25,
+  "source_path": "work\\worker-history-20261010\\worker-history-20261010-control-r1\\2007-08\\0068e630-direct.cpp",
+  "source_sha256": "156b9b990f06138c17a4d8c0f5bf4219322ccea5de45892c06d9a90596ac0271"
+ },
+ {
+  "client": "2007-08",
+  "addr": "006d2680",
+  "size": 46,
+  "base_score": 96,
+  "source_path": "work\\worker-history-20261010\\worker-history-20261010-control-r1\\2007-08\\006d2680-direct.cpp",
+  "source_sha256": "ad71bf6a726c0439745430d49f6c0961da1be7d517c356d8493b657f3ce2d189"
+ },
+ {
+  "client": "2007-08",
+  "addr": "00770d00",
+  "size": 56,
+  "base_score": 58,
+  "source_path": "work\\worker-history-20261010\\worker-history-20261010-control-r1\\2007-08\\00770d00-direct.cpp",
+  "source_sha256": "bc7321a38344c4fc2c7417a3b938d9c2622fbf846bf09907c0aff3127c1f01b7"
+ }
+]

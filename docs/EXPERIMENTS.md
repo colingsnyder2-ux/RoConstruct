@@ -10,8 +10,10 @@ For evidence gaps and prioritized expansion, read [match-maximization audit](NEX
 
 | Method | Recorded evidence | Decision / source |
 | --- | --- | --- |
+| Adaptive Auto output (2026-10-10) | 24 frozen 2007 functions, two draws per arm: exact 16/48 -> 18/48, compiling 45/48 -> 47/48. Holdout exact 10/24 -> 12/24; 34 exact outputs independently reverified | Keep starting caps/hint policy, grow only after truncation within existing rounds and shared budget. Small noisy pilot; [Auto trial](investigations/worker-auto-20261010.md) |
 | Source/library fingerprints | Deep pilot: 101 pairs, 73s, 7 new exact Ogre functions in 2010 | Scope by proven family/unit; [deep fingerprint](archive/deep-fingerprint.md) |
 | Verified family exemplars | 2007 sibling holdout 49/68 -> 68/68 exact; 2008 cross-client 22/28 -> 28/28, fewer tokens | Strong repeated-family evidence, not whole-client proof; [family results](archive/family-reconstruction-results.md) |
+| Cached strict-family reuse (2026-10-10) | Isolated 2007 family stage: 20 fresh sibling targets, exact 1 -> 11; model entries 17 -> 0. Real compiler/data checks, local API/model fixture; all eleven already exact in catalog | Preserve strict provenance on cache hits; directly compile symbolic donors when literal rewrite is unavailable. Not a new-recovery or full AI-quality result; [worker reuse](investigations/worker-reuse-20261010.md) |
 | Literal-safe family propagation | Initial replay: 32 exact conversions in 2008, 37 in 2009; none safe in 2007/2010. Later DB-backed replays: 45/547, 35/1136, 8/948 | Different snapshots; do not add overlapping gains; [family plan/history](archive/family-worker-plan.md) |
 | Shared-MFC configuration | `_AFXDLL _XTP_STATICLINK _DLL`, `/MD`, build 30729. ReportControl training/held-out new exacts 9/9; PopupBar 10/8 | Release shared MFC retains `AssertValid`/`Dump` slots; per-target adoption only; [layout pilot](archive/layout-config-pilot-results.md) |
 | Evidence-guided repair | Early replay 4 -> 5 exact conversions; fresh 15-candidate replay 0 -> 1 | Narrow verified idioms help; [guided repair](archive/repair-guided-results.md) |
@@ -44,6 +46,7 @@ These examples prove specific source changes, not universal transforms.
 | --- | --- |
 | Automatic policy vs control | 24 repeated jobs: 5 vs 6 exact; 121393 vs 118293 tokens; automatic slower/costlier. Convenience only; [review](archive/worker-automatic-review.md) |
 | Less history / temperature zero / generic push hints | Less-history first draw tied 10/36 with lower tokens but fewer compilable; later evidence restored default history. Temperature zero 6/36, push hints 7/36; [efficiency](archive/worker-efficiency-results.md) |
+| Selective compact DeepSeek repair history (2026-10-10) | Initial >48-byte sample: mean 38 -> 48.75%, exact 1/12 -> 2/12. Fresh six: mean 71.33 -> 67%, both 0 exact. Rejected; accepted full-conversation budget accounting only. Total estimated spend $0.1694; [paired history](investigations/worker-history-20261010.md) |
 | Bigger output budget | 40 medium/large targets, direct/structured at 4096/8192/16384: every arm only 1 exact; larger caps cost more. Declaration-hygiene prompt failed; [budgets](archive/output-budget-results.md) |
 | Always-structured CFG guidance | Results mixed. Twelve-target dominator arm 0 exact vs direct 1; CFG+semantics tied 1 with more tokens. Selective auto 5/24 vs direct 4/24, all exacts tiny; [control flow](archive/control-flow-research.md) |
 | Focused LLM residual repair | 0/10 exact or improvements after deterministic repair; broader 29-request permutation report: 0 exact, 3 improved, 2 regressed. Preserve best source |

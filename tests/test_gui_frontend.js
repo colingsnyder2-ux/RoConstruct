@@ -12,7 +12,7 @@ const formContext={editing:null,jobs:[],meta:{initial:{}},
     {name:"workers",value:"auto",type:"text"},{name:"rounds",value:"auto",type:"text"},
     {name:"max_tokens",value:"auto",type:"text"},{name:"cloud_concurrency",value:"auto",type:"text"},
     {name:"max_size",value:"512",type:"number"},{name:"min_score",value:"",type:"number"},
-    {name:"order",value:"auto",type:"select-one"},{name:"cloud_allowed",checked:true,type:"checkbox"}],
+    {name:"order",value:"random",type:"select-one"},{name:"cloud_allowed",checked:true,type:"checkbox"}],
     elements:{addresses:{value:"00401000"}}})};
 vm.createContext(formContext);
 vm.runInContext(source.slice(source.indexOf("const nullable"),source.indexOf("async function api")),formContext);
@@ -34,12 +34,14 @@ assert.match(formHTML,/data-preset="automatic" class="active"/);
 for(const count of [1,8,100,"auto"]) {
   formContext.target={dataset:{preset:"automatic"}};
   formContext.document={querySelectorAll:()=>[]};
-  formContext.readWorker=()=>({...automaticForm,workers:count});
+  formContext.readWorker=()=>({...automaticForm,workers:count,near_repair:true,diverse_candidates:4,max_cloud_cost:3});
   formContext.render=config=>formContext.rendered=config;
   vm.runInContext(source.slice(source.indexOf("  if(target.dataset.preset)"),source.indexOf("  if(target.dataset.action)")),formContext);
   const config=formContext.rendered;
   assert.equal(config.workers,count);
   assert.equal(config.rounds,"auto");
+  assert.equal(config.near_repair,false);assert.equal(config.diverse_candidates,1);
+  assert.equal(config.max_cloud_cost,3);assert.equal(config.cloud_allowed,true);
   assert.match(formContext.workerForm({...automaticForm,...config,targets:[]}),new RegExp(`name="workers" value="${count}"`));
 }
 const feedNodes={};

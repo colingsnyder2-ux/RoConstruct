@@ -54,13 +54,25 @@ for documentation work.
 
 ## Current worker behavior and pitfalls
 
-- `--preset automatic`: direct strategy, auto rounds/output/workers/order, 512-byte
+- `--preset automatic` (alias `auto`): direct strategy, auto rounds/output/workers/order, 512-byte
   ceiling, Rev.ng off. Explicit knobs override corresponding automatic defaults.
 - Auto concurrency: DeepSeek 8, other cloud 4, local 7B 2, larger local 1;
   source-only 1. Auto output: 1024 for call-free targets <=64 bytes, otherwise 2048.
   CLI, launcher and GUI accept explicit output budgets 128–32768.
+- Auto output doubles only after a token-limit finish, up to 4096 on a later
+  existing round. Manual token caps stay fixed; shared request/token/cost caps still
+  apply. Auto strategy selects direct. GUI Auto clears near-repair and diversity
+  experiments while preserving worker count, consent and spending limits.
+  Two-draw 2007 discovery/holdout pilot: exact 16/48 -> 18/48, compiling 45/48 ->
+  47/48; small sample, not proof of universal superiority. Larger starting caps
+  plus full hints lost and were rejected; [Auto trial](investigations/worker-auto-20261010.md).
 - DeepSeek automatic thinking is disabled: reasoning previously consumed the whole
   output budget without code. Bigger budgets alone did not solve this.
+- Cached examples retain strict-family provenance. Strict donors are compiled directly
+  when literal rewriting produces no candidate; code/data verification still decides
+  acceptance. Explicit near-repair starts from the supplied source/diff in round one;
+  normal generation and explicit diversity keep independent first draws. Baseline
+  scores are freshly measured and broken sources cannot remain the best candidate.
 - Automatic mode is convenient, not a proven quality/cost improvement. Direct vs
   structured and hint choices remain workload-dependent; see paired results.
 - Source-only and near-repair skip unrelated reference compilation. Localhost

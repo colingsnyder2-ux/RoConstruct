@@ -3,7 +3,9 @@ import json
 from concurrent.futures import ThreadPoolExecutor
 from unittest.mock import patch
 
-from roc import draft, match, metrics, mutate, repair
+import pytest
+
+from roc import draft, match, metrics, mutate, repair, worker
 
 
 def test_recent_metrics_tail_cache_append_and_corrupt_rows(tmp_path):
@@ -63,10 +65,52 @@ def test_failed_compile_feedback_overrides_high_scoring_baseline():
          patch.object(draft, "_ask_context", side_effect=ask), \
          patch.object(repair, "repair_loop", return_value=(0, broken, None, "", [], [], "error C2065: missing")), \
          patch.object(mutate, "improve", return_value=mutate.ImproveResult(99, baseline, 0)):
-        result = draft.llm_rounds("C", "00401000", "local", 2, start=(baseline, 99), log=lambda _: None)
+        result = draft.llm_rounds("C", "00401000", "local", 2, start=(baseline, 99),
+                                 provider_options={"near_repair": True}, log=lambda _: None)
     assert "error C2065: missing" in prompts[1]
     assert broken in prompts[1]
+    assert baseline in prompts[0] and "99" in prompts[0]
     assert result[:2] == (99, baseline)
+
+
+def test_explicit_diversity_still_starts_independent_candidates():
+    baseline = "int f(){return 1;}"
+    for diversity, near, expected in ((1, True, (baseline, 75, "byte diff")),
+                                      (2, True, None), (1, False, None)):
+        with patch.object(match, "target", return_value=(b"\xc3", [], {"size": 128, "unit": "x"})), \
+             patch.object(match, "disasm", return_value=["ret "]), \
+             patch.object(match, "check_text", side_effect=[(75, "f", "byte diff", []), (100, "f", "", [])]), \
+             patch.object(draft, "prompt_for", return_value="p") as prompt, \
+             patch.object(draft, "_ask_context", return_value=("int f(){return 2;}", None, {})):
+            draft.llm_rounds("C", "00401000", "local", 1, start=(baseline, 75),
+                             provider_options={"diverse_candidates": diversity, "near_repair": near},
+                             log=lambda _: None)
+        assert prompt.call_args.args[5] == expected
+
+
+def test_repair_baseline_uses_measured_score_and_discards_compile_failure():
+    baseline, generated = "int f(){return 1;}", "int f(){return 2;}"
+    for measured, generated_score, expected, source in (
+            (40, 10, 40, baseline), (40, 70, 70, generated), (None, 70, 70, generated)):
+        def check(client, addr, text, flags=None, **options):
+            if text == baseline and measured is None:
+                raise match.CompileError("error C2065: invalid baseline")
+            score = measured if text == baseline else generated_score
+            result = (score, "f", "byte diff", [])
+            return result + ({},) if options.get("include_diagnosis") else result
+
+        with patch.object(match, "target", return_value=(b"\xc3", [], {"size": 16, "unit": "x"})), \
+             patch.object(match, "disasm", return_value=["ret "]), \
+             patch.object(match, "check_text", side_effect=check), \
+             patch.object(draft, "prompt_for", return_value="p") as prompt, \
+             patch.object(draft, "_ask_context", return_value=(generated, None, {})), \
+             patch.object(draft, "_diagnose_note", return_value=""), \
+             patch.object(mutate, "improve", return_value=mutate.ImproveResult(expected, source, 0)):
+            result = draft.llm_rounds("C", "00401000", "local", 1,
+                                      start=(baseline, 99), provider_options={"near_repair": True},
+                                      log=lambda _: None)
+        assert result[0] == expected and result[1].strip() == source
+        assert prompt.call_args.args[5][1] == (measured or 0)
 
 
 def test_generated_compiler_directives_cannot_override_client():
@@ -79,3 +123,52 @@ def test_generated_compiler_directives_cannot_override_client():
         draft.llm_rounds("C", "00401000", "local", 1, log=lambda _: None)
     assert "roc-" not in checked.call_args.args[2]
     assert "int f(){return 1;}" in checked.call_args.args[2]
+
+
+@pytest.mark.parametrize("family,strict,rewrite,score", [
+    (True, True, True, 100), (True, True, False, 100),
+    (True, True, False, 99), (True, True, False, 0), (True, True, False, None),
+    (True, False, False, 100), (False, False, False, 100)])
+def test_example_cache_preserves_family_provenance(family, strict, rewrite, score):
+    calls, cache = [], {}
+    source = "int f(){return 1;}"
+
+    class Api:
+        server, token = "http://localhost:8765", None
+
+        def call(self, path, data=None):
+            calls.append((path, data))
+            if path.startswith("/v1/examples"):
+                if family and not strict and "&family=" in path:
+                    return []
+                return [{"addr": "donor", "source": source}]
+            return {"stored": data["score"]} if path == "/v1/submit" else {}
+
+    job = dict(client="C", addr="00401000", size=32, unit="U", score=0, source=None, lease="test")
+    with patch.object(match, "target", return_value=(b"\xc3", [], job)), \
+         patch.object(match, "_functions", return_value={job["addr"]: job}), \
+         patch.object(match, "disasm", return_value=["ret "]), \
+         patch.object(match, "check_text", return_value=(score, "f", "", []),
+                      side_effect=match.CompileError("bad donor") if score is None else None), \
+         patch.object(draft, "facts_from_asm", return_value={}), \
+         patch.object(draft, "target_data_facts", return_value={}), \
+         patch("roc.families.fingerprint", return_value="family"), \
+         patch("roc.abi_graph.target_evidence", return_value={}), \
+         patch.object(worker, "callee_source_hints", return_value=[]), \
+         patch.object(metrics, "quarantined_keys", return_value=set()), \
+         patch("roc.auto.candidates", return_value=[]), \
+         patch("roc.auto.family_propagate", return_value=source if rewrite else None) as propagate, \
+         patch("roc.refsource.compile_candidates", return_value=None), \
+         patch("roc.refsource.prompt_hints", return_value=[]), \
+         patch.object(draft, "llm_rounds", return_value=(0, None)) as llm:
+        for _ in range(2):
+            result = worker.work_one(Api(), "tester", job, {"clients": {"C": {}}}, "local", 2,
+                                     False, lambda _: None, examples_cache=cache,
+                                     provider_options={"family_exemplars": family})
+            assert result == (score if strict and score else 0)
+        assert propagate.call_count == (2 if strict else 0)
+        assert llm.call_count == (0 if strict and score else 2)
+        if llm.called:
+            assert llm.call_args.kwargs["provider_options"]["family_exemplars"] == strict
+    assert sum(path.startswith("/v1/examples") for path, _ in calls) == (2 if family and not strict else 1)
+    assert sum(path == "/v1/submit" for path, _ in calls) == (2 if strict and score else 0)

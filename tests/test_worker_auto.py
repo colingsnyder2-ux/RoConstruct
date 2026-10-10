@@ -62,14 +62,15 @@ def test_gui_accepts_auto_and_resizes_with_model():
         assert control.before_lease(0)["rounds"] == 7
 
 
-def test_terminal_automatic_needs_no_knob_prompts():
+@pytest.mark.parametrize("preset", ["6", "auto", "automatic"])
+def test_terminal_automatic_needs_no_knob_prompts(preset):
     with patch("roc.draft.ollama_models", return_value=["qwen2.5-coder:7b"]), \
          patch("roc.draft.pick_model", return_value="qwen2.5-coder:7b"), \
          patch.object(worker, "save_settings") as saved, \
-         patch("builtins.input", side_effect=["", "6"]) as prompts:
+         patch("builtins.input", side_effect=["", preset]) as prompts:
         assert link.choose_options({}) == ("qwen2.5-coder:7b", "auto", 512, False, "auto", "auto", "auto")
     assert prompts.call_count == 2
-    assert saved.call_args.kwargs["worker_order"] == "auto"
+    assert saved.call_args.kwargs["worker_order"] == "random"
 
 
 def test_signed_launcher_keeps_auto_and_saved_output():
@@ -87,18 +88,19 @@ def test_signed_launcher_keeps_auto_and_saved_output():
 
 
 @pytest.mark.parametrize("extra,rounds,tokens,size,loops,order", [
-    ([], "auto", "auto", 512, "auto", "auto"),
+    ([], "auto", "auto", 512, "auto", "random"),
     (["--rounds", "3", "--output-budget", "4096", "--max-size", "96", "--workers", "2", "--order", "random"],
      3, 4096, 96, "2", "random"),
-    (["--client", "all", "--output-budget", "32768"], "auto", 32768, 512, "auto", "auto")])
-def test_cli_automatic_preserves_overrides(extra, rounds, tokens, size, loops, order):
+    (["--client", "all", "--output-budget", "32768"], "auto", 32768, 512, "auto", "random")])
+@pytest.mark.parametrize("preset", ["auto", "automatic"])
+def test_cli_automatic_preserves_overrides(extra, rounds, tokens, size, loops, order, preset):
     spec = importlib.util.spec_from_file_location("roc_worker_auto_cli", Path(__file__).resolve().parents[1] / "roc.py")
     cli = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(cli)
     with patch.object(cli, "settings", return_value={}), patch.object(worker, "save_settings"), \
          patch.object(worker, "run_concurrent") as run:
         cli.main(["worker", "--no-update", "--server", "localhost:8765", "--user", "tester",
-                  "--source-only", "--preset", "automatic", *extra])
+                  "--source-only", "--preset", preset, *extra])
     assert run.call_args.args[4:8] == (rounds, size, False, None)
     assert run.call_args.args[8] == loops
     assert run.call_args.kwargs["max_tokens"] == tokens
@@ -174,6 +176,8 @@ def test_live_automatic_options_and_budget_stop_reach_worker():
     def work(*args):
         assert args[5] == "auto"
         assert args[-1]["max_tokens"] == 1024
+        assert args[-1]["auto_output"]
+        assert args[-1]["source_hint_max_size"] == 128
         assert args[-1]["thinking"] == "disabled"
         args[-1]["budget_exhausted"] = True
         return 0

@@ -90,18 +90,10 @@ ORDERS = tuple(sorted(ORDER_SQL)) + ("auto",)
 
 
 def resolve_order(order, db):
-    """Turn "auto" into a concrete order from what is actually left to do."""
+    """Turn auto into spread sampling; ranked orders stay explicit."""
     if order != "auto":
         return order if order in ORDER_SQL else "random"
-    # near-complete functions are the cheapest 100% wins: always take them
-    near = db.execute("SELECT COUNT(*) FROM funcs WHERE score >= 90 AND score < 100").fetchone()[0]
-    if near:
-        return "matched"
-    # otherwise start on the untouched ones so nothing is left unstarted
-    untouched = db.execute("SELECT COUNT(*) FROM funcs WHERE score = 0").fetchone()[0]
-    if untouched:
-        return "unmatched"
-    # only hard leftovers: spread so parallel workers do not collide
+    # Avoid score bias: auto must sample all score bands, including hard/untested.
     return "random"
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS funcs(client TEXT, addr TEXT, size INT, unit TEXT,

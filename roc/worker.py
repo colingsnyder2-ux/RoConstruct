@@ -755,6 +755,7 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
         provider_options = {"allow_cloud": cloud_allowed, "budget": cloud_budget,
                             "gate": cloud_gate, "diverse_candidates": diverse_candidates,
                             "seed": seed, "max_tokens": job_max_tokens,
+                            "auto_output": max_tokens == "auto",
                             "guided_mutations": guided_mutations,
                             "family_exemplars": family_exemplars,
                             "near_repair": near_repair,
@@ -1072,12 +1073,12 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
             source_cache = {}
         if client not in examples_cache:
             examples_cache[client] = {}
-        example_key = (job["unit"], job.get("shape"), family_id)
-        strict_family_reference = False
+        example_key = (job["unit"], job.get("shape"), family_id, family_exemplars)
         if example_key not in examples_cache[client]:
+            strict_family_reference = False
             quarantined = metrics.quarantined_keys()
             if family_exemplars and not family_id:
-                examples_cache[client][example_key] = []
+                examples = []
             else:
                 strict = "&strict=1" if family_exemplars else ""
                 family_query = "&family=%s" % quote(family_id) if family_id else ""
@@ -1085,20 +1086,23 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                     quote(client), quote(job["unit"]), quote(job.get("shape") or ""),
                     1 if family_exemplars else 2, strict, family_query)
                 stage("loading verified examples")
-                examples_cache[client][example_key] = [e["source"] for e in api.call(path)
-                                                       if (client, e.get("addr")) not in quarantined]
-                strict_family_reference = bool(examples_cache[client][example_key])
+                examples = [e["source"] for e in api.call(path)
+                            if (client, e.get("addr")) not in quarantined]
+                strict_family_reference = bool(family_exemplars and family_id and examples)
                 # Strict family may be a singleton. Keep family propagation strict,
                 # but still give the model a verified structural example from its unit.
-                if family_exemplars and family_id and not examples_cache[client][example_key]:
+                if family_exemplars and family_id and not examples:
                     fallback = "/v1/examples?client=%s&unit=%s&n=1&strict=1" % (
                         quote(client), quote(job["unit"]))
-                    examples_cache[client][example_key] = [e["source"] for e in api.call(fallback)
-                                                           if (client, e.get("addr")) not in quarantined]
-        examples = examples_cache[client][example_key]
+                    examples = [e["source"] for e in api.call(fallback)
+                                if (client, e.get("addr")) not in quarantined]
+            examples_cache[client][example_key] = (examples, strict_family_reference)
+        examples, strict_family_reference = examples_cache[client][example_key]
         if family_exemplars and strict_family_reference and examples and family_id:
             from roc import auto as _auto
-            propagated = _auto.family_propagate(asm, examples[0])
+            # Symbolic relocations need no literal rewrite. Compile the strict
+            # donor directly when rewriting cannot produce a new candidate.
+            propagated = _auto.family_propagate(asm, examples[0]) or examples[0]
             if propagated:
                 stage("testing family source")
                 try:

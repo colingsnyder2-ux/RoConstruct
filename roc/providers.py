@@ -553,7 +553,9 @@ def generate(model, messages, options=None, state=None):
         raise ProviderError("cloud_disabled", "pass --allow-cloud before sending prompts to cloud providers")
     gate, lock = options.get("gate"), None
     budget = options.get("budget")
-    estimate_input = max(1, len(sanitize_prompt(prompt)) // 3)
+    messages = _cloud_messages(prompt, state, options.get("history_keep_last", 2))
+    # Reserve for the whole transmitted conversation, including role framing.
+    estimate_input = sum(len(message["content"].encode("utf-8")) + 16 for message in messages)
     estimate_tokens = estimate_input + int(options["max_tokens"])
     if budget and budget.max_cost is not None and not _pricing(config, remote):
         raise ProviderError("cloud_budget", "--max-cloud-cost needs provider pricing; cost is unknown")

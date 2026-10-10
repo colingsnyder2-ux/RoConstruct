@@ -767,9 +767,8 @@ def cmd_worker(a):
         if not explicit_rounds:
             a.rounds = "auto"
         a.no_revng = True
-        if a.preset == "automatic":
-            a.workers = a.workers or "auto"
-            a.order = a.order or "auto"
+        a.workers = a.workers or "auto"
+        a.order = a.order or "random"
     elif a.preset == "fast":
         a.rounds, a.max_size, a.no_revng = min(4 if a.rounds == "auto" else a.rounds, 2), min(a.max_size, 96), True
     elif a.preset == "deep":
@@ -796,11 +795,11 @@ def cmd_worker(a):
     budget = providers.CloudBudget(a.max_cloud_requests, a.max_cloud_tokens, a.max_cloud_cost)
     gate = providers.CloudGate(a.cloud_concurrency) if a.cloud_concurrency is not None else None
     if a.output_budget is None:
-        a.output_budget = "auto" if a.preset == "automatic" else 2048
+        a.output_budget = "auto" if a.preset in ("auto", "automatic") else 2048
     if a.output_budget != "auto" and not 128 <= a.output_budget <= 32768:
         raise SystemExit("--output-budget must be auto or 128-32768")
     if a.cloud_min_size is None:
-        a.cloud_min_size = 0 if a.preset == "automatic" else 97
+        a.cloud_min_size = 0 if a.preset in ("auto", "automatic") else 97
     if a.cloud_fallback:
         if providers.is_cloud(a.cloud_fallback):
             if not cloud_allowed:

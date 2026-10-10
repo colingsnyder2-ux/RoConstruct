@@ -1,0 +1,50 @@
+[
+  {
+    "client": "2007-08",
+    "addr": "00401220",
+    "size": 50,
+    "unit": "CSettingsDialog",
+    "bucket": "medium",
+    "source_present": true
+  },
+  {
+    "client": "2007-08",
+    "addr": "004017c0",
+    "size": 60,
+    "unit": "CAboutRobloxDialog",
+    "bucket": "medium",
+    "source_present": true
+  },
+  {
+    "client": "2007-08",
+    "addr": "00401800",
+    "size": 62,
+    "unit": "CAboutRobloxDialog",
+    "bucket": "medium",
+    "source_present": true
+  },
+  {
+    "client": "2007-08",
+    "addr": "00401180",
+    "size": 149,
+    "unit": "CSettingsDialog",
+    "bucket": "large",
+    "source_present": true
+  },
+  {
+    "client": "2007-08",
+    "addr": "004016e0",
+    "size": 133,
+    "unit": "CAboutRobloxDialog",
+    "bucket": "large",
+    "source_present": true
+  },
+  {
+    "client": "2007-08",
+    "addr": "00401e10",
+    "size": 150,
+    "unit": "VCWorkspace::?$CComObject",
+    "bucket": "large",
+    "source_present": true
+  }
+]

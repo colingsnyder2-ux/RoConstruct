@@ -1,0 +1,74 @@
+[
+ {
+  "client": "2007-08",
+  "addr": "0043c7a0",
+  "size": 545,
+  "unit": "RBX::VBrickColor::?$XItem",
+  "bucket": "large",
+  "source_present": true
+ },
+ {
+  "client": "2007-08",
+  "addr": "00634580",
+  "size": 186,
+  "unit": "MyXTPCommandBars",
+  "bucket": "large",
+  "source_present": true
+ },
+ {
+  "client": "2007-08",
+  "addr": "0068e630",
+  "size": 327,
+  "unit": "CXTColorDialog",
+  "bucket": "large",
+  "source_present": true
+ },
+ {
+  "client": "2007-08",
+  "addr": "0064c610",
+  "size": 104,
+  "unit": "CXTPImageManagerIcon",
+  "bucket": "medium",
+  "source_present": true
+ },
+ {
+  "client": "2007-08",
+  "addr": "005b22f0",
+  "size": 94,
+  "unit": "RBX::VWeld::?$FactoryProduct",
+  "bucket": "medium",
+  "source_present": true
+ },
+ {
+  "client": "2007-08",
+  "addr": "00770d00",
+  "size": 56,
+  "unit": "seg_00770000",
+  "bucket": "medium",
+  "source_present": false
+ },
+ {
+  "client": "2007-08",
+  "addr": "006d2680",
+  "size": 46,
+  "unit": "CXTPReportHyperlink",
+  "bucket": "tiny",
+  "source_present": true
+ },
+ {
+  "client": "2007-08",
+  "addr": "006a4260",
+  "size": 42,
+  "unit": "CXTPMouseManager",
+  "bucket": "tiny",
+  "source_present": true
+ },
+ {
+  "client": "2007-08",
+  "addr": "005b0270",
+  "size": 23,
+  "unit": "RBX::VInstance::?$NonFactoryProduct",
+  "bucket": "tiny",
+  "source_present": true
+ }
+]

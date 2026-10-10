@@ -10,7 +10,7 @@ const active = job => ["running", "paused", "stopping"].includes(job.status);
 const liveKeys = new Set(["workers","model","rounds","max_size","max_tokens","strategy","order","thinking","reasoning_effort","use_revng","min_score","max_score","diverse_candidates","guided_mutations","near_repair","max_cloud_requests","max_cloud_tokens","max_cloud_cost"]);
 const nullable = new Set(["min_score","max_score","max_cloud_requests","max_cloud_tokens","max_cloud_cost","reasoning_effort","unit_name","family_id"]);
 const numeric = new Set(["workers","rounds","max_size","max_tokens","min_score","max_score","diverse_candidates","cloud_concurrency","max_cloud_requests","max_cloud_tokens","max_cloud_cost"]);
-const automatic = {rounds:"auto",max_size:512,max_tokens:"auto",order:"auto",strategy:"direct",thinking:"auto",reasoning_effort:"auto",use_revng:false,cloud_concurrency:"auto"};
+const automatic = {rounds:"auto",max_size:512,max_tokens:"auto",order:"random",strategy:"direct",thinking:"auto",reasoning_effort:"auto",use_revng:false,cloud_concurrency:"auto",near_repair:false,diverse_candidates:1};
 
 async function api(path, data) {
   const response = await fetch("/api/" + path, {method:data === undefined ? "GET" : "POST", headers:{"X-ROC-Token":token || "", "Content-Type":"application/json"}, ...(data === undefined ? {} : {body:JSON.stringify(data)})});

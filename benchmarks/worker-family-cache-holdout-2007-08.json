@@ -1,0 +1,158 @@
+[
+ {
+  "client": "2007-08",
+  "family": "3d7e8289e67b2bcd7bc5d5e8",
+  "donor": "00770920",
+  "source": "// roc 2007-08 00770920  unit: seg_00770000  size: 56 bytes\n// Make this compile to the exact bytes below, then: roc check 2007-08 00770920\n//\n// 00770920  56                   push esi\n// 00770921  6a05                 push 5\n// 00770923  33c9                 xor ecx, ecx\n// 00770925  51                   push ecx\n// 00770926  b850e35300           mov eax, 0x53e350\n// 0077092b  50                   push eax\n// 0077092c  33f6                 xor esi, esi\n// 0077092e  56                   push esi\n// 0077092f  ba80d14000           mov edx, 0x40d180\n// 00770934  52                   push edx\n// 00770935  6898b67900           push 0x79b698\n// 0077093a  68d47e7800           push 0x787ed4\n// 0077093f  b9bc148c00           mov ecx, 0x8c14bc\n// 00770944  e897ffdcff           call 0x5408e0\n// 00770949  68d0957700           push 0x7795d0\n// 0077094e  e8d003ecff           call 0x630d23\n// 00770953  83c404               add esp, 4\n// 00770956  5e                   pop esi\n// 00770957  c3                   ret \n// library rbxgs/v8tree\\Instance.cpp (function ??__E?desc_Name@Instance@RBX@@2V?$PropDescriptor@VInstance@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@2@B@@YAXXZ)\n\n// roc-lang: cpp\n// roc-cl: 21022\n// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD\n// roc-lib: rbxgs v8tree/Instance.cpp\n",
+  "source_sha256": "ab2e85c5d74550cd1f0d260cb7e4cc4116e2916a8a0eb63f92baff737ec80f52",
+  "targets": [
+   {
+    "client": "2007-08",
+    "addr": "007706a0",
+    "size": 56,
+    "unit": "seg_00770000"
+   },
+   {
+    "client": "2007-08",
+    "addr": "007706e0",
+    "size": 56,
+    "unit": "seg_00770000"
+   },
+   {
+    "client": "2007-08",
+    "addr": "00770960",
+    "size": 56,
+    "unit": "seg_00770000"
+   },
+   {
+    "client": "2007-08",
+    "addr": "00770c80",
+    "size": 56,
+    "unit": "seg_00770000"
+   },
+   {
+    "client": "2007-08",
+    "addr": "00770cc0",
+    "size": 56,
+    "unit": "seg_00770000"
+   }
+  ]
+ },
+ {
+  "client": "2007-08",
+  "family": "cf47078b4212768a113f7ab9",
+  "donor": "00776280",
+  "source": "extern int G1_func_00776280();\nextern int __stdcall G2_func_00776280(int);\nint func_00776280()\n{\n    return G2_func_00776280(G1_func_00776280());\n}\n",
+  "source_sha256": "4da95b550db099b0b0fc82f4a353f3be2900f4b2169aedea580b9f4708fde9aa",
+  "targets": [
+   {
+    "client": "2007-08",
+    "addr": "00776290",
+    "size": 12,
+    "unit": "seg_00770000"
+   },
+   {
+    "client": "2007-08",
+    "addr": "007762a0",
+    "size": 12,
+    "unit": "seg_00770000"
+   },
+   {
+    "client": "2007-08",
+    "addr": "007762b0",
+    "size": 12,
+    "unit": "seg_00770000"
+   },
+   {
+    "client": "2007-08",
+    "addr": "007762d0",
+    "size": 12,
+    "unit": "seg_00770000"
+   },
+   {
+    "client": "2007-08",
+    "addr": "00776320",
+    "size": 12,
+    "unit": "seg_00770000"
+   }
+  ]
+ },
+ {
+  "client": "2007-08",
+  "family": "072282458597c6a8edecbf54",
+  "donor": "00770760",
+  "source": "// roc 2007-08 00770760  unit: seg_00770000  size: 39 bytes\n// Make this compile to the exact bytes below, then: roc check 2007-08 00770760\n//\n// 00770760  6a05                 push 5\n// 00770762  68e4000000           push 0xe4\n// 00770767  6848647a00           push 0x7a6448\n// 0077076c  68b4667a00           push 0x7a66b4\n// 00770771  b940158c00           mov ecx, 0x8c1540\n// 00770776  e8f5ffdcff           call 0x540770\n// 0077077b  68b0957700           push 0x7795b0\n// 00770780  e89e05ecff           call 0x630d23\n// 00770785  59                   pop ecx\n// 00770786  c3                   ret \n// library rbxgs/v8tree\\Instance.cpp (function ??__E?propArchivable@Instance@RBX@@2V?$BoundProp@_N$00@Reflection@2@A@@YAXXZ)\n\n// roc-lang: cpp\n// roc-cl: 50727\n// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD\n// roc-lib: rbxgs v8tree/Instance.cpp\n",
+  "source_sha256": "a7be158f0ce78c9945d907271803b0abd86df2641b90a8b13e39f643169d960f",
+  "targets": [
+   {
+    "client": "2007-08",
+    "addr": "00770720",
+    "size": 39,
+    "unit": "seg_00770000"
+   },
+   {
+    "client": "2007-08",
+    "addr": "00770c20",
+    "size": 39,
+    "unit": "seg_00770000"
+   },
+   {
+    "client": "2007-08",
+    "addr": "00770c50",
+    "size": 39,
+    "unit": "seg_00770000"
+   },
+   {
+    "client": "2007-08",
+    "addr": "00771100",
+    "size": 39,
+    "unit": "seg_00770000"
+   },
+   {
+    "client": "2007-08",
+    "addr": "00772d40",
+    "size": 39,
+    "unit": "seg_00770000"
+   }
+  ]
+ },
+ {
+  "client": "2007-08",
+  "family": "472280e7481eed58c38e5c13",
+  "donor": "00771500",
+  "source": "// roc 2007-08 00771500  unit: seg_00770000  size: 21 bytes\n// Make this compile to the exact bytes below, then: roc check 2007-08 00771500\n//\n// 00771500  6a01                 push 1\n// 00771502  68808f7a00           push 0x7a8f80\n// 00771507  e834b4dbff           call 0x52c940\n// 0077150c  83c408               add esp, 8\n// 0077150f  a378228c00           mov dword ptr [0x8c2278], eax\n// 00771514  c3                   ret \n// library rbxgs/v8xml\\XmlElement.cpp (function ??__Evalue_IDREF_null@@YAXXZ)\n\n// roc-lang: cpp\n// roc-cl: 21022\n// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD\n// roc-lib: rbxgs v8xml/XmlElement.cpp\n",
+  "source_sha256": "b10e54432f733f8c247f55fe875d014b2d7c610cc016d697001985cd1ea995bd",
+  "targets": [
+   {
+    "client": "2007-08",
+    "addr": "00771520",
+    "size": 21,
+    "unit": "seg_00770000"
+   },
+   {
+    "client": "2007-08",
+    "addr": "00771540",
+    "size": 21,
+    "unit": "seg_00770000"
+   },
+   {
+    "client": "2007-08",
+    "addr": "00771560",
+    "size": 21,
+    "unit": "seg_00770000"
+   },
+   {
+    "client": "2007-08",
+    "addr": "00771580",
+    "size": 21,
+    "unit": "seg_00770000"
+   },
+   {
+    "client": "2007-08",
+    "addr": "007715a0",
+    "size": 21,
+    "unit": "seg_00770000"
+   }
+  ]
+ }
+]

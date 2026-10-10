@@ -9,7 +9,7 @@ from roc import setup
 
 def build_dll(build, source, output, map_output=None, force_unresolved=False,
               export_symbol=None, extra_sources=(), flags=("/O2", "/GS", "/EHsc", "/MD"),
-              opaque_sources=()):
+              opaque_sources=(), whole_program=True):
     """Build source as a linked x86 DLL; caller extracts PE functions."""
     cl = setup.compilers()[build]
     env = setup.cl_env(cl)
@@ -27,10 +27,11 @@ def build_dll(build, source, output, map_output=None, force_unresolved=False,
             if run.returncode:
                 raise RuntimeError((run.stdout + run.stderr).strip())
             objects.append(setup.cl_path(obj))
-        cmd = [*setup.cl_command(cl), "/nologo", "/LD", *flags, "/GL", "/Fe" + setup.cl_path(output),
+        cmd = [*setup.cl_command(cl), "/nologo", "/LD", *flags,
+               *(["/GL"] if whole_program else []), "/Fe" + setup.cl_path(output),
                setup.cl_path(Path(source).resolve()),
                *(setup.cl_path(Path(x).resolve()) for x in extra_sources), *objects,
-               "/link", "/LTCG", "/LIBPATH:" + setup.cl_path(vc / "lib")]
+               "/link", *(["/LTCG"] if whole_program else []), "/LIBPATH:" + setup.cl_path(vc / "lib")]
         if map_output:
             cmd.append("/MAP:" + setup.cl_path(Path(map_output).resolve()))
         if force_unresolved:
@@ -61,12 +62,43 @@ def map_symbols(map_path, image_base=0x10000000):
 def map_bytes(dll, map_path, symbol, size=256):
     """Extract bytes for a map public symbol by RVA."""
     wanted = symbol.lstrip("_")
-    row = next((rva for rva, name in map_symbols(map_path)
+    pe = pefile.PE(str(dll))
+    row = next((rva for rva, name in map_symbols(map_path, pe.OPTIONAL_HEADER.ImageBase)
                 if name.lstrip("_") == wanted), None)
     if row is None:
+        pe.close()
         raise KeyError(symbol)
-    pe = pefile.PE(str(dll))
-    return row, pe.get_data(row, size)
+    data = pe.get_data(row, size)
+    pe.close()
+    return row, data
+
+
+def reachable_size(code, address):
+    """Instruction extent of reachable blocks, preserving multiple early returns."""
+    from capstone import Cs, CS_ARCH_X86, CS_MODE_32, CS_GRP_JUMP, CS_GRP_RET
+    md = Cs(CS_ARCH_X86, CS_MODE_32)
+    md.detail = True
+    pending, seen, end = [address], set(), address
+    while pending:
+        pc = pending.pop()
+        while address <= pc < address + len(code) and pc not in seen:
+            ins = next(md.disasm(code[pc - address:], pc, count=1), None)
+            if ins is None:
+                break
+            seen.add(pc)
+            end = max(end, pc + ins.size)
+            if ins.group(CS_GRP_RET):
+                break
+            if ins.group(CS_GRP_JUMP):
+                from capstone.x86 import X86_OP_IMM
+                if ins.operands and ins.operands[0].type == X86_OP_IMM:
+                    destination = ins.operands[0].imm
+                    if address <= destination < address + len(code):
+                        pending.append(destination)
+                if ins.mnemonic == "jmp":
+                    break
+            pc += ins.size
+    return end - address
 
 
 def export_bytes(dll, name, size=256):

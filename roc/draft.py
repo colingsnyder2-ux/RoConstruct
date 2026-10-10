@@ -729,8 +729,8 @@ def select_generation_strategy(strategy, model, row):
     """Pick the evidence-backed opt-in strategy without changing direct default."""
     if strategy != "auto":
         return strategy
-    name = str(model or "").lower()
-    return "structured" if "deepseek" in name and int(row.get("size", 0) or 0) <= 32 else "direct"
+    # Paired trials did not establish a structured-mode advantage.
+    return "direct"
 
 
 def _norm_src(src):
@@ -805,19 +805,21 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
     strategy = select_generation_strategy(strategy, model, row)
     asm = match.disasm(code, int(addr, 16))
     best = (start[1], start[0]) if start and start[0] else (0, None)
-    scored = [(best[0], best[1])] if best[1] else []
     seen = {}
     compiled_best = None
     if best[1]:
         try:
             attempt = (best[1],) + match.check_text(client, addr, best[1], flags)[0:3:2]
+            best = (attempt[1], attempt[0])
             compiled_best = best
         except match.CompileError as error:
             attempt = (best[1], 0, str(error)[-1500:])
-        seen[_norm_src(best[1])] = (attempt[1], best[1],
+            best = (0, None)
+        seen[_norm_src(attempt[0])] = (attempt[1], attempt[0],
                                    None if compiled_best else attempt[2], attempt[2])
     else:
         attempt = None
+    scored = [(best[0], best[1])] if best[1] else []
     context = None
     # Preserve the best candidate, but feed a failed compile back immediately
     # even when a previous candidate already had a high byte score.
@@ -828,8 +830,12 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
     diverse_rounds = min(rounds, requested_diversity) if hard_target else 1
     no_think = False  # set after a truncation: reasoning likely ate the budget
     asm_strikes = 0  # repeat asm dumps rarely learn: 72% repeat after the first
+    retry_output_tokens = None
     for i in range(rounds):
-        independent = i < diverse_rounds
+        # Near-repair must see its supplied source in round one; explicit
+        # diversity and normal generation retain independent starting draws.
+        independent = i < diverse_rounds and (requested_diversity > 1 or attempt is None or
+                                             not (provider_options or {}).get("near_repair"))
         full_prompt = prompt_for(client, addr, row, asm, hint,
                                  None if independent else attempt, flags,
                                  examples, source_hints, facts or facts_from_asm(asm), strategy,
@@ -855,6 +861,7 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
         ask_options.pop("minimal_layout", None)
         ask_options.pop("reset_truncated", None)
         ask_options.pop("byte_feedback", None)
+        ask_options.pop("auto_output", None)
         try:
             from roc import providers as _providers
             cloud = _providers.is_cloud(model)
@@ -870,6 +877,8 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
             no_think = True
         floor = 8192 if cloud else 0
         ask_options.setdefault("max_tokens", max(output_budget(row.get("size", 0)), floor))
+        if retry_output_tokens is not None:
+            ask_options["max_tokens"] = retry_output_tokens
         if no_think:
             ask_options["thinking"] = "disabled"
             ask_options.pop("reasoning_effort", None)
@@ -890,6 +899,8 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
         if src and getattr(activity.local, "emit", None):
             activity.local.emit("draft", round=i + 1, code=src, model=model)
         finish = generation.get("finish_reason", "")
+        if finish == "length" and (provider_options or {}).get("auto_output"):
+            retry_output_tokens = max(ask_options["max_tokens"], min(4096, ask_options["max_tokens"] * 2))
         incomplete = source_contract_error(src) if src and finish == "length" else ""
         if incomplete in ("unbalanced braces", "missing function definition"):
             log("  round %d: truncated before complete function" % (i + 1))

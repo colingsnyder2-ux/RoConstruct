@@ -442,6 +442,8 @@ def choose_options(settings):
         picked_mode = "1"
     preset = ({"1": recommended, "2": "fast", "3": "deep", "4": "balanced", "6": "automatic"}.get(
         picked_mode, picked_mode or recommended))
+    if preset == "auto":
+        preset = "automatic"
     show_advanced = picked_mode == "4"
     if preset not in ("automatic", "auto", "fast", "balanced", "deep"):
         raise SystemExit("Preset must be automatic, auto, fast, balanced, or deep")
@@ -560,7 +562,7 @@ def choose_options(settings):
             thinking = "auto"
         verbosity = settings.get("worker_verbosity", "auto")
     if preset == "automatic":
-        rounds, output_budget, thinking, strategy, order = "auto", "auto", "auto", "direct", "auto"
+        rounds, output_budget, thinking, strategy, order = "auto", "auto", "auto", "direct", "random"
         lease_mode, family_id, family_example, unit_name = "function", None, None, None
     from roc import worker
     if model is None:

@@ -75,11 +75,13 @@ def build_hidden(limit=8, persist=True):
 
 
 def run_local(corpus, models, rounds=1, log=print, resume=False, session="benchmark", strategies=("direct",),
-              provider_options=None, family_examples=None, candidate_dir=None):
+              provider_options=None, family_examples=None, candidate_dir=None, initial_sources=None):
     """Benchmark configured models without submitting or changing server state.
 
     ``family_examples`` optionally maps ``(client, addr)`` to verified source
     exemplars for controlled sibling experiments; normal runs pass none.
+    ``initial_sources`` maps targets to freshly verified (source, score) pairs
+    for repair experiments; omission keeps the source-hidden baseline.
 
     session isolates one measured run: pass a unique id per arm (e.g.
     "bench-<date>-<label>") so background worker jobs sharing the metrics
@@ -114,15 +116,16 @@ def run_local(corpus, models, rounds=1, log=print, resume=False, session="benchm
                 started = time.monotonic()
                 stats = []
                 _src = None
+                start = (initial_sources or {}).get((client, addr), (None, 0))
                 try:
                     examples = (family_examples or {}).get((client, addr), ())
-                    score, _src = draft.llm_rounds(client, addr, model, rounds, None, (None, 0),
+                    score, _src = draft.llm_rounds(client, addr, model, rounds, None, start,
                                                    log, clients.load()[client].get("flags"), examples,
                                                    refsource.prompt_hints(row.get("unit", ""), target_facts=facts, client=client),
                                                    facts, stats, strategy=strategy, provider_options=provider_options)
                     failure = None
                 except Exception as error:
-                    score, failure = 0, str(error)[:300]
+                    score, _src, failure = start[1], start[0], str(error)[:300]
                 if candidate_dir is not None and _src:
                     output = Path(candidate_dir) / client
                     output.mkdir(parents=True, exist_ok=True)
@@ -139,8 +142,8 @@ def run_local(corpus, models, rounds=1, log=print, resume=False, session="benchm
                 provider_row = next((item for item in reversed(generated) if item.get("provider")), {})
                 _name, _remote, config = providers.parse_model(model)
                 metrics.record(session, event="job", client=client, addr=addr, unit=row.get("unit"),
-                               model=model, strategy=strategy, size=row.get("size", 0), base_score=0, score=score,
-                               score_gain=score, improved=score > 0, rounds=stats,
+                               model=model, strategy=strategy, size=row.get("size", 0), base_score=start[1], score=score,
+                               score_gain=score - start[1], improved=score > start[1], rounds=stats,
                                seconds=round(time.monotonic() - started, 2), failure=failure,
                                compiler_flags=clients.load()[client].get("flags"),
                                provider=provider_row.get("provider", _name),

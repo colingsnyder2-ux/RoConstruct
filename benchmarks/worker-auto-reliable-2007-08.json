@@ -1,0 +1,194 @@
+[
+ {
+  "client": "2007-08",
+  "addr": "00435810",
+  "size": 6,
+  "unit": "CObjectBrowser",
+  "bucket": "tiny",
+  "split": "discovery"
+ },
+ {
+  "client": "2007-08",
+  "addr": "006abb00",
+  "size": 6,
+  "unit": "CXTPRibbonBar",
+  "bucket": "tiny",
+  "split": "discovery"
+ },
+ {
+  "client": "2007-08",
+  "addr": "00777fb0",
+  "size": 23,
+  "unit": "seg_00770000",
+  "bucket": "tiny",
+  "split": "discovery"
+ },
+ {
+  "client": "2007-08",
+  "addr": "00431440",
+  "size": 22,
+  "unit": "CMainFrame",
+  "bucket": "tiny",
+  "split": "discovery"
+ },
+ {
+  "client": "2007-08",
+  "addr": "0069dd10",
+  "size": 5,
+  "unit": "CXTPPropertyGridItemColor::?8??OnInplaceButtonDown::CPropertyGridItemColorColorPopup",
+  "bucket": "tiny",
+  "split": "holdout"
+ },
+ {
+  "client": "2007-08",
+  "addr": "006e0e10",
+  "size": 6,
+  "unit": "CXTPDockingPaneTabbedContainer",
+  "bucket": "tiny",
+  "split": "holdout"
+ },
+ {
+  "client": "2007-08",
+  "addr": "0045d210",
+  "size": 5,
+  "unit": "Scintilla::CScintillaCtrl",
+  "bucket": "tiny",
+  "split": "holdout"
+ },
+ {
+  "client": "2007-08",
+  "addr": "00684df0",
+  "size": 6,
+  "unit": "CXTPPropExchange",
+  "bucket": "tiny",
+  "split": "holdout"
+ },
+ {
+  "client": "2007-08",
+  "addr": "005115e0",
+  "size": 65,
+  "unit": "G3D::Sphere",
+  "bucket": "medium",
+  "split": "discovery"
+ },
+ {
+  "client": "2007-08",
+  "addr": "007177c0",
+  "size": 88,
+  "unit": "CXTPRibbonControlTab",
+  "bucket": "medium",
+  "split": "discovery"
+ },
+ {
+  "client": "2007-08",
+  "addr": "004891b0",
+  "size": 114,
+  "unit": "P8CRenderSettings::?$GetSetImpl",
+  "bucket": "medium",
+  "split": "discovery"
+ },
+ {
+  "client": "2007-08",
+  "addr": "004731a0",
+  "size": 90,
+  "unit": "G3D::VARArea",
+  "bucket": "medium",
+  "split": "discovery"
+ },
+ {
+  "client": "2007-08",
+  "addr": "0063d4f0",
+  "size": 67,
+  "unit": "CXTPPaintManager",
+  "bucket": "medium",
+  "split": "holdout"
+ },
+ {
+  "client": "2007-08",
+  "addr": "005dd510",
+  "size": 77,
+  "unit": "RBX::VVelocityMotor::?$FactoryProduct",
+  "bucket": "medium",
+  "split": "holdout"
+ },
+ {
+  "client": "2007-08",
+  "addr": "005f6cc0",
+  "size": 96,
+  "unit": "RBX::VBrickColor::V?$Value::?$FactoryProduct",
+  "bucket": "medium",
+  "split": "holdout"
+ },
+ {
+  "client": "2007-08",
+  "addr": "006b2fc0",
+  "size": 69,
+  "unit": "CXTPResourceManager",
+  "bucket": "medium",
+  "split": "holdout"
+ },
+ {
+  "client": "2007-08",
+  "addr": "005c8cd0",
+  "size": 165,
+  "unit": "lua_exception",
+  "bucket": "large",
+  "split": "discovery"
+ },
+ {
+  "client": "2007-08",
+  "addr": "004893c0",
+  "size": 203,
+  "unit": "RBX::Network::VPlayer::?$FactoryProduct",
+  "bucket": "large",
+  "split": "discovery"
+ },
+ {
+  "client": "2007-08",
+  "addr": "0058f940",
+  "size": 171,
+  "unit": "RBX::VBodyPosition::?$FactoryProduct::Creator",
+  "bucket": "large",
+  "split": "discovery"
+ },
+ {
+  "client": "2007-08",
+  "addr": "00511630",
+  "size": 197,
+  "unit": "G3D::Sphere",
+  "bucket": "large",
+  "split": "discovery"
+ },
+ {
+  "client": "2007-08",
+  "addr": "004a98b0",
+  "size": 493,
+  "unit": "RBX::VInstance::?$NonFactoryProduct",
+  "bucket": "large",
+  "split": "holdout"
+ },
+ {
+  "client": "2007-08",
+  "addr": "00720e60",
+  "size": 196,
+  "unit": "CXTButtonThemeOffice2003",
+  "bucket": "large",
+  "split": "holdout"
+ },
+ {
+  "client": "2007-08",
+  "addr": "0061df50",
+  "size": 146,
+  "unit": "RBX::ScoreHud",
+  "bucket": "large",
+  "split": "holdout"
+ },
+ {
+  "client": "2007-08",
+  "addr": "00537990",
+  "size": 146,
+  "unit": "RBX::Lua::ThreadRef::VNode::V?$shared_ptr::?$TItem",
+  "bucket": "large",
+  "split": "holdout"
+ }
+]
