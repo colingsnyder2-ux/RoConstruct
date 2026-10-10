@@ -392,7 +392,7 @@ async function selectWorker(id) {
   workerRun=id;chatSignature="";$("#worker-run").value=id;renderWorkerChat();
   if(!id)return;
   try {await loadSessionLog(id);}
-  catch(error) {toast(error.message+". Live output retained.");}
+  catch(error) {console.warn("Session history unavailable", error);}
   if(page==="workers" && workerRun===id) {chatSignature="";renderWorkerChat();}
 }
 async function loadSessionLog(id) {

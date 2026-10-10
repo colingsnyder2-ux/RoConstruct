@@ -84,7 +84,7 @@ console.log("Compact: one result per function, benchmarks, 3/4/100-loop boundary
   assert.equal(context.workerRun,"saved");
   assert.equal(context.control.value,"saved");
   assert.equal(context.renders[0],"saved");
-  assert.match(context.messages[0],/temporarily unavailable|retained output/);
+  assert.equal(context.messages.length,0);
   context.fetch=async()=>({ok:true,text:async()=>JSON.stringify({job:"other",seq:1,time:2,event:"log",message:"recorded"})+"\n"});
   await context.selectWorker("other");
   assert.equal(context.logs[0].message,"recorded");
