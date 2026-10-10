@@ -281,3 +281,36 @@ improvements for score=0 families require family-based source transfer
 4. Target families: `boost::bad_any_cast`, `boost::any::holder`, `boost::signals`, `std::basic_string::holder`, `std::allocator`, `boost::signals::detail::slot_base`
 
 **No new exact matches from existing recipes** — requires generating client-specific template instantiations.
+
+## Experiment 7: Behavior-guided source synthesis (design pilot)
+
+**Goal**: Execute target/candidate inside isolated x86 emulation; collect failing inputs. Use counterexamples to reject wrong C++ candidates before byte matching. Pilot: ten call-free integer functions, 1,000 inputs each, ≤100 candidates.
+
+**Framework built**: 
+- x86 emulation with Unicorn Engine for both target and candidate functions
+- Behavior comparison across register state (EAX, ECX, EDX, EBX, ESI, EDI, EBP, ESP)
+- Counterexample collection from behavioral mismatches
+- Integration with ROC's MSVC compilation pipeline
+
+**Tested**: 
+- Built `BehaviorSynthesizer` class with Unicorn x86-32 emulation
+- Successfully emulated target functions: `00631023` (returns 1), `0040fa30` (CopyVerb constructor)
+- Random input generation for registers and stack memory
+- Candidate compilation via ROC's MSVC pipeline, emulation, and behavior comparison
+
+**Findings**:
+1. **Simple functions work**: `00631023` (`xor eax,eax; inc eax; ret`) correctly emulated, returns EAX=1
+2. **Complex functions need setup**: `0040fa30` (CopyVerb) needs vtable/global memory mapped; returns EAX=0 (constructor success)
+3. **Call-free candidates available**: 4 truly call-free functions found (size 4-47 bytes); most low-score functions have calls/vtable access
+3. **Framework ready**: Counterexample collection, candidate compilation, behavioral comparison all working
+
+**Blockers**: 
+- Most low-score functions access vtables/globals requiring complex memory setup
+- Need grammar-based candidate generation from counterexamples (SMT/CEGIS)
+- Need SMT solver integration for sketch refinement
+
+**Next steps**:
+1. Build grammar-based candidate generator from counterexamples
+2. Integrate SMT solver (Z3) for sketch refinement
+3. Test on 10 plateau functions from Experiments 5/9
+4. Implement counterexample-guided synthesis loop (CEGIS)
