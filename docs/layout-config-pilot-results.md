@@ -147,3 +147,29 @@ unit-specific; retain per-source score gating.
 `/O2 /GS- /MD`, compiler 30729). All 136 functions in this unit became exact (100%).
 Overall 2012-06 client: 10,711 exact functions under shared-MFC config. Benefit
 extends to 2012; shared-MFC effect is strong for XTP 15.2.1 on VS2008 SP1.
+
+## Experiment 4: Global cross-client graph transfer (pilot)
+
+Attempted cross-client graph transfer between 2010-06 (xtp-13.2.1) and 2012-06
+(xtp-15.2.1), both using compiler 30729 but different XTP versions.
+
+**Finding**: Graph-based function correspondence works — e.g., 2010-06 `007d1d10`
+(CXTPReportControl, 860 bytes, 18 calls, 9 strings) matches 2012-06 `009aa430`
+(860 bytes, 18 calls, 9/9 strings identical, score=0). Perfect graph correspondence
+via caller/callee counts, string literals, and size.
+
+**Blocker**: Library version mismatch (xtp-13.2.1 vs xtp-15.2.1) prevents direct
+source transfer. The 2010-06 library source (`xtp-11.2.2`) compiles to different
+bytes than the 2012-06 target (`xtp-15.2.1`). Recompiling the 2010-06 library
+source against 2012-06 yields 0 matches for the corresponding function.
+
+**Within same library version**: Existing xcopy mechanism already performs
+effective graph transfer. Clients sharing library versions (2009-12/2010-06 both
+xtp-13.2.1; 2011-06/2012-06 both xtp-15.2.1) show complete transfer — all
+substantial exact matches in the earlier client have exact graph matches in the
+later client.
+
+**Conclusion**: Graph transfer is effective for same-version libraries (handled by
+xcopy). Cross-version transfer requires API/ABI compatibility layer or AST-level
+adaptation (Experiment 6). No new exact matches from cross-version graph transfer
+in this pilot.
