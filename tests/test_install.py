@@ -68,6 +68,7 @@ def test_bootstrap_installs_no_ollama_or_docker():
     with temp_root(), \
          patch("roc.setup.ensure_packages") as packages, \
          patch("roc.setup.ensure_wine_prefix", return_value=True), \
+         patch("roc.setup.compiler_ready", return_value=True), \
          patch("roc.setup.compilers", return_value={21022: "cl.exe", 30729: "cl.exe", 50727: "cl.exe"}), \
          patch("roc.setup.FETCHERS") as fetchers, \
          patch("roc.setup.refresh_path"), \
@@ -98,6 +99,7 @@ def test_bootstrap_plans_only_missing_builds():
     assert current["packages"] == []
     fetched = []
     with patch("roc.setup.compilers", return_value={30729: "cl.exe"}), \
+         patch("roc.setup.step_done", return_value=False), \
          patch("roc.setup.FETCHERS", {50727: lambda: fetched.append(50727),
                                       21022: lambda: fetched.append(21022)}), \
          patch("roc.setup.compilers.cache_clear"), \
@@ -142,6 +144,7 @@ def test_bootstrap_keeps_work_settings_and_claims():
     with temp_root() as root, \
          patch("roc.setup.ensure_packages"), \
          patch("roc.setup.ensure_wine_prefix", return_value=True), \
+         patch("roc.setup.compiler_ready", return_value=True), \
          patch("roc.setup.compilers", return_value={21022: "cl", 30729: "cl", 50727: "cl"}), \
          patch("roc.setup.FETCHERS"), \
          patch("roc.setup.refresh_path"), \
@@ -168,6 +171,24 @@ def test_local_ai_is_opt_in_and_asks_first():
         assert setup.local_ai(ask=lambda question: asked.append(question) or "n") is False
     assert asked, "Ollama is offered as a question, never installed silently"
     assert not run.called, "declining must not install anything"
+
+
+def test_worker_all_clients_means_no_filter():
+    from roc import worker
+    assert worker.only_clients("all") is None, "'all' must not filter to a client named all"
+    assert worker.only_clients(None) is None
+    assert worker.only_clients("2009-06") == ["2009-06"]
+
+
+def test_ask_client_accepts_all():
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("roc_cli_all_test", ROOT / "roc.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    with patch("builtins.input", return_value="all"):
+        assert module.ask_client() == "all"
+    with patch("builtins.input", return_value="a"):
+        assert module.ask_client() == "all"
 
 
 def test_handoff_signature_round_trip_and_tamper():
@@ -472,6 +493,7 @@ def test_reinstall_never_touches_the_server_so_leases_survive():
     with temp_root(), \
          patch("roc.setup.ensure_packages"), \
          patch("roc.setup.ensure_wine_prefix", return_value=True), \
+         patch("roc.setup.compiler_ready", return_value=True), \
          patch("roc.setup.compilers", return_value={21022: "cl", 30729: "cl", 50727: "cl"}), \
          patch("roc.setup.FETCHERS"), \
          patch("roc.setup.refresh_path"), \
@@ -488,6 +510,7 @@ def test_size_and_time_are_shown_before_anything_is_downloaded():
     with temp_root(), \
          patch("roc.setup.print", side_effect=lambda *a, **k: order.append(str(a[0])) if a else None), \
          patch("roc.setup.ensure_wine_prefix", return_value=True), \
+         patch("roc.setup.compiler_ready", return_value=True), \
          patch("roc.setup.report", return_value=True), \
          patch("roc.setup.register_link"), \
          patch("roc.setup.compilers", return_value={}), \
@@ -622,7 +645,8 @@ def test_doctor_reports_a_server_it_cannot_reach():
 
 def test_doctor_flags_a_compiler_that_is_missing():
     from roc import doctor
-    with patch("roc.setup.compilers", return_value={}), \
+    with patch("roc.setup.compiler_ready", return_value=True), \
+         patch("roc.setup.compilers", return_value={}), \
          patch("roc.clients.load", return_value={"2008-06": {"compiler": "VS2008 RTM",
                                                             "compiler_build": 21022},
                                                  "2007-03": {"compiler": "VS2005",
@@ -646,6 +670,65 @@ def test_launch_command_detaches_into_its_own_console():
             assert handoff.start() is True
     line = popen.call_args.args[0]
     assert "start \"RoConstruct worker\"" in line and line.rstrip().endswith("roc.cmd\" launch"), line
+
+
+def test_mass_client_flag_is_not_overwritten_by_positional():
+    """`roc mass --client X` must not silently run against all clients."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("roc_cli_mass_flag_test", ROOT / "roc.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    with patch("roc.libs.default_targets", side_effect=AssertionError("expanded to all")), \
+         patch("roc.mass.staticlibs") as static, \
+         patch("roc.mass.stl"), \
+         patch("roc.libs.run"), \
+         patch.object(module, "ready", return_value=True), \
+         patch("roc.analyze.analyze", return_value=("out", [])), \
+         patch("roc.clients.load", return_value={"2009-06": {"compiler_build": 30729}}), \
+         patch("roc.clients.status", return_value="ok"), \
+         patch("roc.clients.exe_path", return_value="x"), \
+         patch("roc.setup.compilers", return_value={30729: "cl"}), \
+         patch("roc.auto.solve", return_value={}), \
+         patch("roc.auto.save", return_value=0):
+        module.main(["mass", "--client", "2009-06"])
+    assert static.call_args.args[0] == ["2009-06"], "the --client value must win"
+
+
+def test_mass_and_submit_accept_all(tmp_path):
+    """README says `roc mass all` / `roc submit all`; both must parse and dispatch."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("roc_cli_all_cmds_test", ROOT / "roc.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    with patch("roc.libs.default_targets", return_value=[]), \
+         patch("roc.mass.staticlibs", return_value={}), \
+         patch("roc.mass.stl", return_value={}), \
+         patch("roc.libs.run", return_value={}):
+        module.main(["mass", "all"])  # must not raise "unrecognized arguments"
+    (tmp_path / "src" / "2009-06").mkdir(parents=True)  # CI has no src/ (gitignored)
+    with patch.object(module, "ROOT", tmp_path), \
+         patch("roc.worker.load_settings", return_value={"server": "host:8765", "user": "x"}), \
+         patch("roc.worker.submit_files") as submit:
+        module.main(["submit", "all"])
+    assert submit.called, "submit all should walk every client with a src/ folder"
+
+
+def test_launch_forwards_cloud_knobs():
+    import argparse
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("roc_cli_fwd_test", ROOT / "roc.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    a = argparse.Namespace(client=None, model=None, workers="4", rounds=None, max_size=None,
+                           jobs=None, lease_mode=None, family_id=None, family_example=None,
+                           unit=None, cloud_escalate="ntech:MiniMax-M2.5", cloud_escalate_after=3,
+                           thinking="enabled", reasoning_effort="high", output_budget=4096,
+                           cloud_concurrency=2, strategy="structured",
+                           no_revng=False, dry_run=True, allow_cloud=True, source_only=False)
+    forwarded = module._forwarded(a)
+    assert "--cloud-escalate" in forwarded and "ntech:MiniMax-M2.5" in forwarded
+    assert "--reasoning-effort" in forwarded and "high" in forwarded
+    assert "--allow-cloud" in forwarded and "--dry-run" in forwarded
 
 
 def test_launch_configures_in_the_terminal_when_nothing_is_saved():

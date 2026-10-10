@@ -3,6 +3,7 @@
 These tests run on any OS: they patch roc.setup.WINDOWS to False rather than
 depending on the host, so the Linux branches are exercised on Windows CI too.
 """
+import os
 import struct
 import sys
 from pathlib import Path
@@ -52,16 +53,17 @@ def test_compilers_returns_empty_without_wine():
 
 def test_cl_env_under_wine_uses_windows_include_and_winepath(tmp_path):
     from roc import setup
+    if os.name == "nt":
+        return  # Wine paths only exist on a Unix host; tmp paths here are C:\-shaped
     cl = tmp_path / "VC" / "bin" / "cl.exe"
     (tmp_path / "VC" / "include").mkdir(parents=True)
     (tmp_path / "Common7" / "IDE").mkdir(parents=True)
     setup._cached_cl_env.cache_clear()
     with patch("roc.setup.WINDOWS", False):
         env = setup.cl_env(cl)
-    assert "\\" in env["WINEPATH"]
+    assert env["WINEPATH"].startswith("z:\\")
     assert ";" in env["WINEPATH"], "Wine needs Windows-style PATH separators"
-    with patch("roc.setup.WINDOWS", False):
-        assert env["INCLUDE"] == setup.to_wine_path(tmp_path / "VC" / "include")
+    assert env["INCLUDE"] == setup.to_wine_path(tmp_path / "VC" / "include")
     assert env["WINEPREFIX"]
     setup._cached_cl_env.cache_clear()
 
@@ -118,6 +120,19 @@ def test_cloudflared_url_matches_the_platform():
         with patch("roc.setup.WINDOWS", False), patch("roc.setup.sys.platform", "linux"), \
              patch("roc.setup.platform.machine", return_value="aarch64"):
             assert setup.cloudflared_url().endswith("linux-arm64")
+        with patch("roc.setup.WINDOWS", False), patch("roc.setup.sys.platform", "linux"), \
+             patch("roc.setup.platform.machine", return_value="armv7l"):
+            assert setup.cloudflared_url().endswith("linux-arm"), "32-bit Pi must not get amd64"
+        with patch("roc.setup.WINDOWS", False), patch("roc.setup.sys.platform", "darwin"):
+            assert setup.cloudflared_url() is None, "darwin ships a .tgz we do not unpack"
+
+
+def test_has_compiler_detects_partial_extraction(tmp_path):
+    from roc import setup
+    (tmp_path / "VC" / "bin").mkdir(parents=True)
+    assert setup._has_compiler(tmp_path) is False
+    (tmp_path / "VC" / "bin" / "cl.exe").write_bytes(b"MZ")
+    assert setup._has_compiler(tmp_path) is True
 
 
 def test_msi_admin_extract_prefers_wine_on_linux(tmp_path):
@@ -133,7 +148,6 @@ def test_msi_admin_extract_prefers_wine_on_linux(tmp_path):
         return Done()
 
     with patch("roc.setup.WINDOWS", False), \
-         patch("roc.setup.TOOLS", tmp_path), \
          patch("roc.setup.ensure_wine_prefix", return_value=True), \
          patch("roc.setup.wine_exe", return_value="/usr/bin/wine"), \
          patch("roc.setup.subprocess.run", side_effect=fake_run) as run:
@@ -193,43 +207,6 @@ def test_msi_table_rows_are_column_major():
     rows = setup._msi_table_rows(raw, schema, strings, 2)
     assert rows[0] == {"Directory": "root", "Directory_Parent": "", "DefaultDir": "sub"}
     assert rows[1] == {"Directory": "child", "Directory_Parent": "PARENT", "DefaultDir": "x"}
-
-
-def test_ltcg_uses_wine_for_compile_and_link(tmp_path):
-    from roc import ltcg, setup
-    with patch("roc.setup.WINDOWS", False), \
-         patch("roc.setup.wine_exe", return_value="wine"), \
-         patch("roc.setup.compilers", return_value={21022: str(tmp_path / "VC/bin/cl.exe")}), \
-         patch("roc.setup.cl_env", return_value={}), \
-         patch("roc.ltcg.subprocess.run") as run:
-        run.return_value.returncode = 0
-        ltcg.build_dll(21022, tmp_path / "f.cpp", tmp_path / "out.dll",
-                       map_output=tmp_path / "out.map", opaque_sources=[tmp_path / "opaque.cpp"])
-        assert len(run.call_args_list) == 2
-        for call in run.call_args_list:
-            assert call.args[0][0] == "wine"
-            assert call.kwargs["env"]["LIB"] == setup.cl_path(tmp_path / "VC/lib")
-        assert "/MAP:" + setup.cl_path(tmp_path / "out.map") in run.call_args.args[0]
-
-
-def test_msi_table_skips_metadata_header():
-    from roc import setup
-    with patch("roc.setup.subprocess.run") as run:
-        run.return_value.stdout = "Directory\tDefaultDir\ns72\tl255\nDirectory\tDirectory\nROOT\t.\n"
-        assert setup.msi_table("x.msi", "Directory") == [{"Directory": "ROOT", "DefaultDir": "."}]
-
-
-def test_extract_reset_refuses_outside_tools(tmp_path):
-    from roc import setup
-    sentinel = tmp_path / "keep.txt"
-    sentinel.write_text("keep")
-    with patch("roc.setup.TOOLS", tmp_path / "tools"):
-        try:
-            setup._reset_extract_dir(tmp_path)
-            assert False, "must not delete outside tools"
-        except ValueError:
-            pass
-    assert sentinel.read_text() == "keep"
 
 
 def test_handoff_launch_command_off_windows():

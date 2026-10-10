@@ -355,22 +355,41 @@ require_microsoft_signature = require_signature
 
 
 def cloudflared_url():
-    """The tunnel client for this OS/arch. Windows has an .exe; Linux a bare binary."""
+    """The tunnel client for this OS/arch, or None when it cannot be fetched here.
+
+    cloudflared ships .exe/.tgz/bare binaries per OS and architecture; mapping
+    every unknown machine to amd64 (as before) would download something that
+    cannot run, e.g. on a 32-bit Raspberry Pi (armv7l).
+    """
     machine = platform.machine().lower()
-    arch = "arm64" if machine in ("aarch64", "arm64") else "amd64"
     base = "https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-"
     if WINDOWS:
-        return base + "windows-%s.exe" % arch
+        return base + ("windows-arm64.exe" if machine in ("aarch64", "arm64") else "windows-amd64.exe")
     if sys.platform == "darwin":
-        return base + "darwin-%s.tgz" % arch
-    return base + "linux-%s" % arch
+        return None  # only shipped as a .tgz; get_cloudflared explains the manual step
+    if machine in ("aarch64", "arm64"):
+        return base + "linux-arm64"
+    if machine in ("armv6l", "armv7l", "armv8l"):
+        return base + "linux-arm"
+    if machine in ("i386", "i686", "x86"):
+        return base + "linux-386"
+    if machine in ("x86_64", "amd64"):
+        return base + "linux-amd64"
+    return None
 
 
 def get_cloudflared():
     """Cloudflare's tunnel client, for HTTPS without opening router ports."""
     exe = TOOLS / "cloudflared" / ("cloudflared.exe" if WINDOWS else "cloudflared")
     if not exe.exists():
-        download(cloudflared_url(), exe)
+        url = cloudflared_url()
+        if not url:
+            found = shutil.which("cloudflared")
+            if found:
+                return found
+            raise SystemExit("Install cloudflared for this OS first (the tunnel is optional): "
+                             "https://github.com/cloudflare/cloudflared/releases")
+        download(url, exe)
         require_signature(exe, "Cloudflare, Inc.")
     if not WINDOWS:
         exe.chmod(0o755)
@@ -399,12 +418,14 @@ def require_sha256(path, want):
         raise SystemExit("REFUSED %s: SHA-256 %s, expected %s. Deleted it; run again." % (path.name, got, want))
 
 
-def _reset_extract_dir(target):
-    target = Path(target).resolve()
-    tools = TOOLS.resolve()
-    if tools not in target.parents or target == DL.resolve() or target == WINE_PREFIX.resolve():
-        raise ValueError("Extraction target must be a compiler directory under tools: %s" % target)
-    shutil.rmtree(target, ignore_errors=True)
+def _has_compiler(target):
+    """True when an extracted tree actually contains cl.exe.
+
+    A partially successful extraction (Wine's msiexec on the older VS2005 MSI
+    leaves a handful of files) must not be mistaken for a finished install.
+    """
+    root = Path(target)
+    return root.is_dir() and any(p.is_file() and p.name.lower() == "cl.exe" for p in root.rglob("*"))
 
 
 def msi_admin_extract(msi, target):
@@ -412,21 +433,22 @@ def msi_admin_extract(msi, target):
     if WINDOWS:
         subprocess.run(["msiexec", "/a", str(msi), "/qn", "TARGETDIR=%s" % target], check=True)
         return
-    target = Path(target)
-    _reset_extract_dir(target)  # never mix a failed attempt's files
+    shutil.rmtree(target, ignore_errors=True)  # never mix a failed attempt's files
     target.mkdir(parents=True, exist_ok=True)
     if ensure_wine_prefix():
         run = subprocess.run([wine_exe(), "msiexec", "/a", to_wine_path(msi), "/qn",
                               "TARGETDIR=%s" % to_wine_path(target)],
                              env=wine_env(), capture_output=True, text=True, timeout=900)
-        if run.returncode == 0 and any(target.iterdir()):
+        if run.returncode == 0 and _has_compiler(target):
             return
+        shutil.rmtree(target, ignore_errors=True)
     if shutil.which("msiextract"):
         subprocess.run(["msiextract", "-C", str(target), str(msi)], check=True)
-        if any(target.iterdir()):
+        if _has_compiler(target):
             return
-    raise SystemExit("Could not unpack %s on Linux. Install Wine or msitools "
-                     "(msiextract) and run this again." % msi.name)
+        shutil.rmtree(target, ignore_errors=True)
+    raise SystemExit("Could not unpack %s on Linux (no cl.exe was extracted). Install Wine or "
+                     "msitools (msiextract) and run this again." % msi.name)
 
 
 def msi_table(msi, table):
@@ -437,7 +459,7 @@ def msi_table(msi, table):
     if len(lines) < 2:
         return []
     columns = lines[0].split("\t")
-    return [dict(zip(columns, line.split("\t"))) for line in lines[3:] if line.strip()]
+    return [dict(zip(columns, line.split("\t"))) for line in lines[2:] if line.strip()]
 
 
 def msi_layout(msi, cab_dir, target):
@@ -485,21 +507,21 @@ def msi_layout_unix(msi, cab_dir, target):
     MSI work: Wine's msiexec chokes on it and extracts only a handful of files.
     """
     target = Path(target)
-    _reset_extract_dir(target)  # never mix a failed attempt's files
+    shutil.rmtree(target, ignore_errors=True)  # never mix a failed attempt's files
     try:
-        if _msi_layout_7z(msi, cab_dir, target):
+        if _msi_layout_7z(msi, cab_dir, target) and _has_compiler(target):
             return
     except Exception:  # a non-standard table just means "try the next method"
         pass
-    _reset_extract_dir(target)
+    shutil.rmtree(target, ignore_errors=True)
     if ensure_wine_prefix():
         target.mkdir(parents=True, exist_ok=True)
         run = subprocess.run([wine_exe(), "msiexec", "/a", to_wine_path(msi), "/qn",
                               "TARGETDIR=%s" % to_wine_path(target)],
                              env=wine_env(), capture_output=True, text=True, timeout=900)
-        if run.returncode == 0 and any(target.iterdir()):
+        if run.returncode == 0 and _has_compiler(target):
             return
-        _reset_extract_dir(target)
+        shutil.rmtree(target, ignore_errors=True)
     if shutil.which("msiinfo") and Path(cab_dir).is_dir():
         dirs = {row["Directory"]: (row["Directory_Parent"], row["DefaultDir"].split(":")[0].split("|")[-1])
                 for row in msi_table(msi, "Directory")}
@@ -517,9 +539,11 @@ def msi_layout_unix(msi, cab_dir, target):
                 dst = Path(target) / path(comp[row["Component_"]]) / row["FileName"].split("|")[-1]
                 dst.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copyfile(src, dst)
-        return
-    raise SystemExit("Could not unpack %s on Linux. Install Wine or msitools "
-                     "(msiinfo) and run this again." % msi.name)
+        if _has_compiler(target):
+            return
+        shutil.rmtree(target, ignore_errors=True)
+    raise SystemExit("Could not unpack %s on Linux (no cl.exe was extracted). Install Wine or "
+                     "msitools (msiinfo) and run this again." % msi.name)
 
 
 # Standard MSI layout tables we need, as (column, kind): 's' is a string reference
@@ -852,8 +876,7 @@ def ensure_packages(install=True):
     if not install:
         return missing
     print("Installing Python packages: %s" % ", ".join(missing))
-    user = ["--user"] if sys.prefix == sys.base_prefix else []
-    run = subprocess.run([sys.executable, "-m", "pip", "install", *user, "-q", *missing])
+    run = subprocess.run([sys.executable, "-m", "pip", "install", "--user", "-q", *missing])
     if run.returncode or missing_packages():
         raise SystemExit("pip could not install %s. Check your internet connection and run this again."
                          % ", ".join(missing))

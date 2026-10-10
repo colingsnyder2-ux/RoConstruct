@@ -30,6 +30,9 @@ class CompileError(RuntimeError):
     pass
 
 
+_COMPILE_ERRORS_LOCK = threading.Lock()
+
+
 def _compile_error_cache():
     global _COMPILE_ERRORS
     if _COMPILE_ERRORS is None:
@@ -41,13 +44,16 @@ def _compile_error_cache():
 
 
 def _remember_compile_error(key, message):
-    cache = _compile_error_cache()
-    cache[key] = message[-1200:]
-    try:
-        COMPILE_ERRORS.parent.mkdir(parents=True, exist_ok=True)
-        COMPILE_ERRORS.write_text(json.dumps(cache, separators=(",", ":")))
-    except OSError:
-        pass
+    # Parallel library/STL/submit compiles can fail at the same time; without a
+    # lock two threads rewriting the JSON file can truncate or lose entries.
+    with _COMPILE_ERRORS_LOCK:
+        cache = _compile_error_cache()
+        cache[key] = message[-1200:]
+        try:
+            COMPILE_ERRORS.parent.mkdir(parents=True, exist_ok=True)
+            COMPILE_ERRORS.write_text(json.dumps(cache, separators=(",", ":")))
+        except OSError:
+            pass
 
 
 @functools.lru_cache(maxsize=512)
@@ -655,7 +661,10 @@ def compile_text(client, text, flags=None, build=None):
     if "lib" in d:  # library file: rebuilt from the pinned, hash-checked source in tools/libs
         from roc import libs
         recipe, _, path = d["lib"].partition(" ")
-        text = "%s\n%s" % (text, libs.unit(recipe, path.strip(), build))
+        try:
+            text = "%s\n%s" % (text, libs.unit(recipe, path.strip(), build))
+        except SystemExit as error:  # local-only tree (e.g. rbxgs) not on this PC
+            raise CompileError(str(error))
     cl = setup.compilers().get(build)
     if not cl:
         raise SystemExit("Missing compiler build %s for %s. Run: roc install" % (build, client))
@@ -665,18 +674,13 @@ def compile_text(client, text, flags=None, build=None):
         src, obj = Path(tmp) / ("f.c" if d.get("lang") == "c" else "f.cpp"), Path(tmp) / "f.obj"
         src.write_text(text)
         try:
-            argv = [*setup.cl_command(cl), "/nologo", "/c", "/Gy", *flags,
-                    "/Fo" + setup.cl_path(obj), setup.cl_path(src)]
-            run = subprocess.run(argv,
+            run = subprocess.run([*setup.cl_command(cl), "/nologo", "/c", "/Gy", *flags,
+                                  "/Fo" + setup.cl_path(obj), setup.cl_path(src)],
                                  capture_output=True, text=True, env=env, cwd=tmp, timeout=120)
         except subprocess.TimeoutExpired:
-            from roc import activity
-            activity.command(argv, tmp, subprocess.CompletedProcess(argv, -1, "", "Compiler timeout after 120 seconds"))
             message = "compiler timeout after 120 seconds"
             _remember_compile_error(error_key, message)
             raise CompileError(message)
-        from roc import activity
-        activity.command(argv, tmp, run)
         if run.returncode:
             out = run.stdout + run.stderr
             for shown in {str(src), setup.cl_path(src)}:  # Wine echoes the Z:\ form
@@ -720,19 +724,12 @@ def check_text(client, addr, text, flags=None, include_diagnosis=False):
     best = max((f for value, f in scored if value == highest),
                key=lambda f: rank_candidate(code, relocs, f[1], f[2]))
     value, d, spans = score(code, relocs, best[1], best[2]), diff(code, relocs, best[1], best[2]), []
-    bad = []
     if value == 100:
         spans, bad = data_check(client, addr, code, coff_data_refs(obj, best[0]))
         if bad:
             value, d = 99, "Code matches, but data your source defines does not:\n" + "\n".join(bad)
-    from roc import activity
-    activity.candidate(text, value)
     result = (value, best[0], d, spans)
     diagnosis = diagnose(code, relocs, best[1], best[2]) if include_diagnosis and value < 100 else {}
-    if include_diagnosis and bad:
-        diagnosis.update(exact=False, code_exact=True, mismatch_class="referenced-data mismatch",
-                         data_mismatches=bad, classifications=[{
-                             "category": "referenced-data mismatch", "confidence": 1.0, "evidence": bad}])
     return result + (diagnosis,) if include_diagnosis else result
 
 

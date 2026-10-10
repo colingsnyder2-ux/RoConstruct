@@ -187,8 +187,7 @@ def start(detached=True, log=print):
         # Linux has no `start`; a new session keeps the worker alive after the shell exits.
         subprocess.Popen(launch_command(), creationflags=flags,
                          start_new_session=os.name != "nt")
-    log("Worker starting in a new window. Close that window to stop it." if os.name == "nt"
-        else "Worker starting in the background. Stop its process to end the run.")
+    log("Worker starting in a new window. Close that window to stop it.")
     return True
 
 

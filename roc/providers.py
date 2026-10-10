@@ -34,6 +34,9 @@ BUILTINS = {
 }
 KINDS = {"openai-chat", "openai-responses", "anthropic-messages", "gemini"}
 SYSTEM = "Reconstruct compact valid C++ only. Never emit inline assembly. Follow the user task exactly."
+USER_AGENT = "RoConstruct/1.0"
+# Providers that rejected the thinking field once; the process skips it after that.
+NO_THINKING = set()
 
 
 class ProviderError(RuntimeError):
@@ -287,6 +290,14 @@ def available(model):
     return key_available(config["key_env"])
 
 
+_REASONING_BLOCK = re.compile(r"<think(?:ing)?>.*?</think(?:ing)?>", re.S | re.I)
+
+
+def strip_reasoning(text):
+    """Drop inline reasoning some models leak into content (e.g. MiniMax  thinking...)."""
+    return _REASONING_BLOCK.sub("", str(text or "")).strip()
+
+
 def sanitize_prompt(text):
     """Remove accidental local-user paths and likely secret values, not source facts."""
     text = str(text or "")
@@ -304,6 +315,10 @@ def _url(config, suffix):
 
 
 def _post(url, body, headers, timeout):
+    headers = dict(headers)
+    # Some OpenAI-compatible gateways sit behind a WAF that rejects the default
+    # Python-urllib User-Agent (Cloudflare "error code: 1010"). Send our own.
+    headers.setdefault("User-Agent", USER_AGENT)
     req = urllib.request.Request(url, data=json.dumps(body).encode("utf-8"), headers=headers, method="POST")
     try:
         with urllib.request.urlopen(req, timeout=timeout) as response:
@@ -398,15 +413,22 @@ def _openai_chat(provider, remote, config, prompt, state, options):
             "max_tokens": options.get("max_tokens", 1024), "stream": False}
     if options.get("seed") is not None:
         body["seed"] = int(options["seed"])
-    if options.get("thinking") is not None and str(options["thinking"]).lower() != "auto":
-        body["thinking"] = (options["thinking"] if isinstance(options["thinking"], dict)
-                             else {"type": str(options["thinking"])})
+    think = options.get("thinking")
+    if think is not None and str(think).lower() != "auto":
+        disabled = ((isinstance(think, dict) and think.get("type") == "disabled")
+                    or str(think).lower() == "disabled")
+        if provider in NO_THINKING:
+            # This gateway already rejected the thinking field once; skip the
+            # guaranteed 400 and use the knob it does support.
+            body.setdefault("reasoning_effort", "low" if disabled else "high")
+        else:
+            body["thinking"] = think if isinstance(think, dict) else {"type": str(think)}
     if options.get("reasoning_effort") is not None:
         body["reasoning_effort"] = str(options["reasoning_effort"])
     data, headers = _post(_url(config, "/chat/completions"), body,
                           {"Content-Type": "application/json", "Authorization": "Bearer " + key}, options["timeout"])
     choice = (data.get("choices") or [{}])[0]
-    text = (choice.get("message") or {}).get("content") or ""
+    text = strip_reasoning((choice.get("message") or {}).get("content") or "")
     return Generation(text, {"messages": messages + [{"role": "assistant", "content": text}]},
                       input_tokens=_usage(data, "prompt_tokens", "input_tokens"),
                       output_tokens=_usage(data, "completion_tokens", "output_tokens"),
@@ -429,6 +451,7 @@ def _openai_responses(provider, remote, config, prompt, state, options):
     if not text:
         text = "".join(part.get("text", "") for item in data.get("output", [])
                        for part in item.get("content", []) if part.get("type") in ("output_text", "text"))
+    text = strip_reasoning(text)
     return Generation(text, {"messages": messages + [{"role": "assistant", "content": text}]},
                       input_tokens=_usage(data, "input_tokens"), output_tokens=_usage(data, "output_tokens"),
                       cached_tokens=_cached_tokens(data), provider=provider, model=remote,
@@ -539,6 +562,7 @@ def generate(model, messages, options=None, state=None):
     started, retries = time.monotonic(), 0
     try:
         attempt = 0
+        dropped_knobs = False
         while True:
             ticket = None
             try:
@@ -553,10 +577,32 @@ def generate(model, messages, options=None, state=None):
                 out.cost = _cost(config, out.input_tokens, out.output_tokens, remote)
                 if budget:
                     budget.settle(ticket, out.input_tokens + out.output_tokens, out.cost)
+                if dropped_knobs:
+                    # Only a successful retry proves the knobs caused the 400;
+                    # remember it so later requests skip the round trip.
+                    NO_THINKING.add(provider)
                 if gate:
                     gate.done(provider, True)
                 return out
             except ProviderError as error:
+                if (error.status == 400 and not dropped_knobs
+                        and config.get("kind") == "openai-chat"
+                        and ("thinking" in options or "reasoning_effort" in options)):
+                    # Some OpenAI-compatible gateways reject the thinking/reasoning
+                    # knobs on /chat/completions with a 400 ("thinking is not
+                    # supported ... use reasoning_effort"). Retry once without
+                    # them, translating a disabled request to reasoning_effort low.
+                    think = options.pop("thinking", None)
+                    options.pop("reasoning_effort", None)
+                    if think is not None:
+                        disabled = ((isinstance(think, dict) and think.get("type") == "disabled")
+                                    or str(think).lower() == "disabled")
+                        options["reasoning_effort"] = "low" if disabled else "high"
+                    dropped_knobs = True
+                    retries += 1
+                    if budget and ticket:
+                        budget.settle(ticket, 0, 0.0)  # the provider did not bill this
+                    continue
                 if (error.category != "provider_retry" or
                         (not options.get("retry_forever") and attempt >= int(options.get("retries", 2)))):
                     if gate and error.category != "cloud_budget":

@@ -683,8 +683,7 @@ def start_tunnel(port, log=print):
                          "{ $_.CommandLine -match '127.0.0.1:%d' } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force }"
                          % port)
     else:
-        subprocess.run(["pkill", "-f", r"cloudflared.*127\.0\.0\.1:%d([[:space:]]|$)" % port],
-                       capture_output=True)
+        subprocess.run(["pkill", "-f", "cloudflared.*127.0.0.1:%d" % port], capture_output=True)
     proc = subprocess.Popen([exe, "tunnel", "--no-autoupdate", "--url", "http://127.0.0.1:%d" % port],
                             stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, text=True,
                             creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))

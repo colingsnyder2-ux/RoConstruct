@@ -12,11 +12,12 @@ import time
 import traceback
 import urllib.error
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from urllib.parse import quote, urlparse
 import uuid
 from pathlib import Path
 
-from roc import activity, clients, draft, match, metrics, setup
+from roc import clients, draft, match, metrics, setup
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -109,10 +110,10 @@ def pretty_log(message):
     text = str(message)
     def emit(value):
         try:
-            print(value, flush=True)
+            print(value)
         except UnicodeEncodeError:
             encoding = getattr(sys.stdout, "encoding", None) or "utf-8"
-            print(value.encode(encoding, "replace").decode(encoding, "replace"), flush=True)
+            print(value.encode(encoding, "replace").decode(encoding, "replace"))
     if not sys.stdout.isatty() or os.environ.get("NO_COLOR"):
         emit(text)
         return
@@ -146,7 +147,7 @@ class CompactLog:
         self.lock = threading.Lock()
         self.jobs = self.improved = self.matched = self.failures = 0
         self.current = {}
-        self.started_at = self.last_report = time.monotonic()
+        self.next_report = max(10, workers)
 
     def __call__(self, message):
         text = str(message)
@@ -161,11 +162,12 @@ class CompactLog:
                 score = re.search(r"(\d+)%", text)
                 self._finish(int(score.group(1)) if score else 0)
                 return
-            if (text.startswith("  auto-think:") or
+            if (text.startswith("Worker ") or text.startswith("  auto-think:") or
                     text.startswith("  round ") or text.startswith("  generated source") or
                     text.startswith("  no improvement") or text.startswith("  retained") or
                     text.startswith("  preparing 2016 source") or text.startswith("  2016 source") or text.startswith("Session:") or
                     text.startswith("== ") or text.startswith("Worker finished") or
+                    text.startswith("Cloud model:") or text.startswith("Privacy:") or
                     text.startswith("  tokens used:") or
                     text.startswith("  thinking disabled")):
                 if text.startswith("  no improvement") or text.startswith("  retained"):
@@ -185,27 +187,20 @@ class CompactLog:
             self.output(text)
 
     def _finish(self, score=None):
-        job = self.current.pop(threading.get_ident(), None)
-        if job is None:
-            return
-        client, addr, size, unit, best = job
-        if self.workers > 3:
-            unit = ""
         self.jobs += 1
-        self.improved += score is not None and score > best and score != 100
+        self.improved += score is not None and score > 0
         self.matched += score == 100
+        client, addr, size, unit, best = self.current.pop(threading.get_ident(), ("?", "?", None, "?", 0))
         size_text = "%d B " % size if size is not None else ""
-        if score is None or score <= best and score != 100:
-            self.output(("· %s %s %sno gain (best %d%%) %s" % (client, addr, size_text, best, unit)).rstrip())
+        if score is None:
+            self.output("· %s %s %sno gain (best %d%%) %s" % (client, addr, size_text, best, unit))
         else:
-            self.output(("%s %s %s %s%d%% %s" % ("✓" if score == 100 else "↑",
-                        client, addr, size_text, score, unit)).rstrip())
-        now = time.monotonic()
-        if now - self.last_report >= 30:
-            self.output("⛏ %dw | %d done | %.1f fn/min | %d matched | %d improved | %d errors" %
-                        (self.workers, self.jobs, self.jobs * 60 / max(now - self.started_at, 1),
-                         self.matched, self.improved, self.failures))
-            self.last_report = now
+            self.output("%s %s %s %s%d%% %s" % ("✓" if score == 100 else "↑",
+                        client, addr, size_text, score, unit))
+        if self.jobs >= self.next_report:
+            self.output("⛏ %dw | %d done | %d matched | %d improved | %d errors" %
+                        (self.workers, self.jobs, self.matched, self.improved, self.failures))
+            self.next_report += max(10, self.workers)
 
     def finish(self):
         self.output("⛏ %dw finished | %d done | %d matched | %d improved | %d errors" %
@@ -317,6 +312,17 @@ def resolve_model(payload):
                      "  Or use a local model:  roc local-ai")
 
 
+def only_clients(client):
+    """The lease filter for a client choice: None means every usable client.
+
+    "all" (or no choice) lets the server hand out work from any client whose
+    exe, compiler and analysis are ready.
+    """
+    if not client or str(client).lower() == "all":
+        return None
+    return [client]
+
+
 def main_args(payload, argv=()):
     """Run a worker described by a signed handoff config (see roc.handoff).
 
@@ -326,13 +332,10 @@ def main_args(payload, argv=()):
     import argparse
     from roc import providers
     ap = argparse.ArgumentParser(prog="roc launch", description="Run the worker from the signed setup config.")
-    ap.add_argument("--client", help="override the client from the config")
+    ap.add_argument("--client", help="override the client from the config ('all' means every ready client)")
     ap.add_argument("--model", help="override the model from the config")
     ap.add_argument("--workers", help="bounded concurrent lease loops (1-256 or auto)")
-    ap.add_argument("--rounds", type=lambda value: value if value == "auto" else int(value), help="AI tries per function (or auto)")
-    ap.add_argument("--output-budget", type=lambda value: value if value == "auto" else int(value), help="output tokens (or auto)")
-    ap.add_argument("--strategy", choices=["auto", "direct", "structured", "reference"])
-    ap.add_argument("--thinking", choices=["auto", "enabled", "disabled"])
+    ap.add_argument("--rounds", type=int, help="AI tries per function")
     ap.add_argument("--max-size", type=int, help="skip functions bigger than this")
     ap.add_argument("--jobs", type=int, help="stop after this many functions")
     ap.add_argument("--order", choices=["auto", "best", "matched", "unmatched", "easiest", "random"],
@@ -348,6 +351,20 @@ def main_args(payload, argv=()):
     ap.add_argument("--family-id", help="strict 24-hex family fingerprint")
     ap.add_argument("--family-example", help="seed family from CLIENT:ADDRESS")
     ap.add_argument("--dry-run", action="store_true", help="print the plan without leasing a job")
+    ap.add_argument("--cloud-escalate", help="cloud model for hard jobs stalled by the primary model")
+    ap.add_argument("--cloud-escalate-after", type=int, help="primary attempts before cloud escalation")
+    ap.add_argument("--thinking", choices=["auto", "enabled", "disabled"], help="provider reasoning mode")
+    ap.add_argument("--reasoning-effort", choices=["auto", "low", "medium", "high", "max"],
+                    help="provider reasoning effort")
+    ap.add_argument("--output-budget", type=int, help="max tokens per reply (128-8192)")
+    ap.add_argument("--allow-cloud", action="store_true", help="allow prompts to leave this PC")
+    ap.add_argument("--cloud-concurrency", type=int, help="max concurrent cloud requests")
+    ap.add_argument("--max-cloud-requests", type=int, help="cloud request budget for this worker")
+    ap.add_argument("--max-cloud-tokens", type=int, help="cloud token budget for this worker")
+    ap.add_argument("--max-cloud-cost", type=float, help="cloud cost budget when provider pricing is set")
+    ap.add_argument("--source-only", action="store_true", help="deterministic candidates only")
+    ap.add_argument("--strategy", choices=["direct", "structured", "reference"],
+                    help="candidate-generation prompt strategy")
     given = ap.parse_args(list(argv))
 
     user = payload.get("user") or ""
@@ -358,18 +375,31 @@ def main_args(payload, argv=()):
         raise SystemExit("No server address saved. Run: roc setup")
     token = payload.get("token") or None
     client = given.client or payload.get("client")
+    if client and str(client).lower() == "all":
+        client = None
     model, cloud_allowed = resolve_model(payload)
     is_cloud = providers.is_cloud(model)
-    runtime = load_settings()
-    runtime = runtime if runtime.get("model") == model else {}
-    rounds = given.rounds if given.rounds is not None else runtime.get("worker_rounds", 4)
-    max_tokens = given.output_budget if given.output_budget is not None else runtime.get("worker_output_budget", 2048)
-    if rounds != "auto" and not 1 <= rounds <= 100:
-        raise SystemExit("Rounds must be auto or 1-100")
-    if max_tokens != "auto" and not 128 <= max_tokens <= 8192:
-        raise SystemExit("Output budget must be auto or 128-8192")
-    max_size = given.max_size if given.max_size is not None else runtime.get("worker_max_size", 256)
-    workers = given.workers or runtime.get("worker_workers", "auto" if is_cloud else 1)
+    rounds = given.rounds if given.rounds else 4
+    max_size = given.max_size if given.max_size else 256
+    workers = given.workers or ("auto" if is_cloud else 1)
+    if given.allow_cloud:
+        cloud_allowed = True
+    escalate = given.cloud_escalate
+    if escalate:
+        if not cloud_allowed:
+            raise SystemExit("--cloud-escalate needs cloud consent (roc setup, or --allow-cloud)")
+        if not providers.available(escalate):
+            _p, _r, config = providers.parse_model(escalate)
+            raise SystemExit("Cloud key missing for %s: set %s" % (escalate, config["key_env"]))
+    try:
+        saved_budget = int(load_settings().get("worker_output_budget") or 0)
+    except (TypeError, ValueError):
+        saved_budget = 0
+    max_tokens = given.output_budget or saved_budget or 2048
+    if not 128 <= max_tokens <= 8192:
+        raise SystemExit("--output-budget must be 128-8192")
+    thinking = given.thinking or "auto"
+    gate = providers.CloudGate(given.cloud_concurrency) if given.cloud_concurrency is not None else None
     order = given.order or load_settings().get("worker_order", "random")
     verbosity = given.verbosity or load_settings().get("worker_verbosity", "auto")
     family_id = given.family_id or (family_from_example(given.family_example) if given.family_example else None)
@@ -385,8 +415,16 @@ def main_args(payload, argv=()):
             print("Family %s ready: %d sibling targets" % (family_id, registered))
     save_settings(user=user, server=server, token=token, cloud_allowed=cloud_allowed or None, model=model,
                   worker_order=order, worker_verbosity=verbosity)
-    budget = providers.CloudBudget(HANDOFF_CLOUD_REQUESTS, HANDOFF_CLOUD_TOKENS,
-                                   HANDOFF_CLOUD_COST_USD if providers.has_pricing(model) else None)
+    def _saved_budget(key, fallback):
+        try:
+            return int(load_settings().get(key) or 0) or fallback
+        except (TypeError, ValueError):
+            return fallback
+    budget = providers.CloudBudget(
+        given.max_cloud_requests or _saved_budget("worker_cloud_requests", HANDOFF_CLOUD_REQUESTS),
+        given.max_cloud_tokens or _saved_budget("worker_cloud_tokens", HANDOFF_CLOUD_TOKENS),
+        given.max_cloud_cost if given.max_cloud_cost is not None else
+        (HANDOFF_CLOUD_COST_USD if providers.has_pricing(model) else None))
     print("Signed setup: user=%s client=%s server=%s model=%s (%s) workers=%s" %
           (user, client or "any", server, model, "cloud" if is_cloud else "local", workers))
     if is_cloud:
@@ -397,13 +435,16 @@ def main_args(payload, argv=()):
     if given.dry_run:
         return None
     keep_awake()
-    return run_concurrent(server, user, token, model, rounds, max_size,
-                          not given.no_revng and runtime.get("worker_revng", True),
-                          given.jobs, workers=workers, only=[client] if client else None,
+    return run_concurrent(server, user, token, model, rounds, max_size, not given.no_revng,
+                          given.jobs, workers=workers, only=only_clients(client),
                           cloud_allowed=cloud_allowed, cloud_budget=budget,
-                          max_tokens=max_tokens, thinking=given.thinking or runtime.get("worker_thinking", "auto"),
-                          strategy=given.strategy or runtime.get("worker_strategy", "direct"), order=order,
+                          max_tokens=max_tokens, thinking=thinking, order=order,
                           verbosity=verbosity,
+                          reasoning_effort=given.reasoning_effort,
+                          cloud_escalate=escalate,
+                          cloud_escalate_after=given.cloud_escalate_after or 2,
+                          cloud_gate=gate, source_only=given.source_only,
+                          strategy=given.strategy or "direct",
                           family_exemplars=given.family_exemplars,
                           lease_mode="family" if family_id else given.lease_mode,
                           family_id=family_id, unit_name=given.unit)
@@ -460,8 +501,6 @@ class Api:
         return self._conn
 
     def call(self, path, payload=None, timeout=60):
-        if path == "/v1/submit" and payload and payload.get("source"):
-            activity.candidate(payload["source"], payload.get("score", 0))
         data = json.dumps(payload).encode() if payload is not None else None
         headers = {"Content-Type": "application/json"}
         if self.token:
@@ -691,7 +730,7 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
             log("  auto-think: thinking disabled")
         provider_options = {"allow_cloud": cloud_allowed, "budget": cloud_budget,
                             "gate": cloud_gate, "diverse_candidates": diverse_candidates,
-                            "seed": seed, "max_tokens": resolve_output_tokens(job, max_tokens),
+                            "seed": seed, "max_tokens": max_tokens,
                             "guided_mutations": guided_mutations,
                             "family_exemplars": family_exemplars,
                             "near_repair": near_repair,
@@ -716,11 +755,6 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
         if control is not None:
             control.finished(slot, job, score)
         save_session_state(worker, user, model, done, matched, failures)
-        if provider_options.get("budget_exhausted"):
-            log("Cloud budget cannot fund another request; finishing session.")
-            if control is not None:
-                control.command({"action": "stop"})
-            break
         if done % 10 == 0:
             log("== %s: %d functions tried, %d matched this session ==" % (time.strftime("%H:%M"), done, matched))
             report = metrics.summary(session)
@@ -747,7 +781,10 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
     I/O-bound (remote inference), so the cap is generous; local GPU loops
     should stay low so laptop users do not oversubscribe.
     """
-    workers = resolve_workers(workers, model, source_only)
+    if str(workers).lower() == "auto":
+        # Conservative: small models can overlap; large models stay serial.
+        workers = 2 if "7b" in str(model).lower() else 1
+    workers = max(1, min(int(workers or 1), MAX_WORKERS))
     if cloud_gate is None:
         from roc import providers
         cloud_gate = providers.CloudGate(workers)
@@ -822,14 +859,13 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
         raise
     if errors:
         raise errors[0]
-    if isinstance(worker_log, CompactLog):
+    if workers > 3:
         worker_log.finish()
 
 
 def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=None,
              source_cache=None, session=None, source_only=False, strategy="direct", provider_options=None):
     from roc import providers
-    activity.begin(job, model, session)
     compact_log = isinstance(log, CompactLog)
     output = log
     progress = {"stage": "starting", "at": time.monotonic(), "began": time.monotonic()}
@@ -842,7 +878,6 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
 
     def job_log(message):
         progress["at"] = time.monotonic()
-        activity.event(message)
         output(message)
 
     log = job_log
@@ -856,7 +891,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
     log("[%s %s] %d B, %s, best so far %d%%" % (client, addr, job["size"], job["unit"], job["score"]))
     stop = threading.Event()
     started = time.monotonic()
-    result, improved, failure = job.get("score", 0), False, None
+    result, improved, failure = 0, False, None
     family_propagated = False
     source_candidate = None
     phase_seconds = {}
@@ -1140,8 +1175,6 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
             failure_reason = "api"
         else:
             failure_reason = "worker_error"
-        if failure_reason == "cloud_budget" and provider_options is not None:
-            provider_options["budget_exhausted"] = True
         if getattr(error, "category", "") == "provider_circuit":
             provider, _remote, _config = providers.parse_model(model)
             log("  cloud circuit open; waiting 60s before retrying %s." % provider)
@@ -1157,7 +1190,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
             api.call("/v1/release", {"lease": job["lease"], "cooldown": 120})
         except RuntimeError:
             pass
-        return job.get("score", 0)
+        return 0
     except KeyboardInterrupt:
         try:
             api.call("/v1/release", {"lease": job["lease"], "cooldown": 120})
@@ -1165,7 +1198,6 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
             raise
     finally:
         stop.set()
-        activity.finish(result, failure, round_stats)
         if session:
             coded = [r for r in round_stats if isinstance(r.get("round"), int) and r.get("code")]
             generated = [r for r in round_stats if isinstance(r.get("round"), int)]
@@ -1202,24 +1234,6 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                            estimated_cost=metrics.known_generation_cost(generated),
                            failure_reason=failure_reason,
                            failure=failure)
-
-
-def resolve_workers(workers, model=None, source_only=False):
-    from roc import providers
-    if str(workers).lower() == "auto":
-        if source_only:
-            workers = 1
-        elif providers.is_cloud(model):
-            workers = 8 if str(model).startswith("deepseek:") else 4
-        else:
-            workers = 2 if re.search(r":7b(?:-|$)", str(model).lower()) else 1
-    return max(1, min(int(workers or 1), MAX_WORKERS))
-
-
-def resolve_output_tokens(job, max_tokens):
-    if max_tokens != "auto":
-        return max_tokens
-    return 1024 if job.get("size", 999999) <= 64 and not job.get("calls", 0) else 2048
 
 
 def resolve_rounds(job, rounds, model=None):
@@ -1286,17 +1300,44 @@ def pull_files(server, client, token=None, force=False, log=print):
 
 
 def submit_files(server, user, client, addrs=None, token=None, log=print):
-    """Upload hand-written src/<client>/*.cpp to the server (checked locally first)."""
+    """Upload hand-written src/<client>/*.cpp to the server (checked locally first).
+
+    Files pulled from the server ("// from server:" header) are skipped when
+    submitting a whole client: they are already there, and one rejected file
+    (e.g. a client the server has not imported yet) must not abort the run.
+    Local re-checks (one compile each) run in parallel; uploads stay serial.
+    """
     api = Api(server, token)
     paths = sorted((ROOT / "src" / client).glob("*.cpp"))
     if addrs:
         paths = [p for p in paths if p.stem in addrs]
+    skipped = 0
+    candidates = []
     for p in paths:
-        try:
-            score, _, _, _ = match.check(client, p.stem, p)
-        except match.CompileError as error:
-            log("%s  skipped, does not compile: %s" % (p.stem, str(error).splitlines()[0]))
+        text = p.read_text(errors="replace")
+        if not addrs and text.startswith("// from server:"):
+            skipped += 1
             continue
-        r = api.call("/v1/submit", {"user": user, "client": client, "addr": p.stem,
-                                    "score": score, "source": p.read_text()})
+        candidates.append((p, text))
+    jobs = int(os.environ.get("ROC_JOBS") or 0) or min(12, os.cpu_count() or 4)
+    checked = []
+    with ThreadPoolExecutor(max_workers=jobs) as pool:
+        futures = {pool.submit(match.check, client, p.stem, p): (p, text) for p, text in candidates}
+        for future in as_completed(futures):
+            p, text = futures[future]
+            try:
+                score, _, _, _ = future.result()
+            except match.CompileError as error:
+                log("%s  skipped, does not compile: %s" % (p.stem, str(error).splitlines()[0]))
+                continue
+            checked.append((p, text, score))
+    for p, text, score in sorted(checked, key=lambda item: item[0].stem):
+        try:
+            r = api.call("/v1/submit", {"user": user, "client": client, "addr": p.stem,
+                                        "score": score, "source": text})
+        except ApiFailure as error:
+            log("%s  not accepted: %s" % (p.stem, error))
+            continue
         log("%s  %3d%%  %s" % (p.stem, r["stored"], "new best" if r["improved"] else "server already has this or better"))
+    if skipped:
+        log("%s: %d pulled source(s) already on the server, skipped" % (client, skipped))

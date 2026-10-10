@@ -8,8 +8,10 @@
               instantiation, for the element types Roblox most likely used.
 """
 import json
+import os
 import re
 import struct
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 from roc import fingerprint, match, setup
@@ -106,20 +108,32 @@ def stl_units():
             yield "%s<%s>" % (cname, ename), "// stl: %s<%s>\n%s\n%s\n" % (cname, ename, elem, cont_text)
 
 
+def _compile_unit(client, text, build):
+    return match.compile_text(client, text, build=build)
+
+
 def stl(targets, log=print):
     tgts = {c: fingerprint.Target(c) for c in targets}
     builds = {c: match.clients.load()[c]["compiler_build"] for c in targets}
     new = {c: 0 for c in targets}
+    jobs = int(os.environ.get("ROC_JOBS") or 0) or min(12, os.cpu_count() or 4)
     for build in sorted(set(builds.values())):
         group = [c for c in targets if builds[c] == build]
-        for label, text in stl_units():
-            try:
-                obj = match.compile_text(group[0], text, build=build)
-            except (match.CompileError, SystemExit):
-                continue
-            for c in group:
-                found = tgts[c].match_obj(obj, text)
-                if found:
-                    new[c] += fingerprint.save(c, found, "standard library %s" % label)
+        units = list(stl_units())
+        # Compiles are ~0.3s each and serial here; run them concurrently and keep
+        # matching/saving serial (the fingerprint index is shared state).
+        with ThreadPoolExecutor(max_workers=jobs) as pool:
+            futures = {pool.submit(_compile_unit, group[0], text, build): (label, text)
+                       for label, text in units}
+            for future in as_completed(futures):
+                label, text = futures[future]
+                try:
+                    obj = future.result()
+                except (match.CompileError, SystemExit):
+                    continue
+                for c in group:
+                    found = tgts[c].match_obj(obj, text)
+                    if found:
+                        new[c] += fingerprint.save(c, found, "standard library %s" % label)
     log("stl: new matches %s" % new)
     return new

@@ -507,6 +507,123 @@ def test_model_pricing_is_exact_and_usable_for_caps():
         assert not providers.has_pricing("deepseek:other")
 
 
+def test_case_path_resolves_windows_authored_names(tmp_path):
+    from roc import libs
+    (tmp_path / "Network" / "raknet30" / "Source").mkdir(parents=True)
+    resolved = libs._case_path(tmp_path / "Network" / "RakNet30" / "Source")
+    assert resolved == tmp_path / "Network" / "raknet30" / "Source"
+    assert libs._case_path(tmp_path / "does-not-exist") == tmp_path / "does-not-exist"
+
+
+def test_lib_compile_variants_stops_at_first_failure():
+    from roc import libs, match
+    recipe = {"grid": ["/O2", "/Ox", "/O1"], "langs": ["c"]}
+    calls = []
+
+    def fake_compile(client, src, flags=None, build=None):
+        calls.append(flags)
+        if flags == "/Ox":
+            raise match.CompileError("nope")
+        return b"obj"
+
+    with patch("roc.match.compile_text", side_effect=fake_compile):
+        out = libs._compile_variants("2009-06", "zlib-1.2.3", "f.c", "c", 30729, recipe)
+    assert calls == ["/O2", "/Ox"], "must stop at the first flag that fails"
+    assert len(out) == 1
+
+
+def test_strip_reasoning_drops_think_blocks():
+    from roc import providers
+    open_tag, close_tag = "<" + "thinking>", "</" + "thinking>"
+    reply = open_tag + "we reason" + close_tag + "```cpp\nint f(){}\n```"
+    assert providers.strip_reasoning(reply).startswith("```cpp")
+    assert providers.strip_reasoning("int f(){}") == "int f(){}"
+
+
+def test_missing_local_library_is_a_compile_error():
+    """A propagated source may cite a local-only tree (rbxgs) not on this PC:
+    that must be a per-function compile failure, not a worker error."""
+    from roc import match
+    text = "// roc-lib: rbxgs Client/App/Some.cpp\nint f() { return 0; }"
+    with patch("roc.clients.load", return_value={"2009-06": {"compiler_build": 30729, "flags": "/O2"}}), \
+         patch("roc.setup.compilers", return_value={30729: "/x/cl.exe"}):
+        try:
+            match.compile_text("2009-06", text)
+            assert False, "a missing local library must not compile silently"
+        except match.CompileError as error:
+            assert "rbxgs" in str(error)
+
+
+def test_openai_chat_retries_without_unsupported_thinking():
+    from roc import providers
+    calls = []
+
+    def fake_post(url, body, headers, timeout):
+        calls.append(body)
+        if "thinking" in body:
+            raise providers.ProviderError("provider_error", "HTTP 400", 400)
+        return {"choices": [{"message": {"content": "ok"}, "finish_reason": "stop"}],
+                "usage": {"prompt_tokens": 1, "completion_tokens": 1}}, {}
+
+    with patch.dict(os.environ, {"DEEPSEEK_API_KEY": "x"}), \
+         patch("roc.providers.NO_THINKING", set()), \
+         patch("roc.providers._post", side_effect=fake_post):
+        out = providers.generate("deepseek:deepseek-flash", "p",
+                                 options={"allow_cloud": True, "thinking": "disabled", "max_tokens": 16})
+        assert out.text == "ok"
+        assert len(calls) == 2, "the 400 must be retried once"
+        assert "thinking" not in calls[1], "the unsupported field must be dropped"
+        assert calls[1].get("reasoning_effort") == "low"
+        # The provider is remembered: the next call skips the guaranteed 400.
+        calls.clear()
+        providers.generate("deepseek:deepseek-flash", "p",
+                           options={"allow_cloud": True, "thinking": "disabled", "max_tokens": 16})
+        assert len(calls) == 1 and "thinking" not in calls[0]
+        assert calls[0].get("reasoning_effort") == "low"
+
+
+def test_openai_chat_does_not_blame_unrelated_400s():
+    from roc import providers
+
+    def always_400(url, body, headers, timeout):
+        raise providers.ProviderError("provider_error", "HTTP 400", 400)
+
+    with patch.dict(os.environ, {"DEEPSEEK_API_KEY": "x"}), \
+         patch("roc.providers.NO_THINKING", set()), \
+         patch("roc.providers._post", side_effect=always_400):
+        try:
+            providers.generate("deepseek:deepseek-flash", "p",
+                               options={"allow_cloud": True, "thinking": "disabled", "max_tokens": 16})
+            assert False, "a 400 must surface"
+        except providers.ProviderError:
+            pass
+        assert not providers.NO_THINKING, "only a successful knob-free retry proves the cause"
+
+
+def test_provider_post_sends_a_user_agent():
+    """Some OpenAI-compatible gateways reject the default Python-urllib UA (Cloudflare 1010)."""
+    from roc import providers
+    captured = {}
+
+    class Response:
+        headers = {}
+        def read(self):
+            return b"{}"
+        def __enter__(self):
+            return self
+        def __exit__(self, *exc):
+            return False
+
+    def fake_urlopen(req, timeout=None):
+        captured["ua"] = req.get_header("User-agent")
+        return Response()
+
+    with patch("roc.providers.urllib.request.urlopen", side_effect=fake_urlopen):
+        providers._post("https://example.com/v1/chat/completions", {"x": 1},
+                        {"Content-Type": "application/json"}, 5)
+    assert captured["ua"] == providers.USER_AGENT
+
+
 def test_native_cloud_adapters():
     from roc import providers
     names = {"OPENAI_API_KEY": "test-openai", "ANTHROPIC_API_KEY": "test-anthropic",
@@ -2021,14 +2138,24 @@ def test_base_padding_variant_uses_decoded_field_delta():
 
 
 def test_hidden_exact_sources_stay_byte_exact():
-    from roc import match
+    """Regression on local exact sources; src/ is gitignored, so a clean clone
+    has nothing to check and a pulled 9x% partial must not be asserted as exact."""
+    from roc import match, setup
+    if not setup.compilers():
+        return  # re-verifying needs the client's compiler
     for addr in ("00401880", "0041eb40", "0041faa0", "0042d840", "0044a1d0",
                  "00460120", "00460190", "00472e90", "004aca90", "004c1b50",
                  "00530880", "00549000", "00580f90", "00580fb0", "0059c7d0",
                  "005f9ff0", "005fc710", "00608490", "006274b0", "0063dcb0",
                  "0064ec50", "0065eb30", "00662440", "006692b0", "00690a90",
                  "004b8aa0", "004d06b0", "006a79f0", "006c79f0", "00775fd0", "004aa3f0"):
-        source = Path("src/2007-08/%s.cpp" % addr).read_text()
+        path = Path("src/2007-08/%s.cpp" % addr)
+        if not path.exists():
+            continue
+        source = path.read_text()
+        first = source.splitlines()[0] if source else ""
+        if first.startswith("// from server:") and "100%" not in first:
+            continue  # a pulled partial, not an exact source
         assert match.check_text("2007-08", addr, source)[0] == 100
 
 
