@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-10 11:41 UTC",
+ "updated": "2026-10-10 12:42 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -331,12 +331,12 @@
    "started": true,
    "functions": 39811,
    "matched": 10791,
-   "partial": 13873,
+   "partial": 13879,
    "bytes": 6234528,
    "matched_bytes": 576629,
    "source_bytes": 442870,
    "mined_bytes": 133759,
-   "partial_bytes": 2382743,
+   "partial_bytes": 2383331,
    "data_bytes": 3396596,
    "leaderboard": [
     {
@@ -356,9 +356,9 @@
     {
      "user": "Intel",
      "matched": 77,
-     "points": 12042,
-     "submissions": 200,
-     "last": 1791628534.4033465
+     "points": 12373,
+     "submissions": 209,
+     "last": 1791636122.097402
     },
     {
      "user": "tester",
@@ -398,9 +398,9 @@
   {
    "user": "Intel",
    "matched": 83,
-   "points": 12473,
-   "submissions": 215,
-   "last": 1791628534.4033465
+   "points": 12804,
+   "submissions": 224,
+   "last": 1791636122.097402
   },
   {
    "user": "atomic.potato",
