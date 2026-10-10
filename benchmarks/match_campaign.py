@@ -274,7 +274,7 @@ def configuration(campaign):
         print("configuration", client, group["unit"], len(group["rows"]), "targets", flush=True)
 
 
-def templates(campaign):
+def templates(campaign, limit=20):
     from roc import fingerprint, template_recovery
     manifest = campaign.root / "templates-manifest.json"
     if not manifest.exists():
@@ -296,13 +296,28 @@ def templates(campaign):
         for row in supported.values():
             by_kind[row["decoded"].split("<", 1)[0]].append(row)
         chosen = []
-        while by_kind and len(chosen) < 20:
+        while by_kind and len(chosen) < limit:
             for kind in list(by_kind):
                 chosen.append(by_kind[kind].pop(0))
                 if not by_kind[kind]:
                     del by_kind[kind]
-                if len(chosen) == 20:
+                if len(chosen) == limit:
                     break
+        manifest.write_text(json.dumps(chosen, indent=1), encoding="utf-8")
+    else:
+        chosen = json.loads(manifest.read_text(encoding="utf-8"))
+        selected = {row["decoded"] for row in chosen}
+        for row in json.loads((campaign.root / "templates-inventory.json").read_text(encoding="utf-8")):
+            if len(chosen) >= limit:
+                break
+            if row.get("client") not in campaign.info["clients"] or row.get("decoded") in selected:
+                continue
+            try:
+                source = template_recovery.instantiation(row["decoded"])
+            except (ValueError, KeyError):
+                continue
+            chosen.append({**row, "source": source, "instantiation_sha256": digest(source)})
+            selected.add(row["decoded"])
         manifest.write_text(json.dumps(chosen, indent=1), encoding="utf-8")
     snapshots = campaign.snapshot()
     targets = {}
@@ -350,6 +365,7 @@ def main():
     parser.add_argument("stage", choices=["harvest", "snapshot", "propagate", "configuration", "templates"])
     parser.add_argument("--output", default="work/match-campaign-20261010")
     parser.add_argument("--server")
+    parser.add_argument("--template-limit", type=int, default=20)
     args = parser.parse_args()
     campaign = Campaign(args.output, args.server)
     if args.stage == "harvest":
@@ -359,7 +375,7 @@ def main():
     elif args.stage == "configuration":
         configuration(campaign)
     elif args.stage == "templates":
-        templates(campaign)
+        templates(campaign, args.template_limit)
     else:
         print({c: len(rows) for c, rows in campaign.snapshot().items()})
 
