@@ -142,3 +142,8 @@ results under shared MFC; one improved 90→91. Added recipe and test coverage.
 2011 shard: `CXTCaptionButton` / `XTButton.cpp` yielded 4/8 exact gains and
 4 unchanged under shared MFC. No regressions. Benefit extends to 2011, but is
 unit-specific; retain per-source score gating.
+
+2012 scale shard: `CXTPPropExchangeXMLNode` from XTP 15.2.1 (`xtp-15.2.1-shared-mfc`,
+`/O2 /GS- /MD`, compiler 30729). All 136 functions in this unit became exact (100%).
+Overall 2012-06 client: 10,711 exact functions under shared-MFC config. Benefit
+extends to 2012; shared-MFC effect is strong for XTP 15.2.1 on VS2008 SP1.
