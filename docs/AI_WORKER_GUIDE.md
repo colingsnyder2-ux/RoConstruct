@@ -1,6 +1,7 @@
 # AI worker handoff
 
 Read this first, then [experiment summary](EXPERIMENTS.md). Updated 2026-10-10.
+Next work and validation gaps: [match-maximization audit](NEXT_EXPERIMENTS.md).
 This is a Python/x86 matching project; use repository instructions for edits.
 
 ## Goal and acceptance

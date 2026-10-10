@@ -4,6 +4,7 @@ Consolidated 2026-10-10. Historical measurements below are snapshots, not live
 progress. Full reports/plans remain in [archive index](archive/README.md);
 address-level attempts remain in [investigation log](investigations/matching-findings.md).
 Read [worker guide](AI_WORKER_GUIDE.md) for current behavior and acceptance rules.
+For evidence gaps and prioritized expansion, read [match-maximization audit](NEXT_EXPERIMENTS.md).
 
 ## What worked, with limits
 
