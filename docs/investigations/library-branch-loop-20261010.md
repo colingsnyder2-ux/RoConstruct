@@ -29,6 +29,7 @@ partials or change global client settings. Count unique client/address pairs.
 | Size/speed optimization and string pooling on combined winners | 12 cohorts, 0 exacts | Park |
 | Expand proven builds to other installed files with unresolved named-class evidence | 12 cohorts, 0 exacts | Park; only three file families sampled, so coverage remains weak |
 | Broader installed-file pilot | 12 filenames × 7 clients, 1 new exact | Park; 21 compile-error cohorts preserved |
+| Late verified spillover source transfer | 12 named-client cohorts, 0 exacts | Park; late forms remain source/client specific |
 
 The important discovery is a **per-source/per-target** interaction between `/GS`
 and `/EHsc`. Neither a blanket configuration change nor a universal ABI rule is
@@ -117,6 +118,10 @@ decision run. Tests verify twelve-file diversity and seven-client coverage.
 Completed: 84 cohorts yielded one new server exact. Three local matches were
 submitted, but only one response reported a verified improvement, so count one.
 Twenty-one compile-error cohorts are unresolved, not evidence of failed matching.
+
+`late-transfer` tried verified late-spillover and combined-spillover sources on
+unresolved named targets across clients. All twelve cohorts compiled and yielded
+zero new server exacts. Preserve this negative result to prevent blind repeats.
 
 After the combined-transfer sweep, this branch ledger held 1,875 unique server
 exacts. The frame/inlining pilot added one; subsequent late-spillover gains are
