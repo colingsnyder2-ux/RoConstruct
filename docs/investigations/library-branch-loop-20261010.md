@@ -127,6 +127,15 @@ zero new server exacts. Preserve this negative result to prevent blind repeats.
 to all seven allowed clients (2009-12 excluded). It produced zero additional
 exact matches, so the source-specific codegen win remains parked.
 
+The no-cost `small-code` pilot tested twelve combined-build cohorts against
+functions below the normal eight-byte filter. It produced zero exacts and is
+parked; tiny functions are not a productive branch under these proven sources.
+
+DeepSeek v3 was a separate diversified-family pilot. It selected a different
+unresolved family member than the prior representative, ran twelve families,
+and produced zero exacts. Outputs were retained under `ai-trials-v3`; no
+family is scaled without a verified server improvement.
+
 After the combined-transfer sweep, this branch ledger held 1,875 unique server
 exacts. The frame/inlining pilot added one; subsequent late-spillover gains are
 recorded separately. These are campaign gains, not a global completion percentage.
