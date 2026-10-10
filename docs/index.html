@@ -408,7 +408,7 @@ function parseFilter(text, units) {
 
 function color(score, original, harness) {
   if (score === 100 && !original && !harness) return "#3a3d45";
-  if (original) return "#58a6ff";
+  if (score === 100 && original) return "#58a6ff";
   if (!score) return "#3a3d45";
   if (score === 100) return "#3fb950";
   const t = score / 100;  // partial: grey -> dark green
