@@ -709,6 +709,18 @@ def alignment_evidence(client, addr, src, flags=None):
         return None
 
 
+def select_exact_data(client, addr, code, obj, candidates):
+    """Choose a code-exact symbol whose referenced data also matches."""
+    first = None
+    for candidate in candidates:
+        spans, bad = data_check(client, addr, code, coff_data_refs(obj, candidate[0]))
+        if first is None:
+            first = candidate, spans, bad
+        if not bad:
+            return candidate, spans, bad
+    return first
+
+
 def check_text(client, addr, text, flags=None, include_diagnosis=False):
     """(score, symbol, asm diff, data spans) for the best function in text vs the target.
     A byte-identical function whose own strings/constants differ from the exe scores 99."""
@@ -724,12 +736,21 @@ def check_text(client, addr, text, flags=None, include_diagnosis=False):
     best = max((f for value, f in scored if value == highest),
                key=lambda f: rank_candidate(code, relocs, f[1], f[2]))
     value, d, spans = score(code, relocs, best[1], best[2]), diff(code, relocs, best[1], best[2]), []
+    bad = []
     if value == 100:
-        spans, bad = data_check(client, addr, code, coff_data_refs(obj, best[0]))
+        exacts = [best] + [f for score_value, f in scored if score_value == 100 and f is not best]
+        best, spans, bad = select_exact_data(client, addr, code, obj, exacts)
+        d = diff(code, relocs, best[1], best[2])
         if bad:
             value, d = 99, "Code matches, but data your source defines does not:\n" + "\n".join(bad)
+    from roc import activity
+    activity.candidate(text, value)
     result = (value, best[0], d, spans)
     diagnosis = diagnose(code, relocs, best[1], best[2]) if include_diagnosis and value < 100 else {}
+    if include_diagnosis and bad:
+        diagnosis.update(exact=False, code_exact=True, mismatch_class="referenced-data mismatch",
+                         data_mismatches=bad, classifications=[{
+                             "category": "referenced-data mismatch", "confidence": 1.0, "evidence": bad}])
     return result + (diagnosis,) if include_diagnosis else result
 
 

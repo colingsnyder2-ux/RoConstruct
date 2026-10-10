@@ -58,13 +58,14 @@ def check_many_text(client, addrs, source):
         if not candidates:
             results.append((addr, 0, []))
             continue
-        best = next((row for row in candidates if match.exact_match(code, relocs, row[1], row[2])), None)
+        exacts = [row for row in candidates if match.exact_match(code, relocs, row[1], row[2])]
+        best = exacts[0] if exacts else None
         if best is None:
             best = max(candidates, key=lambda row: match.score(code, relocs, row[1], row[2]))
         score = match.score(code, relocs, best[1], best[2])
         spans = []
         if score == 100:
-            spans, bad = match.data_check(client, addr, code, match.coff_data_refs(obj, best[0]))
+            best, spans, bad = match.select_exact_data(client, addr, code, obj, exacts or [best])
             if bad:
                 score, spans = 99, []
         results.append((addr, score, spans))

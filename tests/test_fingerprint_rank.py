@@ -5,10 +5,27 @@ from pathlib import Path
 from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from roc import match
+from roc import match, server
 
 
 class FingerprintRankTests(unittest.TestCase):
+    def test_exact_tie_uses_matching_data_single_and_batch(self):
+        code = b'\x90\xc3'
+        funcs = [('wrong', code, []), ('right', code, [])]
+        for batch in (False, True):
+            with patch.object(match, 'target', return_value=(code, [], {})), \
+                 patch.object(match, 'compile_text', return_value=b'obj'), \
+                 patch.object(match, 'coff_functions', return_value=funcs), \
+                 patch.object(match, 'coff_data_refs', side_effect=lambda obj, name: name), \
+                 patch.object(match, 'data_check', side_effect=[([], ['wrong data']), ([(123, 4)], [])]):
+                if batch:
+                    self.assertEqual(server.check_many_text('C', ['00401000'], 'source'),
+                                     [('00401000', 100, [(123, 4)])])
+                else:
+                    result = match.check_text('C', '00401000', 'source', include_diagnosis=True)
+                    self.assertEqual(result[:2], (100, 'right'))
+                    self.assertEqual(result[3:], ([(123, 4)], {}))
+
     def check(self, code, funcs, bad=(), relocs=(), diagnosis=False):
         with patch.object(match, 'target', return_value=(code, list(relocs), {})), \
              patch.object(match, 'compile_text', return_value=b'obj'), \
