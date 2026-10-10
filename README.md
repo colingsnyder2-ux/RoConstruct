@@ -375,10 +375,10 @@ or set `ROCONSTRUCT_DISCORD_WEBHOOK`; notifications run asynchronously and do no
 Worker terminals use color when interactive and show each generated source preview live. Set
 `ROCONSTRUCT_LIVE_CODE=0` to hide source previews; set `NO_COLOR=1` for plain logs.
 
-Speed checklist: `docs/worker-speed-checklist.md`.
-
-Full implementation checklist: `docs/worker-checklist.md`.
-Line-by-line source-plan audit: `docs/worker-full-plan-checklist.md`.
+AI contributors: start with [worker guide](docs/AI_WORKER_GUIDE.md) and
+[experiment summary](docs/EXPERIMENTS.md). Original reports and retired plans
+remain in [research archive](docs/archive/README.md); individual repair attempts
+remain in [investigation log](docs/investigations/matching-findings.md).
 </details>
 
 <details>

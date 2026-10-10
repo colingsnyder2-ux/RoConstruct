@@ -1,0 +1,181 @@
+{
+  "snapshot_date": "2026-10-10",
+  "local_directory": "work/investigation",
+  "files": [
+    {
+      "file": "build_cache.py",
+      "bytes": 228,
+      "sha256": "de18fdb394c5eaa3a968c92b8998a423b3b1d7eeac1f6ee3889846db9686413c"
+    },
+    {
+      "file": "check_func.py",
+      "bytes": 529,
+      "sha256": "d3c44bb8a7ebff3f76742e9bde6d324cc6a1fed672d95a4a39111d0868fcbf58"
+    },
+    {
+      "file": "check_metrics.py",
+      "bytes": 540,
+      "sha256": "1bf6c204b0feaafd6cebf8c8eceb0f735b5128a6fb2992698c815f664c9897bc"
+    },
+    {
+      "file": "check_metrics2.py",
+      "bytes": 1181,
+      "sha256": "1f2aeccf4a6d62d0cc4365e6c70c23fd6aaac564740ea3136b2782c39bba8ccd"
+    },
+    {
+      "file": "check_procs.py",
+      "bytes": 722,
+      "sha256": "9d064235015b0893228c14f3e8a7efc142b560c97c1e9ed20711584604643d2f"
+    },
+    {
+      "file": "check_raknet_batches.py",
+      "bytes": 1009,
+      "sha256": "a567ef5f5f7c73e5c727a4f3c0135ea9c8118a012f5d5df9626f0c2cb899684f"
+    },
+    {
+      "file": "check_raknet_partials.py",
+      "bytes": 982,
+      "sha256": "fa76d05aef70bbe434e57d5996bd92c704ee0afb80fe1d618b0ab3cced2074d0"
+    },
+    {
+      "file": "check_rakpeer.py",
+      "bytes": 558,
+      "sha256": "a40b9b31188af38e1e2c0c0f169c745d39a45c9787b5076551b03440b4788bf0"
+    },
+    {
+      "file": "check_rakpeer_90.py",
+      "bytes": 367,
+      "sha256": "338e7d53f5357c40c150c8f9219a81b0735c8161591e5c3ad14c0d5c87946190"
+    },
+    {
+      "file": "check_rakpeer_90_src.py",
+      "bytes": 453,
+      "sha256": "a76af14414bdcf7a8d2151b6e95389c3f42a3cd638c99486fedc3c3332dab585"
+    },
+    {
+      "file": "check_rakpeer_evidence.py",
+      "bytes": 613,
+      "sha256": "adea00eee836983687ea950ecdba9f33a616b3cc2e7c31f629fe4491f82fba47"
+    },
+    {
+      "file": "check_rakpeer_summary.py",
+      "bytes": 606,
+      "sha256": "05f62aa5a3cdd79e150140b2d04b1cdfbb408d6b2e6e4ccbb16fcac248dde4df"
+    },
+    {
+      "file": "check_scores.py",
+      "bytes": 210,
+      "sha256": "1b237a0f4c00a9969e2653a4472a58c3c1fcb76b791a3a5267cb66129f163fb0"
+    },
+    {
+      "file": "check_siblings.py",
+      "bytes": 895,
+      "sha256": "725943221bfaa3d112841c91bbcc00200d2fab76fb62960beaf4152f11ce11f2"
+    },
+    {
+      "file": "check_stale_server.py",
+      "bytes": 2858,
+      "sha256": "51dbf7714fbc97438ddc8659eeb19ac7969c9395f1882b40255039089ebd5f1a"
+    },
+    {
+      "file": "clang_output.txt",
+      "bytes": 747,
+      "sha256": "6ec981dbde0aa92b53fcc91b8ff20d144642f3c855451548a4f7b700acc729b6"
+    },
+    {
+      "file": "debug_cache.py",
+      "bytes": 961,
+      "sha256": "10baddecc51157a1ecc9bfd250eed516069bb2fb12c3ff3f4a82cbda5e26b66a"
+    },
+    {
+      "file": "debug_cache2.py",
+      "bytes": 657,
+      "sha256": "c0312ab99251b37ffffb6189b65f6d8e42e1ded9d38721dc3724688c4b4777b4"
+    },
+    {
+      "file": "final_status.py",
+      "bytes": 868,
+      "sha256": "d8e70f2fd221d1822161f47081a3b39988b54fca144bb01884c50f3fc4e0611a"
+    },
+    {
+      "file": "find_rakpeer.py",
+      "bytes": 248,
+      "sha256": "d64bbaf29bd033ec1cbdfa2214837552c14f4d0901f19f934c1077a5c05b7b32"
+    },
+    {
+      "file": "investigate.py",
+      "bytes": 936,
+      "sha256": "4aea4aa4c3615aa354c159d349bcb17a74d1bfc4705f95a44bddda1f1be6c4c9"
+    },
+    {
+      "file": "investigate2.py",
+      "bytes": 463,
+      "sha256": "eb2fad9cf14417ab6dda3b3f1c332de5f33b9dae2473f11d70679cc9367b8d7e"
+    },
+    {
+      "file": "plateaus.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "template_analysis_2007-08.json",
+      "bytes": 92923,
+      "sha256": "393bf3da0996ed7469ee2d82d4e5095b6b08bffb2fcdf6bf61098326cfa8396d"
+    },
+    {
+      "file": "template_args_test.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "file": "test_all_raknet_recipes.py",
+      "bytes": 2312,
+      "sha256": "567b4037a82370fa0dcf8d552a17cd97b3acce726e8d0da795a54cf980972346"
+    },
+    {
+      "file": "test_all_rakpeer.py",
+      "bytes": 1744,
+      "sha256": "87cddbc8b1dc936d179fcf22cf9d3dad7df800b3eff489754c63ee36ec021d97"
+    },
+    {
+      "file": "test_all_rakpeer_all_clients.py",
+      "bytes": 2399,
+      "sha256": "e371dfc6b3bec05fbfa2a9a44d04c68b37b4e7583a66b48e5bc06a58c76ed9f6"
+    },
+    {
+      "file": "test_all_rakpeer_full.py",
+      "bytes": 2011,
+      "sha256": "983d4b3a732a0f90103a21b4de027d333fc3fc9a530f788c703272af124d448e"
+    },
+    {
+      "file": "test_ltcg.py",
+      "bytes": 5475,
+      "sha256": "3fd0fd99f1e4516f6b94bc9295fe4bd7c5d37a94f29b27197c93c5e87dd78d79"
+    },
+    {
+      "file": "test_rakpeer_compile.py",
+      "bytes": 1187,
+      "sha256": "34b114784e42e246401d883c0035041b0d28080c2ddfa7faea8ed92767d6b3e9"
+    },
+    {
+      "file": "test_rakpeer_compile2.py",
+      "bytes": 1160,
+      "sha256": "9ca101efd189f1a09650002e047b7ae0c5eba0eadfd313a1d66f960fc1ffd09c"
+    },
+    {
+      "file": "test_rakpeer_match.py",
+      "bytes": 501,
+      "sha256": "c35129a90c2b2ff0be2bbdfa3f02c4572a2ccfac5804c7bbb69cabded9ebafab"
+    },
+    {
+      "file": "test_real_neighborhoods.py",
+      "bytes": 5680,
+      "sha256": "b8565f34ac17f05359057524f9202e221487117e456229ff76fff903833f863b"
+    },
+    {
+      "file": "test_real_pairs.py",
+      "bytes": 1586,
+      "sha256": "d503a947bcff00791cf6fd6c1604068ad94578f70a7d4554e49e109a34b46cdb"
+    }
+  ]
+}

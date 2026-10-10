@@ -811,7 +811,7 @@ def allocation_result_variants(src, diagnosis):
 
 
 # --- new transforms (2026-10-09 research batch) ---
-# None of these categories appear anywhere in docs/matching-findings.md as of
+# None of these categories appear anywhere in docs/investigations/matching-findings.md as of
 # this batch, so every one of them is genuinely new search space rather than a
 # re-run of an exhausted arm. All are bounded text transforms and every one is
 # compile-tested by `improve`, so a bad guess costs a compile and nothing else.
@@ -912,7 +912,7 @@ def bool_return_variants(src):
     The target binary's instruction decides the source form: `sete`/`setne`
     against a compared value means the source compared against zero, while a
     raw `test`/`setne` on the returned object means it did not.
-    docs/matching-findings.md line 49 noted `sete al` on 00675890 but never
+    docs/investigations/matching-findings.md line 49 noted `sete al` on 00675890 but never
     tested the explicit comparison form, only parameter types.
     """
     out = []
@@ -966,7 +966,7 @@ def guard_invert_variants(src):
     """`if (c) { return A; } return B;` -> `if (!c) return B; return A;`.
 
     Early-exit vs. guarded-body is the same control flow with the fall-through
-    and branch edges swapped. docs/matching-findings.md line 25 found the
+    and branch edges swapped. docs/investigations/matching-findings.md line 25 found the
     inverse form fixed 00449820, but the transform was only ever applied by
     hand to that one function; it has never been a general mutator.
     """

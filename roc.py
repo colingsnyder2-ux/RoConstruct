@@ -588,7 +588,7 @@ def cmd_repair(a):
         paths = paths[a.offset:]
     if a.limit:
         paths = paths[:a.limit]
-    log_path = root / "docs" / "matching-findings.md"
+    log_path = root / "docs" / "investigations" / "matching-findings.md"
     scores_path = root / "work" / a.name / "scores.json"
     saved_scores = json.loads(scores_path.read_text()) if scores_path.exists() else {}
     scores_changed = False
