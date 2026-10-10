@@ -252,3 +252,32 @@ improvements for score=0 families require family-based source transfer
 4. Test on 20 plateau candidates from Experiment 5 (48-byte families)
 
 **No new exact matches yet** — this is a design/feasibility pilot. Implementation requires C++ LibTooling tool for production use.
+
+## Experiment 9: Template specialization recovery (pilot)
+
+**Goal**: Infer template arguments, element sizes, allocator policies and iterator settings from available symbols/type evidence. Explicitly instantiate historical Boost/STL headers. Pilot: twenty families, ≤eight supported type/policy choices each. Exclude compiler-generated artifacts from gain counts.
+
+**Scope**: Target 20 unresolved Boost/STL/smart-pointer/container methods from plateau families (Experiment 5). Recover decorated COFF names, RTTI/type relationships, element sizes, allocator policies and iterator configuration where evidence exists. Generate explicit instantiations against correct historical headers (Boost 1.34-1.47, STL). Score every relevant emitted specialization and validate held-out siblings. Separate user methods from compiler-generated thunks/destructors.
+
+**Tested**: 
+- Ran existing `templates-boost-1_34_1`, `1_40_0`, `1_44_0`, `1_47_0` recipes against 2007-08 and 2008-06 clients. **0 new matches**.
+- Existing recipes instantiate: `std::vector/list/deque/map/set` with element types `int/float/double/string/boost::shared_ptr<T>/pod12/pod16/pod48` + `boost::function`/`boost::signal` signatures.
+
+**Findings**:
+1. **Recipes miss client's template arguments**: Client uses `boost::bad_any_cast`, `boost::any::holder`, `boost::signals::slot_base::sp_counted_impl_p`, `std::basic_string::holder`, `std::D::DU?$char_traits::V?$basic_string::?$holder` — none covered by current recipes.
+2. **Boost 1.34 `bad_any_cast`**: Simple class inheriting `std::bad_cast` with `what()` method. Template instantiations needed for `any_cast<ValueType>` with specific `ValueType` used by client.
+3. **Template argument recovery**: Clang `TemplateArgument` API (Experiment 6) can extract template arguments from RTTI/decorated names like `boost::signals::detail::slot_base::Udata_t::?$sp_counted_impl_p`.
+4. **Plateau families match template patterns**: 48-byte/55-byte families with identical CFG differing only in immediate constants (template type sizes, vtable pointers) match template instantiation patterns.
+
+**Blockers**:
+- Current recipes don't cover client's template arguments (Boost any_cast, signals, any::holder, std::string::holder, std::allocator policies)
+- Template argument deduction needs Clang `TemplateArgument` API (C++ LibTooling, Experiment 6)
+- Need to generate explicit instantiations for client-specific template arguments
+
+**Next steps**:
+1. Use Clang `TemplateArgument` API (C++ LibTooling) to extract template arguments from decorated names/RTTI of plateau functions
+2. Generate explicit instantiation recipes for client-specific template arguments
+3. Test against 2007-08/2008-06 plateau families (367 template-like partials in 2007-08)
+4. Target families: `boost::bad_any_cast`, `boost::any::holder`, `boost::signals`, `std::basic_string::holder`, `std::allocator`, `boost::signals::detail::slot_base`
+
+**No new exact matches from existing recipes** — requires generating client-specific template instantiations.
