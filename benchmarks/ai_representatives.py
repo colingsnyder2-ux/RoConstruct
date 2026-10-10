@@ -9,7 +9,7 @@ from roc import clients, draft, match, providers
 
 class PersistentBudget(providers.CloudBudget):
     def __init__(self, path):
-        super().__init__(requests=60, cost=1.80)
+        super().__init__(requests=200, cost=1.80)
         self.path = path
         if path.exists():
             saved = json.loads(path.read_text(encoding="utf-8"))
@@ -55,7 +55,7 @@ def run(limit):
                 exact_families.add(family)
             else:
                 groups[family].append((client, addr))
-    manifest = campaign.root / "ai-representatives-manifest.json"
+    manifest = campaign.root / "ai-representatives-v2-manifest.json"
     if not manifest.exists():
         planned = []
         for family, members in sorted(groups.items(), key=lambda item: (-len(item[1]), item[0])):
@@ -64,7 +64,7 @@ def run(limit):
             choices = [(client, addr) for client, addr in members
                        if 32 <= match._functions(client)[addr]["size"] <= 512]
             if choices:
-                client, addr = choices[0]
+                client, addr = max(choices, key=lambda item: snapshots[item[0]].get(item[1], {}).get("score", 0))
                 planned.append(dict(client=client, addr=addr, family=family, members=members))
         manifest.write_text(json.dumps(planned, indent=1), encoding="utf-8")
     done = {r["family"] for r in campaign.previous("ai-representatives")}
@@ -109,7 +109,7 @@ def run(limit):
         record["budget"] = dict(cost=budget.cost, requests=budget.requests)
         campaign.record("ai-representatives", record)
         print("AI FAMILY", client, addr, record.get("score"), "cost", budget.cost, flush=True)
-        if budget.requests >= 60 or budget.cost >= 1.80:
+        if budget.requests >= 200 or budget.cost >= 1.80:
             break
 
 

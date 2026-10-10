@@ -35,10 +35,11 @@ python -m benchmarks.match_campaign propagate --donor-limit 0 --server http://12
 
 ## Completed unfinished pilots
 
-AI representatives: 12 uncovered high-fanout families, two rounds each (23 actual
-requests), one new server-verified representative exact. Trials and full round
-stats retained. Peak-price usage estimate $0.0185895; persisted budget cap $1.80
-with a 60-request limit, leaving room under the user's $2 campaign cap. Reservation
+AI representatives: the initial 12-family pilot had one exact. Selective
+high-score/high-fanout expansion reached 60 family records and 99 unique new
+server-verified exact addresses including sibling propagation. Trials and full
+round stats retained. Peak-price usage estimate $0.1219197; persisted budget cap
+$1.80 with a 200-request limit, leaving room under the user's $2 campaign cap. Reservation
 is written before each request; crashes retain reservations and missing usage
 does not refund. Official DeepSeek pricing checked on 2026-10-10:
 https://api-docs.deepseek.com/quick_start/pricing/?push_animated=1&theme=light&webview_progress_bar=1
