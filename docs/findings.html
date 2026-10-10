@@ -41,17 +41,17 @@ footer { border-top:1px solid var(--line); margin-top:64px; padding:28px 0; } fo
   <main>
     <section class="hero">
       <h1>Findings</h1>
-      <p class="lede">Recovered function bodies from old Roblox clients. This page explains what the files are, why they look unusual, and how they become a usable codebase.</p>
+      <p class="lede">All available recovered source from old Roblox clients, including partial and unfinished functions. Browse individual sources on the Clients page or download the full collection below.</p>
     </section>
 
     <section class="card download">
-      <div><strong>Download latest findings</strong><br><span class="muted">Separate repository. Main RoConstruct download stays small.</span></div>
+      <div><strong>Download all available sources</strong><br><span class="muted">Includes exact matches and partial sources. Updated with each findings publication.</span></div>
       <a class="btn" href="https://github.com/colingsnyder2-ux/RoConstruct-findings/releases/download/findings-latest/roconstruct-findings-src.zip">Download findings ZIP</a>
     </section>
 
     <h2>What these files are</h2>
     <div class="card">
-      <p>Each <code>.cpp</code> file is one function recovered by matching compiled machine code from a client against source we can rebuild. It is evidence-backed source, not a normal hand-organized project tree yet.</p>
+      <p>Each <code>.cpp</code> file is a recovered function or work-in-progress candidate. A 100% score means a byte-identical match; partial sources still differ from the original binary and may be incomplete or incorrect. Available sources are published regardless of score.</p>
       <p>Files live under a client folder such as <code>src/2008-06/</code>. Comments at the top preserve compiler version, flags, library, and match provenance so results can be checked later.</p>
     </div>
 

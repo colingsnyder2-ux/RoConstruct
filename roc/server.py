@@ -721,6 +721,7 @@ def publish_once(store, public_url, log=print):
 def _publish_once(store, public_url, log=print):
     """Publish implementation, protected by publish_once's cross-process lock."""
     from roc import progress, setup
+    sync_findings(store)
     setup.refresh_path()
     git_exe = setup.find_exe("git")
     if not git_exe:
@@ -735,6 +736,26 @@ def _publish_once(store, public_url, log=print):
     git("commit", "-m", "Update progress")
     push = git("push", "origin", "HEAD")
     log("Site published." if push.returncode == 0 else "Site push failed: %s" % push.stderr.strip()[-300:])
+
+
+def sync_findings(store):
+    """Save every stored source, including partials, before building the site."""
+    for name in store.scores():
+        scores_file = ROOT / "work" / name / "scores.json"
+        scores = json.loads(scores_file.read_text()) if scores_file.exists() else {}
+        for row in store.sources(name, min_score=0):
+            path = ROOT / "src" / name / (row["addr"] + ".cpp")
+            if path.exists() and scores.get(row["addr"], 0) > row["score"]:
+                continue
+            text = "// from server: %d%% by %s\n%s" % (row["score"], row["user"], row["source"])
+            if path.exists() and (path.read_text(errors="replace") == text or
+                                  scores.get(row["addr"]) == row["score"]):
+                continue
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(text)
+            scores[row["addr"]] = row["score"]
+        scores_file.parent.mkdir(parents=True, exist_ok=True)
+        scores_file.write_text(json.dumps(scores, indent=0, sort_keys=True))
 
 
 def publish_findings(git_exe, log=print):

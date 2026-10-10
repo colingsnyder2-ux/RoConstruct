@@ -218,7 +218,7 @@ const libraryUrl = meta => meta && meta[0].startsWith("libpng-")
   ? `https://github.com/pnggroup/libpng/blob/v${meta[0].slice(7)}/${meta[1]}` : "";
 const sourceLinks = (client, f, short = false) => {
   const library = libraryUrl(f[5]);
-  const harness = f[4] ? `<a href="${sourceUrl(client, f[0])}" target="_blank" rel="noopener">${short ? "harness" : "View match harness"} ↗</a>` : "";
+  const harness = f[4] ? `<a href="${sourceUrl(client, f[0])}" target="_blank" rel="noopener">${f[2] < 100 ? (short ? "partial source" : "View partial source") : (short ? "source" : "View recovered source")} ↗</a>` : "";
   if (library) return `<a href="${library}" target="_blank" rel="noopener">${short ? "C source" : "View original C source"} ↗</a>${harness ? " · " + harness : ""}`;
   return harness || "No recovered source published yet";
 };
