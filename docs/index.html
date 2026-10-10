@@ -217,15 +217,14 @@ const sourceUrl = (client, address) => `${FINDINGS}/blob/main/src/${encodeURICom
 let sourceCatalog = {};
 const libraryUrl = meta => {
   if (!meta) return "";
-  if (meta[0].startsWith("libpng-")) return `https://github.com/pnggroup/libpng/blob/v${meta[0].slice(7)}/${meta[1]}`;
   const origin = sourceCatalog[meta[0]];
-  return origin ? origin.url + (origin.kind === "file" ? meta[1].split("/").map(encodeURIComponent).join("/") : "") : "";
+  return origin?.files?.includes(meta[1]) ? origin.url + (origin.kind === "file" ? meta[1].split("/").map(encodeURIComponent).join("/") : "") : "";
 };
 const sourceLinks = (client, f, short = false) => {
-  const library = libraryUrl(f[5]);
-  const harness = f[4] ? `<a href="${sourceUrl(client, f[0])}" target="_blank" rel="noopener">${f[2] < 100 ? (short ? "stored candidate" : "View stored candidate / metadata") : f[5] ? (short ? "harness" : "View match harness") : (short ? "source" : "View recovered source")} ↗</a>` : "";
-  const archive = f[5] && sourceCatalog[f[5][0]]?.kind === "archive" && !f[5][0].startsWith("libpng-");
-  if (library) return `<a href="${esc(library)}" target="_blank" rel="noopener">${f[2] < 100 ? (archive ? (short ? "candidate archive" : "Download candidate upstream archive") : (short ? "candidate upstream" : "View candidate upstream source")) : archive ? (short ? "source archive" : "Download original source archive") : (short ? "original source" : "View original source")} ↗</a>${archive ? ` <code>${esc(f[5][1])}</code>` : ""}${harness ? " · " + harness : ""}`;
+  const library = f[2] === 100 ? libraryUrl(f[5]) : "";
+  const harness = f[4] ? `<a href="${sourceUrl(client, f[0])}" target="_blank" rel="noopener">${f[2] < 100 ? (short ? "candidate recipe" : "View candidate code / build recipe") : f[5] ? (short ? "harness" : "View match harness") : (short ? "source" : "View recovered source")} ↗</a>` : "";
+  const archive = f[5] && sourceCatalog[f[5][0]]?.kind === "archive";
+  if (library) return `<a href="${esc(library)}" target="_blank" rel="noopener">${archive ? (short ? "source archive" : "Download matched source archive") : (short ? "matched source file" : "View matched translation unit")} ↗</a>${archive ? ` <code>${esc(f[5][1])}</code>` : ""}${harness ? " · " + harness : ""}`;
   return harness || "No recovered source published yet";
 };
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
@@ -521,7 +520,7 @@ async function client(name) {
     document.getElementById("detail").innerHTML =
       `<strong>${esc(units[f[3]])}</strong><br>${hex(f[0])} • ${fmt(f[1])} bytes • ${f[2]}% matched` +
       (f[6] ? `<br>Family: <code>${esc(f[6])}</code>` : "") + `<br>` +
-      `${source}${f[5] && f[2] < 100 ? "<br>Upstream source is a candidate, not a verified match for this function. Stored files may contain metadata only. Score measures byte matching, not source availability." : ""}<br>Work on it: <code>roc claim ${esc(name)} ${hex(f[0])}</code>`;
+      `${source}${f[5] && f[2] < 100 ? "<br>No verified upstream source for this function. Library build recipes describe candidates; their file names do not establish function identity." : ""}<br>Work on it: <code>roc claim ${esc(name)} ${hex(f[0])}</code>`;
   };
   unitSel.onchange = layout;
   filter.oninput = () => { keep = parseFilter(filter.value, units); draw(); };

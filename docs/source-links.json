@@ -1,210 +1,1073 @@
 {
  "zlib-1.2.3": {
   "url": "https://zlib.net/fossils/zlib-1.2.3.tar.gz",
-  "kind": "archive"
+  "kind": "archive",
+  "files": [
+   "adler32.c",
+   "crc32.c",
+   "deflate.c",
+   "inffast.c",
+   "inflate.c",
+   "inftrees.c",
+   "trees.c",
+   "uncompr.c"
+  ]
  },
  "jpeg-6b": {
   "url": "https://www.ijg.org/files/jpegsrc.v6b.tar.gz",
-  "kind": "archive"
+  "kind": "archive",
+  "files": [
+   "jcapimin.c",
+   "jcapistd.c",
+   "jccoefct.c",
+   "jccolor.c",
+   "jcdctmgr.c",
+   "jchuff.c",
+   "jcinit.c",
+   "jcmainct.c",
+   "jcmarker.c",
+   "jcmaster.c",
+   "jcomapi.c",
+   "jcparam.c",
+   "jcphuff.c",
+   "jcprepct.c",
+   "jcsample.c",
+   "jdapimin.c",
+   "jdapistd.c",
+   "jdatasrc.c",
+   "jdcoefct.c",
+   "jdcolor.c",
+   "jddctmgr.c",
+   "jdhuff.c",
+   "jdinput.c",
+   "jdmainct.c",
+   "jdmarker.c",
+   "jdmaster.c",
+   "jdmerge.c",
+   "jdphuff.c",
+   "jdpostct.c",
+   "jdsample.c",
+   "jerror.c",
+   "jfdctflt.c",
+   "jfdctfst.c",
+   "jfdctint.c",
+   "jidctflt.c",
+   "jidctfst.c",
+   "jidctint.c",
+   "jidctred.c",
+   "jmemmgr.c",
+   "jquant1.c",
+   "jquant2.c",
+   "jutils.c"
+  ]
  },
  "lua-5.1": {
   "url": "https://www.lua.org/ftp/lua-5.1.tar.gz",
-  "kind": "archive"
+  "kind": "archive",
+  "files": [
+   "lapi.c",
+   "ltable.c"
+  ]
  },
  "lua-5.1.1": {
   "url": "https://www.lua.org/ftp/lua-5.1.1.tar.gz",
-  "kind": "archive"
+  "kind": "archive",
+  "files": [
+   "lapi.c",
+   "lauxlib.c",
+   "lbaselib.c",
+   "lcode.c",
+   "ldebug.c",
+   "ldo.c",
+   "ldump.c",
+   "lfunc.c",
+   "lgc.c",
+   "liolib.c",
+   "llex.c",
+   "lmathlib.c",
+   "lmem.c",
+   "lobject.c",
+   "lparser.c",
+   "lstate.c",
+   "lstring.c",
+   "lstrlib.c",
+   "ltable.c",
+   "ltablib.c",
+   "ltm.c",
+   "lundump.c",
+   "lvm.c",
+   "lzio.c"
+  ]
  },
  "lua-5.1.2": {
   "url": "https://www.lua.org/ftp/lua-5.1.2.tar.gz",
-  "kind": "archive"
+  "kind": "archive",
+  "files": [
+   "lauxlib.c",
+   "lbaselib.c",
+   "lcode.c",
+   "ldebug.c",
+   "ldo.c",
+   "lgc.c",
+   "liolib.c",
+   "lparser.c",
+   "lstrlib.c",
+   "ltablib.c",
+   "lvm.c"
+  ]
  },
  "lua-5.1.3": {
   "url": "https://www.lua.org/ftp/lua-5.1.3.tar.gz",
-  "kind": "archive"
+  "kind": "archive",
+  "files": [
+   "lbaselib.c",
+   "lstrlib.c",
+   "ltablib.c",
+   "lundump.c"
+  ]
  },
  "lua-5.1.4": {
   "url": "https://www.lua.org/ftp/lua-5.1.4.tar.gz",
-  "kind": "archive"
+  "kind": "archive",
+  "files": [
+   "lapi.c",
+   "lauxlib.c",
+   "lbaselib.c",
+   "lcode.c",
+   "ldblib.c",
+   "ldebug.c",
+   "ldo.c",
+   "ldump.c",
+   "lfunc.c",
+   "lgc.c",
+   "liolib.c",
+   "llex.c",
+   "lmathlib.c",
+   "lmem.c",
+   "lobject.c",
+   "lparser.c",
+   "lstate.c",
+   "lstring.c",
+   "lstrlib.c",
+   "ltable.c",
+   "ltablib.c",
+   "ltm.c",
+   "lundump.c",
+   "lvm.c",
+   "lzio.c"
+  ]
  },
  "lua-5.0": {
   "url": "https://www.lua.org/ftp/lua-5.0.tar.gz",
-  "kind": "archive"
+  "kind": "archive",
+  "files": []
  },
  "lua-5.0.1": {
   "url": "https://www.lua.org/ftp/lua-5.0.1.tar.gz",
-  "kind": "archive"
+  "kind": "archive",
+  "files": []
  },
  "lua-5.0.2": {
   "url": "https://www.lua.org/ftp/lua-5.0.2.tar.gz",
-  "kind": "archive"
+  "kind": "archive",
+  "files": []
  },
  "lua-5.0.3": {
   "url": "https://www.lua.org/ftp/lua-5.0.3.tar.gz",
-  "kind": "archive"
+  "kind": "archive",
+  "files": []
  },
  "zlib-1.1.4": {
   "url": "https://zlib.net/fossils/zlib-1.1.4.tar.gz",
-  "kind": "archive"
+  "kind": "archive",
+  "files": []
  },
  "libpng-1.2.5": {
   "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.5.tar.gz",
-  "kind": "archive"
+  "kind": "archive",
+  "files": [
+   "png.c",
+   "pngerror.c",
+   "pngget.c",
+   "pngmem.c",
+   "pngread.c",
+   "pngrio.c",
+   "pngrtran.c",
+   "pngrutil.c",
+   "pngset.c",
+   "pngtrans.c",
+   "pngwio.c",
+   "pngwrite.c",
+   "pngwtran.c",
+   "pngwutil.c"
+  ]
  },
  "libpng-1.2.6": {
   "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.6.tar.gz",
-  "kind": "archive"
+  "kind": "archive",
+  "files": [
+   "png.c",
+   "pngerror.c",
+   "pngget.c",
+   "pngread.c",
+   "pngrtran.c",
+   "pngrutil.c",
+   "pngset.c",
+   "pngwrite.c",
+   "pngwtran.c",
+   "pngwutil.c"
+  ]
  },
  "libpng-1.2.7": {
   "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.7.tar.gz",
-  "kind": "archive"
+  "kind": "archive",
+  "files": [
+   "png.c",
+   "pngerror.c",
+   "pngget.c",
+   "pngmem.c",
+   "pngread.c",
+   "pngrio.c",
+   "pngrtran.c",
+   "pngrutil.c",
+   "pngset.c",
+   "pngtrans.c",
+   "pngwio.c",
+   "pngwrite.c",
+   "pngwtran.c",
+   "pngwutil.c"
+  ]
  },
  "libpng-1.2.8": {
   "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.8.tar.gz",
-  "kind": "archive"
+  "kind": "archive",
+  "files": [
+   "pngget.c",
+   "pngtrans.c"
+  ]
  },
  "libpng-1.2.10": {
   "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.10.tar.gz",
-  "kind": "archive"
+  "kind": "archive",
+  "files": [
+   "png.c",
+   "pngerror.c",
+   "pngset.c",
+   "pngwrite.c",
+   "pngwtran.c"
+  ]
  },
  "libpng-1.2.12": {
   "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.12.tar.gz",
-  "kind": "archive"
+  "kind": "archive",
+  "files": []
  },
  "libpng-1.2.16": {
   "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.16.tar.gz",
-  "kind": "archive"
+  "kind": "archive",
+  "files": [
+   "png.c",
+   "pngmem.c",
+   "pngread.c",
+   "pngrio.c",
+   "pngrtran.c",
+   "pngrutil.c",
+   "pngtrans.c",
+   "pngwio.c",
+   "pngwutil.c"
+  ]
  },
  "libpng-1.2.18": {
   "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.18.tar.gz",
-  "kind": "archive"
+  "kind": "archive",
+  "files": [
+   "pngrutil.c",
+   "pngset.c"
+  ]
  },
  "libpng-1.2.22": {
   "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.22.tar.gz",
-  "kind": "archive"
+  "kind": "archive",
+  "files": [
+   "png.c",
+   "pngmem.c",
+   "pngrtran.c",
+   "pngrutil.c",
+   "pngset.c",
+   "pngwutil.c"
+  ]
  },
  "libpng-1.2.24": {
   "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.24.tar.gz",
-  "kind": "archive"
+  "kind": "archive",
+  "files": [
+   "pngerror.c",
+   "pngset.c"
+  ]
  },
  "libpng-1.2.29": {
   "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.29.tar.gz",
-  "kind": "archive"
+  "kind": "archive",
+  "files": [
+   "pngread.c",
+   "pngrtran.c",
+   "pngrutil.c",
+   "pngset.c",
+   "pngwrite.c"
+  ]
  },
  "libpng-1.2.32": {
   "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.32.tar.gz",
-  "kind": "archive"
+  "kind": "archive",
+  "files": [
+   "pngerror.c",
+   "pngread.c",
+   "pngrutil.c",
+   "pngset.c",
+   "pngwrite.c",
+   "pngwutil.c"
+  ]
  },
  "libpng-1.2.35": {
   "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.35.tar.gz",
-  "kind": "archive"
+  "kind": "archive",
+  "files": [
+   "png.c",
+   "pngerror.c",
+   "pngrutil.c",
+   "pngset.c",
+   "pngwutil.c"
+  ]
  },
  "libpng-1.2.37": {
   "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.37.tar.gz",
-  "kind": "archive"
+  "kind": "archive",
+  "files": [
+   "pngset.c"
+  ]
  },
  "libpng-1.2.40": {
   "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.40.tar.gz",
-  "kind": "archive"
+  "kind": "archive",
+  "files": [
+   "pngwutil.c"
+  ]
  },
  "libpng-1.2.44": {
   "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.44.tar.gz",
-  "kind": "archive"
+  "kind": "archive",
+  "files": []
  },
  "g3d-6.09": {
   "url": "https://archive.org/download/g3d-src-6_09/g3d-src-6_09.zip",
-  "kind": "archive"
+  "kind": "archive",
+  "files": [
+   "G3Dcpp/AABox.cpp",
+   "G3Dcpp/BinaryInput.cpp",
+   "G3Dcpp/BinaryOutput.cpp",
+   "G3Dcpp/Box.cpp",
+   "G3Dcpp/Capsule.cpp",
+   "G3Dcpp/CollisionDetection.cpp",
+   "G3Dcpp/Color3.cpp",
+   "G3Dcpp/Color3uint8.cpp",
+   "G3Dcpp/Color4.cpp",
+   "G3Dcpp/Color4uint8.cpp",
+   "G3Dcpp/ConvexPolyhedron.cpp",
+   "G3Dcpp/CoordinateFrame.cpp",
+   "G3Dcpp/Crypto.cpp",
+   "G3Dcpp/Crypto_md5.cpp",
+   "G3Dcpp/Discovery.cpp",
+   "G3Dcpp/GCamera.cpp",
+   "G3Dcpp/GImage.cpp",
+   "G3Dcpp/GImage_bmp.cpp",
+   "G3Dcpp/GImage_jpeg.cpp",
+   "G3Dcpp/GImage_png.cpp",
+   "G3Dcpp/GImage_ppm.cpp",
+   "G3Dcpp/GImage_tga.cpp",
+   "G3Dcpp/GLight.cpp",
+   "G3Dcpp/GThread.cpp",
+   "G3Dcpp/Line.cpp",
+   "G3Dcpp/LineSegment.cpp",
+   "G3Dcpp/Log.cpp",
+   "G3Dcpp/Matrix3.cpp",
+   "G3Dcpp/Matrix4.cpp",
+   "G3Dcpp/MeshAlg.cpp",
+   "G3Dcpp/MeshAlgAdjacency.cpp",
+   "G3Dcpp/MeshAlgWeld.cpp",
+   "G3Dcpp/MeshBuilder.cpp",
+   "G3Dcpp/NetAddress.cpp",
+   "G3Dcpp/Plane.cpp",
+   "G3Dcpp/Quat.cpp",
+   "G3Dcpp/RegistryUtil.cpp",
+   "G3Dcpp/Sphere.cpp",
+   "G3Dcpp/Stopwatch.cpp",
+   "G3Dcpp/System.cpp",
+   "G3Dcpp/TextInput.cpp",
+   "G3Dcpp/TextOutput.cpp",
+   "G3Dcpp/Vector2.cpp",
+   "G3Dcpp/Vector2int16.cpp",
+   "G3Dcpp/Vector3.cpp",
+   "G3Dcpp/Vector3int16.cpp",
+   "G3Dcpp/Vector4.cpp",
+   "G3Dcpp/debugAssert.cpp",
+   "G3Dcpp/fileutils.cpp",
+   "G3Dcpp/format.cpp",
+   "G3Dcpp/g3dmath.cpp",
+   "G3Dcpp/prompt.cpp",
+   "G3Dcpp/stringutils.cpp",
+   "GLG3Dcpp/DXCaps.cpp",
+   "GLG3Dcpp/Draw.cpp",
+   "GLG3Dcpp/Framebuffer.cpp",
+   "GLG3Dcpp/GFont.cpp",
+   "GLG3Dcpp/GLCaps.cpp",
+   "GLG3Dcpp/GModule.cpp",
+   "GLG3Dcpp/GPUProgram.cpp",
+   "GLG3Dcpp/GWindow.cpp",
+   "GLG3Dcpp/IFSModel.cpp",
+   "GLG3Dcpp/LightingParameters.cpp",
+   "GLG3Dcpp/MD2Model.cpp",
+   "GLG3Dcpp/Milestone.cpp",
+   "GLG3Dcpp/PixelProgram.cpp",
+   "GLG3Dcpp/PosedModel.cpp",
+   "GLG3Dcpp/RenderDevice.cpp",
+   "GLG3Dcpp/Renderbuffer.cpp",
+   "GLG3Dcpp/SDLWindow.cpp",
+   "GLG3Dcpp/Shader.cpp",
+   "GLG3Dcpp/Shape.cpp",
+   "GLG3Dcpp/Sky.cpp",
+   "GLG3Dcpp/Texture.cpp",
+   "GLG3Dcpp/TextureFormat.cpp",
+   "GLG3Dcpp/TextureManager.cpp",
+   "GLG3Dcpp/UserInput.cpp",
+   "GLG3Dcpp/VAR.cpp",
+   "GLG3Dcpp/VARArea.cpp",
+   "GLG3Dcpp/Win32Window.cpp",
+   "GLG3Dcpp/getOpenGLState.cpp",
+   "GLG3Dcpp/glcalls.cpp",
+   "GLG3Dcpp/tesselate.cpp"
+  ]
  },
  "sdl-1.2.11": {
   "url": "https://www.libsdl.org/release/SDL-1.2.11.tar.gz",
-  "kind": "archive"
+  "kind": "archive",
+  "files": []
  },
  "boost-1.34.1": {
   "url": "https://archives.boost.io/release/1.34.1/source/boost_1_34_1.tar.gz",
-  "kind": "archive"
+  "kind": "archive",
+  "files": [
+   "libs/date_time/src/gregorian/greg_month.cpp",
+   "libs/filesystem/src/operations.cpp",
+   "libs/iostreams/src/zlib.cpp",
+   "libs/program_options/src/cmdline.cpp",
+   "libs/program_options/src/config_file.cpp",
+   "libs/program_options/src/convert.cpp",
+   "libs/program_options/src/options_description.cpp",
+   "libs/program_options/src/parsers.cpp",
+   "libs/program_options/src/value_semantic.cpp",
+   "libs/program_options/src/variables_map.cpp",
+   "libs/regex/src/cpp_regex_traits.cpp",
+   "libs/regex/src/cregex.cpp",
+   "libs/regex/src/instances.cpp",
+   "libs/regex/src/regex.cpp",
+   "libs/regex/src/regex_traits_defaults.cpp",
+   "libs/regex/src/usinstances.cpp",
+   "libs/signals/src/connection.cpp",
+   "libs/signals/src/named_slot_map.cpp",
+   "libs/signals/src/signal_base.cpp",
+   "libs/signals/src/slot.cpp",
+   "libs/signals/src/trackable.cpp",
+   "libs/thread/src/barrier.cpp",
+   "libs/thread/src/mutex.cpp",
+   "libs/thread/src/once.cpp",
+   "libs/thread/src/recursive_mutex.cpp",
+   "libs/thread/src/thread.cpp",
+   "libs/thread/src/tss.cpp",
+   "libs/thread/src/tss_hooks.cpp",
+   "libs/thread/src/xtime.cpp"
+  ]
  },
  "boost-1.36.0": {
   "url": "https://archives.boost.io/release/1.36.0/source/boost_1_36_0.tar.gz",
-  "kind": "archive"
+  "kind": "archive",
+  "files": [
+   "libs/filesystem/src/operations.cpp",
+   "libs/iostreams/src/mapped_file.cpp",
+   "libs/regex/src/instances.cpp",
+   "libs/regex/src/wide_posix_api.cpp",
+   "libs/system/src/error_code.cpp",
+   "libs/thread/src/win32/thread.cpp"
+  ]
  },
  "boost-1.35.0": {
   "url": "https://archives.boost.io/release/1.35.0/source/boost_1_35_0.tar.gz",
-  "kind": "archive"
+  "kind": "archive",
+  "files": []
  },
  "boost-1.37.0": {
   "url": "https://archives.boost.io/release/1.37.0/source/boost_1_37_0.tar.gz",
-  "kind": "archive"
+  "kind": "archive",
+  "files": []
  },
  "boost-1.38.0": {
   "url": "https://archives.boost.io/release/1.38.0/source/boost_1_38_0.tar.gz",
-  "kind": "archive"
+  "kind": "archive",
+  "files": []
  },
  "boost-1.39.0": {
   "url": "https://archives.boost.io/release/1.39.0/source/boost_1_39_0.tar.gz",
-  "kind": "archive"
+  "kind": "archive",
+  "files": []
  },
  "boost-1.40.0": {
   "url": "https://archives.boost.io/release/1.40.0/source/boost_1_40_0.tar.gz",
-  "kind": "archive"
+  "kind": "archive",
+  "files": [
+   "libs/program_options/src/cmdline.cpp",
+   "libs/regex/src/cregex.cpp",
+   "libs/regex/src/instances.cpp",
+   "libs/thread/src/win32/thread.cpp"
+  ]
  },
  "boost-1.44.0": {
   "url": "https://archives.boost.io/release/1.44.0/source/boost_1_44_0.tar.gz",
-  "kind": "archive"
+  "kind": "archive",
+  "files": []
  },
  "boost-1.47.0": {
   "url": "https://archives.boost.io/release/1.47.0/source/boost_1_47_0.tar.gz",
-  "kind": "archive"
+  "kind": "archive",
+  "files": []
  },
  "rbxgs": {
   "url": "https://github.com/RBLXDecomp/RBXGSdecomp/blob/5a2df2c77a3088e563b57c51bbc5894218cfbe58/Client/App/",
-  "kind": "file"
+  "kind": "file",
+  "files": [
+   "gui/GUI.cpp",
+   "gui/GuiDraw.cpp",
+   "gui/Widget.cpp",
+   "humanoid/Balancing.cpp",
+   "humanoid/FallingDown.cpp",
+   "humanoid/Flying.cpp",
+   "humanoid/GettingUp.cpp",
+   "humanoid/Humanoid.cpp",
+   "humanoid/Jumping.cpp",
+   "humanoid/Running.cpp",
+   "humanoid/Seated.cpp",
+   "reflection/reflection_function.cpp",
+   "reflection/reflection_object.cpp",
+   "reflection/reflection_property.cpp",
+   "reflection/signal.cpp",
+   "reflection/type.cpp",
+   "script/LuaAtomicClasses.cpp",
+   "script/LuaInstanceBridge.cpp",
+   "script/LuaMemory.cpp",
+   "script/LuaSignalBridge.cpp",
+   "script/Script.cpp",
+   "script/ScriptContext.cpp",
+   "script/ScriptEvent.cpp",
+   "script/ThreadRef.cpp",
+   "security/SecurityContext.cpp",
+   "tool/DragUtilities.cpp",
+   "tool/Dragger.cpp",
+   "tool/GroupDragTool.cpp",
+   "tool/MegaDragger.cpp",
+   "tool/NullTool.cpp",
+   "tool/PartDragTool.cpp",
+   "tool/RunDragger.cpp",
+   "tool/ToolsArrow.cpp",
+   "util/Debug.cpp",
+   "util/ExponentialRunningAverage.cpp",
+   "util/Extents.cpp",
+   "util/Face.cpp",
+   "util/FileSystem.cpp",
+   "util/Guid.cpp",
+   "util/Handle.cpp",
+   "util/IRenderable.cpp",
+   "util/Log.cpp",
+   "util/Math.cpp",
+   "util/Name.cpp",
+   "util/NormalId.cpp",
+   "util/PV.cpp",
+   "util/Profiling.cpp",
+   "util/Quaternion.cpp",
+   "util/Rect.cpp",
+   "util/RunStateOwner.cpp",
+   "util/boost.cpp",
+   "util/standardout.cpp",
+   "v8datamodel/Accoutrement.cpp",
+   "v8datamodel/BrickColor.cpp",
+   "v8datamodel/Camera.cpp",
+   "v8datamodel/DataModel.cpp",
+   "v8datamodel/DebrisService.cpp",
+   "v8datamodel/DebugSettings.cpp",
+   "v8datamodel/Decal.cpp",
+   "v8datamodel/Explosion.cpp",
+   "v8datamodel/FaceInstance.cpp",
+   "v8datamodel/Feature.cpp",
+   "v8datamodel/Filters.cpp",
+   "v8datamodel/Flag.cpp",
+   "v8datamodel/FlagStand.cpp",
+   "v8datamodel/GameSettings.cpp",
+   "v8datamodel/GlobalSettings.cpp",
+   "v8datamodel/Gyro.cpp",
+   "v8datamodel/Hopper.cpp",
+   "v8datamodel/ICameraOwner.cpp",
+   "v8datamodel/ICharacterSubject.cpp",
+   "v8datamodel/IEquipable.cpp",
+   "v8datamodel/JointInstance.cpp",
+   "v8datamodel/Lighting.cpp",
+   "v8datamodel/LocakBackpack.cpp",
+   "v8datamodel/Message.cpp",
+   "v8datamodel/ModelInstance.cpp",
+   "v8datamodel/Mouse.cpp",
+   "v8datamodel/MouseCommand.cpp",
+   "v8datamodel/PVInstance.cpp",
+   "v8datamodel/PartInstance.cpp",
+   "v8datamodel/RootInstance.cpp",
+   "v8datamodel/ScriptMouseCommand.cpp",
+   "v8datamodel/Seat.cpp",
+   "v8datamodel/Selection.cpp",
+   "v8datamodel/Sky.cpp",
+   "v8datamodel/SpawnLocation.cpp",
+   "v8datamodel/Surface.cpp",
+   "v8datamodel/Team.cpp",
+   "v8datamodel/Teams.cpp",
+   "v8datamodel/TimeState.cpp",
+   "v8datamodel/TimerService.cpp",
+   "v8datamodel/Tool.cpp",
+   "v8datamodel/ToolMouseCommand.cpp",
+   "v8datamodel/UserController.cpp",
+   "v8datamodel/Visit.cpp",
+   "v8datamodel/Workspace.cpp",
+   "v8datamodel/custommesh.cpp",
+   "v8datamodel/factoryregistration.cpp",
+   "v8kernel/Body.cpp",
+   "v8kernel/Cofm.cpp",
+   "v8kernel/Connector.cpp",
+   "v8kernel/Kernel.cpp",
+   "v8kernel/Link.cpp",
+   "v8kernel/Pair.cpp",
+   "v8tree/EnumProperty.cpp",
+   "v8tree/Instance.cpp",
+   "v8tree/Service.cpp",
+   "v8tree/Verb.cpp",
+   "v8world/Assembly.cpp",
+   "v8world/AssemblyStage.cpp",
+   "v8world/Block.cpp",
+   "v8world/Clump.cpp",
+   "v8world/ClumpStage.cpp",
+   "v8world/CollisionStage.cpp",
+   "v8world/Contact.cpp",
+   "v8world/ContactManager.cpp",
+   "v8world/GlueJoint.cpp",
+   "v8world/IMoving.cpp",
+   "v8world/Joint.cpp",
+   "v8world/JointStage.cpp",
+   "v8world/MacroTypes.cpp",
+   "v8world/Mechanism.cpp",
+   "v8world/MotorJoint.cpp",
+   "v8world/MutilJoint.cpp",
+   "v8world/Primitive.cpp",
+   "v8world/RigidJoint.cpp",
+   "v8world/RotateJoint.cpp",
+   "v8world/SeparateStage.cpp",
+   "v8world/SimJobStage.cpp",
+   "v8world/SleepStage.cpp",
+   "v8world/SpatialHash.cpp",
+   "v8world/World.cpp",
+   "v8xml/SerializerV2.cpp",
+   "v8xml/XmlElement.cpp",
+   "v8xml/XmlSerializer.cpp"
+  ]
  },
  "rbxgs-net": {
   "url": "https://github.com/RBLXDecomp/RBXGSdecomp/blob/5a2df2c77a3088e563b57c51bbc5894218cfbe58/Client/Network/",
-  "kind": "file"
+  "kind": "file",
+  "files": [
+   "Client.cpp",
+   "ClientPhysics.cpp",
+   "CrashReporter.cpp",
+   "IdManager.cpp",
+   "Player.cpp",
+   "Players.cpp",
+   "Replicator.cpp",
+   "Server.cpp",
+   "Streaming.cpp"
+  ]
  },
  "rbxgs-raknet": {
   "url": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/",
-  "kind": "file"
+  "kind": "file",
+  "files": [
+   "BitStream.cpp",
+   "CheckSum.cpp",
+   "CommandParserInterface.cpp",
+   "ConnectionGraph.cpp",
+   "ConsoleServer.cpp",
+   "DS_HuffmanEncodingTree.cpp",
+   "DS_Table.cpp",
+   "DataBlockEncryptor.cpp",
+   "FileList.cpp",
+   "FileListTransfer.cpp",
+   "FileOperations.cpp",
+   "GetTime.cpp",
+   "LightweightDatabaseClient.cpp",
+   "LightweightDatabaseServer.cpp",
+   "LogCommandParser.cpp",
+   "NetworkIDManager.cpp",
+   "PacketLogger.cpp",
+   "RPCMap.cpp",
+   "RakNetTypes.cpp",
+   "RakNetworkFactory.cpp",
+   "Rand.cpp",
+   "ReliabilityLayer.cpp",
+   "ReplicaManager.cpp",
+   "SHA1.cpp",
+   "SocketLayer.cpp",
+   "StringCompressor.cpp",
+   "StringTable.cpp",
+   "TCPInterface.cpp",
+   "rijndael.cpp"
+  ]
  },
  "rbxgs-view": {
   "url": "https://github.com/RBLXDecomp/RBXGSdecomp/blob/5a2df2c77a3088e563b57c51bbc5894218cfbe58/Client/RbxView/",
-  "kind": "file"
+  "kind": "file",
+  "files": [
+   "BevelMesh.cpp",
+   "BrickMesh.cpp",
+   "CylinderMesh.cpp",
+   "MaterialFactory.cpp",
+   "PBBMesh.cpp",
+   "Part.cpp",
+   "QuadVolume.cpp",
+   "SphereMesh.cpp",
+   "TorsoMesh.cpp",
+   "View.cpp",
+   "WedgeMesh.cpp"
+  ]
  },
  "rbxgs-render": {
   "url": "https://github.com/RBLXDecomp/RBXGSdecomp/blob/5a2df2c77a3088e563b57c51bbc5894218cfbe58/Client/Rendering/RenderLib/",
-  "kind": "file"
+  "kind": "file",
+  "files": [
+   "AggregatingSceneManager.cpp",
+   "Chunk.cpp",
+   "Clusterer.cpp",
+   "DepthBlur.cpp",
+   "Material.cpp",
+   "Mesh.cpp",
+   "Profiler.cpp",
+   "RenderScene.cpp",
+   "RenderSurface.cpp",
+   "TextureProxy.cpp"
+  ]
  },
  "rbxgs-appdraw": {
   "url": "https://github.com/RBLXDecomp/RBXGSdecomp/blob/5a2df2c77a3088e563b57c51bbc5894218cfbe58/Client/Rendering/AppDraw/",
-  "kind": "file"
+  "kind": "file",
+  "files": [
+   "AdornG3D.cpp",
+   "Draw.cpp",
+   "DrawPrimitives.cpp",
+   "Fonts.cpp",
+   "HitTest.cpp"
+  ]
  },
  "rbxgs-g3d": {
   "url": "https://github.com/RBLXDecomp/g3d/blob/2a2fc86c37d46e3c9b2b571795d09a6f667154c0/",
-  "kind": "file"
+  "kind": "file",
+  "files": [
+   "G3Dcpp/AABox.cpp",
+   "G3Dcpp/BinaryInput.cpp",
+   "G3Dcpp/BinaryOutput.cpp",
+   "G3Dcpp/Box.cpp",
+   "G3Dcpp/Capsule.cpp",
+   "G3Dcpp/CollisionDetection.cpp",
+   "G3Dcpp/Color3.cpp",
+   "G3Dcpp/Color3uint8.cpp",
+   "G3Dcpp/Color4.cpp",
+   "G3Dcpp/CoordinateFrame.cpp",
+   "G3Dcpp/Crypto.cpp",
+   "G3Dcpp/Discovery.cpp",
+   "G3Dcpp/GCamera.cpp",
+   "G3Dcpp/GImage.cpp",
+   "G3Dcpp/GImage_bmp.cpp",
+   "G3Dcpp/GImage_jpeg.cpp",
+   "G3Dcpp/GImage_png.cpp",
+   "G3Dcpp/GImage_ppm.cpp",
+   "G3Dcpp/GImage_tga.cpp",
+   "G3Dcpp/GLight.cpp",
+   "G3Dcpp/Line.cpp",
+   "G3Dcpp/LineSegment.cpp",
+   "G3Dcpp/Log.cpp",
+   "G3Dcpp/Matrix3.cpp",
+   "G3Dcpp/Matrix4.cpp",
+   "G3Dcpp/MeshAlg.cpp",
+   "G3Dcpp/MeshAlgAdjacency.cpp",
+   "G3Dcpp/MeshAlgWeld.cpp",
+   "G3Dcpp/MeshBuilder.cpp",
+   "G3Dcpp/Plane.cpp",
+   "G3Dcpp/Quat.cpp",
+   "G3Dcpp/RegistryUtil.cpp",
+   "G3Dcpp/Sphere.cpp",
+   "G3Dcpp/Stopwatch.cpp",
+   "G3Dcpp/System.cpp",
+   "G3Dcpp/TextInput.cpp",
+   "G3Dcpp/TextOutput.cpp",
+   "G3Dcpp/Vector2.cpp",
+   "G3Dcpp/Vector2int16.cpp",
+   "G3Dcpp/Vector3.cpp",
+   "G3Dcpp/Vector3int16.cpp",
+   "G3Dcpp/Vector4.cpp",
+   "G3Dcpp/debugAssert.cpp",
+   "G3Dcpp/fileutils.cpp",
+   "G3Dcpp/format.cpp",
+   "G3Dcpp/g3dmath.cpp",
+   "G3Dcpp/prompt.cpp",
+   "G3Dcpp/stringutils.cpp",
+   "GLG3Dcpp/DXCaps.cpp",
+   "GLG3Dcpp/Draw.cpp",
+   "GLG3Dcpp/GApp.cpp",
+   "GLG3Dcpp/GFont.cpp",
+   "GLG3Dcpp/GLCaps.cpp",
+   "GLG3Dcpp/GPUProgram.cpp",
+   "GLG3Dcpp/GWindow.cpp",
+   "GLG3Dcpp/LightingParameters.cpp",
+   "GLG3Dcpp/MD2Model_load.cpp",
+   "GLG3Dcpp/Milestone.cpp",
+   "GLG3Dcpp/PosedModel.cpp",
+   "GLG3Dcpp/RenderDevice.cpp",
+   "GLG3Dcpp/SDLWindow.cpp",
+   "GLG3Dcpp/Shader.cpp",
+   "GLG3Dcpp/Shape.cpp",
+   "GLG3Dcpp/Sky.cpp",
+   "GLG3Dcpp/Texture.cpp",
+   "GLG3Dcpp/TextureFormat.cpp",
+   "GLG3Dcpp/TextureManager.cpp",
+   "GLG3Dcpp/ToneMap.cpp",
+   "GLG3Dcpp/VAR.cpp",
+   "GLG3Dcpp/VARArea.cpp",
+   "GLG3Dcpp/Win32Window.cpp",
+   "GLG3Dcpp/getOpenGLState.cpp",
+   "GLG3Dcpp/glcalls.cpp"
+  ]
  },
  "openrbx-client": {
   "url": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/Client/",
-  "kind": "file"
+  "kind": "file",
+  "files": [
+   "App/gui/GUI.cpp",
+   "App/gui/Widget.cpp",
+   "App/humanoid/Balancing.cpp",
+   "App/humanoid/FallingDown.cpp",
+   "App/humanoid/Flying.cpp",
+   "App/humanoid/Freefall.cpp",
+   "App/humanoid/GettingUp.cpp",
+   "App/humanoid/Humanoid.cpp",
+   "App/humanoid/Jumping.cpp",
+   "App/humanoid/Running.cpp",
+   "App/humanoid/Seated.cpp",
+   "App/reflection/reflection_function.cpp",
+   "App/reflection/reflection_object.cpp",
+   "App/reflection/reflection_property.cpp",
+   "App/script/LuaInstanceBridge.cpp",
+   "App/script/LuaSignalBridge.cpp",
+   "App/script/Script.cpp",
+   "App/script/ScriptContext.cpp",
+   "App/script/ScriptEvent.cpp",
+   "App/util/Extents.cpp",
+   "App/util/Guid.cpp",
+   "App/util/IRenderable.cpp",
+   "App/util/IndexBox.cpp",
+   "App/util/NormalId.cpp",
+   "App/util/RunStateOwner.cpp",
+   "App/util/SoundWorld.cpp",
+   "App/util/Timer.cpp",
+   "App/util/UserInputBase.cpp",
+   "App/util/standardout.cpp",
+   "App/v8datamodel/Accoutrement.cpp",
+   "App/v8datamodel/Camera.cpp",
+   "App/v8datamodel/CharacterAppearance.cpp",
+   "App/v8datamodel/DebugSettings.cpp",
+   "App/v8datamodel/Decal.cpp",
+   "App/v8datamodel/Enums.cpp",
+   "App/v8datamodel/FaceInstance.cpp",
+   "App/v8datamodel/Feature.cpp",
+   "App/v8datamodel/Flag.cpp",
+   "App/v8datamodel/FlagStand.cpp",
+   "App/v8datamodel/GlobalSettings.cpp",
+   "App/v8datamodel/Gyro.cpp",
+   "App/v8datamodel/Hopper.cpp",
+   "App/v8datamodel/JointInstance.cpp",
+   "App/v8datamodel/Lighting.cpp",
+   "App/v8datamodel/Message.cpp",
+   "App/v8datamodel/ModelInstance.cpp",
+   "App/v8datamodel/PVInstance.cpp",
+   "App/v8datamodel/PartInstance.cpp",
+   "App/v8datamodel/RootInstance.cpp",
+   "App/v8datamodel/Selection.cpp",
+   "App/v8datamodel/Sky.cpp",
+   "App/v8datamodel/SpawnLocation.cpp",
+   "App/v8datamodel/Surfaces.cpp",
+   "App/v8datamodel/Team.cpp",
+   "App/v8datamodel/Teams.cpp",
+   "App/v8datamodel/Tool.cpp",
+   "App/v8datamodel/custommesh.cpp",
+   "App/v8kernel/Body.cpp",
+   "App/v8kernel/Kernel.cpp",
+   "App/v8kernel/Link.cpp",
+   "App/v8kernel/Pair.cpp",
+   "App/v8kernel/Point.cpp",
+   "App/v8kernel/SimBody.cpp",
+   "App/v8tree/Instance.cpp",
+   "App/v8tree/Service.cpp",
+   "App/v8tree/enumproperty.cpp",
+   "App/v8world/Assembly2.cpp",
+   "App/v8world/AssemblyStage2.cpp",
+   "App/v8world/Block.cpp",
+   "App/v8world/Clump2.cpp",
+   "App/v8world/ClumpStage2.cpp",
+   "App/v8world/Contact.cpp",
+   "App/v8world/ContactManager.cpp",
+   "App/v8world/Controller.cpp",
+   "App/v8world/Edge.cpp",
+   "App/v8world/IMoving.cpp",
+   "App/v8world/IPipelined.cpp",
+   "App/v8world/IWorldStage.cpp",
+   "App/v8world/Joint.cpp",
+   "App/v8world/JointStage.cpp",
+   "App/v8world/Mechanism.cpp",
+   "App/v8world/MotorJoint.cpp",
+   "App/v8world/MultiJoint.cpp",
+   "App/v8world/Primitive.cpp",
+   "App/v8world/RotateJoint.cpp",
+   "App/v8world/SimJobStage.cpp",
+   "App/v8world/SleepStage2.cpp",
+   "App/v8world/SpatialHash.cpp",
+   "App/v8world/World.cpp",
+   "App/v8xml/SerializerV2.cpp",
+   "App/v8xml/XmlElement.cpp",
+   "App/v8xml/XmlSerializer.cpp",
+   "Network/Player.cpp",
+   "RbxView/PBBMesh.cpp",
+   "RbxView/Part.cpp",
+   "Rendering/AppDraw/AdornG3D.cpp",
+   "Rendering/AppDraw/DrawPrimitives.cpp",
+   "Rendering/AppDraw/Textures.cpp",
+   "Rendering/RenderLib/Clusterer.cpp",
+   "Rendering/RenderLib/EffectSettings.cpp",
+   "Rendering/RenderLib/Mesh.cpp",
+   "Rendering/RenderLib/Profiler.cpp",
+   "Rendering/RenderLib/RenderScene.cpp",
+   "Rendering/RenderLib/RenderStats.cpp",
+   "Rendering/RenderLib/RenderSurface.cpp",
+   "Rendering/RenderLib/TextureProxy.cpp"
+  ]
  },
  "ogre-1.7.0": {
   "url": "https://downloads.sourceforge.net/project/ogre/ogre/1.7/ogre-v1-7-0.zip",
-  "kind": "archive"
+  "kind": "archive",
+  "files": [
+   "OgreAnimationState.cpp",
+   "OgreAnimationTrack.cpp",
+   "OgreCompositionPass.cpp",
+   "OgreCompositorInstance.cpp",
+   "OgreConfigFile.cpp",
+   "OgreDataStream.cpp",
+   "OgreEdgeListBuilder.cpp",
+   "OgreGpuProgramUsage.cpp",
+   "OgreInstancedGeometry.cpp",
+   "OgreMaterialSerializer.cpp",
+   "OgreMesh.cpp",
+   "OgreMeshSerializerImpl.cpp",
+   "OgreOptimisedUtilGeneral.cpp",
+   "OgrePixelFormat.cpp",
+   "OgreProgressiveMesh.cpp",
+   "OgreRenderSystem.cpp",
+   "OgreRenderTarget.cpp",
+   "OgreResource.cpp",
+   "OgreResourceManager.cpp",
+   "OgreRotationSpline.cpp",
+   "OgreScriptLexer.cpp",
+   "OgreScriptTranslator.cpp",
+   "OgreShadowCameraSetupPlaneOptimal.cpp",
+   "OgreShadowCaster.cpp",
+   "OgreSkeleton.cpp",
+   "OgreSubMesh.cpp",
+   "OgreTangentSpaceCalc.cpp",
+   "OgreTechnique.cpp",
+   "OgreUTFString.cpp"
+  ]
  },
  "ogre-1.6.4": {
   "url": "https://downloads.sourceforge.net/project/ogre/ogre/1.6.4/ogre-v1-6-4.tar.bz2",
-  "kind": "archive"
+  "kind": "archive",
+  "files": [
+   "OgreAlignedAllocator.cpp",
+   "OgreAnimation.cpp",
+   "OgreAutoParamDataSource.cpp",
+   "OgreBillboard.cpp",
+   "OgreBillboardChain.cpp",
+   "OgreBillboardSet.cpp",
+   "OgreBorderPanelOverlayElement.cpp",
+   "OgreCompiler2Pass.cpp",
+   "OgreCompositorScriptCompiler.cpp",
+   "OgreCompositorSerializer.cpp",
+   "OgreConvexBody.cpp",
+   "OgreDataStream.cpp",
+   "OgreDefaultSceneQueries.cpp",
+   "OgreEdgeListBuilder.cpp",
+   "OgreFileSystem.cpp",
+   "OgreFontManager.cpp",
+   "OgreMesh.cpp",
+   "OgreMovableObject.cpp",
+   "OgreParticle.cpp",
+   "OgreParticleEmitter.cpp",
+   "OgreParticleSystem.cpp",
+   "OgrePass.cpp",
+   "OgrePredefinedControllers.cpp",
+   "OgreRenderQueueSortingGrouping.cpp",
+   "OgreRenderSystem.cpp",
+   "OgreRenderTarget.cpp",
+   "OgreResourceBackgroundQueue.cpp",
+   "OgreResourceGroupManager.cpp",
+   "OgreSceneManager.cpp",
+   "OgreSceneManagerEnumerator.cpp",
+   "OgreScriptCompiler.cpp",
+   "OgreSubEntity.cpp",
+   "OgreTextureUnitState.cpp",
+   "OgreWindowEventUtilities.cpp"
+  ]
  },
  "ogre-1.4.9": {
   "url": "https://downloads.sourceforge.net/project/ogre/ogre/1.4.9/ogre-v1-4-9.tar.bz2",
-  "kind": "archive"
+  "kind": "archive",
+  "files": [
+   "OgreAlignedAllocator.cpp",
+   "OgreAutoParamDataSource.cpp",
+   "OgreEdgeListBuilder.cpp",
+   "OgreFileSystem.cpp",
+   "OgreGpuProgramManager.cpp",
+   "OgreMesh.cpp",
+   "OgreMeshSerializerImpl.cpp",
+   "OgreProgressiveMesh.cpp",
+   "OgreRenderSystem.cpp",
+   "OgreSceneManager.cpp",
+   "OgreSceneManagerEnumerator.cpp",
+   "OgreShadowCameraSetupPlaneOptimal.cpp",
+   "OgreSubEntity.cpp"
+  ]
  },
  "lame-3.98.4": {
   "url": "https://downloads.sourceforge.net/project/lame/lame/3.98.4/lame-3.98.4.tar.gz",
-  "kind": "archive"
+  "kind": "archive",
+  "files": []
  },
  "lame-3.99.5": {
   "url": "https://downloads.sourceforge.net/project/lame/lame/3.99/lame-3.99.5.tar.gz",
-  "kind": "archive"
+  "kind": "archive",
+  "files": []
  }
 }

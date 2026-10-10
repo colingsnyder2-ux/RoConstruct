@@ -94,9 +94,17 @@ def source_links():
     from roc.libs import RECIPES, LIBS
     links = {}
     git_exe = shutil.which("git")
+    requested = {}
+    for path in (DOCS / "data").glob("*.json"):
+        for function in json.loads(path.read_text())["funcs"]:
+            if len(function) > 5 and function[5] and function[2] == 100:
+                requested.setdefault(function[5][0], set()).add(function[5][1])
     for name, recipe in RECIPES.items():
         if recipe.get("url"):
-            links[name] = {"url": recipe["url"], "kind": "archive"}
+            folder = (LIBS / recipe["src"]).resolve() if recipe.get("src") else None
+            links[name] = {"url": recipe["url"], "kind": "archive", "files": sorted(
+                file for file in requested.get(name, ()) if folder and
+                (folder / file).is_file() and (folder / file).resolve().is_relative_to(folder))}
             continue
         if not recipe.get("src"):
             continue
@@ -115,8 +123,11 @@ def source_links():
             continue
         revision = git("rev-parse", "HEAD")
         prefix = folder.relative_to(Path(root).resolve()).as_posix()
+        tracked = set(git("ls-tree", "-r", "--name-only", "--full-tree", revision).splitlines())
+        relative = "" if prefix == "." else prefix + "/"
         links[name] = {"url": remote + "/blob/" + revision + "/" +
-                      (quote(prefix, safe="/") + "/" if prefix != "." else ""), "kind": "file"}
+                      (quote(prefix, safe="/") + "/" if prefix != "." else ""), "kind": "file",
+                      "files": sorted(file for file in requested.get(name, ()) if relative + file in tracked)}
     return links
 
 
@@ -124,7 +135,6 @@ def build(server=None, token=None, public_server=None, remote=None):
     """server: pull scores + leaderboard from the group server (else local scores only).
     remote: the same export passed in directly (the server publishing itself)."""
     (DOCS / "data").mkdir(parents=True, exist_ok=True)
-    (DOCS / "source-links.json").write_text(json.dumps(source_links(), indent=1) + "\n")
     if remote is None:
         remote = fetch_server(server, token) if server else {"scores": {}, "leaderboard": []}
     library = library_meta()
@@ -169,6 +179,7 @@ def build(server=None, token=None, public_server=None, remote=None):
                        classes=meta.get("classes", 0), generated=generated)
             stats[name] = {k: row[k] for k in STATS}
         out.append(row)
+    (DOCS / "source-links.json").write_text(json.dumps(source_links(), indent=1) + "\n")
     updated = time.strftime("%Y-%m-%d %H:%M UTC", time.gmtime())
     progress = {"updated": updated, "clients": out, "leaderboard": remote["leaderboard"][:50],
                 "server": public_server}

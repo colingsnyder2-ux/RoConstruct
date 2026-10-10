@@ -31,7 +31,7 @@ class SourceLinksTests(unittest.TestCase):
             (root / "upstream/Source Files").mkdir(parents=True)
             recipes = {"archive": {"url": "https://example.com/v1.tar.gz"},
                        "clone": {"src": "upstream/Source Files"}, "generated": {}}
-            replies = [str(root / "upstream"), "git@github.com:owner/repo.git", "abc123"]
+            replies = [str(root / "upstream"), "git@github.com:owner/repo.git", "abc123", ""]
             with patch.object(libs, "RECIPES", recipes), patch.object(libs, "LIBS", root), \
                  patch.object(progress.shutil, "which", return_value="git"), \
                  patch.object(progress.subprocess, "run", side_effect=[
@@ -39,10 +39,29 @@ class SourceLinksTests(unittest.TestCase):
                 links = progress.source_links()
             self.assertEqual(links["archive"]["kind"], "archive")
             self.assertEqual(links["clone"], {
-                "kind": "file", "url": "https://github.com/owner/repo/blob/abc123/Source%20Files/"})
+                "kind": "file", "url": "https://github.com/owner/repo/blob/abc123/Source%20Files/", "files": []})
             self.assertNotIn("generated", links)
 
     def test_without_git_still_links_release_archives(self):
         with patch.object(libs, "RECIPES", {"lib": {"url": "https://example.com/v1.zip"}}), \
              patch.object(progress.shutil, "which", return_value=None):
             self.assertEqual(progress.source_links()["lib"]["url"], "https://example.com/v1.zip")
+
+    def test_only_exact_tracked_source_paths_are_linked(self):
+        import json
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "upstream/Source").mkdir(parents=True)
+            (root / "data").mkdir()
+            (root / "data/client.json").write_text(json.dumps({"funcs": [
+                [1, 1, 100, 0, True, ["clone", "good.cpp"]],
+                [2, 1, 100, 0, True, ["clone", "missing.cpp"]],
+                [3, 1, 14, 0, True, ["clone", "partial.cpp"]]]}))
+            replies = [str(root / "upstream"), "https://github.com/owner/repo.git",
+                       "abc123", "Source/good.cpp\nSource/partial.cpp"]
+            with patch.object(libs, "RECIPES", {"clone": {"src": "upstream/Source"}}), \
+                 patch.object(libs, "LIBS", root), patch.object(progress, "DOCS", root), \
+                 patch.object(progress.shutil, "which", return_value="git"), \
+                 patch.object(progress.subprocess, "run", side_effect=[
+                     SimpleNamespace(stdout=value) for value in replies]):
+                self.assertEqual(progress.source_links()["clone"]["files"], ["good.cpp"])
