@@ -65,3 +65,24 @@ class SourceLinksTests(unittest.TestCase):
                  patch.object(progress.subprocess, "run", side_effect=[
                      SimpleNamespace(stdout=value) for value in replies]):
                 self.assertEqual(progress.source_links()["clone"]["files"], ["good.cpp"])
+
+    def test_template_methods_link_to_distinct_header_definitions(self):
+        import json
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "upstream/Source").mkdir(parents=True)
+            (root / "data").mkdir()
+            symbols = ["?First@?$Tree@I@@", "?Second@?$Tree@I@@"]
+            (root / "data/client.json").write_text(json.dumps({"funcs": [
+                [i, 1, 100, 0, True, ["clone", "unit.cpp", symbol]] for i, symbol in enumerate(symbols)]}))
+            replies = [str(root / "upstream"), "https://github.com/owner/repo.git", "abc123",
+                       "Source/unit.cpp\nSource/DS_Tree.h",
+                       "void Tree<T>::First() { return; }\nvoid Tree<T>::Second() { return; }"]
+            with patch.object(libs, "RECIPES", {"clone": {"src": "upstream/Source"}}), \
+                 patch.object(libs, "LIBS", root), patch.object(progress, "DOCS", root), \
+                 patch.object(progress.shutil, "which", return_value="git"), \
+                 patch.object(progress.subprocess, "run", side_effect=[
+                     SimpleNamespace(stdout=value) for value in replies]):
+                functions = progress.source_links()["clone"]["functions"]
+                self.assertTrue(functions[symbols[0]].endswith("DS_Tree.h#L1"))
+                self.assertTrue(functions[symbols[1]].endswith("DS_Tree.h#L2"))

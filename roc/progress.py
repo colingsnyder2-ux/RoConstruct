@@ -68,11 +68,11 @@ def union_bytes(span_lists):
 def library_meta():
     """{(client, address): [library version, source file]} for matched library code."""
     try:
-        output = subprocess.run(["rg", "--json", "^// roc-lib: ", "src"], cwd=ROOT,
+        output = subprocess.run(["rg", "--json", r"^// (roc-lib: |library .*\(function )", "src"], cwd=ROOT,
                                 capture_output=True, text=True, check=True).stdout
     except (OSError, subprocess.CalledProcessError):
         return {}
-    out = {}
+    out, symbols = {}, {}
     for line in output.splitlines():
         row = json.loads(line)
         if row["type"] != "match":
@@ -81,6 +81,12 @@ def library_meta():
         match = re.match(r"// roc-lib: (\S+) (\S+)", row["data"]["lines"]["text"])
         if match:
             out[(path.parent.name, path.stem)] = list(match.groups())
+        symbol = re.search(r"\(function (.+)\)", row["data"]["lines"]["text"])
+        if symbol:
+            symbols[(path.parent.name, path.stem)] = symbol[1]
+    for key, value in out.items():
+        if key in symbols:
+            value.append(symbols[key])
     return out
 
 
@@ -94,11 +100,13 @@ def source_links():
     from roc.libs import RECIPES, LIBS
     links = {}
     git_exe = shutil.which("git")
-    requested = {}
+    requested, symbols = {}, {}
     for path in (DOCS / "data").glob("*.json"):
         for function in json.loads(path.read_text())["funcs"]:
             if len(function) > 5 and function[5] and function[2] == 100:
                 requested.setdefault(function[5][0], set()).add(function[5][1])
+                if len(function[5]) > 2:
+                    symbols.setdefault(function[5][0], set()).add(function[5][2])
     for name, recipe in RECIPES.items():
         if recipe.get("url"):
             folder = (LIBS / recipe["src"]).resolve() if recipe.get("src") else None
@@ -128,6 +136,32 @@ def source_links():
         links[name] = {"url": remote + "/blob/" + revision + "/" +
                       (quote(prefix, safe="/") + "/" if prefix != "." else ""), "kind": "file",
                       "files": sorted(file for file in requested.get(name, ()) if relative + file in tracked)}
+        definitions, headers = {}, {}
+        for symbol in symbols.get(name, ()):
+            method = re.match(r"^\?([^@?]+)@(?:\?\$)?([^@]+)@", symbol)
+            if not method:
+                continue
+            candidates = [file for file in tracked if file.startswith(relative) and
+                          file.endswith((".h", ".hpp")) and method[2].lower() in Path(file).stem.lower()]
+            if len(candidates) != 1:
+                continue
+            file = candidates[0]
+            if file not in headers:
+                headers[file] = git("show", revision + ":" + file).splitlines()
+            lines = headers[file]
+            pattern = re.compile(r"\b" + re.escape(method[2]) + r"(?:<[^;{}]*>)?::" +
+                                 re.escape(method[1]) + r"\s*\(")
+            matches = []
+            for number, line in enumerate(lines):
+                if not pattern.search(line):
+                    continue
+                signature = "\n".join(lines[number:number + 20])
+                if "{" in signature and (";" not in signature or signature.index("{") < signature.index(";")):
+                    matches.append(number + 1)
+            if len(matches) == 1:
+                definitions[symbol] = remote + "/blob/" + revision + "/" + quote(file, safe="/") + "#L" + str(matches[0])
+        if definitions:
+            links[name]["functions"] = definitions
     return links
 
 

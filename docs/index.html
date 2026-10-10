@@ -218,13 +218,15 @@ let sourceCatalog = {};
 const libraryUrl = meta => {
   if (!meta) return "";
   const origin = sourceCatalog[meta[0]];
+  if (origin?.functions?.[meta[2]]) return origin.functions[meta[2]];
   return origin?.files?.includes(meta[1]) ? origin.url + (origin.kind === "file" ? meta[1].split("/").map(encodeURIComponent).join("/") : "") : "";
 };
 const sourceLinks = (client, f, short = false) => {
   const library = f[2] === 100 ? libraryUrl(f[5]) : "";
   const harness = f[4] ? `<a href="${sourceUrl(client, f[0])}" target="_blank" rel="noopener">${f[2] < 100 ? (short ? "candidate recipe" : "View candidate code / build recipe") : f[5] ? (short ? "harness" : "View match harness") : (short ? "source" : "View recovered source")} ↗</a>` : "";
   const archive = f[5] && sourceCatalog[f[5][0]]?.kind === "archive";
-  if (library) return `<a href="${esc(library)}" target="_blank" rel="noopener">${archive ? (short ? "source archive" : "Download matched source archive") : (short ? "matched source file" : "View matched translation unit")} ↗</a>${archive ? ` <code>${esc(f[5][1])}</code>` : ""}${harness ? " · " + harness : ""}`;
+  const definition = f[5] && sourceCatalog[f[5][0]]?.functions?.[f[5][2]];
+  if (library) return `<a href="${esc(library)}" target="_blank" rel="noopener">${definition ? (short ? "function source" : "View matched function source") : archive ? (short ? "source archive" : "Download matched source archive") : (short ? "matched source file" : "View matched translation unit")} ↗</a>${archive ? ` <code>${esc(f[5][1])}</code>` : ""}${harness ? " · " + harness : ""}`;
   return harness || "No recovered source published yet";
 };
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
