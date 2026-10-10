@@ -183,6 +183,23 @@ def flag_batches(db):
             yield client, source, addrs[start:start + 1000]
 
 
+def scope(planned, families=(), clients_=()):
+    """Narrow a planned batch stream to the requested families and clients.
+
+    Batches are keyed on the source's recipe family, so scoping lets a single
+    library unit (for example raknet) be swept exhaustively instead of sharing
+    selection slots with every other family.
+    """
+    families = {value.lower() for value in families}
+    clients_ = set(clients_)
+    for client, source, addrs in planned:
+        if clients_ and client not in clients_:
+            continue
+        if families and source_family(source) not in families:
+            continue
+        yield client, source, addrs
+
+
 def key(client, source, addrs):
     return hashlib.sha256((client + "\0" + source + "\0" + ",".join(addrs)).encode()).hexdigest()
 
@@ -230,6 +247,10 @@ def main():
                       help="fingerprint C library sources using exact same-unit evidence")
     mode.add_argument("--frame-flags", action="store_true",
                       help="try measured /Ob1 /Oy- flags on exact-evidenced XTP/Roblox classes")
+    parser.add_argument("--family", action="append", default=[],
+                        help="only run sources from this recipe family (repeatable, e.g. raknet)")
+    parser.add_argument("--client", action="append", default=[],
+                        help="only run batches for this client (repeatable)")
     parser.add_argument("--server", help="override saved server address")
     args = parser.parse_args()
     settings = worker.load_settings()
@@ -247,6 +268,8 @@ def main():
                cross_client_batches(db) if args.cross_client else batches(db, partials=args.partials))
     if args.c_sources:
         planned = (item for item in planned if item[1].startswith("// roc-lang: c\n"))
+    if args.family or args.client:
+        planned = scope(planned, args.family, args.client)
     todo = list(pending_batches(planned, state))
     if args.max_batches:
         todo = todo[:args.max_batches]

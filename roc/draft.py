@@ -161,7 +161,7 @@ def output_budget(size):
         return 256
     if size <= 128:
         return 512
-    return 1024
+    return 8192
 
 
 def _ask_context(model, prompt, context=None, options=None, details=False):
@@ -807,8 +807,6 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
     best = (start[1], start[0]) if start and start[0] else (0, None)
     scored = [(best[0], best[1])] if best[1] else []
     seen = {}
-    if best[1]:
-        seen[_norm_src(best[1])] = best
     compiled_best = None
     if best[1]:
         try:
@@ -816,6 +814,8 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
             compiled_best = best
         except match.CompileError as error:
             attempt = (best[1], 0, str(error)[-1500:])
+        seen[_norm_src(best[1])] = (attempt[1], best[1],
+                                   None if compiled_best else attempt[2], attempt[2])
     else:
         attempt = None
     context = None
@@ -868,7 +868,7 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
             # chars) and medium/large targets emit no code at all. Disabling
             # it is what lets them generate; "enabled" stays opt-in.
             no_think = True
-        floor = 1024 if cloud else 0
+        floor = 8192 if cloud else 0
         ask_options.setdefault("max_tokens", max(output_budget(row.get("size", 0)), floor))
         if no_think:
             ask_options["thinking"] = "disabled"
@@ -916,7 +916,8 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
                                    "Output exceeded the token budget. Emit minimal declarations and one complete "
                                    "function, not the full class. Use char padding arrays for unknown layout gaps; "
                                    "never enumerate numbered filler fields.")
-                if cloud and not no_think and (provider_options or {}).get("thinking") != "enabled":
+                thinking_mode = (provider_options or {}).get("thinking", "auto")
+                if cloud and not no_think and thinking_mode == "auto":
                     no_think = True
                     log("  thinking disabled for remaining rounds")
             else:
@@ -991,8 +992,8 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
         if key in seen:
             score, src = seen[key][:2]
             duplicate = True
-            this = (src, score, "duplicate candidate; previous result reused")
-            compile_error = None if score else "duplicate of failed candidate"
+            compile_error = seen[key][2]
+            this = (src, score, seen[key][3])
         else:
             try:
                 checked = match.check_text(client, addr, src, flags, include_diagnosis=True)
@@ -1024,9 +1025,9 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
                     if failure_class:
                         compile_error = "[%s] %s" % (failure_class, compile_error)
                     score, this = 0, (src, 0, compile_error)
-            seen[key] = (score, src)
+            seen[key] = (score, src, compile_error, this[2])
             if key != _norm_src(this[0]):
-                seen[_norm_src(this[0])] = (this[1], this[0])
+                seen[_norm_src(this[0])] = (this[1], this[0], compile_error, this[2])
         log("  round %d: %d%%" % (i + 1, score))
         if stats is not None:
             entry = {"round": i + 1, "strategy": strategy, "candidate_mode": "independent" if independent else "repair", "score": score, "output_chars": len(reply),

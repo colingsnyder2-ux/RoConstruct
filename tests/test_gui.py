@@ -162,7 +162,7 @@ class ControlTests(unittest.TestCase):
 
     def test_invalid_config_rejected_without_change(self):
         control = gui_worker.Control(config(), lambda *args, **kw: None)
-        for changes in ({"workers": 0}, {"max_tokens": 9000}, {"server": "other:8765"},
+        for changes in ({"workers": 0}, {"max_tokens": 40000}, {"server": "other:8765"},
                         {"max_cloud_cost": float("nan")}, {"min_score": 90, "max_score": 10}):
             with self.assertRaises(ValueError):
                 control.command({"action": "update", "config": changes})

@@ -493,16 +493,16 @@ def choose_options(settings):
             raise SystemExit("Max function size must be at least 6 bytes")
         last_budget = (settings.get("worker_output_budget") if settings.get("worker_output_budget_model") == model
                        else profile.get("max_tokens", settings.get("worker_output_budget", 2048)))
-        picked = input("Output budget [%s] (auto or 128-8192): " % last_budget).strip().lower() or str(last_budget)
+        picked = input("Output budget [%s] (auto or 128-32768): " % last_budget).strip().lower() or str(last_budget)
         if picked == "auto":
             output_budget = "auto"
         else:
             try:
                 output_budget = int(picked)
             except ValueError:
-                raise SystemExit("Output budget must be auto or 128-8192")
-            if not 128 <= output_budget <= 8192:
-                raise SystemExit("Output budget must be auto or 128-8192")
+                raise SystemExit("Output budget must be auto or 128-32768")
+            if not 128 <= output_budget <= 32768:
+                raise SystemExit("Output budget must be auto or 128-32768")
         if preset == settings.get("worker_preset") and settings.get("worker_revng") is not None:
             rev_default = "on" if settings.get("worker_revng") else "off"
         else:

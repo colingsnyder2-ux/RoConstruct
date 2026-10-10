@@ -75,7 +75,7 @@ def build_hidden(limit=8, persist=True):
 
 
 def run_local(corpus, models, rounds=1, log=print, resume=False, session="benchmark", strategies=("direct",),
-              provider_options=None, family_examples=None):
+              provider_options=None, family_examples=None, candidate_dir=None):
     """Benchmark configured models without submitting or changing server state.
 
     ``family_examples`` optionally maps ``(client, addr)`` to verified source
@@ -113,6 +113,7 @@ def run_local(corpus, models, rounds=1, log=print, resume=False, session="benchm
                     continue
                 started = time.monotonic()
                 stats = []
+                _src = None
                 try:
                     examples = (family_examples or {}).get((client, addr), ())
                     score, _src = draft.llm_rounds(client, addr, model, rounds, None, (None, 0),
@@ -122,6 +123,17 @@ def run_local(corpus, models, rounds=1, log=print, resume=False, session="benchm
                     failure = None
                 except Exception as error:
                     score, failure = 0, str(error)[:300]
+                if candidate_dir is not None and _src:
+                    output = Path(candidate_dir) / client
+                    output.mkdir(parents=True, exist_ok=True)
+                    stem = output / (addr + "-" + strategy)
+                    stem.with_suffix(".cpp").write_text(_src, encoding="utf-8")
+                    stem.with_suffix(".json").write_text(json.dumps({
+                        "client": client, "addr": addr, "model": model,
+                        "strategy": strategy, "score": score, "session": session,
+                        "compiler_flags": clients.load()[client].get("flags"),
+                        "source_sha256": hashlib.sha256(_src.encode()).hexdigest(),
+                    }, indent=1), encoding="utf-8")
                 generated = [item for item in stats if isinstance(item.get("round"), int)]
                 coded = [item for item in generated if item.get("code")]
                 provider_row = next((item for item in reversed(generated) if item.get("provider")), {})

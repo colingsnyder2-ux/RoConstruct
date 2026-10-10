@@ -61,7 +61,7 @@ function workerForm(config) {
     field("Worker loops", "workers", config.workers, {placeholder:"auto or 1–256"}) +
     `</div><p class="help-note">Set worker count above, or use auto to choose per model. Automatic preserves your worker count, chooses rounds and output per function, prioritizes best evidence, and limits targets to 512 bytes. Advanced values override its defaults.</p><details class="form-section"><summary>Advanced controls</summary><div class="field-grid">` +
     field("Rounds per function", "rounds", config.rounds, {placeholder:"auto or 1–100"}) +
-    field("Output tokens", "max_tokens", config.max_tokens, {placeholder:"auto or 128–8192"}) + field("Maximum function bytes", "max_size", config.max_size, {type:"number",min:1}) +
+    field("Output tokens", "max_tokens", config.max_tokens, {placeholder:"auto or 128–32768"}) + field("Maximum function bytes", "max_size", config.max_size, {type:"number",min:1}) +
     field("Function order", "order", config.order, {choices:["random","auto","best","matched","unmatched","easiest"]}) + field("Strategy", "strategy", config.strategy, {choices:["auto","direct","structured","reference"]}) +
     field("Thinking", "thinking", config.thinking, {choices:["auto","enabled","disabled"]}) + field("Reasoning effort", "reasoning_effort", config.reasoning_effort, {choices:[["","Provider default"],"auto","low","medium","high","max"]}) +
     field("Minimum score", "min_score", config.min_score, {type:"number",min:0,max:100,placeholder:"Any"}) + field("Maximum score", "max_score", config.max_score, {type:"number",min:0,max:100,placeholder:"Any"}) +

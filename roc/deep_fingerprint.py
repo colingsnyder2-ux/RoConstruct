@@ -7,7 +7,7 @@ from collections import defaultdict, deque
 from pathlib import Path
 
 from roc import clients, libs, setup, worker
-from roc.batch_fingerprint import ROOT, REF, key, pending_batches, source_class, source_family, unit_class, unit_family
+from roc.batch_fingerprint import ROOT, REF, key, pending_batches, scope, source_class, source_family, unit_class, unit_family
 
 
 def flag_variants(source):
@@ -42,7 +42,8 @@ def local_versions(families):
     return versions
 
 
-def plan(db, min_score=85, targets=8):
+def plan(db, min_score=85, targets=8, families=()):
+    families = {value.lower() for value in families}
     evidence, labels = defaultdict(set), defaultdict(set)
     for client, unit, text in db.execute('SELECT client,unit,source FROM funcs WHERE score=100 AND source IS NOT NULL'):
         found = REF.search(text)
@@ -50,6 +51,8 @@ def plan(db, min_score=85, targets=8):
             continue
         source = found.group(1)
         family = source_family(source)
+        if families and family not in families:
+            continue
         structural = unit_family(unit)
         if family == 'wildmagic' or (structural and structural != family):
             continue
@@ -66,6 +69,8 @@ def plan(db, min_score=85, targets=8):
             proven = labels.get((client, unit), set())
             family = next(iter(proven)) if len(proven) == 1 else None
         if not family or (family, unit_class(unit)) not in evidence:
+            continue
+        if families and family not in families:
             continue
         found = REF.search(text or '')
         groups[client, family, unit_class(unit)].append((addr, score, found.group(1) if found else None))
@@ -128,6 +133,10 @@ def main():
     parser.add_argument('--max-batches', type=int, default=24, help='pilot bound; 0 means all pending batches')
     parser.add_argument('--min-score', type=int, default=85)
     parser.add_argument('--targets', type=int, default=8)
+    parser.add_argument('--family', action='append', default=[],
+                        help='only expand library sources from this recipe family (repeatable)')
+    parser.add_argument('--client', action='append', default=[],
+                        help='only expand targets for this client (repeatable)')
     parser.add_argument('--server', default='http://127.0.0.1:8765')
     parser.add_argument('--dry-run', action='store_true')
     args = parser.parse_args()
@@ -142,7 +151,7 @@ def main():
             prior.setdefault(marker, set()).update(addrs)
     state['checked'] = {marker: sorted(addrs) for marker, addrs in prior.items()}
     db = sqlite3.connect('file:%s?mode=ro' % (ROOT / 'work/server.db').as_posix(), uri=True)
-    todo = list(pending_batches(plan(db, args.min_score, args.targets), state))
+    todo = list(pending_batches(scope(plan(db, args.min_score, args.targets), args.family, args.client), state))
     db.close()
     print('pending', len(todo), 'batches', flush=True)
     if args.max_batches:

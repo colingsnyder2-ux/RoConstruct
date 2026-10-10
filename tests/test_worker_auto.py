@@ -89,7 +89,8 @@ def test_signed_launcher_keeps_auto_and_saved_output():
 @pytest.mark.parametrize("extra,rounds,tokens,size,loops,order", [
     ([], "auto", "auto", 512, "auto", "auto"),
     (["--rounds", "3", "--output-budget", "4096", "--max-size", "96", "--workers", "2", "--order", "random"],
-     3, 4096, 96, "2", "random")])
+     3, 4096, 96, "2", "random"),
+    (["--client", "all", "--output-budget", "32768"], "auto", 32768, 512, "auto", "auto")])
 def test_cli_automatic_preserves_overrides(extra, rounds, tokens, size, loops, order):
     spec = importlib.util.spec_from_file_location("roc_worker_auto_cli", Path(__file__).resolve().parents[1] / "roc.py")
     cli = importlib.util.module_from_spec(spec)
@@ -103,6 +104,33 @@ def test_cli_automatic_preserves_overrides(extra, rounds, tokens, size, loops, o
     assert run.call_args.kwargs["max_tokens"] == tokens
     assert run.call_args.kwargs["order"] == order
     assert run.call_args.kwargs["cloud_min_size"] == 0
+    assert run.call_args.kwargs["only"] is None
+
+
+def test_concurrent_cloud_auto_uses_eight_loops():
+    with patch.object(worker, "run") as run, patch.object(worker.setup, "compilers"), \
+         patch("roc.refsource.build_index"):
+        worker.run_concurrent("localhost:8765", "tester", model="deepseek:deepseek-flash",
+                              workers="auto", max_jobs=8, log=lambda _: None)
+    assert run.call_count == 8
+
+
+@pytest.mark.parametrize("budget,expected", [("16384", 16384), ("auto", "auto")])
+def test_launcher_accepts_saved_token_budget(budget, expected):
+    with patch.object(worker, "resolve_model", return_value=("local", False)), \
+         patch.object(worker, "load_settings", return_value={"worker_output_budget": budget}), \
+         patch.object(worker, "save_settings"), patch.object(worker, "keep_awake"), \
+         patch.object(worker, "run_concurrent") as run:
+        worker.main_args(dict(user="tester", server="localhost:8765"), [])
+    assert run.call_args.kwargs["max_tokens"] == expected
+
+
+@pytest.mark.parametrize("extra", [["--rounds", "0"], ["--output-budget", "0"]])
+def test_launcher_rejects_invalid_explicit_limits(extra):
+    with patch.object(worker, "resolve_model", return_value=("local", False)), \
+         patch.object(worker, "load_settings", return_value={}), \
+         pytest.raises(SystemExit, match="must be"):
+        worker.main_args(dict(user="tester", server="localhost:8765"), extra)
 
 
 def test_budget_rejection_releases_lease_and_marks_stop(tmp_path):

@@ -1199,9 +1199,9 @@ def test_compact_worker_log():
     log("  thinking disabled for remaining rounds")
     log("  tokens used: 100")
     log.finish()
-    assert "✓ C 00401020 8 B 100%" in out
-    assert "· C 00401030 8 B no gain (best 0%)" in out
-    assert out[-1] == "⛏ 32w finished | 2 done | 1 matched | 0 improved | 0 errors"
+    assert "✓ C 00401020 8 B 100% Unit" in out
+    assert "· C 00401030 8 B no gain (best 0%) Unit2" in out
+    assert out[-1] == "⛏ 32w finished | 2 done | 1 matched | 1 improved | 0 errors"
 
 
 def test_server_store():
@@ -1346,7 +1346,9 @@ def test_server_fingerprint_exact_first_keeps_data_verification():
              patch("roc.server.match.data_check", return_value=([(123, 4)], bad)):
             rows = server.check_many_text("C", ["00401000"], "source")
             assert rows == [("00401000", 99 if bad else 100, [] if bad else [(123, 4)])]
-            refs.assert_called_once_with(b"obj", "first_exact")
+            assert [c.args for c in refs.call_args_list] == (
+                [(b"obj", "first_exact"), (b"obj", "second_exact")] if bad
+                else [(b"obj", "first_exact")])
             assert scored.call_count == 1
 
 

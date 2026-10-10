@@ -1,0 +1,402 @@
+[
+ {
+  "client": "2009-06",
+  "addr": "00893b80",
+  "size": 25,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "008943b0",
+  "size": 25,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "008943d0",
+  "size": 25,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "008943f0",
+  "size": 25,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "00894410",
+  "size": 25,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "00893a10",
+  "size": 10,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "00893ba0",
+  "size": 10,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "00893bb0",
+  "size": 10,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "00893bc0",
+  "size": 10,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "00893bd0",
+  "size": 10,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "008939c0",
+  "size": 1,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "00894080",
+  "size": 1,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "00894090",
+  "size": 1,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "008940a0",
+  "size": 1,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "00894120",
+  "size": 1,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "008929b0",
+  "size": 12,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "008929c0",
+  "size": 12,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "008929d0",
+  "size": 12,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "00892a40",
+  "size": 12,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "00892a90",
+  "size": 12,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "008947b0",
+  "size": 11,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "00894cd0",
+  "size": 11,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "00894e00",
+  "size": 11,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "00894e10",
+  "size": 11,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "00894eb0",
+  "size": 11,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "00895590",
+  "size": 11,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "008972a0",
+  "size": 11,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "008978f0",
+  "size": 11,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "00897900",
+  "size": 11,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "00897910",
+  "size": 11,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "00892750",
+  "size": 12,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "00892760",
+  "size": 12,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "008928b0",
+  "size": 12,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "00892930",
+  "size": 12,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "008929e0",
+  "size": 12,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "00894370",
+  "size": 56,
+  "unit": "seg_00890000",
+  "bucket": "medium",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "008948b0",
+  "size": 56,
+  "unit": "seg_00890000",
+  "bucket": "medium",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "008948f0",
+  "size": 56,
+  "unit": "seg_00890000",
+  "bucket": "medium",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "00897890",
+  "size": 56,
+  "unit": "seg_00890000",
+  "bucket": "medium",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "008998d0",
+  "size": 56,
+  "unit": "seg_00890000",
+  "bucket": "medium",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "008926e0",
+  "size": 5,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "008926f0",
+  "size": 5,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "00892700",
+  "size": 5,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "008963c0",
+  "size": 5,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "008963d0",
+  "size": 5,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "00892b00",
+  "size": 22,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "00893670",
+  "size": 22,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "00893760",
+  "size": 22,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "008937b9",
+  "size": 22,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ },
+ {
+  "client": "2009-06",
+  "addr": "008937cf",
+  "size": 22,
+  "unit": "seg_00890000",
+  "bucket": "tiny",
+  "source_present": false
+ }
+]

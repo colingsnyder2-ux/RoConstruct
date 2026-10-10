@@ -93,6 +93,24 @@ CLOUD_DEFAULTS = ("deepseek:deepseek-flash", "nvidia:qwen/qwen2.5-coder-32b-inst
                   "openai:gpt-5-mini", "gemini:gemini-2.5-flash")
 
 
+def resolve_workers(workers, model=None, source_only=False):
+    from roc import providers
+    if str(workers).lower() == "auto":
+        if source_only:
+            workers = 1
+        elif providers.is_cloud(model):
+            workers = 8 if str(model).startswith("deepseek:") else 4
+        else:
+            workers = 2 if re.search(r":7b(?:-|$)", str(model).lower()) else 1
+    return max(1, min(int(workers or 1), MAX_WORKERS))
+
+
+def resolve_output_tokens(job, max_tokens):
+    if max_tokens != "auto":
+        return max_tokens
+    return 1024 if job.get("size", 999999) <= 64 and not job.get("calls", 0) else 2048
+
+
 def cloud_default():
     """The cheapest cloud model whose key is already set, or None."""
     from roc import providers
@@ -332,10 +350,10 @@ def main_args(payload, argv=()):
     import argparse
     from roc import providers
     ap = argparse.ArgumentParser(prog="roc launch", description="Run the worker from the signed setup config.")
-    ap.add_argument("--client", help="override the client from the config ('all' means every ready client)")
+    ap.add_argument("--client", help="override the client from the config")
     ap.add_argument("--model", help="override the model from the config")
     ap.add_argument("--workers", help="bounded concurrent lease loops (1-256 or auto)")
-    ap.add_argument("--rounds", type=int, help="AI tries per function")
+    ap.add_argument("--rounds", type=lambda v: v if v == "auto" else int(v), help="AI tries per function (or auto)")
     ap.add_argument("--max-size", type=int, help="skip functions bigger than this")
     ap.add_argument("--jobs", type=int, help="stop after this many functions")
     ap.add_argument("--order", choices=["auto", "best", "matched", "unmatched", "easiest", "random"],
@@ -356,7 +374,7 @@ def main_args(payload, argv=()):
     ap.add_argument("--thinking", choices=["auto", "enabled", "disabled"], help="provider reasoning mode")
     ap.add_argument("--reasoning-effort", choices=["auto", "low", "medium", "high", "max"],
                     help="provider reasoning effort")
-    ap.add_argument("--output-budget", type=int, help="max tokens per reply (128-8192)")
+    ap.add_argument("--output-budget", type=lambda v: v if v == "auto" else int(v), help="max tokens per reply (128-32768 or auto)")
     ap.add_argument("--allow-cloud", action="store_true", help="allow prompts to leave this PC")
     ap.add_argument("--cloud-concurrency", type=int, help="max concurrent cloud requests")
     ap.add_argument("--max-cloud-requests", type=int, help="cloud request budget for this worker")
@@ -379,9 +397,13 @@ def main_args(payload, argv=()):
         client = None
     model, cloud_allowed = resolve_model(payload)
     is_cloud = providers.is_cloud(model)
-    rounds = given.rounds if given.rounds else 4
-    max_size = given.max_size if given.max_size else 256
-    workers = given.workers or ("auto" if is_cloud else 1)
+    s = load_settings()
+    rounds = given.rounds if given.rounds is not None else s.get("worker_rounds", 4)
+    if rounds != "auto" and (type(rounds) is not int or not 1 <= rounds <= 100):
+        raise SystemExit("--rounds must be auto or 1-100")
+    max_size = given.max_size if given.max_size is not None else s.get("worker_max_size", 256)
+    workers = given.workers or s.get("worker_workers", "auto" if is_cloud else 1)
+    use_revng = not given.no_revng and s.get("worker_revng", True)
     if given.allow_cloud:
         cloud_allowed = True
     escalate = given.cloud_escalate
@@ -391,17 +413,18 @@ def main_args(payload, argv=()):
         if not providers.available(escalate):
             _p, _r, config = providers.parse_model(escalate)
             raise SystemExit("Cloud key missing for %s: set %s" % (escalate, config["key_env"]))
-    try:
-        saved_budget = int(load_settings().get("worker_output_budget") or 0)
-    except (TypeError, ValueError):
-        saved_budget = 0
-    max_tokens = given.output_budget or saved_budget or 2048
-    if not 128 <= max_tokens <= 8192:
-        raise SystemExit("--output-budget must be 128-8192")
+    max_tokens = given.output_budget if given.output_budget is not None else s.get("worker_output_budget") or 2048
+    if max_tokens != "auto":
+        try:
+            max_tokens = int(max_tokens)
+        except (TypeError, ValueError):
+            raise SystemExit("--output-budget must be auto or 128-32768") from None
+    if max_tokens != "auto" and not 128 <= max_tokens <= 32768:
+        raise SystemExit("--output-budget must be auto or 128-32768")
     thinking = given.thinking or "auto"
     gate = providers.CloudGate(given.cloud_concurrency) if given.cloud_concurrency is not None else None
-    order = given.order or load_settings().get("worker_order", "random")
-    verbosity = given.verbosity or load_settings().get("worker_verbosity", "auto")
+    order = given.order or s.get("worker_order", "random")
+    verbosity = given.verbosity or s.get("worker_verbosity", "auto")
     family_id = given.family_id or (family_from_example(given.family_example) if given.family_example else None)
     if given.family_example and not family_id:
         raise SystemExit("Unknown family example; use CLIENT:ADDRESS")
@@ -435,7 +458,7 @@ def main_args(payload, argv=()):
     if given.dry_run:
         return None
     keep_awake()
-    return run_concurrent(server, user, token, model, rounds, max_size, not given.no_revng,
+    return run_concurrent(server, user, token, model, rounds, max_size, use_revng,
                           given.jobs, workers=workers, only=only_clients(client),
                           cloud_allowed=cloud_allowed, cloud_budget=budget,
                           max_tokens=max_tokens, thinking=thinking, order=order,
@@ -728,9 +751,10 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
         think, effort = auto_reasoning(job, thinking, reasoning_effort, job_model)
         if thinking == "auto" and think == "disabled":
             log("  auto-think: thinking disabled")
+        job_max_tokens = resolve_output_tokens(job, "auto") if max_tokens == "auto" else max_tokens
         provider_options = {"allow_cloud": cloud_allowed, "budget": cloud_budget,
                             "gate": cloud_gate, "diverse_candidates": diverse_candidates,
-                            "seed": seed, "max_tokens": max_tokens,
+                            "seed": seed, "max_tokens": job_max_tokens,
                             "guided_mutations": guided_mutations,
                             "family_exemplars": family_exemplars,
                             "near_repair": near_repair,
@@ -754,7 +778,12 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
         failures += score == 0
         if control is not None:
             control.finished(slot, job, score)
+            if provider_options and provider_options.get("budget_exhausted"):
+                control.command({"action": "stop"})
         save_session_state(worker, user, model, done, matched, failures)
+        if provider_options.get("budget_exhausted"):
+            log("Cloud budget exhausted; worker stopped.")
+            break
         if done % 10 == 0:
             log("== %s: %d functions tried, %d matched this session ==" % (time.strftime("%H:%M"), done, matched))
             report = metrics.summary(session)
@@ -781,10 +810,7 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
     I/O-bound (remote inference), so the cap is generous; local GPU loops
     should stay low so laptop users do not oversubscribe.
     """
-    if str(workers).lower() == "auto":
-        # Conservative: small models can overlap; large models stay serial.
-        workers = 2 if "7b" in str(model).lower() else 1
-    workers = max(1, min(int(workers or 1), MAX_WORKERS))
+    workers = resolve_workers(workers, model, source_only)
     if cloud_gate is None:
         from roc import providers
         cloud_gate = providers.CloudGate(workers)
@@ -859,7 +885,7 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
         raise
     if errors:
         raise errors[0]
-    if workers > 3:
+    if hasattr(worker_log, "finish"):
         worker_log.finish()
 
 
@@ -1175,6 +1201,8 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
             failure_reason = "api"
         else:
             failure_reason = "worker_error"
+        if failure_reason == "cloud_budget" and provider_options is not None:
+            provider_options["budget_exhausted"] = True
         if getattr(error, "category", "") == "provider_circuit":
             provider, _remote, _config = providers.parse_model(model)
             log("  cloud circuit open; waiting 60s before retrying %s." % provider)
