@@ -22,8 +22,13 @@ partials or change global client settings. Count unique client/address pairs.
 | Successful single-option hypotheses on other library files | 12 cohorts, 0 exacts | Park |
 | Each receiving client's registered original compiler build | 12 cohorts, 0 exacts | Park; this does not disprove all alternate builds |
 | Combine security cookies and C++ exceptions | 6 unique cohorts, 100 exacts | Exhausted this initial combination source form |
-| Transfer that combination to other winning source files | 12 cohorts, 83 exacts | Full frozen pool running |
+| Transfer that combination to other winning source files | 12 cohorts, 83 exacts | Full frozen pool finished: 654 cohorts, 1,661 exacts; zero errors |
 | Combined-setting winners on non-CXT/unnamed functions | 12 cohorts, 13 exacts | Full frozen pool finished: 75 exacts |
+| New combined forms on non-CXT/unnamed functions | 12 cohorts, 13 exacts | Full frozen pool running |
+| Frame-pointer preservation/inlining on combined winners | 12 cohorts, 1 exact | Park; all eligible named and anonymous targets checked per cohort |
+| Size/speed optimization and string pooling on combined winners | 12 cohorts, 0 exacts | Park |
+| Expand proven builds to other installed files with unresolved named-class evidence | 12 cohorts, 0 exacts | Park; only three file families sampled, so coverage remains weak |
+| Broader installed-file pilot | 12 filenames × 7 clients, 1 new exact | Park; 21 compile-error cohorts preserved |
 
 The important discovery is a **per-source/per-target** interaction between `/GS`
 and `/EHsc`. Neither a blanket configuration change nor a universal ABI rule is
@@ -84,6 +89,39 @@ Fresh-donor propagation/layout recovery waits for the existing sweeps **and** th
 prepared loop, then loads live server sources. This captures newly accepted donors
 instead of relying on older cached snapshots.
 
+Additional branch `combo-codegen` keeps verified cookie/exception settings and
+changes only frame-pointer preservation or inline expansion. Its 12-cohort pilot
+found one new server exact and was parked. `combo-optimization` separately changes
+one option group: `/O1`, `/Os`, `/Ot`, or `/GF-`. Compiler, source, CRT and calling
+convention remain pinned; baseline object matches are excluded. Both branches
+include anonymous targets and exclude the other agent's reserved shapes. No claim
+about correctness or library build settings comes from flags alone.
+
+`combo-newfiles` retains the successful compiler/language/flags/recipe and substitutes
+an installed source path whose `C` + filename stem appears as an unresolved class.
+Check all eligible targets, including anonymous functions. Class names rank the
+pilot; only compiled byte/data matches and server verification establish a gain.
+Future manifests exclude previously planned combination source forms. The first
+frozen pilot included one previously planned named-class cohort, now tested with a
+wider anonymous-inclusive pool; preserve that original manifest and outcome.
+Its pilot concentrated on CommandBar, ReportControl and ControlGallery. This is
+not evidence that all other source files fail; a follow-up requires broader file
+diversity rather than repeating these cohorts. SDK preprocessing compile failures
+are logged, with no guessed declarations added to make the library compile.
+
+`combo-newfiles-diverse` addresses that sampling weakness: exclude all three
+previously sampled filenames, choose twelve distinct remaining filenames by
+unresolved-class count, and check each selected pinned source on every allowed
+client (84 cohorts). Only after this broader pilot does its own conditional scale
+decision run. Tests verify twelve-file diversity and seven-client coverage.
+Completed: 84 cohorts yielded one new server exact. Three local matches were
+submitted, but only one response reported a verified improvement, so count one.
+Twenty-one compile-error cohorts are unresolved, not evidence of failed matching.
+
+After the combined-transfer sweep, this branch ledger held 1,875 unique server
+exacts. The frame/inlining pilot added one; subsequent late-spillover gains are
+recorded separately. These are campaign gains, not a global completion percentage.
+
 ## Reproduction and records
 
 ```text
@@ -96,7 +134,7 @@ server responses, errors, source/object hashes, timing, pilot decisions, cached
 objects, cache-validation.json, loop-state.json and later-stage logs. No source or
 layout claim is accepted from a hypothesis alone. Cloud spend for these branches: $0.
 
-Validation checkpoint: 280 tests passed, one unrelated budget-persistence test
+Validation checkpoint: 284 tests passed, one unrelated budget-persistence test
 deselected because another worker raised its configured cap. Focused tests cover
 flag isolation, combined settings, duplicate-stage locks, preservation of the parent
 manifest, and duplicate-plan suppression. Existing unrelated edits are untouched.
