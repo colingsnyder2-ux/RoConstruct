@@ -8,7 +8,8 @@ from pathlib import Path
 import psutil
 
 from benchmarks import class_layout, match_campaign
-from benchmarks.followup_pilots import OLD, ROOT, excluded_shapes, live
+from benchmarks.followup_pilots import OLD, ROOT, live
+from benchmarks.library_branches import reserved_shapes
 
 
 class FreshCampaign(match_campaign.Campaign):
@@ -35,14 +36,17 @@ def main():
     root = ROOT / "fresh-donors"
     root.mkdir(parents=True, exist_ok=True)
     (root / "queue.json").write_text(json.dumps({"pids": args.wait_pids, "state": "waiting"}), encoding="utf-8")
-    while any(p.is_running() for p in waiting):
+    while (any(p.is_running() for p in waiting) or
+           any(any(module in (p.info.get("cmdline") or [])
+                   for module in ("benchmarks.library_branches", "benchmarks.branch_loop"))
+               for p in psutil.process_iter(["cmdline"]))):
         time.sleep(10)
     for stage in ("propagation", "class-layout"):
         src, dst = OLD / (stage + ".jsonl"), root / (stage + ".jsonl")
         if src.exists() and not dst.exists():
             shutil.copyfile(src, dst)
     campaign = FreshCampaign(str(root), "http://127.0.0.1:8765")
-    excluded = excluded_shapes()
+    excluded = reserved_shapes()
     original_index = match_campaign.family_index
 
     def indexes(campaign):
