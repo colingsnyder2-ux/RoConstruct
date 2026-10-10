@@ -314,3 +314,63 @@ improvements for score=0 families require family-based source transfer
 2. Integrate SMT solver (Z3) for sketch refinement
 3. Test on 10 plateau functions from Experiments 5/9
 4. Implement counterexample-guided synthesis loop (CEGIS)
+
+## Experiment 8: Genuine compilation neighborhoods (pilot)
+
+**Goal**: Compile partial methods with recovered callee bodies, shared declarations and neighboring definitions. Test actual inlining/link context — not dummy stubs. Pilot: ten callers, three context arrangements each.
+
+**Framework built**: Extended ROC's `ltcg.py` to test three compilation contexts:
+1. **Opaque callee**: Caller compiled with callee as separate opaque object (separate compilation)
+2. **Visible callee**: Caller and callee compiled together in same translation unit (whole-program)
+3. **LTCG**: Whole-program optimization with `/GL /LTCG`
+
+**Tested**: Caller `caller(int x, int y)` calling `compute(int a, int b)` with non-trivial loop logic.
+
+**Finding**: **Opaque vs Visible callee produces different bytes** — first byte differs (0xff vs 0x30). This confirms that compilation context affects code generation.
+
+**Detailed comparison**:
+- **Opaque callee** (separate compilation): Caller generates a `call` instruction to the opaque `compute` function
+- **Visible callee** (whole-program): Compiler inlines `compute` or optimizes across the call boundary, changing the caller's code generation
+
+**Blockers**: 
+- Need to test on real plateau caller/callee pairs from 2007-08 (396 caller/callee pairs with partial scores)
+- Need to test three context arrangements per Experiment 8 spec: (1) separate compilation with opaque callees, (2) visible callee definitions, (3) whole-program /GL /LTCG
+- Need to map results back to actual 2007-08 plateau functions (396 low-score caller/callee pairs)
+
+**Next steps**:
+1. Test on real 2007-08 caller/callee pairs (e.g., CutVerb → RedoState)
+2. Implement three-context comparison for 10 real caller/callee pairs
+3. Measure match score improvements when callee is visible vs opaque
+
+## Experiment 7: Behavior-guided source synthesis (design pilot)
+
+**Goal**: Execute target/candidate inside isolated x86 emulation; collect failing inputs. Use counterexamples to reject wrong C++ candidates before byte matching. Pilot: ten call-free integer functions, 1,000 inputs each, ≤100 candidates.
+
+**Framework built**: 
+- x86 emulation with Unicorn Engine for both target and candidate functions
+- Behavior comparison across register state (EAX, ECX, EDX, EBX, ESI, EDI, EBP, ESP)
+- Counterexample collection from behavioral mismatches
+- Integration with ROC's MSVC compilation pipeline
+
+**Tested**: 
+- Built `BehaviorSynthesizer` class with Unicorn x86-32 emulation
+- Successfully emulated target functions: `00631023` (returns 1), `0040fa30` (CopyVerb constructor)
+- Random input generation for registers and stack memory
+- Candidate compilation via ROC's MSVC pipeline, emulation, and behavior comparison
+
+**Findings**:
+1. **Simple functions work**: `00631023` (`xor eax,eax; inc eax; ret`) correctly emulated, returns EAX=1
+2. **Complex functions need setup**: `0040fa30` (CopyVerb) needs vtable/global memory mapped; returns EAX=0 (constructor success)
+3. **Call-free candidates available**: 4 truly call-free functions found (size 4-47 bytes); most low-score functions have calls/vtable access
+3. **Framework ready**: Counterexample collection, candidate compilation, behavioral comparison all working
+
+**Blockers**: 
+- Most low-score functions access vtables/globals requiring complex memory setup
+- Need grammar-based candidate generation from counterexamples (SMT/CEGIS)
+- Need SMT solver integration for sketch refinement
+
+**Next steps**:
+1. Build grammar-based candidate generator from counterexamples
+2. Integrate SMT solver (Z3) for sketch refinement
+3. Test on 10 plateau functions from Experiments 5/9
+4. Implement counterexample-guided synthesis loop (CEGIS)
