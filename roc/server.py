@@ -110,6 +110,7 @@ CREATE INDEX IF NOT EXISTS mining_events_day ON mining_events(ts);
 CREATE INDEX IF NOT EXISTS events_day ON events(ts);
 CREATE TABLE IF NOT EXISTS workers(id TEXT PRIMARY KEY, user TEXT, mode TEXT, last_seen REAL);
 CREATE INDEX IF NOT EXISTS funcs_open ON funcs(client, score, attempts, size);
+CREATE INDEX IF NOT EXISTS leases_target ON leases(client, addr);
 """
 
 
@@ -134,6 +135,9 @@ class Store:
             self.db.execute("ALTER TABLE funcs ADD COLUMN difficulty REAL DEFAULT 0")
         if "attempts_by_model" not in columns:
             self.db.execute("ALTER TABLE funcs ADD COLUMN attempts_by_model TEXT DEFAULT '{}'")
+        self.db.execute("CREATE INDEX IF NOT EXISTS funcs_lease_pool ON funcs "
+                        "(client,score,size,cooldown,unit,attempts,source_confidence,difficulty,addr)")
+        self.db.commit()
         self.lock = threading.Lock()
         self.lease_seconds = lease_seconds
 
@@ -193,13 +197,18 @@ class Store:
                 else:
                     self.db.commit()
                     return None
-            candidates = self.db.execute(
-                "SELECT client, addr, size, unit, score, source, shape, calls, source_confidence, difficulty, attempts_by_model, family FROM funcs f "
+            keys = self.db.execute(
+                "SELECT client, addr FROM funcs f "
                 "WHERE client IN (%s) AND score < 100 AND size BETWEEN 6 AND ? AND cooldown <= ? %s%s%s%s AND NOT EXISTS "
                 "(SELECT 1 FROM leases l WHERE l.client = f.client AND l.addr = f.addr) "
                 "ORDER BY %s LIMIT 64" % (marks, target_sql, family_sql, unit_sql, score_sql,
                                           ORDER_SQL[resolve_order(order, self.db)]),
                 (*have, max_size, now, *target_args, *family_args, *unit_args, *score_args)).fetchall()
+            # Fetch source/metadata only for the sampled functions; avoid sorting
+            # every eligible function's large source text while holding the lock.
+            candidates = [self.db.execute(
+                "SELECT client,addr,size,unit,score,source,shape,calls,source_confidence,difficulty,attempts_by_model,family "
+                "FROM funcs WHERE client=? AND addr=?", key).fetchone() for key in keys]
             row = None
             if candidates:
                 # Do not burn the same model repeatedly on a stubborn target when
@@ -446,6 +455,7 @@ def export(store):
 
 
 def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None):
+    lease_slots = threading.BoundedSemaphore(8)
     class Handler(BaseHTTPRequestHandler):
         # Api keeps one HTTP connection per worker. HTTP/1.0 closes it after
         # every response, rapidly exhausting Windows ephemeral ports locally.
@@ -530,7 +540,10 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None):
                 have = [c for c in body.get("clients", []) if isinstance(c, str)]
                 if not have:
                     return self.send(400, {"error": "no clients"})
-                job = store.lease(user, str(body.get("worker", ""))[:64], have,
+                if not lease_slots.acquire(blocking=False):
+                    return self.send(503, {"error": "lease queue busy; retry shortly"})
+                try:
+                    job = store.lease(user, str(body.get("worker", ""))[:64], have,
                                   str(body.get("mode", ""))[:16], int(body.get("max_size", 256)),
                                   str(body.get("model", ""))[:120] or None,
                                   body.get("targets"),
@@ -539,6 +552,8 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None):
                                   unit=(str(body["unit"])[:160] if body.get("unit") else None),
                                   min_score=(int(body["min_score"]) if body.get("min_score") is not None else None),
                                   max_score=(int(body["max_score"]) if body.get("max_score") is not None else None))
+                finally:
+                    lease_slots.release()
                 return self.send(200, {"job": job})
             if path == "/v1/heartbeat":
                 return self.send(200, {"ok": store.heartbeat(str(body.get("lease", "")))})
@@ -637,6 +652,8 @@ def import_startup_matches(store, can_verify, log=print):
     """Import local automatic/library matches without delaying server startup."""
     from roc import auto
     for name in sorted(can_verify):
+        if clients.load().get(name, {}).get("donor"):
+            continue
         done = {a for a, s in store.scores().get(name, {}).items() if s == 100}
         found = auto.solve(name, skip=done, log=lambda *a: None)
         import_auto_matches(store, name, found, log)
