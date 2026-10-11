@@ -104,6 +104,10 @@ CREATE TABLE IF NOT EXISTS funcs(client TEXT, addr TEXT, size INT, unit TEXT,
 CREATE TABLE IF NOT EXISTS leases(id TEXT PRIMARY KEY, client TEXT, addr TEXT,
   user TEXT, worker TEXT, expires REAL);
 CREATE TABLE IF NOT EXISTS events(ts REAL, client TEXT, addr TEXT, user TEXT, old INT, new INT);
+CREATE TABLE IF NOT EXISTS mining_events(id INTEGER PRIMARY KEY, ts REAL, client TEXT, addr TEXT,
+  user TEXT, model TEXT, old INT, new INT, verified INT);
+CREATE INDEX IF NOT EXISTS mining_events_day ON mining_events(ts);
+CREATE INDEX IF NOT EXISTS events_day ON events(ts);
 CREATE TABLE IF NOT EXISTS workers(id TEXT PRIMARY KEY, user TEXT, mode TEXT, last_seen REAL);
 CREATE INDEX IF NOT EXISTS funcs_open ON funcs(client, score, attempts, size);
 """
@@ -250,7 +254,7 @@ class Store:
                                 (time.time() + delay, row[0], row[1]))
             self.db.commit()
 
-    def submit(self, client, addr, user, score, source, data=None, lease=None):
+    def submit(self, client, addr, user, score, source, data=None, lease=None, model="", verified=False):
         """Keep the source if it beats the stored score. Returns (stored score, improved)."""
         now = time.time()
         with self.lock:
@@ -267,8 +271,23 @@ class Store:
             self.db.execute("UPDATE funcs SET score=?, source=?, user=?, updated=?, data=? WHERE client=? AND addr=?",
                             (score, source, user, now, json.dumps(data) if data else None, client, addr))
             self.db.execute("INSERT INTO events VALUES(?,?,?,?,?,?)", (now, client, addr, user, row[0], score))
+            self.db.execute("INSERT INTO mining_events(ts,client,addr,user,model,old,new,verified) VALUES(?,?,?,?,?,?,?,?)",
+                            (now, client, addr, user, str(model)[:120], row[0], score, int(verified)))
             self.db.commit()
             return score, True
+
+    def daily_stats(self, day=None, timezone="America/New_York"):
+        from roc.daily_stats import day_bounds, summarize
+        day, start, end = day_bounds(day, timezone)
+        with self.lock:
+            rows = self.db.execute("SELECT id,ts,client,addr,user,model,old,new,verified FROM mining_events "
+                                   "WHERE ts >= ? AND ts < ?", (start, end)).fetchall()
+            legacy = self.db.execute("SELECT COUNT(DISTINCT client || ':' || addr) FROM events e "
+                                     "WHERE ts >= ? AND ts < ? AND new = 100 AND old < 100 AND client != '2009-12' "
+                                     "AND NOT EXISTS (SELECT 1 FROM mining_events m WHERE m.ts=e.ts AND m.client=e.client AND m.addr=e.addr)",
+                                     (start, end)).fetchone()[0]
+        fields = ("id", "ts", "client", "addr", "user", "model", "old", "new", "verified")
+        return summarize([dict(zip(fields, row)) for row in rows], day, timezone, legacy)
 
     def leaderboard(self, client=None):
         """Overall ranking, or one client's when client is given."""
@@ -463,6 +482,11 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None):
                 return self.send(200, store.status())
             if url.path == "/v1/leaderboard":
                 return self.send(200, store.leaderboard())
+            if url.path == "/v1/daily-stats":
+                try:
+                    return self.send(200, store.daily_stats(q.get("date")))
+                except ValueError as error:
+                    return self.send(400, {"error": str(error)})
             if url.path == "/v1/export":
                 return self.send(200, export(store))
             if url.path == "/v1/source":
@@ -543,7 +567,8 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None):
                         return self.send(400, {"error": str(error)})
                 try:
                     stored, improved = store.submit(client, addr, user, max(0, min(100, score)), source, spans,
-                                                    str(body.get("lease", "")) or None)
+                                                    str(body.get("lease", "")) or None,
+                                                    model=body.get("model", ""), verified=verified)
                 except ValueError as error:
                     return self.send(400, {"error": str(error)})
                 if body.get("lease"):
@@ -573,7 +598,8 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None):
                 for addr, score, spans in checked:
                     previous = (store.best(client, addr) or {}).get("score", 0)
                     try:
-                        stored, improved = store.submit(client, addr, user, score, source, spans)
+                        stored, improved = store.submit(client, addr, user, score, source, spans,
+                                                        model=body.get("model", ""), verified=True)
                     except ValueError as error:
                         return self.send(400, {"error": str(error)})
                     if improved and server_mine_log is not None:
@@ -659,6 +685,27 @@ def serve(host="0.0.0.0", port=8765, db=None, token=None, lease_seconds=900,
     httpd = ThreadingHTTPServer((host, port), make_handler(store, token, can_verify,
                                                        mine_log=mine_log, server_mine_log=server_mine_log))
     httpd.store = store
+    def daily_reports():
+        from roc.daily_stats import archive_days, save
+        archived = False
+        previous_day = None
+        while True:
+            try:
+                if not archived:
+                    archive_days(store, Path(db).parent / "reports" / "daily")
+                    archived = True
+                report = store.daily_stats()
+                directory = Path(db).parent / "reports" / "daily"
+                if previous_day and previous_day != report["date"]:
+                    save(store.daily_stats(previous_day), directory)
+                save(report, directory)
+                previous_day = report["date"]
+                from roc.leaderboard import publish_yesterday
+                publish_yesterday(store, directory)
+            except (OSError, sqlite3.Error, ValueError, RuntimeError) as error:
+                log("Daily report failed: %s" % error)
+            time.sleep(60)
+    threading.Thread(target=daily_reports, daemon=True).start()
     log("RoConstruct server running on port %d. Workers connect with:  roc worker --server http://<this-pc>:%d"
         % (port, port))
     threading.Thread(target=import_startup_matches, args=(store, can_verify, log), daemon=True).start()

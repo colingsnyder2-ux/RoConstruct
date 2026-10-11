@@ -387,7 +387,7 @@ def test_packages_split_keeps_maintainer_modules_out():
     build = load_build()
     worker_modules = set(build.WORKER_MODULES)
     server_modules = set(build.SERVER_MODULES)
-    assert server_modules == {"server", "discord", "progress", "dataset"}
+    assert server_modules == {"server", "discord", "leaderboard", "progress", "dataset"}
     assert not (worker_modules & server_modules), "helper packages must not carry server code"
     for helper in ("worker", "link", "handoff", "doctor", "setup", "analyze", "draft", "providers"):
         assert helper in worker_modules, "%s must ship to helpers" % helper

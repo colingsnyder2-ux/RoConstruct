@@ -188,15 +188,32 @@ function clientPage() {
 function settings() {
   return heading("", "Settings", "Interface, theme, provider credentials, and dashboard lifecycle.") + `<div class="settings-stack"><form id="preferences-form" class="panel panel-pad"><h2>When a roconstruct:// link opens</h2><p class="help-note">Choose how website work links launch. “Ask every time” offers terminal or webpage before setup.</p><div class="field-grid">${field("URI interface", "uri_mode", meta.uri_mode, {choices:[["ask","Ask every time"],["terminal","Terminal"],["web","Webpage"]]})}${field("Appearance", "theme", meta.preferences.theme, {choices:["dark","light"]})}</div><div class="form-footer">${button("Save preferences", 'type="submit"')}</div></form><form id="provider-form" class="panel panel-pad"><h2>Provider credentials</h2><p class="help-note">Stored in ROC's user-local secrets file. Keys never enter run history or frontend storage.</p><div class="field-grid">${field("Provider", "provider", "", {choices:meta.providers.map(provider=>[provider.name,provider.name+(provider.ready ? " · ready" : " · key missing")])})}${field("API key", "key", "", {type:"password"})}</div><div class="form-footer">${button("Save key", 'type="submit"')}</div></form><div class="panel panel-pad"><h2>Session & lifecycle</h2><p class="help-note">Browser tabs may close freely. Dashboard process owns jobs. Exit stops active process trees. Provider requests already sent may still bill.</p><button class="button secondary" id="exit-dashboard">Exit ROC dashboard</button></div></div>`;
 }
+function miningPage() {
+  const day=new Intl.DateTimeFormat("en-CA",{timeZone:"America/New_York",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
+  return heading("", "Server Mining", "Daily server-verified exact gains · America/New_York", button("Refresh", 'id="refresh-mining"', true)) + `<div class="field-grid"><label class="field"><span>Day</span><input id="mining-date" type="date" value="${day}"></label></div><div id="mining-report" aria-live="polite"><p>Loading daily gains…</p></div>`;
+}
+async function loadMining() {
+  const date=$("#mining-date").value, node=$("#mining-report");
+  node.innerHTML="<p>Loading daily gains…</p>";
+  try {
+    const report=await api("daily-stats?date="+encodeURIComponent(date));
+    if(!node.isConnected || $("#mining-date").value!==date)return;
+    const table=(title,rows,people=false)=>`<section class="panel panel-pad"><h2>${title}</h2>${rows.length ? `<table class="run-list"><thead><tr><th>${people ? "PERSON" : "NAME"}</th><th>EXACT GAINS</th>${people ? "<th>MODELS USED</th>" : ""}</tr></thead><tbody>${rows.map(row=>`<tr><td>${esc(row.name)}</td><td>${row.exacts}</td>${people ? `<td>${row.models.map(model=>esc(model.name)+" · "+model.exacts).join("<br>")}</td>` : ""}</tr>`).join("")}</tbody></table>` : "<p>No verified gains recorded.</p>"}</section>`;
+    node.innerHTML=`<div class="section-heading"><h2>${report.exacts} exact gains · ${esc(report.date)}</h2></div>`+table("People",report.people,true)+table("Models",report.models)+table("Server Mining",report.server_mining)+table("Clients",report.clients)+`<p class="help-note">Each client/address counted once per day. Historical events missing verification/model metadata: ${report.legacy_unattributed_exacts}; excluded from verified totals.</p>`;
+  } catch(error) { if(node.isConnected)node.innerHTML=`<p>${esc(error.message)}</p>`; }
+}
+document.addEventListener("click",event=>{if(event.target.closest("#refresh-mining"))loadMining();});
+document.addEventListener("change",event=>{if(event.target.id==="mining-date")loadMining();});
 function render(config) {
   if (!meta) return;
   document.querySelectorAll(".sidebar [data-page]").forEach(button=>button.classList.toggle("active",button.dataset.page===page));
-  $("#page-name").textContent = {overview:"Overview",workers:"Workers",commands:"Commands",clients:"Clients",history:"Run history",functions:"Functions",settings:"Settings"}[page];
-  $("#main").innerHTML = page==="overview" ? overview() : page==="workers" ? workers(config) : page==="commands" ? commands() : page==="clients" ? clientPage() : page==="history" ? heading("", "Run history", "Saved configurations, outcomes, and logs. Rerun interrupted sessions explicitly.")+runTable([...jobs].reverse()) : page==="functions" ? functionsPage() : settings();
+  $("#page-name").textContent = {overview:"Overview",workers:"Workers",commands:"Commands",clients:"Clients",history:"Run history",functions:"Functions",settings:"Settings",mining:"Server Mining"}[page];
+  $("#main").innerHTML = page==="overview" ? overview() : page==="workers" ? workers(config) : page==="commands" ? commands() : page==="clients" ? clientPage() : page==="history" ? heading("", "Run history", "Saved configurations, outcomes, and logs. Rerun interrupted sessions explicitly.")+runTable([...jobs].reverse()) : page==="functions" ? functionsPage() : page==="mining" ? miningPage() : settings();
   document.body.classList.toggle("workers-page",page==="workers");
   if (page==="workers") { $("#worker-status").innerHTML=workerCards();renderWorkerChat(); }
   if (page==="commands") act(previewCommand);
   if (page==="functions") act(loadFunctions);
+  if (page==="mining") loadMining();
 }
 function navigate(next, config) { page=next; if(next!=="workers") editing=null; render(config); $("#main").scrollTop=0; }
 function readWorker() {

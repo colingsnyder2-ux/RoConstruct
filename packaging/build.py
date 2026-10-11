@@ -26,12 +26,12 @@ DIST = ROOT / "dist"
 # handoff, doctor, setup, analyze, draft, optimizer and the matchers).
 WORKER_MODULES = [
     "activity", "analyze", "angr_facts", "auto", "benchmark", "clients", "doctor", "draft", "fingerprint",
-    "flags", "gui", "gui_worker", "handoff", "libs", "link", "mass", "match", "metrics", "mutate",
+    "daily_stats", "flags", "gui", "gui_worker", "handoff", "libs", "link", "mass", "match", "metrics", "mutate",
     "ltcg", "optimizer", "pressure", "providers", "refsource", "repair", "selfupdate", "setup",
     "shapes", "sources", "uninstall", "verify_window", "worker", "xcopy",
 ]
 # Only the maintainer's server needs these, so they stay out of the helper zips.
-SERVER_MODULES = ["dataset", "discord", "progress", "server"]
+SERVER_MODULES = ["dataset", "discord", "leaderboard", "progress", "server"]
 
 COMMON_FILES = ["roc.py", "roc.cmd", "roc.sh", "install.cmd", "install.sh",
                 "uninstall.cmd", "README.md",
@@ -50,8 +50,8 @@ PACKAGES = {
 
 This is the whole helper install. It is deliberately small:
 
-  1. Run install.cmd (Windows) or install.sh (Linux). It checks Python, installs two pip packages
-     (pefile, capstone), downloads the exact MSVC compiler bundles, registers
+  1. Run install.cmd (Windows) or install.sh (Linux). It checks Python, installs required pip packages
+     (pefile, capstone, tzdata), downloads the exact MSVC compiler bundles, registers
      the roconstruct:// link, and opens the website.
   2. Click "Start helping" on the website (or run start.cmd; Linux: ./roc.sh launch). It asks your
      username, which client, and whether prompts may go to a cloud model.

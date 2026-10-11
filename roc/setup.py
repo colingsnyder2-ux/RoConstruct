@@ -774,7 +774,7 @@ SIZES = {build: "%d MB" % spec[0] for build, spec in BUNDLES.items()}
 # What a re-install must never touch: mined source, claims and settings are the
 # user's work, not installer output.
 PRESERVE = ("work", "src", "roconstruct-settings.json")
-PIP_PACKAGES = ("pefile", "capstone")
+PIP_PACKAGES = ("pefile", "capstone", "tzdata")
 
 
 def state():
@@ -869,7 +869,7 @@ def missing_packages():
 
 
 def ensure_packages(install=True):
-    """Install only the packages that are actually absent (pefile, capstone)."""
+    """Install only the required packages that are actually absent."""
     missing = missing_packages()
     if not missing:
         return []
