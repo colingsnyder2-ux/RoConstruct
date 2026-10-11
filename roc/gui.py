@@ -408,6 +408,18 @@ class Handler(BaseHTTPRequestHandler):
                     return self.send(200, json.loads(app.redact(json.dumps(activity.read(identifier)))))
                 if parsed.path == "/api/models":
                     return self.send(200, {"models": worker.draft.ollama_models()})
+                if parsed.path == "/api/daily-stats":
+                    day = parse_qs(parsed.query).get("date", [""])[0]
+                    from roc.daily_stats import day_bounds
+                    day, _, _ = day_bounds(day or None)
+                    address = app.initial.get("server") or app.settings.get("server")
+                    if not address:
+                        raise ValueError("Configure a group server first")
+                    try:
+                        report = worker.Api(address, app.worker_token).call("/v1/daily-stats?date=" + day, timeout=10)
+                    except worker.ApiFailure as error:
+                        return self.send(502, {"error": str(error)})
+                    return self.send(200, report)
                 if parsed.path == "/api/log":
                     job_id = parse_qs(parsed.query).get("id", [""])[0]
                     if job_id not in app.jobs:

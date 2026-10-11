@@ -1081,6 +1081,32 @@ def cmd_source_status(a):
         print("  %-10s %6d code funcs, %6d source-mapped units" % (name, rows, match_rows))
 
 
+def cmd_daily_stats(a):
+    from roc.daily_stats import save
+    from roc.worker import Api
+    s = settings()
+    if a.db:
+        store = need_module("server", "Local daily reports").Store(a.db, 600)
+        try:
+            report = store.daily_stats(a.date)
+        finally:
+            store.db.close()
+    else:
+        api = Api(need(a.server or s.get("server"), "server", "Use --server URL"), a.token or s.get("token"))
+        report = api.call("/v1/daily-stats" + ("?date=" + a.date if a.date else ""))
+    path = save(report, a.output)
+    print("%s (%s): %d verified exact gains" % (report["date"], report["timezone"], report["exacts"]))
+    print("People:")
+    for row in report["people"]:
+        print("  %s: %d | %s" % (row["name"], row["exacts"], ", ".join("%s %d" % (m["name"], m["exacts"]) for m in row["models"])))
+    for title, key in (("Models", "models"), ("Server Mining", "server_mining"), ("Clients", "clients")):
+        print(title + ":")
+        for row in report[key]:
+            print("  %s: %d" % (row["name"], row["exacts"]))
+    print("Older exact events without attribution/verification: %d" % report["legacy_unattributed_exacts"])
+    print("Saved: %s" % path)
+
+
 def cmd_status(a):
     from roc.worker import Api
     s = settings()
@@ -1563,6 +1589,9 @@ def main(argv=None):
     cmd("source-status", cmd_source_status, "show 2016 source-name coverage",
         (["--build-meta"], {"action": "store_true", "help": "build persisted token/declaration metadata"}))
     cmd("status", cmd_status, "server progress, workers, leaderboard", (["--server"], {}), (["--token"], {}))
+    cmd("daily-stats", cmd_daily_stats, "daily verified gains by people, models, and Server Mining",
+        (["--date"], {}), (["--server"], {}), (["--token"], {}), (["--db"], {}),
+        (["--output"], {"default": str(ROOT / "work" / "reports" / "daily")}))
     cmd("progress", cmd_progress, "write docs/ data for the website", (["--server"], {}), (["--token"], {}))
     a, unknown = ap.parse_known_args(argv)
     if unknown:
