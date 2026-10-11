@@ -16,12 +16,11 @@ KEY = "ROCONSTRUCT_LEADERBOARD_WEBHOOK"
 def payload(report, demo=False):
     people = []
     for rank, row in enumerate(report["people"][:10], 1):
-        models = ["%s %s" % (m["name"].split(":", 1)[-1], format(m["exacts"], ",")) for m in row["models"] if not m["name"].startswith("roc ")]
-        mined = sum(m["exacts"] for m in row["models"] if m["name"].startswith("roc "))
-        if mined:
-            models.append("Server Mining %s" % format(mined, ","))
+        models = ["%s - %s" % (inline_code(m["name"].split(":", 1)[-1]), format(m["exacts"], ",")) for m in row["models"] if not m["name"].startswith("roc ")]
         medal = ("🥇", "🥈", "🥉")[rank - 1] if rank <= 3 else "%d." % rank
-        entry = "%s **%s — %s**\n%s" % (medal, row["name"], format(row["exacts"], ","), " · ".join(models))
+        entry = "%s **%s — %s**" % (medal, row["name"], format(row["exacts"], ","))
+        if models:
+            entry += "\n" + " · ".join(models)
         if len("\n".join(people + [entry])) > 1024:
             break
         people.append(entry)

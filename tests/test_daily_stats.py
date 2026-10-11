@@ -110,6 +110,12 @@ class DailyStatsTests(unittest.TestCase):
         self.assertEqual(fields[1]["value"], "`roc propagation` - 32")
         self.assertNotIn("`", fields[0]["value"])
         self.assertEqual(inline_code("roc repair"), "`roc repair`")
+        report["people"][0]["models"].append({"name": "deepseek:deepseek-flash", "exacts": 7})
+        players = payload(report)["embeds"][0]["fields"][0]["value"]
+        self.assertIn("`deepseek-flash` - 7", players)
+        self.assertNotIn("Server Mining", players)
+        self.assertNotIn("roc propagation", players)
+        self.assertNotIn("`7`", players)
         store = Store(":memory:", 600)
         try:
             with tempfile.TemporaryDirectory() as directory, patch("roc.leaderboard.providers.secret", return_value="configured"), patch("roc.leaderboard.send", return_value=True) as send:

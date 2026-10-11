@@ -1,10 +1,10 @@
 # Daily Server Mining
 
-The GUI's **Server Mining** page ranks people by new server-verified exact functions,
-shows each person's models, and lists totals by model, mining command, and client.
-Choose a date or refresh to fetch the group server's current tally.
+The daily Discord leaderboard ranks people by new server-verified exact functions
+and shows their AI models. Server Mining command totals have a separate section;
+they do not appear under individual players. The dashboard has no Server Mining tab.
 
-`roc daily-stats --date 2026-10-11 --server http://127.0.0.1:8765` prints the same report.
+`roc daily-stats --date 2026-10-11 --server http://127.0.0.1:8765` prints the full report.
 Use `--db work/server.db` for local database access or `--output PATH` to choose the
 report directory. With no date, it uses today in `America/New_York`.
 
