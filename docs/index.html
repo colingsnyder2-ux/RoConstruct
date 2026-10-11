@@ -439,17 +439,18 @@ function libraryTable(data) {
   const rows = new Map();
   const libs = data.units.map(libraryOf);
   for (const f of data.funcs) {
-    const r = rows.get(libs[f[3]]) || {n: 0, m: 0, b: 0, mb: 0, pb: 0};
+    const r = rows.get(libs[f[3]]) || {n: 0, m: 0, b: 0, mb: 0, sb: 0, pb: 0};
     r.n++; r.b += f[1];
-    if (f[2] === 100) { r.m++; r.mb += f[1]; } else if (f[2] > 0) r.pb += f[1];
+    if (f[2] === 100) { r.m++; r.mb += f[1]; if (f[5]) r.sb += f[1]; } else if (f[2] > 0) r.pb += f[1];
     rows.set(libs[f[3]], r);
   }
   const list = [...rows].sort((a, b) => b[1].b - a[1].b);
   return `<div class="head"><h2><small>Breakdown</small>Libraries</h2><p>Grouped by unit label (nearest RTTI class), so membership is approximate.</p></div>
     <div class="table"><table><thead><tr><th>Library</th><th>Functions</th><th>Matched</th><th>Code</th><th style="width:30%">Bytes matched</th></tr></thead><tbody>
     ${list.map(([lib, r]) => `<tr><td>${esc(lib)}</td><td>${fmt(r.m)} / ${fmt(r.n)}</td><td>${pct(r.m, r.n)}</td>
-      <td>${pct(r.mb, r.b)} <small>of ${mb(r.b)}</small></td><td>${bar(r.mb, r.pb, r.b)}</td></tr>`).join("")}
-    </tbody></table></div>`;
+      <td>${pct(r.mb, r.b)} <small>of ${mb(r.b)}</small></td><td>${codeBar(r.sb, r.mb - r.sb, r.pb, r.b)}</td></tr>`).join("")}
+    </tbody></table></div>
+    <div class="legend"><span><i style="background:#58a6ff"></i>original source</span><span><i style="background:#3fb950"></i>mined</span><span><i style="background:repeating-linear-gradient(135deg,#216841 0 5px,#193d2a 5px 10px)"></i>partial source</span></div>`;
 }
 
 async function client(name) {
