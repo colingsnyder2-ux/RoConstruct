@@ -21,11 +21,11 @@ def payload(report, demo=False):
             models.append("Server Mining %s" % format(mined, ","))
         people.append("%d. **%s — %s**\n%s" % (rank, row["name"], format(row["exacts"], ","), " · ".join(models)))
     lines = lambda rows: "\n".join("%s — **%s**" % (r["name"][4:] if r["name"].startswith("roc ") else r["name"], format(r["exacts"], ",")) for r in rows[:12]) or "—"
-    fields = [{"name": "Top people · models used", "value": ("\n\n".join(people) or "No verified gains.")[:1024]},
-              {"name": "Server Mining", "value": lines(report["server_mining"])[:1024]}]
+    fields = [{"name": "👥 Top people · models used", "value": ("\n\n".join(people) or "No verified gains.")[:1024]},
+              {"name": "⛏️ Server Mining", "value": lines(report["server_mining"])[:1024]}]
     return {"allowed_mentions": {"parse": []}, "embeds": [{
         "title": "🏆 " + ("DEMO · " if demo else "") + "RoConstruct Daily Leaderboard",
-        "description": "%s · **%s new exact functions**" % (report["date"], format(report["exacts"], ",")) +
+        "description": "📅 %s · **%s new exact functions**" % (report["date"], format(report["exacts"], ",")) +
                        ("\n*Demo — sample data only.*" if demo else ""),
         "color": 0x58A6FF, "fields": fields,
         "footer": {"text": "RoConstruct Server Mining"},
