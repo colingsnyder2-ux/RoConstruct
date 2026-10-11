@@ -29,6 +29,8 @@ def main():
     args = ap.parse_args()
     waiting = []
     for pid in args.wait_pids:
+        if pid <= 0:
+            continue
         try:
             waiting.append(psutil.Process(pid))
         except psutil.NoSuchProcess:
