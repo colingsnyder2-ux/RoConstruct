@@ -8,7 +8,7 @@ from zoneinfo import ZoneInfo
 
 from roc import providers
 from roc.daily_stats import TIMEZONE
-from roc.discord import code_block
+from roc.discord import inline_code
 
 KEY = "ROCONSTRUCT_LEADERBOARD_WEBHOOK"
 
@@ -21,13 +21,18 @@ def payload(report, demo=False):
         if mined:
             models.append("Server Mining %s" % format(mined, ","))
         medal = ("🥇", "🥈", "🥉")[rank - 1] if rank <= 3 else "%d." % rank
-        entry = "%s **%s — %s**\n%s" % (medal, row["name"], format(row["exacts"], ","), code_block(" · ".join(models)))
+        entry = "%s **%s — %s**\n%s" % (medal, row["name"], format(row["exacts"], ","), " · ".join(models))
         if len("\n".join(people + [entry])) > 1024:
             break
         people.append(entry)
-    lines = lambda rows: "\n".join("%s — %s" % (r["name"][4:] if r["name"].startswith("roc ") else r["name"], format(r["exacts"], ",")) for r in rows[:12]) or "—"
+    mining = []
+    for row in report["server_mining"][:12]:
+        entry = "%s - %s" % (inline_code(row["name"]), format(row["exacts"], ","))
+        if len("\n".join(mining + [entry])) > 1024:
+            break
+        mining.append(entry)
     fields = [{"name": "👥 Top people · models used", "value": "\n".join(people) or "No verified gains."},
-              {"name": "⛏️ Server Mining", "value": code_block(lines(report["server_mining"]))}]
+              {"name": "⛏️ Server Mining", "value": "\n".join(mining) or "—"}]
     return {"allowed_mentions": {"parse": []}, "embeds": [{
         "title": "🏆 " + ("DEMO · " if demo else "") + "RoConstruct Daily Leaderboard",
         "description": "📅 %s · **%s new exact functions**" % (report["date"], format(report["exacts"], ",")) +

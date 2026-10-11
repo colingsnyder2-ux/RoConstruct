@@ -42,9 +42,8 @@ def fmt_duration(seconds):
     return "%dd %dh" % (days, hours)
 
 
-def code_block(text):
-    """Keep Discord's 1024-character field limit without cutting the fence."""
-    return "```\n%s\n```" % str(text).replace("```", "'")[:1016]
+def inline_code(text):
+    return "`%s`" % str(text).replace("`", "'")
 
 
 def _post(url, payload):
@@ -143,7 +142,12 @@ class MineLog:
         eta = fmt_duration(left / rate) if rate >= ETA_MIN_RATE else "building rate"
         full = [e for e in events if e["score"] == 100]
         partial = [e for e in events if e["score"] < 100]
-        models = ", ".join(sorted({e["model"] for e in events if e["model"]})) or "auto"
+        models = []
+        for name in sorted({e["model"] for e in events if e["model"]}) or ["auto"]:
+            entry = inline_code(name)
+            if len(", ".join(models + [entry])) > 1024:
+                break
+            models.append(entry)
 
         def lines(rows):
             return "\n".join("%s **%d%%** `%s` %s · %s B" % (
@@ -167,7 +171,7 @@ class MineLog:
                    {"name": "⚡ Mining Rate", "value": "%d functions/hr · ETA %s" % (round(rate_hr), eta), "inline": True},
                    people,
                    {"name": "✅ Batch", "value": "%d full · %d improved" % (len(full), len(partial)), "inline": True},
-                   {"name": "🤖 Models", "value": code_block(models), "inline": True}]
+                   {"name": "🤖 Models", "value": ", ".join(models), "inline": True}]
         return {"title": "⛏️ RoConstruct Server Mining Digest" if self.server else "⛏️ RoConstruct Mining Digest",
                 "description": "**%s Client**\n%s / %s matched · %s remaining\n\n%s **%.2f%%**\n\n🟦 source · 🟩 mined · ❎ partial · ⬜ remaining" % (
                     client, format(matched, ","), format(total, ","), format(left, ","), bar, percent),
