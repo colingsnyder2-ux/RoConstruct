@@ -909,19 +909,15 @@
    "App/util/Guid.cpp",
    "App/util/IRenderable.cpp",
    "App/util/IndexBox.cpp",
-   "App/util/Log.cpp",
-   "App/util/Name.cpp",
    "App/util/NormalId.cpp",
    "App/util/RunStateOwner.cpp",
    "App/util/SoundWorld.cpp",
    "App/util/Timer.cpp",
    "App/util/UserInputBase.cpp",
-   "App/util/Utilities.cpp",
    "App/util/standardout.cpp",
    "App/v8datamodel/Accoutrement.cpp",
    "App/v8datamodel/Camera.cpp",
    "App/v8datamodel/CharacterAppearance.cpp",
-   "App/v8datamodel/DebrisService.cpp",
    "App/v8datamodel/DebugSettings.cpp",
    "App/v8datamodel/Decal.cpp",
    "App/v8datamodel/Enums.cpp",
@@ -929,7 +925,6 @@
    "App/v8datamodel/Feature.cpp",
    "App/v8datamodel/Flag.cpp",
    "App/v8datamodel/FlagStand.cpp",
-   "App/v8datamodel/ForceField.cpp",
    "App/v8datamodel/GlobalSettings.cpp",
    "App/v8datamodel/Gyro.cpp",
    "App/v8datamodel/Hopper.cpp",
@@ -1015,9 +1010,11 @@
    "DataBlockEncryptor.cpp",
    "FileOperations.cpp",
    "GetTime.cpp",
+   "PacketLogger.cpp",
    "RakNetTypes.cpp",
    "RakPeer.cpp",
    "ReliabilityLayer.cpp",
+   "SocketLayer.cpp",
    "StringCompressor.cpp",
    "rijndael.cpp"
   ],
@@ -1033,6 +1030,7 @@
    "?Clear@?$SingleProducerConsumer@URequestedConnectionStruct@RakPeer@@@DataStructures@@QAEXXZ": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/SingleProducerConsumer.h#L240",
    "?Remove@?$OrderedList@USystemAddress@@USystemAddressAndIndex@@$1?SystemAddressAndIndexComp@@YAHABU1@ABU2@@Z@DataStructures@@QAEIABUSystemAddress@@P6AH0ABUSystemAddressAndIndex@@@Z@Z": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/DS_OrderedList.h#L207",
    "?Release@?$MemoryPool@UInternalPacket@@@DataStructures@@QAEXPAUInternalPacket@@@Z": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/DS_MemoryPool.h#L167",
+   "?Serialize@?$RangeList@I@DataStructures@@QAEIPAVBitStream@RakNet@@H_N@Z": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/DS_RangeList.h#L50",
    "?WriteLock@?$SingleProducerConsumer@URequestedConnectionStruct@RakPeer@@@DataStructures@@QAEPAURequestedConnectionStruct@RakPeer@@XZ": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/SingleProducerConsumer.h#L154",
    "?GetIndexFromKey@?$OrderedList@HUMapNode@?$Map@HPAVHuffmanEncodingTree@@$1??$defaultMapKeyComparison@H@DataStructures@@YAHABH0@Z@DataStructures@@$1?NodeComparisonFunc@23@SAHABHABU123@@Z@DataStructures@@QBEIABHPA_NP6AH0ABUMapNode@?$Map@HPAVHuffmanEncodingTree@@$1??$defaultMapKeyComparison@H@DataStructures@@YAHABH0@Z@2@@Z@Z": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/DS_OrderedList.h#L131",
    "?Clear@?$SingleProducerConsumer@UBufferedCommandStruct@RakPeer@@@DataStructures@@QAEXXZ": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/SingleProducerConsumer.h#L240",
@@ -1384,17 +1382,48 @@
  "rbxgs-dll": {
   "url": "https://github.com/RBLXDecomp/RBXGSdecomp/blob/5a2df2c77a3088e563b57c51bbc5894218cfbe58/Client/App/",
   "kind": "file",
-  "files": []
+  "files": [
+   "gui/GuiDraw.cpp",
+   "humanoid/FallingDown.cpp",
+   "reflection/reflection_object.cpp",
+   "reflection/signal.cpp",
+   "script/LuaInstanceBridge.cpp",
+   "script/LuaMemory.cpp",
+   "script/Script.cpp",
+   "util/Debug.cpp",
+   "util/RunStateOwner.cpp",
+   "util/boost.cpp",
+   "v8datamodel/BrickColor.cpp",
+   "v8datamodel/DebrisService.cpp",
+   "v8datamodel/FaceInstance.cpp",
+   "v8datamodel/ICameraOwner.cpp",
+   "v8datamodel/SafeChat.cpp",
+   "v8datamodel/Selection.cpp",
+   "v8datamodel/TimerService.cpp",
+   "v8datamodel/Visit.cpp",
+   "v8tree/EnumProperty.cpp",
+   "v8tree/Instance.cpp",
+   "v8tree/Service.cpp",
+   "v8tree/Verb.cpp",
+   "v8xml/XmlElement.cpp",
+   "v8xml/XmlSerializer.cpp"
+  ]
  },
  "rbxgs-net-dll": {
   "url": "https://github.com/RBLXDecomp/RBXGSdecomp/blob/5a2df2c77a3088e563b57c51bbc5894218cfbe58/Client/Network/",
   "kind": "file",
-  "files": []
+  "files": [
+   "CrashReporter.cpp",
+   "IdManager.cpp",
+   "Streaming.cpp"
+  ]
  },
  "rbxgs-raknet-dll": {
   "url": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/",
   "kind": "file",
   "files": [
+   "BitStream.cpp",
+   "LightweightDatabaseServer.cpp",
    "PacketLogger.cpp",
    "ReplicaManager.cpp"
   ]
@@ -1402,7 +1431,10 @@
  "rbxgs-view-dll": {
   "url": "https://github.com/RBLXDecomp/RBXGSdecomp/blob/5a2df2c77a3088e563b57c51bbc5894218cfbe58/Client/RbxView/",
   "kind": "file",
-  "files": []
+  "files": [
+   "BrickMesh.cpp",
+   "MaterialFactory.cpp"
+  ]
  },
  "rbxgs-render-dll": {
   "url": "https://github.com/RBLXDecomp/RBXGSdecomp/blob/5a2df2c77a3088e563b57c51bbc5894218cfbe58/Client/Rendering/RenderLib/",
@@ -1460,7 +1492,10 @@
  "ogre-1.4.5-dll": {
   "url": "https://downloads.sourceforge.net/project/ogre/ogre/1.4.5/ogre-win32-v1-4-5.zip",
   "kind": "archive",
-  "files": []
+  "files": [
+   "OgreSceneManager.cpp",
+   "OgreSceneManagerEnumerator.cpp"
+  ]
  },
  "lame-3.98.4-dll": {
   "url": "https://downloads.sourceforge.net/project/lame/lame/3.98.4/lame-3.98.4.tar.gz",
