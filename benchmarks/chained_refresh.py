@@ -1,7 +1,9 @@
 """Run a second verified donor/layout pass after fresh refresh completes."""
 import argparse
+import hashlib
 import json
 import time
+from collections import Counter
 
 import psutil
 
@@ -21,10 +23,14 @@ def main(wait_pid):
     campaign = followup_refresh.FreshCampaign(str(root), "http://127.0.0.1:8765")
     excluded = reserved_shapes()
     original_index = match_campaign.family_index
+    wins = Counter(row.get("family") for row in campaign.previous("propagation")
+                   if row.get("submission", {}).get("improved"))
+    top_families = {family for family, _ in wins.most_common(12)}
 
     def indexes(current):
         return {client: {addr: family for addr, family in rows.items()
-                         if client != "2009-12" and match_campaign.match._functions(client)[addr].get("shape") not in excluded}
+                         if client != "2009-12" and family in top_families
+                         and match_campaign.match._functions(client)[addr].get("shape") not in excluded}
                 for client, rows in original_index(current).items() if client != "2009-12"}
 
     match_campaign.family_index = indexes
@@ -32,7 +38,15 @@ def main(wait_pid):
     class_layout.Campaign = followup_refresh.FreshCampaign
     queue = root / "queue.json"
     queue.write_text(json.dumps({"state": "second chained propagation"}), encoding="utf-8")
-    match_campaign.propagate(campaign, donor_limit=0)
+    match_campaign.propagate(campaign, donor_limit=0, donor_clients=("2008-06", "2007-08"))
+    match_campaign.harvest(campaign)
+    hashes = {}
+    for path in (root / "candidates").glob("*/*/*.cpp"):
+        if path.parent.name == "2009-12":
+            continue
+        sha = hashlib.sha256(path.read_bytes()).hexdigest()
+        hashes.setdefault(sha, []).append(str(path))
+    (root / "source-hash-index.json").write_text(json.dumps(hashes), encoding="utf-8")
     queue.write_text(json.dumps({"state": "second class-layout refresh"}), encoding="utf-8")
     class_layout.run(10000000, refresh=True)
     queue.write_text(json.dumps({"state": "second pass complete"}), encoding="utf-8")

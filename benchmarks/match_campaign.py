@@ -124,28 +124,28 @@ def family_index(campaign):
     return result
 
 
-def propagate(campaign, donor_limit=8):
+def propagate(campaign, donor_limit=8, donor_clients=None):
     snapshots = campaign.snapshot()
     indexes = family_index(campaign)
     donors, pending = defaultdict(list), []
     for client, rows in indexes.items():
         for addr, family in rows.items():
             saved = snapshots[client].get(addr, {})
-            if saved.get("score") == 100 and saved.get("source"):
+            if saved.get("score") == 100 and saved.get("source") and (donor_clients is None or client in donor_clients):
                 donors[family].append((client, addr, saved["source"]))
             else:
                 pending.append((client, addr, family))
     checked = set()
     for row in campaign.previous("propagation"):
         checked.add((row["client"], row["addr"], row["candidate_sha256"]))
-        if row.get("score") == 100 and row.get("client") in indexes:
+        if row.get("score") == 100 and row.get("client") in indexes and (donor_clients is None or row.get("client") in donor_clients):
             path = row.get("candidate_path")
             if path and Path(path).exists():
                 donors[row["family"]].append((row["client"], row["addr"], Path(path).read_text(encoding="utf-8")))
     # Bring exact wins from every campaign stage into subsequent propagation.
     for path in (campaign.root / "candidates").glob("*/*/*.cpp"):
         client, addr = path.parent.name, path.stem
-        if client in indexes and addr in indexes[client]:
+        if client in indexes and addr in indexes[client] and (donor_clients is None or client in donor_clients):
             donors[indexes[client][addr]].append((client, addr, path.read_text(encoding="utf-8")))
     verified, attempted, wins = {}, 0, 0
     for depth in range(3):
