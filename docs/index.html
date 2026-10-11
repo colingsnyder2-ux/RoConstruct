@@ -416,6 +416,42 @@ function color(score, original, harness) {
   return `rgb(${58 + (25 - 58) * t | 0},${61 + (104 - 61) * t | 0},${69 + (65 - 69) * t | 0})`;
 }
 
+// Library of a unit label (RTTI class nearest the function). First rule wins;
+// labels are approximate, so this is an estimate of where code came from.
+const MFC = /^(?:[A-Z0-9_$]*V)?C(?:Wnd|FrameWnd|MDIFrameWnd|MDIChildWnd|Edit|Static|ListBox|ComboBox|Button|Brush|Pen|Rgn|Rect|Point|Size|PtrList|PtrArray|ObList|StringList|StringArray|Ole\w*|CmdUI|EnabledCmdUI|Dialog|View|Document|WinApp|WinThread|Object|Archive|File|Exception|DC|ClientDC|PaintDC|WindowDC|GdiObject|Bitmap|Font|Menu|ImageList|ToolBar|StatusBar|ControlBar|SplitterWnd|ScrollView|FormView|EditView|HtmlView|HtmlEditView|DHtmlDialog|PropertySheet|PropertyPage|TreeCtrl|ListCtrl|TabCtrl|SpinButtonCtrl|ProgressCtrl|SliderCtrl|DockState|DockBar|DocTemplate|SingleDocTemplate|MultiDocTemplate|DocManager|MemFile|String|Map\w+|Array|CommandLineInfo|RecentFileList|Mini\w*Wnd)$/;
+const LIBRARIES = [
+  ["XTP (Codejock)", u => /CXTP|XTP[A-Z_]|(^|V)CXT[A-Z]/.test(u)],
+  ["G3D", u => /G3D/.test(u)],
+  ["Ogre", u => /Ogre/.test(u)],
+  ["boost", u => /boost/.test(u)],
+  ["RakNet", u => /RakPeer|RakNet|PacketReliab/.test(u)],
+  ["Scintilla", u => /Scintilla/.test(u)],
+  ["Lua", u => /(^|[^A-Za-z])lua_|^lua/.test(u)],
+  ["STL (std)", u => /^std(::|$)/.test(u)],
+  ["ATL", u => /^ATL(::|$)/.test(u)],
+  ["MFC", u => MFC.test(u.split(/::|<|\?\$/)[0])],
+  ["Roblox engine (RBX)", u => /RBX|rbx/.test(u)],
+  ["Unlabeled (no RTTI nearby)", u => !u || /^seg_/.test(u)],
+];
+const libraryOf = u => (LIBRARIES.find(([, test]) => test(u)) || ["Roblox app / other"])[0];
+
+function libraryTable(data) {
+  const rows = new Map();
+  const libs = data.units.map(libraryOf);
+  for (const f of data.funcs) {
+    const r = rows.get(libs[f[3]]) || {n: 0, m: 0, b: 0, mb: 0, pb: 0};
+    r.n++; r.b += f[1];
+    if (f[2] === 100) { r.m++; r.mb += f[1]; } else if (f[2] > 0) r.pb += f[1];
+    rows.set(libs[f[3]], r);
+  }
+  const list = [...rows].sort((a, b) => b[1].b - a[1].b);
+  return `<div class="head"><h2><small>Breakdown</small>Libraries</h2><p>Grouped by unit label (nearest RTTI class), so membership is approximate.</p></div>
+    <div class="table"><table><thead><tr><th>Library</th><th>Functions</th><th>Matched</th><th>Code</th><th style="width:30%">Bytes matched</th></tr></thead><tbody>
+    ${list.map(([lib, r]) => `<tr><td>${esc(lib)}</td><td>${fmt(r.m)} / ${fmt(r.n)}</td><td>${pct(r.m, r.n)}</td>
+      <td>${pct(r.mb, r.b)} <small>of ${mb(r.b)}</small></td><td>${bar(r.mb, r.pb, r.b)}</td></tr>`).join("")}
+    </tbody></table></div>`;
+}
+
 async function client(name) {
   const latest = progress.clients.find(c => c.name === name);
   if (!latest) return overview();
@@ -451,6 +487,7 @@ async function client(name) {
       verified (strings and constants used by matched functions)</small></div>
     ${bar(latest.data_matched_bytes || 0, 0, latest.data_bytes || 1, "b")}
     <div style="margin-top:20px">${commitPanel()}</div>
+    ${libraryTable(data)}
     <div class="head"><h2><small>Map</small>Units</h2><p>${fmt(units.length)} units (classes from RTTI). The map always shows the latest state.</p></div>
     <div class="controls">
       <select id="unit"><option value="">All</option>${unitOrder.map(u =>
