@@ -15,20 +15,17 @@ KEY = "ROCONSTRUCT_LEADERBOARD_WEBHOOK"
 def payload(report, demo=False):
     people = []
     for rank, row in enumerate(report["people"][:10], 1):
-        medal = ("🥇", "🥈", "🥉")[rank - 1] if rank <= 3 else "**#%d**" % rank
-        models = " · ".join("`%s` **%s**" % (m["name"], format(m["exacts"], ",")) for m in row["models"])
-        people.append("%s **%s** — 🟢 **%s** exacts\n%s" % (medal, row["name"], format(row["exacts"], ","), models))
-    lines = lambda rows: "\n".join("`%s` → **%s**" % (r["name"], format(r["exacts"], ",")) for r in rows[:12]) or "—"
-    fields = [{"name": "🟢 Fully Matched", "value": "**%s** functions" % format(report["exacts"], ","), "inline": True},
-              {"name": "🏆 Contributors", "value": "**%d** people" % len(report["people"]), "inline": True},
-              {"name": "🗂️ Clients", "value": "**%d** builds" % len(report["clients"]), "inline": True},
-              {"name": "🏅 Top Contributors · Models Used", "value": ("\n\n".join(people) or "No verified gains.")[:1024]},
-              {"name": "⛏️ Server Mining", "value": lines(report["server_mining"])[:1024], "inline": True},
-              {"name": "🤖 Worker Models", "value": lines([r for r in report["models"] if not r["name"].startswith("roc ")])[:1024], "inline": True},
-              {"name": "📦 Client Gains", "value": lines(report["clients"])[:1024]}]
+        models = ["%s %s" % (m["name"].split(":", 1)[-1], format(m["exacts"], ",")) for m in row["models"] if not m["name"].startswith("roc ")]
+        mined = sum(m["exacts"] for m in row["models"] if m["name"].startswith("roc "))
+        if mined:
+            models.append("Server Mining %s" % format(mined, ","))
+        people.append("%d. **%s — %s**\n%s" % (rank, row["name"], format(row["exacts"], ","), " · ".join(models)))
+    lines = lambda rows: "\n".join("%s — **%s**" % (r["name"][4:] if r["name"].startswith("roc ") else r["name"], format(r["exacts"], ",")) for r in rows[:12]) or "—"
+    fields = [{"name": "Top people · models used", "value": ("\n\n".join(people) or "No verified gains.")[:1024]},
+              {"name": "Server Mining", "value": lines(report["server_mining"])[:1024]}]
     return {"allowed_mentions": {"parse": []}, "embeds": [{
         "title": "🏆 " + ("DEMO · " if demo else "") + "RoConstruct Daily Leaderboard",
-        "description": "📅 **%s** · Eastern Time\n✅ Server-verified daily gains" % report["date"] +
+        "description": "%s · **%s new exact functions**" % (report["date"], format(report["exacts"], ",")) +
                        ("\n*Demo — sample data only.*" if demo else ""),
         "color": 0x58A6FF, "fields": fields,
         "footer": {"text": "RoConstruct Server Mining"},
