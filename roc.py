@@ -713,6 +713,92 @@ def cmd_pull(a):
         worker.pull_files(srv, name, a.token or s.get("token"), a.force)
 
 
+def cmd_cluster(a):
+    module = need_module("cluster_setup", "The trusted cluster")
+    if a.action == "setup":
+        if not a.nodes:
+            raise RuntimeError("Use --nodes 127.0.0.1 for one PC, or three private host addresses")
+        path = module.generate(a.directory, a.nodes.split(","), a.db, a.broker, a.local_pilot)
+        print("Cluster setup: %s\nRun node-N/start.cmd, or: roc cluster start --config %s/node-1/node.json" % (path, path))
+    elif a.action == "start":
+        if not a.config:
+            raise RuntimeError("Use --config work/cluster/node-1/node.json")
+        module.start(a.config)
+    else:
+        from roc.worker import Api
+        config = need_module("cluster", "The trusted cluster").load_config(a.config)
+        api = Api(",".join(config["servers"]), config["admin_token"])
+        if a.action == "invite":
+            if not a.name or not a.output:
+                raise RuntimeError("Use --name PERSON --output work/PERSON-cpu.json")
+            output = Path(a.output)
+            if output.exists():
+                raise RuntimeError("Output already exists; choose a new private config file")
+            import hashlib, secrets
+            token = secrets.token_hex(24)
+            api.call("/v2/cpu/contributor", {"id": a.name, "token_hash": hashlib.sha256(token.encode()).hexdigest()})
+            output.parent.mkdir(parents=True, exist_ok=True)
+            output.write_text(json.dumps({"servers": config["servers"], "worker_token": token,
+                                         "worker": a.name, "cpu_enabled": False, "cpu_slots": 1}, indent=2))
+            if os.name != "nt":
+                output.chmod(0o600)
+            print("CPU contributor config: %s" % output.resolve())
+        elif a.action == "revoke":
+            if not a.name:
+                raise RuntimeError("Use --name PERSON")
+            print(json.dumps(api.call("/v2/cpu/revoke", {"id": a.name})))
+        elif a.action == "enqueue":
+            if not a.job:
+                raise RuntimeError("Use --job JSON containing client, source, addrs, user and model")
+            print(json.dumps(api.call("/v2/cpu/enqueue", json.loads(Path(a.job).read_text()))))
+        elif a.action == "validate":
+            if not a.id:
+                raise RuntimeError("Use --id JOB_ID")
+            print(json.dumps(api.call("/v2/cpu/validate", {"id": a.id})))
+        elif a.action in ("cpu-pause", "cpu-resume", "cpu-off", "cpu-on"):
+            if not a.name:
+                raise RuntimeError("Use --name CONTRIBUTOR")
+            print(json.dumps(api.call("/v2/cpu/control", {"worker": a.name, "action": a.action[4:]})))
+        elif a.action in ("job-pause", "job-resume"):
+            if not a.id:
+                raise RuntimeError("Use --id JOB_ID")
+            print(json.dumps(api.call("/v2/cpu/job-control", {"id": a.id, "action": a.action[4:]})))
+        else:
+            from roc.cpu_status import print_status
+            try:
+                while True:
+                    print_status(api.call("/v2/cpu/dashboard"))
+                    if not a.watch:
+                        break
+                    import time
+                    time.sleep(5)
+            except KeyboardInterrupt:
+                pass
+        api.close()
+
+
+def cmd_cpu_worker(a):
+    from roc import cpu_worker
+    if a.disable:
+        from roc import task_files
+        config = json.loads(Path(a.config).read_text())
+        config["cpu_enabled"] = False
+        task_files.write_text(a.config, json.dumps(config, indent=2))
+        return print("CPU contribution disabled; running process finishes current job, then pauses.")
+    cpu_worker.run(a.config, a.enable, a.jobs)
+
+
+def cmd_tasks(a):
+    from roc import command_watch
+    if a.action != "status":
+        command_watch.control(a.id or "", a.action)
+        return print("Control saved; applies between targets / compiler calls.")
+    for row in command_watch.tasks():
+        print("%s · %s · %s · owner %s · %s/PID %s · %s targets inspected" % (
+            row["id"], row["command"], row["status"], row["owner"], row["pc"], row["pid"], row["inspected"]))
+        print("  %s · %s" % (row["stage"], row["flags"]))
+
+
 def cmd_server(a):
     server = need_module("server", "The group server")
     if a.startup:
@@ -1496,6 +1582,21 @@ def main(argv=None):
     cmd("pull", cmd_pull, "download everyone's sources from the server into src/ ('all' for every client)",
         (["name"], {}), (["--force"], {"action": "store_true", "help": "replace your local files"}),
         (["--server"], {}), (["--token"], {}))
+    cmd("cluster", cmd_cluster, "trusted private server, CPU queue and optional failover",
+        (["action"], {"choices": ["setup", "start", "enqueue", "validate", "status", "invite", "revoke",
+                                  "cpu-pause", "cpu-resume", "cpu-off", "cpu-on", "job-pause", "job-resume"]}),
+        (["--nodes"], {"help": "one or three private host addresses, comma separated"}),
+        (["--directory"], {"default": str(ROOT / "work" / "cluster")}),
+        (["--db"], {"help": "offline SQLite backup to import once"}), (["--broker"], {}),
+        (["--local-pilot"], {"action": "store_true"}), (["--config"], {}), (["--job"], {}), (["--id"], {}),
+        (["--name"], {}), (["--output"], {}), (["--watch"], {"action": "store_true"}))
+    cmd("cpu-worker", cmd_cpu_worker, "opt-in one-slot CPU mining contributor",
+        (["--config"], {"required": True}), (["--enable"], {"action": "store_true"}),
+        (["--disable"], {"action": "store_true"}),
+        (["--jobs"], {"type": int}))
+    cmd("tasks", cmd_tasks, "local ROC tasks, progress and cooperative CPU controls",
+        (["action"], {"nargs": "?", "default": "status", "choices": ["status", "pause", "resume", "stop"]}),
+        (["--id"], {}))
     cmd("server", cmd_server, "host the group server",
         (["--port"], {"type": int, "default": 8765}), (["--host"], {"default": "0.0.0.0"}),
         (["--token"], {"help": "password workers must send"}),
@@ -1598,7 +1699,19 @@ def main(argv=None):
         ap.error("unrecognized arguments: %s" % " ".join(unknown))
     if not a.cmd:
         return menu()
-    a.fn(a)
+    from roc import command_watch
+    if a.cmd in command_watch.COMMANDS:
+        watch = command_watch.Watch(a.cmd)
+        watch.install()
+        try:
+            a.fn(a)
+        except BaseException:
+            watch.finish("cancelled" if watch.control_path.exists() and watch.control_path.read_text() == "stop" else "failed")
+            raise
+        else:
+            watch.finish("completed")
+    else:
+        a.fn(a)
 
 
 if __name__ == "__main__":

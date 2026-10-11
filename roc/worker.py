@@ -503,10 +503,22 @@ def save_session_state(worker, user, model, done, matched, failures=0):
 
 class Api:
     def __init__(self, server, token=None):
-        self.server = server.rstrip("/")
-        if not self.server.startswith("http"):
-            self.server = "http://" + self.server
+        self.servers = [s.strip().rstrip("/") for s in server.split(",") if s.strip()]
+        if not self.servers:
+            raise ValueError("Server address required")
+        self.servers = [s if s.startswith("http") else "http://" + s for s in self.servers]
+        self._server_index = 0
+        self._cluster_hosts = set()
+        self._cluster_identity = None
         self.token = token
+        self._conn = None
+        self._select_server()
+
+    def _select_server(self):
+        if self._conn:
+            self._conn.close()
+        self._conn = None
+        self.server = self.servers[self._server_index]
         parsed = urlparse(self.server)
         self._host = parsed.hostname
         self._port = parsed.port or (443 if parsed.scheme == "https" else 80)
@@ -521,18 +533,41 @@ class Api:
                                                          context=ssl.create_default_context())
             else:
                 self._conn = http.client.HTTPConnection(self._host, self._port, timeout=timeout)
+        self._conn.timeout = timeout
+        if self._conn.sock:
+            self._conn.sock.settimeout(timeout)
         return self._conn
 
-    def call(self, path, payload=None, timeout=60):
+    def close(self):
+        if self._conn:
+            self._conn.close()
+            self._conn = None
+
+    def call(self, path, payload=None, timeout=60, request_id=None):
         data = json.dumps(payload).encode() if payload is not None else None
         headers = {"Content-Type": "application/json"}
+        # Cluster nodes persist this receipt with the mutation. Identical retries
+        # cannot double-lease, double-credit, or accept a stale CPU result.
+        if payload is not None and (len(self.servers) > 1 or request_id):
+            headers["X-Roc-Request"] = request_id or uuid.uuid4().hex
         if self.token:
             headers["X-Roc-Token"] = self.token
         method = "POST" if data is not None else "GET"
-        tries = 3 if payload is None else 1  # safe retries only for idempotent GETs
+        tries = max(3, len(self.servers) * 2) if payload is None or len(self.servers) > 1 or request_id else 1
         for attempt in range(tries):
             try:
                 conn = self._get_conn(timeout)
+                if payload is not None and (len(self.servers) > 1 or request_id) and self.server not in self._cluster_hosts:
+                    conn.request("GET", self._prefix + "/v2/cluster", headers=headers)
+                    probe = conn.getresponse()
+                    probe_body = probe.read()
+                    cluster_info = json.loads(probe_body)
+                    if probe.status != 200 or cluster_info.get("protocol") != 1 or not cluster_info.get("cluster_id"):
+                        raise ApiFailure("bad_request", "POST failover requires verified cluster endpoints")
+                    if self._cluster_identity and cluster_info["cluster_id"] != self._cluster_identity:
+                        raise ApiFailure("bad_request", "Failover endpoints belong to different clusters")
+                    self._cluster_identity = cluster_info["cluster_id"]
+                    self._cluster_hosts.add(self.server)
                 conn.request(method, self._prefix + path, body=data, headers=headers)
                 resp = conn.getresponse()
                 body = resp.read()
@@ -544,7 +579,8 @@ class Api:
                     category = "auth_fail" if resp.status in (401, 403) else \
                                "bad_request" if 400 <= resp.status < 500 else "server_fail"
                     if resp.status >= 500 and attempt + 1 < tries:
-                        self._conn = None
+                        self._server_index = (self._server_index + 1) % len(self.servers)
+                        self._select_server()
                         time.sleep(0.5 * (attempt + 1))
                         continue
                     raise ApiFailure(category, msg)
@@ -552,7 +588,8 @@ class Api:
             except ApiFailure:
                 raise
             except (http.client.HTTPException, OSError, ValueError) as error:
-                self._conn = None  # force reconnect on next attempt
+                self._server_index = (self._server_index + 1) % len(self.servers)
+                self._select_server()
                 if attempt + 1 == tries:
                     raise ApiFailure("offline", "cannot reach server %s (%s). Is it running? Right address?"
                                      % (self.server, error))
@@ -932,7 +969,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
         # Its own connection: http.client is not thread-safe, so sharing the main
         # thread's api here raced self._conn, forcing a new socket per call and
         # exhausting ephemeral ports (WinError 10048).
-        hb = Api(api.server, api.token)
+        hb = Api(",".join(api.servers), api.token)
         while not stop.wait(job.get("heartbeat", 60)):
             try:
                 if not hb.call("/v1/heartbeat", {"lease": job["lease"]}).get("ok"):

@@ -33,3 +33,25 @@
 
 .worker-chat.compact .terminal-row .terminal-text{white-space:nowrap}.worker-chat.compact .terminal-row>div{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.worker-chat.supercompact .terminal-row{font-size:10px;line-height:1.6;padding:1px 0;gap:8px}.terminal-row.benchmark{color:var(--accent);border-top:1px solid var(--border);margin-top:8px;padding-top:8px!important}
 .worker-tab-group{display:flex;align-items:center;flex-shrink:0}.worker-tab-close{border:0;background:transparent;color:var(--muted);padding:6px;font-size:14px}.worker-tab-close:hover{color:var(--error)}.worker-tab .dot{background:var(--muted)}.worker-tab .dot.running{background:var(--green)}.worker-tab .dot.paused,.worker-tab .dot.stopping,.worker-tab .dot.queued{background:var(--warning)}.worker-tab .dot.failed,.worker-tab .dot.interrupted{background:var(--error)}
+/* CPU sharing keeps flags and per-target results readable on narrow screens. */
+.cpu-job {padding:20px;border-bottom:1px solid var(--border);}
+.cpu-job:last-child {border-bottom:0;}
+.cpu-job-heading {display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.cpu-job p {margin:10px 0;overflow-wrap:anywhere;}
+.cpu-job details {margin:12px 0;color:var(--muted);}
+.cpu-job code,.cpu-addresses {overflow-wrap:anywhere;white-space:normal;}
+.cpu-progress {margin:12px 0;}
+.cpu-progress>div {display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:11px;}
+.cpu-progress progress {display:block;width:100%;height:7px;margin-top:6px;border:0;border-radius:8px;overflow:hidden;accent-color:var(--accent);background:var(--panel2);}
+.cpu-progress progress::-webkit-progress-bar {background:var(--panel2);border-radius:8px;}
+.cpu-progress progress::-webkit-progress-value {background:var(--accent);border-radius:8px;}
+.cpu-progress progress:not([value]) {background:linear-gradient(90deg,var(--panel2),var(--accent),var(--panel2));background-size:200% 100%;animation:cpu-working 2s linear infinite;}
+.cpu-summary {display:flex;align-items:center;gap:24px;margin-top:20px;}
+.cpu-summary p {margin:6px 0;color:var(--muted);}
+.cpu-ring {width:88px;height:88px;flex:none;display:grid;place-items:center;position:relative;}
+.cpu-ring svg {position:absolute;inset:0;width:100%;height:100%;fill:none;stroke-width:8;}
+.cpu-ring-track {stroke:var(--panel2);}
+.cpu-ring-fill {stroke:var(--green);}
+.cpu-ring b {position:relative;font:20px var(--mono);}
+@keyframes cpu-working {to {background-position:-200% 0;}}
+@media(prefers-reduced-motion:reduce) {.cpu-progress progress:not([value]) {animation:none;}}

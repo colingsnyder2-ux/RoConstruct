@@ -354,6 +354,11 @@ Without a saved address, `--tunnel` uses a temporary Cloudflare address instead.
 
 The server re-checks every submission with the real compiler and exe, so scores can't be faked. Back up `work/server.db`.
 
+For opt-in CPU contributors, a standalone trusted coordinator, or three-node
+failover, see [Private distributed server setup](docs/decentralized-server-setup.md).
+CPU contribution starts disabled. Cluster mode requires private networking and
+approved coordinators; it leaves the existing host/publisher running separately.
+
 Workers try deterministic candidates and matching 2016 library source first, then retrieve related
 source names/snippets and nearby matched examples before asking Ollama. Per-job telemetry is appended to
 `work/worker-metrics.jsonl`; session summaries show matches, improvements, source guidance, and

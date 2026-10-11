@@ -23,53 +23,7 @@ ROOT = Path(__file__).resolve().parent.parent
 USER_RE = re.compile(r"^[A-Za-z0-9_.-]{2,32}$")
 
 
-def _source_class_token(source):
-    path = source.rsplit(": ", 1)[-1].split(" ", 1)[-1]
-    token = re.sub(r"[^a-z0-9]", "", Path(path).stem.lower())
-    recipe = source.rsplit(": ", 1)[-1].split(" ", 1)[0].lower()
-    prefixes = ("ogre",) if recipe.startswith("ogre-") else ("cxtp", "xtp", "rbx", "c")
-    for prefix in prefixes:
-        if token.startswith(prefix) and len(token) > len(prefix) + 3:
-            token = token[len(prefix):]
-            break
-    return token if len(token) >= 5 else None
-
-
-def check_many_text(client, addrs, source):
-    """Compile one source once, then score it against many client functions."""
-    obj = match.compile_text(client, source)
-    funcs = match.coff_functions(obj)
-    token = _source_class_token(source)
-    class_funcs = [row for row in funcs if token and token in re.sub(r"[^a-z0-9]", "", row[0].lower())]
-    if class_funcs:
-        funcs = class_funcs
-    by_size = {}
-    for row in funcs:
-        by_size.setdefault(len(row[1]), []).append(row)
-    results = []
-    for addr in addrs:
-        code, relocs, _ = match.target(client, addr)
-        if not funcs:
-            results.append((addr, 0, []))
-            continue
-        wiggle = max(8, len(code) // 4)
-        candidates = [row for size in range(max(1, len(code) - wiggle), len(code) + wiggle + 1)
-                      for row in by_size.get(size, ())]
-        if not candidates:
-            results.append((addr, 0, []))
-            continue
-        exacts = [row for row in candidates if match.exact_match(code, relocs, row[1], row[2])]
-        best = exacts[0] if exacts else None
-        if best is None:
-            best = max(candidates, key=lambda row: match.score(code, relocs, row[1], row[2]))
-        score = match.score(code, relocs, best[1], best[2])
-        spans = []
-        if score == 100:
-            best, spans, bad = match.select_exact_data(client, addr, code, obj, exacts or [best])
-            if bad:
-                score, spans = 99, []
-        results.append((addr, score, spans))
-    return results
+from roc.cpu_jobs import _source_class_token, check_many_text
 
 # Which function a worker gets next. Random is default so parallel workers spread
 # across real named units instead of draining one ranked segment at a time.

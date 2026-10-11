@@ -387,7 +387,7 @@ def test_packages_split_keeps_maintainer_modules_out():
     build = load_build()
     worker_modules = set(build.WORKER_MODULES)
     server_modules = set(build.SERVER_MODULES)
-    assert server_modules == {"server", "discord", "leaderboard", "progress", "dataset"}
+    assert server_modules == {"cluster", "cluster_setup", "server", "discord", "leaderboard", "progress", "dataset"}
     assert not (worker_modules & server_modules), "helper packages must not carry server code"
     for helper in ("worker", "link", "handoff", "doctor", "setup", "analyze", "draft", "providers"):
         assert helper in worker_modules, "%s must ship to helpers" % helper
@@ -413,7 +413,7 @@ def test_packages_audit_rejects_a_missing_helper_module():
 
 def test_packages_audit_allows_the_maintainer_modules():
     build = load_build()
-    assert build.audit(ROOT, build.PACKAGES["worker"]) == ["dataset", "discord", "progress", "server"]
+    assert build.audit(ROOT, build.PACKAGES["worker"]) == ["cluster", "cluster_setup", "dataset", "discord", "progress", "server"]
     assert build.audit(ROOT, build.PACKAGES["server"]) == []
 
 

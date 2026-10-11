@@ -4,6 +4,7 @@ import json
 import mimetypes
 import os
 import secrets
+import socket
 import subprocess
 import sys
 import threading
@@ -42,6 +43,8 @@ COMMANDS = {
 
 def command_args(data):
     name, client = data.get("command"), data.get("client", "")
+    if client == "2009-12":
+        raise ValueError("Client excluded from mining")
     if name not in COMMANDS:
         raise ValueError("Unknown command")
     mode = COMMANDS[name][2]
@@ -189,16 +192,31 @@ class Dashboard:
             if kind == "worker":
                 config = validate(data.get("config", {}))
                 args = None
-                title = "Worker · " + (config["client"] or "all clients")
+                title = "Worker Â· " + (config["client"] or "all clients")
             elif kind == "command":
                 args, config = command_args(data), None
-                title = COMMANDS[args[0]][0] + (" · " + data["client"] if data.get("client") else "")
+                title = COMMANDS[args[0]][0] + (" Â· " + data["client"] if data.get("client") else "")
+            elif kind == "cpu":
+                from roc import cpu_status
+                found = cpu_status.configs()
+                if data.get("config") not in found or "cpu_enabled" not in found[data["config"]][1]:
+                    raise ValueError("Choose a local contributor config")
+                path, saved = found[data["config"]]
+                state_path = path.with_suffix(".status.json")
+                state = json.loads(state_path.read_text()) if state_path.exists() else {}
+                if state.get("stage") != "stopped" and time.time() - state.get("seen", 0) < 65:
+                    raise ValueError("This CPU contributor already runs")
+                cpu_status.control({"config": data["config"], "action": "on"})
+                args, config = ["cpu-worker", "--config", str(path)], {"cpu_config": data["config"]}
+                title = "CPU mining Â· " + saved.get("worker", path.stem)
             else:
                 raise ValueError("Unknown job kind")
             job_id = uuid.uuid4().hex[:12]
             job = dict(id=job_id, title=title, kind=kind, args=args, config=config,
                        status="queued", created=time.time(), started=None, ended=None,
                        attempted=0, matched=0, improved=0, failed=0, slots={}, usage={}, revision=0)
+            job.update(owner=(config or {}).get("user", self.initial.get("user") or os.environ.get("USERNAME", "local")),
+                       pc=socket.gethostname())
             self.jobs[job_id] = job
             self.event(job_id, "state", message="Queued; jobs run serially to protect client files")
             self.save()
@@ -215,13 +233,14 @@ class Dashboard:
         argv = [sys.executable, "-u"] + (["-m", "roc.gui_worker"] if job["kind"] == "worker"
                                          else [str(ROOT / "roc.py"), *job["args"]])
         env = dict(os.environ, PYTHONIOENCODING="utf-8", PYTHONUNBUFFERED="1", ROC_GUI_EVENTS="1")
+        env.update(ROC_TASK_ID=job_id, ROC_TASK_OWNER=job["owner"])
         try:
             process = subprocess.Popen(argv, cwd=ROOT, env=env, stdin=subprocess.PIPE,
                                        stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True,
                                        encoding="utf-8", errors="replace", bufsize=1,
                                        creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
             self.processes[job_id] = process
-            job.update(status="running", started=time.time())
+            job.update(status="running", started=time.time(), pid=process.pid)
             if job["kind"] == "worker":
                 process.stdin.write(json.dumps({"config": job["config"], "token": self.worker_token}) + "\n")
                 process.stdin.flush()
@@ -277,6 +296,8 @@ class Dashboard:
                     job["usage"] = fields
                 elif kind == "stage":
                     job["stage"] = fields["message"]
+                    if fields.get("task_status") in ("running", "paused") and job["status"] != "stopping":
+                        job["status"] = fields["task_status"]
                 self.event(job_id, kind, **fields)
                 if kind != "log" and (kind in ("control", "rejected") or time.monotonic() - self.last_save >= 1):
                     self.save()
@@ -322,6 +343,25 @@ class Dashboard:
                 else:
                     process.terminate()
                 self.event(job["id"], "state", message="Immediate stop; cloud requests may still bill. Leases expire if not released.")
+                return
+            if job["kind"] == "cpu" and action in ("pause", "resume", "stop"):
+                from roc import cpu_status
+                cpu_status.control({"config": job["config"]["cpu_config"],
+                                    "action": "off" if action == "stop" else action})
+                job["status"] = {"pause": "paused", "resume": "running", "stop": "stopping"}[action]
+                self.event(job["id"], "state", message="%s requested; active job finishes" % action.capitalize())
+                self.save()
+                return
+            if job["kind"] == "command" and action in ("pause", "resume", "stop"):
+                from roc import command_watch
+                if job["args"][0] not in command_watch.COMMANDS:
+                    raise ValueError("This command has no cooperative CPU checkpoints")
+                command_watch.control(job["id"], action)
+                job.update(status={"pause": "paused", "resume": "running", "stop": "stopping"}[action])
+                if action == "stop":
+                    job["cancelled"] = True
+                self.event(job["id"], "state", message=action + " requested; applies at next target/compiler boundary")
+                self.save()
                 return
             if job["kind"] != "worker" or action not in ("pause", "resume", "stop", "update"):
                 raise ValueError("Control is supported only for workers")
@@ -406,6 +446,10 @@ class Handler(BaseHTTPRequestHandler):
                     from roc import activity
                     identifier = parse_qs(parsed.query).get("id", [None])[0]
                     return self.send(200, json.loads(app.redact(json.dumps(activity.read(identifier)))))
+                if parsed.path == "/api/cpu":
+                    from roc import cpu_status
+                    selected = parse_qs(parsed.query).get("cluster", [None])[0]
+                    return self.send(200, cpu_status.snapshot(selected))
                 if parsed.path == "/api/models":
                     return self.send(200, {"models": worker.draft.ollama_models()})
                 if parsed.path == "/api/daily-stats":
@@ -429,7 +473,7 @@ class Handler(BaseHTTPRequestHandler):
                     with app.lock:
                         content = (previous.read_bytes() if previous.exists() else b"") + (path.read_bytes() if path.exists() else b"")
                     return self.send(200, content, "text/plain; charset=utf-8")
-            except (ValueError, OSError) as error:
+            except (ValueError, OSError, RuntimeError) as error:
                 return self.send(400, {"error": str(error)})
             return self.send(404, {"error": "Unknown endpoint"})
         files = {"/": "index.html", "/app.js": "app.js", "/style.css": "style.css",
@@ -457,6 +501,12 @@ class Handler(BaseHTTPRequestHandler):
                 return self.send(200, {"id": app.start(data)})
             if self.path == "/api/control":
                 app.control(data)
+            elif self.path == "/api/cpu-control":
+                from roc import cpu_status
+                return self.send(200, cpu_status.control(data))
+            elif self.path == "/api/roc-control":
+                from roc import command_watch
+                command_watch.control(data.get("id", ""), data.get("action"))
             elif self.path == "/api/preferences":
                 app.preferences_update(data)
             elif self.path == "/api/provider":
@@ -473,7 +523,7 @@ class Handler(BaseHTTPRequestHandler):
             else:
                 return self.send(404, {"error": "Unknown endpoint"})
             self.send(200, {"ok": True})
-        except (ValueError, TypeError, KeyError, OSError, BrokenPipeError) as error:
+        except (ValueError, TypeError, KeyError, OSError, BrokenPipeError, RuntimeError) as error:
             self.send(400, {"error": str(error)})
 
 
