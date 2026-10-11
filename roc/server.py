@@ -715,6 +715,13 @@ def publish_once(store, public_url, log=print):
     """Rebuild docs/ from the live database and push it, if anything changed."""
     lock = ROOT / "work" / "publish.lock"
     try:
+        # A publish killed mid-run leaves its lock behind; one never takes an hour.
+        if time.time() - lock.stat().st_mtime > 3600:
+            lock.unlink()
+            log("Removed stale publish lock.")
+    except FileNotFoundError:
+        pass
+    try:
         handle = os.open(lock, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
     except FileExistsError:
         return log("Publish already running.")
