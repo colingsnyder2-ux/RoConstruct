@@ -136,6 +136,13 @@ unresolved family member than the prior representative, ran twelve families,
 and produced zero exacts. Outputs were retained under `ai-trials-v3`; no
 family is scaled without a verified server improvement.
 
+DeepSeek v4 changed the evidence path: structured generation plus up to two
+verified same-family source exemplars and exact callee facts. Its first 31
+unique families produced four verified exact improvements (including 73→100),
+so selective scaling to 120 manifest entries is running. It keeps the shared
+2,000-request/$4.50 ceiling and excludes 2009-12. A single worker exception is
+logged; no unverified output is submitted.
+
 After the combined-transfer sweep, this branch ledger held 1,875 unique server
 exacts. The frame/inlining pilot added one; subsequent late-spillover gains are
 recorded separately. These are campaign gains, not a global completion percentage.
