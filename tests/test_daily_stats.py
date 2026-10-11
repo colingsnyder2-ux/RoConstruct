@@ -101,6 +101,8 @@ class DailyStatsTests(unittest.TestCase):
         message = payload(report, demo=True)
         self.assertIn("DEMO", message["embeds"][0]["title"])
         self.assertEqual(message["allowed_mentions"]["parse"], [])
+        self.assertEqual(message["embeds"][0]["footer"]["text"], "RoConstruct Server Mining")
+        self.assertIn("timestamp", message["embeds"][0])
         store = Store(":memory:", 600)
         try:
             with tempfile.TemporaryDirectory() as directory, patch("roc.leaderboard.providers.secret", return_value="configured"), patch("roc.leaderboard.send", return_value=True) as send:
