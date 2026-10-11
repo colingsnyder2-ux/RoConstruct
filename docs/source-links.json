@@ -731,26 +731,26 @@
    "rijndael.cpp"
   ],
   "functions": {
-   "?Insert@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@QAE_NIABQAUInternalPacket@@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L812",
-   "?Clear@?$RangeList@I@DataStructures@@QAEXXZ": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_RangeList.h#L196",
-   "?CanRotateRight@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAE_NPAU?$Page@IPAUInternalPacket@@$0CA@@2@H@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L664",
-   "?FindDeleteRebalance@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAE_NIPAU?$Page@IPAUInternalPacket@@$0CA@@2@PA_NIPAUReturnAction@12@AAPAUInternalPacket@@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L208",
-   "?InsertIntoNode@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEPAU?$Page@IPAUInternalPacket@@$0CA@@2@IABQAUInternalPacket@@HPAU32@1PAUReturnAction@12@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L500",
    "?FixUnderflow@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAE_NHPAU?$Page@IPAUInternalPacket@@$0CA@@2@IPAUReturnAction@12@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L283",
-   "?Insert@?$OrderedList@PADUMapNode@?$Map@PADPAUDatabaseTable@LightweightDatabaseServer@@$1?DatabaseTableComp@2@SAHABQAD0@Z@DataStructures@@$1?NodeComparisonFunc@23@SAHABQADABU123@@Z@DataStructures@@QAEIABQADABUMapNode@?$Map@PADPAUDatabaseTable@LightweightDatabaseServer@@$1?DatabaseTableComp@2@SAHABQAD0@Z@2@_NP6AH01@Z@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_OrderedList.h#L167",
-   "?CanRotateLeft@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAE_NPAU?$Page@IPAUInternalPacket@@$0CA@@2@H@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L639",
-   "?Serialize@?$RangeList@I@DataStructures@@QAEIPAVBitStream@RakNet@@H_N@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_RangeList.h#L48",
-   "?FreePages@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXXZ": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L928",
-   "?DeleteFromPageAtIndex@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXHPAU?$Page@IPAUInternalPacket@@$0CA@@2@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L144",
-   "?RotateLeft@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXPAU?$Page@IPAUInternalPacket@@$0CA@@2@HPAUReturnAction@12@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L645",
-   "?Deserialize@?$RangeList@I@DataStructures@@QAE_NPAVBitStream@RakNet@@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_RangeList.h#L92",
-   "?InsertBranchDown@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEPAU?$Page@IPAUInternalPacket@@$0CA@@2@IABQAUInternalPacket@@PAU32@PAUReturnAction@12@PA_N@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L704",
+   "?Insert@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@QAE_NIABQAUInternalPacket@@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L812",
+   "?FindDeleteRebalance@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAE_NIPAU?$Page@IPAUInternalPacket@@$0CA@@2@PA_NIPAUReturnAction@12@AAPAUInternalPacket@@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L208",
    "?Clear@?$SingleProducerConsumer@PAURemoteClient@@@DataStructures@@QAEXXZ": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/SingleProducerConsumer.h#L217",
-   "?ShiftNodeLeft@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXPAU?$Page@IPAUInternalPacket@@$0CA@@2@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L482",
-   "?Insert@?$RangeList@I@DataStructures@@QAEXI@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_RangeList.h#L134",
    "?ShiftNodeRight@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXPAU?$Page@IPAUInternalPacket@@$0CA@@2@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L463",
+   "?RotateRight@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXPAU?$Page@IPAUInternalPacket@@$0CA@@2@HPAUReturnAction@12@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L670",
+   "?FreePages@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXXZ": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L928",
+   "?CanRotateRight@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAE_NPAU?$Page@IPAUInternalPacket@@$0CA@@2@H@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L664",
+   "?DeleteFromPageAtIndex@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXHPAU?$Page@IPAUInternalPacket@@$0CA@@2@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L144",
+   "?InsertBranchDown@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEPAU?$Page@IPAUInternalPacket@@$0CA@@2@IABQAUInternalPacket@@PAU32@PAUReturnAction@12@PA_N@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L704",
+   "?Insert@?$OrderedList@PADUMapNode@?$Map@PADPAUDatabaseTable@LightweightDatabaseServer@@$1?DatabaseTableComp@2@SAHABQAD0@Z@DataStructures@@$1?NodeComparisonFunc@23@SAHABQADABU123@@Z@DataStructures@@QAEIABQADABUMapNode@?$Map@PADPAUDatabaseTable@LightweightDatabaseServer@@$1?DatabaseTableComp@2@SAHABQAD0@Z@2@_NP6AH01@Z@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_OrderedList.h#L167",
+   "?InsertIntoNode@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEPAU?$Page@IPAUInternalPacket@@$0CA@@2@IABQAUInternalPacket@@HPAU32@1PAUReturnAction@12@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L500",
+   "?Serialize@?$RangeList@I@DataStructures@@QAEIPAVBitStream@RakNet@@H_N@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_RangeList.h#L48",
+   "?Clear@?$RangeList@I@DataStructures@@QAEXXZ": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_RangeList.h#L196",
+   "?CanRotateLeft@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAE_NPAU?$Page@IPAUInternalPacket@@$0CA@@2@H@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L639",
    "?Insert@?$OrderedList@USystemAddress@@U1@$1??$defaultOrderedListComparison@USystemAddress@@U1@@DataStructures@@YAHABU1@0@Z@DataStructures@@QAEIABUSystemAddress@@0_NP6AH00@Z@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_OrderedList.h#L167",
-   "?RotateRight@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXPAU?$Page@IPAUInternalPacket@@$0CA@@2@HPAUReturnAction@12@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L670"
+   "?Insert@?$RangeList@I@DataStructures@@QAEXI@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_RangeList.h#L134",
+   "?Deserialize@?$RangeList@I@DataStructures@@QAE_NPAVBitStream@RakNet@@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_RangeList.h#L92",
+   "?ShiftNodeLeft@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXPAU?$Page@IPAUInternalPacket@@$0CA@@2@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L482",
+   "?RotateLeft@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXPAU?$Page@IPAUInternalPacket@@$0CA@@2@HPAUReturnAction@12@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L645"
   }
  },
  "rbxgs-view": {
@@ -999,9 +999,9 @@
    "Rendering/RenderLib/TextureProxy.cpp"
   ],
   "functions": {
-   "?createTexture@?$MeshFactory@VPBBMesh@View@RBX@@$03@View@RBX@@SAPAVPBBMesh@23@ABVVector3@G3D@@W4NormalId@3@ABVVector2@6@@Z": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/Client/RbxView/MeshFactory.h#L129",
    "?createDecal@?$MeshFactory@VPBBMesh@View@RBX@@$03@View@RBX@@SAPAVPBBMesh@23@ABVVector3@G3D@@W4NormalId@3@@Z": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/Client/RbxView/MeshFactory.h#L113",
    "?removeFromKernel@Contact@RBX@@EAEXXZ": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/Client/App/include/v8world/Contact.h#L196",
+   "?createTexture@?$MeshFactory@VPBBMesh@View@RBX@@$03@View@RBX@@SAPAVPBBMesh@23@ABVVector3@G3D@@W4NormalId@3@ABVVector2@6@@Z": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/Client/RbxView/MeshFactory.h#L129",
    "?downstreamOfStage@IPipelined@RBX@@QBE_NPAVIStage@2@@Z": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/Client/App/include/v8world/IPipelined.h#L71"
   }
  },
@@ -1022,21 +1022,21 @@
    "rijndael.cpp"
   ],
   "functions": {
-   "?Clear@?$SingleProducerConsumer@URequestedConnectionStruct@RakPeer@@@DataStructures@@QAEXXZ": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/SingleProducerConsumer.h#L240",
-   "?Release@?$MemoryPool@UInternalPacket@@@DataStructures@@QAEXPAUInternalPacket@@@Z": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/DS_MemoryPool.h#L167",
-   "?InitPage@?$MemoryPool@U?$Page@IPAUInternalPacket@@$0CA@@DataStructures@@@DataStructures@@IAEXPAUPage@12@0@Z": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/DS_MemoryPool.h#L73",
-   "?GetIndexFromKey@?$OrderedList@IPAUInternalPacket@@$1?SplitPacketIndexComp@@YAHABIABQAU1@@Z@DataStructures@@QBEIABIPA_NP6AH0ABQAUInternalPacket@@@Z@Z": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/DS_OrderedList.h#L131",
-   "?Remove@?$OrderedList@USystemAddress@@USystemAddressAndIndex@@$1?SystemAddressAndIndexComp@@YAHABU1@ABU2@@Z@DataStructures@@QAEIABUSystemAddress@@P6AH0ABUSystemAddressAndIndex@@@Z@Z": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/DS_OrderedList.h#L207",
+   "?Clear@?$OrderedList@IU?$RangeNode@I@DataStructures@@$1??$RangeNodeComp@I@2@YAHABIABU12@@Z@DataStructures@@QAEXXZ": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/DS_OrderedList.h#L262",
    "?InitPage@?$MemoryPool@UInternalPacket@@@DataStructures@@IAEXPAUPage@12@0@Z": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/DS_MemoryPool.h#L73",
-   "?Clear@?$SingleProducerConsumer@UBufferedCommandStruct@RakPeer@@@DataStructures@@QAEXXZ": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/SingleProducerConsumer.h#L240",
-   "?Release@?$MemoryPool@U?$Page@IPAUInternalPacket@@$0CA@@DataStructures@@@DataStructures@@QAEXPAU?$Page@IPAUInternalPacket@@$0CA@@2@@Z": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/DS_MemoryPool.h#L167",
-   "?WriteLock@?$SingleProducerConsumer@URequestedConnectionStruct@RakPeer@@@DataStructures@@QAEPAURequestedConnectionStruct@RakPeer@@XZ": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/SingleProducerConsumer.h#L154",
-   "?WriteLock@?$SingleProducerConsumer@UBufferedCommandStruct@RakPeer@@@DataStructures@@QAEPAUBufferedCommandStruct@RakPeer@@XZ": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/SingleProducerConsumer.h#L154",
-   "?GetIndexFromKey@?$OrderedList@HUMapNode@?$Map@HPAVHuffmanEncodingTree@@$1??$defaultMapKeyComparison@H@DataStructures@@YAHABH0@Z@DataStructures@@$1?NodeComparisonFunc@23@SAHABHABU123@@Z@DataStructures@@QBEIABHPA_NP6AH0ABUMapNode@?$Map@HPAVHuffmanEncodingTree@@$1??$defaultMapKeyComparison@H@DataStructures@@YAHABH0@Z@2@@Z@Z": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/DS_OrderedList.h#L131",
-   "?Clear@?$MemoryPool@UInternalPacket@@@DataStructures@@QAEXXZ": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/DS_MemoryPool.h#L221",
+   "?GetIndexFromKey@?$OrderedList@IPAUInternalPacket@@$1?SplitPacketIndexComp@@YAHABIABQAU1@@Z@DataStructures@@QBEIABIPA_NP6AH0ABQAUInternalPacket@@@Z@Z": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/DS_OrderedList.h#L131",
    "?GetIndexFromKey@?$OrderedList@USystemAddress@@USystemAddressAndIndex@@$1?SystemAddressAndIndexComp@@YAHABU1@ABU2@@Z@DataStructures@@QBEIABUSystemAddress@@PA_NP6AH0ABUSystemAddressAndIndex@@@Z@Z": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/DS_OrderedList.h#L131",
+   "?WriteLock@?$SingleProducerConsumer@UBufferedCommandStruct@RakPeer@@@DataStructures@@QAEPAUBufferedCommandStruct@RakPeer@@XZ": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/SingleProducerConsumer.h#L154",
+   "?Clear@?$MemoryPool@UInternalPacket@@@DataStructures@@QAEXXZ": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/DS_MemoryPool.h#L221",
+   "?Release@?$MemoryPool@U?$Page@IPAUInternalPacket@@$0CA@@DataStructures@@@DataStructures@@QAEXPAU?$Page@IPAUInternalPacket@@$0CA@@2@@Z": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/DS_MemoryPool.h#L167",
    "?Allocate@?$MemoryPool@UInternalPacket@@@DataStructures@@QAEPAUInternalPacket@@XZ": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/DS_MemoryPool.h#L99",
-   "?Clear@?$OrderedList@IU?$RangeNode@I@DataStructures@@$1??$RangeNodeComp@I@2@YAHABIABU12@@Z@DataStructures@@QAEXXZ": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/DS_OrderedList.h#L262"
+   "?Clear@?$SingleProducerConsumer@URequestedConnectionStruct@RakPeer@@@DataStructures@@QAEXXZ": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/SingleProducerConsumer.h#L240",
+   "?Remove@?$OrderedList@USystemAddress@@USystemAddressAndIndex@@$1?SystemAddressAndIndexComp@@YAHABU1@ABU2@@Z@DataStructures@@QAEIABUSystemAddress@@P6AH0ABUSystemAddressAndIndex@@@Z@Z": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/DS_OrderedList.h#L207",
+   "?Release@?$MemoryPool@UInternalPacket@@@DataStructures@@QAEXPAUInternalPacket@@@Z": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/DS_MemoryPool.h#L167",
+   "?WriteLock@?$SingleProducerConsumer@URequestedConnectionStruct@RakPeer@@@DataStructures@@QAEPAURequestedConnectionStruct@RakPeer@@XZ": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/SingleProducerConsumer.h#L154",
+   "?GetIndexFromKey@?$OrderedList@HUMapNode@?$Map@HPAVHuffmanEncodingTree@@$1??$defaultMapKeyComparison@H@DataStructures@@YAHABH0@Z@DataStructures@@$1?NodeComparisonFunc@23@SAHABHABU123@@Z@DataStructures@@QBEIABHPA_NP6AH0ABUMapNode@?$Map@HPAVHuffmanEncodingTree@@$1??$defaultMapKeyComparison@H@DataStructures@@YAHABH0@Z@2@@Z@Z": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/DS_OrderedList.h#L131",
+   "?Clear@?$SingleProducerConsumer@UBufferedCommandStruct@RakPeer@@@DataStructures@@QAEXXZ": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/SingleProducerConsumer.h#L240",
+   "?InitPage@?$MemoryPool@U?$Page@IPAUInternalPacket@@$0CA@@DataStructures@@@DataStructures@@IAEXPAUPage@12@0@Z": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/DS_MemoryPool.h#L73"
   }
  },
  "ogre-1.7.0": {
@@ -1133,6 +1133,11 @@
    "OgreSubEntity.cpp"
   ]
  },
+ "ogre-1.4.5": {
+  "url": "https://downloads.sourceforge.net/project/ogre/ogre/1.4.5/ogre-win32-v1-4-5.zip",
+  "kind": "archive",
+  "files": []
+ },
  "lame-3.98.4": {
   "url": "https://downloads.sourceforge.net/project/lame/lame/3.98.4/lame-3.98.4.tar.gz",
   "kind": "archive",
@@ -1156,12 +1161,27 @@
  "lua-5.1-dll": {
   "url": "https://www.lua.org/ftp/lua-5.1.tar.gz",
   "kind": "archive",
-  "files": []
+  "files": [
+   "lauxlib.c",
+   "lbaselib.c",
+   "ldebug.c",
+   "ldo.c",
+   "lgc.c",
+   "liolib.c",
+   "llex.c",
+   "lmathlib.c",
+   "lobject.c",
+   "lparser.c",
+   "lstrlib.c",
+   "lvm.c"
+  ]
  },
  "lua-5.1.1-dll": {
   "url": "https://www.lua.org/ftp/lua-5.1.1.tar.gz",
   "kind": "archive",
-  "files": []
+  "files": [
+   "liolib.c"
+  ]
  },
  "lua-5.1.2-dll": {
   "url": "https://www.lua.org/ftp/lua-5.1.2.tar.gz",
@@ -1303,7 +1323,15 @@
  "boost-1.34.1-dll": {
   "url": "https://archives.boost.io/release/1.34.1/source/boost_1_34_1.tar.gz",
   "kind": "archive",
-  "files": []
+  "files": [
+   "libs/iostreams/src/zlib.cpp",
+   "libs/program_options/src/convert.cpp",
+   "libs/program_options/src/positional_options.cpp",
+   "libs/regex/src/cregex.cpp",
+   "libs/regex/src/instances.cpp",
+   "libs/thread/src/thread.cpp",
+   "libs/thread/src/tss.cpp"
+  ]
  },
  "boost-1.36.0-dll": {
   "url": "https://archives.boost.io/release/1.36.0/source/boost_1_36_0.tar.gz",
@@ -1313,7 +1341,15 @@
  "boost-1.35.0-dll": {
   "url": "https://archives.boost.io/release/1.35.0/source/boost_1_35_0.tar.gz",
   "kind": "archive",
-  "files": []
+  "files": [
+   "libs/iostreams/src/mapped_file.cpp",
+   "libs/program_options/src/cmdline.cpp",
+   "libs/program_options/src/value_semantic.cpp",
+   "libs/signals/src/named_slot_map.cpp",
+   "libs/signals/src/signal_base.cpp",
+   "libs/signals/src/trackable.cpp",
+   "libs/thread/src/win32/thread.cpp"
+  ]
  },
  "boost-1.37.0-dll": {
   "url": "https://archives.boost.io/release/1.37.0/source/boost_1_37_0.tar.gz",
@@ -1358,7 +1394,10 @@
  "rbxgs-raknet-dll": {
   "url": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/",
   "kind": "file",
-  "files": []
+  "files": [
+   "PacketLogger.cpp",
+   "ReplicaManager.cpp"
+  ]
  },
  "rbxgs-view-dll": {
   "url": "https://github.com/RBLXDecomp/RBXGSdecomp/blob/5a2df2c77a3088e563b57c51bbc5894218cfbe58/Client/RbxView/",
@@ -1392,6 +1431,34 @@
  },
  "ogre-1.4.9-dll": {
   "url": "https://downloads.sourceforge.net/project/ogre/ogre/1.4.9/ogre-v1-4-9.tar.bz2",
+  "kind": "archive",
+  "files": [
+   "OgreAlignedAllocator.cpp",
+   "OgreAnimation.cpp",
+   "OgreArchiveManager.cpp",
+   "OgreAutoParamDataSource.cpp",
+   "OgreBillboardChain.cpp",
+   "OgreBillboardSet.cpp",
+   "OgreCodec.cpp",
+   "OgreCompiler2Pass.cpp",
+   "OgreCompositionTechnique.cpp",
+   "OgreDefaultSceneQueries.cpp",
+   "OgreFileSystem.cpp",
+   "OgreFontManager.cpp",
+   "OgreGpuProgramUsage.cpp",
+   "OgreHardwareBufferManager.cpp",
+   "OgreInstancedGeometry.cpp",
+   "OgreMesh.cpp",
+   "OgreOverlayManager.cpp",
+   "OgreProfiler.cpp",
+   "OgreRenderQueueInvocation.cpp",
+   "OgreRenderSystemCapabilities.cpp",
+   "OgreResourceGroupManager.cpp",
+   "OgreSceneManager.cpp"
+  ]
+ },
+ "ogre-1.4.5-dll": {
+  "url": "https://downloads.sourceforge.net/project/ogre/ogre/1.4.5/ogre-win32-v1-4-5.zip",
   "kind": "archive",
   "files": []
  },
