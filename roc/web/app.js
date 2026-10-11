@@ -87,7 +87,7 @@ function terminalMessage(row, functions, compact=false) {
   const fn=functions.get(row.job+":"+row.slot);
   let marker="·", text=logText(row), extra="", kind=row.event;
   if(row.event==="job_started") {marker="›";text=`${row.client} ${row.addr} ${row.size ?? "?"} B ${row.unit || ""} · best ${row.previous}%`;}
-  else if(row.event==="job_finished") {kind+=" "+(row.score===100||row.score>row.previous ? "improved" : "no-gain");marker=row.score===100 ? "✓" : row.score>row.previous ? "↑" : "·";text=`${row.client} ${row.addr}${row.supercompact ? " · "+(row.size ?? "?")+" B" : " "+(row.unit || fn?.unit || "")+" · "+(row.size ?? "?")+" B"} · ${row.previous}% → ${row.score}%${row.score===100 ? " EXACT" : row.score<=row.previous ? " no gain" : " improved"}${row.seconds===undefined ? "" : " · "+row.seconds+"s"}`;}
+  else if(row.event==="job_finished") {kind+=" "+(row.score===100 ? "exact" : row.score>row.previous ? "improved" : "no-gain");marker=row.score===100 ? "✓" : row.score>row.previous ? "↑" : "·";text=`${row.client} ${row.addr}${row.supercompact ? " · "+(row.size ?? "?")+" B" : " "+(row.unit || fn?.unit || "")+" · "+(row.size ?? "?")+" B"} · ${row.previous}% → ${row.score}%${row.score===100 ? " EXACT" : row.score<=row.previous ? " no gain" : " improved"}${row.seconds===undefined ? "" : " · "+row.seconds+"s"}`;}
   else if(row.event==="benchmark") {marker="≡";text=`${row.workers}w · ${row.completed} done · ${row.per_minute} fn/min · ${row.matched} exact · ${row.improved} improved · ${row.errors} errors`;}
   else if(row.event==="compile") {
     marker="$";const runs=row.compile_runs || [row],failed=runs.filter(r=>r.exit_code!==0).length;
