@@ -6,6 +6,7 @@ if (token) sessionStorage.setItem("roc-session", token);
 history.replaceState(null, "", location.pathname);
 let meta, jobs = [], page = "overview", selectedCommand = "mass", editing = null;
 let cursor = 0, logs = [], follow = true, online = false, toastTimer, localModels = [];
+let cpu = null, cpuCluster = "", cpuLoaded = 0, cpuLoading = false;
 const active = job => ["running", "paused", "stopping"].includes(job.status);
 const liveKeys = new Set(["workers","model","rounds","max_size","max_tokens","strategy","order","thinking","reasoning_effort","use_revng","min_score","max_score","diverse_candidates","guided_mutations","near_repair","max_cloud_requests","max_cloud_tokens","max_cloud_cost"]);
 const nullable = new Set(["min_score","max_score","max_cloud_requests","max_cloud_tokens","max_cloud_cost","reasoning_effort","unit_name","family_id"]);
@@ -27,7 +28,55 @@ function duration(job) { if (!job.started) return "—"; const seconds = Math.ma
 function button(label, attrs="", secondary=false) { const symbol=/start|run|resume/i.test(label) ? "play" : /pause/i.test(label) ? "pause" : /stop|cancel/i.test(label) ? "stop" : /apply|tune|controls/i.test(label) ? "sliders" : /fetch/i.test(label) ? "download" : /save/i.test(label) ? "check" : ""; return `<button class="button ${secondary ? "secondary" : ""}" ${attrs}>${symbol ? icon(symbol) : ""}${label}</button>`; }
 function empty(title, description) { return `<div class="empty"><div class="empty-symbol">◇</div><h3>${title}</h3><p>${description}</p></div>`; }
 function endRun(job) {
-  return `<button class="button end-run" data-action="${job.kind==="worker" ? "stop" : "kill"}" data-id="${job.id}" title="${job.kind==="worker" ? "Stop new leases; finish active functions" : "Stop this command"}" ${job.status==="stopping" ? "disabled" : ""}>${icon("stop")}${job.status==="stopping" ? "Ending…" : "End run"}</button>`;
+  return `<button class="button end-run" data-action="${["worker","cpu"].includes(job.kind) ? "stop" : "kill"}" data-id="${job.id}" title="${["worker","cpu"].includes(job.kind) ? "Stop new leases; finish active functions" : "Stop this command"}" ${job.status==="stopping" ? "disabled" : ""}>${icon("stop")}${job.status==="stopping" ? "Ending…" : "End run"}</button>`;
+}
+async function loadCpu(force=false) {
+  if(cpuLoading || (!force && Date.now()-cpuLoaded<3000)) return;
+  cpuLoading=true;
+  try {cpu=await api("cpu"+(cpuCluster ? "?cluster="+encodeURIComponent(cpuCluster) : ""));cpuCluster=cpu.selected || "";cpuLoaded=Date.now();if(page==="cpu")render();}
+  finally {cpuLoading=false;}
+}
+function cpuButtons(config, worker, paused, enabled, job="") {
+  const attrs=`data-cpu-config="${esc(config)}" data-cpu-worker="${esc(worker || "")}" data-cpu-job="${esc(job)}"`;
+  return button(paused ? "Resume" : "Pause",`${attrs} data-cpu-action="${paused ? "resume" : "pause"}"`,true)+
+    (job ? "" : button(enabled ? "CPU off" : "CPU on",`${attrs} data-cpu-action="${enabled ? "off" : "on"}"`,true));
+}
+function cpuProgress(job) {
+  const node=cpu.remote?.nodes.find(n=>n.id===job.worker && n.metadata.job===job.id), state=node?.metadata;
+  if(!state || job.state!=="leased")return job.state==="leased" ? "Compiling / comparing; progress pending" : "";
+  const progress=state.checked==null ? "Compiling; target progress pending" : `${state.checked}/${job.total} compared (${Math.floor(100*state.checked/job.total)}%)`;
+  return `${progress} · ${state.current_addr || ""} ${state.unit || ""}`;
+}
+function cpuBar(label, done, total, working=true) {
+  const known=typeof done==="number" && Number.isFinite(done) && total>0, value=known ? Math.min(total,Math.max(0,done)) : 0;
+  return `<div class="cpu-progress"><div><span>${esc(label)}</span><b>${known ? `${value}/${total} · ${Math.floor(100*value/total)}%` : working ? "Working… · total unknown" : "Unavailable"}</b></div><progress aria-label="${esc(label)}" max="${Math.max(1,total)}" ${known || !working ? `value="${value}"` : ""}></progress></div>`;
+}
+function cpuJobBars(job) {
+  const state=cpu.remote?.nodes.find(n=>n.id===job.worker && n.metadata.job===job.id)?.metadata;
+  const compared=job.compared ?? (job.completed>0 ? job.completed : state?.checked ?? (["queued","paused"].includes(job.state) ? 0 : null));
+  return cpuBar("Compared · worker reported",compared,job.total,job.state==="leased")+cpuBar("Trusted verification",job.completed,job.total);
+}
+function cpuSummary(remote) {
+  const total=remote.jobs.reduce((n,j)=>n+j.total,0), done=remote.jobs.reduce((n,j)=>n+j.completed,0), percent=total ? Math.floor(100*done/total) : 0;
+  return `<div class="panel panel-pad cpu-summary"><div class="cpu-ring" role="img" aria-label="${percent}% of displayed targets verified"><svg viewBox="0 0 100 100" aria-hidden="true"><circle class="cpu-ring-track" cx="50" cy="50" r="42"/><circle class="cpu-ring-fill" cx="50" cy="50" r="42" stroke-dasharray="${percent*2.638937829} 263.8937829" transform="rotate(-90 50 50)"/></svg><b>${percent}%</b></div><div><h2>Trusted verification</h2><p>${done}/${total} targets in displayed jobs</p><p><b>+${remote.jobs.reduce((n,j)=>n+j.exact_gains,0)} exact</b> · +${remote.jobs.reduce((n,j)=>n+j.partial_gains,0)} partial · ${remote.jobs.filter(j=>["queued","leased","reported","paused"].includes(j.state)).length} pending jobs</p></div></div>`;
+}
+function cpuPage() {
+  let html=heading("","Servers","Private coordinators, contributors and ROC jobs. Pause / CPU off finish active work.",button("Refresh",'data-cpu-refresh',true));
+  if(!cpu)return html+empty("Loading servers","Reading configured coordinators…");
+  html+=`<div class="panel panel-pad"><label class="field"><span>Coordinator config</span><select id="cpu-cluster">${cpu.clusters.map(n=>`<option value="${n.id}" ${n.id===cpuCluster ? "selected" : ""}>${esc(n.label)}</option>`).join("")}</select></label><p class="help-note">One trusted PC works alone. Three voters allow one coordinator to go offline. Contributor CPU is optional; AI workers stay independent.</p></div>`;
+  if(cpu.error)html+=`<p class="help-note">Coordinator unavailable: ${esc(cpu.error)}</p>`;
+  const remote=cpu.remote;
+  if(remote)html+=cpuSummary(remote);
+  html+='<div class="section-heading"><h2>This PC</h2></div>';
+  html+=cpu.local.length ? `<div class="panel">${cpu.local.map(n=>`<div class="client-row"><div><h3>${esc(n.worker)}</h3><p>${esc(n.label)}</p><p>${esc(n.status.pc || "Local PC")} · ${n.running ? esc(n.status.stage) : "Stopped"} · ${n.enabled ? "CPU enabled" : "CPU off"}${n.paused ? " · paused" : ""}${n.status.pid ? " · PID "+esc(n.status.pid) : ""}</p></div><div class="button-row">${cpuButtons(n.id,n.worker,n.paused,n.enabled)}${!n.running ? button("Start CPU worker",`data-cpu-start="${n.id}"`,true) : ""}</div></div>`).join("")}</div>` : empty("No CPU contributor configs","Create a private cluster, or save an invited CPU config under work/.");
+  if(remote) {
+    html+=`<div class="section-heading"><h2>Contributors</h2><span class="muted">${esc(remote.node)} · ${remote.replicas} voter(s)</span></div><div class="panel">${remote.nodes.map(n=>`<div class="client-row"><div><h3>${esc(n.id)} · ${esc(n.metadata.pc || "Unknown PC")}</h3><p>Owner ${esc(n.metadata.owner || "unknown")} · ${Date.now()/1000-n.seen<65 ? "Online" : "Offline / stale"} · ${esc(n.metadata.stage || "idle")}${n.metadata.pid ? " · PID "+esc(n.metadata.pid) : ""}</p></div><div class="button-row">${remote.can_control ? cpuButtons(cpuCluster,n.id,n.paused,n.enabled) : ""}</div></div>`).join("") || '<p class="help-note">No contributors connected yet.</p>'}</div>`;
+    html+='<div class="section-heading"><h2>ROC jobs</h2><span class="muted">Gains require trusted verification</span></div>';
+    html+=remote.jobs.length ? `<div class="panel cpu-jobs">${remote.jobs.map(j=>`<div class="cpu-job"><div class="cpu-job-heading"><h3>${esc(j.command)}</h3>${j.state==="rejected" && j.scores.length ? '<span class="badge completed">No gain</span>' : badge(j.state)}</div><p>${esc(j.client)} · owner <b>${esc(j.owner)}</b> · worker ${esc(j.worker || "unassigned")} · ${j.attempts} attempt(s)</p><p>${j.completed}/${j.total} verified · <b>+${j.exact_gains} exact</b> · +${j.partial_gains} partial${j.state==="leased" ? " · "+esc(cpuProgress(j)) : j.state==="reported" ? " · awaiting trusted verification" : ""}</p>${cpuJobBars(j)}<details data-cpu-detail="${j.id}"><summary>${j.total} target function(s) · compiler / flags</summary><p><code>${esc(j.compiler)}</code> <code>${esc(j.flags)}</code></p><div class="cpu-addresses">${(j.targets || j.addrs.map(addr=>({addr}))).map(t=>`<p><code>${esc(t.addr)}</code> ${esc(t.unit || "")}</p>`).join("")}</div>${j.scores.map(s=>`<p><code>${esc(s.addr)}</code> · ${s.score}% · ${s.improved ? "improved" : "no gain"} · verified</p>`).join("")}</details><div class="button-row">${remote.can_control && ["queued","paused"].includes(j.state) ? cpuButtons(cpuCluster,"",j.state==="paused",true,j.id) : ""}</div></div>`).join("")}</div>` : empty("No queued jobs","Enqueue a bounded source / target job with roc cluster enqueue.");
+  }
+  const commands=(cpu.tasks || []).filter(j=>["running","paused","stale"].includes(j.status));
+  html+='<div class="section-heading"><h2>Local ROC commands</h2></div>'+ (commands.length ? `<div class="panel">${commands.map(j=>`<div class="client-row"><div><h3>${esc(j.command)}</h3><p>${esc(j.owner)} · ${esc(j.pc)} · PID ${esc(j.pid)} · ${esc(j.status)}</p><p>${esc(j.stage)} · ${j.inspected} targets inspected</p><p><code>${esc(j.flags)}</code></p>${cpuBar("Target progress · "+j.inspected+" inspected",null,0,j.status==="running")}</div><div class="button-row">${j.status!=="stale" ? button(j.status==="paused" ? "Resume" : "Pause",`data-roc-id="${j.id}" data-roc-action="${j.status==="paused" ? "resume" : "pause"}"`,true)+button("CPU off",`data-roc-id="${j.id}" data-roc-action="stop"`,true) : ""}</div></div>`).join("")}</div>` : empty("No local commands running","ROC tools launched here or in a terminal appear after their next start. Controls apply between targets / compiler calls."));
+  return html;
 }
 function runTable(rows, emptyTitle="No saved runs") {
   if (!rows.length) return `<div class="panel">${empty(emptyTitle, "Start a worker or choose a command.")}</div>`;
@@ -190,15 +239,18 @@ function settings() {
 }
 function render(config) {
   if (!meta) return;
+  document.title=page==="cpu" ? "Servers" : "RoConstruct Dashboard";
+  const expanded=new Set([...document.querySelectorAll("[data-cpu-detail][open]")].map(n=>n.dataset.cpuDetail)), cpuScroll=$("#main").scrollTop;
   document.querySelectorAll(".sidebar [data-page]").forEach(button=>button.classList.toggle("active",button.dataset.page===page));
-  $("#page-name").textContent = {overview:"Overview",workers:"Workers",commands:"Commands",clients:"Clients",history:"Run history",functions:"Functions",settings:"Settings"}[page];
-  $("#main").innerHTML = page==="overview" ? overview() : page==="workers" ? workers(config) : page==="commands" ? commands() : page==="clients" ? clientPage() : page==="history" ? heading("", "Run history", "Saved configurations, outcomes, and logs. Rerun interrupted sessions explicitly.")+runTable([...jobs].reverse()) : page==="functions" ? functionsPage() : settings();
+  $("#page-name").textContent = {overview:"Overview",workers:"Workers",cpu:"Servers",commands:"Commands",clients:"Clients",history:"Run history",functions:"Functions",settings:"Settings"}[page];
+  $("#main").innerHTML = page==="cpu" ? cpuPage() : page==="overview" ? overview() : page==="workers" ? workers(config) : page==="commands" ? commands() : page==="clients" ? clientPage() : page==="history" ? heading("", "Run history", "Saved configurations, outcomes, and logs. Rerun interrupted sessions explicitly.")+runTable([...jobs].reverse()) : page==="functions" ? functionsPage() : settings();
+  if(page==="cpu") {document.querySelectorAll("[data-cpu-detail]").forEach(n=>{n.open=expanded.has(n.dataset.cpuDetail);});$("#main").scrollTop=cpuScroll;}
   document.body.classList.toggle("workers-page",page==="workers");
   if (page==="workers") { $("#worker-status").innerHTML=workerCards();renderWorkerChat(); }
   if (page==="commands") act(previewCommand);
   if (page==="functions") act(loadFunctions);
 }
-function navigate(next, config) { page=next; if(next!=="workers") editing=null; render(config); $("#main").scrollTop=0; }
+function navigate(next, config) { page=next; if(next!=="workers") editing=null; render(config); if(next==="cpu")act(()=>loadCpu(true)); $("#main").scrollTop=0; }
 function readWorker() {
   const form=$("#worker-form"), config={...(editing ? jobs.find(job=>job.id===editing).config : meta.initial)};
   for(const input of form.querySelectorAll("[name]")) {
@@ -250,6 +302,7 @@ async function poll() {
     if($("#log-job").dataset.signature!==signature) { $("#log-job").innerHTML='<option value="">All runs</option>'+jobs.map(job=>`<option value="${job.id}">${esc(job.title)} · ${job.id.slice(0,5)}</option>`).join("");$("#log-job").value=selected;$("#log-job").dataset.signature=signature; }
     $("#worker-count").textContent=jobs.filter(job=>job.kind==="worker"&&active(job)).length;
     if(page==="overview"||page==="history") render();
+    else if(page==="cpu") act(()=>loadCpu());
     else if(page==="workers") { if(editing&&!jobs.some(job=>job.id===editing&&active(job))) { editing=null;render(); }  }
     renderWorkerChat();
     renderLogs();
@@ -259,6 +312,10 @@ async function poll() {
 document.addEventListener("click", event=>act(async()=>{
   if(event.target.closest(".brand")) { event.preventDefault();navigate("overview");return; }
   const target=event.target.closest("button,[data-log]");if(!target)return;
+  if(target.hasAttribute("data-cpu-refresh")) {await loadCpu(true);return;}
+  if(target.dataset.cpuStart) {await api("start",{kind:"cpu",config:target.dataset.cpuStart});toast("CPU worker queued");await loadCpu(true);return;}
+  if(target.dataset.cpuAction) {await api("cpu-control",{config:target.dataset.cpuConfig,worker:target.dataset.cpuWorker,job:target.dataset.cpuJob,action:target.dataset.cpuAction});toast("Control saved; current work finishes");await loadCpu(true);return;}
+  if(target.dataset.rocAction) {await api("roc-control",{id:target.dataset.rocId,action:target.dataset.rocAction});toast("Control applies at next target / compiler boundary");await loadCpu(true);return;}
   if(target.dataset.removeRun) {
     const id=target.dataset.removeRun;
     await api("control",{id,action:"remove"});
@@ -322,6 +379,7 @@ document.addEventListener("submit",event=>{
   });
 });
 document.addEventListener("change",event=>act(async()=>{
+  if(event.target.id==="cpu-cluster") {cpuCluster=event.target.value;await loadCpu(true);}
   if(event.target.id==="worker-loop") {workerLoop=event.target.value;chatSignature="";renderWorkerChat();}
   if(event.target.id==="worker-run") await selectWorker(event.target.value);
   if(event.target.id==="saved-presets"&&event.target.value) render(meta.preferences.presets[event.target.value]);

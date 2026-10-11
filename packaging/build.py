@@ -26,12 +26,12 @@ DIST = ROOT / "dist"
 # handoff, doctor, setup, analyze, draft, optimizer and the matchers).
 WORKER_MODULES = [
     "activity", "analyze", "angr_facts", "auto", "benchmark", "clients", "doctor", "draft", "fingerprint",
-    "daily_stats", "flags", "gui", "gui_worker", "handoff", "libs", "link", "mass", "match", "metrics", "mutate",
+    "cpu_jobs", "cpu_worker", "cpu_status", "command_watch", "daily_stats", "flags", "gui", "gui_worker", "handoff", "libs", "link", "mass", "match", "metrics", "mutate",
     "ltcg", "optimizer", "pressure", "providers", "refsource", "repair", "selfupdate", "setup",
-    "shapes", "sources", "uninstall", "verify_window", "worker", "xcopy",
+    "shapes", "sources", "task_files", "uninstall", "verify_window", "worker", "xcopy",
 ]
 # Only the maintainer's server needs these, so they stay out of the helper zips.
-SERVER_MODULES = ["dataset", "discord", "leaderboard", "progress", "server"]
+SERVER_MODULES = ["cluster", "cluster_setup", "dataset", "discord", "leaderboard", "progress", "server"]
 
 COMMON_FILES = ["roc.py", "roc.cmd", "roc.sh", "install.cmd", "install.sh",
                 "uninstall.cmd", "README.md",
@@ -99,7 +99,8 @@ Local models use your GPU and CPU heavily: fans, heat and power draw.
         "name": "RoConstruct Server",
         "tagline": "Maintainer-only: the group server and website publishing.",
         "files": COMMON_FILES + ["host.cmd", "start.cmd", "update.cmd", ".gitignore",
-                                 "docs/progress.json", "docs/history.json"],
+                                 "docs/progress.json", "docs/history.json",
+                                 "docs/decentralized-server-setup.md", "docs/decentralized-server-plan.md"],
         "modules": WORKER_MODULES + SERVER_MODULES,
         "docs": {
             "README-FIRST.txt": """RoConstruct Server (MAINTAINER-ONLY)
@@ -113,6 +114,9 @@ command from a Worker install says so instead of crashing.
     py -3.12 roc.py server --help
     py -3.12 roc.py progress          write docs/ for the website
     py -3.12 roc.py server --startup  start host.cmd at logon
+
+Private CPU sharing and quorum failover: docs/decentralized-server-setup.md
+    py -3.12 roc.py cluster --help
 
 Do not hand this zip to ordinary helpers.
 """,
