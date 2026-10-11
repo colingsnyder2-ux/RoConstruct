@@ -143,6 +143,11 @@ so selective scaling to 120 manifest entries is running. It keeps the shared
 2,000-request/$4.50 ceiling and excludes 2009-12. A single worker exception is
 logged; no unverified output is submitted.
 
+The v4 scale has since processed 70+ unique families with four verified
+improvements. Caller-aware v5 added up to three verified caller source clues to
+structured prompts; twelve families produced zero exacts (scores 10–95), so
+caller clues alone are parked while same-family exemplars continue.
+
 After the combined-transfer sweep, this branch ledger held 1,875 unique server
 exacts. The frame/inlining pilot added one; subsequent late-spillover gains are
 recorded separately. These are campaign gains, not a global completion percentage.
