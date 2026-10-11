@@ -11,6 +11,7 @@ from roc.daily_stats import archive_days, day_bounds, save
 from roc.server import Store, make_handler
 from roc.worker import Api
 from roc.leaderboard import payload, publish_yesterday
+from roc.discord import code_block
 
 
 class DailyStatsTests(unittest.TestCase):
@@ -103,6 +104,9 @@ class DailyStatsTests(unittest.TestCase):
         self.assertEqual(message["allowed_mentions"]["parse"], [])
         self.assertEqual(message["embeds"][0]["footer"]["text"], "RoConstruct Server Mining")
         self.assertIn("timestamp", message["embeds"][0])
+        self.assertTrue(message["embeds"][0]["fields"][1]["value"].startswith("```\n"))
+        self.assertEqual(len(code_block("x" * 2000)), 1024)
+        self.assertTrue(code_block("x" * 2000).endswith("\n```"))
         store = Store(":memory:", 600)
         try:
             with tempfile.TemporaryDirectory() as directory, patch("roc.leaderboard.providers.secret", return_value="configured"), patch("roc.leaderboard.send", return_value=True) as send:
