@@ -1,6 +1,6 @@
 import json
 
-from roc import audit, donor, fingerprint, match, worker
+from roc import analyze, matchers, fingerprint, match, worker
 
 
 def test_exact_matches_replace_stale_partial_files(tmp_path, monkeypatch):
@@ -33,7 +33,7 @@ def test_exact_matches_replace_stale_partial_files(tmp_path, monkeypatch):
 
 
 def test_lint_flags_bad_files_and_overlaps(tmp_path, monkeypatch):
-    monkeypatch.setattr(audit, "ROOT", tmp_path)
+    monkeypatch.setattr(analyze, "ROOT", tmp_path)
     src = tmp_path / "src" / "c"
     src.mkdir(parents=True)
     (src / "00401000.cpp").write_text("// roc-cl: 21022\n// roc-lib: nosuch a.cpp\n")
@@ -46,14 +46,14 @@ def test_lint_flags_bad_files_and_overlaps(tmp_path, monkeypatch):
     (work / "meta.json").write_text(json.dumps({"data_bytes": 60}))
     rows = {"00401000": {"addr": "00401000", "size": 0x20}, "00401010": {"addr": "00401010", "size": 4}}
     monkeypatch.setattr(match, "_functions", lambda client: rows)
-    problems = audit.lint("c", log=lambda *a: None)
+    problems = analyze.lint("c", log=lambda *a: None)
     kinds = {k: v for k, v in problems.items()}
     assert kinds["error: roc-lib names an unknown recipe"] == ["00401000.cpp (nosuch)"]
     assert kinds["error: no function starts at this address"] == ["00409999.cpp"]
     assert kinds["error: file name is not an 8-digit lowercase address"] == ["readme.cpp"]
     assert kinds["error: function bodies overlap (roadmap)"] == ["00401000+32 > 00401010"]
     assert "00401010" in kinds["warning: scored 100 but no source file here (pull from the server)"]
-    assert audit.data_coverage("c").startswith("6 of 60 bytes")  # overlapping spans count once
+    assert analyze.data_coverage("c").startswith("6 of 60 bytes")  # overlapping spans count once
 
 
 def test_donor_reads_openrbx_csvs_and_markers(tmp_path):
@@ -65,5 +65,5 @@ def test_donor_reads_openrbx_csvs_and_markers(tmp_path):
     code = tmp_path / "Client" / "a.cpp"
     code.parent.mkdir()
     code.write_text("// FUNCTION: WEBSERVICE 0x10001000\nint f() { return 1; }\n// GLOBAL: WEBSERVICE 0x10300000\n")
-    assert donor.names(csvs) == {0x10001740: ("stl", "??1vec@@QAE@XZ"), 0x100a8b60: ("lua", "luaA_pushobject")}
-    assert donor.annotations(tmp_path) == {0x10001000: "Client/a.cpp:1"}
+    assert matchers.names(csvs) == {0x10001740: ("stl", "??1vec@@QAE@XZ"), 0x100a8b60: ("lua", "luaA_pushobject")}
+    assert matchers.annotations(tmp_path) == {0x10001000: "Client/a.cpp:1"}

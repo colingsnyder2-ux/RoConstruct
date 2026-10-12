@@ -1,5 +1,6 @@
 """Source publication includes unfinished server submissions."""
 import json
+import os
 import tempfile
 import unittest
 from pathlib import Path
@@ -14,6 +15,7 @@ class FindingsTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder, patch.object(server, "ROOT", Path(folder)), \
              patch.object(server, "sync_findings") as sync, \
              patch.object(server, "publish_findings") as publish, \
+             patch.object(server, "publish_pages") as pages, \
              patch.object(server, "export", return_value={}), \
              patch.object(progress, "build"), patch.object(setup, "refresh_path"), \
              patch.object(setup, "find_exe", return_value="git"), \
@@ -22,6 +24,7 @@ class FindingsTests(unittest.TestCase):
             server._publish_once(store, "https://example.com", log=Mock())
             sync.assert_called_once_with(store)
             publish.assert_called_once()
+            pages.assert_called_once()
             commands = [call.args[0][1] for call in git.call_args_list]
             self.assertEqual(commands, ["push", "add", "diff"])
 
@@ -44,6 +47,7 @@ class FindingsTests(unittest.TestCase):
     def test_sync_includes_zero_and_partial_preserves_better_local(self):
         store = Mock()
         store.scores.return_value = {"client": {}}
+        store.agent_memory.return_value = {"lessons": [], "records": [], "cursor": 0, "more": False}
         store.sources.return_value = [
             {"addr": "00000001", "score": 0, "user": "worker", "source": "draft"},
             {"addr": "00000002", "score": 65, "user": "worker", "source": "partial"},
@@ -64,3 +68,119 @@ class FindingsTests(unittest.TestCase):
             server.sync_findings(store)
             self.assertEqual((root / "src/client/00000003.cpp").read_text(), "exact")
         store.sources.assert_called_with("client", min_score=0)
+
+
+def test_publisher_stages_sources_and_portable_findings_files(tmp_path):
+    import shutil
+    import subprocess
+    git = shutil.which("git")
+    if not git:
+        import pytest
+        pytest.skip("git not installed")
+    run = lambda cwd, *a: subprocess.run([git, *a], cwd=cwd, check=True, capture_output=True, text=True).stdout
+    remote = tmp_path / "remote.git"
+    run(tmp_path, "init", "-q", "--bare", "-b", "main", str(remote))
+    seed = tmp_path / "seed"
+    run(tmp_path, "init", "-q", "-b", "main", str(seed))
+    (seed / "README.md").write_text("old")
+    (seed / "roc.py").write_text("stale app copy")  # must not survive a publish
+    run(seed, "add", ".")
+    run(seed, "-c", "user.name=t", "-c", "user.email=t@t", "commit", "-qm", "seed")
+    run(seed, "push", "-q", str(remote), "main")
+    root = tmp_path / "root"
+    run(tmp_path, "init", "-q", str(root))
+    run(root, "remote", "add", "findings", str(remote))
+    (root / "src" / "2008-06").mkdir(parents=True)
+    (root / "src" / "2008-06" / "00401000.cpp").write_text("int f() { return 1; }\n")
+    findings = root / "local" / "findings"
+    (findings / ".github" / "workflows").mkdir(parents=True)
+    (findings / "README.md").write_text("# RoConstruct findings\n")
+    (findings / ".github" / "workflows" / "package.yml").write_text("name: x\n")
+    (findings / "agent-memory").mkdir()
+    (findings / "agent-memory" / "lessons.json").write_text("[]")
+    (findings / "reports").mkdir()
+    (findings / "reports" / "old.md").write_text("# old report")
+    (findings / ".gitignore").write_text("*.log\n")
+    (root / "work").mkdir()
+    logs = []
+    with patch.object(server, "ROOT", root), \
+            patch.dict(os.environ, {"GIT_AUTHOR_NAME": "t", "GIT_AUTHOR_EMAIL": "t@t",
+                                    "GIT_COMMITTER_NAME": "t", "GIT_COMMITTER_EMAIL": "t@t"}):
+        server.publish_findings(git, logs.append)
+    assert logs == ["Findings published."]
+    files = set(run(tmp_path, "--git-dir", str(remote), "ls-tree", "-r", "--name-only", "main").split())
+    assert files == {"README.md", ".gitignore", ".github/workflows/package.yml", "agent-memory/lessons.json",
+                     "reports/old.md", "src/2008-06/00401000.cpp"}
+    assert run(tmp_path, "--git-dir", str(remote), "show", "main:README.md") == "# RoConstruct findings\n"
+    assert not list((root / "work").glob("findings-index-*"))
+
+
+def test_site_publish_commits_only_site_files(tmp_path):
+    import shutil
+    import subprocess
+    git = shutil.which("git")
+    if not git:
+        import pytest
+        pytest.skip("git not installed")
+    run = lambda *a: subprocess.run([git, *a], cwd=tmp_path, check=True, capture_output=True, text=True).stdout
+    run("init", "-q", "-b", "main")
+    (tmp_path / "docs" / "data").mkdir(parents=True)
+    (tmp_path / "docs" / "progress.json").write_text("{}")
+    for name in ("data/2008-06.json", "source-links.json"):
+        (tmp_path / "docs" / name).write_text("{}")
+    (tmp_path / "other.py").write_text("x = 1\n")
+    run("add", ".")
+    run("-c", "user.name=t", "-c", "user.email=t@t", "commit", "-qm", "seed")
+    (tmp_path / "docs" / "history.json").write_text("[]")
+    (tmp_path / "other.py").write_text("x = 2\n")
+    run("add", "other.py")  # a maintainer's staged work-in-progress
+    calls = []
+    real = subprocess.run
+
+    def fake(argv, **kw):
+        calls.append(argv)
+        if "push" in argv or "fetch" in argv:
+            return subprocess.CompletedProcess(argv, 0, "", "")
+        return real(argv, **kw)
+    with patch.object(server, "ROOT", tmp_path), patch.object(server, "publish_findings"), \
+            patch.object(server, "sync_findings"), patch.object(server.subprocess, "run", side_effect=fake), \
+            patch("roc.progress.build"), patch.object(server, "export", return_value={}), \
+            patch("roc.setup.find_exe", return_value=git), patch("roc.setup.refresh_path"), \
+            patch.dict(os.environ, {"GIT_AUTHOR_NAME": "t", "GIT_AUTHOR_EMAIL": "t@t",
+                                    "GIT_COMMITTER_NAME": "t", "GIT_COMMITTER_EMAIL": "t@t"}):
+        server._publish_once(Mock(), None, lambda *a: None)
+    committed = run("show", "--name-only", "--format=", "HEAD").split()
+    assert committed == ["docs/history.json"]
+    assert run("diff", "--cached", "--name-only").split() == ["other.py"]  # still staged, not pushed
+
+
+def test_pages_publish_is_one_parentless_commit_and_skips_guides(tmp_path):
+    import shutil
+    import subprocess
+    git = shutil.which("git")
+    if not git:
+        import pytest
+        pytest.skip("git not installed")
+    run = lambda cwd, *a: subprocess.run([git, *a], cwd=cwd, check=True, capture_output=True, text=True).stdout
+    remote = tmp_path / "remote.git"
+    run(tmp_path, "init", "-q", "--bare", "-b", "main", str(remote))
+    root = tmp_path / "root"
+    run(tmp_path, "init", "-q", str(root))
+    run(root, "remote", "add", "origin", str(remote))
+    (root / "docs" / "data").mkdir(parents=True)
+    (root / "docs" / "index.html").write_text("<html>")
+    (root / "docs" / "data" / "2008-06.json").write_text("{}")
+    (root / "docs" / "SETUP.md").write_text("guide")
+    (root / "work").mkdir()
+    logs = []
+    env = {"GIT_AUTHOR_NAME": "t", "GIT_AUTHOR_EMAIL": "t@t", "GIT_COMMITTER_NAME": "t", "GIT_COMMITTER_EMAIL": "t@t"}
+    with patch.object(server, "ROOT", root), patch.dict(os.environ, env):
+        server.publish_pages(git, logs.append)
+        (root / "docs" / "data" / "2008-06.json").write_text('{"changed": 1}')
+        server.publish_pages(git, logs.append)
+        server.publish_pages(git, logs.append)  # unchanged: no new commit
+    assert logs == ["Website published.", "Website published.", "Website unchanged."]
+    files = set(run(tmp_path, "--git-dir", str(remote), "ls-tree", "-r", "--name-only", "gh-pages").split())
+    assert files == {"index.html", "data/2008-06.json", ".nojekyll"}  # guides stay on main
+    assert run(tmp_path, "--git-dir", str(remote), "rev-list", "--count", "gh-pages").strip() == "1"
+    assert not list((root / "work").glob("pages-index-*"))

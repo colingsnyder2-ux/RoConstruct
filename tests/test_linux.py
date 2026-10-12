@@ -210,9 +210,9 @@ def test_msi_table_rows_are_column_major():
 
 
 def test_handoff_launch_command_off_windows():
-    from roc import handoff
-    with patch("roc.handoff.os.name", "posix"):
-        command = handoff.launch_command()
+    from roc import link
+    with patch("roc.link.os.name", "posix"):
+        command = link.launch_command()
     assert command[0] == sys.executable
     assert command[1].endswith("roc.py") and command[2] == "launch"
 

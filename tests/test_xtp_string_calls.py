@@ -33,7 +33,7 @@ def test_private_header_recipe_wraps_source_without_editing_it(tmp_path, monkeyp
     monkeypatch.setattr(libs, "fetch", lambda name: tmp_path)
     monkeypatch.setattr(libs, "winsdk_include", lambda: "")
 
-    def preprocess(build, path, include, defines):
+    def preprocess(build, path, include, defines, deps=None):
         wrappers.append(path.read_text())
         assert "mfc-9.0" in include
         assert defines == "_AFXDLL _XTP_STATICLINK _DLL"

@@ -1,6 +1,5 @@
 # Client files are proprietary: only the registry, sources, and docs are tracked.
 clients/*
-!clients/README.md
 !clients/clients.json
 !clients/sources.json
 !clients/donor.json
@@ -12,6 +11,7 @@ src/
 
 # Local runtime state and output
 work/
+local/
 tools/
 *.db
 *.log
@@ -28,9 +28,8 @@ investigate*.py
 test_out.txt
 clients.zip
 r2009.zip
-docs/decompilation-research.md
 
-# Old pre-rewrite scripts, kept on disk until the port is done
+# Retired folders (now under local/) and legacy root config copies
 scripts/
 
 # Python / build
@@ -40,3 +39,6 @@ __pycache__/
 build/
 dist/
 *.spec
+
+# Website data: published to the gh-pages branch, never committed to main
+docs/data/

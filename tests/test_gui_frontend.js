@@ -1,6 +1,27 @@
 "use strict";
 const assert=require("node:assert/strict"),fs=require("node:fs"),vm=require("node:vm");
 const source=fs.readFileSync("roc/web/app.js","utf8");
+const agentContext={agentState:{clis:{},client:{},memory:{lessons:[{
+  library:"XTP",id:"prelude",change:"Vendor header",next:"Inspect prelude",evidence:"report.md",
+  exacts_gained:321,outcome:"server_verified"}],recent:[{
+  client:"2008-06",kind:"session",before:40,candidate:10,after:40,outcome:"rolled_back"}]}},
+  agentPlan:null,jobs:[],agentAutoConfig:{},check:()=>"",heading:()=>"",button:()=>"",field:()=>"",esc:value=>String(value).replaceAll("<","&lt;")};
+vm.createContext(agentContext);
+vm.runInContext(source.slice(source.indexOf("function agentPage()"),source.indexOf("async function loadAgent()")),agentContext);
+const agentHTML=agentContext.agentPage();
+assert.doesNotMatch(agentHTML,/id="agent-auto-form"/);
+assert.match(agentHTML,/live in Workers/);
+const memoryHTML=agentContext.experimentMemory(agentContext.agentState.memory);
+assert.match(memoryHTML,/\+321 exact/);
+assert.match(memoryHTML,/candidate 10%/);
+assert.match(memoryHTML,/rolled_back/);
+assert.match(agentContext.agentAutomatic(),/Individual mining is disabled unless selected/);
+agentContext.agentPlan={note:"snapshot",excluded:{"no source":2},areas:[{
+  title:"Imports",eligible:5,bytes:500,priority:90,advice:"IAT calls",examples:[],parked:false}]};
+assert.match(agentContext.agentAutomatic(),/Imports/);
+assert.match(agentContext.agentAutomatic(),/2 no source/);
+agentContext.agentState.memory=null;
+assert.match(agentContext.experimentMemory(null),/Loading experiment memory/);
 const selection=source.slice(source.indexOf("async function selectWorker(id)"));
 const context={workerRun:"",chatSignature:"",page:"workers",logs:[],token:"session",renders:[],messages:[],control:{value:""},AbortSignal,
   $(){return this.control;},renderWorkerChat(){context.renders.push(context.workerRun);},toast(message){context.messages.push(message);}};
@@ -22,7 +43,7 @@ assert.equal(automaticForm.workers,"auto");assert.equal(automaticForm.rounds,"au
 assert.equal(automaticForm.max_tokens,"auto");assert.equal(automaticForm.cloud_concurrency,"auto");
 assert.equal(automaticForm.max_size,512);assert.equal(automaticForm.min_score,null);
 assert.equal(automaticForm.cloud_allowed,true);assert.equal(automaticForm.targets[0].addr,"00401000");
-vm.runInContext(source.slice(source.indexOf("function field("),source.indexOf("let controlsOpen=")),formContext);
+vm.runInContext(source.slice(source.indexOf("function field("),source.indexOf("let workerMode=")),formContext);
 formContext.meta={providers:[],clients:[],preferences:{presets:{}}};formContext.localModels=[];
 formContext.esc=String;formContext.liveKeys=new Set();formContext.button=()=>"";
 const formHTML=formContext.workerForm({...automaticForm,targets:[]});
@@ -48,6 +69,7 @@ const feedNodes={};
 for(const id of ["worker-chat","worker-tabs","worker-status","chat-compact","chat-follow","jump-live","worker-chat-rows"])
   feedNodes["#"+id]={dataset:{},innerHTML:"",children:[],classList:{toggle() {}}};
 const feedContext={jobs:[],logs:[],workerRun:"",workerLoop:"",chatCompact:false,chatFollow:true,chatSignature:"",
+  isWorker:job=>["worker","agent_worker"].includes(job.kind),
   $:selector=>feedNodes[selector],active:job=>job.status==="running",esc:String,workerCards:()=>"",empty:()=>"empty",
   setChatFollow:()=>{},updateFeed:(_node,items)=>feedContext.items=items};
 vm.createContext(feedContext);
@@ -77,6 +99,10 @@ feedContext.renderWorkerChat();assert.equal(feedContext.items.length,4);
 feedContext.jobs[0].status="completed";feedContext.renderWorkerChat();
 assert.match(feedNodes["#worker-tabs"].innerHTML,/dot completed/);
 assert.match(feedNodes["#worker-tabs"].innerHTML,/data-remove-run="run"/);
+feedContext.jobs[0]={...feedContext.jobs[0],kind:"agent_worker",status:"running"};
+feedContext.chatSignature="";feedContext.renderWorkerChat();
+assert.ok(feedContext.items.some(([,html])=>html.includes("compile chatter")));
+assert.match(feedNodes["#worker-tabs"].innerHTML,/dot running/);
 console.log("Compact: one result per function, benchmarks, 3/4/100-loop boundary passed");
 (async()=>{
   context.fetch=async()=>{throw new TypeError("Failed to fetch");};

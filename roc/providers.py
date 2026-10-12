@@ -15,9 +15,10 @@ import urllib.request
 from urllib.parse import urlparse
 from dataclasses import dataclass
 from pathlib import Path
+from roc import setup
 
 ROOT = Path(__file__).resolve().parent.parent
-CONFIG = ROOT / "roconstruct-providers.json"
+CONFIG = setup.config("roconstruct-providers.json")
 OLLAMA = "http://127.0.0.1:11434"
 
 BUILTINS = {

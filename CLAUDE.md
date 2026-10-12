@@ -17,16 +17,22 @@ lists them all.
 
 ## Where the knowledge is
 
-- `docs/AI_WORKER_GUIDE.md` - acceptance rules, repair advice, pitfalls. Read first.
-- `docs/NEXT_EXPERIMENTS.md`, `docs/EXPERIMENTS.md` - what to try next, what already failed.
-- `docs/investigations/` - one write-up per campaign (`matching-findings.md` is the log).
+- `docs/AGENT_GUIDE.md` - the one current guide: acceptance rules, tool routing, order
+  of work, experiment-memory schema, automatic worker. Read first.
+- `research/lessons.json` - ranked, receipt-backed lessons; append each trial to
+  `work/agent-memory/attempts.jsonl` (shared with other PCs through the server).
+- `research/recipes.json` - named compiler-only experiments with recorded results;
+  run them with `roc research list|plan|run NAME`.
+- `research/log.jsonl` - the dated findings log (`roc research log`, `roc research note`); the
+  older address-level log is frozen in RoConstruct-findings `reports/matching-findings-20261012.md`.
 - `roc/libs.py` - library recipes (exact upstream source + flags per client).
-- `benchmarks/` - reusable runners from past campaigns (`raknet_2008.py`,
-  `library_fill.py`, `lib_sweep.py`, ...). Read one before writing a new one.
+- `research/reports.json` - index of old campaign reports (full text in
+  RoConstruct-findings `reports/`): history, not instructions.
+- `docs/SETUP.md`, `docs/SERVER.md` - install, models, dashboard, hosting, packages.
 
 ## How matching work is done (current methods, 2026-10-12)
 
-Start with the newest entries at the end of `docs/investigations/matching-findings.md`:
+Start with `roc research log` (newest entries):
 they say what just worked, what was parked, and what to try next. Don't repeat a
 variant recorded there as rejected.
 
@@ -58,11 +64,12 @@ variant recorded there as rejected.
    upstream version, or the vendor's build prelude and defines.
 7. **Boundaries.** Fix function extents only with proof, via `work/<client>/bounds.json`.
 
-Write bulk trials as runners under `benchmarks/` (copy the structure of an existing
-one). Keep each campaign's evidence in `work/<campaign>-<date>/`: sources, hashes,
+Write bulk trials as a recipe in `research/recipes.json` (op `grid` or `fanout`),
+not a new script; generated units go through `libs.add_unit` so every PC can rebuild
+them. Keep each campaign's evidence in `work/<campaign>-<date>/`: sources, hashes,
 diffs, server receipts and a summary. Compiling locally is free, so submit only
 gains, with `roc submit <client> [addr ...]`. Afterwards append one dated entry to
-`docs/investigations/matching-findings.md`, covering:
+`research/log.jsonl` with `roc research note TITLE TEXT`, covering:
 - what was tried;
 - the exacts gained;
 - the rejected variants;
@@ -74,8 +81,13 @@ gains, with `roc submit <client> [addr ...]`. Afterwards append one dated entry 
   `XTPDLLExports.h`, defines `_LIB`, and marks the CString accessors noinline. Before
   sweeping any library, find its vendor build prelude the same way.
 - Ogre 1.4.5 ships as `rgmain.dll` (recipe `ogre-1.4.5`, flags
-  `/Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD`, no `/O2`). Only about 21 inline Ogre header
-  functions live in the exe, and they are all matched.
+  `/Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD`, no `/O2` for that DLL replay).
+  The exe also contains Roblox's Ogre subclasses/forks and header templates.
+  Client-import headers (`#undef OGRE_NONCLIENT_BUILD`) plus authentic method
+  bodies and inherited layouts have recovered dozens more. Their winning exe
+  flags often include `/O2`; use per-source evidence, not the DLL flags globally.
+  Read the `ogre-*` lessons in `research/lessons.json` and the `ogre-*` recipes in
+  `research/recipes.json` before new Ogre work.
 - WildMagic is not in 2008-06. Functions attributed to it are Roblox templates.
 - A second zlib 1.2.3 copy (0x7a3e90-0x7a99b0) was built with VS2005 50727 and
   `ZLIB_WINAPI` (recipe `zlib-1.2.3-winapi`).

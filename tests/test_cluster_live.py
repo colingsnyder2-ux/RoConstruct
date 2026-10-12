@@ -18,7 +18,7 @@ import uuid
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
-from roc import cluster, cluster_setup, cpu_jobs, cpu_worker, worker
+from roc import cluster, tasks, worker
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -92,7 +92,7 @@ class LiveCluster(unittest.TestCase):
         fixture = None
         for row in rows:
             try:
-                if cpu_jobs.check_many_text(row[0], [row[1]], row[4])[0][1] == 100:
+                if tasks.check_many_text(row[0], [row[1]], row[4])[0][1] == 100:
                     fixture = row
                     break
             except BaseException as error:
@@ -105,7 +105,7 @@ class LiveCluster(unittest.TestCase):
         seed.db.execute("INSERT INTO funcs(client,addr,size,unit) VALUES(?,?,?,?)", (client, addr, size, unit))
         seed.db.commit()
         seed.db.close()
-        cluster_setup.generate(self.folder, ["127.0.0.1"] * 3, str(seed_file), binary, local=True)
+        cluster.generate(self.folder, ["127.0.0.1"] * 3, str(seed_file), binary, local=True)
         for i in range(3):
             config_path = self.folder / ("node-%d" % (i + 1)) / "node.json"
             conf = json.loads(config_path.read_text())
@@ -116,13 +116,13 @@ class LiveCluster(unittest.TestCase):
             for i in range(3):
                 self.start_node(i)
             self.ready([0, 1, 2])
-            self.assertEqual(cpu_worker.run(self.folder / "cpu-worker.json", jobs=1, log=lambda _: None), 0)
+            self.assertEqual(tasks.run(self.folder / "cpu-worker.json", jobs=1, log=lambda _: None), 0)
             self.assertEqual(self.request(0, "/v2/cpu/status")[1]["jobs"], {})
             enqueue = {"client": client, "source": source, "addrs": [addr], "user": "pilot", "model": "roc propagation"}
             self.assertEqual(self.request(0, "/v2/cpu/enqueue", enqueue)[0], 403)
             jobid = self.request(0, "/v2/cpu/enqueue", enqueue, admin=True)[1]["id"]
             # Genuine compile-once contribution; every result still provisional.
-            self.assertEqual(cpu_worker.run(self.folder / "cpu-worker.json", enable=True, jobs=1, log=print), 1)
+            self.assertEqual(tasks.run(self.folder / "cpu-worker.json", enable=True, jobs=1, log=print), 1)
             self.assertEqual(self.request(1, "/v1/source?client=%s&addr=%s" % (client, addr))[1]["score"], 0)
             receipt = uuid.uuid4().hex
             code, result = self.request(0, "/v2/cpu/validate", {"id": jobid}, admin=True, request_id=receipt)
@@ -190,7 +190,7 @@ class LiveCluster(unittest.TestCase):
         original = self.original()
         row = original.execute("SELECT client,addr,size,unit,source FROM funcs WHERE client='2008-06' AND addr='00401040'").fetchone()
         original.close()
-        if not row or cpu_jobs.check_many_text(row[0], [row[1]], row[4])[0][1] != 100:
+        if not row or tasks.check_many_text(row[0], [row[1]], row[4])[0][1] != 100:
             self.skipTest("Missing verified pilot fixture")
         client, addr, size, unit, source = row
         seed_file = ROOT / "work" / ("cluster-solo-seed-" + uuid.uuid4().hex[:8] + ".db")
@@ -198,7 +198,7 @@ class LiveCluster(unittest.TestCase):
         seed.db.execute("INSERT INTO funcs(client,addr,size,unit) VALUES(?,?,?,?)", (client, addr, size, unit))
         seed.db.commit()
         seed.db.close()
-        cluster_setup.generate(self.folder, ["127.0.0.1"], str(seed_file), binary)
+        cluster.generate(self.folder, ["127.0.0.1"], str(seed_file), binary)
         self.config = cluster.load_config(self.folder / "node-1" / "node.json")
         try:
             self.start_node(0)
@@ -208,7 +208,7 @@ class LiveCluster(unittest.TestCase):
             # A changed immediate can be a masked relocation in this fixture.
             # Change actual opcodes, not only a relocation-covered constant.
             wrong = 'extern "C" int unrelated(volatile int* x) { return *x + 123; }'
-            self.assertLess(cpu_jobs.check_many_text(client, [addr], wrong)[0][1], 100)
+            self.assertLess(tasks.check_many_text(client, [addr], wrong)[0][1], 100)
             jobid = self.request(0, "/v2/cpu/enqueue", {**enqueue, "source": wrong}, admin=True)[1]["id"]
             self.assertEqual(self.request(0, "/v2/cpu/job-control", {"id": jobid, "action": "pause"}, admin=True)[0], 200)
             self.assertIsNone(self.request(0, "/v2/cpu/lease", {"enabled": True, "worker": "cpu-1", "clients": [client]})[1]["job"])
@@ -231,7 +231,7 @@ class LiveCluster(unittest.TestCase):
             self.assertLess(self.request(0, "/v1/source?client=%s&addr=%s" % (client, addr))[1]["score"], 100)
             self.assertEqual(self.request(0, "/v1/daily-stats")[1]["exacts"], 0)
             self.request(0, "/v2/cpu/enqueue", enqueue, admin=True)
-            self.assertEqual(cpu_worker.run(self.folder / "cpu-worker.json", enable=True, jobs=1, log=print), 1)
+            self.assertEqual(tasks.run(self.folder / "cpu-worker.json", enable=True, jobs=1, log=print), 1)
             deadline = time.monotonic() + 60
             while time.monotonic() < deadline:
                 if self.request(0, "/v1/source?client=%s&addr=%s" % (client, addr))[1]["score"] == 100:

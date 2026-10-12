@@ -220,7 +220,7 @@ def build(server=None, token=None, public_server=None, remote=None):
                     unit_ids[unit] = len(units)
                     units.append(unit)
                 addr = f["addr"]
-                source = sources.get(addr)
+                source = clients.get(addr)
                 funcs.append([int(addr, 16), f["size"], scores.get(addr, 0), unit_ids[unit],
                               bool(source), library.get((name, addr)), families.get(addr)])
             (DOCS / "data" / ("%s.json" % name)).write_text(json.dumps(

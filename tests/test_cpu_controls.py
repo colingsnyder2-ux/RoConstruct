@@ -10,7 +10,7 @@ from http.server import ThreadingHTTPServer
 from pathlib import Path
 from unittest.mock import patch
 
-from roc import cluster, command_watch, cpu_status, cpu_worker, match, task_files
+from roc import cluster, tasks, match
 from test_cluster import MemoryJournal
 
 
@@ -91,35 +91,35 @@ class LocalControls(unittest.TestCase):
                 if len(calls) == 1:
                     raise PermissionError("reader holds Windows file")
                 return original(temporary, target)
-            with patch.object(Path, "replace", replace), patch.object(task_files.time, "sleep"):
-                task_files.write_text(path, "new")
+            with patch.object(Path, "replace", replace), patch.object(tasks.time, "sleep"):
+                tasks.write_text(path, "new")
             self.assertEqual(path.read_text(), "new")
             self.assertEqual(len(calls), 2)
             self.assertEqual(list(Path(folder).glob("*.tmp")), [])
 
     def test_config_controls_hide_credentials(self):
-        with tempfile.TemporaryDirectory() as folder, patch.object(cpu_status, "ROOT", Path(folder)):
+        with tempfile.TemporaryDirectory() as folder, patch.object(tasks, "ROOT", Path(folder)):
             path = Path(folder) / "work" / "helper-cpu.json"
             path.parent.mkdir()
             config = {"servers": ["localhost:1"], "worker_token": "private-token", "cpu_enabled": False, "worker": "helper"}
             path.write_text(json.dumps(config))
-            key = next(iter(cpu_status.configs()))
-            cpu_status.control({"config": key, "action": "on"})
-            cpu_status.control({"config": key, "action": "pause"})
+            key = next(iter(tasks.configs()))
+            tasks.cpu_control({"config": key, "action": "on"})
+            tasks.cpu_control({"config": key, "action": "pause"})
             self.assertTrue(json.loads(path.read_text())["cpu_paused"])
-            cpu_status.control({"config": key, "action": "off"})
+            tasks.cpu_control({"config": key, "action": "off"})
             self.assertFalse(json.loads(path.read_text())["cpu_enabled"])
             self.assertEqual(json.loads(path.read_text())["worker_token"], "private-token")
-            with patch.object(cpu_status.worker.Api, "call", return_value={"nodes": [], "jobs": []}):
-                self.assertNotIn("private-token", json.dumps(cpu_status.snapshot()))
+            with patch.object(tasks.worker.Api, "call", return_value={"nodes": [], "jobs": []}):
+                self.assertNotIn("private-token", json.dumps(tasks.snapshot()))
 
     def test_command_pause_resume_stop_and_restore(self):
-        with tempfile.TemporaryDirectory() as folder, patch.object(command_watch, "ROOT", Path(folder)):
-            watch = command_watch.Watch("check")
+        with tempfile.TemporaryDirectory() as folder, patch.object(tasks, "ROOT", Path(folder)):
+            watch = tasks.Watch("check")
             watch.install()
             try:
                 watch.control_path.write_text("pause")
-                with patch.object(command_watch.time, "sleep", side_effect=lambda _: watch.control_path.write_text("resume")):
+                with patch.object(tasks.time, "sleep", side_effect=lambda _: watch.control_path.write_text("resume")):
                     watch.checkpoint()
                 self.assertEqual(watch.state["status"], "running")
                 watch.control_path.write_text("stop")
@@ -130,7 +130,7 @@ class LocalControls(unittest.TestCase):
                 original = watch.originals["target"]
                 watch.finish("cancelled")
             self.assertIs(match.target, original)
-            self.assertEqual(command_watch.tasks()[0]["status"], "cancelled")
+            self.assertEqual(tasks.tasks()[0]["status"], "cancelled")
 
     def test_progress_observer_preserves_comparator(self):
         payload = {"client": "2008-06", "addrs": ["00401000", "00402000"], "source": "source"}
@@ -140,8 +140,8 @@ class LocalControls(unittest.TestCase):
                 match.target(payload["client"], addr)
             return [(addr, 99, []) for addr in payload["addrs"]]
         with patch.object(match, "target", return_value=(b"", [], {"unit": "Pilot"})) as original, \
-             patch.object(cpu_worker.cpu_jobs, "check_many_text", side_effect=compare):
-            result = cpu_worker.compare(payload, lambda **state: progress.append(state))
+             patch.object(tasks, "check_many_text", side_effect=compare):
+            result = tasks.compare(payload, lambda **state: progress.append(state))
             self.assertIs(match.target, original)
         self.assertEqual([p["checked"] for p in progress], [0, 1])
         self.assertEqual(result, [(addr, 99, []) for addr in payload["addrs"]])

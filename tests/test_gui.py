@@ -183,7 +183,7 @@ class ControlTests(unittest.TestCase):
 
         with patch.object(worker, "Api", Api), patch.object(worker, "usable_clients", return_value=["C"]), \
              patch.object(worker, "work_one", return_value=100) as work, \
-             patch.object(worker, "save_session_state"), patch.object(worker.metrics, "summary", return_value=""):
+             patch.object(worker, "save_session_state"), patch.object(worker.telemetry, "summary", return_value=""):
             worker.run("localhost:8765", "tester", source_only=True, max_jobs=1, control=control, log=lambda msg: None)
         self.assertEqual(calls[1][1]["max_size"], 888)
         self.assertEqual(work.call_args.args[5], 7)
@@ -191,6 +191,17 @@ class ControlTests(unittest.TestCase):
 
 
 class DashboardTests(unittest.TestCase):
+    def test_agent_worker_joins_managed_worker_history(self):
+        with patch.object(self.app, "schedule"):
+            identifier = self.app.start({"kind": "agent_worker", "cli": "codex", "workers": 3, "model": "chosen-model"})
+        job = self.app.jobs[identifier]
+        self.assertEqual(job["kind"], "agent_worker")
+        self.assertEqual(job["config"]["workers"], 3)
+        self.assertEqual(job["config"]["client"], "2008-06")
+        self.assertIn("--automatic", job["args"])
+        self.assertIn("chosen-model", job["args"])
+        self.assertNotIn(self.app.worker_token or "NOT_A_TOKEN", job["args"])
+
     def test_every_dashboard_command_parses_in_real_cli(self):
         import importlib.util
         spec = importlib.util.spec_from_file_location("roc_gui_cli_test", gui.ROOT / "roc.py")
@@ -304,7 +315,7 @@ class DashboardTests(unittest.TestCase):
         url = "http://127.0.0.1:%s" % server.server_port
         try:
             self.assertEqual(urllib.request.urlopen(url).status, 200)
-            for asset in ("/fonts.css", "/logo.png", "/favicon.png", "/fonts/chakra-petch-700.ttf"):
+            for asset in ("/fonts.css", "/logo.png", "/favicon.png", "/fonts/chakra-petch-700.woff2"):
                 self.assertEqual(urllib.request.urlopen(url + asset).status, 200)
             with self.assertRaises(urllib.error.HTTPError) as error:
                 urllib.request.urlopen(url + "/api/meta")
@@ -349,9 +360,9 @@ class LinkTests(unittest.TestCase):
 
     def test_saved_terminal_choice(self):
         url = "roconstruct://work?client=2008-06&server=localhost:8765"
-        from roc import selfupdate
+        from roc import setup
         with patch.object(worker, "load_settings", return_value={"uri_interface": "terminal"}), \
-             patch.object(selfupdate, "try_update", return_value="unchanged"), patch.object(link, "run") as terminal:
+             patch.object(setup, "try_update", return_value="unchanged"), patch.object(link, "run") as terminal:
             link.launch(url, ask=lambda _: self.fail("Should not ask"))
         terminal.assert_called_once_with(url)
 

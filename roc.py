@@ -90,15 +90,15 @@ def cmd_setup(a, run=None):
     run=None keeps whatever --launch / --no-launch said; run=True always starts the
     worker in this terminal when the answers are in.
     """
-    from roc import handoff, worker
+    from roc import link, worker
     url = getattr(a, "url", None)
     if url:
-        payload = handoff.from_url(url)
+        payload = link.from_url(url)
         print("Accepted a website link: user=%s client=%s server=%s mode=%s cloud=%s" %
               (payload["user"], payload["client"], payload["server"], payload["mode"],
                "yes" if payload["cloud"] else "no"))
-        handoff.apply(url)
-        return finish_setup(handoff, a, run=run)
+        link.apply(url)
+        return finish_setup(link, a, run=run)
     s = worker.load_settings()
     default_user = s.get("user") or ""
     default_client = getattr(a, "client", None) or s.get("handoff_client") or ""
@@ -130,11 +130,11 @@ def cmd_setup(a, run=None):
     server = getattr(a, "server", None) or s.get("server") or worker.site_server()
     if not server:
         raise SystemExit("No server address known. Pass --server HOST:PORT (the site lists the current one).")
-    payload = handoff.save(user=user, client=client, server=server,
+    payload = link.save(user=user, client=client, server=server,
                            token=(getattr(a, "token", None) or s.get("token")),
                            mode=mode, cloud=cloud, model=getattr(a, "model", None))
-    print("Saved a signed setup: %s" % handoff.config_path())
-    return finish_setup(handoff, a, run=run)
+    print("Saved a signed setup: %s" % link.config_path())
+    return finish_setup(link, a, run=run)
 
 
 def ask_client():
@@ -157,9 +157,9 @@ def ask_client():
     raise SystemExit("Unknown client: %s" % picked)
 
 
-def finish_setup(handoff, a, run=None):
+def finish_setup(link, a, run=None):
     from roc import doctor
-    payload = handoff.load()
+    payload = link.load()
     if not payload:
         raise SystemExit("The setup could not be saved (signature check failed). Run: roc setup")
     print()
@@ -168,7 +168,7 @@ def finish_setup(handoff, a, run=None):
         run = bool(getattr(a, "launch", False))
     if run:
         # run in this terminal: the knobs stay visible and closeable here
-        return handoff.run_now(_forwarded(a))
+        return link.run_now(_forwarded(a))
     print("Start the worker with: roc launch")
 
 
@@ -210,12 +210,12 @@ def cmd_launch(a):
     here: username, client, cloud model, then the worker knobs. Nothing is
     installed that you did not ask for, and nothing starts until you answer.
     """
-    from roc import handoff
-    if not handoff.load():
+    from roc import link
+    if not link.load():
         print("No saved setup yet. Answering here - nothing installs until you pick a model.\n")
-    if getattr(a, "setup", False) or not handoff.load():
+    if getattr(a, "setup", False) or not link.load():
         return cmd_setup(a, run=True)
-    return handoff.run_now(_forwarded(a))
+    return link.run_now(_forwarded(a))
 
 
 def cmd_doctor(a):
@@ -267,7 +267,7 @@ def cmd_client_list(a):
 
 def cmd_client_fetch(a):
     """Download a client's files from Drive into clients/<name>/ and verify them."""
-    from roc import sources
+    from roc import clients
     reg = clients.load()
     names = sorted(reg) if a.name == "all" else [a.name]
     bad = 0
@@ -275,8 +275,8 @@ def cmd_client_fetch(a):
         if name not in reg:
             sys.exit("%s is not registered. See:  roc client list" % name)
         try:
-            sources.fetch(name)
-        except sources.FetchError as error:
+            clients.fetch(name)
+        except clients.FetchError as error:
             print("%-8s %s" % (name, error))
             bad += 1
     if bad:
@@ -284,16 +284,16 @@ def cmd_client_fetch(a):
 
 
 def cmd_client_sources(a):
-    """Point clients/sources.json at a bundle zip, or re-index a public Drive folder."""
-    from roc import sources
+    """Point clients/clients.json at a bundle zip, or re-index a public Drive folder."""
+    from roc import clients
     if a.bundle:
-        sources.set_bundle(a.bundle)
+        clients.set_bundle(a.bundle)
         return
     folder = a.folder.split("/folders/")[-1].split("?")[0].strip("/")
     extra = [s.strip() for s in (a.also or "").split(",") if s.strip()]
     if extra:
         print("also indexing: %s (not in clients.json yet)" % ", ".join(extra))
-    sources.index_drive(folder, dry_run=a.dry_run, extra_slots=extra)
+    clients.index_drive(folder, dry_run=a.dry_run, extra_slots=extra)
 
 
 def cmd_client_remove(a):
@@ -330,11 +330,11 @@ def cmd_client_verify(a):
 
 def ready(name):
     """Make sure the client is on disk before working on it: fetch it if we can."""
-    from roc import sources
+    from roc import clients
     entry = clients.load().get(name)
     if not entry or clients.status(name, entry) == "ok":
         return True
-    if sources.ensure(name):
+    if clients.ensure(name):
         return True
     print("%s: exe %s (fetch it with: roc client-fetch %s)" % (name, clients.status(name, entry), name))
     return False
@@ -410,20 +410,6 @@ def cmd_check(a):
         print("%d / %d match." % (matched, len(srcs)))
 
 
-def cmd_verify_window(a):
-    from roc.verify_window import prove
-    if a.batch:
-        rows = json.loads(Path(a.batch).read_text())
-        out = []
-        for row in rows:
-            pairs = [tuple(x.lower().split("=")) for x in row.get("equal", [])]
-            out.append(prove(row["left"], row["right"], pairs))
-        print(json.dumps(out, sort_keys=True))
-        return
-    pairs = [tuple(x.lower().split("=")) for x in a.equal]
-    print(json.dumps(prove(a.left, a.right, pairs), sort_keys=True))
-
-
 def cmd_classify(a):
     """Compile one source and emit conservative mismatch evidence as JSON."""
     from roc import match
@@ -434,15 +420,8 @@ def cmd_classify(a):
                       "symbol": symbol, "diagnosis": diagnosis}, sort_keys=True))
 
 
-def cmd_ltcg(a):
-    from roc.ltcg import build_dll
-    out = build_dll(a.build, a.source, a.output, a.map, a.force_unresolved,
-                    a.export_symbol, a.extra, tuple(a.flags.split()), a.opaque_extra)
-    print("built", out)
-
-
 def cmd_auto(a):
-    from roc import auto, setup
+    from roc import matchers, setup
     names = sorted(clients.load()) if a.name == "all" else [a.name]
     have = setup.compilers()
     for name in names:
@@ -450,8 +429,8 @@ def cmd_auto(a):
         if entry.get("compiler_build") not in have or clients.status(name, entry) != "ok":
             print("%s: skipped (needs the exe and its compiler)" % name)
             continue
-        found = auto.solve(name, a.max_size)
-        print("%s: %d new files in src/%s/" % (name, auto.save(name, found), name))
+        found = matchers.solve(name, a.max_size)
+        print("%s: %d new files in src/%s/" % (name, matchers.save(name, found), name))
 
 
 def cmd_xcopy(a):
@@ -459,13 +438,13 @@ def cmd_xcopy(a):
 
     Cheap and worth re-running often: each new match is a candidate for every other
     client, so this multiplies whatever else is finding."""
-    from roc import xcopy
+    from roc import matchers
     names = None if a.name == "all" else [n.strip() for n in a.name.split(",") if n.strip()]
     reg = clients.load()
     for name in names or []:
         if name not in reg:
             sys.exit("%s is not registered. See:  roc client list" % name)
-    result = xcopy.run(targets=names, limit=a.limit, dry_run=a.dry_run)
+    result = matchers.run(targets=names, limit=a.limit, dry_run=a.dry_run)
     print("\nClient       new files   newly matched")
     files = scored = 0
     for name in sorted(result):
@@ -475,15 +454,15 @@ def cmd_xcopy(a):
         scored += new_matches
     print("  %-8s %8d %14d" % ("total", files, scored))
     if scored and not a.dry_run:
-        from roc.discord import tool_digest
+        from roc.reports import tool_digest
         tool_digest("xcopy", "**%d verified cross-client matches**" % scored,
                     [{"name": "New source files", "value": str(files), "inline": True},
                      {"name": "Clients", "value": ", ".join(sorted(result)), "inline": True}])
 
 
 def cmd_shapes(a):
-    from roc import shapes
-    shapes.report([a.name], max_size=a.size, show=a.show, top=a.top)
+    from roc import fingerprint
+    fingerprint.report([a.name], max_size=a.size, show=a.show, top=a.top)
 
 
 def cmd_ref(a):
@@ -508,40 +487,78 @@ def cmd_libs(a):
     print(libs.run([n for n in names if libs.RECIPES[n].get("files")], targets))
 
 
+def cmd_research(a):
+    """Named compiler-only research recipes (research/recipes.json)."""
+    from roc import libs, research
+    recipes = research.recipes()
+    if a.action == "note":  # roc research note TITLE TEXT...
+        print(json.dumps(research.note(a.name, " ".join(a.more)), ensure_ascii=False))
+        return
+    if a.action == "log":
+        for row in research.log_entries(int(a.name or 10)):
+            print("%s  %s" % (row["date"], row["title"]))
+            print("    " + row["text"][:300].replace(chr(10), " "))
+        return
+    if a.action == "audit":
+        for folder in [a.name] + (a.more or []):
+            result = research.audit(folder)
+            print(json.dumps({folder: {k: result[k] for k in ("unique_verified_exacts", "by_journal", "error_rows")}}, indent=2))
+        return
+    if a.action == "capture-units":
+        added = libs.capture_units(a.name or "2008-06")
+        print("Stored %d generated units in %s" % (sum(map(len, added.values())), libs.UNITS_FILE.relative_to(ROOT).as_posix()))
+        return
+    if a.action == "list" or not a.name:
+        for name, spec in recipes.items():
+            result = spec.get("result", {})
+            print("%-28s %-6s %-9s %s" % (name, spec["op"], result.get("status") or
+                  ("+%s new" % result["new_verified"] if "new_verified" in result else "untried"), spec.get("hypothesis", "")))
+        return
+    if a.name not in recipes:
+        sys.exit("Unknown recipe %s. Run: roc research list" % a.name)
+    print(json.dumps(research.plan(a.name), indent=2))
+    if a.action == "plan":
+        return
+    if recipes[a.name].get("result", {}).get("status") == "rejected" and not a.force:
+        sys.exit("Recipe %s is recorded as rejected: %s Use --force with new evidence." %
+                 (a.name, recipes[a.name].get("next", "")))
+    research.run(a.name, a.server, a.jobs, a.limit)
+
+
 def cmd_donor(a):
-    from roc import donor
-    donor.build(donor.default_targets() if a.client == "all" else [a.client])
+    from roc import matchers
+    matchers.build(matchers.default_targets() if a.client == "all" else [a.client])
 
 
 def cmd_lint(a):
-    from roc import audit
-    if any(k.startswith("error") for k in audit.lint(a.client, show=a.show)):
+    from roc import analyze
+    if any(k.startswith("error") for k in analyze.lint(a.client, show=a.show)):
         sys.exit(1)
 
 
 def cmd_vtables(a):
-    from roc import audit
-    audit.vtable_report(a.client, top=a.top)
+    from roc import analyze
+    analyze.vtable_report(a.client, top=a.top)
 
 
 def cmd_ghidra(a):
-    from roc import audit
-    path, count = audit.ghidra(a.client)
+    from roc import analyze
+    path, count = analyze.ghidra(a.client)
     print("Wrote %s (%d functions). In Ghidra: Script Manager, add this folder, run it." % (path, count))
 
 
 def cmd_mass(a):
     """Everything automatic: compiler runtime tagging, STL, all libraries, then auto shapes."""
-    from roc import libs, mass
+    from roc import libs, matchers
     choice = getattr(a, "client_name", None) or a.client or "all"
     targets = libs.default_targets() if choice == "all" else [choice]
     def stage(message):
         if os.environ.get("ROC_GUI_EVENTS"):
             print("ROC_EVENT " + json.dumps({"event": "stage", "message": message}), flush=True)
     stage("Static libraries")
-    mass.staticlibs(targets)
+    matchers.staticlibs(targets)
     stage("STL")
-    mass.stl(targets)
+    matchers.stl(targets)
     stage("Library recipes")
     libs.run([n for n, r in libs.RECIPES.items() if r.get("files")], targets)
     for name in targets:
@@ -559,43 +576,6 @@ def cmd_flags(a):
         flags.tune(a.name)
 
 
-def cmd_angr_facts(a):
-    from roc import angr_facts
-    try:
-        print(angr_facts.dump(a.binary, int(a.address, 0), a.size))
-    except (OSError, ValueError, RuntimeError) as error:
-        raise SystemExit(str(error))
-
-
-def cmd_angr_batch(a):
-    import json
-    import re
-    from roc import angr_facts, clients
-    root = Path(__file__).resolve().parent
-    scores_path = root / "work" / a.name / "scores.json"
-    scores = json.loads(scores_path.read_text())
-    rows = []
-    for path in sorted((root / "src" / a.name).glob("*.cpp"),
-                       key=lambda item: (-scores.get(item.stem, 0), item.name)):
-        score = scores.get(path.stem, 0)
-        if not a.min_score <= score < 100:
-            continue
-        head = path.read_text(errors="replace")[:1200]
-        match = re.search(r"size:\s*(\d+)\s*bytes", head)
-        if not match:
-            continue
-        rows.append({"address": int(path.stem, 16), "size": int(match.group(1)),
-                     "score": score, "source": str(path)})
-        if len(rows) >= a.limit:
-            break
-    facts = angr_facts.analyze_many(clients.exe_path(a.name, clients.load()[a.name]),
-                                    [(row["address"], row["size"]) for row in rows])
-    for row, fact in zip(rows, facts):
-        row["angr"] = fact
-    payload = {"tool": "angr", "client": a.name, "count": len(rows), "rows": rows}
-    print(json.dumps(payload, indent=2, sort_keys=True))
-
-
 def cmd_repair(a):
     """Run bounded compiler-backed source mutations over partial matches."""
     from datetime import date
@@ -610,7 +590,7 @@ def cmd_repair(a):
         paths = paths[a.offset:]
     if a.limit:
         paths = paths[:a.limit]
-    log_path = root / "docs" / "investigations" / "matching-findings.md"
+    from roc import research
     scores_path = root / "work" / a.name / "scores.json"
     saved_scores = json.loads(scores_path.read_text()) if scores_path.exists() else {}
     scores_changed = False
@@ -663,10 +643,8 @@ def cmd_repair(a):
         print("%-8s %d -> %d tried=%d" % (addr, before, after, tried), flush=True)
         trials = ", ".join("%s=%s" % (m.get("category"), m.get("score"))
                             for m in mutations)
-        with log_path.open("a", encoding="utf-8") as log:
-            log.write("- %s: `roc repair %s %s`: %d -> %d, tried %d variants [%s]%s.\n" %
-                      (date.today(), a.name, addr, before, after, tried, trials,
-                       "; applied" if after > before and not a.dry_run else ""))
+        research.note("roc repair %s %s" % (a.name, addr), "%d -> %d, tried %d variants [%s]%s." %
+                      (before, after, tried, trials, "; applied" if after > before and not a.dry_run else ""))
         if after > before and not a.dry_run:
             path.write_text(updated)
             match.save_score(a.name, addr, after)
@@ -676,7 +654,7 @@ def cmd_repair(a):
         scores_path.write_text(json.dumps(saved_scores, indent=0, sort_keys=True))
     improved = [row for row in report if row["after"] > row["before"]]
     if improved and not a.dry_run:
-        from roc.discord import tool_digest
+        from roc.reports import tool_digest
         lines = "\n".join("`%s` %d%% → **%d%%**" % (row["addr"], row["before"], row["after"])
                           for row in improved[:10])
         tool_digest("repair", "**%s**: %d source repair gain(s)\n%s" % (a.name, len(improved), lines),
@@ -713,6 +691,19 @@ def cmd_config(a):
 
 def cmd_agent(a):
     from roc import agent
+    if a.automatic or a.plan:
+        from roc import agent_auto
+        if a.goal or a.interactive or a.client not in (None, "2008-06"):
+            sys.exit("Automatic mode uses ranked 2008-06 batches; omit --goal/--interactive")
+        if a.plan:
+            print(json.dumps(agent_auto.public_plan(agent_auto.plan(agent_auto.snapshot(), a.max_size or 512,
+                a.cli + ":" + (a.model or "default") + (":individual" if a.individual else ""))), indent=2))
+            return
+        s = settings()
+        srv = need(a.server or s.get("server"), "server", "Use --server or: roc config --server URL")
+        user = need(a.user or s.get("user"), "username", "Use --user or: roc config --user NAME")
+        return agent_auto.run(srv, user, a.token or os.environ.get("ROC_AGENT_SERVER_TOKEN") or s.get("token"), a.cli, a.model, a.workers,
+            a.jobs or 24, a.max_size or 512, a.minutes or 120, a.batch_size, a.batch_minutes, a.individual)
     if a.interactive:
         return agent.interactive(a.cli, a.goal or "match open 2008-06 functions", a.model)
     if a.goal:
@@ -720,7 +711,14 @@ def cmd_agent(a):
     s = settings()
     srv = need(a.server or s.get("server"), "server", "Use --server or: roc config --server URL")
     user = need(a.user or s.get("user"), "username", "Use --user or: roc config --user NAME")
-    agent.run(srv, user, a.token or s.get("token"), a.cli, a.model, a.client, a.jobs, a.max_size, a.minutes or 20)
+    agent.run(srv, user, a.token or s.get("token"), a.cli, a.model, a.client, a.jobs or 1, a.max_size or 256, a.minutes or 20)
+
+
+def cmd_agent_check(a):
+    from roc import agent_auto
+    row = agent_auto.trial(a.name, a.addr, a.path, a.hypothesis)
+    print("%s %d%% %s" % (a.addr, row["after"], row["outcome"]))
+    print(row.get("diff") or row.get("error") or "Exact code/data match")
 
 
 def cmd_submit(a):
@@ -745,10 +743,12 @@ def cmd_pull(a):
     names = sorted(clients.load()) if a.name == "all" else [a.name]
     for name in names:
         worker.pull_files(srv, name, a.token or s.get("token"), a.force)
+    from roc import libs
+    libs.fetch_units()  # agent-written library units that pulled sources point at
 
 
 def cmd_cluster(a):
-    module = need_module("cluster_setup", "The trusted cluster")
+    module = need_module("cluster", "The trusted cluster")
     if a.action == "setup":
         if not a.nodes:
             raise RuntimeError("Use --nodes 127.0.0.1 for one PC, or three private host addresses")
@@ -798,7 +798,7 @@ def cmd_cluster(a):
                 raise RuntimeError("Use --id JOB_ID")
             print(json.dumps(api.call("/v2/cpu/job-control", {"id": a.id, "action": a.action[4:]})))
         else:
-            from roc.cpu_status import print_status
+            from roc.tasks import print_status
             try:
                 while True:
                     print_status(api.call("/v2/cpu/dashboard"))
@@ -812,25 +812,45 @@ def cmd_cluster(a):
 
 
 def cmd_cpu_worker(a):
-    from roc import cpu_worker
+    from roc import tasks
     if a.disable:
-        from roc import task_files
+        from roc import tasks
         config = json.loads(Path(a.config).read_text())
         config["cpu_enabled"] = False
-        task_files.write_text(a.config, json.dumps(config, indent=2))
+        tasks.write_text(a.config, json.dumps(config, indent=2))
         return print("CPU contribution disabled; running process finishes current job, then pauses.")
-    cpu_worker.run(a.config, a.enable, a.jobs)
+    tasks.run(a.config, a.enable, a.jobs)
 
 
 def cmd_tasks(a):
-    from roc import command_watch
+    from roc import tasks
     if a.action != "status":
-        command_watch.control(a.id or "", a.action)
+        tasks.control(a.id or "", a.action)
         return print("Control saved; applies between targets / compiler calls.")
-    for row in command_watch.tasks():
+    for row in tasks.tasks():
         print("%s · %s · %s · owner %s · %s/PID %s · %s targets inspected" % (
             row["id"], row["command"], row["status"], row["owner"], row["pc"], row["pid"], row["inspected"]))
         print("  %s · %s" % (row["stage"], row["flags"]))
+
+
+def cmd_host(a):
+    """The canonical group-server host: server with tunnel and publishing, restarted 30 s
+    after any exit. Restart = stop the child python process; this loop starts it again."""
+    import time
+    while True:
+        code = subprocess.call([sys.executable, str(ROOT / "roc.py"), "server", "--tunnel", "--publish"], cwd=ROOT)
+        print("Server stopped (exit %s). Restarting in 30 seconds (Ctrl+C to quit)..." % code, flush=True)
+        time.sleep(30)
+
+
+def cmd_update(a):
+    from roc import setup
+    print(setup.update())
+
+
+def cmd_uninstall(a):
+    from roc import setup
+    sys.exit(setup.run_uninstall(assume_yes=a.yes))
 
 
 def cmd_server(a):
@@ -841,7 +861,7 @@ def cmd_server(a):
                      "unit or cron instead, for example:\n"
                      "  ExecStart=%s %s server --port %d" % (sys.executable, ROOT / "roc.py", a.port))
         startup = Path(os.environ["APPDATA"]) / r"Microsoft\Windows\Start Menu\Programs\Startup" / "RoConstruct server.cmd"
-        startup.write_text('@start "RoConstruct server" /min "%s"' % (ROOT / "host.cmd"))
+        startup.write_text('@start "RoConstruct server" /min "%s" host' % (ROOT / "roc.cmd"))
         return print("The server will start when you log in: %s" % startup)
     httpd = server.serve(a.host, a.port, token=a.token, lease_seconds=a.lease,
                          discord_webhook=a.discord_webhook or settings().get("discord_webhook"))
@@ -867,9 +887,9 @@ def cmd_server(a):
 
 
 def cmd_worker(a):
-    from roc import selfupdate
+    from roc import setup
     if not a.no_update:
-        print("Checking for updates: %s" % selfupdate.try_update())
+        print("Checking for updates: %s" % setup.try_update())
     from roc import draft, providers, worker
     s = settings()
     srv = need(a.server or s.get("server"), "server", "Use --server URL or: roc config --server URL")
@@ -1050,6 +1070,12 @@ def cmd_provider(a):
 def cmd_chatgpt(a):
     from roc import chatgpt, worker
     if a.sub == "login":
+        try:
+            chatgpt._dependencies()
+        except chatgpt.ProviderError:  # first use: install the optional sign-in packages
+            print("Installing ChatGPT sign-in support...")
+            subprocess.check_call([sys.executable, "-m", "pip", "install", "--user", "-q", "--disable-pip-version-check",
+                                   "-r", str(ROOT / "packaging" / "requirements-chatgpt.txt")])
         account = chatgpt.login(client_id=a.account, new=a.new)
         print("Signed in: %s [%s]" % (account["label"], account["client_id"]))
         choices = chatgpt.models()
@@ -1083,27 +1109,9 @@ def cmd_chatgpt(a):
         print("ChatGPT signed out. Saved registration is retained for your next sign-in.")
 
 
-def cmd_dataset(a):
-    dataset = need_module("dataset", "Dataset manifests")
-    if a.sub == "init":
-        path = Path(a.path)
-        if path.exists():
-            raise SystemExit("manifest exists: %s" % path)
-        path.write_text(json.dumps(dataset.template(), indent=2) + "\n", encoding="utf-8")
-        print("Wrote legal-source manifest template: %s" % path)
-        return
-    report = dataset.audit(a.path, strict=not a.allow_partial)
-    print("Dataset audit: %s | entries=%d projects=%d splits=%s" %
-          ("PASS" if report["ok"] else "FAIL", report["entries"], report.get("projects", 0), report.get("splits", {})))
-    for error in report["errors"]:
-        print("  " + error)
-    if not report["ok"]:
-        raise SystemExit(1)
-
-
 def cmd_model_stats(a):
-    from roc import metrics
-    rows = metrics.model_stats()
+    from roc import telemetry
+    rows = telemetry.model_stats()
     if not rows:
         print("No worker telemetry yet: run a worker first.")
         return
@@ -1115,8 +1123,8 @@ def cmd_model_stats(a):
 
 
 def cmd_family_stats(a):
-    from roc import metrics
-    row = metrics.family_stats()
+    from roc import telemetry
+    row = telemetry.family_stats()
     if not row["jobs"]:
         print("No family telemetry yet.")
         return
@@ -1128,12 +1136,12 @@ def cmd_family_stats(a):
 
 
 def cmd_failures(a):
-    from roc import metrics
+    from roc import telemetry
     if a.promote:
-        rules = metrics.promote_failures()
-        print("Promoted %d recurring failure rule suggestion(s) to %s" % (len(rules), metrics.RULES))
+        rules = telemetry.promote_failures()
+        print("Promoted %d recurring failure rule suggestion(s) to %s" % (len(rules), telemetry.RULES))
         return
-    rows = metrics.failure_clusters()
+    rows = telemetry.failure_clusters()
     if not rows:
         print("No worker failures recorded.")
         return
@@ -1143,9 +1151,9 @@ def cmd_failures(a):
 
 
 def cmd_benchmark_models(a):
-    from roc import benchmark, metrics, draft, providers, worker
+    from roc import telemetry, draft, providers, worker
     if a.progress:
-        rows = metrics.corpus_stats(benchmark.build_hidden(a.limit))
+        rows = telemetry.corpus_stats(telemetry.build_hidden(a.limit))
         total = sum(r["jobs"] for r in rows)
         print("Benchmark records: %d (resume with --local-run --full --resume)" % total)
         for row in rows:
@@ -1154,11 +1162,11 @@ def cmd_benchmark_models(a):
                    row["matched"], row["score_gain"]))
         return
     if a.hidden:
-        hidden = benchmark.build_hidden(a.limit)
-        print("Hidden benchmark corpus: %d targets (%s)" % (len(hidden), benchmark.HIDDEN))
+        hidden = telemetry.build_hidden(a.limit)
+        print("Hidden benchmark corpus: %d targets (%s)" % (len(hidden), telemetry.HIDDEN))
         return
     if a.local_run or a.model:
-        hidden = benchmark.build_hidden(a.limit)
+        hidden = telemetry.build_hidden(a.limit)
         models = a.model or [m for m in draft.ollama_models() if "qwen2.5-coder" in m]
         if not models:
             raise SystemExit("no qwen2.5-coder model installed")
@@ -1185,15 +1193,15 @@ def cmd_benchmark_models(a):
         gate = providers.CloudGate(a.cloud_concurrency)
         for repeat in range(max(1, a.repeats)):
             session = a.session if a.repeats == 1 else "%s-r%d" % (a.session, repeat + 1)
-            benchmark.run_local(corpus, models, rounds=a.rounds, resume=a.resume, session=session,
+            telemetry.run_local(corpus, models, rounds=a.rounds, resume=a.resume, session=session,
                                 strategies=strategies, provider_options={"allow_cloud": a.allow_cloud,
                                 "budget": budget, "gate": gate, "seed": a.seed,
                                 "diverse_candidates": a.diverse_candidates,
                                 "thinking": a.thinking, "reasoning_effort": a.reasoning_effort})
         return
     if a.baseline:
-        hidden = benchmark.build_hidden(a.limit)
-        current = metrics.corpus_stats(hidden)
+        hidden = telemetry.build_hidden(a.limit)
+        current = telemetry.corpus_stats(hidden)
         path = ROOT / "work" / "benchmark-baseline.json"
         if path.exists():
             print("Previous baseline:", path.read_text())
@@ -1201,11 +1209,11 @@ def cmd_benchmark_models(a):
         path.write_text(json.dumps(current, indent=1))
         print("Saved benchmark baseline: %s" % path)
         return
-    rows = benchmark.build(a.limit) if a.generate or not benchmark.CORPUS.exists() else benchmark.load()
-    print("Benchmark corpus: %d fixed targets (%s)" % (len(rows), benchmark.CORPUS))
+    rows = telemetry.build(a.limit) if a.generate or not telemetry.CORPUS.exists() else telemetry.load()
+    print("Benchmark corpus: %d fixed targets (%s)" % (len(rows), telemetry.CORPUS))
     for bucket in ("tiny", "medium", "large"):
         print("  %-6s %d" % (bucket, sum(r["bucket"] == bucket for r in rows)))
-    stats = metrics.model_stats()
+    stats = telemetry.model_stats()
     if stats:
         print("Model telemetry (run workers on this corpus to compare):")
         for row in stats:
@@ -1256,7 +1264,7 @@ def cmd_source_status(a):
 
 
 def cmd_daily_stats(a):
-    from roc.daily_stats import save
+    from roc.reports import save
     from roc.worker import Api
     s = settings()
     if a.db:
@@ -1332,7 +1340,7 @@ def cmd_model(a):
 
 
 def cmd_optimize(a):
-    from roc import optimizer
+    from roc import telemetry
     model = a.model or settings().get("model")
     if not model:
         from roc import draft
@@ -1340,10 +1348,10 @@ def cmd_optimize(a):
     if not model:
         raise SystemExit("Choose a model first: roc model")
     if a.clear:
-        print("Cleared optimizer profile for %s." % model if optimizer.clear_profile(model)
+        print("Cleared optimizer profile for %s." % model if telemetry.clear_profile(model)
               else "No optimizer profile saved for %s." % model)
         return
-    optimizer.run(model, allow_cloud=a.allow_cloud, max_cloud_requests=a.max_cloud_requests,
+    telemetry.run(model, allow_cloud=a.allow_cloud, max_cloud_requests=a.max_cloud_requests,
                   max_cloud_tokens=a.max_cloud_tokens, max_cloud_cost=a.max_cloud_cost,
                   force=a.force, target_count=a.targets)
 
@@ -1371,23 +1379,18 @@ def ask(prompt, default=None):
 
 def menu():
     items = [
-        ("First-time setup (packages, compilers, links - no Ollama/Docker)", lambda: main(["install"])),
-        ("Set up my worker (username, client, cloud)", lambda: main(["setup"])),
-        ("Help automatically with AI (start a worker)", menu_worker),
+        ("First-time setup (packages, exact compilers, links)", lambda: main(["install"])),
+        ("Open the dashboard (Workers, agents, history)", lambda: main(["gui"])),
+        ("Start my AI worker (cloud model)", menu_worker),
+        ("Start an automatic agent worker (Claude Code / Codex)",
+         lambda: main(["agent", ask("CLI (claude/codex)", "claude"), "--automatic"])),
         ("Check what needs fixing", lambda: main(["doctor"])),
-        ("Install local AI instead (optional: Ollama, then Docker)", lambda: main(["local-ai"])),
         ("Work on a function by hand", menu_hand),
-        ("Match functions with my Claude Code / Codex plan", lambda: main(["agent", ask("CLI (claude/codex)", "claude"),
-                                                                          "--interactive", "--goal", ask("What should it do", "match as many open 2008-06 functions as you can")])),
-        ("Check my hand-written functions", lambda: main(["check", ask("Client", "2008-06")])),
         ("Send my hand-written functions to the server", lambda: main(["submit", ask("Client", "2008-06")])),
-        ("Host the group server", lambda: main(["server"])),
-        ("Server status and leaderboard", lambda: main(["status"])),
-        ("Update the progress website files", lambda: main(["progress"])),
-        ("Add a new Roblox client", lambda: main(["client", "add", ask("Short name (e.g. 2013-01)"),
-                                                  ask("Path to RobloxApp.exe or Roblox.exe")])),
-        ("Auto-match easy functions", lambda: main(["auto", "all"])),
-        ("Open local dashboard (webpage)", lambda: main(["gui"])),
+        ("Host the group server", lambda: main(["host"])),
+        ("Add or change cloud API keys", lambda: main(["provider", "secrets", "--open"])),
+        ("Update RoConstruct", lambda: main(["update"])),
+        ("All commands", lambda: main(["--help"])),
     ]
     while True:
         s = settings()
@@ -1415,13 +1418,13 @@ def menu():
 
 def menu_worker():
     """Cloud by default; a local model is one answer away, never assumed."""
-    from roc import draft, handoff, worker
+    from roc import draft, link, worker
     s = settings()
-    if handoff.load():
-        print("Saved setup: %s (%s)" % (handoff.status()["detail"],
-                                        ", ".join("%s=%s" % (k, handoff.load()[k])
+    if link.load():
+        print("Saved setup: %s (%s)" % (link.status()["detail"],
+                                        ", ".join("%s=%s" % (k, link.load()[k])
                                                   for k in ("user", "client", "server", "mode")
-                                                  if handoff.load().get(k))))
+                                                  if link.load().get(k))))
         if ask("Run it? [Y/n] ", "y").lower().startswith("n"):
             return main(["setup"])
         return main(["launch"])
@@ -1442,8 +1445,41 @@ def menu_hand():
         main(["claim", client, addr, "--open"])
 
 
+# `roc --help` shows common workflows first; every other command still works and is
+# listed by name under Advanced (`roc <command> --help` for its options).
+COMMAND_GROUPS = [
+    ("Start here", ["install", "doctor", "config", "setup", "gui", "client-fetch", "analyze", "pull"]),
+    ("Match and submit", ["agent", "research", "mass", "auto", "xcopy", "libs", "donor",
+                          "check", "classify", "next", "claim", "submit"]),
+    ("Workers and server", ["worker", "status", "host", "server", "link", "tasks", "cpu-worker", "cluster"]),
+    ("This copy", ["update", "provider", "chatgpt", "local-ai", "uninstall"]),
+]
+
+
+def command_groups(sub):
+    helps = {action.dest: action.help for action in sub._choices_actions}
+    sub.help = argparse.SUPPRESS  # the grouped epilog replaces argparse's flat list
+    shown = [name for _, names in COMMAND_GROUPS for name in names]
+    lines = []
+    for title, names in COMMAND_GROUPS:
+        lines.append(title + ":")
+        lines += ["  %-13s %s" % (name, helps.get(name, "")) for name in names if name in helps]
+        lines.append("")
+    advanced = sorted(name for name in helps if name not in shown)
+    lines.append("Advanced (roc <command> --help):")
+    row = "  "
+    for name in advanced:
+        if len(row) + len(name) > 78:
+            lines.append(row.rstrip())
+            row = "  "
+        row += name + "  "
+    lines.append(row.rstrip())
+    lines.append("\nNew here: roc install, then roc gui -> Workers. Agents: docs/AGENT_GUIDE.md")
+    return "\n".join(lines)
+
+
 def main(argv=None):
-    ap = argparse.ArgumentParser(prog="roc", description=__doc__,
+    ap = argparse.ArgumentParser(prog="roc", description=__doc__, usage="roc <command> [options]",
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", metavar="command")
 
@@ -1551,25 +1587,8 @@ def main(argv=None):
         (["name"], {}), (["addr"], {}), (["--open"], {"action": "store_true", "help": "open in Notepad"}))
     cmd("check", cmd_check, "compile src/<client>/*.cpp and score against the exe",
         (["name"], {}), (["addr"], {"nargs": "?"}))
-    cmd("verify-window", cmd_verify_window, "prove a tiny register-only window with SMT",
-        (["left"], {"nargs": "?"}), (["right"], {"nargs": "?"}),
-        (["--batch"], {"help": "JSON array of {left,right,equal} windows"}),
-        (["--equal"], {"action": "append", "default": [],
-                        "help": "proven register equality, e.g. eax=esi"}))
     cmd("classify", cmd_classify, "compile a source and classify target/candidate mismatch",
         (["client"], {}), (["addr"], {}), (["source"], {}))
-    cmd("ltcg", cmd_ltcg, "build a linker-aware x86 DLL with /GL + /LTCG",
-        (["build"], {"type": int}), (["source"], {}), (["output"], {}),
-        (["--map"], {"help": "optional MSVC map output"}),
-        (["--force-unresolved"], {"action": "store_true",
-                                   "help": "experimental: let linker emit unresolved references"}),
-        (["--export-symbol"], {"help": "experimental decorated symbol to retain/export"}),
-        (["--extra"], {"action": "append", "default": [],
-                        "help": "extra source file linked into the LTCG unit"}),
-        (["--flags"], {"default": "/O2 /GS /EHsc /MD",
-                        "help": "compiler flags for linked unit"}),
-        (["--opaque-extra"], {"action": "append", "default": [],
-                               "help": "extra source compiled without /GL, then linked"}))
     cmd("auto", cmd_auto, "auto-match trivial functions (getters, setters, empty...) ('all' for every client)",
         (["name"], {}), (["--max-size"], {"type": int, "default": 48}))
     cmd("xcopy", cmd_xcopy, "copy stored matches to the other clients that share the function",
@@ -1586,6 +1605,14 @@ def main(argv=None):
         (["--limit"], {"type": int, "default": 5}))
     cmd("libs", cmd_libs, "match open-source library code from its real source ('all' or recipe names)",
         (["names"], {"nargs": "+"}), (["--client"], {"default": "all"}))
+    cmd("research", cmd_research, "run named compiler-only research recipes (research/recipes.json)",
+        (["action"], {"choices": ["list", "plan", "run", "audit", "note", "log", "capture-units"]}),
+        (["name"], {"nargs": "?", "help": "recipe name (audit: folder; note: title; log: entry count; capture-units: client)"}),
+        (["more"], {"nargs": "*", "help": "audit: more folders; note: the text"}),
+        (["--server"], {"help": "group server (default: saved setting)"}),
+        (["--jobs"], {"type": int, "default": 1, "choices": range(1, 9), "help": "compile prefetch"}),
+        (["--limit"], {"type": int, "help": "first N targets/sources only (pilot)"}),
+        (["--force"], {"action": "store_true", "help": "rerun a recipe recorded as rejected"}))
     cmd("donor", cmd_donor, "name client functions byte-identical to RBXGS WebService.dll (OpenRBX PDB names)",
         (["client"], {"nargs": "?", "default": "all"}))
     cmd("lint", cmd_lint, "check src/<client> files, function boundaries and verified-data coverage",
@@ -1600,12 +1627,6 @@ def main(argv=None):
         (["name"], {}), (["--sweep"], {"action": "store_true",
         "help": "try interacting flag combinations; stop on exact corpus"}),
         (["--limit"], {"type": int, "help": "sweep only smallest N sources"}))
-    cmd("angr-facts", cmd_angr_facts, "optional angr CFG/instruction facts for one binary function",
-        (["binary"], {}), (["address"], {"help": "virtual address, e.g. 0x401000"}),
-        (["--size"], {"type": int, "default": 128, "help": "bounded bytes to lift"}))
-    cmd("angr-batch", cmd_angr_batch, "bounded angr facts for a high-partial source sample",
-        (["name"], {}), (["--limit"], {"type": int, "default": 20}),
-        (["--min-score"], {"type": int, "default": 90}))
     cmd("repair", cmd_repair, "run bounded compiler-backed mutations over partial sources",
         (["name"], {}), (["--addr"], {"dest": "addresses", "action": "append"}),
         (["--limit"], {"type": int}),
@@ -1681,27 +1702,27 @@ def main(argv=None):
     pt.add_argument("name")
     pt.add_argument("--model", required=True)
     pt.set_defaults(fn=cmd_provider)
-    p = sub.add_parser("dataset", help="create or audit legal MSVC training-pilot manifests")
-    ds = p.add_subparsers(dest="sub", required=True)
-    di = ds.add_parser("init", help="write a legal-source-only manifest template")
-    di.add_argument("path")
-    di.set_defaults(fn=cmd_dataset)
-    da = ds.add_parser("audit", help="validate compiler data and project-held-out splits")
-    da.add_argument("path")
-    da.add_argument("--allow-partial", action="store_true", help="check structure before 100-300 pair pilot is complete")
-    da.set_defaults(fn=cmd_dataset)
     cmd("link", cmd_link, "one-click links: 'install', 'remove', or a roconstruct:// URL", (["target"], {}))
     cmd("agent", cmd_agent, "match leased functions with your own Claude Code or Codex CLI",
         (["cli"], {"choices": ["claude", "codex"]}),
         (["--goal"], {"help": 'free-form task, e.g. "match as many 2008-06 RakNet functions as you can"'}),
         (["--interactive"], {"action": "store_true",
                               "help": "open a normal session you can watch and steer (asks before risky commands)"}),
+        (["--automatic"], {"action": "store_true", "help": "rank areas, reuse sources first, then parallel batch repair"}),
+        (["--plan"], {"action": "store_true", "help": "preview local automatic ranking without starting agents"}),
+        (["--workers"], {"type": int, "default": 2, "help": "automatic batch workers (1-8)"}),
+        (["--batch-size"], {"type": int, "default": 4, "help": "functions per automatic batch (1-12)"}),
+        (["--batch-minutes"], {"type": int, "default": 10, "help": "time cap per agent batch (1-60)"}),
+        (["--individual"], {"action": "store_true", "help": "allow individual repair after shared hypotheses fail"}),
         (["--client"], {}),
-        (["--jobs"], {"type": int, "default": 1, "help": "functions to lease, one after another"}),
+        (["--jobs"], {"type": int, "help": "target cap (automatic: 24; leased mode: 1)"}),
         (["--model"], {"help": "passed to the CLI's --model"}),
-        (["--max-size"], {"type": int, "default": 256}),
+        (["--max-size"], {"type": int, "help": "function byte ceiling (automatic: 512; leased: 256)"}),
         (["--minutes"], {"type": int, "help": "time limit per function (20) or per --goal session (120)"}),
         (["--server"], {}), (["--user"], {}), (["--token"], {}))
+    cmd("agent-check", cmd_agent_check, "check isolated automatic source and journal the trial",
+        (["name"], {}), (["addr"], {}), (["path"], {}),
+        (["--hypothesis"], {"required": True, "help": "specific source/config change being tested"}))
     cmd("submit", cmd_submit, "send hand-written sources to the server ('all' for every client)",
         (["name"], {}), (["addr"], {"nargs": "*"}), (["--server"], {}), (["--user"], {}), (["--token"], {}))
     cmd("pull", cmd_pull, "download everyone's sources from the server into src/ ('all' for every client)",
@@ -1731,7 +1752,11 @@ def main(argv=None):
         (["--publish"], {"action": "store_true", "help": "publish new sources, partials, mined findings and website changes"}),
         (["--publish-every"], {"type": int, "default": 3600, "help": "seconds between findings/site checks; unchanged output makes no commit"}),
         (["--public-server"], {"help": "address shown on the site (if not using --tunnel)"}),
-        (["--startup"], {"action": "store_true", "help": "start host.cmd automatically when you log in"}))
+        (["--startup"], {"action": "store_true", "help": "start `roc host` automatically when you log in"}))
+    cmd("host", cmd_host, "run the group server with tunnel + publishing, restarting it if it stops")
+    cmd("update", cmd_update, "update this copy from GitHub (a ZIP download becomes a git checkout)")
+    cmd("uninstall", cmd_uninstall, "remove what install put on this PC; asks before every step",
+        (["--yes"], {"action": "store_true"}))
     cmd("worker", cmd_worker, "help automatically: AI drafts, compile, submit",
             (["--order"], {"choices": ["auto", "best", "matched", "unmatched", "easiest", "random"], "help": "which functions first: random named units (default), most-matched, unmatched, easiest, best evidence, or auto"}),
         (["--server"], {}), (["--user"], {}), (["--token"], {}), (["--model"], {}),
@@ -1819,14 +1844,15 @@ def main(argv=None):
         (["--date"], {}), (["--server"], {}), (["--token"], {}), (["--db"], {}),
         (["--output"], {"default": str(ROOT / "work" / "reports" / "daily")}))
     cmd("progress", cmd_progress, "write docs/ data for the website", (["--server"], {}), (["--token"], {}))
+    ap.epilog = command_groups(sub)
     a, unknown = ap.parse_known_args(argv)
     if unknown:
         ap.error("unrecognized arguments: %s" % " ".join(unknown))
     if not a.cmd:
         return menu()
-    from roc import command_watch
-    if a.cmd in command_watch.COMMANDS:
-        watch = command_watch.Watch(a.cmd)
+    from roc import tasks
+    if a.cmd in tasks.COMMANDS:
+        watch = tasks.Watch(a.cmd)
         watch.install()
         try:
             a.fn(a)

@@ -58,6 +58,13 @@ class ClusterTests(unittest.TestCase):
     def seed(self):
         self.a.run(lambda: self.a.db.execute("INSERT INTO funcs(client,addr,size,unit) VALUES('2008-06','00401000',10,'Pilot')"))
 
+    def test_agent_memory_replicates_without_duplicate_reports(self):
+        report = {"kind": "trial", "client": "2008-06", "addresses": ["00401000"], "outcome": "no_gain"}
+        self.a.run(lambda: self.a.store.remember("alice", [report]))
+        rows = self.b.run(lambda: self.b.store.agent_memory())["records"]
+        self.assertEqual(rows[0]["reported_by"], "alice")
+        self.assertEqual(self.b.run(lambda: self.b.store.remember("alice", [report]))["added"], 0)
+
     def test_replay_after_publish_before_local_commit(self):
         self.seed()
         record = {"id": uuid.uuid4().hex, "identity": cluster.identity(),

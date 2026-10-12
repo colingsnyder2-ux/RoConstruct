@@ -17,14 +17,15 @@ from urllib.parse import quote, urlparse
 import uuid
 from pathlib import Path
 
-from roc import clients, draft, match, metrics, setup
+from roc import clients, draft, match, telemetry, setup
+from roc import setup
 
 ROOT = Path(__file__).resolve().parent.parent
 
 
 def family_from_example(spec):
     """Resolve CLIENT:ADDRESS to strict opcode fingerprint."""
-    from roc import families
+    from roc import fingerprint
     try:
         client, addr = spec.split(":", 1)
         if not re.fullmatch(r"[0-9a-fA-F]{8}", addr):
@@ -33,7 +34,7 @@ def family_from_example(spec):
         if not row:
             return None
         code, _, _ = match.target(client, addr.lower())
-        return families.fingerprint(row, match.disasm(code, int(addr, 16)))
+        return fingerprint.fingerprint(row, match.disasm(code, int(addr, 16)))
     except (ValueError, OSError, KeyError):
         return None
 
@@ -83,7 +84,7 @@ def callee_source_hints(api, client, targets, limit=4):
         if clue:
             out.append({"addr": str(target).lower(), "source": clue})
     return out
-SETTINGS = ROOT / "roconstruct-settings.json"
+SETTINGS = setup.config("roconstruct-settings.json")
 MAX_WORKERS = 256
 USER_RE = re.compile(r"^[A-Za-z0-9_.-]{2,32}$")
 SITE = "https://colingsnyder2-ux.github.io/RoConstruct/"
@@ -621,8 +622,8 @@ def usable_clients(info, log=print):
     """
     have, compilers = [], setup.compilers()
     local = clients.load()
-    from roc import sources
-    manifest = sources.load_sources()
+    from roc import clients
+    manifest = clients.load_sources()
     for name, remote in sorted(info["clients"].items()):
         entry = local.get(name)
         if not entry or entry.get("sha256") != remote.get("sha256"):
@@ -632,8 +633,8 @@ def usable_clients(info, log=print):
             if name in manifest.get("drive", {}) or manifest.get("bundle"):
                 log("  fetching %s (%s)..." % (name, clients.status(name, entry)))
                 try:
-                    sources.fetch(name)
-                except sources.FetchError as error:
+                    clients.fetch(name)
+                except clients.FetchError as error:
                     log("  skip %s: %s" % (name, error))
                     continue
             if clients.status(name, entry) != "ok":
@@ -849,11 +850,11 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
             break
         if done % 10 == 0:
             log("== %s: %d functions tried, %d matched this session ==" % (time.strftime("%H:%M"), done, matched))
-            report = metrics.summary(session)
+            report = telemetry.summary(session)
             if report:
                 log(report)
     log("Worker finished %d job(s), %d matched." % (done, matched))
-    report = metrics.summary(session)
+    report = telemetry.summary(session)
     if report:
         log(report)
 
@@ -1034,8 +1035,8 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
         row = match._functions(client)[addr]
         family_id = None
         if family_exemplars:
-            from roc import families
-            family_id = families.fingerprint(row, asm)
+            from roc import fingerprint
+            family_id = fingerprint.fingerprint(row, asm)
             try:
                 api.call("/v1/family", {"client": client, "addr": addr, "family": family_id})
             except RuntimeError:
@@ -1046,15 +1047,15 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                                            "global_reads", "global_writes",
                                            "virtual_slots", "stack_args", "this_reads", "this_writes",
                                            "calling_convention", "branches", "constants", "siblings") if row.get(k)})
-        from roc import abi_graph
-        facts["abi_graph"] = abi_graph.target_evidence(api, client, row)
+        from roc import repair
+        facts["abi_graph"] = repair.target_evidence(api, client, row)
         callee_hints = callee_source_hints(api, client, row.get("call_targets", []))
         if callee_hints:
             facts["exact_callee_sources"] = callee_hints
-        from roc import auto
+        from roc import matchers
         stage("checking deterministic candidates")
         phase_started = time.monotonic()
-        for candidate in auto.candidates(asm):
+        for candidate in matchers.candidates(asm):
             ensure_lease()
             try:
                 candidate_score, _, _, _ = match.check_text(client, addr, candidate, flags)
@@ -1097,7 +1098,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                 log("  compiler repair submitted %d%%" % r["stored"])
                 result, improved = r["stored"], True
                 return r["stored"]
-        if (provider_options or {}).get("near_repair") and metrics.inline_asm_prone(client, addr):
+        if (provider_options or {}).get("near_repair") and telemetry.inline_asm_prone(client, addr):
             api.call("/v1/release", {"lease": job["lease"], "cooldown": 900})
             result = job["score"]
             failure_reason = "inline_asm_quarantine"
@@ -1138,7 +1139,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
         example_key = (job["unit"], job.get("shape"), family_id, family_exemplars)
         if example_key not in examples_cache[client]:
             strict_family_reference = False
-            quarantined = metrics.quarantined_keys()
+            quarantined = telemetry.quarantined_keys()
             if family_exemplars and not family_id:
                 examples = []
             else:
@@ -1161,7 +1162,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
             examples_cache[client][example_key] = (examples, strict_family_reference)
         examples, strict_family_reference = examples_cache[client][example_key]
         if family_exemplars and strict_family_reference and examples and family_id:
-            from roc import auto as _auto
+            from roc import matchers as _auto
             # Symbolic relocations need no literal rewrite. Compile the strict
             # donor directly when rewriting cannot produce a new candidate.
             propagated = _auto.family_propagate(asm, examples[0]) or examples[0]
@@ -1278,7 +1279,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
             if gate:
                 gate.reset(provider)
         if session:
-            metrics.record(session, event="error", client=client, addr=addr,
+            telemetry.record(session, event="error", client=client, addr=addr,
                            reason=failure_reason, detail=traceback.format_exc())
         log("  error: %s" % error)
         try:
@@ -1297,7 +1298,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
             coded = [r for r in round_stats if isinstance(r.get("round"), int) and r.get("code")]
             generated = [r for r in round_stats if isinstance(r.get("round"), int)]
             provider_row = next((r for r in reversed(generated) if r.get("provider")), {})
-            metrics.record(session, event="job", client=client, addr=addr, unit=job["unit"], model=model,
+            telemetry.record(session, event="job", client=client, addr=addr, unit=job["unit"], model=model,
                            strategy=strategy,
                            size=job.get("size", 0), base_score=job.get("score", 0), score=result,
                            score_gain=max(result - job.get("score", 0), 0), improved=improved,
@@ -1326,7 +1327,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                            output_tokens=sum(r.get("output_tokens", 0) for r in generated),
                            cached_tokens=sum(r.get("cached_tokens", 0) for r in generated),
                            generation_seconds=round(sum(r.get("generation_seconds", 0) for r in generated), 3),
-                           estimated_cost=metrics.known_generation_cost(generated),
+                           estimated_cost=telemetry.known_generation_cost(generated),
                            failure_reason=failure_reason,
                            failure=failure)
 
@@ -1360,7 +1361,7 @@ def _usage_line(session, round_stats):
     job_out = sum(r.get("output_tokens", 0) or 0 for r in generated)
     if not session:
         return "  tokens used: %d (in:%d out:%d)" % (job_in + job_out, job_in, job_out)
-    prior = metrics.session_totals(session)
+    prior = telemetry.session_totals(session)
     total_in, total_out = prior["input_tokens"] + job_in, prior["output_tokens"] + job_out
     return ("  tokens used: %d (in:%d out:%d), total usage: %d (in:%d out:%d)" %
             (job_in + job_out, job_in, job_out, total_in + total_out, total_in, total_out))

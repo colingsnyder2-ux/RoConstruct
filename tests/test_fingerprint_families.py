@@ -5,7 +5,7 @@ import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from roc.batch_fingerprint import flag_batches, source_class, unit_class, unit_family, unit_has_class
+from roc.fingerprint import flag_batches, source_class, unit_class, unit_family, unit_has_class
 
 
 class FingerprintFamilyTests(unittest.TestCase):

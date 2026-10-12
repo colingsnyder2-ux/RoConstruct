@@ -224,10 +224,10 @@ No new downloadable client PDB, MAP, Roblox `.obj`/`.lib`, or original `.vcproj`
 in this pass. Do not count ordinary client archives as new leads unless their file listing
 contains symbol/build artifacts.
 
-The repeatable scout is `py -3 scripts/scout_sources.py`. It queries Common
+The repeatable scout is `py -3 research/scout_sources.py`. It queries Common
 Crawl, Wayback CDX, and Sourcegraph for exact PDB/MAP/LIB/OBJ/build-file names
 without downloading binaries. Results and checked-query keys are stored in
-[`docs/artifact-search-log.json`](docs/artifact-search-log.json), so later runs
+[`research/artifact-search-log.json`](research/artifact-search-log.json), so later runs
 skip the same index queries. Use `--target libcpmt.lib` to narrow a run.
 
 ---

@@ -5,26 +5,26 @@ from unittest.mock import patch
 
 import pytest
 
-from roc import draft, match, metrics, mutate, repair, worker
+from roc import draft, match, telemetry, mutate, repair, worker
 
 
 def test_recent_metrics_tail_cache_append_and_corrupt_rows(tmp_path):
-    path = tmp_path / "metrics.jsonl"
+    path = tmp_path / "telemetry.jsonl"
     rows = [dict(session="old", event="job", id=i, padding="é" * 100) for i in range(5010)]
     path.write_text("\n".join(json.dumps(row, ensure_ascii=False) for row in rows) + "\n", encoding="utf-8")
-    with patch.object(metrics, "PATH", path):
-        first = metrics.recent_rows()
+    with patch.object(telemetry, "PATH", path):
+        first = telemetry.recent_rows()
         assert [row["id"] for row in first] == list(range(10, 5010))
         with patch.object(type(path), "open", side_effect=AssertionError("cache reopened file")):
             with ThreadPoolExecutor(max_workers=8) as pool:
-                assert all(row is first for row in pool.map(lambda _: metrics.recent_rows(), range(8)))
+                assert all(row is first for row in pool.map(lambda _: telemetry.recent_rows(), range(8)))
         with path.open("a", encoding="utf-8") as out:
             out.write('broken row\n[]\n{"session":"new","event":"job","score":100,"improved":true,"input_tokens":5,"output_tokens":7}\n')
-        assert metrics.session_totals("new")["jobs"] == 1
-        assert metrics.session_totals("new")["input_tokens"] == 5
-        assert "1 matched" in metrics.summary("new")
+        assert telemetry.session_totals("new")["jobs"] == 1
+        assert telemetry.session_totals("new")["input_tokens"] == 5
+        assert "1 matched" in telemetry.summary("new")
         path.write_text('{"session":"replacement","id":1}\n', encoding="utf-8")
-        assert metrics.recent_rows() == [{"session": "replacement", "id": 1}]
+        assert telemetry.recent_rows() == [{"session": "replacement", "id": 1}]
 
 
 def test_data_mismatch_is_not_reported_as_exact():
@@ -152,12 +152,12 @@ def test_example_cache_preserves_family_provenance(family, strict, rewrite, scor
                       side_effect=match.CompileError("bad donor") if score is None else None), \
          patch.object(draft, "facts_from_asm", return_value={}), \
          patch.object(draft, "target_data_facts", return_value={}), \
-         patch("roc.families.fingerprint", return_value="family"), \
-         patch("roc.abi_graph.target_evidence", return_value={}), \
+         patch("roc.fingerprint.fingerprint", return_value="family"), \
+         patch("roc.repair.target_evidence", return_value={}), \
          patch.object(worker, "callee_source_hints", return_value=[]), \
-         patch.object(metrics, "quarantined_keys", return_value=set()), \
-         patch("roc.auto.candidates", return_value=[]), \
-         patch("roc.auto.family_propagate", return_value=source if rewrite else None) as propagate, \
+         patch.object(telemetry, "quarantined_keys", return_value=set()), \
+         patch("roc.matchers.candidates", return_value=[]), \
+         patch("roc.matchers.family_propagate", return_value=source if rewrite else None) as propagate, \
          patch("roc.refsource.compile_candidates", return_value=None), \
          patch("roc.refsource.prompt_hints", return_value=[]), \
          patch.object(draft, "llm_rounds", return_value=(0, None)) as llm:

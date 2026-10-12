@@ -1,4 +1,23 @@
+import pytest
+
 from roc import agent
+
+
+@pytest.fixture(autouse=True)
+def offline_memory(monkeypatch):
+    """Never sync test attempts with the real group server."""
+    synced = []
+    monkeypatch.setattr(agent, "sync_memory", lambda *args, **kwargs: synced.append(args) or {})
+    return synced
+
+
+def test_goal_and_interactive_sessions_sync_shared_memory(monkeypatch, offline_memory):
+    monkeypatch.setattr(agent, "run_agent", lambda *args, **kwargs: 0)
+    agent.run_goal("claude", "match zlib", minutes=1, log=lambda *a: None)
+    monkeypatch.setattr(agent.shutil, "which", lambda cli: "/bin/" + cli)
+    monkeypatch.setattr(agent.subprocess, "call", lambda argv, cwd: 0)
+    agent.interactive("claude", "match zlib")
+    assert len(offline_memory) == 4  # before and after each session
 
 
 class FakeApi:
@@ -15,7 +34,7 @@ class FakeApi:
 def run_job(tmp_path, monkeypatch, start, edited, job_score=0):
     monkeypatch.setattr(agent, "ROOT", tmp_path)
     path = tmp_path / "src" / "c" / "00401000.cpp"
-    path.parent.mkdir(parents=True)
+    path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(start)
     scores = {"start": 40, "better": 90, "worse": 10}
     monkeypatch.setattr(agent, "score", lambda c, a, p: scores[p.read_text()])
@@ -44,7 +63,7 @@ def test_regression_is_rolled_back_and_released(tmp_path, monkeypatch):
 def test_commands_read_prompt_from_stdin():
     claude = agent.command("claude", "haiku")
     assert claude[:4] == ["claude", "-p", "--model", "haiku"] and "acceptEdits" in claude and "stream-json" in claude
-    assert any(arg.startswith("Read,Grep,Glob,Edit,Bash(") for arg in claude)
+    assert any(arg.startswith("Read,Grep,Glob,Edit,Write,Bash(") for arg in claude)
     assert agent.command("codex")[-1] == "-"
 
 
@@ -65,6 +84,15 @@ def test_dashboard_agent_command_args():
     for bad in ({"cli": "bash", "goal": "x"}, {"cli": "claude", "goal": " "}, {"cli": "claude", "goal": "x", "minutes": 0}):
         with pytest.raises(ValueError):
             command_args({"command": "agent", **bad})
+    automatic = command_args({"command": "agent", "cli": "codex", "automatic": True,
+                              "workers": 3, "model": "chosen-model", "individual": True})
+    assert "--automatic" in automatic and "--goal" not in automatic
+    assert automatic[automatic.index("--workers") + 1] == "3"
+    assert automatic[-2:] == ["--model", "chosen-model"] and "--individual" in automatic
+    for fields in ({"workers": 0}, {"jobs": 201}, {"batch_size": 0}, {"batch_minutes": 61},
+                   {"max_size": 0}, {"model": "--bad"}):
+        with pytest.raises(ValueError):
+            command_args({"command": "agent", "cli": "claude", "automatic": True, **fields})
 
 
 def test_stream_events_become_console_lines():
@@ -100,3 +128,30 @@ def test_session_and_setup_open_a_terminal(monkeypatch):
             agent.open_session(*bad)
     with pytest.raises(ValueError):
         agent.open_setup("bash")
+
+
+def test_memory_ranks_evidence_and_keeps_negative_results(tmp_path, monkeypatch):
+    import json
+    monkeypatch.setattr(agent, "ROOT", tmp_path)
+    (tmp_path / "research").mkdir()
+    (tmp_path / "research" / "lessons.json").write_text(json.dumps([
+        {"id": "rejected", "exacts_gained": 0}, {"id": "winner", "exacts_gained": 321}]))
+    path = tmp_path / "work" / "agent-memory" / "attempts.jsonl"
+    path.parent.mkdir(parents=True)
+    path.write_text("\n".join(json.dumps({"after": n}) for n in range(25)) + '\n{"incomplete":')
+    data = agent.memory()
+    assert [item["id"] for item in data["lessons"]] == ["winner", "rejected"]
+    assert len(data["recent"]) == 19 and data["recent"][-1]["after"] == 24
+    assert "winner" in agent.memory_prompt() and "Record EVERY trial" in agent.memory_prompt()
+
+
+def test_session_memory_records_rollback_and_server_result(tmp_path, monkeypatch):
+    import json
+    run_job(tmp_path, monkeypatch, "start", "worse", job_score=40)
+    run_job(tmp_path, monkeypatch, "start", "better", job_score=40)
+    records = [json.loads(line) for line in
+               (tmp_path / "work" / "agent-memory" / "attempts.jsonl").read_text().splitlines()]
+    assert records[0]["outcome"] == "rolled_back"
+    assert records[0]["candidate"] == 10 and records[0]["after"] == 40
+    assert records[0]["before_hash"] == records[0]["after_hash"]
+    assert records[1]["server_stored"] == 90 and records[1]["outcome"] == "improved"

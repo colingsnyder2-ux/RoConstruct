@@ -136,7 +136,7 @@ def test_launcher_rejects_invalid_explicit_limits(extra):
 
 
 def test_budget_rejection_releases_lease_and_marks_stop(tmp_path):
-    from roc import activity
+    from roc import telemetry
     job = dict(client="C", addr="00401000", size=20, unit="U", score=0, lease="test", source=None)
     options = {}
     calls = []
@@ -148,7 +148,7 @@ def test_budget_rejection_releases_lease_and_marks_stop(tmp_path):
             calls.append(path)
             return {}
 
-    with patch.object(activity, "PATH", tmp_path / "history.sqlite"), \
+    with patch.object(telemetry, "PATH", tmp_path / "history.sqlite"), \
          patch.object(worker.match, "target", side_effect=providers.ProviderError("cloud_budget", "cap reached")):
         assert worker.work_one(Api(), "tester", job, {"clients": {"C": {}}}, "roc repair", 2,
                                False, lambda _: None, provider_options=options) == 0
@@ -186,7 +186,7 @@ def test_live_automatic_options_and_budget_stop_reach_worker():
          patch.object(worker.draft, "pick_model", return_value=model), \
          patch.object(providers, "available", return_value=True), \
          patch.object(worker, "work_one", side_effect=work) as attempt, \
-         patch.object(worker, "save_session_state"), patch.object(worker.metrics, "summary", return_value=""):
+         patch.object(worker, "save_session_state"), patch.object(worker.telemetry, "summary", return_value=""):
         worker.run("localhost:8765", "tester", model=model, cloud_allowed=True,
                    max_jobs=2, control=control, log=lambda _: None)
     assert attempt.call_count == 1

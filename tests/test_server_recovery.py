@@ -50,7 +50,7 @@ def test_rotated_server_still_offline_does_not_escape_worker():
          patch.object(worker, "usable_clients", return_value=["C"]), \
          patch.object(worker, "reconnect", return_value=True), \
          patch.object(worker.time, "sleep") as sleep, \
-         patch.object(worker.metrics, "summary", return_value=""):
+         patch.object(worker.telemetry, "summary", return_value=""):
         worker.run("https://old.trycloudflare.com", "tester", source_only=True,
                    forever=True, max_jobs=1, log=lambda _: None)
     sleep.assert_called_once_with(60)

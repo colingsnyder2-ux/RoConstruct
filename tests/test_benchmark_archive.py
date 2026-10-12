@@ -2,7 +2,7 @@ import hashlib
 import json
 from unittest.mock import patch
 
-from roc import benchmark
+from roc import telemetry
 
 
 def test_benchmark_archives_source_with_verification_metadata(tmp_path):
@@ -16,8 +16,8 @@ def test_benchmark_archives_source_with_verification_metadata(tmp_path):
          patch("roc.clients.load", return_value={"test": {"flags": "/O2"}}), \
          patch("roc.refsource.prompt_hints", return_value=[]), \
          patch("roc.providers.parse_model", return_value=("test", "model", {})), \
-         patch("roc.metrics.record"):
-        benchmark.run_local([target], ["test:model"], session="archive-test",
+         patch("roc.telemetry.record"):
+        telemetry.run_local([target], ["test:model"], session="archive-test",
                             candidate_dir=tmp_path, log=lambda _: None)
     assert (tmp_path / "test/00401000-direct.cpp").read_text() == source
     metadata = json.loads((tmp_path / "test/00401000-direct.json").read_text())
@@ -36,6 +36,6 @@ def test_failed_generation_does_not_archive_stale_source(tmp_path):
          patch("roc.clients.load", return_value={"test": {}}), \
          patch("roc.refsource.prompt_hints", return_value=[]), \
          patch("roc.providers.parse_model", return_value=("test", "model", {})), \
-         patch("roc.metrics.record"):
-        benchmark.run_local([target], ["test:model"], candidate_dir=tmp_path, log=lambda _: None)
+         patch("roc.telemetry.record"):
+        telemetry.run_local([target], ["test:model"], candidate_dir=tmp_path, log=lambda _: None)
     assert not list(tmp_path.iterdir())

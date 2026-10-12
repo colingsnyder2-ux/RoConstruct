@@ -349,14 +349,14 @@ def diagnose(target_code, target_relocs, cand, cand_relocs):
     c_lines = asm_lines(cand, cand_relocs)
     t_ins = _insn_parts(target_code)
     c_ins = _insn_parts(cand)
-    from roc import pressure
+    from roc import repair
     t_asm, c_asm = "\n".join(t_lines), "\n".join(c_lines)
-    flow = {"target": {"blocks": len(pressure.blocks(t_asm)),
-                        "branch_targets": pressure.branch_targets(t_asm),
-                        "pressure": pressure.block_pressure(t_asm)},
-            "candidate": {"blocks": len(pressure.blocks(c_asm)),
-                          "branch_targets": pressure.branch_targets(c_asm),
-                          "pressure": pressure.block_pressure(c_asm)}}
+    flow = {"target": {"blocks": len(repair.blocks(t_asm)),
+                        "branch_targets": repair.branch_targets(t_asm),
+                        "pressure": repair.block_pressure(t_asm)},
+            "candidate": {"blocks": len(repair.blocks(c_asm)),
+                          "branch_targets": repair.branch_targets(c_asm),
+                          "pressure": repair.block_pressure(c_asm)}}
 
     def hist(ins, idx):
         out = {}
@@ -661,17 +661,14 @@ def directives(text):
     return dict(re.findall(r"(?m)^//\s*roc-(lang|flags|cl|lib|archive):\s*(.+?)\s*$", text))
 
 
-@functools.lru_cache(maxsize=512)
 def compile_text(client, text, flags=None, build=None):
-    """Compile source text to COFF bytes with the client's compiler (or `build`)."""
+    """Compile source text to COFF bytes with the client's compiler (or `build`).
+    Results and remembered errors are keyed on the text after library expansion, so an
+    edited vendor header (tracked by libs.unit) never replays a stale object or error."""
     reject_asm(text)
     entry = clients.load()[client]
     d = directives(text)
     build = build or (int(d["cl"]) if d.get("cl", "").isdigit() else entry["compiler_build"])
-    error_key = hashlib.sha1((client + "\0" + str(build) + "\0" + (flags or "") + "\0" + text).encode()).hexdigest()
-    known_error = _compile_error_cache().get(error_key)
-    if known_error:
-        raise CompileError(known_error)
     if "archive" in d:  # exact CRT/STL COFF member from matching installed compiler
         from roc import libs
         recipe, _, path = d["archive"].partition(" ")
@@ -683,16 +680,25 @@ def compile_text(client, text, flags=None, build=None):
             text = "%s\n%s" % (text, libs.unit(recipe, path.strip(), build))
         except SystemExit as error:  # local-only tree (e.g. rbxgs) not on this PC
             raise CompileError(str(error))
+    flags = flags or d.get("flags") or entry.get("flags") or DEFAULT_FLAGS
+    return _compile(text, flags, build, d.get("lang") == "c")
+
+
+@functools.lru_cache(maxsize=512)
+def _compile(text, flags, build, c_lang):
+    error_key = hashlib.sha1(("%s\0%s\0%s" % (build, flags, text)).encode()).hexdigest()
+    known_error = _compile_error_cache().get(error_key)
+    if known_error:
+        raise CompileError(known_error)
     cl = setup.compilers().get(build)
     if not cl:
-        raise SystemExit("Missing compiler build %s for %s. Run: roc install" % (build, client))
+        raise SystemExit("Missing compiler build %s. Run: roc install" % build)
     env = setup.cl_env(cl)
-    flags = (flags or d.get("flags") or entry.get("flags") or DEFAULT_FLAGS).split()
     with tempfile.TemporaryDirectory() as tmp:
-        src, obj = Path(tmp) / ("f.c" if d.get("lang") == "c" else "f.cpp"), Path(tmp) / "f.obj"
+        src, obj = Path(tmp) / ("f.c" if c_lang else "f.cpp"), Path(tmp) / "f.obj"
         src.write_text(text)
         try:
-            run = subprocess.run([*setup.cl_command(cl), "/nologo", "/c", "/Gy", *flags,
+            run = subprocess.run([*setup.cl_command(cl), "/nologo", "/c", "/Gy", *flags.split(),
                                   "/Fo" + setup.cl_path(obj), setup.cl_path(src)],
                                  capture_output=True, text=True, env=env, cwd=tmp, timeout=120)
         except subprocess.TimeoutExpired:
@@ -708,6 +714,9 @@ def compile_text(client, text, flags=None, build=None):
             _remember_compile_error(error_key, message)
             raise CompileError(message)
         return obj.read_bytes()
+
+
+compile_text.cache_clear = _compile.cache_clear
 
 
 def alignment_evidence(client, addr, src, flags=None):
@@ -761,8 +770,8 @@ def check_text(client, addr, text, flags=None, include_diagnosis=False):
         d = diff(code, relocs, best[1], best[2])
         if bad:
             value, d = 99, "Code matches, but data your source defines does not:\n" + "\n".join(bad)
-    from roc import activity
-    activity.candidate(text, value)
+    from roc import telemetry
+    telemetry.candidate(text, value)
     result = (value, best[0], d, spans)
     diagnosis = diagnose(code, relocs, best[1], best[2]) if include_diagnosis and value < 100 else {}
     if include_diagnosis and bad:

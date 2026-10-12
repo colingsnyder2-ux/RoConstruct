@@ -100,7 +100,7 @@ def clients_check():
 
 def identity_check():
     """Saved username, server and the signed handoff config."""
-    from roc import handoff, worker
+    from roc import link, worker
     settings = worker.load_settings()
     state = OK
     detail, fix = [], []
@@ -113,7 +113,7 @@ def identity_check():
         fix.append("No server saved. Run: roc setup")
     if user and server:
         detail.append("user=%s server=%s" % (user, server))
-    handoff_state = handoff.status()
+    handoff_state = link.status()
     detail.append("worker config: %s" % handoff_state["detail"])
     if handoff_state["state"] == "missing":
         if state != FAIL:
@@ -121,7 +121,7 @@ def identity_check():
         fix.append("No signed worker config. Run: roc setup (or click Start helping on the site)")
     elif handoff_state["state"] in ("tampered", "broken"):
         state = FAIL
-        fix.append("Worker config was edited or is unreadable. Delete roconstruct-worker.json and run: roc setup")
+        fix.append("Worker config was edited or is unreadable. Delete local/config/roconstruct-worker.json and run: roc setup")
     return check("identity", state, ", ".join(detail), fix)
 
 
@@ -240,8 +240,8 @@ def format_report(checks):
         lines.append("Everything needed to run the worker is in place. Start one with: roc launch")
     # which model a launch would actually use, so the consent story is visible here too
     try:
-        from roc import handoff, providers, worker as worker_module
-        payload = handoff.load() or {}
+        from roc import link, providers, worker as worker_module
+        payload = link.load() or {}
         model = worker_module.resolve_model(payload)[0] if payload else None
         if model:
             lines.append("A launch would use: %s (%s)" % (

@@ -4,20 +4,31 @@
 Windows user (HKCU, no admin). Clicking a link opens a console that sets up
 whatever is missing, asks for a username once, and runs a worker until closed.
 """
+import hashlib
+import hmac
+import json
 import os
 import re
+import secrets
+import subprocess
 import sys
 import time
 from pathlib import Path
-from urllib.parse import parse_qs, urlparse
+from urllib.parse import parse_qs, urlencode, urlparse
+
+from roc import setup
+
 
 ROOT = Path(__file__).resolve().parent.parent
+
 SCHEME = "roconstruct"
+
 CLIENT_RE = re.compile(r"^[A-Za-z0-9_-]{1,32}$")
+
 SERVER_RE = re.compile(r"^(https?://)?[A-Za-z0-9.-]+(:\d{1,5})?/?$")
+
 # The whole vocabulary of a work link. A link may carry nothing else.
 HANDOFF_FIELDS = ("user", "client", "server", "token", "mode", "model", "cloud")
-
 
 def install():
     if os.name != "nt":
@@ -32,7 +43,6 @@ def install():
         winreg.SetValueEx(k, "", 0, winreg.REG_SZ, cmd)
     print("One-click links enabled: %s:// links now open RoConstruct from %s" % (SCHEME, ROOT))
 
-
 def remove():
     if os.name != "nt":
         print("One-click links are Windows-only; nothing to remove.")
@@ -45,7 +55,6 @@ def remove():
             pass
     print("One-click links disabled.")
 
-
 def installed():
     if os.name != "nt":
         return False
@@ -55,7 +64,6 @@ def installed():
             return str(ROOT / "roc.cmd") in winreg.QueryValueEx(k, "")[0]
     except OSError:
         return False
-
 
 def parse_full(url):
     """Validate a link and return every query value it carried.
@@ -72,22 +80,19 @@ def parse_full(url):
         raise SystemExit("Link has a bad client or server value.")
     return {key: q.get(key) for key in HANDOFF_FIELDS if key in q}
 
-
 def parse(url):
     """Client, server and token from a work link."""
     q = parse_full(url)
     return q.get("client", ""), q.get("server", ""), q.get("token")
-
 
 def keep_awake():
     """Stop Windows sleeping while the worker runs (screen may still turn off)."""
     from roc import worker
     return worker.keep_awake()
 
-
 def launch(url, ask=input):
     """Choose terminal/webpage before any setup or worker starts."""
-    from roc import gui, selfupdate, worker
+    from roc import gui, setup, worker
     target = urlparse(url)
     if target.scheme == SCHEME and (target.netloc or target.path.strip("/")) == "server":
         if target.query or target.fragment:
@@ -115,9 +120,8 @@ def launch(url, ask=input):
             else:
                 initial["model"] = saved_model if saved_model and providers.is_cloud(saved_model) else worker.cloud_default() or ""
         return gui.serve(initial=initial)
-    print("Checking for updates: %s" % selfupdate.try_update())
+    print("Checking for updates: %s" % setup.try_update())
     return run(url)
-
 
 def run(url):
     """Everything a link click does, in order.
@@ -127,10 +131,10 @@ def run(url):
     worker that starts runs exactly what was agreed. Cloud is the default path:
     no Ollama, no Docker, no GPU.
     """
-    from roc import analyze, clients, handoff, providers, setup, worker
+    from roc import analyze, clients, providers, setup, worker
     parts = parse_full(url)
     client, server, token = parts["client"], parts["server"].rstrip("/"), parts.get("token")
-    mode = parts.get("mode") if parts.get("mode") in handoff.MODES else "cloud"
+    mode = parts.get("mode") if parts.get("mode") in MODES else "cloud"
     cloud_allowed = parts.get("cloud") == "1"
     s = worker.load_settings()
     known = s.get("known_servers", [])
@@ -164,15 +168,14 @@ def run(url):
     if lease_mode != "unit":
         unit_name = None
     cloud = providers.is_cloud(model)
-    payload = handoff.save(user=user, client=client, server=server, token=token,
+    payload = save(user=user, client=client, server=server, token=token,
                            mode="cloud" if cloud else "local", cloud=cloud, model=model)
-    print("Saved a signed setup: %s" % handoff.config_path())
+    print("Saved a signed setup: %s" % config_path())
     worker.keep_awake()
     return worker.main_args(payload, knobs(rounds, max_size, use_revng, workers,
                                            worker.load_settings().get("worker_order", "auto"),
                                            worker.load_settings().get("worker_verbosity", "auto"), lease_mode,
                                            family_id, family_example, unit_name))
-
 
 def choose_worker(settings, mode):
     """The model path, then the worker knobs - what a link click asks in the console.
@@ -202,7 +205,6 @@ def choose_worker(settings, mode):
                  cloud_allowed=cloud_allowed)
     return choose_options(fresh)
 
-
 def knobs(rounds, max_size, use_revng, workers, order="auto", verbosity="auto", lease_mode="function",
           family_id=None, family_example=None, unit_name=None):
     """The chosen options as CLI flags for worker.main_args."""
@@ -222,14 +224,12 @@ def knobs(rounds, max_size, use_revng, workers, order="auto", verbosity="auto", 
         argv += ["--unit", unit_name]
     return argv
 
-
 def choose_local(settings, wanted):
     """Local mode: only reached when the helper explicitly asked for a local model."""
     from roc import draft
     if not draft.pick_model(wanted):
         ensure_model()
     return choose_options(dict(settings, model=wanted, worker_launcher_configured=False))
-
 
 def cloud_model(settings, cloud_allowed):
     """Cloud-first model choice: no Ollama prompt unless the helper opted out."""
@@ -251,20 +251,19 @@ def cloud_model(settings, cloud_allowed):
     raise SystemExit("Save your cloud key, then click the link again:\n"
                      "  roc provider setup")
 
-
 def wait_for_exe(client, log=print):
-    from roc import clients, sources
+    from roc import clients
     entry = clients.load()[client]
     if clients.status(client, entry) == "ok":
         return
     # A link click means the helper wants this one client: download it from Drive
     # (falling back to clients.zip) before asking them to find it by hand.
-    if client in sources.load_sources().get("drive", {}) or sources.load_sources().get("bundle"):
+    if client in clients.load_sources().get("drive", {}) or clients.load_sources().get("bundle"):
         log("Downloading %s (%s)..." % (client, entry["exe"]))
         try:
-            sources.fetch(client, quiet=False)
+            clients.fetch(client, quiet=False)
             return
-        except sources.FetchError as error:
+        except clients.FetchError as error:
             log("Automatic download failed: %s" % error)
             log("Put your own copy in the folder below and RoConstruct will carry on.")
     folder = ROOT / "clients" / client
@@ -280,9 +279,8 @@ def wait_for_exe(client, log=print):
         time.sleep(3)
     log("Found it.")
 
-
 def _saved_worker_options(settings, installed):
-    from roc import draft, optimizer, providers, worker
+    from roc import draft, telemetry, providers, worker
     model = settings.get("model")
     if model and providers.is_cloud(model):
         if not providers.available(model):
@@ -293,7 +291,7 @@ def _saved_worker_options(settings, installed):
             return None
     if not providers.is_cloud(model) and model not in installed:
         return None
-    profile = optimizer.profile(model, settings) or {}
+    profile = telemetry.profile(model, settings) or {}
     manual_preset = settings.get("worker_preset_model") == model
     preset = (settings.get("worker_preset") if manual_preset else
               profile.get("name", settings.get("worker_preset", "balanced")))
@@ -325,7 +323,6 @@ def _saved_worker_options(settings, installed):
     worker.save_settings(worker_strategy=strategy)
     return model, rounds, max_size, use_revng, workers, output_budget, thinking
 
-
 def choose_options(settings):
     """Let each link launch choose runtime options while keeping safe defaults.
 
@@ -334,11 +331,11 @@ def choose_options(settings):
     """
     from roc import draft, providers, worker
     installed = draft.ollama_models()
-    from roc import optimizer
+    from roc import telemetry
     saved = _saved_worker_options(settings, installed) if settings.get("worker_launcher_configured") else None
     if saved:
         model = saved[0]
-        profile = optimizer.profile(model, settings)
+        profile = telemetry.profile(model, settings)
         mode = "optimized %s" % profile["name"] if profile else settings.get("worker_preset", "balanced")
         print("Saved setup: %s | %s. Enter=start, 2=setup, 3=workers, 4=optimize." %
               (model, mode))
@@ -365,8 +362,8 @@ def choose_options(settings):
                     raise SystemExit("Spend cap must be a positive dollar amount")
                 if cost_cap <= 0:
                     raise SystemExit("Spend cap must be a positive dollar amount")
-            profile = optimizer.run(model, allow_cloud=bool(settings.get("cloud_allowed")),
-                                    max_cloud_cost=cost_cap, force=bool(optimizer.profile(model, settings)))
+            profile = telemetry.run(model, allow_cloud=bool(settings.get("cloud_allowed")),
+                                    max_cloud_cost=cost_cap, force=bool(telemetry.profile(model, settings)))
             settings = dict(settings)
             settings.setdefault("optimizer_profiles", {})[model] = profile
             for key in ("worker_preset_model", "worker_rounds_model", "worker_workers_model",
@@ -384,7 +381,7 @@ def choose_options(settings):
     default_model = draft.pick_model(settings.get("model")) or settings.get("model") or "none"
     print("\nChoose model (number or model name; Enter keeps saved choice):")
     for index, name in enumerate(choices, 1):
-        print("  %d) %s%s" % (index, name, " [optimizer profile]" if optimizer.profile(name, settings) else ""))
+        print("  %d) %s%s" % (index, name, " [optimizer profile]" if telemetry.profile(name, settings) else ""))
     print("  %d) Add / configure cloud model" % (len(choices) + 1))
     print("  %d) Install another local model" % (len(choices) + 2))
     picked = input("Model [%s]: " % default_model).strip()
@@ -427,7 +424,7 @@ def choose_options(settings):
             worker.save_settings(cloud_allowed=True)
     elif model not in installed:
         raise SystemExit("Model '%s' is not installed. Run: roc model" % model)
-    profile = optimizer.profile(model, settings) or {}
+    profile = telemetry.profile(model, settings) or {}
     last_preset = settings.get("worker_preset", "balanced")
     recommended = (last_preset if settings.get("worker_preset_model") == model else
                    profile.get("name", last_preset))
@@ -446,7 +443,7 @@ def choose_options(settings):
             if cost_cap <= 0:
                 raise SystemExit("Spend cap must be a positive dollar amount")
         print("Calibrating %s before worker starts; no mining jobs will be submitted." % model)
-        profile = optimizer.run(model, allow_cloud=bool(settings.get("cloud_allowed")),
+        profile = telemetry.run(model, allow_cloud=bool(settings.get("cloud_allowed")),
                                 max_cloud_cost=cost_cap, force=bool(profile))
         picked_mode = "1"
     preset = ({"1": recommended, "2": "fast", "3": "deep", "4": "balanced", "6": "automatic"}.get(
@@ -597,7 +594,6 @@ def choose_options(settings):
         worker.clear_setting("worker_unit")
     return model, rounds, max_size, use_revng, workers, output_budget, thinking
 
-
 def ensure_model():
     """Ollama plus one model, installed on demand. Called from a link click, where the
     user has just installed software, so PATH can be stale: resolve the exe, not which()."""
@@ -622,3 +618,188 @@ def ensure_model():
     if not draft.pick_model():
         print("Downloading the AI model qwen2.5-coder:7b (about 4.7 GB, one time)...")
         subprocess.run([exe, "pull", "qwen2.5-coder:7b"], check=True)
+
+
+# --- handoff ---
+# Signed worker handoff: website answers -> local config -> worker run.
+
+CONFIG = setup.config("roconstruct-worker.json")
+
+
+MODES = ("cloud", "local")
+
+
+# What the website is allowed to put in a link. Anything else is ignored, so a
+# crafted link cannot smuggle in flags, extra hosts or a token of its choosing.
+LINK_FIELDS = ("user", "client", "server", "token", "mode", "model", "cloud")
+
+
+def secret():
+    """Per-machine signing key, created once and kept in settings."""
+    from roc import worker
+    saved = worker.load_settings().get("handoff_secret")
+    if saved and len(saved) >= 32:
+        return saved.encode()
+    made = secrets.token_hex(32)
+    worker.save_settings(handoff_secret=made)
+    return made.encode()
+
+
+def canonical(payload):
+    """Stable bytes for one payload, so a signature does not depend on key order."""
+    trimmed = {k: payload[k] for k in sorted(payload) if payload[k] is not None}
+    return json.dumps(trimmed, sort_keys=True, separators=(",", ":")).encode()
+
+
+def sign(payload):
+    return hmac.new(secret(), canonical(payload), hashlib.sha256).hexdigest()
+
+
+def verify(data):
+    """True only when `data` is a config this machine signed and nobody edited."""
+    if not isinstance(data, dict):
+        return False
+    payload, signature = data.get("payload"), data.get("signature")
+    if not isinstance(payload, dict) or not isinstance(signature, str):
+        return False
+    return hmac.compare_digest(sign(payload), signature)
+
+
+def config_path():
+    return CONFIG
+
+
+def save(**fields):
+    """Write a signed worker config. Only known fields are stored."""
+    from roc import worker
+    clean = {}
+    for key in LINK_FIELDS:
+        value = fields.get(key)
+        if value is None or value == "":
+            continue
+        clean[key] = value
+    clean["created"] = int(time.time())
+    data = {"payload": clean, "signature": sign(clean), "version": 1}
+    CONFIG.write_text(json.dumps(data, indent=1), encoding="utf-8")
+    worker.save_settings(user=clean.get("user"), server=clean.get("server"),
+                         token=clean.get("token"), cloud_allowed=clean.get("cloud"),
+                         handoff_client=clean.get("client"))
+    return clean
+
+
+def load(verify_signature=True):
+    """The signed config, or {} when it is missing, unreadable or tampered with."""
+    try:
+        data = json.loads(CONFIG.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+    if verify_signature and not verify(data):
+        return {}
+    payload = data.get("payload")
+    return payload if isinstance(payload, dict) else {}
+
+
+def clear():
+    for path in (CONFIG,):
+        path.unlink(missing_ok=True)
+
+
+def status():
+    """What `roc doctor` prints about the handoff: signed, stale, or missing."""
+    if not CONFIG.exists():
+        return {"state": "missing", "detail": "no worker config yet (run: roc setup)"}
+    try:
+        data = json.loads(CONFIG.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as content_error:
+        return {"state": "broken", "detail": "unreadable: %s" % content_error}
+    if not verify(data):
+        return {"state": "tampered",
+                "detail": "signature does not match; treat it as unsafe and run: roc setup"}
+    payload = data["payload"]
+    age_hours = max(0.0, (time.time() - float(payload.get("created", 0))) / 3600)
+    return {"state": "signed", "payload": payload,
+            "detail": "signed %s ago by this PC" % _ago(age_hours)}
+
+
+def _ago(hours):
+    if hours < 1:
+        return "%d min" % max(1, int(hours * 60))
+    if hours < 48:
+        return "%d h" % int(hours)
+    return "%d days" % int(hours / 24)
+
+
+def link(user, client, server, cloud=True, mode="cloud", model=None, token=None):
+    """The roconstruct:// URL the website hands to the protocol handler."""
+    from roc import link as link_module
+    query = {"user": user, "client": client, "server": server,
+             "mode": mode if mode in MODES else "cloud",
+             "cloud": "1" if cloud else "0"}
+    if model:
+        query["model"] = model
+    if token:
+        query["token"] = token
+    if not link_module.CLIENT_RE.match(client) or not link_module.SERVER_RE.match(server):
+        raise SystemExit("Refusing to build a link for client %r / server %r." % (client, server))
+    return "%s://work?%s" % (link_module.SCHEME, urlencode(query))
+
+
+def from_url(url):
+    """Validate a website link and return its payload. Nothing is written yet."""
+    from roc import link as link_module, worker
+    parts = link_module.parse_full(url)
+    payload = {key: parts.get(key) or None for key in LINK_FIELDS}
+    payload["cloud"] = parts.get("cloud") == "1"
+    mode = payload.get("mode")
+    payload["mode"] = mode if mode in MODES else "cloud"
+    payload["client"] = payload.get("client")
+    payload["server"] = (payload.get("server") or "").rstrip("/")
+    if not worker.USER_RE.match(payload.get("user") or ""):
+        raise SystemExit("That link has no usable username (2-32 letters, digits, . _ -).")
+    if not link_module.CLIENT_RE.match(payload.get("client") or ""):
+        raise SystemExit("That link has no usable client name.")
+    if not link_module.SERVER_RE.match(payload.get("server") or ""):
+        raise SystemExit("That link has no usable server address.")
+    return payload
+
+
+def apply(url=None, **answers):
+    """Fold a validated link (or interactive answers) into a signed config."""
+    payload = from_url(url) if url else {}
+    payload.update({k: v for k, v in answers.items() if v is not None})
+    if payload.get("mode") == "local" and not payload.get("model"):
+        payload.pop("model", None)
+    return save(**payload)
+
+
+def launch_command():
+    """How a background worker starts: the Windows launcher, or this Python."""
+    if os.name == "nt":
+        return [str(ROOT / "roc.cmd"), "launch"]
+    return [sys.executable, str(ROOT / "roc.py"), "launch"]
+
+
+def start(detached=True, log=print):
+    """Start the worker in its own console window so this one can be closed."""
+    if not load():
+        raise SystemExit("No signed worker config yet. Run: roc setup")
+    flags = getattr(subprocess, "CREATE_NO_WINDOW", 0) if os.name == "nt" else 0
+    if detached and os.name == "nt":
+        line = 'cmd /c start "RoConstruct worker" "%s" launch' % (ROOT / "roc.cmd")
+        subprocess.Popen(line, shell=True, creationflags=flags)
+    else:
+        # Linux has no `start`; a new session keeps the worker alive after the shell exits.
+        subprocess.Popen(launch_command(), creationflags=flags,
+                         start_new_session=os.name != "nt")
+    log("Worker starting in a new window. Close that window to stop it.")
+    return True
+
+
+def run_now(args=()):
+    """Run the worker in this console using the signed config."""
+    from roc import worker
+    payload = load()
+    if not payload:
+        raise SystemExit("No signed worker config yet. Run: roc setup")
+    known = list(args) or ["--client", payload["client"]]
+    return worker.main_args(payload, known)

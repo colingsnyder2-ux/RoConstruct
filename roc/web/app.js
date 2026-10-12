@@ -7,8 +7,10 @@ const initialPage = new URLSearchParams(location.search).get("page") === "cpu" ?
 history.replaceState(null, "", location.pathname + (initialPage === "cpu" ? "?page=cpu" : ""));
 let meta, jobs = [], page = initialPage, selectedCommand = "mass", editing = null;
 let cursor = 0, logs = [], follow = true, online = false, toastTimer, localModels = [];
-let agentState = null;
+let agentState = null, workerMemory = null;
+let agentPlan = null, agentAutoConfig = {cli:"claude",model:"",workers:2,jobs:24,minutes:120,batch_size:4,batch_minutes:10,max_size:512,individual:false};
 let cpu = null, cpuCluster = "", cpuLoaded = 0, cpuLoading = false, serverSetupOpen = initialPage === "cpu";
+const isWorker = job => ["worker","agent_worker"].includes(job.kind) || !!job.args?.includes("--automatic");
 const active = job => ["running", "paused", "stopping"].includes(job.status);
 const liveKeys = new Set(["workers","model","rounds","max_size","max_tokens","strategy","order","thinking","reasoning_effort","use_revng","min_score","max_score","diverse_candidates","guided_mutations","near_repair","max_cloud_requests","max_cloud_tokens","max_cloud_cost"]);
 const nullable = new Set(["min_score","max_score","max_cloud_requests","max_cloud_tokens","max_cloud_cost","reasoning_effort","unit_name","family_id"]);
@@ -84,11 +86,11 @@ function commandProgress() {
 }
 function runTable(rows, emptyTitle="No saved runs") {
   if (!rows.length) return `<div class="panel">${empty(emptyTitle, "Start a worker or choose a command.")}</div>`;
-  return `<div class="panel"><table class="run-list"><thead><tr><th>RUN</th><th>STATUS</th><th class="optional">DURATION</th><th>RESULT</th><th></th></tr></thead><tbody>${rows.map(job => `<tr><td class="run-name" data-log="${job.id}">${esc(job.title)}<small>${job.id}</small></td><td>${badge(job.status === "queued" ? "starting" : job.status)}</td><td class="optional">${duration(job)}</td><td>${job.kind === "worker" ? `${job.matched} exact / ${job.attempted} tried` : esc(job.stage || (job.exit_code === undefined ? "—" : "exit " + job.exit_code))}</td><td><div class="run-actions">${active(job) ? (job.kind==="worker" ? `<button class="text-button" data-action="edit" data-id="${job.id}">Controls</button>` : "")+endRun(job) : `<button class="text-button" data-rerun="${job.id}">Rerun</button>`}</div></td></tr>`).join("")}</tbody></table></div>`;
+  return `<div class="panel"><table class="run-list"><thead><tr><th>RUN</th><th>STATUS</th><th class="optional">DURATION</th><th>RESULT</th><th></th></tr></thead><tbody>${rows.map(job => `<tr><td class="run-name" data-log="${job.id}">${esc(job.title)}<small>${job.id}</small></td><td>${badge(job.status === "queued" ? "starting" : job.status)}</td><td class="optional">${duration(job)}</td><td>${isWorker(job) ? `${job.matched} exact / ${job.attempted} tried` : esc(job.stage || (job.exit_code === undefined ? "—" : "exit " + job.exit_code))}</td><td><div class="run-actions">${active(job) ? (job.kind==="worker" ? `<button class="text-button" data-action="edit" data-id="${job.id}">Controls</button>` : "")+endRun(job) : `<button class="text-button" data-rerun="${job.id}">Rerun</button>`}</div></td></tr>`).join("")}</tbody></table></div>`;
 }
 function overview() {
   const total = key => jobs.reduce((sum, job) => sum + (job[key] || 0), 0);
-  const running = jobs.filter(active), workers = running.filter(job => job.kind === "worker");
+  const running = jobs.filter(active), workers = running.filter(job => isWorker(job));
   return heading("", "Overview", "Worker results and current activity.", button("Start worker", 'data-new-worker') + button("Run mass", 'data-open-command="mass"', true)) +
     `<div class="workflow"><span class="workflow-step">${icon("file")}Lease</span><span class="workflow-arrow">→</span><span class="workflow-step">${icon("code")}Draft C++</span><span class="workflow-arrow">→</span><span class="workflow-step">${icon("cpu")}Compile</span><span class="workflow-arrow">→</span><span class="workflow-step">${icon("branch")}Compare bytes</span><span class="workflow-arrow">→</span><span class="workflow-step">${icon("check")}Submit match</span></div>` +
     `<div class="stat-grid"><div class="stat"><div class="stat-icon">${icon("code")}</div><div class="stat-label">Exact matches</div><div class="stat-value">${total("matched")}</div><div class="stat-note">Recorded worker runs</div></div><div class="stat"><div class="stat-icon">${icon("file")}</div><div class="stat-label">Functions attempted</div><div class="stat-value">${total("attempted")}</div><div class="stat-note">${total("improved")} improved · ${total("failed")} failed</div></div><div class="stat"><div class="stat-icon">${icon("cpu")}</div><div class="stat-label">Worker loops</div><div class="stat-value">${workers.reduce((sum,job)=>sum+Object.keys(job.slots).length,0)}</div><div class="stat-note">${workers.reduce((sum,job)=>sum+(Number(job.config.workers)||Object.keys(job.slots).length),0)} requested · ${running.length} active runs</div></div><div class="stat"><div class="stat-icon">${icon("chart")}</div><div class="stat-label">Cloud requests</div><div class="stat-value">${jobs.reduce((sum,job)=>sum+(job.usage.requests||0),0)}</div><div class="stat-note">Usage appears after each function</div></div></div>` +
@@ -126,11 +128,11 @@ function workerForm(config) {
     field("Request cap", "max_cloud_requests", config.max_cloud_requests, {type:"number",min:1,placeholder:"Unlimited"}) + field("Token cap", "max_cloud_tokens", config.max_cloud_tokens, {type:"number",min:1,placeholder:"Unlimited"}) + field("Estimated spend cap ($)", "max_cloud_cost", config.max_cloud_cost, {type:"number",min:0.01,placeholder:"Requires configured pricing",full:true}) +
     `</div><p class="help-note">Budget edits preserve usage already spent. In-flight requests continue. Unknown prices cannot establish actual spend.</p></details><div class="consent">${check("Allow cloud prompts for this session", "cloud_allowed", config.cloud_allowed)}<p>Bounded assembly, symbols and source hints leave this PC. Provider keys and executable files stay local.</p></div><div class="form-footer"><span class="tiny muted">${editing ? "Edits apply before each loop's next function." : "Compilation and byte comparison stay local."}</span>${button(editing ? "Apply changes" : "Start worker", 'type="submit"')}</div><div class="button-row form-section"><button type="button" class="text-button" id="save-preset">Save preset</button><select id="saved-presets" aria-label="Load a saved preset"><option value="">Load saved preset…</option>${Object.keys(meta.preferences.presets).map(name=>`<option>${esc(name)}</option>`).join("")}</select><button type="button" class="text-button" id="refresh-models">Refresh models</button></div></form>`;
 }
-let controlsOpen=false, workerRun="", chatFollow=true, chatSignature="", chatCompact=false, workerLoop="";
+let workerMode="agent", controlsOpen=false, workerRun="", chatFollow=true, chatSignature="", chatCompact=false, workerLoop="";
 function workers(config) {
   const current=jobs.find(job=>job.id===editing);
   if(!current || !active(current))editing=null;
-  return `<div id="worker-chat" class="worker-chat" tabindex="0" role="log" aria-label="Live worker activity"><div id="worker-chat-rows"></div></div><button id="jump-live" class="jump-live" hidden>↓ Jump back to live</button><footer class="worker-footer"><div id="worker-tabs" class="worker-tabs" role="tablist" aria-label="Worker sessions"></div><div class="worker-footer-controls"><div id="worker-status" class="worker-live-bar"></div><div class="chat-toolbar"><select id="worker-run" aria-label="Worker session"><option value="">All sessions</option>${jobs.filter(j=>j.kind==="worker").map(j=>`<option value="${j.id}" ${workerRun===j.id ? "selected" : ""}>${esc(j.config.client)} · ${j.id.slice(0,6)}</option>`).join("")}</select><select id="worker-loop" aria-label="Worker loop"><option value="">All loops</option>${Array.from({length:Math.max(1,...jobs.filter(j=>j.kind==="worker").map(j=>Math.max(Object.keys(j.slots).length,Number(j.config.workers)||1)))},(_,i)=>`<option value="${i}" ${workerLoop===String(i) ? "selected" : ""}>Worker ${i+1}</option>`).join("")}</select><button class="text-button" id="chat-compact">${chatCompact ? "Regular" : "Compact"}</button><button class="text-button" id="chat-follow">${chatFollow ? "Live ↓" : "Latest ↓"}</button><button class="text-button" data-configure>Configure</button><button class="text-button" data-new-session>+ New</button></div></div></footer><aside class="worker-drawer ${controlsOpen ? "open" : ""}" aria-label="Worker configuration"><div class="drawer-heading"><h2>${editing ? "Session controls" : "New session"}</h2><button class="text-button" data-close-controls>Close ×</button></div>${workerForm(config || (editing ? current.config : meta.initial))}</aside>`;
+  return `<div id="worker-chat" class="worker-chat" tabindex="0" role="log" aria-label="Live worker activity"><div id="worker-chat-rows"></div></div><button id="jump-live" class="jump-live" hidden>↓ Jump back to live</button><footer class="worker-footer"><div id="worker-tabs" class="worker-tabs" role="tablist" aria-label="Worker sessions"></div><div class="worker-footer-controls"><div id="worker-status" class="worker-live-bar"></div><div class="chat-toolbar"><select id="worker-run" aria-label="Worker session"><option value="">All sessions</option>${jobs.filter(j=>isWorker(j)).map(j=>`<option value="${j.id}" ${workerRun===j.id ? "selected" : ""}>${esc(j.config.client)} · ${j.id.slice(0,6)}</option>`).join("")}</select><select id="worker-loop" aria-label="Worker loop"><option value="">All loops</option>${Array.from({length:Math.max(1,...jobs.filter(j=>isWorker(j)).map(j=>Math.max(Object.keys(j.slots).length,Number(j.config.workers)||1)))},(_,i)=>`<option value="${i}" ${workerLoop===String(i) ? "selected" : ""}>Worker ${i+1}</option>`).join("")}</select><button class="text-button" id="chat-compact">${chatCompact ? "Regular" : "Compact"}</button><button class="text-button" id="chat-follow">${chatFollow ? "Live ↓" : "Latest ↓"}</button><button class="text-button" data-configure>Configure</button><button class="text-button" data-new-session>+ New</button></div></div></footer><aside class="worker-drawer ${controlsOpen ? "open" : ""}" aria-label="Worker configuration"><div class="drawer-heading"><h2>${editing ? "Session controls" : "New session"}</h2><button class="text-button" data-close-controls>Close ×</button></div>${editing ? workerForm(current.config) : `<div class="button-row form-section"><button class="text-button" data-worker-mode="agent">Agent worker</button><button class="text-button" data-worker-mode="function">Function worker</button><button class="text-button" data-worker-mode="memory">Experiment memory</button></div>`+(workerMode==="agent" ? agentAutomatic() : workerMode==="memory" ? experimentMemory(workerMemory) : workerForm(config || meta.initial))}</aside>`;
 }
 function highlightCode(code) {
   return String(code).split(/(\/\/[^\n]*|"(?:\\.|[^"\\])*"|\b(?:void|int|float|double|char|bool|class|struct|return|if|else|for|while|const|static|unsigned|signed|auto|nullptr|true|false|sizeof)\b|\b\d+\b)/g).map(part=>{const cls=part.startsWith("//") ? "comment" : part.startsWith('"') ? "string" : /^\d+$/.test(part) ? "number" : /^(void|int|float|double|char|bool|class|struct|return|if|else|for|while|const|static|unsigned|signed|auto|nullptr|true|false|sizeof)$/.test(part) ? "keyword" : "";return cls ? `<span class="syntax-${cls}">${esc(part)}</span>` : esc(part);}).join("");
@@ -140,7 +142,7 @@ function terminalMessage(row, functions, compact=false) {
   const stamp=new Date(row.time*1000).toLocaleTimeString("en-GB"), worker=row.slot===undefined ? "roc" : "w"+(row.slot+1);
   const fn=functions.get(row.job+":"+row.slot);
   let marker="·", text=logText(row), extra="", kind=row.event;
-  if(row.event==="job_started") {marker="›";text=`${row.client} ${row.addr} ${row.size ?? "?"} B ${row.unit || ""} · best ${row.previous}%`;}
+  if(row.event==="job_started") {marker="›";text=`${row.client} ${row.addr} ${row.size ?? "?"} B ${row.unit || ""} · best ${row.previous ?? row.score ?? "?"}%${row.area ? " · "+row.area : ""}`;}
   else if(row.event==="job_finished") {kind+=" "+(row.score===100 ? "exact" : row.score>row.previous ? "improved" : "no-gain");marker=row.score===100 ? "✓" : row.score>row.previous ? "↑" : "·";text=`${row.client} ${row.addr}${row.supercompact ? " · "+(row.size ?? "?")+" B" : " "+(row.unit || fn?.unit || "")+" · "+(row.size ?? "?")+" B"} · ${row.previous}% → ${row.score}%${row.score===100 ? " EXACT" : row.score<=row.previous ? " no gain" : " improved"}${row.seconds===undefined ? "" : " · "+row.seconds+"s"}`;}
   else if(row.event==="benchmark") {marker="≡";text=`${row.workers}w · ${row.completed} done · ${row.per_minute} fn/min · ${row.matched} exact · ${row.improved} improved · ${row.errors} errors`;}
   else if(row.event==="compile") {
@@ -190,7 +192,7 @@ function updateFeed(node, items, following, smooth) {
 }
 function renderWorkerChat() {
   const node=$("#worker-chat");if(!node)return;
-  const workerJobs=jobs.filter(j=>j.kind==="worker");
+  const workerJobs=jobs.filter(j=>isWorker(j));
   const tabs=$("#worker-tabs"),tabSignature=workerJobs.map(j=>j.id+j.status).join()+workerRun;
   if(tabs.dataset.signature!==tabSignature) {tabs.innerHTML=`<button role="tab" aria-selected="${!workerRun}" class="worker-tab ${!workerRun ? "selected" : ""}" data-worker-tab="all">All workers</button>`+workerJobs.slice(-12).map(j=>`<div class="worker-tab-group"><button role="tab" aria-selected="${workerRun===j.id}" class="worker-tab ${workerRun===j.id ? "selected" : ""}" data-worker-tab="${j.id}"><span class="dot ${esc(j.status)}"></span>${esc(j.config.client)} <span>${j.id.slice(0,5)}</span><small>${j.status === "queued" ? "starting" : esc(j.status)}</small></button>${!active(j) ? `<button class="worker-tab-close" data-remove-run="${j.id}" aria-label="Remove finished run ${j.id}" title="Remove from run history">×</button>` : ""}</div>`).join("");tabs.dataset.signature=tabSignature;}
   const status=$("#worker-status"),statusHTML=workerCards();if(status.innerHTML!==statusHTML)status.innerHTML=statusHTML;
@@ -200,7 +202,7 @@ function renderWorkerChat() {
   $("#chat-compact").textContent=supercompact ? "Supercompact · auto" : chatCompact ? "Regular" : "Compact";
   const foldSource=compact;
   const ids=new Set(workerJobs.map(job=>job.id));
-  const rows=logs.filter(r=>ids.has(r.job)&&(!workerRun||r.job===workerRun)&&(workerLoop===""||String(r.slot)===workerLoop||r.event==="benchmark")&&(compact ? r.startup || ["job_finished","benchmark","error","rejected"].includes(r.event) : !["control","applied","usage"].includes(r.event))).slice(-180);
+  const rows=logs.filter(r=>ids.has(r.job)&&(!workerRun||r.job===workerRun)&&(workerLoop===""||String(r.slot)===workerLoop||r.event==="benchmark")&&(compact ? jobs.find(j=>j.id===r.job)?.kind==="agent_worker" || r.startup || ["job_finished","benchmark","error","rejected"].includes(r.event) : !["control","applied","usage"].includes(r.event))).slice(-180);
   const signature=compact+":"+supercompact+":"+rows.map(r=>r.job+":"+r.seq).join();
   setChatFollow(chatFollow);
   const viewFilter=workerRun+":"+workerLoop+":"+compact+":"+supercompact;
@@ -223,9 +225,9 @@ function renderWorkerChat() {
   chatSignature=signature;node.dataset.viewFilter=viewFilter;
 }
 function workerCards() {
-  const selected=jobs.find(j=>j.id===workerRun), current=selected || jobs.find(j=>j.kind==="worker"&&active(j));
+  const selected=jobs.find(j=>j.id===workerRun), current=selected || jobs.find(j=>isWorker(j)&&active(j));
   if(!current)return '<span class="muted">Idle</span>';
-  return `<div class="live-session"><span class="session-summary">${badge(current.status)} <b>${Object.keys(current.slots).length}</b> loops · <b>${current.matched}</b> exact · ${current.attempted} tried</span>${active(current) ? `<button class="text-button" data-action="${current.status==="paused" ? "resume" : "pause"}" data-id="${current.id}" ${current.status==="stopping" ? "disabled" : ""}>${current.status==="paused" ? "Resume" : "Pause"}</button>${endRun(current)}<button class="text-button" data-action="kill" data-id="${current.id}" aria-label="Stop immediately">×</button>` : ""}</div>`;
+  return `<div class="live-session"><span class="session-summary">${badge(current.status)} <b>${Object.keys(current.slots).length}</b> loops · <b>${current.matched}</b> exact · ${current.attempted} tried</span>${active(current) ? (current.kind==="worker" ? `<button class="text-button" data-action="${current.status==="paused" ? "resume" : "pause"}" data-id="${current.id}" ${current.status==="stopping" ? "disabled" : ""}>${current.status==="paused" ? "Resume" : "Pause"}</button>` : "")+`${endRun(current)}<button class="text-button" data-action="kill" data-id="${current.id}" aria-label="Stop immediately">×</button>` : ""}</div>`;
 }
 function commands() {
   const command = meta.commands.find(command=>command.name===selectedCommand), names = meta.clients.map(client=>client.name);
@@ -239,14 +241,32 @@ function commands() {
 }
 function agentPage() {
   const s=agentState, row=(ok,title,detail,action="")=>`<div class="client-row"><div><h3>${title}</h3><p>${detail}</p></div><div class="button-row"><span class="badge ${ok ? "completed" : "paused"}">${ok ? "Ready" : "Needed"}</span>${action}</div></div>`, section=title=>`<div class="section-heading"><h2>${title}</h2></div>`;
-  const top=heading("", "AI agent", "Let Claude Code or Codex match functions on your own plan, the same way the maintainers' sessions work.", button("Refresh",'data-agent-refresh',true));
+  const top=heading("", "Agent setup", "Install and sign in to Claude Code or Codex, check project readiness, or open a manual session. Automatic agent workers run in Workers.", button("Refresh",'data-agent-refresh',true));
   if(!s) return top+`<div class="panel panel-pad"><p class="help-note">Checking this PC…</p></div>`;
   const c=s.client, clientAction=!c.downloaded ? button("Fetch",'data-client-task="client-fetch" data-client="2008-06"',true) : !c.analyzed ? button("Analyze",'data-client-task="analyze" data-client="2008-06"',true) : "";
   return top + section("1. Agent CLI") + `<div class="panel">${["claude","codex"].map(cli=>row(!!s.clis[cli], cli==="claude" ? "Claude Code" : "Codex",
       s.clis[cli] ? esc(s.clis[cli])+" · sign in once in the window it opens" : s.npm ? "Not installed. Uses your "+(cli==="claude" ? "Claude Pro/Max" : "ChatGPT")+" plan after sign-in." : "Not installed. Install Node.js (npm) first.",
       button(s.clis[cli] ? "Sign in" : "Install & sign in",`data-agent-setup="${cli}" ${!s.clis[cli]&&!s.npm ? "disabled" : ""}`,true))).join("")}</div>` +
     section("2. Project") + `<div class="panel">${row(s.server&&s.user,"Server and username",s.server&&s.user ? "Configured" : "Run in a terminal: roc config --user NAME --server URL")}${row(s.compilers,"Compilers",s.compilers ? "Exact MSVC builds installed" : "Download the exact MSVC builds",s.compilers ? "" : button("Install tools",'data-open-command="install"',true))}${row(c.downloaded&&c.analyzed,"Client 2008-06",!c.downloaded ? "Binary not downloaded" : !c.analyzed ? "Not analyzed yet" : "Downloaded and analyzed",clientAction)}</div>` +
-    section("3. Goal") + `<form id="agent-form" class="panel panel-pad"><div class="field-grid">${field("Agent CLI","cli",s.clis.claude||!s.clis.codex ? "claude" : "codex",{choices:[["claude","Claude Code"],["codex","Codex"]]})}${field("Model (optional)","model","",{placeholder:"sonnet, opus, gpt-5…"})}${field("Goal","goal","Match as many open 2008-06 RakNet functions as you can",{full:true})}</div><p class="help-note"><b>Interactive</b> opens a terminal window with a normal session: it can download, write scripts and add recipes like the maintainers' sessions, and asks you before risky commands. <b>Unattended</b> runs here for up to 2 hours and may only run roc.py commands and edit src/; its steps appear in the console below. Either way the server re-verifies every submission.</p><div class="form-footer">${button("Run unattended",'type="button" data-agent-run',true)}${button("Open interactive session",'type="submit"')}</div></form>`;
+    `<p class="help-note">Automatic agent workers and shared experiment memory live in Workers.</p>` + button("Open agent workers",'data-new-agent-worker',true) +
+    section("3. Manual goal") + `<form id="agent-form" class="panel panel-pad"><div class="field-grid">${field("Agent CLI","cli",s.clis.claude||!s.clis.codex ? "claude" : "codex",{choices:[["claude","Claude Code"],["codex","Codex"]]})}${field("Model (optional)","model","",{placeholder:"sonnet, opus, gpt-5…"})}${field("Goal","goal","Match as many open 2008-06 RakNet functions as you can",{full:true})}</div><p class="help-note"><b>Interactive</b> opens a terminal window with a normal session: it can download, write scripts and add recipes like the maintainers' sessions, and asks you before risky commands. <b>Unattended</b> runs here for up to 2 hours and may only run roc.py commands, edit src/, and append experiment memory; its steps appear in the console below. Either way the server re-verifies every submission.</p><div class="form-footer">${button("Run unattended",'type="button" data-agent-run',true)}${button("Open interactive session",'type="submit"')}</div></form>`;
+}
+function experimentMemory(s) {
+  if(!s)return `<p class="help-note">Loading experiment memory…</p>`;
+  const rows=(s.shared_recent||[]).slice().reverse(),local=(s.recent||[]).slice().reverse();
+  const attempts=items=>items.map(r=>`<div class="client-row"><div><h3>${esc(r.library||r.area||r.kind||"Attempt")} · ${esc(r.reported_by||"This PC")}</h3><p>${esc(r.hypothesis||r.change||r.kind)} · ${esc(r.outcome)}</p><p>${esc(r.before??"?")} → ${esc(r.after??"?")}%${r.candidate!=null ? ` · candidate ${esc(r.candidate)}%` : ""}</p><small>${esc(r.date||"")}${r.server_confirmed ? " · server-confirmed gain" : " · reported"}</small></div></div>`).join("");
+  return `<div class="panel panel-pad"><h2>Experiment memory</h2><p class="help-note">Vendor headers → linkage → small compiler pilot → imports → proven boundaries → sibling propagation. Agents read successes and failures before matching.</p><p class="help-note">${s.sync?.available ? "Connected: attempts shared through group server" : esc(s.sync?.error||"Shared server not connected")}</p>${button("Sync attempts & refresh",'data-worker-memory-refresh',true)}${(s.lessons||[]).map(r=>`<div class="client-row"><div><h3>${esc(r.library)}</h3><p>${esc(r.change)}</p><p>${esc(r.next)}</p><small>${esc(r.evidence)}</small></div><span class="badge">${r.exacts_gained==null ? "Count evolving" : "+"+esc(r.exacts_gained)+" exact"}</span></div>`).join("")}<details open><summary>Shared attempts (${rows.length}, latest 20)</summary>${attempts(rows)}</details><details><summary>Local attempts (${local.length}, latest 20)</summary>${attempts(local)}</details><p class="tiny muted">Reports remain evidence data. Server-confirmed gains are checked against score events. Full sources and diffs remain in run logs/source sharing; reviewed lessons and workflow ship with worker packages.</p></div>`;
+}
+async function loadWorkerMemory(sync=false) {workerMemory=await api(sync ? "agent-memory-sync" : "agent-memory",sync ? {} : undefined);if(page==="workers"&&workerMode==="memory")render();}
+function readAgentAuto() {
+  const form=$("#agent-auto-form"), data=Object.fromEntries(new FormData(form));
+  for(const key of ["workers","jobs","minutes","batch_size","batch_minutes","max_size"])data[key]=Number(data[key]);
+  data.individual=form.elements.individual.checked;
+  agentAutoConfig=data;return data;
+}
+function agentAutomatic() {
+  const c=agentAutoConfig;
+  return `<form id="agent-auto-form" class="panel panel-pad"><p class="help-note">Find reusable gains first: exact donors → family propagation → existing vendor recipes → batch repair. Individual mining is disabled unless selected. Separate workers use exclusive leases and isolated source files. Two zero-gain repair batches park that family for this source/profile revision.</p><div class="field-grid">${field("Agent CLI","cli",c.cli,{choices:[["claude","Claude Code"],["codex","Codex"]]})}${field("Model (optional)","model",c.model)}${field("Workers","workers",c.workers,{type:"number",min:1,max:8})}${field("Total target cap","jobs",c.jobs,{type:"number",min:1,max:200})}${field("Run minutes","minutes",c.minutes,{type:"number",min:1,max:600})}${field("Functions per batch","batch_size",c.batch_size,{type:"number",min:1,max:12})}${field("Minutes per agent batch","batch_minutes",c.batch_minutes,{type:"number",min:1,max:60})}${field("Max function bytes","max_size",c.max_size,{type:"number",min:32,max:8192})}</div>${check("Allow individual repair as last resort","individual",c.individual)}<p class="tiny muted">Uses the selected CLI's signed-in plan/key. Preview is free; worker/time caps bound runs, not dollars. Ranking uses local snapshot hints; starting Auto refreshes server sources and recompiles baselines.</p><div class="form-footer">${button("Preview best areas",'type="button" data-agent-plan',true)}${button("Start agent worker",'type="submit"')}</div><div id="agent-auto-plan">${agentPlan ? `<p class="help-note">${esc(agentPlan.note)}</p><table class="run-list"><thead><tr><th>Area</th><th>Eligible</th><th>Open bytes</th><th>Priority</th></tr></thead><tbody>${agentPlan.areas.map(area=>`<tr><td><b>${esc(area.title)}${area.parked ? " · parked" : ""}</b><p>${esc(area.advice)}</p><small>${area.examples.map(row=>esc(row.addr)+" · "+esc(row.unit)+" · "+esc(row.score)+"%").join("<br>")}</small></td><td>${area.eligible}</td><td>${area.bytes}</td><td>${area.priority}</td></tr>`).join("")}</tbody></table><p class="tiny muted">Deferred: ${Object.entries(agentPlan.excluded).map(([reason,count])=>esc(count)+" "+esc(reason)).join(" · ") || "None"}</p>` : ""}</div></form>`;
 }
 async function loadAgent() { agentState=await api("agent"); if(page==="agent") render(); }
 function clientPage() {
@@ -260,7 +280,7 @@ function render(config) {
   document.title=page==="cpu" ? "Servers" : "RoConstruct Dashboard";
   const expanded=new Set([...document.querySelectorAll("[data-cpu-detail][open]")].map(n=>n.dataset.cpuDetail)), cpuScroll=$("#main").scrollTop;
   document.querySelectorAll(".sidebar [data-page]").forEach(button=>button.classList.toggle("active",button.dataset.page===page));
-  $("#page-name").textContent = {overview:"Overview",workers:"Workers",cpu:"Servers",commands:"Commands",agent:"AI agent",clients:"Clients",history:"Run history",functions:"Functions",settings:"Settings"}[page];
+  $("#page-name").textContent = {overview:"Overview",workers:"Workers",cpu:"Servers",commands:"Commands",agent:"Agent setup",clients:"Clients",history:"Run history",functions:"Functions",settings:"Settings"}[page];
   $("#main").innerHTML = page==="cpu" ? cpuPage() : page==="overview" ? overview() : page==="workers" ? workers(config) : page==="commands" ? commands() : page==="agent" ? agentPage() : page==="clients" ? clientPage() : page==="history" ? heading("", "Run history", "Saved configurations, outcomes, and logs. Rerun interrupted sessions explicitly.")+runTable([...jobs].reverse()) : page==="functions" ? functionsPage() : settings();
   if(page==="cpu") {document.querySelectorAll("[data-cpu-detail]").forEach(n=>{n.open=expanded.has(n.dataset.cpuDetail);});$("#main").scrollTop=cpuScroll;}
   document.body.classList.toggle("servers-page",page==="cpu");
@@ -269,7 +289,7 @@ function render(config) {
   if (page==="commands") {act(previewCommand);act(()=>loadCpu(true));}
   if (page==="functions") act(loadFunctions);
 }
-function navigate(next, config) { page=next; if(next!=="workers") editing=null; render(config); if(next==="cpu")act(()=>loadCpu(true)); if(next==="agent")act(loadAgent); $("#main").scrollTop=0; }
+function navigate(next, config) { page=next; if(next!=="workers") editing=null; render(config); if(next==="cpu")act(()=>loadCpu(true)); if(next==="agent")act(loadAgent); if(next==="workers")act(loadWorkerMemory); $("#main").scrollTop=0; }
 function readWorker() {
   const form=$("#worker-form"), config={...(editing ? jobs.find(job=>job.id===editing).config : meta.initial)};
   for(const input of form.querySelectorAll("[name]")) {
@@ -319,7 +339,7 @@ async function poll() {
     cursor=state.sequence;more=state.more;
     const selected=$("#log-job").value, signature=jobs.map(job=>job.id).join();
     if($("#log-job").dataset.signature!==signature) { $("#log-job").innerHTML='<option value="">All runs</option>'+jobs.map(job=>`<option value="${job.id}">${esc(job.title)} · ${job.id.slice(0,5)}</option>`).join("");$("#log-job").value=selected;$("#log-job").dataset.signature=signature; }
-    $("#worker-count").textContent=jobs.filter(job=>job.kind==="worker"&&active(job)).length;
+    $("#worker-count").textContent=jobs.filter(job=>isWorker(job)&&active(job)).length;
     if(page==="overview"||page==="history") render();
     else if(page==="cpu"||page==="commands") act(()=>loadCpu());
     else if(page==="workers") { if(editing&&!jobs.some(job=>job.id===editing&&active(job))) { editing=null;render(); }  }
@@ -349,18 +369,22 @@ document.addEventListener("click", event=>act(async()=>{
   if(target.dataset.page) navigate(target.dataset.page);
   if(target.dataset.function) { functionDetail=await api("functions?id="+target.dataset.function); detailTab="source";renderFunctionDetail(); }
   if(target.dataset.detailTab) { detailTab=target.dataset.detailTab;renderFunctionDetail(); }
+  if(target.dataset.workerMode) {workerMode=target.dataset.workerMode;editing=null;controlsOpen=true;render();if(workerMode==="memory")await loadWorkerMemory();return;}
+  if(target.hasAttribute("data-worker-memory-refresh")) {await loadWorkerMemory(true);return;}
+  if(target.hasAttribute("data-new-agent-worker")) {workerMode="agent";editing=null;controlsOpen=true;navigate("workers");return;}
   if(target.hasAttribute("data-new-worker") || target.hasAttribute("data-new-session")) { editing=null;controlsOpen=true;navigate("workers"); }
-  if(target.hasAttribute("data-configure")) {editing=jobs.find(j=>j.kind==="worker"&&active(j)&&(!workerRun||j.id===workerRun))?.id || null;controlsOpen=true;render();}
+  if(target.hasAttribute("data-configure")) {const current=jobs.find(j=>isWorker(j)&&active(j)&&(!workerRun||j.id===workerRun));editing=current?.kind==="worker" ? current.id : null;workerMode=current?.kind==="worker" ? "function" : "agent";controlsOpen=true;render();}
   if(target.hasAttribute("data-close-controls")) {controlsOpen=false;$(".worker-drawer").classList.remove("open");}
   if(target.hasAttribute("data-copy-code")) {await navigator.clipboard.writeText(target.closest(".chat-code").querySelector("code").textContent);toast("Code copied");}
   if(target.id==="chat-follow"||target.id==="jump-live") {setChatFollow(true);chatSignature="";renderWorkerChat();scrollToLatest($("#worker-chat"),true);}
+  if(target.hasAttribute("data-agent-plan")) {const data=readAgentAuto();agentPlan=await api("agent-plan?"+new URLSearchParams({cli:data.cli,model:data.model,max_size:data.max_size,individual:data.individual}));render();}
   if(target.hasAttribute("data-agent-refresh")) { agentState=null;render();await loadAgent(); }
   if(target.dataset.agentSetup) { const result=await api("agent-setup",{cli:target.dataset.agentSetup});toast(result.manual ? "Run in a terminal: "+result.manual : "Opened a terminal window. Sign in there, then press Refresh."); }
-  if(target.hasAttribute("data-agent-run")) { const data=Object.fromEntries(new FormData($("#agent-form")));const result=await api("start",{kind:"command",command:"agent",cli:data.cli,goal:data.goal,minutes:120});toast("Agent started");$("#console-hint").textContent="Agent run "+result.id; }
+  if(target.hasAttribute("data-agent-run")) { const data=Object.fromEntries(new FormData($("#agent-form")));const result=await api("start",{kind:"command",command:"agent",cli:data.cli,model:data.model,goal:data.goal,minutes:120});toast("Agent started");$("#console-hint").textContent="Agent run "+result.id; }
   if(target.dataset.openCommand) { selectedCommand=target.dataset.openCommand;navigate("commands"); }
   if(target.dataset.command) { selectedCommand=target.dataset.command;render(); }
   if(target.dataset.clientTask) { const result=await api("start",{kind:"command",command:target.dataset.clientTask,client:target.dataset.client});$("#console-hint").textContent="Started "+result.id;toast("Task started"); }
-  if(target.dataset.clientWorker) { editing=null;navigate("workers",{...meta.initial,client:target.dataset.clientWorker}); }
+  if(target.dataset.clientWorker) { workerMode="function";controlsOpen=true;editing=null;navigate("workers",{...meta.initial,client:target.dataset.clientWorker}); }
   if(target.dataset.log) { $("#log-job").value=target.dataset.log;renderLogs(); }
   if(target.dataset.step) { const input=$("#worker-form").elements[target.dataset.field];input.value=Math.max(Number(input.min||1),Math.min(Number(input.max||1000000),Number(input.value)+Number(target.dataset.step))); }
   if(target.dataset.preset) { const config=readWorker(),presets={automatic,fast:{rounds:2,max_size:96,max_tokens:1024,use_revng:false},balanced:{rounds:4,max_size:256,max_tokens:2048},deep:{rounds:6,max_size:512,max_tokens:4096}};render({...config,...presets[target.dataset.preset]});document.querySelectorAll("[data-preset]").forEach(button=>button.classList.toggle("active",button.dataset.preset===target.dataset.preset)); }
@@ -372,7 +396,8 @@ document.addEventListener("click", event=>act(async()=>{
   }
   if(target.dataset.rerun) {
     const job=jobs.find(job=>job.id===target.dataset.rerun);
-    if(job.kind==="worker") { editing=null;navigate("workers",job.config); }
+    if(isWorker(job)&&job.kind!=="worker") {const flag=name=>{const i=job.args.indexOf(name);return i<0 ? undefined : job.args[i+1];};agentAutoConfig={...agentAutoConfig,...job.config,cli:job.config?.cli||job.args[1],model:flag("--model")||"",individual:job.args.includes("--individual")};for(const key of ["workers","jobs","minutes","batch_size","batch_minutes","max_size"])if(flag("--"+key.replaceAll("_","-")))agentAutoConfig[key]=Number(flag("--"+key.replaceAll("_","-")));workerMode="agent";controlsOpen=true;editing=null;navigate("workers");return;}
+    if(job.kind==="worker") { workerMode="function";controlsOpen=true;editing=null;navigate("workers",job.config); }
     else {
       selectedCommand=job.args[0];navigate("commands");
       const fields=$("#command-form").elements, flag=name=>{const index=job.args.indexOf(name);return index>=0 ? job.args[index+1] : undefined;};
@@ -381,6 +406,7 @@ document.addEventListener("click", event=>act(async()=>{
       for(const key of ["limit","min_score"]) if(fields[key]&&flag("--"+key.replace("_","-")))fields[key].value=flag("--"+key.replace("_","-"));
       if(fields.permute)fields.permute.checked=job.args.includes("--permute");
       if(fields.recipes)fields.recipes.value=job.args.slice(1,job.args.indexOf("--client")).join(", ");
+      if(selectedCommand==="agent"&&job.args.includes("--automatic")) {agentAutoConfig={cli:job.args[1],model:flag("--model")||"",individual:job.args.includes("--individual")};for(const key of ["workers","jobs","minutes","batch_size","batch_minutes","max_size"])agentAutoConfig[key]=Number(flag("--"+key.replaceAll("_","-")));workerMode="agent";controlsOpen=true;editing=null;navigate("workers");return;}
       if(selectedCommand==="agent"){fields.cli.value=job.args[1];fields.goal.value=flag("--goal")||"";fields.minutes.value=flag("--minutes")||120;}
       await previewCommand();
     }
@@ -396,6 +422,7 @@ document.addEventListener("submit",event=>{
   event.preventDefault();act(async()=>{
     if(event.target.id==="worker-form") { const config=readWorker();if(editing) await api("control",{id:editing,action:"update",config:Object.fromEntries(Object.entries(config).filter(([key])=>liveKeys.has(key)))});else { const result=await api("start",{kind:"worker",config});toast("Worker started");$("#console-hint").textContent="Worker session "+result.id; } }
     if(event.target.id==="worker-form") {controlsOpen=false;$(".worker-drawer")?.classList.remove("open");}
+    if(event.target.id==="agent-auto-form") {const result=await api("start",{kind:"agent_worker",...readAgentAuto()});workerRun=result.id;controlsOpen=false;$(".worker-drawer")?.classList.remove("open");toast("Agent worker started");$("#console-hint").textContent="Agent worker "+result.id;}
     if(event.target.id==="agent-form") { const result=await api("agent-session",Object.fromEntries(new FormData(event.target)));toast(result.manual ? "Run in a terminal: "+result.manual : "Opened the agent in a new terminal window"); }
     if(event.target.id==="command-form") { const result=await api("start",{kind:"command",...readCommand()});toast("Command started");$("#console-hint").textContent="Command run "+result.id; }
     if(event.target.id==="preferences-form") { const data=Object.fromEntries(new FormData(event.target));await api("preferences",data);meta=await api("meta");document.documentElement.dataset.theme=data.theme;toast("Preferences saved"); }

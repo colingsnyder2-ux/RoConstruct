@@ -39,9 +39,9 @@ def candidates(current):
             yield value
 
 
-def total(client, sources, flags):
+def total(client, clients, flags):
     s = 0
-    for src in sources:
+    for src in clients:
         try:
             s += match.check(client, src.stem, src, flags)[0]
         except match.CompileError:
@@ -51,28 +51,28 @@ def total(client, sources, flags):
 
 def tune(client, log=print):
     sources = sorted((ROOT / "src" / client).glob("*.cpp"))
-    if not sources:
+    if not clients:
         raise SystemExit("No sources in src/%s yet. Claim and write a few small functions first." % client)
     entry = clients.load()[client]
     current = (entry.get("flags") or match.DEFAULT_FLAGS).split()
     # Normalise to one choice per group.
     pick = [next((o for o in g if o and o in current), g[0]) for g in GROUPS]
     flags = lambda p: " ".join(o for o in p if o)
-    best = total(client, sources, flags(pick))
-    log("start  %-40s %d / %d" % (flags(pick), best, 100 * len(sources)))
+    best = total(client, clients, flags(pick))
+    log("start  %-40s %d / %d" % (flags(pick), best, 100 * len(clients)))
     for gi, group in enumerate(GROUPS):
         for option in group:
             if option == pick[gi]:
                 continue
             trial = pick[:gi] + [option] + pick[gi + 1:]
-            s = total(client, sources, flags(trial))
+            s = total(client, clients, flags(trial))
             log("try    %-40s %d" % (flags(trial), s))
             if s > best:
                 best, pick = s, trial
     reg = clients.load()
     reg[client]["flags"] = flags(pick)
     clients.save(reg)
-    log("best   %-40s %d / %d  (saved to clients.json)" % (flags(pick), best, 100 * len(sources)))
+    log("best   %-40s %d / %d  (saved to clients.json)" % (flags(pick), best, 100 * len(clients)))
     return flags(pick), best
 
 
@@ -81,21 +81,21 @@ def sweep(client, log=print, limit=None):
     sources = sorted((ROOT / "src" / client).glob("*.cpp"),
                      key=lambda p: (p.stat().st_size, p.name))
     if limit:
-        sources = sources[:limit]
-    if not sources:
+        sources = clients[:limit]
+    if not clients:
         raise SystemExit("No sources in src/%s." % client)
     current = (clients.load()[client].get("flags") or match.DEFAULT_FLAGS).split()
     best, best_flags = -1, None
     for trial in candidates(current):
-        score = total(client, sources, trial)
-        log("try    %-48s %d / %d" % (trial, score, 100 * len(sources)))
+        score = total(client, clients, trial)
+        log("try    %-48s %d / %d" % (trial, score, 100 * len(clients)))
         if score > best:
             best, best_flags = score, trial
-        if score == 100 * len(sources):
+        if score == 100 * len(clients):
             break
     reg = clients.load()
     reg[client]["flags"] = best_flags
     clients.save(reg)
     log("best   %-48s %d / %d%s (saved)" %
-        (best_flags, best, 100 * len(sources), " sample" if limit else ""))
+        (best_flags, best, 100 * len(clients), " sample" if limit else ""))
     return best_flags, best

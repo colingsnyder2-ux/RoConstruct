@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install test dependencies
-        run: python -m pip install pefile capstone tzdata pytest -r requirements-chatgpt.txt
+        run: python -m pip install pefile capstone tzdata pytest -r packaging/requirements-chatgpt.txt
       - name: Run tests
         run: python -m pytest tests -q
       - uses: actions/setup-node@v4

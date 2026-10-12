@@ -43,16 +43,16 @@ class temp_config:
     """Redirect the signed worker config and the settings file it writes."""
 
     def __enter__(self):
-        import roc.handoff as handoff
+        import roc.link as link
         self.dir = Path(tempfile.mkdtemp(prefix="roc-handoff-test-"))
         # Patch the module attributes only. Assigning the globals directly and
         # patching them afterwards leaks the temp paths past __exit__, so every
         # later test in the process would read settings from a deleted folder.
-        self.patches = [patch("roc.handoff.CONFIG", self.dir / "roconstruct-worker.json"),
+        self.patches = [patch("roc.link.CONFIG", self.dir / "roconstruct-worker.json"),
                         patch("roc.worker.SETTINGS", self.dir / "roconstruct-settings.json")]
         for item in self.patches:
             item.start()
-        return handoff
+        return link
 
     def __exit__(self, *error):
         for item in reversed(self.patches):
@@ -192,48 +192,48 @@ def test_ask_client_accepts_all():
 
 
 def test_handoff_signature_round_trip_and_tamper():
-    with temp_config() as handoff:
-        url = handoff.link("colin", "2008-06", "https://server.example:443", cloud=True)
+    with temp_config() as link:
+        url = link.link("colin", "2008-06", "https://server.example:443", cloud=True)
         assert url.startswith("roconstruct://work?") and "user=colin" in url
-        handoff.save(user="colin", client="2008-06", server="https://server.example:443",
+        link.save(user="colin", client="2008-06", server="https://server.example:443",
                      mode="cloud", cloud=True)
-        saved = json.loads(handoff.CONFIG.read_text(encoding="utf-8"))
-        assert handoff.verify(saved), "a config this machine signed must verify"
-        assert handoff.load()["user"] == "colin"
-        assert handoff.status()["state"] == "signed"
+        saved = json.loads(link.CONFIG.read_text(encoding="utf-8"))
+        assert link.verify(saved), "a config this machine signed must verify"
+        assert link.load()["user"] == "colin"
+        assert link.status()["state"] == "signed"
         saved["payload"]["cloud"] = False
-        handoff.CONFIG.write_text(json.dumps(saved), encoding="utf-8")
-        assert not handoff.verify(saved), "an edited config must not verify"
-        assert handoff.load() == {}
-        assert handoff.status()["state"] == "tampered"
+        link.CONFIG.write_text(json.dumps(saved), encoding="utf-8")
+        assert not link.verify(saved), "an edited config must not verify"
+        assert link.load() == {}
+        assert link.status()["state"] == "tampered"
 
 
 def test_handoff_rejects_bad_links():
-    with temp_config() as handoff:
+    with temp_config() as link:
         for url in ("roconstruct://work?client=2008-06&server=x",
                     "roconstruct://work?client=2008-06&server=x&user=bad%20name",
                     "roconstruct://work?client=../etc&server=x&user=colin",
                     "https://example.com/work?client=2008-06&server=x&user=colin"):
             try:
-                handoff.from_url(url)
+                link.from_url(url)
                 assert False, "accepted a bad link: %s" % url
             except SystemExit:
                 pass
 
 
 def test_handoff_only_keeps_known_fields():
-    with temp_config() as handoff:
-        handoff.save(user="colin", client="2008-06", server="host:8765", mode="cloud",
+    with temp_config() as link:
+        link.save(user="colin", client="2008-06", server="host:8765", mode="cloud",
                      cloud=True, workers="256", evil="--no-check")
-        payload = handoff.load()
+        payload = link.load()
         assert "workers" not in payload and "evil" not in payload, "only the link vocabulary is stored"
 
 
 def test_handoff_signature_depends_on_content():
-    with temp_config() as handoff:
-        first = handoff.sign({"user": "colin", "client": "2008-06"})
-        same = handoff.sign({"client": "2008-06", "user": "colin"})
-        other = handoff.sign({"user": "mallory", "client": "2008-06"})
+    with temp_config() as link:
+        first = link.sign({"user": "colin", "client": "2008-06"})
+        same = link.sign({"client": "2008-06", "user": "colin"})
+        other = link.sign({"user": "mallory", "client": "2008-06"})
         assert first == same, "the signature must not depend on key order"
         assert first != other, "a different payload must sign differently"
 
@@ -349,7 +349,7 @@ def test_doctor_summary_names_the_model_a_launch_would_use():
             doctor.check("extras", "ok", "not installed")]
     payload = {"user": "colin", "client": "2008-06", "server": "host:8765",
                "mode": "cloud", "cloud": True, "model": "deepseek:deepseek-flash"}
-    with patch("roc.handoff.load", return_value=payload), \
+    with patch("roc.link.load", return_value=payload), \
          patch("roc.providers.is_cloud", return_value=True), \
          patch("roc.worker.resolve_model", return_value=("deepseek:deepseek-flash", True)):
         text = doctor.format_report(rows)
@@ -357,7 +357,7 @@ def test_doctor_summary_names_the_model_a_launch_would_use():
     assert "bounded prompts leave this PC" in text
     assert "cloud worker is in place" not in text, "the summary must not assume cloud"
     # with no signed config at all it says nothing about the model
-    with patch("roc.handoff.load", return_value=None):
+    with patch("roc.link.load", return_value=None):
         plain = doctor.format_report(rows)
     assert "A launch would use" not in plain
     assert "roc launch" in plain
@@ -387,17 +387,17 @@ def test_packages_split_keeps_maintainer_modules_out():
     build = load_build()
     worker_modules = set(build.WORKER_MODULES)
     server_modules = set(build.SERVER_MODULES)
-    assert server_modules == {"cluster", "cluster_setup", "server", "discord", "leaderboard", "progress", "dataset"}
+    assert server_modules == {"cluster", "server", "reports", "progress"}
     assert not (worker_modules & server_modules), "helper packages must not carry server code"
-    for helper in ("worker", "link", "handoff", "doctor", "setup", "analyze", "draft", "providers"):
+    for helper in ("worker", "link", "doctor", "setup", "analyze", "draft", "providers"):
         assert helper in worker_modules, "%s must ship to helpers" % helper
     assert set(build.PACKAGES) == {"worker", "local-ai", "server"}
     for slug in ("worker", "local-ai"):
         assert set(build.PACKAGES[slug]["modules"]) == worker_modules
-        assert "local-ai.cmd" not in build.PACKAGES[slug]["files"] or slug == "local-ai", \
-            "only the Local AI package ships the Ollama launcher"
-    assert "local-ai.cmd" in build.PACKAGES["local-ai"]["files"]
-    assert "host.cmd" in build.PACKAGES["server"]["files"]
+    # One launcher: roc.cmd (plus install.cmd for first-time bootstrap) in every package.
+    for spec in build.PACKAGES.values():
+        assert {"roc.cmd", "install.cmd", "roc.sh", "install.sh"} <= set(spec["files"])
+        assert not [f for f in spec["files"] if f.endswith(".cmd") and f not in ("roc.cmd", "install.cmd")]
 
 
 def test_packages_audit_rejects_a_missing_helper_module():
@@ -413,7 +413,7 @@ def test_packages_audit_rejects_a_missing_helper_module():
 
 def test_packages_audit_allows_the_maintainer_modules():
     build = load_build()
-    assert build.audit(ROOT, build.PACKAGES["worker"]) == ["cluster", "cluster_setup", "dataset", "discord", "progress", "server"]
+    assert build.audit(ROOT, build.PACKAGES["worker"]) == ["cluster", "progress", "reports", "server"]
     assert build.audit(ROOT, build.PACKAGES["server"]) == []
 
 
@@ -470,19 +470,19 @@ def test_install_cmd_installs_only_packages_and_compilers():
 
 def test_verified_client_is_never_downloaded_again():
     """A client already on disk and matching its hash is left alone."""
-    from roc import clients, link, sources
+    from roc import clients, link
     entry = {"exe": "Roblox.exe", "sha256": "abc"}
     with patch("roc.clients.load", return_value={"2008-06": entry}), \
          patch("roc.clients.status", return_value="ok"), \
-         patch("roc.sources.fetch", side_effect=AssertionError("re-downloaded")) as fetch:
+         patch("roc.clients.fetch", side_effect=AssertionError("re-downloaded")) as fetch:
         link.wait_for_exe("2008-06", log=lambda *a: None)
     assert not fetch.called, "a verified client must not be fetched again"
     # ... but a missing or mismatched one is fetched, because byte matching needs it
     for status in ("missing", "hash mismatch"):
         with patch("roc.clients.load", return_value={"2008-06": entry}), \
              patch("roc.clients.status", return_value=status), \
-             patch("roc.sources.load_sources", return_value={"drive": {"2008-06": {}}}), \
-             patch("roc.sources.fetch") as fetch:
+             patch("roc.clients.load_sources", return_value={"drive": {"2008-06": {}}}), \
+             patch("roc.clients.fetch") as fetch:
             link.wait_for_exe("2008-06", log=lambda *a: None)
         assert fetch.called, "%s must be downloaded for byte matching" % status
 
@@ -571,7 +571,7 @@ def test_link_click_downloads_the_compiler_once_then_stops():
         return ""
 
     def click(compilers):
-        with temp_config() as handoff, \
+        with temp_config() as link, \
              patch("roc.clients.load", return_value={"2008-06": entry}), \
              patch("roc.clients.exe_path", return_value=Path("Roblox.exe")), \
              patch("roc.clients.status", return_value="ok"), \
@@ -589,7 +589,7 @@ def test_link_click_downloads_the_compiler_once_then_stops():
              patch("roc.worker.cloud_default", return_value="deepseek:deepseek-flash"), \
              patch("roc.draft.ollama_models", return_value=[]), \
              patch("roc.draft.pick_model", return_value="deepseek:deepseek-flash"), \
-             patch("roc.optimizer.profile", return_value=None), \
+             patch("roc.telemetry.profile", return_value=None), \
              patch("builtins.input", answers):
             link.run(url)
         return run_worker.call_args
@@ -659,15 +659,15 @@ def test_doctor_flags_a_compiler_that_is_missing():
 
 
 def test_launch_command_detaches_into_its_own_console():
-    with temp_config() as handoff, patch("roc.handoff.subprocess.Popen") as popen:
+    with temp_config() as link, patch("roc.link.subprocess.Popen") as popen:
         try:
-            handoff.start()
+            link.start()
             assert False, "launching without a signed config must be refused"
         except SystemExit as error:
             assert "roc setup" in str(error)
-        handoff.save(user="colin", client="2008-06", server="host:8765", mode="cloud", cloud=True)
-        with patch("roc.handoff.os.name", "nt"):
-            assert handoff.start() is True
+        link.save(user="colin", client="2008-06", server="host:8765", mode="cloud", cloud=True)
+        with patch("roc.link.os.name", "nt"):
+            assert link.start() is True
     line = popen.call_args.args[0]
     assert "start \"RoConstruct worker\"" in line and line.rstrip().endswith("roc.cmd\" launch"), line
 
@@ -679,8 +679,8 @@ def test_mass_client_flag_is_not_overwritten_by_positional():
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     with patch("roc.libs.default_targets", side_effect=AssertionError("expanded to all")), \
-         patch("roc.mass.staticlibs") as static, \
-         patch("roc.mass.stl"), \
+         patch("roc.matchers.staticlibs") as static, \
+         patch("roc.matchers.stl"), \
          patch("roc.libs.run"), \
          patch.object(module, "ready", return_value=True), \
          patch("roc.analyze.analyze", return_value=("out", [])), \
@@ -688,8 +688,8 @@ def test_mass_client_flag_is_not_overwritten_by_positional():
          patch("roc.clients.status", return_value="ok"), \
          patch("roc.clients.exe_path", return_value="x"), \
          patch("roc.setup.compilers", return_value={30729: "cl"}), \
-         patch("roc.auto.solve", return_value={}), \
-         patch("roc.auto.save", return_value=0):
+         patch("roc.matchers.solve", return_value={}), \
+         patch("roc.matchers.save", return_value=0):
         module.main(["mass", "--client", "2009-06"])
     assert static.call_args.args[0] == ["2009-06"], "the --client value must win"
 
@@ -701,8 +701,8 @@ def test_mass_and_submit_accept_all(tmp_path):
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     with patch("roc.libs.default_targets", return_value=[]), \
-         patch("roc.mass.staticlibs", return_value={}), \
-         patch("roc.mass.stl", return_value={}), \
+         patch("roc.matchers.staticlibs", return_value={}), \
+         patch("roc.matchers.stl", return_value={}), \
          patch("roc.libs.run", return_value={}):
         module.main(["mass", "all"])  # must not raise "unrecognized arguments"
     (tmp_path / "src" / "2009-06").mkdir(parents=True)  # CI has no src/ (gitignored)
@@ -739,9 +739,9 @@ def test_launch_configures_in_the_terminal_when_nothing_is_saved():
     cli = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(cli)
     saved = []
-    with temp_config() as handoff, \
-         patch("roc.handoff.save", side_effect=lambda **kw: saved.append(kw) or kw), \
-         patch("roc.handoff.load", side_effect=lambda **kw: (saved[-1] if saved else None)), \
+    with temp_config() as link, \
+         patch("roc.link.save", side_effect=lambda **kw: saved.append(kw) or kw), \
+         patch("roc.link.load", side_effect=lambda **kw: (saved[-1] if saved else None)), \
          patch("builtins.input", side_effect=["colin", "1", ""]), \
          patch("roc.worker.site_server", return_value="host:8765"), \
          patch("roc.worker.USER_RE", re.compile(r"^[A-Za-z0-9_.-]{2,32}$")), \
@@ -749,7 +749,7 @@ def test_launch_configures_in_the_terminal_when_nothing_is_saved():
                                                              "compiler_build": 21022}}), \
          patch("roc.doctor.all_checks", return_value=[]), \
          patch("roc.setup.local_ai", return_value=True) as local_ai, \
-         patch("roc.handoff.run_now", return_value="ran") as run:
+         patch("roc.link.run_now", return_value="ran") as run:
         cli.main(["launch"])
     assert run.called, "the worker runs in this terminal once the questions are answered"
     assert local_ai.called, "local mode offers Ollama, and only local mode does"
@@ -766,9 +766,9 @@ def test_launch_runs_in_this_terminal_when_cloud_is_chosen():
     spec = importlib.util.spec_from_file_location("roc_cli_launch_cloud", ROOT / "roc.py")
     cli = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(cli)
-    with temp_config() as handoff, \
-         patch("roc.handoff.save", side_effect=lambda **kw: kw), \
-         patch("roc.handoff.load", side_effect=lambda **kw: {"user": "colin", "client": "2008-06",
+    with temp_config() as link, \
+         patch("roc.link.save", side_effect=lambda **kw: kw), \
+         patch("roc.link.load", side_effect=lambda **kw: {"user": "colin", "client": "2008-06",
                                                              "server": "host:8765", "mode": "cloud",
                                                              "cloud": True}), \
          patch("builtins.input", side_effect=["colin", "1", "y"]), \
@@ -778,7 +778,7 @@ def test_launch_runs_in_this_terminal_when_cloud_is_chosen():
                                                              "compiler_build": 21022}}), \
          patch("roc.setup.local_ai") as local_ai, \
          patch("roc.doctor.all_checks", return_value=[]), \
-         patch("roc.handoff.run_now", return_value="ran") as run:
+         patch("roc.link.run_now", return_value="ran") as run:
         cli.main(["launch"])
     assert not local_ai.called, "cloud was chosen, so Ollama must not be offered"
     assert run.called, "cloud consent means the worker runs right away, in this terminal"
@@ -818,7 +818,7 @@ def test_a_website_link_asks_cloud_or_local_then_runs():
     assert parts == {"client": "2007-08", "server": "https://colinpc.tail2879d0.ts.net"}, parts
 
     def run_click(answer, settings, stub_local, stub_cloud):
-        with temp_config() as handoff, \
+        with temp_config() as link, \
              patch("roc.link.parse_full", return_value=parts), \
              patch("roc.link.wait_for_exe"), \
              patch("roc.analyze.analyze"), \
@@ -874,7 +874,7 @@ def test_cloud_consent_is_asked_once_and_remembered():
     def choose_options(settings):
         return "deepseek:deepseek-flash", 4, 256, True, 1, 2048, "auto"
 
-    with temp_config() as handoff, \
+    with temp_config() as link, \
          patch("roc.link.parse_full", return_value=parts), \
          patch("roc.link.wait_for_exe"), \
          patch("roc.analyze.analyze"), \
@@ -898,7 +898,7 @@ def test_cloud_consent_is_asked_once_and_remembered():
                for _args, kw in saved.call_args_list), saved.call_args_list
     # second click: consent already recorded, no question
     asked.clear()
-    with temp_config() as handoff, \
+    with temp_config() as link, \
          patch("roc.link.parse_full", return_value=parts), \
          patch("roc.link.wait_for_exe"), \
          patch("roc.analyze.analyze"), \
@@ -926,3 +926,16 @@ if __name__ == "__main__":
                 continue  # needs pytest fixtures; run under pytest
             fn()
             print("ok ", name)
+
+
+def test_config_moves_from_root_into_local_config(tmp_path, monkeypatch):
+    from roc import setup
+    monkeypatch.setattr(setup, "ROOT", tmp_path)
+    monkeypatch.setattr(setup, "CONFIG", tmp_path / "local" / "config")
+    (tmp_path / "roconstruct-settings.json").write_text('{"user": "me"}')
+    moved = setup.config("roconstruct-settings.json")
+    assert moved == tmp_path / "local" / "config" / "roconstruct-settings.json"
+    assert moved.read_text() == '{"user": "me"}' and not (tmp_path / "roconstruct-settings.json").exists()
+    (tmp_path / "roconstruct-settings.json").write_text("stale copy")  # new location wins
+    assert setup.config("roconstruct-settings.json").read_text() == '{"user": "me"}'
+    assert setup.config("roconstruct-worker.json") == tmp_path / "local" / "config" / "roconstruct-worker.json"

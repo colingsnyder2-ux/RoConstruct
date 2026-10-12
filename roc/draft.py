@@ -125,8 +125,8 @@ def route_model(default, job, installed=None, automatic=True):
     if not default or job.get("size", 999999) > 64 or job.get("calls", 0):
         return default
     if len(installed) > 1:
-        from roc import metrics
-        stats = {row["model"]: row for row in metrics.model_stats() if row["jobs"] >= 3}
+        from roc import telemetry
+        stats = {row["model"]: row for row in telemetry.model_stats() if row["jobs"] >= 3}
         measured = [stats[m] for m in installed if m in stats and stats[m]["match_rate"] > 0]
         if measured:
             return max(measured, key=lambda row: (row["match_rate"], row["score_gain"], -row["avg_seconds"]))["model"]
@@ -671,8 +671,8 @@ def prompt_for(client, addr, row, asm, hint, attempt, flags=None, examples=(), s
                   "parameter and return conventions when calling them. Do not copy unrelated bodies:"]
             for clue in facts["exact_callee_sources"][:4]:
                 p += ["callee %s:" % clue["addr"], "```cpp", clue["source"], "```"]
-    from roc import donor
-    same = donor.hint(client, addr)
+    from roc import matchers
+    same = matchers.hint(client, addr)
     if same:
         p += ["", "These exact bytes also occur in RBXGS WebService.dll (Dec 2007) at 0x%s. "
               "Its PDB name (decorated; real signature): %s" % (same["donor"], same["symbol"] or "unknown")]
@@ -722,8 +722,8 @@ def prompt_for(client, addr, row, asm, hint, attempt, flags=None, examples=(), s
                   "never use asm, __asm, intrinsics-as-assembly, or an assembly dump. Keep the existing function "
                   "body and change at most one declaration, cast, lifetime, call order, or return type."]
     try:
-        from roc import metrics
-        rules = json.loads(metrics.TEMPLATES.read_text())
+        from roc import telemetry
+        rules = json.loads(telemetry.TEMPLATES.read_text())
         if rules:
             p += ["", "Recurring failure rules (apply only when relevant):",
                   json.dumps({k: v.get("prompt") for k, v in list(rules.items())[:4]}, separators=(",", ":"))]
@@ -902,9 +902,9 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
         generation = dict(asked[2] if len(asked) > 2 else {})
         generated_tokens = generation.pop("output_tokens", 0)
         src = extract_code(reply)
-        from roc import activity
-        if src and getattr(activity.local, "emit", None):
-            activity.local.emit("draft", round=i + 1, code=src, model=model)
+        from roc import telemetry
+        if src and getattr(telemetry.local, "emit", None):
+            telemetry.local.emit("draft", round=i + 1, code=src, model=model)
         finish = generation.get("finish_reason", "")
         if finish == "length" and (provider_options or {}).get("auto_output"):
             retry_output_tokens = max(ask_options["max_tokens"], min(4096, ask_options["max_tokens"] * 2))

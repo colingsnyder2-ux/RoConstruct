@@ -20,31 +20,37 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-DIST = ROOT / "dist"
+DIST = ROOT / "local" / "packages"
 
 # Every module a working cloud worker needs (transitive closure of worker, link,
 # handoff, doctor, setup, analyze, draft, optimizer and the matchers).
 WORKER_MODULES = [
-    "activity", "agent", "analyze", "angr_facts", "audit", "auto", "benchmark", "chatgpt", "clients", "doctor", "donor",
+    "telemetry", "agent", "agent_auto", "analyze", "matchers", "chatgpt", "clients", "doctor", "matchers",
     "draft", "fingerprint",
-    "cpu_jobs", "cpu_worker", "cpu_status", "command_watch", "daily_stats", "flags", "gui", "gui_worker", "handoff", "libs", "link", "mass", "match", "metrics", "mutate",
-    "ltcg", "optimizer", "pressure", "providers", "refsource", "repair", "selfupdate", "setup",
-    "shapes", "sources", "task_files", "uninstall", "verify_window", "worker", "xcopy",
+    "tasks", "flags", "gui", "gui_worker", "link", "libs", "match", "mutate",
+    "repair", "providers", "refsource", "setup", "setup",
+    "worker", "matchers",
 ]
 # Only the maintainer's server needs these, so they stay out of the helper zips.
-SERVER_MODULES = ["cluster", "cluster_setup", "dataset", "discord", "leaderboard", "progress", "server"]
-WORKER_MODULES += ["client_templates", "libraries"]
+SERVER_MODULES = ["cluster", "progress", "reports", "server"]
+WORKER_MODULES += ["agent_memory", "research"]
 
 COMMON_FILES = ["roc.py", "roc.cmd", "roc.sh", "install.cmd", "install.sh",
-                "uninstall.cmd", "README.md", "requirements-chatgpt.txt", "setup-chatgpt.cmd", "docs/chatgpt-plan.md",
-                "roc/web/index.html", "roc/web/style.css", "roc/web/app.js",
-                "clients/clients.json", "clients/sources.json", "clients/README.md", "clients/donor.json"]
+                "packaging/organize-local.ps1", "research/repair-patterns.json", "docs/SETUP.md", "docs/SERVER.md",
+                "research/log.jsonl",
+                "CLAUDE.md", "AGENTS.md", "docs/AGENT_GUIDE.md", "research/lessons.json", "research/reports.json",
+                "research/recipes.json", "research/template-units.json",
+                "README.md", "packaging/requirements-chatgpt.txt", "docs/providers.example.json",
+                "roc/web/index.html", "roc/web/style.css", "roc/web/app.js", "roc/web/fonts.css",
+                *sorted(p.relative_to(ROOT).as_posix() for p in (ROOT / "roc" / "web" / "fonts").iterdir()),
+                "docs/logo.png", "docs/favicon.png",
+                "clients/clients.json", "clients/sources.json", "clients/donor.json"]
 
 PACKAGES = {
     "worker": {
         "name": "RoConstruct Worker",
         "tagline": "Small cloud worker. No GPU, no Ollama, no Docker.",
-        "files": COMMON_FILES + ["start.cmd", "update.cmd", ".gitignore"],
+        "files": COMMON_FILES + [".gitignore"],
         "modules": WORKER_MODULES,
         "docs": {
             "README-FIRST.txt": """RoConstruct Worker
@@ -52,13 +58,13 @@ PACKAGES = {
 
 This is the whole helper install. It is deliberately small:
 
-For ChatGPT subscription access, run setup-chatgpt.cmd first and follow
-docs/chatgpt-plan.md. It signs in through your browser and then runs install.cmd.
+Everything starts from roc.cmd (Linux: ./roc.sh). No arguments opens a menu;
+the first run installs what is missing. Models and ChatGPT plan: docs/SETUP.md.
 
   1. Run install.cmd (Windows) or install.sh (Linux). It checks Python, installs required pip packages
      (pefile, capstone, tzdata), downloads the exact MSVC compiler bundles, registers
      the roconstruct:// link, and opens the website.
-  2. Click "Start helping" on the website (or run start.cmd; Linux: ./roc.sh launch). It asks your
+  2. Click "Start helping" on the website (or run: roc.cmd launch; Linux: ./roc.sh launch). It asks your
      username, which client, and whether prompts may go to a cloud model.
   3. The worker runs. Cloud models mean your PC stays idle. Only source that
      compiled and matched is uploaded.
@@ -66,7 +72,7 @@ docs/chatgpt-plan.md. It signs in through your browser and then runs install.cmd
 Linux needs Wine plus cabextract or 7z. Use ./roc.sh instead of Windows URI links.
 
 Not installed, on purpose: Ollama, Docker, Rev.ng, any local model.
-Want a local model later? Run local-ai.cmd from RoConstruct Local AI, or:
+Want a local model later? Install RoConstruct Local AI, or:
 
     py -3.12 roc.py local-ai
 
@@ -81,7 +87,7 @@ It prints what is broken and the exact command that fixes it.
     "local-ai": {
         "name": "RoConstruct Local AI",
         "tagline": "Opt-in extras: Ollama for local models, Docker/Rev.ng hints.",
-        "files": COMMON_FILES + ["start.cmd", "local-ai.cmd", "update.cmd", ".gitignore"],
+        "files": COMMON_FILES + [".gitignore"],
         "modules": WORKER_MODULES,
         "docs": {
             "README-FIRST.txt": """RoConstruct Local AI
@@ -92,8 +98,8 @@ Unzip this over your RoConstruct Worker install.
 Cloud workers (the default) need none of this. Install it only if you want a
 local model to run on your own GPU:
 
-    local-ai.cmd              install Ollama, then a model
-    local-ai.cmd --docker     also offer Docker Desktop for Rev.ng hints
+    roc.cmd local-ai              install Ollama, then a model
+    roc.cmd local-ai --docker     also offer Docker Desktop for Rev.ng hints
 
 Rev.ng is a separate, later step because it costs about 5 GB and needs a restart.
 Local models use your GPU and CPU heavily: fans, heat and power draw.
@@ -103,9 +109,9 @@ Local models use your GPU and CPU heavily: fans, heat and power draw.
     "server": {
         "name": "RoConstruct Server",
         "tagline": "Maintainer-only: the group server and website publishing.",
-        "files": COMMON_FILES + ["host.cmd", "start.cmd", "update.cmd", ".gitignore",
+        "files": COMMON_FILES + [".gitignore",
                                  "docs/progress.json", "docs/history.json",
-                                 "docs/decentralized-server-setup.md", "docs/decentralized-server-plan.md"],
+                                 ],
         "modules": WORKER_MODULES + SERVER_MODULES,
         "docs": {
             "README-FIRST.txt": """RoConstruct Server (MAINTAINER-ONLY)
@@ -115,12 +121,12 @@ This package is for whoever runs the group server. Helpers do not need it: the
 worker packages deliberately leave these modules out, and typing a server
 command from a Worker install says so instead of crashing.
 
-    host.cmd                 start the server (token, tunnel, publishing)
+    roc.cmd host             start the server (tunnel, publishing, auto-restart)
     py -3.12 roc.py server --help
     py -3.12 roc.py progress          write docs/ for the website
-    py -3.12 roc.py server --startup  start host.cmd at logon
+    py -3.12 roc.py server --startup  start `roc host` at logon
 
-Private CPU sharing and quorum failover: docs/decentralized-server-setup.md
+Hosting, publishing, private CPU sharing and failover: docs/SERVER.md
     py -3.12 roc.py cluster --help
 
 Do not hand this zip to ordinary helpers.

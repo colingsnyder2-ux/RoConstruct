@@ -24,26 +24,42 @@ import time
 import urllib.request
 from pathlib import Path
 
+
 ROOT = Path(__file__).resolve().parent.parent
+
 TOOLS = ROOT / "tools"
+
 DL = TOOLS / "dl"
+
 STATE = TOOLS / "install-state.json"
+
 WINDOWS = os.name == "nt"
+
 WINE_PREFIX = TOOLS / "wineprefix"
+
 PF86 = Path(r"C:\Program Files (x86)")
+
 LOCAL = Path(os.environ.get("LOCALAPPDATA", ""))
+
 CL_PATHS = [PF86 / r"Microsoft Visual Studio 8\VC\bin\cl.exe",
             PF86 / r"Microsoft Visual Studio 9.0\VC\bin\cl.exe",
             LOCAL / r"Programs\Common\Microsoft\Visual C++ for Python\9.0\VC\bin\cl.exe",
             PF86 / r"Common Files\Microsoft\Visual C++ for Python\9.0\VC\bin\cl.exe"]
+
 NAMES = {50727: "VS2005 (cl 14.00.50727)", 21022: "VS2008 RTM (cl 15.00.21022)",
          30729: "VS2008 SP1 (cl 15.00.30729)"}
+
 VCPY_URL = ("https://web.archive.org/web/20210106040224id_/https://download.microsoft.com/download/"
             "7/9/6/796EF2E4-801B-4FC4-AB28-B59FBF6D907B/VCForPython27.msi")
+
 VCPY_SHA256 = "070474db76a2e625513a5835df4595df9324d820f9cc97eab2a596dcbc2f5cbf"
+
 VS2008_URL = "https://archive.org/download/VisualStudioExpressEditionsDVD2007/DVD1.ISO"
+
 VS2008_SHA1 = "65ebdd88136275768d778d1795d41a7fcc12a47e"
+
 VS2005_URL = "https://archive.org/download/MS_VisualCPPExpress-2005/Micorosft_Visual_C%2B%2B_2005_Express.iso"
+
 VS2005_SHA1 = "1ae44e4eaf8c61c3a39e573fd6efd9889e940529"
 
 # winget installs these under LOCALAPPDATA and appends them to the *user* PATH in the
@@ -55,6 +71,7 @@ EXTRA_PATHS = [LOCAL / r"Programs\Ollama",
                LOCAL / r"Programs\Docker\Docker\resources\bin",
                Path(r"C:\Program Files\Docker\Docker\resources\bin"),
                LOCAL / r"Programs\Python\Python312\Scripts"]
+
 OLLAMA_API = "http://127.0.0.1:11434/api/tags"
 
 # The PATH this process started with, kept so refresh_path can rebuild instead of
@@ -63,9 +80,6 @@ OLLAMA_API = "http://127.0.0.1:11434/api/tags"
 # every cl.exe invocation died with "the environment variable is longer than 32767
 # characters", silently failing every compile in a worker run.
 _ORIGINAL_PATH = os.environ.get("PATH", "")
-
-
-# ---------- Wine (Linux) ----------
 
 def wine_exe():
     """The Wine loader, or None. `wine` first: the old cl.exe is 32-bit.
@@ -82,7 +96,6 @@ def wine_exe():
             return found
     return None
 
-
 def to_wine_path(path):
     """A Unix path as a Windows path Wine can hand to cl.exe (Z: maps to /)."""
     text = str(path)
@@ -92,7 +105,6 @@ def to_wine_path(path):
     if text.startswith("/"):
         return drive + text.replace("/", "\\")
     return text.replace("/", "\\")
-
 
 def wine_env(extra=None):
     """Environment for Windows programs run through Wine: a private prefix,
@@ -104,7 +116,6 @@ def wine_env(extra=None):
     if extra:
         env.update(extra)
     return env
-
 
 def ensure_wine_prefix(log=print):
     """Create tools/wineprefix once. Returns False when Wine is missing."""
@@ -124,7 +135,6 @@ def ensure_wine_prefix(log=print):
         log("Wine prefix setup failed: %s" % error)
         return False
     return (WINE_PREFIX / "system.reg").exists()
-
 
 def refresh_path():
     """Re-read PATH from the registry and add the usual install dirs.
@@ -159,7 +169,6 @@ def refresh_path():
     os.environ["PATH"] = os.pathsep.join(ordered)
     return os.environ["PATH"]
 
-
 def find_exe(name):
     """Locate a program on PATH, in the registry PATH, or in a known install dir."""
     found = shutil.which(name)
@@ -181,7 +190,6 @@ def find_exe(name):
                 return str(candidate)
     return None
 
-
 def wait_for_http(url, timeout=60, interval=2):
     """Poll until the endpoint answers. True if it came up in time."""
     deadline = time.time() + timeout
@@ -193,14 +201,12 @@ def wait_for_http(url, timeout=60, interval=2):
             time.sleep(interval)
     return False
 
-
 def start_ollama(exe):
     """Bring the Ollama server up if the installer did not start it."""
     print("Starting the Ollama server...")
     subprocess.Popen([exe, "serve"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
                      creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
     return wait_for_http(OLLAMA_API, timeout=90)
-
 
 def ensure_ollama(exe):
     """Ollama is only usable once its HTTP API answers: start it if needed, then report."""
@@ -212,7 +218,6 @@ def ensure_ollama(exe):
             return json.loads(r.read()).get("models", [])
     except (OSError, ValueError):
         return []
-
 
 @functools.lru_cache(maxsize=16)
 def _cached_cl_env(cl):
@@ -236,11 +241,9 @@ def _cached_cl_env(cl):
     env["INCLUDE"] = str(inc) if inc.exists() else ""
     return env
 
-
 def cl_env(cl):
     # Callers add per-invocation include/define values; never share that mutation.
     return dict(_cached_cl_env(str(cl)))
-
 
 def cl_command(cl):
     """How to run this cl.exe: directly on Windows, through Wine on Linux."""
@@ -252,7 +255,6 @@ def cl_command(cl):
                          "(Arch: sudo pacman -S wine; Debian/Ubuntu: sudo apt install wine wine32).")
     return [wine, str(cl)]
 
-
 def cl_path(path):
     """A path as an argument cl.exe understands: plain on Windows, Z:\\ under Wine.
 
@@ -261,11 +263,9 @@ def cl_path(path):
     """
     return str(path) if WINDOWS else to_wine_path(path)
 
-
 def compiler_ready():
     """True when a cl.exe could run at all: always on Windows, Wine elsewhere."""
     return WINDOWS or wine_exe() is not None
-
 
 @functools.lru_cache(maxsize=None)
 def compilers():
@@ -288,9 +288,6 @@ def compilers():
         if m:
             found.setdefault(int(m.group(1)), str(cl))
     return found
-
-
-# ---------- downloads ----------
 
 def download(url, dest, tries=6):
     """Download with resume (HTTP Range) and retries: archive.org drops big transfers."""
@@ -326,14 +323,12 @@ def download(url, dest, tries=6):
             print("  %s, retrying in %d s (attempt %d/%d)..." % (error, wait, attempt + 1, tries))
             time.sleep(wait)
 
-
 def sha1(path):
     h = hashlib.sha1()
     with open(path, "rb") as f:
         for chunk in iter(lambda: f.read(1 << 20), b""):
             h.update(chunk)
     return h.hexdigest()
-
 
 def powershell(cmd):
     # Inherited PowerShell 7 module paths can break Windows PowerShell's OS
@@ -346,7 +341,6 @@ def powershell(cmd):
         raise SystemExit("PowerShell installer command failed: %s" % detail[:300])
     return result.stdout.strip()
 
-
 def require_signature(path, org="Microsoft Corporation"):
     if not WINDOWS:
         # Authenticode is a Windows check. On Linux the ISOs carry pinned
@@ -357,9 +351,7 @@ def require_signature(path, org="Microsoft Corporation"):
         path.unlink(missing_ok=True)
         raise SystemExit("REFUSED %s: not validly signed by %s (%s). Deleted it." % (path.name, org, out))
 
-
 require_microsoft_signature = require_signature
-
 
 def cloudflared_url():
     """The tunnel client for this OS/arch, or None when it cannot be fetched here.
@@ -384,7 +376,6 @@ def cloudflared_url():
         return base + "linux-amd64"
     return None
 
-
 def get_cloudflared():
     """Cloudflare's tunnel client, for HTTPS without opening router ports."""
     exe = TOOLS / "cloudflared" / ("cloudflared.exe" if WINDOWS else "cloudflared")
@@ -402,13 +393,11 @@ def get_cloudflared():
         exe.chmod(0o755)
     return str(exe)
 
-
 def require_sha1(path, want):
     got = sha1(path)
     if got != want:
         path.unlink(missing_ok=True)
         raise SystemExit("REFUSED %s: SHA-1 %s, expected %s. Deleted it; run again." % (path.name, got, want))
-
 
 def sha256(path):
     h = hashlib.sha256()
@@ -417,13 +406,11 @@ def sha256(path):
             h.update(chunk)
     return h.hexdigest()
 
-
 def require_sha256(path, want):
     got = sha256(path)
     if got != want:
         path.unlink(missing_ok=True)
         raise SystemExit("REFUSED %s: SHA-256 %s, expected %s. Deleted it; run again." % (path.name, got, want))
-
 
 def _has_compiler(target):
     """True when an extracted tree actually contains cl.exe.
@@ -433,7 +420,6 @@ def _has_compiler(target):
     """
     root = Path(target)
     return root.is_dir() and any(p.is_file() and p.name.lower() == "cl.exe" for p in root.rglob("*"))
-
 
 def msi_admin_extract(msi, target):
     """Extract an MSI's files with their install paths, running no installer logic."""
@@ -457,7 +443,6 @@ def msi_admin_extract(msi, target):
     raise SystemExit("Could not unpack %s on Linux (no cl.exe was extracted). Install Wine or "
                      "msitools (msiextract) and run this again." % msi.name)
 
-
 def msi_table(msi, table):
     """Rows of one MSI table as dicts, via msitools' msiinfo (Linux fallback)."""
     out = subprocess.run(["msiinfo", "export", str(msi), table],
@@ -467,7 +452,6 @@ def msi_table(msi, table):
         return []
     columns = lines[0].split("\t")
     return [dict(zip(columns, line.split("\t"))) for line in lines[2:] if line.strip()]
-
 
 def msi_layout(msi, cab_dir, target):
     """Copy files expanded from an MSI's cab into their install paths (File/Directory tables)."""
@@ -504,7 +488,6 @@ def msi_layout(msi, cab_dir, target):
             dst = Path(target) / path(comp[c]) / fname.split("|")[-1]
             dst.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(src, dst)
-
 
 def msi_layout_unix(msi, cab_dir, target):
     """The same mapping on Linux without msilib.
@@ -552,7 +535,6 @@ def msi_layout_unix(msi, cab_dir, target):
     raise SystemExit("Could not unpack %s on Linux (no cl.exe was extracted). Install Wine or "
                      "msitools (msiinfo) and run this again." % msi.name)
 
-
 # Standard MSI layout tables we need, as (column, kind): 's' is a string reference
 # into the string pool, 'i2'/'i4' are biased integers. The on-disk table stream is
 # column-major; the column definitions live in the _Columns table but these three
@@ -564,7 +546,6 @@ MSI_LAYOUT_TABLES = {
     "File": [("File", "s"), ("Component_", "s"), ("FileName", "s"), ("FileSize", "i4"),
              ("Version", "s"), ("Language", "s"), ("Attributes", "i2"), ("Sequence", "i2")],
 }
-
 
 def _msi_strings(pool, data):
     """({id: text}, bytes-per-string-ref) from the _StringPool/_StringData streams.
@@ -591,7 +572,6 @@ def _msi_strings(pool, data):
         n += 1
     return strings, strref
 
-
 def _msi_table_rows(raw, schema, strings, strref):
     """Rows of one MSI table stream, decoded from its column-major layout."""
     sizes = [strref if kind == "s" else (2 if kind == "i2" else 4) for _, kind in schema]
@@ -613,7 +593,6 @@ def _msi_table_rows(raw, schema, strings, strref):
             base += size * rows
         out.append(row)
     return out
-
 
 def _msi_layout_7z(msi, cab_dir, target):
     """Map an already-expanded cab through the MSI tables using 7z and stdlib.
@@ -665,7 +644,6 @@ def _msi_layout_7z(msi, cab_dir, target):
         copied += 1
     return copied > 0
 
-
 def expand_cab(cab, out):
     """Unpack a .cab: Windows ships two readers that each choke on some cabs;
     Linux uses cabextract with 7z as the fallback."""
@@ -683,7 +661,6 @@ def expand_cab(cab, out):
         if subprocess.run(cmd, capture_output=True).returncode == 0 and any(out.iterdir()):
             return
     raise SystemExit("Could not unpack %s (Linux needs cabextract or 7z)" % cab)
-
 
 def copy_from_iso(iso, inner, dest):
     """Read the compiler's UDF/ISO archive with 7-Zip without mounting it."""
@@ -712,7 +689,6 @@ def copy_from_iso(iso, inner, dest):
                 return
     raise SystemExit("Could not read %s from %s with 7-Zip" % (inner, iso.name))
 
-
 def carve_cab(exe, cab):
     """Self-extracting setup exes carry a plain .cab after the stub."""
     data = Path(exe).read_bytes()
@@ -721,13 +697,11 @@ def carve_cab(exe, cab):
         raise SystemExit("No cab inside %s" % exe)
     Path(cab).write_bytes(data[at:])
 
-
 def get_vs2008_sp1():
     msi = download(VCPY_URL, DL / "VCForPython27.msi")
     require_sha256(msi, VCPY_SHA256)
     require_signature(msi)
     msi_admin_extract(msi, TOOLS / "vc2008sp1")
-
 
 def get_vs2008_rtm():
     iso = download(VS2008_URL, DL / "VS2008Express2007.iso")
@@ -741,7 +715,6 @@ def get_vs2008_rtm():
     require_microsoft_signature(work / "outer" / "vs_setup.msi")
     expand_cab(work / "outer" / "vs_setup.cab", work / "files")
     msi_layout(work / "outer" / "vs_setup.msi", work / "files", TOOLS / "vc2008rtm")
-
 
 def get_vs2005():
     iso = download(VS2005_URL, DL / "VC2005Express.iso")
@@ -757,21 +730,19 @@ def get_vs2005():
     expand_cab(next((work / "outer").glob("*.cab")), work / "files")
     msi_layout(msi, work / "files", TOOLS / "vc2005")
 
-
 FETCHERS = {30729: get_vs2008_sp1, 21022: get_vs2008_rtm, 50727: get_vs2005}
+
 # download MB, unpacked MB, and minutes to fetch + unpack at roughly 8 MB/s.
 # Shown to the user before anything is downloaded, so nobody is surprised by 1.5 GB.
 BUNDLES = {30729: (85, 250, 3), 21022: (940, 2900, 14), 50727: (460, 1400, 8)}
+
 SIZES = {build: "%d MB" % spec[0] for build, spec in BUNDLES.items()}
-
-
-# ---------- install ----------
 
 # What a re-install must never touch: mined source, claims and settings are the
 # user's work, not installer output.
-PRESERVE = ("work", "src", "roconstruct-settings.json")
-PIP_PACKAGES = ("pefile", "capstone", "tzdata")
+PRESERVE = ("work", "src", "local/config/roconstruct-settings.json")
 
+PIP_PACKAGES = ("pefile", "capstone", "tzdata")
 
 def state():
     """Recorded install steps, so a second run knows what it already did."""
@@ -779,7 +750,6 @@ def state():
         return json.loads(STATE.read_text(encoding="utf-8"))
     except (OSError, ValueError):
         return {}
-
 
 def save_state(**changes):
     current = state()
@@ -791,10 +761,8 @@ def save_state(**changes):
         pass
     return current
 
-
 def step_done(name):
     return bool(state().get(name, {}).get("done"))
-
 
 def mark_done(step, **fields):
     # `step` rather than `name`: callers record {"name": "VS2008 SP1 ..."}, and a
@@ -803,14 +771,12 @@ def mark_done(step, **fields):
     entry.update(fields)
     return save_state(**{step: entry})
 
-
 def clear_step(name):
     """Forget a recorded step, so the next run retries it (used after a bad fetch)."""
     current = state()
     if current.pop(name, None) is not None:
         return save_state(**current)
     return current
-
 
 def snapshot(paths=PRESERVE, deep=False):
     """Fingerprint of the things a re-install must leave alone.
@@ -842,15 +808,10 @@ def snapshot(paths=PRESERVE, deep=False):
                 out["%s/%s" % (name, path.relative_to(target).as_posix())] = [stat.st_size, int(stat.st_mtime)]
     return out
 
-
 def changed_since(before, paths=PRESERVE, deep=False):
     """Names under work/, src/ and the settings file that differ from `before`."""
     after = snapshot(paths, deep=deep)
     return sorted(key for key in set(before) | set(after) if before.get(key) != after.get(key))
-
-
-
-
 
 def has_module(name):
     try:
@@ -859,10 +820,8 @@ def has_module(name):
     except ImportError:
         return False
 
-
 def missing_packages():
     return [name for name in PIP_PACKAGES if not has_module(name)]
-
 
 def ensure_packages(install=True):
     """Install only the required packages that are actually absent."""
@@ -879,28 +838,24 @@ def ensure_packages(install=True):
     mark_done("pip", packages=list(PIP_PACKAGES))
     return missing
 
-
 def needed_builds():
     from roc import clients
     return sorted({e.get("compiler_build") for e in clients.load().values()} - {None})
-
 
 def client_mb(name=None):
     """Rough size of the client exe a worker needs for byte matching."""
     if not name:
         return 0
-    from roc import sources
-    bundle = sources.load_sources().get("bundle") or {}
+    from roc import clients
+    bundle = clients.load_sources().get("bundle") or {}
     size, slots = bundle.get("size"), bundle.get("slots") or []
     if size and slots:
         return int(size / len(slots) / 1048576) + 1
     return 12
 
-
 def missing_builds():
     have = compilers()
     return [build for build in needed_builds() if build in FETCHERS and build not in have]
-
 
 def plan(client=None):
     """Everything a fresh install on this machine would download, in one dict."""
@@ -912,7 +867,6 @@ def plan(client=None):
             "client_mb": client_mb(client),
             "minutes": sum(BUNDLES[b][2] for b in builds),
             "present": sorted(compilers())}
-
 
 def show_plan(current):
     """Print the size and time cost before any download starts."""
@@ -938,7 +892,6 @@ def show_plan(current):
     print("  Not installed: Ollama, Docker, local models. Those are opt-in "
           "('Use local model'), so no GPU is needed.")
 
-
 def install_compilers(only=None, ask=input, assume_yes=False):
     """Fetch only the compiler bundles that are missing. Never reinstalls one."""
     done = []
@@ -961,7 +914,6 @@ def install_compilers(only=None, ask=input, assume_yes=False):
         compilers.cache_clear()
     return done
 
-
 def register_link():
     """Register roconstruct:// for this user, so the website can launch the worker."""
     if os.name != "nt":
@@ -974,7 +926,6 @@ def register_link():
     link.install()
     mark_done("link")
     return True
-
 
 def install(ask=input, only=None, assume_yes=False, client=None):
     """The tiny first-run install: packages, exact compiler bundles, link, website.
@@ -1004,7 +955,6 @@ def install(ask=input, only=None, assume_yes=False, client=None):
               % (len(changed), ", ".join(changed[:5])))
     return ok
 
-
 def describe(snap):
     """One line about what a snapshot covered, e.g. 'work/ (412 files), settings'."""
     parts = []
@@ -1017,7 +967,6 @@ def describe(snap):
         else:
             parts.append("%s (%d bytes)" % (name, value[0]))
     return ", ".join(parts) or "nothing on disk yet"
-
 
 def local_ai(ask=input, docker=False, model="qwen2.5-coder:7b"):
     """Opt-in local AI. Never called by the default install.
@@ -1060,7 +1009,6 @@ def local_ai(ask=input, docker=False, model="qwen2.5-coder:7b"):
         extras(ask)
     return True
 
-
 def local_ai_unix(ask=input, docker=False, model="qwen2.5-coder:7b"):
     """Linux/macOS local AI: Ollama comes from the distro or ollama.com, not winget."""
     exe = find_exe("ollama")
@@ -1086,7 +1034,6 @@ def local_ai_unix(ask=input, docker=False, model="qwen2.5-coder:7b"):
         extras_unix(ask)
     return True
 
-
 def extras(ask):
     """Docker + Rev.ng: only offered after local AI, never during a normal install."""
     if draft_revng_ready():
@@ -1107,7 +1054,6 @@ def extras(ask):
     print("  Start Docker Desktop, then: docker pull revng/revng")
     return True
 
-
 def extras_unix(ask):
     """Linux/macOS Rev.ng: Docker comes from the distro; only the image is fetched."""
     if draft_revng_ready():
@@ -1127,11 +1073,9 @@ def extras_unix(ask):
         mark_done("docker")
     return run.returncode == 0
 
-
 def draft_revng_ready():
     from roc import draft
     return draft.revng_available()
-
 
 def report():
     """What this machine can do right now, without implying anything is missing."""
@@ -1156,3 +1100,427 @@ def report():
           "off (optional: roc local-ai --docker)"))
     print("Cloud worker: ready, no GPU or local model needed.")
     return all(e.get("compiler_build") in have for e in clients.load().values())
+
+
+# --- selfupdate ---
+# Best-effort self-update before a worker run: fast-forward the checkout.
+
+def _run(*args, timeout):
+    return subprocess.run(["git", *args], capture_output=True, text=True,
+                          cwd=ROOT, timeout=timeout)
+
+
+def try_update(log=print, timeout=60):
+    """Fetch origin/main and fast-forward if clean and behind. Returns status."""
+    if not shutil.which("git"):
+        return "update skipped: git not installed"
+    if not (ROOT / ".git" / "HEAD").exists():
+        return "update skipped: not a git checkout (run: roc update)"
+    try:
+        if _run("diff", "--quiet", "HEAD", timeout=timeout).returncode != 0:
+            return "update skipped: local source edits present (commit them first)"
+        if _run("fetch", "--quiet", "origin", "main", timeout=timeout).returncode != 0:
+            return "update skipped: could not reach repository (working offline)"
+        behind = _run("rev-list", "--count", "HEAD..origin/main",
+                      timeout=timeout)
+        if behind.returncode != 0 or not behind.stdout.strip().isdigit():
+            return "update skipped: could not compare versions (working as-is)"
+        if int(behind.stdout.strip()) == 0:
+            return "already current"
+        if _run("pull", "--ff-only", "--quiet", "origin", "main",
+               timeout=timeout).returncode != 0:
+            return "update skipped: fast-forward failed (working as-is)"
+    except (OSError, subprocess.TimeoutExpired):
+        return "update skipped: timed out (working as-is)"
+    log("Updated to the latest RoConstruct source.")
+    return "updated"
+
+
+REPOSITORY = "https://github.com/ivan-grebe/RoConstruct.git"
+
+
+def update(log=print, timeout=300):
+    """`roc update`: fast-forward a checkout; link a ZIP download to the repository first.
+    reset --hard only touches tracked files, so clients, work, models and settings stay."""
+    if not shutil.which("git"):
+        return "Git not found. Install Git, then run: roc update"
+    if not (ROOT / ".git" / "HEAD").exists():
+        log("This copy was downloaded as a ZIP. Linking it to the repository so it can update...")
+        for args in (("init", "-q"), ("remote", "add", "origin", REPOSITORY),
+                     ("fetch", "--depth", "1", "origin", "main"), ("reset", "--hard", "origin/main"),
+                     ("branch", "-M", "main")):
+            if _run(*args, timeout=timeout).returncode and args[0] != "branch":
+                return "Linking failed at git %s. No files were removed." % args[0]
+        return "Linked. This copy now updates with: roc update"
+    status = try_update(log, timeout)
+    return {"updated": "Updated. Preserved clients, work, models and settings.",
+            "already current": "Already up to date."}.get(status, status)
+
+
+# --- paths ---
+# Where this PC's private config lives: local/config/, out of the repository root.
+
+CONFIG = ROOT / "local" / "config"
+
+
+def config(name):
+    path, legacy = CONFIG / name, ROOT / name
+    if legacy.is_file() and not path.exists():
+        try:
+            CONFIG.mkdir(parents=True, exist_ok=True)
+            legacy.replace(path)
+        except OSError:
+            return legacy  # e.g. read-only copy: keep working from the old place
+    return path
+
+
+# --- uninstall ---
+# Uninstall RoConstruct: everything install.cmd put on this machine, one step at a time.
+
+# What install.cmd downloads into tools/. Each is re-creatable with `roc install`.
+TOOL_DIRS = ["dl", "vc2005", "vc2008rtm", "vc2008sp1", "cloudflared"]
+
+
+# Local state. work/<client> holds match scores, so it is asked separately.
+WORK_DIRS = ["work"]
+
+
+BUILD_DIRS = ["build", "dist"]
+
+
+# draft.PREFERRED_MODELS, minus the unversioned/alias spellings: only offer a model
+# to delete if it is one of these exact names. Anything else in your Ollama library
+# is never considered for removal.
+ROC_MODELS = ["qwen2.5-coder:14b", "qwen2.5-coder:7b", "qwen2.5-coder:7b-instruct",
+              "qwen2.5-coder"]
+
+
+REVNG_IMAGE = "revng/revng"
+
+
+def human(n):
+    """Byte count -> readable. Ollama reports sizes as strings like '9.0 GB'."""
+    if isinstance(n, str):
+        return n
+    value = float(n)
+    for unit in ("B", "KB", "MB", "GB"):
+        if value < 1024 or unit == "GB":
+            return "%d B" % n if unit == "B" else "%.1f %s" % (value, unit)
+        value /= 1024
+
+
+def size_of(path):
+    if path.is_file():
+        return path.stat().st_size
+    if not path.is_dir():
+        return 0
+    return sum(f.stat().st_size for f in path.rglob("*") if f.is_file())
+
+
+def folder_bytes():
+    """Folder sizes for the uninstall_plan, so you can see what each step frees."""
+    out = {}
+    for name in TOOL_DIRS:
+        path = ROOT / "tools" / name
+        if path.exists():
+            out[name] = size_of(path)
+    for name in WORK_DIRS + BUILD_DIRS:
+        path = ROOT / name
+        if path.exists():
+            out[name] = size_of(path)
+    return out
+
+
+class Console:
+    def __init__(self, assume_yes=False):
+        self.assume_yes = assume_yes
+        self.removed = []
+        self.kept = []
+        self.skipped = []
+        self.deferred = []
+
+    def ask(self, question, default=False):
+        if self.assume_yes:
+            return True
+        hint = "Y/n" if default else "y/N"
+        try:
+            answer = input("%s [%s] " % (question, hint)).strip().lower()
+        except EOFError:
+            return default
+        if not answer:
+            return default
+        return not answer.startswith("n")
+
+    def run_uninstall(self, label, argv, check=False):
+        try:
+            done = subprocess.run_uninstall(argv, capture_output=True, text=True, timeout=300)
+        except (OSError, subprocess.TimeoutExpired) as error:
+            print("   skipped: %s" % error)
+            self.skipped.append(label)
+            return False
+        if check and done.returncode != 0:
+            print("   skipped: %s exited %d" % (argv[0], done.returncode))
+            self.skipped.append(label)
+            return False
+        return True
+
+
+def which(name):
+    """Resolve a program the same way install.cmd does, so a program winget installed
+    into the registry PATH is still found by the uninstaller."""
+    
+    refresh_path()
+    return find_exe(name)
+
+
+def python_312():
+    """True if the py launcher can start 3.12, the interpreter install.cmd installs."""
+    if os.name != "nt" or not shutil.which("py"):
+        return False
+    try:
+        done = subprocess.run_uninstall(["py", "-3.12", "-c", "import sys"], capture_output=True, timeout=30)
+        return done.returncode == 0
+    except (OSError, subprocess.TimeoutExpired):
+        return False
+
+
+def ollama_lib():
+    """Models Ollama knows about: [(name, size_str)]. Empty if Ollama is absent."""
+    exe = which("ollama")
+    if not exe:
+        return []
+    try:
+        out = subprocess.run_uninstall([exe, "list"], capture_output=True, text=True, timeout=30).stdout
+    except (OSError, subprocess.TimeoutExpired):
+        return []
+    rows = []
+    for line in out.splitlines()[1:]:
+        parts = line.split()
+        # Columns are NAME ID SIZE MODIFIED, but SIZE is "9.0 GB" - two tokens.
+        if len(parts) >= 5:
+            rows.append((parts[0], " ".join(parts[2:4])))
+    return rows
+
+
+def pip_packages():
+    """pip packages install.cmd added, and only if nothing else needs them here."""
+    try:
+        out = subprocess.run_uninstall([sys.executable, "-m", "pip", "list", "--user", "--format=freeze"],
+                             capture_output=True, text=True, timeout=120).stdout
+    except (OSError, subprocess.TimeoutExpired):
+        return []
+    have = set()
+    for line in out.splitlines():
+        if "==" in line:
+            have.add(line.split("==")[0].strip().lower())
+    return sorted(p for p in ("capstone", "pefile") if p in have)
+
+
+def uninstall_plan():
+    """Everything removable, grouped. Pure read: touches nothing."""
+    sizes = folder_bytes()
+    steps = []
+
+    tools = [(name, sizes[name]) for name in TOOL_DIRS if (ROOT / "tools" / name).exists()]
+    if tools:
+        steps.append(("files", "RoConstruct's downloaded tools and old compilers", tools,
+                      sum(s for _, s in tools)))
+
+    work = [(name, sizes[name]) for name in WORK_DIRS if (ROOT / name).exists()]
+    if work:
+        steps.append(("files", "Analysis state and match scores (re-analyzable)", work,
+                      sum(s for _, s in work)))
+
+    build = [(name, sizes[name]) for name in BUILD_DIRS if (ROOT / name).exists()]
+    if build:
+        steps.append(("files", "Build output", build, sum(s for _, s in build)))
+
+    settings = config("roconstruct-settings.json")
+    if settings.exists():
+        steps.append(("files", "Your username, server, and saved links", [("roconstruct-settings.json",
+                                                                          size_of(settings))],
+                      size_of(settings)))
+
+    handoff_config = config("roconstruct-worker.json")
+    if handoff_config.exists():
+        steps.append(("files", "The signed worker setup (roc setup saves this)",
+                      [("roconstruct-worker.json", size_of(handoff_config))], size_of(handoff_config)))
+
+    from roc import link
+    if os.name == "nt" and link.installed():
+        steps.append(("registry", "One-click roconstruct:// links (Windows registry)", [], 0))
+
+    models = [(n, s) for n, s in ollama_lib() if n.split(":")[0] in ROC_MODELS]
+    if models:
+        steps.append(("model", "Ollama coder models RoConstruct uses for AI drafts", models, 0))
+
+    if which("docker"):
+        steps.append(("docker", "Rev.ng Docker image RoConstruct calls for decompiler hints", [], 0))
+
+    packages = pip_packages()
+    if packages:
+        steps.append(("pip", "Python packages RoConstruct installed (pefile, capstone)", [], 0))
+
+    for label, exe, wid in (("Ollama (used for AI drafts)", "ollama", "Ollama.Ollama"),
+                            ("Docker Desktop (used for Rev.ng hints)", "docker", "Docker.DockerDesktop"),
+                            ("Python 3.12 (install.cmd installs it if you had no 3.12)",
+                             "py", "Python.Python.3.12")):
+        if wid == "Python.Python.3.12" and not python_312():
+            continue
+        if which(exe):
+            steps.append(("software", label, [], 0, wid))
+
+    return steps
+
+
+def show(steps):
+    if not steps:
+        print("Nothing to remove: RoConstruct's downloads are already gone.")
+        return
+    print("What can be removed:\n")
+    total = 0
+    for step in steps:
+        kind, label, items, size = step[0], step[1], step[2], step[3]
+        total += size
+        print("  %s%s" % (label, ("  (%s)" % human(size)) if size else ""))
+        for name, item_size in items:
+            shown = human(item_size) if item_size and kind in ("files", "model") else ""
+            print("      %s %s" % (name, shown))
+    print("\nTotal in RoConstruct's own folders: %s" % human(total))
+    print("Software installs and pip packages are not included in that total.\n")
+
+
+def drop_folders(console, label, items):
+    """Delete each path: folders recursively, single files (settings) with unlink."""
+    freed = 0
+    for name, _ in items:
+        path = ROOT / "tools" / name if (ROOT / "tools" / name).exists() else ROOT / name
+        freed += size_of(path)
+        if path.is_dir():
+            shutil.rmtree(path, ignore_errors=True)
+        else:
+            path.unlink(missing_ok=True)
+        if path.exists():
+            print("   could not delete %s (in use?)" % path.relative_to(ROOT))
+        else:
+            print("   deleted %s" % path.relative_to(ROOT))
+    console.removed.append("%s (%s)" % (label, human(freed)))
+
+
+def run_uninstall(assume_yes=False):
+    steps = uninstall_plan()
+    show(steps)
+    if not steps:
+        return 0
+    console = Console(assume_yes)
+    print("Answer y to remove. Press Enter to accept the [Y/n] / [y/N] default.\n")
+
+    for step in steps:
+        kind, label = step[0], step[1]
+        items, size = step[2], step[3]
+
+        if kind == "files":
+            if console.ask("Remove %s? [%s]" % (label.lower(), human(size) if size else ""),
+                           default=True):
+                drop_folders(console, label, items)
+            else:
+                console.kept.append(label)
+            continue
+
+        if kind == "registry":
+            if console.ask("Remove %s?" % label.lower(), default=True):
+                from roc import link
+                link.remove()
+                console.removed.append(label)
+            else:
+                console.kept.append(label)
+            continue
+
+        if kind == "model":
+            ollama = which("ollama")
+            print("\n%s:" % label)
+            print("   Your other Ollama models are not touched.")
+            for name, model_size in items:
+                if not console.ask("   Remove model %s (%s)?" % (name, model_size)):
+                    continue
+                if ollama and console.run_uninstall(name, [ollama, "rm", name]):
+                    console.removed.append("model %s (%s)" % (name, model_size))
+                else:
+                    print("   could not remove %s" % name)
+            continue
+
+        if kind == "docker":
+            docker = which("docker")
+            if console.ask("Remove the %s image?" % REVNG_IMAGE):
+                if docker and console.run_uninstall(REVNG_IMAGE, [docker, "rmi", REVNG_IMAGE]):
+                    console.removed.append("docker image %s" % REVNG_IMAGE)
+                else:
+                    print("   could not remove %s" % REVNG_IMAGE)
+            else:
+                console.kept.append("docker image %s" % REVNG_IMAGE)
+            continue
+
+        if kind == "pip":
+            packages = pip_packages()
+            if console.ask("Uninstall the Python packages %s?" % ", ".join(packages)):
+                if console.run_uninstall("pip uninstall", [sys.executable, "-m", "pip", "uninstall", "-y"] + packages):
+                    console.removed.append("pip %s" % ", ".join(packages))
+            else:
+                console.kept.append("pip %s" % ", ".join(packages))
+            continue
+
+        if kind == "software":
+            package = step[4]
+            if package == "Python.Python.3.12":
+                # This script is running on the interpreter we'd be removing. winget
+                # would refuse or break the process mid-run_uninstall, so hand it back as a
+                # command to run_uninstall after everything else is done.
+                if console.ask("Remove Python 3.12?\n   This uninstaller is running on it, so it "
+                               "cannot remove it for you. I will print the command instead. "
+                               "Other projects may need Python."):
+                    console.deferred.append(
+                        ("Python 3.12", 'winget uninstall --id Python.Python.3.12 -e '
+                                         '(close this window first)'))
+                else:
+                    console.kept.append(label)
+                continue
+            answer = console.ask("Uninstall %s?\n   This is software you may use for other things. "
+                                 "It is not removed by default." % label.lower(), default=False)
+            if answer:
+                if console.run_uninstall(package, ["winget", "uninstall", "--id", package, "-e",
+                                         "--silent", "--accept-source-agreements"], check=True):
+                    console.removed.append(package)
+            else:
+                console.kept.append(label)
+
+    finish(console)
+    return 0
+
+
+def finish(console):
+    print("\n" + "-" * 62)
+    if console.removed:
+        print("Removed:")
+        for item in console.removed:
+            print("   %s" % item)
+    if console.kept:
+        print("\nKept (you said no):")
+        for item in console.kept:
+            print("   %s" % item)
+    if console.skipped:
+        print("\nCould not remove:")
+        for item in console.skipped:
+            print("   %s" % item)
+    if console.deferred:
+        print("\nRun these yourself, after closing this window:")
+        for name, command in console.deferred:
+            print("   %s\n      %s" % (name, command))
+    print("-" * 62)
+
+    tools_left = folder_bytes()
+    if tools_left:
+        print("\nStill in this folder: %s" % ", ".join("%s (%s)" % (k, human(v))
+                                                        for k, v in sorted(tools_left.items())))
+    print("\nRoConstruct's own scripts are still here: this file is running from it.")
+    print("When you are happy with what is left, delete the whole %s folder." % ROOT.name)
+    print("The git history, and anything you pushed to GitHub, is unaffected.")

@@ -3,7 +3,7 @@ import sqlite3
 import json
 from unittest.mock import patch
 
-from roc import deep_fingerprint as deep
+from roc import fingerprint as deep
 
 
 SOURCE = '// roc-lang: cpp\n// roc-cl: 21022\n// roc-flags: /O2 /GS- /EHsc /MD\n// roc-lib: xtp-11 Source/XTPReportControl.cpp'
@@ -73,7 +73,7 @@ def test_runner_is_bounded_verified_and_checkpoints_pairs(tmp_path):
          patch('sys.argv', ['deep', '--max-batches', '1']):
         api.return_value.call.return_value = {'verified': True, 'results': [
             {'addr': '00400000', 'score': 100, 'stored': 100, 'improved': True}]}
-        deep.main()
+        deep.deep_main()
         assert api.return_value.call.call_count == 1
         assert api.return_value.call.call_args.args[1]['model'] == 'roc deep fingerprint'
     state = json.loads((tmp_path / 'work/deep-fingerprint.json').read_text())

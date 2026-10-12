@@ -37,7 +37,7 @@ def _dependencies():
         from authlib.integrations.requests_client import OAuth2Session
         from filelock import FileLock
     except ImportError:
-        raise ProviderError("provider_auth", "Install ChatGPT support: python -m pip install -r requirements-chatgpt.txt") from None
+        raise ProviderError("provider_auth", "Install ChatGPT support: python -m pip install -r packaging/requirements-chatgpt.txt") from None
     return keyring, jwt, openai, requests, OAuth2Session, FileLock
 
 

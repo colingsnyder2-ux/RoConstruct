@@ -11,10 +11,10 @@ from unittest.mock import patch
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from roc import auto, shapes, xcopy
+from roc import matchers, fingerprint
 from roc.analyze import find_functions, kind_of, demangle_class
 from roc.analyze import asm_shape
-from roc.auto import candidates
+from roc.matchers import candidates
 from roc import draft
 from roc.draft import extract_code, mini_elf, clean_repair_context
 from roc.match import coff_functions, score, asm_lines, reject_asm, CompileError
@@ -22,9 +22,9 @@ from roc.match import exact_match, similarity_ratio, diagnose
 from roc import mutate
 from roc import repair as _repair
 from roc.draft import select_topk
-from roc import metrics as _metrics
+from roc import telemetry as _metrics
 from roc.worker import callee_source_hints
-from roc import abi_graph
+from roc import repair
 
 
 class _CalleeApi:
@@ -54,7 +54,7 @@ def test_near_repair_context_drops_stale_assembly_header():
 def test_inline_asm_prone_after_two_rejections():
     old_path = _metrics.PATH
     with tempfile.TemporaryDirectory() as temp:
-        _metrics.PATH = Path(temp) / "metrics.jsonl"
+        _metrics.PATH = Path(temp) / "telemetry.jsonl"
         for _ in range(2):
             _metrics.record("asm", event="job", client="2007-08", addr="00488060",
                             rounds=[{"round": 1, "rejected_asm": True}])
@@ -65,7 +65,7 @@ def test_inline_asm_prone_after_two_rejections():
 
 def test_abi_graph_keeps_only_exact_callee_signatures():
     api = _CalleeApi()
-    evidence = abi_graph.target_evidence(api, "2007-08",
+    evidence = repair.target_evidence(api, "2007-08",
                                          {"call_targets": ["00401010", "00401011"],
                                           "callers": ["00402000"]})
     assert evidence["caller_count"] == 1
@@ -211,7 +211,7 @@ def test_shapes_and_data():
 
 
 def test_mass_helpers():
-    from roc.mass import ar_members
+    from roc.matchers import ar_members
     from roc.match import directives
     from roc.libs import source_for
     obj = fake_obj(bytes.fromhex("e800000000c3"), [1])
@@ -279,24 +279,24 @@ def test_draft_helpers():
 
 
 def test_opcode_family_grouping():
-    from roc import families
+    from roc import fingerprint
     asm = ["00401000  8b01                 mov eax, [ecx]",
            "00401002  c3                   ret"]
-    assert families.opcode_shape(asm) == ("mov", "ret")
+    assert fingerprint.opcode_shape(asm) == ("mov", "ret")
     rows = [{"addr": "00401000", "size": 3}, {"addr": "00401010", "size": 3},
             {"addr": "00401020", "size": 5}]
-    reps = families.representatives(rows, lambda row: asm if row["size"] == 3 else ["ret"])
+    reps = fingerprint.representatives(rows, lambda row: asm if row["size"] == 3 else ["ret"])
     assert len(reps) == 1 and reps[0][2][0]["addr"] == "00401000"
-    assert families.fingerprint(rows[0], asm) == families.fingerprint(rows[1], asm)
-    assert families.fingerprint(rows[0], ["ret"]) != families.fingerprint(rows[0], asm)
+    assert fingerprint.fingerprint(rows[0], asm) == fingerprint.fingerprint(rows[1], asm)
+    assert fingerprint.fingerprint(rows[0], ["ret"]) != fingerprint.fingerprint(rows[0], asm)
 
 
 def test_family_propagation_rewrites_only_equal_literal_shapes():
-    from roc import auto
+    from roc import matchers
     source = "void f(){ *(int*)0x1111 = 0x2222; }"
-    assert auto.family_propagate(["mov dword ptr [0x3333], 0x4444", "ret"], source) == \
+    assert matchers.family_propagate(["mov dword ptr [0x3333], 0x4444", "ret"], source) == \
         "void f(){ *(int*)0x3333 = 0x4444; }"
-    assert auto.family_propagate(["ret"], source) is None
+    assert matchers.family_propagate(["ret"], source) is None
 
 
 def test_draft_rejects_inline_asm(monkeypatch):
@@ -835,7 +835,7 @@ def test_uri_link_checks_updates_before_launch():
     cli = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(cli)
     calls = []
-    with patch("roc.selfupdate.try_update", side_effect=lambda: calls.append("update") or "current"), \
+    with patch("roc.setup.try_update", side_effect=lambda: calls.append("update") or "current"), \
          patch("roc.link.run", side_effect=lambda target: calls.append("launch")), \
          patch("roc.worker.load_settings", return_value={"uri_interface": "terminal"}), \
          patch("builtins.print"):
@@ -844,46 +844,46 @@ def test_uri_link_checks_updates_before_launch():
 
 
 def test_optimizer_split_and_one_time_profile():
-    from roc import optimizer
+    from roc import telemetry
     assert any(config["name"] == "auto" and config["strategy"] == "auto"
-               for config in optimizer.CONFIGS)
+               for config in telemetry.CONFIGS)
     targets = [{"client": "C", "addr": "%08x" % n} for n in range(6)]
-    calibration, validation = optimizer.split_targets(targets)
+    calibration, validation = telemetry.split_targets(targets)
     assert len(calibration) == 4 and len(validation) == 2
     assert not ({row["addr"] for row in calibration} & {row["addr"] for row in validation})
-    with patch("roc.optimizer.profile", return_value=None), \
+    with patch("roc.telemetry.profile", return_value=None), \
          patch("roc.draft.pick_model", return_value="local-model"), \
          patch("roc.providers.is_cloud", return_value=False), \
-         patch("roc.benchmark.build_hidden", return_value=targets), \
-         patch("roc.optimizer._local_targets", return_value=targets), \
-         patch("roc.benchmark.run_local"), \
-         patch("roc.optimizer._fresh_targets", return_value=targets), \
-         patch("roc.optimizer._concurrency", return_value=(4, [{"workers": 4, "valid": 6}])), \
-         patch("roc.optimizer.fingerprint", return_value="model-fingerprint"), \
-         patch("roc.optimizer._session_rows", side_effect=lambda session: [
+         patch("roc.telemetry.build_hidden", return_value=targets), \
+         patch("roc.telemetry._local_targets", return_value=targets), \
+         patch("roc.telemetry.run_local"), \
+         patch("roc.telemetry._fresh_targets", return_value=targets), \
+         patch("roc.telemetry._concurrency", return_value=(4, [{"workers": 4, "valid": 6}])), \
+         patch("roc.telemetry.fingerprint", return_value="model-fingerprint"), \
+         patch("roc.telemetry._session_rows", side_effect=lambda session: [
              {"score": 100 if "structured" in session else 0, "seconds": 1,
               "rounds": [{"round": 1, "code": True, "compile_error": ""}]}
              for _ in range(2 if "-v-" in session else 4)]), \
          patch("roc.worker.load_settings", return_value={}), \
          patch("roc.worker.save_settings") as saved:
-        result = optimizer.run("local-model", log=lambda *args: None)
+        result = telemetry.run("local-model", log=lambda *args: None)
     assert result["name"] == "structured"
     assert result["validated"] and result["sample_count"] == 6
     assert saved.call_args.kwargs["optimizer_profiles"]["local-model"] == result
-    with patch("roc.optimizer.fingerprint", return_value="new-version"):
-        assert optimizer.profile("local-model", {"optimizer_profiles": {
+    with patch("roc.telemetry.fingerprint", return_value="new-version"):
+        assert telemetry.profile("local-model", {"optimizer_profiles": {
             "local-model": {"fingerprint": "old-version"}}}) is None
     from types import SimpleNamespace
-    with patch("roc.metrics.PATH", SimpleNamespace(read_text=lambda **_kwargs: (
+    with patch("roc.telemetry.PATH", SimpleNamespace(read_text=lambda **_kwargs: (
             '{"event":"job","client":"C","addr":"00000000","model":"local-model"}\n'
             '{"event":"job","client":"C","addr":"00000001","model":"other-model"}\n'))):
-            assert {row["addr"] for row in optimizer._fresh_targets(targets, "local-model")} == {
+            assert {row["addr"] for row in telemetry._fresh_targets(targets, "local-model")} == {
                 row["addr"] for row in targets if row["addr"] != "00000000"}
 
 
 def test_optimizer_concurrency_probe():
     from types import SimpleNamespace
-    from roc.optimizer import _concurrency
+    from roc.telemetry import _concurrency
     with patch("roc.providers.generate", return_value=SimpleNamespace(text="OK")) as generate:
         workers, rows = _concurrency("local-model", False, None, lambda *args: None)
     assert workers in (1, 4, 8)
@@ -892,24 +892,24 @@ def test_optimizer_concurrency_probe():
 
 
 def test_optimizer_cloud_and_incomplete_safety():
-    from roc import optimizer
+    from roc import telemetry
     with patch("roc.worker.load_settings", return_value={}), \
          patch("roc.providers.is_cloud", return_value=True), \
          patch("roc.providers.available", return_value=True):
         try:
-            optimizer.run("deepseek:deepseek-flash")
+            telemetry.run("deepseek:deepseek-flash")
             assert False, "cloud consent required"
         except SystemExit as error:
             assert "--allow-cloud" in str(error)
         try:
-            optimizer.run("deepseek:deepseek-flash", allow_cloud=True)
+            telemetry.run("deepseek:deepseek-flash", allow_cloud=True)
             assert False, "cloud cost cap required"
         except SystemExit as error:
             assert "--max-cloud-cost" in str(error)
         with patch("roc.providers.parse_model", return_value=("deepseek", "deepseek-flash", {
                 "key_env": "DEEPSEEK_API_KEY", "pricing": {}})):
             try:
-                optimizer.run("deepseek:deepseek-flash", allow_cloud=True, max_cloud_cost=0.25)
+                telemetry.run("deepseek:deepseek-flash", allow_cloud=True, max_cloud_cost=0.25)
                 assert False, "unpriced cloud spend cannot be capped"
             except SystemExit as error:
                 assert "pricing" in str(error)
@@ -917,15 +917,15 @@ def test_optimizer_cloud_and_incomplete_safety():
     with patch("roc.worker.load_settings", return_value={}), \
          patch("roc.draft.pick_model", return_value="local-model"), \
          patch("roc.providers.is_cloud", return_value=False), \
-         patch("roc.benchmark.build_hidden", return_value=targets), \
-         patch("roc.optimizer._local_targets", return_value=targets), \
-         patch("roc.optimizer._fresh_targets", return_value=targets), \
-         patch("roc.optimizer._concurrency", return_value=(1, [{"workers": 1, "valid": 6}])), \
-         patch("roc.benchmark.run_local"), \
-         patch("roc.optimizer._session_rows", return_value=[]), \
+         patch("roc.telemetry.build_hidden", return_value=targets), \
+         patch("roc.telemetry._local_targets", return_value=targets), \
+         patch("roc.telemetry._fresh_targets", return_value=targets), \
+         patch("roc.telemetry._concurrency", return_value=(1, [{"workers": 1, "valid": 6}])), \
+         patch("roc.telemetry.run_local"), \
+         patch("roc.telemetry._session_rows", return_value=[]), \
          patch("roc.worker.save_settings") as saved:
         try:
-            optimizer.run("local-model", log=lambda *args: None)
+            telemetry.run("local-model", log=lambda *args: None)
             assert False, "incomplete optimizer must not save"
         except SystemExit as error:
             assert "no profile saved" in str(error)
@@ -933,7 +933,7 @@ def test_optimizer_cloud_and_incomplete_safety():
 
 
 def test_optimizer_profile_clear():
-    from roc.optimizer import clear_profile
+    from roc.telemetry import clear_profile
     profiles = {"model-a": {"name": "fast"}, "model-b": {"name": "deep"}}
     with patch("roc.worker.load_settings", return_value={"optimizer_profiles": profiles}), \
          patch("roc.worker.save_settings") as saved:
@@ -947,7 +947,7 @@ def test_launcher_can_optimize_before_worker():
     with patch("roc.draft.ollama_models", return_value=["local-model"]), \
          patch("roc.draft.pick_model", return_value="local-model"), \
          patch("roc.worker.save_settings"), \
-         patch("roc.optimizer.run", return_value=profile) as optimize, \
+         patch("roc.telemetry.run", return_value=profile) as optimize, \
          patch("builtins.input", side_effect=["", "5", "", ""]):
         result = choose_options({"model": "local-model"})
     optimize.assert_called_once()
@@ -963,7 +963,7 @@ def test_launcher_saved_setup_starts_with_one_enter():
     with patch("roc.draft.ollama_models", return_value=["local-model"]), \
          patch("roc.draft.pick_model", return_value="local-model"), \
          patch("roc.worker.save_settings"), \
-         patch("roc.optimizer.profile", return_value=None), \
+         patch("roc.telemetry.profile", return_value=None), \
          patch("builtins.input", side_effect=[""]):
         assert choose_options(settings) == (
             "local-model", 3, 256, False, 7, 1536, "disabled")
@@ -978,7 +978,7 @@ def test_launcher_workers_edit_separate_from_saved_setup():
     with patch("roc.draft.ollama_models", return_value=["local-model"]), \
          patch("roc.draft.pick_model", return_value="local-model"), \
          patch("roc.worker.save_settings") as saved, \
-         patch("roc.optimizer.profile", return_value=None), \
+         patch("roc.telemetry.profile", return_value=None), \
          patch("builtins.input", side_effect=["3", "12"]), \
          patch("builtins.print") as printed:
         result = choose_options(settings)
@@ -995,8 +995,8 @@ def test_launcher_saved_setup_optimize_action_four():
     with patch("roc.draft.ollama_models", return_value=["local-model"]), \
          patch("roc.draft.pick_model", return_value="local-model"), \
          patch("roc.worker.save_settings"), \
-         patch("roc.optimizer.profile", return_value=None), \
-         patch("roc.optimizer.run", return_value={"name": "fast"}) as optimize, \
+         patch("roc.telemetry.profile", return_value=None), \
+         patch("roc.telemetry.run", return_value={"name": "fast"}) as optimize, \
          patch("builtins.input", side_effect=["4"]):
         choose_options(settings)
     optimize.assert_called_once_with("local-model", allow_cloud=False, max_cloud_cost=None, force=False)
@@ -1102,7 +1102,7 @@ def test_clip_example(monkeypatch):
 
 def test_mine_digest():
     import time
-    from roc.discord import MineLog, fmt_duration
+    from roc.reports import MineLog, fmt_duration
     from roc.server import Store
     assert fmt_duration(45) == "45s" and fmt_duration(300) == "5m"
     assert fmt_duration(5400) == "1h 30m" and fmt_duration(90000) == "25h 0m"
@@ -1122,7 +1122,7 @@ def test_mine_digest():
     assert st.match_rate("C") > 0 and st.match_rate("other") == 0
     sent = []
     log = MineLog("http://example.invalid/hook", st, batch_events=10, batch_seconds=60)
-    with patch("roc.discord._post", side_effect=lambda url, payload: sent.append(payload)):
+    with patch("roc.reports._post", side_effect=lambda url, payload: sent.append(payload)):
         log.submit({"client": "C", "addr": "a1", "unit": "U1", "size": 9}, "alice", "w", "m", 100, 10)
         log.submit({"client": "C", "addr": "a2", "unit": "U2", "size": 9}, "alice", "w", "m", 50, 50)
         assert sent == []  # batched, not spammed
@@ -1163,7 +1163,7 @@ def test_mine_feed_routing():
         try:
             with patch("roc.server.match.check_text", side_effect=[(50, "f", "", []), (60, "f", "", [])]), \
                  patch("roc.server.check_many_text", side_effect=[[("00401000", 70, [])], [("00401000", 80, [])]]), \
-                 patch("roc.discord.server_users", return_value={"tester"}):
+                 patch("roc.reports.server_users", return_value={"tester"}):
                 for path, model in (("/v1/submit", "deepseek:model"), ("/v1/submit", "roc repair"),
                                     ("/v1/submit-batch", "roc fingerprint"), ("/v1/submit-batch", "deepseek:deepseek-flash")):
                     body = {"user": "tester", "worker": "w", "model": model, "client": "C", "addr": "00401000",
@@ -1290,7 +1290,7 @@ def test_server_ordering():
 
 
 def test_fingerprint_partial_scope():
-    from roc.batch_fingerprint import batches, source_family
+    from roc.fingerprint import batches, source_family
     assert source_family("// roc-lib: templates-boost-1_34_1 vector_sp.cpp") == "boost"
     assert source_family("// roc-lib: openrbx-client App/v8tree/Instance.cpp") == "roblox"
     assert source_family("// roc-lib: rbx2016-g3d MemoryManager.cpp") == "g3d"
@@ -1309,7 +1309,7 @@ def test_fingerprint_partial_scope():
 
 
 def test_fingerprint_crossclient_scope():
-    from roc.batch_fingerprint import cross_client_batches
+    from roc.fingerprint import cross_client_batches
     st = Store(":memory:", lease_seconds=10)
     source = "// roc-lang: cpp\n// roc-cl: 30729\n// roc-flags: /O2\n// roc-lib: xtp-11.2.2 XTPReportControl.cpp"
     st.db.executemany("INSERT INTO funcs(client,addr,size,unit,score,source) VALUES(?,?,?,?,?,?)", [
@@ -1326,7 +1326,7 @@ def test_fingerprint_crossclient_scope():
 
 
 def test_fingerprint_resume_changed_batch():
-    from roc.batch_fingerprint import key, pending_batches
+    from roc.fingerprint import key, pending_batches
     state = {"done": [key("C", "source", ["a", "b"])],
              "checked": {key("C", "source", []): ["a", "b"]}}
     planned = [("C", "source", ["b", "c"]), ("D", "source", ["a"]),
@@ -1338,7 +1338,7 @@ def test_fingerprint_resume_changed_batch():
 
 
 def test_fingerprint_c_scope():
-    from roc.batch_fingerprint import batches
+    from roc.fingerprint import batches
     st = Store(":memory:", lease_seconds=10)
     source = "// roc-lang: c\n// roc-cl: 21022\n// roc-flags: /O2\n// roc-lib: lua-5.1.4 lcode.c"
     st.db.executemany("INSERT INTO funcs(client,addr,size,unit,score,source) VALUES(?,?,?,?,?,?)", [
@@ -1377,24 +1377,24 @@ def test_shape_normalisation():
          "mov dword ptr [sym], sym", "ret "]
     b = ["mov eax, dword ptr [sym]", "push eax", "call sym", "add esp, 8",
          "mov dword ptr [sym], sym", "ret "]
-    assert shapes.shape_from_lines(a) == shapes.shape_from_lines(b)
+    assert fingerprint.shape_from_lines(a) == fingerprint.shape_from_lines(b)
     c = ["mov eax, dword ptr [sym]", "push eax", "call sym", "add esp, 4", "ret "]
-    assert shapes.shape_from_lines(a) != shapes.shape_from_lines(c)
+    assert fingerprint.shape_from_lines(a) != fingerprint.shape_from_lines(c)
     # `ret 8` and `ret` are the same shape: the cleanup is implied by the arguments.
     d = ["mov eax, dword ptr [sym]", "push eax", "call sym", "add esp, 4",
          "mov dword ptr [sym], sym", "ret 8"]
-    assert shapes.shape_from_lines(d) == shapes.shape_from_lines(a)
+    assert fingerprint.shape_from_lines(d) == fingerprint.shape_from_lines(a)
     # A member offset is not a constant and must survive normalisation, or every
     # `this->field` shape would collapse into one useless bucket.
-    assert shapes.norm_line("mov dword ptr [ecx + 4], eax") == "mov dword ptr [ecx + #], eax"
-    assert shapes.norm_line("mov dword ptr [ecx], eax") == "mov dword ptr [ecx], eax"
-    assert shapes.norm_line("push 0") == "push #"
+    assert fingerprint.norm_line("mov dword ptr [ecx + 4], eax") == "mov dword ptr [ecx + #], eax"
+    assert fingerprint.norm_line("mov dword ptr [ecx], eax") == "mov dword ptr [ecx], eax"
+    assert fingerprint.norm_line("push 0") == "push #"
     # A relocated operand prints as `sym` already and must stay as it is.
-    assert shapes.norm_line("call sym") == "call sym"
+    assert fingerprint.norm_line("call sym") == "call sym"
     # Runs of identical normalised lines collapse, so a zero-initialiser chain over
     # several fields is one shape rather than one per field count.
     r = ["mov dword ptr [ecx], 0", "mov dword ptr [ecx + 4], 0", "mov dword ptr [ecx + 8], 0"]
-    assert shapes.shape_from_lines(r) == ("mov dword ptr [ecx], #", "mov dword ptr [ecx + #], #")
+    assert fingerprint.shape_from_lines(r) == ("mov dword ptr [ecx], #", "mov dword ptr [ecx + #], #")
 
 
 def test_xcopy_ordering():
@@ -1402,13 +1402,13 @@ def test_xcopy_ordering():
     own = ("// own\nvoid f(){}\n", [("A", "00000001")])
     same = ("// same\nvoid g(){}\n", [("B", "00000002")])
     other = ("// other\nvoid h(){}\n", [("A", "00000003")])
-    ordered = xcopy._order([own, same, other], "A", reg)
+    ordered = matchers._order([own, same, other], "A", reg)
     assert ordered[0][0] == own[0], "a client's own sources must be tried first"
     # A source declaring its own compiler (library code) is grouped by that, not the
     # client it happened to be matched in.
     lib = ("// roc-cl: 30729\nvoid k(){}\n", [("A", "00000004")])
-    assert xcopy._build_of(lib[0], lib[1], reg) == 30729
-    assert xcopy._build_of(*own, reg) == 21022
+    assert matchers._build_of(lib[0], lib[1], reg) == 30729
+    assert matchers._build_of(*own, reg) == 21022
 
 
 def test_xcopy_batching_isolates_collisions():
@@ -1417,20 +1417,20 @@ def test_xcopy_batching_isolates_collisions():
     # unit without namespaces is C2371 and the whole chunk is lost.
     collide = [("extern int G1_VALUE;\nvoid NAME(){ G1_VALUE = 1; }\n", []),
                ("extern char* G1_VALUE;\nvoid NAME(){ G1_VALUE = 0; }\n", [])]
-    text, by_tag = xcopy._batch_cpp(collide)
+    text, by_tag = matchers._batch_cpp(collide)
     assert text.count("namespace ns_ROCX") == 2, "each candidate needs its own namespace"
     assert set(by_tag) == {"ROCX000000", "ROCX000001"}
     # C has no namespaces, so it is compiled one source per unit instead.
-    c_src, c_by = xcopy._batch_alone("extern int G1_VALUE;\nvoid NAME(){ G1_VALUE = 1; }\n")
+    c_src, c_by = matchers._batch_alone("extern int G1_VALUE;\nvoid NAME(){ G1_VALUE = 1; }\n")
     assert "namespace" not in c_src and len(c_by) == 1
-    assert xcopy._lang("// roc-lang: c\nvoid f(){}\n") == "c"
-    assert xcopy._lang("void f(){}\n") == "cpp"
+    assert matchers._lang("// roc-lang: c\nvoid f(){}\n") == "c"
+    assert matchers._lang("void f(){}\n") == "cpp"
     # A system header inside a namespace breaks the CRT headers ("fpos_t is not a member
     # of global namespace"), so anything with an include is compiled on its own too.
     stl = "#include <vector>\nstruct E { int v[4]; };\ntemplate class std::vector<E>;\n"
-    assert xcopy.needs_global_scope(stl)
-    assert not xcopy.needs_global_scope("extern int G;\nvoid f(){}\n")
-    assert xcopy.needs_global_scope("// roc-lang: c\nvoid f(){}\n")
+    assert matchers.needs_global_scope(stl)
+    assert not matchers.needs_global_scope("extern int G;\nvoid f(){}\n")
+    assert matchers.needs_global_scope("// roc-lang: c\nvoid f(){}\n")
 
 
 def test_auto_build_unit_isolates_redefinitions():
@@ -1438,7 +1438,7 @@ def test_auto_build_unit_isolates_redefinitions():
     # kill the chunk: that silently lost whole 400-candidate batches.
     a = ("F0000001_0", "extern int G1_VALUE;\nvoid NAME(){ G1_VALUE = 1; }\n")
     b = ("F0000002_0", "extern char* G1_VALUE;\nvoid NAME(){ G1_VALUE = 0; }\n")
-    unit = auto.build_unit([a, b])
+    unit = matchers.build_unit([a, b])
     assert unit.count("namespace n") == 2
     assert "void F0000001_0(" in unit and "void F0000002_0(" in unit
 
@@ -1479,24 +1479,6 @@ def test_refsource_hint_without_tree(tmp_path, monkeypatch):
     assert refsource.prompt_hints("seg_00400000") == []
 
 
-def test_dataset_audit_project_split():
-    from roc import dataset
-    with tempfile.TemporaryDirectory() as folder:
-        root = Path(folder)
-        (root / "f.cpp").write_text("int f(){return 0;}\n")
-        (root / "f.obj").write_bytes(b"x" * 8)
-        (root / "f.relocs.json").write_text("[0]")
-        entry = {"project": "p", "split": "train", "license": "MIT", "source": "f.cpp",
-                 "client": "2008-06", "addr": "00401000", "size": 4, "compiler": "msvc-2008",
-                 "flags": "/O2", "binary": "f.obj", "relocations": "f.relocs.json"}
-        manifest = root / "manifest.json"
-        manifest.write_text(json.dumps({"format": "roconstruct-msvc-pilot-v1", "entries": [entry]}))
-        assert dataset.audit(manifest, strict=False)["ok"]
-        leaked = dict(entry, split="test", addr="00401004")
-        manifest.write_text(json.dumps({"format": "roconstruct-msvc-pilot-v1", "entries": [entry, leaked]}))
-        assert not dataset.audit(manifest, strict=False)["ok"]
-
-
 def test_exact_match_separate_from_fuzzy():
     a = bytes.fromhex("8b442404c3")
     assert exact_match(a, [], a, []) and score(a, [], a, []) == 100
@@ -1513,7 +1495,7 @@ def test_exact_match_separate_from_fuzzy():
 
 
 def test_repair_pattern_registry_is_measured_and_deterministic():
-    from roc.repair_patterns import load, rank_categories
+    from roc.repair import load, rank_categories
     rows = load()
     assert any(row["name"] == "typed-member-return" for row in rows)
     diag = {"mismatch_class": "branch-condition mismatch",
@@ -1946,7 +1928,7 @@ def test_topk_and_benchmark_summary():
     assert _metrics.known_generation_cost([{"round": 1, "provider": "nvidia", "estimated_cost": 0.25}]) == 0.25
     old_path = _metrics.PATH
     with tempfile.TemporaryDirectory() as temp:
-        _metrics.PATH = Path(temp) / "metrics.jsonl"
+        _metrics.PATH = Path(temp) / "telemetry.jsonl"
         _metrics.record("token-summary", event="job", score=0, improved=False, seconds=1,
                         source_hints=0, source_candidate=False, source_candidate_hit=False,
                         phase_seconds={}, compile_seconds=0, provider="deepseek",
@@ -2046,7 +2028,7 @@ def test_qualified_type_definition_rejected():
 
 
 def test_selfupdate():
-    from roc import selfupdate
+    from roc import setup
     import subprocess
     real_which, real_run = shutil.which, subprocess.run
 
@@ -2055,7 +2037,7 @@ def test_selfupdate():
             self.returncode, self.stdout = code, out
 
     def run_case(which, sides, raises=None):
-        import roc.selfupdate as su
+        import roc.setup as su
         su.shutil.which = lambda *a: which
         def fake_run(*args, **k):
             if raises:
@@ -2151,7 +2133,7 @@ def test_truncated_generation_history_reset():
 
 def test_auto_output_grows_only_after_truncation():
     from roc import draft
-    for auto, initial, expected in ((True, 1024, [1024, 2048, 4096, 4096]),
+    for matchers, initial, expected in ((True, 1024, [1024, 2048, 4096, 4096]),
                                     (False, 1024, [1024] * 4),
                                     (True, 8192, [8192] * 4)):
         caps = []
@@ -2169,7 +2151,7 @@ def test_auto_output_grows_only_after_truncation():
              patch.object(draft.match, "disasm", return_value=["ret"]), \
              patch.object(draft.match, "check_text", return_value=(100, None, "", [])):
             assert draft.llm_rounds("C", "1", "deepseek:deepseek-flash", 4,
-                log=lambda _: None, provider_options={"auto_output": auto, "max_tokens": initial})[0] == 100
+                log=lambda _: None, provider_options={"auto_output": matchers, "max_tokens": initial})[0] == 100
         assert caps == expected
 
 

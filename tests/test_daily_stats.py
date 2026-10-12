@@ -7,11 +7,11 @@ from http.server import ThreadingHTTPServer
 from pathlib import Path
 from unittest.mock import patch
 
-from roc.daily_stats import archive_days, day_bounds, save
+from roc.reports import archive_days, day_bounds, save
 from roc.server import Store, make_handler
 from roc.worker import Api
-from roc.leaderboard import payload, publish_yesterday
-from roc.discord import inline_code
+from roc.reports import payload, publish_yesterday
+from roc.reports import inline_code
 
 
 class DailyStatsTests(unittest.TestCase):
@@ -118,7 +118,7 @@ class DailyStatsTests(unittest.TestCase):
         self.assertNotIn("`7`", players)
         store = Store(":memory:", 600)
         try:
-            with tempfile.TemporaryDirectory() as directory, patch("roc.leaderboard.providers.secret", return_value="configured"), patch("roc.leaderboard.send", return_value=True) as send:
+            with tempfile.TemporaryDirectory() as directory, patch("roc.reports.providers.secret", return_value="configured"), patch("roc.reports.send", return_value=True) as send:
                 publish_yesterday(store, directory)
                 publish_yesterday(store, directory)
                 send.assert_called_once()

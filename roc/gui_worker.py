@@ -60,7 +60,7 @@ def validate(values, base=None, check_model=True):
         raise ValueError("Enter server host:port or http(s) URL")
     if config["client"] and config["client"] not in clients.load():
         raise ValueError("Unknown client")
-    from roc.libraries import NAMES
+    from roc.libs import NAMES
     if config["library"] and config["library"] not in NAMES:
         raise ValueError("Unknown library")
     if config["lease_mode"] == "unit" and not config["unit_name"]:
@@ -216,8 +216,8 @@ def main():
                        family_state=family_state, family_lock=family_lock, control=control, slot=slot,
                        log=lambda message: emit("log", slot=slot, message=str(message)))
         try:
-            from roc import activity
-            activity.local.emit = lambda event, **fields: emit(event, slot=slot, **fields)
+            from roc import telemetry
+            telemetry.local.emit = lambda event, **fields: emit(event, slot=slot, **fields)
             worker.run(**options)
         except (Exception, SystemExit) as error:
             failures.append(error)

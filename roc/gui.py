@@ -15,7 +15,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 
-from roc import chatgpt, clients, libraries, providers, worker
+from roc import chatgpt, clients, libs, providers, worker
 from roc.gui_worker import DEFAULTS, LIVE, validate
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -86,11 +86,29 @@ def command_args(data):
         goal, minutes = str(data.get("goal", "")).strip(), data.get("minutes", 120)
         if data.get("cli") not in ("claude", "codex"):
             raise ValueError("Choose claude or codex")
-        if not goal or len(goal) > 2000:
+        if not data.get("automatic") and (not goal or len(goal) > 2000):
             raise ValueError("Describe the goal (up to 2000 characters)")
         if type(minutes) is not int or not 1 <= minutes <= 600:
             raise ValueError("Minutes must be 1-600")
-        args += [data["cli"], "--goal", goal, "--minutes", str(minutes)]
+        args += [data["cli"]]
+        if data.get("automatic"):
+            args += ["--automatic"]
+            for key, default, low, high in (("workers", 2, 1, 8), ("jobs", 24, 1, 200),
+                ("batch_size", 4, 1, 12), ("batch_minutes", 10, 1, 60), ("max_size", 512, 32, 8192)):
+                value = data.get(key, default)
+                if type(value) is not int or not low <= value <= high:
+                    raise ValueError("Invalid automatic %s" % key)
+                args += ["--" + key.replace("_", "-"), str(value)]
+            if data.get("individual") is True:
+                args += ["--individual"]
+        else:
+            args += ["--goal", goal]
+        args += ["--minutes", str(minutes)]
+        if data.get("model"):
+            model = str(data["model"]).strip()
+            if not model or len(model) > 120 or model.startswith("-"):
+                raise ValueError("Invalid agent model")
+            args += ["--model", model]
     return args
 
 
@@ -183,7 +201,7 @@ class Dashboard:
                                "models": ([model["slug"] for model in chatgpt.models(refresh=False)]
                                           if name == "chatgpt" else row.get("defaults", []))}
                               for name, row in providers.providers().items()],
-                "libraries": libraries.NAMES,
+                "libraries": libs.NAMES,
                 "commands": [{"name": name, "title": row[0], "description": row[1], "target": row[2]}
                              for name, row in COMMANDS.items()]}
 
@@ -207,12 +225,23 @@ class Dashboard:
                 config = validate(data.get("config", {}))
                 args = None
                 title = "Worker · " + (config["client"] or "all clients")
+            elif kind == "agent_worker":
+                args = command_args({**data, "command": "agent", "automatic": True})
+                config = {key: data.get(key, default) for key, default in
+                    (("cli", "claude"), ("model", ""), ("workers", 2), ("jobs", 24), ("minutes", 120),
+                     ("batch_size", 4), ("batch_minutes", 10), ("max_size", 512), ("individual", False))}
+                config.update(client="2008-06", user=self.initial["user"], server=self.initial["server"])
+                if config["server"]:
+                    args += ["--server", config["server"]]
+                if config["user"]:
+                    args += ["--user", config["user"]]
+                title = "Agent worker · " + config["cli"] + " · 2008-06"
             elif kind == "command":
                 args, config = command_args(data), None
                 title = COMMANDS[args[0]][0] + (" · " + data["client"] if data.get("client") else "")
             elif kind == "cpu":
-                from roc import cpu_status
-                found = cpu_status.configs()
+                from roc import tasks
+                found = tasks.configs()
                 if data.get("config") not in found or "cpu_enabled" not in found[data["config"]][1]:
                     raise ValueError("Choose a local contributor config")
                 path, saved = found[data["config"]]
@@ -220,7 +249,7 @@ class Dashboard:
                 state = json.loads(state_path.read_text()) if state_path.exists() else {}
                 if state.get("stage") != "stopped" and time.time() - state.get("seen", 0) < 65:
                     raise ValueError("This CPU contributor already runs")
-                cpu_status.control({"config": data["config"], "action": "on"})
+                tasks.cpu_control({"config": data["config"], "action": "on"})
                 args, config = ["cpu-worker", "--config", str(path)], {"cpu_config": data["config"]}
                 title = "CPU mining · " + saved.get("worker", path.stem)
             else:
@@ -248,6 +277,8 @@ class Dashboard:
                                          else [str(ROOT / "roc.py"), *job["args"]])
         env = dict(os.environ, PYTHONIOENCODING="utf-8", PYTHONUNBUFFERED="1", ROC_GUI_EVENTS="1")
         env.update(ROC_TASK_ID=job_id, ROC_TASK_OWNER=job["owner"])
+        if job["kind"] == "agent_worker" and self.worker_token:
+            env["ROC_AGENT_SERVER_TOKEN"] = self.worker_token
         try:
             process = subprocess.Popen(argv, cwd=ROOT, env=env, stdin=subprocess.PIPE,
                                        stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True,
@@ -297,11 +328,12 @@ class Dashboard:
                 elif kind == "applied":
                     job["slots"].setdefault(str(fields["slot"]), {}).update(revision=fields["revision"])
                 elif kind == "job_started":
-                    job["slots"].setdefault(str(fields["slot"]), {}).update(addr=fields["addr"], client=fields["client"], busy=True)
+                    job["slots"].setdefault(str(fields["slot"]), {}).update(addr=fields["addr"], client=fields["client"],
+                                                                          area=fields.get("area", ""), busy=True)
                 elif kind == "job_finished":
                     job["attempted"] += 1
-                    job["matched"] += fields["score"] == 100
-                    job["improved"] += fields["score"] > fields["previous"] and fields["score"] != 100
+                    job["matched"] += fields.get("new_exact", fields["score"] == 100)
+                    job["improved"] += fields.get("improved", fields["score"] > fields["previous"]) and fields["score"] != 100
                     job["failed"] += fields["score"] == 0
                     job["slots"].setdefault(str(fields["slot"]), {}).update(busy=False, score=fields["score"])
                 elif kind == "slot_stopped":
@@ -358,19 +390,21 @@ class Dashboard:
                     process.terminate()
                 self.event(job["id"], "state", message="Immediate stop; cloud requests may still bill. Leases expire if not released.")
                 return
+            if job["kind"] == "agent_worker":
+                raise ValueError("Agent workers use Stop immediately; worker/time limits are fixed for this run")
             if job["kind"] == "cpu" and action in ("pause", "resume", "stop"):
-                from roc import cpu_status
-                cpu_status.control({"config": job["config"]["cpu_config"],
+                from roc import tasks
+                tasks.cpu_control({"config": job["config"]["cpu_config"],
                                     "action": "off" if action == "stop" else action})
                 job["status"] = {"pause": "paused", "resume": "running", "stop": "stopping"}[action]
                 self.event(job["id"], "state", message="%s requested; active job finishes" % action.capitalize())
                 self.save()
                 return
             if job["kind"] == "command" and action in ("pause", "resume", "stop"):
-                from roc import command_watch
-                if job["args"][0] not in command_watch.COMMANDS:
+                from roc import tasks
+                if job["args"][0] not in tasks.COMMANDS:
                     raise ValueError("This command has no cooperative CPU checkpoints")
-                command_watch.control(job["id"], action)
+                tasks.control(job["id"], action)
                 job.update(status={"pause": "paused", "resume": "running", "stop": "stopping"}[action])
                 if action == "stop":
                     job["cancelled"] = True
@@ -462,21 +496,34 @@ class Handler(BaseHTTPRequestHandler):
                     wait = min(1, max(0, float(parse_qs(parsed.query).get("wait", [0])[0])))
                     return self.send(200, app.snapshot(after, wait))
                 if parsed.path == "/api/functions":
-                    from roc import activity
+                    from roc import telemetry
                     identifier = parse_qs(parsed.query).get("id", [None])[0]
-                    return self.send(200, json.loads(app.redact(json.dumps(activity.read(identifier)))))
+                    return self.send(200, json.loads(app.redact(json.dumps(telemetry.read(identifier)))))
                 if parsed.path == "/api/cpu":
-                    from roc import cpu_status
+                    from roc import tasks
                     selected = parse_qs(parsed.query).get("cluster", [None])[0]
-                    return self.send(200, cpu_status.snapshot(selected))
+                    return self.send(200, tasks.snapshot(selected))
                 if parsed.path == "/api/agent":
                     from roc import agent
                     return self.send(200, agent.status())
+                if parsed.path == "/api/agent-memory":
+                    from roc import agent, agent_memory
+                    return self.send(200, agent.memory(agent_memory.shared(app.initial.get("server"), app.worker_token)))
+                if parsed.path == "/api/agent-plan":
+                    from roc import agent_auto
+                    query = parse_qs(parsed.query)
+                    profile = query.get("cli", ["claude"])[0] + ":" + (query.get("model", [""])[0] or "default")
+                    if query.get("individual", [""])[0] == "true":
+                        profile += ":individual"
+                    max_size = int(query.get("max_size", [512])[0])
+                    if not 32 <= max_size <= 8192:
+                        raise ValueError("Invalid automatic size limit")
+                    return self.send(200, agent_auto.public_plan(agent_auto.plan(agent_auto.snapshot(), max_size, profile)))
                 if parsed.path == "/api/models":
                     return self.send(200, {"models": worker.draft.ollama_models()})
                 if parsed.path == "/api/daily-stats":
                     day = parse_qs(parsed.query).get("date", [""])[0]
-                    from roc.daily_stats import day_bounds
+                    from roc.reports import day_bounds
                     day, _, _ = day_bounds(day or None)
                     address = app.initial.get("server") or app.settings.get("server")
                     if not address:
@@ -499,9 +546,12 @@ class Handler(BaseHTTPRequestHandler):
                 return self.send(400, {"error": str(error)})
             return self.send(404, {"error": "Unknown endpoint"})
         files = {"/": "index.html", "/app.js": "app.js", "/style.css": "style.css",
-                 "/fonts.css": "fonts.css", "/logo.png": "logo.png", "/favicon.png": "favicon.png"}
+                 "/fonts.css": "fonts.css",
+                 # One copy of the brand images, shared with the website in docs/.
+                 "/logo.png": ROOT / "docs" / "logo.png",
+                 "/favicon.png": ROOT / "docs" / "favicon.png"}
         files.update({"/fonts/" + path.name: "fonts/" + path.name for path in (ASSETS / "fonts").iterdir()
-                      if path.suffix in (".woff2", ".ttf")})
+                      if path.suffix == ".woff2"})
         if parsed.path not in files:
             return self.send(404, {"error": "Not found"})
         file = ASSETS / files[parsed.path]
@@ -524,11 +574,11 @@ class Handler(BaseHTTPRequestHandler):
             if self.path == "/api/control":
                 app.control(data)
             elif self.path == "/api/cpu-control":
-                from roc import cpu_status
-                return self.send(200, cpu_status.control(data))
+                from roc import tasks
+                return self.send(200, tasks.cpu_control(data))
             elif self.path == "/api/roc-control":
-                from roc import command_watch
-                command_watch.control(data.get("id", ""), data.get("action"))
+                from roc import tasks
+                tasks.control(data.get("id", ""), data.get("action"))
             elif self.path == "/api/preferences":
                 app.preferences_update(data)
             elif self.path == "/api/provider":
@@ -542,6 +592,10 @@ class Handler(BaseHTTPRequestHandler):
                 manual = (agent.open_session(data.get("cli"), data.get("goal"), data.get("model") or None)
                           if self.path == "/api/agent-session" else agent.open_setup(data.get("cli")))
                 return self.send(200, {"manual": manual})
+            elif self.path == "/api/agent-memory-sync":
+                from roc import agent, agent_memory
+                return self.send(200, agent.memory(agent_memory.shared(app.initial.get("server"), app.worker_token,
+                    app.initial.get("user"), upload=True)))
             elif self.path == "/api/preview":
                 return self.send(200, {"args": command_args(data)})
             elif self.path == "/api/shutdown":

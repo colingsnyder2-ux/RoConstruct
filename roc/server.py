@@ -6,8 +6,10 @@ heartbeating, so crashed workers never leave a function stuck. Submissions
 are re-scored here when this machine has the client's compiler.
 """
 import json
+import hashlib
 import os
 import re
+import shutil
 import sqlite3
 import subprocess
 import threading
@@ -24,7 +26,7 @@ ROOT = Path(__file__).resolve().parent.parent
 USER_RE = re.compile(r"^[A-Za-z0-9_.-]{2,32}$")
 
 
-from roc.cpu_jobs import _source_class_token, check_many_text
+from roc.tasks import _source_class_token, check_many_text
 
 # Which function a worker gets next. Random is default so parallel workers spread
 # across real named units instead of draining one ranked segment at a time.
@@ -66,13 +68,15 @@ CREATE INDEX IF NOT EXISTS events_day ON events(ts);
 CREATE TABLE IF NOT EXISTS workers(id TEXT PRIMARY KEY, user TEXT, mode TEXT, last_seen REAL);
 CREATE INDEX IF NOT EXISTS funcs_open ON funcs(client, score, attempts, size);
 CREATE INDEX IF NOT EXISTS leases_target ON leases(client, addr);
+CREATE TABLE IF NOT EXISTS agent_attempts(id INTEGER PRIMARY KEY, hash TEXT UNIQUE,
+  user TEXT, ts REAL, payload TEXT);
 """
 
 
 class Store:
     def __init__(self, path, lease_seconds):
         self.db = sqlite3.connect(path, check_same_thread=False)
-        from roc.libraries import library_of
+        from roc.libs import library_of
         self.db.create_function("roc_library", 1, library_of, deterministic=True)
         self.db.executescript(SCHEMA)
         columns = {r[1] for r in self.db.execute("PRAGMA table_info(funcs)")}
@@ -97,6 +101,53 @@ class Store:
         self.db.commit()
         self.lock = threading.Lock()
         self.lease_seconds = lease_seconds
+
+    def agent_memory(self, after=0, limit=500):
+        from roc import agent_memory
+        with self.lock:
+            rows = self.db.execute("SELECT id,user,payload FROM agent_attempts WHERE id>? ORDER BY id LIMIT ?",
+                                   (after, limit)).fetchall()
+        path = ROOT / "research" / "lessons.json"
+        return {"lessons": json.loads(path.read_text(encoding="utf-8")) if path.exists() else [],
+                "context": agent_memory.context(),
+                "records": [dict(json.loads(payload), shared_id=identifier, reported_by=user)
+                            for identifier, user, payload in rows],
+                "cursor": rows[-1][0] if rows else after, "more": len(rows) == limit}
+
+    def remember(self, user, rows):
+        if not isinstance(rows, list) or not 1 <= len(rows) <= 100:
+            raise ValueError("Need 1-100 attempt records")
+        payloads = []
+        for row in rows:
+            if not isinstance(row, dict) or row.get("client", "2008-06") != "2008-06":
+                raise ValueError("Attempt records must describe 2008-06")
+            row = {k: v for k, v in row.items() if k not in ("shared_id", "reported_by", "server_confirmed")}
+            addresses = row.get("addresses", [])
+            if not isinstance(addresses, list) or len(addresses) > 200 or not all(
+                    isinstance(addr, str) and re.fullmatch(r"[0-9a-f]{8}", addr) for addr in addresses):
+                raise ValueError("Need at most 200 eight-digit addresses")
+            payload = json.dumps(row, sort_keys=True, ensure_ascii=True)
+            if len(payload) > 16000:
+                raise ValueError("Attempt record exceeds 16000 characters")
+            payloads.append((hashlib.sha256((user + payload).encode()).hexdigest(), row))
+        added = 0
+        with self.lock:
+            for key, row in payloads:
+                addresses = row.get("addresses", [])
+                confirmed = False
+                if row.get("kind") == "auto_target" and row.get("outcome") == "server_verified" and len(addresses) == 1:
+                    best = self.db.execute("SELECT source,score FROM funcs WHERE client='2008-06' AND addr=?",
+                                           (addresses[0],)).fetchone()
+                    confirmed = bool(best and best[1] == row.get("after") and
+                        hashlib.sha256((best[0] or "").encode()).hexdigest() == row.get("source_hash") and
+                        self.db.execute("SELECT 1 FROM mining_events WHERE client='2008-06' "
+                        "AND addr=? AND user=? AND new=? AND verified=1 LIMIT 1",
+                        (addresses[0], user, row.get("after"))).fetchone())
+                row["server_confirmed"] = confirmed
+                added += self.db.execute("INSERT OR IGNORE INTO agent_attempts(hash,user,ts,payload) VALUES(?,?,?,?)",
+                    (key, user, time.time(), json.dumps(row))).rowcount
+            self.db.commit()
+        return {"added": added}
 
     def seed(self, client):
         """Load analyzed functions (real code only) for one client."""
@@ -246,7 +297,7 @@ class Store:
             return score, True
 
     def daily_stats(self, day=None, timezone="America/New_York"):
-        from roc.daily_stats import day_bounds, summarize
+        from roc.reports import day_bounds, summarize
         day, start, end = day_bounds(day, timezone)
         with self.lock:
             rows = self.db.execute("SELECT id,ts,client,addr,user,model,old,new,verified FROM mining_events "
@@ -265,7 +316,7 @@ class Store:
             rows = self.db.execute(
                 "SELECT user, SUM(new = 100 AND old < 100), SUM(new - old), COUNT(*), MAX(ts) "
                 "FROM events %s GROUP BY user ORDER BY 2 DESC, 3 DESC" % where, args).fetchall()
-        from roc.discord import server_users
+        from roc.reports import server_users
         hidden = server_users()
         return [{"user": u, "matched": m or 0, "points": p or 0, "submissions": n, "last": t}
                 for u, m, p, n, t in rows if u not in hidden]
@@ -401,7 +452,7 @@ class Store:
                                        (client, n)).fetchall()
         return [{"addr": a, "source": s} for a, s in rows]
 
-    def sources(self, client, min_score=1):
+    def clients(self, client, min_score=1):
         """Every stored source for a client (for `roc pull`)."""
         with self.lock:
             rows = self.db.execute("SELECT addr, score, user, source FROM funcs WHERE client = ? AND score >= ? "
@@ -453,6 +504,12 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None):
                                                    for n, e in reg.items()}, "verify": sorted(can_verify)})
             if url.path == "/v1/status":
                 return self.send(200, store.status())
+            if url.path == "/v1/agent-memory":
+                try:
+                    return self.send(200, store.agent_memory(max(0, int(q.get("after", 0))),
+                                                            min(500, max(1, int(q.get("limit", 500))))))
+                except ValueError as error:
+                    return self.send(400, {"error": str(error)})
             if url.path == "/v1/leaderboard":
                 return self.send(200, store.leaderboard())
             if url.path == "/v1/daily-stats":
@@ -497,8 +554,13 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None):
                 if not isinstance(rows, list) or len(rows) > 5000:
                     return self.send(400, {"error": "rows must be list <= 5000"})
                 return self.send(200, {"registered": store.register_families(rows)})
-            if path in ("/v1/lease", "/v1/submit", "/v1/submit-batch") and not USER_RE.match(user):
+            if path in ("/v1/lease", "/v1/submit", "/v1/submit-batch", "/v1/agent-memory") and not USER_RE.match(user):
                 return self.send(400, {"error": "username must be 2-32 letters, digits, _ . -"})
+            if path == "/v1/agent-memory":
+                try:
+                    return self.send(200, store.remember(user, body.get("records")))
+                except (ValueError, TypeError) as error:
+                    return self.send(400, {"error": str(error)})
             if path == "/v1/lease":
                 have = [c for c in body.get("clients", []) if isinstance(c, str)]
                 if not have:
@@ -626,12 +688,12 @@ def import_auto_matches(store, name, found, log=print):
 
 def import_startup_matches(store, can_verify, log=print):
     """Import local automatic/library matches without delaying server startup."""
-    from roc import auto
+    from roc import matchers
     for name in sorted(can_verify):
         if clients.load().get(name, {}).get("donor"):
             continue
         done = {a for a, s in store.scores().get(name, {}).items() if s == 100}
-        found = auto.solve(name, skip=done, log=lambda *a: None)
+        found = matchers.solve(name, skip=done, log=lambda *a: None)
         import_auto_matches(store, name, found, log)
         scores_file = ROOT / "work" / name / "scores.json"
         local = json.loads(scores_file.read_text()) if scores_file.exists() else {}
@@ -653,7 +715,7 @@ def import_startup_matches(store, can_verify, log=print):
 
 def serve(host="0.0.0.0", port=8765, db=None, token=None, lease_seconds=900,
           discord_webhook=None, log=print):
-    from roc.discord import MineLog, server_mines_webhook
+    from roc.reports import MineLog, server_mines_webhook
     discord_webhook = discord_webhook or os.environ.get("ROCONSTRUCT_DISCORD_WEBHOOK")
     server_webhook = server_mines_webhook()
     db = db or str(ROOT / "work" / "server.db")
@@ -679,7 +741,7 @@ def serve(host="0.0.0.0", port=8765, db=None, token=None, lease_seconds=900,
                                                        mine_log=mine_log, server_mine_log=server_mine_log))
     httpd.store = store
     def daily_reports():
-        from roc.daily_stats import archive_days, save
+        from roc.reports import archive_days, save
         archived = False
         previous_day = None
         while True:
@@ -693,7 +755,7 @@ def serve(host="0.0.0.0", port=8765, db=None, token=None, lease_seconds=900,
                     save(store.daily_stats(previous_day), directory)
                 save(report, directory)
                 previous_day = report["date"]
-                from roc.leaderboard import publish_yesterday
+                from roc.reports import publish_yesterday
                 publish_yesterday(store, directory)
             except (OSError, sqlite3.Error, ValueError, RuntimeError) as error:
                 log("Daily report failed: %s" % error)
@@ -775,8 +837,9 @@ def _publish_once(store, public_url, log=print):
         if snapshot.get("server") != public_url:
             snapshot["server"] = public_url
             address_file.write_text(json.dumps(snapshot, indent=1) + "\n")
+            # Pathspec commits: never sweep a maintainer's other staged changes into a push.
             for args in (("add", "docs/progress.json"),
-                         ("commit", "-m", "Update server address")):
+                         ("commit", "-m", "Update server address", "--", "docs/progress.json")):
                 result = git(*args)
                 if result.returncode:
                     raise RuntimeError("Address publish failed: " + result.stderr.strip()[-300:])
@@ -786,12 +849,53 @@ def _publish_once(store, public_url, log=print):
     sync_findings(store)
     publish_findings(git_exe, log)
     progress.build(public_server=public_url, remote=export(store))
-    git("add", "docs/data", "docs/progress.json", "docs/history.json", "docs/source-links.json")
-    if git("diff", "--cached", "--quiet").returncode == 0:
-        return log("Site unchanged.")
-    git("commit", "-m", "Update progress")
+    publish_pages(git_exe, log)
+    # main keeps only the small progress files, so its history still shows progress over
+    # time; per-function data lives only in the history-free gh-pages commit.
+    site = ("docs/progress.json", "docs/history.json", "docs/source-links.json")
+    git("add", *site)
+    if git("diff", "--cached", "--quiet", "--", *site).returncode == 0:
+        return log("Progress unchanged.")
+    git("commit", "-m", "Update progress", "--", *site)
     push = git("push", "origin", "HEAD")
-    log("Site published." if push.returncode == 0 else "Site push failed: %s" % push.stderr.strip()[-300:])
+    log("Progress published." if push.returncode == 0 else "Progress push failed: %s" % push.stderr.strip()[-300:])
+
+
+def publish_pages(git_exe, log=print):
+    """Overwrite the gh-pages branch with the whole website (docs/ minus guides) as one
+    parentless commit: the hourly 20+ MB of function data never accumulates in any history."""
+    index = ROOT / "work" / ("pages-index-" + uuid.uuid4().hex)
+    env = dict(os.environ, GIT_INDEX_FILE=str(index))
+    git = lambda *a, **kw: subprocess.run([git_exe, *a], cwd=ROOT, env=env, capture_output=True, text=True, **kw)
+    docs = ROOT / "docs"
+    try:
+        if git("read-tree", "--empty").returncode:
+            return log("Pages staging failed.")
+        for path in sorted(docs.rglob("*")):
+            if not path.is_file() or path.suffix == ".md" or path.name == "providers.example.json":
+                continue
+            relative = path.relative_to(docs).as_posix()
+            blob = git("hash-object", "-w", str(path))
+            if blob.returncode or git("update-index", "--add", "--cacheinfo", "100644", blob.stdout.strip(),
+                                     relative).returncode:
+                return log("Pages staging failed: " + relative)
+        empty = git("hash-object", "-w", "--stdin", input="")  # .nojekyll: serve files as-is
+        git("update-index", "--add", "--cacheinfo", "100644", empty.stdout.strip(), ".nojekyll")
+        tree = git("write-tree")
+        if tree.returncode:
+            return log("Pages tree failed: %s" % tree.stderr.strip()[-300:])
+        known = git("rev-parse", "--verify", "-q", "refs/remotes/origin/gh-pages^{tree}")
+        if known.returncode == 0 and known.stdout.strip() == tree.stdout.strip():
+            return log("Website unchanged.")
+        commit = git("commit-tree", tree.stdout.strip(), "-m", "Website")
+        if commit.returncode:
+            return log("Pages commit failed: %s" % commit.stderr.strip()[-300:])
+        pushed = git("push", "-f", "origin", commit.stdout.strip() + ":refs/heads/gh-pages")
+        if pushed.returncode == 0:
+            git("update-ref", "refs/remotes/origin/gh-pages", commit.stdout.strip())
+        log("Website published." if pushed.returncode == 0 else "Website push failed: %s" % pushed.stderr.strip()[-300:])
+    finally:
+        index.unlink(missing_ok=True)
 
 
 def sync_findings(store):
@@ -815,6 +919,36 @@ def sync_findings(store):
             scores[row["addr"]] = row["score"]
         scores_file.parent.mkdir(parents=True, exist_ok=True)
         scores_file.write_text(json.dumps(scores, indent=0, sort_keys=True))
+    export_agent_findings(store)
+    units = ROOT / "local" / "units" / "generated-units.json"
+    if units.is_file():  # shared through the findings repo; `roc pull` downloads it
+        target = ROOT / "local" / "findings" / "units" / "generated-units.json"
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(units, target)
+
+
+def export_agent_findings(store):
+    """Portable memory rides the existing findings publisher's src/ export."""
+    from roc import agent_memory, tasks
+    folder = ROOT / "local" / "findings" / "agent-memory"
+    folder.mkdir(parents=True, exist_ok=True)
+    data, cursor = [], 0
+    while True:
+        result = store.agent_memory(cursor)
+        data.extend(result["records"])
+        cursor = result["cursor"]
+        if not result["more"]:
+            break
+    tasks.write_text(folder / "lessons.json", json.dumps(result["lessons"], indent=2))
+    tasks.write_text(folder / "attempts.jsonl", "".join(json.dumps(row) + "\n" for row in data))
+    context = folder / "context"  # rebuilt each export so retired docs do not linger
+    if context.is_dir():
+        shutil.rmtree(context)
+    for name, content in agent_memory.context().items():
+        target = context / name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        tasks.write_text(target, content)
+    (folder / "README.md").unlink(missing_ok=True)  # described by the findings README
 
 
 def publish_findings(git_exe, log=print):
@@ -835,8 +969,24 @@ def publish_findings(git_exe, log=print):
         if parent.returncode:
             return log("Findings revision unavailable: %s" % parent.stderr.strip()[-300:])
         parent = parent.stdout.strip()
-        if git("read-tree", parent).returncode or git("add", "-f", "src").returncode:
+        # The findings tree is rebuilt from an allowlist (sources + portable evidence), so files
+        # that do not belong there never persist. sync_findings has already exported every
+        # stored source into src/.
+        if git("read-tree", "--empty").returncode or git("add", "-f", "src").returncode:
             return log("Findings source staging failed.")
+        findings = ROOT / "local" / "findings"
+        # Stage portable evidence and the findings repo's own README/workflow at its root;
+        # never local work/ or tools/. Files are read from the local findings checkout.
+        portable = [findings / "README.md", findings / ".gitignore",
+                    *[path for folder in (".github", "agent-memory", "reports", "units")
+                      for path in sorted((findings / folder).rglob("*"))]]
+        for path in portable:
+            if not path.is_file():
+                continue
+            blob = git("hash-object", "-w", str(path))
+            if blob.returncode or git("update-index", "--add", "--cacheinfo", "100644", blob.stdout.strip(),
+                                     path.relative_to(findings).as_posix()).returncode:
+                return log("Findings evidence staging failed: %s" % path.relative_to(findings).as_posix())
         tree = git("write-tree")
         if tree.returncode:
             return log("Findings tree creation failed: %s" % tree.stderr.strip()[-300:])

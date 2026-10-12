@@ -7,7 +7,9 @@ against every client. The matched source carries `// roc-lang/cl/flags` lines, s
 
 Sources are downloaded from the projects' own sites and checked against pinned SHA-256.
 """
+import functools
 import hashlib
+import json
 import os
 import re
 import shutil
@@ -19,11 +21,14 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 from roc import clients, fingerprint, match, setup
-from roc import client_templates
+
 
 ROOT = Path(__file__).resolve().parent.parent
+
 LIBS = ROOT / "tools" / "libs"
+
 BUILDS = [21022, 30729, 50727]  # vendors often shipped libs built with another compiler
+
 GRID = ["/O2 /GS- /MD", "/O2 /Oy- /GS- /MD", "/O1 /GS- /MD", "/Ox /GS- /MD", "/O2 /GS /MD", "/O2 /Ob1 /GS- /MD"]
 
 _JPEG = ("jcapimin jcapistd jccoefct jccolor jcdctmgr jchuff jcinit jcmainct jcmarker jcmaster jcomapi "
@@ -31,6 +36,7 @@ _JPEG = ("jcapimin jcapistd jccoefct jccolor jcdctmgr jchuff jcinit jcmainct jcm
          "jddctmgr jdhuff jdinput jdmainct jdmarker jdmaster jdmerge jdphuff jdpostct jdsample jdtrans "
          "jerror jfdctflt jfdctfst jfdctint jidctflt jidctfst jidctint jidctred jquant1 jquant2 jutils "
          "jmemmgr jmemnobs").split()
+
 _LUA = ("lapi lcode ldebug ldo ldump lfunc lgc llex lmem lobject lopcodes lparser lstate lstring ltable "
         "ltm lundump lvm lzio lauxlib lbaselib ldblib liolib lmathlib loslib ltablib lstrlib loadlib "
         "linit").split()
@@ -46,6 +52,7 @@ RECIPES = {
                     src="jpeg-6b", langs=["c"], files=[f + ".c" for f in _JPEG],
                     prepare=[("jconfig.vc", "jconfig.h")]),
 }
+
 for _v, _sha in [("5.1", "7f5bb9061eb3b9ba1e406a5aa68001a66cb82bac95748839dc02dd10048472c1"),
                  ("5.1.1", "c5daeed0a75d8e4dd2328b7c7a69888247868154acbda69110e97d4a6e17d1f0"),
                  ("5.1.2", "5cf098c6fe68d3d2d9221904f1017ff0286e4a9cc166a1452a456df9b88b3d9e"),
@@ -65,7 +72,9 @@ _RBX_LUACONF = [
     ("#define luai_userstateresume(L,n)\t((void)L)",
      "#define luai_userstateresume(L,n)\t(((unsigned char *)(L))[-4] = 0)"),
 ]
+
 RECIPES["lua-5.1.2-rbx"] = dict(RECIPES["lua-5.1.2"], patches={"luaconf.h": _RBX_LUACONF})
+
 RECIPES["lua-5.1.3-rbx"] = dict(RECIPES["lua-5.1.3"], patches={"luaconf.h": _RBX_LUACONF})
 
 # Roblox 2009's shipped copyrights.txt names Lua 5.0 specifically.  Its source layout
@@ -76,6 +85,7 @@ RECIPES["lua-5.0"] = dict(url="https://www.lua.org/ftp/lua-5.0.tar.gz",
                            files=[f + ".c" for f in ("lapi lcode ldebug ldo ldump lfunc lgc llex lmem lobject "
                                                         "lopcodes lparser lstate lstring ltable ltests ltm lundump lvm "
                                                         "lzio lauxlib lbaselib ldblib liolib lmathlib ltablib lstrlib loadlib").split()])
+
 for _v, _sha in [("5.0.1", "7a09d0e70dcaff7feae97cf9c154da05b1e5b92eaea2df7150b54bcaf8f3b9c6"),
                  ("5.0.2", "a6c85d85f912e1c321723084389d63dee7660b81b8292452b190ea7190dd73bc"),
                  ("5.0.3", "1193a61b0e08acaa6eee0eecf29709179ee49c71baebc59b682a25c3b5a45671")]:
@@ -83,18 +93,21 @@ for _v, _sha in [("5.0.1", "7a09d0e70dcaff7feae97cf9c154da05b1e5b92eaea2df7150b5
                                  src="lua-%s/src" % _v, langs=["c"], include=["lua-%s/include" % _v],
                                  files=RECIPES["lua-5.0"]["files"])
 
-
 _PNG = ("png pngerror pngget pngmem pngpread pngread pngrio pngrtran pngrutil pngset pngtrans pngwio "
         "pngwrite pngwtran pngwutil").split()
+
 FAST = ["/O2 /GS- /MD"]  # what every library so far was built with
+
 # 2008-06 has a second zlib 1.2.3 (beside boost iostreams) built by VS2005 with ZLIB_WINAPI:
 # exported functions are __stdcall (`ret 8` in deflate) and it emits `sub eax, 1` where
 # VS2008 emits `dec eax`.
 RECIPES["zlib-1.2.3-winapi"] = dict(RECIPES["zlib-1.2.3"], builds=[50727, 21022], include=["WINSDK"],
                                     defines="ZLIB_WINAPI", grid=["/O2 /GS- /MD"])
+
 RECIPES["zlib-1.1.4"] = dict(url="https://zlib.net/fossils/zlib-1.1.4.tar.gz",
                              sha256="9e3e973174f9910fd51539ef9ce94c86a3943d4f897fab8e9adf4b19e6a8291e",
                              src="zlib-1.1.4", langs=["c"], grid=FAST, files=RECIPES["zlib-1.2.3"]["files"])
+
 for _v, _sha in [("1.2.5", "58ec845f95ff351c8a25bfbfa667a8f3924bb0f1a1ec572cc7e09b8817204d1e"),
                  ("1.2.6", "cadc1c98bed90fadc1cca2faa4f50242a538cec060647f4801b226cb6a0f2dc8"),
                  ("1.2.7", "c99b135378870d2671556122e0d9a6991ac6bd40a46081ed312a13125a38cb66"),
@@ -116,7 +129,6 @@ for _v, _sha in [("1.2.5", "58ec845f95ff351c8a25bfbfa667a8f3924bb0f1a1ec572cc7e0
                                    langs=["c"], grid=FAST + ["/O2 /GS /MD"], include=["zlib-1.2.3"],
                                    files=[f + ".c" for f in _PNG])
 
-
 # G3D 6.09 (2007-2010 clients) bundles its own zlib, libjpeg and libpng. Old releases left
 # SourceForge; this is the archive.org copy (SHA-1 matches archive.org's record).
 RECIPES["g3d-6.09"] = dict(url="https://archive.org/download/g3d-src-6_09/g3d-src-6_09.zip",
@@ -134,22 +146,26 @@ RECIPES["g3d-6.09"] = dict(url="https://archive.org/download/g3d-src-6_09/g3d-sr
                            # (spellings read from the 2007-08 and 2008-06 exes' assert strings).
                            file_names={"G3Dcpp\\Stopwatch.cpp": ".\\g3dcpp\\Stopwatch.cpp",
                                        "*": lambda p: ".\\" + p.replace("GLG3Dcpp\\", "glg3dcpp\\")})
+
 # G3D 6.09 ships its own libpng 1.2.7 and IJG trees (source/png, source/IJG); 2008-06 links
 # those copies, compiled like G3D itself (/fp:fast where float math is involved).
 _G3D_FAST = ["/O2 /GS- /MD", "/O2 /GS- /MD /fp:fast"]
+
 RECIPES["g3d-6.09-png"] = dict(RECIPES["g3d-6.09"], src="g3d-6.09/source/png", langs=["c"], grid=_G3D_FAST,
                                include=["g3d-6.09/source/zlib", "WINSDK"], needs=[], files="png*.c",
                                file_names=None)
+
 RECIPES["g3d-6.09-ijg"] = dict(RECIPES["g3d-6.09"], src="g3d-6.09/source/IJG", langs=["c"], grid=_G3D_FAST,
                                include=["WINSDK"], needs=[], files="j*.c", file_names=None)
+
 RECIPES["sdl-1.2.11"] = dict(url="https://www.libsdl.org/release/SDL-1.2.11.tar.gz",  # headers for GLG3D
                              sha256="6985823287b224b57390b1c1b6cbc54cc9a7d7757fbf9934ed20754b4cd23730",
                              src="SDL-1.2.11/include", langs=[], files=[])
 
-
 _BOOST_SRC = ("libs/signals/src/*.cpp libs/thread/src/*.cpp libs/thread/src/win32/*.cpp libs/filesystem/src/*.cpp "
               "libs/system/src/*.cpp libs/iostreams/src/*.cpp libs/date_time/src/gregorian/*.cpp "
               "libs/date_time/src/posix_time/*.cpp libs/regex/src/*.cpp libs/program_options/src/*.cpp")
+
 for _v, _sha in [("1.34.1", "ef99062117068a0d641f4045c421661768657262a3d119c4a272c97a3e7ae5b3"),
                  ("1.36.0", "7f790b1636c2fdad23c0134db4c28433f90524c981ac752d8a9c8041a00b942c"),
                  ("1.35.0", "c0816cf644653a7bf8b41993261156249bd888840a12d828f3df8329277521f4"),
@@ -164,18 +180,15 @@ for _v, _sha in [("1.34.1", "ef99062117068a0d641f4045c421661768657262a3d119c4a27
                                   sha256=_sha, src="boost_" + _u, langs=["cpp"], grid=["/O2 /GS- /EHsc /MD"],
                                   include=["WINSDK", "zlib-1.2.3"], files=_BOOST_SRC)
 
-
 def winsdk_include():
     """Windows SDK headers ship inside the VCForPython compiler package."""
     found = sorted(setup.TOOLS.glob("*/**/WinSDK/Include"))
     return str(found[0]) if found else ""
 
-
 def files_of(r, folder):
     if isinstance(r["files"], str):
         return sorted(str(p.relative_to(folder)) for pat in r["files"].split() for p in folder.glob(pat))
     return r["files"]
-
 
 def archive_members(path):
     """(member name, COFF bytes) from a Microsoft .lib archive."""
@@ -206,7 +219,6 @@ def archive_members(path):
             raw, body = body[:length], body[length:]
         yield raw.decode("latin-1").rstrip("/"), body
 
-
 def archive_unit(name, path, build):
     """Exact COFF member named by a saved CRT match."""
     r = RECIPES.get(name)
@@ -222,16 +234,13 @@ def archive_unit(name, path, build):
             return obj
     raise match.CompileError("no member %r in %s" % (member, lib))
 
-
 def _archive_dir(r, cl):
     """Static libs ship beside the compiler unless the recipe names its own folder."""
     return LIBS / r["lib_dir"] if r.get("lib_dir") else Path(cl).parents[1] / "lib"
 
-
 def archive_files(r, build):
     folder = _archive_dir(r, setup.compilers()[build])
     return [(lib, member, obj) for lib in r["files"] for member, obj in archive_members(folder / lib)]
-
 
 def template_units():
     """Generated .cpp files: explicit instantiations of std/boost templates Roblox code uses.
@@ -268,7 +277,6 @@ def template_units():
         out["signal_%s.cpp" % sn] = head + "#include <boost/signal.hpp>\ntemplate class boost::signal<%s>;\n" % sig
     return out
 
-
 for _b in ("1_34_1", "1_40_0", "1_44_0", "1_47_0"):
     RECIPES["templates-boost-" + _b] = dict(generate=template_units, src="templates-boost-" + _b,
                                            langs=["cpp"], grid=["/O2 /GS- /EHsc /MD"],
@@ -289,8 +297,14 @@ RECIPES["templates-2008-06"] = dict(src="templates/template_instantiations_2008-
                                     langs=["cpp"], grid=["/O2 /GS- /EHsc /MD"],
                                     include=["boost_1_34_1", "WINSDK"], files="*.cpp",
                                     needs=["boost-1.34.1"])
-RECIPES["templates-2008-06"]["generate"] = client_templates.units
 
+def client_template_units():
+    """Binary-observed 2008-06 vendor template units (RTTI-derived Boost/std instantiations),
+    kept as data in research/template-units.json."""
+    return json.loads((ROOT / "research" / "template-units.json").read_text(encoding="utf-8"))
+
+
+RECIPES["templates-2008-06"]["generate"] = client_template_units
 
 STDINT = """/* stdint.h for VS2005/VS2008, which lack it. */
 #pragma once
@@ -310,6 +324,7 @@ typedef unsigned __int64 uint64_t; typedef int intptr_t; typedef unsigned int ui
 #define UINT32_MAX 0xffffffffui32
 #define UINT64_MAX 0xffffffffffffffffui64
 """
+
 # Roblox's 2016 logging/fast-flag header, absent from the tree. The 2007-2012 clients
 # predate it, so log calls compile to nothing and flags are plain globals.
 FASTLOG = """#pragma once
@@ -331,6 +346,7 @@ FASTLOG = """#pragma once
 #define FASTFLAG(n) namespace FFlag { extern bool n; }
 #define FASTFLAGVARIABLE(n, v) namespace FFlag { bool n = v; }
 """
+
 RECIPES["compat"] = dict(generate=lambda: {"stdint.h": STDINT, "FastLog.h": FASTLOG}, src="compat", langs=[], files=[])
 
 # RBLXDecomp/RBXGSdecomp: a matching decompilation of Roblox's OWN code (RBXGS 0.3.634.0,
@@ -340,38 +356,50 @@ RECIPES["compat"] = dict(generate=lambda: {"stdint.h": STDINT, "FastLog.h": FAST
 # Its ReleaseAssert config built with these defines; code unchanged since 2007 compiles
 # to the same bytes under each client's compiler, so match_obj tries every client.
 _RBXGS = "../rbxgs/Client/"
+
 _RBXGS_INC = [_RBXGS + d for d in ("App/include", "RbxGraphics/include", "Network/include",
               "RbxView/include", "Rendering/png", "Rendering/g3d/include",
               "Rendering/g3d/zlib", "Rendering/RenderLib/include", "Rendering/AppDraw/include",
               "boost_1_34_1/src", "App/lua-5.1.1/src", "Rendering/SDL-1.2.6/include")] + ["WINSDK"]
+
 _RBXGS_DEF = "WIN32 NDEBUG _LIB _RELEASE _RELEASEASSERT _VC80_UPGRADE=0x0710"
+
 _RBXGS_GRID = ["/O2 /Ob2 /Oy /GF /GS- /EHsc /MD", "/O2 /Oy /Gy /GS- /EHsc /MD",
                "/O2 /GS- /EHsc /MD", "/O1 /Ob2 /Oy /GS- /EHsc /MD"]
+
 RECIPES["rbxgs"] = dict(src=_RBXGS + "App", langs=["cpp"], files="**/*.cpp",
                         grid=_RBXGS_GRID, include=_RBXGS_INC, defines=_RBXGS_DEF)
+
 # The Network project: Roblox's networking (RBX::Network::Replicator, Player, Server).
 _RBXGS_NET_INC = [_RBXGS + d for d in ("Network/include", "Network/include/network", "App/include",
                   "Network/RakNet30/source", "Rendering/g3d/include", "Rendering/g3d/zlib",
                   "Rendering/png", "boost_1_34_1/src", "App/lua-5.1.1/src", "Rendering/AppDraw/include",
                   "Rendering/SDL-1.2.6/include", "Rendering/RenderLib/include", "RbxGraphics/include")] + ["WINSDK"]
+
 RECIPES["rbxgs-net"] = dict(src=_RBXGS + "Network", langs=["cpp"], files="*.cpp",
                             grid=_RBXGS_GRID, include=_RBXGS_NET_INC, defines=_RBXGS_DEF)
+
 # Target-specific reflection descriptor probe; source is evidence-derived string variant.
 RECIPES["rbxgs-net-setbody"] = dict(src="rbxgs-net-custom", langs=["cpp"], files="Players.cpp",
                                     grid=_RBXGS_GRID, include=_RBXGS_NET_INC + [_RBXGS + "Network"], defines=_RBXGS_DEF)
+
 RECIPES["rbxgs-net-setbody-lower"] = dict(src="rbxgs-net-custom-lower", langs=["cpp"], files="Players.cpp",
                                           grid=_RBXGS_GRID, include=_RBXGS_NET_INC + [_RBXGS + "Network"], defines=_RBXGS_DEF)
+
 # RakNet 3.0 core source (RBXGSdecomp's raknet30 submodule) - the RakNet the 2007 clients
 # actually linked, older than the 2016 fork (rbx2016-raknet).
 _RBXGS_RAK_INC = [_RBXGS + d for d in ("Network/RakNet30/Source", "Network/include", "App/include",
                   "boost_1_34_1/src")] + ["compat", "WINSDK"]
+
 RECIPES["rbxgs-raknet"] = dict(src=_RBXGS + "Network/RakNet30/Source", langs=["cpp"], files="*.cpp",
                                grid=_RBXGS_GRID, include=_RBXGS_RAK_INC, defines=_RBXGS_DEF)
+
 # Public RakNet 4.081.  The checked-in source is byte-identical to Facebook's archived
 # upstream RakPeer.cpp; later Roblox clients retain a small amount of this core code.
 RECIPES["raknet-4.081"] = dict(src="RakNet-master/Source", langs=["cpp"], files="*.cpp",
                                 grid=["/O2 /GS- /EHsc /MD", "/O2 /GS- /MD", "/O1 /GS- /EHsc /MD"],
                                 include=["RakNet-master/Source", "WINSDK"], defines="WIN32 _WIN32")
+
 # RbxView (Part, meshes = the Ogre::Rbx* render classes) and RenderLib (Clusterer,
 # RenderScene). Broad include covers every sibling project they pull headers from.
 _RBXGS_VIEW_INC = [_RBXGS + d for d in ("RbxView/include", "RbxViewBase", "App/include",
@@ -379,22 +407,29 @@ _RBXGS_VIEW_INC = [_RBXGS + d for d in ("RbxView/include", "RbxViewBase", "App/i
                    "Rendering/AppDraw/include", "Rendering/g3d/include", "Rendering/g3d/zlib",
                    "Rendering/png", "boost_1_34_1/src", "App/lua-5.1.1/src",
                    "Rendering/SDL-1.2.6/include")] + ["WINSDK"]
+
 RECIPES["rbxgs-view"] = dict(src=_RBXGS + "RbxView", langs=["cpp"], files="*.cpp",
                              grid=_RBXGS_GRID, include=_RBXGS_VIEW_INC, defines=_RBXGS_DEF)
+
 RECIPES["rbxgs-render"] = dict(src=_RBXGS + "Rendering/RenderLib", langs=["cpp"], files="*.cpp",
                                grid=_RBXGS_GRID, include=_RBXGS_VIEW_INC, defines=_RBXGS_DEF)
+
 # AppDraw (drawing utilities, adornments, fonts): source path AppDraw\ appears in 2012-06
 # debug strings but has no recipe. Include set is the same as the main rbxgs project.
 RECIPES["rbxgs-appdraw"] = dict(src=_RBXGS + "Rendering/AppDraw", langs=["cpp"], files="*.cpp",
                                 grid=_RBXGS_GRID, include=_RBXGS_INC, defines=_RBXGS_DEF)
+
 # RBXGSdecomp's own g3d fork: the exact G3D the RBXGS build linked (patched by Roblox),
 # which may byte-match where generic g3d-6.09 does not. G3D is float-heavy -> SSE2 grid.
 _RBXGS_G3D = _RBXGS + "Rendering/g3d/"
+
 _RBXGS_G3D_INC = [_RBXGS_G3D + d for d in ("include", "zlib", "png", "IJG", "boost")] + \
                  [_RBXGS + "Rendering/SDL-1.2.6/include", "WINSDK"]
+
 _RBXGS_G3D_GRID = ["/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /arch:SSE2 /fp:fast",
                    "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD", "/O2 /GS- /EHsc /MD /arch:SSE2 /fp:fast",
                    "/O2 /GS- /EHsc /MD"]
+
 RECIPES["rbxgs-g3d"] = dict(src=_RBXGS_G3D.rstrip("/"), langs=["cpp"], files="G3Dcpp/*.cpp GLG3Dcpp/*.cpp",
                             grid=_RBXGS_G3D_GRID, include=_RBXGS_G3D_INC, defines=_RBXGS_DEF)
 
@@ -402,6 +437,7 @@ RECIPES["rbxgs-g3d"] = dict(src=_RBXGS_G3D.rstrip("/"), langs=["cpp"], files="G3
 # Keep this separate from RBXGSdecomp: it follows PDB-recorded Client paths and
 # contains newer, still-being-recovered translation units.
 _OPENRBX = "../openrbx/"
+
 _OPENRBX_INC = [_OPENRBX + d for d in (
     "Client/App/include", "Client/Network/include", "Client/RbxView/include",
     "Client/RbxViewBase", "Client/Rendering/RenderLib/include",
@@ -410,18 +446,22 @@ _OPENRBX_INC = [_OPENRBX + d for d in (
     "3rdparty/g3d/source/include", "3rdparty/lua-5.1.1/src",
     "3rdparty/g3d/source/png", "3rdparty/g3d/source/zlib",
     "3rdparty/SDL-1.2.6/include")] + ["WINSDK"]
+
 RECIPES["openrbx-client"] = dict(src=_OPENRBX + "Client", langs=["cpp"], files="**/*.cpp",
                                   grid=_RBXGS_GRID, include=_OPENRBX_INC,
                                   defines="WIN32 NDEBUG _LIB _VC80_UPGRADE=0x0710 _MBCS")
+
 # verify-stack/rccservice-decompile (May 2008 RCCService), cloned by hand into
 # tools/libs/rccservice. Two std template matches (2008-06, 2009-06) came from its gSOAP.
 RECIPES["rccservice"] = dict(src="rccservice/RBXGS", langs=["cpp"], files="gSOAP/generated/stdsoap2.cpp",
                              grid=["/O2 /Oy- /GS- /MD"], include=["rccservice/RBXGS/gSOAP", "WINSDK"])
+
 # Same tree with _DLL. preprocess() runs /EP without the grid's /MD, so without it CRT
 # calls lose __declspec(dllimport) and `call free` never matches `call [__imp__free]`.
 # A separate name because existing openrbx-client matches verify only without _DLL.
 RECIPES["openrbx-client-dll"] = dict(RECIPES["openrbx-client"],
                                      defines=RECIPES["openrbx-client"]["defines"] + " _DLL")
+
 # OpenRBX's RakNet 3.0 is recovered from WebService.dll (270 markers), not stock RakNet.
 # Network library: plain /O2 (so /GS on) and only RakNet files add _CRT_SECURE_NO_WARNINGS.
 RECIPES["openrbx-raknet"] = dict(src=_OPENRBX + "3rdparty/RakNet30/Source", langs=["cpp"], files="*.cpp",
@@ -431,6 +471,7 @@ RECIPES["openrbx-raknet"] = dict(src=_OPENRBX + "3rdparty/RakNet30/Source", lang
 # Exact CRT/STL objects from each installed compiler. Fingerprint archive members directly.
 RECIPES["msvc-crt"] = dict(archive=True, builds=[50727, 21022, 30729],
                             files=["libcmt.lib", "libcpmt.lib"])
+
 # 2008-06 links shared MFC/CRT (/MD) plus the static parts of ATL and MFC: atls.lib and
 # mfcs90.lib from the VS2008 RTM Professional DVD (cab46/cab47 of archive.org's
 # en_visual_studio_2008_professional_x86_dvd_x14-26326 ISO, members FL_atls_lib_16138 and
@@ -438,6 +479,7 @@ RECIPES["msvc-crt"] = dict(archive=True, builds=[50727, 21022, 30729],
 # Their prebuilt code has hotpatch `mov edi, edi` prologues and no alignment padding.
 RECIPES["msvc-atlmfc-rtm"] = dict(archive=True, builds=[21022], lib_dir="mfc-9.0-rtm/atlmfc/lib",
                                   files=["atls.lib", "mfcs90.lib"])
+
 # _com_raise_error etc. (comdef.h support) from the compiler's own comsupp.lib.
 RECIPES["msvc-comsupp-rtm"] = dict(archive=True, builds=[21022], files=["comsupp.lib"])
 
@@ -489,39 +531,51 @@ RECIPES["ogre-1.4.5"] = dict(
 # Code unchanged since 2012 compiles to the same bytes with the client's compiler.
 # These recipes have no URL: the tree has to be extracted locally.
 REF = "../roblox2016/src/ROBLOX2016-main/"
+
 _REF_INC = [REF + "Rendering/g3d/include", REF + "Rendering/g3d/include/png", REF + "Rendering/g3d/ijg",
             "compat", "boost_1_40_0", "zlib-1.2.3", "WINSDK"]
+
 _REF_NEEDS = ["compat", "boost-1.40.0", "zlib-1.2.3"]
+
 # Roblox built the float-heavy G3D math with SSE2: /arch:SSE2 /fp:fast is what matches it.
 _REF_GRID = ["/O2 /GS- /EHsc /MD /arch:SSE2 /fp:fast", "/O2 /GS- /EHsc /MD /arch:SSE2",
              "/O2 /GS- /EHsc /MD", "/O2 /GS- /MD /arch:SSE2 /fp:fast"]
+
 RECIPES["rbx2016-g3d"] = dict(src=REF + "Rendering/g3d/g3dcpp", langs=["cpp"], files="*.cpp",
                               grid=_REF_GRID, include=_REF_INC, needs=_REF_NEEDS)
+
 RECIPES["rbx2016-lua"] = dict(src=REF + "App/Lua-5.1.4/src", langs=["c", "cpp"], files=[f + ".c" for f in _LUA],
                               grid=FAST + ["/O2 /GS- /EHsc /MD"], include=_REF_INC, needs=_REF_NEEDS)
+
 RECIPES["rbx2016-jpeg"] = dict(src=REF + "Rendering/g3d/ijg", langs=["c"], files="j*.c", grid=FAST,
                                include=_REF_INC, needs=_REF_NEEDS)
+
 RECIPES["rbx2016-png"] = dict(src=REF + "Rendering/g3d/png", langs=["c"], files="png*.c", grid=FAST,
                               include=_REF_INC, needs=_REF_NEEDS)
+
 # Roblox's RakNet fork (RakNet::RakPeer and friends in the 2009-2012 RTTI).
 RECIPES["rbx2016-raknet"] = dict(src=REF + "Network/raknet/Source", langs=["cpp"], files="*.cpp",
                                  grid=["/O2 /GS- /EHsc /MD", "/O2 /GS- /MD", "/O2 /GS- /EHsc /MD /arch:SSE2"],
                                  include=_REF_INC, needs=_REF_NEEDS)
-
 
 # MFC static library source. Each client statically links the MFC build that shipped with
 # its compiler, so the source compiled with the same cl.exe fingerprint-matches ~1600/client.
 # MFC 8.0 (_MFC_VER 0x0800) is VS2005 -> the 2007-08 client only. No URL: extracted locally
 # from github.com/pixelspark/corespark (Libraries/atlmfc) into tools/libs/mfc-8.0/.
 _MFC80_INC = ["mfc-8.0/atlmfc/src/mfc", "mfc-8.0/atlmfc/include", "WINSDK"]
+
 _MFC_GRID = ["/O2 /GS- /MD", "/O2 /GS- /MT", "/O1 /GS- /MD", "/O2 /GF /Gy /GS- /MD"]
+
 RECIPES["mfc-8.0"] = dict(src="mfc-8.0", langs=["cpp"], builds=[50727], include=_MFC80_INC,
                           grid=_MFC_GRID, files="atlmfc/src/mfc/*.cpp")
+
 # MFC 9.0 (0x0900) = VS2008. Commit 9.00.30729 (SP1) matches the 30729 clients exactly; the
 # RTM 21022 clients (2008-06, 2011-06) differ by SP but share most functions, so try both.
 _MFC90_INC = ["mfc-9.0/atlmfc/src/mfc", "mfc-9.0/atlmfc/include", "WINSDK"]
+
 RECIPES["mfc-9.0"] = dict(src="mfc-9.0", langs=["cpp"], builds=[30729, 21022], include=_MFC90_INC,
                           grid=_MFC_GRID, files="atlmfc/src/mfc/*.cpp")
+
 RECIPES["mfc-9.0-shared"] = dict(src="mfc-9.0", langs=["cpp"], builds=[30729, 21022],
                                  include=_MFC90_INC,
                                  defines="_AFXDLL _DLL", grid=["/O2 /GS- /MD", "/O1 /GS- /MD"],
@@ -532,6 +586,7 @@ RECIPES["mfc-9.0-shared"] = dict(src="mfc-9.0", langs=["cpp"], builds=[30729, 21
 RECIPES["atl-8.0"] = dict(src="mfc-8.0/atlmfc/src/atl", langs=["cpp"], builds=[50727],
                            include=["mfc-8.0/atlmfc/src/atl", "mfc-8.0/atlmfc/include", "WINSDK"],
                            grid=_MFC_GRID, files="*.cpp")
+
 RECIPES["atl-9.0"] = dict(src="mfc-9.0/atlmfc/src/atl", langs=["cpp"], builds=[30729, 21022],
                            include=["mfc-9.0/atlmfc/src/atl", "mfc-9.0/atlmfc/include", "WINSDK"],
                            grid=_MFC_GRID, files="*.cpp")
@@ -542,9 +597,12 @@ RECIPES["atl-9.0"] = dict(src="mfc-9.0/atlmfc/src/atl", langs=["cpp"], builds=[3
 # tools/libs/xtp-15.2.1/, with a one-line Source/StdAfx.h (#include "XTToolkitPro.h") added, since
 # every XTP .cpp opens with #include "StdAfx.h" and the umbrella header lives at Source root.
 _XTP_INC = ["xtp-15.2.1/Source", "mfc-9.0/atlmfc/include", "WINSDK"]
+
 _XTP_STDAFX = {"Source/StdAfx.h": '#include "XTToolkitPro.h"\n'}
+
 RECIPES["xtp-15.2.1"] = dict(src="xtp-15.2.1", langs=["cpp"], builds=[30729, 21022], include=_XTP_INC,
                              grid=_MFC_GRID, files="Source/**/*.cpp", write=_XTP_STDAFX)
+
 RECIPES["xtp-15.2.1-shared-mfc"] = dict(
     src="xtp-15.2.1", langs=["cpp"], builds=[30729, 21022], include=_XTP_INC,
     defines="_AFXDLL _XTP_STATICLINK _DLL", grid=["/O2 /GS- /MD", "/O1 /GS- /MD"],
@@ -555,17 +613,21 @@ RECIPES["xtp-15.2.1-shared-mfc"] = dict(
 # whose own XTP release (v9.60) shipped headers only, no source.
 def _xtp_inc(ver, mfc):
     return ["%s/Source" % ver, "%s/atlmfc/include" % mfc, "WINSDK"]
+
 RECIPES["xtp-13.2.1"] = dict(src="xtp-13.2.1", langs=["cpp"], builds=[30729, 21022],
                              include=_xtp_inc("xtp-13.2.1", "mfc-9.0"), grid=_MFC_GRID,
                              files="Source/**/*.cpp", write=_XTP_STDAFX)
+
 RECIPES["xtp-13.2.1-shared-mfc"] = dict(
     src="xtp-13.2.1", langs=["cpp"], builds=[30729, 21022],
     include=_xtp_inc("xtp-13.2.1", "mfc-9.0"),
     defines="_AFXDLL _XTP_STATICLINK _DLL", grid=["/O2 /GS- /MD", "/O1 /GS- /MD"],
     files="Source/**/*.cpp", write=_XTP_STDAFX)
+
 RECIPES["xtp-11.2.2"] = dict(src="xtp-11.2.2", langs=["cpp"], builds=[30729, 21022],
                              include=_xtp_inc("xtp-11.2.2", "mfc-9.0"), grid=_MFC_GRID,
                              files="Source/**/*.cpp", write=_XTP_STDAFX)
+
 # Shared release MFC retains CObject::AssertValid/Dump virtual slots. Keep the
 # configuration in a separate recipe so preprocessing and source replay agree.
 RECIPES["xtp-11.2.2-shared-mfc"] = dict(
@@ -573,40 +635,49 @@ RECIPES["xtp-11.2.2-shared-mfc"] = dict(
     include=_xtp_inc("xtp-11.2.2", "mfc-9.0"),
     defines="_AFXDLL _XTP_STATICLINK _DLL", grid=["/O2 /GS- /MD", "/O1 /GS- /MD"],
     files="Source/**/*.cpp", write=_XTP_STDAFX)
+
 # Header members (definition text) the 2008 client calls out of line instead of inlining.
 MFC_STRING_CALLS = ("bool IsEmpty() const throw()\n\t{\n\t\treturn( GetLength() == 0 );",
                     "operator PCXSTR() const throw()\n\t{\n\t\treturn( m_pszData );")
+
 # The 2008 client calls these imported CString helpers instead of inlining them.
 # Keep the header adjustment in its own recipe for reproducible source replay.
 RECIPES["xtp-11.2.2-shared-mfc-string-calls"] = dict(
     RECIPES["xtp-11.2.2-shared-mfc"], noinline_mfc_strings=True,
     grid=["/O2 /MD /GS /EHsc /Ob1", "/O2 /MD /GS- /Ob1"])
+
 # Some XTP implementation files need MFC's shipped private declarations.
 RECIPES["xtp-11.2.2-shared-mfc-internals"] = dict(
     RECIPES["xtp-11.2.2-shared-mfc"],
     include=_xtp_inc("xtp-11.2.2", "mfc-9.0") + ["mfc-9.0/atlmfc/src/mfc"],
     preinclude=["XTToolkitPro.h", "afximpl.h"],
     grid=["/O2 /MD /GS /EHsc /Ob1", "/O2 /MD /GS- /Ob1"])
+
 RECIPES["xtp-11.2.2-shared-mfc-internals-string-calls"] = dict(
     RECIPES["xtp-11.2.2-shared-mfc-internals"], noinline_mfc_strings=True)
+
 # Codejock's own library build precompiles Common/XTPDLLExports.h: NT4/IE5 targets
 # (WM_MOUSELAST 0x20a, not the SDK's Vista default 0x20e), VC_EXTRALEAN, afxpriv etc.
 RECIPES["xtp-11.2.2-lib"] = dict(
     RECIPES["xtp-11.2.2-shared-mfc-string-calls"],
     defines="_AFXDLL _XTP_STATICLINK _DLL _LIB",
     preinclude=["Common/XTPDLLExports.h", "XTToolkitPro.h"])
+
 # Most 2008 XTP files also call CSimpleStringT::GetLength out of line.
 RECIPES["xtp-11.2.2-lib-strlen"] = dict(
     RECIPES["xtp-11.2.2-lib"],
     noinline=MFC_STRING_CALLS + ("int GetLength() const throw()\n\t{\n\t\treturn( GetData()->nDataLength );",))
+
 # The client calls dllimport functions through the import table instead of expanding
 # their header bodies: MFC's afxv_w32.h inline FreeResource still calls KERNEL32's.
 RECIPES["xtp-11.2.2-lib-imports"] = dict(
     RECIPES["xtp-11.2.2-lib-strlen"],
     noinline=RECIPES["xtp-11.2.2-lib-strlen"]["noinline"] + ("inline BOOL __stdcall FreeResource(HGLOBAL)",))
+
 RECIPES["xtp-11.2.2-vc8"] = dict(src="xtp-11.2.2", langs=["cpp"], builds=[50727],
                                  include=_xtp_inc("xtp-11.2.2", "mfc-8.0"), grid=_MFC_GRID,
                                  files="Source/**/*.cpp", write=_XTP_STDAFX)
+
 RECIPES["xtp-11.2.2-vc8-shared-mfc"] = dict(
     src="xtp-11.2.2", langs=["cpp"], builds=[50727],
     include=_xtp_inc("xtp-11.2.2", "mfc-8.0"),
@@ -618,17 +689,21 @@ RECIPES["xtp-11.2.2-vc8-shared-mfc"] = dict(
 # binary use but restricts source redistribution.  Provenance is TeXnicCenter commit
 # 881e059d254b2cb921c0d239b5be16d97ad317ce; preserve its copyright headers.
 _SCINTILLA_MFC_STDAFX = {"stdafx.h": "#pragma once\n#include <afxwin.h>\n#include <afxext.h>\n#include <afxdtctl.h>\n#include <afxtempl.h>\n#include <afxpriv.h>\n#include <afxmt.h>\n#include <afxcview.h>\n#include <afxcmn.h>\n#include \"Platform.h\"\n#include \"Scintilla.h\"\n#include \"SciLexer.h\"\n", "resource.h": "#pragma once\n#define IDS_SCINTILLA_DEFAULT_PRINT_FOOTER 40\n#define IDS_SCINTILLA_DEFAULT_PRINT_HEADER 41\n#define IDD_SCINTILLA_FINDDLGORD 328\n#define IDD_SCINTILLA_REPLACEDLGORD 329\n#define IDC_REGULAR_EXPRESSION 8606\n"}
+
 RECIPES["scintilla-mfc-1.20"] = dict(src="scintilla-mfc-1.20", langs=["cpp"], builds=[21022, 30729],
                                        include=["scintilla-mfc-1.20", "mfc-9.0/atlmfc/include", "WINSDK"],
                                        grid=_MFC_GRID, files=["ScintillaCtrl.cpp", "ScintillaDocView.cpp"],
                                        write=_SCINTILLA_MFC_STDAFX, strip_header_asm="stripped-v2")
+
 # 2008-06 imports mfc90.dll: shared MFC keeps AssertValid/Dump vtable slots (+8 bytes).
 RECIPES["scintilla-mfc-1.20-shared"] = dict(RECIPES["scintilla-mfc-1.20"], defines="_AFXDLL _DLL",
                                               grid=["/O2 /GS- /MD", "/O2 /GS /EHsc /MD", "/O2 /MD /GS /EHsc /Ob1"])
+
 # Same dllimport-call rule as XTP: CString members and FreeResource stay imported calls.
 RECIPES["scintilla-mfc-1.20-shared-imports"] = dict(
     RECIPES["scintilla-mfc-1.20-shared"], noinline=RECIPES["xtp-11.2.2-lib-imports"]["noinline"],
     grid=["/O2 /MD /GS /EHsc /Ob1", "/O2 /GS- /MD", "/O2 /GS /EHsc /MD"])
+
 RECIPES["scintilla-mfc-1.20-vc8"] = dict(src="scintilla-mfc-1.20", langs=["cpp"], builds=[50727],
                                            include=["scintilla-mfc-1.20", "mfc-8.0/atlmfc/include", "WINSDK"],
                                            grid=_MFC_GRID, files=["ScintillaCtrl.cpp", "ScintillaDocView.cpp"],
@@ -650,7 +725,6 @@ RECIPES["wildmagic-2-core"] = dict(
     grid=["/O2 /Ob1 /GS- /MT", "/O2 /Ob1 /GS- /MD", "/O2 /Ob2 /GS- /MD", "/Od /Ob1 /GS- /MT"],
     files="Math/*.cpp Distance/*.cpp Intersection/*.cpp Geometry/*.cpp Containment/*.cpp")
 
-
 # LAME MP3 encoder, statically linked in the 2011-06 and 2012-06 clients
 # (copyrights.txt: "This program uses Lame (www.mp3dev.org)"; no lame.dll import).
 # vc9_libmp3lame.vcproj Release|Win32: /Ox /Ob2 /Ot /MD.
@@ -666,6 +740,7 @@ RECIPES["lame-3.98.4"] = dict(
     prepare=[("../configMS.h", "config.h")],
     grid=["/Ox /Ob2 /Ot /GS- /MD", "/O2 /Ob2 /GS- /MD", "/Ox /GS- /MD", "/O2 /GS- /MD"],
     files="*.c")
+
 RECIPES["lame-3.99.5"] = dict(
     url="https://downloads.sourceforge.net/project/lame/lame/3.99/lame-3.99.5.tar.gz",
     sha256="24346b4158e4af3bd9f2e194bb23eb473c75fb7377011523353196b19b9a23ff",
@@ -699,7 +774,6 @@ for _name, _r in list(RECIPES.items()):
             src="mfc-9.0-rtm" if _r.get("src") == "mfc-9.0" else
                 _r["src"].replace("mfc-9.0/", "mfc-9.0-rtm/", 1) if "src" in _r else _r.get("src"))
 
-
 def _case_path(path):
     """The on-disk path for a possibly differently-cased recipe path.
 
@@ -725,7 +799,6 @@ def _case_path(path):
             return path
         current = match
     return current
-
 
 def fetch(name):
     """Download + verify + unpack a recipe's source into tools/libs/. Returns the source folder."""
@@ -768,16 +841,93 @@ def fetch(name):
     for src, dst in r.get("prepare", []):
         if not (folder / dst).exists():
             shutil.copyfile(folder / src, folder / dst)
-    for rel, text in r.get("write", {}).items():          # small generated files (e.g. XTP's StdAfx.h)
+    for rel, text in [*r.get("write", {}).items(),       # small generated files (e.g. XTP's StdAfx.h)
+                      *generated_units().get(r["src"], {}).items()]:  # agent-written units stored sources use
         if (folder / rel).exists() and (folder / rel).read_text() == text:
             continue
         (folder / rel).parent.mkdir(parents=True, exist_ok=True)
         (folder / rel).write_text(text)
     return folder
 
+# Translation units written by matching work (roc_fork_*, roc_client_*, ...) live inside a
+# vendor tree under tools/libs, which is not shared. Stored sources point at them by name,
+# so their text is kept in the findings repository (units/generated-units.json), downloaded
+# by `roc pull` into local/units/ and written into the vendor tree by `fetch`.
+UNITS_FILE = ROOT / "local" / "units" / "generated-units.json"
+UNITS_URL = "https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/units/generated-units.json"
 
-def preprocess(build, path, include, defines=""):
-    """One self-contained translation unit: headers inlined, link-only pragmas dropped."""
+
+def fetch_units(log=print, url=UNITS_URL):
+    """Download the shared units and merge them into the local cache (local additions are
+    kept). Never raises: offline PCs keep working with what they have."""
+    import urllib.request
+    try:
+        with urllib.request.urlopen(url, timeout=60) as reply:
+            remote = json.loads(reply.read().decode("utf-8"))
+        if not isinstance(remote, dict):
+            raise ValueError("unexpected units file")
+    except (OSError, ValueError) as error:
+        log("Generated units not updated (%s); using the local copy." % error)
+        return 0
+    local, added = generated_units(), 0
+    for src, files in remote.items():
+        for name, text in files.items():
+            if name not in local.get(src, {}):
+                local.setdefault(src, {})[name] = text
+                added += 1
+    UNITS_FILE.parent.mkdir(parents=True, exist_ok=True)
+    UNITS_FILE.write_text(json.dumps(local, indent=1, sort_keys=True), encoding="utf-8")
+    log("Generated units: %d new, %d total." % (added, sum(map(len, local.values()))))
+    return added
+
+
+def generated_units():
+    try:
+        return json.loads(UNITS_FILE.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+
+def add_unit(recipe, text, prefix="roc_unit_"):
+    """Write one generated unit into a recipe's tree under a content-hash name and keep it
+    portable. Returns the file name a `// roc-lib:` line should use."""
+    name = "%s%s.cpp" % (prefix, hashlib.sha256(text.encode()).hexdigest()[:16])
+    path = fetch(recipe) / name
+    path.write_text(text)
+    _store_units({RECIPES[recipe]["src"]: {name: text}})
+    return name
+
+def _store_units(new):
+    units = generated_units()
+    for src, files in new.items():
+        for name, text in files.items():
+            if units.get(src, {}).get(name, text) != text:
+                raise ValueError("Generated unit %s/%s already stored with other text" % (src, name))
+            units.setdefault(src, {})[name] = text
+    UNITS_FILE.parent.mkdir(parents=True, exist_ok=True)
+    UNITS_FILE.write_text(json.dumps(units, indent=1, sort_keys=True), encoding="utf-8")
+
+def capture_units(client):
+    """Store every generated unit that this PC's sources for `client` reference but that no
+    `generate` recipe recreates. Returns {recipe src: [names]} that were added."""
+    known, found = generated_units(), {}
+    for path in (ROOT / "src" / client).glob("*.cpp"):
+        lib = match.directives(path.read_text(errors="replace")).get("lib", "")
+        name, _, rel = lib.partition(" ")
+        r = RECIPES.get(name)
+        rel = rel.strip().replace("\\", "/")
+        if not r or r.get("generate") or not rel.rsplit("/", 1)[-1].startswith("roc_"):
+            continue
+        unit = _case_path(LIBS / r["src"]) / rel
+        if rel in known.get(r["src"], {}) or not unit.is_file():
+            continue
+        found.setdefault(r["src"], {})[rel] = unit.read_text(errors="replace")
+    if found:
+        _store_units(found)
+    return {src: sorted(files) for src, files in found.items()}
+
+def preprocess(build, path, include, defines="", deps=None):
+    """One self-contained translation unit: headers inlined, link-only pragmas dropped.
+    `deps` (a list) receives every header the compiler opened (/showIncludes)."""
     cl = setup.compilers()[build]
     env = setup.cl_env(cl)
     if not setup.WINDOWS:  # Wine needs Windows-style include paths inside INCLUDE
@@ -788,20 +938,29 @@ def preprocess(build, path, include, defines=""):
         if "_AFXDLL" in defines.split() and "/MD" not in env["CL"] and "/MT" not in env["CL"]:
             env["CL"] += " /MD"
     try:
-        run = subprocess.run([*setup.cl_command(cl), "/nologo", "/EP", setup.cl_path(path)],
+        run = subprocess.run([*setup.cl_command(cl), "/nologo", "/EP", "/showIncludes", setup.cl_path(path)],
                              capture_output=True, text=True,
                              env=env, errors="replace", timeout=120)
     except subprocess.TimeoutExpired:
         raise match.CompileError("preprocessor timeout after 120 seconds")
+    notes = [l for l in run.stderr.splitlines() if l.startswith(INCLUDE_NOTE)]
     if run.returncode:
-        raise match.CompileError(run.stderr[-500:])
+        raise match.CompileError("\n".join(l for l in run.stderr.splitlines() if l not in notes)[-500:])
+    if deps is not None:
+        deps.extend(_host_path(l[len(INCLUDE_NOTE):].strip()) for l in notes)
     # Link-only pragmas can span several lines (the CRT manifest one does): drop them whole.
     text = LINK_PRAGMA.sub("", run.stdout)
     return "\n".join(l for l in text.splitlines() if l.strip())
 
+INCLUDE_NOTE = "Note: including file:"
+
+def _host_path(path):
+    """A path cl.exe printed, as this PC sees it (Wine prints Z:\\ for /)."""
+    if setup.WINDOWS or not re.match(r"(?i)z:\\", path):
+        return path
+    return "/" + path[3:].replace("\\", "/")
 
 LINK_PRAGMA = re.compile(r'#\s*pragma\s+(?:comment|include_alias)\s*\((?:"(?:\\.|[^"\\])*"|[^()"])*\)')
-
 
 def unit(name, path, build):
     """Preprocessed translation unit for one library file, cached in work/libcache/.
@@ -811,12 +970,17 @@ def unit(name, path, build):
     folder = fetch(name).resolve()
     src = (folder / path).resolve()
     if not src.is_relative_to(folder) or not src.is_file():
-        raise match.CompileError("no file %r in library %s" % (path, name))
+        hint = " (generated unit: run `roc pull` to download it)" if path.rsplit("/", 1)[-1].startswith("roc_") else ""
+        raise match.CompileError("no file %r in library %s%s" % (path, name, hint))
     r = RECIPES[name]
     suffix = ".%s.i" % r["strip_header_asm"] if r.get("strip_header_asm") else ".i"
     cache = ROOT / "work" / "libcache" / name / str(build) / (path.replace("\\", "/").replace("/", "__") + suffix)
-    if cache.exists():
-        return _file_literal(r, src, path, cache.read_text(errors="replace"))
+    noinline = r.get("noinline", MFC_STRING_CALLS if r.get("noinline_mfc_strings") else ())
+    identity = _recipe_identity(r, noinline)
+    body = _cached_unit(cache, identity)
+    if body is not None:
+        return _file_literal(r, src, path, body)
+    deps = []
     include = ";".join([str(folder)] + [winsdk_include() if i == "WINSDK" else str(_case_path(LIBS / i))
                                         for i in r.get("include", [])])
     if r.get("preinclude"):
@@ -824,7 +988,7 @@ def unit(name, path, build):
             wrapper = Path(tmp) / "unit.cpp"
             wrapper.write_text("".join('#include "%s"\n' % header for header in r["preinclude"])
                                + '#include "%s"\n' % src.as_posix())
-            body = preprocess(build, wrapper, include, r.get("defines", ""))
+            body = preprocess(build, wrapper, include, r.get("defines", ""), deps)
     elif r.get("patches"):
         # Edits reconstructed from the client binary: preprocess a patched copy of the tree.
         with tempfile.TemporaryDirectory() as tmp:
@@ -837,17 +1001,78 @@ def unit(name, path, build):
                         raise match.CompileError("patch for %s no longer applies: %r" % (rel, old[:60]))
                     text = text.replace(old, new)
                 (copy / rel).write_text(text)
-            body = preprocess(build, copy / path, str(copy) + ";" + include, r.get("defines", ""))
+            body = preprocess(build, copy / path, str(copy) + ";" + include, r.get("defines", ""), deps)
+            deps = [folder / Path(d).resolve().relative_to(copy.resolve()) if Path(d).resolve().is_relative_to(copy.resolve())
+                    else d for d in deps]  # patched copies: track the pristine file (patch text is in identity)
     else:
-        body = preprocess(build, src, include, r.get("defines", ""))
-    for member in r.get("noinline", MFC_STRING_CALLS if r.get("noinline_mfc_strings") else ()):
+        body = preprocess(build, src, include, r.get("defines", ""), deps)
+    for member in noinline:
         body = body.replace(member, "__declspec(noinline) " + member)
     if r.get("strip_header_asm"):
         body = re.sub(r"__asm\s*\{.*?\}", "", body, flags=re.S)
     cache.parent.mkdir(parents=True, exist_ok=True)
     cache.write_text(body)
+    _write_deps(cache, identity, [src, *deps])
     return _file_literal(r, src, path, body)
 
+# A preprocessed unit is only reusable while its recipe settings and every header it read are
+# unchanged; otherwise an edited vendor header would replay stale output (or a stale error).
+_UNIT_KEYS = ("src", "include", "preinclude", "defines", "patches", "strip_header_asm")
+
+_UNITS = {}  # cache path -> (stamp, body): avoids re-reading big .i files in one process
+
+def _recipe_identity(r, noinline):
+    settings = {k: r.get(k) for k in _UNIT_KEYS}
+    settings["noinline"] = list(noinline)
+    return hashlib.sha256(json.dumps(settings, sort_keys=True, default=str).encode()).hexdigest()
+
+def _sha256(path):
+    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+def _write_deps(cache, identity, deps):
+    files = {}
+    for dep in dict.fromkeys(str(d) for d in deps):
+        try:
+            st = os.stat(dep)
+            files[dep] = [st.st_size, st.st_mtime_ns, _sha256(dep)]
+        except OSError:
+            pass
+    cache.with_suffix(cache.suffix + ".deps").write_text(json.dumps({"recipe": identity, "files": files}))
+    _UNITS.pop(str(cache), None)
+
+def _cached_unit(cache, identity):
+    """Cached body when the recipe identity and all dependency contents still match, else None.
+    Legacy caches without a .deps record are rebuilt once."""
+    try:
+        record = json.loads(cache.with_suffix(cache.suffix + ".deps").read_text())
+    except (OSError, ValueError):
+        return None
+    if record.get("recipe") != identity:
+        return None
+    stamp, refreshed = [], False
+    for dep, (size, mtime, digest) in record["files"].items():
+        try:
+            st = os.stat(dep)
+        except OSError:
+            return None
+        if (st.st_size, st.st_mtime_ns) != (size, mtime):
+            if st.st_size != size or _sha256(dep) != digest:
+                return None
+            record["files"][dep] = [size, st.st_mtime_ns, digest]  # touched, same content
+            refreshed = True
+        stamp.append((dep, st.st_size, st.st_mtime_ns))
+    if refreshed:
+        cache.with_suffix(cache.suffix + ".deps").write_text(json.dumps(record))
+    stamp = tuple(stamp)
+    hit = _UNITS.get(str(cache))
+    if hit and hit[0] == stamp:
+        return hit[1]
+    try:
+        body = cache.read_text(errors="replace")
+    except OSError:
+        return None
+    _UNITS[str(cache)] = (stamp, body)
+    return body
 
 def _file_literal(recipe, src, path, body):
     """__FILE__ as the original build spelled it (recipe `file_names`), not this PC's path."""
@@ -859,13 +1084,11 @@ def _file_literal(recipe, src, path, body):
     esc = lambda s: '"%s"' % s.replace("\\", "\\\\")
     return body.replace(esc(str(src)), esc(spelled))
 
-
 def source_for(name, path, lang, build, flags):
     """The small matched-source text: settings plus a pointer to the library file."""
     kind = "archive" if RECIPES[name].get("archive") is True else "lib"
     return ("// roc-lang: %s\n// roc-cl: %d\n// roc-flags: %s\n// roc-%s: %s %s\n"
             % (lang, build, flags, kind, name, path.replace("\\", "/")))
-
 
 def _compile_variants(client, name, f, lang, build, r):
     """One file across a recipe's flag grid; run in parallel with other files.
@@ -882,7 +1105,6 @@ def _compile_variants(client, name, f, lang, build, r):
             break
         out.append((src, obj))
     return out
-
 
 def run(names, targets, log=print):
     """Try every library recipe in `names` against the given client names. Returns {client: new}."""
@@ -941,9 +1163,42 @@ def run(names, targets, log=print):
         log("%s: done (%.0fs), new so far %s" % (name, time.time() - t0, new))
     return new
 
-
 def default_targets():
     have = setup.compilers()
     return [n for n, e in sorted(clients.load().items())
             if clients.status(n, e) == "ok" and (ROOT / "work" / n / "functions.jsonl").exists()
             and e.get("compiler_build") in have]
+
+
+# --- libraries ---
+# Library of a unit label: the same rules as the progress site's table (docs/index.html).
+
+_MFC = re.compile(r"^(?:[A-Z0-9_$]*V)?C(?:Wnd|FrameWnd|MDIFrameWnd|MDIChildWnd|Edit|Static|ListBox|ComboBox|Button|Brush|Pen|Rgn|Rect|Point|Size|PtrList|PtrArray|ObList|StringList|StringArray|Ole\w*|CmdUI|EnabledCmdUI|Dialog|View|Document|WinApp|WinThread|Object|Archive|File|Exception|DC|ClientDC|PaintDC|WindowDC|GdiObject|Bitmap|Font|Menu|ImageList|ToolBar|StatusBar|ControlBar|SplitterWnd|ScrollView|FormView|EditView|HtmlView|HtmlEditView|DHtmlDialog|PropertySheet|PropertyPage|TreeCtrl|ListCtrl|TabCtrl|SpinButtonCtrl|ProgressCtrl|SliderCtrl|DockState|DockBar|DocTemplate|SingleDocTemplate|MultiDocTemplate|DocManager|MemFile|String|Map\w+|Array|CommandLineInfo|RecentFileList|Mini\w*Wnd)$")
+
+
+RULES = [
+    ("XTP (Codejock)", lambda u: re.search(r"CXTP|XTP[A-Z_]|(^|V)CXT[A-Z]", u)),
+    ("G3D", lambda u: "G3D" in u),
+    ("Ogre", lambda u: "Ogre" in u),
+    ("boost", lambda u: "boost" in u),
+    ("RakNet", lambda u: re.search(r"RakPeer|RakNet|PacketReliab", u)),
+    ("Scintilla", lambda u: "Scintilla" in u),
+    ("Lua", lambda u: re.search(r"(^|[^A-Za-z])lua_|^lua", u)),
+    ("STL (std)", lambda u: re.match(r"std(::|$)", u)),
+    ("ATL", lambda u: re.match(r"ATL(::|$)", u)),
+    ("MFC", lambda u: _MFC.match(re.split(r"::|<|\?\$", u)[0])),
+    ("Roblox engine (RBX)", lambda u: re.search(r"RBX|rbx", u)),
+    ("Unlabeled (no RTTI nearby)", lambda u: not u or u.startswith("seg_")),
+]
+
+
+OTHER = "Roblox app / other"
+
+
+NAMES = [name for name, _ in RULES] + [OTHER]
+
+
+@functools.lru_cache(maxsize=65536)
+def library_of(unit):
+    unit = unit or ""
+    return next((name for name, test in RULES if test(unit)), OTHER)

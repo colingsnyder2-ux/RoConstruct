@@ -1,0 +1,413 @@
+{
+ "about": "Historical research reports, plans and retired guides. Evidence, not instructions. Full text lives in the RoConstruct-findings repository; current guidance is docs/AGENT_GUIDE.md and ranked lessons are research/lessons.json.",
+ "moved": "2026-10-12",
+ "url": "https://github.com/colingsnyder2-ux/RoConstruct-findings/blob/main/reports/",
+ "main_repo_commit": "c6d089710",
+ "reports": [
+  {
+   "file": "reports/AI_WORKER_GUIDE.md",
+   "title": "AI worker handoff",
+   "date": "2026-10-10",
+   "kind": "retired-guide",
+   "summary": "Read this first, then [experiment summary](EXPERIMENTS.md). Updated 2026-10-10. Next work and validation gaps: [match-maximization audit](NEXT_EXPERIMENTS.md). This is a Python/x86 matching project; use repository instructions for edits.",
+   "sha256": "7a40ff0f1f29c6e1dcb28f0a9cd257bf94f5a578f2b2740ed733cc6911438966",
+   "from": "docs/archive/AI_WORKER_GUIDE.md"
+  },
+  {
+   "file": "reports/cloud-and-worker-plan.md",
+   "title": "Cloud models and worker improvement plan",
+   "date": "2026-10-10",
+   "kind": "plan",
+   "summary": "Implemented: provider registry, local/Ollama adapter, generic OpenAI-compatible adapter (including NVIDIA NIM and DeepSeek), native OpenAI/Anthropic/Gemini adapters, environment-only key handling, cloud consent gate, request/token/cost budgets, provider concurrency/circuit breaker, redacted telemetry, size-based output caps, provider CLI, hard-target diverse sampling, local-to-cloud stall escalati",
+   "sha256": "c33ee45c7a1837dfb7fb1f7921736a04c4caa4fe7fe3071126b52407ea2418e9",
+   "from": "docs/archive/cloud-and-worker-plan.md"
+  },
+  {
+   "file": "reports/control-flow-research.md",
+   "title": "Control-flow reconstruction research",
+   "date": "2026-10-09",
+   "kind": "report",
+   "summary": "RoConstruct already had bounded CFG extraction in `roc/draft.py`: `cfg_outline`, `reconstruction_outline`, `structure_ir`, and `facts_from_asm`. `roc/match.py` already decodes x86 with Capstone and provides byte-level diagnostics. `roc/mutate.py` already performs compiler-backed, evidence-gated mutations. Rebuilding a decompiler or adding a large IR would duplicate these facilities and increase pr",
+   "sha256": "2344ca3236b178a423a6443cb54e2b7459dca0c44d04d600e27e66f95f662e42",
+   "from": "docs/archive/control-flow-research.md"
+  },
+  {
+   "file": "reports/deep-fingerprint.md",
+   "title": "Deep fingerprint pass",
+   "date": "2026-10-10",
+   "kind": "report",
+   "summary": "Optional expansion after the fast fingerprint passes. It tries installed source versions, additional MSVC builds, and optimization/inlining/frame-pointer flags. No source downloads, new AI calls, or server restart are required.",
+   "sha256": "0ca04d64aa4182d268e82c4c7c1949a60c40e487c80af841a1b7b8df3719892f",
+   "from": "docs/archive/deep-fingerprint.md"
+  },
+  {
+   "file": "reports/EXPERIMENT_SUMMARY_REPORT.md",
+   "title": "ROC Matching Research - Experiment Summary Report",
+   "date": "2026-10-09",
+   "kind": "report",
+   "summary": "**Date**: 2026-10-09 **Repository**: C:\\Users\\colin\\RoConstruct **Status**: Initial probes recorded; several required pilots remain incomplete",
+   "sha256": "921d27ff9c3c51029751ecc4f0ac183ce10b0049e339795a0a7a1f4b273e6800",
+   "from": "docs/archive/EXPERIMENT_SUMMARY_REPORT.md"
+  },
+  {
+   "file": "reports/EXPERIMENTS.md",
+   "title": "Experiment memory",
+   "date": "2026-10-10",
+   "kind": "retired-guide",
+   "summary": "Consolidated 2026-10-10. Historical measurements below are snapshots, not live progress. Full reports/plans remain in [archive index](archive/README.md); address-level attempts remain in [investigation log](investigations/matching-findings.md). Read [worker guide](AI_WORKER_GUIDE.md) for current behavior and acceptance rules. For evidence gaps and prioritized expansion, read [match-maximization au",
+   "sha256": "e98b6ddf7012aad21e0ccbaae814b9749d86bfb7eccaabf44eec355056265a46",
+   "from": "docs/archive/EXPERIMENTS.md"
+  },
+  {
+   "file": "reports/family-reconstruction-results.md",
+   "title": "Repeated function-family reconstruction",
+   "date": "2026-10-10",
+   "kind": "report",
+   "summary": "`seg_00770000` is a code-section name, not one class. In the 2007-08 client it contains 1,062 functions, but opcode-only grouping found 38 repeated size-and-shape families covering 1,041 members. The largest families were 322 10-byte jump thunks and 275 25-byte wrappers.",
+   "sha256": "2d25f3ae81f8a4a19312ee484270bcc41a444f964801be9b8a63739d5593264e",
+   "from": "docs/archive/family-reconstruction-results.md"
+  },
+  {
+   "file": "reports/family-worker-plan.md",
+   "title": "Family-guided worker plan",
+   "date": "2026-10-10",
+   "kind": "plan",
+   "summary": "Raise candidate quality before repair. Repeated functions often share exact opcode shape, so one verified source can teach siblings their compact C++ form.",
+   "sha256": "603b1807ebce19a4ea36da61807cf38c3d9d7a886d79a8232af0841a9b26433f",
+   "from": "docs/archive/family-worker-plan.md"
+  },
+  {
+   "file": "reports/instruction-aware-repair-results.md",
+   "title": "Instruction-aware repair results",
+   "date": "2026-10-10",
+   "kind": "report",
+   "summary": "Controlled repair benchmark over the 40 medium/large targets (`benchmarks/holdout-ml-budget-40-20261008.json`) from `docs/output-budget-results.md`, using the frozen best compilable candidate of every target (session `ml40-direct-nt4096-20261008`, direct strategy, thinking disabled, 4096 tokens, seed 20261008).",
+   "sha256": "93b36cdc661e62484fee115a58b9586e99c377de6da4ded97d88e78de4ea85e4",
+   "from": "docs/archive/instruction-aware-repair-results.md"
+  },
+  {
+   "file": "reports/layout-config-pilot-results.md",
+   "title": "Class-layout/configuration pilot",
+   "date": "2026-10-09",
+   "kind": "report",
+   "summary": "Offline experiment, 2026-10-09. No server submissions, source-library edits, database writes, or cloud-model calls. Reproduction script and detailed output: `work/layout_config_pilot.py`, `work/layout-config-pilot.json` (ignored lab files).",
+   "sha256": "7c89ff73be9329ee8c60472dc805cb2fc4c82c196574e8118bfde9ef125f6ba4",
+   "from": "docs/archive/layout-config-pilot-results.md"
+  },
+  {
+   "file": "reports/mass-search-20261009.md",
+   "title": "Background matching search, October 9, 2026",
+   "date": "2026-10-09",
+   "kind": "report",
+   "summary": "Two detached Python jobs run from the repository. Both share a thread-safe request/token/cost budget within their own process and save compiler-scored best sources with client, address, flags, score, session and source hash.",
+   "sha256": "5872a699746701bd0b62df7f561da6fbf7aae4493c432864f19999915d41d34f",
+   "from": "docs/archive/mass-search-20261009.md"
+  },
+  {
+   "file": "reports/matching-next-plan.md",
+   "title": "Matching Next Plan",
+   "date": "2026-10-10",
+   "kind": "plan",
+   "summary": "`roc repair` supports bounded `--offset`/`--limit`, score refresh, permutation trials, mutation-family `--category`, JSON stdout, persistent `--json-out`, dry-run safety, and append-only findings logs.",
+   "sha256": "44be73b92a5bf397d95d3acb8ec999d1514b703ef5bece0f448dece10c284744",
+   "from": "docs/archive/matching-next-plan.md"
+  },
+  {
+   "file": "reports/new-matching-research-plan.md",
+   "title": "New matching experiments: beyond larger fingerprint sweeps",
+   "date": "2026-10-10",
+   "kind": "plan",
+   "summary": "Raise as many unique functions as possible from zero/partial to better partials or compiler-verified exact source, including medium and large functions. Prefer one shared correction that benefits a class or unit over hundreds of unrelated single-function guesses.",
+   "sha256": "007572309ca5fed9e7bb57dc4a6f27ff817905b33584e77e3c703898fc31db81",
+   "from": "docs/archive/new-matching-research-plan.md"
+  },
+  {
+   "file": "reports/NEXT_EXPERIMENTS.md",
+   "title": "Match-maximization audit",
+   "date": "2026-10-10",
+   "kind": "retired-guide",
+   "summary": "2026-10-10. Objective: maximize **unique newly code/data-exact functions**, then matched bytes, per unit of compiler time and generation spend. Priority below is an inference from repository evidence, not a guaranteed yield estimate.",
+   "sha256": "28468b6361277e8247d4137e983c385eb42b260f8941abe61fabc0fe64d8df20",
+   "from": "docs/archive/NEXT_EXPERIMENTS.md"
+  },
+  {
+   "file": "reports/output-budget-results.md",
+   "title": "Output-token budget experiment",
+   "date": "2026-10-10",
+   "kind": "report",
+   "summary": "Root cause and controlled benchmark of the generation-budget bottleneck that scored every medium/large target 0 in the 100-target holdout.",
+   "sha256": "45098ef53809c06f1e8ecc11b1ed3fbf73183f52b77497350313c56fb82c465a",
+   "from": "docs/archive/output-budget-results.md"
+  },
+  {
+   "file": "reports/permutation-repair-results.md",
+   "title": "Open-source permutation techniques: research and benchmark",
+   "date": "2026-10-10",
+   "kind": "report",
+   "summary": "What four matching-decompilation projects actually contain (verified from source, not README claims), what RoConstruct already had, what was integrated, and what the controlled benchmark measured.",
+   "sha256": "c6f7188bdff26b3cf802ba82ba151ed784c980daba0cfe5fcafa0ae049c20a86",
+   "from": "docs/archive/permutation-repair-results.md"
+  },
+  {
+   "file": "reports/archive-index.md",
+   "title": "Historical research archive",
+   "date": "2026-10-10",
+   "kind": "retired-guide",
+   "summary": "Retired plans and original reports preserved unchanged on 2026-10-10. These are historical evidence, not current instructions or proof of completed work. Current instructions: [agent guide](../AGENT_GUIDE.md). Retired guides (`AI_WORKER_GUIDE.md`, `EXPERIMENTS.md`, `NEXT_EXPERIMENTS.md`) were moved here on 2026-10-12.",
+   "sha256": "3b1f1bd26f962b05a6c7721c3065e389f4d783c0403f6bf33c796b0545569705",
+   "from": "docs/archive/README.md"
+  },
+  {
+   "file": "reports/repair-guided-results.md",
+   "title": "Evidence-guided repair results",
+   "date": "2026-10-10",
+   "kind": "report",
+   "summary": "Implementation is opt-in. Normal worker behavior stays unchanged unless `roc worker --guided-mutations` (or benchmark `provider_options[\"guided_mutations\"]`) is enabled.",
+   "sha256": "fc88393209cc951d1afa2027b8d73452e5a5a28cc0376bad1a8bb3dbc9a411bd",
+   "from": "docs/archive/repair-guided-results.md"
+  },
+  {
+   "file": "reports/repository-maintenance.md",
+   "title": "Repository maintenance — 2026-10-10",
+   "date": "2026-10-10",
+   "kind": "report",
+   "summary": "Root investigation scripts and diagnostic output now live locally under `work/investigation/`, which is ignored. Reusable benchmark runners, frozen target manifests, and regression tests remain tracked. Pytest cache is ignored. No investigation files were deleted from disk.",
+   "sha256": "d04f596b0fdda54ab6319fdae6c5219e560be28fcef6b7cb8df2cbf221198427",
+   "from": "docs/archive/repository-maintenance.md"
+  },
+  {
+   "file": "reports/worker-automatic-review.md",
+   "title": "Worker review — 2026-10-09",
+   "date": "2026-10-09",
+   "kind": "report",
+   "summary": "Automatic is available in the dashboard, terminal setup (choice 6), and `roc worker --preset automatic`. The dashboard keeps worker count, rounds, output tokens, maximum bytes, order, strategy, reasoning, hints, targeting and cloud budgets inside Advanced controls. Selecting Automatic fills defaults; editing individual controls overrides them.",
+   "sha256": "afaee3c614b79295afb95ad61166360e1efdea9d770a56b0be7436babce77b74",
+   "from": "docs/archive/worker-automatic-review.md"
+  },
+  {
+   "file": "reports/worker-checklist.md",
+   "title": "Worker improvement checklist",
+   "date": "2026-10-10",
+   "kind": "plan",
+   "summary": "Implemented and verified:",
+   "sha256": "047a7329fe32c76e5c3994319f29a38b268f23c3667eb06e033f48e996abc085",
+   "from": "docs/archive/worker-checklist.md"
+  },
+  {
+   "file": "reports/worker-efficiency-results.md",
+   "title": "Worker efficiency measurements — 2026-10-08",
+   "date": "2026-10-08",
+   "kind": "report",
+   "summary": "DeepSeek Flash, direct generation, thinking disabled, two rounds, 18 source-hidden solved 2007-08 targets (six each: tiny, medium, large), two repeats per arm. Four benchmark threads; no submissions to the mining server.",
+   "sha256": "eb7298ec0697e48e115eb7a1cd1abe3ee08d73e58374d403e14c1e408ef4c222",
+   "from": "docs/archive/worker-efficiency-results.md"
+  },
+  {
+   "file": "reports/worker-full-plan-checklist.md",
+   "title": "Full worker plan audit",
+   "date": "2026-10-10",
+   "kind": "plan",
+   "summary": "Source: the pasted worker plan. This is the complete verification list; `[x]` means code and current evidence exist, `[~]` means partial/pending runtime evidence, `[ ]` means not finished.",
+   "sha256": "cdabb70102b156641a22b9426c1f7bbfddeda66a3b3b54afe09ed65cdfcfaf07",
+   "from": "docs/archive/worker-full-plan-checklist.md"
+  },
+  {
+   "file": "reports/worker-improvement-plan.md",
+   "title": "RoConstruct worker improvement plan",
+   "date": "2026-10-10",
+   "kind": "plan",
+   "summary": "Current 2008-06 telemetry: 711 jobs, 1 exact match, 583 successful compile attempts out of 1,227, 51.0 seconds average LLM time, 443 `no_gain` jobs, 128 `bad_reply` jobs, and 9 timeouts. Structured generation dominates the sample (632 jobs), so direct/reference comparisons remain underpowered.",
+   "sha256": "e2dcb3d8e4de74175485f629e00b9d94b365e96b468e0576d0ea6e413c43c40c",
+   "from": "docs/archive/worker-improvement-plan.md"
+  },
+  {
+   "file": "reports/worker-runtime-review.md",
+   "title": "Live worker review — 2026-10-09",
+   "date": "2026-10-09",
+   "kind": "report",
+   "summary": "Ran four bounded batches against the configured mining server with eight concurrent DeepSeek workers, automatic rounds/output, and direct drafting. Accepted improvements were submitted through the normal worker verification flow. Saved settings were preserved.",
+   "sha256": "26eefa61511e24918c89739777808dc5305bc8d7293802068775054413c4e7e3",
+   "from": "docs/archive/worker-runtime-review.md"
+  },
+  {
+   "file": "reports/worker-speed-checklist.md",
+   "title": "Worker speed goal",
+   "date": "2026-10-10",
+   "kind": "plan",
+   "summary": "Goal: increase functions/hour and reduce GPU/CPU time without lowering match quality.",
+   "sha256": "be0d1bd6bbcafd112259807c4182d9ede3f33acaa1e795b2758751bc275d4f2b",
+   "from": "docs/archive/worker-speed-checklist.md"
+  },
+  {
+   "file": "reports/agent-auto-audit-20261012.md",
+   "title": "Agent and automatic-batch audit, 2026-10-12",
+   "date": "2026-10-12",
+   "kind": "campaign-report",
+   "summary": "Scope: agent CLI prompts/lifecycle, dashboard dispatch/control/output, worker and matching acceptance, experimental memory, current 2008 catalog, investigation reports, Claude continuation, Ogre/Boost journals, active process command lines, Ogre's current scratch runner, and library/template recipes. The initial audit was read-only; a subsequent bounded Claude pilot used four targets and two worke",
+   "sha256": "6801e69e642492a3e82367ab87ea66da716b861a2e28baa9c7c9599969506418",
+   "from": "docs/investigations/agent-auto-audit-20261012.md"
+  },
+  {
+   "file": "reports/class-layout-20261010.md",
+   "title": "Class layout recovery pilot",
+   "date": "2026-10-10",
+   "kind": "campaign-report",
+   "summary": "Run: `python -X utf8 -m benchmarks.class_layout --limit 160`.",
+   "sha256": "bff7b784c3825cbc076bcbb842a92840e02d56fb3cd96085dd4ce7beb9896ca6",
+   "from": "docs/investigations/class-layout-20261010.md"
+  },
+  {
+   "file": "reports/claude-continuation-20261011.md",
+   "title": "Interrupted Claude work: 2008-06 continuation",
+   "date": "2026-10-11",
+   "kind": "campaign-report",
+   "summary": "This continuation added **93 distinct group-server-verified exact functions**: 90 from binary-observed Boost/std template instantiations and 3 from desktop RTM XTP headers. No AI calls or spend. Only 2008-06 was mined, compiled or submitted; 2009-12 was excluded. Prior Claude gains are not included in these 93.",
+   "sha256": "387abf49f0950c7c8bc6e3a20e41cf71f335883bd91e1aef46a870c6a9928484",
+   "from": "docs/investigations/claude-continuation-20261011.md"
+  },
+  {
+   "file": "reports/followup-pilots-20261010.md",
+   "title": "Follow-up pilots, 2026-10-10",
+   "date": "2026-10-10",
+   "kind": "campaign-report",
+   "summary": "These experiments exclude 2009-12 and the five ranked shapes reserved in AI-RECOVERY-HANDOFF.md. They do not change another worker's source or compiler settings. No cloud requests are made. Acceptance requires score 100 locally, referenced-data verification, and server byte verification. Existing exacts are skipped; weaker candidates are logged, never submitted.",
+   "sha256": "e3ad2b55016e67bb0ae416c88e827e103bf1287eb32c78e1553e0078e5319782",
+   "from": "docs/investigations/followup-pilots-20261010.md"
+  },
+  {
+   "file": "reports/g3d-x87-2008-20261011.md",
+   "title": "G3D source and floating-point investigation — 2026-10-11",
+   "date": "2026-10-11",
+   "kind": "campaign-report",
+   "summary": "Scope: **2008-06 only**. No model calls. Existing authoritative group server verifies every submitted candidate; gains count only responses with both `verified: true` and `improved: true`, deduplicated by address.",
+   "sha256": "bd56494ffb229ee757b95680a1f6a8e86089948986bdf3d59bd71dc063ab6773",
+   "from": "docs/investigations/g3d-x87-2008-20261011.md"
+  },
+  {
+   "file": "reports/library-branch-loop-20261010.md",
+   "title": "Branching from successful library configuration experiments",
+   "date": "2026-10-10",
+   "kind": "campaign-report",
+   "summary": "Continue the idea -> pilot -> selective/full scale loop without cloud requests. Exclude 2009-12 and every current `TEMPLATE_FAMILIES` exemplar shape plus the five open handoff leads. Read the other agent's registry only; do not invoke or edit their recovery experiments. Preserve other workers' Git changes.",
+   "sha256": "83132f92ec76efa6b5ea69de0ca0d375677cf3e2a18f8e9abd2b2ba04912e7ac",
+   "from": "docs/investigations/library-branch-loop-20261010.md"
+  },
+  {
+   "file": "reports/library-fill-20261011.md",
+   "title": "Library completion campaign — 2026-10-11",
+   "date": "2026-10-11",
+   "kind": "campaign-report",
+   "summary": "Scope: 2008-06 only. No 2009-12 access or paid model calls. Only authoritative group-server verification credits gains. Existing matching/data guards remain in force; each submission must beat a freshly fetched server score.",
+   "sha256": "5d5d38b3c72f535fe2e59e154e6bc6f809018f95470609a6c88544a470768436",
+   "from": "docs/investigations/library-fill-20261011.md"
+  },
+  {
+   "file": "reports/local-inventory.json",
+   "title": "Local investigation scratch inventory",
+   "date": "2026-10-10",
+   "kind": "provenance",
+   "summary": "Filenames, sizes and SHA-256 of the work/investigation scratch snapshot at consolidation.",
+   "sha256": "371f551eab49d1c7fc325310cb43e58381008408c363e90c76ee478964ab4ec1",
+   "from": "docs/investigations/local-inventory.json"
+  },
+  {
+   "file": "reports/re-pilot-20261010.md",
+   "title": "Reverse-engineering pilot: template and layout recovery",
+   "date": "2026-10-10",
+   "kind": "campaign-report",
+   "summary": "Pilot run on 2026-10-10 with `benchmarks/re_pilot.py`. Client 2009-12 is excluded from targets, donors and totals. Local compiles use each client's exact registered compiler; every claimed improvement is re-verified by the server before it is counted.",
+   "sha256": "8dcc2f7c3b9ae152d8930ee71ca1e37f320ae64b0163b3f6f8cd8607cb0025d0",
+   "from": "docs/investigations/re-pilot-20261010.md"
+  },
+  {
+   "file": "reports/re-recovery-workflow.md",
+   "title": "Recovery workflow runbook",
+   "date": "2026-10-10",
+   "kind": "campaign-report",
+   "summary": "Operational companion to `AI-RECOVERY-PROMPT.md`. Use the prompt for the agent identity and rules; use this file for the mechanics, decision tree and scorecard.",
+   "sha256": "e2e48a3f6cb8e9a7f4451ff8e207e16174448488ecc4a244473b52dc2043d0a1",
+   "from": "docs/investigations/re-recovery-workflow.md"
+  },
+  {
+   "file": "reports/scaled-campaign-20261010.md",
+   "title": "Expanded matching campaign",
+   "date": "2026-10-10",
+   "kind": "campaign-report",
+   "summary": "Exclude 2009-12 from targets, donors and result totals. Normal code and referenced data verification plus server acknowledgement remain mandatory for new exacts. Concurrent runs submit only exact improvements. No blanket compiler/library changes are promoted.",
+   "sha256": "36fcdab439d69e01291d129d7def41ccf0558b589b72eb0cea745aed61e470e6",
+   "from": "docs/investigations/scaled-campaign-20261010.md"
+  },
+  {
+   "file": "reports/source2016-pilot-20261011.md",
+   "title": "2016-source retry on 2008-06",
+   "date": "2026-10-11",
+   "kind": "campaign-report",
+   "summary": "Result: **0 new server-verified exacts, 0 improved partial candidates**. Do not scale this method on 2008-06 without new evidence. This pilot does not establish its value for later clients.",
+   "sha256": "fcb7be42b62bb515da96ff63539f163d5014012bc8f264e4d3f035d3555c6970",
+   "from": "docs/investigations/source2016-pilot-20261011.md"
+  },
+  {
+   "file": "reports/worker-auto-20261010.md",
+   "title": "Auto worker reliability, 2026-10-10",
+   "date": "2026-10-10",
+   "kind": "campaign-report",
+   "summary": "Client: August 19, 2007 (`2007-08`), registered VS2005 build 50727, `/O2 /GS /EHsc /MD`. Model: `deepseek:deepseek-flash`, direct generation, thinking disabled, two rounds, seed 42, four concurrent calls. Source hidden; normal source hints allowed by each arm. No live submissions.",
+   "sha256": "128f95cb82bc6c8707f243f021c2623591977bacb4251a5098ea600a54c9798f",
+   "from": "docs/investigations/worker-auto-20261010.md"
+  },
+  {
+   "file": "reports/worker-history-20261010.md",
+   "title": "Worker history experiment — 2026-10-10",
+   "date": "2026-10-10",
+   "kind": "campaign-report",
+   "summary": "Client: August 19, 2007 (`2007-08`), registered VS2005 build 50727, `/O2 /GS /EHsc /MD`. Model: `deepseek:deepseek-flash`, thinking disabled, 2048 output tokens, three rounds, seed 42. Local compiler/data verification; no submissions or recovered-source replacements. Seed does not guarantee identical provider outputs.",
+   "sha256": "02840819d868578959c5a47a754f253785753d7223f87f3cbb75e91fc7d581ea",
+   "from": "docs/investigations/worker-history-20261010.md"
+  },
+  {
+   "file": "reports/worker-reuse-20261010.md",
+   "title": "Worker reuse and repair correctness — 2026-10-10",
+   "date": "2026-10-10",
+   "kind": "campaign-report",
+   "summary": "Client: August 19, 2007 (`2007-08`), registered VS2005 build 50727. Changes target concrete worker defects rather than another global prompt tweak.",
+   "sha256": "843d28cde110e76fe6a4886da749869616cfecfd436a4fb691ba303709a8689e",
+   "from": "docs/investigations/worker-reuse-20261010.md"
+  },
+  {
+   "file": "reports/xtp-2008-coverage-20261011.md",
+   "title": "2008 XTP coverage investigation",
+   "date": "2026-10-11",
+   "kind": "campaign-report",
+   "summary": "Read-only investigation, 2026-10-11. Counts below use the published local `docs/data/2008-06.json` snapshot, not a fresh group-server export. Scope is functions whose displayed unit contains `CXTP`, so this is a UI-label cohort, not a definitive inventory of all XTP code in the executable.",
+   "sha256": "9be2086ffbbcb3b0060abfa5e29c14ea08b7cfc8855aeb571d4cd4e2f06a3eb9",
+   "from": "docs/investigations/xtp-2008-coverage-20261011.md"
+  },
+  {
+   "file": "reports/decentralized-server-plan.md",
+   "title": "Distributed CPU mining and replicated coordination (design)",
+   "date": "2026-10-11",
+   "kind": "plan",
+   "summary": "Status: private cluster implementation available; see `decentralized-server-setup.md`. Real local three-process tests verified quorum writes, concurrent coordinators, GET/POST failover, lost SQLite projection replay, and an independently compiled exact fixture. The detailed sections below describe the eventual design, including features that are not implemented yet: two-validator signatures, publi",
+   "sha256": "82ed55205770145a8c24bd9a6d00fa617e02a6c52034952b8e1504aea180e85e",
+   "from": "docs/decentralized-server-plan.md"
+  },
+  {
+   "file": "reports/decompilation-research.md",
+   "title": "Matching-decompilation research notes",
+   "date": "2026-10-08",
+   "kind": "report",
+   "summary": "Research date: 2026-10-08. Claims below are scoped to the cited papers and repositories; they are not evidence of a RoConstruct improvement.",
+   "sha256": "23faefcc1c8c0df1ff40904a70fb0441f95f59e563cbc2d3b5d0d84f670f07a2",
+   "from": "docs/decompilation-research.md"
+  },
+  {
+   "file": "reports/matching-findings-20261012.md",
+   "title": "Matching findings log (address-level, through 2026-10-12)",
+   "date": "2026-10-12",
+   "kind": "log",
+   "summary": "Chronological attempts, addresses, rejected variants and campaign results. Frozen 2026-10-12; newer entries live in research/log.jsonl.",
+   "sha256": "550bbafa60c7686d850b3a5cf5c7c231f7764db103edeee0996a67b0f64d8ddd",
+   "from": "docs/investigations/matching-findings.md"
+  }
+ ]
+}
