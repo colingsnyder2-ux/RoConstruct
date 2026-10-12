@@ -336,8 +336,15 @@ def sha1(path):
 
 
 def powershell(cmd):
-    return subprocess.run(["powershell", "-NoProfile", "-Command", cmd],
-                          capture_output=True, text=True).stdout.strip()
+    # Inherited PowerShell 7 module paths can break Windows PowerShell's OS
+    # Security/Storage modules. Installer commands use the selected OS engine.
+    script = "$ErrorActionPreference = 'Stop'; $env:PSModulePath = Join-Path $PSHOME 'Modules'; " + cmd
+    result = subprocess.run(["powershell", "-NoProfile", "-NonInteractive", "-Command", script],
+                            capture_output=True, text=True)
+    if result.returncode:
+        detail = (result.stderr.strip() or "exit %s" % result.returncode).splitlines()[0]
+        raise SystemExit("PowerShell installer command failed: %s" % detail[:300])
+    return result.stdout.strip()
 
 
 def require_signature(path, org="Microsoft Corporation"):
@@ -679,42 +686,31 @@ def expand_cab(cab, out):
 
 
 def copy_from_iso(iso, inner, dest):
-    """Mount the ISO (Windows 8+) or extract the one file (Linux), no admin rights."""
-    if not WINDOWS:
-        return copy_from_iso_unix(iso, inner, dest)
-    out = powershell(
-        "$i=Mount-DiskImage -ImagePath '%s' -PassThru; $d=($i|Get-Volume).DriveLetter; "
-        "Copy-Item \"${d}:\\%s\" '%s'; Dismount-DiskImage -ImagePath '%s' | Out-Null; 'ok'"
-        % (iso, inner, dest, iso))
-    if not Path(dest).exists():
-        raise SystemExit("Could not read %s from %s (%s)" % (inner, iso.name, out))
-
-
-def copy_from_iso_unix(iso, inner, dest):
-    """Extract one file from an ISO with 7z or bsdtar. Case may differ on disc."""
+    """Read the compiler's UDF/ISO archive with 7-Zip without mounting it."""
+    exe = shutil.which("7z") or shutil.which("7zz")
+    if not exe and WINDOWS:
+        locations = [Path(os.environ.get("ProgramFiles", r"C:\Program Files")), PF86]
+        exe = next((str(base / "7-Zip" / "7z.exe") for base in locations
+                    if (base / "7-Zip" / "7z.exe").is_file()), None)
+    if not exe:
+        raise SystemExit("Compiler ISO extraction needs 7-Zip. Install it and run setup again "
+                         "(Windows: winget install --id 7zip.7zip -e; Linux: install 7zip or p7zip).")
     dest = Path(dest)
     dest.parent.mkdir(parents=True, exist_ok=True)
     names = [inner.replace("\\", "/")]
     upper = "/".join(part.upper() for part in names[0].split("/"))
     if upper != names[0]:
         names.append(upper)
-    with tempfile.TemporaryDirectory() as tmp:
-        for tool in ("7z", "bsdtar"):
-            exe = shutil.which(tool)
-            if not exe:
+    with tempfile.TemporaryDirectory(dir=dest.parent) as tmp:
+        for name in names:
+            cmd = [exe, "x", "-y", "-o" + tmp, str(iso), name]
+            if subprocess.run(cmd, capture_output=True).returncode != 0:
                 continue
-            for name in names:
-                if tool == "7z":
-                    cmd = [exe, "x", "-y", "-o" + tmp, str(iso), name]
-                else:
-                    cmd = [exe, "-xf", str(iso), "-C", tmp, name]
-                if subprocess.run(cmd, capture_output=True).returncode != 0:
-                    continue
-                found = Path(tmp) / name
-                if found.is_file():
-                    shutil.copyfile(found, dest)
-                    return
-    raise SystemExit("Could not read %s from %s (Linux needs 7z or bsdtar)" % (inner, iso.name))
+            found = Path(tmp) / name
+            if found.is_file():
+                shutil.copyfile(found, dest)
+                return
+    raise SystemExit("Could not read %s from %s with 7-Zip" % (inner, iso.name))
 
 
 def carve_cab(exe, cab):

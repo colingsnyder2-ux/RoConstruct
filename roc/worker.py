@@ -99,7 +99,7 @@ def resolve_workers(workers, model=None, source_only=False):
         if source_only:
             workers = 1
         elif providers.is_cloud(model):
-            workers = 8 if str(model).startswith("deepseek:") else 4
+            workers = 1 if providers.parse_model(model)[0] == "chatgpt" else 8 if str(model).startswith("deepseek:") else 4
         else:
             workers = 2 if re.search(r":7b(?:-|$)", str(model).lower()) else 1
     return max(1, min(int(workers or 1), MAX_WORKERS))
@@ -114,12 +114,19 @@ def resolve_output_tokens(job, max_tokens):
 def cloud_default():
     """The cheapest cloud model whose key is already set, or None."""
     from roc import providers
+    from roc import chatgpt
+    saved = load_settings().get("model")
+    if saved and providers.parse_model(saved)[0] == "chatgpt":
+        return saved  # Never replace a disconnected plan with a paid provider.
+    plan_model = chatgpt.default_model()
+    if plan_model:
+        return plan_model
     for model in CLOUD_DEFAULTS:
         if providers.is_cloud(model) and providers.available(model):
             return model
     for name, config in sorted(providers.providers().items()):
         remote = (config.get("defaults") or [None])[0]
-        if remote and providers.key_available(config["key_env"]):
+        if remote and providers.provider_ready(name):
             return "%s:%s" % (name, remote)
     return None
 
@@ -311,7 +318,7 @@ def resolve_model(payload):
     if model and providers.is_cloud(model):
         if not providers.available(model):
             _provider, _remote, config = providers.parse_model(model)
-            raise SystemExit("Cloud key missing: set %s (roc provider setup)" % config["key_env"])
+            raise SystemExit(providers.credential_hint(model))
         return model, cloud_allowed
     if mode == "local":
         local = draft.pick_model(model)
@@ -412,7 +419,7 @@ def main_args(payload, argv=()):
             raise SystemExit("--cloud-escalate needs cloud consent (roc setup, or --allow-cloud)")
         if not providers.available(escalate):
             _p, _r, config = providers.parse_model(escalate)
-            raise SystemExit("Cloud key missing for %s: set %s" % (escalate, config["key_env"]))
+            raise SystemExit(providers.credential_hint(escalate))
     max_tokens = given.output_budget if given.output_budget is not None else s.get("worker_output_budget") or 2048
     if max_tokens != "auto":
         try:
@@ -682,7 +689,7 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
             raise SystemExit("Cloud model sends prompts outside this PC. Re-run with --allow-cloud.")
         if not providers.available(model):
             _provider, _remote, config = providers.parse_model(model)
-            raise SystemExit("Cloud key is missing: set %s." % config["key_env"])
+            raise SystemExit(providers.credential_hint(model))
         announce_once(("privacy-cloud", providers.parse_model(model)[0]), log,
                         "Privacy: cloud worker sends bounded assembly, symbols, prompts, and source hints to %s. "
                         "No executable, key, or server lease leaves this PC." % providers.parse_model(model)[0])
@@ -693,7 +700,7 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
             raise SystemExit("Cloud escalation needs --allow-cloud")
         if not providers.available(cloud_escalate):
             _provider, _remote, config = providers.parse_model(cloud_escalate)
-            raise SystemExit("Cloud key is missing: set %s" % config["key_env"])
+            raise SystemExit(providers.credential_hint(cloud_escalate))
         if not providers.is_cloud(model):
             announce_once(("privacy-escalate", providers.parse_model(cloud_escalate)[0]), log,
                           "Privacy: escalation may send bounded prompts to %s after repeated local stalls."
@@ -1243,7 +1250,8 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
             failure_reason = "api"
         else:
             failure_reason = "worker_error"
-        if failure_reason == "cloud_budget" and provider_options is not None:
+        if (failure_reason == "cloud_budget" or (providers.parse_model(model)[0] == "chatgpt"
+                and failure_reason == "provider_auth")) and provider_options is not None:
             provider_options["budget_exhausted"] = True
         if getattr(error, "category", "") == "provider_circuit":
             provider, _remote, _config = providers.parse_model(model)

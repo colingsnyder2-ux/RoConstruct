@@ -15,7 +15,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 
-from roc import clients, libraries, providers, worker
+from roc import chatgpt, clients, libraries, providers, worker
 from roc.gui_worker import DEFAULTS, LIVE, validate
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -168,8 +168,11 @@ class Dashboard:
                              "downloaded": clients.exe_path(name, row).exists(),
                              "analyzed": (ROOT / "work" / name / "functions.jsonl").exists()}
                             for name, row in sorted(registry.items())],
-                "providers": [{"name": name, "ready": providers.key_available(row["key_env"]),
-                               "models": row.get("defaults", [])} for name, row in providers.providers().items()],
+                "providers": [{"name": name, "ready": providers.provider_ready(name),
+                               "auth": "chatgpt" if name == "chatgpt" else "api-key",
+                               "models": ([model["slug"] for model in chatgpt.models(refresh=False)]
+                                          if name == "chatgpt" else row.get("defaults", []))}
+                              for name, row in providers.providers().items()],
                 "libraries": libraries.NAMES,
                 "commands": [{"name": name, "title": row[0], "description": row[1], "target": row[2]}
                              for name, row in COMMANDS.items()]}
@@ -517,7 +520,7 @@ class Handler(BaseHTTPRequestHandler):
                 app.preferences_update(data)
             elif self.path == "/api/provider":
                 config = providers.providers().get(data.get("provider"))
-                if not config or not isinstance(data.get("key"), str) or not data["key"].strip():
+                if not config or not config.get("key_env") or not isinstance(data.get("key"), str) or not data["key"].strip():
                     raise ValueError("Provider and key required")
                 providers.save_secret(config["key_env"], data["key"].strip())
                 app.secret_values.append(data["key"].strip())
