@@ -15,7 +15,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 
-from roc import clients, providers, worker
+from roc import clients, libraries, providers, worker
 from roc.gui_worker import DEFAULTS, LIVE, validate
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -170,6 +170,7 @@ class Dashboard:
                             for name, row in sorted(registry.items())],
                 "providers": [{"name": name, "ready": providers.key_available(row["key_env"]),
                                "models": row.get("defaults", [])} for name, row in providers.providers().items()],
+                "libraries": libraries.NAMES,
                 "commands": [{"name": name, "title": row[0], "description": row[1], "target": row[2]}
                              for name, row in COMMANDS.items()]}
 
@@ -192,10 +193,10 @@ class Dashboard:
             if kind == "worker":
                 config = validate(data.get("config", {}))
                 args = None
-                title = "Worker Â· " + (config["client"] or "all clients")
+                title = "Worker · " + (config["client"] or "all clients")
             elif kind == "command":
                 args, config = command_args(data), None
-                title = COMMANDS[args[0]][0] + (" Â· " + data["client"] if data.get("client") else "")
+                title = COMMANDS[args[0]][0] + (" · " + data["client"] if data.get("client") else "")
             elif kind == "cpu":
                 from roc import cpu_status
                 found = cpu_status.configs()
@@ -208,7 +209,7 @@ class Dashboard:
                     raise ValueError("This CPU contributor already runs")
                 cpu_status.control({"config": data["config"], "action": "on"})
                 args, config = ["cpu-worker", "--config", str(path)], {"cpu_config": data["config"]}
-                title = "CPU mining Â· " + saved.get("worker", path.stem)
+                title = "CPU mining · " + saved.get("worker", path.stem)
             else:
                 raise ValueError("Unknown job kind")
             job_id = uuid.uuid4().hex[:12]
@@ -411,14 +412,19 @@ class Handler(BaseHTTPRequestHandler):
     def send(self, code, content, content_type="application/json"):
         if content_type == "application/json":
             content = json.dumps(content).encode()
-        self.send_response(code)
-        self.send_header("Content-Type", content_type)
-        self.send_header("Content-Length", str(len(content)))
-        self.send_header("Cache-Control", "no-store")
-        self.send_header("X-Content-Type-Options", "nosniff")
-        self.send_header("Content-Security-Policy", "default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self' data:; frame-ancestors 'none'")
-        self.end_headers()
-        self.wfile.write(content)
+        try:
+            self.send_response(code)
+            self.send_header("Content-Type", content_type)
+            self.send_header("Content-Length", str(len(content)))
+            self.send_header("Cache-Control", "no-store")
+            self.send_header("X-Content-Type-Options", "nosniff")
+            self.send_header("Content-Security-Policy", "default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self' data:; frame-ancestors 'none'")
+            self.end_headers()
+            self.wfile.write(content)
+        except (BrokenPipeError, ConnectionResetError, ConnectionAbortedError):
+            # Browser refresh/close can abort a long-poll response. The job
+            # remains owned by the dashboard; there is nothing to report.
+            return
 
     def authorized(self):
         host = "127.0.0.1:%d" % self.server.server_port
@@ -527,11 +533,13 @@ class Handler(BaseHTTPRequestHandler):
             self.send(400, {"error": str(error)})
 
 
-def serve(port=0, open_browser=True, initial=None):
+def serve(port=0, open_browser=True, initial=None, page="overview"):
     app = Dashboard(initial)
     server = ThreadingHTTPServer(("127.0.0.1", port), Handler)
     server.dashboard = app
     url = "http://127.0.0.1:%d/" % server.server_port
+    if page == "cpu":
+        url += "?page=cpu"
     print("ROC dashboard: " + url, flush=True)
     print("Browser refresh/close keeps jobs running. Ctrl+C stops dashboard and jobs.", flush=True)
     if open_browser:

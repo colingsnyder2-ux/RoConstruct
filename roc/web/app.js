@@ -3,10 +3,11 @@ const $ = (selector) => document.querySelector(selector);
 const esc = (value) => String(value ?? "").replace(/[&<>"']/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]));
 const token = location.hash.slice(1) || sessionStorage.getItem("roc-session");
 if (token) sessionStorage.setItem("roc-session", token);
-history.replaceState(null, "", location.pathname);
-let meta, jobs = [], page = "overview", selectedCommand = "mass", editing = null;
+const initialPage = new URLSearchParams(location.search).get("page") === "cpu" ? "cpu" : "overview";
+history.replaceState(null, "", location.pathname + (initialPage === "cpu" ? "?page=cpu" : ""));
+let meta, jobs = [], page = initialPage, selectedCommand = "mass", editing = null;
 let cursor = 0, logs = [], follow = true, online = false, toastTimer, localModels = [];
-let cpu = null, cpuCluster = "", cpuLoaded = 0, cpuLoading = false;
+let cpu = null, cpuCluster = "", cpuLoaded = 0, cpuLoading = false, serverSetupOpen = initialPage === "cpu";
 const active = job => ["running", "paused", "stopping"].includes(job.status);
 const liveKeys = new Set(["workers","model","rounds","max_size","max_tokens","strategy","order","thinking","reasoning_effort","use_revng","min_score","max_score","diverse_candidates","guided_mutations","near_repair","max_cloud_requests","max_cloud_tokens","max_cloud_cost"]);
 const nullable = new Set(["min_score","max_score","max_cloud_requests","max_cloud_tokens","max_cloud_cost","reasoning_effort","unit_name","family_id"]);
@@ -33,13 +34,8 @@ function endRun(job) {
 async function loadCpu(force=false) {
   if(cpuLoading || (!force && Date.now()-cpuLoaded<3000)) return;
   cpuLoading=true;
-  try {cpu=await api("cpu"+(cpuCluster ? "?cluster="+encodeURIComponent(cpuCluster) : ""));cpuCluster=cpu.selected || "";cpuLoaded=Date.now();if(page==="cpu")render();}
+  try {cpu=await api("cpu"+(cpuCluster ? "?cluster="+encodeURIComponent(cpuCluster) : ""));cpuCluster=cpu.selected || "";cpuLoaded=Date.now();if(page==="cpu")render();if(page==="commands")renderCommandProgress();}
   finally {cpuLoading=false;}
-}
-function cpuButtons(config, worker, paused, enabled, job="") {
-  const attrs=`data-cpu-config="${esc(config)}" data-cpu-worker="${esc(worker || "")}" data-cpu-job="${esc(job)}"`;
-  return button(paused ? "Resume" : "Pause",`${attrs} data-cpu-action="${paused ? "resume" : "pause"}"`,true)+
-    (job ? "" : button(enabled ? "CPU off" : "CPU on",`${attrs} data-cpu-action="${enabled ? "off" : "on"}"`,true));
 }
 function cpuProgress(job) {
   const node=cpu.remote?.nodes.find(n=>n.id===job.worker && n.metadata.job===job.id), state=node?.metadata;
@@ -57,25 +53,32 @@ function cpuJobBars(job) {
   return cpuBar("Compared · worker reported",compared,job.total,job.state==="leased")+cpuBar("Trusted verification",job.completed,job.total);
 }
 function cpuSummary(remote) {
-  const total=remote.jobs.reduce((n,j)=>n+j.total,0), done=remote.jobs.reduce((n,j)=>n+j.completed,0), percent=total ? Math.floor(100*done/total) : 0;
-  return `<div class="panel panel-pad cpu-summary"><div class="cpu-ring" role="img" aria-label="${percent}% of displayed targets verified"><svg viewBox="0 0 100 100" aria-hidden="true"><circle class="cpu-ring-track" cx="50" cy="50" r="42"/><circle class="cpu-ring-fill" cx="50" cy="50" r="42" stroke-dasharray="${percent*2.638937829} 263.8937829" transform="rotate(-90 50 50)"/></svg><b>${percent}%</b></div><div><h2>Trusted verification</h2><p>${done}/${total} targets in displayed jobs</p><p><b>+${remote.jobs.reduce((n,j)=>n+j.exact_gains,0)} exact</b> · +${remote.jobs.reduce((n,j)=>n+j.partial_gains,0)} partial · ${remote.jobs.filter(j=>["queued","leased","reported","paused"].includes(j.state)).length} pending jobs</p></div></div>`;
+  return `<div class="server-stats"><span><b>${remote.jobs.filter(j=>["queued","leased","reported","paused"].includes(j.state)).length}</b> pending batches</span><span><b>${remote.jobs.reduce((n,j)=>n+j.completed,0)}</b> targets verified</span><span><b>+${remote.jobs.reduce((n,j)=>n+j.exact_gains,0)}</b> exact matches</span><span><b>+${remote.jobs.reduce((n,j)=>n+j.partial_gains,0)}</b> improved</span></div>`;
+}
+function serverSetup() {
+  if(!serverSetupOpen)return "";
+  return `<section class="panel panel-pad"><div class="section-heading"><div><h2>Host a server on this PC</h2><p>Share jobs over your private network.</p></div>${button("Close", 'data-host-server aria-label="Close hosting setup"', true)}</div><h3>1. Create your server</h3><p>Run in your RoConstruct folder. Replace <code>YOUR_PRIVATE_IP</code> with this PC’s LAN or VPN address.</p><pre><code>py -3.12 roc.py cluster setup --nodes YOUR_PRIVATE_IP</code></pre><p class="help-note">Requires Python 3.12. Setup downloads server tools. Already have a server database? Add <code>--db "PATH_TO_OFFLINE_BACKUP.db"</code> to preserve its scores.</p><h3>2. Start hosting</h3><pre><code>py -3.12 roc.py cluster start --config work/cluster/node-1/node.json</code></pre><p>Keep that terminal open, then Refresh this page.</p><p class="help-note">Use a private LAN or VPN. Keep server ports off the public Internet; never share admin configs.</p><details data-cpu-detail="server-advanced"><summary>Advanced hosting options</summary><p>For this PC only, use <code>127.0.0.1</code> as the address. Another standalone server has its own data; it does not sync automatically.</p><p>Automatic failover needs three approved PCs configured together:</p><pre><code>py -3.12 roc.py cluster setup --nodes IP1,IP2,IP3 --db "PATH_TO_OFFLINE_BACKUP.db"</code></pre><p>Copy each PC’s own node folder to it and run its start launcher. Never reuse a node identity. Private network ports: HTTP 8766, NATS 4222/6222; transport TLS is not included.</p>${button("Copy setup link for another PC", 'data-server-uri', true)}<p class="help-note">Requires RoConstruct installed with <code>roc link install</code>. The link opens this guide.</p></details></section>`;
 }
 function cpuPage() {
-  let html=heading("","Servers","Private coordinators, contributors and ROC jobs. Pause / CPU off finish active work.",button("Refresh",'data-cpu-refresh',true));
-  if(!cpu)return html+empty("Loading servers","Reading configured coordinators…");
-  html+=`<div class="panel panel-pad"><label class="field"><span>Coordinator config</span><select id="cpu-cluster">${cpu.clusters.map(n=>`<option value="${n.id}" ${n.id===cpuCluster ? "selected" : ""}>${esc(n.label)}</option>`).join("")}</select></label><p class="help-note">One trusted PC works alone. Three voters allow one coordinator to go offline. Contributor CPU is optional; AI workers stay independent.</p></div>`;
-  if(cpu.error)html+=`<p class="help-note">Coordinator unavailable: ${esc(cpu.error)}</p>`;
+  let html=heading("","Servers","Share work across your PCs.",button("Host Server",'data-host-server aria-expanded="'+serverSetupOpen+'"')+button("Refresh",'data-cpu-refresh',true));
+  html+=serverSetup();
+  if(!cpu)return html+empty("Loading servers","Checking connections…");
   const remote=cpu.remote;
-  if(remote)html+=cpuSummary(remote);
-  html+='<div class="section-heading"><h2>This PC</h2></div>';
-  html+=cpu.local.length ? `<div class="panel">${cpu.local.map(n=>`<div class="client-row"><div><h3>${esc(n.worker)}</h3><p>${esc(n.label)}</p><p>${esc(n.status.pc || "Local PC")} · ${n.running ? esc(n.status.stage) : "Stopped"} · ${n.enabled ? "CPU enabled" : "CPU off"}${n.paused ? " · paused" : ""}${n.status.pid ? " · PID "+esc(n.status.pid) : ""}</p></div><div class="button-row">${cpuButtons(n.id,n.worker,n.paused,n.enabled)}${!n.running ? button("Start CPU worker",`data-cpu-start="${n.id}"`,true) : ""}</div></div>`).join("")}</div>` : empty("No CPU contributor configs","Create a private cluster, or save an invited CPU config under work/.");
+  if(cpu.clusters.length)html+=`<section class="panel panel-pad server-connection"><div class="server-connection-row"><label class="field"><span>Server</span><select id="cpu-cluster">${cpu.clusters.map(n=>`<option value="${n.id}" ${n.id===cpuCluster ? "selected" : ""}>${esc(n.label)}</option>`).join("")}</select></label>${badge(remote ? "Online" : "Offline")}</div><details data-cpu-detail="server-connection"><summary>Connection details</summary><p><code>${esc((cpu.servers || []).join(", "))}</code></p><p>Config: <code>${esc(cpu.clusters.find(n=>n.id===cpuCluster)?.path || "")}</code></p>${remote ? `<p>${remote.replicas} server replica(s)</p>` : ""}${cpu.error ? `<p>${esc(cpu.error)}</p>` : ""}</details>${!remote ? '<p>Start the server or check your private network.</p>' : ""}</section>`;
+  else html+=empty("No server connected","Select Host Server to get started.");
+  return html;
+}
+function commandProgress() {
+  if(!cpu)return "";
+  const remote=cpu.remote;
+  let html="";
+  if(remote?.jobs.length)html+=cpuSummary(remote);
   if(remote) {
-    html+=`<div class="section-heading"><h2>Contributors</h2><span class="muted">${esc(remote.node)} · ${remote.replicas} voter(s)</span></div><div class="panel">${remote.nodes.map(n=>`<div class="client-row"><div><h3>${esc(n.id)} · ${esc(n.metadata.pc || "Unknown PC")}</h3><p>Owner ${esc(n.metadata.owner || "unknown")} · ${Date.now()/1000-n.seen<65 ? "Online" : "Offline / stale"} · ${esc(n.metadata.stage || "idle")}${n.metadata.pid ? " · PID "+esc(n.metadata.pid) : ""}</p></div><div class="button-row">${remote.can_control ? cpuButtons(cpuCluster,n.id,n.paused,n.enabled) : ""}</div></div>`).join("") || '<p class="help-note">No contributors connected yet.</p>'}</div>`;
-    html+='<div class="section-heading"><h2>ROC jobs</h2><span class="muted">Gains require trusted verification</span></div>';
-    html+=remote.jobs.length ? `<div class="panel cpu-jobs">${remote.jobs.map(j=>`<div class="cpu-job"><div class="cpu-job-heading"><h3>${esc(j.command)}</h3>${j.state==="rejected" && j.scores.length ? '<span class="badge completed">No gain</span>' : badge(j.state)}</div><p>${esc(j.client)} · owner <b>${esc(j.owner)}</b> · worker ${esc(j.worker || "unassigned")} · ${j.attempts} attempt(s)</p><p>${j.completed}/${j.total} verified · <b>+${j.exact_gains} exact</b> · +${j.partial_gains} partial${j.state==="leased" ? " · "+esc(cpuProgress(j)) : j.state==="reported" ? " · awaiting trusted verification" : ""}</p>${cpuJobBars(j)}<details data-cpu-detail="${j.id}"><summary>${j.total} target function(s) · compiler / flags</summary><p><code>${esc(j.compiler)}</code> <code>${esc(j.flags)}</code></p><div class="cpu-addresses">${(j.targets || j.addrs.map(addr=>({addr}))).map(t=>`<p><code>${esc(t.addr)}</code> ${esc(t.unit || "")}</p>`).join("")}</div>${j.scores.map(s=>`<p><code>${esc(s.addr)}</code> · ${s.score}% · ${s.improved ? "improved" : "no gain"} · verified</p>`).join("")}</details><div class="button-row">${remote.can_control && ["queued","paused"].includes(j.state) ? cpuButtons(cpuCluster,"",j.state==="paused",true,j.id) : ""}</div></div>`).join("")}</div>` : empty("No queued jobs","Enqueue a bounded source / target job with roc cluster enqueue.");
+    html+='<div class="section-heading"><h2>Function batches</h2></div>';
+    html+=remote.jobs.length ? `<div class="panel cpu-jobs">${remote.jobs.map(j=>`<div class="cpu-job"><div class="cpu-job-heading"><h3>${esc(j.command)}</h3>${j.state==="rejected" && j.scores.length ? '<span class="badge completed">No gain</span>' : badge(({leased:"Running",reported:"Verifying",queued:"Waiting",paused:"Paused"})[j.state] || j.state)}</div><p>${esc(j.client)} · ${esc(j.owner)} · ${j.completed}/${j.total} verified · +${j.exact_gains} exact · +${j.partial_gains} improved</p>${j.state==="leased" ? `<p>${esc(cpuProgress(j))}</p>` : ""}<details data-cpu-detail="${j.id}"><summary>Job details</summary><p>Worker: ${esc(j.worker || "Waiting for a PC")} · ${j.attempts} attempt(s)</p>${cpuJobBars(j)}<p><code>${esc(j.compiler)}</code> <code>${esc(j.flags)}</code></p><div class="cpu-addresses">${(j.targets || j.addrs.map(addr=>({addr}))).map(t=>`<p><code>${esc(t.addr)}</code> ${esc(t.unit || "")}</p>`).join("")}</div>${j.scores.map(s=>`<p><code>${esc(s.addr)}</code> · ${s.score}% · ${s.improved ? "improved" : "no gain"} · verified</p>`).join("")}</details></div>`).join("")}</div>` : '<div class="panel panel-pad"><p>No function batches yet.</p></div>';
   }
   const commands=(cpu.tasks || []).filter(j=>["running","paused","stale"].includes(j.status));
-  html+='<div class="section-heading"><h2>Local ROC commands</h2></div>'+ (commands.length ? `<div class="panel">${commands.map(j=>`<div class="client-row"><div><h3>${esc(j.command)}</h3><p>${esc(j.owner)} · ${esc(j.pc)} · PID ${esc(j.pid)} · ${esc(j.status)}</p><p>${esc(j.stage)} · ${j.inspected} targets inspected</p><p><code>${esc(j.flags)}</code></p>${cpuBar("Target progress · "+j.inspected+" inspected",null,0,j.status==="running")}</div><div class="button-row">${j.status!=="stale" ? button(j.status==="paused" ? "Resume" : "Pause",`data-roc-id="${j.id}" data-roc-action="${j.status==="paused" ? "resume" : "pause"}"`,true)+button("CPU off",`data-roc-id="${j.id}" data-roc-action="stop"`,true) : ""}</div></div>`).join("")}</div>` : empty("No local commands running","ROC tools launched here or in a terminal appear after their next start. Controls apply between targets / compiler calls."));
+  if(commands.length)html+='<div class="section-heading"><h2>Commands on this PC</h2></div>'+`<div class="panel">${commands.map(j=>`<div class="client-row"><div><h3>${esc(j.command)}</h3><p>${esc(j.stage)} · ${j.inspected} functions inspected · ${esc(j.status)}</p><details data-cpu-detail="command-${esc(j.id)}"><summary>Details</summary><p>${esc(j.owner)} · ${esc(j.pc)} · PID ${esc(j.pid)}</p><p>${esc(j.client)} · ${esc(j.addr)} · ${esc(j.unit)}</p><p><code>${esc(j.flags)}</code></p></details></div><div class="button-row">${j.status!=="stale" ? button(j.status==="paused" ? "Resume" : "Pause",`data-roc-id="${j.id}" data-roc-action="${j.status==="paused" ? "resume" : "pause"}"`,true)+button("Stop",`data-roc-id="${j.id}" data-roc-action="stop"`,true) : ""}</div></div>`).join("")}</div>`;
   return html;
 }
 function runTable(rows, emptyTitle="No saved runs") {
@@ -105,6 +108,7 @@ function workerForm(config) {
   const preset = config.rounds==="auto" && config.max_tokens==="auto" ? "automatic" : config.rounds===2 && config.max_size===96 ? "fast" : config.rounds===6 && config.max_size===512 ? "deep" : config.rounds===4 && config.max_size===256 ? "balanced" : "";
   return `<form id="worker-form" class="panel panel-pad"><div class="section-heading"><h2>${editing ? "Tune active session" : "Configure a worker"}</h2>${editing ? `<button type="button" class="text-button" data-new-worker>New session →</button>` : ""}</div><div class="preset-row">${["automatic","fast","balanced","deep"].map(mode=>`<button type="button" data-preset="${mode}" class="${preset===mode ? "active" : ""}">${mode[0].toUpperCase()+mode.slice(1)}</button>`).join("")}</div><div class="field-grid">` +
     field("Client", "client", config.client, {choices:[["","All available clients"],...meta.clients.map(client=>[client.name,client.name])]}) +
+    field("Library", "library", config.library, {choices:[["","Auto (all libraries)"],...(meta.libraries||[]).map(name=>[name,name])]}) +
     field("Username", "user", config.user) + field("Server", "server", config.server, {full:true,placeholder:"host:8765 or https://server"}) +
     field("Model", "model", config.model, {full:true,list:"models",placeholder:"provider:model or installed Ollama model"}) + `<datalist id="models">${models.map(model=>`<option value="${esc(model)}"></option>`).join("")}</datalist>` +
     field("Worker loops", "workers", config.workers, {placeholder:"auto or 1–256"}) +
@@ -224,7 +228,7 @@ function workerCards() {
 }
 function commands() {
   const command = meta.commands.find(command=>command.name===selectedCommand), names = meta.clients.map(client=>client.name);
-  return heading("", "Commands", "Run ROC tools. Jobs queue to prevent conflicting file writes.") + `<div class="card-grid">${meta.commands.map(command=>`<button class="command-card ${command.name===selectedCommand ? "active" : ""}" data-command="${command.name}"><span class="command-icon">${icon(command.name === "client-fetch" || command.name === "pull" ? "download" : command.name === "mass" || command.name === "auto" || command.name === "check" ? "code" : command.name === "doctor" || command.name === "flags" ? "settings" : command.name.includes("stats") ? "chart" : "terminal")}</span><div class="cmd">roc ${command.name}</div><h3>${command.title}</h3><p>${command.description}</p></button>`).join("")}</div><form id="command-form" class="panel panel-pad command-settings"><h2>${command.title}</h2><div class="field-grid form-section">` +
+  return heading("", "Commands", "Run ROC tools. Jobs queue to prevent conflicting file writes.") + `<div id="command-progress">${commandProgress()}</div><div class="card-grid">${meta.commands.map(command=>`<button class="command-card ${command.name===selectedCommand ? "active" : ""}" data-command="${command.name}"><span class="command-icon">${icon(command.name === "client-fetch" || command.name === "pull" ? "download" : command.name === "mass" || command.name === "auto" || command.name === "check" ? "code" : command.name === "doctor" || command.name === "flags" ? "settings" : command.name.includes("stats") ? "chart" : "terminal")}</span><div class="cmd">roc ${command.name}</div><h3>${command.title}</h3><p>${command.description}</p></button>`).join("")}</div><form id="command-form" class="panel panel-pad command-settings"><h2>${command.title}</h2><div class="field-grid form-section">` +
     (command.target !== "none" ? field("Client", "client", meta.initial.client || (command.target==="one" ? names[0] : "all"), {choices:[...(command.target==="one" ? [] : [["all","All clients"]]),...names.map(name=>[name,name])]}) : "") +
     (["repair","check"].includes(command.name) ? field("Function address (optional)", "addr", "", {placeholder:"00401000"}) : "") +
     (command.name==="libs" ? field("Recipes", "recipes", "all", {placeholder:"all or comma-separated recipe names"}) : "") +
@@ -245,9 +249,10 @@ function render(config) {
   $("#page-name").textContent = {overview:"Overview",workers:"Workers",cpu:"Servers",commands:"Commands",clients:"Clients",history:"Run history",functions:"Functions",settings:"Settings"}[page];
   $("#main").innerHTML = page==="cpu" ? cpuPage() : page==="overview" ? overview() : page==="workers" ? workers(config) : page==="commands" ? commands() : page==="clients" ? clientPage() : page==="history" ? heading("", "Run history", "Saved configurations, outcomes, and logs. Rerun interrupted sessions explicitly.")+runTable([...jobs].reverse()) : page==="functions" ? functionsPage() : settings();
   if(page==="cpu") {document.querySelectorAll("[data-cpu-detail]").forEach(n=>{n.open=expanded.has(n.dataset.cpuDetail);});$("#main").scrollTop=cpuScroll;}
+  document.body.classList.toggle("servers-page",page==="cpu");
   document.body.classList.toggle("workers-page",page==="workers");
   if (page==="workers") { $("#worker-status").innerHTML=workerCards();renderWorkerChat(); }
-  if (page==="commands") act(previewCommand);
+  if (page==="commands") {act(previewCommand);act(()=>loadCpu(true));}
   if (page==="functions") act(loadFunctions);
 }
 function navigate(next, config) { page=next; if(next!=="workers") editing=null; render(config); if(next==="cpu")act(()=>loadCpu(true)); $("#main").scrollTop=0; }
@@ -302,7 +307,7 @@ async function poll() {
     if($("#log-job").dataset.signature!==signature) { $("#log-job").innerHTML='<option value="">All runs</option>'+jobs.map(job=>`<option value="${job.id}">${esc(job.title)} · ${job.id.slice(0,5)}</option>`).join("");$("#log-job").value=selected;$("#log-job").dataset.signature=signature; }
     $("#worker-count").textContent=jobs.filter(job=>job.kind==="worker"&&active(job)).length;
     if(page==="overview"||page==="history") render();
-    else if(page==="cpu") act(()=>loadCpu());
+    else if(page==="cpu"||page==="commands") act(()=>loadCpu());
     else if(page==="workers") { if(editing&&!jobs.some(job=>job.id===editing&&active(job))) { editing=null;render(); }  }
     renderWorkerChat();
     renderLogs();
@@ -313,8 +318,6 @@ document.addEventListener("click", event=>act(async()=>{
   if(event.target.closest(".brand")) { event.preventDefault();navigate("overview");return; }
   const target=event.target.closest("button,[data-log]");if(!target)return;
   if(target.hasAttribute("data-cpu-refresh")) {await loadCpu(true);return;}
-  if(target.dataset.cpuStart) {await api("start",{kind:"cpu",config:target.dataset.cpuStart});toast("CPU worker queued");await loadCpu(true);return;}
-  if(target.dataset.cpuAction) {await api("cpu-control",{config:target.dataset.cpuConfig,worker:target.dataset.cpuWorker,job:target.dataset.cpuJob,action:target.dataset.cpuAction});toast("Control saved; current work finishes");await loadCpu(true);return;}
   if(target.dataset.rocAction) {await api("roc-control",{id:target.dataset.rocId,action:target.dataset.rocAction});toast("Control applies at next target / compiler boundary");await loadCpu(true);return;}
   if(target.dataset.removeRun) {
     const id=target.dataset.removeRun;
@@ -327,6 +330,8 @@ document.addEventListener("click", event=>act(async()=>{
   }
   if(target.dataset.workerTab) {await selectWorker(target.dataset.workerTab==="all" ? "" : target.dataset.workerTab);return;}
   if(target.id==="chat-compact") {chatCompact=!chatCompact;target.textContent=chatCompact ? "Regular" : "Compact";renderWorkerChat();}
+  if(target.hasAttribute("data-host-server")) {serverSetupOpen=!serverSetupOpen;render();return;}
+  if(target.hasAttribute("data-server-uri")) {await navigator.clipboard.writeText("roconstruct://server");toast("Server setup URI copied");}
   if(target.dataset.page) navigate(target.dataset.page);
   if(target.dataset.function) { functionDetail=await api("functions?id="+target.dataset.function); detailTab="source";renderFunctionDetail(); }
   if(target.dataset.detailTab) { detailTab=target.dataset.detailTab;renderFunctionDetail(); }
@@ -396,13 +401,19 @@ $("#export-console").addEventListener("click",()=>act(async()=>{
   const url=URL.createObjectURL(new Blob([text],{type:"text/plain"}));const link=document.createElement("a");link.href=url;link.download="roc-"+(id||"console")+".jsonl";link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
 }));
 new ResizeObserver(()=>renderLogs()).observe($("#log-scroll"));
-act(async()=>{meta=await api("meta");document.documentElement.dataset.theme=meta.preferences.theme;render();poll();});
+act(async()=>{meta=await api("meta");document.documentElement.dataset.theme=meta.preferences.theme;render();if(page==="cpu")await loadCpu(true);poll();});
 
 let functionRows=[], functionDetail=null, detailTab="source";
 function functionsPage() {
-  return heading("", "Functions", "Function attempts, source changes, compiler commands, and round results.", button("Refresh", 'id="refresh-functions"', true)) + `<div class="function-tools"><input id="function-search" placeholder="Search function, address, client…" aria-label="Search functions"><select id="function-status" aria-label="Filter status"><option value="">All results</option>${["working","matched","improved","unchanged","failed"].map(v=>`<option>${v}</option>`).join("")}</select><select id="function-sort" aria-label="Sort functions"><option value="recent">Latest first</option><option value="score">Highest score</option><option value="gain">Largest gain</option><option value="unit">Function name</option><option value="addr">Address</option></select></div><div class="panel" id="function-list"></div><div id="function-detail"></div><p class="help-note">Latest 300 attempts. History starts with this worker version. Source shows best locally verified candidate; final status reports worker outcome. Compiler paths describe temporary files used during execution.</p>`;
+  return heading("", "Functions", "Function results and source changes.", button("Refresh", 'id="refresh-functions"', true)) + `<div class="function-tools"><input id="function-search" placeholder="Search function, address, client…" aria-label="Search functions"><select id="function-status" aria-label="Filter status"><option value="">All results</option>${["working","matched","improved","unchanged","failed"].map(v=>`<option>${v}</option>`).join("")}</select><select id="function-sort" aria-label="Sort functions"><option value="recent">Latest first</option><option value="score">Highest score</option><option value="gain">Largest gain</option><option value="unit">Function name</option><option value="addr">Address</option></select></div><div class="panel" id="function-list"></div><div id="function-detail"></div><p class="help-note">Latest 300 attempts. History starts with this worker version. Source shows best locally verified candidate; final status reports worker outcome. Compiler paths describe temporary files used during execution.</p>`;
 }
 async function loadFunctions() { functionRows=await api("functions"); if(page!=="functions")return;renderFunctionList();renderFunctionDetail(); }
+function renderCommandProgress() {
+  const node=$("#command-progress");if(!node)return;
+  const expanded=new Set([...node.querySelectorAll("[data-cpu-detail][open]")].map(n=>n.dataset.cpuDetail));
+  node.innerHTML=commandProgress();
+  node.querySelectorAll("[data-cpu-detail]").forEach(n=>{n.open=expanded.has(n.dataset.cpuDetail);});
+}
 function renderFunctionList() {
   const query=$("#function-search").value.toLowerCase(), status=$("#function-status").value, sort=$("#function-sort").value;
   const rows=functionRows.filter(r=>(!status||r.status===status)&&`${r.unit} ${r.client} ${r.addr}`.toLowerCase().includes(query)).sort((a,b)=>sort==="score" ? b.score-a.score : sort==="gain" ? (b.score-b.base_score)-(a.score-a.base_score) : ["unit","addr"].includes(sort) ? String(a[sort]).localeCompare(String(b[sort])) : b.started-a.started);

@@ -25,18 +25,20 @@ DIST = ROOT / "dist"
 # Every module a working cloud worker needs (transitive closure of worker, link,
 # handoff, doctor, setup, analyze, draft, optimizer and the matchers).
 WORKER_MODULES = [
-    "activity", "analyze", "angr_facts", "auto", "benchmark", "clients", "doctor", "draft", "fingerprint",
+    "activity", "analyze", "angr_facts", "audit", "auto", "benchmark", "clients", "doctor", "donor", "draft",
+    "fingerprint",
     "cpu_jobs", "cpu_worker", "cpu_status", "command_watch", "daily_stats", "flags", "gui", "gui_worker", "handoff", "libs", "link", "mass", "match", "metrics", "mutate",
     "ltcg", "optimizer", "pressure", "providers", "refsource", "repair", "selfupdate", "setup",
     "shapes", "sources", "task_files", "uninstall", "verify_window", "worker", "xcopy",
 ]
 # Only the maintainer's server needs these, so they stay out of the helper zips.
 SERVER_MODULES = ["cluster", "cluster_setup", "dataset", "discord", "leaderboard", "progress", "server"]
+WORKER_MODULES += ["client_templates", "libraries"]
 
 COMMON_FILES = ["roc.py", "roc.cmd", "roc.sh", "install.cmd", "install.sh",
                 "uninstall.cmd", "README.md",
                 "roc/web/index.html", "roc/web/style.css", "roc/web/app.js",
-                "clients/clients.json", "clients/sources.json", "clients/README.md"]
+                "clients/clients.json", "clients/sources.json", "clients/README.md", "clients/donor.json"]
 
 PACKAGES = {
     "worker": {

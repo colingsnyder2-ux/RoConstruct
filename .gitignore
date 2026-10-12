@@ -3,6 +3,7 @@ clients/*
 !clients/README.md
 !clients/clients.json
 !clients/sources.json
+!clients/donor.json
 
 # Matched-source findings live in the separate RoConstruct-findings repository.
 # Keep the local findings checkout ignored here so normal RoConstruct clones

@@ -44,8 +44,9 @@ is written before each request; crashes retain reservations and missing usage
 does not refund. Official DeepSeek pricing checked on 2026-10-10:
 https://api-docs.deepseek.com/quick_start/pricing/?push_animated=1&theme=light&webview_progress_bar=1
 AI family siblings undergo normal verification; representative success does not
-guarantee sibling gains. An authorized follow-up extends to 30 families under
-the same persisted 60-request/$1.80 cap; this does not reset the spend ledger.
+guarantee sibling gains. The current authorized scale raises the ceiling to
+$4.50 and 500 requests; the ledger remains cumulative and never resets. Total
+campaign ceiling is $5.
 
 Real contexts: corrected adapter now handles recovered member names and named
 parameters. Ten actual callers with independently byte/data-exact callee bridges

@@ -55,3 +55,9 @@
 .cpu-ring b {position:relative;font:20px var(--mono);}
 @keyframes cpu-working {to {background-position:-200% 0;}}
 @media(prefers-reduced-motion:reduce) {.cpu-progress progress:not([value]) {animation:none;}}
+
+.server-connection-row{display:flex;align-items:center;gap:20px}.server-connection-row .field{flex:1;min-width:0}.server-connection details{margin-top:10px}.server-stats{display:flex;flex-wrap:wrap;gap:12px 28px;padding:15px 0;color:var(--muted)}.server-stats b{color:var(--text);margin-right:4px}.servers-page details summary,#command-progress details summary{cursor:pointer;color:var(--muted);font-size:11px;margin-top:8px}.servers-page .client-row{align-items:flex-start}.servers-page .badge.Online{color:var(--green)}.servers-page .badge.Offline{color:var(--muted)}
+
+.servers-page .console{display:none}.servers-page .server-connection{margin-bottom:16px}.servers-page .server-connection-row .field{margin:0}#command-progress .cpu-job{padding:14px 20px}.servers-page .panel>.help-note{padding:14px 20px;margin:0}
+
+#command-progress .client-row{align-items:flex-start}#command-progress{margin-bottom:20px}

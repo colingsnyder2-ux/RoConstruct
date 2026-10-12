@@ -172,6 +172,7 @@ Most functions are not worth hand-writing, because the code is either public or 
 |---|---|
 | **Library matching** | Compiles zlib, libjpeg, Lua, RakNet 3.0 and the rest from their real source with the client's own compiler, then matches by fingerprint. RakNet 3.0 targets the early RBXGS clients; later clients use their newer fork. Matched code carries `// roc-lang` / `// roc-flags` / `// roc-cl` lines so anyone re-checks it with the settings that matched. |
 | **`roc xcopy <client\|all>`** | The clients share code: a function that is byte-identical in two exes is the same function. This takes every stored match and tries it against every other client's open functions. It only runs where the compiler can reproduce the same bytes, so it works within a compiler group (2008-06↔2011-06, or 2009/2010/2012-06). Re-run it whenever new matches land — every new match is a candidate everywhere else. |
+| **`roc donor [client\|all]`** | Roblox's December 2007 RBXGS installer ships `WebService.dll` with its PDB, and [OpenRBX](https://github.com/Asphaltian/OpenRBX) exports those names. Every open function that is byte-identical to a named WebService function gets the decorated PDB name in its AI prompt, plus OpenRBX's source when a local checkout has it. The table lives in `clients/donor.json`, so workers download nothing. |
 | **`roc shapes <client\|all>`** | Counts the assembly shapes of what's still unmatched, with addresses and immediates generalised away, so the next pattern template is chosen from counts instead of guesses. |
 
 Nothing above can record a wrong match: a result counts only when it is byte-identical, so a bad guess costs compile time and nothing else.
@@ -247,6 +248,10 @@ roc mass <client|all>           compile every known source recipe, fingerprint, 
 roc auto <client|all>           auto-match trivial functions
 roc shapes <client|all>         count unmatched assembly shapes (picks the next templates)
 roc xcopy <client|all>          copy every match to the other clients that share the function
+roc donor [client|all]          name functions byte-identical to RBXGS WebService.dll (PDB names via OpenRBX)
+roc lint <client>               check src files, function boundaries, stale scores, verified-data coverage
+roc vtables <client>            RTTI vtables with matched-slot coverage (work/<client>/vtables.json)
+roc ghidra <client>             write a Ghidra script that applies recovered names and match status
 roc next <client>               easiest open functions
 roc claim <client> <addr>       start a function: src/<client>/<addr>.cpp
 roc check <client> [addr]       compile, score, show the diff

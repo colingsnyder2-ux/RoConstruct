@@ -71,6 +71,8 @@ CREATE INDEX IF NOT EXISTS leases_target ON leases(client, addr);
 class Store:
     def __init__(self, path, lease_seconds):
         self.db = sqlite3.connect(path, check_same_thread=False)
+        from roc.libraries import library_of
+        self.db.create_function("roc_library", 1, library_of, deterministic=True)
         self.db.executescript(SCHEMA)
         columns = {r[1] for r in self.db.execute("PRAGMA table_info(funcs)")}
         if "data" not in columns:
@@ -126,7 +128,7 @@ class Store:
             return added
 
     def lease(self, user, worker, have, mode, max_size, model=None, targets=None, order="random", family=None, unit=None,
-              min_score=None, max_score=None):
+              min_score=None, max_score=None, library=None):
         now = time.time()
         with self.lock:
             self.db.execute("DELETE FROM leases WHERE expires < ?", (now,))
@@ -137,6 +139,9 @@ class Store:
             target_sql, target_args = "", []
             family_sql, family_args = (" AND f.family = ?", [family]) if family else ("", [])
             unit_sql, unit_args = (" AND f.unit = ?", [unit]) if unit else ("", [])
+            if library:
+                unit_sql += " AND roc_library(f.unit) = ?"
+                unit_args.append(library)
             score_sql, score_args = (" AND f.score >= ?", [min_score]) if min_score is not None else ("", [])
             if max_score is not None:
                 score_sql += " AND f.score <= ?"
@@ -259,8 +264,10 @@ class Store:
             rows = self.db.execute(
                 "SELECT user, SUM(new = 100 AND old < 100), SUM(new - old), COUNT(*), MAX(ts) "
                 "FROM events %s GROUP BY user ORDER BY 2 DESC, 3 DESC" % where, args).fetchall()
+        from roc.discord import server_users
+        hidden = server_users()
         return [{"user": u, "matched": m or 0, "points": p or 0, "submissions": n, "last": t}
-                for u, m, p, n, t in rows]
+                for u, m, p, n, t in rows if u not in hidden]
 
     def user_points(self, user):
         """Total leaderboard points for one user (0 when unknown)."""
@@ -505,7 +512,8 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None):
                                   family=(str(body["family"])[:64] if body.get("family") else None),
                                   unit=(str(body["unit"])[:160] if body.get("unit") else None),
                                   min_score=(int(body["min_score"]) if body.get("min_score") is not None else None),
-                                  max_score=(int(body["max_score"]) if body.get("max_score") is not None else None))
+                                  max_score=(int(body["max_score"]) if body.get("max_score") is not None else None),
+                                  library=(str(body["library"])[:64] if body.get("library") else None))
                 finally:
                     lease_slots.release()
                 return self.send(200, {"job": job})
@@ -543,7 +551,9 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None):
                 if body.get("lease"):
                     store.release(str(body["lease"]))
                 if improved:
-                    feed = server_mine_log if str(body.get("model", "")).startswith("roc ") else mine_log
+                    from roc.discord import server_users
+                    feed = (server_mine_log if str(body.get("model", "")).startswith("roc ") or user in server_users()
+                            else mine_log)
                     if feed is not None:
                         feed.submit(store.function_info(client, addr), user,
                                         str(body.get("worker", ""))[:64],
@@ -760,7 +770,10 @@ def sync_findings(store):
     for name in store.scores():
         scores_file = ROOT / "work" / name / "scores.json"
         scores = json.loads(scores_file.read_text()) if scores_file.exists() else {}
+        starts = match.function_starts(name)
         for row in store.sources(name, min_score=0):
+            if starts is not None and row["addr"] not in starts:
+                continue  # address retired by a boundary fix
             path = ROOT / "src" / name / (row["addr"] + ".cpp")
             if path.exists() and scores.get(row["addr"], 0) > row["score"]:
                 continue

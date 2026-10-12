@@ -71,14 +71,14 @@ class Target:
 
 
 def save(client, found, note):
-    """Write matches into src/<client>/ (existing files are kept). Returns how many were new."""
+    """Write matches into src/<client>/. Returns how many were new.
+    `found` only holds functions that were open (score < 100), so an existing file
+    there is an unverified attempt and the exact match replaces it."""
     new = 0
     for addr, (source, symbol, spans) in found.items():
         path = ROOT / "src" / client / ("%s.cpp" % addr)
         match.save_score(client, addr, 100)
         match.save_data(client, addr, spans)
-        if path.exists():
-            continue
         header = match.template(client, addr).split("\n\n")[0]
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text("%s\n// %s (function %s)\n\n%s" % (header, note, symbol, source))

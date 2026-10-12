@@ -508,6 +508,28 @@ def cmd_libs(a):
     print(libs.run([n for n in names if libs.RECIPES[n].get("files")], targets))
 
 
+def cmd_donor(a):
+    from roc import donor
+    donor.build(donor.default_targets() if a.client == "all" else [a.client])
+
+
+def cmd_lint(a):
+    from roc import audit
+    if any(k.startswith("error") for k in audit.lint(a.client, show=a.show)):
+        sys.exit(1)
+
+
+def cmd_vtables(a):
+    from roc import audit
+    audit.vtable_report(a.client, top=a.top)
+
+
+def cmd_ghidra(a):
+    from roc import audit
+    path, count = audit.ghidra(a.client)
+    print("Wrote %s (%d functions). In Ghidra: Script Manager, add this folder, run it." % (path, count))
+
+
 def cmd_mass(a):
     """Everything automatic: compiler runtime tagging, STL, all libraries, then auto shapes."""
     from roc import libs, mass
@@ -1496,6 +1518,14 @@ def main(argv=None):
         (["--limit"], {"type": int, "default": 5}))
     cmd("libs", cmd_libs, "match open-source library code from its real source ('all' or recipe names)",
         (["names"], {"nargs": "+"}), (["--client"], {"default": "all"}))
+    cmd("donor", cmd_donor, "name client functions byte-identical to RBXGS WebService.dll (OpenRBX PDB names)",
+        (["client"], {"nargs": "?", "default": "all"}))
+    cmd("lint", cmd_lint, "check src/<client> files, function boundaries and verified-data coverage",
+        (["client"], {}), (["--show"], {"type": int, "default": 5, "help": "examples per problem"}))
+    cmd("vtables", cmd_vtables, "list RTTI vtables with matched-slot coverage (writes work/<client>/vtables.json)",
+        (["client"], {}), (["--top"], {"type": int, "default": 20}))
+    cmd("ghidra", cmd_ghidra, "write a Ghidra script that applies recovered names and match status",
+        (["client"], {}))
     cmd("mass", cmd_mass, "run every automatic matcher (runtime, STL, libraries, shapes); takes a while",
         (["client_name"], {"nargs": "?"}), (["--client"], {"default": "all"}))
     cmd("flags", cmd_flags, "find the client's compiler flags from matched sources",

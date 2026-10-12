@@ -76,8 +76,12 @@ def coff_functions(obj):
         _, _, _, rawsize, rawptr, relptr, _, nrel, _, _ = secs[sec]
         nxt = min([v for s, v, _ in syms if s == sec and v > value] + [rawsize])
         relocs = [struct.unpack_from("<I", obj, relptr + 10 * k)[0] - value for k in range(nrel)]
-        out.append((name, obj[rawptr + value:rawptr + nxt],
-                    [r for r in relocs if 0 <= r < nxt - value]))
+        relocs = [r for r in relocs if 0 <= r < nxt - value]
+        body = obj[rawptr + value:rawptr + nxt]
+        # analyze.py strips trailing int3 from exe functions (padding is
+        # indistinguishable); strip the same bytes here so both sides agree.
+        body = body[:max([len(body.rstrip(b"\xcc"))] + [r + 4 for r in relocs])]
+        out.append((name, body, relocs))
     return out
 
 
@@ -106,6 +110,7 @@ def coff_data_refs(obj, func_name):
     if func is None:
         return []
     fvalue, fsec = func
+    fptr = secs[fsec][4]
     out = []
     for off, symidx, typ in relocs_of(fsec):
         if typ != 6 or symidx not in syms:  # 6 = IMAGE_REL_I386_DIR32 (absolute address)
@@ -117,8 +122,12 @@ def coff_data_refs(obj, func_name):
         if chars & 0x20 or not chars & 0x40 or not rawptr:  # code, or no initialised data
             continue
         nxt = min([v for n, v, s, t in syms.values() if s == secnum and v > value] + [rawsize])
-        inner = [r - value for r, _, _ in relocs_of(secnum - 1) if value <= r < nxt]
-        out.append((off - fvalue, obj[rawptr + value:rawptr + nxt], inner))
+        # The exe operand is symbol + addend (e.g. [table+4]); start the data there too.
+        start = value + struct.unpack_from("<i", obj, fptr + off)[0]
+        if not value <= start < nxt:
+            continue
+        inner = [r - start for r, _, _ in relocs_of(secnum - 1) if start <= r < nxt]
+        out.append((off - fvalue, obj[rawptr + start:rawptr + nxt], inner))
     return out
 
 
@@ -596,6 +605,15 @@ def _single_load(fn):
 
 @_single_load
 @functools.lru_cache(maxsize=None)
+def function_starts(client):
+    """Addresses that start a function now, or None when the client is not analyzed.
+    Boundary fixes (bounds.json) retire addresses; stored sources for them are orphans."""
+    try:
+        return set(_functions(client))
+    except FileNotFoundError:
+        return None
+
+
 def _functions(client):
     rows = {}
     for line in (ROOT / "work" / client / "functions.jsonl").open():

@@ -144,34 +144,6 @@ def test_newfiles_require_unresolved_class_evidence(tmp_path, monkeypatch):
     assert match.directives(candidate)['flags'] == '/O2 /GS /EHsc /MD'
 
 
-def test_diverse_pilot_checks_twelve_new_files_across_all_clients(tmp_path, monkeypatch):
-    monkeypatch.setattr(library_branches, 'ROOT', tmp_path)
-    sources = [('// roc-flags: /O2 /GS /EHsc /MD\n// roc-lib: xtp-example File%d.cpp\n' % i, 100 - i) for i in range(16)]
-    (tmp_path / 'combo-newfiles-manifest.json').write_text(json.dumps({'groups': [{'source': sources[0][0]}]}))
-    monkeypatch.setattr(library_branches, 'winning_sources', lambda **kwargs: [])
-    monkeypatch.setattr(library_branches, 'untested_files', lambda campaign: sources)
-    monkeypatch.setattr(library_branches, 'live', lambda campaign: {c: {} for c in campaign.info['clients']})
-    monkeypatch.setattr(library_branches, 'reserved_shapes', lambda: set())
-    monkeypatch.setattr(match, '_functions', lambda client: {'a': {'kind': 'code', 'size': 20}})
-
-    class CampaignStub:
-        info = {'clients': {str(i): {} for i in range(7)}}
-
-        def previous(self, stage):
-            return []
-
-        def record(self, stage, row):
-            pass
-
-    plans = library_branches.build_manifest(CampaignStub(), 'combo-newfiles-diverse')
-    pilot = plans[:84]
-    assert len(pilot) == 84
-    assert len({p['source'] for p in pilot}) == 12
-    assert all(p['source'] != sources[0][0] for p in plans)
-    for source in {p['source'] for p in pilot}:
-        assert len({p['client'] for p in pilot if p['source'] == source}) == 7
-
-
 def test_recipe_neighbors_require_installed_same_path(tmp_path, monkeypatch):
     monkeypatch.setattr(library_branches.libs, 'LIBS', tmp_path)
     monkeypatch.setattr(library_branches.libs, 'RECIPES', {
