@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-12 22:15 UTC",
+ "updated": "2026-10-12 23:20 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -22,13 +22,6 @@
      "points": 799855,
      "submissions": 8079,
      "last": 1791758667.0416703
-    },
-    {
-     "user": "tester",
-     "matched": 1003,
-     "points": 26563,
-     "submissions": 1007,
-     "last": 1791757461.7485256
     },
     {
      "user": "colin",
@@ -86,13 +79,6 @@
      "last": 1791820881.36257
     },
     {
-     "user": "tester",
-     "matched": 983,
-     "points": 36778,
-     "submissions": 1367,
-     "last": 1791757502.5333812
-    },
-    {
      "user": "atomic.potato",
      "matched": 49,
      "points": 785,
@@ -130,9 +116,9 @@
     {
      "user": "espeon_1",
      "matched": 0,
-     "points": 25,
-     "submissions": 4,
-     "last": 1791825860.8699286
+     "points": 28,
+     "submissions": 5,
+     "last": 1791845149.2905066
     },
     {
      "user": "pitbull",
@@ -167,13 +153,6 @@
      "points": 990424,
      "submissions": 10608,
      "last": 1791756004.5913844
-    },
-    {
-     "user": "tester",
-     "matched": 4553,
-     "points": 244960,
-     "submissions": 4965,
-     "last": 1791820527.8826735
     },
     {
      "user": "king_originala",
@@ -245,13 +224,6 @@
      "last": 1791756011.3222485
     },
     {
-     "user": "tester",
-     "matched": 2995,
-     "points": 143717,
-     "submissions": 3021,
-     "last": 1791757452.3395808
-    },
-    {
      "user": "colin",
      "matched": 1429,
      "points": 649054,
@@ -307,13 +279,6 @@
      "last": 1791756018.252797
     },
     {
-     "user": "tester",
-     "matched": 2909,
-     "points": 137341,
-     "submissions": 2920,
-     "last": 1791757452.6149223
-    },
-    {
      "user": "colin",
      "matched": 2311,
      "points": 816333,
@@ -362,13 +327,6 @@
      "last": 1791731044.154585
     },
     {
-     "user": "tester",
-     "matched": 3011,
-     "points": 147496,
-     "submissions": 3011,
-     "last": 1791757487.877285
-    },
-    {
      "user": "atomic.potato",
      "matched": 406,
      "points": 177957,
@@ -401,13 +359,6 @@
      "points": 982207,
      "submissions": 9977,
      "last": 1791758698.6201742
-    },
-    {
-     "user": "tester",
-     "matched": 2800,
-     "points": 141722,
-     "submissions": 2889,
-     "last": 1791757622.170013
     },
     {
      "user": "colin",
@@ -443,13 +394,6 @@
    "points": 7398765,
    "submissions": 75473,
    "last": 1791758698.6201742
-  },
-  {
-   "user": "tester",
-   "matched": 18261,
-   "points": 879277,
-   "submissions": 19187,
-   "last": 1791820527.8826735
   },
   {
    "user": "colin",
@@ -531,9 +475,9 @@
   {
    "user": "espeon_1",
    "matched": 0,
-   "points": 25,
-   "submissions": 4,
-   "last": 1791825860.8699286
+   "points": 28,
+   "submissions": 5,
+   "last": 1791845149.2905066
   },
   {
    "user": "pitbull",
