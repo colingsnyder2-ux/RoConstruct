@@ -1653,9 +1653,17 @@
    "roc_client_scene_update.cpp",
    "roc_client_short_methods_5b192b39c746b09e.cpp",
    "roc_client_texture_copy.cpp",
+   "roc_fork_97dc8a390b2b28e8.cpp",
+   "roc_fork_ea71c50b47f88007.cpp",
    "roc_local_visitor_c83fbe91eb3a0edc.cpp",
    "roc_rtti_d56a903776f2b6ff.cpp",
-   "roc_sub_transform_2a4870813417745d.cpp"
+   "roc_sub_transform_2a4870813417745d.cpp",
+   "roc_try_3de506635a8ad8a6.cpp",
+   "roc_try_5230e5fcf10842ad.cpp",
+   "roc_try_5a636a8fbb4dd2a2.cpp",
+   "roc_try_88a75b4c54bbca54.cpp",
+   "roc_try_b894a2da96c86c7e.cpp",
+   "roc_try_ffd5d9229ca1a018.cpp"
   ]
  },
  "lame-3.98.4-dll": {
