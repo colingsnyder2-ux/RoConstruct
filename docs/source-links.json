@@ -160,7 +160,9 @@
  "lua-5.1.2-rbx": {
   "url": "https://www.lua.org/ftp/lua-5.1.2.tar.gz",
   "kind": "archive",
-  "files": []
+  "files": [
+   "lstate.c"
+  ]
  },
  "lua-5.1.3-rbx": {
   "url": "https://www.lua.org/ftp/lua-5.1.3.tar.gz",
