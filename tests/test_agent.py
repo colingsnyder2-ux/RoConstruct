@@ -55,3 +55,13 @@ def test_goal_mode_allows_roc_commands_and_web(monkeypatch):
     monkeypatch.setattr(agent, "run_agent", lambda cli, prompt, model, minutes, log, goal: seen.append((prompt, goal)))
     agent.run_goal("claude", "match RakNet in 2008-06", minutes=5, log=lambda *a: None)
     assert "match RakNet in 2008-06" in seen[0][0] and seen[0][1] is True
+
+
+def test_dashboard_agent_command_args():
+    import pytest
+    from roc.gui import command_args
+    assert command_args({"command": "agent", "cli": "codex", "goal": "match zlib", "minutes": 30}) == [
+        "agent", "codex", "--goal", "match zlib", "--minutes", "30"]
+    for bad in ({"cli": "bash", "goal": "x"}, {"cli": "claude", "goal": " "}, {"cli": "claude", "goal": "x", "minutes": 0}):
+        with pytest.raises(ValueError):
+            command_args({"command": "agent", **bad})

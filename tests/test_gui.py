@@ -197,7 +197,7 @@ class DashboardTests(unittest.TestCase):
         cli = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(cli)
         for name in gui.COMMANDS:
-            data = dict(command=name, client="2008-06", accept_downloads=True)
+            data = dict(command=name, client="2008-06", accept_downloads=True, cli="claude", goal="match zlib")
             args = gui.command_args(data)
             with patch.object(cli, "cmd_" + name.replace("-", "_")) as command:
                 cli.main(args)

@@ -38,6 +38,7 @@ COMMANDS = {
     "failures": ("Failures", "Inspect recurring compile and provider failures", "none"),
     "status": ("Server status", "Read server progress and worker leaderboard", "none"),
     "install": ("Install tools", "Download exact compilers; no Ollama or Docker", "optional"),
+    "agent": ("Agent", "Claude Code or Codex works a goal on your own plan", "none"),
 }
 
 
@@ -81,6 +82,15 @@ def command_args(data):
             args += ["--" + key.replace("_", "-"), str(value)]
         if data.get("permute"):
             args += ["--permute"]
+    if name == "agent":
+        goal, minutes = str(data.get("goal", "")).strip(), data.get("minutes", 120)
+        if data.get("cli") not in ("claude", "codex"):
+            raise ValueError("Choose claude or codex")
+        if not goal or len(goal) > 2000:
+            raise ValueError("Describe the goal (up to 2000 characters)")
+        if type(minutes) is not int or not 1 <= minutes <= 600:
+            raise ValueError("Minutes must be 1-600")
+        args += [data["cli"], "--goal", goal, "--minutes", str(minutes)]
     return args
 
 
