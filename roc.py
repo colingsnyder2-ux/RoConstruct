@@ -677,7 +677,7 @@ def cmd_config(a):
     if a.model and a.model != "default" and not draft.pick_model(a.model):
         if providers.is_cloud(a.model):
             _provider, _remote, config = providers.parse_model(a.model)
-            sys.exit("Cloud key is missing: set %s" % config["key_env"])
+            sys.exit(providers.credential_hint(a.model))
         choices = draft.ollama_models()
         sys.exit("Model '%s' is not installed. Installed: %s" %
                  (a.model, ", ".join(choices) or "none (run: ollama pull <model>)"))
@@ -838,7 +838,7 @@ def cmd_worker(a):
     if a.model and a.model != "default" and not draft.pick_model(a.model):
         if providers.is_cloud(a.model):
             _provider, _remote, config = providers.parse_model(a.model)
-            sys.exit("Cloud key is missing: set %s" % config["key_env"])
+            sys.exit(providers.credential_hint(a.model))
         sys.exit("Model '%s' is not installed. See: roc model" % a.model)
     if a.model == "default":
         worker.clear_setting("model")
@@ -877,7 +877,7 @@ def cmd_worker(a):
             raise SystemExit("Cloud escalation needs --allow-cloud")
         if not providers.available(a.cloud_escalate):
             _provider, _remote, config = providers.parse_model(a.cloud_escalate)
-            raise SystemExit("Cloud key is missing: set %s" % config["key_env"])
+            raise SystemExit(providers.credential_hint(a.cloud_escalate))
     budget = providers.CloudBudget(a.max_cloud_requests, a.max_cloud_tokens, a.max_cloud_cost)
     gate = providers.CloudGate(a.cloud_concurrency) if a.cloud_concurrency is not None else None
     if a.output_budget is None:
@@ -892,7 +892,7 @@ def cmd_worker(a):
                 raise SystemExit("Cloud fallback needs --allow-cloud")
             if not providers.available(a.cloud_fallback):
                 _provider, _remote, config = providers.parse_model(a.cloud_fallback)
-                raise SystemExit("Cloud key is missing: set %s" % config["key_env"])
+                raise SystemExit(providers.credential_hint(a.cloud_fallback))
         elif not draft.pick_model(a.cloud_fallback):
             raise SystemExit("Cloud fallback model is not installed: %s" % a.cloud_fallback)
     order = a.order or "random"
@@ -943,6 +943,10 @@ def cmd_provider(a):
     from roc import providers
     if a.sub == "list":
         for name, config in sorted(providers.providers().items()):
+            if name == "chatgpt":
+                print("chatgpt      ChatGPT plan       %s (%s)" % (config["base_url"],
+                      "signed in" if providers.provider_ready(name) else "run roc chatgpt login"))
+                continue
             print("%-12s %-18s %s (%s=%s)" % (name, config["kind"], config["base_url"],
                                                 config["key_env"], "set" if providers.key_available(config["key_env"]) else "missing"))
         return
@@ -964,6 +968,9 @@ def cmd_provider(a):
         print("Cloud providers:")
         for index, name in enumerate(names, 1):
             config = configs[name]
+            if name == "chatgpt":
+                print("  %d) ChatGPT plan (Continue with ChatGPT; no API key)" % index)
+                continue
             state = "set" if providers.key_available(config["key_env"]) else "missing"
             print("  %d) %s (%s: %s)" % (index, name, config["key_env"], state))
         choice = input("Choose provider name or number: ").strip().lower()
@@ -971,6 +978,8 @@ def cmd_provider(a):
             choice = names[int(choice) - 1]
         if choice not in configs:
             raise SystemExit("Unknown provider: %s" % choice)
+        if choice == "chatgpt":
+            return cmd_chatgpt(argparse.Namespace(sub="login", account=None, new=False, model=None))
         key_env = configs[choice]["key_env"]
         key = getpass.getpass("Paste %s (hidden): " % key_env).strip()
         providers.save_secret(key_env, key)
@@ -993,6 +1002,42 @@ def cmd_provider(a):
     if a.sub == "pricing":
         providers.save_pricing(a.name, a.model, a.input_per_million, a.output_per_million)
         print("Saved stated USD/million-token rates for %s:%s." % (a.name, a.model))
+
+
+def cmd_chatgpt(a):
+    from roc import chatgpt, worker
+    if a.sub == "login":
+        account = chatgpt.login(client_id=a.account, new=a.new)
+        print("Signed in: %s [%s]" % (account["label"], account["client_id"]))
+        choices = chatgpt.models()
+        for index, row in enumerate(choices, 1):
+            print("  %d) %s (%s)" % (index, row["display_name"], row["slug"]))
+        picked = a.model or input("ChatGPT model [1]: ").strip() or "1"
+        if picked.isdigit() and 1 <= int(picked) <= len(choices):
+            picked = choices[int(picked) - 1]["slug"]
+        if picked not in [row["slug"] for row in choices]:
+            raise SystemExit("Choose a model from the signed-in account's catalog.")
+        worker.save_settings(model="chatgpt:" + picked, cloud_allowed=True,
+                             worker_workers=1, worker_workers_model="chatgpt:" + picked)
+        print("Using ChatGPT plan: %s. Start with roc launch or the website's Help out link." % picked)
+        print("Shared plan limits apply. Manage limits and credit permission: " + chatgpt.USAGE_URL)
+    elif a.sub in ("status", "accounts"):
+        data = chatgpt.status()
+        for client_id, account in data["accounts"].items():
+            print("%s %s [%s]" % ("*" if data.get("active") == client_id else " ", account["label"], client_id))
+        print("ChatGPT plan: %s" % ("ready" if chatgpt.ready() else "sign in with roc chatgpt login"))
+        print("Manage usage: " + chatgpt.USAGE_URL)
+    elif a.sub == "models":
+        for row in chatgpt.models():
+            print("chatgpt:%s  %s" % (row["slug"], row["display_name"]))
+    elif a.sub == "use":
+        chatgpt.use(a.account)
+        choices = chatgpt.models()
+        worker.save_settings(model="chatgpt:" + choices[0]["slug"], cloud_allowed=True)
+        print("Active ChatGPT registration: " + a.account)
+    elif a.sub == "logout":
+        chatgpt.logout(a.account)
+        print("ChatGPT signed out. Saved registration is retained for your next sign-in.")
 
 
 def cmd_dataset(a):
@@ -1080,7 +1125,7 @@ def cmd_benchmark_models(a):
                     raise SystemExit("Cloud benchmark sends prompts outside this PC. Pass --allow-cloud.")
                 if not providers.available(model):
                     _provider, _remote, config = providers.parse_model(model)
-                    raise SystemExit("Cloud key is missing: set %s" % config["key_env"])
+                    raise SystemExit(providers.credential_hint(model))
             elif not draft.pick_model(model):
                 raise SystemExit("Model is not installed: %s" % model)
         if any(providers.is_cloud(model) for model in models):
@@ -1221,7 +1266,7 @@ def cmd_model(a):
         if providers.is_cloud(a.name):
             if not providers.available(a.name):
                 _provider, _remote, config = providers.parse_model(a.name)
-                sys.exit("Cloud key is missing: set %s" % config["key_env"])
+                sys.exit(providers.credential_hint(a.name))
             save_settings(model=a.name)
             print("Model: %s (cloud)" % a.name)
             return
@@ -1541,6 +1586,22 @@ def main(argv=None):
         (["--max-cloud-cost"], {"type": float}),
         (["--clear"], {"action": "store_true", "help": "remove saved profile without benchmarking"}),
         (["--force"], {"action": "store_true", "help": "replace existing profile"}))
+    p = sub.add_parser("chatgpt", help="use your ChatGPT plan through official browser sign-in")
+    cs = p.add_subparsers(dest="sub", required=True)
+    login = cs.add_parser("login", help="Continue with ChatGPT and select an available plan model")
+    login_choice = login.add_mutually_exclusive_group()
+    login_choice.add_argument("--account", help="reauthorize a saved issued client ID")
+    login_choice.add_argument("--new", action="store_true", help="add another ChatGPT account or workspace")
+    login.add_argument("--model", help="model slug from your account's catalog; otherwise ask")
+    login.set_defaults(fn=cmd_chatgpt)
+    for command in ("status", "accounts", "models"):
+        cs.add_parser(command).set_defaults(fn=cmd_chatgpt)
+    use = cs.add_parser("use", help="switch to a saved account registration")
+    use.add_argument("account")
+    use.set_defaults(fn=cmd_chatgpt)
+    logout = cs.add_parser("logout", help="revoke and clear credentials for one account")
+    logout.add_argument("--account")
+    logout.set_defaults(fn=cmd_chatgpt)
     p = sub.add_parser("provider", help="configure or test non-secret cloud model providers")
     ps = p.add_subparsers(dest="sub", required=True)
     ps.add_parser("list", help="show providers and whether their key environment variable is set").set_defaults(fn=cmd_provider)
