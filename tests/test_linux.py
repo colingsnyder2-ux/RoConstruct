@@ -155,7 +155,7 @@ def test_msi_admin_extract_prefers_wine_on_linux(tmp_path):
     assert run.call_args.args[0][:3] == ["/usr/bin/wine", "msiexec", "/a"]
 
 
-def test_copy_from_iso_unix_extracts_one_file(tmp_path):
+def test_copy_from_iso_extracts_one_file(tmp_path):
     from roc import setup
     iso = tmp_path / "dvd.iso"
     iso.write_bytes(b"iso")
@@ -174,7 +174,7 @@ def test_copy_from_iso_unix_extracts_one_file(tmp_path):
 
     with patch("roc.setup.shutil.which", side_effect=lambda name: "/usr/bin/7z" if name == "7z" else None), \
          patch("roc.setup.subprocess.run", side_effect=fake_run):
-        setup.copy_from_iso_unix(iso, r"VCExpress\Ixpvc.exe", dest)
+        setup.copy_from_iso(iso, r"VCExpress\Ixpvc.exe", dest)
     assert dest.read_bytes() == b"MZ"
 
 
