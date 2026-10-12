@@ -1628,7 +1628,8 @@
    "OgreRenderQueueInvocation.cpp",
    "OgreRenderSystemCapabilities.cpp",
    "OgreResourceGroupManager.cpp",
-   "OgreSceneManager.cpp"
+   "OgreSceneManager.cpp",
+   "roc_client_map_bounds.cpp"
   ]
  },
  "ogre-1.4.5-dll": {
@@ -1644,6 +1645,14 @@
    "OgreSceneManager.cpp",
    "OgreSceneManagerEnumerator.cpp",
    "OgreString.cpp",
+   "roc_client_large_methods_fe8e0ed61a73b8e9.cpp",
+   "roc_client_light_templates.cpp",
+   "roc_client_medium_methods_9dcc4c18d140c047.cpp",
+   "roc_client_remaining_methods_04658f2fb3f66782.cpp",
+   "roc_client_rtti_a364433a605f6e52.cpp",
+   "roc_client_scene_update.cpp",
+   "roc_client_short_methods_5b192b39c746b09e.cpp",
+   "roc_client_texture_copy.cpp",
    "roc_rtti_d56a903776f2b6ff.cpp"
   ]
  },
