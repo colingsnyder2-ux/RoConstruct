@@ -12,7 +12,7 @@ if not exist ".git\HEAD" (
   echo This copy was downloaded as a ZIP. Linking it to the repository so it can update...
   git init -q
   git remote remove origin >nul 2>nul
-  git remote add origin https://github.com/colingsnyder2-ux/RoConstruct.git
+  git remote add origin https://github.com/ivan-grebe/RoConstruct.git
   git fetch --depth 1 origin main || (
     echo Could not reach the repository. Check your internet connection and run update.cmd again.
     pause

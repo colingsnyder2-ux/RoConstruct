@@ -21,6 +21,7 @@ CONFIG = ROOT / "roconstruct-providers.json"
 OLLAMA = "http://127.0.0.1:11434"
 
 BUILTINS = {
+    "chatgpt": {"kind": "chatgpt-plan", "base_url": "https://api.openai.com/v1", "key_env": ""},
     "nvidia": {"kind": "openai-chat", "base_url": "https://integrate.api.nvidia.com/v1",
                "key_env": "NVIDIA_API_KEY"},
     "deepseek": {"kind": "openai-chat", "base_url": "https://api.deepseek.com",
@@ -79,10 +80,13 @@ class CloudBudget:
         self.max_cost = cost
         self.requests = self.tokens = 0
         self.cost = 0.0
+        self.stopped = False
         self._lock = threading.Lock()
 
     def reserve(self, estimate_tokens=0, estimate_cost=0.0):
         with self._lock:
+            if self.stopped:
+                raise ProviderError("cloud_budget", "cloud requests stopped for this session")
             if self.max_requests is not None and self.requests >= self.max_requests:
                 raise ProviderError("cloud_budget", "cloud request limit reached")
             if self.max_tokens is not None and self.tokens + estimate_tokens > self.max_tokens:
@@ -93,6 +97,10 @@ class CloudBudget:
             self.tokens += estimate_tokens
             self.cost += estimate_cost
             return estimate_tokens, estimate_cost
+
+    def stop(self):
+        with self._lock:
+            self.stopped = True
 
     def settle(self, ticket, tokens=0, cost=None):
         """Replace the reservation with measured usage; refunds over-estimates.
@@ -140,6 +148,8 @@ def _read_config():
         configured = {}
     out = {name: dict(value) for name, value in BUILTINS.items()}
     for name, value in configured.items():
+        if name == "chatgpt":
+            continue
         if (isinstance(value, dict) and value.get("kind") in KINDS and _safe_base_url(value.get("base_url"))
                 and value.get("key_env")):
             out[name] = dict(value)
@@ -208,6 +218,8 @@ def _safe_base_url(value):
 
 
 def save_provider(name, kind, base_url, key_env, **extra):
+    if name == "chatgpt":
+        raise ValueError("chatgpt is reserved for official ChatGPT plan sign-in")
     if not re.match(r"^[A-Za-z][A-Za-z0-9_-]{0,63}$", name or ""):
         raise ValueError("provider name must be letters, digits, _ or -")
     if kind not in KINDS:
@@ -227,6 +239,8 @@ def save_provider(name, kind, base_url, key_env, **extra):
 
 def save_pricing(name, model, input_per_million, output_per_million):
     """Save user-supplied USD rates for one exact remote model name."""
+    if name == "chatgpt":
+        raise ValueError("ChatGPT plan usage has no API USD pricing; manage app limits in ChatGPT Settings > Usage")
     config = _read_config().get(name)
     if not config or not str(model or "").strip():
         raise ValueError("unknown provider")
@@ -287,7 +301,33 @@ def available(model):
     provider, _remote, config = parse_model(model)
     if provider == "local":
         return True
-    return key_available(config["key_env"])
+    return provider_ready(provider)
+
+
+def provider_ready(name):
+    if name == "chatgpt":
+        from roc import chatgpt
+        return chatgpt.ready()
+    config = _read_config().get(name)
+    return bool(config and key_available(config.get("key_env", "")))
+
+
+def credential_hint(model):
+    provider, _remote, config = parse_model(model)
+    if provider == "chatgpt":
+        return "ChatGPT plan sign-in required: roc chatgpt login"
+    return "Cloud key missing: set %s (roc provider setup)" % config.get("key_env", "")
+
+
+def _chatgpt_plan(provider, remote, config, prompt, state, options):
+    from roc import chatgpt
+    messages = _cloud_messages(prompt, state, options.get("history_keep_last", 2))
+    try:
+        return chatgpt.generate(remote, messages, options)
+    except ProviderError as error:
+        if error.category in ("cloud_budget", "provider_auth") and options.get("budget"):
+            options["budget"].stop()
+        raise
 
 
 _REASONING_BLOCK = re.compile(r"<think(?:ing)?>.*?</think(?:ing)?>", re.S | re.I)
@@ -551,6 +591,10 @@ def generate(model, messages, options=None, state=None):
         return _ollama(remote, prompt, state, options)
     if not options.get("allow_cloud"):
         raise ProviderError("cloud_disabled", "pass --allow-cloud before sending prompts to cloud providers")
+    if config["kind"] == "chatgpt-plan":
+        options["retry_forever"] = False
+        if options.get("budget") and options["budget"].max_cost is not None:
+            raise ProviderError("cloud_budget", "ChatGPT uses plan limits, not USD pricing. Remove the USD cap; manage app limits in ChatGPT Settings > Usage.")
     gate, lock = options.get("gate"), None
     budget = options.get("budget")
     messages = _cloud_messages(prompt, state, options.get("history_keep_last", 2))
@@ -571,7 +615,7 @@ def generate(model, messages, options=None, state=None):
                 if budget:
                     ticket = budget.reserve(estimate_tokens,
                                             _cost(config, estimate_input, int(options["max_tokens"]), remote) or 0.0)
-                fn = {"openai-chat": _openai_chat, "openai-responses": _openai_responses,
+                fn = {"chatgpt-plan": _chatgpt_plan, "openai-chat": _openai_chat, "openai-responses": _openai_responses,
                       "anthropic-messages": _anthropic, "gemini": _gemini}[config["kind"]]
                 out = fn(provider, remote, config, prompt, state, options)
                 out.latency_s = time.monotonic() - started

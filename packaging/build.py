@@ -25,8 +25,8 @@ DIST = ROOT / "dist"
 # Every module a working cloud worker needs (transitive closure of worker, link,
 # handoff, doctor, setup, analyze, draft, optimizer and the matchers).
 WORKER_MODULES = [
-    "activity", "analyze", "angr_facts", "audit", "auto", "benchmark", "clients", "doctor", "donor", "draft",
-    "fingerprint",
+    "activity", "analyze", "angr_facts", "audit", "auto", "benchmark", "chatgpt", "clients", "doctor", "donor",
+    "draft", "fingerprint",
     "cpu_jobs", "cpu_worker", "cpu_status", "command_watch", "daily_stats", "flags", "gui", "gui_worker", "handoff", "libs", "link", "mass", "match", "metrics", "mutate",
     "ltcg", "optimizer", "pressure", "providers", "refsource", "repair", "selfupdate", "setup",
     "shapes", "sources", "task_files", "uninstall", "verify_window", "worker", "xcopy",
@@ -36,7 +36,7 @@ SERVER_MODULES = ["cluster", "cluster_setup", "dataset", "discord", "leaderboard
 WORKER_MODULES += ["client_templates", "libraries"]
 
 COMMON_FILES = ["roc.py", "roc.cmd", "roc.sh", "install.cmd", "install.sh",
-                "uninstall.cmd", "README.md",
+                "uninstall.cmd", "README.md", "requirements-chatgpt.txt", "setup-chatgpt.cmd", "docs/chatgpt-plan.md",
                 "roc/web/index.html", "roc/web/style.css", "roc/web/app.js",
                 "clients/clients.json", "clients/sources.json", "clients/README.md", "clients/donor.json"]
 
@@ -51,6 +51,9 @@ PACKAGES = {
 ====================
 
 This is the whole helper install. It is deliberately small:
+
+For ChatGPT subscription access, run setup-chatgpt.cmd first and follow
+docs/chatgpt-plan.md. It signs in through your browser and then runs install.cmd.
 
   1. Run install.cmd (Windows) or install.sh (Linux). It checks Python, installs required pip packages
      (pefile, capstone, tzdata), downloads the exact MSVC compiler bundles, registers

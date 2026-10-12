@@ -357,7 +357,7 @@ def choose_options(settings):
             return saved[:4] + (picked_workers,) + saved[5:]
         if action == "4":
             cost_cap = None
-            if providers.is_cloud(model):
+            if providers.is_cloud(model) and providers.parse_model(model)[0] != "chatgpt":
                 raw_cap = input("Optimizer cloud spend cap in USD [0.25]: ").strip() or "0.25"
                 try:
                     cost_cap = float(raw_cap)
@@ -375,7 +375,9 @@ def choose_options(settings):
             return _saved_worker_options(settings, installed)
         if action not in ("2", "options", "change"):
             raise SystemExit("Choose 1 to start, 2 to change setup, 3 to change workers, or 4 to optimize.")
-    cloud = ["deepseek:deepseek-flash", "nvidia:qwen/qwen2.5-coder-32b-instruct", "openai:gpt-5"]
+    from roc import chatgpt
+    cloud = ["chatgpt:" + row["slug"] for row in chatgpt.models(refresh=False)] + [
+        "deepseek:deepseek-flash", "nvidia:qwen/qwen2.5-coder-32b-instruct", "openai:gpt-5"]
     previous = [name for name in settings.get("worker_model_choices", []) if isinstance(name, str)]
     choices = list(dict.fromkeys(installed + cloud + previous +
                                  ([settings["model"]] if settings.get("model") and settings["model"] not in installed + cloud else [])))
@@ -408,6 +410,8 @@ def choose_options(settings):
         model = None
     elif providers.is_cloud(model):
         if not providers.available(model):
+            if providers.parse_model(model)[0] == "chatgpt":
+                raise SystemExit(providers.credential_hint(model))
             import getpass
             _provider, _remote, config = providers.parse_model(model)
             key = getpass.getpass("Paste %s (hidden): " % config["key_env"]).strip()

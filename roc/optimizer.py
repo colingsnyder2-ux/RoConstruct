@@ -206,13 +206,19 @@ def run(model, allow_cloud=False, max_cloud_requests=300, max_cloud_tokens=50000
             raise SystemExit("Cloud optimization sends benchmark prompts off this PC; pass --allow-cloud.")
         if not providers.available(model):
             _provider, _remote, config = providers.parse_model(model)
-            raise SystemExit("Cloud key is missing: set %s." % config["key_env"])
-        if max_cloud_cost is None or max_cloud_cost <= 0:
-            raise SystemExit("Cloud optimization requires positive --max-cloud-cost.")
-        if not providers.has_pricing(model):
-            raise SystemExit("Provider has no model pricing; configure it with `roc provider pricing` first.")
-        log("Cloud optimization: request cap %d, token cap %d, cost cap $%.2f." %
-            (max_cloud_requests, max_cloud_tokens, max_cloud_cost))
+            raise SystemExit(providers.credential_hint(model))
+        if providers.parse_model(model)[0] == "chatgpt":
+            if max_cloud_cost is not None:
+                raise SystemExit("ChatGPT optimization uses plan limits; omit --max-cloud-cost.")
+            log("ChatGPT optimization: shared plan limits; request cap %d, token reservation cap %d." %
+                (max_cloud_requests, max_cloud_tokens))
+        else:
+            if max_cloud_cost is None or max_cloud_cost <= 0:
+                raise SystemExit("Cloud optimization requires positive --max-cloud-cost.")
+            if not providers.has_pricing(model):
+                raise SystemExit("Provider has no model pricing; configure it with `roc provider pricing` first.")
+            log("Cloud optimization: request cap %d, token cap %d, cost cap $%.2f." %
+                (max_cloud_requests, max_cloud_tokens, max_cloud_cost))
     elif not draft.pick_model(model):
         raise SystemExit("Model is not installed: %s" % model)
     if not 6 <= target_count <= 24:

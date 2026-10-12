@@ -130,8 +130,11 @@ def cloud_check(network=True):
     from roc import providers, worker
     state, detail, fix = OK, [], []
     available = [name for name, config in sorted(providers.providers().items())
-                 if providers.key_available(config["key_env"])]
+                 if providers.provider_ready(name)]
     model = worker.cloud_default()
+    if model and not providers.available(model):
+        return check("cloud", FAIL, providers.credential_hint(model), ["roc chatgpt login"]
+                     if model.startswith("chatgpt:") else ["roc provider setup"])
     if not model:
         # A custom OpenAI-compatible provider has no built-in default, so fall
         # back to the model the user actually saved.
