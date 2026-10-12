@@ -915,6 +915,8 @@ def cmd_worker(a):
             print("Family %s ready: %d sibling targets" % (family_id, ready))
     if a.dry_run:
         info = worker.Api(srv, a.token or s.get("token")).call("/v1/info")
+        if a.client:
+            info["clients"] = {k: v for k, v in info["clients"].items() if k == a.client}
         have = worker.usable_clients(info)
         print("Worker preview: user=%s model=%s clients=%s rounds=%s max-size=%d Rev.ng=%s workers=%s output-budget=%s order=%s" %
               (user, draft.pick_model(chosen) or "none", ", ".join(have) or "none",

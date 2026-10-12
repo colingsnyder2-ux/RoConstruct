@@ -336,8 +336,15 @@ def sha1(path):
 
 
 def powershell(cmd):
-    return subprocess.run(["powershell", "-NoProfile", "-Command", cmd],
-                          capture_output=True, text=True).stdout.strip()
+    # Inherited PowerShell 7 module paths can break Windows PowerShell's OS
+    # Security/Storage modules. Installer commands use the selected OS engine.
+    script = "$ErrorActionPreference = 'Stop'; $env:PSModulePath = Join-Path $PSHOME 'Modules'; " + cmd
+    result = subprocess.run(["powershell", "-NoProfile", "-NonInteractive", "-Command", script],
+                            capture_output=True, text=True)
+    if result.returncode:
+        detail = (result.stderr.strip() or "exit %s" % result.returncode).splitlines()[0]
+        raise SystemExit("PowerShell installer command failed: %s" % detail[:300])
+    return result.stdout.strip()
 
 
 def require_signature(path, org="Microsoft Corporation"):
