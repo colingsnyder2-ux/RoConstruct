@@ -711,6 +711,16 @@ def cmd_config(a):
     print("Saved: " + ", ".join("%s=%s" % (k, "***" if k == "token" else v) for k, v in s.items()))
 
 
+def cmd_agent(a):
+    from roc import agent
+    if a.goal:
+        return agent.run_goal(a.cli, a.goal, a.model, a.minutes or 120)
+    s = settings()
+    srv = need(a.server or s.get("server"), "server", "Use --server or: roc config --server URL")
+    user = need(a.user or s.get("user"), "username", "Use --user or: roc config --user NAME")
+    agent.run(srv, user, a.token or s.get("token"), a.cli, a.model, a.client, a.jobs, a.max_size, a.minutes or 20)
+
+
 def cmd_submit(a):
     from roc import worker
     s = settings()
@@ -1365,6 +1375,8 @@ def menu():
         ("Check what needs fixing", lambda: main(["doctor"])),
         ("Install local AI instead (optional: Ollama, then Docker)", lambda: main(["local-ai"])),
         ("Work on a function by hand", menu_hand),
+        ("Match functions with my Claude Code / Codex plan", lambda: main(["agent", ask("CLI (claude/codex)", "claude"),
+                                                                          "--goal", ask("What should it do", "match as many open 2008-06 functions as you can")])),
         ("Check my hand-written functions", lambda: main(["check", ask("Client", "2008-06")])),
         ("Send my hand-written functions to the server", lambda: main(["submit", ask("Client", "2008-06")])),
         ("Host the group server", lambda: main(["server"])),
@@ -1677,6 +1689,15 @@ def main(argv=None):
     da.add_argument("--allow-partial", action="store_true", help="check structure before 100-300 pair pilot is complete")
     da.set_defaults(fn=cmd_dataset)
     cmd("link", cmd_link, "one-click links: 'install', 'remove', or a roconstruct:// URL", (["target"], {}))
+    cmd("agent", cmd_agent, "match leased functions with your own Claude Code or Codex CLI",
+        (["cli"], {"choices": ["claude", "codex"]}),
+        (["--goal"], {"help": 'free-form task, e.g. "match as many 2008-06 RakNet functions as you can"'}),
+        (["--client"], {}),
+        (["--jobs"], {"type": int, "default": 1, "help": "functions to lease, one after another"}),
+        (["--model"], {"help": "passed to the CLI's --model"}),
+        (["--max-size"], {"type": int, "default": 256}),
+        (["--minutes"], {"type": int, "help": "time limit per function (20) or per --goal session (120)"}),
+        (["--server"], {}), (["--user"], {}), (["--token"], {}))
     cmd("submit", cmd_submit, "send hand-written sources to the server ('all' for every client)",
         (["name"], {}), (["addr"], {"nargs": "*"}), (["--server"], {}), (["--user"], {}), (["--token"], {}))
     cmd("pull", cmd_pull, "download everyone's sources from the server into src/ ('all' for every client)",
