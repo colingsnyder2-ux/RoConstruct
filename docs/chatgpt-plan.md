@@ -17,6 +17,10 @@ RoConstruct still compiles and checks each reconstruction on your computer.
 6. Keep the saved `chatgpt:MODEL` selection. Start with **Recommended** mode and
    **1 worker**.
 
+The VS2005 and VS2008 RTM compiler bundles also need 7-Zip to read their ISO
+archives. On Windows, install it with `winget install --id 7zip.7zip -e` if
+it is missing. The VS2008 SP1 bundle used by `2009-06` does not need this step.
+
 Your subscription limits are shared with other apps and Codex. Set this app's
 limit and its permission to use extra credits in
 [ChatGPT Settings → Usage](https://chatgpt.com/settings/usage). Connecting this
