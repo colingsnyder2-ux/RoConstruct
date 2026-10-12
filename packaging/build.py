@@ -25,7 +25,7 @@ DIST = ROOT / "dist"
 # Every module a working cloud worker needs (transitive closure of worker, link,
 # handoff, doctor, setup, analyze, draft, optimizer and the matchers).
 WORKER_MODULES = [
-    "activity", "analyze", "angr_facts", "auto", "benchmark", "clients", "doctor", "draft", "fingerprint",
+    "activity", "analyze", "angr_facts", "auto", "benchmark", "chatgpt", "clients", "doctor", "draft", "fingerprint",
     "cpu_jobs", "cpu_worker", "cpu_status", "command_watch", "daily_stats", "flags", "gui", "gui_worker", "handoff", "libs", "link", "mass", "match", "metrics", "mutate",
     "ltcg", "optimizer", "pressure", "providers", "refsource", "repair", "selfupdate", "setup",
     "shapes", "sources", "task_files", "uninstall", "verify_window", "worker", "xcopy",
@@ -34,7 +34,7 @@ WORKER_MODULES = [
 SERVER_MODULES = ["cluster", "cluster_setup", "dataset", "discord", "leaderboard", "progress", "server"]
 
 COMMON_FILES = ["roc.py", "roc.cmd", "roc.sh", "install.cmd", "install.sh",
-                "uninstall.cmd", "README.md",
+                "uninstall.cmd", "README.md", "requirements-chatgpt.txt", "setup-chatgpt.cmd", "docs/chatgpt-plan.md",
                 "roc/web/index.html", "roc/web/style.css", "roc/web/app.js",
                 "clients/clients.json", "clients/sources.json", "clients/README.md"]
 

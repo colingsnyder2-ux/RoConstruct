@@ -223,7 +223,9 @@ class DashboardTests(unittest.TestCase):
             time.sleep(0.03)
         self.assertEqual(self.app.jobs[job_id]["status"], "completed")
         self.assertTrue((self.app.directory / (job_id + ".jsonl")).exists())
-        saved = json.loads((self.app.directory / "history.json").read_text())
+        # Wait for the complete locked transition, including its atomic save.
+        with self.app.lock:
+            saved = json.loads((self.app.directory / "history.json").read_text())
         self.assertEqual(saved[-1]["exit_code"], 0)
 
     def test_queue_waits_and_cancel_does_not_start(self):

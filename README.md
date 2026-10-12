@@ -32,6 +32,11 @@ When every function matches, the result is a source tree that rebuilds the origi
 
 ## Get started
 
+**Using your ChatGPT subscription?** This fork supports official browser sign-in
+for eligible Plus and Pro accounts. Double-click **`setup-chatgpt.cmd`**, then
+follow the [ChatGPT plan setup guide](docs/chatgpt-plan.md). Shared plan limits
+apply; no API key is required for this provider.
+
 The installer is deliberately tiny: **no GPU, no Ollama, no Docker.**
 
 1. **Download** this repo (Code → Download ZIP) and unzip it.
