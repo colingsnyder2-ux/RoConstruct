@@ -73,7 +73,7 @@ def server_mines_webhook():
 
 
 def server_users():
-    """Users whose gains count as server mining: server webhook, off the leaderboard."""
+    """Service usernames hidden from the leaderboard; feed routing uses mining source."""
     try:
         return set(json.loads((ROOT / "roconstruct-settings.json").read_text()).get("server_users", []))
     except (OSError, ValueError):

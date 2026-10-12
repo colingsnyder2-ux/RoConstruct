@@ -242,7 +242,9 @@ class ApiFailure(RuntimeError):
 def site_server():
     """Current public server address as published on the progress site (tunnel URLs change)."""
     try:
-        with urllib.request.urlopen(SITE + "progress.json", timeout=20) as r:
+        request = urllib.request.Request(SITE + "progress.json?t=%d" % time.time(),
+                                         headers={"Cache-Control": "no-cache"})
+        with urllib.request.urlopen(request, timeout=20) as r:
             return json.loads(r.read()).get("server")
     except (OSError, ValueError):
         return None
@@ -253,11 +255,12 @@ def reconnect(api, log):
     # A local repair batch must stay on its local server.  Falling through to
     # the public tunnel turns transient local contention into Bad Gateway and
     # loses the pinned-worker guarantee.
-    if api.server.startswith("http://127.0.0.1:") or api.server.startswith("http://localhost:"):
+    if len(api.servers) != 1 or not api._host.endswith((".trycloudflare.com", ".ts.net")):
         return False
     new = site_server()
     if new and Api(new).server != api.server:
         log("Server moved to %s, switching." % new)
+        api.close()
         api.__init__(new, api.token)
         save_settings(server=new)
         return True
@@ -561,7 +564,7 @@ class Api:
             headers["X-Roc-Token"] = self.token
         method = "POST" if data is not None else "GET"
         tries = max(3, len(self.servers) * 2) if payload is None or len(self.servers) > 1 or request_id else 1
-        for attempt in range(tries):
+        for attempt in range(max(tries, 12 if path in ("/v1/submit", "/v1/submit-batch") else 0)):
             try:
                 conn = self._get_conn(timeout)
                 if payload is not None and (len(self.servers) > 1 or request_id) and self.server not in self._cluster_hosts:
@@ -585,6 +588,13 @@ class Api:
                         msg = resp.reason
                     category = "auth_fail" if resp.status in (401, 403) else \
                                "bad_request" if 400 <= resp.status < 500 else "server_fail"
+                    # Admission rejection happens before any mutation: retry the
+                    # same result safely instead of discarding expensive AI work.
+                    if (path in ("/v1/submit", "/v1/submit-batch") and resp.status == 503
+                            and msg == "verification queue busy; retry shortly" and attempt < 11):
+                        self.close()
+                        time.sleep(min(attempt + 1, 5))
+                        continue
                     if resp.status >= 500 and attempt + 1 < tries:
                         self._server_index = (self._server_index + 1) % len(self.servers)
                         self._select_server()
@@ -597,7 +607,7 @@ class Api:
             except (http.client.HTTPException, OSError, ValueError) as error:
                 self._server_index = (self._server_index + 1) % len(self.servers)
                 self._select_server()
-                if attempt + 1 == tries:
+                if attempt + 1 >= tries:
                     raise ApiFailure("offline", "cannot reach server %s (%s). Is it running? Right address?"
                                      % (self.server, error))
                 time.sleep(0.5 * (attempt + 1))
@@ -761,8 +771,15 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
                 else:
                     time.sleep(60)
             else:
-                info = api.call("/v1/info")
-                have = usable_clients(info, log)
+                try:
+                    info = api.call("/v1/info")
+                    have = usable_clients(info, log)
+                except RuntimeError as error:
+                    log("%s  Retrying in 60 s." % error)
+                    if control is not None:
+                        control.wait(60)
+                    else:
+                        time.sleep(60)
             continue
         if not job:
             if lease_mode == "family" and family_state["id"]:

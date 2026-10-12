@@ -834,13 +834,20 @@ def cmd_server(a):
     httpd = server.serve(a.host, a.port, token=a.token, lease_seconds=a.lease,
                          discord_webhook=a.discord_webhook or settings().get("discord_webhook"))
     public = a.public_server or settings().get("public_server")
-    if a.tunnel and not public:  # a saved fixed address (e.g. Tailscale Funnel) wins over a quick tunnel
-        public, _ = server.start_tunnel(a.port)
+    primary = public
+    tunnel = None
+    if a.tunnel:  # Keep Cloudflare available behind an optional fixed primary address.
+        public, tunnel = server.start_tunnel(a.port)
     if a.publish:
         if not public:
             sys.exit("--publish needs a public address: use --tunnel or --public-server HOST:PORT")
         import threading
-        threading.Thread(target=server.publish_loop, args=(httpd.store, public, a.publish_every), daemon=True).start()
+        threading.Thread(target=server.publish_loop, args=(httpd.store, public, a.publish_every),
+                         kwargs={"tunnel": tunnel, "port": a.port, "primary": primary}, daemon=True).start()
+    elif tunnel is not None:
+        import threading
+        threading.Thread(target=server.publish_loop, args=(httpd.store, None, a.publish_every),
+                         kwargs={"tunnel": tunnel, "port": a.port, "publish": False}, daemon=True).start()
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:

@@ -13,6 +13,7 @@ import subprocess
 import threading
 import time
 import uuid
+from collections import deque
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import parse_qs, urlparse
@@ -417,6 +418,7 @@ def export(store):
 
 def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None):
     lease_slots = threading.BoundedSemaphore(8)
+    verification_slots = threading.BoundedSemaphore(3)
     class Handler(BaseHTTPRequestHandler):
         # Api keeps one HTTP connection per worker. HTTP/1.0 closes it after
         # every response, rapidly exhausting Windows ephemeral ports locally.
@@ -530,13 +532,18 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None):
                 score, verified, spans = claimed, False, None
                 previous = (store.best(client, addr) or {}).get("score", 0)
                 if client in can_verify:
+                    if not verification_slots.acquire(blocking=False):
+                        return self.send(503, {"error": "verification queue busy; retry shortly"})
                     try:
-                        score, _, _, spans = match.check_text(client, addr, source)
-                        verified = True
-                    except match.CompileError as error:
-                        return self.send(400, {"error": "does not compile here: %s" % str(error)[:500]})
-                    except SystemExit as error:
-                        return self.send(400, {"error": str(error)})
+                        try:
+                            score, _, _, spans = match.check_text(client, addr, source)
+                            verified = True
+                        except match.CompileError as error:
+                            return self.send(400, {"error": "does not compile here: %s" % str(error)[:500]})
+                        except SystemExit as error:
+                            return self.send(400, {"error": str(error)})
+                    finally:
+                        verification_slots.release()
                 else:
                     try:
                         match.reject_asm(source)
@@ -551,8 +558,7 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None):
                 if body.get("lease"):
                     store.release(str(body["lease"]))
                 if improved:
-                    from roc.discord import server_users
-                    feed = (server_mine_log if str(body.get("model", "")).startswith("roc ") or user in server_users()
+                    feed = (server_mine_log if str(body.get("model", "")).startswith("roc ")
                             else mine_log)
                     if feed is not None:
                         feed.submit(store.function_info(client, addr), user,
@@ -567,12 +573,17 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None):
                         not isinstance(addrs, list) or not 1 <= len(addrs) <= 1000 or
                         not all(isinstance(addr, str) and re.fullmatch(r"[0-9a-fA-F]{8}", addr) for addr in addrs)):
                     return self.send(400, {"error": "need verifiable client, source, and 1-1000 addresses"})
+                if not verification_slots.acquire(blocking=False):
+                    return self.send(503, {"error": "verification queue busy; retry shortly"})
                 try:
-                    checked = check_many_text(client, addrs, source)
-                except match.CompileError as error:
-                    return self.send(400, {"error": "does not compile here: %s" % str(error)[:500]})
-                except SystemExit as error:
-                    return self.send(400, {"error": str(error)})
+                    try:
+                        checked = check_many_text(client, addrs, source)
+                    except match.CompileError as error:
+                        return self.send(400, {"error": "does not compile here: %s" % str(error)[:500]})
+                    except SystemExit as error:
+                        return self.send(400, {"error": str(error)})
+                finally:
+                    verification_slots.release()
                 results = []
                 for addr, score, spans in checked:
                     previous = (store.best(client, addr) or {}).get("score", 0)
@@ -581,8 +592,9 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None):
                                                         model=body.get("model", ""), verified=True)
                     except ValueError as error:
                         return self.send(400, {"error": str(error)})
-                    if improved and server_mine_log is not None:
-                        server_mine_log.submit(store.function_info(client, addr), user,
+                    feed = server_mine_log if str(body.get("model", "")).startswith("roc ") else mine_log
+                    if improved and feed is not None:
+                        feed.submit(store.function_info(client, addr), user,
                                         str(body.get("worker", ""))[:64],
                                         str(body.get("model", ""))[:120] or "auto", stored, stored - previous)
                     results.append({"addr": addr, "score": score, "stored": stored, "improved": improved})
@@ -716,7 +728,7 @@ def start_tunnel(port, log=print):
             break
     if not url:
         raise SystemExit("cloudflared exited without a tunnel URL")
-    threading.Thread(target=lambda: [None for _ in proc.stderr], daemon=True).start()  # keep pipe drained
+    threading.Thread(target=lambda: deque(proc.stderr, maxlen=0), daemon=True).start()  # keep pipe drained
     log("Public HTTPS address: %s" % url)
     return url, proc
 
@@ -724,39 +736,56 @@ def start_tunnel(port, log=print):
 def publish_once(store, public_url, log=print):
     """Rebuild docs/ from the live database and push it, if anything changed."""
     lock = ROOT / "work" / "publish.lock"
+    lock.parent.mkdir(parents=True, exist_ok=True)
+    handle = lock.open("a+b")
+    if handle.tell() == 0:
+        handle.write(b"\0")
+        handle.flush()
+    handle.seek(0)
     try:
-        # A publish killed mid-run leaves its lock behind; one never takes an hour.
-        if time.time() - lock.stat().st_mtime > 3600:
-            lock.unlink()
-            log("Removed stale publish lock.")
-    except FileNotFoundError:
-        pass
-    try:
-        handle = os.open(lock, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
-    except FileExistsError:
+        if os.name == "nt":
+            import msvcrt
+            msvcrt.locking(handle.fileno(), msvcrt.LK_NBLCK, 1)
+        else:
+            import fcntl
+            fcntl.flock(handle.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except OSError:
+        handle.close()
         return log("Publish already running.")
     try:
         return _publish_once(store, public_url, log)
     finally:
-        os.close(handle)
-        try:
-            lock.unlink()
-        except FileNotFoundError:
-            pass
+        handle.close()  # OS releases the lock even when the hosting process crashes.
 
 
 def _publish_once(store, public_url, log=print):
     """Publish implementation, protected by publish_once's cross-process lock."""
     from roc import progress, setup
-    sync_findings(store)
     setup.refresh_path()
     git_exe = setup.find_exe("git")
     if not git_exe:
+        sync_findings(store)
         progress.build(public_server=public_url, remote=export(store))
         return log("git not found, so site and findings were not published. docs/ is updated locally.")
+    git = lambda *a: subprocess.run([git_exe, *a], cwd=ROOT, capture_output=True, text=True)
+    # Workers need the new address before the potentially slow findings export.
+    address_file = ROOT / "docs" / "progress.json"
+    if address_file.exists():
+        snapshot = json.loads(address_file.read_text())
+        if snapshot.get("server") != public_url:
+            snapshot["server"] = public_url
+            address_file.write_text(json.dumps(snapshot, indent=1) + "\n")
+            for args in (("add", "docs/progress.json"),
+                         ("commit", "-m", "Update server address")):
+                result = git(*args)
+                if result.returncode:
+                    raise RuntimeError("Address publish failed: " + result.stderr.strip()[-300:])
+    pushed = git("push", "origin", "HEAD")
+    if pushed.returncode:
+        raise RuntimeError("Address push failed: " + pushed.stderr.strip()[-300:])
+    sync_findings(store)
     publish_findings(git_exe, log)
     progress.build(public_server=public_url, remote=export(store))
-    git = lambda *a: subprocess.run([git_exe, *a], cwd=ROOT, capture_output=True, text=True)
     git("add", "docs/data", "docs/progress.json", "docs/history.json", "docs/source-links.json")
     if git("diff", "--cached", "--quiet").returncode == 0:
         return log("Site unchanged.")
@@ -825,10 +854,44 @@ def publish_findings(git_exe, log=print):
             index.unlink()
 
 
-def publish_loop(store, public_url, every, log=print):
+def publish_loop(store, public_url, every, log=print, tunnel=None, port=None, publish=True, primary=None):
+    next_publish = 0
+    next_probe = 0
+    active_url = public_url
     while True:
+        if tunnel is not None and tunnel.poll() is not None:
+            log("Tunnel stopped; restarting public connection.")
+            try:
+                public_url, tunnel = start_tunnel(port, log)
+                next_publish = 0
+                next_probe = 0
+            except (OSError, SystemExit) as error:
+                log("Tunnel restart failed: %s" % error)
+                time.sleep(5)
+                continue
+        if primary and time.monotonic() >= next_probe:
+            from roc.worker import Api, ApiFailure
+            probe = Api(primary)
+            try:
+                probe.call("/v1/info", timeout=5)
+                selected = primary
+            except ApiFailure:
+                selected = public_url
+            finally:
+                probe.close()
+            if selected != active_url:
+                log("Public connection switched to %s" % selected)
+                active_url = selected
+                next_publish = 0
+            next_probe = time.monotonic() + 30
+        elif not primary:
+            active_url = public_url
         try:
-            publish_once(store, public_url, log)
+            if time.monotonic() >= next_publish:
+                if active_url and publish:
+                    publish_once(store, active_url, log)
+                next_publish = time.monotonic() + every
         except Exception as error:  # keep serving even if a publish fails
             log("Publish failed: %s" % error)
-        time.sleep(every)
+            next_publish = time.monotonic() + 30
+        time.sleep(5 if tunnel is not None or primary else every)
