@@ -65,6 +65,25 @@ def union_bytes(span_lists):
     return total
 
 
+# Byte signatures of statically linked code that has no RTTI and no recipe yet. The site labels
+# the whole unlabeled run around each hit with the library.
+LANDMARKS = [
+    # D3DX9 math CPU dispatch: cpuid MMX test next to the DisableD3DXPSGP registry check.
+    (bytes.fromhex("8bff558bec5153565733c060b8010000000fa2"), "D3DX9 math (DirectX SDK)"),
+]
+
+
+def landmarks(name, entry):
+    """[[va, library], ...] of LANDMARKS found in the client exe."""
+    try:
+        import pefile
+        pe = pefile.PE(str(clients.exe_path(name, entry)), fast_load=True)
+    except Exception:  # exe not on this host, or not a PE
+        return []
+    base, image = pe.OPTIONAL_HEADER.ImageBase, pe.get_memory_mapped_image()
+    return [[base + at, library] for pattern, library in LANDMARKS for at in [image.find(pattern)] if at >= 0]
+
+
 def library_meta():
     """{(client, address): [library version, source file]} for matched library code."""
     try:
@@ -205,7 +224,8 @@ def build(server=None, token=None, public_server=None, remote=None):
                 funcs.append([int(addr, 16), f["size"], scores.get(addr, 0), unit_ids[unit],
                               bool(source), library.get((name, addr)), families.get(addr)])
             (DOCS / "data" / ("%s.json" % name)).write_text(json.dumps(
-                {"name": name, "compiler": entry["compiler"], "units": units, "funcs": funcs},
+                {"name": name, "compiler": entry["compiler"], "units": units, "funcs": funcs,
+                 "landmarks": landmarks(name, entry)},
                 separators=(",", ":")))
             row.update(summarize(funcs), started=True, data_bytes=meta.get("data_bytes", 0),
                        leaderboard=remote.get("leaderboards", {}).get(name, []),
