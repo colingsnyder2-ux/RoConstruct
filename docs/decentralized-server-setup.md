@@ -156,6 +156,18 @@ isolated and are **zero new campaign gains**.
 
 ## Dashboard and terminal controls
 
+Windows hosting setup URI: `roconstruct://server`. After `roc link install`,
+clicking it opens the dashboard directly on **Servers**, with a hosting guide.
+It does not download dependencies, start a server, import a DB, or enable CPU
+contribution. Links accept no credentials or commands. Hosting setup is separate
+from `roconstruct://work?...`, which opens the AI worker flow.
+
+The guide distinguishes a server (shared queue and trusted verification), a CPU
+helper (optional compilation for an existing server), and commands on this PC.
+Use **Host Server** at the top of the page to open setup. Under **Advanced
+hosting options**, **Copy setup link for another PC** shares the setup entry point. A CPU helper still
+needs its own private invite file; a server needs its own approved node config.
+
 Open `roc gui`, then **Servers**. Save private node/contributor JSON configs
 under `work/` (setup does this automatically). Select the coordinator. The page
 shows jobs, owner, contributing PC/PID, current function, completed comparisons,

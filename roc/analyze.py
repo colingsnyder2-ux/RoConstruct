@@ -35,7 +35,7 @@ def reloc_sites(pe):
                   for e in block.entries if e.type == 3)
 
 
-def find_functions(code, text_va, seeds, relocs):
+def find_functions(code, text_va, seeds, relocs, proven=()):
     """Recursive descent from seeds over .text (code at text_va).
     New starts: direct call targets and `push/mov offset fn` immediates.
     Switch jump tables are followed so their case blocks count as reached.
@@ -84,6 +84,15 @@ def find_functions(code, text_va, seeds, relocs):
             elif mnem in STOP:
                 break
             a += size
+    # Proven extents (a compiled function matched these bytes exactly): no start
+    # inside one, and whatever follows it starts a new function.
+    for start, size in proven:
+        starts -= {s for s in starts if start < s < start + size}
+        starts.add(start)
+        seen.add(start)
+        if start + size < end and code[start + size - text_va] != 0xCC:
+            starts.add(start + size)
+            seen.add(start + size)
     order = sorted(s for s in starts if s in seen) + [end]
     call_sites = sorted(calls)
     out = []
@@ -166,13 +175,12 @@ def demangle_class(raw):
     return "::".join(reversed([p for p in name.split("@") if p]))
 
 
-def rtti_classes(read, relocs, in_text):
-    """{function va: class} from MSVC vtables. read(va, n) -> bytes.
-    vtable[-1] -> CompleteObjectLocator{sig 0, off, cdOff, TypeDescriptor*}.
-    A function shared by several vtables goes to the smallest one (the base)."""
+def rtti_vtables(read, relocs, in_text):
+    """[(class, vtable va, [slot function va])] from MSVC RTTI. read(va, n) -> bytes.
+    vtable[-1] -> CompleteObjectLocator{sig 0, off, cdOff, TypeDescriptor*}."""
     reloc_set = set(relocs)
     rd = lambda va: int.from_bytes(read(va, 4), "little")
-    best = {}
+    out = []
     for site in relocs:
         if in_text(site):
             continue
@@ -187,6 +195,15 @@ def rtti_classes(read, relocs, in_text):
         while vt in reloc_set and in_text(rd(vt)):
             fns.append(rd(vt))
             vt += 4
+        out.append((cls, site + 4, fns))
+    return out
+
+
+def rtti_classes(read, relocs, in_text):
+    """{function va: class} from MSVC vtables.
+    A function shared by several vtables goes to the smallest one (the base)."""
+    best = {}
+    for cls, _, fns in rtti_vtables(read, relocs, in_text):
         for fn in fns:
             if fn not in best or len(fns) < best[fn][0]:
                 best[fn] = (len(fns), cls)
@@ -303,7 +320,9 @@ def analyze(client, exe):
     # Pointers stored outside .text (vtables, callback tables) into .text.
     seeds.update(v for v in (int.from_bytes(read(s, 4), "little") for s in relocs if not in_text(s))
                  if in_text(v))
-    funcs = find_functions(code, text_va, seeds, relocs)
+    bounds = ROOT / "work" / client / "bounds.json"
+    proven = [(int(a, 16), n) for a, n in json.loads(bounds.read_text())] if bounds.exists() else ()
+    funcs = find_functions(code, text_va, seeds, relocs, proven)
     # Persist direct-call edges so source retrieval can use neighboring functions.
     by_addr = {int(f["addr"], 16): f for f in funcs}
     md = Cs(CS_ARCH_X86, CS_MODE_32)

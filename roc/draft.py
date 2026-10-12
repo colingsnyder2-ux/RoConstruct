@@ -671,6 +671,13 @@ def prompt_for(client, addr, row, asm, hint, attempt, flags=None, examples=(), s
                   "parameter and return conventions when calling them. Do not copy unrelated bodies:"]
             for clue in facts["exact_callee_sources"][:4]:
                 p += ["callee %s:" % clue["addr"], "```cpp", clue["source"], "```"]
+    from roc import donor
+    same = donor.hint(client, addr)
+    if same:
+        p += ["", "These exact bytes also occur in RBXGS WebService.dll (Dec 2007) at 0x%s. "
+              "Its PDB name (decorated; real signature): %s" % (same["donor"], same["symbol"] or "unknown")]
+        if same["source"] and not binary_only:
+            p += ["OpenRBX source for that function (%s):" % same["path"], "```cpp", same["source"][:1500], "```"]
     if hint:
         p += ["", "Rev.ng decompiler output (generic types, hint only):", hint]
     from roc import refsource

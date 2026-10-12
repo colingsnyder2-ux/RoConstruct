@@ -3,6 +3,7 @@ import hashlib
 import json
 import time
 from pathlib import Path
+from urllib.parse import urlparse
 
 from roc import task_files, worker
 
@@ -32,13 +33,13 @@ def snapshot(cluster_id=None):
     for key, (path, data) in found.items():
         label = str(path.relative_to(ROOT))
         if "admin_token" in data:
-            nodes.append({"id": key, "label": label})
+            nodes.append({"id": key, "label": "%s · %s" % (data.get("node", "Server"), ", ".join(urlparse(s).netloc or s for s in data["servers"])), "path": label})
         else:
             try:
                 state = json.loads(path.with_suffix(".status.json").read_text())
             except (ValueError, OSError):
                 state = {}
-            local.append({"id": key, "label": label, "worker": data.get("worker"),
+            local.append({"id": key, "label": data.get("worker") or "CPU helper", "path": label, "servers": data["servers"], "worker": data.get("worker"),
                           "enabled": data.get("cpu_enabled") is True, "paused": bool(data.get("cpu_paused")),
                           "running": state.get("stage") != "stopped" and time.time() - state.get("seen", 0) < 65,
                           "status": state})
@@ -46,7 +47,7 @@ def snapshot(cluster_id=None):
     result = {"clusters": nodes, "local": local, "remote": None, "selected": cluster_id,
               "tasks": command_watch.tasks()}
     if not nodes:
-        nodes.extend({"id": n["id"], "label": n["label"]} for n in local)
+        nodes.extend({"id": n["id"], "label": "%s · %s" % (n["label"], ", ".join(urlparse(s).netloc or s for s in n["servers"])), "path": n["path"]} for n in local)
     if not nodes:
         return result
     nodes.sort(key=lambda n: found[n["id"]][0].stat().st_mtime, reverse=True)
@@ -55,6 +56,7 @@ def snapshot(cluster_id=None):
         raise ValueError("Choose a configured coordinator")
     result["selected"] = selected
     config = found[selected][1]
+    result["servers"] = config["servers"]
     result["local"] = [n for n in local if set(found[n["id"]][1]["servers"]) == set(config["servers"])]
     api = worker.Api(",".join(config["servers"]), config.get("admin_token") or config["worker_token"])
     try:

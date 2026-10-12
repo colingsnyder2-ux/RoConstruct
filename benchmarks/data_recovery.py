@@ -15,7 +15,8 @@ def string_candidate(source, before, after):
         return None
     for literal in re.finditer(r'(?<![\w])"(?:[^"\\]|\\.)*"', source):
         try:
-            if ast.literal_eval(literal[0]).encode("ascii") == before:
+            value = ast.literal_eval(literal[0]).encode("ascii")
+            if value == before or (value.lower() == before.lower() and value != before):
                 return source[:literal.start()] + json.dumps(after.decode("ascii")) + source[literal.end():]
         except (SyntaxError, ValueError, UnicodeError):
             pass

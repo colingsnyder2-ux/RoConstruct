@@ -9,7 +9,7 @@ from roc import clients, draft, match, providers
 
 class PersistentBudget(providers.CloudBudget):
     def __init__(self, path):
-        super().__init__(requests=200, cost=1.80)
+        super().__init__(requests=500, cost=4.50)
         self.path = path
         if path.exists():
             saved = json.loads(path.read_text(encoding="utf-8"))
@@ -109,7 +109,7 @@ def run(limit):
         record["budget"] = dict(cost=budget.cost, requests=budget.requests)
         campaign.record("ai-representatives", record)
         print("AI FAMILY", client, addr, record.get("score"), "cost", budget.cost, flush=True)
-        if budget.requests >= 200 or budget.cost >= 1.80:
+        if budget.requests >= 500 or budget.cost >= 4.50:
             break
 
 

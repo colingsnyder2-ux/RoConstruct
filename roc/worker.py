@@ -640,7 +640,7 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
         cloud_escalate=None, cloud_escalate_after=2, thinking=None, reasoning_effort=None,
         max_tokens=2048, examples_cache=None, source_cache=None, guided_mutations=False,
         order="random", family_exemplars=True, lease_mode="function", family_state=None,
-        family_lock=None, family_id=None, unit_name=None, near_repair=False,
+        family_lock=None, family_id=None, unit_name=None, near_repair=False, library=None,
         min_score=None, max_score=None, abi_only=False, control=None, slot=0):
     """forever: survive server/network outages (retry every minute) for overnight runs.
     only: restrict to these clients (one-click links).
@@ -740,6 +740,7 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
                                              "targets": targets, "order": lease_order,
                                              "family": family_hint,
                                              "unit": unit_name if lease_mode == "unit" else None,
+                                             "library": library or None,
                                              "min_score": min_score, "max_score": max_score})["job"]
                 if lease_mode == "family" and job and job.get("family"):
                     family_state["id"] = job["family"]
@@ -1342,20 +1343,27 @@ def _usage_line(session, round_stats):
 
 def pull_files(server, client, token=None, force=False, log=print):
     """Download every stored source for a client into src/<client>/.
-    Local files are kept unless force; scores.json is updated either way."""
+    Local files are kept unless force, or unless they are an older server download
+    with a lower score: scores.json takes the server score, so keeping that file
+    would leave a partial attempt behind a 100% score."""
     api = Api(server, token)
     rows = api.call("/v1/sources?client=%s" % client, timeout=300)
     folder = ROOT / "src" / client
     folder.mkdir(parents=True, exist_ok=True)
     written = kept = 0
+    starts = match.function_starts(client)
     for r in rows:
         if not re.match(r"^[0-9a-f]{8}$", r["addr"]):
             continue
+        if starts is not None and r["addr"] not in starts:
+            continue  # address retired by a boundary fix
         path = folder / ("%s.cpp" % r["addr"])
         match.save_score(client, r["addr"], r["score"])
         if path.exists() and not force:
-            kept += 1
-            continue
+            old = re.match(r"// from server: (\d+)% by ", path.read_text(errors="replace"))
+            if not old or int(old.group(1)) >= r["score"]:
+                kept += 1
+                continue
         src = r["source"]
         if not src.lstrip().startswith("// roc"):
             try:

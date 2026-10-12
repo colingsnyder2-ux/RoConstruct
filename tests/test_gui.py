@@ -323,6 +323,19 @@ class DashboardTests(unittest.TestCase):
 
 
 class LinkTests(unittest.TestCase):
+    def test_server_uri_opens_setup_without_starting_worker(self):
+        with patch.object(gui, "serve") as serve, patch.object(link, "run") as terminal:
+            link.launch("roconstruct://server", ask=lambda _: self.fail("Should not ask"))
+        serve.assert_called_once_with(page="cpu")
+        terminal.assert_not_called()
+
+    def test_server_uri_refuses_commands_and_credentials(self):
+        for url in ("roconstruct://server?token=secret", "roconstruct://server?command=start", "roconstruct://server#secret"):
+            with self.subTest(url=url), patch.object(gui, "serve") as serve:
+                with self.assertRaises(SystemExit):
+                    link.launch(url)
+                serve.assert_not_called()
+
     def test_web_uri_preserves_context_without_launching_worker(self):
         url = "roconstruct://work?client=2008-06&server=localhost:8765&user=tester&cloud=1"
         with patch.object(worker, "load_settings", return_value={}), patch.object(gui, "serve") as serve, \

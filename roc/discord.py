@@ -72,6 +72,14 @@ def server_mines_webhook():
         return None
 
 
+def server_users():
+    """Users whose gains count as server mining: server webhook, off the leaderboard."""
+    try:
+        return set(json.loads((ROOT / "roconstruct-settings.json").read_text()).get("server_users", []))
+    except (OSError, ValueError):
+        return set()
+
+
 def tool_digest(tool, description, fields=()):
     """One asynchronous summary for local mining tools such as xcopy and repair."""
     webhook = server_mines_webhook()
@@ -142,12 +150,12 @@ class MineLog:
         eta = fmt_duration(left / rate) if rate >= ETA_MIN_RATE else "building rate"
         full = [e for e in events if e["score"] == 100]
         partial = [e for e in events if e["score"] < 100]
-        models = []
+        functions = []
         for name in sorted({e["model"] for e in events if e["model"]}) or ["auto"]:
             entry = inline_code(name)
-            if len(", ".join(models + [entry])) > 1024:
+            if len(", ".join(functions + [entry])) > 1024:
                 break
-            models.append(entry)
+            functions.append(entry)
 
         def lines(rows):
             return "\n".join("%s **%d%%** `%s` %s · %s B" % (
@@ -171,7 +179,7 @@ class MineLog:
                    {"name": "⚡ Mining Rate", "value": "%d functions/hr · ETA %s" % (round(rate_hr), eta), "inline": True},
                    people,
                    {"name": "✅ Batch", "value": "%d full · %d improved" % (len(full), len(partial)), "inline": True},
-                   {"name": "🤖 Models", "value": ", ".join(models), "inline": True}]
+                   {"name": "🔧 Functions", "value": ", ".join(functions), "inline": True}]
         return {"title": "⛏️ RoConstruct Server Mining Digest" if self.server else "⛏️ RoConstruct Mining Digest",
                 "description": "**%s Client**\n%s / %s matched · %s remaining\n\n%s **%.2f%%**\n\n🟦 source · 🟩 mined · ❎ partial · ⬜ remaining" % (
                     client, format(matched, ","), format(total, ","), format(left, ","), bar, percent),

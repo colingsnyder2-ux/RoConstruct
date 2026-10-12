@@ -88,6 +88,11 @@ def keep_awake():
 def launch(url, ask=input):
     """Choose terminal/webpage before any setup or worker starts."""
     from roc import gui, selfupdate, worker
+    target = urlparse(url)
+    if target.scheme == SCHEME and (target.netloc or target.path.strip("/")) == "server":
+        if target.query or target.fragment:
+            raise SystemExit("Server setup links do not accept credentials or commands.")
+        return gui.serve(page="cpu")
     parts = parse_full(url)
     settings = worker.load_settings()
     interface = settings.get("uri_interface", "ask")

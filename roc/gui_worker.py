@@ -14,7 +14,7 @@ DEFAULTS = dict(client="", server="", user="", model="", workers=1, rounds=4,
                 guided_mutations=False, near_repair=False, source_only=False,
                 cloud_allowed=False, cloud_concurrency=1, max_cloud_requests=None,
                 max_cloud_tokens=None, max_cloud_cost=None, lease_mode="function",
-                unit_name=None, family_id=None, targets=None)
+                unit_name=None, family_id=None, targets=None, library="")
 LIVE = {"workers", "model", "rounds", "max_size", "max_tokens", "strategy", "order",
         "thinking", "reasoning_effort", "use_revng", "min_score", "max_score",
         "diverse_candidates", "guided_mutations", "near_repair", "max_cloud_requests",
@@ -60,6 +60,9 @@ def validate(values, base=None, check_model=True):
         raise ValueError("Enter server host:port or http(s) URL")
     if config["client"] and config["client"] not in clients.load():
         raise ValueError("Unknown client")
+    from roc.libraries import NAMES
+    if config["library"] and config["library"] not in NAMES:
+        raise ValueError("Unknown library")
     if config["lease_mode"] == "unit" and not config["unit_name"]:
         raise ValueError("Unit lease requires a unit name")
     if config["family_id"] and not re.fullmatch(r"[0-9a-f]{24}", config["family_id"]):
