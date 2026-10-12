@@ -493,13 +493,18 @@ const demangle = sym => sym && sym[0] === "?" ? sym.slice(1).split("@@")[0].spli
 
 // [library, subsystem, exact] per function. A rebuilt function's symbol namespace wins
 // (Roblox recipes also compile G3D/std/boost code), then its recipe, then the unit label.
+// Only exact rebuilds claim a library: a partial's source is just the nearest candidate.
+// Tiny bodies and template instantiations (empty destructors, getters, std::copy) compile
+// to identical bytes from any source, so they claim only when the unit label agrees.
 // Code with no RTTI class nearby takes the library of its source-matched neighbours when
 // both sides agree (static libs link contiguously).
 function classify(data) {
   const out = data.funcs.map(f => {
     const unit = data.units[f[3]], sym = demangle(f[5] && f[5][2]), named = sym && libraryOf(sym);
-    const exact = (named !== APP && named !== UNLABELED && named) || recipeOf(f[5]);
-    const lib = exact || libraryOf(unit);
+    const source = (named !== APP && named !== UNLABELED && named) || recipeOf(f[5]);
+    const generic = f[1] < 64 || /^\?\?\$/.test(f[5] && f[5][2] || ""), label = libraryOf(unit);
+    const exact = f[2] === 100 && source && (!generic || label === source) && source;
+    const lib = exact || label;
     return [lib, partOf(lib, exact && f[5], unit, sym), !!exact];
   });
   const order = data.funcs.map((f, i) => i).sort((a, b) => data.funcs[a][0] - data.funcs[b][0]);
