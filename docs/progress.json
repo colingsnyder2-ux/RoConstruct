@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-12 02:12 UTC",
+ "updated": "2026-10-12 05:01 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -22,13 +22,6 @@
      "points": 799855,
      "submissions": 8079,
      "last": 1791758667.0416703
-    },
-    {
-     "user": "tester",
-     "matched": 1003,
-     "points": 26563,
-     "submissions": 1007,
-     "last": 1791757461.7485256
     },
     {
      "user": "colin",
@@ -84,13 +77,6 @@
      "points": 764709,
      "submissions": 25366,
      "last": 1791747689.262979
-    },
-    {
-     "user": "tester",
-     "matched": 983,
-     "points": 36778,
-     "submissions": 1367,
-     "last": 1791757502.5333812
     },
     {
      "user": "atomic.potato",
@@ -152,13 +138,13 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22295,
-   "matched": 15524,
-   "partial": 5076,
+   "matched": 16472,
+   "partial": 4427,
    "bytes": 3485079,
-   "matched_bytes": 2001430,
-   "source_bytes": 1830147,
-   "mined_bytes": 171283,
-   "partial_bytes": 961065,
+   "matched_bytes": 2111776,
+   "source_bytes": 1846337,
+   "mined_bytes": 265439,
+   "partial_bytes": 908850,
    "data_bytes": 1559926,
    "leaderboard": [
     {
@@ -169,13 +155,6 @@
      "last": 1791756004.5913844
     },
     {
-     "user": "tester",
-     "matched": 3639,
-     "points": 205371,
-     "submissions": 4036,
-     "last": 1791770448.946681
-    },
-    {
      "user": "colin",
      "matched": 1072,
      "points": 584641,
@@ -184,10 +163,10 @@
     },
     {
      "user": "king_originala",
-     "matched": 140,
-     "points": 12613,
-     "submissions": 251,
-     "last": 1791770796.801233
+     "matched": 525,
+     "points": 49736,
+     "submissions": 986,
+     "last": 1791780484.8535757
     },
     {
      "user": "atomic.potato",
@@ -218,7 +197,7 @@
      "last": 1791766592.3175168
     }
    ],
-   "data_matched_bytes": 200671,
+   "data_matched_bytes": 225261,
    "classes": 1488,
    "generated": 19819
   },
@@ -243,13 +222,6 @@
      "points": 902966,
      "submissions": 9098,
      "last": 1791756011.3222485
-    },
-    {
-     "user": "tester",
-     "matched": 2995,
-     "points": 143717,
-     "submissions": 3021,
-     "last": 1791757452.3395808
     },
     {
      "user": "colin",
@@ -307,13 +279,6 @@
      "last": 1791756018.252797
     },
     {
-     "user": "tester",
-     "matched": 2909,
-     "points": 137341,
-     "submissions": 2920,
-     "last": 1791757452.6149223
-    },
-    {
      "user": "colin",
      "matched": 2311,
      "points": 816333,
@@ -362,13 +327,6 @@
      "last": 1791731044.154585
     },
     {
-     "user": "tester",
-     "matched": 3011,
-     "points": 147496,
-     "submissions": 3011,
-     "last": 1791757487.877285
-    },
-    {
      "user": "atomic.potato",
      "matched": 406,
      "points": 177957,
@@ -401,13 +359,6 @@
      "points": 982207,
      "submissions": 9977,
      "last": 1791758698.6201742
-    },
-    {
-     "user": "tester",
-     "matched": 2800,
-     "points": 141722,
-     "submissions": 2889,
-     "last": 1791757622.170013
     },
     {
      "user": "colin",
@@ -445,13 +396,6 @@
    "last": 1791758698.6201742
   },
   {
-   "user": "tester",
-   "matched": 17347,
-   "points": 839688,
-   "submissions": 18258,
-   "last": 1791770448.946681
-  },
-  {
    "user": "colin",
    "matched": 13030,
    "points": 5407625,
@@ -466,18 +410,18 @@
    "last": 1791753415.6915565
   },
   {
+   "user": "king_originala",
+   "matched": 525,
+   "points": 49736,
+   "submissions": 986,
+   "last": 1791780484.8535757
+  },
+  {
    "user": "why2",
    "matched": 204,
    "points": 33377,
    "submissions": 520,
    "last": 1791657569.112455
-  },
-  {
-   "user": "king_originala",
-   "matched": 139,
-   "points": 12513,
-   "submissions": 250,
-   "last": 1791770796.8002331
   },
   {
    "user": "Intel",
@@ -543,5 +487,5 @@
    "last": 1791759532.156495
   }
  ],
- "server": "https://aqua-eos-ceremony-rev.trycloudflare.com"
+ "server": "https://helen-breath-matthew-large.trycloudflare.com"
 }
