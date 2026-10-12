@@ -11,7 +11,8 @@ from roc import server
 class FindingsTests(unittest.TestCase):
     def test_hourly_publish_syncs_sources_even_when_site_unchanged(self):
         from roc import progress, setup
-        with patch.object(server, "sync_findings") as sync, \
+        with tempfile.TemporaryDirectory() as folder, patch.object(server, "ROOT", Path(folder)), \
+             patch.object(server, "sync_findings") as sync, \
              patch.object(server, "publish_findings") as publish, \
              patch.object(server, "export", return_value={}), \
              patch.object(progress, "build"), patch.object(setup, "refresh_path"), \
@@ -22,7 +23,23 @@ class FindingsTests(unittest.TestCase):
             sync.assert_called_once_with(store)
             publish.assert_called_once()
             commands = [call.args[0][1] for call in git.call_args_list]
-            self.assertEqual(commands, ["add", "diff"])
+            self.assertEqual(commands, ["push", "add", "diff"])
+
+    def test_address_pushed_before_slow_source_sync(self):
+        from roc import progress, setup
+        with tempfile.TemporaryDirectory() as folder, patch.object(server, "ROOT", Path(folder)), \
+             patch.object(server, "sync_findings") as sync, \
+             patch.object(server, "publish_findings"), patch.object(server, "export", return_value={}), \
+             patch.object(progress, "build"), patch.object(setup, "refresh_path"), \
+             patch.object(setup, "find_exe", return_value="git"), \
+             patch.object(server.subprocess, "run", return_value=Mock(returncode=0)) as git:
+            path = Path(folder) / "docs/progress.json"
+            path.parent.mkdir()
+            path.write_text('{"server":"https://old.example","clients":[]}')
+            sync.side_effect = lambda _: self.assertEqual(
+                [call.args[0][1] for call in git.call_args_list], ["add", "commit", "push"])
+            server._publish_once(Mock(), "https://new.example", log=Mock())
+            self.assertEqual(json.loads(path.read_text())["server"], "https://new.example")
 
     def test_sync_includes_zero_and_partial_preserves_better_local(self):
         store = Mock()

@@ -1162,16 +1162,17 @@ def test_mine_feed_routing():
         thread.start()
         try:
             with patch("roc.server.match.check_text", side_effect=[(50, "f", "", []), (60, "f", "", [])]), \
-                 patch("roc.server.check_many_text", return_value=[("00401000", 70, [])]):
+                 patch("roc.server.check_many_text", side_effect=[[("00401000", 70, [])], [("00401000", 80, [])]]), \
+                 patch("roc.discord.server_users", return_value={"tester"}):
                 for path, model in (("/v1/submit", "deepseek:model"), ("/v1/submit", "roc repair"),
-                                    ("/v1/submit-batch", "roc fingerprint")):
-                    body = {"user": "alice", "worker": "w", "model": model, "client": "C", "addr": "00401000",
+                                    ("/v1/submit-batch", "roc fingerprint"), ("/v1/submit-batch", "deepseek:deepseek-flash")):
+                    body = {"user": "tester", "worker": "w", "model": model, "client": "C", "addr": "00401000",
                             "source": "void f() {}", "score": 50, "addrs": ["00401000"]}
                     req = urllib.request.Request("http://127.0.0.1:%d%s" % (httpd.server_port, path),
                                                  data=json.dumps(body).encode(), headers={"Content-Type": "application/json"})
                     with urllib.request.urlopen(req, timeout=5) as response:
                         assert response.status == 200
-            assert regular.submit.call_count == 1
+            assert regular.submit.call_count == 2
             assert automatic.submit.call_count == (2 if dedicated else 0)
         finally:
             httpd.shutdown()
