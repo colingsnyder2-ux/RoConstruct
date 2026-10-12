@@ -7,6 +7,7 @@ re-runs `roc check` itself, so it pays with whatever plan or key that CLI is
 signed in with on this PC. Afterwards the file is re-scored here: improvements
 are submitted under the lease, regressions are rolled back.
 """
+import json
 import os
 import shutil
 import subprocess
@@ -41,18 +42,15 @@ Rules:
 
 GOAL_PROMPT = """You are working on RoConstruct, a matching-decompilation project for old Roblox
 clients: write C++ that each client's original MSVC compiles to the exact target
-bytes. Read CLAUDE.md and docs/AI_WORKER_GUIDE.md first.
+bytes. Read CLAUDE.md first and follow its workflow.
 
 Your goal: {goal}
 
 Run project commands as:  {roc} <command>   (`{roc} --help` lists them all).
-Useful: doctor, pull, next, claim, check, classify, libs, ref, lint, submit.
-Library code (RakNet, zlib, Ogre, ...) is open source: search the web for the
-exact original version's source and port it rather than guessing.
-
-Rules: no inline assembly, __emit or byte blobs; never edit clients/, work/ or
-tools/; only add or edit files under src/. Submit each function that improves
-with `{roc} submit <client> <addr>` (the server re-verifies). Work through as
+This run is unattended, so you may only run roc.py commands, read the repo, search
+the web, and add or edit files under src/ (never clients/, work/ or tools/). Use the
+methods that fit inside that: near-miss repair, compiler gates via `// roc-flags:`
+and `// roc-cl:` lines, and propagation by checking a fix against siblings. Work through as
 much of the goal as you can in about {minutes} minutes, then stop and summarize
 what matched, what improved, and what blocked you.
 """
@@ -75,7 +73,8 @@ def command(cli, model=None, goal=False):
     if cli == "claude":
         tools = ("Read,Grep,Glob,Edit,Write,WebSearch,WebFetch,Bash(%s *)" % roc_command() if goal
                  else "Read,Grep,Glob,Edit,Bash(%s *)" % check_command())
-        argv = ["claude", "-p", "--permission-mode", "acceptEdits", "--allowedTools", tools]
+        argv = ["claude", "-p", "--permission-mode", "acceptEdits", "--allowedTools", tools,
+                "--output-format", "stream-json", "--verbose"]
     elif cli == "codex":
         argv = ["codex", "exec", "--full-auto", "-C", str(ROOT), "-"]
     else:
@@ -100,22 +99,68 @@ def _kill(process):
         process.kill()
 
 
+def show(line, log):
+    """One stream-json event from `claude -p` as a readable console line."""
+    try:
+        event = json.loads(line)
+    except ValueError:
+        if line.strip():
+            log(line.rstrip())
+        return
+    if event.get("type") == "assistant":
+        for block in event.get("message", {}).get("content", []):
+            if block.get("type") == "text" and block.get("text", "").strip():
+                log(block["text"].strip())
+            elif block.get("type") == "tool_use":
+                args = block.get("input") or {}
+                detail = next((str(args[key]) for key in ("command", "file_path", "pattern", "query", "url")
+                               if args.get(key)), "")
+                log("  > %s %s" % (block.get("name"), detail.splitlines()[0][:160] if detail else ""))
+    elif event.get("type") == "result":
+        log("Agent finished after %s turns%s." % (event.get("num_turns"), " with an error" if event.get("is_error") else ""))
+
+
 def run_agent(cli, prompt, model=None, minutes=20, log=print, goal=False):
     exe = shutil.which(cli)
     if not exe:
         raise SystemExit("%s CLI not found. Install it and sign in first (see docs/agent-cli.md)." % cli)
     argv = command(cli, model, goal)
     argv[0] = exe
-    process = subprocess.Popen(argv, cwd=ROOT, stdin=subprocess.PIPE, text=True, encoding="utf-8")
+    stream = cli == "claude"
+    process = subprocess.Popen(argv, cwd=ROOT, stdin=subprocess.PIPE, stdout=subprocess.PIPE if stream else None,
+                               text=True, encoding="utf-8", errors="replace")
     process.stdin.write(prompt)
     process.stdin.close()
-    try:
-        return process.wait(timeout=minutes * 60)
-    except subprocess.TimeoutExpired:
+
+    def expire():
         log("  agent hit the %d-minute limit; stopping it." % minutes)
         _kill(process)
-        process.wait()
-        return None
+
+    timer = threading.Timer(minutes * 60, expire)
+    timer.daemon = True
+    timer.start()
+    try:
+        if stream:
+            for line in process.stdout:
+                show(line, log)
+        return process.wait()
+    finally:
+        timer.cancel()
+
+
+def interactive(cli, goal, model=None):
+    """Open a normal Claude Code / Codex session here with the goal as its first message.
+
+    This is the maintainer workflow: the person watches, answers permission
+    prompts and steers. One line only: the Windows .cmd shims mangle newlines,
+    quotes and percent signs in arguments.
+    """
+    exe = shutil.which(cli)
+    if not exe:
+        raise SystemExit("%s CLI not found. Install it and sign in first (see docs/agent-cli.md)." % cli)
+    goal = " ".join(goal.replace('"', "'").replace("%", " percent").split())
+    first = "Goal: %s. Read CLAUDE.md first and follow its workflow." % goal
+    return subprocess.call([exe] + (["--model", model] if model else []) + [first], cwd=ROOT)
 
 
 def work_one(api, user, agent_id, job, cli, model, minutes, log):

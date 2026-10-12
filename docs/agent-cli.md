@@ -30,7 +30,20 @@ roc agent claude --model sonnet --minutes 30
 `--minutes` caps each function (default 20); `--jobs` is how many functions to
 do one after another.
 
-### Goal mode
+### Interactive mode (the maintainer workflow)
+
+```text
+roc agent claude --interactive --goal "match as many 2008-06 RakNet functions as you can"
+```
+
+This opens a normal Claude Code (or Codex) session in the repo with your goal
+as its first message. It reads `CLAUDE.md` (Codex: `AGENTS.md`), which holds the
+same setup steps and workflow the maintainers' sessions use: it can download
+compilers and clients, write runners under `benchmarks/`, add library recipes,
+and submit gains. You watch, answer its permission prompts and steer. The menu
+(`roc.cmd` with no arguments) starts this mode.
+
+### Goal mode (unattended)
 
 Give the agent a task in plain words instead of one leased function:
 
@@ -41,9 +54,11 @@ roc agent codex --goal "finish the zlib functions in 2008-06" --minutes 60
 
 The agent picks its own functions with `roc next`/`claim`/`check`, may run any
 `roc.py` command, searches the web for the original library source, and submits
-gains with `roc submit`. A session runs up to `--minutes` (default 120). The
-menu (`roc.cmd` with no arguments) offers this as "Match functions with my
-Claude Code / Codex plan".
+gains with `roc submit`. A session runs up to `--minutes` (default 120),
+and Claude's steps stream to the console and the dashboard (Commands, Agent).
+Unattended runs are limited to `roc.py` commands and `src/` edits; anything
+broader (scripts, downloads, new recipes) is for interactive mode, where you
+approve it.
 
 What the agent may do: Claude runs with `acceptEdits`; per function it may only
 run `roc.py check`, in goal mode any `roc.py` command plus web search/fetch.

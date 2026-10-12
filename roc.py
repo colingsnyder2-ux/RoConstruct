@@ -713,6 +713,8 @@ def cmd_config(a):
 
 def cmd_agent(a):
     from roc import agent
+    if a.interactive:
+        return agent.interactive(a.cli, a.goal or "match open 2008-06 functions", a.model)
     if a.goal:
         return agent.run_goal(a.cli, a.goal, a.model, a.minutes or 120)
     s = settings()
@@ -1376,7 +1378,7 @@ def menu():
         ("Install local AI instead (optional: Ollama, then Docker)", lambda: main(["local-ai"])),
         ("Work on a function by hand", menu_hand),
         ("Match functions with my Claude Code / Codex plan", lambda: main(["agent", ask("CLI (claude/codex)", "claude"),
-                                                                          "--goal", ask("What should it do", "match as many open 2008-06 functions as you can")])),
+                                                                          "--interactive", "--goal", ask("What should it do", "match as many open 2008-06 functions as you can")])),
         ("Check my hand-written functions", lambda: main(["check", ask("Client", "2008-06")])),
         ("Send my hand-written functions to the server", lambda: main(["submit", ask("Client", "2008-06")])),
         ("Host the group server", lambda: main(["server"])),
@@ -1692,6 +1694,8 @@ def main(argv=None):
     cmd("agent", cmd_agent, "match leased functions with your own Claude Code or Codex CLI",
         (["cli"], {"choices": ["claude", "codex"]}),
         (["--goal"], {"help": 'free-form task, e.g. "match as many 2008-06 RakNet functions as you can"'}),
+        (["--interactive"], {"action": "store_true",
+                              "help": "open a normal session you can watch and steer (asks before risky commands)"}),
         (["--client"], {}),
         (["--jobs"], {"type": int, "default": 1, "help": "functions to lease, one after another"}),
         (["--model"], {"help": "passed to the CLI's --model"}),

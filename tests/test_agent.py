@@ -43,7 +43,7 @@ def test_regression_is_rolled_back_and_released(tmp_path, monkeypatch):
 
 def test_commands_read_prompt_from_stdin():
     claude = agent.command("claude", "haiku")
-    assert claude[:4] == ["claude", "-p", "--model", "haiku"] and "acceptEdits" in claude
+    assert claude[:4] == ["claude", "-p", "--model", "haiku"] and "acceptEdits" in claude and "stream-json" in claude
     assert any(arg.startswith("Read,Grep,Glob,Edit,Bash(") for arg in claude)
     assert agent.command("codex")[-1] == "-"
 
@@ -65,3 +65,22 @@ def test_dashboard_agent_command_args():
     for bad in ({"cli": "bash", "goal": "x"}, {"cli": "claude", "goal": " "}, {"cli": "claude", "goal": "x", "minutes": 0}):
         with pytest.raises(ValueError):
             command_args({"command": "agent", **bad})
+
+
+def test_stream_events_become_console_lines():
+    lines = []
+    agent.show('{"type":"assistant","message":{"content":[{"type":"text","text":"Trying zlib."},'
+               '{"type":"tool_use","name":"Bash","input":{"command":"roc check 2008-06 00401000\\nmore"}}]}}', lines.append)
+    agent.show('{"type":"result","num_turns":7,"is_error":false}', lines.append)
+    agent.show("plain text\n", lines.append)
+    assert lines == ["Trying zlib.", "  > Bash roc check 2008-06 00401000", "Agent finished after 7 turns.", "plain text"]
+
+
+def test_interactive_sends_one_safe_line(monkeypatch):
+    seen = []
+    monkeypatch.setattr(agent.shutil, "which", lambda cli: "/bin/" + cli)
+    monkeypatch.setattr(agent.subprocess, "call", lambda argv, cwd: seen.append(argv) or 0)
+    agent.interactive("claude", 'match "RakNet"\n100% of 2008', "sonnet")
+    argv = seen[0]
+    assert argv[:3] == ["/bin/claude", "--model", "sonnet"] and "\n" not in argv[3] and '"' not in argv[3]
+    assert "%" not in argv[3] and "CLAUDE.md" in argv[3]
