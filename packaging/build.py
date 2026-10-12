@@ -50,6 +50,9 @@ PACKAGES = {
 
 This is the whole helper install. It is deliberately small:
 
+For ChatGPT subscription access, run setup-chatgpt.cmd first and follow
+docs/chatgpt-plan.md. It signs in through your browser and then runs install.cmd.
+
   1. Run install.cmd (Windows) or install.sh (Linux). It checks Python, installs required pip packages
      (pefile, capstone, tzdata), downloads the exact MSVC compiler bundles, registers
      the roconstruct:// link, and opens the website.
