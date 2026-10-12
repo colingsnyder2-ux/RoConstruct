@@ -68,6 +68,22 @@ gains, with `roc submit <client> [addr ...]`. Afterwards append one dated entry 
 - the rejected variants;
 - what to try next.
 
+## Known 2008-06 findings (don't rediscover these)
+
+- XTP is at about 98.5%. The winning recipe is `xtp-11.2.2-lib-strlen`: it preincludes
+  `XTPDLLExports.h`, defines `_LIB`, and marks the CString accessors noinline. Before
+  sweeping any library, find its vendor build prelude the same way.
+- Ogre 1.4.5 ships as `rgmain.dll` (recipe `ogre-1.4.5`, flags
+  `/Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD`, no `/O2`). Only about 21 inline Ogre header
+  functions live in the exe, and they are all matched.
+- WildMagic is not in 2008-06. Functions attributed to it are Roblox templates.
+- A second zlib 1.2.3 copy (0x7a3e90-0x7a99b0) was built with VS2005 50727 and
+  `ZLIB_WINAPI` (recipe `zlib-1.2.3-winapi`).
+- The exe statically links atls.lib, mfcs90.lib RTM and comsupp.lib (recipes
+  `msvc-atlmfc-rtm`, `msvc-comsupp-rtm`). Archive sources need a non-empty `roc-flags`.
+- What remains is mostly unattributed Roblox app code. Near-miss repair and
+  propagation pay off there; more library sweeps mostly don't.
+
 ## Rules
 
 - Current focus is 2008-06. Never touch client 2009-12 (no mining, testing or submitting).

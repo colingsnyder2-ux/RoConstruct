@@ -84,3 +84,19 @@ def test_interactive_sends_one_safe_line(monkeypatch):
     argv = seen[0]
     assert argv[:3] == ["/bin/claude", "--model", "sonnet"] and "\n" not in argv[3] and '"' not in argv[3]
     assert "%" not in argv[3] and "CLAUDE.md" in argv[3]
+
+
+def test_session_and_setup_open_a_terminal(monkeypatch):
+    import pytest
+    opened = []
+    monkeypatch.setattr(agent, "_terminal", lambda argv: opened.append(argv))
+    monkeypatch.setattr(agent.shutil, "which", lambda name: None)
+    agent.open_session("codex", "match zlib", "gpt-5")
+    assert opened[0][2:] == ["agent", "codex", "--interactive", "--goal", "match zlib", "--model", "gpt-5"]
+    agent.open_setup("claude")
+    assert "npm install -g @anthropic-ai/claude-code" in " ".join(opened[1])
+    for bad in (("bash", "x"), ("claude", " "), ("claude", "x" * 2001)):
+        with pytest.raises(ValueError):
+            agent.open_session(*bad)
+    with pytest.raises(ValueError):
+        agent.open_setup("bash")

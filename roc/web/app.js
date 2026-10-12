@@ -7,6 +7,7 @@ const initialPage = new URLSearchParams(location.search).get("page") === "cpu" ?
 history.replaceState(null, "", location.pathname + (initialPage === "cpu" ? "?page=cpu" : ""));
 let meta, jobs = [], page = initialPage, selectedCommand = "mass", editing = null;
 let cursor = 0, logs = [], follow = true, online = false, toastTimer, localModels = [];
+let agentState = null;
 let cpu = null, cpuCluster = "", cpuLoaded = 0, cpuLoading = false, serverSetupOpen = initialPage === "cpu";
 const active = job => ["running", "paused", "stopping"].includes(job.status);
 const liveKeys = new Set(["workers","model","rounds","max_size","max_tokens","strategy","order","thinking","reasoning_effort","use_revng","min_score","max_score","diverse_candidates","guided_mutations","near_repair","max_cloud_requests","max_cloud_tokens","max_cloud_cost"]);
@@ -236,6 +237,18 @@ function commands() {
     (command.name==="install" ? check("Accept compiler downloads", "accept_downloads", false) : "") +
     (command.name==="agent" ? field("Agent CLI", "cli", "claude", {choices:[["claude","Claude Code"],["codex","Codex"]]})+field("Goal", "goal", "Match as many open 2008-06 RakNet functions as you can", {placeholder:"What should the agent do?",full:true})+field("Time limit (minutes)", "minutes", 120, {type:"number",min:1,max:600}) : "") + `</div><div id="command-preview" class="command-preview">roc ${command.name}</div><div class="form-footer"><span class="tiny muted">${command.name==="mass" ? "Static libs → STL → recipes → analyze → auto" : "Output appears in the console below."}</span>${button("Run command",'type="submit"')}</div></form>`;
 }
+function agentPage() {
+  const s=agentState, row=(ok,title,detail,action="")=>`<div class="client-row"><div><h3>${title}</h3><p>${detail}</p></div><div class="button-row"><span class="badge ${ok ? "completed" : "paused"}">${ok ? "Ready" : "Needed"}</span>${action}</div></div>`, section=title=>`<div class="section-heading"><h2>${title}</h2></div>`;
+  const top=heading("", "AI agent", "Let Claude Code or Codex match functions on your own plan, the same way the maintainers' sessions work.", button("Refresh",'data-agent-refresh',true));
+  if(!s) return top+`<div class="panel panel-pad"><p class="help-note">Checking this PC…</p></div>`;
+  const c=s.client, clientAction=!c.downloaded ? button("Fetch",'data-client-task="client-fetch" data-client="2008-06"',true) : !c.analyzed ? button("Analyze",'data-client-task="analyze" data-client="2008-06"',true) : "";
+  return top + section("1. Agent CLI") + `<div class="panel">${["claude","codex"].map(cli=>row(!!s.clis[cli], cli==="claude" ? "Claude Code" : "Codex",
+      s.clis[cli] ? esc(s.clis[cli])+" · sign in once in the window it opens" : s.npm ? "Not installed. Uses your "+(cli==="claude" ? "Claude Pro/Max" : "ChatGPT")+" plan after sign-in." : "Not installed. Install Node.js (npm) first.",
+      button(s.clis[cli] ? "Sign in" : "Install & sign in",`data-agent-setup="${cli}" ${!s.clis[cli]&&!s.npm ? "disabled" : ""}`,true))).join("")}</div>` +
+    section("2. Project") + `<div class="panel">${row(s.server&&s.user,"Server and username",s.server&&s.user ? "Configured" : "Run in a terminal: roc config --user NAME --server URL")}${row(s.compilers,"Compilers",s.compilers ? "Exact MSVC builds installed" : "Download the exact MSVC builds",s.compilers ? "" : button("Install tools",'data-open-command="install"',true))}${row(c.downloaded&&c.analyzed,"Client 2008-06",!c.downloaded ? "Binary not downloaded" : !c.analyzed ? "Not analyzed yet" : "Downloaded and analyzed",clientAction)}</div>` +
+    section("3. Goal") + `<form id="agent-form" class="panel panel-pad"><div class="field-grid">${field("Agent CLI","cli",s.clis.claude||!s.clis.codex ? "claude" : "codex",{choices:[["claude","Claude Code"],["codex","Codex"]]})}${field("Model (optional)","model","",{placeholder:"sonnet, opus, gpt-5…"})}${field("Goal","goal","Match as many open 2008-06 RakNet functions as you can",{full:true})}</div><p class="help-note"><b>Interactive</b> opens a terminal window with a normal session: it can download, write scripts and add recipes like the maintainers' sessions, and asks you before risky commands. <b>Unattended</b> runs here for up to 2 hours and may only run roc.py commands and edit src/; its steps appear in the console below. Either way the server re-verifies every submission.</p><div class="form-footer">${button("Run unattended",'type="button" data-agent-run',true)}${button("Open interactive session",'type="submit"')}</div></form>`;
+}
+async function loadAgent() { agentState=await api("agent"); if(page==="agent") render(); }
 function clientPage() {
   return heading("", "Clients", "Registered builds, local binaries, and analysis status.", button("Run doctor", 'data-open-command="doctor"', true)) + `<div class="panel">${meta.clients.map(client=>`<div class="client-row"><div><h3>Roblox ${esc(client.name)}</h3><p>${esc(client.compiler)}</p><div class="client-details"><span class="badge ${client.downloaded ? "completed" : "paused"}">${client.downloaded ? "Binary present" : "Download needed"}</span><span class="badge ${client.analyzed ? "completed" : "paused"}">${client.analyzed ? "Analyzed" : "Analysis needed"}</span></div></div><div class="button-row">${button(client.downloaded ? "Analyze" : "Fetch",`data-client-task="${client.downloaded ? "analyze" : "client-fetch"}" data-client="${esc(client.name)}"`,true)}${button("Work on client",`data-client-worker="${esc(client.name)}"`,true)}</div></div>`).join("")}</div><p class="help-note">“Binary present” means file exists. Use Doctor for full readiness checks. Install tools from Commands if a compiler is missing.</p>`;
 }
@@ -247,8 +260,8 @@ function render(config) {
   document.title=page==="cpu" ? "Servers" : "RoConstruct Dashboard";
   const expanded=new Set([...document.querySelectorAll("[data-cpu-detail][open]")].map(n=>n.dataset.cpuDetail)), cpuScroll=$("#main").scrollTop;
   document.querySelectorAll(".sidebar [data-page]").forEach(button=>button.classList.toggle("active",button.dataset.page===page));
-  $("#page-name").textContent = {overview:"Overview",workers:"Workers",cpu:"Servers",commands:"Commands",clients:"Clients",history:"Run history",functions:"Functions",settings:"Settings"}[page];
-  $("#main").innerHTML = page==="cpu" ? cpuPage() : page==="overview" ? overview() : page==="workers" ? workers(config) : page==="commands" ? commands() : page==="clients" ? clientPage() : page==="history" ? heading("", "Run history", "Saved configurations, outcomes, and logs. Rerun interrupted sessions explicitly.")+runTable([...jobs].reverse()) : page==="functions" ? functionsPage() : settings();
+  $("#page-name").textContent = {overview:"Overview",workers:"Workers",cpu:"Servers",commands:"Commands",agent:"AI agent",clients:"Clients",history:"Run history",functions:"Functions",settings:"Settings"}[page];
+  $("#main").innerHTML = page==="cpu" ? cpuPage() : page==="overview" ? overview() : page==="workers" ? workers(config) : page==="commands" ? commands() : page==="agent" ? agentPage() : page==="clients" ? clientPage() : page==="history" ? heading("", "Run history", "Saved configurations, outcomes, and logs. Rerun interrupted sessions explicitly.")+runTable([...jobs].reverse()) : page==="functions" ? functionsPage() : settings();
   if(page==="cpu") {document.querySelectorAll("[data-cpu-detail]").forEach(n=>{n.open=expanded.has(n.dataset.cpuDetail);});$("#main").scrollTop=cpuScroll;}
   document.body.classList.toggle("servers-page",page==="cpu");
   document.body.classList.toggle("workers-page",page==="workers");
@@ -256,7 +269,7 @@ function render(config) {
   if (page==="commands") {act(previewCommand);act(()=>loadCpu(true));}
   if (page==="functions") act(loadFunctions);
 }
-function navigate(next, config) { page=next; if(next!=="workers") editing=null; render(config); if(next==="cpu")act(()=>loadCpu(true)); $("#main").scrollTop=0; }
+function navigate(next, config) { page=next; if(next!=="workers") editing=null; render(config); if(next==="cpu")act(()=>loadCpu(true)); if(next==="agent")act(loadAgent); $("#main").scrollTop=0; }
 function readWorker() {
   const form=$("#worker-form"), config={...(editing ? jobs.find(job=>job.id===editing).config : meta.initial)};
   for(const input of form.querySelectorAll("[name]")) {
@@ -341,6 +354,9 @@ document.addEventListener("click", event=>act(async()=>{
   if(target.hasAttribute("data-close-controls")) {controlsOpen=false;$(".worker-drawer").classList.remove("open");}
   if(target.hasAttribute("data-copy-code")) {await navigator.clipboard.writeText(target.closest(".chat-code").querySelector("code").textContent);toast("Code copied");}
   if(target.id==="chat-follow"||target.id==="jump-live") {setChatFollow(true);chatSignature="";renderWorkerChat();scrollToLatest($("#worker-chat"),true);}
+  if(target.hasAttribute("data-agent-refresh")) { agentState=null;render();await loadAgent(); }
+  if(target.dataset.agentSetup) { const result=await api("agent-setup",{cli:target.dataset.agentSetup});toast(result.manual ? "Run in a terminal: "+result.manual : "Opened a terminal window. Sign in there, then press Refresh."); }
+  if(target.hasAttribute("data-agent-run")) { const data=Object.fromEntries(new FormData($("#agent-form")));const result=await api("start",{kind:"command",command:"agent",cli:data.cli,goal:data.goal,minutes:120});toast("Agent started");$("#console-hint").textContent="Agent run "+result.id; }
   if(target.dataset.openCommand) { selectedCommand=target.dataset.openCommand;navigate("commands"); }
   if(target.dataset.command) { selectedCommand=target.dataset.command;render(); }
   if(target.dataset.clientTask) { const result=await api("start",{kind:"command",command:target.dataset.clientTask,client:target.dataset.client});$("#console-hint").textContent="Started "+result.id;toast("Task started"); }
@@ -380,6 +396,7 @@ document.addEventListener("submit",event=>{
   event.preventDefault();act(async()=>{
     if(event.target.id==="worker-form") { const config=readWorker();if(editing) await api("control",{id:editing,action:"update",config:Object.fromEntries(Object.entries(config).filter(([key])=>liveKeys.has(key)))});else { const result=await api("start",{kind:"worker",config});toast("Worker started");$("#console-hint").textContent="Worker session "+result.id; } }
     if(event.target.id==="worker-form") {controlsOpen=false;$(".worker-drawer")?.classList.remove("open");}
+    if(event.target.id==="agent-form") { const result=await api("agent-session",Object.fromEntries(new FormData(event.target)));toast(result.manual ? "Run in a terminal: "+result.manual : "Opened the agent in a new terminal window"); }
     if(event.target.id==="command-form") { const result=await api("start",{kind:"command",...readCommand()});toast("Command started");$("#console-hint").textContent="Command run "+result.id; }
     if(event.target.id==="preferences-form") { const data=Object.fromEntries(new FormData(event.target));await api("preferences",data);meta=await api("meta");document.documentElement.dataset.theme=data.theme;toast("Preferences saved"); }
     if(event.target.id==="provider-form") { await api("provider",Object.fromEntries(new FormData(event.target)));event.target.elements.key.value="";meta=await api("meta");render();toast("Key saved locally"); }

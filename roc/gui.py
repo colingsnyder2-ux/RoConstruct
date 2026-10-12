@@ -469,6 +469,9 @@ class Handler(BaseHTTPRequestHandler):
                     from roc import cpu_status
                     selected = parse_qs(parsed.query).get("cluster", [None])[0]
                     return self.send(200, cpu_status.snapshot(selected))
+                if parsed.path == "/api/agent":
+                    from roc import agent
+                    return self.send(200, agent.status())
                 if parsed.path == "/api/models":
                     return self.send(200, {"models": worker.draft.ollama_models()})
                 if parsed.path == "/api/daily-stats":
@@ -534,6 +537,11 @@ class Handler(BaseHTTPRequestHandler):
                     raise ValueError("Provider and key required")
                 providers.save_secret(config["key_env"], data["key"].strip())
                 app.secret_values.append(data["key"].strip())
+            elif self.path in ("/api/agent-session", "/api/agent-setup"):
+                from roc import agent
+                manual = (agent.open_session(data.get("cli"), data.get("goal"), data.get("model") or None)
+                          if self.path == "/api/agent-session" else agent.open_setup(data.get("cli")))
+                return self.send(200, {"manual": manual})
             elif self.path == "/api/preview":
                 return self.send(200, {"args": command_args(data)})
             elif self.path == "/api/shutdown":

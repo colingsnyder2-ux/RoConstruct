@@ -242,3 +242,64 @@ def run_goal(cli, goal, model=None, minutes=120, log=print):
     log("Agent goal (%s, up to %d min): %s" % (cli, minutes, goal))
     return run_agent(cli, GOAL_PROMPT.format(goal=goal, roc=roc_command(), minutes=minutes),
                      model, minutes, log, goal=True)
+
+
+PACKAGES = {"claude": "@anthropic-ai/claude-code", "codex": "@openai/codex"}
+
+
+def status():
+    """What the dashboard's Agent page shows: CLIs, sign-in prerequisites, project readiness."""
+    from roc import clients, setup
+    out = {"clis": {}}
+    for cli in CLIS:
+        exe = shutil.which(cli)
+        version = None
+        if exe:
+            try:
+                version = subprocess.run([exe, "--version"], capture_output=True, text=True,
+                                         timeout=15).stdout.strip().splitlines()[0]
+            except (OSError, subprocess.SubprocessError, IndexError):
+                version = "installed"
+        out["clis"][cli] = version
+    s = worker.load_settings()
+    out["npm"] = bool(shutil.which("npm"))
+    out["server"], out["user"] = bool(s.get("server")), bool(s.get("user"))
+    cl_paths = setup.CL_PATHS + sorted(setup.TOOLS.glob("*/**/VC/bin/cl.exe"))
+    out["compilers"] = any(path.exists() for path in cl_paths)
+    entry = clients.load().get("2008-06")
+    out["client"] = {"name": "2008-06", "downloaded": bool(entry) and clients.status("2008-06", entry) == "ok",
+                     "analyzed": (ROOT / "work" / "2008-06" / "functions.jsonl").exists()}
+    return out
+
+
+def _terminal(argv):
+    """Run argv in a new visible console so the person can sign in, watch and steer."""
+    if os.name == "nt":
+        subprocess.Popen(argv, cwd=ROOT, creationflags=subprocess.CREATE_NEW_CONSOLE)
+        return None
+    for term in ("x-terminal-emulator", "gnome-terminal", "konsole", "xterm"):
+        if shutil.which(term):
+            subprocess.Popen([term, "--" if term == "gnome-terminal" else "-e", *argv], cwd=ROOT)
+            return None
+    return " ".join(argv)
+
+
+def open_session(cli, goal, model=None):
+    """New terminal running `roc agent CLI --interactive`; returns a command to run by hand if none opens."""
+    if cli not in CLIS:
+        raise ValueError("Choose claude or codex")
+    goal = str(goal or "").strip()
+    if not goal or len(goal) > 2000:
+        raise ValueError("Describe the goal (up to 2000 characters)")
+    argv = [sys.executable, str(ROOT / "roc.py"), "agent", cli, "--interactive", "--goal", goal]
+    return _terminal(argv + (["--model", model] if model else []))
+
+
+def open_setup(cli):
+    """New terminal that installs the CLI if needed, then starts it so the person can sign in."""
+    if cli not in CLIS:
+        raise ValueError("Choose claude or codex")
+    steps = ([] if shutil.which(cli) else ["npm install -g " + PACKAGES[cli]]) + [cli]
+    if os.name == "nt":
+        return _terminal(["cmd", "/k", " && ".join(steps)])
+    return _terminal(["sh", "-c", " && ".join(steps) + "; exec sh"])
