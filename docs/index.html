@@ -134,9 +134,7 @@ table { width: 100%; border-collapse: collapse; font: 13px var(--mono); }
 td, th { text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--line); white-space: nowrap; }
 tr:last-child td { border-bottom: 0; }
 th { color: var(--dim); font: 500 13px Inter, sans-serif; }
-#libs tr[data-g] { cursor: pointer; }
-#libs tr.sel td { background: rgba(56, 200, 255, 0.09); }
-#libs tr.part:hover td { background: rgba(56, 200, 255, 0.04); }
+#libs tr.lib { cursor: pointer; }
 #libs tr.lib:hover td { background: rgba(56, 200, 255, 0.04); }
 #libs tr.part td { color: var(--dim); font-size: 12px; padding-top: 7px; padding-bottom: 7px; }
 #libs tr.part td:first-child { padding-left: 40px; }
@@ -534,51 +532,23 @@ function libraryTable(data) {
     const r = rows.get(lib);
     if (!r.parts.has(part)) r.parts.set(part, blank());
     add(r, f); add(r.parts.get(part), f);
-    (r.fs = r.fs || []).push([f, part]); (r.parts.get(part).fs = r.parts.get(part).fs || []).push([f]);
   });
-  const groups = data.groups = new Map();
   const bySize = m => [...m].sort((a, b) => b[1].b - a[1].b);
   const cells = r => `<td>${fmt(r.m)} / ${fmt(r.n)}</td><td>${pct(r.m, r.n)}</td>
       <td>${pct(r.mb, r.b)} <small>of ${mb(r.b)}</small></td><td>${codeBar(r.sb, r.mb - r.sb, r.pb, r.b)}</td>`;
   return `<div class="head"><h2><small>Breakdown</small>Libraries</h2><p>Code rebuilt from source is labelled by that source; the rest by unit label (nearest RTTI class) or matched neighbours, so membership is approximate. Click a library to break it down.</p></div>
     <div class="table"><table id="libs"><thead><tr><th>Library</th><th>Functions</th><th>Matched</th><th>Code</th><th style="width:30%">Bytes matched</th></tr></thead><tbody>
-    ${bySize(rows).map(([lib, r], i) => (groups.set(`${i}`, [lib, r.fs]),
-      `<tr class="lib" data-lib="${i}" data-g="${i}"><td><span class="caret">▸</span>${esc(lib)}</td>${cells(r)}</tr>`) +
-      bySize(r.parts).map(([part, p], j) => (groups.set(`${i}.${j}`, [`${lib} › ${part}`, p.fs]),
-        `<tr class="part" data-of="${i}" data-g="${i}.${j}" hidden><td>${esc(part)}</td>${cells(p)}</tr>`)).join("")).join("")}
+    ${bySize(rows).map(([lib, r], i) => `<tr class="lib" data-lib="${i}"><td><span class="caret">▸</span>${esc(lib)}</td>${cells(r)}</tr>` +
+      bySize(r.parts).map(([part, p]) => `<tr class="part" data-of="${i}" hidden><td>${esc(part)}</td>${cells(p)}</tr>`).join("")).join("")}
     </tbody></table></div>
-    <div id="libfuncs"></div>
     <div class="legend"><span><i style="background:#58a6ff"></i>original source</span><span><i style="background:#3fb950"></i>mined</span><span><i style="background:repeating-linear-gradient(135deg,#216841 0 5px,#193d2a 5px 10px)"></i>partial source</span></div>`;
 }
 
-// Clicking a library expands it; clicking a library or subsection lists its functions, biggest first.
-function wireLibraries(name, data) {
-  const panel = document.getElementById("libfuncs");
-  const show = (key, shown = 100) => {
-    const [title, list] = data.groups.get(key);
-    const fs = list.slice().sort((a, b) => b[0][1] - a[0][1]), sub = list[0] && list[0].length > 1;
-    const bytes = fs.reduce((a, [f]) => a + f[1], 0);
-    panel.innerHTML = `<div class="head"><h2><small>Functions</small>${esc(title)}</h2>
-      <p>${fmt(fs.length)} functions, ${mb(bytes)}, biggest first. <a href="#" id="libclose">Close</a></p></div>
-      <div class="table"><table><thead><tr><th>Address</th><th>Size</th><th>Score</th><th>Unit</th>${sub ? "<th>Subsection</th>" : ""}<th>Source</th></tr></thead><tbody>
-      ${fs.slice(0, shown).map(([f, part]) => `<tr><td>${hex(f[0])}</td><td>${fmt(f[1])} B</td><td>${f[2]}%</td><td>${esc(data.units[f[3]])}</td>` +
-        (sub ? `<td>${esc(part)}</td>` : "") + `<td>${sourceLinks(name, f, true)}</td></tr>`).join("")}
-      </tbody></table></div>
-      ${fs.length > shown ? `<p class="note"><a href="#" id="libmore">Show ${fmt(Math.min(500, fs.length - shown))} more</a> (${fmt(fs.length - shown)} left)</p>` : ""}`;
-    document.getElementById("libclose").onclick = e => { e.preventDefault(); panel.innerHTML = ""; };
-    const more = document.getElementById("libmore");
-    if (more) more.onclick = e => { e.preventDefault(); show(key, shown + 500); };
-  };
-  for (const tr of document.querySelectorAll("#libs tr[data-g]")) tr.onclick = () => {
-    if (tr.classList.contains("lib")) {
-      const open = tr.classList.toggle("open");
-      tr.querySelector(".caret").textContent = open ? "▾" : "▸";
-      for (const sub of document.querySelectorAll(`#libs tr[data-of="${tr.dataset.lib}"]`)) sub.hidden = !open;
-    }
-    for (const row of document.querySelectorAll("#libs tr.sel")) row.classList.remove("sel");
-    tr.classList.add("sel");
-    show(tr.dataset.g);
-    panel.scrollIntoView({behavior: "smooth", block: "nearest"});
+function wireLibraries() {
+  for (const tr of document.querySelectorAll("#libs tr.lib")) tr.onclick = () => {
+    const open = tr.classList.toggle("open");
+    tr.querySelector(".caret").textContent = open ? "▾" : "▸";
+    for (const sub of document.querySelectorAll(`#libs tr[data-of="${tr.dataset.lib}"]`)) sub.hidden = !open;
   };
 }
 
@@ -634,7 +604,7 @@ async function client(name) {
       <tbody id="easy"></tbody></table></div>
     <p class="note">Last updated: ${esc(progress.updated)}</p>`;
   wireNav();
-  wireLibraries(name, data);
+  wireLibraries();
 
   const cv = document.getElementById("cv"), tip = document.getElementById("tip");
   const unitSel = document.getElementById("unit"), filter = document.getElementById("filter");
