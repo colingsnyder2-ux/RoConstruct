@@ -521,6 +521,11 @@ def test_missing_client_uses_configured_bundle_or_drive_source():
     fetch.assert_called_once_with("2008-06")
 
 
+def test_client_sources_manifest_uses_the_tracked_filename():
+    from roc import clients
+    assert clients.SOURCES.name == "sources.json"
+
+
 def test_reinstall_never_touches_the_server_so_leases_survive():
     """Claims live on the server: an install that calls it could disturb a running worker."""
     from roc import setup

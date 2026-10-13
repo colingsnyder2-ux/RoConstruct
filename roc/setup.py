@@ -1186,7 +1186,8 @@ def update(log=print, timeout=300):
                      ("branch", "-M", "main")):
             if _run(*args, timeout=timeout).returncode and args[0] != "branch":
                 return "Linking failed at git %s. No files were removed." % args[0]
-        return "Linked. This copy now updates with: roc update"
+        status = try_update(log, timeout)
+        return "Linked and %s." % ("updated" if status == "updated" else "checked for updates")
     status = try_update(log, timeout)
     return {"updated": "Updated. Preserved clients, work, models and settings.",
             "already current": "Already up to date."}.get(status, status)

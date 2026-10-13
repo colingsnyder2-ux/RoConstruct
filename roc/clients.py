@@ -125,7 +125,7 @@ def status(name, entry):
 # --- sources ---
 # Client samples: fetch them into clients/<name>/, verify against the registry, never commit.
 
-SOURCES = ROOT / "clients" / "json"
+SOURCES = ROOT / "clients" / "sources.json"
 
 
 CACHE = ROOT / "work" / "clients.zip"
