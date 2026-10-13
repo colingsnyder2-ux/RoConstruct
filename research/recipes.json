@@ -417,6 +417,13 @@
       }
     ],
     "output": "work/agent-campaigns/afec32731807/lib-imports-fanout",
-    "next": "If exacts land, propagate the -lib-imports recipe to the remaining XTP near-misses; if zero, the residual is a compiler EH-state difference, not an import-table difference."
+    "result": {
+      "date": "2026-10-13",
+      "trials": 325,
+      "new_verified": 4,
+      "exacts": ["006cbfc0", "006badf0", "006bbb80", "00710660"],
+      "evidence": "work/agent-campaigns/afec32731807/lib-imports-fanout/xtp-lib-imports-fanout-2008.jsonl"
+    },
+    "next": "Swept all 325 XTP files under -lib-imports; only 00710660 (LoadSysFonts) was a new exact. Remaining near-misses are not import-table differences: 0074d870 (two extra EH-state stores, compiler scoping), 00700c00 (CArchive::operator>> template, 0x118 vs 0x94 stack frame), 0070c410 (register allocation), 0074b1a0 (structural prologue). Need the exact XTP/MFC source revision or a compiler build between VS2008 RTM and SP1."
   }
 }
