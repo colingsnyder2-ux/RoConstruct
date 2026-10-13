@@ -225,6 +225,17 @@ def library_campaigns(rows, client, records):
     return sorted(campaigns, key=lambda c: (c["visits"], -len(c["targets"]), c["library"]))
 
 
+def pull_sources(server, token, client, log):
+    """Make a new contributor PC usable without overwriting local agent edits."""
+    api = worker.Api(server, token)
+    info = api.call("/v1/info")
+    names = sorted(info["clients"]) if client == "all" else [client or "2008-06"]
+    for name in names:
+        if name not in info["clients"]:
+            raise ValueError("Unknown selected client")
+        worker.pull_files(server, name, token, force=False, log=log)
+
+
 def library_cycle(server, user, token, cli, model, minutes, log, client, slot=None, claimed=None, claim_lock=None):
     if not 1 <= minutes <= 600:
         raise ValueError("Minutes must be 1-600")
@@ -364,9 +375,14 @@ def run(server, user, token=None, cli="claude", model=None, workers=2, jobs=24, 
         minutes=120, batch_size=4, batch_minutes=10, individual=False, log=print, client=None, continuous=False,
         experimental=False):
     strategy = 0
+    sources_pulled = False
     while True:
         try:
             if experimental:
+                if not sources_pulled:
+                    log("Automatic: syncing shared sources for this PC.")
+                    pull_sources(server, token, client, log)
+                    sources_pulled = True
                 claimed, claim_lock = set(), threading.Lock()
                 with ThreadPoolExecutor(max_workers=workers) as pool:
                     futures = [pool.submit(library_cycle, server, user, token, cli, model, minutes, log, client,

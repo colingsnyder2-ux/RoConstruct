@@ -72,6 +72,7 @@ def test_library_campaign_uses_real_recipes_all_sizes_and_rotates_strategy():
 
 def test_experimental_prefers_library_campaign_over_fixed_batches(monkeypatch):
     calls = []
+    monkeypatch.setattr(agent_auto, "pull_sources", lambda *args: None)
     monkeypatch.setattr(agent_auto, "library_cycle", lambda *a: calls.append(a) or
                         dict(attempted=5, matched=1, improved=0, errors=0))
     monkeypatch.setattr(agent_auto, "run_cycle", lambda *a: pytest.fail("unexpected fixed batch"))
