@@ -556,6 +556,8 @@ class Api:
 
     def call(self, path, payload=None, timeout=60, request_id=None):
         data = json.dumps(payload).encode() if payload is not None else None
+        if path in ("/v1/submit", "/v1/submit-batch"):
+            timeout = max(timeout, 180)  # the server compiles a new recipe unit before it can verify
         headers = {"Content-Type": "application/json"}
         # Cluster nodes persist this receipt with the mutation. Identical retries
         # cannot double-lease, double-credit, or accept a stale CPU result.
