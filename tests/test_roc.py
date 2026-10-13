@@ -2214,9 +2214,9 @@ if __name__ == "__main__":
 
 
 def test_mark_matched_code_trusts_exacts():
-    funcs = [{"addr": "00401000", "kind": "bad"}, {"addr": "00402000", "kind": "gen"}, {"addr": "00403000", "kind": "bad"}]
+    funcs = [{"addr": "00401000", "kind": "bad"}, {"addr": "00402000", "kind": "adjustor"}, {"addr": "00403000", "kind": "bad"}]
     mark_matched_code(funcs, {"00401000", "00402000"})
-    assert [f["kind"] for f in funcs] == ["code", "code", "bad"]
+    assert [f["kind"] for f in funcs] == ["code", "adjustor", "bad"]
 
 
 def test_find_functions_drops_fallthrough_starts():

@@ -253,9 +253,10 @@ def assign_units(funcs, classes, reach=0x4000):
         f["unit"] = cur or "seg_%08x" % (va - va % 0x10000)
 
 def mark_matched_code(funcs, matched):
-    """Exact compiler output proves code, whatever a pattern guessed."""
+    """An exact match proves a "bad" split (jump-table data) is real code. Compiler- and
+    linker-generated kinds (gen, thunk, adjustor) stay out: they are byproducts, not source."""
     for f in funcs:
-        if f["addr"] in matched and f["kind"] in ("gen", "thunk", "adjustor", "bad"):
+        if f["addr"] in matched and f["kind"] == "bad":
             f["kind"] = "code"
 
 def binary_facts(pe, image, base, body, start, imports, local_targets=None):
@@ -407,9 +408,10 @@ def analyze(client, exe):
                if s.Name.rstrip(b"\0") in (b".rdata", b".data", b".tls"))
     out = ROOT / "work" / client
     out.mkdir(parents=True, exist_ok=True)
-    (out / "functions.jsonl").write_text("".join(json.dumps(f, separators=(",", ":")) + "\n" for f in funcs))
-    (out / "meta.json").write_text(json.dumps({"code_bytes": len(code), "data_bytes": data,
-                                               "classes": len(set(classes.values()))}))
+    from roc import tasks
+    tasks.write_text(out / "functions.jsonl", "".join(json.dumps(f, separators=(",", ":")) + "\n" for f in funcs))
+    tasks.write_text(out / "meta.json", json.dumps({"code_bytes": len(code), "data_bytes": data,
+                                                   "classes": len(set(classes.values()))}))
     return out / "functions.jsonl", funcs
 
 
