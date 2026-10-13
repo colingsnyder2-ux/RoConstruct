@@ -133,11 +133,20 @@ def find_functions(code, text_va, seeds, relocs, proven=(), keep=None):
             "size": len(body),
             "relocs": rel,
             "calls": bisect_left(call_sites, stop) - bisect_left(call_sites, start),
-            # mov eax, offset next; ret: a catch funclet returning to its own continuation
-            "kind": "eh" if body[:1] == bytes([0xB8]) and body[5:6] == bytes([0xC3]) and rd(start + 1) == start + 6
+            "kind": "eh" if _catch_funclet(code, text_va, start, body, reloc_set, rd)
                     else kind_of(body[:code_len], [r for r in rel if r < code_len]),
         })
     return out
+
+def _catch_funclet(code, text_va, start, body, reloc_set, rd):
+    """`mov eax, offset continuation; ret` that is a catch funclet, not a getter returning a code
+    pointer: it returns to its own next byte, or sits unaligned inside its parent (no int3 pad)."""
+    if body[:1] != b"\xb8" or body[5:6] != b"\xc3" or start + 1 not in reloc_set:
+        return False
+    target = rd(start + 1)
+    end = text_va + len(code)
+    return target == start + 6 or (text_va <= target < end and start % 16 != 0
+                                   and code[start - text_va - 1] != 0xCC)
 
 GENERATED = [re.compile(p) for p in (
     # __ehhandler$: security cookie check, then jump to __CxxFrameHandler3

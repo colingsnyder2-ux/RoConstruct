@@ -2243,3 +2243,11 @@ def test_find_functions_merges_catch_continuation():
     assert [f["addr"] for f in find_functions(code, va, {va}, [va + 1])] == ["00401000", "00401006"]
     merged = find_functions(code, va, {va}, [va + 1], keep={va})
     assert [(f["addr"], f["size"], f["kind"]) for f in merged] == [("00401000", 8, "eh")]
+
+
+def test_unaligned_catch_funclet_returning_into_parent_is_eh():
+    # parent: push ebp; ...; ret, then an unaligned funclet returning to the parent's middle.
+    va = 0x401000
+    code = bytes.fromhex("5590c3") + bytes.fromhex("b8") + (va + 1).to_bytes(4, "little") + bytes.fromhex("c3")
+    rows = find_functions(code, va, {va, va + 3}, [va + 4], keep={va, va + 3})
+    assert [(f["addr"], f["kind"]) for f in rows] == [("00401000", "code"), ("00401003", "eh")]
