@@ -23,8 +23,15 @@ if errorlevel 1 (
   )
 )
 
-echo Checking for RoConstruct updates...
-py -3.12 roc.py update
+rem The update can rewrite this very file, and cmd reads a running .cmd by byte offset,
+rem so after updating run the fresh copy and leave this one without reading any further.
+if not defined ROC_UPDATED (
+  set ROC_UPDATED=1
+  echo Checking for RoConstruct updates...
+  py -3.12 roc.py update
+  call "%~f0" %*
+  exit /b
+)
 
 echo Checking Python packages (pefile, capstone)...
 py -3.12 -m pip install --user -q --disable-pip-version-check pefile capstone || (
