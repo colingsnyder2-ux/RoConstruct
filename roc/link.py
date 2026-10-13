@@ -93,6 +93,7 @@ def keep_awake():
 def launch(url, ask=input):
     """Choose terminal/webpage before any setup or worker starts."""
     from roc import gui, setup, worker
+    print("Checking for updates: %s" % setup.try_update())
     target = urlparse(url)
     if target.scheme == SCHEME and (target.netloc or target.path.strip("/")) == "server":
         if target.query or target.fragment:
@@ -120,7 +121,6 @@ def launch(url, ask=input):
             else:
                 initial["model"] = saved_model if saved_model and providers.is_cloud(saved_model) else worker.cloud_default() or ""
         return gui.serve(initial=initial)
-    print("Checking for updates: %s" % setup.try_update())
     return run(url)
 
 def run(url):
