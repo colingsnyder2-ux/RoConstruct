@@ -16,6 +16,7 @@ import shutil
 import subprocess
 import tarfile
 import tempfile
+import threading
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
@@ -881,8 +882,18 @@ def bundle_fetch(names=None):
     return done
 
 
+_FETCH_LOCK = threading.RLock()
+
+
 def fetch(name):
-    """Download + verify + unpack a recipe's source into tools/libs/. Returns the source folder."""
+    """Download + verify + unpack a recipe's source into tools/libs/. Returns the source folder.
+    One at a time per process: parallel compile threads all call this, and two downloads of the
+    same archive collide on its .part file."""
+    with _FETCH_LOCK:
+        return _fetch(name)
+
+
+def _fetch(name):
     r = RECIPES[name]
     folder = _case_path(LIBS / r["src"])
     for dep in r.get("needs", []):
