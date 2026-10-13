@@ -509,6 +509,18 @@ def test_verified_client_is_never_downloaded_again():
         assert fetch.called, "%s must be downloaded for byte matching" % status
 
 
+def test_missing_client_uses_configured_bundle_or_drive_source():
+    """Automatic agents can bootstrap a new PC without a NameError."""
+    from roc import clients
+    entry = {"exe": "Roblox.exe", "sha256": "abc"}
+    with patch("roc.clients.load", return_value={"2008-06": entry}), \
+         patch("roc.clients.verify", return_value="missing"), \
+         patch("roc.clients.load_sources", return_value={"bundle": {"url": "https://example.test/clients.zip"}}), \
+         patch("roc.clients.fetch", return_value="ok") as fetch:
+        assert clients.ensure("2008-06") is True
+    fetch.assert_called_once_with("2008-06")
+
+
 def test_reinstall_never_touches_the_server_so_leases_survive():
     """Claims live on the server: an install that calls it could disturb a running worker."""
     from roc import setup

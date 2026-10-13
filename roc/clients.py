@@ -620,7 +620,7 @@ def ensure(name):
     if not entry or verify(name, entry) == "ok":
         return True
     sources = load_sources()
-    if not get("bundle") and name not in get("drive", {}):
+    if not sources.get("bundle") and name not in sources.get("drive", {}):
         return False
     try:
         fetch(name)
