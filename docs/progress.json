@@ -1,19 +1,19 @@
 {
- "updated": "2026-10-13 07:34 UTC",
+ "updated": "2026-10-13 08:00 UTC",
  "clients": [
   {
    "name": "2007-03",
    "compiler": "VS2005 (cl 14.00.50727)",
    "built": "2007-03-26",
    "started": true,
-   "functions": 19341,
+   "functions": 19345,
    "matched": 9317,
-   "partial": 10020,
-   "bytes": 3048608,
+   "partial": 9899,
+   "bytes": 3108612,
    "matched_bytes": 829043,
    "source_bytes": 780853,
    "mined_bytes": 48190,
-   "partial_bytes": 2213608,
+   "partial_bytes": 2185833,
    "data_bytes": 1332936,
    "leaderboard": [
     {
@@ -47,21 +47,21 @@
    ],
    "data_matched_bytes": 77595,
    "classes": 0,
-   "generated": 6361
+   "generated": 6201
   },
   {
    "name": "2007-08",
    "compiler": "VS2005 (cl 14.00.50727)",
    "built": "2007-08-19",
    "started": true,
-   "functions": 19998,
+   "functions": 20159,
    "matched": 11417,
-   "partial": 8569,
-   "bytes": 3009279,
+   "partial": 8423,
+   "bytes": 3165171,
    "matched_bytes": 986604,
    "source_bytes": 796206,
    "mined_bytes": 190398,
-   "partial_bytes": 2006012,
+   "partial_bytes": 1976043,
    "data_bytes": 1361658,
    "leaderboard": [
     {
@@ -74,9 +74,9 @@
     {
      "user": "colin",
      "matched": 1914,
-     "points": 764894,
-     "submissions": 25373,
-     "last": 1791820881.36257
+     "points": 765587,
+     "submissions": 25390,
+     "last": 1791878021.1956947
     },
     {
      "user": "atomic.potato",
@@ -130,21 +130,21 @@
    ],
    "data_matched_bytes": 100945,
    "classes": 1391,
-   "generated": 16973
+   "generated": 16597
   },
   {
    "name": "2008-06",
    "compiler": "VS2008 RTM (cl 15.00.21022)",
    "built": "2008-06-20",
    "started": true,
-   "functions": 22301,
-   "matched": 19338,
-   "partial": 2699,
-   "bytes": 3523347,
-   "matched_bytes": 2508616,
-   "source_bytes": 1936820,
-   "mined_bytes": 571796,
-   "partial_bytes": 745004,
+   "functions": 22478,
+   "matched": 19351,
+   "partial": 2627,
+   "bytes": 3665858,
+   "matched_bytes": 2512087,
+   "source_bytes": 1940428,
+   "mined_bytes": 571659,
+   "partial_bytes": 731886,
    "data_bytes": 1559926,
    "leaderboard": [
     {
@@ -156,17 +156,17 @@
     },
     {
      "user": "king_originala",
-     "matched": 2528,
-     "points": 253235,
-     "submissions": 5424,
-     "last": 1791876732.9669025
+     "matched": 2539,
+     "points": 253441,
+     "submissions": 5437,
+     "last": 1791878231.2923894
     },
     {
      "user": "colin",
-     "matched": 1576,
-     "points": 603995,
-     "submissions": 19064,
-     "last": 1791876577.1061409
+     "matched": 1577,
+     "points": 605676,
+     "submissions": 19090,
+     "last": 1791878213.7248042
     },
     {
      "user": "atomic.potato",
@@ -197,23 +197,23 @@
      "last": 1791766592.3175168
     }
    ],
-   "data_matched_bytes": 245473,
+   "data_matched_bytes": 245729,
    "classes": 1488,
-   "generated": 19813
+   "generated": 19506
   },
   {
    "name": "2009-06",
    "compiler": "VS2008 SP1 (cl 15.00.30729)",
    "built": "2009-06-16",
    "started": true,
-   "functions": 26156,
+   "functions": 26315,
    "matched": 13754,
-   "partial": 7011,
-   "bytes": 3981050,
+   "partial": 6912,
+   "bytes": 4216645,
    "matched_bytes": 1444687,
    "source_bytes": 1229961,
    "mined_bytes": 214726,
-   "partial_bytes": 1241141,
+   "partial_bytes": 1228408,
    "data_bytes": 1809822,
    "leaderboard": [
     {
@@ -254,21 +254,21 @@
    ],
    "data_matched_bytes": 138430,
    "classes": 1624,
-   "generated": 20922
+   "generated": 20513
   },
   {
    "name": "2010-06",
    "compiler": "VS2008 SP1 (cl 15.00.30729)",
    "built": "2010-06-18",
    "started": true,
-   "functions": 32947,
+   "functions": 33127,
    "matched": 15999,
-   "partial": 9521,
-   "bytes": 5116758,
+   "partial": 9394,
+   "bytes": 5404019,
    "matched_bytes": 1528370,
    "source_bytes": 1273895,
    "mined_bytes": 254475,
-   "partial_bytes": 1713678,
+   "partial_bytes": 1689272,
    "data_bytes": 2369604,
    "leaderboard": [
     {
@@ -295,21 +295,21 @@
    ],
    "data_matched_bytes": 134324,
    "classes": 2012,
-   "generated": 26137
+   "generated": 25690
   },
   {
    "name": "2011-06",
    "compiler": "VS2008 RTM (cl 15.00.21022)",
    "built": "2011-06-24",
    "started": true,
-   "functions": 36419,
+   "functions": 36598,
    "matched": 15512,
-   "partial": 10972,
-   "bytes": 5337037,
+   "partial": 10862,
+   "bytes": 5638176,
    "matched_bytes": 1234311,
    "source_bytes": 1067170,
    "mined_bytes": 167141,
-   "partial_bytes": 1713146,
+   "partial_bytes": 1696846,
    "data_bytes": 3009972,
    "leaderboard": [
     {
@@ -336,21 +336,21 @@
    ],
    "data_matched_bytes": 110252,
    "classes": 2230,
-   "generated": 28151
+   "generated": 27668
   },
   {
    "name": "2012-06",
    "compiler": "VS2008 SP1 (cl 15.00.30729)",
    "built": "2012-06-13",
    "started": true,
-   "functions": 39811,
+   "functions": 40020,
    "matched": 15527,
-   "partial": 12133,
-   "bytes": 6234528,
+   "partial": 12000,
+   "bytes": 6569062,
    "matched_bytes": 1190486,
    "source_bytes": 1037296,
    "mined_bytes": 153190,
-   "partial_bytes": 2035799,
+   "partial_bytes": 2020084,
    "data_bytes": 3396596,
    "leaderboard": [
     {
@@ -384,7 +384,7 @@
    ],
    "data_matched_bytes": 106593,
    "classes": 2176,
-   "generated": 30232
+   "generated": 29704
   }
  ],
  "leaderboard": [
@@ -397,17 +397,17 @@
   },
   {
    "user": "colin",
-   "matched": 13537,
-   "points": 5427249,
-   "submissions": 181681,
-   "last": 1791876577.1061409
+   "matched": 13538,
+   "points": 5429623,
+   "submissions": 181724,
+   "last": 1791878213.7248042
   },
   {
    "user": "king_originala",
-   "matched": 2528,
-   "points": 253235,
-   "submissions": 5424,
-   "last": 1791876732.9669025
+   "matched": 2539,
+   "points": 253441,
+   "submissions": 5437,
+   "last": 1791878231.2923894
   },
   {
    "user": "atomic.potato",
