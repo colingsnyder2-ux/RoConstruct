@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-13 17:15 UTC",
+ "updated": "2026-10-13 17:26 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -54,13 +54,13 @@
    "compiler": "VS2005 (cl 14.00.50727)",
    "built": "2007-08-19",
    "started": true,
-   "functions": 20080,
-   "matched": 11358,
+   "functions": 20069,
+   "matched": 11347,
    "partial": 8403,
-   "bytes": 3163450,
-   "matched_bytes": 986250,
+   "bytes": 3163384,
+   "matched_bytes": 986184,
    "source_bytes": 796206,
-   "mined_bytes": 190044,
+   "mined_bytes": 189978,
    "partial_bytes": 1974676,
    "data_bytes": 1361658,
    "leaderboard": [
@@ -130,20 +130,20 @@
    ],
    "data_matched_bytes": 100945,
    "classes": 1391,
-   "generated": 16543
+   "generated": 16554
   },
   {
    "name": "2008-06",
    "compiler": "VS2008 RTM (cl 15.00.21022)",
    "built": "2008-06-20",
    "started": true,
-   "functions": 22430,
-   "matched": 19431,
+   "functions": 22419,
+   "matched": 19420,
    "partial": 2526,
-   "bytes": 3665171,
-   "matched_bytes": 2572594,
+   "bytes": 3665105,
+   "matched_bytes": 2572528,
    "source_bytes": 2000741,
-   "mined_bytes": 571853,
+   "mined_bytes": 571787,
    "partial_bytes": 686154,
    "data_bytes": 1559926,
    "leaderboard": [
@@ -199,21 +199,21 @@
    ],
    "data_matched_bytes": 249293,
    "classes": 1488,
-   "generated": 19444
+   "generated": 19455
   },
   {
    "name": "2009-06",
    "compiler": "VS2008 SP1 (cl 15.00.30729)",
    "built": "2009-06-16",
    "started": true,
-   "functions": 26268,
-   "matched": 13724,
-   "partial": 6898,
-   "bytes": 4215209,
-   "matched_bytes": 1444507,
+   "functions": 26260,
+   "matched": 13719,
+   "partial": 6897,
+   "bytes": 4214943,
+   "matched_bytes": 1444477,
    "source_bytes": 1229961,
-   "mined_bytes": 214546,
-   "partial_bytes": 1226940,
+   "mined_bytes": 214516,
+   "partial_bytes": 1226801,
    "data_bytes": 1809822,
    "leaderboard": [
     {
@@ -254,21 +254,21 @@
    ],
    "data_matched_bytes": 138430,
    "classes": 1624,
-   "generated": 20451
+   "generated": 20459
   },
   {
    "name": "2010-06",
    "compiler": "VS2008 SP1 (cl 15.00.30729)",
    "built": "2010-06-18",
    "started": true,
-   "functions": 33070,
-   "matched": 15967,
-   "partial": 9371,
-   "bytes": 5402891,
-   "matched_bytes": 1528303,
+   "functions": 33061,
+   "matched": 15960,
+   "partial": 9370,
+   "bytes": 5402752,
+   "matched_bytes": 1528261,
    "source_bytes": 1274032,
-   "mined_bytes": 254271,
-   "partial_bytes": 1688472,
+   "mined_bytes": 254229,
+   "partial_bytes": 1688424,
    "data_bytes": 2369604,
    "leaderboard": [
     {
@@ -295,20 +295,20 @@
    ],
    "data_matched_bytes": 134324,
    "classes": 2012,
-   "generated": 25593
+   "generated": 25602
   },
   {
    "name": "2011-06",
    "compiler": "VS2008 RTM (cl 15.00.21022)",
    "built": "2011-06-24",
    "started": true,
-   "functions": 36542,
-   "matched": 15476,
+   "functions": 36533,
+   "matched": 15467,
    "partial": 10844,
-   "bytes": 5637865,
-   "matched_bytes": 1234363,
+   "bytes": 5637811,
+   "matched_bytes": 1234309,
    "source_bytes": 1067170,
-   "mined_bytes": 167193,
+   "mined_bytes": 167139,
    "partial_bytes": 1695941,
    "data_bytes": 3009972,
    "leaderboard": [
@@ -336,20 +336,20 @@
    ],
    "data_matched_bytes": 110296,
    "classes": 2230,
-   "generated": 27518
+   "generated": 27527
   },
   {
    "name": "2012-06",
    "compiler": "VS2008 SP1 (cl 15.00.30729)",
    "built": "2012-06-13",
    "started": true,
-   "functions": 39964,
-   "matched": 15486,
+   "functions": 39955,
+   "matched": 15477,
    "partial": 11988,
-   "bytes": 6569088,
-   "matched_bytes": 1190240,
+   "bytes": 6569034,
+   "matched_bytes": 1190186,
    "source_bytes": 1037296,
-   "mined_bytes": 152944,
+   "mined_bytes": 152890,
    "partial_bytes": 2020680,
    "data_bytes": 3396596,
    "leaderboard": [
@@ -384,7 +384,7 @@
    ],
    "data_matched_bytes": 106593,
    "classes": 2176,
-   "generated": 29550
+   "generated": 29559
   }
  ],
  "leaderboard": [
