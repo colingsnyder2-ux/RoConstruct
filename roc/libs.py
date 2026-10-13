@@ -965,6 +965,44 @@ def fetch_units(log=print, url=UNITS_URL):
     return added
 
 
+def units_used(source):
+    """{recipe src: {relative name: text}} for the generated unit a source's `// roc-lib:` line names
+    (empty when it names a normal vendor file). Reads the stored units, then the file in the tree."""
+    recipe, _, rel = match.directives(source).get("lib", "").partition(" ")
+    r = RECIPES.get(recipe)
+    rel = rel.strip().replace("\\", "/")
+    if not r or r.get("generate") or not rel.rsplit("/", 1)[-1].startswith("roc_"):
+        return {}
+    text = generated_units().get(r["src"], {}).get(rel)
+    if text is None:
+        path = _case_path(LIBS / r["src"]) / rel
+        text = path.read_text(errors="replace") if path.is_file() else None
+    return {r["src"]: {rel: text}} if text is not None else {}
+
+
+def accept_units(units):
+    """Server side: store generated units uploaded by a worker so submissions naming them can be verified.
+    Only roc_*.cpp under a known recipe tree, no path tricks, bounded size. Returns how many were new."""
+    known = {r["src"] for r in RECIPES.values() if r.get("src")}
+    clean, count = {}, 0
+    if not isinstance(units, dict) or len(units) > 20:
+        raise ValueError("Bad units payload")
+    for src, files in units.items():
+        if src not in known or not isinstance(files, dict) or len(files) > 50:
+            raise ValueError("Unknown library tree: %s" % str(src)[:80])
+        for rel, text in files.items():
+            parts = str(rel).replace("\\", "/").split("/")
+            if (not isinstance(text, str) or len(text) > 400_000 or ".." in parts or "" in parts or ":" in rel
+                    or not re.fullmatch(r"roc_[A-Za-z0-9_]+\.cpp", parts[-1])):
+                raise ValueError("Rejected unit name: %s" % str(rel)[:80])
+            if rel not in generated_units().get(src, {}):
+                count += 1
+            clean.setdefault(src, {})[rel] = text
+    if clean:
+        _store_units(clean)
+    return count
+
+
 def generated_units():
     try:
         return json.loads(UNITS_FILE.read_text(encoding="utf-8"))

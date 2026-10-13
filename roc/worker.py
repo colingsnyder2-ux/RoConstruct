@@ -555,7 +555,28 @@ class Api:
             self._conn.close()
             self._conn = None
 
+    _pushed = set()
+
+    def _push_units(self, payload):
+        """Send the generated library unit a submission names (agents write these on their own PC, and
+        the server compiles with its own tools/libs). Once per unit per server; old servers just ignore it."""
+        from roc import libs
+        units = libs.units_used(str(payload.get("source", "")))
+        fresh = {src: {rel: text for rel, text in files.items() if (self.server, src, rel) not in Api._pushed}
+                 for src, files in units.items()}
+        fresh = {src: files for src, files in fresh.items() if files}
+        if not fresh:
+            return
+        try:
+            self.call("/v1/units", {"user": payload.get("user"), "units": fresh}, timeout=60)
+        except ApiFailure as error:
+            if error.category in ("offline", "server_fail"):
+                return  # try again with the next submission
+        Api._pushed.update((self.server, src, rel) for src, files in fresh.items() for rel in files)
+
     def call(self, path, payload=None, timeout=60, request_id=None):
+        if path in ("/v1/submit", "/v1/submit-batch"):
+            self._push_units(payload)
         data = json.dumps(payload).encode() if payload is not None else None
         if path in ("/v1/submit", "/v1/submit-batch"):
             timeout = max(timeout, 180)  # the server compiles a new recipe unit before it can verify

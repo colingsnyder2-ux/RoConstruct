@@ -575,8 +575,14 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None):
                 if not isinstance(rows, list) or len(rows) > 5000:
                     return self.send(400, {"error": "rows must be list <= 5000"})
                 return self.send(200, {"registered": store.register_families(rows)})
-            if path in ("/v1/lease", "/v1/submit", "/v1/submit-batch", "/v1/agent-memory") and not USER_RE.match(user):
+            if path in ("/v1/lease", "/v1/submit", "/v1/submit-batch", "/v1/agent-memory", "/v1/units") and not USER_RE.match(user):
                 return self.send(400, {"error": "username must be 2-32 letters, digits, _ . -"})
+            if path == "/v1/units":
+                from roc import libs
+                try:
+                    return self.send(200, {"added": libs.accept_units(body.get("units"))})
+                except (ValueError, TypeError) as error:
+                    return self.send(400, {"error": str(error)})
             if path == "/v1/agent-memory":
                 try:
                     return self.send(200, store.remember(user, body.get("records")))
