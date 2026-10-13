@@ -490,6 +490,7 @@
    "GLG3Dcpp/roc_line_c1ec18302c3703eb.cpp",
    "GLG3Dcpp/roc_line_eb2a2907090c8b55.cpp",
    "GLG3Dcpp/tesselate.cpp",
+   "roc_g3d_log_guard_18744d5ad0bb680e.cpp",
    "roc_unit_45931f30d1eceea5.cpp",
    "roc_unit_b6f0c9701eb28399.cpp"
   ]
@@ -1256,8 +1257,10 @@
   "files": [
    "roc_observed_3db354efc99e4c09.cpp",
    "roc_observed_53d74a95e1732a0f.cpp",
+   "roc_rbxscene_ctor_0606b79b7c96ed1a.cpp",
    "roc_rbxscene_ctor_252e30df9e8b13f7.cpp",
    "roc_rbxscene_ctor_e0d00b9d50dc0b49.cpp",
+   "roc_rbxscene_ctor_e74067c8b9e1763d.cpp",
    "roc_rbxscene_fpfast_63a615e0f16e56ce.cpp"
   ]
  },
@@ -1310,7 +1313,9 @@
  "lua-5.1.2-dll": {
   "url": "https://www.lua.org/ftp/lua-5.1.2.tar.gz",
   "kind": "archive",
-  "files": []
+  "files": [
+   "lmathlib.c"
+  ]
  },
  "lua-5.1.3-dll": {
   "url": "https://www.lua.org/ftp/lua-5.1.3.tar.gz",
