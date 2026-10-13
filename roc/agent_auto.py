@@ -444,12 +444,16 @@ def library_cycle(server, user, token, cli, model, minutes, log, client, slot=No
 
 def run(server, user, token=None, cli="claude", model=None, workers=2, jobs=24, max_size=512,
         minutes=120, batch_size=4, batch_minutes=10, individual=False, log=print, client=None, continuous=False,
-        experimental=False):
+        experimental=False, experimental_percent=100):
     strategy = 0
     prepared = False
     while True:
         try:
-            if experimental:
+            # Each cycle is a library campaign with this chance, otherwise ranked repair batches.
+            use_campaigns = experimental and random.randrange(100) < experimental_percent
+            if experimental and experimental_percent < 100:
+                log("Cycle mode: %s." % ("library campaigns" if use_campaigns else "ranked repair batches"))
+            if use_campaigns:
                 if not prepared:
                     prepare_clients(client, log)
                     prepared = True

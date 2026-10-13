@@ -784,7 +784,8 @@ def cmd_agent(a):
         user = need(a.user or s.get("user"), "username", "Use --user or: roc config --user NAME")
         return agent_auto.run(srv, user, a.token or os.environ.get("ROC_AGENT_SERVER_TOKEN") or s.get("token"), a.cli, a.model, a.workers,
             a.jobs or 24, a.max_size if a.max_size is not None else 512, a.minutes or 120, a.batch_size, a.batch_minutes, a.individual, client=selected_client,
-            continuous=a.continuous, experimental=a.experimental)
+            continuous=a.continuous, experimental=a.experimental,
+            experimental_percent=max(0, min(100, a.experimental_percent)))
     if a.interactive:
         return agent.interactive(a.cli, a.goal or "match open 2008-06 functions", a.model)
     if a.goal:
@@ -1817,6 +1818,7 @@ def main(argv=None):
         (["--automatic"], {"action": "store_true", "help": "rank areas, reuse sources first, then parallel batch repair"}),
         (["--continuous"], {"action": "store_true", "help": "repeat agent cycles until stopped; switch strategies after no gains"}),
         (["--experimental"], {"action": "store_true", "default": True, "help": "choose unfinished vendor libraries and run evidence-backed research campaigns (default)"}),
+        (["--experimental-percent"], {"type": int, "default": 70, "help": "chance (0-100) that each cycle is a library campaign; otherwise ranked repair batches"}),
         (["--plan"], {"action": "store_true", "help": "preview local automatic ranking without starting agents"}),
         (["--workers"], {"type": int, "default": 2, "help": "automatic batch workers (1-8)"}),
         (["--batch-size"], {"type": int, "default": 4, "help": "functions per automatic batch (1-12)"}),
