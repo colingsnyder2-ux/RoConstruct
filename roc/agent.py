@@ -55,6 +55,13 @@ bytes. Read CLAUDE.md first and follow its workflow.
 
 Your goal: {goal}
 
+Only server receipts with verified=true, improved=true and score=100 are new exacts.
+Read live server scores before choosing targets; skip already-exact functions.
+Local 100% is a candidate, not a new win. Do not repeat submissions rejected as already done.
+Other dashboard tabs run concurrently. Edit candidates ONLY under {scratch}/ADDR.cpp.
+Score with roc check CLIENT ADDR --file PATH; submit with roc submit CLIENT ADDR --file PATH.
+Keep shared src files untouched; the server stores verified improvements.
+
 Run project commands as:  {roc} <command>   (`{roc} --help` lists them all).
 CLI dispatch is roc.py, compiler/scorer roc/match.py, library recipes roc/libs.py.
 There is no roc/cli.py or roc/compiler.py. Discover unfamiliar paths with `rg --files`
@@ -63,8 +70,8 @@ before reading and verify with `Test-Path`. For PowerShell globs, use `rg --file
 only after discovery. Do not build multiline Python `-c` code through shell escapes; use
 a quoted raw `Path(r'...')` or a saved script.
 This run is unattended, so you may only run roc.py commands, read the repo, search
-the web, and add or edit files under src/. The only work/ write exception is
-append-only trial records at work/agent-memory/attempts.jsonl (create its parent
+the web, and add or edit files under your scratch folder. You may also append
+trial records at work/agent-memory/attempts.jsonl (create its parent
 directory if absent). Never edit clients/ or tools/. Use the
 methods that fit inside that: near-miss repair, compiler gates via `// roc-flags:`
 and `// roc-cl:` lines, and propagation by checking a fix against siblings. Work through as
@@ -184,7 +191,7 @@ def command(cli, model=None, goal=False):
     elif cli == "codex":
         argv = ["codex", "exec", "--json", "--sandbox", "workspace-write", "-c", 'approval_policy="never"', "-C", str(ROOT), "-"]
     elif cli == "opencode":  # prompt on stdin; --auto approves tools, so there is no roc-only allowlist as with claude
-        argv = ["opencode", "run", "--auto", "--format", "json"]
+        argv = ["opencode", "run", "--standalone", "--auto", "--thinking", "--format", "json"]
         if model:
             argv += ["-m", model]  # provider/model, see: opencode models
         return argv
@@ -248,7 +255,7 @@ def show(line, log):
         if kind == "command_execution":
             label = item.get("command", "").split(" -Command ", 1)[-1]
             if event["type"] == "item.started":
-                log("  > " + label[:240])
+                log("  > " + label)
                 if item.get("id"):
                     _started[item["id"]] = (time.monotonic(), label)
             else:
@@ -257,7 +264,7 @@ def show(line, log):
                 _finish(item.get("id"), log)
         elif event["type"] == "item.completed" and kind in ("agent_message", "reasoning"):
             if item.get("text", "").strip():
-                log(item["text"].strip())
+                log(("Thinking · " if kind == "reasoning" else "") + item["text"].strip())
         elif event["type"] == "item.completed" and kind == "file_change":
             log("Edited: " + ", ".join(change.get("path", "") for change in item.get("changes", [])))
         elif event["type"] == "item.completed" and kind == "error":
@@ -274,24 +281,36 @@ def show(line, log):
                 args = block.get("input") or {}
                 detail = next((str(args[key]) for key in ("command", "file_path", "pattern", "query", "url")
                                if args.get(key)), "")
-                label = "%s %s" % (block.get("name"), detail.splitlines()[0][:160] if detail else "")
+                label = "%s %s" % (block.get("name"), detail)
                 log("  > " + label)
                 if block.get("id"):
                     _started[block["id"]] = (time.monotonic(), label)
     elif event.get("type") == "user":  # claude: tool results
         for block in event.get("message", {}).get("content", []) or []:
             if isinstance(block, dict) and block.get("type") == "tool_result":
+                content = block.get("content", "")
+                if isinstance(content, list):
+                    content = "\n".join(item.get("text", "") for item in content if isinstance(item, dict))
+                log("Command finished · exit %d%s" % (1 if block.get("is_error") else 0,
+                    "\n" + content if content else ""))
                 _finish(block.get("tool_use_id"), log)
     elif event.get("type") == "text" and isinstance(event.get("part"), dict):  # opencode
         if event["part"].get("text", "").strip():
             log(event["part"]["text"].strip())
+    elif event.get("type") == "reasoning" and isinstance(event.get("part"), dict):
+        if event["part"].get("text", "").strip():
+            log("Thinking · " + event["part"]["text"].strip())
     elif event.get("type") == "tool_use" and isinstance(event.get("part"), dict):  # opencode
         part = event["part"]
         args = (part.get("state") or {}).get("input") or {}
         detail = next((str(args[key]) for key in ("command", "filePath", "file_path", "pattern", "query", "url")
                        if args.get(key)), "")
-        label = "%s %s" % (part.get("tool"), detail.splitlines()[0][:160] if detail else "")
+        label = "%s %s" % (part.get("tool"), detail)
         log("  > " + label)
+        state = part.get("state") or {}
+        if state.get("output") or state.get("error"):
+            log("Command finished · exit %d\n%s" % (1 if state.get("error") else 0,
+                state.get("output") or state["error"]))
         times = (part.get("state") or {}).get("time") or {}
         if times.get("start") and times.get("end"):  # milliseconds
             _took((times["end"] - times["start"]) / 1000, label, log)
@@ -320,6 +339,18 @@ def fallbacks():
 def run_agent(cli, prompt, model=None, minutes=20, log=print, goal=False, switch_minutes=5):
     """Run one agent; when it only produces rate-limit errors for `switch_minutes`, continue the
     remaining time with the next model from the `agent_fallbacks` setting (e.g. "claude:sonnet,opencode:opencode/big-pickle")."""
+    prompt = ("Be very concise. Use short technical fragments; no greetings, filler, style announcements, "
+              "or repeated narration. Progress: one short sentence only when a result changes. "
+              "Final: at most three short bullets covering new verified gains, blockers, and next step. "
+              "Preserve exact addresses, scores, errors and receipt paths.\n"
+              "Optimize tokens and wall time. Use supplied context and live-server targets first. "
+              "Do not reread whole docs, logs or source trees without a specific need. "
+              "Batch independent reads; use rg and bounded excerpts. Save large output to a log. "
+              "Reuse cached compiler results and prior trials; skip already-exact targets. "
+              "One evidence-backed hypothesis, small pilot, then fan out winners. "
+              "Background long commands; avoid idle polling and duplicate submissions. "
+              "After two losing hypotheses, report missing evidence and move on. "
+              "Local 100% is a candidate; only verified, improved server receipts count as new exacts.\n\n" + prompt)
     deadline = time.monotonic() + minutes * 60
     queue = [(cli, model)] + fallbacks()
     while queue:
@@ -469,6 +500,7 @@ def work_one(api, user, agent_id, job, cli, model, minutes, log, shared=None):
     finally:
         stop.set()
     after = score(client, addr, path)
+    job["receipt"] = None
     candidate, stored = after, None
     if after < before:
         path.write_text(before_text, encoding="utf-8")
@@ -480,6 +512,7 @@ def work_one(api, user, agent_id, job, cli, model, minutes, log, shared=None):
                                     "model": "agent:" + cli, "client": client, "addr": addr,
                                     "score": after, "source": path.read_text(encoding="utf-8", errors="replace")})
         log("  submitted: server stored %s%%" % r.get("stored"))
+        job["receipt"] = r
         stored = r.get("stored")
     else:
         api.call("/v1/release", {"lease": job["lease"], "cooldown": 60})
@@ -506,20 +539,51 @@ def run(server, user, token=None, cli="claude", model=None, client=None, jobs=1,
         if not job:
             log("No open functions right now.")
             break
-        matched += work_one(api, user, agent_id, job, cli, model, minutes, log, shared) == 100
+        work_one(api, user, agent_id, job, cli, model, minutes, log, shared)
+        receipt = job.get("receipt") or {}
+        matched += bool(receipt.get("verified") and receipt.get("improved") and receipt.get("stored") == 100)
     log("Agent session: %d matched." % matched)
     sync_memory(server, token, user, log)
 
 
-def run_goal(cli, goal, model=None, minutes=120, log=print, continuous=False):
+def goal_targets(server, token, client, shared):
+    from roc import agent_auto
+    records = agent_auto.history() + shared.get("records", [])
+    names = list(match.clients.load()) if client == "all" else [client]
+    plan = agent_auto.portfolio(names, max_size=0, records=records, api=worker.Api(server, token))
+    blocked = {(r.get("client"), addr, r.get("cohort")) for r in records if r.get("kind") == "goal_blocked"
+               for addr in r.get("addresses", [])}
+    targets = [row for area in plan["areas"] for row in area["targets"] if not row["group_parked"]
+               and (row["client"], row["addr"], row["evidence_hash"]) not in blocked]
+    return sorted(targets, key=lambda row: (row["score"] < 95, -row["size"], -row["priority"]))[:24]
+
+
+def run_goal(cli, goal, model=None, minutes=120, log=print, continuous=False,
+             server=None, token=None, user=None, client="2008-06"):
     """One open-ended session, e.g. "match as many 2008-06 RakNet functions as you can"."""
     log("Agent goal (%s, up to %d min): %s" % (cli, minutes, goal))
     recent = []
     cycle = 0
+    scratch = ROOT / "work" / "agent-goals" / (os.environ.get("ROC_TASK_ID") or uuid.uuid4().hex[:12])
+    scratch.mkdir(parents=True, exist_ok=True)
+    if server:
+        from roc import agent_auto
+        agent_auto.prepare_clients(client, log)
     while True:
-        shared = sync_memory(log=log)
+        shared = sync_memory(server, token, user, log=log)
+        targets = goal_targets(server, token, client, shared) if server else []
+        if server and not targets:
+            log("No fresh source-backed targets; waiting for new evidence.")
+            if not continuous:
+                return 0
+            time.sleep(30)
+            continue
         prompt = GOAL_PROMPT.format(goal=goal, roc=roc_command(), minutes=minutes,
-                                  memory=memory_prompt(memory(shared)))
+                                  memory=memory_prompt(memory(shared)), scratch=scratch)
+        if targets:
+            prompt += "\nLive-server shortlist (already-exact and parked targets removed). Start here; do not rediscover targets:\n"
+            prompt += json.dumps([{key: row[key] for key in ("client", "addr", "unit", "size", "score")}
+                                  for row in targets], separators=(",", ":"))
         if continuous:
             from roc.agent_auto import STRATEGIES
             prompt += "\nContinuous run: preserve progress; consult trial memory before every experiment. "
@@ -539,7 +603,17 @@ def run_goal(cli, goal, model=None, minutes=120, log=print, continuous=False):
         try:
             code = run_agent(cli, prompt, model, minutes, output, goal=True)
         finally:
-            sync_memory(log=log)
+            if targets:
+                from roc import research
+                for row in targets:
+                    reason = next((line for line in recent if row["addr"] in line and re.search(
+                        r"blocked|blocker|parking|parked|unavailable|dead stub", line, re.I)), None)
+                    if reason:
+                        research.append(ROOT / "work" / "agent-memory" / "attempts.jsonl", dict(
+                            kind="goal_blocked", date=datetime.now(timezone.utc).isoformat(), client=row["client"],
+                            addresses=[row["addr"]], cohort=row["evidence_hash"], source_hash=row["source_hash"],
+                            outcome="reported", error=reason[:500]))
+            sync_memory(server, token, user, log=log)
         if not continuous:
             return code
         cycle += 1
@@ -547,7 +621,17 @@ def run_goal(cli, goal, model=None, minutes=120, log=print, continuous=False):
         time.sleep(30 if code else 5)
 
 
-PACKAGES = {"claude": "@anthropic-ai/claude-code", "codex": "@openai/codex"}
+PACKAGES = {"claude": "@anthropic-ai/claude-code", "codex": "@openai/codex", "opencode": "opencode-ai"}
+
+
+def opencode_models():
+    exe = shutil.which("opencode")
+    if not exe:
+        return []
+    result = subprocess.run([exe, "models"], capture_output=True, text=True, timeout=15)
+    if result.returncode:
+        raise ValueError(result.stderr.strip() or "OpenCode model listing failed")
+    return [line.strip() for line in result.stdout.splitlines() if "/" in line and " " not in line.strip()]
 
 
 def status():
@@ -591,7 +675,7 @@ def _terminal(argv):
 def open_session(cli, goal, model=None):
     """New terminal running `roc agent CLI --interactive`; returns a command to run by hand if none opens."""
     if cli not in CLIS:
-        raise ValueError("Choose claude or codex")
+        raise ValueError("Choose claude, codex or opencode")
     goal = str(goal or "").strip()
     if not goal or len(goal) > 2000:
         raise ValueError("Describe the goal (up to 2000 characters)")

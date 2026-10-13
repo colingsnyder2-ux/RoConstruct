@@ -882,7 +882,8 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
             provider_options["reasoning_effort"] = effort
         score = work_one(api, user, job, info, job_model, rounds, revng, log, examples_cache, source_cache,
                          session, source_only, strategy, provider_options)
-        matched += score == 100
+        receipt = job.get("receipt") or {}
+        matched += bool(receipt.get("verified") and receipt.get("improved") and receipt.get("stored") == 100)
         failures += score == 0
         if control is not None:
             control.finished(slot, job, score)
@@ -1000,6 +1001,7 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
 def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=None,
              source_cache=None, session=None, source_only=False, strategy="direct", provider_options=None):
     from roc import providers
+    job["receipt"] = None
     compact_log = isinstance(log, CompactLog)
     output = log
     progress = {"stage": "starting", "at": time.monotonic(), "began": time.monotonic()}
@@ -1112,7 +1114,8 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                                             "model": job.get("model"), "client": client, "addr": addr,
                                             "score": candidate_score, "source": candidate})
                 log("  deterministic candidate submitted %d%%" % r["stored"])
-                result, improved = r["stored"], True
+                job["receipt"] = r
+                result, improved = r["stored"], bool(r.get("verified") and r.get("improved"))
                 return r["stored"]
         # Every partial gets one bounded, compiler-only repair pass before
         # source mining or LLM work. This keeps cheap evidence-guided fixes in
@@ -1142,7 +1145,8 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                                             "client": client, "addr": addr,
                                             "score": repaired[0], "source": repaired[1]})
                 log("  compiler repair submitted %d%%" % r["stored"])
-                result, improved = r["stored"], True
+                job["receipt"] = r
+                result, improved = r["stored"], bool(r.get("verified") and r.get("improved"))
                 return r["stored"]
         if (provider_options or {}).get("near_repair") and telemetry.inline_asm_prone(client, addr):
             api.call("/v1/release", {"lease": job["lease"], "cooldown": 900})
@@ -1172,7 +1176,8 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                                         "model": job.get("model"), "client": client, "addr": addr,
                                         "score": candidate_score, "source": candidate_source})
             log("  2016 source candidate %d%% (%s)" % (r["stored"], candidate_path))
-            result, improved = r["stored"], True
+            job["receipt"] = r
+            result, improved = r["stored"], bool(r.get("verified") and r.get("improved"))
             return r["stored"]
         if source_candidate:
             log("  2016 source candidate scored %d%%; using as LLM base" % source_candidate[0])
@@ -1224,8 +1229,9 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                                                 "client": client, "addr": addr,
                                                 "score": propagated_score, "source": propagated})
                     log("  family propagation submitted %d%%" % r["stored"])
+                    job["receipt"] = r
                     family_propagated = True
-                    result, improved = r["stored"], True
+                    result, improved = r["stored"], bool(r.get("verified") and r.get("improved"))
                     return r["stored"]
         source_key = (client, job["unit"], tuple(facts.get("strings", ())),
                       tuple(refsource._target_terms(facts)), int(facts.get("calls", 0) or 0),
@@ -1281,9 +1287,10 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                                         "model": job.get("model"), "client": client, "addr": addr,
                                         "score": score, "source": src})
             log("  submitted %d%% (%s)" % (r["stored"], "verified by server" if r["verified"] else "not re-checked"))
+            job["receipt"] = r
             if not compact_log:
                 log(_usage_line(session, round_stats))
-            result, improved = r["stored"], True
+            result, improved = r["stored"], bool(r.get("verified") and r.get("improved"))
             return r["stored"]
         failure_reason = "bad_reply" if not src else "no_gain"
         if source_candidate and source_candidate[0] > job["score"]:
@@ -1292,9 +1299,10 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                                         "model": job.get("model"), "client": client, "addr": addr,
                                         "score": candidate_score, "source": candidate_source})
             log("  retained partial 2016 source candidate %d%% (%s)" % (r["stored"], candidate_path))
+            job["receipt"] = r
             if not compact_log:
                 log(_usage_line(session, round_stats))
-            result, improved = r["stored"], r["stored"] > job["score"]
+            result, improved = r["stored"], bool(r.get("verified") and r.get("improved"))
             return r["stored"]
         api.call("/v1/release", {"lease": job["lease"], "cooldown": 60})
         log("  no improvement (best %d%%), released" % job["score"])
@@ -1449,7 +1457,7 @@ def pull_files(server, client, token=None, force=False, log=print):
         % (client, len(rows), written, folder, kept, " (use --force to replace them)" if kept else ""))
 
 
-def submit_files(server, user, client, addrs=None, token=None, log=print):
+def submit_files(server, user, client, addrs=None, token=None, log=print, file=None):
     """Upload hand-written src/<client>/*.cpp to the server (checked locally first).
 
     Files pulled from the server ("// from server:" header) are skipped when
@@ -1459,11 +1467,19 @@ def submit_files(server, user, client, addrs=None, token=None, log=print):
     """
     api = Api(server, token)
     paths = sorted((ROOT / "src" / client).glob("*.cpp"))
+    if file:
+        paths = [Path(file)]
+        if not addrs or len(addrs) != 1 or paths[0].stem != addrs[0]:
+            raise ValueError("Scratch submission requires one address and an ADDR.cpp filename")
     if addrs:
         paths = [p for p in paths if p.stem in addrs]
     skipped = 0
     candidates = []
+    scores = {row["addr"]: row["score"] for row in api.call("/v1/sources?scores=1&client=" + client, timeout=120)}
     for p in paths:
+        if scores.get(p.stem) == 100:
+            log("%s  already exact on server; skipped" % p.stem)
+            continue
         text = p.read_text(errors="replace")
         if not addrs and text.startswith("// from server:"):
             skipped += 1
@@ -1483,6 +1499,8 @@ def submit_files(server, user, client, addrs=None, token=None, log=print):
             checked.append((p, text, score))
     def upload(item):
         p, text, score = item
+        if score <= scores.get(p.stem, 0):
+            return "%s  no gain over server; skipped" % p.stem
         try:  # one connection per thread; the server verifies up to 3 at a time
             r = Api(server, token).call("/v1/submit", {"user": user, "client": client, "addr": p.stem,
                                                        "score": score, "source": text})

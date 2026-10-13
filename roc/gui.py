@@ -318,15 +318,17 @@ class Dashboard:
             job.update(owner=(config or {}).get("user", self.initial.get("user") or os.environ.get("USERNAME", "local")),
                        pc=socket.gethostname())
             self.jobs[job_id] = job
-            self.event(job_id, "state", message="Queued; jobs run serially to protect client files")
+            self.event(job_id, "state", message="Starting" if kind != "command" else "Queued")
             self.save()
             self.schedule()
             return job_id
 
     def schedule(self):
-        if self.closed or self.processes:
+        if self.closed:
             return
-        job = next((row for row in self.jobs.values() if row["status"] == "queued"), None)
+        command_busy = any(self.jobs[job_id]["kind"] == "command" for job_id in self.processes)
+        job = next((row for row in self.jobs.values() if row["status"] == "queued"
+                    and (row["kind"] != "command" or not command_busy)), None)
         if job is None:
             return
         job_id = job["id"]
@@ -357,6 +359,7 @@ class Dashboard:
         self.event(job_id, "state", message="Started")
         self.save()
         threading.Thread(target=self.consume, args=(job_id, process), daemon=True).start()
+        self.schedule()
 
     def consume(self, job_id, process):
         started_slots = set()
@@ -571,6 +574,9 @@ class Handler(BaseHTTPRequestHandler):
                     from roc import tasks
                     selected = parse_qs(parsed.query).get("cluster", [None])[0]
                     return self.send(200, tasks.snapshot(selected))
+                if parsed.path == "/api/agent-models":
+                    from roc import agent
+                    return self.send(200, agent.opencode_models())
                 if parsed.path == "/api/agent":
                     from roc import agent
                     return self.send(200, agent.status())

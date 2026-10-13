@@ -42,6 +42,18 @@ def test_continuous_goal_refreshes_memory_and_changes_strategy(monkeypatch, offl
     assert "No gain: rejected previous hypothesis" in prompts[1]
 
 
+def test_goal_shortlist_skips_blocked_revision_until_evidence_changes(monkeypatch):
+    from roc import agent_auto
+    rows = [dict(client="C", addr="00401000", unit="Unit", score=99, size=500,
+                 priority=80, group_parked=False, evidence_hash="revision", source_hash="source")]
+    monkeypatch.setattr(agent_auto, "history", lambda: [dict(kind="goal_blocked", client="C",
+                        addresses=["00401000"], cohort="revision")])
+    monkeypatch.setattr(agent_auto, "portfolio", lambda *a, **kw: {"areas": [{"targets": rows}]})
+    assert agent.goal_targets("localhost", None, "C", {}) == []
+    rows[0]["evidence_hash"] = "new-evidence"
+    assert agent.goal_targets("localhost", None, "C", {}) == rows
+
+
 class FakeApi:
     servers, token = ["http://x"], None
 
@@ -88,10 +100,21 @@ def test_commands_read_prompt_from_stdin():
     assert "Read,Grep,Glob,Edit,Write,Bash,PowerShell" in claude
     assert agent.command("codex")[-1] == "-"
     assert agent.command("opencode", "opencode/big-pickle")[-2:] == ["-m", "opencode/big-pickle"]
+    assert "--standalone" in agent.command("opencode") and "--thinking" in agent.command("opencode")
     lines = []
     agent.show('{"type":"tool_use","part":{"tool":"shell","state":{"input":{"command":"echo hi"}}}}', lines.append)
     agent.show('{"type":"text","part":{"text":"done"}}', lines.append)
     assert lines == ["  > shell echo hi", "done"]
+
+
+def test_opencode_keeps_thinking_and_tool_outputs():
+    import json
+    lines = []
+    agent.show(json.dumps({"type": "reasoning", "part": {"text": "Inspect target diff."}}), lines.append)
+    agent.show(json.dumps({"type": "tool_use", "part": {"tool": "shell", "state": {
+        "input": {"command": "roc check C 00401000"}, "output": "99%", "time": {"start": 1000, "end": 39000}}}}), lines.append)
+    assert lines == ["Thinking · Inspect target diff.", "  > shell roc check C 00401000",
+                     "Command finished · exit 0\n99%", "  < 38.0s shell roc check C 00401000"]
 
 
 def test_goal_mode_allows_roc_commands_and_web(monkeypatch):
@@ -101,6 +124,19 @@ def test_goal_mode_allows_roc_commands_and_web(monkeypatch):
     monkeypatch.setattr(agent, "run_agent", lambda cli, prompt, model, minutes, log, goal: seen.append((prompt, goal)))
     agent.run_goal("claude", "match RakNet in 2008-06", minutes=5, log=lambda *a: None)
     assert "match RakNet in 2008-06" in seen[0][0] and seen[0][1] is True
+
+
+def test_every_agent_prompt_requests_concision_and_fast_work(monkeypatch):
+    prompts = []
+    monkeypatch.setattr(agent, "fallbacks", lambda: [])
+    monkeypatch.setattr(agent, "_run_once", lambda cli, prompt, *a: prompts.append(prompt) or 0)
+    for cli in agent.CLIS:
+        assert agent.run_agent(cli, "Assigned target", minutes=1) == 0
+    assert len(prompts) == 3
+    for prompt in prompts:
+        assert prompt.startswith("Be very concise.") and "Optimize tokens and wall time" in prompt
+        assert "Reuse cached compiler results" in prompt and "Assigned target" in prompt
+        assert "caveman" not in prompt.lower()
 
 
 def test_dashboard_agent_command_args():
@@ -128,7 +164,7 @@ def test_stream_events_become_console_lines():
                '{"type":"tool_use","name":"Bash","input":{"command":"roc check 2008-06 00401000\\nmore"}}]}}', lines.append)
     agent.show('{"type":"result","num_turns":7,"is_error":false}', lines.append)
     agent.show("plain text\n", lines.append)
-    assert lines == ["Trying zlib.", "  > Bash roc check 2008-06 00401000", "Agent finished after 7 turns.", "plain text"]
+    assert lines == ["Trying zlib.", "  > Bash roc check 2008-06 00401000\nmore", "Agent finished after 7 turns.", "plain text"]
 
 
 def test_slow_tool_calls_are_timed_and_remembered(tmp_path, monkeypatch):
@@ -141,7 +177,7 @@ def test_slow_tool_calls_are_timed_and_remembered(tmp_path, monkeypatch):
         {"type": "tool_use", "id": "t1", "name": "Bash", "input": {"command": "roc mass 2008-06"}}]}}), lines.append)
     agent.show(json.dumps({"type": "user", "message": {"content": [
         {"type": "tool_result", "tool_use_id": "t1", "content": "ok"}]}}), lines.append)
-    assert lines == ["  > Bash roc mass 2008-06", "  < 210.0s SLOW Bash roc mass 2008-06"]
+    assert lines == ["  > Bash roc mass 2008-06", "Command finished · exit 0\nok", "  < 210.0s SLOW Bash roc mass 2008-06"]
     assert agent.memory()["slow_commands"][0]["seconds"] == 210
 
 

@@ -142,7 +142,21 @@ function terminalMessage(row, functions, compact=false) {
   const stamp=new Date(row.time*1000).toLocaleTimeString("en-GB"), worker=row.slot===undefined ? "roc" : "w"+(row.slot+1);
   const fn=functions.get(row.job+":"+row.slot);
   let marker="·", text=logText(row), extra="", kind=row.event;
-  if(row.event==="job_started") {marker="›";text=`${row.client} ${row.addr} ${row.size ?? "?"} B ${row.unit || ""} · best ${row.previous ?? row.score ?? "?"}%${row.area ? " · "+row.area : ""}`;}
+  if(row.event==="job_finished" && row.score===100 && (row.new_exact===false || row.previous===100)) {
+    kind="job_finished no-gain";text=`${row.client} ${row.addr} · already exact`;
+  }
+  else if(row.event==="tool_run") {
+    kind="tool-call";marker="";
+    const messages=row.tool_rows.map(logText), starts=messages.filter(t=>/^\s*> /.test(t)).length;
+    const ends=messages.filter(t=>/^\s*< \d/.test(t)), returns=messages.filter(t=>/^Command finished /.test(t));
+    const count=starts || ends.length || returns.length;
+    const seconds=ends.reduce((total,t)=>total+Number(t.match(/< ([\d.]+)s/)?.[1] || 0),0);
+    text=`${Math.max(ends.length,returns.length)>=count ? "Ran" : "Running"} ${count} command${count===1 ? "" : "s"}${seconds ? " · "+Math.round(seconds)+"s" : ""}`;
+    extra=messages.map(t=>codeBlock(t.trim().replace(/^> /,""),/^\s*> /.test(t) ? "Command" : "Output")).join("");
+    if(returns.some(t=>/^Command finished .*exit (?!0\b)-?\d+/.test(t)))text+=" · error";
+  }
+  else if(/^Thinking · /.test(text)){kind="thinking";marker="";extra=`<p class="thought-text">${esc(text.slice(11))}</p>`;text="Thinking";}
+  else if(row.event==="job_started") {marker="›";text=`${row.client} ${row.addr} ${row.size ?? "?"} B ${row.unit || ""} · best ${row.previous ?? row.score ?? "?"}%${row.area ? " · "+row.area : ""}`;}
   else if(row.event==="job_finished") {kind+=" "+(row.score===100 ? "exact" : row.score>row.previous ? "improved" : "no-gain");marker=row.score===100 ? "✓" : row.score>row.previous ? "↑" : "·";text=`${row.client} ${row.addr}${row.supercompact ? " · "+(row.size ?? "?")+" B" : " "+(row.unit || fn?.unit || "")+" · "+(row.size ?? "?")+" B"} · ${row.previous}% → ${row.score}%${row.score===100 ? " EXACT" : row.score<=row.previous ? " no gain" : " improved"}${row.seconds===undefined ? "" : " · "+row.seconds+"s"}`;if(row.score===100)extra=`<div class="match-success">✓ Exact match</div>`;else if(row.score>row.previous)extra=`<div class="match-success improvement">↑ Improved ${row.previous}% → ${row.score}%</div>`;}
   else if(row.event==="benchmark") {marker="≡";text=`${row.matched} exact · ${row.improved} improved${row.errors ? " · "+row.errors+" errors" : ""}`;if(row.matched>0)kind+=" matched-note";}
   else if(row.event==="compile") {
@@ -156,13 +170,23 @@ function terminalMessage(row, functions, compact=false) {
   else if(/^Command finished /.test(text)) {kind="tool-call";const newline=text.indexOf("\n");if(newline>=0){extra=codeBlock(text.slice(newline+1),"Output");text=text.slice(0,newline);}if(/exit (?!0\b)-?\d+/.test(text)){marker="!";kind="error";}}
   else if(text.includes("```")) {let end=0;const blocks=[];for(const match of text.matchAll(/```([^\n]*)\n([\s\S]*?)```/g)){blocks.push(`<p>${esc(text.slice(end,match.index))}</p>`,codeBlock(match[2],match[1].trim()||"Code"));end=match.index+match[0].length;}blocks.push(`<p>${esc(text.slice(end))}</p>`);extra=blocks.join("");text=text.split("```")[0].trim().split("\n")[0]||"Agent code";}
   else if(/generated source[^\n]*:\n/.test(text)) {extra=codeBlock(text.slice(text.indexOf("\n")+1));text=text.slice(0,text.indexOf("\n")).replace(/generated source \(final (\d+)%\):/,"source · $1%");}
-  else if(/(?:→|->)\s*100\b|\b[1-9]\d*\s+exacts?\b|\b(?:both|all) exact\b/i.test(text) && !/code[ -]exact|not.*exact/i.test(text)) {marker="✓";kind="matched-note";}
+  else if(/\bserver verified exact\b/i.test(text) && !/\b(?:no|already|not)\b/i.test(text)) {marker="✓";kind="matched-note";}
   else if(row.event==="error"||/^(Agent error:|Error:|Traceback|Blocked:|Command finished .*exit (?!0\b)-?\d+)|\bERROR\s+\w/i.test(text.split("\n")[0])) {marker="!";kind="error";}
-  if(row.event==="job_finished" && row.server_gains){text=`${row.client} ${row.addr} · ${row.previous}% → ${row.score}%${row.score===100 ? " EXACT" : ""}`;extra="";}
+  if(row.event==="job_finished" && row.server_gains && row.new_exact!==false){text=`${row.client} ${row.addr} · ${row.previous}% → ${row.score}%${row.score===100 ? " EXACT" : ""}`;extra="";}
   const limit=kind==="tool-call" ? 90 : 140;
   if(text.length>limit || text.includes("\n")) {if(!extra)extra=codeBlock(text,"Output");text=text.split("\n")[0].slice(0,limit)+(text.split("\n")[0].length>limit ? "…" : "");}
   const content=`<span class="terminal-marker">${marker}</span><span class="terminal-text">${esc(text.trim())}</span>`;
   return `<article class="terminal-row ${esc(kind)}" data-key="${esc(row.job+":"+row.seq)}"><time>${stamp}</time><span class="terminal-worker">${worker}</span>${extra ? `<details ${!compact && ["draft","candidate"].includes(row.event) ? "open" : ""}><summary>${content}</summary>${extra}</details>` : `<div>${content}</div>`}</article>`;
+}
+function groupToolRows(rows) {
+  const grouped=[];
+  for(const row of rows) {
+    const text=logText(row), last=grouped.at(-1);
+    const tool=row.event==="log" && /^\s*> |^\s*< \d|^Command finished /.test(text);
+    if(tool && last?.event==="tool_run" && row.job===last.job && row.slot===last.slot)last.tool_rows.push(row);
+    else grouped.push(tool ? {...row,event:"tool_run",tool_rows:[row]} : row);
+  }
+  return grouped;
 }
 function setChatFollow(enabled) {
   chatFollow=enabled;
@@ -210,8 +234,7 @@ function renderWorkerChat() {
   $("#chat-compact").textContent=supercompact ? "Supercompact · auto" : chatCompact ? "Regular" : "Compact";
   const foldSource=compact;
   const ids=new Set(workerJobs.map(job=>job.id));
-  const commandNoise=r=>{const text=logText(r);return /^\s*> /.test(text)||/^Command finished .*exit 0\b/.test(text);};
-  const rows=logs.filter(r=>ids.has(r.job)&&(!workerRun||r.job===workerRun)&&(workerLoop===""||String(r.slot)===workerLoop||r.event==="benchmark")&&(compact ? (jobs.find(j=>j.id===r.job)?.kind==="agent_worker" || r.startup || ["job_finished","benchmark","error","rejected"].includes(r.event))&&!commandNoise(r) : !["control","applied","usage"].includes(r.event))).slice(-180);
+  const rows=logs.filter(r=>ids.has(r.job)&&(!workerRun||r.job===workerRun)&&(workerLoop===""||String(r.slot)===workerLoop||r.event==="benchmark")&&(compact ? (jobs.find(j=>j.id===r.job)?.kind==="agent_worker" || r.startup || ["job_finished","benchmark","error","rejected"].includes(r.event)) : !["control","applied","usage"].includes(r.event))).slice(-180);
   const signature=compact+":"+supercompact+":"+rows.map(r=>r.job+":"+r.seq).join();
   setChatFollow(chatFollow);
   const viewFilter=workerRun+":"+workerLoop+":"+compact+":"+supercompact;
@@ -219,7 +242,7 @@ function renderWorkerChat() {
   if(chatSignature===signature && $("#worker-chat-rows").children.length)return;
   const functions=new Map(),items=[];
   const grouped=[];
-  for(const row of rows) {
+  for(const row of groupToolRows(rows)) {
     const last=grouped[grouped.length-1];
     if(row.event==="compile" && last?.event==="compile" && row.slot===last.slot && row.job===last.job)last.compile_runs.push(row);
     else grouped.push(row.event==="compile" ? {...row,compile_runs:[row]} : row);
@@ -247,7 +270,7 @@ function commands() {
     (command.name==="research" ? field("Action","research_action","list",{choices:[["list","List recipes"],["plan","Plan"],["run","Run"],["log","Findings log"]]}) + field("Recipe","recipe","",{choices:[["","Choose recipe"],...(meta.recipes||[]).map(name=>[name,name])]}) : "") +
     (command.name==="repair" ? field("Source limit", "limit", 20, {type:"number",min:1})+field("Minimum score", "min_score", 80, {type:"number",min:0,max:100})+check("Try permutations", "permute", false) : "") +
     (command.name==="install" ? check("Accept compiler downloads", "accept_downloads", false) : "") +
-    (command.name==="agent" ? field("Agent CLI", "cli", "claude", {choices:[["claude","Claude Code"],["codex","Codex"]]})+field("Goal", "goal", "Match as many open 2008-06 RakNet functions as you can", {placeholder:"What should the agent do?",full:true})+field("Time limit (minutes)", "minutes", 120, {type:"number",min:1,max:600}) : "") + `</div><div id="command-preview" class="command-preview">roc ${command.name}</div><div class="form-footer"><span class="tiny muted">${command.name==="mass" ? "Static libs → STL → recipes → analyze → auto" : "Output appears in the console below."}</span>${button("Run command",'type="submit"')}</div></form>`;
+    (command.name==="agent" ? field("Agent CLI", "cli", "claude", {choices:[["claude","Claude Code"],["codex","Codex"],["opencode","OpenCode"]]})+field("Goal", "goal", "Match as many open 2008-06 RakNet functions as you can", {placeholder:"What should the agent do?",full:true})+field("Time limit (minutes)", "minutes", 120, {type:"number",min:1,max:600}) : "") + `</div><div id="command-preview" class="command-preview">roc ${command.name}</div><div class="form-footer"><span class="tiny muted">${command.name==="mass" ? "Static libs → STL → recipes → analyze → auto" : "Output appears in the console below."}</span>${button("Run command",'type="submit"')}</div></form>`;
 }
 function experimentMemory(s) {
   if(!s)return `<p class="muted">Loading experiments…</p>`;
@@ -273,6 +296,7 @@ function agentAutomatic() {
   const c={client:meta.initial.client||"",user:meta.initial.user,server:meta.initial.server,...agentAutoConfig};
   const mode=c.mode || (c.minutes===30 ? "fast" : c.minutes===240 ? "deep" : "automatic");
   const agentModels={
+    opencode:[["","CLI default"],...(meta.agent_models || []).map(model=>[model,model])],
     codex:[["","CLI default"],["gpt-6.1-sol","GPT-6.1 Sol"],["gpt-6-astra","GPT-6 Astra"],["gpt-6-sol","GPT-6 Sol"],["gpt-6-luna","GPT-6 Luna"],["gpt-5.6-sol","GPT-5.6 Sol"],["gpt-5.6-terra","GPT-5.6 Terra"],["gpt-5.6-luna","GPT-5.6 Luna"]],
     claude:[["","CLI default"],["claude-opus-4-6","Claude Opus 4.6"],["claude-sonnet-4-6","Claude Sonnet 4.6"],["claude-haiku-4-5","Claude Haiku 4.5"]]
   };
@@ -281,7 +305,7 @@ function agentAutomatic() {
   return `<form id="agent-auto-form" data-mode="${esc(mode)}" class="panel panel-pad"><div class="section-heading"><h2>Configure Agent</h2></div><div class="preset-row">${["automatic","fast","balanced","deep"].map(value=>`<button type="button" data-agent-mode="${value}" class="${mode===value ? "active" : ""}">${value[0].toUpperCase()+value.slice(1)}</button>`).join("")}</div><div class="field-grid">` +
     field("Client","client",c.client,{choices:[["","All clients"],...meta.clients.map(client=>[client.name,client.name])]}) +
     field("Username","user",c.user) + field("Server","server",c.server,{full:true,placeholder:"host:8765 or https://server"}) +
-    field("Agent CLI","cli",c.cli,{choices:[["claude","Claude Code"],["codex","Codex"]]}) +
+    field("Agent CLI","cli",c.cli,{choices:[["claude","Claude Code"],["codex","Codex"],["opencode","OpenCode"]]}) +
     field("Model","model",c.model,{choices:modelChoices}) +
     field("Goal","goal",c.goal||"",{full:true,placeholder:"Optional; blank runs automatic matching"}) +
     field("Worker loops","workers",c.workers,{type:"number",min:1,max:8}) +
@@ -455,7 +479,7 @@ document.addEventListener("change",event=>act(async()=>{
   if(event.target.id==="worker-loop") {workerLoop=event.target.value;chatSignature="";renderWorkerChat();}
   if(event.target.id==="worker-run") await selectWorker(event.target.value);
   if(event.target.id==="saved-presets"&&event.target.value) render(meta.preferences.presets[event.target.value]);
-  if(event.target.matches("#agent-auto-form [name=cli]")) {readAgentAuto();agentAutoConfig.model="";render();}
+  if(event.target.matches("#agent-auto-form [name=cli]")) {readAgentAuto();agentAutoConfig.model="";render();if(agentAutoConfig.cli==="opencode"){meta.agent_models=await api("agent-models");render();}}
   if(event.target.closest("#command-form")) await previewCommand();
 }));
 for(const id of ["log-job","log-level","log-search","log-wrap"]) $("#"+id).addEventListener("input",()=>{renderLogs();});

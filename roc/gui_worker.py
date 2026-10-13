@@ -181,10 +181,13 @@ class Control:
         with self.condition:
             now = time.monotonic()
             self.completed += 1
-            self.matched += score == 100
-            self.improved += score > job.get("score", 0) and score != 100
+            receipt = job.get("receipt") or {}
+            gain = bool(receipt.get("verified") and receipt.get("improved")) if "receipt" in job else score > job.get("score", 0)
+            self.matched += gain and score == 100
+            self.improved += gain and score != 100
             self.emit("job_finished", slot=slot, client=job["client"], addr=job["addr"], score=score,
                       unit=job.get("unit"), size=job.get("size"), previous=job.get("score", 0),
+                      new_exact=gain and score == 100, improved=gain,
                       seconds=round(now - self.started_jobs.pop(slot, now), 1))
             if now - self.last_report >= 30:
                 self.emit("benchmark", workers=self.workers, completed=self.completed,

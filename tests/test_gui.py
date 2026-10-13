@@ -21,6 +21,16 @@ def config(**changes):
 
 
 class ControlTests(unittest.TestCase):
+    def test_already_exact_receipt_does_not_count_as_new_win(self):
+        events = []
+        control = gui_worker.Control(config(), lambda event, **fields: events.append((event, fields)))
+        job = {"client": "C", "addr": "00401000", "score": 99,
+               "receipt": {"verified": True, "improved": False, "stored": 100}}
+        control.finished(0, job, 100)
+        result = next(fields for event, fields in events if event == "job_finished")
+        self.assertFalse(result["new_exact"])
+        self.assertEqual(control.matched, 0)
+
     def test_function_timing_and_periodic_benchmark(self):
         events = []
         with patch.object(gui_worker.time, "monotonic", side_effect=[0, 1, 31, 32, 33]):
@@ -326,6 +336,20 @@ class DashboardTests(unittest.TestCase):
             job_id = self.app.start({"command": "doctor"})
             self.app.control({"id": job_id, "action": "cancel"})
         self.assertEqual(self.app.jobs[job_id]["status"], "cancelled")
+
+    def test_agent_tabs_start_while_another_worker_is_running(self):
+        first = Mock(pid=1001, stdin=io.StringIO())
+        second = Mock(pid=1002, stdin=io.StringIO())
+        with patch.object(gui.subprocess, "Popen", side_effect=[first, second]), \
+             patch.object(gui.threading, "Thread"):
+            one = self.app.start({"kind": "agent_worker", "cli": "codex", "client": "2008-06"})
+            two = self.app.start({"kind": "agent_worker", "cli": "claude", "client": "2008-06"})
+            self.assertEqual(self.app.jobs[one]["status"], "running")
+            self.assertEqual(self.app.jobs[two]["status"], "running")
+            self.assertEqual(len(self.app.processes), 2)
+        self.app.processes.clear()
+        for job in self.app.jobs.values():
+            job["status"] = "completed"
 
     def test_redaction_and_bounded_events(self):
         self.app.secret_values.append("example-secret-value")

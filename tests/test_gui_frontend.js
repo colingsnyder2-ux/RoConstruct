@@ -15,6 +15,13 @@ agentContext.meta={initial:{user:"tester",server:"localhost:8765"},clients:[{nam
 agentContext.field=(label,name,value,options={})=>options.choices ? `<select name="${name}">${options.choices.map(([key,text])=>`<option value="${key}">${text}</option>`).join("")}</select>` : `<input name="${name}" value="${value}">`;
 agentContext.button=label=>`<button>${label}</button>`;
 const simpleAgentHTML=agentContext.agentAutomatic();
+assert.match(simpleAgentHTML,/value="opencode">OpenCode/);
+agentContext.meta.agent_models=["opencode/big-pickle"];
+agentContext.agentAutoConfig.cli="opencode";
+const openCodeHTML=agentContext.agentAutomatic();
+assert.match(openCodeHTML,/value="opencode\/big-pickle"/);
+assert.doesNotMatch(openCodeHTML,/value="claude-opus/);
+agentContext.agentAutoConfig.cli="claude";
 assert.match(simpleAgentHTML,/<input name="goal" value="">/);
 assert.match(simpleAgentHTML,/Automatic/);
 assert.match(simpleAgentHTML,/Fast/);
@@ -119,8 +126,20 @@ assert.doesNotMatch(compactAgentRow,/<details open/);
 assert.match(feedContext.terminalMessage(longAgentRow,new Map(),false),/<pre>large output/);
 assert.match(feedContext.terminalMessage({...longAgentRow,message:'  > py roc.py check'},new Map(),false),/terminal-row tool-call.*<summary>.*py roc.py check.*<\/summary><pre>py roc.py check/);
 assert.match(feedContext.terminalMessage({...longAgentRow,message:'  < 38.9s Bash check'},new Map(),false),/terminal-row tool-call/);
-assert.match(feedContext.terminalMessage({...longAgentRow,message:'9 exacts, server accepted'},new Map(),false),/terminal-row matched-note/);
+assert.match(feedContext.terminalMessage({...longAgentRow,message:'00401000 → 100 · server verified exact'},new Map(),false),/terminal-row matched-note/);
+assert.doesNotMatch(feedContext.terminalMessage({...longAgentRow,message:'3 local exacts; server already done'},new Map(),false),/terminal-row matched-note/);
 assert.doesNotMatch(feedContext.terminalMessage({...longAgentRow,message:'code-exact; data mismatch'},new Map(),false),/terminal-row matched-note/);
+assert.match(feedContext.terminalMessage({...longAgentRow,event:'job_finished',client:'C',addr:'00401000',previous:99,score:100,new_exact:false},new Map(),false),/job_finished no-gain.*already exact/);
+const toolRows=[];
+for(let i=0;i<3;i++)toolRows.push({...longAgentRow,seq:i*3,message:'  > roc check C 00401000'},
+  {...longAgentRow,seq:i*3+1,message:'Command finished · exit 0\nreturn output '+i},
+  {...longAgentRow,seq:i*3+2,message:'  < '+[10,12,16][i]+'.0s roc check C 00401000'});
+const toolGroup=feedContext.groupToolRows(toolRows);
+assert.equal(toolGroup.length,1);
+const toolHTML=feedContext.terminalMessage(toolGroup[0],new Map(),true);
+assert.match(toolHTML,/Ran 3 commands · 38s/);
+assert.match(toolHTML,/return output 2/);
+assert.doesNotMatch(toolHTML,/<details open/);
 const fencedAgentRow=feedContext.terminalMessage({...longAgentRow,message:'Change:\n```cpp\nint f() { return 1; }\n```'},new Map(),false);
 assert.match(fencedAgentRow,/<pre>int f\(\) \{ return 1; \}/);
 assert.doesNotMatch(fencedAgentRow,/```cpp/);

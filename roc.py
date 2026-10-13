@@ -796,7 +796,10 @@ def cmd_agent(a):
             goal += "\nUse server %s for project commands." % a.server
         if a.user:
             goal += "\nUse contributor username %s." % a.user
-        code = agent.run_goal(a.cli, goal, a.model, a.minutes or 120, continuous=a.continuous)
+        s = settings()
+        code = agent.run_goal(a.cli, goal, a.model, a.minutes or 120, continuous=a.continuous,
+                              server=a.server or s.get("server"), token=a.token or os.environ.get("ROC_AGENT_SERVER_TOKEN") or s.get("token"),
+                              user=a.user or s.get("user"), client=a.client or "2008-06")
         if code:
             raise SystemExit(code)
         return code
@@ -819,11 +822,13 @@ def cmd_submit(a):
     srv = need(a.server or s.get("server"), "server", "Use --server or: roc config --server URL")
     user = need(a.user or s.get("user"), "username", "Use --user or: roc config --user NAME")
     names = sorted(clients.load()) if a.name == "all" else [a.name]
+    if getattr(a, "file", None) and (a.name == "all" or len(a.addr) != 1):
+        sys.exit("--file requires one client and one address")
     for name in names:
-        if not (ROOT / "src" / name).is_dir():
+        if not getattr(a, "file", None) and not (ROOT / "src" / name).is_dir():
             continue
         try:
-            worker.submit_files(srv, user, name, a.addr or None, a.token or s.get("token"))
+            worker.submit_files(srv, user, name, a.addr or None, a.token or s.get("token"), file=getattr(a, "file", None))
         except worker.ApiFailure as error:
             print("%s: submit failed: %s" % (name, error))
 
@@ -1834,7 +1839,8 @@ def main(argv=None):
         (["name"], {}), (["addr"], {}), (["path"], {}),
         (["--hypothesis"], {"required": True, "help": "specific source/config change being tested"}))
     cmd("submit", cmd_submit, "send hand-written sources to the server ('all' for every client)",
-        (["name"], {}), (["addr"], {"nargs": "*"}), (["--server"], {}), (["--user"], {}), (["--token"], {}))
+        (["name"], {}), (["addr"], {"nargs": "*"}), (["--server"], {}), (["--user"], {}), (["--token"], {}),
+        (["--file"], {"help": "submit an isolated ADDR.cpp candidate without editing src/"}))
     cmd("pull", cmd_pull, "download everyone's sources from the server into src/ ('all' for every client)",
         (["name"], {}), (["--force"], {"action": "store_true", "help": "replace your local files"}),
         (["--server"], {}), (["--token"], {}))

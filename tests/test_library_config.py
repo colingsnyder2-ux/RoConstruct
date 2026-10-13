@@ -43,6 +43,27 @@ def test_recipe_preflight_blocks_before_upload(monkeypatch):
     assert payload["recipe_versions"] == {"test": "new"}
 
 
+def test_submit_skips_server_exacts_without_compiling(tmp_path, monkeypatch):
+    from roc import worker, match
+    source = tmp_path / "00401000.cpp"
+    source.write_text("int f(){return 1;}")
+    calls, logs = [], []
+
+    class Api:
+        def __init__(self, *a):
+            pass
+
+        def call(self, path, *a, **kw):
+            calls.append(path)
+            assert path.startswith("/v1/sources?")
+            return [{"addr": "00401000", "score": 100}]
+
+    monkeypatch.setattr(worker, "Api", Api)
+    monkeypatch.setattr(match, "check", lambda *a: (_ for _ in ()).throw(AssertionError("must not compile")))
+    worker.submit_files("localhost", "tester", "C", ["00401000"], log=logs.append, file=source)
+    assert len(calls) == 1 and "already exact" in logs[0]
+
+
 def test_object_cache_coordinates_cli_processes(tmp_path):
     import sys
     code = '''

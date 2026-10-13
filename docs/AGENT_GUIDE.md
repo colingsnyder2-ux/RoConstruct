@@ -166,11 +166,15 @@ bills the CLI's own sign-in (Claude Pro/Max, ChatGPT plan) or `ANTHROPIC_API_KEY
 | Shared | `roc agent claude --jobs 5 [--max-size 256 --minutes 20]` | one function in `src/`, `roc check` only; regressions rolled back |
 | Any model via opencode | `roc agent opencode --automatic --model opencode/big-pickle` (list: `opencode models`) | `npm i -g opencode-ai`, signed in | same workflow; runs with `--auto`, so unlike claude it is not limited to `roc.py` commands |
 | Switch models when rate limited | setting `agent_fallbacks` in `local/config/roconstruct-settings.json` (or env `ROC_AGENT_FALLBACKS`), e.g. `"claude:sonnet,opencode:opencode/big-pickle"` | - | after 5 minutes of only rate-limit errors the run continues with the next entry |
-| Goal | `roc agent codex --goal "finish zlib in 2008-06" --minutes 60` | any `roc.py` command, web search, `src/` edits, attempt journal |
+| Goal | `roc agent codex --goal "finish zlib in 2008-06" --minutes 60` | live-server shortlist, isolated `work/agent-goals/` candidates, `check --file` / `submit --file`, attempt journal |
 | Interactive | `roc agent claude --interactive --goal "..."` | a normal session you watch and approve |
 
 Claude runs with `acceptEdits` and an explicit tool allowlist; Codex with `--sandbox workspace-write` and `approval_policy="never"`
 (writes limited to this folder). The server re-verifies every submission.
+Dashboard worker tabs start concurrently; only command jobs queue behind other
+commands. Goal runs skip unchanged reported blockers between cycles. Local 100%
+and already-exact receipts are not new wins. OpenCode appears in the CLI selector,
+loads installed models, and runs with its own standalone server per worker.
 Windows agent runs use the unelevated workspace sandbox and standard shell execution;
 their temp root lives under `work/agent-temp`. Compiler directories inherit sandbox ACLs.
 Codex JSON events keep input prompts out of the console; Compact folds long output.
