@@ -12,7 +12,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from roc import matchers, fingerprint
-from roc.analyze import find_functions, kind_of, demangle_class
+from roc.analyze import find_functions, kind_of, demangle_class, mark_matched_code
 from roc.analyze import asm_shape
 from roc.matchers import candidates
 from roc import draft
@@ -2211,3 +2211,11 @@ if __name__ == "__main__":
                 continue  # needs pytest fixtures; run under pytest
             fn()
             print("ok ", name)
+
+
+def test_mark_matched_code_bad_only_when_allowed():
+    funcs = [{"addr": "00401000", "kind": "bad"}, {"addr": "00402000", "kind": "gen"}, {"addr": "00403000", "kind": "bad"}]
+    mark_matched_code(funcs, {"00401000", "00402000"})
+    assert [f["kind"] for f in funcs] == ["bad", "code", "bad"]
+    mark_matched_code(funcs, {"00401000"}, include_bad=True)
+    assert [f["kind"] for f in funcs] == ["code", "code", "bad"]

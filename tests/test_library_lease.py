@@ -1,4 +1,4 @@
-from roc.server import Store
+﻿from roc.server import Store
 
 
 def test_lease_filters_by_library_and_allows_shared_work():
@@ -7,7 +7,7 @@ def test_lease_filters_by_library_and_allows_shared_work():
                       [("C", "00401000", 8, "RakPeer"), ("C", "00401010", 8, "CXTPCommandBar")])
     assert st.lease("u", "w1", ["C"], "ai", 256, library="RakNet")["addr"] == "00401000"
     assert st.lease("u", "w2", ["C"], "ai", 256, library="RakNet")["addr"] == "00401000"
-    assert st.lease("u", "w3", ["C"], "ai", 256)["addr"] == "00401010"
+    assert st.lease("u", "w3", ["C"], "ai", 256, library="XTP (Codejock)")["addr"] == "00401010"
 
 
 def test_units_upload_is_validated_and_stored(tmp_path, monkeypatch):

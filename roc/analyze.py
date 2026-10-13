@@ -217,6 +217,12 @@ def assign_units(funcs, classes, reach=0x4000):
             cur = None
         f["unit"] = cur or "seg_%08x" % (va - va % 0x10000)
 
+def mark_matched_code(funcs, matched, include_bad=False):
+    """Exact compiler output proves code, including 2008 functions with embedded jump-table data."""
+    for f in funcs:
+        if f["addr"] in matched and (f["kind"] in ("gen", "thunk", "adjustor") or include_bad and f["kind"] == "bad"):
+            f["kind"] = "code"
+
 def binary_facts(pe, image, base, body, start, imports, local_targets=None):
     """Small structured clues from one function; bounded for prompt/index use."""
     md = Cs(CS_ARCH_X86, CS_MODE_32)
@@ -359,9 +365,7 @@ def analyze(client, exe):
     scores_file = ROOT / "work" / client / "scores.json"
     if scores_file.exists():
         matched = {a for a, s in json.loads(scores_file.read_text()).items() if s == 100}
-        for f in funcs:
-            if f["kind"] in ("gen", "thunk", "adjustor") and f["addr"] in matched:
-                f["kind"] = "code"
+        mark_matched_code(funcs, matched, include_bad=client == "2008-06")
     data = sum(s.Misc_VirtualSize for s in pe.sections
                if s.Name.rstrip(b"\0") in (b".rdata", b".data", b".tls"))
     out = ROOT / "work" / client
