@@ -278,7 +278,7 @@ def test_run_reuses_before_models_and_assigns_explicit_targets(tmp_path, monkeyp
             row("00401030", imports=["CRT!f"])]
     monkeypatch.setattr(agent_auto, "snapshot", lambda client, api: rows)
     monkeypatch.setattr(agent_auto.match, "check_text", lambda c, a, s: (98, "f", "diff", []))
-    order, calls, paths = [], [], []
+    order, calls, paths, prompts = [], [], [], []
     class Api:
         def __init__(self, *args):
             pass
@@ -293,9 +293,12 @@ def test_run_reuses_before_models_and_assigns_explicit_targets(tmp_path, monkeyp
             return {"ok": True}
     monkeypatch.setattr(agent_auto.worker, "Api", Api)
     monkeypatch.setattr(agent_auto, "reuse", lambda task, portfolio, tried: (order.append("reuse"), paths.append(task["path"])))
-    monkeypatch.setattr(agent_auto.agent, "run_agent", lambda *args: order.append("model") or 0)
+    monkeypatch.setattr(agent_auto.agent, "run_agent", lambda cli, prompt, *args, **kwargs:
+                        (order.append("model"), prompts.append(prompt))[1] or 0)
     result = agent_auto.run("server", "me", workers=2, jobs=4, batch_size=2, log=lambda *args: None)
     assert order.count("reuse") == 4 and order.count("model") == 2
+    assert sum("Try to improve all assigned functions" in prompt for prompt in prompts) == 1
+    assert sum("Automatic BATCH repair" in prompt for prompt in prompts) == 1
     assert order[:4] == ["reuse"] * 4
     assert len(set(paths)) == 4 and all("agent-auto" in path for path in paths)
     assert not [call for call in calls if call[0] == "/v1/release"]

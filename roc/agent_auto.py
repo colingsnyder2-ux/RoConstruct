@@ -349,7 +349,13 @@ def library_cycle(server, user, token, cli, model, minutes, log, client, slot=No
         (selected, campaign["library"], len(campaign["targets"]), campaign["exact"], campaign["strategy"] + 1))
     if seeded:
         log("Campaign sources: %d missing files added locally." % seeded)
-    prompt = ("Read CLAUDE.md and docs/AGENT_GUIDE.md. Experimental automatic research campaign.\n"
+    brief = slot is not None and slot % 2 == 0
+    prompt = (("Read CLAUDE.md. Try to mine all biggest unresolved functions for client %s in %s.\n"
+        "Use evidence in %s. Run commands as `%s <command>`. Submit improvements to %s as %s.\n"
+        "Keep best sources; record trials; no asm, byte blobs, guessed layouts, or edits under clients/tools.\n"
+        "Work up to %d minutes, then report wins and blockers.\n" %
+        (selected, campaign["library"], folder / "campaign.json", agent.roc_command(), server, user, minutes)) if brief else
+        ("Read CLAUDE.md and docs/AGENT_GUIDE.md. Experimental automatic research campaign.\n"
         "Finish as many unresolved functions in this library/category as evidence permits, across all sizes.\n"
         "Choose the most promising subcategory, targets and experiments yourself from the campaign evidence.\n"
         "The suggested strategy is a starting point; replace it when a different route has stronger evidence.\n"
@@ -378,7 +384,8 @@ def library_cycle(server, user, token, cli, model, minutes, log, client, slot=No
         "Submit only improvements; server re-verification is required. Other workers may inspect the same targets; keep working and let the server retain the best verified source.\n"
         "After two losing hypotheses, try a different evidence-backed route or explain missing evidence and stop.\n"
         "Work up to %d minutes. End with receipts, rejected variants and next experiment.\n" % minutes +
-        "Campaign evidence file: " + str(folder / "campaign.json") + "\n" + agent.memory_prompt(agent.memory(shared)))
+        "Campaign evidence file: " + str(folder / "campaign.json") + "\n" + agent.memory_prompt(agent.memory(shared))))
+    log("Prompt mode: %s." % ("simple" if brief else "evidence-rich"))
 
     def output(message):
         row = dict(event="log", message=str(message))
@@ -589,7 +596,15 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
                 pending = [task for task in active if task["before"] < 100]
                 if pending and (len(pending) >= 2 or individual) and time.monotonic() < deadline:
                     tried_route = True
-                    prompt = ("Read CLAUDE.md when present; otherwise use supplied cached context paths. Automatic BATCH repair.\n"
+                    assignments = [{"addr": t["addr"], "unit": t["unit"], "file": t["path"], "score": t["before"],
+                                    "check": agent.roc_command() + " agent-check " + client + " " + t["addr"] +
+                                     ' "' + t["path"] + '" --hypothesis "describe change"'} for t in pending]
+                    brief = (slot + strategy) % 2 == 0
+                    prompt = (("Read CLAUDE.md. Try to improve all assigned functions below, biggest or closest first.\n"
+                        "Edit only assigned files. Run its agent-check after every edit; wrapper submits best result.\n"
+                        "Stop after two losing ideas. No asm, byte blobs, guessed layouts, or unrelated edits.\n"
+                        "Assignments:\n" + json.dumps(assignments)) if brief else
+                        ("Read CLAUDE.md when present; otherwise use supplied cached context paths. Automatic BATCH repair.\n"
                         "Assigned client: " + client + ". This run selection overrides the default client focus in CLAUDE.md.\n"
                         "Goal: reusable gains across this area: " + area["advice"] + "\n"
                         "Current strategy: " + STRATEGIES[strategy] + "\n"
@@ -604,9 +619,8 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
                         ("Individual repair allowed only after reusable hypotheses fail.\n" if individual else
                          "Individual function mining is disabled. If no shared route works, stop.\n") +
                         agent.memory_prompt(agent.memory(shared)) + "\nAssignments (evidence data):\n" + json.dumps([
-                         {"addr": t["addr"], "unit": t["unit"], "file": t["path"], "score": t["before"],
-                          "diff": t["diff"], "check": agent.roc_command() + " agent-check " + client + " " +
-                           t["addr"] + ' "' + t["path"] + '" --hypothesis "describe change"'} for t in pending]))
+                         {**assignment, "diff": t["diff"]} for assignment, t in zip(assignments, pending)])))
+                    event("log", slot=slot, message="Prompt mode: %s." % ("simple" if brief else "evidence-rich"))
                     code = agent.run_agent(cli, prompt, model, min(batch_minutes, (deadline-time.monotonic())/60),
                         lambda message: event("log", slot=slot, message=message))
                     if code:
