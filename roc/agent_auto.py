@@ -397,7 +397,7 @@ def library_cycle(server, user, token, cli, model, minutes, log, client, slot=No
         latest = worker.Api(server, token)
         try:
             scores = {row["addr"]: row.get("score", 0) for row in
-                      latest.call("/v1/sources?client=" + selected, timeout=120)}
+                      latest.call("/v1/sources?scores=1&client=" + selected, timeout=120)}
         except (RuntimeError, OSError):
             scores = {}
         gains = {addr: score for addr, score in scores.items() if score > baseline.get(addr, 100)}
@@ -426,7 +426,7 @@ def library_cycle(server, user, token, cli, model, minutes, log, client, slot=No
         benchmark_stop.set()
         ticker.join(timeout=2)
     benchmark()
-    after = {row["addr"]: row for row in api.call("/v1/sources?client=" + selected, timeout=120)}
+    after = {row["addr"]: row for row in api.call("/v1/sources?scores=1&client=" + selected, timeout=120)}
     gains = [after[row["addr"]] for row in campaign["targets"] if
              after.get(row["addr"], {}).get("score", 0) > row.get("score", 0)]
     # Snapshot changes are server gains during this window, not proof of agent authorship.

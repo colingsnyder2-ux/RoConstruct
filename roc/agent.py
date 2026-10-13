@@ -14,6 +14,7 @@ import shutil
 import subprocess
 import sys
 import threading
+import re
 import time
 import uuid
 from datetime import datetime, timezone
@@ -230,7 +231,37 @@ def show(line, log):
         log("Agent finished after %s turns%s." % (event.get("num_turns"), " with an error" if event.get("is_error") else ""))
 
 
-def run_agent(cli, prompt, model=None, minutes=20, log=print, goal=False):
+RATE_LIMITED = 75
+RATE = re.compile(r"rate.?limit|usage limit|too many requests|overloaded|quota (exceeded|reached)|"
+                  r"insufficient (credit|quota)|status(?: code)?:? 429|you.ve hit your", re.I)
+
+
+def fallbacks():
+    """`agent_fallbacks` setting: comma list of cli[:model] tried in order when the current model is rate limited."""
+    from roc import worker
+    raw = os.environ.get("ROC_AGENT_FALLBACKS") or worker.load_settings().get("agent_fallbacks") or ""
+    return [tuple((item.strip().split(":", 1) + [None])[:2]) for item in str(raw).split(",") if item.strip()]
+
+
+def run_agent(cli, prompt, model=None, minutes=20, log=print, goal=False, switch_minutes=5):
+    """Run one agent; when it only produces rate-limit errors for `switch_minutes`, continue the
+    remaining time with the next model from the `agent_fallbacks` setting (e.g. "claude:sonnet,opencode:opencode/big-pickle")."""
+    deadline = time.monotonic() + minutes * 60
+    queue = [(cli, model)] + fallbacks()
+    while queue:
+        current, name = queue.pop(0)
+        left = (deadline - time.monotonic()) / 60
+        if left < 1:
+            return 1
+        code = _run_once(current, prompt, name, left, log, goal, switch_minutes if queue else 0)
+        if code != RATE_LIMITED:
+            return code
+        log("  %s %s rate limited for %d minutes; switching to %s." % (
+            current, name or "", switch_minutes, " ".join(filter(None, queue[0])) if queue else "nothing"))
+    return 1
+
+
+def _run_once(cli, prompt, model, minutes, log, goal, switch_minutes):
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     exe = shutil.which(cli)
@@ -265,8 +296,17 @@ def run_agent(cli, prompt, model=None, minutes=20, log=print, goal=False):
                 process.stdin.close()
             except BrokenPipeError:
                 pass
+        limited = None
         for line in process.stdout:
             show(line, log)
+            if switch_minutes and RATE.search(line):
+                limited = limited or time.monotonic()
+                if time.monotonic() - limited >= switch_minutes * 60:
+                    _kill(process)
+                    process.wait()
+                    return RATE_LIMITED
+            elif line.strip() and not line.lstrip().startswith('{"type":"step'):
+                limited = None  # real output again: the limit cleared
         return process.wait() or int(input_closed)
     except BaseException:
         _kill(process)

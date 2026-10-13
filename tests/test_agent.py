@@ -239,3 +239,13 @@ def test_goal_cli_propagates_failed_agent_exit(monkeypatch):
     with pytest.raises(SystemExit) as error:
         cli.main(["agent", "codex", "--goal", "Match G3D", "--client", "2008-06"])
     assert error.value.code == 2
+
+
+def test_rate_limited_agent_switches_to_the_next_model(monkeypatch):
+    calls = []
+    monkeypatch.setenv("ROC_AGENT_FALLBACKS", "opencode:opencode/big-pickle, codex")
+    monkeypatch.setattr(agent, "_run_once", lambda cli, prompt, model, minutes, log, goal, switch:
+                        calls.append((cli, model, bool(switch))) or (agent.RATE_LIMITED if len(calls) < 3 else 0))
+    assert agent.run_agent("claude", "p", "sonnet", 30, lambda *a: None) == 0
+    assert calls == [("claude", "sonnet", True), ("opencode", "opencode/big-pickle", True), ("codex", None, False)]
+    assert agent.RATE.search("Error: 429 rate limit reached") and not agent.RATE.search("ran 429 tests")

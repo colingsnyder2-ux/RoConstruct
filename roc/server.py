@@ -2,6 +2,7 @@
 and credits whoever improved it. Submissions are re-scored here when this
 machine has the client's compiler.
 """
+import gzip
 import json
 import hashlib
 import os
@@ -455,8 +456,13 @@ class Store:
             return dict(results[0], before="", after=rows[0][6], timeline=[], commands=[], rounds=[])
         return results
 
-    def sources(self, client, min_score=1):
-        """Every stored source for a client (for `roc pull`)."""
+    def sources(self, client, min_score=1, scores_only=False):
+        """Every stored source for a client (for `roc pull`); scores_only leaves out the source text."""
+        if scores_only:
+            with self.lock:
+                rows = self.db.execute("SELECT addr, score FROM funcs WHERE client = ? AND score >= ? "
+                                       "AND source IS NOT NULL ORDER BY addr", (client, min_score)).fetchall()
+            return [{"addr": a, "score": s} for a, s in rows]
         with self.lock:
             rows = self.db.execute("SELECT addr, score, user, source FROM funcs WHERE client = ? AND score >= ? "
                                    "AND source IS NOT NULL ORDER BY addr", (client, min_score)).fetchall()
@@ -488,9 +494,14 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None):
             ConnectionAbortedError out of the handler thread and printed a traceback for
             every abandoned request."""
             body = json.dumps(obj).encode()
+            gzipped = len(body) > 4096 and "gzip" in self.headers.get("Accept-Encoding", "")
+            if gzipped:
+                body = gzip.compress(body, 5)  # source listings are ~8x smaller; the link is the slow part
             try:
                 self.send_response(code)
                 self.send_header("Content-Type", "application/json")
+                if gzipped:
+                    self.send_header("Content-Encoding", "gzip")
                 self.send_header("Content-Length", str(len(body)))
                 self.send_header("Access-Control-Allow-Origin", "*")
                 self.end_headers()
@@ -532,7 +543,8 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None):
                 best = store.best(q.get("client", ""), q.get("addr", ""))
                 return self.send(200 if best else 404, best or {"error": "unknown function"})
             if url.path == "/v1/sources":
-                return self.send(200, store.sources(q.get("client", ""), int(q.get("min_score", 1))))
+                return self.send(200, store.sources(q.get("client", ""), int(q.get("min_score", 1)),
+                                                    q.get("scores") == "1"))
             if url.path == "/v1/examples":
                 return self.send(200, store.examples(q.get("client", ""), min(int(q.get("n", 3)), 10),
                                                      q.get("unit"), q.get("shape"),

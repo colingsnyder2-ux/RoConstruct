@@ -2,6 +2,7 @@
 retry with feedback, submit the best result under your username."""
 import http.client
 import contextlib
+import gzip
 import json
 import os
 import re
@@ -558,7 +559,7 @@ class Api:
         data = json.dumps(payload).encode() if payload is not None else None
         if path in ("/v1/submit", "/v1/submit-batch"):
             timeout = max(timeout, 180)  # the server compiles a new recipe unit before it can verify
-        headers = {"Content-Type": "application/json"}
+        headers = {"Content-Type": "application/json", "Accept-Encoding": "gzip"}
         # Cluster nodes persist this receipt with the mutation. Identical retries
         # cannot double-lease, double-credit, or accept a stale CPU result.
         if payload is not None and (len(self.servers) > 1 or request_id):
@@ -584,6 +585,8 @@ class Api:
                 conn.request(method, self._prefix + path, body=data, headers=headers)
                 resp = conn.getresponse()
                 body = resp.read()
+                if resp.getheader("Content-Encoding") == "gzip":
+                    body = gzip.decompress(body)
                 if resp.status >= 400:
                     try:
                         msg = json.loads(body).get("error")

@@ -180,7 +180,7 @@ def test_library_cycle_records_server_observed_gains_and_research_scope(tmp_path
         def call(self, path, **kwargs):
             if path == "/v1/info":
                 return dict(clients={"2008-06": {}}, verify=["2008-06"])
-            assert path == "/v1/sources?client=2008-06"
+            assert path == "/v1/sources?scores=1&client=2008-06"
             return [row("00401000", 100, source)]
 
     monkeypatch.setattr(agent_auto.worker, "Api", Api)
