@@ -1438,13 +1438,16 @@ def submit_files(server, user, client, addrs=None, token=None, log=print):
                 log("%s  skipped, does not compile: %s" % (p.stem, str(error).splitlines()[0]))
                 continue
             checked.append((p, text, score))
-    for p, text, score in sorted(checked, key=lambda item: item[0].stem):
-        try:
-            r = api.call("/v1/submit", {"user": user, "client": client, "addr": p.stem,
-                                        "score": score, "source": text})
+    def upload(item):
+        p, text, score = item
+        try:  # one connection per thread; the server verifies up to 3 at a time
+            r = Api(server, token).call("/v1/submit", {"user": user, "client": client, "addr": p.stem,
+                                                       "score": score, "source": text})
         except ApiFailure as error:
-            log("%s  not accepted: %s" % (p.stem, error))
-            continue
-        log("%s  %3d%%  %s" % (p.stem, r["stored"], "new best" if r["improved"] else "server already has this or better"))
+            return "%s  not accepted: %s" % (p.stem, error)
+        return "%s  %3d%%  %s" % (p.stem, r["stored"], "new best" if r["improved"] else "server already has this or better")
+    with ThreadPoolExecutor(max_workers=3) as pool:
+        for line in pool.map(upload, sorted(checked, key=lambda item: item[0].stem)):
+            log(line)
     if skipped:
         log("%s: %d pulled source(s) already on the server, skipped" % (client, skipped))

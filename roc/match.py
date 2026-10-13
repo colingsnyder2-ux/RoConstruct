@@ -815,14 +815,20 @@ def check(client, addr, src, flags=None):
     return check_text(client, addr, Path(src).read_text(errors="replace"), flags)
 
 
+_SCORES_LOCK = threading.Lock()
+
+
 def save_score(client, addr, value):
     """Keep the best score per function in work/<client>/scores.json."""
     path = ROOT / "work" / client / "scores.json"
-    scores = json.loads(path.read_text()) if path.exists() else {}
-    if value > scores.get(addr, 0):
-        scores[addr] = value
-        path.write_text(json.dumps(scores, indent=0, sort_keys=True))
-    return scores.get(addr, 0)
+    with _SCORES_LOCK:
+        scores = json.loads(path.read_text()) if path.exists() else {}
+        if value > scores.get(addr, 0):
+            scores[addr] = value
+            tmp = path.with_name("scores.%d.tmp" % os.getpid())  # replace atomically: readers never see a half file
+            tmp.write_text(json.dumps(scores, indent=0, sort_keys=True))
+            os.replace(tmp, path)
+        return scores.get(addr, 0)
 
 
 def template(client, addr):
