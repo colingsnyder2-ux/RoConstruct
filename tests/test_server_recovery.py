@@ -94,3 +94,69 @@ def test_dead_tunnel_restarts_and_republishes_immediately(publish):
         assert push.call_args.args[1] == "https://new.trycloudflare.com"
     else:
         push.assert_not_called()
+
+
+def test_source_download_endpoint_and_publisher_share_store_method(tmp_path):
+    import json
+    import threading
+    import urllib.request
+    from http.server import ThreadingHTTPServer
+    store = server.Store(tmp_path / "group.db", 60)
+    store.db.executemany("INSERT INTO funcs(client,addr,size,unit,score,source,user) VALUES(?,?,?,?,?,?,?)", [
+        ("2008-06", "00401000", 10, "Pilot", 99, "partial", "alice"),
+        ("2008-06", "00401010", 10, "Pilot", 100, "exact", "alice"),
+        ("2009-12", "00401000", 10, "Pilot", 100, "other client", "alice")])
+    store.db.commit()
+    httpd = ThreadingHTTPServer(("127.0.0.1", 0), server.make_handler(store, None, set()))
+    httpd.daemon_threads = True
+    thread = threading.Thread(target=httpd.serve_forever, daemon=True)
+    thread.start()
+    try:
+        with urllib.request.urlopen("http://127.0.0.1:%d/v1/sources?client=2008-06&min_score=100" % httpd.server_port) as response:
+            rows = json.load(response)
+        assert [row["addr"] for row in rows] == ["00401010"]
+        assert rows == store.sources("2008-06", min_score=100)
+        assert store.sources("2009-12")[0]["source"] == "other client"
+    finally:
+        httpd.shutdown()
+        httpd.server_close()
+        thread.join()
+        store.db.close()
+
+
+def test_manual_sources_are_searchable_without_worker_activity(tmp_path):
+    store = server.Store(tmp_path / "group.db", 60)
+    store.db.execute("INSERT INTO funcs(client,addr,size,unit,score,source,user,updated) VALUES(?,?,?,?,?,?,?,?)",
+        ("2009-12", "00401000", 10, "Mined getter", 100, "int f(){return 1;}", "alice", 10))
+    store.db.commit()
+    rows = store.function_history(query="alice", status="matched")
+    assert len(rows) == 1 and rows[0]["client"] == "2009-12"
+    assert rows[0]["base_score"] is None and "after" not in rows[0]
+    detail = store.function_history(rows[0]["id"])
+    assert detail["after"] == "int f(){return 1;}" and detail["origin"] == "server"
+    assert store.function_history(query="missing") == []
+    store.db.close()
+
+
+def test_unlimited_lease_has_no_size_ceiling(tmp_path):
+    store = server.Store(tmp_path / "group.db", 60)
+    store.db.execute("INSERT INTO funcs(client,addr,size,unit,score,source,user) VALUES(?,?,?,?,?,?,?)",
+        ("2008-06", "00401000", 2_000_000, "Large fn", 98, "source", "alice"))
+    store.db.commit()
+    assert store.lease("alice", "bounded", ["2008-06"], "ai", 8192) is None
+    job = store.lease("alice", "deep", ["2008-06"], "ai", 0)
+    assert job["size"] == 2_000_000
+    store.db.close()
+
+
+def test_shared_assignments_can_pick_same_target_and_keep_best_score(tmp_path):
+    store = server.Store(tmp_path / "group.db", 60)
+    store.db.execute("INSERT INTO funcs(client,addr,size,unit,score,source,user) VALUES(?,?,?,?,?,?,?)",
+        ("2008-06", "00401000", 32, "Shared", 80, "old", "alice"))
+    store.db.commit()
+    first = store.lease("alice", "w1", ["2008-06"], "ai", 256)
+    second = store.lease("bob", "w2", ["2008-06"], "ai", 256)
+    assert first["addr"] == second["addr"] == "00401000"
+    assert store.submit("2008-06", "00401000", "alice", 90, "better", lease=first["lease"]) == (90, True)
+    assert store.submit("2008-06", "00401000", "bob", 85, "worse", lease=second["lease"]) == (90, False)
+    store.db.close()

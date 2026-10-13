@@ -123,10 +123,10 @@ def strip_settings(source):
     return re.sub(r"(?m)^// roc-(cl|flags):[^\n]*\n", "", source)
 
 
-def variants(source, builds=BUILDS, profiles=PROFILES, append=("",)):
+def variants(source, builds=BUILDS, profiles=PROFILES, append=("",), client=CLIENT):
     """(source, build, flags) for each compiler gate. Profile "keep" reuses the source's flags."""
     body = strip_settings(source)
-    kept = match.directives(source).get("flags") or clients.load()[CLIENT].get("flags") or match.DEFAULT_FLAGS
+    kept = match.directives(source).get("flags") or clients.load()[client].get("flags") or match.DEFAULT_FLAGS
     for build in builds:
         for profile in profiles:
             for suffix in append:
@@ -365,28 +365,45 @@ def append(path, row):
 def trial(root, client, addr, path, hypothesis):
     """The agent's check command: journal every compile and preserve the best source."""
     path = Path(path).resolve()
-    if not path.is_relative_to((root / "work" / "agent-auto").resolve()):
-        raise ValueError("Agent checks require an isolated automatic-run source")
-    task = json.loads((path.parent / "task.json").read_text())
-    if task["client"] != client or task["addr"] != addr or path.name != addr + ".cpp":
-        raise ValueError("Source does not belong to this assigned target")
+    task_path = path.parent / "task.json"
+    journal = path.parent
+    direct_source = False
+    if task_path.exists():
+        task = json.loads(task_path.read_text())
+        if task["client"] != client or task["addr"] != addr or path.name != addr + ".cpp":
+            raise ValueError("Source does not belong to this assigned target")
+    elif path == (root / "src" / client / (addr + ".cpp")).resolve():
+        # Campaign agents edit checked-in working sources directly.  They still
+        # get a per-target journal and best-score rollback, without requiring an
+        # obsolete exclusive assignment folder.
+        task = {"client": client, "addr": addr, "area": "campaign", "profile": "agent-check",
+                "best_score": match.save_score(client, addr, 0)}
+        journal = root / "work" / "agent-checks" / client / addr
+        journal.mkdir(parents=True, exist_ok=True)
+        direct_source = True
+    else:
+        raise ValueError("Agent checks require src/<client>/<addr>.cpp or an automatic task source")
     text = path.read_text(encoding="utf-8")
     row = {"kind": "trial", "date": datetime.now(timezone.utc).isoformat(), "client": client,
            "addresses": [addr], "area": task["area"], "profile": task["profile"],
            "hypothesis": hypothesis, "source_hash": digest(text), "before": task["best_score"],
            "compiler": match.directives(text).get("cl") or match.clients.load()[client]["compiler_build"],
            "flags": match.directives(text).get("flags") or match.clients.load()[client].get("flags") or match.DEFAULT_FLAGS,
-           "evidence": str(path.parent / "trials.jsonl")}
+           "evidence": str(journal / "trials.jsonl")}
     try:
         score, symbol, diff, _ = match.check_text(client, addr, text)
         row.update(after=score, symbol=symbol, diff=diff, outcome="improved" if score > task["best_score"] else "no_gain")
         if score > task["best_score"]:
-            (path.parent / "best.cpp").write_text(text, encoding="utf-8")
+            (journal / "best.cpp").write_text(text, encoding="utf-8")
             task["best_score"] = score
-            (path.parent / "task.json").write_text(json.dumps(task))
+            match.save_score(client, addr, score)
+            if task_path.exists():
+                task_path.write_text(json.dumps(task))
+        elif direct_source and (journal / "best.cpp").exists():
+            path.write_text((journal / "best.cpp").read_text(encoding="utf-8"), encoding="utf-8")
     except match.CompileError as error:
         row.update(after=0, outcome="compile_failed", error=str(error))
-    append(path.parent / "trials.jsonl", row)
+    append(journal / "trials.jsonl", row)
     append(root / "work" / "agent-memory" / "attempts.jsonl", row)
     return row
 
@@ -403,14 +420,15 @@ def known_failures(records):
 
 def reuse(root, task, portfolio, tried=frozenset()):
     """Donor verification and normal target checks decide; shape alone never accepts."""
+    client = task.get("client", CLIENT)
     source_path = Path(task["path"])
     asm = None
     for donor in task["donors"]:
         try:
-            if match.check_text("2008-06", donor["addr"], donor["source"])[0] != 100:
+            if match.check_text(client, donor["addr"], donor["source"])[0] != 100:
                 continue
             if asm is None:
-                code, _, _ = match.target("2008-06", task["addr"])
+                code, _, _ = match.target(client, task["addr"])
                 asm = match.disasm(code, int(task["addr"], 16))
             body = matchers.family_propagate(asm, draft.clean_repair_context(donor["source"]))
             if body:
@@ -419,7 +437,8 @@ def reuse(root, task, portfolio, tried=frozenset()):
         except match.CompileError:
             continue
     if task["before"] >= 90:
-        portfolio += [source for source, _, _ in variants(task["source"], profiles=GATES)]
+        portfolio += [source for source, _, _ in variants(task["source"], profiles=GATES, client=client,
+            builds=BUILDS if client == CLIENT else (clients.load()[client]["compiler_build"],))]
     seen = {digest(task["source"])}
     for source in portfolio:
         key = digest(source)
@@ -427,7 +446,7 @@ def reuse(root, task, portfolio, tried=frozenset()):
             continue
         seen.add(key)
         source_path.write_text(source, encoding="utf-8")
-        result = trial(root, "2008-06", task["addr"], source_path, "verified donor / existing recipe reuse")
+        result = trial(root, client, task["addr"], source_path, "verified donor / existing recipe reuse")
         if result["after"] == 100:
             break
     source_path.write_text((source_path.parent / "best.cpp").read_text(encoding="utf-8"), encoding="utf-8")

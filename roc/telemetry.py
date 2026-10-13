@@ -966,10 +966,17 @@ def finish(score, failure, rounds):
     local.row = None
 
 
-def read(identifier=None):
+def read(identifier=None, query="", status="", sort="recent", limit=300):
     with closing(connect()) as db:
         if identifier:
             value = db.execute("SELECT data FROM activity WHERE id=?", (identifier,)).fetchone()
             return json.loads(value[0]) if value else None
-        rows = [json.loads(value[0]) for value in db.execute("SELECT data FROM activity ORDER BY updated DESC LIMIT 300")]
+        order = {"score": "json_extract(data,'$.score') DESC", "gain":
+                 "(json_extract(data,'$.score') - json_extract(data,'$.base_score')) DESC",
+                 "unit": "json_extract(data,'$.unit')", "addr": "json_extract(data,'$.addr')"}.get(sort, "updated DESC")
+        rows = [json.loads(value[0]) for value in db.execute(
+            "SELECT data FROM activity WHERE (?='' OR lower(coalesce(json_extract(data,'$.unit'),'') || ' ' || "
+            "json_extract(data,'$.client') || ' ' || json_extract(data,'$.addr') || ' ' || "
+            "coalesce(json_extract(data,'$.model'),'')) LIKE ?) AND (?='' OR json_extract(data,'$.status')=?) "
+            "ORDER BY " + order + " LIMIT ?", (query, '%' + query.lower() + '%', status, status, limit))]
     return [{k: v for k, v in row.items() if k not in ("before", "after", "timeline", "commands", "rounds", "candidates")} for row in rows]

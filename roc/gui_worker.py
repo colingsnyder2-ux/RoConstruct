@@ -25,7 +25,7 @@ def validate(values, base=None, check_model=True):
     if not isinstance(values, dict) or set(values) - set(DEFAULTS):
         raise ValueError("Unknown worker settings")
     config = {**DEFAULTS, **(base or {}), **values}
-    for key, low, high in (("workers", 1, 256), ("rounds", 1, 100), ("max_size", 1, 1000000),
+    for key, low, high in (("workers", 1, 256), ("rounds", 1, 100), ("max_size", 0, 1000000),
                            ("max_tokens", 128, 32768), ("diverse_candidates", 1, 16),
                            ("cloud_concurrency", 1, 256)):
         if key in ("workers", "rounds", "max_tokens", "cloud_concurrency") and config[key] == "auto":

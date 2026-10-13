@@ -693,25 +693,39 @@ def cmd_agent(a):
     from roc import agent
     if a.automatic or a.plan:
         from roc import agent_auto
-        if a.goal or a.interactive or a.client not in (None, "2008-06"):
-            sys.exit("Automatic mode uses ranked 2008-06 batches; omit --goal/--interactive")
+        if a.goal or a.interactive:
+            sys.exit("Automatic mode uses ranked client batches; omit --goal/--interactive")
+        selected_client = a.client or "2008-06"
         if a.plan:
-            print(json.dumps(agent_auto.public_plan(agent_auto.plan(agent_auto.snapshot(), a.max_size or 512,
+            names = [selected_client] if selected_client != "all" else [name for name in clients.load()
+                if (ROOT / "work" / name / "functions.jsonl").exists()]
+            print(json.dumps(agent_auto.public_plan(agent_auto.portfolio(names, a.max_size if a.max_size is not None else 512,
                 a.cli + ":" + (a.model or "default") + (":individual" if a.individual else ""))), indent=2))
             return
         s = settings()
         srv = need(a.server or s.get("server"), "server", "Use --server or: roc config --server URL")
         user = need(a.user or s.get("user"), "username", "Use --user or: roc config --user NAME")
         return agent_auto.run(srv, user, a.token or os.environ.get("ROC_AGENT_SERVER_TOKEN") or s.get("token"), a.cli, a.model, a.workers,
-            a.jobs or 24, a.max_size or 512, a.minutes or 120, a.batch_size, a.batch_minutes, a.individual)
+            a.jobs or 24, a.max_size if a.max_size is not None else 512, a.minutes or 120, a.batch_size, a.batch_minutes, a.individual, client=selected_client,
+            continuous=a.continuous, experimental=a.experimental)
     if a.interactive:
         return agent.interactive(a.cli, a.goal or "match open 2008-06 functions", a.model)
     if a.goal:
-        return agent.run_goal(a.cli, a.goal, a.model, a.minutes or 120)
+        goal = a.goal
+        if a.client:
+            goal += "\nClient scope: %s." % a.client
+        if a.server:
+            goal += "\nUse server %s for project commands." % a.server
+        if a.user:
+            goal += "\nUse contributor username %s." % a.user
+        code = agent.run_goal(a.cli, goal, a.model, a.minutes or 120, continuous=a.continuous)
+        if code:
+            raise SystemExit(code)
+        return code
     s = settings()
     srv = need(a.server or s.get("server"), "server", "Use --server or: roc config --server URL")
     user = need(a.user or s.get("user"), "username", "Use --user or: roc config --user NAME")
-    agent.run(srv, user, a.token or s.get("token"), a.cli, a.model, a.client, a.jobs or 1, a.max_size or 256, a.minutes or 20)
+    agent.run(srv, user, a.token or s.get("token"), a.cli, a.model, a.client, a.jobs or 1, a.max_size if a.max_size is not None else 256, a.minutes or 20)
 
 
 def cmd_agent_check(a):
@@ -919,7 +933,7 @@ def cmd_worker(a):
     elif a.preset == "fast":
         a.rounds, a.max_size, a.no_revng = min(4 if a.rounds == "auto" else a.rounds, 2), min(a.max_size, 96), True
     elif a.preset == "deep":
-        a.rounds, a.max_size = max(4 if a.rounds == "auto" else a.rounds, 6), max(a.max_size, 512)
+        a.rounds, a.max_size = max(4 if a.rounds == "auto" else a.rounds, 6), 0
     if a.min_score is not None and not 0 <= a.min_score <= 100:
         raise SystemExit("--min-score must be 0-100")
     if a.max_score is not None and not 0 <= a.max_score <= 100:
@@ -1299,7 +1313,6 @@ def cmd_status(a):
     print("Workers active (last 15 min): %d" % len(st["workers"]))
     for w in st["workers"]:
         print("  %-20s %-4s seen %ds ago" % (w["user"], w["mode"], w["seen_ago"]))
-    print("Open leases: %d" % len(st["leases"]))
     print("Top contributors:")
     for i, row in enumerate(api.call("/v1/leaderboard")[:10], 1):
         print("  %2d. %-20s %5d matched  %6d points" % (i, row["user"], row["matched"], row["points"]))
@@ -1703,24 +1716,26 @@ def main(argv=None):
     pt.add_argument("--model", required=True)
     pt.set_defaults(fn=cmd_provider)
     cmd("link", cmd_link, "one-click links: 'install', 'remove', or a roconstruct:// URL", (["target"], {}))
-    cmd("agent", cmd_agent, "match leased functions with your own Claude Code or Codex CLI",
+    cmd("agent", cmd_agent, "match shared functions with your own Claude Code or Codex CLI",
         (["cli"], {"choices": ["claude", "codex"]}),
         (["--goal"], {"help": 'free-form task, e.g. "match as many 2008-06 RakNet functions as you can"'}),
         (["--interactive"], {"action": "store_true",
                               "help": "open a normal session you can watch and steer (asks before risky commands)"}),
         (["--automatic"], {"action": "store_true", "help": "rank areas, reuse sources first, then parallel batch repair"}),
+        (["--continuous"], {"action": "store_true", "help": "repeat agent cycles until stopped; switch strategies after no gains"}),
+        (["--experimental"], {"action": "store_true", "default": True, "help": "choose unfinished vendor libraries and run evidence-backed research campaigns (default)"}),
         (["--plan"], {"action": "store_true", "help": "preview local automatic ranking without starting agents"}),
         (["--workers"], {"type": int, "default": 2, "help": "automatic batch workers (1-8)"}),
         (["--batch-size"], {"type": int, "default": 4, "help": "functions per automatic batch (1-12)"}),
         (["--batch-minutes"], {"type": int, "default": 10, "help": "time cap per agent batch (1-60)"}),
         (["--individual"], {"action": "store_true", "help": "allow individual repair after shared hypotheses fail"}),
-        (["--client"], {}),
+        (["--client"], {"help": "client name or all (automatic default: 2008-06; all requires explicit selection)"}),
         (["--jobs"], {"type": int, "help": "target cap (automatic: 24; leased mode: 1)"}),
         (["--model"], {"help": "passed to the CLI's --model"}),
-        (["--max-size"], {"type": int, "help": "function byte ceiling (automatic: 512; leased: 256)"}),
+        (["--max-size"], {"type": int, "help": "function byte ceiling (0 = unlimited; automatic: 512; leased: 256)"}),
         (["--minutes"], {"type": int, "help": "time limit per function (20) or per --goal session (120)"}),
         (["--server"], {}), (["--user"], {}), (["--token"], {}))
-    cmd("agent-check", cmd_agent_check, "check isolated automatic source and journal the trial",
+    cmd("agent-check", cmd_agent_check, "check an agent source and journal the trial",
         (["name"], {}), (["addr"], {}), (["path"], {}),
         (["--hypothesis"], {"required": True, "help": "specific source/config change being tested"}))
     cmd("submit", cmd_submit, "send hand-written sources to the server ('all' for every client)",
@@ -1765,7 +1780,7 @@ def main(argv=None):
         (["--rounds"], {"type": lambda v: v if v == "auto" else int(v), "help": "AI tries per function (or auto)"}),
         (["--strategy"], {"choices": ["direct", "structured", "reference"], "default": "direct",
                             "help": "candidate-generation prompt strategy"}),
-        (["--max-size"], {"type": int, "help": "skip functions bigger than this (bytes)"}),
+        (["--max-size"], {"type": int, "help": "skip functions bigger than this (bytes; 0 = unlimited)"}),
         (["--min-score"], {"type": int, "help": "lease only functions at or above this score"}),
         (["--max-score"], {"type": int, "help": "lease only functions at or below this score"}),
         (["--output-budget"], {"type": lambda v: v if v == "auto" else int(v), "help": "max tokens per reply (128-32768 or auto)"}),

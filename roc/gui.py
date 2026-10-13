@@ -13,7 +13,7 @@ import uuid
 import webbrowser
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from urllib.parse import parse_qs, urlparse
+from urllib.parse import parse_qs, urlencode, urlparse
 
 from roc import chatgpt, clients, libs, providers, worker
 from roc.gui_worker import DEFAULTS, LIVE, validate
@@ -38,14 +38,18 @@ COMMANDS = {
     "failures": ("Failures", "Inspect recurring compile and provider failures", "none"),
     "status": ("Server status", "Read server progress and worker leaderboard", "none"),
     "install": ("Install tools", "Download exact compilers; no Ollama or Docker", "optional"),
+    "research": ("Research recipes", "Run recorded experiments", "none"),
+    "donor": ("Donor reuse", "Reuse verified donor functions", "all"),
+    "submit": ("Submit sources", "Submit recovered sources for server verification", "all"),
+    "lint": ("Source checks", "Check source and data coverage", "one"),
+    "vtables": ("Vtables", "Inspect recovered virtual methods", "one"),
+    "daily-stats": ("Daily gains", "Read verified daily results", "none"),
     "agent": ("Agent", "Claude Code or Codex works a goal on your own plan", "none"),
 }
 
 
 def command_args(data):
     name, client = data.get("command"), data.get("client", "")
-    if client == "2009-12":
-        raise ValueError("Client excluded from mining")
     if name not in COMMANDS:
         raise ValueError("Unknown command")
     mode = COMMANDS[name][2]
@@ -60,6 +64,17 @@ def command_args(data):
         if not recipes or recipes != ["all"] and any(recipe not in libs.RECIPES for recipe in recipes):
             raise ValueError("Unknown library recipe; use all or registered recipe names")
         args = [name, *recipes, "--client", client]
+    if name == "research":
+        from roc import research
+        action = data.get("research_action", "list")
+        if action not in ("list", "plan", "run", "log"):
+            raise ValueError("Choose list, plan, run or log")
+        args += [action]
+        if action in ("plan", "run"):
+            recipe = data.get("recipe", "")
+            if recipe not in json.loads(research.RECIPES_FILE.read_text(encoding="utf-8")):
+                raise ValueError("Choose a registered research recipe")
+            args += [recipe]
     if name == "install":
         if data.get("accept_downloads") is not True:
             raise ValueError("Accept compiler downloads before running install")
@@ -96,11 +111,12 @@ def command_args(data):
             for key, default, low, high in (("workers", 2, 1, 8), ("jobs", 24, 1, 200),
                 ("batch_size", 4, 1, 12), ("batch_minutes", 10, 1, 60), ("max_size", 512, 32, 8192)):
                 value = data.get(key, default)
-                if type(value) is not int or not low <= value <= high:
+                if type(value) is not int or (not (key == "max_size" and value == 0) and not low <= value <= high):
                     raise ValueError("Invalid automatic %s" % key)
                 args += ["--" + key.replace("_", "-"), str(value)]
             if data.get("individual") is True:
                 args += ["--individual"]
+            args += ["--experimental"]
         else:
             args += ["--goal", goal]
         args += ["--minutes", str(minutes)]
@@ -202,8 +218,38 @@ class Dashboard:
                                           if name == "chatgpt" else row.get("defaults", []))}
                               for name, row in providers.providers().items()],
                 "libraries": libs.NAMES,
-                "commands": [{"name": name, "title": row[0], "description": row[1], "target": row[2]}
-                             for name, row in COMMANDS.items()]}
+                "commands": [{"name": name, "title": row[0], "description": row[1], "target": row[2], "group": "Start here" if name in ("doctor","install","client-fetch","analyze","pull") else "Match and submit" if name in ("mass","auto","xcopy","libs","donor","check","submit") else "Advanced"}
+                             for name, row in COMMANDS.items()],
+                "recipes": list(json.loads((ROOT / "research" / "recipes.json").read_text(encoding="utf-8")))}
+
+    def function_history(self, identifier=None, query="", status="", sort="recent", limit=100):
+        from roc import telemetry
+        local = telemetry.read(identifier, query, status, sort, limit)
+        if identifier and not identifier.startswith("server:"):
+            return local
+        shared = None if identifier else []
+        address = self.initial.get("server")
+        if address:
+            api = worker.Api(address, self.worker_token)
+            try:
+                params = dict(query=query, status=status, sort=sort, limit=limit)
+                if identifier:
+                    params["id"] = identifier
+                shared = api.call("/v1/function-history?" + urlencode(params), timeout=5)
+            except (RuntimeError, OSError, ValueError):
+                pass  # Local history stays available when the group server is offline/older.
+            finally:
+                api.close()
+        if identifier:
+            return shared
+        rows = local + (shared or [])
+        if sort in ("unit", "addr"):
+            rows.sort(key=lambda row: row.get(sort) or "")
+        else:
+            rows.sort(key=lambda row: row.get("score", 0) if sort == "score" else
+                row.get("score", 0) - row["base_score"] if sort == "gain" and row.get("base_score") is not None else
+                0 if sort == "gain" else row.get("started", 0), reverse=True)
+        return rows[:limit]
 
     def snapshot(self, after=0, wait=0):
         with self.changed:
@@ -224,18 +270,29 @@ class Dashboard:
             if kind == "worker":
                 config = validate(data.get("config", {}))
                 args = None
-                title = "Worker · " + (config["client"] or "all clients")
+                title = "Match · " + (config["client"] or "all clients")
             elif kind == "agent_worker":
-                args = command_args({**data, "command": "agent", "automatic": True})
+                args = command_args({**data, "command": "agent", "automatic": not str(data.get("goal", "")).strip()})
+                args += ["--continuous"]
                 config = {key: data.get(key, default) for key, default in
-                    (("cli", "claude"), ("model", ""), ("workers", 2), ("jobs", 24), ("minutes", 120),
+                    (("cli", "claude"), ("model", ""), ("goal", ""), ("workers", 2), ("jobs", 24), ("minutes", 120),
                      ("batch_size", 4), ("batch_minutes", 10), ("max_size", 512), ("individual", False))}
-                config.update(client="2008-06", user=self.initial["user"], server=self.initial["server"])
+                config.update(mode=data.get("mode", "automatic"), client=data.get("client", self.initial["client"] or ""),
+                              user=str(data.get("user", self.initial["user"])).strip(),
+                              server=str(data.get("server", self.initial["server"])).strip())
+                if config["client"] not in ("", "all") and config["client"] not in clients.load():
+                    raise ValueError("Unknown client")
+                args += ["--client", config["client"] or "all"]
+                if config["user"] and not worker.USER_RE.fullmatch(config["user"]):
+                    raise ValueError("Username needs 2-32 letters, digits, . _ -")
+                from roc.link import SERVER_RE
+                if config["server"] and not SERVER_RE.fullmatch(config["server"]):
+                    raise ValueError("Enter server host:port or http(s) URL")
                 if config["server"]:
                     args += ["--server", config["server"]]
                 if config["user"]:
                     args += ["--user", config["user"]]
-                title = "Agent worker · " + config["cli"] + " · 2008-06"
+                title = "Agent · " + config["cli"] + " · " + (config["client"] or "all clients")
             elif kind == "command":
                 args, config = command_args(data), None
                 title = COMMANDS[args[0]][0] + (" · " + data["client"] if data.get("client") else "")
@@ -336,6 +393,13 @@ class Dashboard:
                     job["improved"] += fields.get("improved", fields["score"] > fields["previous"]) and fields["score"] != 100
                     job["failed"] += fields["score"] == 0
                     job["slots"].setdefault(str(fields["slot"]), {}).update(busy=False, score=fields["score"])
+                elif kind == "benchmark":
+                    job["attempted"] = max(job["attempted"], fields.get("completed", 0))
+                    job["matched"] = max(job["matched"], fields.get("matched", 0))
+                    job["improved"] = max(job["improved"], fields.get("improved", 0))
+                    if job["kind"] == "agent_worker":
+                        for slot in range(fields.get("workers", 1)):
+                            job["slots"].setdefault(str(slot), {})
                 elif kind == "slot_stopped":
                     job["slots"].pop(str(fields["slot"]), None)
                 elif kind == "usage":
@@ -388,7 +452,7 @@ class Dashboard:
                                    capture_output=True, creationflags=subprocess.CREATE_NO_WINDOW)
                 else:
                     process.terminate()
-                self.event(job["id"], "state", message="Immediate stop; cloud requests may still bill. Leases expire if not released.")
+                self.event(job["id"], "state", message="Immediate stop; cloud requests may still bill.")
                 return
             if job["kind"] == "agent_worker":
                 raise ValueError("Agent workers use Stop immediately; worker/time limits are fixed for this run")
@@ -497,8 +561,10 @@ class Handler(BaseHTTPRequestHandler):
                     return self.send(200, app.snapshot(after, wait))
                 if parsed.path == "/api/functions":
                     from roc import telemetry
-                    identifier = parse_qs(parsed.query).get("id", [None])[0]
-                    return self.send(200, json.loads(app.redact(json.dumps(telemetry.read(identifier)))))
+                    query = {key: values[0] for key, values in parse_qs(parsed.query).items()}
+                    result = app.function_history(query.get("id"), query.get("query", ""), query.get("status", ""),
+                        query.get("sort", "recent"), min(10000, max(1, int(query.get("limit", 100)))))
+                    return self.send(200, json.loads(app.redact(json.dumps(result))))
                 if parsed.path == "/api/cpu":
                     from roc import tasks
                     selected = parse_qs(parsed.query).get("cluster", [None])[0]
@@ -516,9 +582,12 @@ class Handler(BaseHTTPRequestHandler):
                     if query.get("individual", [""])[0] == "true":
                         profile += ":individual"
                     max_size = int(query.get("max_size", [512])[0])
-                    if not 32 <= max_size <= 8192:
+                    if max_size != 0 and not 32 <= max_size <= 8192:
                         raise ValueError("Invalid automatic size limit")
-                    return self.send(200, agent_auto.public_plan(agent_auto.plan(agent_auto.snapshot(), max_size, profile)))
+                    client = query.get("client", [""])[0]
+                    names = [client] if client and client != "all" else [name for name in clients.load()
+                        if (ROOT / "work" / name / "functions.jsonl").exists()]
+                    return self.send(200, agent_auto.public_plan(agent_auto.portfolio(names, max_size, profile)))
                 if parsed.path == "/api/models":
                     return self.send(200, {"models": worker.draft.ollama_models()})
                 if parsed.path == "/api/daily-stats":

@@ -73,7 +73,8 @@ Cloud dollar caps need your exact model rates:
 - **Commands:** run any `roc` command with a preview; jobs queue to protect shared files.
 - **Functions / History:** local attempt history (`work/function-history.sqlite`) and saved runs.
 - **Servers:** hosting guide, CPU contribution and cluster status (see [SERVER.md](SERVER.md)).
-- **Agent setup:** install/sign in to Claude Code or Codex and open manual sessions.
+- **Workers → Agent:** choose Claude Code or Codex; install/sign in inside the card.
+- **History:** searchable local attempts and server-stored functions; Runs and Experiments expand below.
 
 Closing the tab leaves jobs running; **Exit ROC dashboard** stops them.
 

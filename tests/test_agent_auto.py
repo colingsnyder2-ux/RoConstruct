@@ -15,6 +15,110 @@ def row(addr, score=98, source="int f() { return 1; }", **fields):
     return dict(addr=addr, score=score, source=source, unit="RBX", size=50, kind="code", **fields)
 
 
+def test_continuous_switches_after_no_gains_and_keeps_winning_strategy(monkeypatch):
+    strategies, delays = [], []
+
+    def cycle(*args):
+        strategies.append(args[-1])
+        return dict(attempted=2, matched=int(len(strategies) == 2), improved=0, errors=0)
+
+    def pause(seconds):
+        delays.append(seconds)
+        if len(delays) == 3:
+            raise KeyboardInterrupt
+
+    monkeypatch.setattr(agent_auto, "run_cycle", cycle)
+    monkeypatch.setattr(agent_auto.time, "sleep", pause)
+    with pytest.raises(KeyboardInterrupt):
+        agent_auto.run("server", "me", continuous=True, log=lambda *a: None)
+    assert strategies == [0, 1, 1]
+    assert delays == [5, 5, 5]
+
+
+def test_continuous_idle_cycle_waits_before_refresh(monkeypatch):
+    monkeypatch.setattr(agent_auto, "run_cycle", lambda *a: dict(attempted=0, matched=0, improved=0, errors=0))
+    delays = []
+
+    def pause(seconds):
+        delays.append(seconds)
+        raise KeyboardInterrupt
+
+    monkeypatch.setattr(agent_auto.time, "sleep", pause)
+    with pytest.raises(KeyboardInterrupt):
+        agent_auto.run("server", "me", continuous=True, log=lambda *a: None)
+    assert delays == [30]
+
+
+def test_library_campaign_uses_real_recipes_all_sizes_and_rotates_strategy():
+    source = "// roc-lib: g3d-6.09 GLG3Dcpp/Sky.cpp\n"
+    rows = [{**row("00401000", 91, source), "size": 5000}, row("00401010", 100, source),
+            row("00401020", 99, "// roc-lib: invented-vendor x.cpp\n")]
+    campaign = agent_auto.library_campaigns(rows, "2008-06", [])[0]
+    assert campaign["library"] == "g3d-6.09/source"
+    assert len(campaign["targets"]) == 1 and campaign["targets"][0]["size"] == 5000
+    assert campaign["exact"] == 1 and campaign["strategy"] == 0
+    records = [dict(kind="library_campaign", client="2008-06", library=campaign["library"],
+                    cohort=campaign["revision"], profile="library-strategy-0", outcome="no_gain")]
+    assert agent_auto.library_campaigns(rows, "2008-06", records)[0]["strategy"] == 1
+    for strategy in range(3):
+        records.extend(dict(kind="library_campaign", client="2008-06", library=campaign["library"],
+                            cohort=campaign["revision"], profile="library-strategy-%d" % strategy,
+                            outcome="no_gain") for _ in range(2))
+    assert agent_auto.library_campaigns(rows, "2008-06", records) == []
+    rows[0]["source"] += "// new evidence\n"
+    assert agent_auto.library_campaigns(rows, "2008-06", records)
+    assert agent_auto.library_campaigns(rows, "2009-12", records)
+
+
+def test_experimental_prefers_library_campaign_over_fixed_batches(monkeypatch):
+    calls = []
+    monkeypatch.setattr(agent_auto, "library_cycle", lambda *a: calls.append(a) or
+                        dict(attempted=5, matched=1, improved=0, errors=0))
+    monkeypatch.setattr(agent_auto, "run_cycle", lambda *a: pytest.fail("unexpected fixed batch"))
+    assert agent_auto.run("server", "me", client="2008-06", experimental=True)["matched"] == 2
+    assert len(calls) == 2 and all(call[7] == "2008-06" for call in calls)
+
+
+def test_automatic_campaigns_include_nonlibrary_categories():
+    campaigns = agent_auto.library_campaigns([row("00401000", imports=["KERNEL32!Sleep"])], "2008-06", [])
+    assert campaigns[0]["library"] == "Category: Imported calls"
+    assert campaigns[0]["recipes"] == []
+    assert campaigns[0]["targets"][0]["addr"] == "00401000"
+
+
+def test_library_cycle_records_server_observed_gains_and_research_scope(tmp_path, monkeypatch):
+    monkeypatch.setattr(agent_auto, "ROOT", tmp_path)
+    monkeypatch.setattr(agent_auto, "history", lambda: [])
+    monkeypatch.setattr(agent_auto.agent, "memory", lambda *a: {})
+    source = "// roc-lib: g3d-6.09 GLG3Dcpp/Sky.cpp\n"
+    monkeypatch.setattr(agent_auto, "snapshot", lambda *a: [row("00401000", 91, source),
+                        row("00401010", 99, imports=["KERNEL32!Sleep"])])
+    monkeypatch.setattr(agent_auto.worker, "usable_clients", lambda info, log: list(info["clients"]))
+
+    class Api:
+        def __init__(self, *args):
+            pass
+
+        def call(self, path, **kwargs):
+            if path == "/v1/info":
+                return dict(clients={"2008-06": {}}, verify=["2008-06"])
+            assert path == "/v1/sources?client=2008-06"
+            return [row("00401000", 100, source)]
+
+    monkeypatch.setattr(agent_auto.worker, "Api", Api)
+    prompts = []
+    monkeypatch.setattr(agent_auto.agent, "run_agent", lambda cli, prompt, *a, **kw: prompts.append(prompt) or 0)
+    totals = agent_auto.library_cycle("https://example.test", "tester", None, "codex", None, 1,
+                                    lambda *a: None, "2008-06")
+    assert totals == dict(attempted=1, matched=1, improved=0, errors=0)
+    assert "Client: 2008-06" in prompts[0] and "g3d-6.09" in prompts[0]
+    assert "research/recipes.json" in prompts[0] and "libs.add_unit" in prompts[0]
+    assert "No unrelated infrastructure edits" in prompts[0]
+    record = json.loads((tmp_path / "work/agent-memory/attempts.jsonl").read_text())
+    assert record["outcome"] == "improved" and record["addresses"] == ["00401000"]
+    assert record["profile"] == "library-strategy-0"
+
+
 def test_ranking_uses_real_sources_and_family_donors():
     result = agent_auto.plan([
         row("00401000", shape="mov eax,N;ret"), row("00401010", 100, shape="mov eax,N;ret"),
@@ -86,14 +190,14 @@ def test_every_trial_journals_failure_and_keeps_best(tmp_path, monkeypatch):
         agent_auto.trial("2008-06", "00401000", tmp_path / "src.cpp", "shared file")
 
 
-def test_run_reuses_before_models_and_leases_explicit_targets(tmp_path, monkeypatch):
+def test_run_reuses_before_models_and_assigns_explicit_targets(tmp_path, monkeypatch):
     monkeypatch.setattr(agent_auto, "ROOT", tmp_path)
     monkeypatch.setattr(agent_auto.agent, "memory_prompt", lambda *args: "memory")
     monkeypatch.setattr(agent_auto.agent.shutil, "which", lambda cli: "fake-cli")
     monkeypatch.setattr(agent_auto.worker, "usable_clients", lambda info, log: ["2008-06"])
     rows = [row("00401000"), row("00401010"), row("00401020", imports=["CRT!f"]),
             row("00401030", imports=["CRT!f"])]
-    monkeypatch.setattr(agent_auto, "snapshot", lambda api: rows)
+    monkeypatch.setattr(agent_auto, "snapshot", lambda client, api: rows)
     monkeypatch.setattr(agent_auto.match, "check_text", lambda c, a, s: (98, "f", "diff", []))
     order, calls, paths = [], [], []
     class Api:
@@ -102,7 +206,7 @@ def test_run_reuses_before_models_and_leases_explicit_targets(tmp_path, monkeypa
         def call(self, endpoint, body=None, **kwargs):
             calls.append((endpoint, body))
             if endpoint == "/v1/info":
-                return {"verify": ["2008-06"]}
+                return {"clients": {"2008-06": {}}, "verify": ["2008-06"]}
             if endpoint == "/v1/lease":
                 addr = body["targets"][0]["addr"]
                 return {"job": dict(client="2008-06", addr=addr, source="int f() { return 1; }",
@@ -115,7 +219,7 @@ def test_run_reuses_before_models_and_leases_explicit_targets(tmp_path, monkeypa
     assert order.count("reuse") == 4 and order.count("model") == 2
     assert order[:4] == ["reuse"] * 4
     assert len(set(paths)) == 4 and all("agent-auto" in path for path in paths)
-    assert len([call for call in calls if call[0] == "/v1/release"]) == 8
+    assert not [call for call in calls if call[0] == "/v1/release"]
     assert result["matched"] == 0 and result["errors"] == 0
     assert all(body["clients"] == ["2008-06"] and 1 <= len(body["targets"]) <= 32
                for endpoint, body in calls if endpoint == "/v1/lease")
@@ -125,7 +229,7 @@ def test_server_verified_reuse_is_counted_without_a_model(tmp_path, monkeypatch)
     monkeypatch.setattr(agent_auto, "ROOT", tmp_path)
     monkeypatch.setattr(agent_auto.agent.shutil, "which", lambda cli: "fake-cli")
     monkeypatch.setattr(agent_auto.worker, "usable_clients", lambda info, log: ["2008-06"])
-    monkeypatch.setattr(agent_auto, "snapshot", lambda api: [row("00401000")])
+    monkeypatch.setattr(agent_auto, "snapshot", lambda client, api: [row("00401000")])
     monkeypatch.setattr(agent_auto.match, "check_text", lambda *args: (100, "f", "", []))
     monkeypatch.setattr(agent_auto, "reuse", lambda *args: None)
     model_calls = []
@@ -136,7 +240,7 @@ def test_server_verified_reuse_is_counted_without_a_model(tmp_path, monkeypatch)
             pass
         def call(self, endpoint, body=None, **kwargs):
             if endpoint == "/v1/info":
-                return {"verify": ["2008-06"]}
+                return {"clients": {"2008-06": {}}, "verify": ["2008-06"]}
             if endpoint == "/v1/lease":
                 return {"job": None if Api.exact else dict(addr="00401000", score=98, lease="L")}
             if endpoint == "/v1/submit":
@@ -148,10 +252,10 @@ def test_server_verified_reuse_is_counted_without_a_model(tmp_path, monkeypatch)
     assert totals["matched"] == 1 and not model_calls
 
 
-def test_excluded_client_is_rejected_before_reading(tmp_path, monkeypatch):
+def test_unknown_client_is_rejected_before_reading(tmp_path, monkeypatch):
     monkeypatch.setattr(agent_auto, "ROOT", tmp_path)
-    with pytest.raises(ValueError, match="2008-06 only"):
-        agent_auto.snapshot("2009-12")
+    with pytest.raises(ValueError, match="Unknown client"):
+        agent_auto.snapshot("unknown-client")
 
 
 def test_exhausted_family_does_not_park_other_shapes():
@@ -197,3 +301,105 @@ def test_reuse_runs_compiler_gates_and_skips_known_failures(tmp_path, monkeypatc
     assert agent_auto.known_failures([{"kind": "trial", "addresses": ["00401000"], "source_hash": "h",
                                        "outcome": "no_gain"}]) == {("00401000", "h")}
     assert path.read_text() == source  # best source restored after losing gates
+
+
+def test_all_clients_keep_same_addresses_and_receipts_isolated(tmp_path, monkeypatch):
+    names = ["2008-06", "2009-12"]
+    monkeypatch.setattr(agent_auto, "ROOT", tmp_path)
+    monkeypatch.setattr(agent_auto.agent.shutil, "which", lambda cli: "fake-cli")
+    scopes = []
+    monkeypatch.setattr(agent_auto.worker, "usable_clients",
+        lambda info, log: scopes.append(sorted(info["clients"])) or sorted(info["clients"]))
+    monkeypatch.setattr(agent_auto, "snapshot", lambda client, api: [row("00401000")])
+    checked, paths, submitted = [], [], []
+    monkeypatch.setattr(agent_auto.match, "check_text", lambda client, addr, source:
+        checked.append(client) or (100 if source == "winner" else 98, "f", "diff", []))
+    def reuse(task, portfolio, tried):
+        paths.append(task["path"])
+        (Path(task["path"]).parent / "best.cpp").write_text("winner")
+    monkeypatch.setattr(agent_auto, "reuse", reuse)
+    def no_model(*args):
+        raise AssertionError("Exact reuse must not launch a paid CLI")
+    monkeypatch.setattr(agent_auto.agent, "run_agent", no_model)
+    class Api:
+        exact = set()
+        def __init__(self, *args):
+            pass
+        def call(self, endpoint, body=None, **kwargs):
+            if endpoint == "/v1/info":
+                return {"clients": {name: {} for name in names}, "verify": names}
+            if endpoint == "/v1/lease":
+                client = body["clients"][0]
+                assert all(target["client"] == client for target in body["targets"])
+                return {"job": None if client in self.exact else dict(client=client,
+                    addr="00401000", score=98, lease=client)}
+            if endpoint == "/v1/submit":
+                assert body["lease"] == body["client"]
+                self.exact.add(body["client"])
+                submitted.append(body["client"])
+                return dict(verified=True, improved=True, score=100)
+            return {}
+    monkeypatch.setattr(agent_auto.worker, "Api", Api)
+    totals = agent_auto.run("server", "me", jobs=2, workers=2, log=lambda *args: None, client="all")
+    assert totals["matched"] == 2 and totals["errors"] == 0
+    assert sorted(submitted) == sorted(names) and set(checked) == set(names)
+    assert len(set(paths)) == 2
+    assert scopes == [sorted(names)]
+    records = agent_auto.history()
+    assert {record["client"] for record in records} == set(names)
+    Api.exact.clear()
+    submitted.clear()
+    agent_auto.run("server", "me", jobs=1, log=lambda *args: None, client="2009-12")
+    assert scopes[-1] == ["2009-12"] and submitted == ["2009-12"]
+    Api.exact.clear()
+    submitted.clear()
+    agent_auto.run("server", "me", jobs=1, log=lambda *args: None)
+    assert scopes[-1] == ["2008-06"] and submitted == ["2008-06"]
+
+
+def test_parking_and_groups_are_client_specific():
+    rows = [row("00401000")]
+    first = agent_auto.plan(rows, records=[], client="2008-06")["areas"][0]["targets"][0]
+    second = agent_auto.plan(rows, records=[], client="2009-12")["areas"][0]["targets"][0]
+    assert first["group"] != second["group"]
+    records = [dict(kind="auto_batch", client="2008-06", area="repair", phase="repair",
+        profile="claude:default", group=second["group"], group_cohort=second["group_cohort"],
+        outcome="no_gain") for _ in range(2)]
+    assert not agent_auto.plan(rows, records=records, client="2009-12")["areas"][0]["parked"]
+
+
+@pytest.mark.parametrize("leased_client,leased_addr", [("2009-12", "00401000"), ("2008-06", "00409999")])
+def test_out_of_scope_lease_is_released_before_compile(tmp_path, monkeypatch, leased_client, leased_addr):
+    monkeypatch.setattr(agent_auto, "ROOT", tmp_path)
+    monkeypatch.setattr(agent_auto.agent.shutil, "which", lambda cli: "fake-cli")
+    monkeypatch.setattr(agent_auto.worker, "usable_clients", lambda info, log: ["2008-06"])
+    monkeypatch.setattr(agent_auto, "snapshot", lambda client, api: [row("00401000")])
+    def forbidden(*args):
+        raise AssertionError("Out-of-scope target must never compile or launch model")
+    monkeypatch.setattr(agent_auto.match, "check_text", forbidden)
+    monkeypatch.setattr(agent_auto.agent, "run_agent", forbidden)
+    calls = []
+    class Api:
+        def __init__(self, *args):
+            pass
+        def call(self, endpoint, body=None, **kwargs):
+            calls.append((endpoint, body))
+            if endpoint == "/v1/info":
+                return {"clients": {"2008-06": {}, "2009-12": {}}, "verify": ["2008-06", "2009-12"]}
+            if endpoint == "/v1/lease":
+                return {"job": dict(client=leased_client, addr=leased_addr, score=98, lease="wrong")}
+            if endpoint == "/v1/submit":
+                forbidden()
+            return {}
+    monkeypatch.setattr(agent_auto.worker, "Api", Api)
+    result = agent_auto.run("server", "me", jobs=1, log=lambda *args: None, client="2008-06")
+    assert result["errors"] == 2 and result["attempted"] == 0
+    assert len([body for endpoint, body in calls if endpoint == "/v1/release" and body["lease"] == "wrong"]) == 2
+
+
+def test_unlimited_plan_includes_large_functions():
+    rows = [row("00401000")]
+    rows[0]["size"] = 2_000_000
+    assert not agent_auto.plan(rows, max_size=512, records=[])["areas"]
+    result = agent_auto.plan(rows, max_size=0, records=[])
+    assert result["areas"][0]["targets"][0]["size"] == 2_000_000

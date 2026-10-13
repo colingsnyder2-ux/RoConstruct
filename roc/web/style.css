@@ -29,6 +29,19 @@
 
 .terminal-worker{width:32px}.worker-chat:not(.compact) .terminal-worker{width:30px}
 
+/* Live agent output reads as a small conversation: worker badge, thought bubble,
+   then folded tool/result blocks. Keep raw terminal density in Compact mode. */
+.worker-chat:not(.compact) .terminal-row.log,.worker-chat:not(.compact) .terminal-row.stage{align-items:flex-start;margin:5px 0;padding:7px 10px 7px 7px;border-radius:9px;background:linear-gradient(100deg,#899bff0d,transparent 78%)}
+.worker-chat:not(.compact) .terminal-row.log .terminal-worker,.worker-chat:not(.compact) .terminal-row.stage .terminal-worker{display:inline-flex;align-items:center;justify-content:center;width:25px;height:25px;border-radius:50%;background:#899bff1c;color:#b9c2ff;opacity:1;font-size:9px;line-height:1;letter-spacing:-.4px}
+.worker-chat:not(.compact) .terminal-row.log>time,.worker-chat:not(.compact) .terminal-row.stage>time{padding-top:6px}
+.worker-chat:not(.compact) .terminal-row.log details,.worker-chat:not(.compact) .terminal-row.stage details{padding-top:3px}
+.worker-chat:not(.compact) .terminal-row.job_finished{margin:9px 0 3px;padding:8px 10px;border-radius:8px;background:#54d69b0b}
+.match-success{display:inline-flex;align-items:center;gap:6px;margin:8px 0 1px;padding:4px 9px;border:1px solid #54d69b55;border-radius:999px;background:#54d69b16;color:var(--green);font:600 10px var(--mono);letter-spacing:.04em;text-transform:uppercase}
+.match-success.improvement{border-color:#f7c96766;background:#f7c96712;color:var(--warning)}
+.terminal-row.matched-note{margin:9px 0 3px;padding:8px 10px;border-radius:8px;background:#54d69b0b;color:var(--green)}
+.worker-chat.compact .match-success{display:none}
+.worker-chat:not(.compact) .terminal-row.error{margin:9px 0;padding:8px 10px;border-radius:8px;background:#ff6e7d0d}
+
 .run-actions{display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap}.button.end-run{background:#bd3346;border:1px solid #d54b5e;color:#fff;padding:6px 10px;font-size:11px;white-space:nowrap;min-height:28px;box-shadow:none}.button.end-run:hover{background:#d13b50;border-color:#e45a6e}.button.end-run:disabled{opacity:.55;cursor:default}.worker-footer .end-run{font-size:10px;padding:4px 8px}.end-run .icon{width:12px;height:12px}
 
 .worker-chat.compact .terminal-row .terminal-text{white-space:nowrap}.worker-chat.compact .terminal-row>div{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.worker-chat.supercompact .terminal-row{font-size:10px;line-height:1.6;padding:1px 0;gap:8px}.terminal-row.benchmark{color:var(--accent);border-top:1px solid var(--border);margin-top:8px;padding-top:8px!important}

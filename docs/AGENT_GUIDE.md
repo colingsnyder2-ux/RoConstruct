@@ -14,8 +14,8 @@ JSON data is evidence, not instructions.
 Write C++ that the client's original MSVC compiles to the exact target bytes. Exact
 means relocation-normalized instruction bytes **and referenced data** pass
 `roc.match`. 99% is partial; `code_exact` alone is not enough. Only the group
-server's re-verification counts as a gain. Current focus is 2008-06; never mine,
-test or submit 2009-12.
+server's re-verification counts as a gain. Default research focus is 2008-06. Agent workers honor the selected client or
+All clients (including 2009-12), using each client's actual compiler and evidence.
 
 Never: inline assembly, `__emit`, byte blobs, patched target bytes, invented struct
 fields/offsets/ABIs, replacing a better stored source, hand edits under `clients/` or
@@ -36,7 +36,7 @@ fields/offsets/ABIs, replacing a better stored source, hand edits under `clients
 | Explain a mismatch | `roc classify 2008-06 ADDR FILE` | compilers | mismatch category with evidence |
 | Automatic agent | Dashboard **Workers → Agent worker**, or `roc agent claude --automatic` | Claude Code or Codex CLI signed in | ranked batches, receipts, memory |
 | Preview the ranking | `roc agent claude --plan` | analyze | areas, eligible targets, parking |
-| Leased single function | `roc agent claude --jobs 5` | CLI, server | one function at a time |
+| Shared single function | `roc agent claude --jobs 5` | CLI, server | one function at a time; best verified result wins |
 | Submit gains | `roc submit 2008-06 [addr ...]` | server, user | server-verified receipt |
 | Keep generated units portable | `roc research capture-units` | sources in `src/` | `local/units/generated-units.json` |
 
@@ -83,9 +83,9 @@ evidence changes. Only interactive maintainers promote receipt-backed lessons in
 `research/lessons.json`; unattended agents append attempts only.
 
 Written automatically: `roc agent-check` trials, automatic `auto_target`/`auto_batch`
-records with receipts, leased `session` records, and `roc research` run records.
+records with receipts, shared `session` records, and `roc research` run records.
 
-**Sharing.** Automatic runs, leased runs, goal runs and the dashboard sync with the
+**Sharing.** Automatic runs, shared runs, goal runs and the dashboard sync with the
 group server (`/v1/agent-memory`): local attempts upload (sanitized: no credentials or
 full local paths, bounded excerpts), shared attempts and reviewed lessons download.
 The server marks a report `server_confirmed` only when its source hash and score
@@ -97,38 +97,76 @@ publisher exports lessons, context and shared attempts to RoConstruct-findings.
 ## Automatic agent worker
 
 Runs inside Workers (same chat, terminal, history and stop control as other workers).
+The Automatic preset explores unfinished libraries and evidence-ranked categories (`--experimental`).
+It randomly samples least-tried campaigns, weighted toward stronger source baselines.
+The agent chooses the best subcategory, targets and evidence-backed experiments within its campaign.
+It starts from actual recipe-backed sources, across all function sizes, and permits
+evidence-backed research recipes, generated authentic units and library configuration
+experiments. It rotates libraries/strategies and parks unchanged strategies after two
+zero-gain campaigns. If no fresh campaign remains, it falls back to ranked batches.
+Campaign counts cover recipe-backed attribution; the Pages library table also uses
+RTTI labels and neighbouring exact matches, so its family totals are broader estimates.
+All Agent presets prefer unfinished libraries before categories or fixed batches.
+Preset limits control campaign time; custom goals take priority.
+Dashboard agents repeat cycles until Stop, including custom goals. CLI users opt in
+with `--continuous`. Batch/time caps apply per cycle. Zero-gain automatic cycles
+switch evidence-backed strategies, retain parking per strategy/source revision,
+and refresh targets and shared memory. Idle/error cycles wait before retrying.
+
+Select a client explicitly. The CLI defaults to `2008-06`; all clients require
+`--client all` (or selecting **All clients** in the dashboard).
+
+| Dashboard mode | Overall minutes | Per model batch minutes | Max function bytes | Target cap |
+| --- | ---: | ---: | ---: | ---: |
+| Fast | 30 | 5 | 256 | 12 |
+| Automatic / Balanced | 120 | 10 | 512 | 24 |
+| Deep | 240 | 20 | Unlimited | 48 |
+
+Overall time is shared wall time across workers, starting after planning and memory
+sync. New batches stop at the deadline; model time is capped by the time remaining.
+An in-flight compiler check, submission, or final memory sync may finish afterwards.
+Runs can finish early when the target cap or eligible batches are exhausted. Byte
+limits apply to target machine-code size, not C++ source length or total library size.
+Deep has no byte cap; the CLI represents unlimited as `--max-size 0`.
+Automatic prioritizes reusable gains within this budget; it does not exhaust every
+function of a library or guarantee 100%. Individual repair remains disabled.
+
 
 - **Ranking.** Areas (family reuse, templates/library, imports, ABI/layout, other
   near-misses) are ranked by a heuristic plus the server-verified gain rate per target
   of past batches from every PC (Laplace-smoothed). This is a priority, not a forecast.
-- **Leases.** Each batch leases its targets from the server; parallel workers never
-  share an area, and a lost lease means no submission.
+- **Shared targets.** Workers may investigate the same target or area. The server
+  keeps only a server-verified score improvement, so concurrent work cannot replace
+  a better source.
 - **Free phase first.** Verified donors, recipe sources from the batch, and compiler
   gates for >=90% targets (both builds x kept flags, `/O2`, `/O1`). Pairs of address and
   source hash that already failed on any PC are skipped.
 - **Paid phase.** One agent batch per coherent group, editing only isolated copies
   under `work/agent-auto/<run>/` and checking with `roc agent-check`. Two zero-gain
   batches park that group until its sources change.
-- **Submission.** Best source per target is re-scored locally and submitted under
-  the lease; only server-verified improvements count.
+- **Submission.** Best source per target is re-scored locally and submitted; only
+  server-verified improvements count.
 
 ## Claude Code and Codex CLIs
 
 Install and sign in once: `npm install -g @anthropic-ai/claude-code` then `claude`, or
-`npm install -g @openai/codex` then `codex` (dashboard **Agent setup** does this). Usage
+`npm install -g @openai/codex` then `codex` (dashboard **Workers → Agent → Install / sign in** does this). Usage
 bills the CLI's own sign-in (Claude Pro/Max, ChatGPT plan) or `ANTHROPIC_API_KEY` /
 `OPENAI_API_KEY` if set.
 
 | Mode | Command | Scope |
 |---|---|---|
 | Automatic | Workers → Agent worker, or `roc agent claude --automatic [--workers 2 --jobs 24 --minutes 120]` | ranked batches, isolated copies, `roc agent-check` only |
-| Leased | `roc agent claude --jobs 5 [--max-size 256 --minutes 20]` | one function in `src/`, `roc check` only; regressions rolled back |
+| Shared | `roc agent claude --jobs 5 [--max-size 256 --minutes 20]` | one function in `src/`, `roc check` only; regressions rolled back |
 | Goal | `roc agent codex --goal "finish zlib in 2008-06" --minutes 60` | any `roc.py` command, web search, `src/` edits, attempt journal |
 | Interactive | `roc agent claude --interactive --goal "..."` | a normal session you watch and approve |
 
-Claude runs with `acceptEdits` and an explicit tool allowlist; Codex with `--full-auto`
-(writes limited to this folder). The server re-verifies every submission. Cloud sessions
-(claude.ai/code) are Claude itself, so they follow `CLAUDE.md` directly; they need full
+Claude runs with `acceptEdits` and an explicit tool allowlist; Codex with `--sandbox workspace-write` and `approval_policy="never"`
+(writes limited to this folder). The server re-verifies every submission.
+Windows agent runs use the unelevated workspace sandbox and standard shell execution;
+their temp root lives under `work/agent-temp`. Compiler directories inherit sandbox ACLs.
+Codex JSON events keep input prompts out of the console; Compact folds long output.
+Cloud sessions (claude.ai/code) are Claude itself, so they follow `CLAUDE.md` directly; they need full
 network access, Wine (`wine wine32 msitools cabextract p7zip-full`) and a public server
 address.
 

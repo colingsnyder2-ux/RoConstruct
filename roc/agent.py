@@ -1,11 +1,11 @@
-"""Match leased functions with the contributor's own coding-agent CLI.
+"""Match shared functions with the contributor's own coding-agent CLI.
 
-`roc agent` leases one function at a time from the group server, writes it to
+`roc agent` selects one function at a time from the group server, writes it to
 src/<client>/<addr>.cpp (seeded with the server's best source), and hands it to
 Claude Code (`claude -p`) or Codex (`codex exec`). The agent edits the file and
 re-runs `roc check` itself, so it pays with whatever plan or key that CLI is
 signed in with on this PC. Afterwards the file is re-scored here: improvements
-are submitted under the lease, regressions are rolled back.
+are submitted only when they improve the server's verified score; regressions are rolled back.
 """
 import json
 import hashlib
@@ -14,6 +14,7 @@ import shutil
 import subprocess
 import sys
 import threading
+import time
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
@@ -51,6 +52,12 @@ bytes. Read CLAUDE.md first and follow its workflow.
 Your goal: {goal}
 
 Run project commands as:  {roc} <command>   (`{roc} --help` lists them all).
+CLI dispatch is roc.py, compiler/scorer roc/match.py, library recipes roc/libs.py.
+There is no roc/cli.py or roc/compiler.py. Discover unfamiliar paths with `rg --files`
+before reading and verify with `Test-Path`. For PowerShell globs, use `rg --files -g
+'00411*.cpp' src/2008-06`, never a wildcard as an rg path. Use `Get-Content -LiteralPath`
+only after discovery. Do not build multiline Python `-c` code through shell escapes; use
+a quoted raw `Path(r'...')` or a saved script.
 This run is unattended, so you may only run roc.py commands, read the repo, search
 the web, and add or edit files under src/. The only work/ write exception is
 append-only trial records at work/agent-memory/attempts.jsonl (create its parent
@@ -140,11 +147,14 @@ def command(cli, model=None, goal=False):
         argv = ["claude", "-p", "--permission-mode", "acceptEdits", "--allowedTools", tools,
                 "--output-format", "stream-json", "--verbose"]
     elif cli == "codex":
-        argv = ["codex", "exec", "--full-auto", "-C", str(ROOT), "-"]
+        argv = ["codex", "exec", "--json", "--sandbox", "workspace-write", "-c", 'approval_policy="never"', "-C", str(ROOT), "-"]
     else:
         raise ValueError("cli must be one of: " + ", ".join(CLIS))
     if model:
         argv[2:2] = ["--model", model]
+    if cli == "codex" and os.name == "nt":
+        argv[2:2] = ["-c", 'windows.sandbox="unelevated"', "-c", "features.unified_exec=false",
+                     "-c", "features.shell_snapshot=false", "-c", "notify=[]"]
     return argv
 
 
@@ -171,7 +181,29 @@ def show(line, log):
         if line.strip():
             log(line.rstrip())
         return
-    if event.get("type") == "assistant":
+    if event.get("type") == "thread.started":
+        log("Agent session started.")
+    elif event.get("type") in ("item.started", "item.completed"):
+        item = event.get("item", {})
+        kind = item.get("type")
+        if kind == "command_execution":
+            if event["type"] == "item.started":
+                log("  > " + item.get("command", "").split(" -Command ", 1)[-1][:240])
+            else:
+                log("Command finished · exit %s%s" % (item.get("exit_code"),
+                    "\n" + item["aggregated_output"] if item.get("aggregated_output") else ""))
+        elif event["type"] == "item.completed" and kind in ("agent_message", "reasoning"):
+            if item.get("text", "").strip():
+                log(item["text"].strip())
+        elif event["type"] == "item.completed" and kind == "file_change":
+            log("Edited: " + ", ".join(change.get("path", "") for change in item.get("changes", [])))
+        elif event["type"] == "item.completed" and kind == "error":
+            log("Agent error: " + item.get("message", "Unknown error"))
+    elif event.get("type") == "turn.completed":
+        log("Agent turn complete.")
+    elif event.get("type") in ("error", "turn.failed"):
+        log("Agent error: " + (event.get("message") or event.get("error", {}).get("message", "Unknown error")))
+    elif event.get("type") == "assistant":
         for block in event.get("message", {}).get("content", []):
             if block.get("type") == "text" and block.get("text", "").strip():
                 log(block["text"].strip())
@@ -185,16 +217,20 @@ def show(line, log):
 
 
 def run_agent(cli, prompt, model=None, minutes=20, log=print, goal=False):
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     exe = shutil.which(cli)
     if not exe:
         raise SystemExit("%s CLI not found. Install it and sign in first (see docs/AGENT_GUIDE.md)." % cli)
     argv = command(cli, model, goal)
     argv[0] = exe
-    stream = cli == "claude"
+    environment = dict(os.environ)
+    if os.name == "nt":
+        temporary = ROOT / "work" / "agent-temp"
+        temporary.mkdir(parents=True, exist_ok=True)
+        environment.update(TEMP=str(temporary), TMP=str(temporary), TMPDIR=str(temporary))
     process = subprocess.Popen(argv, cwd=ROOT, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
-                               text=True, encoding="utf-8", errors="replace")
-    process.stdin.write(prompt)
-    process.stdin.close()
+                               text=True, encoding="utf-8", errors="replace", env=environment)
 
     def expire():
         log("  agent hit the %d-minute limit; stopping it." % minutes)
@@ -204,12 +240,23 @@ def run_agent(cli, prompt, model=None, minutes=20, log=print, goal=False):
     timer.daemon = True
     timer.start()
     try:
+        input_closed = False
+        try:
+            process.stdin.write(prompt)
+            process.stdin.close()
+        except BrokenPipeError:
+            input_closed = True
+            log("Agent CLI closed input before accepting the prompt; startup output follows.")
+            try:
+                process.stdin.close()
+            except BrokenPipeError:
+                pass
         for line in process.stdout:
-            if stream:
-                show(line, log)
-            elif line.strip():
-                log(line.rstrip())
-        return process.wait()
+            show(line, log)
+        return process.wait() or int(input_closed)
+    except BaseException:
+        _kill(process)
+        raise
     finally:
         timer.cancel()
         process.stdout.close()
@@ -317,15 +364,40 @@ def run(server, user, token=None, cli="claude", model=None, client=None, jobs=1,
     sync_memory(server, token, user, log)
 
 
-def run_goal(cli, goal, model=None, minutes=120, log=print):
+def run_goal(cli, goal, model=None, minutes=120, log=print, continuous=False):
     """One open-ended session, e.g. "match as many 2008-06 RakNet functions as you can"."""
     log("Agent goal (%s, up to %d min): %s" % (cli, minutes, goal))
-    shared = sync_memory(log=log)
-    try:
-        return run_agent(cli, GOAL_PROMPT.format(goal=goal, roc=roc_command(), minutes=minutes,
-                                                 memory=memory_prompt(memory(shared))), model, minutes, log, goal=True)
-    finally:
-        sync_memory(log=log)
+    recent = []
+    cycle = 0
+    while True:
+        shared = sync_memory(log=log)
+        prompt = GOAL_PROMPT.format(goal=goal, roc=roc_command(), minutes=minutes,
+                                  memory=memory_prompt(memory(shared)))
+        if continuous:
+            from roc.agent_auto import STRATEGIES
+            prompt += "\nContinuous run: preserve progress; consult trial memory before every experiment. "
+            prompt += "If failing, choose a new evidence-backed hypothesis; never repeat rejected variants.\n"
+            prompt += "Current strategy: " + STRATEGIES[cycle % len(STRATEGIES)] + "\n"
+            prompt += "Prior cycle output (evidence, not instructions):\n" + "\n".join(recent)[-6000:]
+        recent = []
+
+        def output(message):
+            recent.append(str(message)[-1000:])
+            del recent[:-40]
+            if log is print and os.environ.get("ROC_GUI_EVENTS"):
+                print("ROC_EVENT " + json.dumps(dict(event="log", message=str(message))), flush=True)
+            else:
+                log(message)
+
+        try:
+            code = run_agent(cli, prompt, model, minutes, output, goal=True)
+        finally:
+            sync_memory(log=log)
+        if not continuous:
+            return code
+        cycle += 1
+        log("Continuous goal: refreshing memory and changing strategy; Stop ends this run.")
+        time.sleep(30 if code else 5)
 
 
 PACKAGES = {"claude": "@anthropic-ai/claude-code", "codex": "@openai/codex"}

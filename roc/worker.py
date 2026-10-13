@@ -622,7 +622,6 @@ def usable_clients(info, log=print):
     """
     have, compilers = [], setup.compilers()
     local = clients.load()
-    from roc import clients
     manifest = clients.load_sources()
     for name, remote in sorted(info["clients"].items()):
         entry = local.get(name)
@@ -968,6 +967,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
 
     def job_log(message):
         progress["at"] = time.monotonic()
+        telemetry.event(message)
         output(message)
 
     log = job_log
@@ -977,6 +977,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                       "return_carrier", "return_value", "typed_member_return",
                       "indirect_return_value")
     client, addr = job["client"], job["addr"]
+    telemetry.begin(job, model, session)
     flags = info["clients"][client].get("flags")
     log("[%s %s] %d B, %s, best so far %d%%" % (client, addr, job["size"], job["unit"], job["score"]))
     stop = threading.Event()
@@ -1294,6 +1295,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
             raise
     finally:
         stop.set()
+        telemetry.finish(result, failure, round_stats)
         if session:
             coded = [r for r in round_stats if isinstance(r.get("round"), int) and r.get("code")]
             generated = [r for r in round_stats if isinstance(r.get("round"), int)]

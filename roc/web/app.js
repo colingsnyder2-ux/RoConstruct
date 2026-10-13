@@ -7,8 +7,8 @@ const initialPage = new URLSearchParams(location.search).get("page") === "cpu" ?
 history.replaceState(null, "", location.pathname + (initialPage === "cpu" ? "?page=cpu" : ""));
 let meta, jobs = [], page = initialPage, selectedCommand = "mass", editing = null;
 let cursor = 0, logs = [], follow = true, online = false, toastTimer, localModels = [];
-let agentState = null, workerMemory = null;
-let agentPlan = null, agentAutoConfig = {cli:"claude",model:"",workers:2,jobs:24,minutes:120,batch_size:4,batch_minutes:10,max_size:512,individual:false};
+let workerMemory = null;
+let agentAutoConfig = {cli:"claude",model:"",goal:"",workers:2,jobs:24,minutes:120,batch_size:4,batch_minutes:10,max_size:512,individual:false};
 let cpu = null, cpuCluster = "", cpuLoaded = 0, cpuLoading = false, serverSetupOpen = initialPage === "cpu";
 const isWorker = job => ["worker","agent_worker"].includes(job.kind) || !!job.args?.includes("--automatic");
 const active = job => ["running", "paused", "stopping"].includes(job.status);
@@ -94,7 +94,7 @@ function overview() {
   return heading("", "Overview", "Worker results and current activity.", button("Start worker", 'data-new-worker') + button("Run mass", 'data-open-command="mass"', true)) +
     `<div class="workflow"><span class="workflow-step">${icon("file")}Lease</span><span class="workflow-arrow">→</span><span class="workflow-step">${icon("code")}Draft C++</span><span class="workflow-arrow">→</span><span class="workflow-step">${icon("cpu")}Compile</span><span class="workflow-arrow">→</span><span class="workflow-step">${icon("branch")}Compare bytes</span><span class="workflow-arrow">→</span><span class="workflow-step">${icon("check")}Submit match</span></div>` +
     `<div class="stat-grid"><div class="stat"><div class="stat-icon">${icon("code")}</div><div class="stat-label">Exact matches</div><div class="stat-value">${total("matched")}</div><div class="stat-note">Recorded worker runs</div></div><div class="stat"><div class="stat-icon">${icon("file")}</div><div class="stat-label">Functions attempted</div><div class="stat-value">${total("attempted")}</div><div class="stat-note">${total("improved")} improved · ${total("failed")} failed</div></div><div class="stat"><div class="stat-icon">${icon("cpu")}</div><div class="stat-label">Worker loops</div><div class="stat-value">${workers.reduce((sum,job)=>sum+Object.keys(job.slots).length,0)}</div><div class="stat-note">${workers.reduce((sum,job)=>sum+(Number(job.config.workers)||Object.keys(job.slots).length),0)} requested · ${running.length} active runs</div></div><div class="stat"><div class="stat-icon">${icon("chart")}</div><div class="stat-label">Cloud requests</div><div class="stat-value">${jobs.reduce((sum,job)=>sum+(job.usage.requests||0),0)}</div><div class="stat-note">Usage appears after each function</div></div></div>` +
-    `<div class="section-heading"><h2>Current activity</h2><button class="text-button" data-page="history">View run history →</button></div>` + runTable([...jobs].reverse().filter(active).slice(0,10), "No active runs") +
+    `<div class="section-heading"><h2>Current activity</h2><button class="text-button" data-page="history">View history →</button></div>` + runTable([...jobs].reverse().filter(active).slice(0,10), "No active runs") +
     `<p class="help-note">Runs execute one at a time to protect shared source and work files. Parallel worker loops run within a worker session.</p>`;
 }
 function field(label, key, value, options={}) {
@@ -108,8 +108,8 @@ function field(label, key, value, options={}) {
 function check(label, key, value) { return `<label class="inline-check"><input type="checkbox" name="${key}" ${value ? "checked" : ""} ${editing && !liveKeys.has(key) ? "disabled" : ""}>${label}</label>`; }
 function workerForm(config) {
   const models = [...new Set([...localModels, ...meta.providers.flatMap(provider => provider.models.map(model => provider.name+":"+model)), config.model].filter(Boolean))];
-  const preset = config.rounds==="auto" && config.max_tokens==="auto" ? "automatic" : config.rounds===2 && config.max_size===96 ? "fast" : config.rounds===6 && config.max_size===512 ? "deep" : config.rounds===4 && config.max_size===256 ? "balanced" : "";
-  return `<form id="worker-form" class="panel panel-pad"><div class="section-heading"><h2>${editing ? "Tune active session" : "Configure a worker"}</h2>${editing ? `<button type="button" class="text-button" data-new-worker>New session →</button>` : ""}</div><div class="preset-row">${["automatic","fast","balanced","deep"].map(mode=>`<button type="button" data-preset="${mode}" class="${preset===mode ? "active" : ""}">${mode[0].toUpperCase()+mode.slice(1)}</button>`).join("")}</div><div class="field-grid">` +
+  const preset = config.rounds==="auto" && config.max_tokens==="auto" ? "automatic" : config.rounds===2 && config.max_size===96 ? "fast" : config.rounds===6 && config.max_size===0 ? "deep" : config.rounds===4 && config.max_size===256 ? "balanced" : "";
+  return `<form id="worker-form" class="panel panel-pad"><div class="section-heading"><h2>${editing ? "Tune active session" : "Configure Match"}</h2>${editing ? `<button type="button" class="text-button" data-new-worker>New session →</button>` : ""}</div><div class="preset-row">${["automatic","fast","balanced","deep"].map(mode=>`<button type="button" data-preset="${mode}" class="${preset===mode ? "active" : ""}">${mode[0].toUpperCase()+mode.slice(1)}</button>`).join("")}</div><div class="field-grid">` +
     field("Client", "client", config.client, {choices:[["","All available clients"],...meta.clients.map(client=>[client.name,client.name])]}) +
     field("Library", "library", config.library, {choices:[["","Auto (all libraries)"],...(meta.libraries||[]).map(name=>[name,name])]}) +
     field("Username", "user", config.user) + field("Server", "server", config.server, {full:true,placeholder:"host:8765 or https://server"}) +
@@ -117,7 +117,7 @@ function workerForm(config) {
     field("Worker loops", "workers", config.workers, {placeholder:"auto or 1–256"}) +
     `</div><p class="help-note">Set worker count above, or use auto to choose per model. Automatic preserves your worker count, chooses rounds and output per function, prioritizes best evidence, and limits targets to 512 bytes. Advanced values override its defaults.</p><details class="form-section"><summary>Advanced controls</summary><div class="field-grid">` +
     field("Rounds per function", "rounds", config.rounds, {placeholder:"auto or 1–100"}) +
-    field("Output tokens", "max_tokens", config.max_tokens, {placeholder:"auto or 128–32768"}) + field("Maximum function bytes", "max_size", config.max_size, {type:"number",min:1}) +
+    field("Output tokens", "max_tokens", config.max_tokens, {placeholder:"auto or 128–32768"}) + field("Maximum function bytes (0 = unlimited)", "max_size", config.max_size, {type:"number",min:0}) +
     field("Function order", "order", config.order, {choices:["random","auto","best","matched","unmatched","easiest"]}) + field("Strategy", "strategy", config.strategy, {choices:["auto","direct","structured","reference"]}) +
     field("Thinking", "thinking", config.thinking, {choices:["auto","enabled","disabled"]}) + field("Reasoning effort", "reasoning_effort", config.reasoning_effort, {choices:[["","Provider default"],"auto","low","medium","high","max"]}) +
     field("Minimum score", "min_score", config.min_score, {type:"number",min:0,max:100,placeholder:"Any"}) + field("Maximum score", "max_score", config.max_score, {type:"number",min:0,max:100,placeholder:"Any"}) +
@@ -126,13 +126,13 @@ function workerForm(config) {
     field("Target addresses (comma separated)", "addresses", (config.targets || []).map(row=>row.addr).join(", "), {full:true,placeholder:"00401000, 00401200"}) +
     `<div class="field full button-row">${check("Rev.ng hints", "use_revng", config.use_revng)}${check("Guided mutations", "guided_mutations", config.guided_mutations)}${check("Near-match repair", "near_repair", config.near_repair)}${check("Source-only (no AI)", "source_only", config.source_only)}</div></div><h3 class="form-section">Cloud budgets</h3><div class="field-grid">` +
     field("Request cap", "max_cloud_requests", config.max_cloud_requests, {type:"number",min:1,placeholder:"Unlimited"}) + field("Token cap", "max_cloud_tokens", config.max_cloud_tokens, {type:"number",min:1,placeholder:"Unlimited"}) + field("Estimated spend cap ($)", "max_cloud_cost", config.max_cloud_cost, {type:"number",min:0.01,placeholder:"Requires configured pricing",full:true}) +
-    `</div><p class="help-note">Budget edits preserve usage already spent. In-flight requests continue. Unknown prices cannot establish actual spend.</p></details><div class="consent">${check("Allow cloud prompts for this session", "cloud_allowed", config.cloud_allowed)}<p>Bounded assembly, symbols and source hints leave this PC. Provider keys and executable files stay local.</p></div><div class="form-footer"><span class="tiny muted">${editing ? "Edits apply before each loop's next function." : "Compilation and byte comparison stay local."}</span>${button(editing ? "Apply changes" : "Start worker", 'type="submit"')}</div><div class="button-row form-section"><button type="button" class="text-button" id="save-preset">Save preset</button><select id="saved-presets" aria-label="Load a saved preset"><option value="">Load saved preset…</option>${Object.keys(meta.preferences.presets).map(name=>`<option>${esc(name)}</option>`).join("")}</select><button type="button" class="text-button" id="refresh-models">Refresh models</button></div></form>`;
+    `</div><p class="help-note">Budget edits preserve usage already spent. In-flight requests continue. Unknown prices cannot establish actual spend.</p></details><div class="consent">${check("Allow cloud prompts for this session", "cloud_allowed", config.cloud_allowed)}<p>Bounded assembly, symbols and source hints leave this PC. Provider keys and executable files stay local.</p></div><div class="form-footer"><span class="tiny muted">${editing ? "Edits apply before each loop's next function." : "Compilation and byte comparison stay local."}</span>${button(editing ? "Apply changes" : "Start Match", 'type="submit"')}</div><div class="button-row form-section"><button type="button" class="text-button" id="save-preset">Save preset</button><select id="saved-presets" aria-label="Load a saved preset"><option value="">Load saved preset…</option>${Object.keys(meta.preferences.presets).map(name=>`<option>${esc(name)}</option>`).join("")}</select><button type="button" class="text-button" id="refresh-models">Refresh models</button></div></form>`;
 }
-let workerMode="agent", controlsOpen=false, workerRun="", chatFollow=true, chatSignature="", chatCompact=false, workerLoop="";
+let workerMode="function", controlsOpen=true, workerRun="", chatFollow=true, chatSignature="", chatCompact=false, workerLoop="";
 function workers(config) {
   const current=jobs.find(job=>job.id===editing);
   if(!current || !active(current))editing=null;
-  return `<div id="worker-chat" class="worker-chat" tabindex="0" role="log" aria-label="Live worker activity"><div id="worker-chat-rows"></div></div><button id="jump-live" class="jump-live" hidden>↓ Jump back to live</button><footer class="worker-footer"><div id="worker-tabs" class="worker-tabs" role="tablist" aria-label="Worker sessions"></div><div class="worker-footer-controls"><div id="worker-status" class="worker-live-bar"></div><div class="chat-toolbar"><select id="worker-run" aria-label="Worker session"><option value="">All sessions</option>${jobs.filter(j=>isWorker(j)).map(j=>`<option value="${j.id}" ${workerRun===j.id ? "selected" : ""}>${esc(j.config.client)} · ${j.id.slice(0,6)}</option>`).join("")}</select><select id="worker-loop" aria-label="Worker loop"><option value="">All loops</option>${Array.from({length:Math.max(1,...jobs.filter(j=>isWorker(j)).map(j=>Math.max(Object.keys(j.slots).length,Number(j.config.workers)||1)))},(_,i)=>`<option value="${i}" ${workerLoop===String(i) ? "selected" : ""}>Worker ${i+1}</option>`).join("")}</select><button class="text-button" id="chat-compact">${chatCompact ? "Regular" : "Compact"}</button><button class="text-button" id="chat-follow">${chatFollow ? "Live ↓" : "Latest ↓"}</button><button class="text-button" data-configure>Configure</button><button class="text-button" data-new-session>+ New</button></div></div></footer><aside class="worker-drawer ${controlsOpen ? "open" : ""}" aria-label="Worker configuration"><div class="drawer-heading"><h2>${editing ? "Session controls" : "New session"}</h2><button class="text-button" data-close-controls>Close ×</button></div>${editing ? workerForm(current.config) : `<div class="button-row form-section"><button class="text-button" data-worker-mode="agent">Agent worker</button><button class="text-button" data-worker-mode="function">Function worker</button><button class="text-button" data-worker-mode="memory">Experiment memory</button></div>`+(workerMode==="agent" ? agentAutomatic() : workerMode==="memory" ? experimentMemory(workerMemory) : workerForm(config || meta.initial))}</aside>`;
+  return `<div id="worker-chat" class="worker-chat" tabindex="0" role="log" aria-label="Live worker activity"><div id="worker-chat-rows"></div></div><button id="jump-live" class="jump-live" hidden>↓ Jump back to live</button><footer class="worker-footer"><div id="worker-tabs" class="worker-tabs" role="tablist" aria-label="Worker sessions"></div><div class="worker-footer-controls"><div id="worker-status" class="worker-live-bar"></div><div class="chat-toolbar"><select id="worker-run" aria-label="Worker session"><option value="">All sessions</option>${jobs.filter(j=>isWorker(j)).map(j=>`<option value="${j.id}" ${workerRun===j.id ? "selected" : ""}>${esc(j.config.client)} · ${j.id.slice(0,6)}</option>`).join("")}</select><select id="worker-loop" aria-label="Worker loop"><option value="">All loops</option>${Array.from({length:Math.max(1,...jobs.filter(j=>isWorker(j)).map(j=>Math.max(Object.keys(j.slots).length,Number(j.config.workers)||1)))},(_,i)=>`<option value="${i}" ${workerLoop===String(i) ? "selected" : ""}>Worker ${i+1}</option>`).join("")}</select><button class="text-button" id="chat-compact">${chatCompact ? "Regular" : "Compact"}</button><button class="text-button" id="chat-follow">${chatFollow ? "Live ↓" : "Latest ↓"}</button><button class="text-button" data-configure>Configure</button><button class="text-button" data-new-session>+ New</button></div></div></footer><aside class="worker-drawer ${controlsOpen ? "open" : ""}" aria-label="Worker configuration"><div class="drawer-heading"><h2>${editing ? "Session controls" : "New session"}</h2><button class="text-button" data-close-controls>Close ×</button></div>${editing ? workerForm(current.config) : `<div class="button-row form-section"><button class="text-button ${workerMode==='function' ? 'active' : ''}" data-worker-mode="function">Match</button><button class="text-button ${workerMode==='agent' ? 'active' : ''}" data-worker-mode="agent">Agent</button></div>`+(workerMode==="agent" ? agentAutomatic() : workerForm(config || meta.initial))}</aside>`;
 }
 function highlightCode(code) {
   return String(code).split(/(\/\/[^\n]*|"(?:\\.|[^"\\])*"|\b(?:void|int|float|double|char|bool|class|struct|return|if|else|for|while|const|static|unsigned|signed|auto|nullptr|true|false|sizeof)\b|\b\d+\b)/g).map(part=>{const cls=part.startsWith("//") ? "comment" : part.startsWith('"') ? "string" : /^\d+$/.test(part) ? "number" : /^(void|int|float|double|char|bool|class|struct|return|if|else|for|while|const|static|unsigned|signed|auto|nullptr|true|false|sizeof)$/.test(part) ? "keyword" : "";return cls ? `<span class="syntax-${cls}">${esc(part)}</span>` : esc(part);}).join("");
@@ -143,16 +143,21 @@ function terminalMessage(row, functions, compact=false) {
   const fn=functions.get(row.job+":"+row.slot);
   let marker="·", text=logText(row), extra="", kind=row.event;
   if(row.event==="job_started") {marker="›";text=`${row.client} ${row.addr} ${row.size ?? "?"} B ${row.unit || ""} · best ${row.previous ?? row.score ?? "?"}%${row.area ? " · "+row.area : ""}`;}
-  else if(row.event==="job_finished") {kind+=" "+(row.score===100 ? "exact" : row.score>row.previous ? "improved" : "no-gain");marker=row.score===100 ? "✓" : row.score>row.previous ? "↑" : "·";text=`${row.client} ${row.addr}${row.supercompact ? " · "+(row.size ?? "?")+" B" : " "+(row.unit || fn?.unit || "")+" · "+(row.size ?? "?")+" B"} · ${row.previous}% → ${row.score}%${row.score===100 ? " EXACT" : row.score<=row.previous ? " no gain" : " improved"}${row.seconds===undefined ? "" : " · "+row.seconds+"s"}`;}
-  else if(row.event==="benchmark") {marker="≡";text=`${row.workers}w · ${row.completed} done · ${row.per_minute} fn/min · ${row.matched} exact · ${row.improved} improved · ${row.errors} errors`;}
+  else if(row.event==="job_finished") {kind+=" "+(row.score===100 ? "exact" : row.score>row.previous ? "improved" : "no-gain");marker=row.score===100 ? "✓" : row.score>row.previous ? "↑" : "·";text=`${row.client} ${row.addr}${row.supercompact ? " · "+(row.size ?? "?")+" B" : " "+(row.unit || fn?.unit || "")+" · "+(row.size ?? "?")+" B"} · ${row.previous}% → ${row.score}%${row.score===100 ? " EXACT" : row.score<=row.previous ? " no gain" : " improved"}${row.seconds===undefined ? "" : " · "+row.seconds+"s"}`;if(row.score===100)extra=`<div class="match-success">✓ Exact match</div>`;else if(row.score>row.previous)extra=`<div class="match-success improvement">↑ Improved ${row.previous}% → ${row.score}%</div>`;}
+  else if(row.event==="benchmark") {marker="≡";text=row.server_gains ? `campaign · ${row.completed} server gains · ${row.matched} exact · ${row.improved} improved` : `${row.workers}w · ${row.completed} done · ${row.per_minute} fn/min · ${row.matched} exact · ${row.improved} improved · ${row.errors} errors`;}
   else if(row.event==="compile") {
     marker="$";const runs=row.compile_runs || [row],failed=runs.filter(r=>r.exit_code!==0).length;
     text=`compile${runs.length>1 ? " ×"+runs.length : ""} · ${failed ? failed+" failed" : "ok"}`;
     extra=runs.map((r,i)=>(runs.length>1 ? `<div class="compile-attempt">Attempt ${i+1} · exit ${r.exit_code}</div>` : "")+codeBlock(r.argv.map(a=>/\s/.test(a) ? JSON.stringify(a) : a).join(" "),"Command")+(r.output ? codeBlock(r.output,"Output") : "")).join("");
   }
   else if(["draft","candidate"].includes(row.event)) {marker=row.event==="draft" ? "◇" : "↑";text=row.event==="draft" ? `draft · round ${row.round}` : `verified candidate · ${row.score}%`;extra=codeBlock(row.code);}
+  else if(/^\s*> /.test(text)) {marker="$";extra=codeBlock(text.trim().slice(2),"Command");text="Agent command";}
+  else if(/^Command finished /.test(text)) {const newline=text.indexOf("\n");if(newline>=0){extra=codeBlock(text.slice(newline+1),"Output");text=text.slice(0,newline);}if(/exit (?!0\b)-?\d+/.test(text)){marker="!";kind="error";}}
+  else if(text.includes("```")) {let end=0;const blocks=[];for(const match of text.matchAll(/```([^\n]*)\n([\s\S]*?)```/g)){blocks.push(`<p>${esc(text.slice(end,match.index))}</p>`,codeBlock(match[2],match[1].trim()||"Code"));end=match.index+match[0].length;}blocks.push(`<p>${esc(text.slice(end))}</p>`);extra=blocks.join("");text=text.split("```")[0].trim().split("\n")[0]||"Agent code";}
   else if(/generated source[^\n]*:\n/.test(text)) {extra=codeBlock(text.slice(text.indexOf("\n")+1));text=text.slice(0,text.indexOf("\n")).replace(/generated source \(final (\d+)%\):/,"source · $1%");}
-  else if(row.event==="error"||/error:|failed/i.test(text)) {marker="!";kind="error";}
+  else if(/\b[0-9a-f]{8}\s*→\s*100\b.*\bserver verified\b/i.test(text)) {marker="✓";kind="matched-note";extra=`<div class="match-success">✓ Server verified exact match</div>`;}
+  else if(row.event==="error"||/^(Agent error:|Error:|Traceback|Blocked:|Command finished .*exit (?!0\b)-?\d+)|\bERROR\s+\w/i.test(text.split("\n")[0])) {marker="!";kind="error";}
+  if(text.length>180 || text.includes("\n")) {if(!extra)extra=codeBlock(text,"Output");text=text.split("\n")[0].slice(0,180)+(text.split("\n")[0].length>180 ? "…" : "");}
   const content=`<span class="terminal-marker">${marker}</span><span class="terminal-text">${esc(text.trim())}</span>`;
   return `<article class="terminal-row ${esc(kind)}" data-key="${esc(row.job+":"+row.seq)}"><time>${stamp}</time><span class="terminal-worker">${worker}</span>${extra ? `<details ${!compact && ["draft","candidate"].includes(row.event) ? "open" : ""}><summary>${content}</summary>${extra}</details>` : `<div>${content}</div>`}</article>`;
 }
@@ -202,7 +207,8 @@ function renderWorkerChat() {
   $("#chat-compact").textContent=supercompact ? "Supercompact · auto" : chatCompact ? "Regular" : "Compact";
   const foldSource=compact;
   const ids=new Set(workerJobs.map(job=>job.id));
-  const rows=logs.filter(r=>ids.has(r.job)&&(!workerRun||r.job===workerRun)&&(workerLoop===""||String(r.slot)===workerLoop||r.event==="benchmark")&&(compact ? jobs.find(j=>j.id===r.job)?.kind==="agent_worker" || r.startup || ["job_finished","benchmark","error","rejected"].includes(r.event) : !["control","applied","usage"].includes(r.event))).slice(-180);
+  const commandNoise=r=>{const text=logText(r);return /^\s*> /.test(text)||/^Command finished .*exit 0\b/.test(text);};
+  const rows=logs.filter(r=>ids.has(r.job)&&(!workerRun||r.job===workerRun)&&(workerLoop===""||String(r.slot)===workerLoop||r.event==="benchmark")&&(compact ? (jobs.find(j=>j.id===r.job)?.kind==="agent_worker" || r.startup || ["job_finished","benchmark","error","rejected"].includes(r.event))&&!commandNoise(r) : !["control","applied","usage"].includes(r.event))).slice(-180);
   const signature=compact+":"+supercompact+":"+rows.map(r=>r.job+":"+r.seq).join();
   setChatFollow(chatFollow);
   const viewFilter=workerRun+":"+workerLoop+":"+compact+":"+supercompact;
@@ -227,50 +233,56 @@ function renderWorkerChat() {
 function workerCards() {
   const selected=jobs.find(j=>j.id===workerRun), current=selected || jobs.find(j=>isWorker(j)&&active(j));
   if(!current)return '<span class="muted">Idle</span>';
-  return `<div class="live-session"><span class="session-summary">${badge(current.status)} <b>${Object.keys(current.slots).length}</b> loops · <b>${current.matched}</b> exact · ${current.attempted} tried</span>${active(current) ? (current.kind==="worker" ? `<button class="text-button" data-action="${current.status==="paused" ? "resume" : "pause"}" data-id="${current.id}" ${current.status==="stopping" ? "disabled" : ""}>${current.status==="paused" ? "Resume" : "Pause"}</button>` : "")+`${endRun(current)}<button class="text-button" data-action="kill" data-id="${current.id}" aria-label="Stop immediately">×</button>` : ""}</div>`;
+  return `<div class="live-session"><span class="session-summary">${badge(current.status)} <b>${Object.keys(current.slots).length}</b> loops · <b>${current.matched}</b> exact · <b>${current.improved}</b> improved · ${current.attempted} ${current.kind==="agent_worker" ? "server gains" : "tried"}</span>${active(current) ? (current.kind==="worker" ? `<button class="text-button" data-action="${current.status==="paused" ? "resume" : "pause"}" data-id="${current.id}" ${current.status==="stopping" ? "disabled" : ""}>${current.status==="paused" ? "Resume" : "Pause"}</button>` : "")+`${endRun(current)}<button class="text-button" data-action="kill" data-id="${current.id}" aria-label="Stop immediately">×</button>` : ""}</div>`;
 }
 function commands() {
   const command = meta.commands.find(command=>command.name===selectedCommand), names = meta.clients.map(client=>client.name);
-  return heading("", "Commands", "Run ROC tools. Jobs queue to prevent conflicting file writes.") + `<div id="command-progress">${commandProgress()}</div><div class="card-grid">${meta.commands.map(command=>`<button class="command-card ${command.name===selectedCommand ? "active" : ""}" data-command="${command.name}"><span class="command-icon">${icon(command.name === "client-fetch" || command.name === "pull" ? "download" : command.name === "mass" || command.name === "auto" || command.name === "check" ? "code" : command.name === "doctor" || command.name === "flags" ? "settings" : command.name === "agent" ? "code" : command.name.includes("stats") ? "chart" : "terminal")}</span><div class="cmd">roc ${command.name}</div><h3>${command.title}</h3><p>${command.description}</p></button>`).join("")}</div><form id="command-form" class="panel panel-pad command-settings"><h2>${command.title}</h2><div class="field-grid form-section">` +
+  return heading("", "Commands", "") + `<div id="command-progress">${commandProgress()}</div>${["Start here","Match and submit","Advanced"].map(group=>`<details class="form-section" ${group==="Advanced" && command.group!==group ? "" : "open"}><summary>${group}</summary><div class="card-grid">${meta.commands.filter(item=>(item.group||"Advanced")===group).map(item=>`<button class="command-card ${item.name===selectedCommand ? "active" : ""}" data-command="${item.name}"><div class="cmd">roc ${item.name}</div><h3>${esc(item.title)}</h3></button>`).join("")}</div></details>`).join("")}<form id="command-form" class="panel panel-pad command-settings"><h2>${command.title}</h2><div class="field-grid form-section">` +
     (command.target !== "none" ? field("Client", "client", meta.initial.client || (command.target==="one" ? names[0] : "all"), {choices:[...(command.target==="one" ? [] : [["all","All clients"]]),...names.map(name=>[name,name])]}) : "") +
     (["repair","check"].includes(command.name) ? field("Function address (optional)", "addr", "", {placeholder:"00401000"}) : "") +
     (command.name==="libs" ? field("Recipes", "recipes", "all", {placeholder:"all or comma-separated recipe names"}) : "") +
+    (command.name==="research" ? field("Action","research_action","list",{choices:[["list","List recipes"],["plan","Plan"],["run","Run"],["log","Findings log"]]}) + field("Recipe","recipe","",{choices:[["","Choose recipe"],...(meta.recipes||[]).map(name=>[name,name])]}) : "") +
     (command.name==="repair" ? field("Source limit", "limit", 20, {type:"number",min:1})+field("Minimum score", "min_score", 80, {type:"number",min:0,max:100})+check("Try permutations", "permute", false) : "") +
     (command.name==="install" ? check("Accept compiler downloads", "accept_downloads", false) : "") +
     (command.name==="agent" ? field("Agent CLI", "cli", "claude", {choices:[["claude","Claude Code"],["codex","Codex"]]})+field("Goal", "goal", "Match as many open 2008-06 RakNet functions as you can", {placeholder:"What should the agent do?",full:true})+field("Time limit (minutes)", "minutes", 120, {type:"number",min:1,max:600}) : "") + `</div><div id="command-preview" class="command-preview">roc ${command.name}</div><div class="form-footer"><span class="tiny muted">${command.name==="mass" ? "Static libs → STL → recipes → analyze → auto" : "Output appears in the console below."}</span>${button("Run command",'type="submit"')}</div></form>`;
 }
-function agentPage() {
-  const s=agentState, row=(ok,title,detail,action="")=>`<div class="client-row"><div><h3>${title}</h3><p>${detail}</p></div><div class="button-row"><span class="badge ${ok ? "completed" : "paused"}">${ok ? "Ready" : "Needed"}</span>${action}</div></div>`, section=title=>`<div class="section-heading"><h2>${title}</h2></div>`;
-  const top=heading("", "Agent setup", "Install and sign in to Claude Code or Codex, check project readiness, or open a manual session. Automatic agent workers run in Workers.", button("Refresh",'data-agent-refresh',true));
-  if(!s) return top+`<div class="panel panel-pad"><p class="help-note">Checking this PC…</p></div>`;
-  const c=s.client, clientAction=!c.downloaded ? button("Fetch",'data-client-task="client-fetch" data-client="2008-06"',true) : !c.analyzed ? button("Analyze",'data-client-task="analyze" data-client="2008-06"',true) : "";
-  return top + section("1. Agent CLI") + `<div class="panel">${["claude","codex"].map(cli=>row(!!s.clis[cli], cli==="claude" ? "Claude Code" : "Codex",
-      s.clis[cli] ? esc(s.clis[cli])+" · sign in once in the window it opens" : s.npm ? "Not installed. Uses your "+(cli==="claude" ? "Claude Pro/Max" : "ChatGPT")+" plan after sign-in." : "Not installed. Install Node.js (npm) first.",
-      button(s.clis[cli] ? "Sign in" : "Install & sign in",`data-agent-setup="${cli}" ${!s.clis[cli]&&!s.npm ? "disabled" : ""}`,true))).join("")}</div>` +
-    section("2. Project") + `<div class="panel">${row(s.server&&s.user,"Server and username",s.server&&s.user ? "Configured" : "Run in a terminal: roc config --user NAME --server URL")}${row(s.compilers,"Compilers",s.compilers ? "Exact MSVC builds installed" : "Download the exact MSVC builds",s.compilers ? "" : button("Install tools",'data-open-command="install"',true))}${row(c.downloaded&&c.analyzed,"Client 2008-06",!c.downloaded ? "Binary not downloaded" : !c.analyzed ? "Not analyzed yet" : "Downloaded and analyzed",clientAction)}</div>` +
-    `<p class="help-note">Automatic agent workers and shared experiment memory live in Workers.</p>` + button("Open agent workers",'data-new-agent-worker',true) +
-    section("3. Manual goal") + `<form id="agent-form" class="panel panel-pad"><div class="field-grid">${field("Agent CLI","cli",s.clis.claude||!s.clis.codex ? "claude" : "codex",{choices:[["claude","Claude Code"],["codex","Codex"]]})}${field("Model (optional)","model","",{placeholder:"sonnet, opus, gpt-5…"})}${field("Goal","goal","Match as many open 2008-06 RakNet functions as you can",{full:true})}</div><p class="help-note"><b>Interactive</b> opens a terminal window with a normal session: it can download, write scripts and add recipes like the maintainers' sessions, and asks you before risky commands. <b>Unattended</b> runs here for up to 2 hours and may only run roc.py commands, edit src/, and append experiment memory; its steps appear in the console below. Either way the server re-verifies every submission.</p><div class="form-footer">${button("Run unattended",'type="button" data-agent-run',true)}${button("Open interactive session",'type="submit"')}</div></form>`;
-}
 function experimentMemory(s) {
-  if(!s)return `<p class="help-note">Loading experiment memory…</p>`;
-  const rows=(s.shared_recent||[]).slice().reverse(),local=(s.recent||[]).slice().reverse();
-  const attempts=items=>items.map(r=>`<div class="client-row"><div><h3>${esc(r.library||r.area||r.kind||"Attempt")} · ${esc(r.reported_by||"This PC")}</h3><p>${esc(r.hypothesis||r.change||r.kind)} · ${esc(r.outcome)}</p><p>${esc(r.before??"?")} → ${esc(r.after??"?")}%${r.candidate!=null ? ` · candidate ${esc(r.candidate)}%` : ""}</p><small>${esc(r.date||"")}${r.server_confirmed ? " · server-confirmed gain" : " · reported"}</small></div></div>`).join("");
-  return `<div class="panel panel-pad"><h2>Experiment memory</h2><p class="help-note">Vendor headers → linkage → small compiler pilot → imports → proven boundaries → sibling propagation. Agents read successes and failures before matching.</p><p class="help-note">${s.sync?.available ? "Connected: attempts shared through group server" : esc(s.sync?.error||"Shared server not connected")}</p>${button("Sync attempts & refresh",'data-worker-memory-refresh',true)}${(s.lessons||[]).map(r=>`<div class="client-row"><div><h3>${esc(r.library)}</h3><p>${esc(r.change)}</p><p>${esc(r.next)}</p><small>${esc(r.evidence)}</small></div><span class="badge">${r.exacts_gained==null ? "Count evolving" : "+"+esc(r.exacts_gained)+" exact"}</span></div>`).join("")}<details open><summary>Shared attempts (${rows.length}, latest 20)</summary>${attempts(rows)}</details><details><summary>Local attempts (${local.length}, latest 20)</summary>${attempts(local)}</details><p class="tiny muted">Reports remain evidence data. Server-confirmed gains are checked against score events. Full sources and diffs remain in run logs/source sharing; reviewed lessons and workflow ship with worker packages.</p></div>`;
+  if(!s)return `<p class="muted">Loading experiments…</p>`;
+  const rows=[...(s.shared_recent||[]),...(s.recent||[])], seen=new Set();
+  const attempts=rows.reverse().filter(r=>{const key=JSON.stringify(r);if(seen.has(key))return false;seen.add(key);return true;}).slice(0,40);
+  return `<div class="panel panel-pad"><div class="section-heading"><h2>Experiments</h2>${button("Refresh",'data-worker-memory-refresh',true)}</div>${attempts.length ? `<table class="run-list"><thead><tr><th>Experiment</th><th>Result</th><th>Score</th></tr></thead><tbody>${attempts.map(r=>`<tr><td>${esc(r.hypothesis||r.change||r.library||r.area||r.kind||"Attempt")}<br><small>${esc(r.date||"")}</small></td><td>${esc(r.outcome||"Recorded")}${r.server_confirmed ? " · verified" : ""}</td><td>${esc(r.before??"—")} → ${esc(r.after??"—")}%${r.candidate!=null ? `<br><small>candidate ${esc(r.candidate)}%</small>` : ""}</td></tr>`).join("")}</tbody></table>` : `<p class="muted">No experiments yet.</p>`}</div>`;
 }
-async function loadWorkerMemory(sync=false) {workerMemory=await api(sync ? "agent-memory-sync" : "agent-memory",sync ? {} : undefined);if(page==="workers"&&workerMode==="memory")render();}
+async function loadWorkerMemory(sync=false) {workerMemory=await api(sync ? "agent-memory-sync" : "agent-memory",sync ? {} : undefined);if(page==="history")render();}
 function readAgentAuto() {
-  const form=$("#agent-auto-form"), data=Object.fromEntries(new FormData(form));
-  for(const key of ["workers","jobs","minutes","batch_size","batch_minutes","max_size"])data[key]=Number(data[key]);
-  data.individual=form.elements.individual.checked;
-  agentAutoConfig=data;return data;
+  const form=$("#agent-auto-form"), mode=form.dataset.mode;
+  const presets={
+    automatic:{workers:2,jobs:24,minutes:120,batch_size:4,batch_minutes:10,max_size:512},
+    fast:{workers:2,jobs:12,minutes:30,batch_size:4,batch_minutes:5,max_size:256},
+    balanced:{workers:2,jobs:24,minutes:120,batch_size:4,batch_minutes:10,max_size:512},
+    deep:{workers:2,jobs:48,minutes:240,batch_size:4,batch_minutes:20,max_size:0}
+  };
+  agentAutoConfig={...agentAutoConfig,...presets[mode],mode,individual:false};
+  for(const key of ["client","user","server","cli","model","goal"])agentAutoConfig[key]=form.elements[key].value.trim();
+  agentAutoConfig.workers=Number(form.elements.workers.value);
+  return agentAutoConfig;
 }
 function agentAutomatic() {
-  const c=agentAutoConfig;
-  return `<form id="agent-auto-form" class="panel panel-pad"><p class="help-note">Find reusable gains first: exact donors → family propagation → existing vendor recipes → batch repair. Individual mining is disabled unless selected. Separate workers use exclusive leases and isolated source files. Two zero-gain repair batches park that family for this source/profile revision.</p><div class="field-grid">${field("Agent CLI","cli",c.cli,{choices:[["claude","Claude Code"],["codex","Codex"]]})}${field("Model (optional)","model",c.model)}${field("Workers","workers",c.workers,{type:"number",min:1,max:8})}${field("Total target cap","jobs",c.jobs,{type:"number",min:1,max:200})}${field("Run minutes","minutes",c.minutes,{type:"number",min:1,max:600})}${field("Functions per batch","batch_size",c.batch_size,{type:"number",min:1,max:12})}${field("Minutes per agent batch","batch_minutes",c.batch_minutes,{type:"number",min:1,max:60})}${field("Max function bytes","max_size",c.max_size,{type:"number",min:32,max:8192})}</div>${check("Allow individual repair as last resort","individual",c.individual)}<p class="tiny muted">Uses the selected CLI's signed-in plan/key. Preview is free; worker/time caps bound runs, not dollars. Ranking uses local snapshot hints; starting Auto refreshes server sources and recompiles baselines.</p><div class="form-footer">${button("Preview best areas",'type="button" data-agent-plan',true)}${button("Start agent worker",'type="submit"')}</div><div id="agent-auto-plan">${agentPlan ? `<p class="help-note">${esc(agentPlan.note)}</p><table class="run-list"><thead><tr><th>Area</th><th>Eligible</th><th>Open bytes</th><th>Priority</th></tr></thead><tbody>${agentPlan.areas.map(area=>`<tr><td><b>${esc(area.title)}${area.parked ? " · parked" : ""}</b><p>${esc(area.advice)}</p><small>${area.examples.map(row=>esc(row.addr)+" · "+esc(row.unit)+" · "+esc(row.score)+"%").join("<br>")}</small></td><td>${area.eligible}</td><td>${area.bytes}</td><td>${area.priority}</td></tr>`).join("")}</tbody></table><p class="tiny muted">Deferred: ${Object.entries(agentPlan.excluded).map(([reason,count])=>esc(count)+" "+esc(reason)).join(" · ") || "None"}</p>` : ""}</div></form>`;
-}
-async function loadAgent() { agentState=await api("agent"); if(page==="agent") render(); }
-function clientPage() {
-  return heading("", "Clients", "Registered builds, local binaries, and analysis status.", button("Run doctor", 'data-open-command="doctor"', true)) + `<div class="panel">${meta.clients.map(client=>`<div class="client-row"><div><h3>Roblox ${esc(client.name)}</h3><p>${esc(client.compiler)}</p><div class="client-details"><span class="badge ${client.downloaded ? "completed" : "paused"}">${client.downloaded ? "Binary present" : "Download needed"}</span><span class="badge ${client.analyzed ? "completed" : "paused"}">${client.analyzed ? "Analyzed" : "Analysis needed"}</span></div></div><div class="button-row">${button(client.downloaded ? "Analyze" : "Fetch",`data-client-task="${client.downloaded ? "analyze" : "client-fetch"}" data-client="${esc(client.name)}"`,true)}${button("Work on client",`data-client-worker="${esc(client.name)}"`,true)}</div></div>`).join("")}</div><p class="help-note">“Binary present” means file exists. Use Doctor for full readiness checks. Install tools from Commands if a compiler is missing.</p>`;
+  const c={client:meta.initial.client||"",user:meta.initial.user,server:meta.initial.server,...agentAutoConfig};
+  const mode=c.mode || (c.minutes===30 ? "fast" : c.minutes===240 ? "deep" : "automatic");
+  const agentModels={
+    codex:[["","CLI default"],["gpt-6.1-sol","GPT-6.1 Sol"],["gpt-6-astra","GPT-6 Astra"],["gpt-6-sol","GPT-6 Sol"],["gpt-6-luna","GPT-6 Luna"],["gpt-5.6-sol","GPT-5.6 Sol"],["gpt-5.6-terra","GPT-5.6 Terra"],["gpt-5.6-luna","GPT-5.6 Luna"]],
+    claude:[["","CLI default"],["claude-opus-4-6","Claude Opus 4.6"],["claude-sonnet-4-6","Claude Sonnet 4.6"],["claude-haiku-4-5","Claude Haiku 4.5"]]
+  };
+  const modelChoices=[...(agentModels[c.cli]||agentModels.claude)];
+  if(c.model&&!modelChoices.some(([value])=>value===c.model))modelChoices.push([c.model,c.model+" · custom"]);
+  return `<form id="agent-auto-form" data-mode="${esc(mode)}" class="panel panel-pad"><div class="section-heading"><h2>Configure Agent</h2></div><div class="preset-row">${["automatic","fast","balanced","deep"].map(value=>`<button type="button" data-agent-mode="${value}" class="${mode===value ? "active" : ""}">${value[0].toUpperCase()+value.slice(1)}</button>`).join("")}</div><div class="field-grid">` +
+    field("Client","client",c.client,{choices:[["","All clients"],...meta.clients.map(client=>[client.name,client.name])]}) +
+    field("Username","user",c.user) + field("Server","server",c.server,{full:true,placeholder:"host:8765 or https://server"}) +
+    field("Agent CLI","cli",c.cli,{choices:[["claude","Claude Code"],["codex","Codex"]]}) +
+    field("Model","model",c.model,{choices:modelChoices}) +
+    field("Goal","goal",c.goal||"",{full:true,placeholder:"Optional; blank runs automatic matching"}) +
+    field("Worker loops","workers",c.workers,{type:"number",min:1,max:8}) +
+    `</div><div class="button-row form-section">${button("Install / sign in",'type="button" data-agent-setup="current"',true)}</div><div class="form-footer">${button("Start Agent",'type="submit"')}</div></form>`;
 }
 function settings() {
   return heading("", "Settings", "Interface, theme, provider credentials, and dashboard lifecycle.") + `<div class="settings-stack"><form id="preferences-form" class="panel panel-pad"><h2>When a roconstruct:// link opens</h2><p class="help-note">Choose how website work links launch. “Ask every time” offers terminal or webpage before setup.</p><div class="field-grid">${field("URI interface", "uri_mode", meta.uri_mode, {choices:[["ask","Ask every time"],["terminal","Terminal"],["web","Webpage"]]})}${field("Appearance", "theme", meta.preferences.theme, {choices:["dark","light"]})}</div><div class="form-footer">${button("Save preferences", 'type="submit"')}</div></form><div class="panel panel-pad"><h2>ChatGPT plan</h2><p class="help-note">${meta.providers.find(p=>p.name==="chatgpt")?.ready ? "Signed in. Choose a chatgpt: model in your worker settings." : "Sign in from a terminal in this fork: roc chatgpt login"}</p><p class="help-note">Uses your existing subscription limits. <a href="https://chatgpt.com/settings/usage" target="_blank" rel="noopener noreferrer">Manage usage and credit permission</a></p></div><form id="provider-form" class="panel panel-pad"><h2>Provider credentials</h2><p class="help-note">Stored in ROC's user-local secrets file. Keys never enter run history or frontend storage.</p><div class="field-grid">${field("Provider", "provider", "", {choices:meta.providers.filter(provider=>provider.auth!=="chatgpt").map(provider=>[provider.name,provider.name+(provider.ready ? " · ready" : " · key missing")])})}${field("API key", "key", "", {type:"password"})}</div><div class="form-footer">${button("Save key", 'type="submit"')}</div></form><div class="panel panel-pad"><h2>Session & lifecycle</h2><p class="help-note">Browser tabs may close freely. Dashboard process owns jobs. Exit stops active process trees. Provider requests already sent may still bill.</p><button class="button secondary" id="exit-dashboard">Exit ROC dashboard</button></div></div>`;
@@ -278,18 +290,22 @@ function settings() {
 function render(config) {
   if (!meta) return;
   document.title=page==="cpu" ? "Servers" : "RoConstruct Dashboard";
+  const historyOpen=new Set([...document.querySelectorAll("[data-history-section][open]")].map(node=>node.dataset.historySection));
   const expanded=new Set([...document.querySelectorAll("[data-cpu-detail][open]")].map(n=>n.dataset.cpuDetail)), cpuScroll=$("#main").scrollTop;
   document.querySelectorAll(".sidebar [data-page]").forEach(button=>button.classList.toggle("active",button.dataset.page===page));
-  $("#page-name").textContent = {overview:"Overview",workers:"Workers",cpu:"Servers",commands:"Commands",agent:"Agent setup",clients:"Clients",history:"Run history",functions:"Functions",settings:"Settings"}[page];
-  $("#main").innerHTML = page==="cpu" ? cpuPage() : page==="overview" ? overview() : page==="workers" ? workers(config) : page==="commands" ? commands() : page==="agent" ? agentPage() : page==="clients" ? clientPage() : page==="history" ? heading("", "Run history", "Saved configurations, outcomes, and logs. Rerun interrupted sessions explicitly.")+runTable([...jobs].reverse()) : page==="functions" ? functionsPage() : settings();
+  $("#page-name").textContent = {overview:"Overview",workers:"Workers",cpu:"Servers",commands:"Commands",history:"History",settings:"Settings"}[page];
+  $("#main").innerHTML = page==="cpu" ? cpuPage() : page==="overview" ? overview() : page==="workers" ? workers(config) : page==="commands" ? commands() : page==="history" ?
+    heading("", "History", "")+`<details class="form-section" data-history-section="runs" ${historyOpen.has("runs") ? "open" : ""}><summary>Runs</summary><div id="history-runs">${runTable([...jobs].reverse())}</div></details>`+
+    functionsPage()+`<details class="form-section" data-history-section="experiments" ${historyOpen.has("experiments") ? "open" : ""}><summary>Experiments</summary>${experimentMemory(workerMemory)}</details>` : settings();
+  if(page==="history") $("#main").scrollTop=cpuScroll;
   if(page==="cpu") {document.querySelectorAll("[data-cpu-detail]").forEach(n=>{n.open=expanded.has(n.dataset.cpuDetail);});$("#main").scrollTop=cpuScroll;}
   document.body.classList.toggle("servers-page",page==="cpu");
   document.body.classList.toggle("workers-page",page==="workers");
   if (page==="workers") { $("#worker-status").innerHTML=workerCards();renderWorkerChat(); }
   if (page==="commands") {act(previewCommand);act(()=>loadCpu(true));}
-  if (page==="functions") act(loadFunctions);
+  if(page==="history") {renderFunctionList();renderFunctionDetail();}
 }
-function navigate(next, config) { page=next; if(next!=="workers") editing=null; render(config); if(next==="cpu")act(()=>loadCpu(true)); if(next==="agent")act(loadAgent); if(next==="workers")act(loadWorkerMemory); $("#main").scrollTop=0; }
+function navigate(next, config) { page=next; if(next!=="workers") editing=null; render(config); if(next==="cpu")act(()=>loadCpu(true)); if(next==="history") {act(loadWorkerMemory);act(loadFunctions);} $("#main").scrollTop=0; }
 function readWorker() {
   const form=$("#worker-form"), config={...(editing ? jobs.find(job=>job.id===editing).config : meta.initial)};
   for(const input of form.querySelectorAll("[name]")) {
@@ -301,7 +317,7 @@ function readWorker() {
   return config;
 }
 function readCommand() { const form=$("#command-form"), data={command:selectedCommand}; for(const input of form.querySelectorAll("[name]")) data[input.name]=input.type==="checkbox" ? input.checked : input.type==="number" ? Number(input.value) : input.value; return data; }
-async function previewCommand() { const data=readCommand(); if(data.command==="install"&&!data.accept_downloads) { $("#command-preview").textContent="roc install --yes"+(data.client&&data.client!=="all" ? " --client "+data.client : "")+"  (download consent required)"; return; } const result=await api("preview",data); if($("#command-preview")) $("#command-preview").textContent="roc "+result.args.join(" "); }
+async function previewCommand() { const data=readCommand(); if(data.command==="research" && ["plan","run"].includes(data.research_action) && !data.recipe) {$("#command-preview").textContent="roc research "+data.research_action+" <recipe>";return;} if(data.command==="install"&&!data.accept_downloads) { $("#command-preview").textContent="roc install --yes"+(data.client&&data.client!=="all" ? " --client "+data.client : "")+"  (download consent required)"; return; } const result=await api("preview",data); if($("#command-preview")) $("#command-preview").textContent="roc "+result.args.join(" "); }
 function logText(row) {
   if(row.message!==undefined) return row.message;
   if(row.event==="job_started") return `${row.client}:${row.addr} · ${row.unit || "function"} · ${row.size ?? "?"} B · baseline ${row.previous ?? 0}% → started`;
@@ -333,14 +349,15 @@ async function poll() {
     jobs=state.jobs;
     if(jobs.some(job=>job.status==="completed"&&previous.get(job.id)!=="completed"&&["client-fetch","analyze","install"].includes(job.args?.[0]))) {
       meta=await api("meta");
-      if(page==="clients")render();
+      if(page==="commands")render();
     }
     if(state.events.length) { if(cursor && state.events[0].seq>cursor+1) $("#console-hint").textContent="Older events omitted from live view. Export run logs for retained output."; logs.push(...state.events); logs=logs.slice(-3000); }
     cursor=state.sequence;more=state.more;
     const selected=$("#log-job").value, signature=jobs.map(job=>job.id).join();
     if($("#log-job").dataset.signature!==signature) { $("#log-job").innerHTML='<option value="">All runs</option>'+jobs.map(job=>`<option value="${job.id}">${esc(job.title)} · ${job.id.slice(0,5)}</option>`).join("");$("#log-job").value=selected;$("#log-job").dataset.signature=signature; }
     $("#worker-count").textContent=jobs.filter(job=>isWorker(job)&&active(job)).length;
-    if(page==="overview"||page==="history") render();
+    if(page==="overview") render();
+    else if(page==="history" && $("#history-runs")) $("#history-runs").innerHTML=runTable([...jobs].reverse());
     else if(page==="cpu"||page==="commands") act(()=>loadCpu());
     else if(page==="workers") { if(editing&&!jobs.some(job=>job.id===editing&&active(job))) { editing=null;render(); }  }
     renderWorkerChat();
@@ -369,17 +386,15 @@ document.addEventListener("click", event=>act(async()=>{
   if(target.dataset.page) navigate(target.dataset.page);
   if(target.dataset.function) { functionDetail=await api("functions?id="+target.dataset.function); detailTab="source";renderFunctionDetail(); }
   if(target.dataset.detailTab) { detailTab=target.dataset.detailTab;renderFunctionDetail(); }
-  if(target.dataset.workerMode) {workerMode=target.dataset.workerMode;editing=null;controlsOpen=true;render();if(workerMode==="memory")await loadWorkerMemory();return;}
+  if(target.dataset.workerMode) {workerMode=target.dataset.workerMode;editing=null;controlsOpen=true;render();return;}
   if(target.hasAttribute("data-worker-memory-refresh")) {await loadWorkerMemory(true);return;}
   if(target.hasAttribute("data-new-agent-worker")) {workerMode="agent";editing=null;controlsOpen=true;navigate("workers");return;}
-  if(target.hasAttribute("data-new-worker") || target.hasAttribute("data-new-session")) { editing=null;controlsOpen=true;navigate("workers"); }
-  if(target.hasAttribute("data-configure")) {const current=jobs.find(j=>isWorker(j)&&active(j)&&(!workerRun||j.id===workerRun));editing=current?.kind==="worker" ? current.id : null;workerMode=current?.kind==="worker" ? "function" : "agent";controlsOpen=true;render();}
+  if(target.hasAttribute("data-new-worker") || target.hasAttribute("data-new-session")) { workerMode="function";editing=null;controlsOpen=true;navigate("workers"); }
+  if(target.hasAttribute("data-configure")) {const current=jobs.find(j=>isWorker(j)&&active(j)&&(!workerRun||j.id===workerRun));editing=current?.kind==="worker" ? current.id : null;workerMode=current?.kind==="agent_worker" ? "agent" : "function";controlsOpen=true;render();}
   if(target.hasAttribute("data-close-controls")) {controlsOpen=false;$(".worker-drawer").classList.remove("open");}
   if(target.hasAttribute("data-copy-code")) {await navigator.clipboard.writeText(target.closest(".chat-code").querySelector("code").textContent);toast("Code copied");}
   if(target.id==="chat-follow"||target.id==="jump-live") {setChatFollow(true);chatSignature="";renderWorkerChat();scrollToLatest($("#worker-chat"),true);}
-  if(target.hasAttribute("data-agent-plan")) {const data=readAgentAuto();agentPlan=await api("agent-plan?"+new URLSearchParams({cli:data.cli,model:data.model,max_size:data.max_size,individual:data.individual}));render();}
-  if(target.hasAttribute("data-agent-refresh")) { agentState=null;render();await loadAgent(); }
-  if(target.dataset.agentSetup) { const result=await api("agent-setup",{cli:target.dataset.agentSetup});toast(result.manual ? "Run in a terminal: "+result.manual : "Opened a terminal window. Sign in there, then press Refresh."); }
+  if(target.dataset.agentSetup) { const result=await api("agent-setup",{cli:$("#agent-auto-form")?.elements.cli.value||target.dataset.agentSetup});toast(result.manual ? "Run in a terminal: "+result.manual : "Opened a terminal window. Sign in there, then press Refresh."); }
   if(target.hasAttribute("data-agent-run")) { const data=Object.fromEntries(new FormData($("#agent-form")));const result=await api("start",{kind:"command",command:"agent",cli:data.cli,model:data.model,goal:data.goal,minutes:120});toast("Agent started");$("#console-hint").textContent="Agent run "+result.id; }
   if(target.dataset.openCommand) { selectedCommand=target.dataset.openCommand;navigate("commands"); }
   if(target.dataset.command) { selectedCommand=target.dataset.command;render(); }
@@ -387,7 +402,8 @@ document.addEventListener("click", event=>act(async()=>{
   if(target.dataset.clientWorker) { workerMode="function";controlsOpen=true;editing=null;navigate("workers",{...meta.initial,client:target.dataset.clientWorker}); }
   if(target.dataset.log) { $("#log-job").value=target.dataset.log;renderLogs(); }
   if(target.dataset.step) { const input=$("#worker-form").elements[target.dataset.field];input.value=Math.max(Number(input.min||1),Math.min(Number(input.max||1000000),Number(input.value)+Number(target.dataset.step))); }
-  if(target.dataset.preset) { const config=readWorker(),presets={automatic,fast:{rounds:2,max_size:96,max_tokens:1024,use_revng:false},balanced:{rounds:4,max_size:256,max_tokens:2048},deep:{rounds:6,max_size:512,max_tokens:4096}};render({...config,...presets[target.dataset.preset]});document.querySelectorAll("[data-preset]").forEach(button=>button.classList.toggle("active",button.dataset.preset===target.dataset.preset)); }
+  if(target.dataset.preset) { const config=readWorker(),presets={automatic,fast:{rounds:2,max_size:96,max_tokens:1024,use_revng:false},balanced:{rounds:4,max_size:256,max_tokens:2048},deep:{rounds:6,max_size:0,max_tokens:4096}};render({...config,...presets[target.dataset.preset]});document.querySelectorAll("[data-preset]").forEach(button=>button.classList.toggle("active",button.dataset.preset===target.dataset.preset)); }
+  if(target.dataset.agentMode) {readAgentAuto();agentAutoConfig.mode=target.dataset.agentMode;render();}
   if(target.dataset.action) {
     const action=target.dataset.action,id=target.dataset.id;
     if(action==="edit") { controlsOpen=true;editing=id;navigate("workers");return; }
@@ -396,7 +412,7 @@ document.addEventListener("click", event=>act(async()=>{
   }
   if(target.dataset.rerun) {
     const job=jobs.find(job=>job.id===target.dataset.rerun);
-    if(isWorker(job)&&job.kind!=="worker") {const flag=name=>{const i=job.args.indexOf(name);return i<0 ? undefined : job.args[i+1];};agentAutoConfig={...agentAutoConfig,...job.config,cli:job.config?.cli||job.args[1],model:flag("--model")||"",individual:job.args.includes("--individual")};for(const key of ["workers","jobs","minutes","batch_size","batch_minutes","max_size"])if(flag("--"+key.replaceAll("_","-")))agentAutoConfig[key]=Number(flag("--"+key.replaceAll("_","-")));workerMode="agent";controlsOpen=true;editing=null;navigate("workers");return;}
+    if(isWorker(job)&&job.kind!=="worker") {const flag=name=>{const i=job.args.indexOf(name);return i<0 ? undefined : job.args[i+1];};agentAutoConfig={...agentAutoConfig,...job.config,goal:flag("--goal")||"",mode:job.config?.mode||"",cli:job.config?.cli||job.args[1],model:flag("--model")||"",individual:job.args.includes("--individual")};for(const key of ["workers","jobs","minutes","batch_size","batch_minutes","max_size"])if(flag("--"+key.replaceAll("_","-")))agentAutoConfig[key]=Number(flag("--"+key.replaceAll("_","-")));workerMode="agent";controlsOpen=true;editing=null;navigate("workers");return;}
     if(job.kind==="worker") { workerMode="function";controlsOpen=true;editing=null;navigate("workers",job.config); }
     else {
       selectedCommand=job.args[0];navigate("commands");
@@ -405,6 +421,8 @@ document.addEventListener("click", event=>act(async()=>{
       if(fields.addr) fields.addr.value=selectedCommand==="check" ? job.args[2]||"" : flag("--addr")||"";
       for(const key of ["limit","min_score"]) if(fields[key]&&flag("--"+key.replace("_","-")))fields[key].value=flag("--"+key.replace("_","-"));
       if(fields.permute)fields.permute.checked=job.args.includes("--permute");
+      if(fields.research_action)fields.research_action.value=job.args[1];
+      if(fields.recipe)fields.recipe.value=job.args[2]||"";
       if(fields.recipes)fields.recipes.value=job.args.slice(1,job.args.indexOf("--client")).join(", ");
       if(selectedCommand==="agent"&&job.args.includes("--automatic")) {agentAutoConfig={cli:job.args[1],model:flag("--model")||"",individual:job.args.includes("--individual")};for(const key of ["workers","jobs","minutes","batch_size","batch_minutes","max_size"])agentAutoConfig[key]=Number(flag("--"+key.replaceAll("_","-")));workerMode="agent";controlsOpen=true;editing=null;navigate("workers");return;}
       if(selectedCommand==="agent"){fields.cli.value=job.args[1];fields.goal.value=flag("--goal")||"";fields.minutes.value=flag("--minutes")||120;}
@@ -420,9 +438,9 @@ document.addEventListener("click", event=>act(async()=>{
 }));
 document.addEventListener("submit",event=>{
   event.preventDefault();act(async()=>{
-    if(event.target.id==="worker-form") { const config=readWorker();if(editing) await api("control",{id:editing,action:"update",config:Object.fromEntries(Object.entries(config).filter(([key])=>liveKeys.has(key)))});else { const result=await api("start",{kind:"worker",config});toast("Worker started");$("#console-hint").textContent="Worker session "+result.id; } }
+    if(event.target.id==="worker-form") { const config=readWorker();if(editing) await api("control",{id:editing,action:"update",config:Object.fromEntries(Object.entries(config).filter(([key])=>liveKeys.has(key)))});else { const result=await api("start",{kind:"worker",config});toast("Match started");$("#console-hint").textContent="Match session "+result.id; } }
     if(event.target.id==="worker-form") {controlsOpen=false;$(".worker-drawer")?.classList.remove("open");}
-    if(event.target.id==="agent-auto-form") {const result=await api("start",{kind:"agent_worker",...readAgentAuto()});workerRun=result.id;controlsOpen=false;$(".worker-drawer")?.classList.remove("open");toast("Agent worker started");$("#console-hint").textContent="Agent worker "+result.id;}
+    if(event.target.id==="agent-auto-form") {const result=await api("start",{kind:"agent_worker",...readAgentAuto()});workerRun=result.id;controlsOpen=false;$(".worker-drawer")?.classList.remove("open");toast("Agent started");$("#console-hint").textContent="Agent "+result.id;}
     if(event.target.id==="agent-form") { const result=await api("agent-session",Object.fromEntries(new FormData(event.target)));toast(result.manual ? "Run in a terminal: "+result.manual : "Opened the agent in a new terminal window"); }
     if(event.target.id==="command-form") { const result=await api("start",{kind:"command",...readCommand()});toast("Command started");$("#console-hint").textContent="Command run "+result.id; }
     if(event.target.id==="preferences-form") { const data=Object.fromEntries(new FormData(event.target));await api("preferences",data);meta=await api("meta");document.documentElement.dataset.theme=data.theme;toast("Preferences saved"); }
@@ -434,6 +452,7 @@ document.addEventListener("change",event=>act(async()=>{
   if(event.target.id==="worker-loop") {workerLoop=event.target.value;chatSignature="";renderWorkerChat();}
   if(event.target.id==="worker-run") await selectWorker(event.target.value);
   if(event.target.id==="saved-presets"&&event.target.value) render(meta.preferences.presets[event.target.value]);
+  if(event.target.matches("#agent-auto-form [name=cli]")) {readAgentAuto();agentAutoConfig.model="";render();}
   if(event.target.closest("#command-form")) await previewCommand();
 }));
 for(const id of ["log-job","log-level","log-search","log-wrap"]) $("#"+id).addEventListener("input",()=>{renderLogs();});
@@ -449,11 +468,22 @@ $("#export-console").addEventListener("click",()=>act(async()=>{
 new ResizeObserver(()=>renderLogs()).observe($("#log-scroll"));
 act(async()=>{meta=await api("meta");document.documentElement.dataset.theme=meta.preferences.theme;render();if(page==="cpu")await loadCpu(true);poll();});
 
-let functionRows=[], functionDetail=null, detailTab="source";
+let functionRows=[], functionDetail=null, detailTab="source", functionLoading=false;
+let functionFilters={query:"",status:"",sort:"recent",limit:100};
 function functionsPage() {
-  return heading("", "Functions", "Function results and source changes.", button("Refresh", 'id="refresh-functions"', true)) + `<div class="function-tools"><input id="function-search" placeholder="Search function, address, client…" aria-label="Search functions"><select id="function-status" aria-label="Filter status"><option value="">All results</option>${["working","matched","improved","unchanged","failed"].map(v=>`<option>${v}</option>`).join("")}</select><select id="function-sort" aria-label="Sort functions"><option value="recent">Latest first</option><option value="score">Highest score</option><option value="gain">Largest gain</option><option value="unit">Function name</option><option value="addr">Address</option></select></div><div class="panel" id="function-list"></div><div id="function-detail"></div><p class="help-note">Latest 300 attempts. History starts with this worker version. Source shows best locally verified candidate; final status reports worker outcome. Compiler paths describe temporary files used during execution.</p>`;
+  return `<div class="section-heading"><h2>Functions</h2>${button("Refresh", 'id="refresh-functions"',true)}</div><div class="function-tools"><input id="function-search" value="${esc(functionFilters.query)}" placeholder="Search function, address, client, user…" aria-label="Search functions"><select id="function-status" aria-label="Filter status"><option value="">All results</option>${["working","matched","improved","unchanged","failed"].map(value=>`<option ${value===functionFilters.status ? "selected" : ""}>${value}</option>`).join("")}</select><select id="function-sort" aria-label="Sort functions">${[["recent","Latest first"],["score","Highest score"],["gain","Largest gain"],["unit","Function name"],["addr","Address"]].map(([value,label])=>`<option value="${value}" ${value===functionFilters.sort ? "selected" : ""}>${label}</option>`).join("")}</select></div><div class="panel" id="function-list"></div><button class="text-button" id="more-functions">More functions</button><div id="function-detail"></div>`;
 }
-async function loadFunctions() { functionRows=await api("functions"); if(page!=="functions")return;renderFunctionList();renderFunctionDetail(); }
+async function loadFunctions() {
+  if(functionLoading)return;
+  functionLoading=true;
+  const filters={...functionFilters};
+  try {
+    const rows=await api("functions?"+new URLSearchParams(filters));
+    if(page!=="history"||JSON.stringify(filters)!==JSON.stringify(functionFilters))return;
+    functionRows=rows;renderFunctionList();renderFunctionDetail();
+    $("#more-functions").hidden=rows.length<functionFilters.limit||functionFilters.limit>=10000;
+  } finally {functionLoading=false;if(page==="history"&&JSON.stringify(filters)!==JSON.stringify(functionFilters))act(loadFunctions);}
+}
 function renderCommandProgress() {
   const node=$("#command-progress");if(!node)return;
   const expanded=new Set([...node.querySelectorAll("[data-cpu-detail][open]")].map(n=>n.dataset.cpuDetail));
@@ -461,24 +491,36 @@ function renderCommandProgress() {
   node.querySelectorAll("[data-cpu-detail]").forEach(n=>{n.open=expanded.has(n.dataset.cpuDetail);});
 }
 function renderFunctionList() {
-  const query=$("#function-search").value.toLowerCase(), status=$("#function-status").value, sort=$("#function-sort").value;
-  const rows=functionRows.filter(r=>(!status||r.status===status)&&`${r.unit} ${r.client} ${r.addr}`.toLowerCase().includes(query)).sort((a,b)=>sort==="score" ? b.score-a.score : sort==="gain" ? (b.score-b.base_score)-(a.score-a.base_score) : ["unit","addr"].includes(sort) ? String(a[sort]).localeCompare(String(b[sort])) : b.started-a.started);
-  $("#function-list").innerHTML=rows.length ? `<div class="function-table"><table class="run-list"><thead><tr><th>FUNCTION</th><th>RESULT</th><th>SCORE</th><th>MODEL</th><th>TIME</th></tr></thead><tbody>${rows.map(r=>`<tr><td><button class="text-button function-name" data-function="${r.id}">${esc(r.unit || r.addr)}</button><small>${esc(r.client)} · ${esc(r.addr)}</small></td><td>${badge(r.status)}</td><td>${r.base_score}% → <b>${r.score}%</b></td><td>${esc(r.model)}</td><td>${r.ended ? Math.round(r.ended-r.started)+"s" : "Active"}</td></tr>`).join("")}</tbody></table></div>` : empty("No function attempts", "Start a worker to record function activity.");
+  if(!$("#function-list"))return;
+  const query=functionFilters.query.toLowerCase(), status=functionFilters.status, sort=functionFilters.sort;
+  const rows=functionRows.filter(r=>(!status||r.status===status)&&`${r.unit} ${r.client} ${r.addr} ${r.model}`.toLowerCase().includes(query)).sort((a,b)=>sort==="score" ? b.score-a.score : sort==="gain" ? (b.base_score==null ? 0 : b.score-b.base_score)-(a.base_score==null ? 0 : a.score-a.base_score) : ["unit","addr"].includes(sort) ? String(a[sort]).localeCompare(String(b[sort])) : b.started-a.started);
+  $("#function-list").innerHTML=rows.length ? `<div class="function-table"><table class="run-list"><thead><tr><th>FUNCTION</th><th>RESULT</th><th>SCORE</th><th>MODEL</th><th>TIME</th></tr></thead><tbody>${rows.map(r=>`<tr><td><button class="text-button function-name" data-function="${r.id}">${esc(r.unit || r.addr)}</button><small>${esc(r.client)} · ${esc(r.addr)}</small></td><td>${badge(r.status)}</td><td>${r.base_score==null ? "Stored" : r.base_score+"% →"} <b>${r.score}%</b></td><td>${esc(r.model)}</td><td>${r.ended ? Math.round(r.ended-r.started)+"s" : "Active"}</td></tr>`).join("")}</tbody></table></div>` : empty("No function attempts", "No results for this filter.");
 }
 function renderFunctionDetail() {
   if(!functionDetail || !$("#function-detail"))return;
   const r=functionDetail;
   let body;
-  if(detailTab==="source")body=`<p class="help-note">${r.before ? "Original leased source" : "No source supplied with lease"} → best verified candidate</p><div class="source-pair"><div><h3>Before · ${r.base_score}%</h3><pre>${esc(r.before || "// No source supplied")}</pre></div><div><h3>Best candidate · ${r.best_score ?? r.score}%</h3><pre>${esc(r.after || "// No verified source")}</pre></div></div>`;
+  if(detailTab==="source")body=`<p class="help-note">${r.origin==="server" ? "Current server source. Original source unavailable." : "Leased source → best local candidate"}</p><div class="source-pair"><div><h3>Before · ${r.base_score==null ? "Unknown" : r.base_score+"%"}</h3><pre>${esc(r.before || "// No source supplied")}</pre></div><div><h3>${r.origin==="server" ? "Stored source" : "Best candidate"} · ${r.best_score ?? r.score}%</h3><pre>${esc(r.after || "// No verified source")}</pre></div></div>`;
   else if(detailTab==="timeline")body=`<ol class="function-timeline">${r.timeline.map(e=>`<li><time>${e.seconds}s</time><span>${esc(e.message)}</span></li>`).join("")}</ol>`;
   else if(detailTab==="commands")body=r.commands.length ? r.commands.map(c=>`<div class="command-record"><div>${badge(c.exit_code===0 ? "completed" : "failed")} <span class="muted">${esc(c.cwd)}</span></div><pre>${esc(c.argv.map(v=>/\s/.test(v) ? JSON.stringify(v) : v).join(" "))}</pre>${c.output ? `<details><summary>Compiler output</summary><pre>${esc(c.output)}</pre></details>` : ""}</div>`).join("") : empty("No compiler commands", "Cached results and skipped compilation do not execute commands.");
   else body=(r.rounds||[]).map((round,i)=>`<details class="round-record"><summary>Attempt ${i+1} · ${esc(round.score ?? round.kind ?? "Details")}</summary><pre>${esc(JSON.stringify(round,null,2))}</pre></details>`).join("") || empty("No generation rounds", "Deterministic paths may finish without generation.");
   $("#function-detail").innerHTML=`<section class="panel panel-pad function-detail"><div class="section-heading"><div><h2>${esc(r.unit || r.addr)}</h2><p class="muted">${esc(r.client)} · ${esc(r.addr)} · ${esc(r.model)}</p></div>${badge(r.status)}</div><div class="detail-tabs">${["source","timeline","commands","attempts"].map(t=>`<button class="text-button ${t===detailTab ? "selected" : ""}" data-detail-tab="${t}">${t[0].toUpperCase()+t.slice(1)}</button>`).join("")}</div>${r.failure ? `<p class="failure-note">${esc(r.failure)}</p>` : ""}${body}</section>`;
 }
-document.addEventListener("input", event=>{if(event.target.id.startsWith("function-"))renderFunctionList();});
-document.addEventListener("click",event=>{if(event.target.closest("#refresh-functions"))act(loadFunctions);});
-
-setInterval(()=>{if(page==="functions")act(loadFunctions);},5000);
+let functionSearchTimer;
+document.addEventListener("input", event=>{
+  if(event.target.id!=="function-search")return;
+  functionFilters.query=event.target.value;functionFilters.limit=100;
+  clearTimeout(functionSearchTimer);functionSearchTimer=setTimeout(()=>act(loadFunctions),250);
+});
+document.addEventListener("change", event=>{
+  if(!["function-status","function-sort"].includes(event.target.id))return;
+  functionFilters.status=$("#function-status").value;functionFilters.sort=$("#function-sort").value;functionFilters.limit=100;act(loadFunctions);
+});
+document.addEventListener("click",event=>{
+  if(event.target.closest("#refresh-functions"))act(loadFunctions);
+  if(event.target.closest("#more-functions")) {functionFilters.limit+=100;act(loadFunctions);}
+});
+setInterval(()=>{if(page==="history")act(loadFunctions);},5000);
 
 function pauseFollow(event) {
   const node=event.target.closest("#worker-chat,#log-scroll");if(!node)return;

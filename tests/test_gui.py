@@ -191,9 +191,26 @@ class ControlTests(unittest.TestCase):
 
 
 class DashboardTests(unittest.TestCase):
+    def test_agent_worker_optional_goal(self):
+        for goal in ("", "   ", "Match Ogre"):
+            with patch.object(self.app, "schedule"):
+                identifier = self.app.start({"kind": "agent_worker", "cli": "codex", "goal": goal})
+            job = self.app.jobs[identifier]
+            self.assertEqual(job["config"]["goal"], goal)
+            self.assertIn("--continuous", job["args"])
+            self.assertEqual("--automatic" in job["args"], not bool(goal.strip()))
+            if goal.strip():
+                self.assertEqual(job["args"][job["args"].index("--goal") + 1], goal)
+
+    def test_automatic_mode_selects_library_campaigns(self):
+        for mode in ("automatic", "fast", "balanced", "deep"):
+            with patch.object(self.app, "schedule"):
+                identifier = self.app.start({"kind": "agent_worker", "cli": "codex", "mode": mode})
+            self.assertIn("--experimental", self.app.jobs[identifier]["args"])
+
     def test_agent_worker_joins_managed_worker_history(self):
         with patch.object(self.app, "schedule"):
-            identifier = self.app.start({"kind": "agent_worker", "cli": "codex", "workers": 3, "model": "chosen-model"})
+            identifier = self.app.start({"kind": "agent_worker", "cli": "codex", "client": "2008-06", "workers": 3, "model": "chosen-model"})
         job = self.app.jobs[identifier]
         self.assertEqual(job["kind"], "agent_worker")
         self.assertEqual(job["config"]["workers"], 3)
@@ -201,6 +218,56 @@ class DashboardTests(unittest.TestCase):
         self.assertIn("--automatic", job["args"])
         self.assertIn("chosen-model", job["args"])
         self.assertNotIn(self.app.worker_token or "NOT_A_TOKEN", job["args"])
+
+    def test_agent_connection_fields_reach_cli_and_history(self):
+        with patch.object(self.app, "schedule"):
+            identifier = self.app.start({"kind": "agent_worker", "cli": "codex",
+                "client": "2008-06", "user": "other-user", "server": "other-host:8765", "mode": "deep"})
+        job = self.app.jobs[identifier]
+        self.assertEqual(job["title"], "Agent · codex · 2008-06")
+        self.assertEqual(job["config"]["user"], "other-user")
+        self.assertEqual(job["config"]["server"], "other-host:8765")
+        self.assertEqual(job["config"]["mode"], "deep")
+        for key, value in (("--user", "other-user"), ("--server", "other-host:8765")):
+            self.assertEqual(job["args"][job["args"].index(key) + 1], value)
+        for overrides in ({"client": "unknown-client"}, {"user": "bad user"}, {"server": "bad host"}):
+            with self.assertRaises(ValueError), patch.object(self.app, "schedule"):
+                self.app.start({"kind": "agent_worker", "cli": "codex", **overrides})
+
+    def test_unlimited_byte_limit_reaches_both_workers(self):
+        self.assertEqual(gui_worker.validate(config(max_size=0), check_model=False)["max_size"], 0)
+        with patch.object(self.app, "schedule"):
+            identifier = self.app.start({"kind": "agent_worker", "cli": "claude", "client": "2008-06", "max_size": 0})
+        args = self.app.jobs[identifier]["args"]
+        self.assertEqual(args[args.index("--max-size") + 1], "0")
+
+    def test_agent_selected_and_all_clients_reach_cli(self):
+        for client in ("2008-06", "2009-12", ""):
+            with patch.object(self.app, "schedule"):
+                identifier = self.app.start({"kind": "agent_worker", "cli": "codex", "client": client})
+            job = self.app.jobs[identifier]
+            self.assertEqual(job["config"]["client"], client)
+            self.assertEqual(job["args"][job["args"].index("--client") + 1], client or "all")
+
+    def test_function_history_includes_shared_source_without_local_activity(self):
+        row = dict(id="server:2009-12:00401000", client="2009-12", addr="00401000",
+                   unit="Mined getter", score=100, base_score=None, started=10, model="alice", status="matched")
+        self.app.initial["server"] = "localhost:8765"
+        from roc import telemetry
+        api = Mock()
+        api.call.return_value = [row]
+        with patch.object(worker, "Api", return_value=api), patch.object(telemetry, "read", return_value=[]):
+            self.assertEqual(self.app.function_history(query="alice"), [row])
+        self.assertIn("query=alice", api.call.call_args.args[0])
+        api.close.assert_called_once()
+
+    def test_research_command_uses_registered_recipe(self):
+        from roc import research
+        recipe = next(iter(json.loads(research.RECIPES_FILE.read_text(encoding="utf-8"))))
+        self.assertEqual(gui.command_args(dict(command="research", research_action="plan", recipe=recipe)),
+                         ["research", "plan", recipe])
+        with self.assertRaises(ValueError):
+            gui.command_args(dict(command="research", research_action="run", recipe="missing"))
 
     def test_every_dashboard_command_parses_in_real_cli(self):
         import importlib.util
@@ -215,6 +282,21 @@ class DashboardTests(unittest.TestCase):
                 command.assert_called_once()
                 if name in ("mass", "libs"):
                     self.assertEqual(command.call_args.args[0].client, "2008-06")
+
+    def test_legacy_automatic_cli_defaults_to_2008(self):
+        import importlib.util
+        from roc import agent_auto
+        spec = importlib.util.spec_from_file_location("roc_agent_scope_test", gui.ROOT / "roc.py")
+        cli = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(cli)
+        for selected in (None, "2008-06", "2009-12", "all"):
+            args = ["agent", "claude", "--automatic", "--server", "localhost:8765", "--user", "tester"]
+            if selected:
+                args += ["--client", selected]
+            with patch.object(agent_auto, "run") as run:
+                cli.main(args)
+            self.assertEqual(run.call_args.kwargs["client"], selected or "2008-06")
+            self.assertTrue(run.call_args.kwargs["experimental"])
 
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()

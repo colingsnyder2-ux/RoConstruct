@@ -20,6 +20,28 @@ def test_goal_and_interactive_sessions_sync_shared_memory(monkeypatch, offline_m
     assert len(offline_memory) == 4  # before and after each session
 
 
+def test_continuous_goal_refreshes_memory_and_changes_strategy(monkeypatch, offline_memory):
+    prompts = []
+
+    def run(cli, prompt, model, minutes, log, goal):
+        prompts.append(prompt)
+        log("No gain: rejected previous hypothesis")
+        return 0
+
+    def pause(seconds):
+        if len(prompts) == 2:
+            raise KeyboardInterrupt
+
+    monkeypatch.setattr(agent, "run_agent", run)
+    monkeypatch.setattr(agent.time, "sleep", pause)
+    with pytest.raises(KeyboardInterrupt):
+        agent.run_goal("codex", "Match Ogre", continuous=True, log=lambda *a: None)
+    assert len(offline_memory) == 4
+    assert "Current strategy: Use fresh target diffs" in prompts[0]
+    assert "Current strategy: Inspect vendor build preludes" in prompts[1]
+    assert "No gain: rejected previous hypothesis" in prompts[1]
+
+
 class FakeApi:
     servers, token = ["http://x"], None
 
@@ -90,7 +112,7 @@ def test_dashboard_agent_command_args():
     assert automatic[automatic.index("--workers") + 1] == "3"
     assert automatic[-2:] == ["--model", "chosen-model"] and "--individual" in automatic
     for fields in ({"workers": 0}, {"jobs": 201}, {"batch_size": 0}, {"batch_minutes": 61},
-                   {"max_size": 0}, {"model": "--bad"}):
+                   {"max_size": -1}, {"model": "--bad"}):
         with pytest.raises(ValueError):
             command_args({"command": "agent", "cli": "claude", "automatic": True, **fields})
 
@@ -102,6 +124,23 @@ def test_stream_events_become_console_lines():
     agent.show('{"type":"result","num_turns":7,"is_error":false}', lines.append)
     agent.show("plain text\n", lines.append)
     assert lines == ["Trying zlib.", "  > Bash roc check 2008-06 00401000", "Agent finished after 7 turns.", "plain text"]
+
+
+def test_codex_stream_hides_prompt_and_keeps_commands_results_errors():
+    import json
+    lines = []
+    events = [
+        {"type": "thread.started", "thread_id": "test"},
+        {"type": "item.completed", "item": {"type": "user_message", "text": "huge prompt"}},
+        {"type": "item.started", "item": {"type": "command_execution", "command": "roc check"}},
+        {"type": "item.completed", "item": {"type": "command_execution", "exit_code": 0, "aggregated_output": "98%"}},
+        {"type": "item.completed", "item": {"type": "agent_message", "text": "G3D checked"}},
+        {"type": "turn.failed", "error": {"message": "test failure"}},
+    ]
+    for event in events:
+        agent.show(json.dumps(event), lines.append)
+    assert lines == ["Agent session started.", "  > roc check", "Command finished · exit 0\n98%", "G3D checked", "Agent error: test failure"]
+    assert "--json" in agent.command("codex")
 
 
 def test_interactive_sends_one_safe_line(monkeypatch):
@@ -155,3 +194,43 @@ def test_session_memory_records_rollback_and_server_result(tmp_path, monkeypatch
     assert records[0]["candidate"] == 10 and records[0]["after"] == 40
     assert records[0]["before_hash"] == records[0]["after_hash"]
     assert records[1]["server_stored"] == 90 and records[1]["outcome"] == "improved"
+
+
+@pytest.mark.parametrize("cli", ["claude", "codex"])
+def test_early_cli_exit_logs_real_error_and_returns_failure(monkeypatch, cli):
+    import io
+    from unittest.mock import Mock
+    class ClosedInput:
+        def write(self, text):
+            raise BrokenPipeError("child exited")
+        def close(self):
+            raise BrokenPipeError("child exited")
+    process = Mock(stdin=ClosedInput(), stdout=io.StringIO("error: rejected CLI argument\n"))
+    process.wait.return_value = 2
+    monkeypatch.setattr(agent.shutil, "which", lambda cli: cli)
+    monkeypatch.setattr(agent.subprocess, "Popen", lambda *a, **kw: process)
+    lines = []
+    assert agent.run_agent(cli, "prompt", log=lines.append) == 2
+    assert "error: rejected CLI argument" in lines
+    assert process.stdout.closed
+    process.wait.assert_called_once()
+
+
+def test_codex_launch_uses_supported_sandbox_flags():
+    args = agent.command("codex", "selected-model")
+    assert "--full-auto" not in args
+    assert args[args.index("--sandbox") + 1] == "workspace-write"
+    assert 'approval_policy="never"' in args
+    assert args[args.index("--model") + 1] == "selected-model"
+
+
+def test_goal_cli_propagates_failed_agent_exit(monkeypatch):
+    import importlib.util
+    from pathlib import Path
+    spec = importlib.util.spec_from_file_location("roc_agent_exit_test", Path(__file__).resolve().parents[1] / "roc.py")
+    cli = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(cli)
+    monkeypatch.setattr(agent, "run_goal", lambda *a, **kw: 2)
+    with pytest.raises(SystemExit) as error:
+        cli.main(["agent", "codex", "--goal", "Match G3D", "--client", "2008-06"])
+    assert error.value.code == 2

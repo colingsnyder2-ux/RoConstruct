@@ -3,61 +3,258 @@
     "op": "grid",
     "library": "Ogre 1.4.5 / Roblox subclasses",
     "hypothesis": "x87 ordering of Ogre client forks needs /fp:fast on the source's own flags, under either 2008 build",
-    "targets": {"unit": "^Ogre::", "scores": [90, 99]},
-    "builds": [50727, 21022],
-    "profiles": ["keep"],
-    "append": [" /fp:fast"],
-    "result": {"date": "2026-10-12", "trials": 32, "new_verified": 2, "evidence": "work/ogre-resume-20261012/flags.jsonl"},
+    "targets": {
+      "unit": "^Ogre::",
+      "scores": [
+        90,
+        99
+      ]
+    },
+    "builds": [
+      50727,
+      21022
+    ],
+    "profiles": [
+      "keep"
+    ],
+    "append": [
+      " /fp:fast"
+    ],
+    "result": {
+      "date": "2026-10-12",
+      "trials": 32,
+      "new_verified": 2,
+      "evidence": "work/ogre-resume-20261012/flags.jsonl"
+    },
     "next": "Propagate to float-heavy Ogre siblings only; flags alone do not fix layout mismatches."
   },
   "ogre-fork-units-2008": {
     "op": "fanout",
     "library": "Ogre 1.4.5 / Roblox subclasses",
     "hypothesis": "Roblox Ogre forks re-emitted from authentic 1.4.5 method bodies as client-import subclasses",
-    "sources": [{"recipe": "ogre-1.4.5-dll", "files": ["roc_fork_fe0538e1034a8d62.cpp", "roc_fork_aab1724a168d52da.cpp"],
-                 "builds": [50727, 21022], "flags": ["/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast"]}],
-    "result": {"date": "2026-10-12", "trials": 4, "new_verified": 2, "evidence": "work/ogre-resume-20261012/fork-fast.jsonl"},
+    "sources": [
+      {
+        "recipe": "ogre-1.4.5-dll",
+        "files": [
+          "roc_fork_fe0538e1034a8d62.cpp",
+          "roc_fork_aab1724a168d52da.cpp"
+        ],
+        "builds": [
+          50727,
+          21022
+        ],
+        "flags": [
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast"
+        ]
+      }
+    ],
+    "result": {
+      "date": "2026-10-12",
+      "trials": 4,
+      "new_verified": 2,
+      "evidence": "work/ogre-resume-20261012/fork-fast.jsonl"
+    },
     "next": "New forks: add the unit with libs.add_unit (portable), then list it here."
   },
   "ogre-local-family-2008": {
     "op": "fanout",
     "library": "Ogre 1.4.5 / Roblox subclasses",
     "hypothesis": "Binary-supported client-import units match sibling methods once compiled with exe flags",
-    "sources": [{"recipe": "ogre-1.4.5-dll",
-                 "files": ["roc_try_ebdcbd65a010751e.cpp", "roc_try_128da6f25e32415f.cpp",
-                           "roc_try_90e948f69e73921c.cpp", "roc_try_16107800e0b0542a.cpp"],
-                 "builds": [21022, 50727],
-                 "flags": ["/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast", "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"]}],
-    "result": {"date": "2026-10-12", "trials": 24, "new_verified": 2, "evidence": "work/ogre-resume-20261012/local-family.jsonl"}
+    "sources": [
+      {
+        "recipe": "ogre-1.4.5-dll",
+        "files": [
+          "roc_try_ebdcbd65a010751e.cpp",
+          "roc_try_128da6f25e32415f.cpp",
+          "roc_try_90e948f69e73921c.cpp",
+          "roc_try_16107800e0b0542a.cpp"
+        ],
+        "builds": [
+          21022,
+          50727
+        ],
+        "flags": [
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast",
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"
+        ]
+      }
+    ],
+    "result": {
+      "date": "2026-10-12",
+      "trials": 24,
+      "new_verified": 2,
+      "evidence": "work/ogre-resume-20261012/local-family.jsonl"
+    }
   },
   "ogre-dll-replay-2008": {
     "op": "fanout",
     "library": "Ogre 1.4.5",
     "hypothesis": "Generic rgmain.dll settings on four core Ogre files reach executable copies",
-    "sources": [{"recipe": "ogre-1.4.5-dll",
-                 "files": ["OgreSceneManager.cpp", "OgreSceneNode.cpp", "OgreEntity.cpp", "OgreSubEntity.cpp"],
-                 "builds": [21022], "flags": ["/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"]}],
-    "result": {"date": "2026-10-11", "trials": 4, "new_verified": 0, "status": "rejected",
-               "evidence": "work/claude-continuation-20261011/ogre.jsonl"},
+    "sources": [
+      {
+        "recipe": "ogre-1.4.5-dll",
+        "files": [
+          "OgreSceneManager.cpp",
+          "OgreSceneNode.cpp",
+          "OgreEntity.cpp",
+          "OgreSubEntity.cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"
+        ]
+      }
+    ],
+    "result": {
+      "date": "2026-10-11",
+      "trials": 4,
+      "new_verified": 0,
+      "status": "rejected",
+      "evidence": "work/claude-continuation-20261011/ogre.jsonl"
+    },
     "next": "Do not rerun. DLL flags do not transfer to exe subclasses; use client-import headers."
   },
   "boost-compiler-gates-2008": {
     "op": "grid",
     "library": "Boost 1.34.1 templates",
     "hypothesis": "Boost near-misses are a compiler build/profile gate",
-    "targets": {"lib": "^templates-|boost", "scores": [90, 99]},
-    "builds": [50727, 21022],
-    "profiles": ["/O2 /GS- /EHsc /MD", "/O2 /Ob2 /GS- /EHsc /MD", "/O1 /GS- /EHsc /MD", "/Od /Ob0 /GS /EHsc /MD"],
-    "result": {"date": "2026-10-12", "trials": 112, "new_verified": 0, "status": "rejected",
-               "evidence": "work/boost-finish-20261012/compiler-gates.jsonl"},
+    "targets": {
+      "lib": "^templates-|boost",
+      "scores": [
+        90,
+        99
+      ]
+    },
+    "builds": [
+      50727,
+      21022
+    ],
+    "profiles": [
+      "/O2 /GS- /EHsc /MD",
+      "/O2 /Ob2 /GS- /EHsc /MD",
+      "/O1 /GS- /EHsc /MD",
+      "/Od /Ob0 /GS /EHsc /MD"
+    ],
+    "result": {
+      "date": "2026-10-12",
+      "trials": 112,
+      "new_verified": 0,
+      "status": "rejected",
+      "evidence": "work/boost-finish-20261012/compiler-gates.jsonl"
+    },
     "next": "Exhausted, along with 15 register grids. Needs new source evidence (authentic NDEBUG units)."
   },
   "xtp-strlen-sweep-2008": {
     "op": "fanout",
     "library": "XTP 11.2.2",
     "hypothesis": "Vendor prelude (_LIB, XTPDLLExports.h) plus noinline CString accessors reproduce XTP",
-    "sources": [{"recipe": "xtp-11.2.2-lib-strlen", "builds": [21022], "flags": ["/O2 /MD /GS /EHsc /Ob1"]}],
-    "result": {"date": "2026-10-11", "status": "exhausted", "evidence": "findings:reports/xtp-2008-coverage-20261011.md"},
+    "sources": [
+      {
+        "recipe": "xtp-11.2.2-lib-strlen",
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /MD /GS /EHsc /Ob1"
+        ]
+      }
+    ],
+    "result": {
+      "date": "2026-10-11",
+      "status": "exhausted",
+      "evidence": "findings:reports/xtp-2008-coverage-20261011.md"
+    },
     "next": "Rerun only after a recipe or header change: the dependency-aware cache rebuilds changed units."
+  },
+  "xtp-attribution-lua-math-2008": {
+    "op": "fanout",
+    "sources": [
+      {
+        "flags": [
+          "/O2 /GS- /MD /fp:fast"
+        ],
+        "builds": [
+          21022
+        ],
+        "files": [
+          "lmathlib.c"
+        ],
+        "recipe": "lua-5.1.2",
+        "langs": [
+          "c"
+        ]
+      }
+    ],
+    "output": "work/agent-campaigns/b146b804d111/fanout",
+    "client": "2008-06",
+    "hypothesis": "Fresh sole-survivor diff proves Lua math_exp; sibling math_tan exact under 21022 fp:fast. Replay authentic Lua 5.1.2 math unit.",
+    "library": "xtp-15.2.1 attribution / Lua math",
+    "next": "Pilot math_exp, then fan out only this proven math family; preserve prior exacts."
+  },
+  "mfc-attribution-atl-enum-2008": {
+    "op": "fanout",
+    "client": "2008-06",
+    "library": "mfc-9.0 attribution / ATL enum",
+    "hypothesis": "0040f440 owns IUnknown pointer array, flags BitOwn=2; matches authentic CComEnumImpl destructor",
+    "sources": [
+      {
+        "recipe": "atl-9.0-dll-rtm",
+        "unit": "work\\agent-campaigns\\cf56cb487737\\enum.cpp",
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /GS- /EHsc /MD"
+        ]
+      }
+    ],
+    "output": "work\\agent-campaigns\\cf56cb487737\\enum-fanout",
+    "next": "Pilot destructor then fan out genuine enum family; observe IID/type data before broader types",
+    "result": {
+      "date": "2026-10-12",
+      "pilot_verified": 1,
+      "fanout_trials": 1,
+      "fanout_new_verified": 0,
+      "evidence": "work\\agent-campaigns\\cf56cb487737\\receipts.json"
+    }
+  },
+  "mfc-attribution-color-image-2008": {
+    "op": "fanout",
+    "client": "2008-06",
+    "library": "mfc-9.0 attribution / MFC CEditView and ATL CImage",
+    "hypothesis": "Verified authentic CEditView CtlColor and target-proven CImage plain mask-copy fork; fan out whole emitted objects",
+    "sources": [
+      {
+        "recipe": "mfc-9.0-shared-rtm",
+        "unit": "work\\agent-campaigns\\cf56cb487737\\chat-color-view.cpp",
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ]
+      },
+      {
+        "recipe": "atl-9.0-dll-rtm",
+        "unit": "work\\agent-campaigns\\cf56cb487737\\image-plain-copy.cpp",
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ]
+      }
+    ],
+    "output": "work\\agent-campaigns\\cf56cb487737\\color-image-fanout",
+    "next": "Read actual app inheritance and imported declarations; no unchanged library sweep",
+    "result": {
+      "date": "2026-10-12",
+      "pilot_verified": 2,
+      "fanout_trials": 2,
+      "fanout_new_verified": 0,
+      "evidence": "work\\agent-campaigns\\cf56cb487737\\receipts.json"
+    }
   }
 }

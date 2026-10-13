@@ -9,6 +9,28 @@ from unittest.mock import Mock, patch
 from roc import server
 
 
+def test_progress_build_reads_local_sources_without_shadowing_clients(tmp_path, monkeypatch):
+    from roc import progress
+    monkeypatch.setattr(progress, "ROOT", tmp_path)
+    monkeypatch.setattr(progress, "DOCS", tmp_path / "docs")
+    monkeypatch.setattr(progress.clients, "load", lambda: {"test": {"compiler": "test compiler"}})
+    monkeypatch.setattr(progress, "library_meta", lambda: {})
+    monkeypatch.setattr(progress, "landmarks", lambda *a: [])
+    monkeypatch.setattr(progress, "source_links", lambda: {})
+    monkeypatch.setattr(progress, "add_history", lambda *a: None)
+    work = tmp_path / "work/test"
+    work.mkdir(parents=True)
+    (work / "functions.jsonl").write_text(json.dumps(dict(addr="00401000", size=8, unit="G3D")) + "\n")
+    (work / "scores.json").write_text(json.dumps({"00401000": 99}))
+    sources = tmp_path / "src/test"
+    sources.mkdir(parents=True)
+    (sources / "00401000.cpp").write_text("int f() { return 1; }")
+    result = progress.build(remote={"scores": {}, "leaderboard": []})
+    assert result["clients"][0]["partial"] == 1
+    data = json.loads((tmp_path / "docs/data/test.json").read_text())
+    assert data["funcs"][0][4] is True
+
+
 class FindingsTests(unittest.TestCase):
     def test_hourly_publish_syncs_sources_even_when_site_unchanged(self):
         from roc import progress, setup

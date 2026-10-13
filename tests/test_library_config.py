@@ -5,6 +5,19 @@ import subprocess
 from roc import libs
 
 
+def test_compile_directory_is_writable_and_cleaned_on_failure():
+    from pathlib import Path
+    import pytest
+    from roc import match
+    with pytest.raises(RuntimeError):
+        with match.compile_directory() as directory:
+            path = Path(directory)
+            (path / "f.cpp").write_text("int f() { return 1; }")
+            assert (path / "f.cpp").read_text() == "int f() { return 1; }"
+            raise RuntimeError("failed compile")
+    assert not path.exists()
+
+
 def test_shared_mfc_recipe_uses_real_macros_and_dynamic_crt():
     recipe = libs.RECIPES['xtp-11.2.2-shared-mfc']
     assert recipe['src'] == libs.RECIPES['xtp-11.2.2']['src']

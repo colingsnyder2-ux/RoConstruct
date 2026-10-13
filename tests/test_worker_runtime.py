@@ -172,3 +172,17 @@ def test_example_cache_preserves_family_provenance(family, strict, rewrite, scor
             assert llm.call_args.kwargs["provider_options"]["family_exemplars"] == strict
     assert sum(path.startswith("/v1/examples") for path, _ in calls) == (2 if family and not strict else 1)
     assert sum(path == "/v1/submit" for path, _ in calls) == (2 if strict and score else 0)
+
+
+def test_usable_clients_loads_registry_before_filtering(tmp_path, monkeypatch):
+    monkeypatch.setattr(worker, "ROOT", tmp_path)
+    monkeypatch.setattr(worker.setup, "compilers", lambda: {"msvc"})
+    monkeypatch.setattr(worker.clients, "load", lambda: {"2008-06": {"sha256": "same"}})
+    monkeypatch.setattr(worker.clients, "load_sources", lambda: {})
+    monkeypatch.setattr(worker.clients, "status", lambda name, entry: "ok")
+    functions = tmp_path / "work" / "2008-06" / "functions.jsonl"
+    functions.parent.mkdir(parents=True)
+    functions.write_text("", encoding="utf-8")
+    assert worker.usable_clients({"clients": {"2008-06": {
+        "sha256": "same", "compiler_build": "msvc"}}}) == ["2008-06"]
+    assert worker.usable_clients({"clients": {}}) == []

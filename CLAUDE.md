@@ -98,7 +98,9 @@ gains, with `roc submit <client> [addr ...]`. Afterwards append one dated entry 
 
 ## Rules
 
-- Current focus is 2008-06. Never touch client 2009-12 (no mining, testing or submitting).
+- Default research focus is 2008-06. Agent workers honor the selected client;
+  All clients authorizes every registered client, including 2009-12. Keep each
+  client's sources, compiler configuration and evidence separate.
 - A source that matches is a codegen analog: don't claim it is the original declaration.
 - No inline assembly, `__emit`, byte blobs or patched target bytes.
 - Never invent struct fields, offsets or ABIs: derive them from the binary or a compile.

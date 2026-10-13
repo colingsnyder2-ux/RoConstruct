@@ -7,21 +7,52 @@ const agentContext={agentState:{clis:{},client:{},memory:{lessons:[{
   client:"2008-06",kind:"session",before:40,candidate:10,after:40,outcome:"rolled_back"}]}},
   agentPlan:null,jobs:[],agentAutoConfig:{},check:()=>"",heading:()=>"",button:()=>"",field:()=>"",esc:value=>String(value).replaceAll("<","&lt;")};
 vm.createContext(agentContext);
-vm.runInContext(source.slice(source.indexOf("function agentPage()"),source.indexOf("async function loadAgent()")),agentContext);
-const agentHTML=agentContext.agentPage();
-assert.doesNotMatch(agentHTML,/id="agent-auto-form"/);
-assert.match(agentHTML,/live in Workers/);
+vm.runInContext(source.slice(source.indexOf("function experimentMemory(s)"),source.indexOf("function settings()")),agentContext);
 const memoryHTML=agentContext.experimentMemory(agentContext.agentState.memory);
-assert.match(memoryHTML,/\+321 exact/);
 assert.match(memoryHTML,/candidate 10%/);
 assert.match(memoryHTML,/rolled_back/);
-assert.match(agentContext.agentAutomatic(),/Individual mining is disabled unless selected/);
-agentContext.agentPlan={note:"snapshot",excluded:{"no source":2},areas:[{
-  title:"Imports",eligible:5,bytes:500,priority:90,advice:"IAT calls",examples:[],parked:false}]};
-assert.match(agentContext.agentAutomatic(),/Imports/);
-assert.match(agentContext.agentAutomatic(),/2 no source/);
+agentContext.meta={initial:{user:"tester",server:"localhost:8765"},clients:[{name:"2008-06"},{name:"2009-12"}]};
+agentContext.field=(label,name,value,options={})=>options.choices ? `<select name="${name}">${options.choices.map(([key,text])=>`<option value="${key}">${text}</option>`).join("")}</select>` : `<input name="${name}" value="${value}">`;
+agentContext.button=label=>`<button>${label}</button>`;
+const simpleAgentHTML=agentContext.agentAutomatic();
+assert.match(simpleAgentHTML,/<input name="goal" value="">/);
+assert.match(simpleAgentHTML,/Automatic/);
+assert.match(simpleAgentHTML,/Fast/);
+assert.match(simpleAgentHTML,/Balanced/);
+assert.match(simpleAgentHTML,/Deep/);
+assert.match(simpleAgentHTML,/Start Agent/);
+assert.doesNotMatch(simpleAgentHTML,/Preview|Total target cap|Max function bytes|Individual mining|help-note/);
+for(const name of ["client","user","server","cli","model","workers"])
+  assert.match(simpleAgentHTML,new RegExp(`name="${name}"`));
+assert.match(simpleAgentHTML,/All clients/);
+assert.match(simpleAgentHTML,/2009-12/);
+assert.match(simpleAgentHTML,/class="preset-row"/);
+assert.match(simpleAgentHTML,/data-agent-mode="automatic" class="active"/);
+assert.doesNotMatch(simpleAgentHTML,/<select name="mode">/);
+assert.match(source,/if\(target.dataset.agentMode\) \{readAgentAuto\(\);agentAutoConfig.mode=target.dataset.agentMode;render\(\);\}/);
+assert.doesNotMatch(simpleAgentHTML,/data-agent-preset/);
+assert.match(source,/data-worker-mode="agent">Agent/);
+assert.match(source,/data-worker-mode="function">Match/);
+for(const [mode,minutes] of [["automatic",120],["fast",30],["balanced",120],["deep",240]]) {
+  agentContext.$=()=>({dataset:{mode},elements:Object.fromEntries(Object.entries({
+    mode,client:"2008-06",user:"other-user",server:"other-host:8765",cli:"codex",model:"chosen-model",goal:"Match Ogre",workers:"3"
+  }).map(([key,value])=>[key,{value}]))});
+  agentContext.agentAutoConfig={cli:"codex",model:"chosen-model",individual:true};
+  const config=agentContext.readAgentAuto();
+  assert.equal(config.cli,"codex");assert.equal(config.model,"chosen-model");
+  assert.equal(config.goal,"Match Ogre");
+  assert.equal(config.minutes,minutes);assert.equal(config.individual,false);
+  assert.equal(config.max_size,mode==="deep" ? 0 : mode==="fast" ? 256 : 512);
+  assert.equal(config.workers,3);assert.ok(config.jobs>0);
+  assert.equal(config.user,"other-user");assert.equal(config.server,"other-host:8765");
+  assert.equal(config.client,"2008-06");
+}
+assert.doesNotMatch(source,/data-worker-mode="memory"|data-agent-plan|agent-auto-plan/);
+assert.match(source,/summary>Experiments/);
+assert.match(source,/summary>Runs/);
+assert.match(simpleAgentHTML,/Install \/ sign in/);
 agentContext.agentState.memory=null;
-assert.match(agentContext.experimentMemory(null),/Loading experiment memory/);
+assert.match(agentContext.experimentMemory(null),/Loading experiments/);
 const selection=source.slice(source.indexOf("async function selectWorker(id)"));
 const context={workerRun:"",chatSignature:"",page:"workers",logs:[],token:"session",renders:[],messages:[],control:{value:""},AbortSignal,
   $(){return this.control;},renderWorkerChat(){context.renders.push(context.workerRun);},toast(message){context.messages.push(message);}};
@@ -75,6 +106,21 @@ const feedContext={jobs:[],logs:[],workerRun:"",workerLoop:"",chatCompact:false,
 vm.createContext(feedContext);
 vm.runInContext(source.slice(source.indexOf("function terminalMessage("),source.indexOf("function setChatFollow(")),feedContext);
 vm.runInContext(source.slice(source.indexOf("function logText("),source.indexOf("function filteredLogs(")),feedContext);
+feedContext.codeBlock=(text)=>`<pre>${text}</pre>`;
+const longAgentRow={job:"agent",seq:1,time:1,event:"log",message:"Command finished · exit 0\n"+"large output ".repeat(500)};
+const quotedFailure={...longAgentRow,message:"Command finished · exit 0\nDocs: compiler failed; Error: example only"};
+assert.doesNotMatch(feedContext.terminalMessage(quotedFailure,new Map(),true),/terminal-row error/);
+assert.match(feedContext.terminalMessage({...longAgentRow,message:"Command finished · exit 1\nCompiler failed"},new Map(),true),/terminal-row error/);
+assert.match(feedContext.terminalMessage({...longAgentRow,message:"Agent error: startup failed"},new Map(),true),/terminal-row error/);
+const compactAgentRow=feedContext.terminalMessage(longAgentRow,new Map(),true);
+assert.match(compactAgentRow,/<summary>.*Command finished · exit 0.*<\/summary>/);
+assert.match(compactAgentRow,/<pre>large output/);
+assert.doesNotMatch(compactAgentRow,/<details open/);
+assert.match(feedContext.terminalMessage(longAgentRow,new Map(),false),/<pre>large output/);
+assert.match(feedContext.terminalMessage({...longAgentRow,message:'  > py roc.py check'},new Map(),false),/<summary>.*Agent command.*<\/summary><pre>py roc.py check/);
+const fencedAgentRow=feedContext.terminalMessage({...longAgentRow,message:'Change:\n```cpp\nint f() { return 1; }\n```'},new Map(),false);
+assert.match(fencedAgentRow,/<pre>int f\(\) \{ return 1; \}/);
+assert.doesNotMatch(fencedAgentRow,/```cpp/);
 vm.runInContext(source.slice(source.indexOf("function renderWorkerChat("),source.indexOf("function workerCards(")),feedContext);
 for(const loops of [3,4,100]) {
   feedContext.jobs=[{id:"run",kind:"worker",status:"running",config:{client:"C"},slots:Object.fromEntries(Array.from({length:loops},(_,i)=>[i,{}]))}];
@@ -132,3 +178,5 @@ console.log("Compact: one result per function, benchmarks, 3/4/100-loop boundary
   context.setChatFollow(false);viewport.last=null;context.scrollToLatest(viewport,true);assert.equal(viewport.last,null);
   console.log("Tabs and scrolling: offline selection, manual pause, smooth jump, cancelled follow passed");
 })().catch(error=>{console.error(error);process.exitCode=1;});
+
+assert.match(source,/deep:\{rounds:6,max_size:0,max_tokens:4096\}/);

@@ -77,7 +77,7 @@ def test_reports_cannot_claim_server_verification(shared_server):
     assert flags == [True, False, False]
     assert store.agent_memory(after=1, limit=1)["cursor"] == 2
     with pytest.raises(ValueError):
-        store.remember("alice", [dict(report, client="2009-12")])
+        store.remember("alice", [dict(report, client="unknown-client")])
 
 
 def test_findings_export_keeps_portable_evidence(shared_server, tmp_path, monkeypatch):
@@ -110,3 +110,17 @@ def test_rejected_record_is_skipped_and_offline_keeps_queue(shared_server, tmp_p
     result = agent_memory.shared(address, "test-token", "alice", upload=True)
     assert result["available"] and result["uploaded"] == 2 and result["rejected"] == 1
     assert [row["addresses"] for row in store.agent_memory()["records"]] == [["00401000"]]
+
+
+def test_verification_receipts_match_the_report_client(shared_server):
+    store, _ = shared_server
+    source = "int f() { return 2; }"
+    for client in ("2008-06", "2009-12"):
+        store.db.execute("INSERT INTO funcs(client,addr,size,unit) VALUES(?,?,10,'Pilot')", (client,"00401000"))
+    store.db.commit()
+    store.submit("2009-12", "00401000", "alice", 99, source, verified=True)
+    report = dict(kind="auto_target", client="2009-12", addresses=["00401000"], after=99,
+        outcome="server_verified", source_hash=hashlib.sha256(source.encode()).hexdigest())
+    store.remember("alice", [report])
+    store.remember("alice", [dict(report, client="2008-06")])
+    assert [row["server_confirmed"] for row in store.agent_memory()["records"]] == [True, False]

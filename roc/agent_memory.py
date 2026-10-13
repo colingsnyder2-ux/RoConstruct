@@ -3,7 +3,7 @@ import hashlib
 import json
 from pathlib import Path
 
-from roc import providers, worker
+from roc import clients, providers, worker
 
 ROOT = Path(__file__).resolve().parent.parent
 CONTEXT_FILES = ("CLAUDE.md", "docs/AGENT_GUIDE.md", "research/recipes.json", "research/reports.json", "research/log.jsonl")
@@ -20,7 +20,7 @@ def records():
         for line in path.read_text(encoding="utf-8").splitlines():
             try:
                 row = json.loads(line)
-                if isinstance(row, dict) and row.get("client", "2008-06") == "2008-06":
+                if isinstance(row, dict) and row.get("client", "2008-06") in clients.load():
                     rows.append(row)
             except ValueError:
                 continue

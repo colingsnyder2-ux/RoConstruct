@@ -3,15 +3,18 @@
 Score 100 = byte-identical once relocated fields are masked on both sides.
 """
 import difflib
+import contextlib
 import functools
 import hashlib
 import json
 import os
 import re
+import shutil
 import struct
 import subprocess
 import tempfile
 import threading
+import uuid
 from pathlib import Path
 
 import pefile
@@ -684,6 +687,21 @@ def compile_text(client, text, flags=None, build=None):
     return _compile(text, flags, build, d.get("lang") == "c")
 
 
+@contextlib.contextmanager
+def compile_directory():
+    if os.name != "nt":
+        with tempfile.TemporaryDirectory() as directory:
+            yield directory
+        return
+    # Python's mode-0700 temp directories discard inherited Windows sandbox ACLs.
+    directory = Path(tempfile.gettempdir()) / ("roc-compile-" + uuid.uuid4().hex)
+    directory.mkdir(mode=0o777)
+    try:
+        yield str(directory)
+    finally:
+        shutil.rmtree(directory)
+
+
 @functools.lru_cache(maxsize=512)
 def _compile(text, flags, build, c_lang):
     error_key = hashlib.sha1(("%s\0%s\0%s" % (build, flags, text)).encode()).hexdigest()
@@ -694,7 +712,7 @@ def _compile(text, flags, build, c_lang):
     if not cl:
         raise SystemExit("Missing compiler build %s. Run: roc install" % build)
     env = setup.cl_env(cl)
-    with tempfile.TemporaryDirectory() as tmp:
+    with compile_directory() as tmp:
         src, obj = Path(tmp) / ("f.c" if c_lang else "f.cpp"), Path(tmp) / "f.obj"
         src.write_text(text)
         try:
@@ -705,6 +723,8 @@ def _compile(text, flags, build, c_lang):
             message = "compiler timeout after 120 seconds"
             _remember_compile_error(error_key, message)
             raise CompileError(message)
+        from roc import telemetry
+        telemetry.command(list(run.args), tmp, run)
         if run.returncode:
             out = run.stdout + run.stderr
             for shown in {str(src), setup.cl_path(src)}:  # Wine echoes the Z:\ form

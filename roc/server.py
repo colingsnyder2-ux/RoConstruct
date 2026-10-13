@@ -1,9 +1,6 @@
-"""Group server: hands out functions, keeps the best source per function,
-credits whoever improved it.
-
-Workers lease one function at a time; a lease expires if its worker stops
-heartbeating, so crashed workers never leave a function stuck. Submissions
-are re-scored here when this machine has the client's compiler.
+"""Group server: suggests shared functions, keeps the best source per function,
+and credits whoever improved it. Submissions are re-scored here when this
+machine has the client's compiler.
 """
 import json
 import hashlib
@@ -58,8 +55,6 @@ CREATE TABLE IF NOT EXISTS funcs(client TEXT, addr TEXT, size INT, unit TEXT,
   cooldown REAL DEFAULT 0, calls INT DEFAULT 0, source_confidence INT DEFAULT 0,
   difficulty REAL DEFAULT 0, attempts_by_model TEXT DEFAULT '{}',
   PRIMARY KEY(client, addr));
-CREATE TABLE IF NOT EXISTS leases(id TEXT PRIMARY KEY, client TEXT, addr TEXT,
-  user TEXT, worker TEXT, expires REAL);
 CREATE TABLE IF NOT EXISTS events(ts REAL, client TEXT, addr TEXT, user TEXT, old INT, new INT);
 CREATE TABLE IF NOT EXISTS mining_events(id INTEGER PRIMARY KEY, ts REAL, client TEXT, addr TEXT,
   user TEXT, model TEXT, old INT, new INT, verified INT);
@@ -67,7 +62,6 @@ CREATE INDEX IF NOT EXISTS mining_events_day ON mining_events(ts);
 CREATE INDEX IF NOT EXISTS events_day ON events(ts);
 CREATE TABLE IF NOT EXISTS workers(id TEXT PRIMARY KEY, user TEXT, mode TEXT, last_seen REAL);
 CREATE INDEX IF NOT EXISTS funcs_open ON funcs(client, score, attempts, size);
-CREATE INDEX IF NOT EXISTS leases_target ON leases(client, addr);
 CREATE TABLE IF NOT EXISTS agent_attempts(id INTEGER PRIMARY KEY, hash TEXT UNIQUE,
   user TEXT, ts REAL, payload TEXT);
 """
@@ -100,7 +94,7 @@ class Store:
                         "(client,score,size,cooldown,unit,attempts,source_confidence,difficulty,addr)")
         self.db.commit()
         self.lock = threading.Lock()
-        self.lease_seconds = lease_seconds
+        self.lease_seconds = lease_seconds  # Legacy server option; assignments do not expire.
 
     def agent_memory(self, after=0, limit=500):
         from roc import agent_memory
@@ -119,8 +113,8 @@ class Store:
             raise ValueError("Need 1-100 attempt records")
         payloads = []
         for row in rows:
-            if not isinstance(row, dict) or row.get("client", "2008-06") != "2008-06":
-                raise ValueError("Attempt records must describe 2008-06")
+            if not isinstance(row, dict) or row.get("client", "2008-06") not in clients.load():
+                raise ValueError("Attempt records must describe a registered client")
             row = {k: v for k, v in row.items() if k not in ("shared_id", "reported_by", "server_confirmed")}
             addresses = row.get("addresses", [])
             if not isinstance(addresses, list) or len(addresses) > 200 or not all(
@@ -136,13 +130,13 @@ class Store:
                 addresses = row.get("addresses", [])
                 confirmed = False
                 if row.get("kind") == "auto_target" and row.get("outcome") == "server_verified" and len(addresses) == 1:
-                    best = self.db.execute("SELECT source,score FROM funcs WHERE client='2008-06' AND addr=?",
-                                           (addresses[0],)).fetchone()
+                    best = self.db.execute("SELECT source,score FROM funcs WHERE client=? AND addr=?",
+                                           (row.get("client", "2008-06"), addresses[0])).fetchone()
                     confirmed = bool(best and best[1] == row.get("after") and
                         hashlib.sha256((best[0] or "").encode()).hexdigest() == row.get("source_hash") and
-                        self.db.execute("SELECT 1 FROM mining_events WHERE client='2008-06' "
+                        self.db.execute("SELECT 1 FROM mining_events WHERE client=? "
                         "AND addr=? AND user=? AND new=? AND verified=1 LIMIT 1",
-                        (addresses[0], user, row.get("after"))).fetchone())
+                        (row.get("client", "2008-06"), addresses[0], user, row.get("after"))).fetchone())
                 row["server_confirmed"] = confirmed
                 added += self.db.execute("INSERT OR IGNORE INTO agent_attempts(hash,user,ts,payload) VALUES(?,?,?,?)",
                     (key, user, time.time(), json.dumps(row))).rowcount
@@ -181,13 +175,19 @@ class Store:
 
     def lease(self, user, worker, have, mode, max_size, model=None, targets=None, order="random", family=None, unit=None,
               min_score=None, max_score=None, library=None):
+        """Pick work cooperatively.
+
+        This endpoint used to create an exclusive, expiring lease.  Matching is
+        now deliberately shared: several people or agents may investigate the
+        same function and the normal best-score write in ``submit`` resolves the
+        race.  Keep the endpoint/name for older workers, but return an assignment
+        token only as harmless request correlation.
+        """
         now = time.time()
         with self.lock:
-            self.db.execute("DELETE FROM leases WHERE expires < ?", (now,))
             self.db.execute("INSERT OR REPLACE INTO workers VALUES(?,?,?,?)", (worker, user, mode, now))
-            # One live lease per worker: a restarted worker gets a fresh job, old one frees up.
-            self.db.execute("DELETE FROM leases WHERE worker = ?", (worker,))
             marks = ",".join("?" * len(have))
+            size_sql, size_args = (" AND size <= ?", [max_size]) if max_size else ("", [])
             target_sql, target_args = "", []
             family_sql, family_args = (" AND f.family = ?", [family]) if family else ("", [])
             unit_sql, unit_args = (" AND f.unit = ?", [unit]) if unit else ("", [])
@@ -210,11 +210,10 @@ class Store:
                     return None
             keys = self.db.execute(
                 "SELECT client, addr FROM funcs f "
-                "WHERE client IN (%s) AND score < 100 AND size BETWEEN 6 AND ? AND cooldown <= ? %s%s%s%s AND NOT EXISTS "
-                "(SELECT 1 FROM leases l WHERE l.client = f.client AND l.addr = f.addr) "
-                "ORDER BY %s LIMIT 64" % (marks, target_sql, family_sql, unit_sql, score_sql,
+                "WHERE client IN (%s) AND score < 100 AND size >= 6 %s %s%s%s%s "
+                "ORDER BY %s LIMIT 64" % (marks, size_sql, target_sql, family_sql, unit_sql, score_sql,
                                           ORDER_SQL[resolve_order(order, self.db)]),
-                (*have, max_size, now, *target_args, *family_args, *unit_args, *score_args)).fetchall()
+                (*have, *size_args, *target_args, *family_args, *unit_args, *score_args)).fetchall()
             # Fetch source/metadata only for the sampled functions; avoid sorting
             # every eligible function's large source text while holding the lock.
             candidates = [self.db.execute(
@@ -235,8 +234,6 @@ class Store:
                 self.db.commit()
                 return None
             lease = uuid.uuid4().hex
-            self.db.execute("INSERT INTO leases VALUES(?,?,?,?,?,?)",
-                            (lease, row[0], row[1], user, worker, now + self.lease_seconds))
             current = self.db.execute("SELECT attempts_by_model FROM funcs WHERE client = ? AND addr = ?", row[:2]).fetchone()[0]
             by_model = json.loads(current or "{}")
             if model:
@@ -249,50 +246,29 @@ class Store:
                 "score": row[4], "source": row[5], "shape": row[6], "calls": row[7],
                 "source_confidence": row[8], "difficulty": row[9], "attempts_by_model": json.loads(row[10] or "{}"),
                 "family": row[11],
-                "heartbeat": max(5, self.lease_seconds // 3)}
+                "heartbeat": 3600}
 
     def heartbeat(self, lease):
-        with self.lock:
-            cur = self.db.execute("UPDATE leases SET expires = ? WHERE id = ?", (time.time() + self.lease_seconds, lease))
-            self.db.commit()
-            return cur.rowcount == 1
+        # Legacy clients still ping this endpoint. Assignments never expire.
+        return True
 
     def release(self, lease, cooldown=0):
-        with self.lock:
-            row = self.db.execute("SELECT l.client, l.addr, f.attempts FROM leases l "
-                                  "LEFT JOIN funcs f ON f.client = l.client AND f.addr = l.addr "
-                                  "WHERE l.id = ?", (lease,)).fetchone()
-            self.db.execute("DELETE FROM leases WHERE id = ?", (lease,))
-            try:
-                delay = min(max(float(cooldown), 0), 3600)
-            except (TypeError, ValueError):
-                delay = 0
-            if row and (row[2] or 0) >= 3 and delay:
-                delay = min(delay * (2 ** min((row[2] or 0) - 2, 4)), 3600)
-            if row and delay:
-                self.db.execute("UPDATE funcs SET cooldown = ? WHERE client = ? AND addr = ?",
-                                (time.time() + delay, row[0], row[1]))
-            self.db.commit()
+        # Kept for older clients. There is nothing to release or cool down.
+        return None
 
     def submit(self, client, addr, user, score, source, data=None, lease=None, model="", verified=False):
         """Keep the source if it beats the stored score. Returns (stored score, improved)."""
-        now = time.time()
         with self.lock:
-            if lease:
-                owned = self.db.execute("SELECT 1 FROM leases WHERE id = ? AND client = ? AND addr = ? "
-                                        "AND expires >= ?", (lease, client, addr, now)).fetchone()
-                if not owned:
-                    raise ValueError("lease missing, expired, or belongs to another target")
             row = self.db.execute("SELECT score FROM funcs WHERE client = ? AND addr = ?", (client, addr)).fetchone()
             if not row:
                 raise ValueError("unknown function %s %s" % (client, addr))
             if score <= row[0]:
                 return row[0], False
             self.db.execute("UPDATE funcs SET score=?, source=?, user=?, updated=?, data=? WHERE client=? AND addr=?",
-                            (score, source, user, now, json.dumps(data) if data else None, client, addr))
-            self.db.execute("INSERT INTO events VALUES(?,?,?,?,?,?)", (now, client, addr, user, row[0], score))
+                            (score, source, user, time.time(), json.dumps(data) if data else None, client, addr))
+            self.db.execute("INSERT INTO events VALUES(?,?,?,?,?,?)", (time.time(), client, addr, user, row[0], score))
             self.db.execute("INSERT INTO mining_events(ts,client,addr,user,model,old,new,verified) VALUES(?,?,?,?,?,?,?,?)",
-                            (now, client, addr, user, str(model)[:120], row[0], score, int(verified)))
+                            (time.time(), client, addr, user, str(model)[:120], row[0], score, int(verified)))
             self.db.commit()
             return score, True
 
@@ -397,10 +373,8 @@ class Store:
         with self.lock:
             per = self.db.execute("SELECT client, COUNT(*), SUM(score = 100), SUM(score > 0 AND score < 100) "
                                   "FROM funcs GROUP BY client").fetchall()
-            leases = self.db.execute("SELECT l.client, l.addr, l.user, l.expires, f.family FROM leases l LEFT JOIN funcs f ON f.client = l.client AND f.addr = l.addr WHERE l.expires >= ?", (now,)).fetchall()
             workers = self.db.execute("SELECT user, mode, last_seen FROM workers WHERE last_seen > ?", (now - 900,)).fetchall()
         return {"clients": [{"client": c, "functions": n, "matched": m or 0, "partial": p or 0} for c, n, m, p in per],
-                "leases": [{"client": c, "addr": a, "user": u, "expires_in": int(e - now), "family": f} for c, a, u, e, f in leases],
                 "workers": [{"user": u, "mode": m, "seen_ago": int(now - t)} for u, m, t in workers]}
 
     def best(self, client, addr):
@@ -452,7 +426,36 @@ class Store:
                                        (client, n)).fetchall()
         return [{"addr": a, "source": s} for a, s in rows]
 
-    def clients(self, client, min_score=1):
+    def function_history(self, identifier=None, query="", status="", sort="recent", limit=300):
+        """Stored sources include manual, library, CLI and agent gains, even without local activity."""
+        where, args = "source IS NOT NULL", []
+        if identifier:
+            prefix, client, addr = identifier.split(":", 2)
+            if prefix != "server":
+                return None
+            where += " AND client=? AND addr=?"
+            args += [client, addr]
+        else:
+            where += " AND lower(coalesce(unit,'') || ' ' || client || ' ' || addr || ' ' || coalesce(user,'')) LIKE ?"
+            args += ['%' + query.lower() + '%']
+            if status:
+                where += " AND (CASE WHEN score=100 THEN 'matched' WHEN score>0 THEN 'improved' ELSE 'failed' END)=?"
+                args += [status]
+        order = {"score": "score DESC", "gain": "updated DESC", "unit": "unit", "addr": "addr"}.get(sort, "updated DESC")
+        with self.lock:
+            rows = self.db.execute("SELECT client,addr,unit,score,user,updated" + (",source" if identifier else "") +
+                " FROM funcs WHERE " + where + " ORDER BY " + order + " LIMIT ?", (*args, limit)).fetchall()
+        results = [dict(id="server:" + row[0] + ":" + row[1], client=row[0], addr=row[1], unit=row[2],
+            score=row[3], best_score=row[3], base_score=None, model=row[4] or "", origin="server",
+            started=row[5] or 0, ended=row[5] or 0,
+            status="matched" if row[3] == 100 else "improved" if row[3] > 0 else "failed") for row in rows]
+        if identifier:
+            if not results:
+                return None
+            return dict(results[0], before="", after=rows[0][6], timeline=[], commands=[], rounds=[])
+        return results
+
+    def sources(self, client, min_score=1):
         """Every stored source for a client (for `roc pull`)."""
         with self.lock:
             rows = self.db.execute("SELECT addr, score, user, source FROM funcs WHERE client = ? AND score >= ? "
@@ -504,6 +507,12 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None):
                                                    for n, e in reg.items()}, "verify": sorted(can_verify)})
             if url.path == "/v1/status":
                 return self.send(200, store.status())
+            if url.path == "/v1/function-history":
+                try:
+                    return self.send(200, store.function_history(q.get("id"), q.get("query", ""), q.get("status", ""),
+                        q.get("sort", "recent"), min(10000, max(1, int(q.get("limit", 300))))))
+                except (ValueError, TypeError) as error:
+                    return self.send(400, {"error": str(error)})
             if url.path == "/v1/agent-memory":
                 try:
                     return self.send(200, store.agent_memory(max(0, int(q.get("after", 0))),
