@@ -1476,6 +1476,7 @@
    "GLG3Dcpp/VARArea.cpp",
    "roc_vrbxfont_compute_packed_458dceda9d4228a0.cpp",
    "roc_vrbxfont_constructor_server_c5079e23e94144b0.cpp",
+   "roc_vrbxfont_draw2d_assigned_bounds_b5d1316817af0b1d.cpp",
    "roc_vrbxfont_from_file_7e346c652dd2a177.cpp"
   ]
  },
@@ -1722,6 +1723,7 @@
    "roc_ogre_resume_b2126d94dfadd044.cpp",
    "roc_rbx_adorn_state_ctor_5b7c48b8c5421fef.cpp",
    "roc_rbxscene_apply_animations_a7ba41ac8adad042.cpp",
+   "roc_rbxscene_modulative_no_custom_proj_50e542f3fe79853d.cpp",
    "roc_rbxscene_populate_shadow_count_989700d72290bd34.cpp",
    "roc_rbxscene_sky_plane_line_234565f8e0d3b9ea.cpp",
    "roc_rbxscene_timed_no_viewport_8cefb7f930351b4e.cpp",
