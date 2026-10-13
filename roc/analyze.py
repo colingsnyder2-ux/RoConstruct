@@ -43,8 +43,8 @@ def find_functions(code, text_va, seeds, relocs, proven=(), keep=None):
     MSVC aligns functions to 16 after int3 padding, so aligned non-cc bytes
     after cc also seed (unless a jump table sits there).
     With `keep` (a set of trusted starts), a start that reached code falls into
-    (no ret/jmp/call before it) is an interior label, e.g. an EH catch block or
-    catch continuation, and is dropped unless it is a call target or in keep;
+    (no ret/jmp/call before it) or that a catch funclet returns to is an interior
+    label, and is dropped unless it is a call target or in keep;
     trailing jump tables then no longer make a function "bad"."""
     end = text_va + len(code)
     reloc_set = set(relocs)
@@ -54,9 +54,10 @@ def find_functions(code, text_va, seeds, relocs, proven=(), keep=None):
                           and text_va + i not in reloc_set}
     starts = {s for s in seeds if text_va <= s < end}
     md = Cs(CS_ARCH_X86, CS_MODE_32)
-    seen, calls, work, falls, called, tables = set(), set(), list(starts), set(), set(), set()
+    seen, calls, work, falls, called, tables, conts = set(), set(), list(starts), set(), set(), set(), {}
     while work:
         a = work.pop()
+        cont = None
         while text_va <= a < end and a not in seen:
             insn = next(md.disasm_lite(code[a - text_va:a - text_va + 15], a, 1), None)
             if insn is None:
@@ -64,6 +65,9 @@ def find_functions(code, text_va, seeds, relocs, proven=(), keep=None):
                 break
             seen.add(a)
             _, size, mnem, op = insn
+            if mnem == "ret" and not op and cont:  # catch funclet: mov eax, offset continuation; ret
+                conts[cont[0]] = cont[1]
+            cont = (rd(a + 1), a) if mnem == "mov" and op.startswith("eax, 0x") and a + 1 in reloc_set else None
             for r in range(a, a + size - 3):
                 if r not in reloc_set or not text_va <= rd(r) < end:
                     continue
@@ -97,7 +101,11 @@ def find_functions(code, text_va, seeds, relocs, proven=(), keep=None):
                 falls.add(a + size)
             a += size
     if keep is not None:
-        starts -= falls - called - keep
+        # A continuation right after its own catch funclet is a label inside that __catch$
+        # symbol, unless the funclet already has a recorded extent (an exact match alone).
+        order = sorted(starts)
+        owner = lambda m: order[bisect_left(order, m + 1) - 1]
+        starts -= (falls | {c for c, m in conts.items() if owner(m) == owner(c - 1) and owner(m) not in keep}) - called - keep
     # Proven extents (a compiled function matched these bytes exactly): no start
     # inside one, and whatever follows it starts a new function.
     for start, size in proven:
