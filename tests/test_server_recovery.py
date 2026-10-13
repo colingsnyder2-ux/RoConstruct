@@ -7,6 +7,21 @@ import pytest
 from roc import server, worker
 
 
+def test_reseed_updates_corrected_bounds_and_removes_false_starts(tmp_path):
+    import json
+    functions = tmp_path / "work" / "2008-06" / "functions.jsonl"
+    functions.parent.mkdir(parents=True)
+    functions.write_text(json.dumps(dict(addr="00401000", size=100, unit="Old", kind="code")) + "\n")
+    store = server.Store(":memory:", 60)
+    with patch.object(server, "ROOT", tmp_path):
+        store.seed("2008-06")
+        store.db.execute("INSERT INTO funcs(client,addr,size,unit) VALUES(?,?,?,?)",
+                         ("2008-06", "00401050", 20, "False split"))
+        functions.write_text(json.dumps(dict(addr="00401000", size=140, unit="Corrected", kind="code")) + "\n")
+        store.seed("2008-06")
+    assert store.db.execute("SELECT size,unit FROM funcs WHERE client='2008-06'").fetchall() == [(140, "Corrected")]
+
+
 def test_publish_lock_survives_stale_file_but_blocks_concurrent_publish(tmp_path):
     lock = tmp_path / "work/publish.lock"
     lock.parent.mkdir()

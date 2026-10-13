@@ -162,11 +162,10 @@ class Store:
             before = self.db.total_changes
             self.db.executemany("INSERT OR IGNORE INTO funcs(client,addr,size,unit,shape,calls,source_confidence,difficulty) VALUES(?,?,?,?,?,?,?,?)", rows)
             added = self.db.total_changes - before
-            self.db.executemany("UPDATE funcs SET shape = ? WHERE client = ? AND addr = ?",
-                                [(shape, client, addr) for client, addr, _size, _unit, shape, _calls, _confidence, _difficulty in rows if shape])
-            self.db.executemany("UPDATE funcs SET calls=?, source_confidence=?, difficulty=? WHERE client=? AND addr=?",
-                                [(calls, confidence, difficulty, client, addr)
-                                 for client, addr, _size, _unit, _shape, calls, confidence, difficulty in rows])
+            self.db.executemany("UPDATE funcs SET size=?, unit=?, shape=?, calls=?, source_confidence=?, difficulty=? "
+                                "WHERE client=? AND addr=?",
+                                [(size, unit, shape, calls, confidence, difficulty, client, addr)
+                                 for client, addr, size, unit, shape, calls, confidence, difficulty in rows])
             # Re-analysis may drop junk "functions"; never count them in progress again.
             stale = [(client, a) for (a,) in self.db.execute(
                 "SELECT addr FROM funcs WHERE client = ?", (client,)) if a not in keep]
