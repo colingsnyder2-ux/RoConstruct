@@ -15,6 +15,7 @@ import subprocess
 import sys
 import threading
 import re
+import random
 import time
 import uuid
 from datetime import datetime, timezone
@@ -58,7 +59,7 @@ Your goal: {goal}
 Only server receipts with verified=true, improved=true and score=100 are new exacts.
 Read live server scores before choosing targets; skip already-exact functions.
 Local 100% is a candidate, not a new win. Do not repeat submissions rejected as already done.
-Other dashboard tabs run concurrently. Edit candidates ONLY under {scratch}/ADDR.cpp.
+Other dashboard tabs run concurrently. Edit candidates ONLY under {scratch}/CLIENT/ADDR.cpp.
 Score with roc check CLIENT ADDR --file PATH; submit with roc submit CLIENT ADDR --file PATH.
 Keep shared src files untouched; the server stores verified improvements.
 
@@ -171,7 +172,7 @@ def record_session(client, addr, unit, cli, before, candidate, after, before_tex
 
 
 def roc_command():
-    return '"%s" roc.py' % Path(sys.executable).as_posix()
+    return ('& ' if os.name == "nt" else '') + '"%s" "%s"' % (Path(sys.executable).as_posix(), (ROOT / "roc.py").as_posix())
 
 
 def check_command():
@@ -309,8 +310,12 @@ def show(line, log):
         log("  > " + label)
         state = part.get("state") or {}
         if state.get("output") or state.get("error"):
-            log("Command finished · exit %d\n%s" % (1 if state.get("error") else 0,
-                state.get("output") or state["error"]))
+            output = state.get("output") or state["error"]
+            metadata = state.get("metadata") or {}
+            exit_code = metadata.get("exit", metadata.get("exitCode", 0))
+            if state.get("error") or re.search(r"(?m)^\s*\+\s*FullyQualifiedErrorId\s*:", output):
+                exit_code = exit_code or 1
+            log("Command finished · exit %d\n%s" % (exit_code, output))
         times = (part.get("state") or {}).get("time") or {}
         if times.get("start") and times.get("end"):  # milliseconds
             _took((times["end"] - times["start"]) / 1000, label, log)
@@ -352,6 +357,11 @@ def run_agent(cli, prompt, model=None, minutes=20, log=print, goal=False, switch
               "After two losing hypotheses, report missing evidence and move on. "
               "Local 100% is a candidate; only verified, improved server receipts count as new exacts.\n\n" + prompt)
     deadline = time.monotonic() + minutes * 60
+    if os.name == "nt":
+        prompt = ("Windows shell: PowerShell. Use absolute paths; command form: " + roc_command() + " <command>. "
+                  "Use Get-Content -LiteralPath PATH | Select-Object -First N; no head, sed, or Unix pipelines. "
+                  "Every roc command needs its client, e.g. next 2008-06. "
+                  "Use supplied candidate paths and check commands; do not search src again.\n" + prompt)
     queue = [(cli, model)] + fallbacks()
     while queue:
         current, name = queue.pop(0)
@@ -550,12 +560,18 @@ def goal_targets(server, token, client, shared):
     from roc import agent_auto
     records = agent_auto.history() + shared.get("records", [])
     names = list(match.clients.load()) if client == "all" else [client]
-    plan = agent_auto.portfolio(names, max_size=0, records=records, api=worker.Api(server, token))
+    plan = agent_auto.portfolio(names, max_size=0, records=records, api=worker.Api(server, token), min_score=0)
     blocked = {(r.get("client"), addr, r.get("cohort")) for r in records if r.get("kind") == "goal_blocked"
                for addr in r.get("addresses", [])}
     targets = [row for area in plan["areas"] for row in area["targets"] if not row["group_parked"]
                and (row["client"], row["addr"], row["evidence_hash"]) not in blocked]
-    return sorted(targets, key=lambda row: (row["score"] < 95, -row["size"], -row["priority"]))[:24]
+    near = sorted((row for row in targets if row["score"] >= 95), key=lambda row: (-row["priority"], -row["size"]))[:14]
+    selected = {(row["client"], row["addr"]) for row in near}
+    large = sorted((row for row in targets if (row["client"], row["addr"]) not in selected), key=lambda row: -row["size"])[:7]
+    selected.update((row["client"], row["addr"]) for row in large)
+    rest = [row for row in targets if (row["client"], row["addr"]) not in selected]
+    exploration = random.sample(rest, min(24 - len(near) - len(large), len(rest)))
+    return [dict(row, selection=label) for label, rows in (("near-miss", near), ("large", large), ("explore", exploration)) for row in rows]
 
 
 def run_goal(cli, goal, model=None, minutes=120, log=print, continuous=False,
@@ -581,9 +597,18 @@ def run_goal(cli, goal, model=None, minutes=120, log=print, continuous=False,
         prompt = GOAL_PROMPT.format(goal=goal, roc=roc_command(), minutes=minutes,
                                   memory=memory_prompt(memory(shared)), scratch=scratch)
         if targets:
-            prompt += "\nLive-server shortlist (already-exact and parked targets removed). Start here; do not rediscover targets:\n"
-            prompt += json.dumps([{key: row[key] for key in ("client", "addr", "unit", "size", "score")}
-                                  for row in targets], separators=(",", ":"))
+            assignments = []
+            for row in targets:
+                candidate = scratch / row["client"] / (row["addr"] + ".cpp")
+                candidate.parent.mkdir(parents=True, exist_ok=True)
+                candidate.write_text(row["source"], encoding="utf-8")
+                assignments.append({**{key: row[key] for key in ("client", "addr", "unit", "size", "score", "selection")},
+                    "file": str(candidate), "check": '%s check %s %s --file "%s"' % (roc_command(), row["client"], row["addr"], candidate),
+                    "submit": '%s submit %s %s --file "%s" --server "%s" --user "%s"' %
+                              (roc_command(), row["client"], row["addr"], candidate, server, user)})
+            prompt += "\nMixed shortlist: ~60% near-misses, 30% large, 10% random exploration; shortages fill from remaining candidates. "
+            prompt += "Candidate files already exist. Pick one, read its file, run its check, then test one proven fix. "
+            prompt += "Do not repeat setup, scoreboard queries or target discovery.\n" + json.dumps(assignments, separators=(",", ":"))
         if continuous:
             from roc.agent_auto import STRATEGIES
             prompt += "\nContinuous run: preserve progress; consult trial memory before every experiment. "

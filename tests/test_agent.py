@@ -51,7 +51,7 @@ def test_goal_shortlist_skips_blocked_revision_until_evidence_changes(monkeypatc
     monkeypatch.setattr(agent_auto, "portfolio", lambda *a, **kw: {"areas": [{"targets": rows}]})
     assert agent.goal_targets("localhost", None, "C", {}) == []
     rows[0]["evidence_hash"] = "new-evidence"
-    assert agent.goal_targets("localhost", None, "C", {}) == rows
+    assert agent.goal_targets("localhost", None, "C", {})[0]["addr"] == rows[0]["addr"]
 
 
 class FakeApi:
@@ -85,7 +85,7 @@ def test_improvement_is_submitted(tmp_path, monkeypatch):
     result, text, calls, prompt = run_job(tmp_path, monkeypatch, "start", "better")
     assert result == 90 and text == "better"
     assert calls[-1][0] == "/v1/submit" and calls[-1][1]["score"] == 90 and calls[-1][1]["source"] == "better"
-    assert "roc.py check c 00401000" in prompt and "src/c/00401000.cpp" in prompt
+    assert 'roc.py" check c 00401000' in prompt and "src/c/00401000.cpp" in prompt
 
 
 def test_regression_is_rolled_back_and_released(tmp_path, monkeypatch):
@@ -117,6 +117,14 @@ def test_opencode_keeps_thinking_and_tool_outputs():
                      "Command finished · exit 0\n99%", "  < 38.0s shell roc check C 00401000"]
 
 
+def test_opencode_powershell_failure_is_not_reported_as_exit_zero():
+    import json
+    lines = []
+    agent.show(json.dumps({"type": "tool_use", "part": {"tool": "shell", "state": {
+        "input": {"command": "head -40"}, "output": "head : not recognized\n    + FullyQualifiedErrorId : CommandNotFoundException"}}}), lines.append)
+    assert lines[1].startswith("Command finished · exit 1")
+
+
 def test_goal_mode_allows_roc_commands_and_web(monkeypatch):
     tools = next(arg for arg in agent.command("claude", goal=True) if arg.startswith("Read,"))
     assert "WebSearch" in tools and "Bash,PowerShell" in tools
@@ -124,6 +132,32 @@ def test_goal_mode_allows_roc_commands_and_web(monkeypatch):
     monkeypatch.setattr(agent, "run_agent", lambda cli, prompt, model, minutes, log, goal: seen.append((prompt, goal)))
     agent.run_goal("claude", "match RakNet in 2008-06", minutes=5, log=lambda *a: None)
     assert "match RakNet in 2008-06" in seen[0][0] and seen[0][1] is True
+
+
+def test_goal_shortlist_mixes_near_large_and_random(monkeypatch):
+    from roc import agent_auto
+    rows = [dict(client="C", addr="%08x" % n, unit="Unit", score=99 if n < 30 else 30,
+                 size=n*100, priority=100-n, group_parked=False, evidence_hash=str(n), source_hash=str(n)) for n in range(70)]
+    monkeypatch.setattr(agent_auto, "history", lambda: [])
+    monkeypatch.setattr(agent_auto, "portfolio", lambda *a, **kw: {"areas": [{"targets": rows}]})
+    targets = agent.goal_targets("localhost", None, "C", {})
+    assert [sum(row["selection"] == label for row in targets) for label in ("near-miss", "large", "explore")] == [14,7,3]
+    assert len({row["addr"] for row in targets}) == 24
+    assert any(row["score"] < 70 for row in targets)
+
+
+def test_goal_seeds_candidate_and_supplies_runnable_commands(tmp_path, monkeypatch):
+    from roc import agent_auto
+    monkeypatch.setattr(agent, "ROOT", tmp_path)
+    monkeypatch.setattr(agent_auto, "prepare_clients", lambda *a: None)
+    monkeypatch.setattr(agent, "goal_targets", lambda *a: [dict(client="C", addr="00401000", unit="Unit", size=500,
+        score=99, selection="near-miss", source="int f(){return 1;}", evidence_hash="revision", source_hash="source")])
+    prompts = []
+    monkeypatch.setattr(agent, "run_agent", lambda cli, prompt, *a, **kw: prompts.append(prompt) or 0)
+    assert agent.run_goal("opencode", "match", server="localhost", user="tester", log=lambda *a: None) == 0
+    files = list((tmp_path / "work" / "agent-goals").glob("*/C/00401000.cpp"))
+    assert len(files) == 1 and files[0].read_text() == "int f(){return 1;}"
+    assert "Candidate files already exist" in prompts[0] and "--file" in prompts[0]
 
 
 def test_every_agent_prompt_requests_concision_and_fast_work(monkeypatch):
@@ -134,7 +168,7 @@ def test_every_agent_prompt_requests_concision_and_fast_work(monkeypatch):
         assert agent.run_agent(cli, "Assigned target", minutes=1) == 0
     assert len(prompts) == 3
     for prompt in prompts:
-        assert prompt.startswith("Be very concise.") and "Optimize tokens and wall time" in prompt
+        assert "Be very concise." in prompt and "Optimize tokens and wall time" in prompt
         assert "Reuse cached compiler results" in prompt and "Assigned target" in prompt
         assert "caveman" not in prompt.lower()
 

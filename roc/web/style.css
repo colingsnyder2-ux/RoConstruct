@@ -79,7 +79,7 @@
 #command-progress .client-row{align-items:flex-start}#command-progress{margin-bottom:20px}
 
 /* Quiet chat transcript; tool batches expand without outlined cards. */
-.workers-page .worker-chat{max-width:960px;margin:0 auto;width:100%}
+.workers-page .worker-chat{max-width:none;margin:0;width:100%;border:0;border-radius:0}
 .worker-chat:not(.compact) .terminal-row.log,.worker-chat:not(.compact) .terminal-row.stage{background:none;border:0;border-radius:0;margin:12px 0;padding:4px 0;font:14px/1.75 var(--sans);color:var(--text)}
 .worker-chat:not(.compact) .terminal-row.log .terminal-worker,.worker-chat:not(.compact) .terminal-row.stage .terminal-worker{background:none;color:var(--muted);height:auto;padding-top:3px}
 .worker-chat .terminal-row details{border:0;background:none;padding:0;box-shadow:none;border-radius:0}

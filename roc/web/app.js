@@ -149,10 +149,10 @@ function terminalMessage(row, functions, compact=false) {
     kind="tool-call";marker="";
     const messages=row.tool_rows.map(logText), starts=messages.filter(t=>/^\s*> /.test(t)).length;
     const ends=messages.filter(t=>/^\s*< \d/.test(t)), returns=messages.filter(t=>/^Command finished /.test(t));
-    const count=starts || ends.length || returns.length;
+    const count=Math.max(starts,ends.length,returns.length);
     const seconds=ends.reduce((total,t)=>total+Number(t.match(/< ([\d.]+)s/)?.[1] || 0),0);
-    text=`${Math.max(ends.length,returns.length)>=count ? "Ran" : "Running"} ${count} command${count===1 ? "" : "s"}${seconds ? " · "+Math.round(seconds)+"s" : ""}`;
-    extra=messages.map(t=>codeBlock(t.trim().replace(/^> /,""),/^\s*> /.test(t) ? "Command" : "Output")).join("");
+    text=count ? `${Math.max(ends.length,returns.length)>=count ? "Ran" : "Running"} ${count} command${count===1 ? "" : "s"}${seconds ? " · "+Math.round(seconds)+"s" : ""}` : "Thinking";
+    extra=messages.map(t=>/^Thinking · /.test(t) ? `<p class="thought-text">${esc(t.slice(11))}</p>` : codeBlock(t.trim().replace(/^> /,""),/^\s*> /.test(t) ? "Command" : "Output")).join("");
     if(returns.some(t=>/^Command finished .*exit (?!0\b)-?\d+/.test(t)))text+=" · error";
   }
   else if(/^Thinking · /.test(text)){kind="thinking";marker="";extra=`<p class="thought-text">${esc(text.slice(11))}</p>`;text="Thinking";}
@@ -182,7 +182,7 @@ function groupToolRows(rows) {
   const grouped=[];
   for(const row of rows) {
     const text=logText(row), last=grouped.at(-1);
-    const tool=row.event==="log" && /^\s*> |^\s*< \d|^Command finished /.test(text);
+    const tool=row.event==="log" && /^\s*> |^\s*< \d|^Command finished |^Thinking · |^Let me (?:check|try|read|look|understand|analyze|think|use|fix)\b/.test(text);
     if(tool && last?.event==="tool_run" && row.job===last.job && row.slot===last.slot)last.tool_rows.push(row);
     else grouped.push(tool ? {...row,event:"tool_run",tool_rows:[row]} : row);
   }
@@ -238,7 +238,6 @@ function renderWorkerChat() {
   const signature=compact+":"+supercompact+":"+rows.map(r=>r.job+":"+r.seq).join();
   setChatFollow(chatFollow);
   const viewFilter=workerRun+":"+workerLoop+":"+compact+":"+supercompact;
-  if(!chatFollow && node.dataset.viewFilter===viewFilter && $("#worker-chat-rows").children.length)return;
   if(chatSignature===signature && $("#worker-chat-rows").children.length)return;
   const functions=new Map(),items=[];
   const grouped=[];

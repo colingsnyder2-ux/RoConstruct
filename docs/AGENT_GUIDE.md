@@ -175,6 +175,13 @@ Dashboard worker tabs start concurrently; only command jobs queue behind other
 commands. Goal runs skip unchanged reported blockers between cycles. Local 100%
 and already-exact receipts are not new wins. OpenCode appears in the CLI selector,
 loads installed models, and runs with its own standalone server per worker.
+Goal shortlists mix 14 near-misses (95–99%), 7 largest remaining functions and
+3 random remaining functions; shortages fill from remaining source-backed targets.
+Exploration can include scores below 70%. Exact, sourceless and parked targets stay
+excluded. Each listed source is copied into the run's scratch folder with ready
+check/submit commands, so models need not rediscover files or shell syntax.
+Thinking and tool bursts share one folded activity row; expanding it retains
+reasoning summaries, complete commands and outputs.
 Windows agent runs use the unelevated workspace sandbox and standard shell execution;
 their temp root lives under `work/agent-temp`. Compiler directories inherit sandbox ACLs.
 Codex JSON events keep input prompts out of the console; Compact folds long output.

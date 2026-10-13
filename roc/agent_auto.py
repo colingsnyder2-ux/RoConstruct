@@ -63,7 +63,7 @@ def snapshot(client="2008-06", api=None):
                         for key, default in (("score", 0), ("source", ""))}) for row in functions]
 
 
-def plan(rows, max_size=512, profile="claude:default", records=None, client="2008-06"):
+def plan(rows, max_size=512, profile="claude:default", records=None, client="2008-06", min_score=70):
     """Heuristic priority, not a forecast of exacts or a fresh compiler score."""
     groups = defaultdict(list)
     from roc import libs
@@ -88,7 +88,7 @@ def plan(rows, max_size=512, profile="claude:default", records=None, client="200
             else:
                 excluded["no usable source; individual mining deferred"] += 1
                 continue
-        if row.get("score", 0) < 70 and not donors:
+        if row.get("score", 0) < min_score and not donors:
             excluded["low similarity; needs stronger source evidence"] += 1
             continue
         directives = match.directives(source)
@@ -162,9 +162,9 @@ def plan(rows, max_size=512, profile="claude:default", records=None, client="200
             "excluded": dict(excluded), "note": "Heuristic ranking. Scores are snapshot hints; baselines recompile before work."}
 
 
-def portfolio(names, max_size=512, profile="claude:default", records=None, api=None):
+def portfolio(names, max_size=512, profile="claude:default", records=None, api=None, min_score=70):
     """Rank each client independently, then share one target and time budget."""
-    results = [plan(snapshot(client=name, api=api), max_size, profile, records, client=name) for name in names]
+    results = [plan(snapshot(client=name, api=api), max_size, profile, records, client=name, min_score=min_score) for name in names]
     excluded = Counter()
     for result in results:
         excluded.update(result["excluded"])
@@ -631,6 +631,7 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
             portfolio = list(dict.fromkeys(task["source"] for task in active
                 if any(k in match.directives(task["source"]) for k in ("lib", "archive"))))[:3]
             if phase == "reuse":
+                event("stage", slot=slot, message="Compiler reuse · %s · %d targets; model starts after free checks" % (area["title"], len(active)))
                 for task in active:
                     if time.monotonic() >= deadline:
                         break
@@ -639,6 +640,7 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
                 pending = [task for task in active if task["before"] < 100]
                 if pending and (len(pending) >= 2 or individual) and time.monotonic() < deadline:
                     tried_route = True
+                    event("stage", slot=slot, message="Model repair · %s · %d targets · %s" % (area["title"], len(pending), cli))
                     assignments = [{"addr": t["addr"], "unit": t["unit"], "file": t["path"], "score": t["before"],
                                     "check": agent.roc_command() + " agent-check " + client + " " + t["addr"] +
                                      ' "' + t["path"] + '" --hypothesis "describe change"'} for t in pending]
@@ -734,6 +736,7 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
                 break
         area["reserved"] = {row["addr"] for chosen_area, rows in selected if chosen_area is area for row in rows}
     for phase in ("reuse", "repair"):
+        event("stage", message="%s phase · %d batches" % ("Free compiler checks" if phase == "reuse" else "Agent repair", len(selected)))
         queue, busy, zero = list(selected), set(), defaultdict(int)
 
         def work(slot):

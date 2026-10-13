@@ -140,6 +140,13 @@ const toolHTML=feedContext.terminalMessage(toolGroup[0],new Map(),true);
 assert.match(toolHTML,/Ran 3 commands · 38s/);
 assert.match(toolHTML,/return output 2/);
 assert.doesNotMatch(toolHTML,/<details open/);
+const spamRows=[...toolRows.slice(0,3),{...longAgentRow,seq:20,message:"Thinking · Repeated setup narration"},
+  {...longAgentRow,seq:21,message:"Let me check the current state."},...toolRows.slice(3)];
+const spamGroup=feedContext.groupToolRows(spamRows);
+assert.equal(spamGroup.length,1);
+const spamHTML=feedContext.terminalMessage(spamGroup[0],new Map(),true);
+assert.match(spamHTML,/Ran 3 commands · 38s/);
+assert.match(spamHTML,/Repeated setup narration/);
 const fencedAgentRow=feedContext.terminalMessage({...longAgentRow,message:'Change:\n```cpp\nint f() { return 1; }\n```'},new Map(),false);
 assert.match(fencedAgentRow,/<pre>int f\(\) \{ return 1; \}/);
 assert.doesNotMatch(fencedAgentRow,/```cpp/);
@@ -170,6 +177,13 @@ assert.match(feedNodes["#worker-tabs"].innerHTML,/data-remove-run="run"/);
 feedContext.jobs[0]={...feedContext.jobs[0],kind:"agent_worker",status:"running"};
 feedContext.chatSignature="";feedContext.renderWorkerChat();
 assert.ok(feedContext.items.some(([,html])=>html.includes("compile chatter")));
+feedContext.chatFollow=false;
+feedNodes["#worker-chat-rows"].children=[{}];
+feedContext.logs.push({job:"run",seq:99,time:4,event:"log",message:"New activity while scroll is paused"});
+feedContext.renderWorkerChat();
+assert.ok(feedContext.items.some(([,html])=>html.includes("New activity while scroll is paused")));
+feedContext.chatFollow=true;
+assert.doesNotMatch(fs.readFileSync("roc/web/style.css","utf8"),/\.workers-page \.worker-chat\{max-width:960px/);
 assert.match(feedNodes["#worker-tabs"].innerHTML,/dot running/);
 console.log("Compact: one result per function, benchmarks, 3/4/100-loop boundary passed");
 (async()=>{
