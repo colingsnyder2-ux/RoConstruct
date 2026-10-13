@@ -236,6 +236,20 @@ def pull_sources(server, token, client, log):
         worker.pull_files(server, name, token, force=False, log=log)
 
 
+def materialize_campaign_sources(campaign):
+    """Seed only this campaign's missing files; never bulk-download a new PC."""
+    folder = ROOT / "src" / campaign["client"]
+    written = 0
+    for row in campaign["targets"]:
+        source = row.get("source") or ""
+        path = folder / (row["addr"] + ".cpp")
+        if source and not path.exists():
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(source, encoding="utf-8")
+            written += 1
+    return written
+
+
 def library_cycle(server, user, token, cli, model, minutes, log, client, slot=None, claimed=None, claim_lock=None):
     if not 1 <= minutes <= 600:
         raise ValueError("Minutes must be 1-600")
@@ -273,11 +287,14 @@ def library_cycle(server, user, token, cli, model, minutes, log, client, slot=No
     else:
         campaign = choose(fresh)
     selected = campaign["client"]
+    seeded = materialize_campaign_sources(campaign)
     folder = ROOT / "work" / "agent-campaigns" / uuid.uuid4().hex[:12]
     folder.mkdir(parents=True)
     (folder / "campaign.json").write_text(json.dumps(campaign, indent=2), encoding="utf-8")
     log("Automatic campaign: %s · %s · %d open, %d exact attributed functions · strategy %d" %
         (selected, campaign["library"], len(campaign["targets"]), campaign["exact"], campaign["strategy"] + 1))
+    if seeded:
+        log("Campaign sources: %d missing files added locally." % seeded)
     prompt = ("Read CLAUDE.md and docs/AGENT_GUIDE.md. Experimental automatic research campaign.\n"
         "Finish as many unresolved functions in this library/category as evidence permits, across all sizes.\n"
         "Choose the most promising subcategory, targets and experiments yourself from the campaign evidence.\n"
@@ -375,14 +392,9 @@ def run(server, user, token=None, cli="claude", model=None, workers=2, jobs=24, 
         minutes=120, batch_size=4, batch_minutes=10, individual=False, log=print, client=None, continuous=False,
         experimental=False):
     strategy = 0
-    sources_pulled = False
     while True:
         try:
             if experimental:
-                if not sources_pulled:
-                    log("Automatic: syncing shared sources for this PC.")
-                    pull_sources(server, token, client, log)
-                    sources_pulled = True
                 claimed, claim_lock = set(), threading.Lock()
                 with ThreadPoolExecutor(max_workers=workers) as pool:
                     futures = [pool.submit(library_cycle, server, user, token, cli, model, minutes, log, client,

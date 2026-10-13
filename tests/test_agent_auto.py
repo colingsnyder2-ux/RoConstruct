@@ -99,7 +99,7 @@ def test_pull_sources_downloads_on_a_new_pc_without_local_analysis(monkeypatch):
     assert calls == [("https://server.test", "2008-06", "token", False)]
 
 
-def test_experimental_syncs_once_then_starts_every_worker(monkeypatch):
+def test_experimental_starts_every_worker_without_bulk_source_sync(monkeypatch):
     pulled, slots = [], []
     gate = threading.Barrier(4)
     monkeypatch.setattr(agent_auto, "pull_sources", lambda *args: pulled.append(args))
@@ -111,8 +111,21 @@ def test_experimental_syncs_once_then_starts_every_worker(monkeypatch):
 
     monkeypatch.setattr(agent_auto, "library_cycle", campaign)
     totals = agent_auto.run("server", "me", workers=4, client="2008-06", experimental=True, log=lambda _: None)
-    assert len(pulled) == 1 and sorted(slots) == [0, 1, 2, 3]
+    assert not pulled and sorted(slots) == [0, 1, 2, 3]
     assert totals == dict(attempted=4, matched=0, improved=0, errors=0)
+
+
+def test_campaign_materializes_only_missing_target_sources(tmp_path, monkeypatch):
+    monkeypatch.setattr(agent_auto, "ROOT", tmp_path)
+    campaign = {"client": "2008-06", "targets": [
+        {"addr": "00401000", "source": "int new_source;"},
+        {"addr": "00401010", "source": "int kept_source;"}]}
+    kept = tmp_path / "src" / "2008-06" / "00401010.cpp"
+    kept.parent.mkdir(parents=True)
+    kept.write_text("local edit")
+    assert agent_auto.materialize_campaign_sources(campaign) == 1
+    assert (tmp_path / "src" / "2008-06" / "00401000.cpp").read_text() == "int new_source;"
+    assert kept.read_text() == "local edit"
 
 
 def test_automatic_campaigns_include_nonlibrary_categories():
