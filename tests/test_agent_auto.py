@@ -80,6 +80,24 @@ def test_experimental_prefers_library_campaign_over_fixed_batches(monkeypatch):
     assert len(calls) == 2 and all(call[7] == "2008-06" for call in calls)
 
 
+def test_pull_sources_downloads_on_a_new_pc_without_local_analysis(monkeypatch):
+    calls = []
+
+    class Api:
+        def __init__(self, *args):
+            pass
+
+        def call(self, path):
+            assert path == "/v1/info"
+            return {"clients": {"2008-06": {}}}
+
+    monkeypatch.setattr(agent_auto.worker, "Api", Api)
+    monkeypatch.setattr(agent_auto.worker, "pull_files",
+                        lambda server, client, token, force, log: calls.append((server, client, token, force)))
+    agent_auto.pull_sources("https://server.test", "token", "2008-06", lambda _: None)
+    assert calls == [("https://server.test", "2008-06", "token", False)]
+
+
 def test_automatic_campaigns_include_nonlibrary_categories():
     campaigns = agent_auto.library_campaigns([row("00401000", imports=["KERNEL32!Sleep"])], "2008-06", [])
     assert campaigns[0]["library"] == "Category: Imported calls"
