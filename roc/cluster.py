@@ -310,6 +310,8 @@ def handler(replica, config, verifiable):
                     if cached:
                         return None
                     if role == "worker" and self.path in ("/v1/submit", "/v1/submit-batch") and body.get("client") in verifiable:
+                        if any(base.recipes.get(name) != version for name, version in body.get("recipe_versions", {}).items()):
+                            raise ValueError("Verifier recipe mismatch; update/restart verifier")
                         source = body.get("source", "")
                         import re
                         addrs = body.get("addrs") if self.path.endswith("submit-batch") else [body.get("addr")]

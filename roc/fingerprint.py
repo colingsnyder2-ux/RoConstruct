@@ -464,8 +464,8 @@ def run_one(server, token, user, item):
         try:
             result = worker.Api(server, token).call("/v1/submit-batch", payload, timeout=180)
             break
-        except worker.ApiFailure:
-            if attempt == 2:
+        except worker.ApiFailure as error:
+            if attempt == 2 or error.category in ("bad_request", "auth_fail"):
                 raise
             time.sleep(5 * (attempt + 1))
     rows = result["results"]

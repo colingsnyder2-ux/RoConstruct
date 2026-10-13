@@ -557,6 +557,19 @@ class Api:
 
     _pushed = set()
 
+    def _check_recipes(self, payload):
+        from roc import libs
+        directives = match.directives(str(payload.get("source", "")))
+        names = {directives[key].split()[0] for key in ("lib", "archive") if directives.get(key)}
+        if not names:
+            return
+        local = libs.recipe_versions()
+        remote = self.call("/v1/info").get("recipe_versions", {})
+        mismatches = sorted(name for name in names if name not in local or remote.get(name) != local[name])
+        if mismatches:
+            raise ApiFailure("bad_request", "Verifier recipe mismatch: %s; update/restart verifier before submitting" % ", ".join(mismatches))
+        payload["recipe_versions"] = {name: local[name] for name in names}
+
     def _push_units(self, payload):
         """Send the generated library unit a submission names (agents write these on their own PC, and
         the server compiles with its own tools/libs). Once per unit per server; old servers just ignore it."""
@@ -581,6 +594,7 @@ class Api:
 
     def call(self, path, payload=None, timeout=60, request_id=None):
         if path in ("/v1/submit", "/v1/submit-batch"):
+            self._check_recipes(payload)
             self._push_units(payload)
         data = json.dumps(payload).encode() if payload is not None else None
         if path in ("/v1/submit", "/v1/submit-batch"):

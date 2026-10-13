@@ -5,6 +5,68 @@ import subprocess
 from roc import libs
 
 
+def test_object_cache_survives_memory_clear_and_separates_flags(tmp_path, monkeypatch):
+    from concurrent.futures import ThreadPoolExecutor
+    from roc import match
+    monkeypatch.setattr(match, "ROOT", tmp_path)
+    calls = []
+    monkeypatch.setattr(match, "_compile_uncached", lambda *args: calls.append(args) or b"object")
+    match.compile_text.cache_clear()
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        assert list(pool.map(lambda _: match._compile("source", "/O2", 21022, False), range(4))) == [b"object"] * 4
+    assert len(calls) == 1
+    match.compile_text.cache_clear()
+    assert match._compile("source", "/O2", 21022, False) == b"object"
+    assert len(calls) == 1
+    match._compile("source", "/O1", 21022, False)
+    match._compile("source", "/O2", 50727, False)
+    match._compile("source", "/O2", 21022, True)
+    assert len(calls) == 4
+    for _ in range(2):
+        match.compile_text.cache_clear()
+        match._compile('#include "changed.h"', "/O2", 21022, False)
+    assert len(calls) == 6  # Header dependencies must not replay a disk object.
+    match.compile_text.cache_clear()
+
+
+def test_recipe_preflight_blocks_before_upload(monkeypatch):
+    import pytest
+    from roc import worker
+    api = worker.Api("localhost:8765")
+    monkeypatch.setattr(libs, "recipe_versions", lambda: {"test": "new"})
+    monkeypatch.setattr(api, "call", lambda *a: {"recipe_versions": {"test": "old"}})
+    payload = {"source": "// roc-lib: test unit.cpp\n"}
+    with pytest.raises(worker.ApiFailure, match="Verifier recipe mismatch"):
+        api._check_recipes(payload)
+    monkeypatch.setattr(api, "call", lambda *a: {"recipe_versions": {"test": "new"}})
+    api._check_recipes(payload)
+    assert payload["recipe_versions"] == {"test": "new"}
+
+
+def test_object_cache_coordinates_cli_processes(tmp_path):
+    import sys
+    code = '''
+import sys,time
+from pathlib import Path
+from roc import match,telemetry
+match.ROOT=Path(sys.argv[1])
+telemetry.record=lambda *a,**kw: None
+def compile_once(*args):
+    with (match.ROOT/'calls.txt').open('a') as stream:
+        stream.write('compile\\n')
+    time.sleep(.2)
+    return b'object'
+match._compile_uncached=compile_once
+assert match._compile('source','/O2',21022,False)==b'object'
+'''
+    processes = [subprocess.Popen([sys.executable, "-c", code, str(tmp_path)],
+                 stdout=subprocess.PIPE, stderr=subprocess.PIPE) for _ in range(3)]
+    for process in processes:
+        stdout, stderr = process.communicate(timeout=15)
+        assert process.returncode == 0, stderr.decode()
+    assert (tmp_path / "calls.txt").read_text().splitlines() == ["compile"]
+
+
 def test_compile_directory_is_writable_and_cleaned_on_failure():
     from pathlib import Path
     import pytest
@@ -79,6 +141,7 @@ def test_preprocessed_unit_tracks_real_header_contents(tmp_path, monkeypatch):
 
 def test_compile_errors_are_keyed_on_expanded_library_text(tmp_path, monkeypatch):
     from roc import match
+    monkeypatch.setattr(match, "ROOT", tmp_path)
     body = {'text': 'broken'}
     monkeypatch.setattr(libs, 'unit', lambda *a: body['text'])
     monkeypatch.setattr(match, 'COMPILE_ERRORS', tmp_path / 'errors.json')

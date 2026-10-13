@@ -15,7 +15,7 @@ import json
 import re
 import threading
 from collections import defaultdict
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, wait, FIRST_COMPLETED
 from datetime import datetime, timezone
 from itertools import islice
 from pathlib import Path
@@ -73,10 +73,10 @@ class Campaign:
             raise ValueError("Client excluded from experiments: " + client)
         return self.api.call("/v1/source?client=%s&addr=%s" % (quote(client), addr))
 
-    def submit_exact(self, stage, client, addr, source, flags=None):
+    def submit_exact(self, stage, client, addr, source, flags=None, obj=None):
         if client not in self.info["clients"]:
             raise ValueError("Client excluded from experiments: " + client)
-        score, symbol, diff, spans = match.check_text(client, addr, source, flags)
+        score, symbol, diff, spans = match.check_text(client, addr, source, flags, obj=obj)
         result = {"client": client, "addr": addr, "score": score,
                   "symbol": symbol, "source_sha256": digest(source)}
         if score != 100:
@@ -197,21 +197,30 @@ def fanout(campaign, stage, clients, jobs=1, client=CLIENT, log=print):
     scores = {r["addr"]: r["score"] for r in campaign.api.call("/v1/sources?client=" + client, timeout=300)}
     target = unresolved(client, scores)
     done = {r["key"] for r in campaign.previous(stage) if "error" not in r}
-    pending = ((s, e) for s, e in clients if digest(s) not in done)
+    def pending_sources():
+        seen = set(done)
+        for source, evidence in clients:
+            key = digest(source)
+            if key not in seen:
+                seen.add(key)
+                yield source, evidence
+    pending = iter(pending_sources())
 
     def compiled():  # bound object memory; matching and journal writes keep one owner
         with ThreadPoolExecutor(max_workers=jobs) as pool:
-            queue = [(item, pool.submit(match.compile_text, client, item[0])) for item in islice(pending, jobs)]
+            queue = {pool.submit(match.compile_text, client, item[0]): item for item in islice(pending, jobs)}
             while queue:
-                item, future = queue.pop(0)
-                try:
-                    obj, error = future.result(), None
-                except ERRORS as failure:
-                    obj, error = None, failure
-                following = next(pending, None)
-                if following:
-                    queue.append((following, pool.submit(match.compile_text, client, following[0])))
-                yield (*item, obj, error)
+                ready, _ = wait(queue, return_when=FIRST_COMPLETED)
+                for future in ready:
+                    item = queue.pop(future)
+                    try:
+                        obj, error = future.result(), None
+                    except ERRORS as failure:
+                        obj, error = None, failure
+                    following = next(pending, None)
+                    if following:
+                        queue[pool.submit(match.compile_text, client, following[0])] = following
+                    yield (*item, obj, error)
 
     winners = []
     for source, evidence, obj, failure in compiled():
@@ -222,10 +231,13 @@ def fanout(campaign, stage, clients, jobs=1, client=CLIENT, log=print):
             hits = target.match_obj(obj, source)
             row["local_exact_hits"] = len(hits)
             for addr, (_, symbol, *_) in sorted(hits.items()):
-                result = campaign.submit_exact(stage, client, addr, source)
+                result = campaign.submit_exact(stage, client, addr, source, obj=obj)
                 result["symbol"] = symbol
                 row["winners"].append(result)
                 winners.append(result)
+                if result.get("submission", {}).get("verified") and result["submission"].get("improved"):
+                    log("%s %s → 100 · server verified exact" % (client, addr))
+                    campaign.record(stage + "-wins", result)
         except ERRORS as error:
             row["error"] = str(error)[-2000:]
         campaign.record(stage, row)
@@ -390,8 +402,25 @@ def trial(root, client, addr, path, hypothesis):
            "compiler": match.directives(text).get("cl") or match.clients.load()[client]["compiler_build"],
            "flags": match.directives(text).get("flags") or match.clients.load()[client].get("flags") or match.DEFAULT_FLAGS,
            "evidence": str(journal / "trials.jsonl")}
+    previous = []
+    if (journal / "trials.jsonl").exists():
+        for line in (journal / "trials.jsonl").read_text().splitlines():
+            try:
+                previous.append(json.loads(line))
+            except ValueError:
+                continue
     try:
-        score, symbol, diff, _ = match.check_text(client, addr, text)
+        obj = match.compile_text(client, text)
+        row["object_hash"] = hashlib.sha256(obj).hexdigest()
+        code, relocs, _ = match.target(client, addr)
+        row["target_hash"] = hashlib.sha256(code + repr(relocs).encode()).hexdigest()
+        duplicate = next((r for r in reversed(previous) if all(r.get(key) == row.get(key)
+                         for key in ("source_hash", "compiler", "flags", "object_hash", "target_hash"))), None)
+        if duplicate:
+            score, symbol, diff = duplicate["after"], duplicate.get("symbol"), duplicate.get("diff", "")
+            row["duplicate"] = True
+        else:
+            score, symbol, diff, _ = match.check_text(client, addr, text, obj=obj)
         row.update(after=score, symbol=symbol, diff=diff, outcome="improved" if score > task["best_score"] else "no_gain")
         if score > task["best_score"]:
             (journal / "best.cpp").write_text(text, encoding="utf-8")
@@ -403,8 +432,12 @@ def trial(root, client, addr, path, hypothesis):
             path.write_text((journal / "best.cpp").read_text(encoding="utf-8"), encoding="utf-8")
     except match.CompileError as error:
         row.update(after=0, outcome="compile_failed", error=str(error))
-    append(journal / "trials.jsonl", row)
-    append(root / "work" / "agent-memory" / "attempts.jsonl", row)
+        if any(all(r.get(key) == row.get(key) for key in ("source_hash", "compiler", "flags", "error"))
+               for r in previous):
+            row["duplicate"] = True
+    if not row.get("duplicate"):
+        append(journal / "trials.jsonl", row)
+        append(root / "work" / "agent-memory" / "attempts.jsonl", row)
     return row
 
 

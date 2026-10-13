@@ -29,6 +29,9 @@
 
 .terminal-worker{width:32px}.worker-chat:not(.compact) .terminal-worker{width:30px}
 
+ .worker-chat .terminal-row.tool-call,.worker-chat:not(.compact) .terminal-row.tool-call{font-size:10px;line-height:1.5;color:var(--muted);padding:1px 0;margin:1px 0;background:none}
+ .worker-chat .terminal-row.tool-call .terminal-text,.worker-chat .terminal-row.tool-call .terminal-marker{color:var(--muted)}
+ .worker-chat .terminal-row.matched-note .terminal-text,.worker-chat .terminal-row.matched-note .terminal-marker{color:var(--green)}
 /* Live agent output reads as a small conversation: worker badge, thought bubble,
    then folded tool/result blocks. Keep raw terminal density in Compact mode. */
 .worker-chat:not(.compact) .terminal-row.log,.worker-chat:not(.compact) .terminal-row.stage{align-items:flex-start;margin:5px 0;padding:7px 10px 7px 7px;border-radius:9px;background:linear-gradient(100deg,#899bff0d,transparent 78%)}

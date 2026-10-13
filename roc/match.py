@@ -3,6 +3,7 @@
 Score 100 = byte-identical once relocated fields are masked on both sides.
 """
 import difflib
+import errno
 import contextlib
 import functools
 import hashlib
@@ -14,6 +15,7 @@ import struct
 import subprocess
 import tempfile
 import threading
+import time
 import uuid
 from pathlib import Path
 
@@ -34,6 +36,7 @@ class CompileError(RuntimeError):
 
 
 _COMPILE_ERRORS_LOCK = threading.Lock()
+_OBJECT_LOCKS = [threading.Lock() for _ in range(32)]
 
 
 def _compile_error_cache():
@@ -684,7 +687,8 @@ def compile_text(client, text, flags=None, build=None):
         except SystemExit as error:  # local-only tree (e.g. rbxgs) not on this PC
             raise CompileError(str(error))
     flags = flags or d.get("flags") or entry.get("flags") or DEFAULT_FLAGS
-    return _compile(text, flags, build, d.get("lang") == "c")
+    compile_fn = _compile if _cacheable(text) else _compile_uncached
+    return compile_fn(text, flags, build, d.get("lang") == "c")
 
 
 @contextlib.contextmanager
@@ -704,8 +708,61 @@ def compile_directory():
 
 @functools.lru_cache(maxsize=512)
 def _compile(text, flags, build, c_lang):
-    error_key = hashlib.sha1(("%s\0%s\0%s" % (build, flags, text)).encode()).hexdigest()
-    known_error = _compile_error_cache().get(error_key)
+    key = hashlib.sha256(json.dumps([1, text, flags, build, c_lang]).encode()).hexdigest()
+    if not _cacheable(text):
+        return _compile_uncached(text, flags, build, c_lang)  # Unexpanded headers have untracked dependencies.
+    cache = ROOT / "work" / "object-cache" / (key + ".obj")
+    with _OBJECT_LOCKS[int(key[:8], 16) % len(_OBJECT_LOCKS)], _object_lock(cache):
+        if cache.exists():
+            return cache.read_bytes()
+        started = time.monotonic()
+        obj = _compile_uncached(text, flags, build, c_lang)
+        cache.parent.mkdir(parents=True, exist_ok=True)
+        tmp = cache.with_suffix(".%s.tmp" % uuid.uuid4().hex)
+        tmp.write_bytes(obj)
+        os.replace(tmp, cache)
+        from roc import telemetry
+        telemetry.record("compiler", event="timing", phase="compile", build=build,
+                         source_hash=key, seconds=time.monotonic() - started)
+        return obj
+
+
+@contextlib.contextmanager
+def _object_lock(cache):
+    """One compiler per key across CLI processes; OS releases locks after a crash."""
+    cache.parent.mkdir(parents=True, exist_ok=True)
+    with cache.with_suffix(".lock").open("a+b") as stream:
+        if os.name == "nt":
+            import msvcrt
+            if stream.tell() == 0:
+                stream.write(b"\0")
+                stream.flush()
+            started = time.monotonic()
+            while True:
+                stream.seek(0)
+                try:
+                    msvcrt.locking(stream.fileno(), msvcrt.LK_NBLCK, 1)
+                    break
+                except OSError as error:
+                    if error.errno not in (errno.EACCES, errno.EAGAIN, errno.EDEADLK) or time.monotonic() - started > 130:
+                        raise
+                    time.sleep(.1)
+        else:
+            import fcntl
+            fcntl.flock(stream, fcntl.LOCK_EX)
+        try:
+            yield
+        finally:
+            if os.name == "nt":
+                stream.seek(0)
+                msvcrt.locking(stream.fileno(), msvcrt.LK_UNLCK, 1)
+            else:
+                fcntl.flock(stream, fcntl.LOCK_UN)
+
+
+def _compile_uncached(text, flags, build, c_lang):
+    error_key = hashlib.sha256(json.dumps([build, flags, c_lang, text]).encode()).hexdigest()
+    known_error = _compile_error_cache().get(error_key) if _cacheable(text) else None
     if known_error:
         raise CompileError(known_error)
     cl = setup.compilers().get(build)
@@ -721,7 +778,8 @@ def _compile(text, flags, build, c_lang):
                                  capture_output=True, text=True, env=env, cwd=tmp, timeout=120)
         except subprocess.TimeoutExpired:
             message = "compiler timeout after 120 seconds"
-            _remember_compile_error(error_key, message)
+            if _cacheable(text):
+                _remember_compile_error(error_key, message)
             raise CompileError(message)
         from roc import telemetry
         telemetry.command(list(run.args), tmp, run)
@@ -731,9 +789,14 @@ def _compile(text, flags, build, c_lang):
                 out = out.replace(shown, "source")
             out = out.strip()
             message = "\n".join(l for l in out.splitlines() if l.strip() not in ("f.cpp", "f.c"))
-            _remember_compile_error(error_key, message)
+            if _cacheable(text):
+                _remember_compile_error(error_key, message)
             raise CompileError(message)
         return obj.read_bytes()
+
+
+def _cacheable(text):
+    return not re.search(r"(?m)^\s*#\s*include\b|\b__(?:DATE|TIME|TIMESTAMP)__\b", text)
 
 
 compile_text.cache_clear = _compile.cache_clear
@@ -768,11 +831,11 @@ def select_exact_data(client, addr, code, obj, candidates):
     return first
 
 
-def check_text(client, addr, text, flags=None, include_diagnosis=False):
+def check_text(client, addr, text, flags=None, include_diagnosis=False, obj=None):
     """(score, symbol, asm diff, data spans) for the best function in text vs the target.
     A byte-identical function whose own strings/constants differ from the exe scores 99."""
     code, relocs, _ = target(client, addr)
-    obj = compile_text(client, text, flags)
+    obj = compile_text(client, text, flags) if obj is None else obj
     funcs = coff_functions(obj)
     if not funcs:
         result = (0, None, "no functions compiled (is the function body empty or inline?)", [])

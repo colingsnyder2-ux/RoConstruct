@@ -144,20 +144,23 @@ function terminalMessage(row, functions, compact=false) {
   let marker="·", text=logText(row), extra="", kind=row.event;
   if(row.event==="job_started") {marker="›";text=`${row.client} ${row.addr} ${row.size ?? "?"} B ${row.unit || ""} · best ${row.previous ?? row.score ?? "?"}%${row.area ? " · "+row.area : ""}`;}
   else if(row.event==="job_finished") {kind+=" "+(row.score===100 ? "exact" : row.score>row.previous ? "improved" : "no-gain");marker=row.score===100 ? "✓" : row.score>row.previous ? "↑" : "·";text=`${row.client} ${row.addr}${row.supercompact ? " · "+(row.size ?? "?")+" B" : " "+(row.unit || fn?.unit || "")+" · "+(row.size ?? "?")+" B"} · ${row.previous}% → ${row.score}%${row.score===100 ? " EXACT" : row.score<=row.previous ? " no gain" : " improved"}${row.seconds===undefined ? "" : " · "+row.seconds+"s"}`;if(row.score===100)extra=`<div class="match-success">✓ Exact match</div>`;else if(row.score>row.previous)extra=`<div class="match-success improvement">↑ Improved ${row.previous}% → ${row.score}%</div>`;}
-  else if(row.event==="benchmark") {marker="≡";text=row.server_gains ? `campaign · ${row.completed} server gains · ${row.matched} exact · ${row.improved} improved` : `${row.workers}w · ${row.completed} done · ${row.per_minute} fn/min · ${row.matched} exact · ${row.improved} improved · ${row.errors} errors`;}
+  else if(row.event==="benchmark") {marker="≡";text=`${row.matched} exact · ${row.improved} improved${row.errors ? " · "+row.errors+" errors" : ""}`;if(row.matched>0)kind+=" matched-note";}
   else if(row.event==="compile") {
     marker="$";const runs=row.compile_runs || [row],failed=runs.filter(r=>r.exit_code!==0).length;
     text=`compile${runs.length>1 ? " ×"+runs.length : ""} · ${failed ? failed+" failed" : "ok"}`;
     extra=runs.map((r,i)=>(runs.length>1 ? `<div class="compile-attempt">Attempt ${i+1} · exit ${r.exit_code}</div>` : "")+codeBlock(r.argv.map(a=>/\s/.test(a) ? JSON.stringify(a) : a).join(" "),"Command")+(r.output ? codeBlock(r.output,"Output") : "")).join("");
   }
   else if(["draft","candidate"].includes(row.event)) {marker=row.event==="draft" ? "◇" : "↑";text=row.event==="draft" ? `draft · round ${row.round}` : `verified candidate · ${row.score}%`;extra=codeBlock(row.code);}
-  else if(/^\s*> /.test(text)) {marker="$";extra=codeBlock(text.trim().slice(2),"Command");text="Agent command";}
-  else if(/^Command finished /.test(text)) {const newline=text.indexOf("\n");if(newline>=0){extra=codeBlock(text.slice(newline+1),"Output");text=text.slice(0,newline);}if(/exit (?!0\b)-?\d+/.test(text)){marker="!";kind="error";}}
+  else if(/^\s*> /.test(text)) {marker="$";kind="tool-call";extra=codeBlock(text.trim().slice(2),"Command");text=text.trim().slice(2);}
+  else if(/^\s*< \d/.test(text)) {kind="tool-call";text=text.trim().slice(2);}
+  else if(/^Command finished /.test(text)) {kind="tool-call";const newline=text.indexOf("\n");if(newline>=0){extra=codeBlock(text.slice(newline+1),"Output");text=text.slice(0,newline);}if(/exit (?!0\b)-?\d+/.test(text)){marker="!";kind="error";}}
   else if(text.includes("```")) {let end=0;const blocks=[];for(const match of text.matchAll(/```([^\n]*)\n([\s\S]*?)```/g)){blocks.push(`<p>${esc(text.slice(end,match.index))}</p>`,codeBlock(match[2],match[1].trim()||"Code"));end=match.index+match[0].length;}blocks.push(`<p>${esc(text.slice(end))}</p>`);extra=blocks.join("");text=text.split("```")[0].trim().split("\n")[0]||"Agent code";}
   else if(/generated source[^\n]*:\n/.test(text)) {extra=codeBlock(text.slice(text.indexOf("\n")+1));text=text.slice(0,text.indexOf("\n")).replace(/generated source \(final (\d+)%\):/,"source · $1%");}
-  else if(/\b[0-9a-f]{8}\s*→\s*100\b.*\bserver verified\b/i.test(text)) {marker="✓";kind="matched-note";extra=`<div class="match-success">✓ Server verified exact match</div>`;}
+  else if(/(?:→|->)\s*100\b|\b[1-9]\d*\s+exacts?\b|\b(?:both|all) exact\b/i.test(text) && !/code[ -]exact|not.*exact/i.test(text)) {marker="✓";kind="matched-note";}
   else if(row.event==="error"||/^(Agent error:|Error:|Traceback|Blocked:|Command finished .*exit (?!0\b)-?\d+)|\bERROR\s+\w/i.test(text.split("\n")[0])) {marker="!";kind="error";}
-  if(text.length>180 || text.includes("\n")) {if(!extra)extra=codeBlock(text,"Output");text=text.split("\n")[0].slice(0,180)+(text.split("\n")[0].length>180 ? "…" : "");}
+  if(row.event==="job_finished" && row.server_gains){text=`${row.client} ${row.addr} · ${row.previous}% → ${row.score}%${row.score===100 ? " EXACT" : ""}`;extra="";}
+  const limit=kind==="tool-call" ? 90 : 140;
+  if(text.length>limit || text.includes("\n")) {if(!extra)extra=codeBlock(text,"Output");text=text.split("\n")[0].slice(0,limit)+(text.split("\n")[0].length>limit ? "…" : "");}
   const content=`<span class="terminal-marker">${marker}</span><span class="terminal-text">${esc(text.trim())}</span>`;
   return `<article class="terminal-row ${esc(kind)}" data-key="${esc(row.job+":"+row.seq)}"><time>${stamp}</time><span class="terminal-worker">${worker}</span>${extra ? `<details ${!compact && ["draft","candidate"].includes(row.event) ? "open" : ""}><summary>${content}</summary>${extra}</details>` : `<div>${content}</div>`}</article>`;
 }

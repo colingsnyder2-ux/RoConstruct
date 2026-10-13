@@ -117,7 +117,10 @@ assert.match(compactAgentRow,/<summary>.*Command finished · exit 0.*<\/summary>
 assert.match(compactAgentRow,/<pre>large output/);
 assert.doesNotMatch(compactAgentRow,/<details open/);
 assert.match(feedContext.terminalMessage(longAgentRow,new Map(),false),/<pre>large output/);
-assert.match(feedContext.terminalMessage({...longAgentRow,message:'  > py roc.py check'},new Map(),false),/<summary>.*Agent command.*<\/summary><pre>py roc.py check/);
+assert.match(feedContext.terminalMessage({...longAgentRow,message:'  > py roc.py check'},new Map(),false),/terminal-row tool-call.*<summary>.*py roc.py check.*<\/summary><pre>py roc.py check/);
+assert.match(feedContext.terminalMessage({...longAgentRow,message:'  < 38.9s Bash check'},new Map(),false),/terminal-row tool-call/);
+assert.match(feedContext.terminalMessage({...longAgentRow,message:'9 exacts, server accepted'},new Map(),false),/terminal-row matched-note/);
+assert.doesNotMatch(feedContext.terminalMessage({...longAgentRow,message:'code-exact; data mismatch'},new Map(),false),/terminal-row matched-note/);
 const fencedAgentRow=feedContext.terminalMessage({...longAgentRow,message:'Change:\n```cpp\nint f() { return 1; }\n```'},new Map(),false);
 assert.match(fencedAgentRow,/<pre>int f\(\) \{ return 1; \}/);
 assert.doesNotMatch(fencedAgentRow,/```cpp/);
@@ -138,7 +141,7 @@ for(const loops of [3,4,100]) {
   const result=feedContext.items.find(([key])=>key.startsWith("run:2"))[1];
   assert.match(result,/C 00401000/);assert.match(result,/50% → 60%/);
   assert.equal(result.includes("LongUnit"),loops===3);
-  assert.match(feedContext.items.at(-1)[1],/2 fn\/min/);
+  assert.match(feedContext.items.at(-1)[1],/0 exact · 1 improved/);
 }
 feedContext.jobs[0].slots={0:{}};feedContext.chatCompact=true;feedContext.chatSignature="";
 feedContext.renderWorkerChat();assert.equal(feedContext.items.length,4);

@@ -115,7 +115,19 @@ def memory(shared=None):
             "sync": {key: (shared or {}).get(key) for key in ("available", "error", "cursor")}}
 
 
-def memory_prompt(data=None):
+def memory_prompt(data=None, client=None, library=None):
+    data = dict(data if data is not None else memory())
+    lessons = [row for row in data.get("lessons", [])
+               if not client or row.get("client", client) == client]
+    if library:
+        family = library.split("/")[0].split("-")[0].lower()
+        lessons.sort(key=lambda row: family not in
+                     (row.get("library", "") + " " + row.get("id", "")).lower())
+    data["lessons"] = lessons[:6]
+    for key in ("recent", "shared_recent"):
+        data[key] = [row for row in data.get(key, [])
+                     if not client or row.get("client", client) == client][-4:]
+    data["slow_commands"] = data.get("slow_commands", [])[-3:]
     return ("\nRead available project context paths below and follow the experiment workflow.\n"
             "Use docs/AGENT_GUIDE.md when present; missing docs are cached from the group server. Search prior\n"
             "attempts for this client/library/symptom before trying variants. Reuse relevant\n"
@@ -129,8 +141,12 @@ def memory_prompt(data=None):
             "or file, not a whole client; `check` on one source before mass/grid/fanout sweeps.\n"
             "Run a slow command only when the next step needs its result. If it may take over\n"
             "2 minutes, run it in the background (Bash run_in_background, or redirect output to a\n"
-            "log under work/agent-temp/) and keep working; read the output when it finishes.\n" % SLOW_SECONDS +
-            json.dumps(data if data is not None else memory(), ensure_ascii=True, separators=(",", ":")))
+            "log under work/agent-temp/) and keep working; read the output when it finishes.\n"
+            "Never block on polling loops longer than 60 seconds. Search named files with rg first,\n"
+            "not recursive full-tree reads. Save full compiler output before selecting excerpts.\n"
+            "If server rejects a locally exact recipe change with stale scores, retain evidence and\n"
+            "report verifier reload needed; do not resubmit unchanged sources repeatedly.\n" % SLOW_SECONDS +
+            json.dumps(data, ensure_ascii=True, separators=(",", ":")))
 
 
 def record_session(client, addr, unit, cli, before, candidate, after, before_text, after_text, stored):

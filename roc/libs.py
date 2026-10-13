@@ -1069,12 +1069,16 @@ def preprocess(build, path, include, defines="", deps=None):
         env["CL"] = " ".join("/D" + d for d in defines.split())
         if "_AFXDLL" in defines.split() and "/MD" not in env["CL"] and "/MT" not in env["CL"]:
             env["CL"] += " /MD"
+    started = time.monotonic()
     try:
         run = subprocess.run([*setup.cl_command(cl), "/nologo", "/EP", "/showIncludes", setup.cl_path(path)],
                              capture_output=True, text=True,
                              env=env, errors="replace", timeout=120)
     except subprocess.TimeoutExpired:
         raise match.CompileError("preprocessor timeout after 120 seconds")
+    from roc import telemetry
+    telemetry.record("compiler", event="timing", phase="preprocess", build=build,
+                     seconds=time.monotonic() - started)
     notes = [l for l in run.stderr.splitlines() if l.startswith(INCLUDE_NOTE)]
     if run.returncode:
         raise match.CompileError("\n".join(l for l in run.stderr.splitlines() if l not in notes)[-500:])
@@ -1157,6 +1161,14 @@ def _recipe_identity(r, noinline):
     settings = {k: r.get(k) for k in _UNIT_KEYS}
     settings["noinline"] = list(noinline)
     return hashlib.sha256(json.dumps(settings, sort_keys=True, default=str).encode()).hexdigest()
+
+
+def recipe_versions():
+    """Fingerprints of loaded recipes, including callable filename rules."""
+    import inspect
+    return {name: hashlib.sha256(json.dumps(recipe, sort_keys=True,
+            default=lambda value: inspect.getsource(value).strip() if callable(value) else str(value)).encode()).hexdigest()
+            for name, recipe in RECIPES.items()}
 
 def _sha256(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()

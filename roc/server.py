@@ -477,9 +477,12 @@ def export(store):
 
 
 def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None):
+    from roc import libs
+    recipe_versions = libs.recipe_versions()
     lease_slots = threading.BoundedSemaphore(8)
     verification_slots = threading.BoundedSemaphore(3)
     class Handler(BaseHTTPRequestHandler):
+        recipes = recipe_versions
         # Api keeps one HTTP connection per worker. HTTP/1.0 closes it after
         # every response, rapidly exhausting Windows ephemeral ports locally.
         protocol_version = "HTTP/1.1"
@@ -515,7 +518,8 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None):
             if url.path == "/v1/info":
                 reg = clients.load()
                 return self.send(200, {"clients": {n: {k: e.get(k) for k in ("sha256", "compiler", "compiler_build", "flags")}
-                                                   for n, e in reg.items()}, "verify": sorted(can_verify)})
+                                                   for n, e in reg.items()}, "verify": sorted(can_verify),
+                                       "recipe_versions": recipe_versions})
             if url.path == "/v1/status":
                 return self.send(200, store.status())
             if url.path == "/v1/function-history":
@@ -577,6 +581,9 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None):
                 return self.send(200, {"registered": store.register_families(rows)})
             if path in ("/v1/lease", "/v1/submit", "/v1/submit-batch", "/v1/agent-memory", "/v1/units") and not USER_RE.match(user):
                 return self.send(400, {"error": "username must be 2-32 letters, digits, _ . -"})
+            if path in ("/v1/submit", "/v1/submit-batch") and any(
+                    recipe_versions.get(name) != version for name, version in body.get("recipe_versions", {}).items()):
+                return self.send(409, {"error": "Verifier recipe mismatch; update/restart verifier"})
             if path == "/v1/units":
                 from roc import libs
                 try:

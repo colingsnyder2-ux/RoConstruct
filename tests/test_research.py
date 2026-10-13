@@ -40,8 +40,48 @@ def test_fanout_prefetch_keeps_serial_matching_and_journaling(monkeypatch):
     monkeypatch.setattr(research.match, "compile_text", compile_text)
     monkeypatch.setattr(research, "unresolved", lambda client, scores: Target())
     research.fanout(Campaign(), "test", [(str(i), i) for i in range(9)], jobs=3, log=lambda line: None)
-    assert seen == [str(i) for i in range(9)]
+    assert sorted(seen) == [str(i) for i in range(9)]
     assert 2 <= peak <= 3
+
+
+def test_fanout_streams_ready_wins_and_deduplicates_sources(monkeypatch):
+    release = threading.Event()
+    compiled, logs, receipts = [], [], []
+
+    def compile_text(client, source):
+        compiled.append(source)
+        if source == "slow":
+            assert release.wait(3), "Fast win must stream before slow compile finishes"
+        return source.encode()
+
+    class Target:
+        def match_obj(self, obj, source):
+            return {"00401000" if source == "fast" else "00401010": (0, "f")}
+
+    class Campaign:
+        api = SimpleNamespace(call=lambda *a, **kw: [])
+
+        def previous(self, stage):
+            return []
+
+        def submit_exact(self, stage, client, addr, source, obj=None):
+            assert obj == source.encode()
+            return dict(addr=addr, submission=dict(verified=True, improved=True, score=100))
+
+        def record(self, stage, row):
+            if stage.endswith("-wins"):
+                receipts.append(row)
+
+    def log(line):
+        logs.append(line)
+        if "00401000" in line:
+            release.set()
+
+    monkeypatch.setattr(research.match, "compile_text", compile_text)
+    monkeypatch.setattr(research, "unresolved", lambda *a: Target())
+    winners = research.fanout(Campaign(), "test", [("slow", 1), ("fast", 2), ("fast", 3)], jobs=2, log=log)
+    assert compiled.count("fast") == 1 and len(winners) == len(receipts) == 2
+    assert "00401000" in logs[0]
 
 
 def test_variants_replace_settings_and_keep_flags(monkeypatch):

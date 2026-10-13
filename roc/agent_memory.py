@@ -32,7 +32,7 @@ def portable(row):
         "group", "group_cohort", "cohort", "hypothesis", "change", "source_hash", "before_hash",
         "after_hash", "compiler", "flags", "before", "after", "candidate", "outcome", "gains",
         "exacts_gained", "elapsed_seconds", "next", "cli", "server_stored", "receipt", "error", "diff", "symbol",
-        "recipe", "tried", "local_exact"}
+        "recipe", "tried", "local_exact", "exhausted", "object_hash", "target_hash"}
     result = {k: v for k, v in row.items() if k in allowed}
     for key, value in result.items():
         if isinstance(value, str):

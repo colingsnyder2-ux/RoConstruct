@@ -181,20 +181,22 @@ def test_library_cycle_records_server_observed_gains_and_research_scope(tmp_path
             if path == "/v1/info":
                 return dict(clients={"2008-06": {}}, verify=["2008-06"])
             assert path == "/v1/sources?scores=1&client=2008-06"
-            return [row("00401000", 100, source)]
+            return [row("00401000", 100, source), row("00401010", 100)]
 
     monkeypatch.setattr(agent_auto.worker, "Api", Api)
     prompts = []
     monkeypatch.setattr(agent_auto.agent, "run_agent", lambda cli, prompt, *a, **kw: prompts.append(prompt) or 0)
+    logs = []
     totals = agent_auto.library_cycle("https://example.test", "tester", None, "codex", None, 1,
-                                    lambda *a: None, "2008-06")
-    assert totals == dict(attempted=1, matched=1, improved=0, errors=0)
+                                    logs.append, "2008-06")
+    assert totals == dict(attempted=1, matched=2, improved=0, errors=0)
+    assert sum("server verified exact" in line for line in logs) == 2
     assert "Client: 2008-06" in prompts[0] and "g3d-6.09" in prompts[0]
     assert "research/recipes.json" in prompts[0] and "libs.add_unit" in prompts[0]
     assert "No unrelated infrastructure edits" in prompts[0]
     record = [r for r in map(json.loads, (tmp_path / "work/agent-memory/attempts.jsonl").read_text().splitlines())
               if r["kind"] == "library_campaign"][0]
-    assert record["outcome"] == "improved" and record["addresses"] == ["00401000"]
+    assert record["outcome"] == "improved" and record["addresses"] == ["00401000", "00401010"]
     assert record["profile"] == "library-strategy-0"
 
 
@@ -246,19 +248,45 @@ def test_source_free_targets_can_use_verified_family_seeds():
     assert target["score"] == 0
 
 
+def test_ranking_uses_verified_exacts_per_minute_and_close_sources():
+    rows = [row("00401000", 94), row("00401010", 99), row("00401020", 99, imports=["IAT!f"])]
+    records = [dict(kind="auto_batch", area="repair", outcome="improved", exacts_gained=2,
+                    elapsed_seconds=60, gains=2, addresses=["00401000", "00401010"]),
+               dict(kind="auto_batch", area="imports", outcome="improved", exacts_gained=1,
+                    elapsed_seconds=600, gains=1, addresses=["00401020"])]
+    area = agent_auto.plan(rows, records=records)["areas"][0]
+    assert area["id"] == "repair" and area["verified_exacts_per_minute"] == 2
+    assert area["targets"][0]["addr"] == "00401010"
+
+
+def test_exhausted_batch_parks_across_models_until_source_changes():
+    rows = [row("00401000")]
+    target = agent_auto.plan(rows, records=[])["areas"][0]["targets"][0]
+    record = dict(kind="auto_batch", area="repair", profile="claude:default", outcome="no_gain",
+                  exhausted=True, group=target["group"], group_cohort=target["group_cohort"])
+    assert agent_auto.plan(rows, profile="codex:default", records=[record])["areas"][0]["parked"]
+    rows[0]["source"] += "int new_evidence;"
+    assert not agent_auto.plan(rows, records=[record])["areas"][0]["parked"]
+
+
 def test_every_trial_journals_failure_and_keeps_best(tmp_path, monkeypatch):
     path = make_task(tmp_path, monkeypatch)
-    def check(client, addr, source):
+    def check(client, addr, source, **kwargs):
         if source == "broken":
             raise agent_auto.match.CompileError("bad C++")
         return (100 if source == "winner" else 10), "f", "diff", []
     monkeypatch.setattr(agent_auto.match, "check_text", check)
+    monkeypatch.setattr(agent_auto.match, "compile_text", lambda c, text: text.encode())
+    monkeypatch.setattr(agent_auto.match, "target", lambda *a: (b"target", [], 0))
     assert agent_auto.trial("2008-06", "00401000", path, "import fix")["after"] == 100
+    repeated = agent_auto.trial("2008-06", "00401000", path, "same edit")
+    assert repeated["duplicate"] and repeated["after"] == 100
     path.write_text("loser")
     agent_auto.trial("2008-06", "00401000", path, "wrong constant")
     path.write_text("broken")
     result = agent_auto.trial("2008-06", "00401000", path, "invalid declaration")
     assert result["outcome"] == "compile_failed"
+    assert agent_auto.trial("2008-06", "00401000", path, "same invalid declaration")["duplicate"]
     assert (path.parent / "best.cpp").read_text() == "winner"
     records = [json.loads(line) for line in (path.parent / "trials.jsonl").read_text().splitlines()]
     assert len(records) == 3 and records[1]["before"] == 100
@@ -297,7 +325,9 @@ def test_run_reuses_before_models_and_assigns_explicit_targets(tmp_path, monkeyp
                         (order.append("model"), prompts.append(prompt))[1] or 0)
     result = agent_auto.run("server", "me", workers=2, jobs=4, batch_size=2, log=lambda *args: None)
     assert order.count("reuse") == 4 and order.count("model") == 2
-    assert sum("Try to improve all assigned functions" in prompt for prompt in prompts) == 1
+    assert sum("Closest proven mismatches first" in prompt for prompt in prompts) == 1
+    assert all('"diff": "diff"' in prompt for prompt in prompts)
+    assert all("Individual function mining" in prompt for prompt in prompts)
     assert sum("Automatic BATCH repair" in prompt for prompt in prompts) == 1
     assert order[:4] == ["reuse"] * 4
     assert len(set(paths)) == 4 and all("agent-auto" in path for path in paths)
@@ -374,7 +404,9 @@ def test_reuse_runs_compiler_gates_and_skips_known_failures(tmp_path, monkeypatc
     failed = {("00401000", agent_auto.digest(gates[0]))}
     checked = []
     monkeypatch.setattr(agent_auto.match, "check_text",
-                        lambda c, a, text: checked.append(text) or (95, "f", "diff", []))
+                        lambda c, a, text, **kw: checked.append(text) or (95, "f", "diff", []))
+    monkeypatch.setattr(agent_auto.match, "compile_text", lambda c, text: text.encode())
+    monkeypatch.setattr(agent_auto.match, "target", lambda *a: (b"target", [], 0))
     task = dict(addr="00401000", path=str(path), source=source, donors=[], before=95)
     agent_auto.reuse(task, [], failed)
     # Skipped: the recorded failure, and the gate identical to the current source (21022 + keep).

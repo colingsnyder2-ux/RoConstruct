@@ -46,6 +46,17 @@ def submit_body(addr="00401000"):
     return {"client": "2008-06", "addr": addr, "source": "int f(){return 0;}", "user": "pilot", "score": 100}
 
 
+def test_recipe_mismatch_rejected_before_compile(server_url):
+    status, info = request(server_url, "/v1/info")
+    assert status == 200 and info["recipe_versions"]
+    body = submit_body()
+    body["recipe_versions"] = {next(iter(info["recipe_versions"])): "stale"}
+    with patch("roc.server.match.check_text") as compile_check:
+        status, result = request(server_url, "/v1/submit", body)
+    assert status == 409 and "recipe mismatch" in result["error"]
+    compile_check.assert_not_called()
+
+
 def test_verification_slots_bound_submit_and_batch_and_keep_info_live(server_url):
     started, finish = threading.Event(), threading.Event()
     lock = threading.Lock()

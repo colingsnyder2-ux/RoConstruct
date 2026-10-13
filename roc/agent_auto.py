@@ -66,6 +66,8 @@ def snapshot(client="2008-06", api=None):
 def plan(rows, max_size=512, profile="claude:default", records=None, client="2008-06"):
     """Heuristic priority, not a forecast of exacts or a fresh compiler score."""
     groups = defaultdict(list)
+    from roc import libs
+    versions = libs.recipe_versions()
     for row in rows:
         if row.get("shape"):
             groups[row["shape"]].append(row)
@@ -101,9 +103,13 @@ def plan(rows, max_size=512, profile="claude:default", records=None, client="200
         else:
             area, priority = "repair", 40
         priority += min(10, len(siblings)) + (row["score"] - 70) / 3 - row["size"] / 128
+        if 95 <= row["score"] < 100:
+            priority += 20
         key = (directives.get("lib") or directives.get("archive") or row.get("unit", "")) if area == "templates" else (
             "|".join(sorted(row["imports"])) if area == "imports" else row.get("shape") or row.get("unit", ""))
-        targets.append(dict(row, source=source, area=area, priority=round(priority, 2), donors=donors[:3],
+        recipe = (directives.get("lib") or directives.get("archive") or "").split()
+        evidence_hash = digest(source + versions.get(recipe[0], "")) if recipe else digest(source)
+        targets.append(dict(row, source=source, area=area, priority=round(priority, 2), donors=donors[:3], evidence_hash=evidence_hash,
                             source_hash=digest(source), siblings=len(siblings), client=client, group=digest(client + ":" + area + ":" + key)[:16]))
     areas = []
     records = history() if records is None else records
@@ -122,15 +128,17 @@ def plan(rows, max_size=512, profile="claude:default", records=None, client="200
         members = sorted((row for row in targets if row["area"] == area), key=lambda r: (-r["priority"], r["addr"]))
         if not members:
             continue
-        cohort = digest("\n".join(sorted(row["addr"] + str(row["size"]) + row["source_hash"] for row in members)))
+        cohort = digest("\n".join(sorted(row["addr"] + str(row["size"]) + row["evidence_hash"] for row in members)))
         feedback = [r for r in records if r.get("kind") == "auto_batch" and r.get("area") == area and
                     r.get("profile") == profile and r.get("outcome") in ("improved", "no_gain")]
         for group in {row["group"] for row in members}:
             family = [row for row in members if row["group"] == group]
-            revision = digest("\n".join(sorted(row["addr"] + str(row["size"]) + row["source_hash"] for row in family)))
+            revision = digest("\n".join(sorted(row["addr"] + str(row["size"]) + row["evidence_hash"] for row in family)))
             previous = [r for r in feedback if r.get("group") == group and r.get("group_cohort") == revision
                         and r.get("phase") == "repair"]
-            parked = len(previous) >= 2 and all(r.get("outcome") == "no_gain" for r in previous[-2:])
+            exhausted = [r for r in records if r.get("kind") == "auto_batch" and r.get("group") == group
+                         and r.get("group_cohort") == revision and r.get("exhausted")]
+            parked = bool(exhausted) or (len(previous) >= 2 and all(r.get("outcome") == "no_gain" for r in previous[-2:]))
             for row in family:
                 row.update(group_cohort=revision, group_parked=parked)
         members.sort(key=lambda row: (row["group_parked"], -row["priority"], row["addr"]))
@@ -141,13 +149,16 @@ def plan(rows, max_size=512, profile="claude:default", records=None, client="200
         measured = [r for r in records if r.get("kind") == "auto_batch" and r.get("area") == area
                     and r.get("outcome") in ("improved", "no_gain")]
         rate = (sum(r.get("gains", 0) for r in measured) + 1) / (sum(len(r.get("addresses") or ()) for r in measured) + 2)
+        timed = [r for r in measured if r.get("elapsed_seconds", 0) > 0 and "exacts_gained" in r][-20:]
+        exact_rate = 60 * sum(r["exacts_gained"] for r in timed) / max(60, sum(r["elapsed_seconds"] for r in timed))
         areas.append({"id": area, "client": client, "title": title, "advice": advice, "eligible": len(members),
                       "bytes": sum(row["size"] for row in members),
                       "priority": round(members[0]["priority"] + min(20, gains * 2) + 40 * rate, 2),
                       "expected_gain_rate": round(rate, 3),
+                      "verified_exacts_per_minute": round(exact_rate, 3),
                       "recent_verified_gains": gains, "measured_batches": len(feedback[-20:]),
                       "cohort": cohort, "parked": parked, "targets": members})
-    return {"client": client, "profile": profile, "areas": sorted(areas, key=lambda r: -r["priority"]),
+    return {"client": client, "profile": profile, "areas": sorted(areas, key=lambda r: (-r["verified_exacts_per_minute"], -r["priority"])),
             "excluded": dict(excluded), "note": "Heuristic ranking. Scores are snapshot hints; baselines recompile before work."}
 
 
@@ -158,7 +169,8 @@ def portfolio(names, max_size=512, profile="claude:default", records=None, api=N
     for result in results:
         excluded.update(result["excluded"])
     return {"client": names[0] if len(names) == 1 else "all", "clients": list(names), "profile": profile,
-            "areas": sorted((area for result in results for area in result["areas"]), key=lambda area: -area["priority"]),
+            "areas": sorted((area for result in results for area in result["areas"]),
+                            key=lambda area: (-area["verified_exacts_per_minute"], -area["priority"])),
             "excluded": dict(excluded), "note": "Baselines recompile before work."}
 
 
@@ -189,6 +201,7 @@ STRATEGIES = (
 def library_campaigns(rows, client, records):
     """Offer source-backed libraries and broad evidence-ranked repair categories."""
     from roc import libs
+    versions = libs.recipe_versions()
     groups = defaultdict(list)
     for row in rows:
         recipe = match.directives(row.get("source") or "").get("lib", "").split()
@@ -207,20 +220,24 @@ def library_campaigns(rows, client, records):
         if not targets:
             continue
         revision = digest("\n".join(sorted(row["addr"] + str(row.get("score", 0)) +
-                                          digest(row.get("source") or "") for row in targets)))
+                                          digest(row.get("source") or "") + versions.get(row["recipe"], "") for row in targets)))
         previous = [r for r in records if r.get("kind") == "library_campaign" and
                     r.get("client") == client and r.get("library") == library and r.get("cohort") == revision]
         available = []
         for strategy in range(len(STRATEGIES)):
             trials = [r for r in previous if r.get("profile") == "library-strategy-%d" % strategy and
                       r.get("outcome") in ("improved", "no_gain")]
-            if len(trials) >= 2 and all(r["outcome"] == "no_gain" for r in trials[-2:]):
+            if trials and trials[-1]["outcome"] == "no_gain":
                 continue
             available.append((len(trials), strategy))
         if not available:
             continue
+        timed = [r for r in records if r.get("kind") == "library_campaign" and r.get("client") == client
+                 and r.get("library") == library and r.get("elapsed_seconds", 0) > 0 and "exacts_gained" in r][-20:]
+        exact_rate = 60 * sum(r["exacts_gained"] for r in timed) / max(60, sum(r["elapsed_seconds"] for r in timed))
         campaigns.append(dict(client=client, library=library, revision=revision,
                               strategy=min(available)[1], visits=len(previous), targets=targets,
+                              verified_exacts_per_minute=exact_rate,
                               exact=sum(row.get("score") == 100 for row in members),
                               recipes=sorted({row["recipe"] for row in members if row["recipe"]})))
     return sorted(campaigns, key=lambda c: (c["visits"], -len(c["targets"]), c["library"]))
@@ -312,11 +329,14 @@ def library_cycle(server, user, token, cli, model, minutes, log, client, slot=No
         log("No library campaign has its vendor source on this PC; falling back to ranked repair batches.")
         return None
     choices = [c for c in choices if c["recipes"]] or choices
-    visits = min(c["visits"] for c in choices)
-    fresh = [c for c in choices if c["visits"] == visits]
+    best_rate = max(c["verified_exacts_per_minute"] for c in choices)
+    ranked = [c for c in choices if c["verified_exacts_per_minute"] == best_rate]
+    visits = min(c["visits"] for c in ranked)
+    fresh = [c for c in ranked if c["visits"] == visits]
     # Explore unfinished categories; favor stronger baselines without always picking the biggest library.
     def choose(candidates):
-        return random.choices(candidates, weights=[1 + sum(row.get("score", 0) for row in c["targets"]) /
+        return random.choices(candidates, weights=[1 + 100 * sum(95 <= row.get("score", 0) < 100 for row in c["targets"]) /
+                                                    len(c["targets"]) + sum(row.get("score", 0) for row in c["targets"]) /
                                                     len(c["targets"]) for c in candidates], k=1)[0]
     with (claim_lock or CLAIM_LOCK):
         # Libraries another loop or PC started recently and has not finished: pick something else.
@@ -350,11 +370,16 @@ def library_cycle(server, user, token, cli, model, minutes, log, client, slot=No
     if seeded:
         log("Campaign sources: %d missing files added locally." % seeded)
     brief = slot is not None and slot % 2 == 0
-    prompt = (("Read CLAUDE.md. Try to mine all biggest unresolved functions for client %s in %s.\n"
+    prompt = (("Read CLAUDE.md and docs/AGENT_GUIDE.md. Client: %s. Library/category: %s.\n"
         "Use evidence in %s. Run commands as `%s <command>`. Submit improvements to %s as %s.\n"
+        "Pick closest proven mismatches first; one hypothesis, small pilot, then fan out winners.\n"
+        "Search relevant research/log.jsonl and prior trials; no unchanged rejected grids.\n"
+        "Use research/recipes.json grid/fanout; generated units through libs.add_unit.\n"
+        "No unrelated infrastructure edits; no subagents. Stop after two losing hypotheses.\n"
         "Keep best sources; record trials; no asm, byte blobs, guessed layouts, or edits under clients/tools.\n"
         "Work up to %d minutes, then report wins and blockers.\n" %
-        (selected, campaign["library"], folder / "campaign.json", agent.roc_command(), server, user, minutes)) if brief else
+        (selected, campaign["library"], folder / "campaign.json", agent.roc_command(), server, user, minutes) +
+        agent.memory_prompt(agent.memory(shared), selected, campaign["library"])) if brief else
         ("Read CLAUDE.md and docs/AGENT_GUIDE.md. Experimental automatic research campaign.\n"
         "Finish as many unresolved functions in this library/category as evidence permits, across all sizes.\n"
         "Choose the most promising subcategory, targets and experiments yourself from the campaign evidence.\n"
@@ -384,7 +409,8 @@ def library_cycle(server, user, token, cli, model, minutes, log, client, slot=No
         "Submit only improvements; server re-verification is required. Other workers may inspect the same targets; keep working and let the server retain the best verified source.\n"
         "After two losing hypotheses, try a different evidence-backed route or explain missing evidence and stop.\n"
         "Work up to %d minutes. End with receipts, rejected variants and next experiment.\n" % minutes +
-        "Campaign evidence file: " + str(folder / "campaign.json") + "\n" + agent.memory_prompt(agent.memory(shared))))
+        "Campaign evidence file: " + str(folder / "campaign.json") + "\n" +
+        agent.memory_prompt(agent.memory(shared), selected, campaign["library"])))
     log("Prompt mode: %s." % ("simple" if brief else "evidence-rich"))
 
     def output(message):
@@ -396,7 +422,9 @@ def library_cycle(server, user, token, cli, model, minutes, log, client, slot=No
         else:
             log(message)
 
-    baseline = {row["addr"]: row.get("score", 0) for row in campaign["targets"]}
+    baseline = {row["addr"]: row.get("score", 0) for row in snapshot(selected, api)}
+    baseline.update({row["addr"]: row.get("score", 0) for row in campaign["targets"]})
+    reported = dict(baseline)
     benchmark_stop = threading.Event()
     started = time.monotonic()
 
@@ -408,6 +436,20 @@ def library_cycle(server, user, token, cli, model, minutes, log, client, slot=No
         except (RuntimeError, OSError):
             scores = {}
         gains = {addr: score for addr, score in scores.items() if score > baseline.get(addr, 100)}
+        for addr, score in gains.items():
+            if score <= reported.get(addr, 100):
+                continue
+            result = dict(event="job_finished", client=selected, addr=addr,
+                          previous=reported[addr], score=score, new_exact=score == 100,
+                          server_gains=True, slot=slot if slot is not None else 0)
+            if slot is not None:
+                result["slot"] = slot
+            if log is print and os.environ.get("ROC_GUI_EVENTS"):
+                print("ROC_EVENT " + json.dumps(result), flush=True)
+            else:
+                log("%s %s %s%% → %s%% · server verified%s" %
+                    (selected, addr, reported[addr], score, " exact" if score == 100 else ""))
+            reported[addr] = score
         exact = sum(score == 100 and baseline[addr] < 100 for addr, score in gains.items())
         improved = len(gains) - exact
         row = dict(event="benchmark", workers=1, completed=len(gains), per_minute=round(
@@ -434,13 +476,14 @@ def library_cycle(server, user, token, cli, model, minutes, log, client, slot=No
         ticker.join(timeout=2)
     benchmark()
     after = {row["addr"]: row for row in api.call("/v1/sources?scores=1&client=" + selected, timeout=120)}
-    gains = [after[row["addr"]] for row in campaign["targets"] if
-             after.get(row["addr"], {}).get("score", 0) > row.get("score", 0)]
+    gains = [row for addr, row in after.items() if row.get("score", 0) > baseline.get(addr, 100)]
     # Snapshot changes are server gains during this window, not proof of agent authorship.
     record = dict(kind="library_campaign", date=datetime.now(timezone.utc).isoformat(), client=selected,
                   library=campaign["library"], cohort=campaign["revision"], profile="library-strategy-%d" % campaign["strategy"],
                   outcome="error" if code else "improved" if gains else "no_gain",
                   gains=len(gains), addresses=[row["addr"] for row in gains], evidence=str(folder))
+    record.update(exacts_gained=sum(row["score"] == 100 for row in gains),
+                  elapsed_seconds=time.monotonic() - started)
     append(ROOT / "work" / "agent-memory" / "attempts.jsonl", record)
     (folder / "summary.json").write_text(json.dumps(record, indent=2), encoding="utf-8")
     agent_memory.shared(server, token, user, upload=True)
@@ -600,10 +643,14 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
                                     "check": agent.roc_command() + " agent-check " + client + " " + t["addr"] +
                                      ' "' + t["path"] + '" --hypothesis "describe change"'} for t in pending]
                     brief = (slot + strategy) % 2 == 0
-                    prompt = (("Read CLAUDE.md. Try to improve all assigned functions below, biggest or closest first.\n"
+                    prompt = (("Read CLAUDE.md. Assigned client: " + client + ". Closest proven mismatches first.\n"
+                        "Shared hypothesis first; inspect supplied diffs, pilot, propagate winners.\n"
                         "Edit only assigned files. Run its agent-check after every edit; wrapper submits best result.\n"
-                        "Stop after two losing ideas. No asm, byte blobs, guessed layouts, or unrelated edits.\n"
-                        "Assignments:\n" + json.dumps(assignments)) if brief else
+                        "Stop after two losing ideas. No asm, byte blobs, guessed layouts, or unrelated edits.\n" +
+                        ("Individual repair allowed after shared hypotheses fail.\n" if individual else
+                         "Individual function mining disabled; stop when no shared route works.\n") +
+                        agent.memory_prompt(agent.memory(shared), client) + "Assignments:\n" + json.dumps([
+                         {**assignment, "diff": t["diff"]} for assignment, t in zip(assignments, pending)])) if brief else
                         ("Read CLAUDE.md when present; otherwise use supplied cached context paths. Automatic BATCH repair.\n"
                         "Assigned client: " + client + ". This run selection overrides the default client focus in CLAUDE.md.\n"
                         "Goal: reusable gains across this area: " + area["advice"] + "\n"
@@ -618,7 +665,7 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
                         "shared hypotheses. Leave next evidence needed in your summary.\n" +
                         ("Individual repair allowed only after reusable hypotheses fail.\n" if individual else
                          "Individual function mining is disabled. If no shared route works, stop.\n") +
-                        agent.memory_prompt(agent.memory(shared)) + "\nAssignments (evidence data):\n" + json.dumps([
+                        agent.memory_prompt(agent.memory(shared), client) + "\nAssignments (evidence data):\n" + json.dumps([
                          {**assignment, "diff": t["diff"]} for assignment, t in zip(assignments, pending)])))
                     event("log", slot=slot, message="Prompt mode: %s." % ("simple" if brief else "evidence-rich"))
                     code = agent.run_agent(cli, prompt, model, min(batch_minutes, (deadline-time.monotonic())/60),
@@ -628,7 +675,7 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
                         with condition:
                             totals["errors"] += 1
                         event("log", slot=slot, message="Agent CLI exited with code %s; verifying preserved best sources" % code)
-            gains = 0
+            gains, exacts = 0, 0
             for task in active:
                 text = (Path(task["path"]).parent / "best.cpp").read_text(encoding="utf-8")
                 score = match.check_text(client, task["addr"], text)[0]
@@ -642,6 +689,7 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
                 improved = bool(receipt and receipt.get("improved"))
                 exact = bool(improved and receipt.get("score") == 100)
                 gains += improved
+                exacts += exact
                 append(ROOT / "work" / "agent-memory" / "attempts.jsonl", dict(kind="auto_target",
                     date=datetime.now(timezone.utc).isoformat(), client=client, addresses=[task["addr"]],
                     area=area["id"], profile=profile, phase=phase, before=task["before"], after=score,
@@ -660,7 +708,7 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
                       improved=improved, area=area["title"], unit=task["unit"], size=task["size"])
                 if improved:
                     event("candidate", slot=slot, score=receipt["score"], code=text)
-            return gains, len(active) if tried_route and quality_result else 0
+            return gains, len(active) if tried_route and quality_result else 0, exacts
         finally:
             pass
 
@@ -699,24 +747,25 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
                         continue
                     area, targets = queue.pop(available)
                     group = targets[0]["group"]
-                    if phase == "repair" and zero[group] >= 2:
+                    if phase == "repair" and zero[group] >= 1:
                         continue
                     busy.add((area["client"], area["id"]))
                 try:
                     started = time.monotonic()
-                    gains, attempted = batch(slot, area, targets, phase)
+                    gains, attempted, exacts = batch(slot, area, targets, phase)
                     record = dict(kind="auto_batch", date=datetime.now(timezone.utc).isoformat(),
                         client=area["client"], area=area["id"], profile=profile, phase=phase, cohort=area["cohort"],
                         group=group, group_cohort=targets[0]["group_cohort"],
                         outcome="improved" if gains else "no_gain" if attempted else "unavailable", gains=gains,
+                        exacts_gained=exacts, exhausted=phase == "repair" and bool(attempted) and not gains,
                         addresses=[t["addr"] for t in targets], elapsed_seconds=time.monotonic() - started,
                         evidence=str(directory))
                     append(ROOT / "work" / "agent-memory" / "attempts.jsonl", record)
                     if attempted:
                         with condition:
                             zero[group] = 0 if gains else zero[group] + 1
-                    if phase == "repair" and zero[group] >= 2:
-                        event("log", slot=slot, message="Parked %s after two zero-gain batches" % area["title"])
+                    if phase == "repair" and zero[group] >= 1:
+                        event("log", slot=slot, message="Parked %s after exhausted repair batch; new evidence required" % area["title"])
                 except (RuntimeError, OSError, ValueError) as error:
                     with condition:
                         totals["errors"] += 1

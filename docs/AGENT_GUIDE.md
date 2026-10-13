@@ -147,7 +147,9 @@ function of a library or guarantee 100%. Individual repair remains disabled.
   source hash that already failed on any PC are skipped.
 - **Paid phase.** One agent batch per coherent group, editing only isolated copies
   under `work/agent-auto/<run>/` and checking with `roc agent-check`. Two zero-gain
-  batches park that group until its sources change.
+  hypotheses exhaust a repair batch; a completed zero-gain repair batch parks the
+  group across models until its source, recipe or target extent changes. Failed or
+  unavailable CLI runs do not park it.
 - **Submission.** Best source per target is re-scored locally and submitted; only
   server-verified improvements count.
 
@@ -177,6 +179,22 @@ network access, Wine (`wine wine32 msitools cabextract p7zip-full`) and a public
 address.
 
 ## Reproducibility
+
+- Expanded source, compiler build, flags and language key persistent objects in
+  `work/object-cache/`. Threads and CLI processes share a per-object lock; fanout
+  checks reuse that object for every target. Raw includes and date/time macros
+  bypass the disk cache. Duplicate identical target trials reuse their score
+  without adding duplicate journal entries.
+- Workers boost 95–99% baselines and rank areas by server-verified exacts per
+  minute over the last 20 timed batches. New batches record exact counts separately
+  from partial gains. Fanout streams and journals each verified win immediately.
+- `/v1/info` publishes loaded recipe fingerprints. Library submissions compare
+  these before upload and include them in the request; mismatched verifiers reject
+  before compiling. Update and restart verifiers after recipe edits; older servers
+  must update before accepting recipe-backed submissions from updated workers.
+- Compile/preprocess timings are recorded as `event: timing` in
+  `work/worker-jsonl`. Compare cold runs with a fresh CLI run using the disk cache;
+  source and recipe/header changes invalidate expanded objects automatically.
 
 - Preprocessed library units (`work/libcache/`) record every header the compiler
   opened plus the recipe settings. A changed header or recipe rebuilds the unit; a

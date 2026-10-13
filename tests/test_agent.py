@@ -203,6 +203,17 @@ def test_memory_ranks_evidence_and_keeps_negative_results(tmp_path, monkeypatch)
     assert "winner" in agent.memory_prompt() and "Record EVERY trial" in agent.memory_prompt()
 
 
+def test_memory_prompt_bounds_context_and_prioritizes_family():
+    data = {"lessons": [{"id": "xtp-%d" % n, "client": "2008-06"} for n in range(10)] +
+            [{"id": "ogre-rejected", "client": "2008-06", "outcome": "rejected"},
+             {"id": "other-client", "client": "2009-12"}],
+            "recent": [{"client": "2009-12"}], "shared_recent": [], "slow_commands": []}
+    prompt = agent.memory_prompt(data, "2008-06", "ogre-1.4.5/ogrenew")
+    assert "ogre-rejected" in prompt and "other-client" not in prompt
+    assert "xtp-4" in prompt and "xtp-5" not in prompt
+    assert len(data["lessons"]) == 12  # Rendering must not change shared memory.
+
+
 def test_session_memory_records_rollback_and_server_result(tmp_path, monkeypatch):
     import json
     run_job(tmp_path, monkeypatch, "start", "worse", job_score=40)
