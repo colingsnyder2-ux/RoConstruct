@@ -15,7 +15,6 @@ import re
 import shutil
 import subprocess
 import tarfile
-import tempfile
 import threading
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -1117,14 +1116,14 @@ def unit(name, path, build):
     include = ";".join([str(folder)] + [winsdk_include() if i == "WINSDK" else str(_case_path(LIBS / i))
                                         for i in r.get("include", [])])
     if r.get("preinclude"):
-        with tempfile.TemporaryDirectory() as tmp:
+        with match.compile_directory() as tmp:
             wrapper = Path(tmp) / "unit.cpp"
             wrapper.write_text("".join('#include "%s"\n' % header for header in r["preinclude"])
                                + '#include "%s"\n' % src.as_posix())
             body = preprocess(build, wrapper, include, r.get("defines", ""), deps)
     elif r.get("patches"):
         # Edits reconstructed from the client binary: preprocess a patched copy of the tree.
-        with tempfile.TemporaryDirectory() as tmp:
+        with match.compile_directory() as tmp:
             copy = Path(tmp) / "src"
             shutil.copytree(folder, copy)
             for rel, edits in r["patches"].items():

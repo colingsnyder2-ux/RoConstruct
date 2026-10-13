@@ -1,6 +1,30 @@
 import struct
+from contextlib import contextmanager
+from pathlib import Path
 
 from roc import libs, match
+
+
+def test_library_patched_copy_uses_acl_safe_compile_directory(tmp_path, monkeypatch):
+    source = tmp_path / "source"
+    source.mkdir()
+    (source / "unit.cpp").write_text("old")
+    safe = tmp_path / "safe"
+    used = []
+
+    @contextmanager
+    def compile_directory():
+        safe.mkdir()
+        used.append(True)
+        yield safe
+
+    monkeypatch.setitem(libs.RECIPES, "test", {"patches": {"unit.cpp": [["old", "new"]]}})
+    monkeypatch.setattr(libs, "fetch", lambda name: source)
+    monkeypatch.setattr(match, "compile_directory", compile_directory)
+    monkeypatch.setattr(libs, "preprocess", lambda build, path, include, defines, deps: Path(path).read_text())
+    monkeypatch.setattr(libs, "ROOT", tmp_path)
+    assert "new" in libs.unit("test", "unit.cpp", 21022)
+    assert used
 
 
 def test_data_ref_starts_at_relocation_addend():

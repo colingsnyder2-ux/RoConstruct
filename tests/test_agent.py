@@ -185,7 +185,7 @@ def test_memory_ranks_evidence_and_keeps_negative_results(tmp_path, monkeypatch)
     path.write_text("\n".join(json.dumps({"after": n}) for n in range(25)) + '\n{"incomplete":')
     data = agent.memory()
     assert [item["id"] for item in data["lessons"]] == ["winner", "rejected"]
-    assert len(data["recent"]) == 19 and data["recent"][-1]["after"] == 24
+    assert len(data["recent"]) == 7 and data["recent"][-1]["after"] == 24
     assert "winner" in agent.memory_prompt() and "Record EVERY trial" in agent.memory_prompt()
 
 
@@ -248,5 +248,40 @@ def test_rate_limited_agent_switches_to_the_next_model(monkeypatch):
                         calls.append((cli, model, bool(switch))) or (agent.RATE_LIMITED if len(calls) < 3 else 0))
     assert agent.run_agent("claude", "p", "sonnet", 30, lambda *a: None) == 0
     assert calls == [("claude", "sonnet", True), ("opencode", "opencode/big-pickle", True), ("codex", None, False)]
-    assert agent.DEAD.search("Model exo-free has been deprecated.") and agent.DEAD.search("Upstream request failed: Model is unavailable.")
+    assert agent.DEAD.search("Model exo-free has been deprecated.") and not agent.DEAD.search("Upstream request failed: Model is unavailable.") and agent.RATE.search("Upstream request failed: Model is unavailable.")
     assert agent.RATE.search("Error: 429 rate limit reached") and not agent.RATE.search("ran 429 tests")
+
+
+def test_transient_upstream_failure_retries_before_switching(monkeypatch):
+    calls, clock = [], [0.0]
+    monkeypatch.setenv("ROC_AGENT_FALLBACKS", "opencode:opencode/other")
+    monkeypatch.setattr(agent.time, "sleep", lambda s: clock.__setitem__(0, clock[0] + s))
+    monkeypatch.setattr(agent.time, "monotonic", lambda: clock[0])
+    monkeypatch.setattr(agent, "_run_once", lambda cli, prompt, model, minutes, log, goal, switch:
+                        calls.append(model) or (agent.TRANSIENT if model == "a" else 0))
+    assert agent.run_agent("opencode", "p", "a", 60, lambda *a: None) == 0
+    assert calls.count("a") > 5 and calls[-1] == "opencode/other"  # ~5 minutes of retries, then the fallback
+
+
+def test_short_batch_reserves_time_for_fallback(monkeypatch):
+    calls, clock = [], [0.0]
+    monkeypatch.setenv("ROC_AGENT_FALLBACKS", "opencode:opencode/other")
+    monkeypatch.setattr(agent.time, "monotonic", lambda: clock[0])
+    monkeypatch.setattr(agent.time, "sleep", lambda seconds: clock.__setitem__(0, clock[0] + seconds))
+
+    def run(cli, prompt, model, minutes, log, goal, switch):
+        calls.append((model, minutes, switch))
+        return agent.TRANSIENT if model == "a" else 0
+
+    monkeypatch.setattr(agent, "_run_once", run)
+    assert agent.run_agent("opencode", "p", "a", 5, lambda *a: None) == 0
+    assert calls[0][2] == 2.5
+    assert calls[-1][0] == "opencode/other" and calls[-1][1] >= 2
+
+
+def test_subminute_batch_still_runs(monkeypatch):
+    monkeypatch.setenv("ROC_AGENT_FALLBACKS", " ")
+    calls = []
+    monkeypatch.setattr(agent, "_run_once", lambda *args: calls.append(args) or 0)
+    assert agent.run_agent("codex", "p", minutes=0.5) == 0
+    assert len(calls) == 1

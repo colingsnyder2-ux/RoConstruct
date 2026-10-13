@@ -1027,7 +1027,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
         # Its own connection: http.client is not thread-safe, so sharing the main
         # thread's api here raced self._conn, forcing a new socket per call and
         # exhausting ephemeral ports (WinError 10048).
-        hb = Api(",".join(api.servers), api.token)
+        hb = Api(",".join(getattr(api, "servers", [api.server])), api.token)
         while not stop.wait(job.get("heartbeat", 60)):
             try:
                 if not hb.call("/v1/heartbeat", {"lease": job["lease"]}).get("ok"):
