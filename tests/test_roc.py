@@ -2213,9 +2213,24 @@ if __name__ == "__main__":
             print("ok ", name)
 
 
-def test_mark_matched_code_bad_only_when_allowed():
+def test_mark_matched_code_trusts_exacts():
     funcs = [{"addr": "00401000", "kind": "bad"}, {"addr": "00402000", "kind": "gen"}, {"addr": "00403000", "kind": "bad"}]
     mark_matched_code(funcs, {"00401000", "00402000"})
-    assert [f["kind"] for f in funcs] == ["bad", "code", "bad"]
-    mark_matched_code(funcs, {"00401000"}, include_bad=True)
     assert [f["kind"] for f in funcs] == ["code", "code", "bad"]
+
+
+def test_find_functions_drops_fallthrough_starts():
+    # push ebp; nops; mov ecx,esp (8B CC) falls into the aligned byte the int3 heuristic seeds.
+    va = 0x401000
+    code = bytes.fromhex("55" + "90" * 13 + "8bcc5dc3" + "cc" * 12)
+    assert [f["addr"] for f in find_functions(code, va, {va}, [])] == ["00401000", "00401010"]
+    assert [(f["addr"], f["size"]) for f in find_functions(code, va, {va}, [], keep={va})] == [("00401000", 18)]
+
+
+def test_find_functions_ignores_trailing_jump_table():
+    va = 0x0f000000  # table entries end in 0x0f, which cannot decode as a whole instruction
+    table, case = va + 8, va + 7
+    code = bytes.fromhex("ff2485") + table.to_bytes(4, "little") + bytes.fromhex("c3") + case.to_bytes(4, "little") * 2
+    relocs = [va + 3, table, table + 4]
+    assert find_functions(code, va, {va}, relocs)[0]["kind"] == "bad"
+    assert find_functions(code, va, {va}, relocs, keep={va})[0]["kind"] == "code"

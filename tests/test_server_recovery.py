@@ -17,9 +17,11 @@ def test_reseed_updates_corrected_bounds_and_removes_false_starts(tmp_path):
         store.seed("2008-06")
         store.db.execute("INSERT INTO funcs(client,addr,size,unit) VALUES(?,?,?,?)",
                          ("2008-06", "00401050", 20, "False split"))
+        store.db.execute("UPDATE funcs SET score=73, source='int f();' WHERE addr='00401000'")
         functions.write_text(json.dumps(dict(addr="00401000", size=140, unit="Corrected", kind="code")) + "\n")
         store.seed("2008-06")
-    assert store.db.execute("SELECT size,unit FROM funcs WHERE client='2008-06'").fetchall() == [(140, "Corrected")]
+    assert store.db.execute("SELECT size,unit,score,source FROM funcs WHERE client='2008-06'").fetchall() == [
+        (140, "Corrected", 0, "int f();")]
 
 
 def test_publish_lock_survives_stale_file_but_blocks_concurrent_publish(tmp_path):

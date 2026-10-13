@@ -162,9 +162,10 @@ class Store:
             before = self.db.total_changes
             self.db.executemany("INSERT OR IGNORE INTO funcs(client,addr,size,unit,shape,calls,source_confidence,difficulty) VALUES(?,?,?,?,?,?,?,?)", rows)
             added = self.db.total_changes - before
-            self.db.executemany("UPDATE funcs SET size=?, unit=?, shape=?, calls=?, source_confidence=?, difficulty=? "
-                                "WHERE client=? AND addr=?",
-                                [(size, unit, shape, calls, confidence, difficulty, client, addr)
+            # A changed extent invalidates the old score (it measured other bytes); the source stays as a reference.
+            self.db.executemany("UPDATE funcs SET score=CASE WHEN size=? THEN score ELSE 0 END, size=?, unit=?, shape=?, "
+                                "calls=?, source_confidence=?, difficulty=? WHERE client=? AND addr=?",
+                                [(size, size, unit, shape, calls, confidence, difficulty, client, addr)
                                  for client, addr, size, unit, shape, calls, confidence, difficulty in rows])
             # Re-analysis may drop junk "functions"; never count them in progress again.
             stale = [(client, a) for (a,) in self.db.execute(

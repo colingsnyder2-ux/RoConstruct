@@ -36,12 +36,16 @@ def reloc_sites(pe):
     return sorted(base + e.rva for block in getattr(pe, "DIRECTORY_ENTRY_BASERELOC", [])
                   for e in block.entries if e.type == 3)
 
-def find_functions(code, text_va, seeds, relocs, proven=()):
+def find_functions(code, text_va, seeds, relocs, proven=(), keep=None):
     """Recursive descent from seeds over .text (code at text_va).
     New starts: direct call targets and `push/mov offset fn` immediates.
     Switch jump tables are followed so their case blocks count as reached.
     MSVC aligns functions to 16 after int3 padding, so aligned non-cc bytes
-    after cc also seed (unless a jump table sits there)."""
+    after cc also seed (unless a jump table sits there).
+    With `keep` (a set of trusted starts), a start that reached code falls into
+    (no ret/jmp/call before it) is an interior label, e.g. an EH catch block or
+    catch continuation, and is dropped unless it is a call target or in keep;
+    trailing jump tables then no longer make a function "bad"."""
     end = text_va + len(code)
     reloc_set = set(relocs)
     rd = lambda va: int.from_bytes(code[va - text_va:va - text_va + 4], "little")
@@ -50,7 +54,7 @@ def find_functions(code, text_va, seeds, relocs, proven=()):
                           and text_va + i not in reloc_set}
     starts = {s for s in seeds if text_va <= s < end}
     md = Cs(CS_ARCH_X86, CS_MODE_32)
-    seen, calls, work = set(), set(), list(starts)
+    seen, calls, work, falls, called, tables = set(), set(), list(starts), set(), set(), set()
     while work:
         a = work.pop()
         while text_va <= a < end and a not in seen:
@@ -65,26 +69,35 @@ def find_functions(code, text_va, seeds, relocs, proven=()):
                     continue
                 t = rd(r)
                 if mnem == "jmp" and "[" in op:  # jmp [idx*4 + table]
+                    tables.add(t)
                     while t in reloc_set and text_va <= rd(t) < end:
                         work.append(rd(t))
                         t += 4
                 elif "[" not in op.split(",")[-1]:  # immediate code pointer: callback
                     starts.add(t)
                     work.append(t)
+                else:  # switch index table or other data inside .text
+                    tables.add(t)
             if mnem == "call" and op.startswith("0x"):
                 t = int(op, 16)
                 if text_va <= t < end:
                     starts.add(t)
                     work.append(t)
                     calls.add(a)
+                    called.add(t)
             elif mnem.startswith(("j", "loop")):
                 if op.startswith("0x"):
                     work.append(int(op, 16))
                 if mnem == "jmp":
                     break
+                falls.add(a + size)
             elif mnem in STOP:
                 break
+            elif mnem != "call":  # a call may not return (throw, exit)
+                falls.add(a + size)
             a += size
+    if keep is not None:
+        starts -= falls - called - keep
     # Proven extents (a compiled function matched these bytes exactly): no start
     # inside one, and whatever follows it starts a new function.
     for start, size in proven:
@@ -96,6 +109,7 @@ def find_functions(code, text_va, seeds, relocs, proven=()):
             seen.add(start + size)
     order = sorted(s for s in starts if s in seen) + [end]
     call_sites = sorted(calls)
+    tables = sorted(tables) if keep is not None else []
     out = []
     for start, nxt in zip(order, order[1:]):
         body = code[start - text_va:nxt - text_va].rstrip(b"\xcc")  # MSVC int3 padding
@@ -104,12 +118,15 @@ def find_functions(code, text_va, seeds, relocs, proven=()):
         stop = start + len(body)
         lo, hi = bisect_left(relocs, start), bisect_left(relocs, stop)
         rel = [r - start for r in relocs[lo:hi]]
+        # Jump tables trail their switch inside the function: only the code before them must decode.
+        t = bisect_left(tables, start + 1)
+        code_len = tables[t] - start if t < len(tables) and tables[t] < stop else len(body)
         out.append({
             "addr": "%08x" % start,
             "size": len(body),
             "relocs": rel,
             "calls": bisect_left(call_sites, stop) - bisect_left(call_sites, start),
-            "kind": kind_of(body, rel),
+            "kind": kind_of(body[:code_len], [r for r in rel if r < code_len]),
         })
     return out
 
@@ -217,10 +234,10 @@ def assign_units(funcs, classes, reach=0x4000):
             cur = None
         f["unit"] = cur or "seg_%08x" % (va - va % 0x10000)
 
-def mark_matched_code(funcs, matched, include_bad=False):
-    """Exact compiler output proves code, including 2008 functions with embedded jump-table data."""
+def mark_matched_code(funcs, matched):
+    """Exact compiler output proves code, whatever a pattern guessed."""
     for f in funcs:
-        if f["addr"] in matched and (f["kind"] in ("gen", "thunk", "adjustor") or include_bad and f["kind"] == "bad"):
+        if f["addr"] in matched and f["kind"] in ("gen", "thunk", "adjustor", "bad"):
             f["kind"] = "code"
 
 def binary_facts(pe, image, base, body, start, imports, local_targets=None):
@@ -320,7 +337,12 @@ def analyze(client, exe):
                  if in_text(v))
     bounds = ROOT / "work" / client / "bounds.json"
     proven = [(int(a, 16), n) for a, n in json.loads(bounds.read_text())] if bounds.exists() else ()
-    funcs = find_functions(code, text_va, seeds, relocs, proven)
+    scores_file = ROOT / "work" / client / "scores.json"
+    matched = {a for a, s in json.loads(scores_file.read_text()).items() if s == 100} if scores_file.exists() else set()
+    # Trusted starts a fallthrough cannot retire: entry, vtable slots, proven extents, exact matches.
+    keep = ({base + pe.OPTIONAL_HEADER.AddressOfEntryPoint} | {s for s, _ in proven} | {int(a, 16) for a in matched}
+            | {fn for _, _, fns in rtti_vtables(read, relocs, in_text) for fn in fns})
+    funcs = find_functions(code, text_va, seeds, relocs, proven, keep)
     # Persist direct-call edges so source retrieval can use neighboring functions.
     by_addr = {int(f["addr"], 16): f for f in funcs}
     md = Cs(CS_ARCH_X86, CS_MODE_32)
@@ -362,10 +384,7 @@ def analyze(client, exe):
             if f["addr"] in runtime:
                 f["kind"] = "gen"
     # Anything already byte-matched by real source is code, whatever a pattern guessed.
-    scores_file = ROOT / "work" / client / "scores.json"
-    if scores_file.exists():
-        matched = {a for a, s in json.loads(scores_file.read_text()).items() if s == 100}
-        mark_matched_code(funcs, matched, include_bad=client == "2008-06")
+    mark_matched_code(funcs, matched)
     data = sum(s.Misc_VirtualSize for s in pe.sections
                if s.Name.rstrip(b"\0") in (b".rdata", b".data", b".tls"))
     out = ROOT / "work" / client
