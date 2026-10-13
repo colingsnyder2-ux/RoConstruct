@@ -1,4 +1,5 @@
 import json
+import threading
 from pathlib import Path
 
 import pytest
@@ -96,6 +97,22 @@ def test_pull_sources_downloads_on_a_new_pc_without_local_analysis(monkeypatch):
                         lambda server, client, token, force, log: calls.append((server, client, token, force)))
     agent_auto.pull_sources("https://server.test", "token", "2008-06", lambda _: None)
     assert calls == [("https://server.test", "2008-06", "token", False)]
+
+
+def test_experimental_syncs_once_then_starts_every_worker(monkeypatch):
+    pulled, slots = [], []
+    gate = threading.Barrier(4)
+    monkeypatch.setattr(agent_auto, "pull_sources", lambda *args: pulled.append(args))
+
+    def campaign(*args, **kwargs):
+        slots.append(args[8])
+        gate.wait(timeout=2)
+        return dict(attempted=1, matched=0, improved=0, errors=0)
+
+    monkeypatch.setattr(agent_auto, "library_cycle", campaign)
+    totals = agent_auto.run("server", "me", workers=4, client="2008-06", experimental=True, log=lambda _: None)
+    assert len(pulled) == 1 and sorted(slots) == [0, 1, 2, 3]
+    assert totals == dict(attempted=4, matched=0, improved=0, errors=0)
 
 
 def test_automatic_campaigns_include_nonlibrary_categories():
