@@ -800,6 +800,87 @@ def _case_path(path):
         current = match
     return current
 
+BUNDLE = ROOT / "research" / "libs-bundle.json"  # tracked: Drive folder + sha256 of one zip per private tree
+BUNDLE_DIR = ROOT / "work" / "libs-bundle"
+
+
+def bundle_info():
+    return json.loads(BUNDLE.read_text()) if BUNDLE.exists() else {}
+
+
+def private_trees():
+    """Top-level tools/libs folders no recipe can download (commercial or hand-collected sources)."""
+    return sorted({r["src"].split("/")[0] for r in RECIPES.values()
+                   if r.get("src") and not r.get("generate") and "url" not in r
+                   and not r["src"].startswith("..") and (LIBS / r["src"].split("/")[0]).is_dir()})
+
+
+def bundle_has(src):
+    return src.split("/")[0] in bundle_info().get("trees", {})
+
+
+def bundle_pack(out=BUNDLE_DIR):
+    """One zip per private tree in `out`; upload the folder to Drive, then run bundle_index."""
+    import zipfile
+    out = Path(out)
+    out.mkdir(parents=True, exist_ok=True)
+    for tree in private_trees():
+        with zipfile.ZipFile(out / (tree + ".zip"), "w", zipfile.ZIP_DEFLATED) as z:
+            for path in sorted((LIBS / tree).rglob("*")):
+                if path.is_file():
+                    z.write(path, path.relative_to(LIBS).as_posix())
+    return sorted(p.name for p in out.glob("*.zip"))
+
+
+def bundle_index(link, zips=BUNDLE_DIR):
+    """Read a shared Drive folder of <tree>.zip files and record each file id + sha256 in the manifest.
+    The sha256 comes from the local zips (run on the PC that packed them)."""
+    from roc import clients
+    folder = re.search(r"folders/([\w-]+)|[?&]id=([\w-]+)", link)
+    folder = (folder.group(1) or folder.group(2)) if folder else link
+    trees = {}
+    for fid, name, is_dir in clients.list_folder(folder):
+        local = Path(zips) / name
+        if name.endswith(".zip") and not is_dir and local.is_file():
+            trees[name[:-4]] = dict(id=fid, size=local.stat().st_size, sha256=clients.sha256(local))
+    if not trees:
+        raise SystemExit("No <tree>.zip files found in that Drive folder (share it as 'anyone with the link') "
+                         "that also exist in %s" % zips)
+    BUNDLE.write_text(json.dumps(dict(folder=folder, trees=trees), indent=2, sort_keys=True) + "\n")
+    return sorted(trees)
+
+
+def bundle_fetch(names=None):
+    """Download + verify + unpack the named private trees (default: all) into tools/libs."""
+    import zipfile
+    from roc import clients
+    trees = bundle_info().get("trees", {})
+    if not trees:
+        raise SystemExit("No libs bundle recorded. On the PC with the trees: roc libs-bundle pack, upload "
+                         "work/libs-bundle to Drive, roc libs-bundle index LINK, commit research/libs-bundle.json.")
+    target = LIBS.resolve()
+    done = []
+    for name in names or sorted(trees):
+        if name not in trees:
+            raise SystemExit("%s is not in the bundle. Known: %s" % (name, ", ".join(sorted(trees))))
+        if (LIBS / name).is_dir():
+            continue
+        info = trees[name]
+        archive = LIBS / "_dl" / (name + ".zip")
+        if not (archive.is_file() and clients.sha256(archive) == info["sha256"]):
+            print("Downloading %s (%.1f MB)..." % (name, info["size"] / 1048576))
+            clients.download(clients.DRIVE_DIRECT.format(id=info["id"]), archive)
+            if clients.sha256(archive) != info["sha256"]:
+                archive.unlink(missing_ok=True)
+                raise SystemExit("REFUSED %s: sha256 does not match research/libs-bundle.json" % name)
+        with zipfile.ZipFile(archive) as z:
+            for member in z.namelist():  # zip-slip safe
+                if (target / member).resolve().is_relative_to(target):
+                    z.extract(member, target)
+        done.append(name)
+    return done
+
+
 def fetch(name):
     """Download + verify + unpack a recipe's source into tools/libs/. Returns the source folder."""
     r = RECIPES[name]
@@ -812,6 +893,9 @@ def fetch(name):
             if not (folder / fname).exists() or (folder / fname).read_text() != text:
                 (folder / fname).write_text(text)
         return folder
+    if not folder.exists() and "url" not in r and bundle_has(r["src"]):
+        bundle_fetch([r["src"].split("/")[0]])
+        folder = _case_path(LIBS / r["src"])
     if not folder.exists() and "url" not in r:
         raise SystemExit("%s needs %s: extract the Roblox 2016 source tree there (see roc/refsource.py)"
                          % (name, folder.resolve()))

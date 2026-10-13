@@ -550,6 +550,20 @@ def cmd_lib_info(a):
                                      (item.get("hypothesis") or item.get("change") or "")[:160]))
 
 
+def cmd_libs_bundle(a):
+    """One zip per library tree that cannot be downloaded (XTP, MFC, Scintilla, ...), shared via Drive."""
+    from roc import libs
+    if a.action == "pack":
+        print("Packed into %s: %s" % (libs.BUNDLE_DIR, ", ".join(libs.bundle_pack())))
+        print("Next: upload that folder to Drive (anyone with the link), then: roc libs-bundle index FOLDER_LINK")
+    elif a.action == "index":
+        if not a.value:
+            sys.exit("Give the Drive folder link: roc libs-bundle index LINK")
+        print("Recorded in research/libs-bundle.json (commit it): %s" % ", ".join(libs.bundle_index(a.value)))
+    else:
+        print("Unpacked into tools/libs: %s" % (", ".join(libs.bundle_fetch(a.value and a.value.split(","))) or "nothing new"))
+
+
 def cmd_research(a):
     """Named compiler-only research recipes (research/recipes.json)."""
     from roc import libs, research
@@ -946,7 +960,12 @@ def cmd_server(a):
     primary = public
     tunnel = None
     if a.tunnel:  # Keep Cloudflare available behind an optional fixed primary address.
-        public, tunnel = server.start_tunnel(a.port)
+        try:
+            public, tunnel = server.start_tunnel(a.port)
+        except SystemExit as error:  # e.g. Cloudflare 429: keep serving locally, publish_loop retries with backoff
+            print("Tunnel unavailable at start: %s" % error)
+            tunnel = type("DeadTunnel", (), {"poll": lambda self: 1})()
+            public = public or "pending"
     if a.publish:
         if not public:
             sys.exit("--publish needs a public address: use --tunnel or --public-server HOST:PORT")
@@ -1525,7 +1544,7 @@ def menu_hand():
 # listed by name under Advanced (`roc <command> --help` for its options).
 COMMAND_GROUPS = [
     ("Start here", ["install", "doctor", "config", "setup", "gui", "client-fetch", "analyze", "pull"]),
-    ("Match and submit", ["agent", "research", "mass", "auto", "xcopy", "libs", "lib-fetch", "lib-info", "similar", "donor",
+    ("Match and submit", ["agent", "research", "mass", "auto", "xcopy", "libs", "lib-fetch", "lib-info", "libs-bundle", "similar", "donor",
                           "check", "classify", "next", "claim", "submit"]),
     ("Workers and server", ["worker", "status", "host", "server", "link", "tasks", "cpu-worker", "cluster"]),
     ("This copy", ["update", "provider", "chatgpt", "local-ai", "uninstall"]),
@@ -1689,6 +1708,9 @@ def main(argv=None):
         (["--band"], {"type": float, "default": 0.25, "help": "max size difference as a fraction"}))
     cmd("lib-info", cmd_lib_info, "show a library recipe's version, source, flags and recorded findings",
         (["name"], {}))
+    cmd("libs-bundle", cmd_libs_bundle, "pack/index/fetch the private library trees, one zip each (XTP, MFC, Scintilla)",
+        (["action"], {"choices": ["pack", "index", "fetch"]}),
+        (["value"], {"nargs": "?", "help": "index: Drive folder link; fetch: comma-separated trees (default all)"}))
     cmd("research", cmd_research, "run named compiler-only research recipes (research/recipes.json)",
         (["action"], {"choices": ["list", "plan", "run", "audit", "note", "log", "capture-units"]}),
         (["name"], {"nargs": "?", "help": "recipe name (audit: folder; note: title; log: entry count; capture-units: client)"}),

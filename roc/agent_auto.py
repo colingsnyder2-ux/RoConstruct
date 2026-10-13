@@ -14,6 +14,7 @@ from roc import agent, agent_memory, matchers, draft, match, research, telemetry
 
 ROOT = Path(__file__).resolve().parent.parent
 WRITE_LOCK = threading.Lock()
+CLAIM_LOCK = threading.Lock()
 AREAS = {
     "family": ("Family reuse", "Compile verified same-shape donors; propagate only literal-safe variants."),
     "templates": ("Authentic templates / library sources", "Replay real vendor sources and observed types; settle imports/prelude first."),
@@ -275,6 +276,15 @@ def materialize_campaign_sources(campaign):
     return written
 
 
+def sourceable(recipe):
+    """True when this PC has the recipe's vendor tree or can download it (XTP/MFC trees are not downloadable)."""
+    from roc import libs
+    r = libs.RECIPES[recipe]
+    here = (r.get("generate") or "url" in r or libs._case_path(libs.LIBS / r["src"]).exists()
+            or libs.bundle_has(r["src"]))
+    return bool(here) and all(sourceable(dep) for dep in r.get("needs", []))
+
+
 def library_cycle(server, user, token, cli, model, minutes, log, client, slot=None, claimed=None, claim_lock=None):
     if not 1 <= minutes <= 600:
         raise ValueError("Minutes must be 1-600")
@@ -297,6 +307,10 @@ def library_cycle(server, user, token, cli, model, minutes, log, client, slot=No
     if not choices:
         log("No fresh library campaign available; falling back to ranked repair batches.")
         return None
+    choices = [c for c in choices if all(sourceable(r) for r in c["recipes"])]
+    if not choices:
+        log("No library campaign has its vendor source on this PC; falling back to ranked repair batches.")
+        return None
     choices = [c for c in choices if c["recipes"]] or choices
     visits = min(c["visits"] for c in choices)
     fresh = [c for c in choices if c["visits"] == visits]
@@ -304,13 +318,28 @@ def library_cycle(server, user, token, cli, model, minutes, log, client, slot=No
     def choose(candidates):
         return random.choices(candidates, weights=[1 + sum(row.get("score", 0) for row in c["targets"]) /
                                                     len(c["targets"]) for c in candidates], k=1)[0]
-    if claimed is not None and claim_lock is not None:
-        with claim_lock:
-            distinct = [c for c in fresh if (c["client"], c["library"]) not in claimed]
-            campaign = choose(distinct or fresh)
+    with (claim_lock or CLAIM_LOCK):
+        # Libraries another loop or PC started recently and has not finished: pick something else.
+        now = datetime.now(timezone.utc)
+        rows = history() + shared.get("records", [])
+        done = {(r.get("client"), r.get("library")): r["date"] for r in rows
+                if r.get("kind") == "library_campaign" and r.get("date")}
+        busy = {(r.get("client"), r.get("library")) for r in rows if r.get("kind") == "library_claim" and r.get("date")
+                and (now - datetime.fromisoformat(r["date"])).total_seconds() < r.get("elapsed_seconds", minutes * 60)
+                and done.get((r.get("client"), r.get("library")), "") < r["date"]}
+        busy |= claimed or set()
+        pool = ([c for c in fresh if (c["client"], c["library"]) not in busy]
+                or [c for c in choices if (c["client"], c["library"]) not in busy] or fresh)
+        campaign = choose(pool)
+        if claimed is not None:
             claimed.add((campaign["client"], campaign["library"]))
-    else:
-        campaign = choose(fresh)
+        append(ROOT / "work" / "agent-memory" / "attempts.jsonl",
+               dict(kind="library_claim", date=now.isoformat(), client=campaign["client"], library=campaign["library"],
+                    elapsed_seconds=minutes * 60))
+    try:
+        agent_memory.shared(server, token, user, upload=True)  # let other PCs see the claim now
+    except (RuntimeError, OSError):
+        pass
     selected = campaign["client"]
     seeded = materialize_campaign_sources(campaign)
     folder = ROOT / "work" / "agent-campaigns" / uuid.uuid4().hex[:12]

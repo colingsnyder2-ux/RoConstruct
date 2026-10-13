@@ -192,7 +192,8 @@ def test_library_cycle_records_server_observed_gains_and_research_scope(tmp_path
     assert "Client: 2008-06" in prompts[0] and "g3d-6.09" in prompts[0]
     assert "research/recipes.json" in prompts[0] and "libs.add_unit" in prompts[0]
     assert "No unrelated infrastructure edits" in prompts[0]
-    record = json.loads((tmp_path / "work/agent-memory/attempts.jsonl").read_text())
+    record = [r for r in map(json.loads, (tmp_path / "work/agent-memory/attempts.jsonl").read_text().splitlines())
+              if r["kind"] == "library_campaign"][0]
     assert record["outcome"] == "improved" and record["addresses"] == ["00401000"]
     assert record["profile"] == "library-strategy-0"
 

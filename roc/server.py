@@ -791,14 +791,17 @@ def start_tunnel(port, log=print):
     proc = subprocess.Popen([exe, "tunnel", "--no-autoupdate", "--url", "http://127.0.0.1:%d" % port],
                             stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, text=True,
                             creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
-    url = None
+    url, tail = None, deque(maxlen=6)
     for line in proc.stderr:
+        tail.append(line.strip())
         m = re.search(r"https://[a-z0-9-]+\.trycloudflare\.com", line)
         if m:
             url = m.group(0)
             break
     if not url:
-        raise SystemExit("cloudflared exited without a tunnel URL")
+        output = "\n  ".join(line for line in tail if line) or "(none)"
+        raise SystemExit("cloudflared exited without a tunnel URL (exit %s). Its last output:\n  %s"
+                         % (proc.wait(), output))
     threading.Thread(target=lambda: deque(proc.stderr, maxlen=0), daemon=True).start()  # keep pipe drained
     log("Public HTTPS address: %s" % url)
     return url, proc
@@ -1029,7 +1032,9 @@ def publish_loop(store, public_url, every, log=print, tunnel=None, port=None, pu
                 next_probe = 0
             except (OSError, SystemExit) as error:
                 failures += 1
-                wait = min(5 * 2 ** (failures - 1), 300)  # back off 5 s .. 5 min, log first failure then every 10th
+                wait = min(5 * 2 ** (failures - 1), 300)
+                if "429" in str(error):
+                    wait = 900  # Cloudflare rate-limited quick tunnels: asking more often only extends the ban  # back off 5 s .. 5 min, log first failure then every 10th
                 if failures == 1 or failures % 10 == 0:
                     log("Tunnel restart failed (%d so far): %s. Retrying every %d s." % (failures, error, wait))
                 time.sleep(wait)
