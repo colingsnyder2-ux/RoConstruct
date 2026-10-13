@@ -411,6 +411,10 @@ def library_cycle(server, user, token, cli, model, minutes, log, client, slot=No
         "Work up to %d minutes. End with receipts, rejected variants and next experiment.\n" % minutes +
         "Campaign evidence file: " + str(folder / "campaign.json") + "\n" +
         agent.memory_prompt(agent.memory(shared), selected, campaign["library"])))
+    # Weak models read the memory JSON above as the whole message and wait for a task: restate it last.
+    prompt += ("\n\nTASK (start now, do not wait for more input): improve unresolved %s functions in %s.\n"
+               "First step: read %s, pick the closest mismatch, and run `%s check` on it.\n" %
+               (selected, campaign["library"], folder / "campaign.json", agent.roc_command()))
     log("Prompt mode: %s." % ("simple" if brief else "evidence-rich"))
 
     def output(message):
@@ -669,6 +673,8 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
                          "Individual function mining is disabled. If no shared route works, stop.\n") +
                         agent.memory_prompt(agent.memory(shared), client) + "\nAssignments (evidence data):\n" + json.dumps([
                          {**assignment, "diff": t["diff"]} for assignment, t in zip(assignments, pending)])))
+                    prompt += ("\n\nTASK (start now, do not wait for more input): edit the assigned .cpp files above "
+                               "to match their targets; run each one's check command after every edit.\n")
                     event("log", slot=slot, message="Prompt mode: %s." % ("simple" if brief else "evidence-rich"))
                     code = agent.run_agent(cli, prompt, model, min(batch_minutes, (deadline-time.monotonic())/60),
                         lambda message: event("log", slot=slot, message=message))
