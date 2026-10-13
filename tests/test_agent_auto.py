@@ -8,8 +8,13 @@ from roc import agent_auto
 
 
 @pytest.fixture(autouse=True)
-def offline_memory(monkeypatch):
+def offline_memory(monkeypatch, request):
     monkeypatch.setattr(agent_auto.agent_memory, "shared", lambda *a, **kw: {"available": True, "records": []})
+    library_cycle = agent_auto.library_cycle
+    if not request.node.name.startswith("test_prepare_clients"):
+        monkeypatch.setattr(agent_auto, "prepare_clients", lambda *args: None)
+    monkeypatch.setattr(agent_auto, "library_cycle", lambda *args, **kwargs:
+                        None if args[0] == "server" else library_cycle(*args, **kwargs))
 
 
 def row(addr, score=98, source="int f() { return 1; }", **fields):
@@ -155,11 +160,88 @@ def test_campaign_rotates_tried_target_until_evidence_changes():
     assert agent_auto.library_campaigns(rows, "2008-06", records)[0]["targets"][0]["addr"] == "00401000"
 
 
+def test_campaign_cools_down_promoted_source_across_library_versions():
+    from datetime import datetime, timezone, timedelta
+    source = "// roc-lib: libpng-1.2.6 pngread.c\n"
+    rows = [row("0051f140", 95, source)]
+    record = dict(kind="trial", date=datetime.now(timezone.utc).isoformat(), client="2008-06",
+                  addresses=["0051f140"], baseline_hash=agent_auto.digest(""),
+                  target_revision="old-zero-score-revision", source_hash=agent_auto.digest(source), outcome="improved")
+    assert not agent_auto.library_campaigns(rows, "2008-06", [record])
+    record["date"] = (datetime.now(timezone.utc) - timedelta(minutes=11)).isoformat()
+    campaign = agent_auto.library_campaigns(rows, "2008-06", [record])[0]
+    assert campaign["targets"][0]["trial_visits"] == 1
+    record["date"] = datetime.now(timezone.utc).isoformat()
+    rows[0]["source"] += "// new evidence\n"
+    assert agent_auto.library_campaigns(rows, "2008-06", [record])
+
+
 def test_campaign_results_only_credit_own_verified_improvement_receipts():
     rows = [dict(campaign_id="own", receipt=dict(verified=True, improved=True, stored=100), addresses=["00401000"]),
             dict(campaign_id="other", receipt=dict(verified=True, improved=True, stored=100), addresses=["00401010"]),
             dict(campaign_id="own", receipt=dict(verified=True, improved=False, stored=100), addresses=["00401020"])]
     assert agent_auto.campaign_results("own", rows) == ({"00401000": 100}, 0)
+
+
+def test_source_policy_failures_do_not_exhaust_campaign_hypotheses():
+    rows = [dict(campaign_id="own", kind="trial", outcome="compile_failed", hypothesis="vendor source",
+                 error='#import, #using, #include "file" and #pragma comment are not allowed'),
+            dict(campaign_id="own", kind="trial", outcome="compile_failed", hypothesis="other source",
+                 validation_failed=True)]
+    assert agent_auto.campaign_results("own", rows) == ({}, 0)
+
+
+def test_default_automatic_mode_uses_libraries_before_repairs(monkeypatch):
+    calls = []
+    monkeypatch.setattr(agent_auto, "library_cycle", lambda *args:
+                        calls.append(args) or dict(attempted=1, matched=0, improved=0, errors=0))
+    monkeypatch.setattr(agent_auto, "run_cycle", lambda *args: pytest.fail("Unexpected repair mode"))
+    assert agent_auto.run("server", "me", workers=1)["attempted"] == 1
+    assert len(calls) == 1
+
+
+def test_failed_target_stays_parked_when_only_sibling_evidence_changes():
+    rows = [row("00401000", shape="shape"), row("00401010", shape="shape")]
+    target = agent_auto.plan(rows, records=[])["areas"][0]["targets"][0]
+    records = [dict(kind="auto_target", client="2008-06", phase="repair", repair_attempted=True,
+                    addresses=[target["addr"]], evidence_hash=target["evidence_hash"], outcome="no_gain")]
+    rows[1]["source"] += "// changed sibling\n"
+    targets = agent_auto.plan(rows, records=records)["areas"][0]["targets"]
+    assert {r["addr"]: r["group_parked"] for r in targets} == {"00401000": True, "00401010": False}
+    rows[0]["source"] += "// fresh source\n"
+    assert not any(r["group_parked"] for r in agent_auto.plan(rows, records=records)["areas"][0]["targets"])
+
+
+def test_cli_failure_stops_further_paid_batches_without_parking_targets(tmp_path, monkeypatch):
+    monkeypatch.setattr(agent_auto, "ROOT", tmp_path)
+    monkeypatch.setattr(agent_auto.agent.shutil, "which", lambda cli: "fake-cli")
+    monkeypatch.setattr(agent_auto.worker, "usable_clients", lambda *args: ["2008-06"])
+    rows = [row("004010%02x" % index, shape="same") for index in range(4)]
+    monkeypatch.setattr(agent_auto, "snapshot", lambda *args, **kwargs: rows)
+    monkeypatch.setattr(agent_auto.match, "check_text", lambda *args: (98, "f", "diff", []))
+    monkeypatch.setattr(agent_auto, "reuse", lambda *args: None)
+    calls = []
+    monkeypatch.setattr(agent_auto.agent, "run_agent", lambda *args, **kwargs: calls.append(args) or 1)
+
+    class Api:
+        def __init__(self, *args):
+            pass
+
+        def call(self, endpoint, body=None, **kwargs):
+            if endpoint == "/v1/info":
+                return dict(clients={"2008-06": {}}, verify=["2008-06"])
+            if endpoint == "/v1/lease":
+                addr = body["targets"][0]["addr"]
+                return {"job": dict(client="2008-06", addr=addr, source="int f(){return 1;}", score=98, lease=addr)}
+            return {"ok": True}
+
+    monkeypatch.setattr(agent_auto.worker, "Api", Api)
+    agent_auto.run_cycle("server", "tester", jobs=4, workers=1, batch_size=2, minutes=1, log=lambda *args: None)
+    assert len(calls) == 1
+    records = agent_auto.history()
+    repairs = [r for r in records if r.get("kind") == "auto_batch" and r.get("phase") == "repair"]
+    assert len(repairs) == 1 and repairs[0]["skip_reason"] == "cli_error"
+    assert repairs[0]["outcome"] == "error" and not repairs[0]["exhausted"]
 
 
 def test_pull_sources_downloads_on_a_new_pc_without_local_analysis(monkeypatch):
@@ -244,7 +326,8 @@ def test_automatic_campaigns_include_nonlibrary_categories():
     assert campaigns[0]["targets"][0]["addr"] == "00401000"
 
 
-def test_library_cycle_records_server_observed_gains_and_research_scope(tmp_path, monkeypatch):
+@pytest.mark.parametrize("exit_mode", ["complete", "error", "exception"])
+def test_library_cycle_records_server_observed_gains_and_research_scope(tmp_path, monkeypatch, exit_mode):
     monkeypatch.setattr(agent_auto, "ROOT", tmp_path)
     monkeypatch.setattr(agent_auto, "history", lambda: [])
     monkeypatch.setattr(agent_auto.agent, "memory", lambda *a: {})
@@ -265,20 +348,32 @@ def test_library_cycle_records_server_observed_gains_and_research_scope(tmp_path
 
     monkeypatch.setattr(agent_auto.worker, "Api", Api)
     prompts = []
-    monkeypatch.setattr(agent_auto.agent, "run_agent", lambda cli, prompt, *a, **kw: prompts.append(prompt) or 0)
+    def run_agent(cli, prompt, model, minutes, output, **kwargs):
+        prompts.append(prompt)
+        output("Stopped: missing vendor evidence")
+        if exit_mode == "exception":
+            raise RuntimeError("CLI launch failed")
+        return int(exit_mode == "error")
+    monkeypatch.setattr(agent_auto.agent, "run_agent", run_agent)
     logs = []
     totals = agent_auto.library_cycle("https://example.test", "tester", None, "codex", None, 1,
                                     logs.append, "2008-06")
-    assert totals == dict(attempted=1, matched=0, improved=0, errors=0)
+    assert totals == dict(attempted=1, matched=0, improved=0, errors=int(exit_mode != "complete"))
     assert not any("server verified exact" in line for line in logs)
     assert "Client: 2008-06" in prompts[0] and "g3d-6.09" in prompts[0]
     assert "research/recipes.json" in prompts[0] and "libs.add_unit" in prompts[0]
     assert "No unrelated infrastructure edits" in prompts[0]
     record = [r for r in map(json.loads, (tmp_path / "work/agent-memory/attempts.jsonl").read_text().splitlines())
               if r["kind"] == "library_campaign"][0]
-    assert record["outcome"] == "incomplete" and record["addresses"] == []
+    assert record["outcome"] == ("incomplete" if exit_mode == "complete" else "error") and record["addresses"] == []
     assert record["observed_server_gains"] == 2
     assert record["profile"] == "library-strategy-0"
+    assert record["stop_reason"] == {"complete": "no_recorded_trials", "error": "agent_exit_error", "exception": "agent_exception"}[exit_mode]
+    assert record["agent_exit_code"] == int(exit_mode != "complete")
+    assert record["trials_recorded"] == 0
+    output_rows = agent_auto.research.journal_records(Path(record["agent_output"]))
+    assert output_rows[0]["message"] == "Stopped: missing vendor evidence"
+    assert record["agent_output_tail"]
 
 
 def test_ranking_uses_real_sources_and_family_donors():
@@ -618,8 +713,8 @@ def test_out_of_scope_lease_is_released_before_compile(tmp_path, monkeypatch, le
             return {}
     monkeypatch.setattr(agent_auto.worker, "Api", Api)
     result = agent_auto.run("server", "me", jobs=1, log=lambda *args: None, client="2008-06")
-    assert result["errors"] == 2 and result["attempted"] == 0
-    assert len([body for endpoint, body in calls if endpoint == "/v1/release" and body["lease"] == "wrong"]) == 2
+    assert result["errors"] == 1 and result["attempted"] == 0
+    assert len([body for endpoint, body in calls if endpoint == "/v1/release" and body["lease"] == "wrong"]) == 1
 
 
 def test_unlimited_plan_includes_large_functions():

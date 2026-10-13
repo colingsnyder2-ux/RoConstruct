@@ -353,6 +353,13 @@ def run_agent(cli, prompt, model=None, minutes=20, log=print, goal=False, switch
               "Batch independent reads; use rg and bounded excerpts. Save large output to a log. "
               "Use supplied commands verbatim. Check a command's --help once before inventing options. "
               "Compiler experiments use // roc-flags: and // roc-cl: in the candidate source; "
+              "Authentic vendor files use // roc-lib: RECIPE relative/file.cpp (or .c), never "
+              "a quoted #include or an absolute vendor path. Find the real recipe with lib-info; "
+              "use libs.source_for(recipe, relative_file, lang, build, flags) to generate the candidate. "
+              "Example: // roc-lib: g3d-6.09-ijg jidctflt.c with // roc-lang: c. "
+              "For changed vendor bodies, register a unit with libs.add_unit, then reference its returned "
+              "filename through roc-lib. Quoted includes belong inside that registered authentic unit, "
+              "not in the submitted candidate. System headers may use #include <header>. "
               "do not add unsupported --flags or --client arguments to check/agent-check/pull. "
               "Reuse cached compiler results and prior trials; skip already-exact targets. "
               "Infer likely function behavior from current source, target instructions, caller/callee names, "
@@ -567,19 +574,6 @@ def run(server, user, token=None, cli="claude", model=None, client=None, jobs=1,
         matched += bool(receipt.get("verified") and receipt.get("improved") and receipt.get("stored") == 100)
     log("Agent session: %d matched." % matched)
     sync_memory(server, token, user, log)
-
-
-def function_evidence(row, functions):
-    """Observed facts for a behavior hypothesis; never inferred layouts or ABIs."""
-    evidence = {key: row[key][:8] if isinstance(row[key], list) else row[key]
-                for key in ("calling_convention", "stack_args", "this_reads", "this_writes", "virtual_slots",
-                            "imports", "strings", "constants", "global_reads", "global_writes") if row.get(key)}
-    for key in ("callers", "call_targets"):
-        evidence[key] = [{"addr": addr, "unit": functions.get(addr, {}).get("unit", "unknown")}
-                         for addr in row.get(key, [])[:4]]
-    if "strings" in evidence:
-        evidence["strings"] = [value[:160] for value in evidence["strings"]]
-    return evidence
 
 
 def function_evidence(row, functions):

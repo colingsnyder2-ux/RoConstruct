@@ -180,6 +180,7 @@ def test_every_agent_prompt_requests_concision_and_fast_work(monkeypatch):
     for prompt in prompts:
         assert "Be very concise." in prompt and "Optimize tokens and wall time" in prompt
         assert "Reuse cached compiler results" in prompt and "Assigned target" in prompt
+        assert "libs.source_for" in prompt and "g3d-6.09-ijg jidctflt.c" in prompt
         assert "two materially different approaches" in prompt and "Infer likely function behavior" in prompt
         assert "caveman" not in prompt.lower()
 

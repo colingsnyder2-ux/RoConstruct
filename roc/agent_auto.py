@@ -134,7 +134,11 @@ def plan(rows, max_size=512, profile="claude:default", records=None, client="200
                          and r.get("group_cohort") == revision and r.get("exhausted")]
             parked = bool(exhausted) or (len(previous) >= 2 and all(r.get("outcome") == "no_gain" for r in previous[-2:]))
             for row in family:
-                row.update(group_cohort=revision, group_parked=parked)
+                target_parked = any(r.get("kind") == "auto_target" and r.get("phase") == "repair" and
+                    r.get("repair_attempted") and r.get("outcome") == "no_gain" and
+                    row["addr"] in (r.get("addresses") or []) and r.get("evidence_hash") == row["evidence_hash"]
+                    for r in records)
+                row.update(group_cohort=revision, group_parked=parked or target_parked)
         members.sort(key=lambda row: (row["group_parked"], -row["priority"], row["addr"]))
         parked = all(row["group_parked"] for row in members)
         gains = sum(r.get("gains", 0) for r in feedback[-20:])
@@ -269,9 +273,15 @@ def library_campaigns(rows, client, records):
         for row in targets:
             trials = [r for r in records if r.get("kind") == "trial" and r.get("client") == client and
                       row["addr"] in (r.get("addresses") or []) and
-                      r.get("baseline_hash", r.get("source_hash")) == row["baseline_hash"] and
-                      r.get("target_revision", row["target_revision"]) == row["target_revision"]]
+                      ((r.get("baseline_hash", r.get("source_hash")) == row["baseline_hash"] and
+                        r.get("target_revision", row["target_revision"]) == row["target_revision"]) or
+                       r.get("source_hash") == row["baseline_hash"])]
             row["trial_visits"] = len(trials)
+            row["recently_tried"] = any(r.get("date") and not r.get("validation_failed") and
+                '#import, #using, #include "file"' not in r.get("error", "") and
+                (datetime.now(timezone.utc) - datetime.fromisoformat(r["date"]).replace(tzinfo=timezone.utc)).total_seconds() < 600
+                for r in trials)
+        targets = [row for row in targets if not row["recently_tried"]]
         targets.sort(key=lambda row: (row["trial_visits"], -row.get("size", 0)))
         if not targets:
             continue
@@ -325,7 +335,8 @@ def campaign_results(campaign_id, records):
             for addr in row.get("addresses", []):
                 gains[addr] = max(gains.get(addr, 0), score)
     hypotheses = {r["hypothesis"] for r in rows if r.get("kind") in ("trial", "research_run") and
-                  r.get("hypothesis") and r.get("outcome") in ("no_gain", "compile_failed") and not r.get("duplicate")}
+                  r.get("hypothesis") and r.get("outcome") in ("no_gain", "compile_failed") and not r.get("duplicate")
+                  and not r.get("validation_failed") and '#import, #using, #include "file"' not in r.get("error", "")}
     return gains, len(hypotheses)
 
 
@@ -538,8 +549,14 @@ def library_cycle(server, user, token, cli, model, minutes, log, client, slot=No
                "First step: read %s, pick the first target, and use its journaled check command after preparing source. CLI: %s.\n" %
                (selected, campaign["library"], folder / "campaign.json", agent.roc_command()))
     log("Prompt mode: %s." % ("simple" if brief else "evidence-rich"))
+    output_path = folder / "agent-output.jsonl"
+    output_tail = []
 
     def output(message):
+        message = str(message)
+        append(output_path, dict(date=datetime.now(timezone.utc).isoformat(), message=message))
+        output_tail.append(message[-2000:])
+        del output_tail[:-6]
         row = dict(event="log", message=str(message))
         if slot is not None:
             row["slot"] = slot
@@ -596,8 +613,13 @@ def library_cycle(server, user, token, cli, model, minutes, log, client, slot=No
 
     ticker = threading.Thread(target=benchmark_loop, daemon=True)
     ticker.start()
+    run_error = None
     try:
         code = agent.run_agent(cli, prompt, model, minutes, output, goal=True)
+    except (RuntimeError, OSError) as error:
+        run_error = str(error)
+        code = 1
+        output("Agent execution failed: " + run_error)
     finally:
         benchmark_stop.set()
         ticker.join(timeout=2)
@@ -605,13 +627,22 @@ def library_cycle(server, user, token, cli, model, minutes, log, client, slot=No
     after = {row["addr"]: row for row in api.call("/v1/sources?scores=1&client=" + selected, timeout=120)}
     observed = [row for addr, row in after.items() if row.get("score", 0) > baseline.get(addr, 100)]
     gains, tested = campaign_results(folder.name, history())
+    campaign_records = [r for r in history() if r.get("campaign_id") == folder.name]
+    trial_count = sum(r.get("kind") in ("trial", "research_run") for r in campaign_records)
+    elapsed = time.monotonic() - started
+    stop_reason = ("agent_exception" if run_error else "agent_exit_error" if code else
+                   "verified_gains" if gains else "hypotheses_exhausted" if tested >= 2 else
+                   "no_recorded_trials" if not trial_count else "insufficient_completed_hypotheses")
     record = dict(kind="library_campaign", date=datetime.now(timezone.utc).isoformat(), client=selected,
                   library=campaign["library"], cohort=campaign["revision"], profile="library-strategy-%d" % campaign["strategy"],
                   outcome="error" if code else "improved" if gains else "no_gain" if tested >= 2 else "incomplete",
                   gains=len(gains), addresses=list(gains), evidence=str(folder), tested_hypotheses=tested,
                   observed_server_gains=len(observed), attribution="campaign receipts")
+    record.update(stop_reason=stop_reason, agent_exit_code=code, agent_error=run_error,
+                  trials_recorded=trial_count, agent_output=str(output_path), agent_output_tail=output_tail,
+                  time_budget_seconds=minutes * 60, budget_elapsed=elapsed >= minutes * 60)
     record.update(exacts_gained=sum(score == 100 for score in gains.values()),
-                  elapsed_seconds=time.monotonic() - started)
+                  elapsed_seconds=elapsed)
     append(ROOT / "work" / "agent-memory" / "attempts.jsonl", record)
     (folder / "summary.json").write_text(json.dumps(record, indent=2), encoding="utf-8")
     agent_memory.shared(server, token, user, upload=True)
@@ -624,6 +655,7 @@ def library_cycle(server, user, token, cli, model, minutes, log, client, slot=No
 def run(server, user, token=None, cli="claude", model=None, workers=2, jobs=24, max_size=512,
         minutes=120, batch_size=4, batch_minutes=10, individual=False, log=print, client=None, continuous=False,
         experimental=False, experimental_percent=100):
+    experimental = experimental or not individual
     strategy = 0
     prepared = False
     while True:
@@ -701,6 +733,7 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
     event_lock, condition = threading.Lock(), threading.Condition()
     totals = {"attempted": 0, "matched": 0, "improved": 0, "errors": 0}
     manual_targets = set()
+    model_unavailable = threading.Event()
 
     def event(kind, **fields):
         with event_lock:
@@ -722,6 +755,7 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
         active = []
         tried_route = phase == "reuse"
         quality_result = True
+        skip_reason = "no_lease"
 
         try:
             for index, row in enumerate(selected):
@@ -813,9 +847,13 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
                         lambda message: event("log", slot=slot, message=message))
                     if code:
                         quality_result = False
+                        skip_reason = "cli_error"
+                        model_unavailable.set()
                         with condition:
                             totals["errors"] += 1
                         event("log", slot=slot, message="Agent CLI exited with code %s; verifying preserved best sources" % code)
+                elif active:
+                    skip_reason = "no_eligible_repair"
             gains, exacts = 0, 0
             for task in active:
                 text = (Path(task["path"]).parent / "best.cpp").read_text(encoding="utf-8")
@@ -831,9 +869,12 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
                 exact = bool(improved and receipt.get("score") == 100)
                 gains += improved
                 exacts += exact
-                append(ROOT / "work" / "agent-memory" / "attempts.jsonl", dict(kind="auto_target",
+                if phase == "reuse" or tried_route:
+                    append(ROOT / "work" / "agent-memory" / "attempts.jsonl", dict(kind="auto_target",
                     date=datetime.now(timezone.utc).isoformat(), client=client, addresses=[task["addr"]],
                     area=area["id"], profile=profile, phase=phase, before=task["before"], after=score,
+                    evidence_hash=task["evidence_hash"], baseline_hash=digest(task["source"]),
+                    repair_attempted=phase == "repair" and tried_route and quality_result,
                     source_hash=digest(text), outcome="server_verified" if improved else "no_gain",
                     receipt=receipt, evidence=str(Path(task["path"]).parent)))
                 telemetry.begin(dict(client=client, addr=task["addr"], unit=task["unit"],
@@ -849,7 +890,7 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
                       improved=improved, area=area["title"], unit=task["unit"], size=task["size"])
                 if improved:
                     event("candidate", slot=slot, score=receipt["score"], code=text)
-            return gains, len(active) if tried_route and quality_result else 0, exacts
+            return gains, len(active) if tried_route and quality_result else 0, exacts, None if tried_route and quality_result and active else skip_reason
         finally:
             pass
 
@@ -880,6 +921,8 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
 
         def work(slot):
             while time.monotonic() < deadline:
+                if phase == "repair" and model_unavailable.is_set():
+                    return
                 with condition:
                     available = next((i for i, (area, _) in enumerate(queue) if (area["client"], area["id"]) not in busy), None)
                     if available is None:
@@ -889,16 +932,20 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
                         continue
                     area, targets = queue.pop(available)
                     group = targets[0]["group"]
+                    if phase == "repair" and len(targets) == 1 and not individual and (
+                            targets[0]["size"] < 64 or manual_targets):
+                        continue  # No model route: avoid leasing/rechecking the unchanged singleton.
                     if phase == "repair" and zero[group] >= 1:
                         continue
                     busy.add((area["client"], area["id"]))
                 try:
                     started = time.monotonic()
-                    gains, attempted, exacts = batch(slot, area, targets, phase)
+                    gains, attempted, exacts, skip_reason = batch(slot, area, targets, phase)
                     record = dict(kind="auto_batch", date=datetime.now(timezone.utc).isoformat(),
                         client=area["client"], area=area["id"], profile=profile, phase=phase, cohort=area["cohort"],
                         group=group, group_cohort=targets[0]["group_cohort"],
-                        outcome="improved" if gains else "no_gain" if attempted else "unavailable", gains=gains,
+                        outcome="improved" if gains else "no_gain" if attempted else "error" if skip_reason == "cli_error" else "deferred" if skip_reason == "no_eligible_repair" else "unavailable", gains=gains,
+                        skip_reason=skip_reason,
                         exacts_gained=exacts, exhausted=phase == "repair" and bool(attempted) and not gains,
                         addresses=[t["addr"] for t in targets], elapsed_seconds=time.monotonic() - started,
                         evidence=str(directory))

@@ -27,7 +27,9 @@ def portable(row):
         "exacts_gained", "elapsed_seconds", "next", "cli", "server_stored", "receipt", "error", "diff", "symbol",
         "recipe", "tried", "local_exact", "exhausted", "object_hash", "target_hash",
         "campaign_id", "baseline_hash", "target_revision", "tested_hypotheses",
-        "observed_server_gains", "attribution"}
+        "observed_server_gains", "attribution", "validation_failed", "evidence_hash",
+        "repair_attempted", "skip_reason", "stop_reason", "agent_exit_code", "agent_error",
+        "trials_recorded", "agent_output_tail", "time_budget_seconds", "budget_elapsed"}
     result = {k: v for k, v in row.items() if k in allowed}
     for key, value in result.items():
         if isinstance(value, str):

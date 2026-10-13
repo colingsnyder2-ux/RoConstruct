@@ -567,6 +567,8 @@ def trial(root, client, addr, path, hypothesis):
             path.write_text((journal / "best.cpp").read_text(encoding="utf-8"), encoding="utf-8")
     except match.CompileError as error:
         row.update(after=0, outcome="compile_failed", error=str(error))
+        if '#import, #using, #include "file"' in str(error):
+            row["validation_failed"] = True
         if any(all(r.get(key) == row.get(key) for key in ("source_hash", "compiler", "flags", "error"))
                for r in previous):
             row["duplicate"] = True
