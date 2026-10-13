@@ -248,4 +248,5 @@ def test_rate_limited_agent_switches_to_the_next_model(monkeypatch):
                         calls.append((cli, model, bool(switch))) or (agent.RATE_LIMITED if len(calls) < 3 else 0))
     assert agent.run_agent("claude", "p", "sonnet", 30, lambda *a: None) == 0
     assert calls == [("claude", "sonnet", True), ("opencode", "opencode/big-pickle", True), ("codex", None, False)]
+    assert agent.DEAD.search("Model exo-free has been deprecated.") and agent.DEAD.search("Upstream request failed: Model is unavailable.")
     assert agent.RATE.search("Error: 429 rate limit reached") and not agent.RATE.search("ran 429 tests")

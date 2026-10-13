@@ -236,6 +236,11 @@ RATE = re.compile(r"rate.?limit|usage limit|too many requests|overloaded|quota (
                   r"insufficient (credit|quota)|status(?: code)?:? 429|you.ve hit your", re.I)
 
 
+# The model itself is gone or refused: no point waiting, switch at once.
+DEAD = re.compile(r"has been deprecated|model is unavailable|upstream request failed|model not found|"
+                  r"unknown model|invalid model|no longer available", re.I)
+
+
 def fallbacks():
     """`agent_fallbacks` setting: comma list of cli[:model] tried in order when the current model is rate limited."""
     from roc import worker
@@ -256,8 +261,8 @@ def run_agent(cli, prompt, model=None, minutes=20, log=print, goal=False, switch
         code = _run_once(current, prompt, name, left, log, goal, switch_minutes if queue else 0)
         if code != RATE_LIMITED:
             return code
-        log("  %s %s rate limited for %d minutes; switching to %s." % (
-            current, name or "", switch_minutes, " ".join(filter(None, queue[0])) if queue else "nothing"))
+        log("  %s %s is rate limited or unavailable; switching to %s." % (
+            current, name or "", " ".join(filter(None, queue[0])) if queue else "nothing"))
     return 1
 
 
@@ -299,6 +304,10 @@ def _run_once(cli, prompt, model, minutes, log, goal, switch_minutes):
         limited = None
         for line in process.stdout:
             show(line, log)
+            if switch_minutes and DEAD.search(line):
+                _kill(process)
+                process.wait()
+                return RATE_LIMITED
             if switch_minutes and RATE.search(line):
                 limited = limited or time.monotonic()
                 if time.monotonic() - limited >= switch_minutes * 60:
