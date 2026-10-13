@@ -424,7 +424,26 @@ def _has_compiler(target):
 def msi_admin_extract(msi, target):
     """Extract an MSI's files with their install paths, running no installer logic."""
     if WINDOWS:
-        subprocess.run(["msiexec", "/a", str(msi), "/qn", "TARGETDIR=%s" % target], check=True)
+        # MSIEXEC misparses a TARGETDIR inside a ZIP folder such as
+        # "RoConstruct-main (1)". Stage both paths under Temp, then copy out.
+        with tempfile.TemporaryDirectory(prefix="roconstruct-msi-") as temporary:
+            stage = Path(temporary)
+            package, output = stage / "compiler.msi", stage / "out"
+            shutil.copyfile(msi, package)
+            output.mkdir()
+            try:
+                run = subprocess.run(["msiexec", "/a", str(package), "/qn", "TARGETDIR=%s" % output],
+                                     capture_output=True, text=True)
+            except OSError as error:
+                raise SystemExit("Windows Installer could not unpack %s: %s" % (msi.name, error))
+            if run.returncode:
+                detail = (run.stderr or run.stdout or "exit %s" % run.returncode).strip().splitlines()[-1]
+                raise SystemExit("Windows Installer could not unpack %s (%s). Run install.cmd again." %
+                                 (msi.name, detail[:240]))
+            if not _has_compiler(output):
+                raise SystemExit("Windows Installer unpacked %s but no cl.exe was found. Run install.cmd again." % msi.name)
+            shutil.rmtree(target, ignore_errors=True)
+            shutil.copytree(output, target)
         return
     shutil.rmtree(target, ignore_errors=True)  # never mix a failed attempt's files
     target.mkdir(parents=True, exist_ok=True)
@@ -662,13 +681,29 @@ def expand_cab(cab, out):
             return
     raise SystemExit("Could not unpack %s (Linux needs cabextract or 7z)" % cab)
 
-def copy_from_iso(iso, inner, dest):
-    """Read the compiler's UDF/ISO archive with 7-Zip without mounting it."""
+def seven_zip():
+    """Find 7-Zip, installing the small Windows reader when available."""
     exe = shutil.which("7z") or shutil.which("7zz")
     if not exe and WINDOWS:
         locations = [Path(os.environ.get("ProgramFiles", r"C:\Program Files")), PF86]
         exe = next((str(base / "7-Zip" / "7z.exe") for base in locations
                     if (base / "7-Zip" / "7z.exe").is_file()), None)
+    if exe or not WINDOWS:
+        return exe
+    winget = shutil.which("winget")
+    if not winget:
+        return None
+    print("Installing 7-Zip needed to unpack the compiler ISO...")
+    subprocess.run([winget, "install", "--id", "7zip.7zip", "-e", "--silent",
+                    "--accept-package-agreements", "--accept-source-agreements"], check=False)
+    refresh_path()
+    locations = [Path(os.environ.get("ProgramFiles", r"C:\Program Files")), PF86]
+    return shutil.which("7z") or next((str(base / "7-Zip" / "7z.exe") for base in locations
+                                        if (base / "7-Zip" / "7z.exe").is_file()), None)
+
+def copy_from_iso(iso, inner, dest):
+    """Read the compiler's UDF/ISO archive with 7-Zip without mounting it."""
+    exe = seven_zip()
     if not exe:
         raise SystemExit("Compiler ISO extraction needs 7-Zip. Install it and run setup again "
                          "(Windows: winget install --id 7zip.7zip -e; Linux: install 7zip or p7zip).")

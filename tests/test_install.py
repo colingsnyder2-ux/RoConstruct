@@ -447,6 +447,28 @@ def test_download_resumes_an_interrupted_transfer():
             assert setup.download("http://example/bundle.zip", dest) == dest
 
 
+def test_windows_msi_extract_stages_paths_with_spaces(tmp_path, monkeypatch):
+    """MSIEXEC must not receive a Desktop ZIP folder as TARGETDIR."""
+    from roc import setup
+    msi = tmp_path / "RoConstruct-main (1)" / "compiler.msi"
+    target = tmp_path / "RoConstruct-main (1)" / "tools" / "vc2008sp1"
+    msi.parent.mkdir()
+    msi.write_bytes(b"msi")
+    monkeypatch.setattr(setup, "WINDOWS", True)
+
+    def extract(command, **_kwargs):
+        output = Path(next(arg.split("=", 1)[1] for arg in command if arg.startswith("TARGETDIR=")))
+        assert "RoConstruct-main (1)" not in str(output)
+        cl = output / "VC" / "bin" / "cl.exe"
+        cl.parent.mkdir(parents=True)
+        cl.write_bytes(b"cl")
+        return type("Done", (), {"returncode": 0, "stdout": "", "stderr": ""})()
+
+    monkeypatch.setattr(setup.subprocess, "run", extract)
+    setup.msi_admin_extract(msi, target)
+    assert (target / "VC" / "bin" / "cl.exe").is_file()
+
+
 def test_install_cmd_installs_only_packages_and_compilers():
     """The bootstrap script is the promise: no Ollama, no Docker, no model, no client."""
     script = (ROOT / "install.cmd").read_text(encoding="utf-8")
