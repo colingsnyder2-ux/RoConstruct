@@ -300,18 +300,19 @@ def download(url, dest, tries=6):
         have = part.stat().st_size if part.exists() else 0
         req = urllib.request.Request(url, headers={"Range": "bytes=%d-" % have} if have else {})
         try:
-            with urllib.request.urlopen(req, timeout=120) as r:
+            with urllib.request.urlopen(req, timeout=30) as r:
                 if have and r.status != 206:  # server ignored Range: start over
                     have = 0
                 total = have + int(r.headers.get("Content-Length") or 0)
                 with open(part, "ab" if have else "wb") as f:
-                    done, shown = have, -1
-                    while chunk := r.read(1 << 20):
+                    done, last, began = have, 0.0, time.time()
+                    while chunk := r.read(1 << 18):
                         f.write(chunk)
                         done += len(chunk)
-                        if total and done * 20 // total != shown:
-                            shown = done * 20 // total
-                            print("\r  %d / %d MB" % (done >> 20, total >> 20), end="", flush=True)
+                        if time.time() - last >= 2:
+                            last = time.time()
+                            rate = (done - have) / max(last - began, 1) / 1e6
+                            print("\r  %d / %d MB  %.1f MB/s   " % (done >> 20, total >> 20, rate), end="", flush=True)
             print()
             part.replace(dest)
             return dest
@@ -754,6 +755,7 @@ def get_vs2008_rtm():
     iso = download(VS2008_URL, DL / "VS2008Express2007.iso")
     require_sha1(iso, VS2008_SHA1)
     work = DL / "vs2008rtm"
+    print("Unpacking VS2008 RTM (several minutes, no output until done)...")
     work.mkdir(parents=True, exist_ok=True)
     copy_from_iso(iso, r"VCExpress\Ixpvc.exe", work / "Ixpvc.exe")
     require_microsoft_signature(work / "Ixpvc.exe")
@@ -767,6 +769,7 @@ def get_vs2005():
     iso = download(VS2005_URL, DL / "VC2005Express.iso")
     require_sha1(iso, VS2005_SHA1)
     work = DL / "vs2005"
+    print("Unpacking VS2005 (several minutes, no output until done)...")
     work.mkdir(parents=True, exist_ok=True)
     copy_from_iso(iso, r"Ixpvc.exe", work / "Ixpvc.exe")
     require_microsoft_signature(work / "Ixpvc.exe")

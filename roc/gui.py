@@ -376,6 +376,8 @@ class Dashboard:
                     started_slots.add(fields.get("slot"))
                 elif kind == "log" and job["kind"] == "worker":
                     fields["startup"] = fields.get("slot") not in started_slots
+                if job["kind"] == "agent_worker" and kind != "slot_stopped" and fields.get("slot") is not None:
+                    job["slots"].setdefault(str(fields["slot"]), {})  # every loop that reports shows up, even while idle
                 if kind == "control":
                     job.update(config=fields["config"], revision=fields["revision"],
                                status="stopping" if fields["stopping"] else "paused" if fields["paused"] else "running")

@@ -383,6 +383,19 @@ def cmd_claim(a):
 def cmd_check(a):
     from roc import match
     folder = ROOT / "src" / a.name
+    if a.file:  # scratch trial: score any file against one function, save nothing
+        if not a.addr:
+            sys.exit("--file needs an address")
+        addr = a.addr.lower().replace("0x", "").zfill(8)
+        try:
+            value, name, asm_diff, _ = match.check(a.name, addr, Path(a.file))
+        except match.CompileError as error:
+            sys.exit("%s  does not compile:\n%s" % (a.file, error))
+        print("%s  %3d%%  %s  (scratch, nothing saved)" % (addr, value, name or "-"))
+        if value < 100:
+            print("Assembly diff ('-' = target, '+' = yours):")
+            print(asm_diff)
+        return
     if a.addr:
         srcs = [folder / ("%s.cpp" % a.addr.lower().replace("0x", "").zfill(8))]
         if not srcs[0].exists():
@@ -485,6 +498,56 @@ def cmd_libs(a):
         sys.exit("Unknown library: %s. Known: %s" % (", ".join(unknown), ", ".join(libs.RECIPES)))
     targets = libs.default_targets() if a.client == "all" else [a.client]
     print(libs.run([n for n in names if libs.RECIPES[n].get("files")], targets))
+
+
+def cmd_lib_fetch(a):
+    """Download and unpack library sources (checked SHA-256) without compiling anything."""
+    from roc import libs
+    names = list(libs.RECIPES) if a.names == ["all"] else a.names
+    unknown = [n for n in names if n not in libs.RECIPES]
+    if unknown:
+        sys.exit("Unknown library: %s. Known: %s" % (", ".join(unknown), ", ".join(libs.RECIPES)))
+    for name in names:
+        print("%s -> %s" % (name, libs.fetch(name)))
+
+
+def cmd_similar(a):
+    """Rank exact-matched functions whose instruction shape resembles an open one."""
+    import difflib
+    rows = {r["addr"]: r for r in map(json.loads, (ROOT / "work" / a.name / "functions.jsonl").read_text().splitlines() if (ROOT / "work" / a.name / "functions.jsonl").exists() else [])}
+    addr = a.addr.lower().replace("0x", "").zfill(8)
+    if addr not in rows:
+        sys.exit("%s is not in work/%s/functions.jsonl (run: roc analyze %s)" % (addr, a.name, a.name))
+    scores = json.loads((ROOT / "work" / a.name / "scores.json").read_text())
+    want = rows[addr]
+    shape = want.get("shape", "").split(" ; ")
+    ranked = []
+    for other, row in rows.items():
+        if other == addr or scores.get(other) != 100 or abs(row["size"] - want["size"]) > want["size"] * a.band:
+            continue
+        ratio = difflib.SequenceMatcher(None, shape, row.get("shape", "").split(" ; "), autojunk=False).ratio()
+        ranked.append((ratio, other, row["size"]))
+    print("%s: %d bytes, shape: %s" % (addr, want["size"], want.get("shape", "")))
+    for ratio, other, size in sorted(ranked, reverse=True)[:a.limit]:
+        src = ROOT / "src" / a.name / (other + ".cpp")
+        print("%s  %4d bytes  shape %.2f  %s" % (other, size, ratio, src.relative_to(ROOT).as_posix() if src.exists() else "(no local source: roc pull)"))
+
+
+def cmd_lib_info(a):
+    """Recipe version, source, flags and every recorded lesson/experiment that names it."""
+    from roc import libs
+    if a.name not in libs.RECIPES:
+        sys.exit("Unknown library: %s. Known: %s" % (a.name, ", ".join(libs.RECIPES)))
+    recipe = {k: v for k, v in libs.RECIPES[a.name].items() if k not in ("generate", "write", "sha256")}
+    print(json.dumps(recipe, indent=2, default=str))
+    needle = a.name.lower()
+    for fname, key in (("lessons.json", None), ("recipes.json", "recipes")):
+        data = json.loads((ROOT / "research" / fname).read_text())
+        items = data.items() if isinstance(data, dict) else enumerate(data)
+        for ident, item in items:
+            if needle in json.dumps(item).lower():
+                print("%s %s: %s" % (fname, item.get("id", ident) if isinstance(item, dict) else ident,
+                                     (item.get("hypothesis") or item.get("change") or "")[:160]))
 
 
 def cmd_research(a):
@@ -1462,7 +1525,7 @@ def menu_hand():
 # listed by name under Advanced (`roc <command> --help` for its options).
 COMMAND_GROUPS = [
     ("Start here", ["install", "doctor", "config", "setup", "gui", "client-fetch", "analyze", "pull"]),
-    ("Match and submit", ["agent", "research", "mass", "auto", "xcopy", "libs", "donor",
+    ("Match and submit", ["agent", "research", "mass", "auto", "xcopy", "libs", "lib-fetch", "lib-info", "similar", "donor",
                           "check", "classify", "next", "claim", "submit"]),
     ("Workers and server", ["worker", "status", "host", "server", "link", "tasks", "cpu-worker", "cluster"]),
     ("This copy", ["update", "provider", "chatgpt", "local-ai", "uninstall"]),
@@ -1599,7 +1662,8 @@ def main(argv=None):
     cmd("claim", cmd_claim, "start a function: writes src/<client>/<addr>.cpp",
         (["name"], {}), (["addr"], {}), (["--open"], {"action": "store_true", "help": "open in Notepad"}))
     cmd("check", cmd_check, "compile src/<client>/*.cpp and score against the exe",
-        (["name"], {}), (["addr"], {"nargs": "?"}))
+        (["name"], {}), (["addr"], {"nargs": "?"}),
+        (["--file"], {"help": "scratch source to score against ADDR; saves nothing"}))
     cmd("classify", cmd_classify, "compile a source and classify target/candidate mismatch",
         (["client"], {}), (["addr"], {}), (["source"], {}))
     cmd("auto", cmd_auto, "auto-match trivial functions (getters, setters, empty...) ('all' for every client)",
@@ -1618,6 +1682,13 @@ def main(argv=None):
         (["--limit"], {"type": int, "default": 5}))
     cmd("libs", cmd_libs, "match open-source library code from its real source ('all' or recipe names)",
         (["names"], {"nargs": "+"}), (["--client"], {"default": "all"}))
+    cmd("lib-fetch", cmd_lib_fetch, "download library sources for recipes, e.g. boost-1.35.0 ('all' for every recipe)",
+        (["names"], {"nargs": "+"}))
+    cmd("similar", cmd_similar, "list exact-matched functions with a similar instruction shape to ADDR",
+        (["name"], {}), (["addr"], {}), (["--limit"], {"type": int, "default": 10}),
+        (["--band"], {"type": float, "default": 0.25, "help": "max size difference as a fraction"}))
+    cmd("lib-info", cmd_lib_info, "show a library recipe's version, source, flags and recorded findings",
+        (["name"], {}))
     cmd("research", cmd_research, "run named compiler-only research recipes (research/recipes.json)",
         (["action"], {"choices": ["list", "plan", "run", "audit", "note", "log", "capture-units"]}),
         (["name"], {"nargs": "?", "help": "recipe name (audit: folder; note: title; log: entry count; capture-units: client)"}),

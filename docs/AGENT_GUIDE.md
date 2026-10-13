@@ -31,6 +31,10 @@ fields/offsets/ABIs, replacing a better stored source, hand edits under `clients
 | Everyone's sources | `roc pull 2008-06` | server, user | `src/2008-06/*.cpp` |
 | Free automatic passes | `roc mass`, `roc auto 2008-06`, `roc xcopy`, `roc donor` | analyze | local exacts |
 | Library recipes | `roc libs NAME --client 2008-06` | recipe in `roc/libs.py` | exacts from authentic source |
+| Fetch library source | `roc lib-fetch boost-1.35.0` (recipe names: `roc libs`, `roc/libs.py`) | network | verified source in `tools/libs/` |
+| Similar exact functions | `roc similar 2008-06 ADDR` | analyze, pull | exact neighbours by shape, with local source paths |
+| Library version and history | `roc lib-info ogre-1.4.5` | - | recipe source/flags plus related lessons and experiments |
+| Scratch score | `roc check 2008-06 ADDR --file PATH` | compilers | score + diff, saves nothing |
 | Named experiments | `roc research list / plan NAME / run NAME` | server | journal in `work/research/NAME/`, verified exacts, memory records |
 | Score one source | `roc check 2008-06 [addr]` | compilers | score + asm diff |
 | Explain a mismatch | `roc classify 2008-06 ADDR FILE` | compilers | mismatch category with evidence |

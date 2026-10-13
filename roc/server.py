@@ -1017,16 +1017,22 @@ def publish_loop(store, public_url, every, log=print, tunnel=None, port=None, pu
     next_publish = 0
     next_probe = 0
     active_url = public_url
+    failures = 0
     while True:
         if tunnel is not None and tunnel.poll() is not None:
-            log("Tunnel stopped; restarting public connection.")
+            if not failures:
+                log("Tunnel stopped; restarting public connection.")
             try:
                 public_url, tunnel = start_tunnel(port, log)
+                failures = 0
                 next_publish = 0
                 next_probe = 0
             except (OSError, SystemExit) as error:
-                log("Tunnel restart failed: %s" % error)
-                time.sleep(5)
+                failures += 1
+                wait = min(5 * 2 ** (failures - 1), 300)  # back off 5 s .. 5 min, log first failure then every 10th
+                if failures == 1 or failures % 10 == 0:
+                    log("Tunnel restart failed (%d so far): %s. Retrying every %d s." % (failures, error, wait))
+                time.sleep(wait)
                 continue
         if primary and time.monotonic() >= next_probe:
             from roc.worker import Api, ApiFailure

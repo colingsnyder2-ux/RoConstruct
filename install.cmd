@@ -23,6 +23,9 @@ if errorlevel 1 (
   )
 )
 
+echo Checking for RoConstruct updates...
+py -3.12 roc.py update
+
 echo Checking Python packages (pefile, capstone)...
 py -3.12 -m pip install --user -q --disable-pip-version-check pefile capstone || (
   echo pip failed. Check your internet connection and run this again.
