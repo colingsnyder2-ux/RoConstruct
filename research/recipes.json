@@ -399,5 +399,24 @@
     ],
     "output": "work\\agent-campaigns\\10f6f89ba74c\\parser-fanout",
     "next": "If no gain, park parser configuration; surviving exception destructor needs byte-proven complete boundaries"
+  },
+  "xtp-lib-imports-fanout-2008": {
+    "op": "fanout",
+    "client": "2008-06",
+    "library": "XTP 11.2.2",
+    "hypothesis": "The 2008 client calls dllimport functions (FreeResource, CString accessors) through the import table. The -lib-imports recipe (vendor _LIB prelude + noinline CString accessors + GetLength + FreeResource) reproduces XTP exactly; three near-misses (006cbfc0 93%, 006badf0/006bbb80 75%) went 100% under it.",
+    "sources": [
+      {
+        "recipe": "xtp-11.2.2-lib-imports",
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /MD /GS /EHsc /Ob1"
+        ]
+      }
+    ],
+    "output": "work/agent-campaigns/afec32731807/lib-imports-fanout",
+    "next": "If exacts land, propagate the -lib-imports recipe to the remaining XTP near-misses; if zero, the residual is a compiler EH-state difference, not an import-table difference."
   }
 }

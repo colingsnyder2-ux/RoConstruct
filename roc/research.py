@@ -289,8 +289,8 @@ def run(name, server=None, jobs=1, limit=None, log=print):
             tried = len(rows)
         elif spec["op"] == "fanout":
             sources = list(islice(recipe_sources(spec["sources"]), limit))
-            winners = fanout(campaign, name, clients, jobs, log=log)
-            tried = len(clients)
+            winners = fanout(campaign, name, sources, jobs, log=log)
+            tried = len(sources)
         else:
             raise ValueError("Unknown research op: " + spec["op"])
     finally:
