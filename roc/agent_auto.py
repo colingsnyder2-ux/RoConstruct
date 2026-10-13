@@ -10,7 +10,7 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from pathlib import Path
 
-from roc import agent, agent_memory, matchers, draft, match, research, telemetry, worker
+from roc import agent, agent_memory, matchers, draft, match, research, telemetry, worker, clients
 
 ROOT = Path(__file__).resolve().parent.parent
 WRITE_LOCK = threading.Lock()
@@ -236,6 +236,25 @@ def pull_sources(server, token, client, log):
         worker.pull_files(server, name, token, force=False, log=log)
 
 
+def prepare_clients(client, log):
+    """Fetch/analyze target clients once before concurrent campaigns begin."""
+    from roc import analyze
+    registered = clients.load()
+    names = sorted(registered) if client == "all" else [client or "2008-06"]
+    for name in names:
+        entry = registered.get(name)
+        if not entry:
+            raise ValueError("Unknown selected client: " + name)
+        if clients.status(name, entry) != "ok":
+            log("Automatic setup: fetching %s client binary." % name)
+            if not clients.ensure(name):
+                raise SystemExit("Automatic setup needs %s. Run: roc client-fetch %s" % (name, name))
+        functions = ROOT / "work" / name / "functions.jsonl"
+        if not functions.exists():
+            log("Automatic setup: analyzing %s." % name)
+            analyze.analyze(name, clients.exe_path(name, entry))
+
+
 def materialize_campaign_sources(campaign):
     """Seed only this campaign's missing files; never bulk-download a new PC."""
     folder = ROOT / "src" / campaign["client"]
@@ -392,9 +411,13 @@ def run(server, user, token=None, cli="claude", model=None, workers=2, jobs=24, 
         minutes=120, batch_size=4, batch_minutes=10, individual=False, log=print, client=None, continuous=False,
         experimental=False):
     strategy = 0
+    prepared = False
     while True:
         try:
             if experimental:
+                if not prepared:
+                    prepare_clients(client, log)
+                    prepared = True
                 claimed, claim_lock = set(), threading.Lock()
                 with ThreadPoolExecutor(max_workers=workers) as pool:
                     futures = [pool.submit(library_cycle, server, user, token, cli, model, minutes, log, client,

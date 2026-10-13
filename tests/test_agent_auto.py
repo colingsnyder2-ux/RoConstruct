@@ -74,6 +74,7 @@ def test_library_campaign_uses_real_recipes_all_sizes_and_rotates_strategy():
 def test_experimental_prefers_library_campaign_over_fixed_batches(monkeypatch):
     calls = []
     monkeypatch.setattr(agent_auto, "pull_sources", lambda *args: None)
+    monkeypatch.setattr(agent_auto, "prepare_clients", lambda *args: None)
     monkeypatch.setattr(agent_auto, "library_cycle", lambda *a: calls.append(a) or
                         dict(attempted=5, matched=1, improved=0, errors=0))
     monkeypatch.setattr(agent_auto, "run_cycle", lambda *a: pytest.fail("unexpected fixed batch"))
@@ -99,10 +100,23 @@ def test_pull_sources_downloads_on_a_new_pc_without_local_analysis(monkeypatch):
     assert calls == [("https://server.test", "2008-06", "token", False)]
 
 
+def test_prepare_clients_fetches_then_analyzes_missing_laptop_target(tmp_path, monkeypatch):
+    calls = []
+    monkeypatch.setattr(agent_auto, "ROOT", tmp_path)
+    monkeypatch.setattr(agent_auto.clients, "load", lambda: {"2008-06": {"exe": "Roblox.exe"}})
+    monkeypatch.setattr(agent_auto.clients, "status", lambda *args: "missing")
+    monkeypatch.setattr(agent_auto.clients, "ensure", lambda name: calls.append(("fetch", name)) or True)
+    monkeypatch.setattr(agent_auto.clients, "exe_path", lambda *args: "Roblox.exe")
+    monkeypatch.setattr("roc.analyze.analyze", lambda name, exe: calls.append(("analyze", name, exe)))
+    agent_auto.prepare_clients("2008-06", lambda _: None)
+    assert calls == [("fetch", "2008-06"), ("analyze", "2008-06", "Roblox.exe")]
+
+
 def test_experimental_starts_every_worker_without_bulk_source_sync(monkeypatch):
     pulled, slots = [], []
     gate = threading.Barrier(4)
     monkeypatch.setattr(agent_auto, "pull_sources", lambda *args: pulled.append(args))
+    monkeypatch.setattr(agent_auto, "prepare_clients", lambda *args: None)
 
     def campaign(*args, **kwargs):
         slots.append(args[8])
