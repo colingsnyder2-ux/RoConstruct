@@ -520,7 +520,29 @@
  "g3d-6.09-rbx2008": {
   "url": "https://archive.org/download/g3d-src-6_09/g3d-src-6_09.zip",
   "kind": "archive",
-  "files": []
+  "files": [
+   "G3Dcpp/CollisionDetection.cpp",
+   "G3Dcpp/GCamera.cpp",
+   "G3Dcpp/GImage_bmp.cpp",
+   "G3Dcpp/GImage_png.cpp",
+   "G3Dcpp/GImage_ppm.cpp",
+   "G3Dcpp/GImage_tga.cpp",
+   "G3Dcpp/Matrix3.cpp",
+   "G3Dcpp/Quat.cpp",
+   "G3Dcpp/TextInput.cpp",
+   "G3Dcpp/TextOutput.cpp",
+   "G3Dcpp/roc_export_df9dd825b863ce4d.cpp",
+   "G3Dcpp/roc_line_0dec62d7bd4d609a.cpp",
+   "GLG3Dcpp/DDSTexture.cpp",
+   "GLG3Dcpp/Draw.cpp",
+   "GLG3Dcpp/GFont.cpp",
+   "GLG3Dcpp/RenderDevice.cpp",
+   "GLG3Dcpp/Texture.cpp",
+   "GLG3Dcpp/Win32Window.cpp",
+   "GLG3Dcpp/getOpenGLState.cpp",
+   "GLG3Dcpp/roc_export_a69fe47bb0e6952c.cpp",
+   "roc_g3d_jpeg_throw_414d7d8a47fb28a0.cpp"
+  ]
  },
  "sdl-1.2.11": {
   "url": "https://www.libsdl.org/release/SDL-1.2.11.tar.gz",
@@ -1732,6 +1754,10 @@
    "roc_ogre_resume_a514c3bb7ed458e9.cpp",
    "roc_ogre_resume_b2126d94dfadd044.cpp",
    "roc_rbx_adorn_state_ctor_5b7c48b8c5421fef.cpp",
+   "roc_rbx_create_indices_0cb0c310d58dd691.cpp",
+   "roc_rbx_scenemgr_create_movable_e87cf5c167b0c1ab.cpp",
+   "roc_rbx_scenemgr_destroy_movable_1b3520fec339c1aa.cpp",
+   "roc_rbx_scenemgr_shadowcasters_44af38d731495640.cpp",
    "roc_rbx_subentity_shadow_volume_f6cac9c91aa4e5c1.cpp",
    "roc_rbxscene_apply_animations_a7ba41ac8adad042.cpp",
    "roc_rbxscene_modulative_no_custom_proj_50e542f3fe79853d.cpp",
@@ -1740,6 +1766,7 @@
    "roc_rbxscene_timed_no_viewport_8cefb7f930351b4e.cpp",
    "roc_rtti_d56a903776f2b6ff.cpp",
    "roc_sub_transform_2a4870813417745d.cpp",
+   "roc_tpl_map_string_meshptr_ec8e332780074925.cpp",
    "roc_try_15110fb6a0b86d4e.cpp",
    "roc_try_16107800e0b0542a.cpp",
    "roc_try_34708910126535a9.cpp",
@@ -1762,7 +1789,7 @@
    "roc_try_e30ba7cfa3240599.cpp",
    "roc_try_ebdcbd65a010751e.cpp",
    "roc_try_ffd5d9229ca1a018.cpp",
-   "roc_twod_add_quad_color_fork_49258f089851b88c.cpp"
+   "roc_twod_add_quad_color_fork_f8f01467d94dfda6.cpp"
   ]
  },
  "lame-3.98.4-dll": {
