@@ -5,7 +5,7 @@ import sys
 import threading
 import time
 
-from roc import clients, providers, worker
+from roc import clients, providers, worker, setup
 
 DEFAULTS = dict(client="", server="", user="", model="", workers=1, rounds=4,
                 max_size=256, max_tokens=2048, strategy="direct", order="random",
@@ -19,6 +19,29 @@ LIVE = {"workers", "model", "rounds", "max_size", "max_tokens", "strategy", "ord
         "thinking", "reasoning_effort", "use_revng", "min_score", "max_score",
         "diverse_candidates", "guided_mutations", "near_repair", "max_cloud_requests",
         "max_cloud_tokens", "max_cloud_cost"}
+
+
+def prepare_clients(config, log):
+    """Fetch and analyze the selected Match client before worker loops start."""
+    from roc import analyze
+    registered = clients.load()
+    names = sorted(registered) if not config["client"] else [config["client"]]
+    for name in names:
+        entry = registered[name]
+        if clients.status(name, entry) != "ok":
+            log("Match setup: fetching %s client binary." % name)
+            if not clients.ensure(name):
+                raise SystemExit("Match setup needs %s. Run: roc client-fetch %s" % (name, name))
+        build = entry.get("compiler_build")
+        if build and build not in setup.compilers():
+            log("Match setup: installing %s." % setup.NAMES.get(build, "required compiler"))
+            setup.install_compilers(only=[build], assume_yes=True)
+            if build not in setup.compilers():
+                raise SystemExit("Match setup needs %s. Run: install.cmd" % setup.NAMES.get(build, "the required compiler"))
+        functions = clients.ROOT / "work" / name / "functions.jsonl"
+        if not functions.exists():
+            log("Match setup: analyzing %s." % name)
+            analyze.analyze(name, clients.exe_path(name, entry))
 
 
 def validate(values, base=None, check_model=True):
@@ -190,6 +213,7 @@ def main():
     config = validate(initial["config"])
     control = Control(config, emit)
     emit("control", config=config, revision=1, paused=False, stopping=False)
+    prepare_clients(config, lambda message: emit("log", slot=0, message=message))
 
     def receive():
         for line in sys.stdin:

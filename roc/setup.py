@@ -701,9 +701,21 @@ def seven_zip():
     return shutil.which("7z") or next((str(base / "7-Zip" / "7z.exe") for base in locations
                                         if (base / "7-Zip" / "7z.exe").is_file()), None)
 
+def _copy_from_mounted_iso(iso, inner, dest):
+    """Windows fallback when 7-Zip cannot be installed (offline winget): mount the ISO."""
+    script = ("$ErrorActionPreference='Stop';$i=Mount-DiskImage -ImagePath $env:ROC_ISO -PassThru;"
+              "try{$d=($i|Get-Volume).DriveLetter;Copy-Item -LiteralPath ($d+':\'+$env:ROC_INNER) -Destination $env:ROC_DEST -Force}"
+              "finally{Dismount-DiskImage -ImagePath $env:ROC_ISO|Out-Null}")
+    Path(dest).parent.mkdir(parents=True, exist_ok=True)
+    env = dict(os.environ, ROC_ISO=str(iso), ROC_INNER=inner.replace("/", "\\"), ROC_DEST=str(dest))
+    run = subprocess.run(["powershell", "-NoProfile", "-Command", script], env=env, capture_output=True)
+    return run.returncode == 0 and Path(dest).is_file()
+
 def copy_from_iso(iso, inner, dest):
     """Read the compiler's UDF/ISO archive with 7-Zip without mounting it."""
     exe = seven_zip()
+    if not exe and WINDOWS and _copy_from_mounted_iso(iso, inner, dest):
+        return
     if not exe:
         raise SystemExit("Compiler ISO extraction needs 7-Zip. Install it and run setup again "
                          "(Windows: winget install --id 7zip.7zip -e; Linux: install 7zip or p7zip).")

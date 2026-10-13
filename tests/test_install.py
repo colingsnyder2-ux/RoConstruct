@@ -518,7 +518,7 @@ def test_missing_client_uses_configured_bundle_or_drive_source():
          patch("roc.clients.load_sources", return_value={"bundle": {"url": "https://example.test/clients.zip"}}), \
          patch("roc.clients.fetch", return_value="ok") as fetch:
         assert clients.ensure("2008-06") is True
-    fetch.assert_called_once_with("2008-06")
+    fetch.assert_called_once_with("2008-06", extras=False)
 
 
 def test_client_sources_manifest_uses_the_tracked_filename():

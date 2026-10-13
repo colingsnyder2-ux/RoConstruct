@@ -103,13 +103,28 @@ def test_pull_sources_downloads_on_a_new_pc_without_local_analysis(monkeypatch):
 def test_prepare_clients_fetches_then_analyzes_missing_laptop_target(tmp_path, monkeypatch):
     calls = []
     monkeypatch.setattr(agent_auto, "ROOT", tmp_path)
-    monkeypatch.setattr(agent_auto.clients, "load", lambda: {"2008-06": {"exe": "Roblox.exe"}})
+    monkeypatch.setattr(agent_auto.clients, "load", lambda: {"2008-06": {"exe": "Roblox.exe", "compiler_build": 21022}})
     monkeypatch.setattr(agent_auto.clients, "status", lambda *args: "missing")
     monkeypatch.setattr(agent_auto.clients, "ensure", lambda name: calls.append(("fetch", name)) or True)
     monkeypatch.setattr(agent_auto.clients, "exe_path", lambda *args: "Roblox.exe")
+    monkeypatch.setattr(agent_auto.setup, "compilers", lambda: {21022: "cl.exe"})
     monkeypatch.setattr("roc.analyze.analyze", lambda name, exe: calls.append(("analyze", name, exe)))
     agent_auto.prepare_clients("2008-06", lambda _: None)
     assert calls == [("fetch", "2008-06"), ("analyze", "2008-06", "Roblox.exe")]
+
+
+def test_prepare_clients_installs_the_missing_exact_compiler(tmp_path, monkeypatch):
+    calls, installed = [], {}
+    monkeypatch.setattr(agent_auto, "ROOT", tmp_path)
+    (tmp_path / "work" / "2008-06").mkdir(parents=True)
+    (tmp_path / "work" / "2008-06" / "functions.jsonl").write_text("")
+    monkeypatch.setattr(agent_auto.clients, "load", lambda: {"2008-06": {"compiler_build": 21022}})
+    monkeypatch.setattr(agent_auto.clients, "status", lambda *args: "ok")
+    monkeypatch.setattr(agent_auto.setup, "compilers", lambda: dict(installed))
+    monkeypatch.setattr(agent_auto.setup, "install_compilers",
+                        lambda only, assume_yes: calls.append((only, assume_yes)) or installed.update({21022: "cl.exe"}))
+    agent_auto.prepare_clients("2008-06", lambda _: None)
+    assert calls == [([21022], True)]
 
 
 def test_experimental_starts_every_worker_without_bulk_source_sync(monkeypatch):

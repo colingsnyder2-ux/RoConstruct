@@ -256,5 +256,148 @@
       "fanout_new_verified": 0,
       "evidence": "work\\agent-campaigns\\cf56cb487737\\receipts.json"
     }
+  },
+  "libpng-1.2.6-fp-fast-2008": {
+    "op": "grid",
+    "client": "2008-06",
+    "library": "libpng-1.2.6",
+    "hypothesis": "Target cHRM/gAMA x87 uses reciprocal fmul; /fp:fast reproduces source-backed float conversion.",
+    "targets": {
+      "addresses": [
+        "0052d360",
+        "0052d660",
+        "0052db80"
+      ]
+    },
+    "builds": [
+      21022
+    ],
+    "profiles": [
+      "keep"
+    ],
+    "append": [
+      " /fp:fast"
+    ],
+    "result": {
+      "date": "2026-10-13",
+      "trials": 3,
+      "new_verified": 0,
+      "evidence": "work/agent-campaigns/cce09b6c6264"
+    },
+    "next": "Keep per-source /fp:fast where score improves; source strings/data refs still block exactness."
+  },
+  "lua-resize-operand-order-2008": {
+    "op": "fanout",
+    "client": "2008-06",
+    "library": "lua-5.1/src",
+    "hypothesis": "Target shrinking-array SIB base/index order via operand-order",
+    "sources": [
+      {
+        "recipe": "lua-5.1",
+        "files": [
+          "roc_resize_c_order_2d1ee88c73ddc8c4.cpp"
+        ],
+        "langs": [
+          "c"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ]
+      }
+    ],
+    "output": "work\\agent-campaigns\\e2fa7b94941c\\operand-order",
+    "result": {
+      "date": "2026-10-13",
+      "status": "rejected",
+      "trials": 1,
+      "new_verified": 0,
+      "pilot_before": 99,
+      "pilot_after": 99,
+      "evidence": "work\\agent-campaigns\\e2fa7b94941c\\trials.jsonl"
+    },
+    "next": "Park unchanged operand expressions. Need authentic client ltable/prelude or new compiler evidence; do not replay generic grids."
+  },
+  "lua-resize-byte-offset-2008": {
+    "op": "fanout",
+    "client": "2008-06",
+    "library": "lua-5.1/src",
+    "hypothesis": "Target shrinking-array SIB base/index order via byte-offset",
+    "sources": [
+      {
+        "recipe": "lua-5.1",
+        "files": [
+          "roc_resize_bytes_7f1fbce978b23bdc.cpp"
+        ],
+        "langs": [
+          "c"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ]
+      }
+    ],
+    "output": "work\\agent-campaigns\\e2fa7b94941c\\byte-offset",
+    "result": {
+      "date": "2026-10-13",
+      "status": "rejected",
+      "trials": 1,
+      "new_verified": 0,
+      "pilot_before": 99,
+      "pilot_after": 99,
+      "evidence": "work\\agent-campaigns\\e2fa7b94941c\\trials.jsonl"
+    },
+    "next": "Park unchanged operand expressions. Need authentic client ltable/prelude or new compiler evidence; do not replay generic grids."
+  },
+  "lua-no-legacy-varargs-2008": {
+    "op": "fanout",
+    "client": "2008-06",
+    "library": "lua-5.1.2/src",
+    "hypothesis": "00621c60 helper has no legacy arg table allocation; 00622140 passes actual count in eax, indicating simplified static helper with LUA_COMPAT_VARARG disabled",
+    "sources": [
+      {
+        "recipe": "lua-5.1.2",
+        "unit": "work\\agent-campaigns\\10f6f89ba74c\\no-legacy-varargs.c",
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ],
+        "langs": [
+          "cpp"
+        ]
+      }
+    ],
+    "output": "work\\agent-campaigns\\10f6f89ba74c\\varargs-fanout",
+    "next": "Pilot precall and adjust_varargs, then fanout whole authentic unit if exact"
+  },
+  "lua-parser-no-legacy-varargs-2008": {
+    "op": "fanout",
+    "client": "2008-06",
+    "library": "lua-5.1.2/src",
+    "hypothesis": "Verified adjust_varargs and precall prove disabled LUA_COMPAT_VARARG; authentic Roblox luaconf confirms undef; parser has same define-dependent legacy arg creation",
+    "sources": [
+      {
+        "recipe": "lua-5.1.2",
+        "unit": "work\\agent-campaigns\\10f6f89ba74c\\parser-no-legacy-varargs.cpp",
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ],
+        "langs": [
+          "cpp"
+        ]
+      }
+    ],
+    "output": "work\\agent-campaigns\\10f6f89ba74c\\parser-fanout",
+    "next": "If no gain, park parser configuration; surviving exception destructor needs byte-proven complete boundaries"
   }
 }

@@ -515,7 +515,7 @@ def _pull_files(name, files, quiet):
     return skipped
 
 
-def from_drive(name, entry, quiet=False):
+def from_drive(name, entry, quiet=False, extras=True):
     """Pull one client from Drive, choosing the build whose exe matches the registry.
 
     A month folder on Drive can hold several different builds, so the exe is
@@ -555,7 +555,8 @@ def from_drive(name, entry, quiet=False):
 
         if not quiet:
             print("%-8s matched build %s, fetching the rest" % (name, build["label"]))
-        _pull_files(name, [f for f in build["files"] if f is not exe_item], quiet)
+        if extras:
+            _pull_files(name, [f for f in build["files"] if f is not exe_item], quiet)
         _remember_build(name, build["label"])
         return build["label"]
     raise FetchError("no Drive build matches %s (%s)" % (name, "; ".join(problems) or "none had the exe"))
@@ -576,7 +577,7 @@ def _remember_build(name, label):
         pass
 
 
-def fetch(name, quiet=False):
+def fetch(name, quiet=False, extras=True):
     """Get one client onto disk and verified. Drive first, clients.zip as fallback."""
     entry = _need(name)
     if verify(name, entry) == "ok":
@@ -586,7 +587,7 @@ def fetch(name, quiet=False):
 
     problems = []
     try:
-        label = from_drive(name, entry, quiet)
+        label = from_drive(name, entry, quiet, extras=extras)
         state = verify(name, entry)
         if state == "ok":
             if not quiet:
@@ -623,7 +624,7 @@ def ensure(name):
     if not sources.get("bundle") and name not in sources.get("drive", {}):
         return False
     try:
-        fetch(name)
+        fetch(name, extras=False)
         return True
     except FetchError as error:
         print("%s: %s" % (name, error), file=sys.stderr)

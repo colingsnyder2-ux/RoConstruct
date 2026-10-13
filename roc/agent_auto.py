@@ -10,7 +10,7 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from pathlib import Path
 
-from roc import agent, agent_memory, matchers, draft, match, research, telemetry, worker, clients
+from roc import agent, agent_memory, matchers, draft, match, research, telemetry, worker, clients, setup
 
 ROOT = Path(__file__).resolve().parent.parent
 WRITE_LOCK = threading.Lock()
@@ -249,6 +249,12 @@ def prepare_clients(client, log):
             log("Automatic setup: fetching %s client binary." % name)
             if not clients.ensure(name):
                 raise SystemExit("Automatic setup needs %s. Run: roc client-fetch %s" % (name, name))
+        build = entry.get("compiler_build")
+        if build and build not in setup.compilers():
+            log("Automatic setup: installing %s." % setup.NAMES.get(build, "required compiler"))
+            setup.install_compilers(only=[build], assume_yes=True)
+            if build not in setup.compilers():
+                raise SystemExit("Automatic setup needs %s. Run: install.cmd" % setup.NAMES.get(build, "the required compiler"))
         functions = ROOT / "work" / name / "functions.jsonl"
         if not functions.exists():
             log("Automatic setup: analyzing %s." % name)
