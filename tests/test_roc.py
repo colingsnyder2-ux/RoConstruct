@@ -2241,6 +2241,5 @@ def test_find_functions_merges_catch_continuation():
     va = 0x401000
     code = bytes.fromhex("b8") + (va + 6).to_bytes(4, "little") + bytes.fromhex("c35dc3")
     assert [f["addr"] for f in find_functions(code, va, {va}, [va + 1])] == ["00401000", "00401006"]
-    assert [(f["addr"], f["size"]) for f in find_functions(code, va, {va}, [va + 1], keep=set())] == [("00401000", 8)]
-    # A funclet with a recorded exact keeps its extent.
-    assert len(find_functions(code, va, {va}, [va + 1], keep={va})) == 2
+    merged = find_functions(code, va, {va}, [va + 1], keep={va})
+    assert [(f["addr"], f["size"], f["kind"]) for f in merged] == [("00401000", 8, "eh")]

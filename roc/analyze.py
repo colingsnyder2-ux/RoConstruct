@@ -101,11 +101,10 @@ def find_functions(code, text_va, seeds, relocs, proven=(), keep=None):
                 falls.add(a + size)
             a += size
     if keep is not None:
-        # A continuation right after its own catch funclet is a label inside that __catch$
-        # symbol, unless the funclet already has a recorded extent (an exact match alone).
+        # A continuation right after its own catch funclet is a label inside that __catch$ symbol.
         order = sorted(starts)
         owner = lambda m: order[bisect_left(order, m + 1) - 1]
-        starts -= (falls | {c for c, m in conts.items() if owner(m) == owner(c - 1) and owner(m) not in keep}) - called - keep
+        starts -= (falls | {c for c, m in conts.items() if owner(m) == owner(c - 1)}) - called - keep
     # Proven extents (a compiled function matched these bytes exactly): no start
     # inside one, and whatever follows it starts a new function.
     for start, size in proven:
@@ -134,7 +133,9 @@ def find_functions(code, text_va, seeds, relocs, proven=(), keep=None):
             "size": len(body),
             "relocs": rel,
             "calls": bisect_left(call_sites, stop) - bisect_left(call_sites, start),
-            "kind": kind_of(body[:code_len], [r for r in rel if r < code_len]),
+            # mov eax, offset next; ret: a catch funclet returning to its own continuation
+            "kind": "eh" if body[:1] == bytes([0xB8]) and body[5:6] == bytes([0xC3]) and rd(start + 1) == start + 6
+                    else kind_of(body[:code_len], [r for r in rel if r < code_len]),
         })
     return out
 
