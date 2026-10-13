@@ -59,12 +59,12 @@ def test_library_campaign_uses_real_recipes_all_sizes_and_rotates_strategy():
     assert len(campaign["targets"]) == 1 and campaign["targets"][0]["size"] == 5000
     assert campaign["exact"] == 1 and campaign["strategy"] == 0
     records = [dict(kind="library_campaign", client="2008-06", library=campaign["library"],
-                    cohort=campaign["revision"], profile="library-strategy-0", outcome="no_gain")]
+                    cohort=campaign["revision"], profile="library-strategy-0", outcome="no_gain", tested_hypotheses=2)]
     assert agent_auto.library_campaigns(rows, "2008-06", records)[0]["strategy"] == 1
     for strategy in range(3):
         records.extend(dict(kind="library_campaign", client="2008-06", library=campaign["library"],
                             cohort=campaign["revision"], profile="library-strategy-%d" % strategy,
-                            outcome="no_gain") for _ in range(2))
+                            outcome="no_gain", tested_hypotheses=2) for _ in range(2))
     assert agent_auto.library_campaigns(rows, "2008-06", records) == []
     rows[0]["source"] += "// new evidence\n"
     assert agent_auto.library_campaigns(rows, "2008-06", records)
@@ -80,6 +80,86 @@ def test_experimental_prefers_library_campaign_over_fixed_batches(monkeypatch):
     monkeypatch.setattr(agent_auto, "run_cycle", lambda *a: pytest.fail("unexpected fixed batch"))
     assert agent_auto.run("server", "me", client="2008-06", experimental=True)["matched"] == 2
     assert len(calls) == 2 and all(call[7] == "2008-06" for call in calls)
+
+
+def test_campaign_choice_randomizes_least_tried_without_score_bias(monkeypatch):
+    candidates = [dict(library="G3D", visits=1, verified_exacts_per_minute=100),
+                  dict(library="Lua", visits=0, targets=[dict(score=99)]),
+                  dict(library="Ogre", visits=0, targets=[dict(score=0)])]
+    pools = []
+    monkeypatch.setattr(agent_auto.random, "choice", lambda pool: pools.append(pool) or pool[-1])
+    assert agent_auto.choose_campaign(candidates)["library"] == "Ogre"
+    assert pools == [[(None, "Lua"), (None, "Ogre")], [candidates[2]]]
+
+
+def test_campaign_largest_first_and_visits_survive_source_changes():
+    source = "// roc-lib: g3d-6.09 GLG3Dcpp/Sky.cpp\n"
+    rows = [row("00401000", 99, source), {**row("00401010", 20, source), "size": 5000}]
+    campaign = agent_auto.library_campaigns(rows, "2008-06", [])[0]
+    records = [dict(kind="library_campaign", client="2008-06", library=campaign["library"],
+                    cohort=campaign["revision"], profile="library-strategy-0", outcome="improved")]
+    rows[0]["source"] += "// changed\n"
+    refreshed = agent_auto.library_campaigns(rows, "2008-06", records)[0]
+    assert refreshed["visits"] == 1
+    assert [target["score"] for target in refreshed["targets"]] == [20, 99]
+
+
+def test_campaign_packet_seeds_sources_and_ready_commands(tmp_path):
+    campaign = dict(client="2008-06", targets=[row("00401000", source="int f(){return 1;}")])
+    agent_auto.campaign_packet(campaign, tmp_path, "https://server", "tester")
+    target = campaign["targets"][0]
+    assert Path(target["file"]).read_text() == target["source"]
+    assert 'agent-check' in target["check"] and '--hypothesis' in target["check"]
+    assert '--user "tester"' in target["submit"]
+    assert "--background" in campaign["research_commands"]["background"]
+    assert json.loads((tmp_path / "campaign.json").read_text()) == campaign
+
+
+def test_short_untested_campaigns_do_not_park_strategies():
+    source = "// roc-lib: g3d-6.09 GLG3Dcpp/Sky.cpp\n"
+    rows = [row("00401000", source=source)]
+    campaign = agent_auto.library_campaigns(rows, "2008-06", [])[0]
+    records = [dict(kind="library_campaign", client="2008-06", library=campaign["library"],
+                    cohort=campaign["revision"], profile="library-strategy-%d" % strategy,
+                    outcome="no_gain", elapsed_seconds=8) for strategy in range(3)]
+    assert agent_auto.library_campaigns(rows, "2008-06", records)
+
+
+def test_family_rotation_does_not_weight_versions(monkeypatch):
+    candidates = [dict(library="ogre-1.4.5/src", family="Ogre", visits=0, family_visits=2),
+                  dict(library="ogre-1.7.0/src", family="Ogre", visits=0, family_visits=2),
+                  dict(library="g3d-6.09/source", family="G3D", visits=1, family_visits=1)]
+    monkeypatch.setattr(agent_auto.random, "choice", lambda pool: pool[0])
+    assert agent_auto.choose_campaign(candidates)["family"] == "G3D"
+
+
+def test_campaign_includes_rtti_and_matching_neighbour_targets_without_sources():
+    source = "// roc-lib: g3d-6.09 GLG3Dcpp/Sky.cpp\n"
+    rows = [{**row("00401000", 100, source), "size": 100},
+            {**row("00401010", 0, ""), "unit": "seg_0040"},
+            {**row("00401020", 100, source), "size": 100},
+            {**row("00401030", 0, ""), "unit": "Ogre::SceneManager"}]
+    campaigns = agent_auto.library_campaigns(rows, "2008-06", [])
+    assert {c["family"]: [r["addr"] for r in c["targets"]] for c in campaigns} == {
+        "G3D": ["00401010"], "Ogre": ["00401030"]}
+
+
+def test_campaign_rotates_tried_target_until_evidence_changes():
+    source = "// roc-lib: g3d-6.09 GLG3Dcpp/Sky.cpp\n"
+    rows = [{**row("00401000", source=source), "size": 5000}, row("00401010", source=source)]
+    first = agent_auto.library_campaigns(rows, "2008-06", [])[0]["targets"][0]
+    records = [dict(kind="trial", client="2008-06", addresses=[first["addr"]],
+                    baseline_hash=first["baseline_hash"], target_revision=first["target_revision"], outcome="no_gain")]
+    assert agent_auto.library_campaigns(rows, "2008-06", records)[0]["targets"][0]["addr"] == "00401010"
+    rows[0]["source"] += "// new source\n"
+    assert agent_auto.library_campaigns(rows, "2008-06", records)[0]["targets"][0]["addr"] == "00401000"
+
+
+def test_campaign_results_only_credit_own_verified_improvement_receipts():
+    rows = [dict(campaign_id="own", receipt=dict(verified=True, improved=True, stored=100), addresses=["00401000"]),
+            dict(campaign_id="other", receipt=dict(verified=True, improved=True, stored=100), addresses=["00401010"]),
+            dict(campaign_id="own", receipt=dict(verified=True, improved=False, stored=100), addresses=["00401020"])]
+    assert agent_auto.campaign_results("own", rows) == ({"00401000": 100}, 0)
 
 
 def test_pull_sources_downloads_on_a_new_pc_without_local_analysis(monkeypatch):
@@ -189,14 +269,15 @@ def test_library_cycle_records_server_observed_gains_and_research_scope(tmp_path
     logs = []
     totals = agent_auto.library_cycle("https://example.test", "tester", None, "codex", None, 1,
                                     logs.append, "2008-06")
-    assert totals == dict(attempted=1, matched=2, improved=0, errors=0)
-    assert sum("server verified exact" in line for line in logs) == 2
+    assert totals == dict(attempted=1, matched=0, improved=0, errors=0)
+    assert not any("server verified exact" in line for line in logs)
     assert "Client: 2008-06" in prompts[0] and "g3d-6.09" in prompts[0]
     assert "research/recipes.json" in prompts[0] and "libs.add_unit" in prompts[0]
     assert "No unrelated infrastructure edits" in prompts[0]
     record = [r for r in map(json.loads, (tmp_path / "work/agent-memory/attempts.jsonl").read_text().splitlines())
               if r["kind"] == "library_campaign"][0]
-    assert record["outcome"] == "improved" and record["addresses"] == ["00401000", "00401010"]
+    assert record["outcome"] == "incomplete" and record["addresses"] == []
+    assert record["observed_server_gains"] == 2
     assert record["profile"] == "library-strategy-0"
 
 

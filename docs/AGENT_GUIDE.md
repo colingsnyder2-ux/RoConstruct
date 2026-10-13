@@ -102,14 +102,32 @@ publisher exports lessons, context and shared attempts to RoConstruct-findings.
 
 Runs inside Workers (same chat, terminal, history and stop control as other workers).
 The Automatic preset explores unfinished libraries and evidence-ranked categories (`--experimental`).
-It randomly samples least-tried campaigns, weighted toward stronger source baselines.
+It uniformly samples least-tried eligible library families, then least-tried versions,
+counting visits across source revisions. Busy families are skipped. Targets sort by
+least-tried current source/evidence, then largest size; low-score non-exacts are included.
 The agent chooses the best subcategory, targets and evidence-backed experiments within its campaign.
-It starts from actual recipe-backed sources, across all function sizes, and permits
+It reuses actual recipe-backed sources or recovers authentic sources for attributed targets,
+across all function sizes, and permits
 evidence-backed research recipes, generated authentic units and library configuration
 experiments. It rotates libraries/strategies and parks unchanged strategies after two
-zero-gain campaigns. If no fresh campaign remains, it falls back to ranked batches.
-Campaign counts cover recipe-backed attribution; the Pages library table also uses
-RTTI labels and neighbouring exact matches, so its family totals are broader estimates.
+recorded losing hypotheses. If no fresh campaign remains, it falls back to ranked batches.
+Campaigns include recipe sources, RTTI labels and matching exact-source neighbours.
+Attribution is a hint; sourceless targets require authentic source recovery before checks.
+Only campaign-linked verified improvement receipts count as worker gains. Server changes
+from other workers remain observation counts. Strategy parking requires two recorded
+losing hypotheses; quick or untested runs are incomplete and do not park strategies.
+Campaign packets contain source copies and ready check/submit commands; agents skip
+repeating config, pull, fetch and analysis. Research execution uses recipe names:
+`roc research run NAME --limit 1` pilots one source, then
+`roc research run NAME --background` starts a resumable run with a saved log.
+`roc research status NAME` reads its latest state. Do independent work instead of
+polling loops; rerun the same command to resume from completed journal entries.
+Concurrent launches of the same recipe/client reuse the active background job;
+foreground and API execution also take a nonblocking output-folder lock.
+Research accepts `--client 2008-06`, another registered client, or `--client all`.
+Agent packets always pass the selected client. Other clients use their own compiler,
+target queries, memory records and output folder; selecting 2008 never queries 2009.
+Write memory through `agent_memory.append_record` for validated, process-locked JSONL.
 All Agent presets prefer unfinished libraries before categories or fixed batches.
 Preset limits control campaign time; custom goals take priority.
 Dashboard agents repeat cycles until Stop, including custom goals. CLI users opt in

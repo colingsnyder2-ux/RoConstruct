@@ -31,17 +31,7 @@ append = research.append
 
 
 def history():
-    path = ROOT / "work" / "agent-memory" / "attempts.jsonl"
-    if not path.exists():
-        return []
-    rows = []
-    with path.open(encoding="utf-8") as stream:
-        for line in stream:
-            try:
-                rows.append(json.loads(line))
-            except ValueError:
-                continue
-    return rows
+    return research.journal_records(ROOT / "work" / "agent-memory" / "attempts.jsonl")
 
 
 def snapshot(client="2008-06", api=None):
@@ -57,7 +47,7 @@ def snapshot(client="2008-06", api=None):
         for row in functions:
             addr = row["addr"]
             source = ROOT / "src" / client / (addr + ".cpp")
-            if scores.get(addr, 0) >= 70 and source.exists():
+            if source.exists():
                 saved[addr] = {"score": scores[addr], "source": source.read_text(encoding="utf-8", errors="replace")}
     return [dict(row, **{key: saved.get(row["addr"], {}).get(key, default)
                         for key, default in (("score", 0), ("source", ""))}) for row in functions]
@@ -68,6 +58,7 @@ def plan(rows, max_size=512, profile="claude:default", records=None, client="200
     groups = defaultdict(list)
     from roc import libs
     versions = libs.recipe_versions()
+    functions = {row["addr"]: row for row in rows}
     for row in rows:
         if row.get("shape"):
             groups[row["shape"]].append(row)
@@ -108,8 +99,11 @@ def plan(rows, max_size=512, profile="claude:default", records=None, client="200
         key = (directives.get("lib") or directives.get("archive") or row.get("unit", "")) if area == "templates" else (
             "|".join(sorted(row["imports"])) if area == "imports" else row.get("shape") or row.get("unit", ""))
         recipe = (directives.get("lib") or directives.get("archive") or "").split()
-        evidence_hash = digest(source + versions.get(recipe[0], "")) if recipe else digest(source)
+        behavior_evidence = agent.function_evidence(row, functions)
+        evidence_hash = digest(source + (versions.get(recipe[0], "") if recipe else "") +
+                               json.dumps(behavior_evidence, sort_keys=True))
         targets.append(dict(row, source=source, area=area, priority=round(priority, 2), donors=donors[:3], evidence_hash=evidence_hash,
+                            behavior_evidence=behavior_evidence,
                             source_hash=digest(source), siblings=len(siblings), client=client, group=digest(client + ":" + area + ":" + key)[:16]))
     areas = []
     records = history() if records is None else records
@@ -198,11 +192,54 @@ STRATEGIES = (
 )
 
 
+def library_family(library):
+    from roc import libs
+    if library in libs.NAMES or library.startswith("Category:"):
+        return library
+    name = library.lower()
+    for prefix, family in (("xtp", "XTP (Codejock)"), ("g3d", "G3D"), ("ogre", "Ogre"),
+                           ("boost", "boost"), ("raknet", "RakNet"), ("lua", "Lua"),
+                           ("scintilla", "Scintilla"), ("mfc", "MFC"), ("atl", "ATL"),
+                           ("jpeg", "libjpeg"), ("libpng", "libpng"), ("zlib", "zlib"),
+                           ("wildmagic", "Wild Magic")):
+        if name.startswith(prefix):
+            return family
+    return library
+
+
+def attributed_families(rows):
+    """RTTI and exact rebuild anchors; matching neighbours are hints, not proof."""
+    from roc import libs
+    ordered = sorted(rows, key=lambda row: row["addr"])
+    labels, anchors = {}, {}
+    for row in ordered:
+        label = libs.library_of(row.get("unit", ""))
+        recipe = match.directives(row.get("source") or "").get("lib", "").split()
+        family = library_family(libs.RECIPES[recipe[0]]["src"]) if recipe and recipe[0] in libs.RECIPES else label
+        if row.get("score") == 100 and recipe and family in libs.NAMES + ["libjpeg", "libpng", "zlib", "Wild Magic"] and (row.get("size", 0) >= 64 or family == label):
+            label = family
+            anchors[row["addr"]] = family
+        labels[row["addr"]] = label
+    before, left = None, {}
+    for row in ordered:
+        left[row["addr"]] = before
+        before = anchors.get(row["addr"], before)
+    after = None
+    for row in reversed(ordered):
+        addr = row["addr"]
+        if labels[addr] == "Unlabeled (no RTTI nearby)" and left[addr] and left[addr] == after:
+            labels[addr] = after
+        after = anchors.get(addr, after)
+    return labels
+
+
 def library_campaigns(rows, client, records):
     """Offer source-backed libraries and broad evidence-ranked repair categories."""
     from roc import libs
     versions = libs.recipe_versions()
     groups = defaultdict(list)
+    attributed = attributed_families(rows)
+    assigned = set()
     for row in rows:
         recipe = match.directives(row.get("source") or "").get("lib", "").split()
         if recipe and recipe[0] in libs.RECIPES and row.get("kind", "code") == "code":
@@ -211,12 +248,31 @@ def library_campaigns(rows, client, records):
                 continue  # Proven misattribution; see CLAUDE.md.
             if not library.startswith("../"):  # Client source-tree recipes are not vendor libraries.
                 groups[library].append(dict(row, recipe=recipe[0]))
-    categories = [row for row in rows if not match.directives(row.get("source") or "").get("lib")]
+                assigned.add(row["addr"])
+    for row in rows:
+        family = attributed[row["addr"]]
+        if row["addr"] not in assigned and family not in (
+                libs.OTHER, "Unlabeled (no RTTI nearby)", "Roblox engine (RBX)") and row.get("kind", "code") == "code":
+            if client == "2008-06" and family == "Wild Magic":
+                continue
+            groups[family].append(dict(row, recipe="", attribution="RTTI or matched neighbours"))
+            assigned.add(row["addr"])
+    categories = [row for row in rows if row["addr"] not in assigned and not match.directives(row.get("source") or "").get("lib")]
     for area in plan(categories, max_size=0, records=[], client=client)["areas"]:
         groups["Category: " + area["title"]].extend(dict(row, recipe="") for row in area["targets"])
     campaigns = []
     for library, members in groups.items():
-        targets = [row for row in members if row.get("score", 0) < 100]
+        targets = [dict(row, baseline_hash=digest(row.get("source") or ""),
+                        target_revision=digest(json.dumps({k: v for k, v in row.items() if k != "source"}, sort_keys=True) +
+                                               versions.get(row["recipe"], "")))
+                   for row in members if row.get("score", 0) < 100]
+        for row in targets:
+            trials = [r for r in records if r.get("kind") == "trial" and r.get("client") == client and
+                      row["addr"] in (r.get("addresses") or []) and
+                      r.get("baseline_hash", r.get("source_hash")) == row["baseline_hash"] and
+                      r.get("target_revision", row["target_revision"]) == row["target_revision"]]
+            row["trial_visits"] = len(trials)
+        targets.sort(key=lambda row: (row["trial_visits"], -row.get("size", 0)))
         if not targets:
             continue
         revision = digest("\n".join(sorted(row["addr"] + str(row.get("score", 0)) +
@@ -227,7 +283,7 @@ def library_campaigns(rows, client, records):
         for strategy in range(len(STRATEGIES)):
             trials = [r for r in previous if r.get("profile") == "library-strategy-%d" % strategy and
                       r.get("outcome") in ("improved", "no_gain")]
-            if trials and trials[-1]["outcome"] == "no_gain":
+            if trials and trials[-1]["outcome"] == "no_gain" and trials[-1].get("tested_hypotheses", 0) >= 2:
                 continue
             available.append((len(trials), strategy))
         if not available:
@@ -235,12 +291,42 @@ def library_campaigns(rows, client, records):
         timed = [r for r in records if r.get("kind") == "library_campaign" and r.get("client") == client
                  and r.get("library") == library and r.get("elapsed_seconds", 0) > 0 and "exacts_gained" in r][-20:]
         exact_rate = 60 * sum(r["exacts_gained"] for r in timed) / max(60, sum(r["elapsed_seconds"] for r in timed))
-        campaigns.append(dict(client=client, library=library, revision=revision,
-                              strategy=min(available)[1], visits=len(previous), targets=targets,
+        family = library_family(library)
+        campaigns.append(dict(client=client, library=library, family=family, revision=revision,
+                              family_visits=sum(r.get("client") == client and r.get("kind") == "library_campaign" and
+                                                library_family(r.get("library", "")) == family for r in records),
+                              strategy=min(available)[1], visits=sum(r.get("client") == client and
+                                  r.get("library") == library and r.get("kind") == "library_campaign"
+                                  for r in records), targets=targets,
                               verified_exacts_per_minute=exact_rate,
                               exact=sum(row.get("score") == 100 for row in members),
                               recipes=sorted({row["recipe"] for row in members if row["recipe"]})))
     return sorted(campaigns, key=lambda c: (c["visits"], -len(c["targets"]), c["library"]))
+
+
+def choose_campaign(candidates):
+    """Rotate across least-tried libraries without score or gain-rate bias."""
+    families = defaultdict(list)
+    for campaign in candidates:
+        families[(campaign.get("client"), campaign.get("family", library_family(campaign["library"])))].append(campaign)
+    visits = {key: max(c.get("family_visits", c["visits"]) for c in group) for key, group in families.items()}
+    family = random.choice([key for key in families if visits[key] == min(visits.values())])
+    pool = families[family]
+    return random.choice([c for c in pool if c["visits"] == min(item["visits"] for item in pool)])
+
+
+def campaign_results(campaign_id, records):
+    rows = [r for r in records if r.get("campaign_id") == campaign_id]
+    gains = {}
+    for row in rows:
+        receipt = row.get("receipt") or {}
+        if receipt.get("verified") and receipt.get("improved"):
+            score = receipt.get("stored", receipt.get("score", row.get("after", 0)))
+            for addr in row.get("addresses", []):
+                gains[addr] = max(gains.get(addr, 0), score)
+    hypotheses = {r["hypothesis"] for r in rows if r.get("kind") in ("trial", "research_run") and
+                  r.get("hypothesis") and r.get("outcome") in ("no_gain", "compile_failed") and not r.get("duplicate")}
+    return gains, len(hypotheses)
 
 
 def pull_sources(server, token, client, log):
@@ -302,6 +388,36 @@ def sourceable(recipe):
     return bool(here) and all(sourceable(dep) for dep in r.get("needs", []))
 
 
+def campaign_packet(campaign, folder, server, user):
+    """Ready source copies and commands; no model-side setup or discovery required."""
+    for row in campaign["targets"]:
+        path = folder / row["addr"] / (row["addr"] + ".cpp")
+        path.parent.mkdir(parents=True, exist_ok=True)
+        if row.get("source"):
+            path.write_text(row["source"], encoding="utf-8")
+        row["needs_source"] = not bool(row.get("source"))
+        row["behavior_evidence"] = agent.function_evidence(row, {item["addr"]: item for item in campaign["targets"]})
+        (path.parent / "task.json").write_text(json.dumps(dict(client=campaign["client"], addr=row["addr"],
+            area="campaign", profile="library-strategy-%d" % campaign.get("strategy", 0),
+            best_score=row.get("score", 0), campaign_id=folder.name,
+            baseline_hash=row.get("baseline_hash", digest(row.get("source") or "")),
+            target_revision=row.get("target_revision", ""))))
+        row["file"] = str(path)
+        row["check"] = '%s agent-check %s %s "%s" --hypothesis "describe change"' % (
+            agent.roc_command(), campaign["client"], row["addr"], path)
+        row["submit"] = '%s submit %s %s --file "%s" --server "%s" --user "%s"' % (
+            agent.roc_command(), campaign["client"], row["addr"], path, server, user)
+    campaign["research_commands"] = {
+        "list": agent.roc_command() + " research list",
+        "plan": agent.roc_command() + " research plan NAME",
+        "pilot": agent.roc_command() + ' research run NAME --client ' + campaign['client'] + ' --limit 1 --campaign-id ' + folder.name + ' --server "' + server + '"',
+        "background": agent.roc_command() + ' research run NAME --client ' + campaign['client'] + ' --background --campaign-id ' + folder.name + ' --server "' + server + '"',
+        "status": agent.roc_command() + " research status NAME --client " + campaign["client"],
+        "resume": "Rerun the same background command; journals skip completed trials.",
+    }
+    (folder / "campaign.json").write_text(json.dumps(campaign, indent=2), encoding="utf-8")
+
+
 def library_cycle(server, user, token, cli, model, minutes, log, client, slot=None, claimed=None, claim_lock=None):
     if not 1 <= minutes <= 600:
         raise ValueError("Minutes must be 1-600")
@@ -318,8 +434,7 @@ def library_cycle(server, user, token, cli, model, minutes, log, client, slot=No
     shared = agent_memory.shared(server, token, user, upload=True)
     records = history() + shared.get("records", [])
     # Shared memory can contain the same local trial; count each campaign once.
-    records = list({(r.get("date"), r.get("client"), r.get("library"), r.get("profile")): r
-                    for r in records if r.get("kind") == "library_campaign"}.values())
+    records = list({json.dumps(r, sort_keys=True): r for r in records}.values())
     choices = [campaign for name in names for campaign in library_campaigns(snapshot(name, api), name, records)]
     if not choices:
         log("No fresh library campaign available; falling back to ranked repair batches.")
@@ -328,16 +443,7 @@ def library_cycle(server, user, token, cli, model, minutes, log, client, slot=No
     if not choices:
         log("No library campaign has its vendor source on this PC; falling back to ranked repair batches.")
         return None
-    choices = [c for c in choices if c["recipes"]] or choices
-    best_rate = max(c["verified_exacts_per_minute"] for c in choices)
-    ranked = [c for c in choices if c["verified_exacts_per_minute"] == best_rate]
-    visits = min(c["visits"] for c in ranked)
-    fresh = [c for c in ranked if c["visits"] == visits]
-    # Explore unfinished categories; favor stronger baselines without always picking the biggest library.
-    def choose(candidates):
-        return random.choices(candidates, weights=[1 + 100 * sum(95 <= row.get("score", 0) < 100 for row in c["targets"]) /
-                                                    len(c["targets"]) + sum(row.get("score", 0) for row in c["targets"]) /
-                                                    len(c["targets"]) for c in candidates], k=1)[0]
+    choices = [c for c in choices if not c["library"].startswith("Category:")] or choices
     with (claim_lock or CLAIM_LOCK):
         # Libraries another loop or PC started recently and has not finished: pick something else.
         now = datetime.now(timezone.utc)
@@ -348,9 +454,12 @@ def library_cycle(server, user, token, cli, model, minutes, log, client, slot=No
                 and (now - datetime.fromisoformat(r["date"])).total_seconds() < r.get("elapsed_seconds", minutes * 60)
                 and done.get((r.get("client"), r.get("library")), "") < r["date"]}
         busy |= claimed or set()
-        pool = ([c for c in fresh if (c["client"], c["library"]) not in busy]
-                or [c for c in choices if (c["client"], c["library"]) not in busy] or fresh)
-        campaign = choose(pool)
+        busy_families = {(name, library_family(library)) for name, library in busy}
+        pool = [c for c in choices if (c["client"], c["family"]) not in busy_families]
+        if not pool:
+            log("All eligible campaigns are busy; waiting for a free library.")
+            return dict(attempted=0, matched=0, improved=0, errors=0)
+        campaign = choose_campaign(pool)
         if claimed is not None:
             claimed.add((campaign["client"], campaign["library"]))
         append(ROOT / "work" / "agent-memory" / "attempts.jsonl",
@@ -364,7 +473,7 @@ def library_cycle(server, user, token, cli, model, minutes, log, client, slot=No
     seeded = materialize_campaign_sources(campaign)
     folder = ROOT / "work" / "agent-campaigns" / uuid.uuid4().hex[:12]
     folder.mkdir(parents=True)
-    (folder / "campaign.json").write_text(json.dumps(campaign, indent=2), encoding="utf-8")
+    campaign_packet(campaign, folder, server, user)
     log("Automatic campaign: %s · %s · %d open, %d exact attributed functions · strategy %d" %
         (selected, campaign["library"], len(campaign["targets"]), campaign["exact"], campaign["strategy"] + 1))
     if seeded:
@@ -372,7 +481,8 @@ def library_cycle(server, user, token, cli, model, minutes, log, client, slot=No
     brief = slot is not None and slot % 2 == 0
     prompt = (("Read CLAUDE.md and docs/AGENT_GUIDE.md. Client: %s. Library/category: %s.\n"
         "Use evidence in %s. Run commands as `%s <command>`. Submit improvements to %s as %s.\n"
-        "Pick closest proven mismatches first; one hypothesis, small pilot, then fan out winners.\n"
+        "Follow target order: least-tried evidence first, biggest unresolved functions next; no near-miss priority.\n"
+        "One hypothesis, small pilot, then fan out winners.\n"
         "Search relevant research/log.jsonl and prior trials; no unchanged rejected grids.\n"
         "Use research/recipes.json grid/fanout; generated units through libs.add_unit.\n"
         "No unrelated infrastructure edits; no subagents. Stop after two losing hypotheses.\n"
@@ -382,6 +492,7 @@ def library_cycle(server, user, token, cli, model, minutes, log, client, slot=No
         agent.memory_prompt(agent.memory(shared), selected, campaign["library"])) if brief else
         ("Read CLAUDE.md and docs/AGENT_GUIDE.md. Experimental automatic research campaign.\n"
         "Finish as many unresolved functions in this library/category as evidence permits, across all sizes.\n"
+        "Follow target order: least-tried evidence first, biggest unresolved functions next, including low-score non-exacts; no near-miss priority.\n"
         "Choose the most promising subcategory, targets and experiments yourself from the campaign evidence.\n"
         "The suggested strategy is a starting point; replace it when a different route has stronger evidence.\n"
         "Use one coherent campaign; do not spawn subagents or unrelated workers.\n"
@@ -401,7 +512,9 @@ def library_cycle(server, user, token, cli, model, minutes, log, client, slot=No
         "build prelude/import context and observed template types. Inspect mismatches, propose one hypothesis,\n"
         "pilot it on representative sources, then fan out winning configurations across the whole family.\n"
         "Do not merely replay generic flags or sweep unchanged recipes. Require new evidence for rejected variants.\n"
-        "Prefer compiler-only research grid/fanout recipes; record experiments in research/recipes.json, not new Python scripts.\n"
+        "Prefer compiler-only research grid/fanout recipes; record experiments in research/recipes.json.\n"
+        "You may create reusable helper scripts under work/agent-tools/ and suggest them through shared memory;\n"
+        "never hand-edit tools/ or clients/.\n"
         "Generated authentic units must go through libs.add_unit. Never hand-edit tools/ or clients/.\n"
         "You may edit research/recipes.json, evidence-backed recipes in roc/libs.py, src/ for this client,\n"
         "this campaign folder and append-only work/agent-memory/attempts.jsonl. No unrelated infrastructure edits.\n"
@@ -412,8 +525,17 @@ def library_cycle(server, user, token, cli, model, minutes, log, client, slot=No
         "Campaign evidence file: " + str(folder / "campaign.json") + "\n" +
         agent.memory_prompt(agent.memory(shared), selected, campaign["library"])))
     # Weak models read the memory JSON above as the whole message and wait for a task: restate it last.
+    prompt += ("\nSetup already complete. Target files and check/submit commands are in campaign.json. "
+               "Use those copies; needs_source targets require authentic source recovery first. "
+               "Targets sort by least-tried current evidence, then largest size. Move past exhausted functions. "
+               "Use agent-check for every experiment so trials are journaled. "
+               "Do not run config, pull, client-fetch or analyze again. "
+               "Research grid/fanout execution is available via `research run NAME`; NAME is a recipe key, "
+               "not an operation. Read research_commands in campaign.json. Pilot one source first. "
+               "For long runs use --background, check `research status NAME` once, then do independent work. "
+               "Never wait in polling loops. Append memory via agent_memory.append_record, not raw file writes.\n")
     prompt += ("\n\nTASK (start now, do not wait for more input): improve unresolved %s functions in %s.\n"
-               "First step: read %s, pick the closest mismatch, and run `%s check` on it.\n" %
+               "First step: read %s, pick the first target, and use its journaled check command after preparing source. CLI: %s.\n" %
                (selected, campaign["library"], folder / "campaign.json", agent.roc_command()))
     log("Prompt mode: %s." % ("simple" if brief else "evidence-rich"))
 
@@ -439,7 +561,8 @@ def library_cycle(server, user, token, cli, model, minutes, log, client, slot=No
                       latest.call("/v1/sources?scores=1&client=" + selected, timeout=120)}
         except (RuntimeError, OSError):
             scores = {}
-        gains = {addr: score for addr, score in scores.items() if score > baseline.get(addr, 100)}
+        observed = {addr: score for addr, score in scores.items() if score > baseline.get(addr, 100)}
+        gains, _ = campaign_results(folder.name, history())
         for addr, score in gains.items():
             if score <= reported.get(addr, 100):
                 continue
@@ -454,17 +577,17 @@ def library_cycle(server, user, token, cli, model, minutes, log, client, slot=No
                 log("%s %s %s%% → %s%% · server verified%s" %
                     (selected, addr, reported[addr], score, " exact" if score == 100 else ""))
             reported[addr] = score
-        exact = sum(score == 100 and baseline[addr] < 100 for addr, score in gains.items())
+        exact = sum(score == 100 for score in gains.values())
         improved = len(gains) - exact
         row = dict(event="benchmark", workers=1, completed=len(gains), per_minute=round(
             len(gains) * 60 / max(time.monotonic() - started, 1), 1), matched=exact,
-            improved=improved, errors=0, server_gains=True)
+            improved=improved, errors=0, campaign_receipts=True, observed_server_gains=len(observed))
         if slot is not None:
             row["slot"] = slot
         if log is print and os.environ.get("ROC_GUI_EVENTS"):
             print("ROC_EVENT " + json.dumps(row), flush=True)
         else:
-            log("Campaign benchmark: %d server gains · %d exact · %d improved" %
+            log("Campaign benchmark: %d campaign receipts · %d exact · %d improved" %
                 (len(gains), exact, improved))
 
     def benchmark_loop():
@@ -480,20 +603,22 @@ def library_cycle(server, user, token, cli, model, minutes, log, client, slot=No
         ticker.join(timeout=2)
     benchmark()
     after = {row["addr"]: row for row in api.call("/v1/sources?scores=1&client=" + selected, timeout=120)}
-    gains = [row for addr, row in after.items() if row.get("score", 0) > baseline.get(addr, 100)]
-    # Snapshot changes are server gains during this window, not proof of agent authorship.
+    observed = [row for addr, row in after.items() if row.get("score", 0) > baseline.get(addr, 100)]
+    gains, tested = campaign_results(folder.name, history())
     record = dict(kind="library_campaign", date=datetime.now(timezone.utc).isoformat(), client=selected,
                   library=campaign["library"], cohort=campaign["revision"], profile="library-strategy-%d" % campaign["strategy"],
-                  outcome="error" if code else "improved" if gains else "no_gain",
-                  gains=len(gains), addresses=[row["addr"] for row in gains], evidence=str(folder))
-    record.update(exacts_gained=sum(row["score"] == 100 for row in gains),
+                  outcome="error" if code else "improved" if gains else "no_gain" if tested >= 2 else "incomplete",
+                  gains=len(gains), addresses=list(gains), evidence=str(folder), tested_hypotheses=tested,
+                  observed_server_gains=len(observed), attribution="campaign receipts")
+    record.update(exacts_gained=sum(score == 100 for score in gains.values()),
                   elapsed_seconds=time.monotonic() - started)
     append(ROOT / "work" / "agent-memory" / "attempts.jsonl", record)
     (folder / "summary.json").write_text(json.dumps(record, indent=2), encoding="utf-8")
     agent_memory.shared(server, token, user, upload=True)
-    log("Library campaign finished: %d server score gains observed; %s" % (len(gains), record["outcome"]))
-    return dict(attempted=len(campaign["targets"]), matched=sum(row["score"] == 100 for row in gains),
-                improved=sum(row["score"] < 100 for row in gains), errors=int(bool(code)))
+    log("Library campaign finished: %d receipt-backed gains; %d server gains observed; %s" %
+        (len(gains), len(observed), record["outcome"]))
+    return dict(attempted=len(campaign["targets"]), matched=sum(score == 100 for score in gains.values()),
+                improved=sum(score < 100 for score in gains.values()), errors=int(bool(code)))
 
 
 def run(server, user, token=None, cli="claude", model=None, workers=2, jobs=24, max_size=512,
@@ -575,6 +700,7 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
     deadline = time.monotonic() + minutes * 60
     event_lock, condition = threading.Lock(), threading.Condition()
     totals = {"attempted": 0, "matched": 0, "improved": 0, "errors": 0}
+    manual_targets = set()
 
     def event(kind, **fields):
         with event_lock:
@@ -642,10 +768,17 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
                     reuse(task, list(portfolio), tried[client])
             else:
                 pending = [task for task in active if task["before"] < 100]
-                if pending and (len(pending) >= 2 or individual) and time.monotonic() < deadline:
+                allow_individual = individual
+                if len(pending) == 1 and not individual and pending[0]["size"] >= 64:
+                    with condition:
+                        if not manual_targets:
+                            manual_targets.add((client, pending[0]["addr"]))
+                            allow_individual = True
+                if pending and (len(pending) >= 2 or allow_individual) and time.monotonic() < deadline:
                     tried_route = True
                     event("stage", slot=slot, message="Model repair · %s · %d targets · %s" % (area["title"], len(pending), cli))
                     assignments = [{"addr": t["addr"], "unit": t["unit"], "file": t["path"], "score": t["before"],
+                                    "behavior_evidence": t.get("behavior_evidence", {}),
                                     "check": agent.roc_command() + " agent-check " + client + " " + t["addr"] +
                                      ' "' + t["path"] + '" --hypothesis "describe change"'} for t in pending]
                     brief = (slot + strategy) % 2 == 0
@@ -653,7 +786,7 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
                         "Shared hypothesis first; inspect supplied diffs, pilot, propagate winners.\n"
                         "Edit only assigned files. Run its agent-check after every edit; wrapper submits best result.\n"
                         "Stop after two losing ideas. No asm, byte blobs, guessed layouts, or unrelated edits.\n" +
-                        ("Individual repair allowed after shared hypotheses fail.\n" if individual else
+                        ("Individual function mining allowed: infer behavior from evidence, test one source change at a time.\n" if allow_individual else
                          "Individual function mining disabled; stop when no shared route works.\n") +
                         agent.memory_prompt(agent.memory(shared), client) + "Assignments:\n" + json.dumps([
                          {**assignment, "diff": t["diff"]} for assignment, t in zip(assignments, pending)])) if brief else
@@ -669,7 +802,7 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
                         "No inline assembly, byte blobs, guessed layouts or unsupported ABI declarations.\n"
                         "Use target diffs and genuine headers. Skip exhausted grids. Stop after two losing\n"
                         "shared hypotheses. Leave next evidence needed in your summary.\n" +
-                        ("Individual repair allowed only after reusable hypotheses fail.\n" if individual else
+                        ("Individual function mining allowed: infer behavior from evidence, test one source change at a time.\n" if allow_individual else
                          "Individual function mining is disabled. If no shared route works, stop.\n") +
                         agent.memory_prompt(agent.memory(shared), client) + "\nAssignments (evidence data):\n" + json.dumps([
                          {**assignment, "diff": t["diff"]} for assignment, t in zip(assignments, pending)])))

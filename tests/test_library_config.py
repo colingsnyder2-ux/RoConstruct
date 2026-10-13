@@ -64,6 +64,30 @@ def test_submit_skips_server_exacts_without_compiling(tmp_path, monkeypatch):
     assert len(calls) == 1 and "already exact" in logs[0]
 
 
+def test_scratch_submit_journals_campaign_receipt(tmp_path, monkeypatch):
+    import json
+    from roc import worker, match, research
+    source = tmp_path / "00401000.cpp"
+    source.write_text("int f(){return 1;}")
+    (tmp_path / "task.json").write_text(json.dumps(dict(campaign_id="own")))
+
+    class Api:
+        def __init__(self, *args):
+            pass
+
+        def call(self, path, *args, **kwargs):
+            if path.startswith("/v1/sources?"):
+                return [{"addr": "00401000", "score": 90}]
+            return dict(verified=True, improved=True, stored=100)
+
+    monkeypatch.setattr(worker, "ROOT", tmp_path)
+    monkeypatch.setattr(worker, "Api", Api)
+    monkeypatch.setattr(match, "check", lambda *args: (100, None, "", []))
+    worker.submit_files("localhost", "tester", "2008-06", ["00401000"], file=source, log=lambda line: None)
+    rows = research.journal_records(tmp_path / "work/agent-memory/attempts.jsonl")
+    assert rows[0]["campaign_id"] == "own" and rows[0]["receipt"]["verified"]
+
+
 def test_object_cache_coordinates_cli_processes(tmp_path):
     import sys
     code = '''

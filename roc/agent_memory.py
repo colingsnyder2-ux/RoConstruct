@@ -14,17 +14,10 @@ def context():
 
 
 def records():
+    from roc import research
     path = ROOT / "work" / "agent-memory" / "attempts.jsonl"
-    rows = []
-    if path.exists():
-        for line in path.read_text(encoding="utf-8").splitlines():
-            try:
-                row = json.loads(line)
-                if isinstance(row, dict) and row.get("client", "2008-06") in clients.load():
-                    rows.append(row)
-            except ValueError:
-                continue
-    return rows
+    return [row for row in research.journal_records(path) if row.get("client", "2008-06") in clients.load()]
+
 
 
 def portable(row):
@@ -32,7 +25,9 @@ def portable(row):
         "group", "group_cohort", "cohort", "hypothesis", "change", "source_hash", "before_hash",
         "after_hash", "compiler", "flags", "before", "after", "candidate", "outcome", "gains",
         "exacts_gained", "elapsed_seconds", "next", "cli", "server_stored", "receipt", "error", "diff", "symbol",
-        "recipe", "tried", "local_exact", "exhausted", "object_hash", "target_hash"}
+        "recipe", "tried", "local_exact", "exhausted", "object_hash", "target_hash",
+        "campaign_id", "baseline_hash", "target_revision", "tested_hypotheses",
+        "observed_server_gains", "attribution"}
     result = {k: v for k, v in row.items() if k in allowed}
     for key, value in result.items():
         if isinstance(value, str):
@@ -46,6 +41,13 @@ def portable(row):
 def _rejected(error):
     """The server refused this content (not: offline, or a server without the endpoint)."""
     return getattr(error, "category", "") == "bad_request" and "unknown endpoint" not in str(error)
+
+
+def append_record(row):
+    from roc import research
+    path = ROOT / "work" / "agent-memory" / "attempts.jsonl"
+    research.append(path, row)
+    return row
 
 
 def shared(server=None, token=None, user=None, upload=False):

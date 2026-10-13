@@ -351,7 +351,20 @@ def run_agent(cli, prompt, model=None, minutes=20, log=print, goal=False, switch
               "Optimize tokens and wall time. Use supplied context and live-server targets first. "
               "Do not reread whole docs, logs or source trees without a specific need. "
               "Batch independent reads; use rg and bounded excerpts. Save large output to a log. "
+              "Use supplied commands verbatim. Check a command's --help once before inventing options. "
+              "Compiler experiments use // roc-flags: and // roc-cl: in the candidate source; "
+              "do not add unsupported --flags or --client arguments to check/agent-check/pull. "
               "Reuse cached compiler results and prior trials; skip already-exact targets. "
+              "Infer likely function behavior from current source, target instructions, caller/callee names, "
+              "strings and imports. State likely purpose plus one concrete supporting fact briefly. "
+              "Use that hypothesis to propose C++ control/data flow, then test one change against target bytes. "
+              "Behavior is a hypothesis, not proof; never guess field offsets, argument sizes or ABI. "
+              "If evidence contradicts it, discard the hypothesis and preserve best source. "
+              "When stuck, consider two materially different approaches, not more variants of the same flags. "
+              "Connect caller behavior, exact siblings and authentic vendor templates; consider different C++ "
+              "expressions, control flow, evaluation order or source reuse supported by the evidence. "
+              "Choose the cheapest falsifiable experiment. Record rejected ideas; do not replay them unchanged. "
+              "Be creative in source strategy, precise in byte-level validation. "
               "One evidence-backed hypothesis, small pilot, then fan out winners. "
               "Background long commands; avoid idle polling and duplicate submissions. "
               "After two losing hypotheses, report missing evidence and move on. "
@@ -569,6 +582,19 @@ def function_evidence(row, functions):
     return evidence
 
 
+def function_evidence(row, functions):
+    """Observed facts for a behavior hypothesis; never inferred layouts or ABIs."""
+    evidence = {key: row[key][:8] if isinstance(row[key], list) else row[key]
+                for key in ("calling_convention", "stack_args", "this_reads", "this_writes", "virtual_slots",
+                            "imports", "strings", "constants", "global_reads", "global_writes") if row.get(key)}
+    for key in ("callers", "call_targets"):
+        evidence[key] = [{"addr": addr, "unit": functions.get(addr, {}).get("unit", "unknown")}
+                         for addr in row.get(key, [])[:4]]
+    if "strings" in evidence:
+        evidence["strings"] = [value[:160] for value in evidence["strings"]]
+    return evidence
+
+
 def goal_targets(server, token, client, shared):
     from roc import agent_auto
     records = agent_auto.history() + shared.get("records", [])
@@ -724,8 +750,10 @@ def open_session(cli, goal, model=None):
 def open_setup(cli):
     """New terminal that installs the CLI if needed, then starts it so the person can sign in."""
     if cli not in CLIS:
-        raise ValueError("Choose claude or codex")
-    steps = ([] if shutil.which(cli) else ["npm install -g " + PACKAGES[cli]]) + [cli]
+        raise ValueError("Choose claude, codex or opencode")
+    # OpenCode signs in through its own auth command; the others open their TUI.
+    sign_in = ["opencode auth login"] if cli == "opencode" else [cli]
+    steps = ([] if shutil.which(cli) else ["npm install -g " + PACKAGES[cli]]) + sign_in
     if os.name == "nt":
         return _terminal(["cmd", "/k", " && ".join(steps)])
     return _terminal(["sh", "-c", " && ".join(steps) + "; exec sh"])

@@ -1322,8 +1322,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
             failure_reason = "api"
         else:
             failure_reason = "worker_error"
-        if (failure_reason == "cloud_budget" or (providers.parse_model(model)[0] == "chatgpt"
-                and failure_reason == "provider_auth")) and provider_options is not None:
+        if failure_reason in ("cloud_budget", "provider_auth") and provider_options is not None:
             provider_options["budget_exhausted"] = True
         if getattr(error, "category", "") == "provider_circuit":
             provider, _remote, _config = providers.parse_model(model)
@@ -1506,6 +1505,14 @@ def submit_files(server, user, client, addrs=None, token=None, log=print, file=N
                                                        "score": score, "source": text})
         except ApiFailure as error:
             return "%s  not accepted: %s" % (p.stem, error)
+        task_path = p.parent / "task.json"
+        if task_path.exists():
+            from roc import research
+            task = json.loads(task_path.read_text())
+            research.append(ROOT / "work" / "agent-memory" / "attempts.jsonl",
+                            dict(kind="campaign_submission", date=time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+                                 client=client, addresses=[p.stem], campaign_id=task.get("campaign_id"),
+                                 source_hash=research.digest(text), after=r.get("stored", score), receipt=r))
         return "%s  %3d%%  %s" % (p.stem, r["stored"], "new best" if r["improved"] else "server already has this or better")
     with ThreadPoolExecutor(max_workers=3) as pool:
         for line in pool.map(upload, sorted(checked, key=lambda item: item[0].stem)):

@@ -593,13 +593,72 @@ def cmd_research(a):
         return
     if a.name not in recipes:
         sys.exit("Unknown recipe %s. Run: roc research list" % a.name)
+    selected = getattr(a, "client", None) or recipes[a.name].get("client", "2008-06")
+    if selected != "all" and selected not in clients.load():
+        sys.exit("Unknown selected research client: " + selected)
+    folder = ROOT / "work" / "research-jobs" / a.name
+    if selected != "2008-06":
+        folder /= selected
+    if a.action == "status":
+        states = sorted(folder.glob("*.json"), key=lambda path: path.stat().st_mtime)
+        print(json.dumps(research.job_status(states[-1])) if states else json.dumps({"state": "not_started"}))
+        return
     print(json.dumps(research.plan(a.name), indent=2))
     if a.action == "plan":
         return
     if recipes[a.name].get("result", {}).get("status") == "rejected" and not a.force:
         sys.exit("Recipe %s is recorded as rejected: %s Use --force with new evidence." %
                  (a.name, recipes[a.name].get("next", "")))
-    research.run(a.name, a.server, a.jobs, a.limit)
+    if a.background:
+        import uuid
+        try:
+            with research.job_lock(folder / ".launch.lock"):
+                existing = research.active_job(folder)
+                if existing:
+                    print(json.dumps({"already_running": True, **existing}))
+                    return
+                state = folder / (uuid.uuid4().hex + ".json")
+                state.parent.mkdir(parents=True, exist_ok=True)
+                log_path = state.with_suffix(".log")
+                command = [sys.executable, "-u", str(ROOT / "roc.py"), "research", "run", a.name,
+                           "--jobs", str(a.jobs), "--job-state", str(state), "--client", selected]
+                if a.server:
+                    command += ["--server", a.server]
+                if a.limit:
+                    command += ["--limit", str(a.limit)]
+                if a.force:
+                    command += ["--force"]
+                if getattr(a, "campaign_id", None):
+                    command += ["--campaign-id", a.campaign_id]
+                state.write_text(json.dumps({"state": "starting", "launcher_pid": os.getpid(), "log": str(log_path)}))
+                try:
+                    with log_path.open("w") as stream:
+                        process = subprocess.Popen(command, cwd=ROOT, stdout=stream, stderr=subprocess.STDOUT,
+                                                   stdin=subprocess.DEVNULL,
+                                                   creationflags=subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0)
+                except OSError as error:
+                    state.write_text(json.dumps({"state": "failed", "error": str(error)}))
+                    raise
+                state.with_suffix(".pid").write_text(str(process.pid))
+                print(json.dumps({"pid": process.pid, "state_file": str(state), "log": str(log_path),
+                                  "status": "roc research status " + a.name + " --client " + selected,
+                                  "resume": "roc research run " + a.name + " --background --client " + selected}))
+        except research.ResearchJobBusy as error:
+            print(json.dumps({"already_running": True, "detail": str(error),
+                              "status": "roc research status " + a.name}))
+        return
+    if a.job_state:
+        state = Path(a.job_state)
+        state.write_text(json.dumps({"state": "running", "pid": os.getpid(), "log": str(state.with_suffix(".log"))}))
+    try:
+        result = research.run(a.name, a.server, a.jobs, a.limit,
+                              campaign_id=getattr(a, "campaign_id", None), client=selected)
+    except BaseException as error:
+        if a.job_state:
+            state.write_text(json.dumps({"state": "failed", "error": str(error), "log": str(state.with_suffix(".log"))}))
+        raise
+    if a.job_state:
+        state.write_text(json.dumps({"state": "done", "result": result, "log": str(state.with_suffix(".log"))}))
 
 
 def cmd_donor(a):
@@ -1718,13 +1777,17 @@ def main(argv=None):
         (["action"], {"choices": ["pack", "index", "fetch"]}),
         (["value"], {"nargs": "?", "help": "index: Drive folder link; fetch: comma-separated trees (default all)"}))
     cmd("research", cmd_research, "run named compiler-only research recipes (research/recipes.json)",
-        (["action"], {"choices": ["list", "plan", "run", "audit", "note", "log", "capture-units"]}),
+        (["action"], {"choices": ["list", "plan", "run", "status", "audit", "note", "log", "capture-units"]}),
         (["name"], {"nargs": "?", "help": "recipe name (audit: folder; note: title; log: entry count; capture-units: client)"}),
         (["more"], {"nargs": "*", "help": "audit: more folders; note: the text"}),
         (["--server"], {"help": "group server (default: saved setting)"}),
         (["--jobs"], {"type": int, "default": 1, "choices": range(1, 9), "help": "compile prefetch"}),
         (["--limit"], {"type": int, "help": "first N targets/sources only (pilot)"}),
-        (["--force"], {"action": "store_true", "help": "rerun a recipe recorded as rejected"}))
+        (["--force"], {"action": "store_true", "help": "rerun a recipe recorded as rejected"}),
+        (["--background"], {"action": "store_true", "help": "start resumable run and return immediately"}),
+        (["--client"], {"help": "research only this client, or all registered clients (default: recipe client)"}),
+        (["--campaign-id"], {"help": "attribute verified receipts to this agent campaign"}),
+        (["--job-state"], {"help": argparse.SUPPRESS}))
     cmd("donor", cmd_donor, "name client functions byte-identical to RBXGS WebService.dll (OpenRBX PDB names)",
         (["client"], {"nargs": "?", "default": "all"}))
     cmd("lint", cmd_lint, "check src/<client> files, function boundaries and verified-data coverage",

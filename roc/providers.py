@@ -128,6 +128,7 @@ class CloudGate:
         self.concurrency = max(1, int(concurrency or 1))
         self.failures = max(1, int(failures or 3))
         self._locks, self._failed, self._lock = {}, {}, threading.Lock()
+        self._disabled = set()
 
     def enter(self, provider):
         with self._lock:
@@ -135,15 +136,27 @@ class CloudGate:
                 raise ProviderError("provider_circuit", "%s circuit is open" % provider)
             lock = self._locks.setdefault(provider, threading.BoundedSemaphore(self.concurrency))
         lock.acquire()
+        with self._lock:
+            if self._failed.get(provider, 0) >= self.failures:
+                lock.release()
+                raise ProviderError("provider_circuit", "%s circuit is open" % provider)
         return lock
+
+    def disable(self, provider):
+        with self._lock:
+            self._disabled.add(provider)
+            self._failed[provider] = self.failures
 
     def done(self, provider, ok):
         with self._lock:
+            if provider in self._disabled:
+                return
             self._failed[provider] = 0 if ok else self._failed.get(provider, 0) + 1
 
     def reset(self, provider):
         with self._lock:
-            self._failed.pop(provider, None)
+            if provider not in self._disabled:
+                self._failed.pop(provider, None)
 
 
 def _read_config():
@@ -748,7 +761,10 @@ def generate(model, messages, options=None, state=None):
                 if (error.category != "provider_retry" or
                         (not options.get("retry_forever") and attempt >= int(options.get("retries", 2)))):
                     if gate and error.category != "cloud_budget":
-                        gate.done(provider, False)
+                        if error.category == "provider_auth":
+                            gate.disable(provider)
+                        else:
+                            gate.done(provider, False)
                     raise
                 retries += 1
                 delay = min(60, 0.5 * (2 ** min(attempt, 7)))

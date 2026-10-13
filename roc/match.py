@@ -734,9 +734,6 @@ def _object_lock(cache):
     with cache.with_suffix(".lock").open("a+b") as stream:
         if os.name == "nt":
             import msvcrt
-            if stream.tell() == 0:
-                stream.write(b"\0")
-                stream.flush()
             started = time.monotonic()
             while True:
                 stream.seek(0)
