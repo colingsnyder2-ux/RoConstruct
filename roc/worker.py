@@ -567,11 +567,16 @@ class Api:
         fresh = {src: files for src, files in fresh.items() if files}
         if not fresh:
             return
-        try:
-            self.call("/v1/units", {"user": payload.get("user"), "units": fresh}, timeout=60)
-        except ApiFailure as error:
-            if error.category in ("offline", "server_fail"):
-                return  # try again with the next submission
+        for attempt in range(3):  # a busy server can be slow; a submit without its unit is only rejected
+            try:
+                self.call("/v1/units", {"user": payload.get("user"), "units": fresh}, timeout=180)
+                break
+            except ApiFailure as error:
+                if error.category not in ("offline", "server_fail"):
+                    break  # old server without the endpoint, or the unit was refused: the submit will say why
+                if attempt == 2:
+                    raise ApiFailure(error.category, "could not upload the generated unit before submitting (%s)" % error)
+                time.sleep(2 * (attempt + 1))
         Api._pushed.update((self.server, src, rel) for src, files in fresh.items() for rel in files)
 
     def call(self, path, payload=None, timeout=60, request_id=None):
