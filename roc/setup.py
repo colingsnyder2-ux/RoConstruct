@@ -1161,14 +1161,12 @@ def _run(*args, timeout):
 
 
 def try_update(log=print, timeout=60):
-    """Fetch origin/main and fast-forward if clean and behind. Returns status."""
+    """Fetch origin/main and fast-forward if behind, re-applying local edits (--autostash). Returns status."""
     if not shutil.which("git"):
         return "update skipped: git not installed"
     if not (ROOT / ".git" / "HEAD").exists():
         return "update skipped: not a git checkout (run: roc update)"
     try:
-        if _run("diff", "--quiet", "HEAD", timeout=timeout).returncode != 0:
-            return "update skipped: local source edits present (commit them first)"
         if _run("fetch", "--quiet", "origin", "main", timeout=timeout).returncode != 0:
             return "update skipped: could not reach repository (working offline)"
         behind = _run("rev-list", "--count", "HEAD..origin/main",
@@ -1177,7 +1175,7 @@ def try_update(log=print, timeout=60):
             return "update skipped: could not compare versions (working as-is)"
         if int(behind.stdout.strip()) == 0:
             return "already current"
-        if _run("pull", "--ff-only", "--quiet", "origin", "main",
+        if _run("pull", "--ff-only", "--autostash", "--quiet", "origin", "main",
                timeout=timeout).returncode != 0:
             return "update skipped: fast-forward failed (working as-is)"
     except (OSError, subprocess.TimeoutExpired):

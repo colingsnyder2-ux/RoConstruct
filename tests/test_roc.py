@@ -2045,11 +2045,10 @@ def test_selfupdate():
     assert "git not installed" in run_case(None, [])
     with patch.object(Path, "exists", return_value=False):
         assert "not a git checkout" in run_case("git", [])
-    assert "local source edits" in run_case("git", [Done(1)])                       # diff --quiet
-    assert "offline" in run_case("git", [Done(0), Done(1)])                          # fetch fails
-    assert "current" in run_case("git", [Done(0), Done(0), Done(0, "0\n")])          # behind 0
-    assert run_case("git", [Done(0), Done(0), Done(0, "3\n"), Done(0)]) == "updated"  # pull ok
-    assert "as-is" in run_case("git", [Done(0), Done(0), Done(0, "3\n"), Done(1)])   # pull fails
+    assert "offline" in run_case("git", [Done(1)])                                    # fetch fails
+    assert "current" in run_case("git", [Done(0), Done(0, "0\n")])                   # behind 0
+    assert run_case("git", [Done(0), Done(0, "3\n"), Done(0)]) == "updated"  # pull ok
+    assert "as-is" in run_case("git", [Done(0), Done(0, "3\n"), Done(1)])   # pull fails
     assert "as-is" in run_case("git", [], raises=subprocess.TimeoutExpired("git", 1))
     assert "as-is" in run_case("git", [], raises=OSError("nope"))
 
