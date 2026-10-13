@@ -85,7 +85,7 @@ def test_regression_is_rolled_back_and_released(tmp_path, monkeypatch):
 def test_commands_read_prompt_from_stdin():
     claude = agent.command("claude", "haiku")
     assert claude[:4] == ["claude", "-p", "--model", "haiku"] and "acceptEdits" in claude and "stream-json" in claude
-    assert any(arg.startswith("Read,Grep,Glob,Edit,Write,Bash(") for arg in claude)
+    assert "Read,Grep,Glob,Edit,Write,Bash,PowerShell" in claude
     assert agent.command("codex")[-1] == "-"
     assert agent.command("opencode", "opencode/big-pickle")[-2:] == ["-m", "opencode/big-pickle"]
     lines = []
@@ -96,7 +96,7 @@ def test_commands_read_prompt_from_stdin():
 
 def test_goal_mode_allows_roc_commands_and_web(monkeypatch):
     tools = next(arg for arg in agent.command("claude", goal=True) if arg.startswith("Read,"))
-    assert "WebSearch" in tools and tools.endswith('roc.py *)') and "check" not in tools
+    assert "WebSearch" in tools and "Bash,PowerShell" in tools
     seen = []
     monkeypatch.setattr(agent, "run_agent", lambda cli, prompt, model, minutes, log, goal: seen.append((prompt, goal)))
     agent.run_goal("claude", "match RakNet in 2008-06", minutes=5, log=lambda *a: None)
@@ -129,6 +129,20 @@ def test_stream_events_become_console_lines():
     agent.show('{"type":"result","num_turns":7,"is_error":false}', lines.append)
     agent.show("plain text\n", lines.append)
     assert lines == ["Trying zlib.", "  > Bash roc check 2008-06 00401000", "Agent finished after 7 turns.", "plain text"]
+
+
+def test_slow_tool_calls_are_timed_and_remembered(tmp_path, monkeypatch):
+    import json
+    clock = iter([100.0, 310.0])
+    monkeypatch.setattr(agent.time, "monotonic", lambda: next(clock))
+    monkeypatch.setattr(agent, "SLOW_LOG", tmp_path / "slow.jsonl")
+    lines = []
+    agent.show(json.dumps({"type": "assistant", "message": {"content": [
+        {"type": "tool_use", "id": "t1", "name": "Bash", "input": {"command": "roc mass 2008-06"}}]}}), lines.append)
+    agent.show(json.dumps({"type": "user", "message": {"content": [
+        {"type": "tool_result", "tool_use_id": "t1", "content": "ok"}]}}), lines.append)
+    assert lines == ["  > Bash roc mass 2008-06", "  < 210.0s SLOW Bash roc mass 2008-06"]
+    assert agent.memory()["slow_commands"][0]["seconds"] == 210
 
 
 def test_codex_stream_hides_prompt_and_keeps_commands_results_errors():
