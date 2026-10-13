@@ -490,6 +490,7 @@
    "GLG3Dcpp/roc_line_c1ec18302c3703eb.cpp",
    "GLG3Dcpp/roc_line_eb2a2907090c8b55.cpp",
    "GLG3Dcpp/tesselate.cpp",
+   "roc_g3d_bmp_exception_38498d93767fe727.cpp",
    "roc_g3d_log_guard_18744d5ad0bb680e.cpp",
    "roc_unit_45931f30d1eceea5.cpp",
    "roc_unit_b6f0c9701eb28399.cpp"
@@ -1261,6 +1262,7 @@
    "roc_rbxscene_ctor_252e30df9e8b13f7.cpp",
    "roc_rbxscene_ctor_e0d00b9d50dc0b49.cpp",
    "roc_rbxscene_ctor_e74067c8b9e1763d.cpp",
+   "roc_rbxscene_destroyall_stock_7a06ef240f3628d2.cpp",
    "roc_rbxscene_fpfast_63a615e0f16e56ce.cpp"
   ]
  },
@@ -1471,7 +1473,10 @@
   "files": [
    "G3Dcpp/debugAssert.cpp",
    "GLG3Dcpp/Texture.cpp",
-   "GLG3Dcpp/VARArea.cpp"
+   "GLG3Dcpp/VARArea.cpp",
+   "roc_vrbxfont_compute_packed_458dceda9d4228a0.cpp",
+   "roc_vrbxfont_constructor_server_c5079e23e94144b0.cpp",
+   "roc_vrbxfont_from_file_7e346c652dd2a177.cpp"
   ]
  },
  "g3d-6.09-png-dll": {
@@ -1705,6 +1710,8 @@
    "roc_fork_97dc8a390b2b28e8.cpp",
    "roc_fork_ea71c50b47f88007.cpp",
    "roc_fork_fe0538e1034a8d62.cpp",
+   "roc_humanoid_head_helper_ad653ae437611735.cpp",
+   "roc_listener_vertex_buffer_28806614eb3a450c.cpp",
    "roc_local_visitor_c83fbe91eb3a0edc.cpp",
    "roc_ogre_resume_0dfdb9b464d9c5b7.cpp",
    "roc_ogre_resume_17f9ce717551bd70.cpp",
@@ -1713,6 +1720,11 @@
    "roc_ogre_resume_9c23d949851390da.cpp",
    "roc_ogre_resume_a514c3bb7ed458e9.cpp",
    "roc_ogre_resume_b2126d94dfadd044.cpp",
+   "roc_rbx_adorn_state_ctor_5b7c48b8c5421fef.cpp",
+   "roc_rbxscene_apply_animations_a7ba41ac8adad042.cpp",
+   "roc_rbxscene_populate_shadow_count_989700d72290bd34.cpp",
+   "roc_rbxscene_sky_plane_line_234565f8e0d3b9ea.cpp",
+   "roc_rbxscene_timed_no_viewport_8cefb7f930351b4e.cpp",
    "roc_rtti_d56a903776f2b6ff.cpp",
    "roc_sub_transform_2a4870813417745d.cpp",
    "roc_try_15110fb6a0b86d4e.cpp",
