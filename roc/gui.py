@@ -213,7 +213,7 @@ class Dashboard:
                              "analyzed": (ROOT / "work" / name / "functions.jsonl").exists()}
                             for name, row in sorted(registry.items())],
                 "providers": [{"name": name, "ready": providers.provider_ready(name),
-                               "auth": "chatgpt" if name == "chatgpt" else "api-key",
+                               "auth": "chatgpt" if name == "chatgpt" else "cli" if name == "opencode" else "api-key",
                                "models": ([model["slug"] for model in chatgpt.models(refresh=False)]
                                           if name == "chatgpt" else row.get("defaults", []))}
                               for name, row in providers.providers().items()],

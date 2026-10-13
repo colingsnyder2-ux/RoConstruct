@@ -146,6 +146,16 @@ def test_goal_shortlist_mixes_near_large_and_random(monkeypatch):
     assert any(row["score"] < 70 for row in targets)
 
 
+def test_function_evidence_resolves_neighbors_without_inventing_semantics():
+    row = dict(callers=["00401000"], call_targets=["00402000", "00403000"],
+               strings=["a"*300], this_writes=[16], calling_convention="callee")
+    evidence = agent.function_evidence(row, {"00401000": {"unit": "RBX::Load"}, "00402000": {"unit": "operator new"}})
+    assert evidence["callers"][0]["unit"] == "RBX::Load"
+    assert evidence["call_targets"][1]["unit"] == "unknown"
+    assert evidence["this_writes"] == [16] and len(evidence["strings"][0]) == 160
+    assert "likely_behavior" not in evidence
+
+
 def test_goal_seeds_candidate_and_supplies_runnable_commands(tmp_path, monkeypatch):
     from roc import agent_auto
     monkeypatch.setattr(agent, "ROOT", tmp_path)
@@ -170,6 +180,7 @@ def test_every_agent_prompt_requests_concision_and_fast_work(monkeypatch):
     for prompt in prompts:
         assert "Be very concise." in prompt and "Optimize tokens and wall time" in prompt
         assert "Reuse cached compiler results" in prompt and "Assigned target" in prompt
+        assert "two materially different approaches" in prompt and "Infer likely function behavior" in prompt
         assert "caveman" not in prompt.lower()
 
 
@@ -251,6 +262,8 @@ def test_session_and_setup_open_a_terminal(monkeypatch):
     assert opened[0][2:] == ["agent", "codex", "--interactive", "--goal", "match zlib", "--model", "gpt-5"]
     agent.open_setup("claude")
     assert "npm install -g @anthropic-ai/claude-code" in " ".join(opened[1])
+    agent.open_setup("opencode")
+    assert "opencode auth login" in " ".join(opened[2]) and "npm install -g opencode-ai" in " ".join(opened[2])
     for bad in (("bash", "x"), ("claude", " "), ("claude", "x" * 2001)):
         with pytest.raises(ValueError):
             agent.open_session(*bad)

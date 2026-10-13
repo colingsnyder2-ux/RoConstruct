@@ -8,6 +8,8 @@ import json
 import math
 import os
 import re
+import shutil
+import subprocess
 import threading
 import time
 import urllib.error
@@ -23,6 +25,9 @@ OLLAMA = "http://127.0.0.1:11434"
 
 BUILTINS = {
     "chatgpt": {"kind": "chatgpt-plan", "base_url": "https://api.openai.com/v1", "key_env": ""},
+    # Runs through the signed-in OpenCode CLI (`opencode run`): OpenCode Console
+    # and Go subscription allowances apply, and no API key is stored here.
+    "opencode": {"kind": "opencode-cli", "base_url": "", "key_env": ""},
     "nvidia": {"kind": "openai-chat", "base_url": "https://integrate.api.nvidia.com/v1",
                "key_env": "NVIDIA_API_KEY"},
     "deepseek": {"kind": "openai-chat", "base_url": "https://api.deepseek.com",
@@ -149,8 +154,8 @@ def _read_config():
         configured = {}
     out = {name: dict(value) for name, value in BUILTINS.items()}
     for name, value in configured.items():
-        if name == "chatgpt":
-            continue
+        if name in ("chatgpt", "opencode"):
+            continue  # Reserved for CLI sign-in providers; never user-overridden.
         if (isinstance(value, dict) and value.get("kind") in KINDS and _safe_base_url(value.get("base_url"))
                 and value.get("key_env")):
             out[name] = dict(value)
@@ -221,6 +226,8 @@ def _safe_base_url(value):
 def save_provider(name, kind, base_url, key_env, **extra):
     if name == "chatgpt":
         raise ValueError("chatgpt is reserved for official ChatGPT plan sign-in")
+    if name == "opencode":
+        raise ValueError("opencode is reserved for the signed-in OpenCode CLI; no key needed")
     if not re.match(r"^[A-Za-z][A-Za-z0-9_-]{0,63}$", name or ""):
         raise ValueError("provider name must be letters, digits, _ or -")
     if kind not in KINDS:
@@ -309,6 +316,8 @@ def provider_ready(name):
     if name == "chatgpt":
         from roc import chatgpt
         return chatgpt.ready()
+    if name == "opencode":
+        return bool(shutil.which("opencode"))
     config = _read_config().get(name)
     return bool(config and key_available(config.get("key_env", "")))
 
@@ -317,6 +326,8 @@ def credential_hint(model):
     provider, _remote, config = parse_model(model)
     if provider == "chatgpt":
         return "ChatGPT plan sign-in required: roc chatgpt login"
+    if provider == "opencode":
+        return "OpenCode CLI missing or not signed in: npm i -g opencode-ai, then opencode auth login"
     return "Cloud key missing: set %s (roc provider setup)" % config.get("key_env", "")
 
 
@@ -539,6 +550,85 @@ def _gemini(provider, remote, config, prompt, state, options):
                       request_id=headers.get("x-request-id", ""), finish_reason=candidate.get("finishReason", ""))
 
 
+def _opencode_failure(error):
+    """Map one `opencode run` error event to a safe ProviderError."""
+    status = error.get("status") if isinstance(error.get("status"), int) else None
+    message = str(error.get("message") or error.get("type") or "OpenCode request failed")
+    if status in (408, 429) or (status or 0) >= 500:
+        category = "provider_retry"
+    elif status in (401, 402, 403):
+        category = "provider_auth"  # quota/refusal: waiting will not clear it
+    else:
+        category = "provider_error"  # e.g. "Variant unavailable for provider/model: x"
+    return ProviderError(category, message, status)
+
+
+def _opencode_run(argv, prompt, timeout):
+    """One non-interactive `opencode run`; the whole process tree dies on timeout."""
+    process = subprocess.Popen(argv, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+                               stderr=subprocess.STDOUT, text=True,
+                               encoding="utf-8", errors="replace")
+    try:
+        output, _unused = process.communicate(prompt, timeout=max(5, int(timeout or 180)))
+    except subprocess.TimeoutExpired:
+        if os.name == "nt":
+            # npm shims are .cmd files: kill the whole tree, not just cmd.exe.
+            subprocess.run(["taskkill", "/T", "/F", "/PID", str(process.pid)], capture_output=True)
+        else:
+            process.kill()
+        try:
+            process.communicate(timeout=10)
+        except subprocess.TimeoutExpired:
+            pass
+        raise ProviderError("provider_retry", "OpenCode run timed out")
+    finally:
+        if process.stdout:
+            process.stdout.close()
+    return process.returncode, output or ""
+
+
+def _opencode_cli(provider, remote, config, prompt, state, options):
+    """Generate through the signed-in OpenCode CLI: plan allowances, no API key.
+
+    The CLI keeps its own sign-in (OpenCode Console; the Go subscription's
+    monthly allowances, e.g. $80/mo DeepSeek V4.1 Flash, apply automatically),
+    so RoConstruct never stores or handles its credentials.
+    """
+    exe = shutil.which("opencode")
+    if not exe:
+        raise ProviderError("provider_auth",
+                            "OpenCode CLI not found: npm i -g opencode-ai, then opencode auth login")
+    messages = _cloud_messages(prompt, state, options.get("history_keep_last", 2))
+    system = "\n\n".join(message["content"] for message in messages if message["role"] == "system")
+    others = [message for message in messages if message["role"] != "system"]
+    transcript = "".join("%s:\n%s\n\n" % ("Previous assistant reply" if message["role"] == "assistant"
+                                          else "Previous context", message["content"])
+                         for message in others[:-1])
+    body = (system + "\n\n" if system else "") + transcript + others[-1]["content"]
+    # -m takes provider/model#variant; no --auto: a draft needs text, not tools.
+    code, output = _opencode_run([exe, "run", "-m", remote, "--format", "json"],
+                                 body, options["timeout"])
+    text, failure = "", None
+    for line in output.splitlines():
+        try:
+            event = json.loads(line)
+        except ValueError:
+            continue
+        if not isinstance(event, dict):
+            continue
+        if event.get("type") == "error" and isinstance(event.get("error"), dict):
+            failure = event["error"]
+        elif event.get("type") == "text" and isinstance(event.get("part"), dict):
+            text += str(event["part"].get("text") or "")
+    if not text.strip():
+        if failure:
+            raise _opencode_failure(failure)
+        raise ProviderError("provider_error", "OpenCode run produced no text (exit %s)" % code)
+    text = strip_reasoning(text)
+    return Generation(text, {"messages": messages + [{"role": "assistant", "content": text}]},
+                      provider="opencode", model=remote, finish_reason="completed")
+
+
 def _ollama(remote, prompt, state, options):
     request = {"model": remote, "prompt": prompt, "stream": True, "keep_alive": "10m",
                "options": {"temperature": options.get("temperature", 0.2), **options.get("profile", {})}}
@@ -596,6 +686,10 @@ def generate(model, messages, options=None, state=None):
         options["retry_forever"] = False
         if options.get("budget") and options["budget"].max_cost is not None:
             raise ProviderError("cloud_budget", "ChatGPT uses plan limits, not USD pricing. Remove the USD cap; manage app limits in ChatGPT Settings > Usage.")
+    elif config["kind"] == "opencode-cli":
+        options["retry_forever"] = False
+        if options.get("budget") and options["budget"].max_cost is not None:
+            raise ProviderError("cloud_budget", "OpenCode models use the CLI's plan allowances (Go subscription monthly limits), not USD API pricing. Remove the spend cap; usage is shown in the OpenCode console.")
     gate, lock = options.get("gate"), None
     budget = options.get("budget")
     messages = _cloud_messages(prompt, state, options.get("history_keep_last", 2))
@@ -616,7 +710,8 @@ def generate(model, messages, options=None, state=None):
                 if budget:
                     ticket = budget.reserve(estimate_tokens,
                                             _cost(config, estimate_input, int(options["max_tokens"]), remote) or 0.0)
-                fn = {"chatgpt-plan": _chatgpt_plan, "openai-chat": _openai_chat, "openai-responses": _openai_responses,
+                fn = {"chatgpt-plan": _chatgpt_plan, "opencode-cli": _opencode_cli,
+                      "openai-chat": _openai_chat, "openai-responses": _openai_responses,
                       "anthropic-messages": _anthropic, "gemini": _gemini}[config["kind"]]
                 out = fn(provider, remote, config, prompt, state, options)
                 out.latency_s = time.monotonic() - started

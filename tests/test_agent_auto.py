@@ -337,6 +337,36 @@ def test_run_reuses_before_models_and_assigns_explicit_targets(tmp_path, monkeyp
                for endpoint, body in calls if endpoint == "/v1/lease")
 
 
+def test_automatic_allows_one_behavior_based_singleton_per_cycle(tmp_path, monkeypatch):
+    monkeypatch.setattr(agent_auto, "ROOT", tmp_path)
+    monkeypatch.setattr(agent_auto.agent, "memory_prompt", lambda *a: "memory")
+    monkeypatch.setattr(agent_auto.agent.shutil, "which", lambda *a: "fake-cli")
+    monkeypatch.setattr(agent_auto.worker, "usable_clients", lambda *a: ["2008-06"])
+    rows = [{**row("00401000"), "size": 96, "unit": "One"}, {**row("00401010"), "size": 96, "unit": "Two"}]
+    monkeypatch.setattr(agent_auto, "snapshot", lambda *a, **kw: rows)
+    monkeypatch.setattr(agent_auto.match, "check_text", lambda *a: (98, "f", "diff", []))
+    monkeypatch.setattr(agent_auto, "reuse", lambda *a: None)
+    prompts = []
+    monkeypatch.setattr(agent_auto.agent, "run_agent", lambda cli, prompt, *a, **kw: prompts.append(prompt) or 0)
+
+    class Api:
+        def __init__(self, *a):
+            pass
+
+        def call(self, endpoint, body=None, **kw):
+            if endpoint == "/v1/info":
+                return {"clients": {"2008-06": {}}, "verify": ["2008-06"]}
+            if endpoint == "/v1/lease":
+                addr = body["targets"][0]["addr"]
+                return {"job": dict(client="2008-06", addr=addr, source="int f(){return 1;}", score=98, lease=addr)}
+            return {"ok": True}
+
+    monkeypatch.setattr(agent_auto.worker, "Api", Api)
+    agent_auto.run_cycle("server", "tester", jobs=2, workers=2, batch_size=1, minutes=1, log=lambda *a: None)
+    assert len(prompts) == 1
+    assert "Individual function mining allowed" in prompts[0] and "behavior_evidence" in prompts[0]
+
+
 def test_server_verified_reuse_is_counted_without_a_model(tmp_path, monkeypatch):
     monkeypatch.setattr(agent_auto, "ROOT", tmp_path)
     monkeypatch.setattr(agent_auto.agent.shutil, "which", lambda cli: "fake-cli")

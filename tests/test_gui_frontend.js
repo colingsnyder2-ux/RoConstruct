@@ -7,6 +7,7 @@ const agentContext={agentState:{clis:{},client:{},memory:{lessons:[{
   client:"2008-06",kind:"session",before:40,candidate:10,after:40,outcome:"rolled_back"}]}},
   agentPlan:null,jobs:[],agentAutoConfig:{},check:()=>"",heading:()=>"",button:()=>"",field:()=>"",esc:value=>String(value).replaceAll("<","&lt;")};
 vm.createContext(agentContext);
+vm.runInContext(source.slice(source.indexOf("const VARIANTS"),source.indexOf("function workerForm")),agentContext);
 vm.runInContext(source.slice(source.indexOf("function experimentMemory(s)"),source.indexOf("function settings()")),agentContext);
 const memoryHTML=agentContext.experimentMemory(agentContext.agentState.memory);
 assert.match(memoryHTML,/candidate 10%/);
@@ -21,7 +22,16 @@ agentContext.agentAutoConfig.cli="opencode";
 const openCodeHTML=agentContext.agentAutomatic();
 assert.match(openCodeHTML,/value="opencode\/big-pickle"/);
 assert.doesNotMatch(openCodeHTML,/value="claude-opus/);
-agentContext.agentAutoConfig.cli="claude";
+agentContext.meta.agent_models=["opencode-go/deepseek-v4.1-flash","opencode/glm-5.3"];
+const goPlanHTML=agentContext.agentAutomatic();
+assert.match(goPlanHTML,/value="opencode-go\/deepseek-v4.1-flash"/);
+assert.match(goPlanHTML,/Go plan/);
+assert.match(goPlanHTML,/no API key/);
+assert.match(goPlanHTML,/name="variant"/);
+agentContext.agentAutoConfig={cli:"claude",model:"claude-opus-4-6"};
+const claudeFormHTML=agentContext.agentAutomatic();
+assert.doesNotMatch(claudeFormHTML,/name="variant"/);
+assert.doesNotMatch(claudeFormHTML,/no API key/);
 assert.match(simpleAgentHTML,/<input name="goal" value="">/);
 assert.match(simpleAgentHTML,/Automatic/);
 assert.match(simpleAgentHTML,/Fast/);
@@ -54,6 +64,23 @@ for(const [mode,minutes] of [["automatic",120],["fast",30],["balanced",120],["de
   assert.equal(config.user,"other-user");assert.equal(config.server,"other-host:8765");
   assert.equal(config.client,"2008-06");
 }
+agentContext.$=()=>({dataset:{mode:"automatic"},elements:Object.fromEntries(Object.entries({
+  client:"",user:"tester",server:"localhost:8765",cli:"opencode",
+  model:"opencode-go/deepseek-v4.1-flash",goal:"",workers:"2",variant:"high"
+}).map(([key,value])=>[key,{value}]))});
+agentContext.agentAutoConfig={cli:"opencode",model:"opencode-go/deepseek-v4.1-flash"};
+const variantConfig=agentContext.readAgentAuto();
+assert.equal(variantConfig.model,"opencode-go/deepseek-v4.1-flash#high");
+agentContext.$=()=>({dataset:{mode:"automatic"},elements:Object.fromEntries(Object.entries({
+  client:"",user:"tester",server:"localhost:8765",cli:"opencode",
+  model:"opencode-go/deepseek-v4.1-flash#low",goal:"",workers:"2",variant:"high"
+}).map(([key,value])=>[key,{value}]))});
+assert.equal(agentContext.readAgentAuto().model,"opencode-go/deepseek-v4.1-flash#high");
+agentContext.$=()=>({dataset:{mode:"automatic"},elements:Object.fromEntries(Object.entries({
+  client:"",user:"tester",server:"localhost:8765",cli:"codex",
+  model:"chosen-model",goal:"",workers:"2",variant:"high"
+}).map(([key,value])=>[key,{value}]))});
+assert.equal(agentContext.readAgentAuto().model,"chosen-model");
 assert.doesNotMatch(source,/data-worker-mode="memory"|data-agent-plan|agent-auto-plan/);
 assert.match(source,/summary>Experiments/);
 assert.match(source,/summary>Runs/);
@@ -90,6 +117,37 @@ assert.equal((formHTML.match(/name="workers"/g)||[]).length,1);
 for(const key of ["rounds","max_tokens","max_size","order","strategy"])
   assert.ok(formHTML.indexOf(`name="${key}"`)>formHTML.indexOf("Advanced controls"));
 assert.match(formHTML,/data-preset="automatic" class="active"/);
+formContext.meta={providers:[{name:"opencode",ready:true,auth:"cli",models:[]},
+  {name:"deepseek",ready:false,auth:"api-key",models:["deepseek-flash"]},
+  {name:"chatgpt",ready:false,auth:"chatgpt",models:["gpt-5.2"]}],
+  clients:[],preferences:{presets:{}},agent_models:["opencode-go/deepseek-v4.1-flash","opencode/glm-5.3"]};
+formContext.localModels=["qwen2.5-coder:7b"];
+const dropHTML=formContext.workerForm({...automaticForm,targets:[],model:""});
+assert.match(dropHTML,/<select name="model"/);
+assert.match(dropHTML,/value="qwen2.5-coder:7b"/);
+assert.match(dropHTML,/value="deepseek:deepseek-flash"/);
+assert.match(dropHTML,/key missing/);
+assert.match(dropHTML,/value="chatgpt:gpt-5.2"/);
+assert.match(dropHTML,/sign in needed/);
+assert.match(dropHTML,/value="opencode:opencode-go\/deepseek-v4.1-flash"/);
+assert.match(dropHTML,/Go plan/);
+assert.doesNotMatch(dropHTML,/name="model_variant"/);
+const ocModelHTML=formContext.workerForm({...automaticForm,targets:[],model:"opencode:opencode-go/deepseek-v4.1-flash"});
+assert.match(ocModelHTML,/name="model_variant"/);
+assert.match(ocModelHTML,/value="high"/);
+formContext.$=()=>({querySelectorAll:()=>[
+  {name:"model",value:"opencode:opencode-go/deepseek-v4.1-flash",type:"select-one"},
+  {name:"model_variant",value:"high",type:"select-one"},
+  {name:"workers",value:"2",type:"text"}],
+  elements:{addresses:{value:""},model:{value:"opencode:opencode-go/deepseek-v4.1-flash"},model_variant:{value:"high"}}});
+const ocConfig=formContext.readWorker();
+assert.equal(ocConfig.model,"opencode:opencode-go/deepseek-v4.1-flash#high");
+formContext.$=()=>({querySelectorAll:()=>[
+  {name:"model",value:"opencode:opencode-go/deepseek-v4.1-flash",type:"select-one"},
+  {name:"model_variant",value:"",type:"select-one"},
+  {name:"workers",value:"2",type:"text"}],
+  elements:{addresses:{value:""},model:{value:"opencode:opencode-go/deepseek-v4.1-flash"},model_variant:{value:""}}});
+assert.equal(formContext.readWorker().model,"opencode:opencode-go/deepseek-v4.1-flash");
 for(const count of [1,8,100,"auto"]) {
   formContext.target={dataset:{preset:"automatic"}};
   formContext.document={querySelectorAll:()=>[]};

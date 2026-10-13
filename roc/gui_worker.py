@@ -105,7 +105,7 @@ def validate(values, base=None, check_model=True):
             if not config["cloud_allowed"]:
                 raise ValueError("Cloud consent required")
             if check_model and not providers.available(model):
-                raise ValueError("Provider key missing; run roc provider setup")
+                raise ValueError(providers.credential_hint(model))
         elif check_model and not worker.draft.pick_model(model):
             raise ValueError("Local model unavailable; run roc model")
     return config

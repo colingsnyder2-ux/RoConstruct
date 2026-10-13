@@ -556,6 +556,19 @@ def run(server, user, token=None, cli="claude", model=None, client=None, jobs=1,
     sync_memory(server, token, user, log)
 
 
+def function_evidence(row, functions):
+    """Observed facts for a behavior hypothesis; never inferred layouts or ABIs."""
+    evidence = {key: row[key][:8] if isinstance(row[key], list) else row[key]
+                for key in ("calling_convention", "stack_args", "this_reads", "this_writes", "virtual_slots",
+                            "imports", "strings", "constants", "global_reads", "global_writes") if row.get(key)}
+    for key in ("callers", "call_targets"):
+        evidence[key] = [{"addr": addr, "unit": functions.get(addr, {}).get("unit", "unknown")}
+                         for addr in row.get(key, [])[:4]]
+    if "strings" in evidence:
+        evidence["strings"] = [value[:160] for value in evidence["strings"]]
+    return evidence
+
+
 def goal_targets(server, token, client, shared):
     from roc import agent_auto
     records = agent_auto.history() + shared.get("records", [])

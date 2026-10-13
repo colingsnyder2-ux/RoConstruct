@@ -3,6 +3,7 @@ import re
 import os
 import shutil
 import struct
+import subprocess
 import json
 import sys
 import time
@@ -493,6 +494,82 @@ def test_cloud_provider_core():
             os.environ.pop("NVIDIA_API_KEY", None)
         else:
             os.environ["NVIDIA_API_KEY"] = old_key
+
+
+def test_opencode_cli_provider():
+    """OpenCode models run through the signed-in CLI: no key, plan allowances."""
+    from roc import providers
+    old_which, old_run = providers.shutil.which, providers._opencode_run
+    try:
+        providers.shutil.which = lambda name: "C:\\npm\\opencode.cmd" if name == "opencode" else None
+        provider, remote, config = providers.parse_model("opencode:opencode-go/deepseek-v4.1-flash#high")
+        assert provider == "opencode" and remote == "opencode-go/deepseek-v4.1-flash#high"
+        assert config["kind"] == "opencode-cli" and providers.provider_ready("opencode")
+        assert "opencode auth login" in providers.credential_hint("opencode:opencode/x")
+        runs = []
+
+        def fake_run(argv, prompt, timeout):
+            runs.append((argv, prompt))
+            return 0, json.dumps({"type": "text", "part": {"text": "```cpp\nint f(){}\n```"}}) + "\n"
+
+        providers._opencode_run = fake_run
+        out = providers.generate("opencode:opencode-go/deepseek-v4.1-flash#high", "write cpp",
+                                 options={"allow_cloud": True, "max_tokens": 8})
+        assert out.provider == "opencode" and out.model == "opencode-go/deepseek-v4.1-flash#high"
+        assert "int f(){}" in out.text
+        assert runs[0][0][0].endswith("opencode.cmd")
+        assert runs[0][0][1:] == ["run", "-m", "opencode-go/deepseek-v4.1-flash#high", "--format", "json"]
+        assert "write cpp" in runs[0][1] and "Reconstruct compact valid C++" in runs[0][1]
+        try:
+            providers.generate("opencode:opencode/x", "p", options={})
+            raise AssertionError("cloud request was not blocked")
+        except providers.ProviderError as error:
+            assert error.category == "cloud_disabled"
+        for error_body, category in (
+                ({"type": "provider.quota", "message": "Insufficient account funds", "status": 402}, "provider_auth"),
+                ({"type": "provider.no-route", "message": "Variant unavailable for opencode/glm-5.3-flash: bogus"},
+                 "provider_error"),
+                ({"type": "provider.quota", "message": "Rate limit exceeded.", "status": 429}, "provider_retry")):
+            providers._opencode_run = lambda *args, error_body=error_body: (
+                1, json.dumps({"type": "error", "error": error_body}) + "\n")
+            try:
+                providers.generate("opencode:opencode/x", "p", options={"allow_cloud": True, "retries": 0})
+                raise AssertionError("run error was not raised")
+            except providers.ProviderError as error:
+                assert error.category == category and error_body["message"] in str(error)
+        try:
+            providers.generate("opencode:opencode/x", "p",
+                              options={"allow_cloud": True, "budget": providers.CloudBudget(cost=1)})
+            raise AssertionError("USD cap was accepted for a plan-allowance provider")
+        except providers.ProviderError as error:
+            assert error.category == "cloud_budget"
+    finally:
+        providers.shutil.which = old_which
+        providers._opencode_run = old_run
+
+
+def test_opencode_run_kills_the_tree_on_timeout():
+    from roc import providers
+    from unittest.mock import Mock
+    process = Mock()
+    process.communicate = Mock(side_effect=[subprocess.TimeoutExpired("opencode run", 180), ("", None)])
+    kills = []
+    old_popen, old_run = providers.subprocess.Popen, providers.subprocess.run
+    try:
+        providers.subprocess.Popen = lambda *args, **kwargs: process
+        providers.subprocess.run = lambda argv, **kwargs: kills.append(argv) or Mock()
+        try:
+            providers._opencode_run(["opencode", "run"], "prompt", 30)
+            raise AssertionError("timeout was not raised")
+        except providers.ProviderError as error:
+            assert error.category == "provider_retry" and "timed out" in str(error)
+        if os.name == "nt":
+            assert kills and kills[0][:3] == ["taskkill", "/T", "/F"]
+        else:
+            assert process.kill.called
+        assert process.stdout.close.called
+    finally:
+        providers.subprocess.Popen, providers.subprocess.run = old_popen, old_run
 
 
 def test_model_pricing_is_exact_and_usable_for_caps():

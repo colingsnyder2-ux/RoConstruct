@@ -106,14 +106,30 @@ function field(label, key, value, options={}) {
   return `<label class="field ${options.full ? "full" : ""}"><span>${label}</span>${input}</label>`;
 }
 function check(label, key, value) { return `<label class="inline-check"><input type="checkbox" name="${key}" ${value ? "checked" : ""} ${editing && !liveKeys.has(key) ? "disabled" : ""}>${label}</label>`; }
+const VARIANTS = [["","Default"],["none","none · no reasoning"],["minimal","minimal · lightest"],["low","low"],["medium","medium"],["high","high"],["xhigh","xhigh"],["max","max"]];
+const modelBase = model => String(model || "").split("#")[0];
+const variantOf = model => { const parts = String(model || "").split("#"); return parts.length > 1 ? parts.slice(1).join("#") : ""; };
+const usesOpenCode = model => { const base = modelBase(model); return base.startsWith("opencode:") || base.startsWith("hosted:opencode/"); };
+function modelChoices(config) {
+  const choices = [["","Choose model…"]], seen = new Set([""]);
+  const add = (value,label) => { if(!seen.has(value)) { seen.add(value); choices.push([value,label]); } };
+  for(const model of localModels) add(model, model+" · local Ollama");
+  for(const provider of meta.providers) for(const model of provider.models) add(provider.name+":"+model,
+    provider.name+":"+model+(provider.ready ? "" : provider.name==="chatgpt" ? " · sign in needed" : " · key missing"));
+  for(const model of meta.agent_models || []) add("opencode:"+model,
+    (model.startsWith("opencode-go/") ? "Go plan · " : "")+model+" · no API key");
+  if(modelBase(config.model) && !seen.has(modelBase(config.model))) choices.push([modelBase(config.model), modelBase(config.model)+" · custom"]);
+  return choices;
+}
 function workerForm(config) {
-  const models = [...new Set([...localModels, ...meta.providers.flatMap(provider => provider.models.map(model => provider.name+":"+model)), config.model].filter(Boolean))];
   const preset = config.rounds==="auto" && config.max_tokens==="auto" ? "automatic" : config.rounds===2 && config.max_size===96 ? "fast" : config.rounds===6 && config.max_size===0 ? "deep" : config.rounds===4 && config.max_size===256 ? "balanced" : "";
   return `<form id="worker-form" class="panel panel-pad"><div class="section-heading"><h2>${editing ? "Tune active session" : "Configure Match"}</h2>${editing ? `<button type="button" class="text-button" data-new-worker>New session →</button>` : ""}</div><div class="preset-row">${["automatic","fast","balanced","deep"].map(mode=>`<button type="button" data-preset="${mode}" class="${preset===mode ? "active" : ""}">${mode[0].toUpperCase()+mode.slice(1)}</button>`).join("")}</div><div class="field-grid">` +
     field("Client", "client", config.client, {choices:[["","All available clients"],...meta.clients.map(client=>[client.name,client.name])]}) +
     field("Library", "library", config.library, {choices:[["","Auto (all libraries)"],...(meta.libraries||[]).map(name=>[name,name])]}) +
     field("Username", "user", config.user) + field("Server", "server", config.server, {full:true,placeholder:"host:8765 or https://server"}) +
-    field("Model", "model", config.model, {full:true,list:"models",placeholder:"provider:model or installed Ollama model"}) + `<datalist id="models">${models.map(model=>`<option value="${esc(model)}"></option>`).join("")}</datalist>` +
+    field("Model", "model", modelBase(config.model), {choices:modelChoices(config),full:true}) +
+    (usesOpenCode(config.model) ? field("Variant (reasoning)", "model_variant", variantOf(config.model), {choices:VARIANTS}) : "") +
+    (usesOpenCode(config.model) ? `<p class="help-note">Runs through the signed-in OpenCode CLI — no API key, no key entry here. opencode-go models use your Go plan allowance automatically ($80/mo DeepSeek V4.1 Flash); spend caps do not apply, usage shows in the OpenCode console.</p>` : "") +
     field("Worker loops", "workers", config.workers, {placeholder:"auto or 1–256"}) +
     `</div><p class="help-note">Set worker count above, or use auto to choose per model. Automatic preserves your worker count, chooses rounds and output per function, prioritizes best evidence, and limits targets to 512 bytes. Advanced values override its defaults.</p><details class="form-section"><summary>Advanced controls</summary><div class="field-grid">` +
     field("Rounds per function", "rounds", config.rounds, {placeholder:"auto or 1–100"}) +
@@ -130,6 +146,7 @@ function workerForm(config) {
 }
 let workerMode="function", controlsOpen=true, workerRun="", chatFollow=true, chatSignature="", chatCompact=false, workerLoop="";
 function workers(config) {
+  if(meta.agent_models===undefined)act(loadOpenCodeModels);
   const current=jobs.find(job=>job.id===editing);
   if(!current || !active(current))editing=null;
   return `<div id="worker-chat" class="worker-chat" tabindex="0" role="log" aria-label="Live worker activity"><div id="worker-chat-rows"></div></div><button id="jump-live" class="jump-live" hidden>↓ Jump back to live</button><footer class="worker-footer"><div id="worker-tabs" class="worker-tabs" role="tablist" aria-label="Worker sessions"></div><div class="worker-footer-controls"><div id="worker-status" class="worker-live-bar"></div><div class="chat-toolbar"><select id="worker-run" aria-label="Worker session"><option value="">All sessions</option>${jobs.filter(j=>isWorker(j)).map(j=>`<option value="${j.id}" ${workerRun===j.id ? "selected" : ""}>${esc(j.config.client)} · ${j.id.slice(0,6)}</option>`).join("")}</select><select id="worker-loop" aria-label="Worker loop"><option value="">All loops</option>${Array.from({length:Math.max(1,...jobs.filter(j=>isWorker(j)).map(j=>Math.max(Object.keys(j.slots).length,Number(j.config.workers)||1)))},(_,i)=>`<option value="${i}" ${workerLoop===String(i) ? "selected" : ""}>Worker ${i+1}</option>`).join("")}</select><button class="text-button" id="chat-compact">${chatCompact ? "Regular" : "Compact"}</button><button class="text-button" id="chat-follow">${chatFollow ? "Live ↓" : "Latest ↓"}</button><button class="text-button" data-configure>Configure</button><button class="text-button" data-new-session>+ New</button></div></div></footer><aside class="worker-drawer ${controlsOpen ? "open" : ""}" aria-label="Worker configuration"><div class="drawer-heading"><h2>${editing ? "Session controls" : "New session"}</h2><button class="text-button" data-close-controls>Close ×</button></div>${editing ? workerForm(current.config) : `<div class="button-row form-section"><button class="text-button ${workerMode==='function' ? 'active' : ''}" data-worker-mode="function">Match</button><button class="text-button ${workerMode==='agent' ? 'active' : ''}" data-worker-mode="agent">Agent</button></div>`+(workerMode==="agent" ? agentAutomatic() : workerForm(config || meta.initial))}</aside>`;
@@ -289,29 +306,43 @@ function readAgentAuto() {
   agentAutoConfig={...agentAutoConfig,...presets[mode],mode,individual:false};
   for(const key of ["client","user","server","cli","model","goal"])agentAutoConfig[key]=form.elements[key].value.trim();
   agentAutoConfig.workers=Number(form.elements.workers.value);
+  if(agentAutoConfig.cli==="opencode" && form.elements.model && form.elements.variant) {
+    const base=String(agentAutoConfig.model||"").split("#")[0];
+    agentAutoConfig.model=form.elements.variant.value ? base+"#"+form.elements.variant.value : base;
+  }
   return agentAutoConfig;
 }
 function agentAutomatic() {
   const c={client:meta.initial.client||"",user:meta.initial.user,server:meta.initial.server,...agentAutoConfig};
   const mode=c.mode || (c.minutes===30 ? "fast" : c.minutes===240 ? "deep" : "automatic");
   const agentModels={
-    opencode:[["","CLI default"],...(meta.agent_models || []).map(model=>[model,model])],
+    opencode:[["","CLI default"],...(meta.agent_models || []).map(model=>[model,(model.startsWith("opencode-go/") ? "Go plan · " : "")+model+" · no API key"])],
     codex:[["","CLI default"],["gpt-6.1-sol","GPT-6.1 Sol"],["gpt-6-astra","GPT-6 Astra"],["gpt-6-sol","GPT-6 Sol"],["gpt-6-luna","GPT-6 Luna"],["gpt-5.6-sol","GPT-5.6 Sol"],["gpt-5.6-terra","GPT-5.6 Terra"],["gpt-5.6-luna","GPT-5.6 Luna"]],
     claude:[["","CLI default"],["claude-opus-4-6","Claude Opus 4.6"],["claude-sonnet-4-6","Claude Sonnet 4.6"],["claude-haiku-4-5","Claude Haiku 4.5"]]
   };
-  const modelChoices=[...(agentModels[c.cli]||agentModels.claude)];
-  if(c.model&&!modelChoices.some(([value])=>value===c.model))modelChoices.push([c.model,c.model+" · custom"]);
+  const agentModelChoices=[...(agentModels[c.cli]||agentModels.claude)];
+  if(modelBase(c.model)&&!agentModelChoices.some(([value])=>value===modelBase(c.model)))agentModelChoices.push([modelBase(c.model),modelBase(c.model)+" · custom"]);
   return `<form id="agent-auto-form" data-mode="${esc(mode)}" class="panel panel-pad"><div class="section-heading"><h2>Configure Agent</h2></div><div class="preset-row">${["automatic","fast","balanced","deep"].map(value=>`<button type="button" data-agent-mode="${value}" class="${mode===value ? "active" : ""}">${value[0].toUpperCase()+value.slice(1)}</button>`).join("")}</div><div class="field-grid">` +
     field("Client","client",c.client,{choices:[["","All clients"],...meta.clients.map(client=>[client.name,client.name])]}) +
     field("Username","user",c.user) + field("Server","server",c.server,{full:true,placeholder:"host:8765 or https://server"}) +
     field("Agent CLI","cli",c.cli,{choices:[["claude","Claude Code"],["codex","Codex"],["opencode","OpenCode"]]}) +
-    field("Model","model",c.model,{choices:modelChoices}) +
+    field("Model","model",modelBase(c.model),{choices:agentModelChoices}) +
+    (c.cli==="opencode" ? field("Variant (reasoning)","variant",variantOf(c.model),{choices:VARIANTS}) : "") +
+    (c.cli==="opencode" ? `<p class="help-note">Models from your signed-in OpenCode CLI — no API key. opencode-go models use your Go plan allowance automatically ($80/mo DeepSeek V4.1 Flash).</p>` : "") +
     field("Goal","goal",c.goal||"",{full:true,placeholder:"Optional; blank runs automatic matching"}) +
     field("Worker loops","workers",c.workers,{type:"number",min:1,max:8}) +
     `</div><div class="button-row form-section">${button("Install / sign in",'type="button" data-agent-setup="current"',true)}</div><div class="form-footer">${button("Start Agent",'type="submit"')}</div></form>`;
 }
 function settings() {
-  return heading("", "Settings", "Interface, theme, provider credentials, and dashboard lifecycle.") + `<div class="settings-stack"><form id="preferences-form" class="panel panel-pad"><h2>When a roconstruct:// link opens</h2><p class="help-note">Choose how website work links launch. “Ask every time” offers terminal or webpage before setup.</p><div class="field-grid">${field("URI interface", "uri_mode", meta.uri_mode, {choices:[["ask","Ask every time"],["terminal","Terminal"],["web","Webpage"]]})}${field("Appearance", "theme", meta.preferences.theme, {choices:["dark","light"]})}</div><div class="form-footer">${button("Save preferences", 'type="submit"')}</div></form><div class="panel panel-pad"><h2>ChatGPT plan</h2><p class="help-note">${meta.providers.find(p=>p.name==="chatgpt")?.ready ? "Signed in. Choose a chatgpt: model in your worker settings." : "Sign in from a terminal in this fork: roc chatgpt login"}</p><p class="help-note">Uses your existing subscription limits. <a href="https://chatgpt.com/settings/usage" target="_blank" rel="noopener noreferrer">Manage usage and credit permission</a></p></div><form id="provider-form" class="panel panel-pad"><h2>Provider credentials</h2><p class="help-note">Stored in ROC's user-local secrets file. Keys never enter run history or frontend storage.</p><div class="field-grid">${field("Provider", "provider", "", {choices:meta.providers.filter(provider=>provider.auth!=="chatgpt").map(provider=>[provider.name,provider.name+(provider.ready ? " · ready" : " · key missing")])})}${field("API key", "key", "", {type:"password"})}</div><div class="form-footer">${button("Save key", 'type="submit"')}</div></form><div class="panel panel-pad"><h2>Session & lifecycle</h2><p class="help-note">Browser tabs may close freely. Dashboard process owns jobs. Exit stops active process trees. Provider requests already sent may still bill.</p><button class="button secondary" id="exit-dashboard">Exit ROC dashboard</button></div></div>`;
+  return heading("", "Settings", "Interface, theme, provider credentials, and dashboard lifecycle.") + `<div class="settings-stack"><form id="preferences-form" class="panel panel-pad"><h2>When a roconstruct:// link opens</h2><p class="help-note">Choose how website work links launch. “Ask every time” offers terminal or webpage before setup.</p><div class="field-grid">${field("URI interface", "uri_mode", meta.uri_mode, {choices:[["ask","Ask every time"],["terminal","Terminal"],["web","Webpage"]]})}${field("Appearance", "theme", meta.preferences.theme, {choices:["dark","light"]})}</div><div class="form-footer">${button("Save preferences", 'type="submit"')}</div></form><div class="panel panel-pad"><h2>ChatGPT plan</h2><p class="help-note">${meta.providers.find(p=>p.name==="chatgpt")?.ready ? "Signed in. Choose a chatgpt: model in your worker settings." : "Sign in from a terminal in this fork: roc chatgpt login"}</p><p class="help-note">Uses your existing subscription limits. <a href="https://chatgpt.com/settings/usage" target="_blank" rel="noopener noreferrer">Manage usage and credit permission</a></p></div><div class="panel panel-pad"><h2>OpenCode CLI</h2><p class="help-note">${meta.providers.find(p=>p.name==="opencode")?.ready ? "Installed. Match and Agent modes list its signed-in models — no API key, no key stored here." : "Not installed. Run npm i -g opencode-ai, then opencode auth login; Match and Agent modes then list its models."}</p><p class="help-note">Go plan subscribers: opencode-go models (DeepSeek V4.1 Flash, GLM, Kimi…) draw on the plan's monthly allowance automatically ($80/mo DeepSeek V4.1 Flash on Go). Pick them from any model dropdown; a USD spend cap does not apply to them.</p></div><form id="provider-form" class="panel panel-pad"><h2>Provider credentials</h2><p class="help-note">Stored in ROC's user-local secrets file. Keys never enter run history or frontend storage.</p><div class="field-grid">${field("Provider", "provider", "", {choices:meta.providers.filter(provider=>provider.auth==="api-key").map(provider=>[provider.name,provider.name+(provider.ready ? " · ready" : " · key missing")])})}${field("API key", "key", "", {type:"password"})}</div><div class="form-footer">${button("Save key", 'type="submit"')}</div></form><div class="panel panel-pad"><h2>Session & lifecycle</h2><p class="help-note">Browser tabs may close freely. Dashboard process owns jobs. Exit stops active process trees. Provider requests already sent may still bill.</p><button class="button secondary" id="exit-dashboard">Exit ROC dashboard</button></div></div>`;
+}
+async function loadOpenCodeModels(force=false) {
+  if(!force && meta.agent_models!==undefined)return;
+  try{meta.agent_models=await api("agent-models");}
+  catch{meta.agent_models=[];}
+  if(page!=="workers")return;
+  if($("#agent-auto-form"))readAgentAuto();
+  render($("#worker-form") ? readWorker() : undefined);
 }
 function render(config) {
   if (!meta) return;
@@ -336,9 +367,12 @@ function readWorker() {
   const form=$("#worker-form"), config={...(editing ? jobs.find(job=>job.id===editing).config : meta.initial)};
   for(const input of form.querySelectorAll("[name]")) {
     const key=input.name;
-    if(input.disabled || key==="addresses") continue;
+    if(input.disabled || key==="addresses" || key==="model_variant") continue;
     config[key]=input.type==="checkbox" ? input.checked : ["workers","rounds","max_tokens","cloud_concurrency"].includes(key) && input.value==="auto" ? "auto" : numeric.has(key) ? (input.value==="" && nullable.has(key) ? null : Number(input.value)) : (input.value==="" && nullable.has(key) ? null : input.value);
   }
+  const modelParts=String(config.model||"").split("#");
+  if((modelParts[0].startsWith("opencode:")||modelParts[0].startsWith("hosted:opencode/")) && form.elements.model && form.elements.model_variant)
+    config.model=form.elements.model_variant.value ? modelParts[0]+"#"+form.elements.model_variant.value : modelParts[0];
   if(!editing) { const addresses=form.elements.addresses.value.split(/[,\s]+/).filter(Boolean).map(value=>value.toLowerCase().replace(/^0x/,"")); config.targets=addresses.length ? addresses.map(addr=>({client:config.client,addr})) : null; }
   return config;
 }
@@ -457,7 +491,7 @@ document.addEventListener("click", event=>act(async()=>{
   }
   if(target.id==="confirm-cancel") $("#confirm-dialog").close();
   if(target.id==="confirm-stop") { await api("control",{id:$("#confirm-dialog").dataset.id,action:"kill"});$("#confirm-dialog").close(); }
-  if(target.id==="refresh-models") { const config=readWorker();toast("Checking installed models…");localModels=(await api("models")).models;meta=await api("meta");render(config);toast("Models refreshed"); }
+  if(target.id==="refresh-models") { const config=readWorker();toast("Checking installed models…");localModels=(await api("models")).models;meta=await api("meta");await loadOpenCodeModels(true);render(config);toast("Models refreshed"); }
   if(target.id==="save-preset") { const name=prompt("Preset name");if(name) { const config=readWorker();await api("preferences",{preset:name,config});meta=await api("meta");render(config);toast("Preset saved"); } }
   if(target.id==="theme-button") { const theme=document.documentElement.dataset.theme==="light" ? "dark" : "light";document.documentElement.dataset.theme=theme;await api("preferences",{theme});meta.preferences.theme=theme; }
   if(target.id==="exit-dashboard"&&confirm("Exit ROC and stop all active jobs? Cloud requests already sent may still bill.")) { await api("shutdown",{});toast("Dashboard stopped. You can close this tab."); }
@@ -478,7 +512,8 @@ document.addEventListener("change",event=>act(async()=>{
   if(event.target.id==="worker-loop") {workerLoop=event.target.value;chatSignature="";renderWorkerChat();}
   if(event.target.id==="worker-run") await selectWorker(event.target.value);
   if(event.target.id==="saved-presets"&&event.target.value) render(meta.preferences.presets[event.target.value]);
-  if(event.target.matches("#agent-auto-form [name=cli]")) {readAgentAuto();agentAutoConfig.model="";render();if(agentAutoConfig.cli==="opencode"){meta.agent_models=await api("agent-models");render();}}
+  if(event.target.matches("#agent-auto-form [name=cli]")) {readAgentAuto();agentAutoConfig.model="";render();if(agentAutoConfig.cli==="opencode")await loadOpenCodeModels(true);}
+  if(event.target.matches("#worker-form [name=model]")&&!editing)render(readWorker());
   if(event.target.closest("#command-form")) await previewCommand();
 }));
 for(const id of ["log-job","log-level","log-search","log-wrap"]) $("#"+id).addEventListener("input",()=>{renderLogs();});

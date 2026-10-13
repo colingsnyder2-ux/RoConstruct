@@ -164,7 +164,7 @@ bills the CLI's own sign-in (Claude Pro/Max, ChatGPT plan) or `ANTHROPIC_API_KEY
 |---|---|---|
 | Automatic | Workers → Agent worker, or `roc agent claude --automatic [--workers 2 --jobs 24 --minutes 120]` | ranked batches, isolated copies, `roc agent-check` only |
 | Shared | `roc agent claude --jobs 5 [--max-size 256 --minutes 20]` | one function in `src/`, `roc check` only; regressions rolled back |
-| Any model via opencode | `roc agent opencode --automatic --model opencode/big-pickle` (list: `opencode models`) | `npm i -g opencode-ai`, signed in | same workflow; runs with `--auto`, so unlike claude it is not limited to `roc.py` commands |
+| Any model via opencode | `roc agent opencode --automatic --model opencode-go/deepseek-v4.1-flash` (list: `opencode models`; sign in: `opencode auth login`; optional variant suffix `#high`/`#low`) | `npm i -g opencode-ai`, signed in | same workflow; runs with `--auto`, so unlike claude it is not limited to `roc.py` commands; Go-plan models use the subscription allowance, no API key |
 | Switch models when rate limited | setting `agent_fallbacks` in `local/config/roconstruct-settings.json` (or env `ROC_AGENT_FALLBACKS`), e.g. `"claude:sonnet,opencode:opencode/big-pickle"` | - | after 5 minutes of only rate-limit errors the run continues with the next entry |
 | Goal | `roc agent codex --goal "finish zlib in 2008-06" --minutes 60` | live-server shortlist, isolated `work/agent-goals/` candidates, `check --file` / `submit --file`, attempt journal |
 | Interactive | `roc agent claude --interactive --goal "..."` | a normal session you watch and approve |
@@ -182,6 +182,15 @@ excluded. Each listed source is copied into the run's scratch folder with ready
 check/submit commands, so models need not rediscover files or shell syntax.
 Thinking and tool bursts share one folded activity row; expanding it retains
 reasoning summaries, complete commands and outputs.
+Repair prompts include bounded caller/callee names, strings, imports, argument
+slots and observed reads/writes. Agents infer likely behavior, cite one supporting
+fact, and test a C++ change against the bytes; inferred purpose never proves layout
+or ABI. Automatic cycles allow one source-backed singleton (at least 64 bytes)
+after compiler reuse; explicit individual mode still permits more. Changed behavior
+evidence also invalidates parking.
+When stuck, compare two materially different source strategies, select the cheapest
+falsifiable experiment, and record rejected ideas. Creativity changes source strategy;
+only target bytes, referenced data and server receipts establish an exact match.
 Windows agent runs use the unelevated workspace sandbox and standard shell execution;
 their temp root lives under `work/agent-temp`. Compiler directories inherit sandbox ACLs.
 Codex JSON events keep input prompts out of the console; Compact folds long output.
