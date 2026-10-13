@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-13 08:41 UTC",
+ "updated": "2026-10-13 09:48 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -138,35 +138,35 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22475,
-   "matched": 19365,
-   "partial": 2610,
+   "matched": 19388,
+   "partial": 2589,
    "bytes": 3665681,
-   "matched_bytes": 2522096,
-   "source_bytes": 1949973,
+   "matched_bytes": 2530670,
+   "source_bytes": 1958547,
    "mined_bytes": 572123,
-   "partial_bytes": 721700,
+   "partial_bytes": 715026,
    "data_bytes": 1559926,
    "leaderboard": [
     {
      "user": "auto",
-     "matched": 10608,
-     "points": 990424,
-     "submissions": 10608,
-     "last": 1791756004.5913844
+     "matched": 10609,
+     "points": 990500,
+     "submissions": 10609,
+     "last": 1791883381.8265934
     },
     {
      "user": "king_originala",
-     "matched": 2553,
-     "points": 253917,
-     "submissions": 5457,
-     "last": 1791880831.7698617
+     "matched": 2573,
+     "points": 254787,
+     "submissions": 5478,
+     "last": 1791884805.8198838
     },
     {
      "user": "colin",
-     "matched": 1578,
-     "points": 605824,
-     "submissions": 19092,
-     "last": 1791880593.3082683
+     "matched": 1580,
+     "points": 606024,
+     "submissions": 19094,
+     "last": 1791882832.1998227
     },
     {
      "user": "atomic.potato",
@@ -197,7 +197,7 @@
      "last": 1791766592.3175168
     }
    ],
-   "data_matched_bytes": 245958,
+   "data_matched_bytes": 247445,
    "classes": 1488,
    "generated": 19434
   },
@@ -390,24 +390,24 @@
  "leaderboard": [
   {
    "user": "auto",
-   "matched": 75473,
-   "points": 7398765,
-   "submissions": 75473,
-   "last": 1791758698.6201742
+   "matched": 75474,
+   "points": 7398841,
+   "submissions": 75474,
+   "last": 1791883381.8265934
   },
   {
    "user": "colin",
-   "matched": 13541,
-   "points": 5433910,
-   "submissions": 181824,
-   "last": 1791880742.2878044
+   "matched": 13543,
+   "points": 5434110,
+   "submissions": 181826,
+   "last": 1791882832.1998227
   },
   {
    "user": "king_originala",
-   "matched": 2552,
-   "points": 253911,
-   "submissions": 5456,
-   "last": 1791880637.8051362
+   "matched": 2573,
+   "points": 254787,
+   "submissions": 5478,
+   "last": 1791884805.8198838
   },
   {
    "user": "atomic.potato",

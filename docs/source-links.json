@@ -490,7 +490,8 @@
    "GLG3Dcpp/roc_line_c1ec18302c3703eb.cpp",
    "GLG3Dcpp/roc_line_eb2a2907090c8b55.cpp",
    "GLG3Dcpp/tesselate.cpp",
-   "roc_unit_45931f30d1eceea5.cpp"
+   "roc_unit_45931f30d1eceea5.cpp",
+   "roc_unit_b6f0c9701eb28399.cpp"
   ]
  },
  "g3d-6.09-png": {
@@ -551,7 +552,8 @@
    "libs/thread/src/thread.cpp",
    "libs/thread/src/tss.cpp",
    "libs/thread/src/tss_hooks.cpp",
-   "libs/thread/src/xtime.cpp"
+   "libs/thread/src/xtime.cpp",
+   "roc_event_handler_for_each_044c64d9154ca774.cpp"
   ]
  },
  "boost-1.36.0": {
@@ -1253,7 +1255,10 @@
   "kind": "archive",
   "files": [
    "roc_observed_3db354efc99e4c09.cpp",
-   "roc_observed_53d74a95e1732a0f.cpp"
+   "roc_observed_53d74a95e1732a0f.cpp",
+   "roc_rbxscene_ctor_252e30df9e8b13f7.cpp",
+   "roc_rbxscene_ctor_e0d00b9d50dc0b49.cpp",
+   "roc_rbxscene_fpfast_63a615e0f16e56ce.cpp"
   ]
  },
  "lame-3.98.4": {
@@ -1458,7 +1463,11 @@
  "g3d-6.09-dll": {
   "url": "https://archive.org/download/g3d-src-6_09/g3d-src-6_09.zip",
   "kind": "archive",
-  "files": []
+  "files": [
+   "G3Dcpp/debugAssert.cpp",
+   "GLG3Dcpp/Texture.cpp",
+   "GLG3Dcpp/VARArea.cpp"
+  ]
  },
  "g3d-6.09-png-dll": {
   "url": "https://archive.org/download/g3d-src-6_09/g3d-src-6_09.zip",
@@ -1497,7 +1506,8 @@
    "roc_unit_13364a19a306182f.cpp",
    "roc_unit_7c283c9b16193989.cpp",
    "roc_unit_c054a2084880d614.cpp",
-   "roc_unit_eb19028a18c4f9d1.cpp"
+   "roc_unit_eb19028a18c4f9d1.cpp",
+   "roc_ustring_sink_owner_68c46decc463f1da.cpp"
   ]
  },
  "boost-1.36.0-dll": {
