@@ -419,7 +419,7 @@ class DashboardTests(unittest.TestCase):
 
 class LinkTests(unittest.TestCase):
     def test_server_uri_opens_setup_without_starting_worker(self):
-        with patch.object(setup, "try_update", return_value="already current"), \
+        with patch.object(setup, "update", return_value="already current"), \
              patch.object(gui, "serve") as serve, patch.object(link, "run") as terminal:
             link.launch("roconstruct://server", ask=lambda _: self.fail("Should not ask"))
         serve.assert_called_once_with(page="cpu")
@@ -427,7 +427,7 @@ class LinkTests(unittest.TestCase):
 
     def test_server_uri_refuses_commands_and_credentials(self):
         for url in ("roconstruct://server?token=secret", "roconstruct://server?command=start", "roconstruct://server#secret"):
-            with self.subTest(url=url), patch.object(setup, "try_update", return_value="already current"), \
+            with self.subTest(url=url), patch.object(setup, "update", return_value="already current"), \
                  patch.object(gui, "serve") as serve:
                 with self.assertRaises(SystemExit):
                     link.launch(url)
@@ -435,7 +435,7 @@ class LinkTests(unittest.TestCase):
 
     def test_web_uri_preserves_context_without_launching_worker(self):
         url = "roconstruct://work?client=2008-06&server=localhost:8765&user=tester&cloud=1"
-        with patch.object(setup, "try_update", return_value="already current"), \
+        with patch.object(setup, "update", return_value="already current"), \
              patch.object(worker, "load_settings", return_value={}), patch.object(gui, "serve") as serve, \
              patch.object(link, "run") as terminal:
             link.launch(url, ask=lambda _: "2")
@@ -447,7 +447,7 @@ class LinkTests(unittest.TestCase):
         url = "roconstruct://work?client=2008-06&server=localhost:8765"
         from roc import setup
         with patch.object(worker, "load_settings", return_value={"uri_interface": "terminal"}), \
-             patch.object(setup, "try_update", return_value="unchanged"), patch.object(link, "run") as terminal:
+             patch.object(setup, "update", return_value="unchanged"), patch.object(link, "run") as terminal:
             link.launch(url, ask=lambda _: self.fail("Should not ask"))
         terminal.assert_called_once_with(url)
 

@@ -1171,7 +1171,7 @@ def try_update(log=print, timeout=60):
     return "updated"
 
 
-REPOSITORY = "https://github.com/ivan-grebe/RoConstruct.git"
+REPOSITORY = "https://github.com/colingsnyder2-ux/RoConstruct.git"
 
 
 def update(log=print, timeout=300):

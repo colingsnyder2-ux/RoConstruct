@@ -93,7 +93,7 @@ def keep_awake():
 def launch(url, ask=input):
     """Choose terminal/webpage before any setup or worker starts."""
     from roc import gui, setup, worker
-    print("Checking for updates: %s" % setup.try_update())
+    print("Checking for updates: %s" % setup.update())
     target = urlparse(url)
     if target.scheme == SCHEME and (target.netloc or target.path.strip("/")) == "server":
         if target.query or target.fragment:

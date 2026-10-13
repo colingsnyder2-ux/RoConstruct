@@ -835,7 +835,7 @@ def test_uri_link_checks_updates_before_launch():
     cli = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(cli)
     calls = []
-    with patch("roc.setup.try_update", side_effect=lambda: calls.append("update") or "current"), \
+    with patch("roc.setup.update", side_effect=lambda: calls.append("update") or "current"), \
          patch("roc.link.run", side_effect=lambda target: calls.append("launch")), \
          patch("roc.worker.load_settings", return_value={"uri_interface": "terminal"}), \
          patch("builtins.print"):
