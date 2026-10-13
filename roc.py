@@ -1810,7 +1810,7 @@ def main(argv=None):
     pt.set_defaults(fn=cmd_provider)
     cmd("link", cmd_link, "one-click links: 'install', 'remove', or a roconstruct:// URL", (["target"], {}))
     cmd("agent", cmd_agent, "match shared functions with your own Claude Code or Codex CLI",
-        (["cli"], {"choices": ["claude", "codex"]}),
+        (["cli"], {"choices": ["claude", "codex", "opencode"]}),
         (["--goal"], {"help": 'free-form task, e.g. "match as many 2008-06 RakNet functions as you can"'}),
         (["--interactive"], {"action": "store_true",
                               "help": "open a normal session you can watch and steer (asks before risky commands)"}),

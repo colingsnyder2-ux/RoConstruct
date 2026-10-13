@@ -162,6 +162,7 @@ bills the CLI's own sign-in (Claude Pro/Max, ChatGPT plan) or `ANTHROPIC_API_KEY
 |---|---|---|
 | Automatic | Workers → Agent worker, or `roc agent claude --automatic [--workers 2 --jobs 24 --minutes 120]` | ranked batches, isolated copies, `roc agent-check` only |
 | Shared | `roc agent claude --jobs 5 [--max-size 256 --minutes 20]` | one function in `src/`, `roc check` only; regressions rolled back |
+| Any model via opencode | `roc agent opencode --automatic --model opencode/big-pickle` (list: `opencode models`) | `npm i -g opencode-ai`, signed in | same workflow; runs with `--auto`, so unlike claude it is not limited to `roc.py` commands |
 | Goal | `roc agent codex --goal "finish zlib in 2008-06" --minutes 60` | any `roc.py` command, web search, `src/` edits, attempt journal |
 | Interactive | `roc agent claude --interactive --goal "..."` | a normal session you watch and approve |
 

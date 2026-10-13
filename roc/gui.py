@@ -99,8 +99,8 @@ def command_args(data):
             args += ["--permute"]
     if name == "agent":
         goal, minutes = str(data.get("goal", "")).strip(), data.get("minutes", 120)
-        if data.get("cli") not in ("claude", "codex"):
-            raise ValueError("Choose claude or codex")
+        if data.get("cli") not in ("claude", "codex", "opencode"):
+            raise ValueError("Choose claude, codex or opencode")
         if not data.get("automatic") and (not goal or len(goal) > 2000):
             raise ValueError("Describe the goal (up to 2000 characters)")
         if type(minutes) is not int or not 1 <= minutes <= 600:

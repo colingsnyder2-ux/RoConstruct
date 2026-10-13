@@ -22,7 +22,7 @@ from pathlib import Path
 from roc import match, worker
 
 ROOT = Path(__file__).resolve().parent.parent
-CLIS = ("claude", "codex")
+CLIS = ("claude", "codex", "opencode")
 
 PROMPT = """You are matching one function of the {client} Roblox client for RoConstruct,
 a matching-decompilation project. Goal: C++ that the client's original MSVC
@@ -148,6 +148,11 @@ def command(cli, model=None, goal=False):
                 "--output-format", "stream-json", "--verbose"]
     elif cli == "codex":
         argv = ["codex", "exec", "--json", "--sandbox", "workspace-write", "-c", 'approval_policy="never"', "-C", str(ROOT), "-"]
+    elif cli == "opencode":  # prompt on stdin; --auto approves tools, so there is no roc-only allowlist as with claude
+        argv = ["opencode", "run", "--auto", "--format", "json"]
+        if model:
+            argv += ["-m", model]  # provider/model, see: opencode models
+        return argv
     else:
         raise ValueError("cli must be one of: " + ", ".join(CLIS))
     if model:
@@ -212,6 +217,15 @@ def show(line, log):
                 detail = next((str(args[key]) for key in ("command", "file_path", "pattern", "query", "url")
                                if args.get(key)), "")
                 log("  > %s %s" % (block.get("name"), detail.splitlines()[0][:160] if detail else ""))
+    elif event.get("type") == "text" and isinstance(event.get("part"), dict):  # opencode
+        if event["part"].get("text", "").strip():
+            log(event["part"]["text"].strip())
+    elif event.get("type") == "tool_use" and isinstance(event.get("part"), dict):  # opencode
+        part = event["part"]
+        args = (part.get("state") or {}).get("input") or {}
+        detail = next((str(args[key]) for key in ("command", "filePath", "file_path", "pattern", "query", "url")
+                       if args.get(key)), "")
+        log("  > %s %s" % (part.get("tool"), detail.splitlines()[0][:160] if detail else ""))
     elif event.get("type") == "result":
         log("Agent finished after %s turns%s." % (event.get("num_turns"), " with an error" if event.get("is_error") else ""))
 

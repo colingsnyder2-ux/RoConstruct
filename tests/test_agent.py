@@ -87,6 +87,11 @@ def test_commands_read_prompt_from_stdin():
     assert claude[:4] == ["claude", "-p", "--model", "haiku"] and "acceptEdits" in claude and "stream-json" in claude
     assert any(arg.startswith("Read,Grep,Glob,Edit,Write,Bash(") for arg in claude)
     assert agent.command("codex")[-1] == "-"
+    assert agent.command("opencode", "opencode/big-pickle")[-2:] == ["-m", "opencode/big-pickle"]
+    lines = []
+    agent.show('{"type":"tool_use","part":{"tool":"shell","state":{"input":{"command":"echo hi"}}}}', lines.append)
+    agent.show('{"type":"text","part":{"text":"done"}}', lines.append)
+    assert lines == ["  > shell echo hi", "done"]
 
 
 def test_goal_mode_allows_roc_commands_and_web(monkeypatch):
