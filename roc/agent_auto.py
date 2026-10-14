@@ -758,7 +758,7 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
             else:
                 log("ROC_EVENT " + json.dumps(row))
 
-    event("stage", message="Automatic: reuse first, batch repair last; %d workers, %d targets, %d minutes" %
+    event("stage", message="Automatic: agent repair first, free compiler checks last; %d workers, %d targets, %d minutes" %
           (workers, jobs, minutes))
     if not shared["available"]:
         event("log", message=shared["error"] + "; local memory retained. Update/restart group server for cross-PC sync.")
@@ -809,7 +809,7 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
             portfolio = list(dict.fromkeys(task["source"] for task in active
                 if any(k in match.directives(task["source"]) for k in ("lib", "archive"))))[:3]
             if phase == "reuse":
-                event("stage", slot=slot, message="Compiler reuse · %s · %d targets; model starts after free checks" % (area["title"], len(active)))
+                event("stage", slot=slot, message="Compiler reuse · %s · %d targets (free, after agent repair)" % (area["title"], len(active)))
                 for task in active:
                     if time.monotonic() >= deadline:
                         break
@@ -842,7 +842,7 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
                         "Assigned client: " + client + ". This run selection overrides the default client focus in CLAUDE.md.\n"
                         "Goal: reusable gains across this area: " + area["advice"] + "\n"
                         "Current strategy: " + STRATEGIES[strategy] + "\n"
-                        "Free donor/recipe reuse already ran before this phase. Work on shared hypotheses first.\n"
+                        "Work on shared hypotheses first.\n"
                         "Edit ONLY the assigned candidate .cpp files below. Never edit src/, recipes, tools,\n"
                         "clients, function bounds, journals or task.json. The wrapper handles submission.\n"
                         "After EVERY edit run the assigned agent-check command with --hypothesis describing\n"
@@ -906,9 +906,13 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
                     event("candidate", slot=slot, score=receipt["score"], code=text)
             return gains, len(active) if tried_route and quality_result else 0, exacts, None if tried_route and quality_result and active else skip_reason
         finally:
-            pass
+            for task in active:  # free the server claims so other parallel agents can take these
+                try:
+                    local.call("/v1/release", {"lease": task["job"]["lease"], "cooldown": 0})
+                except (worker.ApiFailure, OSError, ValueError):
+                    pass
 
-    # Every selected area receives compiler-only reuse before any paid CLI batch.
+    # Every selected area gets agent repair first, then compiler-only reuse.
     selected, remaining = [], jobs
     areas = [area for area in result["areas"] if not area["parked"]]
     for area in areas:
@@ -929,7 +933,7 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
             if not remaining or shards == 2:
                 break
         area["reserved"] = {row["addr"] for chosen_area, rows in selected if chosen_area is area for row in rows}
-    for phase in ("reuse", "repair"):
+    for phase in ("repair", "reuse"):  # model first; free compiler-only reuse last, never before the agent starts
         event("stage", message="%s phase · %d batches" % ("Free compiler checks" if phase == "reuse" else "Agent repair", len(selected)))
         queue, busy, zero = list(selected), set(), defaultdict(int)
 

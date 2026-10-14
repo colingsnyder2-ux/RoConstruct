@@ -725,8 +725,9 @@ def goal_targets(server, token, client, shared):
                and tries.get((row["client"], row["addr"]), 0) < GOAL_MAX_TRIES]
     for row in targets:
         row["prior_sessions"] = tries.get((row["client"], row["addr"]), 0)
-    near = sorted((row for row in targets if row["score"] >= 95),
-                  key=lambda row: (row["prior_sessions"], -row["priority"], -row["size"]))[:14]
+    rank = lambda row: (row["prior_sessions"], -row["priority"], -row["size"])
+    pool = sorted((row for row in targets if row["score"] >= 95), key=rank)[:30]
+    near = sorted(random.sample(pool, min(14, len(pool))), key=rank)  # parallel models get different shortlists
     selected = {(row["client"], row["addr"]) for row in near}
     large = sorted((row for row in targets if (row["client"], row["addr"]) not in selected), key=lambda row: (row["prior_sessions"], -row["size"]))[:7]
     selected.update((row["client"], row["addr"]) for row in large)

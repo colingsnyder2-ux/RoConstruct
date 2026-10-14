@@ -22,6 +22,7 @@ from roc import clients, match, setup
 
 ROOT = Path(__file__).resolve().parent.parent
 USER_RE = re.compile(r"^[A-Za-z0-9_.-]{2,32}$")
+CLAIM_SECONDS = 2 * 3600  # one agent batch (max 120 min); released early when the batch ends
 
 
 from roc.tasks import _source_class_token, check_many_text
@@ -96,6 +97,9 @@ class Store:
         self.db.commit()
         self.lock = threading.Lock()
         self.lease_seconds = lease_seconds  # Legacy server option; assignments do not expire.
+        # Soft, in-memory claims: parallel agents skip a function another worker is on while
+        # other targets remain. Lost on restart, which only makes work shared again.
+        self.claims = {}  # (client, addr) -> (lease, worker, expiry)
 
     def agent_memory(self, after=0, limit=500):
         from roc import agent_memory
@@ -240,6 +244,12 @@ class Store:
             candidates = [self.db.execute(
                 "SELECT client,addr,size,unit,score,source,shape,calls,source_confidence,difficulty,attempts_by_model,family "
                 "FROM funcs WHERE client=? AND addr=?", key).fetchone() for key in keys]
+            self.claims = {key: claim for key, claim in self.claims.items() if claim[2] > now}
+            free = [c for c in candidates if self.claims.get((c[0], c[1]), (None, worker))[1] == worker]
+            if candidates and not free and targets:
+                self.db.commit()
+                return None  # every requested target is being worked on by another worker
+            candidates = free or candidates
             row = None
             if candidates:
                 # Do not burn the same model repeatedly on a stubborn target when
@@ -255,6 +265,7 @@ class Store:
                 self.db.commit()
                 return None
             lease = uuid.uuid4().hex
+            self.claims[(row[0], row[1])] = (lease, worker, now + CLAIM_SECONDS)
             current = self.db.execute("SELECT attempts_by_model FROM funcs WHERE client = ? AND addr = ?", row[:2]).fetchone()[0]
             by_model = json.loads(current or "{}")
             if model:
@@ -274,7 +285,9 @@ class Store:
         return True
 
     def release(self, lease, cooldown=0):
-        # Kept for older clients. There is nothing to release or cool down.
+        # Frees the soft claim; cooldowns are no longer used.
+        with self.lock:
+            self.claims = {key: claim for key, claim in self.claims.items() if claim[0] != lease}
         return None
 
     def submit(self, client, addr, user, score, source, data=None, lease=None, model="", verified=False):

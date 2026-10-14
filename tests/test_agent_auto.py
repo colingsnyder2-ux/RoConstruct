@@ -493,9 +493,9 @@ def test_run_reuses_before_models_and_assigns_explicit_targets(tmp_path, monkeyp
     assert all('"diff": "diff"' in prompt for prompt in prompts)
     assert all("Individual function mining" in prompt for prompt in prompts)
     assert sum("Automatic BATCH repair" in prompt for prompt in prompts) == 1
-    assert order[:4] == ["reuse"] * 4
+    assert order[:2] == ["model"] * 2 and order[2:] == ["reuse"] * 4  # agent first, free checks last
     assert len(set(paths)) == 4 and all("agent-auto" in path for path in paths)
-    assert not [call for call in calls if call[0] == "/v1/release"]
+    assert [call for call in calls if call[0] == "/v1/release"]  # batches free their server claims
     assert result["matched"] == 0 and result["errors"] == 0
     assert all(body["clients"] == ["2008-06"] and 1 <= len(body["targets"]) <= 32
                for endpoint, body in calls if endpoint == "/v1/lease")

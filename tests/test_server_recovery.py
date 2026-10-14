@@ -177,3 +177,16 @@ def test_shared_assignments_can_pick_same_target_and_keep_best_score(tmp_path):
     assert store.submit("2008-06", "00401000", "alice", 90, "better", lease=first["lease"]) == (90, True)
     assert store.submit("2008-06", "00401000", "bob", 85, "worse", lease=second["lease"]) == (90, False)
     store.db.close()
+
+
+def test_lease_skips_targets_claimed_by_another_worker(tmp_path):
+    from roc import server
+    store = server.Store(str(tmp_path / "s.db"), 3600)
+    store.db.execute("INSERT INTO funcs (client, addr, size, unit, score, source) VALUES ('c','00401000',64,'u',90,'x')")
+    store.db.commit()
+    target = [{"client": "c", "addr": "00401000"}]
+    first = store.lease("u1", "w1", ["c"], "ai", 0, targets=target)
+    assert first and store.lease("u2", "w2", ["c"], "ai", 0, targets=target) is None
+    again = store.lease("u1", "w1", ["c"], "ai", 0, targets=target)  # the same worker may re-lease
+    store.release(again["lease"])
+    assert store.lease("u2", "w2", ["c"], "ai", 0, targets=target)
