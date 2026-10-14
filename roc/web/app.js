@@ -110,14 +110,20 @@ const VARIANTS = [["","Default"],["none","none · no reasoning"],["minimal","min
 const modelBase = model => String(model || "").split("#")[0];
 const variantOf = model => { const parts = String(model || "").split("#"); return parts.length > 1 ? parts.slice(1).join("#") : ""; };
 const usesOpenCode = model => { const base = modelBase(model); return base.startsWith("opencode:") || base.startsWith("hosted:opencode/"); };
-function modelChoices(config) {
+const CLI_CHOICES = [["claude","Anthropic (Claude Code)"],["codex","OpenAI (Codex)"],["opencode","OpenCode"],["custom","Custom"]];
+const cliFor = cli => cli === "custom" ? "opencode" : cli;
+const PROVIDER_CLI = {openai:"openai", anthropic:"anthropic", opencode:"opencode", custom:"custom"};
+function customProviders() { return meta.providers.filter(provider => !["openai","anthropic","opencode","chatgpt"].includes(provider.name)); }
+function providerChoices(choice) {
+  if(choice==="opencode") return (meta.agent_models || []).map(model=>["opencode:"+model,(model.startsWith("opencode-go/") ? "Go plan · " : "")+model]);
+  const providers = choice==="custom" ? customProviders() : meta.providers.filter(provider=>provider.name===choice);
+  return providers.flatMap(provider=>provider.models.map(model=>[provider.name+":"+model, provider.name+":"+model+(provider.ready ? "" : " · key missing")]));
+}
+function modelChoices(config, choice="openai") {
   const choices = [["","Choose model…"]], seen = new Set([""]);
   const add = (value,label) => { if(!seen.has(value)) { seen.add(value); choices.push([value,label]); } };
-  for(const model of localModels) add(model, model+" · local Ollama");
-  for(const provider of meta.providers) for(const model of provider.models) add(provider.name+":"+model,
-    provider.name+":"+model+(provider.ready ? "" : provider.name==="chatgpt" ? " · sign in needed" : " · key missing"));
-  for(const model of meta.agent_models || []) add("opencode:"+model,
-    (model.startsWith("opencode-go/") ? "Go plan · " : "")+model+" · no API key");
+  if(choice==="custom") for(const model of localModels) add(model, model+" · local Ollama");
+  for(const [value,label] of providerChoices(choice)) add(value,label);
   if(modelBase(config.model) && !seen.has(modelBase(config.model))) choices.push([modelBase(config.model), modelBase(config.model)+" · custom"]);
   return choices;
 }
@@ -127,7 +133,8 @@ function workerForm(config) {
     field("Client", "client", config.client, {choices:[["","All available clients"],...meta.clients.map(client=>[client.name,client.name])]}) +
     field("Library", "library", config.library, {choices:[["","Auto (all libraries)"],...(meta.libraries||[]).map(name=>[name,name])]}) +
     field("Username", "user", config.user) + field("Server", "server", config.server, {full:true,placeholder:"host:8765 or https://server"}) +
-    field("Model", "model", modelBase(config.model), {choices:modelChoices(config),full:true}) +
+    field("Agent CLI", "model_provider", matchProvider, {choices:[["openai","OpenAI"],["anthropic","Anthropic"],["opencode","OpenCode"],["custom","Custom"]]}) +
+    field("Model", "model", modelBase(config.model), {choices:modelChoices(config, matchProvider),full:true}) +
     (usesOpenCode(config.model) ? field("Variant (reasoning)", "model_variant", variantOf(config.model), {choices:VARIANTS}) : "") +
     (usesOpenCode(config.model) ? `<p class="help-note">Runs through the signed-in OpenCode CLI — no API key, no key entry here. opencode-go models use your Go plan allowance automatically ($80/mo DeepSeek V4.1 Flash); spend caps do not apply, usage shows in the OpenCode console.</p>` : "") +
     field("Worker loops", "workers", config.workers, {placeholder:"auto or 1–256"}) +
@@ -144,6 +151,7 @@ function workerForm(config) {
     field("Request cap", "max_cloud_requests", config.max_cloud_requests, {type:"number",min:1,placeholder:"Unlimited"}) + field("Token cap", "max_cloud_tokens", config.max_cloud_tokens, {type:"number",min:1,placeholder:"Unlimited"}) + field("Estimated spend cap ($)", "max_cloud_cost", config.max_cloud_cost, {type:"number",min:0.01,placeholder:"Requires configured pricing",full:true}) +
     `</div><p class="help-note">Budget edits preserve usage already spent. In-flight requests continue. Unknown prices cannot establish actual spend.</p></details><div class="consent">${check("Allow cloud prompts for this session", "cloud_allowed", config.cloud_allowed)}<p>Bounded assembly, symbols and source hints leave this PC. Provider keys and executable files stay local.</p></div><div class="form-footer"><span class="tiny muted">${editing ? "Edits apply before each loop's next function." : "Compilation and byte comparison stay local."}</span>${button(editing ? "Apply changes" : "Start Match", 'type="submit"')}</div><div class="button-row form-section"><button type="button" class="text-button" id="save-preset">Save preset</button><select id="saved-presets" aria-label="Load a saved preset"><option value="">Load saved preset…</option>${Object.keys(meta.preferences.presets).map(name=>`<option>${esc(name)}</option>`).join("")}</select><button type="button" class="text-button" id="refresh-models">Refresh models</button></div></form>`;
 }
+let matchProvider="openai";
 let workerMode="function", controlsOpen=true, workerRun="", chatFollow=true, chatSignature="", chatCompact=false, workerLoop="";
 function workers(config) {
   if(meta.agent_models===undefined)act(loadOpenCodeModels);
@@ -305,8 +313,10 @@ function readAgentAuto() {
   };
   agentAutoConfig={...agentAutoConfig,...presets[mode],mode,individual:false};
   for(const key of ["client","user","server","cli","model","goal"])agentAutoConfig[key]=form.elements[key].value.trim();
+  const typed=form.elements.model_custom?.value.trim();
+  if(typed)agentAutoConfig.model=typed;
   agentAutoConfig.workers=Number(form.elements.workers.value);
-  if(agentAutoConfig.cli==="opencode" && form.elements.model && form.elements.variant) {
+  if(cliFor(agentAutoConfig.cli)==="opencode" && form.elements.model && form.elements.variant) {
     const base=String(agentAutoConfig.model||"").split("#")[0];
     agentAutoConfig.model=form.elements.variant.value ? base+"#"+form.elements.variant.value : base;
   }
@@ -316,22 +326,24 @@ function agentAutomatic() {
   const c={client:meta.initial.client||"",user:meta.initial.user,server:meta.initial.server,...agentAutoConfig};
   const mode=c.mode || (c.minutes===30 ? "fast" : c.minutes===240 ? "deep" : "automatic");
   const agentModels={
-    opencode:[["","CLI default"],...(meta.agent_models || []).map(model=>[model,(model.startsWith("opencode-go/") ? "Go plan · " : "")+model+" · no API key"])],
+    opencode:[["","CLI default"],...(meta.agent_models || []).map(model=>[model,(model.startsWith("opencode-go/") ? "Go plan · " : "")+model])],
     codex:[["","CLI default"],["gpt-6.1-sol","GPT-6.1 Sol"],["gpt-6-astra","GPT-6 Astra"],["gpt-6-sol","GPT-6 Sol"],["gpt-6-luna","GPT-6 Luna"],["gpt-5.6-sol","GPT-5.6 Sol"],["gpt-5.6-terra","GPT-5.6 Terra"],["gpt-5.6-luna","GPT-5.6 Luna"]],
-    claude:[["","CLI default"],["claude-opus-4-6","Claude Opus 4.6"],["claude-sonnet-4-6","Claude Sonnet 4.6"],["claude-haiku-4-5","Claude Haiku 4.5"]]
+    claude:[["","CLI default"],["claude-opus-4-6","Claude Opus 4.6"],["claude-sonnet-4-6","Claude Sonnet 4.6"],["claude-haiku-4-5","Claude Haiku 4.5"]],
+    custom:[["","Choose provider model"],...customProviders().flatMap(provider=>provider.models.map(model=>[provider.name+"/"+model,provider.name+"/"+model+(provider.ready ? "" : " · key missing")]))]
   };
   const agentModelChoices=[...(agentModels[c.cli]||agentModels.claude)];
   if(modelBase(c.model)&&!agentModelChoices.some(([value])=>value===modelBase(c.model)))agentModelChoices.push([modelBase(c.model),modelBase(c.model)+" · custom"]);
   return `<form id="agent-auto-form" data-mode="${esc(mode)}" class="panel panel-pad"><div class="section-heading"><h2>Configure Agent</h2></div><div class="preset-row">${["automatic","fast","balanced","deep"].map(value=>`<button type="button" data-agent-mode="${value}" class="${mode===value ? "active" : ""}">${value[0].toUpperCase()+value.slice(1)}</button>`).join("")}</div><div class="field-grid">` +
     field("Client","client",c.client,{choices:[["","All clients"],...meta.clients.map(client=>[client.name,client.name])]}) +
     field("Username","user",c.user) + field("Server","server",c.server,{full:true,placeholder:"host:8765 or https://server"}) +
-    field("Agent CLI","cli",c.cli,{choices:[["claude","Claude Code"],["codex","Codex"],["opencode","OpenCode"]]}) +
+    field("Agent CLI","cli",c.cli,{choices:CLI_CHOICES}) +
     field("Model","model",modelBase(c.model),{choices:agentModelChoices}) +
-    (c.cli==="opencode" ? field("Variant (reasoning)","variant",variantOf(c.model),{choices:VARIANTS}) : "") +
-    (c.cli==="opencode" ? `<p class="help-note">Models from your signed-in OpenCode CLI — no API key. opencode-go models use your Go plan allowance automatically ($80/mo DeepSeek V4.1 Flash).</p>` : "") +
+    field("Or type a model (optional, overrides the list)","model_custom","",{placeholder:"provider/model, e.g. opencode-go/deepseek-v4.1-flash",full:true}) +
+    (cliFor(c.cli)==="opencode" ? field("Variant (reasoning)","variant",variantOf(c.model),{choices:VARIANTS}) : "") +
+    (cliFor(c.cli)==="opencode" ? `<p class="help-note">log in at settings to use CLI or see models or click install/sign in</p>` : "") +
     field("Goal","goal",c.goal||"",{full:true,placeholder:"Optional; blank runs automatic matching"}) +
     field("Worker loops","workers",c.workers,{type:"number",min:1,max:8}) +
-    `</div><div class="button-row form-section">${button("Install / sign in",'type="button" data-agent-setup="current"',true)}</div><div class="form-footer">${button("Start Agent",'type="submit"')}</div></form>`;
+    `</div><div class="button-row form-section">${button("Install / sign in",'type="button" data-agent-setup="current"',true)}${cliFor(c.cli)==="opencode" ? button("Refresh models",'type="button" data-agent-refresh',true) : ""}</div><div class="form-footer">${button("Start Agent",'type="submit"')}</div></form>`;
 }
 function settings() {
   return heading("", "Settings", "Interface, theme, provider credentials, and dashboard lifecycle.") + `<div class="settings-stack"><form id="preferences-form" class="panel panel-pad"><h2>When a roconstruct:// link opens</h2><p class="help-note">Choose how website work links launch. “Ask every time” offers terminal or webpage before setup.</p><div class="field-grid">${field("URI interface", "uri_mode", meta.uri_mode, {choices:[["ask","Ask every time"],["terminal","Terminal"],["web","Webpage"]]})}${field("Appearance", "theme", meta.preferences.theme, {choices:["dark","light"]})}</div><div class="form-footer">${button("Save preferences", 'type="submit"')}</div></form><div class="panel panel-pad"><h2>ChatGPT plan</h2><p class="help-note">${meta.providers.find(p=>p.name==="chatgpt")?.ready ? "Signed in. Choose a chatgpt: model in your worker settings." : "Sign in from a terminal in this fork: roc chatgpt login"}</p><p class="help-note">Uses your existing subscription limits. <a href="https://chatgpt.com/settings/usage" target="_blank" rel="noopener noreferrer">Manage usage and credit permission</a></p></div><div class="panel panel-pad"><h2>OpenCode CLI</h2><p class="help-note">${meta.providers.find(p=>p.name==="opencode")?.ready ? "Installed. Match and Agent modes list its signed-in models — no API key, no key stored here." : "Not installed. Run npm i -g opencode-ai, then opencode auth login; Match and Agent modes then list its models."}</p><p class="help-note">Go plan subscribers: opencode-go models (DeepSeek V4.1 Flash, GLM, Kimi…) draw on the plan's monthly allowance automatically ($80/mo DeepSeek V4.1 Flash on Go). Pick them from any model dropdown; a USD spend cap does not apply to them.</p></div><form id="provider-form" class="panel panel-pad"><h2>Provider credentials</h2><p class="help-note">Stored in ROC's user-local secrets file. Keys never enter run history or frontend storage.</p><div class="field-grid">${field("Provider", "provider", "", {choices:meta.providers.filter(provider=>provider.auth==="api-key").map(provider=>[provider.name,provider.name+(provider.ready ? " · ready" : " · key missing")])})}${field("API key", "key", "", {type:"password"})}</div><div class="form-footer">${button("Save key", 'type="submit"')}</div></form><div class="panel panel-pad"><h2>Session & lifecycle</h2><p class="help-note">Browser tabs may close freely. Dashboard process owns jobs. Exit stops active process trees. Provider requests already sent may still bill.</p><button class="button secondary" id="exit-dashboard">Exit ROC dashboard</button></div></div>`;
@@ -367,7 +379,7 @@ function readWorker() {
   const form=$("#worker-form"), config={...(editing ? jobs.find(job=>job.id===editing).config : meta.initial)};
   for(const input of form.querySelectorAll("[name]")) {
     const key=input.name;
-    if(input.disabled || key==="addresses" || key==="model_variant") continue;
+    if(input.disabled || key==="addresses" || key==="model_variant" || key==="model_provider") continue;
     config[key]=input.type==="checkbox" ? input.checked : ["workers","rounds","max_tokens","cloud_concurrency"].includes(key) && input.value==="auto" ? "auto" : numeric.has(key) ? (input.value==="" && nullable.has(key) ? null : Number(input.value)) : (input.value==="" && nullable.has(key) ? null : input.value);
   }
   const modelParts=String(config.model||"").split("#");
@@ -454,7 +466,7 @@ document.addEventListener("click", event=>act(async()=>{
   if(target.hasAttribute("data-close-controls")) {controlsOpen=false;$(".worker-drawer").classList.remove("open");}
   if(target.hasAttribute("data-copy-code")) {await navigator.clipboard.writeText(target.closest(".chat-code").querySelector("code").textContent);toast("Code copied");}
   if(target.id==="chat-follow"||target.id==="jump-live") {setChatFollow(true);chatSignature="";renderWorkerChat();scrollToLatest($("#worker-chat"),true);}
-  if(target.dataset.agentSetup) { const result=await api("agent-setup",{cli:$("#agent-auto-form")?.elements.cli.value||target.dataset.agentSetup});toast(result.manual ? "Run in a terminal: "+result.manual : "Opened a terminal window. Sign in there, then press Refresh."); }
+  if(target.dataset.agentSetup) { const result=await api("agent-setup",{cli:cliFor($("#agent-auto-form")?.elements.cli.value||target.dataset.agentSetup)});toast(result.manual ? "Run in a terminal: "+result.manual : "Opened a terminal window. Sign in there, then press Refresh."); }
   if(target.hasAttribute("data-agent-run")) { const data=Object.fromEntries(new FormData($("#agent-form")));const result=await api("start",{kind:"command",command:"agent",cli:data.cli,model:data.model,goal:data.goal,minutes:120});toast("Agent started");$("#console-hint").textContent="Agent run "+result.id; }
   if(target.dataset.openCommand) { selectedCommand=target.dataset.openCommand;navigate("commands"); }
   if(target.dataset.command) { selectedCommand=target.dataset.command;render(); }
@@ -491,6 +503,7 @@ document.addEventListener("click", event=>act(async()=>{
   }
   if(target.id==="confirm-cancel") $("#confirm-dialog").close();
   if(target.id==="confirm-stop") { await api("control",{id:$("#confirm-dialog").dataset.id,action:"kill"});$("#confirm-dialog").close(); }
+  if(target.hasAttribute("data-agent-refresh")) { toast("Checking OpenCode models…");await loadOpenCodeModels(true);toast(meta.agent_models?.length ? "Models refreshed" : "No OpenCode models yet: log in at settings to use CLI or see models"); }
   if(target.id==="refresh-models") { const config=readWorker();toast("Checking installed models…");localModels=(await api("models")).models;meta=await api("meta");await loadOpenCodeModels(true);render(config);toast("Models refreshed"); }
   if(target.id==="save-preset") { const name=prompt("Preset name");if(name) { const config=readWorker();await api("preferences",{preset:name,config});meta=await api("meta");render(config);toast("Preset saved"); } }
   if(target.id==="theme-button") { const theme=document.documentElement.dataset.theme==="light" ? "dark" : "light";document.documentElement.dataset.theme=theme;await api("preferences",{theme});meta.preferences.theme=theme; }
@@ -500,7 +513,7 @@ document.addEventListener("submit",event=>{
   event.preventDefault();act(async()=>{
     if(event.target.id==="worker-form") { const config=readWorker();if(editing) await api("control",{id:editing,action:"update",config:Object.fromEntries(Object.entries(config).filter(([key])=>liveKeys.has(key)))});else { const result=await api("start",{kind:"worker",config});toast("Match started");$("#console-hint").textContent="Match session "+result.id; } }
     if(event.target.id==="worker-form") {controlsOpen=false;$(".worker-drawer")?.classList.remove("open");}
-    if(event.target.id==="agent-auto-form") {const result=await api("start",{kind:"agent_worker",...readAgentAuto()});workerRun=result.id;controlsOpen=false;$(".worker-drawer")?.classList.remove("open");toast("Agent started");$("#console-hint").textContent="Agent "+result.id;}
+    if(event.target.id==="agent-auto-form") {const agent=readAgentAuto();const result=await api("start",{kind:"agent_worker",...agent,cli:cliFor(agent.cli)});workerRun=result.id;controlsOpen=false;$(".worker-drawer")?.classList.remove("open");toast("Agent started");$("#console-hint").textContent="Agent "+result.id;}
     if(event.target.id==="agent-form") { const result=await api("agent-session",Object.fromEntries(new FormData(event.target)));toast(result.manual ? "Run in a terminal: "+result.manual : "Opened the agent in a new terminal window"); }
     if(event.target.id==="command-form") { const result=await api("start",{kind:"command",...readCommand()});toast("Command started");$("#console-hint").textContent="Command run "+result.id; }
     if(event.target.id==="preferences-form") { const data=Object.fromEntries(new FormData(event.target));await api("preferences",data);meta=await api("meta");document.documentElement.dataset.theme=data.theme;toast("Preferences saved"); }
@@ -512,8 +525,9 @@ document.addEventListener("change",event=>act(async()=>{
   if(event.target.id==="worker-loop") {workerLoop=event.target.value;chatSignature="";renderWorkerChat();}
   if(event.target.id==="worker-run") await selectWorker(event.target.value);
   if(event.target.id==="saved-presets"&&event.target.value) render(meta.preferences.presets[event.target.value]);
-  if(event.target.matches("#agent-auto-form [name=cli]")) {readAgentAuto();agentAutoConfig.model="";render();if(agentAutoConfig.cli==="opencode")await loadOpenCodeModels(true);}
+  if(event.target.matches("#agent-auto-form [name=cli]")) {readAgentAuto();agentAutoConfig.model="";render();if(cliFor(agentAutoConfig.cli)==="opencode")await loadOpenCodeModels(true);}
   if(event.target.matches("#worker-form [name=model]")&&!editing)render(readWorker());
+  if(event.target.matches("#worker-form [name=model_provider]")) {matchProvider=event.target.value;render(readWorker());}
   if(event.target.closest("#command-form")) await previewCommand();
 }));
 for(const id of ["log-job","log-level","log-search","log-wrap"]) $("#"+id).addEventListener("input",()=>{renderLogs();});
@@ -626,3 +640,4 @@ async function loadSessionLog(id) {
   logs.push(...rows.filter(r=>!keys.has(r.job+":"+r.seq)));
   logs.sort((a,b)=>a.time-b.time);logs=logs.slice(-3000);
 }
+

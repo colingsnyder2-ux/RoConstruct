@@ -25,19 +25,21 @@ OLLAMA = "http://127.0.0.1:11434"
 
 BUILTINS = {
     "chatgpt": {"kind": "chatgpt-plan", "base_url": "https://api.openai.com/v1", "key_env": ""},
+    # `defaults` are the suggested remote models shown in the dashboard.
     # Runs through the signed-in OpenCode CLI (`opencode run`): OpenCode Console
     # and Go subscription allowances apply, and no API key is stored here.
     "opencode": {"kind": "opencode-cli", "base_url": "", "key_env": ""},
     "nvidia": {"kind": "openai-chat", "base_url": "https://integrate.api.nvidia.com/v1",
-               "key_env": "NVIDIA_API_KEY"},
+               "key_env": "NVIDIA_API_KEY", "defaults": ["qwen/qwen2.5-coder-32b-instruct"]},
     "deepseek": {"kind": "openai-chat", "base_url": "https://api.deepseek.com",
-                 "key_env": "DEEPSEEK_API_KEY"},
+                 "key_env": "DEEPSEEK_API_KEY", "defaults": ["deepseek-flash"]},
     "openai": {"kind": "openai-responses", "base_url": "https://api.openai.com/v1",
-               "key_env": "OPENAI_API_KEY"},
+               "key_env": "OPENAI_API_KEY", "defaults": ["gpt-5-mini"]},
     "anthropic": {"kind": "anthropic-messages", "base_url": "https://api.anthropic.com/v1",
-                  "key_env": "ANTHROPIC_API_KEY", "api_version": "2023-06-01"},
+                  "key_env": "ANTHROPIC_API_KEY", "api_version": "2023-06-01",
+                  "defaults": ["claude-sonnet-4-6"]},
     "gemini": {"kind": "gemini", "base_url": "https://generativelanguage.googleapis.com/v1beta",
-                "key_env": "GEMINI_API_KEY"},
+                "key_env": "GEMINI_API_KEY", "defaults": ["gemini-2.5-flash"]},
 }
 KINDS = {"openai-chat", "openai-responses", "anthropic-messages", "gemini"}
 SYSTEM = "Reconstruct compact valid C++ only. Never emit inline assembly. Follow the user task exactly."
