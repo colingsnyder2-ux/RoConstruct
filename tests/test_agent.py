@@ -491,3 +491,16 @@ def test_reuse_gate_sweep_runs_once_per_source(tmp_path, monkeypatch):
                                   (tmp_path / "work" / "agent-memory" / "attempts.jsonl").read_text().splitlines()])
     research.reuse(tmp_path, task, [], swept=swept)
     assert len(calls) == 1
+
+
+def test_unavailable_variant_retries_with_model_default(monkeypatch):
+    calls = []
+    monkeypatch.setattr(agent, "_run_once", lambda cli, prompt, model, *args:
+                        calls.append(model) or (agent.VARIANT_UNAVAILABLE if "#" in model else 0))
+    assert agent.run_agent("opencode", "p", "opencode/space-bunny-free#minimal", 10, lambda *a: None) == 0
+    assert calls == ["opencode/space-bunny-free#minimal", "opencode/space-bunny-free"]
+    lines = []
+    agent.show('{"type":"error","error":{"name":"UnknownError","data":{"message":"Variant unavailable for x: minimal"}}}',
+               lines.append)
+    assert lines == ["Agent error: Variant unavailable for x: minimal"]
+    assert agent.VARIANT.search(agent._error_text('{"type":"error","error":{"data":{"message":"Variant unavailable"}}}'))

@@ -281,6 +281,17 @@ def _finish(key, log):
         _took(time.monotonic() - start, label, log)
 
 
+def _error_message(event):
+    """Error text wherever the CLI put it (opencode nests it in error.data.message); else the raw event."""
+    error = event.get("error")
+    for value in (event.get("message"), error if isinstance(error, str) else None,
+                  (error or {}).get("message") if isinstance(error, dict) else None,
+                  ((error or {}).get("data") or {}).get("message") if isinstance(error, dict) else None):
+        if isinstance(value, str) and value.strip():
+            return value.strip()
+    return json.dumps(event, ensure_ascii=False)[:300]
+
+
 def show(line, log):
     """One stream-json event from `claude -p` as a readable console line."""
     try:
@@ -310,11 +321,11 @@ def show(line, log):
         elif event["type"] == "item.completed" and kind == "file_change":
             log("Edited: " + ", ".join(change.get("path", "") for change in item.get("changes", [])))
         elif event["type"] == "item.completed" and kind == "error":
-            log("Agent error: " + item.get("message", "Unknown error"))
+            log("Agent error: " + _error_message(item))
     elif event.get("type") == "turn.completed":
         log("Agent turn complete.")
     elif event.get("type") in ("error", "turn.failed"):
-        log("Agent error: " + (event.get("message") or event.get("error", {}).get("message", "Unknown error")))
+        log("Agent error: " + _error_message(event))
     elif event.get("type") == "assistant":
         for block in event.get("message", {}).get("content", []):
             if block.get("type") == "text" and block.get("text", "").strip():
@@ -370,6 +381,8 @@ RATE = re.compile(r"rate.?limit|usage limit|too many requests|overloaded|quota (
                   r"model is unavailable", re.I)
 TRANSIENT = 76  # the CLI exited on its own right after such errors: worth running again
 TIME_LIMIT = 77  # the per-session time limit was reached; the caller decides whether to continue
+VARIANT_UNAVAILABLE = 78  # the model rejected the "#variant" suffix; retry with its default
+VARIANT = re.compile(r"variant unavailable|unknown variant|invalid variant", re.I)
 MAX_EXTENSIONS = 4  # at most this many continued sessions after a limit, so runs stay bounded
 CONTINUE_PROMPT = ("Your {minutes}-minute work session ended at the time limit. Review what you did since it started "
                    "(work/agent-memory/attempts.jsonl and this campaign's recorded trials). If you made good, verified "
@@ -483,6 +496,10 @@ def run_agent(cli, prompt, model=None, minutes=120, log=print, goal=False, switc
             return 1
         started = datetime.now(timezone.utc).isoformat()
         code = _segment(current, prompt, name, left, log, goal, switch_after, started)
+        if code == VARIANT_UNAVAILABLE and name and "#" in name:
+            name = name.split("#")[0]
+            log("  %s does not support that reasoning variant; retrying with its default." % name)
+            code = _segment(current, prompt, name, left, log, goal, switch_after, started)
         if code in (RATE_LIMITED, TRANSIENT):
             log("  %s %s is rate limited or unavailable; retrying the same model in 3 minutes." %
                 (current, name or ""))
@@ -569,6 +586,10 @@ def _run_once(cli, prompt, model, minutes, log, goal, switch_minutes):
         for line in process.stdout:
             show(line, log)
             error = _error_text(line)
+            if VARIANT.search(error):
+                _kill(process)
+                process.wait()
+                return VARIANT_UNAVAILABLE
             if DEAD.search(error) or RATE.search(error):
                 _kill(process)
                 process.wait()
