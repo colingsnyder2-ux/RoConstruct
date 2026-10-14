@@ -139,6 +139,8 @@ class Dashboard:
         self.sequence = 0
         self.last_save = 0
         self.closed = False
+        self.next_agent_start = 0
+        self.agent_start_timer = None
         self.token = secrets.token_urlsafe(32)
         self.settings = worker.load_settings()
         self.initial = {**DEFAULTS, "user": self.settings.get("user", ""),
@@ -317,7 +319,9 @@ class Dashboard:
             job.update(owner=(config or {}).get("user", self.initial.get("user") or os.environ.get("USERNAME", "local")),
                        pc=socket.gethostname())
             self.jobs[job_id] = job
-            self.event(job_id, "state", message="Starting" if kind != "command" else "Queued")
+            self.event(job_id, "state", message="Queued; agent launches are staggered to bound startup memory"
+                       if kind == "agent_worker" else
+                       "Starting" if kind != "command" else "Queued")
             self.save()
             self.schedule()
             return job_id
@@ -325,12 +329,25 @@ class Dashboard:
     def schedule(self):
         if self.closed:
             return
+        agent_wait = max(0, self.next_agent_start - time.monotonic())
+        if agent_wait and self.agent_start_timer is None and any(
+                row["kind"] == "agent_worker" and row["status"] == "queued" for row in self.jobs.values()):
+            def resume_starts():
+                with self.lock:
+                    self.agent_start_timer = None
+                    self.schedule()
+            self.agent_start_timer = threading.Timer(agent_wait, resume_starts)
+            self.agent_start_timer.daemon = True
+            self.agent_start_timer.start()
         command_busy = any(self.jobs[job_id]["kind"] == "command" for job_id in self.processes)
         job = next((row for row in self.jobs.values() if row["status"] == "queued"
-                    and (row["kind"] != "command" or not command_busy)), None)
+                    and (row["kind"] != "command" or not command_busy)
+                    and (row["kind"] != "agent_worker" or not agent_wait)), None)
         if job is None:
             return
         job_id = job["id"]
+        if job["kind"] == "agent_worker":
+            self.next_agent_start = time.monotonic() + max(0, float(self.settings.get("agent_start_interval", 15)))
         argv = [sys.executable, "-u"] + (["-m", "roc.gui_worker"] if job["kind"] == "worker"
                                          else [str(ROOT / "roc.py"), *job["args"]])
         env = dict(os.environ, PYTHONIOENCODING="utf-8", PYTHONUNBUFFERED="1", ROC_GUI_EVENTS="1")
@@ -533,6 +550,8 @@ class Dashboard:
     def shutdown(self):
         with self.lock:
             self.closed = True
+            if self.agent_start_timer is not None:
+                self.agent_start_timer.cancel()
             self.changed.notify_all()
             for job in self.jobs.values():
                 if job["status"] == "queued":

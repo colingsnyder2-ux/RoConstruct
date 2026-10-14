@@ -205,8 +205,10 @@ bills the CLI's own sign-in (Claude Pro/Max, ChatGPT plan) or `ANTHROPIC_API_KEY
 
 Claude runs with `acceptEdits` and an explicit tool allowlist; Codex with `--sandbox workspace-write` and `approval_policy="never"`
 (writes limited to this folder). The server re-verifies every submission.
-Dashboard worker tabs start concurrently; only command jobs queue behind other
-commands. Goal runs skip unchanged reported blockers between cycles. Local 100%
+Dashboard agent tabs launch 15 seconds apart, then run concurrently without a session cap.
+Heavy target planning and memory sync take turns across local processes to bound startup
+RAM; per-tab model and worker parameters stay unchanged. Command jobs queue behind
+other commands. Goal runs skip unchanged reported blockers between cycles. Local 100%
 and already-exact receipts are not new wins. OpenCode appears in the CLI selector,
 loads installed models, and runs with its own standalone server per worker.
 Goal shortlists mix 14 near-misses (95–99%), 7 largest remaining functions and

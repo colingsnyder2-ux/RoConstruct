@@ -746,3 +746,19 @@ def test_snapshot_pages_sources_and_keeps_three_donors(monkeypatch, tmp_path):
     assert rows[3]["score"] == 100 and rows[3]["source"] == ""
     assert rows[4]["source"] == "repair me"
     assert sum(bool(r["source"]) for r in rows if r["score"] == 100) == 3
+
+
+def test_snapshot_bounds_behavior_metadata_before_planning(monkeypatch, tmp_path):
+    monkeypatch.setattr(agent_auto, "ROOT", tmp_path)
+    monkeypatch.setattr(agent_auto.match.clients, "load", lambda: {"C": {}})
+    folder = tmp_path / "work" / "C"
+    folder.mkdir(parents=True)
+    (folder / "functions.jsonl").write_text(json.dumps(dict(addr="00000001", shape="same", size=20,
+        callers=list(range(1000)), constants=list(range(100)), relocs=list(range(1000)))), encoding="utf-8")
+    class Api:
+        def call(self, *a, **kw):
+            return []
+    row = agent_auto.snapshot("C", Api())[0]
+    assert row["callers"] == [0,1,2,3]
+    assert row["constants"] == list(range(8))
+    assert "relocs" not in row

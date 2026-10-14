@@ -381,6 +381,7 @@ RATE = re.compile(r"rate.?limit|usage limit|too many requests|overloaded|quota (
                   r"model is unavailable", re.I)
 TRANSIENT = 76  # the CLI exited on its own right after such errors: worth running again
 TIME_LIMIT = 77  # the per-session time limit was reached; the caller decides whether to continue
+RUNTIME_FAILED = 79  # Do not retry a crashed binary with another model or goal cycle.
 VARIANT_UNAVAILABLE = 78  # the model rejected the "#variant" suffix; retry with its default
 VARIANT = re.compile(r"variant unavailable|unknown variant|invalid variant", re.I)
 MAX_EXTENSIONS = 4  # at most this many continued sessions after a limit, so runs stay bounded
@@ -595,6 +596,7 @@ def _run_once(cli, prompt, model, minutes, log, goal, switch_minutes):
                                text=True, encoding="utf-8", errors="replace", env=environment)
 
     hit = []
+    runtime_failed = False
 
     def expire():
         hit.append(True)
@@ -618,7 +620,8 @@ def _run_once(cli, prompt, model, minutes, log, goal, switch_minutes):
                 pass
         for line in process.stdout:
             show(line, log)
-            if "Illegal instruction" in line or "Bun has crashed" in line:
+            if any(text in line for text in ("Illegal instruction", "Bun has crashed", "MemoryExhaustion", "panic(main thread):")):
+                runtime_failed = True
                 log("Agent runtime crashed before model output. Update/reinstall OpenCode or select another CLI; restarting unchanged runtime will fail again.")
             error = _error_text(line)
             if VARIANT.search(error):
@@ -630,7 +633,7 @@ def _run_once(cli, prompt, model, minutes, log, goal, switch_minutes):
                 process.wait()
                 return RATE_LIMITED
         code = process.wait()
-        return TIME_LIMIT if hit else code or int(input_closed)
+        return RUNTIME_FAILED if runtime_failed else TIME_LIMIT if hit else code or int(input_closed)
     except BaseException:
         _kill(process)
         raise
@@ -869,6 +872,9 @@ def run_goal(cli, goal, model=None, minutes=120, log=print, continuous=False,
                             outcome="reported", error=reason[:500]))
             sync_memory(server, token, user, log=log)
         if not continuous:
+            return code
+        if code == RUNTIME_FAILED:
+            log("Crashed CLI runtime; stopping continuous goal. Repair CLI before restarting.")
             return code
         failures = failures + 1 if code else 0
         if failures >= 3:

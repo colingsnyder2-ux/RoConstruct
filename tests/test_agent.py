@@ -539,3 +539,23 @@ def test_history_memory_exposes_more_records_without_expanding_prompt_default(mo
     assert len(records) == 200
     assert records[0]["improvements"] == "full text 20"
     assert records[-1]["improvements"] == "full text 219"
+
+
+def test_runtime_crash_stops_continuous_goal_immediately(monkeypatch, tmp_path):
+    monkeypatch.setattr(agent, "ROOT", tmp_path)
+    calls = []
+    monkeypatch.setattr(agent, "run_agent", lambda *a, **kw: calls.append(a) or agent.RUNTIME_FAILED)
+    monkeypatch.setattr(agent.time, "sleep", lambda seconds: pytest.fail("Must not retry runtime crash"))
+    assert agent.run_goal("opencode", "match", continuous=True, log=lambda *a: None) == agent.RUNTIME_FAILED
+    assert len(calls) == 1
+
+
+def test_bun_crash_is_not_mistaken_for_success(monkeypatch):
+    import io
+    from unittest.mock import Mock
+    process = Mock(stdin=io.StringIO(), stdout=io.StringIO("panic(main thread): Segmentation fault\nBun has crashed\n"))
+    process.wait.return_value = 0
+    monkeypatch.setattr(agent.shutil, "which", lambda cli: cli)
+    monkeypatch.setattr(agent, "command", lambda *a: ["opencode", "run"])
+    monkeypatch.setattr(agent.subprocess, "Popen", lambda *a, **kw: process)
+    assert agent.run_agent("opencode", "prompt", log=lambda *a: None) == agent.RUNTIME_FAILED

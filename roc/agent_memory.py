@@ -1,4 +1,6 @@
 """Share bounded experiment reports through the existing group server."""
+import contextlib
+import time
 import hashlib
 import json
 from pathlib import Path
@@ -135,7 +137,36 @@ remember = lambda rows: len([append_record(row) for row in (rows if isinstance(r
 save = remember
 
 
+@contextlib.contextmanager
+def planning_lock():
+    """Serialize memory sync and target loading across local worker processes."""
+    from roc import research
+    deadline = time.monotonic() + 900
+    waiting = False
+    while True:
+        lock = research.job_lock(ROOT / "work" / "agent-memory" / "planning.lock")
+        try:
+            lock.__enter__()
+            break
+        except research.ResearchJobBusy:
+            if not waiting:
+                print("Waiting for another agent's planning/memory sync to finish.", flush=True)
+                waiting = True
+            if time.monotonic() >= deadline:
+                raise RuntimeError("Agent planning busy for 15 minutes; inspect active planning before retrying")
+            time.sleep(1)
+    try:
+        yield
+    finally:
+        lock.__exit__(None, None, None)
+
+
 def shared(server=None, token=None, user=None, upload=False):
+    with planning_lock():
+        return _shared(server, token, user, upload)
+
+
+def _shared(server=None, token=None, user=None, upload=False):
     settings = worker.load_settings()
     server = server or settings.get("server")
     user = user or settings.get("user")
@@ -143,7 +174,11 @@ def shared(server=None, token=None, user=None, upload=False):
         return {"records": [], "available": False, "error": "Configure a group server to share memory"}
     path = ROOT / "work" / "agent-memory" / ("shared-" + hashlib.sha256(server.encode()).hexdigest()[:12] + ".json")
     try:
-        cached = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {"cursor": 0, "records": []}
+        if path.exists():
+            with path.open(encoding="utf-8") as stream:
+                cached = json.load(stream)
+        else:
+            cached = {"cursor": 0, "records": []}
     except ValueError:
         cached = {"cursor": 0, "records": []}
     api = worker.Api(server, token or settings.get("token"))
@@ -167,14 +202,17 @@ def shared(server=None, token=None, user=None, upload=False):
                             cached["rejected"] = cached.get("rejected", 0) + 1
                 cached["uploaded"] = start + len(batch)
         while True:
-            result = api.call("/v1/agent-memory?after=%s" % cached["cursor"], timeout=5)
+            result = api.call("/v1/agent-memory?after=%s&limit=100" % cached["cursor"], timeout=5)
             cached.update(cursor=result["cursor"], lessons=result["lessons"], context=result.get("context", {}))
             cached["records"] = (cached["records"] + result["records"])[-10000:]
             if not result.get("more"):
                 break
         path.parent.mkdir(parents=True, exist_ok=True)
         from roc import tasks
-        tasks.write_text(path, json.dumps(cached))
+        temporary = path.with_suffix(".tmp")
+        with temporary.open("w", encoding="utf-8") as stream:
+            json.dump(cached, stream)
+        temporary.replace(path)
         paths = []
         for name, content in cached.get("context", {}).items():
             if name not in CONTEXT_FILES or not isinstance(content, str):

@@ -338,6 +338,7 @@ class DashboardTests(unittest.TestCase):
         self.assertEqual(self.app.jobs[job_id]["status"], "cancelled")
 
     def test_agent_tabs_start_while_another_worker_is_running(self):
+        self.app.settings["agent_start_interval"] = 0
         first = Mock(pid=1001, stdin=io.StringIO())
         second = Mock(pid=1002, stdin=io.StringIO())
         with patch.object(gui.subprocess, "Popen", side_effect=[first, second]), \
@@ -505,3 +506,22 @@ def test_restart_worker_preserves_parameters_and_history():
     app.schedule.assert_called_once()
     with __import__("pytest").raises(ValueError, match="already active"):
         app.control({"id": "saved", "action": "restart"})
+
+
+
+def test_agent_starts_stagger_without_limiting_running_sessions(tmp_path):
+    app = gui.Dashboard(directory=tmp_path)
+    app.settings["agent_start_interval"] = 15
+    with patch.object(gui.subprocess, "Popen", side_effect=[Mock(pid=1001), Mock(pid=1002), Mock(pid=1003)]), \
+         patch.object(gui.threading, "Thread"), patch.object(gui.threading, "Timer"):
+        ids = [app.start({"kind": "agent_worker", "cli": "codex", "client": "2008-06"}) for _ in range(3)]
+        assert [app.jobs[i]["status"] for i in ids] == ["running", "queued", "queued"]
+        assert len(app.processes) == 1
+        app.next_agent_start = 0
+        app.schedule()
+        assert len(app.processes) == 2
+        app.next_agent_start = 0
+        app.schedule()
+        assert len(app.processes) == 3
+        assert all(app.jobs[i]["status"] == "running" for i in ids)
+        assert all(app.jobs[i]["config"]["cli"] == "codex" for i in ids)

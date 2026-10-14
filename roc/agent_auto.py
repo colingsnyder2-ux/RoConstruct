@@ -36,11 +36,27 @@ def history():
 
 
 def snapshot(client="2008-06", api=None):
+    with agent_memory.planning_lock():
+        return _snapshot(client, api)
+
+
+def _snapshot(client="2008-06", api=None):
     if client not in match.clients.load():
         raise ValueError("Unknown client: " + client)
     path = ROOT / "work" / client
     with (path / "functions.jsonl").open(encoding="utf-8") as stream:
-        functions = [json.loads(line) for line in stream if line.strip()]
+        functions = []
+        for line in stream:
+            if not line.strip():
+                continue
+            row = json.loads(line)
+            # Planning uses bounded evidence; full metadata stays in functions.jsonl.
+            for key in ("relocs", "data_refs", "external_calls", "siblings", "calls", "branches"):
+                row.pop(key, None)
+            for key, value in row.items():
+                if isinstance(value, list):
+                    row[key] = value[:4 if key in ("callers", "call_targets") else 8]
+            functions.append(row)
     if api:
         saved, donor_counts = {}, Counter()
         shapes = {row["addr"]: row.get("shape") for row in functions}
@@ -707,6 +723,8 @@ def library_cycle(server, user, token, cli, model, minutes, log, client, slot=No
     agent_memory.shared(server, token, user, upload=True)
     log("Library campaign finished: %d receipt-backed gains; %d server gains observed; %s" %
         (len(gains), len(observed), record["outcome"]))
+    if code == agent.RUNTIME_FAILED:
+        raise SystemExit(agent.RUNTIME_FAILED)
     return dict(attempted=len(campaign["targets"]), matched=sum(score == 100 for score in gains.values()),
                 improved=sum(score < 100 for score in gains.values()), errors=int(bool(code or finalization_errors)))
 
@@ -725,12 +743,11 @@ def run(server, user, token=None, cli="claude", model=None, workers=2, jobs=24, 
             failures += 1
             if failures >= 3:
                 raise
-            failures += 1
-            if failures >= 3:
-                raise
             log("Infrastructure failure; retrying in 30 seconds: " + str(error))
             time.sleep(30)
             continue
+        if totals.get("runtime_failed"):
+            raise SystemExit(agent.RUNTIME_FAILED)
         if not continuous:
             return totals
         failures = failures + 1 if totals["errors"] else 0
@@ -896,6 +913,8 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
                         model_unavailable.set()
                         with condition:
                             totals["errors"] += 1
+                            if code == agent.RUNTIME_FAILED:
+                                totals["runtime_failed"] = True
                         event("log", slot=slot, message="Agent CLI exited with code %s; verifying preserved best sources" % code)
                 elif active:
                     skip_reason = "no_eligible_repair"
