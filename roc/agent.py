@@ -590,6 +590,7 @@ def _run_once(cli, prompt, model, minutes, log, goal, switch_minutes):
         temporary.mkdir(parents=True, exist_ok=True)
         environment.update(TEMP=str(temporary), TMP=str(temporary), TMPDIR=str(temporary))
     environment["ROC_AGENT"] = "1"  # roc submit then asks for a success summary
+    log("Launching %s model %s." % (cli, model or "CLI default"))
     process = subprocess.Popen(argv, cwd=ROOT, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
                                text=True, encoding="utf-8", errors="replace", env=environment)
 
@@ -617,6 +618,8 @@ def _run_once(cli, prompt, model, minutes, log, goal, switch_minutes):
                 pass
         for line in process.stdout:
             show(line, log)
+            if "Illegal instruction" in line or "Bun has crashed" in line:
+                log("Agent runtime crashed before model output. Update/reinstall OpenCode or select another CLI; restarting unchanged runtime will fail again.")
             error = _error_text(line)
             if VARIANT.search(error):
                 _kill(process)
@@ -804,7 +807,9 @@ def run_goal(cli, goal, model=None, minutes=120, log=print, continuous=False,
         from roc import agent_auto
         agent_auto.prepare_clients(client, log)
     while True:
+        log("Preparing goal: syncing experiment memory.")
         shared = sync_memory(server, token, user, log=log)
+        log("Preparing goal: loading paged server targets; AI starts after shortlist is ready.")
         targets = goal_targets(server, token, client, shared) if server else []
         if server and not targets:
             log("No fresh source-backed targets; waiting for new evidence.")

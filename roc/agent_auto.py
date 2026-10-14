@@ -39,9 +39,30 @@ def snapshot(client="2008-06", api=None):
     if client not in match.clients.load():
         raise ValueError("Unknown client: " + client)
     path = ROOT / "work" / client
-    functions = [json.loads(line) for line in (path / "functions.jsonl").read_text().splitlines()]
+    with (path / "functions.jsonl").open(encoding="utf-8") as stream:
+        functions = [json.loads(line) for line in stream if line.strip()]
     if api:
-        saved = {row["addr"]: row for row in api.call("/v1/sources?client=" + client, timeout=120)}
+        saved, donor_counts = {}, Counter()
+        shapes = {row["addr"]: row.get("shape") for row in functions}
+        after = ""
+        while True:
+            rows = api.call("/v1/source-page?client=%s&after=%s&limit=1000" % (client, after), timeout=120)
+            if not rows:
+                break
+            for row in rows:
+                shape = shapes.get(row["addr"])
+                # Three real donors per shape suffice; exact bodies dominate the corpus.
+                if row["score"] == 100 and (not shape or donor_counts[shape] >= 3):
+                    saved[row["addr"]] = {"score": 100, "source_directives": match.directives(row["source"])}
+                else:
+                    saved[row["addr"]] = row
+                    if row["score"] == 100:
+                        donor_counts[shape] += 1
+            cursor = rows[-1]["addr"]
+            if cursor <= after:
+                raise ValueError("Source page did not advance; update group server")
+            after = cursor
+
     else:
         scores = json.loads((path / "scores.json").read_text()) if (path / "scores.json").exists() else {}
         saved = {}
@@ -51,7 +72,7 @@ def snapshot(client="2008-06", api=None):
             if source.exists():
                 saved[addr] = {"score": scores[addr], "source": source.read_text(encoding="utf-8", errors="replace")}
     return [dict(row, **{key: saved.get(row["addr"], {}).get(key, default)
-                        for key, default in (("score", 0), ("source", ""))}) for row in functions]
+                        for key, default in (("score", 0), ("source", ""), ("source_directives", {}))}) for row in functions]
 
 
 def plan(rows, max_size=512, profile="claude:default", records=None, client="2008-06", min_score=70):
@@ -219,7 +240,7 @@ def attributed_families(rows):
     labels, anchors = {}, {}
     for row in ordered:
         label = libs.library_of(row.get("unit", ""))
-        recipe = match.directives(row.get("source") or "").get("lib", "").split()
+        recipe = (row.get("source_directives") or match.directives(row.get("source") or "")).get("lib", "").split()
         family = library_family(libs.RECIPES[recipe[0]]["src"]) if recipe and recipe[0] in libs.RECIPES else label
         if row.get("score") == 100 and recipe and family in libs.NAMES + ["libjpeg", "libpng", "zlib", "Wild Magic"] and (row.get("size", 0) >= 64 or family == label):
             label = family
@@ -246,7 +267,7 @@ def library_campaigns(rows, client, records):
     attributed = attributed_families(rows)
     assigned = set()
     for row in rows:
-        recipe = match.directives(row.get("source") or "").get("lib", "").split()
+        recipe = (row.get("source_directives") or match.directives(row.get("source") or "")).get("lib", "").split()
         if recipe and recipe[0] in libs.RECIPES and row.get("kind", "code") == "code":
             library = libs.RECIPES[recipe[0]]["src"]
             if client == "2008-06" and library.startswith("wildmagic"):
@@ -262,7 +283,7 @@ def library_campaigns(rows, client, records):
                 continue
             groups[family].append(dict(row, recipe="", attribution="RTTI or matched neighbours"))
             assigned.add(row["addr"])
-    categories = [row for row in rows if row["addr"] not in assigned and not match.directives(row.get("source") or "").get("lib")]
+    categories = [row for row in rows if row["addr"] not in assigned and not (row.get("source_directives") or match.directives(row.get("source") or "")).get("lib")]
     for area in plan(categories, max_size=0, records=[], client=client)["areas"]:
         groups["Category: " + area["title"]].extend(dict(row, recipe="") for row in area["targets"])
     campaigns = []

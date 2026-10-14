@@ -491,20 +491,21 @@ def append(path, row):
 
 
 def journal_records(path):
-    """Recover concatenated objects from older writers without discarding trials."""
+    """Read one line at a time; recover concatenated objects from older writers."""
     decoder = json.JSONDecoder()
     rows = []
     if path.exists():
-        for line in path.read_text(encoding="utf-8").splitlines():
-            remaining = line.strip()
-            while remaining:
-                try:
-                    row, end = decoder.raw_decode(remaining)
-                except ValueError:
-                    break
-                if isinstance(row, dict):
-                    rows.append(row)
-                remaining = remaining[end:].lstrip()
+        with path.open(encoding="utf-8") as stream:
+            for line in stream:
+                remaining = line.strip()
+                while remaining:
+                    try:
+                        row, end = decoder.raw_decode(remaining)
+                    except ValueError:
+                        break
+                    if isinstance(row, dict):
+                        rows.append(row)
+                    remaining = remaining[end:].lstrip()
     return rows
 
 

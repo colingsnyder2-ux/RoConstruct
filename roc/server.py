@@ -489,6 +489,14 @@ class Store:
             return dict(results[0], before="", after=rows[0][6], timeline=[], commands=[], rounds=[])
         return results
 
+    def source_page(self, client, after="", limit=1000):
+        """Bound source transfers so concurrent agents do not decompress the entire corpus."""
+        with self.lock:
+            rows = self.db.execute("SELECT addr, score, user, source FROM funcs WHERE client = ? "
+                                   "AND addr > ? AND score >= 1 AND source IS NOT NULL ORDER BY addr LIMIT ?",
+                                   (client, after, max(1, min(limit, 1000)))).fetchall()
+        return [{"addr": a, "score": score, "user": user, "source": source} for a, score, user, source in rows]
+
     def sources(self, client, min_score=1, scores_only=False):
         """Every stored source for a client (for `roc pull`); scores_only leaves out the source text."""
         if scores_only:
@@ -579,6 +587,9 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None):
             if url.path == "/v1/source":
                 best = store.best(q.get("client", ""), q.get("addr", ""))
                 return self.send(200 if best else 404, best or {"error": "unknown function"})
+            if url.path == "/v1/source-page":
+                return self.send(200, store.source_page(q.get("client", ""), q.get("after", ""),
+                                                       int(q.get("limit", 1000))))
             if url.path == "/v1/sources":
                 return self.send(200, store.sources(q.get("client", ""), int(q.get("min_score", 1)),
                                                     q.get("scores") == "1"))

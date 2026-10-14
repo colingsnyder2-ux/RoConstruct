@@ -721,3 +721,28 @@ def test_continuous_stops_after_three_failed_cycles(monkeypatch):
     with pytest.raises(RuntimeError, match="Three consecutive"):
         agent_auto.run("server", "me", continuous=True, log=lambda *a: None)
     assert len(calls) == 3
+
+
+def test_snapshot_pages_sources_and_keeps_three_donors(monkeypatch, tmp_path):
+    monkeypatch.setattr(agent_auto, "ROOT", tmp_path)
+    monkeypatch.setattr(agent_auto.match.clients, "load", lambda: {"C": {}})
+    folder = tmp_path / "work" / "C"
+    folder.mkdir(parents=True)
+    functions = [dict(addr="%08x" % i, shape="same", size=20) for i in range(5)]
+    (folder / "functions.jsonl").write_text("\n".join(json.dumps(r) for r in functions), encoding="utf-8")
+    pages = [[dict(addr=r["addr"], score=100 if i<4 else 90, source="int f(){return %s;}" % i)
+              for i,r in enumerate(functions[:3])],
+             [dict(addr=functions[3]["addr"], score=100, source="unused donor"),
+              dict(addr=functions[4]["addr"], score=90, source="repair me")], []]
+    calls = []
+    class Api:
+        def call(self, path, timeout):
+            calls.append(path)
+            return pages.pop(0)
+    rows = agent_auto.snapshot("C", Api())
+    assert all("/v1/source-page?" in path for path in calls)
+    assert "after=00000002" in calls[1]
+    assert "after=00000004" in calls[2]
+    assert rows[3]["score"] == 100 and rows[3]["source"] == ""
+    assert rows[4]["source"] == "repair me"
+    assert sum(bool(r["source"]) for r in rows if r["score"] == 100) == 3
