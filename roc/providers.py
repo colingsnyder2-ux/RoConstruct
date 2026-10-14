@@ -201,8 +201,7 @@ def secret(key_env):
     except (OSError, ValueError, TypeError):
         return ""
     value = data.get(key_env) if isinstance(data, dict) else ""
-    return value.strip() if isinstance(value, str) else "">
-
+    return value.strip() if isinstance(value, str) else ""
 
 def key_available(key_env):
     return bool(secret(key_env))
