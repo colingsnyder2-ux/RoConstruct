@@ -1409,7 +1409,8 @@
    "lmathlib.c",
    "lobject.c",
    "lstrlib.c",
-   "lvm.c"
+   "lvm.c",
+   "roc_unit_9835aad68266b897.cpp"
   ]
  },
  "lua-5.1.2-rbx-dll": {
@@ -1664,6 +1665,8 @@
    "script/LuaInstanceBridge.cpp",
    "script/LuaMemory.cpp",
    "script/Script.cpp",
+   "script/ScriptContext.cpp",
+   "tool/RunDragger.cpp",
    "util/Debug.cpp",
    "util/ExponentialRunningAverage.cpp",
    "util/Extents.cpp",
@@ -1677,11 +1680,15 @@
    "util/RunningAverage.cpp",
    "util/boost.cpp",
    "v8datamodel/BrickColor.cpp",
+   "v8datamodel/Camera.cpp",
    "v8datamodel/DebrisService.cpp",
    "v8datamodel/FaceInstance.cpp",
+   "v8datamodel/Hopper.cpp",
    "v8datamodel/ICameraOwner.cpp",
+   "v8datamodel/ICharacterSubject.cpp",
    "v8datamodel/Lighting.cpp",
    "v8datamodel/ModelInstance.cpp",
+   "v8datamodel/PartInstance.cpp",
    "v8datamodel/SafeChat.cpp",
    "v8datamodel/Selection.cpp",
    "v8datamodel/TimerService.cpp",
