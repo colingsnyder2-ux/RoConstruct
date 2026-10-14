@@ -588,8 +588,17 @@ def known_failures(records):
             and r.get("outcome") in ("no_gain", "compile_failed") for addr in r.get("addresses") or ()}
 
 
-def reuse(root, task, portfolio, tried=frozenset()):
-    """Donor verification and normal target checks decide; shape alone never accepts."""
+def gate_sweeps(records):
+    """(addr, source hash) pairs whose compiler-gate sweep already ran, on any PC."""
+    return {(addr, r["source_hash"]) for r in records if r.get("kind") == "reuse_gates" and r.get("source_hash")
+            for addr in r.get("addresses") or ()}
+
+
+def reuse(root, task, portfolio, tried=frozenset(), swept=frozenset()):
+    """Donor verification and normal target checks decide; shape alone never accepts.
+
+    The compiler-gate sweep runs once per (function, source): later sessions skip it.
+    """
     client = task.get("client", CLIENT)
     source_path = Path(task["path"])
     asm = None
@@ -606,9 +615,13 @@ def reuse(root, task, portfolio, tried=frozenset()):
             portfolio.append(donor["source"])
         except match.CompileError:
             continue
-    if task["before"] >= 90:
+    source_hash = digest(task["source"])
+    if task["before"] >= 90 and (task["addr"], source_hash) not in swept:
         portfolio += [source for source, _, _ in variants(task["source"], profiles=GATES, client=client,
             builds=BUILDS if client == CLIENT else (clients.load()[client]["compiler_build"],))]
+        append(root / "work" / "agent-memory" / "attempts.jsonl",
+               dict(kind="reuse_gates", date=datetime.now(timezone.utc).isoformat(), client=client,
+                    addresses=[task["addr"]], source_hash=source_hash, profiles=list(GATES)))
     seen = {digest(task["source"])}
     for source in portfolio:
         key = digest(source)

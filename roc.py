@@ -386,6 +386,17 @@ def cmd_claim(a):
         subprocess.Popen(["notepad.exe", str(path)])
 
 
+def _journal_check(client, addr, path, score):
+    """Agent scratch checks go to shared memory, so later sessions see functions tried without gain."""
+    if not os.environ.get("ROC_AGENT"):
+        return
+    from datetime import datetime, timezone
+    from roc import research
+    research.append(ROOT / "work" / "agent-memory" / "attempts.jsonl",
+                    dict(kind="agent_check", date=datetime.now(timezone.utc).isoformat(), client=client,
+                         addresses=[addr], after=score, source_hash=research.digest(path.read_text(errors="replace"))))
+
+
 def cmd_check(a):
     from roc import match
     folder = ROOT / "src" / a.name
@@ -406,7 +417,9 @@ def cmd_check(a):
         try:
             value, name, asm_diff, _ = match.check(a.name, addr, Path(a.file))
         except match.CompileError as error:
+            _journal_check(a.name, addr, path, 0)
             sys.exit("%s  does not compile:\n%s" % (a.file, error))
+        _journal_check(a.name, addr, path, value)
         print("%s  %3d%%  %s  (scratch, nothing saved)" % (addr, value, name or "-"))
         if value < 100:
             print("Assembly diff ('-' = target, '+' = yours):")

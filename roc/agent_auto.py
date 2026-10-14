@@ -183,8 +183,8 @@ def trial(client, addr, path, hypothesis):
     return research.trial(ROOT, client, addr, path, hypothesis)
 
 
-def reuse(task, portfolio, tried=frozenset()):
-    return research.reuse(ROOT, task, portfolio, tried)
+def reuse(task, portfolio, tried=frozenset(), swept=frozenset()):
+    return research.reuse(ROOT, task, portfolio, tried, swept)
 
 
 GATES, known_failures = research.GATES, research.known_failures
@@ -738,6 +738,7 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
     records = history() + shared.get("records", [])
     result = portfolio(have, max_size, profile, records=records, api=api)
     tried = {name: known_failures([r for r in records if r.get("client", "2008-06") == name]) for name in have}
+    swept = {name: research.gate_sweeps([r for r in records if r.get("client", "2008-06") == name]) for name in have}
     run_id = uuid.uuid4().hex[:12]
     directory = ROOT / "work" / "agent-auto" / run_id
     directory.mkdir(parents=True)
@@ -812,7 +813,7 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
                 for task in active:
                     if time.monotonic() >= deadline:
                         break
-                    reuse(task, list(portfolio), tried[client])
+                    reuse(task, list(portfolio), tried[client], swept[client])
             else:
                 pending = [task for task in active if task["before"] < 100]
                 allow_individual = individual

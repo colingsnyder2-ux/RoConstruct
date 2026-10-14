@@ -484,7 +484,7 @@ def test_run_reuses_before_models_and_assigns_explicit_targets(tmp_path, monkeyp
                                      score=98, lease=addr)}
             return {"ok": True}
     monkeypatch.setattr(agent_auto.worker, "Api", Api)
-    monkeypatch.setattr(agent_auto, "reuse", lambda task, portfolio, tried: (order.append("reuse"), paths.append(task["path"])))
+    monkeypatch.setattr(agent_auto, "reuse", lambda task, portfolio, tried, swept=frozenset(): (order.append("reuse"), paths.append(task["path"])))
     monkeypatch.setattr(agent_auto.agent, "run_agent", lambda cli, prompt, *args, **kwargs:
                         (order.append("model"), prompts.append(prompt))[1] or 0)
     result = agent_auto.run("server", "me", workers=2, jobs=4, batch_size=2, log=lambda *args: None)
@@ -622,7 +622,7 @@ def test_all_clients_keep_same_addresses_and_receipts_isolated(tmp_path, monkeyp
     checked, paths, submitted = [], [], []
     monkeypatch.setattr(agent_auto.match, "check_text", lambda client, addr, source:
         checked.append(client) or (100 if source == "winner" else 98, "f", "diff", []))
-    def reuse(task, portfolio, tried):
+    def reuse(task, portfolio, tried, swept=frozenset()):
         paths.append(task["path"])
         (Path(task["path"]).parent / "best.cpp").write_text("winner")
     monkeypatch.setattr(agent_auto, "reuse", reuse)

@@ -18,6 +18,7 @@ import re
 import random
 import time
 import uuid
+from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -25,6 +26,7 @@ from roc import match, worker
 
 ROOT = Path(__file__).resolve().parent.parent
 CLIS = ("claude", "codex", "opencode")
+GOAL_MAX_TRIES = 3  # goal sessions that may work one function without gain before it is skipped
 SLOW_SECONDS = 200
 SLOW_LOG = ROOT / "work" / "agent-memory" / "slow-commands.jsonl"
 _started = {}  # tool call id -> (monotonic start, label)
@@ -711,11 +713,22 @@ def goal_targets(server, token, client, shared):
     plan = agent_auto.portfolio(names, max_size=0, records=records, api=worker.Api(server, token), min_score=0)
     blocked = {(r.get("client"), addr, r.get("cohort")) for r in records if r.get("kind") == "goal_blocked"
                for addr in r.get("addresses", [])}
+    # Sessions (hour buckets) that already worked a function without beating its current score, on any PC.
+    sessions = defaultdict(set)
+    for r in records:
+        if r.get("kind") in ("agent_check", "trial", "session") and r.get("outcome") != "improved" and r.get("date"):
+            for addr in r.get("addresses") or ():
+                sessions[(r.get("client"), addr)].add((str(r["date"])[:13], r.get("after", 0)))
+    tries = {key: len({hour for hour, _ in values}) for key, values in sessions.items()}
     targets = [row for area in plan["areas"] for row in area["targets"] if not row["group_parked"]
-               and (row["client"], row["addr"], row["evidence_hash"]) not in blocked]
-    near = sorted((row for row in targets if row["score"] >= 95), key=lambda row: (-row["priority"], -row["size"]))[:14]
+               and (row["client"], row["addr"], row["evidence_hash"]) not in blocked
+               and tries.get((row["client"], row["addr"]), 0) < GOAL_MAX_TRIES]
+    for row in targets:
+        row["prior_sessions"] = tries.get((row["client"], row["addr"]), 0)
+    near = sorted((row for row in targets if row["score"] >= 95),
+                  key=lambda row: (row["prior_sessions"], -row["priority"], -row["size"]))[:14]
     selected = {(row["client"], row["addr"]) for row in near}
-    large = sorted((row for row in targets if (row["client"], row["addr"]) not in selected), key=lambda row: -row["size"])[:7]
+    large = sorted((row for row in targets if (row["client"], row["addr"]) not in selected), key=lambda row: (row["prior_sessions"], -row["size"]))[:7]
     selected.update((row["client"], row["addr"]) for row in large)
     rest = [row for row in targets if (row["client"], row["addr"]) not in selected]
     exploration = random.sample(rest, min(24 - len(near) - len(large), len(rest)))
@@ -753,12 +766,15 @@ def run_goal(cli, goal, model=None, minutes=120, log=print, continuous=False,
                 evidence_file = candidate.with_suffix(".evidence.json")
                 evidence_file.write_text(json.dumps(row.get("behavior_evidence", {}), indent=2), encoding="utf-8")
                 assignments.append({**{key: row[key] for key in ("client", "addr", "unit", "size", "score", "selection")},
+                    "prior_sessions": row.get("prior_sessions", 0),
                     "evidence_file": str(evidence_file),
                     "file": str(candidate), "check": '%s check %s %s --file "%s"' % (roc_command(), row["client"], row["addr"], candidate),
                     "submit": '%s submit %s %s --file "%s" --server "%s" --user "%s"' %
                               (roc_command(), row["client"], row["addr"], candidate, server, user)})
             prompt += "\nMixed shortlist: ~60% near-misses, 30% large, 10% random exploration; shortages fill from remaining candidates. "
-            prompt += "Candidate files already exist. Pick one, read only its source and evidence_file, infer likely purpose, run its check, then test one proven fix. "
+            prompt += "Candidate files already exist and their scores are current. Do not check candidates up front or sweep compiler flags first. "
+            prompt += "Pick ONE, preferring the fewest prior_sessions (earlier sessions failed on those), read its source and evidence_file, "
+            prompt += "run its check once for the diff, then test one proven source fix. "
             prompt += "Do not repeat setup, scoreboard queries or target discovery.\n" + json.dumps(assignments, separators=(",", ":"))
         if continuous:
             from roc.agent_auto import STRATEGIES

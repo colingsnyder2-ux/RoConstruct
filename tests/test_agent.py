@@ -458,3 +458,34 @@ def test_agent_check_refuses_server_matched_function(monkeypatch, capsys):
     with pytest.raises(SystemExit) as error:
         cli.main(["agent-check", "2008-06", "00401000", "x.cpp", "--hypothesis", "h"])
     assert error.value.code == 3 and "already matched" in capsys.readouterr().out
+
+
+def test_goal_targets_skip_functions_failed_in_earlier_sessions(monkeypatch):
+    from roc import agent_auto
+    rows = [dict(client="c", addr=addr, score=99, priority=1, size=10, group_parked=False, evidence_hash="h")
+            for addr in ("a", "b")]
+    monkeypatch.setattr(agent_auto, "history", lambda: [])
+    monkeypatch.setattr(agent_auto, "portfolio", lambda *a, **kw: {"areas": [{"targets": [dict(r) for r in rows]}]})
+    monkeypatch.setattr(agent.worker, "Api", lambda *a: None)
+    failed = [dict(kind="agent_check", client="c", addresses=["a"], after=90, date="2026-10-%02dT10:00" % day)
+              for day in (1, 2, 3)]
+    picked = agent.goal_targets("s", None, "c", {"records": failed})
+    assert [row["addr"] for row in picked] == ["b"]
+    once = agent.goal_targets("s", None, "c", {"records": failed[:1]})
+    assert [row["addr"] for row in once][0] == "b" and once[1]["prior_sessions"] == 1
+
+
+def test_reuse_gate_sweep_runs_once_per_source(tmp_path, monkeypatch):
+    from roc import research
+    calls = []
+    monkeypatch.setattr(research, "variants", lambda source, **kw: calls.append(source) or [])
+    monkeypatch.setattr(research, "trial", lambda *a, **kw: {"after": 0})
+    path = tmp_path / "00401000.cpp"
+    path.write_text("int f;")
+    (tmp_path / "best.cpp").write_text("int f;")
+    task = {"client": "2008-06", "addr": "00401000", "path": str(path), "donors": [], "before": 95, "source": "int f;"}
+    research.reuse(tmp_path, task, [])
+    swept = research.gate_sweeps([__import__("json").loads(line) for line in
+                                  (tmp_path / "work" / "agent-memory" / "attempts.jsonl").read_text().splitlines()])
+    research.reuse(tmp_path, task, [], swept=swept)
+    assert len(calls) == 1
