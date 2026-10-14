@@ -233,7 +233,7 @@ def command(cli, model=None, goal=False):
     elif cli == "codex":
         argv = ["codex", "exec", "--json", "--sandbox", "workspace-write", "-c", 'approval_policy="never"', "-C", str(ROOT), "-"]
     elif cli == "opencode":  # prompt on stdin; --auto approves tools, so there is no roc-only allowlist as with claude
-        argv = ["opencode", "run", *_opencode_run_flags(), "--auto", "--thinking", "--format", "json"]
+        argv = ["opencode", "--print-logs", "run", *_opencode_run_flags(), "--auto", "--thinking", "--format", "json"]
         if model:
             argv += ["-m", model]  # provider/model, see: opencode models
         return argv
@@ -297,6 +297,12 @@ def show(line, log):
     try:
         event = json.loads(line)
     except ValueError:
+        if line.startswith("timestamp="):
+            if "level=ERROR" in line:
+                message = line.split("error.error=", 1)[-1].strip().strip('"')
+                background = bool(re.search(r'\bagent=(?:"(?:title|summary)"|title|summary)(?:\s|$)', line))
+                log(("Background model error: " if background else "Agent API error: ") + message)
+            return
         if line.strip():
             log(line.rstrip())
         return
@@ -568,6 +574,9 @@ def _error_text(line):
     try:
         event = json.loads(line)
     except ValueError:
+        if line.startswith("timestamp=") and ("level=ERROR" not in line or re.search(
+                r'\bagent=(?:"(?:title|summary)"|title|summary)(?:\s|$)', line)):
+            return ""  # Startup chatter and auxiliary model failures do not fail the chosen model.
         return line  # plain stderr from the CLI itself
     if not isinstance(event, dict):
         return ""
@@ -637,7 +646,7 @@ def _run_once(cli, prompt, model, minutes, log, goal, switch_minutes):
                 pass
         first_output = True
         for line in process.stdout:
-            if first_output:
+            if first_output and not line.startswith("timestamp="):
                 startup_timer.cancel()
                 log("%s CLI output received." % cli)
                 first_output = False

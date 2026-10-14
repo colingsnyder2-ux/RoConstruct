@@ -589,3 +589,40 @@ def test_silent_cli_startup_timeout_kills_tree_and_returns_fatal(monkeypatch):
     assert killed == [process]
     assert any("emitted no CLI output" in message for message in messages)
     assert all(timer.cancelled for timer in timers)
+
+
+def test_opencode_background_title_failure_does_not_switch_main_model():
+    title = ('timestamp=2026-10-14T05:49:32Z level=ERROR message="stream error" '
+             'agent=title small=true error.error="AI_APICallError: Upstream request failed: Insufficient account funds"')
+    primary = ('timestamp=2026-10-14T05:49:33Z level=ERROR message="stream error" '
+               'agent=build small=false error.error="AI_APICallError: Rate limit exceeded. Please try again later."')
+    assert agent._error_text(title) == ""
+    assert agent.RATE.search(agent._error_text(primary))
+    lines = []
+    agent.show(title, lines.append)
+    agent.show(primary, lines.append)
+    agent.show('timestamp=2026-10-14T05:49:31Z level=INFO message=bootstrapping', lines.append)
+    assert lines == ["Background model error: AI_APICallError: Upstream request failed: Insufficient account funds",
+                     "Agent API error: AI_APICallError: Rate limit exceeded. Please try again later."]
+    assert "--print-logs" in agent.command("opencode")
+
+
+def test_opencode_provider_log_rate_limit_stops_the_cli(monkeypatch):
+    import io
+    from unittest.mock import Mock
+    output = ('timestamp=2026-10-14T05:49:32Z level=ERROR agent=title '
+              'error.error="AI_APICallError: Upstream request failed: Insufficient account funds"\n'
+              'timestamp=2026-10-14T05:49:33Z level=ERROR agent=build '
+              'error.error="AI_APICallError: Rate limit exceeded. Please try again later."\n')
+    process = Mock(stdin=io.StringIO(), stdout=io.StringIO(output))
+    process.wait.return_value = 0
+    monkeypatch.setattr(agent.shutil, "which", lambda cli: cli)
+    monkeypatch.setattr(agent, "command", lambda *a: ["opencode", "--print-logs", "run"])
+    monkeypatch.setattr(agent.subprocess, "Popen", lambda *a, **kw: process)
+    killed = []
+    monkeypatch.setattr(agent, "_kill", killed.append)
+    lines = []
+    assert agent._run_once("opencode", "prompt", None, 1, lines.append, True, 0) == agent.RATE_LIMITED
+    assert killed == [process]
+    assert any(line.startswith("Agent API error:") for line in lines)
+    assert process.stdout.closed
