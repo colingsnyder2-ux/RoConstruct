@@ -312,6 +312,12 @@ def parse_model(model):
         if not tail:
             raise ProviderError("provider_config", "cloud model name is missing")
         return head, tail, registry[head]
+    # Bare provider/model IDs (e.g. nvidia/nemotron-...) are treated as cloud
+    # when the leading segment names a configured provider.
+    if not sep and "/" in model:
+        head, slash, tail = model.partition("/")
+        if head in registry and tail:
+            return head, tail, registry[head]
     return "local", model, {"kind": "ollama", "base_url": OLLAMA}
 
 
