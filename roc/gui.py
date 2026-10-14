@@ -109,7 +109,7 @@ def command_args(data):
         if data.get("automatic"):
             args += ["--automatic"]
             for key, default, low, high in (("workers", 2, 1, 8), ("jobs", 24, 1, 200),
-                ("batch_size", 4, 1, 12), ("batch_minutes", 10, 1, 60), ("max_size", 512, 32, 8192)):
+                ("batch_size", 4, 1, 12), ("batch_minutes", 40, 1, 120), ("max_size", 512, 32, 8192)):
                 value = data.get(key, default)
                 if type(value) is not int or (not (key == "max_size" and value == 0) and not low <= value <= high):
                     raise ValueError("Invalid automatic %s" % key)
@@ -275,7 +275,7 @@ class Dashboard:
                 args += ["--continuous"]
                 config = {key: data.get(key, default) for key, default in
                     (("cli", "claude"), ("model", ""), ("goal", ""), ("workers", 2), ("jobs", 24), ("minutes", 120),
-                     ("batch_size", 4), ("batch_minutes", 10), ("max_size", 512), ("individual", False))}
+                     ("batch_size", 4), ("batch_minutes", 40), ("max_size", 512), ("individual", False))}
                 config.update(mode=data.get("mode", "automatic"), client=data.get("client", self.initial["client"] or ""),
                               user=str(data.get("user", self.initial["user"])).strip(),
                               server=str(data.get("server", self.initial["server"])).strip())
@@ -506,6 +506,16 @@ class Dashboard:
                     raise ValueError("Preset name required")
                 config = validate(data.get("config", {}), check_model=False)
                 self.preferences["presets"][name] = config
+            if "agent_preset" in data:
+                name = str(data["agent_preset"]).strip()[:60]
+                if not name:
+                    raise ValueError("Preset name required")
+                keys = ("client", "user", "server", "cli", "model", "goal", "mode", "workers", "jobs",
+                        "minutes", "batch_size", "batch_minutes", "max_size", "individual")
+                # Stored only; command_args validates the values again when an agent starts.
+                config = {key: value for key, value in (data.get("config") or {}).items()
+                          if key in keys and isinstance(value, (str, int, bool)) and len(str(value)) <= 2000}
+                self.preferences.setdefault("agent_presets", {})[name] = config
             self.write_json("preferences.json", self.preferences)
 
     def shutdown(self):

@@ -8,7 +8,7 @@ history.replaceState(null, "", location.pathname + (initialPage === "cpu" ? "?pa
 let meta, jobs = [], page = initialPage, selectedCommand = "mass", editing = null;
 let cursor = 0, logs = [], follow = true, online = false, toastTimer, localModels = [];
 let workerMemory = null;
-let agentAutoConfig = {cli:"claude",model:"",goal:"",workers:2,jobs:24,minutes:120,batch_size:4,batch_minutes:10,max_size:512,individual:false};
+let agentAutoConfig = {cli:"claude",model:"",goal:"",workers:2,jobs:24,minutes:120,batch_size:4,batch_minutes:40,max_size:512,individual:false};
 let cpu = null, cpuCluster = "", cpuLoaded = 0, cpuLoading = false, serverSetupOpen = initialPage === "cpu";
 const isWorker = job => ["worker","agent_worker"].includes(job.kind) || !!job.args?.includes("--automatic");
 const active = job => ["running", "paused", "stopping"].includes(job.status);
@@ -309,10 +309,10 @@ async function loadWorkerMemory(sync=false) {workerMemory=await api(sync ? "agen
 function readAgentAuto() {
   const form=$("#agent-auto-form"), mode=form.dataset.mode;
   const presets={
-    automatic:{workers:2,jobs:24,minutes:120,batch_size:4,batch_minutes:10,max_size:512},
-    fast:{workers:2,jobs:12,minutes:30,batch_size:4,batch_minutes:5,max_size:256},
-    balanced:{workers:2,jobs:24,minutes:120,batch_size:4,batch_minutes:10,max_size:512},
-    deep:{workers:2,jobs:48,minutes:240,batch_size:4,batch_minutes:20,max_size:0}
+    automatic:{workers:2,jobs:24,minutes:120,batch_size:4,batch_minutes:40,max_size:512},
+    fast:{workers:2,jobs:12,minutes:30,batch_size:4,batch_minutes:10,max_size:256},
+    balanced:{workers:2,jobs:24,minutes:120,batch_size:4,batch_minutes:40,max_size:512},
+    deep:{workers:2,jobs:48,minutes:240,batch_size:4,batch_minutes:120,max_size:0}
   };
   agentAutoConfig={...agentAutoConfig,...presets[mode],mode,individual:false};
   for(const key of ["client","user","server","cli","model","goal"])agentAutoConfig[key]=form.elements[key].value.trim();
@@ -346,7 +346,7 @@ function agentAutomatic() {
     (cliFor(c.cli)==="opencode" ? `<p class="help-note">log in at settings to use CLI or see models or click install/sign in</p>` : "") +
     field("Goal","goal",c.goal||"",{full:true,placeholder:"Optional; blank runs automatic matching"}) +
     field("Worker loops","workers",c.workers,{type:"number",min:1,max:8}) +
-    `</div><div class="button-row form-section">${button("Install / sign in",'type="button" data-agent-setup="current"',true)}${cliFor(c.cli)==="opencode" ? button("Refresh models",'type="button" data-agent-refresh',true) : ""}</div><div class="form-footer">${button("Start Agent",'type="submit"')}</div></form>`;
+    `</div><div class="button-row form-section">${button("Install / sign in",'type="button" data-agent-setup="current"',true)}${cliFor(c.cli)==="opencode" ? button("Refresh models",'type="button" data-agent-refresh',true) : ""}<button type="button" class="text-button" id="save-agent-preset">Save preset</button><select id="saved-agent-presets" aria-label="Load a saved agent preset"><option value="">Load saved preset…</option>${Object.keys(meta.preferences.agent_presets||{}).map(name=>`<option>${esc(name)}</option>`).join("")}</select></div><div class="form-footer">${button("Start Agent",'type="submit"')}</div></form>`;
 }
 function settings() {
   return heading("", "Settings", "Interface, theme, provider credentials, and dashboard lifecycle.") + `<div class="settings-stack"><form id="preferences-form" class="panel panel-pad"><h2>When a roconstruct:// link opens</h2><p class="help-note">Choose how website work links launch. “Ask every time” offers terminal or webpage before setup.</p><div class="field-grid">${field("URI interface", "uri_mode", meta.uri_mode, {choices:[["ask","Ask every time"],["terminal","Terminal"],["web","Webpage"]]})}${field("Appearance", "theme", meta.preferences.theme, {choices:["dark","light"]})}</div><div class="form-footer">${button("Save preferences", 'type="submit"')}</div></form><div class="panel panel-pad"><h2>ChatGPT plan</h2><p class="help-note">${meta.providers.find(p=>p.name==="chatgpt")?.ready ? "Signed in. Choose a chatgpt: model in your worker settings." : "Sign in from a terminal in this fork: roc chatgpt login"}</p><p class="help-note">Uses your existing subscription limits. <a href="https://chatgpt.com/settings/usage" target="_blank" rel="noopener noreferrer">Manage usage and credit permission</a></p></div><div class="panel panel-pad"><h2>OpenCode CLI</h2><p class="help-note">${meta.providers.find(p=>p.name==="opencode")?.ready ? "Installed. Match and Agent modes list its signed-in models — no API key, no key stored here." : "Not installed. Run npm i -g opencode-ai, then opencode auth login; Match and Agent modes then list its models."}</p><p class="help-note">Go plan subscribers: opencode-go models (DeepSeek V4.1 Flash, GLM, Kimi…) draw on the plan's monthly allowance automatically ($80/mo DeepSeek V4.1 Flash on Go). Pick them from any model dropdown; a USD spend cap does not apply to them.</p></div><form id="provider-form" class="panel panel-pad"><h2>Provider credentials</h2><p class="help-note">Stored in ROC's user-local secrets file. Keys never enter run history or frontend storage.</p><div class="field-grid">${field("Provider", "provider", "", {choices:meta.providers.filter(provider=>provider.auth==="api-key").map(provider=>[provider.name,provider.name+(provider.ready ? " · ready" : " · key missing")])})}${field("API key", "key", "", {type:"password"})}</div><div class="form-footer">${button("Save key", 'type="submit"')}</div></form><div class="panel panel-pad"><h2>Session & lifecycle</h2><p class="help-note">Browser tabs may close freely. Dashboard process owns jobs. Exit stops active process trees. Provider requests already sent may still bill.</p><button class="button secondary" id="exit-dashboard">Exit ROC dashboard</button></div></div>`;
@@ -509,6 +509,7 @@ document.addEventListener("click", event=>act(async()=>{
   if(target.id==="confirm-stop") { await api("control",{id:$("#confirm-dialog").dataset.id,action:"kill"});$("#confirm-dialog").close(); }
   if(target.hasAttribute("data-agent-refresh")) { toast("Checking OpenCode models…");await loadOpenCodeModels(true);toast(meta.agent_models?.length ? "Models refreshed" : "No OpenCode models yet: log in at settings to use CLI or see models"); }
   if(target.id==="refresh-models") { const config=readWorker();toast("Checking installed models…");localModels=(await api("models")).models;meta=await api("meta");await loadOpenCodeModels(true);render(config);toast("Models refreshed"); }
+  if(target.id==="save-agent-preset") { const name=prompt("Preset name");if(name) { const config=readAgentAuto();await api("preferences",{agent_preset:name,config});meta=await api("meta");render();toast("Preset saved"); } }
   if(target.id==="save-preset") { const name=prompt("Preset name");if(name) { const config=readWorker();await api("preferences",{preset:name,config});meta=await api("meta");render(config);toast("Preset saved"); } }
   if(target.id==="theme-button") { const theme=document.documentElement.dataset.theme==="light" ? "dark" : "light";document.documentElement.dataset.theme=theme;await api("preferences",{theme});meta.preferences.theme=theme; }
   if(target.id==="exit-dashboard"&&confirm("Exit ROC and stop all active jobs? Cloud requests already sent may still bill.")) { await api("shutdown",{});toast("Dashboard stopped. You can close this tab."); }
@@ -528,6 +529,7 @@ document.addEventListener("change",event=>act(async()=>{
   if(event.target.id==="cpu-cluster") {cpuCluster=event.target.value;await loadCpu(true);}
   if(event.target.id==="worker-loop") {workerLoop=event.target.value;chatSignature="";renderWorkerChat();}
   if(event.target.id==="worker-run") await selectWorker(event.target.value);
+  if(event.target.id==="saved-agent-presets"&&event.target.value) {agentAutoConfig={...agentAutoConfig,...meta.preferences.agent_presets[event.target.value],mode:"saved"};render();}
   if(event.target.id==="saved-presets"&&event.target.value) render(meta.preferences.presets[event.target.value]);
   if(event.target.matches("#agent-auto-form [name=cli]")) {readAgentAuto();agentAutoConfig.model="";render();if(cliFor(agentAutoConfig.cli)==="opencode")await loadOpenCodeModels(true);}
   if(event.target.matches("#worker-form [name=model]")&&!editing)render(readWorker());

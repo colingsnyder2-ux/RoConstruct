@@ -1895,7 +1895,7 @@ def main(argv=None):
         (["--plan"], {"action": "store_true", "help": "preview local automatic ranking without starting agents"}),
         (["--workers"], {"type": int, "default": 2, "help": "automatic batch workers (1-8)"}),
         (["--batch-size"], {"type": int, "default": 4, "help": "functions per automatic batch (1-12)"}),
-        (["--batch-minutes"], {"type": int, "default": 10, "help": "time cap per agent batch (1-60)"}),
+        (["--batch-minutes"], {"type": int, "default": 40, "help": "time cap per agent batch (1-120)"}),
         (["--individual"], {"action": "store_true", "help": "allow individual repair after shared hypotheses fail"}),
         (["--client"], {"help": "client name or all (automatic default: 2008-06; all requires explicit selection)"}),
         (["--jobs"], {"type": int, "help": "target cap (automatic: 24; leased mode: 1)"}),

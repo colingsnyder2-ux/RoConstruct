@@ -491,6 +491,28 @@ def run_agent(cli, prompt, model=None, minutes=120, log=print, goal=False, switc
     return 1
 
 
+def _error_text(line):
+    """The part of one CLI output line that can report a rate limit: errors only, never tool output.
+
+    Tool results carry file contents and compiler diagnostics ("ambiguous call to overloaded
+    function"), which must not look like an API limit.
+    """
+    try:
+        event = json.loads(line)
+    except ValueError:
+        return line  # plain stderr from the CLI itself
+    if not isinstance(event, dict):
+        return ""
+    kind = event.get("type")
+    if kind in ("error", "turn.failed") or (kind == "result" and event.get("is_error")):
+        return line
+    if kind == "assistant" and (event.get("error") or (event.get("message") or {}).get("model") == "<synthetic>"):
+        return line  # claude -p reports API failures as a synthetic assistant message
+    if kind == "item.completed" and (event.get("item") or {}).get("type") == "error":
+        return line
+    return ""
+
+
 def _run_once(cli, prompt, model, minutes, log, goal, switch_minutes):
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -531,11 +553,8 @@ def _run_once(cli, prompt, model, minutes, log, goal, switch_minutes):
                 pass
         for line in process.stdout:
             show(line, log)
-            if DEAD.search(line):
-                _kill(process)
-                process.wait()
-                return RATE_LIMITED
-            if RATE.search(line):
+            error = _error_text(line)
+            if DEAD.search(error) or RATE.search(error):
                 _kill(process)
                 process.wait()
                 return RATE_LIMITED

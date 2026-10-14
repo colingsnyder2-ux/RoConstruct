@@ -97,7 +97,7 @@ def test_regression_is_rolled_back_and_released(tmp_path, monkeypatch):
 def test_commands_read_prompt_from_stdin():
     claude = agent.command("claude", "haiku")
     assert claude[:4] == ["claude", "-p", "--model", "haiku"] and "acceptEdits" in claude and "stream-json" in claude
-    assert "Read,Grep,Glob,Edit,Write,Bash,PowerShell" in claude
+    assert "Read,Grep,Glob,Edit,Write,Bash,PowerShell,mcp__ghidra__*" in claude
     assert agent.command("codex")[-1] == "-"
     assert agent.command("opencode", "opencode/big-pickle")[-2:] == ["-m", "opencode/big-pickle"]
     assert "--standalone" in agent.command("opencode") and "--thinking" in agent.command("opencode")
@@ -198,7 +198,7 @@ def test_dashboard_agent_command_args():
     assert "--automatic" in automatic and "--goal" not in automatic
     assert automatic[automatic.index("--workers") + 1] == "3"
     assert automatic[-2:] == ["--model", "chosen-model"] and "--individual" in automatic
-    for fields in ({"workers": 0}, {"jobs": 201}, {"batch_size": 0}, {"batch_minutes": 61},
+    for fields in ({"workers": 0}, {"jobs": 201}, {"batch_size": 0}, {"batch_minutes": 121},
                    {"max_size": -1}, {"model": "--bad"}):
         with pytest.raises(ValueError):
             command_args({"command": "agent", "cli": "claude", "automatic": True, **fields})
@@ -351,12 +351,16 @@ def test_goal_cli_propagates_failed_agent_exit(monkeypatch):
 
 
 def test_rate_limited_agent_switches_to_the_next_model(monkeypatch):
-    calls = []
+    calls, clock = [], [0.0]
+    monkeypatch.setattr(agent.time, "sleep", lambda seconds: clock.__setitem__(0, clock[0] + seconds))
+    monkeypatch.setattr(agent.time, "monotonic", lambda: clock[0])
     monkeypatch.setenv("ROC_AGENT_FALLBACKS", "opencode:opencode/big-pickle, codex")
     monkeypatch.setattr(agent, "_run_once", lambda cli, prompt, model, minutes, log, goal, switch:
-                        calls.append((cli, model, bool(switch))) or (agent.RATE_LIMITED if len(calls) < 3 else 0))
+                        calls.append((cli, model, bool(switch))) or (agent.RATE_LIMITED if cli != "codex" else 0))
     assert agent.run_agent("claude", "p", "sonnet", 30, lambda *a: None) == 0
-    assert calls == [("claude", "sonnet", True), ("opencode", "opencode/big-pickle", True), ("codex", None, False)]
+    assert calls == [("claude", "sonnet", True), ("claude", "sonnet", True),
+                     ("opencode", "opencode/big-pickle", True), ("opencode", "opencode/big-pickle", True), ("codex", None, False)]
+    assert clock[0] == 360
     assert agent.DEAD.search("Model exo-free has been deprecated.") and not agent.DEAD.search("Upstream request failed: Model is unavailable.") and agent.RATE.search("Upstream request failed: Model is unavailable.")
     assert agent.RATE.search("Error: 429 rate limit reached") and not agent.RATE.search("ran 429 tests")
 
@@ -369,7 +373,7 @@ def test_transient_upstream_failure_retries_before_switching(monkeypatch):
     monkeypatch.setattr(agent, "_run_once", lambda cli, prompt, model, minutes, log, goal, switch:
                         calls.append(model) or (agent.TRANSIENT if model == "a" else 0))
     assert agent.run_agent("opencode", "p", "a", 60, lambda *a: None) == 0
-    assert calls.count("a") > 5 and calls[-1] == "opencode/other"  # ~5 minutes of retries, then the fallback
+    assert calls == ["a", "a", "opencode/other"] and clock[0] == 180
 
 
 def test_short_batch_reserves_time_for_fallback(monkeypatch):
@@ -394,3 +398,41 @@ def test_subminute_batch_still_runs(monkeypatch):
     monkeypatch.setattr(agent, "_run_once", lambda *args: calls.append(args) or 0)
     assert agent.run_agent("codex", "p", minutes=0.5) == 0
     assert len(calls) == 1
+
+
+def test_rate_limit_recovery_keeps_same_model_after_three_minutes(monkeypatch):
+    clock, calls, sleeps = [0.0], [], []
+    monkeypatch.setenv("ROC_AGENT_FALLBACKS", "opencode:other")
+    monkeypatch.setattr(agent.time, "monotonic", lambda: clock[0])
+    def sleep(seconds):
+        sleeps.append(seconds)
+        clock[0] += seconds
+    monkeypatch.setattr(agent.time, "sleep", sleep)
+    monkeypatch.setattr(agent, "_run_once", lambda cli, prompt, model, *args:
+                        calls.append(model) or (agent.RATE_LIMITED if len(calls) == 1 else 0))
+    assert agent.run_agent("opencode", "p", "cat-jam", 10, lambda *args: None) == 0
+    assert calls == ["cat-jam", "cat-jam"] and clock[0] == 180
+    assert max(sleeps) <= 30
+
+
+def test_retry_wait_respects_remaining_agent_budget(monkeypatch):
+    clock, calls = [0.0], []
+    monkeypatch.setenv("ROC_AGENT_FALLBACKS", "opencode:other")
+    monkeypatch.setattr(agent.time, "monotonic", lambda: clock[0])
+    monkeypatch.setattr(agent.time, "sleep", lambda seconds: clock.__setitem__(0, clock[0] + seconds))
+    monkeypatch.setattr(agent, "_run_once", lambda *args: calls.append(args) or agent.RATE_LIMITED)
+    assert agent.run_agent("opencode", "p", "cat-jam", 2, lambda *args: None) == 1
+    assert len(calls) == 1 and clock[0] == 120
+
+
+def test_rate_limit_ignores_tool_output_but_sees_api_errors():
+    import json
+    tool = json.dumps({"type": "user", "message": {"content": [{"type": "tool_result", "tool_use_id": "t",
+        "content": "error C2668: ambiguous call to overloaded function; rate limit table"}]}})
+    assert not agent.RATE.search(agent._error_text(tool))
+    api = json.dumps({"type": "assistant", "message": {"model": "<synthetic>", "content": [
+        {"type": "text", "text": "API Error: 429 rate_limit_error"}]}})
+    assert agent.RATE.search(agent._error_text(api))
+    assert agent.RATE.search(agent._error_text(json.dumps({"type": "result", "is_error": True,
+                                                           "result": "Claude usage limit reached"})))
+    assert agent.RATE.search(agent._error_text("Error: 429 Too Many Requests\n"))

@@ -401,6 +401,14 @@ class DashboardTests(unittest.TestCase):
         other = gui.Dashboard(directory=self.app.directory)
         self.assertNotIn(job_id, other.jobs)
 
+    def test_agent_preset_saved_and_filtered(self):
+        self.app.preferences_update({"agent_preset": "nightly", "config": {
+            "cli": "claude", "batch_minutes": 40, "individual": True, "token": "secret", "extra": [1]}})
+        saved = gui.Dashboard(directory=self.app.directory).preferences["agent_presets"]["nightly"]
+        self.assertEqual(saved, {"cli": "claude", "batch_minutes": 40, "individual": True})
+        with self.assertRaises(ValueError):
+            self.app.preferences_update({"agent_preset": " ", "config": {}})
+
     def test_restart_marks_active_interrupted(self):
         with patch.object(self.app, "schedule"):
             job_id = self.app.start({"command": "doctor"})

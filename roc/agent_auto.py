@@ -688,7 +688,7 @@ def library_cycle(server, user, token, cli, model, minutes, log, client, slot=No
 
 
 def run(server, user, token=None, cli="claude", model=None, workers=2, jobs=24, max_size=512,
-        minutes=120, batch_size=4, batch_minutes=10, individual=False, log=print, client=None, continuous=False):
+        minutes=120, batch_size=4, batch_minutes=40, individual=False, log=print, client=None, continuous=False):
     strategy = 0
     while True:
         try:
@@ -710,10 +710,10 @@ def run(server, user, token=None, cli="claude", model=None, workers=2, jobs=24, 
 
 
 def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, jobs=24, max_size=512,
-              minutes=120, batch_size=4, batch_minutes=10, individual=False, log=print, client=None, strategy=0):
+              minutes=120, batch_size=4, batch_minutes=40, individual=False, log=print, client=None, strategy=0):
     if not 1 <= workers <= 8 or not 1 <= jobs <= 200 or not 1 <= batch_size <= 12 or not 1 <= minutes <= 600:
         raise ValueError("Invalid automatic-agent limits")
-    if not 1 <= batch_minutes <= 60 or (max_size != 0 and not 32 <= max_size <= 8192):
+    if not 1 <= batch_minutes <= 120 or (max_size != 0 and not 32 <= max_size <= 8192):
         raise ValueError("Invalid batch time / function size limit")
     if not agent.shutil.which(cli):
         raise ValueError("Install and sign in to the selected agent CLI first")
