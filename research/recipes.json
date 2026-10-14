@@ -421,9 +421,42 @@
       "date": "2026-10-13",
       "trials": 325,
       "new_verified": 4,
-      "exacts": ["006cbfc0", "006badf0", "006bbb80", "00710660"],
+      "exacts": [
+        "006cbfc0",
+        "006badf0",
+        "006bbb80",
+        "00710660"
+      ],
       "evidence": "work/agent-campaigns/afec32731807/lib-imports-fanout/xtp-lib-imports-fanout-2008.jsonl"
     },
     "next": "Swept all 325 XTP files under -lib-imports; only 00710660 (LoadSysFonts) was a new exact. Remaining near-misses are not import-table differences: 0074d870 (two extra EH-state stores, compiler scoping), 00700c00 (CArchive::operator>> template, 0x118 vs 0x94 stack frame), 0070c410 (register allocation), 0074b1a0 (structural prologue). Need the exact XTP/MFC source revision or a compiler build between VS2008 RTM and SP1."
+  },
+  "g3d-6.09-fp-fast-2008": {
+    "op": "grid",
+    "library": "G3D 6.09 / Roblox 2008",
+    "hypothesis": "x87 floating-point reassociation in G3D 6.09 client needs /fp:fast; G3D is float-heavy and may differ between /fp:fast and strict modes under MSVC 21022",
+    "targets": {
+      "unit": "^G3D::",
+      "scores": [
+        90,
+        99
+      ]
+    },
+    "builds": [
+      21022
+    ],
+    "profiles": [
+      "keep"
+    ],
+    "append": [
+      " /fp:fast"
+    ],
+    "result": {
+      "date": null,
+      "trials": 0,
+      "new_verified": 0,
+      "evidence": null
+    },
+    "next": "If /fp:fast gains exacts, propagate to other G3D siblings; if not, investigate allocation sizes and header patches."
   }
 }

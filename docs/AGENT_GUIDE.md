@@ -120,6 +120,10 @@ from other workers remain observation counts. Strategy parking requires two reco
 losing hypotheses; quick or untested runs are incomplete and do not park strategies.
 Every campaign saves `agent-output.jsonl`; summaries include stop reason, exit code,
 trial count, time budget and the last output messages, including launch failures.
+Assigned `check --file` calls also journal through the task wrapper. Manual trial
+records infer campaign metadata from their task-backed evidence path. At campaign
+end the wrapper verifies both current and preserved best sources, then submits only
+server improvements, including partials, even if the agent omitted submission.
 Campaign packets contain source copies and ready check/submit commands; agents skip
 repeating config, pull, fetch and analysis. Research execution uses recipe names:
 `roc research run NAME --limit 1` pilots one source, then
@@ -195,7 +199,7 @@ bills the CLI's own sign-in (Claude Pro/Max, ChatGPT plan) or `ANTHROPIC_API_KEY
 | Automatic | Workers → Agent worker, or `roc agent claude --automatic [--workers 2 --jobs 24 --minutes 120]` | ranked batches, isolated copies, `roc agent-check` only |
 | Shared | `roc agent claude --jobs 5 [--max-size 256 --minutes 20]` | one function in `src/`, `roc check` only; regressions rolled back |
 | Any model via opencode | `roc agent opencode --automatic --model opencode-go/deepseek-v4.1-flash` (list: `opencode models`; sign in: `opencode auth login`; optional variant suffix `#high`/`#low`) | `npm i -g opencode-ai`, signed in | same workflow; runs with `--auto`, so unlike claude it is not limited to `roc.py` commands; Go-plan models use the subscription allowance, no API key |
-| Switch models when rate limited | setting `agent_fallbacks` in `local/config/roconstruct-settings.json` (or env `ROC_AGENT_FALLBACKS`), e.g. `"claude:sonnet,opencode:opencode/big-pickle"` | - | after 5 minutes of only rate-limit errors the run continues with the next entry |
+| Switch models when rate limited | setting `agent_fallbacks` in `local/config/roconstruct-settings.json` (or env `ROC_AGENT_FALLBACKS`), e.g. `"claude:sonnet,opencode:opencode/big-pickle"` | - | wait 3 minutes, retry the same model once; another rate-limit/unavailable failure switches to the next entry |
 | Goal | `roc agent codex --goal "finish zlib in 2008-06" --minutes 60` | live-server shortlist, isolated `work/agent-goals/` candidates, `check --file` / `submit --file`, attempt journal |
 | Interactive | `roc agent claude --interactive --goal "..."` | a normal session you watch and approve |
 

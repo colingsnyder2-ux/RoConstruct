@@ -129,6 +129,12 @@ for _v, _sha in [("1.2.5", "58ec845f95ff351c8a25bfbfa667a8f3924bb0f1a1ec572cc7e0
                                    langs=["c"], grid=FAST + ["/O2 /GS /MD"], include=["zlib-1.2.3"],
                                    files=[f + ".c" for f in _PNG])
 
+# 2008-06: the exe's own zlib was built with the WinAPI (stdcall) calling convention -
+# png_read_row's inflate() call at 0x51f402 takes no caller cleanup - so pngread.c must
+# be preprocessed with ZLIB_WINAPI exactly like the client's own build was.
+RECIPES["libpng-1.2.6-winapi"] = dict(RECIPES["libpng-1.2.6"], include=["zlib-1.2.3", "WINSDK"],
+                                      defines="WIN32 ZLIB_WINAPI")
+
 # G3D 6.09 (2007-2010 clients) bundles its own zlib, libjpeg and libpng. Old releases left
 # SourceForge; this is the archive.org copy (SHA-1 matches archive.org's record).
 RECIPES["g3d-6.09"] = dict(url="https://archive.org/download/g3d-src-6_09/g3d-src-6_09.zip",

@@ -154,6 +154,23 @@ def test_grid_dispatch_uses_selected_client_compiler_and_memory(tmp_path, monkey
     assert research.journal_records(tmp_path / "work/agent-memory/attempts.jsonl")[0]["client"] == "2009-12"
 
 
+def test_assigned_scratch_check_cannot_bypass_trial_journal(tmp_path, monkeypatch):
+    import importlib.util
+    from pathlib import Path
+    spec = importlib.util.spec_from_file_location("assigned_check_cli_test", Path(__file__).resolve().parents[1] / "roc.py")
+    cli = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(cli)
+    path = tmp_path / "00401000.cpp"
+    (tmp_path / "task.json").write_text("{}")
+    calls = []
+    monkeypatch.setattr(research, "trial", lambda *args:
+                        calls.append(args) or dict(after=86, symbol="f", diff="diff"))
+    monkeypatch.setattr(research.match, "check", lambda *args:
+                        (_ for _ in ()).throw(AssertionError("must use journal")))
+    cli.cmd_check(SimpleNamespace(name="2008-06", addr="00401000", file=str(path)))
+    assert len(calls) == 1 and calls[0][2] == "00401000" and calls[0][3] == path
+
+
 def test_fanout_prefetch_keeps_serial_matching_and_journaling(monkeypatch):
     main = threading.get_ident()
     lock = threading.Lock()

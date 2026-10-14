@@ -8,6 +8,21 @@ import pytest
 from roc import agent, agent_memory, server, worker
 
 
+def test_manual_trial_infers_campaign_metadata_from_evidence(tmp_path, monkeypatch):
+    from roc import research
+    import json
+    monkeypatch.setattr(agent_memory, "ROOT", tmp_path)
+    folder = tmp_path / "work/agent-campaigns/run/00401000"
+    folder.mkdir(parents=True)
+    (folder / "task.json").write_text(json.dumps(dict(client="2008-06", addr="00401000",
+        campaign_id="run", baseline_hash="baseline", target_revision="revision")))
+    row = agent_memory.append_record(dict(kind="trial", client="2008-06", date="2026-10-13",
+        addresses=["00401000"], evidence=str(folder / "00401000.cpp"), outcome="no_gain"))
+    assert row["campaign_id"] == "run" and row["baseline_hash"] == "baseline"
+    assert "T" in row["date"]
+    assert research.journal_records(tmp_path / "work/agent-memory/attempts.jsonl")[0] == row
+
+
 @pytest.fixture
 def shared_server(tmp_path, monkeypatch):
     docs = tmp_path / "server" / "docs"

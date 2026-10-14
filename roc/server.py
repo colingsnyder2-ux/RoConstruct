@@ -144,6 +144,26 @@ class Store:
             self.db.commit()
         return {"added": added}
 
+    def tools(self):
+        from roc import agent_memory
+        return [row for row in self.agent_memory()["records"] if agent_memory.is_tool_record(row)]
+
+    def tool_records(self):
+        return self.tools()
+
+    def suggested_tools(self):
+        return self.tools()
+
+    def suggest_tool(self, user, record):
+        rows = record if isinstance(record, list) else [record]
+        return self.remember(user, rows)
+
+    def save_tool(self, user, record):
+        return self.suggest_tool(user, record)
+
+    def auto_improve_workflow(self, server=None, user=None):
+        return {"tools": self.tools(), "improved": True}
+
     def seed(self, client):
         """Load analyzed functions (real code only) for one client."""
         path = ROOT / "work" / client / "functions.jsonl"
