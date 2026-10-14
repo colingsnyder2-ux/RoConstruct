@@ -30,7 +30,7 @@ BUILTINS = {
     # and Go subscription allowances apply, and no API key is stored here.
     "opencode": {"kind": "opencode-cli", "base_url": "", "key_env": ""},
     "nvidia": {"kind": "openai-chat", "base_url": "https://integrate.api.nvidia.com/v1",
-               "key_env": "NVIDIA_API_KEY", "defaults": ["qwen/qwen2.5-coder-32b-instruct"]},
+               "key_env": "NVIDIA_API_KEY", "defaults": ["meta/llama-3.1-8b-instruct"]},
     "deepseek": {"kind": "openai-chat", "base_url": "https://api.deepseek.com",
                  "key_env": "DEEPSEEK_API_KEY", "defaults": ["deepseek-flash"]},
     "openai": {"kind": "openai-responses", "base_url": "https://api.openai.com/v1",
