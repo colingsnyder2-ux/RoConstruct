@@ -559,3 +559,33 @@ def test_bun_crash_is_not_mistaken_for_success(monkeypatch):
     monkeypatch.setattr(agent, "command", lambda *a: ["opencode", "run"])
     monkeypatch.setattr(agent.subprocess, "Popen", lambda *a, **kw: process)
     assert agent.run_agent("opencode", "prompt", log=lambda *a: None) == agent.RUNTIME_FAILED
+
+
+def test_silent_cli_startup_timeout_kills_tree_and_returns_fatal(monkeypatch):
+    import io
+    from unittest.mock import Mock
+    process = Mock(stdin=io.StringIO(), stdout=io.StringIO())
+    process.wait.return_value = 0
+    monkeypatch.setattr(agent.shutil, "which", lambda cli: cli)
+    monkeypatch.setattr(agent, "command", lambda *a: ["opencode", "run"])
+    monkeypatch.setattr(agent.subprocess, "Popen", lambda *a, **kw: process)
+    monkeypatch.setattr(agent.worker, "load_settings", lambda: {"agent_startup_timeout": 2})
+    killed = []
+    monkeypatch.setattr(agent, "_kill", killed.append)
+    timers = []
+    class Timer:
+        def __init__(self, seconds, callback):
+            self.seconds, self.callback = seconds, callback
+            self.cancelled = False
+            timers.append(self)
+        def start(self):
+            if self.seconds == 2:
+                self.callback()
+        def cancel(self):
+            self.cancelled = True
+    monkeypatch.setattr(agent.threading, "Timer", Timer)
+    messages = []
+    assert agent.run_agent("opencode", "prompt", log=messages.append) == agent.RUNTIME_FAILED
+    assert killed == [process]
+    assert any("emitted no CLI output" in message for message in messages)
+    assert all(timer.cancelled for timer in timers)

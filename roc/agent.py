@@ -597,6 +597,18 @@ def _run_once(cli, prompt, model, minutes, log, goal, switch_minutes):
 
     hit = []
     runtime_failed = False
+    startup_expired = threading.Event()
+    startup_seconds = max(1, int(worker.load_settings().get("agent_startup_timeout", 180)))
+
+    def startup_timeout():
+        startup_expired.set()
+        log("%s emitted no CLI output within %d seconds; stopping its process tree. Test the same model directly in a terminal before restarting." %
+            (cli, startup_seconds))
+        _kill(process)
+
+    startup_timer = threading.Timer(startup_seconds, startup_timeout)
+    startup_timer.daemon = True
+    startup_timer.start()
 
     def expire():
         hit.append(True)
@@ -611,6 +623,7 @@ def _run_once(cli, prompt, model, minutes, log, goal, switch_minutes):
         try:
             process.stdin.write(prompt)
             process.stdin.close()
+            log("Prompt sent; waiting for CLI output.")
         except BrokenPipeError:
             input_closed = True
             log("Agent CLI closed input before accepting the prompt; startup output follows.")
@@ -618,7 +631,12 @@ def _run_once(cli, prompt, model, minutes, log, goal, switch_minutes):
                 process.stdin.close()
             except BrokenPipeError:
                 pass
+        first_output = True
         for line in process.stdout:
+            if first_output:
+                startup_timer.cancel()
+                log("%s CLI output received." % cli)
+                first_output = False
             show(line, log)
             if any(text in line for text in ("Illegal instruction", "Bun has crashed", "MemoryExhaustion", "panic(main thread):")):
                 runtime_failed = True
@@ -633,11 +651,12 @@ def _run_once(cli, prompt, model, minutes, log, goal, switch_minutes):
                 process.wait()
                 return RATE_LIMITED
         code = process.wait()
-        return RUNTIME_FAILED if runtime_failed else TIME_LIMIT if hit else code or int(input_closed)
+        return RUNTIME_FAILED if runtime_failed or startup_expired.is_set() else TIME_LIMIT if hit else code or int(input_closed)
     except BaseException:
         _kill(process)
         raise
     finally:
+        startup_timer.cancel()
         timer.cancel()
         process.stdout.close()
 
@@ -874,7 +893,7 @@ def run_goal(cli, goal, model=None, minutes=120, log=print, continuous=False,
         if not continuous:
             return code
         if code == RUNTIME_FAILED:
-            log("Crashed CLI runtime; stopping continuous goal. Repair CLI before restarting.")
+            log("CLI runtime/startup failed; stopping continuous goal. Repair CLI before restarting.")
             return code
         failures = failures + 1 if code else 0
         if failures >= 3:
