@@ -212,11 +212,11 @@ class DashboardTests(unittest.TestCase):
             if goal.strip():
                 self.assertEqual(job["args"][job["args"].index("--goal") + 1], goal)
 
-    def test_automatic_mode_selects_library_campaigns(self):
+    def test_automatic_mode_has_no_library_campaigns(self):
         for mode in ("automatic", "fast", "balanced", "deep"):
             with patch.object(self.app, "schedule"):
                 identifier = self.app.start({"kind": "agent_worker", "cli": "codex", "mode": mode})
-            self.assertIn("--experimental", self.app.jobs[identifier]["args"])
+            self.assertNotIn("--experimental", self.app.jobs[identifier]["args"])
 
     def test_agent_worker_joins_managed_worker_history(self):
         with patch.object(self.app, "schedule"):
@@ -306,7 +306,7 @@ class DashboardTests(unittest.TestCase):
             with patch.object(agent_auto, "run") as run:
                 cli.main(args)
             self.assertEqual(run.call_args.kwargs["client"], selected or "2008-06")
-            self.assertTrue(run.call_args.kwargs["experimental"])
+            self.assertNotIn("experimental", run.call_args.kwargs)
 
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()

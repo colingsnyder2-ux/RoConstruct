@@ -116,7 +116,8 @@ const PROVIDER_CLI = {openai:"openai", anthropic:"anthropic", opencode:"opencode
 function customProviders() { return meta.providers.filter(provider => !["openai","anthropic","opencode","chatgpt"].includes(provider.name)); }
 function providerChoices(choice) {
   if(choice==="opencode") return (meta.agent_models || []).map(model=>["opencode:"+model,(model.startsWith("opencode-go/") ? "Go plan · " : "")+model]);
-  const providers = choice==="custom" ? customProviders() : meta.providers.filter(provider=>provider.name===choice);
+  const name = {claude:"anthropic", codex:"openai"}[choice] || choice;
+  const providers = choice==="custom" ? customProviders() : meta.providers.filter(provider=>provider.name===name);
   return providers.flatMap(provider=>provider.models.map(model=>[provider.name+":"+model, provider.name+":"+model+(provider.ready ? "" : " · key missing")]));
 }
 function modelChoices(config, choice="openai") {
@@ -133,8 +134,9 @@ function workerForm(config) {
     field("Client", "client", config.client, {choices:[["","All available clients"],...meta.clients.map(client=>[client.name,client.name])]}) +
     field("Library", "library", config.library, {choices:[["","Auto (all libraries)"],...(meta.libraries||[]).map(name=>[name,name])]}) +
     field("Username", "user", config.user) + field("Server", "server", config.server, {full:true,placeholder:"host:8765 or https://server"}) +
-    field("Agent CLI", "model_provider", matchProvider, {choices:[["openai","OpenAI"],["anthropic","Anthropic"],["opencode","OpenCode"],["custom","Custom"]]}) +
+    field("Agent CLI", "model_provider", matchProvider, {choices:CLI_CHOICES}) +
     field("Model", "model", modelBase(config.model), {choices:modelChoices(config, matchProvider),full:true}) +
+    field("Or type a model (optional, overrides the list)", "model_custom", "", {placeholder:"provider:model, e.g. nvidia:qwen/qwen2.5-coder-32b-instruct", full:true}) +
     (usesOpenCode(config.model) ? field("Variant (reasoning)", "model_variant", variantOf(config.model), {choices:VARIANTS}) : "") +
     (usesOpenCode(config.model) ? `<p class="help-note">Runs through the signed-in OpenCode CLI — no API key, no key entry here. opencode-go models use your Go plan allowance automatically ($80/mo DeepSeek V4.1 Flash); spend caps do not apply, usage shows in the OpenCode console.</p>` : "") +
     field("Worker loops", "workers", config.workers, {placeholder:"auto or 1–256"}) +
@@ -149,9 +151,9 @@ function workerForm(config) {
     field("Target addresses (comma separated)", "addresses", (config.targets || []).map(row=>row.addr).join(", "), {full:true,placeholder:"00401000, 00401200"}) +
     `<div class="field full button-row">${check("Rev.ng hints", "use_revng", config.use_revng)}${check("Guided mutations", "guided_mutations", config.guided_mutations)}${check("Near-match repair", "near_repair", config.near_repair)}${check("Source-only (no AI)", "source_only", config.source_only)}</div></div><h3 class="form-section">Cloud budgets</h3><div class="field-grid">` +
     field("Request cap", "max_cloud_requests", config.max_cloud_requests, {type:"number",min:1,placeholder:"Unlimited"}) + field("Token cap", "max_cloud_tokens", config.max_cloud_tokens, {type:"number",min:1,placeholder:"Unlimited"}) + field("Estimated spend cap ($)", "max_cloud_cost", config.max_cloud_cost, {type:"number",min:0.01,placeholder:"Requires configured pricing",full:true}) +
-    `</div><p class="help-note">Budget edits preserve usage already spent. In-flight requests continue. Unknown prices cannot establish actual spend.</p></details><div class="consent">${check("Allow cloud prompts for this session", "cloud_allowed", config.cloud_allowed)}<p>Bounded assembly, symbols and source hints leave this PC. Provider keys and executable files stay local.</p></div><div class="form-footer"><span class="tiny muted">${editing ? "Edits apply before each loop's next function." : "Compilation and byte comparison stay local."}</span>${button(editing ? "Apply changes" : "Start Match", 'type="submit"')}</div><div class="button-row form-section"><button type="button" class="text-button" id="save-preset">Save preset</button><select id="saved-presets" aria-label="Load a saved preset"><option value="">Load saved preset…</option>${Object.keys(meta.preferences.presets).map(name=>`<option>${esc(name)}</option>`).join("")}</select><button type="button" class="text-button" id="refresh-models">Refresh models</button></div></form>`;
+    `</div><p class="help-note">Budget edits preserve usage already spent. In-flight requests continue. Unknown prices cannot establish actual spend.</p></details><div class="consent">${check("Allow cloud prompts for this session", "cloud_allowed", config.cloud_allowed)}<p>Bounded assembly, symbols and source hints leave this PC. Provider keys and executable files stay local.</p></div><div class="form-footer"><span class="tiny muted">${editing ? "Edits apply before each loop's next function." : "Compilation and byte comparison stay local."}</span>${button(editing ? "Apply changes" : "Start Match", 'type="submit"')}</div><div class="button-row form-section">${button("Install / sign in",'type="button" data-agent-setup="current"',true)}<button type="button" class="text-button" id="save-preset">Save preset</button><select id="saved-presets" aria-label="Load a saved preset"><option value="">Load saved preset…</option>${Object.keys(meta.preferences.presets).map(name=>`<option>${esc(name)}</option>`).join("")}</select><button type="button" class="text-button" id="refresh-models">Refresh models</button></div></form>`;
 }
-let matchProvider="openai";
+let matchProvider="codex";
 let workerMode="function", controlsOpen=true, workerRun="", chatFollow=true, chatSignature="", chatCompact=false, workerLoop="";
 function workers(config) {
   if(meta.agent_models===undefined)act(loadOpenCodeModels);
@@ -379,6 +381,7 @@ function readWorker() {
   const form=$("#worker-form"), config={...(editing ? jobs.find(job=>job.id===editing).config : meta.initial)};
   for(const input of form.querySelectorAll("[name]")) {
     const key=input.name;
+    if(key==="model_custom") { if(!input.disabled && input.value.trim()) config.model=input.value.trim(); continue; }
     if(input.disabled || key==="addresses" || key==="model_variant" || key==="model_provider") continue;
     config[key]=input.type==="checkbox" ? input.checked : ["workers","rounds","max_tokens","cloud_concurrency"].includes(key) && input.value==="auto" ? "auto" : numeric.has(key) ? (input.value==="" && nullable.has(key) ? null : Number(input.value)) : (input.value==="" && nullable.has(key) ? null : input.value);
   }
@@ -466,7 +469,7 @@ document.addEventListener("click", event=>act(async()=>{
   if(target.hasAttribute("data-close-controls")) {controlsOpen=false;$(".worker-drawer").classList.remove("open");}
   if(target.hasAttribute("data-copy-code")) {await navigator.clipboard.writeText(target.closest(".chat-code").querySelector("code").textContent);toast("Code copied");}
   if(target.id==="chat-follow"||target.id==="jump-live") {setChatFollow(true);chatSignature="";renderWorkerChat();scrollToLatest($("#worker-chat"),true);}
-  if(target.dataset.agentSetup) { const result=await api("agent-setup",{cli:cliFor($("#agent-auto-form")?.elements.cli.value||target.dataset.agentSetup)});toast(result.manual ? "Run in a terminal: "+result.manual : "Opened a terminal window. Sign in there, then press Refresh."); }
+  if(target.dataset.agentSetup) { const setupForm=$("#agent-auto-form")||$("#worker-form");const result=await api("agent-setup",{cli:cliFor(setupForm?.elements.cli?.value||setupForm?.elements.model_provider?.value||target.dataset.agentSetup)});toast(result.manual ? "Run in a terminal: "+result.manual : "Opened a terminal window. Sign in there, then press Refresh."); }
   if(target.hasAttribute("data-agent-run")) { const data=Object.fromEntries(new FormData($("#agent-form")));const result=await api("start",{kind:"command",command:"agent",cli:data.cli,model:data.model,goal:data.goal,minutes:120});toast("Agent started");$("#console-hint").textContent="Agent run "+result.id; }
   if(target.dataset.openCommand) { selectedCommand=target.dataset.openCommand;navigate("commands"); }
   if(target.dataset.command) { selectedCommand=target.dataset.command;render(); }

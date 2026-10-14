@@ -31,7 +31,8 @@ append = research.append
 
 
 def history():
-    return research.journal_records(ROOT / "work" / "agent-memory" / "attempts.jsonl")
+    return [agent_memory.campaign_context(row) for row in
+            research.journal_records(ROOT / "work" / "agent-memory" / "attempts.jsonl")]
 
 
 def snapshot(client="2008-06", api=None):
@@ -429,6 +430,38 @@ def campaign_packet(campaign, folder, server, user):
     (folder / "campaign.json").write_text(json.dumps(campaign, indent=2), encoding="utf-8")
 
 
+def finalize_campaign(campaign, server, user, token, log):
+    """Submit preserved best candidates even if the agent omitted submission commands."""
+    errors = []
+    for row in campaign["targets"]:
+        path = Path(row["file"])
+        best = path.parent / "best.cpp"
+        if not best.exists() and not path.exists():
+            continue
+        candidates = []
+        for candidate in (best, path):
+            if candidate.exists():
+                text = candidate.read_text(encoding="utf-8")
+                try:
+                    candidates.append((match.check_text(campaign["client"], row["addr"], text)[0], text))
+                except match.CompileError as error:
+                    log("Final candidate %s does not compile: %s" % (candidate, error))
+        if not candidates:
+            errors.append(dict(addr=row["addr"], error="No compiling candidate"))
+            continue
+        source = max(candidates, key=lambda item: item[0])[1]
+        destination = path.parent / "submission" / path.name
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_text(source, encoding="utf-8")
+        (destination.parent / "task.json").write_text((path.parent / "task.json").read_text(encoding="utf-8"), encoding="utf-8")
+        try:
+            worker.submit_files(server, user, campaign["client"], [row["addr"]], token, log=log, file=destination)
+        except (RuntimeError, OSError) as error:
+            errors.append(dict(addr=row["addr"], error=str(error)))
+            log("Final submission failed for %s: %s" % (row["addr"], error))
+    return errors
+
+
 def library_cycle(server, user, token, cli, model, minutes, log, client, slot=None, claimed=None, claim_lock=None):
     if not 1 <= minutes <= 600:
         raise ValueError("Minutes must be 1-600")
@@ -623,6 +656,7 @@ def library_cycle(server, user, token, cli, model, minutes, log, client, slot=No
     finally:
         benchmark_stop.set()
         ticker.join(timeout=2)
+    finalization_errors = finalize_campaign(campaign, server, user, token, output)
     benchmark()
     after = {row["addr"]: row for row in api.call("/v1/sources?scores=1&client=" + selected, timeout=120)}
     observed = [row for addr, row in after.items() if row.get("score", 0) > baseline.get(addr, 100)]
@@ -640,6 +674,7 @@ def library_cycle(server, user, token, cli, model, minutes, log, client, slot=No
                   observed_server_gains=len(observed), attribution="campaign receipts")
     record.update(stop_reason=stop_reason, agent_exit_code=code, agent_error=run_error,
                   trials_recorded=trial_count, agent_output=str(output_path), agent_output_tail=output_tail,
+                  finalization_errors=finalization_errors,
                   time_budget_seconds=minutes * 60, budget_elapsed=elapsed >= minutes * 60)
     record.update(exacts_gained=sum(score == 100 for score in gains.values()),
                   elapsed_seconds=elapsed)
@@ -649,40 +684,16 @@ def library_cycle(server, user, token, cli, model, minutes, log, client, slot=No
     log("Library campaign finished: %d receipt-backed gains; %d server gains observed; %s" %
         (len(gains), len(observed), record["outcome"]))
     return dict(attempted=len(campaign["targets"]), matched=sum(score == 100 for score in gains.values()),
-                improved=sum(score < 100 for score in gains.values()), errors=int(bool(code)))
+                improved=sum(score < 100 for score in gains.values()), errors=int(bool(code or finalization_errors)))
 
 
 def run(server, user, token=None, cli="claude", model=None, workers=2, jobs=24, max_size=512,
-        minutes=120, batch_size=4, batch_minutes=10, individual=False, log=print, client=None, continuous=False,
-        experimental=False, experimental_percent=100):
-    experimental = experimental or not individual
+        minutes=120, batch_size=4, batch_minutes=10, individual=False, log=print, client=None, continuous=False):
     strategy = 0
-    prepared = False
     while True:
         try:
-            # Each cycle is a library campaign with this chance, otherwise ranked repair batches.
-            use_campaigns = experimental and random.randrange(100) < experimental_percent
-            if experimental and experimental_percent < 100:
-                log("Cycle mode: %s." % ("library campaigns" if use_campaigns else "ranked repair batches"))
-            if use_campaigns:
-                if not prepared:
-                    prepare_clients(client, log)
-                    prepared = True
-                claimed, claim_lock = set(), threading.Lock()
-                with ThreadPoolExecutor(max_workers=workers) as pool:
-                    futures = [pool.submit(library_cycle, server, user, token, cli, model, minutes, log, client,
-                                           slot, claimed, claim_lock) for slot in range(workers)]
-                    cycles = [future.result() for future in futures]
-                available = [cycle for cycle in cycles if cycle is not None]
-                totals = (dict(attempted=sum(c["attempted"] for c in available),
-                               matched=sum(c["matched"] for c in available),
-                               improved=sum(c["improved"] for c in available),
-                               errors=sum(c["errors"] for c in available)) if available else None)
-            else:
-                totals = None
-            if totals is None:
-                totals = run_cycle(server, user, token, cli, model, workers, jobs, max_size, minutes,
-                                   batch_size, batch_minutes, individual, log, client, strategy)
+            totals = run_cycle(server, user, token, cli, model, workers, jobs, max_size, minutes,
+                               batch_size, batch_minutes, individual, log, client, strategy)
         except (RuntimeError, OSError) as error:
             if not continuous:
                 raise
@@ -693,8 +704,7 @@ def run(server, user, token=None, cli="claude", model=None, workers=2, jobs=24, 
             return totals
         if not totals["matched"] and not totals["improved"]:
             strategy = (strategy + 1) % len(STRATEGIES)
-            log("No verified gains; selecting a fresh library/strategy next cycle." if experimental else
-                "No verified gains; next strategy: " + STRATEGIES[strategy])
+            log("No verified gains; next strategy: " + STRATEGIES[strategy])
         log("Continuous agent: refreshing targets and shared memory; Stop ends this run.")
         time.sleep(30 if not totals["attempted"] or totals["errors"] else 5)
 

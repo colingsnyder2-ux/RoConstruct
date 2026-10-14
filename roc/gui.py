@@ -116,7 +116,6 @@ def command_args(data):
                 args += ["--" + key.replace("_", "-"), str(value)]
             if data.get("individual") is True:
                 args += ["--individual"]
-            args += ["--experimental"]
         else:
             args += ["--goal", goal]
         args += ["--minutes", str(minutes)]

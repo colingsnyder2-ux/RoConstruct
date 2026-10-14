@@ -76,17 +76,6 @@ def test_library_campaign_uses_real_recipes_all_sizes_and_rotates_strategy():
     assert agent_auto.library_campaigns(rows, "2009-12", records)
 
 
-def test_experimental_prefers_library_campaign_over_fixed_batches(monkeypatch):
-    calls = []
-    monkeypatch.setattr(agent_auto, "pull_sources", lambda *args: None)
-    monkeypatch.setattr(agent_auto, "prepare_clients", lambda *args: None)
-    monkeypatch.setattr(agent_auto, "library_cycle", lambda *a: calls.append(a) or
-                        dict(attempted=5, matched=1, improved=0, errors=0))
-    monkeypatch.setattr(agent_auto, "run_cycle", lambda *a: pytest.fail("unexpected fixed batch"))
-    assert agent_auto.run("server", "me", client="2008-06", experimental=True)["matched"] == 2
-    assert len(calls) == 2 and all(call[7] == "2008-06" for call in calls)
-
-
 def test_campaign_choice_randomizes_least_tried_without_score_bias(monkeypatch):
     candidates = [dict(library="G3D", visits=1, verified_exacts_per_minute=100),
                   dict(library="Lua", visits=0, targets=[dict(score=99)]),
@@ -118,6 +107,21 @@ def test_campaign_packet_seeds_sources_and_ready_commands(tmp_path):
     assert '--user "tester"' in target["submit"]
     assert "--background" in campaign["research_commands"]["background"]
     assert json.loads((tmp_path / "campaign.json").read_text()) == campaign
+
+
+def test_campaign_finalize_selects_best_current_or_preserved_candidate(tmp_path, monkeypatch):
+    campaign = dict(client="2008-06", targets=[row("00401000", source="current")])
+    agent_auto.campaign_packet(campaign, tmp_path, "https://server", "tester")
+    path = Path(campaign["targets"][0]["file"])
+    (path.parent / "best.cpp").write_text("preserved", encoding="utf-8")
+    monkeypatch.setattr(agent_auto.match, "check_text", lambda client, addr, text:
+                        (86 if text == "current" else 70, "f", "", []))
+    submitted = []
+    monkeypatch.setattr(agent_auto.worker, "submit_files", lambda *args, **kwargs:
+                        submitted.append((kwargs["file"].read_text(),
+                        json.loads((kwargs["file"].parent / "task.json").read_text()))))
+    assert agent_auto.finalize_campaign(campaign, "https://server", "tester", None, lambda message: None) == []
+    assert submitted[0][0] == "current" and submitted[0][1]["campaign_id"] == tmp_path.name
 
 
 def test_short_untested_campaigns_do_not_park_strategies():
@@ -191,11 +195,11 @@ def test_source_policy_failures_do_not_exhaust_campaign_hypotheses():
     assert agent_auto.campaign_results("own", rows) == ({}, 0)
 
 
-def test_default_automatic_mode_uses_libraries_before_repairs(monkeypatch):
+def test_default_automatic_mode_uses_ranked_repair_batches(monkeypatch):
     calls = []
-    monkeypatch.setattr(agent_auto, "library_cycle", lambda *args:
-                        calls.append(args) or dict(attempted=1, matched=0, improved=0, errors=0))
-    monkeypatch.setattr(agent_auto, "run_cycle", lambda *args: pytest.fail("Unexpected repair mode"))
+    monkeypatch.setattr(agent_auto, "library_cycle", lambda *args: pytest.fail("library campaigns were removed"))
+    monkeypatch.setattr(agent_auto, "run_cycle", lambda *args: calls.append(args) or
+                        dict(attempted=1, matched=0, improved=0, errors=0))
     assert agent_auto.run("server", "me", workers=1)["attempted"] == 1
     assert len(calls) == 1
 
@@ -289,23 +293,6 @@ def test_prepare_clients_installs_the_missing_exact_compiler(tmp_path, monkeypat
     assert calls == [([21022], True)]
 
 
-def test_experimental_starts_every_worker_without_bulk_source_sync(monkeypatch):
-    pulled, slots = [], []
-    gate = threading.Barrier(4)
-    monkeypatch.setattr(agent_auto, "pull_sources", lambda *args: pulled.append(args))
-    monkeypatch.setattr(agent_auto, "prepare_clients", lambda *args: None)
-
-    def campaign(*args, **kwargs):
-        slots.append(args[8])
-        gate.wait(timeout=2)
-        return dict(attempted=1, matched=0, improved=0, errors=0)
-
-    monkeypatch.setattr(agent_auto, "library_cycle", campaign)
-    totals = agent_auto.run("server", "me", workers=4, client="2008-06", experimental=True, log=lambda _: None)
-    assert not pulled and sorted(slots) == [0, 1, 2, 3]
-    assert totals == dict(attempted=4, matched=0, improved=0, errors=0)
-
-
 def test_campaign_materializes_only_missing_target_sources(tmp_path, monkeypatch):
     monkeypatch.setattr(agent_auto, "ROOT", tmp_path)
     campaign = {"client": "2008-06", "targets": [
@@ -329,6 +316,7 @@ def test_automatic_campaigns_include_nonlibrary_categories():
 @pytest.mark.parametrize("exit_mode", ["complete", "error", "exception"])
 def test_library_cycle_records_server_observed_gains_and_research_scope(tmp_path, monkeypatch, exit_mode):
     monkeypatch.setattr(agent_auto, "ROOT", tmp_path)
+    monkeypatch.setattr(agent_auto, "finalize_campaign", lambda *args: [])
     monkeypatch.setattr(agent_auto, "history", lambda: [])
     monkeypatch.setattr(agent_auto.agent, "memory", lambda *a: {})
     source = "// roc-lib: g3d-6.09 GLG3Dcpp/Sky.cpp\n"
