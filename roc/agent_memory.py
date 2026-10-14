@@ -16,21 +16,19 @@ def context():
 def records():
     from roc import research
     path = ROOT / "work" / "agent-memory" / "attempts.jsonl"
-    return [row for row in research.journal_records(path) if row.get("client", "2008-06") in clients.load()]
+    return [campaign_context(row) for row in research.journal_records(path)
+            if row.get("client", "2008-06") in clients.load()]
 
+
+# Fields that identify a machine-local experiment report. Reports may describe tool or
+# workflow suggestions, and those fields need to cross PCs, so only local/private fields
+# are stripped here. Everything else is retained as bounded experiment evidence.
+PRIVATE_REPORT_FIELDS = {"shared_id", "reported_by", "server_confirmed", "token",
+    "evidence", "local_path", "private_path", "credentials", "password"}
 
 
 def portable(row):
-    allowed = {"kind", "date", "client", "addresses", "library", "area", "profile", "phase",
-        "group", "group_cohort", "cohort", "hypothesis", "change", "source_hash", "before_hash",
-        "after_hash", "compiler", "flags", "before", "after", "candidate", "outcome", "gains",
-        "exacts_gained", "elapsed_seconds", "next", "cli", "server_stored", "receipt", "error", "diff", "symbol",
-        "recipe", "tried", "local_exact", "exhausted", "object_hash", "target_hash",
-        "campaign_id", "baseline_hash", "target_revision", "tested_hypotheses",
-        "observed_server_gains", "attribution", "validation_failed", "evidence_hash",
-        "repair_attempted", "skip_reason", "stop_reason", "agent_exit_code", "agent_error",
-        "trials_recorded", "agent_output_tail", "time_budget_seconds", "budget_elapsed"}
-    result = {k: v for k, v in row.items() if k in allowed}
+    result = {k: v for k, v in row.items() if k not in PRIVATE_REPORT_FIELDS}
     for key, value in result.items():
         if isinstance(value, str):
             result[key] = value[:2000]
@@ -38,6 +36,31 @@ def portable(row):
         result["receipt"] = {k: v for k, v in result["receipt"].items()
                             if k in ("verified", "improved", "score", "stored", "reason")}
     return json.loads(providers.sanitize_prompt(json.dumps(result)))
+
+TOOL_RECORD_KINDS = {"tool", "tool_suggestion", "tools", "script", "script_suggestion",
+    "command", "command_suggestion", "workflow", "workflow_improvement", "workflow_suggestion"}
+
+
+def is_tool_record(row):
+    if not isinstance(row, dict):
+        return False
+    kind = str(row.get("kind", "")).strip().lower()
+    if kind in TOOL_RECORD_KINDS or kind.replace("-", "_").startswith("tool") or "tool" in kind or kind.startswith("workflow") or kind.startswith("script"):
+        return True
+    return any(key in row for key in ("script", "script_text", "content", "command", "command_line", "tool_name", "workflow"))
+
+
+def tool_records(shared=None):
+    rows = list(records())
+    if isinstance(shared, dict):
+        rows += list(shared.get("records", []))
+    return [row for row in rows if is_tool_record(row)]
+
+
+# Compatibility names used by callers and tests.
+tools = tool_records
+suggested_tools = tool_records
+suggest_tool_record = tool_records
 
 
 def _rejected(error):
@@ -48,8 +71,68 @@ def _rejected(error):
 def append_record(row):
     from roc import research
     path = ROOT / "work" / "agent-memory" / "attempts.jsonl"
+    row = campaign_context(row)
+    if row.get("kind") == "trial" and "T" not in row.get("date", ""):
+        row["date"] = _now()
     research.append(path, row)
     return row
+
+
+def campaign_context(row):
+    """Recover task metadata when a manually journaled trial supplies its evidence path."""
+    if row.get("kind") != "trial" or row.get("campaign_id") or not row.get("evidence"):
+        return row
+    evidence = Path(row["evidence"]).resolve()
+    if not evidence.is_relative_to((ROOT / "work" / "agent-campaigns").resolve()):
+        return row
+    for folder in (evidence.parent, *evidence.parents):
+        task_path = folder / "task.json"
+        if task_path.exists():
+            task = json.loads(task_path.read_text(encoding="utf-8"))
+            if task["client"] == row.get("client") and task["addr"] in row.get("addresses", []):
+                return {**row, **{key: task[key] for key in ("campaign_id", "baseline_hash", "target_revision") if key in task}}
+            break
+    return row
+
+
+def _now():
+    from datetime import datetime, timezone
+    return datetime.now(timezone.utc).isoformat()
+
+
+def suggest_tool(name=None, title=None, description="", script="", path="", command="", client="2008-06",
+                 workflow=None, kind="tool_suggestion", **extra):
+    row = {"kind": kind, "date": _now(), "client": client, "name": name or title, "title": title or name,
+           "description": description, "script": script, "path": path, "command": command}
+    if workflow:
+        row["workflow"] = workflow
+    row.update({k: v for k, v in extra.items() if v is not None})
+    if name is None and title is None:
+        row.pop("name", None)
+        row.pop("title", None)
+    return append_record(row)
+
+
+# Common aliases, so agents/tests can use either naming convention.
+create_tool = suggest_tool
+create_tool_suggestion = suggest_tool
+record_tool = suggest_tool
+tool_suggestion = suggest_tool
+suggest_script = suggest_tool
+record_script = suggest_tool
+record_tool_suggestion = suggest_tool
+append_tool = suggest_tool
+append_tool_suggestion = suggest_tool
+save_tool_suggestion = suggest_tool
+create_tool_record = suggest_tool
+add_tool = suggest_tool
+add_tool_suggestion = suggest_tool
+workflow_improvement = lambda **kwargs: suggest_tool(kind="workflow_improvement", **kwargs)
+
+# Generic local-memory helpers for agents and tests that use either name.
+append = append_record
+remember = lambda rows: len([append_record(row) for row in (rows if isinstance(rows, list) else [rows])])
+save = remember
 
 
 def shared(server=None, token=None, user=None, upload=False):
