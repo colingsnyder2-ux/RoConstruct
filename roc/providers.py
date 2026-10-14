@@ -195,13 +195,13 @@ def secret(key_env):
     """Return an environment key, then a local JSON secret, without logging it."""
     value = os.environ.get(key_env)
     if value:
-        return value
+        return value.strip()
     try:
         data = json.loads(secrets_path().read_text(encoding="utf-8"))
     except (OSError, ValueError, TypeError):
         return ""
     value = data.get(key_env) if isinstance(data, dict) else ""
-    return value if isinstance(value, str) else ""
+    return value.strip() if isinstance(value, str) else "">
 
 
 def key_available(key_env):
