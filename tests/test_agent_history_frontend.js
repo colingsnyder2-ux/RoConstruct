@@ -25,5 +25,17 @@ context.fetch=async(url,options)=>{
   assert.ok(context.agentHistoryLog.text.includes("agent 1"));
   assert.ok(context.agentHistoryLog.text.includes("Failed"));
   assert.ok(context.agentHistory().includes("END_REPORT &lt;script&gt;"));
-  console.log("Agent history frontend checks passed");
+  context.restartedWorkers=new Set();context.workerRun="run";
+  vm.runInContext(source.slice(source.indexOf("async function restartWorker(job)"),source.indexOf("function toast(message)")),context);
+  const calls=[];
+  context.api=async(path,data)=>{calls.push([path,data]);if(path==="control")throw new Error("Job is not running");return {id:"new-run"};};
+  await context.restartWorker(context.jobs[0]);
+  assert.equal(calls[1][0],"start");
+  assert.equal(calls[1][1].kind,"agent_worker");
+  assert.equal(calls[1][1].model,"chosen");
+  assert.equal(context.workerRun,"new-run");
+  assert.ok(context.restartedWorkers.has("run"));
+  context.api=async()=>{throw new Error("Worker already active");};
+  await assert.rejects(()=>context.restartWorker(context.jobs[0]),/already active/);
+  console.log("Agent history and restart compatibility checks passed");
 })().catch(error=>{console.error(error);process.exitCode=1;});

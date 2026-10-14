@@ -9,6 +9,7 @@ let meta, jobs = [], page = initialPage, selectedCommand = "mass", editing = nul
 let cursor = 0, logs = [], follow = true, online = false, toastTimer, localModels = [];
 let workerMemory = null;
 let agentHistoryLog = null;
+const restartedWorkers = new Set();
 let agentAutoConfig = {cli:"claude",model:"",goal:"",workers:2,jobs:24,minutes:120,batch_size:4,batch_minutes:30,max_size:512,individual:false};
 let cpu = null, cpuCluster = "", cpuLoaded = 0, cpuLoading = false, serverSetupOpen = initialPage === "cpu";
 const isWorker = job => ["worker","agent_worker"].includes(job.kind) || !!job.args?.includes("--automatic");
@@ -23,6 +24,20 @@ async function api(path, data) {
   const result = await response.json();
   if (!response.ok) throw new Error(result.error || "Request failed");
   return result;
+}
+async function restartWorker(job) {
+  try {
+    await api("control",{id:job.id,action:"restart"});
+    job.status="queued";
+  } catch(error) {
+    if(error.message!=="Job is not running")throw error;
+    // Older dashboard backends have start support but no restart control.
+    if(!job.config || !["worker","agent_worker"].includes(job.kind))throw error;
+    const result=await api("start",job.kind==="worker" ? {kind:"worker",config:{...job.config}} : {kind:"agent_worker",...job.config});
+    if(workerRun===job.id)workerRun=result.id;
+    jobs.push({...job,id:result.id,status:"queued",started:null,ended:null,slots:{}});
+    restartedWorkers.add(job.id);
+  }
 }
 function toast(message) { $("#toast").textContent = message; $("#toast").classList.add("visible"); clearTimeout(toastTimer); toastTimer = setTimeout(() => $("#toast").classList.remove("visible"), 6000); }
 async function act(fn) { try { await fn(); } catch(error) { toast(error.message); } }
@@ -472,11 +487,10 @@ document.addEventListener("click", event=>act(async()=>{
   if(target.hasAttribute("data-restart-workers")) {
     target.disabled=true;
     try {
-      const stopped=jobs.filter(isWorker).slice(-12).filter(j=>!["running","paused","stopping","queued"].includes(j.status));
+      const stopped=jobs.filter(isWorker).slice(-12).filter(j=>!restartedWorkers.has(j.id)&&!["running","paused","stopping","queued"].includes(j.status));
       let count=0;
       for(const job of stopped) {
-        await api("control",{id:job.id,action:"restart"});
-        job.status="queued";
+        await restartWorker(job);
         count++;
       }
       toast(count ? `Restarted ${count} workers with saved parameters` : "No offline workers");
