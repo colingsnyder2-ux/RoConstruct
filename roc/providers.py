@@ -583,8 +583,9 @@ def _opencode_run(argv, prompt, timeout):
     process = subprocess.Popen(argv, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                                stderr=subprocess.STDOUT, text=True,
                                encoding="utf-8", errors="replace")
+    to = int(timeout or 0)
     try:
-        output, _unused = process.communicate(prompt, timeout=max(5, int(timeout or 180)))
+        output, _unused = process.communicate(prompt, timeout=(None if to <= 0 else max(5, to)))
     except subprocess.TimeoutExpired:
         if os.name == "nt":
             # npm shims are .cmd files: kill the whole tree, not just cmd.exe.
@@ -703,6 +704,8 @@ def generate(model, messages, options=None, state=None):
             raise ProviderError("cloud_budget", "ChatGPT uses plan limits, not USD pricing. Remove the USD cap; manage app limits in ChatGPT Settings > Usage.")
     elif config["kind"] == "opencode-cli":
         options["retry_forever"] = False
+        if options.get("timeout") == 180:
+            options["timeout"] = 0  # Match (worker flow) inherits Agent: no per-call cap.
         if options.get("budget") and options["budget"].max_cost is not None:
             raise ProviderError("cloud_budget", "OpenCode models use the CLI's plan allowances (Go subscription monthly limits), not USD API pricing. Remove the spend cap; usage is shown in the OpenCode console.")
     gate, lock = options.get("gate"), None
