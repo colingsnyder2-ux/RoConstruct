@@ -88,3 +88,5 @@
 .worker-chat .terminal-row.tool-call .terminal-marker,.worker-chat .terminal-row.thinking .terminal-marker{display:none}
 .worker-chat .terminal-row .chat-code{border:0;box-shadow:none;margin:8px 0;background:var(--panel);border-radius:6px}
 .worker-chat .terminal-row .thought-text{font:13px/1.7 var(--sans);color:var(--muted);white-space:pre-wrap}
+
+.history-full-text{white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;font:12px/1.65 var(--mono);color:var(--text);background:var(--panel2);padding:12px;border-radius:6px;max-height:none;text-overflow:clip}.experiment-details{margin-top:8px}.experiment-details>summary{cursor:pointer}.agent-history-run{padding:10px 0;border-bottom:1px solid var(--border)}

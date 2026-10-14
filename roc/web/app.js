@@ -8,6 +8,7 @@ history.replaceState(null, "", location.pathname + (initialPage === "cpu" ? "?pa
 let meta, jobs = [], page = initialPage, selectedCommand = "mass", editing = null;
 let cursor = 0, logs = [], follow = true, online = false, toastTimer, localModels = [];
 let workerMemory = null;
+let agentHistoryLog = null;
 let agentAutoConfig = {cli:"claude",model:"",goal:"",workers:2,jobs:24,minutes:120,batch_size:4,batch_minutes:30,max_size:512,individual:false};
 let cpu = null, cpuCluster = "", cpuLoaded = 0, cpuLoading = false, serverSetupOpen = initialPage === "cpu";
 const isWorker = job => ["worker","agent_worker"].includes(job.kind) || !!job.args?.includes("--automatic");
@@ -160,7 +161,7 @@ function workers(config) {
   if(meta.agent_models===undefined)act(loadOpenCodeModels);
   const current=jobs.find(job=>job.id===editing);
   if(!current || !active(current))editing=null;
-  return `<div id="worker-chat" class="worker-chat" tabindex="0" role="log" aria-label="Live worker activity"><div id="worker-chat-rows"></div></div><button id="jump-live" class="jump-live" hidden>↓ Jump back to live</button><footer class="worker-footer"><div id="worker-tabs" class="worker-tabs" role="tablist" aria-label="Worker sessions"></div><div class="worker-footer-controls"><div id="worker-status" class="worker-live-bar"></div><div class="chat-toolbar"><select id="worker-run" aria-label="Worker session"><option value="">All sessions</option>${jobs.filter(j=>isWorker(j)).map(j=>`<option value="${j.id}" ${workerRun===j.id ? "selected" : ""}>${esc(j.config.client)} · ${j.id.slice(0,6)}</option>`).join("")}</select><select id="worker-loop" aria-label="Worker loop"><option value="">All loops</option>${Array.from({length:Math.max(1,...jobs.filter(j=>isWorker(j)).map(j=>Math.max(Object.keys(j.slots).length,Number(j.config.workers)||1)))},(_,i)=>`<option value="${i}" ${workerLoop===String(i) ? "selected" : ""}>Worker ${i+1}</option>`).join("")}</select><button class="text-button" id="chat-compact">${chatCompact ? "Regular" : "Compact"}</button><button class="text-button" id="chat-follow">${chatFollow ? "Live ↓" : "Latest ↓"}</button><button class="text-button" data-configure>Configure</button><button class="text-button" data-new-session>+ New</button></div></div></footer><aside class="worker-drawer ${controlsOpen ? "open" : ""}" aria-label="Worker configuration"><div class="drawer-heading"><h2>${editing ? "Session controls" : "New session"}</h2><button class="text-button" data-close-controls>Close ×</button></div>${editing ? workerForm(current.config) : `<div class="button-row form-section"><button class="text-button ${workerMode==='function' ? 'active' : ''}" data-worker-mode="function">Match</button><button class="text-button ${workerMode==='agent' ? 'active' : ''}" data-worker-mode="agent">Agent</button></div>`+(workerMode==="agent" ? agentAutomatic() : workerForm(config || meta.initial))}</aside>`;
+  return `<div id="worker-chat" class="worker-chat" tabindex="0" role="log" aria-label="Live worker activity"><div id="worker-chat-rows"></div></div><button id="jump-live" class="jump-live" hidden>↓ Jump back to live</button><footer class="worker-footer"><div id="worker-tabs" class="worker-tabs" role="tablist" aria-label="Worker sessions"></div><div class="worker-footer-controls"><div id="worker-status" class="worker-live-bar"></div><div class="chat-toolbar"><select id="worker-run" aria-label="Worker session"><option value="">All sessions</option>${jobs.filter(j=>isWorker(j)).map(j=>`<option value="${j.id}" ${workerRun===j.id ? "selected" : ""}>${esc(j.config.client)} · ${j.id.slice(0,6)}</option>`).join("")}</select><select id="worker-loop" aria-label="Worker loop"><option value="">All loops</option>${Array.from({length:Math.max(1,...jobs.filter(j=>isWorker(j)).map(j=>Math.max(Object.keys(j.slots).length,Number(j.config.workers)||1)))},(_,i)=>`<option value="${i}" ${workerLoop===String(i) ? "selected" : ""}>Worker ${i+1}</option>`).join("")}</select><button class="text-button" id="chat-compact">${chatCompact ? "Regular" : "Compact"}</button><button class="text-button" id="chat-follow">${chatFollow ? "Live ↓" : "Latest ↓"}</button><button class="text-button" data-restart-workers>Restart offline / failed</button><button class="text-button" data-configure>Configure</button><button class="text-button" data-new-session>+ New</button></div></div></footer><aside class="worker-drawer ${controlsOpen ? "open" : ""}" aria-label="Worker configuration"><div class="drawer-heading"><h2>${editing ? "Session controls" : "New session"}</h2><button class="text-button" data-close-controls>Close ×</button></div>${editing ? workerForm(current.config) : `<div class="button-row form-section"><button class="text-button ${workerMode==='function' ? 'active' : ''}" data-worker-mode="function">Match</button><button class="text-button ${workerMode==='agent' ? 'active' : ''}" data-worker-mode="agent">Agent</button></div>`+(workerMode==="agent" ? agentAutomatic() : workerForm(config || meta.initial))}</aside>`;
 }
 function highlightCode(code) {
   return String(code).split(/(\/\/[^\n]*|"(?:\\.|[^"\\])*"|\b(?:void|int|float|double|char|bool|class|struct|return|if|else|for|while|const|static|unsigned|signed|auto|nullptr|true|false|sizeof)\b|\b\d+\b)/g).map(part=>{const cls=part.startsWith("//") ? "comment" : part.startsWith('"') ? "string" : /^\d+$/.test(part) ? "number" : /^(void|int|float|double|char|bool|class|struct|return|if|else|for|while|const|static|unsigned|signed|auto|nullptr|true|false|sizeof)$/.test(part) ? "keyword" : "";return cls ? `<span class="syntax-${cls}">${esc(part)}</span>` : esc(part);}).join("");
@@ -307,9 +308,26 @@ function commands() {
 }
 function experimentMemory(s) {
   if(!s)return `<p class="muted">Loading experiments…</p>`;
-  const rows=[...(s.shared_recent||[]),...(s.recent||[])], seen=new Set();
-  const attempts=rows.reverse().filter(r=>{const key=JSON.stringify(r);if(seen.has(key))return false;seen.add(key);return true;}).slice(0,40);
-  return `<div class="panel panel-pad"><div class="section-heading"><h2>Experiments</h2>${button("Refresh",'data-worker-memory-refresh',true)}</div>${attempts.length ? `<table class="run-list"><thead><tr><th>Experiment</th><th>Result</th><th>Score</th></tr></thead><tbody>${attempts.map(r=>`<tr><td>${esc(r.hypothesis||r.change||r.library||r.area||r.kind||"Attempt")}<br><small>${esc(r.date||"")}</small></td><td>${esc(r.outcome||"Recorded")}${r.server_confirmed ? " · verified" : ""}</td><td>${esc(r.before??"—")} → ${esc(r.after??"—")}%${r.candidate!=null ? `<br><small>candidate ${esc(r.candidate)}%</small>` : ""}</td></tr>`).join("")}</tbody></table>` : `<p class="muted">No experiments yet.</p>`}</div>`;
+  const rows=[...(s.shared_recent||[]),...(s.recent||[]),...(s.tools||[]).slice(-200)], seen=new Set();
+  const attempts=rows.sort((a,b)=>String(b.date||"").localeCompare(String(a.date||""))).filter(r=>{const key=JSON.stringify(r);if(seen.has(key))return false;seen.add(key);return true;});
+  return `<div class="panel panel-pad"><div class="section-heading"><h2>Experiments / agent lessons</h2>${button("Refresh",'data-worker-memory-refresh',true)}</div>${attempts.length ? `<table class="run-list"><thead><tr><th>Experiment / agent report</th><th>Result</th><th>Score</th></tr></thead><tbody>${attempts.map(r=>`<tr><td>${esc(r.hypothesis||r.change||r.library||r.area||r.kind||"Attempt")}<br><small>${esc(r.date||"")} · ${esc(r.cli||r.model||r.kind||"")}</small><details class="experiment-details"><summary>Full text / all fields</summary>${Object.entries(r).map(([key,value])=>`<div><strong>${esc(key.replaceAll("_"," "))}</strong><pre class="history-full-text">${esc(typeof value==="string" ? value : JSON.stringify(value,null,2))}</pre></div>`).join("")}</details></td><td>${esc(r.outcome||"Recorded")}${r.server_confirmed ? " · verified" : ""}</td><td>${esc(r.before??"—")} → ${esc(r.after??"—")}%${r.candidate!=null ? `<br><small>candidate ${esc(r.candidate)}%</small>` : ""}</td></tr>`).join("")}</tbody></table>` : `<p class="muted">No experiments yet.</p>`}</div>`;
+}
+function agentHistory() {
+  const runs=jobs.filter(j=>j.kind==="agent_worker"||j.args?.[0]==="agent").slice().reverse();
+  return `<div class="panel panel-pad"><h2>Agent runs / full logs</h2>${runs.length ? runs.map(j=>`<div class="agent-history-run"><span>${esc(j.title)} · ${esc(j.config?.model||"CLI default")} · ${esc(j.id)}</span> ${badge(j.status)} ${button("Full log",`data-agent-history-log="${esc(j.id)}"`,true)}</div>`).join("") : `<p class="muted">No agent runs yet.</p>`}${agentHistoryLog ? `<div class="form-section"><div class="section-heading"><h3>${esc(agentHistoryLog.title)}</h3>${button("Refresh log",`data-agent-history-log="${esc(agentHistoryLog.id)}"`,true)}</div><pre class="history-full-text">${esc(agentHistoryLog.text)}</pre></div>` : ""}</div>`;
+}
+async function loadAgentHistoryLog(id) {
+  const response=await fetch("/api/log?id="+encodeURIComponent(id),{headers:{"X-ROC-Token":token||""}});
+  if(!response.ok)throw new Error("Could not load agent log");
+  const raw=await response.text();
+  const text=raw.split(/\r?\n/).filter(Boolean).map(line=>{
+    try {
+      const row=JSON.parse(line), time=row.time ? new Date(row.time*1000).toLocaleString() : "";
+      return `[${time}${row.slot!=null ? ` · agent ${Number(row.slot)+1}` : ""} · ${row.event||"log"}]\n`+(row.message??JSON.stringify(row,null,2));
+    } catch {return line;}
+  }).join("\n\n");
+  agentHistoryLog={id,title:jobs.find(j=>j.id===id)?.title||id,text:text||"No saved output yet."};
+  if(page==="history")render();
 }
 async function loadWorkerMemory(sync=false) {workerMemory=await api(sync ? "agent-memory-sync" : "agent-memory",sync ? {} : undefined);if(page==="history")render();}
 function readAgentAuto() {
@@ -374,7 +392,7 @@ function render(config) {
   $("#page-name").textContent = {overview:"Overview",workers:"Workers",cpu:"Servers",commands:"Commands",history:"History",settings:"Settings"}[page];
   $("#main").innerHTML = page==="cpu" ? cpuPage() : page==="overview" ? overview() : page==="workers" ? workers(config) : page==="commands" ? commands() : page==="history" ?
     heading("", "History", "")+`<details class="form-section" data-history-section="runs" ${historyOpen.has("runs") ? "open" : ""}><summary>Runs</summary><div id="history-runs">${runTable([...jobs].reverse())}</div></details>`+
-    functionsPage()+`<details class="form-section" data-history-section="experiments" ${historyOpen.has("experiments") ? "open" : ""}><summary>Experiments</summary>${experimentMemory(workerMemory)}</details>` : settings();
+    `<details class="form-section" data-history-section="agents" ${historyOpen.has("agents") ? "open" : ""}><summary>Agents / full logs</summary>${agentHistory()}</details>`+functionsPage()+`<details class="form-section" data-history-section="experiments" ${historyOpen.has("experiments") ? "open" : ""}><summary>Experiments</summary>${experimentMemory(workerMemory)}</details>` : settings();
   if(page==="history") $("#main").scrollTop=cpuScroll;
   if(page==="cpu") {document.querySelectorAll("[data-cpu-detail]").forEach(n=>{n.open=expanded.has(n.dataset.cpuDetail);});$("#main").scrollTop=cpuScroll;}
   document.body.classList.toggle("servers-page",page==="cpu");
@@ -450,6 +468,22 @@ async function poll() {
 document.addEventListener("click", event=>act(async()=>{
   if(event.target.closest(".brand")) { event.preventDefault();navigate("overview");return; }
   const target=event.target.closest("button,[data-log]");if(!target)return;
+  if(target.dataset.agentHistoryLog) {await loadAgentHistoryLog(target.dataset.agentHistoryLog);return;}
+  if(target.hasAttribute("data-restart-workers")) {
+    target.disabled=true;
+    try {
+      const stopped=jobs.filter(isWorker).slice(-12).filter(j=>!["running","paused","stopping","queued"].includes(j.status));
+      let count=0;
+      for(const job of stopped) {
+        await api("control",{id:job.id,action:"restart"});
+        job.status="queued";
+        count++;
+      }
+      toast(count ? `Restarted ${count} workers with saved parameters` : "No offline workers");
+      renderWorkerChat();
+    } finally {target.disabled=false;}
+    return;
+  }
   if(target.hasAttribute("data-cpu-refresh")) {await loadCpu(true);return;}
   if(target.dataset.rocAction) {await api("roc-control",{id:target.dataset.rocId,action:target.dataset.rocAction});toast("Control applies at next target / compiler boundary");await loadCpu(true);return;}
   if(target.dataset.removeRun) {

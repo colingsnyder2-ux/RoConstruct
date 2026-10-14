@@ -434,6 +434,18 @@ class Dashboard:
             if not job:
                 raise ValueError("Unknown job")
             action = data.get("action")
+            if action == "restart":
+                if job["kind"] not in ("worker", "agent_worker"):
+                    raise ValueError("Only worker sessions can restart")
+                if job["status"] in ("queued", "running", "paused", "stopping") or job["id"] in self.processes:
+                    raise ValueError("Worker already active")
+                job.update(status="queued", started=None, ended=None, slots={}, cancelled=False,
+                           attempted=0, matched=0, improved=0, failed=0, usage={})
+                job.pop("exit_code", None)
+                self.event(job["id"], "state", message="Restarting with saved parameters")
+                self.save()
+                self.schedule()
+                return
             if action == "remove":
                 if job["status"] in ("queued", "running", "paused", "stopping") or job["id"] in self.processes:
                     raise ValueError("Only finished runs can be removed")
@@ -591,7 +603,7 @@ class Handler(BaseHTTPRequestHandler):
                     return self.send(200, agent.status())
                 if parsed.path == "/api/agent-memory":
                     from roc import agent, agent_memory
-                    return self.send(200, agent.memory(agent_memory.shared(app.initial.get("server"), app.worker_token)))
+                    return self.send(200, agent.memory(agent_memory.shared(app.initial.get("server"), app.worker_token), recent_limit=200))
                 if parsed.path == "/api/agent-plan":
                     from roc import agent_auto
                     query = parse_qs(parsed.query)
@@ -681,7 +693,7 @@ class Handler(BaseHTTPRequestHandler):
             elif self.path == "/api/agent-memory-sync":
                 from roc import agent, agent_memory
                 return self.send(200, agent.memory(agent_memory.shared(app.initial.get("server"), app.worker_token,
-                    app.initial.get("user"), upload=True)))
+                    app.initial.get("user"), upload=True), recent_limit=200))
             elif self.path == "/api/preview":
                 return self.send(200, {"args": command_args(data)})
             elif self.path == "/api/shutdown":

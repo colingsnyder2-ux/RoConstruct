@@ -711,3 +711,13 @@ def test_unlimited_plan_includes_large_functions():
     assert not agent_auto.plan(rows, max_size=512, records=[])["areas"]
     result = agent_auto.plan(rows, max_size=0, records=[])
     assert result["areas"][0]["targets"][0]["size"] == 2_000_000
+
+
+def test_continuous_stops_after_three_failed_cycles(monkeypatch):
+    calls = []
+    monkeypatch.setattr(agent_auto, "run_cycle", lambda *a: calls.append(a) or
+                        dict(attempted=1, matched=0, improved=0, errors=1))
+    monkeypatch.setattr(agent_auto.time, "sleep", lambda seconds: None)
+    with pytest.raises(RuntimeError, match="Three consecutive"):
+        agent_auto.run("server", "me", continuous=True, log=lambda *a: None)
+    assert len(calls) == 3

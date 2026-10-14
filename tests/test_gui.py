@@ -486,3 +486,22 @@ class LinkTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+def test_restart_worker_preserves_parameters_and_history():
+    app = gui.Dashboard.__new__(gui.Dashboard)
+    app.lock = threading.RLock()
+    app.processes = {}
+    job = dict(id="saved", kind="agent_worker", status="failed", args=["agent", "opencode"],
+               config={"model": "chosen", "minutes": 120}, exit_code=1)
+    app.jobs = {"saved": job}
+    app.event = Mock()
+    app.save = Mock()
+    app.schedule = Mock()
+    app.control({"id": "saved", "action": "restart"})
+    assert job["status"] == "queued"
+    assert job["args"] == ["agent", "opencode"]
+    assert job["config"] == {"model": "chosen", "minutes": 120}
+    app.schedule.assert_called_once()
+    with __import__("pytest").raises(ValueError, match="already active"):
+        app.control({"id": "saved", "action": "restart"})

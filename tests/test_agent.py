@@ -6,6 +6,8 @@ from roc import agent
 @pytest.fixture(autouse=True)
 def offline_memory(monkeypatch):
     """Never sync test attempts with the real group server."""
+    from roc import agent_memory
+    monkeypatch.setattr(agent_memory, "append_record", lambda row: row)
     synced = []
     monkeypatch.setattr(agent, "sync_memory", lambda *args, **kwargs: synced.append(args) or {})
     return synced
@@ -504,3 +506,36 @@ def test_unavailable_variant_retries_with_model_default(monkeypatch):
                lines.append)
     assert lines == ["Agent error: Variant unavailable for x: minimal"]
     assert agent.VARIANT.search(agent._error_text('{"type":"error","error":{"data":{"message":"Variant unavailable"}}}'))
+
+
+def test_opencode_null_exit_code():
+    import json
+    lines = []
+    agent.show(json.dumps({"type": "tool_use", "part": {"tool": "shell", "state": {
+        "output": "still running", "metadata": {"exit": None}}}}), lines.append)
+    assert lines[1] == "Command finished · exit unknown\nstill running"
+
+
+def test_continuous_goal_stops_repeated_failures(monkeypatch, tmp_path):
+    monkeypatch.setattr(agent, "ROOT", tmp_path)
+    calls = []
+    monkeypatch.setattr(agent, "run_agent", lambda *a, **kw: calls.append(a) or 1)
+    monkeypatch.setattr(agent.time, "sleep", lambda seconds: None)
+    assert agent.run_goal("opencode", "match", continuous=True, log=lambda *a: None) == 1
+    assert len(calls) == 3
+
+
+def test_history_memory_exposes_more_records_without_expanding_prompt_default(monkeypatch, tmp_path):
+    import json
+    from roc import agent_memory
+    monkeypatch.setattr(agent, "ROOT", tmp_path)
+    monkeypatch.setattr(agent_memory, "tool_records", lambda shared: [])
+    path = tmp_path / "work" / "agent-memory" / "attempts.jsonl"
+    path.parent.mkdir(parents=True)
+    path.write_text("\n".join(json.dumps({"kind": "workflow", "improvements": "full text %s" % n})
+                              for n in range(220)), encoding="utf-8")
+    assert len(agent.memory()["recent"]) == 8
+    records = agent.memory(recent_limit=200)["recent"]
+    assert len(records) == 200
+    assert records[0]["improvements"] == "full text 20"
+    assert records[-1]["improvements"] == "full text 219"

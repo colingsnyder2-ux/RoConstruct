@@ -98,7 +98,7 @@ def sync_memory(server=None, token=None, user=None, log=print):
     return shared
 
 
-def memory(shared=None):
+def memory(shared=None, recent_limit=8):
     """Reviewed lessons plus recent local reports, without treating reports as verified."""
     lessons = ROOT / "research" / "lessons.json"
     records = ROOT / "work" / "agent-memory" / "attempts.jsonl"
@@ -106,7 +106,7 @@ def memory(shared=None):
     if records.exists():
         from collections import deque
         with records.open(encoding="utf-8") as stream:
-            for line in deque(stream, maxlen=8):
+            for line in deque(stream, maxlen=recent_limit):
                 try:
                     recent.append(json.loads(line))
                 except ValueError:
@@ -131,7 +131,7 @@ def memory(shared=None):
     return {"lessons": sorted(reviewed.values(),
                               key=lambda item: item.get("exacts_gained") or 0, reverse=True),
             "slow_commands": slow,
-            "recent": recent, "shared_recent": (shared or {}).get("records", [])[-8:],
+            "recent": recent, "shared_recent": (shared or {}).get("records", [])[-recent_limit:],
             "tools": shared_tools,
             "tool_suggestions": shared_tools,
             "suggested_tools": shared_tools,
@@ -367,7 +367,7 @@ def show(line, log):
             exit_code = metadata.get("exit", metadata.get("exitCode", 0))
             if state.get("error") or re.search(r"(?m)^\s*\+\s*FullyQualifiedErrorId\s*:", output):
                 exit_code = exit_code or 1
-            log("Command finished · exit %d\n%s" % (exit_code, output))
+            log("Command finished · exit %s\n%s" % ("unknown" if exit_code is None else exit_code, output))
         times = (part.get("state") or {}).get("time") or {}
         if times.get("start") and times.get("end"):  # milliseconds
             _took((times["end"] - times["start"]) / 1000, label, log)
@@ -437,6 +437,35 @@ def fallbacks():
 
 
 def run_agent(cli, prompt, model=None, minutes=120, log=print, goal=False, switch_minutes=5):
+    """Persist run evidence even when the CLI fails before writing its own lessons."""
+    from roc import agent_memory
+    recent = []
+    code = None
+    error = None
+
+    def output(message):
+        recent.append(str(message)[-1000:])
+        del recent[:-12]
+        log(message)
+
+    try:
+        code = _run_agent(cli, prompt, model, minutes, output, goal, switch_minutes)
+        return code
+    except Exception as failure:
+        error = str(failure)
+        raise
+    finally:
+        agent_memory.append_record(dict(
+            kind="workflow", date=datetime.now(timezone.utc).isoformat(), cli=cli, model=model,
+            outcome="completed" if code == 0 else "failed", exit_code=code, error=error,
+            worked_well=["CLI completed"] if code == 0 else [],
+            improvements=["Review final output and agent-authored lessons before next experiment"],
+            mistakes=[error or "CLI exit %s" % code] if code != 0 else [],
+            avoid_next_time=["Resolve CLI failure before restarting unchanged parameters"] if code != 0 else [],
+            output_tail=recent))
+
+
+def _run_agent(cli, prompt, model=None, minutes=120, log=print, goal=False, switch_minutes=5):
     """Run one agent; retry rate-limit/unavailable failures after three minutes before switching.
     A repeated failure continues with the next configured fallback within the remaining budget."""
     prompt = ("Be very concise. Use short technical fragments; no greetings, filler, style announcements, "
@@ -480,7 +509,10 @@ def run_agent(cli, prompt, model=None, minutes=120, log=print, goal=False, switc
               "<new>%: <what changed>; scale up: yes|no, <why>' and append the same to "
               "work/agent-memory/attempts.jsonl as {\"kind\":\"success_summary\",\"client\",\"addresses\","
               "\"before\",\"after\",\"what_changed\",\"scale_up\":true|false,\"scale_reason\"}. "
-              "scale_up means the same fix should be fanned out to more siblings or the whole family.\n\n" + prompt)
+              "scale_up means the same fix should be fanned out to more siblings or the whole family. "
+              "Before ending every run, append a workflow record using roc.agent_memory.append_record: "
+              "kind=workflow, client, worked_well, improvements (workflow/API/process), mistakes, "
+              "avoid_next_time. Base lessons on this run; use empty lists when none.\n\n" + prompt)
     deadline = time.monotonic() + minutes * 60
     if os.name == "nt":
         prompt = ("Windows shell: PowerShell. Use absolute paths; command form: " + roc_command() + " <command>. "
@@ -765,6 +797,7 @@ def run_goal(cli, goal, model=None, minutes=120, log=print, continuous=False,
     log("Agent goal (%s, up to %d min): %s" % (cli, minutes, goal))
     recent = []
     cycle = 0
+    failures = 0
     scratch = ROOT / "work" / "agent-goals" / (os.environ.get("ROC_TASK_ID") or uuid.uuid4().hex[:12])
     scratch.mkdir(parents=True, exist_ok=True)
     if server:
@@ -831,6 +864,10 @@ def run_goal(cli, goal, model=None, minutes=120, log=print, continuous=False,
                             outcome="reported", error=reason[:500]))
             sync_memory(server, token, user, log=log)
         if not continuous:
+            return code
+        failures = failures + 1 if code else 0
+        if failures >= 3:
+            log("Three consecutive failed goal cycles; stopping. Fix failure before restarting.")
             return code
         cycle += 1
         log("Continuous goal: refreshing memory and changing strategy; Stop ends this run.")

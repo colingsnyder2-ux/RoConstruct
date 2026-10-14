@@ -693,6 +693,7 @@ def library_cycle(server, user, token, cli, model, minutes, log, client, slot=No
 def run(server, user, token=None, cli="claude", model=None, workers=2, jobs=24, max_size=512,
         minutes=120, batch_size=4, batch_minutes=30, individual=False, log=print, client=None, continuous=False):
     strategy = 0
+    failures = 0
     while True:
         try:
             totals = run_cycle(server, user, token, cli, model, workers, jobs, max_size, minutes,
@@ -700,11 +701,20 @@ def run(server, user, token=None, cli="claude", model=None, workers=2, jobs=24, 
         except (RuntimeError, OSError) as error:
             if not continuous:
                 raise
+            failures += 1
+            if failures >= 3:
+                raise
+            failures += 1
+            if failures >= 3:
+                raise
             log("Infrastructure failure; retrying in 30 seconds: " + str(error))
             time.sleep(30)
             continue
         if not continuous:
             return totals
+        failures = failures + 1 if totals["errors"] else 0
+        if failures >= 3:
+            raise RuntimeError("Three consecutive failed agent cycles; fix failure before restarting")
         if not totals["matched"] and not totals["improved"]:
             strategy = (strategy + 1) % len(STRATEGIES)
             log("No verified gains; next strategy: " + STRATEGIES[strategy])
