@@ -208,6 +208,7 @@
    "crc32.c",
    "deflate.c",
    "inflate.c",
+   "roc_unit_cc0da05a02dcd115.cpp",
    "trees.c",
    "uncompr.c"
   ]
@@ -522,6 +523,7 @@
   "files": [
    "jcdctmgr.c",
    "jcparam.c",
+   "jidctflt.c",
    "jquant1.c"
   ]
  },
