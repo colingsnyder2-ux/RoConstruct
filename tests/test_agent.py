@@ -469,6 +469,8 @@ def test_goal_targets_skip_functions_failed_in_earlier_sessions(monkeypatch):
     monkeypatch.setattr(agent.worker, "Api", lambda *a: None)
     failed = [dict(kind="agent_check", client="c", addresses=["a"], after=90, date="2026-10-%02dT10:00" % day)
               for day in (1, 2, 3)]
+    failed += [dict(kind="trial", client="c", addresses=[["a"]], after=[90], date="2026-10-04T10:00"),
+               dict(kind="session", client="c", addresses="a", date="2026-10-05T10:00")]  # malformed shared rows
     picked = agent.goal_targets("s", None, "c", {"records": failed})
     assert [row["addr"] for row in picked] == ["b"]
     once = agent.goal_targets("s", None, "c", {"records": failed[:1]})

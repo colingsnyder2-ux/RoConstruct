@@ -717,9 +717,11 @@ def goal_targets(server, token, client, shared):
     sessions = defaultdict(set)
     for r in records:
         if r.get("kind") in ("agent_check", "trial", "session") and r.get("outcome") != "improved" and r.get("date"):
-            for addr in r.get("addresses") or ():
-                sessions[(r.get("client"), addr)].add((str(r["date"])[:13], r.get("after", 0)))
-    tries = {key: len({hour for hour, _ in values}) for key, values in sessions.items()}
+            addresses = r.get("addresses")
+            for addr in addresses if isinstance(addresses, list) else ():
+                if isinstance(addr, str):  # shared records from other PCs are not always well formed
+                    sessions[(str(r.get("client")), addr)].add(str(r["date"])[:13])
+    tries = {key: len(hours) for key, hours in sessions.items()}
     targets = [row for area in plan["areas"] for row in area["targets"] if not row["group_parked"]
                and (row["client"], row["addr"], row["evidence_hash"]) not in blocked
                and tries.get((row["client"], row["addr"]), 0) < GOAL_MAX_TRIES]
