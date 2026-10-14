@@ -158,6 +158,21 @@ RECIPES["g3d-6.09-png"] = dict(RECIPES["g3d-6.09"], src="g3d-6.09/source/png", l
 RECIPES["g3d-6.09-ijg"] = dict(RECIPES["g3d-6.09"], src="g3d-6.09/source/IJG", langs=["c"], grid=_G3D_FAST,
                                include=["WINSDK"], needs=[], files="j*.c", file_names=None)
 
+# Roblox's 2008 G3D edits, each read from the 2008-06 exe.
+# GImage::Error derives from std::runtime_error: RTTI chain
+# Error -> runtime_error -> exception, CatchableType size 0x60, and the out-of-line ctor
+# (0x4728b0) calls runtime_error(reason) then copies reason/filename to +0x28/+0x44.
+RECIPES["g3d-6.09-rbx2008"] = dict(RECIPES["g3d-6.09"], patches={"include/G3D/GImage.h": [
+    ("#include <string>\n", "#include <string>\n#include <stdexcept>\n"),
+    ("    class Error {\n    public:\n        Error(\n            const std::string& reason,\n"
+     "            const std::string& filename = \"\") :\n        reason(reason), filename(filename) {}",
+     "    class Error : public std::runtime_error {\n    public:\n        Error(\n            const std::string& reason,\n"
+     "            const std::string& filename = \"\") :\n        std::runtime_error(reason), reason(reason), filename(filename) {}")],
+    # Inlined getCArray in GImage::load (0x510490) builds std::exception(const char* const&) from
+    # "Cannot getCArray for a huge file" (0x820c68) and throws it.
+    "include/G3D/BinaryInput.h": [('throw "Cannot getCArray for a huge file";',
+                                   'throw std::exception("Cannot getCArray for a huge file");')]})
+
 RECIPES["sdl-1.2.11"] = dict(url="https://www.libsdl.org/release/SDL-1.2.11.tar.gz",  # headers for GLG3D
                              sha256="6985823287b224b57390b1c1b6cbc54cc9a7d7757fbf9934ed20754b4cd23730",
                              src="SDL-1.2.11/include", langs=[], files=[])
@@ -398,7 +413,7 @@ RECIPES["rbxgs-raknet"] = dict(src=_RBXGS + "Network/RakNet30/Source", langs=["c
 # upstream RakPeer.cpp; later Roblox clients retain a small amount of this core code.
 RECIPES["raknet-4.081"] = dict(src="RakNet-master/Source", langs=["cpp"], files="*.cpp",
                                 grid=["/O2 /GS- /EHsc /MD", "/O2 /GS- /MD", "/O1 /GS- /EHsc /MD"],
-                                include=["RakNet-master/Source", "WINSDK"], defines="WIN32 _WIN32")
+                                include=["RakNet-master/Source", "WINSDK"], defines="WIN32 _WIN32 _LIB")
 
 # RbxView (Part, meshes = the Ogre::Rbx* render classes) and RenderLib (Clusterer,
 # RenderScene). Broad include covers every sibling project they pull headers from.
@@ -709,6 +724,12 @@ RECIPES["scintilla-mfc-1.20-vc8"] = dict(src="scintilla-mfc-1.20", langs=["cpp"]
                                            grid=_MFC_GRID, files=["ScintillaCtrl.cpp", "ScintillaDocView.cpp"],
                                            write=_SCINTILLA_MFC_STDAFX, strip_header_asm="stripped-v2")
 
+# Test: explicit _MBCS for DBCS lead byte calls (_ismbblead via IAT)
+RECIPES["scintilla-mfc-1.20-mbcs"] = dict(RECIPES["scintilla-mfc-1.20"], defines="_MBCS",
+                                           grid=_MFC_GRID)
+RECIPES["scintilla-mfc-1.20-shared-mbcs"] = dict(RECIPES["scintilla-mfc-1.20-shared"], defines="_AFXDLL _DLL _MBCS",
+                                                  grid=["/O2 /GS- /MD", "/O2 /GS /EHsc /MD", "/O2 /MD /GS /EHsc /Ob1"])
+
 # Magic Software's Wild Magic 2 (2003), named directly in the 2009 client's
 # copyrights.txt.  Its non-transferable license prohibits source redistribution,
 # so this is a local-only recipe.  The archived tree is the public kucgbowling
@@ -760,6 +781,12 @@ for _name, _r in list(RECIPES.items()):
     if _r.get("files") and _r.get("archive") is not True and _grid and not _name.startswith("mfc-") \
             and "_DLL" not in _r.get("defines", "").split():
         RECIPES[_name + "-dll"] = dict(_r, defines=(_r.get("defines", "") + " _DLL").strip(), grid=_grid)
+
+# 2008-06 read_long_string (00664870) has no '[' nesting case and Roblox.exe lacks the
+# "nesting of [[...]] is deprecated" string: built without LUA_COMPAT_LSTR (Roblox's
+# 2016 luaconf.h/llex.c dropped it too).
+RECIPES["lua-5.1.4-dll-nolstr"] = dict(RECIPES["lua-5.1.4-dll"],
+                                       patches={"luaconf.h": [("#define LUA_COMPAT_LSTR\t\t1", "")]})
 
 # 2008-06 was built with VS2008 RTM (cl 21022), whose ATL/MFC headers predate SP1 (e.g.
 # CSimpleStringT::SetString, AFX_IMPORT_DATA). tools/libs/mfc-9.0-rtm/atlmfc holds the
@@ -892,6 +919,27 @@ def fetch(name):
         return _fetch(name)
 
 
+# Public repositories that recipes read in place (their folders sit beside tools/libs).
+GIT_SOURCES = {"../rbxgs/": ("https://github.com/RBLXDecomp/RBXGSdecomp.git", "../rbxgs"),
+               "../openrbx/": ("https://github.com/Asphaltian/OpenRBX.git", "../openrbx"),
+               "../roblox2016/": ("https://github.com/Artifaqt/ROBLOX2016.git", "../roblox2016/src/ROBLOX2016-main")}
+
+
+def _clone_source(repo, target):
+    """Clone a public source repository with its submodules, once. A failed clone is removed."""
+    if target.exists():
+        return
+    if not shutil.which("git"):
+        raise SystemExit("Installing %s needs git. Install Git for Windows, then retry." % repo)
+    target.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        subprocess.run(["git", "clone", "--recursive", "--shallow-submodules", "--depth", "1", repo, str(target)],
+                       check=True)
+    except (subprocess.CalledProcessError, OSError):
+        shutil.rmtree(target, ignore_errors=True)
+        raise SystemExit("Could not download %s. Check the connection, then retry." % repo)
+
+
 def _fetch(name):
     r = RECIPES[name]
     folder = _case_path(LIBS / r["src"])
@@ -906,6 +954,12 @@ def _fetch(name):
     if not folder.exists() and "url" not in r and bundle_has(r["src"]):
         bundle_fetch([r["src"].split("/")[0]])
         folder = _case_path(LIBS / r["src"])
+    if not folder.exists() and "url" not in r:
+        for prefix, (repo, dest) in GIT_SOURCES.items():
+            if r["src"].startswith(prefix):
+                _clone_source(repo, (LIBS / dest).resolve())
+                folder = _case_path(LIBS / r["src"])
+                break
     if not folder.exists() and "url" not in r:
         raise SystemExit("%s needs %s: extract the Roblox 2016 source tree there (see roc/refsource.py)"
                          % (name, folder.resolve()))
@@ -1137,7 +1191,12 @@ def unit(name, path, build):
                         raise match.CompileError("patch for %s no longer applies: %r" % (rel, old[:60]))
                     text = text.replace(old, new)
                 (copy / rel).write_text(text)
-            body = preprocess(build, copy / path, str(copy) + ";" + include, r.get("defines", ""), deps)
+            # Include dirs inside the tree read the patched copy too (header patches).
+            include = ";".join(str(copy / Path(i).resolve().relative_to(folder))
+                               if Path(i).resolve().is_relative_to(folder) else i for i in include.split(";"))
+            body = preprocess(build, copy / path, include, r.get("defines", ""), deps)
+            # __FILE__ and #line name the pristine tree, not the temporary copy.
+            body = body.replace(str(copy).replace("\\", "\\\\"), str(folder).replace("\\", "\\\\"))
             deps = [folder / Path(d).resolve().relative_to(copy.resolve()) if Path(d).resolve().is_relative_to(copy.resolve())
                     else d for d in deps]  # patched copies: track the pristine file (patch text is in identity)
     else:

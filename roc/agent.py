@@ -202,6 +202,21 @@ def check_command():
     return roc_command() + " check"
 
 
+_OPENCODE_STANDALONE = []
+
+
+def _opencode_run_flags():
+    """`--standalone` only exists in newer OpenCode builds; older ones reject it and exit at once."""
+    if not _OPENCODE_STANDALONE:
+        exe = shutil.which("opencode")
+        try:
+            text = subprocess.run([exe, "run", "--help"], capture_output=True, text=True, timeout=30).stdout if exe else ""
+        except (OSError, subprocess.SubprocessError):
+            text = ""
+        _OPENCODE_STANDALONE.append(["--standalone"] if "--standalone" in text else [])
+    return _OPENCODE_STANDALONE[0]
+
+
 def command(cli, model=None, goal=False):
     """argv for one non-interactive agent run; the prompt goes on stdin.
 
@@ -216,7 +231,7 @@ def command(cli, model=None, goal=False):
     elif cli == "codex":
         argv = ["codex", "exec", "--json", "--sandbox", "workspace-write", "-c", 'approval_policy="never"', "-C", str(ROOT), "-"]
     elif cli == "opencode":  # prompt on stdin; --auto approves tools, so there is no roc-only allowlist as with claude
-        argv = ["opencode", "run", "--standalone", "--auto", "--thinking", "--format", "json"]
+        argv = ["opencode", "run", *_opencode_run_flags(), "--auto", "--thinking", "--format", "json"]
         if model:
             argv += ["-m", model]  # provider/model, see: opencode models
         return argv
