@@ -472,6 +472,9 @@ def _run_agent(cli, prompt, model=None, minutes=120, log=print, goal=False, swit
     prompt = ("Be very concise. Use short technical fragments; no greetings, filler, style announcements, "
               "or repeated narration. Progress: one short sentence only when a result changes. "
               "Final: at most three short bullets covering new verified gains, blockers, and next step. "
+              "Then add an Improvements section with 1-3 concrete suggestions for the API/tools, AI workflow, "
+              "prompts, or other process changes. Each suggestion must name an observed problem, proposed fix, "
+              "and expected benefit. If none is supported by this run, say no clear improvement identified. "
               "Preserve exact addresses, scores, errors and receipt paths.\n"
               "Optimize tokens and wall time. Use supplied context and live-server targets first. "
               "Do not reread whole docs, logs or source trees without a specific need. "
@@ -513,7 +516,8 @@ def _run_agent(cli, prompt, model=None, minutes=120, log=print, goal=False, swit
               "scale_up means the same fix should be fanned out to more siblings or the whole family. "
               "Before ending every run, append a workflow record using roc.agent_memory.append_record: "
               "kind=workflow, client, worked_well, improvements (workflow/API/process), mistakes, "
-              "avoid_next_time. Base lessons on this run; use empty lists when none.\n\n" + prompt)
+              "avoid_next_time. Copy the Improvements section suggestions into the record's improvements field "
+              "so History shows the same full text. Base lessons on this run; use empty lists when none.\n\n" + prompt)
     deadline = time.monotonic() + minutes * 60
     if os.name == "nt":
         prompt = ("Windows shell: PowerShell. Use absolute paths; command form: " + roc_command() + " <command>. "

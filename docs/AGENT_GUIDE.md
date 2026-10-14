@@ -218,6 +218,11 @@ excluded. Each listed source is copied into the run's scratch folder with ready
 check/submit commands, so models need not rediscover files or shell syntax.
 Thinking and tool bursts share one folded activity row; expanding it retains
 reasoning summaries, complete commands and outputs.
+Every final agent report includes an **Improvements** section: 1-3 API/tool, AI
+workflow, prompt or process suggestions grounded in the run. Each names the observed
+problem, proposed fix and expected benefit; the same text goes into the workflow
+record's `improvements` field for History. No supported suggestion means an explicit
+"no clear improvement identified", not an invented recommendation.
 Repair prompts include bounded caller/callee names, strings, imports, argument
 slots and observed reads/writes. Agents infer likely behavior, cite one supporting
 fact, and test a C++ change against the bytes; inferred purpose never proves layout
