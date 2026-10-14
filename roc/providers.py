@@ -30,7 +30,7 @@ BUILTINS = {
     # and Go subscription allowances apply, and no API key is stored here.
     "opencode": {"kind": "opencode-cli", "base_url": "", "key_env": ""},
     "nvidia": {"kind": "openai-chat", "base_url": "https://integrate.api.nvidia.com/v1",
-               "key_env": "NVIDIA_API_KEY", "defaults": ["meta/llama-3.1-8b-instruct"]},
+               "key_env": "NVIDIA_API_KEY", "defaults": ["nvidia/nemotron-3-ultra-550b-a55b"]},
     "deepseek": {"kind": "openai-chat", "base_url": "https://api.deepseek.com",
                  "key_env": "DEEPSEEK_API_KEY", "defaults": ["deepseek-flash"]},
     "openai": {"kind": "openai-responses", "base_url": "https://api.openai.com/v1",
@@ -494,7 +494,11 @@ def _openai_chat(provider, remote, config, prompt, state, options):
     data, headers = _post(_url(config, "/chat/completions"), body,
                           {"Content-Type": "application/json", "Authorization": "Bearer " + key}, options["timeout"])
     choice = (data.get("choices") or [{}])[0]
-    text = strip_reasoning((choice.get("message") or {}).get("content") or "")
+    message = choice.get("message") or {}
+    content = message.get("content")
+    if not content:
+        content = message.get("reasoning_content") or message.get("reasoning") or ""
+    text = strip_reasoning(content or "")
     return Generation(text, {"messages": messages + [{"role": "assistant", "content": text}]},
                       input_tokens=_usage(data, "prompt_tokens", "input_tokens"),
                       output_tokens=_usage(data, "completion_tokens", "output_tokens"),
