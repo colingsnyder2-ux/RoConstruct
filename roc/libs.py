@@ -1287,9 +1287,16 @@ def _file_literal(recipe, src, path, body):
     esc = lambda s: '"%s"' % s.replace("\\", "\\\\")
     return body.replace(esc(str(src)), esc(spelled))
 
-def source_for(name, path, lang, build, flags):
-    """The small matched-source text: settings plus a pointer to the library file."""
-    kind = "archive" if RECIPES[name].get("archive") is True else "lib"
+def source_for(name, path, lang=None, build=None, flags=None):
+    """The small matched-source text: settings plus a pointer to the library file.
+
+    Missing settings default to the recipe's first build and grid flags (agents call this directly).
+    """
+    r = RECIPES[name]
+    kind = "archive" if r.get("archive") is True else "lib"
+    lang = lang or ("c" if path.lower().endswith(".c") else "cpp")
+    build = build if build is not None else r.get("builds", [21022])[0]
+    flags = flags if flags is not None else r.get("grid", GRID)[0]
     return ("// roc-lang: %s\n// roc-cl: %d\n// roc-flags: %s\n// roc-%s: %s %s\n"
             % (lang, build, flags, kind, name, path.replace("\\", "/")))
 

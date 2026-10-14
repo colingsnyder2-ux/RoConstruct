@@ -1513,7 +1513,11 @@ def submit_files(server, user, client, addrs=None, token=None, log=print, file=N
                             dict(kind="campaign_submission", date=time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
                                  client=client, addresses=[p.stem], campaign_id=task.get("campaign_id"),
                                  source_hash=research.digest(text), after=r.get("stored", score), receipt=r))
-        return "%s  %3d%%  %s" % (p.stem, r["stored"], "new best" if r["improved"] else "server already has this or better")
+        line = "%s  %3d%%  %s" % (p.stem, r["stored"], "new best" if r["improved"] else "server already has this or better")
+        if r["improved"] and os.environ.get("ROC_AGENT"):
+            line += ("\nNow write the SUCCESS SUMMARY for %s (%d%% -> %d%%): what changed, and scale up yes/no with why."
+                     % (p.stem, scores.get(p.stem, 0), r["stored"]))
+        return line
     with ThreadPoolExecutor(max_workers=3) as pool:
         for line in pool.map(upload, sorted(checked, key=lambda item: item[0].stem)):
             log(line)

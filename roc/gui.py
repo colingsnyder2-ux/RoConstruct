@@ -109,7 +109,7 @@ def command_args(data):
         if data.get("automatic"):
             args += ["--automatic"]
             for key, default, low, high in (("workers", 2, 1, 8), ("jobs", 24, 1, 200),
-                ("batch_size", 4, 1, 12), ("batch_minutes", 40, 1, 120), ("max_size", 512, 32, 8192)):
+                ("batch_size", 4, 1, 12), ("batch_minutes", 30, 1, 120), ("max_size", 512, 32, 8192)):
                 value = data.get(key, default)
                 if type(value) is not int or (not (key == "max_size" and value == 0) and not low <= value <= high):
                     raise ValueError("Invalid automatic %s" % key)
@@ -275,7 +275,7 @@ class Dashboard:
                 args += ["--continuous"]
                 config = {key: data.get(key, default) for key, default in
                     (("cli", "claude"), ("model", ""), ("goal", ""), ("workers", 2), ("jobs", 24), ("minutes", 120),
-                     ("batch_size", 4), ("batch_minutes", 40), ("max_size", 512), ("individual", False))}
+                     ("batch_size", 4), ("batch_minutes", 30), ("max_size", 512), ("individual", False))}
                 config.update(mode=data.get("mode", "automatic"), client=data.get("client", self.initial["client"] or ""),
                               user=str(data.get("user", self.initial["user"])).strip(),
                               server=str(data.get("server", self.initial["server"])).strip())

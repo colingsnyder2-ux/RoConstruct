@@ -24,6 +24,12 @@ def settings():
     return load_settings()
 
 
+def _addr(text):
+    value = text.strip().lower()
+    value = value[2:] if value.startswith("0x") else value
+    return value.zfill(8) if value and len(value) <= 8 and all(c in "0123456789abcdef" for c in value) else text
+
+
 def need(value, what, hint):
     if not value:
         sys.exit("No %s set. %s" % (what, hint))
@@ -387,6 +393,8 @@ def cmd_check(a):
         if not a.addr:
             sys.exit("--file needs an address")
         addr = a.addr.lower().replace("0x", "").zfill(8)
+        if os.environ.get("ROC_AGENT"):
+            _refuse_matched(a.name, addr)
         path = Path(a.file)
         if (path.parent / "task.json").exists():
             from roc import research
@@ -875,8 +883,25 @@ def cmd_agent(a):
     agent.run(srv, user, a.token or s.get("token"), a.cli, a.model, a.client, a.jobs or 1, a.max_size if a.max_size is not None else 256, a.minutes or 20)
 
 
+def _refuse_matched(client, addr):
+    """Exit 3 when the server already has this function at 100%: another worker may have matched it."""
+    from roc import worker
+    s = settings()
+    if not s.get("server") or not addr:
+        return
+    try:
+        best = worker.Api(s["server"], s.get("token")).call(
+            "/v1/source?client=%s&addr=%s" % (client, addr), timeout=10) or {}
+    except (worker.ApiFailure, OSError, ValueError):
+        return
+    if best.get("score") == 100:
+        print("%s is already matched (100%% on the server). Stop working on it; pick an unmatched target." % addr)
+        sys.exit(3)
+
+
 def cmd_agent_check(a):
     from roc import agent_auto
+    _refuse_matched(a.name, a.addr)
     row = agent_auto.trial(a.name, a.addr, a.path, a.hypothesis)
     print("%s %d%% %s" % (a.addr, row["after"], row["outcome"]))
     print(row.get("diff") or row.get("error") or "Exact code/data match")
@@ -1895,7 +1920,7 @@ def main(argv=None):
         (["--plan"], {"action": "store_true", "help": "preview local automatic ranking without starting agents"}),
         (["--workers"], {"type": int, "default": 2, "help": "automatic batch workers (1-8)"}),
         (["--batch-size"], {"type": int, "default": 4, "help": "functions per automatic batch (1-12)"}),
-        (["--batch-minutes"], {"type": int, "default": 40, "help": "time cap per agent batch (1-120)"}),
+        (["--batch-minutes"], {"type": int, "default": 30, "help": "time cap per agent batch (1-120)"}),
         (["--individual"], {"action": "store_true", "help": "allow individual repair after shared hypotheses fail"}),
         (["--client"], {"help": "client name or all (automatic default: 2008-06; all requires explicit selection)"}),
         (["--jobs"], {"type": int, "help": "target cap (automatic: 24; leased mode: 1)"}),
@@ -2034,6 +2059,8 @@ def main(argv=None):
         ap.error("unrecognized arguments: %s" % " ".join(unknown))
     if not a.cmd:
         return menu()
+    if getattr(a, "addr", None):  # agents often type 0x00542A50; stored names are 00542a50
+        a.addr = ([_addr(x) for x in a.addr] if isinstance(a.addr, list) else _addr(a.addr))
     from roc import tasks
     if a.cmd in tasks.COMMANDS:
         watch = tasks.Watch(a.cmd)

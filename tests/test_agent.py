@@ -436,3 +436,25 @@ def test_rate_limit_ignores_tool_output_but_sees_api_errors():
     assert agent.RATE.search(agent._error_text(json.dumps({"type": "result", "is_error": True,
                                                            "result": "Claude usage limit reached"})))
     assert agent.RATE.search(agent._error_text("Error: 429 Too Many Requests\n"))
+
+
+def test_evidence_marks_matched_neighbours_read_only():
+    row = {"callers": ["a", "b", "c"]}
+    evidence = agent.function_evidence(row, {"a": {"unit": "u", "score": 100}, "b": {"unit": "u", "score": 80}})
+    assert evidence["callers"][0] == {"addr": "a", "unit": "u", "score": 100, "matched_read_only": True}
+    assert evidence["callers"][1] == {"addr": "b", "unit": "u", "score": 80}
+    assert evidence["callers"][2] == {"addr": "c", "unit": "unknown"}  # unknown score is not shown as 0
+
+
+def test_agent_check_refuses_server_matched_function(monkeypatch, capsys):
+    import importlib.util
+    from pathlib import Path
+    from roc import worker
+    spec = importlib.util.spec_from_file_location("roc_agent_check_test", Path(__file__).resolve().parents[1] / "roc.py")
+    cli = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(cli)
+    monkeypatch.setattr(cli, "settings", lambda: {"server": "http://x"})
+    monkeypatch.setattr(worker.Api, "call", lambda self, path, *a, **kw: {"score": 100})
+    with pytest.raises(SystemExit) as error:
+        cli.main(["agent-check", "2008-06", "00401000", "x.cpp", "--hypothesis", "h"])
+    assert error.value.code == 3 and "already matched" in capsys.readouterr().out

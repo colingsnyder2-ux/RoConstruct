@@ -266,8 +266,10 @@ def library_campaigns(rows, client, records):
     for area in plan(categories, max_size=0, records=[], client=client)["areas"]:
         groups["Category: " + area["title"]].extend(dict(row, recipe="") for row in area["targets"])
     campaigns = []
+    functions = {row["addr"]: row for row in rows}  # all scores, so matched neighbours show as read-only
     for library, members in groups.items():
-        targets = [dict(row, baseline_hash=digest(row.get("source") or ""),
+        targets = [dict(row, behavior_evidence=agent.function_evidence(row, functions),
+                        baseline_hash=digest(row.get("source") or ""),
                         target_revision=digest(json.dumps({k: v for k, v in row.items() if k != "source"}, sort_keys=True) +
                                                versions.get(row["recipe"], "")))
                    for row in members if row.get("score", 0) < 100]
@@ -408,7 +410,8 @@ def campaign_packet(campaign, folder, server, user):
         if row.get("source"):
             path.write_text(row["source"], encoding="utf-8")
         row["needs_source"] = not bool(row.get("source"))
-        row["behavior_evidence"] = agent.function_evidence(row, {item["addr"]: item for item in campaign["targets"]})
+        row["behavior_evidence"] = row.get("behavior_evidence") or agent.function_evidence(
+            row, {item["addr"]: item for item in campaign["targets"]})
         (path.parent / "task.json").write_text(json.dumps(dict(client=campaign["client"], addr=row["addr"],
             area="campaign", profile="library-strategy-%d" % campaign.get("strategy", 0),
             best_score=row.get("score", 0), campaign_id=folder.name,
@@ -688,7 +691,7 @@ def library_cycle(server, user, token, cli, model, minutes, log, client, slot=No
 
 
 def run(server, user, token=None, cli="claude", model=None, workers=2, jobs=24, max_size=512,
-        minutes=120, batch_size=4, batch_minutes=40, individual=False, log=print, client=None, continuous=False):
+        minutes=120, batch_size=4, batch_minutes=30, individual=False, log=print, client=None, continuous=False):
     strategy = 0
     while True:
         try:
@@ -710,7 +713,7 @@ def run(server, user, token=None, cli="claude", model=None, workers=2, jobs=24, 
 
 
 def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, jobs=24, max_size=512,
-              minutes=120, batch_size=4, batch_minutes=40, individual=False, log=print, client=None, strategy=0):
+              minutes=120, batch_size=4, batch_minutes=30, individual=False, log=print, client=None, strategy=0):
     if not 1 <= workers <= 8 or not 1 <= jobs <= 200 or not 1 <= batch_size <= 12 or not 1 <= minutes <= 600:
         raise ValueError("Invalid automatic-agent limits")
     if not 1 <= batch_minutes <= 120 or (max_size != 0 and not 32 <= max_size <= 8192):

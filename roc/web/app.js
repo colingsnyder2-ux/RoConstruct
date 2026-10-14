@@ -8,7 +8,7 @@ history.replaceState(null, "", location.pathname + (initialPage === "cpu" ? "?pa
 let meta, jobs = [], page = initialPage, selectedCommand = "mass", editing = null;
 let cursor = 0, logs = [], follow = true, online = false, toastTimer, localModels = [];
 let workerMemory = null;
-let agentAutoConfig = {cli:"claude",model:"",goal:"",workers:2,jobs:24,minutes:120,batch_size:4,batch_minutes:40,max_size:512,individual:false};
+let agentAutoConfig = {cli:"claude",model:"",goal:"",workers:2,jobs:24,minutes:120,batch_size:4,batch_minutes:30,max_size:512,individual:false};
 let cpu = null, cpuCluster = "", cpuLoaded = 0, cpuLoading = false, serverSetupOpen = initialPage === "cpu";
 const isWorker = job => ["worker","agent_worker"].includes(job.kind) || !!job.args?.includes("--automatic");
 const active = job => ["running", "paused", "stopping"].includes(job.status);
@@ -250,11 +250,17 @@ function updateFeed(node, items, following, smooth) {
     else viewport.scrollTop=top;
   }
 }
+// Tab label: the model (or CLI when it uses its default), not the random run id.
+function tabModel(job) {
+  const args=job.args||[],i=args.indexOf("--model"),c=job.config||{};
+  const model=String(c.model||(i<0 ? "" : args[i+1])||"").split("#")[0];
+  return model.split("/").pop()||c.cli||(args[0]==="agent" ? args[1] : "")||job.id.slice(0,5);
+}
 function renderWorkerChat() {
   const node=$("#worker-chat");if(!node)return;
   const workerJobs=jobs.filter(j=>isWorker(j));
   const tabs=$("#worker-tabs"),tabSignature=workerJobs.map(j=>j.id+j.status).join()+workerRun;
-  if(tabs.dataset.signature!==tabSignature) {tabs.innerHTML=`<button role="tab" aria-selected="${!workerRun}" class="worker-tab ${!workerRun ? "selected" : ""}" data-worker-tab="all">All workers</button>`+workerJobs.slice(-12).map(j=>`<div class="worker-tab-group"><button role="tab" aria-selected="${workerRun===j.id}" class="worker-tab ${workerRun===j.id ? "selected" : ""}" data-worker-tab="${j.id}"><span class="dot ${esc(j.status)}"></span>${esc(j.config.client)} <span>${j.id.slice(0,5)}</span><small>${j.status === "queued" ? "starting" : esc(j.status)}</small></button>${!active(j) ? `<button class="worker-tab-close" data-remove-run="${j.id}" aria-label="Remove finished run ${j.id}" title="Remove from run history">×</button>` : ""}</div>`).join("");tabs.dataset.signature=tabSignature;}
+  if(tabs.dataset.signature!==tabSignature) {tabs.innerHTML=`<button role="tab" aria-selected="${!workerRun}" class="worker-tab ${!workerRun ? "selected" : ""}" data-worker-tab="all">All workers</button>`+workerJobs.slice(-12).map(j=>`<div class="worker-tab-group"><button role="tab" aria-selected="${workerRun===j.id}" class="worker-tab ${workerRun===j.id ? "selected" : ""}" data-worker-tab="${j.id}"><span class="dot ${esc(j.status)}"></span>${esc(j.config.client)} <span title="${esc(j.id)}">${esc(tabModel(j))}</span><small>${j.status === "queued" ? "starting" : esc(j.status)}</small></button>${!active(j) ? `<button class="worker-tab-close" data-remove-run="${j.id}" aria-label="Remove finished run ${j.id}" title="Remove from run history">×</button>` : ""}</div>`).join("");tabs.dataset.signature=tabSignature;}
   const status=$("#worker-status"),statusHTML=workerCards();if(status.innerHTML!==statusHTML)status.innerHTML=statusHTML;
   const loopCount=workerJobs.filter(j=>active(j)&&(!workerRun||j.id===workerRun)).reduce((sum,j)=>sum+Object.keys(j.slots).length,0);
   const supercompact=loopCount>3, compact=chatCompact || supercompact;
@@ -309,10 +315,10 @@ async function loadWorkerMemory(sync=false) {workerMemory=await api(sync ? "agen
 function readAgentAuto() {
   const form=$("#agent-auto-form"), mode=form.dataset.mode;
   const presets={
-    automatic:{workers:2,jobs:24,minutes:120,batch_size:4,batch_minutes:40,max_size:512},
+    automatic:{workers:2,jobs:24,minutes:120,batch_size:4,batch_minutes:30,max_size:512},
     fast:{workers:2,jobs:12,minutes:30,batch_size:4,batch_minutes:10,max_size:256},
-    balanced:{workers:2,jobs:24,minutes:120,batch_size:4,batch_minutes:40,max_size:512},
-    deep:{workers:2,jobs:48,minutes:240,batch_size:4,batch_minutes:120,max_size:0}
+    balanced:{workers:2,jobs:24,minutes:120,batch_size:4,batch_minutes:30,max_size:512},
+    deep:{workers:2,jobs:48,minutes:240,batch_size:4,batch_minutes:80,max_size:0}
   };
   agentAutoConfig={...agentAutoConfig,...presets[mode],mode,individual:false};
   for(const key of ["client","user","server","cli","model","goal"])agentAutoConfig[key]=form.elements[key].value.trim();

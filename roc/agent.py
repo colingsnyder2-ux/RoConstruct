@@ -386,7 +386,9 @@ def _progress_since(started):
             row = json.loads(line)
         except ValueError:
             continue
-        if str(row.get("date", "")) >= started and (row.get("outcome") == "improved" or row.get("server_stored")):
+        if str(row.get("date", "")) >= started and (
+                row.get("outcome") == "improved" or row.get("server_stored") or row.get("kind") == "success_summary"
+                or (row.get("receipt") or {}).get("improved")):
             return True
     return False
 
@@ -453,7 +455,17 @@ def run_agent(cli, prompt, model=None, minutes=120, log=print, goal=False, switc
               "One evidence-backed hypothesis, small pilot, then fan out winners. "
               "Background long commands; avoid idle polling and duplicate submissions. "
               "After two losing hypotheses, report missing evidence and move on. "
-              "Local 100% is a candidate; only verified, improved server receipts count as new exacts.\n\n" + prompt)
+              "Local 100% is a candidate; only verified, improved server receipts count as new exacts. "
+              "Never work on, check or submit a function already at 100% (score 100, matched_read_only, or "
+              "agent-check reports it already matched): use matched functions only as read-only examples and "
+              "move to an unmatched target. "
+              "Time-box each function to about 10 minutes or 3 hypotheses, then move to the next one; "
+              "save one full check output to a log and grep it instead of re-running check for the same diff. "
+              "After every submit that prints 'new best', print one line 'SUCCESS SUMMARY: <addr> <old>%->"
+              "<new>%: <what changed>; scale up: yes|no, <why>' and append the same to "
+              "work/agent-memory/attempts.jsonl as {\"kind\":\"success_summary\",\"client\",\"addresses\","
+              "\"before\",\"after\",\"what_changed\",\"scale_up\":true|false,\"scale_reason\"}. "
+              "scale_up means the same fix should be fanned out to more siblings or the whole family.\n\n" + prompt)
     deadline = time.monotonic() + minutes * 60
     if os.name == "nt":
         prompt = ("Windows shell: PowerShell. Use absolute paths; command form: " + roc_command() + " <command>. "
@@ -526,6 +538,7 @@ def _run_once(cli, prompt, model, minutes, log, goal, switch_minutes):
         temporary = ROOT / "work" / "agent-temp"
         temporary.mkdir(parents=True, exist_ok=True)
         environment.update(TEMP=str(temporary), TMP=str(temporary), TMPDIR=str(temporary))
+    environment["ROC_AGENT"] = "1"  # roc submit then asks for a success summary
     process = subprocess.Popen(argv, cwd=ROOT, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
                                text=True, encoding="utf-8", errors="replace", env=environment)
 
@@ -681,7 +694,10 @@ def function_evidence(row, functions):
                 for key in ("calling_convention", "stack_args", "this_reads", "this_writes", "virtual_slots",
                             "imports", "strings", "constants", "global_reads", "global_writes") if row.get(key)}
     for key in ("callers", "call_targets"):
-        evidence[key] = [{"addr": addr, "unit": functions.get(addr, {}).get("unit", "unknown")}
+        # Score marks matched neighbours as read-only examples, not work targets.
+        evidence[key] = [{"addr": addr, "unit": functions.get(addr, {}).get("unit", "unknown"),
+                          **({"score": functions[addr]["score"]} if "score" in functions.get(addr, {}) else {}),
+                          **({"matched_read_only": True} if functions.get(addr, {}).get("score") == 100 else {})}
                          for addr in row.get(key, [])[:4]]
     if "strings" in evidence:
         evidence["strings"] = [value[:160] for value in evidence["strings"]]
