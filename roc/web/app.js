@@ -134,7 +134,8 @@ function workerForm(config) {
     field("Client", "client", config.client, {choices:[["","All available clients"],...meta.clients.map(client=>[client.name,client.name])]}) +
     field("Library", "library", config.library, {choices:[["","Auto (all libraries)"],...(meta.libraries||[]).map(name=>[name,name])]}) +
     field("Username", "user", config.user) + field("Server", "server", config.server, {full:true,placeholder:"host:8765 or https://server"}) +
-    field("Agent CLI", "model_provider", matchProvider, {choices:CLI_CHOICES}) +
+    field("Model provider (Match)", "model_provider", matchProvider, {choices:CLI_CHOICES}) +
+     `<p class="help-note">Match can use an API key (NVIDIA/OpenAI/etc.), a local Ollama model, or OpenCode. Agent mode is separate and runs a CLI tool.</p>` +
     field("Model", "model", modelBase(config.model), {choices:modelChoices(config, matchProvider),full:true}) +
     field("Or type a model (optional, overrides the list)", "model_custom", "", {placeholder:"provider:model, e.g. nvidia:qwen/qwen2.5-coder-32b-instruct", full:true}) +
     (usesOpenCode(config.model) ? field("Variant (reasoning)", "model_variant", variantOf(config.model), {choices:VARIANTS}) : "") +
@@ -315,7 +316,6 @@ function readAgentAuto() {
   };
   agentAutoConfig={...agentAutoConfig,...presets[mode],mode,individual:false};
   for(const key of ["client","user","server","cli","model","goal"])agentAutoConfig[key]=form.elements[key].value.trim();
-  if(form.elements.cloud_allowed) agentAutoConfig.cloud_allowed = form.elements.cloud_allowed.checked;
   const typed=form.elements.model_custom?.value.trim();
   if(typed)agentAutoConfig.model=typed;
   agentAutoConfig.workers=Number(form.elements.workers.value);
@@ -342,7 +342,6 @@ function agentAutomatic() {
     field("Agent CLI","cli",c.cli,{choices:CLI_CHOICES}) +
     field("Model","model",modelBase(c.model),{choices:agentModelChoices}) +
     field("Or type a model (optional, overrides the list)","model_custom","",{placeholder:"provider/model, e.g. opencode-go/deepseek-v4.1-flash",full:true}) +
-    (cliFor(c.cli)!=="opencode" ? `<div class=\"consent\">${check("Allow cloud prompts for this session", "cloud_allowed", c.cloud_allowed)}<p>Bounded assembly, symbols and source hints leave this PC. Provider keys and executable files stay local.</p></div>` : "") +
     (cliFor(c.cli)==="opencode" ? field("Variant (reasoning)","variant",variantOf(c.model),{choices:VARIANTS}) : "") +
     (cliFor(c.cli)==="opencode" ? `<p class="help-note">log in at settings to use CLI or see models or click install/sign in</p>` : "") +
     field("Goal","goal",c.goal||"",{full:true,placeholder:"Optional; blank runs automatic matching"}) +
