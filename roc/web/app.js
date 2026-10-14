@@ -315,6 +315,7 @@ function readAgentAuto() {
   };
   agentAutoConfig={...agentAutoConfig,...presets[mode],mode,individual:false};
   for(const key of ["client","user","server","cli","model","goal"])agentAutoConfig[key]=form.elements[key].value.trim();
+  if(form.elements.cloud_allowed) agentAutoConfig.cloud_allowed = form.elements.cloud_allowed.checked;
   const typed=form.elements.model_custom?.value.trim();
   if(typed)agentAutoConfig.model=typed;
   agentAutoConfig.workers=Number(form.elements.workers.value);
@@ -341,6 +342,7 @@ function agentAutomatic() {
     field("Agent CLI","cli",c.cli,{choices:CLI_CHOICES}) +
     field("Model","model",modelBase(c.model),{choices:agentModelChoices}) +
     field("Or type a model (optional, overrides the list)","model_custom","",{placeholder:"provider/model, e.g. opencode-go/deepseek-v4.1-flash",full:true}) +
+    (cliFor(c.cli)!=="opencode" ? `<div class=\"consent\">${check("Allow cloud prompts for this session", "cloud_allowed", c.cloud_allowed)}<p>Bounded assembly, symbols and source hints leave this PC. Provider keys and executable files stay local.</p></div>` : "") +
     (cliFor(c.cli)==="opencode" ? field("Variant (reasoning)","variant",variantOf(c.model),{choices:VARIANTS}) : "") +
     (cliFor(c.cli)==="opencode" ? `<p class="help-note">log in at settings to use CLI or see models or click install/sign in</p>` : "") +
     field("Goal","goal",c.goal||"",{full:true,placeholder:"Optional; blank runs automatic matching"}) +
