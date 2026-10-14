@@ -458,5 +458,28 @@
       "evidence": null
     },
     "next": "If /fp:fast gains exacts, propagate to other G3D siblings; if not, investigate allocation sizes and header patches."
+  },
+  "app-fp-fast-2008": {
+    "op": "grid",
+    "library": "Roblox app code (non-Ogre)",
+    "hypothesis": "x87 float near-misses in app code need /fp:fast on the source's own flags (00676e00 98->100, rbxgs isBrickLocation 82->98)",
+    "targets": {
+      "unit": "^(?!Ogre::)",
+      "scores": [
+        90,
+        99
+      ]
+    },
+    "builds": [
+      50727,
+      21022
+    ],
+    "profiles": [
+      "keep"
+    ],
+    "append": [
+      " /fp:fast"
+    ],
+    "next": "Float-heavy siblings of winners; flags alone do not fix layout mismatches."
   }
 }

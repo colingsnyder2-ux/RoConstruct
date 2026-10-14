@@ -174,7 +174,7 @@ class Store:
         if not path.exists():
             return 0
         rows = []
-        for line in path.open():
+        for line in path.read_text().splitlines():
             f = json.loads(line)
             if f.get("kind", "code") == "code":
                 calls = int(f.get("calls", 0) or 0)

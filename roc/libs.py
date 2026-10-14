@@ -386,7 +386,9 @@ _RBXGS_INC = [_RBXGS + d for d in ("App/include", "RbxGraphics/include", "Networ
 _RBXGS_DEF = "WIN32 NDEBUG _LIB _RELEASE _RELEASEASSERT _VC80_UPGRADE=0x0710"
 
 _RBXGS_GRID = ["/O2 /Ob2 /Oy /GF /GS- /EHsc /MD", "/O2 /Oy /Gy /GS- /EHsc /MD",
-               "/O2 /GS- /EHsc /MD", "/O1 /Ob2 /Oy /GS- /EHsc /MD"]
+               "/O2 /GS- /EHsc /MD", "/O1 /Ob2 /Oy /GS- /EHsc /MD",
+               # x87 code keeps extended precision (Streaming.cpp isBrickLocation 82 -> 98 with /fp:fast)
+               "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast"]
 
 RECIPES["rbxgs"] = dict(src=_RBXGS + "App", langs=["cpp"], files="**/*.cpp",
                         grid=_RBXGS_GRID, include=_RBXGS_INC, defines=_RBXGS_DEF)

@@ -588,9 +588,13 @@ def asm_lines(code, relocs):
     return out
 
 
+# Unchanged lines shown around each hunk; `roc check --context 3` keeps big diffs inside CLI output caps.
+DIFF_CONTEXT = 99
+
+
 def diff(target_code, target_relocs, cand, cand_relocs):
     return "\n".join(difflib.unified_diff(asm_lines(target_code, target_relocs), asm_lines(cand, cand_relocs),
-                                          "target", "yours", lineterm="", n=99))
+                                          "target", "yours", lineterm="", n=DIFF_CONTEXT))
 
 
 def disasm(code, addr):
@@ -621,8 +625,17 @@ def function_starts(client):
 
 
 def _functions(client):
+    # Cached per file version: every target() call re-parsed 41k lines while holding the file open,
+    # so on Windows analyze's atomic replace failed with "Access is denied" whenever checks ran.
+    path = ROOT / "work" / client / "functions.jsonl"
+    stat = path.stat()
+    return _functions_at(path, stat.st_mtime_ns, stat.st_size)
+
+
+@functools.lru_cache(maxsize=8)
+def _functions_at(path, mtime_ns, size):
     rows = {}
-    for line in (ROOT / "work" / client / "functions.jsonl").open():
+    for line in path.read_text().splitlines():
         row = json.loads(line)
         rows[row["addr"]] = row
     return rows
@@ -630,6 +643,7 @@ def _functions(client):
 
 @_single_load
 @functools.lru_cache(maxsize=None)
+@functools.lru_cache(maxsize=4)  # the mapped exe is immutable; remapping it per target() call dominated scans
 def _image(client):
     entry = clients.load()[client]
     pe = pefile.PE(str(clients.exe_path(client, entry)), fast_load=True)

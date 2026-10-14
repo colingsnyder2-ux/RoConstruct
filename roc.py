@@ -366,6 +366,14 @@ def cmd_next(a):
     from roc import match
     if not ready(a.name):
         sys.exit("%s: no verified exe, cannot list functions." % a.name)
+    s = settings()
+    if s.get("server"):  # local scores.json alone lists functions others already matched on the server
+        from roc import worker
+        try:
+            for row in worker.Api(s["server"], s.get("token")).call("/v1/sources?scores=1&client=" + a.name, timeout=120):
+                match.save_score(a.name, row["addr"], row["score"])
+        except Exception as error:
+            print("Server scores unavailable (%s); listing local scores only." % error)
     scores_file = ROOT / "work" / a.name / "scores.json"
     scores = json.loads(scores_file.read_text()) if scores_file.exists() else {}
     rows = [r for r in match._functions(a.name).values() if r["kind"] == "code" and scores.get(r["addr"], 0) < 100]
@@ -399,6 +407,7 @@ def _journal_check(client, addr, path, score):
 
 def cmd_check(a):
     from roc import match
+    match.DIFF_CONTEXT = a.context
     folder = ROOT / "src" / a.name
     if a.file:  # scratch trial: score any file against one function, save nothing
         if not a.addr:
@@ -893,7 +902,7 @@ def cmd_agent(a):
     s = settings()
     srv = need(a.server or s.get("server"), "server", "Use --server or: roc config --server URL")
     user = need(a.user or s.get("user"), "username", "Use --user or: roc config --user NAME")
-    agent.run(srv, user, a.token or s.get("token"), a.cli, a.model, a.client, a.jobs or 1, a.max_size if a.max_size is not None else 256, a.minutes or 20)
+    agent.run(srv, user, a.token or s.get("token"), a.cli, a.model, a.client, a.jobs or 1, a.max_size if a.max_size is not None else 256, a.minutes or 120)
 
 
 def _refuse_matched(client, addr):
@@ -1792,7 +1801,8 @@ def main(argv=None):
         (["name"], {}), (["addr"], {}), (["--open"], {"action": "store_true", "help": "open in Notepad"}))
     cmd("check", cmd_check, "compile src/<client>/*.cpp and score against the exe",
         (["name"], {}), (["addr"], {"nargs": "?"}),
-        (["--file"], {"help": "scratch source to score against ADDR; saves nothing"}))
+        (["--file"], {"help": "scratch source to score against ADDR; saves nothing"}),
+        (["--context"], {"type": int, "default": 99, "help": "unchanged lines around each diff hunk (3 = residue only)"}))
     cmd("classify", cmd_classify, "compile a source and classify target/candidate mismatch",
         (["client"], {}), (["addr"], {}), (["source"], {}))
     cmd("auto", cmd_auto, "auto-match trivial functions (getters, setters, empty...) ('all' for every client)",
@@ -1939,7 +1949,7 @@ def main(argv=None):
         (["--jobs"], {"type": int, "help": "target cap (automatic: 24; leased mode: 1)"}),
         (["--model"], {"help": "passed to the CLI's --model"}),
         (["--max-size"], {"type": int, "help": "function byte ceiling (0 = unlimited; automatic: 512; leased: 256)"}),
-        (["--minutes"], {"type": int, "help": "time limit per function (20) or per --goal session (120)"}),
+        (["--minutes"], {"type": int, "help": "time limit per function or per --goal session (120)"}),
         (["--server"], {}), (["--user"], {}), (["--token"], {}))
     cmd("agent-check", cmd_agent_check, "check an agent source and journal the trial",
         (["name"], {}), (["addr"], {}), (["path"], {}),

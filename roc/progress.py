@@ -210,7 +210,7 @@ def build(server=None, token=None, public_server=None, remote=None):
             units, unit_ids, funcs, generated = [], {}, [], 0
             sources = {p.stem: p for p in (ROOT / "src" / name).glob("*.cpp")}
             families = remote.get("families", {}).get(name, {})
-            for line in (work / "functions.jsonl").open():
+            for line in (work / "functions.jsonl").read_text().splitlines():
                 f = json.loads(line)
                 if f.get("kind", "code") != "code":  # compiler/linker stubs don't count
                     generated += 1

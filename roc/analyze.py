@@ -49,12 +49,14 @@ def find_functions(code, text_va, seeds, relocs, proven=(), keep=None):
     end = text_va + len(code)
     reloc_set = set(relocs)
     rd = lambda va: int.from_bytes(code[va - text_va:va - text_va + 4], "little")
-    seeds = set(seeds) | {text_va + i for i in range(16, len(code), 16)
+    pointed = set(seeds)  # entry + pointers from data: real starts even if a decode straddles them
+    seeds = pointed | {text_va + i for i in range(16, len(code), 16)
                           if code[i - 1] == 0xCC and code[i] != 0xCC
                           and text_va + i not in reloc_set}
     starts = {s for s in seeds if text_va <= s < end}
     md = Cs(CS_ARCH_X86, CS_MODE_32)
     seen, calls, work, falls, called, tables, conts = set(), set(), list(starts), set(), set(), set(), {}
+    straddled = set()
     while work:
         a = work.pop()
         cont = None
@@ -65,6 +67,8 @@ def find_functions(code, text_va, seeds, relocs, proven=(), keep=None):
                 break
             seen.add(a)
             _, size, mnem, op = insn
+            if (a | 15) + 1 < a + size:  # a 16-aligned "start" inside this instruction (cc displacement byte)
+                straddled.add((a | 15) + 1)
             if mnem == "ret" and not op and cont:  # catch funclet: mov eax, offset continuation; ret
                 conts[cont[0]] = cont[1]
             cont = (rd(a + 1), a) if mnem == "mov" and op.startswith("eax, 0x") and a + 1 in reloc_set else None
@@ -105,6 +109,8 @@ def find_functions(code, text_va, seeds, relocs, proven=(), keep=None):
         order = sorted(starts)
         owner = lambda m: order[bisect_left(order, m + 1) - 1]
         starts -= (falls | {c for c, m in conts.items() if owner(m) == owner(c - 1)}) - called - keep
+        # e.g. c6 84 24 cc 00 00 00 03 (mov byte [esp+0xcc],3): the cc seeded a fake start mid-instruction.
+        starts -= straddled - called - keep - pointed
     # Proven extents (a compiled function matched these bytes exactly): no start
     # inside one, and whatever follows it starts a new function.
     for start, size in proven:

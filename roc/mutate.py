@@ -50,8 +50,27 @@ def swap_add_operands(src):
     return src[:m.start()] + m.group(2) + " + " + m.group(1) + src[m.end():]
 
 
+def float_literal_suffix(src):
+    """First double literal -> float (204.8 -> 204.8f): fld dword vs fld qword constants."""
+    for line in re.finditer(r"^(?!\s*//).*$", src, re.M):
+        m = re.search(r"(?<![\w.])\d+\.\d*(?![\w.])", line.group())
+        if m:
+            at = line.start() + m.end()
+            return src[:at] + "f" + src[at:]
+    return None
+
+
+def toggle_struct_class(src):
+    """First struct definition -> class with public access (.?AU vs .?AV RTTI names)."""
+    m = re.search(r"\bstruct(\s+\w+\s*)(:\s*(?!public|protected|private)(\w)|)([^;{]*)\{", src)
+    if not m:
+        return None
+    base = ": public " + m.group(3) if m.group(3) else m.group(2)
+    return src[:m.start()] + "class" + m.group(1) + base + m.group(4) + "{ public:" + src[m.end():]
+
+
 MUTATORS = (toggle_char_signedness, toggle_int_signedness,
-             negate_comparison, swap_add_operands)
+             negate_comparison, swap_add_operands, float_literal_suffix, toggle_struct_class)
 # Mutations that can change program behavior: valid search moves, but a
 # higher fuzzy score from one is never evidence of correctness. Only an
 # exact compiler-backed match verifies.

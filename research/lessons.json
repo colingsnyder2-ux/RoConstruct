@@ -170,5 +170,41 @@
     "outcome": "rejected",
     "evidence": "findings:reports/EXPERIMENTS.md",
     "next": "Park unchanged profiles after two zero-gain shards; the automatic worker skips known failed source hashes."
+  },
+  {
+    "id": "msvc9-register-cse-lea",
+    "client": "2008-06",
+    "library": "App near-misses",
+    "hypothesis": "MSVC9 forms a nested member address with mov+add when the pointer is used once, and with a temp register plus lea when it is used twice.",
+    "change": "Add an inline helper that takes the same pointer expression twice (a dead second use is enough) to force the lea form.",
+    "symptom": "Residue is exactly 'mov reg,[base]; add reg,imm' versus 'mov eax,[base]; lea ecx,[eax+imm]'.",
+    "exacts_gained": 4,
+    "outcome": "server_verified",
+    "evidence": "work/agent-memory/attempts.jsonl (shared suggestion, MSVC9 register-CSE rule)",
+    "next": "Probe every 1-2 byte near-miss whose only residue is that pair. Related lever: a dead store's width follows where its literal originates (inlined base ctor versus derived body)."
+  },
+  {
+    "id": "refcount-control-release-method",
+    "client": "2008-06",
+    "library": "App smart pointers",
+    "hypothesis": "Strong/weak refcount release matches only as a method on Control using this, with two nested ifs.",
+    "change": "if (_InterlockedDecrement(&strong) == 0) { dispose; if (_InterlockedDecrement(&weak) == 0) destroy; }, called as control->release(). Rejected: caching Control* p and _InterlockedExchangeAdd(&p->strong, -1).",
+    "symptom": "Candidate hoists 'or reg,-1' and tests with 'test reg,reg'; target is add eax,4 / or edx,-1 / lock xadd [eax],edx / jne.",
+    "exacts_gained": 0,
+    "outcome": "server_verified",
+    "evidence": "work/agent-memory/attempts.jsonl (server 87->98; second target 85->100 locally, then submitted)",
+    "next": "Apply to every pair<string,Handle> and handle-dtor sibling. Out-of-line ~Pair is needed because the inline form emits nothing."
+  },
+  {
+    "id": "comdat-local-static-span",
+    "client": "2008-06",
+    "library": "App near-misses",
+    "hypothesis": "Data span errors on 99% code-exact functions come from MSVC padding function-local statics to 8 bytes.",
+    "change": "Make the function-local static the last item in its COMDAT. Test it in a self-contained candidate with only that function, not the whole vendor TU.",
+    "symptom": "A 28-byte array followed by base_funcs measures 32 bytes (symbol to next symbol) and swallows the next literal.",
+    "exacts_gained": 1,
+    "outcome": "reported",
+    "evidence": "work/agent-memory/attempts.jsonl (shared suggestion, 99->100)",
+    "next": "Check data-only residues for 8-byte padding before changing code."
   }
 ]
