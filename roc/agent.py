@@ -777,7 +777,14 @@ def opencode_models():
     if result.returncode:
         raise ValueError(result.stderr.strip() or "OpenCode model listing failed")
     text = re.sub(r"\x1b\[[0-9;?]*[A-Za-z]", "", result.stdout)
-    return [line.strip() for line in text.splitlines() if re.fullmatch(r"\S+/\S+", line.strip())]
+    out = []
+    for line in text.splitlines():
+        match = re.search(r"(\S+/\S+)", line)
+        if match:
+            model = match.group(1)
+            if model not in out:
+                out.append(model)
+    return out
 
 
 def status():
