@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-15 00:26 UTC",
+ "updated": "2026-10-15 01:31 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -54,14 +54,14 @@
    "compiler": "VS2005 (cl 14.00.50727)",
    "built": "2007-08-19",
    "started": true,
-   "functions": 19978,
+   "functions": 19977,
    "matched": 11280,
-   "partial": 8295,
-   "bytes": 3199649,
+   "partial": 8294,
+   "bytes": 3195553,
    "matched_bytes": 987812,
    "source_bytes": 797854,
    "mined_bytes": 189958,
-   "partial_bytes": 1945392,
+   "partial_bytes": 1941296,
    "data_bytes": 1361658,
    "leaderboard": [
     {
@@ -130,21 +130,21 @@
    ],
    "data_matched_bytes": 101163,
    "classes": 1391,
-   "generated": 16517
+   "generated": 16518
   },
   {
    "name": "2008-06",
    "compiler": "VS2008 RTM (cl 15.00.21022)",
    "built": "2008-06-20",
    "started": true,
-   "functions": 22363,
-   "matched": 19710,
-   "partial": 2238,
-   "bytes": 3704630,
-   "matched_bytes": 2687975,
-   "source_bytes": 2093711,
-   "mined_bytes": 594264,
-   "partial_bytes": 630001,
+   "functions": 22362,
+   "matched": 19720,
+   "partial": 2233,
+   "bytes": 3700534,
+   "matched_bytes": 2697950,
+   "source_bytes": 2102380,
+   "mined_bytes": 595570,
+   "partial_bytes": 646124,
    "data_bytes": 1559926,
    "leaderboard": [
     {
@@ -163,10 +163,10 @@
     },
     {
      "user": "colin",
-     "matched": 1753,
-     "points": 610005,
-     "submissions": 19330,
-     "last": 1792023264.8253474
+     "matched": 1769,
+     "points": 610711,
+     "submissions": 19362,
+     "last": 1792027675.3149745
     },
     {
      "user": "atomic.potato",
@@ -197,19 +197,19 @@
      "last": 1791766592.3175168
     }
    ],
-   "data_matched_bytes": 254042,
+   "data_matched_bytes": 268124,
    "classes": 1488,
-   "generated": 19415
+   "generated": 19416
   },
   {
    "name": "2009-06",
    "compiler": "VS2008 SP1 (cl 15.00.30729)",
    "built": "2009-06-16",
    "started": true,
-   "functions": 26207,
+   "functions": 26206,
    "matched": 13799,
    "partial": 6730,
-   "bytes": 4280028,
+   "bytes": 4275932,
    "matched_bytes": 1486399,
    "source_bytes": 1271881,
    "mined_bytes": 214518,
@@ -254,17 +254,17 @@
    ],
    "data_matched_bytes": 139452,
    "classes": 1624,
-   "generated": 20395
+   "generated": 20396
   },
   {
    "name": "2010-06",
    "compiler": "VS2008 SP1 (cl 15.00.30729)",
    "built": "2010-06-18",
    "started": true,
-   "functions": 32979,
+   "functions": 32978,
    "matched": 15912,
    "partial": 9228,
-   "bytes": 5494888,
+   "bytes": 5490792,
    "matched_bytes": 1539599,
    "source_bytes": 1285379,
    "mined_bytes": 254220,
@@ -295,17 +295,17 @@
    ],
    "data_matched_bytes": 135163,
    "classes": 2012,
-   "generated": 25452
+   "generated": 25453
   },
   {
    "name": "2011-06",
    "compiler": "VS2008 RTM (cl 15.00.21022)",
    "built": "2011-06-24",
    "started": true,
-   "functions": 36307,
+   "functions": 36306,
    "matched": 15235,
    "partial": 10622,
-   "bytes": 5813703,
+   "bytes": 5809607,
    "matched_bytes": 1230825,
    "source_bytes": 1063695,
    "mined_bytes": 167130,
@@ -336,17 +336,17 @@
    ],
    "data_matched_bytes": 110322,
    "classes": 2230,
-   "generated": 27274
+   "generated": 27275
   },
   {
    "name": "2012-06",
    "compiler": "VS2008 SP1 (cl 15.00.30729)",
    "built": "2012-06-13",
    "started": true,
-   "functions": 39719,
+   "functions": 39718,
    "matched": 15251,
    "partial": 11899,
-   "bytes": 6678436,
+   "bytes": 6674340,
    "matched_bytes": 1186793,
    "source_bytes": 1033912,
    "mined_bytes": 152881,
@@ -384,7 +384,7 @@
    ],
    "data_matched_bytes": 106619,
    "classes": 2176,
-   "generated": 29571
+   "generated": 29572
   }
  ],
  "leaderboard": [
@@ -397,10 +397,10 @@
   },
   {
    "user": "colin",
-   "matched": 13717,
-   "points": 5438096,
-   "submissions": 182063,
-   "last": 1792023264.8253474
+   "matched": 13733,
+   "points": 5438802,
+   "submissions": 182095,
+   "last": 1792027675.3149745
   },
   {
    "user": "king_originala",
