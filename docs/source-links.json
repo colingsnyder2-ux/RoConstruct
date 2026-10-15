@@ -1455,7 +1455,9 @@
  "zlib-1.2.3-winapi-dll": {
   "url": "https://zlib.net/fossils/zlib-1.2.3.tar.gz",
   "kind": "archive",
-  "files": []
+  "files": [
+   "roc_unit_cc0da05a02dcd115.cpp"
+  ]
  },
  "zlib-1.1.4-dll": {
   "url": "https://zlib.net/fossils/zlib-1.1.4.tar.gz",
@@ -1608,6 +1610,7 @@
    "libs/signals/src/named_slot_map.cpp",
    "libs/thread/src/thread.cpp",
    "libs/thread/src/tss.cpp",
+   "roc_bind_string_factory_d3f03552e2e2cac8.cpp",
    "roc_unit_13364a19a306182f.cpp",
    "roc_unit_7c283c9b16193989.cpp",
    "roc_unit_c054a2084880d614.cpp",
