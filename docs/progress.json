@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-15 04:49 UTC",
+ "updated": "2026-10-15 05:19 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -138,21 +138,21 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22344,
-   "matched": 19778,
-   "partial": 2186,
+   "matched": 19797,
+   "partial": 2172,
    "bytes": 3700002,
-   "matched_bytes": 2732692,
-   "source_bytes": 2131454,
-   "mined_bytes": 601238,
-   "partial_bytes": 685557,
+   "matched_bytes": 2736783,
+   "source_bytes": 2135615,
+   "mined_bytes": 601168,
+   "partial_bytes": 691106,
    "data_bytes": 1559926,
    "leaderboard": [
     {
      "user": "auto",
-     "matched": 10673,
-     "points": 996598,
-     "submissions": 10673,
-     "last": 1792004874.652192
+     "matched": 10817,
+     "points": 1005002,
+     "submissions": 10817,
+     "last": 1792041496.8072593
     },
     {
      "user": "king_originala",
@@ -163,10 +163,10 @@
     },
     {
      "user": "colin",
-     "matched": 1854,
-     "points": 615306,
-     "submissions": 19490,
-     "last": 1792039600.0268462
+     "matched": 1872,
+     "points": 616198,
+     "submissions": 19525,
+     "last": 1792041036.365941
     },
     {
      "user": "atomic.potato",
@@ -197,7 +197,7 @@
      "last": 1791766592.3175168
     }
    ],
-   "data_matched_bytes": 268952,
+   "data_matched_bytes": 269044,
    "classes": 1488,
    "generated": 19440
   },
@@ -211,8 +211,8 @@
    "partial": 6708,
    "bytes": 4275169,
    "matched_bytes": 1486430,
-   "source_bytes": 1271924,
-   "mined_bytes": 214506,
+   "source_bytes": 1271934,
+   "mined_bytes": 214496,
    "partial_bytes": 1184156,
    "data_bytes": 1809822,
    "leaderboard": [
@@ -266,8 +266,8 @@
    "partial": 9206,
    "bytes": 5490015,
    "matched_bytes": 1539518,
-   "source_bytes": 1285310,
-   "mined_bytes": 254208,
+   "source_bytes": 1285320,
+   "mined_bytes": 254198,
    "partial_bytes": 1655319,
    "data_bytes": 2369604,
    "leaderboard": [
@@ -390,17 +390,17 @@
  "leaderboard": [
   {
    "user": "auto",
-   "matched": 75769,
-   "points": 7417633,
-   "submissions": 75769,
-   "last": 1792004893.981448
+   "matched": 75913,
+   "points": 7426037,
+   "submissions": 75913,
+   "last": 1792041496.8072593
   },
   {
    "user": "colin",
-   "matched": 13827,
-   "points": 5444297,
-   "submissions": 182232,
-   "last": 1792039600.0268462
+   "matched": 13845,
+   "points": 5445189,
+   "submissions": 182267,
+   "last": 1792041036.365941
   },
   {
    "user": "king_originala",
