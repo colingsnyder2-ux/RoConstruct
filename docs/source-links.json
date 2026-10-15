@@ -1764,7 +1764,10 @@
  "rbxgs-g3d-dll": {
   "url": "https://github.com/RBLXDecomp/g3d/blob/2a2fc86c37d46e3c9b2b571795d09a6f667154c0/",
   "kind": "file",
-  "files": []
+  "files": [
+   "GLG3Dcpp/Draw.cpp",
+   "GLG3Dcpp/ToneMap.cpp"
+  ]
  },
  "rccservice-dll": {
   "url": "https://github.com/verify-stack/rccservice-decompile/blob/35dc07d25ef89e2fbcba7d484828c3bd0c060321/RBXGS/",
