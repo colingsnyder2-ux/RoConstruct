@@ -1557,6 +1557,7 @@
   "url": "https://archive.org/download/g3d-src-6_09/g3d-src-6_09.zip",
   "kind": "archive",
   "files": [
+   "G3Dcpp/MeshAlgAdjacency.cpp",
    "G3Dcpp/debugAssert.cpp",
    "GLG3Dcpp/Texture.cpp",
    "GLG3Dcpp/VARArea.cpp",
