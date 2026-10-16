@@ -461,6 +461,60 @@ def cmd_check(a):
         print("%d / %d match." % (matched, len(srcs)))
 
 
+def cmd_check_batch(a):
+    """Compile several candidate variants of one function in parallel and rank them.
+
+    The agent loop is serial (edit -> check -> read diff -> edit), costing 3-8s per
+    hypothesis. This command lets an agent generate 3-5 variants up front and test
+    them all at once: the object cache deduplicates identical sources, and each
+    compile runs concurrently (match.check_text already shares per-object locks).
+    """
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+    from roc import match
+    match.DIFF_CONTEXT = a.context
+    if not a.files or not a.addr:
+        sys.exit("usage: roc check-batch CLIENT ADDR FILE [FILE ...]")
+    addr = a.addr.lower().replace("0x", "").zfill(8)
+    if os.environ.get("ROC_AGENT"):
+        _refuse_matched(a.name, addr)
+
+    def score_one(path_text):
+        label, text = path_text
+        try:
+            value, symbol, asm_diff, _ = match.check_text(a.name, addr, text)
+            return label, value, symbol, asm_diff, None
+        except match.CompileError as error:
+            return label, 0, None, "", str(error)
+
+    pairs = []
+    for label in a.files:
+        path = Path(label)
+        if not path.exists():
+            sys.exit("No file %s" % label)
+        pairs.append((label, path.read_text(encoding="utf-8", errors="replace")))
+    jobs = int(os.environ.get("ROC_JOBS") or 0) or min(8, os.cpu_count() or 4)
+    results = []
+    with ThreadPoolExecutor(max_workers=jobs) as pool:
+        futures = [pool.submit(score_one, pair) for pair in pairs]
+        for future in as_completed(futures):
+            results.append(future.result())
+    results.sort(key=lambda row: -row[1])
+
+    print("Batch check %s %s · %d candidate(s), best first:" % (a.name, addr, len(results)))
+    for label, value, symbol, _, error in results:
+        note = "COMPILE FAILED: %s" % error.splitlines()[0][:80] if error else \
+               ("MATCH" if value == 100 else symbol or "-")
+        print("  %3d%%  %-8s  %s" % (value, Path(label).name, note))
+    best = results[0]
+    if best[1] == 100:
+        print("Winner: %s is an exact match; submit it with:" % best[0])
+        print('  roc submit %s %s --file "%s"' % (a.name, addr, best[0]))
+    elif best[1] > 0:
+        print("\nWinner %s residue ('-' = target, '+' = yours):" % best[0])
+        print(best[3] or "Exact code/data match")
+    return best[1]
+
+
 def cmd_classify(a):
     """Compile one source and emit conservative mismatch evidence as JSON."""
     from roc import match
@@ -495,7 +549,9 @@ def cmd_xcopy(a):
     for name in names or []:
         if name not in reg:
             sys.exit("%s is not registered. See:  roc client list" % name)
-    result = matchers.run(targets=names, limit=a.limit, dry_run=a.dry_run)
+    result = matchers.run(targets=names, limit=a.limit, dry_run=a.dry_run,
+                          cross_only=a.cross_only, min_size=a.min_size,
+                          max_score=a.max_score)
     print("\nClient       new files   newly matched")
     files = scored = 0
     for name in sorted(result):
@@ -522,8 +578,28 @@ def cmd_ref(a):
     if a.summarise:
         refsource.summarise(a.client)
         return
+    if a.warm_large:
+        print("cached %d target string(s)" % refsource.warm_large(a.client or "2008-06"))
+        return
+    if a.warm_lineage:
+        print("cached lineage for %d target(s)" % refsource.warm_lineage(a.client or "2008-06"))
+        return
+    if a.addr:
+        client = a.client or "2008-06"
+        row = refsource.function_facts(client, a.addr)
+        if not row:
+            sys.exit("Unknown %s function %s" % (client, a.addr))
+        for source in refsource.cross_client_sources(client, a.addr, limit=a.limit):
+            print("exact-binary %s:%s %s" %
+                  (source["client"], source["addr"], source.get("unit", "")))
+        for source in refsource.shape_client_sources(client, a.addr, limit=a.limit):
+            print("exact-shape %s:%s %s (%s%%)" %
+                  (source["client"], source["addr"], source.get("unit", ""), source.get("score", 0)))
+        for source in refsource.literal_sources(row.get("strings", []), limit=a.limit, log=print):
+            print("%d %s %s" % (len(source["matches"]), source["path"], repr(source["matches"])))
+        return
     if not a.unit:
-        sys.exit("Give a unit name, or use --summarise. See:  roc ref --help")
+        sys.exit("Give a unit name, --addr, or --summarise. See:  roc ref --help")
     refsource.report(a.unit, a.limit)
 
 
@@ -534,6 +610,16 @@ def cmd_libs(a):
     unknown = [n for n in names if n not in libs.RECIPES]
     if unknown:
         sys.exit("Unknown library: %s. Known: %s" % (", ".join(unknown), ", ".join(libs.RECIPES)))
+    if a.no_fetch:
+        local = [n for n in names if libs._case_path(libs.LIBS / libs.RECIPES[n]["src"]).exists()
+                 or libs.bundle_has(libs.RECIPES[n]["src"]) or libs.RECIPES[n].get("generate")]
+        missing = [n for n in names if n not in local]
+        if missing:
+            print("Skipped (vendor tree not local, --no-fetch): %s" % ", ".join(missing))
+        names = local
+        if not names:
+            print("No recipe has its vendor tree locally; run without --no-fetch to download.")
+            return
     targets = libs.default_targets() if a.client == "all" else [a.client]
     print(libs.run([n for n in names if libs.RECIPES[n].get("files")], targets))
 
@@ -600,6 +686,21 @@ def cmd_libs_bundle(a):
         print("Recorded in research/libs-bundle.json (commit it): %s" % ", ".join(libs.bundle_index(a.value)))
     else:
         print("Unpacked into tools/libs: %s" % (", ".join(libs.bundle_fetch(a.value and a.value.split(","))) or "nothing new"))
+
+
+def cmd_brute(a):
+    """Portable, resumable compiler and authentic-template sweep."""
+    a.action = "status" if a.status else "plan" if a.plan else "run"
+    a.name, a.more = "portable-bruteforce-deep" if a.deep else "portable-bruteforce", []
+    a.force, a.job_state = False, None
+    cmd_research(a)
+    if a.status:
+        for client in sorted(clients.load()) if a.client == "all" else [a.client]:
+            for stage in ("bruteforce-compiler-gates", "bruteforce-source-portfolios-deep" if a.deep else "bruteforce-source-portfolios"):
+                folder = ROOT / "work" / "research" / stage
+                path = (folder if client == "2008-06" else folder / client) / "progress.json"
+                if path.exists():
+                    print(path.read_text())
 
 
 def cmd_research(a):
@@ -670,9 +771,10 @@ def cmd_research(a):
                     command += ["--campaign-id", a.campaign_id]
                 state.write_text(json.dumps({"state": "starting", "launcher_pid": os.getpid(), "log": str(log_path)}))
                 try:
-                    with log_path.open("w") as stream:
+                    with log_path.open("w", encoding="utf-8") as stream:
                         process = subprocess.Popen(command, cwd=ROOT, stdout=stream, stderr=subprocess.STDOUT,
                                                    stdin=subprocess.DEVNULL,
+                                                   env={**os.environ, "PYTHONIOENCODING": "utf-8"},
                                                    creationflags=subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0)
                 except OSError as error:
                     state.write_text(json.dumps({"state": "failed", "error": str(error)}))
@@ -719,6 +821,159 @@ def cmd_ghidra(a):
     from roc import analyze
     path, count = analyze.ghidra(a.client)
     print("Wrote %s (%d functions). In Ghidra: Script Manager, add this folder, run it." % (path, count))
+
+
+def cmd_lift(a):
+    from roc import remill
+    summary, compact, paths = remill.lift_function(a.name, a.addr, getattr(a, "out", None), timeout=a.timeout)
+    print(compact)
+    print()
+    print("client: %s  size: %d  function: %s" % (summary["client"], summary["size"], summary.get("function")))
+    print("IR: %s" % paths["ll"])
+    print("bitcode: %s" % paths["bc"])
+    print("summary: %s" % paths["summary"])
+    print("verified with LLVM 17 opt: %s" % ("yes" if summary["verified"] else "no"))
+    if not summary["verified"]:
+        print(summary.get("verify_error", "")[:500])
+    if summary["returncode"]:
+        print("remill return code: %d" % summary["returncode"])
+        print((summary.get("stderr_tail") or "")[:800])
+
+
+def cmd_rtti(a):
+    """RTTI reverse-index: binary-proven template types (read the descriptor, never guess)."""
+    from roc import rtti
+    if a.addr:
+        refs = rtti.function_refs(a.name, a.addr)
+        if not refs:
+            print("%s %s: no RTTI descriptor references." % (a.name, a.addr))
+            return
+        print("%s %s references %d RTTI type descriptor(s):" % (a.name, a.addr, len(refs)))
+        for ref in refs:
+            print("  offset %3d  %08x  %s" % (ref["offset"], ref["address"], ref["type"]))
+            print("           pretty: %s" % rtti.pretty(ref["type"]))
+        print("\nThese are the binary-proven type parameters. A `push <descriptor>` before")
+        print("__RTDynamicCast states the exact template type the original source used.")
+        return
+    if a.open:
+        rows = rtti.open_function_refs(a.name, limit=a.limit)
+        rows.sort(key=lambda r: (-r["score"], -r["size"]))
+        print("Open functions with RTTI descriptor refs: %d" % len(rows))
+        for r in rows:
+            types = "; ".join(rtti.pretty(x["type"])[:48] for x in r["refs"][:3])
+            print("  %s %3d%% %4d bytes  %s" % (r["addr"], r["score"], r["size"], types))
+        return
+    index = rtti.descriptors(a.name)
+    print("%d RTTI type descriptors in %s." % (len(index), a.name))
+    for address in sorted(index)[:a.limit] if a.limit else sorted(index):
+        print("  %08x  %s" % (address, index[address]))
+
+
+def cmd_extents(a):
+    """Near-misses whose recorded extent ends in padding: honest bounds candidates."""
+    from roc import extents
+    rows = extents.scan(a.name, a.min_score)
+    if not rows:
+        print("No padded-extent functions in the %d%%+ open band of %s." % (a.min_score, a.name))
+        return
+    print("Padded extents in %s (%d functions): real code ends before the padding." % (a.name, len(rows)))
+    print("addr      score  size  pad  suggested  pattern")
+    for r in rows:
+        print("%s  %3d%%  %4d  %3d  %9d  %s  %s" % (r["addr"], r["score"], r["size"],
+              r["padding"], r["suggested_size"], r["pattern"], r["unit"][:30]))
+    print("\nCorrect sizes through work/%s/bounds.json (evidence-backed only); re-check after." % a.name)
+
+
+def cmd_bruteforce(a):
+    """Post-draft brute force: full compiler grid (incl /fp:fast) + family fanout."""
+    from roc import bruteforce
+    if a.addr or a.file:
+        grand = bruteforce.run(a.name, addr=a.addr, file=a.file, full=not a.fast,
+                               family=not a.no_family)
+    elif a.near is not None:
+        grand = bruteforce.run(a.name, near=a.near, full=not a.fast, family=not a.no_family)
+    else:
+        raise SystemExit("give ADDR, --file, or --near")
+    print("Brute force done: %d grid wins, %d family hits." %
+          (grand["grid_wins"], len(grand["family_wins"])))
+
+
+def cmd_immediates(a):
+    """Near-misses whose only residue is ONE wrong constant: the fix list."""
+    from roc import repair_scan
+    s = settings()
+    rows = repair_scan.scan(a.name, a.min_score, a.max_score, server=s.get("server"), token=s.get("token"))
+    if not rows:
+        print("No single-immediate near-misses in the %d-%d%% band of %s." %
+              (a.min_score, a.max_score, a.name))
+        return
+    print("Single-immediate residues in %s (%d functions):" % (a.name, len(rows)))
+    print("Trace operand meaning before editing; stack/EH values need lifetime/ABI evidence, not padding.")
+    for r in rows:
+        f = r["fix"]
+        print("  %s %3d%%  %s" % (r["addr"], r["score"], r["unit"][:40] if isinstance(r["unit"], str) else ""))
+        print("       target: %-42s ours: %s" % (f["target"], f["ours"]))
+        print("       observed target value: %s; verify a source-level correction with check-batch." % f["target_value"])
+
+
+def cmd_versions(a):
+    import re
+    """Compile one function's source under every installed vendor-version recipe.
+
+    Big library functions attributed to the wrong vendor version plateau at
+    20-90% forever; the bytes of the right version are the evidence. This probe
+    rewrites the `// roc-lib:` recipe across every installed version whose tree
+    contains the same file and scores them all in parallel.
+    """
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+    from roc import libs, match
+    src_path = ROOT / "src" / a.name / ("%s.cpp" % a.addr.lower().replace("0x", "").zfill(8))
+    if not src_path.exists():
+        sys.exit("No local source for %s. roc pull %s first." % (a.addr, a.name))
+    text = src_path.read_text(encoding="utf-8", errors="replace")
+    d = match.directives(text)
+    if "lib" not in d:
+        sys.exit("%s has no // roc-lib: recipe to probe." % a.addr)
+    recipe, _, rel = d["lib"].partition(" ")
+    if recipe not in libs.RECIPES:
+        sys.exit("Unknown recipe %s." % recipe)
+    # Every same-vendor recipe whose tree contains the same relative file:
+    # version numbers in recipe names (ogre-1.4.5 vs ogre-1.4.9) have distinct
+    # src roots, so match by name prefix and verify the file exists there.
+    prefix = re.match(r"(.*?)-?\d[\d.]*(-dll)?$", recipe)
+    vendor = prefix.group(1) if prefix else recipe
+    candidates = []
+    for name, r in libs.RECIPES.items():
+        if name == recipe or not name.startswith(vendor):
+            continue
+        try:
+            path = libs.LIBS / r.get("src", "") / rel
+            if r.get("src") and (path.exists() or libs._case_path(path).exists()):
+                candidates.append(name)
+        except (OSError, ValueError):
+            continue
+    if not candidates:
+        print("No other installed version of %s contains %s." % (recipe, rel))
+        return
+
+    def score_with(name):
+        variant = re.sub(r"(?m)^//\s*roc-lib:.*$", "// roc-lib: %s %s" % (name, rel), text)
+        try:
+            value, symbol, _, _ = match.check_text(a.name, a.addr, variant)
+            return name, value, symbol, None
+        except match.CompileError as error:
+            return name, 0, None, str(error).splitlines()[0][:80]
+
+    print("Probing %s %s under %d vendor version(s)..." % (a.addr, recipe, len(candidates)))
+    results = []
+    with ThreadPoolExecutor(max_workers=min(8, len(candidates) or 1)) as pool:
+        futures = [pool.submit(score_with, name) for name in candidates]
+        for future in as_completed(futures):
+            results.append(future.result())
+    results.sort(key=lambda row: -row[1])
+    for name, value, symbol, error in results:
+        note = "COMPILE FAILED: %s" % error if error else symbol or "-"
+        print("  %3d%%  %-16s  %s" % (value, name, note[:80]))
 
 
 def cmd_mass(a):
@@ -874,7 +1129,7 @@ def cmd_agent(a):
             names = [selected_client] if selected_client != "all" else [name for name in clients.load()
                 if (ROOT / "work" / name / "functions.jsonl").exists()]
             print(json.dumps(agent_auto.public_plan(agent_auto.portfolio(names, a.max_size if a.max_size is not None else 512,
-                a.cli + ":" + (a.model or "default") + (":individual" if a.individual else ""))), indent=2))
+                a.cli + ":" + (a.model or "default") + (":individual" if a.individual else ""), random_targets=True)), indent=2))
             return
         s = settings()
         srv = need(a.server or s.get("server"), "server", "Use --server or: roc config --server URL")
@@ -886,6 +1141,9 @@ def cmd_agent(a):
         return agent.interactive(a.cli, a.goal or "match open 2008-06 functions", a.model)
     if a.goal:
         goal = a.goal
+        goal += ("\\nRemill evidence is available: run `roc lift CLIENT ADDR` and read "
+                 "work/CLIENT/lifted/ADDR/ADDR.summary.txt` for a compact LLVM semantic packet. "
+                 "Keep original MSVC compilation and `roc check` as the final truth.")
         if a.client:
             goal += "\nClient scope: %s." % a.client
         if a.server:
@@ -927,6 +1185,74 @@ def cmd_agent_check(a):
     row = agent_auto.trial(a.name, a.addr, a.path, a.hypothesis)
     print("%s %d%% %s" % (a.addr, row["after"], row["outcome"]))
     print(row.get("diff") or row.get("error") or "Exact code/data match")
+
+
+def cmd_agent_check_batch(a):
+    """Check independent assigned targets in one process, keeping trial journals."""
+    import re
+    from concurrent.futures import ThreadPoolExecutor
+    from roc import agent_auto
+    paths = [Path(path) for path in a.paths]
+    addresses = [path.stem for path in paths]
+    if any(not re.fullmatch(r"[0-9a-f]{8}", addr) for addr in addresses):
+        sys.exit("Each source must be named with its eight-digit lowercase target address")
+    if len(set(addresses)) != len(addresses):
+        sys.exit("Batch requires distinct targets; same-target variants use check-batch")
+    with ThreadPoolExecutor(max_workers=min(8, len(paths))) as pool:
+        # Finish server checks before changing any journals or best sources.
+        list(pool.map(lambda addr: _refuse_matched(a.name, addr), addresses))
+        rows = list(pool.map(lambda path: agent_auto.trial(
+            a.name, path.stem, path, a.hypothesis), paths))
+    if a.json:
+        print(json.dumps(rows))
+        return
+    for addr, row in zip(addresses, rows):
+        print("%s %d%% %s" % (addr, row["after"], row["outcome"]))
+        if not a.summary:
+            print(row.get("diff") or row.get("error") or "Exact code/data match")
+
+
+def cmd_agent_context(a):
+    """Read source, target instructions and recent rejected trials in one tool trip."""
+    from roc import match, research
+    rows = []
+    for name in a.paths:
+        path = Path(name).resolve()
+        addr = _addr(path.stem)
+        code, relocs, target = match.target(a.name, addr)
+        source = path.read_text(encoding="utf-8")
+        task_path = path.parent / "task.json"
+        task = json.loads(task_path.read_text(encoding="utf-8")) if task_path.exists() else {}
+        if task and (task["client"] != a.name or task["addr"] != addr):
+            sys.exit("Source does not belong to this assigned target")
+        journal = path.parent if task else ROOT / "work" / "agent-checks" / a.name / addr
+        trials = research.journal_records(journal / "trials.jsonl")[-5:]
+        best_path = journal / "best.cpp"
+        best_source = best_path.read_text(encoding="utf-8") if best_path.exists() else source
+        rows.append(dict(client=a.name, addr=addr, file=str(path), source=source,
+            source_hash=research.digest(source), task=task, best_source=best_source if best_source != source else None,
+            target={key: target[key] for key in ("unit", "size", "kind", "strings", "imports", "callers", "callees") if key in target},
+            target_asm=match.disasm(code, int(addr, 16)),
+            recent_trials=[{key: trial[key] for key in ("source_hash", "hypothesis", "before", "after", "outcome", "error") if key in trial}
+                           for trial in trials]))
+    print(json.dumps(rows))
+
+
+def cmd_agent_block(a):
+    from roc import agent_recovery
+    path = Path(a.path).resolve()
+    task = json.loads((path.parent / "task.json").read_text(encoding="utf-8"))
+    if task["client"] != a.name or task["addr"] != _addr(a.addr):
+        sys.exit("Source does not belong to this assigned target")
+    row = agent_recovery.block(ROOT, path, a.reason)
+    print("%s blocked: %s" % (task["addr"], row["missing_evidence"]))
+
+
+def cmd_agent_metrics(a):
+    from roc import agent_recovery
+    if not 1 <= a.limit <= 1000:
+        sys.exit("--limit must be between 1 and 1000")
+    print(json.dumps(agent_recovery.report(ROOT, a.limit), indent=2))
 
 
 def cmd_submit(a):
@@ -1356,6 +1682,9 @@ def cmd_failures(a):
         rules = telemetry.promote_failures()
         print("Promoted %d recurring failure rule suggestion(s) to %s" % (len(rules), telemetry.RULES))
         return
+    if a.addr:
+        _show_rejected_variants(a.addr, a.client)
+        return
     rows = telemetry.failure_clusters()
     if not rows:
         print("No worker failures recorded.")
@@ -1363,6 +1692,39 @@ def cmd_failures(a):
     print("Failure cluster                                      count")
     for row in rows:
         print("%-52s %5d" % (row["reason"], row["count"]))
+
+
+def _show_rejected_variants(addr, client):
+    """Per-address rejected-variant lookup so agents skip recorded rejections."""
+    from roc import research
+    path = ROOT / "work" / "agent-memory" / "attempts.jsonl"
+    if not path.exists():
+        print("No attempts recorded yet.")
+        return
+    addr = addr.lower().replace("0x", "").zfill(8)
+    seen_hashes = {}
+    rejected = []
+    for row in research.journal_records(path):  # handles concatenated objects
+        if not isinstance(row, dict) or row.get("client") != client:
+            continue
+        if addr not in (row.get("addresses") or []):
+            continue
+        outcome = row.get("outcome") or ""
+        source_hash = row.get("source_hash") or row.get("after_hash") or ""
+        if outcome in ("no_gain", "compile_failed", "rejected", "rolled_back"):
+            key = (source_hash, row.get("change") or row.get("hypothesis") or "")
+            if key in seen_hashes:
+                continue
+            seen_hashes[key] = True
+            rejected.append(row)
+    if not rejected:
+        print("No rejected variants recorded for %s %s." % (client, addr))
+        return
+    print("Rejected variants for %s %s (%d):" % (client, addr, len(rejected)))
+    for row in rejected:
+        change = (row.get("change") or row.get("hypothesis") or "?")[:80]
+        score = " -> %s" % row["after"] if row.get("after") is not None else ""
+        print("  [%s]%s %s" % (row.get("outcome", "?"), score, change))
 
 
 def cmd_benchmark_models(a):
@@ -1664,7 +2026,7 @@ def menu_hand():
 COMMAND_GROUPS = [
     ("Start here", ["install", "doctor", "config", "setup", "gui", "client-fetch", "analyze", "pull"]),
     ("Match and submit", ["agent", "research", "mass", "auto", "xcopy", "libs", "lib-fetch", "lib-info", "libs-bundle", "similar", "donor",
-                          "check", "classify", "next", "claim", "submit"]),
+                          "check", "classify", "next", "claim", "submit", "agent-context", "agent-block", "agent-metrics"]),
     ("Workers and server", ["worker", "status", "host", "server", "link", "tasks", "cpu-worker", "cluster"]),
     ("This copy", ["update", "provider", "chatgpt", "local-ai", "uninstall"]),
 ]
@@ -1803,6 +2165,9 @@ def main(argv=None):
         (["name"], {}), (["addr"], {"nargs": "?"}),
         (["--file"], {"help": "scratch source to score against ADDR; saves nothing"}),
         (["--context"], {"type": int, "default": 99, "help": "unchanged lines around each diff hunk (3 = residue only)"}))
+    cmd("check-batch", cmd_check_batch, "score several candidate variants of one function in parallel (agents: test multiple hypotheses at once)",
+        (["name"], {}), (["addr"], {}), (["files"], {"nargs": "+"}),
+        (["--context"], {"type": int, "default": 99, "help": "unchanged lines around each diff hunk"}))
     cmd("classify", cmd_classify, "compile a source and classify target/candidate mismatch",
         (["client"], {}), (["addr"], {}), (["source"], {}))
     cmd("auto", cmd_auto, "auto-match trivial functions (getters, setters, empty...) ('all' for every client)",
@@ -1810,6 +2175,12 @@ def main(argv=None):
     cmd("xcopy", cmd_xcopy, "copy stored matches to the other clients that share the function",
         (["name"], {}), (["--limit"], {"type": int, "default": None,
                                        "help": "try only the first N candidate sources (testing)"}),
+        (["--cross-only"], {"action": "store_true",
+                             "help": "skip target's own sources; probe cross-client exact reuse only"}),
+        (["--min-size"], {"type": int, "default": 0,
+                           "help": "restrict target functions by byte size"}),
+        (["--max-score"], {"type": int, "default": 99,
+                            "help": "restrict target functions by current score"}),
         (["--dry-run", "-n"], {"action": "store_true", "help": "report what would match, write nothing"}))
     cmd("shapes", cmd_shapes, "count unmatched assembly shapes (picks the next templates)",
         (["name"], {}), (["--size"], {"type": int, "default": 128, "help": "bounded bytes to lift"}),
@@ -1817,10 +2188,14 @@ def main(argv=None):
     cmd("ref", cmd_ref, "find the 2016 Roblox source behind a client function",
         (["unit"], {"nargs": "?"}), (["--summarise"], {"action": "store_true",
                                                        "help": "how much of each client the 2016 tree explains"}),
+        (["--addr"], {"help": "rank authentic source files by exact function strings"}),
+        (["--warm-large"], {"action": "store_true", "help": "cache source ranking for large low-score functions"}),
+        (["--warm-lineage"], {"action": "store_true", "help": "cache exact cross-client lineage for large low-score functions"}),
         (["--client"], {"help": "restrict --summarise to one client"}),
         (["--limit"], {"type": int, "default": 5}))
     cmd("libs", cmd_libs, "match open-source library code from its real source ('all' or recipe names)",
-        (["names"], {"nargs": "+"}), (["--client"], {"default": "all"}))
+        (["names"], {"nargs": "+"}), (["--client"], {"default": "all"}),
+        (["--no-fetch"], {"action": "store_true", "help": "skip recipes whose vendor tree is not present locally"}))
     cmd("lib-fetch", cmd_lib_fetch, "download library sources for recipes, e.g. boost-1.35.0 ('all' for every recipe)",
         (["names"], {"nargs": "+"}))
     cmd("similar", cmd_similar, "list exact-matched functions with a similar instruction shape to ADDR",
@@ -1831,12 +2206,22 @@ def main(argv=None):
     cmd("libs-bundle", cmd_libs_bundle, "pack/index/fetch the private library trees, one zip each (XTP, MFC, Scintilla)",
         (["action"], {"choices": ["pack", "index", "fetch"]}),
         (["value"], {"nargs": "?", "help": "index: Drive folder link; fetch: comma-separated trees (default all)"}))
+    cmd("brute", cmd_brute, "resume authentic families, source portfolios and compiler contexts over unresolved functions",
+        (["client"], {"nargs": "?", "default": "2008-06"}),
+        (["--jobs"], {"type": int, "default": 4, "choices": range(1, 9), "help": "parallel targets; gates stay sequential per target"}),
+        (["--limit"], {"type": int, "help": "pilot limit per stage"}),
+        (["--server"], {"help": "group server (default saved setting)"}),
+        (["--deep"], {"action": "store_true", "help": "try all indexed candidates and donors, without the default eight-source cap"}),
+        (["--plan"], {"action": "store_true"}),
+        (["--status"], {"action": "store_true"}),
+        (["--background"], {"action": "store_true"}),
+        (["--campaign-id"], {"help": "agent campaign receipt attribution"}))
     cmd("research", cmd_research, "run named compiler-only research recipes (research/recipes.json)",
         (["action"], {"choices": ["list", "plan", "run", "status", "audit", "note", "log", "capture-units"]}),
         (["name"], {"nargs": "?", "help": "recipe name (audit: folder; note: title; log: entry count; capture-units: client)"}),
         (["more"], {"nargs": "*", "help": "audit: more folders; note: the text"}),
         (["--server"], {"help": "group server (default: saved setting)"}),
-        (["--jobs"], {"type": int, "default": 1, "choices": range(1, 9), "help": "compile prefetch"}),
+        (["--jobs"], {"type": int, "default": 1, "choices": range(1, 9), "help": "parallel targets (grid) or compile prefetch (fanout)"}),
         (["--limit"], {"type": int, "help": "first N targets/sources only (pilot)"}),
         (["--force"], {"action": "store_true", "help": "rerun a recipe recorded as rejected"}),
         (["--background"], {"action": "store_true", "help": "start resumable run and return immediately"}),
@@ -1851,6 +2236,27 @@ def main(argv=None):
         (["client"], {}), (["--top"], {"type": int, "default": 20}))
     cmd("ghidra", cmd_ghidra, "write a Ghidra script that applies recovered names and match status",
         (["client"], {}))
+    cmd("lift", cmd_lift, "lift one Roblox function with Remill 17 to verified LLVM IR",
+        (["name"], {}),
+        (["addr"], {}),
+        (["--out"], {"help": "output directory (default: work/<client>/lifted/<addr>)"}),
+        (["--timeout"], {"type": int, "default": 180, "help": "Remill timeout seconds"}))
+    cmd("rtti", cmd_rtti, "RTTI reverse-index: binary-proven template types (never guess a type parameter)",
+        (["name"], {}), (["addr"], {"nargs": "?"}),
+        (["--open"], {"action": "store_true", "help": "annotate every open function's RTTI type refs"}),
+        (["--limit"], {"type": int, "default": 0, "help": "cap rows (0 = all)"}))
+    cmd("extents", cmd_extents, "find near-misses whose recorded size includes padding (bounds.json candidates)",
+        (["name"], {}), (["--min-score"], {"type": int, "default": 90, "help": "scan band floor"}))
+    cmd("immediates", cmd_immediates, "list near-misses whose only residue is ONE wrong constant, with the target value",
+        (["name"], {}), (["--min-score"], {"type": int, "default": 95}),
+        (["--max-score"], {"type": int, "default": 99}))
+    cmd("versions", cmd_versions, "compile one function's source under every installed vendor-version recipe (wrong version = permanent ceiling)",
+        (["name"], {}), (["addr"], {}))
+    cmd("bruteforce", cmd_bruteforce, "post-draft sweep: full compiler grid (incl /fp:fast) + same-shape family fanout",
+        (["name"], {}), (["addr"], {"nargs": "?"}), (["--file"], {}),
+        (["--near"], {"type": int, "help": "brute-force every stored source at >= N%"}),
+        (["--fast"], {"action": "store_true", "help": "only the 3 quick gates, not the full grid"}),
+        (["--no-family"], {"action": "store_true", "help": "skip the sibling fanout"}))
     cmd("mass", cmd_mass, "run every automatic matcher (runtime, STL, libraries, shapes); takes a while",
         (["client_name"], {"nargs": "?"}), (["--client"], {"default": "all"}))
     cmd("flags", cmd_flags, "find the client's compiler flags from matched sources",
@@ -1954,6 +2360,18 @@ def main(argv=None):
     cmd("agent-check", cmd_agent_check, "check an agent source and journal the trial",
         (["name"], {}), (["addr"], {}), (["path"], {}),
         (["--hypothesis"], {"required": True, "help": "specific source/config change being tested"}))
+    cmd("agent-check-batch", cmd_agent_check_batch, "check independent assigned targets concurrently and journal every trial",
+        (["name"], {}), (["paths"], {"nargs": "+"}),
+        (["--summary"], {"action": "store_true", "help": "print scores only; omit assembly diffs"}),
+        (["--json"], {"action": "store_true", "help": "emit trial results as JSON"}),
+        (["--hypothesis"], {"required": True, "help": "shared source/config change being tested"}))
+    cmd("agent-context", cmd_agent_context, "read assigned sources, target assembly and recent trials together without compiling",
+        (["name"], {}), (["paths"], {"nargs": "+"}))
+    cmd("agent-block", cmd_agent_block, "record missing evidence for an assigned recovery target and stop",
+        (["name"], {}), (["addr"], {}), (["path"], {}),
+        (["--reason"], {"required": True, "help": "missing fact/declaration and next concrete evidence needed"}))
+    cmd("agent-metrics", cmd_agent_metrics, "compare verified gains/hour and first-check latency for completed recovery runs",
+        (["--limit"], {"type": int, "default": 20, "help": "number of completed recovery runs (20)"}))
     cmd("submit", cmd_submit, "send hand-written sources to the server ('all' for every client)",
         (["name"], {}), (["addr"], {"nargs": "*"}), (["--server"], {}), (["--user"], {}), (["--token"], {}),
         (["--file"], {"help": "submit an isolated ADDR.cpp candidate without editing src/"}))
@@ -2039,7 +2457,9 @@ def main(argv=None):
     cmd("model-stats", cmd_model_stats, "compare models using worker telemetry")
     cmd("family-stats", cmd_family_stats, "show family coverage, propagation, cost, and exact rate")
     cmd("failures", cmd_failures, "show recurring worker compile/API failures",
-        (["--promote"], {"action": "store_true", "help": "save repeated failure rule suggestions"}))
+        (["--promote"], {"action": "store_true", "help": "save repeated failure rule suggestions"}),
+        (["--addr"], {"help": "show rejected variants recorded for one function address"}),
+        (["--client"], {"default": "2008-06", "help": "client for --addr lookup"}))
     cmd("benchmark-models", cmd_benchmark_models, "create fixed targets and compare model telemetry",
         (["--generate"], {"action": "store_true"}),
         (["--hidden"], {"action": "store_true", "help": "build source/score-hidden solved targets"}),

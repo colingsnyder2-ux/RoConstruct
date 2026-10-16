@@ -624,7 +624,7 @@ Assembly is ground truth; later source and RTTI names are clues only. Preserve c
 
 def prompt_for(client, addr, row, asm, hint, attempt, flags=None, examples=(), source_hints=(), facts=None,
                strategy="direct", compact_rules=False, binary_only=False, minimal_layout=False,
-               family_exemplars=False, near_repair=False):
+               family_exemplars=False, near_repair=False, remill_evidence=None):
     entry = match.clients.load()[client]
     p = ["You are doing matching decompilation of a function from an old Roblox client.",
          (COMPACT_RULES if compact_rules else RULES).format(
@@ -680,6 +680,12 @@ def prompt_for(client, addr, row, asm, hint, attempt, flags=None, examples=(), s
             p += ["OpenRBX source for that function (%s):" % same["path"], "```cpp", same["source"][:1500], "```"]
     if hint:
         p += ["", "Rev.ng decompiler output (generic types, hint only):", hint]
+    if remill_evidence:
+        packet = str(remill_evidence).strip()
+        if len(packet) > 4000:
+            packet = packet[:4000] + "\n... (truncated)"
+        p += ["", "Remill verified LLVM semantic packet (use as structured evidence, not as source C++):",
+              "```text", packet, "```"]
     from roc import refsource
     terms = list(refsource._target_terms(facts)) + re.findall(r"[A-Za-z_]\w{2,}", row.get("unit", ""))
     ref = refsource.hint(row["unit"]) if strategy != "reference" and not binary_only else None
@@ -804,7 +810,7 @@ def _diagnose_note(client, addr, src, flags, limit=400, diagnosis=None, byte_fee
 
 def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print, flags=None,
                  examples=(), source_hints=(), facts=None, stats=None, keep=3, strategy="direct",
-                 provider_options=None):
+                 provider_options=None, remill_evidence=None):
     """Ask/compile/diff loop. Returns (best score, best source, top-k list)."""
     from roc import repair as _repair
     from roc import mutate as _mutate
@@ -851,7 +857,8 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
                                               row.get("size", 0) > (provider_options or {}).get("source_hint_max_size", float("inf"))),
                                  minimal_layout=(provider_options or {}).get("minimal_layout", False),
                                  family_exemplars=(provider_options or {}).get("family_exemplars", False),
-                                 near_repair=(provider_options or {}).get("near_repair", False))
+                                 near_repair=(provider_options or {}).get("near_repair", False),
+                                 remill_evidence=remill_evidence)
         if independent and i:
             full_prompt += ("\n\nIndependent candidate %d/%d: use different compact C++ control flow. "
                             "Still emit exactly one function." % (i + 1, diverse_rounds))
@@ -1107,9 +1114,10 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
 
 
 def llm_rounds(client, addr, model, rounds=4, hint=None, start=None, log=print, flags=None,
-               examples=(), source_hints=(), facts=None, stats=None, strategy="direct", provider_options=None):
+               examples=(), source_hints=(), facts=None, stats=None, strategy="direct", provider_options=None,
+               remill_evidence=None):
     """Ask/compile/diff loop. Returns (best score, best source). Keeps top-3 in stats."""
     score, src, _ = llm_rounds_k(client, addr, model, rounds, hint, start, log, flags,
                                  examples, source_hints, facts, stats, strategy=strategy,
-                                 provider_options=provider_options)
+                                 provider_options=provider_options, remill_evidence=remill_evidence)
     return score, src

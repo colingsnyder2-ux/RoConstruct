@@ -874,6 +874,11 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
             provider_options["retries"] = 2
             provider_options["on_retry"] = lambda error, retries, delay: log(
                 "  cloud retry %d (%s); waiting %ds." % (retries, error, delay))
+            if providers.parse_model(job_model)[0] == "opencode":
+                # Prefer the signed-in OpenCode HTTP server; a slow free model
+                # then fails/returns inside the HTTP timeout instead of wedging
+                # a one-shot `opencode run` process for the whole job.
+                provider_options["opencode_api"] = True
         if rounds == "auto" and (job_model or "").startswith("deepseek:"):
             provider_options["source_hint_max_size"] = 128
         if think is not None:
@@ -1247,18 +1252,48 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
         stage("running Rev.ng" if run_revng else "preparing model prompt")
         hint = draft.revng_c(code, int(addr, 16)) if run_revng else None
         phase_seconds["revng"] = round(time.monotonic() - revng_started, 3)
+        # Remill contributes a verified, compact LLVM semantic packet. It is
+        # deliberately summarized, not dumped as raw IR.
+        remill_hint = None
+        # Use Remill selectively: larger or structurally uncertain functions where
+        # it can add control-flow/memory evidence rather than for every leaf.
+        run_remill = (not source_only and run_revng and
+                      (job.get("size", 0) >= 200 or job.get("calls") or
+                       not job.get("source_confidence", 0)))
+        if run_remill:
+            try:
+                from roc import remill as _remill
+                if _remill.remill_available():
+                    _, remill_hint, _ = _remill.lift_function(client, addr, timeout=120)
+            except Exception as _remill_error:
+                log("  Remill lift skipped: %s" % str(_remill_error)[:80])
         llm_started = time.monotonic()
         base_source = draft.clean_repair_context(job["source"]) if (provider_options or {}).get("near_repair") else job["source"]
         llm_start = (base_source, job["score"])
         if source_candidate and source_candidate[0] > job["score"]:
             llm_start = (source_candidate[1], source_candidate[0])
         job_rounds = resolve_rounds(job, rounds, model)
+        # Cheap pre-pass: run guided compiler repair BEFORE the cloud LLM call.
+        # A single deterministic mutate pass is ~1-3s; if it already reaches 100%,
+        # skip the 30-60s cloud round-trip entirely (biggest speedup for free-tier).
+        try:
+            from roc import mutate
+            stage("cheap repair pre-pass")
+            _pr = mutate.improve(client, addr, llm_start[0], flags, guided=True,
+                                  guided_categories=abi_categories if (provider_options or {}).get("abi_only") else None)
+            if _pr and isinstance(_pr, tuple) and _pr[0] > llm_start[1]:
+                llm_start = (_pr[1], _pr[0])
+                log("  cheap repair pre-pass: %d%% -> %d%%" % (llm_start[1], _pr[0]))
+        except Exception as _e:
+            log("  cheap repair pre-pass: %s" % str(_e)[:80])
+        job_rounds = resolve_rounds(job, rounds, model)
+        stage("waiting for cloud model" if providers.is_cloud(model) else "waiting for local model")
         stage("waiting for cloud model" if providers.is_cloud(model) else "waiting for local model")
         llm_options = dict(provider_options or {})
         llm_options["family_exemplars"] = strict_family_reference
         score, src = draft.llm_rounds(client, addr, model, draft.model_rounds(model, job_rounds), hint, llm_start,
                                       log, flags, examples, source_hints, facts, round_stats, strategy=strategy,
-                                      provider_options=llm_options)
+                                      provider_options=llm_options, remill_evidence=remill_hint)
         ensure_lease()
         phase_seconds["llm"] = round(time.monotonic() - llm_started, 3)
         # LLM partial is not final: run same bounded compiler repair before
