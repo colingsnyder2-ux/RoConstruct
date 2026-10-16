@@ -859,6 +859,8 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
                                  family_exemplars=(provider_options or {}).get("family_exemplars", False),
                                  near_repair=(provider_options or {}).get("near_repair", False),
                                  remill_evidence=remill_evidence)
+        if (provider_options or {}).get("show_prompt"):
+            log("API prompt follows (first 8000 chars):\n%s" % full_prompt[:8000])
         if independent and i:
             full_prompt += ("\n\nIndependent candidate %d/%d: use different compact C++ control flow. "
                             "Still emit exactly one function." % (i + 1, diverse_rounds))

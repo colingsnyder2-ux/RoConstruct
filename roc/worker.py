@@ -1295,6 +1295,8 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
             if remill_hint:
                 log("  API hint (Remill): %s" % str(remill_hint)[:500])
         llm_options = dict(provider_options or {})
+        if type(log).__name__ != "CompactLog":
+            llm_options.setdefault("show_prompt", True)
         llm_options["family_exemplars"] = strict_family_reference
         score, src = draft.llm_rounds(client, addr, model, draft.model_rounds(model, job_rounds), hint, llm_start,
                                       log, flags, examples, source_hints, facts, round_stats, strategy=strategy,
