@@ -697,6 +697,7 @@ def usable_clients(info, log=print):
 
 def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=True,
         max_jobs=None, log=pretty_log, forever=False, only=None, source_only=False, targets=None,
+        use_remill=True,
         strategy="direct", cloud_allowed=False, cloud_budget=None, cloud_gate=None,
         diverse_candidates=1, cloud_min_size=0, cloud_fallback=None, seed=None,
         cloud_escalate=None, cloud_escalate_after=2, thinking=None, reasoning_effort=None,
@@ -886,7 +887,7 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
         if effort is not None:
             provider_options["reasoning_effort"] = effort
         score = work_one(api, user, job, info, job_model, rounds, revng, log, examples_cache, source_cache,
-                         session, source_only, strategy, provider_options)
+                         session, source_only, strategy, provider_options, use_remill=use_remill)
         receipt = job.get("receipt") or {}
         matched += bool(receipt.get("verified") and receipt.get("improved") and receipt.get("stored") == 100)
         failures += score == 0
@@ -1004,7 +1005,8 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
 
 
 def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=None,
-             source_cache=None, session=None, source_only=False, strategy="direct", provider_options=None):
+             source_cache=None, session=None, source_only=False, strategy="direct", provider_options=None,
+             use_remill=True):
     from roc import providers
     job["receipt"] = None
     compact_log = isinstance(log, CompactLog)
@@ -1257,7 +1259,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
         remill_hint = None
         # Use Remill selectively: larger or structurally uncertain functions where
         # it can add control-flow/memory evidence rather than for every leaf.
-        run_remill = (not source_only)
+        run_remill = (not source_only and bool(use_remill))
 
         if run_remill:
             try:
