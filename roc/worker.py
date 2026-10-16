@@ -1289,6 +1289,11 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
         job_rounds = resolve_rounds(job, rounds, model)
         stage("waiting for cloud model" if providers.is_cloud(model) else "waiting for local model")
         stage("waiting for cloud model" if providers.is_cloud(model) else "waiting for local model")
+        if not (provider_options or {}).get("compact") and not source_only:
+            if hint:
+                log("  API hint (Rev.ng): %s" % str(hint)[:500])
+            if remill_hint:
+                log("  API hint (Remill): %s" % str(remill_hint)[:500])
         llm_options = dict(provider_options or {})
         llm_options["family_exemplars"] = strict_family_reference
         score, src = draft.llm_rounds(client, addr, model, draft.model_rounds(model, job_rounds), hint, llm_start,
