@@ -1257,9 +1257,8 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
         remill_hint = None
         # Use Remill selectively: larger or structurally uncertain functions where
         # it can add control-flow/memory evidence rather than for every leaf.
-        run_remill = (not source_only and run_revng and
-                      (job.get("size", 0) >= 200 or job.get("calls") or
-                       not job.get("source_confidence", 0)))
+        run_remill = (not source_only)
+
         if run_remill:
             try:
                 from roc import remill as _remill
@@ -1267,6 +1266,8 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                     _, remill_hint, _ = _remill.lift_function(client, addr, timeout=120)
             except Exception as _remill_error:
                 log("  Remill lift skipped: %s" % str(_remill_error)[:80])
+            if remill_hint:
+                log("  Remill: attached semantic packet (%d chars)" % len(str(remill_hint)))
         llm_started = time.monotonic()
         base_source = draft.clean_repair_context(job["source"]) if (provider_options or {}).get("near_repair") else job["source"]
         llm_start = (base_source, job["score"])
