@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-17 13:50 UTC",
+ "updated": "2026-10-17 14:52 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -164,9 +164,9 @@
     {
      "user": "colin",
      "matched": 2563,
-     "points": 654056,
-     "submissions": 21160,
-     "last": 1792244075.2359684
+     "points": 654095,
+     "submissions": 21166,
+     "last": 1792248441.1344285
     },
     {
      "user": "atomic.potato",
@@ -412,9 +412,9 @@
   {
    "user": "colin",
    "matched": 14655,
-   "points": 5492897,
-   "submissions": 184021,
-   "last": 1792244075.2359684
+   "points": 5492936,
+   "submissions": 184027,
+   "last": 1792248441.1344285
   },
   {
    "user": "king_originala",
