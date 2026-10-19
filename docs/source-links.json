@@ -166,7 +166,8 @@
    "ltm.c",
    "lundump.c",
    "lvm.c",
-   "lzio.c"
+   "lzio.c",
+   "roc_espeon_luastringnogfind_92071a0221e9258a.cpp"
   ]
  },
  "lua-5.1.2-rbx": {
