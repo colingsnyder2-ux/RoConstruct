@@ -18,6 +18,7 @@ def test_findings_source_expands_recipe_only_wrappers(tmp_path):
         assert expanded.startswith(wrapper)
         assert "int candidate() { return 42; }" in expanded
         assert server.findings_source(expanded, {}) == expanded
+        assert server.findings_source("// target 007ab0a0\n" + wrapper, {}) == expanded
         assert "cached candidate" in server.findings_source(wrapper, {"ogre": {"unit.cpp": "cached candidate"}})
         assert server.findings_source(wrapper.replace("unit.cpp", "missing.cpp"), {}) == wrapper.replace("unit.cpp", "missing.cpp")
         assert server.findings_source(wrapper.replace("unit.cpp", "../../outside.cpp"), {}) == wrapper.replace("unit.cpp", "../../outside.cpp")
