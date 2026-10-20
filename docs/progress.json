@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-20 12:10 UTC",
+ "updated": "2026-10-20 13:15 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -166,13 +166,13 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22320,
-   "matched": 20973,
-   "partial": 1342,
+   "matched": 20988,
+   "partial": 1327,
    "bytes": 3696197,
-   "matched_bytes": 3042083,
-   "source_bytes": 2336580,
-   "mined_bytes": 705503,
-   "partial_bytes": 652156,
+   "matched_bytes": 3044893,
+   "source_bytes": 2338525,
+   "mined_bytes": 706368,
+   "partial_bytes": 649346,
    "data_bytes": 1559926,
    "leaderboard": [
     {
@@ -198,10 +198,10 @@
     },
     {
      "user": "Espeon",
-     "matched": 300,
-     "points": 4649,
-     "submissions": 438,
-     "last": 1792498111.3025105
+     "matched": 313,
+     "points": 4948,
+     "submissions": 453,
+     "last": 1792501950.4072037
     },
     {
      "user": "atomic.potato",
@@ -212,10 +212,10 @@
     },
     {
      "user": "user",
-     "matched": 17,
-     "points": 19,
-     "submissions": 17,
-     "last": 1792481247.9043093
+     "matched": 19,
+     "points": 21,
+     "submissions": 19,
+     "last": 1792501963.2392664
     },
     {
      "user": "Cezant64gamejr",
@@ -442,13 +442,13 @@
    "built": "2012-06-13",
    "started": true,
    "functions": 39668,
-   "matched": 15274,
-   "partial": 11851,
+   "matched": 15275,
+   "partial": 11850,
    "bytes": 6671517,
-   "matched_bytes": 1188082,
+   "matched_bytes": 1188116,
    "source_bytes": 1033873,
-   "mined_bytes": 154209,
-   "partial_bytes": 1997554,
+   "mined_bytes": 154243,
+   "partial_bytes": 1997520,
    "data_bytes": 3396596,
    "leaderboard": [
     {
@@ -481,10 +481,10 @@
     },
     {
      "user": "intel",
-     "matched": 19,
-     "points": 8360,
-     "submissions": 658,
-     "last": 1792498027.2566285
+     "matched": 20,
+     "points": 8594,
+     "submissions": 680,
+     "last": 1792501988.7051919
     },
     {
      "user": "Viper",
@@ -537,10 +537,10 @@
   },
   {
    "user": "Espeon",
-   "matched": 300,
-   "points": 4649,
-   "submissions": 438,
-   "last": 1792498111.3025105
+   "matched": 313,
+   "points": 4948,
+   "submissions": 453,
+   "last": 1792501950.4072037
   },
   {
    "user": "why2",
@@ -558,17 +558,17 @@
   },
   {
    "user": "intel",
-   "matched": 19,
-   "points": 8360,
-   "submissions": 658,
-   "last": 1792498027.2566285
+   "matched": 20,
+   "points": 8594,
+   "submissions": 680,
+   "last": 1792501988.7051919
   },
   {
    "user": "user",
-   "matched": 17,
-   "points": 19,
-   "submissions": 17,
-   "last": 1792481247.9043093
+   "matched": 19,
+   "points": 21,
+   "submissions": 19,
+   "last": 1792501963.2392664
   },
   {
    "user": "Viper",
