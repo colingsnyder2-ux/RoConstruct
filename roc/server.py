@@ -371,6 +371,22 @@ class Store:
                 "FROM funcs WHERE client = ?", (client,)).fetchone()
         return tuple(int(value or 0) for value in row)
 
+    def progress_snapshot(self, client=None):
+        """Public live website totals, from the same rows used by mining digests."""
+        fields = ("name", "functions", "matched", "partial", "bytes", "matched_bytes", "partial_bytes")
+        with self.lock:
+            rows = self.db.execute(
+                "SELECT client, COUNT(*), SUM(score=100), SUM(score>0 AND score<100), SUM(size), "
+                "SUM(CASE WHEN score=100 THEN size ELSE 0 END), "
+                "SUM(CASE WHEN score>0 AND score<100 THEN size ELSE 0 END) "
+                "FROM funcs GROUP BY client").fetchall()
+            functions = self.db.execute("SELECT addr,size,score,unit,source IS NOT NULL FROM funcs WHERE client=? ORDER BY addr",
+                                        (client,)).fetchall() if client else None
+        return {"updated": time.strftime("%Y-%m-%d %H:%M:%S UTC", time.gmtime()),
+                "clients": [dict(zip(fields, [row[0], *(int(v or 0) for v in row[1:])])) for row in rows],
+                "scores": {row[0]: row[2] for row in functions} if functions is not None else None,
+                "functions": functions}
+
     def match_rate(self, client, window=86400):
         """Matches per second over the recent window (0 when idle)."""
         now = time.time()
@@ -564,6 +580,8 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None):
                                        "recipe_versions": recipe_versions})
             if url.path == "/v1/status":
                 return self.send(200, store.status())
+            if url.path == "/v1/progress":
+                return self.send(200, store.progress_snapshot(q.get("client")))
             if url.path == "/v1/function-history":
                 try:
                     return self.send(200, store.function_history(q.get("id"), q.get("query", ""), q.get("status", ""),

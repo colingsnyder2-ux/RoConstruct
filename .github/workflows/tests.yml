@@ -27,3 +27,5 @@ jobs:
         run: node tests/test_gui_frontend.js
       - name: Run mining graph tests
         run: node tests/test_mining_graph.js
+      - name: Run live progress tests
+        run: node tests/test_live_progress.js

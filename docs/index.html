@@ -286,6 +286,9 @@ const sourceLinks = (client, f, short = false) => {
 };
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
 const cache = new Map();
+const liveScores = new Map();
+const liveFunctions = new Map();
+let liveView = null;
 let progress, history = [], hIdx = -1;
 const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
                 "November", "December"];
@@ -310,11 +313,33 @@ function statsFor(c) {
           partial_bytes: old.partial_bytes || 0};
 }
 
+async function refreshLiveProgress(updateView = true, name = decodeURIComponent(location.hash.slice(1))) {
+  if (!progress.server) return;
+  const selected = progress.clients.find(c => c.name === name && c.started);
+  try {
+    const url = new URL("/v1/progress", progress.server);
+    if (selected) url.searchParams.set("client", name);
+    const response = await fetch(url, {cache: "no-store", signal: AbortSignal.timeout(5000)});
+    if (!response.ok) return;
+    const snapshot = await response.json();
+    for (const row of snapshot.clients) {
+      const current = progress.clients.find(c => c.name === row.name);
+      if (current) Object.assign(current, row);
+    }
+    progress.live_updated = snapshot.updated;
+    if (selected && snapshot.scores) liveScores.set(name, snapshot.scores);
+    if (selected && snapshot.functions) liveFunctions.set(name, snapshot.functions);
+    if (!updateView) return;
+    if (liveView?.name === name) liveView.update();
+    else if (!selected) overview();
+  } catch { /* Offline server: retain the last available snapshot. */ }
+}
+
 function miningDays(c) {
   const snapshots = new Map();
   const calendar = new Intl.DateTimeFormat("en-CA", {timeZone: "America/New_York",
     year: "numeric", month: "2-digit", day: "2-digit"});
-  for (const snap of [...history, {date: progress.updated, clients: {[c.name]: c}}]) {
+  for (const snap of [...history, {date: progress.live_updated || progress.updated, clients: {[c.name]: c}}]) {
     const stats = snap.clients[c.name];
     const stamp = new Date(snap.date.replace(" UTC", "Z").replace(" ", "T"));
     if (!stats?.functions || Number.isNaN(stamp.getTime())) continue;
@@ -692,6 +717,7 @@ function wireLibraries(onMap) {
 }
 
 async function client(name) {
+  await refreshLiveProgress(false, name);
   const latest = progress.clients.find(c => c.name === name);
   if (!latest) return overview();
   if (!latest.started) {
@@ -702,6 +728,29 @@ async function client(name) {
   const c = statsFor(latest);
   if (!cache.has(name)) cache.set(name, await (await fetch(`data/${encodeURIComponent(name)}.json`, {cache: "no-cache"})).json());
   const data = cache.get(name), units = data.units;
+  const applyScores = () => {
+    const functions = liveFunctions.get(name), previous = new Map(data.funcs.map(f => [hex(f[0]), f]));
+    const changed = functions && (functions.length !== data.funcs.length || functions.some(([addr, size, , unit]) =>
+      !previous.has(addr) || previous.get(addr)[1] !== size || units[previous.get(addr)[3]] !== unit));
+    if (changed) data.funcs = functions.map(([addr, size, score, unit, source]) => {
+      let index = units.indexOf(unit);
+      if (index < 0) { index = units.length; units.push(unit); }
+      const old = previous.get(addr);
+      return [parseInt(addr, 16), size, score, index, !!(source || old?.[4]), old?.[5], old?.[6]];
+    });
+    const scores = liveScores.get(name);
+    if (scores) for (const f of data.funcs) f[2] = scores[hex(f[0])] ?? 0;
+    if (scores && data.funcs.length === latest.functions) {
+      const totals = {source_matched: 0, mined_matched: 0, source_bytes: 0, mined_bytes: 0};
+      for (const f of data.funcs) if (f[2] === 100) {
+        totals[f[5] ? "source_matched" : "mined_matched"]++;
+        totals[f[5] ? "source_bytes" : "mined_bytes"] += f[1];
+      }
+      Object.assign(latest, totals);
+    }
+    return changed;
+  };
+  applyScores();
   const byUnit = new Map();
   for (const f of data.funcs) {
     if (!byUnit.has(f[3])) byUnit.set(f[3], []);
@@ -715,12 +764,13 @@ async function client(name) {
     <p class="sub">${esc(builtOn(latest))}${esc(latest.compiler)} · ${fmt(latest.classes || 0)} classes · ${fmt(latest.generated || 0)} compiler stubs skipped</p>
     <div class="center">${joinLink(name)}</div>
     <div class="stats">
-      <div class="stat"><div class="ico">${ICON.code}</div><div><b>${fmt(c.matched)}</b><span>Matched</span></div></div>
-      <div class="stat"><div class="ico">${ICON.chart}</div><div><b>${fmt(c.partial)}</b><span>Partial</span></div></div>
-      <div class="stat red"><div class="ico">${ICON.file}</div><div><b>${fmt(c.functions - c.matched)}</b><span>Remaining</span></div></div>
+      <div class="stat"><div class="ico">${ICON.code}</div><div><b id="live-matched">${fmt(c.matched)}</b><span>Matched</span></div></div>
+      <div class="stat"><div class="ico">${ICON.chart}</div><div><b id="live-partial">${fmt(c.partial)}</b><span>Partial</span></div></div>
+      <div class="stat red"><div class="ico">${ICON.file}</div><div><b id="live-remaining">${fmt(c.functions - c.matched)}</b><span>Remaining</span></div></div>
     </div>
-    <div class="label">Code <small>(${mb(c.bytes)}) — ${pct(c.matched_bytes, c.bytes)}</small></div>
-    ${codeBar(c.source_bytes || 0, c.mined_bytes ?? c.matched_bytes, c.partial_bytes || 0, c.bytes)}
+    <p class="note" id="live-status">${progress.live_updated ? `Live server · ${esc(progress.live_updated)} · refreshes every 30s` : `Published snapshot · ${esc(progress.updated)}`}</p>
+    <div id="live-code"><div class="label">Code <small>(${mb(c.bytes)}) — ${pct(c.matched_bytes, c.bytes)}</small></div>
+    ${codeBar(c.source_bytes || 0, c.mined_bytes ?? c.matched_bytes, c.partial_bytes || 0, c.bytes)}</div>
     <div class="legend"><span><i style="background:#58a6ff"></i>original source</span><span><i style="background:#3fb950"></i>mined</span><span><i style="background:repeating-linear-gradient(135deg,#216841 0 5px,#193d2a 5px 10px)"></i>partial source</span></div>
     <div class="label">Data <small>(${mb(latest.data_bytes || 0)}) — ${pct(latest.data_matched_bytes || 0, latest.data_bytes)}
       verified (strings and constants used by matched functions)</small></div>
@@ -738,9 +788,9 @@ async function client(name) {
     <div class="legend"><span><i style="background:#58a6ff"></i>original source</span><span><i style="background:#3fb950"></i>mined match</span>
       <span><i style="background:#216841"></i>partial source</span><span><i style="background:#3a3d45"></i>source pending</span></div>
     <div class="detail" id="detail">Click a tile to see its function address, match score, and recovered source.</div>
-    ${miningGraph({...latest,
-      source_matched: data.funcs.filter(f => f[2] === 100 && f[5]).length,
-      mined_matched: data.funcs.filter(f => f[2] === 100 && !f[5]).length})}
+    <div id="live-mining">${miningGraph({...latest,
+      source_matched: latest.source_matched ?? data.funcs.filter(f => f[2] === 100 && f[5]).length,
+      mined_matched: latest.mined_matched ?? data.funcs.filter(f => f[2] === 100 && !f[5]).length})}</div>
     ${leaderboard(latest.leaderboard)}
     <div class="head"><h2>Functions Remaining</h2><p>Click a column to sort · 25 per page.</p></div>
     <div class="remaining-card">
@@ -837,8 +887,14 @@ async function client(name) {
 
   const remaining = data.funcs.filter(f => f[2] < 100).sort((a, b) => b[1] - a[1] || b[2] - a[2] || a[0] - b[0]);
   let remainingPage = 0, remainingSort = 1, remainingDescending = true;
+  function sortRemaining() {
+    remaining.sort((a, b) => (remainingDescending ? -1 : 1) * (remainingSort === 3 ?
+      units[a[3]].localeCompare(units[b[3]]) : a[remainingSort] - b[remainingSort]) || a[0] - b[0]);
+  }
   function renderRemaining() {
-    const pages = Math.max(1, Math.ceil(remaining.length / 25)), start = remainingPage * 25;
+    const pages = Math.max(1, Math.ceil(remaining.length / 25));
+    remainingPage = Math.min(remainingPage, pages - 1);
+    const start = remainingPage * 25;
     document.getElementById("remaining").innerHTML = remaining.slice(start, start + 25).map(f =>
       `<tr><td>${hex(f[0])}</td><td>${fmt(f[1])} B</td><td><span class="remaining-score"><i aria-hidden="true"><b style="width:${f[2]}%"></b></i>${f[2]}%</span></td><td>${esc(units[f[3]])}</td>` +
       `<td>${sourceLinks(name, f, true) || '<span class="note">No source yet</span>'}</td></tr>`).join("") ||
@@ -862,18 +918,33 @@ async function client(name) {
       const column = +button.dataset.remainingSort;
       remainingDescending = column === remainingSort ? !remainingDescending : column === 1 || column === 2;
       remainingSort = column;
-      remaining.sort((a, b) => (remainingDescending ? -1 : 1) * (column === 3 ?
-        units[a[3]].localeCompare(units[b[3]]) : a[column] - b[column]) || a[0] - b[0]);
+      sortRemaining();
       remainingPage = 0;
       renderRemaining();
     };
   });
   renderRemaining();
+  liveView = {name, update() {
+    if (hIdx !== history.length - 1) return;
+    if (applyScores()) { client(name); return; }
+    document.getElementById("live-matched").textContent = fmt(latest.matched);
+    document.getElementById("live-partial").textContent = fmt(latest.partial);
+    document.getElementById("live-remaining").textContent = fmt(latest.functions - latest.matched);
+    document.getElementById("live-status").textContent = `Live server · ${progress.live_updated} · refreshes every 30s`;
+    document.getElementById("live-code").innerHTML = `<div class="label">Code <small>(${mb(latest.bytes)}) — ${pct(latest.matched_bytes, latest.bytes)}</small></div>` +
+      codeBar(latest.source_bytes, latest.mined_bytes, latest.partial_bytes, latest.bytes);
+    document.getElementById("live-mining").innerHTML = miningGraph(latest);
+    remaining.splice(0, remaining.length, ...data.funcs.filter(f => f[2] < 100));
+    sortRemaining();
+    renderRemaining();
+    draw();
+  }};
 }
 
 const SECTIONS = ["clients", "contributors"];
 
 function route(top = true) {
+  liveView = null;
   onresize = null;
   const name = decodeURIComponent(location.hash.slice(1));
   const section = SECTIONS.includes(name);
@@ -892,6 +963,8 @@ Promise.all([
   sourceCatalog = sources;
   progress = p; history = h; hIdx = h.length - 1;
   route();
+  if (!progress.clients.some(c => c.name === decodeURIComponent(location.hash.slice(1)))) refreshLiveProgress();
+  setInterval(() => { if (!document.hidden) refreshLiveProgress(); }, 30000);
   addEventListener("hashchange", () => route());
 }).catch(() => { app.textContent = "progress.json missing: run `roc progress`."; });
 </script>

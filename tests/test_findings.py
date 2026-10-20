@@ -42,7 +42,7 @@ def test_progress_build_reads_local_sources_without_shadowing_clients(tmp_path, 
     sources = tmp_path / "src/test"
     sources.mkdir(parents=True)
     (sources / "00401000.cpp").write_text("int f() { return 1; }")
-    result = progress.build(remote={"scores": {}, "leaderboard": []})
+    result = progress.build()
     assert result["clients"][0]["partial"] == 1
     data = json.loads((tmp_path / "docs/data/test.json").read_text())
     assert data["funcs"][0][4] is True

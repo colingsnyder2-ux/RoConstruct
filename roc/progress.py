@@ -191,6 +191,7 @@ def build(server=None, token=None, public_server=None, remote=None):
     """server: pull scores + leaderboard from the group server (else local scores only).
     remote: the same export passed in directly (the server publishing itself)."""
     (DOCS / "data").mkdir(parents=True, exist_ok=True)
+    authoritative = remote is not None or bool(server)
     if remote is None:
         remote = fetch_server(server, token) if server else {"scores": {}, "leaderboard": []}
     library = library_meta()
@@ -203,11 +204,12 @@ def build(server=None, token=None, public_server=None, remote=None):
         if (work / "functions.jsonl").exists():
             scores_file = work / "scores.json"
             scores = json.loads(scores_file.read_text()) if scores_file.exists() else {}
-            for addr, value in remote["scores"].get(name, {}).items():
-                scores[addr] = max(value, scores.get(addr, 0))
+            if authoritative:
+                scores = remote["scores"].get(name, {})
             data_file = work / "data.json"
             spans = json.loads(data_file.read_text()) if data_file.exists() else {}
-            spans.update(remote.get("data", {}).get(name, {}))
+            if authoritative:
+                spans = remote.get("data", {}).get(name, {})
             meta_file = work / "meta.json"
             meta = json.loads(meta_file.read_text()) if meta_file.exists() else {}
             units, unit_ids, funcs, generated = [], {}, [], 0
