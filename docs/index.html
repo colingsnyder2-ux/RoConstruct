@@ -180,6 +180,11 @@ canvas { display: block; width: 100%; height: min(70vh, 560px); background: var(
 .remaining-card { border: 1px solid var(--line2); border-radius: 14px; background: var(--panel); overflow: hidden; }
 .remaining-table { table-layout: fixed; }
 .remaining-table th { background: var(--panel2); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; }
+.remaining-table th button { display: flex; gap: 6px; align-items: center; border: 0; padding: 0; background: none; color: inherit; font: inherit; text-transform: inherit; letter-spacing: inherit; cursor: pointer; }
+.remaining-table th button::after { content: "↕"; opacity: .45; }
+.remaining-table th[aria-sort="ascending"] button::after { content: "↑"; opacity: 1; color: var(--accent2); }
+.remaining-table th[aria-sort="descending"] button::after { content: "↓"; opacity: 1; color: var(--accent2); }
+.remaining-table th button:hover { color: var(--accent2); }
 .remaining-table th:nth-child(1) { width: 116px; }
 .remaining-table th:nth-child(2) { width: 94px; }
 .remaining-table th:nth-child(3) { width: 116px; }
@@ -198,6 +203,7 @@ canvas { display: block; width: 100%; height: min(70vh, 560px); background: var(
 .remaining-pagination span { color: var(--dim); font: 12px Inter, sans-serif; }
 .remaining-pagination nav { display: flex; gap: 8px; }
 .remaining-pagination button { width: auto; padding: 0 12px; font: 500 12px Inter, sans-serif; }
+.remaining-pagination-top { border-top: 0; border-bottom: 1px solid var(--line2); }
 
 /* footer */
 
@@ -212,7 +218,10 @@ footer img { height: 30px; }
   .top nav { order: 3; flex-basis: 100%; justify-content: center; white-space: normal; }
   .top nav a { padding: 4px 8px; }
   .stat { padding: 16px; }
-  .remaining-table thead { display: none; }
+  .remaining-table thead { display: block; background: var(--panel2); }
+  .remaining-table thead tr { display: flex; flex-wrap: wrap; gap: 16px; }
+  .remaining-table thead th:nth-child(n) { width: auto; padding: 0; border: 0; }
+  .remaining-table thead th:last-child { display: none; }
   .remaining-table, .remaining-table tbody { display: block; }
   .remaining-table tr { display: grid; grid-template-columns: 1fr 1fr 1fr; padding: 16px; gap: 10px; border-bottom: 1px solid var(--line); }
   .remaining-table td { display: block; padding: 0; border: 0; }
@@ -733,8 +742,16 @@ async function client(name) {
       source_matched: data.funcs.filter(f => f[2] === 100 && f[5]).length,
       mined_matched: data.funcs.filter(f => f[2] === 100 && !f[5]).length})}
     ${leaderboard(latest.leaderboard)}
-    <div class="head"><h2>Functions Remaining</h2><p>Biggest functions first · 25 per page.</p></div>
-    <div class="remaining-card"><table class="remaining-table"><thead><tr><th>Address</th><th>Size</th><th>Match</th><th>Function / unit</th><th>Source</th></tr></thead>
+    <div class="head"><h2>Functions Remaining</h2><p>Click a column to sort · 25 per page.</p></div>
+    <div class="remaining-card">
+    <div class="remaining-pagination remaining-pagination-top">
+      <span id="remaining-top-page" role="status"></span>
+      <nav aria-label="Functions remaining top pagination">
+        <button class="step" id="remaining-top-prev" aria-label="Previous page">← Previous</button>
+        <button class="step" id="remaining-top-next" aria-label="Next page">Next →</button>
+      </nav>
+    </div>
+    <table class="remaining-table"><thead><tr>${["Address", "Size", "Match", "Function / unit"].map((label, i) => `<th aria-sort="${i === 1 ? "descending" : "none"}"><button data-remaining-sort="${i}">${label}</button></th>`).join("")}<th>Source</th></tr></thead>
       <tbody id="remaining"></tbody></table>
     <div class="remaining-pagination">
       <span id="remaining-page" role="status"></span>
@@ -819,20 +836,38 @@ async function client(name) {
   layout();
 
   const remaining = data.funcs.filter(f => f[2] < 100).sort((a, b) => b[1] - a[1] || b[2] - a[2] || a[0] - b[0]);
-  let remainingPage = 0;
+  let remainingPage = 0, remainingSort = 1, remainingDescending = true;
   function renderRemaining() {
     const pages = Math.max(1, Math.ceil(remaining.length / 25)), start = remainingPage * 25;
     document.getElementById("remaining").innerHTML = remaining.slice(start, start + 25).map(f =>
       `<tr><td>${hex(f[0])}</td><td>${fmt(f[1])} B</td><td><span class="remaining-score"><i aria-hidden="true"><b style="width:${f[2]}%"></b></i>${f[2]}%</span></td><td>${esc(units[f[3]])}</td>` +
       `<td>${sourceLinks(name, f, true) || '<span class="note">No source yet</span>'}</td></tr>`).join("") ||
       '<tr><td colspan="5">All functions matched.</td></tr>';
-    document.getElementById("remaining-page").textContent =
-      `Page ${remainingPage + 1} of ${fmt(pages)} · ${remaining.length ? fmt(start + 1) : 0}–${fmt(Math.min(start + 25, remaining.length))} of ${fmt(remaining.length)} functions`;
-    document.getElementById("remaining-prev").disabled = remainingPage === 0;
-    document.getElementById("remaining-next").disabled = remainingPage === pages - 1;
+    for (const prefix of ["remaining", "remaining-top"]) {
+      document.getElementById(prefix + "-page").textContent =
+        `Page ${remainingPage + 1} of ${fmt(pages)} · ${remaining.length ? fmt(start + 1) : 0}–${fmt(Math.min(start + 25, remaining.length))} of ${fmt(remaining.length)} functions`;
+      document.getElementById(prefix + "-prev").disabled = remainingPage === 0;
+      document.getElementById(prefix + "-next").disabled = remainingPage === pages - 1;
+    }
+    document.querySelectorAll("[data-remaining-sort]").forEach(button =>
+      button.parentElement.setAttribute("aria-sort", +button.dataset.remainingSort === remainingSort ?
+        (remainingDescending ? "descending" : "ascending") : "none"));
   }
-  document.getElementById("remaining-prev").onclick = () => { remainingPage--; renderRemaining(); };
-  document.getElementById("remaining-next").onclick = () => { remainingPage++; renderRemaining(); };
+  for (const prefix of ["remaining", "remaining-top"]) {
+    document.getElementById(prefix + "-prev").onclick = () => { remainingPage--; renderRemaining(); };
+    document.getElementById(prefix + "-next").onclick = () => { remainingPage++; renderRemaining(); };
+  }
+  document.querySelectorAll("[data-remaining-sort]").forEach(button => {
+    button.onclick = () => {
+      const column = +button.dataset.remainingSort;
+      remainingDescending = column === remainingSort ? !remainingDescending : column === 1 || column === 2;
+      remainingSort = column;
+      remaining.sort((a, b) => (remainingDescending ? -1 : 1) * (column === 3 ?
+        units[a[3]].localeCompare(units[b[3]]) : a[column] - b[column]) || a[0] - b[0]);
+      remainingPage = 0;
+      renderRemaining();
+    };
+  });
   renderRemaining();
 }
 
