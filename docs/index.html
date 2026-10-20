@@ -680,9 +680,14 @@ async function client(name) {
       source_matched: data.funcs.filter(f => f[2] === 100 && f[5]).length,
       mined_matched: data.funcs.filter(f => f[2] === 100 && !f[5]).length})}
     ${leaderboard(latest.leaderboard)}
-    <div class="head"><h2><small>Pick one</small>Easiest remaining</h2></div>
+    <div class="head"><h2>Functions Remaining</h2><p>Biggest functions first · 25 per page.</p></div>
     <div class="table"><table><thead><tr><th>Address</th><th>Size</th><th>Score</th><th>Unit</th><th>Source</th><th>Claim</th></tr></thead>
-      <tbody id="easy"></tbody></table></div>
+      <tbody id="remaining"></tbody></table></div>
+    <div class="controls" aria-label="Functions remaining pagination">
+      <button class="step" id="remaining-prev" aria-label="Previous page">‹</button>
+      <span id="remaining-page" role="status"></span>
+      <button class="step" id="remaining-next" aria-label="Next page">›</button>
+    </div>
     <p class="note">Last updated: ${esc(progress.updated)}</p>`;
   wireNav();
   wireLibraries(key => {
@@ -758,11 +763,23 @@ async function client(name) {
   onresize = layout;
   layout();
 
-  const easy = data.funcs.filter(f => f[2] < 100).sort((a, b) => a[1] - b[1] || b[2] - a[2]).slice(0, 25);
-  document.getElementById("easy").innerHTML = easy.map(f =>
-    `<tr><td>${hex(f[0])}</td><td>${f[1]} B</td><td>${f[2]}%</td><td>${esc(units[f[3]])}</td>` +
-    `<td>${sourceLinks(name, f, true)}</td>` +
-    `<td><code>roc claim ${esc(name)} ${hex(f[0])}</code></td></tr>`).join("");
+  const remaining = data.funcs.filter(f => f[2] < 100).sort((a, b) => b[1] - a[1] || b[2] - a[2] || a[0] - b[0]);
+  let remainingPage = 0;
+  function renderRemaining() {
+    const pages = Math.max(1, Math.ceil(remaining.length / 25)), start = remainingPage * 25;
+    document.getElementById("remaining").innerHTML = remaining.slice(start, start + 25).map(f =>
+      `<tr><td>${hex(f[0])}</td><td>${fmt(f[1])} B</td><td>${f[2]}%</td><td>${esc(units[f[3]])}</td>` +
+      `<td>${sourceLinks(name, f, true)}</td>` +
+      `<td><code>roc claim ${esc(name)} ${hex(f[0])}</code></td></tr>`).join("") ||
+      '<tr><td colspan="6">All functions matched.</td></tr>';
+    document.getElementById("remaining-page").textContent =
+      `Page ${remainingPage + 1} of ${fmt(pages)} · ${remaining.length ? fmt(start + 1) : 0}–${fmt(Math.min(start + 25, remaining.length))} of ${fmt(remaining.length)} functions`;
+    document.getElementById("remaining-prev").disabled = remainingPage === 0;
+    document.getElementById("remaining-next").disabled = remainingPage === pages - 1;
+  }
+  document.getElementById("remaining-prev").onclick = () => { remainingPage--; renderRemaining(); };
+  document.getElementById("remaining-next").onclick = () => { remainingPage++; renderRemaining(); };
+  renderRemaining();
 }
 
 const SECTIONS = ["clients", "contributors"];
