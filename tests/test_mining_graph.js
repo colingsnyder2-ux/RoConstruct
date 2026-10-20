@@ -29,7 +29,8 @@ assert.match(split, /data-series="source"[^>]*height="72"/); // 30% of 240px
 assert.match(split, /data-series="mined"[^>]*height="24"/);
 assert.match(split, /data-series="partial"[^>]*height="12"/);
 assert.match(split, /Remaining · 55/);
-assert.match(split, /split unavailable/); // Missing historical categories stay honest.
+assert.doesNotMatch(split, /split unavailable/);
+assert.match(split, /source\/mined split estimated/);
 for (const color of ["#58a6ff", "#3fb950", "#b6a04c"]) assert.ok(split.includes(color));
 context.history = [];
 assert.equal(context.miningDays(client).length, 1);
@@ -40,6 +41,16 @@ assert.equal(context.miningDays(client).at(-1).gain, -5); // corrections stay tr
 context.history = [{date: "2026-10-07 02:53 UTC", clients: {"2008-06": stats(1)}}];
 assert.equal(context.miningDays(client)[0].day, "2026-10-06"); // full history, Eastern date
 assert.match(context.miningGraph(client), /Full history since 2026-10-06/);
+context.history = [
+  {date: "2026-10-18 20:00 UTC", clients: {"2008-06": {...stats(20), source_matched: 10, mined_matched: 10}}},
+  {date: "2026-10-19 20:00 UTC", clients: {"2008-06": stats(30)}},
+];
+const interpolated = context.miningDays({...client, source_matched: 30, mined_matched: 10});
+assert.equal(interpolated[1].source, 19); // 30 matched × interpolated source share .625
+assert.equal(interpolated[1].mined, 11);
+assert.equal(interpolated[1].estimated, true);
+assert.equal(interpolated[0].estimated, undefined);
+assert.equal(interpolated[2].estimated, undefined);
 // Published history must contain actual category counts, not only today's dots.
 context.history = JSON.parse(fs.readFileSync("docs/history.json", "utf8"));
 for (const name of new Set(context.history.flatMap(s => Object.keys(s.clients)))) {
@@ -49,6 +60,7 @@ for (const name of new Set(context.history.flatMap(s => Object.keys(s.clients)))
   assert.ok(recorded.length > 1, `${name}: missing source/mined history`);
   for (const d of recorded) assert.equal(d.source + d.mined, d.matched);
   const rendered = context.miningGraph({...latest, name});
+  assert.doesNotMatch(rendered, /fill="#8a97a8"/, `${name}: grey matched stack remains`);
   for (const color of ["#58a6ff", "#3fb950"]) {
     const bars = rendered.match(new RegExp(`fill="${color}"`, "g")) || [];
     assert.ok(bars.length > 1, `${name}: category missing from daily stacks`);

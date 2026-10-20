@@ -324,6 +324,19 @@ function miningDays(c) {
       percent: Math.min(100, 100 * stats.matched / stats.functions),
       gain: days.length ? stats.matched - days.at(-1).matched : null});
   }
+  const recorded = days.map((d, i) => ({d, i})).filter(({d}) => d.source != null && d.mined != null);
+  for (let i = 0; i < days.length; i++) {
+    const d = days[i];
+    if (d.source != null && d.mined != null || !recorded.length) continue;
+    const before = recorded.findLast(p => p.i < i) || recorded[0];
+    const after = recorded.find(p => p.i > i) || recorded.at(-1);
+    const share = p => p.d.matched ? p.d.source / p.d.matched : 0;
+    const fraction = before.i === after.i ? 0 : (i - before.i) / (after.i - before.i);
+    d.source = Math.round(d.matched * Math.max(0, Math.min(1,
+      share(before) + fraction * (share(after) - share(before)))));
+    d.mined = d.matched - d.source;
+    d.estimated = true;
+  }
   return days;
 }
 
@@ -350,20 +363,21 @@ function miningGraph(c) {
         const segments = split ? series : [["matched", "Matched (source/mined split unavailable)", "#8a97a8"], series[2]];
         let bottom = 0;
         return `<g class="mining-stack" tabindex="0" role="img" aria-label="${d.day}: ${d.percent.toFixed(2)}% matched">
-          <title>${d.day}: ${fmt(d.matched)} matched total / ${fmt(d.functions)} (${d.percent.toFixed(2)}%); daily change ${gain(d)}. Original source: ${count(d.source)}; mined: ${count(d.mined)}; partial: ${count(d.partial)}; remaining: ${fmt(Math.max(0, d.functions - d.matched - (d.partial || 0)))}</title>
+          <title>${d.day}: ${fmt(d.matched)} matched total / ${fmt(d.functions)} (${d.percent.toFixed(2)}%); daily change ${gain(d)}. Original source: ${count(d.source)}; mined: ${count(d.mined)}${d.estimated ? " (source/mined split estimated)" : ""}; partial: ${count(d.partial)}; remaining: ${fmt(Math.max(0, d.functions - d.matched - (d.partial || 0)))}</title>
           <rect x="${x(i)}" y="${y(100)}" width="${barWidth}" height="240" rx="3" fill="var(--panel2)"/>
           ${segments.map(([key, label, color]) => {
             const value = d[key] || 0, height = Math.min(100 - bottom, 100 * value / d.functions);
             bottom += height;
-            return `<rect data-series="${key}" x="${x(i)}" y="${y(bottom)}" width="${barWidth}" height="${height * 2.4}" fill="${color}"><title>${d.day}: ${fmt(value)} ${label.toLowerCase()} / ${fmt(d.functions)} (${(100 * value / d.functions).toFixed(2)}%)</title></rect>`;
+            return `<rect data-series="${key}" x="${x(i)}" y="${y(bottom)}" width="${barWidth}" height="${height * 2.4}" fill="${color}"><title>${d.day}: ${fmt(value)} ${label.toLowerCase()} / ${fmt(d.functions)} (${(100 * value / d.functions).toFixed(2)}%)${d.estimated && key !== "partial" ? " (estimated)" : ""}</title></rect>`;
           }).join("")}</g>`;
       }).join("")}
-      ${days.map((d, i) => `<text x="${x(i) + barWidth / 2}" y="306" transform="rotate(-40 ${x(i) + barWidth / 2} 306)" text-anchor="end">${d.day.slice(5).replace("-", "/")}</text>`).join("")}
+      ${days.map((d, i) => `<text x="${x(i) + barWidth / 2}" y="306" transform="rotate(-40 ${x(i) + barWidth / 2} 306)" text-anchor="end">${d.day.slice(5).replace("-", "/")}${d.estimated ? "*" : ""}</text>`).join("")}
       <text x="${width - 32}" y="354" text-anchor="end">${days[0].day.slice(0, 4)} · US Eastern</text>
     </svg><div class="legend">${series.map(([key, label, color]) => `<span><i style="background:${color}"></i>${label} · ${count(last[key])}</span>`).join("")}<span><i style="background:var(--panel2);border:1px solid var(--line2)"></i>Remaining · ${fmt(Math.max(0, last.functions - last.matched - (last.partial || 0)))}</span></div></div>
-    <details class="mining-days"><summary>Daily function counts</summary><p class="note">Last snapshot each day; days without snapshots carry the previous total. Historical source/mined counts recovered from archived function data; unavailable counts show —. Changes include inventory corrections. First recorded total has no daily change.</p>
+    ${days.some(d => d.estimated) ? '<p class="note">* Source/mined split estimated from nearby days. Recorded matched and partial totals unchanged.</p>' : ""}
+    <details class="mining-days"><summary>Daily function counts</summary><p class="note">Last snapshot each day; days without snapshots carry the previous total. Historical source/mined counts recovered from archived function data; * marks estimated splits, unavailable counts show —. Changes include inventory corrections. First recorded total has no daily change.</p>
       <div class="table"><table><thead><tr><th>Day (US Eastern)</th><th>Matched</th><th>Source</th><th>Mined</th><th>Partial</th><th>Daily change</th><th>Complete</th></tr></thead><tbody>
-      ${days.map(d => `<tr><td>${d.day}</td><td>${fmt(d.matched)}</td><td>${count(d.source)}</td><td>${count(d.mined)}</td><td>${count(d.partial)}</td><td>${gain(d)}</td><td>${d.percent.toFixed(2)}%</td></tr>`).join("")}
+      ${days.map(d => `<tr><td>${d.day}${d.estimated ? "*" : ""}</td><td>${fmt(d.matched)}</td><td>${count(d.source)}</td><td>${count(d.mined)}</td><td>${count(d.partial)}</td><td>${gain(d)}</td><td>${d.percent.toFixed(2)}%</td></tr>`).join("")}
       </tbody></table></div></details>`;
 }
 
