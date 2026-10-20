@@ -651,7 +651,8 @@
   "kind": "archive",
   "files": [
    "roc_espeon_scriptargumentbind135bf95ed9e0b65612b.cpp",
-   "roc_espeon_scriptdefaultbind1358c320093deaa2206.cpp"
+   "roc_espeon_scriptdefaultbind1358c320093deaa2206.cpp",
+   "roc_espeon_scriptthreadbind1357faa61c775a47f40.cpp"
   ]
  },
  "boost-1.37.0": {
