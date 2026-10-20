@@ -33,5 +33,19 @@ assert.equal(context.miningDays(client).at(-1).gain, -5); // corrections stay tr
 context.history = [{date: "2026-10-07 02:53 UTC", clients: {"2008-06": stats(1)}}];
 assert.equal(context.miningDays(client)[0].day, "2026-10-06"); // full history, Eastern date
 assert.match(context.miningGraph(client), /Full history since 2026-10-06/);
+// Published history must contain actual category counts, not only today's dots.
+context.history = JSON.parse(fs.readFileSync("docs/history.json", "utf8"));
+for (const name of new Set(context.history.flatMap(s => Object.keys(s.clients)))) {
+  const snapshots = context.history.filter(s => s.clients[name]?.functions);
+  const latest = snapshots.at(-1).clients[name];
+  const recorded = context.miningDays({...latest, name}).filter(d => d.source != null && d.mined != null);
+  assert.ok(recorded.length > 1, `${name}: missing source/mined history`);
+  for (const d of recorded) assert.equal(d.source + d.mined, d.matched);
+  const rendered = context.miningGraph({...latest, name});
+  for (const color of ["#58a6ff", "#3fb950"]) {
+    const points = rendered.match(new RegExp(`points="([^"]*)" fill="none" stroke="${color}"`))[1];
+    assert.ok(points.split(" ").length > 1, `${name}: category line only has one dot`);
+  }
+}
 new vm.Script(html.match(/<script>([\s\S]*?)<\/script>/)[1]);
 console.log("Mining graph tests passed.");

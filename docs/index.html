@@ -321,8 +321,8 @@ function miningGraph(c) {
       }).join("")}
       ${[...new Set([0, Math.floor((days.length - 1) / 2), days.length - 1])].map(i =>
         `<text x="${x(i)}" y="290" text-anchor="middle">${days[i].day}</text>`).join("")}
-    </svg><div class="legend">${series.map(([, label, color]) => `<span><i style="background:${color}"></i>${label}</span>`).join("")}</div></div>
-    <details class="mining-days"><summary>Daily function counts</summary><p class="note">Last snapshot each day; gaps carry the previous total. Source/mined counts start when first recorded. Changes include inventory corrections. First recorded total has no daily change.</p>
+    </svg><div class="legend">${series.map(([key, label, color]) => `<span><i style="background:${color}"></i>${label} · ${count(last[key])}</span>`).join("")}</div></div>
+    <details class="mining-days"><summary>Daily function counts</summary><p class="note">Last snapshot each day; days without snapshots carry the previous total. Historical source/mined counts recovered from archived function data; unavailable counts show —. Changes include inventory corrections. First recorded total has no daily change.</p>
       <div class="table"><table><thead><tr><th>Day (US Eastern)</th><th>Matched</th><th>Source</th><th>Mined</th><th>Partial</th><th>Daily change</th><th>Complete</th></tr></thead><tbody>
       ${days.map(d => `<tr><td>${d.day}</td><td>${fmt(d.matched)}</td><td>${count(d.source)}</td><td>${count(d.mined)}</td><td>${count(d.partial)}</td><td>${gain(d)}</td><td>${d.percent.toFixed(2)}%</td></tr>`).join("")}
       </tbody></table></div></details>`;
