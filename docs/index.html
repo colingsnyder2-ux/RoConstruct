@@ -170,6 +170,13 @@ canvas { display: block; width: 100%; height: min(70vh, 560px); background: var(
 .legend { display: flex; gap: 16px; color: var(--dim); font-size: 13px; margin-top: 8px; flex-wrap: wrap; }
 .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; }
 .note { color: var(--dim); font: 12px var(--mono); margin-top: 12px; }
+.mining-chart { overflow-x: auto; }
+.mining-chart svg { display: block; width: 100%; min-width: 560px; }
+.mining-chart text { fill: var(--dim); font: 12px var(--mono); }
+.mining-chart circle { stroke: var(--panel); stroke-width: 2; }
+.mining-chart circle:hover, .mining-chart circle:focus { r: 6; stroke: var(--cyan); outline: none; }
+.mining-days { margin-top: 12px; }
+.mining-days summary { cursor: pointer; color: var(--accent2); }
 
 /* footer */
 
@@ -263,6 +270,57 @@ function statsFor(c) {
   return {...c, ...old, source_bytes: old.source_bytes || 0,
           mined_bytes: old.mined_bytes ?? (old.matched_bytes || 0),
           partial_bytes: old.partial_bytes || 0};
+}
+
+function miningDays(c) {
+  const snapshots = new Map();
+  for (const snap of [...history, {date: progress.updated, clients: {[c.name]: c}}]) {
+    const stats = snap.clients[c.name], day = snap.date.slice(0, 10);
+    if (stats && stats.functions && /^\d{4}-\d{2}-\d{2}$/.test(day)) snapshots.set(day, stats);
+  }
+  const dates = [...snapshots.keys()].sort();
+  if (!dates.length) return [];
+  const days = [];
+  let stats;
+  for (let t = Date.parse(dates[0]); t <= Date.parse(dates.at(-1)); t += 86400000) {
+    const day = new Date(t).toISOString().slice(0, 10);
+    stats = snapshots.get(day) || stats;
+    days.push({day, matched: stats.matched, functions: stats.functions,
+      source: stats.source_matched, mined: stats.mined_matched, partial: stats.partial,
+      percent: Math.min(100, 100 * stats.matched / stats.functions),
+      gain: days.length ? stats.matched - days.at(-1).matched : null});
+  }
+  return days;
+}
+
+function miningGraph(c) {
+  const days = miningDays(c);
+  if (!days.length) return "";
+  const x = i => 56 + (days.length === 1 ? 0.5 : i / (days.length - 1)) * 808;
+  const y = percent => 260 - percent * 2.2;
+  const last = days.at(-1);
+  const gain = d => d.gain === null ? "â€”" : `${d.gain > 0 ? "+" : ""}${fmt(d.gain)}`;
+  const series = [["matched", "Matched total", "#8a97a8"], ["source", "Original source", "#58a6ff"],
+    ["mined", "Mined", "#3fb950"], ["partial", "Partial", "#b6a04c"]];
+  const count = n => n == null ? "â€”" : fmt(n);
+  return `<div class="head"><h2><small>Daily progress</small>Mining</h2>
+    <p>${fmt(last.matched)} / ${fmt(last.functions)} functions matched Â· ${last.percent.toFixed(2)}% complete.
+    Cumulative daily totals (UTC), toward 100%. Latest state.</p></div>
+    <div class="panel mining-chart"><svg viewBox="0 0 900 310" role="img" aria-label="Daily cumulative matched functions, zero to one hundred percent">
+      ${[0, 25, 50, 75, 100].map(p => `<line x1="56" x2="864" y1="${y(p)}" y2="${y(p)}" stroke="var(--line2)"/>
+        <text x="46" y="${y(p) + 4}" text-anchor="end">${p}%</text>`).join("")}
+      ${series.map(([key, label, color]) => {
+        const points = days.map((d, i) => ({d, i})).filter(({d}) => d[key] != null);
+        return `<polyline points="${points.map(({d, i}) => `${x(i)},${y(100 * d[key] / d.functions)}`).join(" ")}" fill="none" stroke="${color}" stroke-width="${key === "matched" ? 1.5 : 3}" ${key === "matched" || key === "partial" ? 'stroke-dasharray="5 5"' : ""}/>
+          ${points.map(({d, i}) => `<circle cx="${x(i)}" cy="${y(100 * d[key] / d.functions)}" r="4" fill="${color}" tabindex="0"><title>${d.day}: ${fmt(d[key])} ${label.toLowerCase()} / ${fmt(d.functions)} (${(100 * d[key] / d.functions).toFixed(2)}%)${key === "matched" ? `; daily change ${gain(d)}` : ""}</title></circle>`).join("")}`;
+      }).join("")}
+      ${[...new Set([0, Math.floor((days.length - 1) / 2), days.length - 1])].map(i =>
+        `<text x="${x(i)}" y="290" text-anchor="middle">${days[i].day}</text>`).join("")}
+    </svg><div class="legend">${series.map(([, label, color]) => `<span><i style="background:${color}"></i>${label}</span>`).join("")}</div></div>
+    <details class="mining-days"><summary>Daily function counts</summary><p class="note">Last snapshot each day; gaps carry the previous total. Source/mined counts start when first recorded. Changes include inventory corrections. First recorded total has no daily change.</p>
+      <div class="table"><table><thead><tr><th>Day (UTC)</th><th>Matched</th><th>Source</th><th>Mined</th><th>Partial</th><th>Daily change</th><th>Complete</th></tr></thead><tbody>
+      ${days.map(d => `<tr><td>${d.day}</td><td>${fmt(d.matched)}</td><td>${count(d.source)}</td><td>${count(d.mined)}</td><td>${count(d.partial)}</td><td>${gain(d)}</td><td>${d.percent.toFixed(2)}%</td></tr>`).join("")}
+      </tbody></table></div></details>`;
 }
 
 function bar(m, p, total, cls = "") {
@@ -613,6 +671,9 @@ async function client(name) {
     <div class="legend"><span><i style="background:#58a6ff"></i>original source</span><span><i style="background:#3fb950"></i>mined match</span>
       <span><i style="background:#216841"></i>partial source</span><span><i style="background:#3a3d45"></i>source pending</span></div>
     <div class="detail" id="detail">Click a tile to see its function address, match score, and recovered source.</div>
+    ${miningGraph({...latest,
+      source_matched: data.funcs.filter(f => f[2] === 100 && f[5]).length,
+      mined_matched: data.funcs.filter(f => f[2] === 100 && !f[5]).length})}
     ${leaderboard(latest.leaderboard)}
     <div class="head"><h2><small>Pick one</small>Easiest remaining</h2></div>
     <div class="table"><table><thead><tr><th>Address</th><th>Size</th><th>Score</th><th>Unit</th><th>Source</th><th>Claim</th></tr></thead>

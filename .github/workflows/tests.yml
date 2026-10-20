@@ -25,3 +25,5 @@ jobs:
           node-version: "22"
       - name: Run frontend tests
         run: node tests/test_gui_frontend.js
+      - name: Run mining graph tests
+        run: node tests/test_mining_graph.js

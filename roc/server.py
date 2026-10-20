@@ -10,6 +10,7 @@ import re
 import shutil
 import sqlite3
 import subprocess
+import tempfile
 import threading
 import time
 import uuid
@@ -1032,6 +1033,28 @@ def export_agent_findings(store):
     (folder / "README.md").unlink(missing_ok=True)  # described by the findings README
 
 
+def findings_source(text, units):
+    """Expand recipe-only wrappers for readers; retain directives for reproducibility."""
+    from roc import libs
+    directive = match.directives(text).get("lib", "")
+    if not directive or re.sub(r"/\*.*?\*/|//[^\n]*", "", text, flags=re.S).strip():
+        return text
+    recipe, _, relative = directive.partition(" ")
+    entry = libs.RECIPES.get(recipe, {})
+    if not entry.get("src"):
+        return text
+    relative = relative.strip().replace("\\", "/")
+    body = units.get(entry["src"], {}).get(relative)
+    if body is None:
+        folder = (libs.LIBS / entry["src"]).resolve()
+        path = (folder / relative).resolve()
+        if not path.is_relative_to(folder) or not path.is_file():
+            return text
+        body = path.read_text(errors="replace")
+        units.setdefault(entry["src"], {})[relative] = body
+    return text.rstrip() + "\n\n// Candidate translation unit (score above; library headers required).\n" + body
+
+
 def publish_findings(git_exe, log=print):
     """Copy local recovered sources into the separate findings repository."""
     source = ROOT / "src"
@@ -1055,6 +1078,31 @@ def publish_findings(git_exe, log=print):
         # stored source into src/.
         if git("read-tree", "--empty").returncode or git("add", "-f", "src").returncode:
             return log("Findings source staging failed.")
+        from roc import libs
+        units = libs.generated_units()
+        # Hash and stage in batches: one Git process per function is too slow on Windows.
+        with tempfile.TemporaryDirectory(prefix="findings-sources-", dir=ROOT / "work") as temporary:
+            paths, names = [], []
+            for path in sorted(source.rglob("*.cpp")):
+                text = path.read_text(errors="replace")
+                expanded = findings_source(text, units)
+                if expanded == text:
+                    continue
+                target = Path(temporary) / (str(len(paths)) + ".cpp")
+                target.write_text(expanded, encoding="utf-8", newline="\n")
+                paths.append(json.dumps(target.as_posix()))
+                names.append(path.relative_to(ROOT).as_posix())
+            if paths:
+                blobs = subprocess.run([git_exe, "hash-object", "-w", "--stdin-paths"], cwd=ROOT, env=env,
+                                       input="\n".join(paths) + "\n", capture_output=True, text=True)
+                hashes = blobs.stdout.splitlines()
+                if blobs.returncode or len(hashes) != len(names):
+                    return log("Findings source hashing failed: " + blobs.stderr.strip()[-300:])
+                staged = subprocess.run([git_exe, "update-index", "-z", "--index-info"], cwd=ROOT, env=env,
+                                        input="".join("100644 %s\t%s\0" % pair for pair in zip(hashes, names)),
+                                        capture_output=True, text=True)
+                if staged.returncode:
+                    return log("Findings source staging failed: " + staged.stderr.strip()[-300:])
         findings = ROOT / "local" / "findings"
         # Stage portable evidence and the findings repo's own README/workflow at its root;
         # never local work/ or tools/. Files are read from the local findings checkout.

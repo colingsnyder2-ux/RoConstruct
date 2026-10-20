@@ -6,7 +6,23 @@ import unittest
 from pathlib import Path
 from unittest.mock import Mock, patch
 
-from roc import server
+from roc import libs, server
+
+
+def test_findings_source_expands_recipe_only_wrappers(tmp_path):
+    wrapper = "// from server: 41% by colin\n// roc-lib: ogre unit.cpp\n"
+    (tmp_path / "ogre").mkdir()
+    (tmp_path / "ogre/unit.cpp").write_text("int candidate() { return 42; }\n")
+    with patch.object(libs, "LIBS", tmp_path), patch.object(libs, "RECIPES", {"ogre": {"src": "ogre"}}):
+        expanded = server.findings_source(wrapper, {})
+        assert expanded.startswith(wrapper)
+        assert "int candidate() { return 42; }" in expanded
+        assert server.findings_source(expanded, {}) == expanded
+        assert "cached candidate" in server.findings_source(wrapper, {"ogre": {"unit.cpp": "cached candidate"}})
+        assert server.findings_source(wrapper.replace("unit.cpp", "missing.cpp"), {}) == wrapper.replace("unit.cpp", "missing.cpp")
+        assert server.findings_source(wrapper.replace("unit.cpp", "../../outside.cpp"), {}) == wrapper.replace("unit.cpp", "../../outside.cpp")
+        handwritten = wrapper + "int hand_written() { return 7; }\n"
+        assert server.findings_source(handwritten, {}) == handwritten
 
 
 def test_progress_build_reads_local_sources_without_shadowing_clients(tmp_path, monkeypatch):
@@ -114,6 +130,9 @@ def test_publisher_stages_sources_and_portable_findings_files(tmp_path):
     run(root, "remote", "add", "findings", str(remote))
     (root / "src" / "2008-06").mkdir(parents=True)
     (root / "src" / "2008-06" / "00401000.cpp").write_text("int f() { return 1; }\n")
+    wrapper = "// from server: 41% by colin\n// roc-lib: test roc_unit_test.cpp\n"
+    candidate = root / "src/2008-06/007ab0a0.cpp"
+    candidate.write_text(wrapper)
     findings = root / "local" / "findings"
     (findings / ".github" / "workflows").mkdir(parents=True)
     (findings / "README.md").write_text("# RoConstruct findings\n")
@@ -126,13 +145,19 @@ def test_publisher_stages_sources_and_portable_findings_files(tmp_path):
     (root / "work").mkdir()
     logs = []
     with patch.object(server, "ROOT", root), \
+            patch.object(libs, "RECIPES", {"test": {"src": "test"}}), \
+            patch.object(libs, "generated_units", return_value={"test": {"roc_unit_test.cpp": "int candidate() { return 2; }\n"}}), \
             patch.dict(os.environ, {"GIT_AUTHOR_NAME": "t", "GIT_AUTHOR_EMAIL": "t@t",
                                     "GIT_COMMITTER_NAME": "t", "GIT_COMMITTER_EMAIL": "t@t"}):
         server.publish_findings(git, logs.append)
     assert logs == ["Findings published."]
     files = set(run(tmp_path, "--git-dir", str(remote), "ls-tree", "-r", "--name-only", "main").split())
     assert files == {"README.md", ".gitignore", ".github/workflows/package.yml", "agent-memory/lessons.json",
-                     "reports/old.md", "src/2008-06/00401000.cpp"}
+                     "reports/old.md", "src/2008-06/00401000.cpp", "src/2008-06/007ab0a0.cpp"}
+    published = run(tmp_path, "--git-dir", str(remote), "show", "main:src/2008-06/007ab0a0.cpp")
+    assert "41% by colin" in published
+    assert "int candidate() { return 2; }" in published
+    assert candidate.read_text() == wrapper
     assert run(tmp_path, "--git-dir", str(remote), "show", "main:README.md") == "# RoConstruct findings\n"
     assert not list((root / "work").glob("findings-index-*"))
 

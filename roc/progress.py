@@ -15,7 +15,8 @@ from roc import clients
 
 ROOT = Path(__file__).resolve().parent.parent
 DOCS = ROOT / "docs"
-STATS = ("functions", "matched", "partial", "bytes", "matched_bytes", "source_bytes", "mined_bytes", "partial_bytes")
+STATS = ("functions", "matched", "partial", "bytes", "matched_bytes", "source_bytes", "mined_bytes", "partial_bytes",
+         "source_matched", "mined_matched")
 
 
 def summarize(funcs):
@@ -25,6 +26,8 @@ def summarize(funcs):
         "functions": len(funcs),
         "matched": sum(1 for f in funcs if f[2] == 100),
         "partial": sum(1 for f in funcs if 0 < f[2] < 100),
+        "source_matched": sum(1 for f in funcs if f[2] == 100 and len(f) > 5 and f[5]),
+        "mined_matched": sum(1 for f in funcs if f[2] == 100 and not (len(f) > 5 and f[5])),
         "bytes": total,
         "matched_bytes": sum(f[1] for f in funcs if f[2] == 100),
         "source_bytes": sum(f[1] for f in funcs if f[2] == 100 and len(f) > 5 and f[5]),

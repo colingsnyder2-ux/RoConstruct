@@ -9,6 +9,12 @@ from roc import libs, progress
 
 
 class SourceLinksTests(unittest.TestCase):
+    def test_function_counts_split_exact_source_mined_and_partial(self):
+        stats = progress.summarize([[1, 10, 100, 0, True, ["library", "unit.cpp"]],
+                                    [2, 20, 100, 0, True, None], [3, 30, 41, 0, True, ["library", "unit.cpp"]]])
+        self.assertEqual((stats["matched"], stats["source_matched"], stats["mined_matched"], stats["partial"]),
+                         (2, 1, 1, 1))
+
     def test_unchanged_build_preserves_progress_and_history(self):
         with tempfile.TemporaryDirectory() as folder, \
              patch.object(progress, "DOCS", Path(folder)), \
