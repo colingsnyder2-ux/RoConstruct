@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-20 06:47 UTC",
+ "updated": "2026-10-20 07:51 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -166,13 +166,13 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22320,
-   "matched": 20902,
-   "partial": 1413,
+   "matched": 20905,
+   "partial": 1410,
    "bytes": 3696197,
-   "matched_bytes": 3025175,
-   "source_bytes": 2323110,
-   "mined_bytes": 702065,
-   "partial_bytes": 669064,
+   "matched_bytes": 3025685,
+   "source_bytes": 2323508,
+   "mined_bytes": 702177,
+   "partial_bytes": 668554,
    "data_bytes": 1559926,
    "leaderboard": [
     {
@@ -184,10 +184,10 @@
     },
     {
      "user": "colin",
-     "matched": 2928,
-     "points": 666625,
-     "submissions": 22596,
-     "last": 1792469608.0292292
+     "matched": 2930,
+     "points": 666665,
+     "submissions": 22598,
+     "last": 1792482395.2915115
     },
     {
      "user": "king_originala",
@@ -212,10 +212,10 @@
     },
     {
      "user": "user",
-     "matched": 16,
-     "points": 18,
-     "submissions": 16,
-     "last": 1792472041.0314322
+     "matched": 17,
+     "points": 19,
+     "submissions": 17,
+     "last": 1792481247.9043093
     },
     {
      "user": "Cezant64gamejr",
@@ -442,13 +442,13 @@
    "built": "2012-06-13",
    "started": true,
    "functions": 39668,
-   "matched": 15268,
-   "partial": 11855,
+   "matched": 15271,
+   "partial": 11853,
    "bytes": 6671517,
-   "matched_bytes": 1187851,
+   "matched_bytes": 1187966,
    "source_bytes": 1033873,
-   "mined_bytes": 153978,
-   "partial_bytes": 1997725,
+   "mined_bytes": 154093,
+   "partial_bytes": 1997644,
    "data_bytes": 3396596,
    "leaderboard": [
     {
@@ -481,10 +481,10 @@
     },
     {
      "user": "intel",
-     "matched": 13,
-     "points": 6428,
-     "submissions": 492,
-     "last": 1792478657.8455737
+     "matched": 16,
+     "points": 7028,
+     "submissions": 540,
+     "last": 1792482577.6638045
     },
     {
      "user": "Viper",
@@ -516,10 +516,10 @@
   },
   {
    "user": "colin",
-   "matched": 15020,
-   "points": 5505466,
-   "submissions": 185457,
-   "last": 1792469608.0292292
+   "matched": 15022,
+   "points": 5505506,
+   "submissions": 185459,
+   "last": 1792482395.2915115
   },
   {
    "user": "king_originala",
@@ -558,10 +558,17 @@
   },
   {
    "user": "user",
+   "matched": 17,
+   "points": 19,
+   "submissions": 17,
+   "last": 1792481247.9043093
+  },
+  {
+   "user": "intel",
    "matched": 16,
-   "points": 18,
-   "submissions": 16,
-   "last": 1792472041.0314322
+   "points": 7028,
+   "submissions": 540,
+   "last": 1792482577.6638045
   },
   {
    "user": "Viper",
@@ -569,13 +576,6 @@
    "points": 2617,
    "submissions": 232,
    "last": 1792344458.634544
-  },
-  {
-   "user": "intel",
-   "matched": 13,
-   "points": 6428,
-   "submissions": 492,
-   "last": 1792478657.8455737
   },
   {
    "user": "Cezant64gamejr",
