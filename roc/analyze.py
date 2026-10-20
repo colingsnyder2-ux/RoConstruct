@@ -56,7 +56,7 @@ def find_functions(code, text_va, seeds, relocs, proven=(), keep=None):
     starts = {s for s in seeds if text_va <= s < end}
     md = Cs(CS_ARCH_X86, CS_MODE_32)
     seen, calls, work, falls, called, tables, conts = set(), set(), list(starts), set(), set(), set(), {}
-    straddled = set()
+    straddled, callbacks = set(), set()
     while work:
         a = work.pop()
         cont = None
@@ -83,6 +83,7 @@ def find_functions(code, text_va, seeds, relocs, proven=(), keep=None):
                         t += 4
                 elif "[" not in op.split(",")[-1]:  # immediate code pointer: callback
                     starts.add(t)
+                    callbacks.add(t)
                     work.append(t)
                 else:  # switch index table or other data inside .text
                     tables.add(t)
@@ -90,6 +91,7 @@ def find_functions(code, text_va, seeds, relocs, proven=(), keep=None):
                 t = int(op, 16)
                 if text_va <= t < end:
                     starts.add(t)
+                    callbacks.add(t)
                     work.append(t)
                     calls.add(a)
                     called.add(t)
@@ -110,7 +112,9 @@ def find_functions(code, text_va, seeds, relocs, proven=(), keep=None):
         owner = lambda m: order[bisect_left(order, m + 1) - 1]
         starts -= (falls | {c for c, m in conts.items() if owner(m) == owner(c - 1)}) - called - keep
         # e.g. c6 84 24 cc 00 00 00 03 (mov byte [esp+0xcc],3): the cc seeded a fake start mid-instruction.
-        starts -= straddled - called - keep - pointed
+        invalid = straddled - called - pointed - callbacks
+        starts -= invalid
+        proven = [(start, size) for start, size in proven if start not in invalid]
     # Proven extents (a compiled function matched these bytes exactly): no start
     # inside one, and whatever follows it starts a new function.
     for start, size in proven:
@@ -142,6 +146,20 @@ def find_functions(code, text_va, seeds, relocs, proven=(), keep=None):
             "kind": "eh" if _catch_funclet(code, text_va, start, body, reloc_set, rd)
                     else kind_of(body[:code_len], [r for r in rel if r < code_len]),
         })
+    if keep is not None:
+        from roc.boundaries import branch_merges
+        repairs = branch_merges(code, text_va, out, pointed | called | callbacks)
+        retired = {addr for repair in repairs for addr in repair["fragments"]}
+        by_addr = {row["addr"]: row for row in out}
+        for repair in repairs:
+            row = by_addr[repair["addr"]]
+            start, size = int(row["addr"], 16), repair["size"]
+            lo, hi = bisect_left(relocs, start), bisect_left(relocs, start + size)
+            row.update(size=size, relocs=[r - start for r in relocs[lo:hi]],
+                       calls=bisect_left(call_sites, start + size) - bisect_left(call_sites, start),
+                       boundary_fragments=repair["fragments"])
+            row["kind"] = kind_of(code[start - text_va:start - text_va + size], row["relocs"])
+        out = [row for row in out if row["addr"] not in retired]
     return out
 
 def _catch_funclet(code, text_va, start, body, reloc_set, rd):
@@ -156,7 +174,7 @@ def _catch_funclet(code, text_va, start, body, reloc_set, rd):
 
 GENERATED = [re.compile(p) for p in (
     # __ehhandler$: security cookie check, then jump to __CxxFrameHandler3
-    r"^mov edx, dword ptr \[esp \+ 8\] ; lea eax, \[edx [+-] \w+\] ; .*xor ecx, eax ; call N ; mov eax, N ; jmp N$",
+    r"^mov edx, dword ptr \[esp \+ 8\] ; lea eax, \[edx(?: [+-] \w+)?\] ; .*xor ecx, eax ; call N ; mov eax, N ; jmp N$",
     # scalar deleting destructor (??_G): ~T(); if (flags & 1) delete this;
     r"^push esi ; mov esi, ecx ; (mov dword ptr \[esi\], N ; )?call (dword ptr \[N\]|N) ; test byte ptr \[esp \+ 8\], 1 ; "
     r"je N ; push esi ; call (dword ptr \[N\]|N) ; add esp, 4 ; mov eax, esi ; pop esi ; ret 4$",
@@ -201,7 +219,7 @@ def kind_of(code, relocs):
         return "thunk"
     if last[2] == "jmp" and len(insns) == 2 and first[2] in ("sub", "add") and first[3].startswith("ecx,"):
         return "adjustor"
-    if "[ebp" in first[3] and not any(m == "push" and o == "ebp" for _, _, m, o in insns):
+    if any("[ebp" in o for _, _, _, o in insns[:2]) and not any(m == "push" and o == "ebp" for _, _, m, o in insns):
         return "eh"
     if len(insns) == 2 and first[2] == "mov" and first[3].startswith("eax, 0x") and last[2] == "jmp" and relocs == [1]:
         return "eh"
@@ -360,6 +378,8 @@ def analyze(client, exe):
     # Pointers stored outside .text (vtables, callback tables) into .text.
     seeds.update(v for v in (int.from_bytes(read(s, 4), "little") for s in relocs if not in_text(s))
                  if in_text(v))
+    from roc.boundaries import seh_entries
+    seeds.update(seh_entries(code, text_va, read))
     bounds = ROOT / "work" / client / "bounds.json"
     proven = [(int(a, 16), n) for a, n in json.loads(bounds.read_text())] if bounds.exists() else ()
     scores_file = ROOT / "work" / client / "scores.json"
@@ -415,6 +435,13 @@ def analyze(client, exe):
     out = ROOT / "work" / client
     out.mkdir(parents=True, exist_ok=True)
     from roc import tasks
+    if (out / "functions.jsonl").exists() and scores_file.exists():
+        from roc.boundaries import current_scores
+        previous = [json.loads(line) for line in (out / "functions.jsonl").read_text().splitlines()]
+        scores = json.loads(scores_file.read_text())
+        corrected = current_scores(previous, funcs, scores)
+        if corrected != scores:
+            tasks.write_text(scores_file, json.dumps(corrected, indent=0, sort_keys=True))
     tasks.write_text(out / "functions.jsonl", "".join(json.dumps(f, separators=(",", ":")) + "\n" for f in funcs))
     tasks.write_text(out / "meta.json", json.dumps({"code_bytes": len(code), "data_bytes": data,
                                                    "classes": len(set(classes.values()))}))
