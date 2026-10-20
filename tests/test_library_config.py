@@ -1,5 +1,6 @@
 """Library configurations must replay their own preprocessed declarations."""
 from unittest.mock import patch
+import os
 import subprocess
 
 from roc import libs
@@ -176,7 +177,9 @@ def test_preprocessed_unit_tracks_real_header_contents(tmp_path, monkeypatch):
     header.touch()  # same content, new timestamp: still a hit
     assert libs.unit('xtp-11.2.2', 'test.cpp', 30729) == 'int x = 1;'
     assert len(calls) == 1
+    stamp = header.stat()
     header.write_text('#define X 2\n')  # edited vendor header: rebuilt, not replayed
+    os.utime(header, ns=(stamp.st_atime_ns, stamp.st_mtime_ns))  # coarse/preserved Windows timestamp
     assert libs.unit('xtp-11.2.2', 'test.cpp', 30729) == 'int x = 2;'
     assert len(calls) == 2
     monkeypatch.setitem(libs.RECIPES['xtp-11.2.2'], 'defines', '_CHANGED')  # recipe edit: rebuilt

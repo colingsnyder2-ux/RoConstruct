@@ -1266,9 +1266,9 @@ def _cached_unit(cache, identity):
             st = os.stat(dep)
         except OSError:
             return None
-        if (st.st_size, st.st_mtime_ns) != (size, mtime):
-            if st.st_size != size or _sha256(dep) != digest:
-                return None
+        if st.st_size != size or _sha256(dep) != digest:
+            return None
+        if st.st_mtime_ns != mtime:
             record["files"][dep] = [size, st.st_mtime_ns, digest]  # touched, same content
             refreshed = True
         stamp.append((dep, st.st_size, st.st_mtime_ns))

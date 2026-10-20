@@ -44,6 +44,10 @@ def test_mixed_clients_send_separate_messages(monkeypatch, automatic):
     assert ":yellow_square:" in first["description"] and "🟨 partial" in first["description"]
     assert first["fields"][1]["name"] == "🟡 Partially Matched"
     assert "🟡" in first["fields"][1]["value"]
+    assert first["fields"][2]["value"].startswith("**1 functions/hr** *(last 2h)* · ETA ")
+    if not automatic:
+        assert first["fields"][3]["value"] == "**colin** · 100 pts *(+10)*\n**intel** · 100 pts *(+10)*"
+        assert "workers in batch" not in str(first) and "worker in batch" not in str(first)
     assert store.match_rate.call_args_list[0].args == ("2008-06", 7200)
     assert store.match_rate.call_args_list[1].args == ("2012-06", 7200)
     with pytest.raises(ValueError, match="one client"):

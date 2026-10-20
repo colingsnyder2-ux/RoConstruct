@@ -279,6 +279,7 @@ def load_settings():
 def save_settings(**changes):
     s = load_settings()
     s.update({k: v for k, v in changes.items() if v is not None})
+    SETTINGS.parent.mkdir(parents=True, exist_ok=True)
     SETTINGS.write_text(json.dumps(s, indent=1))
     return s
 
@@ -286,6 +287,7 @@ def save_settings(**changes):
 def clear_setting(name):
     s = load_settings()
     s.pop(name, None)
+    SETTINGS.parent.mkdir(parents=True, exist_ok=True)
     SETTINGS.write_text(json.dumps(s, indent=1))
     return s
 

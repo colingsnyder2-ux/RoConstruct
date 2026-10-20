@@ -407,7 +407,7 @@ def _journal_check(client, addr, path, score):
 
 def cmd_check(a):
     from roc import match
-    match.DIFF_CONTEXT = a.context
+    match.DIFF_CONTEXT = getattr(a, "context", 99)
     folder = ROOT / "src" / a.name
     if a.file:  # scratch trial: score any file against one function, save nothing
         if not a.addr:
@@ -471,7 +471,7 @@ def cmd_check_batch(a):
     """
     from concurrent.futures import ThreadPoolExecutor, as_completed
     from roc import match
-    match.DIFF_CONTEXT = a.context
+    match.DIFF_CONTEXT = getattr(a, "context", 99)
     if not a.files or not a.addr:
         sys.exit("usage: roc check-batch CLIENT ADDR FILE [FILE ...]")
     addr = a.addr.lower().replace("0x", "").zfill(8)

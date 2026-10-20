@@ -393,6 +393,7 @@ def test_parked_batches_require_same_profile_and_source_revision():
 
 def make_task(tmp_path, monkeypatch):
     monkeypatch.setattr(agent_auto, "ROOT", tmp_path)
+    monkeypatch.setattr(agent_auto.match, "ROOT", tmp_path)
     monkeypatch.setattr(agent_auto.match.clients, "load", lambda: {"2008-06": {"compiler_build": 21022}})
     folder = tmp_path / "work" / "agent-auto" / "run" / "00401000"
     folder.mkdir(parents=True)

@@ -246,17 +246,16 @@ class MineLog:
             people = {"name": "⚙️ Verification", "value": "server-verified", "inline": True}
         else:
             contributors = sorted({e["user"] for e in events})
-            workers = len({e["worker"] for e in events if e["worker"]})
-            totals = "\n".join("%s · %s pts (%+d)" % (
+            totals = "\n".join("**%s** · %s pts *(%+d)*" % (
                 user, format(self.store.user_points(user), ","),
                 sum(e["points"] for e in events if e["user"] == user)) for user in contributors)
-            people = {"name": "🏆 Workers", "value": ("%d worker%s in batch\n%s" % (workers, "s" if workers != 1 else "", totals))[:1024],
+            people = {"name": "🏆 Workers", "value": totals[:1024],
                       "inline": True}
         fields = [{"name": "🟢 Fully Matched", "value": lines(full), "inline": False}]
         fields += [{"name": "🟡 Partially Matched",
                     "value": "x%d partially matched" % len(partial) if len(partial) > 10 else lines(partial),
                     "inline": False},
-                   {"name": "⚡ Mining Rate", "value": "%g functions/hr (last 2h) · ETA %s" % (round(rate_hr, 1), eta), "inline": True},
+                   {"name": "⚡ Mining Rate", "value": "**%g functions/hr** *(last 2h)* · ETA %s" % (round(rate_hr, 1), eta), "inline": True},
                    people,
                    {"name": "✅ Batch", "value": "%d full · %d improved" % (len(full), len(partial)), "inline": True},
                    {"name": "🔧 Functions" if self.server else "🔧 Models", "value": ", ".join(functions), "inline": True}]

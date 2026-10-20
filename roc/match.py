@@ -901,6 +901,7 @@ def save_score(client, addr, value):
         scores = json.loads(path.read_text()) if path.exists() else {}
         if value > scores.get(addr, 0):
             scores[addr] = value
+            path.parent.mkdir(parents=True, exist_ok=True)
             tmp = path.with_name("scores.%d.tmp" % os.getpid())  # replace atomically: readers never see a half file
             tmp.write_text(json.dumps(scores, indent=0, sort_keys=True))
             os.replace(tmp, path)

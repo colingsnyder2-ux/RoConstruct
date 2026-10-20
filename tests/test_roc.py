@@ -155,7 +155,8 @@ def test_kinds():
 def test_summarize():
     s = summarize([[0x1000, 10, 100], [0x1010, 5, 40], [0x1020, 5, 0]])
     assert s == {"functions": 3, "matched": 1, "partial": 1, "bytes": 20, "matched_bytes": 10,
-                 "source_bytes": 0, "mined_bytes": 10, "partial_bytes": 5}, s
+                 "source_bytes": 0, "mined_bytes": 10, "partial_bytes": 5,
+                 "source_matched": 0, "mined_matched": 1}, s
 
 
 def fake_obj(code, relocs):
@@ -1211,8 +1212,8 @@ def test_mine_digest():
     assert "a1" in embed["fields"][0]["value"] and "a2" in embed["fields"][1]["value"]
     assert embed["fields"][2]["name"] == "⚡ Mining Rate"
     assert embed["fields"][3]["name"] == "🏆 Workers"
-    assert "alice · 60 pts (+60)" in embed["fields"][3]["value"]
-    assert "1 worker in batch" in embed["fields"][3]["value"]
+    assert "**alice** · 60 pts *(+60)*" in embed["fields"][3]["value"]
+    assert "worker in batch" not in embed["fields"][3]["value"]
     assert embed["fields"][4]["value"] == "1 full · 1 improved"
     assert embed["footer"]["text"] == "RoConstruct Mining" and "T" in embed["timestamp"]
     events = [{"job": {"client": "C", "addr": "a1"}, "user": "alice", "worker": "w", "model": "roc fingerprint",

@@ -12,7 +12,7 @@ vm.runInContext(source.slice(source.indexOf("function experimentMemory(s)"),sour
 const memoryHTML=agentContext.experimentMemory(agentContext.agentState.memory);
 assert.match(memoryHTML,/candidate 10%/);
 assert.match(memoryHTML,/rolled_back/);
-agentContext.meta={initial:{user:"tester",server:"localhost:8765"},clients:[{name:"2008-06"},{name:"2009-12"}]};
+agentContext.meta={initial:{user:"tester",server:"localhost:8765"},providers:[],preferences:{},clients:[{name:"2008-06"},{name:"2009-12"}]};
 agentContext.field=(label,name,value,options={})=>options.choices ? `<select name="${name}">${options.choices.map(([key,text])=>`<option value="${key}">${text}</option>`).join("")}</select>` : `<input name="${name}" value="${value}">`;
 agentContext.button=label=>`<button>${label}</button>`;
 const simpleAgentHTML=agentContext.agentAutomatic();
@@ -26,7 +26,7 @@ agentContext.meta.agent_models=["opencode-go/deepseek-v4.1-flash","opencode/glm-
 const goPlanHTML=agentContext.agentAutomatic();
 assert.match(goPlanHTML,/value="opencode-go\/deepseek-v4.1-flash"/);
 assert.match(goPlanHTML,/Go plan/);
-assert.match(goPlanHTML,/no API key/);
+assert.match(goPlanHTML,/log in at settings/);
 assert.match(goPlanHTML,/name="variant"/);
 agentContext.agentAutoConfig={cli:"claude",model:"claude-opus-4-6"};
 const claudeFormHTML=agentContext.agentAutomatic();
@@ -38,7 +38,7 @@ assert.match(simpleAgentHTML,/Fast/);
 assert.match(simpleAgentHTML,/Balanced/);
 assert.match(simpleAgentHTML,/Deep/);
 assert.match(simpleAgentHTML,/Start Agent/);
-assert.doesNotMatch(simpleAgentHTML,/Preview|Total target cap|Max function bytes|Individual mining|help-note/);
+assert.doesNotMatch(simpleAgentHTML,/Preview|Total target cap|Max function bytes|Individual mining/);
 for(const name of ["client","user","server","cli","model","workers"])
   assert.match(simpleAgentHTML,new RegExp(`name="${name}"`));
 assert.match(simpleAgentHTML,/All clients/);
@@ -122,16 +122,19 @@ formContext.meta={providers:[{name:"opencode",ready:true,auth:"cli",models:[]},
   {name:"chatgpt",ready:false,auth:"chatgpt",models:["gpt-5.2"]}],
   clients:[],preferences:{presets:{}},agent_models:["opencode-go/deepseek-v4.1-flash","opencode/glm-5.3"]};
 formContext.localModels=["qwen2.5-coder:7b"];
+vm.runInContext('matchProvider="custom"',formContext);
 const dropHTML=formContext.workerForm({...automaticForm,targets:[],model:""});
 assert.match(dropHTML,/<select name="model"/);
 assert.match(dropHTML,/value="qwen2.5-coder:7b"/);
 assert.match(dropHTML,/value="deepseek:deepseek-flash"/);
 assert.match(dropHTML,/key missing/);
-assert.match(dropHTML,/value="chatgpt:gpt-5.2"/);
-assert.match(dropHTML,/sign in needed/);
-assert.match(dropHTML,/value="opencode:opencode-go\/deepseek-v4.1-flash"/);
-assert.match(dropHTML,/Go plan/);
+assert.doesNotMatch(dropHTML,/value="chatgpt:gpt-5.2"/);
+assert.doesNotMatch(dropHTML,/value="opencode:opencode-go\/deepseek-v4.1-flash"/);
 assert.doesNotMatch(dropHTML,/name="model_variant"/);
+vm.runInContext('matchProvider="opencode"',formContext);
+const openCodeDropHTML=formContext.workerForm({...automaticForm,targets:[],model:""});
+assert.match(openCodeDropHTML,/value="opencode:opencode-go\/deepseek-v4.1-flash"/);
+assert.match(openCodeDropHTML,/Go plan/);
 const ocModelHTML=formContext.workerForm({...automaticForm,targets:[],model:"opencode:opencode-go/deepseek-v4.1-flash"});
 assert.match(ocModelHTML,/name="model_variant"/);
 assert.match(ocModelHTML,/value="high"/);
@@ -169,6 +172,7 @@ const feedContext={jobs:[],logs:[],workerRun:"",workerLoop:"",chatCompact:false,
   $:selector=>feedNodes[selector],active:job=>job.status==="running",esc:String,workerCards:()=>"",empty:()=>"empty",
   setChatFollow:()=>{},updateFeed:(_node,items)=>feedContext.items=items};
 vm.createContext(feedContext);
+vm.runInContext(source.slice(source.indexOf("function tabModel("),source.indexOf("function renderWorkerChat(")),feedContext);
 vm.runInContext(source.slice(source.indexOf("function terminalMessage("),source.indexOf("function setChatFollow(")),feedContext);
 vm.runInContext(source.slice(source.indexOf("function logText("),source.indexOf("function filteredLogs(")),feedContext);
 feedContext.codeBlock=(text)=>`<pre>${text}</pre>`;

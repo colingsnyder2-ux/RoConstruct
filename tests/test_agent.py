@@ -96,7 +96,8 @@ def test_regression_is_rolled_back_and_released(tmp_path, monkeypatch):
     assert calls[-1][0] == "/v1/release"
 
 
-def test_commands_read_prompt_from_stdin():
+def test_commands_read_prompt_from_stdin(monkeypatch):
+    monkeypatch.setattr(agent, "_opencode_run_flags", lambda: ["--standalone"])
     claude = agent.command("claude", "haiku")
     assert claude[:4] == ["claude", "-p", "--model", "haiku"] and "acceptEdits" in claude and "stream-json" in claude
     assert "Read,Grep,Glob,Edit,Write,Bash,PowerShell,mcp__ghidra__*" in claude
@@ -180,10 +181,11 @@ def test_every_agent_prompt_requests_concision_and_fast_work(monkeypatch):
         assert agent.run_agent(cli, "Assigned target", minutes=1) == 0
     assert len(prompts) == 3
     for prompt in prompts:
-        assert "Be very concise." in prompt and "Optimize tokens and wall time" in prompt
-        assert "Reuse cached compiler results" in prompt and "Assigned target" in prompt
+        assert "terse technical fragments" in prompt and "Batch independent reads" in prompt
+        assert "Assigned target" in prompt
         assert "libs.source_for" in prompt and "g3d-6.09-ijg jidctflt.c" in prompt
-        assert "two materially different approaches" in prompt and "Infer likely function behavior" in prompt
+        assert "likely purpose plus one supporting fact" in prompt
+        assert "verified=true, improved=true, score=100" in prompt
         assert "caveman" not in prompt.lower()
 
 

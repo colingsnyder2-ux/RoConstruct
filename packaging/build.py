@@ -33,7 +33,7 @@ WORKER_MODULES = [
 ]
 # Only the maintainer's server needs these, so they stay out of the helper zips.
 SERVER_MODULES = ["cluster", "progress", "reports", "server"]
-WORKER_MODULES += ["agent_memory", "research"]
+WORKER_MODULES += ["agent_memory", "research", "agent_recovery", "bruteforce", "extents", "remill", "repair_scan", "rtti"]
 
 COMMON_FILES = ["roc.py", "roc.cmd", "roc.sh", "install.cmd", "install.sh",
                 "packaging/organize-local.ps1", "research/repair-patterns.json", "docs/SETUP.md", "docs/SERVER.md",

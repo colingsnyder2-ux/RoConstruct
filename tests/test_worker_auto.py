@@ -173,7 +173,8 @@ def test_live_automatic_options_and_budget_stop_reach_worker():
             calls.append((path, data))
             return {"clients": {"C": {}}} if path == "/v1/info" else {"job": job}
 
-    def work(*args):
+    def work(*args, **kwargs):
+        assert kwargs["use_remill"] is True
         assert args[5] == "auto"
         assert args[-1]["max_tokens"] == 1024
         assert args[-1]["auto_output"]
