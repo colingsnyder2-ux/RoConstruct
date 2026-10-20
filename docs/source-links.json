@@ -649,7 +649,10 @@
  "boost-1.35.0": {
   "url": "https://archives.boost.io/release/1.35.0/source/boost_1_35_0.tar.gz",
   "kind": "archive",
-  "files": []
+  "files": [
+   "roc_espeon_scriptargumentbind135bf95ed9e0b65612b.cpp",
+   "roc_espeon_scriptdefaultbind1358c320093deaa2206.cpp"
+  ]
  },
  "boost-1.37.0": {
   "url": "https://archives.boost.io/release/1.37.0/source/boost_1_37_0.tar.gz",
@@ -1647,7 +1650,8 @@
    "libs/signals/src/named_slot_map.cpp",
    "libs/signals/src/signal_base.cpp",
    "libs/signals/src/trackable.cpp",
-   "libs/thread/src/win32/thread.cpp"
+   "libs/thread/src/win32/thread.cpp",
+   "roc_espeon_humanoidstateslotff087c81fef193c1.cpp"
   ]
  },
  "boost-1.37.0-dll": {
