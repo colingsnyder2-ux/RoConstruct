@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-20 04:38 UTC",
+ "updated": "2026-10-20 05:42 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -166,13 +166,13 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22320,
-   "matched": 20900,
-   "partial": 1415,
+   "matched": 20902,
+   "partial": 1413,
    "bytes": 3696197,
-   "matched_bytes": 3023689,
+   "matched_bytes": 3025175,
    "source_bytes": 2323110,
-   "mined_bytes": 700579,
-   "partial_bytes": 670550,
+   "mined_bytes": 702065,
+   "partial_bytes": 669064,
    "data_bytes": 1559926,
    "leaderboard": [
     {
@@ -212,10 +212,10 @@
     },
     {
      "user": "user",
-     "matched": 14,
-     "points": 16,
-     "submissions": 14,
-     "last": 1792468877.2229939
+     "matched": 16,
+     "points": 18,
+     "submissions": 16,
+     "last": 1792472041.0314322
     },
     {
      "user": "Cezant64gamejr",
@@ -442,13 +442,13 @@
    "built": "2012-06-13",
    "started": true,
    "functions": 39668,
-   "matched": 15262,
-   "partial": 11858,
+   "matched": 15266,
+   "partial": 11856,
    "bytes": 6671517,
-   "matched_bytes": 1187549,
+   "matched_bytes": 1187773,
    "source_bytes": 1033873,
-   "mined_bytes": 153676,
-   "partial_bytes": 1997896,
+   "mined_bytes": 153900,
+   "partial_bytes": 1997777,
    "data_bytes": 3396596,
    "leaderboard": [
     {
@@ -481,10 +481,10 @@
     },
     {
      "user": "intel",
-     "matched": 7,
-     "points": 5138,
-     "submissions": 405,
-     "last": 1792470603.6494198
+     "matched": 11,
+     "points": 5774,
+     "submissions": 443,
+     "last": 1792474725.9392445
     },
     {
      "user": "Viper",
@@ -557,6 +557,13 @@
    "last": 1791727397.9646602
   },
   {
+   "user": "user",
+   "matched": 16,
+   "points": 18,
+   "submissions": 16,
+   "last": 1792472041.0314322
+  },
+  {
    "user": "Viper",
    "matched": 14,
    "points": 2617,
@@ -564,11 +571,11 @@
    "last": 1792344458.634544
   },
   {
-   "user": "user",
-   "matched": 14,
-   "points": 16,
-   "submissions": 14,
-   "last": 1792468877.2229939
+   "user": "intel",
+   "matched": 11,
+   "points": 5774,
+   "submissions": 443,
+   "last": 1792474725.9392445
   },
   {
    "user": "Cezant64gamejr",
@@ -576,13 +583,6 @@
    "points": 2647,
    "submissions": 62,
    "last": 1791569181.5408819
-  },
-  {
-   "user": "intel",
-   "matched": 7,
-   "points": 5138,
-   "submissions": 405,
-   "last": 1792470603.6494198
   },
   {
    "user": "TrollStein",
