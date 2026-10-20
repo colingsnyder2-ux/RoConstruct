@@ -1086,9 +1086,22 @@ def publish_findings(git_exe, log=print):
         with tempfile.TemporaryDirectory(prefix="findings-sources-", dir=ROOT / "work") as temporary:
             names, seen = [], {}
             marks = Path(temporary) / "marks"
-            with tempfile.TemporaryFile(dir=temporary) as stream:
-                for path in sorted(source.rglob("*.cpp")):
-                    text = path.read_text(errors="replace")
+            listed = git("ls-files", "--stage", "-z", "--", "src")
+            if listed.returncode:
+                return log("Findings source listing failed.")
+            rows = [row.split("\t", 1) for row in listed.stdout.split("\0") if row]
+            with tempfile.TemporaryFile(dir=temporary) as originals, tempfile.TemporaryFile(dir=temporary) as stream:
+                # Reading staged blobs in bulk avoids reopening 170k files on Windows.
+                read = subprocess.run([git_exe, "cat-file", "--batch"], cwd=ROOT, env=env,
+                    input=("\n".join(meta.split()[1] for meta, _ in rows) + "\n").encode(),
+                    stdout=originals, stderr=subprocess.PIPE)
+                if read.returncode:
+                    return log("Findings source reading failed: " + read.stderr.decode(errors="replace")[-300:])
+                originals.seek(0)
+                for _, relative in rows:
+                    size = int(originals.readline().split()[-1])
+                    text = originals.read(size).decode("utf-8", errors="replace").replace("\r\n", "\n")
+                    originals.read(1)  # batch record separator
                     expanded = findings_source(text, units)
                     if expanded == text:
                         continue
@@ -1099,7 +1112,7 @@ def publish_findings(git_exe, log=print):
                         stream.write(("blob\nmark :%d\ndata %d\n" % (seen[digest], len(body))).encode("ascii"))
                         stream.write(body)
                         stream.write(b"\n")
-                    names.append((path.relative_to(ROOT).as_posix(), seen[digest]))
+                    names.append((relative, seen[digest]))
                 stream.write(b"done\n")
                 stream.seek(0)
                 if names:
