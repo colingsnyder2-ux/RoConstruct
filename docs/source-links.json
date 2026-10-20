@@ -1853,6 +1853,7 @@
    "roc_client_scene_update.cpp",
    "roc_client_short_methods_5b192b39c746b09e.cpp",
    "roc_client_texture_copy.cpp",
+   "roc_espeon_materiallevelnative3737af79d4bf57eb.cpp",
    "roc_espeon_renderqueueauthenticb965e834ae5cb4f5.cpp",
    "roc_espeon_subentitydistance81be14ca97c968f3.cpp",
    "roc_espeon_textureboundsnative288799b152876954.cpp",
