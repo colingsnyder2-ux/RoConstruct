@@ -150,7 +150,7 @@ def test_publisher_stages_sources_and_portable_findings_files(tmp_path):
             patch.dict(os.environ, {"GIT_AUTHOR_NAME": "t", "GIT_AUTHOR_EMAIL": "t@t",
                                     "GIT_COMMITTER_NAME": "t", "GIT_COMMITTER_EMAIL": "t@t"}):
         server.publish_findings(git, logs.append)
-    assert logs == ["Findings published."]
+    assert logs == ["Prepared 1 readable library sources.", "Findings published."]
     files = set(run(tmp_path, "--git-dir", str(remote), "ls-tree", "-r", "--name-only", "main").split())
     assert files == {"README.md", ".gitignore", ".github/workflows/package.yml", "agent-memory/lessons.json",
                      "reports/old.md", "src/2008-06/00401000.cpp", "src/2008-06/007ab0a0.cpp"}

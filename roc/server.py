@@ -1080,29 +1080,37 @@ def publish_findings(git_exe, log=print):
             return log("Findings source staging failed.")
         from roc import libs
         units = libs.generated_units()
-        # Hash and stage in batches: one Git process per function is too slow on Windows.
+        # Stream blobs into one Git pack; avoid a temporary file/process per function.
         with tempfile.TemporaryDirectory(prefix="findings-sources-", dir=ROOT / "work") as temporary:
-            paths, names = [], []
-            for path in sorted(source.rglob("*.cpp")):
-                text = path.read_text(errors="replace")
-                expanded = findings_source(text, units)
-                if expanded == text:
-                    continue
-                target = Path(temporary) / (str(len(paths)) + ".cpp")
-                target.write_text(expanded, encoding="utf-8", newline="\n")
-                paths.append(json.dumps(target.as_posix()))
-                names.append(path.relative_to(ROOT).as_posix())
-            if paths:
-                blobs = subprocess.run([git_exe, "hash-object", "-w", "--stdin-paths"], cwd=ROOT, env=env,
-                                       input="\n".join(paths) + "\n", capture_output=True, text=True)
-                hashes = blobs.stdout.splitlines()
-                if blobs.returncode or len(hashes) != len(names):
-                    return log("Findings source hashing failed: " + blobs.stderr.strip()[-300:])
+            names = []
+            marks = Path(temporary) / "marks"
+            with tempfile.TemporaryFile(dir=temporary) as stream:
+                for path in sorted(source.rglob("*.cpp")):
+                    text = path.read_text(errors="replace")
+                    expanded = findings_source(text, units)
+                    if expanded == text:
+                        continue
+                    names.append(path.relative_to(ROOT).as_posix())
+                    body = expanded.encode("utf-8")
+                    stream.write(("blob\nmark :%d\ndata %d\n" % (len(names), len(body))).encode("ascii"))
+                    stream.write(body)
+                    stream.write(b"\n")
+                stream.write(b"done\n")
+                stream.seek(0)
+                if names:
+                    blobs = subprocess.run([git_exe, "fast-import", "--quiet", "--done", "--export-marks=" + str(marks)],
+                                           cwd=ROOT, env=env, stdin=stream, capture_output=True, text=True)
+                    if blobs.returncode:
+                        return log("Findings source hashing failed: " + blobs.stderr.strip()[-300:])
+            if names:
+                hashes = dict(line.split() for line in marks.read_text().splitlines())
                 staged = subprocess.run([git_exe, "update-index", "-z", "--index-info"], cwd=ROOT, env=env,
-                                        input="".join("100644 %s\t%s\0" % pair for pair in zip(hashes, names)),
+                                        input="".join("100644 %s\t%s\0" % (hashes[":" + str(i)], name)
+                                                      for i, name in enumerate(names, 1)),
                                         capture_output=True, text=True)
                 if staged.returncode:
                     return log("Findings source staging failed: " + staged.stderr.strip()[-300:])
+                log("Prepared %d readable library sources." % len(names))
         findings = ROOT / "local" / "findings"
         # Stage portable evidence and the findings repo's own README/workflow at its root;
         # never local work/ or tools/. Files are read from the local findings checkout.
