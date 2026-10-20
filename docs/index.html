@@ -314,25 +314,36 @@ function statsFor(c) {
 }
 
 async function refreshLiveProgress(updateView = true, name = decodeURIComponent(location.hash.slice(1))) {
-  if (!progress.server) return;
   const selected = progress.clients.find(c => c.name === name && c.started);
   try {
-    const url = new URL("/v1/progress", progress.server);
-    if (selected) url.searchParams.set("client", name);
-    const response = await fetch(url, {cache: "no-store", signal: AbortSignal.timeout(5000)});
+    // Pages snapshots stay same-origin: private mining hosts require browser LAN permission.
+    const response = await fetch("progress.json", {cache: "no-store", signal: AbortSignal.timeout(5000)});
     if (!response.ok) return;
     const snapshot = await response.json();
+    if (snapshot.updated === progress.updated) return;
+    if (selected) {
+      const result = await fetch(`data/${encodeURIComponent(name)}.json`, {cache: "no-store", signal: AbortSignal.timeout(5000)});
+      if (!result.ok) return;
+      const data = await result.json(), row = snapshot.clients.find(c => c.name === name);
+      if (!row || data.funcs.length !== row.functions) return;
+      liveScores.set(name, Object.fromEntries(data.funcs.map(f => [hex(f[0]), f[2]])));
+      liveFunctions.set(name, data.funcs.map(f => [hex(f[0]), f[1], f[2], data.units[f[3]], f[4]]));
+    }
     for (const row of snapshot.clients) {
       const current = progress.clients.find(c => c.name === row.name);
       if (current) Object.assign(current, row);
     }
+    for (const clientName of cache.keys()) if (clientName !== name || !selected) cache.delete(clientName);
+    for (const clientName of liveScores.keys()) if (clientName !== name || !selected) {
+      liveScores.delete(clientName);
+      liveFunctions.delete(clientName);
+    }
+    progress.updated = snapshot.updated;
     progress.live_updated = snapshot.updated;
-    if (selected && snapshot.scores) liveScores.set(name, snapshot.scores);
-    if (selected && snapshot.functions) liveFunctions.set(name, snapshot.functions);
     if (!updateView) return;
     if (liveView?.name === name) liveView.update();
     else if (!selected) overview();
-  } catch { /* Offline server: retain the last available snapshot. */ }
+  } catch { /* Publish unavailable: retain the last complete snapshot. */ }
 }
 
 function miningDays(c) {
@@ -768,7 +779,7 @@ async function client(name) {
       <div class="stat"><div class="ico">${ICON.chart}</div><div><b id="live-partial">${fmt(c.partial)}</b><span>Partial</span></div></div>
       <div class="stat red"><div class="ico">${ICON.file}</div><div><b id="live-remaining">${fmt(c.functions - c.matched)}</b><span>Remaining</span></div></div>
     </div>
-    <p class="note" id="live-status">${progress.live_updated ? `Live server · ${esc(progress.live_updated)} · refreshes every 30s` : `Published snapshot · ${esc(progress.updated)}`}</p>
+    <p class="note" id="live-status">${progress.live_updated ? `Published snapshot · ${esc(progress.live_updated)} · checks every 30s` : `Published snapshot · ${esc(progress.updated)}`}</p>
     <div id="live-code"><div class="label">Code <small>(${mb(c.bytes)}) — ${pct(c.matched_bytes, c.bytes)}</small></div>
     ${codeBar(c.source_bytes || 0, c.mined_bytes ?? c.matched_bytes, c.partial_bytes || 0, c.bytes)}</div>
     <div class="legend"><span><i style="background:#58a6ff"></i>original source</span><span><i style="background:#3fb950"></i>mined</span><span><i style="background:repeating-linear-gradient(135deg,#216841 0 5px,#193d2a 5px 10px)"></i>partial source</span></div>
@@ -930,7 +941,7 @@ async function client(name) {
     document.getElementById("live-matched").textContent = fmt(latest.matched);
     document.getElementById("live-partial").textContent = fmt(latest.partial);
     document.getElementById("live-remaining").textContent = fmt(latest.functions - latest.matched);
-    document.getElementById("live-status").textContent = `Live server · ${progress.live_updated} · refreshes every 30s`;
+    document.getElementById("live-status").textContent = `Published snapshot · ${progress.live_updated} · checks every 30s`;
     document.getElementById("live-code").innerHTML = `<div class="label">Code <small>(${mb(latest.bytes)}) — ${pct(latest.matched_bytes, latest.bytes)}</small></div>` +
       codeBar(latest.source_bytes, latest.mined_bytes, latest.partial_bytes, latest.bytes);
     document.getElementById("live-mining").innerHTML = miningGraph(latest);
