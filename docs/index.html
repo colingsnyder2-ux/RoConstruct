@@ -177,6 +177,27 @@ canvas { display: block; width: 100%; height: min(70vh, 560px); background: var(
 .mining-chart text { fill: var(--dim); font: 12px var(--mono); }
 .mining-days { margin-top: 12px; }
 .mining-days summary { cursor: pointer; color: var(--accent2); }
+.remaining-card { border: 1px solid var(--line2); border-radius: 14px; background: var(--panel); overflow: hidden; }
+.remaining-table { table-layout: fixed; }
+.remaining-table th { background: var(--panel2); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; }
+.remaining-table th:nth-child(1) { width: 116px; }
+.remaining-table th:nth-child(2) { width: 94px; }
+.remaining-table th:nth-child(3) { width: 116px; }
+.remaining-table th:nth-child(5) { width: 158px; }
+.remaining-table td { padding-top: 17px; padding-bottom: 17px; white-space: normal; overflow-wrap: anywhere; vertical-align: middle; }
+.remaining-table td:first-child { color: var(--accent2); }
+.remaining-table td:nth-child(2) { color: var(--dim); font-size: 12px; }
+.remaining-table td:nth-child(4) { line-height: 1.6; font-size: 12px; }
+.remaining-table tbody tr:hover { background: rgba(88, 166, 255, .035); }
+.remaining-table td:last-child a { display: inline-block; font: 500 11px Inter, sans-serif; padding: 6px 9px; border: 1px solid var(--line2); border-radius: 6px; }
+.remaining-table td:last-child a:hover { background: var(--panel2); border-color: var(--accent2); }
+.remaining-score { display: flex; align-items: center; gap: 9px; font-size: 12px; font-variant-numeric: tabular-nums; }
+.remaining-score i { display: block; width: 42px; height: 4px; border-radius: 4px; background: var(--line2); overflow: hidden; flex: none; }
+.remaining-score b { display: block; height: 100%; background: #d4ad55; border-radius: inherit; }
+.remaining-pagination { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 16px; border-top: 1px solid var(--line2); background: var(--panel2); }
+.remaining-pagination span { color: var(--dim); font: 12px Inter, sans-serif; }
+.remaining-pagination nav { display: flex; gap: 8px; }
+.remaining-pagination button { width: auto; padding: 0 12px; font: 500 12px Inter, sans-serif; }
 
 /* footer */
 
@@ -191,6 +212,14 @@ footer img { height: 30px; }
   .top nav { order: 3; flex-basis: 100%; justify-content: center; white-space: normal; }
   .top nav a { padding: 4px 8px; }
   .stat { padding: 16px; }
+  .remaining-table thead { display: none; }
+  .remaining-table, .remaining-table tbody { display: block; }
+  .remaining-table tr { display: grid; grid-template-columns: 1fr 1fr 1fr; padding: 16px; gap: 10px; border-bottom: 1px solid var(--line); }
+  .remaining-table td { display: block; padding: 0; border: 0; }
+  .remaining-table td:nth-child(4), .remaining-table td:nth-child(5) { grid-column: 1 / -1; }
+  .remaining-table td:nth-child(2) { text-align: center; }
+  .remaining-score { justify-content: end; }
+  .remaining-table tr:last-child { border-bottom: 0; }
 }
 </style>
 </head>
@@ -691,13 +720,15 @@ async function client(name) {
       mined_matched: data.funcs.filter(f => f[2] === 100 && !f[5]).length})}
     ${leaderboard(latest.leaderboard)}
     <div class="head"><h2>Functions Remaining</h2><p>Biggest functions first · 25 per page.</p></div>
-    <div class="table"><table><thead><tr><th>Address</th><th>Size</th><th>Score</th><th>Unit</th><th>Source</th><th>Claim</th></tr></thead>
-      <tbody id="remaining"></tbody></table></div>
-    <div class="controls" aria-label="Functions remaining pagination">
-      <button class="step" id="remaining-prev" aria-label="Previous page">‹</button>
+    <div class="remaining-card"><table class="remaining-table"><thead><tr><th>Address</th><th>Size</th><th>Match</th><th>Function / unit</th><th>Source</th></tr></thead>
+      <tbody id="remaining"></tbody></table>
+    <div class="remaining-pagination">
       <span id="remaining-page" role="status"></span>
-      <button class="step" id="remaining-next" aria-label="Next page">›</button>
-    </div>
+      <nav aria-label="Functions remaining pagination">
+        <button class="step" id="remaining-prev" aria-label="Previous page">← Previous</button>
+        <button class="step" id="remaining-next" aria-label="Next page">Next →</button>
+      </nav>
+    </div></div>
     <p class="note">Last updated: ${esc(progress.updated)}</p>`;
   wireNav();
   wireLibraries(key => {
@@ -778,10 +809,9 @@ async function client(name) {
   function renderRemaining() {
     const pages = Math.max(1, Math.ceil(remaining.length / 25)), start = remainingPage * 25;
     document.getElementById("remaining").innerHTML = remaining.slice(start, start + 25).map(f =>
-      `<tr><td>${hex(f[0])}</td><td>${fmt(f[1])} B</td><td>${f[2]}%</td><td>${esc(units[f[3]])}</td>` +
-      `<td>${sourceLinks(name, f, true)}</td>` +
-      `<td><code>roc claim ${esc(name)} ${hex(f[0])}</code></td></tr>`).join("") ||
-      '<tr><td colspan="6">All functions matched.</td></tr>';
+      `<tr><td>${hex(f[0])}</td><td>${fmt(f[1])} B</td><td><span class="remaining-score"><i aria-hidden="true"><b style="width:${f[2]}%"></b></i>${f[2]}%</span></td><td>${esc(units[f[3]])}</td>` +
+      `<td>${sourceLinks(name, f, true) || '<span class="note">No source yet</span>'}</td></tr>`).join("") ||
+      '<tr><td colspan="5">All functions matched.</td></tr>';
     document.getElementById("remaining-page").textContent =
       `Page ${remainingPage + 1} of ${fmt(pages)} · ${remaining.length ? fmt(start + 1) : 0}–${fmt(Math.min(start + 25, remaining.length))} of ${fmt(remaining.length)} functions`;
     document.getElementById("remaining-prev").disabled = remainingPage === 0;
