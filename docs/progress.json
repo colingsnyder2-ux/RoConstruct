@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-20 05:42 UTC",
+ "updated": "2026-10-20 06:47 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -442,13 +442,13 @@
    "built": "2012-06-13",
    "started": true,
    "functions": 39668,
-   "matched": 15266,
-   "partial": 11856,
+   "matched": 15268,
+   "partial": 11855,
    "bytes": 6671517,
-   "matched_bytes": 1187773,
+   "matched_bytes": 1187851,
    "source_bytes": 1033873,
-   "mined_bytes": 153900,
-   "partial_bytes": 1997777,
+   "mined_bytes": 153978,
+   "partial_bytes": 1997725,
    "data_bytes": 3396596,
    "leaderboard": [
     {
@@ -481,10 +481,10 @@
     },
     {
      "user": "intel",
-     "matched": 11,
-     "points": 5774,
-     "submissions": 443,
-     "last": 1792474725.9392445
+     "matched": 13,
+     "points": 6428,
+     "submissions": 492,
+     "last": 1792478657.8455737
     },
     {
      "user": "Viper",
@@ -572,10 +572,10 @@
   },
   {
    "user": "intel",
-   "matched": 11,
-   "points": 5774,
-   "submissions": 443,
-   "last": 1792474725.9392445
+   "matched": 13,
+   "points": 6428,
+   "submissions": 492,
+   "last": 1792478657.8455737
   },
   {
    "user": "Cezant64gamejr",
