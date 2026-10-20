@@ -239,7 +239,7 @@ class MineLog:
 
         def lines(rows):
             return "\n".join("%s **%d%%** `%s` %s · %s B" % (
-                "🟢" if e["score"] == 100 else "🟨", e["score"], e["job"].get("addr", "?"),
+                "🟢" if e["score"] == 100 else "🟡", e["score"], e["job"].get("addr", "?"),
                 e["job"].get("unit", "?"), e["job"].get("size", "?")) for e in rows[:10]) or "None"
 
         if self.server:
@@ -253,7 +253,7 @@ class MineLog:
             people = {"name": "🏆 Workers", "value": ("%d worker%s in batch\n%s" % (workers, "s" if workers != 1 else "", totals))[:1024],
                       "inline": True}
         fields = [{"name": "🟢 Fully Matched", "value": lines(full), "inline": False}]
-        fields += [{"name": "🟨 Partially Matched",
+        fields += [{"name": "🟡 Partially Matched",
                     "value": "x%d partially matched" % len(partial) if len(partial) > 10 else lines(partial),
                     "inline": False},
                    {"name": "⚡ Mining Rate", "value": "%g functions/hr (last 2h) · ETA %s" % (round(rate_hr, 1), eta), "inline": True},

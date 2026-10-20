@@ -42,6 +42,8 @@ def test_mixed_clients_send_separate_messages(monkeypatch, automatic):
     assert "gpt-6.1-sol" in str(first) and "gpt-6.1-sol" not in str(second)
     assert "negative_squared_cross_mark" not in str(sent) and "❎" not in str(sent)
     assert ":yellow_square:" in first["description"] and "🟨 partial" in first["description"]
+    assert first["fields"][1]["name"] == "🟡 Partially Matched"
+    assert "🟡" in first["fields"][1]["value"]
     assert store.match_rate.call_args_list[0].args == ("2008-06", 7200)
     assert store.match_rate.call_args_list[1].args == ("2012-06", 7200)
     with pytest.raises(ValueError, match="one client"):
