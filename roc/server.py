@@ -1052,7 +1052,11 @@ def findings_source(text, units):
             return text
         body = path.read_text(errors="replace")
         units.setdefault(entry["src"], {})[relative] = body
-    return text.rstrip() + "\n\n// Candidate translation unit (score above; library headers required).\n" + body
+    # Address-specific assembly comments duplicate the same unit thousands of times.
+    # The filename identifies the target; keep its score and reproducible build settings.
+    header = "\n".join(line for line in text.splitlines()
+                       if line.startswith(("// from server:", "// roc-")))
+    return header + "\n\n// Candidate translation unit (score above; library headers required).\n" + body
 
 
 def publish_findings(git_exe, log=print):
@@ -1082,7 +1086,7 @@ def publish_findings(git_exe, log=print):
         units = libs.generated_units()
         # Stream blobs into one Git pack; avoid a temporary file/process per function.
         with tempfile.TemporaryDirectory(prefix="findings-sources-", dir=ROOT / "work") as temporary:
-            names = []
+            names, seen = [], {}
             marks = Path(temporary) / "marks"
             with tempfile.TemporaryFile(dir=temporary) as stream:
                 for path in sorted(source.rglob("*.cpp")):
@@ -1105,8 +1109,8 @@ def publish_findings(git_exe, log=print):
             if names:
                 hashes = dict(line.split() for line in marks.read_text().splitlines())
                 staged = subprocess.run([git_exe, "update-index", "-z", "--index-info"], cwd=ROOT, env=env,
-                                        input="".join("100644 %s\t%s\0" % (hashes[":" + str(i)], name)
-                                                      for i, name in enumerate(names, 1)),
+                                        input="".join("100644 %s\t%s\0" % (hashes[":" + str(mark)], name)
+                                                      for name, mark in names),
                                         capture_output=True, text=True)
                 if staged.returncode:
                     return log("Findings source staging failed: " + staged.stderr.strip()[-300:])
