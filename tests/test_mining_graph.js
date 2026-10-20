@@ -23,6 +23,13 @@ const split = context.miningGraph({...client, source_matched: 30, mined_matched:
 assert.match(split, /30 original source \/ 100/);
 assert.match(split, /10 mined \/ 100/);
 assert.match(split, /5 partial \/ 100/);
+assert.equal((split.match(/class="mining-stack"/g) || []).length, days.length);
+assert.doesNotMatch(split, /<polyline|<circle/);
+assert.match(split, /data-series="source"[^>]*height="72"/); // 30% of 240px
+assert.match(split, /data-series="mined"[^>]*height="24"/);
+assert.match(split, /data-series="partial"[^>]*height="12"/);
+assert.match(split, /Remaining · 55/);
+assert.match(split, /split unavailable/); // Missing historical categories stay honest.
 for (const color of ["#58a6ff", "#3fb950", "#b6a04c"]) assert.ok(split.includes(color));
 context.history = [];
 assert.equal(context.miningDays(client).length, 1);
@@ -43,8 +50,8 @@ for (const name of new Set(context.history.flatMap(s => Object.keys(s.clients)))
   for (const d of recorded) assert.equal(d.source + d.mined, d.matched);
   const rendered = context.miningGraph({...latest, name});
   for (const color of ["#58a6ff", "#3fb950"]) {
-    const points = rendered.match(new RegExp(`points="([^"]*)" fill="none" stroke="${color}"`))[1];
-    assert.ok(points.split(" ").length > 1, `${name}: category line only has one dot`);
+    const bars = rendered.match(new RegExp(`fill="${color}"`, "g")) || [];
+    assert.ok(bars.length > 1, `${name}: category missing from daily stacks`);
   }
 }
 new vm.Script(html.match(/<script>([\s\S]*?)<\/script>/)[1]);

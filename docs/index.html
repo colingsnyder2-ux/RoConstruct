@@ -172,9 +172,9 @@ canvas { display: block; width: 100%; height: min(70vh, 560px); background: var(
 .note { color: var(--dim); font: 12px var(--mono); margin-top: 12px; }
 .mining-chart { overflow-x: auto; }
 .mining-chart svg { display: block; width: 100%; min-width: 560px; }
+.mining-stack { outline: none; }
+.mining-stack:hover rect, .mining-stack:focus rect { stroke: var(--text); stroke-width: 1.5; }
 .mining-chart text { fill: var(--dim); font: 12px var(--mono); }
-.mining-chart circle { stroke: var(--panel); stroke-width: 2; }
-.mining-chart circle:hover, .mining-chart circle:focus { r: 6; stroke: var(--cyan); outline: none; }
 .mining-days { margin-top: 12px; }
 .mining-days summary { cursor: pointer; color: var(--accent2); }
 
@@ -301,27 +301,37 @@ function miningDays(c) {
 function miningGraph(c) {
   const days = miningDays(c);
   if (!days.length) return "";
-  const x = i => 56 + (days.length === 1 ? 0.5 : i / (days.length - 1)) * 808;
-  const y = percent => 260 - percent * 2.2;
+  const width = Math.max(900, days.length * 28 + 96), step = (width - 96) / days.length;
+  const x = i => 60 + i * step + Math.min(6, step * 0.15) / 2;
+  const barWidth = step - Math.min(6, step * 0.15);
+  const y = percent => 284 - percent * 2.4;
   const last = days.at(-1);
   const gain = d => d.gain === null ? "—" : `${d.gain > 0 ? "+" : ""}${fmt(d.gain)}`;
-  const series = [["matched", "Matched total", "#8a97a8"], ["source", "Original source", "#58a6ff"],
+  const series = [["source", "Original source", "#58a6ff"],
     ["mined", "Mined", "#3fb950"], ["partial", "Partial", "#b6a04c"]];
   const count = n => n == null ? "—" : fmt(n);
   return `<div class="head"><h2><small>Daily progress</small>Mining</h2>
     <p>${fmt(last.matched)} / ${fmt(last.functions)} functions matched · ${last.percent.toFixed(2)}% complete.
-    Cumulative daily totals (US Eastern), toward 100%. Full history since ${days[0].day}.</p></div>
-    <div class="panel mining-chart"><svg viewBox="0 0 900 310" role="img" aria-label="Daily cumulative matched functions, zero to one hundred percent">
-      ${[0, 25, 50, 75, 100].map(p => `<line x1="56" x2="864" y1="${y(p)}" y2="${y(p)}" stroke="var(--line2)"/>
+    One stack per day (US Eastern), toward 100%. Full history since ${days[0].day}.</p></div>
+    <div class="panel mining-chart"><svg viewBox="0 0 ${width} 364" style="min-width:${Math.max(560, days.length * 28 + 96)}px" role="img" aria-label="Daily stacked function counts: original source, mined, partial and remaining, zero to one hundred percent">
+      ${[0, 20, 40, 60, 80, 100].map(p => `<line x1="56" x2="${width - 32}" y1="${y(p)}" y2="${y(p)}" stroke="var(--line2)"/>
         <text x="46" y="${y(p) + 4}" text-anchor="end">${p}%</text>`).join("")}
-      ${series.map(([key, label, color]) => {
-        const points = days.map((d, i) => ({d, i})).filter(({d}) => d[key] != null);
-        return `<polyline points="${points.map(({d, i}) => `${x(i)},${y(100 * d[key] / d.functions)}`).join(" ")}" fill="none" stroke="${color}" stroke-width="${key === "matched" ? 1.5 : 3}" ${key === "matched" || key === "partial" ? 'stroke-dasharray="5 5"' : ""}/>
-          ${points.map(({d, i}) => `<circle cx="${x(i)}" cy="${y(100 * d[key] / d.functions)}" r="4" fill="${color}" tabindex="0"><title>${d.day}: ${fmt(d[key])} ${label.toLowerCase()} / ${fmt(d.functions)} (${(100 * d[key] / d.functions).toFixed(2)}%)${key === "matched" ? `; daily change ${gain(d)}` : ""}</title></circle>`).join("")}`;
+      ${days.map((d, i) => {
+        const split = d.source != null && d.mined != null;
+        const segments = split ? series : [["matched", "Matched (source/mined split unavailable)", "#8a97a8"], series[2]];
+        let bottom = 0;
+        return `<g class="mining-stack" tabindex="0" role="img" aria-label="${d.day}: ${d.percent.toFixed(2)}% matched">
+          <title>${d.day}: ${fmt(d.matched)} matched total / ${fmt(d.functions)} (${d.percent.toFixed(2)}%); daily change ${gain(d)}. Original source: ${count(d.source)}; mined: ${count(d.mined)}; partial: ${count(d.partial)}; remaining: ${fmt(Math.max(0, d.functions - d.matched - (d.partial || 0)))}</title>
+          <rect x="${x(i)}" y="${y(100)}" width="${barWidth}" height="240" rx="3" fill="var(--panel2)"/>
+          ${segments.map(([key, label, color]) => {
+            const value = d[key] || 0, height = Math.min(100 - bottom, 100 * value / d.functions);
+            bottom += height;
+            return `<rect data-series="${key}" x="${x(i)}" y="${y(bottom)}" width="${barWidth}" height="${height * 2.4}" fill="${color}"><title>${d.day}: ${fmt(value)} ${label.toLowerCase()} / ${fmt(d.functions)} (${(100 * value / d.functions).toFixed(2)}%)</title></rect>`;
+          }).join("")}</g>`;
       }).join("")}
-      ${[...new Set([0, Math.floor((days.length - 1) / 2), days.length - 1])].map(i =>
-        `<text x="${x(i)}" y="290" text-anchor="middle">${days[i].day}</text>`).join("")}
-    </svg><div class="legend">${series.map(([key, label, color]) => `<span><i style="background:${color}"></i>${label} · ${count(last[key])}</span>`).join("")}</div></div>
+      ${days.map((d, i) => `<text x="${x(i) + barWidth / 2}" y="306" transform="rotate(-40 ${x(i) + barWidth / 2} 306)" text-anchor="end">${d.day.slice(5).replace("-", "/")}</text>`).join("")}
+      <text x="${width - 32}" y="354" text-anchor="end">${days[0].day.slice(0, 4)} · US Eastern</text>
+    </svg><div class="legend">${series.map(([key, label, color]) => `<span><i style="background:${color}"></i>${label} · ${count(last[key])}</span>`).join("")}<span><i style="background:var(--panel2);border:1px solid var(--line2)"></i>Remaining · ${fmt(Math.max(0, last.functions - last.matched - (last.partial || 0)))}</span></div></div>
     <details class="mining-days"><summary>Daily function counts</summary><p class="note">Last snapshot each day; days without snapshots carry the previous total. Historical source/mined counts recovered from archived function data; unavailable counts show —. Changes include inventory corrections. First recorded total has no daily change.</p>
       <div class="table"><table><thead><tr><th>Day (US Eastern)</th><th>Matched</th><th>Source</th><th>Mined</th><th>Partial</th><th>Daily change</th><th>Complete</th></tr></thead><tbody>
       ${days.map(d => `<tr><td>${d.day}</td><td>${fmt(d.matched)}</td><td>${count(d.source)}</td><td>${count(d.mined)}</td><td>${count(d.partial)}</td><td>${gain(d)}</td><td>${d.percent.toFixed(2)}%</td></tr>`).join("")}
