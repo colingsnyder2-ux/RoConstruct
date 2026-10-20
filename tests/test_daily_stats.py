@@ -10,8 +10,6 @@ from unittest.mock import patch
 from roc.reports import archive_days, day_bounds, save
 from roc.server import Store, make_handler
 from roc.worker import Api
-from roc.reports import payload, publish_yesterday
-from roc.reports import inline_code
 
 
 class DailyStatsTests(unittest.TestCase):
@@ -96,34 +94,6 @@ class DailyStatsTests(unittest.TestCase):
             finally:
                 store.db.close()
 
-    def test_webhook_demo_and_sent_marker(self):
-        report = {"date": "2026-10-11", "timezone": "America/New_York", "exacts": 0,
-                  "people": [], "models": [], "server_mining": [], "clients": [], "legacy_unattributed_exacts": 0}
-        message = payload(report, demo=True)
-        self.assertIn("DEMO", message["embeds"][0]["title"])
-        self.assertEqual(message["allowed_mentions"]["parse"], [])
-        self.assertEqual(message["embeds"][0]["footer"]["text"], "RoConstruct Server Mining")
-        self.assertIn("timestamp", message["embeds"][0])
-        report["server_mining"] = [{"name": "roc propagation", "exacts": 32}]
-        report["people"] = [{"name": "colin", "exacts": 32, "models": [{"name": "roc propagation", "exacts": 32}]}]
-        fields = payload(report)["embeds"][0]["fields"]
-        self.assertEqual(fields[1]["value"], "`roc propagation` - 32")
-        self.assertNotIn("`", fields[0]["value"])
-        self.assertEqual(inline_code("roc repair"), "`roc repair`")
-        report["people"][0]["models"].append({"name": "deepseek:deepseek-flash", "exacts": 7})
-        players = payload(report)["embeds"][0]["fields"][0]["value"]
-        self.assertIn("`deepseek-flash` - 7", players)
-        self.assertNotIn("Server Mining", players)
-        self.assertNotIn("roc propagation", players)
-        self.assertNotIn("`7`", players)
-        store = Store(":memory:", 600)
-        try:
-            with tempfile.TemporaryDirectory() as directory, patch("roc.reports.providers.secret", return_value="configured"), patch("roc.reports.send", return_value=True) as send:
-                publish_yesterday(store, directory)
-                publish_yesterday(store, directory)
-                send.assert_called_once()
-        finally:
-            store.db.close()
 
 
 if __name__ == "__main__":

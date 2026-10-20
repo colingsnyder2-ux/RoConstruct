@@ -30,5 +30,8 @@ assert.doesNotMatch(context.miningGraph(client), /NaN|Infinity/);
 assert.equal(context.miningGraph({name: "empty", functions: 0, matched: 0}), "");
 context.history = [{date: "2026-10-19 20:00 UTC", clients: {"2008-06": stats(45)}}];
 assert.equal(context.miningDays(client).at(-1).gain, -5); // corrections stay truthful
+context.history = [{date: "2026-10-07 02:53 UTC", clients: {"2008-06": stats(1)}}];
+assert.equal(context.miningDays(client)[0].day, "2026-10-06"); // full history, Eastern date
+assert.match(context.miningGraph(client), /Full history since 2026-10-06/);
 new vm.Script(html.match(/<script>([\s\S]*?)<\/script>/)[1]);
 console.log("Mining graph tests passed.");

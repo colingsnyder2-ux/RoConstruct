@@ -68,8 +68,15 @@ Write bulk trials as a recipe in `research/recipes.json` (op `grid` or `fanout`)
 not a new script; generated units go through `libs.add_unit` so every PC can rebuild
 them. Keep each campaign's evidence in `work/<campaign>-<date>/`: sources, hashes,
 diffs, server receipts and a summary. Compiling locally is free, so submit only
-gains, with `roc submit <client> [addr ...]`. Afterwards append one dated entry to
-`research/log.jsonl` with `roc research note TITLE TEXT`, covering:
+gains, with `roc submit <client> [addr ...]`.
+
+Player/LLM submissions belong in Player Mining. Include the actual model:
+`roc submit <client> [addr ...] --model gpt-6.1-sol` for GPT-6.1 Sol; use your own
+model name for other LLMs. Never label LLM work as `roc repair`, `roc auto`, or
+another automatic command: those labels route to Server Mining.
+
+Afterwards append one dated entry to `research/log.jsonl` with
+`roc research note TITLE TEXT`, covering:
 - what was tried;
 - the exacts gained;
 - the rejected variants;

@@ -11,7 +11,7 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from roc import setup, providers
+from roc import setup
 
 
 # --- daily stats ---
@@ -78,64 +78,6 @@ def archive_days(store, directory):
         save(store.daily_stats(day.isoformat()), directory)
 
 
-# --- leaderboard ---
-# Daily leaderboard webhook; credentials live outside the repository.
-
-KEY = "ROCONSTRUCT_LEADERBOARD_WEBHOOK"
-
-
-def payload(report, demo=False):
-    people = []
-    for rank, row in enumerate(report["people"][:10], 1):
-        models = ["%s - %s" % (inline_code(m["name"].split(":", 1)[-1]), format(m["exacts"], ",")) for m in row["models"] if not m["name"].startswith("roc ")]
-        medal = ("🥇", "🥈", "🥉")[rank - 1] if rank <= 3 else "%d." % rank
-        entry = "%s **%s — %s**" % (medal, row["name"], format(row["exacts"], ","))
-        if models:
-            entry += "\n" + " · ".join(models)
-        if len("\n".join(people + [entry])) > 1024:
-            break
-        people.append(entry)
-    mining = []
-    for row in report["server_mining"][:12]:
-        entry = "%s - %s" % (inline_code(row["name"]), format(row["exacts"], ","))
-        if len("\n".join(mining + [entry])) > 1024:
-            break
-        mining.append(entry)
-    fields = [{"name": "👥 Top people · models used", "value": "\n".join(people) or "No verified gains."},
-              {"name": "⛏️ Server Mining", "value": "\n".join(mining) or "—"}]
-    return {"allowed_mentions": {"parse": []}, "embeds": [{
-        "title": "🏆 " + ("DEMO · " if demo else "") + "RoConstruct Daily Leaderboard",
-        "description": "📅 %s · **%s new exact functions**" % (report["date"], format(report["exacts"], ",")) +
-                       ("\n*Demo — sample data only.*" if demo else ""),
-        "color": 0x58A6FF, "fields": fields,
-        "footer": {"text": "RoConstruct Server Mining"},
-        "timestamp": datetime.now(timezone.utc).isoformat()}]}
-
-
-def send(report, demo=False):
-    url = providers.secret(KEY)
-    if not url:
-        return False
-    request = urllib.request.Request(url, data=json.dumps(payload(report, demo)).encode(),
-                                     headers={"Content-Type": "application/json", "User-Agent": "RoConstruct/1.0"})
-    try:
-        with urllib.request.urlopen(request, timeout=15) as response:
-            return 200 <= response.status < 300
-    except urllib.error.HTTPError as error:
-        raise RuntimeError("Leaderboard webhook HTTP %d" % error.code) from None
-    except OSError:
-        raise RuntimeError("Leaderboard webhook connection failed") from None
-
-
-def publish_yesterday(store, directory):
-    if not providers.secret(KEY):
-        return
-    day = (datetime.now(ZoneInfo(TIMEZONE)).date() - timedelta(days=1)).isoformat()
-    marker = Path(directory) / (day + ".discord-sent")
-    if not marker.exists() and send(store.daily_stats(day)):
-        marker.write_text(day, encoding="utf-8")
-
-
 # --- discord ---
 # Optional Discord mining digests.
 
@@ -145,14 +87,14 @@ ROOT = Path(__file__).resolve().parent.parent
 BATCH_SECONDS = 90
 
 
-RATE_WINDOW = 15 * 60
+RATE_WINDOW = 2 * 60 * 60
 
 
 ETA_MIN_RATE = 1.0 / 3600
 
 
 def emoji_bar(source, mined, retry, total):
-    """Twenty-three cells: blue source, green mined, red retry, white untouched."""
+    """Twenty-three cells: blue source, green mined, yellow partial, white untouched."""
     values = (source, mined, retry)
     cells = [value * 23 // total if total else 0 for value in values]
     spare = 23 - sum(cells)
@@ -160,7 +102,7 @@ def emoji_bar(source, mined, retry, total):
     for i in order[:spare]:
         cells[i] += 1
     return (":blue_square:" * cells[0] + ":green_square:" * cells[1] +
-            ":negative_squared_cross_mark:" * cells[2] + ":white_large_square:" * (23 - sum(cells)))
+            ":yellow_square:" * cells[2] + ":white_large_square:" * (23 - sum(cells)))
 
 
 def fmt_duration(seconds):
@@ -275,7 +217,9 @@ class MineLog:
 
     def digest(self, events):
         """One consistent digest shape; never send per-function webhook spam."""
-        client = events[-1]["job"].get("client", "?")
+        client = events[0]["job"]["client"]
+        if any(e["job"]["client"] != client for e in events):
+            raise ValueError("Digest must contain one client")
         matched, total, matched_bytes, total_bytes = self.store.display_progress(client)
         source, mined, retry, _total = self.store.digest_progress(client)
         left = max(0, total - matched)
@@ -287,7 +231,7 @@ class MineLog:
         full = [e for e in events if e["score"] == 100]
         partial = [e for e in events if e["score"] < 100]
         functions = []
-        for name in sorted({e["model"] for e in events if e["model"]}) or ["auto"]:
+        for name in sorted({e["model"] for e in events if e["model"]}) or ["auto" if self.server else "Unknown model"]:
             entry = inline_code(name)
             if len(", ".join(functions + [entry])) > 1024:
                 break
@@ -295,7 +239,7 @@ class MineLog:
 
         def lines(rows):
             return "\n".join("%s **%d%%** `%s` %s · %s B" % (
-                "🟢" if e["score"] == 100 else "🟡", e["score"], e["job"].get("addr", "?"),
+                "🟢" if e["score"] == 100 else "🟨", e["score"], e["job"].get("addr", "?"),
                 e["job"].get("unit", "?"), e["job"].get("size", "?")) for e in rows[:10]) or "None"
 
         if self.server:
@@ -309,15 +253,15 @@ class MineLog:
             people = {"name": "🏆 Workers", "value": ("%d worker%s in batch\n%s" % (workers, "s" if workers != 1 else "", totals))[:1024],
                       "inline": True}
         fields = [{"name": "🟢 Fully Matched", "value": lines(full), "inline": False}]
-        fields += [{"name": "🟡 Partially Matched",
+        fields += [{"name": "🟨 Partially Matched",
                     "value": "x%d partially matched" % len(partial) if len(partial) > 10 else lines(partial),
                     "inline": False},
-                   {"name": "⚡ Mining Rate", "value": "%d functions/hr · ETA %s" % (round(rate_hr), eta), "inline": True},
+                   {"name": "⚡ Mining Rate", "value": "%g functions/hr (last 2h) · ETA %s" % (round(rate_hr, 1), eta), "inline": True},
                    people,
                    {"name": "✅ Batch", "value": "%d full · %d improved" % (len(full), len(partial)), "inline": True},
-                   {"name": "🔧 Functions", "value": ", ".join(functions), "inline": True}]
+                   {"name": "🔧 Functions" if self.server else "🔧 Models", "value": ", ".join(functions), "inline": True}]
         return {"title": "⛏️ RoConstruct Server Mining Digest" if self.server else "⛏️ RoConstruct Mining Digest",
-                "description": "**%s Client**\n%s / %s matched · %s remaining\n\n%s **%.2f%%**\n\n🟦 source · 🟩 mined · ❎ partial · ⬜ remaining" % (
+                "description": "**%s Client**\n%s / %s matched · %s remaining\n\n%s **%.2f%%**\n\n🟦 source · 🟩 mined · 🟨 partial · ⬜ remaining" % (
                     client, format(matched, ","), format(total, ","), format(left, ","), bar, percent),
                 "color": 0x58A6FF,
                 "fields": fields,
@@ -325,9 +269,13 @@ class MineLog:
                 "timestamp": datetime.now(timezone.utc).isoformat()}
 
     def _send(self, events):
-        try:
-            payload = {"embeds": [self.digest(events)]}
-        except (OSError, ValueError, KeyError) as error:
-            print("Discord digest skipped: %s" % error)
-            return
-        threading.Thread(target=_post, args=(self.webhook, payload), daemon=True).start()
+        clients = defaultdict(list)
+        for event in events:
+            clients[event["job"]["client"]].append(event)
+        for rows in clients.values():
+            try:
+                payload = {"allowed_mentions": {"parse": []}, "embeds": [self.digest(rows)]}
+            except (OSError, ValueError, KeyError) as error:
+                print("Discord digest skipped: %s" % error)
+                continue
+            threading.Thread(target=_post, args=(self.webhook, payload), daemon=True).start()

@@ -925,7 +925,7 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
                 receipt = None
                 if score >= task["before"] and score > task["job"]["score"]:
                     receipt = local.call("/v1/submit", {"lease": task["job"]["lease"], "user": user,
-                        "worker": task["worker_id"], "model": "agent:auto:" + profile,
+                        "worker": task["worker_id"], "model": model or (cli + " (CLI default)"),
                         "client": client, "addr": task["addr"], "score": score, "source": text}, timeout=120)
                     if not receipt.get("verified"):
                         raise RuntimeError("Server did not verify candidate")

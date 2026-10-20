@@ -33,9 +33,10 @@ deleted) prevents concurrent publishes.
 ## Discord and daily stats
 
 `--discord-webhook URL` (or `ROCONSTRUCT_DISCORD_WEBHOOK`) logs mined functions.
-The daily leaderboard webhook lives in the secrets store as
-`ROCONSTRUCT_LEADERBOARD_WEBHOOK`; the server posts the prior day's rankings after
-midnight US Eastern. Credit needs server verification, an improvement from below 100 to
+Digests split each batch into one message per client, with a two-hour mining rate.
+Player Mining shows the submitted LLM under Models; automatic tools use Server Mining.
+The daily Discord leaderboard is removed. Local daily audit reports remain.
+Credit needs server verification, an improvement from below 100 to
 100, and a unique client/address per day; 2009-12 is excluded. Commands report under
 **Server Mining** by their `model` field. Reports (JSON + CSV) are saved under
 `reports/daily/` beside the database; `roc daily-stats [--date D] [--db work/server.db]`

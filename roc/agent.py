@@ -489,6 +489,8 @@ PREAMBLE = """\
 STYLE: terse technical fragments. No greetings or narration. One line of progress only when a score changes.
 
 TRUTH
+- Submit LLM-written gains to Player Mining with the actual LLM name: roc submit CLIENT ADDR --model MODEL.
+  Example for GPT-6.1 Sol: --model gpt-6.1-sol. Never label LLM work as a roc automatic mining command.
 - Only a server receipt with verified=true, improved=true, score=100 is a new exact. Local 100% is a candidate.
 - Never check, edit or submit a function already at 100% (score 100, matched_read_only, "already matched").
   Use matched sources only as read-only examples.
@@ -638,6 +640,7 @@ def _run_once(cli, prompt, model, minutes, log, goal, switch_minutes):
         temporary.mkdir(parents=True, exist_ok=True)
         environment.update(TEMP=str(temporary), TMP=str(temporary), TMPDIR=str(temporary))
     environment["ROC_AGENT"] = "1"  # roc submit then asks for a success summary
+    environment["ROC_AGENT_MODEL"] = model or (cli + " (CLI default)")
     log("Launching %s model %s." % (cli, model or "CLI default"))
     process = subprocess.Popen(argv, cwd=ROOT, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
                                text=True, encoding="utf-8", errors="replace", env=environment)
@@ -778,7 +781,7 @@ def work_one(api, user, agent_id, job, cli, model, minutes, log, shared=None):
     match.save_score(client, addr, after)
     if after > job.get("score", 0):
         r = api.call("/v1/submit", {"lease": job["lease"], "user": user, "worker": agent_id,
-                                    "model": "agent:" + cli, "client": client, "addr": addr,
+                                    "model": model or (cli + " (CLI default)"), "client": client, "addr": addr,
                                     "score": after, "source": path.read_text(encoding="utf-8", errors="replace")})
         log("  submitted: server stored %s%%" % r.get("stored"))
         job["receipt"] = r

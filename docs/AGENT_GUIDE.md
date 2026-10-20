@@ -98,6 +98,13 @@ answers "unknown endpoint": attempts stay queued locally until it is updated.
 Missing docs are cached in `work/agent-memory/context/`. The server's findings
 publisher exports lessons, context and shared attempts to RoConstruct-findings.
 
+LLM-written gains belong in **Player Mining**. Submit with the actual model:
+`roc submit CLIENT ADDR --model gpt-6.1-sol` for GPT-6.1 Sol; other LLMs must use
+their own model name. Agent-launched submissions inherit `ROC_AGENT_MODEL` unless
+overridden by `--model`. Do not label LLM work `roc repair`, `roc auto`, or another
+automatic command: those labels belong to Server Mining. Missing model names are
+shown as Unknown model, never guessed from another worker's settings.
+
 ## Automatic agent worker
 
 Runs inside Workers (same chat, terminal, history and stop control as other workers).

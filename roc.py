@@ -1267,7 +1267,8 @@ def cmd_submit(a):
         if not getattr(a, "file", None) and not (ROOT / "src" / name).is_dir():
             continue
         try:
-            worker.submit_files(srv, user, name, a.addr or None, a.token or s.get("token"), file=getattr(a, "file", None))
+            worker.submit_files(srv, user, name, a.addr or None, a.token or s.get("token"),
+                                file=getattr(a, "file", None), model=getattr(a, "model", None))
         except worker.ApiFailure as error:
             print("%s: submit failed: %s" % (name, error))
 
@@ -2374,6 +2375,7 @@ def main(argv=None):
         (["--limit"], {"type": int, "default": 20, "help": "number of completed recovery runs (20)"}))
     cmd("submit", cmd_submit, "send hand-written sources to the server ('all' for every client)",
         (["name"], {}), (["addr"], {"nargs": "*"}), (["--server"], {}), (["--user"], {}), (["--token"], {}),
+        (["--model"], {"help": "LLM that mined these functions, e.g. gpt-6.1-sol (Player Mining credit)"}),
         (["--file"], {"help": "submit an isolated ADDR.cpp candidate without editing src/"}))
     cmd("pull", cmd_pull, "download everyone's sources from the server into src/ ('all' for every client)",
         (["name"], {}), (["--force"], {"action": "store_true", "help": "replace your local files"}),

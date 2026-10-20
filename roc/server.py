@@ -704,7 +704,7 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None):
                     if feed is not None:
                         feed.submit(store.function_info(client, addr), user,
                                         str(body.get("worker", ""))[:64],
-                                        str(body.get("model", ""))[:120] or "auto",
+                                        str(body.get("model", ""))[:120] or "Unknown model",
                                         stored, stored - previous)
                 return self.send(200, {"score": score, "stored": stored, "improved": improved, "verified": verified})
             if path == "/v1/submit-batch":
@@ -737,7 +737,7 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None):
                     if improved and feed is not None:
                         feed.submit(store.function_info(client, addr), user,
                                         str(body.get("worker", ""))[:64],
-                                        str(body.get("model", ""))[:120] or "auto", stored, stored - previous)
+                                        str(body.get("model", ""))[:120] or "Unknown model", stored, stored - previous)
                     results.append({"addr": addr, "score": score, "stored": stored, "improved": improved})
                 return self.send(200, {"verified": True, "results": results})
             self.send(404, {"error": "unknown endpoint"})
@@ -834,8 +834,6 @@ def serve(host="0.0.0.0", port=8765, db=None, token=None, lease_seconds=900,
                     save(store.daily_stats(previous_day), directory)
                 save(report, directory)
                 previous_day = report["date"]
-                from roc.reports import publish_yesterday
-                publish_yesterday(store, directory)
             except (OSError, sqlite3.Error, ValueError, RuntimeError) as error:
                 log("Daily report failed: %s" % error)
             time.sleep(60)

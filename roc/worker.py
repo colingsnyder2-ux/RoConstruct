@@ -1501,7 +1501,7 @@ def pull_files(server, client, token=None, force=False, log=print):
         % (client, len(rows), written, folder, kept, " (use --force to replace them)" if kept else ""))
 
 
-def submit_files(server, user, client, addrs=None, token=None, log=print, file=None):
+def submit_files(server, user, client, addrs=None, token=None, log=print, file=None, model=None):
     """Upload hand-written src/<client>/*.cpp to the server (checked locally first).
 
     Files pulled from the server ("// from server:" header) are skipped when
@@ -1509,6 +1509,7 @@ def submit_files(server, user, client, addrs=None, token=None, log=print, file=N
     (e.g. a client the server has not imported yet) must not abort the run.
     Local re-checks (one compile each) run in parallel; uploads stay serial.
     """
+    model = model or os.environ.get("ROC_AGENT_MODEL") or "Unknown model"
     api = Api(server, token)
     paths = sorted((ROOT / "src" / client).glob("*.cpp"))
     if file:
@@ -1529,6 +1530,8 @@ def submit_files(server, user, client, addrs=None, token=None, log=print, file=N
             skipped += 1
             continue
         candidates.append((p, text))
+    if candidates:
+        log("Player Mining credit: %s. Use --model with the LLM that produced these gains." % model)
     jobs = int(os.environ.get("ROC_JOBS") or 0) or min(12, os.cpu_count() or 4)
     checked = []
     with ThreadPoolExecutor(max_workers=jobs) as pool:
@@ -1547,7 +1550,7 @@ def submit_files(server, user, client, addrs=None, token=None, log=print, file=N
             return "%s  no gain over server; skipped" % p.stem
         try:  # one connection per thread; the server verifies up to 3 at a time
             r = Api(server, token).call("/v1/submit", {"user": user, "client": client, "addr": p.stem,
-                                                       "score": score, "source": text})
+                                                       "score": score, "source": text, "model": model})
         except ApiFailure as error:
             return "%s  not accepted: %s" % (p.stem, error)
         task_path = p.parent / "task.json"
