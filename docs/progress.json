@@ -1,21 +1,21 @@
 {
- "updated": "2026-10-20 21:47 UTC",
+ "updated": "2026-10-20 22:20 UTC",
  "clients": [
   {
    "name": "2007-03",
    "compiler": "VS2005 (cl 14.00.50727)",
    "built": "2007-03-26",
    "started": true,
-   "functions": 19346,
-   "matched": 9330,
-   "partial": 9817,
-   "source_matched": 7988,
+   "functions": 19231,
+   "matched": 9329,
+   "partial": 9703,
+   "source_matched": 7987,
    "mined_matched": 1342,
-   "bytes": 3135933,
-   "matched_bytes": 831498,
-   "source_bytes": 783270,
+   "bytes": 3131385,
+   "matched_bytes": 831401,
+   "source_bytes": 783173,
    "mined_bytes": 48228,
-   "partial_bytes": 2157303,
+   "partial_bytes": 2152852,
    "data_bytes": 1332936,
    "leaderboard": [
     {
@@ -63,23 +63,23 @@
    ],
    "data_matched_bytes": 77746,
    "classes": 0,
-   "generated": 6123
+   "generated": 6355
   },
   {
    "name": "2007-08",
    "compiler": "VS2005 (cl 14.00.50727)",
    "built": "2007-08-19",
    "started": true,
-   "functions": 19955,
-   "matched": 11335,
-   "partial": 8269,
-   "source_matched": 6876,
+   "functions": 19954,
+   "matched": 11334,
+   "partial": 8268,
+   "source_matched": 6875,
    "mined_matched": 4459,
-   "bytes": 3195050,
-   "matched_bytes": 997750,
-   "source_bytes": 807792,
+   "bytes": 3195097,
+   "matched_bytes": 997544,
+   "source_bytes": 807586,
    "mined_bytes": 189958,
-   "partial_bytes": 1939949,
+   "partial_bytes": 1940128,
    "data_bytes": 1361658,
    "leaderboard": [
     {
@@ -169,16 +169,16 @@
    "compiler": "VS2008 RTM (cl 15.00.21022)",
    "built": "2008-06-20",
    "started": true,
-   "functions": 22320,
-   "matched": 21162,
-   "partial": 1153,
-   "source_matched": 13036,
-   "mined_matched": 8126,
+   "functions": 22313,
+   "matched": 21170,
+   "partial": 1137,
+   "source_matched": 13038,
+   "mined_matched": 8132,
    "bytes": 3696197,
-   "matched_bytes": 3087821,
-   "source_bytes": 2375994,
-   "mined_bytes": 711827,
-   "partial_bytes": 606418,
+   "matched_bytes": 3092436,
+   "source_bytes": 2379907,
+   "mined_bytes": 712529,
+   "partial_bytes": 601465,
    "data_bytes": 1559926,
    "leaderboard": [
     {
@@ -190,10 +190,10 @@
     },
     {
      "user": "colin",
-     "matched": 2942,
-     "points": 667071,
-     "submissions": 22646,
-     "last": 1792532432.3999605
+     "matched": 2944,
+     "points": 667168,
+     "submissions": 22652,
+     "last": 1792534731.7466102
     },
     {
      "user": "king_originala",
@@ -204,10 +204,10 @@
     },
     {
      "user": "Espeon",
-     "matched": 438,
-     "points": 9189,
-     "submissions": 628,
-     "last": 1792532738.1838675
+     "matched": 445,
+     "points": 9455,
+     "submissions": 635,
+     "last": 1792533773.049853
     },
     {
      "user": "atomic.potato",
@@ -225,10 +225,10 @@
     },
     {
      "user": "EspClaude",
-     "matched": 19,
-     "points": 63,
-     "submissions": 20,
-     "last": 1792532627.2377102
+     "matched": 24,
+     "points": 100,
+     "submissions": 25,
+     "last": 1792534762.8138537
     },
     {
      "user": "Cezant64gamejr",
@@ -273,25 +273,25 @@
      "last": 1792416272.4331148
     }
    ],
-   "data_matched_bytes": 182462,
+   "data_matched_bytes": 182765,
    "classes": 1488,
-   "generated": 19456
+   "generated": 19450
   },
   {
    "name": "2009-06",
    "compiler": "VS2008 SP1 (cl 15.00.30729)",
    "built": "2009-06-16",
    "started": true,
-   "functions": 26175,
-   "matched": 13847,
-   "partial": 6687,
-   "source_matched": 8326,
-   "mined_matched": 5521,
-   "bytes": 4275169,
-   "matched_bytes": 1504075,
-   "source_bytes": 1289547,
-   "mined_bytes": 214528,
-   "partial_bytes": 1182946,
+   "functions": 26141,
+   "matched": 13839,
+   "partial": 6669,
+   "source_matched": 8321,
+   "mined_matched": 5518,
+   "bytes": 4270002,
+   "matched_bytes": 1502131,
+   "source_bytes": 1288397,
+   "mined_bytes": 213734,
+   "partial_bytes": 1180819,
    "data_bytes": 1809822,
    "leaderboard": [
     {
@@ -346,23 +346,23 @@
    ],
    "data_matched_bytes": 139749,
    "classes": 1624,
-   "generated": 20430
+   "generated": 20464
   },
   {
    "name": "2010-06",
    "compiler": "VS2008 SP1 (cl 15.00.30729)",
    "built": "2010-06-18",
    "started": true,
-   "functions": 32946,
-   "matched": 15905,
-   "partial": 9205,
-   "source_matched": 9537,
-   "mined_matched": 6368,
-   "bytes": 5490015,
-   "matched_bytes": 1539952,
-   "source_bytes": 1285568,
-   "mined_bytes": 254384,
-   "partial_bytes": 1655285,
+   "functions": 32913,
+   "matched": 15892,
+   "partial": 9189,
+   "source_matched": 9530,
+   "mined_matched": 6362,
+   "bytes": 5483238,
+   "matched_bytes": 1536989,
+   "source_bytes": 1284238,
+   "mined_bytes": 252751,
+   "partial_bytes": 1652213,
    "data_bytes": 2369604,
    "leaderboard": [
     {
@@ -403,7 +403,7 @@
    ],
    "data_matched_bytes": 135163,
    "classes": 2012,
-   "generated": 25487
+   "generated": 25521
   },
   {
    "name": "2011-06",
@@ -510,9 +510,9 @@
     {
      "user": "intel",
      "matched": 25,
-     "points": 9817,
-     "submissions": 776,
-     "last": 1792531931.7637904
+     "points": 9831,
+     "submissions": 777,
+     "last": 1792533009.7402961
     },
     {
      "user": "Viper",
@@ -544,10 +544,10 @@
   },
   {
    "user": "colin",
-   "matched": 15034,
-   "points": 5505912,
-   "submissions": 185507,
-   "last": 1792532432.3999605
+   "matched": 15036,
+   "points": 5506009,
+   "submissions": 185513,
+   "last": 1792534731.7466102
   },
   {
    "user": "king_originala",
@@ -565,10 +565,10 @@
   },
   {
    "user": "Espeon",
-   "matched": 438,
-   "points": 9189,
-   "submissions": 628,
-   "last": 1792532738.1838675
+   "matched": 445,
+   "points": 9455,
+   "submissions": 635,
+   "last": 1792533773.049853
   },
   {
    "user": "why2",
@@ -594,16 +594,16 @@
   {
    "user": "intel",
    "matched": 25,
-   "points": 9817,
-   "submissions": 776,
-   "last": 1792531931.7637904
+   "points": 9831,
+   "submissions": 777,
+   "last": 1792533009.7402961
   },
   {
    "user": "EspClaude",
-   "matched": 19,
-   "points": 63,
-   "submissions": 20,
-   "last": 1792532627.2377102
+   "matched": 24,
+   "points": 100,
+   "submissions": 25,
+   "last": 1792534762.8138537
   },
   {
    "user": "Viper",
