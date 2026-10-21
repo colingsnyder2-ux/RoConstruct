@@ -384,14 +384,114 @@ def cmd_next(a):
 
 
 def cmd_claim(a):
-    from roc import match
+    from roc import match, worker
     if not ready(a.name):
         sys.exit("%s: no verified exe, nothing to claim." % a.name)
     path = match.claim(a.name, a.addr)
+    s = settings()
+    if s.get("server") and s.get("user"):
+        try:
+            worker.Api(s["server"], s.get("token")).call(
+                "/v1/claim", {"user": s["user"], "worker": s["user"],
+                              "client": a.name, "addr": a.addr}, timeout=15)
+            print("Claimed on the server (other agents skip it for ~2h).")
+        except worker.ApiFailure as error:
+            if "another worker" in str(error):
+                print("Note: %s is already claimed by another worker." % a.addr)
     print("Edit this file:", path)
     print("Then run:       roc check %s %s" % (a.name, path.stem))
     if a.open and os.name == "nt":
         subprocess.Popen(["notepad.exe", str(path)])
+
+
+def _score_band(score):
+    """Coarser the band, the more work a function needs. Manual matching drains the
+    near-done bands first (see the manual matching loop in docs/AGENT_GUIDE.md)."""
+    if score >= 95:
+        return 0
+    if score >= 90:
+        return 1
+    if score >= 70:
+        return 2
+    return 3
+
+
+def cmd_work(a):
+    """Manual-matching admin: list clients, or select+claim the next unmatched function.
+
+    Selection and claiming come from the server, never from possibly-stale local
+    scores.json. The agent still edits the C++ by hand; this command only automates
+    the repetitive picking/claiming bookkeeping."""
+    from roc import worker, match
+    s = settings()
+    srv = need(a.server or s.get("server"), "server", "Use --server or: roc config --server URL")
+    user = need(a.user or s.get("user"), "username", "Use --user or: roc config --user NAME")
+    api = worker.Api(srv, a.token or s.get("token"))
+
+    if not a.name:
+        st = api.call("/v1/status", timeout=30)
+        print("Which client do you want me to work on?\n")
+        for i, c in enumerate(sorted(st["clients"], key=lambda r: r["client"]), 1):
+            total = c["functions"] or 1
+            print("  %d. %-8s %6d / %-6d matched  (%5.1f%%)" %
+                  (i, c["client"], c["matched"], c["functions"], 100.0 * c["matched"] / total))
+        print("\nSelect a client, then run: roc work CLIENT")
+        return
+
+    st = api.call("/v1/status", timeout=30)
+    info = next((c for c in st["clients"] if c["client"] == a.name), None)
+    if info is None:
+        sys.exit("Unknown client %s. Registered: %s" %
+                 (a.name, ", ".join(c["client"] for c in st["clients"])))
+
+    rows = api.call("/v1/functions?client=%s&max_score=99&limit=500" % a.name, timeout=60)
+    candidates = [r for r in rows if not r["claimed"]]
+    candidates.sort(key=lambda r: (_score_band(r["score"]), 0 if r["twin"] else 1,
+                                   -r["score"], r["attempts"], r["size"]))
+    if not candidates:
+        print("No unmatched functions left for %s (or all are claimed right now)." % a.name)
+        return
+
+    chosen = None
+    for row in candidates:
+        try:
+            api.call("/v1/claim", {"user": user, "worker": user,
+                                   "client": a.name, "addr": row["addr"]}, timeout=20)
+            chosen = row
+            break
+        except worker.ApiFailure as error:
+            if error.category == "bad_request" and "another worker" in str(error):
+                continue
+            print("Could not claim %s: %s" % (row["addr"], error))
+            return
+    if not chosen:
+        print("Every candidate is claimed by another worker right now. Try again shortly.")
+        return
+
+    addr = chosen["addr"]
+    path = ROOT / "src" / a.name / (addr + ".cpp")
+    if not path.exists():
+        try:
+            best = api.call("/v1/source?client=%s&addr=%s" % (a.name, addr), timeout=20) or {}
+        except worker.ApiFailure:
+            best = {}
+        if best.get("source"):
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(best["source"], encoding="utf-8")
+        else:
+            path = match.claim(a.name, addr)
+
+    total = info["functions"] or 1
+    print("Client:   %s  (%d / %d matched, %.2f%%)" %
+          (a.name, info["matched"], info["functions"], 100.0 * info["matched"] / total))
+    print("Function: %s" % addr)
+    print("Before:   %d%%" % chosen["score"])
+    if chosen["twin"]:
+        print("Twin:     %s (already matched) - try copying its source first" % chosen["twin"])
+    print("Size:     %d bytes   Unit: %s   Attempts: %d" %
+          (chosen["size"], chosen["unit"] or "-", chosen["attempts"]))
+    print("Claimed for %s (2h). Edit: %s" % (user, path))
+    print("Next:     roc check %s %s   ->   roc submit %s %s" % (a.name, addr, a.name, addr))
 
 
 def _journal_check(client, addr, path, score):
@@ -2027,7 +2127,7 @@ def menu_hand():
 COMMAND_GROUPS = [
     ("Start here", ["install", "doctor", "config", "setup", "gui", "client-fetch", "analyze", "pull"]),
     ("Match and submit", ["agent", "research", "mass", "auto", "xcopy", "libs", "lib-fetch", "lib-info", "libs-bundle", "similar", "donor",
-                          "check", "classify", "next", "claim", "submit", "agent-context", "agent-block", "agent-metrics"]),
+                          "check", "classify", "next", "work", "claim", "submit", "agent-context", "agent-block", "agent-metrics"]),
     ("Workers and server", ["worker", "status", "host", "server", "link", "tasks", "cpu-worker", "cluster"]),
     ("This copy", ["update", "provider", "chatgpt", "local-ai", "uninstall"]),
 ]
@@ -2160,6 +2260,9 @@ def main(argv=None):
     p.set_defaults(fn=cmd_client_remove)
     cmd("analyze", cmd_analyze, "split a client exe into functions ('all' for every client)", (["name"], {}))
     cmd("next", cmd_next, "list the easiest open functions", (["name"], {}), (["-n"], {"type": int, "default": 20}))
+    cmd("work", cmd_work, "list clients or select+claim the next unmatched function for manual matching",
+        (["name"], {"nargs": "?", "help": "client to work on (omit to list clients and server progress)"}),
+        (["--server"], {}), (["--user"], {}), (["--token"], {}))
     cmd("claim", cmd_claim, "start a function: writes src/<client>/<addr>.cpp",
         (["name"], {}), (["addr"], {}), (["--open"], {"action": "store_true", "help": "open in Notepad"}))
     cmd("check", cmd_check, "compile src/<client>/*.cpp and score against the exe",
