@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-21 04:41 UTC",
+ "updated": "2026-10-21 05:43 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -170,15 +170,15 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22303,
-   "matched": 21397,
-   "partial": 902,
-   "source_matched": 13142,
-   "mined_matched": 8255,
-   "bytes": 3696083,
-   "matched_bytes": 3172915,
-   "source_bytes": 2438579,
-   "mined_bytes": 734336,
-   "partial_bytes": 521066,
+   "matched": 21432,
+   "partial": 869,
+   "source_matched": 13167,
+   "mined_matched": 8265,
+   "bytes": 3696101,
+   "matched_bytes": 3186865,
+   "source_bytes": 2449736,
+   "mined_bytes": 737129,
+   "partial_bytes": 508210,
    "data_bytes": 1559926,
    "leaderboard": [
     {
@@ -190,10 +190,10 @@
     },
     {
      "user": "colin",
-     "matched": 3008,
-     "points": 673103,
-     "submissions": 22780,
-     "last": 1792557554.3483686
+     "matched": 3020,
+     "points": 674015,
+     "submissions": 22835,
+     "last": 1792561364.730963
     },
     {
      "user": "king_originala",
@@ -211,10 +211,10 @@
     },
     {
      "user": "EspClaude",
-     "matched": 154,
-     "points": 5457,
-     "submissions": 247,
-     "last": 1792557608.2515905
+     "matched": 177,
+     "points": 6817,
+     "submissions": 283,
+     "last": 1792561371.4421732
     },
     {
      "user": "atomic.potato",
@@ -273,9 +273,9 @@
      "last": 1792416272.4331148
     }
    ],
-   "data_matched_bytes": 186657,
+   "data_matched_bytes": 187196,
    "classes": 1488,
-   "generated": 19429
+   "generated": 19428
   },
   {
    "name": "2009-06",
@@ -468,15 +468,15 @@
    "built": "2012-06-13",
    "started": true,
    "functions": 39664,
-   "matched": 15287,
-   "partial": 11832,
+   "matched": 15289,
+   "partial": 11830,
    "source_matched": 8226,
-   "mined_matched": 7061,
+   "mined_matched": 7063,
    "bytes": 6671341,
-   "matched_bytes": 1188679,
+   "matched_bytes": 1188721,
    "source_bytes": 1033931,
-   "mined_bytes": 154748,
-   "partial_bytes": 1994877,
+   "mined_bytes": 154790,
+   "partial_bytes": 1994835,
    "data_bytes": 3396596,
    "leaderboard": [
     {
@@ -509,10 +509,10 @@
     },
     {
      "user": "intel",
-     "matched": 32,
-     "points": 10507,
-     "submissions": 824,
-     "last": 1792557268.7991316
+     "matched": 34,
+     "points": 10517,
+     "submissions": 826,
+     "last": 1792558132.3537867
     },
     {
      "user": "Viper",
@@ -544,10 +544,10 @@
   },
   {
    "user": "colin",
-   "matched": 15100,
-   "points": 5511944,
-   "submissions": 185641,
-   "last": 1792557554.3483686
+   "matched": 15112,
+   "points": 5512856,
+   "submissions": 185696,
+   "last": 1792561364.730963
   },
   {
    "user": "king_originala",
@@ -579,10 +579,10 @@
   },
   {
    "user": "EspClaude",
-   "matched": 154,
-   "points": 5457,
-   "submissions": 247,
-   "last": 1792557608.2515905
+   "matched": 177,
+   "points": 6817,
+   "submissions": 283,
+   "last": 1792561371.4421732
   },
   {
    "user": "Intel",
@@ -592,18 +592,18 @@
    "last": 1791727397.9646602
   },
   {
+   "user": "intel",
+   "matched": 34,
+   "points": 10517,
+   "submissions": 826,
+   "last": 1792558132.3537867
+  },
+  {
    "user": "user",
    "matched": 33,
    "points": 35,
    "submissions": 33,
    "last": 1792513428.7999606
-  },
-  {
-   "user": "intel",
-   "matched": 32,
-   "points": 10507,
-   "submissions": 824,
-   "last": 1792557268.7991316
   },
   {
    "user": "Viper",
