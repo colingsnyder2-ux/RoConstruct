@@ -1653,6 +1653,7 @@
    "libs/signals/src/signal_base.cpp",
    "libs/signals/src/trackable.cpp",
    "libs/thread/src/win32/thread.cpp",
+   "roc_espeon_dhtmlnativefunction034ab6d87e50f0c3f.cpp",
    "roc_espeon_humanoidstateslotff087c81fef193c1.cpp"
   ]
  },
