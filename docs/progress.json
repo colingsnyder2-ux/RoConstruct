@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-21 07:48 UTC",
+ "updated": "2026-10-21 08:53 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -170,15 +170,15 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22303,
-   "matched": 21513,
-   "partial": 788,
-   "source_matched": 13219,
-   "mined_matched": 8294,
+   "matched": 21550,
+   "partial": 751,
+   "source_matched": 13234,
+   "mined_matched": 8316,
    "bytes": 3697064,
-   "matched_bytes": 3228013,
-   "source_bytes": 2474865,
-   "mined_bytes": 753148,
-   "partial_bytes": 468025,
+   "matched_bytes": 3247057,
+   "source_bytes": 2479104,
+   "mined_bytes": 767953,
+   "partial_bytes": 448981,
    "data_bytes": 1559926,
    "leaderboard": [
     {
@@ -190,10 +190,10 @@
     },
     {
      "user": "colin",
-     "matched": 3034,
-     "points": 674630,
-     "submissions": 22866,
-     "last": 1792568515.3560603
+     "matched": 3035,
+     "points": 674643,
+     "submissions": 22868,
+     "last": 1792570981.1993434
     },
     {
      "user": "king_originala",
@@ -211,10 +211,10 @@
     },
     {
      "user": "EspClaude",
-     "matched": 243,
-     "points": 11733,
-     "submissions": 393,
-     "last": 1792568897.530806
+     "matched": 279,
+     "points": 12415,
+     "submissions": 440,
+     "last": 1792572578.4072504
     },
     {
      "user": "atomic.potato",
@@ -280,7 +280,7 @@
      "last": 1792416272.4331148
     }
    ],
-   "data_matched_bytes": 188949,
+   "data_matched_bytes": 189188,
    "classes": 1488,
    "generated": 19426
   },
@@ -517,9 +517,9 @@
     {
      "user": "intel",
      "matched": 34,
-     "points": 10517,
-     "submissions": 826,
-     "last": 1792558132.3537867
+     "points": 10614,
+     "submissions": 834,
+     "last": 1792571796.629766
     },
     {
      "user": "Viper",
@@ -551,10 +551,10 @@
   },
   {
    "user": "colin",
-   "matched": 15126,
-   "points": 5513471,
-   "submissions": 185727,
-   "last": 1792568515.3560603
+   "matched": 15127,
+   "points": 5513484,
+   "submissions": 185729,
+   "last": 1792570981.1993434
   },
   {
    "user": "king_originala",
@@ -579,10 +579,10 @@
   },
   {
    "user": "EspClaude",
-   "matched": 243,
-   "points": 11733,
-   "submissions": 393,
-   "last": 1792568897.530806
+   "matched": 279,
+   "points": 12415,
+   "submissions": 440,
+   "last": 1792572578.4072504
   },
   {
    "user": "why2",
@@ -601,9 +601,9 @@
   {
    "user": "intel",
    "matched": 34,
-   "points": 10517,
-   "submissions": 826,
-   "last": 1792558132.3537867
+   "points": 10614,
+   "submissions": 834,
+   "last": 1792571796.629766
   },
   {
    "user": "user",
