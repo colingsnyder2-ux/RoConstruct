@@ -1892,6 +1892,7 @@
    "roc_rbxscene_timed_no_viewport_8cefb7f930351b4e.cpp",
    "roc_resource_release_4709ef25b50fc1eb.cpp",
    "roc_rtti_d56a903776f2b6ff.cpp",
+   "roc_sparkle_native_context_accessord3483aed579e6edb.cpp",
    "roc_sub_transform_2a4870813417745d.cpp",
    "roc_texture_collect_1f43ed84bc91727c.cpp",
    "roc_tpl_map_string_meshptr_ec8e332780074925.cpp",
