@@ -1653,7 +1653,8 @@
    "libs/signals/src/signal_base.cpp",
    "libs/signals/src/trackable.cpp",
    "libs/thread/src/win32/thread.cpp",
-   "roc_espeon_humanoidstateslotff087c81fef193c1.cpp"
+   "roc_espeon_humanoidstateslotff087c81fef193c1.cpp",
+   "roc_espeon_toolstatereturnvalue83d8b4fa8f422fda.cpp"
   ]
  },
  "boost-1.37.0-dll": {
@@ -1859,6 +1860,7 @@
    "roc_client_scene_update.cpp",
    "roc_client_short_methods_5b192b39c746b09e.cpp",
    "roc_client_texture_copy.cpp",
+   "roc_espclaude_be1af347978f4727.cpp",
    "roc_espeon_materiallevelnative3737af79d4bf57eb.cpp",
    "roc_espeon_renderqueueauthenticb965e834ae5cb4f5.cpp",
    "roc_espeon_subentitydistance81be14ca97c968f3.cpp",
