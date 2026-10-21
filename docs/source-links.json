@@ -1344,6 +1344,8 @@
   "url": "https://downloads.sourceforge.net/project/ogre/ogre/1.4.5/ogre-win32-v1-4-5.zip",
   "kind": "archive",
   "files": [
+   "roc_espeon_renderprimitive6529969e3c0e9a10.cpp",
+   "roc_espeon_renderrectangle6060094c19a0a0f2.cpp",
    "roc_observed_3db354efc99e4c09.cpp",
    "roc_observed_53d74a95e1732a0f.cpp",
    "roc_rbxscene_ctor_0606b79b7c96ed1a.cpp",
