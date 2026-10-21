@@ -291,6 +291,55 @@ class Store:
             self.claims = {key: claim for key, claim in self.claims.items() if claim[0] != lease}
         return None
 
+    def claim(self, client, addr, worker):
+        """Register a soft claim so other agents skip this function while it is being
+        worked on. Returns a lease token, or None when another worker already holds it."""
+        now = time.time()
+        lease = uuid.uuid4().hex
+        with self.lock:
+            self.claims = {key: claim for key, claim in self.claims.items() if claim[2] > now}
+            current = self.claims.get((client, addr))
+            if current and current[1] != worker:
+                return None
+            self.claims[(client, addr)] = (lease, worker, now + CLAIM_SECONDS)
+        return {"lease": lease, "expires_in": CLAIM_SECONDS}
+
+    def functions(self, client, min_score=0, max_score=99, limit=500):
+        """Read-only ranking of one client's functions for manual matching: score, size,
+        unit, shape/family (for twin detection), attempts, and whether another worker
+        currently claims it. ``twin`` names a 100%-matched function with the same shape
+        (or, failing that, family), which is usually the cheapest copy-and-adjust fix."""
+        now = time.time()
+        with self.lock:
+            self.claims = {key: claim for key, claim in self.claims.items() if claim[2] > now}
+            matched = self.db.execute(
+                "SELECT addr, shape, family FROM funcs WHERE client = ? AND score = 100 "
+                "AND (shape IS NOT NULL OR family IS NOT NULL)", (client,)).fetchall()
+            shape_twin, family_twin = {}, {}
+            for addr, shape, family in matched:
+                if shape and shape not in shape_twin:
+                    shape_twin[shape] = addr
+                if family and family not in family_twin:
+                    family_twin[family] = addr
+            rows = self.db.execute(
+                "SELECT addr, size, unit, score, shape, family, attempts, source_confidence "
+                "FROM funcs WHERE client = ? AND score >= ? AND score <= ? "
+                "ORDER BY score DESC, attempts, size LIMIT ?",
+                (client, min_score, max_score, max(1, min(limit, 2000)))).fetchall()
+        out = []
+        for addr, size, unit, score, shape, family, attempts, confidence in rows:
+            twin = None
+            if shape and shape in shape_twin:
+                twin = shape_twin[shape]
+            elif family and family in family_twin:
+                twin = family_twin[family]
+            claim = self.claims.get((client, addr))
+            out.append({"addr": addr, "size": size, "unit": unit, "score": score,
+                        "shape": shape, "family": family, "attempts": attempts,
+                        "source_confidence": confidence, "twin": twin,
+                        "claimed": bool(claim and claim[2] > now)})
+        return out
+
     def submit(self, client, addr, user, score, source, data=None, lease=None, model="", verified=False):
         """Keep the source if it beats the stored score. Returns (stored score, improved)."""
         with self.lock:
@@ -612,6 +661,15 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None):
             if url.path == "/v1/sources":
                 return self.send(200, store.sources(q.get("client", ""), int(q.get("min_score", 1)),
                                                     q.get("scores") == "1"))
+            if url.path == "/v1/functions":
+                try:
+                    return self.send(200, store.functions(
+                        q.get("client", ""),
+                        int(q.get("min_score", 0)),
+                        int(q.get("max_score", 99)),
+                        int(q.get("limit", 500))))
+                except (ValueError, TypeError) as error:
+                    return self.send(400, {"error": str(error)})
             if url.path == "/v1/examples":
                 return self.send(200, store.examples(q.get("client", ""), min(int(q.get("n", 3)), 10),
                                                      q.get("unit"), q.get("shape"),
@@ -637,6 +695,17 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None):
                 return self.send(200, store.register_family(str(body.get("client", "")),
                                                              str(body.get("addr", "")),
                                                              str(body.get("family", ""))))
+            if path == "/v1/claim":
+                if not USER_RE.match(user):
+                    return self.send(400, {"error": "username must be 2-32 letters, digits, _ . -"})
+                client, addr = str(body.get("client", "")), str(body.get("addr", "")).lower()
+                if not re.fullmatch(r"[0-9a-f]{8}", addr):
+                    return self.send(400, {"error": "address must be 8 hex digits"})
+                worker = str(body.get("worker", "")).strip()[:64] or user
+                result = store.claim(client, addr, worker)
+                if not result:
+                    return self.send(409, {"error": "already claimed by another worker"})
+                return self.send(200, result)
             if path == "/v1/families":
                 rows = body.get("rows", [])
                 if not isinstance(rows, list) or len(rows) > 5000:
