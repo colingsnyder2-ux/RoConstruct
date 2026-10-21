@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-21 00:31 UTC",
+ "updated": "2026-10-21 01:34 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -170,15 +170,15 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22299,
-   "matched": 21251,
-   "partial": 1044,
-   "source_matched": 13067,
-   "mined_matched": 8184,
+   "matched": 21287,
+   "partial": 1012,
+   "source_matched": 13086,
+   "mined_matched": 8201,
    "bytes": 3693895,
-   "matched_bytes": 3126848,
-   "source_bytes": 2405121,
-   "mined_bytes": 721727,
-   "partial_bytes": 565082,
+   "matched_bytes": 3137655,
+   "source_bytes": 2412412,
+   "mined_bytes": 725243,
+   "partial_bytes": 556240,
    "data_bytes": 1559926,
    "leaderboard": [
     {
@@ -190,10 +190,10 @@
     },
     {
      "user": "colin",
-     "matched": 2970,
-     "points": 668713,
-     "submissions": 22691,
-     "last": 1792542515.2211158
+     "matched": 2973,
+     "points": 669132,
+     "submissions": 22703,
+     "last": 1792545163.1501725
     },
     {
      "user": "king_originala",
@@ -204,10 +204,10 @@
     },
     {
      "user": "Espeon",
-     "matched": 478,
-     "points": 10792,
-     "submissions": 679,
-     "last": 1792542595.4179325
+     "matched": 485,
+     "points": 10928,
+     "submissions": 688,
+     "last": 1792545152.1822743
     },
     {
      "user": "atomic.potato",
@@ -218,10 +218,10 @@
     },
     {
      "user": "EspClaude",
-     "matched": 60,
-     "points": 673,
-     "submissions": 85,
-     "last": 1792542604.8181946
+     "matched": 86,
+     "points": 1402,
+     "submissions": 128,
+     "last": 1792546239.71207
     },
     {
      "user": "user",
@@ -273,7 +273,7 @@
      "last": 1792416272.4331148
     }
    ],
-   "data_matched_bytes": 184114,
+   "data_matched_bytes": 184406,
    "classes": 1488,
    "generated": 19473
   },
@@ -510,9 +510,9 @@
     {
      "user": "intel",
      "matched": 30,
-     "points": 10047,
-     "submissions": 794,
-     "last": 1792541797.0404031
+     "points": 10190,
+     "submissions": 802,
+     "last": 1792546159.6735756
     },
     {
      "user": "Viper",
@@ -544,10 +544,10 @@
   },
   {
    "user": "colin",
-   "matched": 15062,
-   "points": 5507554,
-   "submissions": 185552,
-   "last": 1792542515.2211158
+   "matched": 15065,
+   "points": 5507973,
+   "submissions": 185564,
+   "last": 1792545163.1501725
   },
   {
    "user": "king_originala",
@@ -565,10 +565,10 @@
   },
   {
    "user": "Espeon",
-   "matched": 478,
-   "points": 10792,
-   "submissions": 679,
-   "last": 1792542595.4179325
+   "matched": 485,
+   "points": 10928,
+   "submissions": 688,
+   "last": 1792545152.1822743
   },
   {
    "user": "why2",
@@ -586,10 +586,10 @@
   },
   {
    "user": "EspClaude",
-   "matched": 60,
-   "points": 673,
-   "submissions": 85,
-   "last": 1792542604.8181946
+   "matched": 86,
+   "points": 1402,
+   "submissions": 128,
+   "last": 1792546239.71207
   },
   {
    "user": "user",
@@ -601,9 +601,9 @@
   {
    "user": "intel",
    "matched": 30,
-   "points": 10047,
-   "submissions": 794,
-   "last": 1792541797.0404031
+   "points": 10190,
+   "submissions": 802,
+   "last": 1792546159.6735756
   },
   {
    "user": "Viper",
