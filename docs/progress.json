@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-21 12:00 UTC",
+ "updated": "2026-10-21 13:02 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -170,15 +170,15 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22303,
-   "matched": 21625,
-   "partial": 676,
-   "source_matched": 13295,
-   "mined_matched": 8330,
+   "matched": 21661,
+   "partial": 640,
+   "source_matched": 13329,
+   "mined_matched": 8332,
    "bytes": 3697064,
-   "matched_bytes": 3271089,
-   "source_bytes": 2497620,
-   "mined_bytes": 773469,
-   "partial_bytes": 424949,
+   "matched_bytes": 3287167,
+   "source_bytes": 2513191,
+   "mined_bytes": 773976,
+   "partial_bytes": 408871,
    "data_bytes": 1559926,
    "leaderboard": [
     {
@@ -204,17 +204,17 @@
     },
     {
      "user": "Espeon",
-     "matched": 502,
-     "points": 11168,
-     "submissions": 713,
-     "last": 1792583601.2223794
+     "matched": 510,
+     "points": 11412,
+     "submissions": 727,
+     "last": 1792587572.7290523
     },
     {
      "user": "EspClaude",
-     "matched": 343,
-     "points": 12824,
-     "submissions": 509,
-     "last": 1792583823.2062457
+     "matched": 371,
+     "points": 13182,
+     "submissions": 538,
+     "last": 1792587494.2986596
     },
     {
      "user": "atomic.potato",
@@ -280,7 +280,7 @@
      "last": 1792416272.4331148
     }
    ],
-   "data_matched_bytes": 190063,
+   "data_matched_bytes": 190418,
    "classes": 1488,
    "generated": 19426
   },
@@ -517,9 +517,9 @@
     {
      "user": "intel",
      "matched": 37,
-     "points": 11170,
-     "submissions": 891,
-     "last": 1792582790.802824
+     "points": 11174,
+     "submissions": 892,
+     "last": 1792587709.4457667
     },
     {
      "user": "Viper",
@@ -572,17 +572,17 @@
   },
   {
    "user": "Espeon",
-   "matched": 502,
-   "points": 11168,
-   "submissions": 713,
-   "last": 1792583601.2223794
+   "matched": 510,
+   "points": 11412,
+   "submissions": 727,
+   "last": 1792587572.7290523
   },
   {
    "user": "EspClaude",
-   "matched": 343,
-   "points": 12824,
-   "submissions": 509,
-   "last": 1792583823.2062457
+   "matched": 371,
+   "points": 13182,
+   "submissions": 538,
+   "last": 1792587494.2986596
   },
   {
    "user": "why2",
@@ -601,9 +601,9 @@
   {
    "user": "intel",
    "matched": 37,
-   "points": 11170,
-   "submissions": 891,
-   "last": 1792582790.802824
+   "points": 11174,
+   "submissions": 892,
+   "last": 1792587709.4457667
   },
   {
    "user": "user",
