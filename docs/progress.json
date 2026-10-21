@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-21 01:34 UTC",
+ "updated": "2026-10-21 02:36 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -170,15 +170,15 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22299,
-   "matched": 21287,
-   "partial": 1012,
-   "source_matched": 13086,
-   "mined_matched": 8201,
+   "matched": 21316,
+   "partial": 983,
+   "source_matched": 13109,
+   "mined_matched": 8207,
    "bytes": 3693895,
-   "matched_bytes": 3137655,
-   "source_bytes": 2412412,
-   "mined_bytes": 725243,
-   "partial_bytes": 556240,
+   "matched_bytes": 3149318,
+   "source_bytes": 2423808,
+   "mined_bytes": 725510,
+   "partial_bytes": 544577,
    "data_bytes": 1559926,
    "leaderboard": [
     {
@@ -190,10 +190,10 @@
     },
     {
      "user": "colin",
-     "matched": 2973,
-     "points": 669132,
-     "submissions": 22703,
-     "last": 1792545163.1501725
+     "matched": 2977,
+     "points": 669420,
+     "submissions": 22712,
+     "last": 1792549282.5183122
     },
     {
      "user": "king_originala",
@@ -204,10 +204,17 @@
     },
     {
      "user": "Espeon",
-     "matched": 485,
-     "points": 10928,
-     "submissions": 688,
-     "last": 1792545152.1822743
+     "matched": 490,
+     "points": 10973,
+     "submissions": 694,
+     "last": 1792549733.3616798
+    },
+    {
+     "user": "EspClaude",
+     "matched": 106,
+     "points": 2601,
+     "submissions": 171,
+     "last": 1792550148.2186453
     },
     {
      "user": "atomic.potato",
@@ -215,13 +222,6 @@
      "points": 42624,
      "submissions": 787,
      "last": 1792327184.7020433
-    },
-    {
-     "user": "EspClaude",
-     "matched": 86,
-     "points": 1402,
-     "submissions": 128,
-     "last": 1792546239.71207
     },
     {
      "user": "user",
@@ -273,7 +273,7 @@
      "last": 1792416272.4331148
     }
    ],
-   "data_matched_bytes": 184406,
+   "data_matched_bytes": 185532,
    "classes": 1488,
    "generated": 19473
   },
@@ -468,15 +468,15 @@
    "built": "2012-06-13",
    "started": true,
    "functions": 39664,
-   "matched": 15285,
-   "partial": 11834,
+   "matched": 15286,
+   "partial": 11833,
    "source_matched": 8226,
-   "mined_matched": 7059,
+   "mined_matched": 7060,
    "bytes": 6671341,
-   "matched_bytes": 1188606,
+   "matched_bytes": 1188653,
    "source_bytes": 1033931,
-   "mined_bytes": 154675,
-   "partial_bytes": 1994950,
+   "mined_bytes": 154722,
+   "partial_bytes": 1994903,
    "data_bytes": 3396596,
    "leaderboard": [
     {
@@ -509,10 +509,10 @@
     },
     {
      "user": "intel",
-     "matched": 30,
-     "points": 10190,
-     "submissions": 802,
-     "last": 1792546159.6735756
+     "matched": 31,
+     "points": 10299,
+     "submissions": 810,
+     "last": 1792550159.3192139
     },
     {
      "user": "Viper",
@@ -544,10 +544,10 @@
   },
   {
    "user": "colin",
-   "matched": 15065,
-   "points": 5507973,
-   "submissions": 185564,
-   "last": 1792545163.1501725
+   "matched": 15069,
+   "points": 5508261,
+   "submissions": 185573,
+   "last": 1792549282.5183122
   },
   {
    "user": "king_originala",
@@ -565,10 +565,10 @@
   },
   {
    "user": "Espeon",
-   "matched": 485,
-   "points": 10928,
-   "submissions": 688,
-   "last": 1792545152.1822743
+   "matched": 490,
+   "points": 10973,
+   "submissions": 694,
+   "last": 1792549733.3616798
   },
   {
    "user": "why2",
@@ -578,18 +578,18 @@
    "last": 1791657569.112455
   },
   {
+   "user": "EspClaude",
+   "matched": 106,
+   "points": 2601,
+   "submissions": 171,
+   "last": 1792550148.2186453
+  },
+  {
    "user": "Intel",
    "matched": 96,
    "points": 17396,
    "submissions": 346,
    "last": 1791727397.9646602
-  },
-  {
-   "user": "EspClaude",
-   "matched": 86,
-   "points": 1402,
-   "submissions": 128,
-   "last": 1792546239.71207
   },
   {
    "user": "user",
@@ -600,10 +600,10 @@
   },
   {
    "user": "intel",
-   "matched": 30,
-   "points": 10190,
-   "submissions": 802,
-   "last": 1792546159.6735756
+   "matched": 31,
+   "points": 10299,
+   "submissions": 810,
+   "last": 1792550159.3192139
   },
   {
    "user": "Viper",
