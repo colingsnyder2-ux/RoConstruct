@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-24 19:35 UTC",
+ "updated": "2026-10-24 20:21 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -192,14 +192,14 @@
    "started": true,
    "functions": 22303,
    "matched": 21887,
-   "partial": 416,
+   "partial": 415,
    "source_matched": 13446,
    "mined_matched": 8441,
-   "bytes": 3697064,
-   "matched_bytes": 3388789,
+   "bytes": 3697270,
+   "matched_bytes": 3388860,
    "source_bytes": 2563406,
-   "mined_bytes": 825383,
-   "partial_bytes": 308275,
+   "mined_bytes": 825454,
+   "partial_bytes": 308202,
    "data_bytes": 1559926,
    "leaderboard": [
     {
@@ -218,10 +218,10 @@
     },
     {
      "user": "king_originala",
-     "matched": 2717,
-     "points": 264021,
-     "submissions": 5841,
-     "last": 1792869776.3392427
+     "matched": 2718,
+     "points": 264042,
+     "submissions": 5844,
+     "last": 1792873066.3384838
     },
     {
      "user": "Espeon",
@@ -310,7 +310,7 @@
    ],
    "data_matched_bytes": 195469,
    "classes": 1488,
-   "generated": 19426
+   "generated": 19425
   },
   {
    "name": "2009-06",
@@ -621,10 +621,10 @@
   },
   {
    "user": "king_originala",
-   "matched": 2717,
-   "points": 264021,
-   "submissions": 5841,
-   "last": 1792869776.3392427
+   "matched": 2718,
+   "points": 264042,
+   "submissions": 5844,
+   "last": 1792873066.3384838
   },
   {
    "user": "atomic.potato",
