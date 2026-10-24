@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-24 20:24 UTC",
+ "updated": "2026-10-24 21:26 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -191,15 +191,15 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22303,
-   "matched": 21887,
-   "partial": 415,
-   "source_matched": 13443,
+   "matched": 21889,
+   "partial": 413,
+   "source_matched": 13445,
    "mined_matched": 8444,
    "bytes": 3697270,
-   "matched_bytes": 3388860,
-   "source_bytes": 2551996,
+   "matched_bytes": 3389235,
+   "source_bytes": 2552371,
    "mined_bytes": 836864,
-   "partial_bytes": 308202,
+   "partial_bytes": 307827,
    "data_bytes": 1559926,
    "leaderboard": [
     {
@@ -218,10 +218,10 @@
     },
     {
      "user": "king_originala",
-     "matched": 2718,
-     "points": 264042,
-     "submissions": 5844,
-     "last": 1792873066.3384838
+     "matched": 2720,
+     "points": 264049,
+     "submissions": 5847,
+     "last": 1792875271.8547559
     },
     {
      "user": "Espeon",
@@ -621,10 +621,10 @@
   },
   {
    "user": "king_originala",
-   "matched": 2718,
-   "points": 264042,
-   "submissions": 5844,
-   "last": 1792873066.3384838
+   "matched": 2720,
+   "points": 264049,
+   "submissions": 5847,
+   "last": 1792875271.8547559
   },
   {
    "user": "atomic.potato",
