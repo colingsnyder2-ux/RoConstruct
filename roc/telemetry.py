@@ -511,6 +511,54 @@ def build_hidden(limit=8, persist=True):
     return out
 
 
+def ab_split(corpus):
+    """Deterministic fixed A/B split by client+addr hash.
+
+    The split does not depend on corpus order or on which arm ran first, so two
+    benchmark runs can be compared target-for-target.  Every entry carries a
+    short ``target_hash`` for the report.
+    """
+    groups = {"A": [], "B": []}
+    for row in corpus:
+        digest = hashlib.sha256(("roconstruct-ab:" + row["client"] + ":" + row["addr"]).encode()).hexdigest()
+        entry = dict(row)
+        entry["target_hash"] = digest[:16]
+        groups["A" if int(digest[:8], 16) % 2 == 0 else "B"].append(entry)
+    for rows in groups.values():
+        rows.sort(key=lambda item: item["target_hash"])
+    return groups
+
+
+def compare_sessions(session_a, session_b):
+    """Measured A/B report from recorded worker telemetry.
+
+    A is the baseline arm, B the variant.  Deltas are raw differences on this
+    corpus; no significance claim is made when the samples are small.
+    """
+    a = _summary(_session_rows(session_a))
+    b = _summary(_session_rows(session_b))
+    return {"A": dict(session=session_a, **a), "B": dict(session=session_b, **b),
+            "delta": {"exact_matches": b["exact_matches"] - a["exact_matches"],
+                      "compile_rate": round(b["compile_rate"] - a["compile_rate"], 2),
+                      "seconds": round(b["seconds"] - a["seconds"], 2),
+                      "tokens": b["tokens"] - a["tokens"]},
+            "note": "raw difference over each recorded session; not a significance test"}
+
+
+def format_compare(report):
+    lines = ["A/B benchmark report (A = baseline, B = variant)"]
+    for arm in ("A", "B"):
+        row = report[arm]
+        lines.append("  %s %-24s jobs=%d exact=%d compile=%.2f%% time=%.2fs tokens=%d" % (
+            arm, row["session"], row["jobs"], row["exact_matches"], row["compile_rate"],
+            row["seconds"], row["tokens"]))
+    delta = report["delta"]
+    lines.append("  B-A exact=%+d compile=%+.2fpp time=%+.2fs tokens=%+d" % (
+        delta["exact_matches"], delta["compile_rate"], delta["seconds"], delta["tokens"]))
+    lines.append("  " + report["note"])
+    return "\n".join(lines)
+
+
 def run_local(corpus, models, rounds=1, log=print, resume=False, session="benchmark", strategies=("direct",),
               provider_options=None, family_examples=None, candidate_dir=None, initial_sources=None):
     """Benchmark configured models without submitting or changing server state.

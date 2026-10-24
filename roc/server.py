@@ -95,6 +95,8 @@ class Store:
             self.db.execute("ALTER TABLE funcs ADD COLUMN attempts_by_model TEXT DEFAULT '{}'")
         self.db.execute("CREATE INDEX IF NOT EXISTS funcs_lease_pool ON funcs "
                         "(client,score,size,cooldown,unit,attempts,source_confidence,difficulty,addr)")
+        self.db.execute("CREATE INDEX IF NOT EXISTS funcs_work_pool ON funcs "
+                        "(client,score,size,attempts,source_confidence,family,shape)")
         self.db.commit()
         self.lock = threading.Lock()
         self.lease_seconds = lease_seconds  # Legacy server option; assignments do not expire.
@@ -285,11 +287,27 @@ class Store:
         # Legacy clients still ping this endpoint. Assignments never expire.
         return True
 
-    def release(self, lease, cooldown=0):
-        # Frees the soft claim; cooldowns are no longer used.
+    def release(self, lease, cooldown=0, worker=None, client=None, addr=None):
+        """Free a soft claim, but only the one this token names.
+
+        The token is the credential: a caller that guesses an address cannot
+        release another worker's claim, and a stale token never frees a newer
+        claim for the same function."""
+        lease = str(lease or "")
+        if not lease:
+            return {"ok": False, "released": False, "reason": "missing lease token"}
         with self.lock:
-            self.claims = {key: claim for key, claim in self.claims.items() if claim[0] != lease}
-        return None
+            for key, claim in list(self.claims.items()):
+                if claim[0] != lease:
+                    continue
+                if worker and claim[1] != worker:
+                    return {"ok": False, "released": False, "reason": "lease belongs to another worker"}
+                if (client and key[0] != client) or (addr and key[1] != addr):
+                    return {"ok": False, "released": False, "reason": "lease does not match that function"}
+                del self.claims[key]
+                return {"ok": True, "released": True, "client": key[0], "addr": key[1],
+                        "worker": claim[1]}
+        return {"ok": True, "released": False, "reason": "unknown or expired lease"}
 
     def claim(self, client, addr, worker):
         """Register a soft claim so other agents skip this function while it is being
@@ -302,13 +320,25 @@ class Store:
             if current and current[1] != worker:
                 return None
             self.claims[(client, addr)] = (lease, worker, now + CLAIM_SECONDS)
-        return {"lease": lease, "expires_in": CLAIM_SECONDS}
+        return {"lease": lease, "expires_in": CLAIM_SECONDS, "expires": now + CLAIM_SECONDS,
+                "client": client, "addr": addr, "worker": worker}
 
-    def functions(self, client, min_score=0, max_score=99, limit=500):
+    def functions(self, client, min_score=0, max_score=99, limit=500, order="score"):
         """Read-only ranking of one client's functions for manual matching: score, size,
         unit, shape/family (for twin detection), attempts, and whether another worker
         currently claims it. ``twin`` names a 100%-matched function with the same shape
-        (or, failing that, family), which is usually the cheapest copy-and-adjust fix."""
+        (or, failing that, family), which is usually the cheapest copy-and-adjust fix.
+
+        ``order="work"`` applies :mod:`roc.ranking` before the limit, so a low-scored
+        but easy twin outside the old top-500 score slice is still discoverable.
+        The default ``score`` order keeps older clients byte-compatible.
+        """
+        if order == "work":
+            rows = self.work_candidates(client, limit=limit, min_score=min_score,
+                                        max_score=max_score, profile="balanced")
+            return [{key: row[key] for key in
+                     ("addr", "size", "unit", "score", "shape", "family", "attempts",
+                      "source_confidence", "twin", "claimed")} for row in rows]
         now = time.time()
         with self.lock:
             self.claims = {key: claim for key, claim in self.claims.items() if claim[2] > now}
@@ -339,6 +369,64 @@ class Store:
                         "source_confidence": confidence, "twin": twin,
                         "claimed": bool(claim and claim[2] > now)})
         return out
+
+    def work_candidates(self, client, limit=20, min_score=0, max_score=99, profile="quick",
+                        max_size=None, include_claimed=True):
+        """Server-side ranked open targets over the full eligible pool.
+
+        Read-only: no claim is created and no target is reserved.  Ranking happens
+        before ``LIMIT``; the SQL only bounds columns and row count, so a cheap
+        low-score twin is not hidden by a score-first slice.  ``mismatch_category``
+        is ``None`` because the schema has no measured residue column; callers must
+        compute a cheap local category after shortlisting.
+        """
+        from roc import ranking
+        now = time.time()
+        with self.lock:
+            self.claims = {key: claim for key, claim in self.claims.items() if claim[2] > now}
+            matched_rows = self.db.execute(
+                "SELECT addr, shape, family FROM funcs WHERE client = ? AND score = 100 "
+                "AND (shape IS NOT NULL OR family IS NOT NULL)", (client,)).fetchall()
+            shape_twin, family_twin = {}, {}
+            for addr, shape, family in matched_rows:
+                if shape and shape not in shape_twin:
+                    shape_twin[shape] = addr
+                if family and family not in family_twin:
+                    family_twin[family] = addr
+            # Bounded but complete enough for one client: reads no source text and
+            # ranks in Python with the same helper the CLI uses offline.
+            rows = self.db.execute(
+                "SELECT addr,size,unit,score,shape,family,attempts,source_confidence,difficulty,"
+                "calls,cooldown,attempts_by_model,"
+                "CASE WHEN source IS NOT NULL AND length(source)>0 THEN 1 ELSE 0 END "
+                "FROM funcs WHERE client=? AND score>=? AND score<=? AND size>=6 "
+                "ORDER BY score DESC, attempts, size LIMIT 200000",
+                (client, int(min_score), int(max_score))).fetchall()
+        pool = []
+        for (addr, size, unit, score, shape, family, attempts, confidence, difficulty,
+             calls, cooldown, by_model, has_source) in rows:
+            claim = self.claims.get((client, addr))
+            stuck = 0
+            try:
+                stuck = sum(1 for count in json.loads(by_model or "{}").values() if int(count) >= 2)
+            except (ValueError, TypeError):
+                pass
+            pool.append({
+                "addr": addr, "size": size, "unit": unit, "score": score,
+                "shape": shape, "family": family, "attempts": attempts,
+                "source_confidence": confidence, "difficulty": difficulty,
+                "calls": calls, "has_source": bool(has_source), "stuck_models": stuck,
+                "claimed": bool(claim and claim[2] > now),
+                "owner": claim[1] if claim else None,
+                "claim_expires": claim[2] if claim else None,
+                "cooldown_until": cooldown if cooldown and cooldown > now else None,
+                "mismatch_category": None,
+            })
+        ranked = ranking.rank_candidates(pool, {"shape": shape_twin, "family": family_twin},
+                                         profile_name=profile, max_size=max_size,
+                                         limit=max(1, min(int(limit), 200)),
+                                         exclude_claimed=not include_claimed)
+        return ranked
 
     def submit(self, client, addr, user, score, source, data=None, lease=None, model="", verified=False):
         """Keep the source if it beats the stored score. Returns (stored score, improved)."""
@@ -667,7 +755,20 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None):
                         q.get("client", ""),
                         int(q.get("min_score", 0)),
                         int(q.get("max_score", 99)),
-                        int(q.get("limit", 500))))
+                        int(q.get("limit", 500)),
+                        order=q.get("order", "score")))
+                except (ValueError, TypeError) as error:
+                    return self.send(400, {"error": str(error)})
+            if url.path == "/v1/work-candidates":
+                try:
+                    return self.send(200, store.work_candidates(
+                        q.get("client", ""),
+                        limit=int(q.get("limit", 20)),
+                        min_score=int(q.get("min_score", 0)),
+                        max_score=int(q.get("max_score", 99)),
+                        profile=q.get("profile", "quick"),
+                        max_size=(int(q["max_size"]) if q.get("max_size") else None),
+                        include_claimed=q.get("include_claimed", "1") == "1"))
                 except (ValueError, TypeError) as error:
                     return self.send(400, {"error": str(error)})
             if url.path == "/v1/examples":
@@ -750,8 +851,10 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None):
             if path == "/v1/heartbeat":
                 return self.send(200, {"ok": store.heartbeat(str(body.get("lease", "")))})
             if path == "/v1/release":
-                store.release(str(body.get("lease", "")), body.get("cooldown", 0))
-                return self.send(200, {"ok": True})
+                return self.send(200, store.release(str(body.get("lease", "")), body.get("cooldown", 0),
+                                                    worker=str(body.get("worker", "")) or None,
+                                                    client=str(body.get("client", "")) or None,
+                                                    addr=(str(body.get("addr", "")).lower() or None)))
             if path == "/v1/submit":
                 client, addr = str(body.get("client", "")), str(body.get("addr", ""))
                 source, claimed = str(body.get("source", "")), int(body.get("score", 0))
@@ -833,22 +936,34 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None):
 
 
 def import_auto_matches(store, name, found, log=print):
-    """Credit auto-matches, skipping functions re-analysis dropped.
+    """Re-verify sources before crediting automatic or cached local matches.
 
     A single stale addr must never stop the server (startup crash loop).
     Returns (imported, skipped).
     """
     imported = skipped = 0
     for addr, src in found.items():
+        current = store.best(name, addr)
+        if not current:
+            skipped += 1
+            continue
+        if current["score"] == 100:
+            continue
         try:
-            store.submit(name, addr, "auto", 100, src)
-            imported += 1
-        except ValueError:
-            skipped += 1  # re-analysis dropped the function; must not stop the server
+            score, _, _, spans = match.check_text(name, addr, src)
+            if score != 100:
+                skipped += 1
+                log("Skipped stale auto-match %s %s: reverified %d%%" % (name, addr, score))
+                continue
+            _, improved = store.submit(name, addr, "auto", 100, src, spans, verified=True)
+            imported += int(improved)
+        except (ValueError, match.CompileError) as error:
+            skipped += 1
+            log("Skipped unverified auto-match %s %s: %s" % (name, addr, str(error)[-300:]))
     if found:
-        log("Auto-matched %d trivial functions for %s (credited to 'auto'%s)" % (
+        log("Imported %d verified functions for %s (credited to 'auto'%s)" % (
             imported, name,
-            "; skipped %d dropped by re-analysis" % skipped if skipped else ""))
+            "; skipped %d dropped or unverified" % skipped if skipped else ""))
     return imported, skipped
 
 
@@ -870,11 +985,8 @@ def import_startup_matches(store, can_verify, log=print):
             if score == 100 and addr not in done and path.exists():
                 text = path.read_text(errors="replace")
                 if "// roc-lib:" in text or "// standard library" in text:
-                    try:
-                        store.submit(name, addr, "auto", 100, text)
-                        imported += 1
-                    except ValueError:
-                        pass
+                    count, _ = import_auto_matches(store, name, {addr: text}, log)
+                    imported += count
         if imported:
             log("Imported %d library matches for %s (credited to 'auto')" % (imported, name))
 
@@ -1293,5 +1405,5 @@ def publish_loop(store, public_url, every, log=print, tunnel=None, port=None, pu
                 next_publish = time.monotonic() + every
         except Exception as error:  # keep serving even if a publish fails
             log("Publish failed: %s" % error)
-            next_publish = time.monotonic() + 30
+            next_publish = time.monotonic() + every
         time.sleep(5 if tunnel is not None or primary else every)

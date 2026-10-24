@@ -8,6 +8,21 @@ import pytest
 from roc import agent, agent_memory, server, worker
 
 
+def test_portable_redacts_values_without_corrupting_json_structure():
+    row = dict(kind="workflow", client="2008-06",
+               description=r'Inspect C:\Users\someone\work\log.json then "retry"',
+               details=[dict(command=r'C:\private\work\run.cmd', count=2, enabled=True)],
+               token="private")
+    result = agent_memory.portable(row)
+    assert result["kind"] == "workflow"
+    assert "someone" not in result["description"]
+    assert '"retry"' in result["description"]
+    assert result["details"] == [dict(command="<local-path>", count=2, enabled=True)]
+    assert "token" not in result
+    assert json.loads(json.dumps(result)) == result
+    assert "someone" in row["description"]
+
+
 def test_manual_trial_infers_campaign_metadata_from_evidence(tmp_path, monkeypatch):
     from roc import research
     import json
@@ -21,6 +36,30 @@ def test_manual_trial_infers_campaign_metadata_from_evidence(tmp_path, monkeypat
     assert row["campaign_id"] == "run" and row["baseline_hash"] == "baseline"
     assert "T" in row["date"]
     assert research.journal_records(tmp_path / "work/agent-memory/attempts.jsonl")[0] == row
+
+
+@pytest.mark.parametrize("evidence", [{"diff": "result.json"}, ["result.json"], 7, None, ""])
+def test_trial_structured_evidence_does_not_crash_memory_loading(tmp_path, monkeypatch, evidence):
+    monkeypatch.setattr(agent_memory, "ROOT", tmp_path)
+    row = dict(kind="trial", client="2008-06", date="2026-10-14",
+               addresses=["00401000"], evidence=evidence, outcome="no_gain")
+    agent_memory.append_record(row)
+    loaded = agent_memory.records()
+    assert len(loaded) == 1 and loaded[0]["evidence"] == evidence
+    assert "campaign_id" not in loaded[0]
+
+
+def test_trial_evidence_outside_campaigns_never_resolves_the_filesystem(tmp_path, monkeypatch):
+    monkeypatch.setattr(agent_memory, "ROOT", tmp_path)
+
+    def blocked(self, *args, **kwargs):
+        raise AssertionError("campaign_context must not resolve journaled evidence")
+
+    monkeypatch.setattr(type(tmp_path), "resolve", blocked, raising=False)
+    for evidence in ("Z:\\offline-share\\00401000.cpp", "../outside/00401000.cpp", "00401000.cpp"):
+        row = agent_memory.campaign_context(dict(kind="trial", client="2008-06",
+            addresses=["00401000"], evidence=evidence, outcome="no_gain"))
+        assert row["evidence"] == evidence and "campaign_id" not in row
 
 
 @pytest.fixture

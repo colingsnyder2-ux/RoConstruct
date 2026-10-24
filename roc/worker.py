@@ -110,7 +110,11 @@ def resolve_workers(workers, model=None, source_only=False):
 def resolve_output_tokens(job, max_tokens):
     if max_tokens != "auto":
         return max_tokens
-    return 1024 if job.get("size", 999999) <= 64 and not job.get("calls", 0) else 2048
+    try:
+        job_size = int(job.get("size", 999999))
+    except (ValueError, TypeError):
+        job_size = 999999
+    return 1024 if job_size <= 64 and not job.get("calls", 0) else 2048
 
 
 def cloud_default():
@@ -375,6 +379,9 @@ def main_args(payload, argv=()):
     ap.add_argument("--verbosity", choices=["auto", "verbose", "compact"],
                     help="console detail; auto is verbose below 3 workers")
     ap.add_argument("--no-revng", action="store_true", help="never use Rev.ng hints")
+    ap.add_argument("--no-remill", action="store_true", help="never use Remill LLVM semantic hints")
+    ap.add_argument("--force-lift", action="store_true",
+                    help="lift structural near-misses even when cheap evidence is thin")
     ap.add_argument("--family-exemplars", action="store_true", default=True,
                     help="use verified same-shape sources as compact family exemplars (default)")
     ap.add_argument("--lease-mode", choices=["function", "family", "unit"], default="function",
@@ -418,6 +425,7 @@ def main_args(payload, argv=()):
     max_size = given.max_size if given.max_size is not None else s.get("worker_max_size", 256)
     workers = given.workers or s.get("worker_workers", "auto" if is_cloud else 1)
     use_revng = not given.no_revng and s.get("worker_revng", True)
+    use_remill = not given.no_remill and s.get("worker_remill", True)
     if given.allow_cloud:
         cloud_allowed = True
     escalate = given.cloud_escalate
@@ -474,6 +482,7 @@ def main_args(payload, argv=()):
     keep_awake()
     return run_concurrent(server, user, token, model, rounds, max_size, use_revng,
                           given.jobs, workers=workers, only=only_clients(client),
+                          use_remill=use_remill, force_lift=given.force_lift,
                           cloud_allowed=cloud_allowed, cloud_budget=budget,
                           max_tokens=max_tokens, thinking=thinking, order=order,
                           verbosity=verbosity,
@@ -699,7 +708,7 @@ def usable_clients(info, log=print):
 
 def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=True,
         max_jobs=None, log=pretty_log, forever=False, only=None, source_only=False, targets=None,
-        use_remill=True,
+        use_remill=True, force_lift=False,
         strategy="direct", cloud_allowed=False, cloud_budget=None, cloud_gate=None,
         diverse_candidates=1, cloud_min_size=0, cloud_fallback=None, seed=None,
         cloud_escalate=None, cloud_escalate_after=2, thinking=None, reasoning_effort=None,
@@ -846,29 +855,68 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
         if control is not None:
             control.started(slot, job)
         job_model = draft.route_model(model, job) if auto_model else model
-        if (cloud_escalate and job.get("size", 0) >= cloud_min_size and
-                int((job.get("attempts_by_model") or {}).get(model, 0)) >= cloud_escalate_after):
-            job_model = cloud_escalate
-            log("  escalate: %s stalled on %d-byte job -> %s" % (model, job.get("size", 0), job_model))
-        if providers.is_cloud(job_model) and job.get("size", 0) < cloud_min_size:
-            fallback = cloud_fallback
-            if not fallback:
-                fallback = next((name for name in draft.ollama_models()
-                                 if name == "qwen2.5-coder:7b" or name.startswith("qwen2.5-coder:7b")), None)
-            if fallback:
-                job_model = fallback
-                log("  route: %d-byte job -> local fallback %s" % (job.get("size", 0), job_model))
+        if cloud_escalate:
+            try:
+                _cms = int(cloud_min_size)
+            except (ValueError, TypeError):
+                _cms = 0
+            if job.get("size", 0) >= _cms and \
+                    int((job.get("attempts_by_model") or {}).get(model, 0)) >= cloud_escalate_after:
+                job_model = cloud_escalate
+                log("  escalate: %s stalled on %d-byte job -> %s" % (model, job.get("size", 0), job_model))
+        # Weak/free models get constrained patch work only.  Uncertain or
+        # oversized targets are recorded as needing research instead of burning
+        # a full-function generation.
+        from roc import routing
+        route = routing.decide(job, job_model, source_only=source_only, requested_rounds=rounds)
+        if route["needs_research"]:
+            lease = job.get("lease")
+            if lease:
+                try:
+                    api.call("/v1/release", {"lease": lease, "cooldown": 300,
+                                             "worker": job.get("worker"), "client": job.get("client"),
+                                             "addr": job.get("addr")})
+                except RuntimeError:
+                    pass
+            try:
+                from roc import research as _research
+                _research.append(ROOT / "work" / "agent-memory" / "attempts.jsonl", {
+                    "kind": "routing", "client": job.get("client"), "addresses": [job.get("addr")],
+                    "model": job_model, "outcome": "needs_research", "reason": route["reason"],
+                    "size": job.get("size"), "source_confidence": job.get("source_confidence"),
+                })
+            except (OSError, ValueError):
+                pass
+            log("  route: %s" % route["reason"])
+            failures += 1
+            continue
+        job_rounds = route["rounds"] if route.get("rounds") is not None else rounds
+        job_variants = max(int(diverse_candidates or 1), int(route.get("variants") or 1))
+        if providers.is_cloud(job_model):
+            try:
+                _cms = int(cloud_min_size)
+            except (ValueError, TypeError):
+                _cms = 0
+            if job.get("size", 0) < _cms:
+                fallback = cloud_fallback
+                if not fallback:
+                    fallback = next((name for name in draft.ollama_models()
+                                     if name == "qwen2.5-coder:7b" or name.startswith("qwen2.5-coder:7b")), None)
+                if fallback:
+                    job_model = fallback
+                    log("  route: %d-byte job -> local fallback %s" % (job.get("size", 0), job_model))
         think, effort = auto_reasoning(job, thinking, reasoning_effort, job_model)
         if thinking == "auto" and think == "disabled":
             log("  auto-think: thinking disabled")
         job_max_tokens = resolve_output_tokens(job, "auto") if max_tokens == "auto" else max_tokens
         provider_options = {"allow_cloud": cloud_allowed, "budget": cloud_budget,
-                            "gate": cloud_gate, "diverse_candidates": diverse_candidates,
+                            "gate": cloud_gate, "diverse_candidates": job_variants,
                             "seed": seed, "max_tokens": job_max_tokens,
                             "auto_output": max_tokens == "auto",
                             "guided_mutations": guided_mutations,
                             "family_exemplars": family_exemplars,
                             "near_repair": near_repair,
+                            "force_lift": force_lift,
                             "abi_only": abi_only}
         if providers.is_cloud(job_model):
             # Near-repair batches are bounded experiments; never let one
@@ -888,7 +936,7 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
             provider_options["thinking"] = think
         if effort is not None:
             provider_options["reasoning_effort"] = effort
-        score = work_one(api, user, job, info, job_model, rounds, revng, log, examples_cache, source_cache,
+        score = work_one(api, user, job, info, job_model, job_rounds, revng, log, examples_cache, source_cache,
                          session, source_only, strategy, provider_options, use_remill=use_remill)
         receipt = job.get("receipt") or {}
         matched += bool(receipt.get("verified") and receipt.get("improved") and receipt.get("stored") == 100)
@@ -913,7 +961,7 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
 
 
 def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
-                   use_revng=True, max_jobs=None, workers=1, log=pretty_log,
+                   use_revng=True, use_remill=True, force_lift=False, max_jobs=None, workers=1, log=pretty_log,
                    source_only=False, targets=None, only=None, strategy="direct", cloud_allowed=False,
                    cloud_budget=None, cloud_gate=None, diverse_candidates=1,
                    cloud_min_size=0, cloud_fallback=None, seed=None,
@@ -937,6 +985,7 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
         worker_log = CompactLog(1, log) if verbosity == "compact" else log
         result = run(server, user, token, model, rounds, max_size, use_revng,
                      max_jobs, worker_log, forever=True, only=only, source_only=source_only, targets=targets,
+                     use_remill=use_remill, force_lift=force_lift,
                      strategy=strategy, cloud_allowed=cloud_allowed, cloud_budget=cloud_budget, cloud_gate=cloud_gate,
                      diverse_candidates=diverse_candidates, cloud_min_size=cloud_min_size,
                      cloud_fallback=cloud_fallback, seed=seed, cloud_escalate=cloud_escalate,
@@ -971,6 +1020,7 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
         try:
             run(server, user, token, model, rounds, max_size, use_revng,
                 quotas[index], worker_log, forever=True, only=only, source_only=source_only, targets=targets,
+                use_remill=use_remill, force_lift=force_lift,
                 strategy=strategy, cloud_allowed=cloud_allowed, cloud_budget=cloud_budget, cloud_gate=cloud_gate,
                 diverse_candidates=diverse_candidates, cloud_min_size=cloud_min_size,
                 cloud_fallback=cloud_fallback, seed=seed, cloud_escalate=cloud_escalate,
@@ -1252,47 +1302,58 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
         # reserve Rev.ng CPU time for larger or structurally uncertain targets.
         run_revng = revng and (job.get("size", 0) > 48 or job.get("calls", 0) or
                                not job.get("source_confidence", 0))
-        revng_started = time.monotonic()
-        stage("running Rev.ng" if run_revng else "preparing model prompt")
-        hint = draft.revng_c(code, int(addr, 16)) if run_revng else None
-        phase_seconds["revng"] = round(time.monotonic() - revng_started, 3)
-        # Remill contributes a verified, compact LLVM semantic packet. It is
-        # deliberately summarized, not dumped as raw IR.
-        remill_hint = None
-        # Use Remill selectively: larger or structurally uncertain functions where
-        # it can add control-flow/memory evidence rather than for every leaf.
-        run_remill = (not source_only and bool(use_remill))
-
-        if run_remill:
-            try:
-                from roc import remill as _remill
-                if _remill.remill_available():
-                    _, remill_hint, _ = _remill.lift_function(client, addr, timeout=120)
-            except Exception as _remill_error:
-                log("  Remill lift skipped: %s" % str(_remill_error)[:80])
-            if remill_hint:
-                log("  Remill: attached semantic packet (%d chars)" % len(str(remill_hint)))
         llm_started = time.monotonic()
         base_source = draft.clean_repair_context(job["source"]) if (provider_options or {}).get("near_repair") else job["source"]
         llm_start = (base_source, job["score"])
         if source_candidate and source_candidate[0] > job["score"]:
             llm_start = (source_candidate[1], source_candidate[0])
         job_rounds = resolve_rounds(job, rounds, model)
-        # Cheap pre-pass: run guided compiler repair BEFORE the cloud LLM call.
-        # A single deterministic mutate pass is ~1-3s; if it already reaches 100%,
-        # skip the 30-60s cloud round-trip entirely (biggest speedup for free-tier).
-        try:
-            from roc import mutate
-            stage("cheap repair pre-pass")
-            _pr = mutate.improve(client, addr, llm_start[0], flags, guided=True,
-                                  guided_categories=abi_categories if (provider_options or {}).get("abi_only") else None)
-            if _pr and isinstance(_pr, tuple) and _pr[0] > llm_start[1]:
-                llm_start = (_pr[1], _pr[0])
-                log("  cheap repair pre-pass: %d%% -> %d%%" % (llm_start[1], _pr[0]))
-        except Exception as _e:
-            log("  cheap repair pre-pass: %s" % str(_e)[:80])
-        job_rounds = resolve_rounds(job, rounds, model)
-        stage("waiting for cloud model" if providers.is_cloud(model) else "waiting for local model")
+        # Cheap pre-pass only needs to run when a just-compiled 2016 candidate is a
+        # better base than the stored source; the stored source already had its one
+        # bounded repair pass above.  This avoids compiling the same mutations twice.
+        if source_candidate and source_candidate[0] > job["score"] and llm_start[1] < 100:
+            try:
+                from roc import mutate
+                stage("cheap repair pre-pass")
+                _pr = mutate.improve(client, addr, llm_start[0], flags, guided=True,
+                                     guided_categories=abi_categories if (provider_options or {}).get("abi_only") else None)
+                if _pr and isinstance(_pr, tuple) and _pr[0] > llm_start[1]:
+                    llm_start = (_pr[1], _pr[0])
+                    log("  cheap repair pre-pass: %d%% -> %d%%" % (llm_start[1], _pr[0]))
+                if llm_start[1] == 100:
+                    r = api.call("/v1/submit", {"lease": job["lease"], "user": user,
+                                                "worker": job.get("worker"), "model": job.get("model"),
+                                                "client": client, "addr": addr,
+                                                "score": 100, "source": llm_start[0]})
+                    log("  deterministic repair submitted %d%%" % r["stored"])
+                    job["receipt"] = r
+                    result, improved = r["stored"], bool(r.get("verified") and r.get("improved"))
+                    return r["stored"]
+            except Exception as _e:
+                log("  cheap repair pre-pass: %s" % str(_e)[:80])
+        stage("running Rev.ng" if run_revng else "preparing model prompt")
+        hint = draft.revng_c(code, int(addr, 16)) if run_revng else None
+        phase_seconds["revng"] = round(time.monotonic() - llm_started, 3)
+        # Remill contributes a compact evidence packet, never raw IR.  It is
+        # invoked only for a specific structural question, after deterministic
+        # matching and repair have failed to settle the target.
+        remill_hint, remill_reason = None, None
+        run_remill, remill_reason = remill_worth_it(job, facts, use_remill, source_only,
+                                                    provider_options)
+        if run_remill:
+            try:
+                from roc import remill as _remill
+                if _remill.remill_available():
+                    _, remill_hint, _ = _remill.lift_function(client, addr, timeout=120, max_chars=1800)
+                    log("  Remill: %s" % remill_reason)
+                else:
+                    remill_reason = _remill.resolve_tools()["reason"]
+            except Exception as _remill_error:
+                log("  Remill lift skipped: %s" % str(_remill_error)[:120])
+            if remill_hint:
+                log("  Remill: attached evidence packet (%d chars)" % len(str(remill_hint)))
+        elif use_remill and not source_only:
+            log("  Remill not needed: %s" % remill_reason)
         stage("waiting for cloud model" if providers.is_cloud(model) else "waiting for local model")
         if not (provider_options or {}).get("compact") and not source_only:
             if hint:
@@ -1302,6 +1363,7 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
         llm_options = dict(provider_options or {})
         if type(log).__name__ != "CompactLog":
             llm_options.setdefault("show_prompt", True)
+        llm_options.setdefault("prompt_style", "lean")
         llm_options["family_exemplars"] = strict_family_reference
         score, src = draft.llm_rounds(client, addr, model, draft.model_rounds(model, job_rounds), hint, llm_start,
                                       log, flags, examples, source_hints, facts, round_stats, strategy=strategy,
@@ -1311,8 +1373,13 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
         # LLM partial is not final: run same bounded compiler repair before
         # submitting it, so repair can convert 98/99% candidates to exact.
         if src and score < 100:
-            from roc import mutate
-            stage("repairing generated partial")
+            try:
+                _score = int(score)
+            except (ValueError, TypeError):
+                _score = 0
+            if _score < 100:
+                from roc import mutate
+                stage("repairing generated partial")
             repair_started = time.monotonic()
             repaired = mutate.improve(client, addr, src, flags, guided=True,
                                       guided_categories=abi_categories if (provider_options or {}).get("abi_only") else None)
@@ -1413,6 +1480,8 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
                            source_candidate_score=source_candidate[0] if source_candidate else 0,
                            source_candidate_hit=bool(source_candidate and source_candidate[0] == 100),
                            revng=bool(run_revng if 'run_revng' in locals() else revng),
+                           remill=bool(run_remill if 'run_remill' in locals() else False),
+                           remill_reason=remill_reason if 'remill_reason' in locals() else None,
                            prompt_profile=draft.model_profile(model), rounds=round_stats,
                            seconds=round(time.monotonic() - started, 2),
                            phase_seconds=phase_seconds,
@@ -1436,7 +1505,43 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
 def resolve_rounds(job, rounds, model=None):
     if rounds != "auto":
         return rounds
-    return 2 if job.get("size", 0) <= 48 or (model or "").startswith("deepseek:") else 4
+    try:
+        job_size = int(job.get("size", 0))
+    except (ValueError, TypeError):
+        job_size = 0
+    return 2 if job_size <= 48 or (model or "").startswith("deepseek:") else 4
+
+
+def remill_worth_it(job, facts, use_remill=True, source_only=False, provider_options=None):
+    """Whether lifting answers a specific remaining structural question.
+
+    Returns ``(run, reason)``.  Force-lift is opt-in for debugging only
+    (``--force-lift`` or ``ROC_FORCE_LIFT=1``); Remill is otherwise reserved for
+    larger targets with real branch/indirect-call/memory uncertainty, so the
+    cheap CFG and source evidence are used first.
+    """
+    import os
+    options = provider_options or {}
+    if os.environ.get("ROC_DISABLE_REMILL", "") in ("1", "true", "yes"):
+        return False, "disabled by ROC_DISABLE_REMILL"
+    if source_only or not use_remill:
+        return False, "disabled for this worker"
+    if options.get("force_lift") or os.environ.get("ROC_FORCE_LIFT", "") in ("1", "true", "yes"):
+        return True, "forced lift (debug)"
+    try:
+        size = int(job.get("size", 0) or 0)
+    except (TypeError, ValueError):
+        size = 0
+    branches = int((facts or {}).get("branch_count", 0) or 0)
+    indirect = len((facts or {}).get("imports") or []) + int((facts or {}).get("alloc_calls") or 0)
+    confidence = int(job.get("source_confidence", 0) or 0)
+    if size < 64:
+        return False, "small target (%d B); direct asm/source is cheaper" % size
+    if branches >= 4 or indirect >= 2 or (size >= 160 and confidence <= 0):
+        return True, ("structural uncertainty: %d B, %d branch(es), %d indirect call(s), "
+                      "%d%% source confidence" % (size, branches, indirect, confidence))
+    return False, ("no unresolved structural problem (%d B, %d branch(es), %d indirect "
+                   "call(s), %d%% source confidence)" % (size, branches, indirect, confidence))
 
 
 def auto_reasoning(job, thinking=None, reasoning_effort=None, model=None):
@@ -1548,7 +1653,13 @@ def submit_files(server, user, client, addrs=None, token=None, log=print, file=N
             checked.append((p, text, score))
     def upload(item):
         p, text, score = item
-        if score <= scores.get(p.stem, 0):
+        server_score = scores.get(p.stem, 0)
+        if isinstance(server_score, str):
+            try:
+                server_score = int(server_score)
+            except (ValueError, TypeError):
+                server_score = 0
+        if score <= server_score:
             return "%s  no gain over server; skipped" % p.stem
         try:  # one connection per thread; the server verifies up to 3 at a time
             r = Api(server, token).call("/v1/submit", {"user": user, "client": client, "addr": p.stem,

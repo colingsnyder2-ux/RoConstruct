@@ -318,7 +318,8 @@ def test_doctor_reports_problems_with_fixes():
             doctor.check("cloud", "ok", "cloud model deepseek:deepseek-flash ready"),
             doctor.check("links", "ok", "roconstruct:// registered"),
             doctor.check("local-ai", "ok", "not installed (cloud models are the default)"),
-            doctor.check("extras", "ok", "Docker/Rev.ng not installed")]
+            doctor.check("extras", "ok", "Docker/Rev.ng not installed"),
+            doctor.check("remill", "ok", "not configured (optional: structural IR hints only)")]
     names = [row["name"] for row in rows]
     with patch("roc.doctor.python_check", return_value=rows[0]), \
          patch("roc.doctor.compilers_check", return_value=rows[1]), \
@@ -327,7 +328,8 @@ def test_doctor_reports_problems_with_fixes():
          patch("roc.doctor.cloud_check", return_value=rows[4]), \
          patch("roc.doctor.link_check", return_value=rows[5]), \
          patch("roc.doctor.local_check", return_value=rows[6]), \
-         patch("roc.doctor.extras_check", return_value=rows[7]):
+         patch("roc.doctor.extras_check", return_value=rows[7]), \
+         patch("roc.doctor.remill_check", return_value=rows[8]):
         checks = doctor.all_checks(network=False)
     assert [row["name"] for row in checks] == names
     assert [row["name"] for row in doctor.failed(checks)] == ["compilers"]

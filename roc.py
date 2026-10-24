@@ -184,13 +184,6 @@ def doctor_report(checks):
     return doctor.failed(checks)
 
 
-def cmd_launch(a):
-    """Configure and run the worker in this terminal.
-
-    No saved setup, or you want to change something? It just asks here: username,
-    client, cloud consent, then the knobs (model, workers, rounds, size). Nothing
-    is installed that you did not ask for, and nothing starts until you answer.
-    """
 def _forwarded(a):
     """Flags on `a` that the worker entry point understands, as a CLI list."""
     forwarded = []
@@ -201,7 +194,8 @@ def _forwarded(a):
         value = getattr(a, name, None)
         if value is not None:
             forwarded += ["--%s" % name.replace("_", "-"), str(value)]
-    for flag, name in (("no-revng", "no_revng"), ("dry-run", "dry_run"),
+    for flag, name in (("no-revng", "no_revng"), ("no-remill", "no_remill"),
+                       ("force-lift", "force_lift"), ("dry-run", "dry_run"),
                        ("allow-cloud", "allow_cloud"), ("source-only", "source_only")):
         if getattr(a, name, False):
             forwarded.append("--%s" % flag)
@@ -416,13 +410,131 @@ def _score_band(score):
     return 3
 
 
-def cmd_work(a):
-    """Manual-matching admin: list clients, or select+claim the next unmatched function.
+def _work_cooldown_seconds(a):
+    try:
+        return max(0, int(getattr(a, "cooldown", 3600) or 0))
+    except (TypeError, ValueError):
+        return 3600
 
-    Selection and claiming come from the server, never from possibly-stale local
-    scores.json. The agent still edits the C++ by hand; this command only automates
-    the repetitive picking/claiming bookkeeping."""
-    from roc import worker, match
+
+def _local_evidence(client, addr):
+    """Evidence key for local cooldowns: source hash when present, else row facts."""
+    from roc import claims as claim_state, match, research
+    path = ROOT / "src" / client / (addr + ".cpp")
+    if path.exists():
+        return research.digest(path.read_text(encoding="utf-8", errors="replace"))
+    try:
+        row = match._functions(client).get(addr) or {}
+    except (OSError, SystemExit):
+        row = {}
+    return claim_state.evidence_key(row)
+
+
+def _release_target(api, user, client, addr, reason="", cooldown=3600, keep_token_on_failure=True):
+    """Release the token this checkout persisted, never somebody else's."""
+    from roc import claims as claim_state
+    addr = str(addr).lower().replace("0x", "").zfill(8)
+    claim = claim_state.load_claim(client, addr, include_expired=True)
+    released, note = False, ""
+    if not claim:
+        print("%s %s: no locally stored lease token; nothing to release." % (client, addr))
+    elif claim.get("worker") and user and claim["worker"] != user:
+        print("%s %s: local token belongs to %s, not %s; refusing to release another agent's claim."
+              % (client, addr, claim["worker"], user))
+        return False
+    else:
+        try:
+            result = api.call("/v1/release", {"lease": claim["lease"], "worker": claim.get("worker") or user,
+                                              "client": client, "addr": addr,
+                                              "cooldown": cooldown}, timeout=20) or {}
+        except RuntimeError as error:
+            note = "server unreachable (%s); token kept for retry" % str(error)[:120]
+            print("%s %s: %s" % (client, addr, note))
+            if not keep_token_on_failure:
+                claim_state.clear_claim(client, addr, claim["lease"])
+            released = False
+        else:
+            if result.get("released"):
+                released = True
+                claim_state.clear_claim(client, addr, claim["lease"])
+                print("%s %s: released the stored claim." % (client, addr))
+            elif result.get("reason") in ("unknown or expired lease",):
+                claim_state.clear_claim(client, addr, claim["lease"])
+                note = "lease had already expired or was replaced"
+                print("%s %s: %s; cleared the stale local token." % (client, addr, note))
+            else:
+                note = result.get("reason") or "server rejected release"
+                print("%s %s: release refused (%s); token kept." % (client, addr, note))
+    evidence = _local_evidence(client, addr)
+    claim_state.add_cooldown(client, addr, evidence, cooldown, reason=reason or "skipped")
+    print("%s %s: parked for %ds%s." % (client, addr, int(cooldown),
+                                         (" (%s)" % reason) if reason else ""))
+    return released
+
+
+def cmd_release(a):
+    """Release one stored claim and cooldown the target for future selections."""
+    from roc import claims as claim_state, worker
+    s = settings()
+    srv = need(a.server or s.get("server"), "server", "Use --server or: roc config --server URL")
+    user = need(a.user or s.get("user"), "username", "Use --user or: roc config --user NAME")
+    api = worker.Api(srv, a.token or s.get("token"))
+    claim_state.purge_expired()
+    _release_target(api, user, a.name, a.addr, reason=a.reason or "manual skip",
+                    cooldown=_work_cooldown_seconds(a))
+    return 0
+
+
+def cmd_scout(a):
+    """Read-only ranked opportunities: never claims or reserves a target."""
+    from roc import scout, worker
+    s = settings()
+    srv = a.server or s.get("server")
+    api = worker.Api(srv, a.token or s.get("token")) if srv else None
+    try:
+        if api is not None:
+            rows, live, note = scout.candidates(
+                api, a.name, limit=a.limit, profile=a.profile, max_size=a.max_size,
+                min_score=a.min_score, max_score=a.max_score, include_claimed=a.include_claimed)
+        else:
+            rows = scout.from_local(a.name, limit=a.limit, profile=a.profile, max_size=a.max_size,
+                                    min_score=a.min_score, max_score=a.max_score,
+                                    include_claimed=a.include_claimed)
+            live, note = False, "no server configured"
+    except (ValueError, RuntimeError) as error:
+        sys.exit(str(error))
+    if a.json:
+        print(json.dumps({"client": a.name, "live": live, "note": note, "candidates": rows}, indent=1))
+        return
+    print(scout.format_table(rows, live=live, note=note))
+
+
+def cmd_packet(a):
+    """Compact token-bounded evidence packet for one shortlisted target."""
+    from roc import packet, worker
+    s = settings()
+    srv = a.server or s.get("server")
+    api = worker.Api(srv, a.token or s.get("token")) if srv else None
+    flags = (clients.load().get(a.name) or {}).get("flags")
+    try:
+        built = packet.build(a.name, a.addr, api=api, max_tokens=a.max_tokens,
+                             include_diff=not a.no_diff, similar_limit=a.similar,
+                             check=not a.no_diff, flags=flags)
+    except (ValueError, RuntimeError, SystemExit) as error:
+        sys.exit(str(error))
+    if a.json:
+        print(json.dumps(built, indent=1))
+    else:
+        print(packet.render(built))
+
+
+def cmd_work(a):
+    """Manual-matching admin: list clients, scout, or select+claim the next function.
+
+    Selection, ranking and claiming come from the server, never from possibly-stale
+    local scores.json.  The lease token is persisted under work/state/ so
+    ``--skip``/``roc release`` can return it even after a restart."""
+    from roc import claims as claim_state, scout, worker, match
     s = settings()
     srv = need(a.server or s.get("server"), "server", "Use --server or: roc config --server URL")
     user = need(a.user or s.get("user"), "username", "Use --user or: roc config --user NAME")
@@ -438,37 +550,66 @@ def cmd_work(a):
         print("\nSelect a client, then run: roc work CLIENT")
         return
 
+    claim_state.purge_expired()
+    if getattr(a, "skip", None):
+        addr = a.skip
+        if addr == "last":
+            latest = claim_state.latest_claim(a.name, include_expired=True)
+            if not latest:
+                sys.exit("No stored claim to skip for %s; give an address." % a.name)
+            addr = latest["addr"]
+        _release_target(api, user, a.name, addr, reason=a.reason or "skipped",
+                        cooldown=_work_cooldown_seconds(a))
+        return
+
     st = api.call("/v1/status", timeout=30)
     info = next((c for c in st["clients"] if c["client"] == a.name), None)
     if info is None:
         sys.exit("Unknown client %s. Registered: %s" %
                  (a.name, ", ".join(c["client"] for c in st["clients"])))
 
-    rows = api.call("/v1/functions?client=%s&max_score=99&limit=500" % a.name, timeout=60)
-    candidates = [r for r in rows if not r["claimed"]]
-    candidates.sort(key=lambda r: (_score_band(r["score"]), 0 if r["twin"] else 1,
-                                   -r["score"], r["attempts"], r["size"]))
+    try:
+        rows, live, note = scout.candidates(
+            api, a.name, limit=max(a.limit, 20), profile=a.profile, max_size=a.max_size,
+            min_score=a.min_score, max_score=a.max_score, include_claimed=True)
+    except (ValueError, RuntimeError) as error:
+        sys.exit("Could not load candidates: %s" % error)
+    if not rows:
+        print("No unmatched functions left for %s (or all are claimed/cooling down)." % a.name)
+        return
+    candidates = [row for row in rows if not row.get("claimed")
+                  and not claim_state.cooling(a.name, row["addr"])]
+    if a.dry_run:
+        print(scout.format_table(candidates[:a.limit], live=live, note=note))
+        print("\nDry run: nothing claimed.")
+        return
     if not candidates:
-        print("No unmatched functions left for %s (or all are claimed right now)." % a.name)
+        print("Every candidate is claimed by another worker or cooling down. Try again shortly.")
         return
 
-    chosen = None
-    for row in candidates:
+    chosen, claim = None, None
+    for row in candidates[:max(1, a.limit)]:
         try:
-            api.call("/v1/claim", {"user": user, "worker": user,
-                                   "client": a.name, "addr": row["addr"]}, timeout=20)
+            claim = api.call("/v1/claim", {"user": user, "worker": user,
+                                           "client": a.name, "addr": row["addr"]}, timeout=20)
             chosen = row
             break
         except worker.ApiFailure as error:
             if error.category == "bad_request" and "another worker" in str(error):
                 continue
+            if "another worker" in str(error) or "already claimed" in str(error):
+                continue
             print("Could not claim %s: %s" % (row["addr"], error))
             return
-    if not chosen:
+    if not chosen or not claim or not claim.get("lease"):
         print("Every candidate is claimed by another worker right now. Try again shortly.")
         return
 
     addr = chosen["addr"]
+    claim_state.save_claim(a.name, addr, claim["lease"], worker=user,
+                           expires=claim.get("expires"),
+                           score=chosen.get("score"),
+                           source_hash=_local_evidence(a.name, addr))
     path = ROOT / "src" / a.name / (addr + ".cpp")
     if not path.exists():
         try:
@@ -485,12 +626,20 @@ def cmd_work(a):
     print("Client:   %s  (%d / %d matched, %.2f%%)" %
           (a.name, info["matched"], info["functions"], 100.0 * info["matched"] / total))
     print("Function: %s" % addr)
-    print("Before:   %d%%" % chosen["score"])
-    if chosen["twin"]:
+    print("Evidence: %d%% score, %d B, %d attempt(s), source confidence %d%%" %
+          (chosen.get("score", 0), chosen.get("size", 0), chosen.get("attempts", 0),
+           chosen.get("source_confidence", 0)))
+    if chosen.get("twin"):
         print("Twin:     %s (already matched) - try copying its source first" % chosen["twin"])
+    print("Why:      %s -> %s" % (chosen.get("difficulty_reason", "unknown"),
+                                  chosen.get("recommendation", "research")))
+    if not live:
+        print("Note:     local fallback (%s); percentage is not confirmed server progress." % note)
     print("Size:     %d bytes   Unit: %s   Attempts: %d" %
-          (chosen["size"], chosen["unit"] or "-", chosen["attempts"]))
-    print("Claimed for %s (2h). Edit: %s" % (user, path))
+          (chosen.get("size", 0), chosen.get("unit") or "-", chosen.get("attempts", 0)))
+    print("Claimed for %s (token stored in work/state). Edit: %s" % (user, path))
+    print("Skip:     roc work %s --skip %s --reason TEXT   (or: roc release %s %s)" %
+          (a.name, addr, a.name, addr))
     print("Next:     roc check %s %s   ->   roc submit %s %s" % (a.name, addr, a.name, addr))
 
 
@@ -551,7 +700,6 @@ def cmd_check(a):
             continue
         best = match.save_score(a.name, src.stem, value)
         match.save_data(a.name, src.stem, spans)
-        match.save_data(a.name, src.stem, spans)
         matched += value == 100
         print("%s  %3d%%  %s%s" % (src.stem, value, name or "-", "  MATCH" if value == 100 else "  (best %d%%)" % best))
         if value < 100 and len(srcs) == 1:
@@ -568,9 +716,13 @@ def cmd_check_batch(a):
     hypothesis. This command lets an agent generate 3-5 variants up front and test
     them all at once: the object cache deduplicates identical sources, and each
     compile runs concurrently (match.check_text already shares per-object locks).
+    One file is one hypothesis. Identical source hashes compile once; compile
+    failures are reported, never dropped. Use --json/--summary for machine use.
     """
+    import hashlib
+    import time
     from concurrent.futures import ThreadPoolExecutor, as_completed
-    from roc import match
+    from roc import match, research
     match.DIFF_CONTEXT = getattr(a, "context", 99)
     if not a.files or not a.addr:
         sys.exit("usage: roc check-batch CLIENT ADDR FILE [FILE ...]")
@@ -578,41 +730,101 @@ def cmd_check_batch(a):
     if os.environ.get("ROC_AGENT"):
         _refuse_matched(a.name, addr)
 
-    def score_one(path_text):
-        label, text = path_text
-        try:
-            value, symbol, asm_diff, _ = match.check_text(a.name, addr, text)
-            return label, value, symbol, asm_diff, None
-        except match.CompileError as error:
-            return label, 0, None, "", str(error)
-
-    pairs = []
+    pairs, seen, duplicates = [], {}, []
     for label in a.files:
         path = Path(label)
         if not path.exists():
             sys.exit("No file %s" % label)
-        pairs.append((label, path.read_text(encoding="utf-8", errors="replace")))
+        text = path.read_text(encoding="utf-8", errors="replace")
+        digest = hashlib.sha256(text.encode("utf-8", "replace")).hexdigest()
+        if digest in seen:
+            duplicates.append({"label": label, "duplicate_of": seen[digest], "source_hash": digest})
+            continue
+        seen[digest] = label
+        pairs.append((label, text, digest))
+
+    def score_one(item):
+        label, text, digest = item
+        started = time.monotonic()
+        try:
+            value, symbol, asm_diff, _ = match.check_text(a.name, addr, text)
+            return {"label": label, "score": value, "symbol": symbol, "diff": asm_diff,
+                    "error": None, "source_hash": digest,
+                    "elapsed_seconds": round(time.monotonic() - started, 3),
+                    "hypothesis": getattr(a, "hypothesis", None) or Path(label).stem}
+        except match.CompileError as error:
+            return {"label": label, "score": 0, "symbol": None, "diff": "",
+                    "error": str(error), "source_hash": digest,
+                    "elapsed_seconds": round(time.monotonic() - started, 3),
+                    "hypothesis": getattr(a, "hypothesis", None) or Path(label).stem}
+        except Exception as error:  # never hide an engine failure as a 0% candidate
+            return {"label": label, "score": 0, "symbol": None, "diff": "",
+                    "error": "%s: %s" % (type(error).__name__, error), "source_hash": digest,
+                    "elapsed_seconds": round(time.monotonic() - started, 3),
+                    "hypothesis": getattr(a, "hypothesis", None) or Path(label).stem}
+
     jobs = int(os.environ.get("ROC_JOBS") or 0) or min(8, os.cpu_count() or 4)
     results = []
     with ThreadPoolExecutor(max_workers=jobs) as pool:
         futures = [pool.submit(score_one, pair) for pair in pairs]
         for future in as_completed(futures):
             results.append(future.result())
-    results.sort(key=lambda row: -row[1])
+    results.sort(key=lambda row: -row["score"])
+    best = results[0] if results else {"label": None, "score": 0, "diff": "", "error": None}
+
+    journal = getattr(a, "journal", True) and os.environ.get("ROC_CHECK_BATCH_JOURNAL", "1") != "0"
+    if journal and results:
+        tokens = getattr(a, "tokens", None)
+        for row in results:
+            try:
+                research.append(ROOT / "work" / "agent-memory" / "attempts.jsonl", {
+                    "kind": "agent_check", "client": a.name, "addresses": [addr],
+                    "model": getattr(a, "model", None) or os.environ.get("ROC_MODEL"),
+                    "hypothesis": row["hypothesis"], "source_hash": row["source_hash"],
+                    "after": row["score"],
+                    "diff_class": ("compile_failure" if row["error"] else
+                                   (row["symbol"] or "byte_diff")),
+                    "result": ("compile_failed" if row["error"] else
+                               "exact" if row["score"] == 100 else "no_gain"),
+                    "tokens": tokens, "elapsed_seconds": row["elapsed_seconds"],
+                    "receipt": None,
+                })
+            except (OSError, ValueError):
+                pass
+
+    if a.json:
+        print(json.dumps({"client": a.name, "addr": addr, "results": results,
+                          "duplicates": duplicates,
+                          "winner": best["label"] if best.get("label") else None,
+                          "best_score": best.get("score", 0),
+                          "authoritative": False}, indent=1))
+        return best.get("score", 0)
+    if getattr(a, "summary", False):
+        print("Batch %s %s · %d unique, %d duplicate(s):" % (a.name, addr, len(results), len(duplicates)))
+        for row in results:
+            print("  %3d%%  %-28s %s" % (row["score"], Path(row["label"]).name,
+                                         "COMPILE FAILED" if row["error"] else
+                                         ("MATCH" if row["score"] == 100 else row["symbol"] or "-")))
+        if duplicates:
+            print("  duplicates: " + ", ".join("%s=%s" % (d["label"], d["duplicate_of"]) for d in duplicates))
+        print("Note: local scores are candidates only; roc submit --file still server-verifies the winner.")
+        return best.get("score", 0)
 
     print("Batch check %s %s · %d candidate(s), best first:" % (a.name, addr, len(results)))
-    for label, value, symbol, _, error in results:
-        note = "COMPILE FAILED: %s" % error.splitlines()[0][:80] if error else \
-               ("MATCH" if value == 100 else symbol or "-")
-        print("  %3d%%  %-8s  %s" % (value, Path(label).name, note))
-    best = results[0]
-    if best[1] == 100:
-        print("Winner: %s is an exact match; submit it with:" % best[0])
-        print('  roc submit %s %s --file "%s"' % (a.name, addr, best[0]))
-    elif best[1] > 0:
-        print("\nWinner %s residue ('-' = target, '+' = yours):" % best[0])
-        print(best[3] or "Exact code/data match")
-    return best[1]
+    for row in results:
+        note = "COMPILE FAILED: %s" % row["error"].splitlines()[0][:80] if row["error"] else \
+               ("MATCH" if row["score"] == 100 else row["symbol"] or "-")
+        print("  %3d%%  %-8s  %s" % (row["score"], Path(row["label"]).name, note))
+    if duplicates:
+        print("Duplicate source hashes compiled once: %s" %
+              ", ".join("%s=%s" % (d["label"], d["duplicate_of"]) for d in duplicates))
+    if best.get("label") and best.get("score") == 100:
+        print("Winner: %s is an exact match; submit it with:" % best["label"])
+        print('  roc submit %s %s --file "%s"' % (a.name, addr, best["label"]))
+    elif best.get("label") and best.get("score", 0) > 0:
+        print("\nWinner %s residue ('-' = target, '+' = yours):" % best["label"])
+        print(best.get("diff") or "Exact code/data match")
+    return best.get("score", 0)
 
 
 def cmd_classify(a):
@@ -925,6 +1137,12 @@ def cmd_ghidra(a):
 
 def cmd_lift(a):
     from roc import remill
+    tools = remill.resolve_tools()
+    if not tools["available"]:
+        print(remill.not_available_message(tools))
+        raise SystemExit(2)
+    print("lifter: %s   verifier: %s" % (tools["exe_name"], tools["opt_name"]))
+    print()
     summary, compact, paths = remill.lift_function(a.name, a.addr, getattr(a, "out", None), timeout=a.timeout)
     print(compact)
     print()
@@ -1598,6 +1816,8 @@ def cmd_worker(a):
                 raise SystemExit(providers.credential_hint(a.cloud_fallback))
         elif not draft.pick_model(a.cloud_fallback):
             raise SystemExit("Cloud fallback model is not installed: %s" % a.cloud_fallback)
+    if getattr(a, "prompt_style", None) is None:
+        a.prompt_style = "lean"
     order = a.order or "random"
     if order not in ("auto", "best", "matched", "unmatched", "easiest", "random"):
         sys.exit("--order must be one of: auto, best, matched, unmatched, easiest, random")
@@ -1838,6 +2058,20 @@ def cmd_benchmark_models(a):
             print("  %s %-6s source=%s jobs=%d matches=%d gain=%d" %
                   (row["model"], row["bucket"], row["source_present"], row["jobs"],
                    row["matched"], row["score_gain"]))
+        return
+    if a.ab_compare:
+        print(telemetry.format_compare(telemetry.compare_sessions(*a.ab_compare)))
+        return
+    if a.ab:
+        hidden = telemetry.build_hidden(a.limit)
+        groups = telemetry.ab_split(hidden)
+        for arm in ("A", "B"):
+            print("Arm %s: %d fixed targets" % (arm, len(groups[arm])))
+            for row in groups[arm]:
+                print("  %-8s %s %s %-6s %s" % (row["client"], row["addr"], row["target_hash"],
+                                                 row["bucket"], row.get("unit") or ""))
+        print("Nothing was run. Give each arm its own --session, then report with: "
+              "roc benchmark-models --ab-compare SESSION_A SESSION_B")
         return
     if a.hidden:
         hidden = telemetry.build_hidden(a.limit)
@@ -2127,7 +2361,8 @@ def menu_hand():
 COMMAND_GROUPS = [
     ("Start here", ["install", "doctor", "config", "setup", "gui", "client-fetch", "analyze", "pull"]),
     ("Match and submit", ["agent", "research", "mass", "auto", "xcopy", "libs", "lib-fetch", "lib-info", "libs-bundle", "similar", "donor",
-                          "check", "classify", "next", "work", "claim", "submit", "agent-context", "agent-block", "agent-metrics"]),
+                          "check", "check-batch", "classify", "next", "work", "scout", "packet", "release",
+                          "claim", "submit", "agent-context", "agent-block", "agent-metrics"]),
     ("Workers and server", ["worker", "status", "host", "server", "link", "tasks", "cpu-worker", "cluster"]),
     ("This copy", ["update", "provider", "chatgpt", "local-ai", "uninstall"]),
 ]
@@ -2203,6 +2438,9 @@ def main(argv=None):
     p.add_argument("--family-id", help="strict 24-hex family fingerprint")
     p.add_argument("--family-example", help="seed family from CLIENT:ADDRESS")
     p.add_argument("--no-revng", dest="no_revng", action="store_true", help="never use Rev.ng hints")
+    p.add_argument("--no-remill", dest="no_remill", action="store_true", help="never use Remill LLVM semantic hints")
+    p.add_argument("--force-lift", dest="force_lift", action="store_true",
+                   help="lift structural near-misses even when cheap evidence is thin")
     p.add_argument("--dry-run", dest="dry_run", action="store_true",
                    help="print the plan without leasing a job")
     p.add_argument("--setup", dest="setup", action="store_true",
@@ -2228,6 +2466,8 @@ def main(argv=None):
                    help="deterministic candidates only; never call the model")
     p.add_argument("--strategy", choices=["direct", "structured", "reference"],
                    help="candidate-generation prompt strategy")
+    p.add_argument("--prompt-style", choices=["legacy", "lean"], default="lean",
+                   help="prompt evidence mode: legacy control or simplified lean prompt")
     p.add_argument("--order", choices=["auto", "best", "matched", "unmatched", "easiest", "random"],
                    help="which functions to lease first")
     p.add_argument("--verbosity", choices=["auto", "verbose", "compact"],
@@ -2262,7 +2502,42 @@ def main(argv=None):
     cmd("next", cmd_next, "list the easiest open functions", (["name"], {}), (["-n"], {"type": int, "default": 20}))
     cmd("work", cmd_work, "list clients or select+claim the next unmatched function for manual matching",
         (["name"], {"nargs": "?", "help": "client to work on (omit to list clients and server progress)"}),
-        (["--server"], {}), (["--user"], {}), (["--token"], {}))
+        (["--server"], {}), (["--user"], {}), (["--token"], {}),
+        (["--profile"], {"choices": ["quick", "balanced", "deep"], "default": "quick",
+                         "help": "candidate evidence profile (default: quick)"}),
+        (["--max-size"], {"dest": "max_size", "type": int, "help": "skip functions larger than this"}),
+        (["--min-score"], {"dest": "min_score", "type": int, "default": 0}),
+        (["--max-score"], {"dest": "max_score", "type": int, "default": 99}),
+        (["--limit"], {"type": int, "default": 20, "help": "compact candidate batch (1-200)"}),
+        (["--skip"], {"nargs": "?", "const": "last", "metavar": "ADDR|last",
+                      "help": "release the stored claim and park it (default: most recent claim)"}),
+        (["--reason"], {"default": "", "help": "reason recorded with a skip/park"}),
+        (["--cooldown"], {"type": int, "default": 3600, "help": "seconds to keep a skipped target parked"}),
+        (["--dry-run"], {"action": "store_true", "help": "show ranked candidates without claiming"}))
+    cmd("scout", cmd_scout, "read-only ranked candidates; never claims or reserves a target",
+        (["name"], {"help": "client to scout"}),
+        (["--server"], {}), (["--token"], {}),
+        (["--profile"], {"choices": ["quick", "balanced", "deep"], "default": "quick"}),
+        (["--limit"], {"type": int, "default": 20}),
+        (["--max-size"], {"dest": "max_size", "type": int}),
+        (["--min-score"], {"dest": "min_score", "type": int, "default": 0}),
+        (["--max-score"], {"dest": "max_score", "type": int, "default": 99}),
+        (["--include-claimed"], {"dest": "include_claimed", "action": "store_true",
+                                 "help": "show claimed targets too (read-only)"}),
+        (["--json"], {"action": "store_true"}))
+    cmd("release", cmd_release, "release a stored claim (never another agent's) and park the target",
+        (["name"], {}), (["addr"], {}),
+        (["--server"], {}), (["--user"], {}), (["--token"], {}),
+        (["--reason"], {"default": "manual skip"}),
+        (["--cooldown"], {"type": int, "default": 3600, "help": "seconds to keep it parked"}))
+    cmd("packet", cmd_packet, "compact token-bounded evidence packet for a shortlisted target",
+        (["name"], {}), (["addr"], {}),
+        (["--server"], {}), (["--token"], {}),
+        (["--json"], {"action": "store_true"}),
+        (["--max-tokens"], {"dest": "max_tokens", "type": int, "default": 2000}),
+        (["--similar"], {"type": int, "default": 5}),
+        (["--no-diff"], {"dest": "no_diff", "action": "store_true",
+                         "help": "skip the optional compile/diff step"}))
     cmd("claim", cmd_claim, "start a function: writes src/<client>/<addr>.cpp",
         (["name"], {}), (["addr"], {}), (["--open"], {"action": "store_true", "help": "open in Notepad"}))
     cmd("check", cmd_check, "compile src/<client>/*.cpp and score against the exe",
@@ -2271,7 +2546,14 @@ def main(argv=None):
         (["--context"], {"type": int, "default": 99, "help": "unchanged lines around each diff hunk (3 = residue only)"}))
     cmd("check-batch", cmd_check_batch, "score several candidate variants of one function in parallel (agents: test multiple hypotheses at once)",
         (["name"], {}), (["addr"], {}), (["files"], {"nargs": "+"}),
-        (["--context"], {"type": int, "default": 99, "help": "unchanged lines around each diff hunk"}))
+        (["--context"], {"type": int, "default": 99, "help": "unchanged lines around each diff hunk"}),
+        (["--json"], {"action": "store_true", "help": "machine-readable results, including compile failures"}),
+        (["--summary"], {"action": "store_true", "help": "compact one-line-per-candidate output"}),
+        (["--model"], {"help": "model name recorded in attempt memory"}),
+        (["--hypothesis"], {"help": "one hypothesis label shared by these candidates"}),
+        (["--tokens"], {"type": int, "help": "known token usage to record in attempt memory"}),
+        (["--no-journal"], {"dest": "journal", "action": "store_false",
+                            "help": "do not append to work/agent-memory/attempts.jsonl"}))
     cmd("classify", cmd_classify, "compile a source and classify target/candidate mismatch",
         (["client"], {}), (["addr"], {}), (["source"], {}))
     cmd("auto", cmd_auto, "auto-match trivial functions (getters, setters, empty...) ('all' for every client)",
@@ -2340,11 +2622,12 @@ def main(argv=None):
         (["client"], {}), (["--top"], {"type": int, "default": 20}))
     cmd("ghidra", cmd_ghidra, "write a Ghidra script that applies recovered names and match status",
         (["client"], {}))
-    cmd("lift", cmd_lift, "lift one Roblox function with Remill 17 to verified LLVM IR",
+    cmd("lift", cmd_lift, "lift one function with the configured Remill + LLVM opt (writes inspectable IR)",
         (["name"], {}),
         (["addr"], {}),
         (["--out"], {"help": "output directory (default: work/<client>/lifted/<addr>)"}),
-        (["--timeout"], {"type": int, "default": 180, "help": "Remill timeout seconds"}))
+        (["--timeout"], {"type": int, "default": 180, "help": "Remill timeout seconds"}),
+        (["--prompt-style"], {"choices": ["legacy", "lean"], "default": "lean", "help": "prompt evidence mode: legacy control or simplified lean prompt"}))
     cmd("rtti", cmd_rtti, "RTTI reverse-index: binary-proven template types (never guess a type parameter)",
         (["name"], {}), (["addr"], {"nargs": "?"}),
         (["--open"], {"action": "store_true", "help": "annotate every open function's RTTI type refs"}),
@@ -2568,6 +2851,10 @@ def main(argv=None):
     cmd("benchmark-models", cmd_benchmark_models, "create fixed targets and compare model telemetry",
         (["--generate"], {"action": "store_true"}),
         (["--hidden"], {"action": "store_true", "help": "build source/score-hidden solved targets"}),
+        (["--ab"], {"action": "store_true",
+                    "help": "print the fixed hash A/B split of the hidden corpus; runs nothing"}),
+        (["--ab-compare"], {"dest": "ab_compare", "nargs": 2, "metavar": ("SESSION_A", "SESSION_B"),
+                            "help": "compare recorded telemetry for a baseline arm and a variant arm"}),
         (["--local-run"], {"action": "store_true", "help": "run two installed coder models locally without submit"}),
         (["--model"], {"action": "append", "help": "model arm; repeat for local/cloud models"}),
         (["--session"], {"default": "benchmark", "help": "telemetry session id; use one per benchmark arm"}),

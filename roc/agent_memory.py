@@ -1,5 +1,6 @@
 """Share bounded experiment reports through the existing group server."""
 import contextlib
+import os
 import time
 import hashlib
 import json
@@ -37,7 +38,16 @@ def portable(row):
     if isinstance(result.get("receipt"), dict):
         result["receipt"] = {k: v for k, v in result["receipt"].items()
                             if k in ("verified", "improved", "score", "stored", "reason")}
-    return json.loads(providers.sanitize_prompt(json.dumps(result)))
+    def sanitize(value):
+        if isinstance(value, str):
+            return providers.sanitize_prompt(value)
+        if isinstance(value, dict):
+            return {key: sanitize(item) for key, item in value.items()}
+        if isinstance(value, list):
+            return [sanitize(item) for item in value]
+        return value
+
+    return sanitize(result)
 
 TOOL_RECORD_KINDS = {"tool", "tool_suggestion", "tools", "script", "script_suggestion",
     "command", "command_suggestion", "workflow", "workflow_improvement", "workflow_suggestion"}
@@ -80,12 +90,35 @@ def append_record(row):
     return row
 
 
+def _campaign_root():
+    return Path(os.path.normpath(ROOT / "work" / "agent-campaigns"))
+
+
+def _campaign_evidence(text):
+    """Normalize local evidence without touching the filesystem.
+
+    Path.resolve() can block for a long time on Windows when a journaled path names
+    a disconnected drive or an unreachable UNC share, and records() runs this for
+    every trial row. Normalization is enough to decide containment.
+    """
+    path = Path(text)
+    candidate = path if path.is_absolute() else ROOT / path
+    candidate = Path(os.path.normpath(candidate))
+    root = _campaign_root()
+    try:
+        if os.path.commonpath([os.path.normcase(candidate), os.path.normcase(root)]) != os.path.normcase(root):
+            return None
+    except ValueError:
+        return None
+    return candidate
+
+
 def campaign_context(row):
     """Recover task metadata when a manually journaled trial supplies its evidence path."""
-    if row.get("kind") != "trial" or row.get("campaign_id") or not row.get("evidence"):
+    if row.get("kind") != "trial" or row.get("campaign_id") or not isinstance(row.get("evidence"), str) or not row["evidence"]:
         return row
-    evidence = Path(row["evidence"]).resolve()
-    if not evidence.is_relative_to((ROOT / "work" / "agent-campaigns").resolve()):
+    evidence = _campaign_evidence(row["evidence"])
+    if evidence is None:
         return row
     for folder in (evidence.parent, *evidence.parents):
         task_path = folder / "task.json"

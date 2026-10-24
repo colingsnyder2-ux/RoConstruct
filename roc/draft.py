@@ -157,6 +157,10 @@ def model_rounds(model, requested):
 
 def output_budget(size):
     """Bound cloud/local output before a giant function can burn a whole worker."""
+    try:
+        size = int(size)
+    except (ValueError, TypeError):
+        size = 999999
     if size <= 32:
         return 256
     if size <= 128:
@@ -385,11 +389,71 @@ def facts_from_asm(asm):
     asm = [_insn(line) for line in asm]
     calls = [line for line in asm if re.search(r"\bcall\b", line)]
     branches = [line for line in asm if re.match(r"j(?:mp|[a-z]+)\b", line)]
-    offsets = sorted(set(re.findall(r"\[ecx \+ (0x[0-9a-f]+)]", "\n".join(asm))))
-    returns = [line.strip() for line in asm if re.search(r"\bret(?:\s|$)", line)]
+    # Direct calls (to labels/symbols, not through memory) - not global memory reads
+    direct_calls = [line.strip() for line in calls if "dword ptr" not in line]
+    # Indirect calls (through memory) - these are actual import/global reads
     imports = [line.strip() for line in calls if "dword ptr" in line]
-    return {"calls": len(calls), "branch_count": len(branches), "imports": imports[:8], "this_offsets": offsets[:16],
-            "returns": returns[-1:]}
+    # ECX receiver detection: direct [ecx + offset] or ECX saved to ESI then [esi + offset]
+    ecx_offsets = sorted(set(re.findall(r"\[ecx \+ (0x[0-9a-f]+)]", "\n".join(asm))))
+    esi_offsets = sorted(set(re.findall(r"\[esi \+ (0x[0-9a-f]+)]", "\n".join(asm))))
+    ecx_to_esi = any(re.search(r"^\s*mov\s+esi\s*,\s*ecx", line) for line in asm)
+    esi_dereferenced = any("[esi" in line for line in asm)
+    ecx_dereferenced = any("[ecx" in line for line in asm)
+    # If ECX was saved to ESI, ESI dereferences are object field accesses
+    this_offsets = ecx_offsets
+    if ecx_to_esi and esi_offsets:
+        this_offsets = sorted(set(ecx_offsets + esi_offsets))
+    receiver_dereferenced = ecx_dereferenced or (ecx_to_esi and esi_dereferenced)
+    returns = [line.strip() for line in asm if re.search(r"\bret(?:\s|$)", line)]
+    # Detect calling convention from return instruction and receiver evidence
+    ret_line = returns[-1] if returns else ""
+    ret_args = 0
+    m = re.search(r"ret\s+(0x[0-9a-fA-F]+|\d+)\b", ret_line)
+    if m:
+        ret_args = int(m.group(1), 0)
+    convention = "unknown convention"
+    if receiver_dereferenced and ret_args == 0:
+        convention = "thiscall (ECX/ESI receiver, callee pops 0 args)"
+    elif receiver_dereferenced and ret_args == 4:
+        convention = "thiscall (ECX/ESI receiver, callee pops 1 arg)"
+    elif receiver_dereferenced and ret_args == 8:
+        convention = "thiscall (ECX/ESI receiver, callee pops 2 args)"
+    elif receiver_dereferenced:
+        convention = "thiscall (ECX/ESI receiver)"
+    elif not receiver_dereferenced and ret_args == 12:
+        convention = "__stdcall with 3 stack args (no ECX receiver)"
+    elif not receiver_dereferenced and ret_args == 8:
+        convention = "__stdcall with 2 stack args (no ECX receiver)"
+    elif not receiver_dereferenced and ret_args == 0:
+        convention = "cdecl (no ECX receiver)"
+    # Detect MSVC exception-handling: standard prologue or ESI-based prologue
+    has_push_ebp = any(re.search(r"^\s*push\s+ebp", line) for line in asm)
+    has_mov_ebp_esp = any(re.search(r"^\s*mov\s+ebp\s*,?\s*esp", line) for line in asm)
+    has_standard_prologue = has_push_ebp and has_mov_ebp_esp
+    # Alternative: push esi / mov esi, ecx is also a function prologue pattern
+    has_esi_prologue = ecx_to_esi and any(re.search(r"^\s*push\s+esi", line) for line in asm)
+    has_function_prologue = has_standard_prologue or has_esi_prologue
+    has_calls = len(calls) > 0
+    needs_destructor_care = has_function_prologue and has_calls
+    # Check for memory allocation calls that might throw
+    alloc_calls = [c for c in calls if re.search(r"\b(new|malloc|HeapAlloc)\b", c, re.I)]
+    return {
+        "calls": len(calls),
+        "branch_count": len(branches),
+        "imports": imports[:8],
+        "direct_calls": direct_calls[:8],
+        "this_offsets": this_offsets[:16],
+        "returns": returns[-1:],
+        "calling_convention": convention,
+        "ret_args": ret_args,
+        "ecx_dereferenced": ecx_dereferenced or (ecx_to_esi and esi_dereferenced),
+        "esi_dereferenced": esi_dereferenced,
+        "ecx_to_esi": ecx_to_esi,
+        "receiver_dereferenced": receiver_dereferenced,
+        "needs_destructor_care": needs_destructor_care,
+        "alloc_calls": len(alloc_calls),
+        "has_standard_prologue": has_function_prologue
+    }
 
 
 def reconstruction_outline(asm, facts=None):
@@ -397,18 +461,54 @@ def reconstruction_outline(asm, facts=None):
     facts = facts or facts_from_asm(asm)
     insns = [_insn(line) for line in asm]
     branches = [line for line in insns if re.match(r"j(?:mp|[a-z]+)\b", line)]
-    ret = (facts.get("returns") or ["ret"])[-1]
-    stack = re.search(r"ret\s+(0x[0-9a-fA-F]+|\d+)\b", ret)
-    args = int(stack.group(1), 0) // 4 if stack else 0
-    signature = facts.get("calling_convention", "unknown convention")
-    if any("[ecx" in line for line in insns):
+    # Use pre-computed calling convention from facts, with contradiction detection
+    factual_conv = facts.get("calling_convention", "unknown convention")
+    factual_ret_args = facts.get("ret_args", 0)
+    factual_ecx = facts.get("ecx_dereferenced", False)
+    factual_needs_destructor = facts.get("needs_destructor_care", False)
+    factual_alloc_calls = facts.get("alloc_calls", 0)
+    # Re-compute from asm for contradiction check
+    stack = re.search(r"ret\s+(0x[0-9a-fA-F]+|\d+)\b", (facts.get("returns") or ["ret"])[-1])
+    asm_ret_args = int(stack.group(1), 0) if stack else 0
+    asm_ecx = any("[ecx" in line for line in insns)
+    # Detect contradictions
+    contradictions = []
+    factual_esi = facts.get("esi_dereferenced", False)
+    factual_ecx_to_esi = facts.get("ecx_to_esi", False)
+    asm_esi = any("[esi" in line for line in insns)
+    # Detect contradictions between facts and assembly
+    if factual_ecx and not asm_ecx and not (factual_ecx_to_esi and asm_esi):
+        contradictions.append("facts note ECX dereferenced but assembly has no [ecx or [esi references")
+    if not factual_ecx and asm_ecx:
+        contradictions.append("assembly has [ecx but facts say not dereferenced")
+    if factual_esi and not asm_esi:
+        contradictions.append("facts note ESI dereferenced but assembly has no [esi references")
+    if not factual_esi and asm_esi:
+        contradictions.append("assembly has [esi but facts say not dereferenced")
+    if factual_ret_args != asm_ret_args:
+        contradictions.append("facts reporting %d stack-cleanup byte(s) from ret but assembly has %d"
+                              % (factual_ret_args, asm_ret_args))
+    # Build signature from facts, preserving any contradiction notes
+    signature = factual_conv
+    if factual_ecx or asm_ecx:
         signature += ", ECX dereferenced (verify whether live on entry)"
-    if stack:
-        signature += ", callee pops %d stack arg(s)" % args
+    if contradictions:
+        signature += " [CONTRADICTION: " + "; ".join(contradictions) + "]"
+    # Append stack arg info only when the convention text has not already stated it.
+    if factual_conv == "unknown convention":
+        if factual_ret_args > 0:
+            signature += ", callee pops %d stack arg(s)" % (factual_ret_args // 4)
+        elif asm_ret_args > 0:
+            signature += ", callee pops %d stack arg(s)" % (asm_ret_args // 4)
+    # Flag destructor care and allocation calls
+    if factual_needs_destructor:
+        signature += ", requires C++ lifetime/destructor reconstruction"
+    if factual_alloc_calls > 0:
+        signature += ", %d alloc call(s) may throw" % factual_alloc_calls
     blocks = 1 + sum(1 for line in insns if re.match(r"(?:j(?:mp|[a-z]+)|ret)\b", line))
     flow = "; ".join(branches[:8]) or "straight-line"
     return "signature: %s\nbasic blocks: about %d\nbranches: %s\nCFG: %s\nreturn: %s\ntype evidence: %s" % (
-        signature, blocks, flow, cfg_outline(asm), ret, type_constraints(asm, facts))
+        signature, blocks, flow, cfg_outline(asm), (facts.get("returns") or ["ret"])[-1], type_constraints(asm, facts))
 
 
 def structure_ir(asm, facts=None):
@@ -434,8 +534,8 @@ def structure_ir(asm, facts=None):
             "loop_headers": cfg["loop_headers"], "back_edges": cfg["back_edges"][:8],
             "returns": cfg["returns"]}, "signature": {
             "calling_convention": facts.get("calling_convention", "unknown"),
-            "receiver": bool(facts.get("this_reads") or facts.get("this_offsets") or
-                              any("[ecx" in line for line in insns)),
+            "receiver": bool(facts.get("receiver_dereferenced") or
+                              facts.get("this_offsets")),
             "stack_args": list(facts.get("stack_args") or ())[:12],
             "return_instruction": ret,
             "return_register_evidence": sorted({reg for reg in ("eax", "edx")
@@ -622,19 +722,49 @@ and observed calling convention; no dllimport. Use symbolic helper declarations,
 Assembly is ground truth; later source and RTTI names are clues only. Preserve correct bytes in repairs."""
 
 
+def _strong_source(source):
+    facts = (source or {}).get("facts") or {}
+    path = str((source or {}).get("path", ""))
+    if path.startswith(("cross:", "shape:")):
+        return True
+    if facts.get("byte_identical") or facts.get("shape_identical"):
+        return True
+    return False
+
+
+def _example_is_actionable(example):
+    """Keep same-client exemplars that contain declarations/body code."""
+    text = str(example or "")
+    if not text.strip():
+        return False
+    # Examples that are just assembly comments or prose descriptions do not
+    # teach the required C++ shape.
+    lowered = text.lower()
+    if "// 00" in text and "struct" not in lowered and "{" not in text:
+        return False
+    if ("struct " not in text and "class " not in text and "{" not in text):
+        return False
+    return True
+
+
 def prompt_for(client, addr, row, asm, hint, attempt, flags=None, examples=(), source_hints=(), facts=None,
                strategy="direct", compact_rules=False, binary_only=False, minimal_layout=False,
-               family_exemplars=False, near_repair=False, remill_evidence=None):
+               family_exemplars=False, near_repair=False, remill_evidence=None, prompt_style="legacy"):
     entry = match.clients.load()[client]
+    # Small functions (< 52 bytes): disable unrelated source hints and exemplars;
+    # keep only original assembly + ABI facts + Remill semantics if available.
+    _is_small = int(row.get("size", 0)) < 52
     p = ["You are doing matching decompilation of a function from an old Roblox client.",
-         (COMPACT_RULES if compact_rules else RULES).format(
+         (COMPACT_RULES if (compact_rules or prompt_style == "lean") else RULES).format(
              compiler=entry["compiler"], flags=flags or entry.get("flags") or match.DEFAULT_FLAGS)]
-    for ex in examples[:1 if family_exemplars else (2 if strategy == "direct" else 1)]:
-        label = ("Verified same-family exemplar from this client. Adapt operands, offsets, and names; "
-                 "preserve its control-flow pattern only." if family_exemplars else
-                 "Example of an already matched function from this client:")
-        p += ["", label, "```cpp", _clip_example(ex), "```"]
-    if family_exemplars:
+    _examples = [ex for ex in examples if _example_is_actionable(ex)]
+    if not _is_small or prompt_style != "lean":
+        for ex in _examples[:1 if family_exemplars else (2 if strategy == "direct" else 1)]:
+            label = ("Verified same-family exemplar from this client. Adapt operands, offsets, and names; "
+                     "preserve its control-flow pattern only." if family_exemplars else
+                     "Example of an already matched function from this client:")
+            p += ["", label, "```cpp", _clip_example(ex), "```"]
+    if family_exemplars and (not _is_small or prompt_style != "lean"):
         p += ["Use exemplar as structural evidence, not answer text. Emit only target function. "
               "Do not expand unrelated class fields or paste assembly."]
     p += ["", "Stage: %s. Function %s, %d bytes, class (from RTTI, may be a guess): %s" %
@@ -688,11 +818,17 @@ def prompt_for(client, addr, row, asm, hint, attempt, flags=None, examples=(), s
               "```text", packet, "```"]
     from roc import refsource
     terms = list(refsource._target_terms(facts)) + re.findall(r"[A-Za-z_]\w{2,}", row.get("unit", ""))
-    ref = refsource.hint(row["unit"]) if strategy != "reference" and not binary_only else None
+    # In lean mode, 2016 class source requires strong evidence (byte/shape identical),
+    # never a bare class-name match like "ContentItem" which may point to unrelated Qt code.
+    ref = None
+    if prompt_style != "lean" or facts.get("byte_identical") or facts.get("shape_identical"):
+        ref = refsource.hint(row["unit"]) if strategy != "reference" and not binary_only else None
     if ref:
         p += ["", "The same class in Roblox's 2016 source (real names; layout may have changed since):",
               "```cpp", ref, "```"]
     for source in (() if binary_only else source_hints[:1 if strategy == "reference" else 3]):
+        if prompt_style == "lean" and not _strong_source(source):
+            continue
         if strategy == "reference":
             # Later-version source is evidence, not a template. A short method window
             # avoids teaching the model to paste an incompatible whole class.
@@ -720,6 +856,16 @@ def prompt_for(client, addr, row, asm, hint, attempt, flags=None, examples=(), s
         p += ["", "Your previous attempt scored %d%%:" % score, "```cpp", src.strip(), "```",
               "Problem (assembly diff '-' target '+' yours, or compiler error):", feedback,
               "Perform %s. Preserve correct bytes; change only what fixes the problem." % phase]
+        if near_repair and attempt:
+            # Only use near-repair mode when candidate scores 90% or higher
+            score = attempt[1] if isinstance(attempt, (list, tuple)) and len(attempt) > 1 else 0
+            try:
+                score = int(score)
+            except (ValueError, TypeError):
+                score = 0
+            if score < 90:
+                # Fall back to regular repair mode for lower-scoring candidates
+                near_repair = False
         if near_repair:
             p += ["NEAR-REPAIR MODE: source already matches 90%+. Preserve every correct declaration, call, "
                   "constant, branch, and field offset. Make one minimal source-shape change supported by the "
@@ -810,7 +956,7 @@ def _diagnose_note(client, addr, src, flags, limit=400, diagnosis=None, byte_fee
 
 def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print, flags=None,
                  examples=(), source_hints=(), facts=None, stats=None, keep=3, strategy="direct",
-                 provider_options=None, remill_evidence=None):
+                 provider_options=None, remill_evidence=None, prompt_style="legacy"):
     """Ask/compile/diff loop. Returns (best score, best source, top-k list)."""
     from roc import repair as _repair
     from roc import mutate as _mutate
@@ -1025,6 +1171,10 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
             try:
                 checked = match.check_text(client, addr, src, flags, include_diagnosis=True)
                 score, _, d, _ = checked[:4]
+                try:
+                    score = int(score)
+                except (ValueError, TypeError):
+                    score = 0
                 diag = checked[4] if len(checked) > 4 else None
                 this = (src, score, d)
                 if 0 < score < 100:
@@ -1041,7 +1191,11 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
                 if rerr is None:
                     score, src = rscore, rsrc
                     this = (src, score, rdiff)
-                    if 0 < score < 100 and (provider_options or {}).get("byte_feedback", True):
+                    try:
+                        _score = int(score)
+                    except (ValueError, TypeError):
+                        _score = 0
+                    if 0 < _score < 100 and (provider_options or {}).get("byte_feedback", True):
                         note = _diagnose_note(client, addr, src, flags,
                                               byte_feedback=(provider_options or {}).get("byte_feedback", True))
                         if note:
@@ -1088,22 +1242,27 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
                 stats.append({"round": "early-stop",
                               "reason": "same compile error x3", "code": err_codes[-1]})
             break
-    if compiled_best is not None and best[0] < 100:
-        result = _mutate.improve(client, addr, compiled_best[1], flags,
-                                 guided=bool((provider_options or {}).get("guided_mutations")))
-        mscore, msrc, tried = result[0], result[1], result[2]
-        if stats is not None:
-            guided = bool((provider_options or {}).get("guided_mutations"))
-            stats.append({"round": "mutate", "score": mscore, "code": True,
-                          "source": msrc, "tried": tried,
-                          "mutations": result.mutations,
-                          "initial_score": compiled_best[0],
-                          "exact_conversion": compiled_best[0] < 100 and mscore == 100,
-                          "guided": guided,
-                          "speculative": result.speculative})
-        if mscore > best[0]:
-            best = (mscore, msrc)
-        scored.append((mscore, msrc))
+    if compiled_best is not None:
+        try:
+            _best_score = int(best[0]) if best[0] else 0
+        except (ValueError, TypeError):
+            _best_score = 0
+        if _best_score < 100:
+            result = _mutate.improve(client, addr, compiled_best[1], flags,
+                                     guided=bool((provider_options or {}).get("guided_mutations")))
+            mscore, msrc, tried = result[0], result[1], result[2]
+            if stats is not None:
+                guided = bool((provider_options or {}).get("guided_mutations"))
+                stats.append({"round": "mutate", "score": mscore, "code": True,
+                              "source": msrc, "tried": tried,
+                              "mutations": result.mutations,
+                              "initial_score": compiled_best[0],
+                              "exact_conversion": int(compiled_best[0]) < 100 if compiled_best[0] else False and mscore == 100,
+                              "guided": guided,
+                              "speculative": result.speculative})
+            if mscore > best[0]:
+                best = (mscore, msrc)
+            scored.append((mscore, msrc))
     if os.environ.get("ROCONSTRUCT_LIVE_CODE", "1") != "0" and best[1]:
         preview = "\n".join(best[1].splitlines()[:24])
         if len(best[1].splitlines()) > 24:
@@ -1117,9 +1276,11 @@ def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print
 
 def llm_rounds(client, addr, model, rounds=4, hint=None, start=None, log=print, flags=None,
                examples=(), source_hints=(), facts=None, stats=None, strategy="direct", provider_options=None,
-               remill_evidence=None):
+               remill_evidence=None, prompt_style="legacy"):
     """Ask/compile/diff loop. Returns (best score, best source). Keeps top-3 in stats."""
+    prompt_style = prompt_style if prompt_style != "legacy" else (provider_options or {}).get("prompt_style", "legacy")
     score, src, _ = llm_rounds_k(client, addr, model, rounds, hint, start, log, flags,
                                  examples, source_hints, facts, stats, strategy=strategy,
-                                 provider_options=provider_options, remill_evidence=remill_evidence)
+                                 provider_options=provider_options, remill_evidence=remill_evidence,
+                                 prompt_style=prompt_style)
     return score, src

@@ -163,7 +163,8 @@ def test_live_automatic_options_and_budget_stop_reach_worker():
               "max_tokens": "auto", "max_size": 512, "order": "auto"}
     control = gui_worker.Control(config, lambda *args, **kwargs: None)
     calls = []
-    job = dict(client="C", addr="00401000", size=32, calls=0, score=0)
+    job = dict(client="C", addr="00401000", size=32, calls=0, score=90,
+               source="int f(){return 1;}", source_confidence=50)
 
     class Api:
         def __init__(self, *args):
@@ -175,7 +176,7 @@ def test_live_automatic_options_and_budget_stop_reach_worker():
 
     def work(*args, **kwargs):
         assert kwargs["use_remill"] is True
-        assert args[5] == "auto"
+        assert args[5] == 3
         assert args[-1]["max_tokens"] == 1024
         assert args[-1]["auto_output"]
         assert args[-1]["source_hint_max_size"] == 128

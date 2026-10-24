@@ -33,13 +33,14 @@ WORKER_MODULES = [
 ]
 # Only the maintainer's server needs these, so they stay out of the helper zips.
 SERVER_MODULES = ["cluster", "progress", "reports", "server"]
-WORKER_MODULES += ["agent_memory", "research", "agent_recovery", "bruteforce", "extents", "remill", "repair_scan", "rtti", "boundaries"]
+WORKER_MODULES += ["agent_memory", "research", "agent_recovery", "bruteforce", "extents", "remill", "repair_scan", "rtti", "boundaries",
+                   "claims", "packet", "scout", "ranking", "routing"]
 
 COMMON_FILES = ["roc.py", "roc.cmd", "roc.sh", "install.cmd", "install.sh",
                 "packaging/organize-local.ps1", "research/repair-patterns.json", "docs/SETUP.md", "docs/SERVER.md",
                 "research/log.jsonl",
                 "CLAUDE.md", "AGENTS.md", "docs/AGENT_GUIDE.md", "research/lessons.json", "research/reports.json",
-                "research/recipes.json", "research/template-units.json",
+                "research/recipes.json", "research/template-units.json", "research/function-data.json",
                 "README.md", "packaging/requirements-chatgpt.txt", "docs/providers.example.json",
                 "roc/web/index.html", "roc/web/style.css", "roc/web/app.js", "roc/web/fonts.css",
                 *sorted(p.relative_to(ROOT).as_posix() for p in (ROOT / "roc" / "web" / "fonts").iterdir()),

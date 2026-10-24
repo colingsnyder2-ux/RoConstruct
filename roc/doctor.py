@@ -214,9 +214,25 @@ def extras_check():
     return check("extras", OK, "Docker/Rev.ng not installed (optional: roc local-ai --docker)")
 
 
+def remill_check():
+    """Remill + LLVM opt: optional semantic hints, reported as ready or cleanly absent."""
+    from roc import remill
+    tools = remill.resolve_tools(refresh=True)
+    if tools["available"]:
+        detail = tools["reason"]
+        if tools["problems"]:
+            return check("remill", WARN, detail + "; " + "; ".join(tools["problems"]),
+                         ["Set ROC_REMILL_EXE and ROC_LLVM_OPT to a matching major version"])
+        return check("remill", OK, detail)
+    return check("remill", OK, "not configured (optional: structural IR hints only)",
+                 ["Set ROC_REMILL_EXE and ROC_LLVM_OPT, or ROC_LLVM_BIN",
+                  "Nothing is downloaded automatically; matching stops needing it"])
+
+
 def all_checks(network=True):
     return [python_check(), compilers_check(), clients_check(), identity_check(),
-            cloud_check(network), link_check(), local_check(), extras_check()]
+            cloud_check(network), link_check(), local_check(), extras_check(),
+            remill_check()]
 
 
 def failed(checks):
