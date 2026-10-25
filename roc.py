@@ -535,6 +535,9 @@ def cmd_rebuild(a):
     if a.action == "audit":
         rebuild.audit(a.name)
         return
+    if a.action == "status":
+        rebuild.status(a.name)
+        return
     if not a.target:
         raise SystemExit("roc rebuild %s module NAME   (modules: %s)" % (a.name, ", ".join(
             sorted(p.stem for p in (ROOT / "rebuild" / a.name / "modules").glob("*.json")))))
@@ -2582,7 +2585,7 @@ def main(argv=None):
     p.set_defaults(fn=cmd_client_remove)
     cmd("rebuild", cmd_rebuild, "2008 client rebuild: doctor | audit | module NAME (see rebuild/<client>/POLICY.md)",
         (["name"], {"help": "client, e.g. 2008-06"}),
-        (["action"], {"choices": ["doctor", "audit", "module"]}),
+        (["action"], {"choices": ["doctor", "audit", "module", "status"]}),
         (["target"], {"nargs": "?", "help": "module name for `module` (rebuild/<client>/modules/NAME.json)"}))
     cmd("analyze", cmd_analyze, "split a client exe into functions ('all' for every client)", (["name"], {}))
     cmd("next", cmd_next, "list the easiest open functions", (["name"], {}), (["-n"], {"type": int, "default": 20}))

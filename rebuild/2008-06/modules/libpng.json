@@ -1,0 +1,4 @@
+{"name": "libpng", "description": "libpng 1.2.5 (recipe libpng-1.2.5) over the rebuilt zlib.",
+ "depends": ["zlib"],
+ "layers": [{"name": "upstream", "mode": "recipe", "recipe": "libpng-1.2.5", "files": "recipe", "flags": "/O2 /GS- /MD"}],
+ "test": "png_roundtrip", "test_includes": ["tools/libs/libpng-1.2.5", "tools/libs/zlib-1.2.3"]}

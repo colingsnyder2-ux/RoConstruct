@@ -274,9 +274,11 @@ def build_library(client, recipe, files, flags, name, cl=BUILD, jobs=6, log=prin
     out = workspace(client) / "out" / name
     out.mkdir(parents=True, exist_ok=True)
 
+    from roc import libs
+
     def one(rel):
         try:
-            obj = match.compile_text(client, tu_source(recipe, rel, cl, flags))
+            obj = match.compile_text(client, libs.source_for(recipe, rel, None, cl, flags))
         except match.CompileError as error:
             return rel, None, str(error)[:300]
         path = out / (Path(rel).stem + ".obj")
@@ -310,8 +312,9 @@ def build_library(client, recipe, files, flags, name, cl=BUILD, jobs=6, log=prin
     return report
 
 
-def link_test(client, test, libs, includes=(), defines="WIN32 NDEBUG _MBCS", flags="/O2 /GS- /EHsc /MD",
-              system_libs=("kernel32.lib", "user32.lib", "ws2_32.lib", "winmm.lib", "advapi32.lib"), cl=BUILD, run_args=()):
+def link_test(client, test, libs, includes=(), defines="WIN32 NDEBUG _MBCS _CRT_SECURE_NO_WARNINGS", flags="/O2 /GS- /EHsc /MD",
+              system_libs=("kernel32.lib", "user32.lib", "gdi32.lib", "advapi32.lib", "shell32.lib", "ole32.lib",
+                           "oleaut32.lib", "comdlg32.lib", "ws2_32.lib", "winmm.lib"), cl=BUILD, run_args=()):
     """Compile tests/<test>.cpp, link it against rebuilt libs with the period linker, run it.
     Returns dict(compiled, linked, ran, exit, output, unresolved, map)."""
     tc = toolchain(cl)
@@ -339,7 +342,7 @@ def defined_symbols(obj_path):
     return {name for name, _, _ in match.coff_functions(Path(obj_path).read_bytes())}
 
 
-def resolve_objects(client, test, layers, name, includes=(), max_rounds=20, log=print):
+def resolve_objects(client, test, layers, name, includes=(), max_rounds=20, log=print, extra_libs=(), defines=None):
     """layers: [dir, ...] most-preferred first (e.g. 2008-verified partial files, then complete upstream).
     Start from each file's most-preferred object; when the link reports an unresolved symbol, switch the
     file that defines it in a later layer to that layer. Returns the final link_test result plus choices."""
@@ -361,7 +364,8 @@ def resolve_objects(client, test, layers, name, includes=(), max_rounds=20, log=
             (out / f).write_bytes(obj.read_bytes())
         lib_name = Path(name).name + ".lib"
         code, text = run(tc, "lib", ["/nologo", "/OUT:" + lib_name] + sorted(choice), out)
-        result = link_test(client, test, [out / lib_name], includes=includes)
+        kwargs = {"defines": defines} if defines else {}
+        result = link_test(client, test, [out / lib_name] + list(extra_libs), includes=includes, **kwargs)
         result["choices"] = {f: layers[rank] and str(Path(layers[rank]).name) for f, (rank, _) in choice.items()}
         missing = re.findall(r"unresolved external symbol .*?\((\?[^)]+|_\w+)\)", result["output"])
         if result["linked"] or not missing:
@@ -398,6 +402,47 @@ def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- 
 
 # ---------- modules: reproducible layered builds ----------
 
+def _in_tree(path, src, tree):
+    """An include dir inside the recipe tree maps to the patched copy (header patches apply too)."""
+    path, src = Path(path).resolve(), Path(src).resolve()
+    return tree / path.relative_to(src) if path.is_relative_to(src) else path
+
+
+def patched_tree(client, recipe):
+    """The recipe's source tree, with its binary-derived `patches` applied, as a cached copy under out/.
+    Without patches the pristine tree is used in place."""
+    import hashlib
+    import shutil
+    from roc import libs
+    r = libs.RECIPES[recipe]
+    src = libs._case_path(libs.LIBS / r["src"]).resolve()
+    if not r.get("patches"):
+        return src
+    key = hashlib.sha256(json.dumps(r["patches"], sort_keys=True).encode()).hexdigest()[:12]
+    tree = workspace(client) / "out" / "trees" / ("%s-%s" % (recipe, key))
+    if not tree.exists():
+        tmp = tree.with_name(tree.name + ".tmp")
+        if tmp.exists():
+            shutil.rmtree(tmp)
+        shutil.copytree(src, tmp)
+        for rel, edits in r["patches"].items():
+            text = (tmp / rel).read_text(errors="replace")
+            for old, new in edits:
+                if old not in text:
+                    raise ValueError("patch for %s no longer applies: %r" % (rel, old[:60]))
+                text = text.replace(old, new)
+            (tmp / rel).write_text(text)
+        tmp.rename(tree)
+    return tree
+
+def _spec_path(client, value):
+    """`tree:RECIPE/sub/dir` names a folder inside a recipe's (patched) tree; anything else is repo-relative."""
+    if value.startswith("tree:"):
+        recipe, _, rest = value[5:].partition("/")
+        return patched_tree(client, recipe) / rest
+    return (ROOT / value).resolve()
+
+
 def load_module(client, name):
     return json.loads((ROOT / "rebuild" / client / "modules" / (name + ".json")).read_text(encoding="utf-8"))
 
@@ -412,32 +457,84 @@ def build_module(client, name, log=print):
         folder = out / ("layer-" + layer["name"])
         if layer["mode"] == "recipe":
             src = libs._case_path(libs.LIBS / libs.RECIPES[layer["recipe"]]["src"])
-            files = sorted(p.name for p in src.glob(layer["files"]) if not p.name.startswith("roc_"))
-            rep = build_library(client, layer["recipe"], files, layer["flags"], "%s/layer-%s" % (spec["name"], layer["name"]), log=log)
+            listed = libs.RECIPES[layer["recipe"]].get("files")
+            if layer["files"] == "recipe" and isinstance(listed, list):
+                files = list(listed)
+            else:
+                globs = (listed if layer["files"] == "recipe" else layer["files"]).split()
+                files = sorted(p.relative_to(src).as_posix() for g in globs for p in src.glob(g)
+                               if not p.name.startswith("roc_"))
+            files = [f for f in files if f not in layer.get("exclude", [])]
+            if layer.get("direct"):  # plain cl: /MD defines _DLL, so CRT data is imported as the linker expects
+                rep = {"compile_errors": {f: "direct" for f in files}}
+            else:
+                rep = build_library(client, layer["recipe"], files, layer["flags"], "%s/layer-%s" % (spec["name"], layer["name"]),
+                                    cl=layer.get("cl", BUILD), log=log)
             errors = rep["compile_errors"]
+            if errors:  # e.g. windows.h: the mining environment has no SDK include path; the rebuild toolchain does
+                recipe = libs.RECIPES[layer["recipe"]]
+                tree = patched_tree(client, layer["recipe"])
+                includes = [tree] + [_in_tree(libs._case_path(libs.LIBS / i), src, tree)
+                                     for i in recipe.get("include", []) if i != "WINSDK"]
+                res = compile_direct(client, [tree / rel for rel in errors], folder, includes, recipe.get("defines", ""),
+                                     layer["flags"], cl=layer.get("cl", BUILD))
+                errors = {Path(k).name: v for k, (ok, v) in res.items() if not ok}
         else:
-            recipe = libs.RECIPES[layer["includes_from_recipe"]]
+            recipe = libs.RECIPES[layer["includes_from_recipe"]] if layer.get("includes_from_recipe") else {"include": []}
             includes = [(libs.LIBS / i).resolve() for i in recipe["include"] if i != "WINSDK"]
             includes += [(ROOT / i).resolve() for i in layer.get("extra_includes", [])]
             defines = libs.RECIPES[layer["defines_from_recipe"]]["defines"] if layer.get("defines_from_recipe") else layer.get("defines", "")
-            sources = [p for p in sorted((ROOT / layer["dir"]).glob(layer["files"])) if not p.name.startswith("roc_")]
-            res = compile_direct(client, sources, folder, includes, defines, layer["flags"])
+            sources = [p for g in layer["files"].split() for p in sorted((ROOT / layer["dir"]).glob(g))
+                       if not p.name.startswith("roc_") and p.name not in layer.get("exclude", [])]
+            res = compile_direct(client, sources, folder, includes, defines, layer["flags"], cl=layer.get("cl", BUILD))
             errors = {Path(k).name: v for k, (ok, v) in res.items() if not ok}
         log("layer %s: %d compile errors%s" % (layer["name"], len(errors), (" (" + ", ".join(sorted(errors)) + ")") if errors else ""))
         layer_dirs.append(folder)
+    deps = []
+    for dep in spec.get("depends", []):
+        dep_name = load_module(client, dep)["name"]
+        dep_lib = workspace(client) / "out" / dep_name / "linked" / (Path(dep_name + "/linked").name + ".lib")
+        if not dep_lib.exists():
+            build_module(client, dep, log=log)
+        deps.append(dep_lib)
     result = resolve_objects(client, spec["test"], layer_dirs, spec["name"] + "/linked",
-                             includes=[(ROOT / i).resolve() for i in spec.get("test_includes", [])], log=log)
+                             includes=[_spec_path(client, i) for i in spec.get("test_includes", [])], log=log,
+                             extra_libs=deps, defines=spec.get("test_defines"))
     linked = out / "linked"
-    owned = owned16 = funcs = 0
+    funcs, owned_addrs, owned16_addrs = 0, set(), set()
     for obj in sorted(linked.glob("*.obj")):
         rows = pair(client, match.coff_functions(obj.read_bytes()))
         funcs += len(rows)
-        owned += sum(1 for _, _, h in rows if len(h) == 1)
-        owned16 += sum(1 for _, s, h in rows if len(h) == 1 and s >= 16)
+        owned_addrs.update(h[0] for _, _, h in rows if len(h) == 1)  # COMDAT copies repeat across objects
+        owned16_addrs.update(h[0] for _, s, h in rows if len(h) == 1 and s >= 16)
+    owned, owned16 = len(owned_addrs), len(owned16_addrs)
     report = {"module": spec["name"], "linked": result["linked"], "test_exit": result["exit"], "test_output": result["output"][-500:],
               "unresolved": result["unresolved"], "object_functions": funcs, "owned_2008": owned, "owned_2008_16b": owned16,
-              "choices": result.get("choices")}
+              "choices": result.get("choices"), "owned_addrs": sorted(owned_addrs)}
     _dump(out / "report.json", report)
     log("%s: linked=%s test_exit=%s; %d object functions, %d byte-identical to unique 2008 functions (%d of >=16 bytes)"
         % (spec["name"], result["linked"], result["exit"], funcs, owned, owned16))
     return report
+
+
+def status(client="2008-06", log=print):
+    """One line per built module from out/<module>/report.json, plus totals (no double counting of addresses)."""
+    owned_all = set()
+    rows = []
+    for spec_path in sorted((ROOT / "rebuild" / client / "modules").glob("*.json")):
+        spec = json.loads(spec_path.read_text(encoding="utf-8"))
+        report_path = workspace(client) / "out" / spec["name"] / "report.json"
+        if not report_path.exists():
+            rows.append((spec_path.stem, "not built", "", "", ""))
+            continue
+        r = json.loads(report_path.read_text(encoding="utf-8"))
+        linked = workspace(client) / "out" / spec["name"] / "linked"
+        for obj in linked.glob("*.obj"):
+            owned_all.update(h[0] for _, _, h in pair(client, match.coff_functions(obj.read_bytes())) if len(h) == 1)
+        rows.append((spec_path.stem, "linked" if r["linked"] else "LINK FAIL",
+                     "test ok" if r.get("test_exit") == 0 else "test %s" % r.get("test_exit"),
+                     r["object_functions"], r["owned_2008"]))
+    for name, state, test, funcs, owned in rows:
+        log("%-12s %-9s %-8s %6s object functions  %5s owned 2008" % (name, state, test, funcs, owned))
+    log("distinct 2008 functions reproduced by linked rebuilt code: %d" % len(owned_all))
+    return rows, owned_all
