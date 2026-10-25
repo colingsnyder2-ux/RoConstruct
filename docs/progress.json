@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-25 02:57 UTC",
+ "updated": "2026-10-25 04:03 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -191,15 +191,15 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22303,
-   "matched": 21907,
-   "partial": 394,
-   "source_matched": 13459,
-   "mined_matched": 8448,
-   "bytes": 3696965,
-   "matched_bytes": 3394679,
-   "source_bytes": 2556648,
-   "mined_bytes": 838031,
-   "partial_bytes": 302084,
+   "matched": 21912,
+   "partial": 390,
+   "source_matched": 13462,
+   "mined_matched": 8450,
+   "bytes": 3697059,
+   "matched_bytes": 3396666,
+   "source_bytes": 2558457,
+   "mined_bytes": 838209,
+   "partial_bytes": 300257,
    "data_bytes": 1559926,
    "leaderboard": [
     {
@@ -211,17 +211,17 @@
     },
     {
      "user": "colin",
-     "matched": 3047,
-     "points": 675883,
-     "submissions": 23040,
-     "last": 1792895933.2181835
+     "matched": 3049,
+     "points": 676083,
+     "submissions": 23042,
+     "last": 1792897978.1912339
     },
     {
      "user": "king_originala",
-     "matched": 2734,
-     "points": 264182,
-     "submissions": 5862,
-     "last": 1792895264.972679
+     "matched": 2737,
+     "points": 264194,
+     "submissions": 5866,
+     "last": 1792898849.276689
     },
     {
      "user": "Espeon",
@@ -308,9 +308,9 @@
      "last": 1792416272.4331148
     }
    ],
-   "data_matched_bytes": 195587,
+   "data_matched_bytes": 195695,
    "classes": 1488,
-   "generated": 19427
+   "generated": 19426
   },
   {
    "name": "2009-06",
@@ -614,17 +614,17 @@
   },
   {
    "user": "colin",
-   "matched": 15160,
-   "points": 5514806,
-   "submissions": 185922,
-   "last": 1792895933.2181835
+   "matched": 15162,
+   "points": 5515006,
+   "submissions": 185924,
+   "last": 1792897978.1912339
   },
   {
    "user": "king_originala",
-   "matched": 2734,
-   "points": 264182,
-   "submissions": 5862,
-   "last": 1792895264.972679
+   "matched": 2737,
+   "points": 264194,
+   "submissions": 5866,
+   "last": 1792898849.276689
   },
   {
    "user": "atomic.potato",
