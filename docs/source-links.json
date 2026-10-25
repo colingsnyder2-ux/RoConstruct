@@ -633,7 +633,6 @@
    "libs/thread/src/tss.cpp",
    "libs/thread/src/tss_hooks.cpp",
    "libs/thread/src/xtime.cpp",
-   "roc_espeon_boost134packagef99afc2b76029f15.cpp",
    "roc_event_handler_for_each_044c64d9154ca774.cpp"
   ]
  },
@@ -1642,6 +1641,7 @@
    "roc_bind_factory_triples_3ef9d3fdf85fc7a5.cpp",
    "roc_bind_string_factory_d3f03552e2e2cac8.cpp",
    "roc_espeon_boost134package9db0c617824a271b.cpp",
+   "roc_espeon_boost134packagef99afc2b76029f15.cpp",
    "roc_espeon_replicatornativevectore25554b5975257eb.cpp",
    "roc_unit_13364a19a306182f.cpp",
    "roc_unit_7c283c9b16193989.cpp",

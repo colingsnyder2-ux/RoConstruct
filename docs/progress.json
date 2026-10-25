@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-25 06:48 UTC",
+ "updated": "2026-10-25 07:51 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -191,15 +191,15 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22291,
-   "matched": 21933,
-   "partial": 358,
+   "matched": 21934,
+   "partial": 357,
    "source_matched": 13561,
-   "mined_matched": 8372,
+   "mined_matched": 8373,
    "bytes": 3712596,
-   "matched_bytes": 3404920,
+   "matched_bytes": 3405266,
    "source_bytes": 2566209,
-   "mined_bytes": 838711,
-   "partial_bytes": 307676,
+   "mined_bytes": 839057,
+   "partial_bytes": 307330,
    "data_bytes": 1559926,
    "leaderboard": [
     {
@@ -212,9 +212,9 @@
     {
      "user": "colin",
      "matched": 3065,
-     "points": 680849,
-     "submissions": 23114,
-     "last": 1792908067.602564
+     "points": 680883,
+     "submissions": 23116,
+     "last": 1792912158.8514524
     },
     {
      "user": "king_originala",
@@ -287,6 +287,13 @@
      "last": 1791766592.3175168
     },
     {
+     "user": "king_originala_sol_native",
+     "matched": 1,
+     "points": 47,
+     "submissions": 9,
+     "last": 1792913704.8280454
+    },
+    {
      "user": "Bob535653",
      "matched": 1,
      "points": 1,
@@ -299,13 +306,6 @@
      "points": 335,
      "submissions": 14,
      "last": 1792615947.8562899
-    },
-    {
-     "user": "king_originala_sol_native",
-     "matched": 0,
-     "points": 40,
-     "submissions": 6,
-     "last": 1792908615.609821
     },
     {
      "user": "king_originala_sol_high",
@@ -636,9 +636,9 @@
   {
    "user": "colin",
    "matched": 15178,
-   "points": 5519772,
-   "submissions": 185996,
-   "last": 1792908067.602564
+   "points": 5519806,
+   "submissions": 185998,
+   "last": 1792912158.8514524
   },
   {
    "user": "king_originala",
@@ -760,6 +760,13 @@
    "last": 1791477118.6140368
   },
   {
+   "user": "king_originala_sol_native",
+   "matched": 1,
+   "points": 47,
+   "submissions": 9,
+   "last": 1792913704.8280454
+  },
+  {
    "user": "Bob535653",
    "matched": 1,
    "points": 1,
@@ -793,13 +800,6 @@
    "points": 104,
    "submissions": 2,
    "last": 1791352017.9738536
-  },
-  {
-   "user": "king_originala_sol_native",
-   "matched": 0,
-   "points": 40,
-   "submissions": 6,
-   "last": 1792908615.609821
   },
   {
    "user": "espeon_1",
