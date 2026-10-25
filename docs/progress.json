@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-25 11:00 UTC",
+ "updated": "2026-10-25 12:03 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -191,15 +191,15 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22291,
-   "matched": 21948,
-   "partial": 343,
-   "source_matched": 13569,
+   "matched": 21956,
+   "partial": 335,
+   "source_matched": 13577,
    "mined_matched": 8379,
    "bytes": 3712596,
-   "matched_bytes": 3410373,
-   "source_bytes": 2568982,
+   "matched_bytes": 3416188,
+   "source_bytes": 2574797,
    "mined_bytes": 841391,
-   "partial_bytes": 302223,
+   "partial_bytes": 296408,
    "data_bytes": 1559926,
    "leaderboard": [
     {
@@ -252,6 +252,13 @@
      "last": 1792513428.7999606
     },
     {
+     "user": "king_originala_sol_native",
+     "matched": 12,
+     "points": 257,
+     "submissions": 35,
+     "last": 1792929779.3314548
+    },
+    {
      "user": "Cezant64gamejr",
      "matched": 9,
      "points": 2647,
@@ -278,13 +285,6 @@
      "points": 22,
      "submissions": 5,
      "last": 1792509335.8069022
-    },
-    {
-     "user": "king_originala_sol_native",
-     "matched": 4,
-     "points": 218,
-     "submissions": 24,
-     "last": 1792925954.1172512
     },
     {
      "user": "2gx",
@@ -718,6 +718,13 @@
    "last": 1792344458.634544
   },
   {
+   "user": "king_originala_sol_native",
+   "matched": 12,
+   "points": 257,
+   "submissions": 35,
+   "last": 1792929779.3314548
+  },
+  {
    "user": "Cezant64gamejr",
    "matched": 9,
    "points": 2647,
@@ -737,13 +744,6 @@
    "points": 22,
    "submissions": 5,
    "last": 1792509335.8069022
-  },
-  {
-   "user": "king_originala_sol_native",
-   "matched": 4,
-   "points": 218,
-   "submissions": 24,
-   "last": 1792925954.1172512
   },
   {
    "user": "TrollStein",
