@@ -688,6 +688,8 @@ def _send_rebuild_webhook(url, client, data):
     description = (
         "**Phase %s - %s**\n" % (data["phase"], data["phaseLabel"]) +
         "*%s*\n\n" % phase_flavor +
+        "In this update, **%d of %d modules** are linked and **%d symbols** remain unresolved.\n\n" % (
+            bars["linked"]["value"], bars["compiled"]["total"], bars["unresolved"]["value"]) +
         "**Overall byte-exact progress**\n" +
         "%s / %s (%.2f%%)\n" % (format(bars["exact"]["value"], ","), format(bars["exact"]["total"], ","), 100.0 * bars["exact"]["value"] / bars["exact"]["total"] if bars["exact"]["total"] else 0.0) +
         "%s\n\n" % _rebuild_emoji_bar(bars["exact"]["value"], bars["exact"]["total"], width=23, fill="\U0001f7e9") +
