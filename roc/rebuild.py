@@ -649,10 +649,33 @@ def _rebuild_webhook_url():
 
 
 def _send_rebuild_webhook(url, client, data):
+    from roc.reports import emoji_bar
+    bars = data["bars"]
+    compiled_bar = emoji_bar(bars["compiled"]["value"], 0, 0, bars["compiled"]["total"])
+    linked_bar = emoji_bar(bars["linked"]["value"], 0, 0, bars["linked"]["total"])
+    exact_bar = emoji_bar(bars["exact"]["value"], 0, 0, bars["exact"]["total"])
+    unresolved_bar = emoji_bar(bars["unresolved"]["total"] - bars["unresolved"]["value"], 0, 0, bars["unresolved"]["total"])
+    stubs_bar = emoji_bar(bars["stubs"]["total"] - bars["stubs"]["value"], 0, 0, bars["stubs"]["total"])
+    runtime_bar = emoji_bar(bars["runtime"]["value"], 0, 0, bars["runtime"]["total"])
+    description = (
+        "Phase %s - %s\n\n"
+        "Modules reporting: %d/%d %s\n"
+        "Modules linked: %d/%d %s\n"
+        "Byte-exact functions: %s/%s %s\n"
+        "Unresolved symbols: %d %s\n"
+        "Temporary stubs: %d %s\n"
+        "Runtime milestones: %d/%d %s" % (
+            data["phase"], data["phaseLabel"],
+            bars["compiled"]["value"], bars["compiled"]["total"], compiled_bar,
+            bars["linked"]["value"], bars["linked"]["total"], linked_bar,
+            format(bars["exact"]["value"], ","), format(bars["exact"]["total"], ","), exact_bar,
+            bars["unresolved"]["value"], unresolved_bar,
+            bars["stubs"]["value"], stubs_bar,
+            bars["runtime"]["value"], bars["runtime"]["total"], runtime_bar))
     payload = {
         "embeds": [{
             "title": "Rebuild update: %s" % client,
-            "description": "Phase %s - %s" % (data["phase"], data["phaseLabel"]),
+            "description": description,
             "fields": [
                 {"name": "Modules reporting", "value": "%d / %d" % (data["bars"]["compiled"]["value"], data["bars"]["compiled"]["total"]), "inline": True},
                 {"name": "Modules linked", "value": "%d / %d" % (data["bars"]["linked"]["value"], data["bars"]["linked"]["total"]), "inline": True},
