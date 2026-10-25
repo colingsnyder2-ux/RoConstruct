@@ -675,23 +675,23 @@ def _rebuild_emoji_bar(value, total, width=10, fill="🟦", empty="⬜"):
 def _send_rebuild_webhook(url, client, data):
     bars = data["bars"]
     description = (
-        "Phase %s - %s\n\n" % (data["phase"], data["phaseLabel"]) +
-        "Overall byte-exact: %s / %s (%.2f%%)\n%s\n\n" % (
-            format(bars["exact"]["value"], ","), format(bars["exact"]["total"], ","),
-            100.0 * bars["exact"]["value"] / bars["exact"]["total"] if bars["exact"]["total"] else 0.0,
-            _rebuild_emoji_bar(bars["exact"]["value"], bars["exact"]["total"], width=23, fill="🟩")) +
-        "Next: %s" % data.get("next", ""))
+        "**Phase %s - %s**\n\n" % (data["phase"], data["phaseLabel"]) +
+        "**Overall byte-exact progress**\n" +
+        "%s / %s (%.2f%%)\n" % (format(bars["exact"]["value"], ","), format(bars["exact"]["total"], ","), 100.0 * bars["exact"]["value"] / bars["exact"]["total"] if bars["exact"]["total"] else 0.0) +
+        "%s\n\n" % _rebuild_emoji_bar(bars["exact"]["value"], bars["exact"]["total"], width=23, fill="🟩") +
+        "**Modules:** %d reporting, %d linked\n" % (bars["compiled"]["value"], bars["linked"]["value"]) +
+        "**Blockers:** %d unresolved, %d temporary stubs\n" % (bars["unresolved"]["value"], bars["stubs"]["value"]) +
+        "**Runtime:** %d / %d milestones\n\n" % (bars["runtime"]["value"], bars["runtime"]["total"]) +
+        "*Next: %s*" % data.get("next", ""))
     payload = {
         "embeds": [{
             "title": ":wrench: Rebuild progress: %s" % client,
             "description": description,
             "fields": [
-                {"name": ":package: Modules reporting", "value": "%d / %d\n%s" % (bars["compiled"]["value"], bars["compiled"]["total"], _rebuild_emoji_bar(bars["compiled"]["value"], bars["compiled"]["total"], width=8, fill="🟦")), "inline": True},
-                {"name": ":link: Modules linked", "value": "%d / %d\n%s" % (bars["linked"]["value"], bars["linked"]["total"], _rebuild_emoji_bar(bars["linked"]["value"], bars["linked"]["total"], width=8, fill="🟩")), "inline": True},
-                {"name": ":dart: Byte-exact functions", "value": "%s / %s\n%s" % (format(bars["exact"]["value"], ","), format(bars["exact"]["total"], ","), _rebuild_emoji_bar(bars["exact"]["value"], bars["exact"]["total"], width=8, fill="🟩")), "inline": True},
-                {"name": ":warning: Unresolved symbols", "value": str(bars["unresolved"]["value"]), "inline": True},
-                {"name": ":adhesive_bandage: Temporary stubs", "value": str(bars["stubs"]["value"]), "inline": True},
-                {"name": ":rocket: Runtime milestones", "value": "%d / %d\n%s" % (bars["runtime"]["value"], bars["runtime"]["total"], _rebuild_emoji_bar(bars["runtime"]["value"], bars["runtime"]["total"], width=8, fill="🟪")), "inline": True},
+                {"name": ":package: Modules", "value": "**%d** reporting / **%d** linked\n%s" % (bars["compiled"]["value"], bars["linked"]["value"], _rebuild_emoji_bar(bars["linked"]["value"], bars["linked"]["total"], width=8, fill="🟩")), "inline": True},
+                {"name": ":dart: Byte-exact", "value": "**%s** / %s\n%s" % (format(bars["exact"]["value"], ","), format(bars["exact"]["total"], ","), _rebuild_emoji_bar(bars["exact"]["value"], bars["exact"]["total"], width=8, fill="🟩")), "inline": True},
+                {"name": ":warning: Blockers", "value": "**%d** unresolved\n**%d** stubs" % (bars["unresolved"]["value"], bars["stubs"]["value"]), "inline": True},
+                {"name": ":rocket: Runtime", "value": "**%d** / %d\n%s" % (bars["runtime"]["value"], bars["runtime"]["total"], _rebuild_emoji_bar(bars["runtime"]["value"], bars["runtime"]["total"], width=8, fill="🟪")), "inline": True},
                 {"name": "Next", "value": data.get("next", ""), "inline": False},
             ],
             "footer": {"text": "RoConstruct rebuild"},
