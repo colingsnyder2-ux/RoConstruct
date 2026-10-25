@@ -72,3 +72,21 @@ def test_search_mutates_the_unit_and_keeps_the_stub(monkeypatch):
     best = mutsearch.search("c", "00000000", stub, budget=20, jobs=1, check=check)
     assert best["score"] == 100 and best["source"] == stub and want in best["unit"]
     assert best["start"] == 90 and best["path"] == ["commute *"]
+
+
+def test_negation_round_trip_keeps_the_parse():
+    out = edits(body("    return s->a - s->b * x;"))
+    assert "return s->a + -(s->b * x);" in out
+    out = edits(body("    return s->a + -s->b;"))
+    assert "return s->a - s->b;" in out
+    out = edits(body("    return x * s->a - s->b;"))
+    assert "return x * s->a + -s->b;" in out
+    assert not any(e.startswith("return x * (s->a") for e in out)
+
+
+def test_search_reports_exhaustion_only_when_the_budget_did_not_cut_it(monkeypatch):
+    monkeypatch.setattr(mutsearch, "unit_of", lambda source: None)
+    src = body("    return s->a * x + s->b * s->c - x;")
+    flat = lambda state: (90, 90.0, "")
+    assert mutsearch.search("c", "0", src, budget=500, jobs=1, check=flat)["exhausted"]
+    assert not mutsearch.search("c", "0", src, budget=2, jobs=1, check=flat)["exhausted"]

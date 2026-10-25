@@ -171,6 +171,29 @@ def compound_assignments(src, spans):
     return out
 
 
+def negations(src, spans):
+    """a - b <-> a + -b: exact in IEEE floats and two's complement, but moves where
+    the compiler places fchs/fsubr (or neg/sub) in the target sequence."""
+    out = []
+    sub = re.compile(r"(?<![\w.\]\)>])(%s)\s*-(?![-=>])\s*(%s)(?![\w(\[.]|->)" % (_TERM, _TERM))
+    add = re.compile(r"(?<![\w.\]\)>])(%s)\s*\+\s*-\s*(%s)(?![\w(\[.]|->)" % (_TERM, _TERM))
+    for pattern, name in ((sub, "sub to add-negate"), (add, "add-negate to sub")):
+        for m in pattern.finditer(src):
+            line_start = src.rfind("\n", 0, m.start()) + 1
+            left, right = _left_op(src[line_start:m.start()]), _right_op(src[m.end():m.end() + 4])
+            if not _in_body(spans, m.start()) or left is None or right is None:
+                continue
+            if not (left in ("", "+", "-") or _PREC[left] > _PREC["+"]) or not (right == "" or _PREC[right] >= _PREC["+"]):
+                continue
+            a, b = m.groups()
+            if name.startswith("sub"):
+                b = "-" + (b if re.fullmatch(_ATOM, b) else "(%s)" % b)
+                out.append((name, src[:m.start()] + "%s + %s" % (a, b) + src[m.end():]))
+            else:
+                out.append((name, src[:m.start()] + "%s - %s" % (a, b) + src[m.end():]))
+    return out
+
+
 _CASTS = {"float", "double", "int", "unsigned", "long", "short", "char"}
 
 
@@ -204,7 +227,7 @@ def variants(src):
     """Every one-edit semantics-preserving rewrite of the function bodies in src."""
     spans = bodies(src)
     found = (commutations(src, spans) + regroupings(src, spans) + statement_swaps(src, spans) +
-             compound_assignments(src, spans) + inline_locals(src, spans) + [("reorder decls", v) for v in mutate.reorder_decls_variants(src)])
+             compound_assignments(src, spans) + inline_locals(src, spans) + negations(src, spans) + [("reorder decls", v) for v in mutate.reorder_decls_variants(src)])
     seen, out = {src}, []
     for name, text in found:
         first = next((i for i, (x, y) in enumerate(zip(src, text)) if x != y), min(len(src), len(text)))
@@ -294,7 +317,8 @@ def _scratch_check(client, addr, recipe, path, folder):
 
 def search(client, addr, source, budget=120, beam=3, depth=3, jobs=6, log=None, check=None):
     """Beam search ranked by score, untruncated precise %, then residue lines; returns
-    dict(score, precise, residue, source, unit, start, start_precise, path=[edit names], compiles).
+    dict(score, precise, residue, source, unit, start, start_precise, path=[edit names], compiles,
+    exhausted).
     `source` may be a roc-lib stub: its unit text is then what gets rewritten."""
     found = unit_of(source)
     unit = found[3] if found else None
@@ -318,6 +342,7 @@ def search(client, addr, source, budget=120, beam=3, depth=3, jobs=6, log=None, 
     best = dict(score=start[0], precise=start[1], residue=start[2], source=source, unit=unit,
                 start=start[0], start_precise=start[1], path=[], compiles=1)
     frontier = [(start, origin, [])]
+    exhausted = False
     with cf.ThreadPoolExecutor(jobs) as pool:
         for generation in range(depth):
             pending = {}
@@ -326,6 +351,8 @@ def search(client, addr, source, budget=120, beam=3, depth=3, jobs=6, log=None, 
                     pending.setdefault(state2, path + [name])
             pending = [item for item in pending.items() if hashlib.sha256(repr(item[0]).encode()).hexdigest() not in cache]
             room = budget - len(cache)
+            if not pending:
+                exhausted = True
             if room <= 0 or not pending:
                 break
             results = list(pool.map(lambda item: (evaluate(item[0]), item[0], item[1]), pending[:room]))
@@ -340,6 +367,8 @@ def search(client, addr, source, budget=120, beam=3, depth=3, jobs=6, log=None, 
                 break
             frontier = [r for r in results[:beam] if r[0][0] >= 0]
     best["compiles"] = len(cache)
+    # Every rewrite reachable within `depth` was compiled (budget never cut the frontier short).
+    best["exhausted"] = exhausted or (generation == depth - 1 and len(cache) < budget)
     return best
 
 

@@ -829,6 +829,50 @@ def cmd_mutsearch(a):
     out = mutsearch.save(a.name, addr, source, best)
     if out:
         print("Wrote %s\nNext: roc submit %s %s --file %s" % (out, a.name, addr, out))
+    elif best["exhausted"] and a.block_if_exhausted:
+        from roc import claims as claim_state
+        reason = "blocked: mutsearch exhausted %d rewrites at depth %d, max %.3f" % (
+            best["compiles"], a.depth, best["precise"])
+        claim_state.add_cooldown(a.name, addr, _local_evidence(a.name, addr), BLOCK_SECONDS, reason=reason)
+        print("%s %s: %s" % (a.name, addr, reason))
+
+
+def cmd_twinpatch(a):
+    """Copy an exact same-shape twin's source with the constants the two targets disagree on.
+    Writes an improvement over the local score, never submits."""
+    from roc import match, mutsearch, twinpatch
+    addr = a.addr.lower().replace("0x", "").zfill(8)
+    current = json.loads((ROOT / "work" / a.name / "scores.json").read_text()).get(addr, 0)
+    chosen = [a.twin] if a.twin else twinpatch.twins(a.name, addr, limit=a.limit)
+    if not chosen:
+        sys.exit("%s %s: no exact same-size twin with shape >= 0.95" % (a.name, addr))
+    best, original = None, None
+    for twin in chosen:
+        try:
+            result, stub = twinpatch.patch(a.name, addr, twin, log=print)
+        except (OSError, match.CompileError) as error:
+            print("%s %s twin %s: %s" % (a.name, addr, twin, error))
+            continue
+        if result and (best is None or (result["score"], result["precise"]) > (best["score"], best["precise"])):
+            best, original = result, stub
+        if best and best["score"] == 100:
+            break
+    if not best:
+        sys.exit("%s %s: no twin compiled" % (a.name, addr))
+    print("%s %s: local %d%% -> %d%% (%.3f) via %s; constant pairs %s" % (
+        a.name, addr, current, best["score"], best["precise"], " > ".join(best["path"]), best["pairs"] or "none"))
+    if best["score"] > current:
+        out = mutsearch.save(a.name, addr, original, best)
+        print("Wrote %s\nNext: roc submit %s %s --file %s" % (out, a.name, addr, out))
+
+
+def _precise_or(value, client, addr, text):
+    """Untruncated score for ranking; the integer score when the target cannot be read."""
+    from roc import match
+    try:
+        return round(match.precise_score(client, addr, text), 3)
+    except (OSError, SystemExit, match.CompileError):
+        return float(value or 0)
 
 
 def cmd_check_batch(a):
@@ -871,6 +915,7 @@ def cmd_check_batch(a):
         try:
             value, symbol, asm_diff, _ = match.check_text(a.name, addr, text)
             return {"label": label, "score": value, "symbol": symbol, "diff": asm_diff,
+                    "precise": _precise_or(value, a.name, addr, text),
                     "error": None, "source_hash": digest,
                     "elapsed_seconds": round(time.monotonic() - started, 3),
                     "hypothesis": getattr(a, "hypothesis", None) or Path(label).stem}
@@ -891,7 +936,7 @@ def cmd_check_batch(a):
         futures = [pool.submit(score_one, pair) for pair in pairs]
         for future in as_completed(futures):
             results.append(future.result())
-    results.sort(key=lambda row: -row["score"])
+    results.sort(key=lambda row: (-row["score"], -row.get("precise", 0)))
     best = results[0] if results else {"label": None, "score": 0, "diff": "", "error": None}
 
     journal = getattr(a, "journal", True) and os.environ.get("ROC_CHECK_BATCH_JOURNAL", "1") != "0"
@@ -924,7 +969,7 @@ def cmd_check_batch(a):
     if getattr(a, "summary", False):
         print("Batch %s %s · %d unique, %d duplicate(s):" % (a.name, addr, len(results), len(duplicates)))
         for row in results:
-            print("  %3d%%  %-28s %s" % (row["score"], Path(row["label"]).name,
+            print("  %3d%% %7.3f  %-28s %s" % (row["score"], row.get("precise", 0), Path(row["label"]).name,
                                          "COMPILE FAILED" if row["error"] else
                                          ("MATCH" if row["score"] == 100 else row["symbol"] or "-")))
         if duplicates:
@@ -936,7 +981,7 @@ def cmd_check_batch(a):
     for row in results:
         note = "COMPILE FAILED: %s" % row["error"].splitlines()[0][:80] if row["error"] else \
                ("MATCH" if row["score"] == 100 else row["symbol"] or "-")
-        print("  %3d%%  %-8s  %s" % (row["score"], Path(row["label"]).name, note))
+        print("  %3d%% %7.3f  %-8s  %s" % (row["score"], row.get("precise", 0), Path(row["label"]).name, note))
     if duplicates:
         print("Duplicate source hashes compiled once: %s" %
               ", ".join("%s=%s" % (d["label"], d["duplicate_of"]) for d in duplicates))
@@ -2687,7 +2732,13 @@ def main(argv=None):
         (["--budget"], {"type": int, "default": 120, "help": "maximum compiles"}),
         (["--beam"], {"type": int, "default": 3}),
         (["--depth"], {"type": int, "default": 3, "help": "edits stacked on the start source"}),
-        (["--jobs"], {"type": int, "default": 6}))
+        (["--jobs"], {"type": int, "default": 6}),
+        (["--block-if-exhausted"], {"dest": "block_if_exhausted", "action": "store_true",
+                                    "help": "park the target as a blocker (roc work --block) when every rewrite failed"}))
+    cmd("twinpatch", cmd_twinpatch, "reuse an exact same-shape twin, substituting the constants the targets differ in",
+        (["name"], {}), (["addr"], {}),
+        (["--twin"], {"help": "exact twin address (default: best same-shape matches within 4 bytes)"}),
+        (["--limit"], {"type": int, "default": 3, "help": "twins to try"}))
     cmd("check-batch", cmd_check_batch,"score several candidate variants of one function in parallel (agents: test multiple hypotheses at once)",
         (["name"], {}), (["addr"], {}), (["files"], {"nargs": "+"}),
         (["--context"], {"type": int, "default": 99, "help": "unchanged lines around each diff hunk"}),
