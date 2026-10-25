@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-25 05:25 UTC",
+ "updated": "2026-10-25 06:48 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -191,15 +191,15 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22291,
-   "matched": 21932,
-   "partial": 359,
+   "matched": 21933,
+   "partial": 358,
    "source_matched": 13561,
-   "mined_matched": 8371,
+   "mined_matched": 8372,
    "bytes": 3712596,
-   "matched_bytes": 3404727,
+   "matched_bytes": 3404920,
    "source_bytes": 2566209,
-   "mined_bytes": 838518,
-   "partial_bytes": 307869,
+   "mined_bytes": 838711,
+   "partial_bytes": 307676,
    "data_bytes": 1559926,
    "leaderboard": [
     {
@@ -211,10 +211,10 @@
     },
     {
      "user": "colin",
-     "matched": 3064,
-     "points": 680838,
-     "submissions": 23113,
-     "last": 1792904943.3694396
+     "matched": 3065,
+     "points": 680849,
+     "submissions": 23114,
+     "last": 1792908067.602564
     },
     {
      "user": "king_originala",
@@ -303,9 +303,9 @@
     {
      "user": "king_originala_sol_native",
      "matched": 0,
-     "points": 5,
-     "submissions": 1,
-     "last": 1792905801.2068617
+     "points": 40,
+     "submissions": 6,
+     "last": 1792908615.609821
     },
     {
      "user": "king_originala_sol_high",
@@ -635,10 +635,10 @@
   },
   {
    "user": "colin",
-   "matched": 15177,
-   "points": 5519761,
-   "submissions": 185995,
-   "last": 1792904943.3694396
+   "matched": 15178,
+   "points": 5519772,
+   "submissions": 185996,
+   "last": 1792908067.602564
   },
   {
    "user": "king_originala",
@@ -795,18 +795,18 @@
    "last": 1791352017.9738536
   },
   {
+   "user": "king_originala_sol_native",
+   "matched": 0,
+   "points": 40,
+   "submissions": 6,
+   "last": 1792908615.609821
+  },
+  {
    "user": "espeon_1",
    "matched": 0,
    "points": 39,
    "submissions": 7,
    "last": 1791855247.4265246
-  },
-  {
-   "user": "king_originala_sol_native",
-   "matched": 0,
-   "points": 5,
-   "submissions": 1,
-   "last": 1792905801.2068617
   },
   {
    "user": "pitbull",
