@@ -415,6 +415,8 @@ def diagnose(target_code, target_relocs, cand, cand_relocs):
         for i, ((tm, to), (cm, co)) in enumerate(zip(t_ins, c_ins)):
             if tm != cm or tm.startswith("j") or tm == "call":
                 continue
+            if "sym" in t_lines[i] or "sym" in c_lines[i]:
+                continue  # relocated field: masked when scoring, so never a constant mismatch
             t_nums = re.findall(r"0x[0-9a-f]+|\d+", to, re.I)
             c_nums = re.findall(r"0x[0-9a-f]+|\d+", co, re.I)
             if len(t_nums) != 1 or len(c_nums) != 1 or t_nums[0].lower() == c_nums[0].lower():
@@ -581,7 +583,11 @@ def asm_lines(code, relocs):
     out = []
     for a, s, m, o in Cs(CS_ARCH_X86, CS_MODE_32).disasm_lite(code, 0):
         if any(a <= r < a + s for r in relocs):
-            o = re.sub(r"0x[0-9a-f]+|(?<=\[)0(?=\])|(?<=, )0$", "sym", o)
+            if m in ("call", "jmp") and re.fullmatch(r"(?:0x[0-9a-f]+|\d+)", o):
+                o = "sym"
+            else:
+                # A COFF field holds only the addend, so capstone prints `push 0` or `[4]`.
+                o = re.sub(r"0x[0-9a-f]+|(?<=\[)\d+(?=\])|(?<=, )0$|^\d+$", "sym", o)
         elif m.startswith(("j", "call")) and o.startswith("0x") and not 0 <= int(o, 16) < len(code):
             o = "sym"
         out.append("%s %s" % (m, o))

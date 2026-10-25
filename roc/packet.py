@@ -123,8 +123,10 @@ def _failed(client, addr, limit=5, root=None):
             continue
         if row.get("after") == 100:
             continue
-        out.append({"kind": row.get("kind"), "hypothesis": (row.get("hypothesis")
-                    or row.get("change") or row.get("summary") or "")[:300],
+        hypothesis = (row.get("hypothesis") or row.get("change") or row.get("summary") or "")[:300]
+        if any(seen["hypothesis"] == hypothesis for seen in out):
+            continue  # the same idea retried is one failed hypothesis
+        out.append({"kind": row.get("kind"), "hypothesis": hypothesis,
                     "score": row.get("after"), "result": row.get("outcome") or row.get("result"),
                     "source_hash": row.get("source_hash"), "model": row.get("model"),
                     "confidence": OBSERVED})
@@ -134,16 +136,34 @@ def _failed(client, addr, limit=5, root=None):
 
 
 def _first_hunk(diff, max_lines=24):
+    """The leading hunks (each `@@` block) up to max_lines in total: one hunk is often
+    a lone prologue difference while the real residue sits further down."""
     lines = (diff or "").splitlines()
     start = next((i for i, line in enumerate(lines) if line.startswith("@@")), None)
     if start is None:
         return "\n".join(lines[:max_lines])
-    out = [lines[start]]
-    for line in lines[start + 1:]:
-        if line.startswith("@@") or len(out) >= max_lines:
+    out = []
+    for line in lines[start:]:
+        if len(out) >= max_lines:
             break
         out.append(line)
     return "\n".join(out)
+
+
+def _residue(diff, context=2, max_lines=40):
+    """Changed lines with `context` unchanged lines around each, from a wide-context diff."""
+    lines = [line for line in (diff or "").splitlines() if not line.startswith(("---", "+++", "@@"))]
+    changed = [i for i, line in enumerate(lines) if line[:1] in "+-"]
+    keep = sorted({j for i in changed for j in range(i - context, i + context + 1) if 0 <= j < len(lines)})
+    out, last = [], None
+    for j in keep:
+        if last is not None and j != last + 1:
+            out.append("@@")
+        out.append(lines[j])
+        last = j
+    if len(out) > max_lines:
+        out = out[:max_lines] + ["... %d more residue lines" % (len(out) - max_lines)]
+    return "\n".join(["@@"] + out) if out else ""
 
 
 def _facts(row, asm):
@@ -186,7 +206,7 @@ def build(client, addr, api=None, root=None, max_tokens=2000, include_diff=True,
             measured = checked[0]
             diagnosis = checked[4] if len(checked) > 4 and isinstance(checked[4], dict) else {}
             diff = {"score": measured, "symbol": checked[1],
-                    "first_hunk": _first_hunk(checked[2]), "mismatch_class": diagnosis.get("mismatch_class"),
+                    "first_hunk": _residue(checked[2]), "mismatch_class": diagnosis.get("mismatch_class"),
                     "confidence": OBSERVED}
             score = measured
         except match.CompileError as error:

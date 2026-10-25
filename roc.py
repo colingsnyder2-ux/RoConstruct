@@ -680,6 +680,35 @@ def cmd_work(a):
     print("Skip:     roc work %s --skip %s --reason TEXT   (or: roc release %s %s)" %
           (a.name, addr, a.name, addr))
     print("Next:     roc check %s %s   ->   roc submit %s %s" % (a.name, addr, a.name, addr))
+    if getattr(a, "packet_tokens", 0) > 0:
+        _write_work_packet(a.name, addr, chosen, a.packet_tokens, api)
+
+
+def _write_work_packet(client, addr, chosen, tokens, api):
+    """Hand the claimer its evidence at once: real residue hunks, failed ideas, siblings, and the
+    two cheap traps (local source worse than the server's best; extent cut before its own code)."""
+    import re
+    from roc import match, packet as packet_mod
+    try:
+        built = packet_mod.build(client, addr, api=api, max_tokens=tokens)
+    except (match.CompileError, SystemExit, OSError) as error:
+        return print("Packet:   unavailable (%s)" % str(error)[:120])
+    notes = []
+    measured = (built.get("diff") or {}).get("score")
+    if measured is not None and measured < (chosen.get("score") or 0):
+        notes.append("WARNING: local source scores %d%% but the server best is %d%%: your src file is stale; "
+                     "start from the server source (roc pull %s --force if you have no unsubmitted work)."
+                     % (measured, chosen.get("score"), client))
+    if re.search(r"^-j\w+ sym$", (built.get("diff") or {}).get("first_hunk") or "", re.M):
+        notes.append("WARNING: the target jumps out of its own extent: likely a bounds problem, not source. "
+                     "Log a BOUNDS LEAD with proof instead of editing C++.")
+    text = "\n".join(notes + [packet_mod.render(built)])
+    path = ROOT / "work" / client / "packets" / (addr + ".txt")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(text + "\n", encoding="utf-8")
+    for note in notes:
+        print(note)
+    print("Packet:   %s (~%d tokens): read it before editing" % (path, built.get("estimated_tokens", 0)))
 
 
 def _journal_check(client, addr, path, score):
@@ -2557,7 +2586,9 @@ def main(argv=None):
          {"dest": "include_cooling", "action": "store_true",
           "help": "include cooling/parked targets so they can be revisited (use after evidence changes)"}),
         (["--include-claimed"], {"dest": "include_claimed", "action": "store_true",
-                                "help": "include targets claimed by other workers (read-only unless you own the claim)"}))
+                                "help": "include targets claimed by other workers (read-only unless you own the claim)"}),
+        (["--packet-tokens"], {"dest": "packet_tokens", "type": int, "default": 4000,
+                               "help": "evidence packet written on claim (work/CLIENT/packets/ADDR.txt); 0 skips it"}))
     cmd("scout", cmd_scout, "read-only ranked candidates; never claims or reserves a target",
         (["name"], {"help": "client to scout"}),
         (["--server"], {}), (["--token"], {}),
