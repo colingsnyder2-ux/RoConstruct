@@ -676,31 +676,29 @@ def _send_rebuild_webhook(url, client, data):
     bars = data["bars"]
     description = (
         "Phase %s - %s\n\n" % (data["phase"], data["phaseLabel"]) +
-        "Modules reporting: %d/%d %s\n" % (bars["compiled"]["value"], bars["compiled"]["total"], _rebuild_emoji_bar(bars["compiled"]["value"], bars["compiled"]["total"], fill="🟦")) +
-        "Modules linked: %d/%d %s\n" % (bars["linked"]["value"], bars["linked"]["total"], _rebuild_emoji_bar(bars["linked"]["value"], bars["linked"]["total"], fill="🟩")) +
-        "Byte-exact: %s/%s %s\n" % (format(bars["exact"]["value"], ","), format(bars["exact"]["total"], ","), _rebuild_emoji_bar(bars["exact"]["value"], bars["exact"]["total"], fill="🟩")) +
-        "Unresolved: %d %s\n" % (bars["unresolved"]["value"], _rebuild_emoji_bar(bars["unresolved"]["value"], bars["unresolved"]["total"], fill="🟥")) +
-        "Stubs: %d %s\n" % (bars["stubs"]["value"], _rebuild_emoji_bar(bars["stubs"]["value"], bars["stubs"]["total"], fill="🟨")) +
-        "Runtime: %d/%d %s\n\n" % (bars["runtime"]["value"], bars["runtime"]["total"], _rebuild_emoji_bar(bars["runtime"]["value"], bars["runtime"]["total"], fill="🟪")) +
+        "Overall byte-exact: %s / %s (%.2f%%)\n%s\n\n" % (
+            format(bars["exact"]["value"], ","), format(bars["exact"]["total"], ","),
+            100.0 * bars["exact"]["value"] / bars["exact"]["total"] if bars["exact"]["total"] else 0.0,
+            _rebuild_emoji_bar(bars["exact"]["value"], bars["exact"]["total"], fill="🟩")) +
         "Next: %s" % data.get("next", ""))
-
     payload = {
         "embeds": [{
-            "title": "Rebuild update: %s" % client,
+            "title": ":wrench: Rebuild progress: %s" % client,
             "description": description,
             "fields": [
-                {"name": "Modules reporting", "value": "%d / %d" % (data["bars"]["compiled"]["value"], data["bars"]["compiled"]["total"]), "inline": True},
-                {"name": "Modules linked", "value": "%d / %d" % (data["bars"]["linked"]["value"], data["bars"]["linked"]["total"]), "inline": True},
-                {"name": "Byte-exact functions", "value": "%d / %d" % (data["bars"]["exact"]["value"], data["bars"]["exact"]["total"]), "inline": True},
-                {"name": "Unresolved symbols", "value": str(data["bars"]["unresolved"]["value"]), "inline": True},
-                {"name": "Temporary stubs", "value": str(data["bars"]["stubs"]["value"]), "inline": True},
-                {"name": "Runtime milestones", "value": "%d / %d" % (data["bars"]["runtime"]["value"], data["bars"]["runtime"]["total"]), "inline": True},
+                {"name": ":package: Modules reporting", "value": "%d / %d\n%s" % (bars["compiled"]["value"], bars["compiled"]["total"], _rebuild_emoji_bar(bars["compiled"]["value"], bars["compiled"]["total"], fill="🟦")), "inline": True},
+                {"name": ":link: Modules linked", "value": "%d / %d\n%s" % (bars["linked"]["value"], bars["linked"]["total"], _rebuild_emoji_bar(bars["linked"]["value"], bars["linked"]["total"], fill="🟩")), "inline": True},
+                {"name": ":dart: Byte-exact functions", "value": "%s / %s\n%s" % (format(bars["exact"]["value"], ","), format(bars["exact"]["total"], ","), _rebuild_emoji_bar(bars["exact"]["value"], bars["exact"]["total"], fill="🟩")), "inline": True},
+                {"name": ":warning: Unresolved symbols", "value": str(bars["unresolved"]["value"]), "inline": True},
+                {"name": ":adhesive_bandage: Temporary stubs", "value": str(bars["stubs"]["value"]), "inline": True},
+                {"name": ":rocket: Runtime milestones", "value": "%d / %d\n%s" % (bars["runtime"]["value"], bars["runtime"]["total"], _rebuild_emoji_bar(bars["runtime"]["value"], bars["runtime"]["total"], fill="🟪")), "inline": True},
                 {"name": "Next", "value": data.get("next", ""), "inline": False},
             ],
             "footer": {"text": "RoConstruct rebuild"},
             "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         }]
     }
+
     body = json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json", "User-Agent": "RoConstruct/1.0"}, method="POST")
     with urllib.request.urlopen(req, timeout=15) as response:

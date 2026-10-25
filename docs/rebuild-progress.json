@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-25 17:23 UTC",
+  "updated": "2026-10-25 17:28 UTC",
   "clients": {
     "2008-06": {
       "phase": "6",
@@ -22,14 +22,14 @@
           "label": "Byte-exact functions"
         },
         "unresolved": {
-          "value": 3,
-          "total": 3,
+          "value": 2,
+          "total": 2,
           "label": "Unresolved symbols",
           "invert": true
         },
         "stubs": {
-          "value": 3,
-          "total": 3,
+          "value": 2,
+          "total": 2,
           "label": "Temporary stubs",
           "invert": true
         },
@@ -116,9 +116,9 @@
           "name": "RbxgsApp",
           "linked": false,
           "test": null,
-          "exact": 1822,
-          "objectFunctions": 76315,
-          "unresolved": 3
+          "exact": 1828,
+          "objectFunctions": 76659,
+          "unresolved": 2
         },
         {
           "name": "zlib-winapi",
