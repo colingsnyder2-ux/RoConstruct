@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-25 19:39 UTC",
+ "updated": "2026-10-25 20:27 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -191,15 +191,15 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22285,
-   "matched": 22013,
-   "partial": 270,
+   "matched": 22014,
+   "partial": 269,
    "source_matched": 13620,
-   "mined_matched": 8393,
+   "mined_matched": 8394,
    "bytes": 3724371,
-   "matched_bytes": 3465442,
+   "matched_bytes": 3465625,
    "source_bytes": 2608480,
-   "mined_bytes": 856962,
-   "partial_bytes": 257322,
+   "mined_bytes": 857145,
+   "partial_bytes": 257139,
    "data_bytes": 1559926,
    "leaderboard": [
     {
@@ -211,10 +211,10 @@
     },
     {
      "user": "colin",
-     "matched": 3074,
-     "points": 681306,
-     "submissions": 23130,
-     "last": 1792956282.5446835
+     "matched": 3075,
+     "points": 681316,
+     "submissions": 23134,
+     "last": 1792959392.6089997
     },
     {
      "user": "king_originala",
@@ -649,10 +649,10 @@
   },
   {
    "user": "colin",
-   "matched": 15187,
-   "points": 5520229,
-   "submissions": 186012,
-   "last": 1792956282.5446835
+   "matched": 15188,
+   "points": 5520239,
+   "submissions": 186016,
+   "last": 1792959392.6089997
   },
   {
    "user": "king_originala",
