@@ -16,7 +16,6 @@
    "direct": true,
    "files": "util/*.cpp v8kernel/*.cpp reflection/*.cpp v8tree/*.cpp v8world/*.cpp v8datamodel/*.cpp script/*.cpp humanoid/*.cpp tool/*.cpp v8xml/*.cpp gui/*.cpp security/*.cpp",
    "extra_defines": "BOOST_ALL_NO_LIB",
-   "fallback_cl": 50727,
    "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD",
    "exclude": [
     "util/Utilities.cpp",
@@ -30,7 +29,6 @@
    "direct": true,
    "files": "recipe",
    "extra_defines": "BOOST_ALL_NO_LIB",
-   "fallback_cl": 50727,
    "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD"
   },
   {
@@ -40,7 +38,15 @@
    "direct": true,
    "files": "recipe",
    "extra_defines": "BOOST_ALL_NO_LIB",
-   "fallback_cl": 50727,
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD"
+  },
+  {
+   "name": "renderlib",
+   "mode": "recipe",
+   "recipe": "rbxgs-render",
+   "direct": true,
+   "files": "TextureProxy.cpp",
+   "extra_defines": "BOOST_ALL_NO_LIB",
    "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD"
   },
   {
@@ -69,7 +75,6 @@
    "includes_from_recipe": "rbxgs-net",
    "defines_from_recipe": "rbxgs",
    "extra_defines": "BOOST_ALL_NO_LIB",
-   "fallback_cl": 50727,
    "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD",
    "extra_includes": [
     "tools/rbxgs/Client/Network",

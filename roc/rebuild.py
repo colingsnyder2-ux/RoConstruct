@@ -448,7 +448,7 @@ def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- 
         args = ["/nologo", "/c"] + flags.split() + ["/D" + d for d in defines.split()] + \
                ["/I" + str(i) for i in siblings + list(includes)] + ["/Fo" + src.stem + ".obj", str(unit)]
         code, text = run(tc, "cl", args, out)
-        results[str(orig)] = (code == 0, text[-400:])
+        results[str(orig)] = (code == 0, "\n".join(l for l in text.splitlines() if " error " in l)[:2000] or text[-400:])
     return results
 
 
@@ -598,6 +598,7 @@ def build_module(client, name, log=print):
                 res.update(compile_direct(client, [Path(k) for k, (ok, _) in res.items() if not ok], folder, includes,
                                           defines, layer["flags"], cl=layer["fallback_cl"], append=append, overlay=ov))
             errors = {Path(k).name: v for k, (ok, v) in res.items() if not ok}
+        _dump(folder / "errors.json", errors)
         log("layer %s: %d compile errors%s" % (layer["name"], len(errors), (" (" + ", ".join(sorted(errors)) + ")") if errors else ""))
         layer_dirs.append(folder)
     deps, pending = [], list(spec.get("depends", []))

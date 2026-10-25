@@ -511,6 +511,12 @@ patch("App/include/v8tree/Instance.h", "\t\tfriend class RaiseDescendentAdded2;\
 patch("App/include/v8datamodel/MouseCommand.h", "\tclass MouseCommand : public INamed, public IRenderable\n\t{\n",
       "\tclass MouseCommand : public INamed, public IRenderable\n\t{\n\t\tfriend class Workspace;\n")
 
+# --- util/IRenderable.h: IndexArray<IRenderable, &IRenderable::indexFunc2d> is named inside classes
+# deriving from IRenderableBucket (Workspace), where VS2008 checks the private accessors (VS2005 did
+# not). Only the two inline accessors become public; data members and layout are unchanged ---
+patch("App/include/util/IRenderable.h", "\t\tIRenderableBucket* bucket;\n\n\t\tint& indexFunc2d()",
+      "\t\tIRenderableBucket* bucket;\n\n\tpublic:\n\t\tint& indexFunc2d()")
+
 # --- Network/Streaming.cpp: an instance whose id is sent can be found by that id later
 # (registry in glue_guid_registry.cpp) ---
 patch("Network/Streaming.cpp", "namespace RBX\n{\n\tnamespace Network\n\t{\n",

@@ -60,9 +60,6 @@ namespace RBX
 	// signals moved outside namespace
 
 	// textures
-	G3D::ReferenceCountedPointer<G3D::Texture> Render::TextureProxy::getIfResolved() const { return G3D::ReferenceCountedPointer<G3D::Texture>(); }
-	G3D::Vector2 Render::TextureProxy::getSize() { return G3D::Vector2(); }
-	G3D::ReferenceCountedPointer<G3D::Texture> Render::TextureProxy::resolve(G3D::RenderDevice*) { return G3D::ReferenceCountedPointer<G3D::Texture>(); }
 
 	// network bitstream helper
 	// position then the rotation rows, as Replicator::deserializeValue reads a CoordinateFrame
@@ -80,14 +77,11 @@ namespace RBX
 
 	// plugin receive (raknet adapter)
 	// PluginInterfaceAdapter moved outside namespace
-	PluginReceiveResult Network::Server::ClientProxy::OnReceive(RakPeerInterface*, Packet*) { return (PluginReceiveResult)0; }
-	bool Network::Server::ClientProxy::canSendItems() { return false; }
 
 	// instance tree
 	bool VelocityMotor::askSetParent(const Instance*) const { return true; }
 
 	// replication
-	void Network::Replicator::connectToReplicationContainers() {}
 
 	// assembly
 	// the root clump's root primitive, as Assembly::getMainPrimitive
@@ -113,7 +107,6 @@ namespace RBX
 	// serializer moved outside namespace
 
 	// events
-	void PlayerController::onEvent(const RunService*, Heartbeat) {}
 
 	// service provider
 
@@ -151,7 +144,6 @@ namespace RBX
 	void Network::StringSender::send(RakNet::BitStream& stream, const Name& name) { send(stream, name.toString()); }
 
 	// character subject
-	void ICharacterSubject::stepGoalAndFocus(G3D::CoordinateFrame&, G3D::CoordinateFrame&, bool) {}
 
 	// instance xml
 	// a place-file root holding this instance (as SerializerV2::newRootElement + Instance::write)
@@ -166,7 +158,6 @@ namespace RBX
 	// gui root
 
 	// mouse
-	void Mouse::update(const UIEvent&) {}
 
 	// script context
 	XmlElement* ScriptContext::write() { return NULL; }
@@ -195,5 +186,5 @@ namespace RBX
 // definitions for classes that are not in namespace RBX
 RBX::Reflection::GenericSlotWrapper::~GenericSlotWrapper() {}
 ::FilePacketLogger::~FilePacketLogger() {}
-void SerializerV2::load(std::istream&, RBX::DataModel*) {}
-RBX::Render::TextureProxy::~TextureProxy() {}
+// a place file stream: parse and load as SerializerV2::loadXML does (DataModel::loadContent calls this)
+void SerializerV2::load(std::istream& stream, RBX::DataModel* dataModel) { loadXML(stream, dataModel); }

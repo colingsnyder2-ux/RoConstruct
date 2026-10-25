@@ -11,6 +11,13 @@ namespace RBX
 {
 	Reflection::BoundProp<float, 1> Humanoid::propHealth("Health", "Game", &Humanoid::health, Reflection::PropertyDescriptor::STANDARD);
 	Reflection::SignalDesc<Humanoid, void(void)> Humanoid::event_Died("Died");
+
+	// through the property so Changed fires and onChangedHealth sees it
+	void Humanoid::setHealth(float value)
+	{
+		propHealth.setValue(this, value);
+	}
+
 	Reflection::SignalDesc<Humanoid, void(float)> Humanoid::event_Running("Running", "speed");
 	Reflection::SignalDesc<Humanoid, void(bool)> Humanoid::event_Jumping("Jumping", "active");
 	Reflection::SignalDesc<Humanoid, void(bool)> Humanoid::event_GettingUp("GettingUp", "active");

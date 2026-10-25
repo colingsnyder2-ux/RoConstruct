@@ -67,6 +67,12 @@
    "\tclass MouseCommand : public INamed, public IRenderable\n\t{\n\t\tfriend class Workspace;\n"
   ]
  ],
+ "App/include/util/IRenderable.h": [
+  [
+   "\t\tIRenderableBucket* bucket;\n\n\t\tint& indexFunc2d()",
+   "\t\tIRenderableBucket* bucket;\n\n\tpublic:\n\t\tint& indexFunc2d()"
+  ]
+ ],
  "Network/Streaming.cpp": [
   [
    "namespace RBX\n{\n\tnamespace Network\n\t{\n",
