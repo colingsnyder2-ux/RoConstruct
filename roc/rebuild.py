@@ -312,9 +312,18 @@ def build_library(client, recipe, files, flags, name, cl=BUILD, jobs=6, log=prin
     return report
 
 
+def unresolved_symbols(text):
+    """Decorated names from LNK2001/LNK2019 lines (C++: the parenthesised name after the quoted one; C: bare)."""
+    return [a or b for a, b in re.findall(r'unresolved external symbol (?:"[^"]*" \((\?[^)]+)\)|(_\w+))', text)]
+
+
+# #pragma comment(lib) names vendor headers ask for; rebuilt modules supply that code instead
+VENDOR_AUTOLINK = ("zlib.lib", "G3D.lib", "GLG3D.lib", "sdl.lib", "sdlmain.lib", "glut32.lib")
+
+
 def link_test(client, test, libs, includes=(), defines="WIN32 NDEBUG _MBCS _CRT_SECURE_NO_WARNINGS", flags="/O2 /GS- /EHsc /MD",
               system_libs=("kernel32.lib", "user32.lib", "gdi32.lib", "advapi32.lib", "shell32.lib", "ole32.lib",
-                           "oleaut32.lib", "comdlg32.lib", "ws2_32.lib", "winmm.lib"), cl=BUILD, run_args=()):
+                           "oleaut32.lib", "comdlg32.lib", "ws2_32.lib", "winmm.lib", "opengl32.lib", "glu32.lib"), cl=BUILD, run_args=()):
     """Compile tests/<test>.cpp, link it against rebuilt libs with the period linker, run it.
     Returns dict(compiled, linked, ran, exit, output, unresolved, map)."""
     tc = toolchain(cl)
@@ -328,8 +337,9 @@ def link_test(client, test, libs, includes=(), defines="WIN32 NDEBUG _MBCS _CRT_
     if code:
         return result
     code, text = run(tc, "link", ["/nologo", "/SUBSYSTEM:CONSOLE", "/MACHINE:X86", "/MAP:%s.map" % test,
-                                  "/OUT:%s.exe" % test, test + ".obj"] + [str(l) for l in libs] + list(system_libs), out)
-    result["unresolved"] = sorted(set(re.findall(r"unresolved external symbol .*?\((\?[^)]+|_\w+)\)", text)))
+                                  "/OUT:%s.exe" % test, test + ".obj"] + [str(l) for l in libs] + list(system_libs)
+                       + ["imagehlp.lib", "version.lib", "wininet.lib", "dbghelp.lib", "psapi.lib"] + ["/NODEFAULTLIB:" + l for l in VENDOR_AUTOLINK], out)
+    result["unresolved"] = sorted(set(unresolved_symbols(text)))
     result.update(linked=code == 0, output=text[-1500:], map=str(out / (test + ".map")))
     if code:
         return result
@@ -367,7 +377,7 @@ def resolve_objects(client, test, layers, name, includes=(), max_rounds=20, log=
         kwargs = {"defines": defines} if defines else {}
         result = link_test(client, test, [out / lib_name] + list(extra_libs), includes=includes, **kwargs)
         result["choices"] = {f: layers[rank] and str(Path(layers[rank]).name) for f, (rank, _) in choice.items()}
-        missing = re.findall(r"unresolved external symbol .*?\((\?[^)]+|_\w+)\)", result["output"])
+        missing = result["unresolved"]  # full list, not the truncated output
         if result["linked"] or not missing:
             return result
         switched = False
@@ -386,17 +396,25 @@ def resolve_objects(client, test, layers, name, includes=(), max_rounds=20, log=
     return result
 
 
-def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- /EHsc /MD", cl=BUILD):
-    """Plain whole-file cl /c build (no mining wrapper): header search order is the ABI choice."""
+def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- /EHsc /MD", cl=BUILD, append=None,
+                   overlay=None):
+    """Plain whole-file cl /c build (no mining wrapper): header search order is the ABI choice.
+    append: a header included after each source, e.g. template bodies a tree declares but never defines."""
     tc = toolchain(cl)
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
     results = {}
-    for src in sources:
+    includes, compiled = _overlaid(includes, sources, overlay)
+    for orig, src in zip(sources, compiled):
+        unit = src
+        if append:
+            unit = out / "_wrap" / (Path(src).stem + ".cpp")
+            unit.parent.mkdir(exist_ok=True)
+            unit.write_text('#include "%s"\n#include "%s"\n' % (Path(src).as_posix(), Path(append).as_posix()), encoding="utf-8")
         args = ["/nologo", "/c"] + flags.split() + ["/D" + d for d in defines.split()] + \
-               ["/I" + str(i) for i in includes] + ["/Fo" + Path(src).stem + ".obj", str(src)]
+               ["/I" + str(i) for i in includes] + ["/Fo" + Path(src).stem + ".obj", str(unit)]
         code, text = run(tc, "cl", args, out)
-        results[str(src)] = (code == 0, text[-400:])
+        results[str(orig)] = (code == 0, text[-400:])
     return results
 
 
@@ -435,6 +453,47 @@ def patched_tree(client, recipe):
         tmp.rename(tree)
     return tree
 
+def build_overlay(client, module, spec):
+    """Module-level source fixes without touching tools/: the files named in spec["patches"] (a JSON file of
+    {rel: [[old, new], ...]}, rel under spec["root"]) are copied, edited and placed in out/<module>/overlay.
+    Returns (root, overlay) for compile_direct, or None."""
+    if not spec:
+        return None
+    import hashlib
+    root = (ROOT / spec["root"]).resolve()
+    patches = json.loads((ROOT / spec["patches"]).read_text(encoding="utf-8"))
+    key = hashlib.sha256(json.dumps(patches, sort_keys=True).encode()).hexdigest()[:12]
+    overlay = workspace(client) / "out" / module / ("overlay-" + key)
+    if not overlay.exists():
+        tmp = overlay.with_name(overlay.name + ".tmp")
+        for rel, edits in patches.items():
+            text = (root / rel).read_text(errors="replace") if (root / rel).exists() else ""
+            for old, new in edits:
+                if old and old not in text:
+                    raise ValueError("overlay patch for %s no longer applies: %r" % (rel, old[:60]))
+                text = text.replace(old, new, 1) if old else text + new
+            (tmp / rel).parent.mkdir(parents=True, exist_ok=True)
+            (tmp / rel).write_text(text)
+        tmp.rename(overlay)
+    return root, overlay
+
+
+def _overlaid(includes, sources, overlay):
+    """Each include dir under the overlay root gets its overlay twin first; patched sources compile from the overlay."""
+    if not overlay:
+        return list(includes), list(sources)
+    root, ov = overlay
+    inc = []
+    for i in includes:
+        i = Path(i).resolve()
+        if i.is_relative_to(root):
+            inc.append(ov / i.relative_to(root))
+        inc.append(i)
+    src = [ov / Path(x).resolve().relative_to(root) if Path(x).resolve().is_relative_to(root)
+           and (ov / Path(x).resolve().relative_to(root)).exists() else x for x in sources]
+    return inc, src
+
+
 def _spec_path(client, value):
     """`tree:RECIPE/sub/dir` names a folder inside a recipe's (patched) tree; anything else is repo-relative."""
     if value.startswith("tree:"):
@@ -452,6 +511,7 @@ def build_module(client, name, log=print):
     from roc import libs
     spec = load_module(client, name)
     out = workspace(client) / "out" / spec["name"]
+    ov = build_overlay(client, spec["name"], spec.get("overlay"))
     layer_dirs = []
     for layer in spec["layers"]:
         folder = out / ("layer-" + layer["name"])
@@ -476,9 +536,13 @@ def build_module(client, name, log=print):
                 tree = patched_tree(client, layer["recipe"])
                 includes = [tree] + [_in_tree(libs._case_path(libs.LIBS / i), src, tree)
                                      for i in recipe.get("include", []) if i != "WINSDK"]
-                res = compile_direct(client, [tree / rel for rel in errors], folder, includes,
-                                     (recipe.get("defines", "") + " " + layer.get("extra_defines", "")).strip(),
-                                     layer["flags"], cl=layer.get("cl", BUILD))
+                defines = (recipe.get("defines", "") + " " + layer.get("extra_defines", "")).strip()
+                append = (ROOT / layer["append_include"]).resolve() if layer.get("append_include") else None
+                res = compile_direct(client, [tree / rel for rel in errors], folder, includes, defines,
+                                     layer["flags"], cl=layer.get("cl", BUILD), append=append, overlay=ov)
+                if layer.get("fallback_cl"):  # e.g. VS2005 accepts access checks VS2008 rejects
+                    res.update(compile_direct(client, [Path(k) for k, (ok, _) in res.items() if not ok], folder, includes,
+                                              defines, layer["flags"], cl=layer["fallback_cl"], append=append, overlay=ov))
                 errors = {Path(k).name: v for k, (ok, v) in res.items() if not ok}
         else:
             recipe = libs.RECIPES[layer["includes_from_recipe"]] if layer.get("includes_from_recipe") else {"include": []}
@@ -488,7 +552,11 @@ def build_module(client, name, log=print):
             defines = (defines + " " + layer.get("extra_defines", "")).strip()
             sources = [p for g in layer["files"].split() for p in sorted((ROOT / layer["dir"]).glob(g))
                        if not p.name.startswith("roc_") and p.name not in layer.get("exclude", [])]
-            res = compile_direct(client, sources, folder, includes, defines, layer["flags"], cl=layer.get("cl", BUILD))
+            append = (ROOT / layer["append_include"]).resolve() if layer.get("append_include") else None
+            res = compile_direct(client, sources, folder, includes, defines, layer["flags"], cl=layer.get("cl", BUILD), append=append, overlay=ov)
+            if layer.get("fallback_cl"):
+                res.update(compile_direct(client, [Path(k) for k, (ok, _) in res.items() if not ok], folder, includes,
+                                          defines, layer["flags"], cl=layer["fallback_cl"], append=append, overlay=ov))
             errors = {Path(k).name: v for k, (ok, v) in res.items() if not ok}
         log("layer %s: %d compile errors%s" % (layer["name"], len(errors), (" (" + ", ".join(sorted(errors)) + ")") if errors else ""))
         layer_dirs.append(folder)
@@ -504,7 +572,7 @@ def build_module(client, name, log=print):
         deps.append(dep_lib)
         pending += dep_spec.get("depends", [])
     result = resolve_objects(client, spec["test"], layer_dirs, spec["name"] + "/linked",
-                             includes=[_spec_path(client, i) for i in spec.get("test_includes", [])], log=log,
+                             includes=_overlaid([_spec_path(client, i) for i in spec.get("test_includes", [])], [], ov)[0], log=log,
                              extra_libs=deps, defines=spec.get("test_defines"))
     linked = out / "linked"
     funcs, owned_addrs, owned16_addrs = 0, set(), set()
@@ -521,6 +589,29 @@ def build_module(client, name, log=print):
     log("%s: linked=%s test_exit=%s; %d object functions, %d byte-identical to unique 2008 functions (%d of >=16 bytes)"
         % (spec["name"], result["linked"], result["exit"], funcs, owned, owned16))
     return report
+
+
+def closure(client, name, log=print):
+    """Link every object the module chose (not just what its test pulls in) plus its deps: the full list of
+    symbols the module still lacks. Writes out/<module>/closure.json."""
+    spec = load_module(client, name)
+    out = workspace(client) / "out" / spec["name"]
+    objs = sorted((out / "linked").glob("*.obj"))
+    deps, pending = [], list(spec.get("depends", []))
+    while pending:
+        dep_spec = load_module(client, pending.pop(0))
+        lib = workspace(client) / "out" / dep_spec["name"] / "linked" / "linked.lib"
+        if lib not in deps:
+            deps.append(lib)
+            pending += dep_spec.get("depends", [])
+    kwargs = {"defines": spec["test_defines"]} if spec.get("test_defines") else {}
+    ov = build_overlay(client, spec["name"], spec.get("overlay"))
+    result = link_test(client, spec["test"], objs + deps,
+                       includes=_overlaid([_spec_path(client, i) for i in spec.get("test_includes", [])], [], ov)[0], **kwargs)
+    _dump(out / "closure.json", {"module": spec["name"], "objects": len(objs), "linked": result["linked"],
+                                 "unresolved": result["unresolved"]})
+    log("%s closure: %d objects, linked=%s, %d unresolved symbols" % (spec["name"], len(objs), result["linked"], len(result["unresolved"])))
+    return result
 
 
 def status(client="2008-06", log=print):
