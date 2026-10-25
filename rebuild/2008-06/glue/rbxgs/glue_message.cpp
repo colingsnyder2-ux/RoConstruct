@@ -8,8 +8,6 @@
 
 namespace RBX
 {
-	const char* sMessage = "Message";
-
 	void Message::renderPersonalMsg(Adorn* adorn)
 	{
 		G3D::Rect2D viewport = adorn->getViewport();

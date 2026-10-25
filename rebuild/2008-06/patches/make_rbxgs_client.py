@@ -207,6 +207,22 @@ namespace RBX
 }
 """)
 
+# --- reflection/reflection.h: enum properties always have a text form (their item names) ---
+append("App/include/reflection/reflection.h", """
+// rebuild overlay: EnumPropDescriptor::hasStringValue rbxgs declares but never defines
+namespace RBX
+{
+	namespace Reflection
+	{
+		template<typename Class, typename Enum>
+		bool EnumPropDescriptor<Class, Enum>::hasStringValue() const
+		{
+			return true;
+		}
+	}
+}
+""")
+
 # --- reflection/signal.h: generic (script) connections adapt boost::any argument vectors ---
 append("App/include/reflection/signal.h", """
 // rebuild overlay: SignalDescImpl members rbxgs declares but never defines
@@ -490,6 +506,10 @@ namespace RBX
 # (OpenRBX v8tree/Instance.h: friend class Creatable<Instance>::Deleter) ---
 patch("App/include/v8tree/Instance.h", "\t\tfriend class RaiseDescendentAdded2;\n\n\tprivate:\n\t\tAssociation<Instance> assoc;",
       "\t\tfriend class RaiseDescendentAdded2;\n\t\tfriend class Creatable<Instance>::Deleter;\n\n\tprivate:\n\t\tAssociation<Instance> assoc;")
+
+# --- v8datamodel/MouseCommand.h: the workspace dispatches input to the current command's handlers ---
+patch("App/include/v8datamodel/MouseCommand.h", "\tclass MouseCommand : public INamed, public IRenderable\n\t{\n",
+      "\tclass MouseCommand : public INamed, public IRenderable\n\t{\n\t\tfriend class Workspace;\n")
 
 # --- v8tree/Service.h: service lookup by class name (OpenRBX v8tree/Service.h finds by className too) ---
 append("App/include/v8tree/Service.h", """

@@ -413,6 +413,7 @@ def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- 
             unit.write_text('#include "%s"\n#include "%s"\n' % (Path(src).as_posix(), Path(append).as_posix()), encoding="utf-8")
         args = ["/nologo", "/c"] + flags.split() + ["/D" + d for d in defines.split()] + \
                ["/I" + str(i) for i in includes] + ["/Fo" + Path(src).stem + ".obj", str(unit)]
+        (out / (Path(src).stem + ".obj")).unlink(missing_ok=True)  # a failed compile must not leave a stale object
         code, text = run(tc, "cl", args, out)
         results[str(orig)] = (code == 0, text[-400:])
     return results
