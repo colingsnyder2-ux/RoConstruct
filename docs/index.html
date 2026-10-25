@@ -289,7 +289,7 @@ const cache = new Map();
 const liveScores = new Map();
 const liveFunctions = new Map();
 let liveView = null;
-let progress, history = [], hIdx = -1;
+let progress, history = [], hIdx = -1, rebuildData = {};
 const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
                 "November", "December"];
 const ICON = {
@@ -438,6 +438,27 @@ function codeBar(source, mined, partial, total) {
          `<i class="m" style="width:${width(mined)}%"></i><i class="p" style="width:${width(partial)}%"></i></div>`;
 }
 
+function rebuildBar(label, value, total, invert = false) {
+  const shown = invert ? (total - value) : value;
+  return `<div class="label">${esc(label)} <small>(${fmt(value)} / ${fmt(total)})</small></div>` +
+    bar(shown, 0, total, invert ? "g" : "");
+}
+
+function rebuildSection(r) {
+  if (!r || !r.bars) return "";
+  const b = r.bars;
+  return `
+    <div class="head"><h2><small>Rebuild</small>${esc(r.phaseLabel || "Rebuild")}</h2>
+      <p>Phase ${esc(r.phase || "?")} - ${pct((r.overall || 0) * 100, 100)} byte-exact in rebuilt code</p></div>
+    ${rebuildBar(b.compiled.label, b.compiled.value, b.compiled.total)}
+    ${rebuildBar(b.linked.label, b.linked.value, b.linked.total)}
+    ${rebuildBar(b.exact.label, b.exact.value, b.exact.total)}
+    ${rebuildBar(b.unresolved.label, b.unresolved.value, b.unresolved.total, true)}
+    ${rebuildBar(b.stubs.label, b.stubs.value, b.stubs.total, true)}
+    ${rebuildBar(b.runtime.label, b.runtime.value, b.runtime.total)}
+    <p class="note">${esc(r.next || "")}</p>`;
+}
+
 /* One click opens the console, which then asks the two things that matter:
    cloud or local model, and how the worker should run. The link only carries
    which client and which server - every other choice stays in the terminal,
@@ -512,7 +533,7 @@ function overview() {
       </div>`).join("")}
     </div>
     ${leaderboard(progress.leaderboard, "contributors")}
-    <p class="note">Matched = compiles byte-identical with the original MSVC. Compiler-generated stubs are not counted.
+    <p class="note">Matched = compiles byte-identical with the original MSVC. Compiler-generated stubs and identified data tables are not counted.
       Last updated: ${esc(progress.updated)}</p>`;
   wireNav();
 }
@@ -788,6 +809,7 @@ async function client(name) {
     ${bar(latest.data_matched_bytes || 0, 0, latest.data_bytes || 1, "b")}
     <div style="margin-top:20px">${commitPanel()}</div>
     ${libraryTable(data)}
+    ${rebuildSection(rebuildData?.clients?.[name])}
     <div class="head"><h2><small>Map</small>Units</h2><p>${fmt(units.length)} units (classes from RTTI). The map always shows the latest state.</p></div>
     <div id="mapgroup" class="mapgroup" hidden></div>
     <div class="controls">
@@ -970,8 +992,10 @@ Promise.all([
   fetch("progress.json", {cache: "no-cache"}).then(r => r.json()),
   fetch("history.json", {cache: "no-cache"}).then(r => r.ok ? r.json() : []).catch(() => []),
   fetch("source-links.json", {cache: "no-cache"}).then(r => r.ok ? r.json() : {}).catch(() => ({})),
-]).then(([p, h, sources]) => {
+  fetch("rebuild-progress.json", {cache: "no-cache"}).then(r => r.ok ? r.json() : {}).catch(() => ({})),
+]).then(([p, h, sources, rebuild]) => {
   sourceCatalog = sources;
+  rebuildData = rebuild || {};
   progress = p; history = h; hIdx = h.length - 1;
   route();
   if (!progress.clients.some(c => c.name === decodeURIComponent(location.hash.slice(1)))) refreshLiveProgress();

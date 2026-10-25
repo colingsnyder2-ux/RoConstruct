@@ -30,6 +30,17 @@ Each hourly check (with `--publish`):
 Unchanged output makes no commit. A lock (`work/publish.lock`, byte-range locked, never
 deleted) prevents concurrent publishes.
 
+## Rebuild progress
+
+`roc rebuild CLIENT progress` summarizes `rebuild/<client>/out/*/report.json` and
+`closure.json` into `docs/rebuild-progress.json`. The site shows this under each
+client as simple progress bars: modules reporting, modules linked, byte-exact
+functions, unresolved symbols, temporary stubs and runtime milestones.
+
+`--no-notify` disables the Discord webhook for that run. Otherwise the webhook is
+sent only when the summary changes, with a 5-minute minimum interval and a
+10-message hourly cap. Webhook failures never block progress generation.
+
 ## Discord and daily stats
 
 `--discord-webhook URL` (or `ROCONSTRUCT_DISCORD_WEBHOOK`) logs mined functions.

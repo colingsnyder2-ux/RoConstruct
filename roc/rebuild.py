@@ -14,6 +14,7 @@ from roc import match, setup
 
 ROOT = Path(__file__).resolve().parent.parent
 TOOLS = ROOT / "tools"
+DOCS = ROOT / "docs"
 BUILD = 21022  # the 2008-06 client's compiler (VS2008 RTM)
 
 
@@ -636,3 +637,161 @@ def status(client="2008-06", log=print):
         log("%-12s %-9s %-8s %6s object functions  %5s owned 2008" % (name, state, test, funcs, owned))
     log("distinct 2008 functions reproduced by linked rebuilt code: %d" % len(owned_all))
     return rows, owned_all
+
+import json
+import hashlib
+import time
+import urllib.request
+import urllib.error
+
+def _rebuild_webhook_url():
+    return os.environ.get("ROCONSTRUCT_REBUILD_WEBHOOK") or os.environ.get("ROCONSTRUCT_DISCORD_WEBHOOK")
+
+
+def _send_rebuild_webhook(url, client, data):
+    payload = {
+        "embeds": [{
+            "title": "Rebuild update: %s" % client,
+            "description": "Phase %s - %s" % (data["phase"], data["phaseLabel"]),
+            "fields": [
+                {"name": "Modules reporting", "value": "%d / %d" % (data["bars"]["compiled"]["value"], data["bars"]["compiled"]["total"]), "inline": True},
+                {"name": "Modules linked", "value": "%d / %d" % (data["bars"]["linked"]["value"], data["bars"]["linked"]["total"]), "inline": True},
+                {"name": "Byte-exact functions", "value": "%d / %d" % (data["bars"]["exact"]["value"], data["bars"]["exact"]["total"]), "inline": True},
+                {"name": "Unresolved symbols", "value": str(data["bars"]["unresolved"]["value"]), "inline": True},
+                {"name": "Temporary stubs", "value": str(data["bars"]["stubs"]["value"]), "inline": True},
+                {"name": "Runtime milestones", "value": "%d / %d" % (data["bars"]["runtime"]["value"], data["bars"]["runtime"]["total"]), "inline": True},
+                {"name": "Next", "value": data.get("next", ""), "inline": False},
+            ],
+            "footer": {"text": "RoConstruct rebuild"},
+            "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+        }]
+    }
+    body = json.dumps(payload).encode("utf-8")
+    req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json", "User-Agent": "RoConstruct/1.0"}, method="POST")
+    with urllib.request.urlopen(req, timeout=15) as response:
+        return response.status
+
+
+def progress(client="2008-06", log=print, notify=True):
+    """Summarize rebuild module reports into docs/rebuild-progress.json."""
+    module_dir = ROOT / "rebuild" / client / "modules"
+    out_dir = workspace(client) / "out"
+    specs = sorted(module_dir.glob("*.json"))
+    modules = []
+    distinct = set()
+    linked_count = 0
+    unresolved_count = 0
+    for spec_path in specs:
+        spec = json.loads(spec_path.read_text(encoding="utf-8"))
+        report_path = out_dir / spec["name"] / "report.json"
+        if not report_path.exists():
+            continue
+        report = json.loads(report_path.read_text(encoding="utf-8"))
+        linked = bool(report.get("linked"))
+        if linked:
+            linked_count += 1
+            linked_dir = out_dir / spec["name"] / "linked"
+            for obj in linked_dir.glob("*.obj"):
+                rows = pair(client, match.coff_functions(obj.read_bytes()))
+                distinct.update(h[0] for _, _, h in rows if len(h) == 1)
+        unresolved = report.get("unresolved") or []
+        unresolved_count += len(unresolved)
+        modules.append({
+            "name": spec["name"],
+            "linked": linked,
+            "test": report.get("test_exit"),
+            "exact": report.get("owned_2008", 0),
+            "objectFunctions": report.get("object_functions", 0),
+            "unresolved": len(unresolved),
+        })
+
+    total_specs = len(specs)
+    reporting = len(modules)
+    total_functions = 0
+    functions_file = ROOT / "work" / client / "functions.jsonl"
+    if functions_file.exists():
+        total_functions = sum(1 for _ in functions_file.read_text(encoding="utf-8").splitlines() if _.strip())
+    if not total_functions:
+        total_functions = 22291
+
+    if not modules:
+        phase = "0"
+        phase_label = "Not started"
+    elif linked_count == 0:
+        phase = "3"
+        phase_label = "First linked unit"
+    elif unresolved_count > 0:
+        phase = "6"
+        phase_label = "Link closure"
+    elif any(m["test"] not in (0, None) for m in modules):
+        phase = "4"
+        phase_label = "Module tests"
+    else:
+        phase = "8"
+        phase_label = "Runtime"
+
+    data = {
+        "phase": phase,
+        "phaseLabel": phase_label,
+        "overall": round(len(distinct) / total_functions, 4) if total_functions else 0.0,
+        "bars": {
+            "compiled": {"value": reporting, "total": total_specs or 1, "label": "Modules reporting"},
+            "linked": {"value": linked_count, "total": reporting or 1, "label": "Modules linked"},
+            "exact": {"value": len(distinct), "total": total_functions, "label": "Byte-exact functions"},
+            "unresolved": {"value": unresolved_count, "total": max(unresolved_count, 1), "label": "Unresolved symbols", "invert": True},
+            "stubs": {"value": unresolved_count, "total": max(unresolved_count, 1), "label": "Temporary stubs", "invert": True},
+            "runtime": {"value": 0, "total": 7, "label": "Runtime milestones"},
+        },
+        "modules": modules,
+        "next": "Run roc rebuild %s status for details" % client,
+    }
+
+    path = DOCS / "rebuild-progress.json"
+    existing = {}
+    if path.exists():
+        try:
+            existing = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            existing = {}
+    existing.setdefault("updated", "")
+    existing.setdefault("clients", {})
+    existing["clients"][client] = data
+    existing["updated"] = time.strftime("%Y-%m-%d %H:%M UTC", time.gmtime())
+    path.write_text(json.dumps(existing, indent=2) + "\n", encoding="utf-8")
+    log("rebuild progress written: %s" % path)
+
+    if notify:
+        url = _rebuild_webhook_url()
+        if url:
+            state_path = ROOT / "work" / "rebuild-webhook-state.json"
+            state = {}
+            if state_path.exists():
+                try:
+                    state = json.loads(state_path.read_text(encoding="utf-8"))
+                except (OSError, json.JSONDecodeError):
+                    state = {}
+            states = state.setdefault("clients", {})
+            digest = hashlib.sha256(json.dumps(data, sort_keys=True).encode("utf-8")).hexdigest()
+            now = time.time()
+            last_sent = state.get("last_sent", 0.0)
+            hour_start = state.get("hour_start", now)
+            sent_this_hour = state.get("sent_this_hour", 0)
+            if now - hour_start >= 3600:
+                hour_start = now
+                sent_this_hour = 0
+            if states.get(client) != digest and now - last_sent >= 300 and sent_this_hour < 10:
+                try:
+                    _send_rebuild_webhook(url, client, data)
+                    states[client] = digest
+                    state["last_sent"] = now
+                    state["hour_start"] = hour_start
+                    state["sent_this_hour"] = sent_this_hour + 1
+                    state_path.parent.mkdir(parents=True, exist_ok=True)
+                    state_path.write_text(json.dumps(state, indent=2) + "\n", encoding="utf-8")
+                    log("rebuild webhook sent")
+                except (OSError, urllib.error.URLError, ValueError) as error:
+                    log("rebuild webhook failed: %s" % error)
+            else:
+                log("rebuild webhook skipped (no change or rate limited)")
+    return data
+

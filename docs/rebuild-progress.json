@@ -1,0 +1,143 @@
+{
+  "updated": "2026-10-25 17:20 UTC",
+  "clients": {
+    "2008-06": {
+      "phase": "6",
+      "phaseLabel": "Link closure",
+      "overall": 0.0745,
+      "bars": {
+        "compiled": {
+          "value": 12,
+          "total": 12,
+          "label": "Modules reporting"
+        },
+        "linked": {
+          "value": 11,
+          "total": 12,
+          "label": "Modules linked"
+        },
+        "exact": {
+          "value": 3092,
+          "total": 41516,
+          "label": "Byte-exact functions"
+        },
+        "unresolved": {
+          "value": 3,
+          "total": 3,
+          "label": "Unresolved symbols",
+          "invert": true
+        },
+        "stubs": {
+          "value": 3,
+          "total": 3,
+          "label": "Temporary stubs",
+          "invert": true
+        },
+        "runtime": {
+          "value": 0,
+          "total": 7,
+          "label": "Runtime milestones"
+        }
+      },
+      "modules": [
+        {
+          "name": "Boost",
+          "linked": true,
+          "test": 0,
+          "exact": 334,
+          "objectFunctions": 10298,
+          "unresolved": 0
+        },
+        {
+          "name": "G3D-GL",
+          "linked": true,
+          "test": 0,
+          "exact": 403,
+          "objectFunctions": 5614,
+          "unresolved": 0
+        },
+        {
+          "name": "G3D",
+          "linked": true,
+          "test": 0,
+          "exact": 641,
+          "objectFunctions": 5907,
+          "unresolved": 0
+        },
+        {
+          "name": "jpeg",
+          "linked": true,
+          "test": 0,
+          "exact": 256,
+          "objectFunctions": 335,
+          "unresolved": 0
+        },
+        {
+          "name": "libpng",
+          "linked": true,
+          "test": 0,
+          "exact": 109,
+          "objectFunctions": 332,
+          "unresolved": 0
+        },
+        {
+          "name": "Lua",
+          "linked": true,
+          "test": 0,
+          "exact": 430,
+          "objectFunctions": 701,
+          "unresolved": 0
+        },
+        {
+          "name": "RakNet",
+          "linked": true,
+          "test": 0,
+          "exact": 392,
+          "objectFunctions": 2890,
+          "unresolved": 0
+        },
+        {
+          "name": "RbxApp",
+          "linked": true,
+          "test": 1,
+          "exact": 829,
+          "objectFunctions": 29680,
+          "unresolved": 0
+        },
+        {
+          "name": "RbxUtil",
+          "linked": true,
+          "test": 0,
+          "exact": 508,
+          "objectFunctions": 5140,
+          "unresolved": 0
+        },
+        {
+          "name": "RbxgsApp",
+          "linked": false,
+          "test": null,
+          "exact": 1822,
+          "objectFunctions": 76315,
+          "unresolved": 3
+        },
+        {
+          "name": "zlib-winapi",
+          "linked": true,
+          "test": 0,
+          "exact": 24,
+          "objectFunctions": 108,
+          "unresolved": 0
+        },
+        {
+          "name": "zlib",
+          "linked": true,
+          "test": 0,
+          "exact": 27,
+          "objectFunctions": 108,
+          "unresolved": 0
+        }
+      ],
+      "next": "Run roc rebuild 2008-06 status for details"
+    }
+  }
+}

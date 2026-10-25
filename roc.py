@@ -552,6 +552,9 @@ def cmd_rebuild(a):
     if a.action == "closure":
         rebuild.closure(a.name, a.target)
         return
+    if a.action == "progress":
+        rebuild.progress(a.name, notify=not getattr(a, "no_notify", False))
+        return
     if not a.target:
         raise SystemExit("roc rebuild %s module NAME   (modules: %s)" % (a.name, ", ".join(
             sorted(p.stem for p in (ROOT / "rebuild" / a.name / "modules").glob("*.json")))))
@@ -2669,8 +2672,9 @@ def main(argv=None):
     p.set_defaults(fn=cmd_client_remove)
     cmd("rebuild", cmd_rebuild, "2008 client rebuild: doctor | audit | module NAME (see rebuild/<client>/POLICY.md)",
         (["name"], {"help": "client, e.g. 2008-06"}),
-        (["action"], {"choices": ["doctor", "audit", "module", "status", "closure"]}),
-        (["target"], {"nargs": "?", "help": "module name for `module` (rebuild/<client>/modules/NAME.json)"}))
+        (["action"], {"choices": ["doctor", "audit", "module", "status", "closure", "progress"]}),
+        (["target"], {"nargs": "?", "help": "module name for `module` (rebuild/<client>/modules/NAME.json)"}),
+        (["--no-notify"], {"action": "store_true", "help": "do not send the Discord webhook"}))
     cmd("analyze", cmd_analyze, "split a client exe into functions ('all' for every client)", (["name"], {}))
     cmd("next", cmd_next, "list the easiest open functions", (["name"], {}), (["-n"], {"type": int, "default": 20}))
     cmd("work", cmd_work, "list clients or select+claim the next unmatched function for manual matching",
