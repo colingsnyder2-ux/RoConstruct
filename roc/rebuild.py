@@ -462,7 +462,7 @@ def verified_layer(client, spec, log=print, exclude=frozenset(), vdrop=frozenset
         old.unlink()
     taken = set()
     for item in json.loads((folder / "swaps.json").read_text())["swaps"]:
-        keep = set(item["keep"]) - taken - exclude - vdrop
+        keep = {k for k in item["keep"] if not k.startswith(("??__E", "??__F"))} - taken - exclude - vdrop  # initializers never run here
         if keep:
             taken |= keep
             (layer / ("verified_" + item["obj"])).write_bytes(strip_symbols((folder / item["obj"]).read_bytes(), keep=keep, drop=vdrop))
@@ -784,6 +784,21 @@ def closure(client, name, log=print):
     _dump(out / "closure.json", {"module": spec["name"], "objects": len(objs), "linked": result["linked"],
                                  "unresolved": result["unresolved"]})
     log("%s closure: %d objects, linked=%s, %d unresolved symbols" % (spec["name"], len(objs), result["linked"], len(result["unresolved"])))
+    missing = set(result["unresolved"])
+    blamed = [o for o in objs if o.name.startswith("verified_") and missing & {k for k, d in coff_externals(o.read_bytes()).items() if not d}]
+    if blamed:  # dead code in a verified object names it: swap that object out on the next module build
+        excluded_path = out / "verified" / "excluded.json"
+        excluded = set(json.loads(excluded_path.read_text())) if excluded_path.exists() else set()
+        swaps = {"verified_" + item["obj"]: item["keep"] for item in json.loads((out / "verified" / "swaps.json").read_text())["swaps"]}
+        for o in blamed:
+            excluded |= set(swaps.get(o.name, ()))
+        _dump(excluded_path, sorted(excluded))
+        log("closure: %d verified objects need these; excluded, rebuild the module" % len(blamed))
+    if result.get("duplicates") and (out / "verified" / "swaps.json").exists():
+        vdrop_path = out / "verified" / "vdrop.json"
+        vdrop = set(json.loads(vdrop_path.read_text())) if vdrop_path.exists() else set()
+        _dump(vdrop_path, sorted(vdrop | set(result["duplicates"])))
+        log("closure: %d duplicate definitions; undefined in verified objects, rebuild the module" % len(result["duplicates"]))
     try:
         progress(client, notify=True, log=log)
     except Exception as error:
