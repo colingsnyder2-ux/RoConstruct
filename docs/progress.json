@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-25 00:46 UTC",
+ "updated": "2026-10-25 01:52 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -191,15 +191,15 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22303,
-   "matched": 21903,
-   "partial": 398,
-   "source_matched": 13456,
+   "matched": 21905,
+   "partial": 396,
+   "source_matched": 13458,
    "mined_matched": 8447,
    "bytes": 3697270,
-   "matched_bytes": 3393565,
-   "source_bytes": 2555637,
+   "matched_bytes": 3394198,
+   "source_bytes": 2556270,
    "mined_bytes": 837928,
-   "partial_bytes": 303358,
+   "partial_bytes": 302725,
    "data_bytes": 1559926,
    "leaderboard": [
     {
@@ -212,16 +212,16 @@
     {
      "user": "colin",
      "matched": 3046,
-     "points": 675868,
-     "submissions": 23038,
-     "last": 1792887862.3305008
+     "points": 675871,
+     "submissions": 23039,
+     "last": 1792889848.9504805
     },
     {
      "user": "king_originala",
-     "matched": 2731,
-     "points": 264166,
-     "submissions": 5859,
-     "last": 1792889028.7922006
+     "matched": 2733,
+     "points": 264171,
+     "submissions": 5861,
+     "last": 1792891026.8266954
     },
     {
      "user": "Espeon",
@@ -615,16 +615,16 @@
   {
    "user": "colin",
    "matched": 15159,
-   "points": 5514791,
-   "submissions": 185920,
-   "last": 1792888306.5470734
+   "points": 5514794,
+   "submissions": 185921,
+   "last": 1792889848.9504805
   },
   {
    "user": "king_originala",
-   "matched": 2731,
-   "points": 264166,
-   "submissions": 5859,
-   "last": 1792889028.7922006
+   "matched": 2733,
+   "points": 264171,
+   "submissions": 5861,
+   "last": 1792891026.8266954
   },
   {
    "user": "atomic.potato",
