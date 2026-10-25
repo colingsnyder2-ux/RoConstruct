@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-25 14:09 UTC",
+ "updated": "2026-10-25 15:18 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -191,15 +191,15 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22291,
-   "matched": 21983,
-   "partial": 308,
-   "source_matched": 13604,
+   "matched": 21989,
+   "partial": 302,
+   "source_matched": 13610,
    "mined_matched": 8379,
-   "bytes": 3712596,
-   "matched_bytes": 3433015,
-   "source_bytes": 2591624,
+   "bytes": 3712667,
+   "matched_bytes": 3436314,
+   "source_bytes": 2594923,
    "mined_bytes": 841391,
-   "partial_bytes": 279581,
+   "partial_bytes": 276353,
    "data_bytes": 1559926,
    "leaderboard": [
     {
@@ -211,10 +211,10 @@
     },
     {
      "user": "colin",
-     "matched": 3068,
-     "points": 680903,
-     "submissions": 23119,
-     "last": 1792925887.079603
+     "matched": 3070,
+     "points": 680909,
+     "submissions": 23121,
+     "last": 1792940450.2200792
     },
     {
      "user": "king_originala",
@@ -232,10 +232,10 @@
     },
     {
      "user": "EspClaude",
-     "matched": 401,
-     "points": 13502,
-     "submissions": 572,
-     "last": 1792593464.9168167
+     "matched": 405,
+     "points": 13590,
+     "submissions": 579,
+     "last": 1792940118.6261358
     },
     {
      "user": "atomic.potato",
@@ -336,9 +336,9 @@
      "last": 1792904207.587707
     }
    ],
-   "data_matched_bytes": 196504,
+   "data_matched_bytes": 196535,
    "classes": 1488,
-   "generated": 19333
+   "generated": 19330
   },
   {
    "name": "2009-06",
@@ -642,10 +642,10 @@
   },
   {
    "user": "colin",
-   "matched": 15181,
-   "points": 5519826,
-   "submissions": 186001,
-   "last": 1792925887.079603
+   "matched": 15183,
+   "points": 5519832,
+   "submissions": 186003,
+   "last": 1792940450.2200792
   },
   {
    "user": "king_originala",
@@ -670,10 +670,10 @@
   },
   {
    "user": "EspClaude",
-   "matched": 401,
-   "points": 13502,
-   "submissions": 572,
-   "last": 1792593464.9168167
+   "matched": 405,
+   "points": 13590,
+   "submissions": 579,
+   "last": 1792940118.6261358
   },
   {
    "user": "why2",
