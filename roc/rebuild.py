@@ -535,7 +535,7 @@ def status(client="2008-06", log=print):
             continue
         r = json.loads(report_path.read_text(encoding="utf-8"))
         linked = workspace(client) / "out" / spec["name"] / "linked"
-        for obj in linked.glob("*.obj"):
+        for obj in linked.glob("*.obj") if r["linked"] else ():
             owned_all.update(h[0] for _, _, h in pair(client, match.coff_functions(obj.read_bytes())) if len(h) == 1)
         rows.append((spec_path.stem, "linked" if r["linked"] else "LINK FAIL",
                      "test ok" if r.get("test_exit") == 0 else "test %s" % r.get("test_exit"),
