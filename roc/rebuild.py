@@ -1004,6 +1004,9 @@ def progress(client="2008-06", log=print, notify=True):
     else:
         phase = "8"
         phase_label = "Runtime"
+    # stubs: glue bodies tagged // STUB (empty or placeholder behaviour); M1 = every module linked with tests passing
+    stub_count = sum(p.read_text(errors="replace").count("// STUB") for p in (workspace(client) / "glue").rglob("*.cpp"))
+    milestones = 1 if modules and all(m["linked"] and m["test"] == 0 for m in modules) else 0
 
     data = {
         "phase": phase,
@@ -1014,8 +1017,8 @@ def progress(client="2008-06", log=print, notify=True):
             "linked": {"value": linked_count, "total": reporting or 1, "label": "Modules linked"},
             "exact": {"value": len(distinct), "total": total_functions, "label": "Byte-exact functions"},
             "unresolved": {"value": unresolved_count, "total": max(unresolved_count, 1), "label": "Unresolved symbols", "invert": True},
-            "stubs": {"value": unresolved_count, "total": max(unresolved_count, 1), "label": "Temporary stubs", "invert": True},
-            "runtime": {"value": 0, "total": 7, "label": "Runtime milestones"},
+            "stubs": {"value": stub_count, "total": max(stub_count, 1), "label": "Temporary stubs", "invert": True},
+            "runtime": {"value": milestones, "total": 7, "label": "Runtime milestones"},
         },
         "modules": modules,
         "next": "Run roc rebuild %s status for details" % client,

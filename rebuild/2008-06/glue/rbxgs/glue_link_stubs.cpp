@@ -91,16 +91,16 @@ namespace RBX
 	// replication player state
 
 	// gui
-	const Name& ScriptMouseCommand::getName() const { return Name::getNullName(); }
+	const Name& ScriptMouseCommand::getName() const { return Name::getNullName(); }  // STUB
 
 	// controllers
 
 	// debug
-	std::string DebugSettings::gfxcard() const { return std::string(); }
+	std::string DebugSettings::gfxcard() const { return std::string(); }  // STUB
 
 	// dragging
-	void RunDragger::init(Workspace*, boost::weak_ptr<PartInstance>, const G3D::Vector3&) {}
-	bool RunDragger::snap(const G3D::Ray&) { return false; }
+	void RunDragger::init(Workspace*, boost::weak_ptr<PartInstance>, const G3D::Vector3&) {}  // STUB
+	bool RunDragger::snap(const G3D::Ray&) { return false; }  // STUB
 
 	// gui item rendering
 
@@ -111,34 +111,33 @@ namespace RBX
 	// service provider
 
 	// tools
-	static MouseCommand* DragTool_onMouseDown_stub(PartInstance*, const G3D::Vector3&, const std::vector<Instance*>&, const UIEvent&, Workspace*) { return NULL; }
-	MouseCommand* DragTool::onMouseDown(PartInstance*, const G3D::Vector3&, const std::vector<Instance*>&, const UIEvent&, Workspace*) { return NULL; }
-	void PartDragTool::onMouseMove(const UIEvent&) {}
+	MouseCommand* DragTool::onMouseDown(PartInstance*, const G3D::Vector3&, const std::vector<Instance*>&, const UIEvent&, Workspace*) { return NULL; }  // STUB
+	void PartDragTool::onMouseMove(const UIEvent&) {}  // STUB
 
 	// widget
 
 	// abuse reporter
-	worker_thread::work_result Network::AbuseReporter::processRequests(boost::shared_ptr<Network::AbuseReporter::data>, std::string) { return (worker_thread::work_result)0; }
+	worker_thread::work_result Network::AbuseReporter::processRequests(boost::shared_ptr<Network::AbuseReporter::data>, std::string) { return (worker_thread::work_result)0; }  // STUB
 
 	// humanoid property
 	Reflection::BoundProp<float, 1> Humanoid::propMaxHealth("MaxHealth", "Data", &Humanoid::maxHealth, Reflection::PropertyDescriptor::STANDARD);
 
 	// events range
-	void RaiseRange::removeIndex(unsigned int) {}
+	void RaiseRange::removeIndex(unsigned int) {}  // STUB
 
 	// backpack rendering
-	void BackpackItem::render2d(Adorn*) {}
-	void LocalBackpackItem::render2d(Adorn*) {}
+	void BackpackItem::render2d(Adorn*) {}  // STUB
+	void LocalBackpackItem::render2d(Adorn*) {}  // STUB
 
 	// explosion
 
 	// dragger search
-	void Dragger::searchDownGross(const G3D::Array<Primitive*>&, G3D::Vector3&, ContactManager&) {}
-	void Dragger::searchUpGross(const G3D::Array<Primitive*>&, G3D::Vector3&, ContactManager&) {}
+	void Dragger::searchDownGross(const G3D::Array<Primitive*>&, G3D::Vector3&, ContactManager&) {}  // STUB
+	void Dragger::searchUpGross(const G3D::Array<Primitive*>&, G3D::Vector3&, ContactManager&) {}  // STUB
 
 	// box select
-	void BoxSelectCommand::selectAnd(const std::set<Instance*, std::less<Instance*>, std::allocator<Instance*> >&) {}
-	void BoxSelectCommand::selectReverse(const std::set<Instance*, std::less<Instance*>, std::allocator<Instance*> >&) {}
+	void BoxSelectCommand::selectAnd(const std::set<Instance*, std::less<Instance*>, std::allocator<Instance*> >&) {}  // STUB
+	void BoxSelectCommand::selectReverse(const std::set<Instance*, std::less<Instance*>, std::allocator<Instance*> >&) {}  // STUB
 
 	// string sender
 	void Network::StringSender::send(RakNet::BitStream& stream, const Name& name) { send(stream, name.toString()); }
@@ -160,10 +159,10 @@ namespace RBX
 	// mouse
 
 	// script context
-	XmlElement* ScriptContext::write() { return NULL; }
+	XmlElement* ScriptContext::write() { return NULL; }  // STUB
 
 	// server
-	XmlElement* Network::Server::write() { return NULL; }
+	XmlElement* Network::Server::write() { return NULL; }  // STUB
 
 	// sound statics
 	const char* Soundscape::sSoundChannel = "SoundChannel";
