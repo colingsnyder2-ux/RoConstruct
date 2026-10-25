@@ -511,6 +511,47 @@ patch("App/include/v8tree/Instance.h", "\t\tfriend class RaiseDescendentAdded2;\
 patch("App/include/v8datamodel/MouseCommand.h", "\tclass MouseCommand : public INamed, public IRenderable\n\t{\n",
       "\tclass MouseCommand : public INamed, public IRenderable\n\t{\n\t\tfriend class Workspace;\n")
 
+# --- Network/Streaming.cpp: an instance whose id is sent can be found by that id later
+# (registry in glue_guid_registry.cpp) ---
+patch("Network/Streaming.cpp", "namespace RBX\n{\n\tnamespace Network\n\t{\n",
+      "namespace RBX\n{\n\tnamespace Network\n\t{\n\t\tvoid rebuildRegisterGuid(const Instance* instance);  // rebuild glue\n\n")
+patch("Network/Streaming.cpp", "\t\t\t\tinstance->getGuid().extract(id);\n\n\t\t\t\tscopeNames.send(stream, id.scope->name);",
+      "\t\t\t\tinstance->getGuid().extract(id);\n\t\t\t\trebuildRegisterGuid(instance);\n\n\t\t\t\tscopeNames.send(stream, id.scope->name);")
+
+# --- Network/Players.cpp: the RakNet plugin adapter forwards packets to its owner ---
+patch("Network/Players.cpp", "public:\n\tvirtual PluginReceiveResult OnReceive(RakPeerInterface* peer, Packet* packet);\n};\n",
+      "public:\n\tvirtual PluginReceiveResult OnReceive(RakPeerInterface* peer, Packet* packet);\n};\n\n"
+      "// rebuild overlay: rbxgs declares this but never defines it; the owner says whether it consumed the packet\n"
+      "template<class Class>\nPluginReceiveResult PluginInterfaceAdapter<Class>::OnReceive(RakPeerInterface* peer, Packet* packet)\n{\n"
+      "\treturn c->OnReceive(peer, packet) ? RR_STOP_PROCESSING_AND_DEALLOCATE : RR_CONTINUE_PROCESSING;\n}\n")
+
+# --- v8world/SimJobStage.h: hand mechanisms to a reporter round-robin, resuming where the last pass stopped ---
+append("App/include/v8world/SimJobStage.h", """
+// rebuild overlay: SimJobStage::reportMechanisms rbxgs declares but never defines
+#include "v8world/Mechanism.h"
+namespace RBX
+{
+	template<typename Class>
+	void SimJobStage::reportMechanisms(Class& callback, MechanismTracker& tracker, const Mechanism* ignore)
+	{
+		if (mechanisms.empty())
+			return;
+		Mechanism* start = tracker.tracking() ? tracker.getMechanism() : mechanisms.front();
+		Mechanism* current = start;
+		do
+		{
+			if (current != ignore && !callback(*current))
+			{
+				tracker.setMechanism(nextMechanism(mechanisms, current));  // reporter is full: resume after this one
+				return;
+			}
+			current = nextMechanism(mechanisms, current);
+		} while (current != start);
+		tracker.setMechanism(start);
+	}
+}
+""")
+
 # --- v8tree/Service.h: service lookup by class name (OpenRBX v8tree/Service.h finds by className too) ---
 append("App/include/v8tree/Service.h", """
 // rebuild overlay: template bodies rbxgs declares but never defines

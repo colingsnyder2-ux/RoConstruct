@@ -18,6 +18,14 @@ namespace RBX
 {
 	namespace Network
 	{
+		void rebuildRegisterGuid(const Instance* instance);  // glue_guid_registry.cpp
+
+		// a job sender takes mechanisms until its packet is full (SimJobStage::reportMechanisms)
+		bool Replicator::JobSender::operator()(Mechanism& mechanism)
+		{
+			return report(mechanism);
+		}
+
 		Replicator::Item::~Item()
 		{
 		}
@@ -149,6 +157,7 @@ namespace RBX
 			if (!instance)
 				throw std::runtime_error("Replication: unknown class " + className->toString());
 			instance->assignGuid(id);
+			rebuildRegisterGuid(instance.get());
 
 			typedef Reflection::MemberDescriptorContainer<Reflection::PropertyDescriptor> Properties;
 			const Properties& properties = instance->getDescriptor();

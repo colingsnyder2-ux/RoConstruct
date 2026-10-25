@@ -1,6 +1,6 @@
 {
  "name": "RbxgsApp",
- "description": "Complete rbxgs Client/App tree (util, v8kernel, reflection, v8tree, v8world, v8datamodel, script, humanoid, tool, v8xml, gui, security) compiled against its own headers: one consistent ABI, no stubs.",
+ "description": "Complete rbxgs Client/App tree (util, v8kernel, reflection, v8tree, v8world, v8datamodel, script, humanoid, tool, v8xml, gui, security) compiled against its own headers: one consistent ABI. Remaining gaps are filled by rebuild glue; empty-bodied stubs are listed in glue_link_stubs.cpp.",
  "depends": [
   "g3d",
   "g3d-gl",

@@ -24,6 +24,22 @@ def workspace(client):
     return path
 
 
+
+def _ml():
+    """The VS2008-era MASM used for small assembly stubs."""
+    candidates = [
+        ROOT / "tools" / "vc2008sp1" / "Microsoft" / "Visual C++ for Python" / "9.0" / "VC" / "bin" / "ml.exe",
+        ROOT / "tools" / "vc2008rtm" / "Program Files" / "Microsoft Visual Studio 9.0" / "VC" / "bin" / "ml.exe",
+    ]
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate
+    found = next((p for p in (ROOT / "tools").rglob("ml.exe")), None)
+    if found is None:
+        raise RuntimeError("ml.exe not found")
+    return found
+
+
 def _first(*candidates):
     for c in candidates:
         if c and Path(c).exists():
@@ -77,8 +93,9 @@ def env(tc):
 
 
 def run(tc, tool, args, cwd, timeout=600):
-    """Run cl/link/lib; returns (returncode, combined output)."""
-    cmd = setup.cl_command(tc[tool]) + [str(a) for a in args]
+    """Run cl/link/lib (or a tool path such as ml.exe); returns (returncode, combined output)."""
+    exe = tc[tool] if isinstance(tool, str) and tool in tc else Path(tool)
+    cmd = setup.cl_command(exe) + [str(a) for a in args]  # Wine on Linux
     done = subprocess.run(cmd, cwd=cwd, env=env(tc), capture_output=True, text=True, errors="replace", timeout=timeout)
     return done.returncode, (done.stdout + done.stderr).strip()
 
@@ -406,15 +423,30 @@ def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- 
     out.mkdir(parents=True, exist_ok=True)
     results = {}
     includes, compiled = _overlaid(includes, sources, overlay)
+    # incremental: tools/ is read-only, so an object newer than its source, the overlay and the
+    # appended header is current (a changed patch set makes a new overlay folder, hence newer)
+    stamp = max([0] + ([Path(overlay[1]).stat().st_mtime] if overlay else []) + ([Path(append).stat().st_mtime] if append else []))
     for orig, src in zip(sources, compiled):
+        src = Path(src)
+        obj = out / (src.stem + ".obj")
+        if obj.exists() and obj.stat().st_mtime > max(stamp, src.stat().st_mtime, Path(orig).stat().st_mtime):
+            results[str(orig)] = (True, "up to date")
+            continue
+        obj.unlink(missing_ok=True)  # a failed compile must not leave a stale object
+        if src.suffix.lower() == ".asm":
+            code, text = run(tc, _ml(), ["/nologo", "/c", "/Fo" + str(obj), str(src)], out)
+            results[str(orig)] = (code == 0, text[-400:])
+            continue
         unit = src
         if append:
-            unit = out / "_wrap" / (Path(src).stem + ".cpp")
+            unit = out / "_wrap" / (src.stem + ".cpp")
             unit.parent.mkdir(exist_ok=True)
-            unit.write_text('#include "%s"\n#include "%s"\n' % (Path(src).as_posix(), Path(append).as_posix()), encoding="utf-8")
+            unit.write_text('#include "%s"\n#include "%s"\n' % (src.as_posix(), Path(append).as_posix()), encoding="utf-8")
+        # a patched copy compiles from the overlay, so its original folder must stay on the path
+        # for sibling "quoted" includes (overlay twin first, as everywhere else)
+        siblings = [src.parent, Path(orig).parent] if src != Path(orig) else []
         args = ["/nologo", "/c"] + flags.split() + ["/D" + d for d in defines.split()] + \
-               ["/I" + str(i) for i in includes] + ["/Fo" + Path(src).stem + ".obj", str(unit)]
-        (out / (Path(src).stem + ".obj")).unlink(missing_ok=True)  # a failed compile must not leave a stale object
+               ["/I" + str(i) for i in siblings + list(includes)] + ["/Fo" + src.stem + ".obj", str(unit)]
         code, text = run(tc, "cl", args, out)
         results[str(orig)] = (code == 0, text[-400:])
     return results
@@ -467,7 +499,9 @@ def build_overlay(client, module, spec):
     key = hashlib.sha256(json.dumps(patches, sort_keys=True).encode()).hexdigest()[:12]
     overlay = workspace(client) / "out" / module / ("overlay-" + key)
     if not overlay.exists():
+        import shutil
         tmp = overlay.with_name(overlay.name + ".tmp")
+        shutil.rmtree(tmp, ignore_errors=True)  # a half-written copy from an interrupted run
         for rel, edits in patches.items():
             text = (root / rel).read_text(errors="replace") if (root / rel).exists() else ""
             for old, new in edits:
@@ -476,7 +510,11 @@ def build_overlay(client, module, spec):
                 text = text.replace(old, new, 1) if old else text + new
             (tmp / rel).parent.mkdir(parents=True, exist_ok=True)
             (tmp / rel).write_text(text)
-        tmp.rename(overlay)
+        try:
+            tmp.rename(overlay)
+        except PermissionError:  # Windows: a scanner can hold the fresh folder open briefly
+            shutil.copytree(tmp, overlay)
+            shutil.rmtree(tmp, ignore_errors=True)
     return root, overlay
 
 
@@ -672,6 +710,51 @@ def _rebuild_emoji_bar(value, total, width=10, fill="🟦", empty="⬜"):
     return fill * filled + empty * (width - filled)
 
 
+
+def _send_rebuild_phases_webhook(url, client, data):
+    bars = data["bars"]
+    current = int(data["phase"])
+    phases = [
+        (0, "Decisions", "Licensing policy and where the rebuilt tree lives"),
+        (1, "Toolchain", "Windows SDK and ATL/MFC libraries plus a running smoke exe"),
+        (2, "Audit", "Read-only manifests and per-file coverage"),
+        (3, "First linked file", "One whole file compiled, linked and tested"),
+        (4, "Modules", "Shared headers and one library per module"),
+        (5, "Reconciliation", "Patch files from exact snippets and mine missing functions"),
+        (6, "Full link", "Link everything and group unresolved symbols"),
+        (7, "Multi-agent", "Claims, worktrees and a trusted merge gate"),
+        (8, "Runtime", "Window, startup, rendering, places, Lua and physics"),
+    ]
+    lines = []
+    for number, name, flavor in phases:
+        if number < current:
+            status = ":white_check_mark:"
+        elif number == current:
+            status = ":arrows_counterclockwise:"
+        else:
+            status = ":hourglass:"
+        lines.append("%s **Phase %d - %s**\n*%s*" % (status, number, name, flavor))
+    description = (
+        "**Rebuild phases: %s**\n\n" % client +
+        "\n\n".join(lines) +
+        "\n\n**Current metrics**\n" +
+        "Modules: %d reporting, %d linked\n" % (bars["compiled"]["value"], bars["linked"]["value"]) +
+        "Byte-exact functions: %s / %s\n" % (format(bars["exact"]["value"], ","), format(bars["exact"]["total"], ",")) +
+        "Unresolved symbols: %d\n" % bars["unresolved"]["value"] +
+        "Temporary stubs: %d\n" % bars["stubs"]["value"] +
+        "Runtime milestones: %d / %d" % (bars["runtime"]["value"], bars["runtime"]["total"]))
+    payload = {"embeds": [{
+        "title": ":clipboard: Rebuild phases: %s" % client,
+        "description": description,
+        "footer": {"text": "RoConstruct rebuild"},
+        "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+    }]}
+    body = json.dumps(payload).encode("utf-8")
+    req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json", "User-Agent": "RoConstruct/1.0"}, method="POST")
+    with urllib.request.urlopen(req, timeout=15):
+        pass
+
+
 def _send_rebuild_webhook(url, client, data):
     bars = data["bars"]
     phase_flavor = {
@@ -688,10 +771,8 @@ def _send_rebuild_webhook(url, client, data):
     description = (
         "**Phase %s - %s**\n" % (data["phase"], data["phaseLabel"]) +
         "*%s*\n\n" % phase_flavor +
-        "In this update, **%d of %d modules** are linked and **%d symbols** remain unresolved.\n\n" % (
-            bars["linked"]["value"], bars["compiled"]["total"], bars["unresolved"]["value"]) +
         "**Overall byte-exact progress**\n" +
-        "%s / %s (%.2f%%)\n" % (format(bars["exact"]["value"], ","), format(bars["exact"]["total"], ","), 100.0 * bars["exact"]["value"] / bars["exact"]["total"] if bars["exact"]["total"] else 0.0) +
+        "%s / %s (%.2f%%)\n\n" % (format(bars["exact"]["value"], ","), format(bars["exact"]["total"], ","), 100.0 * bars["exact"]["value"] / bars["exact"]["total"] if bars["exact"]["total"] else 0.0) +
         "%s\n\n" % _rebuild_emoji_bar(bars["exact"]["value"], bars["exact"]["total"], width=23, fill="\U0001f7e9") +
         "**Modules:** %d reporting, %d linked\n" % (bars["compiled"]["value"], bars["linked"]["value"]) +
         "**Blockers:** %d unresolved, %d temporary stubs\n" % (bars["unresolved"]["value"], bars["stubs"]["value"]) +
@@ -701,10 +782,10 @@ def _send_rebuild_webhook(url, client, data):
             "title": ":wrench: Rebuild progress: %s" % client,
             "description": description,
             "fields": [
-                {"name": ":package: Modules", "value": "**%d** reporting / **%d** linked\n%s" % (bars["compiled"]["value"], bars["linked"]["value"], _rebuild_emoji_bar(bars["linked"]["value"], bars["linked"]["total"], width=8, fill="\U0001f7e9")), "inline": True},
-                {"name": ":dart: Byte-exact", "value": "**%s** / %s\n%s" % (format(bars["exact"]["value"], ","), format(bars["exact"]["total"], ","), _rebuild_emoji_bar(bars["exact"]["value"], bars["exact"]["total"], width=8, fill="\U0001f7e9")), "inline": True},
+                {"name": ":package: Modules", "value": "**%d** reporting / **%d** linked\n\n%s" % (bars["compiled"]["value"], bars["linked"]["value"], _rebuild_emoji_bar(bars["linked"]["value"], bars["linked"]["total"], width=8, fill="\U0001f7e9")), "inline": True},
+                {"name": ":dart: Byte-exact", "value": "**%s** / %s\n\n%s" % (format(bars["exact"]["value"], ","), format(bars["exact"]["total"], ","), _rebuild_emoji_bar(bars["exact"]["value"], bars["exact"]["total"], width=8, fill="\U0001f7e9")), "inline": True},
                 {"name": ":warning: Blockers", "value": "**%d** unresolved\n**%d** stubs" % (bars["unresolved"]["value"], bars["stubs"]["value"]), "inline": True},
-                {"name": ":rocket: Runtime", "value": "**%d** / %d\n%s" % (bars["runtime"]["value"], bars["runtime"]["total"], _rebuild_emoji_bar(bars["runtime"]["value"], bars["runtime"]["total"], width=8, fill="\U0001f7ea")), "inline": True},
+                {"name": ":rocket: Runtime", "value": "**%d** / %d\n\n%s" % (bars["runtime"]["value"], bars["runtime"]["total"], _rebuild_emoji_bar(bars["runtime"]["value"], bars["runtime"]["total"], width=8, fill="\U0001f7ea")), "inline": True},
             ],
             "footer": {"text": "RoConstruct rebuild"},
             "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
@@ -714,7 +795,12 @@ def _send_rebuild_webhook(url, client, data):
     body = json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json", "User-Agent": "RoConstruct/1.0"}, method="POST")
     with urllib.request.urlopen(req, timeout=15) as response:
-        return response.status
+        status = response.status
+    try:
+        _send_rebuild_phases_webhook(url, client, data)
+    except Exception:
+        pass
+    return status
 
 
 def progress(client="2008-06", log=print, notify=True):
