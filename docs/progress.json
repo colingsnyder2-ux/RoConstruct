@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-25 04:03 UTC",
+ "updated": "2026-10-25 04:15 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -190,38 +190,38 @@
    "compiler": "VS2008 RTM (cl 15.00.21022)",
    "built": "2008-06-20",
    "started": true,
-   "functions": 22303,
-   "matched": 21912,
-   "partial": 390,
-   "source_matched": 13462,
+   "functions": 22291,
+   "matched": 21914,
+   "partial": 377,
+   "source_matched": 13464,
    "mined_matched": 8450,
-   "bytes": 3697059,
-   "matched_bytes": 3396666,
-   "source_bytes": 2558457,
-   "mined_bytes": 838209,
-   "partial_bytes": 300257,
+   "bytes": 3697221,
+   "matched_bytes": 3398604,
+   "source_bytes": 2559766,
+   "mined_bytes": 838838,
+   "partial_bytes": 298617,
    "data_bytes": 1559926,
    "leaderboard": [
     {
      "user": "auto",
-     "matched": 10821,
-     "points": 1005039,
-     "submissions": 10823,
-     "last": 1792565090.1534052
+     "matched": 10823,
+     "points": 1005239,
+     "submissions": 10825,
+     "last": 1792901432.86907
     },
     {
      "user": "colin",
-     "matched": 3049,
-     "points": 676083,
-     "submissions": 23042,
-     "last": 1792897978.1912339
+     "matched": 3051,
+     "points": 676993,
+     "submissions": 23053,
+     "last": 1792901562.3581038
     },
     {
      "user": "king_originala",
      "matched": 2737,
-     "points": 264194,
-     "submissions": 5866,
-     "last": 1792898849.276689
+     "points": 264196,
+     "submissions": 5868,
+     "last": 1792901568.127636
     },
     {
      "user": "Espeon",
@@ -308,9 +308,9 @@
      "last": 1792416272.4331148
     }
    ],
-   "data_matched_bytes": 195695,
+   "data_matched_bytes": 195737,
    "classes": 1488,
-   "generated": 19426
+   "generated": 19415
   },
   {
    "name": "2009-06",
@@ -607,24 +607,24 @@
  "leaderboard": [
   {
    "user": "auto",
-   "matched": 76074,
-   "points": 7434798,
-   "submissions": 76076,
-   "last": 1792889054.3548667
+   "matched": 76076,
+   "points": 7434998,
+   "submissions": 76078,
+   "last": 1792901432.86907
   },
   {
    "user": "colin",
-   "matched": 15162,
-   "points": 5515006,
-   "submissions": 185924,
-   "last": 1792897978.1912339
+   "matched": 15164,
+   "points": 5515916,
+   "submissions": 185935,
+   "last": 1792901562.3581038
   },
   {
    "user": "king_originala",
    "matched": 2737,
-   "points": 264194,
-   "submissions": 5866,
-   "last": 1792898849.276689
+   "points": 264196,
+   "submissions": 5868,
+   "last": 1792901568.127636
   },
   {
    "user": "atomic.potato",
