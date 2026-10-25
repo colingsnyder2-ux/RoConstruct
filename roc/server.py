@@ -1179,7 +1179,10 @@ def publish_pages(git_exe, log=print):
 
 def sync_findings(store):
     """Save every stored source, including partials, before building the site."""
+    from roc import libs
     for name in store.scores():
+        # Units this server compiled from its own vendor trees must ship with the findings.
+        libs.capture_source_units(row["source"] or "" for row in store.sources(name, min_score=0))
         scores_file = ROOT / "work" / name / "scores.json"
         scores = json.loads(scores_file.read_text()) if scores_file.exists() else {}
         starts = match.function_starts(name)

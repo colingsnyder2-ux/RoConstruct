@@ -26,3 +26,17 @@ def test_units_upload_is_validated_and_stored(tmp_path, monkeypatch):
     recipe = next(n for n, r in libs.RECIPES.items() if r.get("src") == src)
     assert libs.units_used("// roc-lib: %s roc_fork_x.cpp\nint f(){}" % recipe) == {src: {"roc_fork_x.cpp": "int a;"}}
     assert libs.units_used("// roc-lib: %s vendor.cpp\n" % recipe) == {}
+
+
+def test_on_disk_units_named_by_sources_are_captured(tmp_path, monkeypatch):
+    from roc import libs
+    monkeypatch.setattr(libs, "UNITS_FILE", tmp_path / "units.json")
+    monkeypatch.setattr(libs, "LIBS", tmp_path)
+    recipe, r = next((n, r) for n, r in libs.RECIPES.items() if r.get("src") and not r.get("generate"))
+    tree = libs._case_path(tmp_path / r["src"])
+    tree.mkdir(parents=True, exist_ok=True)
+    (tree / "roc_disk_only.cpp").write_text("int b;")
+    source = "// roc-lib: %s roc_disk_only.cpp\nint f(){}" % recipe
+    assert libs.capture_source_units([source, source, "int g;"]) == {r["src"]: ["roc_disk_only.cpp"]}
+    assert libs.generated_units() == {r["src"]: {"roc_disk_only.cpp": "int b;"}}
+    assert libs.capture_source_units([source]) == {}

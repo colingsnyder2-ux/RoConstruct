@@ -1103,9 +1103,14 @@ def _store_units(new):
 def capture_units(client):
     """Store every generated unit that this PC's sources for `client` reference but that no
     `generate` recipe recreates. Returns {recipe src: [names]} that were added."""
+    return capture_source_units(path.read_text(errors="replace") for path in (ROOT / "src" / client).glob("*.cpp"))
+
+def capture_source_units(sources):
+    """Store the on-disk generated unit each source text names, when it is not stored yet.
+    Units written straight into a vendor tree (not through add_unit) otherwise never leave this PC."""
     known, found = generated_units(), {}
-    for path in (ROOT / "src" / client).glob("*.cpp"):
-        lib = match.directives(path.read_text(errors="replace")).get("lib", "")
+    for source in sources:
+        lib = match.directives(source).get("lib", "")
         name, _, rel = lib.partition(" ")
         r = RECIPES.get(name)
         rel = rel.strip().replace("\\", "/")
