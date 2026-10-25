@@ -358,6 +358,8 @@ def link_test(client, test, libs, includes=(), defines="WIN32 NDEBUG _MBCS _CRT_
                                   "/OUT:%s.exe" % test, test + ".obj"] + [str(l) for l in libs] + list(system_libs)
                        + ["imagehlp.lib", "version.lib", "wininet.lib", "dbghelp.lib", "psapi.lib"] + ["/NODEFAULTLIB:" + l for l in VENDOR_AUTOLINK], out)
     result["unresolved"] = sorted(set(unresolved_symbols(text)))
+    result["duplicates"] = sorted(set(re.findall(r"\((\?[^)]+)\) already defined in", text)))
+    result["referencers"] = sorted(set(a or b for a, b in re.findall(r'referenced in function (?:"[^"]*" \((\?[^)]+)\)|(_\w+))', text)))
     result.update(linked=code == 0, output=text[-1500:], map=str(out / (test + ".map")))
     if code:
         return result
@@ -370,7 +372,106 @@ def defined_symbols(obj_path):
     return {name for name, _, _ in match.coff_functions(Path(obj_path).read_bytes())}
 
 
-def resolve_objects(client, test, layers, name, includes=(), max_rounds=20, log=print, extra_libs=(), defines=None):
+def coff_externals(data):
+    """{name: defined} for the external (class 2) symbols of a COFF object."""
+    import struct
+    _, _, _, symptr, nsym, _, _ = struct.unpack_from("<HHIIIHH", data, 0)
+    strtab, out, i = symptr + nsym * 18, {}, 0
+    while i < nsym:
+        raw, _, secnum, _, cls, naux = struct.unpack_from("<8sIhHBB", data, symptr + 18 * i)
+        if cls == 2:
+            name = data[strtab + struct.unpack_from("<I", raw, 4)[0]:].split(b"\0", 1)[0] if raw[:4] == b"\0\0\0\0" \
+                else raw.rstrip(b"\0")
+            name = name.decode("latin-1")
+            out[name] = out.get(name, False) or secnum > 0
+        i += 1 + naux
+    return out
+
+
+def strip_symbols(data, keep=None, drop=()):
+    """COFF rewrite for per-function swaps. Each external definition that is dropped (named in drop, or, with
+    keep given, not named in keep) becomes an undefined external, so references resolve to the definition
+    another object supplies; a COMDAT section keyed by it, and its associative sections, are removed. With
+    keep given, static-initializer sections (.CRT$X*) are removed too: the kept object must not construct
+    globals another object owns."""
+    import struct
+    data = bytearray(data)
+    _, nsec, _, symptr, nsym, optsz, _ = struct.unpack_from("<HHIIIHH", data, 0)
+    strtab = symptr + nsym * 18
+    sec_at = lambda i: 20 + optsz + 40 * i  # noqa: E731
+    remove, comdat_key, assoc, shared, twins, i = set(), {}, [], set(), {}, 0
+    while i < nsym:
+        at = symptr + 18 * i
+        raw, value, secnum, typ, cls, naux = struct.unpack_from("<8sIhHBB", data, at)
+        if cls == 3 and naux and secnum > 0 and value == 0:  # section symbol: aux holds COMDAT selection
+            number, selection = struct.unpack_from("<HB", data, at + 18 + 12)
+            if selection == 5:
+                assoc.append((secnum, number))
+            elif struct.unpack_from("<I", data, sec_at(secnum - 1) + 36)[0] & 0x1000:
+                comdat_key.setdefault(secnum, None)
+                if selection != 1:
+                    shared.add(secnum)  # any/same-size/largest: duplicates link fine, keep (e.g. string literals)
+        elif cls == 2 and secnum > 0:
+            name = bytes(data[strtab + struct.unpack_from("<I", raw, 4)[0]:].split(b"\0", 1)[0]) \
+                if raw[:4] == b"\0\0\0\0" else raw.rstrip(b"\0")
+            name = name.decode("latin-1")
+            if secnum in comdat_key and comdat_key[secnum] is None:
+                comdat_key[secnum] = name
+            if (keep is not None and name not in keep and secnum not in shared) or name in drop:
+                if comdat_key.get(secnum) == name:
+                    # a COMDAT section needs its key symbol: keep it, local, on the removed section, and
+                    # point references at an appended undefined external of the same name
+                    remove.add(secnum)
+                    data[at + 16] = 3
+                    twins[i] = bytes(raw) + struct.pack("<IhHBB", 0, 0, typ, 2, 0)
+                else:
+                    struct.pack_into("<Ih", data, at + 8, 0, 0)
+        i += 1 + naux
+    if keep is not None:
+        for s in range(1, nsec + 1):
+            if bytes(data[sec_at(s - 1):sec_at(s - 1) + 8]).startswith(b".CRT$X"):
+                remove.add(s)
+    for child, parent in assoc:
+        if parent in remove:
+            remove.add(child)
+    for s in remove:
+        flags = struct.unpack_from("<I", data, sec_at(s - 1) + 36)[0]
+        struct.pack_into("<I", data, sec_at(s - 1) + 36, flags | 0x800)  # IMAGE_SCN_LNK_REMOVE
+    if twins:
+        index = {old: nsym + n for n, old in enumerate(sorted(twins))}
+        for s in range(nsec):
+            relptr, nrel = struct.unpack_from("<I", data, sec_at(s) + 24)[0], struct.unpack_from("<H", data, sec_at(s) + 32)[0]
+            for k in range(nrel):
+                old = struct.unpack_from("<I", data, relptr + 10 * k + 4)[0]
+                if old in index:
+                    struct.pack_into("<I", data, relptr + 10 * k + 4, index[old])
+        struct.pack_into("<I", data, 12, nsym + len(twins))
+        data[strtab:strtab] = b"".join(twins[old] for old in sorted(twins))  # symbols precede the string table
+    return bytes(data)
+
+
+def verified_layer(client, spec, log=print, exclude=frozenset(), vdrop=frozenset()):
+    """out/<Module>/verified (rebuild/2008-06/swap_build.py) as a preferred layer of kept symbols only, and the
+    set of those symbols, to drop from every other object. A symbol kept by several groups is taken once."""
+    folder = workspace(client) / "out" / spec["name"] / "verified"
+    if not spec.get("verified") or not (folder / "swaps.json").exists():
+        return None, set()
+    layer = workspace(client) / "out" / spec["name"] / "layer-verified"
+    layer.mkdir(parents=True, exist_ok=True)
+    for old in layer.glob("*.obj"):
+        old.unlink()
+    taken = set()
+    for item in json.loads((folder / "swaps.json").read_text())["swaps"]:
+        keep = set(item["keep"]) - taken - exclude - vdrop
+        if keep:
+            taken |= keep
+            (layer / ("verified_" + item["obj"])).write_bytes(strip_symbols((folder / item["obj"]).read_bytes(), keep=keep, drop=vdrop))
+    log("verified layer: %d exact symbols swapped in" % len(taken))
+    return layer, taken
+
+
+def resolve_objects(client, test, layers, name, includes=(), max_rounds=20, log=print, extra_libs=(), defines=None,
+                    drop=frozenset()):
     """layers: [dir, ...] most-preferred first (e.g. 2008-verified partial files, then complete upstream).
     Start from each file's most-preferred object; when the link reports an unresolved symbol, switch the
     file that defines it in a later layer to that layer. Returns the final link_test result plus choices."""
@@ -389,7 +490,8 @@ def resolve_objects(client, test, layers, name, includes=(), max_rounds=20, log=
                 old.unlink()
         out.mkdir(parents=True, exist_ok=True)
         for f, (rank, obj) in choice.items():
-            (out / f).write_bytes(obj.read_bytes())
+            data = obj.read_bytes()
+            (out / f).write_bytes(strip_symbols(data, drop=drop) if drop and not f.startswith("verified_") else data)
         lib_name = Path(name).name + ".lib"
         code, text = run(tc, "lib", ["/nologo", "/OUT:" + lib_name] + sorted(choice), out)
         kwargs = {"defines": defines} if defines else {}
@@ -612,9 +714,35 @@ def build_module(client, name, log=print):
             build_module(client, dep, log=log)
         deps.append(dep_lib)
         pending += dep_spec.get("depends", [])
-    result = resolve_objects(client, spec["test"], layer_dirs, spec["name"] + "/linked",
-                             includes=_overlaid([_spec_path(client, i) for i in spec.get("test_includes", [])], [], ov)[0], log=log,
-                             extra_libs=deps, defines=spec.get("test_defines"))
+    excluded_path = out / "verified" / "excluded.json"
+    excluded = set(json.loads(excluded_path.read_text())) if excluded_path.exists() else set()
+    vdrop_path = out / "verified" / "vdrop.json"
+    vdrop = set(json.loads(vdrop_path.read_text())) if vdrop_path.exists() else set()
+    for _ in range(8):  # a swapped-in function may call a helper nothing else emits: swap it back out
+        verified, drop = verified_layer(client, spec, log=log, exclude=excluded, vdrop=vdrop)
+        result = resolve_objects(client, spec["test"], ([verified] if verified else []) + layer_dirs, spec["name"] + "/linked",
+                                 includes=_overlaid([_spec_path(client, i) for i in spec.get("test_includes", [])], [], ov)[0], log=log,
+                                 extra_libs=deps, defines=spec.get("test_defines"), drop=drop)
+        back = set(result.get("referencers", [])) & drop
+        if not back and verified and result["unresolved"]:
+            # dead bodies left in a verified .text still name the helper: take that whole object out
+            missing = set(result["unresolved"])
+            for obj in verified.glob("*.obj"):
+                ext = coff_externals(obj.read_bytes())
+                if any(not ext[m] for m in missing if m in ext):
+                    back |= {k for k, d in ext.items() if d} & drop
+        dupes = set(result.get("duplicates", [])) - vdrop
+        if verified and dupes and not result["linked"]:
+            # a verified inline copy against a regular definition elsewhere, or CRT members MSVCP90 exports
+            vdrop |= dupes
+            _dump(vdrop_path, sorted(vdrop))
+            log("verified: %d duplicate definitions; undefined in verified objects" % len(dupes))
+            continue
+        if result["linked"] or not back:
+            break
+        excluded |= back
+        _dump(excluded_path, sorted(excluded))
+        log("verified: %d swapped functions need helpers nothing else defines; swapping them back out" % len(back))
     linked = out / "linked"
     funcs, owned_addrs, owned16_addrs = 0, set(), set()
     for obj in sorted(linked.glob("*.obj")):

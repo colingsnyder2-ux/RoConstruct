@@ -101,5 +101,6 @@
  "overlay": {
   "root": "tools/rbxgs/Client",
   "patches": "rebuild/2008-06/patches/rbxgs-client.json"
- }
+ },
+ "verified": true
 }
