@@ -709,21 +709,6 @@ def _send_rebuild_webhook(url, client, data):
         }]
     }
 
-    payload = {
-        "embeds": [{
-            "title": ":wrench: Rebuild progress: %s" % client,
-            "description": description,
-            "fields": [
-                {"name": ":package: Modules", "value": "**%d** reporting / **%d** linked\n%s" % (bars["compiled"]["value"], bars["linked"]["value"], _rebuild_emoji_bar(bars["linked"]["value"], bars["linked"]["total"], width=8, fill="🟩")), "inline": True},
-                {"name": ":dart: Byte-exact", "value": "**%s** / %s\n%s" % (format(bars["exact"]["value"], ","), format(bars["exact"]["total"], ","), _rebuild_emoji_bar(bars["exact"]["value"], bars["exact"]["total"], width=8, fill="🟩")), "inline": True},
-                {"name": ":warning: Blockers", "value": "**%d** unresolved\n**%d** stubs" % (bars["unresolved"]["value"], bars["stubs"]["value"]), "inline": True},
-                {"name": ":rocket: Runtime", "value": "**%d** / %d\n%s" % (bars["runtime"]["value"], bars["runtime"]["total"], _rebuild_emoji_bar(bars["runtime"]["value"], bars["runtime"]["total"], width=8, fill="🟪")), "inline": True},
-            ],
-            "footer": {"text": "RoConstruct rebuild"},
-            "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-        }]
-    }
-
     body = json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json", "User-Agent": "RoConstruct/1.0"}, method="POST")
     with urllib.request.urlopen(req, timeout=15) as response:
