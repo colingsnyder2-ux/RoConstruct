@@ -412,9 +412,9 @@ def _score_band(score):
 
 def _work_cooldown_seconds(a):
     try:
-        return max(0, int(getattr(a, "cooldown", 3600) or 0))
+        return max(0, int(getattr(a, "cooldown", 900) or 0))
     except (TypeError, ValueError):
-        return 3600
+        return 900
 
 
 def _local_evidence(client, addr):
@@ -430,7 +430,7 @@ def _local_evidence(client, addr):
     return claim_state.evidence_key(row)
 
 
-def _release_target(api, user, client, addr, reason="", cooldown=3600, keep_token_on_failure=True):
+def _release_target(api, user, client, addr, reason="", cooldown=900, keep_token_on_failure=True):
     """Release the token this checkout persisted, never somebody else's."""
     from roc import claims as claim_state
     addr = str(addr).lower().replace("0x", "").zfill(8)
@@ -571,20 +571,59 @@ def cmd_work(a):
     try:
         rows, live, note = scout.candidates(
             api, a.name, limit=max(a.limit, 20), profile=a.profile, max_size=a.max_size,
-            min_score=a.min_score, max_score=a.max_score, include_claimed=True)
+            min_score=a.min_score, max_score=a.max_score, include_claimed=True,
+            skip_cooling=not getattr(a, "include_cooling", False))
     except (ValueError, RuntimeError) as error:
         sys.exit("Could not load candidates: %s" % error)
+    include_claimed = bool(getattr(a, "include_claimed", False))
+    include_cooling = bool(getattr(a, "include_cooling", False))
+
     if not rows:
-        print("No unmatched functions left for %s (or all are claimed/cooling down)." % a.name)
+        print("No unmatched functions left for %s on the server." % a.name)
+        print("This is NOT proof the client is exhausted: parked/cooling or claimed targets may remain.")
+        print("Try:  roc work %s --include-cooling" % a.name)
+        print("      roc work %s --min-score 0" % a.name)
+        print("      roc scout %s --include-claimed" % a.name)
         return
-    candidates = [row for row in rows if not row.get("claimed")
-                  and not claim_state.cooling(a.name, row["addr"])]
+    candidates = []
+    for row in rows:
+        if row.get("claimed") and not include_claimed:
+            continue
+        if (not include_cooling) and claim_state.cooling(a.name, row["addr"]):
+            continue
+        candidates.append(row)
+
+    # If nothing is open, try revisiting parked targets whose evidence has changed
+    # (e.g. the source was edited since parking) before declaring exhaustion.
+    revisited = False
+    if not candidates and not include_cooling:
+        for row in rows:
+            if row.get("claimed") and not include_claimed:
+                continue
+            if claim_state.cooling(a.name, row["addr"]):
+                ev = _local_evidence(a.name, row["addr"])
+                if not claim_state.cooling(a.name, row["addr"], evidence=ev):
+                    candidates.append(row)
+                    revisited = True
+    if revisited:
+        print("No open targets; revisiting parked target(s) with changed evidence.")
     if a.dry_run:
         print(scout.format_table(candidates[:a.limit], live=live, note=note))
         print("\nDry run: nothing claimed.")
         return
     if not candidates:
-        print("Every candidate is claimed by another worker or cooling down. Try again shortly.")
+        cooling = claim_state.cooldowns(a.name)
+        claimed_n = sum(1 for r in rows if r.get("claimed"))
+        print("No claimable candidate right now: %d cooling/parked, %d claimed by other workers."
+              % (len(cooling), claimed_n))
+        print("This is NOT proof the client is exhausted. Parked targets can be revisited.")
+        if cooling:
+            print("Cooling targets (remaining seconds):")
+            for cd in cooling[:10]:
+                print("  %s  %ds  %s" % (cd["addr"], cd["remaining"], (cd.get("reason") or "")[:60]))
+        print("Try:  roc work %s --include-cooling   (revisit parked targets)" % a.name)
+        print("      roc work %s --include-cooling --include-claimed" % a.name)
+        print("      roc work %s --min-score 0" % a.name)
         return
 
     chosen, claim = None, None
@@ -2512,8 +2551,13 @@ def main(argv=None):
         (["--skip"], {"nargs": "?", "const": "last", "metavar": "ADDR|last",
                       "help": "release the stored claim and park it (default: most recent claim)"}),
         (["--reason"], {"default": "", "help": "reason recorded with a skip/park"}),
-        (["--cooldown"], {"type": int, "default": 3600, "help": "seconds to keep a skipped target parked"}),
-        (["--dry-run"], {"action": "store_true", "help": "show ranked candidates without claiming"}))
+        (["--cooldown"], {"type": int, "default": 900, "help": "seconds to keep a skipped target parked (default 15 min)"}),
+        (["--dry-run"], {"action": "store_true", "help": "show ranked candidates without claiming"}),
+        (["--include-cooling", "--include-parked", "--revisit", "--revisit-parked", "--force"],
+         {"dest": "include_cooling", "action": "store_true",
+          "help": "include cooling/parked targets so they can be revisited (use after evidence changes)"}),
+        (["--include-claimed"], {"dest": "include_claimed", "action": "store_true",
+                                "help": "include targets claimed by other workers (read-only unless you own the claim)"}))
     cmd("scout", cmd_scout, "read-only ranked candidates; never claims or reserves a target",
         (["name"], {"help": "client to scout"}),
         (["--server"], {}), (["--token"], {}),

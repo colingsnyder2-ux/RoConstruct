@@ -181,6 +181,37 @@ def purge_expired(root=None, cooldown_grace=0):
     return {"claims": claims, "cooldowns": cools}
 
 
+def cooldowns(client=None, root=None, include_expired=False):
+    """List active (or all) cooldowns, newest first, with remaining seconds."""
+    with _connect(root) as db:
+        if client:
+            if include_expired:
+                rows = db.execute(
+                    "SELECT client,addr,evidence,until,reason,updated FROM cooldowns "
+                    "WHERE client=? ORDER BY updated DESC", (client,)).fetchall()
+            else:
+                rows = db.execute(
+                    "SELECT client,addr,evidence,until,reason,updated FROM cooldowns "
+                    "WHERE client=? AND until>? ORDER BY updated DESC",
+                    (client, now())).fetchall()
+        else:
+            if include_expired:
+                rows = db.execute(
+                    "SELECT client,addr,evidence,until,reason,updated FROM cooldowns "
+                    "ORDER BY updated DESC").fetchall()
+            else:
+                rows = db.execute(
+                    "SELECT client,addr,evidence,until,reason,updated FROM cooldowns "
+                    "WHERE until>? ORDER BY updated DESC", (now(),)).fetchall()
+    out = []
+    for row in rows:
+        until = float(row[3] or 0)
+        out.append({"client": row[0], "addr": row[1], "evidence": row[2],
+                    "until": until, "reason": row[4], "updated": row[5],
+                    "remaining": max(0, int(until - now()))})
+    return out
+
+
 def snapshot(root=None):
     with _connect(root) as db:
         claims_n = db.execute("SELECT count(*) FROM claims WHERE expires=0 OR expires>=?",
