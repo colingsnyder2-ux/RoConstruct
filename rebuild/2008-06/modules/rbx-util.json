@@ -1,0 +1,51 @@
+{
+ "name": "RbxUtil",
+ "description": "Roblox App util + v8kernel. Layer 1: 2008-verified OpenRBX files (partial). Layer 2: complete rbxgs files compiled against the OpenRBX headers so both share one ABI.",
+ "depends": [
+  "g3d",
+  "boost"
+ ],
+ "layers": [
+  {
+   "name": "openrbx",
+   "mode": "recipe",
+   "recipe": "openrbx-client",
+   "files": "App/util/*.cpp App/v8kernel/*.cpp",
+   "direct": true,
+   "extra_defines": "BOOST_ALL_NO_LIB",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD"
+  },
+  {
+   "name": "upstream",
+   "mode": "direct",
+   "dir": "tools/rbxgs/Client/App",
+   "files": "util/*.cpp v8kernel/*.cpp",
+   "includes_from_recipe": "openrbx-client",
+   "defines_from_recipe": "openrbx-client",
+   "extra_defines": "BOOST_ALL_NO_LIB",
+   "extra_includes": [
+    "tools/rbxgs/Client/App/include",
+    "tools/rbxgs/Client/Network/include",
+    "tools/rbxgs/Client/RbxGraphics/include"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD"
+  },
+  {
+   "name": "decomp",
+   "mode": "direct",
+   "dir": "tools/openrbx/util",
+   "files": "decomp.cpp",
+   "includes_from_recipe": "openrbx-client",
+   "defines_from_recipe": "openrbx-client",
+   "flags": "/O2 /GS- /EHsc /MD"
+  }
+ ],
+ "test": "rbx_util",
+ "test_includes": [
+  "tools/openrbx/Client/App/include",
+  "tools/openrbx/util",
+  "tools/openrbx/3rdparty/boost_1_34_1",
+  "tools/openrbx/3rdparty/g3d/source/include"
+ ],
+ "test_defines": "WIN32 NDEBUG _LIB _MBCS BOOST_ALL_NO_LIB"
+}

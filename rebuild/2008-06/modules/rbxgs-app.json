@@ -1,0 +1,17 @@
+{
+ "name": "RbxgsApp",
+ "description": "Complete rbxgs Client/App tree (util, v8kernel, reflection, v8tree, v8world, v8datamodel, script, humanoid, tool, v8xml, gui, security) compiled against its own headers: one consistent ABI, no stubs.",
+ "depends": ["g3d", "boost", "lua", "raknet"],
+ "layers": [
+  {"name": "rbxgs", "mode": "recipe", "recipe": "rbxgs", "direct": true,
+   "files": "util/*.cpp v8kernel/*.cpp reflection/*.cpp v8tree/*.cpp v8world/*.cpp v8datamodel/*.cpp script/*.cpp humanoid/*.cpp tool/*.cpp v8xml/*.cpp gui/*.cpp security/*.cpp",
+   "extra_defines": "BOOST_ALL_NO_LIB", "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD"}
+ ],
+ "test": "rbxgs_app",
+ "test_includes": ["tools/rbxgs/Client/App/include", "tools/rbxgs/Client/RbxGraphics/include", "tools/rbxgs/Client/Network/include",
+                   "tools/rbxgs/Client/RbxView/include", "tools/rbxgs/Client/Rendering/png", "tools/rbxgs/Client/Rendering/g3d/include",
+                   "tools/rbxgs/Client/Rendering/g3d/zlib", "tools/rbxgs/Client/Rendering/RenderLib/include",
+                   "tools/rbxgs/Client/Rendering/AppDraw/include", "tools/rbxgs/Client/boost_1_34_1/src",
+                   "tools/rbxgs/Client/App/lua-5.1.1/src", "tools/rbxgs/Client/Rendering/SDL-1.2.6/include"],
+ "test_defines": "WIN32 NDEBUG _LIB _RELEASE _RELEASEASSERT BOOST_ALL_NO_LIB"
+}

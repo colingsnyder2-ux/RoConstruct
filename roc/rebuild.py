@@ -329,7 +329,7 @@ def link_test(client, test, libs, includes=(), defines="WIN32 NDEBUG _MBCS _CRT_
         return result
     code, text = run(tc, "link", ["/nologo", "/SUBSYSTEM:CONSOLE", "/MACHINE:X86", "/MAP:%s.map" % test,
                                   "/OUT:%s.exe" % test, test + ".obj"] + [str(l) for l in libs] + list(system_libs), out)
-    result["unresolved"] = sorted(set(re.findall(r"unresolved external symbol (\S+)", text)))
+    result["unresolved"] = sorted(set(re.findall(r"unresolved external symbol .*?\((\?[^)]+|_\w+)\)", text)))
     result.update(linked=code == 0, output=text[-1500:], map=str(out / (test + ".map")))
     if code:
         return result
@@ -476,7 +476,8 @@ def build_module(client, name, log=print):
                 tree = patched_tree(client, layer["recipe"])
                 includes = [tree] + [_in_tree(libs._case_path(libs.LIBS / i), src, tree)
                                      for i in recipe.get("include", []) if i != "WINSDK"]
-                res = compile_direct(client, [tree / rel for rel in errors], folder, includes, recipe.get("defines", ""),
+                res = compile_direct(client, [tree / rel for rel in errors], folder, includes,
+                                     (recipe.get("defines", "") + " " + layer.get("extra_defines", "")).strip(),
                                      layer["flags"], cl=layer.get("cl", BUILD))
                 errors = {Path(k).name: v for k, (ok, v) in res.items() if not ok}
         else:
@@ -484,19 +485,24 @@ def build_module(client, name, log=print):
             includes = [(libs.LIBS / i).resolve() for i in recipe["include"] if i != "WINSDK"]
             includes += [(ROOT / i).resolve() for i in layer.get("extra_includes", [])]
             defines = libs.RECIPES[layer["defines_from_recipe"]]["defines"] if layer.get("defines_from_recipe") else layer.get("defines", "")
+            defines = (defines + " " + layer.get("extra_defines", "")).strip()
             sources = [p for g in layer["files"].split() for p in sorted((ROOT / layer["dir"]).glob(g))
                        if not p.name.startswith("roc_") and p.name not in layer.get("exclude", [])]
             res = compile_direct(client, sources, folder, includes, defines, layer["flags"], cl=layer.get("cl", BUILD))
             errors = {Path(k).name: v for k, (ok, v) in res.items() if not ok}
         log("layer %s: %d compile errors%s" % (layer["name"], len(errors), (" (" + ", ".join(sorted(errors)) + ")") if errors else ""))
         layer_dirs.append(folder)
-    deps = []
-    for dep in spec.get("depends", []):
-        dep_name = load_module(client, dep)["name"]
-        dep_lib = workspace(client) / "out" / dep_name / "linked" / (Path(dep_name + "/linked").name + ".lib")
+    deps, pending = [], list(spec.get("depends", []))
+    while pending:  # transitive: G3D needs zlib-winapi wherever G3D goes
+        dep = pending.pop(0)
+        dep_spec = load_module(client, dep)
+        dep_lib = workspace(client) / "out" / dep_spec["name"] / "linked" / "linked.lib"
+        if dep_lib in deps:
+            continue
         if not dep_lib.exists():
             build_module(client, dep, log=log)
         deps.append(dep_lib)
+        pending += dep_spec.get("depends", [])
     result = resolve_objects(client, spec["test"], layer_dirs, spec["name"] + "/linked",
                              includes=[_spec_path(client, i) for i in spec.get("test_includes", [])], log=log,
                              extra_libs=deps, defines=spec.get("test_defines"))
