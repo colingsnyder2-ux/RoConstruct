@@ -674,15 +674,41 @@ def _rebuild_emoji_bar(value, total, width=10, fill="🟦", empty="⬜"):
 
 def _send_rebuild_webhook(url, client, data):
     bars = data["bars"]
+    phase_flavor = {
+        "0": "Decisions and policy are being recorded before any code is published.",
+        "1": "Closing the original VS2008 toolchain and smoke-testing a linked executable.",
+        "2": "Auditing the original PE and mapping every function to a source kind.",
+        "3": "Compiling and linking the first complete translation unit.",
+        "4": "Expanding modules against one corrected shared header set.",
+        "5": "Reconciling differing functions against exact 2008 snippets.",
+        "6": "Linking all modules and turning unresolved symbols into tracked tasks.",
+        "7": "Coordinating parallel agents and merge gates.",
+        "8": "Bringing up the runtime, one tested milestone at a time.",
+    }.get(str(data["phase"]), "Rebuild work is in progress.")
     description = (
-        "**Phase %s - %s**\n\n" % (data["phase"], data["phaseLabel"]) +
+        "**Phase %s - %s**\n" % (data["phase"], data["phaseLabel"]) +
+        "*%s*\n\n" % phase_flavor +
         "**Overall byte-exact progress**\n" +
         "%s / %s (%.2f%%)\n" % (format(bars["exact"]["value"], ","), format(bars["exact"]["total"], ","), 100.0 * bars["exact"]["value"] / bars["exact"]["total"] if bars["exact"]["total"] else 0.0) +
-        "%s\n\n" % _rebuild_emoji_bar(bars["exact"]["value"], bars["exact"]["total"], width=23, fill="🟩") +
+        "%s\n\n" % _rebuild_emoji_bar(bars["exact"]["value"], bars["exact"]["total"], width=23, fill="\U0001f7e9") +
         "**Modules:** %d reporting, %d linked\n" % (bars["compiled"]["value"], bars["linked"]["value"]) +
         "**Blockers:** %d unresolved, %d temporary stubs\n" % (bars["unresolved"]["value"], bars["stubs"]["value"]) +
-        "**Runtime:** %d / %d milestones\n\n" % (bars["runtime"]["value"], bars["runtime"]["total"]) +
-        "*Next: %s*" % data.get("next", ""))
+        "**Runtime:** %d / %d milestones" % (bars["runtime"]["value"], bars["runtime"]["total"]))
+    payload = {
+        "embeds": [{
+            "title": ":wrench: Rebuild progress: %s" % client,
+            "description": description,
+            "fields": [
+                {"name": ":package: Modules", "value": "**%d** reporting / **%d** linked\n%s" % (bars["compiled"]["value"], bars["linked"]["value"], _rebuild_emoji_bar(bars["linked"]["value"], bars["linked"]["total"], width=8, fill="\U0001f7e9")), "inline": True},
+                {"name": ":dart: Byte-exact", "value": "**%s** / %s\n%s" % (format(bars["exact"]["value"], ","), format(bars["exact"]["total"], ","), _rebuild_emoji_bar(bars["exact"]["value"], bars["exact"]["total"], width=8, fill="\U0001f7e9")), "inline": True},
+                {"name": ":warning: Blockers", "value": "**%d** unresolved\n**%d** stubs" % (bars["unresolved"]["value"], bars["stubs"]["value"]), "inline": True},
+                {"name": ":rocket: Runtime", "value": "**%d** / %d\n%s" % (bars["runtime"]["value"], bars["runtime"]["total"], _rebuild_emoji_bar(bars["runtime"]["value"], bars["runtime"]["total"], width=8, fill="\U0001f7ea")), "inline": True},
+            ],
+            "footer": {"text": "RoConstruct rebuild"},
+            "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+        }]
+    }
+
     payload = {
         "embeds": [{
             "title": ":wrench: Rebuild progress: %s" % client,
@@ -692,7 +718,6 @@ def _send_rebuild_webhook(url, client, data):
                 {"name": ":dart: Byte-exact", "value": "**%s** / %s\n%s" % (format(bars["exact"]["value"], ","), format(bars["exact"]["total"], ","), _rebuild_emoji_bar(bars["exact"]["value"], bars["exact"]["total"], width=8, fill="🟩")), "inline": True},
                 {"name": ":warning: Blockers", "value": "**%d** unresolved\n**%d** stubs" % (bars["unresolved"]["value"], bars["stubs"]["value"]), "inline": True},
                 {"name": ":rocket: Runtime", "value": "**%d** / %d\n%s" % (bars["runtime"]["value"], bars["runtime"]["total"], _rebuild_emoji_bar(bars["runtime"]["value"], bars["runtime"]["total"], width=8, fill="🟪")), "inline": True},
-                {"name": "Next", "value": data.get("next", ""), "inline": False},
             ],
             "footer": {"text": "RoConstruct rebuild"},
             "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
