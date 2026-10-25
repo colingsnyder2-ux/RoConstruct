@@ -808,6 +808,29 @@ def cmd_check(a):
         print("%d / %d match." % (matched, len(srcs)))
 
 
+def cmd_mutsearch(a):
+    """Beam-search meaning-preserving rewrites (operand order, grouping, locals, float gates)
+    against the target; a roc-lib stub mutates its unit. Writes an improved winner, never submits."""
+    from roc import match, mutsearch
+    addr = a.addr.lower().replace("0x", "").zfill(8)
+    path = Path(a.file) if a.file else ROOT / "src" / a.name / (addr + ".cpp")
+    if not path.exists():
+        sys.exit("No file %s" % path)
+    source = path.read_text(encoding="utf-8", errors="replace")
+    try:
+        best = mutsearch.search(a.name, addr, source, budget=a.budget, beam=a.beam, depth=a.depth,
+                                jobs=a.jobs, log=print)
+    except match.CompileError as error:
+        sys.exit(str(error))
+    print("%s %s: %d%% (%.3f) -> %d%% (%.3f, residue %d) in %d compiles%s" % (
+        a.name, addr, best["start"], best["start_precise"], best["score"], best["precise"],
+        best["residue"], best["compiles"],
+        ("; " + " > ".join(best["path"])) if best["path"] else "; no improvement"))
+    out = mutsearch.save(a.name, addr, source, best)
+    if out:
+        print("Wrote %s\nNext: roc submit %s %s --file %s" % (out, a.name, addr, out))
+
+
 def cmd_check_batch(a):
     """Compile several candidate variants of one function in parallel and rank them.
 
@@ -2658,7 +2681,14 @@ def main(argv=None):
         (["name"], {}), (["addr"], {"nargs": "?"}),
         (["--file"], {"help": "scratch source to score against ADDR; saves nothing"}),
         (["--context"], {"type": int, "default": 99, "help": "unchanged lines around each diff hunk (3 = residue only)"}))
-    cmd("check-batch", cmd_check_batch, "score several candidate variants of one function in parallel (agents: test multiple hypotheses at once)",
+    cmd("mutsearch", cmd_mutsearch, "beam-search meaning-preserving rewrites (x87 operand order, grouping, float gates) for one function",
+        (["name"], {}), (["addr"], {}),
+        (["--file"], {"help": "source to start from (default src/CLIENT/ADDR.cpp)"}),
+        (["--budget"], {"type": int, "default": 120, "help": "maximum compiles"}),
+        (["--beam"], {"type": int, "default": 3}),
+        (["--depth"], {"type": int, "default": 3, "help": "edits stacked on the start source"}),
+        (["--jobs"], {"type": int, "default": 6}))
+    cmd("check-batch", cmd_check_batch,"score several candidate variants of one function in parallel (agents: test multiple hypotheses at once)",
         (["name"], {}), (["addr"], {}), (["files"], {"nargs": "+"}),
         (["--context"], {"type": int, "default": 99, "help": "unchanged lines around each diff hunk"}),
         (["--json"], {"action": "store_true", "help": "machine-readable results, including compile failures"}),

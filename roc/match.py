@@ -201,6 +201,15 @@ def score(target, target_relocs, cand, cand_relocs):
     return min(99, int(100 * similarity_ratio(target, target_relocs, cand, cand_relocs)))
 
 
+def precise_score(client, addr, text, obj=None):
+    """Untruncated similarity (e.g. 97.412) of the closest function in text: a search
+    tie-breaker that sees sub-percent gains. Acceptance still uses score()/exact bytes."""
+    code, relocs, _ = target(client, addr)
+    obj = compile_text(client, text) if obj is None else obj
+    return max((100.0 if exact_match(code, relocs, f[1], f[2]) else
+                100 * similarity_ratio(code, relocs, f[1], f[2]) for f in coff_functions(obj)), default=0.0)
+
+
 def rank_candidate(target, target_relocs, cand, cand_relocs):
     """Rank near-misses by bytes, then instruction structure.
 
