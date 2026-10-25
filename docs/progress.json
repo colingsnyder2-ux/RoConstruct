@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-25 08:54 UTC",
+ "updated": "2026-10-25 09:57 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -191,15 +191,15 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22291,
-   "matched": 21941,
-   "partial": 350,
-   "source_matched": 13567,
+   "matched": 21943,
+   "partial": 348,
+   "source_matched": 13569,
    "mined_matched": 8374,
    "bytes": 3712596,
-   "matched_bytes": 3407112,
-   "source_bytes": 2567899,
+   "matched_bytes": 3408195,
+   "source_bytes": 2568982,
    "mined_bytes": 839213,
-   "partial_bytes": 305484,
+   "partial_bytes": 304401,
    "data_bytes": 1559926,
    "leaderboard": [
     {
@@ -259,18 +259,18 @@
      "last": 1791569181.5408819
     },
     {
+     "user": "nuck16",
+     "matched": 7,
+     "points": 82,
+     "submissions": 7,
+     "last": 1792918733.709033
+    },
+    {
      "user": "Intel",
      "matched": 6,
      "points": 431,
      "submissions": 15,
      "last": 1791588098.9464204
-    },
-    {
-     "user": "nuck16",
-     "matched": 5,
-     "points": 57,
-     "submissions": 5,
-     "last": 1792917510.189525
     },
     {
      "user": "Gemini",
@@ -289,9 +289,9 @@
     {
      "user": "king_originala_sol_native",
      "matched": 2,
-     "points": 56,
-     "submissions": 11,
-     "last": 1792917602.367584
+     "points": 79,
+     "submissions": 16,
+     "last": 1792920543.269959
     },
     {
      "user": "ivan-grebe",
@@ -336,7 +336,7 @@
      "last": 1792904207.587707
     }
    ],
-   "data_matched_bytes": 196320,
+   "data_matched_bytes": 196332,
    "classes": 1488,
    "generated": 19333
   },
@@ -726,10 +726,10 @@
   },
   {
    "user": "nuck16",
-   "matched": 5,
-   "points": 57,
-   "submissions": 5,
-   "last": 1792917510.189525
+   "matched": 7,
+   "points": 82,
+   "submissions": 7,
+   "last": 1792918733.709033
   },
   {
    "user": "Gemini",
@@ -769,9 +769,9 @@
   {
    "user": "king_originala_sol_native",
    "matched": 2,
-   "points": 56,
-   "submissions": 11,
-   "last": 1792917602.367584
+   "points": 79,
+   "submissions": 16,
+   "last": 1792920543.269959
   },
   {
    "user": "colinlaptop",
