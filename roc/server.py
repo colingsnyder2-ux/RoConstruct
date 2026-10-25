@@ -1128,10 +1128,17 @@ def _publish_once(store, public_url, log=print):
     sync_findings(store)
     publish_findings(git_exe, log)
     progress.build(public_server=public_url, remote=export(store))
+    try:
+        from roc import rebuild
+        for client_dir in sorted((ROOT / "rebuild").glob("*/modules")):
+            rebuild.progress(client_dir.parent.name, notify=True, log=log)
+    except Exception as error:  # reporting only; never fail a publish
+        log("Rebuild progress update failed: %s" % error)
     publish_pages(git_exe, log)
     # main keeps only the small progress files, so its history still shows progress over
     # time; per-function data lives only in the history-free gh-pages commit.
-    site = ("docs/progress.json", "docs/history.json", "docs/source-links.json")
+    site = ("docs/progress.json", "docs/history.json", "docs/source-links.json",
+            "docs/rebuild-progress.json")
     git("add", *site)
     if git("diff", "--cached", "--quiet", "--", *site).returncode == 0:
         return log("Progress unchanged.")

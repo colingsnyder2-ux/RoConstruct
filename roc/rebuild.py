@@ -590,6 +590,10 @@ def build_module(client, name, log=print):
     _dump(out / "report.json", report)
     log("%s: linked=%s test_exit=%s; %d object functions, %d byte-identical to unique 2008 functions (%d of >=16 bytes)"
         % (spec["name"], result["linked"], result["exit"], funcs, owned, owned16))
+    try:
+        progress(client, notify=True, log=log)
+    except Exception as error:  # progress is reporting only; never fail a build
+        log("rebuild progress update failed: %s" % error)
     return report
 
 
@@ -613,6 +617,10 @@ def closure(client, name, log=print):
     _dump(out / "closure.json", {"module": spec["name"], "objects": len(objs), "linked": result["linked"],
                                  "unresolved": result["unresolved"]})
     log("%s closure: %d objects, linked=%s, %d unresolved symbols" % (spec["name"], len(objs), result["linked"], len(result["unresolved"])))
+    try:
+        progress(client, notify=True, log=log)
+    except Exception as error:
+        log("rebuild progress update failed: %s" % error)
     return result
 
 
@@ -636,6 +644,10 @@ def status(client="2008-06", log=print):
     for name, state, test, funcs, owned in rows:
         log("%-12s %-9s %-8s %6s object functions  %5s owned 2008" % (name, state, test, funcs, owned))
     log("distinct 2008 functions reproduced by linked rebuilt code: %d" % len(owned_all))
+    try:
+        progress(client, notify=True, log=log)
+    except Exception as error:
+        log("rebuild progress update failed: %s" % error)
     return rows, owned_all
 
 import json
@@ -644,34 +656,34 @@ import time
 import urllib.request
 import urllib.error
 
+DEFAULT_REBUILD_WEBHOOK = "https://discord.com/api/webhooks/1563963572256768061/UlEfpuW48IqPmanJ2rr0gmawcff-DO19Crc4FMoZ24ufoe6Kp_qOhjIpF8oEzUm72IdW"
+
+
 def _rebuild_webhook_url():
-    return os.environ.get("ROCONSTRUCT_REBUILD_WEBHOOK") or os.environ.get("ROCONSTRUCT_DISCORD_WEBHOOK")
+    return (os.environ.get("ROCONSTRUCT_REBUILD_WEBHOOK") or
+            os.environ.get("ROCONSTRUCT_REBUILD_WEBHOOK_URL") or
+            DEFAULT_REBUILD_WEBHOOK)
+
+
+def _rebuild_emoji_bar(value, total, width=10, fill="🟦", empty="⬜"):
+    if total <= 0:
+        return empty * width
+    filled = max(0, min(width, int(round(width * value / total))))
+    return fill * filled + empty * (width - filled)
 
 
 def _send_rebuild_webhook(url, client, data):
-    from roc.reports import emoji_bar
     bars = data["bars"]
-    compiled_bar = emoji_bar(bars["compiled"]["value"], 0, 0, bars["compiled"]["total"])
-    linked_bar = emoji_bar(bars["linked"]["value"], 0, 0, bars["linked"]["total"])
-    exact_bar = emoji_bar(bars["exact"]["value"], 0, 0, bars["exact"]["total"])
-    unresolved_bar = emoji_bar(bars["unresolved"]["total"] - bars["unresolved"]["value"], 0, 0, bars["unresolved"]["total"])
-    stubs_bar = emoji_bar(bars["stubs"]["total"] - bars["stubs"]["value"], 0, 0, bars["stubs"]["total"])
-    runtime_bar = emoji_bar(bars["runtime"]["value"], 0, 0, bars["runtime"]["total"])
     description = (
-        "Phase %s - %s\n\n"
-        "Modules reporting: %d/%d %s\n"
-        "Modules linked: %d/%d %s\n"
-        "Byte-exact functions: %s/%s %s\n"
-        "Unresolved symbols: %d %s\n"
-        "Temporary stubs: %d %s\n"
-        "Runtime milestones: %d/%d %s" % (
-            data["phase"], data["phaseLabel"],
-            bars["compiled"]["value"], bars["compiled"]["total"], compiled_bar,
-            bars["linked"]["value"], bars["linked"]["total"], linked_bar,
-            format(bars["exact"]["value"], ","), format(bars["exact"]["total"], ","), exact_bar,
-            bars["unresolved"]["value"], unresolved_bar,
-            bars["stubs"]["value"], stubs_bar,
-            bars["runtime"]["value"], bars["runtime"]["total"], runtime_bar))
+        "Phase %s - %s\n\n" % (data["phase"], data["phaseLabel"]) +
+        "Modules reporting: %d/%d %s\n" % (bars["compiled"]["value"], bars["compiled"]["total"], _rebuild_emoji_bar(bars["compiled"]["value"], bars["compiled"]["total"], fill="🟦")) +
+        "Modules linked: %d/%d %s\n" % (bars["linked"]["value"], bars["linked"]["total"], _rebuild_emoji_bar(bars["linked"]["value"], bars["linked"]["total"], fill="🟩")) +
+        "Byte-exact: %s/%s %s\n" % (format(bars["exact"]["value"], ","), format(bars["exact"]["total"], ","), _rebuild_emoji_bar(bars["exact"]["value"], bars["exact"]["total"], fill="🟩")) +
+        "Unresolved: %d %s\n" % (bars["unresolved"]["value"], _rebuild_emoji_bar(bars["unresolved"]["value"], bars["unresolved"]["total"], fill="🟥")) +
+        "Stubs: %d %s\n" % (bars["stubs"]["value"], _rebuild_emoji_bar(bars["stubs"]["value"], bars["stubs"]["total"], fill="🟨")) +
+        "Runtime: %d/%d %s\n\n" % (bars["runtime"]["value"], bars["runtime"]["total"], _rebuild_emoji_bar(bars["runtime"]["value"], bars["runtime"]["total"], fill="🟪")) +
+        "Next: %s" % data.get("next", ""))
+
     payload = {
         "embeds": [{
             "title": "Rebuild update: %s" % client,
@@ -817,4 +829,3 @@ def progress(client="2008-06", log=print, notify=True):
             else:
                 log("rebuild webhook skipped (no change or rate limited)")
     return data
-
