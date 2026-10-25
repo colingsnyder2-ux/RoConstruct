@@ -1,0 +1,443 @@
+"""2008-06 client rebuild: toolchain, audit, whole-file builds, TU diffs and links.
+
+Separate from mining: nothing here edits src/, clients/, tools/ or bounds.json.
+Outputs go to rebuild/<client>/ (manifests/ and out/ stay untracked until
+rebuild/<client>/POLICY.md allows publishing them).
+"""
+import json
+import os
+import re
+import subprocess
+from pathlib import Path
+
+from roc import match, setup
+
+ROOT = Path(__file__).resolve().parent.parent
+TOOLS = ROOT / "tools"
+BUILD = 21022  # the 2008-06 client's compiler (VS2008 RTM)
+
+
+def workspace(client):
+    path = ROOT / "rebuild" / client
+    (path / "out").mkdir(parents=True, exist_ok=True)
+    return path
+
+
+def _first(*candidates):
+    for c in candidates:
+        if c and Path(c).exists():
+            return Path(c)
+    return None
+
+
+def _ci(folder, name):
+    """Case-insensitive child lookup (the SDK ships Kernel32.Lib)."""
+    if not folder or not folder.is_dir():
+        return None
+    low = name.lower()
+    return next((p for p in folder.iterdir() if p.name.lower() == low), None)
+
+
+def toolchain(build=BUILD):
+    """Paths for one period toolchain; None where a piece is missing. Never substitutes a newer build."""
+    cl = setup.compilers().get(build)
+    cl = Path(cl) if cl else None
+    vc = cl.parents[1] if cl else None
+    ide = cl.parents[2] / "Common7" / "IDE" if cl else None
+    sdk_roots = [Path(p) for p in os.environ.get("ROC_WINSDK", "").split(os.pathsep) if p]
+    sdk_roots += sorted(TOOLS.glob("*/**/WinSDK"))
+    sdk = next((r for r in sdk_roots if _ci(r / "Lib", "kernel32.lib")), None)
+    atlmfc = _first(os.environ.get("ROC_ATLMFC"), TOOLS / "libs" / "mfc-9.0-rtm" / "atlmfc")
+    return {
+        "build": build,
+        "cl": cl,
+        "link": _first(vc / "bin" / "link.exe") if vc else None,
+        "lib": _first(vc / "bin" / "lib.exe") if vc else None,
+        "mspdb": _first(ide / "mspdb80.dll") if ide else None,
+        "vc_include": _first(vc / "include") if vc else None,
+        "vc_lib": _first(vc / "lib") if vc else None,
+        "crt": _first(vc / "lib" / "msvcrt.lib") if vc else None,
+        "sdk_include": _first(sdk / "Include") if sdk else None,
+        "sdk_lib": _first(sdk / "Lib") if sdk else None,
+        "rc": _ci(sdk / "Bin", "rc.exe") if sdk else None,
+        "atlmfc_include": _first(atlmfc / "include") if atlmfc else None,
+        "atlmfc_lib": _first(atlmfc / "lib") if atlmfc else None,
+        "atls": _first(atlmfc / "lib" / "atls.lib") if atlmfc else None,
+        "mfcs90": _first(atlmfc / "lib" / "mfcs90.lib") if atlmfc else None,
+    }
+
+
+def env(tc):
+    """Process environment for cl/link/lib with the VC, SDK and ATL/MFC include and lib paths."""
+    e = setup.cl_env(tc["cl"])
+    e["INCLUDE"] = ";".join(str(p) for p in (tc["vc_include"], tc["atlmfc_include"], tc["sdk_include"]) if p)
+    e["LIB"] = ";".join(str(p) for p in (tc["vc_lib"], tc["atlmfc_lib"], tc["sdk_lib"]) if p)
+    return e
+
+
+def run(tc, tool, args, cwd, timeout=600):
+    """Run cl/link/lib; returns (returncode, combined output)."""
+    cmd = setup.cl_command(tc[tool]) + [str(a) for a in args]
+    done = subprocess.run(cmd, cwd=cwd, env=env(tc), capture_output=True, text=True, errors="replace", timeout=timeout)
+    return done.returncode, (done.stdout + done.stderr).strip()
+
+
+REQUIRED = ("cl", "link", "lib", "mspdb", "vc_include", "crt", "sdk_include", "sdk_lib")
+
+
+def doctor(client="2008-06", log=print):
+    tc = toolchain()
+    for key, value in tc.items():
+        if key == "build":
+            continue
+        log("[%s] %-15s %s" % ("ok  " if value else ("MISS" if key in REQUIRED else "opt "), key, value or "-"))
+    missing = [k for k in REQUIRED if not tc[k]]
+    if missing:
+        log("Missing required pieces: " + ", ".join(missing))
+        return False
+    ok, text = smoke(client, tc)
+    log(("[ok  ] smoke exe runs: %s" if ok else "[FAIL] smoke: %s") % text)
+    return ok
+
+
+SMOKE = r"""#include <windows.h>
+#include <stdio.h>
+int main()
+{
+    OSVERSIONINFOA info = { sizeof(info) };
+    GetVersionExA(&info);
+    printf("rebuild-smoke %d\n", _MSC_FULL_VER);
+    return info.dwMajorVersion > 0 ? 0 : 1;
+}
+"""
+
+
+def smoke(client, tc=None):
+    """Compile and link a tiny PE32 console exe with the period toolchain, then run it."""
+    tc = tc or toolchain()
+    out = workspace(client) / "out" / "smoke"
+    out.mkdir(parents=True, exist_ok=True)
+    (out / "smoke.cpp").write_text(SMOKE)
+    code, text = run(tc, "cl", ["/nologo", "/O2", "/MD", "/EHsc", "/c", "smoke.cpp"], out)
+    if code:
+        return False, "compile failed: " + text[-400:]
+    code, text = run(tc, "link", ["/nologo", "/SUBSYSTEM:CONSOLE", "/MACHINE:X86", "smoke.obj", "kernel32.lib",
+                                  "/OUT:smoke.exe", "/MAP:smoke.map"], out)
+    if code:
+        return False, "link failed: " + text[-400:]
+    try:
+        done = subprocess.run([str(out / "smoke.exe")] if setup.WINDOWS else [setup.wine_exe(), str(out / "smoke.exe")],
+                              capture_output=True, text=True, timeout=60)
+    except OSError as error:
+        return False, "run failed: %s (the VC90 CRT msvcr90.dll must be loadable)" % error
+    return done.returncode == 0 and "rebuild-smoke 1500" in done.stdout, done.stdout.strip() or done.stderr.strip()
+
+
+# ---------- Phase 2: read-only audit ----------
+
+def _source_kind(source):
+    lib = match.directives(source or "").get("lib", "")
+    recipe, _, rel = lib.partition(" ")
+    rel = rel.strip().replace("\\", "/")
+    if not recipe:
+        return ("snippet" if source else "none"), None, None
+    return ("generated-unit" if rel.rsplit("/", 1)[-1].startswith("roc_") else "vendor-file"), recipe, rel
+
+
+def _dump(path, data):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(data, indent=1, sort_keys=True) + "\n", encoding="utf-8")
+
+
+def audit(client="2008-06", rows=None, log=print):
+    """Write manifests/{original-pe,functions,tu-coverage}.json. rows: [{addr, score, source}] (server sources)."""
+    import hashlib
+    import pefile
+    from roc import clients, worker
+    entry = clients.load()[client]
+    exe = clients.exe_path(client, entry)
+    pe = pefile.PE(str(exe))
+    out = workspace(client) / "manifests"
+    imports = {}
+    for d in getattr(pe, "DIRECTORY_ENTRY_IMPORT", []):
+        imports[d.dll.decode()] = sorted((i.name.decode() if i.name else "#%d" % i.ordinal) for i in d.imports)
+    _dump(out / "original-pe.json", {
+        "sha256": hashlib.sha256(Path(exe).read_bytes()).hexdigest(),
+        "image_base": "%08x" % pe.OPTIONAL_HEADER.ImageBase,
+        "entry_point": "%08x" % (pe.OPTIONAL_HEADER.ImageBase + pe.OPTIONAL_HEADER.AddressOfEntryPoint),
+        "sections": [{"name": s.Name.rstrip(b"\0").decode(), "va": "%08x" % (pe.OPTIONAL_HEADER.ImageBase + s.VirtualAddress),
+                      "size": s.Misc_VirtualSize} for s in pe.sections],
+        "imports": imports,
+        "tls": hasattr(pe, "DIRECTORY_ENTRY_TLS"),
+    })
+    if rows is None:
+        s = worker.load_settings()
+        api = worker.Api(s["server"], s.get("token"))
+        try:
+            rows = api.call("/v1/sources?client=" + client, timeout=300)
+        finally:
+            api.close()
+    by_addr = {r["addr"]: r for r in rows}
+    functions, files = [], {}
+    for addr, f in sorted(match._functions(client).items()):
+        if f.get("kind", "code") != "code":
+            continue
+        row = by_addr.get(addr, {})
+        source = row.get("source") or ""
+        kind, recipe, rel = _source_kind(source)
+        d = match.directives(source)
+        functions.append({"addr": addr, "size": f["size"], "unit": f.get("unit"), "score": row.get("score", 0),
+                          "source_kind": kind, "recipe": recipe, "file": rel, "cl": d.get("cl"), "flags": d.get("flags")})
+        if recipe:
+            tu = files.setdefault("%s|%s" % (recipe, rel), {"recipe": recipe, "file": rel, "kind": kind,
+                                                              "exact": [], "open": [], "flags": set(), "cl": set()})
+            tu["exact" if row.get("score") == 100 else "open"].append(addr)
+            tu["flags"].add(d.get("flags") or "")
+            tu["cl"].add(d.get("cl") or "")
+    coverage = []
+    for tu in files.values():
+        tu.update(flags=sorted(tu["flags"]), cl=sorted(tu["cl"]), exact_count=len(tu["exact"]), open_count=len(tu["open"]))
+        coverage.append(tu)
+    coverage.sort(key=lambda t: (-t["exact_count"], t["open_count"], t["file"]))
+    _dump(out / "functions.json", functions)
+    _dump(out / "tu-coverage.json", coverage)
+    kinds = {}
+    for f in functions:
+        key = (f["source_kind"], f["score"] == 100)
+        kinds[key] = kinds.get(key, 0) + 1
+    log("%s: %d code functions; %s" % (client, len(functions), ", ".join(
+        "%s %s=%d" % (k, "exact" if e else "open", n) for (k, e), n in sorted(kinds.items()))))
+    log("%d source files/units referenced; manifests in %s" % (len(coverage), out))
+    return coverage
+
+
+# ---------- Phase 3: whole-file build + TU diff ----------
+
+def tu_source(recipe, rel, cl=BUILD, flags="/O2 /Ob2 /Oy /GF /GS- /EHsc /MD"):
+    """The mining wrapper that compiles one authentic file whole, exactly as its exacts were verified."""
+    return "// roc-cl: %s\n// roc-flags: %s\n// roc-lib: %s %s\n" % (cl, flags, recipe, rel)
+
+
+def tu_diff(client, tu, log=print):
+    """Compile one coverage row's file whole; pair each object function with the 2008 address it matches.
+    Returns {obj, functions: [{symbol, size, addr|None, status}], exact, total}."""
+    flags = tu["flags"][0] if tu["flags"] and tu["flags"][0] else "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD"
+    cl = int(tu["cl"][0]) if tu["cl"] and tu["cl"][0] else BUILD
+    obj = match.compile_text(client, tu_source(tu["recipe"], tu["file"], cl, flags))
+    funcs = match.coff_functions(obj)
+    targets = {}
+    for addr in tu["exact"] + tu["open"]:
+        code, relocs, _ = match.target(client, addr)
+        targets[addr] = (code, relocs)
+    rows, owned, generic = [], set(), set()
+    for name, body, relocs in funcs:
+        hits = [a for a, (code, trel) in targets.items()
+                if len(code) == len(body) and match.exact_match(code, trel, body, relocs)]
+        status = "owned" if len(hits) == 1 else ("generic-shape" if hits else "not-in-2008-or-differs")
+        (owned if len(hits) == 1 else generic).update(hits)
+        rows.append({"symbol": name, "size": len(body), "addrs": hits, "status": status})
+    generic -= owned
+    missing = sorted(set(targets) - owned - generic)
+    report = {"recipe": tu["recipe"], "file": tu["file"], "cl": cl, "flags": flags, "functions": rows,
+              "owned": sorted(owned), "generic_shape_addrs": sorted(generic), "unpaired_targets": missing,
+              "object_functions": len(funcs)}
+    log("%s %s: %d object functions; %d 2008 addresses owned 1:1, %d only via a generic shape, %d unpaired"
+        % (tu["recipe"], tu["file"], len(funcs), len(owned), len(generic), len(missing)))
+    return obj, report
+
+
+_INDEX = {}
+
+
+def size_index(client):
+    """{size: [(addr, code, relocs)]} over every code function of the client (built once per process)."""
+    if client not in _INDEX:
+        idx = {}
+        for addr, f in match._functions(client).items():
+            if f.get("kind", "code") == "code":
+                code, relocs, _ = match.target(client, addr)
+                idx.setdefault(len(code), []).append((addr, code, relocs))
+        _INDEX[client] = idx
+    return _INDEX[client]
+
+
+def pair(client, funcs):
+    """[(symbol, size, [2008 addrs whose masked bytes equal it])] against the whole binary."""
+    idx = size_index(client)
+    return [(name, len(body), [a for a, code, trel in idx.get(len(body), ()) if match.exact_match(code, trel, body, relocs)])
+            for name, body, relocs in funcs]
+
+
+def build_library(client, recipe, files, flags, name, cl=BUILD, jobs=6, log=print):
+    """Compile each authentic file whole into out/<name>/, archive <name>.lib, and write <name>.tudiff.json."""
+    import concurrent.futures as cf
+    out = workspace(client) / "out" / name
+    out.mkdir(parents=True, exist_ok=True)
+
+    def one(rel):
+        try:
+            obj = match.compile_text(client, tu_source(recipe, rel, cl, flags))
+        except match.CompileError as error:
+            return rel, None, str(error)[:300]
+        path = out / (Path(rel).stem + ".obj")
+        path.write_bytes(obj)
+        return rel, path, None
+
+    with cf.ThreadPoolExecutor(jobs) as pool:
+        built = list(pool.map(one, files))
+    objs = [p for _, p, e in built if p]
+    errors = {rel: e for rel, _, e in built if e}
+    tc = toolchain(cl)
+    lib_name = Path(name).name + ".lib"
+    code, text = run(tc, "lib", ["/nologo", "/OUT:" + lib_name] + [p.name for p in objs], out)
+    report = {"recipe": recipe, "flags": flags, "cl": cl, "files": {}, "compile_errors": errors,
+              "lib": str(out / lib_name) if code == 0 else None, "lib_output": text[-500:]}
+    owned_total = generic_total = 0
+    for rel, path, err in built:
+        if not path:
+            continue
+        rows = pair(client, match.coff_functions(path.read_bytes()))
+        owned = sorted({a for _, _, hits in rows if len(hits) == 1 for a in hits})
+        generic = sorted({a for _, _, hits in rows if len(hits) > 1 for a in hits} - set(owned))
+        owned_total += len(owned)
+        generic_total += len(generic)
+        report["files"][rel] = {"object_functions": len(rows), "owned": owned, "generic_shape": generic,
+                                "symbols": [{"symbol": s, "size": n, "addrs": h} for s, n, h in rows]}
+    report.update(owned=owned_total, generic=generic_total)
+    _dump(out / (Path(name).name + ".tudiff.json"), report)
+    log("%s: %d/%d files compiled, lib %s; %d 2008 functions owned 1:1, %d via generic shapes"
+        % (name, len(objs), len(files), "ok" if report["lib"] else "FAILED", owned_total, generic_total))
+    return report
+
+
+def link_test(client, test, libs, includes=(), defines="WIN32 NDEBUG _MBCS", flags="/O2 /GS- /EHsc /MD",
+              system_libs=("kernel32.lib", "user32.lib", "ws2_32.lib", "winmm.lib", "advapi32.lib"), cl=BUILD, run_args=()):
+    """Compile tests/<test>.cpp, link it against rebuilt libs with the period linker, run it.
+    Returns dict(compiled, linked, ran, exit, output, unresolved, map)."""
+    tc = toolchain(cl)
+    ws = workspace(client)
+    out = ws / "out" / "tests" / test
+    out.mkdir(parents=True, exist_ok=True)
+    src = ws / "tests" / (test + ".cpp")
+    args = ["/nologo", "/c"] + flags.split() + ["/D" + d for d in defines.split()] + ["/I" + str(i) for i in includes]
+    code, text = run(tc, "cl", args + ["/Fo" + test + ".obj", str(src)], out)
+    result = {"compiled": code == 0, "linked": False, "ran": False, "exit": None, "output": text[-1500:], "unresolved": []}
+    if code:
+        return result
+    code, text = run(tc, "link", ["/nologo", "/SUBSYSTEM:CONSOLE", "/MACHINE:X86", "/MAP:%s.map" % test,
+                                  "/OUT:%s.exe" % test, test + ".obj"] + [str(l) for l in libs] + list(system_libs), out)
+    result["unresolved"] = sorted(set(re.findall(r"unresolved external symbol (\S+)", text)))
+    result.update(linked=code == 0, output=text[-1500:], map=str(out / (test + ".map")))
+    if code:
+        return result
+    done = subprocess.run([str(out / (test + ".exe"))] + list(run_args), capture_output=True, text=True, timeout=300)
+    result.update(ran=True, exit=done.returncode, output=(done.stdout + done.stderr).strip()[-1500:])
+    return result
+
+
+def defined_symbols(obj_path):
+    return {name for name, _, _ in match.coff_functions(Path(obj_path).read_bytes())}
+
+
+def resolve_objects(client, test, layers, name, includes=(), max_rounds=20, log=print):
+    """layers: [dir, ...] most-preferred first (e.g. 2008-verified partial files, then complete upstream).
+    Start from each file's most-preferred object; when the link reports an unresolved symbol, switch the
+    file that defines it in a later layer to that layer. Returns the final link_test result plus choices."""
+    out = workspace(client) / "out" / name
+    files = {}
+    for rank, layer in enumerate(layers):
+        for obj in sorted(Path(layer).glob("*.obj")):
+            if not obj.name.startswith("roc_"):
+                files.setdefault(obj.name, []).append((rank, obj))
+    choice = {f: opts[0] for f, opts in files.items()}
+    symbols = {(f, rank): defined_symbols(o) for f, opts in files.items() for rank, o in opts}
+    tc = toolchain()
+    for round_ in range(max_rounds):
+        if out.exists():
+            for old in out.glob("*.obj"):
+                old.unlink()
+        out.mkdir(parents=True, exist_ok=True)
+        for f, (rank, obj) in choice.items():
+            (out / f).write_bytes(obj.read_bytes())
+        lib_name = Path(name).name + ".lib"
+        code, text = run(tc, "lib", ["/nologo", "/OUT:" + lib_name] + sorted(choice), out)
+        result = link_test(client, test, [out / lib_name], includes=includes)
+        result["choices"] = {f: layers[rank] and str(Path(layers[rank]).name) for f, (rank, _) in choice.items()}
+        missing = re.findall(r"unresolved external symbol .*?\((\?[^)]+|_\w+)\)", result["output"])
+        if result["linked"] or not missing:
+            return result
+        switched = False
+        for sym in missing:
+            for f, opts in files.items():
+                current = choice[f][0]
+                later = next(((r, o) for r, o in opts if r > current and sym in symbols[(f, r)]), None)
+                if later:
+                    log("round %d: %s needs %s -> use %s from layer %d" % (round_ + 1, f, sym[:60], f, later[0]))
+                    choice[f] = later
+                    switched = True
+                    break
+        if not switched:
+            log("unresolved with no later definition: " + ", ".join(m[:70] for m in missing))
+            return result
+    return result
+
+
+def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- /EHsc /MD", cl=BUILD):
+    """Plain whole-file cl /c build (no mining wrapper): header search order is the ABI choice."""
+    tc = toolchain(cl)
+    out = Path(out_dir)
+    out.mkdir(parents=True, exist_ok=True)
+    results = {}
+    for src in sources:
+        args = ["/nologo", "/c"] + flags.split() + ["/D" + d for d in defines.split()] + \
+               ["/I" + str(i) for i in includes] + ["/Fo" + Path(src).stem + ".obj", str(src)]
+        code, text = run(tc, "cl", args, out)
+        results[str(src)] = (code == 0, text[-400:])
+    return results
+
+
+# ---------- modules: reproducible layered builds ----------
+
+def load_module(client, name):
+    return json.loads((ROOT / "rebuild" / client / "modules" / (name + ".json")).read_text(encoding="utf-8"))
+
+
+def build_module(client, name, log=print):
+    """Build every layer of modules/<name>.json, resolve the link, run its test, write a report."""
+    from roc import libs
+    spec = load_module(client, name)
+    out = workspace(client) / "out" / spec["name"]
+    layer_dirs = []
+    for layer in spec["layers"]:
+        folder = out / ("layer-" + layer["name"])
+        if layer["mode"] == "recipe":
+            src = libs._case_path(libs.LIBS / libs.RECIPES[layer["recipe"]]["src"])
+            files = sorted(p.name for p in src.glob(layer["files"]) if not p.name.startswith("roc_"))
+            rep = build_library(client, layer["recipe"], files, layer["flags"], "%s/layer-%s" % (spec["name"], layer["name"]), log=log)
+            errors = rep["compile_errors"]
+        else:
+            recipe = libs.RECIPES[layer["includes_from_recipe"]]
+            includes = [(libs.LIBS / i).resolve() for i in recipe["include"] if i != "WINSDK"]
+            includes += [(ROOT / i).resolve() for i in layer.get("extra_includes", [])]
+            defines = libs.RECIPES[layer["defines_from_recipe"]]["defines"] if layer.get("defines_from_recipe") else layer.get("defines", "")
+            sources = [p for p in sorted((ROOT / layer["dir"]).glob(layer["files"])) if not p.name.startswith("roc_")]
+            res = compile_direct(client, sources, folder, includes, defines, layer["flags"])
+            errors = {Path(k).name: v for k, (ok, v) in res.items() if not ok}
+        log("layer %s: %d compile errors%s" % (layer["name"], len(errors), (" (" + ", ".join(sorted(errors)) + ")") if errors else ""))
+        layer_dirs.append(folder)
+    result = resolve_objects(client, spec["test"], layer_dirs, spec["name"] + "/linked",
+                             includes=[(ROOT / i).resolve() for i in spec.get("test_includes", [])], log=log)
+    linked = out / "linked"
+    owned = owned16 = funcs = 0
+    for obj in sorted(linked.glob("*.obj")):
+        rows = pair(client, match.coff_functions(obj.read_bytes()))
+        funcs += len(rows)
+        owned += sum(1 for _, _, h in rows if len(h) == 1)
+        owned16 += sum(1 for _, s, h in rows if len(h) == 1 and s >= 16)
+    report = {"module": spec["name"], "linked": result["linked"], "test_exit": result["exit"], "test_output": result["output"][-500:],
+              "unresolved": result["unresolved"], "object_functions": funcs, "owned_2008": owned, "owned_2008_16b": owned16,
+              "choices": result.get("choices")}
+    _dump(out / "report.json", report)
+    log("%s: linked=%s test_exit=%s; %d object functions, %d byte-identical to unique 2008 functions (%d of >=16 bytes)"
+        % (spec["name"], result["linked"], result["exit"], funcs, owned, owned16))
+    return report

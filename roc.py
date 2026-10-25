@@ -528,6 +528,20 @@ def cmd_packet(a):
         print(packet.render(built))
 
 
+def cmd_rebuild(a):
+    from roc import rebuild
+    if a.action == "doctor":
+        sys.exit(0 if rebuild.doctor(a.name) else 1)
+    if a.action == "audit":
+        rebuild.audit(a.name)
+        return
+    if not a.target:
+        raise SystemExit("roc rebuild %s module NAME   (modules: %s)" % (a.name, ", ".join(
+            sorted(p.stem for p in (ROOT / "rebuild" / a.name / "modules").glob("*.json")))))
+    report = rebuild.build_module(a.name, a.target)
+    sys.exit(0 if report["linked"] and report["test_exit"] == 0 else 1)
+
+
 def cmd_work(a):
     """Manual-matching admin: list clients, scout, or select+claim the next function.
 
@@ -2566,6 +2580,10 @@ def main(argv=None):
     p.add_argument("--purge", action="store_true",
                    help="also delete clients/<name>/ and work/<name>/ (it re-downloads on demand)")
     p.set_defaults(fn=cmd_client_remove)
+    cmd("rebuild", cmd_rebuild, "2008 client rebuild: doctor | audit | module NAME (see rebuild/<client>/POLICY.md)",
+        (["name"], {"help": "client, e.g. 2008-06"}),
+        (["action"], {"choices": ["doctor", "audit", "module"]}),
+        (["target"], {"nargs": "?", "help": "module name for `module` (rebuild/<client>/modules/NAME.json)"}))
     cmd("analyze", cmd_analyze, "split a client exe into functions ('all' for every client)", (["name"], {}))
     cmd("next", cmd_next, "list the easiest open functions", (["name"], {}), (["-n"], {"type": int, "default": 20}))
     cmd("work", cmd_work, "list clients or select+claim the next unmatched function for manual matching",
