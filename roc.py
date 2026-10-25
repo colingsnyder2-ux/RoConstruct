@@ -829,6 +829,8 @@ def cmd_mutsearch(a):
     out = mutsearch.save(a.name, addr, source, best)
     if out:
         print("Wrote %s\nNext: roc submit %s %s --file %s" % (out, a.name, addr, out))
+    elif best["exhausted"] and a.block_if_exhausted and best["compiles"] < 10:
+        print("%s %s: only %d rewrites apply; too few to call it a blocker" % (a.name, addr, best["compiles"]))
     elif best["exhausted"] and a.block_if_exhausted:
         from roc import claims as claim_state
         reason = "blocked: mutsearch exhausted %d rewrites at depth %d, max %.3f" % (
