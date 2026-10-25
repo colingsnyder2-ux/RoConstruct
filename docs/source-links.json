@@ -1706,7 +1706,6 @@
   "files": [
    "gui/GUI.cpp",
    "gui/GuiDraw.cpp",
-   "gui/Widget.cpp",
    "humanoid/FallingDown.cpp",
    "reflection/reflection_object.cpp",
    "reflection/signal.cpp",
@@ -1735,8 +1734,8 @@
    "v8datamodel/Hopper.cpp",
    "v8datamodel/ICameraOwner.cpp",
    "v8datamodel/ICharacterSubject.cpp",
-   "v8datamodel/Lighting.cpp",
    "v8datamodel/ModelInstance.cpp",
+   "v8datamodel/PartInstance.cpp",
    "v8datamodel/SafeChat.cpp",
    "v8datamodel/Selection.cpp",
    "v8datamodel/TimerService.cpp",
