@@ -499,3 +499,13 @@ def test_ab_report_compares_measured_sessions(monkeypatch):
     assert report["delta"]["exact_matches"] == -1
     assert "not a significance test" in report["note"]
     assert "A/B benchmark report" in telemetry.format_compare(report)
+
+
+def test_block_parks_a_known_blocker_for_a_year(cli):
+    import argparse
+    blocked = argparse.Namespace(block=True, cooldown=900, reason="x87 schedule")
+    plain = argparse.Namespace(block=False, cooldown=900, reason="")
+    assert cli._work_cooldown_seconds(blocked) == cli.BLOCK_SECONDS >= 365 * 86400
+    assert cli._work_cooldown_seconds(plain) == 900
+    assert cli._work_reason(blocked, "skipped") == "blocked: x87 schedule"
+    assert cli._work_reason(plain, "skipped") == "skipped"

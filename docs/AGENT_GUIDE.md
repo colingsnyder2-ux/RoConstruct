@@ -101,7 +101,7 @@ remain available. `unrecorded` means evidence is missing; it is not a model diag
 | List clients / pick next function | `roc work` / `roc work CLIENT` | server, user | server progress per client; selects+claims the next unmatched function and prints concise context |
 | Read-only candidate scouting (no claim) | `roc scout CLIENT [--profile quick] [--limit 20] [--max-size N]` | server | ranked open targets; no reservation |
 | Compact evidence packet | `roc packet CLIENT ADDR --json --max-tokens 2000` | analyze | target asm/source/siblings/lessons/failed hypotheses; token-bounded |
-| Release/park a stored claim | `roc release CLIENT ADDR [--reason TEXT]` or `roc work CLIENT --skip ADDR --reason TEXT` | server, user | uses the persisted lease token; cooldown prevents immediate re-claim |
+| Release/park a stored claim | `roc release CLIENT ADDR [--reason TEXT]` or `roc work CLIENT --skip ADDR --reason TEXT` | server, user | uses the persisted lease token; cooldown prevents immediate re-claim; add `--block` for a known blocker family (parked a year, reopens when its source changes and the queue is empty, or with `--include-cooling`) |
 | Submit gains | `roc submit 2008-06 [addr ...]` | server, user | server-verified receipt |
 | Baseline benchmark A/B split/report | `roc benchmark-models --ab` / `--ab-compare SESSION_A SESSION_B` | telemetry | fixed split by target hash; reports recorded sessions only |
 | Keep generated units portable | `roc research capture-units` | sources in `src/` | `local/units/generated-units.json` |

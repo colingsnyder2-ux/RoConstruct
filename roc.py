@@ -410,11 +410,22 @@ def _score_band(score):
     return 3
 
 
+BLOCK_SECONDS = 365 * 86400
+
+
 def _work_cooldown_seconds(a):
+    """A --block park outlives any session; a changed source still reopens it (see cmd_work)."""
+    if getattr(a, "block", False):
+        return BLOCK_SECONDS
     try:
         return max(0, int(getattr(a, "cooldown", 900) or 0))
     except (TypeError, ValueError):
         return 900
+
+
+def _work_reason(a, default):
+    reason = getattr(a, "reason", "") or default
+    return "blocked: " + reason if getattr(a, "block", False) else reason
 
 
 def _local_evidence(client, addr):
@@ -480,7 +491,7 @@ def cmd_release(a):
     user = need(a.user or s.get("user"), "username", "Use --user or: roc config --user NAME")
     api = worker.Api(srv, a.token or s.get("token"))
     claim_state.purge_expired()
-    _release_target(api, user, a.name, a.addr, reason=a.reason or "manual skip",
+    _release_target(api, user, a.name, a.addr, reason=_work_reason(a, "manual skip"),
                     cooldown=_work_cooldown_seconds(a))
     return 0
 
@@ -538,6 +549,9 @@ def cmd_rebuild(a):
     if a.action == "status":
         rebuild.status(a.name)
         return
+    if a.action == "closure":
+        rebuild.closure(a.name, a.target)
+        return
     if not a.target:
         raise SystemExit("roc rebuild %s module NAME   (modules: %s)" % (a.name, ", ".join(
             sorted(p.stem for p in (ROOT / "rebuild" / a.name / "modules").glob("*.json")))))
@@ -575,7 +589,7 @@ def cmd_work(a):
             if not latest:
                 sys.exit("No stored claim to skip for %s; give an address." % a.name)
             addr = latest["addr"]
-        _release_target(api, user, a.name, addr, reason=a.reason or "skipped",
+        _release_target(api, user, a.name, addr, reason=_work_reason(a, "skipped"),
                         cooldown=_work_cooldown_seconds(a))
         return
 
@@ -2585,7 +2599,7 @@ def main(argv=None):
     p.set_defaults(fn=cmd_client_remove)
     cmd("rebuild", cmd_rebuild, "2008 client rebuild: doctor | audit | module NAME (see rebuild/<client>/POLICY.md)",
         (["name"], {"help": "client, e.g. 2008-06"}),
-        (["action"], {"choices": ["doctor", "audit", "module", "status"]}),
+        (["action"], {"choices": ["doctor", "audit", "module", "status", "closure"]}),
         (["target"], {"nargs": "?", "help": "module name for `module` (rebuild/<client>/modules/NAME.json)"}))
     cmd("analyze", cmd_analyze, "split a client exe into functions ('all' for every client)", (["name"], {}))
     cmd("next", cmd_next, "list the easiest open functions", (["name"], {}), (["-n"], {"type": int, "default": 20}))
@@ -2602,6 +2616,9 @@ def main(argv=None):
                       "help": "release the stored claim and park it (default: most recent claim)"}),
         (["--reason"], {"default": "", "help": "reason recorded with a skip/park"}),
         (["--cooldown"], {"type": int, "default": 900, "help": "seconds to keep a skipped target parked (default 15 min)"}),
+        (["--block"], {"action": "store_true",
+                       "help": "park a known blocker for a year; it reopens only when its source changes "
+                               "and the queue is empty, or with --include-cooling"}),
         (["--dry-run"], {"action": "store_true", "help": "show ranked candidates without claiming"}),
         (["--include-cooling", "--include-parked", "--revisit", "--revisit-parked", "--force"],
          {"dest": "include_cooling", "action": "store_true",
@@ -2625,7 +2642,8 @@ def main(argv=None):
         (["name"], {}), (["addr"], {}),
         (["--server"], {}), (["--user"], {}), (["--token"], {}),
         (["--reason"], {"default": "manual skip"}),
-        (["--cooldown"], {"type": int, "default": 3600, "help": "seconds to keep it parked"}))
+        (["--cooldown"], {"type": int, "default": 3600, "help": "seconds to keep it parked"}),
+        (["--block"], {"action": "store_true", "help": "park a known blocker for a year (see roc work --block)"}))
     cmd("packet", cmd_packet, "compact token-bounded evidence packet for a shortlisted target",
         (["name"], {}), (["addr"], {}),
         (["--server"], {}), (["--token"], {}),
