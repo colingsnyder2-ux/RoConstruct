@@ -1333,7 +1333,6 @@
    "OgreGpuProgramManager.cpp",
    "OgreMesh.cpp",
    "OgreMeshSerializerImpl.cpp",
-   "OgreProgressiveMesh.cpp",
    "OgreRenderSystem.cpp",
    "OgreSceneManager.cpp",
    "OgreSceneManagerEnumerator.cpp",
@@ -1617,8 +1616,10 @@
   "kind": "archive",
   "files": [
    "libs/iostreams/src/zlib.cpp",
+   "libs/program_options/src/cmdline.cpp",
    "libs/program_options/src/convert.cpp",
    "libs/program_options/src/positional_options.cpp",
+   "libs/program_options/src/variables_map.cpp",
    "libs/regex/src/cregex.cpp",
    "libs/regex/src/instances.cpp",
    "libs/signals/src/named_slot_map.cpp",
