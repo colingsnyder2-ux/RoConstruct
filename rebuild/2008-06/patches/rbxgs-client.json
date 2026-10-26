@@ -502,5 +502,21 @@
    "Body::Body()\n\t:index(-1),\n",
    "Body::Body()\n\t:unknown0x4(-1),\n\tunknown0x8(NULL),\n\tunknown0xc(false),\n\tindex(-1),\n"
   ]
+ ],
+ "App/include/v8datamodel/Workspace.h": [
+  [
+   "\t\tUIEvent idleMouseEvent;\n\t\tmutable boost::shared_ptr<Camera> currentCamera;\n\t\tbool isSimulating;\n\t\tstd::set<Script*> pendingScripts;\n\t\tScriptContext* scriptContext;\n\t\tbool inMouselookMode;\n\tpublic:\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profileWorkspaceStep;\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profileRunServiceStepped;\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profileRunServiceHeartbeat;\n\t\tboost::scoped_ptr<Profiling::ThreadProfiler> profileRun;\n",
+   "\t\tUIEvent idleMouseEvent;\n\t\tvoid* unknown0x3cc; // 0x3cc = 0; name and type unknown\n\t\tbool isSimulating;\n\t\tstd::set<Script*> pendingScripts;\n\t\tScriptContext* scriptContext;\n\t\tbool inMouselookMode;\n\t\tboost::shared_ptr<void> unknown0x3fc; // 0x3fc; pointee type unknown\n\t\tmutable boost::shared_ptr<Camera> currentCamera;\n\t\tdouble unknown0x410[3]; // 0x410..0x428, zeroed by the constructor; names unknown\n\tpublic:\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profileWorkspaceStep; // \"DataModel Step\"\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profileWorkspaceStepInner; // \"Workspace Step\"\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profileWorkspaceAssemble; // \"Workspace Assemble\"\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profileRunServiceStepped;\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profileRunServiceHeartbeat;\n"
+  ]
+ ],
+ "App/v8datamodel/Workspace.cpp": [
+  [
+   "\t\t  profileWorkspaceStep(new Profiling::CodeProfiler(\"DataModel Step\")),\n\t\t  profileRunServiceStepped(new Profiling::CodeProfiler(\"RunService Stepped\")),\n\t\t  profileRunServiceHeartbeat(new Profiling::CodeProfiler(\"RunService Heartbeat\")),\n\t\t  profileRun(new Profiling::ThreadProfiler(\"Run Thread\")),\n",
+   "\t\t  unknown0x3cc(NULL),\n\t\t  profileWorkspaceStep(new Profiling::CodeProfiler(\"DataModel Step\")),\n\t\t  profileWorkspaceStepInner(new Profiling::CodeProfiler(\"Workspace Step\")),\n\t\t  profileWorkspaceAssemble(new Profiling::CodeProfiler(\"Workspace Assemble\")),\n\t\t  profileRunServiceStepped(new Profiling::CodeProfiler(\"RunService Stepped\")),\n\t\t  profileRunServiceHeartbeat(new Profiling::CodeProfiler(\"RunService Heartbeat\")),\n"
+  ],
+  [
+   "\t\tRBXASSERT(dataState);\n\t\tsetName(\"Workspace\");\n",
+   "\t\tRBXASSERT(dataState);\n\t\tunknown0x410[0] = unknown0x410[1] = unknown0x410[2] = 0.0;\n\t\tsetName(\"Workspace\");\n"
+  ]
  ]
 }

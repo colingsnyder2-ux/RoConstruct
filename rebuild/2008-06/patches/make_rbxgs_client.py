@@ -1085,6 +1085,40 @@ patch("App/include/v8kernel/Body.h", "\t\t\tint& getIndex() {return index;};\n\t
       "\t\t\tvoid* unknown0x8;  // 0x8 = 0\n\t\t\tbool unknown0xc;   // 0xc = false\n\t\t\tBody *root;\n")
 patch("App/v8kernel/Body.cpp", "Body::Body()\n\t:index(-1),\n",
       "Body::Body()\n\t:unknown0x4(-1),\n\tunknown0x8(NULL),\n\tunknown0xc(false),\n\tindex(-1),\n")
+# --- Workspace members, 2008 order (constructor 0x5a4d90, destructor 0x5a28c0; allocation 0x45c): idleMouseEvent
+# 0x3b8, a pointer 0x3cc = 0, isSimulating 0x3d0, pendingScripts 0x3d4, scriptContext 0x3f4, inMouselookMode 0x3f8,
+# a shared_ptr 0x3fc, currentCamera 0x404 (Creatable::create<Camera>), three doubles 0x410/0x418/0x420 (0x40c is
+# alignment), five CodeProfilers 0x428..0x438 named by the constructor's strings (no ThreadProfiler), and
+# imageServerViewHack 0x43c = 0. The unnamed members are recorded as unknown. ---
+WS_H, WS_CPP = "App/include/v8datamodel/Workspace.h", "App/v8datamodel/Workspace.cpp"
+patch(WS_H, "\t\tUIEvent idleMouseEvent;\n\t\tmutable boost::shared_ptr<Camera> currentCamera;\n\t\tbool isSimulating;\n"
+      "\t\tstd::set<Script*> pendingScripts;\n\t\tScriptContext* scriptContext;\n\t\tbool inMouselookMode;\n\tpublic:\n"
+      "\t\tboost::scoped_ptr<Profiling::CodeProfiler> profileWorkspaceStep;\n"
+      "\t\tboost::scoped_ptr<Profiling::CodeProfiler> profileRunServiceStepped;\n"
+      "\t\tboost::scoped_ptr<Profiling::CodeProfiler> profileRunServiceHeartbeat;\n"
+      "\t\tboost::scoped_ptr<Profiling::ThreadProfiler> profileRun;\n",
+      "\t\tUIEvent idleMouseEvent;\n\t\tvoid* unknown0x3cc; // 0x3cc = 0; name and type unknown\n\t\tbool isSimulating;\n"
+      "\t\tstd::set<Script*> pendingScripts;\n\t\tScriptContext* scriptContext;\n\t\tbool inMouselookMode;\n"
+      "\t\tboost::shared_ptr<void> unknown0x3fc; // 0x3fc; pointee type unknown\n"
+      "\t\tmutable boost::shared_ptr<Camera> currentCamera;\n"
+      "\t\tdouble unknown0x410[3]; // 0x410..0x428, zeroed by the constructor; names unknown\n\tpublic:\n"
+      "\t\tboost::scoped_ptr<Profiling::CodeProfiler> profileWorkspaceStep; // \"DataModel Step\"\n"
+      "\t\tboost::scoped_ptr<Profiling::CodeProfiler> profileWorkspaceStepInner; // \"Workspace Step\"\n"
+      "\t\tboost::scoped_ptr<Profiling::CodeProfiler> profileWorkspaceAssemble; // \"Workspace Assemble\"\n"
+      "\t\tboost::scoped_ptr<Profiling::CodeProfiler> profileRunServiceStepped;\n"
+      "\t\tboost::scoped_ptr<Profiling::CodeProfiler> profileRunServiceHeartbeat;\n")
+patch(WS_CPP, "\t\t  profileWorkspaceStep(new Profiling::CodeProfiler(\"DataModel Step\")),\n"
+      "\t\t  profileRunServiceStepped(new Profiling::CodeProfiler(\"RunService Stepped\")),\n"
+      "\t\t  profileRunServiceHeartbeat(new Profiling::CodeProfiler(\"RunService Heartbeat\")),\n"
+      "\t\t  profileRun(new Profiling::ThreadProfiler(\"Run Thread\")),\n",
+      "\t\t  unknown0x3cc(NULL),\n"
+      "\t\t  profileWorkspaceStep(new Profiling::CodeProfiler(\"DataModel Step\")),\n"
+      "\t\t  profileWorkspaceStepInner(new Profiling::CodeProfiler(\"Workspace Step\")),\n"
+      "\t\t  profileWorkspaceAssemble(new Profiling::CodeProfiler(\"Workspace Assemble\")),\n"
+      "\t\t  profileRunServiceStepped(new Profiling::CodeProfiler(\"RunService Stepped\")),\n"
+      "\t\t  profileRunServiceHeartbeat(new Profiling::CodeProfiler(\"RunService Heartbeat\")),\n")
+patch(WS_CPP, "\t\tRBXASSERT(dataState);\n\t\tsetName(\"Workspace\");\n",
+      "\t\tRBXASSERT(dataState);\n\t\tunknown0x410[0] = unknown0x410[1] = unknown0x410[2] = 0.0;\n\t\tsetName(\"Workspace\");\n")
 
 out.write_text(json.dumps(patches, indent=1) + "\n", encoding="utf-8")
 print("%d files, %d patches -> %s" % (len(patches), sum(map(len, patches.values())), out))
