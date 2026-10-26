@@ -791,7 +791,7 @@ def build_module(client, name, log=print):
 
 
 # Phase 8 runtime milestones: each is a real test exe linked with a rebuilt module (and its deps)
-MILESTONES = {"M2": ("m2_window", "rbxgs-app"), "M4a": ("m4_datamodel", "rbxgs-app"), "M5": ("m5_place", "rbxgs-app")}
+MILESTONES = {"M2": ("m2_window", "rbxgs-app"), "M4a": ("m4_datamodel", "rbxgs-app"), "M5": ("m5_place", "rbxgs-app"), "M4b": ("m4_render", "rbxgs-app")}
 
 
 def milestones(client, log=print):
@@ -811,7 +811,7 @@ def milestones(client, log=print):
         result = link_test(client, test, libs,
                            includes=_overlaid([_spec_path(client, i) for i in spec.get("test_includes", [])], [], ov)[0], **kwargs)
         results[mid] = {"test": test, "module": module, "passed": bool(result["linked"] and result["exit"] == 0),
-                        "linked": result["linked"], "exit": result["exit"], "output": result["output"][-300:]}
+                        "linked": result["linked"], "exit": result["exit"], "output": result["output"][-300:], "unresolved": result["unresolved"]}
         log("%s %s: linked=%s exit=%s" % (mid, test, result["linked"], result["exit"]))
     _dump(workspace(client) / "out" / "milestones.json", results)
     return results

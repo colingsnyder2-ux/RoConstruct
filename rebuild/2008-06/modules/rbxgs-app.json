@@ -45,7 +45,16 @@
    "mode": "recipe",
    "recipe": "rbxgs-render",
    "direct": true,
-   "files": "TextureProxy.cpp",
+   "files": "*.cpp",
+   "extra_defines": "BOOST_ALL_NO_LIB",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD"
+  },
+  {
+   "name": "view",
+   "mode": "recipe",
+   "recipe": "rbxgs-view",
+   "direct": true,
+   "files": "*.cpp",
    "extra_defines": "BOOST_ALL_NO_LIB",
    "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD"
   },
@@ -95,7 +104,9 @@
   "tools/rbxgs/Client/Rendering/AppDraw/include",
   "tools/rbxgs/Client/boost_1_34_1/src",
   "tools/rbxgs/Client/App/lua-5.1.1/src",
-  "tools/rbxgs/Client/Rendering/SDL-1.2.6/include"
+  "tools/rbxgs/Client/Rendering/SDL-1.2.6/include",
+  "tools/rbxgs/Client/RbxViewBase",
+  "tools/rbxgs/Client/RbxView"
  ],
  "test_defines": "WIN32 NDEBUG _LIB _RELEASE _RELEASEASSERT BOOST_ALL_NO_LIB",
  "overlay": {
