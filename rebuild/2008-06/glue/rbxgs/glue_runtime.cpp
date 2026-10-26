@@ -63,12 +63,6 @@ namespace RBX
 		ServiceProvider::create<ScriptContext>(this);
 	}
 
-	// undo history is bounded
-	bool DataModel::isStackTooBig() const
-	{
-		return getStackSize() > 64;
-	}
-
 	float DataModel::step(float interval)
 	{
 		float stepped = workspace->step(interval);

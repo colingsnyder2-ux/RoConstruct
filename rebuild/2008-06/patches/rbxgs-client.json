@@ -316,5 +316,23 @@
    "\tclass FaceInstance : public Reflection::Described<FaceInstance, &sFaceInstance, Instance> \n",
    "\tclass FaceInstance : public Reflection::Described<FaceInstance, &sFaceInstance, Instance>, public IRenderable\n"
   ]
+ ],
+ "App/include/v8datamodel/DebrisService.h": [
+  [
+   "\t\tchar pad[8];\n",
+   ""
+  ]
+ ],
+ "App/include/v8tree/Verb.h": [
+  [
+   "\tclass __declspec(novtable) IDataState : public StateStack<XmlState> // NOTE: may not be intended for this file\n",
+   "\tclass __declspec(novtable) IDataState\n"
+  ]
+ ],
+ "App/include/v8datamodel/DataModel.h": [
+  [
+   "\t\tvirtual bool isStackTooBig() const;\n\n",
+   ""
+  ]
  ]
 }

@@ -981,6 +981,15 @@ FACE = "App/include/v8datamodel/FaceInstance.h"
 patch(FACE, '#include "util/NormalId.h"\n', '#include "util/NormalId.h"\n#include "util/IRenderable.h"\n')
 patch(FACE, "\tclass FaceInstance : public Reflection::Described<FaceInstance, &sFaceInstance, Instance> \n",
       "\tclass FaceInstance : public Reflection::Described<FaceInstance, &sFaceInstance, Instance>, public IRenderable\n")
+# DebrisService: rbxgs pads 8 bytes before queue to stand in for GuidItem's members missing from its Instance; with
+# the adopted 2008 Instance (0x130) the 2008 constructor (0x63be90) has queue at 0x130, maxItems 0x150, timer 0x154.
+patch("App/include/v8datamodel/DebrisService.h", "\t\tchar pad[8];\n", "")
+# IDataState is a bare interface in 2008: DataModel's RTTI base list has no StateStack, and IDataState spans only
+# 0x1f0..0x1f4 (vptr) between VerbContainer and Evaluator.
+patch("App/include/v8tree/Verb.h", "\tclass __declspec(novtable) IDataState : public StateStack<XmlState> // NOTE: may not be intended for this file\n",
+      "\tclass __declspec(novtable) IDataState\n")
+# without the StateStack base DataModel has no isStackTooBig override (it only overrode StateStack's virtual)
+patch("App/include/v8datamodel/DataModel.h", "\t\tvirtual bool isStackTooBig() const;\n\n", "")
 
 out.write_text(json.dumps(patches, indent=1) + "\n", encoding="utf-8")
 print("%d files, %d patches -> %s" % (len(patches), sum(map(len, patches.values())), out))
