@@ -13,11 +13,18 @@ OUT = ROOT / "rebuild" / "2008-06" / "out"
 
 
 def owned():
+    """Addresses the linked modules reproduce from their own layers. Those supplied by a module's verified layer
+    (swap_build's output) are not counted, or each regenerated plan would drop the previous swaps."""
     addrs = set()
     for report in OUT.glob("*/report.json"):
         data = json.loads(report.read_text())
         if data.get("linked"):
-            addrs.update(data.get("owned_addrs", []))
+            mine = set(data.get("owned_addrs", []))
+            swaps = report.parent / "verified" / "swaps.json"
+            if swaps.exists():
+                for item in json.loads(swaps.read_text()).get("swaps", []):
+                    mine -= set(item["keep"].values())
+            addrs.update(mine)
     return addrs
 
 
