@@ -45,5 +45,6 @@
  "overlay": {
   "root": "tools/openrbx/Client",
   "patches": "rebuild/2008-06/patches/openrbx-client.json"
- }
+ },
+ "verified": true
 }
