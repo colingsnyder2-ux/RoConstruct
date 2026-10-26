@@ -667,9 +667,11 @@ namespace RBX
 }
 """)
 
-# --- reflection/property.h: typed access through the descriptor ---
+# --- reflection/property.h: typed access through the descriptor. 2008 0x4accd0/0x4ad060
+# check the descriptor with RTTI and throw bad_cast; 0x4acd50/0x4ad240 do likewise for writes. ---
 append("App/include/reflection/property.h", """
 // rebuild overlay: template bodies rbxgs declares but never defines
+#include <boost/cast.hpp>
 namespace RBX
 {
 	namespace Reflection
@@ -677,13 +679,13 @@ namespace RBX
 		template<typename T>
 		T ConstProperty::getValue() const
 		{
-			return static_cast<const TypedPropertyDescriptor<T>*>(descriptor)->getValue(instance);
+			return boost::polymorphic_cast<const TypedPropertyDescriptor<T>*>(descriptor)->getValue(instance);
 		}
 
 		template<typename T>
 		void Property::setValue(const T& value)
 		{
-			static_cast<const TypedPropertyDescriptor<T>*>(descriptor)->setValue(getInstance(), value);
+			boost::polymorphic_cast<const TypedPropertyDescriptor<T>*>(descriptor)->setValue(getInstance(), value);
 		}
 	}
 }
@@ -1202,6 +1204,18 @@ patch(CONTACT_CPP, "\t\tthis->connectors.resize(0);\n\t\tthis->matched.resize(0)
 patch(CONTACT_CPP, "\t\t\t\tmatched.resize(0);\n\t\t\t\tmatched.resize(connectors.size());",
       "\t\t\t\tmatched.resize(connectors.size(), false);\n"
       "\t\t\t\tfor (int i = 0; i < connectors.size(); ++i)\n\t\t\t\t\tmatched[i] = false;")
+
+# GetSet has two flag slots before get/set (0x4accd0 getter +8, 0x4acd50 setter +12).
+# RTTI vtables distinguish them: GetImpl 0x8226b8 = true/false, SetImpl 0x842870 =
+# false/true, GetSetImpl 0x815c18 = false/false. The second flag is isWriteOnly.
+patch("App/include/reflection/property.h",
+      "\t\t\tclass GetSet\n\t\t\t{\n\t\t\tpublic:\n\t\t\t\tvirtual bool isReadOnly() const = 0;\n",
+      "\t\t\tclass GetSet\n\t\t\t{\n\t\t\tpublic:\n\t\t\t\tvirtual bool isReadOnly() const = 0;\n"
+      "\t\t\t\tvirtual bool isWriteOnly() const { return false; }\n")
+_set_only_getter = ("\t\t\t\tvirtual ReturnType getValue(const DescribedBase* object) const\n"
+                    "\t\t\t\t{\n\t\t\t\t\tthrow std::runtime_error(\"can't get value\");\n")
+patch("App/include/reflection/reflection.h", _set_only_getter,
+      "\t\t\t\tvirtual bool isWriteOnly() const { return true; }\n" + _set_only_getter)
 
 out.write_text(json.dumps(patches, indent=1) + "\n", encoding="utf-8")
 print("%d files, %d patches -> %s" % (len(patches), sum(map(len, patches.values())), out))
