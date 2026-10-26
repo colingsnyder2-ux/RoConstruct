@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-25 23:56 UTC",
+ "updated": "2026-10-26 01:00 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -191,15 +191,15 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22284,
-   "matched": 22023,
-   "partial": 259,
-   "source_matched": 13630,
-   "mined_matched": 8393,
-   "bytes": 3727770,
-   "matched_bytes": 3470994,
-   "source_bytes": 2612548,
-   "mined_bytes": 858446,
-   "partial_bytes": 255125,
+   "matched": 22027,
+   "partial": 255,
+   "source_matched": 13633,
+   "mined_matched": 8394,
+   "bytes": 3728300,
+   "matched_bytes": 3472648,
+   "source_bytes": 2613755,
+   "mined_bytes": 858893,
+   "partial_bytes": 254001,
    "data_bytes": 1559926,
    "leaderboard": [
     {
@@ -211,10 +211,10 @@
     },
     {
      "user": "colin",
-     "matched": 3078,
-     "points": 681333,
-     "submissions": 23138,
-     "last": 1792968448.4920492
+     "matched": 3079,
+     "points": 681342,
+     "submissions": 23140,
+     "last": 1792975130.7343044
     },
     {
      "user": "king_originala",
@@ -301,6 +301,13 @@
      "last": 1792972237.1377032
     },
     {
+     "user": "king_originala_sol_resume_high",
+     "matched": 3,
+     "points": 29,
+     "submissions": 6,
+     "last": 1792973633.0515938
+    },
+    {
      "user": "2gx",
      "matched": 2,
      "points": 82,
@@ -334,18 +341,11 @@
      "points": 1,
      "submissions": 1,
      "last": 1792711202.627472
-    },
-    {
-     "user": "king_originala_sol_resume_high",
-     "matched": 0,
-     "points": 25,
-     "submissions": 3,
-     "last": 1792968247.9072175
     }
    ],
    "data_matched_bytes": 198222,
    "classes": 1488,
-   "generated": 19176
+   "generated": 19169
   },
   {
    "name": "2009-06",
@@ -649,10 +649,10 @@
   },
   {
    "user": "colin",
-   "matched": 15191,
-   "points": 5520256,
-   "submissions": 186020,
-   "last": 1792968448.4920492
+   "matched": 15192,
+   "points": 5520265,
+   "submissions": 186022,
+   "last": 1792975130.7343044
   },
   {
    "user": "king_originala",
@@ -767,6 +767,13 @@
    "last": 1792972237.1377032
   },
   {
+   "user": "king_originala_sol_resume_high",
+   "matched": 3,
+   "points": 29,
+   "submissions": 6,
+   "last": 1792973633.0515938
+  },
+  {
    "user": "TrollStein",
    "matched": 2,
    "points": 9148,
@@ -844,18 +851,18 @@
    "last": 1791855247.4265246
   },
   {
-   "user": "king_originala_sol_resume_high",
-   "matched": 0,
-   "points": 25,
-   "submissions": 3,
-   "last": 1792968247.9072175
-  },
-  {
    "user": "king_originala_sol_medium",
    "matched": 0,
    "points": 8,
    "submissions": 2,
    "last": 1792961434.0510833
+  },
+  {
+   "user": "king_originala_sol_resume_root",
+   "matched": 0,
+   "points": 8,
+   "submissions": 1,
+   "last": 1792975361.0146
   },
   {
    "user": "pitbull",
