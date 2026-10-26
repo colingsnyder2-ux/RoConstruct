@@ -419,7 +419,8 @@ def unresolved_symbols(text):
 
 
 # #pragma comment(lib) names vendor headers ask for; rebuilt modules supply that code instead
-VENDOR_AUTOLINK = ("zlib.lib", "G3D.lib", "GLG3D.lib", "sdl.lib", "sdlmain.lib", "glut32.lib")
+VENDOR_AUTOLINK = ("zlib.lib", "G3D.lib", "GLG3D.lib", "sdl.lib", "sdlmain.lib", "glut32.lib", "ToolkitPro1122vc90DS.lib",
+                   "ToolkitPro1122vc90S.lib", "ToolkitPro1122vc90LDS.lib")
 
 
 def link_test(client, test, libs, includes=(), defines="WIN32 NDEBUG _MBCS _CRT_SECURE_NO_WARNINGS", flags="/O2 /GS- /EHsc /MD",
@@ -533,9 +534,13 @@ def strip_symbols(data, keep=None, drop=()):
     return bytes(data)
 
 
-def verified_layer(client, spec, log=print, exclude=frozenset(), vdrop=frozenset()):
+def verified_layer(client, spec, log=print, exclude=frozenset(), vdrop=frozenset(), helpers=None, sinks=()):
     """out/<Module>/verified (rebuild/2008-06/swap_build.py) as a preferred layer of kept symbols only, and the
-    set of those symbols, to drop from every other object. A symbol kept by several groups is taken once."""
+    set of those symbols, to drop from every other object. A symbol kept by several groups is taken once.
+    helpers: {symbol: obj} non-exact helpers a swapped function calls that no other object defines, kept in that one
+    object (not counted, not dropped elsewhere).
+    sinks: symbols only dead bodies left in verified .text sections still name (their own symbols were stripped, so
+    nothing calls them); a small MASM object defines each as an int 3 trap so those objects can link."""
     folder = workspace(client) / "out" / spec["name"] / "verified"
     if not spec.get("verified") or not (folder / "swaps.json").exists():
         return None, set()
@@ -548,7 +553,16 @@ def verified_layer(client, spec, log=print, exclude=frozenset(), vdrop=frozenset
         keep = {k for k in item["keep"] if not k.startswith(("??__E", "??__F"))} - taken - exclude - vdrop  # initializers never run here
         if keep:
             taken |= keep
-            (layer / ("verified_" + item["obj"])).write_bytes(strip_symbols((folder / item["obj"]).read_bytes(), keep=keep, drop=vdrop))
+            extra = {h for h, o in (helpers or {}).items() if o == item["obj"]} - vdrop
+            (layer / ("verified_" + item["obj"])).write_bytes(strip_symbols((folder / item["obj"]).read_bytes(), keep=keep | extra, drop=vdrop))
+    sinks = sorted(s for s in sinks if len(s) < 240)
+    if sinks:
+        src = layer / "verified_sinks.asm"
+        src.write_text(".386\n.model flat\noption casemap:none\n.code\n"
+                       + "".join("PUBLIC %s\n%s:\n" % (s, s) for s in sinks) + "\tint 3\nEND\n")
+        code, text = run(toolchain(), _ml(), ["/nologo", "/c", "/Fo" + str(layer / "verified_sinks.obj"), str(src)], layer)
+        if code:
+            log("verified: sink object failed: " + text[-300:])
     log("verified layer: %d exact symbols swapped in" % len(taken))
     return layer, taken
 
@@ -757,11 +771,31 @@ def load_module(client, name):
     return json.loads((ROOT / "rebuild" / client / "modules" / (name + ".json")).read_text(encoding="utf-8"))
 
 
+def mfc_import_lib(client):
+    """out/mfclib/mfc90.lib: the mfc90.dll import library (the 2008 exe imports mfc90.dll), made by the period lib.exe
+    from the RTM MFC source's mfc90.def. Tests reference it as ../../mfclib/mfc90.lib from out/tests/<test>."""
+    out = workspace(client) / "out" / "mfclib"
+    if not (out / "mfc90.lib").exists():
+        from roc import libs
+        out.mkdir(parents=True, exist_ok=True)
+        definition = libs.LIBS / "mfc-9.0-rtm" / "atlmfc" / "src" / "mfc" / "intel" / "mfc90.def"
+        code, text = run(toolchain(), "lib", ["/nologo", "/MACHINE:X86", "/DEF:" + str(definition), "/NAME:mfc90.dll",
+                                              "/OUT:mfc90.lib"], out)
+        if code:
+            raise RuntimeError("mfc90.lib: " + text[-300:])
+    return out / "mfc90.lib"
+
+
 def build_module(client, name, log=print):
     """Build every layer of modules/<name>.json, resolve the link, run its test, write a report."""
     from roc import libs
     spec = load_module(client, name)
     out = workspace(client) / "out" / spec["name"]
+    if spec.get("mfc_import"):  # MFC headers auto-link mfc90.lib by name: the linker finds it in the test's folder
+        import shutil
+        tests = workspace(client) / "out" / "tests" / spec["test"]
+        tests.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(mfc_import_lib(client), tests / "mfc90.lib")
     ov = build_overlay(client, spec["name"], spec.get("overlay"))
     layer_dirs = []
     for layer in spec["layers"]:
@@ -789,8 +823,9 @@ def build_module(client, name, log=print):
                                      for i in recipe.get("include", []) if i != "WINSDK"]
                 defines = (recipe.get("defines", "") + " " + layer.get("extra_defines", "")).strip()
                 append = (ROOT / layer["append_include"]).resolve() if layer.get("append_include") else None
+                flags = " ".join([layer["flags"]] + ["/FI" + h for h in recipe.get("preinclude", [])])  # recipe preludes
                 res = compile_direct(client, [tree / rel for rel in errors], folder, includes, defines,
-                                     layer["flags"], cl=layer.get("cl", BUILD), append=append, overlay=ov)
+                                     flags, cl=layer.get("cl", BUILD), append=append, overlay=ov)
                 if layer.get("fallback_cl"):  # e.g. VS2005 accepts access checks VS2008 rejects
                     res.update(compile_direct(client, [Path(k) for k, (ok, _) in res.items() if not ok], folder, includes,
                                               defines, layer["flags"], cl=layer["fallback_cl"], append=append, overlay=ov))
@@ -827,12 +862,35 @@ def build_module(client, name, log=print):
     excluded = set(json.loads(excluded_path.read_text())) if excluded_path.exists() else set()
     vdrop_path = out / "verified" / "vdrop.json"
     vdrop = set(json.loads(vdrop_path.read_text())) if vdrop_path.exists() else set()
-    for _ in range(8):  # a swapped-in function may call a helper nothing else emits: swap it back out
-        verified, drop = verified_layer(client, spec, log=log, exclude=excluded, vdrop=vdrop)
+    helpers_path = out / "verified" / "helpers.json"
+    helpers = json.loads(helpers_path.read_text()) if helpers_path.exists() else {}
+    sinks_path = out / "verified" / "sinks.json"
+    sinks = set(json.loads(sinks_path.read_text())) if sinks_path.exists() else set()
+    for _ in range(12):  # a swapped-in function may call a helper nothing else emits: keep it, or swap the caller back out
+        verified, drop = verified_layer(client, spec, log=log, exclude=excluded, vdrop=vdrop, helpers=helpers, sinks=sinks)
         result = resolve_objects(client, spec["test"], ([verified] if verified else []) + layer_dirs, spec["name"] + "/linked",
                                  includes=_overlaid([_spec_path(client, i) for i in spec.get("test_includes", [])], [], ov)[0], log=log,
                                  extra_libs=deps, defines=spec.get("test_defines"), drop=drop)
+        if verified and not result["linked"] and result["unresolved"]:
+            # a missing helper defined by one of the verified objects themselves: keep it there
+            missing, added = set(result["unresolved"]) - set(helpers) - vdrop, 0
+            for obj in sorted((out / "verified").glob("*.obj")):
+                for name, defined in coff_externals(obj.read_bytes()).items():
+                    if defined and name in missing and name not in helpers:
+                        helpers[name] = obj.name
+                        added += 1
+            if added:
+                _dump(helpers_path, helpers)
+                log("verified: keeping %d helpers the swapped functions call" % added)
+                continue
         back = set(result.get("referencers", [])) & drop
+        if verified and not result["linked"] and result["unresolved"] and not back:
+            fresh = set(result["unresolved"]) - sinks
+            if fresh:  # only dead bodies name them: give them a trap to bind to instead of evicting whole objects
+                sinks |= fresh
+                _dump(sinks_path, sorted(sinks))
+                log("verified: %d symbols only dead bodies reference; bound to a trap" % len(fresh))
+                continue
         if not back and verified and result["unresolved"]:
             # dead bodies left in a verified .text still name the helper: take that whole object out
             missing = set(result["unresolved"])

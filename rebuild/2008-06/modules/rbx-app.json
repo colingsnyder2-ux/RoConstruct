@@ -30,6 +30,13 @@
     "tools/rbxgs/Client/RbxGraphics/include"
    ],
    "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD"
+  },
+  {
+   "name": "glue",
+   "mode": "direct",
+   "dir": "rebuild/2008-06/glue/openrbx",
+   "files": "*.cpp",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD"
   }
  ],
  "test": "rbx_app",
