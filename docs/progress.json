@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-26 05:15 UTC",
+ "updated": "2026-10-26 06:20 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -191,15 +191,15 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22284,
-   "matched": 22035,
-   "partial": 247,
-   "source_matched": 13640,
-   "mined_matched": 8395,
+   "matched": 22039,
+   "partial": 243,
+   "source_matched": 13642,
+   "mined_matched": 8397,
    "bytes": 3728300,
-   "matched_bytes": 3476326,
-   "source_bytes": 2616718,
-   "mined_bytes": 859608,
-   "partial_bytes": 250323,
+   "matched_bytes": 3477648,
+   "source_bytes": 2618090,
+   "mined_bytes": 859558,
+   "partial_bytes": 249001,
    "data_bytes": 1559926,
    "leaderboard": [
     {
@@ -252,18 +252,18 @@
      "last": 1792513428.7999606
     },
     {
+     "user": "nuck16",
+     "matched": 30,
+     "points": 479,
+     "submissions": 31,
+     "last": 1792995306.57419
+    },
+    {
      "user": "king_originala_sol_native",
      "matched": 30,
      "points": 327,
      "submissions": 54,
      "last": 1792961617.162224
-    },
-    {
-     "user": "nuck16",
-     "matched": 26,
-     "points": 457,
-     "submissions": 26,
-     "last": 1792990999.3353448
     },
     {
      "user": "Cezant64gamejr",
@@ -343,7 +343,7 @@
      "last": 1792711202.627472
     }
    ],
-   "data_matched_bytes": 198387,
+   "data_matched_bytes": 198542,
    "classes": 1488,
    "generated": 19169
   },
@@ -670,10 +670,10 @@
   },
   {
    "user": "nuck16",
-   "matched": 634,
-   "points": 20745,
-   "submissions": 634,
-   "last": 1792991656.2813444
+   "matched": 1599,
+   "points": 102162,
+   "submissions": 1600,
+   "last": 1792995306.57419
   },
   {
    "user": "Espeon",
