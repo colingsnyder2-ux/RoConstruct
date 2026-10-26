@@ -1149,6 +1149,11 @@ patch(RS_H, "\t\tRunState runState;\n\t\tboost::mutex runMutex;\n\t\tbool stopRe
       "\t\tint invalidRunViewCount;\n\t\tboost::mutex unknownMutex0x2ac;\n"
       "\t\tstd::deque<void*> unknownQueue0x2b4; // element type unknown\n")
 patch(RS_H, "#include <boost/scoped_ptr.hpp>\n", "#include <boost/scoped_ptr.hpp>\n#include <G3D/Stopwatch.h>\n#include <deque>\n")
+# Player (allocation 0x1d8): the 2008 constructor (0x493da0) matches rbxgs through userId (0x1b4), then zeroes twelve
+# 16-bit words 0x1b8..0x1d0 before lastActivityTime (double, 0x1d0). Their names and grouping are unknown.
+patch("Network/include/Network/Player.h", "\t\t\tint userId;\n\t\t\tG3D::RealTime lastActivityTime;\n",
+      "\t\t\tint userId;\n\t\t\tshort unknown0x1b8[12]; // zeroed by the 2008 constructor; names and grouping unknown\n"
+      "\t\t\tG3D::RealTime lastActivityTime;\n")
 
 out.write_text(json.dumps(patches, indent=1) + "\n", encoding="utf-8")
 print("%d files, %d patches -> %s" % (len(patches), sum(map(len, patches.values())), out))

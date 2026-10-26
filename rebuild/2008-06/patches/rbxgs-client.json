@@ -538,5 +538,11 @@
    "#include <boost/scoped_ptr.hpp>\n",
    "#include <boost/scoped_ptr.hpp>\n#include <G3D/Stopwatch.h>\n#include <deque>\n"
   ]
+ ],
+ "Network/include/Network/Player.h": [
+  [
+   "\t\t\tint userId;\n\t\t\tG3D::RealTime lastActivityTime;\n",
+   "\t\t\tint userId;\n\t\t\tshort unknown0x1b8[12]; // zeroed by the 2008 constructor; names and grouping unknown\n\t\t\tG3D::RealTime lastActivityTime;\n"
+  ]
  ]
 }
