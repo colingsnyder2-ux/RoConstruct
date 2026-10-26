@@ -48,10 +48,46 @@ def compatible(module, unit):
     return bool(aliases) and all(have.get(h) == r.rsplit("/", 1)[-1] for h, r in aliases)
 
 
-def build_group(item):
+OVERLAY_ROOTS = {"RbxgsApp": ROOT / "tools" / "rbxgs" / "Client"}
+
+
+def overlay_candidate(module, unit):
+    """A generated unit whose aliases disagree with the adopted headers: it can still be tried against the module's
+    own (overlay) headers, which now carry the 2008 layouts its private header copies stood in for."""
+    src = TREES.get(module, Path("-")) / unit
+    return module in OVERLAY_ROOTS and unit.rsplit("/", 1)[-1].startswith("roc_") and src.exists() \
+        and bool(ALIAS.search(src.read_text(errors="replace")))
+
+
+def compile_against_overlay(module, item, n):
+    """The unit with every include_alias removed, compiled with the recipe's settings but the module overlay's copy
+    of each include folder first: its functions then use exactly the headers the module links with. Only those still
+    byte-exact are kept (check_text decides)."""
+    from roc import libs
+    root, overlay = OVERLAY_ROOTS[module].resolve(), OUT / module / "overlay"
+    text = ALIAS.sub("", (TREES[module] / item["file"]).read_text(errors="replace"))
+    path = OUT / module / "remap" / ("%04d-%s" % (n, item["file"].rsplit("/", 1)[-1]))
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(text)
+    r, folder = libs.RECIPES[item["recipe"]], libs.fetch(item["recipe"]).resolve()
+    dirs = [folder] + [Path(libs.winsdk_include()) if i == "WINSDK" else libs._case_path(libs.LIBS / i)
+                       for i in r.get("include", [])]
+    include = []
+    for d in dirs:
+        d = Path(d).resolve()
+        if d.is_relative_to(root) and (overlay / d.relative_to(root)).exists():
+            include.append(str(overlay / d.relative_to(root)))
+        include.append(str(d))
+    build = int(item["cl"]) if item["cl"].isdigit() else match.clients.load()[CLIENT]["compiler_build"]
+    body = libs.preprocess(build, path, ";".join(include), r.get("defines", ""))
+    return match._compile(body, item["flags"] or match.DEFAULT_FLAGS, build, False)
+
+
+def build_group(job):
+    module, n, item = job
     text = (ROOT / "src" / CLIENT / (item["addrs"][0] + ".cpp")).read_text(errors="replace")
     try:
-        obj = match.compile_text(CLIENT, text)
+        obj = compile_against_overlay(module, item, n) if item.get("overlay") else match.compile_text(CLIENT, text)
     except Exception as error:  # noqa: BLE001 - report and continue with the other groups
         return item, None, {}, str(error)[:300]
     keep = {}
@@ -66,14 +102,24 @@ def main(module, limit=None):
     plan = json.loads((OUT / "swap-plan.json").read_text())
     # generated analog units (roc_*) encode recovered 2008 layouts: take one only when every header it aliases
     # is a header the module adopted with that same replacement (Phase 4 canonical headers)
-    groups = [g for g in plan["groups"] if g["recipe"] in RECIPES[module] and compatible(module, g["file"])][:limit]
+    # is a header the module adopted with that same replacement (Phase 4 canonical headers); one that disagrees is
+    # compiled against the module's overlay headers instead (compile_against_overlay)
+    groups = []
+    for g in plan["groups"]:
+        if g["recipe"] not in RECIPES[module]:
+            continue
+        if compatible(module, g["file"]):
+            groups.append(g)
+        elif overlay_candidate(module, g["file"]):
+            groups.append(dict(g, overlay=True))
+    groups = groups[:limit]
     folder = OUT / module / "verified"
     folder.mkdir(parents=True, exist_ok=True)
     for old in folder.glob("*.obj"):
         old.unlink()
     swaps, failed, wanted, found = [], [], 0, 0
     with ThreadPoolExecutor(8) as pool:
-        for n, (item, obj, keep, error) in enumerate(pool.map(build_group, groups)):
+        for n, (item, obj, keep, error) in enumerate(pool.map(build_group, [(module, i, g) for i, g in enumerate(groups)])):
             wanted += len(item["addrs"])
             if error:
                 failed.append({"file": item["file"], "cl": item["cl"], "flags": item["flags"], "error": error})
