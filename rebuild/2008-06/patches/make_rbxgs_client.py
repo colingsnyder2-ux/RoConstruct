@@ -1217,5 +1217,14 @@ _set_only_getter = ("\t\t\t\tvirtual ReturnType getValue(const DescribedBase* ob
 patch("App/include/reflection/reflection.h", _set_only_getter,
       "\t\t\t\tvirtual bool isWriteOnly() const { return true; }\n" + _set_only_getter)
 
+# Workspace camera delegation in 2008 omits the later rbxgs assertion calls:
+# 0x5a0210 is only virtual getCamera() + Camera::gCamera at 0x130 (13 bytes);
+# 0x5a0260 clears isSimulating at 0x3d0, gets the camera via ICameraOwner at
+# 0x288, then tail-calls Camera::autoMode (31 bytes), with no guard branches.
+patch(WS_CPP, "\t\tRBXASSERT(getCamera());\n", "")
+patch(WS_CPP, "\t\tRBXASSERT(isSimulating);\n\t\tisSimulating = false;\n",
+      "\t\tisSimulating = false;\n")
+patch(WS_CPP, "\t\tRBXASSERT(!getCurrentMouseCommand()->captured());\n", "")
+
 out.write_text(json.dumps(patches, indent=1) + "\n", encoding="utf-8")
 print("%d files, %d patches -> %s" % (len(patches), sum(map(len, patches.values())), out))

@@ -533,6 +533,18 @@
   [
    "\t\tRBXASSERT(dataState);\n\t\tsetName(\"Workspace\");\n",
    "\t\tRBXASSERT(dataState);\n\t\tunknown0x410[0] = unknown0x410[1] = unknown0x410[2] = 0.0;\n\t\tsetName(\"Workspace\");\n"
+  ],
+  [
+   "\t\tRBXASSERT(getCamera());\n",
+   ""
+  ],
+  [
+   "\t\tRBXASSERT(isSimulating);\n\t\tisSimulating = false;\n",
+   "\t\tisSimulating = false;\n"
+  ],
+  [
+   "\t\tRBXASSERT(!getCurrentMouseCommand()->captured());\n",
+   ""
   ]
  ],
  "App/include/script/ScriptContext.h": [
