@@ -671,7 +671,12 @@ def export(store):
             "leaderboards": {c: store.leaderboard(c)[:20] for c in scores}}
 
 
-def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None):
+def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, integration=None):
+    if integration is None and getattr(store, "db", None) is not None:
+        from roc.integration import Promotions
+        integration = Promotions(store)
+    from roc.integration import native_token as integration_token
+    native_token = integration_token(integration.root if integration else ROOT, token)
     from roc import libs
     recipe_versions = libs.recipe_versions()
     lease_slots = threading.BoundedSemaphore(8)
@@ -710,11 +715,21 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None):
         def do_GET(self):
             url = urlparse(self.path)
             q = {k: v[0] for k, v in parse_qs(url.query).items()}
+            if url.path in ("/v1/integration", "/v1/integration/base"):
+                if integration is None:
+                    return self.send(503, {"error": "Native integration unavailable"})
+                try:
+                    return self.send(200, integration.baseline() if url.path.endswith("/base")
+                                     else integration.status(q.get("id")))
+                except (ValueError, OSError) as error:
+                    return self.send(503, {"error": str(error)})
             if url.path == "/v1/info":
                 reg = clients.load()
                 return self.send(200, {"clients": {n: {k: e.get(k) for k in ("sha256", "compiler", "compiler_build", "flags")}
                                                    for n, e in reg.items()}, "verify": sorted(can_verify),
-                                       "recipe_versions": recipe_versions})
+                                       "recipe_versions": recipe_versions,
+                                       "native_integration": {"version": 1, "enabled": bool(native_token),
+                                                              "max_batch": 16}})
             if url.path == "/v1/status":
                 return self.send(200, store.status())
             if url.path == "/v1/progress":
@@ -781,7 +796,8 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None):
             self.send(404, {"error": "unknown endpoint"})
 
         def do_POST(self):
-            if token and self.headers.get("X-Roc-Token") != token:
+            if (not urlparse(self.path).path.startswith("/v1/integration/")
+                    and token and self.headers.get("X-Roc-Token") != token):
                 return self.send(403, {"error": "wrong or missing server password (token)"})
             try:
                 length = int(self.headers.get("Content-Length") or 0)
@@ -792,6 +808,30 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None):
                 return self.send(400, {"error": "bad json"})
             path = urlparse(self.path).path
             user = str(body.get("user", ""))
+            if path.startswith("/v1/integration/"):
+                if integration is None:
+                    return self.send(503, {"error": "Native integration unavailable"})
+                if not native_token:
+                    return self.send(503, {"error": "Native integration needs a configured server token"})
+                if self.headers.get("X-Roc-Token") != native_token:
+                    return self.send(403, {"error": "Native integration token required"})
+                if not USER_RE.fullmatch(user):
+                    return self.send(400, {"error": "Need a valid contributor username"})
+                try:
+                    if path.endswith("/claim"):
+                        if integration.worker_error:
+                            return self.send(503, {"error": "Native verifier unavailable: " + integration.worker_error})
+                        result = integration.claim(user, str(body.get("worker", "")),
+                                                   body.get("count", 1), body.get("unit"))
+                    elif path.endswith("/submit"):
+                        result = integration.submit(user, body)
+                    elif path.endswith("/renew") or path.endswith("/release"):
+                        result = integration.renew(user, str(body.get("claim", "")), path.endswith("/release"), body.get("reason"))
+                    else:
+                        return self.send(404, {"error": "Unknown integration action"})
+                    return self.send(200, result)
+                except (ValueError, TypeError, OSError) as error:
+                    return self.send(400, {"error": str(error)})
             if path == "/v1/family":
                 return self.send(200, store.register_family(str(body.get("client", "")),
                                                              str(body.get("addr", "")),
@@ -1015,9 +1055,16 @@ def serve(host="0.0.0.0", port=8765, db=None, token=None, lease_seconds=900,
         log("Discord server mine logs: enabled (separate feed)")
     mine_log = MineLog(discord_webhook, store) if discord_webhook else None
     server_mine_log = MineLog(server_webhook, store, server=True) if server_webhook else None
+    from roc.integration import Promotions
+    from roc.integration_verify import loop as integration_loop
+    integration = Promotions(store)
+    from roc.integration import native_token as integration_token
+    integration_token(ROOT, token, create=True)
     httpd = ThreadingHTTPServer((host, port), make_handler(store, token, can_verify,
-                                                       mine_log=mine_log, server_mine_log=server_mine_log))
+                                                       mine_log=mine_log, server_mine_log=server_mine_log,
+                                                       integration=integration))
     httpd.store = store
+    threading.Thread(target=integration_loop, args=(integration, log), daemon=True).start()
     def daily_reports():
         from roc.reports import archive_days, save
         archived = False

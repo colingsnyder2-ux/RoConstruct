@@ -1268,5 +1268,16 @@ patch("App/script/ScriptContext.cpp",
       "Lua::LuaArguments::get(thread, static_cast<int>(i+1), result.get()->at(i));",
       "Lua::LuaArguments::get(thread, static_cast<int>(i+1), result.get()->at(i), true);")
 
+# Independently accepted promotions are declarative edits, never uploaded Python.
+# The server verifier validates anchors and all ABI/runtime gates before publishing.
+native_promotions = out.with_name("native-promotions.json")
+if native_promotions.exists():
+    import sys
+    sys.path.insert(0, str(ROOT))
+    from roc.integration import merge_patches
+    batches = json.loads(native_promotions.read_text(encoding="utf-8"))
+    for batch in batches if isinstance(batches, list) else [batches]:
+        patches = merge_patches(patches, batch)
+
 out.write_text(json.dumps(patches, indent=1) + "\n", encoding="utf-8")
 print("%d files, %d patches -> %s" % (len(patches), sum(map(len, patches.values())), out))

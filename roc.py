@@ -568,6 +568,11 @@ def cmd_rebuild(a):
     sys.exit(0 if report["linked"] and report["test_exit"] == 0 else 1)
 
 
+def cmd_integrate(a):
+    from roc import integration
+    integration.command(a)
+
+
 def cmd_work(a):
     """Manual-matching admin: list clients, scout, or select+claim the next function.
 
@@ -2681,6 +2686,14 @@ def main(argv=None):
         (["action"], {"choices": ["doctor", "audit", "module", "status", "closure", "milestones", "progress", "placed"]}),
         (["target"], {"nargs": "?", "help": "module name for `module` (rebuild/<client>/modules/NAME.json)"}),
         (["--no-notify"], {"action": "store_true", "help": "do not send the Discord webhook"}))
+    cmd("integrate", cmd_integrate, "claim native integration work, bulk submit, track verified credit",
+        (["action"], {"nargs": "?", "default": "next", "choices": ["next", "submit", "status", "watch", "renew", "release", "sync", "invite"]}),
+        (["--count"], {"type": int, "default": 1, "help": "claim 1-16 classes; --all submits them as one verified batch"}),
+        (["--unit"], {}), (["--claim"], {}), (["--all"], {"action": "store_true"}),
+        (["--reason"], {"help": "park a released class for two hours, citing the blocker"}),
+        (["--id"], {}), (["--model"], {}), (["--evidence-file"], {}),
+        (["--retry"], {"action": "store_true", "help": "retry a rejected batch after a verifier/environment failure"}),
+        (["--wait"], {"action": "store_true"}), (["--server"], {}), (["--user"], {}), (["--token"], {}))
     cmd("analyze", cmd_analyze, "split a client exe into functions ('all' for every client)", (["name"], {}))
     cmd("next", cmd_next, "list the easiest open functions", (["name"], {}), (["-n"], {"type": int, "default": 20}))
     cmd("work", cmd_work, "list clients or select+claim the next unmatched function for manual matching",

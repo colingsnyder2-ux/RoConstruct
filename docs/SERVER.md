@@ -93,6 +93,10 @@ the build. Maintainer commands typed in a worker install say so instead of crash
 
 ## After 100%
 
+Native promotion claims, batch uploads, independent rebuild verification and
+separate credit are documented in [INTEGRATION.md](INTEGRATION.md). Use
+`roc integrate --count 4`; several classes can share one verification job.
+
 Match data sections, relink a byte-identical exe, name types and functions, swap
 third-party code for real source (Ogre, G3D, Lua, RakNet, Boost; open replacements for
 MFC, Codejock, FMOD), then port (WebAssembly, Linux, macOS).

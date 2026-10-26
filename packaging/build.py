@@ -35,6 +35,8 @@ WORKER_MODULES = [
 SERVER_MODULES = ["cluster", "progress", "reports", "server"]
 WORKER_MODULES += ["agent_memory", "research", "agent_recovery", "bruteforce", "extents", "remill", "repair_scan", "rtti", "boundaries",
                    "claims", "packet", "scout", "ranking", "routing"]
+WORKER_MODULES += ["integration", "rebuild", "mutsearch", "twinpatch"]
+SERVER_MODULES += ["integration_verify", "integration_notify"]
 
 COMMON_FILES = ["roc.py", "roc.cmd", "roc.sh", "install.cmd", "install.sh",
                 "packaging/organize-local.ps1", "research/repair-patterns.json", "docs/SETUP.md", "docs/SERVER.md",
@@ -46,6 +48,10 @@ COMMON_FILES = ["roc.py", "roc.cmd", "roc.sh", "install.cmd", "install.sh",
                 *sorted(p.relative_to(ROOT).as_posix() for p in (ROOT / "roc" / "web" / "fonts").iterdir()),
                 "docs/logo.png", "docs/favicon.png",
                 "clients/clients.json", "clients/sources.json", "clients/donor.json"]
+# Native contributors need trusted recipes/generator, never private vendor trees.
+COMMON_FILES += ["docs/INTEGRATION.md"]
+COMMON_FILES += subprocess.check_output(["git", "ls-files", "rebuild/2008-06"],
+                                        cwd=ROOT, text=True).splitlines()
 
 PACKAGES = {
     "worker": {
