@@ -528,5 +528,15 @@
    "#include \"script/Script.h\"\n",
    "#include \"script/Script.h\"\n#include <boost/thread/mutex.hpp>\n#include <boost/thread/condition.hpp>\n"
   ]
+ ],
+ "App/include/util/RunStateOwner.h": [
+  [
+   "\t\tRunState runState;\n\t\tboost::mutex runMutex;\n\t\tbool stopRequested;\n\t\tboost::condition runViewsDoneCondition;\n\t\tboost::condition stateChangedCondition;\n\t\tfloat framePeriod;\n\t\tboost::scoped_ptr<boost::thread> runThread;\n\t\tboost::mutex viewMutex;\n\t\tstd::map<IRunView*, bool> views;\n\t\tint invalidRunViewCount;\n",
+   "\t\tRunState runState;\n\t\tdouble unknown0x1b8;\n\t\tfloat framePeriod;\n\t\tdouble unknown0x1c8[4]; // names unknown\n\t\tG3D::Stopwatch unknownStopwatch0x1e8;\n\t\tboost::mutex runMutex;\n\t\tbool stopRequested;\n\t\tboost::condition runViewsDoneCondition;\n\t\tboost::condition stateChangedCondition;\n\t\tboost::scoped_ptr<boost::thread> runThread;\n\t\tboost::mutex viewMutex;\n\t\tstd::map<IRunView*, bool> views;\n\t\tint invalidRunViewCount;\n\t\tboost::mutex unknownMutex0x2ac;\n\t\tstd::deque<void*> unknownQueue0x2b4; // element type unknown\n"
+  ],
+  [
+   "#include <boost/scoped_ptr.hpp>\n",
+   "#include <boost/scoped_ptr.hpp>\n#include <G3D/Stopwatch.h>\n#include <deque>\n"
+  ]
  ]
 }

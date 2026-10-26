@@ -1131,6 +1131,24 @@ patch("App/include/script/ScriptContext.h", "        boost::shared_ptr<Stats::It
       "        boost::condition unknownCondition0x1d8;\n")
 patch("App/include/script/ScriptContext.h", '#include "script/Script.h"\n',
       '#include "script/Script.h"\n#include <boost/thread/mutex.hpp>\n#include <boost/thread/condition.hpp>\n')
+# --- RunService members, 2008 (constructor 0x556b00, destructor 0x555c00; allocation 0x2d8): runState 0x1b4, a double
+# 0x1b8, framePeriod 0x1c0 (a float constant), four doubles 0x1c8..0x1e8, a G3D::Stopwatch 0x1e8 (ctor 0x512060),
+# runMutex 0x240, stopRequested 0x248, the two boost::conditions 0x24c/0x264 (0x5f1bd0), runThread 0x27c, viewMutex
+# 0x280, views 0x288, invalidRunViewCount 0x2a8, a boost::mutex 0x2ac, a std::deque 0x2b4 (container proxy + four
+# zeroed words, as DebrisService's queue), runDisabled 0x2d4. Unnamed members and the deque's element type unknown. ---
+RS_H = "App/include/util/RunStateOwner.h"
+patch(RS_H, "\t\tRunState runState;\n\t\tboost::mutex runMutex;\n\t\tbool stopRequested;\n"
+      "\t\tboost::condition runViewsDoneCondition;\n\t\tboost::condition stateChangedCondition;\n\t\tfloat framePeriod;\n"
+      "\t\tboost::scoped_ptr<boost::thread> runThread;\n\t\tboost::mutex viewMutex;\n\t\tstd::map<IRunView*, bool> views;\n"
+      "\t\tint invalidRunViewCount;\n",
+      "\t\tRunState runState;\n\t\tdouble unknown0x1b8;\n\t\tfloat framePeriod;\n"
+      "\t\tdouble unknown0x1c8[4]; // names unknown\n\t\tG3D::Stopwatch unknownStopwatch0x1e8;\n"
+      "\t\tboost::mutex runMutex;\n\t\tbool stopRequested;\n"
+      "\t\tboost::condition runViewsDoneCondition;\n\t\tboost::condition stateChangedCondition;\n"
+      "\t\tboost::scoped_ptr<boost::thread> runThread;\n\t\tboost::mutex viewMutex;\n\t\tstd::map<IRunView*, bool> views;\n"
+      "\t\tint invalidRunViewCount;\n\t\tboost::mutex unknownMutex0x2ac;\n"
+      "\t\tstd::deque<void*> unknownQueue0x2b4; // element type unknown\n")
+patch(RS_H, "#include <boost/scoped_ptr.hpp>\n", "#include <boost/scoped_ptr.hpp>\n#include <G3D/Stopwatch.h>\n#include <deque>\n")
 
 out.write_text(json.dumps(patches, indent=1) + "\n", encoding="utf-8")
 print("%d files, %d patches -> %s" % (len(patches), sum(map(len, patches.values())), out))
