@@ -187,6 +187,12 @@
    "part.lock()->"
   ]
  ],
+ "App/include/reflection/object.h": [
+  [
+   "@replace",
+   "App/roc_espeon_machineheadercadaaebe20af2047.cpp"
+  ]
+ ],
  "App/v8tree/Instance.cpp": [
   [
    "@all:\t\t  archivable(true),\n\t\t  guid()",

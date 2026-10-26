@@ -525,15 +525,18 @@ def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- 
     out.mkdir(parents=True, exist_ok=True)
     results = {}
     includes, compiled = _overlaid(includes, sources, overlay)
-    # incremental: tools/ is read-only, so an object newer than its source, the overlay and the
-    # appended header is current (a changed patch set makes a new overlay folder, hence newer)
-    stamp = max([0] + ([Path(overlay[1]).stat().st_mtime] if overlay else []) + ([Path(append).stat().st_mtime] if append else []))
+    # incremental: an object is current when it is newer than its source, the appended header and every
+    # file it included last time (/showIncludes, saved next to it); a missing include forces a rebuild
     for orig, src in zip(sources, compiled):
         src = Path(src)
         obj = out / (src.stem + ".obj")
-        if obj.exists() and obj.stat().st_mtime > max(stamp, src.stat().st_mtime, Path(orig).stat().st_mtime):
-            results[str(orig)] = (True, "up to date")
-            continue
+        deps_file = obj.with_suffix(".deps")
+        if obj.exists() and deps_file.exists():
+            deps = [src, Path(orig)] + ([Path(append)] if append else []) + [Path(d) for d in json.loads(deps_file.read_text())]
+            built = obj.stat().st_mtime
+            if all(d.exists() and d.stat().st_mtime < built for d in deps):
+                results[str(orig)] = (True, "up to date")
+                continue
         obj.unlink(missing_ok=True)  # a failed compile must not leave a stale object
         if src.suffix.lower() == ".asm":
             code, text = run(tc, _ml(), ["/nologo", "/c", "/Fo" + str(obj), str(src)], out)
@@ -548,8 +551,12 @@ def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- 
         # for sibling "quoted" includes (overlay twin first, as everywhere else)
         siblings = [src.parent, Path(orig).parent] if src != Path(orig) else []
         args = ["/nologo", "/c"] + flags.split() + ["/D" + d for d in defines.split()] + \
-               ["/I" + str(i) for i in siblings + list(includes)] + ["/Fo" + src.stem + ".obj", str(unit)]
+               ["/I" + str(i) for i in siblings + list(includes)] + ["/showIncludes", "/Fo" + src.stem + ".obj", str(unit)]
         code, text = run(tc, "cl", args, out)
+        included = re.findall(r"^Note: including file:\s*(.+?)\s*$", text, re.M)
+        text = "\n".join(l for l in text.splitlines() if not l.startswith("Note: including file:"))
+        if code == 0:
+            deps_file.write_text(json.dumps(sorted(set(included))))
         results[str(orig)] = (code == 0, "\n".join(l for l in text.splitlines() if " error " in l)[:2000] or text[-400:])
     return results
 
@@ -598,33 +605,33 @@ def build_overlay(client, module, spec):
     import hashlib
     root = (ROOT / spec["root"]).resolve()
     patches = json.loads((ROOT / spec["patches"]).read_text(encoding="utf-8"))
-    key = hashlib.sha256(json.dumps(patches, sort_keys=True).encode()).hexdigest()[:12]
-    overlay = workspace(client) / "out" / module / ("overlay-" + key)
-    if not overlay.exists():
-        import shutil
-        tmp = overlay.with_name(overlay.name + ".tmp")
-        shutil.rmtree(tmp, ignore_errors=True)  # a half-written copy from an interrupted run
-        for rel, edits in patches.items():
-            text = (root / rel).read_text(errors="replace") if (root / rel).exists() else ""
-            for old, new in edits:
-                if old == "@replace":  # adopt a whole header from a local unit; no vendor text in the patch file
-                    text = (root / new).read_text(errors="replace")
-                    continue
-                if old.startswith("@all:"):  # every occurrence, e.g. a member that became a weak_ptr
-                    if old[5:] not in text:
-                        raise ValueError("overlay patch for %s no longer applies: %r" % (rel, old[:60]))
-                    text = text.replace(old[5:], new)
-                    continue
-                if old and old not in text:
+    # one stable folder: a file is rewritten only when its patched text changes, so objects that do not
+    # include it stay current (compile_direct tracks each object's includes)
+    overlay = workspace(client) / "out" / module / "overlay"
+    wanted = {}
+    for rel, edits in patches.items():
+        text = (root / rel).read_text(errors="replace") if (root / rel).exists() else ""
+        for old, new in edits:
+            if old == "@replace":  # adopt a whole header from a local unit; no vendor text in the patch file
+                text = (root / new).read_text(errors="replace")
+                continue
+            if old.startswith("@all:"):  # every occurrence, e.g. a member that became a weak_ptr
+                if old[5:] not in text:
                     raise ValueError("overlay patch for %s no longer applies: %r" % (rel, old[:60]))
-                text = text.replace(old, new, 1) if old else text + new
-            (tmp / rel).parent.mkdir(parents=True, exist_ok=True)
-            (tmp / rel).write_text(text)
-        try:
-            tmp.rename(overlay)
-        except PermissionError:  # Windows: a scanner can hold the fresh folder open briefly
-            shutil.copytree(tmp, overlay)
-            shutil.rmtree(tmp, ignore_errors=True)
+                text = text.replace(old[5:], new)
+                continue
+            if old and old not in text:
+                raise ValueError("overlay patch for %s no longer applies: %r" % (rel, old[:60]))
+            text = text.replace(old, new, 1) if old else text + new
+        wanted[Path(rel).as_posix()] = text
+    for path in [p for p in overlay.rglob("*") if p.is_file()] if overlay.exists() else []:
+        if path.relative_to(overlay).as_posix() not in wanted:
+            path.unlink()  # no longer patched: dependents see it gone and rebuild
+    for rel, text in wanted.items():
+        target = overlay / rel
+        if not target.exists() or target.read_text(errors="replace") != text:
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_text(text)
     return root, overlay
 
 
@@ -770,6 +777,33 @@ def build_module(client, name, log=print):
     except Exception as error:  # progress is reporting only; never fail a build
         log("rebuild progress update failed: %s" % error)
     return report
+
+
+# Phase 8 runtime milestones: each is a real test exe linked with a rebuilt module (and its deps)
+MILESTONES = {"M2": ("m2_window", "rbxgs-app")}
+
+
+def milestones(client, log=print):
+    """Build and run each milestone test; writes out/milestones.json ({id: {passed, exit, output}})."""
+    results = {}
+    for mid, (test, module) in sorted(MILESTONES.items()):
+        spec = load_module(client, module)
+        libs, pending = [workspace(client) / "out" / spec["name"] / "linked" / "linked.lib"], list(spec.get("depends", []))
+        while pending:
+            dep_spec = load_module(client, pending.pop(0))
+            lib = workspace(client) / "out" / dep_spec["name"] / "linked" / "linked.lib"
+            if lib not in libs:
+                libs.append(lib)
+                pending += dep_spec.get("depends", [])
+        ov = build_overlay(client, spec["name"], spec.get("overlay"))
+        kwargs = {"defines": spec["test_defines"]} if spec.get("test_defines") else {}
+        result = link_test(client, test, libs,
+                           includes=_overlaid([_spec_path(client, i) for i in spec.get("test_includes", [])], [], ov)[0], **kwargs)
+        results[mid] = {"test": test, "module": module, "passed": bool(result["linked"] and result["exit"] == 0),
+                        "linked": result["linked"], "exit": result["exit"], "output": result["output"][-300:]}
+        log("%s %s: linked=%s exit=%s" % (mid, test, result["linked"], result["exit"]))
+    _dump(workspace(client) / "out" / "milestones.json", results)
+    return results
 
 
 def closure(client, name, log=print):
@@ -1015,6 +1049,9 @@ def progress(client="2008-06", log=print, notify=True):
     # stubs: glue bodies tagged // STUB (empty or placeholder behaviour); M1 = every module linked with tests passing
     stub_count = sum(p.read_text(errors="replace").count("// STUB") for p in (workspace(client) / "glue").rglob("*.cpp"))
     milestones = 1 if modules and all(m["linked"] and m["test"] == 0 for m in modules) else 0
+    ran = workspace(client) / "out" / "milestones.json"
+    if milestones and ran.exists():
+        milestones += sum(1 for r in json.loads(ran.read_text()).values() if r.get("passed"))
 
     data = {
         "phase": phase,

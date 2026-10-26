@@ -850,6 +850,8 @@ INST, INST_UNIT = "App/include/v8tree/Instance.h", "App/roc_unit_b34763c2f3d3f39
 adopt(INST, INST_UNIT)
 patch_adopted(INST, INST_UNIT, "\tvirtual ~GuidItem() {}\n\nprivate:\n\tbool registeredGuid;",
               "\tvirtual ~GuidItem() {}\n\nprotected:\n\tbool registeredGuid;")
+# reflection/object.h: the 4-unit variant is the rbxgs text unchanged; adopting it by name admits those units
+adopt("App/include/reflection/object.h", "App/roc_espeon_machineheadercadaaebe20af2047.cpp")
 # Instance.cpp: guid is a GuidItem<Instance> member now, constructed by that base
 patch_all("App/v8tree/Instance.cpp", "\t\t  archivable(true),\n\t\t  guid()", "\t\t  archivable(true)")
 # the factory's deleter calls predelete() and the protected destructor (as the patch above, on the adopted text)
