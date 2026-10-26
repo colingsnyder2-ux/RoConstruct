@@ -626,5 +626,11 @@
    "\t\t\t\tmatched.resize(0);\n\t\t\t\tmatched.resize(connectors.size());",
    "\t\t\t\tmatched.resize(connectors.size(), false);\n\t\t\t\tfor (int i = 0; i < connectors.size(); ++i)\n\t\t\t\t\tmatched[i] = false;"
   ]
+ ],
+ "App/v8datamodel/RootInstance.cpp": [
+  [
+   "#include \"v8datamodel/RootInstance.h\"\n",
+   "#pragma float_control(precise, off)\n#include \"v8datamodel/RootInstance.h\"\n"
+  ]
  ]
 }

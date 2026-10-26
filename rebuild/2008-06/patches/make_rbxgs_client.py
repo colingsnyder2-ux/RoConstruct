@@ -1226,5 +1226,12 @@ patch(WS_CPP, "\t\tRBXASSERT(isSimulating);\n\t\tisSimulating = false;\n",
       "\t\tisSimulating = false;\n")
 patch(WS_CPP, "\t\tRBXASSERT(!getCurrentMouseCommand()->captured());\n", "")
 
+# RootInstance: exact mined snippets 0x590190 (computeIdeInsertPoint, 167 bytes)
+# and 0x590b50 (moveToIdeInsertPoint) use /fp:fast. Their member offsets and
+# virtual bounds slot already agree; parse the TU's inline vector operations
+# with precise floating-point optimization disabled, as in those exact profiles.
+patch("App/v8datamodel/RootInstance.cpp", '#include "v8datamodel/RootInstance.h"\n',
+      '#pragma float_control(precise, off)\n#include "v8datamodel/RootInstance.h"\n')
+
 out.write_text(json.dumps(patches, indent=1) + "\n", encoding="utf-8")
 print("%d files, %d patches -> %s" % (len(patches), sum(map(len, patches.values())), out))
