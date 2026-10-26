@@ -1240,5 +1240,33 @@ patch(CONTACT_CPP, "\tvoid BallBallContact::deleteAllConnectors()\n\t{\n"
       "\tvoid BallBallContact::deleteAllConnectors()\n\t{\n"
       "\t\tif (this->ballBallConnector)\n\t\t\tthis->deleteConnector(this->ballBallConnector);\n\t}\n")
 
+# LuaArguments::get at 0x61bcb0 forwards offset 0xc, L 0x10 and true to
+# 0x5ad380. The latter returns bool, stores Lua numbers as double and treats
+# nil as missing only when requested. Its table recursion passes false;
+# readResults at 0x5ad6d0 passes true (push 1 at 0x5ad74a).
+LUA_ARGS = "App/include/script/LuaArguments.h"
+patch(LUA_ARGS, "                // TODO: check match\n                int pos = index + offset;\n"
+      "                RBXASSERT(pos > 0);\n                get(L, pos, value);\n",
+      "                get(L, index + offset, value, true);\n")
+lua_args_text = (TREE / LUA_ARGS).read_text(errors="replace")
+lua_get_old = lua_args_text[lua_args_text.index("            // TODO: 97.00%\n"):
+                            lua_args_text.index("            static int push(")]
+lua_get_new = lua_get_old.replace("            // TODO: 97.00%\n", "")
+lua_get_new = lua_get_new.replace("static void get(lua_State* L, int luaIndex, Reflection::Value& value)",
+                                "static bool get(lua_State* L, int luaIndex, Reflection::Value& value, bool nilIsMissing)")
+lua_get_new = lua_get_new.replace("float rhs = lua_tonumber", "double rhs = lua_tonumber")
+lua_get_new = lua_get_new.replace("return;", "return true;")
+lua_get_new = lua_get_new.replace("LuaArguments::get(L, -1, ival);", "LuaArguments::get(L, -1, ival, false);")
+lua_get_new = lua_get_new.replace("                    case LUA_TNIL:\n",
+                                "                    case LUA_TNIL:\n                        if (nilIsMissing)\n                            return false;\n")
+lua_get_new = lua_get_new.replace("                if (luaIndex <= lua_gettop(L))\n",
+                                "                if (luaIndex > lua_gettop(L))\n                    return false;\n\n")
+lua_get_new = lua_get_new.replace("                    }\n                }\n            }\n",
+                                "                    }\n                }\n                return true;\n            }\n")
+patch(LUA_ARGS, lua_get_old, lua_get_new)
+patch("App/script/ScriptContext.cpp",
+      "Lua::LuaArguments::get(thread, static_cast<int>(i+1), result.get()->at(i));",
+      "Lua::LuaArguments::get(thread, static_cast<int>(i+1), result.get()->at(i), true);")
+
 out.write_text(json.dumps(patches, indent=1) + "\n", encoding="utf-8")
 print("%d files, %d patches -> %s" % (len(patches), sum(map(len, patches.values())), out))
