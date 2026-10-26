@@ -1,40 +1,40 @@
 {
-  "updated": "2026-10-25 17:38 UTC",
+  "updated": "2026-10-26 23:31 UTC",
   "clients": {
     "2008-06": {
-      "phase": "6",
-      "phaseLabel": "Link closure",
-      "overall": 0.0745,
+      "phase": "8",
+      "phaseLabel": "Runtime",
+      "overall": 0.2329,
       "bars": {
         "compiled": {
-          "value": 12,
-          "total": 12,
+          "value": 14,
+          "total": 14,
           "label": "Modules reporting"
         },
         "linked": {
-          "value": 11,
-          "total": 12,
+          "value": 14,
+          "total": 14,
           "label": "Modules linked"
         },
         "exact": {
-          "value": 3092,
-          "total": 41516,
+          "value": 9599,
+          "total": 41210,
           "label": "Byte-exact functions"
         },
         "unresolved": {
-          "value": 2,
-          "total": 2,
+          "value": 0,
+          "total": 1,
           "label": "Unresolved symbols",
           "invert": true
         },
         "stubs": {
-          "value": 2,
-          "total": 2,
+          "value": 16,
+          "total": 16,
           "label": "Temporary stubs",
           "invert": true
         },
         "runtime": {
-          "value": 0,
+          "value": 3,
           "total": 7,
           "label": "Runtime milestones"
         }
@@ -44,7 +44,7 @@
           "name": "Boost",
           "linked": true,
           "test": 0,
-          "exact": 334,
+          "exact": 346,
           "objectFunctions": 10298,
           "unresolved": 0
         },
@@ -52,16 +52,16 @@
           "name": "G3D-GL",
           "linked": true,
           "test": 0,
-          "exact": 403,
-          "objectFunctions": 5614,
+          "exact": 425,
+          "objectFunctions": 5822,
           "unresolved": 0
         },
         {
           "name": "G3D",
           "linked": true,
           "test": 0,
-          "exact": 641,
-          "objectFunctions": 5907,
+          "exact": 1168,
+          "objectFunctions": 16751,
           "unresolved": 0
         },
         {
@@ -84,8 +84,8 @@
           "name": "Lua",
           "linked": true,
           "test": 0,
-          "exact": 430,
-          "objectFunctions": 701,
+          "exact": 441,
+          "objectFunctions": 941,
           "unresolved": 0
         },
         {
@@ -99,9 +99,9 @@
         {
           "name": "RbxApp",
           "linked": true,
-          "test": 1,
-          "exact": 829,
-          "objectFunctions": 29680,
+          "test": 0,
+          "exact": 1086,
+          "objectFunctions": 57637,
           "unresolved": 0
         },
         {
@@ -114,11 +114,27 @@
         },
         {
           "name": "RbxgsApp",
-          "linked": false,
-          "test": null,
-          "exact": 1828,
-          "objectFunctions": 76659,
-          "unresolved": 2
+          "linked": true,
+          "test": 0,
+          "exact": 2913,
+          "objectFunctions": 148223,
+          "unresolved": 0
+        },
+        {
+          "name": "Scintilla",
+          "linked": true,
+          "test": 0,
+          "exact": 127,
+          "objectFunctions": 718,
+          "unresolved": 0
+        },
+        {
+          "name": "XTP",
+          "linked": true,
+          "test": 0,
+          "exact": 4803,
+          "objectFunctions": 111385,
+          "unresolved": 0
         },
         {
           "name": "zlib-winapi",

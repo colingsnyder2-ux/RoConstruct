@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-26 22:21 UTC",
+ "updated": "2026-10-26 23:28 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -191,37 +191,37 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22284,
-   "matched": 22065,
-   "partial": 217,
-   "source_matched": 13661,
-   "mined_matched": 8404,
+   "matched": 21833,
+   "partial": 197,
+   "source_matched": 13644,
+   "mined_matched": 8189,
    "bytes": 3736076,
-   "matched_bytes": 3514322,
-   "source_bytes": 2647990,
-   "mined_bytes": 866332,
-   "partial_bytes": 220103,
+   "matched_bytes": 3475354,
+   "source_bytes": 2642072,
+   "mined_bytes": 833282,
+   "partial_bytes": 206031,
    "data_bytes": 1559926,
    "leaderboard": [
     {
      "user": "auto",
-     "matched": 10825,
-     "points": 1005439,
-     "submissions": 10827,
-     "last": 1792944603.7719176
+     "matched": 10929,
+     "points": 1015839,
+     "submissions": 10931,
+     "last": 1793057117.7383249
     },
     {
      "user": "colin",
-     "matched": 3080,
-     "points": 681349,
-     "submissions": 23144,
-     "last": 1793052969.817451
+     "matched": 3084,
+     "points": 681422,
+     "submissions": 23156,
+     "last": 1793056327.680252
     },
     {
      "user": "king_originala",
-     "matched": 2743,
-     "points": 264280,
-     "submissions": 5880,
-     "last": 1792990405.4408197
+     "matched": 2744,
+     "points": 264284,
+     "submissions": 5881,
+     "last": 1793057211.4702058
     },
     {
      "user": "Espeon",
@@ -343,7 +343,7 @@
      "last": 1792711202.627472
     }
    ],
-   "data_matched_bytes": 198931,
+   "data_matched_bytes": 198728,
    "classes": 1488,
    "generated": 18926
   },
@@ -642,24 +642,24 @@
  "leaderboard": [
   {
    "user": "auto",
-   "matched": 76078,
-   "points": 7435198,
-   "submissions": 76080,
-   "last": 1792944603.7719176
+   "matched": 76182,
+   "points": 7445598,
+   "submissions": 76184,
+   "last": 1793057117.7383249
   },
   {
    "user": "colin",
-   "matched": 15193,
-   "points": 5520272,
-   "submissions": 186026,
-   "last": 1793052969.817451
+   "matched": 15197,
+   "points": 5520345,
+   "submissions": 186038,
+   "last": 1793056327.680252
   },
   {
    "user": "king_originala",
-   "matched": 2743,
-   "points": 264280,
-   "submissions": 5880,
-   "last": 1792990405.4408197
+   "matched": 2744,
+   "points": 264284,
+   "submissions": 5881,
+   "last": 1793057211.4702058
   },
   {
    "user": "nuck16",
