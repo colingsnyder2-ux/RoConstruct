@@ -294,7 +294,11 @@ def abi_evidence(client="2008-06", log=print):
             for vt in {vt for _, vt, _ in stores.get(fn, [])}:
                 classes[owner[vt]]["vbtables"]["%08x" % vb] = {"at": item["at"], "entries": item["entries"]}
     for caller, size, callee in calls:
-        for vt in {vt for off, vt, _ in stores.get(callee, []) if off == 0}:
+        # the allocated object is the callee's `this`: the base register most of its vptr stores go through
+        # (an inlined `new` of another class inside the constructor stores through another register)
+        regs = [reg for _, _, reg in stores.get(callee, [])]
+        this = max(sorted(set(regs)), key=regs.count) if regs else None
+        for vt in {vt for off, vt, reg in stores.get(callee, []) if off == 0 and reg == this}:
             classes[owner[vt]]["alloc_sizes"].setdefault("0x%x" % size, set()).add("%08x" % caller)
     out = {}
     for name, c in sorted(classes.items()):
