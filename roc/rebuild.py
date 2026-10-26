@@ -1010,6 +1010,51 @@ def closure(client, name, log=print):
     return result
 
 
+def placed(client="2008-06", log=print):
+    """2008 addresses an address-ambiguous body (byte-identical, relocations masked, to several 2008 functions;
+    >= 16 bytes, at most 64 candidates) reproduces at exactly one place: the one candidate whose referenced data
+    (string literals, constants the body points to) also matches the exe. Cached per object hash in
+    out/<Module>/placed.json; writes out/placed.json {address: module}. Slow the first time (minutes per module)."""
+    import hashlib
+    base, image = match._image(client)
+    found = {}
+    for spec_path in sorted((ROOT / "rebuild" / client / "modules").glob("*.json")):
+        spec = json.loads(spec_path.read_text(encoding="utf-8"))
+        out = workspace(client) / "out" / spec["name"]
+        report = out / "report.json"
+        if not report.exists() or not json.loads(report.read_text()).get("linked"):
+            continue
+        cache_path = out / "placed.json"
+        cache = json.loads(cache_path.read_text()) if cache_path.exists() else {}
+        fresh = {}
+        for obj in sorted((out / "linked").glob("*.obj")):
+            data = obj.read_bytes()
+            key = hashlib.sha256(data).hexdigest()
+            if key not in cache:
+                hits = []
+                for name, size, h in pair(client, match.coff_functions(data)):
+                    if len(h) < 2 or size < 16 or len(h) > 64:
+                        continue
+                    refs = match.coff_data_refs(data, name)
+                    fits = []
+                    for a in h if refs else ():
+                        at = int(a, 16) - base
+                        ok, bad = match.data_check(client, a, bytes(image[at:at + size]), refs)
+                        if ok and not bad:
+                            fits.append(a)
+                    if len(fits) == 1:
+                        hits.append(fits[0])
+                cache[key] = hits
+            fresh[key] = cache[key]
+            for a in cache[key]:
+                found.setdefault(a, spec["name"])
+        _dump(cache_path, fresh)
+        log("%s: %d placed by referenced data" % (spec["name"], len({a for v in fresh.values() for a in v})))
+    _dump(workspace(client) / "out" / "placed.json", found)
+    log("placed by referenced data: %d addresses" % len(found))
+    return found
+
+
 def status(client="2008-06", log=print):
     """One line per built module from out/<module>/report.json, plus totals (no double counting of addresses)."""
     owned_all, shared_all = set(), set()
@@ -1034,6 +1079,10 @@ def status(client="2008-06", log=print):
     for name, state, test, funcs, owned in rows:
         log("%-12s %-9s %-8s %6s object functions  %5s owned 2008" % (name, state, test, funcs, owned))
     log("distinct 2008 functions reproduced by linked rebuilt code: %d" % len(owned_all))
+    placed_path = workspace(client) / "out" / "placed.json"
+    if placed_path.exists():  # `roc rebuild <client> placed` (slow; cached)
+        extra = set(json.loads(placed_path.read_text())) - owned_all
+        log("plus %d placed at one 2008 address by their referenced data (as of the last `placed` run)" % len(extra))
     log("plus %d (>= 16 bytes) whose bytes the rebuild reproduces but that have byte-identical twins in 2008 (address ambiguous)"
         % len(shared_all - owned_all))
     try:

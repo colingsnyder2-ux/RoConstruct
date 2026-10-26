@@ -552,6 +552,9 @@ def cmd_rebuild(a):
     if a.action == "closure":
         rebuild.closure(a.name, a.target)
         return
+    if a.action == "placed":
+        rebuild.placed(a.name)
+        return
     if a.action == "milestones":
         rebuild.milestones(a.name)
         return
@@ -2675,7 +2678,7 @@ def main(argv=None):
     p.set_defaults(fn=cmd_client_remove)
     cmd("rebuild", cmd_rebuild, "2008 client rebuild: doctor | audit | module NAME (see rebuild/<client>/POLICY.md)",
         (["name"], {"help": "client, e.g. 2008-06"}),
-        (["action"], {"choices": ["doctor", "audit", "module", "status", "closure", "milestones", "progress"]}),
+        (["action"], {"choices": ["doctor", "audit", "module", "status", "closure", "milestones", "progress", "placed"]}),
         (["target"], {"nargs": "?", "help": "module name for `module` (rebuild/<client>/modules/NAME.json)"}),
         (["--no-notify"], {"action": "store_true", "help": "do not send the Discord webhook"}))
     cmd("analyze", cmd_analyze, "split a client exe into functions ('all' for every client)", (["name"], {}))
