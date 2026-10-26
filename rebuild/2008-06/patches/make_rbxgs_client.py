@@ -1233,5 +1233,12 @@ patch(WS_CPP, "\t\tRBXASSERT(!getCurrentMouseCommand()->captured());\n", "")
 patch("App/v8datamodel/RootInstance.cpp", '#include "v8datamodel/RootInstance.h"\n',
       '#pragma float_control(precise, off)\n#include "v8datamodel/RootInstance.h"\n')
 
+# BallBallContact RTTI vtable 0x8436bc slot 5 names cleanup 0x60cb50 (16 bytes):
+# test connector at 0x34 and skip Contact::deleteConnector when it is null.
+patch(CONTACT_CPP, "\tvoid BallBallContact::deleteAllConnectors()\n\t{\n"
+      "\t\tthis->deleteConnector(this->ballBallConnector);\n\t}\n",
+      "\tvoid BallBallContact::deleteAllConnectors()\n\t{\n"
+      "\t\tif (this->ballBallConnector)\n\t\t\tthis->deleteConnector(this->ballBallConnector);\n\t}\n")
+
 out.write_text(json.dumps(patches, indent=1) + "\n", encoding="utf-8")
 print("%d files, %d patches -> %s" % (len(patches), sum(map(len, patches.values())), out))

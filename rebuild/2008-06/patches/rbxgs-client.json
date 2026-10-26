@@ -625,6 +625,10 @@
   [
    "\t\t\t\tmatched.resize(0);\n\t\t\t\tmatched.resize(connectors.size());",
    "\t\t\t\tmatched.resize(connectors.size(), false);\n\t\t\t\tfor (int i = 0; i < connectors.size(); ++i)\n\t\t\t\t\tmatched[i] = false;"
+  ],
+  [
+   "\tvoid BallBallContact::deleteAllConnectors()\n\t{\n\t\tthis->deleteConnector(this->ballBallConnector);\n\t}\n",
+   "\tvoid BallBallContact::deleteAllConnectors()\n\t{\n\t\tif (this->ballBallConnector)\n\t\t\tthis->deleteConnector(this->ballBallConnector);\n\t}\n"
   ]
  ],
  "App/v8datamodel/RootInstance.cpp": [
