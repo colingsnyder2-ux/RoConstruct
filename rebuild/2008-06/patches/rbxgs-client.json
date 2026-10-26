@@ -574,5 +574,37 @@
    "\t\t\t\tNeedTrustedCaller = 0,\n\t\t\t\tAnyCaller = 1\n",
    "\t\t\t\tAnyCaller = 0,\n\t\t\t\tNeedTrustedCaller = 1\n"
   ]
+ ],
+ "App/include/v8world/Contact.h": [
+  [
+   "\t\tstd::vector<ContactConnector *,std::allocator<ContactConnector *> > connectors;\n\t\tstd::vector<bool,std::allocator<bool> > matched;\n\t\tint separatingAxisId;\n",
+   "\t\tG3D::Array<ContactConnector*> connectors;\n\t\tG3D::Array<bool> matched;\n\t\tint unknown0x4c; // 0x60d500: zero; name unknown\n\t\tint unknown0x50; // 0x60d500: zero; name unknown\n\t\tfloat unknown0x54; // 0x60d500: 1e9f; 0x608830 caches collision result\n\t\tint separatingAxisId;\n\t\tbool unknown0x5c; // 0x6087a0: cached plane-contact flag\n"
+  ]
+ ],
+ "App/v8world/Contact.cpp": [
+  [
+   "\t\t:Contact(p0, p1),\n\t\tseparatingAxisId(0),\n\t\tseparatingBodyId(0)\n",
+   "\t\t:Contact(p0, p1),\n\t\tunknown0x54(1e9f),\n\t\tseparatingAxisId(0),\n\t\tseparatingBodyId(0)\n"
+  ],
+  [
+   "\t\tthis->feature[1] = -1;\n\t}\n\t\n\tBlockBlockContact::~BlockBlockContact()",
+   "\t\tthis->feature[1] = -1;\n\t\tunknown0x4c = 0;\n\t\tunknown0x50 = 0;\n\t}\n\t\n\tBlockBlockContact::~BlockBlockContact()"
+  ],
+  [
+   "\t\t\t\tfastRemoveIndex<ContactConnector*>(this->connectors, i);\n\t\t\t\tfastRemoveIndex<bool>(this->matched, i);",
+   "\t\t\t\tthis->connectors.fastRemove(i);\n\t\t\t\tthis->matched.fastRemove(i);"
+  ],
+  [
+   "\t\tthis->connectors.push_back(connector);\n\t\tthis->matched.push_back(true);",
+   "\t\tthis->connectors.append(connector);\n\t\tthis->matched.append(true);"
+  ],
+  [
+   "\t\tthis->connectors.resize(0);\n\t\tthis->matched.resize(0);",
+   "\t\tthis->connectors.resize(0, false);\n\t\tthis->matched.resize(0, false);"
+  ],
+  [
+   "\t\t\t\tmatched.resize(0);\n\t\t\t\tmatched.resize(connectors.size());",
+   "\t\t\t\tmatched.resize(connectors.size(), false);\n\t\t\t\tfor (int i = 0; i < connectors.size(); ++i)\n\t\t\t\t\tmatched[i] = false;"
+  ]
  ]
 }

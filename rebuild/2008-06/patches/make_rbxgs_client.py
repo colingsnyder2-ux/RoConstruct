@@ -1173,5 +1173,35 @@ patch_all(DM_CPP, "timeState->", "getTimeState()->")
 patch("App/include/reflection/function.h", "\t\t\t\tNeedTrustedCaller = 0,\n\t\t\t\tAnyCaller = 1\n",
       "\t\t\t\tAnyCaller = 0,\n\t\t\t\tNeedTrustedCaller = 1\n")
 
+# BlockBlockContact: 0x607c60 reads G3D array data/count at 0x34/0x38 and resizes
+# the bool array at 0x40. Destructor 0x60d5a0 frees both aligned buffers. Constructor
+# 0x60d500 zeroes dwords 0x4c/0x50, stores 1e9f at 0x54, axis/body at 0x58/0x60,
+# and feature[2] at 0x64. 0x6087a0 reads the cached plane flag as a byte at 0x5c.
+# Caller 0x60d7fe allocates 0x7c before calling this constructor at 0x60d81c.
+CONTACT_H, CONTACT_CPP = "App/include/v8world/Contact.h", "App/v8world/Contact.cpp"
+patch(CONTACT_H, "\t\tstd::vector<ContactConnector *,std::allocator<ContactConnector *> > connectors;\n"
+      "\t\tstd::vector<bool,std::allocator<bool> > matched;\n\t\tint separatingAxisId;\n",
+      "\t\tG3D::Array<ContactConnector*> connectors;\n\t\tG3D::Array<bool> matched;\n"
+      "\t\tint unknown0x4c; // 0x60d500: zero; name unknown\n"
+      "\t\tint unknown0x50; // 0x60d500: zero; name unknown\n"
+      "\t\tfloat unknown0x54; // 0x60d500: 1e9f; 0x608830 caches collision result\n"
+      "\t\tint separatingAxisId;\n"
+      "\t\tbool unknown0x5c; // 0x6087a0: cached plane-contact flag\n")
+patch(CONTACT_CPP, "\t\t:Contact(p0, p1),\n\t\tseparatingAxisId(0),\n\t\tseparatingBodyId(0)\n",
+      "\t\t:Contact(p0, p1),\n\t\tunknown0x54(1e9f),\n\t\tseparatingAxisId(0),\n\t\tseparatingBodyId(0)\n")
+patch(CONTACT_CPP, "\t\tthis->feature[1] = -1;\n\t}\n\t\n\tBlockBlockContact::~BlockBlockContact()",
+      "\t\tthis->feature[1] = -1;\n\t\tunknown0x4c = 0;\n\t\tunknown0x50 = 0;\n\t}\n\t\n\tBlockBlockContact::~BlockBlockContact()")
+patch(CONTACT_CPP, "\t\t\t\tfastRemoveIndex<ContactConnector*>(this->connectors, i);\n"
+      "\t\t\t\tfastRemoveIndex<bool>(this->matched, i);",
+      "\t\t\t\tthis->connectors.fastRemove(i);\n\t\t\t\tthis->matched.fastRemove(i);")
+patch(CONTACT_CPP, "\t\tthis->connectors.push_back(connector);\n\t\tthis->matched.push_back(true);",
+      "\t\tthis->connectors.append(connector);\n\t\tthis->matched.append(true);")
+# 0x607c60 passes false to both resize calls; 0x6087a0 explicitly clears bools.
+patch(CONTACT_CPP, "\t\tthis->connectors.resize(0);\n\t\tthis->matched.resize(0);",
+      "\t\tthis->connectors.resize(0, false);\n\t\tthis->matched.resize(0, false);")
+patch(CONTACT_CPP, "\t\t\t\tmatched.resize(0);\n\t\t\t\tmatched.resize(connectors.size());",
+      "\t\t\t\tmatched.resize(connectors.size(), false);\n"
+      "\t\t\t\tfor (int i = 0; i < connectors.size(); ++i)\n\t\t\t\t\tmatched[i] = false;")
+
 out.write_text(json.dumps(patches, indent=1) + "\n", encoding="utf-8")
 print("%d files, %d patches -> %s" % (len(patches), sum(map(len, patches.values())), out))
