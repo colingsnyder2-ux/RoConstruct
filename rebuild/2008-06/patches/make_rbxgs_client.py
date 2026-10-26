@@ -1119,6 +1119,17 @@ patch(WS_CPP, "\t\t  profileWorkspaceStep(new Profiling::CodeProfiler(\"DataMode
       "\t\t  profileRunServiceHeartbeat(new Profiling::CodeProfiler(\"RunService Heartbeat\")),\n")
 patch(WS_CPP, "\t\tRBXASSERT(dataState);\n\t\tsetName(\"Workspace\");\n",
       "\t\tRBXASSERT(dataState);\n\t\tunknown0x410[0] = unknown0x410[1] = unknown0x410[2] = 0.0;\n\t\tsetName(\"Workspace\");\n")
+# ScriptContext (allocation 0x1f8): the 2008 constructor (0x5ae490) matches rbxgs through statsItem (0x1b0), then
+# zeroes two doubles (0x1b8, 0x1c0) and two dwords (0x1c8, 0x1cc), constructs a boost::mutex at 0x1d0 (0x594c90)
+# and a 0x18-byte object at 0x1d8 holding two semaphores and a mutex (0x5f1bd0), and puts allocator at 0x1f0.
+# Names and the 0x1d8 type are unknown and recorded as such.
+patch("App/include/script/ScriptContext.h", "        boost::shared_ptr<Stats::Item> statsItem;\n",
+      "        boost::shared_ptr<Stats::Item> statsItem;\n"
+      "        double unknown0x1b8[2];   // zeroed by the 2008 constructor; names unknown\n"
+      "        void* unknown0x1c8[2];\n"
+      "        boost::mutex unknownMutex0x1d0;\n"
+      "        char unknown0x1d8[0x18];  // object with two semaphores and a mutex (2008 0x5f1bd0); type unknown\n")
+patch("App/include/script/ScriptContext.h", '#include "script/Script.h"\n', '#include "script/Script.h"\n#include <boost/thread/mutex.hpp>\n')
 
 out.write_text(json.dumps(patches, indent=1) + "\n", encoding="utf-8")
 print("%d files, %d patches -> %s" % (len(patches), sum(map(len, patches.values())), out))

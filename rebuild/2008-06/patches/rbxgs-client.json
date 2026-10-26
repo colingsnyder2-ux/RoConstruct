@@ -518,5 +518,15 @@
    "\t\tRBXASSERT(dataState);\n\t\tsetName(\"Workspace\");\n",
    "\t\tRBXASSERT(dataState);\n\t\tunknown0x410[0] = unknown0x410[1] = unknown0x410[2] = 0.0;\n\t\tsetName(\"Workspace\");\n"
   ]
+ ],
+ "App/include/script/ScriptContext.h": [
+  [
+   "        boost::shared_ptr<Stats::Item> statsItem;\n",
+   "        boost::shared_ptr<Stats::Item> statsItem;\n        double unknown0x1b8[2];   // zeroed by the 2008 constructor; names unknown\n        void* unknown0x1c8[2];\n        boost::mutex unknownMutex0x1d0;\n        char unknown0x1d8[0x18];  // object with two semaphores and a mutex (2008 0x5f1bd0); type unknown\n"
+  ],
+  [
+   "#include \"script/Script.h\"\n",
+   "#include \"script/Script.h\"\n#include <boost/thread/mutex.hpp>\n"
+  ]
  ]
 }
