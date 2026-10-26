@@ -17,7 +17,8 @@ from roc import match  # noqa: E402
 
 CLIENT = "2008-06"
 RECIPES = {"RbxgsApp": {"rbxgs", "rbxgs-dll"}, "RbxApp": {"openrbx-client", "openrbx-client-dll"}}
-RECIPE_PREFIXES = {"XTP": ("xtp-11.2.2",)}
+RECIPE_PREFIXES = {"XTP": ("xtp-11.2.2",), "G3D": ("g3d-6.09",), "Boost": ("boost-1.34.1",), "libpng": ("libpng-1.2",),
+                   "Lua": ("lua-5.1",)}
 
 
 def of_module(module, recipe):
@@ -96,10 +97,17 @@ def compile_against_overlay(module, item, n):
 DLL_TWIN = {"rbxgs": "rbxgs-dll", "openrbx-client": "openrbx-client-dll"}
 
 
+def libs_recipes():
+    from roc import libs
+    return libs.RECIPES
+
+
 def build_group(job):
     module, n, item = job
     text = (ROOT / "src" / CLIENT / (item["addrs"][0] + ".cpp")).read_text(errors="replace")
     twin = DLL_TWIN.get(item["recipe"])
+    if twin is None and "_DLL" not in libs_recipes().get(item["recipe"], {}).get("defines", "")             and item["recipe"] + "-dll" in libs_recipes():
+        twin = item["recipe"] + "-dll"  # e.g. g3d-6.09 -> g3d-6.09-dll
     if twin:
         item = dict(item, recipe=twin)
         text = re.sub(r"(?m)^(// roc-lib: )%s " % re.escape(job[2]["recipe"]), r"\g<1>%s " % twin, text)

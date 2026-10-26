@@ -9,7 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 LIBS = {"rbxgs", "rbxgs-dll", "openrbx-client", "openrbx-client-dll"}
-LIB_PREFIXES = ("xtp-11.2.2",)  # every XTP 11.2.2 configuration (the XTP module swaps them in)
+LIB_PREFIXES = ("xtp-11.2.2", "g3d-6.09", "boost-1.34.1", "libpng-1.2", "lua-5.1")  # library modules swap these in
 OUT = ROOT / "rebuild" / "2008-06" / "out"
 
 

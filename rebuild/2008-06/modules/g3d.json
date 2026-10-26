@@ -25,5 +25,6 @@
  "test": "g3d_core",
  "test_includes": [
   "tree:g3d-6.09-rbx2008/include"
- ]
+ ],
+ "verified": true
 }
