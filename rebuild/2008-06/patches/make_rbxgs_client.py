@@ -1076,6 +1076,15 @@ patch_all(PI_H, "primitive.get()", "&primitive")
 patch(PI_CPP, "\t\t  primitive(new Primitive(Geometry::GEOMETRY_BLOCK)),\n", "\t\t  primitive(Geometry::GEOMETRY_BLOCK),\n")
 patch_all(PI_CPP, "primitive.get()", "&primitive")
 patch_all(PI_CPP, "primitive->", "primitive.")
+# Body is 0xdc bytes in 2008 (Primitive's constructor 0x5e8770 allocates 0xdc for it; rbxgs 0xd0). The exact 2008
+# Body constructor (0x6149c0) stores kernelIndex 0x0 = -1, then 0x4 = -1, 0x8 = 0, byte 0xc = false, root 0x10 = this,
+# parent 0x14, index 0x18 = -1, ... pv 0x94: rbxgs's members shifted by 0xc. KernelIndex itself is 4 bytes (Humanoid's
+# RTTI: KernelIndex 0x134, IControllable 0x138), so the 12 bytes are Body's own; their names and use are unknown.
+patch("App/include/v8kernel/Body.h", "\t\t\tint& getIndex() {return index;};\n\t\t\tBody *root;\n",
+      "\t\t\tint& getIndex() {return index;};\n\t\t\tint unknown0x4;    // 0x4 = -1 in the 2008 constructor; name and use unknown\n"
+      "\t\t\tvoid* unknown0x8;  // 0x8 = 0\n\t\t\tbool unknown0xc;   // 0xc = false\n\t\t\tBody *root;\n")
+patch("App/v8kernel/Body.cpp", "Body::Body()\n\t:index(-1),\n",
+      "Body::Body()\n\t:unknown0x4(-1),\n\tunknown0x8(NULL),\n\tunknown0xc(false),\n\tindex(-1),\n")
 
 out.write_text(json.dumps(patches, indent=1) + "\n", encoding="utf-8")
 print("%d files, %d patches -> %s" % (len(patches), sum(map(len, patches.values())), out))

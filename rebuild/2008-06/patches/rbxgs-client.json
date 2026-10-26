@@ -490,5 +490,17 @@
    "@all:primitive->",
    "primitive."
   ]
+ ],
+ "App/include/v8kernel/Body.h": [
+  [
+   "\t\t\tint& getIndex() {return index;};\n\t\t\tBody *root;\n",
+   "\t\t\tint& getIndex() {return index;};\n\t\t\tint unknown0x4;    // 0x4 = -1 in the 2008 constructor; name and use unknown\n\t\t\tvoid* unknown0x8;  // 0x8 = 0\n\t\t\tbool unknown0xc;   // 0xc = false\n\t\t\tBody *root;\n"
+  ]
+ ],
+ "App/v8kernel/Body.cpp": [
+  [
+   "Body::Body()\n\t:index(-1),\n",
+   "Body::Body()\n\t:unknown0x4(-1),\n\tunknown0x8(NULL),\n\tunknown0xc(false),\n\tindex(-1),\n"
+  ]
  ]
 }
