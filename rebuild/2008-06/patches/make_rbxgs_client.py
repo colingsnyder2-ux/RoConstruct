@@ -1168,6 +1168,10 @@ patch(DM_H, "\t\tboost::scoped_ptr<TimeState> timeState;\n", "")
 patch(DM_H, "\t\tTimeState* getTimeState();\n", "\t\tTimeState* getTimeState() const; // rebuild shim (glue_timestate_registry.cpp)\n")
 patch(DM_CPP, "\t\t  timeState(new TimeState),\n", "")
 patch_all(DM_CPP, "timeState->", "getTimeState()->")
+# FunctionDescriptor::Security has the opposite values in 2008: the exact descriptor initializers in the exe pass 0
+# for any-caller functions (Clone 0x7f2940, GetPlayers 0x7f1920) and 1 for trusted ones (CreateLocalPlayer).
+patch("App/include/reflection/function.h", "\t\t\t\tNeedTrustedCaller = 0,\n\t\t\t\tAnyCaller = 1\n",
+      "\t\t\t\tAnyCaller = 0,\n\t\t\t\tNeedTrustedCaller = 1\n")
 
 out.write_text(json.dumps(patches, indent=1) + "\n", encoding="utf-8")
 print("%d files, %d patches -> %s" % (len(patches), sum(map(len, patches.values())), out))

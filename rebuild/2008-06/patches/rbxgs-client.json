@@ -568,5 +568,11 @@
    "@all:timeState->",
    "getTimeState()->"
   ]
+ ],
+ "App/include/reflection/function.h": [
+  [
+   "\t\t\t\tNeedTrustedCaller = 0,\n\t\t\t\tAnyCaller = 1\n",
+   "\t\t\t\tAnyCaller = 0,\n\t\t\t\tNeedTrustedCaller = 1\n"
+  ]
  ]
 }
