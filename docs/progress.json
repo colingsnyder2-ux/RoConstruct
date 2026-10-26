@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-26 09:32 UTC",
+ "updated": "2026-10-26 10:36 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -190,14 +190,14 @@
    "compiler": "VS2008 RTM (cl 15.00.21022)",
    "built": "2008-06-20",
    "started": true,
-   "functions": 22283,
-   "matched": 22051,
+   "functions": 22284,
+   "matched": 22053,
    "partial": 229,
-   "source_matched": 13649,
+   "source_matched": 13651,
    "mined_matched": 8402,
-   "bytes": 3735245,
-   "matched_bytes": 3491656,
-   "source_bytes": 2625672,
+   "bytes": 3736076,
+   "matched_bytes": 3492503,
+   "source_bytes": 2626519,
    "mined_bytes": 865984,
    "partial_bytes": 241922,
    "data_bytes": 1559926,
@@ -282,9 +282,9 @@
     {
      "user": "coldek",
      "matched": 5,
-     "points": 383,
-     "submissions": 21,
-     "last": 1793003006.6384904
+     "points": 592,
+     "submissions": 27,
+     "last": 1793007427.873115
     },
     {
      "user": "Gemini",
@@ -345,7 +345,7 @@
    ],
    "data_matched_bytes": 198883,
    "classes": 1488,
-   "generated": 18927
+   "generated": 18926
   },
   {
    "name": "2009-06",
@@ -466,9 +466,9 @@
     {
      "user": "sophus",
      "matched": 16,
-     "points": 1125,
-     "submissions": 101,
-     "last": 1793001822.6032765
+     "points": 1127,
+     "submissions": 102,
+     "last": 1793008171.2474282
     },
     {
      "user": "Viper",
@@ -706,9 +706,9 @@
   {
    "user": "sophus",
    "matched": 65,
-   "points": 4606,
-   "submissions": 456,
-   "last": 1793006963.8706493
+   "points": 4608,
+   "submissions": 457,
+   "last": 1793008171.2474282
   },
   {
    "user": "intel",
@@ -748,9 +748,9 @@
   {
    "user": "coldek",
    "matched": 5,
-   "points": 383,
-   "submissions": 21,
-   "last": 1793003006.6384904
+   "points": 592,
+   "submissions": 27,
+   "last": 1793007427.873115
   },
   {
    "user": "Gemini",
