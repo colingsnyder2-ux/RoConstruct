@@ -1012,7 +1012,7 @@ def closure(client, name, log=print):
 
 def status(client="2008-06", log=print):
     """One line per built module from out/<module>/report.json, plus totals (no double counting of addresses)."""
-    owned_all = set()
+    owned_all, shared_all = set(), set()
     rows = []
     for spec_path in sorted((ROOT / "rebuild" / client / "modules").glob("*.json")):
         spec = json.loads(spec_path.read_text(encoding="utf-8"))
@@ -1023,13 +1023,19 @@ def status(client="2008-06", log=print):
         r = json.loads(report_path.read_text(encoding="utf-8"))
         linked = workspace(client) / "out" / spec["name"] / "linked"
         for obj in linked.glob("*.obj") if r["linked"] else ():
-            owned_all.update(h[0] for _, _, h in pair(client, match.coff_functions(obj.read_bytes())) if len(h) == 1)
+            for _, size, h in pair(client, match.coff_functions(obj.read_bytes())):
+                if len(h) == 1:
+                    owned_all.update(h)
+                elif size >= 16:  # identical 2008 functions (e.g. template copies): reproduced, address ambiguous
+                    shared_all.update(h)
         rows.append((spec_path.stem, "linked" if r["linked"] else "LINK FAIL",
                      "test ok" if r.get("test_exit") == 0 else "test %s" % r.get("test_exit"),
                      r["object_functions"], r["owned_2008"]))
     for name, state, test, funcs, owned in rows:
         log("%-12s %-9s %-8s %6s object functions  %5s owned 2008" % (name, state, test, funcs, owned))
     log("distinct 2008 functions reproduced by linked rebuilt code: %d" % len(owned_all))
+    log("plus %d (>= 16 bytes) whose bytes the rebuild reproduces but that have byte-identical twins in 2008 (address ambiguous)"
+        % len(shared_all - owned_all))
     try:
         progress(client, notify=True, log=log)
     except Exception as error:
