@@ -866,8 +866,18 @@ def build_module(client, name, log=print):
     helpers = json.loads(helpers_path.read_text()) if helpers_path.exists() else {}
     sinks_path = out / "verified" / "sinks.json"
     sinks = set(json.loads(sinks_path.read_text())) if sinks_path.exists() else set()
+    # an inline or template body that several of the module's own objects define is shared code: swapping the 2008 copy
+    # in replaces it for every caller, including ones compiled in other contexts (seen crashing M4a/M5), so only
+    # file-owned functions swap in
+    counts = {}
+    for layer_dir in layer_dirs:
+        for obj in Path(layer_dir).glob("*.obj"):
+            for sym, defined in coff_externals(obj.read_bytes()).items():
+                if defined:
+                    counts[sym] = counts.get(sym, 0) + 1
+    shared = {sym for sym, n in counts.items() if n > 1}
     for _ in range(12):  # a swapped-in function may call a helper nothing else emits: keep it, or swap the caller back out
-        verified, drop = verified_layer(client, spec, log=log, exclude=excluded, vdrop=vdrop, helpers=helpers, sinks=sinks)
+        verified, drop = verified_layer(client, spec, log=log, exclude=excluded | shared, vdrop=vdrop, helpers=helpers, sinks=sinks)
         result = resolve_objects(client, spec["test"], ([verified] if verified else []) + layer_dirs, spec["name"] + "/linked",
                                  includes=_overlaid([_spec_path(client, i) for i in spec.get("test_includes", [])], [], ov)[0], log=log,
                                  extra_libs=deps, defines=spec.get("test_defines"), drop=drop)

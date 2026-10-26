@@ -83,9 +83,19 @@ def compile_against_overlay(module, item, n):
     return match._compile(body, item["flags"] or match.DEFAULT_FLAGS, build, False)
 
 
+# The modules link against the DLL CRT (/MD). A group mining verified with a recipe that leaves _DLL undefined (static
+# CRT headers) carries inline STL/CRT code with another ABI (CRT data not imported, e.g. std::_BADOFF): recompile it with
+# its _DLL twin and keep only what is still byte-exact.
+DLL_TWIN = {"rbxgs": "rbxgs-dll", "openrbx-client": "openrbx-client-dll"}
+
+
 def build_group(job):
     module, n, item = job
     text = (ROOT / "src" / CLIENT / (item["addrs"][0] + ".cpp")).read_text(errors="replace")
+    twin = DLL_TWIN.get(item["recipe"])
+    if twin:
+        item = dict(item, recipe=twin)
+        text = re.sub(r"(?m)^(// roc-lib: )%s " % re.escape(job[2]["recipe"]), r"\g<1>%s " % twin, text)
     try:
         obj = compile_against_overlay(module, item, n) if item.get("overlay") else match.compile_text(CLIENT, text)
     except Exception as error:  # noqa: BLE001 - report and continue with the other groups
