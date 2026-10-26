@@ -957,5 +957,18 @@ patch(JOINT_CPP, "\t\tif (part[i].get() != value)", "\t\tif (part[i].lock().get(
 patch_all(JOINT_CPP, "AutoJoint", "JointInstance")
 patch_all("App/humanoid/Humanoid.cpp", "AutoJoint", "JointInstance")
 
+# --- IModelModifier (RTTI .?AVIModelModifier@RBX@@, in neither tree): a polymorphic interface whose only vtable
+# slot is the destructor (Skin's IModelModifier vtable 0x83c82c: `sub ecx, 0x130; jmp` to Skin's deleting
+# destructor). ModelInstance cross-casts dynamic_cast<IModelModifier*>(Instance*) (exact 0x584fc0). Bases per RTTI:
+# CharacterAppearance (BodyColors, Clothing, Pants, Shirt, ShirtGraphic, Skin) at 0x130 right after Instance;
+# Humanoid at 0x1a0 between ICharacterSubject and Listener<RunService, Stepped>. Each adds the 4 bytes the 2008
+# allocation sizes show (Skin 0x138, BodyColors 0x14c, ShirtGraphic 0x154, Humanoid 0x22c). ---
+patch_adopted(INST, INST_UNIT, "\textern const char* sInstance;\n",
+              "\tclass IModelModifier\n\t{\n\tpublic:\n\t\tvirtual ~IModelModifier() {}\n\t};\n\n\textern const char* sInstance;\n")
+patch("App/include/v8datamodel/CharacterAppearance.h", "\tclass CharacterAppearance : public Instance\n",
+      "\tclass CharacterAppearance : public Instance, public IModelModifier\n")
+patch("App/include/humanoid/Humanoid.h", "\t\t\t\t\t public ICharacterSubject,\n\t\t\t\t\t public Listener<RunService, Stepped>\n",
+      "\t\t\t\t\t public ICharacterSubject,\n\t\t\t\t\t public IModelModifier,\n\t\t\t\t\t public Listener<RunService, Stepped>\n")
+
 out.write_text(json.dumps(patches, indent=1) + "\n", encoding="utf-8")
 print("%d files, %d patches -> %s" % (len(patches), sum(map(len, patches.values())), out))

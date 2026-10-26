@@ -71,6 +71,10 @@
   [
    "\t\tfriend class RaiseDescendentAdded2;\n\n\tprivate:\n\t\tAssociation<Instance> assoc;",
    "\t\tfriend class RaiseDescendentAdded2;\n\t\tfriend class Creatable<Instance>::Deleter;\n\n\tprivate:\n\t\tAssociation<Instance> assoc;"
+  ],
+  [
+   "\textern const char* sInstance;\n",
+   "\tclass IModelModifier\n\t{\n\tpublic:\n\t\tvirtual ~IModelModifier() {}\n\t};\n\n\textern const char* sInstance;\n"
   ]
  ],
  "App/include/v8datamodel/MouseCommand.h": [
@@ -283,6 +287,18 @@
   [
    "@all:AutoJoint",
    "JointInstance"
+  ]
+ ],
+ "App/include/v8datamodel/CharacterAppearance.h": [
+  [
+   "\tclass CharacterAppearance : public Instance\n",
+   "\tclass CharacterAppearance : public Instance, public IModelModifier\n"
+  ]
+ ],
+ "App/include/humanoid/Humanoid.h": [
+  [
+   "\t\t\t\t\t public ICharacterSubject,\n\t\t\t\t\t public Listener<RunService, Stepped>\n",
+   "\t\t\t\t\t public ICharacterSubject,\n\t\t\t\t\t public IModelModifier,\n\t\t\t\t\t public Listener<RunService, Stepped>\n"
   ]
  ]
 }
