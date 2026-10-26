@@ -59,18 +59,24 @@
   [
    "\t\tfriend class RaiseDescendentAdded2;\n\n\tprivate:\n\t\tAssociation<Instance> assoc;",
    "\t\tfriend class RaiseDescendentAdded2;\n\t\tfriend class Creatable<Instance>::Deleter;\n\n\tprivate:\n\t\tAssociation<Instance> assoc;"
+  ],
+  [
+   "@replace",
+   "App/roc_unit_b34763c2f3d3f398.cpp"
+  ],
+  [
+   "\tvirtual ~GuidItem() {}\n\nprivate:\n\tbool registeredGuid;",
+   "\tvirtual ~GuidItem() {}\n\nprotected:\n\tbool registeredGuid;"
+  ],
+  [
+   "\t\tfriend class RaiseDescendentAdded2;\n\n\tprivate:\n\t\tAssociation<Instance> assoc;",
+   "\t\tfriend class RaiseDescendentAdded2;\n\t\tfriend class Creatable<Instance>::Deleter;\n\n\tprivate:\n\t\tAssociation<Instance> assoc;"
   ]
  ],
  "App/include/v8datamodel/MouseCommand.h": [
   [
    "\tclass MouseCommand : public INamed, public IRenderable\n\t{\n",
    "\tclass MouseCommand : public INamed, public IRenderable\n\t{\n\t\tfriend class Workspace;\n"
-  ]
- ],
- "App/include/util/IRenderable.h": [
-  [
-   "\t\tIRenderableBucket* bucket;\n\n\t\tint& indexFunc2d()",
-   "\t\tIRenderableBucket* bucket;\n\n\tpublic:\n\t\tint& indexFunc2d()"
   ]
  ],
  "Network/Streaming.cpp": [
@@ -129,6 +135,62 @@
   [
    "",
    "\n// rebuild overlay: template bodies rbxgs declares but never defines\nnamespace RBX\n{\n\ttemplate<typename Class, const char** ClassName>\n\tGlobalSettingsItem<Class, ClassName>* GlobalSettingsItem<Class, ClassName>::sing = NULL;\n\n\ttemplate<typename Class, const char** ClassName>\n\tGlobalSettingsItem<Class, ClassName>::GlobalSettingsItem()\n\t{\n\t\tsing = this;\n\t}\n\n\ttemplate<typename Class, const char** ClassName>\n\tGlobalSettingsItem<Class, ClassName>::~GlobalSettingsItem()\n\t{\n\t\tif (sing == this)\n\t\t\tsing = NULL;\n\t}\n\n\ttemplate<typename Class, const char** ClassName>\n\tClass& GlobalSettingsItem<Class, ClassName>::singleton()\n\t{\n\t\tboost::recursive_mutex::scoped_lock lock(GlobalSettings::mutex);\n\t\tif (!sing)\n\t\t\tServiceProvider::create<Class>(GlobalSettings::singleton().get());\n\t\treturn *static_cast<Class*>(sing);\n\t}\n}\n"
+  ]
+ ],
+ "App/include/reflection/enumconverter.h": [
+  [
+   "@replace",
+   "App/roc_enum_native_owner_header_b9f24b80cd6bff22.cpp"
+  ]
+ ],
+ "App/include/util/IRenderable.h": [
+  [
+   "@replace",
+   "App/roc_espeon_renderableindexaccessae7c6fa24fc9f234.cpp"
+  ]
+ ],
+ "App/include/v8datamodel/JointInstance.h": [
+  [
+   "@replace",
+   "App/roc_unit_ffc89e90dbae649c.cpp"
+  ]
+ ],
+ "App/include/v8datamodel/Gyro.h": [
+  [
+   "@replace",
+   "App/roc_unit_49d5cd98eaed3b87.cpp"
+  ]
+ ],
+ "App/v8datamodel/Gyro.cpp": [
+  [
+   "\t\t  part(NULL)",
+   "\t\t  part()"
+  ],
+  [
+   "RBXASSERT(part == NULL);",
+   "RBXASSERT(part.expired());"
+  ],
+  [
+   "(part != NULL) ?",
+   "!part.expired() ?"
+  ],
+  [
+   "part = dynamic_cast<PartInstance*>(event.newParent);",
+   "part = boost::shared_dynamic_cast<PartInstance>(shared_from(event.newParent));"
+  ],
+  [
+   "if (active && !firedEvent && part)",
+   "if (active && !firedEvent && !part.expired())"
+  ],
+  [
+   "@all:part->",
+   "part.lock()->"
+  ]
+ ],
+ "App/v8tree/Instance.cpp": [
+  [
+   "@all:\t\t  archivable(true),\n\t\t  guid()",
+   "\t\t  archivable(true)"
   ]
  ]
 }

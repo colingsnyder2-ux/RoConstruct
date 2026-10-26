@@ -607,6 +607,14 @@ def build_overlay(client, module, spec):
         for rel, edits in patches.items():
             text = (root / rel).read_text(errors="replace") if (root / rel).exists() else ""
             for old, new in edits:
+                if old == "@replace":  # adopt a whole header from a local unit; no vendor text in the patch file
+                    text = (root / new).read_text(errors="replace")
+                    continue
+                if old.startswith("@all:"):  # every occurrence, e.g. a member that became a weak_ptr
+                    if old[5:] not in text:
+                        raise ValueError("overlay patch for %s no longer applies: %r" % (rel, old[:60]))
+                    text = text.replace(old[5:], new)
+                    continue
                 if old and old not in text:
                     raise ValueError("overlay patch for %s no longer applies: %r" % (rel, old[:60]))
                 text = text.replace(old, new, 1) if old else text + new

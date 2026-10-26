@@ -25,6 +25,20 @@ def append(rel, new):
     patch(rel, "", new)
 
 
+def adopt(rel, unit):
+    """Replace a header with a 2008-layout header from an exact generated unit (read locally at build time)."""
+    if not (TREE / unit).exists():
+        raise SystemExit("%s: no unit %s" % (rel, unit))
+    patches.setdefault(rel, []).append(["@replace", unit])
+
+
+def patch_adopted(rel, unit, old, new):
+    """An edit to a header adopted with adopt(rel, unit); the anchor is checked against that unit."""
+    if old not in (TREE / unit).read_text(errors="replace"):
+        raise SystemExit("%s (adopted %s): anchor not found: %r" % (rel, unit, old[:60]))
+    patches[rel].append([old, new])
+
+
 # --- util/object.h: factory products (bodies as in OpenRBX util/object.h) ---
 OBJ = "App/include/util/object.h"
 patch(OBJ, "\tclass AbstractFactoryProduct : public Creatable<T>\n\t{\n",
@@ -511,12 +525,6 @@ patch("App/include/v8tree/Instance.h", "\t\tfriend class RaiseDescendentAdded2;\
 patch("App/include/v8datamodel/MouseCommand.h", "\tclass MouseCommand : public INamed, public IRenderable\n\t{\n",
       "\tclass MouseCommand : public INamed, public IRenderable\n\t{\n\t\tfriend class Workspace;\n")
 
-# --- util/IRenderable.h: IndexArray<IRenderable, &IRenderable::indexFunc2d> is named inside classes
-# deriving from IRenderableBucket (Workspace), where VS2008 checks the private accessors (VS2005 did
-# not). Only the two inline accessors become public; data members and layout are unchanged ---
-patch("App/include/util/IRenderable.h", "\t\tIRenderableBucket* bucket;\n\n\t\tint& indexFunc2d()",
-      "\t\tIRenderableBucket* bucket;\n\n\tpublic:\n\t\tint& indexFunc2d()")
-
 # --- Network/Streaming.cpp: an instance whose id is sent can be found by that id later
 # (registry in glue_guid_registry.cpp) ---
 patch("Network/Streaming.cpp", "namespace RBX\n{\n\tnamespace Network\n\t{\n",
@@ -807,5 +815,46 @@ namespace RBX
 """)
 
 out = Path(__file__).with_name("rbxgs-client.json")
+# --- Phase 4 canonical headers: 2008 layouts adopted from the exact generated units (header-catalog.json) ---
+# EnumDescriptor::Item {owner, value, index}, pure lookup, EnumDesc enumToItem: native-owner header, 7 exact units;
+# the genuine-owner header (3 units) agrees on Item.
+adopt("App/include/reflection/enumconverter.h", "App/roc_enum_native_owner_header_b9f24b80cd6bff22.cpp")
+# IRenderable: index accessors public (VS2008 checks them inside IndexArray<..., &IRenderable::indexFunc2d>
+# in Workspace); layout unchanged. Same text as 53 exact units' header.
+adopt("App/include/util/IRenderable.h", "App/roc_espeon_renderableindexaccessae7c6fa24fc9f234.cpp")
+# JointInstance holds weak_ptr<PartInstance> part[2]; Gyro's part is a weak_ptr (17 and 14 exact units).
+adopt("App/include/v8datamodel/JointInstance.h", "App/roc_unit_ffc89e90dbae649c.cpp")
+adopt("App/include/v8datamodel/Gyro.h", "App/roc_unit_49d5cd98eaed3b87.cpp")
+
+
+def patch_all(rel, old, new):
+    """Every occurrence of old in rel (anchor checked against the original file)."""
+    if old not in (TREE / rel).read_text(errors="replace"):
+        raise SystemExit("%s: anchor not found: %r" % (rel, old[:60]))
+    patches.setdefault(rel, []).append(["@all:" + old, new])
+
+
+# Gyro.cpp against the weak_ptr part: lock where it is used, expired() where it was compared with NULL
+GYRO = "App/v8datamodel/Gyro.cpp"
+patch(GYRO, "\t\t  part(NULL)", "\t\t  part()")
+patch(GYRO, "RBXASSERT(part == NULL);", "RBXASSERT(part.expired());")
+patch(GYRO, "(part != NULL) ?", "!part.expired() ?")
+patch(GYRO, "part = dynamic_cast<PartInstance*>(event.newParent);",
+      "part = boost::shared_dynamic_cast<PartInstance>(shared_from(event.newParent));")
+patch(GYRO, "if (active && !firedEvent && part)", "if (active && !firedEvent && !part.expired())")
+patch_all(GYRO, "part->", "part.lock()->")
+# Instance derives first from GuidItem<Instance> {vptr, registeredGuid @4, guid @8}, then
+# enable_shared_from_this (37 exact units; 15 others place onGuidChanged elsewhere in the vtable: unresolved).
+# getGuid/assignGuid are out of line (glue_instance_core.cpp); GuidItem's members are protected for them.
+INST, INST_UNIT = "App/include/v8tree/Instance.h", "App/roc_unit_b34763c2f3d3f398.cpp"
+adopt(INST, INST_UNIT)
+patch_adopted(INST, INST_UNIT, "\tvirtual ~GuidItem() {}\n\nprivate:\n\tbool registeredGuid;",
+              "\tvirtual ~GuidItem() {}\n\nprotected:\n\tbool registeredGuid;")
+# Instance.cpp: guid is a GuidItem<Instance> member now, constructed by that base
+patch_all("App/v8tree/Instance.cpp", "\t\t  archivable(true),\n\t\t  guid()", "\t\t  archivable(true)")
+# the factory's deleter calls predelete() and the protected destructor (as the patch above, on the adopted text)
+patch_adopted(INST, INST_UNIT, "\t\tfriend class RaiseDescendentAdded2;\n\n\tprivate:\n\t\tAssociation<Instance> assoc;",
+              "\t\tfriend class RaiseDescendentAdded2;\n\t\tfriend class Creatable<Instance>::Deleter;\n\n\tprivate:\n\t\tAssociation<Instance> assoc;")
+
 out.write_text(json.dumps(patches, indent=1) + "\n", encoding="utf-8")
 print("%d files, %d patches -> %s" % (len(patches), sum(map(len, patches.values())), out))

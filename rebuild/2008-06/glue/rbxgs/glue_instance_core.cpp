@@ -9,6 +9,18 @@
 
 namespace RBX
 {
+	// out of line in the 2008 Instance (the guid lives in the GuidItem<Instance> base, which has no
+	// onGuidChanged hook); bodies as rbxgs's inline ones
+	const Guid& Instance::getGuid() const
+	{
+		return guid;
+	}
+
+	void Instance::assignGuid(const Guid::Data& id)
+	{
+		guid.assign(id);
+	}
+
 	// events are copied when signals are fired by value
 	ChildAdded::ChildAdded(const ChildAdded& other) : child(other.child) {}
 	ChildRemoved::ChildRemoved(const ChildRemoved& other) : child(other.child) {}
