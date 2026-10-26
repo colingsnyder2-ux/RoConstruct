@@ -1154,6 +1154,12 @@ patch(RS_H, "#include <boost/scoped_ptr.hpp>\n", "#include <boost/scoped_ptr.hpp
 patch("Network/include/Network/Player.h", "\t\t\tint userId;\n\t\t\tG3D::RealTime lastActivityTime;\n",
       "\t\t\tint userId;\n\t\t\tshort unknown0x1b8[12]; // zeroed by the 2008 constructor; names and grouping unknown\n"
       "\t\t\tG3D::RealTime lastActivityTime;\n")
+# Lighting (allocation 0x2e0): the 2008 constructor (0x5e1a40) stores four floats 0x254..0x264 after clearColor,
+# timeOfDay at 0x268 (built from a string by 0x5e0c20), twenty-five floats 0x270..0x2d4, and sky at 0x2d4. The
+# floats' names are unknown.
+patch("App/include/v8datamodel/Lighting.h", "\t\tG3D::Color4 clearColor;\n\t\tboost::posix_time::time_duration timeOfDay;\n",
+      "\t\tG3D::Color4 clearColor;\n\t\tfloat unknown0x254[4]; // set by the 2008 constructor; names unknown\n"
+      "\t\tboost::posix_time::time_duration timeOfDay;\n\t\tfloat unknown0x270[25]; // names unknown\n")
 
 out.write_text(json.dumps(patches, indent=1) + "\n", encoding="utf-8")
 print("%d files, %d patches -> %s" % (len(patches), sum(map(len, patches.values())), out))

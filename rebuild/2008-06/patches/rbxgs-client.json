@@ -544,5 +544,11 @@
    "\t\t\tint userId;\n\t\t\tG3D::RealTime lastActivityTime;\n",
    "\t\t\tint userId;\n\t\t\tshort unknown0x1b8[12]; // zeroed by the 2008 constructor; names and grouping unknown\n\t\t\tG3D::RealTime lastActivityTime;\n"
   ]
+ ],
+ "App/include/v8datamodel/Lighting.h": [
+  [
+   "\t\tG3D::Color4 clearColor;\n\t\tboost::posix_time::time_duration timeOfDay;\n",
+   "\t\tG3D::Color4 clearColor;\n\t\tfloat unknown0x254[4]; // set by the 2008 constructor; names unknown\n\t\tboost::posix_time::time_duration timeOfDay;\n\t\tfloat unknown0x270[25]; // names unknown\n"
+  ]
  ]
 }
