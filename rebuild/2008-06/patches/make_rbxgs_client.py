@@ -837,6 +837,61 @@ def patch_all(rel, old, new):
     patches.setdefault(rel, []).append(["@all:" + old, new])
 
 
+# ScriptContext::reportError: the Lua error is data, not a format (a non-string error object is NULL here)
+patch_all("App/script/ScriptContext.cpp", "StandardOut::singleton()->print(MESSAGE_ERROR, lua_tostring(thread, -1));",
+          "StandardOut::singleton()->print(MESSAGE_ERROR, \"%s\", lua_tostring(thread, -1) ? lua_tostring(thread, -1) : \"(error object)\");")
+patch("App/script/ScriptContext.cpp", "        std::string err = lua_tostring(thread, -1);\n",
+      "        std::string err = lua_tostring(thread, -1) ? lua_tostring(thread, -1) : \"(error object)\";\n")
+# LuaBridge: a C++ exception from a member access must become a Lua error carrying its message (Lua built as
+# C++ catches it with catch(...) and the script only sees a non-string error object)
+patch("App/include/lua/LuaBridge.h",
+      "                const char* name = luaL_checkstring(L, 2);\n                T& object = getObject(L, 1);\n"
+      "                on_newindex(object, name, L);\n                return 0;\n",
+      "                const char* name = luaL_checkstring(L, 2);\n                T& object = getObject(L, 1);\n"
+      "                try\n                {\n                    on_newindex(object, name, L);\n                    return 0;\n"
+      "                }\n                catch (std::exception& e)\n                {\n                    lua_pushstring(L, e.what());\n"
+      "                }\n                return lua_error(L);\n")
+patch("App/include/lua/LuaBridge.h",
+      "                const char* name = luaL_checkstring(L, 2);\n                T& object = getObject(L, 1);\n"
+      "                return on_index(object, name, L);\n",
+      "                const char* name = luaL_checkstring(L, 2);\n                T& object = getObject(L, 1);\n"
+      "                try\n                {\n                    return on_index(object, name, L);\n"
+      "                }\n                catch (std::exception& e)\n                {\n                    lua_pushstring(L, e.what());\n"
+      "                }\n                return lua_error(L);\n")
+# The object and signal bridges specialise on_newindex in their .cpp files, but LuaBridge.h gives the generic
+# member an inline body ("cannot be assigned to"), so every other unit used that body and no script could set a
+# property. Declaring the specialisations where the bridges are declared makes every unit call them.
+# the generic member is declared in the class and defined out of it, so the specialisations below are ordinary
+# (emitted) functions rather than inline ones MSVC drops from their own unit
+patch("App/include/lua/LuaBridge.h",
+      "            static void on_newindex(T& object, const char* name, lua_State* L)\n            {\n"
+      "                throw std::runtime_error(G3D::format(\"%s cannot be assigned to\", name));\n            }\n",
+      "            static void on_newindex(T& object, const char* name, lua_State* L);\n")
+append("App/include/lua/LuaBridge.h", """
+namespace RBX { namespace Reflection { class DescribedBase; class SignalInstance; } }
+namespace RBX
+{
+    namespace Lua
+    {
+        template <typename T, bool isComparable>
+        void Bridge<T, isComparable>::on_newindex(T& object, const char* name, lua_State* L)
+        {
+            throw std::runtime_error(G3D::format("%s cannot be assigned to", name));
+        }
+        template<>
+        void Bridge<boost::shared_ptr<Reflection::DescribedBase>, false>::on_newindex(boost::shared_ptr<Reflection::DescribedBase>& object, const char* name, lua_State* L);
+        template<>
+        void Bridge<boost::shared_ptr<Reflection::SignalInstance>, false>::on_newindex(boost::shared_ptr<Reflection::SignalInstance>& object, const char* name, lua_State* L);
+    }
+}
+""")
+# TextXmlParser::readText: consume each character (rbxgs peeks with sgetc forever and runs out of memory)
+patch("App/v8xml/XmlSerializer.cpp", "\twhile ((char)buffer->sgetc() != '<')\n\t\ttext += buffer->sgetc();\n",
+      "\twhile ((char)buffer->sgetc() != '<')\n\t\ttext += (char)buffer->sbumpc();\n")
+# TextXmlParser::parse: the root element has no parent to be added to (rbxgs dereferences the empty stack's NULL)
+patch("App/v8xml/XmlSerializer.cpp", "\t\t\tcurrentElement->pushBackChild(newElement);\n",
+      "\t\t\tif (currentElement)\n\t\t\t\tcurrentElement->pushBackChild(newElement);\n")
+
 # Gyro.cpp against the weak_ptr part: lock where it is used, expired() where it was compared with NULL
 GYRO = "App/v8datamodel/Gyro.cpp"
 patch(GYRO, "\t\t  part(NULL)", "\t\t  part()")

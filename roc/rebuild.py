@@ -516,6 +516,15 @@ def resolve_objects(client, test, layers, name, includes=(), max_rounds=20, log=
     return result
 
 
+def _twin(path, overlay):
+    """The overlay copy a file under the overlay root would have (a non-existent path when it is outside)."""
+    root, ov = overlay
+    try:
+        return Path(ov) / Path(path).resolve().relative_to(Path(root).resolve())
+    except ValueError:
+        return Path(ov) / "-outside-"
+
+
 def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- /EHsc /MD", cl=BUILD, append=None,
                    overlay=None):
     """Plain whole-file cl /c build (no mining wrapper): header search order is the ABI choice.
@@ -534,7 +543,9 @@ def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- 
         if obj.exists() and deps_file.exists():
             deps = [src, Path(orig)] + ([Path(append)] if append else []) + [Path(d) for d in json.loads(deps_file.read_text())]
             built = obj.stat().st_mtime
-            if all(d.exists() and d.stat().st_mtime < built for d in deps):
+            # a header that gained an overlay twin since this object was built is shadowed now: rebuild
+            shadowed = overlay and any(_twin(d, overlay).exists() for d in deps[2:])
+            if not shadowed and all(d.exists() and d.stat().st_mtime < built for d in deps):
                 results[str(orig)] = (True, "up to date")
                 continue
         obj.unlink(missing_ok=True)  # a failed compile must not leave a stale object
@@ -780,7 +791,7 @@ def build_module(client, name, log=print):
 
 
 # Phase 8 runtime milestones: each is a real test exe linked with a rebuilt module (and its deps)
-MILESTONES = {"M2": ("m2_window", "rbxgs-app"), "M4a": ("m4_datamodel", "rbxgs-app")}
+MILESTONES = {"M2": ("m2_window", "rbxgs-app"), "M4a": ("m4_datamodel", "rbxgs-app"), "M5": ("m5_place", "rbxgs-app")}
 
 
 def milestones(client, log=print):

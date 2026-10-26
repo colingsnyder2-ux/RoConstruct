@@ -161,6 +161,44 @@
    "App/roc_unit_49d5cd98eaed3b87.cpp"
   ]
  ],
+ "App/script/ScriptContext.cpp": [
+  [
+   "@all:StandardOut::singleton()->print(MESSAGE_ERROR, lua_tostring(thread, -1));",
+   "StandardOut::singleton()->print(MESSAGE_ERROR, \"%s\", lua_tostring(thread, -1) ? lua_tostring(thread, -1) : \"(error object)\");"
+  ],
+  [
+   "        std::string err = lua_tostring(thread, -1);\n",
+   "        std::string err = lua_tostring(thread, -1) ? lua_tostring(thread, -1) : \"(error object)\";\n"
+  ]
+ ],
+ "App/include/lua/LuaBridge.h": [
+  [
+   "                const char* name = luaL_checkstring(L, 2);\n                T& object = getObject(L, 1);\n                on_newindex(object, name, L);\n                return 0;\n",
+   "                const char* name = luaL_checkstring(L, 2);\n                T& object = getObject(L, 1);\n                try\n                {\n                    on_newindex(object, name, L);\n                    return 0;\n                }\n                catch (std::exception& e)\n                {\n                    lua_pushstring(L, e.what());\n                }\n                return lua_error(L);\n"
+  ],
+  [
+   "                const char* name = luaL_checkstring(L, 2);\n                T& object = getObject(L, 1);\n                return on_index(object, name, L);\n",
+   "                const char* name = luaL_checkstring(L, 2);\n                T& object = getObject(L, 1);\n                try\n                {\n                    return on_index(object, name, L);\n                }\n                catch (std::exception& e)\n                {\n                    lua_pushstring(L, e.what());\n                }\n                return lua_error(L);\n"
+  ],
+  [
+   "            static void on_newindex(T& object, const char* name, lua_State* L)\n            {\n                throw std::runtime_error(G3D::format(\"%s cannot be assigned to\", name));\n            }\n",
+   "            static void on_newindex(T& object, const char* name, lua_State* L);\n"
+  ],
+  [
+   "",
+   "\nnamespace RBX { namespace Reflection { class DescribedBase; class SignalInstance; } }\nnamespace RBX\n{\n    namespace Lua\n    {\n        template <typename T, bool isComparable>\n        void Bridge<T, isComparable>::on_newindex(T& object, const char* name, lua_State* L)\n        {\n            throw std::runtime_error(G3D::format(\"%s cannot be assigned to\", name));\n        }\n        template<>\n        void Bridge<boost::shared_ptr<Reflection::DescribedBase>, false>::on_newindex(boost::shared_ptr<Reflection::DescribedBase>& object, const char* name, lua_State* L);\n        template<>\n        void Bridge<boost::shared_ptr<Reflection::SignalInstance>, false>::on_newindex(boost::shared_ptr<Reflection::SignalInstance>& object, const char* name, lua_State* L);\n    }\n}\n"
+  ]
+ ],
+ "App/v8xml/XmlSerializer.cpp": [
+  [
+   "\twhile ((char)buffer->sgetc() != '<')\n\t\ttext += buffer->sgetc();\n",
+   "\twhile ((char)buffer->sgetc() != '<')\n\t\ttext += (char)buffer->sbumpc();\n"
+  ],
+  [
+   "\t\t\tcurrentElement->pushBackChild(newElement);\n",
+   "\t\t\tif (currentElement)\n\t\t\t\tcurrentElement->pushBackChild(newElement);\n"
+  ]
+ ],
  "App/v8datamodel/Gyro.cpp": [
   [
    "\t\t  part(NULL)",

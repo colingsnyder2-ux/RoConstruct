@@ -5,6 +5,9 @@
 #include "Network/Players.h"
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/factoryregistration.h"
+#include "v8datamodel/DebugSettings.h"
+#include "v8datamodel/GameSettings.h"
+#include "NetworkSettings.h"
 #include "v8datamodel/Workspace.h"
 #include "v8datamodel/Camera.h"
 #include "v8datamodel/MouseCommand.h"
@@ -45,6 +48,11 @@ namespace RBX
 		// the factory knows no classes until a FactoryRegistrator runs (the app shell owns one; rbxgs has no
 		// shell): construct it once, before the first service is created by name
 		static FactoryRegistrator factoryRegistrator;
+		// the global settings items are created by name on first use (GlobalSettingsItem::singleton); naming
+		// getCreator instantiates their factory creators here, which register them at startup
+		(void)&DebugSettings::getCreator;
+		(void)&GameSettings::getCreator;
+		(void)&NetworkSettings::getCreator;
 		workspace->setParent(this);
 		runService = shared_from(ServiceProvider::create<RunService>(this));
 		Notifier<RunService, RunTransition>::connect(runService.get(), this);
@@ -71,6 +79,25 @@ namespace RBX
 	float DataModel::getSimTime() const
 	{
 		return timeState->totalVirtualTime;
+	}
+
+	// run a chunk with no arguments and discard its results (the other overloads push and read values)
+	namespace
+	{
+		size_t pushNothing(lua_State*) { return 0; }
+		void readNothing(lua_State*, size_t) {}
+	}
+
+	// the context's global Lua state, opened on first use as executeInNewThread does
+	lua_State* ScriptContext::state()
+	{
+		openState();
+		return globalState;
+	}
+
+	void ScriptContext::executeInNewThread(Security::Identities identity, const char* script, const char* name)
+	{
+		executeInNewThread(identity, script, name, &pushNothing, &readNothing);
 	}
 
 	// the shell closes a place by emptying it under the lock; the run thread is the shell's own
