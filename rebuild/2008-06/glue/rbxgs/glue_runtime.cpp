@@ -4,6 +4,7 @@
 #include <RakPeer.h>  // first, as rbxgs Players.cpp: RakNet needs winsock2 before windows.h
 #include "Network/Players.h"
 #include "v8datamodel/DataModel.h"
+#include "v8datamodel/factoryregistration.h"
 #include "v8datamodel/Workspace.h"
 #include "v8datamodel/Camera.h"
 #include "v8datamodel/MouseCommand.h"
@@ -41,6 +42,9 @@ namespace RBX
 	// the services every place starts with (DataModel::clearContents empties the same set)
 	void DataModel::initializeContents()
 	{
+		// the factory knows no classes until a FactoryRegistrator runs (the app shell owns one; rbxgs has no
+		// shell): construct it once, before the first service is created by name
+		static FactoryRegistrator factoryRegistrator;
 		workspace->setParent(this);
 		runService = shared_from(ServiceProvider::create<RunService>(this));
 		Notifier<RunService, RunTransition>::connect(runService.get(), this);
@@ -67,6 +71,16 @@ namespace RBX
 	float DataModel::getSimTime() const
 	{
 		return timeState->totalVirtualTime;
+	}
+
+	// the shell closes a place by emptying it under the lock; the run thread is the shell's own
+	// (RunService::runProc returns once the services are gone), so there is nothing else to join here
+	void DataModel::closeDataModel(boost::shared_ptr<DataModel> dataModel, bool)
+	{
+		if (!dataModel)
+			return;
+		Lock lock(dataModel);
+		dataModel->clearContents();
 	}
 
 	// one simulation step per frame period while running; views redraw after each step

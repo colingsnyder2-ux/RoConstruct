@@ -43,9 +43,12 @@ def patch_adopted(rel, unit, old, new):
 OBJ = "App/include/util/object.h"
 patch(OBJ, "\tclass AbstractFactoryProduct : public Creatable<T>\n\t{\n",
       "\tclass AbstractFactoryProduct : public Creatable<T>\n\t{\n\tpublic:\n\t\ttypedef Creatable<T> CreatableBase;\n")
+# Each constructor names the static creator, which instantiates it for every creatable class; its constructor
+# registers the class with the factory at startup (without a use, the template static never exists and
+# AbstractFactoryProduct::create finds no class). Naming it emits no code.
 patch(OBJ, "\t\tFactoryProduct();\n",
-      "\t\tFactoryProduct()\n\t\t{\n\t\t}\n"
-      "\t\ttemplate<typename Arg0Type>\n\t\tFactoryProduct(Arg0Type arg0)\n\t\t\t: DerivedClass(arg0)\n\t\t{\n\t\t}\n")
+      "\t\tFactoryProduct()\n\t\t{\n\t\t\t(void)&creator;\n\t\t}\n"
+      "\t\ttemplate<typename Arg0Type>\n\t\tFactoryProduct(Arg0Type arg0)\n\t\t\t: DerivedClass(arg0)\n\t\t{\n\t\t\t(void)&creator;\n\t\t}\n")
 append(OBJ, """
 // rebuild overlay: template bodies rbxgs declares but never defines
 namespace RBX

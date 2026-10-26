@@ -780,7 +780,7 @@ def build_module(client, name, log=print):
 
 
 # Phase 8 runtime milestones: each is a real test exe linked with a rebuilt module (and its deps)
-MILESTONES = {"M2": ("m2_window", "rbxgs-app")}
+MILESTONES = {"M2": ("m2_window", "rbxgs-app"), "M4a": ("m4_datamodel", "rbxgs-app")}
 
 
 def milestones(client, log=print):
@@ -1051,7 +1051,7 @@ def progress(client="2008-06", log=print, notify=True):
     milestones = 1 if modules and all(m["linked"] and m["test"] == 0 for m in modules) else 0
     ran = workspace(client) / "out" / "milestones.json"
     if milestones and ran.exists():
-        milestones += sum(1 for r in json.loads(ran.read_text()).values() if r.get("passed"))
+        milestones += sum(1 for k, r in json.loads(ran.read_text()).items() if r.get("passed") and k[1:].isdigit())  # M4a is half of M4
 
     data = {
         "phase": phase,

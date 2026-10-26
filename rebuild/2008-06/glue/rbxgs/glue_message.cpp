@@ -17,6 +17,18 @@ namespace RBX
 						  Adorn::XALIGN_CENTER, Adorn::YALIGN_CENTER, Adorn::PROPORTIONAL_SPACING);
 	}
 
+	// a Hint is a dark bar along the bottom of the screen with its text in it
+	void Hint::render2d(Adorn* adorn)
+	{
+		if (text.empty())
+			return;
+		G3D::Rect2D viewport = adorn->getViewport();
+		G3D::Rect2D bar = G3D::Rect2D::xywh(viewport.x0(), viewport.y1() - 20.0f, viewport.width(), 20.0f);
+		adorn->rect2d(bar, G3D::Color4(0.0f, 0.0f, 0.0f, 1.0f));
+		adorn->drawFont2D(text, bar.center(), 12.0, G3D::Color3::white(), G3D::Color3::black(),
+						  Adorn::XALIGN_CENTER, Adorn::YALIGN_CENTER, Adorn::PROPORTIONAL_SPACING);
+	}
+
 	namespace Reflection
 	{
 		std::string RefPropertyDescriptor::getStringValue(const DescribedBase*) const

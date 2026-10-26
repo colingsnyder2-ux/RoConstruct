@@ -29,15 +29,17 @@ namespace RBX
 	PropertyChanged::PropertyChanged(const PropertyChanged& other) : property(other.property) {}
 	CanAggregateChanged::CanAggregateChanged(const CanAggregateChanged& other) : canClump(other.canClump) {}
 
-	// before deletion an instance releases its children, so none keeps a dangling parent
+	// before deletion an instance releases its children, so none keeps a dangling parent. Its own count is
+	// already zero, so setParent (which takes shared_from_this of the old parent) cannot be used: children are
+	// detached directly, without removal notifications, and each runs predelete when its last reference goes.
 	void Instance::predelete()
 	{
 		boost::shared_ptr<const std::vector<boost::shared_ptr<Instance> > > snapshot = children.read();
 		if (snapshot)
 		{
-			std::vector<boost::shared_ptr<Instance> > copy(*snapshot);
-			for (size_t i = 0; i < copy.size(); ++i)
-				copy[i]->setParent(NULL);
+			for (size_t i = 0; i < snapshot->size(); ++i)
+				(*snapshot)[i]->parent = NULL;
+			children.reset();
 		}
 	}
 

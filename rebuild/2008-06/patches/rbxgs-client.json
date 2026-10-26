@@ -6,7 +6,7 @@
   ],
   [
    "\t\tFactoryProduct();\n",
-   "\t\tFactoryProduct()\n\t\t{\n\t\t}\n\t\ttemplate<typename Arg0Type>\n\t\tFactoryProduct(Arg0Type arg0)\n\t\t\t: DerivedClass(arg0)\n\t\t{\n\t\t}\n"
+   "\t\tFactoryProduct()\n\t\t{\n\t\t\t(void)&creator;\n\t\t}\n\t\ttemplate<typename Arg0Type>\n\t\tFactoryProduct(Arg0Type arg0)\n\t\t\t: DerivedClass(arg0)\n\t\t{\n\t\t\t(void)&creator;\n\t\t}\n"
   ],
   [
    "",
