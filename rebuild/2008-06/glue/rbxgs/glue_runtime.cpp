@@ -66,13 +66,13 @@ namespace RBX
 	float DataModel::step(float interval)
 	{
 		float stepped = workspace->step(interval);
-		timeState->totalVirtualTime += stepped;
+		getTimeState()->totalVirtualTime += stepped;
 		return stepped;
 	}
 
 	float DataModel::getSimTime() const
 	{
-		return timeState->totalVirtualTime;
+		return getTimeState()->totalVirtualTime;
 	}
 
 	// run a chunk with no arguments and discard its results (the other overloads push and read values)

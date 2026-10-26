@@ -333,6 +333,14 @@
   [
    "\t\tvirtual bool isStackTooBig() const;\n\n",
    ""
+  ],
+  [
+   "\t\tboost::scoped_ptr<TimeState> timeState;\n",
+   ""
+  ],
+  [
+   "\t\tTimeState* getTimeState();\n",
+   "\t\tTimeState* getTimeState() const; // rebuild shim (glue_timestate_registry.cpp)\n"
   ]
  ],
  "App/include/v8world/Edge.h": [
@@ -549,6 +557,16 @@
   [
    "\t\tG3D::Color4 clearColor;\n\t\tboost::posix_time::time_duration timeOfDay;\n",
    "\t\tG3D::Color4 clearColor;\n\t\tfloat unknown0x254[4]; // set by the 2008 constructor; names unknown\n\t\tboost::posix_time::time_duration timeOfDay;\n\t\tfloat unknown0x270[25]; // names unknown\n"
+  ]
+ ],
+ "App/v8datamodel/DataModel.cpp": [
+  [
+   "\t\t  timeState(new TimeState),\n",
+   ""
+  ],
+  [
+   "@all:timeState->",
+   "getTimeState()->"
   ]
  ]
 }

@@ -1160,6 +1160,14 @@ patch("Network/include/Network/Player.h", "\t\t\tint userId;\n\t\t\tG3D::RealTim
 patch("App/include/v8datamodel/Lighting.h", "\t\tG3D::Color4 clearColor;\n\t\tboost::posix_time::time_duration timeOfDay;\n",
       "\t\tG3D::Color4 clearColor;\n\t\tfloat unknown0x254[4]; // set by the 2008 constructor; names unknown\n"
       "\t\tboost::posix_time::time_duration timeOfDay;\n\t\tfloat unknown0x270[25]; // names unknown\n")
+# DataModel (allocation 0x264): the 2008 destructor (0x57ad70) frees members up to mutex (0x25c) and nothing at
+# 0x264, so 2008 has no timeState pointer. Its TimeState lives in a rebuild-side table (glue_timestate_registry.cpp,
+# tracked shim) until 2008's time keeping is placed (RunService has timing members and a Stopwatch).
+DM_H, DM_CPP = "App/include/v8datamodel/DataModel.h", "App/v8datamodel/DataModel.cpp"
+patch(DM_H, "\t\tboost::scoped_ptr<TimeState> timeState;\n", "")
+patch(DM_H, "\t\tTimeState* getTimeState();\n", "\t\tTimeState* getTimeState() const; // rebuild shim (glue_timestate_registry.cpp)\n")
+patch(DM_CPP, "\t\t  timeState(new TimeState),\n", "")
+patch_all(DM_CPP, "timeState->", "getTimeState()->")
 
 out.write_text(json.dumps(patches, indent=1) + "\n", encoding="utf-8")
 print("%d files, %d patches -> %s" % (len(patches), sum(map(len, patches.values())), out))
