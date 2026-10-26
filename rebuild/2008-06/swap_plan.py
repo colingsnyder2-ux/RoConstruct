@@ -9,6 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 LIBS = {"rbxgs", "rbxgs-dll", "openrbx-client", "openrbx-client-dll"}
+LIB_PREFIXES = ("xtp-11.2.2",)  # every XTP 11.2.2 configuration (the XTP module swaps them in)
 OUT = ROOT / "rebuild" / "2008-06" / "out"
 
 
@@ -40,7 +41,7 @@ def main():
             continue
         text = path.read_text(errors="replace")
         lib = re.search(r"^// roc-lib: (\S+) (\S+)", text, re.M)
-        if not lib or lib.group(1) not in LIBS:
+        if not lib or (lib.group(1) not in LIBS and not lib.group(1).startswith(LIB_PREFIXES)):
             continue
         cl = re.search(r"^// roc-cl: (\d+)", text, re.M)
         flags = re.search(r"^// roc-flags: (.*)$", text, re.M)

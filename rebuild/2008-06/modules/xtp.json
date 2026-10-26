@@ -25,5 +25,6 @@
   "tools/libs/xtp-11.2.2/Source",
   "tools/libs/mfc-9.0-rtm/atlmfc/include"
  ],
- "test_defines": "WIN32 NDEBUG _MBCS _AFXDLL _XTP_STATICLINK _DLL _XTPLIB_NOAUTOLINK"
+ "test_defines": "WIN32 NDEBUG _MBCS _AFXDLL _XTP_STATICLINK _DLL _XTPLIB_NOAUTOLINK",
+ "verified": true
 }

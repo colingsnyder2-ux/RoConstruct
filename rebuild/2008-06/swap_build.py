@@ -17,6 +17,13 @@ from roc import match  # noqa: E402
 
 CLIENT = "2008-06"
 RECIPES = {"RbxgsApp": {"rbxgs", "rbxgs-dll"}, "RbxApp": {"openrbx-client", "openrbx-client-dll"}}
+RECIPE_PREFIXES = {"XTP": ("xtp-11.2.2",)}
+
+
+def of_module(module, recipe):
+    return recipe in RECIPES.get(module, ()) or recipe.startswith(RECIPE_PREFIXES.get(module, ()))
+
+
 OUT = ROOT / "rebuild" / CLIENT / "out"
 
 
@@ -116,7 +123,7 @@ def main(module, limit=None):
     # compiled against the module's overlay headers instead (compile_against_overlay)
     groups = []
     for g in plan["groups"]:
-        if g["recipe"] not in RECIPES[module]:
+        if not of_module(module, g["recipe"]):
             continue
         if compatible(module, g["file"]):
             groups.append(g)
