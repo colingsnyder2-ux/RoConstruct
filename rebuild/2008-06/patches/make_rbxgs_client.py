@@ -990,6 +990,92 @@ patch("App/include/v8tree/Verb.h", "\tclass __declspec(novtable) IDataState : pu
       "\tclass __declspec(novtable) IDataState\n")
 # without the StateStack base DataModel has no isStackTooBig override (it only overrode StateStack's virtual)
 patch("App/include/v8datamodel/DataModel.h", "\t\tvirtual bool isStackTooBig() const;\n\n", "")
+# --- Primitive, 2008 layout (0xfc bytes; PartInstance embeds it at 0x228). The exact 2008 constructor (0x5e8770)
+# stores: guidSetExternally 0x10, edgeVersion 0x14 = 1, contacts {owner 0x18, Array 0x1c, Array 0x28} and joints
+# {owner 0x34, ...}, worldIndex 0x50 = -1, traverseId 0x54 = -1, world 0x58, clump 0x5c, clumpDepth 0x60 = -1,
+# spatialNodes 0x64, ..., geometry 0x9c, body 0xa0, myOwner 0xa4, dragging/anchored/0xaa/0xab bytes, canCollide 0xac,
+# controller 0xe8, JointK 0xec. An EdgeList is arrays, not an intrusive list: the exact 0x5e8990 appends the edge,
+# records its index in the edge (0x14 for primitive 0, 0x18 for 1) and appends the other primitive; the exact
+# 0x5e8610 swap-removes it and fixes the moved edge's index. Edge keeps those indices where rbxgs had next0/next1. ---
+EDGE_H = "App/include/v8world/Edge.h"
+patch(EDGE_H, "\t\tEdge* next0;\n\t\tEdge* next1;\n", "\t\tint index0;\n\t\tint index1;\n")
+patch(EDGE_H, "\t\tEdge* getNext(const Primitive* p) const\n\t\t{\n\t\t\treturn p == prim0 ? next0 : next1;\n\t\t}\n"
+      "\t\tvoid setNext(Primitive* p, Edge* e)\n\t\t{\n\t\t\tif (p == prim0)\n\t\t\t\tnext0 = e;\n\t\t\telse\n\t\t\t\tnext1 = e;\n\t\t}\n",
+      "\t\tint getIndex(const Primitive* p) const\n\t\t{\n\t\t\treturn p == prim0 ? index0 : index1;\n\t\t}\n"
+      "\t\tvoid setIndex(const Primitive* p, int i)\n\t\t{\n\t\t\tif (p == prim0)\n\t\t\t\tindex0 = i;\n\t\t\telse\n\t\t\t\tindex1 = i;\n\t\t}\n")
+patch("App/v8world/Edge.cpp", "\t\t  next0(NULL),\n\t\t  next1(NULL),\n", "\t\t  index0(-1),\n\t\t  index1(-1),\n")
+
+PRIM_H, PRIM_CPP = "App/include/v8world/Primitive.h", "App/v8world/Primitive.cpp"
+_prim_h = (TREE / PRIM_H).read_text(errors="replace")
+_el_start = _prim_h.index("\tclass EdgeList\n")
+_el_end = _prim_h.index("\t};\n", _el_start) + len("\t};\n")
+patch(PRIM_H, _prim_h[_el_start:_el_end],
+      "\tclass EdgeList\n\t{\n\tpublic:\n\t\tPrimitive* owner;\n\t\tG3D::Array<Edge*> edges;\n"
+      "\t\tG3D::Array<Primitive*> neighbors; // the other primitive of each edge\n\n"
+      "\tpublic:\n\t\tEdgeList(Primitive* owner) : owner(owner) {}\n\n\t\tbool hasEdge();\n"
+      "\t\tvoid insertEdge(Edge* e);\n\t\tvoid removeEdge(Edge* e);\n\t\tEdge* first() const;\n\t\tEdge* next(Edge* e) const;\n\t};\n")
+patch(PRIM_H, "\t\tbool guidSetExternally;\n\t\tEdgeList contacts;\n\t\tEdgeList joints;\n\t\tint worldIndex;\n"
+      "\t\tWorld* world;\n\t\tClump* clump;\n\t\tint clumpDepth;\n\t\tint traverseId;\n",
+      "\t\tbool guidSetExternally;\n\t\tint edgeVersion;\n\t\tEdgeList contacts;\n\t\tEdgeList joints;\n\t\tint worldIndex;\n"
+      "\t\tint traverseId;\n\t\tWorld* world;\n\t\tClump* clump;\n\t\tint clumpDepth;\n")
+patch(PRIM_H, "\t\tIMoving* myOwner;\n\t\tAnchor* anchorObject;\n\t\tbool dragging;\n\t\tbool anchored;\n\t\tbool canCollide;\n\t\tbool canSleep;\n",
+      "\t\tIMoving* myOwner;\n\t\tbool dragging;\n\t\tbool anchored;\n\t\tbool flag0xaa; // 0xaa: third of the dragging/anchored set (exact 0x5e8140); name unknown\n"
+      "\t\tbool canSleep;\n\t\tbool canCollide;\n")
+# rbxgs keeps an Anchor* in Primitive; the 2008 Primitive has no slot for it (and 2008 anchors through an
+# AnchorJoint class rbxgs lacks). Until that is reconstructed, the Anchor objects live in a rebuild-side table
+# (glue_anchor_registry.cpp, tracked shim) so the layout stays 2008's.
+patch(PRIM_H, "\t\t\treturn anchorObject != NULL;\n\t\t}\n\t\tAnchor* getAnchorObject()\n\t\t{\n\t\t\treturn anchorObject;\n\t\t}\n",
+      "\t\t\treturn getAnchorObject() != NULL;\n\t\t}\n\t\tAnchor* getAnchorObject() const; // rebuild shim (glue_anchor_registry.cpp)\n"
+      "\t\tvoid setAnchorObject(Anchor* anchor);\n")
+patch(PRIM_CPP, "\t\t\tRBXASSERT(!anchorObject);\n\t\t\tanchorObject = new Anchor(this);",
+      "\t\t\tRBXASSERT(!getAnchorObject());\n\t\t\tsetAnchorObject(new Anchor(this));")
+patch(PRIM_CPP, "\t\t\tRBXASSERT(anchorObject);", "\t\t\tRBXASSERT(getAnchorObject());")
+patch(PRIM_CPP, "\t\t\tif (anchorObject)\n\t\t\t\tdelete anchorObject;\n\n\t\t\tanchorObject = NULL;",
+      "\t\t\tdelete getAnchorObject();\n\t\t\tsetAnchorObject(NULL);")
+patch(PRIM_H, "\t\t\treturn joints.num;", "\t\t\treturn joints.edges.size();")
+patch(PRIM_H, "\t\t\treturn contacts.num;", "\t\t\treturn contacts.edges.size();")
+
+
+patch(PRIM_CPP, "\t\tmyOwner(NULL),\n\t\tanchorObject(NULL),\n\t\tdragging(false),\n\t\tanchored(false),\n",
+      "\t\tmyOwner(NULL),\n\t\tdragging(false),\n\t\tanchored(false),\n\t\tflag0xaa(false),\n")
+patch(PRIM_CPP, "\t\tspatialNodes(NULL),\n\t\tworldIndex(-1),\n",
+      "\t\tspatialNodes(NULL),\n\t\tedgeVersion(1),\n\t\tcontacts(this),\n\t\tjoints(this),\n\t\tworldIndex(-1),\n")
+patch(PRIM_CPP, "\t\treturn joints.first ? joints.first : contacts.first;",
+      "\t\treturn joints.edges.size() ? joints.first() : contacts.first();")
+patch(PRIM_CPP, "\t\treturn rbx_static_cast<Joint*>(joints.first);", "\t\treturn rbx_static_cast<Joint*>(joints.first());")
+patch(PRIM_CPP, "\t\treturn rbx_static_cast<Contact*>(contacts.first);", "\t\treturn rbx_static_cast<Contact*>(contacts.first());")
+patch(PRIM_CPP, "\t\treturn rbx_static_cast<Joint*>(prev->getNext(this));", "\t\treturn rbx_static_cast<Joint*>(joints.next(prev));")
+patch(PRIM_CPP, "\t\treturn rbx_static_cast<Contact*>(prev->getNext(this));", "\t\treturn rbx_static_cast<Contact*>(contacts.next(prev));")
+patch(PRIM_CPP, "\t\tEdge* next = e->getNext(this);\n\n\t\tif (next)\n\t\t\treturn next;\n\t\telse\n\t\t\treturn Joint::isJoint(e) ? contacts.first : NULL;",
+      "\t\tif (Joint::isJoint(e))\n\t\t{\n\t\t\tEdge* next = joints.next(e);\n\t\t\treturn next ? next : contacts.first();\n\t\t}\n\t\treturn contacts.next(e);")
+for _verb in ("insertEdge", "removeEdge"):
+    for _i, _list in ((0, "joints"), (1, "joints"), (0, "contacts"), (1, "contacts")):
+        _old = "EdgeList::%s(p%d, e, e->getPrimitive(%d)->%s);" % (_verb, _i, _i, _list)
+        patch_all(PRIM_CPP, _old, "e->getPrimitive(%d)->%s.%s(e);" % (_i, _list, _verb))
+_cpp_p = (TREE / PRIM_CPP).read_text(errors="replace")
+_ins = _cpp_p.index("\tvoid EdgeList::insertEdge(Primitive* p, Edge* e, EdgeList& list)\n")
+_rem_end = _cpp_p.index("\t\tlist.num--;\n\t}\n", _ins) + len("\t\tlist.num--;\n\t}\n")
+patch(PRIM_CPP, _cpp_p[_ins:_rem_end],
+      "\tvoid EdgeList::insertEdge(Edge* e)\n\t{\n\t\te->setIndex(owner, edges.size());\n\t\tedges.append(e);\n"
+      "\t\tneighbors.append(e->otherPrimitive(owner));\n\t}\n\n"
+      "\tvoid EdgeList::removeEdge(Edge* e)\n\t{\n\t\tint index = e->getIndex(owner);\n\t\tEdge* lastEdge = edges.last();\n"
+      "\t\tPrimitive* lastNeighbor = neighbors.last();\n\t\tedges[index] = lastEdge;\n\t\tneighbors[index] = lastNeighbor;\n"
+      "\t\tedges.popDiscard();\n\t\tneighbors.popDiscard();\n\t\tlastEdge->setIndex(owner, index);\n\t\te->setIndex(owner, -1);\n\t}\n\n"
+      "\tEdge* EdgeList::first() const\n\t{\n\t\treturn edges.size() ? edges[0] : NULL;\n\t}\n\n"
+      "\tEdge* EdgeList::next(Edge* e) const\n\t{\n\t\tint i = e->getIndex(owner) + 1;\n\t\treturn i < edges.size() ? edges[i] : NULL;\n\t}\n")
+# --- PartInstance embeds its Primitive (2008 constructor 0x59d4d0 constructs Primitive(GEOMETRY_BLOCK) in place at
+# this+0x228; the next member, myWorld, is at 0x324 = 0x228 + 0xfc) and has a ContentId after SurfacesNeedAdorn at
+# 0x3c8 (std::string constructed in place, mimeTypePtr = &Name::getNullName() at +0x1c), ending at 0x3e8 where the
+# vbtable puts the virtual bases (vbtable 0x849e6c: -308, 696, 704, 712). Allocation 0x404. ---
+PI_H, PI_CPP = "App/include/v8datamodel/PartInstance.h", "App/v8datamodel/PartInstance.cpp"
+patch(PI_H, '#include "util/ISelectable3d.h"\n', '#include "util/ISelectable3d.h"\n#include "util/ContentProvider.h"\n')
+patch(PI_H, "\t\tboost::scoped_ptr<Primitive> primitive;\n", "\t\tPrimitive primitive;\n")
+patch(PI_H, "\t\tComputeProp<bool, PartInstance> SurfacesNeedAdorn;\n",
+      "\t\tComputeProp<bool, PartInstance> SurfacesNeedAdorn;\n\t\tContentId contentId0x3c8; // 0x3c8; name and use unknown\n")
+patch_all(PI_H, "primitive.get()", "&primitive")
+patch(PI_CPP, "\t\t  primitive(new Primitive(Geometry::GEOMETRY_BLOCK)),\n", "\t\t  primitive(Geometry::GEOMETRY_BLOCK),\n")
+patch_all(PI_CPP, "primitive.get()", "&primitive")
+patch_all(PI_CPP, "primitive->", "primitive.")
 
 out.write_text(json.dumps(patches, indent=1) + "\n", encoding="utf-8")
 print("%d files, %d patches -> %s" % (len(patches), sum(map(len, patches.values())), out))
