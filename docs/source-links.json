@@ -460,6 +460,7 @@
    "G3Dcpp/format.cpp",
    "G3Dcpp/g3dmath.cpp",
    "G3Dcpp/prompt.cpp",
+   "G3Dcpp/roc_claude_gimage_smooth_b6205ab30eea6e87.cpp",
    "G3Dcpp/roc_export_2e510945f61df65f.cpp",
    "G3Dcpp/roc_export_432ee86321934a78.cpp",
    "G3Dcpp/roc_export_57652567cf656dc0.cpp",

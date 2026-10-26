@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-26 07:24 UTC",
+ "updated": "2026-10-26 08:29 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -191,15 +191,15 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22284,
-   "matched": 22040,
-   "partial": 242,
-   "source_matched": 13643,
-   "mined_matched": 8397,
-   "bytes": 3731870,
-   "matched_bytes": 3482509,
-   "source_bytes": 2619381,
-   "mined_bytes": 863128,
-   "partial_bytes": 247710,
+   "matched": 22052,
+   "partial": 230,
+   "source_matched": 13651,
+   "mined_matched": 8401,
+   "bytes": 3732834,
+   "matched_bytes": 3488528,
+   "source_bytes": 2624142,
+   "mined_bytes": 864386,
+   "partial_bytes": 242655,
    "data_bytes": 1559926,
    "leaderboard": [
     {
@@ -245,18 +245,18 @@
      "last": 1792327184.7020433
     },
     {
+     "user": "nuck16",
+     "matched": 41,
+     "points": 947,
+     "submissions": 50,
+     "last": 1793003230.43347
+    },
+    {
      "user": "user",
      "matched": 33,
      "points": 35,
      "submissions": 33,
      "last": 1792513428.7999606
-    },
-    {
-     "user": "nuck16",
-     "matched": 31,
-     "points": 480,
-     "submissions": 32,
-     "last": 1792999033.3819432
     },
     {
      "user": "king_originala_sol_native",
@@ -280,18 +280,18 @@
      "last": 1791588098.9464204
     },
     {
+     "user": "coldek",
+     "matched": 5,
+     "points": 383,
+     "submissions": 21,
+     "last": 1793003006.6384904
+    },
+    {
      "user": "Gemini",
      "matched": 5,
      "points": 22,
      "submissions": 5,
      "last": 1792509335.8069022
-    },
-    {
-     "user": "coldek",
-     "matched": 3,
-     "points": 351,
-     "submissions": 19,
-     "last": 1792933615.1729689
     },
     {
      "user": "king_originala_sol_resume_native",
@@ -343,9 +343,9 @@
      "last": 1792711202.627472
     }
    ],
-   "data_matched_bytes": 198567,
+   "data_matched_bytes": 198874,
    "classes": 1488,
-   "generated": 18999
+   "generated": 18954
   },
   {
    "name": "2009-06",
@@ -466,9 +466,9 @@
     {
      "user": "sophus",
      "matched": 16,
-     "points": 1113,
-     "submissions": 100,
-     "last": 1792950520.7011907
+     "points": 1125,
+     "submissions": 101,
+     "last": 1793001822.6032765
     },
     {
      "user": "Viper",
@@ -663,10 +663,10 @@
   },
   {
    "user": "nuck16",
-   "matched": 2110,
-   "points": 180689,
-   "submissions": 2431,
-   "last": 1792999033.3819432
+   "matched": 2120,
+   "points": 181156,
+   "submissions": 2449,
+   "last": 1793003230.43347
   },
   {
    "user": "atomic.potato",
@@ -705,10 +705,10 @@
   },
   {
    "user": "sophus",
-   "matched": 62,
-   "points": 4376,
-   "submissions": 452,
-   "last": 1792951068.0827153
+   "matched": 63,
+   "points": 4427,
+   "submissions": 454,
+   "last": 1793002453.030318
   },
   {
    "user": "intel",
@@ -746,18 +746,18 @@
    "last": 1791569181.5408819
   },
   {
+   "user": "coldek",
+   "matched": 5,
+   "points": 383,
+   "submissions": 21,
+   "last": 1793003006.6384904
+  },
+  {
    "user": "Gemini",
    "matched": 5,
    "points": 22,
    "submissions": 5,
    "last": 1792509335.8069022
-  },
-  {
-   "user": "coldek",
-   "matched": 3,
-   "points": 351,
-   "submissions": 19,
-   "last": 1792933615.1729689
   },
   {
    "user": "king_originala_sol_resume_native",
