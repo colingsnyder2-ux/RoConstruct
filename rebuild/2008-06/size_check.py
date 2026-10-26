@@ -1,4 +1,5 @@
-"""Phase 4 size checks: sizeof each rbxgs class (headers as rbxgs-app builds them: adopted 2008 headers aliased in)
+"""Phase 4 size checks: sizeof each rbxgs class (headers as rbxgs-app builds them: its overlay of patched and adopted
+2008 headers, out/RbxgsApp/overlay, ahead of the rbxgs tree; run `roc rebuild 2008-06 module rbxgs-app` first)
 against the allocation size the 2008 exe passes to malloc/operator new before calling its constructor
 (manifests/abi-evidence.json). A mismatch means the class layout (or a base/member layout) still differs from 2008.
 Read-only; writes rebuild/2008-06/out/size-check.json.
@@ -10,13 +11,12 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
-sys.path.insert(0, str(Path(__file__).parent))
 from roc import libs, match  # noqa: E402
-import swap_build  # noqa: E402
 
 CLIENT = "2008-06"
 TREE = ROOT / "tools" / "rbxgs" / "Client" / "App"
 OUT = ROOT / "rebuild" / CLIENT / "out"
+OVERLAY = OUT / "RbxgsApp" / "overlay"
 
 
 def header_of(cls):
@@ -28,13 +28,12 @@ def header_of(cls):
 
 
 def probe(header, classes):
-    """{class: sizeof} for classes declared in header, compiled with the recipe settings and adopted aliases."""
-    aliases = "".join('#pragma include_alias("%s", "%s")\n' % (h, u) for h, u in sorted(swap_build.adopted("RbxgsApp").items()))
-    src = ("#define private public\n#define protected public\n" + aliases + '#include "%s"\n' % header
+    """{class: sizeof} for classes declared in header, compiled with the recipe settings over the module overlay."""
+    src = ("#define private public\n#define protected public\n" + '#include "%s"\n' % header
            + "template<int N> struct ROC_SHOW;\n"
            + "".join("ROC_SHOW<(int)sizeof(RBX::%s)> roc_v%d;\n" % (c, i) for i, c in enumerate(classes)))
     r, folder = libs.RECIPES["rbxgs"], libs.fetch("rbxgs").resolve()
-    include = ";".join([str(folder)] + [libs.winsdk_include() if i == "WINSDK" else str(libs._case_path(libs.LIBS / i))
+    include = ";".join([str(OVERLAY / "App" / "include"), str(OVERLAY / "App"), str(folder)] + [libs.winsdk_include() if i == "WINSDK" else str(libs._case_path(libs.LIBS / i))
                                         for i in r.get("include", [])])
     with match.compile_directory() as tmp:
         path = Path(tmp) / "probe.cpp"

@@ -153,6 +153,18 @@
   [
    "@replace",
    "App/roc_unit_ffc89e90dbae649c.cpp"
+  ],
+  [
+   "\textern const char* sAutoJoint;\n\tclass AutoJoint : public DescribedNonCreatable<AutoJoint, JointInstance, &sAutoJoint>\n\t{\n\tprivate:\n\t\tboost::shared_ptr<PartInstance> part[2];\n\n\t\tvoid setPart(int i, PartInstance* value);\n\t\tvoid setPartNull(int);\n\t\tvoid setPrimitiveFromPart(int);\n\n\t\tvirtual bool askSetParent(const Instance* instance) const;\n\t\tvirtual void onAncestorChanged(const AncestorChanged& event);\n\n\t\tWorld* computeWorld();\n\n\tpublic:\n\t\tAutoJoint(Joint* joint);\n\t\tvirtual ~AutoJoint();\n\n\t\tPartInstance* getPart0() const;\n\t\tPartInstance* getPart1() const;\n\n\t\tvoid setPart0(PartInstance* value);\n\t\tvoid setPart1(PartInstance* value);\n\n\t\tconst G3D::CoordinateFrame& getC0() const;\n\t\tconst G3D::CoordinateFrame& getC1() const;\n\n\t\tvoid setC0(const G3D::CoordinateFrame& value);\n\t\tvoid setC1(const G3D::CoordinateFrame& value);\n\t};\n",
+   ""
+  ],
+  [
+   "\tpublic:\n\t\tJointInstance(Joint* joint);\n\t\t~JointInstance();\n",
+   "\t\tvoid setPart(int i, PartInstance* value);\n\t\tvoid setPartNull(int);\n\t\tvoid setPrimitiveFromPart(int);\n\n\t\tvirtual bool askSetParent(const Instance* instance) const;\n\t\tvirtual void onAncestorChanged(const AncestorChanged& event);\n\n\t\tWorld* computeWorld();\n\n\tpublic:\n\t\tJointInstance(Joint* joint);\n\t\t~JointInstance();\n\n\t\tPartInstance* getPart0() const;\n\t\tPartInstance* getPart1() const;\n\n\t\tvoid setPart0(PartInstance* value);\n\t\tvoid setPart1(PartInstance* value);\n\n\t\tconst G3D::CoordinateFrame& getC0() const;\n\t\tconst G3D::CoordinateFrame& getC1() const;\n\n\t\tvoid setC0(const G3D::CoordinateFrame& value);\n\t\tvoid setC1(const G3D::CoordinateFrame& value);\n"
+  ],
+  [
+   "@all:AutoJoint",
+   "JointInstance"
   ]
  ],
  "App/include/v8datamodel/Gyro.h": [
@@ -235,6 +247,42 @@
   [
    "@all:\t\t  archivable(true),\n\t\t  guid()",
    "\t\t  archivable(true)"
+  ]
+ ],
+ "App/v8datamodel/JointInstance.cpp": [
+  [
+   "\tconst char* sAutoJoint = \"AutoJoint\";\n\n\tAutoJoint::AutoJoint(Joint* _joint)\n\t\t: DescribedNonCreatable(_joint)\n\t{\n\t\tPartInstance* part0 = PartInstance::fromPrimitive(joint->getPrimitive(0));\n\t\tPartInstance* part1 = PartInstance::fromPrimitive(joint->getPrimitive(1));\n\n\t\tpart[0] = shared_from(part0);\n\t\tpart[1] = shared_from(part1);\n\t}\n\n\tAutoJoint::~AutoJoint()\n\t{\n\t\tsetPart(0, NULL);\n\t\tsetPart(1, NULL);\n\t}\n\n",
+   ""
+  ],
+  [
+   "\t\t: joint(joint)\n\t{\n\t\tjoint->setJointOwner(this);\n\t}\n",
+   "\t\t: joint(joint)\n\t{\n\t\tjoint->setJointOwner(this);\n\n\t\tPartInstance* part0 = PartInstance::fromPrimitive(joint->getPrimitive(0));\n\t\tPartInstance* part1 = PartInstance::fromPrimitive(joint->getPrimitive(1));\n\n\t\tpart[0] = shared_from(part0);\n\t\tpart[1] = shared_from(part1);\n\t}\n"
+  ],
+  [
+   "\tJointInstance::~JointInstance()\n\t{\n",
+   "\tJointInstance::~JointInstance()\n\t{\n\t\tsetPart(0, NULL);\n\t\tsetPart(1, NULL);\n\n"
+  ],
+  [
+   "\t\treturn part[0].get();",
+   "\t\treturn part[0].lock().get();"
+  ],
+  [
+   "\t\treturn part[1].get();",
+   "\t\treturn part[1].lock().get();"
+  ],
+  [
+   "\t\tif (part[i].get() != value)",
+   "\t\tif (part[i].lock().get() != value)"
+  ],
+  [
+   "@all:AutoJoint",
+   "JointInstance"
+  ]
+ ],
+ "App/humanoid/Humanoid.cpp": [
+  [
+   "@all:AutoJoint",
+   "JointInstance"
   ]
  ]
 }

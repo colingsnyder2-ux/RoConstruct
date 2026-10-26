@@ -916,5 +916,46 @@ patch_all("App/v8tree/Instance.cpp", "\t\t  archivable(true),\n\t\t  guid()", "\
 patch_adopted(INST, INST_UNIT, "\t\tfriend class RaiseDescendentAdded2;\n\n\tprivate:\n\t\tAssociation<Instance> assoc;",
               "\t\tfriend class RaiseDescendentAdded2;\n\t\tfriend class Creatable<Instance>::Deleter;\n\n\tprivate:\n\t\tAssociation<Instance> assoc;")
 
+# --- 2008 has no AutoJoint: Weld/Snap/Glue/Rotate*/Motor derive from JointInstance (RTTI base list of Weld:
+# DescribedCreatable<Weld, JointInstance, &sWeld>; no .?AVAutoJoint@RBX@@ in the exe), which is 0x154 bytes with
+# weak_ptr<PartInstance> part[2] @0x140 and joint @0x150 (abi-evidence: Weld allocates 0x154). The 2008
+# JointInstance(Joint*) constructor (0x5e3870) sets joint, calls setJointOwner, then assigns
+# shared_from(PartInstance::fromPrimitive(joint->getPrimitive(i))) to part[0] and part[1]: AutoJoint's body. ---
+JOINT, JOINT_UNIT = "App/include/v8datamodel/JointInstance.h", "App/roc_unit_ffc89e90dbae649c.cpp"
+_joint_text = (TREE / JOINT_UNIT).read_text(errors="replace")
+_auto_start = _joint_text.index("\textern const char* sAutoJoint;\n")
+_auto_end = _joint_text.index("\t};\n", _auto_start) + len("\t};\n")
+patch_adopted(JOINT, JOINT_UNIT, _joint_text[_auto_start:_auto_end], "")
+patch_adopted(JOINT, JOINT_UNIT, "\tpublic:\n\t\tJointInstance(Joint* joint);\n\t\t~JointInstance();\n",
+              "\t\tvoid setPart(int i, PartInstance* value);\n\t\tvoid setPartNull(int);\n\t\tvoid setPrimitiveFromPart(int);\n\n"
+              "\t\tvirtual bool askSetParent(const Instance* instance) const;\n"
+              "\t\tvirtual void onAncestorChanged(const AncestorChanged& event);\n\n\t\tWorld* computeWorld();\n\n"
+              "\tpublic:\n\t\tJointInstance(Joint* joint);\n\t\t~JointInstance();\n\n"
+              "\t\tPartInstance* getPart0() const;\n\t\tPartInstance* getPart1() const;\n\n"
+              "\t\tvoid setPart0(PartInstance* value);\n\t\tvoid setPart1(PartInstance* value);\n\n"
+              "\t\tconst G3D::CoordinateFrame& getC0() const;\n\t\tconst G3D::CoordinateFrame& getC1() const;\n\n"
+              "\t\tvoid setC0(const G3D::CoordinateFrame& value);\n\t\tvoid setC1(const G3D::CoordinateFrame& value);\n")
+if "AutoJoint" not in _joint_text[:_auto_start] + _joint_text[_auto_end:]:
+    raise SystemExit("JointInstance.h: no subclass of AutoJoint left to rebase")
+patches[JOINT].append(["@all:AutoJoint", "JointInstance"])
+
+JOINT_CPP = "App/v8datamodel/JointInstance.cpp"
+_cpp = (TREE / JOINT_CPP).read_text(errors="replace")
+_ctor_start = _cpp.index("\tconst char* sAutoJoint = \"AutoJoint\";\n")
+_ctor_end = _cpp.index("\tPartInstance* AutoJoint::getPart0() const")
+patch(JOINT_CPP, _cpp[_ctor_start:_ctor_end], "")
+patch(JOINT_CPP, "\t\t: joint(joint)\n\t{\n\t\tjoint->setJointOwner(this);\n\t}\n",
+      "\t\t: joint(joint)\n\t{\n\t\tjoint->setJointOwner(this);\n\n"
+      "\t\tPartInstance* part0 = PartInstance::fromPrimitive(joint->getPrimitive(0));\n"
+      "\t\tPartInstance* part1 = PartInstance::fromPrimitive(joint->getPrimitive(1));\n\n"
+      "\t\tpart[0] = shared_from(part0);\n\t\tpart[1] = shared_from(part1);\n\t}\n")
+patch(JOINT_CPP, "\tJointInstance::~JointInstance()\n\t{\n",
+      "\tJointInstance::~JointInstance()\n\t{\n\t\tsetPart(0, NULL);\n\t\tsetPart(1, NULL);\n\n")
+patch(JOINT_CPP, "\t\treturn part[0].get();", "\t\treturn part[0].lock().get();")
+patch(JOINT_CPP, "\t\treturn part[1].get();", "\t\treturn part[1].lock().get();")
+patch(JOINT_CPP, "\t\tif (part[i].get() != value)", "\t\tif (part[i].lock().get() != value)")
+patch_all(JOINT_CPP, "AutoJoint", "JointInstance")
+patch_all("App/humanoid/Humanoid.cpp", "AutoJoint", "JointInstance")
+
 out.write_text(json.dumps(patches, indent=1) + "\n", encoding="utf-8")
 print("%d files, %d patches -> %s" % (len(patches), sum(map(len, patches.values())), out))
