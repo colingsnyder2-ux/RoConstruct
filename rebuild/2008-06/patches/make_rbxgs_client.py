@@ -970,5 +970,17 @@ patch("App/include/v8datamodel/CharacterAppearance.h", "\tclass CharacterAppeara
 patch("App/include/humanoid/Humanoid.h", "\t\t\t\t\t public ICharacterSubject,\n\t\t\t\t\t public Listener<RunService, Stepped>\n",
       "\t\t\t\t\t public ICharacterSubject,\n\t\t\t\t\t public IModelModifier,\n\t\t\t\t\t public Listener<RunService, Stepped>\n")
 
+# ModelInstance keeps its IModelModifier children: std::vector<IModelModifier*> at 0x1ec, right after
+# candidatePrimaryPart (exact removeIModelModifier 0x584fc0 reads _Myfirst/_Mylast at 0x1f8/0x1fc; the 2008
+# destructor 0x584790 frees the vector's proxy at 0x1ec and buffer at 0x1f8). Allocation 0x2a4 = +0x18.
+patch("App/include/v8datamodel/ModelInstance.h", "\t\tboost::shared_ptr<PartInstance> candidatePrimaryPart;\n",
+      "\t\tboost::shared_ptr<PartInstance> candidatePrimaryPart;\n\t\tstd::vector<IModelModifier*> modifiers;\n")
+# FaceInstance (Decal, Texture) is also an IRenderable: RTTI places it at 0x130 after Instance, and the 2008 Decal
+# constructor (0x598400) puts texture at 0x144 (rbxgs 0x134); allocation 0x16c.
+FACE = "App/include/v8datamodel/FaceInstance.h"
+patch(FACE, '#include "util/NormalId.h"\n', '#include "util/NormalId.h"\n#include "util/IRenderable.h"\n')
+patch(FACE, "\tclass FaceInstance : public Reflection::Described<FaceInstance, &sFaceInstance, Instance> \n",
+      "\tclass FaceInstance : public Reflection::Described<FaceInstance, &sFaceInstance, Instance>, public IRenderable\n")
+
 out.write_text(json.dumps(patches, indent=1) + "\n", encoding="utf-8")
 print("%d files, %d patches -> %s" % (len(patches), sum(map(len, patches.values())), out))
