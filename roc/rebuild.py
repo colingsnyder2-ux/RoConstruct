@@ -226,7 +226,86 @@ def audit(client="2008-06", rows=None, log=print):
     log("%s: %d code functions; %s" % (client, len(functions), ", ".join(
         "%s %s=%d" % (k, "exact" if e else "open", n) for (k, e), n in sorted(kinds.items()))))
     log("%d source files/units referenced; manifests in %s" % (len(coverage), out))
+    abi_evidence(client, log=log)
     return coverage
+
+
+def abi_evidence(client="2008-06", log=print):
+    """Write manifests/abi-evidence.json from the original exe alone: per vtable class (work/<client>/vtables.json),
+    the functions that store its vtables and at which `this` offsets (constructors/destructors: subobject layout),
+    the vbtables those functions store, and the allocation sizes passed to malloc/operator new right before a call
+    to one of those functions. Every entry is an observation of the binary (confidence "observed")."""
+    import struct
+    import pefile
+    from capstone import Cs, CS_ARCH_X86, CS_MODE_32
+    from capstone.x86_const import X86_OP_IMM, X86_OP_MEM
+    from roc import clients
+    exe = clients.exe_path(client, clients.load()[client])
+    pe = pefile.PE(str(exe))
+    base = pe.OPTIONAL_HEADER.ImageBase
+    image = pe.get_memory_mapped_image()
+    vtables = json.loads((ROOT / "work" / client / "vtables.json").read_text())
+    owner = {int(v["vtable"], 16): v["class"] for v in vtables}
+    allocators = {i.address for d in getattr(pe, "DIRECTORY_ENTRY_IMPORT", []) for i in d.imports
+                  if i.name in (b"malloc", b"??2@YAPAXI@Z")}
+    md = Cs(CS_ARCH_X86, CS_MODE_32)
+    md.detail = True
+    stores, vbtables, calls = {}, {}, []  # fn -> [(off, vt)], vbtable addr -> entries, (caller, size, callee)
+    for addr, f in sorted(match._functions(client).items()):
+        if f.get("kind", "code") != "code":
+            continue
+        start = int(addr, 16)
+        pending = None  # size pushed for an allocation, until the allocation's result is passed to a call
+        last_push, allocated = None, None
+        for ins in md.disasm(image[start - base:start - base + f["size"]], start):
+            ops = ins.operands
+            if ins.mnemonic == "mov" and len(ops) == 2 and ops[0].type == X86_OP_MEM and ops[1].type == X86_OP_IMM \
+                    and ops[0].size == 4:
+                imm = ops[1].imm & 0xffffffff
+                if imm in owner:
+                    stores.setdefault(start, []).append((ops[0].mem.disp, imm, ins.reg_name(ops[0].mem.base) if ops[0].mem.base else ""))
+                elif base <= imm < base + len(image) - 16 and ops[0].mem.index == 0:
+                    first = struct.unpack_from("<i", image, imm - base)[0]
+                    if first == -ops[0].mem.disp and first <= 0:
+                        entries = list(struct.unpack_from("<4i", image, imm - base))
+                        n = 1
+                        while n < len(entries) and 0 < entries[n] < 0x10000:
+                            n += 1
+                        vbtables.setdefault(imm, {"fn": set(), "at": ops[0].mem.disp, "entries": entries[:n]})["fn"].add(start)
+            elif ins.mnemonic == "push" and ops and ops[0].type == X86_OP_IMM:
+                last_push = ops[0].imm & 0xffffffff
+            elif ins.mnemonic == "call" and ops:
+                target = ops[0].imm if ops[0].type == X86_OP_IMM else (
+                    ops[0].mem.disp & 0xffffffff if ops[0].type == X86_OP_MEM and not ops[0].mem.base else None)
+                if target in allocators and last_push is not None:
+                    allocated = last_push
+                elif allocated is not None and ops[0].type == X86_OP_IMM:
+                    calls.append((start, allocated, target))
+                    allocated = None
+                last_push = None
+    classes = {}
+    for fn, items in stores.items():
+        for off, vt, reg in items:
+            c = classes.setdefault(owner[vt], {"vtables": set(), "vptr_stores": {}, "alloc_sizes": {}, "vbtables": {}})
+            c["vtables"].add("%08x" % vt)
+            c["vptr_stores"].setdefault("%08x" % fn, set()).add((reg, off, "%08x" % vt))
+    for vb, item in vbtables.items():
+        for fn in item["fn"]:
+            for vt in {vt for _, vt, _ in stores.get(fn, [])}:
+                classes[owner[vt]]["vbtables"]["%08x" % vb] = {"at": item["at"], "entries": item["entries"]}
+    for caller, size, callee in calls:
+        for vt in {vt for off, vt, _ in stores.get(callee, []) if off == 0}:
+            classes[owner[vt]]["alloc_sizes"].setdefault("0x%x" % size, set()).add("%08x" % caller)
+    out = {}
+    for name, c in sorted(classes.items()):
+        out[name] = {"confidence": "observed", "vtables": sorted(c["vtables"]),
+                     "vptr_stores": {fn: [["[%s+0x%x]" % (reg, off), vt] for reg, off, vt in sorted(v)] for fn, v in sorted(c["vptr_stores"].items())},
+                     "alloc_sizes": {s: sorted(v) for s, v in sorted(c["alloc_sizes"].items())},
+                     "vbtables": dict(sorted(c["vbtables"].items()))}
+    _dump(workspace(client) / "manifests" / "abi-evidence.json", out)
+    log("%s: abi evidence for %d vtable classes (%d with allocation sizes, %d with vbtables)"
+        % (client, len(out), sum(1 for c in out.values() if c["alloc_sizes"]), sum(1 for c in out.values() if c["vbtables"])))
+    return out
 
 
 # ---------- Phase 3: whole-file build + TU diff ----------
