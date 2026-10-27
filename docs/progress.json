@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-27 00:36 UTC",
+ "updated": "2026-10-27 01:30 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -190,16 +190,16 @@
    "compiler": "VS2008 RTM (cl 15.00.21022)",
    "built": "2008-06-20",
    "started": true,
-   "functions": 22284,
-   "matched": 21966,
-   "partial": 207,
-   "source_matched": 13644,
-   "mined_matched": 8322,
-   "bytes": 3736076,
-   "matched_bytes": 3492807,
-   "source_bytes": 2642072,
-   "mined_bytes": 850735,
-   "partial_bytes": 208694,
+   "functions": 22285,
+   "matched": 22032,
+   "partial": 252,
+   "source_matched": 13670,
+   "mined_matched": 8362,
+   "bytes": 3736281,
+   "matched_bytes": 3511596,
+   "source_bytes": 2646651,
+   "mined_bytes": 864945,
+   "partial_bytes": 224589,
    "data_bytes": 1559926,
    "leaderboard": [
     {
@@ -211,17 +211,17 @@
     },
     {
      "user": "colin",
-     "matched": 3085,
-     "points": 682556,
-     "submissions": 23168,
-     "last": 1793061259.7648253
+     "matched": 3090,
+     "points": 684136,
+     "submissions": 23185,
+     "last": 1793063203.7803793
     },
     {
      "user": "king_originala",
-     "matched": 2876,
-     "points": 277484,
-     "submissions": 6013,
-     "last": 1793061064.6901872
+     "matched": 2892,
+     "points": 278985,
+     "submissions": 6029,
+     "last": 1793062247.499465
     },
     {
      "user": "Espeon",
@@ -245,6 +245,13 @@
      "last": 1792327184.7020433
     },
     {
+     "user": "coldek",
+     "matched": 62,
+     "points": 8319,
+     "submissions": 167,
+     "last": 1793063491.8399858
+    },
+    {
      "user": "nuck16",
      "matched": 42,
      "points": 1514,
@@ -264,13 +271,6 @@
      "points": 327,
      "submissions": 54,
      "last": 1792961617.162224
-    },
-    {
-     "user": "coldek",
-     "matched": 16,
-     "points": 790,
-     "submissions": 43,
-     "last": 1793051656.8045895
     },
     {
      "user": "Cezant64gamejr",
@@ -343,9 +343,9 @@
      "last": 1792711202.627472
     }
    ],
-   "data_matched_bytes": 198920,
+   "data_matched_bytes": 199552,
    "classes": 1488,
-   "generated": 18926
+   "generated": 18919
   },
   {
    "name": "2009-06",
@@ -649,17 +649,17 @@
   },
   {
    "user": "colin",
-   "matched": 15198,
-   "points": 5521380,
-   "submissions": 186049,
-   "last": 1793061110.2889724
+   "matched": 15203,
+   "points": 5523059,
+   "submissions": 186067,
+   "last": 1793063203.7803793
   },
   {
    "user": "king_originala",
-   "matched": 2876,
-   "points": 277484,
-   "submissions": 6013,
-   "last": 1793061064.6901872
+   "matched": 2892,
+   "points": 278985,
+   "submissions": 6029,
+   "last": 1793062247.499465
   },
   {
    "user": "nuck16",
@@ -711,6 +711,13 @@
    "last": 1793008171.2474282
   },
   {
+   "user": "coldek",
+   "matched": 62,
+   "points": 8319,
+   "submissions": 167,
+   "last": 1793063491.8399858
+  },
+  {
    "user": "intel",
    "matched": 49,
    "points": 15889,
@@ -730,13 +737,6 @@
    "points": 327,
    "submissions": 54,
    "last": 1792961617.162224
-  },
-  {
-   "user": "coldek",
-   "matched": 16,
-   "points": 790,
-   "submissions": 43,
-   "last": 1793051656.8045895
   },
   {
    "user": "Viper",
