@@ -378,7 +378,7 @@
   ],
   [
    "\t\tbool guidSetExternally;\n\t\tEdgeList contacts;\n\t\tEdgeList joints;\n\t\tint worldIndex;\n\t\tWorld* world;\n\t\tClump* clump;\n\t\tint clumpDepth;\n\t\tint traverseId;\n",
-   "\t\tbool guidSetExternally;\n\t\tint edgeVersion;\n\t\tEdgeList contacts;\n\t\tEdgeList joints;\n\t\tint worldIndex;\n\t\tint traverseId;\n\t\tWorld* world;\n\t\tClump* clump;\n\t\tint clumpDepth;\n"
+   "\t\tbool guidSetExternally;\n\t\tint unknown0x14; // 0x5e8770 initializes this to 1; purpose unknown\n\t\tEdgeList contacts;\n\t\tEdgeList joints;\n\t\tint worldIndex;\n\t\tint traverseId;\n\t\tWorld* world;\n\t\tClump* clump;\n\t\tint clumpDepth;\n"
   ],
   [
    "\t\tIMoving* myOwner;\n\t\tAnchor* anchorObject;\n\t\tbool dragging;\n\t\tbool anchored;\n\t\tbool canCollide;\n\t\tbool canSleep;\n",
@@ -395,6 +395,10 @@
   [
    "\t\t\treturn contacts.num;",
    "\t\t\treturn contacts.edges.size();"
+  ],
+  [
+   "\t\tvoid setGuid(const Guid&);\n",
+   "\t\tvoid setGuid(const Guid&);\n\t\tvoid setUnknown0x14(int value); // 0x5e7420\n"
   ]
  ],
  "App/v8world/Primitive.cpp": [
@@ -416,7 +420,7 @@
   ],
   [
    "\t\tspatialNodes(NULL),\n\t\tworldIndex(-1),\n",
-   "\t\tspatialNodes(NULL),\n\t\tedgeVersion(1),\n\t\tcontacts(this),\n\t\tjoints(this),\n\t\tworldIndex(-1),\n"
+   "\t\tspatialNodes(NULL),\n\t\tunknown0x14(1),\n\t\tcontacts(this),\n\t\tjoints(this),\n\t\tworldIndex(-1),\n"
   ],
   [
    "\t\treturn joints.first ? joints.first : contacts.first;",
@@ -477,6 +481,10 @@
   [
    "\tvoid EdgeList::insertEdge(Primitive* p, Edge* e, EdgeList& list)\n\t{\n\t\te->setNext(p, list.first);\n\t\tlist.first = e;\n\t\tlist.num++;\n\t}\n\n\tvoid EdgeList::removeEdge(Primitive* p, Edge* e, EdgeList& list)\n\t{\n\t\tEdge* currentEdge = list.first;\n\n\t\tif (list.first == e)\n\t\t{\n\t\t\tlist.first = e->getNext(p);\n\t\t}\n\t\telse\n\t\t{\n\t\t\twhile (currentEdge->getNext(p) != e)\n\t\t\t{\n\t\t\t\tcurrentEdge = currentEdge->getNext(p);\n\t\t\t}\n\n\t\t\tcurrentEdge->setNext(p, e->getNext(p));\n\t\t}\n\n\t\tlist.num--;\n\t}\n",
    "\tvoid EdgeList::insertEdge(Edge* e)\n\t{\n\t\te->setIndex(owner, edges.size());\n\t\tedges.append(e);\n\t\tneighbors.append(e->otherPrimitive(owner));\n\t}\n\n\tvoid EdgeList::removeEdge(Edge* e)\n\t{\n\t\tint index = e->getIndex(owner);\n\t\tEdge* lastEdge = edges.last();\n\t\tPrimitive* lastNeighbor = neighbors.last();\n\t\tedges[index] = lastEdge;\n\t\tneighbors[index] = lastNeighbor;\n\t\tedges.popDiscard();\n\t\tneighbors.popDiscard();\n\t\tlastEdge->setIndex(owner, index);\n\t\te->setIndex(owner, -1);\n\t}\n\n\tEdge* EdgeList::first() const\n\t{\n\t\treturn edges.size() ? edges[0] : NULL;\n\t}\n\n\tEdge* EdgeList::next(Edge* e) const\n\t{\n\t\tint i = e->getIndex(owner) + 1;\n\t\treturn i < edges.size() ? edges[i] : NULL;\n\t}\n"
+  ],
+  [
+   "",
+   "\nnamespace RBX {\n    // 0x5e7420: int +0x14, guarded by world +0x58 (clump is +0x5c).\n    void Primitive::setUnknown0x14(int value)\n    {\n        if (value != unknown0x14 && !world)\n            unknown0x14 = value;\n    }\n}\n"
   ]
  ],
  "App/include/v8datamodel/PartInstance.h": [
@@ -495,6 +503,10 @@
   [
    "@all:primitive.get()",
    "&primitive"
+  ],
+  [
+   "\t\tvoid setPartLocked(bool value);\n",
+   "\t\tvoid setPartLocked(bool value);\n\t\tvirtual void setName(const std::string& value); // 0x598c20\n"
   ]
  ],
  "App/v8datamodel/PartInstance.cpp": [
@@ -509,6 +521,10 @@
   [
    "@all:primitive->",
    "primitive."
+  ],
+  [
+   "",
+   "\nnamespace RBX {\n    // 0x598c20: base name update, then the byte-proven Torso-dependent value.\n    void PartInstance::setName(const std::string& value)\n    {\n        Base::setName(value);\n        if (value == \"Torso\")\n            primitive.setUnknown0x14(5);\n        else\n            primitive.setUnknown0x14(1);\n    }\n}\n"
   ]
  ],
  "App/include/v8kernel/Body.h": [
