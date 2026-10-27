@@ -59,9 +59,12 @@ def build(root=ROOT, log=print):
                          "gains": len(r.get("gains", [])), "distinct_gains": len(r.get("new_distinct", r.get("gains", []))), "owned_after": r.get("owned_after"),
                          "when": datetime.fromtimestamp(updated, timezone.utc).strftime("%Y-%m-%d %H:%M UTC")})
     shown = {a: names[a] for a in names if a in native or (names[a].get("score") or 0) >= 50}
+    links_path = root / 'local/findings/2008-06/verification/native-source-links.json'
+    sources = json.loads(links_path.read_text(encoding='utf-8')) if links_path.exists() else {}
     data = {"client": CLIENT, "updated": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
             "groups": {k: {"functions": n, "bytes": b} for k, (n, b) in groups.items()},
             "native": sorted(native),
+            "sources": {a: value for a, value in sources.items() if a in native},
             # addr -> [readable name, decorated symbol, rebuilt score (100 = integrated)]
             "names": {a: [readable(v["symbol"]), v["symbol"], 100 if a in native else v.get("score")] for a, v in sorted(shown.items())},
             "jobs": receipts,

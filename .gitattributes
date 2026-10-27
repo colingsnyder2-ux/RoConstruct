@@ -1,2 +1,5 @@
 # Append-only JSON-lines logs: keep both sides' lines on merge instead of conflicting.
 research/log.jsonl merge=union
+
+# End-user source archives omit developer CI tests; Git checkouts retain them.
+/tests export-ignore

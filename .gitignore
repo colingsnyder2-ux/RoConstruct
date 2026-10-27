@@ -43,3 +43,15 @@ dist/
 # Website data: published to the gh-pages branch, never committed to main
 docs/data/
 docs/integration.json
+
+# Native rebuilds are published in RoConstruct-findings/2008-06.
+/rebuild/
+
+# Compiler scratch belongs under work/.
+/*.obj
+/*.asm
+/*.cod
+/*.i
+/*.err
+/*.out
+/*_trials.zip

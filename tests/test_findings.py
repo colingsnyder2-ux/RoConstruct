@@ -65,7 +65,7 @@ class FindingsTests(unittest.TestCase):
             publish.assert_called_once()
             pages.assert_called_once()
             commands = [call.args[0][1] for call in git.call_args_list]
-            self.assertEqual(commands, ["push", "add", "diff"])
+            self.assertEqual(commands, ["push"])
 
     def test_address_pushed_before_slow_source_sync(self):
         from roc import progress, setup
@@ -143,6 +143,11 @@ def test_publisher_stages_sources_and_portable_findings_files(tmp_path):
     (findings / "reports").mkdir()
     (findings / "reports" / "old.md").write_text("# old report")
     (findings / ".gitignore").write_text("*.log\n")
+    package = findings / '2008-06'
+    package.mkdir()
+    (package / 'compile_test.bat').write_text('echo build')
+    (package / 'package.json').write_text(json.dumps({'files': {'compile_test.bat': 'test'}}))
+    (package / 'restored-large.lib').write_bytes(b'not in export manifest')
     (root / "work").mkdir()
     logs = []
     with patch.object(server, "ROOT", root), \
@@ -153,8 +158,9 @@ def test_publisher_stages_sources_and_portable_findings_files(tmp_path):
         server.publish_findings(git, logs.append)
     assert logs == ["Prepared 1 readable library sources.", "Findings published."]
     files = set(run(tmp_path, "--git-dir", str(remote), "ls-tree", "-r", "--name-only", "main").split())
-    assert files == {"README.md", ".gitignore", ".github/workflows/package.yml", "agent-memory/lessons.json",
-                     "reports/old.md", "src/2008-06/00401000.cpp", "src/2008-06/007ab0a0.cpp"}
+    assert files == {"README.md", ".gitignore", ".github/workflows/package.yml", "data/lessons.json",
+                     '2008-06/package.json', '2008-06/compile_test.bat',
+                     "src/2008-06/00401000.cpp", "src/2008-06/007ab0a0.cpp"}
     published = run(tmp_path, "--git-dir", str(remote), "show", "main:src/2008-06/007ab0a0.cpp")
     assert "41% by colin" in published
     assert "int candidate() { return 2; }" in published
@@ -232,3 +238,71 @@ def test_pages_publish_is_one_parentless_commit_and_skips_guides(tmp_path):
     assert files == {"index.html", "data/2008-06.json", ".nojekyll"}  # guides stay on main
     assert run(tmp_path, "--git-dir", str(remote), "rev-list", "--count", "gh-pages").strip() == "1"
     assert not list((root / "work").glob("pages-index-*"))
+
+
+def test_server_publishes_findings_without_public_url_or_origin_push(tmp_path, monkeypatch):
+    monkeypatch.setattr(server, 'ROOT', tmp_path)
+    monkeypatch.setattr(server.setup, 'find_exe', lambda name: 'git')
+    sync, publish = Mock(), Mock()
+    monkeypatch.setattr(server, 'sync_findings', sync)
+    monkeypatch.setattr(server, 'publish_findings', publish)
+    git = Mock()
+    monkeypatch.setattr(server.subprocess, 'run', git)
+    store = Mock()
+    assert server.publish_once(store, None, findings_only=True)
+    sync.assert_called_once_with(store)
+    publish.assert_called_once()
+    git.assert_not_called()
+
+
+def test_hourly_loop_runs_without_public_url(tmp_path, monkeypatch):
+    import pytest
+    publish = Mock(return_value=True)
+    monkeypatch.setattr(server, 'publish_once', publish)
+    monkeypatch.setattr(server.time, 'monotonic', lambda: 1)
+    def stop(_):
+        raise StopIteration
+    monkeypatch.setattr(server.time, 'sleep', stop)
+    store = Mock()
+    with pytest.raises(StopIteration):
+        server.publish_loop(store, None, 3600)
+    publish.assert_called_once_with(store, None, print, findings_only=True)
+
+
+def test_server_findings_failure_is_raised_for_retry(tmp_path, monkeypatch):
+    import pytest
+    from roc import findings_publish, findings_transport
+    monkeypatch.setattr(server, 'ROOT', tmp_path)
+    monkeypatch.setattr(findings_publish, 'prepare_native', lambda *args: None)
+    monkeypatch.setattr(findings_transport, 'publish', lambda root, git, log: log('Findings push failed: test outage'))
+    with pytest.raises(RuntimeError, match='test outage'):
+        server.publish_findings('git', lambda message: None)
+
+
+def test_server_owned_publisher_uses_saved_database_and_releases_lease(tmp_path, monkeypatch):
+    import sqlite3
+    import pytest
+    from roc import progress, integration_site
+    (tmp_path / 'work').mkdir()
+    sqlite3.connect(tmp_path / 'work/server.db').close()
+    monkeypatch.setattr(server, 'ROOT', tmp_path)
+    monkeypatch.setattr(server.setup, 'find_exe', lambda name: 'git')
+    sync, publish, pages = Mock(), Mock(), Mock()
+    monkeypatch.setattr(server, 'sync_findings', sync)
+    monkeypatch.setattr(server, 'publish_findings', publish)
+    monkeypatch.setattr(server, 'publish_pages', pages)
+    monkeypatch.setattr(server, 'export', lambda store: {})
+    monkeypatch.setattr(progress, 'build', Mock())
+    monkeypatch.setattr(integration_site, 'build', Mock())
+    monkeypatch.setattr(server.subprocess, 'run', lambda *a, **kw: Mock(stdout='1' * 40 + '\trefs/heads/main'))
+    def stop(_):
+        raise StopIteration
+    monkeypatch.setattr(server.time, 'sleep', stop)
+    with pytest.raises(StopIteration):
+        server.run_publisher(log=lambda text: None)
+    sync.assert_called_once()
+    publish.assert_called_once()
+    pages.assert_called_once()
+    state = json.loads((tmp_path / 'work/server-publisher.json').read_text())
+    assert state['state'] == 'stopped' and state['last_published']
+    assert state['findings_revision'] == '1' * 40

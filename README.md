@@ -58,8 +58,14 @@ Recovered sources, portable agent evidence and historical research reports are p
 in [RoConstruct-findings](https://github.com/colingsnyder2-ux/RoConstruct-findings)
 ([latest source ZIP](https://github.com/colingsnyder2-ux/RoConstruct-findings/releases/download/findings-latest/roconstruct-findings-src.zip)).
 
+## Native rebuild
+
+The complete [2008-06 native rebuild](https://github.com/colingsnyder2-ux/RoConstruct-findings/tree/main/2008-06) lives in RoConstruct-findings: assembled C++, configs, patches, required runtime harnesses and verification metadata. Run its `compile_test.bat` with `ROC_ROOT` pointing to this configured tooling checkout.
+
+Existing local `rebuild/` files remain available but are not tracked here. `roc rebuild 2008-06 install` restores the small build inputs from findings for existing ROC commands; it does not download the large build artifacts. Missing build inputs are installed automatically by `roc rebuild`.
+
 ## Rules
 
-- Never commit or share Roblox client files; everyone brings their own verified copy.
+- Keep original client downloads out of this tooling repository. Native rebuild sources and required assets belong in RoConstruct-findings; generated output stays local.
 - Only server-verified byte matches count. No inline assembly or patched bytes.
 - Be friendly. Join us on [Discord](https://discord.gg/Tayg763nrG).

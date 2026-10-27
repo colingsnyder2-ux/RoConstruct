@@ -541,6 +541,12 @@ def cmd_packet(a):
 
 def cmd_rebuild(a):
     from roc import rebuild
+    from roc.rebuild_install import install
+    if a.action == "install":
+        install(ROOT, a.name, a.target)
+        return
+    if not (ROOT / "rebuild" / a.name / "modules").exists():
+        install(ROOT, a.name)
     if a.action == "doctor":
         sys.exit(0 if rebuild.doctor(a.name) else 1)
     if a.action == "audit":
@@ -1893,6 +1899,9 @@ def cmd_uninstall(a):
 
 def cmd_server(a):
     server = need_module("server", "The group server")
+    if getattr(a, "publisher_only", False):
+        server.run_publisher(a.publish_every, getattr(a, "publisher_parent", None))
+        return
     if a.startup:
         if os.name != "nt":
             sys.exit("--startup is Windows-only. On Linux, run the server from a systemd user "
@@ -1914,8 +1923,6 @@ def cmd_server(a):
             tunnel = type("DeadTunnel", (), {"poll": lambda self: 1})()
             public = public or "pending"
     if a.publish:
-        if not public:
-            sys.exit("--publish needs a public address: use --tunnel or --public-server HOST:PORT")
         import threading
         threading.Thread(target=server.publish_loop, args=(httpd.store, public, a.publish_every),
                          kwargs={"tunnel": tunnel, "port": a.port, "primary": primary}, daemon=True).start()
@@ -2681,9 +2688,9 @@ def main(argv=None):
     p.add_argument("--purge", action="store_true",
                    help="also delete clients/<name>/ and work/<name>/ (it re-downloads on demand)")
     p.set_defaults(fn=cmd_client_remove)
-    cmd("rebuild", cmd_rebuild, "2008 client rebuild: doctor | audit | module NAME (see rebuild/<client>/POLICY.md)",
+    cmd("rebuild", cmd_rebuild, "2008 native rebuild: install | doctor | audit | module NAME (sources in findings)",
         (["name"], {"help": "client, e.g. 2008-06"}),
-        (["action"], {"choices": ["doctor", "audit", "module", "status", "closure", "milestones", "progress", "placed"]}),
+        (["action"], {"choices": ["install", "doctor", "audit", "module", "status", "closure", "milestones", "progress", "placed"]}),
         (["target"], {"nargs": "?", "help": "module name for `module` (rebuild/<client>/modules/NAME.json)"}),
         (["--no-notify"], {"action": "store_true", "help": "do not send the Discord webhook"}))
     cmd("integrate", cmd_integrate, "claim native integration work, bulk submit, track verified credit",
@@ -3002,6 +3009,8 @@ def main(argv=None):
         (["action"], {"nargs": "?", "default": "status", "choices": ["status", "pause", "resume", "stop"]}),
         (["--id"], {}))
     cmd("server", cmd_server, "host the group server",
+        (["--publisher-only"], {"action": "store_true", "help": "run the server-owned hourly findings/site publisher without starting another API host"}),
+        (["--publisher-parent"], {"type": int, "help": "exit the publisher when this API host exits"}),
         (["--port"], {"type": int, "default": 8765}), (["--host"], {"default": "0.0.0.0"}),
         (["--token"], {"help": "password workers must send"}),
         (["--discord-webhook"], {"help": "Discord mine-log webhook URL (or ROCONSTRUCT_DISCORD_WEBHOOK)"}),
