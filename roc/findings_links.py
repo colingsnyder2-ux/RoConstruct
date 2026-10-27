@@ -11,7 +11,11 @@ def native_sources(package, published, names):
         path = Path(package) / relative
         if not relative.startswith('src/') or path.name.startswith('roc_') or path.suffix not in {'.cpp', '.h', '.hpp', '.inl'}:
             continue
-        lines = path.read_text(encoding='utf-8', errors='replace').splitlines()
+        text = path.read_text(encoding='utf-8', errors='replace')
+        scope_text = re.sub(r'/\*.*?\*/|//[^\n]*', '', text, flags=re.S)
+        scope_text = re.sub(r'\busing\s+namespace\s+\w+\s*;', '', scope_text)
+        scopes = set(re.findall(r'\b(?:namespace|class|struct)\s+(\w+)', scope_text))
+        lines = text.splitlines()
         for number, line in enumerate(lines):
             match = pattern.match(line)
             if not match:
@@ -19,12 +23,12 @@ def native_sources(package, published, names):
             signature = '\n'.join(lines[number:number + 20])
             if '{' not in signature or (';' in signature and signature.index(';') < signature.index('{')):
                 continue
-            definitions.setdefault(match.groups(), []).append({'path': '2008-06/' + relative, 'line': number + 1})
+            definitions.setdefault(match.groups(), []).append(({'path': '2008-06/' + relative, 'line': number + 1}, scopes))
     sources = {}
     for address, entry in names.items():
         method = readable(entry['symbol']).split('::')
         if len(method) >= 2:
-            matches = definitions.get(tuple(method[-2:]), [])
+            matches = [entry for entry, scopes in definitions.get(tuple(method[-2:]), []) if all(scope in scopes for scope in method[:-2])]
             if len(matches) == 1:
                 sources[address] = matches[0]
     return sources

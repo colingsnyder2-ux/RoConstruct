@@ -122,3 +122,7 @@ white unmined targets. The 23-cell bar measures target bytes; category counts an
 remaining functions are shown separately. User points are real, native credit
 is separate, and ETA is labeled as a rough recent-rate estimate. Notifications
 cannot make a valid rebuild fail.
+
+## Rebuild input location
+
+Native sources and required build inputs live in RoConstruct-findings/2008-06. Run `roc rebuild 2008-06 install` before native integration on a fresh checkout. Existing local build paths remain supported; accepted overlays, leases and server receipts keep their existing meaning.
