@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-27 11:48 UTC",
+  "updated": "2026-10-27 11:56 UTC",
   "clients": {
     "2008-06": {
       "phase": "8",
@@ -17,7 +17,7 @@
           "label": "Modules linked"
         },
         "exact": {
-          "value": 9601,
+          "value": 9602,
           "total": 41213,
           "label": "Byte-exact functions"
         },
