@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-27 08:38 UTC",
+ "updated": "2026-10-27 09:14 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -191,30 +191,30 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22289,
-   "matched": 22101,
-   "partial": 184,
+   "matched": 22100,
+   "partial": 183,
    "source_matched": 13709,
-   "mined_matched": 8392,
+   "mined_matched": 8391,
    "bytes": 3736275,
-   "matched_bytes": 3543385,
+   "matched_bytes": 3543058,
    "source_bytes": 2668355,
-   "mined_bytes": 875030,
-   "partial_bytes": 192761,
+   "mined_bytes": 874703,
+   "partial_bytes": 192585,
    "data_bytes": 1559926,
    "leaderboard": [
     {
      "user": "auto",
-     "matched": 10929,
-     "points": 1015839,
-     "submissions": 10931,
-     "last": 1793057117.7383249
+     "matched": 10931,
+     "points": 1016039,
+     "submissions": 10933,
+     "last": 1793092247.757656
     },
     {
      "user": "colin",
-     "matched": 3093,
-     "points": 684169,
-     "submissions": 23188,
-     "last": 1793088333.9093032
+     "matched": 3094,
+     "points": 684181,
+     "submissions": 23189,
+     "last": 1793090842.6916542
     },
     {
      "user": "king_originala",
@@ -649,17 +649,17 @@
  "leaderboard": [
   {
    "user": "auto",
-   "matched": 76182,
-   "points": 7445598,
-   "submissions": 76184,
-   "last": 1793057117.7383249
+   "matched": 76184,
+   "points": 7445798,
+   "submissions": 76186,
+   "last": 1793092247.757656
   },
   {
    "user": "colin",
-   "matched": 15206,
-   "points": 5523092,
-   "submissions": 186070,
-   "last": 1793088333.9093032
+   "matched": 15207,
+   "points": 5523104,
+   "submissions": 186071,
+   "last": 1793090842.6916542
   },
   {
    "user": "king_originala",
