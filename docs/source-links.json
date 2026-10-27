@@ -1758,6 +1758,7 @@
    "v8world/Primitive.cpp",
    "v8world/RotateJoint.cpp",
    "v8world/SpatialHash.cpp",
+   "v8world/World.cpp",
    "v8xml/XmlElement.cpp",
    "v8xml/XmlSerializer.cpp"
   ]
@@ -1866,6 +1867,7 @@
    "OgreSceneManager.cpp",
    "OgreSceneManagerEnumerator.cpp",
    "OgreString.cpp",
+   "roc_claudeC_rbxsubentitypool_2457577142b8f41d.cpp",
    "roc_client_large_methods_fe8e0ed61a73b8e9.cpp",
    "roc_client_light_templates.cpp",
    "roc_client_medium_methods_9dcc4c18d140c047.cpp",
