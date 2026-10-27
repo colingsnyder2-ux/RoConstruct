@@ -5,6 +5,7 @@ against the allocation size the 2008 exe passes to malloc/operator new before ca
 Read-only; writes rebuild/2008-06/out/size-check.json.
 usage: python rebuild/2008-06/size_check.py"""
 import json
+from concurrent.futures import ThreadPoolExecutor
 import re
 import sys
 from pathlib import Path
@@ -19,11 +20,14 @@ OUT = ROOT / "rebuild" / CLIENT / "out"
 OVERLAY = OUT / "RbxgsApp" / "overlay"
 
 
-def header_of(cls):
+def header_of(cls, cache={}):
+    if not cache:
+        cache.update((path.relative_to(TREE / "include").as_posix(), path.read_text(errors="replace"))
+                     for path in sorted((TREE / "include").rglob("*.h")))
     pattern = re.compile(r"^\s*class\s+%s\b[^;]*$" % re.escape(cls), re.M)
-    for path in sorted((TREE / "include").rglob("*.h")):
-        if pattern.search(path.read_text(errors="replace")):
-            return path.relative_to(TREE / "include").as_posix()
+    for header, text in cache.items():
+        if pattern.search(text):
+            return header
     return None
 
 
@@ -67,14 +71,15 @@ def main():
         header = header_of(cls)
         (by_header.setdefault(header, []) if header else missing).append(cls)
     rows, errors = [], {}
-    for header, classes in sorted(by_header.items()):
-        sizes, error = probe(header, classes)
-        if error:
-            errors[header] = error
-        for cls in classes:
-            if cls in sizes:
-                rows.append({"class": cls, "header": header, "2008": wanted[cls], "rbxgs": sizes[cls],
-                             "delta": wanted[cls] - sizes[cls]})
+    headers = sorted(by_header.items())
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        for (header, classes), (sizes, error) in zip(headers, pool.map(lambda item: probe(*item), headers)):
+            if error:
+                errors[header] = error
+            for cls in classes:
+                if cls in sizes:
+                    rows.append({"class": cls, "header": header, "2008": wanted[cls], "rbxgs": sizes[cls],
+                                 "delta": wanted[cls] - sizes[cls]})
     rows.sort(key=lambda r: (r["delta"] == 0, -abs(r["delta"]), r["class"]))
     (OUT / "size-check.json").write_text(json.dumps({"rows": rows, "no_header": missing, "probe_errors": errors}, indent=1))
     ok = sum(1 for r in rows if not r["delta"])

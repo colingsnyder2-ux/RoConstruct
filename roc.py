@@ -2688,7 +2688,9 @@ def main(argv=None):
         (["--no-notify"], {"action": "store_true", "help": "do not send the Discord webhook"}))
     cmd("integrate", cmd_integrate, "claim native integration work, bulk submit, track verified credit",
         (["action"], {"nargs": "?", "default": "next", "choices": ["next", "submit", "status", "watch", "renew", "release", "sync", "invite"]}),
-        (["--count"], {"type": int, "default": 1, "help": "claim 1-16 classes; --all submits them as one verified batch"}),
+        (["--count"], {"type": int, "default": 1, "help": "claim 1-1024 classes; --all submits them as one verified batch"}),
+        (["--targets"], {"type": int, "help": "claim enough classes for this many targets (up to 100000), one baseline"}),
+        (["--batch"], {"help": "saved batch JSON from next; select its claims for submit/renew/release"}),
         (["--unit"], {}), (["--claim"], {}), (["--all"], {"action": "store_true"}),
         (["--reason"], {"help": "park a released class for two hours, citing the blocker"}),
         (["--id"], {}), (["--model"], {}), (["--evidence-file"], {}),
@@ -2807,6 +2809,9 @@ def main(argv=None):
     cmd("similar", cmd_similar, "list exact-matched functions with a similar instruction shape to ADDR",
         (["name"], {}), (["addr"], {}), (["--limit"], {"type": int, "default": 10}),
         (["--band"], {"type": float, "default": 0.25, "help": "max size difference as a fraction"}))
+    cmd("standins", lambda a: __import__("roc.standins").standins.main([a.name, a.addr]),
+        "map an exact mined source's placeholder externs to the real symbols the exe relocates",
+        (["name"], {}), (["addr"], {}))
     cmd("lib-info", cmd_lib_info, "show a library recipe's version, source, flags and recorded findings",
         (["name"], {}))
     cmd("libs-bundle", cmd_libs_bundle, "pack/index/fetch the private library trees, one zip each (XTP, MFC, Scintilla)",

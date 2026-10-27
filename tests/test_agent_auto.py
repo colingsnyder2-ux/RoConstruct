@@ -9,6 +9,8 @@ from roc import agent_auto
 
 @pytest.fixture(autouse=True)
 def offline_memory(monkeypatch, request):
+    monkeypatch.setattr(agent_auto.agent_recovery, "packet", lambda *args: {"target_asm": ["ret"], "neighbours": []})
+    monkeypatch.setattr(agent_auto.agent_recovery, "propagate", lambda *args: [])
     monkeypatch.setattr(agent_auto.agent_memory, "shared", lambda *a, **kw: {"available": True, "records": []})
     library_cycle = agent_auto.library_cycle
     if not request.node.name.startswith("test_prepare_clients"):
@@ -216,16 +218,31 @@ def test_failed_target_stays_parked_when_only_sibling_evidence_changes():
     assert not any(r["group_parked"] for r in agent_auto.plan(rows, records=records)["areas"][0]["targets"])
 
 
-def test_cli_failure_stops_further_paid_batches_without_parking_targets(tmp_path, monkeypatch):
+@pytest.mark.parametrize("failure", ["exit", "exception", "edited_exception", "invalid_edited_exception"])
+def test_cli_failure_stops_further_paid_batches_without_parking_targets(tmp_path, monkeypatch, failure):
     monkeypatch.setattr(agent_auto, "ROOT", tmp_path)
     monkeypatch.setattr(agent_auto.agent.shutil, "which", lambda cli: "fake-cli")
     monkeypatch.setattr(agent_auto.worker, "usable_clients", lambda *args: ["2008-06"])
     rows = [row("004010%02x" % index, shape="same") for index in range(4)]
     monkeypatch.setattr(agent_auto, "snapshot", lambda *args, **kwargs: rows)
-    monkeypatch.setattr(agent_auto.match, "check_text", lambda *args: (98, "f", "diff", []))
+    def check(*args):
+        if "bad edit" in args[2]:
+            raise agent_auto.match.CompileError("bad edit does not compile")
+        return (100 if "repaired" in args[2] else 98, "f", "diff", [])
+    monkeypatch.setattr(agent_auto.match, "check_text", check)
     monkeypatch.setattr(agent_auto, "reuse", lambda *args: None)
     calls = []
-    monkeypatch.setattr(agent_auto.agent, "run_agent", lambda *args, **kwargs: calls.append(args) or 1)
+    def fail(*args, **kwargs):
+        calls.append(args)
+        args[4]("provider output before failure")
+        if "edited" in failure:
+            path = next(p for p in (tmp_path / "work/agent-auto").glob("*/repair/2008-06/*/*.cpp")
+                        if p.name != "best.cpp")
+            path.write_text("bad edit" if failure.startswith("invalid") else "int repaired(){return 1;}")
+        if failure.endswith("exception"):
+            raise OSError(22, "Invalid argument")
+        return 1
+    monkeypatch.setattr(agent_auto.agent, "run_agent", fail)
 
     class Api:
         def __init__(self, *args):
@@ -237,15 +254,35 @@ def test_cli_failure_stops_further_paid_batches_without_parking_targets(tmp_path
             if endpoint == "/v1/lease":
                 addr = body["targets"][0]["addr"]
                 return {"job": dict(client="2008-06", addr=addr, source="int f(){return 1;}", score=98, lease=addr)}
+            if endpoint == "/v1/submit":
+                return dict(verified=True, improved=True, score=body["score"])
             return {"ok": True}
 
     monkeypatch.setattr(agent_auto.worker, "Api", Api)
-    agent_auto.run_cycle("server", "tester", jobs=4, workers=1, batch_size=2, minutes=1, log=lambda *args: None)
+    totals = agent_auto.run_cycle("server", "tester", jobs=4, workers=1, batch_size=2, minutes=1, log=lambda *args: None)
+    assert totals["matched"] == int(failure == "edited_exception")
     assert len(calls) == 1
     records = agent_auto.history()
     repairs = [r for r in records if r.get("kind") == "auto_batch" and r.get("phase") == "repair"]
     assert len(repairs) == 1 and repairs[0]["skip_reason"] == "cli_error"
-    assert repairs[0]["outcome"] == "error" and not repairs[0]["exhausted"]
+    assert repairs[0]["outcome"] == ("improved" if failure == "edited_exception" else "error")
+    assert not repairs[0]["exhausted"]
+    summary = json.loads(next((tmp_path / "work/agent-auto").glob("*/summary.json")).read_text())
+    assert summary["stop_reason"] == "cli_error"
+    assert summary["batch_outcomes"]["repair:cli_error"] == 1
+    assert summary["time_budget_seconds"] == 60 and summary["workers"] == 1
+    result_path = next((tmp_path / "work/agent-auto").glob("*/repair/2008-06/*/model-result.json"))
+    result = json.loads(result_path.read_text())
+    assert result["exit_code"] == 1 and not result["interrupted"]
+    output = agent_auto.research.journal_records(result_path.with_name("agent-output.jsonl"))
+    assert output[0]["message"] == "provider output before failure"
+    assert result["agent_output_tail"][0] == "provider output before failure"
+    if failure.endswith("exception"):
+        assert result["error"]["type"] == "OSError"
+        assert "Invalid argument" in result["error"]["traceback"]
+        assert "Agent CLI exception: OSError" in output[-1]["message"]
+    else:
+        assert result["error"] is None
 
 
 def test_pull_sources_downloads_on_a_new_pc_without_local_analysis(monkeypatch):
@@ -380,6 +417,34 @@ def test_ranking_uses_real_sources_and_family_donors():
     assert "source" not in json.dumps(agent_auto.public_plan(result)["areas"][0]["examples"])
 
 
+def test_random_pool_includes_zero_score_and_sourceless_functions():
+    result = agent_auto.plan([row("00401000", 99), row("00401010", 10),
+        row("00401020", 0, source=""), row("00401030", 100),
+        {**row("00401040", 0), "kind": "data"}, {**row("00401050", 0), "size": 1024}],
+        records=[], random_targets=True)
+    targets = {r["addr"]: r for area in result["areas"] for r in area["targets"]}
+    assert set(targets) == {"00401000", "00401010", "00401020"}
+    assert targets["00401020"]["source"] == "void func_00401020() {}\n"
+
+
+def test_random_batches_sample_functions_before_grouping(monkeypatch):
+    areas = [dict(client="2008-06", parked=False, targets=[
+        dict(addr="near", group="a", group_parked=False, score=99),
+        dict(addr="zero", group="b", group_parked=False, score=0),
+        dict(addr="parked", group="b", group_parked=True, score=98)]),
+        dict(client="2009-12", parked=False, targets=[
+        dict(addr="other-client", group="b", group_parked=False, score=5)])]
+    seen = []
+    def draw(root, pool, n, scope, **kwargs):
+        seen.extend(pool)
+        return pool[-n:]
+    monkeypatch.setattr(agent_auto.agent_recovery, "draw", draw)
+    batches = agent_auto.random_batches({"areas": areas}, jobs=2, batch_size=1)
+    assert [row["addr"] for row in seen] == ["near", "zero", "other-client"]
+    assert [(area["client"], rows[0]["addr"]) for area, rows in batches] == [
+        ("2008-06", "zero"), ("2009-12", "other-client")]
+
+
 def test_parked_batches_require_same_profile_and_source_revision():
     rows = [row("00401000"), row("00401010")]
     target = agent_auto.plan(rows, records=[])["areas"][0]["targets"][0]
@@ -489,12 +554,13 @@ def test_run_reuses_before_models_and_assigns_explicit_targets(tmp_path, monkeyp
     monkeypatch.setattr(agent_auto.agent, "run_agent", lambda cli, prompt, *args, **kwargs:
                         (order.append("model"), prompts.append(prompt))[1] or 0)
     result = agent_auto.run("server", "me", workers=2, jobs=4, batch_size=2, log=lambda *args: None)
-    assert order.count("reuse") == 4 and order.count("model") == 2
-    assert sum("Closest proven mismatches first" in prompt for prompt in prompts) == 1
+    assert order.count("reuse") == 4 and order.count("model") == 4
+    assert all("ONE unresolved function" in prompt and "never their directory" in prompt for prompt in prompts)
+    assert all("Read available project context" not in prompt for prompt in prompts)
     assert all('"diff": "diff"' in prompt for prompt in prompts)
-    assert all("Individual function mining" in prompt for prompt in prompts)
-    assert sum("Automatic BATCH repair" in prompt for prompt in prompts) == 1
-    assert order[:2] == ["model"] * 2 and order[2:] == ["reuse"] * 4  # agent first, free checks last
+    assert all("ONE unresolved function" in prompt and "agent-block" in prompt for prompt in prompts)
+    assert all(isinstance(json.loads(prompt.split("\nAssignment:\n")[1]), dict) for prompt in prompts)
+    assert order[:4] == ["model"] * 4 and order[4:] == ["reuse"] * 4
     assert len(set(paths)) == 4 and all("agent-auto" in path for path in paths)
     assert [call for call in calls if call[0] == "/v1/release"]  # batches free their server claims
     assert result["matched"] == 0 and result["errors"] == 0
@@ -502,7 +568,7 @@ def test_run_reuses_before_models_and_assigns_explicit_targets(tmp_path, monkeyp
                for endpoint, body in calls if endpoint == "/v1/lease")
 
 
-def test_automatic_allows_one_behavior_based_singleton_per_cycle(tmp_path, monkeypatch):
+def test_automatic_allows_independent_random_singletons(tmp_path, monkeypatch):
     monkeypatch.setattr(agent_auto, "ROOT", tmp_path)
     monkeypatch.setattr(agent_auto.agent, "memory_prompt", lambda *a: "memory")
     monkeypatch.setattr(agent_auto.agent.shutil, "which", lambda *a: "fake-cli")
@@ -528,8 +594,15 @@ def test_automatic_allows_one_behavior_based_singleton_per_cycle(tmp_path, monke
 
     monkeypatch.setattr(agent_auto.worker, "Api", Api)
     agent_auto.run_cycle("server", "tester", jobs=2, workers=2, batch_size=1, minutes=1, log=lambda *a: None)
-    assert len(prompts) == 1
-    assert "Individual function mining allowed" in prompts[0] and "behavior_evidence" in prompts[0]
+    assert len(prompts) == 2
+    assert all("ONE unresolved function" in prompt and "initial_evidence_file" in prompt for prompt in prompts)
+    for prompt in prompts:
+        assignment = json.loads(prompt.split("\nAssignment:\n")[1])
+        initial = json.loads(Path(assignment["initial_evidence_file"]).read_text(encoding="utf-8"))
+        full = json.loads(Path(assignment["evidence_file"]).read_text(encoding="utf-8"))
+        assert initial["full_evidence_file"] == assignment["evidence_file"]
+        assert initial.get("target_asm") == full.get("target_asm")
+        assert "source" not in initial
 
 
 def test_server_verified_reuse_is_counted_without_a_model(tmp_path, monkeypatch):
@@ -627,8 +700,8 @@ def test_all_clients_keep_same_addresses_and_receipts_isolated(tmp_path, monkeyp
         paths.append(task["path"])
         (Path(task["path"]).parent / "best.cpp").write_text("winner")
     monkeypatch.setattr(agent_auto, "reuse", reuse)
-    def no_model(*args):
-        raise AssertionError("Exact reuse must not launch a paid CLI")
+    def no_model(*args, **kwargs):
+        return 0  # Random singleton gets its model attempt before compiler reuse.
     monkeypatch.setattr(agent_auto.agent, "run_agent", no_model)
     class Api:
         exact = set()
@@ -656,6 +729,7 @@ def test_all_clients_keep_same_addresses_and_receipts_isolated(tmp_path, monkeyp
     assert scopes == [sorted(names)]
     records = agent_auto.history()
     assert {record["client"] for record in records} == set(names)
+    monkeypatch.setattr(agent_auto, "history", lambda: [])  # Isolate subsequent client-scope checks from no-gain parking.
     Api.exact.clear()
     submitted.clear()
     agent_auto.run("server", "me", jobs=1, log=lambda *args: None, client="2009-12")
@@ -702,8 +776,8 @@ def test_out_of_scope_lease_is_released_before_compile(tmp_path, monkeypatch, le
             return {}
     monkeypatch.setattr(agent_auto.worker, "Api", Api)
     result = agent_auto.run("server", "me", jobs=1, log=lambda *args: None, client="2008-06")
-    assert result["errors"] == 1 and result["attempted"] == 0
-    assert len([body for endpoint, body in calls if endpoint == "/v1/release" and body["lease"] == "wrong"]) == 1
+    assert result["errors"] == 2 and result["attempted"] == 0  # Both phases reject the bad lease.
+    assert len([body for endpoint, body in calls if endpoint == "/v1/release" and body["lease"] == "wrong"]) == 2
 
 
 def test_unlimited_plan_includes_large_functions():
@@ -763,3 +837,16 @@ def test_snapshot_bounds_behavior_metadata_before_planning(monkeypatch, tmp_path
     assert row["callers"] == [0,1,2,3]
     assert row["constants"] == list(range(8))
     assert "relocs" not in row
+
+
+def test_local_snapshot_accepts_source_without_saved_score(monkeypatch, tmp_path):
+    monkeypatch.setattr(agent_auto, "ROOT", tmp_path)
+    monkeypatch.setattr(agent_auto.match.clients, "load", lambda: {"C": {}})
+    folder = tmp_path / "work/C"
+    folder.mkdir(parents=True)
+    (folder / "functions.jsonl").write_text(json.dumps(dict(addr="00401000", size=20)))
+    source = tmp_path / "src/C/00401000.cpp"
+    source.parent.mkdir(parents=True)
+    source.write_text("void f() {}")
+    row = agent_auto.snapshot("C")[0]
+    assert row["score"] == 0 and row["source"] == "void f() {}"

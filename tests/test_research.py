@@ -13,6 +13,12 @@ def test_journal_recovers_concatenated_records_and_appends_missing_newline(tmp_p
     assert [row["kind"] for row in research.journal_records(path)] == ["trial", "finding", "tool_suggestion"]
 
 
+def test_journal_keeps_bom_prefixed_records(tmp_path):
+    path = tmp_path / "attempts.jsonl"
+    path.write_text('\ufeff{"kind":"trial"}\n\ufeff{"kind":"finding"}\n', encoding="utf-8")
+    assert [row["kind"] for row in research.journal_records(path)] == ["trial", "finding"]
+
+
 def test_provider_auth_disables_queued_calls_until_new_gate():
     from roc import providers
     gate = providers.CloudGate()
@@ -50,6 +56,7 @@ def test_research_cli_background_and_completion(monkeypatch, tmp_path, capsys):
     assert "--limit" in command and "--job-state" in command
     assert command[command.index("--client") + 1] == "2008-06"
     assert options["stdin"] == cli.subprocess.DEVNULL
+    assert options["env"]["PYTHONIOENCODING"] == "utf-8"
     state = Path(command[command.index("--job-state") + 1])
     args.background, args.job_state = False, str(state)
     monkeypatch.setattr(research, "run", lambda *args, **kwargs: {"new_verified": 0})
@@ -167,7 +174,7 @@ def test_assigned_scratch_check_cannot_bypass_trial_journal(tmp_path, monkeypatc
                         calls.append(args) or dict(after=86, symbol="f", diff="diff"))
     monkeypatch.setattr(research.match, "check", lambda *args:
                         (_ for _ in ()).throw(AssertionError("must use journal")))
-    cli.cmd_check(SimpleNamespace(name="2008-06", addr="00401000", file=str(path)))
+    cli.cmd_check(SimpleNamespace(name="2008-06", addr="00401000", file=str(path), context=0))
     assert len(calls) == 1 and calls[0][2] == "00401000" and calls[0][3] == path
 
 
@@ -238,8 +245,10 @@ def test_fanout_streams_ready_wins_and_deduplicates_sources(monkeypatch):
                 receipts.append(row)
 
     def log(line):
+        line.encode("cp1252")  # Redirected Windows consoles must not interrupt accepted wins.
         logs.append(line)
         if "00401000" in line:
+            assert any(row["addr"] == "00401000" for row in receipts)
             release.set()
 
     monkeypatch.setattr(research.match, "compile_text", compile_text)
@@ -282,7 +291,209 @@ def test_audit_counts_unique_verified_new_exacts_only(tmp_path):
 
 def test_every_recipe_is_well_formed():
     for name, spec in research.recipes().items():
-        assert spec["op"] in ("grid", "fanout") and spec.get("hypothesis"), name
+        assert spec["op"] in ("grid", "fanout", "sweep") and spec.get("hypothesis"), name
         assert spec.get("client", "2008-06") == "2008-06", name
+        if spec["op"] == "sweep":
+            stages = spec.get("stages", []) + [stage for group in spec.get("stages_by_client", {}).values() for stage in group]
+            assert all(stage in research.recipes() and research.recipes()[stage]["op"] != "sweep" for stage in stages), name
         if spec["op"] == "fanout":
-            assert all(item["recipe"] in research.libs.RECIPES for item in spec["sources"]), name
+            assert spec.get("portfolio") is not None or spec.get("sources"), name
+            assert all(item["recipe"] in research.libs.RECIPES for item in spec.get("sources", [])), name
+
+
+def test_grid_parallel_targets_stop_at_exact_and_serialize_receipts(tmp_path, monkeypatch):
+    barrier = threading.Barrier(2)
+    receipt_active = threading.Lock()
+    calls, records, receipts = [], [], []
+    def check(client, addr, source):
+        calls.append((addr, source))
+        if source == "first":
+            barrier.wait(timeout=5)
+        return (100, "fn", "", [])
+    def submit(stage, client, addr, source):
+        assert receipt_active.acquire(blocking=False)
+        try:
+            time.sleep(.01)
+            receipts.append(addr)
+            return {"submission": {"verified": True, "improved": True}}
+        finally:
+            receipt_active.release()
+    campaign = SimpleNamespace(previous=lambda stage: [], submit_exact=submit,
+                               record=lambda stage, row: records.append(row))
+    monkeypatch.setattr(research, "variants", lambda *a, **kw: iter([
+        ("first", 21022, "normal"), ("unused", 50727, "fast")]))
+    monkeypatch.setattr(research.match, "check_text", check)
+    rows = [dict(addr=addr, score=90, source="starter") for addr in ("00401000", "00402000")]
+    wins = research.grid(campaign, "parallel", rows, jobs=2, log=lambda line: None)
+    assert sorted(calls) == [(row["addr"], "first") for row in rows]
+    assert len(wins) == len(records) == len(receipts) == 2
+    assert all(row["receipt"]["submission"]["verified"] for row in records)
+
+
+def test_sweep_runs_only_selected_client_stages(tmp_path, monkeypatch):
+    specs = {"all": dict(op="sweep", stages=["gates"], stages_by_client={
+        "2008-06": ["native08"], "2009-12": ["native09"]}),
+        "gates": dict(op="grid"), "native08": dict(op="fanout"), "native09": dict(op="fanout")}
+    monkeypatch.setattr(research, "recipes", lambda: specs)
+    calls = []
+    monkeypatch.setattr(research, "run", lambda *args: calls.append(args) or dict(new_verified=1))
+    result = research._run("all", jobs=3, client="2009-12", output=tmp_path, log=lambda line: None)
+    assert [args[0] for args in calls] == ["native09", "gates"]
+    assert all(args[-1] == "2009-12" and args[2] == 3 for args in calls)
+    assert result["new_verified"] == 2
+
+
+def test_compiler_evidence_changes_with_dependencies_target_and_client(monkeypatch):
+    dependency, target = ["header one"], [b"code one"]
+    monkeypatch.setattr(research.libs, "unit", lambda *args: dependency[0])
+    monkeypatch.setattr(research.clients, "load", lambda: {
+        "2008-06": dict(sha256="08"), "2009-12": dict(sha256="09")})
+    monkeypatch.setattr(research.match, "target", lambda *args: (target[0], [], {}))
+    row = dict(addr="00401000")
+    source = "// roc-lib: native unit.cpp\n"
+    def key(client="2008-06"):
+        return research.compiler_evidence(client, row, source, 21022, "/O2", {})
+    initial = key()
+    assert key() == initial and key("2009-12") != initial
+    dependency[0] = "header two"
+    assert key() != initial
+    dependency[0] = "header one"
+    target[0] = b"code two"
+    assert key() != initial
+
+
+def test_grid_resume_across_campaigns_retries_changed_evidence_and_unverified_exact(tmp_path, monkeypatch):
+    monkeypatch.setattr(research, "ROOT", tmp_path)
+    key, score, checks = ["initial"], [90], []
+    monkeypatch.setattr(research, "compiler_evidence", lambda *args: key[0])
+    monkeypatch.setattr(research, "variants", lambda *args, **kwargs: iter([("variant", 21022, "/O2")]))
+    monkeypatch.setattr(research.match, "check_text", lambda *args: checks.append(args) or (score[0], "fn", "", []))
+    def rejected(*args):
+        raise ValueError("verification unavailable")
+    campaign = SimpleNamespace(root=tmp_path, previous=lambda stage: [], record=lambda *args: None, submit_exact=rejected)
+    rows = [dict(addr="00401000", score=80, source="source")]
+    def run(stage):
+        research.grid(campaign, stage, rows, reuse_history=True, log=lambda line: None)
+    run("first")
+    run("other-campaign")
+    assert len(checks) == 1
+    key[0], score[0] = "changed", 100
+    run("changed")
+    run("retry-unverified")
+    assert len(checks) == 3
+
+
+def test_variants_do_not_duplicate_existing_precision_suffix():
+    source = "// roc-flags: /O2 /fp:fast\nint f(){return 1;}"
+    variants = list(research.variants(source, builds=[21022], profiles=["keep"], append=[" /fp:fast"]))
+    assert variants[0][2] == "/O2 /fp:fast"
+
+
+def test_fanout_failed_verification_restores_all_pending_hits(monkeypatch):
+    from collections import defaultdict
+    class Target:
+        index = defaultdict(list, {6: ["first", "second"]})
+        def match_obj(self, obj, source):
+            hits = {addr: (source, "fn") for addr in self.index[6]}
+            self.index[6].clear()
+            return hits
+    target, records, attempts = Target(), [], []
+    class Campaign:
+        api = SimpleNamespace(call=lambda *a, **kw: [])
+        def previous(self, stage):
+            return [dict(key=research.digest("retry"), retryable=True)]
+        def submit_exact(self, stage, client, addr, source, obj=None):
+            attempts.append((source, addr))
+            if source == "retry":
+                raise RuntimeError("verification unavailable")
+            return dict(addr=addr, submission=dict(verified=True, improved=True, score=100))
+        def record(self, stage, row):
+            records.append((stage, row))
+    monkeypatch.setattr(research, "unresolved", lambda *a: target)
+    monkeypatch.setattr(research.match, "compile_text", lambda *a: b"obj")
+    monkeypatch.setattr(research.match, "target", lambda *a: (b"123456", [], {}))
+    wins = research.fanout(Campaign(), "retry-test", [("retry", {}), ("working", {})], log=lambda line: None)
+    assert {addr for source, addr in attempts if source == "working"} == {"first", "second"}
+    assert records[0][1]["retryable"]
+    assert len([w for w in wins if w.get("submission", {}).get("verified")]) == 2
+    assert target.index[6] == []
+
+
+def test_fanout_identical_objects_skip_match_but_changed_data_does_not(monkeypatch):
+    checked, records = [], []
+    class Target:
+        def match_obj(self, obj, source):
+            checked.append(source)
+            return {}
+    class Campaign:
+        api = SimpleNamespace(call=lambda *a, **kw: [])
+        def previous(self, stage): return []
+        def record(self, stage, row): records.append(row)
+    monkeypatch.setattr(research, "unresolved", lambda *a: Target())
+    monkeypatch.setattr(research.match, "compile_text", lambda client, source:
+        b"COFF" + (b"time" if source == "first" else b"date") + (b"other-data" if source == "changed" else b"same-data"))
+    research.fanout(Campaign(), "objects", [(source, {}) for source in ["first", "repeat", "changed"]], log=lambda line: None)
+    assert checked == ["first", "changed"]
+    assert records[1]["object_reused"] and not records[2]["object_reused"]
+
+
+def test_fanout_resume_tracks_compiled_data_and_target_inventory(monkeypatch):
+    rows, checked, compiled = [], [], []
+    data, size = [b"data-one"], [6]
+    class Target:
+        def match_obj(self, obj, source):
+            checked.append(obj)
+            return {}
+    class Campaign:
+        api = SimpleNamespace(call=lambda *a, **kw: [])
+        def previous(self, stage): return list(rows)
+        def record(self, stage, row): rows.append(row)
+    def compile_text(*args):
+        compiled.append(args)
+        return b"COFFtime" + data[0]
+    monkeypatch.setattr(research, "unresolved", lambda *a: Target())
+    monkeypatch.setattr(research.match, "compile_text", compile_text)
+    monkeypatch.setattr(research.clients, "load", lambda: {"2008-06": dict(sha256="binary")})
+    monkeypatch.setattr(research.match, "_functions", lambda *a: {"00401000": dict(size=size[0], relocs=[])})
+    def run():
+        research.fanout(Campaign(), "resume", [("same-source-header-changed", {})], evidence_resume=True, log=lambda line: None)
+    run(); run()
+    assert len(checked) == 1 and len(compiled) == 2
+    data[0] = b"data-two"
+    run()
+    assert len(checked) == 2
+    size[0] += 1
+    run()
+    assert len(checked) == 3
+
+
+def test_fanout_recipe_streams_inputs_and_counts_limited_contexts(tmp_path, monkeypatch):
+    produced = []
+    monkeypatch.setattr(research, "recipes", lambda: {"stream": dict(op="fanout", sources=[])})
+    monkeypatch.setattr(research, "Campaign", lambda *a: SimpleNamespace(root=tmp_path, api=SimpleNamespace(close=lambda: None)))
+    def sources(*a, **kw):
+        for index in range(20):
+            produced.append(index)
+            yield str(index), {}
+    def fanout(campaign, stage, inputs, *a, **kw):
+        assert produced == []
+        assert [source for source, _ in inputs] == ["0", "1"]
+        return []
+    monkeypatch.setattr(research, "recipe_sources", sources)
+    monkeypatch.setattr(research, "fanout", fanout)
+    monkeypatch.setattr(research, "remember", lambda *a: None)
+    result = research._run("stream", limit=2, output=tmp_path, log=lambda line: None)
+    assert result["tried"] == 2 and produced == [0, 1]
+def test_recipe_source_evidence_distinguishes_c_and_cpp(tmp_path, monkeypatch):
+    from roc import libs, match
+
+    monkeypatch.setattr(libs, "RECIPES", {"native": {"src": "native", "langs": ["c", "cpp"]}})
+    monkeypatch.setattr(libs, "fetch", lambda name: tmp_path)
+    item = dict(recipe="native", files=["owned.cpp"], builds=[21022], flags=["/O2"])
+    rows = list(research.recipe_sources([item]))
+    assert [evidence["lang"] for _, evidence in rows] == ["c", "cpp"]
+    assert [match.directives(source)["lang"] for source, _ in rows] == ["c", "cpp"]
+    assert rows[0][0] != rows[1][0]
+    rows = list(research.recipe_sources([{**item, "langs": ["cpp"]}]))
+    assert len(rows) == 1 and rows[0][1]["lang"] == "cpp"
+

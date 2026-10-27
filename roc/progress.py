@@ -187,10 +187,14 @@ def source_links():
     return links
 
 
-def build(server=None, token=None, public_server=None, remote=None):
+def build(server=None, token=None, public_server=None, remote=None, client=None):
     """server: pull scores + leaderboard from the group server (else local scores only).
-    remote: the same export passed in directly (the server publishing itself)."""
+    remote: the same export passed in directly (the server publishing itself).
+    client: rebuild only this client's data and preserve other published client stats."""
     (DOCS / "data").mkdir(parents=True, exist_ok=True)
+    path = DOCS / "progress.json"
+    previous = json.loads(path.read_text()) if path.exists() else {}
+    previous_clients = {row["name"]: row for row in previous.get("clients", [])}
     authoritative = remote is not None or bool(server)
     if remote is None:
         remote = fetch_server(server, token) if server else {"scores": {}, "leaderboard": []}
@@ -198,6 +202,12 @@ def build(server=None, token=None, public_server=None, remote=None):
     out, stats = [], {}
     for name, entry in sorted(clients.load().items()):
         if entry.get("donor"):  # donor binaries are matching/test fixtures, not shown on the site
+            continue
+        if client is not None and name != client and name in previous_clients:
+            row = previous_clients[name]
+            out.append(row)
+            if row.get("started"):
+                stats[name] = {k: row[k] for k in STATS if k in row}
             continue
         work = ROOT / "work" / name
         row = {"name": name, "compiler": entry["compiler"], "built": entry.get("built"), "started": False}
@@ -242,8 +252,6 @@ def build(server=None, token=None, public_server=None, remote=None):
     updated = time.strftime("%Y-%m-%d %H:%M UTC", time.gmtime())
     progress = {"updated": updated, "clients": out, "leaderboard": remote["leaderboard"][:50],
                 "server": public_server}
-    path = DOCS / "progress.json"
-    previous = json.loads(path.read_text()) if path.exists() else {}
     if {k: v for k, v in previous.items() if k != "updated"} == {
             k: v for k, v in progress.items() if k != "updated"}:
         progress["updated"] = previous["updated"]

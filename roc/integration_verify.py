@@ -1,5 +1,6 @@
 """Serialized authoritative native verifier. Uploaded data never becomes Python."""
 import concurrent.futures
+import faulthandler
 import functools
 import hashlib
 import json
@@ -12,6 +13,8 @@ import time
 from pathlib import Path
 
 from roc.integration import CLIENT, MODULE, ROOT, atomic_json, digest, merge_patches
+
+WATCHDOG_SECONDS = 20 * 60  # cold baselines take minutes; stacks only after this long without a verdict
 
 
 @functools.lru_cache(maxsize=1)
@@ -67,11 +70,19 @@ def native_tools(root):
     return sorted((p for p in roots if not any(p != parent and p.is_relative_to(parent) for parent in roots)), key=str)
 
 
-def input_hash(root):
-    """Content hash, including vendor/compiler bytes; no mtime-only receipts."""
-    result = hashlib.sha256()
-    paths = [root / "roc.py"] if (root / "roc.py").exists() else []
-    for folder in ("roc", "clients/2008-06", "local/units"):
+def file_hash(path):
+    with path.open("rb") as stream:
+        return hashlib.file_digest(stream, "sha256").digest()
+
+
+def input_hash(root, live_only=False):
+    """Content hash, including vendor/compiler bytes; no mtime-only receipts.
+    live_only: only inputs a snapshot reads through from the live checkout (tools/clients junctions). Code,
+    patches, work/ and out/ are copied into the snapshot, so later edits there cannot affect a running build."""
+    paths = [root / "roc.py"] if (root / "roc.py").exists() and not live_only else []
+    # The unit registry is mining transport metadata. Pinned native builds read
+    # installed files, including adopted/referenced generated units hashed below.
+    for folder in ("clients/2008-06",) if live_only else ("roc", "clients/2008-06"):
         parent = root / folder
         if parent.exists():
             paths.extend(p for p in parent.rglob("*") if p.is_file()
@@ -94,6 +105,8 @@ def input_hash(root):
         paths.extend(p for p in parent.rglob("*") if p.is_file() and p.suffix.lower() in suffixes
                      and (not p.name.startswith("roc_") or p.resolve() in referenced))
     paths.extend(p for p in (root / "clients/clients.json", root / "clients/sources.json") if p.exists())
+    if live_only:
+        return digest_paths(root, paths)
     paths.extend(p for p in (root / "research/template-units.json", root / "research/libs-bundle.json") if p.exists())
     parent = root / "rebuild" / CLIENT
     paths.extend(p for p in parent.rglob("*") if p.is_file() and "out" not in p.relative_to(parent).parts)
@@ -104,18 +117,21 @@ def input_hash(root):
     paths.extend(p for p in out.glob("*/*.json") if p.is_file()
                  and p.name != "report.json")
     paths.extend(p for p in out.glob("*/report.json") if p.parent.name != "RbxgsApp")
-    for path in sorted(set(paths)):
-        label = path.relative_to(root).as_posix() if path.is_relative_to(root) else str(path)
-        result.update(label.encode() + b"\0")
-        with path.open("rb") as stream:
-            for chunk in iter(lambda: stream.read(1 << 20), b""):
-                result.update(chunk)
     for path in sorted((root / "rebuild" / CLIENT / "out").glob("*/linked/*")):
         if path.parent.parent.name != "RbxgsApp" and path.is_file() and path.suffix in (".obj", ".lib"):
-            result.update(path.relative_to(root).as_posix().encode() + b"\0")
-            with path.open("rb") as stream:
-                for chunk in iter(lambda: stream.read(1 << 20), b""):
-                    result.update(chunk)
+            paths.append(path)
+    return digest_paths(root, paths)
+
+
+def digest_paths(root, paths):
+    result = hashlib.sha256()
+    paths = sorted(set(paths))
+    # Independent file reads overlap Windows filesystem/antivirus latency.
+    # map preserves path order; content hashes never rely on size or mtime.
+    with concurrent.futures.ThreadPoolExecutor(max_workers=8) as pool:
+        for path, content in zip(paths, pool.map(file_hash, paths)):
+            label = path.relative_to(root).as_posix() if path.is_relative_to(root) else str(path)
+            result.update(label.encode() + b"\0" + content)
     for name in ("INCLUDE", "LIB", "LIBPATH", "CL", "_CL_", "PATH", "WINEPREFIX", "ROC_CL", "ROC_WINSDK", "ROC_ATLMFC"):
         result.update(name.encode() + b"=" + os.environ.get(name, "").encode())
     return result.hexdigest()
@@ -221,7 +237,20 @@ def collect(root):
             "milestones": json.loads((out / "milestones.json").read_text())}
 
 
-def check_gates(result, baseline=None):
+def other_module_owned(root):
+    """Addresses owned by linked modules other than RbxgsApp (their reports are fixed inputs of a native job)."""
+    owned = set()
+    for report in (root / "rebuild" / CLIENT / "out").glob("*/report.json"):
+        if report.parent.name != "RbxgsApp":
+            data = json.loads(report.read_text())
+            if data.get("linked"):
+                owned.update(data.get("owned_addrs", []))
+    return owned
+
+
+def check_gates(result, baseline=None, elsewhere=frozenset()):
+    """elsewhere: addresses another module still owns; RbxgsApp may stop claiming them (e.g. a coincidental
+    match that a real layout fix moves away) because global coverage does not drop."""
     report = result["report"]
     if not report["linked"] or report.get("test_exit") != 0:
         raise ValueError("Module build/runtime gate failed")
@@ -234,7 +263,7 @@ def check_gates(result, baseline=None):
     if not baseline:
         return
     before, after = set(baseline["report"]["owned_addrs"]), set(report["owned_addrs"])
-    if len(after) <= len(before) or before - after:
+    if not after - before or before - after - set(elsewhere):
         raise ValueError("Need new module ownership without losing existing owned bodies")
     if result["distinct"] < baseline["distinct"]:
         raise ValueError("Global distinct coverage regressed")
@@ -253,51 +282,64 @@ def check_gates(result, baseline=None):
 
 
 def preflight(root, base, patches):
-    """Cheap anchor validation/rebase before hashing inputs or building anything."""
-    combined = merge_patches(base, patches)
+    """Cheap anchor validation/rebase before hashing inputs or building anything.
+    A file whose edits no longer apply is dropped from the batch, so one stale file does not cost the rest;
+    returns (combined overlay, kept patches, {dropped file: reason}). Raises when nothing applies."""
     tree = root / "tools/rbxgs/Client"
-    for name in patches:
-        path = tree / name
-        text = path.read_text(errors="replace") if path.exists() else ""
-        existing = len(base.get(name, []))
-        for index, (old, new) in enumerate(combined[name]):
-            if old == "@replace":
-                text = (tree / new).read_text(errors="replace")
-            elif old.startswith("@all:"):
-                anchor = old[5:]
-                if not anchor or anchor not in text:
-                    raise ValueError("Stale overlay anchor: " + name)
-                text = text.replace(anchor, new)
-            elif old:
-                if old not in text or index >= existing and text.count(old) != 1:
-                    raise ValueError("Missing or ambiguous overlay anchor: " + name)
-                text = text.replace(old, new, 1)
-            else:
-                text += new
-    return combined
+    kept, dropped = {}, {}
+    for name, change in patches.items():
+        try:
+            edits = merge_patches(base, {name: change})[name]
+            path = tree / name
+            text = path.read_text(errors="replace") if path.exists() else ""
+            existing = len(base.get(name, []))
+            for index, (old, new) in enumerate(edits):
+                if old == "@replace":
+                    text = (tree / new).read_text(errors="replace")
+                elif old.startswith("@all:"):
+                    anchor = old[5:]
+                    if not anchor or anchor not in text:
+                        raise ValueError("Stale overlay anchor: " + name)
+                    text = text.replace(anchor, new)
+                elif old:
+                    if old not in text or index >= existing and text.count(old) != 1:
+                        raise ValueError("Missing or ambiguous overlay anchor: " + name)
+                    text = text.replace(old, new, 1)
+                else:
+                    text += new
+        except ValueError as error:
+            dropped[name] = str(error)
+            continue
+        kept[name] = change
+    if not kept:
+        raise ValueError("; ".join(dropped.values()) or "Empty batch")
+    return merge_patches(base, kept), kept, dropped
 
 
 def verify_build(root, progress):
     progress("building")
+    # The size/base gates read only the header overlay: write it first (build_module rewrites nothing unchanged)
+    # and run them beside the compile instead of after the link.
+    overlay = ("from roc import rebuild; s=rebuild.load_module('2008-06','rbxgs-app'); "
+               "rebuild.build_overlay('2008-06', s['name'], s.get('overlay'))")
+    run(root, ["-c", overlay], root / "integration-overlay.log")
     # Reporting is separate: avoid another complete object scan/webhook per gate.
     build = ("from roc import rebuild; import sys; "
              "rebuild.progress=lambda *a,**kw: None; "
              "r=rebuild.build_module('2008-06','rbxgs-app'); "
              "sys.exit(0 if r['linked'] and r['test_exit']==0 else 1)")
-    run(root, ["-c", build], root / "integration-build.log")
-    progress("checking")
     status = ("from roc import rebuild; import json; from pathlib import Path; "
               "rebuild.progress=lambda *a,**kw: None; "
               "rows,owned=rebuild.status('2008-06'); "
               "Path('integration-linked.json').write_text(json.dumps(sorted(owned)))")
-    commands = [(["roc.py", "rebuild", CLIENT, "milestones"], "milestones"),
-                (["rebuild/2008-06/size_check.py"], "size"),
-                (["rebuild/2008-06/base_check.py"], "base"),
-                (["-c", status], "status")]
     with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
-        futures = [pool.submit(run, root, args, root / ("integration-" + name + ".log"))
-                   for args, name in commands]
-        for future in futures:
+        def submit(args, name):
+            return pool.submit(run, root, args, root / ("integration-" + name + ".log"))
+        early = [submit(["rebuild/2008-06/size_check.py"], "size"), submit(["rebuild/2008-06/base_check.py"], "base")]
+        submit(["-c", build], "build").result()
+        progress("checking")
+        late = [submit(["roc.py", "rebuild", CLIENT, "milestones"], "milestones"), submit(["-c", status], "status")]
+        for future in early + late:
             future.result()
     return collect(root)
 
@@ -308,9 +350,14 @@ def verify(promotions, job):
     baseline = promotions.baseline()
     patches = json.loads(job["patches"])
     promotions.progress(job["id"], "preflight")
-    combined = preflight(root, baseline["overlay"], patches)
+    combined, kept, dropped = preflight(root, baseline["overlay"], patches)
+    if dropped:
+        # finish() records job["patches"] as the accepted overlay: keep only what was verified.
+        job["patches"] = json.dumps(kept)
     promotions.progress(job["id"], "fingerprinting inputs")
     before_hash = input_hash(root)
+    # Builds run in a copied snapshot: only read-through trees can still change under them.
+    live_hash = input_hash(root, live_only=True)
     cache = promotions.directory / "baselines" / before_hash
     index_file = promotions.directory / "baselines/index.json"
     index = json.loads(index_file.read_text()) if index_file.exists() else {}
@@ -337,7 +384,7 @@ def verify(promotions, job):
         before = verify_build(cache, lambda phase: progress("baseline: " + phase))
         check_gates(before)
         before["linked_addresses"] = json.loads((cache / "integration-linked.json").read_text())
-        if input_hash(root) != before_hash:
+        if input_hash(root, live_only=True) != live_hash:
             raise ValueError("Server inputs changed during baseline verification; retry on a stable baseline")
         atomic_json(baseline_file, before)
         index[before_hash] = cache.relative_to(root).as_posix()
@@ -352,8 +399,9 @@ def verify(promotions, job):
     snapshot(cache, candidate)
     atomic_json(candidate / "rebuild" / CLIENT / "patches" / "rbxgs-client.json", combined)
     after = verify_build(candidate, progress)
-    check_gates(after, before)
-    if input_hash(root) != before_hash or promotions.baseline()["revision"] != baseline["revision"]:
+    elsewhere = other_module_owned(candidate)
+    check_gates(after, before, elsewhere)
+    if input_hash(root, live_only=True) != live_hash or promotions.baseline()["revision"] != baseline["revision"]:
         raise ValueError("Server inputs changed during candidate verification; retry on a stable baseline")
     old_owned = set(before["report"]["owned_addrs"])
     gains = set(after["report"]["owned_addrs"]) - old_owned
@@ -361,13 +409,15 @@ def verify(promotions, job):
     if after["distinct"] - before["distinct"] != len(new_distinct):
         raise ValueError("Linked coverage changed outside the submitted module")
     atomic_json(candidate / "integration-native.json", sorted(set(before["linked_addresses"]) | gains))
-    return {"accepted": True, "gains": sorted(gains), "losses": [],
+    return {"accepted": True, "gains": sorted(gains),
+            "losses": sorted(old_owned - set(after["report"]["owned_addrs"])),  # each still owned by another module
             "new_distinct": sorted(new_distinct), "owned_before": len(old_owned),
             "owned_after": len(after["report"]["owned_addrs"]),
             "distinct_before": before["distinct"], "distinct_after": after["distinct"],
             "baseline_revision": baseline["revision"], "submitted_revision": job["base"],
             "rebased": baseline["revision"] != job["base"], "input_hash": before_hash,
             "overlay_hash": digest(combined), "gates": "M2/M4a/M5, size, base, linked ownership passed",
+            "dropped_files": dropped,
             "artifacts": candidate.relative_to(root).as_posix(),
             "probe_errors": {k: after[k].get("probe_errors", {}) for k in ("size", "base")}}
 
@@ -426,10 +476,16 @@ def loop(promotions, log=print):
             promotions.wake.wait(30)
             promotions.wake.clear()
             continue
+        # A verification that stops moving leaves every thread's stack here (it once hung silently for 24 min).
+        stacks = open(promotions.directory / "verifier-stacks.log", "a")
+        faulthandler.dump_traceback_later(WATCHDOG_SECONDS, repeat=True, file=stacks)
         try:
             receipt = verify(promotions, job)
         except (OSError, ValueError, RuntimeError, subprocess.SubprocessError) as error:
             receipt = {"accepted": False, "reason": str(error)[:1000]}
+        finally:
+            faulthandler.cancel_dump_traceback_later()
+            stacks.close()
         try:
             finished = promotions.finish(job, receipt, lambda edits: publish(promotions, edits))
         except (OSError, ValueError, subprocess.SubprocessError) as error:

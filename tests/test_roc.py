@@ -170,6 +170,12 @@ def fake_obj(code, relocs):
     return head + sec + code + rel + sym + struct.pack("<I", 4)
 
 
+def test_relocated_small_decimal_branch_operands_display_as_symbols():
+    assert asm_lines(bytes.fromhex("e800000000c3"), [1]) == ["call sym", "ret "]
+    assert asm_lines(bytes.fromhex("e900000000c3"), [1]) == ["jmp sym", "ret "]
+    assert asm_lines(bytes.fromhex("e800000000c3"), []) == ["call 5", "ret "]
+
+
 def test_match():
     obj = fake_obj(bytes.fromhex("e800000000c3"), [1])
     [(name, code, relocs)] = coff_functions(obj)
@@ -547,6 +553,62 @@ def test_opencode_cli_provider():
     finally:
         providers.shutil.which = old_which
         providers._opencode_run = old_run
+
+
+def test_opencode_api_uses_signed_in_server():
+    """opencode_api posts session -> model -> generate and returns the text."""
+    from roc import providers
+    calls = []
+
+    def fake_post(url, body, headers, timeout, allow_empty=False):
+        calls.append((url, body, allow_empty))
+        if url.endswith("/api/session"):
+            return {"data": {"id": "ses_test"}}, {}
+        if url.endswith("/api/session/ses_test/generate"):
+            return {"data": {"text": "```cpp\nint f(){}\n```"}}, {}
+        return {}, {}
+
+    old_service, old_post = providers._opencode_service, providers._post
+    try:
+        providers._opencode_service = lambda: ("http://127.0.0.1:4096", "pw")
+        providers._post = fake_post
+        out = providers._opencode_api("opencode-go/cat-jam-free",
+                                      [{"role": "user", "content": "write cpp"}],
+                                      "write cpp", {"timeout": 30})
+        assert "int f(){}" in out.text and out.provider == "opencode"
+        assert calls[0][0].endswith("/api/session")
+        assert calls[1][0].endswith("/api/session/ses_test/model") and calls[1][1]["model"] == {
+            "providerID": "opencode-go", "id": "cat-jam-free"}
+        assert calls[2][0].endswith("/api/session/ses_test/generate")
+        assert calls[2][1]["prompt"] == "write cpp"
+    finally:
+        providers._opencode_service, providers._post = old_service, old_post
+
+
+def test_opencode_cli_prefers_api_when_asked_and_falls_back():
+    """The worker's opencode_api option uses HTTP; a server failure falls back to CLI."""
+    from roc import providers
+    old_service, old_run = providers._opencode_service, providers._opencode_run
+    old_which, old_post = providers.shutil.which, providers._post
+    runs = []
+    try:
+        providers.shutil.which = lambda name: "C:\\npm\\opencode.cmd" if name == "opencode" else None
+        providers._opencode_run = lambda argv, prompt, timeout: (
+            runs.append(argv) or (0, json.dumps({"type": "text", "part": {"text": "```cpp\ncli\n```"}}) + "\n"))
+        providers._opencode_service = lambda: None
+        out = providers.generate("opencode:opencode-go/cat-jam-free", "write cpp",
+                                 options={"allow_cloud": True, "opencode_api": True, "timeout": 30})
+        assert "cli" in out.text and runs  # no server -> CLI fallback
+        providers._opencode_service = lambda: ("http://127.0.0.1:4096", "pw")
+        providers._post = lambda *args, **kwargs: (
+            ({"data": {"id": "ses_x"}}, {}) if args[0].endswith("/api/session")
+            else ({"data": {"text": "```cpp\napi\n```"}}, {}) if args[0].endswith("/generate") else ({}, {}))
+        out = providers.generate("opencode:opencode-go/cat-jam-free", "write cpp",
+                                 options={"allow_cloud": True, "opencode_api": True, "timeout": 30})
+        assert "api" in out.text
+    finally:
+        providers._opencode_service, providers._opencode_run = old_service, old_run
+        providers.shutil.which, providers._post = old_which, old_post
 
 
 def test_opencode_run_kills_the_tree_on_timeout():
@@ -1504,6 +1566,53 @@ def test_xcopy_batching_isolates_collisions():
     assert matchers.needs_global_scope("// roc-lang: c\nvoid f(){}\n")
 
 
+def test_xcopy_keeps_compact_wrappers_and_directives_before_blank(tmp_path):
+    folder = tmp_path / "src/A"
+    folder.mkdir(parents=True)
+    wrapper = "// roc-cl: 21022\n// roc-flags: /O2\n// roc-lib: vendor native.cpp"
+    pinned = "// roc-cl: 50727\n\nvoid f() {}"
+    (folder / "00401000.cpp").write_text(wrapper)
+    (folder / "00401010.cpp").write_text(pinned)
+    (folder / "00401020.cpp").write_text("// disassembly\n\nvoid g() {}")
+    with patch.object(matchers, "ROOT", tmp_path), patch.object(matchers.clients, "load", return_value={"A": {}}):
+        sources = matchers.matched_sources(log=lambda _: None)
+    assert {body for body, origins in sources} == {wrapper, pinned, "void g() {}"}
+
+
+def test_xcopy_compiles_native_wrappers_separately_with_own_settings():
+    native = "// roc-cl: 50727\n// roc-flags: /O1\n// roc-lib: vendor native.cpp"
+    plain = "void NAME() {}"
+    with patch.object(matchers.match, "compile_text", return_value=b"obj") as compile_text:
+        objects = matchers.compile_batch("A", [(plain, []), (native, [])],
+                                         {"A": {"compiler_build": 21022}}, lambda _: None)
+    assert len(objects) == 2
+    assert compile_text.call_args_list[0].args == ("A", native)
+    assert compile_text.call_args_list[0].kwargs == {}  # The wrapper owns its compiler.
+    assert "namespace" not in compile_text.call_args_list[0].args[1]
+    assert "namespace" in compile_text.call_args_list[1].args[1]
+
+
+def test_xcopy_native_symbols_require_referenced_data_match():
+    class Target:
+        def __init__(self):
+            self.index = {6: ["00401000"]}
+
+        def same(self, addr, code, relocs):
+            return code
+
+    wrapper = "// roc-lib: vendor native.cpp"
+    for bad in ([], ["literal differs"]):
+        target = Target()
+        with patch.object(matchers.match, "coff_functions", return_value=[("native", b"native", [])]), \
+             patch.object(matchers.match, "coff_data_refs", return_value=[]) as refs, \
+             patch.object(matchers.match, "data_check", return_value=([(1, 4)], bad)), \
+             patch.object(matchers.match, "target", return_value=(b"native", [], {})):
+            result = matchers._match_batch(target, b"obj", {"ROCX000000": wrapper}, "A")
+        assert bool(result) == (not bad)
+        assert target.index[6] == (["00401000"] if bad else [])
+        refs.assert_called_once_with(b"obj", "native")
+
+
 def test_auto_build_unit_isolates_redefinitions():
     # Two candidates using the same placeholder global with different types must not
     # kill the chunk: that silently lost whole 400-candidate batches.
@@ -1548,6 +1657,129 @@ def test_refsource_hint_without_tree(tmp_path, monkeypatch):
     monkeypatch.setattr(refsource, "CACHE", tmp_path / "cache.json")
     assert refsource.hint("RBX::Network::Replicator") is None
     assert refsource.prompt_hints("seg_00400000") == []
+
+
+def test_refsource_literal_ranking_ignores_wrong_unit_label(tmp_path, monkeypatch):
+    from roc import refsource
+    rbxgs = tmp_path / "rbxgs"
+    old = tmp_path / "old"
+    rbxgs.mkdir()
+    old.mkdir()
+    (rbxgs / "Player.cpp").write_text('void load(){ use("unique target text"); use("second clue"); }')
+    (old / "Wrong.cpp").write_text('void wrong(){ use("unique target text"); }')
+    monkeypatch.setattr(refsource, "reference_trees", lambda: {"rbxgs": rbxgs, "old": old})
+    monkeypatch.setattr(refsource, "LITERAL_CACHE", tmp_path / "literals.json")
+    refsource._LITERAL_INDEX = None
+    refsource._LITERAL_KEY = None
+    refsource._LITERAL_SEARCHED = set()
+    rows = refsource.literal_sources(["unique target text", "second clue"])
+    assert rows[0]["path"] == "rbxgs:Player.cpp"
+    assert rows[0]["matches"] == ["second clue", "unique target text"]
+
+
+def test_refsource_compile_candidate_accepts_full_check_result(tmp_path, monkeypatch):
+    from roc import clients, libs, match, refsource
+    folder = tmp_path / "net"
+    folder.mkdir()
+    source = folder / "Player.cpp"
+    source.write_text("void loadCharacter() {}")
+    monkeypatch.setattr(clients, "load", lambda: {"2008-06": {"compiler_build": 21022, "flags": "/O2"}})
+    monkeypatch.setattr(refsource, "function_facts", lambda *_: {"strings": ["unique target text"]})
+    monkeypatch.setattr(refsource, "literal_sources", lambda *_args, **_kwargs:
+                        [{"path": "rbxgs-net:Player.cpp", "matches": ["unique target text"]}])
+    monkeypatch.setattr(refsource, "_reference_path", lambda _ref: source)
+    monkeypatch.setattr(refsource, "sources_for", lambda *_args, **_kwargs: [])
+    monkeypatch.setattr(libs, "LIBS", tmp_path / "libs")
+    monkeypatch.setattr(libs, "RECIPES", {
+        "rbxgs-net-dll": {"src": "../net"}, "rbxgs-net": {"src": "../net"}})
+    monkeypatch.setattr(libs, "add_unit", lambda *_args, **_kwargs: "unit.cpp")
+    monkeypatch.setattr(libs, "source_for", lambda name, _path, _lang, build, _flags: "%s-%s" % (name, build))
+    monkeypatch.setattr(match, "check_text", lambda *_args, **_kwargs: (43, "symbol", "diff", []))
+    result = refsource.compile_candidates("2008-06", "004957a0", "wrong label", limit=2)
+    assert result[0] == 43
+    assert result[2].startswith("rbxgs-net:Player.cpp#")
+
+
+def test_refsource_compile_retries_float_literal_source_with_fp_fast(tmp_path, monkeypatch):
+    from roc import clients, libs, match, refsource
+    folder = tmp_path / "app"
+    folder.mkdir()
+    source = folder / "Part.cpp"
+    source.write_text('void render(){ use("unique render clue"); }')
+    monkeypatch.setattr(clients, "load", lambda: {"2008-06": {"compiler_build": 21022, "flags": "/O2"}})
+    monkeypatch.setattr(refsource, "function_facts", lambda *_: {
+        "strings": ["unique render clue"], "shape": " fld dword ptr [eax] ; fstp dword ptr [esp]"})
+    monkeypatch.setattr(refsource, "literal_sources", lambda *_args, **_kwargs:
+                        [{"path": "rbxgs-app:Part.cpp", "matches": ["unique render clue"]}])
+    monkeypatch.setattr(refsource, "_reference_path", lambda _ref: source)
+    monkeypatch.setattr(refsource, "sources_for", lambda *_args, **_kwargs: [])
+    monkeypatch.setattr(libs, "LIBS", tmp_path / "libs")
+    monkeypatch.setattr(libs, "RECIPES", {"rbxgs-dll": {"src": "../app"}})
+    monkeypatch.setattr(libs, "add_unit", lambda *_args, **_kwargs: "unit.cpp")
+    monkeypatch.setattr(libs, "source_for", lambda *_args:
+                        "// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD\nvoid render(){}")
+    seen = []
+    def check(_client, _addr, text, _flags):
+        seen.append(text)
+        return (46 if "/fp:fast" in text else 27, "symbol", "diff", [])
+    monkeypatch.setattr(match, "check_text", check)
+    result = refsource.compile_candidates("2008-06", "0059e4d0", "wrong label", limit=2)
+    assert result[0] == 46 and result[2].endswith("#fp-fast")
+    assert any("/fp:fast" in text for text in seen)
+
+
+def test_refsource_cross_client_exact_source_is_first_compile_base(tmp_path, monkeypatch):
+    from roc import clients, match, refsource
+    path = tmp_path / "src" / "2011-06" / "00600000.cpp"
+    path.parent.mkdir(parents=True)
+    path.write_text("// roc-cl: 21022\nint recovered(){return 1;}\n")
+    refsource.cross_client_sources.cache_clear()
+    refsource._client_size_index.cache_clear()
+    refsource._same_size_rows.cache_clear()
+    monkeypatch.setattr(refsource, "ROOT", tmp_path)
+    monkeypatch.setattr(refsource, "CROSS_CACHE", tmp_path / "cross.json")
+    monkeypatch.setattr(refsource, "function_facts", lambda *_: {"size": 12, "strings": []})
+    monkeypatch.setattr(clients, "load", lambda: {
+        "2008-06": {"compiler_build": 21022, "flags": "/O2"},
+        "2011-06": {"compiler_build": 21022}})
+    monkeypatch.setattr(match, "_functions", lambda client: {
+        "00600000": {"size": 12, "unit": "Recovered"}} if client == "2011-06" else {})
+    monkeypatch.setattr(match, "target", lambda *_: (b"same bytes", [1], None))
+    monkeypatch.setattr(refsource, "literal_sources", lambda *_args, **_kwargs: [])
+    monkeypatch.setattr(refsource, "sources_for", lambda *_args, **_kwargs: [])
+    monkeypatch.setattr(match, "check_text", lambda *_args, **_kwargs: (100, "recovered", "", []))
+    rows = refsource.cross_client_sources("2008-06", "00400000")
+    assert rows[0]["addr"] == "00600000"
+    result = refsource.compile_candidates("2008-06", "00400000", "wrong", limit=2)
+    assert result[0] == 100 and result[2] == "cross:2011-06:00600000"
+    refsource.cross_client_sources.cache_clear()
+    refsource._client_size_index.cache_clear()
+    refsource._same_size_rows.cache_clear()
+
+
+def test_refsource_shape_source_retries_fp_fast(tmp_path, monkeypatch):
+    from roc import clients, match, refsource
+    path = tmp_path / "src" / "2009-06" / "00600000.cpp"
+    path.parent.mkdir(parents=True)
+    path.write_text("// roc-cl: 21022\n// roc-flags: /O2\nfloat recovered(){return 1;}\n")
+    refsource.shape_client_sources.cache_clear()
+    monkeypatch.setattr(refsource, "ROOT", tmp_path)
+    monkeypatch.setattr(refsource, "cross_client_sources", lambda *_args, **_kwargs: [])
+    monkeypatch.setattr(refsource, "function_facts", lambda *_: {
+        "shape": " fld dword ptr [eax] ; fstp dword ptr [esp]", "strings": []})
+    monkeypatch.setattr(clients, "load", lambda: {
+        "2008-06": {"compiler_build": 21022, "flags": "/O2"},
+        "2009-06": {"compiler_build": 21022}})
+    monkeypatch.setattr(match, "_functions", lambda client: {
+        "00600000": {"shape": " fld dword ptr [eax] ; fstp dword ptr [esp]",
+                     "unit": "Recovered", "score": 100}} if client == "2009-06" else {})
+    monkeypatch.setattr(refsource, "literal_sources", lambda *_args, **_kwargs: [])
+    monkeypatch.setattr(refsource, "sources_for", lambda *_args, **_kwargs: [])
+    monkeypatch.setattr(match, "check_text", lambda _client, _addr, text, _flags:
+                        (100 if "/fp:fast" in text else 40, "recovered", "", []))
+    result = refsource.compile_candidates("2008-06", "00400000", "wrong", limit=1)
+    assert result[0] == 100 and result[2] == "shape:2009-06:00600000#fp-fast"
+    refsource.shape_client_sources.cache_clear()
 
 
 def test_exact_match_separate_from_fuzzy():
@@ -2155,8 +2387,10 @@ def test_repair_safety_guards():
         "struct S {\n    int f();\n};\nint S::f()\n{\n    return this->x;\n}\n") is None
 
 
-def test_auto_import_skips_dropped_functions():
+def test_auto_import_skips_dropped_functions(monkeypatch):
+    from roc import match
     from roc.server import Store, import_auto_matches
+    monkeypatch.setattr(match, "check_text", lambda *args: (100, "f", "", []))
     st = Store(":memory:", lease_seconds=1)
     st.db.execute("INSERT INTO funcs(client,addr,size,unit) VALUES('C','00401000',6,'A')")
     st.db.commit()
@@ -2164,11 +2398,50 @@ def test_auto_import_skips_dropped_functions():
     assert import_auto_matches(st, "C", {"00401000": "void f(){}\n", "00401040": "void g(){}\n"},
                                log=lambda *a: None) == (1, 1)
     assert st.scores() == {"C": {"00401000": 100}}
+    assert st.db.execute("SELECT verified FROM mining_events").fetchone()[0] == 1
     try:
         st.submit("C", "00401040", "alice", 100, "x")
         raise AssertionError("unknown function accepted")
     except ValueError:
         pass
+
+
+def test_auto_import_rejects_stale_or_uncompilable_source(monkeypatch):
+    from roc import match
+    from roc.server import Store, import_auto_matches
+    for actual in (97, 99, None):
+        st = Store(":memory:", lease_seconds=1)
+        st.db.execute("INSERT INTO funcs(client,addr,size,unit) VALUES('C','00401000',6,'A')")
+        st.db.commit()
+        def check(*args):
+            if actual is None:
+                raise match.CompileError("stale header")
+            return actual, "f", "", []
+        monkeypatch.setattr(match, "check_text", check)
+        assert import_auto_matches(st, "C", {"00401000": "source"}, log=lambda *a: None) == (0, 1)
+        assert st.best("C", "00401000")["score"] == 0
+        assert st.db.execute("SELECT COUNT(*) FROM mining_events").fetchone()[0] == 0
+
+
+def test_startup_cached_library_scores_are_reverified(tmp_path, monkeypatch):
+    from roc import server, matchers, match
+    st = server.Store(":memory:", lease_seconds=1)
+    for addr in ("00401000", "00401040"):
+        st.db.execute("INSERT INTO funcs(client,addr,size,unit) VALUES('C',?,6,'A')", (addr,))
+    st.db.commit()
+    (tmp_path / "work/C").mkdir(parents=True)
+    (tmp_path / "src/C").mkdir(parents=True)
+    (tmp_path / "work/C/scores.json").write_text(json.dumps({"00401000": 100, "00401040": 100}))
+    for addr in ("00401000", "00401040"):
+        (tmp_path / ("src/C/" + addr + ".cpp")).write_text("// roc-lib: vendor stale.cpp\n")
+    monkeypatch.setattr(server, "ROOT", tmp_path)
+    monkeypatch.setattr(server.clients, "load", lambda: {"C": {}})
+    monkeypatch.setattr(matchers, "solve", lambda *args, **kwargs: {})
+    monkeypatch.setattr(match, "check_text", lambda client, addr, source: (97 if addr == "00401000" else 100, "f", "", []))
+    server.import_startup_matches(st, {"C"}, log=lambda *a: None)
+    assert st.best("C", "00401000")["score"] == 0
+    assert st.scores() == {"C": {"00401040": 100}}
+    assert st.db.execute("SELECT verified FROM mining_events").fetchone()[0] == 1
 
 
 def test_truncated_generation_history_reset():

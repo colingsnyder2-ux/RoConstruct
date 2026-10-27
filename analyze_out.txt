@@ -1,0 +1,1 @@
+2008-06: 41728 functions (22303 real code, 19425 skipped: compiler stubs or bad splits)

@@ -1,2 +1,4 @@
 # Append-only JSON-lines logs: keep both sides' lines on merge instead of conflicting.
 research/log.jsonl merge=union
+# Integration baselines hash the generator bytes across contributor checkouts.
+rebuild/2008-06/patches/make_rbxgs_client.py text eol=lf

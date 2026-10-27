@@ -32,6 +32,43 @@ def test_exact_matches_replace_stale_partial_files(tmp_path, monkeypatch):
     assert not (src / "00402010.cpp").exists()  # retired by a boundary fix
 
 
+def test_remote_score_hint_cannot_credit_a_kept_local_partial_on_startup(tmp_path, monkeypatch):
+    from roc import server
+    for module in (match, worker, server):
+        monkeypatch.setattr(module, "ROOT", tmp_path)
+    work = tmp_path / "work/c"
+    source_dir = tmp_path / "src/c"
+    work.mkdir(parents=True)
+    source_dir.mkdir(parents=True)
+    (work / "functions.jsonl").write_text('{"addr":"00401000","size":6,"kind":"code"}\n')
+    local = "// roc-lib: vendor local.cpp\n"
+    path = source_dir / "00401000.cpp"
+    path.write_text(local)
+    class Api:
+        def __init__(self, *args):
+            pass
+        def call(self, *args, **kwargs):
+            return [dict(addr="00401000", score=100, user="remote", source="// roc-lib: vendor exact.cpp\n")]
+    monkeypatch.setattr(worker, "Api", Api)
+    monkeypatch.setattr(match, "function_starts", lambda client: {"00401000"})
+    worker.pull_files("server", "c", log=lambda *args: None)
+    assert path.read_text() == local  # Keep the user's local attempt.
+    assert json.loads((work / "scores.json").read_text())["00401000"] == 100
+    store = server.Store(":memory:", lease_seconds=1)
+    store.db.execute("INSERT INTO funcs(client,addr,size,unit) VALUES('c','00401000',6,'A')")
+    store.db.commit()
+    monkeypatch.setattr(server.clients, "load", lambda: {"c": {}})
+    monkeypatch.setattr(matchers, "solve", lambda *args, **kwargs: {})
+    checked = []
+    def check(client, addr, text):
+        checked.append(text)
+        return 97, "f", "", []
+    monkeypatch.setattr(match, "check_text", check)
+    server.import_startup_matches(store, {"c"}, log=lambda *args: None)
+    assert checked == [local]
+    assert store.best("c", "00401000")["score"] == 0
+
+
 def test_lint_flags_bad_files_and_overlaps(tmp_path, monkeypatch):
     monkeypatch.setattr(analyze, "ROOT", tmp_path)
     src = tmp_path / "src" / "c"

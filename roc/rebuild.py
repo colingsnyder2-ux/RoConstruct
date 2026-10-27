@@ -5,6 +5,8 @@ Outputs go to rebuild/<client>/ (manifests/ and out/ stay untracked until
 rebuild/<client>/POLICY.md allows publishing them).
 """
 import json
+import hashlib
+import functools
 import os
 import re
 import subprocess
@@ -55,15 +57,22 @@ def _ci(folder, name):
     return next((p for p in folder.iterdir() if p.name.lower() == low), None)
 
 
+@functools.lru_cache(maxsize=8)
+def sdk_roots(tools):
+    """Discover installed SDKs once per tools tree, not once per compile batch."""
+    return tuple(sorted(tools.glob("*/**/WinSDK")))
+
+
 def toolchain(build=BUILD):
     """Paths for one period toolchain; None where a piece is missing. Never substitutes a newer build."""
     cl = setup.compilers().get(build)
     cl = Path(cl) if cl else None
     vc = cl.parents[1] if cl else None
     ide = cl.parents[2] / "Common7" / "IDE" if cl else None
-    sdk_roots = [Path(p) for p in os.environ.get("ROC_WINSDK", "").split(os.pathsep) if p]
-    sdk_roots += sorted(TOOLS.glob("*/**/WinSDK"))
-    sdk = next((r for r in sdk_roots if _ci(r / "Lib", "kernel32.lib")), None)
+    candidates = [Path(p) for p in os.environ.get("ROC_WINSDK", "").split(os.pathsep) if p]
+    sdk = next((r for r in candidates if _ci(r / "Lib", "kernel32.lib")), None)
+    if sdk is None:
+        sdk = next((r for r in sdk_roots(TOOLS) if _ci(r / "Lib", "kernel32.lib")), None)
     atlmfc = _first(os.environ.get("ROC_ATLMFC"), TOOLS / "libs" / "mfc-9.0-rtm" / "atlmfc")
     return {
         "build": build,
@@ -353,6 +362,7 @@ _INDEX = {}
 def size_index(client):
     """{size: [(addr, code, relocs)]} over every code function of the client (built once per process)."""
     if client not in _INDEX:
+        _paired_addresses.cache_clear()
         idx = {}
         for addr, f in match._functions(client).items():
             if f.get("kind", "code") == "code":
@@ -362,10 +372,17 @@ def size_index(client):
     return _INDEX[client]
 
 
+@functools.lru_cache(maxsize=16384)
+def _paired_addresses(client, body, relocs):
+    """Template bodies recur across TUs; cache immutable matches, including twins."""
+    return tuple(a for a, code, trel in _INDEX[client].get(len(body), ())
+                 if match.exact_match(code, trel, body, relocs))
+
+
 def pair(client, funcs):
     """[(symbol, size, [2008 addrs whose masked bytes equal it])] against the whole binary."""
-    idx = size_index(client)
-    return [(name, len(body), [a for a, code, trel in idx.get(len(body), ()) if match.exact_match(code, trel, body, relocs)])
+    size_index(client)
+    return [(name, len(body), list(_paired_addresses(client, body, tuple(relocs))))
             for name, body, relocs in funcs]
 
 
@@ -629,27 +646,67 @@ def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- 
     tc = toolchain(cl)
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
-    results = {}
     includes, compiled = _overlaid(includes, sources, overlay)
-    # incremental: an object is current when it is newer than its source, the appended header and every
-    # file it included last time (/showIncludes, saved next to it); a missing include forces a rebuild
-    for orig, src in zip(sources, compiled):
+    @functools.lru_cache(maxsize=None)
+    def cache_path(path):
+        path = Path(os.path.abspath(path))
+        return path.relative_to(ROOT).as_posix() if path.is_relative_to(ROOT) else str(path)
+
+    @functools.lru_cache(maxsize=None)
+    def content(path):
+        with Path(path).open("rb") as stream:
+            return hashlib.file_digest(stream, "sha256").hexdigest()
+
+    @functools.lru_cache(maxsize=None)
+    def inventory(folder):
+        # New files can shadow previously resolved includes without changing them.
+        names = []
+        for root, dirs, files in os.walk(folder):
+            dirs[:] = [d for d in dirs if d != "_wrap"]
+            prefix = os.path.relpath(root, folder)
+            names.extend(os.path.join(prefix, name) for name in files
+                         if not name.endswith((".obj", ".deps", ".compile.json")))
+        return hashlib.sha256("\0".join(sorted(names)).encode()).hexdigest()
+
+    compiler_files = []
+    if tc.get("cl"):
+        compiler_files = sorted(p for p in Path(tc["cl"]).parent.iterdir()
+                                if p.suffix.lower() in (".exe", ".dll"))
+    if tc.get("mspdb"):
+        compiler_files.append(Path(tc["mspdb"]))
+    config = [client, cl, flags, defines, cache_path(append) if append else None,
+              {k: cache_path(v) if isinstance(v, Path) else v for k, v in tc.items()},
+              [(cache_path(p), content(p)) for p in compiler_files],
+              [os.environ.get(k, "") for k in ("CL", "_CL_")]]
+
+    def signature(orig, src, deps):
+        files = sorted(set([Path(orig), src] + ([Path(append)] if append else []) + list(map(Path, deps))))
+        dirs = [src.parent, Path(orig).parent] + list(includes) + [
+            tc[k] for k in ("vc_include", "atlmfc_include", "sdk_include") if tc.get(k)]
+        dirs += sorted({p.parent for p in files} - set(map(Path, dirs)))
+        payload = [config, [(cache_path(p), content(p)) for p in files],
+                   [(cache_path(p), inventory(p)) for p in dirs]]
+        return hashlib.sha256(json.dumps(payload, sort_keys=True).encode()).hexdigest()
+
+    def compile_one(pair):
+        orig, src = pair
         src = Path(src)
         obj = out / (src.stem + ".obj")
         deps_file = obj.with_suffix(".deps")
-        if obj.exists() and deps_file.exists():
-            deps = [src, Path(orig)] + ([Path(append)] if append else []) + [Path(d) for d in json.loads(deps_file.read_text())]
-            built = obj.stat().st_mtime
+        cache_file = obj.with_suffix(".compile.json")
+        if obj.exists() and deps_file.exists() and cache_file.exists() and src.suffix.lower() != ".asm":
+            deps = json.loads(deps_file.read_text())
             # a header that gained an overlay twin since this object was built is shadowed now: rebuild
-            shadowed = overlay and any(_twin(d, overlay).exists() for d in deps[2:])
-            if not shadowed and all(d.exists() and d.stat().st_mtime < built for d in deps):
-                results[str(orig)] = (True, "up to date")
-                continue
+            shadowed = overlay and any(_twin(d, overlay).exists() for d in deps)
+            if not shadowed and all(Path(d).exists() for d in deps):
+                saved = json.loads(cache_file.read_text())
+                if saved == {"inputs": signature(orig, src, deps), "object": content(obj)}:
+                    return str(orig), (True, "content cache hit")
         obj.unlink(missing_ok=True)  # a failed compile must not leave a stale object
+        cache_file.unlink(missing_ok=True)
         if src.suffix.lower() == ".asm":
             code, text = run(tc, _ml(), ["/nologo", "/c", "/Fo" + str(obj), str(src)], out)
-            results[str(orig)] = (code == 0, text[-400:])
-            continue
+            return str(orig), (code == 0, text[-400:])
         unit = src
         if append:
             unit = out / "_wrap" / (src.stem + ".cpp")
@@ -665,8 +722,16 @@ def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- 
         text = "\n".join(l for l in text.splitlines() if not l.startswith("Note: including file:"))
         if code == 0:
             deps_file.write_text(json.dumps(sorted(set(included))))
-        results[str(orig)] = (code == 0, "\n".join(l for l in text.splitlines() if " error " in l)[:2000] or text[-400:])
-    return results
+            if obj.exists():
+                cache_file.write_text(json.dumps({"inputs": signature(orig, src, included),
+                                                  "object": hashlib.sha256(obj.read_bytes()).hexdigest()}))
+        return str(orig), (code == 0, "\n".join(l for l in text.splitlines() if " error " in l)[:2000] or text[-400:])
+
+    import concurrent.futures
+    # Objects/dependency files use source stems; colliding stems must stay serial.
+    jobs = 4 if len({Path(s).stem.casefold() for s in compiled}) == len(compiled) else 1
+    with concurrent.futures.ThreadPoolExecutor(max_workers=jobs) as pool:
+        return dict(pool.map(compile_one, zip(sources, compiled)))
 
 
 # ---------- modules: reproducible layered builds ----------

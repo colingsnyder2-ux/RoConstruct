@@ -370,6 +370,9 @@ repeating config, pull, fetch and analysis. Research execution uses recipe names
 `roc research run NAME --background` starts a resumable run with a saved log.
 `roc research status NAME` reads its latest state. Do independent work instead of
 polling loops; rerun the same command to resume from completed journal entries.
+For grid recipes, `--jobs 4` checks up to four targets concurrently, one compiler
+gate per target at a time. Exact hits stop that target; receipts and journals
+remain serialized. Completed gates resume from the existing recipe journal.
 Concurrent launches of the same recipe/client reuse the active background job;
 foreground and API execution also take a nonblocking output-folder lock.
 Research accepts `--client 2008-06`, another registered client, or `--client all`.

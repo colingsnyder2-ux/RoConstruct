@@ -6,10 +6,12 @@ pointer: nothing is constructed). A mismatch locates a layout difference to a ba
 Read-only; writes rebuild/2008-06/out/base-check.json.
 usage: python rebuild/2008-06/base_check.py"""
 import json
+from concurrent.futures import ThreadPoolExecutor
 import re
 import struct
 import subprocess
 import sys
+import uuid
 from pathlib import Path
 
 import pefile
@@ -100,14 +102,20 @@ def main():
     rows, errors = [], {}
     tmp = OUT / "base-check"
     tmp.mkdir(parents=True, exist_ok=True)
-    for header, items in sorted(by_header.items()):
-        got, error = probe(header, items, tmp, tc)
-        if got is None:
-            errors[header] = error
-            continue
-        for i, (cls, b, mdisp) in enumerate(items):
-            if i in got:
-                rows.append({"class": cls, "base": b, "2008": mdisp, "rbxgs": got[i], "header": header})
+    def check(item):
+        header, items = item
+        folder = tmp / uuid.uuid4().hex
+        folder.mkdir()
+        return probe(header, items, folder, tc)
+    headers = sorted(by_header.items())
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        for (header, items), (got, error) in zip(headers, pool.map(check, headers)):
+            if got is None:
+                errors[header] = error
+                continue
+            for i, (cls, b, mdisp) in enumerate(items):
+                if i in got:
+                    rows.append({"class": cls, "base": b, "2008": mdisp, "rbxgs": got[i], "header": header})
     bad = [r for r in rows if r["2008"] != r["rbxgs"]]
     (OUT / "base-check.json").write_text(json.dumps({"mismatch": bad, "checked": len(rows), "probe_errors": errors}, indent=1))
     print("%d base offsets checked, %d differ, %d headers did not probe" % (len(rows), len(bad), len(errors)))

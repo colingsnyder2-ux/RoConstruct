@@ -211,6 +211,14 @@ def files_of(r, folder):
         return sorted(str(p.relative_to(folder)) for pat in r["files"].split() for p in folder.glob(pat))
     return r["files"]
 
+
+def matching_files(recipe, folder):
+    """Include portable recovered units even when the vendor glob omits their directory."""
+    files = {file.replace("\\", "/") for file in files_of(recipe, folder)}
+    files.update(file for file in generated_units().get(recipe["src"], {})
+                 if file.endswith(".cpp") and (folder / file).is_file())
+    return sorted(files)
+
 def archive_members(path):
     """(member name, COFF bytes) from a Microsoft .lib archive."""
     data = path.read_bytes()
@@ -290,6 +298,13 @@ def template_units():
             if cn == "set" and en.startswith("pod"):
                 continue
             out["%s_%s.cpp" % (cn, en)] = "%s\n%s\n" % (et, ct)
+    # Explicit map instantiation does not emit inherited _Tree::erase. The call
+    # anchors that authentic body; 2008's large checked erasers use the Od gate.
+    out["tree_erase_map_int.cpp"] = (
+        "#define _DLL\n#include <map>\ntemplate class std::map<int, int>;\n"
+        "std::map<int, int>::iterator eraseOne(std::map<int, int>& tree,\n"
+        "                                    std::map<int, int>::iterator position) {\n"
+        "    return tree.erase(position);\n}\n")
     sigs = {"v": "void ()", "i": "void (int)", "p": "void (T*)", "sp": "void (boost::shared_ptr<T>)",
             "b": "void (bool)", "f": "void (float)", "pp": "void (T*, T*)", "s": "void (const std::string&)"}
     for sn, sig in sigs.items():
@@ -792,6 +807,13 @@ for _name, _r in list(RECIPES.items()):
             and "_DLL" not in _r.get("defines", "").split():
         RECIPES[_name + "-dll"] = dict(_r, defines=(_r.get("defines", "") + " _DLL").strip(), grid=_grid)
 
+# ContentProvider includes ATL utilities; use the 2008 RTM headers already pinned
+# for this client's static ATL/MFC runtime instead of changing every RBXGS unit.
+RECIPES["rbxgs-atl90-dll"] = dict(RECIPES["rbxgs-dll"], builds=[21022],
+    files=["util/ContentProvider.cpp"],
+    include=[*_RBXGS_INC, "mfc-9.0-rtm/atlmfc/include"])
+
+
 # 2008-06 read_long_string (00664870) has no '[' nesting case and Roblox.exe lacks the
 # "nesting of [[...]] is deprecated" string: built without LUA_COMPAT_LSTR (Roblox's
 # 2016 luaconf.h/llex.c dropped it too).
@@ -1229,7 +1251,8 @@ def unit(name, path, build):
 # unchanged; otherwise an edited vendor header would replay stale output (or a stale error).
 _UNIT_KEYS = ("src", "include", "preinclude", "defines", "patches", "strip_header_asm")
 
-_UNITS = {}  # cache path -> (stamp, body): avoids re-reading big .i files in one process
+_UNITS = {}  # Up to 32 recent (dependency stamp, expanded body) entries, oldest first.
+_UNITS_LOCK = threading.Lock()
 
 def _recipe_identity(r, noinline):
     settings = {k: r.get(k) for k in _UNIT_KEYS}
@@ -1256,7 +1279,8 @@ def _write_deps(cache, identity, deps):
         except OSError:
             pass
     cache.with_suffix(cache.suffix + ".deps").write_text(json.dumps({"recipe": identity, "files": files}))
-    _UNITS.pop(str(cache), None)
+    with _UNITS_LOCK:
+        _UNITS.pop(str(cache), None)
 
 def _cached_unit(cache, identity):
     """Cached body when the recipe identity and all dependency contents still match, else None.
@@ -1282,14 +1306,21 @@ def _cached_unit(cache, identity):
     if refreshed:
         cache.with_suffix(cache.suffix + ".deps").write_text(json.dumps(record))
     stamp = tuple(stamp)
-    hit = _UNITS.get(str(cache))
-    if hit and hit[0] == stamp:
-        return hit[1]
+    with _UNITS_LOCK:
+        hit = _UNITS.get(str(cache))
+        if hit and hit[0] == stamp:
+            _UNITS.pop(str(cache))
+            _UNITS[str(cache)] = hit
+            return hit[1]
     try:
         body = cache.read_text(errors="replace")
     except OSError:
         return None
-    _UNITS[str(cache)] = (stamp, body)
+    with _UNITS_LOCK:
+        _UNITS.pop(str(cache), None)
+        _UNITS[str(cache)] = (stamp, body)
+        while len(_UNITS) > 32:
+            _UNITS.pop(next(iter(_UNITS)))
     return body
 
 def _file_literal(recipe, src, path, body):
@@ -1315,6 +1346,32 @@ def source_for(name, path, lang=None, build=None, flags=None):
     return ("// roc-lang: %s\n// roc-cl: %d\n// roc-flags: %s\n// roc-%s: %s %s\n"
             % (lang, build, flags, kind, name, path.replace("\\", "/")))
 
+def compile_profiles(client, name, file, recipe=None):
+    """Add receipt-backed client/source gates without changing vendor defaults."""
+    recipe = recipe if recipe is not None else RECIPES[name]
+    flags = recipe.get("grid", GRID)
+    if (client == "2008-06" and name == "rbxgs-dll"
+            and file in ("roc_handles3d_410275e979a30584.cpp",
+                         "roc_chatoutput_native_command_d8cd282c24104329.cpp")):
+        return list(dict.fromkeys(["/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast", *flags]))
+    if (client == "2008-06" and name.startswith("templates-boost-")
+            and file == "tree_erase_map_int.cpp"):
+        return list(dict.fromkeys(["/Od /Ob0 /GS /EHsc /MD", *flags]))
+    if (client == "2008-06" and name == "rbxgs-g3d-dll"
+            and file.replace("\\", "/") in ("GLG3Dcpp/Sky.cpp", "GLG3Dcpp/Draw.cpp", "GLG3Dcpp/ToneMap.cpp")):
+        return list(dict.fromkeys(["/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast", *flags]))
+    if client != "2008-06" or name not in ("ogre-1.4.5", "ogre-1.4.5-dll"):
+        return flags
+    with (_case_path(LIBS / recipe["src"]) / file).open(encoding="utf-8", errors="replace") as stream:
+        client_import = re.search(r"(?m)^\s*#\s*undef\s+OGRE_NONCLIENT_BUILD\b", stream.read(4096))
+    if not client_import:
+        return flags
+    return list(dict.fromkeys([
+        "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast",
+        "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD",
+        *flags]))
+
+
 def _compile_variants(client, name, f, lang, build, r):
     """One file across a recipe's flag grid; run in parallel with other files.
 
@@ -1322,7 +1379,7 @@ def _compile_variants(client, name, f, lang, build, r):
     remaining flags will not help either.
     """
     out = []
-    for flags in r.get("grid", GRID):
+    for flags in compile_profiles(client, name, f, r):
         src = source_for(name, f, lang, build, flags)
         try:
             obj = match.compile_text(client, src, flags=flags, build=build)
@@ -1361,7 +1418,7 @@ def run(names, targets, log=print):
         t0, hits = time.time(), 0
         for build in [b for b in r.get("builds", BUILDS) if b in have]:
             ready = []
-            for f in files_of(r, folder):
+            for f in matching_files(r, folder):
                 try:
                     unit(name, f, build)  # preprocess once (cached); skip files that don't
                 except match.CompileError:
@@ -1371,7 +1428,8 @@ def run(names, targets, log=print):
             # so run them concurrently and keep matching/saving serial: the
             # fingerprint index is shared state.
             with ThreadPoolExecutor(max_workers=jobs) as pool:
-                futures = {pool.submit(_compile_variants, targets[0], name, f, lang, build, r): f
+                futures = {pool.submit(_compile_variants, "2008-06" if "2008-06" in targets else targets[0],
+                                       name, f, lang, build, r): f
                            for f, lang in ready}
                 for future in as_completed(futures):
                     f = futures[future]

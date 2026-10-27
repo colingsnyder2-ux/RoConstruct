@@ -1,13 +1,14 @@
 """Canonical research operations, driven by named recipes in research/recipes.json.
 
-New experiments add a recipe (data), not a script. Two operations cover the compiler-only
+New experiments add a recipe (data), not a script. Operations cover the compiler-only
 campaigns of 2026-10 (Ogre, Boost, RakNet, XTP/MFC library sweeps):
 
   grid    re-check stored sources of selected targets under builds x flag profiles
   fanout  compile library files / generated units and match every function in the object
           against all unresolved targets (fingerprint fan-out)
+  sweep   compose client-scoped recipes, then shared compiler gates
 
-Both are resumable (journal keyed by source hash), never call a model, and submit only
+All are resumable (journal keyed by source hash), never call a model, and submit only
 exacts the group server re-verifies. Every run appends attempts to the agent memory.
 """
 import hashlib
@@ -17,6 +18,7 @@ import json
 import os
 import re
 import threading
+import time
 from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor, wait, FIRST_COMPLETED
 from datetime import datetime, timezone
@@ -160,7 +162,7 @@ class Campaign:
     def submit_exact(self, stage, client, addr, source, flags=None, obj=None):
         if client not in self.info["clients"]:
             raise ValueError("Client excluded from experiments: " + client)
-        score, symbol, diff, spans = match.check_text(client, addr, source, flags, obj=obj)
+        score, symbol, diff, spans = match.check_text(client, addr, source, flags, obj=obj, minimum=99)
         result = {"client": client, "addr": addr, "score": score,
                   "symbol": symbol, "source_sha256": digest(source)}
         if score != 100:
@@ -195,6 +197,27 @@ class Campaign:
                         source_hash=digest(source), after=100, receipt=response))
         return result
 
+    def submit_partial(self, stage, client, addr, source, score, path):
+        """Submit only a retained improvement; partial receipts never count as exacts."""
+        if client not in self.info["clients"] or not 0 < score < 100:
+            raise ValueError("Invalid partial submission")
+        current = self.current(client, addr)
+        result = dict(client=client, addr=addr, score=score, server_before=current["score"],
+                      source_sha256=digest(source), candidate_path=str(path))
+        if score <= current["score"] or client not in self.info["verify"]:
+            return result
+        result["submission"] = self.api.call("/v1/submit", dict(user=self.user, client=client,
+            addr=addr, score=score, source=source, model="roc " + stage), timeout=120)
+        self.record(stage + "-partials", result)
+        if result["submission"].get("verified") and result["submission"].get("improved"):
+            append(ROOT / "work/agent-memory/attempts.jsonl", dict(kind="trial",
+                date=datetime.now(timezone.utc).isoformat(), client=client, addresses=[addr],
+                hypothesis="source portfolio/compiler-context improvement", source_hash=digest(source),
+                before=current["score"], after=result["submission"]["score"], exacts_gained=0,
+                outcome="server_verified", receipt=result["submission"], evidence=str(path.parent)))
+        return result
+
+
     def snapshot(self):
         out = {}
         for client in self.info["clients"]:
@@ -217,18 +240,31 @@ def variants(source, builds=BUILDS, profiles=PROFILES, append=("",), client=CLIE
     body = strip_settings(source)
     kept = match.directives(source).get("flags") or clients.load()[client].get("flags") or match.DEFAULT_FLAGS
     for build in builds:
+        seen = set()
         for profile in profiles:
-            for suffix in append:
-                flags = ((kept if profile == "keep" else profile) + suffix).strip()
-                yield "// roc-cl: %s\n// roc-flags: %s\n%s" % (build, flags, body), build, flags
+            bases = fingerprint.flag_variants("// roc-lang: cpp\n// roc-cl: %s\n// roc-flags: %s" % (build, kept)) if profile == "context" else [kept if profile == "keep" else profile]
+            for base in bases:
+                for suffix in append:
+                    flags = " ".join([*base.split(), *(flag for flag in suffix.split() if flag not in base.split())])
+                    if flags in seen:
+                        continue
+                    seen.add(flags)
+                    yield "// roc-cl: %s\n// roc-flags: %s\n%s" % (build, flags, body), build, flags
 
 
-def unresolved(client, scores):
+def unresolved(client, scores, targets=None):
     """Fingerprint target holding only code functions that are not exact yet."""
     target = fingerprint.Target(client)
     target.index = defaultdict(list)
+    targets = targets or {}
+    low, high = targets.get("scores", [0, 99])
+    small, large = targets.get("sizes", [0, 1 << 30])
+    addresses = set(targets.get("addresses", []))
+    unit = re.compile(targets["unit"]) if targets.get("unit") else None
     for addr, function in match._functions(client).items():
-        if function.get("kind", "code") == "code" and scores.get(addr, 0) < 100:
+        if (function.get("kind", "code") == "code" and low <= scores.get(addr, 0) <= min(high, 99)
+                and small <= function["size"] <= large and (not addresses or addr in addresses)
+                and (unit is None or unit.search(function.get("unit", "")))):
             target.index[function["size"]].append(addr)
     return target
 
@@ -244,9 +280,10 @@ def select(rows, spec, client=CLIENT):
     chosen = []
     for row in rows:
         function = functions.get(row["addr"])
-        if not function or not row.get("source") or (addresses and row["addr"] not in addresses):
+        if (not function or function.get("kind", "code") != "code" or not row.get("source")
+                or (addresses and row["addr"] not in addresses)):
             continue
-        if not low <= row["score"] <= high or not small <= function["size"] <= large:
+        if not low <= row["score"] <= min(high, 99) or not small <= function["size"] <= large:
             continue
         if unit and not unit.search(function.get("unit") or ""):
             continue
@@ -256,36 +293,264 @@ def select(rows, spec, client=CLIENT):
     return sorted(chosen, key=lambda r: (-r["score"], r["size"], r["addr"]))[:spec.get("limit", 10 ** 6)]
 
 
-def grid(campaign, stage, rows, builds=BUILDS, profiles=PROFILES, append=("",), client=CLIENT, log=print):
-    """Compiler gates per target; stop a target at its first exact. Returns winners."""
-    done = {(r["addr"], r["source_sha256"]) for r in campaign.previous(stage) if r.get("source_sha256")}
-    winners = []
-    for row in rows:
-        for source, build, flags in variants(row["source"], builds, profiles, append, client=client):
-            key = digest(source)
-            if (row["addr"], key) in done:
+def grid_rows(campaign, spec, client, coverage=None, limit=None):
+    """Optional client-scoped starter files are trial inputs, never stored sources."""
+    rows = campaign.api.call("/v1/sources?client=" + client, timeout=300)
+    if coverage is not None:
+        sources = {row["addr"]: row for row in rows}
+        unresolved_rows = [sources.get(addr, {}) for addr, function in match._functions(client).items()
+                           if function.get("kind", "code") == "code" and sources.get(addr, {}).get("score", 0) < 100]
+        coverage.update(unresolved_code=len(unresolved_rows),
+                        without_source=sum(not row.get("source") for row in unresolved_rows))
+    seeds = spec.get("seed_sources", {}).get(client, {})
+    if seeds:
+        functions = match._functions(client)
+        by_addr = {row["addr"]: row for row in rows}
+        for addr, candidate in seeds.items():
+            function = functions.get(addr)
+            if not function or function.get("kind", "code") != "code":
                 continue
-            result = dict(addr=row["addr"], source_sha256=key, build=build, flags=flags, before=row["score"])
+            current = campaign.current(client, addr)
+            if current["score"] == 100:
+                continue
+            path = (ROOT / candidate).resolve()
+            if not path.is_relative_to(ROOT.resolve()) or path.suffix.lower() != ".cpp":
+                raise ValueError("Research seed must be a workspace C++ file: " + candidate)
+            by_addr[addr] = dict(current, addr=addr, source=path.read_text(encoding="utf-8"))
+        rows = list(by_addr.values())
+    if spec.get("portfolio"):
+        from roc import brute
+        rows = brute.portfolios(ROOT, client, rows, match._functions(client), recipes(), {**spec["portfolio"], "target_limit": limit})
+        if coverage is not None:
+            coverage["portfolio_targets"] = len(rows)
+            coverage["source_candidates"] = sum(1 + len(row["candidates"]) for row in rows)
+            coverage["candidates_omitted"] = sum(row["candidates_available"] - 1 - len(row["candidates"]) for row in rows)
+    return select(rows, spec.get("targets", {}), client=client)
+
+
+def compiler_evidence(client, row, source, build, flags, units):
+    """A gate changes identity when source dependencies, target extent or settings change."""
+    directives = match.directives(source)
+    if "lib" in directives:
+        recipe, _, path = directives["lib"].partition(" ")
+        key = (recipe, path.strip(), build)
+        if key not in units:
+            units[key] = digest(libs.unit(recipe, path.strip(), build))
+        body = units[key]
+        # Preserve raw additions outside a metadata-only wrapper.
+        extra = "\n".join(line for line in source.splitlines() if line.strip() and not line.lstrip().startswith("//"))
+        body += digest(extra)
+    else:
+        body = digest(strip_settings(source))
+    code, relocs, _ = match.target(client, row["addr"])
+    return digest(json.dumps([client, clients.load()[client]["sha256"], row["addr"],
+                             code.hex(), relocs, body, build, flags, directives.get("lang")]))
+
+
+def grid(campaign, stage, rows, builds=BUILDS, profiles=PROFILES, suffixes=("",), client=CLIENT, log=print,
+         keep_partials=False, jobs=1, reuse_history=False, stats=None, improvement_only=False, preserve_inputs=False, submit_partials=False, reuse_objects=False):
+    """Parallel targets, sequential gates; serialize verification and journal writes."""
+    started = time.monotonic()
+    stats = stats if stats is not None else {}
+    stats.update(checks=0, skipped=0, errors=0, finished_targets=0, verified_exacts=0, verified_partial_gains=0, object_reuses=0)
+    history = campaign.previous(stage)
+    done = {(r["addr"], r["source_sha256"]) for r in history if r.get("source_sha256")}
+    winners = []
+    lock = threading.Lock()
+    units = {}
+    blocked_native = set()
+    trial_path = ROOT / "work" / "agent-memory" / "compiler-trials.jsonl"
+    previous_trials = [r for r in journal_records(trial_path)
+                       if r.get("client") == client and r.get("terminal") and r.get("evidence_key")] if reuse_history else []
+    completed = {r["evidence_key"] for r in previous_trials}
+    bounds = {}
+    for trial in previous_trials:
+        key = trial.get("base_evidence_key", trial["evidence_key"])
+        ceiling = trial.get("score") if trial.get("score") is not None else trial.get("score_ceiling")
+        if ceiling is not None:
+            bounds[key] = min(bounds.get(key, 100), ceiling)
+
+    def progress(state, **fields):
+        path = campaign.root / "progress.json"
+        temporary = path.with_suffix(".tmp")
+        temporary.write_text(json.dumps(dict(client=client, stage=stage, state=state,
+                             targets=len(rows), **stats, **fields)))
+        try:
+            os.replace(temporary, path)
+        except PermissionError:
+            # Windows readers can briefly deny replacement; the next target refreshes it.
+            # Progress is advisory and must not abort verification or trial journals.
+            pass
+
+    def target(row):
+        best = row["score"]
+        objects = {}
+        path = None
+        if keep_partials:
+            path = campaign.root / "candidates" / stage / client / (row["addr"] + ".cpp")
+            if path.exists():
+                kept_source = path.read_text(encoding="utf-8")
+                kept_hash = digest(kept_source)
+                matching = [r for r in history if r.get("addr") == row["addr"] and
+                            r.get("source_sha256") == kept_hash and r.get("score") is not None]
+                if reuse_history:
+                    directives = match.directives(kept_source)
+                    build = int(directives.get("cl") or clients.load()[client]["compiler_build"])
+                    flags = directives.get("flags") or clients.load()[client].get("flags") or match.DEFAULT_FLAGS
+                    try:
+                        evidence = compiler_evidence(client, row, kept_source, build, flags, units)
+                        matching = [r for r in matching if r.get("base_evidence_key", r.get("evidence_key")) == evidence]
+                    except ERRORS:
+                        matching = []
+                best = max([best] + [r["score"] for r in matching])
+        candidates = [dict(source=row["source"], origin=row.get("source_origin", "stored")), *row.get("candidates", [])]
+        if preserve_inputs:
+            with lock:
+                folder = campaign.root / "inputs"
+                folder.mkdir(exist_ok=True)
+                for candidate in candidates:
+                    snapshot = folder / (digest(candidate["source"]) + ".cpp")
+                    if not snapshot.exists():
+                        snapshot.write_text(candidate["source"], encoding="utf-8")
+                    candidate["input_path"] = str(snapshot)
+        for source, build, flags, origin, input_path in ((*gate, candidate.get("origin", "candidate"), candidate.get("input_path"))
+                for candidate in candidates
+                for gate in variants(candidate["source"], builds, profiles, suffixes, client=client)):
+            key = digest(source)
+            if not reuse_history and (row["addr"], key) in done:
+                continue
+            result = dict(addr=row["addr"], source_sha256=key, build=build, flags=flags, before=row["score"], client=client, origin=origin, input_path=input_path)
             try:
-                score, symbol, diff, _ = match.check_text(client, row["addr"], source)
+                if reuse_history:
+                    result["evidence_key"] = compiler_evidence(client, row, source, build, flags, units)
+                    if improvement_only:
+                        result["base_evidence_key"] = result["evidence_key"]
+                        if bounds.get(result["evidence_key"], 100) <= best:
+                            with lock:
+                                stats["skipped"] += 1
+                            continue
+                        result["evidence_key"] = digest(result["evidence_key"] + ":floor:" + str(best))
+                    if result["evidence_key"] in completed:
+                        with lock:
+                            stats["skipped"] += 1
+                        continue
+                native_key = None
+                directives = match.directives(source)
+                if reuse_history and "lib" in directives:
+                    recipe, _, file = directives["lib"].partition(" ")
+                    native_key = (build, units.get((recipe, file.strip(), build)))
+                    if native_key in blocked_native:
+                        with lock:
+                            stats["skipped"] += 1
+                        continue
+                options = {"minimum": best} if improvement_only else {}
+                object_key = None
+                if reuse_objects:
+                    obj = match.compile_text(client, source)
+                    # Standard i386 COFF timestamp is not code, data or relocation evidence.
+                    object_key = hashlib.sha256(obj[:4] + obj[8:]).hexdigest()
+                    options["obj"] = obj
+                if object_key is not None and objects.get(object_key, 100) <= best:
+                    score, symbol, diff = None, None, "identical compiled object already bounded"
+                    with lock:
+                        stats["object_reuses"] += 1
+                else:
+                    score, symbol, diff, _ = match.check_text(client, row["addr"], source, **options)
+                if object_key is not None:
+                    objects[object_key] = min(objects.get(object_key, 100), score if score is not None else best)
                 result.update(score=score, symbol=symbol, diff=diff[:2000])
+                if score is None:
+                    result.update(outcome="no_improvement", score_ceiling=best)
+                if path is not None and score is not None and best < score < 100:
+                    path.parent.mkdir(parents=True, exist_ok=True)
+                    path.write_text(source, encoding="utf-8")
+                    best = score
+                    result["candidate_path"] = str(path)
                 if score == 100:
-                    result["receipt"] = campaign.submit_exact(stage, client, row["addr"], source)
-                    winners.append(result)
+                    with lock:
+                        result["receipt"] = campaign.submit_exact(stage, client, row["addr"], source)
+                        winners.append(result)
             except ERRORS as error:
                 result["error"] = str(error)[-2000:]
-            campaign.record(stage, result)
-            log("%s %s %s %s %s" % (stage, row["addr"], build, flags, result.get("score", "error")))
+                if reuse_history and "C2248" in str(error) and "IRenderable::indexFunc" in str(error):
+                    directives = match.directives(source)
+                    if "lib" in directives:
+                        recipe, _, file = directives["lib"].partition(" ")
+                        body = units.get((recipe, file.strip(), build))
+                        if body:
+                            with lock:
+                                blocked_native.add((build, body))
+                            result["blocked_reason"] = "known native IRenderable private-access header blocker"
+            with lock:
+                stats["checks"] += 1
+                stats["errors"] += bool(result.get("error"))
+                stats["verified_exacts"] += bool(result.get("receipt", {}).get("submission", {}).get("improved"))
+                campaign.record(stage, result)
+                if reuse_history:
+                    receipt = result.get("receipt", {}).get("submission", {})
+                    append(ROOT / "work/agent-memory/attempts.jsonl", dict(kind="trial",
+                        date=datetime.now(timezone.utc).isoformat(), client=client, addresses=[row["addr"]],
+                        profile="compiler-sweep", recipe=stage, hypothesis=origin + ": compiler context",
+                        source_hash=key, compiler=build, flags=flags, before=row["score"], after=result.get("score"),
+                        score_ceiling=result.get("score_ceiling"), outcome="compile_failed" if result.get("error") else
+                        "server_verified" if receipt.get("verified") and receipt.get("improved") else
+                        "improved" if result.get("score") is not None and result["score"] > row["score"] else "no_gain",
+                        exacts_gained=int(bool(receipt.get("verified") and receipt.get("improved") and receipt.get("score") == 100)),
+                        receipt=receipt, evidence=str(campaign.root / (stage + ".jsonl"))))
+                if reuse_history and result.get("evidence_key"):
+                    receipt = result.get("receipt", {})
+                    terminal = result.get("outcome") == "no_improvement" or (result.get("score") is not None and result["score"] < 100) or bool(
+                        receipt.get("submission", {}).get("verified") or receipt.get("already_exact"))
+                    append(trial_path, {**result, "terminal": terminal, "stage": stage})
+                    if terminal:
+                        completed.add(result["evidence_key"])
+                        ceiling = result.get("score") if result.get("score") is not None else result.get("score_ceiling")
+                        if ceiling is not None:
+                            base_key = result.get("base_evidence_key", result["evidence_key"])
+                            bounds[base_key] = min(bounds.get(base_key, 100), ceiling)
+                log("%s %s %s %s %s" % (stage, row["addr"], build, flags, result.get("score", "error")))
             if result.get("score") == 100:
                 break
+        with lock:
+            if submit_partials and path is not None and row["score"] < best < 100:
+                try:
+                    result = campaign.submit_partial(stage, client, row["addr"], path.read_text(encoding="utf-8"), best, path)
+                    receipt = result.get("submission", {})
+                    stats["verified_partial_gains"] += bool(receipt.get("verified") and receipt.get("improved"))
+                except ERRORS as error:
+                    campaign.record(stage + "-partials", dict(addr=row["addr"], error=str(error)[-2000:]))
+            stats["finished_targets"] += 1
+            if reuse_history:
+                progress("running", last_addr=row["addr"], seconds=round(time.monotonic() - started, 3))
+
+    with ThreadPoolExecutor(max_workers=jobs) as pool:
+        pending = iter(rows)
+        queue = {pool.submit(target, row) for row in islice(pending, jobs)}
+        while queue:
+            ready, queue = wait(queue, return_when=FIRST_COMPLETED)
+            for future in ready:
+                future.result()
+                row = next(pending, None)
+                if row is not None:
+                    queue.add(pool.submit(target, row))
+    stats["seconds"] = round(time.monotonic() - started, 3)
+    if reuse_history:
+        progress("done")
     return winners
 
 
-def fanout(campaign, stage, clients, jobs=1, client=CLIENT, log=print):
+def fanout(campaign, stage, clients, jobs=1, client=CLIENT, log=print, targets=None, evidence_resume=False):
     """Compile (source, evidence) pairs with bounded prefetch; submit every exact hit."""
-    scores = {r["addr"]: r["score"] for r in campaign.api.call("/v1/sources?client=" + client, timeout=300)}
-    target = unresolved(client, scores)
-    done = {r["key"] for r in campaign.previous(stage) if "error" not in r}
+    scores = {r["addr"]: r["score"] for r in campaign.api.call("/v1/sources?scores=1&client=" + client, timeout=300)}
+    target = unresolved(client, scores, targets) if targets else unresolved(client, scores)
+    history = campaign.previous(stage)
+    coverage_key = None
+    if evidence_resume:
+        from roc import clients as client_registry
+        coverage_key = digest(json.dumps([2, client, client_registry.load()[client]["sha256"], targets,
+            sorted((addr, row["size"], row.get("relocs", [])) for addr, row in match._functions(client).items()
+                   if row.get("kind", "code") == "code")]))
+    done = {r["key"] for r in history if not evidence_resume and "error" not in r and not r.get("retryable")}
     def pending_sources():
         seen = set(done)
         for source, evidence in clients:
@@ -312,23 +577,40 @@ def fanout(campaign, stage, clients, jobs=1, client=CLIENT, log=print):
                     yield (*item, obj, error)
 
     winners = []
+    seen_objects = {r["object_sha256"] for r in history if evidence_resume and r.get("coverage_key") == coverage_key
+                    and r.get("object_sha256") and "error" not in r and not r.get("retryable")}
     for source, evidence, obj, failure in compiled():
-        row = {"key": digest(source), "source": source, "evidence": evidence, "winners": []}
+        row = {"key": digest(source), "source": source, "evidence": evidence, "winners": [], "coverage_key": coverage_key}
+        pending_hits = set()
         try:
             if failure:
                 raise failure
-            hits = target.match_obj(obj, source)
+            object_key = hashlib.sha256(obj[:4] + obj[8:]).hexdigest()
+            row["object_sha256"] = object_key
+            row["object_reused"] = object_key in seen_objects
+            hits = {} if row["object_reused"] else target.match_obj(obj, source)
+            pending_hits.update(hits)
             row["local_exact_hits"] = len(hits)
             for addr, (_, symbol, *_) in sorted(hits.items()):
                 result = campaign.submit_exact(stage, client, addr, source, obj=obj)
                 result["symbol"] = symbol
+                receipt = result.get("submission", {})
+                if result.get("already_exact") or (receipt.get("verified") and receipt.get("score") == 100):
+                    pending_hits.discard(addr)
                 row["winners"].append(result)
                 winners.append(result)
                 if result.get("submission", {}).get("verified") and result["submission"].get("improved"):
-                    log("%s %s → 100 · server verified exact" % (client, addr))
                     campaign.record(stage + "-wins", result)
+                    log("%s %s -> 100 - server verified exact" % (client, addr))
         except ERRORS as error:
             row["error"] = str(error)[-2000:]
+        # match_obj retires local hits; failed/unavailable verification must remain eligible.
+        if pending_hits:
+            row["retryable"] = True
+            for addr in pending_hits:
+                target.index[len(match.target(client, addr)[0])].append(addr)
+        elif "error" not in row:
+            seen_objects.add(row["object_sha256"])
         campaign.record(stage, row)
         log("%s %s local exact %d new %d %s" % (stage, evidence, len(row["winners"]),
             sum(bool(w.get("submission", {}).get("improved")) for w in row["winners"]), row.get("error", "")[-160:]))
@@ -343,23 +625,27 @@ def recipe_sources(spec, client=None):
         builds = item.get("builds") or r.get("builds") or [21022]
         if client and client != CLIENT:
             builds = [clients.load()[client]["compiler_build"]]
-        grid_flags = item.get("flags") or r.get("grid", libs.GRID)
         if "unit" in item:  # agent-written unit kept portable via the findings repo
             files = [libs.add_unit(name, (ROOT / item["unit"]).read_text(encoding="utf-8"),
                                    item.get("prefix", "roc_unit_"))]
         else:
             folder = libs.fetch(name)
             pattern = item.get("files")
-            files = libs.files_of(dict(r, files=pattern) if isinstance(pattern, str) else r, folder) \
-                if not isinstance(pattern, list) else pattern
+            if isinstance(pattern, list):
+                files = pattern
+            elif item.get("generated") and pattern is None:
+                files = libs.matching_files(r, folder)
+            else:
+                files = libs.files_of(dict(r, files=pattern) if isinstance(pattern, str) else r, folder)
             if item.get("match"):
                 files = [f for f in files if re.search(item["match"], f.replace("\\", "/"))]
         for file in files:
+            grid_flags = item.get("flags") or libs.compile_profiles(client or CLIENT, name, file)
             for build in builds:
                 for flags in grid_flags:
                     for lang in item.get("langs") or r.get("langs", ["cpp"]):
                         yield (libs.source_for(name, file, lang, build, flags),
-                               {"recipe": name, "file": file, "build": build, "flags": flags})
+                               {"recipe": name, "file": file, "build": build, "flags": flags, "lang": lang})
 
 
 # ---------- recipes ----------
@@ -371,10 +657,54 @@ def recipes():
 def plan(name):
     """What a recipe would do, without a server or compiler: counts only."""
     spec = recipes()[name]
+    if "native_sweep" in spec:
+        return {"op": "native-grid", "files": spec["native_sweep"].get("files", ["App/*/*.cpp"]),
+                "apply": bool(spec["native_sweep"].get("apply")), "submit": bool(spec["native_sweep"].get("submit"))}
+    if spec["op"] == "sweep":
+        return {"op": "sweep", "stages": spec.get("stages", []),
+                "stages_by_client": spec.get("stages_by_client", {})}
     if spec["op"] == "fanout":
-        return {"op": "fanout", "sources": sum(1 for _ in recipe_sources(spec["sources"]))}
-    gates = len(spec.get("builds", BUILDS)) * len(spec.get("profiles", PROFILES)) * len(spec.get("append", [""]))
-    return {"op": "grid", "gates_per_target": gates, "targets": spec.get("targets", {})}
+        return {"op": "fanout", "portfolio": spec["portfolio"]} if spec.get("portfolio") is not None else {"op": "fanout", "sources": sum(1 for _ in recipe_sources(spec["sources"]))}
+    if spec["op"] == "mutate":
+        return {"op": "mutate", "targets": spec.get("targets", {}), "budget_per_target": spec.get("budget", 120)}
+    profiles = spec.get("profiles", PROFILES)
+    gates = len(spec.get("builds", BUILDS)) * sum(9 if profile == "context" else 1 for profile in profiles) * len(spec.get("append", [""]))
+    return {"op": "grid", "gates_per_candidate_max": gates, "targets": spec.get("targets", {}), "portfolio": spec.get("portfolio")}
+
+
+def mutate_search(campaign, name, rows, spec, client, jobs, log, stats):
+    """Beam-search semantics-preserving rewrites of each stored source (roc/mutsearch.py).
+    Wrapper sources naming a generated unit (`// roc-lib:`) are skipped: their code lives in the unit."""
+    from roc import mutsearch
+    done = {row.get("addr"): row for row in campaign.previous(name)}
+    winners, stats["skipped_lib"], stats["improved_local"] = [], 0, 0
+    for row in rows:
+        addr = row["addr"]
+        if "lib" in match.directives(row["source"]):
+            stats["skipped_lib"] += 1
+            continue
+        if done.get(addr, {}).get("source_sha256") == digest(row["source"]):
+            continue  # this exact input was already searched
+        best = mutsearch.search(client, addr, row["source"], budget=spec.get("budget", 120),
+                                beam=spec.get("beam", 3), depth=spec.get("depth", 3), jobs=max(1, jobs), log=log)
+        record = dict(addr=addr, before=row["score"], after=best["score"], residue=best["residue"],
+                      edits=best["path"], compiles=best["compiles"], source_sha256=digest(row["source"]))
+        if best["score"] == 100:
+            receipt = campaign.submit_exact(name, client, addr, best["source"])
+            record["receipt"] = receipt
+            winners.append(receipt)
+        elif best["score"] > row["score"]:
+            stats["improved_local"] += 1
+            path = campaign.root / "candidates" / name / client / (addr + ".cpp")
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(best["source"], encoding="utf-8")
+            record["candidate_path"] = str(path)
+            if spec.get("submit_partials"):
+                record["receipt"] = campaign.submit_partial(name, client, addr, best["source"], best["score"], path)
+        campaign.record(name, record)
+        log("%s %s %d -> %d (residue %d, %d compiles) %s" % (client, addr, row["score"], best["score"],
+                                                          best["residue"], best["compiles"], " > ".join(best["path"])))
+    return winners
 
 
 def run(name, server=None, jobs=1, limit=None, log=print, campaign_id=None, client=None):
@@ -389,33 +719,77 @@ def run(name, server=None, jobs=1, limit=None, log=print, campaign_id=None, clie
         if name_client != CLIENT:
             output /= name_client
         with job_lock(output / ".research-job.lock"):
-            results[name_client] = _run(name, server, jobs, limit, log, campaign_id, name_client, output)
+            if "native_sweep" in spec:
+                if name_client != CLIENT:
+                    raise ValueError("Native sweep supports 2008-06 only")
+                from roc import native_sweep
+                results[name_client] = native_sweep.run(spec, name, server, jobs, limit, output, log)
+            else:
+                results[name_client] = _run(name, server, jobs, limit, log, campaign_id, name_client, output)
     return results[names[0]] if len(names) == 1 else {"clients": results}
 
 
 def _run(name, server=None, jobs=1, limit=None, log=print, campaign_id=None, client=CLIENT, output=None):
     """Run one named recipe. Returns a summary; also journaled as agent memory."""
     spec = recipes()[name]
+    if spec["op"] == "sweep":
+        started = time.monotonic()
+        stages = spec.get("stages_by_client", {}).get(client, []) + spec.get("stages", [])
+        results = []
+        for stage in stages:
+            if recipes()[stage]["op"] == "sweep":
+                raise ValueError("Nested sweeps are not supported: " + stage)
+            results.append(run(stage, server, jobs, limit, log, campaign_id, client))
+        summary = dict(recipe=name, client=client, op="sweep", stages=results,
+                       new_verified=sum(r["new_verified"] for r in results),
+                       verified_partial_gains=sum(r.get("verified_partial_gains", 0) for r in results),
+                       seconds=round(time.monotonic() - started, 3))
+        append((output or ROOT / "work" / "research" / name) / "runs.jsonl", summary)
+        log("TOTAL " + json.dumps(summary))
+        return summary
     campaign = Campaign(output or ROOT / "work" / "research" / name, server, campaign_id, client)
+    stats = {}
     try:
         if spec["op"] == "grid":
-            rows = select(campaign.api.call("/v1/sources?client=" + client, timeout=300), spec.get("targets", {}), client=client)
+            rows = grid_rows(campaign, spec, client, coverage=stats if spec.get("reuse_history") else None, limit=limit)
+            stats["eligible_targets"] = len(rows)
             rows = rows[:limit] if limit else rows
             builds = spec.get("builds", BUILDS) if client == CLIENT else [clients.load()[client]["compiler_build"]]
             winners = grid(campaign, name, rows, builds, spec.get("profiles", PROFILES),
-                           spec.get("append", [""]), client=client, log=log)
+                           spec.get("append", [""]), client=client, log=log,
+                           keep_partials=spec.get("keep_partials", False), jobs=jobs,
+                           reuse_history=spec.get("reuse_history", False), stats=stats,
+                           improvement_only=spec.get("improvement_only", False), preserve_inputs=bool(spec.get("portfolio")),
+                           submit_partials=spec.get("submit_partials", False), reuse_objects=spec.get("reuse_objects", False))
             tried = len(rows)
         elif spec["op"] == "fanout":
-            sources = list(islice(recipe_sources(spec["sources"], client=client), limit))
-            winners = fanout(campaign, name, sources, jobs, client=client, log=log)
-            tried = len(sources)
+            if spec.get("portfolio") is not None:
+                from roc import brute
+                rows = grid_rows(campaign, spec, client)
+                builds = spec.get("builds", BUILDS) if client == CLIENT else [clients.load()[client]["compiler_build"]]
+                inputs = brute.portfolio_sources(rows, client, builds, spec.get("profiles", PROFILES), spec.get("append", [""]))
+            else:
+                inputs = recipe_sources(spec["sources"], client=client)
+            tried = 0
+            def counted_sources():
+                nonlocal tried
+                for item in islice(inputs, limit):
+                    tried += 1
+                    yield item
+            winners = fanout(campaign, name, counted_sources(), jobs, client=client, log=log, targets=spec.get("targets"),
+                             evidence_resume=spec.get("evidence_resume", False))
+        elif spec["op"] == "mutate":
+            rows = grid_rows(campaign, spec, client, limit=limit)
+            rows = rows[:limit] if limit else rows
+            winners = mutate_search(campaign, name, rows, spec, client, jobs, log, stats)
+            tried = len(rows)
         else:
             raise ValueError("Unknown research op: " + spec["op"])
     finally:
         campaign.api.close()
     new = [w for w in winners if w.get("submission", {}).get("improved") or
            w.get("receipt", {}).get("submission", {}).get("improved")]
-    summary = {"recipe": name, "client": client, "op": spec["op"], "tried": tried, "local_exact": len(winners), "new_verified": len(new)}
+    summary = {"recipe": name, "client": client, "op": spec["op"], "tried": tried, "local_exact": len(winners), "new_verified": len(new), **stats}
     remember(spec, name, summary, new, campaign.root, campaign_id, client)
     log("TOTAL %s" % json.dumps(summary))
     return summary
@@ -495,9 +869,9 @@ def journal_records(path):
     decoder = json.JSONDecoder()
     rows = []
     if path.exists():
-        with path.open(encoding="utf-8") as stream:
+        with path.open(encoding="utf-8-sig") as stream:
             for line in stream:
-                remaining = line.strip()
+                remaining = line.strip().lstrip("\ufeff")
                 while remaining:
                     try:
                         row, end = decoder.raw_decode(remaining)
@@ -538,6 +912,8 @@ def trial(root, client, addr, path, hypothesis):
            "flags": match.directives(text).get("flags") or match.clients.load()[client].get("flags") or match.DEFAULT_FLAGS,
            "evidence": str(journal / "trials.jsonl")}
     row.update({key: task[key] for key in ("campaign_id", "baseline_hash", "target_revision") if key in task})
+    if task.get("model_started_at") is not None:
+        row["seconds_to_check"] = max(0, time.time() - task["model_started_at"])
     previous = []
     if (journal / "trials.jsonl").exists():
         for line in (journal / "trials.jsonl").read_text().splitlines():

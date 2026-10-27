@@ -2,15 +2,17 @@
 import json
 import os
 import random
+import statistics
 import threading
 import time
+import traceback
 import uuid
 from collections import Counter, defaultdict
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from pathlib import Path
 
-from roc import agent, agent_memory, matchers, draft, match, research, telemetry, worker, clients, setup
+from roc import agent, agent_memory, agent_recovery, matchers, draft, match, research, telemetry, worker, clients, setup
 
 ROOT = Path(__file__).resolve().parent.parent
 WRITE_LOCK = threading.Lock()
@@ -55,7 +57,7 @@ def _snapshot(client="2008-06", api=None):
                 row.pop(key, None)
             for key, value in row.items():
                 if isinstance(value, list):
-                    row[key] = value[:4 if key in ("callers", "call_targets") else 8]
+                    row[key] = value[:4 if key == "callers" else 8]
             functions.append(row)
     if api:
         saved, donor_counts = {}, Counter()
@@ -86,12 +88,12 @@ def _snapshot(client="2008-06", api=None):
             addr = row["addr"]
             source = ROOT / "src" / client / (addr + ".cpp")
             if source.exists():
-                saved[addr] = {"score": scores[addr], "source": source.read_text(encoding="utf-8", errors="replace")}
+                saved[addr] = {"score": scores.get(addr, 0), "source": source.read_text(encoding="utf-8", errors="replace")}
     return [dict(row, **{key: saved.get(row["addr"], {}).get(key, default)
                         for key, default in (("score", 0), ("source", ""), ("source_directives", {}))}) for row in functions]
 
 
-def plan(rows, max_size=512, profile="claude:default", records=None, client="2008-06", min_score=70):
+def plan(rows, max_size=512, profile="claude:default", records=None, client="2008-06", min_score=70, random_targets=False):
     """Heuristic priority, not a forecast of exacts or a fresh compiler score."""
     groups = defaultdict(list)
     from roc import libs
@@ -105,6 +107,9 @@ def plan(rows, max_size=512, profile="claude:default", records=None, client="200
         source = row.get("source") or ""
         if row.get("kind", "code") != "code" or row.get("score", 0) == 100:
             continue
+        if agent.is_data_table(row):
+            excluded["data table misclassified as function"] += 1
+            continue
         if row.get("size", 0) < 6 or (max_size and row["size"] > max_size):
             excluded["outside size limit"] += 1
             continue
@@ -114,10 +119,18 @@ def plan(rows, max_size=512, profile="claude:default", records=None, client="200
                               any(key in match.directives(source) for key in ("lib", "archive"))):
             if donors:
                 source = donors[0]["source"]  # A real donor seed, always checked against this target.
+            elif random_targets:
+                source = "void func_%s() {}\n" % row["addr"]  # Starter; recover ABI and behavior from evidence.
             else:
                 excluded["no usable source; individual mining deferred"] += 1
                 continue
-        if row.get("score", 0) < min_score and not donors:
+        if not donors and ("padding[" in source or "char padding" in source):
+            excluded["guessed layout seed; needs native type evidence"] += 1
+            continue
+        if not donors and source.lstrip().startswith("// from server:") and "struct S" in source:
+            excluded["anonymous server guess; needs real type identity"] += 1
+            continue
+        if not random_targets and row.get("score", 0) < min_score and not donors:
             excluded["low similarity; needs stronger source evidence"] += 1
             continue
         directives = match.directives(source)
@@ -176,7 +189,17 @@ def plan(rows, max_size=512, profile="claude:default", records=None, client="200
                     r.get("repair_attempted") and r.get("outcome") == "no_gain" and
                     row["addr"] in (r.get("addresses") or []) and r.get("evidence_hash") == row["evidence_hash"]
                     for r in records)
-                row.update(group_cohort=revision, group_parked=parked or target_parked)
+                # Reuse-phase no-gains must also park: the repair phase never starts when the
+                # agent session fails, so without this the same targets re-gate forever
+                # (28 targets burned 834 identical attempts before this fix).
+                reuse_stuck = sum(1 for r in records if r.get("kind") == "auto_target"
+                    and r.get("phase") == "reuse" and r.get("outcome") == "no_gain"
+                    and row["addr"] in (r.get("addresses") or [])
+                    and r.get("evidence_hash") == row["evidence_hash"])
+                blocked = any(r.get("kind") == "recovery_blocked" and r.get("client") == client and
+                    row["addr"] in r.get("addresses", []) and r.get("evidence_hash") == row["evidence_hash"]
+                    and r.get("retry_at", float("inf")) > time.time() for r in records)
+                row.update(group_cohort=revision, group_parked=parked or target_parked or blocked or reuse_stuck >= 5)
         members.sort(key=lambda row: (row["group_parked"], -row["priority"], row["addr"]))
         parked = all(row["group_parked"] for row in members)
         gains = sum(r.get("gains", 0) for r in feedback[-20:])
@@ -198,13 +221,13 @@ def plan(rows, max_size=512, profile="claude:default", records=None, client="200
             "excluded": dict(excluded), "note": "Heuristic ranking. Scores are snapshot hints; baselines recompile before work."}
 
 
-def portfolio(names, max_size=512, profile="claude:default", records=None, api=None, min_score=70):
+def portfolio(names, max_size=512, profile="claude:default", records=None, api=None, min_score=70, random_targets=False):
     """Rank each client independently, then share one target and time budget."""
-    results = [plan(snapshot(client=name, api=api), max_size, profile, records, client=name, min_score=min_score) for name in names]
+    results = [plan(snapshot(client=name, api=api), max_size, profile, records, client=name, min_score=min_score, random_targets=random_targets) for name in names]
     excluded = Counter()
     for result in results:
         excluded.update(result["excluded"])
-    return {"client": names[0] if len(names) == 1 else "all", "clients": list(names), "profile": profile,
+    return {"client": names[0] if len(names) == 1 else "all", "clients": list(names), "profile": profile, "selection": "random" if random_targets else "ranked",
             "areas": sorted((area for result in results for area in result["areas"]),
                             key=lambda area: (-area["verified_exacts_per_minute"], -area["priority"])),
             "excluded": dict(excluded), "note": "Baselines recompile before work."}
@@ -214,6 +237,15 @@ def public_plan(result):
     return {**result, "areas": [{**{k: v for k, v in area.items() if k != "targets"},
                                 "examples": [{k: row[k] for k in ("addr", "unit", "score", "size", "siblings")}
                                              for row in area["targets"][:3]]} for area in result["areas"]]}
+
+
+def random_batches(result, jobs, batch_size=1, scope="", hold_seconds=7200):
+    """Persistent random queue; each selected function gets its own model session."""
+    areas = {(area["client"], row["addr"]): area for area in result["areas"] if not area["parked"]
+             for row in area["targets"] if not row["group_parked"]}
+    rows = [dict(row, client=area["client"]) for area in result["areas"] if not area["parked"]
+            for row in area["targets"] if not row["group_parked"]]
+    return [(areas[row["client"], row["addr"]], [row]) for row in agent_recovery.draw(ROOT, rows, jobs, scope, hold_seconds=hold_seconds)]
 
 
 def trial(client, addr, path, hypothesis):
@@ -613,6 +645,9 @@ def library_cycle(server, user, token, cli, model, minutes, log, client, slot=No
                "Use those copies; needs_source targets require authentic source recovery first. "
                "Targets sort by least-tried current evidence, then largest size. Move past exhausted functions. "
                "Use agent-check for every experiment so trials are journaled. "
+               "For a shared hypothesis across independent targets, edit those copies then run one "
+               "`agent-check-batch CLIENT PATH1 PATH2 ... --hypothesis \"describe change\"` command; "
+               "it checks concurrently and preserves/journals each best source. "
                "Do not run config, pull, client-fetch or analyze again. "
                "Research grid/fanout execution is available via `research run NAME`; NAME is a recipe key, "
                "not an operation. Read research_commands in campaign.json. Pilot one source first. "
@@ -688,7 +723,7 @@ def library_cycle(server, user, token, cli, model, minutes, log, client, slot=No
     ticker.start()
     run_error = None
     try:
-        code = agent.run_agent(cli, prompt, model, minutes, output, goal=True)
+        code = agent.run_agent(cli, prompt, model, minutes, output, goal=True, auto=True)
     except (RuntimeError, OSError) as error:
         run_error = str(error)
         code = 1
@@ -730,13 +765,13 @@ def library_cycle(server, user, token, cli, model, minutes, log, client, slot=No
 
 
 def run(server, user, token=None, cli="claude", model=None, workers=2, jobs=24, max_size=512,
-        minutes=120, batch_size=4, batch_minutes=30, individual=False, log=print, client=None, continuous=False):
+        minutes=120, batch_size=4, batch_minutes=30, individual=False, log=print, client=None, continuous=False, goal=None):
     strategy = 0
     failures = 0
     while True:
         try:
             totals = run_cycle(server, user, token, cli, model, workers, jobs, max_size, minutes,
-                               batch_size, batch_minutes, individual, log, client, strategy)
+                               batch_size, batch_minutes, individual, log, client, strategy, **({"goal": goal} if goal else {}))
         except (RuntimeError, OSError) as error:
             if not continuous:
                 raise
@@ -761,7 +796,8 @@ def run(server, user, token=None, cli="claude", model=None, workers=2, jobs=24, 
 
 
 def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, jobs=24, max_size=512,
-              minutes=120, batch_size=4, batch_minutes=30, individual=False, log=print, client=None, strategy=0):
+              minutes=120, batch_size=4, batch_minutes=30, individual=False, log=print, client=None, strategy=0, goal=None):
+    wall_started = time.monotonic()
     if not 1 <= workers <= 8 or not 1 <= jobs <= 200 or not 1 <= batch_size <= 12 or not 1 <= minutes <= 600:
         raise ValueError("Invalid automatic-agent limits")
     if not 1 <= batch_minutes <= 120 or (max_size != 0 and not 32 <= max_size <= 8192):
@@ -784,7 +820,9 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
         profile += ":strategy-%d" % strategy
     shared = agent_memory.shared(server, token, user, upload=True)
     records = history() + shared.get("records", [])
-    result = portfolio(have, max_size, profile, records=records, api=api)
+    # Real sources and donor siblings beat empty random starters: model triage has a
+    # short first-check budget, so unproven declarations mostly consume it reading.
+    result = portfolio(have, max_size, profile, records=records, api=api, random_targets=False)
     tried = {name: known_failures([r for r in records if r.get("client", "2008-06") == name]) for name in have}
     swept = {name: research.gate_sweeps([r for r in records if r.get("client", "2008-06") == name]) for name in have}
     run_id = uuid.uuid4().hex[:12]
@@ -794,7 +832,8 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
     deadline = time.monotonic() + minutes * 60
     event_lock, condition = threading.Lock(), threading.Condition()
     totals = {"attempted": 0, "matched": 0, "improved": 0, "errors": 0}
-    manual_targets = set()
+    batch_outcomes = Counter()
+    recovery_metrics = []
     model_unavailable = threading.Event()
 
     def event(kind, **fields):
@@ -806,7 +845,7 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
             else:
                 log("ROC_EVENT " + json.dumps(row))
 
-    event("stage", message="Automatic: agent repair first, free compiler checks last; %d workers, %d targets, %d minutes" %
+    event("stage", message="Recovery: persistent random queue, one function per agent; %d workers, %d targets, %d minutes" %
           (workers, jobs, minutes))
     if not shared["available"]:
         event("log", message=shared["error"] + "; local memory retained. Update/restart group server for cross-PC sync.")
@@ -824,9 +863,6 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
                 if time.monotonic() >= deadline:
                     break
                 choices = [row]
-                if phase == "reuse":
-                    choices += [r for r in area["targets"] if r["group"] == row["group"] and
-                                r["addr"] not in area["reserved"]][:31]
                 job = local.call("/v1/lease", {"user": user, "worker": "auto-" + run_id + "-" + client + "-" + row["addr"],
                      "clients": [client], "mode": "ai", "model": "agent:auto:" + profile,
                      "max_size": max_size, "targets": [{"client": client, "addr": r["addr"]} for r in choices]})["job"]
@@ -844,14 +880,14 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
                 path = folder / (row["addr"] + ".cpp")
                 source = job.get("source") or row["source"]
                 task = dict(row, job=job, worker_id=worker_id, path=str(path), source=source, client=client, profile=profile,
-                            before=0, best_score=0)
+                            before=0, best_score=0, started=time.monotonic(), baseline_hash=digest(source))
                 active.append(task)
                 path.write_text(source, encoding="utf-8")
                 (folder / "best.cpp").write_text(source, encoding="utf-8")
                 baseline, _, diff, _ = match.check_text(client, row["addr"], source)
                 task.update(before=baseline, best_score=baseline, diff=diff)
                 (folder / "task.json").write_text(json.dumps({k: task[k] for k in
-                    ("addr", "client", "area", "profile", "best_score")}))
+                    ("addr", "client", "area", "profile", "best_score", "evidence_hash", "baseline_hash")}))
                 event("job_started", slot=slot, addr=row["addr"], client=client, area=area["title"],
                       previous=baseline, unit=row["unit"], size=row["size"])
             portfolio = list(dict.fromkeys(task["source"] for task in active
@@ -863,50 +899,73 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
                         break
                     reuse(task, list(portfolio), tried[client], swept[client])
             else:
-                pending = [task for task in active if task["before"] < 100]
-                allow_individual = individual
-                if len(pending) == 1 and not individual and pending[0]["size"] >= 64:
-                    with condition:
-                        if not manual_targets:
-                            manual_targets.add((client, pending[0]["addr"]))
-                            allow_individual = True
+                pending = [task for task in active if task["before"] < 100 and
+                           (task["before"] >= 95 or task["donors"])]
+                # A roc-lib wrapper is immutable provenance: a low score means its
+                # compiled object has no useful target body, not a model-edit task.
+                pending = [task for task in pending if not ("lib" in match.directives(task["source"])
+                    and task["before"] < 95)]
+                allow_individual = True
                 if pending and (len(pending) >= 2 or allow_individual) and time.monotonic() < deadline:
                     tried_route = True
                     event("stage", slot=slot, message="Model repair · %s · %d targets · %s" % (area["title"], len(pending), cli))
-                    assignments = [{"addr": t["addr"], "unit": t["unit"], "file": t["path"], "score": t["before"],
-                                    "behavior_evidence": t.get("behavior_evidence", {}),
-                                    "check": agent.roc_command() + " agent-check " + client + " " + t["addr"] +
-                                     ' "' + t["path"] + '" --hypothesis "describe change"'} for t in pending]
-                    brief = (slot + strategy) % 2 == 0
-                    prompt = (("Read CLAUDE.md. Assigned client: " + client + ". Closest proven mismatches first.\n"
-                        "Shared hypothesis first; inspect supplied diffs, pilot, propagate winners.\n"
-                        "Edit only assigned files. Run its agent-check after every edit; wrapper submits best result.\n"
-                        "Stop after two losing ideas. No asm, byte blobs, guessed layouts, or unrelated edits.\n" +
-                        ("Individual function mining allowed: infer behavior from evidence, test one source change at a time.\n" if allow_individual else
-                         "Individual function mining disabled; stop when no shared route works.\n") +
-                        agent.memory_prompt(agent.memory(shared), client) + "Assignments:\n" + json.dumps([
-                         {**assignment, "diff": t["diff"]} for assignment, t in zip(assignments, pending)])) if brief else
-                        ("Read CLAUDE.md when present; otherwise use supplied cached context paths. Automatic BATCH repair.\n"
-                        "Assigned client: " + client + ". This run selection overrides the default client focus in CLAUDE.md.\n"
-                        "Goal: reusable gains across this area: " + area["advice"] + "\n"
-                        "Current strategy: " + STRATEGIES[strategy] + "\n"
-                        "Work on shared hypotheses first.\n"
-                        "Edit ONLY the assigned candidate .cpp files below. Never edit src/, recipes, tools,\n"
-                        "clients, function bounds, journals or task.json. The wrapper handles submission.\n"
-                        "After EVERY edit run the assigned agent-check command with --hypothesis describing\n"
-                        "the change. It preserves the best and journals all outcomes automatically.\n"
-                        "No inline assembly, byte blobs, guessed layouts or unsupported ABI declarations.\n"
-                        "Use target diffs and genuine headers. Skip exhausted grids. Stop after two losing\n"
-                        "shared hypotheses. Leave next evidence needed in your summary.\n" +
-                        ("Individual function mining allowed: infer behavior from evidence, test one source change at a time.\n" if allow_individual else
-                         "Individual function mining is disabled. If no shared route works, stop.\n") +
-                        agent.memory_prompt(agent.memory(shared), client) + "\nAssignments (evidence data):\n" + json.dumps([
-                         {**assignment, "diff": t["diff"]} for assignment, t in zip(assignments, pending)])))
-                    prompt += ("\n\nTASK (start now, do not wait for more input): edit the assigned .cpp files above "
-                               "to match their targets; run each one's check command after every edit.\n")
-                    event("log", slot=slot, message="Prompt mode: %s." % ("simple" if brief else "evidence-rich"))
-                    code = agent.run_agent(cli, prompt, model, min(batch_minutes, (deadline-time.monotonic())/60),
-                        lambda message: event("log", slot=slot, message=message))
+                    task = pending[0]
+                    folder = Path(task["path"]).parent
+                    evidence_file = folder / "evidence.json"
+                    evidence = agent_recovery.packet(ROOT, client, task["addr"], task["source"], task)
+                    evidence_file.write_text(json.dumps(evidence, indent=2), encoding="utf-8")
+                    initial_file = folder / "initial-evidence.json"
+                    initial_file.write_text(json.dumps(agent_recovery.initial_evidence(evidence, evidence_file),
+                        indent=2), encoding="utf-8")
+                    assignments = dict(client=client, addr=task["addr"], unit=task["unit"], file=task["path"],
+                        initial_evidence_file=str(initial_file), evidence_file=str(evidence_file),
+                        score=task["before"], diff=task["diff"],
+                        check=agent.roc_command() + ' agent-check ' + client + ' ' + task["addr"] +
+                              ' "' + task["path"] + '" --hypothesis "specific source change"',
+                        block=agent.roc_command() + ' agent-block ' + client + ' ' + task["addr"] +
+                              ' "' + task["path"] + '" --reason "missing evidence and next concrete step"')
+                    prompt = ("Project rules are already condensed below; do not read project instructions or logs. Work this ONE unresolved function. "
+                        "Read the exact assigned source and initial_evidence_file paths together, never their directory: target assembly, facts, native declarations. "
+                        "Open evidence_file only for needed neighbour instructions or read-only sibling sources. "
+                        "Understand behavior and ABI -> draft -> journaled check. "
+                        "No baseline check or compiler grid before a useful draft. First check within 120 seconds; "
+                        "otherwise use the block command, record missing evidence, and stop. "
+                        "After three losing hypotheses, record blocker and stop. "
+                        "Do not discover other targets or edit infrastructure. Wrapper submits best sources and "
+                        "propagates verified wins to unresolved siblings. " + ("Goal: " + goal + ". " if goal else "") +
+                        "\nAssignment:\n" + json.dumps(assignments))
+                    state = json.loads((folder / "task.json").read_text())
+                    state["model_started_at"] = time.time()
+                    (folder / "task.json").write_text(json.dumps(state))
+                    event("log", slot=slot, message="Recovery: one random function; 120-second first-check triage.")
+                    output_path = folder / "agent-output.jsonl"
+                    output_tail = []
+
+                    def model_output(message):
+                        message = str(message)
+                        append(output_path, dict(date=datetime.now(timezone.utc).isoformat(), message=message))
+                        output_tail.append(message[-2000:])
+                        del output_tail[:-6]
+                        event("log", slot=slot, message=message)
+
+                    code, model_error = None, None
+                    try:
+                        with agent_recovery.session(ROOT, folder):
+                            code = agent.run_agent(cli, prompt, model, min(batch_minutes, (deadline-time.monotonic())/60),
+                                model_output, goal=bool(goal), auto=True)
+                        if (folder / "blocker.json").exists() and not agent_recovery.experiments(folder):
+                            quality_result = False
+                            skip_reason = "triage_blocked"
+                    except (OSError, RuntimeError) as error:
+                        model_unavailable.set()
+                        code = 1
+                        model_error = dict(type=type(error).__name__, message=str(error),
+                                           traceback=traceback.format_exc(limit=5)[-4000:])
+                        model_output("Agent CLI exception: %s: %s" % (type(error).__name__, error))
+                    finally:
+                        result = dict(exit_code=code, interrupted=code is None, error=model_error,
+                                      agent_output=str(output_path), agent_output_tail=output_tail)
+                        (folder / "model-result.json").write_text(json.dumps(result, indent=2), encoding="utf-8")
                     if code:
                         quality_result = False
                         skip_reason = "cli_error"
@@ -922,6 +981,31 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
             for task in active:
                 text = (Path(task["path"]).parent / "best.cpp").read_text(encoding="utf-8")
                 score = match.check_text(client, task["addr"], text)[0]
+                candidate = Path(task["path"]).read_text(encoding="utf-8")
+                if candidate != text:
+                    error = None
+                    try:
+                        candidate_score = match.check_text(client, task["addr"], candidate)[0]
+                    except match.CompileError as failure:
+                        candidate_score, error = 0, str(failure)
+                    directives = match.directives(candidate)
+                    trial = dict(kind="trial",
+                        date=datetime.now(timezone.utc).isoformat(), client=client, addresses=[task["addr"]],
+                        area=area["id"], profile=profile, hypothesis="final unpreserved edit validation",
+                        source_hash=digest(candidate), before=score, after=candidate_score,
+                        compiler=directives.get("cl") or clients.load()[client]["compiler_build"],
+                        flags=directives.get("flags") or clients.load()[client].get("flags") or match.DEFAULT_FLAGS,
+                        outcome="compile_failed" if error else "improved" if candidate_score > score else "no_gain",
+                        error=error, evidence=str(Path(task["path"]).parent))
+                    journal = Path(task["path"]).parent / "trials.jsonl"
+                    if not any(all(row.get(key) == trial.get(key) for key in
+                                   ("source_hash", "after", "compiler", "flags", "error"))
+                               for row in research.journal_records(journal)):
+                        append(journal, trial)
+                        append(ROOT / "work" / "agent-memory" / "attempts.jsonl", trial)
+                    if candidate_score > score:
+                        score, text = candidate_score, candidate
+                        (Path(task["path"]).parent / "best.cpp").write_text(text, encoding="utf-8")
                 receipt = None
                 if score >= task["before"] and score > task["job"]["score"]:
                     receipt = local.call("/v1/submit", {"lease": task["job"]["lease"], "user": user,
@@ -931,8 +1015,24 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
                         raise RuntimeError("Server did not verify candidate")
                 improved = bool(receipt and receipt.get("improved"))
                 exact = bool(improved and receipt.get("score") == 100)
-                gains += improved
-                exacts += exact
+                propagated = []
+                if improved:
+                    try:
+                        propagated = agent_recovery.propagate(ROOT, local, user, task["worker_id"],
+                            model or (cli + " (CLI default)"), task, text, area["targets"], max_size, deadline,
+                            lambda message: event("log", slot=slot, message=message))
+                    except (worker.ApiFailure, match.CompileError, RuntimeError, OSError, ValueError) as error:
+                        event("log", slot=slot, message="Sibling propagation stopped; primary receipt kept: " + str(error))
+                propagated_exacts = sum(row["score"] == 100 for row in propagated)
+                gains += improved + len(propagated)
+                exacts += exact + propagated_exacts
+                if phase == "repair":
+                    metrics = agent_recovery.metrics(Path(task["path"]).parent,
+                        time.monotonic() - task["started"], int(improved) + len(propagated), int(exact) + propagated_exacts)
+                    (Path(task["path"]).parent / "metrics.json").write_text(json.dumps(metrics, indent=2))
+                    with condition:
+                        recovery_metrics.append(dict(client=client, addr=task["addr"], **metrics))
+                    event("recovery_metrics", slot=slot, client=client, addr=task["addr"], **metrics)
                 if phase == "reuse" or tried_route:
                     append(ROOT / "work" / "agent-memory" / "attempts.jsonl", dict(kind="auto_target",
                     date=datetime.now(timezone.utc).isoformat(), client=client, addresses=[task["addr"]],
@@ -946,9 +1046,13 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
                 telemetry.candidate(text, score)
                 telemetry.finish(receipt["score"] if improved else task["before"], None, [])
                 with condition:
-                    totals["attempted"] += 1
-                    totals["matched"] += exact
-                    totals["improved"] += improved and not exact
+                    totals["attempted"] += 1 + len(propagated)
+                    totals["matched"] += exact + propagated_exacts
+                    totals["improved"] += int(improved and not exact) + len(propagated) - propagated_exacts
+                for sibling in propagated:
+                    event("job_finished", slot=slot, client=client, addr=sibling["addr"], previous=sibling["previous"],
+                        score=sibling["score"], new_exact=sibling["score"] == 100, improved=True,
+                        area="Sibling propagation", unit=sibling["unit"], size=sibling["size"])
                 event("job_finished", slot=slot, client=client, addr=task["addr"], previous=task["before"],
                       score=receipt["score"] if improved else task["before"], new_exact=exact,
                       improved=improved, area=area["title"], unit=task["unit"], size=task["size"])
@@ -963,85 +1067,85 @@ def run_cycle(server, user, token=None, cli="claude", model=None, workers=2, job
                     pass
 
     # Every selected area gets agent repair first, then compiler-only reuse.
-    selected, remaining = [], jobs
-    areas = [area for area in result["areas"] if not area["parked"]]
-    for area in areas:
-        # Two bounded shards of the strongest areas before weaker opportunities.
-        families = defaultdict(list)
-        for row in area["targets"]:
-            if not row["group_parked"]:
-                families[row["group"]].append(row)
-        shards = 0
-        for family in families.values():
-            for offset in range(0, len(family), batch_size):
-                if not remaining or shards == 2:
-                    break
-                targets = family[offset:offset + min(batch_size, remaining)]
-                selected.append((area, targets))
-                remaining -= len(targets)
-                shards += 1
-            if not remaining or shards == 2:
-                break
+    selected = random_batches(result, jobs, 1, scope=server, hold_seconds=minutes * 60 + 300)
+    for area in result["areas"]:
         area["reserved"] = {row["addr"] for chosen_area, rows in selected if chosen_area is area for row in rows}
-    for phase in ("repair", "reuse"):  # model first; free compiler-only reuse last, never before the agent starts
-        event("stage", message="%s phase · %d batches" % ("Free compiler checks" if phase == "reuse" else "Agent repair", len(selected)))
-        queue, busy, zero = list(selected), set(), defaultdict(int)
+    try:
+        for phase in ("repair", "reuse"):  # model first; free compiler-only reuse last, never before the agent starts
+            event("stage", message="%s phase · %d batches" % ("Free compiler checks" if phase == "reuse" else "Agent repair", len(selected)))
+            queue, busy, zero = list(selected), set(), defaultdict(int)
 
-        def work(slot):
-            while time.monotonic() < deadline:
-                if phase == "repair" and model_unavailable.is_set():
-                    return
-                with condition:
-                    available = next((i for i, (area, _) in enumerate(queue) if (area["client"], area["id"]) not in busy), None)
-                    if available is None:
-                        if not queue:
-                            return
-                        condition.wait(timeout=0.2)
-                        continue
-                    area, targets = queue.pop(available)
-                    group = targets[0]["group"]
-                    if phase == "repair" and len(targets) == 1 and not individual and (
-                            targets[0]["size"] < 64 or manual_targets):
-                        continue  # No model route: avoid leasing/rechecking the unchanged singleton.
-                    if phase == "repair" and zero[group] >= 1:
-                        continue
-                    busy.add((area["client"], area["id"]))
-                try:
-                    started = time.monotonic()
-                    gains, attempted, exacts, skip_reason = batch(slot, area, targets, phase)
-                    record = dict(kind="auto_batch", date=datetime.now(timezone.utc).isoformat(),
-                        client=area["client"], area=area["id"], profile=profile, phase=phase, cohort=area["cohort"],
-                        group=group, group_cohort=targets[0]["group_cohort"],
-                        outcome="improved" if gains else "no_gain" if attempted else "error" if skip_reason == "cli_error" else "deferred" if skip_reason == "no_eligible_repair" else "unavailable", gains=gains,
-                        skip_reason=skip_reason,
-                        exacts_gained=exacts, exhausted=phase == "repair" and bool(attempted) and not gains,
-                        addresses=[t["addr"] for t in targets], elapsed_seconds=time.monotonic() - started,
-                        evidence=str(directory))
-                    append(ROOT / "work" / "agent-memory" / "attempts.jsonl", record)
-                    if attempted:
+            def work(slot):
+                while time.monotonic() < deadline:
+                    if phase == "repair" and model_unavailable.is_set():
+                        return
+                    with condition:
+                        available = next((i for i, (area, targets) in enumerate(queue) if (area["client"], targets[0]["addr"]) not in busy), None)
+                        if available is None:
+                            if not queue:
+                                return
+                            condition.wait(timeout=0.2)
+                            continue
+                        area, targets = queue.pop(available)
+                        group = targets[0]["group"]
+                        busy.add((area["client"], targets[0]["addr"]))
+                    try:
+                        started = time.monotonic()
+                        gains, attempted, exacts, skip_reason = batch(slot, area, targets, phase)
+                        record = dict(kind="auto_batch", date=datetime.now(timezone.utc).isoformat(),
+                            client=area["client"], area=area["id"], profile=profile, phase=phase, cohort=area["cohort"],
+                            group=group, group_cohort=targets[0]["group_cohort"],
+                            outcome="improved" if gains else "no_gain" if attempted else "error" if skip_reason == "cli_error" else "deferred" if skip_reason == "no_eligible_repair" else "unavailable", gains=gains,
+                            skip_reason=skip_reason,
+                            exacts_gained=exacts, exhausted=False,
+                            addresses=[t["addr"] for t in targets], elapsed_seconds=time.monotonic() - started,
+                            evidence=str(directory))
+                        append(ROOT / "work" / "agent-memory" / "attempts.jsonl", record)
                         with condition:
-                            zero[group] = 0 if gains else zero[group] + 1
-                    if phase == "repair" and zero[group] >= 1:
-                        event("log", slot=slot, message="Parked %s after exhausted repair batch; new evidence required" % area["title"])
-                except (RuntimeError, OSError, ValueError) as error:
-                    with condition:
-                        totals["errors"] += 1
-                    event("log", slot=slot, message="Infrastructure/compile failure: " + str(error))
-                    append(ROOT / "work" / "agent-memory" / "attempts.jsonl", dict(kind="auto_error",
-                        date=datetime.now(timezone.utc).isoformat(), client=area["client"], area=area["id"], phase=phase, profile=profile,
-                        outcome="error", error=str(error), addresses=[t["addr"] for t in targets], evidence=str(directory)))
-                finally:
-                    with condition:
-                        busy.discard((area["client"], area["id"]))
-                        condition.notify_all()
-            event("slot_stopped", slot=slot)
+                            batch_outcomes[phase + ":" + (skip_reason or record["outcome"])] += 1
+                        if attempted:
+                            with condition:
+                                zero[group] = 0 if gains else zero[group] + 1
+                        if phase == "repair" and zero[group] >= 1:
+                            event("log", slot=slot, message="Recovery finished for %s; consult target trial/blocker evidence before retrying" % targets[0]["addr"])
+                    except (RuntimeError, OSError, ValueError) as error:
+                        with condition:
+                            totals["errors"] += 1
+                        event("log", slot=slot, message="Infrastructure/compile failure: " + str(error))
+                        append(ROOT / "work" / "agent-memory" / "attempts.jsonl", dict(kind="auto_error",
+                            date=datetime.now(timezone.utc).isoformat(), client=area["client"], area=area["id"], phase=phase, profile=profile,
+                            outcome="error", error=str(error), addresses=[t["addr"] for t in targets], evidence=str(directory)))
+                    finally:
+                        with condition:
+                            busy.discard((area["client"], targets[0]["addr"]))
+                            condition.notify_all()
+                event("slot_stopped", slot=slot)
 
-        with ThreadPoolExecutor(max_workers=workers) as pool:
-            list(pool.map(work, range(workers)))
-    (directory / "summary.json").write_text(json.dumps(totals, indent=2))
+            with ThreadPoolExecutor(max_workers=workers) as pool:
+                list(pool.map(work, range(workers)))
+    finally:
+        for _, rows in selected:
+            for row in rows:
+                agent_recovery.release(ROOT, row, server)
+    wall_elapsed = time.monotonic() - wall_started
+    first_checks = [row["first_check_seconds"] for row in recovery_metrics if row["first_check_seconds"] is not None]
+    median_first_check = statistics.median(first_checks) if first_checks else None
+    gain_rate = 3600 * (totals["matched"] + totals["improved"]) / max(.001, wall_elapsed)
+    (directory / "summary.json").write_text(json.dumps(dict(totals,
+        clients=have, profile=profile, workers=workers, selected_batches=len(selected),
+        selection="persistent_random", functions_per_agent=1, triage_seconds=120, recovery_metrics=recovery_metrics,
+        wall_elapsed_seconds=wall_elapsed, median_first_check_seconds=median_first_check,
+        verified_gains_per_hour=gain_rate,
+        verified_exacts_per_hour=3600 * totals["matched"] / max(.001, wall_elapsed),
+        batch_outcomes=dict(batch_outcomes), time_budget_seconds=minutes * 60,
+        elapsed_seconds=time.monotonic() - (deadline - minutes * 60),
+        stop_reason="cli_error" if model_unavailable.is_set() else "time_budget" if time.monotonic() >= deadline
+                    else "cycle_errors" if totals["errors"] else "selected_batches_finished"), indent=2))
     synced = agent_memory.shared(server, token, user, upload=True)
     if not synced["available"]:
         event("log", message=synced["error"] + "; attempts queued locally for next sync")
-    event("stage", message="Automatic complete: %d new verified exacts, %d partial gains, %d errors; %s" %
-          (totals["matched"], totals["improved"], totals["errors"], directory))
+    event("stage", message="Automatic complete: %d new verified exacts, %d partial gains, %d errors; "
+          "%.2f verified gains/hour; median first check %s; %s" %
+          (totals["matched"], totals["improved"], totals["errors"], gain_rate,
+           "%.1fs" % median_first_check if median_first_check is not None else "not recorded", directory))
     return totals

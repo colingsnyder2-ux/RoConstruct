@@ -19,7 +19,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 
-from roc import clients, match, setup
+from roc import clients, match, setup, integration as integration_protocol
 
 ROOT = Path(__file__).resolve().parent.parent
 USER_RE = re.compile(r"^[A-Za-z0-9_.-]{2,32}$")
@@ -796,17 +796,22 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
             self.send(404, {"error": "unknown endpoint"})
 
         def do_POST(self):
-            if (not urlparse(self.path).path.startswith("/v1/integration/")
+            path = urlparse(self.path).path
+            native = path.startswith("/v1/integration/")
+            if (not native
                     and token and self.headers.get("X-Roc-Token") != token):
                 return self.send(403, {"error": "wrong or missing server password (token)"})
+            if native and (not native_token or self.headers.get("X-Roc-Token") != native_token):
+                self.close_connection = True
+                return self.send(403 if native_token else 503, {"error": "Native integration token required"})
             try:
                 length = int(self.headers.get("Content-Length") or 0)
-                if length > 1 << 20:
+                if not 0 <= length <= (integration_protocol.MAX_REQUEST_BYTES if native else 1 << 20):
+                    self.close_connection = True
                     return self.send(413, {"error": "too large"})
                 body = json.loads(self.rfile.read(length) or b"{}")
             except (ValueError, json.JSONDecodeError):
                 return self.send(400, {"error": "bad json"})
-            path = urlparse(self.path).path
             user = str(body.get("user", ""))
             if path.startswith("/v1/integration/"):
                 if integration is None:
@@ -822,11 +827,13 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
                         if integration.worker_error:
                             return self.send(503, {"error": "Native verifier unavailable: " + integration.worker_error})
                         result = integration.claim(user, str(body.get("worker", "")),
-                                                   body.get("count", 1), body.get("unit"))
+                                                   body.get("count", 1), body.get("unit"),
+                                                   body.get("targets"), body.get("compact", False))
                     elif path.endswith("/submit"):
                         result = integration.submit(user, body)
                     elif path.endswith("/renew") or path.endswith("/release"):
-                        result = integration.renew(user, str(body.get("claim", "")), path.endswith("/release"), body.get("reason"))
+                        identifiers = body.get("claims", [str(body.get("claim", ""))])
+                        result = integration.renew_many(user, identifiers, path.endswith("/release"), body.get("reason"))
                     else:
                         return self.send(404, {"error": "Unknown integration action"})
                     return self.send(200, result)
