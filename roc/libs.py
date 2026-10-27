@@ -492,8 +492,10 @@ RECIPES["openrbx-raknet"] = dict(src=_OPENRBX + "3rdparty/RakNet30/Source", lang
                                   defines="WIN32 NDEBUG _LIB _VC80_UPGRADE=0x0710 _MBCS _CRT_SECURE_NO_WARNINGS _DLL")
 
 # Exact CRT/STL objects from each installed compiler. Fingerprint archive members directly.
+# 2008-06: msvcrt.lib/crtexew.obj proves 006a189b (75 bytes) and
+# 006a18e6 (479 bytes including its SEH tails), VS2008 RTM build 21022.
 RECIPES["msvc-crt"] = dict(archive=True, builds=[50727, 21022, 30729],
-                            files=["libcmt.lib", "libcpmt.lib"])
+                            files=["libcmt.lib", "libcpmt.lib", "msvcrt.lib"])
 
 # 2008-06 links shared MFC/CRT (/MD) plus the static parts of ATL and MFC: atls.lib and
 # mfcs90.lib from the VS2008 RTM Professional DVD (cab46/cab47 of archive.org's

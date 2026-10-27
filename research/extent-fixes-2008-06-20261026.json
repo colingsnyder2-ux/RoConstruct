@@ -1,0 +1,127 @@
+{
+  "client": "2008-06",
+  "review": "A+B+C approved by maintainer",
+  "binary_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "bounds": {
+    "005a20e0": 420,
+    "005dead0": 392,
+    "00685ea0": 6588,
+    "00687860": 6756,
+    "006892d0": 8940,
+    "005d11e0": 96,
+    "005d1240": 244,
+    "006a189b": 75,
+    "006a18e6": 479
+  },
+  "remove_standalone_data": [
+    {
+      "addr": "005a2250",
+      "size": 52,
+      "sha256": "d02993f9b62f8fb0c8923def2c0bbb7adaa949d12f60b8712786a6618ca99eec",
+      "reason": "13 relocated switch targets in 005a20e0, dispatched by jmp [eax*4+005a2250] at 005a2137; every entry points inside the function."
+    },
+    {
+      "addr": "005dec40",
+      "size": 24,
+      "sha256": "b2fac14c104d01170d062599639dca821e59c2162257568cf4f9cbd7b1fe7caf",
+      "reason": "Six relocated switch targets, dispatched by jmp [eax*4+005dec40] at 005debd0; targets lie in the preceding function."
+    },
+    {
+      "addr": "0068784a",
+      "size": 18,
+      "sha256": "94c87143e7ea08ef9fed4db3e2475e8c2ed3b53d3326e55653d742c641bda91a",
+      "reason": "Two-byte padding followed by four switch targets at 0068784c; indirect switch dispatch references the table."
+    },
+    {
+      "addr": "006892b2",
+      "size": 18,
+      "sha256": "3fd6513a8bb5f940e5b8e0b347eb703f38a7e0eb3fe5770440907d81d6b5a977",
+      "reason": "Two-byte padding followed by four switch targets at 006892b4; indirect switch dispatch references the table."
+    },
+    {
+      "addr": "0068b5ac",
+      "size": 16,
+      "sha256": "458c23c430f2a18cc4e294655b9d974325bef17b0f68725876eb698898c9185b",
+      "reason": "Four relocated switch targets; jmp [eax*4+0068b5ac] at 006895d1."
+    }
+  ],
+  "crt": [
+    {
+      "addr": "006a189b",
+      "size": 75,
+      "symbol": "_pre_cpp_init",
+      "member": "f:\\dd\\vctools\\crt_bld\\SELF_X86\\crt\\src\\build\\INTEL\\dll_obj\\crtexew.obj",
+      "build": 21022,
+      "sha256": "45300b11859a02db62711ffaa9781d2f246fcdc5f1b499a1fa2fd6d4a9844b23"
+    },
+    {
+      "addr": "006a18e6",
+      "size": 479,
+      "symbol": "___tmainCRTStartup",
+      "member": "f:\\dd\\vctools\\crt_bld\\SELF_X86\\crt\\src\\build\\INTEL\\dll_obj\\crtexew.obj",
+      "build": 21022,
+      "sha256": "45300b11859a02db62711ffaa9781d2f246fcdc5f1b499a1fa2fd6d4a9844b23"
+    }
+  ],
+  "split_B": {
+    "addr": "005d11e0",
+    "first_size": 96,
+    "second_addr": "005d1240",
+    "second_size": 244,
+    "evidence": "ret 4 at 005d123d ends at 005d1240; all prior conditional branches remain in first half; fresh SEH prologue at 005d1240"
+  },
+  "startup_EH": {
+    "owner": "006a18e6",
+    "end": "006a1ac5",
+    "retired": [
+      "006a1a74",
+      "006a1aac",
+      "006a1ab0"
+    ],
+    "evidence": "Full 479-byte crtexew.obj symbol matches, including EH tails and its embedded 4-byte filter"
+  },
+  "checks": {
+    "boundary_tests": 64,
+    "scorer_changed": false,
+    "milestones": {
+      "M2": 0,
+      "M4a": 0,
+      "M5": 0
+    },
+    "rbxgs_owned": 2915,
+    "distinct_rebuild": 9601,
+    "rebuild_webhook": "HTTP 404",
+    "size": {
+      "checked": 85,
+      "matches": 83,
+      "existing_mismatches": {
+        "ContentProvider": 276,
+        "Shirt": 20
+      },
+      "new_mismatches": 0
+    },
+    "base": {
+      "checked": 119,
+      "differ": 0,
+      "existing_probe_failures": [
+        "util/ContentProvider.h",
+        "v8datamodel/Gyro.h"
+      ],
+      "runner": "existing roc.integration_verify.run; identical base_check.py probes with pinned installed tool paths"
+    }
+  },
+  "verified_exact_addrs": [
+    "005dead0",
+    "00687860",
+    "006a189b",
+    "006a18e6"
+  ],
+  "net_exact_gain": 3,
+  "verified_partial_scores": {
+    "005a20e0": 97,
+    "00685ea0": 91,
+    "006892d0": 93,
+    "005d1240": 96
+  },
+  "server_verified": true
+}
