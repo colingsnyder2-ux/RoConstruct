@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-27 17:09 UTC",
+ "updated": "2026-10-27 18:16 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -191,15 +191,15 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22290,
-   "matched": 22129,
-   "partial": 159,
-   "source_matched": 13727,
-   "mined_matched": 8402,
+   "matched": 22132,
+   "partial": 157,
+   "source_matched": 13729,
+   "mined_matched": 8403,
    "bytes": 3736236,
-   "matched_bytes": 3556705,
-   "source_bytes": 2677412,
-   "mined_bytes": 879293,
-   "partial_bytes": 179121,
+   "matched_bytes": 3558641,
+   "source_bytes": 2678502,
+   "mined_bytes": 880139,
+   "partial_bytes": 177354,
    "data_bytes": 1559926,
    "leaderboard": [
     {
@@ -233,16 +233,16 @@
     {
      "user": "EspClaude",
      "matched": 432,
-     "points": 14296,
-     "submissions": 620,
-     "last": 1793120318.4921358
+     "points": 14385,
+     "submissions": 621,
+     "last": 1793121652.8481297
     },
     {
      "user": "coldek",
-     "matched": 118,
-     "points": 9520,
-     "submissions": 243,
-     "last": 1793120557.1321933
+     "matched": 121,
+     "points": 9574,
+     "submissions": 248,
+     "last": 1793122911.646417
     },
     {
      "user": "atomic.potato",
@@ -343,7 +343,7 @@
      "last": 1792711202.627472
     }
    ],
-   "data_matched_bytes": 200830,
+   "data_matched_bytes": 200905,
    "classes": 1488,
    "generated": 18920
   },
@@ -692,9 +692,9 @@
   {
    "user": "EspClaude",
    "matched": 432,
-   "points": 14296,
-   "submissions": 620,
-   "last": 1793120318.4921358
+   "points": 14385,
+   "submissions": 621,
+   "last": 1793121652.8481297
   },
   {
    "user": "why2",
@@ -705,10 +705,10 @@
   },
   {
    "user": "coldek",
-   "matched": 118,
-   "points": 9520,
-   "submissions": 243,
-   "last": 1793120557.1321933
+   "matched": 121,
+   "points": 9574,
+   "submissions": 248,
+   "last": 1793122911.646417
   },
   {
    "user": "sophus",
