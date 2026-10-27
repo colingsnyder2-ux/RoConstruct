@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-27 16:03 UTC",
+ "updated": "2026-10-27 17:09 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -191,15 +191,15 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22290,
-   "matched": 22120,
-   "partial": 166,
-   "source_matched": 13725,
-   "mined_matched": 8395,
+   "matched": 22129,
+   "partial": 159,
+   "source_matched": 13727,
+   "mined_matched": 8402,
    "bytes": 3736236,
-   "matched_bytes": 3551587,
-   "source_bytes": 2676437,
-   "mined_bytes": 875150,
-   "partial_bytes": 183907,
+   "matched_bytes": 3556705,
+   "source_bytes": 2677412,
+   "mined_bytes": 879293,
+   "partial_bytes": 179121,
    "data_bytes": 1559926,
    "leaderboard": [
     {
@@ -226,23 +226,23 @@
     {
      "user": "Espeon",
      "matched": 596,
-     "points": 15443,
-     "submissions": 924,
-     "last": 1792855475.7892122
+     "points": 15447,
+     "submissions": 925,
+     "last": 1793120804.6138275
     },
     {
      "user": "EspClaude",
-     "matched": 427,
-     "points": 13955,
-     "submissions": 613,
-     "last": 1792951995.002091
+     "matched": 432,
+     "points": 14296,
+     "submissions": 620,
+     "last": 1793120318.4921358
     },
     {
      "user": "coldek",
-     "matched": 114,
-     "points": 9468,
-     "submissions": 236,
-     "last": 1793116915.8958309
+     "matched": 118,
+     "points": 9520,
+     "submissions": 243,
+     "last": 1793120557.1321933
     },
     {
      "user": "atomic.potato",
@@ -343,7 +343,7 @@
      "last": 1792711202.627472
     }
    ],
-   "data_matched_bytes": 200774,
+   "data_matched_bytes": 200830,
    "classes": 1488,
    "generated": 18920
   },
@@ -685,16 +685,16 @@
   {
    "user": "Espeon",
    "matched": 596,
-   "points": 15443,
-   "submissions": 924,
-   "last": 1792855475.7892122
+   "points": 15447,
+   "submissions": 925,
+   "last": 1793120804.6138275
   },
   {
    "user": "EspClaude",
-   "matched": 427,
-   "points": 13955,
-   "submissions": 613,
-   "last": 1792951995.002091
+   "matched": 432,
+   "points": 14296,
+   "submissions": 620,
+   "last": 1793120318.4921358
   },
   {
    "user": "why2",
@@ -705,10 +705,10 @@
   },
   {
    "user": "coldek",
-   "matched": 114,
-   "points": 9468,
-   "submissions": 236,
-   "last": 1793116915.8958309
+   "matched": 118,
+   "points": 9520,
+   "submissions": 243,
+   "last": 1793120557.1321933
   },
   {
    "user": "sophus",
