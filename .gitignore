@@ -42,3 +42,4 @@ dist/
 
 # Website data: published to the gh-pages branch, never committed to main
 docs/data/
+docs/integration.json

@@ -1181,6 +1181,11 @@ def _publish_once(store, public_url, log=print):
             rebuild.progress(client_dir.parent.name, notify=True, log=log)
     except Exception as error:  # reporting only; never fail a publish
         log("Rebuild progress update failed: %s" % error)
+    try:
+        from roc import integration_site
+        integration_site.build(log=log)  # docs/integration.json: gh-pages only, like per-function data
+    except Exception as error:  # reporting only; never fail a publish
+        log("Integration site update failed: %s" % error)
     publish_pages(git_exe, log)
     # main keeps only the small progress files, so its history still shows progress over
     # time; per-function data lives only in the history-free gh-pages commit.

@@ -81,6 +81,13 @@ code { color: var(--accent2); font-family: var(--mono); font-size: .92em; }
 .bar.code .p { background: repeating-linear-gradient(135deg, #216841 0 5px, #193d2a 5px 10px); background-size: 14px 14px; animation: progress-stripes .8s linear infinite; }
 @keyframes progress-stripes { to { background-position: 14px 0; } }
 @media (prefers-reduced-motion: reduce) { .bar.code .p { animation: none; } }
+.bar.native i { border-radius: 0; }
+.bar.native .n { background: #a855f7; } .bar.native .e { background: #58a6ff; }
+.bar.native .y { background: #d29922; } .bar.native .u { background: #3a3d45; }
+.jobs-wrap { overflow-x: auto; }
+.jobs { width: 100%; border-collapse: collapse; font: 13px var(--mono); margin-top: 10px; }
+.jobs th, .jobs td { text-align: left; padding: 6px 8px; border-bottom: 1px solid #22293a; }
+.jobs td.num { text-align: right; font-variant-numeric: tabular-nums; }
 
 /* panels and sections */
 .panel { box-shadow: 0 0 28px rgba(47, 107, 255, 0.09), inset 0 0 14px rgba(56, 200, 255, 0.02); border: 1px solid var(--line2); border-radius: 14px; background: rgba(15, 21, 32, .7); padding: 14px; }
@@ -289,7 +296,7 @@ const cache = new Map();
 const liveScores = new Map();
 const liveFunctions = new Map();
 let liveView = null;
-let progress, history = [], hIdx = -1, rebuildData = {};
+let progress, history = [], hIdx = -1, rebuildData = {}, integrationData = null;
 const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
                 "November", "December"];
 const ICON = {
@@ -459,6 +466,37 @@ function rebuildSection(r) {
     <p class="note">${esc(r.next || "")}</p>`;
 }
 
+/* Native integration: mined functions placed into the real rebuilt source tree, reproduced byte-exact by the
+   linked rebuild (docs/integration.json, published hourly). Same groups as the Discord integration digest. */
+function integrationSection(i, name) {
+  if (!i || i.client !== name) return "";
+  const g = i.groups, total = Object.values(g).reduce((a, x) => a + x.bytes, 0) || 1;
+  const funcs = Object.values(g).reduce((a, x) => a + x.functions, 0);
+  const w = n => (100 * n / total).toFixed(3) + "%";
+  const jobs = (i.jobs || []).slice(0, 8).map(j => `<tr><td>${esc(j.when)}</td><td><code>${esc(j.job)}</code></td>
+    <td>${esc(j.user)} · ${esc(j.model)}</td><td title="${esc(j.units)}">${esc(j.units.length > 48 ? j.units.slice(0, 48) + "…" : j.units)}</td>
+    <td class="num" title="${fmt(j.gains)} new module-owned bodies">+${fmt(j.distinct_gains ?? j.gains)}</td><td class="num">${fmt(j.owned_after || 0)}</td></tr>`).join("");
+  const leaders = (i.leaderboard || []).map(l => `${esc(l.user)} <small>(${esc(l.model)})</small> <b>${fmt(l.native_credits)}</b>`).join(" · ");
+  return `
+    <div class="head" id="integration"><h2><small>Rebuild</small>Integration</h2>
+      <p>Functions reproduced byte-exact across linked rebuild modules, including native rbxgs integrations · ${esc(i.updated)}</p></div>
+    <div class="stats">
+      <div class="stat"><div class="ico">${ICON.code}</div><div><b>${fmt(g.integrated.functions)}</b><span>Integrated</span></div></div>
+      <div class="stat"><div class="ico">${ICON.chart}</div><div><b>${fmt(g.exact_waiting.functions)}</b><span>Exact waiting</span></div></div>
+      <div class="stat red"><div class="ico">${ICON.file}</div><div><b>${fmt(funcs - g.integrated.functions)}</b><span>Not integrated</span></div></div>
+    </div>
+    <div class="label">Integrated code <small>(${mb(g.integrated.bytes)} of ${mb(total)}) — ${pct(g.integrated.bytes, total)}</small></div>
+    <div class="bar native" role="progressbar" aria-label="Integrated code bytes" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${(100 * g.integrated.bytes / total).toFixed(2)}"><i class="n" style="width:${w(g.integrated.bytes)}"></i><i class="e" style="width:${w(g.exact_waiting.bytes)}"></i>
+      <i class="y" style="width:${w(g.partial.bytes)}"></i><i class="u" style="width:${w(g.unmined.bytes)}"></i></div>
+    <div class="legend"><span><i style="background:#a855f7"></i>integrated ${fmt(g.integrated.functions)}</span>
+      <span><i style="background:#58a6ff"></i>exact, waiting ${fmt(g.exact_waiting.functions)}</span>
+      <span><i style="background:#d29922"></i>partial ${fmt(g.partial.functions)}</span>
+      <span><i style="background:#3a3d45"></i>unmined ${fmt(g.unmined.functions)}</span></div>
+    <p class="note">Switch the unit map below to <b>Integration</b> to see which functions are integrated; click a tile for its real method name.
+      Native credits: ${leaders || "none yet"}. Credits count newly covered addresses; module-owned totals can include shared functions.</p>
+    ${jobs ? `<div class="jobs-wrap"><table class="jobs"><thead><tr><th>Accepted</th><th>Job</th><th>By</th><th>Classes</th><th class="num">New coverage</th><th class="num">Module owned</th></tr></thead><tbody>${jobs}</tbody></table></div>` : ""}`;
+}
+
 /* One click opens the console, which then asks the two things that matter:
    cloud or local model, and how the worker should run. The link only carries
    which client and which server - every other choice stays in the terminal,
@@ -598,6 +636,11 @@ function parseFilter(text, units) {
   }
   return f => tests.every(t => t(f));
 }
+
+const MINING_LEGEND = `<span><i style="background:#58a6ff"></i>original source</span><span><i style="background:#3fb950"></i>mined match</span>
+      <span><i style="background:#216841"></i>partial source</span><span><i style="background:#3a3d45"></i>source pending</span>`;
+const NATIVE_LEGEND = `<span><i style="background:#a855f7"></i>integrated</span><span><i style="background:#58a6ff"></i>exact, waiting</span>
+      <span><i style="background:#d29922"></i>partial</span><span><i style="background:#3a3d45"></i>unmined</span>`;
 
 function color(score, original, harness) {
   if (score === 100 && !original && !harness) return "#3a3d45";
@@ -758,6 +801,9 @@ async function client(name) {
     return;
   }
   const c = statsFor(latest);
+  const native = integrationData && integrationData.client === name ? integrationData : null;
+  const nativeSet = new Set(native ? native.native : []);
+  let mapMode = "mining";
   if (!cache.has(name)) cache.set(name, await (await fetch(`data/${encodeURIComponent(name)}.json`, {cache: "no-cache"})).json());
   const data = cache.get(name), units = data.units;
   const applyScores = () => {
@@ -810,16 +856,17 @@ async function client(name) {
     <div style="margin-top:20px">${commitPanel()}</div>
     ${libraryTable(data)}
     ${rebuildSection(rebuildData?.clients?.[name])}
+    ${integrationSection(integrationData, name)}
     <div class="head"><h2><small>Map</small>Units</h2><p>${fmt(units.length)} units (classes from RTTI). The map always shows the latest state.</p></div>
     <div id="mapgroup" class="mapgroup" hidden></div>
     <div class="controls">
-      <select id="unit"><option value="">All</option>${unitOrder.map(u =>
+      ${native ? `<select id="mapmode" aria-label="Map mode"><option value="mining">Mining</option><option value="native">Integration</option></select>` : ""}
+      <select id="unit" aria-label="Unit"><option value="">All</option>${unitOrder.map(u =>
         `<option value="${u}">${esc(units[u])}</option>`).join("")}</select>
       <input id="filter" placeholder="Filter, e.g.: 'Instance <70% >1kb'">
     </div>
     <div class="map"><canvas id="cv"></canvas><div class="tip" id="tip"></div></div>
-    <div class="legend"><span><i style="background:#58a6ff"></i>original source</span><span><i style="background:#3fb950"></i>mined match</span>
-      <span><i style="background:#216841"></i>partial source</span><span><i style="background:#3a3d45"></i>source pending</span></div>
+    <div class="legend" id="maplegend">${MINING_LEGEND}</div>
     <div class="detail" id="detail">Click a tile to see its function address, match score, and recovered source.</div>
     <div id="live-mining">${miningGraph({...latest,
       source_matched: latest.source_matched ?? data.funcs.filter(f => f[2] === 100 && f[5]).length,
@@ -882,7 +929,7 @@ async function client(name) {
     g.fillStyle = "#1d1f24"; g.fillRect(0, 0, cv.width, cv.height);
     for (const b of boxes) {
       g.globalAlpha = keep(b.f) ? 1 : 0.2;
-      g.fillStyle = color(b.f[2], b.f[5], b.f[4]);
+      g.fillStyle = mapMode === "native" ? nativeColor(b.f) : color(b.f[2], b.f[5], b.f[4]);
       g.fillRect(b.x, b.y, b.w, b.h);
       if (b.w > 4 && b.h > 4) { g.strokeStyle = "#2a2c33"; g.lineWidth = 0.5; g.strokeRect(b.x, b.y, b.w, b.h); }
     }
@@ -897,7 +944,11 @@ async function client(name) {
   cv.onmousemove = e => {
     const {x, y, b} = hit(e);
     if (!b) { tip.style.display = "none"; return; }
-    tip.textContent = `${units[b.f[3]]} • ${hex(b.f[0])} • ${fmt(b.f[1])} B • ${b.f[2]}%` + (b.f[6] ? ` • family ${b.f[6]}` : "");
+    const named = native && native.names[hex(b.f[0])];
+    tip.textContent = mapMode === "native"
+      ? `${named ? named[0] : units[b.f[3]]} • ${hex(b.f[0])} • ${fmt(b.f[1])} B • ${nativeSet.has(hex(b.f[0])) ? "integrated" :
+         b.f[2] === 100 ? "exact, waiting" : b.f[2] ? b.f[2] + "% mined" : "unmined"}`
+      : `${units[b.f[3]]} • ${hex(b.f[0])} • ${fmt(b.f[1])} B • ${b.f[2]}%` + (b.f[6] ? ` • family ${b.f[6]}` : "");
     tip.style.display = "block";
     tip.style.left = Math.max(0, Math.min(x + 12, cv.clientWidth - tip.offsetWidth)) + "px";
     tip.style.top = (y + 16) + "px";
@@ -908,13 +959,26 @@ async function client(name) {
     if (!b) return;
     const f = b.f;
     const source = sourceLinks(name, f);
+    const named = native && native.names[hex(f[0])], integrated = nativeSet.has(hex(f[0]));
+    const nativeLine = !native ? "" : integrated
+      ? `<br><b style="color:#a855f7">Integrated</b> in the linked rebuild${named ? ` as <code>${esc(named[0])}</code>` : ""}`
+      : named ? `<br>Real method: <code>${esc(named[0])}</code> · rebuilt code ${named[2] ?? "?"}% · not integrated yet`
+      : `<br>Not integrated yet`;
     document.getElementById("detail").innerHTML =
-      `<strong>${esc(units[f[3]])}</strong><br>${hex(f[0])} • ${fmt(f[1])} bytes • ${f[2]}% matched` +
+      `<strong>${esc(units[f[3]])}</strong>${nativeLine}<br>${hex(f[0])} • ${fmt(f[1])} bytes • ${f[2]}% matched` +
+      (named ? `<br><small>Symbol <code>${esc(named[1])}</code></small>` : "") +
       (f[6] ? `<br>Family: <code>${esc(f[6])}</code>` : "") + `<br>` +
       `${source}${f[5] && f[2] < 100 ? "<br>No verified upstream source for this function. Library build recipes describe candidates; their file names do not establish function identity." : ""}<br>Work on it: <code>roc claim ${esc(name)} ${hex(f[0])}</code>`;
   };
   unitSel.onchange = layout;
   filter.oninput = () => { keep = parseFilter(filter.value, units); draw(); };
+  const modeSel = document.getElementById("mapmode");
+  if (modeSel) modeSel.onchange = () => {
+    mapMode = modeSel.value;
+    document.getElementById("maplegend").innerHTML = mapMode === "native" ? NATIVE_LEGEND : MINING_LEGEND;
+    draw();
+  };
+  const nativeColor = f => nativeSet.has(hex(f[0])) ? "#a855f7" : f[2] === 100 ? "#58a6ff" : f[2] ? "#d29922" : "#3a3d45";
   onresize = layout;
   layout();
 
@@ -993,9 +1057,11 @@ Promise.all([
   fetch("history.json", {cache: "no-cache"}).then(r => r.ok ? r.json() : []).catch(() => []),
   fetch("source-links.json", {cache: "no-cache"}).then(r => r.ok ? r.json() : {}).catch(() => ({})),
   fetch("rebuild-progress.json", {cache: "no-cache"}).then(r => r.ok ? r.json() : {}).catch(() => ({})),
-]).then(([p, h, sources, rebuild]) => {
+  fetch("integration.json", {cache: "no-cache"}).then(r => r.ok ? r.json() : null).catch(() => null),
+]).then(([p, h, sources, rebuild, native]) => {
   sourceCatalog = sources;
   rebuildData = rebuild || {};
+  integrationData = native;
   progress = p; history = h; hIdx = h.length - 1;
   route();
   if (!progress.clients.some(c => c.name === decodeURIComponent(location.hash.slice(1)))) refreshLiveProgress();
