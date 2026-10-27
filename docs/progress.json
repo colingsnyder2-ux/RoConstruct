@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-27 09:14 UTC",
+ "updated": "2026-10-27 10:39 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -191,14 +191,14 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22289,
-   "matched": 22100,
+   "matched": 22102,
    "partial": 183,
-   "source_matched": 13709,
-   "mined_matched": 8391,
+   "source_matched": 13710,
+   "mined_matched": 8392,
    "bytes": 3736275,
-   "matched_bytes": 3543058,
-   "source_bytes": 2668355,
-   "mined_bytes": 874703,
+   "matched_bytes": 3543159,
+   "source_bytes": 2668413,
+   "mined_bytes": 874746,
    "partial_bytes": 192585,
    "data_bytes": 1559926,
    "leaderboard": [
@@ -238,18 +238,18 @@
      "last": 1792951995.002091
     },
     {
+     "user": "coldek",
+     "matched": 96,
+     "points": 8703,
+     "submissions": 210,
+     "last": 1793097163.6679134
+    },
+    {
      "user": "atomic.potato",
      "matched": 94,
      "points": 42624,
      "submissions": 787,
      "last": 1792327184.7020433
-    },
-    {
-     "user": "coldek",
-     "matched": 94,
-     "points": 8503,
-     "submissions": 208,
-     "last": 1793088071.4981225
     },
     {
      "user": "nuck16",
@@ -395,9 +395,9 @@
     {
      "user": "sophus",
      "matched": 8,
-     "points": 505,
-     "submissions": 77,
-     "last": 1792951068.0827153
+     "points": 506,
+     "submissions": 78,
+     "last": 1793096985.8275137
     },
     {
      "user": "TrollStein",
@@ -712,17 +712,17 @@
   },
   {
    "user": "coldek",
-   "matched": 94,
-   "points": 8503,
-   "submissions": 208,
-   "last": 1793088071.4981225
+   "matched": 96,
+   "points": 8703,
+   "submissions": 210,
+   "last": 1793097163.6679134
   },
   {
    "user": "sophus",
    "matched": 65,
-   "points": 4608,
-   "submissions": 457,
-   "last": 1793008171.2474282
+   "points": 4609,
+   "submissions": 458,
+   "last": 1793096985.8275137
   },
   {
    "user": "intel",
