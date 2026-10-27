@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-27 06:20 UTC",
+ "updated": "2026-10-27 07:29 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -191,15 +191,15 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22285,
-   "matched": 22089,
-   "partial": 196,
-   "source_matched": 13703,
-   "mined_matched": 8386,
+   "matched": 22093,
+   "partial": 192,
+   "source_matched": 13705,
+   "mined_matched": 8388,
    "bytes": 3736281,
-   "matched_bytes": 3539280,
-   "source_bytes": 2665737,
-   "mined_bytes": 873543,
-   "partial_bytes": 197001,
+   "matched_bytes": 3541447,
+   "source_bytes": 2667056,
+   "mined_bytes": 874391,
+   "partial_bytes": 194834,
    "data_bytes": 1559926,
    "leaderboard": [
     {
@@ -218,10 +218,10 @@
     },
     {
      "user": "king_originala",
-     "matched": 2925,
-     "points": 280225,
-     "submissions": 6073,
-     "last": 1793081609.201001
+     "matched": 2926,
+     "points": 280305,
+     "submissions": 6075,
+     "last": 1793085970.6673372
     },
     {
      "user": "Espeon",
@@ -246,10 +246,10 @@
     },
     {
      "user": "coldek",
-     "matched": 86,
-     "points": 8465,
-     "submissions": 198,
-     "last": 1793081003.31972
+     "matched": 89,
+     "points": 8472,
+     "submissions": 201,
+     "last": 1793086010.5283196
     },
     {
      "user": "nuck16",
@@ -559,15 +559,15 @@
    "built": "2012-06-13",
    "started": true,
    "functions": 39664,
-   "matched": 15331,
-   "partial": 11842,
+   "matched": 15362,
+   "partial": 11811,
    "source_matched": 8250,
-   "mined_matched": 7081,
+   "mined_matched": 7112,
    "bytes": 6671341,
-   "matched_bytes": 1192460,
+   "matched_bytes": 1194486,
    "source_bytes": 1035933,
-   "mined_bytes": 156527,
-   "partial_bytes": 2090622,
+   "mined_bytes": 158553,
+   "partial_bytes": 2088596,
    "data_bytes": 3396596,
    "leaderboard": [
     {
@@ -606,6 +606,13 @@
      "last": 1792737846.25266
     },
     {
+     "user": "tajop",
+     "matched": 32,
+     "points": 404,
+     "submissions": 34,
+     "last": 1793084663.1028392
+    },
+    {
      "user": "Viper",
      "matched": 7,
      "points": 864,
@@ -618,13 +625,6 @@
      "points": 563,
      "submissions": 49,
      "last": 1793006682.5404394
-    },
-    {
-     "user": "tajop",
-     "matched": 1,
-     "points": 3,
-     "submissions": 1,
-     "last": 1793078175.0117922
     },
     {
      "user": "TrollStein",
@@ -641,7 +641,7 @@
      "last": 1792731000.013161
     }
    ],
-   "data_matched_bytes": 62507,
+   "data_matched_bytes": 62519,
    "classes": 2176,
    "generated": 29623
   }
@@ -663,10 +663,10 @@
   },
   {
    "user": "king_originala",
-   "matched": 2925,
-   "points": 280225,
-   "submissions": 6073,
-   "last": 1793081609.201001
+   "matched": 2926,
+   "points": 280305,
+   "submissions": 6075,
+   "last": 1793085970.6673372
   },
   {
    "user": "nuck16",
@@ -712,10 +712,10 @@
   },
   {
    "user": "coldek",
-   "matched": 86,
-   "points": 8465,
-   "submissions": 198,
-   "last": 1793081003.31972
+   "matched": 89,
+   "points": 8472,
+   "submissions": 201,
+   "last": 1793086010.5283196
   },
   {
    "user": "sophus",
@@ -737,6 +737,13 @@
    "points": 35,
    "submissions": 33,
    "last": 1792513428.7999606
+  },
+  {
+   "user": "tajop",
+   "matched": 32,
+   "points": 404,
+   "submissions": 34,
+   "last": 1793084663.1028392
   },
   {
    "user": "king_originala_sol_native",
@@ -821,13 +828,6 @@
    "points": 1043,
    "submissions": 21,
    "last": 1791477118.6140368
-  },
-  {
-   "user": "tajop",
-   "matched": 1,
-   "points": 3,
-   "submissions": 1,
-   "last": 1793078175.0117922
   },
   {
    "user": "Bob535653",
