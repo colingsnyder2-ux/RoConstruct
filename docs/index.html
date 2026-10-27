@@ -296,7 +296,7 @@ const cache = new Map();
 const liveScores = new Map();
 const liveFunctions = new Map();
 let liveView = null;
-let progress, history = [], hIdx = -1, rebuildData = {}, integrationData = null;
+let progress, history = [], hIdx = -1, integrationData = null;
 const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
                 "November", "December"];
 const ICON = {
@@ -445,34 +445,27 @@ function codeBar(source, mined, partial, total) {
          `<i class="m" style="width:${width(mined)}%"></i><i class="p" style="width:${width(partial)}%"></i></div>`;
 }
 
-function rebuildBar(label, value, total, invert = false) {
-  const shown = invert ? (total - value) : value;
-  return `<div class="label">${esc(label)} <small>(${fmt(value)} / ${fmt(total)})</small></div>` +
-    bar(shown, 0, total, invert ? "g" : "");
-}
-
-function rebuildSection(r) {
-  if (!r || !r.bars) return "";
-  const b = r.bars;
-  return `
-    <div class="head"><h2><small>Rebuild</small>${esc(r.phaseLabel || "Rebuild")}</h2>
-      <p>Phase ${esc(r.phase || "?")} - ${pct((r.overall || 0) * 100, 100)} byte-exact in rebuilt code</p></div>
-    ${rebuildBar(b.compiled.label, b.compiled.value, b.compiled.total)}
-    ${rebuildBar(b.linked.label, b.linked.value, b.linked.total)}
-    ${rebuildBar(b.exact.label, b.exact.value, b.exact.total)}
-    ${rebuildBar(b.unresolved.label, b.unresolved.value, b.unresolved.total, true)}
-    ${rebuildBar(b.stubs.label, b.stubs.value, b.stubs.total, true)}
-    ${rebuildBar(b.runtime.label, b.runtime.value, b.runtime.total)}
-    <p class="note">${esc(r.next || "")}</p>`;
-}
-
 /* Native integration: mined functions placed into the real rebuilt source tree, reproduced byte-exact by the
    linked rebuild (docs/integration.json, published hourly). Same groups as the Discord integration digest. */
-function integrationSection(i, name) {
+function integrationBar(i, name) {
   if (!i || i.client !== name) return "";
   const g = i.groups, total = Object.values(g).reduce((a, x) => a + x.bytes, 0) || 1;
-  const funcs = Object.values(g).reduce((a, x) => a + x.functions, 0);
   const w = n => (100 * n / total).toFixed(3) + "%";
+  return `
+    <div class="label">Integrated code <small>(${mb(g.integrated.bytes)} of ${mb(total)}) — ${pct(g.integrated.bytes, total)}</small></div>
+    <div class="bar native" role="progressbar" aria-label="Integrated code bytes" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${(100 * g.integrated.bytes / total).toFixed(2)}"><i class="n" style="width:${w(g.integrated.bytes)}"></i><i class="e" style="width:${w(g.exact_waiting.bytes)}"></i>
+      <i class="y" style="width:${w(g.partial.bytes)}"></i><i class="u" style="width:${w(g.unmined.bytes)}"></i></div>
+    <div class="legend"><span><i style="background:#a855f7"></i>integrated ${fmt(g.integrated.functions)}</span>
+      <span><i style="background:#58a6ff"></i>exact, waiting ${fmt(g.exact_waiting.functions)}</span>
+      <span><i style="background:#d29922"></i>partial ${fmt(g.partial.functions)}</span>
+      <span><i style="background:#3a3d45"></i>unmined ${fmt(g.unmined.functions)}</span></div>
+`;
+}
+
+function integrationSection(i, name) {
+  if (!i || i.client !== name) return "";
+  const g = i.groups;
+  const funcs = Object.values(g).reduce((a, x) => a + x.functions, 0);
   const jobs = (i.jobs || []).slice(0, 8).map(j => `<tr><td>${esc(j.when)}</td><td><code>${esc(j.job)}</code></td>
     <td>${esc(j.user)} · ${esc(j.model)}</td><td title="${esc(j.units)}">${esc(j.units.length > 48 ? j.units.slice(0, 48) + "…" : j.units)}</td>
     <td class="num" title="${fmt(j.gains)} new module-owned bodies">+${fmt(j.distinct_gains ?? j.gains)}</td><td class="num">${fmt(j.owned_after || 0)}</td></tr>`).join("");
@@ -485,13 +478,6 @@ function integrationSection(i, name) {
       <div class="stat"><div class="ico">${ICON.chart}</div><div><b>${fmt(g.exact_waiting.functions)}</b><span>Exact waiting</span></div></div>
       <div class="stat red"><div class="ico">${ICON.file}</div><div><b>${fmt(funcs - g.integrated.functions)}</b><span>Not integrated</span></div></div>
     </div>
-    <div class="label">Integrated code <small>(${mb(g.integrated.bytes)} of ${mb(total)}) — ${pct(g.integrated.bytes, total)}</small></div>
-    <div class="bar native" role="progressbar" aria-label="Integrated code bytes" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${(100 * g.integrated.bytes / total).toFixed(2)}"><i class="n" style="width:${w(g.integrated.bytes)}"></i><i class="e" style="width:${w(g.exact_waiting.bytes)}"></i>
-      <i class="y" style="width:${w(g.partial.bytes)}"></i><i class="u" style="width:${w(g.unmined.bytes)}"></i></div>
-    <div class="legend"><span><i style="background:#a855f7"></i>integrated ${fmt(g.integrated.functions)}</span>
-      <span><i style="background:#58a6ff"></i>exact, waiting ${fmt(g.exact_waiting.functions)}</span>
-      <span><i style="background:#d29922"></i>partial ${fmt(g.partial.functions)}</span>
-      <span><i style="background:#3a3d45"></i>unmined ${fmt(g.unmined.functions)}</span></div>
     <p class="note">Switch the unit map below to <b>Integration</b> to see which functions are integrated; click a tile for its real method name.
       Native credits: ${leaders || "none yet"}. Credits count newly covered addresses; module-owned totals can include shared functions.</p>
     ${jobs ? `<div class="jobs-wrap"><table class="jobs"><thead><tr><th>Accepted</th><th>Job</th><th>By</th><th>Classes</th><th class="num">New coverage</th><th class="num">Module owned</th></tr></thead><tbody>${jobs}</tbody></table></div>` : ""}`;
@@ -850,12 +836,12 @@ async function client(name) {
     <div id="live-code"><div class="label">Code <small>(${mb(c.bytes)}) — ${pct(c.matched_bytes, c.bytes)}</small></div>
     ${codeBar(c.source_bytes || 0, c.mined_bytes ?? c.matched_bytes, c.partial_bytes || 0, c.bytes)}</div>
     <div class="legend"><span><i style="background:#58a6ff"></i>original source</span><span><i style="background:#3fb950"></i>mined</span><span><i style="background:repeating-linear-gradient(135deg,#216841 0 5px,#193d2a 5px 10px)"></i>partial source</span></div>
+    ${integrationBar(integrationData, name)}
     <div class="label">Data <small>(${mb(latest.data_bytes || 0)}) — ${pct(latest.data_matched_bytes || 0, latest.data_bytes)}
       verified (strings and constants used by matched functions)</small></div>
     ${bar(latest.data_matched_bytes || 0, 0, latest.data_bytes || 1, "b")}
     <div style="margin-top:20px">${commitPanel()}</div>
     ${libraryTable(data)}
-    ${rebuildSection(rebuildData?.clients?.[name])}
     ${integrationSection(integrationData, name)}
     <div class="head"><h2><small>Map</small>Units</h2><p>${fmt(units.length)} units (classes from RTTI). The map always shows the latest state.</p></div>
     <div id="mapgroup" class="mapgroup" hidden></div>
@@ -1056,11 +1042,9 @@ Promise.all([
   fetch("progress.json", {cache: "no-cache"}).then(r => r.json()),
   fetch("history.json", {cache: "no-cache"}).then(r => r.ok ? r.json() : []).catch(() => []),
   fetch("source-links.json", {cache: "no-cache"}).then(r => r.ok ? r.json() : {}).catch(() => ({})),
-  fetch("rebuild-progress.json", {cache: "no-cache"}).then(r => r.ok ? r.json() : {}).catch(() => ({})),
   fetch("integration.json", {cache: "no-cache"}).then(r => r.ok ? r.json() : null).catch(() => null),
-]).then(([p, h, sources, rebuild, native]) => {
+]).then(([p, h, sources, native]) => {
   sourceCatalog = sources;
-  rebuildData = rebuild || {};
   integrationData = native;
   progress = p; history = h; hIdx = h.length - 1;
   route();
