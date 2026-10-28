@@ -657,11 +657,12 @@ def run_generator(generator, root, timeout=120):
     started = time.monotonic()
     print("Generating native overlay...", flush=True)
     process = subprocess.Popen([sys.executable, "-u", str(generator)], cwd=root,
+                               stdin=subprocess.DEVNULL,
                                stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
                                creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
     while True:
         try:
-            output, _ = process.communicate(timeout=10)
+            output, _ = process.communicate(timeout=max(.01, min(10, timeout - (time.monotonic() - started))))
             break
         except subprocess.TimeoutExpired:
             elapsed = time.monotonic() - started
@@ -788,7 +789,7 @@ def command(args):
         if hashlib.sha256(generator.read_bytes()).hexdigest() != base["generator"]:
             raise SystemExit("Generator differs from server; preserve local edits, sync/update before claiming")
         atomic_json(generator.with_name("native-promotions.json"), base["accepted"])
-        subprocess.run([sys.executable, str(generator)], cwd=ROOT, check=True)
+        run_generator(generator, ROOT)
         if json.loads(overlay.read_text()) != base["overlay"]:
             raise SystemExit("Local overlay does not match the server baseline")
         identity_file = directory / "identity.json"
@@ -875,7 +876,7 @@ def command(args):
             raise SystemExit("Submit needs --model ACTUAL_MODEL (or human) and --evidence-file FILE")
         if len({c["base_revision"] for c in claims}) != 1:
             raise SystemExit("Batch claims have different bases; submit each baseline separately")
-        subprocess.run([sys.executable, str(generator)], cwd=ROOT, check=True)
+        run_generator(generator, ROOT)
         patches = overlay_delta(claims[0]["baseline"]["overlay"], json.loads(overlay.read_text(encoding="utf-8")))
         body = {"user": user, "claims": [c["id"] for c in claims], "model": args.model,
                 "base_revision": claims[0]["base_revision"], "patches": patches,

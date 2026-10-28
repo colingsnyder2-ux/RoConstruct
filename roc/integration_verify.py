@@ -196,7 +196,7 @@ def snapshot(root, destination, link=False):
         source, target = (root / name).resolve(), destination / name
         if os.name == "nt":
             subprocess.run(["cmd", "/c", "mklink", "/J", str(target), str(source)],
-                           check=True, capture_output=True)
+                           check=True, capture_output=True, stdin=subprocess.DEVNULL)
         else:
             target.symlink_to(source, target_is_directory=True)
     for name in ("work/2008-06", "local/units"):
@@ -297,7 +297,7 @@ else:
     with log.open("w", encoding="utf-8") as stream:
         try:
             subprocess.run([sys.executable, "-c", bootstrap, json.dumps(args)], cwd=root, env=env, stdout=stream,
-                           stderr=subprocess.STDOUT, check=True, timeout=4 * 3600)
+                           stderr=subprocess.STDOUT, stdin=subprocess.DEVNULL, check=True, timeout=4 * 3600)
         except subprocess.SubprocessError:
             stream.flush()
             tail = log.read_text(encoding="utf-8", errors="replace")[-2500:]
@@ -341,7 +341,7 @@ def linked_preflight(root, patches, output, log=print):
     root, output = Path(root), Path(output)
     log('Native preflight: validating cold setup and dependencies before baseline')
     subprocess.run([sys.executable, '-u', '-c', 'from roc.rebuild_install import prepare; prepare()'],
-                   cwd=root, check=True)
+                   cwd=root, stdin=subprocess.DEVNULL, check=True)
     base = json.loads((root / "rebuild/2008-06/patches/rbxgs-client.json").read_text())
     combined, _, dropped = preflight(root, base, patches)
     if dropped:
@@ -595,7 +595,7 @@ def publish(promotions, patches=None):
     try:
         atomic_json(path, promotions.accepted() if patches is None else patches)
         subprocess.run([sys.executable, str(promotions.generator)], cwd=promotions.root,
-                       check=True, capture_output=True, timeout=60)
+                       check=True, capture_output=True, stdin=subprocess.DEVNULL, timeout=60)
     except BaseException:
         if old_ledger is None:
             path.unlink(missing_ok=True)

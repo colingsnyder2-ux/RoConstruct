@@ -188,3 +188,29 @@ request before deployment took 10.828s for 123 available units; unlike the repla
 the live server also includes its accepted-job ledger. These are catalog timings,
 not complete linked-verification throughput. The benchmark never claimed targets,
 submitted jobs, called models or modified the server database.
+
+## Windows child startup deadlock
+
+The live controller repeatedly timed out after 120s while regenerating overlays.
+Its child Python process had consumed no CPU and produced no output. A minimal
+reproduction with a controller reading its open stdin pipe reproduced the problem
+twice: inherited child stdin timed out after 3.0s; explicit `DEVNULL` started and
+completed in 0.063s. The actual generator, copied with the same accepted ledger
+into a private fixture, then completed in 0.14s and produced exactly the server's
+accepted overlay. The copied stale local overlay differed, explaining why sync
+needed regeneration in the first place.
+
+Noninteractive generators, verifier commands, compiler wrappers and smoke processes
+now receive `DEVNULL`. Interactive worker/controller pipes keep their explicit
+input. Controller JSON uses one raw line iterator across initial configuration and
+subsequent commands; this preserves coalesced/split messages and avoids buffered
+stdin locks during shutdown. Generator timeouts also respect their remaining
+deadline rather than always waiting another ten seconds.
+
+Same dashboard-session restarts now retain their owned private workspace, including
+source edits, local proof history and dependency/build outputs. A per-session lock
+prevents simultaneous reuse, ownership markers reject another session's directory,
+and runtime updates leave native/rebuild inputs intact. New sessions remain isolated.
+Verification and content-cache invalidation still apply. Real Windows regression
+tests hold the controller input pipe open while exercising generator, verifier and
+compiler-wrapper children; no model requests or server database edits are involved.

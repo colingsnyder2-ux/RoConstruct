@@ -48,11 +48,11 @@ def install(root, client='2008-06', package=None):
         if not (cache / '.git').exists():
             subprocess.run(['git', 'clone', '--filter=blob:none', '--no-checkout', '--depth=1',
                             '--branch', 'main', 'https://github.com/colingsnyder2-ux/RoConstruct-findings.git',
-                            str(cache)], check=True)
+                            str(cache)], check=True, stdin=subprocess.DEVNULL)
         subprocess.run(['git', '-C', str(cache), 'sparse-checkout', 'set', '--cone',
                         *[client + '/' + folder for folder in
-                          ('config', 'patches', 'tests', 'scripts', 'src/glue', 'verification/manifests')]], check=True)
-        subprocess.run(['git', '-C', str(cache), 'checkout', 'main'], check=True)
+                          ('config', 'patches', 'tests', 'scripts', 'src/glue', 'verification/manifests')]], check=True, stdin=subprocess.DEVNULL)
+        subprocess.run(['git', '-C', str(cache), 'checkout', 'main'], check=True, stdin=subprocess.DEVNULL)
         package = cache / client
     copies = []
     for source, target in [('config', 'modules'), ('patches', 'patches'), ('tests', 'tests'),

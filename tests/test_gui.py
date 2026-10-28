@@ -94,7 +94,7 @@ class ControlTests(unittest.TestCase):
                 time.sleep(0.01)
             self.assertTrue(predicate())
 
-        with patch.object(sys, "stdin", stream), patch.object(gui_worker, "prepare_clients"), \
+        with patch.object(sys, "stdin", stream), patch.object(gui_worker, "command_lines", side_effect=iter), patch.object(gui_worker, "prepare_clients"), \
              patch.object(worker, "run", side_effect=run), \
              patch.object(worker, "keep_awake"), patch("builtins.print"):
             thread = threading.Thread(target=main, daemon=True)
@@ -134,7 +134,7 @@ class ControlTests(unittest.TestCase):
             deadline=time.time()+10
             while len(running)!=count and time.time()<deadline:time.sleep(.01)
             self.assertEqual(len(running),count)
-        with patch.object(sys,"stdin",stream),patch.object(gui_worker,"prepare_clients"),patch.object(worker,"run",side_effect=run),patch.object(worker,"keep_awake"),patch("builtins.print"):
+        with patch.object(sys,"stdin",stream),patch.object(gui_worker,"command_lines",side_effect=iter),patch.object(gui_worker,"prepare_clients"),patch.object(worker,"run",side_effect=run),patch.object(worker,"keep_awake"),patch("builtins.print"):
             thread=threading.Thread(target=main,daemon=True);thread.start()
             try:
                 wait_for(10)

@@ -52,7 +52,7 @@ def test_submit_restores_baseline_only_when_generator_is_unchanged(tmp_path, mon
     monkeypatch.setattr(native_try.native_sweep, 'ROOT', tmp_path)
     monkeypatch.setattr(native_try.native_sweep, 'run', lambda *args, **kwargs:
                         {'job': 'test-job', 'applied_paths': ['App/A.cpp']})
-    monkeypatch.setattr(native_try.native_sweep.subprocess, 'run', lambda *args, **kwargs: calls.append(args))
+    monkeypatch.setattr(native_try.native_sweep.integration, 'run_generator', lambda *args, **kwargs: calls.append(args))
     native_try.cmd_submit(SimpleNamespace(model='test'))
     assert generator.read_bytes() == (b'newer edit' if concurrent_edit else b'base')
     assert len(calls) == (0 if concurrent_edit else 1)

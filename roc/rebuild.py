@@ -106,7 +106,7 @@ def run(tc, tool, args, cwd, timeout=600):
     """Run cl/link/lib (or a tool path such as ml.exe); returns (returncode, combined output)."""
     exe = tc[tool] if isinstance(tool, str) and tool in tc else Path(tool)
     cmd = setup.cl_command(exe) + [str(a) for a in args]  # Wine on Linux
-    done = subprocess.run(cmd, cwd=cwd, env=env(tc), capture_output=True, text=True, errors="replace", timeout=timeout)
+    done = subprocess.run(cmd, cwd=cwd, env=env(tc), stdin=subprocess.DEVNULL, capture_output=True, text=True, errors="replace", timeout=timeout)
     return done.returncode, (done.stdout + done.stderr).strip()
 
 
@@ -155,7 +155,7 @@ def smoke(client, tc=None):
         return False, "link failed: " + text[-400:]
     try:
         done = subprocess.run([str(out / "smoke.exe")] if setup.WINDOWS else [setup.wine_exe(), str(out / "smoke.exe")],
-                              capture_output=True, text=True, timeout=60)
+                              stdin=subprocess.DEVNULL, capture_output=True, text=True, timeout=60)
     except OSError as error:
         return False, "run failed: %s (the VC90 CRT msvcr90.dll must be loadable)" % error
     return done.returncode == 0 and "rebuild-smoke 1500" in done.stdout, done.stdout.strip() or done.stderr.strip()
@@ -465,7 +465,7 @@ def link_test(client, test, libs, includes=(), defines="WIN32 NDEBUG _MBCS _CRT_
     result.update(linked=code == 0, output=text[-1500:], map=str(out / (test + ".map")))
     if code:
         return result
-    done = subprocess.run([str(out / (test + ".exe"))] + list(run_args), capture_output=True, text=True, timeout=300)
+    done = subprocess.run([str(out / (test + ".exe"))] + list(run_args), stdin=subprocess.DEVNULL, capture_output=True, text=True, timeout=300)
     result.update(ran=True, exit=done.returncode, output=(done.stdout + done.stderr).strip()[-1500:])
     return result
 

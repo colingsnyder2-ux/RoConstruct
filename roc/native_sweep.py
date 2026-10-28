@@ -376,7 +376,7 @@ def restore_submitted_baseline(identifier, log=print):
     if current != snapshot.read_bytes():
         return log("generator changed after submission; preserved local edits")
     generator.write_bytes(base.read_bytes())
-    subprocess.run([sys.executable, str(generator)], cwd=ROOT, check=True, capture_output=True)
+    integration.run_generator(generator, ROOT)
     log("submitted snapshot retained; local baseline restored for next discovery")
 
 

@@ -397,14 +397,30 @@ def native_loop(config, control, emit):
         emit("slot_stopped", slot=slot)
 
 
+def command_lines(stream):
+    """Read controller JSON without holding stdin's buffered lock at shutdown."""
+    pending = b''
+    while True:
+        chunk = os.read(stream.fileno(), 65536)
+        if not chunk:
+            if pending:
+                yield pending.decode('utf-8')
+            return
+        pending += chunk
+        while b'\n' in pending:
+            line, pending = pending.split(b'\n', 1)
+            yield line.decode('utf-8')
+
+
 def main(initial=None, receive_commands=True):
-    initial = initial or json.loads(sys.stdin.readline())
+    commands = command_lines(sys.stdin)
+    initial = initial or json.loads(next(commands))
     if not receive_commands:
         initial["terminal"] = True
     initial["config"] = validate(initial["config"])
     if initial["config"].get("lease_mode") == "native" and not os.environ.get("ROC_INTEGRATOR_PRIVATE"):
         from roc import integrator
-        return integrator.run_private(initial, receive_commands)
+        return integrator.run_private(initial, receive_commands, commands)
     output_lock = threading.Lock()
 
     def emit(event, **fields):
@@ -433,7 +449,7 @@ def main(initial=None, receive_commands=True):
     emit("log", slot=0, message="Startup: client dependencies ready")
 
     def receive():
-        for line in sys.stdin:
+        for line in commands:
             try:
                 control.command(json.loads(line))
             except (ValueError, KeyError, TypeError) as error:

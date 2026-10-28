@@ -108,6 +108,79 @@ def test_workspace_preserves_server_and_separates_writable_sources(tmp_path, mon
     assert len(links) == 2
 
 
+@pytest.fixture
+def private_session_root(tmp_path, monkeypatch):
+    for name in ('roc','research','rebuild/2008-06/patches','clients','work/2008-06'):
+        (tmp_path/name).mkdir(parents=True)
+    (tmp_path/'roc.py').write_text('# runtime')
+    (tmp_path/'roc/__init__.py').write_text('# first runtime')
+    (tmp_path/'rebuild/2008-06/patches/make_rbxgs_client.py').write_text('# original')
+    monkeypatch.setattr(integrator,'ROOT',tmp_path)
+    monkeypatch.setenv('ROC_TASK_ID','123456abcdef')
+    return tmp_path
+
+
+def test_dashboard_restart_reuses_private_proofs_outputs_and_edits_but_refreshes_runtime(private_session_root):
+    root = private_session_root
+    with integrator.session_workspace(lambda _:None) as first:
+        generator = first/'rebuild/2008-06/patches/make_rbxgs_client.py'
+        generator.write_text('# unsent private edit')
+        cache = first/'work/cached-proof.json'
+        cache.parent.mkdir(parents=True,exist_ok=True)
+        cache.write_text('{"proof":"saved"}')
+    (root/'roc/__init__.py').write_text('# updated runtime')
+    with integrator.session_workspace(lambda _:None) as second:
+        assert second == first
+        assert generator.read_text() == '# unsent private edit'
+        assert cache.read_text() == '{"proof":"saved"}'
+        assert (second/'roc/__init__.py').read_text() == '# updated runtime'
+    assert (root/'rebuild/2008-06/patches/make_rbxgs_client.py').read_text() == '# original'
+
+
+def test_different_dashboard_sessions_keep_independent_workspaces(private_session_root, monkeypatch):
+    with integrator.session_workspace(lambda _:None) as first:pass
+    monkeypatch.setenv('ROC_TASK_ID','abcdef123456')
+    with integrator.session_workspace(lambda _:None) as second:pass
+    assert first != second
+
+
+def test_same_session_cannot_be_opened_twice(private_session_root):
+    with integrator.session_workspace(lambda _:None):
+        with pytest.raises(RuntimeError,match='already active'):
+            with integrator.session_workspace(lambda _:None):pass
+
+
+def test_session_marker_cannot_overwrite_another_checkout(private_session_root):
+    root = private_session_root
+    markers = root/'work/integrator-sessions'
+    markers.mkdir(parents=True)
+    (markers/'123456abcdef.json').write_text(json.dumps({'workspace':str(root)}))
+    with pytest.raises(ValueError,match='outside'):
+        with integrator.session_workspace(lambda _:None):pass
+
+
+def test_session_marker_cannot_reuse_another_sessions_private_tree(private_session_root, monkeypatch):
+    root = private_session_root
+    with integrator.session_workspace(lambda _:None) as first:pass
+    markers = root/'work/integrator-sessions'
+    monkeypatch.setenv('ROC_TASK_ID','abcdef123456')
+    (markers/'abcdef123456.json').write_text(json.dumps({'workspace':str(first)}))
+    with pytest.raises(ValueError,match='different integrator session'):
+        with integrator.session_workspace(lambda _:None):pass
+
+
+def test_controller_reader_preserves_coalesced_messages_and_split_utf8(monkeypatch):
+    content = '{"config":{}}\n{"action":"update","label":"☃"}\n{"action":"stop"}'
+    data = content.encode('utf-8')
+    split = data.index('☃'.encode())+1
+    pieces = iter([data[:split],data[split:],b''])
+    monkeypatch.setattr(gui_worker.os,'read',lambda *_:next(pieces))
+    stream = SimpleNamespace(fileno=lambda:0)
+    commands = gui_worker.command_lines(stream)
+    assert json.loads(next(commands)) == {'config':{}}
+    assert [json.loads(line) for line in commands] == [{'action':'update','label':'☃'},{'action':'stop'}]
+
+
 def test_native_loop_forwards_parallelism_budgets_and_context(monkeypatch):
     monkeypatch.setattr(providers, 'available', lambda _: True)
     monkeypatch.setattr('roc.rebuild_install.prepare', lambda **kwargs: None)

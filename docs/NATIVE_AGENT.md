@@ -36,7 +36,7 @@ A rejected batch needs repair; it does not end the session. If no fresh
 targets remain, stay alive at a modest polling interval; revisit after source/evidence changes.
 Respect stop/pause and configured limits. Report only meaningful blockers or new progress.
 
-Worker v10's automatic integrator starts another discovery cycle after at most 60s
+Worker v11's automatic integrator starts another discovery cycle after at most 60s
 without fresh files, rotating pending targets instead of waiting indefinitely for
 published statistics to change. Failed linked preflight preserves saved proposals
 and continues other files after 30s; it never turns a rejected proof into an accepted
@@ -44,11 +44,19 @@ one. Compact mode shows batch/preflight stages after file workers finish. Explic
 stop/pause, provider authentication failures, configured budgets and the two-hour
 server-outage deadline still apply.
 
+Worker v11 disconnects noninteractive build/generator processes from the controller's
+stdin. On Windows an inherited command pipe can block Python before the generator
+starts, causing repeated 120-second timeouts. Explicit controller pipes remain active.
+Restarting the same dashboard session reuses its owned private workspace and retains
+native edits, saved proofs and build outputs while refreshing runtime code. New sessions
+stay isolated. Reused outputs still pass input-content, compiler, ownership and runtime
+checks; reuse is not acceptance.
+
 For OpenCode NVIDIA sign-in, select `opencode:nvidia/nvidia/nemotron-3-ultra-550b-a55b#none`;
 direct NVIDIA API uses `nvidia:nvidia/nemotron-3-ultra-550b-a55b` with `NVIDIA_API_KEY`.
 Keep the full vendor namespace. HTTP 401/403 means repair credentials/access, 402 means
 provider balance, and 404 means repair model ID/endpoint. Do not retry these as outages.
-Worker v10 skips queued files on permanent provider errors and avoids duplicate CLI
+Worker v11 skips queued files on permanent provider errors and avoids duplicate CLI
 generations after uncertain HTTP results. Automatic integrator mode can request complete
 method bodies, then use anchored repairs. Manual native edits remain fenced SEARCH/REPLACE blocks.
 
@@ -80,7 +88,7 @@ Keep the selected client locked for this run.
 
 Do not ask the user to locate or attach a Worker ZIP. If `roc/native_try.py`, `research/native-units.json`,
 or `research/native-source-lock.json` is missing, `roc native-try --help` is unavailable, or a package marker
-reports `native_workflow_version` below 10, download the current Worker package yourself:
+reports `native_workflow_version` below 11, download the current Worker package yourself:
 
 - Manifest: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.json
 - Package: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.zip
@@ -94,7 +102,7 @@ into a new folder without overwriting the user's existing checkout or edits:
 $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 $nativeManifest = Invoke-RestMethod ('https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.json?t=' + [guid]::NewGuid().ToString('N'))
-if ($nativeManifest.workflow_version -lt 10 -or
+if ($nativeManifest.workflow_version -lt 11 -or
     $nativeManifest.url -ne 'https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.zip' -or
     $nativeManifest.sha256 -notmatch '^[0-9a-fA-F]{64}$') { throw 'Invalid Worker manifest' }
 $nativeFolder = Join-Path (Get-Location) ('RoConstruct-Native-' + [guid]::NewGuid().ToString('N'))
