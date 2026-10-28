@@ -940,9 +940,9 @@ def test_native_digest_resends_changes_without_fake_mining_points(promotions, mo
     text = json.dumps(data)
     fields = data["embeds"][0]["fields"]
     workers = next(f["value"] for f in fields if f["name"].endswith("Workers"))
-    assert workers == "**alice** \u00b7 42 mining pts \u00b7 0 native credits *(+0)*"
-    assert "42 mining pts" in text
-    assert "exact waiting" in text and "partial mined" in text and "remaining" in text
+    assert workers == "**alice** \u00b7 42 pts \u00b7 0 native integrated *(+0)*"
+    assert "42 pts" in text
+    assert "exact waiting" in text and "partial mined" not in text and "remaining" in text
     assert "1 / 3 integrated \u00b7 2 remaining" in data["embeds"][0]["description"]
     assert "collecting rate" in fields[1]["value"]
     # Byte ETA must use target sizes and six hours, deduplicating merged receipts.
@@ -1093,7 +1093,7 @@ def test_automatic_client_sync_refreshes_only_recorded_clean_baseline(tmp_path, 
     def generate(*args, **kwargs):
         calls.append(True)
         overlay.write_text(json.dumps(base['overlay']))
-    monkeypatch.setattr(integration.subprocess, 'run', generate)
+    monkeypatch.setattr(integration, 'run_generator', generate)
     assert integration.sync_client_baseline(tmp_path, base, only_if_clean=True) is (dirty is None)
     if dirty:
         assert (generator.read_bytes(), overlay.read_bytes()) == original

@@ -5,6 +5,7 @@ import shutil
 import subprocess
 import sys
 import threading
+import time
 import uuid
 from pathlib import Path
 
@@ -13,29 +14,35 @@ ROOT = Path(__file__).resolve().parent.parent
 
 def link_directory(source, target):
     if os.name == "nt":
-        subprocess.run(["cmd", "/c", "mklink", "/J", str(target), str(source)],
-                       check=True, capture_output=True)
+        subprocess.run(["cmd", "/d", "/c", "mklink", "/J", str(target), str(source)],
+                       check=True, capture_output=True, timeout=30)
     else:
         target.symlink_to(source, target_is_directory=True)
 
 
 def workspace(log=print):
     """Copy runtime and rebuild inputs; source overlays, claims and outputs remain private."""
+    started = time.monotonic()
     folder = ROOT / "local/integrators" / uuid.uuid4().hex
     folder.parent.mkdir(parents=True, exist_ok=True)
     log("Preparing private integrator workspace: " + str(folder))
     folder.mkdir()
+    log("Startup 1/6: copying Python runtime")
     shutil.copytree(ROOT / "roc", folder / "roc", dirs_exist_ok=True,
                     ignore=shutil.ignore_patterns("__pycache__", "web"))
     shutil.copy2(ROOT / "roc.py", folder / "roc.py")
+    log("Startup 2/6: copying recipe metadata")
     shutil.copytree(ROOT / "research", folder / "research", ignore=shutil.ignore_patterns("*.jsonl"))
+    log("Startup 3/6: snapshotting private rebuild inputs")
     shutil.copytree(ROOT / "rebuild/2008-06", folder / "rebuild/2008-06",
                     ignore=shutil.ignore_patterns("out", "__pycache__", "*.obj", "*.pdb", "*.exe", "*.dll"))
+    log("Startup 4/6: loading contributor configuration")
     (folder / "clients").mkdir()
     for path in (ROOT / "clients").glob("*.json"):
         shutil.copy2(path, folder / "clients" / path.name)
     if (ROOT / "local/config").exists():
         shutil.copytree(ROOT / "local/config", folder / "local/config", dirs_exist_ok=True)
+    log("Startup 5/6: linking installed tools and source inputs")
     if (ROOT / "tools").exists():
         link_directory(ROOT / "tools", folder / "tools")
     if (ROOT / "src").exists():
@@ -44,20 +51,26 @@ def workspace(log=print):
         if path.is_dir():
             link_directory(path, folder / "clients" / path.name)
     work = folder / "work/2008-06"
+    log("Startup 6/6: loading client analysis")
     work.mkdir(parents=True, exist_ok=True)
     for path in (ROOT / "work/2008-06").glob("*.json*"):
         shutil.copy2(path, work / path.name)
+    log("Private workspace ready (%.1fs)" % (time.monotonic() - started))
     return folder
 
 
 def run_private(initial, receive_commands=True):
-    folder = workspace(lambda message: print("ROC_EVENT " + json.dumps({"event": "log", "slot": 0, "message": message}), flush=True))
+    def log(message):
+        print("ROC_EVENT " + json.dumps({"event": "log", "slot": 0, "message": message}), flush=True)
+    folder = workspace(log)
+    log("Starting private integrator process")
     env = dict(os.environ, ROC_NATIVE_EVIDENCE_ROOT=str(ROOT), ROC_INTEGRATOR_PRIVATE="1")
     process = subprocess.Popen([sys.executable, "-u", "-m", "roc.gui_worker"], cwd=folder, env=env,
                                stdin=subprocess.PIPE, text=True, encoding="utf-8",
                                creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
     process.stdin.write(json.dumps(initial) + "\n")
     process.stdin.flush()
+    log("Private integrator started; checking installed client and accepted baseline")
     if receive_commands:
         def forward():
             try:

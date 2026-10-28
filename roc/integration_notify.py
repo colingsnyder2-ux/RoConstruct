@@ -25,23 +25,25 @@ def payload(promotions, job, receipt=None):
     if proof.exists():
         native = set(json.loads(proof.read_text())["addresses"])
         manifest = {f["addr"]: f for f in json.loads((root / "rebuild/2008-06/manifests/functions.json").read_text())}
-        counts, sizes = [0] * 4, [0] * 4
+        counts, sizes = [0] * 3, [0] * 3
         for line in (root / "work/2008-06/functions.jsonl").read_text().splitlines():
             if not line.strip():
                 continue
             f = json.loads(line)
+            if f.get("kind", "code") != "code":
+                continue
             functions[f["addr"]] = f
             score = scores.get(f["addr"], manifest.get(f["addr"], {}).get("score", 0))
-            group = 0 if f["addr"] in native else 1 if score == 100 else 2 if score else 3
+            group = 0 if f["addr"] in native else 1 if score == 100 else 2
             counts[group] += 1
             sizes[group] += f["size"]
         total = sum(sizes)
         cells = [s * 23 // total if total else 0 for s in sizes]
-        for i in sorted(range(4), key=lambda i: sizes[i] * 23 % total if total else 0, reverse=True)[:23 - sum(cells)]:
+        for i in sorted(range(3), key=lambda i: sizes[i] * 23 % total if total else 0, reverse=True)[:23 - sum(cells)]:
             cells[i] += 1
-        bar = "".join(c * n for c, n in zip(("\U0001f7ea", "\U0001f7e6", "\U0001f7e8", "\u2b1c"), cells))
+        bar = "".join(c * n for c, n in zip(("\U0001f7ea", "\U0001f7e6", "\u2b1c"), cells))
         description = ("**2008-06 Client**\n%s / %s integrated \u00b7 %s remaining\n\n%s **%.2f%%** of target bytes\n\n"
-            "\U0001f7ea native \u00b7 \U0001f7e6 exact waiting \u00b7 \U0001f7e8 partial mined \u00b7 \u2b1c unmined") % (
+            "\U0001f7ea integrated \u00b7 \U0001f7e6 exact waiting \u00b7 \u2b1c not integrated") % (
                 format(counts[0], ","), format(sum(counts), ","), format(sum(counts[1:]), ","),
                 bar, 100 * sizes[0] / total if total else 0)
         remaining = sum(sizes[1:])
@@ -58,7 +60,7 @@ def payload(promotions, job, receipt=None):
     rejected = receipt is not None and not accepted
     delta = receipt.get("credits", 0) if accepted else 0
     gains = receipt.get("gains", []) if accepted else []
-    matched = "\n".join("\U0001f7ea **100%%** `%s` %s \u00b7 %s B" % (
+    matched = "\n".join("\U0001f7e3 **100%%** `%s` %s \u00b7 %s B" % (
         addr, functions.get(addr, {}).get("unit", "?"), functions.get(addr, {}).get("size", "?"))
         for addr in gains[:10]) or "None"
     if len(gains) > 10:
@@ -66,7 +68,7 @@ def payload(promotions, job, receipt=None):
     fields = [
         {"name": "\U0001f7e3 Fully Integrated", "value": matched[:1024], "inline": False},
         {"name": "\u26a1 Integration Rate", "value": "**%g functions/hr** \u00b7 **%s B/hr** *(last 6h)* \u00b7 byte ETA %s" % (round(rate, 1), format(round(byte_rate * 3600), ","), eta), "inline": True},
-        {"name": "\U0001f3c6 Workers", "value": "**%s** \u00b7 %s mining pts \u00b7 %s native credits *(+%d)*" % (
+        {"name": "\U0001f3c6 Workers", "value": "**%s** \u00b7 %s pts \u00b7 %s native integrated *(+%d)*" % (
             job["user"], format(store.user_points(job["user"]), ","), format(credits, ","), delta), "inline": True},
         {"name": "\u2699\ufe0f Verification", "value": "server-verified \u00b7 %d integrated" % len(gains) if accepted else "rejected \u00b7 no native credit" if rejected else state, "inline": True},
         {"name": "\U0001f527 Models", "value": inline_code(job["model"]), "inline": True},

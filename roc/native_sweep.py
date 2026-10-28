@@ -605,6 +605,7 @@ def model_proposal(rel, text, addrs, baseline, owned, model, rounds, compile_rou
         if settings.get("before_request") and not settings["before_request"]():
             return None, trials
         settings.setdefault("max_tokens", 3072 if settings["thinking"] == "disabled" else 32768)
+        log("Requesting %s · %s · round %d/%d" % (model, rel, n + 1, rounds))
         reply = providers.generate(model, messages, settings)
         log("model %s round %d: %.1fs, %s reasoning tokens" % (rel, n, getattr(reply, "latency_s", 0) or 0,
                                                               getattr(reply, "reasoning_tokens", None)))
@@ -653,12 +654,14 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
     model, rounds = config["llm"], config.get("rounds", 3)
     options = {key: config[key] for key in ("thinking", "max_tokens") if key in config}
     options.update(config.get("provider_options", {}))
+    options["log"] = log
     compile_slots = threading.Semaphore(config.get("compile_workers", jobs))
     raw_compile = compile_source
     def compile_source(source, rel, label):
         with compile_slots:
             return raw_compile(source, rel, label)
     context = config.get("context", "file")
+    log("Native discovery: %d files · %d AI workers · %d compiler slots" % (len(files), jobs, config.get("compile_workers", jobs)))
 
     def one(rel):
         if options.get("before_request") and not options["before_request"]():
@@ -794,6 +797,7 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
                 raise ValueError("Local overlay differs from server baseline; preserve local edits and sync first")
             log("accepted baseline advanced; clean local overlay refreshed")
         integration.atomic_json(ROOT / "work/integration-client/baseline.json", base)
+        log("Native setup: materializing accepted source overlay and indexing target evidence")
         ctx = native_context(config, api, spec.get("targets", {}).get("addresses"))
         tree, overlay, includes, defines, flags = ctx.tree, ctx.overlay, ctx.includes, ctx.defines, ctx.flags
         by_addr, owned, targets, matcher = ctx.by_addr, ctx.owned, ctx.targets, ctx.matcher
@@ -801,6 +805,7 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
                         for p in tree.glob(pattern) if not p.name.startswith("roc_")})
         if limit and not config.get("targets_only"):
             files = files[:limit]
+        log("Native setup: resolving historical compiler and source files")
         rebuild.toolchain()  # Resolve discovery once before compile workers start.
         texts = {rel: (overlay / rel if (overlay / rel).exists() else tree / rel).read_text(errors="replace") for rel in files}
         discovery_targets = targets - owned
@@ -989,11 +994,11 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
         (output / "generator-base.py").write_bytes(original)
         stage_generator(generator, original, additions)
         try:
-            subprocess.run([sys.executable, str(generator)], cwd=ROOT, check=True, capture_output=True)
+            integration.run_generator(generator, ROOT)
             integration.overlay_delta(base["overlay"], json.loads(overlay_file.read_text()))
         except BaseException:
             generator.write_bytes(original)
-            subprocess.run([sys.executable, str(generator)], cwd=ROOT, check=True, capture_output=True)
+            integration.run_generator(generator, ROOT)
             raise
         summary.update(applied_files=len(selected), applied_paths=[p["file"] for p in selected],
                        batch=str(batch), evidence=str(notes))

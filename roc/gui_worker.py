@@ -220,22 +220,48 @@ class Control:
 
 def native_loop(config, control, emit):
     """Native integration: each pass lets the model edit native files that define waiting exact targets, submits
-    locally proven edits as one verified batch, waits for the verdict and syncs; later passes skip tried files."""
+    locally proven edits as one verified batch; discovery continues while the server verifies."""
     from roc import integration, native_sweep, research
     spec = json.loads(json.dumps(research.recipes()["native-model-2008"]))
     worker.save_settings(user=config["user"], server=config["server"])
+    emit("log", slot=0, message="Startup: syncing accepted native baseline (unchanged overlays are reused)")
     integration.command(SimpleNamespace(action="sync", server=config["server"], user=config["user"], token=None))
+    emit("log", slot=0, message="Startup complete: selecting exact mined targets for parallel integration")
     tried = set()
+    pending = set()
+    def refresh_pending():
+        if not pending:
+            return False
+        api = worker.Api(config["server"], worker.load_settings().get("token"))
+        advanced = False
+        try:
+            for identifier in list(pending):
+                for job in api.call("/v1/integration?id=" + identifier)["jobs"]:
+                    if job["state"] not in ("accepted", "rejected", "failed"):
+                        continue
+                    pending.remove(identifier)
+                    credits = (job.get("receipt") or {}).get("credits", 0) if job["state"] == "accepted" else 0
+                    control.matched += credits
+                    advanced |= job["state"] == "accepted"
+                    emit("log", slot=0, message="Native batch %s: %s · %d new integrated" % (identifier[:8], job["state"], credits))
+            emit("benchmark", workers=control.workers, completed=control.completed,
+                 matched=control.matched, improved=0, errors=control.errors)
+        except worker.ApiFailure:
+            pass
+        finally:
+            api.close()
+        return advanced
     while not control.stopping:
         current = control.before_lease(0)
         if current is None:
             break
+        refresh_pending()
         for slot in range(control.workers):
             emit("applied", slot=slot, revision=control.revision)
         emit("stage", message="Integrator: %d AI workers · %d compilers · up to %d files per batch" % (
             control.workers, current["native_compile_workers"], current["native_batch_files"]))
         spec["native_sweep"].update(llm=current["model"], model=current["model"],
-            rounds=3 if current["rounds"] == "auto" else current["rounds"], wait=True, exclude_files=sorted(tried),
+            rounds=3 if current["rounds"] == "auto" else current["rounds"], wait=False, exclude_files=sorted(tried),
             max_files=current["native_batch_files"], context=current["native_context"],
             compile_workers=current["native_compile_workers"],
             provider_options={"allow_cloud": current["cloud_allowed"], "budget": control.budget,
@@ -246,12 +272,18 @@ def native_loop(config, control, emit):
         try:
             summary = native_sweep.run(spec, "native-model-2008", server=config["server"] or None, jobs=control.workers,
                                        log=lambda message: emit("log", slot=0, message=str(message)))
+        except worker.ApiFailure as error:
+            emit("log", slot=0, message="Server temporarily unavailable; proposals saved. Retry in 30s: " + str(error))
+            control.wait(30)
+            continue
         except (Exception, SystemExit) as error:  # noqa: BLE001 - report and stop like a worker slot
             emit("error", slot=0, message=str(error))
             raise
         emit("log", slot=0, message="native pass: %s, %s local exact, %s verified" % (
             summary.get("state"), summary.get("local_exact", 0), summary.get("new_verified", 0)))
         tried.update(summary.get("files_tried", []))
+        if summary.get("job"):
+            pending.add(summary["job"])
         control.completed += len(summary.get("files_tried", []))
         control.matched += summary.get("new_verified", 0)
         emit("benchmark", workers=control.workers, completed=control.completed,
@@ -259,8 +291,32 @@ def native_loop(config, control, emit):
         with control.budget._lock:
             emit("usage", requests=control.budget.requests, tokens=control.budget.tokens,
                  cost=control.budget.cost if control.cost_known else None)
+            exhausted = any(limit is not None and used >= limit for used, limit in (
+                (control.budget.requests, control.budget.max_requests),
+                (control.budget.tokens, control.budget.max_tokens), (control.budget.cost, control.budget.max_cost)))
+        if exhausted:
+            emit("log", slot=0, message="Cloud budget cap reached; finishing session.")
+            control.command({"action": "stop"})
         if not summary.get("files_tried"):
-            break
+            emit("stage", message="No fresh native targets; staying active, checking for new evidence every 30s")
+            signature = None
+            while not control.stopping:
+                if refresh_pending():
+                    tried.clear()
+                    break
+                api = worker.Api(current["server"], worker.load_settings().get("token"))
+                try:
+                    status = next((row for row in api.call("/v1/status")["clients"] if row["client"] == "2008-06"), {})
+                    changed = (status.get("matched"), status.get("integrated"), status.get("functions"), control.revision)
+                    if signature is not None and changed != signature:
+                        tried.clear()
+                        break
+                    signature = changed
+                except worker.ApiFailure:
+                    pass  # Keep local proofs while the shared service recovers.
+                finally:
+                    api.close()
+                control.wait(30)
     for slot in range(control.workers):
         emit("slot_stopped", slot=slot)
 
@@ -280,7 +336,9 @@ def main(initial=None, receive_commands=True):
     config = validate(initial["config"])
     control = Control(config, emit)
     emit("control", config=config, revision=1, paused=False, stopping=False)
+    emit("log", slot=0, message="Startup: checking installed client binary, historical compiler and analysis")
     prepare_clients(config, lambda message: emit("log", slot=0, message=message))
+    emit("log", slot=0, message="Startup: client dependencies ready")
 
     def receive():
         for line in sys.stdin:

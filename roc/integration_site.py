@@ -42,6 +42,8 @@ def build(root=ROOT, log=print):
         if not line.strip():
             continue
         f = json.loads(line)
+        if f.get("kind", "code") != "code":
+            continue
         score = scores.get(f["addr"], 0)
         key = "integrated" if f["addr"] in native else "exact_waiting" if score == 100 else "partial" if score else "unmined"
         groups[key][0] += 1
@@ -80,6 +82,12 @@ def build(root=ROOT, log=print):
             "daily": [daily[day] for day in sorted(daily)],
             "jobs": receipts[:100],
             "leaderboard": [{"user": u, "model": m, "native_credits": n} for u, m, n in leaders]}
+    path = root / "docs/integration.json"
+    previous = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+    history = {row["day"]: row for row in previous.get("history", [])} if previous.get("client") == CLIENT else {}
+    day = datetime.now(ZoneInfo("America/New_York")).strftime("%Y-%m-%d")
+    history[day] = {"day": day, "groups": data["groups"]}
+    data["history"] = [history[day] for day in sorted(history)]
     atomic_json(root / "docs/integration.json", data)
     log("Integration site data: %d integrated, %d named" % (len(native), len(data["names"])))
     return data

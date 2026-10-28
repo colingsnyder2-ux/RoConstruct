@@ -817,15 +817,24 @@ def _coding_cli(provider, remote, config, prompt, state, options):
             process = subprocess.Popen(argv, cwd=folder, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                                        stderr=subprocess.PIPE, text=True, encoding="utf-8", errors="replace",
                                        creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
-            try:
-                output, _ = process.communicate(text, timeout=options.get("timeout", 180))
-            except subprocess.TimeoutExpired:
-                if os.name == "nt":
-                    subprocess.run(["taskkill", "/T", "/F", "/PID", str(process.pid)], capture_output=True)
-                else:
-                    process.kill()
-                process.communicate()
-                raise ProviderError("provider_retry", provider + " CLI timed out")
+            started = time.monotonic()
+            pending_input = text
+            while True:
+                try:
+                    output, _ = process.communicate(pending_input, timeout=min(15, options.get("timeout", 180)))
+                    break
+                except subprocess.TimeoutExpired:
+                    pending_input = None
+                    elapsed = time.monotonic() - started
+                    if options.get("log"):
+                        options["log"]("%s CLI request running (%ds)" % (provider, elapsed))
+                    if elapsed >= options.get("timeout", 180):
+                        if os.name == "nt":
+                            subprocess.run(["taskkill", "/T", "/F", "/PID", str(process.pid)], capture_output=True)
+                        else:
+                            process.kill()
+                        process.communicate()
+                        raise ProviderError("provider_retry", provider + " CLI timed out")
         except OSError:
             raise ProviderError("provider_config", provider + " CLI could not start") from None
     if process.returncode:

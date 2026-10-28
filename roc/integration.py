@@ -532,6 +532,29 @@ def add_standins(claim):
     return claim
 
 
+def run_generator(generator, root, timeout=120):
+    """Regenerate overlays with visible liveness and a bounded startup wait."""
+    started = time.monotonic()
+    print("Generating native overlay...", flush=True)
+    process = subprocess.Popen([sys.executable, "-u", str(generator)], cwd=root,
+                               stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+                               creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
+    while True:
+        try:
+            output, _ = process.communicate(timeout=10)
+            break
+        except subprocess.TimeoutExpired:
+            elapsed = time.monotonic() - started
+            print("Native overlay generator still running (%ds)" % elapsed, flush=True)
+            if elapsed >= timeout:
+                process.kill()
+                process.communicate()
+                raise TimeoutError("Native overlay generator exceeded %ds; stopped private generator" % timeout)
+    if process.returncode:
+        raise RuntimeError("Native overlay generation failed: " + output.decode(errors="replace")[-1500:])
+    print("Native overlay ready (%.1fs)" % (time.monotonic() - started), flush=True)
+
+
 def sync_client_baseline(root, base, only_if_clean=False):
     generator = root / "rebuild/2008-06/patches/make_rbxgs_client.py"
     overlay = generator.with_name("rbxgs-client.json")
@@ -545,7 +568,12 @@ def sync_client_baseline(root, base, only_if_clean=False):
                 json.loads(overlay.read_text()) != previous["overlay"]:
             return False
     atomic_json(generator.with_name("native-promotions.json"), base["accepted"])
-    subprocess.run([sys.executable, str(generator)], cwd=root, check=True, capture_output=True)
+    if (hashlib.sha256(generator.read_bytes()).hexdigest() == base["generator"] and overlay.exists()
+            and json.loads(overlay.read_text()) == base["overlay"]):
+        atomic_json(marker, base)
+        print("Accepted native overlay unchanged; regeneration skipped", flush=True)
+        return True
+    run_generator(generator, root)
     if json.loads(overlay.read_text()) != base["overlay"]:
         raise ValueError("Local source/overlay baseline differs from server; update before claiming")
     atomic_json(marker, base)

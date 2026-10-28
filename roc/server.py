@@ -466,14 +466,35 @@ class Store:
                 "FROM events %s GROUP BY user ORDER BY 2 DESC, 3 DESC" % where, args).fetchall()
         from roc.reports import server_users
         hidden = server_users()
-        return [{"user": u, "matched": m or 0, "points": p or 0, "submissions": n, "last": t}
-                for u, m, p, n, t in rows if u not in hidden]
+        ranking = {u: {"user": u, "matched": m or 0, "mining_points": p or 0, "points": p or 0,
+                       "native_integrated": 0, "submissions": n, "last": t} for u, m, p, n, t in rows}
+        for user, count, stamp in self.native_totals(client):
+            row = ranking.setdefault(user, {"user": user, "matched": 0, "mining_points": 0,
+                                           "points": 0, "native_integrated": 0, "submissions": 0, "last": stamp})
+            row["native_integrated"] = count
+            row["points"] += count
+            row["last"] = max(row["last"] or 0, stamp or 0)
+        return sorted((row for user, row in ranking.items() if user not in hidden),
+                      key=lambda row: (-row["points"], -row["matched"], row["user"]))
+
+    def native_totals(self, client=None, user=None):
+        """One point per distinct accepted native address; mining-only stores have no native table."""
+        with self.lock:
+            if not self.db.execute("SELECT 1 FROM sqlite_master WHERE name='integration_credit'").fetchone():
+                return []
+            conditions, args = [], []
+            for key, value in (("client", client), ("user", user)):
+                if value is not None:
+                    conditions.append(key + "=?")
+                    args.append(value)
+            where = " WHERE " + " AND ".join(conditions) if conditions else ""
+            return self.db.execute("SELECT user,COUNT(*),MAX(ts) FROM integration_credit" + where + " GROUP BY user", args).fetchall()
 
     def user_points(self, user):
         """Total leaderboard points for one user (0 when unknown)."""
         with self.lock:
             row = self.db.execute("SELECT SUM(new - old) FROM events WHERE user = ?", (user,)).fetchone()
-        return int(row[0] or 0)
+        return int(row[0] or 0) + sum(count for _, count, _ in self.native_totals(user=user))
 
     def client_progress(self, client):
         """(matched, total) functions for one client."""

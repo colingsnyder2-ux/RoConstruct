@@ -48,8 +48,8 @@ Digests split each batch into one message per client, with a six-hour mining rat
 Player Mining receives contributor matching, automatic matching and native integration digests.
 The Models field shows the submitted AI model; deterministic tools retain their honest `roc ...`
 labels. Each mining digest shows contributor totals and verified score-gain points. Integration
-digests show existing mining points plus separate native credits; already-mined code earns no
-duplicate mining points. `ROCONSTRUCT_PLAYER_MINES_WEBHOOK` / `player_mines_webhook` can name
+digests show combined points and native integrated counts. Each unique native credit adds one
+leaderboard point; already-mined code gets no duplicate mining score event. `ROCONSTRUCT_PLAYER_MINES_WEBHOOK` / `player_mines_webhook` can name
 the shared destination explicitly; the existing Discord webhook setting remains supported.
 The old server-mines webhook is no longer a mining notification destination.
 The daily Discord leaderboard is removed. Local daily audit reports remain.

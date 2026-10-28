@@ -4,6 +4,29 @@ Paste this file into a Codex or Claude Code session opened in a RoConstruct chec
 the DeepSeek native pass (`roc research run native-model-2008`). You write the edits; the tools compile the real
 2008-06 file, check exact bytes and referenced data, minimize your edits, and submit verified batches.
 
+## Continuous, terse operation
+
+Continue until the user stops the run or a configured provider/budget limit requires action.
+After setup succeeds, do not repeat readiness checks, ask to continue, or end after submitting.
+One status line per meaningful change: `FILE: +N local, queued JOB; next FILE`.
+Do not narrate every command or foreground-wait on a queued rebuild. Byte/data preflight
+and independent server acceptance remain mandatory.
+
+Select once. Reuse client, checkout, installed dependencies and successful setup across
+retries/restarts. Repeat setup only for actual missing dependencies or changed build inputs.
+Read this guide once; prefer `--brief` evidence and small method excerpts afterwards.
+
+Batch 10–30 targets when available. Save submitted job IDs, then immediately discover more
+proposals: submit restores the private baseline. Check pending jobs once per batch or every
+few minutes. Use `integrate watch` only when the user requests waiting or a dependent step
+requires acceptance. Revalidate after baseline changes, not after every status poll.
+
+Preserve proposals through transient TLS/server errors. Retry with backoff (30s, 60s, up to
+5m) while continuing independent local trials. Never disable TLS verification or duplicate
+queued submissions. A rejected batch needs repair; it does not end the session. If no fresh
+targets remain, stay alive at a modest polling interval; revisit after source/evidence changes.
+Respect stop/pause and configured limits. Report only meaningful blockers or new progress.
+
 ## First response: select the client
 
 Before setup or identity questions, fetch the public server's `/v1/status` using the agent's HTTP tool
@@ -213,8 +236,8 @@ If doctor cannot find an installed SDK, set `ROC_WINSDK` to this PC's SDK folder
    After submitting:
    - `native-try submit` keeps the submitted snapshot and restores the local baseline,
      so more discovery can run while the server verifies the batch. Concurrent generator edits are preserved.
-   - `roc integrate watch --id JOB` to follow it;
-     rejection or a missing job exits with failure, so dependent shell steps stop;
+   - Record JOB and continue discovery. Use `roc integrate status --id JOB` for a single status check;
+     a rejection is a per-batch repair task, not a reason to end the session;
    - `roc integrate sync` after acceptance.
 
 ## Fewer commands and smaller evidence
@@ -258,7 +281,7 @@ reports these separately and saves only new unambiguous gains.
   - an extra `dynamic_cast`;
   - a member-wise copy instead of a conversion;
   - `size() > 0` against `size()`.
-- Label submissions with your actual model name. Native credit is separate from mining points.
+- Label submissions with your actual model name. Each unique native credit adds one leaderboard point and increments Native integrated; it does not create a duplicate mining event.
 
 ## Example evidence (abridged)
 

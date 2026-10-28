@@ -216,7 +216,7 @@ These are ceilings, not minimums. Do not use all attempts if the diagnosis alrea
   Use `human` for hand-written work. If model identity is unavailable, state that explicitly rather
   than inventing it. The server determines the authoritative score. Player Mining shows the
   contributor, verified score gain/points and submitted model. Native integration earns separate
-  native credits; matching the same already-exact address again earns no new mining points.
+  native counts; each new distinct native integration adds one leaderboard point. Resubmitting an already-exact match earns no duplicate mining score gain.
 - If the server accepts an improvement, preserve the verified source according to the project's normal `src/`/pull workflow. Never overwrite a newer or better source.
 - Append one concise line to `work/hard-functions.md`:
 

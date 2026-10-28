@@ -60,3 +60,23 @@ def test_submit_endpoints_reject_lease_labels_without_awarding_points():
         httpd.server_close()
         thread.join(timeout=2)
         store.db.close()
+
+
+def test_native_credit_adds_one_point_once_and_keeps_matching_counts_separate():
+    store = server.Store(':memory:', lease_seconds=10)
+    store.db.executescript('''
+        CREATE TABLE integration_credit(client TEXT,addr TEXT,user TEXT,model TEXT,job TEXT,ts REAL,
+                                        PRIMARY KEY(client,addr));
+        INSERT INTO events VALUES(1,'C','a','alice',90,100);
+        INSERT INTO integration_credit VALUES('C','a','alice','model','accepted',2);
+        INSERT INTO integration_credit VALUES('C','b','alice','model','accepted',2);
+        INSERT INTO integration_credit VALUES('D','c','bob','model','accepted',3);
+        INSERT OR IGNORE INTO integration_credit VALUES('C','a','alice','model','retry',4);
+    ''')
+    assert store.user_points('alice') == 12
+    alice = next(row for row in store.leaderboard() if row['user'] == 'alice')
+    assert (alice['points'], alice['mining_points'], alice['matched'], alice['native_integrated']) == (12,10,1,2)
+    assert len(store.leaderboard('C')) == 1
+    assert next(row for row in store.leaderboard() if row['user'] == 'bob')['points'] == 1
+    assert store.db.execute('SELECT COUNT(*) FROM events').fetchone()[0] == 1
+    store.db.close()

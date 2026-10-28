@@ -186,7 +186,8 @@ rebase against the latest accepted overlay and is fully reverified.
 
 One new distinct client/address earns one native credit, once, regardless of
 retries or overlapping submissions. Already-mined 100% functions earn no new
-raw mining points. Address-ambiguous bodies do not receive distinct credit.
+raw mining score gain. Each native credit adds one total leaderboard point and one
+Native integrated count. Address-ambiguous bodies do not receive distinct credit.
 
 Accepted data is durable in the server DB and materialized as
 `patches/native-promotions.json`; the trusted generator consumes it. `sync`
@@ -255,8 +256,8 @@ their private content-checked objects and rerun every gate. Unprepared snapshots
 retained for diagnostics. Completed baseline receipts remain required for acceptance.
 
 Player Mining receives a fresh digest for accepted native gains: purple integrated native bodies,
-blue exact mined sources awaiting integration, yellow partial mined sources,
-white unmined targets. The 23-cell bar measures target bytes; category counts and
-remaining functions are shown separately. User points are real, native credit
-is separate, and ETA is labeled as a rough recent-rate estimate. Notifications
+blue exact mined sources awaiting integration, white remaining targets.
+The 23-cell bar measures code bytes, excluding compiler stubs; category counts and
+remaining functions are shown separately. Combined points include one point per
+distinct native integration; native counts remain visible. ETA is a rough recent-rate estimate. Notifications
 cannot make a valid rebuild fail.

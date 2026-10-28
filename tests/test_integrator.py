@@ -86,6 +86,7 @@ def test_native_loop_forwards_parallelism_budgets_and_context(monkeypatch):
     control = gui_worker.Control(config, lambda event, **fields: events.append((event, fields)))
     def run(spec, name, **kwargs):
         calls.append((dict(spec['native_sweep']), kwargs))
+        if len(calls) == 2: control.command({'action': 'stop'})
         return {'files_tried': ['App/test.cpp'] if len(calls) == 1 else [], 'state': 'no-proposals'}
     monkeypatch.setattr(native_sweep, 'run', run)
     monkeypatch.setattr(gui_worker.worker, 'save_settings', lambda **kwargs: None)
@@ -93,6 +94,7 @@ def test_native_loop_forwards_parallelism_budgets_and_context(monkeypatch):
     gui_worker.native_loop(config, control, lambda event, **fields: events.append((event, fields)))
     options = calls[0][0]
     assert calls[0][1]['jobs'] == 8
+    assert options['wait'] is False
     assert options['max_files'] == 100 and options['context'] == 'methods'
     assert options['provider_options']['budget'] is control.budget
     assert calls[1][0]['exclude_files'] == ['App/test.cpp']
@@ -129,3 +131,54 @@ def test_model_jobs_parallel_but_compilers_bounded(tmp_path, monkeypatch):
         SimpleNamespace(scan=lambda _: []), tmp_path, 8, lambda _: None, compile_source, {'00400000': {'symbol': 'f'}})
     assert counts['compile_peak'] <= 2
     assert counts['model_peak'] > 1
+
+
+def test_native_loop_counts_async_acceptance_and_stops_at_budget(monkeypatch):
+    config = {**gui_worker.DEFAULTS, 'lease_mode': 'native', 'client': '2008-06', 'model': 'codex:default',
+              'workers': 2, 'user': 'tester', 'server': 'localhost:8765', 'cloud_allowed': True,
+              'max_cloud_requests': 1}
+    events = []
+    control = gui_worker.Control(config, lambda *args, **kwargs: None)
+    calls = []
+    def run(*args, **kwargs):
+        calls.append(1)
+        if len(calls) == 2:
+            control.budget.requests = 1
+        return {'files_tried': ['App/test.cpp'], 'job': 'queued'} if len(calls) == 1 else {'files_tried': []}
+    api = Mock()
+    api.call.return_value = {'jobs': [{'state': 'accepted', 'receipt': {'credits': 3}}]}
+    monkeypatch.setattr(gui_worker.worker, 'Api', lambda *args: api)
+    monkeypatch.setattr(gui_worker.worker, 'load_settings', lambda: {})
+    monkeypatch.setattr(gui_worker.worker, 'save_settings', lambda **kwargs: None)
+    monkeypatch.setattr(integration, 'command', lambda _: None)
+    monkeypatch.setattr(native_sweep, 'run', run)
+    gui_worker.native_loop(config, control, lambda event, **fields: events.append((event, fields)))
+    assert control.matched == 3
+    assert control.stopping
+    assert len(calls) == 2
+    assert any('accepted' in fields.get('message', '') for _, fields in events)
+
+
+def test_unchanged_native_sync_does_not_spawn_generator(tmp_path, monkeypatch):
+    import hashlib
+    folder = tmp_path / 'rebuild/2008-06/patches'
+    folder.mkdir(parents=True)
+    generator = folder / 'make_rbxgs_client.py'
+    generator.write_bytes(b'pass\n')
+    (folder / 'rbxgs-client.json').write_text('{}')
+    base = {'generator': hashlib.sha256(generator.read_bytes()).hexdigest(), 'overlay': {}, 'accepted': [], 'revision': 'current'}
+    spawn = Mock(side_effect=AssertionError('unchanged baseline must not launch a generator'))
+    monkeypatch.setattr(integration, 'run_generator', spawn)
+    assert integration.sync_client_baseline(tmp_path, base)
+    assert json.loads((tmp_path / 'work/integration-client/baseline.json').read_text())['revision'] == 'current'
+    spawn.assert_not_called()
+
+
+def test_generator_timeout_reports_liveness_and_terminates_child(tmp_path, monkeypatch, capsys):
+    process = Mock(returncode=None)
+    process.communicate.side_effect = [subprocess.TimeoutExpired('generator',10), (b'', None)]
+    monkeypatch.setattr(integration.subprocess, 'Popen', Mock(return_value=process))
+    with pytest.raises(TimeoutError, match='exceeded'):
+        integration.run_generator(tmp_path / 'generator.py', tmp_path, timeout=0)
+    process.kill.assert_called_once()
+    assert 'still running' in capsys.readouterr().out
