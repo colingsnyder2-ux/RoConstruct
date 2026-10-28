@@ -1,10 +1,10 @@
 {
-  "updated": "2026-10-28 15:46 UTC",
+  "updated": "2026-10-28 18:44 UTC",
   "clients": {
     "2008-06": {
       "phase": "8",
       "phaseLabel": "Runtime",
-      "overall": 0.2381,
+      "overall": 0.2382,
       "bars": {
         "compiled": {
           "value": 14,
@@ -17,8 +17,8 @@
           "label": "Modules linked"
         },
         "exact": {
-          "value": 9810,
-          "total": 41202,
+          "value": 9812,
+          "total": 41198,
           "label": "Byte-exact functions"
         },
         "unresolved": {
