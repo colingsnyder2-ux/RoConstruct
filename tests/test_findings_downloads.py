@@ -46,11 +46,13 @@ def test_download_publication_preserves_remote_sources_and_local_edits(tmp_path)
     digest = hashlib.sha256((folder / 'native-worker.zip').read_bytes()).hexdigest()
     (folder / 'native-worker.json').write_text(json.dumps({'sha256': digest}))
     (folder / 'NATIVE_AGENT.md').write_text('Which client do you want to run?')
+    (folder / 'MATCHING_AGENT.md').write_text('Matching agent workflow')
     logs = []
     publish_downloads(root, shutil.which('git'), logs.append)
     assert 'published' in logs[-1]
     assert git(remote, 'show', 'main:keep.cpp') == 'existing remote source'
     assert git(remote, 'show', 'main:data/NATIVE_AGENT.md') == 'Which client do you want to run?'
+    assert git(remote, 'show', 'main:data/MATCHING_AGENT.md') == 'Matching agent workflow'
     assert (root / 'keep.cpp').read_text() == 'unsent local edits'
     assert git(root, 'status', '--porcelain') == before
     version = git(remote, 'rev-parse', 'main')

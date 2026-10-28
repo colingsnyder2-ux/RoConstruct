@@ -136,8 +136,20 @@ def _post(url, payload):
         print("Discord mine log failed: %s" % error)
 
 
+def player_mines_webhook():
+    """Shared contributor feed for verified mining and native integration."""
+    configured = os.environ.get("ROCONSTRUCT_PLAYER_MINES_WEBHOOK") or os.environ.get("ROCONSTRUCT_DISCORD_WEBHOOK")
+    if configured:
+        return configured
+    try:
+        settings = json.loads(setup.config("roconstruct-settings.json").read_text())
+        return settings.get("player_mines_webhook") or settings.get("discord_webhook")
+    except (OSError, ValueError):
+        return None
+
+
 def server_mines_webhook():
-    """Dedicated feed for server-side automatic mining."""
+    """Legacy setting reader; mining notifications now use player_mines_webhook."""
     configured = os.environ.get("ROCONSTRUCT_SERVER_MINES_WEBHOOK")
     if configured:
         return configured
@@ -157,14 +169,14 @@ def server_users():
 
 def tool_digest(tool, description, fields=()):
     """One asynchronous summary for local mining tools such as xcopy and repair."""
-    webhook = server_mines_webhook()
+    webhook = player_mines_webhook()
     if not webhook:
         return
-    embed = {"title": "⛏️ Server Mine: %s" % tool,
+    embed = {"title": "⛏️ Mining tool: %s" % tool,
              "description": description,
              "color": 0x245B9E,
              "fields": list(fields),
-             "footer": {"text": "RoConstruct Server Mines"},
+             "footer": {"text": "RoConstruct Mining"},
              "timestamp": datetime.now(timezone.utc).isoformat()}
     threading.Thread(target=_post, args=(webhook, {"embeds": [embed]}), daemon=True).start()
 
@@ -176,7 +188,6 @@ class MineLog:
         self.webhook = webhook
         self.store = store
         self.batch_seconds = batch_seconds
-        self.server = server
         self._lock = threading.Lock()
         self._buffer = []
         self._timer = None
@@ -232,7 +243,7 @@ class MineLog:
         full = [e for e in events if e["score"] == 100]
         partial = [e for e in events if e["score"] < 100]
         functions = []
-        for name in sorted({e["model"] for e in events if e["model"]}) or ["auto" if self.server else "Unknown model"]:
+        for name in sorted({e["model"] for e in events if e["model"]}) or ["Unknown model"]:
             entry = inline_code(name)
             if len(", ".join(functions + [entry])) > 1024:
                 break
@@ -243,15 +254,11 @@ class MineLog:
                 "🟢" if e["score"] == 100 else "🟡", e["score"], e["job"].get("addr", "?"),
                 e["job"].get("unit", "?"), e["job"].get("size", "?")) for e in rows[:10]) or "None"
 
-        if self.server:
-            people = {"name": "⚙️ Verification", "value": "server-verified", "inline": True}
-        else:
-            contributors = sorted({e["user"] for e in events})
-            totals = "\n".join("**%s** · %s pts *(%+d)*" % (
-                user, format(self.store.user_points(user), ","),
-                sum(e["points"] for e in events if e["user"] == user)) for user in contributors)
-            people = {"name": "🏆 Workers", "value": totals[:1024],
-                      "inline": True}
+        contributors = sorted({e["user"] for e in events})
+        totals = "\n".join("**%s** · %s pts *(%+d)*" % (
+            user, format(self.store.user_points(user), ","),
+            sum(e["points"] for e in events if e["user"] == user)) for user in contributors)
+        people = {"name": "🏆 Workers", "value": totals[:1024], "inline": True}
         fields = [{"name": "🟢 Fully Matched", "value": lines(full), "inline": False}]
         fields += [{"name": "🟡 Partially Matched",
                     "value": "x%d partially matched" % len(partial) if len(partial) > 10 else lines(partial),
@@ -259,13 +266,13 @@ class MineLog:
                    {"name": "⚡ Mining Rate", "value": "**%g functions/hr** · **%s B/hr** *(last 6h)* · byte ETA %s" % (round(rate_hr, 1), format(round(byte_rate * 3600), ","), eta), "inline": True},
                    people,
                    {"name": "✅ Batch", "value": "%d full · %d improved" % (len(full), len(partial)), "inline": True},
-                   {"name": "🔧 Functions" if self.server else "🔧 Models", "value": ", ".join(functions), "inline": True}]
-        return {"title": "⛏️ RoConstruct Server Mining Digest" if self.server else "⛏️ RoConstruct Mining Digest",
+                   {"name": "🔧 Models", "value": ", ".join(functions), "inline": True}]
+        return {"title": "⛏️ RoConstruct Mining Digest",
                 "description": "**%s Client**\n%s / %s matched · %s remaining\n\n%s **%.2f%%**\n\n🟦 source · 🟩 mined · 🟨 partial · ⬜ remaining" % (
                     client, format(matched, ","), format(total, ","), format(left, ","), bar, percent),
                 "color": 0x58A6FF,
                 "fields": fields,
-                "footer": {"text": "RoConstruct Server Mines" if self.server else "RoConstruct Mining"},
+                "footer": {"text": "RoConstruct Mining"},
                 "timestamp": datetime.now(timezone.utc).isoformat()}
 
     def _send(self, events):

@@ -8,7 +8,7 @@ import urllib.request
 from datetime import datetime, timezone
 
 from roc.integration import CLIENT, atomic_json, digest
-from roc.reports import RATE_WINDOW, fmt_duration, inline_code, server_mines_webhook
+from roc.reports import RATE_WINDOW, fmt_duration, inline_code, player_mines_webhook
 
 
 def payload(promotions, job, receipt=None):
@@ -66,7 +66,8 @@ def payload(promotions, job, receipt=None):
     fields = [
         {"name": "\U0001f7e3 Fully Integrated", "value": matched[:1024], "inline": False},
         {"name": "\u26a1 Integration Rate", "value": "**%g functions/hr** \u00b7 **%s B/hr** *(last 6h)* \u00b7 byte ETA %s" % (round(rate, 1), format(round(byte_rate * 3600), ","), eta), "inline": True},
-        {"name": "\U0001f3c6 Workers", "value": "**%s** \u00b7 %s native credits *(+%d)*" % (job["user"], format(credits, ","), delta), "inline": True},
+        {"name": "\U0001f3c6 Workers", "value": "**%s** \u00b7 %s mining pts \u00b7 %s native credits *(+%d)*" % (
+            job["user"], format(store.user_points(job["user"]), ","), format(credits, ","), delta), "inline": True},
         {"name": "\u2699\ufe0f Verification", "value": "server-verified \u00b7 %d integrated" % len(gains) if accepted else "rejected \u00b7 no native credit" if rejected else state, "inline": True},
         {"name": "\U0001f527 Models", "value": inline_code(job["model"]), "inline": True},
     ]
@@ -81,7 +82,7 @@ def payload(promotions, job, receipt=None):
 
 
 def notify(promotions, job, receipt=None):
-    url = server_mines_webhook()
+    url = player_mines_webhook()
     # Post only real progress: an accepted job that integrated something. Phase changes, retries, merges
     # and rejections changed the digest every time and flooded the channel with zero-gain messages.
     if not url or not (receipt and receipt.get("accepted") and receipt.get("gains")):

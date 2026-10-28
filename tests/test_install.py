@@ -389,7 +389,7 @@ def test_packages_split_keeps_maintainer_modules_out():
     build = load_build()
     worker_modules = set(build.WORKER_MODULES)
     server_modules = set(build.SERVER_MODULES)
-    assert server_modules == {"cluster", "server", "reports", "progress", "integration_verify", "integration_notify"}
+    assert server_modules == {"cluster", "server", "reports", "progress", "integration_verify", "integration_notify", "integration_site"}
     assert not (worker_modules & server_modules), "helper packages must not carry server code"
     for helper in ("worker", "link", "doctor", "setup", "analyze", "draft", "providers",
                    "native_try", "native_sweep", "standins", "rebuild_install"):
@@ -400,8 +400,31 @@ def test_packages_split_keeps_maintainer_modules_out():
     # One launcher: roc.cmd (plus install.cmd for first-time bootstrap) in every package.
     for spec in build.PACKAGES.values():
         assert {"roc.cmd", "install.cmd", "roc.sh", "install.sh"} <= set(spec["files"])
-        assert {"docs/NATIVE_AGENT.md", "research/libs-bundle.json", "research/native-units.json"} <= set(spec["files"])
+        assert {"docs/NATIVE_AGENT.md", "docs/MATCHING_AGENT.md", "research/libs-bundle.json", "research/native-units.json"} <= set(spec["files"])
         assert not [f for f in spec["files"] if f.endswith(".cmd") and f not in ("roc.cmd", "install.cmd")]
+
+
+def test_worker_bootstrap_publishes_both_guides_and_verified_archive(tmp_path):
+    import hashlib
+    import zipfile
+    build = load_build()
+    build.ROOT = tmp_path
+    (tmp_path / 'docs').mkdir()
+    for name in ('MATCHING_AGENT.md', 'NATIVE_AGENT.md'):
+        (tmp_path / 'docs' / name).write_text(name)
+    package = tmp_path / 'worker.zip'
+    with zipfile.ZipFile(package, 'w') as zipped:
+        zipped.writestr('roconstruct-package.json', json.dumps({'matching_workflow_version': 1}))
+        for name in ('MATCHING_AGENT.md', 'NATIVE_AGENT.md'):
+            zipped.writestr('docs/' + name, name)
+    build.prepare_downloads(package)
+    folder = tmp_path / 'local/findings/data'
+    manifest = json.loads((folder / 'native-worker.json').read_text())
+    assert manifest['matching_workflow_version'] == 1
+    assert manifest['sha256'] == hashlib.sha256((folder / 'native-worker.zip').read_bytes()).hexdigest()
+    assert manifest['size'] == package.stat().st_size
+    assert manifest['matching_guide'].endswith('/data/MATCHING_AGENT.md')
+    assert (folder / 'MATCHING_AGENT.md').read_text() == 'MATCHING_AGENT.md'
 
 
 def test_packages_audit_rejects_a_missing_helper_module():

@@ -1281,9 +1281,10 @@ def test_mine_digest():
     events = [{"job": {"client": "C", "addr": "a1"}, "user": "alice", "worker": "w", "model": "roc fingerprint",
                "score": 100, "points": 10}]
     server_embed = MineLog("http://example.invalid/server", st, server=True).digest(events)
-    assert server_embed["title"] == "⛏️ RoConstruct Server Mining Digest"
-    assert server_embed["fields"][3]["name"] == "⚙️ Verification"
-    assert "alice" not in str(server_embed)
+    assert server_embed["title"] == "⛏️ RoConstruct Mining Digest"
+    assert server_embed["fields"][3]["name"] == "🏆 Workers"
+    assert "alice" in str(server_embed)
+    assert server_embed["fields"][-1]["name"] == "🔧 Models"
 
 
 def test_mine_feed_routing():
@@ -1312,8 +1313,11 @@ def test_mine_feed_routing():
                                                  data=json.dumps(body).encode(), headers={"Content-Type": "application/json"})
                     with urllib.request.urlopen(req, timeout=5) as response:
                         assert response.status == 200
-            assert regular.submit.call_count == 2
-            assert automatic.submit.call_count == (2 if dedicated else 0)
+            assert regular.submit.call_count == 4
+            assert automatic.submit.call_count == 0
+            assert regular.submit.call_args_list[1].args[1] == "tester"
+            assert regular.submit.call_args_list[1].args[3] == "roc repair"
+            assert st.user_points("tester") == 80
         finally:
             httpd.shutdown()
             httpd.server_close()

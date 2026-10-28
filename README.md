@@ -41,7 +41,7 @@ fixes, ports (WebAssembly, Linux, macOS), bug fixes, modding and preservation.
 |---|---|
 | A PC | `roc launch`: a cloud worker (API key or ChatGPT plan) keeps your PC mostly idle |
 | A GPU | `roc local-ai`, then `roc launch` with a local model |
-| Claude Code or Codex | `roc gui` → **Workers → Agent worker** |
+| OpenCode, Claude Code or Codex | `roc gui` → **Workers → Worker / Integrator**, or use [Matching agent](docs/MATCHING_AGENT.md) / [Native agent](docs/NATIVE_AGENT.md) |
 | C++ knowledge | `roc next`, `roc claim`, `roc check`, `roc submit` |
 | An always-on PC | `roc host` (maintainers) |
 

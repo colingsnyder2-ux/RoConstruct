@@ -44,12 +44,18 @@ sent only when the summary changes, with a 5-minute minimum interval and a
 ## Discord and daily stats
 
 `--discord-webhook URL` (or `ROCONSTRUCT_DISCORD_WEBHOOK`) logs mined functions.
-Digests split each batch into one message per client, with a two-hour mining rate.
-Player Mining shows the submitted LLM under Models; automatic tools use Server Mining.
+Digests split each batch into one message per client, with a six-hour mining rate.
+Player Mining receives contributor matching, automatic matching and native integration digests.
+The Models field shows the submitted AI model; deterministic tools retain their honest `roc ...`
+labels. Each mining digest shows contributor totals and verified score-gain points. Integration
+digests show existing mining points plus separate native credits; already-mined code earns no
+duplicate mining points. `ROCONSTRUCT_PLAYER_MINES_WEBHOOK` / `player_mines_webhook` can name
+the shared destination explicitly; the existing Discord webhook setting remains supported.
+The old server-mines webhook is no longer a mining notification destination.
 The daily Discord leaderboard is removed. Local daily audit reports remain.
 Credit needs server verification, an improvement from below 100 to
 100, and a unique client/address per day; 2009-12 is excluded. Commands report under
-**Server Mining** by their `model` field. Reports (JSON + CSV) are saved under
+the automatic-tool audit group by their `model` field; this does not select a separate webhook. Reports (JSON + CSV) are saved under
 `reports/daily/` beside the database; `roc daily-stats [--date D] [--db work/server.db]`
 prints one.
 

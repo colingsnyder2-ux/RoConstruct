@@ -13,7 +13,7 @@ def publish_downloads(root, git_exe, log=print):
     """Publish only reviewed native Worker assets, preserving the remote findings tree."""
     root = Path(root)
     folder = root / 'local/findings/data'
-    files = ['native-worker.zip', 'native-worker.json', 'NATIVE_AGENT.md']
+    files = ['native-worker.zip', 'native-worker.json', 'NATIVE_AGENT.md', 'MATCHING_AGENT.md']
     manifest = json.loads((folder / 'native-worker.json').read_text(encoding='utf-8'))
     if hashlib.sha256((folder / 'native-worker.zip').read_bytes()).hexdigest() != manifest['sha256']:
         raise ValueError('Worker download hash mismatch; rebuild the download bundle')

@@ -108,7 +108,7 @@ def test_disjoint_same_author_jobs_verify_together_and_share_receipt(promotions)
 
 def test_webhook_posts_only_accepted_gains(promotions, monkeypatch):
     posts = []
-    monkeypatch.setattr(integration_notify, "server_mines_webhook", lambda: "https://example.invalid/hook")
+    monkeypatch.setattr(integration_notify, "player_mines_webhook", lambda: "https://example.invalid/hook")
     monkeypatch.setattr(integration_notify, "payload", lambda *a: posts.append(a) or {"embeds": [{"timestamp": 0}]})
     monkeypatch.setattr(integration_notify.urllib.request, "urlopen", lambda *a, **k: (_ for _ in ()).throw(OSError("offline")))
     job = {"id": "j", "user": "alice", "model": "human"}
@@ -940,8 +940,8 @@ def test_native_digest_resends_changes_without_fake_mining_points(promotions, mo
     text = json.dumps(data)
     fields = data["embeds"][0]["fields"]
     workers = next(f["value"] for f in fields if f["name"].endswith("Workers"))
-    assert workers == "**alice** \u00b7 0 native credits *(+0)*"
-    assert "42 pts" not in text
+    assert workers == "**alice** \u00b7 42 mining pts \u00b7 0 native credits *(+0)*"
+    assert "42 mining pts" in text
     assert "exact waiting" in text and "partial mined" in text and "remaining" in text
     assert "1 / 3 integrated \u00b7 2 remaining" in data["embeds"][0]["description"]
     assert "collecting rate" in fields[1]["value"]
@@ -962,7 +962,7 @@ def test_native_digest_resends_changes_without_fake_mining_points(promotions, mo
     response.__exit__ = Mock(return_value=False)
     response.read.return_value = b'{"id":"123"}'
     send = Mock(return_value=response)
-    monkeypatch.setattr(integration_notify, "server_mines_webhook", lambda: "https://discord.invalid/webhooks/example")
+    monkeypatch.setattr(integration_notify, "player_mines_webhook", lambda: "https://discord.invalid/webhooks/example")
     monkeypatch.setattr(integration_notify.urllib.request, "urlopen", send)
     integration_notify.notify(promotions, job)
     send.assert_not_called()

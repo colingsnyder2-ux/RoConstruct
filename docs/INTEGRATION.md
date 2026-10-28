@@ -254,7 +254,7 @@ prepared input identity before compiling; after interruption, matching snapshots
 their private content-checked objects and rerun every gate. Unprepared snapshots are
 retained for diagnostics. Completed baseline receipts remain required for acceptance.
 
-Server Mining receives a fresh digest when progress changes: purple integrated native bodies,
+Player Mining receives a fresh digest for accepted native gains: purple integrated native bodies,
 blue exact mined sources awaiting integration, yellow partial mined sources,
 white unmined targets. The 23-cell bar measures target bytes; category counts and
 remaining functions are shown separately. User points are real, native credit

@@ -38,6 +38,10 @@ settings. `roc uninstall` lists everything with sizes and asks before each step.
 
 ## Start a worker
 
+For a coding-agent-driven session, use [Matching agent](MATCHING_AGENT.md) for
+source mining or [Native agent](NATIVE_AGENT.md) for native integration. Both guides
+bootstrap a verified Worker download and install missing dependencies when authorized.
+
 Click **Help out** on a client at the
 [website](https://colingsnyder2-ux.github.io/RoConstruct/), or run `roc launch`. It asks:
 cloud or local model, which model, worker mode (Recommended / Fast / Deep / Advanced /

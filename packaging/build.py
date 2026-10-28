@@ -13,6 +13,7 @@ Each zip is staged, then imported for real before it is packed: a package that
 cannot import its own modules is a build failure, not a download problem later.
 """
 import ast
+import hashlib
 import json
 import shutil
 import subprocess
@@ -50,7 +51,7 @@ COMMON_FILES = ["roc.py", "roc.cmd", "roc.sh", "install.cmd", "install.sh",
                 "docs/logo.png", "docs/favicon.png",
                 "clients/clients.json", "clients/sources.json", "clients/donor.json"]
 # Native contributors need trusted recipes/generator, never private vendor trees.
-COMMON_FILES += ["docs/INTEGRATION.md", "docs/NATIVE_AGENT.md", "research/libs-bundle.json", "research/native-units.json", "research/native-source-lock.json"]
+COMMON_FILES += ["docs/INTEGRATION.md", "docs/NATIVE_AGENT.md", "docs/MATCHING_AGENT.md", "research/libs-bundle.json", "research/native-units.json", "research/native-source-lock.json"]
 COMMON_FILES += subprocess.check_output(["git", "ls-files", "rebuild/2008-06"],
                                         cwd=ROOT, text=True).splitlines()
 
@@ -192,7 +193,8 @@ def stage(slug, spec, out):
     shutil.copytree(ROOT / "roc" / "web", out / "roc" / "web", dirs_exist_ok=True)
     (out / "roc" / "__init__.py").write_text("", encoding="utf-8")
     (out / "roconstruct-package.json").write_text(json.dumps(
-        {"package": slug, "revision": version(), "native_workflow": True, "native_workflow_version": 3}, indent=2) + "\n", encoding="utf-8")
+        {"package": slug, "revision": version(), "native_workflow": True, "native_workflow_version": 3,
+         "matching_workflow_version": 1}, indent=2) + "\n", encoding="utf-8")
     for name, text in spec["docs"].items():
         (out / name).write_text(text, encoding="utf-8")
     return out
@@ -285,9 +287,37 @@ def main(argv):
     for slug in wanted:
         print("\n%s" % PACKAGES[slug]["name"])
         print("  %s" % PACKAGES[slug]["tagline"])
-        build(slug)
+        target = build(slug)
+        if slug == "worker":
+            prepare_downloads(target)
     print("\nWrote %s" % DIST)
     print("A helper only needs RoConstruct Worker. Local AI and Server are opt-in.")
+
+
+def prepare_downloads(package):
+    """Refresh the shared bootstrap ZIP/manifest and both standalone agent guides."""
+    with zipfile.ZipFile(package) as zipped:
+        marker = json.loads(zipped.read("roconstruct-package.json"))
+        if marker.get("matching_workflow_version", 0) < 1 or not {
+                "docs/MATCHING_AGENT.md", "docs/NATIVE_AGENT.md"} <= set(zipped.namelist()):
+            raise ValueError("Worker ZIP lacks the matching/native workflows; rebuild it")
+    folder = ROOT / "local/findings/data"
+    folder.mkdir(parents=True, exist_ok=True)
+    manifest = folder / "native-worker.json"
+    data = json.loads(manifest.read_text(encoding="utf-8")) if manifest.exists() else {}
+    base = "https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/"
+    archive = folder / "native-worker.zip"
+    shutil.copy2(package, archive)
+    for name in ("NATIVE_AGENT.md", "MATCHING_AGENT.md"):
+        shutil.copy2(ROOT / "docs" / name, folder / name)
+    data.update(schema=1, workflow_version=3, matching_workflow_version=1,
+                url=base + archive.name, sha256=hashlib.sha256(archive.read_bytes()).hexdigest(),
+                size=archive.stat().st_size, guide=base + "NATIVE_AGENT.md", matching_guide=base + "MATCHING_AGENT.md",
+                native_clients=["2008-06"], invitation_required=False)
+    data.setdefault("server", "https://colinpc.tail2879d0.ts.net")
+    data.setdefault("status_url", data["server"].rstrip("/") + "/v1/status")
+    manifest.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
+    print("  Bootstrap ZIP + matching/native guides refreshed: %s" % folder)
 
 
 if __name__ == "__main__":

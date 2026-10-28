@@ -1619,6 +1619,8 @@ def submit_files(server, user, client, addrs=None, token=None, log=print, file=N
     Local re-checks (one compile each) run in parallel; uploads stay serial.
     """
     model = model or os.environ.get("ROC_AGENT_MODEL") or "Unknown model"
+    if model.strip().lower() in ("function", "family", "unit", "native"):
+        raise ValueError("--model needs the actual AI model or human, not a lease mode")
     api = Api(server, token)
     paths = sorted((ROOT / "src" / client).glob("*.cpp"))
     if file:

@@ -876,6 +876,8 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
                 return self.send(200, {"registered": store.register_families(rows)})
             if path in ("/v1/lease", "/v1/submit", "/v1/submit-batch", "/v1/agent-memory", "/v1/units") and not USER_RE.match(user):
                 return self.send(400, {"error": "username must be 2-32 letters, digits, _ . -"})
+            if path in ("/v1/submit", "/v1/submit-batch") and str(body.get("model", "")).strip().lower() in ("function", "family", "unit", "native"):
+                return self.send(400, {"error": "model must identify the actual AI model or human, not a lease mode"})
             if path in ("/v1/submit", "/v1/submit-batch") and any(
                     recipe_versions.get(name) != version for name, version in body.get("recipe_versions", {}).items()):
                 return self.send(409, {"error": "Verifier recipe mismatch; update/restart verifier"})
@@ -951,8 +953,7 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
                 if body.get("lease"):
                     store.release(str(body["lease"]))
                 if improved:
-                    feed = (server_mine_log if str(body.get("model", "")).startswith("roc ")
-                            else mine_log)
+                    feed = mine_log
                     if feed is not None:
                         feed.submit(store.function_info(client, addr), user,
                                         str(body.get("worker", ""))[:64],
@@ -985,7 +986,7 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
                                                         model=body.get("model", ""), verified=True)
                     except ValueError as error:
                         return self.send(400, {"error": str(error)})
-                    feed = server_mine_log if str(body.get("model", "")).startswith("roc ") else mine_log
+                    feed = mine_log
                     if improved and feed is not None:
                         feed.submit(store.function_info(client, addr), user,
                                         str(body.get("worker", ""))[:64],
@@ -1055,9 +1056,8 @@ def import_startup_matches(store, can_verify, log=print):
 
 def serve(host="0.0.0.0", port=8765, db=None, token=None, lease_seconds=900,
           discord_webhook=None, log=print):
-    from roc.reports import MineLog, server_mines_webhook
-    discord_webhook = discord_webhook or os.environ.get("ROCONSTRUCT_DISCORD_WEBHOOK")
-    server_webhook = server_mines_webhook()
+    from roc.reports import MineLog, player_mines_webhook
+    discord_webhook = discord_webhook or player_mines_webhook()
     db = db or str(ROOT / "work" / "server.db")
     Path(db).parent.mkdir(parents=True, exist_ok=True)
     store = Store(db, lease_seconds)
@@ -1073,10 +1073,8 @@ def serve(host="0.0.0.0", port=8765, db=None, token=None, lease_seconds=900,
     log("Re-checking submissions for: %s" % (", ".join(sorted(can_verify)) or "none (trusting workers)"))
     if discord_webhook:
         log("Discord worker mine logs: enabled (batched digests)")
-    if server_webhook:
-        log("Discord server mine logs: enabled (separate feed)")
     mine_log = MineLog(discord_webhook, store) if discord_webhook else None
-    server_mine_log = MineLog(server_webhook, store, server=True) if server_webhook else None
+    server_mine_log = None
     from roc.integration import Promotions
     from roc.integration_verify import loop as integration_loop
     integration = Promotions(store)
