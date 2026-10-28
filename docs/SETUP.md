@@ -57,7 +57,7 @@ are refused (PE checksum). Never commit or share client files.
 | ChatGPT plan | `roc chatgpt login` (installs its sign-in packages on first use), pick a model, then `roc launch`. Plus/Pro limits are shared with your other ChatGPT apps; set the app limit at [ChatGPT Settings → Usage](https://chatgpt.com/settings/usage). Tokens are encrypted, the key is held by the OS keyring (Linux: Secret Service or KWallet). `roc chatgpt status`, `models`, `use ID`, `logout`. RoConstruct never falls back to an API key, and a USD cap is rejected for this provider. |
 | OpenCode CLI | No key: Match and Agent modes run through the signed-in OpenCode CLI. `npm i -g opencode-ai`, then `opencode auth login`; the dashboard's Install / sign in button does the same. Pick `opencode:…` models from the Match dropdown (or the OpenCode agent CLI) and, if the model supports it, a reasoning variant (`#high`, `#low`, `none`…`max`). `opencode-go/…` models (Go subscription — $80/mo DeepSeek V4.1 Flash allowance) draw on the plan automatically; a USD cap is rejected for them. Model list: `opencode models`. |
 | Local model | `roc local-ai` installs Ollama (asks first); `roc local-ai --docker` adds Docker/Rev.ng hints (~5 GB). `roc model` lists and picks models. Local models load the GPU/CPU hard. |
-| Claude Code / Codex | Install and sign in to the CLI, then use **Workers → Agent worker** in the dashboard. See [AGENT_GUIDE.md](AGENT_GUIDE.md). |
+| Claude Code / Codex | Install and sign in to the CLI, then select it under **Workers → Worker / Integrator → Model connection**. Both modes accept CLI models, APIs and local models. See [INTEGRATION.md](INTEGRATION.md). |
 
 Cloud dollar caps need your exact model rates:
 `roc provider pricing PROVIDER --model M --input-per-million X --output-per-million Y`.
@@ -68,9 +68,9 @@ Cloud dollar caps need your exact model rates:
 
 `roc gui` opens the local dashboard (loopback only; keep its session link private).
 
-- **Workers:** cloud/local/agent workers in one chat view with session tabs, loop filters,
+- **Workers:** mining workers and native integrators in one chat view with session tabs, loop filters,
   live generated C++, and a configuration drawer. Function workers can pause, resume,
-  retune and finish; agent workers stop immediately (leases expire on the server).
+  retune and finish; integration controls apply at file/AI-round boundaries. Worker count controls parallel AI jobs; integration also has a separate compiler cap and batch size.
 - **Commands:** run any `roc` command with a preview; jobs queue to protect shared files.
 - **Functions / History:** local attempt history (`work/function-history.sqlite`) and saved runs.
 - **Servers:** hosting guide, CPU contribution and cluster status (see [SERVER.md](SERVER.md)).

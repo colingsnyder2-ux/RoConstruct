@@ -36,8 +36,8 @@ WORKER_MODULES = [
 SERVER_MODULES = ["cluster", "progress", "reports", "server"]
 WORKER_MODULES += ["agent_memory", "research", "agent_recovery", "bruteforce", "extents", "remill", "repair_scan", "rtti", "boundaries",
                    "claims", "packet", "scout", "ranking", "routing"]
-WORKER_MODULES += ["integration", "rebuild", "rebuild_install", "mutsearch", "twinpatch", "native_try", "native_sweep", "standins"]
-SERVER_MODULES += ["integration_verify", "integration_notify"]
+WORKER_MODULES += ["integration", "integrator", "rebuild", "rebuild_install", "mutsearch", "twinpatch", "native_try", "native_sweep", "standins"]
+SERVER_MODULES += ["integration_verify", "integration_notify", "integration_site"]
 
 COMMON_FILES = ["roc.py", "roc.cmd", "roc.sh", "install.cmd", "install.sh",
                 "packaging/organize-local.ps1", "research/repair-patterns.json", "docs/SETUP.md", "docs/SERVER.md",

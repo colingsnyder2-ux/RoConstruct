@@ -6,9 +6,10 @@ import re
 import subprocess
 import sys
 import time
+import threading
 import uuid
 from collections import Counter, defaultdict
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -601,6 +602,8 @@ def model_proposal(rel, text, addrs, baseline, owned, model, rounds, compile_rou
         # Edit blocks are short: no thinking and a small reply cap keep each round to seconds, not a minute.
         # With thinking on, reasoning shares max_tokens: an 8192 cap left 27 of 29 replies without any edit.
         settings = dict({"allow_cloud": True, "timeout": 600, "thinking": "disabled"}, **(options or {}))
+        if settings.get("before_request") and not settings["before_request"]():
+            return None, trials
         settings.setdefault("max_tokens", 3072 if settings["thinking"] == "disabled" else 32768)
         reply = providers.generate(model, messages, settings)
         log("model %s round %d: %.1fs, %s reasoning tokens" % (rel, n, getattr(reply, "latency_s", 0) or 0,
@@ -649,9 +652,17 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
     files = sorted((rel for rel in homes if rel not in skip), key=lambda rel: -len(homes[rel]))[:config.get("max_files")]
     model, rounds = config["llm"], config.get("rounds", 3)
     options = {key: config[key] for key in ("thinking", "max_tokens") if key in config}
+    options.update(config.get("provider_options", {}))
+    compile_slots = threading.Semaphore(config.get("compile_workers", jobs))
+    raw_compile = compile_source
+    def compile_source(source, rel, label):
+        with compile_slots:
+            return raw_compile(source, rel, label)
     context = config.get("context", "file")
 
     def one(rel):
+        if options.get("before_request") and not options["before_request"]():
+            return None, []
         base = compile_source(texts[rel], rel, "baseline")
         if not base["ok"]:
             return None, [base]
@@ -674,7 +685,9 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
 
     proposals, records = [], []
     with ThreadPoolExecutor(max_workers=jobs) as pool:
-        for n, (proposal, trials) in enumerate(pool.map(one, files)):
+        futures = [pool.submit(one, rel) for rel in files]
+        for n, future in enumerate(as_completed(futures)):
+            proposal, trials = future.result()
             records.extend(trials)
             if proposal:
                 for hit in proposal["witnesses"]:

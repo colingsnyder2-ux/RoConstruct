@@ -580,6 +580,22 @@ def cmd_integrate(a):
     integration.command(a)
 
 
+def cmd_integrator(a):
+    from roc import gui_worker, worker
+    saved = worker.load_settings()
+    config = {**gui_worker.DEFAULTS, "lease_mode": "native", "client": "2008-06",
+              "user": a.user or saved.get("user", ""), "server": a.server or saved.get("server", ""),
+              "model": a.model or saved.get("model", ""), "workers": "auto" if a.workers == "auto" else int(a.workers),
+              "rounds": a.rounds, "max_tokens": a.output_budget, "thinking": a.thinking,
+              "reasoning_effort": a.reasoning_effort, "cloud_allowed": a.allow_cloud or saved.get("cloud_allowed", False),
+              "cloud_concurrency": "auto" if a.cloud_concurrency == "auto" else int(a.cloud_concurrency), "native_batch_files": a.batch_files,
+              "native_compile_workers": a.compile_workers, "native_context": a.context,
+              "max_cloud_requests": a.max_cloud_requests, "max_cloud_tokens": a.max_cloud_tokens,
+              "max_cloud_cost": a.max_cloud_cost}
+    config = gui_worker.validate(config)
+    gui_worker.main({"config": config, "token": saved.get("token")}, receive_commands=False)
+
+
 def cmd_work(a):
     """Manual-matching admin: list clients, scout, or select+claim the next function.
 
@@ -2484,10 +2500,11 @@ def ask(prompt, default=None):
 def menu():
     items = [
         ("First-time setup (packages, exact compilers, links)", lambda: main(["install"])),
-        ("Open the dashboard (Workers, agents, history)", lambda: main(["gui"])),
+        ("Open the dashboard (Workers, integrators, history)", lambda: main(["gui"])),
         ("Start my AI worker (cloud model)", menu_worker),
-        ("Start an automatic agent worker (Claude Code / Codex)",
-         lambda: main(["agent", ask("CLI (claude/codex)", "claude"), "--automatic"])),
+        ("Start an AI integrator (CLI, cloud API or local model)",
+         lambda: main(["integrator", "--model", ask("Model (codex:default, claude:sonnet, opencode:provider/model, API or local)", "codex:default"),
+                       "--workers", ask("Concurrent AI workers", "4"), "--allow-cloud"])),
         ("Check what needs fixing", lambda: main(["doctor"])),
         ("Work on a function by hand", menu_hand),
         ("Send my hand-written functions to the server", lambda: main(["submit", ask("Client", "2008-06")])),
@@ -2553,10 +2570,10 @@ def menu_hand():
 # listed by name under Advanced (`roc <command> --help` for its options).
 COMMAND_GROUPS = [
     ("Start here", ["install", "doctor", "config", "setup", "gui", "client-fetch", "analyze", "pull"]),
-    ("Match and submit", ["agent", "research", "mass", "auto", "xcopy", "libs", "lib-fetch", "lib-info", "libs-bundle", "similar", "donor",
+    ("Match and submit", ["integrate", "research", "mass", "auto", "xcopy", "libs", "lib-fetch", "lib-info", "libs-bundle", "similar", "donor",
                           "check", "check-batch", "classify", "next", "work", "scout", "packet", "release",
                           "claim", "submit", "agent-context", "agent-block", "agent-metrics"]),
-    ("Workers and server", ["worker", "status", "host", "server", "link", "tasks", "cpu-worker", "cluster"]),
+    ("Workers and server", ["worker", "integrator", "status", "host", "server", "link", "tasks", "cpu-worker", "cluster"]),
     ("This copy", ["update", "provider", "chatgpt", "local-ai", "uninstall"]),
 ]
 
@@ -3033,6 +3050,20 @@ def main(argv=None):
     cmd("update", cmd_update, "update this copy from GitHub (a ZIP download becomes a git checkout)")
     cmd("uninstall", cmd_uninstall, "remove what install put on this PC; asks before every step",
         (["--yes"], {"action": "store_true"}))
+    cmd("integrator", cmd_integrator, "parallel AI native integration with independent server verification",
+        (["--model"], {"help": "codex:default, claude:sonnet, opencode:provider/model, API or local model"}),
+        (["--workers"], {"default": "4", "help": "parallel AI jobs (1-256 or auto)"}),
+        (["--compile-workers"], {"type": int, "default": 4, "help": "concurrent local compilers (1-64)"}),
+        (["--batch-files"], {"type": int, "default": 40, "help": "files per verified batch (1-1024)"}),
+        (["--rounds"], {"type": int, "default": 3}),
+        (["--output-budget"], {"type": int, "default": 8192}),
+        (["--context"], {"choices": ["methods", "file"], "default": "methods"}),
+        (["--thinking"], {"choices": ["auto", "enabled", "disabled"], "default": "disabled"}),
+        (["--reasoning-effort"], {"choices": ["auto", "low", "medium", "high", "max"], "default": "auto"}),
+        (["--cloud-concurrency"], {"default": "auto"}),
+        (["--max-cloud-requests"], {"type": int}), (["--max-cloud-tokens"], {"type": int}),
+        (["--max-cloud-cost"], {"type": float}), (["--allow-cloud"], {"action": "store_true"}),
+        (["--user"], {}), (["--server"], {}))
     cmd("worker", cmd_worker, "help automatically: AI drafts, compile, submit",
             (["--order"], {"choices": ["auto", "best", "matched", "unmatched", "easiest", "random"], "help": "which functions first: random named units (default), most-matched, unmatched, easiest, best evidence, or auto"}),
         (["--server"], {}), (["--user"], {}), (["--token"], {}), (["--model"], {}),

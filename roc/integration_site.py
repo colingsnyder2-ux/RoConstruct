@@ -5,6 +5,7 @@ import json
 import re
 import sqlite3
 from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
 
 from roc.integration import CLIENT, ROOT, atomic_json
 
@@ -31,7 +32,7 @@ def build(root=ROOT, log=print):
     try:
         scores = dict(db.execute("SELECT addr,score FROM funcs WHERE client=?", (CLIENT,)).fetchall())
         jobs = db.execute("SELECT id,user,model,unit,receipt,updated FROM integration_jobs WHERE state='accepted' "
-                          "ORDER BY updated DESC LIMIT 100").fetchall()
+                          "ORDER BY updated DESC").fetchall()
         leaders = db.execute("SELECT user,model,COUNT(*) FROM integration_credit WHERE client=? GROUP BY user,model "
                              "ORDER BY COUNT(*) DESC", (CLIENT,)).fetchall()
     finally:
@@ -47,6 +48,7 @@ def build(root=ROOT, log=print):
         groups[key][1] += f["size"]
     units = {job: unit for job, _, _, unit, _, _ in jobs}
     receipts = []
+    daily = {}
     seen = set()
     for job, user, model, unit, receipt, updated in jobs:
         r = json.loads(receipt or "{}")
@@ -54,6 +56,14 @@ def build(root=ROOT, log=print):
         if key in seen:
             continue
         seen.add(key)
+        day = datetime.fromtimestamp(updated, ZoneInfo("America/New_York")).strftime("%Y-%m-%d")
+        row = daily.setdefault(day, {"day": day, "gains": 0, "jobs": 0, "models": {}})
+        gains = len(r.get("new_distinct", r.get("gains", [])))
+        row["gains"] += gains
+        row["jobs"] += 1
+        series = row["models"].setdefault(model or "Unknown", {"gains": 0, "jobs": 0})
+        series["gains"] += gains
+        series["jobs"] += 1
         unit = ", ".join(dict.fromkeys(units.get(j, "") for j in r.get("merged_jobs", [job])))
         receipts.append({"job": key[:8], "user": user, "model": model, "units": unit[:120],
                          "gains": len(r.get("gains", [])), "distinct_gains": len(r.get("new_distinct", r.get("gains", []))), "owned_after": r.get("owned_after"),
@@ -67,7 +77,8 @@ def build(root=ROOT, log=print):
             "sources": {a: value for a, value in sources.items() if a in native},
             # addr -> [readable name, decorated symbol, rebuilt score (100 = integrated)]
             "names": {a: [readable(v["symbol"]), v["symbol"], 100 if a in native else v.get("score")] for a, v in sorted(shown.items())},
-            "jobs": receipts,
+            "daily": [daily[day] for day in sorted(daily)],
+            "jobs": receipts[:100],
             "leaderboard": [{"user": u, "model": m, "native_credits": n} for u, m, n in leaders]}
     atomic_json(root / "docs/integration.json", data)
     log("Integration site data: %d integrated, %d named" % (len(native), len(data["names"])))

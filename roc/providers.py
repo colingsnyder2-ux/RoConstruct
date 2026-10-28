@@ -13,6 +13,7 @@ import shutil
 import subprocess
 import threading
 import time
+import tempfile
 import urllib.error
 import urllib.request
 from urllib.parse import urlparse
@@ -25,6 +26,8 @@ CONFIG = setup.config("roconstruct-providers.json")
 OLLAMA = "http://127.0.0.1:11434"
 
 BUILTINS = {
+    "codex": {"kind": "codex-cli", "base_url": "", "key_env": "", "defaults": ["default"]},
+    "claude": {"kind": "claude-cli", "base_url": "", "key_env": "", "defaults": ["default", "sonnet", "opus"]},
     "chatgpt": {"kind": "chatgpt-plan", "base_url": "https://api.openai.com/v1", "key_env": ""},
     # `defaults` are the suggested remote models shown in the dashboard.
     # Runs through the signed-in OpenCode CLI (`opencode run`): OpenCode Console
@@ -170,7 +173,7 @@ def _read_config():
         configured = {}
     out = {name: dict(value) for name, value in BUILTINS.items()}
     for name, value in configured.items():
-        if name in ("chatgpt", "opencode"):
+        if name in ("chatgpt", "opencode", "codex", "claude"):
             continue  # Reserved for CLI sign-in providers; never user-overridden.
         if (isinstance(value, dict) and value.get("kind") in KINDS and _safe_base_url(value.get("base_url"))
                 and value.get("key_env")):
@@ -239,6 +242,8 @@ def _safe_base_url(value):
 
 
 def save_provider(name, kind, base_url, key_env, **extra):
+    if name in ("codex", "claude"):
+        raise ValueError(name + " is reserved for the signed-in CLI")
     if name == "chatgpt":
         raise ValueError("chatgpt is reserved for official ChatGPT plan sign-in")
     if name == "opencode":
@@ -334,6 +339,8 @@ def available(model):
 
 
 def provider_ready(name):
+    if name in ("codex", "claude"):
+        return bool(shutil.which(name))
     if name == "chatgpt":
         from roc import chatgpt
         return chatgpt.ready()
@@ -345,6 +352,8 @@ def provider_ready(name):
 
 def credential_hint(model):
     provider, _remote, config = parse_model(model)
+    if provider in ("codex", "claude"):
+        return "%s CLI required; install and sign in with %s" % (provider, provider)
     if provider == "chatgpt":
         return "ChatGPT plan sign-in required: roc chatgpt login"
     if provider == "opencode":
@@ -784,6 +793,72 @@ def _ollama(remote, prompt, state, options):
                       time.monotonic() - started, "local", remote, "", final.get("done_reason", ""))
 
 
+def _coding_cli(provider, remote, config, prompt, state, options):
+    """Use the contributor's signed-in CLI as a text provider; edits stay in ROC's compiler loop."""
+    exe = shutil.which(provider)
+    if not exe:
+        raise ProviderError("provider_config", credential_hint(provider + ":" + remote))
+    messages = _cloud_messages(prompt, state, options.get("history_keep_last", 2))
+    text = "\n\n".join(message["role"].upper() + ":\n" + message["content"] for message in messages)
+    if provider == "claude":
+        argv = [exe, "-p", "--output-format", "json", "--tools", "", "--strict-mcp-config",
+                "--mcp-config", '{"mcpServers":{}}', "--no-session-persistence"]
+    else:
+        argv = [exe, "exec", "--json", "--sandbox", "read-only", "--skip-git-repo-check"]
+    if remote != "default":
+        argv += ["--model", remote]
+    effort = options.get("reasoning_effort")
+    if effort and effort != "auto":
+        argv += (["--effort", effort] if provider == "claude" else ["-c", 'model_reasoning_effort="%s"' % effort])
+    if provider == "codex":
+        argv += ["-"]
+    with tempfile.TemporaryDirectory(prefix="roc-generation-") as folder:
+        try:
+            process = subprocess.Popen(argv, cwd=folder, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+                                       stderr=subprocess.PIPE, text=True, encoding="utf-8", errors="replace",
+                                       creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
+            try:
+                output, _ = process.communicate(text, timeout=options.get("timeout", 180))
+            except subprocess.TimeoutExpired:
+                if os.name == "nt":
+                    subprocess.run(["taskkill", "/T", "/F", "/PID", str(process.pid)], capture_output=True)
+                else:
+                    process.kill()
+                process.communicate()
+                raise ProviderError("provider_retry", provider + " CLI timed out")
+        except OSError:
+            raise ProviderError("provider_config", provider + " CLI could not start") from None
+    if process.returncode:
+        raise ProviderError("provider_error", provider + " CLI failed; check CLI sign-in and model access")
+    if provider == "claude":
+        try:
+            result = json.loads(output)
+        except ValueError:
+            raise ProviderError("provider_error", "Claude CLI returned invalid JSON") from None
+        if result.get("is_error"):
+            raise ProviderError("provider_error", "Claude CLI rejected generation; check sign-in and plan limits")
+        answer, usage = result.get("result", ""), result.get("usage", {})
+    else:
+        answer, usage = "", {}
+        for line in output.splitlines():
+            try:
+                event = json.loads(line)
+            except ValueError:
+                continue
+            if event.get("type") in ("turn.failed", "error"):
+                raise ProviderError("provider_error", "Codex CLI rejected generation; check sign-in and model access")
+            if event.get("type") == "item.completed" and event.get("item", {}).get("type") == "agent_message":
+                answer = event["item"].get("text", "")
+            if event.get("type") == "turn.completed":
+                usage = event.get("usage", {})
+    if not answer.strip():
+        raise ProviderError("provider_error", provider + " CLI returned no text")
+    return Generation(answer, {"messages": messages + [{"role": "assistant", "content": answer}]},
+                      input_tokens=usage.get("input_tokens", 0), output_tokens=usage.get("output_tokens", 0),
+                      cached_tokens=usage.get("cached_input_tokens", usage.get("cache_read_input_tokens", 0)),
+                      provider=provider, model=remote)
+
+
 def generate(model, messages, options=None, state=None):
     """Generate once from a prompt or explicit message list. Cloud requires consent."""
     if isinstance(messages, (list, tuple)):
@@ -808,12 +883,12 @@ def generate(model, messages, options=None, state=None):
         options["retry_forever"] = False
         if options.get("budget") and options["budget"].max_cost is not None:
             raise ProviderError("cloud_budget", "ChatGPT uses plan limits, not USD pricing. Remove the USD cap; manage app limits in ChatGPT Settings > Usage.")
-    elif config["kind"] == "opencode-cli":
+    elif config["kind"] in ("opencode-cli", "codex-cli", "claude-cli"):
         options["retry_forever"] = False
         if not options.get("timeout"):
             options["timeout"] = 180  # Avoid an unresponsive model wedging worker forever.
         if options.get("budget") and options["budget"].max_cost is not None:
-            raise ProviderError("cloud_budget", "OpenCode models use the CLI's plan allowances (Go subscription monthly limits), not USD API pricing. Remove the spend cap; usage is shown in the OpenCode console.")
+            raise ProviderError("cloud_budget", "CLI models use their signed-in account's limits. Remove the USD cap; check usage in the provider console.")
     gate, lock = options.get("gate"), None
     budget = options.get("budget")
     messages = _cloud_messages(prompt, state, options.get("history_keep_last", 2))
@@ -835,6 +910,7 @@ def generate(model, messages, options=None, state=None):
                     ticket = budget.reserve(estimate_tokens,
                                             _cost(config, estimate_input, int(options["max_tokens"]), remote) or 0.0)
                 fn = {"chatgpt-plan": _chatgpt_plan, "opencode-cli": _opencode_cli,
+                      "codex-cli": _coding_cli, "claude-cli": _coding_cli,
                       "openai-chat": _openai_chat, "openai-responses": _openai_responses,
                       "anthropic-messages": _anthropic, "gemini": _gemini}[config["kind"]]
                 out = fn(provider, remote, config, prompt, state, options)

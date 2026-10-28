@@ -35,6 +35,7 @@ def test_site_groups_and_merged_receipts(tmp_path):
     assert len(data['jobs']) == 1
     assert data['jobs'][0]['gains'] == 2
     assert data['jobs'][0]['distinct_gains'] == 1
+    assert data['daily'] == [{'day': '1969-12-31', 'gains': 1, 'jobs': 1, 'models': {'model': {'gains': 1, 'jobs': 1}}}]
     assert data['leaderboard'][0]['native_credits'] == 1
     assert json.loads((tmp_path / 'docs/integration.json').read_text()) == data
 
@@ -42,3 +43,23 @@ def test_site_groups_and_merged_receipts(tmp_path):
 def test_readable_native_method():
     assert integration_site.readable('?askSetParent@Camera@RBX@@UBEXPAVInstance@2@@Z') == 'RBX::Camera::askSetParent'
     assert integration_site.readable('??1Camera@RBX@@UAE@XZ') == 'RBX::Camera::~Camera'
+
+
+def test_daily_history_exceeds_recent_jobs(tmp_path):
+    work = tmp_path / 'work/2008-06'
+    work.mkdir(parents=True)
+    (work / 'functions.jsonl').write_text('')
+    db = sqlite3.connect(tmp_path / 'work/server.db')
+    db.executescript('''
+        CREATE TABLE funcs(client TEXT, addr TEXT, score INTEGER);
+        CREATE TABLE integration_jobs(id TEXT, user TEXT, model TEXT, unit TEXT, receipt TEXT, updated REAL, state TEXT);
+        CREATE TABLE integration_credit(client TEXT, user TEXT, model TEXT);
+    ''')
+    db.executemany('INSERT INTO integration_jobs VALUES (?,?,?,?,?,?,?)', [
+        (str(n), 'tester', 'model', 'RBX::Camera', json.dumps({'new_distinct': [str(n)]}),
+         1793145600 + n, 'accepted') for n in range(105)])  # Oct 28 UTC, still Oct 27 Eastern.
+    db.commit()
+    db.close()
+    data = integration_site.build(tmp_path, log=lambda _: None)
+    assert len(data['jobs']) == 100
+    assert data['daily'] == [{'day': '2026-10-27', 'gains': 105, 'jobs': 105, 'models': {'model': {'gains': 105, 'jobs': 105}}}]

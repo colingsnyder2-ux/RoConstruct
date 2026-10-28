@@ -84,10 +84,26 @@ code { color: var(--accent2); font-family: var(--mono); font-size: .92em; }
 .bar.native i { border-radius: 0; }
 .bar.native .n { background: #a855f7; } .bar.native .e { background: #58a6ff; }
 .bar.native .y { background: #d29922; } .bar.native .u { background: #3a3d45; }
-.jobs-wrap { overflow-x: auto; }
-.jobs { width: 100%; border-collapse: collapse; font: 13px var(--mono); margin-top: 10px; }
-.jobs th, .jobs td { text-align: left; padding: 6px 8px; border-bottom: 1px solid #22293a; }
-.jobs td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.integration-summary { margin-top: 12px; }
+.integration-summary .label { color: #c084fc; font-size: 12px; margin: 0 0 6px; }
+.integration-summary .bar { height: 8px; }
+.integration-chart { overflow-x: auto; }
+.integration-chart svg { display: block; width: 100%; min-width: 560px; }
+.integration-chart text { fill: var(--dim); font: 12px var(--mono); }
+.integration-chart { padding: 20px; background: linear-gradient(150deg, #17172b, var(--panel)); }
+.integration-chart .legend { margin: 12px 0 0; gap: 14px; }
+.view-switch { display: flex; width: fit-content; gap: 4px; padding: 5px; border: 1px solid var(--line2); border-radius: 12px; background: var(--panel2); margin: 20px 0; }
+.view-switch button { cursor: pointer; color: var(--dim); border: 0; border-radius: 8px; padding: 10px 20px; background: transparent; font: 600 13px Inter, sans-serif; }
+.view-switch button[aria-pressed="true"] { background: #7c3aed; color: white; box-shadow: 0 3px 16px #7c3aed44; }
+.integration-table td { padding-top: 12px; padding-bottom: 12px; }
+.integration-table .bar { height: 9px; min-width: 120px; }
+.integration-table td:first-child { white-space: normal; min-width: 160px; }
+.chart-toolbar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; }
+.chart-toolbar .view-switch { margin: 0; }
+.chart-toolbar strong { color: #d8b4fe; font: 600 20px var(--mono); }
+[data-work-view][hidden] { display: none; }
+.integration-backlog { max-height: 480px; overflow: auto; }
+.integration-backlog th { position: sticky; top: 0; background: var(--panel2); }
 
 /* panels and sections */
 .panel { box-shadow: 0 0 28px rgba(47, 107, 255, 0.09), inset 0 0 14px rgba(56, 200, 255, 0.02); border: 1px solid var(--line2); border-radius: 14px; background: rgba(15, 21, 32, .7); padding: 14px; }
@@ -298,7 +314,7 @@ const cache = new Map();
 const liveScores = new Map();
 const liveFunctions = new Map();
 let liveView = null;
-let progress, history = [], hIdx = -1, integrationData = null;
+let progress, history = [], hIdx = -1, integrationData = null, clientView = "mining", integrationMetric = "gains";
 const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
                 "November", "December"];
 const ICON = {
@@ -468,9 +484,6 @@ function integrationSection(i, name) {
   if (!i || i.client !== name) return "";
   const g = i.groups;
   const funcs = Object.values(g).reduce((a, x) => a + x.functions, 0);
-  const jobs = (i.jobs || []).slice(0, 8).map(j => `<tr><td>${esc(j.when)}</td><td><code>${esc(j.job)}</code></td>
-    <td>${esc(j.user)} · ${esc(j.model)}</td><td title="${esc(j.units)}">${esc(j.units.length > 48 ? j.units.slice(0, 48) + "…" : j.units)}</td>
-    <td class="num" title="${fmt(j.gains)} new module-owned bodies">+${fmt(j.distinct_gains ?? j.gains)}</td><td class="num">${fmt(j.owned_after || 0)}</td></tr>`).join("");
   const leaders = (i.leaderboard || []).map(l => `${esc(l.user)} <small>(${esc(l.model)})</small> <b>${fmt(l.native_credits)}</b>`).join(" · ");
   return `
     <div class="head" id="integration"><h2><small>Rebuild</small>Integration</h2>
@@ -481,8 +494,115 @@ function integrationSection(i, name) {
       <div class="stat red"><div class="ico">${ICON.file}</div><div><b>${fmt(funcs - g.integrated.functions)}</b><span>Not integrated</span></div></div>
     </div>
     <p class="note">Switch the unit map below to <b>Integration</b> to see which functions are integrated; click a tile for its real method name.
-      Native credits: ${leaders || "none yet"}. Credits count newly covered addresses; module-owned totals can include shared functions.</p>
-    ${jobs ? `<div class="jobs-wrap"><table class="jobs"><thead><tr><th>Accepted</th><th>Job</th><th>By</th><th>Classes</th><th class="num">New coverage</th><th class="num">Module owned</th></tr></thead><tbody>${jobs}</tbody></table></div>` : ""}`;
+      Native credits: ${leaders || "none yet"}. Credits count newly covered addresses; module-owned totals can include shared functions.</p>`;
+}
+
+function integrationSummary(i, name, compact = false) {
+  if (!i || i.client !== name) return "";
+  const total = Object.values(i.groups).reduce((sum, g) => sum + g.bytes, 0);
+  const percent = total ? 100 * i.groups.integrated.bytes / total : 0;
+  return `<div class="integration-summary">${compact ? "" : `<div class="label">Integrated · ${percent.toFixed(2)}%</div>`}
+    <div class="bar native" role="progressbar" aria-label="Integrated code bytes" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${percent.toFixed(2)}"><i class="n" style="width:${percent}%"></i></div></div>`;
+}
+
+function integrationDays(i) {
+  const recorded = new Map();
+  if (i.daily) for (const row of i.daily) recorded.set(row.day, {...row});
+  else {
+    const calendar = new Intl.DateTimeFormat("en-CA", {timeZone: "America/New_York", year: "numeric", month: "2-digit", day: "2-digit"});
+    for (const job of i.jobs || []) {
+      const stamp = new Date(job.when.replace(" UTC", "Z").replace(" ", "T"));
+      const parts = Object.fromEntries(calendar.formatToParts(stamp).map(p => [p.type, p.value]));
+      const day = `${parts.year}-${parts.month}-${parts.day}`;
+      if (!recorded.has(day)) recorded.set(day, {day, gains: 0, jobs: 0, models: {}});
+      const row = recorded.get(day);
+      row.gains += job.distinct_gains ?? job.gains;
+      row.jobs++;
+      const model = job.model || "Unknown";
+      const series = row.models[model] ||= {gains: 0, jobs: 0};
+      series.gains += job.distinct_gains ?? job.gains;
+      series.jobs++;
+    }
+  }
+  const dates = [...recorded.keys()].sort();
+  if (!dates.length) return [];
+  const end = new Date(i.updated.replace(" UTC", "Z").replace(" ", "T"));
+  const calendar = new Intl.DateTimeFormat("en-CA", {timeZone: "America/New_York", year: "numeric", month: "2-digit", day: "2-digit"});
+  const parts = Object.fromEntries(calendar.formatToParts(end).map(p => [p.type, p.value]));
+  const days = [];
+  for (let t = Date.parse(dates[0]); t <= Date.parse(`${parts.year}-${parts.month}-${parts.day}`); t += 86400000) {
+    const day = new Date(t).toISOString().slice(0, 10);
+    days.push(recorded.get(day) || {day, gains: 0, jobs: 0});
+  }
+  return days;
+}
+
+function integrationDaily(i) {
+  const days = integrationDays(i), shown = days.slice(-30), metric = integrationMetric;
+  const totals = new Map();
+  for (const day of days) for (const [model, counts] of Object.entries(day.models || {"Recorded integrations": {gains: day.gains, jobs: day.jobs}}))
+    totals.set(model, (totals.get(model) || 0) + counts[metric]);
+  const models = [...totals.keys()].sort((a, b) => totals.get(b) - totals.get(a));
+  const colors = ["#a855f7", "#38bdf8", "#34d399", "#fbbf24", "#fb7185", "#818cf8", "#2dd4bf", "#f97316"];
+  const max = Math.max(1, ...shown.map(d => d[metric]));
+  const width = Math.max(720, shown.length * 36 + 100), step = (width - 100) / (shown.length || 1);
+  const sum = days.reduce((n, d) => n + d[metric], 0);
+  return `<div class="head"><h2><small>Day by day</small>Integration progress</h2>
+    <p>Accepted native integrations, colored by AI model · US Eastern. New coverage counts newly integrated addresses; shared bodies count once per acceptance.</p></div>
+    <div class="panel integration-chart"><div class="chart-toolbar"><strong>${fmt(sum)} ${metric === "gains" ? "new functions" : "accepted jobs"}</strong>
+      <div class="view-switch" role="group" aria-label="Daily integration metric"><button data-integration-metric="gains" aria-pressed="${metric === "gains"}">New coverage</button><button data-integration-metric="jobs" aria-pressed="${metric === "jobs"}">Accepted jobs</button></div></div>
+    ${days.length ? `<svg viewBox="0 0 ${width} 280" role="img" aria-label="Daily native integration ${metric}, stacked by model, last 30 days">
+      ${[0, 0.5, 1].map(f => `<line x1="50" y1="${210 - f * 160}" x2="${width - 20}" y2="${210 - f * 160}" stroke="var(--line2)" stroke-dasharray="3 5"/><text x="40" y="${214 - f * 160}" text-anchor="end">${Math.round(max * f)}</text>`).join("")}
+      ${shown.map((d, n) => {
+        const x = 56 + n * step, barWidth = Math.min(64, step - 10);
+        let bottom = 0;
+        const counts = d.models || {"Recorded integrations": {gains: d.gains, jobs: d.jobs}};
+        return `<g><title>${d.day}: +${fmt(d.gains)} functions · ${fmt(d.jobs)} accepted jobs</title>` +
+          models.map((model, index) => {
+            const value = counts[model]?.[metric] || 0, height = value / max * 160;
+            bottom += height;
+            return `<rect x="${x}" y="${210 - bottom}" width="${barWidth}" height="${height}" fill="${colors[index % colors.length]}"><title>${d.day} · ${esc(model)} · ${fmt(value)} ${metric === "gains" ? "new functions" : "jobs"}</title></rect>`;
+          }).join("") + `<text x="${x + barWidth / 2}" y="${200 - bottom}" text-anchor="middle">${fmt(d[metric])}</text>
+          <text x="${x + barWidth / 2}" y="232" transform="rotate(-35 ${x + barWidth / 2} 232)" text-anchor="end">${d.day.slice(5)}</text></g>`;
+      }).join("")}</svg><div class="legend">${models.map((model, n) => `<span><i style="background:${colors[n % colors.length]}"></i>${esc(model)}</span>`).join("")}</div>` : '<p class="note">No accepted native integrations recorded yet.</p>'}
+    </div>${days.length ? `<details class="mining-days"><summary>Daily integration counts · ${days.length} days</summary><div class="table"><table><thead><tr><th>Day (US Eastern)</th><th>New coverage</th><th>Accepted jobs</th></tr></thead><tbody>
+        ${[...days].reverse().map(d => `<tr><td>${d.day}</td><td>+${fmt(d.gains)}</td><td>${fmt(d.jobs)}</td></tr>`).join("")}
+      </tbody></table></div></details>` : ""}`;
+}
+
+function integrationCoverageBar(row) {
+  const w = bytes => row.bytes ? 100 * bytes / row.bytes : 0;
+  return `<div class="bar native" aria-label="${pct(row.integratedBytes, row.bytes)} integrated, ${pct(row.waitingBytes, row.bytes)} exact waiting">
+    <i class="n" style="width:${w(row.integratedBytes)}%"></i><i class="e" style="width:${w(row.waitingBytes)}%"></i><i class="y" style="width:${w(row.partialBytes)}%"></i><i class="u" style="width:${w(row.bytes - row.integratedBytes - row.waitingBytes - row.partialBytes)}%"></i></div>`;
+}
+
+function integrationBreakdown(i, data) {
+  const native = new Set(i.native), kinds = classify(data), subsystems = new Map(), backlog = new Map();
+  data.funcs.forEach((f, index) => {
+    const [lib, part] = kinds[index], key = lib === ENGINE || lib === APP ? part : lib;
+    if (!subsystems.has(key)) subsystems.set(key, {total: 0, integrated: 0, bytes: 0, integratedBytes: 0, waiting: 0, waitingBytes: 0, partialBytes: 0});
+    const row = subsystems.get(key);
+    row.total++; row.bytes += f[1];
+    if (native.has(hex(f[0]))) { row.integrated++; row.integratedBytes += f[1]; }
+    else if (f[2] === 100) {
+      row.waiting++; row.waitingBytes += f[1];
+      const unit = data.units[f[3]];
+      if (!backlog.has(unit)) backlog.set(unit, {count: 0, bytes: 0});
+      const pending = backlog.get(unit);
+      pending.count++; pending.bytes += f[1];
+    } else if (f[2] > 0) row.partialBytes += f[1];
+  });
+  const waiting = [...backlog.values()].reduce((sum, r) => sum + r.count, 0);
+  return `<div class="head"><h2><small>Integration</small>Subsystem coverage</h2>
+    <p>Coverage by code bytes; counts show functions. Uses the library breakdown's source and class labels; assignments approximate. Compiler stubs excluded.</p></div>
+    <div class="table"><table class="integration-table"><thead><tr><th>Subsystem / library</th><th>Integrated / total</th><th>Exact waiting</th><th>Code integrated</th><th style="width:25%">Coverage</th></tr></thead><tbody>
+      ${[...subsystems].sort((a, b) => b[1].bytes - a[1].bytes).map(([key, row]) => `<tr><td>${esc(key)}</td><td>${fmt(row.integrated)} / ${fmt(row.total)}</td><td>${fmt(row.waiting)}</td><td>${pct(row.integratedBytes, row.bytes)}</td><td>${integrationCoverageBar(row)}</td></tr>`).join("")}
+    </tbody></table></div>
+    <div class="head"><h2><small>Ready to rebuild</small>Integration backlog</h2>
+      <p>${fmt(waiting)} byte-exact functions awaiting integration · largest classes first by code bytes. Compiler stubs excluded.</p></div>
+    ${backlog.size ? `<details class="mining-days" open><summary>${fmt(backlog.size)} classes / units</summary><div class="table integration-backlog"><table class="integration-table"><thead><tr><th>Class / unit</th><th>Exact waiting</th><th>Code bytes</th></tr></thead><tbody>
+      ${[...backlog].sort((a, b) => b[1].bytes - a[1].bytes).map(([unit, row]) => `<tr><td>${esc(unit)}</td><td>${fmt(row.count)}</td><td>${fmt(row.bytes)}</td></tr>`).join("")}
+    </tbody></table></div></details>` : '<p class="note">No byte-exact functions waiting.</p>'}`;
 }
 
 /* One click opens the console, which then asks the two things that matter:
@@ -555,6 +675,7 @@ function overview() {
         <div class="meta">${esc(builtOn(c))}${esc(c.compiler)}</div>
         ${c.started ? `<div class="row">${codeBar(c.source_bytes || 0, c.mined_bytes ?? c.matched_bytes, c.partial_bytes || 0, c.bytes)}<span>${pct(c.matched_bytes, c.bytes)}</span></div>
           <div class="count">${fmt(c.matched)} / ${fmt(c.functions)}</div>` : `<div class="count">not started</div>`}
+        ${integrationSummary(integrationData, c.name)}
         ${c.started ? joinLink(c.name, true) : ""}
       </div>`).join("")}
     </div>
@@ -828,23 +949,25 @@ async function client(name) {
     <a class="back" href="#">← all clients</a>
     <h1 class="page-title">${esc(title(latest))}</h1>
     <p class="sub">${esc(builtOn(latest))}${esc(latest.compiler)} · ${fmt(latest.classes || 0)} classes · ${fmt(latest.generated || 0)} compiler stubs skipped</p>
+    ${native ? `<div class="view-switch" role="group" aria-label="Progress view"><button data-client-view="mining" aria-pressed="${clientView === "mining"}">Mining</button><button data-client-view="integration" aria-pressed="${clientView === "integration"}">Integration</button></div>` : ""}
     <div class="center">${joinLink(name)}</div>
-    <div class="stats">
+    <div class="stats" data-work-view="mining" ${native && clientView !== "mining" ? "hidden" : ""}>
       <div class="stat"><div class="ico">${ICON.code}</div><div><b id="live-matched">${fmt(c.matched)}</b><span>Matched</span></div></div>
       <div class="stat"><div class="ico">${ICON.chart}</div><div><b id="live-partial">${fmt(c.partial)}</b><span>Partial</span></div></div>
       <div class="stat red"><div class="ico">${ICON.file}</div><div><b id="live-remaining">${fmt(c.functions - c.matched)}</b><span>Remaining</span></div></div>
     </div>
     <p class="note" id="live-status">${progress.live_updated ? `Published snapshot · ${esc(progress.live_updated)} · checks every 30s` : `Published snapshot · ${esc(progress.updated)}`}</p>
-    <div id="live-code"><div class="label">Code <small>(${mb(c.bytes)}) — ${pct(c.matched_bytes, c.bytes)}</small></div>
+    <div data-work-view="mining" ${native && clientView !== "mining" ? "hidden" : ""}><div id="live-code"><div class="label">Code <small>(${mb(c.bytes)}) — ${pct(c.matched_bytes, c.bytes)}</small></div>
     ${codeBar(c.source_bytes || 0, c.mined_bytes ?? c.matched_bytes, c.partial_bytes || 0, c.bytes)}</div>
     <div class="legend"><span><i style="background:#58a6ff"></i>original source</span><span><i style="background:#3fb950"></i>mined</span><span><i style="background:repeating-linear-gradient(135deg,#216841 0 5px,#193d2a 5px 10px)"></i>partial source</span></div>
-    ${integrationBar(integrationData, name)}
+    </div>
+    ${native ? `<div data-work-view="integration" ${clientView !== "integration" ? "hidden" : ""}>${integrationSection(native, name)}${integrationBar(native, name)}</div>` : ""}
     <div class="label">Data <small>(${mb(latest.data_bytes || 0)}) — ${pct(latest.data_matched_bytes || 0, latest.data_bytes)}
       verified (strings and constants used by matched functions)</small></div>
     ${bar(latest.data_matched_bytes || 0, 0, latest.data_bytes || 1, "b")}
     <div style="margin-top:20px">${commitPanel()}</div>
-    ${libraryTable(data)}
-    ${integrationSection(integrationData, name)}
+    <div data-work-view="mining" ${native && clientView !== "mining" ? "hidden" : ""}>${libraryTable(data)}</div>
+    ${native ? `<div data-work-view="integration" ${clientView !== "integration" ? "hidden" : ""}><div id="integration-daily">${integrationDaily(native)}</div><div id="live-integration-breakdown">${integrationBreakdown(native, data)}</div></div>` : ""}
     <div class="head"><h2><small>Map</small>Units</h2><p>${fmt(units.length)} units (classes from RTTI). The map always shows the latest state.</p></div>
     <div id="mapgroup" class="mapgroup" hidden></div>
     <div class="controls">
@@ -856,7 +979,7 @@ async function client(name) {
     <div class="map"><canvas id="cv"></canvas><div class="tip" id="tip"></div></div>
     <div class="legend" id="maplegend">${MINING_LEGEND}</div>
     <div class="detail" id="detail">Click a tile to see its function address, match score, and recovered source.</div>
-    <div id="live-mining">${miningGraph({...latest,
+    <div data-work-view="mining" ${native && clientView !== "mining" ? "hidden" : ""} id="live-mining">${miningGraph({...latest,
       source_matched: latest.source_matched ?? data.funcs.filter(f => f[2] === 100 && f[5]).length,
       mined_matched: latest.mined_matched ?? data.funcs.filter(f => f[2] === 100 && !f[5]).length})}</div>
     ${leaderboard(latest.leaderboard)}
@@ -966,9 +1089,24 @@ async function client(name) {
     document.getElementById("maplegend").innerHTML = mapMode === "native" ? NATIVE_LEGEND : MINING_LEGEND;
     draw();
   };
+  document.querySelectorAll("[data-client-view]").forEach(button => button.onclick = () => {
+    clientView = button.dataset.clientView;
+    document.querySelectorAll("[data-client-view]").forEach(b => b.setAttribute("aria-pressed", b === button));
+    document.querySelectorAll("[data-work-view]").forEach(section => section.hidden = section.dataset.workView !== clientView);
+    modeSel.value = clientView === "integration" ? "native" : "mining";
+    modeSel.onchange();
+  });
+  const daily = document.getElementById("integration-daily");
+  if (daily) daily.onclick = event => {
+    const button = event.target.closest("[data-integration-metric]");
+    if (!button) return;
+    integrationMetric = button.dataset.integrationMetric;
+    daily.innerHTML = integrationDaily(native);
+  };
   const nativeColor = f => nativeSet.has(hex(f[0])) ? "#a855f7" : f[2] === 100 ? "#58a6ff" : f[2] ? "#d29922" : "#3a3d45";
   onresize = layout;
   layout();
+  if (modeSel && clientView === "integration") { modeSel.value = "native"; modeSel.onchange(); }
 
   const remaining = data.funcs.filter(f => f[2] < 100).sort((a, b) => b[1] - a[1] || b[2] - a[2] || a[0] - b[0]);
   let remainingPage = 0, remainingSort = 1, remainingDescending = true;
@@ -1019,6 +1157,7 @@ async function client(name) {
     document.getElementById("live-code").innerHTML = `<div class="label">Code <small>(${mb(latest.bytes)}) — ${pct(latest.matched_bytes, latest.bytes)}</small></div>` +
       codeBar(latest.source_bytes, latest.mined_bytes, latest.partial_bytes, latest.bytes);
     document.getElementById("live-mining").innerHTML = miningGraph(latest);
+    if (native) document.getElementById("live-integration-breakdown").innerHTML = integrationBreakdown(native, data);
     remaining.splice(0, remaining.length, ...data.funcs.filter(f => f[2] < 100));
     sortRemaining();
     renderRemaining();

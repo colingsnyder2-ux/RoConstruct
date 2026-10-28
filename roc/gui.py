@@ -44,7 +44,7 @@ COMMANDS = {
     "lint": ("Source checks", "Check source and data coverage", "one"),
     "vtables": ("Vtables", "Inspect recovered virtual methods", "one"),
     "daily-stats": ("Daily gains", "Read verified daily results", "none"),
-    "agent": ("Agent", "Claude Code or Codex works a goal on your own plan", "none"),
+    "agent": ("Agent", "Legacy CLI runs (saved history compatibility)", "none"),
 }
 
 
@@ -214,13 +214,13 @@ class Dashboard:
                              "analyzed": (ROOT / "work" / name / "functions.jsonl").exists()}
                             for name, row in sorted(registry.items())],
                 "providers": [{"name": name, "ready": providers.provider_ready(name),
-                               "auth": "chatgpt" if name == "chatgpt" else "cli" if name == "opencode" else "api-key",
+                               "auth": "chatgpt" if name == "chatgpt" else "cli" if name in ("opencode", "codex", "claude") else "api-key",
                                "models": ([model["slug"] for model in chatgpt.models(refresh=False)]
                                           if name == "chatgpt" else row.get("defaults", []))}
                               for name, row in providers.providers().items()],
                 "libraries": libs.NAMES,
                 "commands": [{"name": name, "title": row[0], "description": row[1], "target": row[2], "group": "Start here" if name in ("doctor","install","client-fetch","analyze","pull") else "Match and submit" if name in ("mass","auto","xcopy","libs","donor","check","submit") else "Advanced"}
-                             for name, row in COMMANDS.items()],
+                             for name, row in COMMANDS.items() if name != "agent"],
                 "recipes": list(json.loads((ROOT / "research" / "recipes.json").read_text(encoding="utf-8")))}
 
     def function_history(self, identifier=None, query="", status="", sort="recent", limit=100):
@@ -271,7 +271,7 @@ class Dashboard:
             if kind == "worker":
                 config = validate(data.get("config", {}))
                 args = None
-                title = "Match · " + (config["client"] or "all clients")
+                title = ("Integrator · " if config["lease_mode"] == "native" else "Worker · ") + (config["client"] or "all clients")
             elif kind == "agent_worker":
                 args = command_args({**data, "command": "agent", "automatic": not str(data.get("goal", "")).strip()})
                 args += ["--continuous"]

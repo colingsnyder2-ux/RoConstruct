@@ -28,7 +28,56 @@ inventories detect newly shadowing headers; touching unchanged files keeps cache
 hits. Object hashes detect replaced artifacts. Cache records sit beside objects
 as `.compile.json`; old timestamp-only outputs rebuild once to seed them.
 
-## Quick flow
+## Parallel AI integrator
+
+The dashboard's Workers drawer offers **Worker** (mining) and **Integrator**
+(native rebuild integration). Both use the same provider selector, worker count,
+thinking settings, budgets and session controls. The former Agent startup mode
+is no longer offered; old session history and the advanced `roc agent` command
+remain readable/usable.
+
+```text
+roc integrator --model codex:gpt-6.1-sol --workers 16 --compile-workers 4 --batch-files 80 --allow-cloud
+roc integrator --model claude:sonnet --workers 8 --allow-cloud
+roc integrator --model opencode:PROVIDER/MODEL --workers 16 --allow-cloud
+roc worker --model codex:gpt-6.1-sol --workers 16 --cloud-concurrency 16 --allow-cloud
+```
+
+Signed-in Codex, Claude Code and OpenCode CLIs work alongside existing cloud API,
+custom endpoint and local Ollama providers. CLI model availability and allowances
+depend on the signed-in account. Select an explicit model for reproducible model
+attribution. `codex:default` and `claude:default` use the CLI's configured default;
+their label does not establish the underlying model version. CLI responses use
+the same anchored edits and local compilation loop as API responses. Codex runs
+in a temporary read-only workspace; Claude's text-provider invocation has tools
+disabled. CLI subscription usage has no reliable ROC USD estimate; dollar caps
+are rejected. Request/token caps still apply at the shared provider boundary.
+
+Each integration session snapshots runtime/rebuild files into
+`local/integrators/<id>`. Writable overlays, generator changes, claims and outputs
+stay there. Installed tools, binaries and mined source inputs are shared with
+the contributor installation. This works from a downloaded source ZIP without
+Git. Server workspaces remain protected. The native module currently supports
+2008-06; mining workers retain all-client support.
+
+Worker count controls parallel **AI file jobs**, up to 256. `--compile-workers`
+separately bounds memory-heavy compiler processes. `--batch-files` controls how
+many files share one authoritative rebuild. Method-only context is the default;
+`--context file` supplies full files when broader context is needed. Completed
+file jobs are recorded immediately instead of waiting behind the slowest earlier
+request. Pause/stop takes effect before the next file or AI round; already-sent
+requests and submitted verification batches finish normally.
+
+These changes target prompt size, compiler memory pressure, queue head-of-line
+blocking and repeated server rebuild cost. More AI workers cannot bypass provider
+rate limits, missing ABI evidence, ambiguous ownership or serial authoritative
+verification. Local preflight gains remain proposals until server acceptance.
+No measured end-to-end speedup is claimed without a live accepted batch.
+
+CLI behavior follows the official [Codex non-interactive documentation](https://developers.openai.com/codex/noninteractive)
+and [Claude Code CLI reference](https://code.claude.com/docs/en/cli-reference).
+
+## Manual claim flow
 
 ```text
 roc integrate --count 4

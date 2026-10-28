@@ -1,9 +1,11 @@
 """Controlled worker process. JSON commands on stdin; JSON events on stdout."""
 import json
+import os
 import re
 import sys
 import threading
 import time
+from types import SimpleNamespace
 
 from roc import clients, providers, worker, setup
 
@@ -13,13 +15,14 @@ DEFAULTS = dict(client="", server="", user="", model="", workers=1, rounds=4,
                 use_remill=True,
                 min_score=None, max_score=None, diverse_candidates=1,
                 guided_mutations=False, near_repair=False, source_only=False,
-                cloud_allowed=False, cloud_concurrency=1, max_cloud_requests=None,
+                cloud_allowed=False, cloud_concurrency="auto", max_cloud_requests=None,
                 max_cloud_tokens=None, max_cloud_cost=None, lease_mode="function",
-                unit_name=None, family_id=None, targets=None, library="")
+                unit_name=None, family_id=None, targets=None, library="",
+                native_batch_files=40, native_compile_workers=4, native_context="methods")
 LIVE = {"workers", "model", "rounds", "max_size", "max_tokens", "strategy", "order",
         "thinking", "reasoning_effort", "use_revng", "use_remill", "min_score", "max_score",
         "diverse_candidates", "guided_mutations", "near_repair", "max_cloud_requests",
-        "max_cloud_tokens", "max_cloud_cost"}
+        "max_cloud_tokens", "max_cloud_cost", "native_batch_files", "native_compile_workers", "native_context"}
 
 
 def prepare_clients(config, log):
@@ -50,6 +53,7 @@ def validate(values, base=None, check_model=True):
         raise ValueError("Unknown worker settings")
     config = {**DEFAULTS, **(base or {}), **values}
     for key, low, high in (("workers", 1, 256), ("rounds", 1, 100), ("max_size", 0, 1000000),
+                           ("native_batch_files", 1, 1024), ("native_compile_workers", 1, 64),
                            ("max_tokens", 128, 32768), ("diverse_candidates", 1, 16),
                            ("cloud_concurrency", 1, 256)):
         if key in ("workers", "rounds", "max_tokens", "cloud_concurrency") and config[key] == "auto":
@@ -74,6 +78,14 @@ def validate(values, base=None, check_model=True):
                           ("lease_mode", ("function", "family", "unit", "native"))):
         if config[key] not in choices:
             raise ValueError("Invalid %s" % key)
+    if config["native_context"] not in ("methods", "file"):
+        raise ValueError("Invalid native context")
+    if config["lease_mode"] == "native":
+        if config["client"] not in ("", "2008-06"):
+            raise ValueError("Integrator currently supports 2008-06")
+        if config["source_only"]:
+            raise ValueError("Integrator requires a model")
+        config["client"] = "2008-06"
     for key in ("use_revng", "use_remill", "guided_mutations", "near_repair", "source_only", "cloud_allowed"):
         if type(config[key]) is not bool:
             raise ValueError("Invalid %s" % key)
@@ -209,27 +221,56 @@ class Control:
 def native_loop(config, control, emit):
     """Native integration: each pass lets the model edit native files that define waiting exact targets, submits
     locally proven edits as one verified batch, waits for the verdict and syncs; later passes skip tried files."""
-    from roc import native_sweep, research
+    from roc import integration, native_sweep, research
     spec = json.loads(json.dumps(research.recipes()["native-model-2008"]))
+    worker.save_settings(user=config["user"], server=config["server"])
+    integration.command(SimpleNamespace(action="sync", server=config["server"], user=config["user"], token=None))
     tried = set()
     while not control.stopping:
-        spec["native_sweep"].update(llm=config["model"], rounds=config["rounds"], wait=True, exclude_files=sorted(tried))
+        current = control.before_lease(0)
+        if current is None:
+            break
+        for slot in range(control.workers):
+            emit("applied", slot=slot, revision=control.revision)
+        emit("stage", message="Integrator: %d AI workers · %d compilers · up to %d files per batch" % (
+            control.workers, current["native_compile_workers"], current["native_batch_files"]))
+        spec["native_sweep"].update(llm=current["model"], model=current["model"],
+            rounds=3 if current["rounds"] == "auto" else current["rounds"], wait=True, exclude_files=sorted(tried),
+            max_files=current["native_batch_files"], context=current["native_context"],
+            compile_workers=current["native_compile_workers"],
+            provider_options={"allow_cloud": current["cloud_allowed"], "budget": control.budget,
+                "gate": providers.CloudGate(control.workers if current["cloud_concurrency"] == "auto" else current["cloud_concurrency"]),
+                "max_tokens": 8192 if current["max_tokens"] == "auto" else current["max_tokens"],
+                "thinking": current["thinking"], "reasoning_effort": current["reasoning_effort"],
+                "before_request": lambda: control.before_lease(0) is not None})
         try:
             summary = native_sweep.run(spec, "native-model-2008", server=config["server"] or None, jobs=control.workers,
                                        log=lambda message: emit("log", slot=0, message=str(message)))
         except (Exception, SystemExit) as error:  # noqa: BLE001 - report and stop like a worker slot
             emit("error", slot=0, message=str(error))
-            break
+            raise
         emit("log", slot=0, message="native pass: %s, %s local exact, %s verified" % (
             summary.get("state"), summary.get("local_exact", 0), summary.get("new_verified", 0)))
         tried.update(summary.get("files_tried", []))
+        control.completed += len(summary.get("files_tried", []))
+        control.matched += summary.get("new_verified", 0)
+        emit("benchmark", workers=control.workers, completed=control.completed,
+             matched=control.matched, improved=0, errors=control.errors)
+        with control.budget._lock:
+            emit("usage", requests=control.budget.requests, tokens=control.budget.tokens,
+                 cost=control.budget.cost if control.cost_known else None)
         if not summary.get("files_tried"):
             break
-    emit("slot_stopped", slot=0)
+    for slot in range(control.workers):
+        emit("slot_stopped", slot=slot)
 
 
-def main():
-    initial = json.loads(sys.stdin.readline())
+def main(initial=None, receive_commands=True):
+    initial = initial or json.loads(sys.stdin.readline())
+    initial["config"] = validate(initial["config"])
+    if initial["config"].get("lease_mode") == "native" and not os.environ.get("ROC_INTEGRATOR_PRIVATE"):
+        from roc import integrator
+        return integrator.run_private(initial, receive_commands)
     output_lock = threading.Lock()
 
     def emit(event, **fields):
@@ -249,7 +290,8 @@ def main():
                 emit("rejected", message=str(error))
         control.command({"action": "stop"})
 
-    threading.Thread(target=receive, daemon=True).start()
+    if receive_commands:
+        threading.Thread(target=receive, daemon=True).start()
     shared_examples, shared_sources = {}, {}
     family_state, family_lock = {"id": config["family_id"]}, threading.Lock()
     gate = providers.CloudGate(control.workers if config["cloud_concurrency"] == "auto" else config["cloud_concurrency"])
@@ -259,7 +301,8 @@ def main():
         with control.condition:
             current = dict(control.config)
         options = {key: value for key, value in current.items() if key not in
-                   ("workers", "client", "max_cloud_requests", "max_cloud_tokens", "max_cloud_cost", "cloud_concurrency")}
+                   ("workers", "client", "max_cloud_requests", "max_cloud_tokens", "max_cloud_cost", "cloud_concurrency",
+                    "native_batch_files", "native_compile_workers", "native_context")}
         options.update(token=initial.get("token"), only=[current["client"]] if current["client"] else None,
                        model=current["model"] or None, forever=True, cloud_budget=control.budget, cloud_gate=gate,
                        examples_cache=shared_examples, source_cache=shared_sources,

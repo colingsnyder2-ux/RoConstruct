@@ -48,8 +48,8 @@ assert.match(simpleAgentHTML,/data-agent-mode="automatic" class="active"/);
 assert.doesNotMatch(simpleAgentHTML,/<select name="mode">/);
 assert.match(source,/if\(target.dataset.agentMode\) \{readAgentAuto\(\);agentAutoConfig.mode=target.dataset.agentMode;render\(\);\}/);
 assert.doesNotMatch(simpleAgentHTML,/data-agent-preset/);
-assert.match(source,/data-worker-mode="agent">Agent/);
-assert.match(source,/data-worker-mode="function">Match/);
+assert.match(source,/data-worker-mode="native">Integrator/);
+assert.match(source,/data-worker-mode="function">Worker/);
 for(const [mode,minutes] of [["automatic",120],["fast",30],["balanced",120],["deep",240]]) {
   agentContext.$=()=>({dataset:{mode},elements:Object.fromEntries(Object.entries({
     mode,client:"2008-06",user:"other-user",server:"other-host:8765",cli:"codex",model:"chosen-model",goal:"Match Ogre",workers:"3"
@@ -93,7 +93,7 @@ const context={workerRun:"",chatSignature:"",page:"workers",logs:[],token:"sessi
 context.$=()=>context.control;
 vm.createContext(context);
 vm.runInContext(selection,context);
-const formContext={editing:null,jobs:[],meta:{initial:{}},
+const formContext={workerMode:"function",editing:null,jobs:[],meta:{initial:{}},
   $:()=>({querySelectorAll:()=>[
     {name:"workers",value:"auto",type:"text"},{name:"rounds",value:"auto",type:"text"},
     {name:"max_tokens",value:"auto",type:"text"},{name:"cloud_concurrency",value:"auto",type:"text"},

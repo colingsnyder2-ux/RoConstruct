@@ -1,0 +1,131 @@
+import json
+import subprocess
+import threading
+import time
+from pathlib import Path
+from types import SimpleNamespace
+from unittest.mock import Mock
+
+import pytest
+
+from roc import gui_worker, integration, integrator, native_sweep, providers
+
+
+@pytest.mark.parametrize('provider,output', [
+    ('codex', '\n'.join(json.dumps(row) for row in [
+        {'type': 'item.completed', 'item': {'type': 'agent_message', 'text': 'anchored edit'}},
+        {'type': 'turn.completed', 'usage': {'input_tokens': 12, 'output_tokens': 4}}])),
+    ('claude', json.dumps({'result': 'anchored edit', 'usage': {'input_tokens': 12, 'output_tokens': 4}})),
+])
+def test_cli_provider_uses_signed_in_cli_and_returns_usage(monkeypatch, provider, output):
+    monkeypatch.setattr(providers.shutil, 'which', lambda name: name)
+    process = Mock(returncode=0)
+    process.communicate.return_value = (output, '')
+    start = Mock(return_value=process)
+    monkeypatch.setattr(providers.subprocess, 'Popen', start)
+    result = providers.generate(provider + ':default', [{'role': 'user', 'content': 'fix source'}],
+                                {'allow_cloud': True, 'retries': 0})
+    assert result.text == 'anchored edit'
+    assert (result.input_tokens, result.output_tokens) == (12, 4)
+    argv = start.call_args.args[0]
+    assert '--model' not in argv
+    assert Path(start.call_args.kwargs['cwd']) != providers.ROOT
+    if provider == 'codex':
+        assert argv[argv.index('--sandbox') + 1] == 'read-only'
+    else:
+        assert argv[argv.index('--tools') + 1] == ''
+    assert 'fix source' in process.communicate.call_args.args[0]
+
+
+def test_cli_budget_and_consent_are_enforced(monkeypatch):
+    start = Mock()
+    monkeypatch.setattr(providers.subprocess, 'Popen', start)
+    for options in ({}, {'allow_cloud': True, 'budget': providers.CloudBudget(cost=1)}):
+        with pytest.raises(providers.ProviderError):
+            providers.generate('codex:default', 'prompt', options)
+    start.assert_not_called()
+
+
+def test_cli_failure_does_not_print_provider_output(monkeypatch):
+    monkeypatch.setattr(providers.shutil, 'which', lambda name: name)
+    process = Mock(returncode=1)
+    process.communicate.return_value = ('private provider content', 'secret auth details')
+    monkeypatch.setattr(providers.subprocess, 'Popen', Mock(return_value=process))
+    with pytest.raises(providers.ProviderError, match='check CLI sign-in') as failure:
+        providers.generate('claude:sonnet', 'prompt', {'allow_cloud': True, 'retries': 0})
+    assert 'secret' not in str(failure.value)
+    assert 'private' not in str(failure.value)
+
+
+def test_workspace_preserves_server_and_separates_writable_sources(tmp_path, monkeypatch):
+    for name in ('roc', 'research', 'rebuild/2008-06/patches', 'clients/2008-06', 'tools', 'work/2008-06'):
+        (tmp_path / name).mkdir(parents=True, exist_ok=True)
+    (tmp_path / 'roc.py').write_text('# runtime')
+    (tmp_path / 'roc/__init__.py').write_text('')
+    (tmp_path / 'rebuild/2008-06/patches/make_rbxgs_client.py').write_text('# original')
+    (tmp_path / 'clients/clients.json').write_text('{}')
+    (tmp_path / 'work/2008-06/functions.jsonl').write_text('{}')
+    (tmp_path / 'work/server.db').write_text('server only')
+    monkeypatch.setattr(integrator, 'ROOT', tmp_path)
+    links = []
+    monkeypatch.setattr(integrator, 'link_directory', lambda source, target: links.append((source, target)))
+    folder = integrator.workspace(log=lambda _: None)
+    assert not (folder / 'work/server.db').exists()
+    assert (folder / 'work/2008-06/functions.jsonl').read_text() == '{}'
+    private = folder / 'rebuild/2008-06/patches/make_rbxgs_client.py'
+    private.write_text('# private edit')
+    assert (tmp_path / 'rebuild/2008-06/patches/make_rbxgs_client.py').read_text() == '# original'
+    assert len(links) == 2
+
+
+def test_native_loop_forwards_parallelism_budgets_and_context(monkeypatch):
+    config = {**gui_worker.DEFAULTS, 'lease_mode': 'native', 'client': '2008-06', 'model': 'codex:default',
+              'workers': 8, 'user': 'tester', 'server': 'localhost:8765', 'cloud_allowed': True,
+              'cloud_concurrency': 'auto', 'native_batch_files': 100, 'max_cloud_requests': 12}
+    events, calls = [], []
+    control = gui_worker.Control(config, lambda event, **fields: events.append((event, fields)))
+    def run(spec, name, **kwargs):
+        calls.append((dict(spec['native_sweep']), kwargs))
+        return {'files_tried': ['App/test.cpp'] if len(calls) == 1 else [], 'state': 'no-proposals'}
+    monkeypatch.setattr(native_sweep, 'run', run)
+    monkeypatch.setattr(gui_worker.worker, 'save_settings', lambda **kwargs: None)
+    monkeypatch.setattr(integration, 'command', lambda _: None)
+    gui_worker.native_loop(config, control, lambda event, **fields: events.append((event, fields)))
+    options = calls[0][0]
+    assert calls[0][1]['jobs'] == 8
+    assert options['max_files'] == 100 and options['context'] == 'methods'
+    assert options['provider_options']['budget'] is control.budget
+    assert calls[1][0]['exclude_files'] == ['App/test.cpp']
+    control.command({'action': 'stop'})
+    assert not options['provider_options']['before_request']()
+
+
+def test_model_jobs_parallel_but_compilers_bounded(tmp_path, monkeypatch):
+    files = {f'App/file{n}.cpp': 'void A::f() {}' for n in range(8)}
+    homes = {name: ['00400000'] for name in files}
+    monkeypatch.setattr(native_sweep, 'target_files', lambda *args: homes)
+    obj = tmp_path / 'test.obj'
+    obj.write_bytes(b'object')
+    lock = threading.Lock()
+    counts = {'compiling': 0, 'compile_peak': 0, 'model': 0, 'model_peak': 0}
+    def compile_source(*args):
+        with lock:
+            counts['compiling'] += 1
+            counts['compile_peak'] = max(counts['compile_peak'], counts['compiling'])
+        time.sleep(.01)
+        with lock:
+            counts['compiling'] -= 1
+        return {'ok': True, 'object': str(obj)}
+    def proposal(*args, **kwargs):
+        with lock:
+            counts['model'] += 1
+            counts['model_peak'] = max(counts['model_peak'], counts['model'])
+        time.sleep(.04)
+        with lock:
+            counts['model'] -= 1
+        return None, []
+    monkeypatch.setattr(native_sweep, 'model_proposal', proposal)
+    native_sweep.model_discovery({'llm': 'codex:default', 'compile_workers': 2}, files, {'00400000'}, set(), {},
+        SimpleNamespace(scan=lambda _: []), tmp_path, 8, lambda _: None, compile_source, {'00400000': {'symbol': 'f'}})
+    assert counts['compile_peak'] <= 2
+    assert counts['model_peak'] > 1
