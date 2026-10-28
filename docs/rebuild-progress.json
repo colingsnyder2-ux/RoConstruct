@@ -1,10 +1,10 @@
 {
-  "updated": "2026-10-28 02:18 UTC",
+  "updated": "2026-10-28 03:29 UTC",
   "clients": {
     "2008-06": {
       "phase": "8",
       "phaseLabel": "Runtime",
-      "overall": 0.2331,
+      "overall": 0.238,
       "bars": {
         "compiled": {
           "value": 14,
@@ -17,8 +17,8 @@
           "label": "Modules linked"
         },
         "exact": {
-          "value": 9604,
-          "total": 41208,
+          "value": 9807,
+          "total": 41207,
           "label": "Byte-exact functions"
         },
         "unresolved": {
@@ -116,8 +116,8 @@
           "name": "RbxgsApp",
           "linked": true,
           "test": 0,
-          "exact": 2915,
-          "objectFunctions": 148225,
+          "exact": 3142,
+          "objectFunctions": 116339,
           "unresolved": 0
         },
         {
