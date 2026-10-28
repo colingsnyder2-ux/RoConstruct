@@ -247,6 +247,8 @@ class Promotions:
         self.wake = threading.Event()
         self.worker_error = None
         self.catalog_key, self.catalog_rows = None, []
+        self.catalog_done = set()
+        self.catalog_lock = threading.Lock()
         self.native_paths = {}
         with store.lock:
             store.db.executescript(SCHEMA)
@@ -287,21 +289,26 @@ class Promotions:
         return result
 
     def catalog(self, requested_unit=None):
+        with self.catalog_lock:
+            return self._catalog(requested_unit)
+
+    def _catalog(self, requested_unit):
         path = self.root / "rebuild" / CLIENT / "manifests" / "functions.json"
         report = path.parent.parent / "out" / "RbxgsApp" / "report.json"
         queue = path.parent.parent / "out" / "agent-queue.json"
         with self.store.lock:
             accepted_version = self.store.db.execute("SELECT COUNT(*),MAX(ts) FROM integration_accepted").fetchone()
         key = (path.stat().st_mtime_ns, report.stat().st_mtime_ns if report.exists() else 0,
-               queue.stat().st_mtime_ns if queue.exists() else 0, accepted_version, requested_unit)
+               queue.stat().st_mtime_ns if queue.exists() else 0, accepted_version)
         if self.catalog_key != key:
             from collections import defaultdict
             tree = self.root / "tools/rbxgs/Client"
             header_texts = [(p, p.read_text(errors="replace")) for p in (tree / "App/include").rglob("*.h")]
-            headers = "\n".join(t for _, t in header_texts)
+            classes = set()
             self.native_paths = {}
             for p, text in header_texts:
                 for cls in re.findall(r"\bclass\s+(\w+)", text):
+                    classes.add(cls)
                     self.native_paths.setdefault(cls, set()).add(p.relative_to(tree).as_posix())
             for p in (tree / "App").rglob("*.cpp"):
                 if p.name.startswith("roc_"):
@@ -315,17 +322,18 @@ class Promotions:
                 owned.update(json.loads(receipt).get("gains", []))
             groups = defaultdict(list)
             state = json.loads(queue.read_text()) if queue.exists() else {}
-            skipped = (set(state.get("done", [])) - {requested_unit}) | set(state.get("parked", {}))
+            self.catalog_done = set(state.get('done', []))
+            skipped = set(state.get("parked", {}))
             for f in json.loads(path.read_text(encoding="utf-8")):
                 unit = f.get("unit") or ""
                 m = re.fullmatch(r"RBX::(?:\w+::)*(\w+)", unit)
                 if (f.get("score") == 100 and f.get("source_kind") == "snippet"
                         and unit not in skipped and f["addr"] not in owned and f["size"] >= 24 and m
-                        and re.search(r"\bclass\s+" + re.escape(m[1]) + r"\b", headers)):
+                        and m[1] in classes):
                     groups[unit].append(f)
             self.catalog_rows = sorted(groups.items(), key=lambda x: (-len(x[1]), x[0]))
             self.catalog_key = key
-        return self.catalog_rows
+        return [(unit, rows) for unit, rows in self.catalog_rows if unit not in self.catalog_done or unit == requested_unit]
 
     def native_names(self):
         """rebuild/2008-06/out/native-names.json ({addr: {symbol, score, strings}}), reloaded when it changes."""

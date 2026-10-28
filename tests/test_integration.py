@@ -6,6 +6,7 @@ import sqlite3
 import threading
 from concurrent.futures import ThreadPoolExecutor
 from http.server import ThreadingHTTPServer
+from pathlib import Path
 from types import SimpleNamespace
 
 import pytest
@@ -284,6 +285,39 @@ def test_explicit_class_can_revisit_done_hint_but_not_parked_blocker(promotions)
     assert promotions.claim('bob', 'other')['claims'][0]['unit'] == 'RBX::Third'
     assert promotions.claim('alice', 'pc', unit='RBX::First')['claims'][0]['unit'] == 'RBX::First'
     assert promotions.claim('alice', 'pc', unit='RBX::Second')['claims'] == []
+
+
+def test_catalog_reuses_class_index_across_requested_units_and_preserves_queue_rules(promotions, monkeypatch):
+    queue = promotions.root/'rebuild/2008-06/out/agent-queue.json'
+    queue.parent.mkdir(parents=True)
+    queue.write_text(json.dumps({'done':['RBX::First'],'parked':{'RBX::Second':'layout'}}))
+    original = Path.read_text
+    reads = []
+    def reading(path, *args, **kwargs):
+        if path.name == 'Classes.h':reads.append(path)
+        return original(path, *args, **kwargs)
+    monkeypatch.setattr(Path,'read_text',reading)
+    assert [unit for unit,_ in promotions.catalog()] == ['RBX::Third']
+    assert [unit for unit,_ in promotions.catalog('RBX::First')] == ['RBX::First','RBX::Third']
+    assert [unit for unit,_ in promotions.catalog('RBX::Second')] == ['RBX::Third']
+    assert len(reads) == 1
+    queue.write_text(json.dumps({'done':[],'parked':{}}))
+    assert len(promotions.catalog()) == 3
+    assert len(reads) == 2
+
+
+def test_twenty_parallel_catalog_requests_build_source_index_once(promotions, monkeypatch):
+    from concurrent.futures import ThreadPoolExecutor
+    original = Path.read_text
+    reads = []
+    def reading(path, *args, **kwargs):
+        if path.name == 'Classes.h':reads.append(path)
+        return original(path,*args,**kwargs)
+    monkeypatch.setattr(Path,'read_text',reading)
+    with ThreadPoolExecutor(20) as pool:
+        results = list(pool.map(promotions.catalog, ['RBX::First','RBX::Second']*10))
+    assert all(len(result)==3 for result in results)
+    assert len(reads) == 1
 
 
 @pytest.mark.parametrize('count,targets', [(0, None), (1025, None), (True, None), (1, 0), (1, 100001)])

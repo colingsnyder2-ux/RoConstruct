@@ -163,3 +163,28 @@ continues after a 30-second recovery interval. Permanent provider/auth failures,
 budget limits and explicit stop/pause remain effective. Server startup sync and
 subsequent network failures retry within a two-hour outage deadline. Compact UI
 now displays coordinator/preflight logs and a batch phase when file workers finish.
+
+## Claim inventory latency
+
+Class-specific claim requests previously rebuilt the complete catalog whenever the
+requested class changed, and each function searched concatenated header text with a
+regular expression. The catalog now indexes declared classes once, caches eligibility
+independently of the requested class, and applies the explicit-class exception for
+the queue's `done` hints when returning results. Parked units remain excluded.
+Concurrent requests share one index build; manifest/report/queue and accepted-ledger
+changes still invalidate it. Claims, leases, ownership and acceptance checks are unchanged.
+
+A compiler-free replay against the installed native source tree and copied real
+manifests, using a separate benchmark SQLite database, measured three lookups:
+
+| Lookup | Before | After |
+| --- | ---: | ---: |
+| Inventory | 5.844s | 0.187s |
+| PartInstance | 5.906s | <0.001s |
+| SoundService | 5.907s | <0.001s |
+
+All 128 unit/function inventories had identical hashes. A separate live inventory
+request before deployment took 10.828s for 123 available units; unlike the replay,
+the live server also includes its accepted-job ledger. These are catalog timings,
+not complete linked-verification throughput. The benchmark never claimed targets,
+submitted jobs, called models or modified the server database.
