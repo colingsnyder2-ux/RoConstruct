@@ -20,6 +20,8 @@ import threading
 from bisect import bisect_left
 from pathlib import Path
 
+from capstone import CS_ARCH_X86, CS_MODE_32, Cs
+
 ROOT = Path(__file__).resolve().parent.parent
 _LOCK = threading.Lock()
 
@@ -30,13 +32,33 @@ def pushed_handler(code):
     return struct.unpack_from("<I", code, i + 3)[0] if 0 <= i <= len(code) - 7 else None
 
 
+def _catch_return(row, read):
+    """First funclet return's immediate continuation, decoded before trailing tables."""
+    start = int(row["addr"], 16)
+    previous = None
+    for instruction in Cs(CS_ARCH_X86, CS_MODE_32).disasm(read(start, row["size"]), start):
+        if instruction.mnemonic in ("jmp", "int3", "ud2"):
+            return None
+        if instruction.mnemonic == "ret":
+            if previous and previous.mnemonic == "mov" and previous.op_str.startswith("eax, "):
+                try:
+                    return int(previous.op_str[5:], 0)
+                except ValueError:
+                    pass
+            return None
+        previous = instruction
+    return None
+
+
 def owned_catch_merges(funcs, handlers, read, locked=()):
     """Fold catch funclets (plus their continuation rows) into the owning row, in place.
 
     `handlers` is analyze.msvc_catch_handlers output: {funclet va: [context]} where
     context["handler"] is the __ehhandler$ stub. A run of eh rows right after a code row
     is absorbed while each row is a catch of that row's handler or a context-free
-    continuation following one. Locked (exact) rows are never grown or absorbed.
+    continuation following one. An owned catch may also return to a continuation
+    before itself; its decoded return proves that earlier eh row's ownership.
+    Locked (exact) rows are never grown or absorbed.
     Returns [{addr, old, new, absorbs, handler}]."""
     by_start = sorted(funcs, key=lambda f: int(f["addr"], 16))
     locked = set(locked)
@@ -53,8 +75,22 @@ def owned_catch_merges(funcs, handlers, read, locked=()):
             ctx = handlers.get(int(by_start[j]["addr"], 16))
             if ctx and all(c["handler"] == handler for c in ctx):
                 proven = True
-            elif ctx or not proven:
+            elif ctx:
                 break
+            elif not proven:
+                continuation = int(by_start[j]["addr"], 16)
+                k = j + 1
+                while k < len(by_start) and by_start[k]["kind"] == "eh" and int(by_start[k]["addr"], 16) not in locked:
+                    later = handlers.get(int(by_start[k]["addr"], 16))
+                    if later:
+                        if any(c["handler"] != handler for c in later):
+                            break
+                        if _catch_return(by_start[k], read) == continuation:
+                            proven = True
+                            break
+                    k += 1
+                if not proven:
+                    break
             absorbed.append(by_start[j])
             j += 1
         if not absorbed:
