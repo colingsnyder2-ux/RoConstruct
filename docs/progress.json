@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-28 09:57 UTC",
+ "updated": "2026-10-28 13:32 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -113,9 +113,9 @@
     {
      "user": "sophus",
      "matched": 2,
-     "points": 431,
-     "submissions": 27,
-     "last": 1793177920.2820542
+     "points": 438,
+     "submissions": 28,
+     "last": 1793182169.253646
     },
     {
      "user": "Espeon_2",
@@ -191,15 +191,15 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22292,
-   "matched": 22230,
-   "partial": 60,
-   "source_matched": 13789,
-   "mined_matched": 8441,
+   "matched": 22233,
+   "partial": 58,
+   "source_matched": 13790,
+   "mined_matched": 8443,
    "bytes": 3737185,
-   "matched_bytes": 3644320,
-   "source_bytes": 2738600,
-   "mined_bytes": 905720,
-   "partial_bytes": 91401,
+   "matched_bytes": 3645203,
+   "source_bytes": 2739243,
+   "mined_bytes": 905960,
+   "partial_bytes": 91253,
    "data_bytes": 1559926,
    "leaderboard": [
     {
@@ -232,17 +232,17 @@
     },
     {
      "user": "EspClaude",
-     "matched": 487,
-     "points": 15476,
-     "submissions": 728,
-     "last": 1793181154.5447028
+     "matched": 489,
+     "points": 15496,
+     "submissions": 730,
+     "last": 1793184213.397152
     },
     {
      "user": "coldek",
-     "matched": 141,
-     "points": 9929,
-     "submissions": 289,
-     "last": 1793176655.6856215
+     "matched": 142,
+     "points": 10007,
+     "submissions": 293,
+     "last": 1793187168.3244574
     },
     {
      "user": "atomic.potato",
@@ -395,9 +395,9 @@
     {
      "user": "sophus",
      "matched": 24,
-     "points": 658,
-     "submissions": 113,
-     "last": 1793179368.5447285
+     "points": 674,
+     "submissions": 116,
+     "last": 1793186662.5537083
     },
     {
      "user": "TrollStein",
@@ -466,9 +466,9 @@
     {
      "user": "sophus",
      "matched": 17,
-     "points": 1398,
-     "submissions": 123,
-     "last": 1793179280.0475998
+     "points": 1437,
+     "submissions": 129,
+     "last": 1793187649.4516714
     },
     {
      "user": "Viper",
@@ -530,9 +530,9 @@
     {
      "user": "sophus",
      "matched": 41,
-     "points": 1422,
-     "submissions": 189,
-     "last": 1793180792.128338
+     "points": 1462,
+     "submissions": 195,
+     "last": 1793188970.7083926
     },
     {
      "user": "Viper",
@@ -615,9 +615,9 @@
     {
      "user": "sophus",
      "matched": 22,
-     "points": 2430,
-     "submissions": 104,
-     "last": 1793180957.3529708
+     "points": 2436,
+     "submissions": 106,
+     "last": 1793188785.6583357
     },
     {
      "user": "Viper",
@@ -691,10 +691,10 @@
   },
   {
    "user": "EspClaude",
-   "matched": 487,
-   "points": 15476,
-   "submissions": 728,
-   "last": 1793181154.5447028
+   "matched": 489,
+   "points": 15496,
+   "submissions": 730,
+   "last": 1793184213.397152
   },
   {
    "user": "why2",
@@ -705,17 +705,17 @@
   },
   {
    "user": "coldek",
-   "matched": 141,
-   "points": 9929,
-   "submissions": 289,
-   "last": 1793176655.6856215
+   "matched": 142,
+   "points": 10007,
+   "submissions": 293,
+   "last": 1793187168.3244574
   },
   {
    "user": "sophus",
    "matched": 135,
-   "points": 7243,
-   "submissions": 632,
-   "last": 1793180957.3529708
+   "points": 7362,
+   "submissions": 652,
+   "last": 1793188970.7083926
   },
   {
    "user": "Intel",
