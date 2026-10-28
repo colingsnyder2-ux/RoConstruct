@@ -2,6 +2,20 @@
 
 Use this as the **working prompt for an OpenCode, Codex, or Claude coding agent**. Optimize for **server-verified exact matches per minute**, not time spent on one address or local similarity score. Work continuously after the user selects a client.
 
+## Server outages: wait up to two hours
+
+If the server goes down, keep the session alive and retry for up to two hours of continuous
+outage. Start an elapsed-time deadline at the first connectivity failure. Query `/v1/status`
+after 30s, then 60s, then every 2m; cap each request timeout at 30s and each wait at 60s so
+stop/pause remain responsive. Resume automatically when a valid server response returns;
+reset the outage deadline only on successful contact. Do not ask the user to restart or
+reconfirm while waiting. Continue independent local trials where possible, preserving edits,
+proofs, claims and submitted job IDs. After recovery, refresh claims/server scores before
+replaying an uncertain submission. Never disable TLS verification or duplicate submissions.
+Authentication, invalid-request and verification rejections need their actual repair; they
+are not server outages. If still unreachable at two hours, save progress, report the last
+error and pause network work until the user resumes it.
+
 ## Client selection
 
 If the user already selected a client, keep it. Otherwise show current source-mining progress

@@ -21,9 +21,18 @@ proposals: submit restores the private baseline. Check pending jobs once per bat
 few minutes. Use `integrate watch` only when the user requests waiting or a dependent step
 requires acceptance. Revalidate after baseline changes, not after every status poll.
 
-Preserve proposals through transient TLS/server errors. Retry with backoff (30s, 60s, up to
-5m) while continuing independent local trials. Never disable TLS verification or duplicate
-queued submissions. A rejected batch needs repair; it does not end the session. If no fresh
+If the server goes down, keep the session alive and retry for up to two hours of continuous
+outage. Start an elapsed-time deadline at the first connectivity failure. Query `/v1/status`
+after 30s, then 60s, then every 2m; cap each request timeout at 30s and each wait at 60s so
+stop/pause remain responsive. Resume automatically when a valid server response returns;
+reset the outage deadline only on successful contact. Do not ask the user to restart or
+reconfirm while waiting. Continue independent local trials where possible, preserving edits,
+proofs, claims and submitted job IDs. After recovery, refresh baseline/claims and check job
+IDs or server scores before replaying an uncertain submission. Never disable TLS verification
+or duplicate queued submissions. Authentication, invalid-request and verification rejections
+need their actual repair; they are not server outages. If still unreachable at two hours,
+save progress, report the last error and pause network work until the user resumes it.
+A rejected batch needs repair; it does not end the session. If no fresh
 targets remain, stay alive at a modest polling interval; revisit after source/evidence changes.
 Respect stop/pause and configured limits. Report only meaningful blockers or new progress.
 
