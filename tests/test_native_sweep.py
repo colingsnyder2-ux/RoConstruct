@@ -385,12 +385,15 @@ def test_wait_uses_authoritative_terminal_receipt(monkeypatch, state):
 @pytest.mark.parametrize('lose_owned,existing_owned,terminal', [(False, True, None), (True, True, None), (False, False, None),
                                                             (False, True, 'accepted'), (False, True, 'rejected'),
                                                             (False, True, 'timeout')])
-@pytest.mark.parametrize('saved_proof', [False, True, 'stale', 'unversioned', 'ambiguous'])
+@pytest.mark.parametrize('saved_proof', [False, True, 'stale', 'unversioned', 'ambiguous', 'linked-failure'])
 def test_pipeline_recompiles_minimal_fix_before_claim_and_apply(tmp_path, monkeypatch, lose_owned, existing_owned, terminal, saved_proof):
     root = tmp_path / 'checkout'
     tree, overlay = root / 'tools/rbxgs/Client', root / 'work/overlay'
     source = tree / 'App/A.cpp'
     source.parent.mkdir(parents=True)
+    (root / 'roc').mkdir()
+    (root / 'roc/__init__.py').write_text('')
+    (root / 'roc/integration.py').write_bytes(Path(sweep.integration.__file__).read_bytes())
     source.write_text('void A::keep(){RBXASSERT(keep);}\n'
                       'void A::candidate(){RBXASSERT(candidate);}\n'
                       'void A::unrelated(){RBXASSERT(unrelated);}\n')
@@ -452,6 +455,12 @@ def test_pipeline_recompiles_minimal_fix_before_claim_and_apply(tmp_path, monkey
     monkeypatch.setitem(sweep.libs.RECIPES, 'rbxgs', {'include': [], 'defines': ''})
     monkeypatch.setattr(sweep, 'Matcher', Matcher)
     monkeypatch.setattr(sweep, 'compile_unit', compile_unit)
+    from roc import integration_verify
+    def linked_preflight(*args):
+        assert not actions  # no staged submission before the full linked proof
+        if saved_proof == 'linked-failure':
+            raise ValueError('linked ownership loss')
+    monkeypatch.setattr(integration_verify, 'linked_preflight', linked_preflight)
     monkeypatch.setattr(sweep, 'ownership_candidates', lambda obj, hits: {
         h['addr']: [h['addr'], '00500099'] if saved_proof == 'ambiguous' else [h['addr']] for h in hits})
     actions = []
@@ -464,6 +473,9 @@ def test_pipeline_recompiles_minimal_fix_before_claim_and_apply(tmp_path, monkey
               'apply': True, 'submit': bool(terminal), 'wait': bool(terminal), 'model': 'human'}
     if saved_proof:
         proposals = root / 'proposals.json'
+        if saved_proof == 'linked-failure':
+            proposals = root / 'work/sweep/proposals.json'
+            proposals.parent.mkdir(parents=True)
         proposals.write_text(json.dumps([{'file': 'App/A.cpp', 'edits': [['RBXASSERT(candidate)', '']],
                                          'mode': 'model', 'proof': {'object': 'missing-stale.obj'},
                                          'witnesses': [{'addr': '00500001', 'symbol': '?candidate@A@RBX@@QAEXXZ',
@@ -481,6 +493,13 @@ def test_pipeline_recompiles_minimal_fix_before_claim_and_apply(tmp_path, monkey
         result = sweep.run({'native_sweep': config}, 'test', output=root / 'work/sweep', log=lambda _: None)
         assert result['proposed_files'] == 0 and result['local_exact'] == 0
         assert generator.read_bytes() == original and '/v1/integration/claim' not in calls
+        return
+    if saved_proof == 'linked-failure':
+        saved_bytes = proposals.read_bytes()
+        with pytest.raises(ValueError, match='linked ownership loss'):
+            sweep.run({'native_sweep': config}, 'test', output=root / 'work/sweep', log=lambda _: None)
+        assert proposals.read_bytes() == saved_bytes and generator.read_bytes() == original
+        assert not actions and calls.count('/v1/integration/release') == 1
         return
     if terminal == 'timeout':
         def timeout(*args):

@@ -698,7 +698,8 @@ def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- 
         obj = out / (src.stem + ".obj")
         deps_file = obj.with_suffix(".deps")
         cache_file = obj.with_suffix(".compile.json")
-        if obj.exists() and deps_file.exists() and cache_file.exists() and src.suffix.lower() != ".asm":
+        command_file = obj.with_suffix(".command.json")
+        if obj.exists() and deps_file.exists() and cache_file.exists() and command_file.exists() and src.suffix.lower() != ".asm":
             deps = json.loads(deps_file.read_text())
             # a header that gained an overlay twin since this object was built is shadowed now: rebuild
             shadowed = overlay and any(shadowed_dep(d) for d in deps)
@@ -723,6 +724,12 @@ def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- 
                ["/I" + str(i) for i in siblings + list(includes)] + ["/showIncludes", "/Fo" + src.stem + ".obj", str(unit)]
         code, text = run(tc, "cl", args, out)
         included = re.findall(r"^Note: including file:\s*(.+?)\s*$", text, re.M)
+        command_file.write_text(json.dumps({"compiler": str(tc.get("cl")), "args": args,
+            "cwd": str(out), "source": str(src), "source_sha256": content(src),
+            "environment": dict({k: os.environ.get(k, "") for k in ("CL", "_CL_")},
+                                INCLUDE=";".join(str(tc[k]) for k in ("vc_include", "atlmfc_include", "sdk_include") if tc.get(k))),
+            "dependencies": {p: content(Path(p)) for p in sorted(set(included)) if Path(p).exists()},
+            "exit": code}, indent=2))
         text = "\n".join(l for l in text.splitlines() if not l.startswith("Note: including file:"))
         if code == 0:
             deps_file.write_text(json.dumps(sorted(set(included))))
@@ -782,6 +789,8 @@ def build_overlay(client, module, spec):
     import hashlib
     root = (ROOT / spec["root"]).resolve()
     patches = json.loads((ROOT / spec["patches"]).read_text(encoding="utf-8"))
+    from roc.integration import canonical_patches
+    patches = canonical_patches(patches)
     # one stable folder: a file is rewritten only when its patched text changes, so objects that do not
     # include it stay current (compile_direct tracks each object's includes)
     overlay = workspace(client) / "out" / module / "overlay"

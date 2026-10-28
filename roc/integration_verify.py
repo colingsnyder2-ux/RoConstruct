@@ -12,14 +12,14 @@ import threading
 import time
 from pathlib import Path
 
-from roc.integration import CLIENT, MODULE, ROOT, atomic_json, digest, merge_patches
+from roc.integration import CLIENT, MODULE, ROOT, atomic_json, digest, merge_patches, canonical_patches
 
 WRITABLE_OUT = {"RbxgsApp", "tests"}  # out/ folders a snapshot build or milestone link writes into
 
 WATCHDOG_SECONDS = 20 * 60  # cold baselines take minutes; stacks only after this long without a verdict
 
 # Compiler, matcher and gate implementation. Queue/UI/webhook code does not build native artifacts.
-NATIVE_CODE = ("__init__", "analyze", "clients", "fingerprint", "integration_verify", "libs", "match",
+NATIVE_CODE = ("__init__", "analyze", "clients", "fingerprint", "integration", "integration_verify", "libs", "match",
                "rebuild", "repair", "rtti", "setup", "telemetry", "worker")
 
 
@@ -329,6 +329,60 @@ def other_module_owned(root):
     return owned
 
 
+def ownership_diagnostics(before, after, elsewhere=()):
+    old = set(before["report"]["owned_addrs"])
+    new = set(after["report"]["owned_addrs"])
+    return {"gains": sorted(new - old), "losses": sorted(old - new),
+            "uncovered_losses": sorted(old - new - set(elsewhere))}
+
+
+def linked_preflight(root, patches, output, log=print):
+    """Contributor proof uses the independent verifier's snapshots, build and gates."""
+    root, output = Path(root), Path(output)
+    base = json.loads((root / "rebuild/2008-06/patches/rbxgs-client.json").read_text())
+    combined, _, dropped = preflight(root, base, patches)
+    if dropped:
+        raise ValueError("Saved proposals stale; retained for repair: " + json.dumps(dropped))
+    key, live = input_hashes(root)
+    cache = root / "work/native-linked-preflight" / key[:20]
+    cache.parent.mkdir(parents=True, exist_ok=True)
+    result_file = cache / "integration-result.json"
+    checkpoint = cache / "integration-prepared.json"
+    if result_file.exists() and checkpoint.exists() and json.loads(checkpoint.read_text()) == {"format": 1, "inputs": key}:
+        before = json.loads(result_file.read_text())
+    else:
+        cache, _ = prepare_baseline(root, cache, key)
+        log("Linked preflight baseline artifacts: " + str(cache))
+        before = verify_build(cache, lambda phase: log("Linked preflight baseline: " + phase))
+        check_gates(before)
+        before["linked_addresses"] = json.loads((cache / "integration-linked.json").read_text())
+        atomic_json(cache / "integration-result.json", before)
+    candidate = output / ("linked-preflight-" + str(time.time_ns()))
+    snapshot(cache, candidate, link=True)
+    atomic_json(candidate / "rebuild/2008-06/patches/rbxgs-client.json", combined)
+    receipt = {"accepted": False, "baseline_artifacts": str(cache), "artifacts": str(candidate),
+               "input_hash": key, "overlay_hash": digest(combined)}
+    try:
+        after = verify_build(candidate, lambda phase: log("Linked preflight candidate: " + phase))
+        atomic_json(candidate / "integration-result.json", after)
+        elsewhere = other_module_owned(candidate)
+        receipt.update(ownership_diagnostics(before, after, elsewhere))
+        check_gates(after, before, elsewhere)
+        new_distinct = set(receipt["gains"]) - set(before["linked_addresses"])
+        if after["distinct"] - before["distinct"] != len(new_distinct):
+            raise ValueError("Linked coverage changed outside the submitted module")
+        if input_hash(root, live_only=True) != live:
+            raise ValueError("Inputs changed during linked preflight; proposals retained")
+        receipt["accepted"] = True
+    except (OSError, ValueError, RuntimeError, subprocess.SubprocessError) as error:
+        receipt["reason"] = str(error)
+        raise
+    finally:
+        atomic_json(candidate / "preflight-receipt.json", receipt)
+        log("Linked preflight receipt: " + str(candidate / "preflight-receipt.json"))
+    return receipt
+
+
 def check_gates(result, baseline=None, elsewhere=frozenset()):
     """elsewhere: addresses another module still owns; RbxgsApp may stop claiming them (e.g. a coincidental
     match that a real layout fix moves away) because global coverage does not drop."""
@@ -370,6 +424,8 @@ def preflight(root, base, patches):
     """Cheap anchor validation/rebase before hashing inputs or building anything.
     A file whose edits no longer apply is dropped from the batch, so one stale file does not cost the rest;
     returns (combined overlay, kept patches, {dropped file: reason}). Raises when nothing applies."""
+    base = canonical_patches(base)
+    patches = canonical_patches(patches, base)
     tree = root / "tools/rbxgs/Client"
     kept, dropped = {}, {}
     for name, change in patches.items():
@@ -497,8 +553,15 @@ def verify(promotions, job):
     progress("preparing candidate snapshot")
     snapshot(cache, candidate, link=True)  # the baseline cache is never rebuilt: share its read-only objects
     atomic_json(candidate / "rebuild" / CLIENT / "patches" / "rbxgs-client.json", combined)
+    job["diagnostics"] = {"artifacts": candidate.relative_to(root).as_posix(),
+                          "baseline_artifacts": cache.relative_to(root).as_posix(),
+                          "baseline_revision": baseline["revision"], "submitted_revision": job["base"],
+                          "input_hash": before_hash}
     after = verify_build(candidate, progress)
+    atomic_json(candidate / "integration-result.json", after)
     elsewhere = other_module_owned(candidate)
+    job["diagnostics"].update(ownership_diagnostics(before, after, elsewhere))
+    atomic_json(candidate / "integration-diagnostics.json", job["diagnostics"])
     check_gates(after, before, elsewhere)
     if input_hash(root, live_only=True) != live_hash or promotions.baseline()["revision"] != baseline["revision"]:
         raise ValueError("Server inputs changed during candidate verification; retry on a stable baseline")
@@ -584,7 +647,9 @@ def loop(promotions, log=print):
         try:
             receipt = verify(promotions, job)
         except (OSError, ValueError, RuntimeError, subprocess.SubprocessError) as error:
-            receipt = {"accepted": False, "reason": str(error)[:1000]}
+            receipt = dict(job.get("diagnostics", {}), accepted=False, reason=str(error)[:1000])
+            if receipt.get("artifacts"):
+                atomic_json(promotions.root / receipt["artifacts"] / "rejection-receipt.json", receipt)
         finally:
             faulthandler.cancel_dump_traceback_later()
             stacks.close()

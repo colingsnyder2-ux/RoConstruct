@@ -118,10 +118,31 @@ def validate_patches(patches):
             types = r"\b(?:struct|class|union)\s+([\w:]+)\s*(?::[^;{]+)?\{"
             if set(re.findall(types, new)) - set(re.findall(types, old)):
                 raise ValueError("Promote existing native classes; do not append invented snippet types")
+    canonical_patches(patches)
     return patches
 
 
+def canonical_patches(patches, base=None):
+    """Windows source identity, preserving the accepted registry's spelling."""
+    names = {}
+    for name in base or {}:
+        key = name.casefold()
+        if key in names:
+            raise ValueError("Case-colliding native paths: %s / %s" % (names[key], name))
+        names[key] = name
+    result, seen = {}, {}
+    for name, edits in patches.items():
+        key = name.casefold()
+        if key in seen:
+            raise ValueError("Case-colliding native paths: %s / %s" % (seen[key], name))
+        seen[key] = name
+        result[names.get(key, name)] = edits
+    return result
+
+
 def merge_patches(base, additions):
+    base = canonical_patches(base)
+    additions = canonical_patches(additions, base)
     result = {name: list(edits) for name, edits in base.items()}
     for name, change in additions.items():
         if isinstance(change, dict):
@@ -135,6 +156,8 @@ def merge_patches(base, additions):
 
 def overlay_delta(base, candidate):
     """Add recipes, or replace an existing recipe with an exact baseline guard."""
+    base = canonical_patches(base)
+    candidate = canonical_patches(candidate, base)
     result = {}
     for name in set(base) | set(candidate):
         before, after = base.get(name, []), candidate.get(name, [])
@@ -450,9 +473,9 @@ class Promotions:
                 return None
             lead, members = rows[0], [rows[0]]
             if lead["phase"] != "solo":
-                files = set(json.loads(lead["patches"]))
+                files = {name.casefold() for name in json.loads(lead["patches"])}
                 for row in rows[1:]:
-                    patches = set(json.loads(row["patches"]))
+                    patches = {name.casefold() for name in json.loads(row["patches"])}
                     if len(members) < MAX_MERGE and row["phase"] != "solo" and not files & patches and \
                             (row["user"], row["model"], row["base"]) == (lead["user"], lead["model"], lead["base"]):
                         members.append(row)

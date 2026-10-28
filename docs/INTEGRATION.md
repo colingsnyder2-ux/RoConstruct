@@ -261,3 +261,20 @@ The 23-cell bar measures code bytes, excluding compiler stubs; category counts a
 remaining functions are shown separately. Combined points include one point per
 distinct native integration; native counts remain visible. ETA is a rough recent-rate estimate. Notifications
 cannot make a valid rebuild fail.
+
+Native contributor submissions now run the independent linked build locally before staging.
+`roc native-try preflight` checks all saved proposals without claiming/submitting. The same
+M2/M4a/M5, size/base, linked ownership and global coverage gates remain mandatory on the server.
+Private baseline caches live in `work/native-linked-preflight/`; candidate receipts and logs
+are under `work/native-try/linked-preflight-*` (automatic submissions use `work/native-try/submit/`).
+Cold baseline builds can take minutes. A baseline advance requires fresh revalidation;
+failed proofs retain saved proposals. Successful replacement checks archive their prior file.
+
+Native source paths use case-insensitive identity, preserving the accepted registry spelling.
+`App/gui/Gui.cpp` must extend accepted `App/gui/GUI.cpp`, not overwrite its floating-point pragma
+through a second registry key. Ambiguous duplicate keys fail before overlay writes. Guarded
+recipe replacement still requires the exact previous recipe. Verifier input hashes include
+the shared merge implementation. Objects carry `.command.json` provenance alongside their
+content-checked `.compile.json` and resolved `.deps`; legacy objects without provenance rebuild.
+Rejections record gained/lost/uncovered addresses, baseline revision and diagnostic folders
+when a completed candidate comparison exists; early build failures retain available artifact paths.

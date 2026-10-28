@@ -93,6 +93,9 @@ def test_content_cache_checks_inputs_and_ignores_timestamps(tmp_path, monkeypatc
         return rebuild.compile_direct('2008-06', [source], out, includes, defines, flags)
 
     build()
+    command = json.loads((out / 'unit.command.json').read_text())
+    assert command['source'] == str(source) and '/O2' in command['args']
+    assert str(header) in command['dependencies'] and command['exit'] == 0
     assert build()[str(source)] == (True, 'content cache hit')
     assert len(calls) == 1
     if change == 'touch':

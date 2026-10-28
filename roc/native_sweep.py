@@ -338,8 +338,10 @@ def stage_generator(generator, original, additions):
         raise ValueError("Generator output anchor is ambiguous")
     integration.validate_patches(additions)
     block = ("# Native sweep: method-scoped corrections passed exact code/data preflight.\n"
-             "for native_file, native_edits in json.loads(%r).items():\n"
-             "    patches.setdefault(native_file, []).extend(native_edits)\n\n") % json.dumps(additions, sort_keys=True)
+             "import sys\n"
+             "sys.path.insert(0, str(Path(__file__).resolve().parents[3]))\n"
+             "from roc.integration import merge_patches\n"
+             "patches = merge_patches(patches, json.loads(%r))\n\n") % json.dumps(additions, sort_keys=True)
     generator.write_bytes(text.replace(OUTPUT_MARKER, block + OUTPUT_MARKER).encode("utf-8"))
 
 
@@ -848,10 +850,21 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
             texts = {rel: texts[rel] for rel in files}
         if config.get("proposals_file"):
             # Proposals an agent already proved with `roc native-try check`: claim, stage and submit them as one batch.
-            proposals, records = json.loads(Path(config["proposals_file"]).read_text()), []
+            saved_bytes = Path(config["proposals_file"]).read_bytes()
+            archive = output / ("saved-proposals-" + hashlib.sha256(saved_bytes).hexdigest()[:20] + ".json")
+            if not archive.exists():
+                archive.write_bytes(saved_bytes)
+            proposals, records = json.loads(saved_bytes), []
             final_checks, trials, rechecked = [], [], []
+            seen = set()
             for proposal in proposals:
+                proposal["file"] = next(iter(integration.canonical_patches({proposal["file"]: []}, base["overlay"])))
                 rel = proposal["file"]
+                if rel.casefold() in seen:
+                    raise ValueError("Duplicate saved source proposals: " + rel)
+                seen.add(rel.casefold())
+                if proposal.get("related_headers"):
+                    proposal["related_headers"] = integration.canonical_patches(proposal["related_headers"], base["overlay"])
                 if rel not in texts:
                     texts[rel] = (overlay / rel if (overlay / rel).exists() else tree / rel).read_text(errors="replace")
                 log("native rechecking " + rel)
@@ -944,7 +957,10 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
                         break
         for proposal in proposals:
             proposal["base_revision"] = base["revision"]
-        integration.atomic_json(output / "proposals.json", proposals)
+        proposal_output = output / "proposals.json"
+        if config.get("proposals_file") and Path(config["proposals_file"]).resolve() == proposal_output.resolve():
+            proposal_output = output / "rechecked-proposals.json"
+        integration.atomic_json(proposal_output, proposals)
         integration.atomic_json(output / "final-checks.json", final_checks)
         summary = {"recipe": name, "client": "2008-06", "op": "native-grid", "tried": len(records),
                    "proposed_files": len(proposals), "local_exact": sum(len(p["witnesses"]) for p in proposals),
@@ -1006,6 +1022,11 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
             summary.update(state="blocked", blocked_units=sorted(blocked),
                            reason="Classes held by another worker" if blocked else "No native claim available")
             return finish(summary)
+        additions = integration.canonical_patches(additions, base["overlay"])
+        from roc.integration_verify import linked_preflight
+        linked_preflight(ROOT, additions, output, log)
+        if api.call("/v1/integration/base")["revision"] != base["revision"]:
+            raise ValueError("Accepted baseline advanced during linked preflight; saved proposals retained, sync and retry")
         for unit in used:
             claim = units[unit]
             folder = ROOT / "work/integration-client/claims" / claim["id"]

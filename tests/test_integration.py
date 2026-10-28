@@ -13,6 +13,39 @@ import pytest
 from roc import integration, integration_verify, integration_notify, server, worker
 
 
+def test_windows_overlay_alias_preserves_accepted_fp_pragma(tmp_path, monkeypatch):
+    from roc import rebuild
+    source = tmp_path / 'tools/rbxgs/Client/App/gui/GUI.cpp'
+    source.parent.mkdir(parents=True)
+    source.write_text('#include "gui/Gui.h"\n\t\tRBXASSERT(!focus);\n\t\treturn processNonFocus(event);')
+    base = {'App/gui/GUI.cpp': [['#include "gui/Gui.h"\n', '#pragma float_control(precise, off)\n#include "gui/Gui.h"\n']]}
+    edits = {'App/gui/Gui.cpp': [['\t\tRBXASSERT(!focus);\n\t\treturn processNonFocus(event);', '\t\treturn processNonFocus(event);']]}
+    combined, kept, dropped = integration_verify.preflight(tmp_path, base, edits)
+    assert list(combined) == ['App/gui/GUI.cpp'] and not dropped
+    assert integration.overlay_delta(base, combined) == kept
+    registry = tmp_path / 'patches.json'
+    registry.write_text(json.dumps(combined))
+    monkeypatch.setattr(rebuild, 'ROOT', tmp_path)
+    spec = {'root': 'tools/rbxgs/Client', 'patches': 'patches.json'}
+    _, overlay = rebuild.build_overlay('2008-06', 'RbxgsApp', spec)
+    text = (overlay / 'App/gui/GUI.cpp').read_text()
+    assert text.startswith('#pragma float_control(precise, off)') and 'RBXASSERT' not in text
+    registry.write_text(json.dumps(dict(base, **edits)))
+    with pytest.raises(ValueError, match='Case-colliding'):
+        rebuild.build_overlay('2008-06', 'RbxgsApp', spec)
+    assert (overlay / 'App/gui/GUI.cpp').read_text() == text
+    with pytest.raises(ValueError, match='Case-colliding'):
+        integration.merge_patches({}, dict(base, **edits))
+
+
+def test_recipe_replacement_alias_still_requires_exact_baseline_guard():
+    base = {'App/gui/GUI.cpp': [['old', 'accepted']]}
+    assert integration.merge_patches(base, {'App/gui/Gui.cpp': {'before': base['App/gui/GUI.cpp'],
+        'after': [['old', 'corrected']]}}) == {'App/gui/GUI.cpp': [['old', 'corrected']]}
+    with pytest.raises(ValueError, match='Stale recipe replacement'):
+        integration.merge_patches(base, {'App/gui/Gui.cpp': {'before': [], 'after': [['old', 'unsafe']]}})
+
+
 def make_store(path):
     return SimpleNamespace(db=sqlite3.connect(path, check_same_thread=False), lock=threading.Lock())
 
@@ -501,7 +534,7 @@ def test_registry_updates_do_not_invalidate_installed_native_inputs(promotions):
     assert integration_verify.input_hash(promotions.root) != before
 
 
-@pytest.mark.parametrize('name', ['roc.py', 'roc/server.py', 'roc/integration.py', 'roc/reports.py', 'roc/native_try.py'])
+@pytest.mark.parametrize('name', ['roc.py', 'roc/server.py', 'roc/reports.py', 'roc/native_try.py'])
 def test_service_edits_do_not_discard_native_baseline(promotions, name):
     path = promotions.root / name
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -511,7 +544,7 @@ def test_service_edits_do_not_discard_native_baseline(promotions, name):
     assert integration_verify.input_hash(promotions.root) == before
 
 
-@pytest.mark.parametrize('name', ['rebuild', 'match', 'libs', 'integration_verify'])
+@pytest.mark.parametrize('name', ['rebuild', 'match', 'libs', 'integration', 'integration_verify'])
 def test_native_implementation_edits_invalidate_baseline(promotions, name):
     path = promotions.root / 'roc' / (name + '.py')
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -680,6 +713,39 @@ def gate_result():
             "distinct": 5, "milestones": {m: {"passed": True, "exit": 0} for m in ("M2", "M4a", "M5")},
             "size": {"rows": [{"class": "First", "delta": 0}], "probe_errors": {}},
             "base": {"checked": 4, "mismatch": [], "probe_errors": {}}}
+
+
+@pytest.mark.parametrize('lost', [False, True])
+def test_contributor_linked_preflight_detects_losses_and_writes_receipt(promotions, monkeypatch, lost):
+    root = promotions.root
+    before = gate_result()
+    before['linked_addresses'] = ['00500000']
+    after = copy.deepcopy(before)
+    after['report']['owned_addrs'] = ['00500001'] if lost else ['00500000', '00500001']
+    after['distinct'] += 1
+    cache = root / 'work/native-linked-preflight/fingerprint'
+    integration.atomic_json(cache / 'integration-result.json', before)
+    integration.atomic_json(cache / 'integration-prepared.json', {'format': 1, 'inputs': 'fingerprint'})
+    monkeypatch.setattr(integration_verify, 'input_hashes', lambda root: ('fingerprint', 'live'))
+    monkeypatch.setattr(integration_verify, 'input_hash', lambda *a, **kw: 'live')
+    monkeypatch.setattr(integration_verify, 'snapshot', lambda root, destination, **kw: destination.mkdir(parents=True))
+    monkeypatch.setattr(integration_verify, 'verify_build', lambda *a: after)
+    monkeypatch.setattr(integration_verify, 'other_module_owned', lambda root: set())
+    patches = {'App/include/Classes.h': [['class First {};', 'class First {}; // trial']]}
+    output = root / 'proof'
+    if lost:
+        with pytest.raises(ValueError, match='without losing'):
+            integration_verify.linked_preflight(root, patches, output, lambda _: None)
+    else:
+        integration_verify.linked_preflight(root, patches, output, lambda _: None)
+    receipt_file = next(output.glob('*/preflight-receipt.json'))
+    receipt = json.loads(receipt_file.read_text())
+    assert receipt['accepted'] is not lost
+    assert receipt['gains'] == ['00500001']
+    assert receipt['losses'] == (['00500000'] if lost else [])
+    assert receipt['uncovered_losses'] == receipt['losses']
+    assert receipt['artifacts'] == str(receipt_file.parent)
+    assert receipt['baseline_artifacts'] == str(cache)
 
 
 def test_runtime_failure_includes_test_and_windows_exception():

@@ -55,7 +55,7 @@ Keep the selected client locked for this run.
 
 Do not ask the user to locate or attach a Worker ZIP. If `roc/native_try.py`, `research/native-units.json`,
 or `research/native-source-lock.json` is missing, `roc native-try --help` is unavailable, or a package marker
-reports `native_workflow_version` below 5, download the current Worker package yourself:
+reports `native_workflow_version` below 6, download the current Worker package yourself:
 
 - Manifest: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.json
 - Package: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.zip
@@ -69,7 +69,7 @@ into a new folder without overwriting the user's existing checkout or edits:
 $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 $nativeManifest = Invoke-RestMethod ('https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.json?t=' + [guid]::NewGuid().ToString('N'))
-if ($nativeManifest.workflow_version -lt 5 -or
+if ($nativeManifest.workflow_version -lt 6 -or
     $nativeManifest.url -ne 'https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.zip' -or
     $nativeManifest.sha256 -notmatch '^[0-9a-fA-F]{64}$') { throw 'Invalid Worker manifest' }
 $nativeFolder = Join-Path (Get-Location) ('RoConstruct-Native-' + [guid]::NewGuid().ToString('N'))
@@ -238,7 +238,19 @@ If doctor cannot find an installed SDK, set `ROC_WINSDK` to this PC's SDK folder
    - When the accepted baseline moves, submit recompiles versioned saved edits against
      the latest clean baseline automatically. Changed anchors, lost gains or regressions
      stop submission and retain saved proposals for repair.
-   - Submission recompiles saved proposals and verifies their gains and preserved exacts before claiming or staging.
+   - Submission recompiles saved proposals, then independently builds the combined linked module
+     and runs M2/M4a/M5, size/base, global coverage and ownership gates before staging.
+     `roc native-try preflight` runs the linked batch proof without claiming or submitting.
+     First proof needs a cold baseline build; later proofs reuse content-checked baseline objects.
+     Per-file `check` is preliminary: local exact bytes do not prove linked ownership.
+   - Source identity is case-insensitive. Keep the accepted registry spelling (`GUI.cpp`, for example).
+     A single alias is canonicalized; two differently cased keys in one registry/batch are rejected.
+     Never duplicate a file entry to bypass its existing edits or floating-point pragmas.
+   - Linked proof receipts record gained/lost/uncovered addresses and baseline/candidate folders.
+     Compiler objects have `.command.json` evidence: actual source hash, flags, defines,
+     include search order, resolved header hashes and compiler environment.
+     Failed revalidation leaves saved proposals intact. Replacing a successful saved check
+     archives its previous proposal file under `work/native-try/archive/`.
    - If another worker holds a required class, submit reports the blocked class and retains the proposal for a later retry.
      A partial batch archives only the submitted proposals; the remaining proposals stay saved.
 
