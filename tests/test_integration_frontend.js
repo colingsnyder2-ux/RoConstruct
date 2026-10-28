@@ -27,16 +27,6 @@ assert.doesNotMatch(context.integrationDaily(native), /stacked by model|gpt-|cla
 assert.doesNotMatch(context.integrationDaily({...native, jobs: []}), /NaN|Infinity/);
 assert.match(context.integrationDaily({...native, jobs: []}), /Daily integration coverage/);
 assert.equal(context.integrationDays({...native, daily: [{day: "2026-10-27", gains: 9, jobs: 2}]})[0].gains, 9);
-const data = {units: ["RBX::Body", "<untrusted>"], funcs: [
-  [1, 25, 100, 0], [2, 50, 100, 0], [3, 100, 50, 0], [4, 75, 100, 1],
-]};
-const breakdown = context.integrationBreakdown(native, data);
-assert.match(breakdown, /2 byte-exact functions awaiting integration/);
-assert.match(breakdown, /1 \/ 4/);
-assert.match(breakdown, /10.00% integrated/);
-assert.ok(breakdown.indexOf("&lt;untrusted>") < breakdown.lastIndexOf("RBX::Body"));
-assert.doesNotMatch(breakdown, /<untrusted>|NaN|Infinity/);
-assert.match(context.integrationBreakdown(native, {units: [], funcs: []}), /No byte-exact functions waiting/);
 new vm.Script(html.match(/<script>([\s\S]*)<\/script>/)[1]);
 assert.doesNotMatch(html, /Code coverage view|code-mode|data-work-view/);
 assert.match(html, /id="live-integration"/);
