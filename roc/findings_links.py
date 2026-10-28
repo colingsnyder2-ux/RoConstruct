@@ -1,6 +1,7 @@
 """Unambiguous native definition links into the actual published source files."""
 import os
 import re
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 
@@ -22,8 +23,8 @@ def definitions(text):
     mask = re.compile(r"""/\*.*?\*/|//[^\n]*|"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|^[ \t]*#[^\n]*(?:\\\n[^\n]*)*""", re.S | re.M)
     text = mask.sub(lambda m: re.sub(r"[^\n]", " ", m[0]), text)
     # Template arguments cannot introduce a source scope. Preserve offsets for line links.
-    while re.search(r"<[^<>]*>", text):
-        text = re.sub(r"<[^<>]*>", lambda m: re.sub(r"[^\n]", " ", m[0]), text)
+    while re.search(r"<[^<>{};]*>", text):
+        text = re.sub(r"<[^<>{};]*>", lambda m: re.sub(r"[^\n]", " ", m[0]), text)
     stack, start = [], 0
     for event in re.finditer(r"[{};]", text):
         end, token = event.start(), event[0]
@@ -65,12 +66,15 @@ def native_sources(package, published, names):
         undecorate.argtypes = [ctypes.c_char_p, ctypes.c_char_p, wintypes.DWORD, wintypes.DWORD]
         undecorate.restype = wintypes.DWORD
     found = {}
-    for relative in sorted(published):
+    def scan(relative):
         path = Path(package) / relative
         if not relative.startswith('src/') or path.name.startswith('roc_') or path.suffix not in {'.c', '.cpp', '.h', '.hpp', '.inl', '.ipp'}:
-            continue
-        for name, line in definitions(path.read_text(encoding='utf-8', errors='replace')):
-            found.setdefault(name, []).append({'path': '2008-06/' + relative, 'line': line})
+            return relative, []
+        return relative, list(definitions(path.read_text(encoding='utf-8', errors='replace')))
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        for relative, entries in pool.map(scan, sorted(published)):
+            for name, line in entries:
+                found.setdefault(name, []).append({'path': '2008-06/' + relative, 'line': line})
     sources = {}
     for address, entry in names.items():
         name = readable(entry['symbol'])
