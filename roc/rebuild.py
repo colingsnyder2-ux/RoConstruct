@@ -653,6 +653,10 @@ def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- 
         with Path(path).open("rb") as stream:
             return hashlib.file_digest(stream, "sha256").hexdigest()
 
+    @functools.lru_cache(maxsize=None)
+    def inventory_path(path):
+        return os.path.normcase(path)
+
     inventories, inventory_walked = {}, {}
     @match._single_load
     @functools.lru_cache(maxsize=None)
@@ -663,10 +667,10 @@ def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- 
             if parent not in inventories or folder not in inventory_walked[parent]:
                 continue
             prefix = str(folder.relative_to(parent)) + os.sep
-            normalized = os.path.normcase(prefix)
+            normalized = inventory_path(prefix)
             names = {}
             for name, paths in inventories[parent].items():
-                selected = [p[len(prefix):] for p in paths if os.path.normcase(p).startswith(normalized)]
+                selected = [p[len(prefix):] for p in paths if inventory_path(p).startswith(normalized)]
                 if selected:
                     names[name] = sorted(os.path.join('.', p) if os.sep not in p else p for p in selected)
             inventories[folder] = names
@@ -685,14 +689,10 @@ def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- 
         inventory_walked[folder] = walked
         return inventories[folder]
 
-    # Shared headers recur in every object's deps: stat each once per build (~141k checks per rbxgs-app build).
+    # Shared headers recur in every object's deps: probe each overlay twin once per build.
     @functools.lru_cache(maxsize=None)
     def shadowed_dep(dep):
         return _twin(dep, overlay).exists()
-
-    @functools.lru_cache(maxsize=None)
-    def dep_exists(dep):
-        return Path(dep).exists()
 
     compiler_files = []
     if tc.get("cl"):
@@ -738,10 +738,14 @@ def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- 
             deps = json.loads(deps_file.read_text())
             # a header that gained an overlay twin since this object was built is shadowed now: rebuild
             shadowed = overlay and any(shadowed_dep(d) for d in deps)
-            if not shadowed and all(dep_exists(d) for d in deps):
+            if not shadowed:
                 saved = json.loads(cache_file.read_text())
-                if saved == {"inputs": signature(orig, src, deps), "object": content(obj)}:
-                    return str(orig), (True, "content cache hit")
+                try:
+                    # Hashing opens every dependency: a separate existence pass is redundant.
+                    if saved == {"inputs": signature(orig, src, deps), "object": content(obj)}:
+                        return str(orig), (True, "content cache hit")
+                except FileNotFoundError:
+                    pass  # Removed headers/objects require the ordinary compiler path.
         obj.unlink(missing_ok=True)  # a failed compile must not leave a stale object
         cache_file.unlink(missing_ok=True)
         if src.suffix.lower() == ".asm":

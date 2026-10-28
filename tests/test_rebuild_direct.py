@@ -144,6 +144,31 @@ def test_overlay_header_creation_invalidates_content_cache(tmp_path, monkeypatch
     assert len(calls) == 2
 
 
+def test_removed_dependency_invalidates_cache_and_failed_rebuild_removes_old_object(tmp_path, monkeypatch):
+    source, header = tmp_path/'unit.cpp', tmp_path/'shared.h'
+    source.write_text('#include "shared.h"\nint f();')
+    header.write_text('int shared;')
+    output = tmp_path/'out'
+    calls = []
+    monkeypatch.setattr(rebuild, 'toolchain', lambda _: {})
+    def run(tc, tool, args, cwd):
+        calls.append(args)
+        if not header.exists():
+            return 1, 'unit.cpp: error C1083: Cannot open include file: shared.h'
+        (cwd/'unit.obj').write_bytes(b'object')
+        return 0, 'Note: including file: ' + str(header)
+    monkeypatch.setattr(rebuild, 'run', run)
+    def build():
+        return rebuild.compile_direct('2008-06', [source], output, [], '')[str(source)]
+    assert build()[0]
+    assert build() == (True, 'content cache hit')
+    header.unlink()
+    assert not build()[0]
+    assert len(calls) == 2
+    assert not (output/'unit.obj').exists()
+    assert not (output/'unit.compile.json').exists()
+
+
 def test_sdk_discovery_is_cached_per_tools_tree(tmp_path):
     tools = tmp_path / 'tools'
     sdk = tools / 'compiler' / 'WinSDK'

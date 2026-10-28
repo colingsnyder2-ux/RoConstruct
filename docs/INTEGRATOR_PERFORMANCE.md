@@ -261,3 +261,22 @@ to compare exhaustive and filtered scans with one and twenty workers. Every resu
 is checked against the exhaustive address/symbol list. Regression tests additionally
 cover prefix collisions, partial relocation fields, missing required relocations,
 referenced-data rejection, concurrent scans and cache eviction.
+
+## Warm compiler-cache validation
+
+Header inventory views now reuse normalized path strings within one compile call.
+The cache still lists shadowing candidates, hashes every dependency and compiler
+input, checks include order/flags/environment and validates the object hash.
+Dependencies no longer receive a separate existence probe before their mandatory
+content read. A missing dependency falls through to ordinary compilation; failed
+compilation removes stale object/cache files. Nothing is cached across calls by
+timestamp or file size.
+
+A real replay alternated Block and Humanoid for twenty warm validations. With
+twenty workers the original implementation took 8.453/7.812s versus 7.375/6.735s
+afterward. Serial warm results were 9.281s original versus 8.062/7.969s afterward;
+the first original replay took 18.891s and is excluded from steady comparisons.
+The benchmark forbade compiler invocation and verified all object bytes and cache
+records stayed unchanged. These measure validation overhead, not cold compilation
+or accepted functions per minute. Same-mtime content mutation, new shadowing headers,
+include ordering, removed headers and failed-build cleanup remain regression-tested.
