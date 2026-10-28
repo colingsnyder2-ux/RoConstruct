@@ -222,6 +222,8 @@ def native_loop(config, control, emit):
     """Native integration: each pass lets the model edit native files that define waiting exact targets, submits
     locally proven edits as one verified batch; discovery continues while the server verifies."""
     from roc import integration, native_sweep, research
+    if not providers.available(config["model"]):
+        raise providers.ProviderError("provider_key", providers.credential_hint(config["model"]))
     spec = json.loads(json.dumps(research.recipes()["native-model-2008"]))
     emit('log', slot=0, message='Startup: validating ABI, RTTI and dependency compiler profiles')
     from roc.rebuild_install import prepare
@@ -232,7 +234,7 @@ def native_loop(config, control, emit):
     emit("log", slot=0, message="Startup complete: selecting exact mined targets for parallel integration")
     def native_event(kind, **fields):
         emit(kind, **fields)
-        if fields.get("error_category") in ("provider_auth", "cloud_budget"):
+        if fields.get("error_category") in providers.FATAL_ERRORS or fields.get("error_category") == "cloud_budget":
             emit("error", slot=fields["slot"], message="Provider unavailable; session stopped. " + fields.get("error", ""))
             control.command({"action": "stop"})
 

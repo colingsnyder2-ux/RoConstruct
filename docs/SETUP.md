@@ -129,4 +129,7 @@ anything in use.
 | `missing VS2005 / VS2008` | `roc install` again (resumes) |
 | `cannot reach server` | server offline; workers retry |
 | `no cloud model key is set` | `roc provider setup`, or `roc local-ai` |
+| NVIDIA 404 for Nemotron Ultra | Keep namespace: `nvidia:nvidia/nemotron-3-ultra-550b-a55b`. For OpenCode sign-in: `opencode:nvidia/nvidia/nemotron-3-ultra-550b-a55b#none`. |
+| Cloud HTTP 401/403 | Check key/model access; environment keys override ROC's saved key. OpenCode credentials require an `opencode:` model. |
+| DeepSeek HTTP 402 | API balance exhausted; fix billing. Retrying or switching reasoning cannot repair billing. |
 | `worker config was edited` | delete `local/config/roconstruct-worker.json`, run `roc setup` |

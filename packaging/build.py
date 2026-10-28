@@ -200,8 +200,8 @@ def stage(slug, spec, out):
     shutil.copytree(ROOT / "roc" / "web", out / "roc" / "web", dirs_exist_ok=True)
     (out / "roc" / "__init__.py").write_text("", encoding="utf-8")
     (out / "roconstruct-package.json").write_text(json.dumps(
-        {"package": slug, "revision": version(), "native_workflow": True, "native_workflow_version": 7,
-         "matching_workflow_version": 2}, indent=2) + "\n", encoding="utf-8")
+        {"package": slug, "revision": version(), "native_workflow": True, "native_workflow_version": 8,
+         "matching_workflow_version": 3}, indent=2) + "\n", encoding="utf-8")
     for name, text in spec["docs"].items():
         (out / name).write_text(text, encoding="utf-8")
     return out
@@ -305,7 +305,7 @@ def prepare_downloads(package):
     """Refresh the shared bootstrap ZIP/manifest and both standalone agent guides."""
     with zipfile.ZipFile(package) as zipped:
         marker = json.loads(zipped.read("roconstruct-package.json"))
-        if marker.get("matching_workflow_version", 0) < 2 or not {
+        if marker.get("matching_workflow_version", 0) < 3 or not {
                 "docs/MATCHING_AGENT.md", "docs/NATIVE_AGENT.md",
                 "rebuild/2008-06/manifests/abi-evidence.json"} <= set(zipped.namelist()):
             raise ValueError("Worker ZIP lacks the matching/native workflows; rebuild it")
@@ -319,7 +319,7 @@ def prepare_downloads(package):
     shutil.copy2(package, archive)
     for name in ("NATIVE_AGENT.md", "MATCHING_AGENT.md"):
         shutil.copy2(ROOT / "docs" / name, folder / name)
-    data.update(schema=1, workflow_version=7, matching_workflow_version=2,
+    data.update(schema=1, workflow_version=8, matching_workflow_version=3,
                 abi_manifest_sha256=hashlib.sha256(abi).hexdigest(), abi_manifest_classes=len(json.loads(abi)),
                 url=base + archive.name, sha256=hashlib.sha256(archive.read_bytes()).hexdigest(),
                 size=archive.stat().st_size, guide=base + "NATIVE_AGENT.md", matching_guide=base + "MATCHING_AGENT.md",

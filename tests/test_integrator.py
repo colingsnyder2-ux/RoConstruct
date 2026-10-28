@@ -109,6 +109,8 @@ def test_workspace_preserves_server_and_separates_writable_sources(tmp_path, mon
 
 
 def test_native_loop_forwards_parallelism_budgets_and_context(monkeypatch):
+    monkeypatch.setattr(providers, 'available', lambda _: True)
+    monkeypatch.setattr('roc.rebuild_install.prepare', lambda **kwargs: None)
     config = {**gui_worker.DEFAULTS, 'lease_mode': 'native', 'client': '2008-06', 'model': 'codex:default',
               'workers': 8, 'user': 'tester', 'server': 'localhost:8765', 'cloud_allowed': True,
               'cloud_concurrency': 'auto', 'native_batch_files': 100, 'max_cloud_requests': 12}
@@ -169,6 +171,8 @@ def test_model_jobs_parallel_but_compilers_bounded(tmp_path, monkeypatch):
 
 
 def test_native_loop_counts_async_acceptance_and_stops_at_budget(monkeypatch):
+    monkeypatch.setattr(providers, 'available', lambda _: True)
+    monkeypatch.setattr('roc.rebuild_install.prepare', lambda **kwargs: None)
     config = {**gui_worker.DEFAULTS, 'lease_mode': 'native', 'client': '2008-06', 'model': 'codex:default',
               'workers': 2, 'user': 'tester', 'server': 'localhost:8765', 'cloud_allowed': True,
               'max_cloud_requests': 1}

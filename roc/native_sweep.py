@@ -390,7 +390,7 @@ def wait_for_job(api, identifier, timeout, log):
 
 
 MODEL_RULES = """You repair real 2008 Roblox C++ so MSVC compiles it to the exact bytes of the 2008 exe.
-Edit ONLY the file below. Reply with one or more blocks, nothing else:
+Edit ONLY the file below. Reply with one or more blocks inside one ```cpp fence, nothing else:
 <<<<<<< SEARCH
 exact old text, copied verbatim from the file
 =======
@@ -577,7 +577,8 @@ def providers_text(reply):
 
 
 def model_prompt(rel, shown, items):
-    return "%s\n\nFILE %s\n```cpp\n%s\n```\n\nTARGETS (exact 2008 functions this file should produce)\n%s" % (
+    return ("%s\n\nFILE %s\n```cpp\n%s\n```\n\nTARGETS (exact 2008 functions this file should produce)\n%s"
+            "\n\nReturn SEARCH/REPLACE blocks inside one ```cpp fence. Do not return the whole source file.") % (
         MODEL_RULES, rel, shown[:60000], json.dumps(items, separators=(",", ":")))
 
 
@@ -611,11 +612,13 @@ def model_proposal(rel, text, addrs, baseline, owned, model, rounds, compile_rou
     loses no owned exact in that file. Every round compiles the real TU; failures go back as feedback."""
     from roc import providers
     prompt = model_prompt(rel, shown or text, [evidence(a) for a in addrs[:3]])
-    messages, trials = [{"role": "user", "content": prompt}], []
+    messages, trials = [{"role": "system", "content": "Repair C++ using requested SEARCH/REPLACE blocks inside one ```cpp fence. No tools or prose."},
+                        {"role": "user", "content": prompt}], []
     for n in range(rounds):
         # Edit blocks are short: no thinking and a small reply cap keep each round to seconds, not a minute.
         # With thinking on, reasoning shares max_tokens: an 8192 cap left 27 of 29 replies without any edit.
         settings = dict({"allow_cloud": True, "timeout": 180, "thinking": "disabled"}, **(options or {}))
+        settings["edit_blocks"] = True
         if settings.get("before_request") and not settings["before_request"]():
             return None, trials
         settings.setdefault("max_tokens", 3072 if settings["thinking"] == "disabled" else 32768)
@@ -662,6 +665,7 @@ def model_proposal(rel, text, addrs, baseline, owned, model, rounds, compile_rou
 
 def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs, log, compile_source, names):
     """Near-exact targets first; smaller files break ties to reach the first result sooner."""
+    from roc import providers
     if config.get("only_rebuilt", True):
         # Near misses first: the rebuild already compiles a body for the address, so the fix is local to that method.
         # Targets with no rebuilt body need new methods and header declarations; .cpp-only edits rarely reach them.
@@ -674,6 +678,8 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
     model, rounds = config["llm"], config.get("rounds", 3)
     options = {key: config[key] for key in ("thinking", "max_tokens") if key in config}
     options.update(config.get("provider_options", {}))
+    options.setdefault("gate", providers.CloudGate(jobs))
+    provider_failed = threading.Event()
     event = options.pop("event", None)
     compile_slots = threading.Semaphore(config.get("compile_workers", jobs))
     raw_compile = compile_source
@@ -686,7 +692,7 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
     log("Native discovery: %d files · %d AI workers · %d compiler slots" % (len(files), jobs, config.get("compile_workers", jobs)))
 
     def discover(rel, log, options):
-        if options.get("before_request") and not options["before_request"]():
+        if provider_failed.is_set() or options.get("before_request") and not options["before_request"]():
             return None, []
         log("Compiling baseline")
         base = compile_source(texts[rel], rel, "baseline")
@@ -697,6 +703,8 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
         comparing = time.monotonic()
         baseline = {h["addr"] for h in matcher.scan(data)}
         log("Baseline comparison: %.1fs · %d exact" % (time.monotonic() - comparing, len(baseline)))
+        if provider_failed.is_set():
+            return None, [base]
 
         def diff(obj, addr):
             return body_diff(obj, names[addr]["symbol"], addr) if names.get(addr, {}).get("symbol") else "no rebuilt body"
@@ -709,12 +717,15 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
                                                                    if names.get(a, {}).get("symbol")])
                                               if context == "methods" else None)
         except Exception as error:  # noqa: BLE001 - one provider/compile failure must not stop the other files
+            if getattr(error, "category", "") in providers.FATAL_ERRORS:
+                provider_failed.set()
+                log("Provider configuration failed; queued files skipped: " + str(error))
             return None, [base, {"file": rel, "mode": "model", "ok": False, "error": str(error)[:500], "error_category": getattr(error, "category", "")}]
         return proposal, [base] + trials
 
     slots, slots_lock = list(range(jobs)), threading.Lock()
     def one(rel):
-        if options.get("before_request") and not options["before_request"]():
+        if provider_failed.is_set() or options.get("before_request") and not options["before_request"]():
             return None, []
         with slots_lock:
             slot = slots.pop(0)

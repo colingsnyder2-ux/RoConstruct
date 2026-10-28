@@ -1,6 +1,6 @@
 # Native integration contributors
 
-Worker v7 includes the published original-binary ABI manifest. After source/toolchain
+Worker v8 includes provider routing and OpenCode task-delivery fixes, plus the published original-binary ABI manifest. After source/toolchain
 setup, `roc rebuild 2008-06 prepare` validates ABI data, generates missing RTTI,
 checks every declared compiler profile, and builds missing dependency libraries with
 their ordinary recipes before a native baseline starts. A partial `rebuild install`
@@ -47,6 +47,7 @@ remain readable/usable.
 roc integrator --model codex:gpt-6.1-sol --workers 16 --compile-workers 4 --batch-files 80 --allow-cloud
 roc integrator --model claude:sonnet --workers 8 --allow-cloud
 roc integrator --model opencode:PROVIDER/MODEL --workers 16 --allow-cloud
+roc integrator --model opencode:nvidia/nvidia/nemotron-3-ultra-550b-a55b#none --workers 4 --compile-workers 2 --allow-cloud
 roc worker --model codex:gpt-6.1-sol --workers 16 --cloud-concurrency 16 --allow-cloud
 ```
 
@@ -59,6 +60,20 @@ the same anchored edits and local compilation loop as API responses. Codex runs
 in a temporary read-only workspace; Claude's text-provider invocation has tools
 disabled. CLI subscription usage has no reliable ROC USD estimate; dollar caps
 are rejected. Request/token caps still apply at the shared provider boundary.
+
+NVIDIA API models keep their full namespace: `nvidia:nvidia/nemotron-3-ultra-550b-a55b`
+(the bare `nvidia/nemotron-3-ultra-550b-a55b` also works). OpenCode adds its provider
+prefix: `opencode:nvidia/nvidia/nemotron-3-ultra-550b-a55b#none`. OpenCode credentials
+stay in OpenCode; direct NVIDIA needs `NVIDIA_API_KEY`. Nemotron Ultra accepts
+`none`, `medium`, or `high` reasoning; direct API disabled thinking maps to `none`.
+
+HTTP 401/403 require fixing credentials/access; environment keys override saved ROC
+keys. HTTP 402 requires provider balance. HTTP 404 requires the correct model ID and
+endpoint. These stop the run and skip queued native files rather than opening a
+retry circuit. Only transient network/rate/server failures count toward the circuit.
+OpenCode gets native SEARCH/REPLACE blocks inside a code fence. CLI tasks use an
+explicit attachment instead of stdin-only delivery. A failed HTTP generation never
+silently starts a second CLI generation.
 
 Each integration session snapshots runtime/rebuild files into
 `local/integrators/<id>`. Writable overlays, generator changes, claims and outputs

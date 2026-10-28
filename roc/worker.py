@@ -947,7 +947,7 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
                 control.command({"action": "stop"})
         save_session_state(worker, user, model, done, matched, failures)
         if provider_options.get("budget_exhausted"):
-            log("Cloud budget exhausted; worker stopped.")
+            log(provider_options.get("stop_reason", "Cloud budget exhausted") + "; worker stopped.")
             break
         if done % 10 == 0:
             log("== %s: %d functions tried, %d matched this session ==" % (time.strftime("%H:%M"), done, matched))
@@ -1436,8 +1436,9 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
             failure_reason = "api"
         else:
             failure_reason = "worker_error"
-        if failure_reason in ("cloud_budget", "provider_auth") and provider_options is not None:
+        if (failure_reason == "cloud_budget" or failure_reason in providers.FATAL_ERRORS) and provider_options is not None:
             provider_options["budget_exhausted"] = True
+            provider_options["stop_reason"] = "Cloud budget exhausted" if failure_reason == "cloud_budget" else "Provider configuration failed: " + failure
         if getattr(error, "category", "") == "provider_circuit":
             provider, _remote, _config = providers.parse_model(model)
             log("  cloud circuit open; waiting 60s before retrying %s." % provider)
