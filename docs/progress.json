@@ -21,49 +21,63 @@
     {
      "user": "auto",
      "matched": 8154,
+     "mining_points": 802365,
      "points": 802365,
+     "native_integrated": 0,
      "submissions": 8154,
      "last": 1793180165.2558324
     },
     {
      "user": "colin",
      "matched": 542,
+     "mining_points": 742481,
      "points": 742481,
+     "native_integrated": 0,
      "submissions": 40375,
      "last": 1791746596.1641216
     },
     {
-     "user": "sophus",
-     "matched": 1,
-     "points": 168,
-     "submissions": 6,
-     "last": 1792755536.1367285
-    },
-    {
-     "user": "Viper",
-     "matched": 1,
-     "points": 90,
-     "submissions": 12,
-     "last": 1792330758.4719782
-    },
-    {
      "user": "TrollStein",
      "matched": 0,
+     "mining_points": 567,
      "points": 567,
+     "native_integrated": 0,
      "submissions": 87,
      "last": 1792429950.536675
     },
     {
+     "user": "sophus",
+     "matched": 1,
+     "mining_points": 168,
+     "points": 168,
+     "native_integrated": 0,
+     "submissions": 6,
+     "last": 1792755536.1367285
+    },
+    {
      "user": "colinlaptop",
      "matched": 0,
+     "mining_points": 103,
      "points": 103,
+     "native_integrated": 0,
      "submissions": 2,
      "last": 1791430276.2224836
     },
     {
+     "user": "Viper",
+     "matched": 1,
+     "mining_points": 90,
+     "points": 90,
+     "native_integrated": 0,
+     "submissions": 12,
+     "last": 1792330758.4719782
+    },
+    {
      "user": "atomic.potato",
      "matched": 0,
+     "mining_points": 11,
      "points": 11,
+     "native_integrated": 0,
      "submissions": 1,
      "last": 1791721917.4447293
     }
@@ -92,91 +106,117 @@
     {
      "user": "auto",
      "matched": 8563,
+     "mining_points": 839163,
      "points": 839163,
+     "native_integrated": 0,
      "submissions": 8563,
      "last": 1793180228.3628876
     },
     {
      "user": "colin",
      "matched": 1980,
+     "mining_points": 771139,
      "points": 771139,
+     "native_integrated": 0,
      "submissions": 25456,
      "last": 1792062428.6872315
     },
     {
-     "user": "atomic.potato",
-     "matched": 49,
-     "points": 785,
-     "submissions": 109,
-     "last": 1791753400.399643
-    },
-    {
-     "user": "sophus",
-     "matched": 2,
-     "points": 438,
-     "submissions": 28,
-     "last": 1793182169.253646
-    },
-    {
-     "user": "Espeon_2",
-     "matched": 2,
-     "points": 90,
-     "submissions": 5,
-     "last": 1791834878.208015
-    },
-    {
      "user": "colinlaptop",
      "matched": 1,
+     "mining_points": 940,
      "points": 940,
+     "native_integrated": 0,
      "submissions": 19,
      "last": 1791477118.6140368
     },
     {
      "user": "TrollStein",
      "matched": 0,
+     "mining_points": 896,
      "points": 896,
+     "native_integrated": 0,
      "submissions": 190,
      "last": 1792429931.6704466
     },
     {
+     "user": "atomic.potato",
+     "matched": 49,
+     "mining_points": 785,
+     "points": 785,
+     "native_integrated": 0,
+     "submissions": 109,
+     "last": 1791753400.399643
+    },
+    {
+     "user": "sophus",
+     "matched": 2,
+     "mining_points": 438,
+     "points": 438,
+     "native_integrated": 0,
+     "submissions": 28,
+     "last": 1793182169.253646
+    },
+    {
      "user": "virility92",
      "matched": 0,
+     "mining_points": 245,
      "points": 245,
+     "native_integrated": 0,
      "submissions": 6,
      "last": 1791412533.2559323
     },
     {
      "user": "Viper",
      "matched": 0,
+     "mining_points": 216,
      "points": 216,
+     "native_integrated": 0,
      "submissions": 42,
      "last": 1792344458.634544
     },
     {
      "user": "jazz",
      "matched": 0,
+     "mining_points": 104,
      "points": 104,
+     "native_integrated": 0,
      "submissions": 2,
      "last": 1791352017.9738536
     },
     {
+     "user": "Espeon_2",
+     "matched": 2,
+     "mining_points": 90,
+     "points": 90,
+     "native_integrated": 0,
+     "submissions": 5,
+     "last": 1791834878.208015
+    },
+    {
      "user": "41k",
      "matched": 0,
+     "mining_points": 47,
      "points": 47,
+     "native_integrated": 0,
      "submissions": 7,
      "last": 1792649910.269281
     },
     {
      "user": "espeon_1",
      "matched": 0,
+     "mining_points": 39,
      "points": 39,
+     "native_integrated": 0,
      "submissions": 7,
      "last": 1791855247.4265246
     },
     {
      "user": "pitbull",
      "matched": 0,
+     "mining_points": 5,
      "points": 5,
+     "native_integrated": 0,
      "submissions": 2,
      "last": 1791599062.0144148
     }
@@ -205,140 +245,216 @@
     {
      "user": "auto",
      "matched": 10941,
+     "mining_points": 1017039,
      "points": 1017039,
+     "native_integrated": 0,
      "submissions": 10943,
      "last": 1793196025.7488065
     },
     {
      "user": "colin",
-     "matched": 3103,
-     "points": 684772,
-     "submissions": 23206,
-     "last": 1793180559.9992664
+     "matched": 3104,
+     "mining_points": 684873,
+     "points": 685130,
+     "native_integrated": 257,
+     "submissions": 23208,
+     "last": 1793199411.3560467
     },
     {
      "user": "king_originala",
      "matched": 2940,
+     "mining_points": 280522,
      "points": 280522,
+     "native_integrated": 0,
      "submissions": 6100,
      "last": 1793173452.1169124
     },
     {
-     "user": "Espeon",
-     "matched": 597,
-     "points": 15453,
-     "submissions": 929,
-     "last": 1793158404.1550689
-    },
-    {
-     "user": "EspClaude",
-     "matched": 489,
-     "points": 15496,
-     "submissions": 730,
-     "last": 1793184213.397152
-    },
-    {
-     "user": "coldek",
-     "matched": 142,
-     "points": 10007,
-     "submissions": 293,
-     "last": 1793187168.3244574
-    },
-    {
      "user": "atomic.potato",
      "matched": 94,
+     "mining_points": 42624,
      "points": 42624,
+     "native_integrated": 0,
      "submissions": 787,
      "last": 1792327184.7020433
     },
     {
-     "user": "nuck16",
-     "matched": 42,
-     "points": 1514,
-     "submissions": 70,
-     "last": 1793005976.1586912
+     "user": "EspClaude",
+     "matched": 489,
+     "mining_points": 15496,
+     "points": 15496,
+     "native_integrated": 0,
+     "submissions": 730,
+     "last": 1793184213.397152
     },
     {
-     "user": "user",
-     "matched": 33,
-     "points": 35,
-     "submissions": 33,
-     "last": 1792513428.7999606
+     "user": "Espeon",
+     "matched": 597,
+     "mining_points": 15453,
+     "points": 15453,
+     "native_integrated": 0,
+     "submissions": 929,
+     "last": 1793158404.1550689
     },
     {
-     "user": "king_originala_sol_native",
-     "matched": 30,
-     "points": 327,
-     "submissions": 54,
-     "last": 1792961617.162224
+     "user": "coldek",
+     "matched": 142,
+     "mining_points": 10007,
+     "points": 10017,
+     "native_integrated": 10,
+     "submissions": 293,
+     "last": 1793199915.1349359
     },
     {
      "user": "Cezant64gamejr",
      "matched": 9,
+     "mining_points": 2647,
      "points": 2647,
+     "native_integrated": 0,
      "submissions": 62,
      "last": 1791569181.5408819
     },
     {
+     "user": "nuck16",
+     "matched": 42,
+     "mining_points": 1514,
+     "points": 1514,
+     "native_integrated": 0,
+     "submissions": 70,
+     "last": 1793005976.1586912
+    },
+    {
      "user": "Intel",
      "matched": 6,
+     "mining_points": 431,
      "points": 431,
+     "native_integrated": 0,
      "submissions": 15,
      "last": 1791588098.9464204
     },
     {
-     "user": "Gemini",
-     "matched": 5,
-     "points": 22,
-     "submissions": 5,
-     "last": 1792509335.8069022
-    },
-    {
-     "user": "king_originala_sol_resume_native",
-     "matched": 3,
-     "points": 60,
-     "submissions": 5,
-     "last": 1792972237.1377032
-    },
-    {
-     "user": "king_originala_sol_resume_high",
-     "matched": 3,
-     "points": 29,
-     "submissions": 6,
-     "last": 1792973633.0515938
-    },
-    {
-     "user": "2gx",
-     "matched": 2,
-     "points": 89,
-     "submissions": 4,
-     "last": 1793166250.3658888
-    },
-    {
-     "user": "king_originala_sol_resume_medium",
-     "matched": 2,
-     "points": 20,
-     "submissions": 3,
-     "last": 1792966702.7035027
+     "user": "king_originala_sol_native",
+     "matched": 30,
+     "mining_points": 327,
+     "points": 327,
+     "native_integrated": 0,
+     "submissions": 54,
+     "last": 1792961617.162224
     },
     {
      "user": "ivan-grebe",
      "matched": 1,
+     "mining_points": 100,
      "points": 100,
+     "native_integrated": 0,
      "submissions": 1,
      "last": 1791766592.3175168
     },
     {
+     "user": "2gx",
+     "matched": 2,
+     "mining_points": 89,
+     "points": 89,
+     "native_integrated": 0,
+     "submissions": 4,
+     "last": 1793166250.3658888
+    },
+    {
+     "user": "king_originala_sol_resume_native",
+     "matched": 3,
+     "mining_points": 60,
+     "points": 60,
+     "native_integrated": 0,
+     "submissions": 5,
+     "last": 1792972237.1377032
+    },
+    {
+     "user": "user",
+     "matched": 33,
+     "mining_points": 35,
+     "points": 35,
+     "native_integrated": 0,
+     "submissions": 33,
+     "last": 1792513428.7999606
+    },
+    {
+     "user": "king_originala_sol_resume_high",
+     "matched": 3,
+     "mining_points": 29,
+     "points": 29,
+     "native_integrated": 0,
+     "submissions": 6,
+     "last": 1792973633.0515938
+    },
+    {
+     "user": "Gemini",
+     "matched": 5,
+     "mining_points": 22,
+     "points": 22,
+     "native_integrated": 0,
+     "submissions": 5,
+     "last": 1792509335.8069022
+    },
+    {
      "user": "sophus",
      "matched": 1,
+     "mining_points": 22,
      "points": 22,
+     "native_integrated": 0,
      "submissions": 1,
      "last": 1792949914.9554145
     },
     {
+     "user": "king_originala_sol_resume_medium",
+     "matched": 2,
+     "mining_points": 20,
+     "points": 20,
+     "native_integrated": 0,
+     "submissions": 3,
+     "last": 1792966702.7035027
+    },
+    {
+     "user": "king_originala_sol_medium",
+     "matched": 0,
+     "mining_points": 8,
+     "points": 8,
+     "native_integrated": 0,
+     "submissions": 2,
+     "last": 1792961434.0510833
+    },
+    {
+     "user": "king_originala_sol_resume_root",
+     "matched": 0,
+     "mining_points": 8,
+     "points": 8,
+     "native_integrated": 0,
+     "submissions": 1,
+     "last": 1792975361.0146
+    },
+    {
+     "user": "king_originala_sol_high",
+     "matched": 0,
+     "mining_points": 4,
+     "points": 4,
+     "native_integrated": 0,
+     "submissions": 1,
+     "last": 1792904595.0517633
+    },
+    {
+     "user": "TrollStein",
+     "matched": 0,
+     "mining_points": 2,
+     "points": 2,
+     "native_integrated": 0,
+     "submissions": 1,
+     "last": 1792416272.4331148
+    },
+    {
      "user": "Bob535653",
      "matched": 1,
+     "mining_points": 1,
      "points": 1,
+     "native_integrated": 0,
      "submissions": 1,
      "last": 1792711202.627472
     }
@@ -367,56 +483,72 @@
     {
      "user": "auto",
      "matched": 9302,
+     "mining_points": 915765,
      "points": 915765,
+     "native_integrated": 0,
      "submissions": 9302,
      "last": 1793180312.5006318
     },
     {
      "user": "colin",
      "matched": 1489,
+     "mining_points": 655474,
      "points": 655474,
+     "native_integrated": 0,
      "submissions": 19405,
      "last": 1792885511.8935874
     },
     {
      "user": "why2",
      "matched": 204,
+     "mining_points": 33377,
      "points": 33377,
+     "native_integrated": 0,
      "submissions": 520,
      "last": 1791657569.112455
     },
     {
      "user": "atomic.potato",
      "matched": 37,
+     "mining_points": 22540,
      "points": 22540,
+     "native_integrated": 0,
      "submissions": 512,
      "last": 1791753411.0517225
     },
     {
-     "user": "sophus",
-     "matched": 24,
-     "points": 674,
-     "submissions": 116,
-     "last": 1793186662.5537083
-    },
-    {
      "user": "TrollStein",
      "matched": 2,
+     "mining_points": 1864,
      "points": 1864,
+     "native_integrated": 0,
      "submissions": 211,
      "last": 1792430051.394083
     },
     {
+     "user": "sophus",
+     "matched": 24,
+     "mining_points": 674,
+     "points": 674,
+     "native_integrated": 0,
+     "submissions": 116,
+     "last": 1793186662.5537083
+    },
+    {
      "user": "Viper",
      "matched": 1,
+     "mining_points": 412,
      "points": 412,
+     "native_integrated": 0,
      "submissions": 43,
      "last": 1792331135.251027
     },
     {
      "user": "ivan-grebe",
      "matched": 1,
+     "mining_points": 61,
      "points": 61,
+     "native_integrated": 0,
      "submissions": 1,
      "last": 1791764848.6185017
     }
@@ -445,44 +577,56 @@
     {
      "user": "auto",
      "matched": 10695,
+     "mining_points": 1046413,
      "points": 1046413,
+     "native_integrated": 0,
      "submissions": 10695,
      "last": 1793180376.201248
     },
     {
      "user": "colin",
      "matched": 2320,
+     "mining_points": 817694,
      "points": 817694,
+     "native_integrated": 0,
      "submissions": 24277,
      "last": 1792886593.1637597
     },
     {
      "user": "atomic.potato",
      "matched": 232,
+     "mining_points": 110128,
      "points": 110128,
+     "native_integrated": 0,
      "submissions": 1899,
      "last": 1791753308.7208514
     },
     {
+     "user": "TrollStein",
+     "matched": 0,
+     "mining_points": 2011,
+     "points": 2011,
+     "native_integrated": 0,
+     "submissions": 226,
+     "last": 1792430050.3083842
+    },
+    {
      "user": "sophus",
      "matched": 17,
+     "mining_points": 1437,
      "points": 1437,
+     "native_integrated": 0,
      "submissions": 129,
      "last": 1793187649.4516714
     },
     {
      "user": "Viper",
      "matched": 3,
+     "mining_points": 648,
      "points": 648,
+     "native_integrated": 0,
      "submissions": 45,
      "last": 1792329154.5525284
-    },
-    {
-     "user": "TrollStein",
-     "matched": 0,
-     "points": 2011,
-     "submissions": 226,
-     "last": 1792430050.3083842
     }
    ],
    "data_matched_bytes": 80941,
@@ -507,46 +651,58 @@
    "data_bytes": 3009972,
    "leaderboard": [
     {
-     "user": "auto",
-     "matched": 8870,
-     "points": 870054,
-     "submissions": 8870,
-     "last": 1793180438.695949
-    },
-    {
      "user": "colin",
      "matched": 3303,
+     "mining_points": 946365,
      "points": 946365,
+     "native_integrated": 0,
      "submissions": 27555,
      "last": 1791880685.8212082
     },
     {
+     "user": "auto",
+     "matched": 8870,
+     "mining_points": 870054,
+     "points": 870054,
+     "native_integrated": 0,
+     "submissions": 8870,
+     "last": 1793180438.695949
+    },
+    {
      "user": "atomic.potato",
      "matched": 406,
+     "mining_points": 177957,
      "points": 177957,
+     "native_integrated": 0,
      "submissions": 2907,
      "last": 1791753405.2636173
     },
     {
+     "user": "TrollStein",
+     "matched": 0,
+     "mining_points": 2007,
+     "points": 2007,
+     "native_integrated": 0,
+     "submissions": 231,
+     "last": 1792429953.190554
+    },
+    {
      "user": "sophus",
      "matched": 41,
+     "mining_points": 1462,
      "points": 1462,
+     "native_integrated": 0,
      "submissions": 195,
      "last": 1793188970.7083926
     },
     {
      "user": "Viper",
      "matched": 2,
+     "mining_points": 372,
      "points": 372,
+     "native_integrated": 0,
      "submissions": 40,
      "last": 1792340526.3143487
-    },
-    {
-     "user": "TrollStein",
-     "matched": 0,
-     "points": 2007,
-     "submissions": 231,
-     "last": 1792429953.190554
     }
    ],
    "data_matched_bytes": 86817,
@@ -573,70 +729,90 @@
     {
      "user": "auto",
      "matched": 10058,
+     "mining_points": 987893,
      "points": 987893,
+     "native_integrated": 0,
      "submissions": 10058,
      "last": 1793180529.8295305
     },
     {
      "user": "colin",
      "matched": 2459,
+     "mining_points": 905707,
      "points": 905707,
+     "native_integrated": 0,
      "submissions": 25794,
      "last": 1791880742.2878044
     },
     {
      "user": "atomic.potato",
      "matched": 220,
+     "mining_points": 136074,
      "points": 136074,
+     "native_integrated": 0,
      "submissions": 2338,
      "last": 1791753415.6915565
     },
     {
      "user": "Intel",
      "matched": 90,
+     "mining_points": 16965,
      "points": 16965,
+     "native_integrated": 0,
      "submissions": 331,
      "last": 1791727397.9646602
     },
     {
-     "user": "tajop",
-     "matched": 79,
-     "points": 1894,
-     "submissions": 101,
-     "last": 1793147736.1150346
-    },
-    {
      "user": "intel",
      "matched": 49,
+     "mining_points": 15889,
      "points": 15889,
+     "native_integrated": 0,
      "submissions": 1415,
      "last": 1792737846.25266
     },
     {
      "user": "sophus",
      "matched": 22,
+     "mining_points": 2436,
      "points": 2436,
+     "native_integrated": 0,
      "submissions": 106,
      "last": 1793188785.6583357
     },
     {
-     "user": "Viper",
-     "matched": 7,
-     "points": 864,
-     "submissions": 49,
-     "last": 1792331300.2531343
+     "user": "tajop",
+     "matched": 79,
+     "mining_points": 1894,
+     "points": 1894,
+     "native_integrated": 0,
+     "submissions": 101,
+     "last": 1793147736.1150346
     },
     {
      "user": "TrollStein",
      "matched": 0,
+     "mining_points": 1801,
      "points": 1801,
+     "native_integrated": 0,
      "submissions": 208,
      "last": 1792430065.8262765
     },
     {
+     "user": "Viper",
+     "matched": 7,
+     "mining_points": 864,
+     "points": 864,
+     "native_integrated": 0,
+     "submissions": 49,
+     "last": 1792331300.2531343
+    },
+    {
      "user": "41k",
      "matched": 0,
+     "mining_points": 441,
      "points": 441,
+     "native_integrated": 0,
      "submissions": 18,
      "last": 1792731000.013161
     }
@@ -650,247 +826,317 @@
   {
    "user": "auto",
    "matched": 76453,
+   "mining_points": 7465692,
    "points": 7465692,
+   "native_integrated": 0,
    "submissions": 76455,
    "last": 1793196025.7488065
   },
   {
    "user": "colin",
-   "matched": 15216,
-   "points": 5523695,
-   "submissions": 186088,
-   "last": 1793180559.9992664
+   "matched": 15217,
+   "mining_points": 5523796,
+   "points": 5524053,
+   "native_integrated": 257,
+   "submissions": 186090,
+   "last": 1793199411.3560467
+  },
+  {
+   "user": "atomic.potato",
+   "matched": 1884,
+   "mining_points": 803197,
+   "points": 803197,
+   "native_integrated": 0,
+   "submissions": 13221,
+   "last": 1792327184.7020433
   },
   {
    "user": "king_originala",
    "matched": 2940,
+   "mining_points": 280522,
    "points": 280522,
+   "native_integrated": 0,
    "submissions": 6100,
    "last": 1793173452.1169124
   },
   {
    "user": "nuck16",
    "matched": 2121,
+   "mining_points": 181723,
    "points": 181723,
+   "native_integrated": 0,
    "submissions": 2469,
    "last": 1793005976.1586912
   },
   {
-   "user": "atomic.potato",
-   "matched": 1884,
-   "points": 803197,
-   "submissions": 13221,
-   "last": 1792327184.7020433
-  },
-  {
-   "user": "Espeon",
-   "matched": 597,
-   "points": 15453,
-   "submissions": 929,
-   "last": 1793158404.1550689
-  },
-  {
-   "user": "EspClaude",
-   "matched": 489,
-   "points": 15496,
-   "submissions": 730,
-   "last": 1793184213.397152
-  },
-  {
    "user": "why2",
    "matched": 204,
+   "mining_points": 33377,
    "points": 33377,
+   "native_integrated": 0,
    "submissions": 520,
    "last": 1791657569.112455
   },
   {
-   "user": "coldek",
-   "matched": 142,
-   "points": 10007,
-   "submissions": 293,
-   "last": 1793187168.3244574
-  },
-  {
-   "user": "sophus",
-   "matched": 135,
-   "points": 7362,
-   "submissions": 652,
-   "last": 1793188970.7083926
-  },
-  {
    "user": "Intel",
    "matched": 96,
+   "mining_points": 17396,
    "points": 17396,
+   "native_integrated": 0,
    "submissions": 346,
    "last": 1791727397.9646602
   },
   {
-   "user": "tajop",
-   "matched": 79,
-   "points": 1894,
-   "submissions": 101,
-   "last": 1793147736.1150346
-  },
-  {
    "user": "intel",
    "matched": 49,
+   "mining_points": 15889,
    "points": 15889,
+   "native_integrated": 0,
    "submissions": 1415,
    "last": 1792737846.25266
   },
   {
-   "user": "user",
-   "matched": 33,
-   "points": 35,
-   "submissions": 33,
-   "last": 1792513428.7999606
+   "user": "EspClaude",
+   "matched": 489,
+   "mining_points": 15496,
+   "points": 15496,
+   "native_integrated": 0,
+   "submissions": 730,
+   "last": 1793184213.397152
   },
   {
-   "user": "king_originala_sol_native",
-   "matched": 30,
-   "points": 327,
-   "submissions": 54,
-   "last": 1792961617.162224
+   "user": "Espeon",
+   "matched": 597,
+   "mining_points": 15453,
+   "points": 15453,
+   "native_integrated": 0,
+   "submissions": 929,
+   "last": 1793158404.1550689
   },
   {
-   "user": "Viper",
-   "matched": 14,
-   "points": 2617,
-   "submissions": 232,
-   "last": 1792344458.634544
-  },
-  {
-   "user": "Cezant64gamejr",
-   "matched": 9,
-   "points": 2647,
-   "submissions": 62,
-   "last": 1791569181.5408819
-  },
-  {
-   "user": "Gemini",
-   "matched": 5,
-   "points": 22,
-   "submissions": 5,
-   "last": 1792509335.8069022
-  },
-  {
-   "user": "king_originala_sol_resume_native",
-   "matched": 3,
-   "points": 60,
-   "submissions": 5,
-   "last": 1792972237.1377032
-  },
-  {
-   "user": "king_originala_sol_resume_high",
-   "matched": 3,
-   "points": 29,
-   "submissions": 6,
-   "last": 1792973633.0515938
+   "user": "coldek",
+   "matched": 142,
+   "mining_points": 10007,
+   "points": 10017,
+   "native_integrated": 10,
+   "submissions": 293,
+   "last": 1793199915.1349359
   },
   {
    "user": "TrollStein",
    "matched": 2,
+   "mining_points": 9148,
    "points": 9148,
+   "native_integrated": 0,
    "submissions": 1154,
    "last": 1792430065.8262765
   },
   {
+   "user": "sophus",
+   "matched": 135,
+   "mining_points": 7362,
+   "points": 7362,
+   "native_integrated": 0,
+   "submissions": 652,
+   "last": 1793188970.7083926
+  },
+  {
+   "user": "Cezant64gamejr",
+   "matched": 9,
+   "mining_points": 2647,
+   "points": 2647,
+   "native_integrated": 0,
+   "submissions": 62,
+   "last": 1791569181.5408819
+  },
+  {
+   "user": "Viper",
+   "matched": 14,
+   "mining_points": 2617,
+   "points": 2617,
+   "native_integrated": 0,
+   "submissions": 232,
+   "last": 1792344458.634544
+  },
+  {
+   "user": "tajop",
+   "matched": 79,
+   "mining_points": 1894,
+   "points": 1894,
+   "native_integrated": 0,
+   "submissions": 101,
+   "last": 1793147736.1150346
+  },
+  {
+   "user": "colinlaptop",
+   "matched": 1,
+   "mining_points": 1043,
+   "points": 1043,
+   "native_integrated": 0,
+   "submissions": 21,
+   "last": 1791477118.6140368
+  },
+  {
+   "user": "41k",
+   "matched": 0,
+   "mining_points": 488,
+   "points": 488,
+   "native_integrated": 0,
+   "submissions": 25,
+   "last": 1792731000.013161
+  },
+  {
+   "user": "king_originala_sol_native",
+   "matched": 30,
+   "mining_points": 327,
+   "points": 327,
+   "native_integrated": 0,
+   "submissions": 54,
+   "last": 1792961617.162224
+  },
+  {
+   "user": "virility92",
+   "matched": 0,
+   "mining_points": 245,
+   "points": 245,
+   "native_integrated": 0,
+   "submissions": 6,
+   "last": 1791412533.2559323
+  },
+  {
    "user": "ivan-grebe",
    "matched": 2,
+   "mining_points": 161,
    "points": 161,
+   "native_integrated": 0,
    "submissions": 2,
    "last": 1791766592.3175168
   },
   {
+   "user": "jazz",
+   "matched": 0,
+   "mining_points": 104,
+   "points": 104,
+   "native_integrated": 0,
+   "submissions": 2,
+   "last": 1791352017.9738536
+  },
+  {
    "user": "Espeon_2",
    "matched": 2,
+   "mining_points": 90,
    "points": 90,
+   "native_integrated": 0,
    "submissions": 5,
    "last": 1791834878.208015
   },
   {
    "user": "2gx",
    "matched": 2,
+   "mining_points": 89,
    "points": 89,
+   "native_integrated": 0,
    "submissions": 4,
    "last": 1793166250.3658888
   },
   {
-   "user": "king_originala_sol_resume_medium",
-   "matched": 2,
-   "points": 20,
-   "submissions": 3,
-   "last": 1792966702.7035027
-  },
-  {
-   "user": "colinlaptop",
-   "matched": 1,
-   "points": 1043,
-   "submissions": 21,
-   "last": 1791477118.6140368
-  },
-  {
-   "user": "Bob535653",
-   "matched": 1,
-   "points": 1,
-   "submissions": 1,
-   "last": 1792711202.627472
-  },
-  {
-   "user": "41k",
-   "matched": 0,
-   "points": 488,
-   "submissions": 25,
-   "last": 1792731000.013161
-  },
-  {
-   "user": "virility92",
-   "matched": 0,
-   "points": 245,
-   "submissions": 6,
-   "last": 1791412533.2559323
-  },
-  {
-   "user": "jazz",
-   "matched": 0,
-   "points": 104,
-   "submissions": 2,
-   "last": 1791352017.9738536
+   "user": "king_originala_sol_resume_native",
+   "matched": 3,
+   "mining_points": 60,
+   "points": 60,
+   "native_integrated": 0,
+   "submissions": 5,
+   "last": 1792972237.1377032
   },
   {
    "user": "espeon_1",
    "matched": 0,
+   "mining_points": 39,
    "points": 39,
+   "native_integrated": 0,
    "submissions": 7,
    "last": 1791855247.4265246
   },
   {
+   "user": "user",
+   "matched": 33,
+   "mining_points": 35,
+   "points": 35,
+   "native_integrated": 0,
+   "submissions": 33,
+   "last": 1792513428.7999606
+  },
+  {
+   "user": "king_originala_sol_resume_high",
+   "matched": 3,
+   "mining_points": 29,
+   "points": 29,
+   "native_integrated": 0,
+   "submissions": 6,
+   "last": 1792973633.0515938
+  },
+  {
+   "user": "Gemini",
+   "matched": 5,
+   "mining_points": 22,
+   "points": 22,
+   "native_integrated": 0,
+   "submissions": 5,
+   "last": 1792509335.8069022
+  },
+  {
+   "user": "king_originala_sol_resume_medium",
+   "matched": 2,
+   "mining_points": 20,
+   "points": 20,
+   "native_integrated": 0,
+   "submissions": 3,
+   "last": 1792966702.7035027
+  },
+  {
    "user": "king_originala_sol_medium",
    "matched": 0,
+   "mining_points": 8,
    "points": 8,
+   "native_integrated": 0,
    "submissions": 2,
    "last": 1792961434.0510833
   },
   {
    "user": "king_originala_sol_resume_root",
    "matched": 0,
+   "mining_points": 8,
    "points": 8,
+   "native_integrated": 0,
    "submissions": 1,
    "last": 1792975361.0146
   },
   {
    "user": "pitbull",
    "matched": 0,
+   "mining_points": 5,
    "points": 5,
+   "native_integrated": 0,
    "submissions": 2,
    "last": 1791599062.0144148
   },
   {
    "user": "king_originala_sol_high",
    "matched": 0,
+   "mining_points": 4,
    "points": 4,
+   "native_integrated": 0,
    "submissions": 1,
    "last": 1792904595.0517633
+  },
+  {
+   "user": "Bob535653",
+   "matched": 1,
+   "mining_points": 1,
+   "points": 1,
+   "native_integrated": 0,
+   "submissions": 1,
+   "last": 1792711202.627472
   }
  ],
  "server": "https://colinpc.tail2879d0.ts.net"
