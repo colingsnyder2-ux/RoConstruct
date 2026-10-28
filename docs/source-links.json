@@ -512,6 +512,7 @@
    "GLG3Dcpp/tesselate.cpp",
    "roc_g3d_bmp_exception_38498d93767fe727.cpp",
    "roc_g3d_log_guard_18744d5ad0bb680e.cpp",
+   "roc_g3d_vector_strong_b0beb8bf4f1ef12a.cpp",
    "roc_system_dfabc2c48b48d3fb.cpp",
    "roc_unit_45931f30d1eceea5.cpp",
    "roc_unit_b4cf93372a277193.cpp",
