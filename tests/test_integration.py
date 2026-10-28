@@ -287,6 +287,27 @@ def test_explicit_class_can_revisit_done_hint_but_not_parked_blocker(promotions)
     assert promotions.claim('alice', 'pc', unit='RBX::Second')['claims'] == []
 
 
+@pytest.mark.parametrize('mode',['absolute','relative','drive','unicode-case'])
+def test_input_fingerprint_fast_labels_preserve_original_digest(tmp_path, mode):
+    import hashlib
+    if mode == 'unicode-case' and os.name != 'nt':
+        pytest.skip('Windows Unicode case alias')
+    root = (Path('relative-root') if mode == 'relative' else Path(tmp_path.anchor) if mode == 'drive'
+            else Path('C:/native/İ') if mode == 'unicode-case' else tmp_path/'root')
+    paths = [root,root/'file.cpp',root/'nested/header.h',root/'../sibling/file.cpp',
+             root.parent/(root.name+'-other')/'same-prefix.h',tmp_path/'outside/header.h']
+    if mode == 'unicode-case':
+        paths.append(Path('c:/NATIVE/i\u0307/Header.h'))
+    contents = {path:hashlib.sha256(str(path).encode()).digest() for path in paths}
+    before = hashlib.sha256(b'native-inputs-v2\0')
+    for path in sorted(set(paths),key=str):
+        label = path.relative_to(root).as_posix() if path.is_relative_to(root) else str(path)
+        before.update(label.encode()+b'\0'+contents[path])
+    for name in ('INCLUDE','LIB','LIBPATH','CL','_CL_','PATH','WINEPREFIX','ROC_CL','ROC_WINSDK','ROC_ATLMFC'):
+        before.update(name.encode()+b'='+os.environ.get(name,'').encode())
+    assert integration_verify.digest_paths(root,paths,contents) == before.hexdigest()
+
+
 def test_catalog_reuses_class_index_across_requested_units_and_preserves_queue_rules(promotions, monkeypatch):
     queue = promotions.root/'rebuild/2008-06/out/agent-queue.json'
     queue.parent.mkdir(parents=True)

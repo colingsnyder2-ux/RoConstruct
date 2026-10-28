@@ -57,11 +57,13 @@ def _ci(folder, name):
     return next((p for p in folder.iterdir() if p.name.lower() == low), None)
 
 
-@match._single_load
-@functools.lru_cache(maxsize=8)
 def sdk_roots(tools):
     """Discover installed SDKs once per tools tree, not once per compile batch."""
-    return tuple(sorted(tools.glob("*/**/WinSDK")))
+    return setup.toolchain_paths(tools)[1]
+
+
+sdk_roots.cache_clear = setup.toolchain_paths.cache_clear
+sdk_roots.cache_info = setup.toolchain_paths.cache_info
 
 
 def toolchain(build=BUILD):

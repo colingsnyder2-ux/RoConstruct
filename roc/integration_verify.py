@@ -176,8 +176,20 @@ def digest_paths(root, paths, contents=None):
     if contents is None:
         with concurrent.futures.ThreadPoolExecutor(max_workers=8) as pool:
             contents = dict(zip(paths, pool.map(file_hash, paths)))
+    absolute = root.is_absolute()
+    # pathlib Windows paths use Python lower(), not Win32 normcase's Unicode map.
+    fold = str.lower if os.name == 'nt' else lambda name: name
+    prefix = fold(str(root).rstrip(os.sep) + os.sep)
+    root_parts = len(root.parts)
     for path in paths:
-        label = path.relative_to(root).as_posix() if path.is_relative_to(root) else str(path)
+        if absolute:
+            name = str(path)
+            # Avoid building every ancestor Path for each external tool/header.
+            # Join parts rather than slicing text: Unicode case aliases can
+            # have different string lengths on Windows.
+            label = '.' if path == root else '/'.join(path.parts[root_parts:]) if fold(name).startswith(prefix) else name
+        else:
+            label = path.relative_to(root).as_posix() if path.is_relative_to(root) else str(path)
         result.update(label.encode() + b"\0" + contents[path])
     for name in ("INCLUDE", "LIB", "LIBPATH", "CL", "_CL_", "PATH", "WINEPREFIX", "ROC_CL", "ROC_WINSDK", "ROC_ATLMFC"):
         result.update(name.encode() + b"=" + os.environ.get(name, "").encode())

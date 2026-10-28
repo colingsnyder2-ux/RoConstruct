@@ -214,3 +214,27 @@ and runtime updates leave native/rebuild inputs intact. New sessions remain isol
 Verification and content-cache invalidation still apply. Real Windows regression
 tests hold the controller input pipe open while exercising generator, verifier and
 compiler-wrapper children; no model requests or server database edits are involved.
+
+## Preflight discovery and fingerprint overhead
+
+A real private preflight profile covered 21,410 inputs (21,293 read-through inputs).
+Cold discovery repeatedly traversed installed tool trees for compiler and SDK paths.
+Compiler discovery, library includes and rebuild SDK selection now share one locked
+walk, retaining the same sorted candidates. Installation and explicit SDK refresh
+invalidate the shared cache. Compiler version probes still execute, with stdin
+disconnected from controller commands.
+
+An unprofiled installed-tree replay measured the two former recursive globs at
+10.906s, the shared cold scan at 4.500s and its cached lookup below 0.001s. It found
+the same three compiler paths and one SDK. A separate pair of full/live fingerprint
+labeling comparisons over frozen content hashes measured 2.171/2.500s before versus
+0.110/0.125s after. Both full and live digests remained identical. Absolute, relative,
+drive-root and Windows Unicode-case paths have reference-digest regression tests.
+File contents, input selection, environment fields and SHA-256 validation remain intact.
+
+A complete unprofiled sample took 22.813s with cold discovery and 10.875s with warm
+discovery. There is no equivalent earlier unprofiled whole-fingerprint sample, so
+these are not claimed as a full-preflight speedup. A file-hashing chunk experiment
+showed no consistent advantage; per-file scheduling and eight readers remain.
+Reproduce a complete local input fingerprint with `roc integrate fingerprint`;
+it does not call a model or submit a job.

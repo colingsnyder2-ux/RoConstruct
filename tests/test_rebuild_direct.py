@@ -165,18 +165,19 @@ def test_explicit_sdk_skips_tree_scan(tmp_path, monkeypatch):
     assert rebuild.toolchain()['sdk_include'] == sdk / 'Include'
 
 
-def test_parallel_sdk_discovery_runs_once_for_twenty_workers(monkeypatch):
+def test_parallel_sdk_discovery_runs_once_for_twenty_workers(monkeypatch,tmp_path):
     from concurrent.futures import ThreadPoolExecutor
     calls=[]
-    class Tools:
-        def glob(self, pattern):
-            calls.append(pattern)
-            time.sleep(.03)
-            return []
-    tools=Tools()
+    tools=tmp_path/'tools'
+    (tools/'compiler').mkdir(parents=True)
+    def walk(folder):
+        calls.append(folder)
+        time.sleep(.03)
+        return []
+    monkeypatch.setattr(rebuild.setup.os,'walk',walk)
     with ThreadPoolExecutor(20) as pool:
         assert list(pool.map(rebuild.sdk_roots,[tools]*20)) == [()]*20
-    assert calls == ['*/**/WinSDK']
+    assert calls == [tools/'compiler']
 
 
 def test_content_cache_survives_private_snapshot_remapping(tmp_path, monkeypatch):
