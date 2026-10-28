@@ -1,6 +1,7 @@
 """Recipe-driven native discovery. Local proofs are proposals, never native credit."""
 import json
 import hashlib
+import functools
 import os
 import re
 import subprocess
@@ -48,6 +49,11 @@ def closing(text, start, left, right):
 
 
 def methods(text):
+    return dict(_method_spans(text))
+
+
+@functools.lru_cache(maxsize=32)
+def _method_spans(text):
     """Unambiguous out-of-line methods only; constructors/templates/operators defer."""
     clean = masked_cpp(text)
     result = defaultdict(list)
@@ -61,7 +67,7 @@ def methods(text):
             continue
         token = found[1] + "::" + found[2]
         result[token].append((found.start(), finish))
-    return {token: spans[0] for token, spans in result.items() if len(spans) == 1}
+    return tuple((token, spans[0]) for token, spans in result.items() if len(spans) == 1)
 
 
 def without_assertions(text):
@@ -584,6 +590,16 @@ def model_prompt(rel, shown, items):
         MODEL_RULES, rel, shown[:60000], json.dumps(items, separators=(",", ":")))
 
 
+def method_prompt(rel, text, selected, method):
+    return ("Repair ONLY %s in %s for the genuine VS2008 compiler. Return its complete qualified method "
+            "definition in one ```cpp fence. Keep the signature unchanged. No SEARCH/REPLACE, extra methods, "
+            "invented types/fields, raw offsets, assembly or prose. Use standins mappings to translate mined "
+            "placeholders to real symbols. Match the target code AND data.\n\n"
+            "CONTEXT\n```cpp\n%s\n```\nTARGET\n%s") % (
+                method, rel, excerpt(text, [selected['rebuilt_symbol']], around=6)[:60000],
+                json.dumps(selected, separators=(',', ':')))
+
+
 def method_edits(text, reply, method):
     """Accept one complete method, retain its original declaration, and edit only its body."""
     code = providers_text(reply).strip()
@@ -652,13 +668,9 @@ def model_proposal(rel, text, addrs, baseline, owned, model, rounds, compile_rou
     one_shot = generation != "edits" and method is not None
     prompt = model_prompt(rel, shown or text, items)
     if one_shot:
-        prompt = ("Repair ONLY %s in %s for the genuine VS2008 compiler. Return its complete qualified method "
-                  "definition in one ```cpp fence. Keep the signature unchanged. No SEARCH/REPLACE, extra methods, "
-                  "invented types/fields, raw offsets, assembly or prose. Use standins mappings to translate mined "
-                  "placeholders to real symbols. Match the target code AND data.\n\n"
-                  "CONTEXT\n```cpp\n%s\n```\nTARGET\n%s") % (
-                      method, rel, excerpt(text, [selected["rebuilt_symbol"]], around=6)[:60000],
-                      json.dumps(selected, separators=(",", ":")))
+        prompt = method_prompt(rel, text, selected, method)
+    if (options or {}).get('initial_feedback'):
+        prompt += '\n\nPrevious worker batch diagnostics:\n' + options['initial_feedback'][-4000:]
     messages, trials = [{"role": "system", "content": "Repair native C++; return only the requested output inside one ```cpp fence. No tools or prose."},
                         {"role": "user", "content": prompt}], []
     seen_candidates = set()
@@ -748,6 +760,9 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
     options = {key: config[key] for key in ("thinking", "max_tokens", "generation") if key in config}
     options.update(config.get("provider_options", {}))
     options.setdefault("gate", providers.CloudGate(jobs))
+    compile_batch = int(config.get('compile_batch', 1))
+    if not 1 <= compile_batch <= 32:
+        raise ValueError('Methods per compile must be 1-32')
     provider_failed = threading.Event()
     event = options.pop("event", None)
     compile_workers = resolve_compile_workers(config.get("compile_workers", "auto"), jobs)
@@ -798,6 +813,36 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
         def diff(obj, addr):
             return body_diff(obj, names[addr]["symbol"], addr) if names.get(addr, {}).get("symbol") else "no rebuilt body"
         try:
+            if compile_batch > 1 and options.get('generation', 'edits') != 'edits':
+                from roc import native_batch
+                groups = {}
+                spans = methods(texts[rel])
+                for addr in homes[rel]:
+                    method = symbol_method(names.get(addr, {}).get('symbol') or '')
+                    if addr not in baseline and method in spans and spans[method][1] - spans[method][0] <= 6000:
+                        groups.setdefault(method, []).append(addr)
+                if len(groups) > 1:
+                    selected = dict(list(groups.items())[:compile_batch])
+                    proposal, trials = native_batch.model_batch(rel, texts[rel], selected, baseline, model, rounds,
+                        lambda source, label: compile_source(source, rel, label), matcher,
+                        lambda addr: dict(model_evidence(addr, names, by_addr), current_diff=diff(data, addr)),
+                        log, options, ai_pool, diff)
+                    if any(t.get('error_category') in providers.FATAL_ERRORS for t in trials):
+                        provider_failed.set()
+                    if proposal or provider_failed.is_set() or options.get('generation') == 'method' or rounds <= 1:
+                        return proposal, [base] + trials
+                    feedback = '\n'.join(str(t.get('error', '')) for t in trials if t.get('error'))
+                    diagnostic = next((t for t in trials if t.get('ok') and t.get('object')), None)
+                    if diagnostic:
+                        feedback += '\nBatch compiled; existing exact lost: %s.' % diagnostic.get('losses', [])[:12]
+                        obj = Path(diagnostic['object']).read_bytes()
+                        feedback += ''.join('\n%s target vs batch:\n%s' % (addr, diff(obj, addr)) for addr in homes[rel][:2] if addr not in baseline)
+                    proposal, repairs = model_proposal(rel, texts[rel], homes[rel], baseline, owned, model, rounds - 1,
+                        lambda source, label: compile_source(source, rel, label), matcher,
+                        lambda addr: dict(model_evidence(addr, names, by_addr), current_diff=diff(data, addr)),
+                        log, dict(options, generation='edits', initial_feedback=feedback), diff,
+                        excerpt(texts[rel], [names[a]['symbol'] for a in homes[rel][:3]]) if context == 'methods' else None)
+                    return proposal, [base] + trials + repairs
             proposal, trials = model_proposal(rel, texts[rel], homes[rel], baseline, owned, model, rounds,
                                               lambda source, label: compile_source(source, rel, label), matcher,
                                               lambda addr: dict(model_evidence(addr, names, by_addr), current_diff=diff(data, addr)),
@@ -840,7 +885,7 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
                 slots.append(slot)
 
     proposals, records = [], []
-    with ThreadPoolExecutor(max_workers=jobs) as pool:
+    with ThreadPoolExecutor(max_workers=jobs) as ai_pool, ThreadPoolExecutor(max_workers=jobs) as pool:
         futures = [pool.submit(one, rel) for rel in files]
         for n, future in enumerate(as_completed(futures)):
             proposal, trials = future.result()

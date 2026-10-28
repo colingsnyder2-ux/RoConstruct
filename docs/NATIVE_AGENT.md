@@ -40,8 +40,18 @@ For OpenCode NVIDIA sign-in, select `opencode:nvidia/nvidia/nemotron-3-ultra-550
 direct NVIDIA API uses `nvidia:nvidia/nemotron-3-ultra-550b-a55b` with `NVIDIA_API_KEY`.
 Keep the full vendor namespace. HTTP 401/403 means repair credentials/access, 402 means
 provider balance, and 404 means repair model ID/endpoint. Do not retry these as outages.
-Worker v8 skips queued files on permanent provider errors and avoids duplicate CLI
-generations after uncertain HTTP results. Native edits remain fenced SEARCH/REPLACE blocks.
+Worker v9 skips queued files on permanent provider errors and avoids duplicate CLI
+generations after uncertain HTTP results. Automatic integrator mode can request complete
+method bodies, then use anchored repairs. Manual native edits remain fenced SEARCH/REPLACE blocks.
+
+Automatic integrator workers share a whole-source-file compile for independent method edits:
+`roc integrator --compile-batch 4 --compile-workers auto`. The default is four methods;
+1 disables shared compilation, up to 32 is supported. Conflicting edits and failing batches
+split for diagnosis, and recovered combinations are compiled again. Exact code/data,
+baseline-loss, linked ownership, ABI and runtime checks remain mandatory. Compiler auto
+caps at eight or half the logical CPUs; more AI workers need not mean more compilers.
+Windows dependency-tree publication retries brief directory locks without copying again.
+Warm compiler caching normalizes Windows path casing while retaining header/shadow hashes.
 
 ## First response: select the client
 
@@ -62,7 +72,7 @@ Keep the selected client locked for this run.
 
 Do not ask the user to locate or attach a Worker ZIP. If `roc/native_try.py`, `research/native-units.json`,
 or `research/native-source-lock.json` is missing, `roc native-try --help` is unavailable, or a package marker
-reports `native_workflow_version` below 8, download the current Worker package yourself:
+reports `native_workflow_version` below 9, download the current Worker package yourself:
 
 - Manifest: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.json
 - Package: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.zip
@@ -76,7 +86,7 @@ into a new folder without overwriting the user's existing checkout or edits:
 $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 $nativeManifest = Invoke-RestMethod ('https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.json?t=' + [guid]::NewGuid().ToString('N'))
-if ($nativeManifest.workflow_version -lt 8 -or
+if ($nativeManifest.workflow_version -lt 9 -or
     $nativeManifest.url -ne 'https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.zip' -or
     $nativeManifest.sha256 -notmatch '^[0-9a-fA-F]{64}$') { throw 'Invalid Worker manifest' }
 $nativeFolder = Join-Path (Get-Location) ('RoConstruct-Native-' + [guid]::NewGuid().ToString('N'))

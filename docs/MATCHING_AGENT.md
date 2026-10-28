@@ -31,7 +31,7 @@ or change clients before selection. Keep the selected client locked for this ses
 
 Do not ask the user to locate or attach a Worker ZIP. If `roc.py`, `roc/packet.py`, or `docs/MATCHING_AGENT.md` is missing,
 `roc work --help` / `roc check-batch --help` is unavailable, or a package marker
-reports `matching_workflow_version` below 3, download the current Worker package yourself:
+reports `matching_workflow_version` below 4, download the current Worker package yourself:
 
 - Manifest: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.json
 - Package: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.zip
@@ -46,8 +46,8 @@ into a new folder without overwriting the user's existing checkout or edits:
 $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 $matchingManifest = Invoke-RestMethod ('https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.json?t=' + [guid]::NewGuid().ToString('N'))
-if ($matchingManifest.workflow_version -lt 8 -or
-    $matchingManifest.matching_workflow_version -lt 3 -or
+if ($matchingManifest.workflow_version -lt 9 -or
+    $matchingManifest.matching_workflow_version -lt 4 -or
     $matchingManifest.url -ne 'https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.zip' -or
     $matchingManifest.sha256 -notmatch '^[0-9a-fA-F]{64}$') { throw 'Invalid Worker manifest' }
 $matchingFolder = Join-Path (Get-Location) ('RoConstruct-Matching-' + [guid]::NewGuid().ToString('N'))

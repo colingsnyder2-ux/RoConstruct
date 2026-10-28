@@ -639,10 +639,12 @@ def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- 
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
     includes, compiled = _overlaid(includes, sources, overlay)
+    cache_root = os.path.normcase(os.path.abspath(ROOT))
+    cache_prefix = cache_root.rstrip(os.sep) + os.sep
     @functools.lru_cache(maxsize=None)
     def cache_path(path):
-        path = Path(os.path.abspath(path))
-        return path.relative_to(ROOT).as_posix() if path.is_relative_to(ROOT) else str(path)
+        name = os.path.normcase(os.path.abspath(path))
+        return "." if name == cache_root else name[len(cache_prefix):] if name.startswith(cache_prefix) else name
 
     @functools.lru_cache(maxsize=None)
     def content(path):
@@ -688,9 +690,15 @@ def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- 
         dirs += sorted({p.parent for p in files} - set(map(Path, dirs)))
         # Only a matching basename can shadow an include already used by this TU.
         # Unrelated generated sources must not invalidate every cached object.
-        names = sorted({p.name.casefold() for p in files})
+        names = {p.name.casefold() for p in files}
+        # Missing basenames need no repeated empty entries: any new shadowing
+        # header becomes a nonempty entry and still changes the input digest.
+        directory_inputs = []
+        for folder in dirs:
+            contents = inventory(folder)
+            directory_inputs.append((cache_path(folder), [(name, contents[name]) for name in sorted(names & contents.keys())]))
         payload = [config, [(cache_path(p), content(p)) for p in files],
-                   [(cache_path(p), [(name, inventory(p).get(name, [])) for name in names]) for p in dirs]]
+                   directory_inputs]
         return hashlib.sha256(json.dumps(payload, sort_keys=True).encode()).hexdigest()
 
     def compile_one(pair):
@@ -759,6 +767,7 @@ def patched_tree(client, recipe):
     Without patches the pristine tree is used in place."""
     import hashlib
     import shutil
+    import tempfile
     from roc import libs
     r = libs.RECIPES[recipe]
     src = libs._case_path(libs.LIBS / r["src"]).resolve()
@@ -767,10 +776,9 @@ def patched_tree(client, recipe):
     key = hashlib.sha256(json.dumps(r["patches"], sort_keys=True).encode()).hexdigest()[:12]
     tree = workspace(client) / "out" / "trees" / ("%s-%s" % (recipe, key))
     if not tree.exists():
-        tmp = tree.with_name(tree.name + ".tmp")
-        if tmp.exists():
-            shutil.rmtree(tmp)
-        shutil.copytree(src, tmp)
+        tree.parent.mkdir(parents=True, exist_ok=True)
+        tmp = Path(tempfile.mkdtemp(prefix=tree.name + "-", suffix=".tmp", dir=tree.parent))
+        shutil.copytree(src, tmp, dirs_exist_ok=True)
         for rel, edits in r["patches"].items():
             text = (tmp / rel).read_text(errors="replace")
             for old, new in edits:
@@ -778,7 +786,21 @@ def patched_tree(client, recipe):
                     raise ValueError("patch for %s no longer applies: %r" % (rel, old[:60]))
                 text = text.replace(old, new)
             (tmp / rel).write_text(text)
-        tmp.rename(tree)
+        # Windows scanners can briefly hold the freshly copied directory open.
+        # Independent builders use separate temporary trees; neither deletes the
+        # other's in-progress copy. Only a complete tree becomes the cache entry.
+        for attempt in range(11):
+            try:
+                tmp.rename(tree)
+                break
+            except OSError as error:
+                if tree.is_dir():
+                    assert tmp.parent.resolve() == tree.parent.resolve()
+                    shutil.rmtree(tmp, ignore_errors=True)
+                    break
+                if getattr(error, 'winerror', None) not in (5, 32, 33) or attempt == 10:
+                    raise
+                time.sleep(min(.1 * 2 ** attempt, 1))
     return tree
 
 def build_overlay(client, module, spec):
@@ -1167,6 +1189,8 @@ import time
 
 def progress(client="2008-06", log=print, notify=True):
     """Summarize rebuild module reports into docs/rebuild-progress.json."""
+    if os.environ.get('ROC_INTEGRATOR_PRIVATE') == '1':
+        return None  # private builds retain module receipts, not public site aggregates
     module_dir = ROOT / "rebuild" / client / "modules"
     out_dir = workspace(client) / "out"
     specs = sorted(module_dir.glob("*.json"))

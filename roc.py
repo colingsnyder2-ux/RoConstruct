@@ -594,6 +594,7 @@ def cmd_integrator(a):
               "reasoning_effort": a.reasoning_effort, "cloud_allowed": a.allow_cloud or saved.get("cloud_allowed", False),
               "cloud_concurrency": "auto" if a.cloud_concurrency == "auto" else int(a.cloud_concurrency), "native_batch_files": a.batch_files,
               "native_compile_workers": a.compile_workers, "native_context": a.context, "native_generation": a.generation,
+              "native_compile_batch": a.compile_batch,
               "max_cloud_requests": a.max_cloud_requests, "max_cloud_tokens": a.max_cloud_tokens,
               "max_cloud_cost": a.max_cloud_cost}
     config = gui_worker.validate(config)
@@ -3056,6 +3057,7 @@ def main(argv=None):
         (["--yes"], {"action": "store_true"}))
     cmd("integrator", cmd_integrator, "parallel AI native integration with independent server verification",
         (["--generation"], {"choices": ["auto", "edits", "method"], "default": "auto", "help": "auto: one-shot method then anchored repair; edits: SEARCH/REPLACE; method: complete method body"}),
+        (["--compile-batch"], {"type": int, "default": 4, "help": "AI method workers sharing one source-file compile (1-32; 1 disables)"}),
         (["--model"], {"help": "codex:default, claude:sonnet, opencode:provider/model, API or local model"}),
         (["--workers"], {"default": "4", "help": "parallel AI jobs (1-256 or auto)"}),
         (["--compile-workers"], {"type": lambda v: v if v == "auto" else int(v), "default": "auto", "help": "local compilers: auto CPU-aware up to 8, or 1-64"}),

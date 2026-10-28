@@ -18,11 +18,11 @@ DEFAULTS = dict(client="", server="", user="", model="", workers=1, rounds=4,
                 cloud_allowed=False, cloud_concurrency="auto", max_cloud_requests=None,
                 max_cloud_tokens=None, max_cloud_cost=None, lease_mode="function",
                 unit_name=None, family_id=None, targets=None, library="",
-                native_batch_files=40, native_compile_workers="auto", native_context="methods", native_generation="auto")
+                native_batch_files=40, native_compile_workers="auto", native_context="methods", native_generation="auto", native_compile_batch=4)
 LIVE = {"workers", "model", "rounds", "max_size", "max_tokens", "strategy", "order",
         "thinking", "reasoning_effort", "use_revng", "use_remill", "min_score", "max_score",
         "diverse_candidates", "guided_mutations", "near_repair", "max_cloud_requests",
-        "max_cloud_tokens", "max_cloud_cost", "native_batch_files", "native_compile_workers", "native_context", "native_generation"}
+        "max_cloud_tokens", "max_cloud_cost", "native_batch_files", "native_compile_workers", "native_context", "native_generation", "native_compile_batch"}
 
 
 def prepare_clients(config, log):
@@ -54,6 +54,7 @@ def validate(values, base=None, check_model=True):
     config = {**DEFAULTS, **(base or {}), **values}
     for key, low, high in (("workers", 1, 256), ("rounds", 1, 100), ("max_size", 0, 1000000),
                            ("native_batch_files", 1, 1024), ("native_compile_workers", 1, 64),
+                           ("native_compile_batch", 1, 32),
                            ("max_tokens", 128, 32768), ("diverse_candidates", 1, 16),
                            ("cloud_concurrency", 1, 256)):
         if key in ("workers", "rounds", "max_tokens", "cloud_concurrency", "native_compile_workers") and config[key] == "auto":
@@ -269,7 +270,8 @@ def native_loop(config, control, emit):
         current = control.before_lease(0)
         if current is None:
             break
-        refresh_pending()
+        if refresh_pending():
+            tried.clear()
         for slot in range(control.workers):
             emit("applied", slot=slot, revision=control.revision)
         inflight = providers.cloud_slots(current["model"],control.workers,current["cloud_concurrency"])
@@ -279,6 +281,7 @@ def native_loop(config, control, emit):
             rounds=3 if current["rounds"] == "auto" else current["rounds"], wait=False, exclude_files=sorted(tried),
             max_files=current["native_batch_files"], context=current["native_context"],
             generation=current["native_generation"],
+            compile_batch=current["native_compile_batch"],
             compile_workers=current["native_compile_workers"],
             provider_options={"allow_cloud": current["cloud_allowed"], "budget": control.budget,
                 "gate": providers.CloudGate(inflight),
@@ -394,7 +397,7 @@ def main(initial=None, receive_commands=True):
             current = dict(control.config)
         options = {key: value for key, value in current.items() if key not in
                    ("workers", "client", "max_cloud_requests", "max_cloud_tokens", "max_cloud_cost", "cloud_concurrency",
-                    "native_batch_files", "native_compile_workers", "native_context", "native_generation")}
+                    "native_batch_files", "native_compile_workers", "native_context", "native_generation", "native_compile_batch")}
         options.update(token=initial.get("token"), only=[current["client"]] if current["client"] else None,
                        model=current["model"] or None, forever=True, cloud_budget=control.budget, cloud_gate=gate,
                        examples_cache=shared_examples, source_cache=shared_sources,

@@ -32,7 +32,43 @@ implementation for all 276 matched symbols. Block, GUI and DebrisService results
 were likewise identical. Each concurrent scan retains its index to avoid cache
 thrashing when more than eight objects are active.
 
-## Live model experiments
+## Shared compilation and cache reuse
+
+Compatible worker edits to different methods in one source file now share a whole-TU
+compile. The default batch is four methods; `--compile-batch N` accepts 1–32, with
+1 retaining individual proofs. Conflicting alternatives compile separately. Syntax
+failures and regressions split for isolation; recovered edits must compile together
+again before their combined proof can be saved. Unproved method edits are removed
+and the reduced source is recompiled. Linked acceptance gates remain independent.
+
+An offline replay of 20 recorded method edits used genuine MSVC 21022 and made no
+model requests or submissions:
+
+| Methods per compile | Compiler calls | Seconds | Exact targets | Losses |
+| --- | ---: | ---: | ---: | ---: |
+| 1 | 21 | 0.969 | 20 | 0 |
+| 4 | 5 | 0.859 | 20 | 0 |
+| 20 | 1 | 0.219 | 20 | 0 |
+
+The individual case includes a final combined-source compile: independent object
+proofs cannot certify their union. This small integer fixture establishes compile
+counts and proof safety, not production throughput or new historical matches.
+
+Windows include-path casing also caused identical warm builds to miss the content
+cache. Cache keys now normalize path casing, retain dependency content hashes, and
+serialize only relevant directory entries. Newly shadowing headers still invalidate
+objects. In a private real-source run, Humanoid cold/warm took 23.516/1.797 seconds;
+Block took 1.766/1.047 seconds. Profiles confirmed warm runs skipped the compiler.
+Method-span parsing is shared by immutable source text, avoiding repeated scans for
+each worker method.
+
+Reproduce the compiler-only fixture without calling any model:
+
+```text
+python benchmarks/native_compile_batches.py --workers 20 --tasks 20
+```
+
+## Earlier live model experiments
 
 The opt-in `benchmarks/native_integrator.py` sends real requests but uses small
 synthetic functions and verifies genuine COFF output. They are not new historical
@@ -72,7 +108,7 @@ offset cast. These results do not prove improved real integration yield yet.
 
 ## Controls and current changes
 
-`roc integrator --generation auto|method|edits --compile-workers auto|N`:
+`roc integrator --generation auto|method|edits --compile-workers auto|N --compile-batch N`:
 
 - Auto first requests one complete, unambiguous method of at most 6,000 characters,
   then uses anchored repair feedback. Original signatures stay unchanged. Unsupported
@@ -98,6 +134,7 @@ Raw local receipts are under `work/integrator-bench/`. Real translation-unit
 experiments and profiles are in the dedicated private benchmark workspace recorded
 by `work/integrator-bench/workspace.json`. No benchmark submits its results.
 
-Next experiment: combine independent method edits from several AI workers into one
-file compilation, with conflict handling and failure isolation. That batching is
-not part of the measured results above.
+Further tuning should use compiler-only replay and real-source profiles. Different
+translation units stay separate: unity builds can change include order, floating-point
+pragmas and emitted code. Production integration yield still requires real proposals
+to pass the independent linked verifier.

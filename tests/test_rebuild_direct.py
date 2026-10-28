@@ -202,3 +202,23 @@ def test_content_cache_survives_private_snapshot_remapping(tmp_path, monkeypatch
     source = after / 'src' / 'unit.cpp'
     result = rebuild.compile_direct('2008-06', [source], after / 'out', [], '')
     assert result[str(source)] == (True, 'content cache hit') and len(calls) == 1
+
+
+@pytest.mark.skipif(os.name != 'nt', reason='Windows include path aliases are case insensitive')
+def test_windows_header_case_aliases_do_not_recompile_identical_inputs(tmp_path,monkeypatch):
+    source=tmp_path/'source.cpp';source.write_text('int f();')
+    header=tmp_path/'WinSDK'/'Include'/'PshPack.h';header.parent.mkdir(parents=True);header.write_text('')
+    monkeypatch.setattr(rebuild,'toolchain',lambda _: {})
+    calls=[]
+    def run(tc,tool,args,cwd):
+        calls.append(args)
+        (cwd/'source.obj').write_bytes(b'object')
+        # MSVC can report the same file twice; serialized deps are sorted, unlike
+        # the compiler stream. A Path set must not leak the surviving spelling.
+        return 0,'Note: including file: '+str(header).lower()+'\nNote: including file: '+str(header)
+    monkeypatch.setattr(rebuild,'run',run)
+    out=tmp_path/'out'
+    rebuild.compile_direct('2008-06',[source],out,[],'')
+    result=rebuild.compile_direct('2008-06',[source],out,[],'')
+    assert result[str(source)] == (True,'content cache hit')
+    assert len(calls)==1
