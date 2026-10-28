@@ -551,13 +551,12 @@ def strip_symbols(data, keep=None, drop=()):
     return bytes(data)
 
 
-def verified_layer(client, spec, log=print, exclude=frozenset(), vdrop=frozenset(), helpers=None, sinks=()):
+def verified_layer(client, spec, log=print, exclude=frozenset(), vdrop=frozenset(), helpers=None):
     """out/<Module>/verified (rebuild/2008-06/swap_build.py) as a preferred layer of kept symbols only, and the
     set of those symbols, to drop from every other object. A symbol kept by several groups is taken once.
     helpers: {symbol: obj} non-exact helpers a swapped function calls that no other object defines, kept in that one
-    object (not counted, not dropped elsewhere).
-    sinks: symbols only dead bodies left in verified .text sections still name (their own symbols were stripped, so
-    nothing calls them); a small MASM object defines each as an int 3 trap so those objects can link."""
+    object (not counted, not dropped elsewhere). Missing dependencies must resolve to real implementations;
+    symbol references alone cannot prove that a body is unreachable."""
     folder = workspace(client) / "out" / spec["name"] / "verified"
     if not spec.get("verified") or not (folder / "swaps.json").exists():
         return None, set()
@@ -572,14 +571,6 @@ def verified_layer(client, spec, log=print, exclude=frozenset(), vdrop=frozenset
             taken |= keep
             extra = {h for h, o in (helpers or {}).items() if o == item["obj"]} - vdrop
             (layer / ("verified_" + item["obj"])).write_bytes(strip_symbols((folder / item["obj"]).read_bytes(), keep=keep | extra, drop=vdrop))
-    sinks = sorted(s for s in sinks if len(s) < 240)
-    if sinks:
-        src = layer / "verified_sinks.asm"
-        src.write_text(".386\n.model flat\noption casemap:none\n.code\n"
-                       + "".join("PUBLIC %s\n%s:\n" % (s, s) for s in sinks) + "\tint 3\nEND\n")
-        code, text = run(toolchain(), _ml(), ["/nologo", "/c", "/Fo" + str(layer / "verified_sinks.obj"), str(src)], layer)
-        if code:
-            log("verified: sink object failed: " + text[-300:])
     log("verified layer: %d exact symbols swapped in" % len(taken))
     return layer, taken
 
@@ -660,13 +651,23 @@ def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- 
     @functools.lru_cache(maxsize=None)
     def inventory(folder):
         # New files can shadow previously resolved includes without changing them.
-        names = []
+        names = {}
         for root, dirs, files in os.walk(folder):
             dirs[:] = [d for d in dirs if d != "_wrap"]
             prefix = os.path.relpath(root, folder)
-            names.extend(os.path.join(prefix, name) for name in files
-                         if not name.endswith((".obj", ".deps", ".compile.json")))
-        return hashlib.sha256("\0".join(sorted(names)).encode()).hexdigest()
+            for name in files:
+                if not name.endswith((".obj", ".deps", ".compile.json")):
+                    names.setdefault(name.casefold(), []).append(os.path.join(prefix, name))
+        return {name: sorted(paths) for name, paths in names.items()}
+
+    # Shared headers recur in every object's deps: stat each once per build (~141k checks per rbxgs-app build).
+    @functools.lru_cache(maxsize=None)
+    def shadowed_dep(dep):
+        return _twin(dep, overlay).exists()
+
+    @functools.lru_cache(maxsize=None)
+    def dep_exists(dep):
+        return Path(dep).exists()
 
     compiler_files = []
     if tc.get("cl"):
@@ -684,8 +685,11 @@ def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- 
         dirs = [src.parent, Path(orig).parent] + list(includes) + [
             tc[k] for k in ("vc_include", "atlmfc_include", "sdk_include") if tc.get(k)]
         dirs += sorted({p.parent for p in files} - set(map(Path, dirs)))
+        # Only a matching basename can shadow an include already used by this TU.
+        # Unrelated generated sources must not invalidate every cached object.
+        names = sorted({p.name.casefold() for p in files})
         payload = [config, [(cache_path(p), content(p)) for p in files],
-                   [(cache_path(p), inventory(p)) for p in dirs]]
+                   [(cache_path(p), [(name, inventory(p).get(name, [])) for name in names]) for p in dirs]]
         return hashlib.sha256(json.dumps(payload, sort_keys=True).encode()).hexdigest()
 
     def compile_one(pair):
@@ -697,8 +701,8 @@ def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- 
         if obj.exists() and deps_file.exists() and cache_file.exists() and src.suffix.lower() != ".asm":
             deps = json.loads(deps_file.read_text())
             # a header that gained an overlay twin since this object was built is shadowed now: rebuild
-            shadowed = overlay and any(_twin(d, overlay).exists() for d in deps)
-            if not shadowed and all(Path(d).exists() for d in deps):
+            shadowed = overlay and any(shadowed_dep(d) for d in deps)
+            if not shadowed and all(dep_exists(d) for d in deps):
                 saved = json.loads(cache_file.read_text())
                 if saved == {"inputs": signature(orig, src, deps), "object": content(obj)}:
                     return str(orig), (True, "content cache hit")
@@ -929,8 +933,6 @@ def build_module(client, name, log=print):
     vdrop = set(json.loads(vdrop_path.read_text())) if vdrop_path.exists() else set()
     helpers_path = out / "verified" / "helpers.json"
     helpers = json.loads(helpers_path.read_text()) if helpers_path.exists() else {}
-    sinks_path = out / "verified" / "sinks.json"
-    sinks = set(json.loads(sinks_path.read_text())) if sinks_path.exists() else set()
     # an inline or template body that several of the module's own objects define is shared code: swapping the 2008 copy
     # in replaces it for every caller, including ones compiled in other contexts (seen crashing M4a/M5), so only
     # file-owned functions swap in
@@ -942,7 +944,7 @@ def build_module(client, name, log=print):
                     counts[sym] = counts.get(sym, 0) + 1
     shared = {sym for sym, n in counts.items() if n > 1}
     for _ in range(12):  # a swapped-in function may call a helper nothing else emits: keep it, or swap the caller back out
-        verified, drop = verified_layer(client, spec, log=log, exclude=excluded | shared, vdrop=vdrop, helpers=helpers, sinks=sinks)
+        verified, drop = verified_layer(client, spec, log=log, exclude=excluded | shared, vdrop=vdrop, helpers=helpers)
         result = resolve_objects(client, spec["test"], ([verified] if verified else []) + layer_dirs, spec["name"] + "/linked",
                                  includes=_overlaid([_spec_path(client, i) for i in spec.get("test_includes", [])], [], ov)[0], log=log,
                                  extra_libs=deps, defines=spec.get("test_defines"), drop=drop)
@@ -959,15 +961,8 @@ def build_module(client, name, log=print):
                 log("verified: keeping %d helpers the swapped functions call" % added)
                 continue
         back = set(result.get("referencers", [])) & drop
-        if verified and not result["linked"] and result["unresolved"] and not back:
-            fresh = set(result["unresolved"]) - sinks
-            if fresh:  # only dead bodies name them: give them a trap to bind to instead of evicting whole objects
-                sinks |= fresh
-                _dump(sinks_path, sorted(sinks))
-                log("verified: %d symbols only dead bodies reference; bound to a trap" % len(fresh))
-                continue
         if not back and verified and result["unresolved"]:
-            # dead bodies left in a verified .text still name the helper: take that whole object out
+            # Indirect calls and retained bodies can reach these dependencies: remove the whole incompatible object.
             missing = set(result["unresolved"])
             for obj in verified.glob("*.obj"):
                 ext = coff_externals(obj.read_bytes())
@@ -1159,117 +1154,6 @@ def status(client="2008-06", log=print):
 import json
 import hashlib
 import time
-import urllib.request
-import urllib.error
-
-DEFAULT_REBUILD_WEBHOOK = "https://discord.com/api/webhooks/1563963572256768061/UlEfpuW48IqPmanJ2rr0gmawcff-DO19Crc4FMoZ24ufoe6Kp_qOhjIpF8oEzUm72IdW"
-
-
-def _rebuild_webhook_url():
-    return (os.environ.get("ROCONSTRUCT_REBUILD_WEBHOOK") or
-            os.environ.get("ROCONSTRUCT_REBUILD_WEBHOOK_URL") or
-            DEFAULT_REBUILD_WEBHOOK)
-
-
-def _rebuild_emoji_bar(value, total, width=10, fill="🟦", empty="⬜"):
-    if total <= 0:
-        return empty * width
-    filled = max(0, min(width, int(round(width * value / total))))
-    return fill * filled + empty * (width - filled)
-
-
-
-def _send_rebuild_phases_webhook(url, client, data):
-    bars = data["bars"]
-    current = int(data["phase"])
-    phases = [
-        (0, "Decisions", "Licensing policy and where the rebuilt tree lives"),
-        (1, "Toolchain", "Windows SDK and ATL/MFC libraries plus a running smoke exe"),
-        (2, "Audit", "Read-only manifests and per-file coverage"),
-        (3, "First linked file", "One whole file compiled, linked and tested"),
-        (4, "Modules", "Shared headers and one library per module"),
-        (5, "Reconciliation", "Patch files from exact snippets and mine missing functions"),
-        (6, "Full link", "Link everything and group unresolved symbols"),
-        (7, "Multi-agent", "Claims, worktrees and a trusted merge gate"),
-        (8, "Runtime", "Window, startup, rendering, places, Lua and physics"),
-    ]
-    lines = []
-    for number, name, flavor in phases:
-        if number < current:
-            status = ":white_check_mark:"
-        elif number == current:
-            status = ":arrows_counterclockwise:"
-        else:
-            status = ":hourglass:"
-        lines.append("%s **Phase %d - %s**\n*%s*" % (status, number, name, flavor))
-    description = (
-        "**Rebuild phases: %s**\n\n" % client +
-        "\n\n".join(lines) +
-        "\n\n**Current metrics**\n" +
-        "Modules: %d reporting, %d linked\n" % (bars["compiled"]["value"], bars["linked"]["value"]) +
-        "Byte-exact functions: %s / %s\n" % (format(bars["exact"]["value"], ","), format(bars["exact"]["total"], ",")) +
-        "Unresolved symbols: %d\n" % bars["unresolved"]["value"] +
-        "Temporary stubs: %d\n" % bars["stubs"]["value"] +
-        "Runtime milestones: %d / %d" % (bars["runtime"]["value"], bars["runtime"]["total"]))
-    payload = {"embeds": [{
-        "title": ":clipboard: Rebuild phases: %s" % client,
-        "description": description,
-        "footer": {"text": "RoConstruct rebuild"},
-        "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-    }]}
-    body = json.dumps(payload).encode("utf-8")
-    req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json", "User-Agent": "RoConstruct/1.0"}, method="POST")
-    with urllib.request.urlopen(req, timeout=15):
-        pass
-
-
-def _send_rebuild_webhook(url, client, data):
-    bars = data["bars"]
-    phase_flavor = {
-        "0": "Decisions and policy are being recorded before any code is published.",
-        "1": "Closing the original VS2008 toolchain and smoke-testing a linked executable.",
-        "2": "Auditing the original PE and mapping every function to a source kind.",
-        "3": "Compiling and linking the first complete translation unit.",
-        "4": "Expanding modules against one corrected shared header set.",
-        "5": "Reconciling differing functions against exact 2008 snippets.",
-        "6": "Linking all modules and turning unresolved symbols into tracked tasks.",
-        "7": "Coordinating parallel agents and merge gates.",
-        "8": "Bringing up the runtime, one tested milestone at a time.",
-    }.get(str(data["phase"]), "Rebuild work is in progress.")
-    description = (
-        "**Phase %s - %s**\n" % (data["phase"], data["phaseLabel"]) +
-        "*%s*\n\n" % phase_flavor +
-        "**Overall byte-exact progress**\n" +
-        "%s / %s (%.2f%%)\n\n" % (format(bars["exact"]["value"], ","), format(bars["exact"]["total"], ","), 100.0 * bars["exact"]["value"] / bars["exact"]["total"] if bars["exact"]["total"] else 0.0) +
-        "%s\n\n" % _rebuild_emoji_bar(bars["exact"]["value"], bars["exact"]["total"], width=23, fill="\U0001f7e9") +
-        "**Modules:** %d reporting, %d linked\n" % (bars["compiled"]["value"], bars["linked"]["value"]) +
-        "**Blockers:** %d unresolved, %d temporary stubs\n" % (bars["unresolved"]["value"], bars["stubs"]["value"]) +
-        "**Runtime:** %d / %d milestones" % (bars["runtime"]["value"], bars["runtime"]["total"]))
-    payload = {
-        "embeds": [{
-            "title": ":wrench: Rebuild progress: %s" % client,
-            "description": description,
-            "fields": [
-                {"name": ":package: Modules", "value": "**%d** reporting / **%d** linked\n\n%s" % (bars["compiled"]["value"], bars["linked"]["value"], _rebuild_emoji_bar(bars["linked"]["value"], bars["linked"]["total"], width=8, fill="\U0001f7e9")), "inline": True},
-                {"name": ":dart: Byte-exact", "value": "**%s** / %s\n\n%s" % (format(bars["exact"]["value"], ","), format(bars["exact"]["total"], ","), _rebuild_emoji_bar(bars["exact"]["value"], bars["exact"]["total"], width=8, fill="\U0001f7e9")), "inline": True},
-                {"name": ":warning: Blockers", "value": "**%d** unresolved\n**%d** stubs" % (bars["unresolved"]["value"], bars["stubs"]["value"]), "inline": True},
-                {"name": ":rocket: Runtime", "value": "**%d** / %d\n\n%s" % (bars["runtime"]["value"], bars["runtime"]["total"], _rebuild_emoji_bar(bars["runtime"]["value"], bars["runtime"]["total"], width=8, fill="\U0001f7ea")), "inline": True},
-            ],
-            "footer": {"text": "RoConstruct rebuild"},
-            "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-        }]
-    }
-
-    body = json.dumps(payload).encode("utf-8")
-    req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json", "User-Agent": "RoConstruct/1.0"}, method="POST")
-    with urllib.request.urlopen(req, timeout=15) as response:
-        status = response.status
-    try:
-        _send_rebuild_phases_webhook(url, client, data)
-    except Exception:
-        pass
-    return status
-
 
 def progress(client="2008-06", log=print, notify=True):
     """Summarize rebuild module reports into docs/rebuild-progress.json."""
@@ -1365,37 +1249,4 @@ def progress(client="2008-06", log=print, notify=True):
     path.write_text(json.dumps(existing, indent=2) + "\n", encoding="utf-8")
     log("rebuild progress written: %s" % path)
 
-    if notify:
-        url = _rebuild_webhook_url()
-        if url:
-            state_path = ROOT / "work" / "rebuild-webhook-state.json"
-            state = {}
-            if state_path.exists():
-                try:
-                    state = json.loads(state_path.read_text(encoding="utf-8"))
-                except (OSError, json.JSONDecodeError):
-                    state = {}
-            states = state.setdefault("clients", {})
-            digest = hashlib.sha256(json.dumps(data, sort_keys=True).encode("utf-8")).hexdigest()
-            now = time.time()
-            last_sent = state.get("last_sent", 0.0)
-            hour_start = state.get("hour_start", now)
-            sent_this_hour = state.get("sent_this_hour", 0)
-            if now - hour_start >= 3600:
-                hour_start = now
-                sent_this_hour = 0
-            if states.get(client) != digest and now - last_sent >= 300 and sent_this_hour < 10:
-                try:
-                    _send_rebuild_webhook(url, client, data)
-                    states[client] = digest
-                    state["last_sent"] = now
-                    state["hour_start"] = hour_start
-                    state["sent_this_hour"] = sent_this_hour + 1
-                    state_path.parent.mkdir(parents=True, exist_ok=True)
-                    state_path.write_text(json.dumps(state, indent=2) + "\n", encoding="utf-8")
-                    log("rebuild webhook sent")
-                except (OSError, urllib.error.URLError, ValueError) as error:
-                    log("rebuild webhook failed: %s" % error)
-            else:
-                log("rebuild webhook skipped (no change or rate limited)")
     return data

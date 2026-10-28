@@ -87,10 +87,7 @@ ROOT = Path(__file__).resolve().parent.parent
 BATCH_SECONDS = 90
 
 
-RATE_WINDOW = 2 * 60 * 60
-
-
-ETA_MIN_RATE = 1.0 / 3600
+RATE_WINDOW = 6 * 60 * 60
 
 
 def emoji_bar(source, mined, retry, total):
@@ -227,7 +224,11 @@ class MineLog:
         bar = emoji_bar(source, mined, retry, total_bytes)
         rate = self.store.match_rate(client, RATE_WINDOW)
         rate_hr = rate * 3600
-        eta = fmt_duration(left / rate) if rate >= ETA_MIN_RATE else "building rate"
+        byte_rate = self.store.match_byte_rate(client, RATE_WINDOW)
+        remaining_bytes = max(0, total_bytes - matched_bytes)
+        eta = fmt_duration(remaining_bytes / byte_rate) if byte_rate > 0 else "building rate"
+        if not remaining_bytes:
+            eta = "0s"
         full = [e for e in events if e["score"] == 100]
         partial = [e for e in events if e["score"] < 100]
         functions = []
@@ -255,7 +256,7 @@ class MineLog:
         fields += [{"name": "🟡 Partially Matched",
                     "value": "x%d partially matched" % len(partial) if len(partial) > 10 else lines(partial),
                     "inline": False},
-                   {"name": "⚡ Mining Rate", "value": "**%g functions/hr** *(last 2h)* · ETA %s" % (round(rate_hr, 1), eta), "inline": True},
+                   {"name": "⚡ Mining Rate", "value": "**%g functions/hr** · **%s B/hr** *(last 6h)* · byte ETA %s" % (round(rate_hr, 1), format(round(byte_rate * 3600), ","), eta), "inline": True},
                    people,
                    {"name": "✅ Batch", "value": "%d full · %d improved" % (len(full), len(partial)), "inline": True},
                    {"name": "🔧 Functions" if self.server else "🔧 Models", "value": ", ".join(functions), "inline": True}]

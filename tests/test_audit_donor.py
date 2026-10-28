@@ -20,6 +20,9 @@ def test_exact_matches_replace_stale_partial_files(tmp_path, monkeypatch):
         def __init__(self, server, token):
             pass
 
+        def close(self):
+            pass
+
         def call(self, path, timeout=None):
             return [{"addr": a, "score": 100, "user": "b", "source": "// roc\nnew"}
                     for a in ("00402000", "00403000", "00402010")]
@@ -46,6 +49,8 @@ def test_remote_score_hint_cannot_credit_a_kept_local_partial_on_startup(tmp_pat
     path.write_text(local)
     class Api:
         def __init__(self, *args):
+            pass
+        def close(self):
             pass
         def call(self, *args, **kwargs):
             return [dict(addr="00401000", score=100, user="remote", source="// roc-lib: vendor exact.cpp\n")]

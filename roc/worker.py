@@ -1579,18 +1579,20 @@ def pull_files(server, client, token=None, force=False, log=print):
     with a lower score: scores.json takes the server score, so keeping that file
     would leave a partial attempt behind a 100% score."""
     api = Api(server, token)
-    rows = api.call("/v1/sources?client=%s" % client, timeout=300)
+    try:
+        rows = api.call("/v1/sources?client=%s" % client, timeout=300)
+    finally:
+        api.close()
     folder = ROOT / "src" / client
     folder.mkdir(parents=True, exist_ok=True)
     written = kept = 0
+    received = len(rows)
     starts = match.function_starts(client)
+    rows = [r for r in rows if re.fullmatch(r"[0-9a-f]{8}", r["addr"])
+            and (starts is None or r["addr"] in starts)]
+    match.save_scores(client, {r["addr"]: r["score"] for r in rows})
     for r in rows:
-        if not re.match(r"^[0-9a-f]{8}$", r["addr"]):
-            continue
-        if starts is not None and r["addr"] not in starts:
-            continue  # address retired by a boundary fix
         path = folder / ("%s.cpp" % r["addr"])
-        match.save_score(client, r["addr"], r["score"])
         if path.exists() and not force:
             old = re.match(r"// from server: (\d+)% by ", path.read_text(errors="replace"))
             if not old or int(old.group(1)) >= r["score"]:
@@ -1605,7 +1607,7 @@ def pull_files(server, client, token=None, force=False, log=print):
         path.write_text("// from server: %d%% by %s\n%s" % (r["score"], r["user"], src))
         written += 1
     log("%s: %d sources from the server, %d written to %s, %d local files kept%s"
-        % (client, len(rows), written, folder, kept, " (use --force to replace them)" if kept else ""))
+        % (client, received, written, folder, kept, " (use --force to replace them)" if kept else ""))
 
 
 def submit_files(server, user, client, addrs=None, token=None, log=print, file=None, model=None):

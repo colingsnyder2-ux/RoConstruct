@@ -23916,6 +23916,96 @@
     },
     "targets": {}
   },
+  "native-campaign-assertions-2008": {
+    "op": "grid",
+    "client": "2008-06",
+    "hypothesis": "Try method-scoped assertion omissions only on files with not-yet-integrated native targets; preserve every existing exact and submit one independently verified batch.",
+    "native_sweep": {
+      "files": ["App/*/*.cpp"],
+      "targets_only": true,
+      "after_job": "1e2b177dff244c0491e0efee031489c9",
+      "modes": ["assertions"],
+      "apply": true,
+      "submit": true,
+      "model": "gpt-6",
+      "wait": true
+    },
+    "targets": {}
+  },
+  "native-campaign-nonempty-2008": {
+    "op": "grid",
+    "client": "2008-06",
+    "hypothesis": "Try numeric nonempty container guards, alone or with method-scoped assertion omissions; retain only exact instruction/data gains without losing existing exacts.",
+    "native_sweep": {
+      "files": ["App/*/*.cpp"],
+      "targets_only": true,
+      "modes": ["nonempty", "assertions-nonempty"],
+      "apply": true,
+      "submit": true,
+      "model": "gpt-6",
+      "wait": true
+    },
+    "targets": {}
+  },
+  "native-campaign-fp-2008": {
+    "op": "grid",
+    "client": "2008-06",
+    "hypothesis": "Try historical MSVC floating-point settings on remaining native targets, alone and with assertion omissions; retain only real native exact gains without losing existing exacts.",
+    "native_sweep": {
+      "files": ["App/*/*.cpp"],
+      "targets_only": true,
+      "after_job": "95bf425f0c844159841e3e58d02cda7c",
+      "modes": ["fp-fast", "assertions-fp-fast"],
+      "apply": true,
+      "submit": true,
+      "model": "gpt-6.1-sol",
+      "wait": true
+    },
+    "targets": {}
+  },
+  "native-campaign-osize-2008": {
+    "op": "grid",
+    "client": "2008-06",
+    "hypothesis": "Try MSVC size optimization profiles on remaining native targets, with and without assertion omissions; save only exact code/data proposals preserving existing exacts for later baseline revalidation.",
+    "native_sweep": {
+      "files": ["App/*/*.cpp"],
+      "targets_only": true,
+      "modes": ["osize", "assertions-osize"],
+      "apply": false,
+      "submit": false,
+      "model": "gpt-6.1-sol"
+    },
+    "targets": {}
+  },
+  "native-campaign-ternary-2008": {
+    "op": "grid",
+    "client": "2008-06",
+    "hypothesis": "Try equivalent conditional returns, following the proven numChildren near-miss repair; minimize to exact native methods and preserve all existing exacts.",
+    "native_sweep": {
+      "files": ["App/*/*.cpp"],
+      "targets_only": true,
+      "modes": ["ternary", "assertions-ternary"],
+      "apply": false,
+      "submit": false,
+      "model": "gpt-6.1-sol"
+    },
+    "targets": {}
+  },
+  "native-campaign-index-2008": {
+    "op": "grid",
+    "client": "2008-06",
+    "hypothesis": "Try authentic C++ int and size_t loop counters, alone or with assertion omissions, to close signed-branch near misses; keep only uniquely attributable exact methods preserving baseline exacts.",
+    "native_sweep": {
+      "files": ["App/*/*.cpp"],
+      "targets_only": true,
+      "modes": ["index-int", "index-size_t", "assertions-index-int", "assertions-index-size_t"],
+      "apply": true,
+      "submit": true,
+      "wait": false,
+      "model": "gpt-6.1-sol"
+    },
+    "targets": {}
+  },
   "native-model-2008": {
     "op": "grid",
     "client": "2008-06",
@@ -23930,6 +24020,28 @@
       "apply": true,
       "submit": true,
       "wait": false
+    },
+    "targets": {}
+  },
+  "native-campaign-runservice-2008": {
+    "op": "grid",
+    "client": "2008-06",
+    "hypothesis": "Expand byte-proven TimerService repair: explicitly instantiate genuine ServiceProvider::create<RunService>() const out of line per TU, optionally omit only base service-provider hook calls in newly exact callbacks. Preserve existing exacts and whole-binary unique ownership. No shared header changes or prototype-only helpers.",
+    "native_sweep": {
+      "files": [
+        "App/humanoid/Humanoid.cpp",
+        "App/script/ScriptContext.cpp",
+        "App/v8datamodel/Gyro.cpp",
+        "App/v8datamodel/UserController.cpp"
+      ],
+      "targets_only": true,
+      "modes": [
+        "runservice-outofline",
+        "runservice-outofline-no-base"
+      ],
+      "apply": false,
+      "submit": false,
+      "model": "gpt-6.1-sol"
     },
     "targets": {}
   }

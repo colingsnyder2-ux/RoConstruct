@@ -8,14 +8,15 @@ import urllib.request
 from datetime import datetime, timezone
 
 from roc.integration import CLIENT, atomic_json, digest
-from roc.reports import fmt_duration, inline_code, server_mines_webhook
+from roc.reports import RATE_WINDOW, fmt_duration, inline_code, server_mines_webhook
 
 
 def payload(promotions, job, receipt=None):
     store, root = promotions.store, promotions.root
     with store.lock:
         credits = store.db.execute("SELECT COUNT(*) FROM integration_credit WHERE user=?", (job["user"],)).fetchone()[0]
-        recent = store.db.execute("SELECT COUNT(*) FROM integration_credit WHERE ts>?", (time.time() - 7200,)).fetchone()[0]
+        recent = store.db.execute("SELECT receipt FROM integration_jobs WHERE state='accepted' AND updated>=?",
+                                  (time.time() - RATE_WINDOW,)).fetchall()
         state = store.db.execute("SELECT phase FROM integration_jobs WHERE id=?", (job["id"],)).fetchone()[0]
         scores = dict(store.db.execute("SELECT addr,score FROM funcs WHERE client=?", (CLIENT,)).fetchall())
     proof = promotions.directory / "progress-native.json"
@@ -43,11 +44,16 @@ def payload(promotions, job, receipt=None):
             "\U0001f7ea native \u00b7 \U0001f7e6 exact waiting \u00b7 \U0001f7e8 partial mined \u00b7 \u2b1c unmined") % (
                 format(counts[0], ","), format(sum(counts), ","), format(sum(counts[1:]), ","),
                 bar, 100 * sizes[0] / total if total else 0)
-        remaining = sum(counts[1:])
+        remaining = sum(sizes[1:])
     else:
         remaining = None
-    rate = recent / 2
-    eta = "collecting rate" if not rate or remaining is None else "~" + fmt_duration(remaining / (rate / 3600))
+    recent_gains = {addr for row in recent for addr in json.loads(row[0]).get("gains", [])
+                    if addr in functions}
+    rate = len(recent_gains) * 3600 / RATE_WINDOW
+    byte_rate = sum(functions[addr]["size"] for addr in recent_gains) / RATE_WINDOW
+    eta = "collecting rate" if not byte_rate or remaining is None else "~" + fmt_duration(remaining / byte_rate)
+    if remaining == 0:
+        eta = "0s"
     accepted = receipt and receipt.get("accepted")
     rejected = receipt is not None and not accepted
     delta = receipt.get("credits", 0) if accepted else 0
@@ -59,7 +65,7 @@ def payload(promotions, job, receipt=None):
         matched += "\n+%d more integrated" % (len(gains) - 10)
     fields = [
         {"name": "\U0001f7e3 Fully Integrated", "value": matched[:1024], "inline": False},
-        {"name": "\u26a1 Integration Rate", "value": "**%g functions/hr** *(last 2h)* \u00b7 ETA %s" % (round(rate, 1), eta), "inline": True},
+        {"name": "\u26a1 Integration Rate", "value": "**%g functions/hr** \u00b7 **%s B/hr** *(last 6h)* \u00b7 byte ETA %s" % (round(rate, 1), format(round(byte_rate * 3600), ","), eta), "inline": True},
         {"name": "\U0001f3c6 Workers", "value": "**%s** \u00b7 %s native credits *(+%d)*" % (job["user"], format(credits, ","), delta), "inline": True},
         {"name": "\u2699\ufe0f Verification", "value": "server-verified \u00b7 %d integrated" % len(gains) if accepted else "rejected \u00b7 no native credit" if rejected else state, "inline": True},
         {"name": "\U0001f527 Models", "value": inline_code(job["model"]), "inline": True},

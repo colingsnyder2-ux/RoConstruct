@@ -80,6 +80,9 @@ def symbol_method(symbol):
     found = re.match(r"^\?([A-Za-z_]\w*)@([A-Za-z_]\w*)@", symbol)
     if found:
         return found[2] + "::" + found[1]
+    found = re.match(r"^\?\?0([A-Za-z_]\w*)@", symbol)
+    if found:
+        return found[1] + "::" + found[1]
     found = re.match(r"^\?\?1([A-Za-z_]\w*)@", symbol)
     return found[1] + "::~" + found[1] if found else None
 
@@ -87,14 +90,59 @@ def symbol_method(symbol):
 def variant(text, mode, selected=None):
     edits = []
     spans = methods(text)
-    if "assertions" in mode:
+    if any(tag in mode for tag in ("assertions", "nonempty", "ternary", "index")):
         for token, (start, end) in spans.items():
             if selected is not None and token not in selected:
                 continue
             old = text[start:end]
-            new = without_assertions(old)
+            new = without_assertions(old) if "assertions" in mode else old
+            if "nonempty" in mode:
+                pattern = r"!\s*([A-Za-z_]\w*(?:(?:\.|->)[A-Za-z_]\w*)*)(\.|->)empty\s*\(\s*\)"
+                for found in reversed(list(re.finditer(pattern, masked_cpp(new)))):
+                    new = new[:found.start()] + "(" + found[1] + found[2] + "size() > 0)" + new[found.end():]
+            if "ternary" in mode:
+                clean = masked_cpp(new)
+                for found in reversed(list(re.finditer(r"\bif\s*\(", clean))):
+                    start = clean.index("(", found.start())
+                    end = closing(clean, start, "(", ")")
+                    arms = re.match(r"\s*return\s+([^;{}]+);\s*else\s*return\s+([^;{}]+);", clean[end + 1:])
+                    if arms:
+                        yes, no = (new[end + 1 + arms.start(i):end + 1 + arms.end(i)].strip() for i in (1, 2))
+                        new = new[:found.start()] + "return (%s) ? (%s) : (%s);" % (new[start + 1:end].strip(), yes, no) + new[end + 1 + arms.end():]
+            if "index" in mode:
+                pattern = r"\bfor\s*\(\s*(std::size_t|size_t|unsigned\s+int|unsigned|int)\s+\w+\s*="
+                for found in reversed(list(re.finditer(pattern, masked_cpp(new)))):
+                    new = new[:found.start(1)] + ("int" if "index-int" in mode else "size_t") + new[found.end(1):]
             if old != new:
                 edits.append([old, new])
+    if mode.startswith("runservice-outofline"):
+        if not re.search(r"\bcreate\s*<\s*(?:RBX::)?RunService\s*>\s*\(", masked_cpp(text)):
+            return text, []
+        declaration = "template __declspec(noinline) RunService* ServiceProvider::create<RunService>() const;"
+        namespace = re.search(r"\bnamespace\s+RBX\s*\{", masked_cpp(text))
+        if not namespace:
+            namespace = re.search(r"\busing\s+namespace\s+RBX\s*;", masked_cpp(text))
+            before = masked_cpp(text[:namespace.start()]) if namespace else ""
+            if not namespace or before.count("{") != before.count("}"):
+                raise ValueError("RunService instantiation needs namespace RBX or its global using directive")
+            declaration = "template __declspec(noinline) RBX::RunService* RBX::ServiceProvider::create<RBX::RunService>() const;"
+        if declaration not in text:
+            prefix = text[:namespace.end()]
+            edits.insert(0, [prefix, prefix + "\n\t" + declaration + "\n"])
+        if mode.endswith("-no-base"):
+            for token, (start, end) in spans.items():
+                if not token.endswith("::onServiceProvider") or selected is not None and token not in selected:
+                    continue
+                old = text[start:end]
+                parameters = re.search(r"onServiceProvider\s*\(\s*(?:const\s+)?ServiceProvider\s*\*\s*(\w+)\s*,\s*(?:const\s+)?ServiceProvider\s*\*\s*(\w+)", masked_cpp(old))
+                if not parameters:
+                    continue
+                pattern = r"\b(?:[A-Za-z_]\w*::)+onServiceProvider\s*\(\s*%s\s*,\s*%s\s*\)\s*;" % tuple(re.escape(p) for p in parameters.groups())
+                new = old
+                for found in reversed(list(re.finditer(pattern, masked_cpp(old)))):
+                    new = new[:found.start()] + ";" + new[found.end():]
+                if old != new:
+                    edits.append([old, new])
     for old, new in edits:
         if text.count(old) != 1:
             raise ValueError("Ambiguous method anchor")
@@ -128,14 +176,19 @@ def proven_proposal(text, mode, hits, baseline):
 
 def claim_unit(hit, row):
     unit = row["unit"]
+    method = symbol_method(hit["symbol"])
+    if method and re.search(r"(?:@|\?\?[01])" + re.escape(method.split("::")[0]) + r"@RBX@@", hit["symbol"]):
+        return "RBX::" + method.split("::")[0]
     # Mined factory/RTTI tags can wrap a class name. The compiled native method
     # supplies a real existing class; the scheduling label is not ownership proof.
-    return unit if re.fullmatch(r"RBX::(?:\w+::)*\w+", unit) else "RBX::" + symbol_method(hit["symbol"]).split("::")[0]
+    return unit if re.fullmatch(r"RBX::(?:\w+::)*\w+", unit) else "RBX::" + method.split("::")[0]
 
 
-def experiments(text):
+def experiments(text, modes=None):
     seen, result = set(), []
-    for mode in ("baseline", *MODES):
+    if modes is not None and (not isinstance(modes, (list, tuple)) or not all(isinstance(m, str) for m in modes)):
+        raise ValueError("native modes must be a list of mode names")
+    for mode in ("baseline", *(MODES if modes is None else modes)):
         try:
             source = text if mode == "baseline" else variant(text, mode)[0]
             key = hashlib.sha256(source.encode()).hexdigest()
@@ -178,7 +231,66 @@ class Matcher:
         return [{"addr": addr, "symbol": found[addr]} for addr in sorted(found)]
 
 
-def compile_unit(source, rel, label, output, tree, overlay, includes, defines, flags):
+def ownership_candidates(obj, hits):
+    """Use the server's whole-binary pairing, not the discovery target subset."""
+    if not hits:
+        return {}
+    symbols = {h["symbol"] for h in hits}
+    candidates = {symbol: addrs for symbol, _, addrs in rebuild.pair(
+        "2008-06", [f for f in match.coff_functions(obj) if f[0] in symbols])}
+    return {h["addr"]: candidates.get(h["symbol"], []) for h in hits}
+
+
+def compile_unit(source, rel, label, output, tree, overlay, includes, defines, flags, translation_unit=None, related_headers=None):
+    if related_headers:
+        previous, hashes = {}, {}
+        try:
+            for name, edits in related_headers.items():
+                header = (overlay / name).resolve()
+                if not header.is_relative_to(overlay.resolve()) or header.suffix.lower() not in (".h", ".hpp", ".inl"):
+                    raise ValueError("Paired edits must be headers inside the private overlay")
+                if header not in previous:
+                    previous[header] = header.read_bytes() if header.exists() else None
+                original = header if header.exists() else tree / name
+                if not edits:
+                    continue
+                changed = apply_edits(original.read_text(errors="replace"), edits)
+                header.parent.mkdir(parents=True, exist_ok=True)
+                header.write_text(changed, encoding="utf-8")
+                hashes[name] = hashlib.sha256(changed.encode()).hexdigest()
+            result = compile_unit(source, rel, label, output, tree, overlay, includes, defines, flags,
+                                  translation_unit=translation_unit)
+            result["related_header_sha256"] = hashes
+            return result
+        finally:
+            for header, original in previous.items():
+                if original is None:
+                    header.unlink(missing_ok=True)
+                else:
+                    header.write_bytes(original)
+    if translation_unit:
+        # Trial the genuine header in the private overlay, then compile its real caller.
+        # Restoring in finally keeps failed trials and later baselines independent.
+        header = (overlay / rel).resolve()
+        if not header.is_relative_to(overlay.resolve()):
+            raise ValueError("Header trial must stay inside the private overlay")
+        previous = header.read_bytes() if header.exists() else None
+        header.parent.mkdir(parents=True, exist_ok=True)
+        try:
+            header.write_text(source, encoding="utf-8")
+            caller = overlay / translation_unit
+            if not caller.exists():
+                caller = tree / translation_unit
+            result = compile_unit(caller.read_text(errors="replace"), translation_unit, label + "-header-" +
+                                  integration.digest(rel)[:8], output, tree, overlay, includes, defines, flags)
+            result.update(file=rel, translation_unit=translation_unit,
+                          header_sha256=hashlib.sha256(source.encode()).hexdigest())
+            return result
+        finally:
+            if previous is None:
+                header.unlink(missing_ok=True)
+            else:
+                header.write_bytes(previous)
     folder = output / "objects" / integration.digest([rel, label])[:20]
     folder.mkdir(parents=True, exist_ok=True)
     unit = folder / Path(rel).name
@@ -192,9 +304,12 @@ def compile_unit(source, rel, label, output, tree, overlay, includes, defines, f
     logs.mkdir(exist_ok=True)
     (logs / (folder.name + ".log")).write_text(message, encoding="utf-8")
     obj = unit.with_suffix(".obj")
+    externals = rebuild.coff_externals(obj.read_bytes()) if ok else {}
     return {"file": rel, "mode": label, "ok": ok, "seconds": round(time.monotonic() - started, 3),
             "object": str(obj), "source_sha256": hashlib.sha256(source.encode()).hexdigest(),
             "object_sha256": hashlib.sha256(obj.read_bytes()).hexdigest() if ok else None,
+            "defined_symbols": sorted(name for name, defined in externals.items() if defined),
+            "undefined_symbols": sorted(name for name, defined in externals.items() if not defined),
             "error": message if not ok else None}
 
 
@@ -206,7 +321,8 @@ def foreign_claims(user, identity):
         return set()  # contributor PC without the server DB: the server's claim checks still apply
     db = sqlite3.connect("file:%s?mode=ro" % path.as_posix(), uri=True, timeout=30)
     try:
-        return {unit for unit, worker in db.execute("SELECT unit,worker FROM integration_claims WHERE expires>?",
+        return {unit for unit, worker in db.execute("SELECT unit,worker FROM integration_claims WHERE expires>? "
+                                                      "AND (state IN ('claimed','submitted') OR state LIKE 'parked:%')",
                                                     (time.time(),)) if not worker.endswith(identity)}
     finally:
         db.close()
@@ -224,6 +340,23 @@ def stage_generator(generator, original, additions):
              "for native_file, native_edits in json.loads(%r).items():\n"
              "    patches.setdefault(native_file, []).extend(native_edits)\n\n") % json.dumps(additions, sort_keys=True)
     generator.write_bytes(text.replace(OUTPUT_MARKER, block + OUTPUT_MARKER).encode("utf-8"))
+
+
+def restore_submitted_baseline(identifier, log=print):
+    """Durable submitted snapshots let discovery continue against the unchanged accepted baseline."""
+    folder = ROOT / "work/integration-client/jobs" / identifier
+    snapshot, base = folder / "submitted-generator.py", folder / "generator-base.py"
+    if not snapshot.exists() or not base.exists():
+        return
+    generator = ROOT / "rebuild/2008-06/patches/make_rbxgs_client.py"
+    current = generator.read_bytes()
+    if current == base.read_bytes():
+        return
+    if current != snapshot.read_bytes():
+        return log("generator changed after submission; preserved local edits")
+    generator.write_bytes(base.read_bytes())
+    subprocess.run([sys.executable, str(generator)], cwd=ROOT, check=True, capture_output=True)
+    log("submitted snapshot retained; local baseline restored for next discovery")
 
 
 def wait_for_job(api, identifier, timeout, log):
@@ -244,8 +377,13 @@ def wait_for_job(api, identifier, timeout, log):
 
 
 MODEL_RULES = """You repair real 2008 Roblox C++ so MSVC compiles it to the exact bytes of the 2008 exe.
-Edit ONLY the file below. Reply with JSON only: {"edits": [["exact old text", "new text"], ...]}
-Each old text must occur exactly once in the file as shown. Edits apply in order.
+Edit ONLY the file below. Reply with one or more blocks, nothing else:
+<<<<<<< SEARCH
+exact old text, copied verbatim from the file
+=======
+new text
+>>>>>>> REPLACE
+Each SEARCH text must occur exactly once in the file as shown. Blocks apply in order.
 The mined sources are byte-exact proofs written with placeholder types: copy their control flow, call order,
 constants and evaluation order, but use the real classes, members and methods. "standins" maps each placeholder
 to the real symbol, RTTI type or import the exe uses at that spot. Never add padding structs, offset views,
@@ -257,7 +395,9 @@ def strip_asm(source):
 
 
 def target_files(texts, wanted, names, by_addr):
-    """{file: [addr]}: a target goes to the file defining its rebuilt method, else to the file named for its class."""
+    """{file: [addr]}: a target goes to the file defining its rebuilt method. Only a target without a rebuilt
+    method falls back to the file named for its class; a rebuilt method no file defines (declared, body elsewhere
+    or absent) cannot be fixed here and is skipped."""
     spans = {rel: methods(text) for rel, text in texts.items()}
     stems = defaultdict(list)
     for rel in texts:
@@ -267,7 +407,9 @@ def target_files(texts, wanted, names, by_addr):
         symbol = names.get(addr, {}).get("symbol")
         method = symbol_method(symbol) if symbol else None
         homes = [rel for rel in texts if method and method in spans[rel]]
-        if not homes:
+        if not homes and method and method.split("::")[0] == method.split("::")[1]:
+            homes = [rel for rel, text in texts.items() if re.search(r"\b" + re.escape(method) + r"\s*\(", masked_cpp(text))]
+        if not homes and not symbol:
             homes = stems.get(by_addr.get(addr, {}).get("unit", "").rsplit("::", 1)[-1].lower(), [])
         if len(homes) == 1:
             out[homes[0]].append(addr)
@@ -276,15 +418,120 @@ def target_files(texts, wanted, names, by_addr):
 
 def model_evidence(addr, names, by_addr):
     from roc import packet, standins
-    source = packet._source("2008-06", addr)[0]
+    source, origin, _ = packet._source("2008-06", addr)
+    if not source:
+        settings = worker.load_settings()
+        if not settings.get("server"):
+            raise ValueError("Mined source missing; configure the group server or run roc pull 2008-06")
+        api = worker.Api(settings["server"], integration.native_token() or settings.get("native_token") or settings.get("token"))
+        try:
+            source, origin, _ = packet._source("2008-06", addr, api)
+        finally:
+            api.close()
+        if not source:
+            raise ValueError("No mined source available for " + addr + "; check the group server or run roc pull 2008-06")
     code = match.target("2008-06", addr)[0]
-    item = {"addr": addr, "size": by_addr.get(addr, {}).get("size"), "rebuilt": names.get(addr),
-            "mined_source": strip_asm(source)[:4000], "target_asm": match.disasm(code, int(addr, 16))[:120]}
+    rebuilt = names.get(addr) or {}
+    displayed = strip_asm(source)
+    reference = match.directives(source).get("lib", "")
+    recipe, _, rel = reference.partition(" ")
+    definition = libs.RECIPES.get(recipe, {})
+    expanded = False
+    if definition.get("src") and not definition.get("generate") and Path(rel.strip()).name.startswith("roc_"):
+        try:
+            folder = libs._case_path(libs.LIBS / definition["src"]).resolve()
+            proof = (folder / rel.strip().replace("\\", "/")).resolve()
+            if proof.is_relative_to(folder) and proof.is_file():
+                displayed += "\n" + strip_asm(proof.read_text(errors="replace"))
+                expanded = True
+        except OSError:
+            pass  # Optional local proof; the compiled library reference remains available.
+    assembly = match.disasm(code, int(addr, 16))
+    # native_score: how close the rebuild's own method compiles today (the mined source is always 100%)
+    item = {"addr": addr, "size": by_addr.get(addr, {}).get("size"), "rebuilt_symbol": rebuilt.get("symbol"),
+            "native_score": rebuilt.get("score"), "mined_source": displayed[:4000],
+            "mined_source_origin": origin, "target_asm": assembly[:120]}
+    if len(assembly) > 120:
+        item["target_asm_truncated"] = {"shown": 120, "total": len(assembly)}
+    if reference:
+        item.update(mined_source_reference=reference, mined_source_expanded=expanded)
+    calls = list(dict.fromkeys(m[1].lower().zfill(8) for line in assembly
+                               if (m := re.search(r"\b(?:call|jmp) 0x([0-9a-fA-F]+)\s*$", line))
+                               and not int(addr, 16) <= int(m[1], 16) < int(addr, 16) + len(code)))
+    item["target_calls"] = [{"addr": a, "native_symbol_hint": names.get(a, {}).get("symbol"),
+                             "native_score": names.get(a, {}).get("score"),
+                             "inventory_unit_hint": by_addr.get(a, {}).get("unit")} for a in calls]
     try:
         item["standins"] = standins.mapping("2008-06", addr, source)
     except Exception as error:  # noqa: BLE001 - the map is optional evidence
         item["standins_error"] = str(error)[:200]
     return item
+
+
+def body_diff(obj, symbol, addr, limit=40):
+    """Show relocated operands as symbols, retaining genuine constants and pointer indirection."""
+    import difflib
+    function = {name: (body, relocs) for name, body, relocs in match.coff_functions(obj)}.get(symbol)
+    if function is None:
+        return "rebuilt symbol %s is not in this object" % symbol
+    code, relocs = function
+    target, target_relocs, _ = match.target("2008-06", addr)
+    decoder = match.Cs(match.CS_ARCH_X86, match.CS_MODE_32)
+    decoder.detail = True
+
+    def memory_symbol(found):
+        expression = found[1]
+        if re.fullmatch(r"(?:0x[0-9a-f]+|\d+)", expression):
+            return "[sym]"
+        expression, count = re.subn(r"\s*[+-]\s*(?:0x[0-9a-f]+|\d+)$", " + sym", expression)
+        return "[" + expression + ("" if count else " + sym") + "]"
+
+    def norm(body, relocations):
+        lines, relocations = [], set(relocations)
+        for instruction in decoder.disasm(body, 0):
+            mnemonic, operand = instruction.mnemonic, instruction.op_str
+            if instruction.disp_offset and instruction.address + instruction.disp_offset in relocations:
+                operand = re.sub(r"\[([^\]]+)\]", memory_symbol, operand)
+            if instruction.imm_offset and instruction.address + instruction.imm_offset in relocations:
+                operand = re.sub(r"(?:^|(?<=, ))-?(?:0x[0-9a-f]+|\d+)$", "sym", operand)
+            elif re.fullmatch(r"0x[0-9a-f]+|\d+", operand):
+                if mnemonic == "call" or mnemonic == "jmp" and not 0 <= int(operand, 0) < len(body):
+                    operand = "sym"
+                elif mnemonic.startswith("j"):
+                    operand = "X"
+            lines.append(mnemonic + " " + operand)
+        return lines
+    lines = list(difflib.unified_diff(norm(target, target_relocs), norm(code, relocs),
+                                      "target", "rebuilt", n=1, lineterm=""))
+    return "\n".join(lines[:limit]) + ("\n..." if len(lines) > limit else "") if lines else "identical after masking"
+
+
+def excerpt(text, symbols, around=20):
+    """The file's #include lines plus each target method with `around` lines of context, verbatim, so SEARCH
+    blocks still anchor in the full file. Falls back to the whole file when no target method is found."""
+    spans, lines = methods(text), text.split("\n")
+    starts = [0]
+    for line in lines:
+        starts.append(starts[-1] + len(line) + 1)
+
+    def line_of(offset):
+        return max(0, next(i for i, start in enumerate(starts) if start > offset) - 1)
+    keep = {i for i, line in enumerate(lines) if line.lstrip().startswith("#include")}
+    found = False
+    for symbol in symbols:
+        span = spans.get(symbol_method(symbol))
+        if span:
+            found = True
+            keep.update(range(max(0, line_of(span[0]) - around), min(len(lines), line_of(span[1]) + around + 1)))
+    if not found:
+        return text
+    out, last = [], -1
+    for i in sorted(keep):
+        if i != last + 1:
+            out.append("// ...")
+        out.append(lines[i])
+        last = i
+    return "\n".join(out)
 
 
 def apply_edits(text, edits):
@@ -299,11 +546,15 @@ def apply_edits(text, edits):
     return text
 
 
+EDIT_BLOCK = re.compile(r"<{7} SEARCH\n(.*?)\n={7}\n(.*?)\n?>{7} REPLACE", re.S)
+
+
 def parse_edits(reply):
-    found = re.search(r"\{.*\}", providers_text(reply), re.S)
-    if not found:
-        raise ValueError("reply has no JSON object")
-    return json.loads(found[0]).get("edits")
+    """SEARCH/REPLACE blocks: C++ needs no escaping, unlike JSON strings (most JSON replies failed to parse)."""
+    edits = [[old, new] for old, new in EDIT_BLOCK.findall(providers_text(reply).replace("\r\n", "\n"))]
+    if not edits:
+        raise ValueError("reply has no SEARCH/REPLACE block")
+    return edits
 
 
 def providers_text(reply):
@@ -311,59 +562,112 @@ def providers_text(reply):
     return providers.strip_reasoning(reply.text if hasattr(reply, "text") else str(reply))
 
 
-def model_proposal(rel, text, addrs, baseline, owned, model, rounds, compile_round, matcher, evidence, log):
+def model_prompt(rel, shown, items):
+    return "%s\n\nFILE %s\n```cpp\n%s\n```\n\nTARGETS (exact 2008 functions this file should produce)\n%s" % (
+        MODEL_RULES, rel, shown[:60000], json.dumps(items, indent=1))
+
+
+def minimize(rel, text, edits, new, keep, compile_round, matcher, label, allow_empty=False, definitions=()):
+    """Only the edits the new exacts need, re-proved by a final compile; None if that proof fails. Models rewrite
+    neighbouring methods too, and an unproven behaviour change in a method that was not exact would pass the
+    loss check. keep: exacts this file already produced, which must survive."""
+    edits = [pair for pair in edits if pair[0] != pair[1]]
+    for pair in list(edits):
+        rest = [other for other in edits if other is not pair]
+        if not rest and not allow_empty:
+            continue
+        trial = compile_round(apply_edits(text, rest) if rest else text, "minimize-%s-%d" % (label, len(rest)))
+        found = {h["addr"] for h in matcher.scan(Path(trial["object"]).read_bytes())} if trial["ok"] else set()
+        if new <= found and not keep - found and not set(definitions).intersection(trial.get("undefined_symbols", ())):
+            edits = rest
+    result = compile_round(apply_edits(text, edits) if edits else text, "final-%s" % label)
+    hits = matcher.scan(Path(result["object"]).read_bytes()) if result["ok"] else []
+    found = {h["addr"] for h in hits}
+    if not (new <= found and not keep - found) or set(definitions).intersection(result.get("undefined_symbols", ())):
+        return None
+    result.update(hits=hits, losses=[])
+    return {"file": rel, "edits": edits, "mode": "model", "witnesses": [h for h in hits if h["addr"] in new],
+            "proof": result}
+
+
+def model_proposal(rel, text, addrs, baseline, owned, model, rounds, compile_round, matcher, evidence, log, options=None,
+                   diff=None, shown=None):
     """Ask the model for anchored edits to one native file; keep the first that makes a new target exact and
     loses no owned exact in that file. Every round compiles the real TU; failures go back as feedback."""
     from roc import providers
-    prompt = "%s\n\nFILE %s\n```cpp\n%s\n```\n\nTARGETS (exact 2008 functions this file should produce)\n%s" % (
-        MODEL_RULES, rel, text[:60000], json.dumps([evidence(a) for a in addrs[:6]], indent=1))
+    prompt = model_prompt(rel, shown or text, [evidence(a) for a in addrs[:6]])
     messages, trials = [{"role": "user", "content": prompt}], []
     for n in range(rounds):
-        reply = providers.generate(model, messages, {"allow_cloud": True, "max_tokens": 8192, "timeout": 300})
+        # Edit blocks are short: no thinking and a small reply cap keep each round to seconds, not a minute.
+        # With thinking on, reasoning shares max_tokens: an 8192 cap left 27 of 29 replies without any edit.
+        settings = dict({"allow_cloud": True, "timeout": 600, "thinking": "disabled"}, **(options or {}))
+        settings.setdefault("max_tokens", 3072 if settings["thinking"] == "disabled" else 32768)
+        reply = providers.generate(model, messages, settings)
+        log("model %s round %d: %.1fs, %s reasoning tokens" % (rel, n, getattr(reply, "latency_s", 0) or 0,
+                                                              getattr(reply, "reasoning_tokens", None)))
         messages.append({"role": "assistant", "content": providers_text(reply)})
         try:
             edits = parse_edits(reply)
             result = compile_round(apply_edits(text, edits), "model-%d" % n)
-        except (ValueError, json.JSONDecodeError) as error:
-            trials.append({"file": rel, "mode": "model-%d" % n, "ok": False, "error": str(error)[:500]})
-            messages.append({"role": "user", "content": "Rejected: %s\nReply with corrected JSON edits." % error})
+        except ValueError as error:
+            trials.append({"file": rel, "mode": "model-%d" % n, "ok": False, "error": str(error)[:500],
+                           "reply": providers_text(reply)[:3000]})
+            messages.append({"role": "user", "content": "Rejected: %s\nReply with corrected SEARCH/REPLACE blocks." % error})
             continue
         hits = matcher.scan(Path(result["object"]).read_bytes()) if result["ok"] else []
         found = {h["addr"] for h in hits}
-        new, lost = (found & set(addrs)) - baseline, (baseline & owned) - found
-        result.update(hits=hits, losses=sorted(lost))
+        new, lost = (found & set(addrs)) - baseline, baseline - found
+        result.update(hits=hits, losses=sorted(lost), reply=providers_text(reply)[:3000])
         trials.append(result)
         log("model %s round %d: %d new exact, %d lost" % (rel, n, len(new), len(lost)))
         if new and not lost:
-            return {"file": rel, "edits": edits, "mode": "model",
-                    "witnesses": [h for h in hits if h["addr"] in new], "proof": result}, trials
+            proposal = minimize(rel, text, edits, new, baseline, compile_round, matcher, "%d" % n,
+                                definitions=result.get("defined_symbols", ()))
+            if not proposal:
+                trials.append(dict(result, error="minimized edits lost the proof"))
+            return proposal, trials
         feedback = result["error"][-1500:] if not result["ok"] else \
             "Compiled. Newly exact: %s. Still not exact: %s. Lost previously exact: %s." % (
                 sorted(new) or "none", sorted(set(addrs) - found) or "none", sorted(lost) or "none")
-        messages.append({"role": "user", "content": feedback + "\nReply with a corrected full JSON edit list "
-                         "against the ORIGINAL file."})
+        if result["ok"] and diff:
+            data = Path(result["object"]).read_bytes()
+            feedback += "".join("\n\n%s target vs your rebuilt code:\n%s" % (a, diff(data, a))
+                                for a in sorted(set(addrs) - found)[:2])
+        messages.append({"role": "user", "content": feedback + "\nReply with the complete corrected set of "
+                         "SEARCH/REPLACE blocks against the ORIGINAL file."})
     return None, trials
 
 
-def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs, log, compile_source):
+def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs, log, compile_source, names):
     """Model-written proposals for every file that defines a waiting exact target, most targets first."""
-    evidence_root = Path(os.environ.get("ROC_NATIVE_EVIDENCE_ROOT", ROOT))
-    path = evidence_root / "rebuild/2008-06/out/native-names.json"
-    names = json.loads(path.read_text()) if path.exists() else {}
+    if config.get("only_rebuilt", True):
+        # Near misses first: the rebuild already compiles a body for the address, so the fix is local to that method.
+        # Targets with no rebuilt body need new methods and header declarations; .cpp-only edits rarely reach them.
+        wanted = {addr for addr in wanted if names.get(addr, {}).get("symbol")}
     homes = target_files(texts, wanted, names, by_addr)
     skip = set(config.get("exclude_files", []))
     files = sorted((rel for rel in homes if rel not in skip), key=lambda rel: -len(homes[rel]))[:config.get("max_files")]
     model, rounds = config["llm"], config.get("rounds", 3)
+    options = {key: config[key] for key in ("thinking", "max_tokens") if key in config}
+    context = config.get("context", "file")
 
     def one(rel):
         base = compile_source(texts[rel], rel, "baseline")
         if not base["ok"]:
             return None, [base]
-        baseline = {h["addr"] for h in matcher.scan(Path(base["object"]).read_bytes())}
+        data = Path(base["object"]).read_bytes()
+        baseline = {h["addr"] for h in matcher.scan(data)}
+
+        def diff(obj, addr):
+            return body_diff(obj, names[addr]["symbol"], addr) if names.get(addr, {}).get("symbol") else "no rebuilt body"
         try:
             proposal, trials = model_proposal(rel, texts[rel], homes[rel], baseline, owned, model, rounds,
                                               lambda source, label: compile_source(source, rel, label), matcher,
-                                              lambda addr: model_evidence(addr, names, by_addr), log)
+                                              lambda addr: dict(model_evidence(addr, names, by_addr), current_diff=diff(data, addr)),
+                                              log, options, diff,
+                                              excerpt(texts[rel], [names[a]["symbol"] for a in homes[rel]
+                                                                   if names.get(a, {}).get("symbol")])
+                                              if context == "methods" else None)
         except Exception as error:  # noqa: BLE001 - one provider/compile failure must not stop the other files
             return None, [base, {"file": rel, "mode": "model", "ok": False, "error": str(error)[:500]}]
         return proposal, [base] + trials
@@ -382,6 +686,55 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
     return proposals, records
 
 
+def native_context(config, api, addresses=None):
+    """Compile settings, targets and owned exacts every native discovery shares (sweep, model pass, agent CLI)."""
+    module = rebuild.load_module("2008-06", "rbxgs-app")
+    tree, overlay = rebuild.build_overlay("2008-06", "RbxgsApp", module["overlay"])
+    recipe = libs.RECIPES["rbxgs"]
+    includes = [libs._case_path(libs.LIBS / path).resolve() for path in recipe["include"] if path != "WINSDK"]
+    includes = rebuild._overlaid(includes, [], (tree, overlay))[0]
+    defines = recipe["defines"] + " BOOST_ALL_NO_LIB"
+    # Discovery reads installed manifests only. Mutable source/output trees stay private.
+    evidence_root = Path(os.environ.get("ROC_NATIVE_EVIDENCE_ROOT", ROOT))
+    manifest = Path(config.get("manifest", evidence_root / "rebuild/2008-06/manifests/functions.json"))
+    names_path = evidence_root / "rebuild/2008-06/out/native-names.json"
+    owned_path = Path(config.get("owned_report", evidence_root / "rebuild/2008-06/out/RbxgsApp/report.json"))
+    linked_path = evidence_root / "work/integration/progress-native.json"
+    if all(path.exists() for path in (manifest, names_path, owned_path, linked_path)):
+        rows = json.loads(manifest.read_text(encoding="utf-8"))
+        owned = set(json.loads(owned_path.read_text()).get("owned_addrs", []))
+        integrated = set(json.loads(linked_path.read_text())["addresses"])
+        names = json.loads(names_path.read_text())
+    else:
+        # Contributor PCs rarely hold the server's rebuild artifacts: take the same evidence from the server.
+        evidence = server_evidence(api)
+        rows = [{"addr": addr, "unit": unit, "size": size, "score": 100} for addr, (unit, size) in evidence["targets"].items()]
+        owned, names = set(evidence["linked"]), evidence["names"]
+        integrated = set(evidence["linked"])
+    for job in api.call("/v1/integration")["jobs"]:
+        if job["state"] == "accepted":
+            owned.update(job["receipt"].get("gains", []))
+            integrated.update(job["receipt"].get("gains", []))
+    # Every byte-exact mined source kind (snippet, vendor-file, generated-unit) is a target: the linked
+    # rebuild owns an address by exact bytes. Snippet-only targeting hid ~5k exact app functions.
+    targets = {row["addr"] for row in rows if row.get("score") == 100 and row.get("unit", "").startswith("RBX::")}
+    if addresses:
+        targets &= set(addresses)
+    return SimpleNamespace(tree=tree, overlay=overlay, includes=includes, defines=defines, flags=config.get("flags", FLAGS),
+                           by_addr={row["addr"]: row for row in rows}, owned=owned, targets=targets,
+                             matcher=Matcher(targets | owned), names=names, integrated=integrated)
+
+
+EVIDENCE_CACHE = ROOT / "work/integration-client/evidence.json"
+
+
+def server_evidence(api):
+    """GET /v1/integration/evidence, cached for tools (roc standins) that run without an API handle."""
+    evidence = api.call("/v1/integration/evidence", timeout=300)
+    integration.atomic_json(EVIDENCE_CACHE, evidence)
+    return evidence
+
+
 def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
     """Discover, minimize, recompile, claim, stage, and optionally submit real native fixes."""
     require_private_workspace()
@@ -394,20 +747,26 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
     output.mkdir(parents=True, exist_ok=True)
     run_id = uuid.uuid4().hex
     integration.atomic_json(output / "summary.json", {"recipe": name, "state": "running", "run_id": run_id, "new_verified": 0})
+    integration.atomic_json(output / "progress.json", {"phase": "setup", "run_id": run_id})
     def finish(summary):
         summary.update(run_id=run_id, state=summary.get("state") or ("queued" if summary.get("job") else "staged" if summary.get("applied_files") else "proposals" if summary.get("proposed_files") else "no-proposals"))
         integration.atomic_json(output / "summary.json", summary)
         integration.atomic_json(output / "runs" / (run_id + ".json"), summary)
+        integration.atomic_json(output / "progress.json", {"phase": summary["state"], "run_id": run_id,
+                                                           "job": summary.get("job"), "new_verified": summary.get("new_verified", 0)})
         return summary
     settings = worker.load_settings()
     api = worker.Api(server or settings["server"], integration.native_token() or settings.get("native_token") or settings.get("token"))
     claimed, used = [], set()
     keep_claims = False
+    summary = {}
     generator = ROOT / "rebuild/2008-06/patches/make_rbxgs_client.py"
     try:
         if config.get("submit") and not config.get("model"):
             raise ValueError("Submission requires actual model identity")
         if config.get("after_job"):
+            integration.atomic_json(output / "progress.json", {"phase": "waiting_for_job", "run_id": run_id,
+                                                               "job": config["after_job"]})
             prior = wait_for_job(api, config["after_job"], config.get("verify_timeout", 4 * 3600), log)
             if prior["state"] != "accepted" or not prior["receipt"].get("accepted"):
                 raise ValueError("Prerequisite native batch was rejected; discovery not started")
@@ -418,44 +777,77 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
             raise ValueError("Sync accepted work and preserve unsent generator edits before sweeping")
         overlay_file = generator.with_name("rbxgs-client.json")
         if json.loads(overlay_file.read_text()) != base["overlay"]:
-            raise ValueError("Local overlay differs from server baseline; sync first")
-        module = rebuild.load_module("2008-06", "rbxgs-app")
-        tree, overlay = rebuild.build_overlay("2008-06", "RbxgsApp", module["overlay"])
-        recipe = libs.RECIPES["rbxgs"]
-        includes = [libs._case_path(libs.LIBS / path).resolve() for path in recipe["include"] if path != "WINSDK"]
-        includes = rebuild._overlaid(includes, [], (tree, overlay))[0]
-        defines = recipe["defines"] + " BOOST_ALL_NO_LIB"
-        flags = config.get("flags", FLAGS)
-        # Discovery reads installed manifests only. Mutable source/output trees stay private.
-        evidence_root = Path(os.environ.get("ROC_NATIVE_EVIDENCE_ROOT", ROOT))
-        manifest = Path(config.get("manifest", evidence_root / "rebuild/2008-06/manifests/functions.json"))
-        rows = json.loads(manifest.read_text(encoding="utf-8"))
-        by_addr = {row["addr"]: row for row in rows}
-        owned_path = Path(config.get("owned_report", evidence_root / "rebuild/2008-06/out/RbxgsApp/report.json"))
-        owned = set(json.loads(owned_path.read_text()).get("owned_addrs", [])) if owned_path.exists() else set()
-        for job in api.call("/v1/integration")["jobs"]:
-            if job["state"] == "accepted":
-                owned.update(job["receipt"].get("gains", []))
-        # Every byte-exact mined source kind (snippet, vendor-file, generated-unit) is a target: the linked
-        # rebuild owns an address by exact bytes. Snippet-only targeting hid ~5k exact app functions.
-        targets = {row["addr"] for row in rows if row.get("score") == 100 and row.get("unit", "").startswith("RBX::")}
-        if spec.get("targets", {}).get("addresses"):
-            targets &= set(spec["targets"]["addresses"])
-        matcher = Matcher(targets | owned)
+            if not integration.sync_client_baseline(ROOT, base, only_if_clean=True):
+                raise ValueError("Local overlay differs from server baseline; preserve local edits and sync first")
+            log("accepted baseline advanced; clean local overlay refreshed")
+        integration.atomic_json(ROOT / "work/integration-client/baseline.json", base)
+        ctx = native_context(config, api, spec.get("targets", {}).get("addresses"))
+        tree, overlay, includes, defines, flags = ctx.tree, ctx.overlay, ctx.includes, ctx.defines, ctx.flags
+        by_addr, owned, targets, matcher = ctx.by_addr, ctx.owned, ctx.targets, ctx.matcher
         files = sorted({p.relative_to(tree).as_posix() for pattern in config.get("files", ["App/*/*.cpp"])
                         for p in tree.glob(pattern) if not p.name.startswith("roc_")})
-        if limit:
+        if limit and not config.get("targets_only"):
             files = files[:limit]
         rebuild.toolchain()  # Resolve discovery once before compile workers start.
         texts = {rel: (overlay / rel if (overlay / rel).exists() else tree / rel).read_text(errors="replace") for rel in files}
-        if config.get("llm"):
-            proposals, records = model_discovery(config, texts, targets - owned, owned, by_addr, matcher, output, jobs, log,
+        discovery_targets = targets - owned
+        if config.get("targets_only"):
+            discovery_targets -= getattr(ctx, "integrated", set())
+            homes = target_files(texts, discovery_targets, ctx.names, by_addr)
+            files = sorted(homes, key=lambda rel: (-len(homes[rel]), rel))
+            if limit:
+                files = files[:limit]
+            texts = {rel: texts[rel] for rel in files}
+        if config.get("proposals_file"):
+            # Proposals an agent already proved with `roc native-try check`: claim, stage and submit them as one batch.
+            proposals, records = json.loads(Path(config["proposals_file"]).read_text()), []
+            final_checks, trials, rechecked = [], [], []
+            for proposal in proposals:
+                rel = proposal["file"]
+                if rel not in texts:
+                    texts[rel] = (overlay / rel if (overlay / rel).exists() else tree / rel).read_text(errors="replace")
+                log("native rechecking " + rel)
+                if not proposal.get("base_revision"):
+                    raise ValueError("Saved proof is unversioned; run roc native-try check " + rel)
+                if proposal["base_revision"] != base["revision"]:
+                    log("accepted baseline advanced; independently revalidating saved edits: " + rel)
+                options = {"translation_unit": proposal["translation_unit"]} if proposal.get("translation_unit") else {}
+                baseline = compile_unit(texts[rel], rel, "recheck-baseline", output, tree, overlay, includes, defines, flags, **options)
+                if not baseline["ok"]:
+                    raise ValueError("Saved proposal baseline compile failed: " + rel)
+                keep = {h["addr"] for h in matcher.scan(Path(baseline["object"]).read_bytes())}
+                final = compile_unit(apply_edits(texts[rel], proposal["edits"]) if proposal["edits"] else texts[rel], rel, "recheck-final", output,
+                                     tree, overlay, includes, defines, flags,
+                                     **dict(options, **({"related_headers": proposal["related_headers"]} if proposal.get("related_headers") else {})))
+                if not final["ok"]:
+                    raise ValueError("Saved proposal compile failed: " + rel)
+                missing = set(proposal.get("proof", {}).get("defined_symbols", ())).intersection(final.get("undefined_symbols", ()))
+                if missing:
+                    raise ValueError("Saved proposal lost required definitions: " + ", ".join(sorted(missing)))
+                hits = matcher.scan(Path(final["object"]).read_bytes())
+                found = {h["addr"] for h in hits}
+                wanted = {h["addr"] for h in proposal["witnesses"]}
+                if not wanted <= found or keep - found:
+                    raise ValueError("Saved proposal lost exact matches; rerun roc native-try check " + rel)
+                ownership = ownership_candidates(Path(final["object"]).read_bytes(), [h for h in hits if h["addr"] in wanted])
+                if not any(candidates == [addr] for addr, candidates in ownership.items()):
+                    log("no unique module ownership candidates; proposal retained locally: " + rel)
+                    continue
+                proposal["proof"] = dict(final, hits=hits, losses=[])
+                proposal["proof"]["ownership_candidates"] = ownership
+                proposal["base_revision"] = base["revision"]
+                final_checks.append(proposal["proof"])
+                rechecked.append(proposal)
+            proposals = rechecked
+        elif config.get("llm"):
+            proposals, records = model_discovery(config, texts, discovery_targets, owned, by_addr, matcher, output, jobs, log,
                                                  lambda source, rel, label: compile_unit(source, rel, label, output, tree,
-                                                                                         overlay, includes, defines, flags))
+                                                                                         overlay, includes, defines, flags),
+                                                 ctx.names)
             final_checks = [p["proof"] for p in proposals]
             trials = []
         else:
-            trials = [(rel, *trial) for rel in files for trial in experiments(texts[rel])]
+            trials = [(rel, *trial) for rel in files for trial in experiments(texts[rel], config.get("modes"))]
             records, proofs, baseline_hits, baseline_ready = [], defaultdict(list), {}, set()
             def compile_trial(item):
                 rel, mode, source, error = item
@@ -475,7 +867,10 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
                         if result["ok"]:
                             baseline_ready.add(rel)
                     elif result["ok"] and rel in baseline_ready:
-                        proposal = proven_proposal(texts[rel], mode, [h for h in result["hits"] if h["addr"] in targets - owned],
+                        new_hits = [h for h in result["hits"] if h["addr"] in discovery_targets - baseline_hits.get(rel, set())]
+                        result["ownership_candidates"] = ownership_candidates(Path(result["object"]).read_bytes(), new_hits)
+                        unique_hits = [h for h in new_hits if result["ownership_candidates"].get(h["addr"]) == [h["addr"]]]
+                        proposal = proven_proposal(texts[rel], mode, unique_hits,
                                                    baseline_hits.get(rel, set()))
                         if proposal:
                             proposal["file"] = rel
@@ -492,13 +887,15 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
                     hits = matcher.scan(Path(final["object"]).read_bytes()) if final["ok"] else []
                     addresses = {h["addr"] for h in hits}
                     wanted = {h["addr"] for h in proposal["witnesses"]}
-                    lost = (baseline_hits[rel] & owned) - addresses
+                    lost = baseline_hits[rel] - addresses
                     proposal["proof"] = dict(final, hits=hits, losses=sorted(lost))
                     final_checks.append(proposal["proof"])
                     proposal.pop("source")
                     if not lost and wanted <= addresses:
                         proposals.append(proposal)
                         break
+        for proposal in proposals:
+            proposal["base_revision"] = base["revision"]
         integration.atomic_json(output / "proposals.json", proposals)
         integration.atomic_json(output / "final-checks.json", final_checks)
         summary = {"recipe": name, "client": "2008-06", "op": "native-grid", "tried": len(records),
@@ -512,15 +909,22 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
         if not identity_file.exists():
             integration.atomic_json(identity_file, {"id": uuid.uuid4().hex})
         identity = json.loads(identity_file.read_text())["id"][:12]
-        units, selected = {}, []
+        units, selected, blocked = {}, [], set()
         max_claims = base.get("limits", {}).get("claims", 16)
         for proposal in proposals:
             needed = {h["claim_unit"] for h in proposal["witnesses"]}
             if len(set(units) | needed) > max_claims:
                 continue
             for unit in sorted(needed - set(units)):
+                log("native claiming " + unit)
                 result = api.call("/v1/integration/claim", {"user": settings["user"], "worker": settings["user"] + "@native-sweep:" + identity,
                                                           "unit": unit, "count": 1})
+                if result["claims"] and result["claims"][0]["base_revision"] != base["revision"] and \
+                        api.call("/v1/integration/base")["revision"] == base["revision"]:
+                    log("refreshing own stale claim: " + unit)
+                    api.call("/v1/integration/release", {"user": settings["user"], "claim": result["claims"][0]["id"]})
+                    result = api.call("/v1/integration/claim", {"user": settings["user"],
+                                      "worker": settings["user"] + "@native-sweep:" + identity, "unit": unit, "count": 1})
                 if result["claims"]:
                     claim = result["claims"][0]
                     claimed.append(claim)
@@ -530,8 +934,11 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
             # Gains are credited from the linked rebuild, not per claim: take a proposal when it holds at least one
             # claim and no other worker holds a live claim on any class it touches (catalog-less classes and
             # sub-24-byte targets cannot be claimed at all).
-            if not needed & foreign_claims(settings["user"], identity):
+            conflicts = needed & foreign_claims(settings["user"], identity)
+            if not conflicts:
                 selected.append(proposal)  # rides on any claim this batch holds; at least one is required below
+            else:
+                blocked.update(conflicts)
         if selected and not units:
             result = api.call("/v1/integration/claim", {"user": settings["user"], "worker": settings["user"] + "@native-sweep:" + identity,
                                                       "count": 1})
@@ -541,8 +948,15 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
         used = {h["claim_unit"] for p in selected for h in p["witnesses"]} & units.keys()
         if selected and not used and units:
             used = {sorted(units)[0]}  # carrier claim for catalog-less classes
-        additions = {p["file"]: p["edits"] for p in selected}
+        additions = {}
+        for proposal in selected:
+            for path, pairs in dict(proposal.get("related_headers", {}), **{proposal["file"]: proposal["edits"]}).items():
+                for pair in pairs:
+                    if pair not in additions.setdefault(path, []):
+                        additions[path].append(pair)
         if not additions or not used:
+            summary.update(state="blocked", blocked_units=sorted(blocked),
+                           reason="Classes held by another worker" if blocked else "No native claim available")
             return finish(summary)
         for unit in used:
             claim = units[unit]
@@ -550,7 +964,7 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
             integration.atomic_json(folder / "packet.json", claim)
             (folder / "generator-base.py").write_bytes(original)
         notes = output / "batch-notes.txt"
-        notes.write_text("Native sweep: real out-of-line methods; scoped assertion omissions and/or x87 profile.\n"
+        notes.write_text("Native integration: real C++ methods and related declarations.\n"
                          "Every listed method passed exact instruction and referenced-data checks after minimizing edits.\n"
                          "Per-TU previously owned matches preserved; independent linked/runtime/ABI gates still required.\n\n" +
                          "\n".join("Claim %s scheduling addresses: %s. Factory/RTTI tags may differ; exact native proof follows." %
@@ -568,7 +982,8 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
             generator.write_bytes(original)
             subprocess.run([sys.executable, str(generator)], cwd=ROOT, check=True, capture_output=True)
             raise
-        summary.update(applied_files=len(selected), batch=str(batch), evidence=str(notes))
+        summary.update(applied_files=len(selected), applied_paths=[p["file"] for p in selected],
+                       batch=str(batch), evidence=str(notes))
         keep_claims = True
         if config.get("submit"):
             args = SimpleNamespace(action="submit", server=server, user=None, token=integration.native_token(),
@@ -576,6 +991,7 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
             integration.command(args)
             marker = ROOT / "work/integration-client/claims" / units[sorted(used)[0]]["id"] / "job.json"
             summary["job"] = json.loads(marker.read_text())["id"]
+            restore_submitted_baseline(summary["job"], log)
             finish(summary)
             if config.get("wait"):
                 job = wait_for_job(api, summary["job"], config.get("verify_timeout", 4 * 3600), log)
@@ -584,6 +1000,10 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
                     summary["new_verified"] = job["receipt"].get("credits", 0)
                     integration.command(SimpleNamespace(action="sync", server=server, user=None, token=integration.native_token()))
         return finish(summary)
+    except BaseException as error:
+        state = summary.get("state") if summary.get("state") in ("accepted", "rejected") else "queued" if summary.get("job") else "failed"
+        finish(dict(summary, recipe=name, state=state, error=str(error), new_verified=summary.get("new_verified", 0)))
+        raise
     finally:
         for claim in claimed:
             if not keep_claims or claim["unit"] not in used:

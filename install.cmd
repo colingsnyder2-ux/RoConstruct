@@ -8,53 +8,72 @@ rem compilers get unpacked. Everything else this script does is small: two pip
 rem packages, the exact compiler bundles, the roconstruct:// link, then the site.
 rem It installs no Ollama, no Docker, no model and no client: those are opt-in.
 
-py -3.12 -c "import sys" >nul 2>nul
-if errorlevel 1 (
-  echo Python 3.12 not found. Installing it with winget...
-  where winget >nul 2>nul || (
-    echo winget is missing. Install "App Installer" from the Microsoft Store, or Python 3.12 from python.org, then run this again.
-    pause & exit /b 1
-  )
-  winget install --id Python.Python.3.12 -e --scope user --accept-package-agreements --accept-source-agreements
-  py -3.12 -c "import sys" >nul 2>nul || (
-    echo.
-    echo Python was installed. Close this window and double-click install.cmd again.
-    pause & exit /b 0
-  )
-)
+:find_python
+set "PY=python"
+%PY% -c "import sys; sys.exit(sys.version_info[:2] != (3,12))" >nul 2>nul
+if not errorlevel 1 goto python_ready
+set "PY=py -3.12"
+%PY% -c "import sys; sys.exit(sys.version_info[:2] != (3,12))" >nul 2>nul
+if not errorlevel 1 goto python_ready
+set PY="%LOCALAPPDATA%\Programs\Python\Python312\python.exe"
+%PY% -c "import sys; sys.exit(sys.version_info[:2] != (3,12))" >nul 2>nul
+if not errorlevel 1 goto python_ready
+if defined ROC_PYTHON_INSTALL_ATTEMPTED goto python_failed
+set "ROC_PYTHON_INSTALL_ATTEMPTED=1"
+echo Python 3.12 not found. Installing it with winget...
+where winget >nul 2>nul || goto python_failed
+winget install --id Python.Python.3.12 -e --scope user --accept-package-agreements --accept-source-agreements
+if errorlevel 1 goto python_failed
+goto find_python
+:python_failed
+echo Python 3.12 could not be started. Python installation or launcher failed.
+echo Install Python 3.12 from python.org or repair App Installer, then retry.
+if not defined ROC_NONINTERACTIVE pause
+exit /b 1
+:python_ready
 
 rem The update can rewrite this very file, and cmd reads a running .cmd by byte offset,
 rem so after updating run the fresh copy and leave this one without reading any further.
+rem A packaged native workflow may be newer than public Git. Keep its tested files.
+if exist roconstruct-package.json goto packages
 if not defined ROC_UPDATED (
   set ROC_UPDATED=1
   echo Checking for RoConstruct updates...
-  py -3.12 roc.py update
+  %PY% roc.py update
   call "%~f0" %*
   exit /b
 )
 
+:packages
 echo Checking Python packages (pefile, capstone)...
-py -3.12 -m pip install --user -q --disable-pip-version-check pefile capstone || (
+%PY% -m pip install --user -q --disable-pip-version-check pefile capstone || (
   echo pip failed. Check your internet connection and run this again.
-  pause & exit /b 1
+  if not defined ROC_NONINTERACTIVE pause
+  exit /b 1
 )
 
 rem Compilers only. Safe to run twice: downloads resume, anything already installed
 rem is left alone, and work/, src/ and settings are never written to.
-py -3.12 roc.py install --yes
+%PY% roc.py install --yes
 if errorlevel 1 (
   echo.
   echo Some downloads did not finish. Run install.cmd again: it picks up where it stopped.
-  pause & exit /b 1
+  if not defined ROC_NONINTERACTIVE pause
+  exit /b 1
 )
 
 echo.
 echo Registering roconstruct:// so the website can start the worker...
-py -3.12 roc.py link install
+%PY% roc.py link install
 
 echo.
 echo Checking everything is in place...
-py -3.12 roc.py doctor
+%PY% roc.py doctor
+if errorlevel 1 (
+  echo Setup checks failed. Resolve the reported errors before continuing.
+  if not defined ROC_NONINTERACTIVE pause
+  exit /b 1
+)
 
 echo.
 echo ------------------------------------------------------------------
@@ -71,4 +90,4 @@ echo    py -3.12 roc.py launch
 echo.
 echo Something wrong? Run:  py -3.12 roc.py doctor
 echo.
-pause
+if not defined ROC_NONINTERACTIVE pause

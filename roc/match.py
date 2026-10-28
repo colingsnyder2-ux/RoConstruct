@@ -991,16 +991,25 @@ _SCORES_LOCK = threading.Lock()
 
 def save_score(client, addr, value):
     """Keep the best score per function in work/<client>/scores.json."""
+    return save_scores(client, {addr: value}).get(addr, 0)
+
+
+def save_scores(client, values):
+    """Merge a batch without rereading and rewriting the whole cache per row."""
     path = ROOT / "work" / client / "scores.json"
     with _SCORES_LOCK:
         scores = json.loads(path.read_text()) if path.exists() else {}
-        if value > scores.get(addr, 0):
-            scores[addr] = value
+        changed = False
+        for addr, value in values.items():
+            if value > scores.get(addr, 0):
+                scores[addr] = value
+                changed = True
+        if changed:
             path.parent.mkdir(parents=True, exist_ok=True)
             tmp = path.with_name("scores.%d.tmp" % os.getpid())  # replace atomically: readers never see a half file
             tmp.write_text(json.dumps(scores, indent=0, sort_keys=True))
             os.replace(tmp, path)
-        return scores.get(addr, 0)
+        return scores
 
 
 def template(client, addr):

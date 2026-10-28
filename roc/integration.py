@@ -41,6 +41,8 @@ CREATE TABLE IF NOT EXISTS integration_bases(
  revision TEXT PRIMARY KEY, payload TEXT);
 CREATE TABLE IF NOT EXISTS integration_config(
  key TEXT PRIMARY KEY, value TEXT);
+CREATE TABLE IF NOT EXISTS integration_queue_priority(
+ job TEXT PRIMARY KEY, requested INTEGER);
 """
 
 
@@ -57,7 +59,7 @@ def atomic_json(path, value):
 
 
 def native_token(root=ROOT, fallback=None, create=False):
-    """Native builds execute submitted C++; invitations are separate from public mining."""
+    """Read legacy native credentials for older servers; public servers need none."""
     import secrets
     secret = os.environ.get("ROC_NATIVE_TOKEN") or fallback
     path = Path(root) / "local/config/native-integration-token"
@@ -243,6 +245,17 @@ class Promotions:
             self._names_stamp = stamp
         return self._names
 
+    def evidence(self):
+        """Native discovery inputs for contributor PCs without local rebuild artifacts: rebuilt symbol names, the
+        addresses the accepted linked rebuild owns, and every exact mined RBX target ({addr: [unit, size]})."""
+        progress = self.directory / "progress-native.json"
+        with self.store.lock:
+            rows = self.store.db.execute("SELECT addr,unit,size FROM funcs WHERE client=? AND score=100 AND unit LIKE 'RBX::%'",
+                                         (CLIENT,)).fetchall()
+        return {"names": self.native_names(),
+                "linked": json.loads(progress.read_text())["addresses"] if progress.exists() else [],
+                "targets": {addr: [unit, size] for addr, unit, size in rows}}
+
     def packet(self, claim, baselines=None, abi=None, compact=False):
         identifier, unit, user, worker, expires, addresses, revision = claim
         evidence = []
@@ -405,15 +418,34 @@ class Promotions:
                                  (*r[:-1], json.loads(r[-1]) if r[-1] else None))) for r in rows],
                 "leaderboard": [{"user": u, "model": m, "native_credits": n} for u, m, n in leaders]}
 
+    def force_queue(self, user, identifier):
+        """Prioritize an owned queued batch; the active verifier keeps running."""
+        if not isinstance(identifier, str) or not re.fullmatch(r"[0-9a-f]{32}", identifier):
+            raise ValueError("Invalid batch ID")
+        with self.store.lock, self.store.db:
+            self.store.db.execute("BEGIN IMMEDIATE")
+            row = self.store.db.execute("SELECT user,state FROM integration_jobs WHERE id=?", (identifier,)).fetchone()
+            if not row or row[0] != user:
+                raise ValueError("Batch not found or belongs to another user")
+            if row[1] != "queued":
+                raise ValueError("Force queue requires a queued batch; current state: " + row[1])
+            self.store.db.execute("INSERT OR REPLACE INTO integration_queue_priority VALUES(?,?)",
+                                  (identifier, time.time_ns()))
+            self.store.db.execute("UPDATE integration_jobs SET phase=CASE WHEN phase='solo' THEN phase "
+                                  "ELSE 'priority queued' END,updated=? WHERE id=?", (time.time(), identifier))
+        self.wake.set()
+        return {"id": identifier, "state": "queued", "priority": "next", "waits_for_active": True}
+
     def take(self):
-        """Next queued job. Later queued jobs from the same user/model/baseline that edit disjoint files ride along
+        """Prioritized jobs first, then FIFO. Later jobs from the same user/model/baseline that edit disjoint files ride along
         in one verification (one linked rebuild for all); a merged batch that fails is re-queued as solo jobs."""
         fields = ("id", "user", "model", "unit", "base", "patches", "evidence", "phase")
         with self.store.lock, self.store.db:
             self.store.db.execute("BEGIN IMMEDIATE")
             rows = [dict(zip(fields, r)) for r in self.store.db.execute(
-                "SELECT id,user,model,unit,base,patches,evidence,phase FROM integration_jobs "
-                "WHERE state='queued' ORDER BY created")]
+                "SELECT j.id,j.user,j.model,j.unit,j.base,j.patches,j.evidence,j.phase FROM integration_jobs j "
+                "LEFT JOIN integration_queue_priority p ON p.job=j.id "
+                "WHERE j.state='queued' ORDER BY p.requested IS NULL,p.requested DESC,j.created")]
             if not rows:
                 return None
             lead, members = rows[0], [rows[0]]
@@ -426,6 +458,7 @@ class Promotions:
                         members.append(row)
                         files |= patches
             for row in members:
+                self.store.db.execute("DELETE FROM integration_queue_priority WHERE job=?", (row["id"],))
                 self.store.db.execute("UPDATE integration_jobs SET state='verifying',phase=?,updated=? WHERE id=?",
                                       ("snapshot" if row is lead else "merged into " + lead["id"][:8], time.time(), row["id"]))
         job = {k: lead[k] for k in fields[:-1]}
@@ -499,8 +532,34 @@ def add_standins(claim):
     return claim
 
 
+def sync_client_baseline(root, base, only_if_clean=False):
+    generator = root / "rebuild/2008-06/patches/make_rbxgs_client.py"
+    overlay = generator.with_name("rbxgs-client.json")
+    marker = root / "work/integration-client/baseline.json"
+    if only_if_clean:
+        if not marker.exists():
+            return False
+        previous = json.loads(marker.read_text())
+        current = hashlib.sha256(generator.read_bytes()).hexdigest()
+        if current != previous["generator"] or current != base["generator"] or \
+                json.loads(overlay.read_text()) != previous["overlay"]:
+            return False
+    atomic_json(generator.with_name("native-promotions.json"), base["accepted"])
+    subprocess.run([sys.executable, str(generator)], cwd=root, check=True, capture_output=True)
+    if json.loads(overlay.read_text()) != base["overlay"]:
+        raise ValueError("Local source/overlay baseline differs from server; update before claiming")
+    atomic_json(marker, base)
+    return True
+
+
 def command(args):
     from roc import worker
+    if args.action == "fingerprint":
+        from roc.integration_verify import input_hashes
+        started = time.monotonic()
+        full, live = input_hashes(ROOT)
+        print(json.dumps({"inputs": full, "live": live, "seconds": round(time.monotonic() - started, 3)}))
+        return
     settings = worker.load_settings()
     server = args.server or settings.get("server") or worker.site_server()
     user = args.user or settings.get("user")
@@ -513,11 +572,21 @@ def command(args):
     action = args.action
 
     if action == "invite":
-        secret = native_token()
-        if not secret:
-            raise SystemExit("Run this on the configured native build server")
-        print("Private helper invite; share only with trusted contributors:")
-        print(secret)
+        print("Native integration is public. No invitation or native token required.")
+        return
+
+    if action == "force-queue":
+        if not args.id:
+            raise SystemExit("Force queue needs --id JOB_ID")
+        try:
+            result = api.call("/v1/integration/force-queue", {"user": user, "id": args.id})
+        except worker.ApiFailure as error:
+            if error.category == "bad_request" and "Unknown integration action" in str(error):
+                raise SystemExit("Server needs the force-queue update and restart; active verification is unchanged") from None
+            raise
+        finally:
+            api.close()
+        print("Priority queued %s; starts after active verification completes" % result["id"])
         return
 
     if action == "next":
@@ -651,6 +720,12 @@ def command(args):
                 previous = phases
             if action == "status" or not result["jobs"] or all(j["state"] in ("accepted", "rejected") for j in result["jobs"]):
                 print("Native credits:", json.dumps(result["leaderboard"]))
+                api.close()
+                if action == "watch":
+                    if not result["jobs"] and args.id:
+                        raise SystemExit("Native job missing: " + args.id)
+                    if any(j["state"] == "rejected" for j in result["jobs"]):
+                        raise SystemExit(1)
                 return
             time.sleep(2)
 
@@ -671,8 +746,5 @@ def command(args):
                     break
             if not restored:
                 raise SystemExit("Generator differs from server; preserve local edits and update before syncing")
-        atomic_json(generator.with_name("native-promotions.json"), base["accepted"])
-        subprocess.run([sys.executable, str(generator)], cwd=ROOT, check=True)
-        if json.loads(overlay.read_text(encoding="utf-8")) != base["overlay"]:
-            raise SystemExit("Local source/overlay baseline differs from server; update before claiming")
+        sync_client_baseline(ROOT, base)
         print("Accepted overlays synced:", base["revision"])

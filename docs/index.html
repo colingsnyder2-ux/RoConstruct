@@ -285,11 +285,13 @@ const libraryUrl = meta => {
 };
 const sourceLinks = (client, f, short = false) => {
   const library = f[2] === 100 ? libraryUrl(f[5]) : "";
+  const native = integrationData?.client === client && integrationData?.sources?.[hex(f[0])];
+  const nativeLink = native ? `<a href="${FINDINGS}/blob/main/${native.path.split('/').map(encodeURIComponent).join('/')}#L${native.line}" target="_blank" rel="noopener">${short ? "native C++" : "View integrated native C++"} ↗</a>` : "";
   const harness = f[4] ? `<a href="${sourceUrl(client, f[0])}" target="_blank" rel="noopener">${f[2] < 100 ? (short ? "candidate recipe" : "View candidate code / build recipe") : f[5] ? (short ? "harness" : "View match harness") : (short ? "source" : "View recovered source")} ↗</a>` : "";
   const archive = f[5] && sourceCatalog[f[5][0]]?.kind === "archive";
   const definition = f[5] && sourceCatalog[f[5][0]]?.functions?.[f[5][2]];
-  if (library) return `<a href="${esc(library)}" target="_blank" rel="noopener">${definition ? (short ? "function source" : "View matched function source") : archive ? (short ? "source archive" : "Download matched source archive") : (short ? "matched source file" : "View matched translation unit")} ↗</a>${archive ? ` <code>${esc(f[5][1])}</code>` : ""}${harness ? " · " + harness : ""}`;
-  return harness || "No recovered source published yet";
+  if (library) return (nativeLink ? nativeLink + " · " : "") + `<a href="${esc(library)}" target="_blank" rel="noopener">${definition ? (short ? "function source" : "View matched function source") : archive ? (short ? "source archive" : "Download matched source archive") : (short ? "matched source file" : "View matched translation unit")} ↗</a>${archive ? ` <code>${esc(f[5][1])}</code>` : ""}${harness ? " · " + harness : ""}`;
+  return [nativeLink, harness].filter(Boolean).join(" · ") || "No recovered source published yet";
 };
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
 const cache = new Map();

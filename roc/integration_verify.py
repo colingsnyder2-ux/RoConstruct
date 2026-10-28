@@ -14,19 +14,42 @@ from pathlib import Path
 
 from roc.integration import CLIENT, MODULE, ROOT, atomic_json, digest, merge_patches
 
+WRITABLE_OUT = {"RbxgsApp", "tests"}  # out/ folders a snapshot build or milestone link writes into
+
 WATCHDOG_SECONDS = 20 * 60  # cold baselines take minutes; stacks only after this long without a verdict
+
+# Compiler, matcher and gate implementation. Queue/UI/webhook code does not build native artifacts.
+NATIVE_CODE = ("__init__", "analyze", "clients", "fingerprint", "integration_verify", "libs", "match",
+               "rebuild", "repair", "rtti", "setup", "telemetry", "worker")
 
 
 @functools.lru_cache(maxsize=1)
 def tool_inventory():
     """Pin the configured period compiler/SDK for this verifier process."""
-    from roc import libs, rebuild
+    from roc import libs, rebuild, setup
+    key = digest({"environment": {name: os.environ.get(name, "") for name in
+                                 ("ROC_CL", "ROC_WINSDK", "ROC_ATLMFC", "PATH", "WINEPREFIX", "ROC_WINE")},
+                  "install": file_hash(setup.STATE).hex() if setup.STATE.exists() else None,
+                  "code": [file_hash(Path(module.__file__)).hex() for module in (libs, rebuild, setup)]})
+    cache = ROOT / "work/integration/toolchain.json"
+    if cache.exists():
+        try:
+            saved = json.loads(cache.read_text())
+            inventory = saved["inventory"]
+            paths = [inventory["sdk"], inventory["ml"], inventory["toolchain"]["cl"]]
+            paths += [value for name, value in inventory["toolchain"].items() if name != "build" and value]
+            if saved["key"] == key and all(path and Path(path).exists() for path in paths):
+                return inventory
+        except (OSError, ValueError, KeyError, TypeError):
+            pass  # An invalid discovery cache is rebuilt; it is never a verification receipt.
     sdk = libs.winsdk_include()
     tc = rebuild.toolchain()
     if not sdk or not tc.get("cl"):
         raise ValueError("Historical compiler/Windows SDK is not installed")
-    return {"sdk": sdk, "toolchain": {k: str(v) if isinstance(v, Path) else v for k, v in tc.items()},
-            "ml": str(rebuild._ml())}
+    inventory = {"sdk": sdk, "toolchain": {k: str(v) if isinstance(v, Path) else v for k, v in tc.items()},
+                 "ml": str(rebuild._ml())}
+    atomic_json(cache, {"key": key, "inventory": inventory})
+    return inventory
 
 
 def native_tools(root):
@@ -75,41 +98,50 @@ def file_hash(path):
         return hashlib.file_digest(stream, "sha256").digest()
 
 
-def input_hash(root, live_only=False):
-    """Content hash, including vendor/compiler bytes; no mtime-only receipts.
-    live_only: only inputs a snapshot reads through from the live checkout (tools/clients junctions). Code,
-    patches, work/ and out/ are copied into the snapshot, so later edits there cannot affect a running build."""
-    paths = [root / "roc.py"] if (root / "roc.py").exists() and not live_only else []
+def input_files(parent, excluded=()):
+    """Prune output/cache directories before descent, including their directory enumeration cost."""
+    for directory, folders, files in os.walk(parent):
+        folders[:] = [name for name in folders if name not in excluded]
+        for name in files:
+            yield Path(directory) / name
+
+
+def input_paths(root, live_only=False):
+    """Full and read-through input sets. Every selected file is checked by content."""
+    paths = []
     # The unit registry is mining transport metadata. Pinned native builds read
     # installed files, including adopted/referenced generated units hashed below.
-    for folder in ("clients/2008-06",) if live_only else ("roc", "clients/2008-06"):
+    for folder in ("clients/2008-06",):
         parent = root / folder
         if parent.exists():
-            paths.extend(p for p in parent.rglob("*") if p.is_file()
-                         and "__pycache__" not in p.parts and p.suffix not in (".pyc", ".pdb", ".ilk"))
+            paths.extend(p for p in input_files(parent, ("__pycache__",))
+                         if p.suffix not in (".pyc", ".pdb", ".ilk"))
     referenced = set()
     overlay = root / "rebuild/2008-06/patches/rbxgs-client.json"
     if overlay.exists():
         for edits in json.loads(overlay.read_text()).values():
             for old, new in edits:
                 if old == "@replace":
-                    referenced.add((root / "tools/rbxgs/Client" / new).resolve())
+                    referenced.add(root / "tools/rbxgs/Client" / new)
     for deps in (root / "rebuild/2008-06/out/RbxgsApp").glob("layer-*/*.deps"):
-        referenced.update(Path(p).resolve() for p in json.loads(deps.read_text()) if Path(p).name.startswith("roc_"))
+        referenced.update(Path(p) for p in json.loads(deps.read_text()) if Path(p).name.startswith("roc_"))
     for parent in native_tools(root):
         # Exclude vendor documentation/media/build logs, not code or binary
         # inputs. Extensionless MSVC/STL headers are included as well.
         suffixes = {"", ".h", ".hpp", ".hxx", ".c", ".cpp", ".cxx", ".inl", ".inc", ".ipp", ".tcc",
                     ".in", ".txt", ".ver", ".idl", ".tlh", ".tli", ".tlb", ".asm", ".def", ".rc", ".rc2",
                     ".res", ".obj", ".lib", ".dll", ".exe", ".config", ".dat", ".manifest"}
-        paths.extend(p for p in parent.rglob("*") if p.is_file() and p.suffix.lower() in suffixes
-                     and (not p.name.startswith("roc_") or p.resolve() in referenced))
+        paths.extend(p for p in input_files(parent, ("__pycache__",)) if p.suffix.lower() in suffixes
+                     and not p.name.startswith("roc_"))
+    paths.extend(p for p in {p.resolve() for p in referenced} if p.is_file())
     paths.extend(p for p in (root / "clients/clients.json", root / "clients/sources.json") if p.exists())
+    live = set(paths)
     if live_only:
-        return digest_paths(root, paths)
+        return live, live
+    paths.extend(p for name in NATIVE_CODE if (p := root / "roc" / (name + ".py")).exists())
     paths.extend(p for p in (root / "research/template-units.json", root / "research/libs-bundle.json") if p.exists())
     parent = root / "rebuild" / CLIENT
-    paths.extend(p for p in parent.rglob("*") if p.is_file() and "out" not in p.relative_to(parent).parts)
+    paths.extend(input_files(parent, ("out", "__pycache__")))
     work = root / "work" / CLIENT
     paths.extend(p for p in (work / "functions.jsonl", work / "bounds.json") if p.is_file())
     out = root / "rebuild" / CLIENT / "out"
@@ -120,24 +152,39 @@ def input_hash(root, live_only=False):
     for path in sorted((root / "rebuild" / CLIENT / "out").glob("*/linked/*")):
         if path.parent.parent.name != "RbxgsApp" and path.is_file() and path.suffix in (".obj", ".lib"):
             paths.append(path)
-    return digest_paths(root, paths)
+    return set(paths), live
 
 
-def digest_paths(root, paths):
-    result = hashlib.sha256()
-    paths = sorted(set(paths))
+def input_hash(root, live_only=False):
+    return digest_paths(root, input_paths(root, live_only)[0])
+
+
+def input_hashes(root):
+    """Initial full/live checks share one walk and one read of each input."""
+    paths, live = input_paths(root)
+    paths = sorted(paths, key=str)
+    with concurrent.futures.ThreadPoolExecutor(max_workers=8) as pool:
+        contents = dict(zip(paths, pool.map(file_hash, paths)))
+    return digest_paths(root, paths, contents), digest_paths(root, live, contents)
+
+
+def digest_paths(root, paths, contents=None):
+    result = hashlib.sha256(b"native-inputs-v2\0")
+    paths = sorted(set(paths), key=str)
     # Independent file reads overlap Windows filesystem/antivirus latency.
     # map preserves path order; content hashes never rely on size or mtime.
-    with concurrent.futures.ThreadPoolExecutor(max_workers=8) as pool:
-        for path, content in zip(paths, pool.map(file_hash, paths)):
-            label = path.relative_to(root).as_posix() if path.is_relative_to(root) else str(path)
-            result.update(label.encode() + b"\0" + content)
+    if contents is None:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=8) as pool:
+            contents = dict(zip(paths, pool.map(file_hash, paths)))
+    for path in paths:
+        label = path.relative_to(root).as_posix() if path.is_relative_to(root) else str(path)
+        result.update(label.encode() + b"\0" + contents[path])
     for name in ("INCLUDE", "LIB", "LIBPATH", "CL", "_CL_", "PATH", "WINEPREFIX", "ROC_CL", "ROC_WINSDK", "ROC_ATLMFC"):
         result.update(name.encode() + b"=" + os.environ.get(name, "").encode())
     return result.hexdigest()
 
 
-def snapshot(root, destination):
+def snapshot(root, destination, link=False):
     """Private mutable outputs; installed source/toolchain trees are read-through."""
     destination.mkdir(parents=True, exist_ok=False)
     for name in ("roc", "research"):
@@ -159,11 +206,45 @@ def snapshot(root, destination):
             target.mkdir(parents=True, exist_ok=True)
             for path in source.glob("*.json*"):
                 shutil.copy2(path, target / path.name)
-    # Copy, never hard-link: linkers and compilers overwrite output files.
+    # Copy what a build may write: linkers and compilers overwrite output files in place. A snapshot only
+    # rebuilds rbxgs-app and links tests, so other modules' objects/libraries are read-only inputs: with link=True
+    # (only from an immutable baseline cache, never the live checkout) hard-link those
+    # (about half of a 1.3 GB copy that took minutes per job).
+    # ponytail: relies on nothing rewriting other modules' .obj/.lib in a snapshot; copy them if that ever changes.
     source = root / "rebuild" / CLIENT / "out"
+
+    def place(src, dst):
+        parts = Path(src).relative_to(source).parts
+        if link and parts[0] not in WRITABLE_OUT and Path(src).suffix.lower() in (".obj", ".lib"):
+            try:
+                return os.link(src, dst)
+            except OSError:
+                pass
+        return shutil.copy2(src, dst)
+    def ignore(folder, names):
+        relative = Path(folder).relative_to(source).parts
+        if not relative:
+            # Native compilation needs its verified inputs. Other modules contribute linked artifacts/reports.
+            modules = {p.name for p in source.iterdir() if p.is_dir()
+                       and ((p / "report.json").exists() or (p / "linked").is_dir())}
+            return [name for name in names if name not in modules | {"RbxgsApp", "mfclib", "placed.json"}]
+        if len(relative) == 1:
+            if relative[0] == "RbxgsApp":
+                return [name for name in names if name != "verified" and not (link and name.startswith("layer-"))]
+            if relative[0] != "mfclib":
+                return [name for name in names if name not in {"linked", "report.json", "placed.json"}]
+        return [name for name in names if name.endswith((".pdb", ".ilk"))]
+
     if source.exists():
-        shutil.copytree(source, destination / "rebuild" / CLIENT / "out",
-            ignore=shutil.ignore_patterns("agent-*", "overlay-*", "*.pdb", "*.ilk", "promotions"))
+        # Independent file copies overlap Windows filesystem/antivirus latency. Finish every copy before use.
+        with concurrent.futures.ThreadPoolExecutor(max_workers=8) as pool:
+            copies = []
+            def enqueue(src, dst):
+                copies.append(pool.submit(place, src, dst))
+                return dst
+            shutil.copytree(source, destination / "rebuild" / CLIENT / "out", copy_function=enqueue, ignore=ignore)
+            for future in copies:
+                future.result()
         # Incremental include tracking must point at this private overlay, never
         # the baseline's headers: only changed headers should force recompilation.
         for deps in (destination / "rebuild" / CLIENT / "out").rglob("*.deps"):
@@ -257,7 +338,11 @@ def check_gates(result, baseline=None, elsewhere=frozenset()):
     for milestone in ("M2", "M4a", "M5"):
         item = result["milestones"].get(milestone, {})
         if item.get("exit") != 0 or not item.get("passed"):
-            raise ValueError(milestone + " runtime gate failed")
+            code = item.get("exit")
+            status = "not run" if code is None else "%s (0x%08X)" % (code, code & 0xffffffff)
+            raise ValueError(milestone + " runtime gate failed: " + item.get("test", milestone)
+                             + ", exit=" + status + ", linked=" + str(item.get("linked"))
+                             + ("; " + item["output"] if item.get("output") else "; no stdout/stderr"))
     if result["base"].get("mismatch"):
         raise ValueError("Base offsets differ")
     if not baseline:
@@ -338,10 +423,27 @@ def verify_build(root, progress):
         early = [submit(["rebuild/2008-06/size_check.py"], "size"), submit(["rebuild/2008-06/base_check.py"], "base")]
         submit(["-c", build], "build").result()
         progress("checking")
-        late = [submit(["roc.py", "rebuild", CLIENT, "milestones"], "milestones"), submit(["-c", status], "status")]
+        late = [submit(["-c", "from roc import rebuild; rebuild.milestones('2008-06')"], "milestones"),
+                submit(["-c", status], "status")]
         for future in early + late:
             future.result()
     return collect(root)
+
+
+def prepare_baseline(root, cache, input_key):
+    """Resume only a snapshot prepared for these exact inputs; live objects never seed a cold proof."""
+    checkpoint = cache / "integration-prepared.json"
+    if checkpoint.exists() and json.loads(checkpoint.read_text()) == {"format": 1, "inputs": input_key}:
+        return cache, True
+    if cache.exists():
+        cache = cache.with_name(cache.name + "-" + str(time.time_ns()))
+    snapshot(root, cache)
+    for folder in (cache / "rebuild/2008-06/out/RbxgsApp").glob("layer-*"):
+        for obj in folder.glob("*.obj"):
+            obj.unlink()
+    run(cache, ["rebuild/2008-06/patches/make_rbxgs_client.py"], cache / "integration-generator.log")
+    atomic_json(cache / "integration-prepared.json", {"format": 1, "inputs": input_key})
+    return cache, False
 
 
 def verify(promotions, job):
@@ -355,9 +457,8 @@ def verify(promotions, job):
         # finish() records job["patches"] as the accepted overlay: keep only what was verified.
         job["patches"] = json.dumps(kept)
     promotions.progress(job["id"], "fingerprinting inputs")
-    before_hash = input_hash(root)
+    before_hash, live_hash = input_hashes(root)
     # Builds run in a copied snapshot: only read-through trees can still change under them.
-    live_hash = input_hash(root, live_only=True)
     cache = promotions.directory / "baselines" / before_hash
     index_file = promotions.directory / "baselines/index.json"
     index = json.loads(index_file.read_text()) if index_file.exists() else {}
@@ -370,17 +471,14 @@ def verify(promotions, job):
         notify(promotions, job)
     baseline_file = cache / "integration-result.json"
     if not baseline_file.exists():
-        if cache.exists():
-            # Interrupted snapshots are retained for diagnostics, never used as receipts.
-            cache = cache.with_name(cache.name + "-" + job["id"])
-            baseline_file = cache / "integration-result.json"
-        snapshot(root, cache)
-        # A cold baseline must compile native source, not inherit stale local
-        # compiler outputs. Subsequent candidates reuse this proven baseline.
-        for folder in (cache / "rebuild/2008-06/out/RbxgsApp").glob("layer-*"):
-            for obj in folder.glob("*.obj"):
-                obj.unlink()
-        run(cache, ["rebuild/2008-06/patches/make_rbxgs_client.py"], cache / "integration-generator.log")
+        progress("baseline: preparing snapshot")
+        cache, resumed = prepare_baseline(root, cache, before_hash)
+        baseline_file = cache / "integration-result.json"
+        # Persist the prepared location before compiling so a restart can reuse its content-checked objects.
+        index[before_hash] = cache.relative_to(root).as_posix()
+        atomic_json(index_file, index)
+        if resumed:
+            progress("baseline: resuming prepared snapshot")
         before = verify_build(cache, lambda phase: progress("baseline: " + phase))
         check_gates(before)
         before["linked_addresses"] = json.loads((cache / "integration-linked.json").read_text())
@@ -396,7 +494,8 @@ def verify(promotions, job):
     if candidate.exists():
         candidate = candidate.with_name(candidate.name + "-" + str(time.time_ns()))
     # Reuse independently verified outputs, while all writable files remain copies.
-    snapshot(cache, candidate)
+    progress("preparing candidate snapshot")
+    snapshot(cache, candidate, link=True)  # the baseline cache is never rebuilt: share its read-only objects
     atomic_json(candidate / "rebuild" / CLIENT / "patches" / "rbxgs-client.json", combined)
     after = verify_build(candidate, progress)
     elsewhere = other_module_owned(candidate)
@@ -459,6 +558,9 @@ def cache_accepted(promotions, receipt):
 def loop(promotions, log=print):
     # Only the server owns this worker. Clients cannot POST verification results.
     with promotions.store.lock, promotions.store.db:
+        # Interrupted work resumes ahead of ordinary FIFO jobs; explicit force-queue requests still take precedence.
+        promotions.store.db.execute("INSERT OR IGNORE INTO integration_queue_priority(job,requested) "
+                                    "SELECT id,0 FROM integration_jobs WHERE state='verifying'")
         promotions.store.db.execute("UPDATE integration_jobs SET state='queued',phase='resuming' WHERE state='verifying'")
     while True:
         try:

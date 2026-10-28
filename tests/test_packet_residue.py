@@ -19,3 +19,18 @@ def test_residue_keeps_every_changed_hunk():
                       " g", "-h", "+H", " i"])
     out = packet._residue(wide, context=1)
     assert "-b" in out and "-h" in out and " e" not in out
+
+
+def test_large_packet_keeps_long_function_tail(monkeypatch, tmp_path):
+    asm = ['00658000  90  nop'] * 140 + ['00658fa2  c3  ret']
+    monkeypatch.setattr(match, 'target', lambda *args: (b'code', [], {'size': 141}))
+    monkeypatch.setattr(match, 'disasm', lambda *args: asm)
+    monkeypatch.setattr(packet.draft, 'target_data_facts', lambda *args: {})
+    monkeypatch.setattr(packet, '_source', lambda *args: ('', '', 0))
+    monkeypatch.setattr(packet, '_similar', lambda *args: [])
+    monkeypatch.setattr(packet, '_lessons', lambda *args, **kwargs: [])
+    monkeypatch.setattr(packet, '_failed', lambda *args, **kwargs: [])
+    monkeypatch.setattr(packet.claim_state, 'load_claim', lambda *args, **kwargs: None)
+    result = packet.build('2008-06', '00658d20', root=tmp_path, include_diff=False, max_tokens=12000)
+    assert result['target']['asm'] == asm
+    assert not result['truncated']

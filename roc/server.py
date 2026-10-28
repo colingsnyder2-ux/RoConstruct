@@ -532,6 +532,17 @@ class Store:
                                     "AND new = 100 AND old < 100", (client, now - window)).fetchone()[0]
         return (count or 0) / window
 
+    def match_byte_rate(self, client, window=86400):
+        """Target bytes newly matched per second over the recent window."""
+        now = time.time()
+        with self.lock:
+            size = self.db.execute(
+                "SELECT SUM(f.size) FROM funcs f JOIN "
+                "(SELECT DISTINCT addr FROM events WHERE client=? AND ts>=? "
+                "AND new=100 AND old<100) e ON e.addr=f.addr WHERE f.client=?",
+                (client, now - window, client)).fetchone()[0]
+        return (size or 0) / window
+
     def scores(self):
         with self.lock:
             rows = self.db.execute("SELECT client, addr, score FROM funcs WHERE score > 0").fetchall()
@@ -675,8 +686,6 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
     if integration is None and getattr(store, "db", None) is not None:
         from roc.integration import Promotions
         integration = Promotions(store)
-    from roc.integration import native_token as integration_token
-    native_token = integration_token(integration.root if integration else ROOT, token)
     from roc import libs
     recipe_versions = libs.recipe_versions()
     lease_slots = threading.BoundedSemaphore(8)
@@ -715,10 +724,12 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
         def do_GET(self):
             url = urlparse(self.path)
             q = {k: v[0] for k, v in parse_qs(url.query).items()}
-            if url.path in ("/v1/integration", "/v1/integration/base"):
+            if url.path in ("/v1/integration", "/v1/integration/base", "/v1/integration/evidence"):
                 if integration is None:
                     return self.send(503, {"error": "Native integration unavailable"})
                 try:
+                    if url.path.endswith("/evidence"):
+                        return self.send(200, integration.evidence())
                     return self.send(200, integration.baseline() if url.path.endswith("/base")
                                      else integration.status(q.get("id")))
                 except (ValueError, OSError) as error:
@@ -728,10 +739,19 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
                 return self.send(200, {"clients": {n: {k: e.get(k) for k in ("sha256", "compiler", "compiler_build", "flags")}
                                                    for n, e in reg.items()}, "verify": sorted(can_verify),
                                        "recipe_versions": recipe_versions,
-                                       "native_integration": {"version": 1, "enabled": bool(native_token),
+                                       "native_integration": {"version": 2, "enabled": integration is not None, "invitation_required": False,
                                                               "max_batch": 16}})
             if url.path == "/v1/status":
-                return self.send(200, store.status())
+                status = store.status()
+                progress = integration.root / "work/integration/progress-native.json" if integration else None
+                linked = set(json.loads(progress.read_text())["addresses"]) if progress and progress.exists() else None
+                for client in status["clients"]:
+                    supported = integration is not None and client["client"] == integration_protocol.CLIENT
+                    count = len(linked) if supported and linked is not None else None
+                    client.update(native_supported=supported, integrated=count,
+                                  integration_percent=100 * count / client["functions"]
+                                  if count is not None and client["functions"] else None)
+                return self.send(200, status)
             if url.path == "/v1/progress":
                 return self.send(200, store.progress_snapshot(q.get("client")))
             if url.path == "/v1/function-history":
@@ -801,9 +821,6 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
             if (not native
                     and token and self.headers.get("X-Roc-Token") != token):
                 return self.send(403, {"error": "wrong or missing server password (token)"})
-            if native and (not native_token or self.headers.get("X-Roc-Token") != native_token):
-                self.close_connection = True
-                return self.send(403 if native_token else 503, {"error": "Native integration token required"})
             try:
                 length = int(self.headers.get("Content-Length") or 0)
                 if not 0 <= length <= (integration_protocol.MAX_REQUEST_BYTES if native else 1 << 20):
@@ -816,10 +833,6 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
             if path.startswith("/v1/integration/"):
                 if integration is None:
                     return self.send(503, {"error": "Native integration unavailable"})
-                if not native_token:
-                    return self.send(503, {"error": "Native integration needs a configured server token"})
-                if self.headers.get("X-Roc-Token") != native_token:
-                    return self.send(403, {"error": "Native integration token required"})
                 if not USER_RE.fullmatch(user):
                     return self.send(400, {"error": "Need a valid contributor username"})
                 try:
@@ -831,6 +844,8 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
                                                    body.get("targets"), body.get("compact", False))
                     elif path.endswith("/submit"):
                         result = integration.submit(user, body)
+                    elif path.endswith("/force-queue"):
+                        result = integration.force_queue(user, body.get("id"))
                     elif path.endswith("/renew") or path.endswith("/release"):
                         identifiers = body.get("claims", [str(body.get("claim", ""))])
                         result = integration.renew_many(user, identifiers, path.endswith("/release"), body.get("reason"))
@@ -1065,8 +1080,6 @@ def serve(host="0.0.0.0", port=8765, db=None, token=None, lease_seconds=900,
     from roc.integration import Promotions
     from roc.integration_verify import loop as integration_loop
     integration = Promotions(store)
-    from roc.integration import native_token as integration_token
-    integration_token(ROOT, token, create=True)
     httpd = ThreadingHTTPServer((host, port), make_handler(store, token, can_verify,
                                                        mine_log=mine_log, server_mine_log=server_mine_log,
                                                        integration=integration))
@@ -1128,7 +1141,7 @@ def start_tunnel(port, log=print):
     return url, proc
 
 
-def publish_once(store, public_url, log=print):
+def publish_once(store, public_url, log=print, findings_only=False):
     """Rebuild docs/ from the live database and push it, if anything changed."""
     lock = ROOT / "work" / "publish.lock"
     lock.parent.mkdir(parents=True, exist_ok=True)
@@ -1146,11 +1159,17 @@ def publish_once(store, public_url, log=print):
             fcntl.flock(handle.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
     except OSError:
         handle.close()
-        return log("Publish already running.")
+        log("Publish already running.")
+        return False
     try:
-        return _publish_once(store, public_url, log)
+        if findings_only:
+            _publish_findings_only(store, log)
+        else:
+            _publish_once(store, public_url, log)
+        return True
     finally:
         handle.close()  # OS releases the lock even when the hosting process crashes.
+
 
 
 def _publish_once(store, public_url, log=print):
@@ -1198,12 +1217,16 @@ def _publish_once(store, public_url, log=print):
     # time; per-function data lives only in the history-free gh-pages commit.
     site = ("docs/progress.json", "docs/history.json", "docs/source-links.json",
             "docs/rebuild-progress.json")
+    site = tuple(path for path in site if (ROOT / path).exists())
+    if not site:
+        return log("No progress files to publish.")
     git("add", *site)
     if git("diff", "--cached", "--quiet", "--", *site).returncode == 0:
         return log("Progress unchanged.")
     git("commit", "-m", "Update progress", "--", *site)
     push = git("push", "origin", "HEAD")
     log("Progress published." if push.returncode == 0 else "Progress push failed: %s" % push.stderr.strip()[-300:])
+
 
 
 def publish_pages(git_exe, log=print):
@@ -1276,27 +1299,13 @@ def sync_findings(store):
 
 
 def export_agent_findings(store):
-    """Portable memory rides the existing findings publisher's src/ export."""
-    from roc import agent_memory, tasks
-    folder = ROOT / "local" / "findings" / "agent-memory"
+    """Only reviewed lessons are needed by findings consumers; attempts remain in the server DB/API."""
+    from roc import tasks
+    folder = ROOT / 'local/findings/data'
     folder.mkdir(parents=True, exist_ok=True)
-    data, cursor = [], 0
-    while True:
-        result = store.agent_memory(cursor)
-        data.extend(result["records"])
-        cursor = result["cursor"]
-        if not result["more"]:
-            break
-    tasks.write_text(folder / "lessons.json", json.dumps(result["lessons"], indent=2))
-    tasks.write_text(folder / "attempts.jsonl", "".join(json.dumps(row) + "\n" for row in data))
-    context = folder / "context"  # rebuilt each export so retired docs do not linger
-    if context.is_dir():
-        shutil.rmtree(context)
-    for name, content in agent_memory.context().items():
-        target = context / name
-        target.parent.mkdir(parents=True, exist_ok=True)
-        tasks.write_text(target, content)
-    (folder / "README.md").unlink(missing_ok=True)  # described by the findings README
+    result = store.agent_memory(0)
+    tasks.write_text(folder / 'lessons.json', json.dumps(result['lessons'], indent=2))
+
 
 
 def findings_source(text, units):
@@ -1326,105 +1335,18 @@ def findings_source(text, units):
 
 
 def publish_findings(git_exe, log=print):
-    """Copy local recovered sources into the separate findings repository."""
-    source = ROOT / "src"
-    if not source.exists():
-        return
-    index = ROOT / "work" / ("findings-index-" + uuid.uuid4().hex)
-    index.parent.mkdir(exist_ok=True)
-    env = os.environ.copy()
-    env["GIT_INDEX_FILE"] = str(index)
-    git = lambda *a: subprocess.run([git_exe, *a], cwd=ROOT, env=env, capture_output=True, text=True)
-    try:
-        fetched = git("fetch", "findings", "main")
-        if fetched.returncode:
-            return log("Findings fetch failed: %s" % fetched.stderr.strip()[-300:])
-        parent = git("rev-parse", "FETCH_HEAD")
-        if parent.returncode:
-            return log("Findings revision unavailable: %s" % parent.stderr.strip()[-300:])
-        parent = parent.stdout.strip()
-        # The findings tree is rebuilt from an allowlist (sources + portable evidence), so files
-        # that do not belong there never persist. sync_findings has already exported every
-        # stored source into src/.
-        if git("read-tree", "--empty").returncode or git("add", "-f", "src").returncode:
-            return log("Findings source staging failed.")
-        from roc import libs
-        units = libs.generated_units()
-        # Stream blobs into one Git pack; avoid a temporary file/process per function.
-        with tempfile.TemporaryDirectory(prefix="findings-sources-", dir=ROOT / "work") as temporary:
-            names, seen = [], {}
-            marks = Path(temporary) / "marks"
-            listed = git("ls-files", "--stage", "-z", "--", "src")
-            if listed.returncode:
-                return log("Findings source listing failed.")
-            rows = [row.split("\t", 1) for row in listed.stdout.split("\0") if row]
-            with tempfile.TemporaryFile(dir=temporary) as originals, tempfile.TemporaryFile(dir=temporary) as stream:
-                # Reading staged blobs in bulk avoids reopening 170k files on Windows.
-                read = subprocess.run([git_exe, "cat-file", "--batch"], cwd=ROOT, env=env,
-                    input=("\n".join(meta.split()[1] for meta, _ in rows) + "\n").encode(),
-                    stdout=originals, stderr=subprocess.PIPE)
-                if read.returncode:
-                    return log("Findings source reading failed: " + read.stderr.decode(errors="replace")[-300:])
-                originals.seek(0)
-                for _, relative in rows:
-                    size = int(originals.readline().split()[-1])
-                    text = originals.read(size).decode("utf-8", errors="replace").replace("\r\n", "\n")
-                    originals.read(1)  # batch record separator
-                    expanded = findings_source(text, units)
-                    if expanded == text:
-                        continue
-                    body = expanded.encode("utf-8")
-                    digest = hashlib.sha256(body).digest()
-                    if digest not in seen:
-                        seen[digest] = len(seen) + 1
-                        stream.write(("blob\nmark :%d\ndata %d\n" % (seen[digest], len(body))).encode("ascii"))
-                        stream.write(body)
-                        stream.write(b"\n")
-                    names.append((relative, seen[digest]))
-                stream.write(b"done\n")
-                stream.seek(0)
-                if names:
-                    blobs = subprocess.run([git_exe, "fast-import", "--quiet", "--done", "--export-marks=" + str(marks)],
-                                           cwd=ROOT, env=env, stdin=stream, capture_output=True, text=True)
-                    if blobs.returncode:
-                        return log("Findings source hashing failed: " + blobs.stderr.strip()[-300:])
-            if names:
-                hashes = dict(line.split() for line in marks.read_text().splitlines())
-                staged = subprocess.run([git_exe, "update-index", "-z", "--index-info"], cwd=ROOT, env=env,
-                                        input="".join("100644 %s\t%s\0" % (hashes[":" + str(mark)], name)
-                                                      for name, mark in names),
-                                        capture_output=True, text=True)
-                if staged.returncode:
-                    return log("Findings source staging failed: " + staged.stderr.strip()[-300:])
-                log("Prepared %d readable library sources." % len(names))
-        findings = ROOT / "local" / "findings"
-        # Stage portable evidence and the findings repo's own README/workflow at its root;
-        # never local work/ or tools/. Files are read from the local findings checkout.
-        portable = [findings / "README.md", findings / ".gitignore",
-                    *[path for folder in (".github", "agent-memory", "reports", "units")
-                      for path in sorted((findings / folder).rglob("*"))]]
-        for path in portable:
-            if not path.is_file():
-                continue
-            blob = git("hash-object", "-w", str(path))
-            if blob.returncode or git("update-index", "--add", "--cacheinfo", "100644", blob.stdout.strip(),
-                                     path.relative_to(findings).as_posix()).returncode:
-                return log("Findings evidence staging failed: %s" % path.relative_to(findings).as_posix())
-        tree = git("write-tree")
-        if tree.returncode:
-            return log("Findings tree creation failed: %s" % tree.stderr.strip()[-300:])
-        tree = tree.stdout.strip()
-        old_tree = git("rev-parse", parent + "^{tree}")
-        if tree == old_tree.stdout.strip():
-            return
-        commit = git("commit-tree", tree, "-p", parent, "-m", "Publish recovered findings")
-        if commit.returncode:
-            return log("Findings commit failed: %s" % commit.stderr.strip()[-300:])
-        pushed = git("push", "findings", commit.stdout.strip() + ":refs/heads/main")
-        log("Findings published." if not pushed.returncode else "Findings push failed: %s" % pushed.stderr.strip()[-300:])
-    finally:
-        if index.exists():
-            index.unlink()
+    from roc.findings_publish import prepare_native
+    prepare_native(ROOT, log)
+    from roc.findings_transport import publish
+    messages = []
+    def report(message):
+        messages.append(message)
+        log(message)
+    publish(ROOT, git_exe, report)
+    failures = [message for message in messages if 'failed' in message.lower() or 'unavailable' in message.lower()]
+    if failures:
+        raise RuntimeError(failures[-1])
+
 
 
 def publish_loop(store, public_url, every, log=print, tunnel=None, port=None, publish=True, primary=None):
@@ -1469,10 +1391,111 @@ def publish_loop(store, public_url, every, log=print, tunnel=None, port=None, pu
             active_url = public_url
         try:
             if time.monotonic() >= next_publish:
-                if active_url and publish:
-                    publish_once(store, active_url, log)
-                next_publish = time.monotonic() + every
+                published = publish_once(store, active_url, log, findings_only=not active_url) if publish else True
+                next_publish = time.monotonic() + (30 if published is False else every)
         except Exception as error:  # keep serving even if a publish fails
             log("Publish failed: %s" % error)
-            next_publish = time.monotonic() + every
-        time.sleep(5 if tunnel is not None or primary else every)
+            next_publish = time.monotonic() + min(60, every)
+        time.sleep(5 if tunnel is not None or primary else min(30, every))
+
+
+
+def _publish_findings_only(store, log=print):
+    """Findings publication does not require a public worker URL or an origin push."""
+    git_exe = setup.find_exe('git')
+    if not git_exe:
+        raise RuntimeError('git not found; findings were not published')
+    sync_findings(store)
+    publish_findings(git_exe, log)
+
+
+
+def run_publisher(every=3600, parent_pid=None, log=print):
+    """Server-owned publisher process. Its lease keeps older API hosts from publishing stale layouts."""
+    from roc import libs, progress, integration_site
+    from roc.integration import atomic_json
+    store = Store.__new__(Store)
+    store.lock = threading.Lock()
+    store.db = sqlite3.connect((ROOT / 'work/server.db').as_uri() + '?mode=ro', uri=True)
+    store.db.create_function('roc_library', 1, libs.library_of, deterministic=True)
+    path = ROOT / 'work/publish.lock'
+    handle = path.open('a+b')
+    if handle.tell() == 0:
+        handle.write(b'\0')
+        handle.flush()
+    handle.seek(0)
+    state_path = ROOT / 'work/server-publisher.json'
+    state = {'pid': os.getpid(), 'parent_pid': parent_pid, 'interval_seconds': every, 'state': 'starting'}
+    next_publish = 0
+    locked = False
+    try:
+        while parent_pid is None or _publisher_parent_running(parent_pid):
+            if not locked:
+                try:
+                    if os.name == 'nt':
+                        import msvcrt
+                        msvcrt.locking(handle.fileno(), msvcrt.LK_NBLCK, 1)
+                    else:
+                        import fcntl
+                        fcntl.flock(handle.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+                    locked = True
+                except OSError:
+                    time.sleep(5)
+                    continue
+            if time.monotonic() >= next_publish:
+                state.update(state='publishing', error=None)
+                atomic_json(state_path, state)
+                try:
+                    _publish_findings_only(store, log)
+                    existing = ROOT / 'docs/progress.json'
+                    public = json.loads(existing.read_text()).get('server') if existing.exists() else None
+                    progress.build(public_server=public, remote=export(store))
+                    integration_site.build(root=ROOT, log=log)
+                    messages = []
+                    publish_pages(setup.find_exe('git'), messages.append)
+                    for message in messages:
+                        log(message)
+                        if 'failed' in message.lower():
+                            raise RuntimeError(message)
+                    revision = subprocess.run(['git', 'ls-remote', 'findings', 'refs/heads/main'],
+                        cwd=ROOT, capture_output=True, text=True, timeout=60, check=True).stdout.split()[0]
+                    state.update(state='idle', last_published=time.time(), findings_revision=revision)
+                    next_publish = time.monotonic() + every
+                    log('Server publisher complete; next run in %d seconds.' % every)
+                except Exception as error:
+                    state.update(state='retrying', error=str(error)[:500])
+                    next_publish = time.monotonic() + min(60, every)
+                    log('Server publisher will retry: ' + str(error)[:500])
+                atomic_json(state_path, state)
+            time.sleep(5)
+    finally:
+        handle.close()
+        store.db.close()
+        state['state'] = 'stopped'
+        atomic_json(state_path, state)
+
+
+
+def _publisher_parent_running(pid):
+    if os.name != 'nt':
+        try:
+            os.kill(pid, 0)
+            return True
+        except ProcessLookupError:
+            return False
+    import ctypes
+    from ctypes import wintypes
+    api = ctypes.WinDLL('kernel32', use_last_error=True)
+    api.OpenProcess.argtypes = [wintypes.DWORD, wintypes.BOOL, wintypes.DWORD]
+    api.OpenProcess.restype = wintypes.HANDLE
+    api.GetExitCodeProcess.argtypes = [wintypes.HANDLE, ctypes.POINTER(wintypes.DWORD)]
+    api.CloseHandle.argtypes = [wintypes.HANDLE]
+    handle = api.OpenProcess(0x1000, False, pid)
+    if not handle:
+        return False
+    try:
+        code = wintypes.DWORD()
+        return bool(api.GetExitCodeProcess(handle, ctypes.byref(code))) and code.value == 259
+    finally:
+        api.CloseHandle(handle)
+

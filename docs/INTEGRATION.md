@@ -15,10 +15,8 @@ The existing `roc lib-fetch rbxgs` command fetches the configured source recipe
 when its source bundle is available to your installation.
 
 Configure your contributor name and the existing group server with `roc config`.
-The build-server owner runs `roc integrate invite` and privately gives trusted
-helpers the invitation token. Pass it as `--token INVITE` to integration commands,
-or set `ROC_NATIVE_TOKEN` in your own environment. Public mining needs no new
-password. Do not post invitation tokens, executables or vendor trees.
+Native integration is public: no invitation, native token or owner approval required.
+Claims, queue ownership and independent server verification still apply.
 
 Native verification compiles and runs submitted C++. Operate the verifier under
 a dedicated build account/VM for contributors you do not already trust. Private
@@ -162,8 +160,8 @@ batching does not change its leases, matching scores, points or webhook routing.
 
 The normal `roc server`/`roc host` service starts a serialized native verifier.
 It keeps claims, queued work, accepted recipes and credits in `work/server.db`.
-An invitation is generated privately on first startup when no server/native
-token is configured. Restart the existing service after installing this feature;
+Native contribution endpoints are public, even when ordinary mining has a server
+password configured. Restart the existing service after installing this feature;
 do not start another listener on port 8765.
 
 Each verification uses private writable build outputs. Uploaded bundles contain
@@ -177,9 +175,35 @@ restart it after changing the configured toolchain. SDK/compiler discovery is
 not repeated for every ABI probe. Accepted candidates become the next cached
 baseline, including failed-candidate retries against an unchanged baseline.
 
+To move your queued batch to the front of the waiting queue:
+
+```text
+roc integrate force-queue --id JOB_ID
+```
+
+The latest force-queue request is selected first after active verification finishes.
+Priority survives server restarts, keeps submission timestamps, and preserves normal
+batch merging and all verification gates. Only the batch owner may prioritize it;
+verifying and completed jobs cannot be force-queued. The server must load the updated
+queue handler before using this command; restart it when no verification is active.
+
 Cold verification can take many minutes. Batch several coherent fixes to amortize
 it. Current phases are snapshot, baseline build/checks, preflight, building,
 checking and complete; no fabricated compiler percentage is shown.
+
+Use `roc integrate fingerprint` for a read-only fingerprint timing check. Initial
+full/live fingerprints share one input walk and one content-read pass; later live
+checks still detect source/toolchain changes during verification, including edits
+that preserve file size and timestamps. Output/cache trees are pruned before descent.
+The native cache key covers compiler/matcher/gate modules and build inputs, excluding
+CLI, queue, UI and webhook code. Milestones execute the build module directly.
+
+Compiler/SDK path discovery is persisted in `work/integration/toolchain.json`, checked
+against resolver code, installation state, configuration and existing paths. Compiler,
+SDK and source bytes are still content-hashed. New baseline snapshots checkpoint their
+prepared input identity before compiling; after interruption, matching snapshots reuse
+their private content-checked objects and rerun every gate. Unprepared snapshots are
+retained for diagnostics. Completed baseline receipts remain required for acceptance.
 
 Server Mining receives a fresh digest when progress changes: purple integrated native bodies,
 blue exact mined sources awaiting integration, yellow partial mined sources,

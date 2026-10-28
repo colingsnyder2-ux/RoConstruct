@@ -959,16 +959,31 @@ GIT_SOURCES = {"../rbxgs/": ("https://github.com/RBLXDecomp/RBXGSdecomp.git", ".
 
 def _clone_source(repo, target):
     """Clone a public source repository with its submodules, once. A failed clone is removed."""
+    target = Path(target).resolve()
+    tools = (ROOT / 'tools').resolve()
+    if target == tools or not target.is_relative_to(tools):
+        raise SystemExit('Source installation must stay inside tools/: ' + str(target))
     if target.exists():
         return
     if not shutil.which("git"):
         raise SystemExit("Installing %s needs git. Install Git for Windows, then retry." % repo)
     target.parent.mkdir(parents=True, exist_ok=True)
+    lock = ROOT / 'research/native-source-lock.json'
+    revision = json.loads(lock.read_text(encoding='utf-8')).get(repo) if lock.exists() else None
+    if revision and not re.fullmatch('[0-9a-f]{40}', revision):
+        raise SystemExit('Invalid native source revision')
+    target.mkdir()
     try:
-        subprocess.run(["git", "clone", "--recursive", "--shallow-submodules", "--depth", "1", repo, str(target)],
-                       check=True)
+        if revision:
+            subprocess.run(['git', 'clone', '--filter=blob:none', '--no-checkout', '--depth', '1', repo, str(target)], check=True)
+            subprocess.run(['git', '-C', str(target), 'fetch', '--depth', '1', 'origin', revision], check=True)
+            subprocess.run(['git', '-C', str(target), 'checkout', '--detach', revision], check=True)
+            subprocess.run(['git', '-C', str(target), 'submodule', 'update', '--init', '--recursive', '--depth', '1'], check=True)
+        else:
+            subprocess.run(["git", "clone", "--recursive", "--shallow-submodules", "--depth", "1", repo, str(target)], check=True)
     except (subprocess.CalledProcessError, OSError):
-        shutil.rmtree(target, ignore_errors=True)
+        if target.resolve().is_relative_to(tools) and target.resolve() != tools:
+            shutil.rmtree(target, ignore_errors=True)
         raise SystemExit("Could not download %s. Check the connection, then retry." % repo)
 
 
@@ -1100,10 +1115,15 @@ def accept_units(units):
 
 
 def generated_units():
+    bundled = ROOT / "research/native-units.json"
+    units = json.loads(bundled.read_text(encoding="utf-8")) if bundled.exists() else {}
     try:
-        return json.loads(UNITS_FILE.read_text(encoding="utf-8"))
+        local = json.loads(UNITS_FILE.read_text(encoding="utf-8"))
     except (OSError, ValueError):
-        return {}
+        return units
+    for src, files in local.items():
+        units.setdefault(src, {}).update(files)
+    return units
 
 def add_unit(recipe, text, prefix="roc_unit_"):
     """Write one generated unit into a recipe's tree under a content-hash name and keep it

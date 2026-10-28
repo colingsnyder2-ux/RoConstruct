@@ -12,6 +12,7 @@ def test_mixed_clients_send_separate_messages(monkeypatch, automatic):
     store.display_progress.side_effect = lambda client: (8, 10, 80, 100) if client == "2008-06" else (2, 20, 20, 200)
     store.digest_progress.return_value = (20, 20, 40, 100)
     store.match_rate.return_value = 1 / 3600
+    store.match_byte_rate.return_value = 10 / 3600
     store.user_points.return_value = 100
     sent = []
 
@@ -44,26 +45,36 @@ def test_mixed_clients_send_separate_messages(monkeypatch, automatic):
     assert ":yellow_square:" in first["description"] and "🟨 partial" in first["description"]
     assert first["fields"][1]["name"] == "🟡 Partially Matched"
     assert "🟡" in first["fields"][1]["value"]
-    assert first["fields"][2]["value"].startswith("**1 functions/hr** *(last 2h)* · ETA ")
+    assert first["fields"][2]["value"] == "**1 functions/hr** · **10 B/hr** *(last 6h)* · byte ETA 2h 0m"
+    assert second["fields"][2]["value"].endswith("byte ETA 18h 0m")
     if not automatic:
         assert first["fields"][3]["value"] == "**colin** · 100 pts *(+10)*\n**intel** · 100 pts *(+10)*"
         assert "workers in batch" not in str(first) and "worker in batch" not in str(first)
-    assert store.match_rate.call_args_list[0].args == ("2008-06", 7200)
-    assert store.match_rate.call_args_list[1].args == ("2012-06", 7200)
+    assert store.match_rate.call_args_list[0].args == ("2008-06", 21600)
+    assert store.match_rate.call_args_list[1].args == ("2012-06", 21600)
+    assert store.match_byte_rate.call_args_list[0].args == ("2008-06", 21600)
     with pytest.raises(ValueError, match="one client"):
         log.digest(events)
 
 
-def test_rate_includes_one_hour_old_gain_but_not_three_hours(monkeypatch):
+def test_rate_uses_six_hours_and_target_bytes(monkeypatch):
     store = server.Store(":memory:", 1)
-    monkeypatch.setattr(server.time, "time", lambda: 20000)
+    monkeypatch.setattr(server.time, "time", lambda: 30000)
     try:
         store.db.executemany("INSERT INTO events VALUES(?,?,?,?,?,?)", [
-            (16400, "2008-06", "a", "user", 50, 100),
-            (9200, "2008-06", "b", "user", 0, 100),
-            (19000, "2008-06", "c", "user", 0, 70),
-            (19000, "2012-06", "d", "user", 0, 100)])
-        assert store.match_rate("2008-06", reports.RATE_WINDOW) * 3600 == 0.5
+            (26400, "2008-06", "a", "user", 50, 100),
+            (12000, "2008-06", "b", "user", 0, 100),
+            (4800, "2008-06", "old", "user", 0, 100),
+            (29000, "2008-06", "c", "user", 0, 70),
+            (29000, "2012-06", "a", "user", 0, 100)])
+        store.db.executemany("INSERT INTO funcs(client,addr,size) VALUES(?,?,?)", [
+            ("2008-06", "a", 60), ("2008-06", "b", 540),
+            ("2008-06", "old", 9000), ("2008-06", "c", 9000), ("2012-06", "a", 6000)])
+        assert store.match_rate("2008-06", reports.RATE_WINDOW) * 3600 == pytest.approx(2 / 6)
+        assert store.match_byte_rate("2008-06", reports.RATE_WINDOW) * 3600 == 100
+        assert store.match_byte_rate("missing", reports.RATE_WINDOW) == 0
+        store.db.execute("INSERT INTO events VALUES(29000,'2008-06','a','user',0,100)")
+        assert store.match_byte_rate("2008-06", reports.RATE_WINDOW) * 3600 == 100
     finally:
         store.db.close()
 

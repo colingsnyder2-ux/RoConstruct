@@ -53,8 +53,10 @@ def obj_relocations(obj, symbol):
 def _names(client):
     from roc.rebuild import workspace
     path = workspace(client) / "out" / "native-names.json"
-    rebuilt = {int(a, 16): v["symbol"] for a, v in json.loads(path.read_text()).items() if v.get("symbol")} \
-        if path.exists() else {}
+    cached = match.ROOT / "work/integration-client/evidence.json"  # server copy for PCs without rebuild artifacts
+    names = json.loads(path.read_text()) if path.exists() else \
+        json.loads(cached.read_text())["names"] if cached.exists() else {}
+    rebuilt = {int(a, 16): v["symbol"] for a, v in names.items() if v.get("symbol")}
     units = {int(a, 16): row.get("unit") for a, row in match._functions(client).items() if row.get("unit")}
     return rebuilt, rtti.descriptors(client), units
 

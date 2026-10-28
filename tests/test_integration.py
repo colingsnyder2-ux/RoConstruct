@@ -149,6 +149,58 @@ def test_other_authors_and_overlapping_files_are_not_merged(promotions):
     assert job["id"] == a and "members" not in job  # bob differs, the third edits the same file
 
 
+def test_force_queue_survives_restart_preserves_timestamps_and_merging(promotions):
+    a, b, c = queue_three(promotions, users=("alice", "bob", "alice"))
+    created = dict(promotions.store.db.execute("SELECT id,created FROM integration_jobs"))
+    assert promotions.force_queue("alice", c)["priority"] == "next"
+    assert promotions.wake.is_set()
+    resumed = integration.Promotions(make_store(promotions.root.parent / "server.db"), promotions.root)
+    try:
+        job = resumed.take()
+        assert job["id"] == c and job["members"] == [c, a]
+        assert dict(resumed.store.db.execute("SELECT id,created FROM integration_jobs")) == created
+        assert resumed.store.db.execute("SELECT COUNT(*) FROM integration_queue_priority").fetchone()[0] == 0
+    finally:
+        resumed.store.db.close()
+
+
+def test_force_queue_preserves_active_job_and_solo_retry(promotions):
+    a, b, c = queue_three(promotions, users=("alice", "bob", "charlie"))
+    active = promotions.take()
+    with promotions.store.db:
+        promotions.store.db.execute("UPDATE integration_jobs SET phase='solo' WHERE id=?", (c,))
+    promotions.force_queue("charlie", c)
+    assert promotions.status(a)["jobs"][0]["state"] == "verifying"
+    assert promotions.status(c)["jobs"][0]["phase"] == "solo"
+    assert promotions.finish(active, {"accepted": False, "reason": "test"})
+    assert promotions.take()["id"] == c
+
+
+def test_latest_force_queue_request_goes_first(promotions):
+    a, b, c = queue_three(promotions, users=("alice", "bob", "charlie"))
+    promotions.force_queue("charlie", c)
+    promotions.force_queue("bob", b)
+    assert promotions.take()["id"] == b
+
+
+@pytest.mark.parametrize('state', ['verifying', 'accepted', 'rejected'])
+def test_force_queue_rejects_nonqueued_jobs(promotions, state):
+    a, _, _ = queue_three(promotions)
+    with promotions.store.db:
+        promotions.store.db.execute("UPDATE integration_jobs SET state=? WHERE id=?", (state, a))
+    with pytest.raises(ValueError, match='queued batch'):
+        promotions.force_queue('alice', a)
+    assert promotions.store.db.execute("SELECT COUNT(*) FROM integration_queue_priority").fetchone()[0] == 0
+
+
+def test_force_queue_checks_owner_and_id(promotions):
+    a, _, _ = queue_three(promotions)
+    for user, identifier in [('bob', a), ('alice', '0' * 32), ('alice', []), ('alice', None)]:
+        with pytest.raises(ValueError):
+            promotions.force_queue(user, identifier)
+    assert promotions.store.db.execute("SELECT COUNT(*) FROM integration_queue_priority").fetchone()[0] == 0
+
+
 def test_two_thousand_targets_share_one_compact_batch_and_job(promotions):
     names = ['Bulk%d' % i for i in range(1000)]
     header = promotions.root / 'tools/rbxgs/Client/App/include/Classes.h'
@@ -449,11 +501,192 @@ def test_registry_updates_do_not_invalidate_installed_native_inputs(promotions):
     assert integration_verify.input_hash(promotions.root) != before
 
 
+@pytest.mark.parametrize('name', ['roc.py', 'roc/server.py', 'roc/integration.py', 'roc/reports.py', 'roc/native_try.py'])
+def test_service_edits_do_not_discard_native_baseline(promotions, name):
+    path = promotions.root / name
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text('first')
+    before = integration_verify.input_hash(promotions.root)
+    path.write_text('other')
+    assert integration_verify.input_hash(promotions.root) == before
+
+
+@pytest.mark.parametrize('name', ['rebuild', 'match', 'libs', 'integration_verify'])
+def test_native_implementation_edits_invalidate_baseline(promotions, name):
+    path = promotions.root / 'roc' / (name + '.py')
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text('first')
+    before, live = integration_verify.input_hashes(promotions.root)
+    path.write_text('other')
+    after, same_live = integration_verify.input_hashes(promotions.root)
+    assert before != after and live == same_live
+
+
+def test_full_and_live_fingerprints_read_each_file_once(promotions, monkeypatch):
+    root = promotions.root
+    expected = integration_verify.input_hash(root), integration_verify.input_hash(root, live_only=True)
+    paths, _ = integration_verify.input_paths(root)
+    reads = []
+    original = integration_verify.file_hash
+    def read(path):
+        reads.append(path)
+        return original(path)
+    monkeypatch.setattr(integration_verify, 'file_hash', read)
+    assert integration_verify.input_hashes(root) == expected
+    assert set(reads) == paths and len(reads) == len(paths)
+
+
+def test_fingerprint_prunes_native_output_tree_before_descent(promotions, monkeypatch):
+    ignored = promotions.root / 'rebuild/2008-06/out/RbxgsApp/overlay/deep'
+    ignored.mkdir(parents=True)
+    (ignored / 'ignored.cpp').write_text('output')
+    original = os.scandir
+    def scan(path):
+        assert not integration.Path(path).is_relative_to(ignored.parent), 'walked mutable output tree'
+        return original(path)
+    monkeypatch.setattr(os, 'scandir', scan)
+    integration_verify.input_hashes(promotions.root)
+
+
+def test_prepared_baseline_resumes_only_matching_inputs(tmp_path, monkeypatch):
+    snapshots, runs = [], []
+    def snapshot(root, cache):
+        snapshots.append(cache)
+        folder = cache / 'rebuild/2008-06/out/RbxgsApp/layer-rbxgs'
+        folder.mkdir(parents=True)
+        (folder / 'a.obj').write_bytes(b'unverified live object')
+    monkeypatch.setattr(integration_verify, 'snapshot', snapshot)
+    monkeypatch.setattr(integration_verify, 'run', lambda *args: runs.append(args))
+    cache, resumed = integration_verify.prepare_baseline(tmp_path, tmp_path / 'baseline', 'first')
+    obj = cache / 'rebuild/2008-06/out/RbxgsApp/layer-rbxgs/a.obj'
+    assert not resumed and not obj.exists()  # Cold baseline cannot inherit a live object.
+    obj.write_bytes(b'compiled privately')
+    assert integration_verify.prepare_baseline(tmp_path, cache, 'first') == (cache, True)
+    assert obj.read_bytes() == b'compiled privately' and len(snapshots) == len(runs) == 1
+    replacement, resumed = integration_verify.prepare_baseline(tmp_path, cache, 'changed')
+    assert not resumed and replacement != cache and not (replacement / obj.relative_to(cache)).exists()
+    assert obj.read_bytes() == b'compiled privately'  # Preserve interrupted evidence.
+
+
+def test_uncheckpointed_partial_baseline_is_not_reused(tmp_path, monkeypatch):
+    cache = tmp_path / 'baseline'
+    cache.mkdir()
+    monkeypatch.setattr(integration_verify, 'snapshot', lambda root, path: path.mkdir())
+    monkeypatch.setattr(integration_verify, 'run', lambda *args: None)
+    prepared, resumed = integration_verify.prepare_baseline(tmp_path, cache, 'key')
+    assert prepared != cache and not resumed
+
+
+def test_tool_discovery_cache_survives_restart_and_checks_changes(tmp_path, monkeypatch):
+    from roc import libs, rebuild, setup
+    sdk = tmp_path / 'tools/SDK/Include'
+    sdk.mkdir(parents=True)
+    cl, ml = tmp_path / 'tools/cl.exe', tmp_path / 'tools/ml.exe'
+    cl.write_bytes(b'compiler')
+    ml.write_bytes(b'assembler')
+    installed = tmp_path / 'tools/install-state.json'
+    installed.write_text('first')
+    discoveries = []
+    monkeypatch.setattr(integration_verify, 'ROOT', tmp_path)
+    monkeypatch.setattr(setup, 'STATE', installed)
+    monkeypatch.setattr(libs, 'winsdk_include', lambda: str(sdk))
+    monkeypatch.setattr(rebuild, 'toolchain', lambda: discoveries.append(True) or {'build': 21022, 'cl': cl})
+    monkeypatch.setattr(rebuild, '_ml', lambda: ml)
+    inventory = integration_verify.tool_inventory
+    inventory.cache_clear()
+    try:
+        expected = inventory()
+        inventory.cache_clear()
+        assert inventory() == expected and len(discoveries) == 1
+        monkeypatch.setenv('ROC_WINSDK', 'changed override')
+        inventory.cache_clear()
+        inventory()
+        assert len(discoveries) == 2
+        installed.write_text('other')
+        inventory.cache_clear()
+        inventory()
+        assert len(discoveries) == 3
+        (tmp_path / 'work/integration/toolchain.json').write_text('{broken')
+        inventory.cache_clear()
+        inventory()
+        assert len(discoveries) == 4
+        cl.unlink()
+        monkeypatch.setattr(rebuild, 'toolchain', lambda: {'cl': None})
+        inventory.cache_clear()
+        with pytest.raises(ValueError, match='not installed'):
+            inventory()
+    finally:
+        inventory.cache_clear()
+
+
+@pytest.mark.parametrize('lose_body', [False, True])
+def test_interrupted_baseline_resumes_compile_but_reruns_all_gates(promotions, monkeypatch, lose_body):
+    source = promotions.root / 'tools/rbxgs/Client/App/Test.cpp'
+    source.write_text('old')
+    job_id = promotions.submit('alice', upload(promotions.claim('alice', 'pc')['claims']))['id']
+    job = promotions.take()
+    snapshots, builds, gates = [], [], []
+    interrupted = True
+    def snapshot(root, destination, link=False):
+        snapshots.append((destination, link))
+        destination.mkdir(parents=True)
+        if not link:
+            layer = destination / 'rebuild/2008-06/out/RbxgsApp/layer-rbxgs'
+            layer.mkdir(parents=True)
+            (layer / 'a.obj').write_bytes(b'unverified live object')
+    def build(root, progress):
+        nonlocal interrupted
+        builds.append(root)
+        baseline = root.parent.name == 'baselines'
+        if baseline:
+            obj = root / 'rebuild/2008-06/out/RbxgsApp/layer-rbxgs/a.obj'
+            if interrupted:
+                assert not obj.exists()
+                obj.write_bytes(b'compiled privately')
+                interrupted = False
+                raise RuntimeError('interrupted compile')
+            assert obj.read_bytes() == b'compiled privately'
+            (root / 'integration-linked.json').write_text('["00500000"]')
+        result = gate_result()
+        if not baseline:
+            result['report']['owned_addrs'] = ['00500001'] if lose_body else ['00500000', '00500001']
+            result['distinct'] += 1
+        return result
+    original = integration_verify.check_gates
+    def check(result, baseline=None, elsewhere=frozenset()):
+        gates.append(baseline is None)
+        return original(result, baseline, elsewhere)
+    monkeypatch.setattr(integration_verify, 'snapshot', snapshot)
+    monkeypatch.setattr(integration_verify, 'run', lambda *args: None)
+    monkeypatch.setattr(integration_verify, 'verify_build', build)
+    monkeypatch.setattr(integration_verify, 'check_gates', check)
+    with pytest.raises(RuntimeError, match='interrupted compile'):
+        integration_verify.verify(promotions, job)
+    index = json.loads((promotions.directory / 'baselines/index.json').read_text())
+    cached = promotions.root / next(iter(index.values()))
+    assert (cached / 'integration-prepared.json').exists() and not (cached / 'integration-result.json').exists()
+    if lose_body:
+        with pytest.raises(ValueError, match='losing'):
+            integration_verify.verify(promotions, job)
+    else:
+        receipt = integration_verify.verify(promotions, job)
+        assert receipt['accepted'] and receipt['new_distinct'] == ['00500001']
+    assert builds[:2] == [cached, cached] and gates == [True, False]
+    assert len(snapshots) == 2 and snapshots[1][1] is True
+
+
 def gate_result():
     return {"report": {"linked": True, "test_exit": 0, "owned_addrs": ["00500000"]},
             "distinct": 5, "milestones": {m: {"passed": True, "exit": 0} for m in ("M2", "M4a", "M5")},
             "size": {"rows": [{"class": "First", "delta": 0}], "probe_errors": {}},
             "base": {"checked": 4, "mismatch": [], "probe_errors": {}}}
+
+
+def test_runtime_failure_includes_test_and_windows_exception():
+    result = gate_result()
+    result['milestones']['M4a'].update(test='m4_datamodel', linked=True, exit=0x80000003)
+    with pytest.raises(ValueError, match=r'M4a runtime gate failed: m4_datamodel, exit=2147483651 \(0x80000003\).*no stdout/stderr'):
+        integration_verify.check_gates(result)
 
 
 @pytest.mark.parametrize("failure", ["runtime", "milestone", "size", "base", "probe", "coverage", "lost", "distinct"])
@@ -495,12 +728,21 @@ def test_two_pcs_use_http_without_shared_client_files(promotions):
     thread.start()
     url = "http://127.0.0.1:%d" % httpd.server_port
     try:
-        alice, bob = worker.Api(url, "test-password"), worker.Api(url, "test-password")
+        alice, bob = worker.Api(url, None), worker.Api(url, None)
         a = alice.call("/v1/integration/claim", {"user": "alice", "worker": "laptop", "count": 1})["claims"]
         b = bob.call("/v1/integration/claim", {"user": "bob", "worker": "desktop", "count": 1})["claims"]
         assert a[0]["unit"] != b[0]["unit"]
         queued = alice.call("/v1/integration/submit", upload(a))
         assert queued["state"] == "queued"
+        prioritized = alice.call("/v1/integration/force-queue", {"user": "alice", "id": queued["id"]})
+        assert prioritized["priority"] == "next" and prioritized["waits_for_active"]
+        with pytest.raises(worker.ApiFailure):
+            bob.call("/v1/integration/force-queue", {"user": "bob", "id": queued["id"]})
+        wrong_token = worker.Api(url, "wrong-token")
+        try:
+            assert wrong_token.call("/v1/integration/force-queue", {"user": "alice", "id": queued["id"]})["priority"] == "next"
+        finally:
+            wrong_token.close()
         with pytest.raises(worker.ApiFailure):
             bob.call("/v1/integration/submit", upload(a, "bob"))
         with pytest.raises(worker.ApiFailure):
@@ -509,6 +751,46 @@ def test_two_pcs_use_http_without_shared_client_files(promotions):
     finally:
         httpd.shutdown()
         httpd.server_close()
+
+
+@pytest.mark.parametrize('old_server', [False, True])
+def test_cli_force_queue_routes_job_and_reports_old_server(monkeypatch, old_server):
+    from unittest.mock import Mock
+    api = Mock()
+    if old_server:
+        api.call.side_effect = worker.ApiFailure('bad_request', 'Unknown integration action')
+    else:
+        api.call.return_value = {'id': 'a' * 32, 'priority': 'next'}
+    monkeypatch.setattr(worker, 'Api', lambda *_: api)
+    monkeypatch.setattr(worker, 'load_settings', lambda: {'server': 'http://test', 'user': 'alice'})
+    args = SimpleNamespace(action='force-queue', server=None, user=None, token='test', id='a' * 32)
+    if old_server:
+        with pytest.raises(SystemExit, match='update and restart'):
+            integration.command(args)
+    else:
+        integration.command(args)
+    api.call.assert_called_once_with('/v1/integration/force-queue', {'user': 'alice', 'id': 'a' * 32})
+    api.close.assert_called_once()
+
+
+@pytest.mark.parametrize('action', ['watch', 'status'])
+@pytest.mark.parametrize('state', ['accepted', 'rejected', None])
+def test_watch_failure_stops_dependent_shell_steps(monkeypatch, action, state):
+    from unittest.mock import Mock
+    api = Mock()
+    api.call.return_value = {'jobs': [{'id': 'job', 'state': state, 'phase': 'complete',
+                                      'unit': 'RBX::A', 'receipt': {'accepted': state == 'accepted'}}]
+                            if state else [], 'leaderboard': []}
+    monkeypatch.setattr(worker, 'Api', lambda *_: api)
+    monkeypatch.setattr(worker, 'load_settings', lambda: {'server': 'http://test', 'user': 'alice'})
+    args = SimpleNamespace(action=action, server=None, user=None, token='test', id='job')
+    if action == 'watch' and state != 'accepted':
+        with pytest.raises(SystemExit) as error:
+            integration.command(args)
+        assert error.value.code != 0
+    else:
+        integration.command(args)
+    api.close.assert_called_once()
 
 
 def test_http_bulk_payload_exceeds_old_limit_only_for_authenticated_native(promotions):
@@ -527,7 +809,7 @@ def test_http_bulk_payload_exceeds_old_limit_only_for_authenticated_native(promo
         assert len(json.dumps(body).encode()) > 1 << 20
         assert api.call('/v1/integration/submit', body)['state'] == 'queued'
         for path, token, length, expected in [
-                ('/v1/integration/submit', 'wrong', 2 << 20, 403),
+                ('/v1/integration/submit', 'wrong', integration.MAX_REQUEST_BYTES + 1, 413),
                 ('/v1/integration/submit', 'test-password', integration.MAX_REQUEST_BYTES + 1, 413),
                 ('/v1/submit', 'test-password', 2 << 20, 413)]:
             conn = http.client.HTTPConnection('127.0.0.1', httpd.server_port, timeout=3)
@@ -569,12 +851,81 @@ def test_http_two_thousand_target_batch_queues_once(promotions, monkeypatch):
         httpd.server_close()
 
 
+@pytest.mark.parametrize('artifacts', ['none', 'manifest', 'manifest_and_names'])
+def test_contributor_without_server_artifacts_syncs_fetches_evidence_and_submits(promotions, tmp_path, monkeypatch, artifacts):
+    from roc import native_sweep, packet, standins
+    monkeypatch.delenv('ROC_NATIVE_TOKEN', raising=False)
+    monkeypatch.delenv('ROC_NATIVE_EVIDENCE_ROOT', raising=False)
+    store = promotions.store
+    store.db.executescript(server.SCHEMA)
+    source = 'int recovered() { return 42; }'
+    store.db.execute("INSERT INTO funcs(client,addr,size,unit,score,source,user) VALUES(?,?,?,?,?,?,?)",
+                     ('2008-06', '00500000', 30, 'RBX::First', 100, source, 'miner'))
+    store.db.commit()
+    store.best = lambda client, addr: server.Store.best(store, client, addr)
+    names = {'00500000': {'symbol': '?recovered@First@RBX@@QAEXXZ', 'score': 90}}
+    integration.atomic_json(promotions.root / 'rebuild/2008-06/out/native-names.json', names)
+    # The contributor has its own installation, no owner DB, manifest, report or src/.
+    remote = tmp_path / 'other-pc'
+    generator = remote / 'rebuild/2008-06/patches/make_rbxgs_client.py'
+    generator.parent.mkdir(parents=True)
+    script = 'from pathlib import Path\nPath(__file__).with_name("rbxgs-client.json").write_text("{}")\n'
+    promotions.generator.write_text(script)
+    generator.write_text(script)
+    generator.with_name('rbxgs-client.json').write_text('{"stale": []}')
+    if artifacts != 'none':
+        integration.atomic_json(remote / 'rebuild/2008-06/manifests/functions.json', [])
+    if artifacts == 'manifest_and_names':
+        integration.atomic_json(remote / 'rebuild/2008-06/out/native-names.json', {})
+    httpd = ThreadingHTTPServer(('127.0.0.1', 0), server.make_handler(store, 'invite', set(), integration=promotions))
+    threading.Thread(target=httpd.serve_forever, daemon=True).start()
+    url = 'http://127.0.0.1:%d' % httpd.server_port
+    api = worker.Api(url, None)
+    try:
+        base = api.call('/v1/integration/base')
+        assert integration.sync_client_baseline(remote, base)
+        assert json.loads(generator.with_name('rbxgs-client.json').read_text()) == base['overlay']
+        monkeypatch.setattr(native_sweep, 'ROOT', remote)
+        monkeypatch.setattr(native_sweep, 'EVIDENCE_CACHE', remote / 'work/integration-client/evidence.json')
+        monkeypatch.setattr(native_sweep.rebuild, 'load_module', lambda *a: {'overlay': {}})
+        monkeypatch.setattr(native_sweep.rebuild, 'build_overlay', lambda *a: (remote / 'tools/rbxgs/Client', remote / 'overlay'))
+        monkeypatch.setitem(native_sweep.libs.RECIPES, 'rbxgs', {'include': [], 'defines': 'WIN32'})
+        monkeypatch.setattr(native_sweep, 'Matcher', lambda addresses: set(addresses))
+        ctx = native_sweep.native_context({}, api)
+        assert ctx.targets == {'00500000'} and ctx.names == names
+        assert not ctx.owned and ctx.matcher == {'00500000'}
+        assert native_sweep.EVIDENCE_CACHE.exists()
+        monkeypatch.setattr(packet.match, 'ROOT', remote)
+        monkeypatch.setattr(native_sweep.worker, 'load_settings', lambda: {'server': url})
+        monkeypatch.setattr(native_sweep.integration, 'native_token', lambda: None)
+        monkeypatch.setattr(native_sweep.match, 'target', lambda *a: (b'code', [], {}))
+        monkeypatch.setattr(native_sweep.match, 'disasm', lambda *a: ['ret'])
+        monkeypatch.setattr(standins, 'mapping', lambda *a: [])
+        evidence = native_sweep.model_evidence('00500000', ctx.names, ctx.by_addr)
+        assert evidence['mined_source'] == source
+        assert evidence['mined_source_origin'] == 'server best source'
+        assert not (remote / 'work/server.db').exists()
+        assert (remote / 'rebuild/2008-06/manifests').exists() is (artifacts != 'none')
+        assert not (remote / 'src').exists()
+        claims = api.call('/v1/integration/claim', {'user': 'alice', 'worker': 'other-pc', 'count': 1})['claims']
+        job = api.call('/v1/integration/submit', upload(claims))
+        assert job['state'] == 'queued'
+        # Transport is not verification: only the server takes this job for its independent build.
+        taken = promotions.take()
+        assert taken['id'] == job['id']
+        assert promotions.status(job['id'])['jobs'][0]['state'] == 'verifying'
+    finally:
+        api.close()
+        httpd.shutdown()
+        httpd.server_close()
+
+
 def test_native_digest_resends_changes_without_fake_mining_points(promotions, monkeypatch):
     from unittest.mock import Mock
     root = promotions.root
     work = root / "work/2008-06"
     work.mkdir(parents=True)
-    functions = [{"addr": "0050000" + str(i), "size": 30} for i in range(3)]
+    functions = [{"addr": "0050000" + str(i), "size": size} for i, size in enumerate((60, 1200, 600))]
     (work / "functions.jsonl").write_text("\n".join(json.dumps(f) for f in functions))
     integration.atomic_json(promotions.directory / "progress-native.json", {"addresses": ["00500000"]})
     promotions.store.db.execute("CREATE TABLE funcs(client TEXT,addr TEXT,score INT)")
@@ -593,6 +944,19 @@ def test_native_digest_resends_changes_without_fake_mining_points(promotions, mo
     assert "42 pts" not in text
     assert "exact waiting" in text and "partial mined" in text and "remaining" in text
     assert "1 / 3 integrated \u00b7 2 remaining" in data["embeds"][0]["description"]
+    assert "collecting rate" in fields[1]["value"]
+    # Byte ETA must use target sizes and six hours, deduplicating merged receipts.
+    monkeypatch.setattr(integration_notify.time, "time", lambda: 30000)
+    with promotions.store.db:
+        for identifier, updated, gains in [
+                ("recent", 26400, ["00500000"]), ("merged", 12000, ["00500000"]),
+                ("old", 4800, ["00500001"]), ("rejected", 29000, ["00500002"])]:
+            promotions.store.db.execute(
+                "INSERT INTO integration_jobs(id,state,updated,receipt) VALUES(?,?,?,?)",
+                (identifier, "rejected" if identifier == "rejected" else "accepted", updated,
+                 json.dumps({"gains": gains})))
+    measured = integration_notify.payload(promotions, job)["embeds"][0]["fields"][1]["value"]
+    assert measured == "**0.2 functions/hr** \u00b7 **10 B/hr** *(last 6h)* \u00b7 byte ETA ~7d 12h"
     response = Mock()
     response.__enter__ = Mock(return_value=response)
     response.__exit__ = Mock(return_value=False)
@@ -639,3 +1003,124 @@ def test_verify_build_runs_header_gates_beside_the_build(tmp_path, monkeypatch):
     assert order[0][0] == "integration-overlay.log"
     assert seen["integration-size.log"] is False and seen["integration-base.log"] is False
     assert seen["integration-milestones.log"] is True and seen["integration-status.log"] is True
+
+
+def test_snapshot_links_read_only_module_objects_and_copies_writable_outputs(tmp_path):
+    root = tmp_path / "root"
+    out = root / "rebuild/2008-06/out"
+    for rel in ("XTP/linked/a.obj", "XTP/placed.json", "RbxgsApp/layer-rbxgs/b.obj", "tests/t/c.obj"):
+        (out / rel).parent.mkdir(parents=True, exist_ok=True)
+        (out / rel).write_text(rel)
+    for name in ("roc", "research", "rebuild/2008-06/patches", "tools", "clients", "src"):
+        (root / name).mkdir(parents=True, exist_ok=True)
+    (root / "roc.py").write_text("")
+    integration_verify.snapshot(root, tmp_path / "live")
+    assert not os.path.samefile(out / "XTP/linked/a.obj", tmp_path / "live/rebuild/2008-06/out/XTP/linked/a.obj")
+    assert not (tmp_path / 'live/rebuild/2008-06/out/RbxgsApp/layer-rbxgs/b.obj').exists()
+    integration_verify.snapshot(root, tmp_path / "snap", link=True)
+    copy = tmp_path / "snap/rebuild/2008-06/out"
+    assert os.path.samefile(out / "XTP/linked/a.obj", copy / "XTP/linked/a.obj")
+    for rel in ("XTP/placed.json", "RbxgsApp/layer-rbxgs/b.obj"):
+        assert not os.path.samefile(out / rel, copy / rel)
+    assert not (copy / 'tests').exists()
+
+
+def test_snapshot_excludes_scratch_archives_but_keeps_verification_inputs(tmp_path):
+    root = tmp_path / 'root'
+    out = root / 'rebuild/2008-06/out'
+    for rel in ('manual-tests/huge.exe', 'RbxgsApp/linked-before-old/a.obj', 'RbxgsApp/linked/a.obj',
+                'RbxgsApp/overlay/App/old.cpp', 'RbxgsApp/verified/a.obj', 'RbxgsApp/verified/helpers.json',
+                'Other/linked/a.obj', 'Other/report.json', 'Other/layer-old/a.obj', 'mfclib/mfc90.lib'):
+        (out / rel).parent.mkdir(parents=True, exist_ok=True)
+        (out / rel).write_text(rel)
+    for name in ('roc', 'research', 'tools', 'clients', 'src'):
+        (root / name).mkdir(parents=True, exist_ok=True)
+    (root / 'roc.py').write_text('')
+    destination = tmp_path / 'snapshot'
+    integration_verify.snapshot(root, destination)
+    copied = {p.relative_to(destination / 'rebuild/2008-06/out').as_posix()
+              for p in (destination / 'rebuild/2008-06/out').rglob('*') if p.is_file()}
+    assert copied == {'RbxgsApp/verified/a.obj', 'RbxgsApp/verified/helpers.json',
+                      'Other/linked/a.obj', 'Other/report.json', 'mfclib/mfc90.lib'}
+
+
+def test_restart_resumes_interrupted_job_before_fifo_but_after_explicit_priority(promotions, monkeypatch):
+    a, b, c = queue_three(promotions, users=('alice', 'bob', 'charlie'))
+    promotions.take()  # a was interrupted; b is older than explicitly prioritized c.
+    promotions.force_queue('charlie', c)
+    monkeypatch.setattr(integration_verify, 'publish', lambda *args: None)
+    original = promotions.take
+    def take():
+        assert original()['id'] == c
+        assert original()['id'] == a
+        assert original()['id'] == b
+        raise RuntimeError('stop test loop')
+    monkeypatch.setattr(promotions, 'take', take)
+    with pytest.raises(RuntimeError, match='stop test loop'):
+        integration_verify.loop(promotions)
+
+
+@pytest.mark.skipif(os.environ.get('ROC_BENCH_SNAPSHOT') != '1', reason='opt-in real snapshot timing')
+def test_real_native_snapshot_benchmark(tmp_path):
+    import time
+    root = integration.ROOT
+    started = time.monotonic()
+    destination = tmp_path / 'native-snapshot'
+    integration_verify.snapshot(root, destination)
+    files = [p for p in (destination / 'rebuild/2008-06/out').rglob('*') if p.is_file()]
+    print('SNAPSHOT BENCHMARK', json.dumps({'seconds': round(time.monotonic() - started, 3),
+                                          'output_files': len(files),
+                                          'output_mb': round(sum(p.stat().st_size for p in files) / 1048576, 1)}))
+    assert (destination / 'rebuild/2008-06/out/RbxgsApp/verified/swaps.json').exists()
+    assert not (destination / 'rebuild/2008-06/out/manual-tests').exists()
+@pytest.mark.parametrize('dirty', [None, 'generator', 'overlay'])
+def test_automatic_client_sync_refreshes_only_recorded_clean_baseline(tmp_path, monkeypatch, dirty):
+    import hashlib
+    from roc import integration
+    generator = tmp_path/'rebuild/2008-06/patches/make_rbxgs_client.py'
+    generator.parent.mkdir(parents=True)
+    generator.write_bytes(b'pass\n')
+    overlay = generator.with_name('rbxgs-client.json')
+    overlay.write_text('{}')
+    marker = tmp_path/'work/integration-client/baseline.json'
+    previous = {'generator': hashlib.sha256(b'pass\n').hexdigest(), 'overlay': {}, 'revision': 'old'}
+    integration.atomic_json(marker, previous)
+    base = dict(previous, overlay={'new': []}, accepted=[], revision='new')
+    if dirty == 'generator': generator.write_bytes(b'# local edit\n')
+    if dirty == 'overlay': overlay.write_text('{"manual": []}')
+    original = generator.read_bytes(), overlay.read_bytes()
+    calls = []
+    def generate(*args, **kwargs):
+        calls.append(True)
+        overlay.write_text(json.dumps(base['overlay']))
+    monkeypatch.setattr(integration.subprocess, 'run', generate)
+    assert integration.sync_client_baseline(tmp_path, base, only_if_clean=True) is (dirty is None)
+    if dirty:
+        assert (generator.read_bytes(), overlay.read_bytes()) == original
+        assert not calls and json.loads(marker.read_text()) == previous
+    else:
+        assert calls == [True] and json.loads(marker.read_text()) == base
+
+
+
+def test_public_client_selection_reports_integration_not_mining(promotions):
+    promotions.store.status = lambda: {"clients": [
+        {"client": "2008-06", "functions": 10, "matched": 9},
+        {"client": "2009-06", "functions": 20, "matched": 12}], "workers": []}
+    integration.atomic_json(promotions.directory / 'progress-native.json', {"addresses": ['00500000', '00500001']})
+    httpd = ThreadingHTTPServer(('127.0.0.1', 0), server.make_handler(
+        promotions.store, 'ordinary-password', set(), integration=promotions))
+    threading.Thread(target=httpd.serve_forever, daemon=True).start()
+    api = worker.Api('http://127.0.0.1:%d' % httpd.server_port, None)
+    try:
+        rows = api.call('/v1/status')['clients']
+        assert rows[0]['integration_percent'] == 20 and rows[0]['integrated'] == 2
+        assert rows[0]['native_supported']
+        assert rows[1]['integration_percent'] is None and not rows[1]['native_supported']
+        assert api.call('/v1/info')['native_integration']['invitation_required'] is False
+        with pytest.raises(worker.ApiFailure, match='auth_fail'):
+            api.call('/v1/claim', {'user': 'alice'})
+    finally:
+        api.close()
+        httpd.shutdown()
+        httpd.server_close()

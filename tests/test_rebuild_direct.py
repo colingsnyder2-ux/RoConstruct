@@ -66,12 +66,13 @@ def test_failed_direct_compile_removes_stale_object(tmp_path, monkeypatch):
     assert not obj.exists()
 
 
-@pytest.mark.parametrize('change', ['touch', 'source', 'header', 'flags', 'defines', 'compiler', 'object', 'new_header', 'include_order'])
-def test_content_cache_checks_inputs_and_ignores_timestamps(tmp_path, monkeypatch, change):
+@pytest.mark.parametrize('change', ['touch', 'unrelated_source', 'unrelated_header', 'source', 'header', 'flags', 'defines', 'compiler', 'object', 'new_header', 'include_order'])
+@pytest.mark.parametrize('header_name', ['shared.h', 'shared.cpp'])
+def test_content_cache_checks_inputs_and_ignores_timestamps(tmp_path, monkeypatch, change, header_name):
     source = tmp_path / 'src' / 'unit.cpp'
     source.parent.mkdir()
-    source.write_text('#include "shared.h"\nint f(){return 1;}')
-    header = source.with_name('shared.h')
+    source.write_text('#include "%s"\nint f(){return 1;}' % header_name)
+    header = source.with_name(header_name)
     header.write_text('int value;')
     compiler = tmp_path / 'bin' / 'cl.exe'
     compiler.parent.mkdir()
@@ -106,11 +107,13 @@ def test_content_cache_checks_inputs_and_ignores_timestamps(tmp_path, monkeypatc
     elif change == 'object':
         (out / 'unit.obj').write_bytes(b'broken')
     elif change == 'new_header':
-        (includes[1] / 'shared.h').write_text('int shadow;')
+        (includes[1] / header_name).write_text('int shadow;')
     elif change == 'include_order':
         includes.reverse()
+    elif change in ('unrelated_source', 'unrelated_header'):
+        (includes[1] / ('other.cpp' if change == 'unrelated_source' else 'other.h')).write_text('int other;')
     build('/O1' if change == 'flags' else '/O2', 'OTHER' if change == 'defines' else 'WIN32')
-    assert len(calls) == (1 if change == 'touch' else 2)
+    assert len(calls) == (1 if change in ('touch', 'unrelated_source', 'unrelated_header') else 2)
 
 
 def test_overlay_header_creation_invalidates_content_cache(tmp_path, monkeypatch):
