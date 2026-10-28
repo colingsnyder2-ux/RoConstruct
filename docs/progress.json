@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-28 03:29 UTC",
+ "updated": "2026-10-28 04:46 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -191,15 +191,15 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22292,
-   "matched": 22193,
-   "partial": 98,
-   "source_matched": 13766,
-   "mined_matched": 8427,
-   "bytes": 3736709,
-   "matched_bytes": 3601770,
-   "source_bytes": 2710424,
-   "mined_bytes": 891346,
-   "partial_bytes": 134866,
+   "matched": 22202,
+   "partial": 89,
+   "source_matched": 13771,
+   "mined_matched": 8431,
+   "bytes": 3736864,
+   "matched_bytes": 3611594,
+   "source_bytes": 2715493,
+   "mined_bytes": 896101,
+   "partial_bytes": 125197,
    "data_bytes": 1559926,
    "leaderboard": [
     {
@@ -211,31 +211,31 @@
     },
     {
      "user": "colin",
-     "matched": 3100,
-     "points": 684465,
-     "submissions": 23200,
-     "last": 1793157357.4970412
+     "matched": 3101,
+     "points": 684478,
+     "submissions": 23201,
+     "last": 1793159586.7700527
     },
     {
      "user": "king_originala",
      "matched": 2936,
-     "points": 280461,
-     "submissions": 6089,
-     "last": 1793151904.7171538
+     "points": 280481,
+     "submissions": 6093,
+     "last": 1793158698.01559
     },
     {
      "user": "Espeon",
      "matched": 597,
-     "points": 15452,
-     "submissions": 928,
-     "last": 1793156057.4777398
+     "points": 15453,
+     "submissions": 929,
+     "last": 1793158404.1550689
     },
     {
      "user": "EspClaude",
-     "matched": 460,
-     "points": 14944,
-     "submissions": 672,
-     "last": 1793157684.3995337
+     "matched": 468,
+     "points": 15099,
+     "submissions": 684,
+     "last": 1793162277.2262452
     },
     {
      "user": "coldek",
@@ -343,9 +343,9 @@
      "last": 1792711202.627472
     }
    ],
-   "data_matched_bytes": 203165,
+   "data_matched_bytes": 203389,
    "classes": 1488,
-   "generated": 18915
+   "generated": 18914
   },
   {
    "name": "2009-06",
@@ -656,17 +656,17 @@
   },
   {
    "user": "colin",
-   "matched": 15213,
-   "points": 5523388,
-   "submissions": 186082,
-   "last": 1793157357.4970412
+   "matched": 15214,
+   "points": 5523401,
+   "submissions": 186083,
+   "last": 1793159586.7700527
   },
   {
    "user": "king_originala",
    "matched": 2936,
-   "points": 280461,
-   "submissions": 6089,
-   "last": 1793151904.7171538
+   "points": 280481,
+   "submissions": 6093,
+   "last": 1793158698.01559
   },
   {
    "user": "nuck16",
@@ -685,16 +685,16 @@
   {
    "user": "Espeon",
    "matched": 597,
-   "points": 15452,
-   "submissions": 928,
-   "last": 1793156057.4777398
+   "points": 15453,
+   "submissions": 929,
+   "last": 1793158404.1550689
   },
   {
    "user": "EspClaude",
-   "matched": 460,
-   "points": 14944,
-   "submissions": 672,
-   "last": 1793157684.3995337
+   "matched": 468,
+   "points": 15099,
+   "submissions": 684,
+   "last": 1793162277.2262452
   },
   {
    "user": "why2",
