@@ -70,8 +70,10 @@ code { color: var(--accent2); font-family: var(--mono); font-size: .92em; }
 .stat.red span { color: var(--dim); }
 .coverage-panel { margin-top: 18px; }
 .coverage-panel .stats { margin-bottom: 22px; }
-.integration-panel .stat { border-color: #a855f744; }
-.integration-panel .stat .ico { color: #c084fc; border-color: #a855f744; background: #a855f714; }
+.integration-panel .stat { border-color: #a855f744; background: linear-gradient(180deg, #a855f70f, rgba(15,21,32,.9)); box-shadow: 0 0 28px #a855f71a, inset 0 0 16px #a855f708; }
+.integration-panel .stat .ico { color: #c084fc; border-color: #a855f744; background: #a855f714; box-shadow: 0 0 14px #a855f71a; }
+.integration-panel .stat b { text-shadow: 0 0 12px #a855f729; }
+.integration-panel .stat span { color: #c084fc; }
 .coverage-panel .legend { font-size: 12px; gap: 14px; }
 .coverage-panel .label { margin-top: 18px; }
 .overall { display: flex; align-items: center; gap: 16px; margin: 18px 0 24px; font: 500 15px var(--mono); }
