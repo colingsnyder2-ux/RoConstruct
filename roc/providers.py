@@ -183,7 +183,21 @@ def _read_config():
 
 def providers():
     """Public non-secret provider registry."""
-    return _read_config()
+    registry = _read_config()
+    registry["codex"]["defaults"] = codex_models()
+    return registry
+
+
+def codex_models():
+    """Use the installed CLI's public catalog, without reading account credentials."""
+    home = Path(os.environ.get("CODEX_HOME", Path.home() / ".codex")).expanduser()
+    try:
+        rows = json.loads((home / "models_cache.json").read_text(encoding="utf-8")).get("models") or []
+    except (OSError, ValueError, AttributeError):
+        return ["default"]
+    return list(dict.fromkeys(["default", *(row["slug"] for row in rows
+        if isinstance(row, dict) and isinstance(row.get("slug"), str) and row["slug"]
+        and row.get("visibility", "list") == "list")]))
 
 
 def secrets_path():

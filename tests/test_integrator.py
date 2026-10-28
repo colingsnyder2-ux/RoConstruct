@@ -13,6 +13,21 @@ import pytest
 from roc import gui_worker, integration, integrator, native_sweep, providers
 
 
+def test_codex_models_follow_cli_catalog_and_hide_internal_models(tmp_path, monkeypatch):
+    monkeypatch.setenv('CODEX_HOME', str(tmp_path))
+    path = tmp_path / 'models_cache.json'
+    assert providers.codex_models() == ['default']
+    path.write_text(json.dumps({'identity': 'private account metadata', 'models': [
+        {'slug': 'gpt-6.1-sol', 'visibility': 'list'},
+        {'slug': 'gpt-6-astra', 'visibility': 'list'},
+        {'slug': 'gpt-reserve', 'visibility': 'hide'},
+        {'slug': 'gpt-6.1-sol', 'visibility': 'list'},
+    ]}), encoding='utf-8')
+    assert providers.providers()['codex']['defaults'] == ['default', 'gpt-6.1-sol', 'gpt-6-astra']
+    path.write_text('{invalid', encoding='utf-8')
+    assert providers.codex_models() == ['default']
+
+
 def test_insufficient_balance_is_not_retried_or_exposed(monkeypatch):
     response = urllib.error.HTTPError('https://api.deepseek.com/chat/completions', 402, 'Payment Required', {},
                                      io.BytesIO(b'{"error":"insufficient balance private-account-details"}'))
