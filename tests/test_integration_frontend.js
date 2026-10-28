@@ -30,4 +30,12 @@ assert.equal(context.integrationDays({...native, daily: [{day: "2026-10-27", gai
 new vm.Script(html.match(/<script>([\s\S]*)<\/script>/)[1]);
 assert.doesNotMatch(html, /Code coverage view|code-mode|data-work-view/);
 assert.match(html, /id="live-integration"/);
+const links = vm.runInNewContext(html.slice(html.indexOf("const sourceLinks ="), html.indexOf("\nconst esc =")) + '\nsourceLinks("2008-06", [1,25,100,0,true]);', {
+  integrationData: {client:"2008-06",sources:{"00000001":{path:"2008-06/src/Client/Body.cpp",line:42}}},
+  FINDINGS:"https://github.com/example/findings",hex:context.hex,sourceUrl:()=>"https://example.com/mined.cpp",
+});
+assert.match(links, /Body.cpp#L42/);
+assert.match(links, /Integrated source/);
+assert.match(links, /mined.cpp/);
+assert.match(links, /Mined source/);
 console.log("Integration frontend tests passed.");

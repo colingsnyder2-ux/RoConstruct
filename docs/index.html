@@ -130,6 +130,7 @@ code { color: var(--accent2); font-family: var(--mono); font-size: .92em; }
 .function-card .function-status { display:inline-block; color:#d8b4fe; background:#a855f71c; border:1px solid #a855f744; padding:3px 10px; border-radius:99px; margin:8px 0; }
 .function-card .function-meta { color:var(--dim); font:12px var(--mono); margin:5px 0 12px; }
 .function-card details { margin-top:12px; }
+.source-links { display: inline-flex; gap: 12px; flex-wrap: wrap; }
 .function-card details code { overflow-wrap:anywhere; white-space:normal; }
 
 /* panels and sections */
@@ -328,12 +329,14 @@ const libraryUrl = meta => {
 };
 const sourceLinks = (client, f, short = false) => {
   const indexed = integrationData?.client === client && integrationData.sources?.[hex(f[0])];
-  const integrated = integrationData?.client === client && integrationData.native.includes(hex(f[0]));
-  if (indexed) return `<a href="${FINDINGS}/blob/main/${indexed.path.split('/').map(encodeURIComponent).join('/')}#L${indexed.line}" target="_blank" rel="noopener">${short ? "native C++" : "View integrated source file"} ↗</a>`;
-  const file = f[2] === 100 && f[5] && sourceCatalog[f[5][0]]?.kind !== "archive" ? libraryUrl(f[5]) : "";
-  if (file) return `<a href="${esc(file)}" target="_blank" rel="noopener">View exact source file ↗</a>`;
-  if (f[4]) return `<a href="${sourceUrl(client, f[0])}" target="_blank" rel="noopener">${integrated ? "View exact C++ proof" : f[2] === 100 ? "View matching source" : "View candidate source"} ↗</a>`;
-  return "Source file not published yet";
+  const links = [];
+  if (indexed) links.push(`<a href="${FINDINGS}/blob/main/${indexed.path.split('/').map(encodeURIComponent).join('/')}#L${indexed.line}" target="_blank" rel="noopener">${short ? "Integrated" : "Integrated source"} ↗</a>`);
+  if (f[4]) links.push(`<a href="${sourceUrl(client, f[0])}" target="_blank" rel="noopener">${f[2] === 100 ? "Mined" : "Candidate"}${short ? "" : " source"} ↗</a>`);
+  else {
+    const file = f[2] === 100 && f[5] && sourceCatalog[f[5][0]]?.kind !== "archive" ? libraryUrl(f[5]) : "";
+    if (file) links.push(`<a href="${esc(file)}" target="_blank" rel="noopener">${short ? "Matched" : "Matched library source"} ↗</a>`);
+  }
+  return links.length ? `<span class="source-links">${links.join("")}</span>` : "Source file not published yet";
 };
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
 const cache = new Map();
@@ -1069,7 +1072,7 @@ async function client(name) {
     document.getElementById("detail").innerHTML=`<div class="function-card"><strong>${esc(readable || units[f[3]])}</strong><br>
       <span class="function-status">${integrated ? "Integrated in linked rebuild" : f[2]===100 ? "Exact · awaiting integration" : "Not exact"}</span>
       <div class="function-meta">${hex(f[0])} · ${fmt(f[1])} bytes · ${f[2]}% matched</div>${sourceLinks(name,f)}
-      ${integrated && !native?.sources?.[hex(f[0])] ? '<p class="note">Native source location not indexed; link shows the exact C++ proof.</p>' : ""}
+      ${integrated && !native?.sources?.[hex(f[0])] ? '<p class="note">Integrated source location not indexed yet.</p>' : ""}
       ${named || f[6] ? `<details><summary>Technical details</summary>${named ? `<p>Symbol <code>${esc(named[1])}</code></p>` : ""}${f[6] ? `<p>Family <code>${esc(f[6])}</code></p>` : ""}</details>` : ""}
       ${integrated ? "" : `<p class="note">Work on it: <code>roc claim ${esc(name)} ${hex(f[0])}</code></p>`}</div>`;
   }
