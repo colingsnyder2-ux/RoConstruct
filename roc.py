@@ -3056,7 +3056,7 @@ def main(argv=None):
         (["--compile-workers"], {"type": int, "default": 4, "help": "concurrent local compilers (1-64)"}),
         (["--batch-files"], {"type": int, "default": 40, "help": "files per verified batch (1-1024)"}),
         (["--rounds"], {"type": int, "default": 3}),
-        (["--output-budget"], {"type": int, "default": 8192}),
+        (["--output-budget"], {"type": int, "default": 3072}),
         (["--context"], {"choices": ["methods", "file"], "default": "methods"}),
         (["--thinking"], {"choices": ["auto", "enabled", "disabled"], "default": "disabled"}),
         (["--reasoning-effort"], {"choices": ["auto", "low", "medium", "high", "max"], "default": "auto"}),

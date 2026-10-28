@@ -391,7 +391,7 @@ class Dashboard:
                 kind, fields = "log", {"message": text}
             with self.lock:
                 job = self.jobs[job_id]
-                if kind == "job_started":
+                if kind in ("job_started", "native_started"):
                     started_slots.add(fields.get("slot"))
                 elif kind == "log" and job["kind"] == "worker":
                     fields["startup"] = fields.get("slot") not in started_slots
@@ -408,6 +408,14 @@ class Dashboard:
                 elif kind == "job_started":
                     job["slots"].setdefault(str(fields["slot"]), {}).update(addr=fields["addr"], client=fields["client"],
                                                                           area=fields.get("area", ""), busy=True)
+                elif kind in ("native_started", "native_progress", "native_result"):
+                    job["slots"].setdefault(str(fields["slot"]), {}).update(
+                        file=fields["file"], phase=fields.get("message", "Working"),
+                        busy=kind != "native_result", local_exact=fields.get("local_exact", 0))
+                    if kind == "native_result":
+                        job["attempted"] += 1
+                        job["local_exact"] = job.get("local_exact", 0) + fields["local_exact"]
+                        job["failed"] += bool(fields.get("error"))
                 elif kind == "job_finished":
                     job["attempted"] += 1
                     job["matched"] += fields.get("new_exact", fields["score"] == 100)

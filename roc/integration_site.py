@@ -22,6 +22,24 @@ def readable(symbol):
     return symbol
 
 
+def coverage(root, scores, native):
+    """Website and webhook share the same code-only function/byte denominator."""
+    groups = {key: {"functions": 0, "bytes": 0} for key in ("integrated", "exact_waiting", "partial", "unmined")}
+    functions = {}
+    for line in (root / "work" / CLIENT / "functions.jsonl").read_text().splitlines():
+        if not line.strip():
+            continue
+        f = json.loads(line)
+        if f.get("kind", "code") != "code":
+            continue
+        functions[f["addr"]] = f
+        score = scores.get(f["addr"], 0)
+        key = "integrated" if f["addr"] in native else "exact_waiting" if score == 100 else "partial" if score else "unmined"
+        groups[key]["functions"] += 1
+        groups[key]["bytes"] += f["size"]
+    return groups, functions
+
+
 def build(root=ROOT, log=print):
     out = root / "rebuild" / CLIENT / "out"
     native_path = root / "work/integration/progress-native.json"
@@ -37,17 +55,7 @@ def build(root=ROOT, log=print):
                              "ORDER BY COUNT(*) DESC", (CLIENT,)).fetchall()
     finally:
         db.close()
-    groups = {k: [0, 0] for k in ("integrated", "exact_waiting", "partial", "unmined")}
-    for line in (root / "work" / CLIENT / "functions.jsonl").read_text().splitlines():
-        if not line.strip():
-            continue
-        f = json.loads(line)
-        if f.get("kind", "code") != "code":
-            continue
-        score = scores.get(f["addr"], 0)
-        key = "integrated" if f["addr"] in native else "exact_waiting" if score == 100 else "partial" if score else "unmined"
-        groups[key][0] += 1
-        groups[key][1] += f["size"]
+    groups, _ = coverage(root, scores, native)
     units = {job: unit for job, _, _, unit, _, _ in jobs}
     receipts = []
     daily = {}
@@ -74,7 +82,7 @@ def build(root=ROOT, log=print):
     links_path = root / 'local/findings/2008-06/verification/native-source-links.json'
     sources = json.loads(links_path.read_text(encoding='utf-8')) if links_path.exists() else {}
     data = {"client": CLIENT, "updated": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
-            "groups": {k: {"functions": n, "bytes": b} for k, (n, b) in groups.items()},
+            "groups": groups,
             "native": sorted(native),
             "sources": {a: value for a, value in sources.items() if a in native},
             # addr -> [readable name, decorated symbol, rebuilt score (100 = integrated)]

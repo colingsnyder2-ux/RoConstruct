@@ -5,10 +5,25 @@ import time
 from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import Mock
+import io
+import urllib.error
 
 import pytest
 
 from roc import gui_worker, integration, integrator, native_sweep, providers
+
+
+def test_insufficient_balance_is_not_retried_or_exposed(monkeypatch):
+    response = urllib.error.HTTPError('https://api.deepseek.com/chat/completions', 402, 'Payment Required', {},
+                                     io.BytesIO(b'{"error":"insufficient balance private-account-details"}'))
+    send = Mock(side_effect=response)
+    monkeypatch.setattr(providers.urllib.request, 'urlopen', send)
+    with pytest.raises(providers.ProviderError) as failure:
+        providers._post('https://api.deepseek.com/chat/completions', {}, {}, 5)
+    assert failure.value.category == 'provider_auth'
+    assert 'insufficient provider balance' in str(failure.value)
+    assert 'private-account' not in str(failure.value)
+    send.assert_called_once()
 
 
 @pytest.mark.parametrize('provider,output', [
@@ -127,10 +142,15 @@ def test_model_jobs_parallel_but_compilers_bounded(tmp_path, monkeypatch):
             counts['model'] -= 1
         return None, []
     monkeypatch.setattr(native_sweep, 'model_proposal', proposal)
-    native_sweep.model_discovery({'llm': 'codex:default', 'compile_workers': 2}, files, {'00400000'}, set(), {},
+    events = []
+    native_sweep.model_discovery({'llm': 'codex:default', 'compile_workers': 2,
+        'provider_options': {'event': lambda kind, **fields: events.append((kind, fields))}}, files, {'00400000'}, set(), {},
         SimpleNamespace(scan=lambda _: []), tmp_path, 8, lambda _: None, compile_source, {'00400000': {'symbol': 'f'}})
     assert counts['compile_peak'] <= 2
     assert counts['model_peak'] > 1
+    assert len([row for row in events if row[0] == 'native_started']) == 8
+    assert len([row for row in events if row[0] == 'native_result']) == 8
+    assert len({row[1]['slot'] for row in events}) > 1
 
 
 def test_native_loop_counts_async_acceptance_and_stops_at_budget(monkeypatch):

@@ -410,6 +410,8 @@ def _post(url, body, headers, timeout, allow_empty=False):
             return json.loads(raw), dict(response.headers)
     except urllib.error.HTTPError as error:
         detail = error.read().decode("utf-8", "replace").lower()
+        if error.code == 402:
+            raise ProviderError("provider_auth", "HTTP 402: insufficient provider balance; check API billing", 402) from None
         retry = (error.code in (408, 429) or error.code >= 500 or
                  any(text in detail for text in ("insufficient_quota", "usage limit", "rate limit",
                                                   "quota exceeded", "current quota", "insufficient balance")))
@@ -804,7 +806,7 @@ def _coding_cli(provider, remote, config, prompt, state, options):
         argv = [exe, "-p", "--output-format", "json", "--tools", "", "--strict-mcp-config",
                 "--mcp-config", '{"mcpServers":{}}', "--no-session-persistence"]
     else:
-        argv = [exe, "exec", "--json", "--sandbox", "read-only", "--skip-git-repo-check"]
+        argv = [exe, "exec", "--json", "--sandbox", "read-only", "--skip-git-repo-check", "--ephemeral"]
     if remote != "default":
         argv += ["--model", remote]
     effort = options.get("reasoning_effort")

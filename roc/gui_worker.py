@@ -227,6 +227,12 @@ def native_loop(config, control, emit):
     emit("log", slot=0, message="Startup: syncing accepted native baseline (unchanged overlays are reused)")
     integration.command(SimpleNamespace(action="sync", server=config["server"], user=config["user"], token=None))
     emit("log", slot=0, message="Startup complete: selecting exact mined targets for parallel integration")
+    def native_event(kind, **fields):
+        emit(kind, **fields)
+        if fields.get("error_category") in ("provider_auth", "cloud_budget"):
+            emit("error", slot=fields["slot"], message="Provider unavailable; session stopped. " + fields.get("error", ""))
+            control.command({"action": "stop"})
+
     tried = set()
     pending = set()
     def refresh_pending():
@@ -243,7 +249,8 @@ def native_loop(config, control, emit):
                     credits = (job.get("receipt") or {}).get("credits", 0) if job["state"] == "accepted" else 0
                     control.matched += credits
                     advanced |= job["state"] == "accepted"
-                    emit("log", slot=0, message="Native batch %s: %s · %d new integrated" % (identifier[:8], job["state"], credits))
+                    emit("native_accepted" if credits else "log", credits=credits,
+                         message="Native batch %s: %s · %d new server verified" % (identifier[:8], job["state"], credits))
             emit("benchmark", workers=control.workers, completed=control.completed,
                  matched=control.matched, improved=0, errors=control.errors)
         except worker.ApiFailure:
@@ -266,8 +273,10 @@ def native_loop(config, control, emit):
             compile_workers=current["native_compile_workers"],
             provider_options={"allow_cloud": current["cloud_allowed"], "budget": control.budget,
                 "gate": providers.CloudGate(control.workers if current["cloud_concurrency"] == "auto" else current["cloud_concurrency"]),
-                "max_tokens": 8192 if current["max_tokens"] == "auto" else current["max_tokens"],
-                "thinking": current["thinking"], "reasoning_effort": current["reasoning_effort"],
+                "max_tokens": 3072 if current["max_tokens"] == "auto" else current["max_tokens"],
+                "thinking": current["thinking"], "reasoning_effort": current["reasoning_effort"] if current["reasoning_effort"] not in (None, "auto") else
+                    ("low" if current["model"].startswith(("codex:", "claude:")) else None),
+                "event": native_event,
                 "before_request": lambda: control.before_lease(0) is not None})
         try:
             summary = native_sweep.run(spec, "native-model-2008", server=config["server"] or None, jobs=control.workers,
@@ -323,6 +332,8 @@ def native_loop(config, control, emit):
 
 def main(initial=None, receive_commands=True):
     initial = initial or json.loads(sys.stdin.readline())
+    if not receive_commands:
+        initial["terminal"] = True
     initial["config"] = validate(initial["config"])
     if initial["config"].get("lease_mode") == "native" and not os.environ.get("ROC_INTEGRATOR_PRIVATE"):
         from roc import integrator
@@ -331,7 +342,21 @@ def main(initial=None, receive_commands=True):
 
     def emit(event, **fields):
         with output_lock:
-            print("ROC_EVENT " + json.dumps(dict(event=event, **fields)), flush=True)
+            if initial.get("terminal"):
+                slot = "w%d" % (fields["slot"] + 1) if "slot" in fields else "roc"
+                if event == "native_result":
+                    print("[%s] %s +%d local exact (awaiting verification) | %.1fs%s" % (
+                        slot, fields["file"], fields["local_exact"], fields["seconds"],
+                        " | " + fields["error"] if fields.get("error") else ""), flush=True)
+                elif event == "native_started":
+                    print("[%s] %s | baseline" % (slot, fields["file"]), flush=True)
+                elif event == "native_progress":
+                    if "Requesting" in fields["message"] or "new exact" in fields["message"]:
+                        print("[%s] %s | %s" % (slot, fields["file"], fields["message"]), flush=True)
+                elif event in ("log", "error", "stage", "native_accepted"):
+                    print("[%s] %s" % (slot, fields.get("message", "")), flush=True)
+            else:
+                print("ROC_EVENT " + json.dumps(dict(event=event, **fields)), flush=True)
 
     config = validate(initial["config"])
     control = Control(config, emit)

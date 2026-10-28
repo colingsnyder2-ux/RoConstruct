@@ -68,24 +68,12 @@ code { color: var(--accent2); font-family: var(--mono); font-size: .92em; }
 .stat b { text-shadow: 0 0 12px rgba(56, 200, 255, 0.10); display: block; font: 700 clamp(26px, 4vw, 32px)/1.1 var(--mono); font-variant-numeric: tabular-nums; }
 .stat span { font: 500 12px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--cyan); }
 .stat.red span { color: var(--dim); }
-.coverage-panel { padding: 22px; margin-top: 16px; border: 1px solid var(--line); border-radius: 14px; background: var(--panel); }
-.coverage-panel .stats { gap: 20px; margin-bottom: 22px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.coverage-panel .stat { padding: 0; gap: 12px; border: 0; box-shadow: none; background: none; }
-.coverage-panel .stat .ico { width: 36px; height: 36px; border: 0; box-shadow: none; background: none; }
-.coverage-panel .stat .ico svg { width: 22px; height: 22px; }
-.coverage-panel .stat b { font-size: clamp(20px, 3vw, 28px); text-shadow: none; }
-.coverage-panel .stat span { font: 12px Inter, sans-serif; letter-spacing: 0; text-transform: none; color: var(--dim); }
-.integration-panel { border-color: #a855f744; }
-.integration-panel .stat .ico { color: #c084fc; }
+.coverage-panel { margin-top: 18px; }
+.coverage-panel .stats { margin-bottom: 22px; }
+.integration-panel .stat { border-color: #a855f744; }
+.integration-panel .stat .ico { color: #c084fc; border-color: #a855f744; background: #a855f714; }
 .coverage-panel .legend { font-size: 12px; gap: 14px; }
 .coverage-panel .label { margin-top: 18px; }
-@media (max-width: 600px) {
-  .coverage-panel { padding: 16px; }
-  .coverage-panel .stats { gap: 12px; }
-  .coverage-panel .stat { align-items: flex-start; gap: 5px; }
-  .coverage-panel .stat .ico { display: none; }
-  .coverage-panel .stat span { font-size: 11px; }
-}
 .overall { display: flex; align-items: center; gap: 16px; margin: 18px 0 24px; font: 500 15px var(--mono); }
 .overall .bar { flex: 1; }
 
@@ -444,7 +432,7 @@ function dailyGraph(days, integration = false, switcher = false) {
     ["mined", "Mined", "#3fb950"], ["partial", "Partial", "#b6a04c"]];
   const count = n => n == null ? "—" : fmt(n);
   return `<div class="head"><h2><small>Daily progress</small>${integration ? "Integration" : "Mining"}</h2>
-    <p>${fmt(last.matched)} / ${fmt(last.functions)} functions ${integration ? "integrated" : "matched"} · ${last.percent.toFixed(2)}% complete.
+    <p>${fmt(last.matched)} / ${fmt(last.functions)} functions ${integration ? "integrated" : "matched"} · ${last.percent.toFixed(2)}% ${integration ? "of target bytes" : "complete"}.
     One stack per day (US Eastern), toward 100%. Full history since ${days[0].day}.</p></div>
     ${switcher ? sectionMode("daily", "Daily progress view") : ""}
     <div class="panel mining-chart"><svg viewBox="0 0 ${width} 364" style="min-width:${Math.max(560, days.length * 28 + 96)}px" role="img" aria-label="Daily stacked function counts: ${integration ? "integrated, exact waiting and remaining" : "original source, mined, partial and remaining"}, zero to one hundred percent">
@@ -454,13 +442,13 @@ function dailyGraph(days, integration = false, switcher = false) {
         const split = integration || d.source != null && d.mined != null;
         const segments = split ? series : [["matched", "Matched (source/mined split unavailable)", "#8a97a8"], series[2]];
         let bottom = 0;
-        return `<g class="mining-stack" tabindex="0" role="img" aria-label="${d.day}: ${d.percent.toFixed(2)}% ${integration ? "integrated" : "matched"}">
+        return `<g class="mining-stack" tabindex="0" role="img" aria-label="${d.day}: ${d.percent.toFixed(2)}% ${integration ? "of target bytes integrated" : "matched"}">
           <title>${d.day}: ${fmt(d.matched)} ${integration ? "integrated" : "matched"} total / ${fmt(d.functions)} (${d.percent.toFixed(2)}%); daily change ${gain(d)}. ${integration ? `Exact waiting: ${count(d.waiting)};` : `Original source: ${count(d.source)}; mined: ${count(d.mined)}${d.estimated ? " (source/mined split estimated)" : ""}; partial: ${count(d.partial)};`} remaining: ${fmt(remaining(d))}</title>
           <rect x="${x(i)}" y="${y(100)}" width="${barWidth}" height="240" rx="3" fill="var(--panel2)"/>
           ${segments.map(([key, label, color]) => {
-            const value = d[key] || 0, height = Math.min(100 - bottom, 100 * value / d.functions);
+            const value = d[key] || 0, fraction = integration ? 100 * (d.byteGroups[key] || 0) / (d.bytes || 1) : 100 * value / d.functions, height = Math.min(100 - bottom, fraction);
             bottom += height;
-            return `<rect data-series="${key}" x="${x(i)}" y="${y(bottom)}" width="${barWidth}" height="${height * 2.4}" fill="${color}"><title>${d.day}: ${fmt(value)} ${label.toLowerCase()} / ${fmt(d.functions)} (${(100 * value / d.functions).toFixed(2)}%)${d.estimated && key !== "partial" ? " (estimated)" : ""}</title></rect>`;
+            return `<rect data-series="${key}" x="${x(i)}" y="${y(bottom)}" width="${barWidth}" height="${height * 2.4}" fill="${color}"><title>${d.day}: ${fmt(value)} ${label.toLowerCase()} / ${fmt(d.functions)} (${fraction.toFixed(2)}%${integration ? " of target bytes" : ""})${d.estimated && key !== "partial" ? " (estimated)" : ""}</title></rect>`;
           }).join("")}</g>`;
       }).join("")}
       ${days.map((d, i) => `<text x="${x(i) + barWidth / 2}" y="306" transform="rotate(-40 ${x(i) + barWidth / 2} 306)" text-anchor="end">${d.day.slice(5).replace("-", "/")}${d.estimated ? "*" : ""}</text>`).join("")}
@@ -468,7 +456,7 @@ function dailyGraph(days, integration = false, switcher = false) {
     </svg><div class="legend">${series.map(([key, label, color]) => `<span><i style="background:${color}"></i>${label} · ${count(last[key])}</span>`).join("")}<span><i style="background:var(--panel2);border:1px solid var(--line2)"></i>Remaining · ${fmt(remaining(last))}</span></div></div>
     ${days.some(d => d.estimated) ? '<p class="note">* Source/mined split estimated from nearby days. Recorded matched and partial totals unchanged.</p>' : ""}
     <details class="mining-days"><summary>Daily function counts</summary><p class="note">${integration ? "Recorded native snapshots only; earlier unrecorded totals are not reconstructed." : "Last snapshot each day; days without snapshots carry the previous total. Historical source/mined counts recovered from archived function data; * marks estimated splits, unavailable counts show —."} Changes include inventory corrections. First recorded total has no daily change.</p>
-      <div class="table"><table><thead><tr><th>Day (US Eastern)</th>${integration ? "<th>Integrated</th><th>Exact waiting</th><th>Remaining</th>" : "<th>Matched</th><th>Source</th><th>Mined</th><th>Partial</th>"}<th>Daily change</th><th>Complete</th></tr></thead><tbody>
+      <div class="table"><table><thead><tr><th>Day (US Eastern)</th>${integration ? "<th>Integrated</th><th>Exact waiting</th><th>Remaining</th>" : "<th>Matched</th><th>Source</th><th>Mined</th><th>Partial</th>"}<th>Daily change</th><th>${integration ? "Target bytes" : "Complete"}</th></tr></thead><tbody>
       ${days.map(d => `<tr><td>${d.day}${d.estimated ? "*" : ""}</td><td>${fmt(d.matched)}</td>${integration ? `<td>${count(d.waiting)}</td><td>${fmt(remaining(d))}</td>` : `<td>${count(d.source)}</td><td>${count(d.mined)}</td><td>${count(d.partial)}</td>`}<td>${gain(d)}</td><td>${d.percent.toFixed(2)}%</td></tr>`).join("")}
       </tbody></table></div></details>`;
 }
@@ -563,8 +551,10 @@ function integrationDaily(i, switcher = false) {
   const days = snapshots.slice().sort((a,b) => a.day.localeCompare(b.day)).map((row,index,rows) => {
     const functions = Object.values(row.groups).reduce((sum,g) => sum + g.functions, 0);
     const integrated = row.groups.integrated.functions, waiting = row.groups.exact_waiting.functions;
-    return {day:row.day,functions,integrated,waiting,matched:integrated,
-      percent:functions ? 100 * integrated / functions : 0,
+    const bytes = Object.values(row.groups).reduce((sum,g) => sum + g.bytes, 0);
+    return {day:row.day,functions,integrated,waiting,matched:integrated,bytes,
+      byteGroups:{integrated:row.groups.integrated.bytes,waiting:row.groups.exact_waiting.bytes},
+      percent:bytes ? 100 * row.groups.integrated.bytes / bytes : 0,
       gain:index ? integrated - rows[index-1].groups.integrated.functions : null};
   });
   return dailyGraph(days, true, switcher);

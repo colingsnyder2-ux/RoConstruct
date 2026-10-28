@@ -24,19 +24,10 @@ def payload(promotions, job, receipt=None):
     description = "**2008-06 Client**\n\nEstablishing verified native baseline..."
     if proof.exists():
         native = set(json.loads(proof.read_text())["addresses"])
-        manifest = {f["addr"]: f for f in json.loads((root / "rebuild/2008-06/manifests/functions.json").read_text())}
-        counts, sizes = [0] * 3, [0] * 3
-        for line in (root / "work/2008-06/functions.jsonl").read_text().splitlines():
-            if not line.strip():
-                continue
-            f = json.loads(line)
-            if f.get("kind", "code") != "code":
-                continue
-            functions[f["addr"]] = f
-            score = scores.get(f["addr"], manifest.get(f["addr"], {}).get("score", 0))
-            group = 0 if f["addr"] in native else 1 if score == 100 else 2
-            counts[group] += 1
-            sizes[group] += f["size"]
+        from roc.integration_site import coverage
+        groups, functions = coverage(root, scores, native)
+        counts = [groups["integrated"]["functions"], groups["exact_waiting"]["functions"], groups["partial"]["functions"] + groups["unmined"]["functions"]]
+        sizes = [groups["integrated"]["bytes"], groups["exact_waiting"]["bytes"], groups["partial"]["bytes"] + groups["unmined"]["bytes"]]
         total = sum(sizes)
         cells = [s * 23 // total if total else 0 for s in sizes]
         for i in sorted(range(3), key=lambda i: sizes[i] * 23 % total if total else 0, reverse=True)[:23 - sum(cells)]:
@@ -46,6 +37,7 @@ def payload(promotions, job, receipt=None):
             "\U0001f7ea integrated \u00b7 \U0001f7e6 exact waiting \u00b7 \u2b1c not integrated") % (
                 format(counts[0], ","), format(sum(counts), ","), format(sum(counts[1:]), ","),
                 bar, 100 * sizes[0] / total if total else 0)
+        description += "\n%s / %s target bytes" % (format(sizes[0], ","), format(total, ","))
         remaining = sum(sizes[1:])
     else:
         remaining = None

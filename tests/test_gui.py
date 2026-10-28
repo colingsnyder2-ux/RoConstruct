@@ -392,6 +392,20 @@ class DashboardTests(unittest.TestCase):
         logs = [row for row in self.app.events if row["event"] == "log"]
         self.assertEqual([row["startup"] for row in logs], [True, False, True])
 
+    def test_native_results_are_local_until_server_acceptance(self):
+        with patch.object(self.app, "schedule"), patch.object(gui_worker.providers, "provider_ready", return_value=True):
+            identifier = self.app.start({"kind": "worker", "config": config(lease_mode="native", client="2008-06", source_only=False, model="codex:default", cloud_allowed=True)})
+            rows = [dict(event="native_started", slot=2, file="App/Block.cpp"),
+                    dict(event="native_progress", slot=2, file="App/Block.cpp", message="Compiling baseline"),
+                    dict(event="native_result", slot=2, file="App/Block.cpp", local_exact=3, seconds=20),
+                    dict(event="benchmark", completed=1, matched=0, improved=0)]
+            process = Mock(stdout=io.StringIO("".join("ROC_EVENT " + json.dumps(row) + "\n" for row in rows)), stdin=None)
+            process.wait.return_value = 0
+            self.app.consume(identifier, process)
+        self.assertEqual(self.app.jobs[identifier]["local_exact"], 3)
+        self.assertEqual(self.app.jobs[identifier]["matched"], 0)
+        self.assertEqual(self.app.jobs[identifier]["attempted"], 1)
+
     def test_remove_finished_run_persists_and_rejects_active(self):
         with patch.object(self.app, "schedule"):
             job_id = self.app.start({"command": "doctor"})

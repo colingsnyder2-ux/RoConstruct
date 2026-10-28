@@ -565,7 +565,7 @@ def providers_text(reply):
 
 def model_prompt(rel, shown, items):
     return "%s\n\nFILE %s\n```cpp\n%s\n```\n\nTARGETS (exact 2008 functions this file should produce)\n%s" % (
-        MODEL_RULES, rel, shown[:60000], json.dumps(items, indent=1))
+        MODEL_RULES, rel, shown[:60000], json.dumps(items, separators=(",", ":")))
 
 
 def minimize(rel, text, edits, new, keep, compile_round, matcher, label, allow_empty=False, definitions=()):
@@ -601,14 +601,14 @@ def model_proposal(rel, text, addrs, baseline, owned, model, rounds, compile_rou
     for n in range(rounds):
         # Edit blocks are short: no thinking and a small reply cap keep each round to seconds, not a minute.
         # With thinking on, reasoning shares max_tokens: an 8192 cap left 27 of 29 replies without any edit.
-        settings = dict({"allow_cloud": True, "timeout": 600, "thinking": "disabled"}, **(options or {}))
+        settings = dict({"allow_cloud": True, "timeout": 180, "thinking": "disabled"}, **(options or {}))
         if settings.get("before_request") and not settings["before_request"]():
             return None, trials
         settings.setdefault("max_tokens", 3072 if settings["thinking"] == "disabled" else 32768)
         log("Requesting %s · %s · round %d/%d" % (model, rel, n + 1, rounds))
         reply = providers.generate(model, messages, settings)
-        log("model %s round %d: %.1fs, %s reasoning tokens" % (rel, n, getattr(reply, "latency_s", 0) or 0,
-                                                              getattr(reply, "reasoning_tokens", None)))
+        log("Round %d/%d · AI %.1fs · %d in / %d out tokens" % (n + 1, rounds, getattr(reply, "latency_s", 0) or 0,
+                                                              getattr(reply, "input_tokens", 0), getattr(reply, "output_tokens", 0)))
         messages.append({"role": "assistant", "content": providers_text(reply)})
         try:
             edits = parse_edits(reply)
@@ -632,7 +632,7 @@ def model_proposal(rel, text, addrs, baseline, owned, model, rounds, compile_rou
             return proposal, trials
         feedback = result["error"][-1500:] if not result["ok"] else \
             "Compiled. Newly exact: %s. Still not exact: %s. Lost previously exact: %s." % (
-                sorted(new) or "none", sorted(set(addrs) - found) or "none", sorted(lost) or "none")
+                sorted(new) or "none", sorted(set(addrs) - found) or "none", (str(sorted(lost)[:12]) + (" (%d total)" % len(lost) if len(lost) > 12 else "")) if lost else "none")
         if result["ok"] and diff:
             data = Path(result["object"]).read_bytes()
             feedback += "".join("\n\n%s target vs your rebuilt code:\n%s" % (a, diff(data, a))
@@ -643,18 +643,20 @@ def model_proposal(rel, text, addrs, baseline, owned, model, rounds, compile_rou
 
 
 def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs, log, compile_source, names):
-    """Model-written proposals for every file that defines a waiting exact target, most targets first."""
+    """Near-exact targets first; smaller files break ties to reach the first result sooner."""
     if config.get("only_rebuilt", True):
         # Near misses first: the rebuild already compiles a body for the address, so the fix is local to that method.
         # Targets with no rebuilt body need new methods and header declarations; .cpp-only edits rarely reach them.
         wanted = {addr for addr in wanted if names.get(addr, {}).get("symbol")}
     homes = target_files(texts, wanted, names, by_addr)
     skip = set(config.get("exclude_files", []))
-    files = sorted((rel for rel in homes if rel not in skip), key=lambda rel: -len(homes[rel]))[:config.get("max_files")]
+    homes = {rel: sorted(addrs, key=lambda a: (-(names.get(a, {}).get("score") or 0), by_addr.get(a, {}).get("size", 0))) for rel, addrs in homes.items()}
+    files = sorted((rel for rel in homes if rel not in skip),
+                   key=lambda rel: (-max(names.get(a, {}).get("score") or 0 for a in homes[rel]), len(texts[rel])))[:config.get("max_files")]
     model, rounds = config["llm"], config.get("rounds", 3)
     options = {key: config[key] for key in ("thinking", "max_tokens") if key in config}
     options.update(config.get("provider_options", {}))
-    options["log"] = log
+    event = options.pop("event", None)
     compile_slots = threading.Semaphore(config.get("compile_workers", jobs))
     raw_compile = compile_source
     def compile_source(source, rel, label):
@@ -663,9 +665,10 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
     context = config.get("context", "file")
     log("Native discovery: %d files · %d AI workers · %d compiler slots" % (len(files), jobs, config.get("compile_workers", jobs)))
 
-    def one(rel):
+    def discover(rel, log, options):
         if options.get("before_request") and not options["before_request"]():
             return None, []
+        log("Compiling baseline")
         base = compile_source(texts[rel], rel, "baseline")
         if not base["ok"]:
             return None, [base]
@@ -679,12 +682,39 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
                                               lambda source, label: compile_source(source, rel, label), matcher,
                                               lambda addr: dict(model_evidence(addr, names, by_addr), current_diff=diff(data, addr)),
                                               log, options, diff,
-                                              excerpt(texts[rel], [names[a]["symbol"] for a in homes[rel]
+                                              excerpt(texts[rel], [names[a]["symbol"] for a in homes[rel][:6]
                                                                    if names.get(a, {}).get("symbol")])
                                               if context == "methods" else None)
         except Exception as error:  # noqa: BLE001 - one provider/compile failure must not stop the other files
-            return None, [base, {"file": rel, "mode": "model", "ok": False, "error": str(error)[:500]}]
+            return None, [base, {"file": rel, "mode": "model", "ok": False, "error": str(error)[:500], "error_category": getattr(error, "category", "")}]
         return proposal, [base] + trials
+
+    slots, slots_lock = list(range(jobs)), threading.Lock()
+    def one(rel):
+        if options.get("before_request") and not options["before_request"]():
+            return None, []
+        with slots_lock:
+            slot = slots.pop(0)
+        started = time.monotonic()
+        if event:
+            event("native_started", slot=slot, file=rel, model=model)
+        def report(message):
+            if event:
+                event("native_progress", slot=slot, file=rel, message=str(message))
+            else:
+                log(message)
+        try:
+            proposal, trials = discover(rel, report, dict(options, log=report))
+            if event:
+                event("native_result", slot=slot, file=rel,
+                      local_exact=len(proposal["witnesses"]) if proposal else 0,
+                      error_category=next((t["error_category"] for t in reversed(trials) if t.get("error_category")), ""),
+                      seconds=round(time.monotonic() - started, 1),
+                      error=next((t.get("error", "") for t in reversed(trials) if t.get("error")), "")[:240])
+            return proposal, trials
+        finally:
+            with slots_lock:
+                slots.append(slot)
 
     proposals, records = [], []
     with ThreadPoolExecutor(max_workers=jobs) as pool:

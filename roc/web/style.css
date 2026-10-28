@@ -90,3 +90,5 @@
 .worker-chat .terminal-row .thought-text{font:13px/1.7 var(--sans);color:var(--muted);white-space:pre-wrap}
 
 .history-full-text{white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;font:12px/1.65 var(--mono);color:var(--text);background:var(--panel2);padding:12px;border-radius:6px;max-height:none;text-overflow:clip}.experiment-details{margin-top:8px}.experiment-details>summary{cursor:pointer}.agent-history-run{padding:10px 0;border-bottom:1px solid var(--border)}
+
+.terminal-row.exact .terminal-text,.terminal-row.exact .terminal-marker,.terminal-row.job_finished.exact .terminal-text,.terminal-row.job_finished.exact .terminal-marker,.worker-chat:not(.compact) .terminal-row.exact{color:#c084fc}.match-success:not(.improvement){color:#c084fc;background:#a855f716;border-color:#a855f755}.native-slots{display:flex;gap:5px;flex-wrap:wrap;font:10px var(--mono)}.native-slots>span{max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;background:var(--panel);padding:3px 6px;border-radius:4px}
