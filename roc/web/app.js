@@ -127,7 +127,7 @@ const modelBase = model => String(model || "").split("#")[0];
 const variantOf = model => { const parts = String(model || "").split("#"); return parts.length > 1 ? parts.slice(1).join("#") : ""; };
 const usesOpenCode = model => { const base = modelBase(model); return base.startsWith("opencode:") || base.startsWith("hosted:opencode/"); };
 const CLI_CHOICES = [["claude","Anthropic (Claude Code)"],["codex","OpenAI (Codex)"],["opencode","OpenCode"],["custom","Custom"]];
-const WORKER_PROVIDERS = [["codex","Codex CLI · signed-in plan"],["claude","Claude Code · signed-in plan"],["opencode","OpenCode · signed-in models"],["openai","OpenAI API"],["deepseek","DeepSeek API"],["anthropic","Anthropic API"],["chatgpt","ChatGPT plan"],["custom","Other API / local Ollama"]];
+const WORKER_PROVIDERS = [["codex","Codex CLI · signed-in plan"],["claude","Claude Code · signed-in plan"],["opencode","OpenCode · signed-in models"],["openrouter","OpenRouter API · Google, Anthropic, more"],["openai","OpenAI API"],["deepseek","DeepSeek API"],["anthropic","Anthropic API"],["chatgpt","ChatGPT plan"],["custom","Other API / local Ollama"]];
 const cliFor = cli => cli === "custom" ? "opencode" : cli;
 const PROVIDER_CLI = {openai:"openai", anthropic:"anthropic", opencode:"opencode", custom:"custom"};
 function customProviders() { return meta.providers.filter(provider => !["openai","anthropic","opencode","chatgpt","codex","claude"].includes(provider.name)); }

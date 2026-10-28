@@ -68,6 +68,15 @@ Cloud dollar caps need your exact model rates:
 `roc optimize --model M` calibrates a per-model worker profile on local verified matches
 (never submits).
 
+**OpenRouter:** choose OpenRouter in Worker or Integrator, then save its key in
+Settings → Provider credentials (or `roc provider setup`). It uses `OPENROUTER_API_KEY`;
+Google models through OpenRouter use this key, not `GEMINI_API_KEY`. The model dropdown
+loads OpenRouter's public text-model catalog, cached for five minutes. Manual IDs also
+work, including `:free` variants: `openrouter:google/gemini-2.5-flash`. Terminal catalog:
+`roc provider models openrouter`. Signed-in OpenCode users can instead select its
+`opencode:openrouter/google/...` entry. Reasoning settings use OpenRouter's unified
+`reasoning` parameter; mandatory reasoning still depends on the chosen model.
+
 ## Dashboard
 
 `roc gui` opens the local dashboard (loopback only; keep its session link private).

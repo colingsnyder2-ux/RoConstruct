@@ -216,7 +216,7 @@ class Dashboard:
                 "providers": [{"name": name, "ready": providers.provider_ready(name),
                                "auth": "chatgpt" if name == "chatgpt" else "cli" if name in ("opencode", "codex", "claude") else "api-key",
                                "models": ([model["slug"] for model in chatgpt.models(refresh=False)]
-                                          if name == "chatgpt" else row.get("defaults", []))}
+                                          if name == "chatgpt" else providers.provider_models(name, row))}
                               for name, row in providers.providers().items()],
                 "libraries": libs.NAMES,
                 "commands": [{"name": name, "title": row[0], "description": row[1], "target": row[2], "group": "Start here" if name in ("doctor","install","client-fetch","analyze","pull") else "Match and submit" if name in ("mass","auto","xcopy","libs","donor","check","submit") else "Advanced"}

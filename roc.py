@@ -2080,6 +2080,13 @@ def cmd_worker(a):
 
 def cmd_provider(a):
     from roc import providers
+    if a.sub == 'models':
+        config = providers.providers().get(a.name)
+        if config is None:
+            raise SystemExit('Unknown provider: ' + a.name)
+        for model in providers.provider_models(a.name, config):
+            print(a.name + ':' + model)
+        return
     if a.sub == "list":
         for name, config in sorted(providers.providers().items()):
             if name == "chatgpt":
@@ -2960,6 +2967,9 @@ def main(argv=None):
     p = sub.add_parser("provider", help="configure or test non-secret cloud model providers")
     ps = p.add_subparsers(dest="sub", required=True)
     ps.add_parser("list", help="show providers and whether their key environment variable is set").set_defaults(fn=cmd_provider)
+    pm = ps.add_parser('models', help='list provider models; OpenRouter uses its cached public catalog')
+    pm.add_argument('name')
+    pm.set_defaults(fn=cmd_provider)
     psecret = ps.add_parser("secrets", help="show safe user-local API-key file path")
     psecret.add_argument("--open", action="store_true", help="create and open the file in Notepad")
     psecret.set_defaults(fn=cmd_provider)

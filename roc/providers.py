@@ -38,6 +38,8 @@ BUILTINS = {
                "key_env": "NVIDIA_API_KEY", "defaults": ["nvidia/nemotron-3-ultra-550b-a55b"]},
     "deepseek": {"kind": "openai-chat", "base_url": "https://api.deepseek.com",
                  "key_env": "DEEPSEEK_API_KEY", "defaults": ["deepseek-flash"]},
+    "openrouter": {"kind": "openai-chat", "base_url": "https://openrouter.ai/api/v1",
+                   "key_env": "OPENROUTER_API_KEY", "defaults": ["google/gemini-2.5-flash"]},
     "openai": {"kind": "openai-responses", "base_url": "https://api.openai.com/v1",
                "key_env": "OPENAI_API_KEY", "defaults": ["gpt-5-mini"]},
     "anthropic": {"kind": "anthropic-messages", "base_url": "https://api.anthropic.com/v1",
@@ -52,6 +54,8 @@ USER_AGENT = "RoConstruct/1.0"
 # Providers that rejected the thinking field once; the process skips it after that.
 NO_THINKING = set()
 FATAL_ERRORS = frozenset(("provider_auth", "provider_key", "provider_config", "provider_model"))
+MODEL_CATALOG = {}
+MODEL_CATALOG_LOCK = threading.Lock()
 
 
 class ProviderError(RuntimeError):
@@ -206,6 +210,32 @@ def codex_models():
     return list(dict.fromkeys(["default", *(row["slug"] for row in rows
         if isinstance(row, dict) and isinstance(row.get("slug"), str) and row["slug"]
         and row.get("visibility", "list") == "list")]))
+
+
+def provider_models(name, config):
+    """Public model discovery only; never sends prompts or credentials."""
+    if name != 'openrouter':
+        return config.get('defaults', [])
+    url = _url(config, '/models')
+    with MODEL_CATALOG_LOCK:
+        expires, models = MODEL_CATALOG.get(url, (0, config.get('defaults', [])))
+        if time.monotonic() < expires:
+            return list(models)
+        try:
+            request = urllib.request.Request(url, headers={'User-Agent': USER_AGENT})
+            with urllib.request.urlopen(request, timeout=5) as response:
+                rows = json.load(response)['data']
+            found = sorted({row['id'] for row in rows if isinstance(row, dict)
+                and isinstance(row.get('id'), str) and row['id']
+                and 'text' in ((row.get('architecture') or {}).get('output_modalities') or ['text'])})
+            if not found:
+                raise ValueError('Empty model catalog')
+            models = found
+            expires = time.monotonic() + 300
+        except (OSError, ValueError, KeyError, TypeError):
+            expires = time.monotonic() + 30  # retain last catalog through an outage
+        MODEL_CATALOG[url] = expires, models
+        return list(models)
 
 
 def secrets_path():
@@ -548,7 +578,16 @@ def _openai_chat(provider, remote, config, prompt, state, options):
         body["seed"] = int(options["seed"])
     think = options.get("thinking")
     nemotron_ultra = provider == "nvidia" and remote == "nvidia/nemotron-3-ultra-550b-a55b"
-    if nemotron_ultra:
+    if provider == 'openrouter':
+        effort = options.get('reasoning_effort')
+        if think is not None and str(think).lower() != 'auto':
+            disabled = str(think).lower() == 'disabled' or isinstance(think, dict) and think.get('type') == 'disabled'
+            body['reasoning'] = {'enabled': not disabled}
+            if not disabled and effort not in (None, 'auto'):
+                body['reasoning']['effort'] = str(effort)
+        elif effort not in (None, 'auto'):
+            body['reasoning'] = {'effort': str(effort)}
+    elif nemotron_ultra:
         effort = _nemotron_effort(options)
         if effort is not None:
             body["reasoning_effort"] = str(effort)
@@ -561,14 +600,20 @@ def _openai_chat(provider, remote, config, prompt, state, options):
             body.setdefault("reasoning_effort", "low" if disabled else "high")
         else:
             body["thinking"] = think if isinstance(think, dict) else {"type": str(think)}
-    if not nemotron_ultra and options.get("reasoning_effort") is not None:
+    if provider != 'openrouter' and not nemotron_ultra and options.get("reasoning_effort") is not None:
         body["reasoning_effort"] = str(options["reasoning_effort"])
     data, headers = _post(_url(config, "/chat/completions"), body,
                           {"Content-Type": "application/json", "Authorization": "Bearer " + key}, options["timeout"])
     choice = (data.get("choices") or [{}])[0]
+    if provider == 'openrouter' and (data.get('error') or choice.get('error')):
+        error = data.get('error') or choice['error']
+        status = error.get('code') if isinstance(error, dict) else None
+        category = ('provider_auth' if status in (401, 402, 403) else 'provider_model' if status == 404
+                    else 'provider_retry' if status in (408, 429) or isinstance(status, int) and status >= 500 else 'provider_error')
+        raise ProviderError(category, 'OpenRouter generation failed (code %s)' % status, status)
     message = choice.get("message") or {}
     content = message.get("content")
-    if not content:
+    if not content and provider != 'openrouter':
         content = message.get("reasoning_content") or message.get("reasoning") or ""
     text = strip_reasoning(content or "")
     return Generation(text, {"messages": messages + [{"role": "assistant", "content": text}]},
