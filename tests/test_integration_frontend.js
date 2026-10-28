@@ -7,9 +7,10 @@ const context = {
   integrationMetric: "gains", ENGINE: "Roblox", APP: "App", classify: data => data.funcs.map(() => ["Roblox", "Physics"]),
 };
 vm.createContext(context);
+vm.runInContext(html.slice(html.indexOf("function dailyGraph("), html.indexOf("function miningGraph(")), context);
 vm.runInContext(html.slice(html.indexOf("function integrationSummary("), html.indexOf("/* One click")), context);
 const native = {client: "2008-06", updated: "2026-10-28 12:00 UTC", native: ["00000001"],
-  groups: {integrated: {bytes: 25}, exact_waiting: {bytes: 75}, partial: {bytes: 0}, unmined: {bytes: 0}},
+  groups: {integrated: {bytes: 25, functions:25}, exact_waiting: {bytes: 75, functions:75}, partial: {bytes: 0, functions:0}, unmined: {bytes: 0, functions:0}},
   jobs: [
     {when: "2026-10-27 01:00 UTC", distinct_gains: 3, gains: 5},
     {when: "2026-10-28 10:00 UTC", distinct_gains: 0, gains: 4},
@@ -22,10 +23,11 @@ assert.equal(context.integrationSummary(native, "other"), "");
 assert.match(context.integrationSummary(native, native.client), /Integrated · 25.00%/);
 assert.match(context.integrationSummary(native, native.client), /aria-valuenow="25.00"/);
 assert.doesNotMatch(context.integrationSummary({...native, groups: {}}, native.client), /NaN|Infinity/);
-assert.match(context.integrationDaily(native), /Integrated 25.00%/);
+assert.match(context.integrationDaily(native), /25.00% integrated/);
 assert.doesNotMatch(context.integrationDaily(native), /stacked by model|gpt-|claude|data-integration-metric/);
 assert.doesNotMatch(context.integrationDaily({...native, jobs: []}), /NaN|Infinity/);
-assert.match(context.integrationDaily({...native, jobs: []}), /Daily integration coverage/);
+assert.match(context.integrationDaily({...native, jobs: []}), /Daily function counts/);
+assert.match(context.integrationDaily(native), /<th>Exact waiting<\/th>/);
 assert.equal(context.integrationDays({...native, daily: [{day: "2026-10-27", gains: 9, jobs: 2}]})[0].gains, 9);
 new vm.Script(html.match(/<script>([\s\S]*)<\/script>/)[1]);
 assert.doesNotMatch(html, /Code coverage view|code-mode|data-work-view/);
