@@ -1,12 +1,6 @@
 {
   "2008-06": [
     {
-      "addr": "0042dda4",
-      "size": 48,
-      "sha256": "6f1c536ff5090fc3fa58ecf0c014c4a7d27dd194e692b3e745d48627f5a73521",
-      "reason": "12 relocated switch targets, dispatched by jmp [ecx*4+0042dda4] at 0042db59; targets are case blocks."
-    },
-    {
       "addr": "0069eb20",
       "size": 176,
       "sha256": "bfc8973bffe9f5e62a00b37a18cc3f40c6384f4323e433af9b0cfe2086a94324",

@@ -112,7 +112,9 @@ def _extent(client, start, size, rows, order, exact):
             break
         row = rows["%08x" % va]
         if va > start:
-            if row["addr"] in exact or row.get("kind") == "data":
+            # A reviewed data span (e.g. a switch's jump table) may be absorbed: MSVC emits the
+            # table inside its function, and the byte comparison covers it like code.
+            if row["addr"] in exact:
                 return None
             absorbs.append(row["addr"])
         relocs += [va - start + r for r in row["relocs"] if va - start + r + 4 <= size]
@@ -226,11 +228,23 @@ def apply(client, log=print):
         if not _extent(client, int(s["addr"], 16), s["new"], rows, order, exact):
             continue
         bounds[s["addr"]] = s["new"]
+        for absorbed in s["absorbs"]:
+            bounds.pop(absorbed, None)  # a pinned start inside the new extent would split it again
         applied.append(s)
         log("%s %s: %d -> %d (%s; absorbs %s)" % (client, s["addr"], s["old"], s["new"], s["proof"],
                                                  ", ".join(s["absorbs"]) or "nothing"))
     if applied:
         path.write_text(json.dumps(sorted([a, n] for a, n in bounds.items())))
+        # Reviewed data spans the proof absorbed would otherwise be carved out again by analyze.
+        data_path = ROOT / "research" / "function-data.json"
+        absorbed = {a for s in applied for a in s["absorbs"]}
+        reviewed = json.loads(data_path.read_text()) if data_path.exists() else {}
+        before = reviewed.get(client, [])
+        kept = [row for row in before if row["addr"] not in absorbed]
+        if len(kept) != len(before):
+            reviewed[client] = kept
+            data_path.write_text(json.dumps(reviewed, indent=2) + "\n")
+            log("%s: dropped %d absorbed reviewed data spans from %s" % (client, len(before) - len(kept), data_path.name))
     return applied
 
 
