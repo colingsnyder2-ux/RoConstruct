@@ -246,7 +246,9 @@ full/live fingerprints share one input walk and one content-read pass; later liv
 checks still detect source/toolchain changes during verification, including edits
 that preserve file size and timestamps. Output/cache trees are pruned before descent.
 The native cache key covers compiler/matcher/gate modules and build inputs, excluding
-CLI, queue, UI and webhook code. Milestones execute the build module directly.
+unrelated CLI, UI, reporting and webhook modules. The shared integration module is
+included because it merges source overlays, even though it also contains queue logic.
+Milestones execute the build module directly.
 
 Compiler/SDK path discovery is persisted in `work/integration/toolchain.json`, checked
 against resolver code, installation state, configuration and existing paths. Compiler,

@@ -6,6 +6,7 @@
   roc native-try check FILE BLOCKS.txt          apply SEARCH/REPLACE blocks, compile the real file, report;
                                                 a new exact with no loss is minimized and saved as a proposal
   roc native-try check FILE                     revalidate saved edits after syncing a new baseline
+  roc native-try preflight                      independently build/link saved batch and run acceptance gates
   roc native-try submit --model MODEL           claim, stage and submit every saved proposal as one verified batch
 
 Saved proposals live in work/native-try/proposals.json; later checks of a file build on its saved edits.
@@ -340,11 +341,11 @@ def dispatch(args):
         return print("saved proposals cleared")
     if args.action in ("evidence", "check") and not args.file:
         raise ValueError(args.action + " requires a source FILE")
+    ctx = context()
     if getattr(args, "file", None):
         registry = native_sweep.ROOT / "rebuild/2008-06/patches/rbxgs-client.json"
         if registry.exists():
             args.file = next(iter(integration.canonical_patches({args.file: []}, json.loads(registry.read_text()))))
-    ctx = context()
     {"targets": cmd_targets, "evidence": cmd_evidence, "check": cmd_check}[args.action](ctx, args)
 
 

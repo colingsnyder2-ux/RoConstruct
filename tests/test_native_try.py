@@ -8,6 +8,21 @@ import pytest
 from roc import native_try
 
 
+def test_check_canonicalizes_against_baseline_after_context_sync(tmp_path, monkeypatch):
+    monkeypatch.setattr(native_try.native_sweep, 'ROOT', tmp_path)
+    registry = tmp_path / 'rebuild/2008-06/patches/rbxgs-client.json'
+    registry.parent.mkdir(parents=True)
+    registry.write_text('{}')
+    def context():
+        registry.write_text(json.dumps({'App/gui/GUI.cpp': [['old', 'accepted']]}))
+        return 'synced-context'
+    monkeypatch.setattr(native_try, 'context', context)
+    calls = []
+    monkeypatch.setattr(native_try, 'cmd_check', lambda ctx, args: calls.append((ctx, args.file)))
+    native_try.dispatch(SimpleNamespace(action='check', file='App/gui/Gui.cpp'))
+    assert calls == [('synced-context', 'App/gui/GUI.cpp')]
+
+
 def test_reset_file_preserves_other_saved_proofs(tmp_path, monkeypatch):
     path = tmp_path / 'proposals.json'
     other = {'file': 'App/B.cpp', 'proof': {'object_sha256': 'unchanged'}}
