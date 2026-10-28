@@ -10,6 +10,7 @@ import math
 import os
 import re
 import shutil
+import socket
 import subprocess
 import threading
 import time
@@ -353,6 +354,14 @@ def is_cloud(model):
     return parse_model(model)[0] != "local"
 
 
+def cloud_slots(model, workers, value="auto"):
+    """Keep extra file workers useful without flooding the shared NVIDIA OpenCode transport."""
+    if value != "auto":
+        return int(value)
+    provider, remote, _ = parse_model(model)
+    return min(workers, 8) if provider == "opencode" and remote.startswith("nvidia/") else workers
+
+
 def available(model):
     provider, _remote, config = parse_model(model)
     if provider == "local":
@@ -635,7 +644,8 @@ def _opencode_failure(error):
     """Map one `opencode run` error event to a safe ProviderError."""
     status = error.get("status") if isinstance(error.get("status"), int) else None
     message = str(error.get("message") or error.get("type") or "OpenCode request failed")
-    if status in (408, 429) or (status or 0) >= 500:
+    transient = any(term in message.lower() for term in ("socket connection was closed", "econnreset", "econnrefused", "etimedout", "fetch failed"))
+    if status in (408, 429) or (status or 0) >= 500 or status is None and transient:
         category = "provider_retry"
     elif status in (401, 402, 403):
         category = "provider_auth"  # quota/refusal: waiting will not clear it
@@ -662,9 +672,16 @@ def _opencode_run_flags():
 
 def _opencode_run(argv, prompt, timeout):
     """One non-interactive `opencode run`; the whole process tree dies on timeout."""
+    task = Path(argv[argv.index("--file") + 1]) if "--file" in argv else None
+    workspace = Path(tempfile.gettempdir()) / "roconstruct-model-workspace" if task else None
+    if workspace:
+        workspace.mkdir(exist_ok=True)
+    service = _opencode_service() if "--server" in argv else None
+    env = dict(os.environ, OPENCODE_SERVER_PASSWORD=service[1]) if service else None
     process = subprocess.Popen(argv, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                                stderr=subprocess.STDOUT, text=True,
-                               encoding="utf-8", errors="replace")
+                               encoding="utf-8", errors="replace", cwd=workspace, env=env,
+                               creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
     to = int(timeout or 0)
     try:
         output, _unused = process.communicate(prompt, timeout=(None if to <= 0 else max(5, to)))
@@ -708,6 +725,12 @@ def _opencode_service():
         url = data.get("url") if isinstance(data, dict) else None
         password = data.get("password", "") if isinstance(data, dict) else ""
         if isinstance(url, str) and url.startswith(("http://", "https://")):
+            parsed = urlparse(url)
+            try:
+                with socket.create_connection((parsed.hostname, parsed.port or (443 if parsed.scheme == "https" else 80)), timeout=1):
+                    pass
+            except (OSError, ValueError):
+                continue  # Stale metadata must not pin every worker to a dead service.
             return url.rstrip("/"), str(password or "")
     return None
 
@@ -790,7 +813,10 @@ def _opencode_cli(provider, remote, config, prompt, state, options):
     with tempfile.TemporaryDirectory(prefix="roc-opencode-task-") as folder:
         task = Path(folder) / "task.txt"
         task.write_text(discipline + body, encoding="utf-8")
-        code, output = _opencode_run([exe, "run", "-m", remote, "--format", "json", "--file", str(task),
+        # Explicit attachment avoids a timed-out CLI owning/killing a new shared service.
+        service = _opencode_service()
+        server = ["--server", service[0]] if service else _opencode_run_flags()
+        code, output = _opencode_run([exe, "run", "-m", remote, "--format", "json", *server, "--file", str(task),
                                       "Follow the attached task exactly. Return only its requested output. Do not use tools."],
                                      "", options["timeout"])
     text, failure = "", None
@@ -963,12 +989,15 @@ def generate(model, messages, options=None, state=None):
     if gate:
         lock = gate.enter(provider)
     started, retries = time.monotonic(), 0
+    deadline = None if options.get("retry_forever") else started + max(1, float(options.get("timeout") or 180))
     try:
         attempt = 0
         dropped_knobs = False
         while True:
             ticket = None
             try:
+                if deadline is not None and time.monotonic() >= deadline:
+                    raise ProviderError("provider_retry", "Generation deadline exceeded")
                 if budget:
                     ticket = budget.reserve(estimate_tokens,
                                             _cost(config, estimate_input, int(options["max_tokens"]), remote) or 0.0)
@@ -976,7 +1005,8 @@ def generate(model, messages, options=None, state=None):
                       "codex-cli": _coding_cli, "claude-cli": _coding_cli,
                       "openai-chat": _openai_chat, "openai-responses": _openai_responses,
                       "anthropic-messages": _anthropic, "gemini": _gemini}[config["kind"]]
-                out = fn(provider, remote, config, prompt, state, options)
+                request_options = dict(options, timeout=min(options["timeout"], max(1, math.ceil(deadline-time.monotonic())))) if deadline else options
+                out = fn(provider, remote, config, prompt, state, request_options)
                 out.latency_s = time.monotonic() - started
                 out.retries = retries
                 out.cost = _cost(config, out.input_tokens, out.output_tokens, remote)
@@ -1009,6 +1039,7 @@ def generate(model, messages, options=None, state=None):
                         budget.settle(ticket, 0, 0.0)  # the provider did not bill this
                     continue
                 if (error.category != "provider_retry" or
+                        deadline is not None and time.monotonic() >= deadline or
                         (not options.get("retry_forever") and attempt >= int(options.get("retries", 2)))):
                     if error.status in (401, 403):
                         error = ProviderError(error.category, "%s HTTP %d: check %s and model access; environment overrides saved key" %
@@ -1029,6 +1060,8 @@ def generate(model, messages, options=None, state=None):
                 _retry_delay = min(180, 0.5 * (2 ** min(attempt, 7)))
                 if getattr(error, "status", None) == 429:
                     _retry_delay = max(60, _retry_delay)
+                if deadline:
+                    _retry_delay = min(_retry_delay, max(0, deadline - time.monotonic()))
                 if options.get("on_retry"):
                     options["on_retry"](error, retries, _retry_delay)
                 time.sleep(_retry_delay)

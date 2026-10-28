@@ -978,7 +978,7 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
     workers = resolve_workers(workers, model, source_only)
     if cloud_gate is None:
         from roc import providers
-        cloud_gate = providers.CloudGate(workers)
+        cloud_gate = providers.CloudGate(providers.cloud_slots(model,workers))
     shared_examples, shared_sources = {}, {}
     family_state, family_lock = {"id": family_id}, threading.Lock()
     if workers == 1:

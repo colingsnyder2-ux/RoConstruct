@@ -117,6 +117,57 @@ def test_opencode_nemotron_disabled_thinking_selects_none_variant(monkeypatch):
     assert run.call_args.args[0][3].endswith('#none')
 
 
+def test_cloud_retry_timeout_is_one_deadline_not_per_attempt(monkeypatch):
+    clock=[0]
+    monkeypatch.setattr(providers.time,'monotonic',lambda:clock[0])
+    def request(*args):
+        clock[0]+=10
+        raise providers.ProviderError('provider_retry','TimeoutError')
+    send=Mock(side_effect=request)
+    monkeypatch.setattr(providers,'_openai_chat',send)
+    with pytest.raises(providers.ProviderError,match='TimeoutError'):
+        providers.generate('nvidia:nvidia/test','request',{'allow_cloud':True,'timeout':10,'retries':5})
+    send.assert_called_once()
+
+
+def test_opencode_transport_closed_is_retryable():
+    assert providers._opencode_failure({'type':'Transport','message':'The socket connection was closed unexpectedly'}).category == 'provider_retry'
+
+
+def test_auto_cloud_slots_bound_shared_nvidia_but_preserve_explicit_counts():
+    model='opencode:nvidia/nvidia/nemotron-3-ultra-550b-a55b#none'
+    assert providers.cloud_slots(model,20)==8
+    assert providers.cloud_slots(model,4)==4
+    assert providers.cloud_slots(model,20,20)==20
+    assert providers.cloud_slots('codex:default',20)==20
+
+
+def test_dead_opencode_service_metadata_is_ignored(tmp_path,monkeypatch):
+    import json
+    from pathlib import Path
+    monkeypatch.delenv('OPENCODE_SERVER_URL',raising=False)
+    monkeypatch.setattr(Path,'home',lambda:tmp_path)
+    monkeypatch.setenv('LOCALAPPDATA',str(tmp_path/'local'))
+    path=tmp_path/'.local/state/opencode/service.json';path.parent.mkdir(parents=True)
+    path.write_text(json.dumps({'url':'http://127.0.0.1:4096','password':'not-an-api-key'}))
+    monkeypatch.setattr(providers.socket,'create_connection',Mock(side_effect=OSError('connection refused')))
+    assert providers._opencode_service() is None
+
+
+def test_opencode_cli_runs_outside_repo_with_explicit_server(monkeypatch,tmp_path):
+    task=tmp_path/'task.txt';task.write_text('native request')
+    process=Mock(returncode=0);process.communicate.return_value=('response','')
+    start=Mock(return_value=process)
+    monkeypatch.setattr(providers.subprocess,'Popen',start)
+    monkeypatch.setattr(providers,'_opencode_service',lambda:('http://127.0.0.1:4096','private-test-password'))
+    providers._opencode_run(['opencode','run','--server','http://127.0.0.1:4096','--file',str(task)],'',5)
+    options=start.call_args.kwargs
+    assert options['cwd'] != providers.ROOT and options['cwd'] != task.parent
+    assert options['cwd'].name == 'roconstruct-model-workspace'
+    assert options['env']['OPENCODE_SERVER_PASSWORD'] == 'private-test-password'
+    assert 'private-test-password' not in start.call_args.args[0]
+
+
 def test_native_discovery_stops_queued_files_on_permanent_provider_failure(tmp_path, monkeypatch):
     files = {f'App/file{n}.cpp': 'void A::f() {}' for n in range(8)}
     monkeypatch.setattr(native_sweep, 'target_files', lambda *args: {name: ['00400000'] for name in files})

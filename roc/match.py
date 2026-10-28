@@ -6,7 +6,7 @@ import difflib
 import errno
 import contextlib
 import functools
-from bisect import bisect_left
+from bisect import bisect_left, bisect_right
 import hashlib
 import json
 import os
@@ -105,28 +105,36 @@ def coff_functions(obj):
     return out
 
 
-def coff_data_refs(obj, func_name):
-    """Data a function's source defines and points to with absolute (DIR32) relocations:
-    [(offset in function, data bytes, reloc offsets inside the data)]. Only data with
-    contents in this .obj (string literals, constants, initialised globals) is listed;
-    `extern` declarations have none and are not compared."""
+@functools.lru_cache(maxsize=8)
+def _coff_data_index(obj):
+    """Immutable object content keys one shared symbol/section parse for all its functions."""
     _, nsec, _, symptr, nsym, optsz, _ = struct.unpack_from("<HHIIIHH", obj, 0)
     strtab = symptr + nsym * 18
     secs = [struct.unpack_from("<8sIIIIIIHHI", obj, 20 + optsz + 40 * i) for i in range(nsec)]
-    syms, i = {}, 0
+    syms, functions, starts, i = {}, {}, {}, 0
     while i < nsym:
         raw, value, secnum, typ, _, naux = struct.unpack_from("<8sIhHBB", obj, symptr + 18 * i)
         if raw[:4] == b"\0\0\0\0":
             off = strtab + struct.unpack_from("<I", raw, 4)[0]
             raw = obj[off:obj.index(b"\0", off)]
         syms[i] = (raw.rstrip(b"\0").decode("latin-1"), value, secnum, typ)
+        if secnum > 0:
+            functions.setdefault(syms[i][0], (value, secnum - 1))
+            starts.setdefault(secnum, set()).add(value)
         i += 1 + naux
+    return secs, syms, functions, {sec: tuple(sorted(values)) for sec, values in starts.items()}
+
+
+def coff_data_refs(obj, func_name, index=None):
+    """Data a function defines and references via DIR32; externs have no local data.
+    Returns fresh (function offset, bytes, data relocation offsets) lists."""
+    secs, syms, functions, starts = index if index is not None else _coff_data_index(obj)
 
     def relocs_of(sec):
         _, _, _, _, _, relptr, _, nrel, _, _ = secs[sec]
         return [struct.unpack_from("<IIH", obj, relptr + 10 * k) for k in range(nrel)]
 
-    func = next(((v, s - 1) for n, v, s, t in syms.values() if n == func_name and s > 0), None)
+    func = functions.get(func_name)
     if func is None:
         return []
     fvalue, fsec = func
@@ -141,7 +149,9 @@ def coff_data_refs(obj, func_name):
         _, _, _, rawsize, rawptr, _, _, _, _, chars = secs[secnum - 1]
         if chars & 0x20 or not chars & 0x40 or not rawptr:  # code, or no initialised data
             continue
-        nxt = min([v for n, v, s, t in syms.values() if s == secnum and v > value] + [rawsize])
+        values = starts[secnum]
+        following = bisect_right(values, value)
+        nxt = min(values[following], rawsize) if following < len(values) else rawsize
         # The exe operand is symbol + addend (e.g. [table+4]); start the data there too.
         start = value + struct.unpack_from("<i", obj, fptr + off)[0]
         if not value <= start < nxt:
@@ -655,6 +665,7 @@ def _single_load(fn):
         with lock:
             return fn(*args)
     cached.cache_clear = fn.cache_clear
+    cached.cache_info = fn.cache_info
     return cached
 
 

@@ -216,7 +216,7 @@ class Matcher:
         cached = self.cache.get(key)
         if cached is not None:
             return [dict(hit) for hit in cached]
-        found = {}
+        found, data_index = {}, None
         for symbol, code, relocs in match.coff_functions(obj):
             if len(code) < 6:
                 continue
@@ -230,7 +230,9 @@ class Matcher:
                 # Shared tiny bodies can hit many addresses. Parse this symbol's
                 # COFF data once, while checking each target's referenced bytes.
                 if refs is None:
-                    refs = match.coff_data_refs(obj, symbol)
+                    if data_index is None:
+                        data_index = match._coff_data_index(obj)
+                    refs = match.coff_data_refs(obj, symbol, index=data_index)
                 _, bad = match.data_check("2008-06", addr, exe, refs)
                 if not bad:
                     found[addr] = symbol
@@ -582,6 +584,26 @@ def model_prompt(rel, shown, items):
         MODEL_RULES, rel, shown[:60000], json.dumps(items, separators=(",", ":")))
 
 
+def method_edits(text, reply, method):
+    """Accept one complete method, retain its original declaration, and edit only its body."""
+    code = providers_text(reply).strip()
+    fenced = re.fullmatch(r"```(?:cpp|c\+\+)?\s*\n(.*?)\n```", code, re.S)
+    if fenced:
+        code = fenced[1]
+    original, returned = methods(text), methods(code)
+    if method not in original or set(returned) != {method}:
+        raise ValueError("reply must contain only the unambiguous method " + method)
+    start, end = original[method]
+    new_start, new_end = returned[method]
+    old_clean, new_clean = masked_cpp(text), masked_cpp(code)
+    brace, new_brace = old_clean.index("{", start), new_clean.index("{", new_start)
+    if re.sub(r"\s+", "", old_clean[start:brace]) != re.sub(r"\s+", "", new_clean[new_start:new_brace]):
+        raise ValueError("method signature must stay unchanged")
+    if not re.fullmatch(r"[\w\s:<>,*&~]*", new_clean[:new_start]) or new_clean[new_end:].strip() not in ("", ";"):
+        raise ValueError("reply contains extra code outside the requested method")
+    return [[text[start:end], text[start:brace] + code[new_brace:new_end]]]
+
+
 def minimize(rel, text, edits, new, keep, compile_round, matcher, label, allow_empty=False, definitions=(), verified=None):
     """Only the edits the new exacts need, re-proved by a final compile; None if that proof fails. Models rewrite
     neighbouring methods too, and an unproven behaviour change in a method that was not exact would pass the
@@ -611,14 +633,41 @@ def model_proposal(rel, text, addrs, baseline, owned, model, rounds, compile_rou
     """Ask the model for anchored edits to one native file; keep the first that makes a new target exact and
     loses no owned exact in that file. Every round compiles the real TU; failures go back as feedback."""
     from roc import providers
-    prompt = model_prompt(rel, shown or text, [evidence(a) for a in addrs[:3]])
-    messages, trials = [{"role": "system", "content": "Repair C++ using requested SEARCH/REPLACE blocks inside one ```cpp fence. No tools or prose."},
+    addrs = [addr for addr in addrs if addr not in baseline]
+    if not addrs:
+        return None, []
+    generation = (options or {}).get("generation", "edits")
+    if generation not in ("auto", "edits", "method"):
+        raise ValueError("Unknown native generation mode: " + str(generation))
+    spans = methods(text)
+    items, selected = [], None
+    for addr in addrs[:3]:
+        item = evidence(addr)
+        items.append(item)
+        span = spans.get(symbol_method(item.get("rebuilt_symbol") or ""))
+        if generation != "edits" and span and span[1] - span[0] <= 6000:
+            selected = item
+            break
+    method = symbol_method(selected["rebuilt_symbol"]) if selected else None
+    one_shot = generation != "edits" and method is not None
+    prompt = model_prompt(rel, shown or text, items)
+    if one_shot:
+        prompt = ("Repair ONLY %s in %s for the genuine VS2008 compiler. Return its complete qualified method "
+                  "definition in one ```cpp fence. Keep the signature unchanged. No SEARCH/REPLACE, extra methods, "
+                  "invented types/fields, raw offsets, assembly or prose. Use standins mappings to translate mined "
+                  "placeholders to real symbols. Match the target code AND data.\n\n"
+                  "CONTEXT\n```cpp\n%s\n```\nTARGET\n%s") % (
+                      method, rel, excerpt(text, [selected["rebuilt_symbol"]], around=6)[:60000],
+                      json.dumps(selected, separators=(",", ":")))
+    messages, trials = [{"role": "system", "content": "Repair native C++; return only the requested output inside one ```cpp fence. No tools or prose."},
                         {"role": "user", "content": prompt}], []
+    seen_candidates = set()
     for n in range(rounds):
         # Edit blocks are short: no thinking and a small reply cap keep each round to seconds, not a minute.
         # With thinking on, reasoning shares max_tokens: an 8192 cap left 27 of 29 replies without any edit.
         settings = dict({"allow_cloud": True, "timeout": 180, "thinking": "disabled"}, **(options or {}))
-        settings["edit_blocks"] = True
+        response_mode = "method" if one_shot and (n == 0 or generation == "method") else "edits"
+        settings["edit_blocks"] = response_mode == "edits"
         if settings.get("before_request") and not settings["before_request"]():
             return None, trials
         settings.setdefault("max_tokens", 3072 if settings["thinking"] == "disabled" else 32768)
@@ -628,21 +677,32 @@ def model_proposal(rel, text, addrs, baseline, owned, model, rounds, compile_rou
                                                               getattr(reply, "input_tokens", 0), getattr(reply, "output_tokens", 0)))
         messages.append({"role": "assistant", "content": providers_text(reply)})
         try:
-            edits = [pair for pair in parse_edits(reply) if pair[0] != pair[1]]
+            edits = method_edits(text, reply, method) if response_mode == "method" else parse_edits(reply)
+            edits = [pair for pair in edits if pair[0] != pair[1]]
+            if not edits:
+                raise ValueError("Reply made no source change; target is still not exact")
             integration.validate_patches({rel: edits})
             candidate = apply_edits(text, edits)
-            result = compile_round(candidate, "model-" + integration.digest(candidate)[:16])
+            fingerprint = integration.digest(candidate)
+            if fingerprint in seen_candidates:
+                raise ValueError("Repeated failed candidate; choose a different correction")
+            seen_candidates.add(fingerprint)
+            result = compile_round(candidate, "model-" + fingerprint[:16])
             log("Round %d/%d · compile %.1fs · queue %.1fs" %
                 (n + 1, rounds, result.get("seconds", 0), result.get("queue_seconds", 0)))
         except ValueError as error:
-            trials.append({"file": rel, "mode": "model-%d" % n, "ok": False, "error": str(error)[:500],
+            trials.append({"file": rel, "mode": "model-%d" % n, "generation": response_mode, "ok": False, "error": str(error)[:500],
                            "reply": providers_text(reply)[:3000]})
-            messages.append({"role": "user", "content": "Rejected: %s\nReply with corrected SEARCH/REPLACE blocks." % error})
+            instruction = ("Return only the complete corrected method in one cpp fence." if generation == "method" and method else
+                           "Return SEARCH/REPLACE blocks in one cpp fence: <<<<<<< SEARCH, exact original text, =======, new text, >>>>>>> REPLACE.")
+            messages.append({"role": "user", "content": "Rejected: %s\n%s" % (error, instruction)})
             continue
         hits = matcher.scan(Path(result["object"]).read_bytes()) if result["ok"] else []
         found = {h["addr"] for h in hits}
         new, lost = (found & set(addrs)) - baseline, baseline - found
-        result.update(hits=hits, losses=sorted(lost), reply=providers_text(reply)[:3000])
+        result.update(hits=hits, losses=sorted(lost), reply=providers_text(reply)[:3000], generation=response_mode,
+                      generation_seconds=getattr(reply, "latency_s", None),
+                      input_tokens=getattr(reply, "input_tokens", None), output_tokens=getattr(reply, "output_tokens", None))
         trials.append(result)
         log("model %s round %d: %d new exact, %d lost" % (rel, n, len(new), len(lost)))
         if new and not lost:
@@ -658,9 +718,18 @@ def model_proposal(rel, text, addrs, baseline, owned, model, rounds, compile_rou
             data = Path(result["object"]).read_bytes()
             feedback += "".join("\n\n%s target vs your rebuilt code:\n%s" % (a, diff(data, a))
                                 for a in sorted(set(addrs) - found)[:2])
-        messages.append({"role": "user", "content": feedback + "\nReply with the complete corrected set of "
-                         "SEARCH/REPLACE blocks against the ORIGINAL file."})
+        instruction = ("Return the complete corrected method in one cpp fence." if generation == "method" and method else
+                       "Return the complete corrected set of SEARCH/REPLACE blocks against the ORIGINAL file in one cpp fence. "
+                       "Use <<<<<<< SEARCH, exact original text, =======, new text, >>>>>>> REPLACE delimiters.")
+        messages.append({"role": "user", "content": feedback + "\n" + instruction})
     return None, trials
+
+
+def resolve_compile_workers(value, jobs):
+    count = min(jobs, 8, max(1, (os.cpu_count() or 2) // 2)) if value == "auto" else int(value)
+    if not 1 <= count <= 64:
+        raise ValueError("Native compiler count must be auto or 1-64")
+    return count
 
 
 def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs, log, compile_source, names):
@@ -676,20 +745,37 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
     files = sorted((rel for rel in homes if rel not in skip),
                    key=lambda rel: (-max(names.get(a, {}).get("score") or 0 for a in homes[rel]), len(texts[rel])))[:config.get("max_files")]
     model, rounds = config["llm"], config.get("rounds", 3)
-    options = {key: config[key] for key in ("thinking", "max_tokens") if key in config}
+    options = {key: config[key] for key in ("thinking", "max_tokens", "generation") if key in config}
     options.update(config.get("provider_options", {}))
     options.setdefault("gate", providers.CloudGate(jobs))
     provider_failed = threading.Event()
     event = options.pop("event", None)
-    compile_slots = threading.Semaphore(config.get("compile_workers", jobs))
+    compile_workers = resolve_compile_workers(config.get("compile_workers", "auto"), jobs)
+    compile_slots = threading.Condition()
+    active, waiting_proofs = 0, 0
     raw_compile = compile_source
     def compile_source(source, rel, label):
+        nonlocal active, waiting_proofs
         queued = time.monotonic()
+        proof = label != "baseline"
         with compile_slots:
-            waited = time.monotonic() - queued
+            if proof:
+                waiting_proofs += 1
+            try:
+                compile_slots.wait_for(lambda: active < compile_workers and (proof or waiting_proofs == 0))
+                active += 1
+            finally:
+                if proof:
+                    waiting_proofs -= 1
+        waited = time.monotonic() - queued
+        try:
             return dict(raw_compile(source, rel, label), queue_seconds=round(waited, 2))
+        finally:
+            with compile_slots:
+                active -= 1
+                compile_slots.notify_all()
     context = config.get("context", "file")
-    log("Native discovery: %d files · %d AI workers · %d compiler slots" % (len(files), jobs, config.get("compile_workers", jobs)))
+    log("Native discovery: %d files · %d AI workers · %d compiler slots" % (len(files), jobs, compile_workers))
 
     def discover(rel, log, options):
         if provider_failed.is_set() or options.get("before_request") and not options["before_request"]():
@@ -703,6 +789,9 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
         comparing = time.monotonic()
         baseline = {h["addr"] for h in matcher.scan(data)}
         log("Baseline comparison: %.1fs · %d exact" % (time.monotonic() - comparing, len(baseline)))
+        if set(homes[rel]) <= baseline:
+            log("Skipping AI: all %d targets already code/data exact locally" % len(homes[rel]))
+            return None, [base]
         if provider_failed.is_set():
             return None, [base]
 

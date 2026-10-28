@@ -280,7 +280,8 @@ def test_matcher_resets_variants_and_requires_referenced_data(monkeypatch):
     monkeypatch.setattr(sweep.fingerprint, 'Target', Target)
     monkeypatch.setattr(sweep.match, '_functions', lambda _: {addr: {'size': 30} for addr in ['00500000', '00500001']})
     monkeypatch.setattr(sweep.match, 'coff_functions', lambda _: [('?f@A@RBX@@', b'x'*30, [])])
-    monkeypatch.setattr(sweep.match, 'coff_data_refs', lambda obj, name: reads.append(name) or ['refs'])
+    monkeypatch.setattr(sweep.match, '_coff_data_index', lambda obj: None)
+    monkeypatch.setattr(sweep.match, 'coff_data_refs', lambda obj, name, index=None: reads.append(name) or ['refs'])
     def check(client, addr, code, refs):
         assert refs == ['refs']
         return [], ['data mismatch'] if addr == '00500001' else []

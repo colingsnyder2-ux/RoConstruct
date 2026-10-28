@@ -14,7 +14,7 @@ let agentAutoConfig = {cli:"claude",model:"",goal:"",workers:2,jobs:24,minutes:1
 let cpu = null, cpuCluster = "", cpuLoaded = 0, cpuLoading = false, serverSetupOpen = initialPage === "cpu";
 const isWorker = job => ["worker","agent_worker"].includes(job.kind) || !!job.args?.includes("--automatic");
 const active = job => ["running", "paused", "stopping"].includes(job.status);
-const liveKeys = new Set(["workers","model","rounds","max_size","max_tokens","strategy","order","thinking","reasoning_effort","use_revng","use_remill","min_score","max_score","diverse_candidates","guided_mutations","near_repair","max_cloud_requests","max_cloud_tokens","max_cloud_cost","native_batch_files","native_compile_workers","native_context"]);
+const liveKeys = new Set(["workers","model","rounds","max_size","max_tokens","strategy","order","thinking","reasoning_effort","use_revng","use_remill","min_score","max_score","diverse_candidates","guided_mutations","near_repair","max_cloud_requests","max_cloud_tokens","max_cloud_cost","native_batch_files","native_compile_workers","native_context","native_generation"]);
 const nullable = new Set(["min_score","max_score","max_cloud_requests","max_cloud_tokens","max_cloud_cost","reasoning_effort","unit_name","family_id"]);
 const numeric = new Set(["native_batch_files","native_compile_workers","workers","rounds","max_size","max_tokens","min_score","max_score","diverse_candidates","cloud_concurrency","max_cloud_requests","max_cloud_tokens","max_cloud_cost"]);
 const automatic = {rounds:"auto",max_size:512,max_tokens:"auto",order:"random",strategy:"direct",thinking:"auto",reasoning_effort:"auto",use_revng:false,use_remill:true,cloud_concurrency:"auto",near_repair:false,diverse_candidates:1};
@@ -164,13 +164,14 @@ function workerForm(config) {
     field(native ? "Rounds per file" : "Rounds per function", "rounds", config.rounds, {placeholder:"auto or 1–100"}) +
     field("Output tokens", "max_tokens", config.max_tokens, {placeholder:"auto or 128–32768"}) +
     (native ? field("Files per integration batch", "native_batch_files", config.native_batch_files ?? 40, {type:"number",min:1,max:1024}) +
-      field("Parallel local compilers", "native_compile_workers", config.native_compile_workers ?? 4, {type:"number",min:1,max:64}) +
-      field("Source context", "native_context", config.native_context || "methods", {choices:[["methods","Target methods · faster"],["file","Whole source file"]]}) :
+      field("Parallel local compilers", "native_compile_workers", config.native_compile_workers ?? "auto", {placeholder:"auto or 1–64"}) +
+      field("Source context", "native_context", config.native_context || "methods", {choices:[["methods","Target methods · faster"],["file","Whole source file"]]}) +
+      field("AI output", "native_generation", config.native_generation || "auto", {choices:[["auto","Auto · one-shot + repair"],["method","One-shot method"],["edits","SEARCH/REPLACE"]]}) :
       field("Maximum function bytes (0 = unlimited)", "max_size", config.max_size, {type:"number",min:0}) +
       field("Function order", "order", config.order, {choices:["random","auto","best","matched","unmatched","easiest"]}) + field("Strategy", "strategy", config.strategy, {choices:["auto","direct","structured","reference"]})) +
     field("Thinking", "thinking", config.thinking, {choices:["auto","enabled","disabled"]}) + field("Reasoning effort", "reasoning_effort", config.reasoning_effort, {choices:[["","Provider default"],"auto","low","medium","high","max"]}) +
     field("Cloud concurrency", "cloud_concurrency", config.cloud_concurrency, {placeholder:"auto or 1–256"}) +
-    (native ? '<p class="help-note">AI jobs edit separate source files in a private workspace. Local compilers preflight edits; one server rebuild verifies the batch. Pause / stop applies before the next file or AI round.</p></div>' :
+    (native ? '<p class="help-note">Auto tries one complete method, then anchored repairs. Compiler auto uses CPU capacity, up to 8 slots. OpenCode NVIDIA auto limits simultaneous AI requests to 8; explicit counts override. Independent server verification still checks every batch. Pause / stop applies before the next file or AI round.</p></div>' :
       field("Minimum score", "min_score", config.min_score, {type:"number",min:0,max:100,placeholder:"Any"}) + field("Maximum score", "max_score", config.max_score, {type:"number",min:0,max:100,placeholder:"Any"}) +
       field("Diverse candidates", "diverse_candidates", config.diverse_candidates, {type:"number",min:1,max:16}) +
       field("Lease mode", "lease_mode", config.lease_mode === "native" ? "function" : config.lease_mode, {choices:["function","family","unit"]}) + field("Unit name", "unit_name", config.unit_name) + field("Family fingerprint", "family_id", config.family_id, {full:true}) +
@@ -436,7 +437,7 @@ function readWorker() {
     const key=input.name;
     if(key==="model_custom") { if(!input.disabled && input.value.trim()) config.model=input.value.trim(); continue; }
     if(input.disabled || key==="addresses" || key==="model_variant" || key==="model_provider") continue;
-    config[key]=input.type==="checkbox" ? input.checked : ["workers","rounds","max_tokens","cloud_concurrency"].includes(key) && input.value==="auto" ? "auto" : numeric.has(key) ? (input.value==="" && nullable.has(key) ? null : Number(input.value)) : (input.value==="" && nullable.has(key) ? null : input.value);
+    config[key]=input.type==="checkbox" ? input.checked : ["workers","rounds","max_tokens","cloud_concurrency","native_compile_workers"].includes(key) && input.value==="auto" ? "auto" : numeric.has(key) ? (input.value==="" && nullable.has(key) ? null : Number(input.value)) : (input.value==="" && nullable.has(key) ? null : input.value);
   }
   const modelParts=String(config.model||"").split("#");
   if((modelParts[0].startsWith("opencode:")||modelParts[0].startsWith("hosted:opencode/")) && form.elements.model && form.elements.model_variant)

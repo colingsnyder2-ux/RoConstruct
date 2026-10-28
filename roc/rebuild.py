@@ -57,6 +57,7 @@ def _ci(folder, name):
     return next((p for p in folder.iterdir() if p.name.lower() == low), None)
 
 
+@match._single_load
 @functools.lru_cache(maxsize=8)
 def sdk_roots(tools):
     """Discover installed SDKs once per tools tree, not once per compile batch."""
