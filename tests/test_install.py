@@ -389,10 +389,10 @@ def test_packages_split_keeps_maintainer_modules_out():
     build = load_build()
     worker_modules = set(build.WORKER_MODULES)
     server_modules = set(build.SERVER_MODULES)
-    assert server_modules == {"cluster", "server", "reports", "progress", "integration_verify", "integration_notify", "integration_site"}
+    assert server_modules == {"cluster", "server", "reports", "progress", "integration_notify", "integration_site"}
     assert not (worker_modules & server_modules), "helper packages must not carry server code"
     for helper in ("worker", "link", "doctor", "setup", "analyze", "draft", "providers",
-                   "native_try", "native_sweep", "standins", "rebuild_install"):
+                   "native_try", "native_sweep", "standins", "rebuild_install", "integration_verify"):
         assert helper in worker_modules, "%s must ship to helpers" % helper
     assert set(build.PACKAGES) == {"worker", "local-ai", "server"}
     for slug in ("worker", "local-ai"):
@@ -414,13 +414,15 @@ def test_worker_bootstrap_publishes_both_guides_and_verified_archive(tmp_path):
         (tmp_path / 'docs' / name).write_text(name)
     package = tmp_path / 'worker.zip'
     with zipfile.ZipFile(package, 'w') as zipped:
-        zipped.writestr('roconstruct-package.json', json.dumps({'matching_workflow_version': 1}))
+        zipped.writestr('roconstruct-package.json', json.dumps({'matching_workflow_version': 2}))
+        zipped.writestr('rebuild/2008-06/manifests/abi-evidence.json', '{"Fixture":{"confidence":"observed","vtables":[]}}')
         for name in ('MATCHING_AGENT.md', 'NATIVE_AGENT.md'):
             zipped.writestr('docs/' + name, name)
     build.prepare_downloads(package)
     folder = tmp_path / 'local/findings/data'
     manifest = json.loads((folder / 'native-worker.json').read_text())
-    assert manifest['matching_workflow_version'] == 1
+    assert manifest['matching_workflow_version'] == 2
+    assert manifest['abi_manifest_classes'] == 1
     assert manifest['sha256'] == hashlib.sha256((folder / 'native-worker.zip').read_bytes()).hexdigest()
     assert manifest['size'] == package.stat().st_size
     assert manifest['matching_guide'].endswith('/data/MATCHING_AGENT.md')

@@ -205,12 +205,17 @@ class Matcher:
     def __init__(self, addresses):
         self.target = fingerprint.Target("2008-06")
         self.index = defaultdict(list)
+        self.cache, self.cache_lock = {}, threading.Lock()
         functions = match._functions("2008-06")
         for addr in sorted(addresses):
             if addr in functions and functions[addr].get("kind", "code") == "code":
                 self.index[functions[addr]["size"]].append(addr)
 
     def scan(self, obj):
+        key = hashlib.sha256(obj).digest()
+        cached = self.cache.get(key)
+        if cached is not None:
+            return [dict(hit) for hit in cached]
         found = {}
         for symbol, code, relocs in match.coff_functions(obj):
             if len(code) < 6:
@@ -229,7 +234,12 @@ class Matcher:
                 _, bad = match.data_check("2008-06", addr, exe, refs)
                 if not bad:
                     found[addr] = symbol
-        return [{"addr": addr, "symbol": found[addr]} for addr in sorted(found)]
+        hits = [{"addr": addr, "symbol": found[addr]} for addr in sorted(found)]
+        with self.cache_lock:
+            if len(self.cache) >= 128:
+                self.cache.pop(next(iter(self.cache)))
+            self.cache[key] = [dict(hit) for hit in hits]
+        return hits
 
 
 def ownership_candidates(obj, hits):
@@ -387,6 +397,7 @@ exact old text, copied verbatim from the file
 new text
 >>>>>>> REPLACE
 Each SEARCH text must occur exactly once in the file as shown. Blocks apply in order.
+Prefer one target and 1-3 small blocks. Include enough unchanged method context to make every anchor unique.
 The mined sources are byte-exact proofs written with placeholder types: copy their control flow, call order,
 constants and evaluation order, but use the real classes, members and methods. "standins" maps each placeholder
 to the real symbol, RTTI type or import the exe uses at that spot. Never add padding structs, offset views,
@@ -570,7 +581,7 @@ def model_prompt(rel, shown, items):
         MODEL_RULES, rel, shown[:60000], json.dumps(items, separators=(",", ":")))
 
 
-def minimize(rel, text, edits, new, keep, compile_round, matcher, label, allow_empty=False, definitions=()):
+def minimize(rel, text, edits, new, keep, compile_round, matcher, label, allow_empty=False, definitions=(), verified=None):
     """Only the edits the new exacts need, re-proved by a final compile; None if that proof fails. Models rewrite
     neighbouring methods too, and an unproven behaviour change in a method that was not exact would pass the
     loss check. keep: exacts this file already produced, which must survive."""
@@ -583,7 +594,8 @@ def minimize(rel, text, edits, new, keep, compile_round, matcher, label, allow_e
         found = {h["addr"] for h in matcher.scan(Path(trial["object"]).read_bytes())} if trial["ok"] else set()
         if new <= found and not keep - found and not set(definitions).intersection(trial.get("undefined_symbols", ())):
             edits = rest
-    result = compile_round(apply_edits(text, edits) if edits else text, "final-%s" % label)
+            verified = trial
+    result = verified or compile_round(apply_edits(text, edits) if edits else text, "final-%s" % label)
     hits = matcher.scan(Path(result["object"]).read_bytes()) if result["ok"] else []
     found = {h["addr"] for h in hits}
     if not (new <= found and not keep - found) or set(definitions).intersection(result.get("undefined_symbols", ())):
@@ -598,7 +610,7 @@ def model_proposal(rel, text, addrs, baseline, owned, model, rounds, compile_rou
     """Ask the model for anchored edits to one native file; keep the first that makes a new target exact and
     loses no owned exact in that file. Every round compiles the real TU; failures go back as feedback."""
     from roc import providers
-    prompt = model_prompt(rel, shown or text, [evidence(a) for a in addrs[:6]])
+    prompt = model_prompt(rel, shown or text, [evidence(a) for a in addrs[:3]])
     messages, trials = [{"role": "user", "content": prompt}], []
     for n in range(rounds):
         # Edit blocks are short: no thinking and a small reply cap keep each round to seconds, not a minute.
@@ -613,8 +625,12 @@ def model_proposal(rel, text, addrs, baseline, owned, model, rounds, compile_rou
                                                               getattr(reply, "input_tokens", 0), getattr(reply, "output_tokens", 0)))
         messages.append({"role": "assistant", "content": providers_text(reply)})
         try:
-            edits = parse_edits(reply)
-            result = compile_round(apply_edits(text, edits), "model-%d" % n)
+            edits = [pair for pair in parse_edits(reply) if pair[0] != pair[1]]
+            integration.validate_patches({rel: edits})
+            candidate = apply_edits(text, edits)
+            result = compile_round(candidate, "model-" + integration.digest(candidate)[:16])
+            log("Round %d/%d · compile %.1fs · queue %.1fs" %
+                (n + 1, rounds, result.get("seconds", 0), result.get("queue_seconds", 0)))
         except ValueError as error:
             trials.append({"file": rel, "mode": "model-%d" % n, "ok": False, "error": str(error)[:500],
                            "reply": providers_text(reply)[:3000]})
@@ -628,7 +644,7 @@ def model_proposal(rel, text, addrs, baseline, owned, model, rounds, compile_rou
         log("model %s round %d: %d new exact, %d lost" % (rel, n, len(new), len(lost)))
         if new and not lost:
             proposal = minimize(rel, text, edits, new, baseline, compile_round, matcher, "%d" % n,
-                                definitions=result.get("defined_symbols", ()))
+                                definitions=result.get("defined_symbols", ()), verified=result)
             if not proposal:
                 trials.append(dict(result, error="minimized edits lost the proof"))
             return proposal, trials
@@ -662,8 +678,10 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
     compile_slots = threading.Semaphore(config.get("compile_workers", jobs))
     raw_compile = compile_source
     def compile_source(source, rel, label):
+        queued = time.monotonic()
         with compile_slots:
-            return raw_compile(source, rel, label)
+            waited = time.monotonic() - queued
+            return dict(raw_compile(source, rel, label), queue_seconds=round(waited, 2))
     context = config.get("context", "file")
     log("Native discovery: %d files · %d AI workers · %d compiler slots" % (len(files), jobs, config.get("compile_workers", jobs)))
 
@@ -674,8 +692,11 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
         base = compile_source(texts[rel], rel, "baseline")
         if not base["ok"]:
             return None, [base]
+        log("Baseline: compile %.1fs · queue %.1fs" % (base.get("seconds", 0), base.get("queue_seconds", 0)))
         data = Path(base["object"]).read_bytes()
+        comparing = time.monotonic()
         baseline = {h["addr"] for h in matcher.scan(data)}
+        log("Baseline comparison: %.1fs · %d exact" % (time.monotonic() - comparing, len(baseline)))
 
         def diff(obj, addr):
             return body_diff(obj, names[addr]["symbol"], addr) if names.get(addr, {}).get("symbol") else "no rebuilt body"
@@ -684,7 +705,7 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
                                               lambda source, label: compile_source(source, rel, label), matcher,
                                               lambda addr: dict(model_evidence(addr, names, by_addr), current_diff=diff(data, addr)),
                                               log, options, diff,
-                                              excerpt(texts[rel], [names[a]["symbol"] for a in homes[rel][:6]
+                                              excerpt(texts[rel], [names[a]["symbol"] for a in homes[rel][:3]
                                                                    if names.get(a, {}).get("symbol")])
                                               if context == "methods" else None)
         except Exception as error:  # noqa: BLE001 - one provider/compile failure must not stop the other files
@@ -710,9 +731,9 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
             if event:
                 event("native_result", slot=slot, file=rel,
                       local_exact=len(proposal["witnesses"]) if proposal else 0,
-                      error_category=next((t["error_category"] for t in reversed(trials) if t.get("error_category")), ""),
+                      error_category="" if proposal else next((t["error_category"] for t in reversed(trials) if t.get("error_category")), ""),
                       seconds=round(time.monotonic() - started, 1),
-                      error=next((t.get("error", "") for t in reversed(trials) if t.get("error")), "")[:240])
+                      error="" if proposal else next((t.get("error", "") for t in reversed(trials) if t.get("error")), "")[:240])
             return proposal, trials
         finally:
             with slots_lock:
@@ -725,6 +746,14 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
             proposal, trials = future.result()
             records.extend(trials)
             if proposal:
+                try:
+                    integration.validate_patches({proposal["file"]: proposal["edits"]})
+                except ValueError as error:
+                    integration.atomic_json(output / 'blocked-proposals' / (integration.digest(proposal['file'])[:16] + '.json'),
+                                            dict(proposal=proposal, reason=str(error)))
+                    records.append(dict(file=proposal["file"], error="Proposal retained, not staged: " + str(error)))
+                    log("Proposal retained, not staged: %s: %s" % (proposal["file"], error))
+                    continue
                 for hit in proposal["witnesses"]:
                     hit["claim_unit"] = claim_unit(hit, by_addr[hit["addr"]])
                 proposals.append(proposal)
@@ -793,6 +822,13 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
         raise ValueError("Native sweep supports the coherent 2008-06 module only")
     output = Path(output or ROOT / "work/research" / name)
     output.mkdir(parents=True, exist_ok=True)
+    previous = output / 'proposals.json'
+    if previous.exists():
+        content = previous.read_bytes()
+        archive = output / 'proposal-history' / (hashlib.sha256(content).hexdigest() + '.json')
+        archive.parent.mkdir(exist_ok=True)
+        if not archive.exists():
+            archive.write_bytes(content)
     run_id = uuid.uuid4().hex
     integration.atomic_json(output / "summary.json", {"recipe": name, "state": "running", "run_id": run_id, "new_verified": 0})
     integration.atomic_json(output / "progress.json", {"phase": "setup", "run_id": run_id})
@@ -819,6 +855,13 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
             if prior["state"] != "accepted" or not prior["receipt"].get("accepted"):
                 raise ValueError("Prerequisite native batch was rejected; discovery not started")
             integration.command(SimpleNamespace(action="sync", server=server, user=None, token=integration.native_token()))
+        recovered = integration.resume_pending(api, ROOT / "work/integration-client", settings.get("user"))
+        if recovered:
+            result = recovered[0]
+            restore_submitted_baseline(result["id"], log)
+            return finish(dict(recipe=name, job=result["id"], state=result["state"],
+                               applied_paths=result.get("applied_paths", []), files_tried=[],
+                               applied_files=len(result.get("applied_paths", [])), new_verified=0))
         original = generator.read_bytes()
         base = api.call("/v1/integration/base")
         if hashlib.sha256(original).hexdigest() != base["generator"]:
@@ -865,6 +908,15 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
                 seen.add(rel.casefold())
                 if proposal.get("related_headers"):
                     proposal["related_headers"] = integration.canonical_patches(proposal["related_headers"], base["overlay"])
+                changes = {name: edits for name, edits in dict(proposal.get('related_headers', {}),
+                           **{rel: proposal['edits']}).items() if edits}
+                try:
+                    integration.validate_patches(changes)
+                except ValueError as error:
+                    integration.atomic_json(output / 'blocked-proposals' / (integration.digest(rel)[:16] + '.json'),
+                                            dict(proposal=proposal, reason=str(error)))
+                    log('Proposal retained, not staged: %s: %s' % (rel, error))
+                    continue
                 if rel not in texts:
                     texts[rel] = (overlay / rel if (overlay / rel).exists() else tree / rel).read_text(errors="replace")
                 log("native rechecking " + rel)
@@ -973,15 +1025,41 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
         if not identity_file.exists():
             integration.atomic_json(identity_file, {"id": uuid.uuid4().hex})
         identity = json.loads(identity_file.read_text())["id"][:12]
-        units, selected, blocked = {}, [], set()
+        units, selected, blocked, routed = {}, [], set(), {}
+        claim_state = api.call("/v1/integration?claims=1")
+        inventory = claim_state.get("inventory")
+        parked = set(claim_state.get("parked_units", [])) | {item["unit"] for item in claim_state.get("parked", [])}
+        catalog_units = {addr: unit for unit, addresses in (inventory or {}).items() for addr in addresses}
+        worker_name = settings["user"] + "@native-sweep:" + identity
+        live = [c for c in claim_state.get("claims", []) if c["expires"] > time.time() or c["state"] == "submitted"]
+        foreign = {c["unit"] for c in live if c["state"] in ("claimed", "submitted") and
+                   (c["user"], c["worker"]) != (settings["user"], worker_name)}
         max_claims = base.get("limits", {}).get("claims", 16)
         for proposal in proposals:
-            needed = {h["claim_unit"] for h in proposal["witnesses"]}
+            labels = {h["claim_unit"] for h in proposal["witnesses"]}
+            labels.update(by_addr[h["addr"]]["unit"] for h in proposal["witnesses"] if h["addr"] in by_addr)
+            needed = set()
+            for hit in proposal["witnesses"]:
+                unit = catalog_units.get(hit["addr"], by_addr.get(hit["addr"], {}).get("unit", hit["claim_unit"]))
+                needed.add(unit if re.fullmatch(r"RBX::(?:\w+::)*\w+", unit) else hit["claim_unit"])
+            if (labels | needed) & (parked | foreign):
+                blocked.update((labels | needed) & (parked | foreign))
+                continue
+            if inventory is not None:
+                absent = needed - inventory.keys()
+                if absent:
+                    log("Skipping unavailable claim units: " + ", ".join(sorted(absent)))
+                needed &= inventory.keys()
+            routed[proposal["file"]] = needed
             if len(set(units) | needed) > max_claims:
                 continue
             for unit in sorted(needed - set(units)):
                 log("native claiming " + unit)
-                result = api.call("/v1/integration/claim", {"user": settings["user"], "worker": settings["user"] + "@native-sweep:" + identity,
+                existing = next((c for c in live if c["unit"] == unit and c["user"] == settings["user"]
+                                 and c["worker"] == worker_name and c["state"] == "claimed"
+                                 and c["base_revision"] == base["revision"]), None)
+                packet = ROOT / "work/integration-client/claims" / existing["id"] / "packet.json" if existing else None
+                result = {"claims": [json.loads(packet.read_text())]} if packet and packet.exists() else api.call("/v1/integration/claim", {"user": settings["user"], "worker": worker_name,
                                                           "unit": unit, "count": 1})
                 if result["claims"] and result["claims"][0]["base_revision"] != base["revision"] and \
                         api.call("/v1/integration/base")["revision"] == base["revision"]:
@@ -998,7 +1076,7 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
             # Gains are credited from the linked rebuild, not per claim: take a proposal when it holds at least one
             # claim and no other worker holds a live claim on any class it touches (catalog-less classes and
             # sub-24-byte targets cannot be claimed at all).
-            conflicts = needed & foreign_claims(settings["user"], identity)
+            conflicts = (labels | needed) & foreign_claims(settings["user"], identity)
             if not conflicts:
                 selected.append(proposal)  # rides on any claim this batch holds; at least one is required below
             else:
@@ -1009,7 +1087,7 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
             for claim in result["claims"]:
                 claimed.append(claim)
                 units[claim["unit"]] = claim
-        used = {h["claim_unit"] for p in selected for h in p["witnesses"]} & units.keys()
+        used = {unit for p in selected for unit in routed[p["file"]]} & units.keys()
         if selected and not used and units:
             used = {sorted(units)[0]}  # carrier claim for catalog-less classes
         additions = {}
@@ -1023,8 +1101,11 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
                            reason="Classes held by another worker" if blocked else "No native claim available")
             return finish(summary)
         additions = integration.canonical_patches(additions, base["overlay"])
+        renewed = api.call("/v1/integration/renew", {"user": settings["user"], "claims": [units[u]["id"] for u in sorted(used)]})
+        if not renewed.get("ok"):
+            raise ValueError("Claims changed before linked preflight; saved proposals retained")
         from roc.integration_verify import linked_preflight
-        linked_preflight(ROOT, additions, output, log)
+        linked = linked_preflight(ROOT, additions, output, log)
         if api.call("/v1/integration/base")["revision"] != base["revision"]:
             raise ValueError("Accepted baseline advanced during linked preflight; saved proposals retained, sync and retry")
         for unit in used:
@@ -1056,7 +1137,8 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
         keep_claims = True
         if config.get("submit"):
             args = SimpleNamespace(action="submit", server=server, user=None, token=integration.native_token(),
-                                   claim=None, all=False, batch=str(batch), model=config["model"], evidence_file=str(notes), retry=False, wait=False)
+                                   claim=None, all=False, batch=str(batch), model=config["model"], evidence_file=str(notes), retry=False, wait=False,
+                                   applied_paths=summary["applied_paths"], preflight_artifacts=linked.get("artifacts") if linked else None)
             integration.command(args)
             marker = ROOT / "work/integration-client/claims" / units[sorted(used)[0]]["id"] / "job.json"
             summary["job"] = json.loads(marker.read_text())["id"]

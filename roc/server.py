@@ -752,7 +752,7 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
                     if url.path.endswith("/evidence"):
                         return self.send(200, integration.evidence())
                     return self.send(200, integration.baseline() if url.path.endswith("/base")
-                                     else integration.status(q.get("id")))
+                                     else integration.status(q.get("id"), q.get("request"), q.get("user"), q.get("claims") == "1"))
                 except (ValueError, OSError) as error:
                     return self.send(503, {"error": str(error)})
             if url.path == "/v1/info":
@@ -760,7 +760,8 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
                 return self.send(200, {"clients": {n: {k: e.get(k) for k in ("sha256", "compiler", "compiler_build", "flags")}
                                                    for n, e in reg.items()}, "verify": sorted(can_verify),
                                        "recipe_versions": recipe_versions,
-                                       "native_integration": {"version": 2, "enabled": integration is not None, "invitation_required": False,
+                                       "native_integration": {"version": 3, "enabled": integration is not None, "invitation_required": False,
+                                                              "claim_inventory": True, "explicit_park": True, "submission_recovery": True,
                                                               "max_batch": 16}})
             if url.path == "/v1/status":
                 status = store.status()
@@ -867,9 +868,9 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
                         result = integration.submit(user, body)
                     elif path.endswith("/force-queue"):
                         result = integration.force_queue(user, body.get("id"))
-                    elif path.endswith("/renew") or path.endswith("/release"):
+                    elif path.rsplit("/", 1)[-1] in ("renew", "release", "park", "unpark"):
                         identifiers = body.get("claims", [str(body.get("claim", ""))])
-                        result = integration.renew_many(user, identifiers, path.endswith("/release"), body.get("reason"))
+                        result = integration.renew_many(user, identifiers, reason=body.get("reason"), action=path.rsplit("/", 1)[-1])
                     else:
                         return self.send(404, {"error": "Unknown integration action"})
                     return self.send(200, result)

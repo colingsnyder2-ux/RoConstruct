@@ -223,6 +223,9 @@ def native_loop(config, control, emit):
     locally proven edits as one verified batch; discovery continues while the server verifies."""
     from roc import integration, native_sweep, research
     spec = json.loads(json.dumps(research.recipes()["native-model-2008"]))
+    emit('log', slot=0, message='Startup: validating ABI, RTTI and dependency compiler profiles')
+    from roc.rebuild_install import prepare
+    prepare(log=lambda message: emit('log', slot=0, message=message))
     worker.save_settings(user=config["user"], server=config["server"])
     emit("log", slot=0, message="Startup: syncing accepted native baseline (unchanged overlays are reused)")
     integration.command(SimpleNamespace(action="sync", server=config["server"], user=config["user"], token=None))
@@ -306,7 +309,7 @@ def native_loop(config, control, emit):
         if exhausted:
             emit("log", slot=0, message="Cloud budget cap reached; finishing session.")
             control.command({"action": "stop"})
-        if not summary.get("files_tried"):
+        if not summary.get("files_tried") and not summary.get("job"):
             emit("stage", message="No fresh native targets; staying active, checking for new evidence every 30s")
             signature = None
             while not control.stopping:

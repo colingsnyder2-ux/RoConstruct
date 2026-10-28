@@ -481,7 +481,7 @@ def main_args(payload, argv=()):
         return None
     keep_awake()
     return run_concurrent(server, user, token, model, rounds, max_size, use_revng,
-                          given.jobs, workers=workers, only=only_clients(client),
+                          max_jobs=given.jobs, workers=workers, only=only_clients(client),
                           use_remill=use_remill, force_lift=given.force_lift,
                           cloud_allowed=cloud_allowed, cloud_budget=budget,
                           max_tokens=max_tokens, thinking=thinking, order=order,

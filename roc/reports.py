@@ -137,7 +137,7 @@ def _post(url, payload):
 
 
 def player_mines_webhook():
-    """Shared contributor feed for verified mining and native integration."""
+    """Contributor feed for verified player mining."""
     configured = os.environ.get("ROCONSTRUCT_PLAYER_MINES_WEBHOOK") or os.environ.get("ROCONSTRUCT_DISCORD_WEBHOOK")
     if configured:
         return configured
@@ -149,7 +149,7 @@ def player_mines_webhook():
 
 
 def server_mines_webhook():
-    """Legacy setting reader; mining notifications now use player_mines_webhook."""
+    """Server mining feed, including independently accepted native integrations."""
     configured = os.environ.get("ROCONSTRUCT_SERVER_MINES_WEBHOOK")
     if configured:
         return configured

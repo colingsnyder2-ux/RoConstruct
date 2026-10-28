@@ -55,7 +55,7 @@ Keep the selected client locked for this run.
 
 Do not ask the user to locate or attach a Worker ZIP. If `roc/native_try.py`, `research/native-units.json`,
 or `research/native-source-lock.json` is missing, `roc native-try --help` is unavailable, or a package marker
-reports `native_workflow_version` below 6, download the current Worker package yourself:
+reports `native_workflow_version` below 7, download the current Worker package yourself:
 
 - Manifest: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.json
 - Package: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.zip
@@ -69,7 +69,7 @@ into a new folder without overwriting the user's existing checkout or edits:
 $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 $nativeManifest = Invoke-RestMethod ('https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.json?t=' + [guid]::NewGuid().ToString('N'))
-if ($nativeManifest.workflow_version -lt 6 -or
+if ($nativeManifest.workflow_version -lt 7 -or
     $nativeManifest.url -ne 'https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.zip' -or
     $nativeManifest.sha256 -notmatch '^[0-9a-fA-F]{64}$') { throw 'Invalid Worker manifest' }
 $nativeFolder = Join-Path (Get-Location) ('RoConstruct-Native-' + [guid]::NewGuid().ToString('N'))
@@ -140,16 +140,25 @@ On Windows, run these existing commands through `.\roc.cmd` (Linux: `./roc.sh`),
 roc install --yes --client 2008-06
 roc client-fetch 2008-06
 roc analyze 2008-06
+roc vtables 2008-06
 roc rebuild 2008-06 install
 roc pull 2008-06
 roc lib-fetch rbxgs rbxgs-net rbxgs-appdraw rbxgs-render rbxgs-view openrbx-client
 roc libs-bundle fetch mfc-9.0-rtm
+roc rebuild 2008-06 prepare
 roc integrate sync
 roc rebuild 2008-06 doctor
 roc native-try targets --limit 20
 ```
 
-Skip `analyze` when `work/2008-06/functions.jsonl` already covers the current verified client. `install`
+Skip analysis setup only when both `work/2008-06/functions.jsonl` and `vtables.json` cover the current verified client.
+If only the RTTI index is missing, run `roc vtables 2008-06` without repeating analysis.
+`rebuild prepare` validates the published ABI evidence, RTTI index, all declared historical compiler
+profiles and dependency libraries before a cold native baseline. Missing libraries build through
+their ordinary module recipes (including VS2005/50727 where declared), outside the pinned
+VS2008/21022 app verifier. It does not relax that profile or any acceptance gate. Worker packages
+include the original-binary ABI manifest; `rebuild install` also fills it when recipes already exist.
+`install`
 installs Python packages and historical compilers; the VCForPython bundle supplies the Windows SDK.
 `lib-fetch` downloads rbxgs and its Git submodules; `pull` downloads mined sources and generated units,
 which `lib-fetch` then installs. The Worker also bundles the accepted adopted native headers in
@@ -243,6 +252,19 @@ If doctor cannot find an installed SDK, set `ROC_WINSDK` to this PC's SDK folder
      `roc native-try preflight` runs the linked batch proof without claiming or submitting.
      First proof needs a cold baseline build; later proofs reuse content-checked baseline objects.
      Per-file `check` is preliminary: local exact bytes do not prove linked ownership.
+   - Claims follow the server's address-to-unit inventory. Skip parked classes and absent units;
+     a method named ICharacterSubject may be scheduled under RBX::Humanoid. Keep the existing
+     carrier-claim fallback for catalog-less proposals. Reuse valid owned claims.
+   - After a gateway error/timeout, use `roc integrate resume`, or rerun native-try submit.
+     A hash-checked journal saves the exact request and proof locations before POST. Recovery
+     checks server state first and reuses the identical idempotent request; never create a new
+     batch blindly. Retain proposals when claims expire or a saved request needs repair.
+   - Forbidden invented-type edits fail before trial compilation. Invalid saved proposals are
+     retained under `blocked-proposals/`; they do not prevent valid saved files from proceeding.
+   - `roc integrate release --claim ID` frees immediately. To park a real blocker for two hours,
+     use `roc integrate park --claim ID --reason TEXT`. `release --reason` is rejected.
+     `roc integrate unpark --claim ID` (or `--all`) clears your owned parks and frees those classes immediately.
+     New park/unpark and claim-inventory APIs require the protocol-3 server update.
    - Source identity is case-insensitive. Keep the accepted registry spelling (`GUI.cpp`, for example).
      A single alias is canonicalized; two differently cased keys in one registry/batch are rejected.
      Never duplicate a file entry to bypass its existing edits or floating-point pragmas.

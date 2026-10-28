@@ -20,7 +20,7 @@ WATCHDOG_SECONDS = 20 * 60  # cold baselines take minutes; stacks only after thi
 
 # Compiler, matcher and gate implementation. Queue/UI/webhook code does not build native artifacts.
 NATIVE_CODE = ("__init__", "analyze", "clients", "fingerprint", "integration", "integration_verify", "libs", "match",
-               "rebuild", "repair", "rtti", "setup", "telemetry", "worker")
+               "rebuild", "rebuild_install", "repair", "rtti", "setup", "telemetry", "worker")
 
 
 @functools.lru_cache(maxsize=1)
@@ -143,7 +143,7 @@ def input_paths(root, live_only=False):
     parent = root / "rebuild" / CLIENT
     paths.extend(input_files(parent, ("out", "__pycache__")))
     work = root / "work" / CLIENT
-    paths.extend(p for p in (work / "functions.jsonl", work / "bounds.json") if p.is_file())
+    paths.extend(p for p in (work / "functions.jsonl", work / "bounds.json", work / "vtables.json") if p.is_file())
     out = root / "rebuild" / CLIENT / "out"
     paths.extend(p for p in out.glob("*/verified/*") if p.is_file())
     paths.extend(p for p in out.glob("*/*.json") if p.is_file()
@@ -339,6 +339,9 @@ def ownership_diagnostics(before, after, elsewhere=()):
 def linked_preflight(root, patches, output, log=print):
     """Contributor proof uses the independent verifier's snapshots, build and gates."""
     root, output = Path(root), Path(output)
+    log('Native preflight: validating cold setup and dependencies before baseline')
+    subprocess.run([sys.executable, '-u', '-c', 'from roc.rebuild_install import prepare; prepare()'],
+                   cwd=root, check=True)
     base = json.loads((root / "rebuild/2008-06/patches/rbxgs-client.json").read_text())
     combined, _, dropped = preflight(root, base, patches)
     if dropped:

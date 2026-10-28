@@ -545,6 +545,10 @@ def cmd_rebuild(a):
     if a.action == "install":
         install(ROOT, a.name, a.target)
         return
+    if a.action == 'prepare':
+        from roc.rebuild_install import prepare
+        prepare(a.name)
+        return
     if not (ROOT / "rebuild" / a.name / "modules").exists():
         install(ROOT, a.name)
     if a.action == "doctor":
@@ -2058,7 +2062,7 @@ def cmd_worker(a):
         raise SystemExit("Unit lease needs --unit NAME")
     worker.save_settings(user=user, server=srv, model=a.model, order=order)
     worker.run_concurrent(srv, user, a.token or s.get("token"), chosen, a.rounds, a.max_size,
-                          not a.no_revng, a.jobs, a.workers or "1", source_only=a.source_only,
+                          not a.no_revng, max_jobs=a.jobs, workers=a.workers or "1", source_only=a.source_only,
                           only=[a.client] if a.client else None, strategy=a.strategy,
                           cloud_allowed=cloud_allowed, cloud_budget=budget, cloud_gate=gate,
                           diverse_candidates=a.diverse_candidates, cloud_min_size=a.cloud_min_size,
@@ -2710,16 +2714,16 @@ def main(argv=None):
     p.set_defaults(fn=cmd_client_remove)
     cmd("rebuild", cmd_rebuild, "2008 client rebuild: doctor | audit | module NAME (see rebuild/<client>/POLICY.md)",
         (["name"], {"help": "client, e.g. 2008-06"}),
-        (["action"], {"choices": ["install", "doctor", "audit", "module", "status", "closure", "milestones", "progress", "placed"]}),
+        (["action"], {"choices": ["install", "prepare", "doctor", "audit", "module", "status", "closure", "milestones", "progress", "placed"]}),
         (["target"], {"nargs": "?", "help": "module name for `module` (rebuild/<client>/modules/NAME.json)"}),
         (["--no-notify"], {"action": "store_true", "help": "do not send the Discord webhook"}))
     cmd("integrate", cmd_integrate, "claim native integration work, bulk submit, track verified credit",
-        (["action"], {"nargs": "?", "default": "next", "choices": ["next", "submit", "force-queue", "fingerprint", "status", "watch", "renew", "release", "sync", "invite"]}),
+        (["action"], {"nargs": "?", "default": "next", "choices": ["next", "submit", "resume", "force-queue", "fingerprint", "status", "watch", "renew", "release", "park", "unpark", "sync", "invite"]}),
         (["--count"], {"type": int, "default": 1, "help": "claim 1-1024 classes; --all submits them as one verified batch"}),
         (["--targets"], {"type": int, "help": "claim enough classes for this many targets (up to 100000), one baseline"}),
         (["--batch"], {"help": "saved batch JSON from next; select its claims for submit/renew/release"}),
         (["--unit"], {}), (["--claim"], {}), (["--all"], {"action": "store_true"}),
-        (["--reason"], {"help": "park a released class for two hours, citing the blocker"}),
+        (["--reason"], {"help": "blocker for explicit park (two hours); release frees immediately; unpark frees your owned parked claims"}),
         (["--id"], {}), (["--model"], {}), (["--evidence-file"], {}),
         (["--retry"], {"action": "store_true", "help": "retry a rejected batch after a verifier/environment failure"}),
         (["--wait"], {"action": "store_true"}), (["--server"], {}), (["--user"], {}), (["--token"], {}))

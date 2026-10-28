@@ -71,3 +71,23 @@ def test_model_proposal_keeps_only_edits_the_new_exact_needs(tmp_path, monkeypat
         "App/v8datamodel/A.cpp", "int A::f() { return 1; } int g() {} int h() {}", ["00000001"], set(), set(),
         "deepseek:x", 1, compile_round, matcher, lambda addr: {"addr": addr}, lambda *a: None)
     assert proposal["edits"] == [["return 1;", "return 3;"]]
+
+
+def test_invented_types_rejected_before_compile_then_valid_proof_reused(tmp_path, monkeypatch):
+    replies = iter([block('return 1;', 'struct Invented { int x; }; return 3;'), block('return 1;', 'return 3;')])
+    feedback, compiled = [], []
+    def generate(model, messages, options):
+        feedback.append(messages[-1]['content'])
+        return SimpleNamespace(text=next(replies))
+    monkeypatch.setattr(providers, 'generate', generate)
+    def compile(source, label):
+        compiled.append(source)
+        obj = tmp_path / 'valid.obj'
+        obj.write_text(source)
+        return {'ok':True, 'object':str(obj), 'error':None}
+    matcher = SimpleNamespace(scan=lambda _: [{'addr':'00000001', 'symbol':'?f@A@RBX@@'}])
+    proposal, _ = native_sweep.model_proposal('App/util/A.cpp', 'int A::f(){return 1;}', ['00000001'], set(), set(),
+        'codex:default', 2, compile, matcher, lambda addr: {'addr':addr}, lambda *a: None)
+    assert len(compiled) == 1 and 'Invented' not in compiled[0]
+    assert 'invented snippet types' in feedback[1]
+    assert proposal['edits'] == [['return 1;', 'return 3;']]

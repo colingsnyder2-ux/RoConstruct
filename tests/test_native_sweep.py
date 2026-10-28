@@ -287,6 +287,8 @@ def test_matcher_resets_variants_and_requires_referenced_data(monkeypatch):
     monkeypatch.setattr(sweep.match, 'data_check', check)
     matcher = sweep.Matcher({'00500000', '00500001'})
     assert matcher.scan(b'object') == matcher.scan(b'object') == [{'addr': '00500000', 'symbol': '?f@A@RBX@@'}]
+    assert len(reads) == 1  # identical immutable object reuses its code/data proof
+    matcher.scan(b'changed object')
     assert len(reads) == 2
 
 
@@ -385,7 +387,8 @@ def test_wait_uses_authoritative_terminal_receipt(monkeypatch, state):
 @pytest.mark.parametrize('lose_owned,existing_owned,terminal', [(False, True, None), (True, True, None), (False, False, None),
                                                             (False, True, 'accepted'), (False, True, 'rejected'),
                                                             (False, True, 'timeout')])
-@pytest.mark.parametrize('saved_proof', [False, True, 'stale', 'unversioned', 'ambiguous', 'linked-failure'])
+@pytest.mark.parametrize('saved_proof', [False, True, 'stale', 'unversioned', 'ambiguous', 'linked-failure',
+                                      'catalog-alias', 'parked', 'carrier', 'reuse', 'mixed-invalid'])
 def test_pipeline_recompiles_minimal_fix_before_claim_and_apply(tmp_path, monkeypatch, lose_owned, existing_owned, terminal, saved_proof):
     root = tmp_path / 'checkout'
     tree, overlay = root / 'tools/rbxgs/Client', root / 'work/overlay'
@@ -418,14 +421,29 @@ def test_pipeline_recompiles_minimal_fix_before_claim_and_apply(tmp_path, monkey
                 return base
             if path == '/v1/integration':
                 return {'jobs': []}
+            if path == '/v1/integration?claims=1' and saved_proof in ('catalog-alias', 'parked', 'carrier', 'reuse'):
+                unit = 'RBX::Humanoid' if saved_proof == 'catalog-alias' else 'RBX::Carrier' if saved_proof == 'carrier' else 'RBX::A'
+                state = {'inventory': {unit: ['00500000' if saved_proof == 'carrier' else '00500001']},
+                         'parked_units': ['RBX::A'] if saved_proof == 'parked' else []}
+                if saved_proof == 'reuse':
+                    identity = json.loads((root / 'work/integration-client/identity.json').read_text())['id'][:12]
+                    state['claims'] = [dict(id='own', unit=unit, user='alice', worker='alice@native-sweep:' + identity,
+                                           expires=sweep.time.time() + 7200, state='claimed', base_revision='base')]
+                return state
             if path.startswith('/v1/integration?id='):
                 return {'jobs': [{'state': terminal, 'phase': 'complete', 'receipt':
                                  {'accepted': terminal == 'accepted', 'credits': 1 if terminal == 'accepted' else 0}}]}
             if path.endswith('/claim'):
+                if saved_proof == 'catalog-alias':
+                    assert body.get('unit') == 'RBX::Humanoid'
+                if saved_proof == 'carrier':
+                    assert not body.get('unit')  # absent classes retain the generic carrier fallback
                 if saved_proof == 'stale' and not getattr(self, 'refreshed_claim', False):
                     self.refreshed_claim = True
                     return {'claims': [{'id': 'stale', 'base_revision': 'old-base'}]}
-                return {'claims': [{'id': 'own', 'unit': 'RBX::A', 'addresses': ['00500001'],
+                return {'claims': [{'id': 'own', 'unit': 'RBX::Humanoid' if saved_proof == 'catalog-alias' else
+                                    'RBX::Carrier' if saved_proof == 'carrier' else 'RBX::A',
+                                    'addresses': ['00500000' if saved_proof == 'carrier' else '00500001'],
                                     'base_revision': 'base', 'baseline': base, 'user': 'alice'}]}
             return {'ok': True}
         def close(self):
@@ -483,6 +501,18 @@ def test_pipeline_recompiles_minimal_fix_before_claim_and_apply(tmp_path, monkey
                                          'base_revision': None if saved_proof == 'unversioned' else
                                                           'old-base' if saved_proof == 'stale' else 'base'}]))
         config['proposals_file'] = str(proposals)
+        if saved_proof == 'mixed-invalid':
+            data = json.loads(proposals.read_text())
+            data.append(dict(file='App/Bad.cpp', edits=[['old','struct Invented { int x; };']],
+                             witnesses=[], base_revision='base'))
+            proposals.write_text(json.dumps(data))
+        if saved_proof == 'catalog-alias':
+            data = json.loads(proposals.read_text())
+            data[0]['witnesses'][0]['claim_unit'] = 'RBX::ICharacterSubject'
+            proposals.write_text(json.dumps(data))
+        if saved_proof == 'reuse':
+            sweep.integration.atomic_json(root / 'work/integration-client/claims/own/packet.json',
+                dict(id='own', unit='RBX::A', user='alice', base_revision='base', baseline=base, addresses=['00500001']))
     if saved_proof and (lose_owned or saved_proof == 'unversioned'):
         with pytest.raises(ValueError, match='unversioned|lost exact matches'):
             sweep.run({'native_sweep': config}, 'test', output=root / 'work/sweep', log=lambda _: None)
@@ -493,6 +523,12 @@ def test_pipeline_recompiles_minimal_fix_before_claim_and_apply(tmp_path, monkey
         result = sweep.run({'native_sweep': config}, 'test', output=root / 'work/sweep', log=lambda _: None)
         assert result['proposed_files'] == 0 and result['local_exact'] == 0
         assert generator.read_bytes() == original and '/v1/integration/claim' not in calls
+        return
+    if saved_proof == 'parked':
+        before = proposals.read_bytes()
+        result = sweep.run({'native_sweep': config}, 'test', output=root / 'work/sweep', log=lambda _: None)
+        assert result['state'] == 'blocked' and '/v1/integration/claim' not in calls
+        assert proposals.read_bytes() == before and generator.read_bytes() == original
         return
     if saved_proof == 'linked-failure':
         saved_bytes = proposals.read_bytes()
@@ -511,6 +547,10 @@ def test_pipeline_recompiles_minimal_fix_before_claim_and_apply(tmp_path, monkey
         assert pending['state'] == 'queued' and pending['job'] == 'verified-job'
         return
     result = sweep.run({'native_sweep': config}, 'test', output=root / 'work/sweep', log=lambda _: None)
+    if saved_proof == 'mixed-invalid':
+        assert len(list((root / 'work/sweep/blocked-proposals').glob('*.json'))) == 1
+        assert result['applied_paths'] == ['App/A.cpp']
+        assert len(json.loads(proposals.read_text())) == 2
     assert result['new_verified'] == (1 if terminal == 'accepted' else 0)
     if terminal:
         assert actions == (['submit', 'sync'] if terminal == 'accepted' else ['submit'])
@@ -523,7 +563,7 @@ def test_pipeline_recompiles_minimal_fix_before_claim_and_apply(tmp_path, monkey
         edits = json.loads(generator.with_name('rbxgs-client.json').read_text())['App/A.cpp']
         assert len(edits) == 1 and ('A::candidate' in edits[0][0] or saved_proof)
         assert all('A::keep' not in old and 'A::unrelated' not in old for old, _ in edits)
-        assert calls.count('/v1/integration/claim') == (2 if saved_proof == 'stale' else 1)
+        assert calls.count('/v1/integration/claim') == (2 if saved_proof == 'stale' else 0 if saved_proof == 'reuse' else 1)
         assert calls.count('/v1/integration/release') == (1 if saved_proof == 'stale' else 0)
 
 

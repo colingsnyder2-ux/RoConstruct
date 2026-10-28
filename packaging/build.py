@@ -22,6 +22,7 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
 DIST = ROOT / "local" / "packages"
 
 # Every module a working cloud worker needs (transitive closure of worker, link,
@@ -157,6 +158,8 @@ def version():
 
 def stage(slug, spec, out):
     """Copy one package into out/ so it can be imported and zipped."""
+    from roc.rebuild_install import ensure_abi
+    abi = ensure_abi(ROOT)
     if out.exists():
         shutil.rmtree(out)
     (out / "roc").mkdir(parents=True)
@@ -167,6 +170,9 @@ def stage(slug, spec, out):
         target = out / relative
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(source, target)
+    target = out / 'rebuild/2008-06/manifests/abi-evidence.json'
+    target.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(abi, target)
     # Adopted headers are compiler inputs even if no ordinary mined snippet named them.
     overlay = ROOT / 'rebuild/2008-06/patches/rbxgs-client.json'
     native = json.loads((ROOT / 'research/native-units.json').read_text(encoding='utf-8'))
@@ -194,8 +200,8 @@ def stage(slug, spec, out):
     shutil.copytree(ROOT / "roc" / "web", out / "roc" / "web", dirs_exist_ok=True)
     (out / "roc" / "__init__.py").write_text("", encoding="utf-8")
     (out / "roconstruct-package.json").write_text(json.dumps(
-        {"package": slug, "revision": version(), "native_workflow": True, "native_workflow_version": 6,
-         "matching_workflow_version": 1}, indent=2) + "\n", encoding="utf-8")
+        {"package": slug, "revision": version(), "native_workflow": True, "native_workflow_version": 7,
+         "matching_workflow_version": 2}, indent=2) + "\n", encoding="utf-8")
     for name, text in spec["docs"].items():
         (out / name).write_text(text, encoding="utf-8")
     return out
@@ -299,9 +305,11 @@ def prepare_downloads(package):
     """Refresh the shared bootstrap ZIP/manifest and both standalone agent guides."""
     with zipfile.ZipFile(package) as zipped:
         marker = json.loads(zipped.read("roconstruct-package.json"))
-        if marker.get("matching_workflow_version", 0) < 1 or not {
-                "docs/MATCHING_AGENT.md", "docs/NATIVE_AGENT.md"} <= set(zipped.namelist()):
+        if marker.get("matching_workflow_version", 0) < 2 or not {
+                "docs/MATCHING_AGENT.md", "docs/NATIVE_AGENT.md",
+                "rebuild/2008-06/manifests/abi-evidence.json"} <= set(zipped.namelist()):
             raise ValueError("Worker ZIP lacks the matching/native workflows; rebuild it")
+        abi = zipped.read('rebuild/2008-06/manifests/abi-evidence.json')
     folder = ROOT / "local/findings/data"
     folder.mkdir(parents=True, exist_ok=True)
     manifest = folder / "native-worker.json"
@@ -311,7 +319,8 @@ def prepare_downloads(package):
     shutil.copy2(package, archive)
     for name in ("NATIVE_AGENT.md", "MATCHING_AGENT.md"):
         shutil.copy2(ROOT / "docs" / name, folder / name)
-    data.update(schema=1, workflow_version=6, matching_workflow_version=1,
+    data.update(schema=1, workflow_version=7, matching_workflow_version=2,
+                abi_manifest_sha256=hashlib.sha256(abi).hexdigest(), abi_manifest_classes=len(json.loads(abi)),
                 url=base + archive.name, sha256=hashlib.sha256(archive.read_bytes()).hexdigest(),
                 size=archive.stat().st_size, guide=base + "NATIVE_AGENT.md", matching_guide=base + "MATCHING_AGENT.md",
                 native_clients=["2008-06"], invitation_required=False)

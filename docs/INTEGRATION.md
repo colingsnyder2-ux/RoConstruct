@@ -1,5 +1,12 @@
 # Native integration contributors
 
+Worker v7 includes the published original-binary ABI manifest. After source/toolchain
+setup, `roc rebuild 2008-06 prepare` validates ABI data, generates missing RTTI,
+checks every declared compiler profile, and builds missing dependency libraries with
+their ordinary recipes before a native baseline starts. A partial `rebuild install`
+no longer treats the presence of rbxgs-app.json as proof that ABI evidence is installed.
+VS2005 dependency builds remain separate from the pinned VS2008 native verifier.
+
 This is separate from source mining. A mined 100% snippet becomes readable code
 in the coherent rbxgs rebuild; an independent server build must reproduce its
 bytes before credit is awarded. Original miners keep their mining points.
@@ -175,8 +182,55 @@ does not invent fields, offsets, source bodies or claim unverified credit.
 ## Retry and acceptance
 
 Use `--retry` to rerun an unchanged rejected batch after a verifier/environment
-problem has been fixed. Use `release --claim ID --reason "blocker + addresses"`
-to park blocked work for two hours instead of immediately assigning it again.
+problem has been fixed. Claim operations are explicit:
+
+```text
+roc integrate release --claim ID
+roc integrate park --claim ID --reason "blocker + addresses"
+roc integrate unpark --claim ID
+roc integrate unpark --all
+```
+
+Release frees work immediately; it does not park. `release --reason` is rejected
+with guidance. Park holds a blocker for two hours. Unpark clears your owned park
+and frees that class immediately; another contributor's claim cannot be unparked. `unpark
+--unit RBX::Class` selects owned parks for that inventory unit, including claims
+created on another PC. Status includes park IDs and owners.
+
+Discovery routes claims by the server's address-to-unit inventory rather than
+assuming a native method's class is its scheduling label. For example, an
+ICharacterSubject method cataloged under RBX::Humanoid claims Humanoid. Parked
+classes are skipped; absent units are never requested. Catalog-less proposals
+retain the existing carrier-claim fallback and every linked/runtime gate.
+
+Gateway errors do not require rediscovery or a new batch:
+
+```text
+roc integrate resume
+```
+
+Before POST, the client commits a hash-checked request journal under
+`work/integration-client/requests/`: exact payload, generator/base snapshots,
+applied files and the linked-proof artifact location. Resume first queries server
+state by the same request digest. It recovers already queued/completed jobs or
+replays the identical idempotent payload with still-valid claims. It never invents
+new claim IDs or retries a rejected job automatically. Both native-try submission
+and integrator startup recover unresolved intents before starting new work.
+Expired/parked/mismatched claims and incomplete/modified journals retain their
+artifacts and require explicit repair. Valid owned leases are reused and renewed
+before linked preflight. Protocol version 3 supplies claim inventory, explicit
+park/unpark and digest lookup; deploy the updated server before using new endpoints.
+
+Use eight AI workers and four compiler slots initially. Observed 2026-10-28 logs
+had a 400.8-second median file run, versus 43.7-second baseline and 40-second trial
+compiles; more AI workers can increase compiler waiting. New logs separate compile,
+queue and comparison time. Method prompts now carry three targets and request
+small unique anchors. Identical candidate source reuses a dependency-checked
+compile path; identical objects reuse code/data comparisons. Minimization reuses
+an already verified final object. Independent linked verification is unchanged.
+The signed launcher and direct worker CLI now pass job limits and worker counts
+by name, fixing the duplicate `use_remill` error and accidental positional binding
+of worker counts to lift controls. Worker v7 / matching workflow v2 includes these fixes.
 
 `status` shows jobs and the separate native-credit leaderboard. The server checks
 the linked rebuild, M2/M4a/M5, size/base regressions, owned addresses and global
@@ -257,7 +311,7 @@ prepared input identity before compiling; after interruption, matching snapshots
 their private content-checked objects and rerun every gate. Unprepared snapshots are
 retained for diagnostics. Completed baseline receipts remain required for acceptance.
 
-Player Mining receives a fresh digest for accepted native gains: purple integrated native bodies,
+Server Mining receives a fresh digest for accepted native gains: purple integrated native bodies,
 blue exact mined sources awaiting integration, white remaining targets.
 The 23-cell bar measures code bytes, excluding compiler stubs; category counts and
 remaining functions are shown separately. Combined points include one point per

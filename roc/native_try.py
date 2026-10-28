@@ -280,6 +280,9 @@ def cmd_check(ctx, args):
 
 
 def cmd_preflight(args):
+    native_sweep.require_private_workspace()
+    from roc.rebuild_install import prepare
+    prepare()
     context()  # sync the accepted baseline before combining saved recipes
     proposals = saved()
     if not proposals:

@@ -1,4 +1,4 @@
-"""Send changed native integration digests, using the player mining layout."""
+"""Send native integration digests to Server Mining, using the shared mining layout."""
 import json
 import sqlite3
 import time
@@ -8,7 +8,7 @@ import urllib.request
 from datetime import datetime, timezone
 
 from roc.integration import CLIENT, atomic_json, digest
-from roc.reports import RATE_WINDOW, fmt_duration, inline_code, player_mines_webhook
+from roc.reports import RATE_WINDOW, fmt_duration, inline_code, server_mines_webhook
 
 
 def payload(promotions, job, receipt=None):
@@ -76,7 +76,7 @@ def payload(promotions, job, receipt=None):
 
 
 def notify(promotions, job, receipt=None):
-    url = player_mines_webhook()
+    url = server_mines_webhook()
     # Post only real progress: an accepted job that integrated something. Phase changes, retries, merges
     # and rejections changed the digest every time and flooded the channel with zero-gain messages.
     if not url or not (receipt and receipt.get("accepted") and receipt.get("gains")):
