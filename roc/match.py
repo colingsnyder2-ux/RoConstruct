@@ -6,7 +6,7 @@ import difflib
 import errno
 import contextlib
 import functools
-from bisect import bisect_left
+from bisect import bisect_left, bisect_right
 import hashlib
 import json
 import os
@@ -21,7 +21,8 @@ import uuid
 from pathlib import Path
 
 import pefile
-from capstone import CS_ARCH_X86, CS_MODE_32, Cs
+from capstone import CS_ARCH_X86, CS_GRP_JUMP, CS_MODE_32, Cs
+from capstone.x86 import X86_OP_IMM
 
 from roc import clients, setup
 
@@ -101,6 +102,35 @@ def coff_functions(obj):
         # analyze.py strips trailing int3 from exe functions (padding is
         # indistinguishable); strip the same bytes here so both sides agree.
         body = body[:max([len(body.rstrip(b"\xcc"))] + [r + 4 for r in relocs])]
+        # Assembler runtime helpers can have several entry labels sharing a
+        # local tail. Keep the usual symbol slice, plus its unmodified branch
+        # closure. Relocated branches name separate linker functions.
+        if len(starts[sec]) > 1:
+            section_relocs = [struct.unpack_from("<I", obj, relptr + 10 * k)[0] for k in range(nrel)]
+            ordered = sorted(starts[sec])
+            tail, scan = nxt, value
+            decoder = Cs(CS_ARCH_X86, CS_MODE_32)
+            decoder.detail = True
+            while scan < tail:
+                limit = tail
+                for ins in decoder.disasm(obj[rawptr + scan:rawptr + limit], scan):
+                    if not ins.group(CS_GRP_JUMP) or not ins.operands or ins.operands[0].type != X86_OP_IMM:
+                        continue
+                    if any(ins.address <= r < ins.address + ins.size for r in section_relocs):
+                        continue
+                    dest = ins.operands[0].imm
+                    if not tail <= dest < rawsize:
+                        continue
+                    entry = ordered[bisect_right(ordered, dest) - 1]
+                    if any(label.startswith("__catch$") for label in labels[sec, entry]):
+                        continue
+                    tail = max(tail, ends[sec, entry])
+                scan = limit
+            if tail > nxt:
+                shared_relocs = [r - value for r in section_relocs if value <= r < tail]
+                shared = obj[rawptr + value:rawptr + tail]
+                shared = shared[:max([len(shared.rstrip(b"\xcc"))] + [r + 4 for r in shared_relocs])]
+                out.append((name, shared, shared_relocs))
         out.append((name, body, relocs))
     return out
 
