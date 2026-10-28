@@ -198,6 +198,95 @@ def test_native_loop_counts_async_acceptance_and_stops_at_budget(monkeypatch):
     assert any('accepted' in fields.get('message', '') for _, fields in events)
 
 
+@pytest.fixture
+def continuous_native(monkeypatch, tmp_path):
+    monkeypatch.setattr(providers, 'available', lambda _: True)
+    monkeypatch.setattr('roc.rebuild_install.prepare', lambda **kwargs: None)
+    monkeypatch.setattr(gui_worker.worker, 'save_settings', lambda **kwargs: None)
+    monkeypatch.setattr(gui_worker.worker, 'load_settings', lambda: {})
+    monkeypatch.setattr(integration, 'command', lambda _: None)
+    monkeypatch.setattr(native_sweep, 'ROOT', tmp_path)
+    api = Mock()
+    api.call.return_value = {'clients':[{'client':'2008-06','matched':100,'integrated':50,'functions':200}]}
+    monkeypatch.setattr(gui_worker.worker, 'Api', lambda *args: api)
+    config = {**gui_worker.DEFAULTS, 'lease_mode':'native', 'client':'2008-06',
+              'model':'codex:default', 'workers':2, 'user':'tester', 'server':'localhost:8765', 'cloud_allowed':True}
+    events = []
+    control = gui_worker.Control(config, lambda *args, **kwargs: None)
+    clock = [100.]
+    monkeypatch.setattr(gui_worker.time, 'monotonic', lambda: clock[0])
+    monkeypatch.setattr(control, 'wait', lambda seconds: clock.__setitem__(0, clock[0]+seconds))
+    return config, control, events, tmp_path
+
+
+def test_exhausted_discovery_restarts_with_rotated_targets_without_changed_stats(continuous_native, monkeypatch):
+    config, control, events, _ = continuous_native
+    calls = []
+    def run(spec, *args, **kwargs):
+        calls.append(dict(spec['native_sweep']))
+        if len(calls) == 3:control.command({'action':'stop'})
+        return {'files_tried':['App/A.cpp']} if len(calls) == 1 else {'files_tried':[]}
+    monkeypatch.setattr(native_sweep, 'run', run)
+    gui_worker.native_loop(config, control, lambda event, **fields: events.append((event,fields)))
+    assert len(calls) == 3 and not control.paused
+    assert calls[1]['exclude_files'] == ['App/A.cpp']
+    assert calls[2]['exclude_files'] == [] and calls[2]['target_offset'] == 4
+    assert any('rotated pending' in fields.get('message','') for _,fields in events)
+
+
+@pytest.mark.parametrize('failure', [ValueError('Linked ownership regression; gate rejected candidate'),
+                                    gui_worker.worker.ApiFailure('bad_request','Submission rejected')])
+def test_rejected_preflight_preserves_proof_and_continues_other_files(continuous_native, monkeypatch, failure):
+    config, control, events, root = continuous_native
+    output = root/'work/research/native-model-2008'
+    output.mkdir(parents=True)
+    (output/'summary.json').write_text(json.dumps({'files_tried':['App/Rejected.cpp']}))
+    (output/'proposals.json').write_text('[{"saved":"proof"}]')
+    calls = []
+    def run(spec, *args, **kwargs):
+        calls.append(dict(spec['native_sweep']))
+        if len(calls) == 1:raise failure
+        control.command({'action':'stop'})
+        return {'files_tried':[]}
+    monkeypatch.setattr(native_sweep, 'run', run)
+    gui_worker.native_loop(config, control, lambda event, **fields: events.append((event,fields)))
+    assert calls[1]['exclude_files'] == ['App/Rejected.cpp'] and control.errors == 1
+    assert json.loads((output/'proposals.json').read_text()) == [{'saved':'proof'}]
+    assert any('Continuing in 30s' in fields.get('message','') for _,fields in events)
+
+
+def test_permanent_provider_failure_still_stops_continuous_discovery(continuous_native, monkeypatch):
+    config, control, events, _ = continuous_native
+    monkeypatch.setattr(native_sweep, 'run', Mock(side_effect=providers.ProviderError('provider_auth','HTTP 401')))
+    gui_worker.native_loop(config, control, lambda event, **fields: events.append((event,fields)))
+    assert control.stopping and control.errors == 0
+
+
+def test_startup_server_outage_resumes_without_repeating_setup(continuous_native, monkeypatch):
+    config, control, events, _ = continuous_native
+    syncing = Mock(side_effect=[gui_worker.worker.ApiFailure('offline','down'),None])
+    monkeypatch.setattr(integration, 'command', syncing)
+    def run(*args, **kwargs):
+        control.command({'action':'stop'})
+        return {'files_tried':[]}
+    monkeypatch.setattr(native_sweep, 'run', run)
+    gui_worker.native_loop(config, control, lambda event, **fields: events.append((event,fields)))
+    assert syncing.call_count == 2
+    assert any('Waiting for server' in fields.get('message','') for _,fields in events)
+
+
+def test_server_outage_obeys_two_hour_deadline(continuous_native, monkeypatch):
+    config, control, events, _ = continuous_native
+    clock = [100.]
+    monkeypatch.setattr(gui_worker.time,'monotonic',lambda:clock[0])
+    monkeypatch.setattr(control,'wait',lambda _:clock.__setitem__(0,clock[0]+3600))
+    run = Mock(side_effect=gui_worker.worker.ApiFailure('server_fail','HTTP 503'))
+    monkeypatch.setattr(native_sweep,'run',run)
+    gui_worker.native_loop(config, control, lambda event, **fields: events.append((event,fields)))
+    assert control.stopping and run.call_count == 3
+    assert any('two hours' in fields.get('message','') for _,fields in events)
+
+
 def test_unchanged_native_sync_does_not_spawn_generator(tmp_path, monkeypatch):
     import hashlib
     folder = tmp_path / 'rebuild/2008-06/patches'

@@ -421,6 +421,7 @@ def test_worker_bootstrap_publishes_both_guides_and_verified_archive(tmp_path):
     build.prepare_downloads(package)
     folder = tmp_path / 'local/findings/data'
     manifest = json.loads((folder / 'native-worker.json').read_text())
+    assert manifest['workflow_version'] == 10
     assert manifest['matching_workflow_version'] == 4
     assert manifest['abi_manifest_classes'] == 1
     assert manifest['sha256'] == hashlib.sha256((folder / 'native-worker.zip').read_bytes()).hexdigest()

@@ -225,6 +225,24 @@ def native_loop(config, control, emit):
     """Native integration: each pass lets the model edit native files that define waiting exact targets, submits
     locally proven edits as one verified batch; discovery continues while the server verifies."""
     from roc import integration, native_sweep, research
+    outage_started = None
+    def server_wait(error):
+        nonlocal outage_started
+        if error.category == 'auth_fail':
+            emit('error', slot=0, message='Server authentication failed; saved proofs retained: ' + str(error))
+            control.command({'action': 'stop'})
+            return False
+        if error.category in ('offline', 'server_fail'):
+            if outage_started is None:
+                outage_started = time.monotonic()
+            if time.monotonic() - outage_started >= 7200:
+                emit('error', slot=0, message='Server unreachable for two hours; saved proofs retained. Session stopped.')
+                control.command({'action': 'stop'})
+                return False
+        emit('log', slot=0, message='Server request failed; saved proofs retained. Retry in 30s: ' + str(error))
+        emit('stage', message='Waiting for server; retrying in 30s', task_status='running')
+        control.wait(30)
+        return not control.stopping
     if not providers.available(config["model"]):
         raise providers.ProviderError("provider_key", providers.credential_hint(config["model"]))
     spec = json.loads(json.dumps(research.recipes()["native-model-2008"]))
@@ -233,7 +251,14 @@ def native_loop(config, control, emit):
     prepare(log=lambda message: emit('log', slot=0, message=message))
     worker.save_settings(user=config["user"], server=config["server"])
     emit("log", slot=0, message="Startup: syncing accepted native baseline (unchanged overlays are reused)")
-    integration.command(SimpleNamespace(action="sync", server=config["server"], user=config["user"], token=None))
+    while not control.stopping:
+        try:
+            integration.command(SimpleNamespace(action="sync", server=config["server"], user=config["user"], token=None))
+            outage_started = None
+            break
+        except worker.ApiFailure as error:
+            if not server_wait(error):
+                return
     emit("log", slot=0, message="Startup complete: selecting exact mined targets for parallel integration")
     def native_event(kind, **fields):
         emit(kind, **fields)
@@ -242,6 +267,20 @@ def native_loop(config, control, emit):
             control.command({"action": "stop"})
 
     tried = set()
+    target_offset = 0
+    def report(message):
+        emit('log', slot=0, message=str(message))
+        emit('stage', message=str(message), task_status='running')
+    def recover_pass(error):
+        # A rejected candidate must not kill discovery or regenerate the same
+        # files immediately. Native run archived their source and local proofs.
+        path = native_sweep.ROOT / 'work/research/native-model-2008/summary.json'
+        if path.exists():
+            tried.update(json.loads(path.read_text()).get('files_tried', []))
+        control.errors += 1
+        emit('error', slot=0, message='Native pass failed; proofs retained. Continuing in 30s: ' + str(error))
+        emit('stage', message='Recovering native pass; retrying in 30s', task_status='running')
+        control.wait(30)
     pending = set()
     def refresh_pending():
         if not pending:
@@ -282,6 +321,7 @@ def native_loop(config, control, emit):
             max_files=current["native_batch_files"], context=current["native_context"],
             generation=current["native_generation"],
             compile_batch=current["native_compile_batch"],
+            target_offset=target_offset,
             compile_workers=current["native_compile_workers"],
             provider_options={"allow_cloud": current["cloud_allowed"], "budget": control.budget,
                 "gate": providers.CloudGate(inflight),
@@ -292,14 +332,23 @@ def native_loop(config, control, emit):
                 "before_request": lambda: control.before_lease(0) is not None})
         try:
             summary = native_sweep.run(spec, "native-model-2008", server=config["server"] or None, jobs=control.workers,
-                                       log=lambda message: emit("log", slot=0, message=str(message)))
+                                       log=report)
+            outage_started = None
         except worker.ApiFailure as error:
-            emit("log", slot=0, message="Server temporarily unavailable; proposals saved. Retry in 30s: " + str(error))
-            control.wait(30)
+            if error.category == 'bad_request':
+                outage_started = None
+                recover_pass(error)
+            elif not server_wait(error):
+                break
             continue
-        except (Exception, SystemExit) as error:  # noqa: BLE001 - report and stop like a worker slot
-            emit("error", slot=0, message=str(error))
-            raise
+        except (Exception, SystemExit) as error:  # noqa: BLE001 - failed native passes preserve proofs and retry
+            if getattr(error, 'category', '') in providers.FATAL_ERRORS or getattr(error, 'category', '') == 'cloud_budget':
+                emit('error', slot=0, message=str(error))
+                control.command({'action': 'stop'})
+                break
+            outage_started = None
+            recover_pass(error)
+            continue
         emit("log", slot=0, message="native pass: %s, %s local exact, %s verified" % (
             summary.get("state"), summary.get("local_exact", 0), summary.get("new_verified", 0)))
         tried.update(summary.get("files_tried", []))
@@ -319,8 +368,9 @@ def native_loop(config, control, emit):
             emit("log", slot=0, message="Cloud budget cap reached; finishing session.")
             control.command({"action": "stop"})
         if not summary.get("files_tried") and not summary.get("job"):
-            emit("stage", message="No fresh native targets; staying active, checking for new evidence every 30s")
+            emit("stage", message="Discovery cycle complete; checking updates and rotating targets within 60s", task_status='running')
             signature = None
+            restart_at = time.monotonic() + 60
             while not control.stopping:
                 if refresh_pending():
                     tried.clear()
@@ -337,6 +387,11 @@ def native_loop(config, control, emit):
                     pass  # Keep local proofs while the shared service recovers.
                 finally:
                     api.close()
+                if time.monotonic() >= restart_at:
+                    tried.clear()
+                    target_offset += current['native_compile_batch']
+                    report('Starting next discovery cycle with rotated pending targets')
+                    break
                 control.wait(30)
     for slot in range(control.workers):
         emit("slot_stopped", slot=slot)

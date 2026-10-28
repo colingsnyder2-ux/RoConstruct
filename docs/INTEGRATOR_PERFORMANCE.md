@@ -154,3 +154,12 @@ before slower files finish. This preserves source edits and local proof through
 interruptions; it does not label them submitted or bypass linked preflight. Repair
 excerpts and batch feedback now select pending targets after local exacts are removed,
 avoiding irrelevant already-exact methods at the front of the file's target list.
+
+Automatic discovery now cycles after at most 60 seconds without fresh files and
+rotates the pending method order each cycle. Previously it waited indefinitely
+for published totals to change after exhausting its file set. Failed candidate
+preflight retains proofs and skips those files for the current cycle; discovery
+continues after a 30-second recovery interval. Permanent provider/auth failures,
+budget limits and explicit stop/pause remain effective. Server startup sync and
+subsequent network failures retry within a two-hour outage deadline. Compact UI
+now displays coordinator/preflight logs and a batch phase when file workers finish.

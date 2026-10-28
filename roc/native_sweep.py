@@ -810,6 +810,8 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
         if provider_failed.is_set():
             return None, [base]
         pending = [addr for addr in homes[rel] if addr not in baseline]
+        offset = int(config.get('target_offset', 0)) % len(pending)
+        pending = pending[offset:] + pending[:offset]
 
         def diff(obj, addr):
             return body_diff(obj, names[addr]["symbol"], addr) if names.get(addr, {}).get("symbol") else "no rebuilt body"

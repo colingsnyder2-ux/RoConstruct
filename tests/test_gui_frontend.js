@@ -254,6 +254,12 @@ feedContext.chatFollow=true;
 assert.doesNotMatch(fs.readFileSync("roc/web/style.css","utf8"),/\.workers-page \.worker-chat\{max-width:960px/);
 assert.match(feedNodes["#worker-tabs"].innerHTML,/dot running/);
 console.log("Compact: one result per function, benchmarks, 3/4/100-loop boundary passed");
+feedContext.jobs[0]={...feedContext.jobs[0],kind:"worker",config:{lease_mode:"native"}};
+feedContext.logs.push({job:"run",seq:101,time:5,event:"log",slot:0,message:"Linked preflight baseline: building"});
+feedContext.logs.push({job:"run",seq:102,time:6,event:"stage",message:"Next discovery cycle"});
+feedContext.chatSignature="";feedContext.renderWorkerChat();
+assert.ok(feedContext.items.some(([,html])=>html.includes("Linked preflight baseline: building")));
+assert.ok(feedContext.items.some(([,html])=>html.includes("Next discovery cycle")));
 (async()=>{
   context.fetch=async()=>{throw new TypeError("Failed to fetch");};
   await context.selectWorker("saved");
