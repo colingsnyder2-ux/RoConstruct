@@ -958,6 +958,19 @@ def check_text(client, addr, text, flags=None, include_diagnosis=False, obj=None
         d = diff(code, relocs, best[1], best[2])
         if bad:
             value, d = 99, "Code matches, but data your source defines does not:\n" + "\n".join(bad)
+    if value < 100 and any(len(f[1]) > len(code) for f in funcs):
+        # The candidate may be right and the recorded extent short: prove it from the exe bytes.
+        from roc import bounds_proof
+        try:
+            proof = bounds_proof.tail_proof(client, addr, funcs)
+        except Exception:  # a bounds hint must never break scoring (server import/verify threads)
+            proof = None
+        if proof:
+            bounds_proof.record(proof)
+            d = ("BOUNDS: %s's code equals the target plus the exe's next %d bytes, so the real extent is "
+                 "%d, not %d (absorbs %s). Recorded in work/%s/bounds-suggestions.jsonl; apply with "
+                 "`roc extents %s --apply`.\n" % (proof["symbol"], proof["new"] - proof["old"], proof["new"], proof["old"],
+                                                  ", ".join(proof["absorbs"]) or "nothing", client, client)) + d
     from roc import telemetry
     telemetry.candidate(text, value)
     result = (value, best[0], d, spans)

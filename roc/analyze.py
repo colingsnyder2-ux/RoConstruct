@@ -270,6 +270,10 @@ def find_functions(code, text_va, seeds, relocs, proven=(), keep=None, data=(), 
     order = sorted(s for s in starts if s in seen) + [end]
     call_sites = sorted(calls)
     tables = sorted(tables) if keep is not None else []
+    proven_starts = {start for start, _ in proven}
+    evidence = lambda va: [tag for tag, hit in (("call", va in called), ("pointer", va in pointed),
+                                               ("callback", va in callbacks), ("bounds", va in proven_starts))
+                           if hit] or ["aligned"]  # only the int3/16-alignment heuristic: review this start
     out = []
     for start, nxt in zip(order, order[1:]):
         body = (code[start - text_va:start - text_va + data[start]] if start in data
@@ -289,6 +293,7 @@ def find_functions(code, text_va, seeds, relocs, proven=(), keep=None, data=(), 
             "calls": bisect_left(call_sites, stop) - bisect_left(call_sites, start),
             "kind": "data" if start in data else "eh" if _catch_funclet(code, text_va, start, body, reloc_set, rd)
                     else kind_of(body[:code_len], [r for r in rel if r < code_len]),
+            "start_evidence": evidence(start),
         })
         joined = [dict(handler="%08x" % handler, continuation="%08x" % item["continuation"],
                        normal_entries=["%08x" % va for va in item["normal_entries"]])
@@ -777,11 +782,22 @@ def analyze(client, exe):
     proven = [(int(a, 16), n) for a, n in json.loads(bounds.read_text())] if bounds.exists() else ()
     scores_file = ROOT / "work" / client / "scores.json"
     matched = {a for a, s in json.loads(scores_file.read_text()).items() if s == 100} if scores_file.exists() else set()
+    server_db = ROOT / "work" / "server.db"
+    if server_db.exists():  # on the host, local scores.json misses other contributors' exacts
+        import sqlite3
+        with sqlite3.connect("file:%s?mode=ro" % server_db.as_posix(), uri=True) as db:
+            matched |= {a for (a,) in db.execute("SELECT addr FROM funcs WHERE client = ? AND score = 100", (client,))}
     # Trusted starts a fallthrough cannot retire: entry, vtable slots, proven extents, exact matches.
     keep = ({base + pe.OPTIONAL_HEADER.AddressOfEntryPoint} | {s for s, _ in proven} | {int(a, 16) for a in matched}
             | {fn for _, _, fns in rtti_vtables(read, relocs, in_text) for fn in fns})
     funcs = find_functions(code, text_va, seeds, relocs, proven, keep, known_data(client, read),
                            locked={int(addr, 16) for addr in matched})
+    mark_unwind_actions(funcs, msvc_unwind_actions(read, relocs, in_text), read)
+    catches = msvc_catch_handlers(read, relocs, in_text)
+    mark_catch_handlers(funcs, catches, read)
+    # FuncInfo-proven catch funclets join their owner, even past a short bounds.json pin.
+    from roc.bounds_proof import owned_catch_merges
+    owned_catch_merges(funcs, catches, read, locked={int(addr, 16) for addr in matched})
     imports = import_symbols(pe, funcs, read)
     # Persist direct-call edges so source retrieval can use neighboring functions.
     by_addr = {int(f["addr"], 16): f for f in funcs}
@@ -810,8 +826,6 @@ def analyze(client, exe):
         body = code[start - text_va:start - text_va + f["size"]]
         if f["kind"] != "data":
             f.update(binary_facts(pe, image, base, body, start, imports, by_addr))
-    mark_unwind_actions(funcs, msvc_unwind_actions(read, relocs, in_text), read)
-    mark_catch_handlers(funcs, msvc_catch_handlers(read, relocs, in_text), read)
     classes = rtti_classes(read, relocs, in_text)
     assign_units(funcs, classes)
     siblings = {}

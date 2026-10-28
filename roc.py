@@ -353,6 +353,30 @@ def cmd_analyze(a):
         out, funcs = analyze.analyze(name, clients.exe_path(name, entry))
         real = sum(1 for f in funcs if f["kind"] == "code")
         print("%s: %d functions (%d real code, %d skipped: compiler stubs or bad splits)" % (name, len(funcs), real, len(funcs) - real))
+        weak = sum(1 for f in funcs if f["kind"] == "code" and f.get("start_evidence") == ["aligned"])
+        merged = sum(1 for f in funcs if f.get("catch_merge"))
+        print("%s: %d catch funclets folded into owners; %d code starts rest only on alignment (review list)"
+              % (name, merged, weak))
+        _hot_reseed(name)
+
+
+def _hot_reseed(name):
+    """Tell a group server running on this PC to reload the new table (no restart)."""
+    from roc import server
+    if not server.ADMIN_KEY.exists():
+        return
+    import urllib.request
+    s = settings()
+    request = urllib.request.Request("http://127.0.0.1:8765/v1/admin/reseed", json.dumps({"client": name}).encode(),
+                                     {"Content-Type": "application/json", "X-Roc-Token": s.get("token") or "",
+                                      "X-Roc-Admin": server.ADMIN_KEY.read_text().strip()})
+    try:
+        with urllib.request.urlopen(request, timeout=1800) as response:
+            result = json.loads(response.read())
+        print("%s: live server reseeded: %d resized, %d exact after re-verify %s" % (
+            name, len(result["resized"]), len(result["exact_after_resize"]), " ".join(result["exact_after_resize"])))
+    except OSError as error:
+        print("%s: no live server reseed (%s); a restart reseeds too." % (name, error))
 
 
 def cmd_next(a):
@@ -1395,7 +1419,28 @@ def cmd_rtti(a):
 
 def cmd_extents(a):
     """Near-misses whose recorded extent ends in padding: honest bounds candidates."""
-    from roc import extents
+    from roc import bounds_proof, extents
+    if a.carry_from:
+        sources = [n for n in sorted(clients.load()) if n != a.name] if a.carry_from == "all" else [a.carry_from]
+        for src in sources:
+            try:
+                for s in bounds_proof.carry(src, a.name):
+                    bounds_proof.record(s)
+            except FileNotFoundError:
+                print("%s: not analyzed, skipped" % src)
+    if a.apply:
+        applied = bounds_proof.apply(a.name)
+        print("Applied %d proven extents to work/%s/bounds.json.%s" % (
+            len(applied), a.name, " Now run:  roc analyze %s  (hot-reseeds a running local server)" % a.name
+            if applied else ""))
+        return
+    suggestions = bounds_proof.load(a.name)
+    if suggestions:
+        print("Byte-proven extent suggestions (%d) in work/%s/bounds-suggestions.jsonl:" % (len(suggestions), a.name))
+        for s in suggestions:
+            print("  %s  %4d -> %4d  %-5s %s  absorbs %s" % (s["addr"], s["old"], s["new"],
+                  "clean" if s["clean"] else "MID", s["proof"], ", ".join(s["absorbs"]) or "-"))
+        print("Apply the clean ones with:  roc extents %s --apply" % a.name)
     rows = extents.scan(a.name, a.min_score)
     if not rows:
         print("No padded-extent functions in the %d%%+ open band of %s." % (a.min_score, a.name))
@@ -1917,6 +1962,7 @@ def cmd_uninstall(a):
 
 
 def cmd_server(a):
+    print("Starting RoConstruct server (loading modules)...", flush=True)
     server = need_module("server", "The group server")
     if getattr(a, "publisher_only", False):
         server.run_publisher(a.publish_every, getattr(a, "publisher_parent", None))
@@ -1935,6 +1981,7 @@ def cmd_server(a):
     primary = public
     tunnel = None
     if a.tunnel:  # Keep Cloudflare available behind an optional fixed primary address.
+        print("Starting Cloudflare tunnel...", flush=True)
         try:
             public, tunnel = server.start_tunnel(a.port)
         except SystemExit as error:  # e.g. Cloudflare 429: keep serving locally, publish_loop retries with backoff
@@ -2885,8 +2932,10 @@ def main(argv=None):
         (["name"], {}), (["addr"], {"nargs": "?"}),
         (["--open"], {"action": "store_true", "help": "annotate every open function's RTTI type refs"}),
         (["--limit"], {"type": int, "default": 0, "help": "cap rows (0 = all)"}))
-    cmd("extents", cmd_extents, "find near-misses whose recorded size includes padding (bounds.json candidates)",
-        (["name"], {}), (["--min-score"], {"type": int, "default": 90, "help": "scan band floor"}))
+    cmd("extents", cmd_extents, "byte-proven bounds fixes: padded extents, check-time tail proofs, cross-client carry",
+        (["name"], {}), (["--min-score"], {"type": int, "default": 90, "help": "scan band floor"}),
+        (["--carry-from"], {"help": "client (or 'all') whose exact functions prove extents here"}),
+        (["--apply"], {"action": "store_true", "help": "write clean proven suggestions into bounds.json"}))
     cmd("immediates", cmd_immediates, "list near-misses whose only residue is ONE wrong constant, with the target value",
         (["name"], {}), (["--min-score"], {"type": int, "default": 95}),
         (["--max-score"], {"type": int, "default": 99}))

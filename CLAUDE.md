@@ -81,6 +81,9 @@ variant recorded there as rejected.
    ATL/MFC). Change a recipe in `roc/libs.py` only with new evidence: the exact
    upstream version, or the vendor's build prelude and defines.
 7. **Boundaries.** Fix function extents only with proof, via `work/<client>/bounds.json`.
+   A `BOUNDS:` line in `roc check` output is such a proof: submit the source anyway (the
+   server re-check records it too). Only the server host runs `roc extents <client> --apply`
+   then `roc analyze <client>`, which hot-reseeds the live server.
 
 Write bulk trials as a recipe in `research/recipes.json` (op `grid` or `fanout`),
 not a new script; generated units go through `libs.add_unit` so every PC can rebuild

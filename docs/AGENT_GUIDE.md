@@ -158,7 +158,15 @@ default in automatic mode.
    Minimal cores must retain native helper bodies that the original TU inlines.
    Unused type definitions may be omitted; every used class, base and access rule
    stays intact. Isolating the unused render bucket enabled the real 21022 gate.
-8. **Boundaries** only with proof, through `work/<client>/bounds.json`.
+8. **Boundaries** only with proof, through `work/<client>/bounds.json`. Proofs are now
+   automatic (`roc/bounds_proof.py`): `analyze` folds FuncInfo-proven catch funclets into
+   their owner even past a short pin; every check whose candidate equals the target plus
+   the exe's next bytes prints `BOUNDS:` and records the extent in
+   `work/<client>/bounds-suggestions.jsonl`; `roc extents NAME --carry-from CLIENT|all`
+   adds extents proven by another client's exact twin. On the server host only,
+   `roc extents NAME --apply` writes clean suggestions, then `roc analyze NAME`
+   hot-reseeds the live server. Contributors just submit; the server re-check records them.
+   Rows tagged `start_evidence: ["aligned"]` rest only on int3 alignment: review them first.
 
 `roc brute CLIENT` runs the `portable-bruteforce` sweep recipe: client-specific native
 family stages, whole-object portfolio fanout, native unoptimized member emission,

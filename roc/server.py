@@ -875,6 +875,17 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
                     return self.send(200, result)
                 except (ValueError, TypeError, OSError) as error:
                     return self.send(400, {"error": str(error)})
+            if path == "/v1/admin/reseed":
+                # Host-only: loopback, not proxied by the tunnel, and the key file only this PC can read.
+                local = self.client_address[0] in ("127.0.0.1", "::1") and not (
+                    self.headers.get("Cf-Connecting-Ip") or self.headers.get("X-Forwarded-For"))
+                key = ADMIN_KEY.read_text().strip() if ADMIN_KEY.exists() else None
+                if not (local and key and self.headers.get("X-Roc-Admin") == key):
+                    return self.send(403, {"error": "admin actions are host-only"})
+                client = str(body.get("client", ""))
+                if client not in clients.load() or clients.load()[client].get("donor"):
+                    return self.send(400, {"error": "unknown or donor client (startup never seeds donors)"})
+                return self.send(200, reseed(store, client))
             if path == "/v1/family":
                 return self.send(200, store.register_family(str(body.get("client", "")),
                                                              str(body.get("addr", "")),
@@ -1051,12 +1062,47 @@ def import_auto_matches(store, name, found, log=print):
     return imported, skipped
 
 
+ADMIN_KEY = ROOT / "work" / "state" / "admin.key"
+
+
+def reseed(store, client, log=print):
+    """Reload one client's functions.jsonl into the live server (no restart). Rows whose
+    extent changed lose their score; their stored source is re-verified against the new
+    bytes and keeps its author when it is now exact."""
+    with store.lock:
+        before = dict(store.db.execute("SELECT addr, size FROM funcs WHERE client = ?", (client,)))
+    match.function_starts.cache_clear()
+    added = store.seed(client)
+    with store.lock:
+        after = dict(store.db.execute("SELECT addr, size FROM funcs WHERE client = ?", (client,)))
+    changed = sorted(a for a, size in after.items() if a in before and before[a] != size)
+    exact = []
+    for addr in changed:
+        row = store.best(client, addr)
+        if not row or not row["source"]:
+            continue
+        try:
+            score, _, _, spans = match.check_text(client, addr, row["source"])
+        except (ValueError, match.CompileError, SystemExit) as error:
+            log("Reseed %s %s: stored source no longer checks (%s)" % (client, addr, str(error)[-160:]))
+            continue
+        store.submit(client, addr, row["user"] or "auto", score, row["source"], spans, verified=True)
+        if score == 100:
+            exact.append(addr)
+    result = {"client": client, "added": added, "removed": len(before.keys() - after.keys()),
+              "resized": changed, "exact_after_resize": exact}
+    log("Hot reseed %s: %d added, %d removed, %d resized, %d exact after re-verify" % (
+        client, added, result["removed"], len(changed), len(exact)))
+    return result
+
+
 def import_startup_matches(store, can_verify, log=print):
     """Import local automatic/library matches without delaying server startup."""
     from roc import matchers
     for name in sorted(can_verify):
         if clients.load().get(name, {}).get("donor"):
             continue
+        log("Background import: checking automatic/library matches for %s" % name)
         done = {a for a, s in store.scores().get(name, {}).items() if s == 100}
         found = matchers.solve(name, skip=done, log=lambda *a: None)
         import_auto_matches(store, name, found, log)
@@ -1069,7 +1115,10 @@ def import_startup_matches(store, can_verify, log=print):
             if score == 100 and addr not in done and path.exists():
                 text = path.read_text(errors="replace")
                 if "// roc-lib:" in text or "// standard library" in text:
-                    count, _ = import_auto_matches(store, name, {addr: text}, log)
+                    # Per-address summaries were console spam; only skips are worth a line.
+                    count, _ = import_auto_matches(
+                        store, name, {addr: text},
+                        lambda line: None if line.startswith("Imported ") else log(line))
                     imported += count
         if imported:
             log("Imported %d library matches for %s (credited to 'auto')" % (imported, name))
@@ -1081,13 +1130,19 @@ def serve(host="0.0.0.0", port=8765, db=None, token=None, lease_seconds=900,
     discord_webhook = discord_webhook or player_mines_webhook()
     db = db or str(ROOT / "work" / "server.db")
     Path(db).parent.mkdir(parents=True, exist_ok=True)
+    started = time.time()
+    def step(text):
+        log("[startup %5.1fs] %s" % (time.time() - started, text))
+    step("Opening %s" % db)
     store = Store(db, lease_seconds)
     for name, entry in clients.load().items():
         if entry.get("donor"):  # donor binaries feed matching/spread only, never a progress target
             continue
+        step("Seeding %s function table" % name)
         added = store.seed(name)
         if added:
             log("Loaded %d functions for %s" % (added, name))
+    step("Checking installed compilers")
     have = setup.compilers()
     can_verify = {n for n, e in clients.load().items()
                   if e.get("compiler_build") in have and clients.status(n, e) == "ok"}
@@ -1123,6 +1178,9 @@ def serve(host="0.0.0.0", port=8765, db=None, token=None, lease_seconds=900,
                 log("Daily report failed: %s" % error)
             time.sleep(60)
     threading.Thread(target=daily_reports, daemon=True).start()
+    ADMIN_KEY.parent.mkdir(parents=True, exist_ok=True)
+    ADMIN_KEY.write_text(uuid.uuid4().hex + uuid.uuid4().hex)
+    step("HTTP server bound")
     log("RoConstruct server running on port %d. Workers connect with:  roc worker --server http://<this-pc>:%d"
         % (port, port))
     threading.Thread(target=import_startup_matches, args=(store, can_verify, log), daemon=True).start()
