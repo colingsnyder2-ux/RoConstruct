@@ -1217,7 +1217,7 @@ def _publish_once(store, public_url, log=print):
                     raise RuntimeError("Address publish failed: " + result.stderr.strip()[-300:])
     pushed = git("push", "origin", "HEAD")
     if pushed.returncode:
-        raise RuntimeError("Address push failed: " + pushed.stderr.strip()[-300:])
+        log("Source push deferred; publishing findings and website independently: " + pushed.stderr.strip()[-300:])
     sync_findings(store)
     publish_findings(git_exe, log)
     progress.build(public_server=public_url, remote=export(store))
