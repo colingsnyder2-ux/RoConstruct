@@ -1879,6 +1879,8 @@
    "roc_client_scene_update.cpp",
    "roc_client_short_methods_5b192b39c746b09e.cpp",
    "roc_client_texture_copy.cpp",
+   "roc_espclaude_66d95e9814d0fd44.cpp",
+   "roc_espclaude_9260ba432ec6e8a6.cpp",
    "roc_espclaude_be1af347978f4727.cpp",
    "roc_espeon_materiallevelnative3737af79d4bf57eb.cpp",
    "roc_espeon_renderqueueauthenticb965e834ae5cb4f5.cpp",
