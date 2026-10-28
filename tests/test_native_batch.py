@@ -110,3 +110,53 @@ def test_cached_method_spans_do_not_leak_mutable_maps():
     assert 'A::f' in native_sweep.methods(text)
     changed='int A::f(){return 1000;}'
     assert native_sweep.methods(text)['A::f'] != native_sweep.methods(changed)['A::f']
+
+
+def test_discovery_repair_context_uses_pending_targets_not_local_exacts(tmp_path, monkeypatch):
+    text, candidates, compile, _, compiled = fixture(tmp_path, 4)
+    names = {'%08x'%n: {'symbol':'?f%d@A@RBX@@QAEHXZ'%n,'score':100-n} for n in range(4)}
+    seen = {}
+    def excerpt(text, symbols):
+        seen['symbols'] = symbols
+        return 'pending source context'
+    def proposal(rel, text, addrs, *args):
+        seen['addrs'] = addrs
+        assert args[-1] == 'pending source context'
+        return None, []
+    monkeypatch.setattr(native_sweep,'excerpt',excerpt)
+    monkeypatch.setattr(native_sweep,'model_proposal',proposal)
+    matcher = SimpleNamespace(scan=lambda _: [{'addr':'00000000'}])
+    native_sweep.model_discovery({'llm':'codex:default','context':'methods'},
+        {'App/util/A.cpp':text},set(names),set(),{a:{'unit':'RBX::A','size':6} for a in names},matcher,tmp_path,1,
+        lambda _:None,lambda source,rel,label:compile(source,label),names)
+    assert seen['addrs'] == ['00000001','00000002','00000003']
+    assert seen['symbols'] == [names[a]['symbol'] for a in seen['addrs']]
+
+
+def test_proposal_checkpoint_is_saved_before_slower_files_finish(tmp_path, monkeypatch):
+    import json, threading
+    from roc import integration
+    checkpoint = threading.Event()
+    atomic = integration.atomic_json
+    def saving(path, value):
+        atomic(path, value)
+        if path.name == 'proposals.json':checkpoint.set()
+    monkeypatch.setattr(integration,'atomic_json',saving)
+    def propose(rel, text, *args):
+        if rel.endswith('B.cpp'):
+            assert checkpoint.wait(5)
+            saved = json.loads((tmp_path/'proposals.json').read_text())
+            assert saved[0]['base_revision'] == 'accepted-baseline'
+            return None, []
+        return dict(file=rel, edits=[['return 0;', 'return 10;']],
+                    witnesses=[{'addr':'00000001','symbol':'?f@A@RBX@@QAEHXZ'}], proof={}), []
+    monkeypatch.setattr(native_sweep,'model_proposal',propose)
+    obj = tmp_path/'baseline.obj'
+    obj.write_bytes(b'baseline')
+    names = {'00000001':{'symbol':'?f@A@RBX@@QAEHXZ'},'00000002':{'symbol':'?f@B@RBX@@QAEHXZ'}}
+    proposals, _ = native_sweep.model_discovery({'llm':'codex:default','base_revision':'accepted-baseline'},
+        {'App/util/A.cpp':'int A::f(){return 0;}','App/util/B.cpp':'int B::f(){return 0;}'},
+        set(names),set(),{'00000001':{'unit':'RBX::A'},'00000002':{'unit':'RBX::B'}},
+        SimpleNamespace(scan=lambda _: []),tmp_path,2,lambda _:None,
+        lambda *args:dict(ok=True,object=str(obj)),names)
+    assert len(proposals) == 1

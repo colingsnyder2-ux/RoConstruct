@@ -148,3 +148,9 @@ Further tuning should use compiler-only replay and real-source profiles. Differe
 translation units stay separate: unity builds can change include order, floating-point
 pragmas and emitted code. Production integration yield still requires real proposals
 to pass the independent linked verifier.
+
+Discovery checkpoints each finished proposal, with its accepted baseline revision,
+before slower files finish. This preserves source edits and local proof through
+interruptions; it does not label them submitted or bypass linked preflight. Repair
+excerpts and batch feedback now select pending targets after local exacts are removed,
+avoiding irrelevant already-exact methods at the front of the file's target list.

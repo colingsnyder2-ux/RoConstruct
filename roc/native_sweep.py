@@ -809,6 +809,7 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
             return None, [base]
         if provider_failed.is_set():
             return None, [base]
+        pending = [addr for addr in homes[rel] if addr not in baseline]
 
         def diff(obj, addr):
             return body_diff(obj, names[addr]["symbol"], addr) if names.get(addr, {}).get("symbol") else "no rebuilt body"
@@ -817,7 +818,7 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
                 from roc import native_batch
                 groups = {}
                 spans = methods(texts[rel])
-                for addr in homes[rel]:
+                for addr in pending:
                     method = symbol_method(names.get(addr, {}).get('symbol') or '')
                     if addr not in baseline and method in spans and spans[method][1] - spans[method][0] <= 6000:
                         groups.setdefault(method, []).append(addr)
@@ -836,18 +837,18 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
                     if diagnostic:
                         feedback += '\nBatch compiled; existing exact lost: %s.' % diagnostic.get('losses', [])[:12]
                         obj = Path(diagnostic['object']).read_bytes()
-                        feedback += ''.join('\n%s target vs batch:\n%s' % (addr, diff(obj, addr)) for addr in homes[rel][:2] if addr not in baseline)
-                    proposal, repairs = model_proposal(rel, texts[rel], homes[rel], baseline, owned, model, rounds - 1,
+                        feedback += ''.join('\n%s target vs batch:\n%s' % (addr, diff(obj, addr)) for addr in pending[:2])
+                    proposal, repairs = model_proposal(rel, texts[rel], pending, baseline, owned, model, rounds - 1,
                         lambda source, label: compile_source(source, rel, label), matcher,
                         lambda addr: dict(model_evidence(addr, names, by_addr), current_diff=diff(data, addr)),
                         log, dict(options, generation='edits', initial_feedback=feedback), diff,
-                        excerpt(texts[rel], [names[a]['symbol'] for a in homes[rel][:3]]) if context == 'methods' else None)
+                        excerpt(texts[rel], [names[a]['symbol'] for a in pending[:3]]) if context == 'methods' else None)
                     return proposal, [base] + trials + repairs
-            proposal, trials = model_proposal(rel, texts[rel], homes[rel], baseline, owned, model, rounds,
+            proposal, trials = model_proposal(rel, texts[rel], pending, baseline, owned, model, rounds,
                                               lambda source, label: compile_source(source, rel, label), matcher,
                                               lambda addr: dict(model_evidence(addr, names, by_addr), current_diff=diff(data, addr)),
                                               log, options, diff,
-                                              excerpt(texts[rel], [names[a]["symbol"] for a in homes[rel][:3]
+                                              excerpt(texts[rel], [names[a]["symbol"] for a in pending[:3]
                                                                    if names.get(a, {}).get("symbol")])
                                               if context == "methods" else None)
         except Exception as error:  # noqa: BLE001 - one provider/compile failure must not stop the other files
@@ -901,7 +902,12 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
                     continue
                 for hit in proposal["witnesses"]:
                     hit["claim_unit"] = claim_unit(hit, by_addr[hit["addr"]])
+                if config.get('base_revision'):
+                    proposal['base_revision'] = config['base_revision']
                 proposals.append(proposal)
+                integration.atomic_json(output / 'proposals.json', proposals)
+                log('Saved %d local exact across %d files; %d/%d files finished, linked preflight follows discovery' % (
+                    sum(len(p['witnesses']) for p in proposals), len(proposals), n + 1, len(files)))
             integration.atomic_json(output / "trials.json", records)
             integration.atomic_json(output / "progress.json", {"phase": "model", "files_done": n + 1, "total": len(files),
                                                                "proposals": len(proposals)})
@@ -1098,7 +1104,7 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
                 rechecked.append(proposal)
             proposals = rechecked
         elif config.get("llm"):
-            proposals, records = model_discovery(config, texts, discovery_targets, owned, by_addr, matcher, output, jobs, log,
+            proposals, records = model_discovery(dict(config, base_revision=base['revision']), texts, discovery_targets, owned, by_addr, matcher, output, jobs, log,
                                                  lambda source, rel, label: compile_unit(source, rel, label, output, tree,
                                                                                          overlay, includes, defines, flags),
                                                  ctx.names)
