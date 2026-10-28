@@ -651,17 +651,37 @@ def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- 
         with Path(path).open("rb") as stream:
             return hashlib.file_digest(stream, "sha256").hexdigest()
 
+    inventories, inventory_walked = {}, {}
+    @match._single_load
     @functools.lru_cache(maxsize=None)
     def inventory(folder):
         # New files can shadow previously resolved includes without changing them.
+        folder = Path(folder)
+        for parent in folder.parents:
+            if parent not in inventories or folder not in inventory_walked[parent]:
+                continue
+            prefix = str(folder.relative_to(parent)) + os.sep
+            normalized = os.path.normcase(prefix)
+            names = {}
+            for name, paths in inventories[parent].items():
+                selected = [p[len(prefix):] for p in paths if os.path.normcase(p).startswith(normalized)]
+                if selected:
+                    names[name] = sorted(os.path.join('.', p) if os.sep not in p else p for p in selected)
+            inventories[folder] = names
+            inventory_walked[folder] = inventory_walked[parent]
+            return names
         names = {}
+        walked = set()
         for root, dirs, files in os.walk(folder):
+            walked.add(Path(root))
             dirs[:] = [d for d in dirs if d != "_wrap"]
             prefix = os.path.relpath(root, folder)
             for name in files:
                 if not name.endswith((".obj", ".deps", ".compile.json")):
                     names.setdefault(name.casefold(), []).append(os.path.join(prefix, name))
-        return {name: sorted(paths) for name, paths in names.items()}
+        inventories[folder] = {name: sorted(paths) for name, paths in names.items()}
+        inventory_walked[folder] = walked
+        return inventories[folder]
 
     # Shared headers recur in every object's deps: stat each once per build (~141k checks per rbxgs-app build).
     @functools.lru_cache(maxsize=None)
@@ -694,6 +714,10 @@ def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- 
         # Missing basenames need no repeated empty entries: any new shadowing
         # header becomes a nonempty entry and still changes the input digest.
         directory_inputs = []
+        # Walk broad roots first; nested dependency directories reuse that exact
+        # listing. Keep compiler include order unchanged in the serialized key.
+        for folder in sorted(set(map(Path, dirs)), key=lambda p: len(p.parts)):
+            inventory(folder)
         for folder in dirs:
             contents = inventory(folder)
             directory_inputs.append((cache_path(folder), [(name, contents[name]) for name in sorted(names & contents.keys())]))

@@ -222,3 +222,37 @@ def test_windows_header_case_aliases_do_not_recompile_identical_inputs(tmp_path,
     result=rebuild.compile_direct('2008-06',[source],out,[],'')
     assert result[str(source)] == (True,'content cache hit')
     assert len(calls)==1
+
+
+def test_nested_header_inventories_reuse_parent_walk_but_scan_excluded_wrap(tmp_path, monkeypatch):
+    source = tmp_path / 'src/unit.cpp'
+    source.parent.mkdir()
+    source.write_text('int f();')
+    includes = tmp_path / 'include'
+    nested, wrap = includes / 'nested', includes / '_wrap'
+    nested.mkdir(parents=True)
+    wrap.mkdir()
+    header, wrapped = nested / 'shared.h', wrap / 'generated.h'
+    header.write_text('int a;')
+    wrapped.write_text('int b;')
+    monkeypatch.setattr(rebuild, 'toolchain', lambda _: {})
+    walk = os.walk
+    walks, compiles = [], []
+    def counted_walk(folder):
+        walks.append(Path(folder))
+        return walk(folder)
+    def run(tc, tool, args, cwd):
+        compiles.append(args)
+        (cwd / 'unit.obj').write_bytes(b'object')
+        return 0, '\n'.join('Note: including file: ' + str(p) for p in (header, wrapped))
+    monkeypatch.setattr(rebuild.os, 'walk', counted_walk)
+    monkeypatch.setattr(rebuild, 'run', run)
+    def build():
+        return rebuild.compile_direct('2008-06', [source], tmp_path / 'out', [includes, nested, wrap], '')
+    build()
+    assert nested not in walks and includes in walks and wrap in walks
+    assert build()[str(source)] == (True, 'content cache hit')
+    (nested / 'deeper').mkdir()
+    (nested / 'deeper/shared.h').write_text('new shadow')
+    build()
+    assert len(compiles) == 2

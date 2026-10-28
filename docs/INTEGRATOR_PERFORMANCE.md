@@ -62,6 +62,16 @@ Block took 1.766/1.047 seconds. Profiles confirmed warm runs skipped the compile
 Method-span parsing is shared by immutable source text, avoiding repeated scans for
 each worker method.
 
+Header inventory reuse further reduces repeated filesystem walks. Only directories
+actually traversed by the parent scan reuse its listing; excluded `_wrap` folders
+and skipped links retain independent scans. Include order, content hashing and new
+shadow detection stay unchanged. In an interleaved real-source warm comparison,
+Humanoid used 30 walks instead of 115 and took 0.859–0.922s versus 1.031–1.140s;
+Block used 30 instead of 38 and took 0.344–0.375s versus 0.469s. Every run reused
+the existing object with zero compiler invocations, confirming compatible cache
+keys. A 98-second first-access outlier under concurrent worker load is excluded
+from the warm comparison. Measurements are local observations, not guarantees.
+
 Reproduce the compiler-only fixture without calling any model:
 
 ```text
