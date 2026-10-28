@@ -53,7 +53,7 @@ COMMON_FILES = ["roc.py", "roc.cmd", "roc.sh", "install.cmd", "install.sh",
                 "docs/logo.png", "docs/favicon.png",
                 "clients/clients.json", "clients/sources.json", "clients/donor.json"]
 # Native contributors need trusted recipes/generator, never private vendor trees.
-COMMON_FILES += ["docs/INTEGRATION.md", "docs/INTEGRATOR_PERFORMANCE.md", "benchmarks/native_compile_batches.py", "docs/NATIVE_AGENT.md", "docs/MATCHING_AGENT.md", "research/libs-bundle.json", "research/native-units.json", "research/native-source-lock.json"]
+COMMON_FILES += ["docs/INTEGRATION.md", "docs/INTEGRATOR_PERFORMANCE.md", "benchmarks/native_compile_batches.py", "benchmarks/native_matcher.py", "docs/NATIVE_AGENT.md", "docs/MATCHING_AGENT.md", "research/libs-bundle.json", "research/native-units.json", "research/native-source-lock.json"]
 COMMON_FILES += subprocess.check_output(["git", "ls-files", "rebuild/2008-06"],
                                         cwd=ROOT, text=True).splitlines()
 

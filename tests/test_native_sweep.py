@@ -274,7 +274,7 @@ def test_matcher_resets_variants_and_requires_referenced_data(monkeypatch):
     reads = []
     class Target:
         def __init__(self, client):
-            pass
+            self.base, self.image = 0x500000, b'x'*31
         def same(self, addr, code, relocs):
             return code
     monkeypatch.setattr(sweep.fingerprint, 'Target', Target)
@@ -291,6 +291,62 @@ def test_matcher_resets_variants_and_requires_referenced_data(monkeypatch):
     assert len(reads) == 1  # identical immutable object reuses its code/data proof
     matcher.scan(b'changed object')
     assert len(reads) == 2
+
+
+@pytest.mark.parametrize('seed', [0, 19, 97])
+def test_matcher_prefix_filter_preserves_exhaustive_code_relocation_and_data_checks(monkeypatch, seed):
+    import random
+    from roc.fingerprint import Target
+    rng = random.Random(seed)
+    target = Target.__new__(Target)
+    target.client, target.base = '2008-06', 0x500000
+    image, rows, bodies, target_relocs = bytearray(128*64), {}, [], []
+    for i in range(64):
+        size = (6, 8, 12, 32)[i % 4]
+        body = b'\x55\x8b\xec' + rng.randbytes(size-3)
+        # Include genuine prefix collisions: only the later bytes distinguish these.
+        if size > 8 and i % 3 == 0:
+            body = b'\x55\x8b\xec\x83\xec\x08\x53\x56' + body[8:]
+        offset, addr = i*128, '%08x' % (target.base+i*128)
+        image[offset:offset+size] = body
+        rows[addr] = {'size':size}
+        bodies.append((addr, body))
+        if i % 3:
+            target_relocs.append(target.base+offset+(0, 4, min(7, size-1))[i % 3])
+    target.image, target.relocs = bytes(image), sorted(target_relocs)
+    functions = []
+    for i, (_, body) in enumerate(bodies):
+        offsets = [r for r in (0, 4, 7, 8, len(body)-1) if 0 <= r < len(body) and rng.randrange(2)]
+        candidate = bytearray(body)
+        for r in offsets:
+            candidate[r:r+4] = rng.randbytes(len(candidate[r:r+4]))
+        functions.append(('symbol%d' % i, bytes(candidate), offsets))
+    monkeypatch.setattr(sweep.fingerprint, 'Target', lambda _:target)
+    monkeypatch.setattr(sweep.match, '_functions', lambda _:rows)
+    monkeypatch.setattr(sweep.match, 'coff_functions', lambda _:functions)
+    monkeypatch.setattr(sweep.match, '_coff_data_index', lambda _:None)
+    monkeypatch.setattr(sweep.match, 'coff_data_refs', lambda *args, **kwargs:[])
+    def data_check(client, addr, code, refs):
+        return [], ['wrong referenced data'] if int(addr,16)//128 % 5 == 0 else []
+    monkeypatch.setattr(sweep.match, 'data_check', data_check)
+    expected = {}
+    for symbol, code, relocs in functions:
+        for addr in sorted(rows):
+            if addr in expected or rows[addr]['size'] != len(code):
+                continue
+            exe = target.same(addr, code, relocs)
+            if exe is not None and not data_check('2008-06', addr, exe, [])[1]:
+                expected[addr] = symbol
+    matcher = sweep.Matcher(set(rows))
+    wanted = [{'addr':addr, 'symbol':expected[addr]} for addr in sorted(expected)]
+    assert wanted
+    from concurrent.futures import ThreadPoolExecutor
+    with ThreadPoolExecutor(20) as pool:
+        assert list(pool.map(matcher.scan, [str(i).encode() for i in range(20)])) == [wanted]*20
+    for size in range(6, 270):
+        matcher.candidates(b'x'*size, [])
+    assert len(matcher.prefixes) == 256
+    assert matcher.scan(b'after-eviction') == wanted
 
 
 def test_target_routing_does_not_fall_back_from_known_template_to_stale_inventory():

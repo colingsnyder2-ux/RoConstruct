@@ -212,10 +212,28 @@ class Matcher:
         self.target = fingerprint.Target("2008-06")
         self.index = defaultdict(list)
         self.cache, self.cache_lock = {}, threading.Lock()
+        self.prefixes = {}
         functions = match._functions("2008-06")
         for addr in sorted(addresses):
             if addr in functions and functions[addr].get("kind", "code") == "code":
                 self.index[functions[addr]["size"]].append(addr)
+
+    def candidates(self, code, relocs):
+        """Prune by relocated prefix; same() and data_check() remain authoritative."""
+        width = min(8, len(code))
+        offsets = tuple(sorted(r for r in relocs if r < width))
+        key = (len(code), offsets)
+        with self.cache_lock:
+            if key not in self.prefixes:
+                if len(self.prefixes) >= 256:
+                    self.prefixes.pop(next(iter(self.prefixes)))
+                prefixes = defaultdict(list)
+                for addr in self.index.get(len(code), ()):
+                    offset = int(addr, 16) - self.target.base
+                    prefix = bytes(self.target.image[offset:offset + width])
+                    prefixes[match.masked(prefix, offsets)].append(addr)
+                self.prefixes[key] = prefixes
+            return self.prefixes[key].get(match.masked(code[:width], offsets), ())
 
     def scan(self, obj):
         key = hashlib.sha256(obj).digest()
@@ -227,7 +245,7 @@ class Matcher:
             if len(code) < 6:
                 continue
             refs = None
-            for addr in self.index.get(len(code), []):
+            for addr in self.candidates(code, relocs):
                 if addr in found:
                     continue
                 exe = self.target.same(addr, code, relocs)

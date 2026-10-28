@@ -238,3 +238,26 @@ these are not claimed as a full-preflight speedup. A file-hashing chunk experime
 showed no consistent advantage; per-file scheduling and eight readers remain.
 Reproduce a complete local input fingerprint with `roc integrate fingerprint`;
 it does not call a model or submit a job.
+
+## Parallel native matching
+
+Discovery now indexes the first eight object bytes by function size and relocation
+positions. This only filters impossible candidates: every surviving address still
+passes the complete `Target.same` relocation/code comparison and referenced-data
+check. Address ordering and symbol selection stay unchanged. Each matcher owns a
+locked, bounded 256-entry prefix cache; it cannot reuse another client's image.
+
+A real replay used Block, DebrisService, GUI and Humanoid objects against the whole
+2008-06 function inventory. Twenty uncached scans returned exactly the same address
+and symbol lists with both algorithms. A first experiment measured 4.625s exhaustive
+versus 0.718/0.719s filtered with 20 workers. The packaged benchmark replay measured
+12.203s exhaustive versus 1.687s with a cold prefix cache and 1.547s warm. Machine
+load varied between runs; these are matcher timings, not end-to-end integration
+rates. Object-result caching was disabled and COFF parser caches were warm in both
+comparisons. No models, compiles or submissions were involved.
+
+Run `python benchmarks/native_matcher.py path/to/Block.obj path/to/Humanoid.obj`
+to compare exhaustive and filtered scans with one and twenty workers. Every result
+is checked against the exhaustive address/symbol list. Regression tests additionally
+cover prefix collisions, partial relocation fields, missing required relocations,
+referenced-data rejection, concurrent scans and cache eviction.
