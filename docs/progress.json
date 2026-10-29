@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-28 23:37 UTC",
+ "updated": "2026-10-29 00:48 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -240,15 +240,15 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22293,
-   "matched": 22273,
-   "partial": 20,
-   "source_matched": 13812,
-   "mined_matched": 8461,
+   "matched": 22276,
+   "partial": 17,
+   "source_matched": 13813,
+   "mined_matched": 8463,
    "bytes": 3738870,
-   "matched_bytes": 3698811,
-   "source_bytes": 2762245,
-   "mined_bytes": 936566,
-   "partial_bytes": 40059,
+   "matched_bytes": 3699867,
+   "source_bytes": 2762670,
+   "mined_bytes": 937197,
+   "partial_bytes": 39003,
    "data_bytes": 1559926,
    "leaderboard": [
     {
@@ -289,12 +289,12 @@
     },
     {
      "user": "EspClaude",
-     "matched": 519,
-     "mining_points": 16002,
-     "points": 16002,
+     "matched": 522,
+     "mining_points": 16031,
+     "points": 16031,
      "native_integrated": 0,
-     "submissions": 798,
-     "last": 1793229929.5941064
+     "submissions": 805,
+     "last": 1793233464.7368703
     },
     {
      "user": "Espeon",
@@ -309,10 +309,10 @@
      "user": "coldek",
      "matched": 145,
      "mining_points": 10329,
-     "points": 10367,
-     "native_integrated": 38,
+     "points": 10370,
+     "native_integrated": 41,
      "submissions": 299,
-     "last": 1793228542.4799209
+     "last": 1793234695.0354106
     },
     {
      "user": "Cezant64gamejr",
@@ -861,12 +861,12 @@
   },
   {
    "user": "EspClaude",
-   "matched": 519,
-   "mining_points": 16002,
-   "points": 16002,
+   "matched": 522,
+   "mining_points": 16031,
+   "points": 16031,
    "native_integrated": 0,
-   "submissions": 798,
-   "last": 1793229929.5941064
+   "submissions": 805,
+   "last": 1793233464.7368703
   },
   {
    "user": "intel",
@@ -890,10 +890,10 @@
    "user": "coldek",
    "matched": 145,
    "mining_points": 10329,
-   "points": 10367,
-   "native_integrated": 38,
+   "points": 10370,
+   "native_integrated": 41,
    "submissions": 299,
-   "last": 1793228542.4799209
+   "last": 1793234695.0354106
   },
   {
    "user": "TrollStein",
