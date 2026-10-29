@@ -2,7 +2,7 @@
 
 Paste this file into a Codex or Claude Code session opened in a RoConstruct checkout. It runs the same loop as
 the DeepSeek native pass (`roc research run native-model-2008`). You write the edits; the tools compile the real
-2008-06 file, check exact bytes and referenced data, minimize your edits, and submit verified batches.
+2008-06 file, check exact bytes and referenced data, minimize your edits, and submit each passing fix immediately.
 
 ## First response: select the client
 
@@ -67,6 +67,10 @@ If downloads fail, retry and report the actual URL/error; never invent a success
 Make byte-exact mined 2008 functions come out of the real rbxgs C++ (native integration). A target is a function
 that is already 100% mined and whose method already exists in the rebuild but compiles differently. Credit comes
 only from the server's independent linked rebuild.
+
+A source/library tag does not certify authentic headers or original variable names.
+Generated mining proofs can contain reconstructed declarations. Native work must use
+the real classes and evidenced layouts, then pass the independent integration gates.
 
 ## Setup (execute before mining)
 
@@ -200,9 +204,14 @@ If doctor cannot find an installed SDK, set `ROC_WINSDK` to this PC's SDK folder
    `roc native-try check FILE`. If anchors changed, reconcile the edits before checking again.
    For example, `roc native-try check App/include/util/Events.h blocks.txt --only 0055ae20`
    automatically finds and compiles `Instance.cpp`; it never compiles the header as a standalone TU.
-5. Read the diff, make one hypothesis per try, and stop a file after about 3 tries without progress. Move on.
-6. After several saved proposals (aim for 10–30 targets), run `roc integrate sync`, then
-   `roc native-try submit --model YOUR_ACTUAL_MODEL`. It claims, stages and queues one batch.
+5. Read the diff and make one hypothesis per try. When a check saves a new exact proposal
+   with no loss, proceed immediately to step 6 before trying another unrelated target or file.
+   Stop a file after about 3 tries without progress; record its blocker and move on.
+6. **Submit after every completed passing fix.** Run `roc integrate sync`, then
+   `roc native-try submit --model YOUR_ACTUAL_MODEL`. It claims, rechecks, stages and queues the fix.
+   Do not wait for 10–30 targets, all files in a sweep, or the end of the session.
+   Include inseparable supporting source/header edits in the same coherent submission;
+   keep unrelated unfinished experiments separate.
    - When the accepted baseline moves, submit recompiles versioned saved edits against
      the latest clean baseline automatically. Changed anchors, lost gains or regressions
      stop submission and retain saved proposals for repair.
@@ -211,11 +220,19 @@ If doctor cannot find an installed SDK, set `ROC_WINSDK` to this PC's SDK folder
      A partial batch archives only the submitted proposals; the remaining proposals stay saved.
 
    After submitting:
+   - Record the server job ID before starting the next fix. If no job was created, record
+     the exact blocking check, claim conflict, baseline issue or transport error and preserve
+     the proposal. A local exact with no submission is not a completed integration.
    - `native-try submit` keeps the submitted snapshot and restores the local baseline,
      so more discovery can run while the server verifies the batch. Concurrent generator edits are preserved.
    - `roc integrate watch --id JOB` to follow it;
      rejection or a missing job exits with failure, so dependent shell steps stop;
    - `roc integrate sync` after acceptance.
+   - Report accepted native credit only from the server receipt. Watch an existing pending
+     job rather than submitting duplicates. Do not restart a busy server to flush local work.
+
+This instruction changes the agent's workflow; it does not make `native-try check`
+submit automatically or change an already running agent that has not read this file.
 
 ## Fewer commands and smaller evidence
 
