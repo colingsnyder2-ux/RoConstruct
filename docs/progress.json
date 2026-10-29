@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-29 08:40 UTC",
+ "updated": "2026-10-29 09:47 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -124,11 +124,11 @@
     {
      "user": "Yeetserama",
      "matched": 14,
-     "mining_points": 944,
-     "points": 944,
+     "mining_points": 945,
+     "points": 945,
      "native_integrated": 0,
-     "submissions": 29,
-     "last": 1793224625.2352335
+     "submissions": 30,
+     "last": 1793266136.6636283
     },
     {
      "user": "colinlaptop",
@@ -240,15 +240,15 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22293,
-   "matched": 22289,
-   "partial": 4,
-   "source_matched": 13821,
-   "mined_matched": 8468,
+   "matched": 22291,
+   "partial": 2,
+   "source_matched": 13822,
+   "mined_matched": 8469,
    "bytes": 3738870,
-   "matched_bytes": 3726443,
-   "source_bytes": 2783109,
-   "mined_bytes": 943334,
-   "partial_bytes": 12427,
+   "matched_bytes": 3734387,
+   "source_bytes": 2783854,
+   "mined_bytes": 950533,
+   "partial_bytes": 4483,
    "data_bytes": 1559926,
    "leaderboard": [
     {
@@ -264,10 +264,10 @@
      "user": "colin",
      "matched": 3108,
      "mining_points": 685188,
-     "points": 685505,
-     "native_integrated": 317,
+     "points": 685508,
+     "native_integrated": 320,
      "submissions": 23217,
-     "last": 1793247822.4287965
+     "last": 1793264460.5912704
     },
     {
      "user": "king_originala",
@@ -289,12 +289,12 @@
     },
     {
      "user": "EspClaude",
-     "matched": 533,
-     "mining_points": 16119,
-     "points": 16119,
+     "matched": 535,
+     "mining_points": 16125,
+     "points": 16125,
      "native_integrated": 0,
-     "submissions": 827,
-     "last": 1793261953.5779734
+     "submissions": 830,
+     "last": 1793267051.1398997
     },
     {
      "user": "Espeon",
@@ -432,7 +432,7 @@
      "last": 1792961434.0510833
     }
    ],
-   "data_matched_bytes": 206676,
+   "data_matched_bytes": 207061,
    "classes": 1488,
    "generated": 18903
   },
@@ -809,10 +809,10 @@
    "user": "colin",
    "matched": 15221,
    "mining_points": 5524111,
-   "points": 5524428,
-   "native_integrated": 317,
+   "points": 5524431,
+   "native_integrated": 320,
    "submissions": 186099,
-   "last": 1793247822.4287965
+   "last": 1793264460.5912704
   },
   {
    "user": "atomic.potato",
@@ -861,12 +861,12 @@
   },
   {
    "user": "EspClaude",
-   "matched": 533,
-   "mining_points": 16119,
-   "points": 16119,
+   "matched": 535,
+   "mining_points": 16125,
+   "points": 16125,
    "native_integrated": 0,
-   "submissions": 827,
-   "last": 1793261953.5779734
+   "submissions": 830,
+   "last": 1793267051.1398997
   },
   {
    "user": "intel",
@@ -952,11 +952,11 @@
   {
    "user": "Yeetserama",
    "matched": 14,
-   "mining_points": 944,
-   "points": 944,
+   "mining_points": 945,
+   "points": 945,
    "native_integrated": 0,
-   "submissions": 29,
-   "last": 1793224625.2352335
+   "submissions": 30,
+   "last": 1793266136.6636283
   },
   {
    "user": "41k",

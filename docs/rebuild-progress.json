@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-29 08:41 UTC",
+  "updated": "2026-10-29 09:49 UTC",
   "clients": {
     "2008-06": {
       "phase": "8",
@@ -8,7 +8,7 @@
       "bars": {
         "compiled": {
           "value": 14,
-          "total": 14,
+          "total": 15,
           "label": "Modules reporting"
         },
         "linked": {
