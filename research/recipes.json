@@ -25599,5 +25599,63 @@
       "forced_roots_preserved": 48,
       "evidence": "RoConstruct-findings/2008-06/verification/g3d-gl-native-20261029"
     }
+  },
+  "lua-native-float-20261029": {
+    "op": "fanout",
+    "client": "2008-06",
+    "hypothesis": "Measure precise vs fast floating point in unchanged Lua5.1.4 source files. Preserve strict code/data pairs before selecting per-file winners; force existing compatible verified roots. Roblox lua_newstate remains excluded until its genuine state-open hook and layout can integrate.",
+    "sources": [
+      {
+        "recipe": "lua-5.1.4",
+        "files": [
+          "lapi.c",
+          "lcode.c",
+          "ldebug.c",
+          "ldo.c",
+          "ldump.c",
+          "lfunc.c",
+          "lgc.c",
+          "llex.c",
+          "lmem.c",
+          "lobject.c",
+          "lopcodes.c",
+          "lparser.c",
+          "lstate.c",
+          "lstring.c",
+          "ltable.c",
+          "ltm.c",
+          "lundump.c",
+          "lvm.c",
+          "lzio.c",
+          "lauxlib.c",
+          "lbaselib.c",
+          "ldblib.c",
+          "liolib.c",
+          "lmathlib.c",
+          "loslib.c",
+          "ltablib.c",
+          "lstrlib.c",
+          "loadlib.c",
+          "linit.c"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /GS- /MD",
+          "/O2 /GS- /MD /fp:fast"
+        ]
+      }
+    ],
+    "result": {
+      "status": "native scoped math and full object closure pass",
+      "new_verified": 0,
+      "actual_native_linked_gains": 2,
+      "raw_inventory_gain": 1,
+      "strict_math_pairs_preserved": 81,
+      "closure_unresolved": 0,
+      "evidence": "RoConstruct-findings2008-06/verification/lua-native-20261029"
+    },
+    "rejected": "Whole-file fast math loses42 old symbol/address pairs. Only two scoped math functions gain with zero old pair losses. Missing Roblox VM hook remains excluded."
   }
 }
