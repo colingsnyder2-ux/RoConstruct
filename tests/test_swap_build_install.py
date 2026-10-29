@@ -105,3 +105,15 @@ def test_native_storage_requires_real_definition_without_awarding_functions(tmp_
     monkeypatch.setattr(swap_build.rebuild, 'coff_externals', lambda _: {'_cache': False})
     _, objects, error = swap_build.build_group(job)
     assert objects == [] and 'Missing declared native helpers: _cache' in error
+
+
+@pytest.mark.parametrize('recipe,file,owner', [
+    ('g3d-6.09-dll', 'G3Dcpp/Array.cpp', 'G3D'),
+    ('g3d-6.09-rbx2008-dll', 'GLG3Dcpp/RenderDevice.cpp', 'G3D-GL'),
+    ('g3d-6.09-dll', 'contrib/ArticulatedModel/ToneMap.cpp', 'G3D-GL'),
+    ('g3d-6.09-png-dll', 'pngread.c', 'G3D-PNG'),
+    ('g3d-6.09-ijg-dll', 'jdmainct.c', 'G3D'),
+])
+def test_g3d_swap_groups_have_one_native_owner(recipe, file, owner):
+    assert [name for name in ('G3D', 'G3D-GL', 'G3D-PNG')
+            if swap_build.of_module(name, recipe, file)] == [owner]

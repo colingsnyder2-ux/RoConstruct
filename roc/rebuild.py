@@ -558,6 +558,12 @@ def _coff_subset(data, roots, external=frozenset()):
     sections = [list(struct.unpack_from("<8sIIIIIIHHI", data, 20 + optsz + 40 * i)) for i in range(nsec)]
     retained = sorted(reached | {i + 1 for i, section in enumerate(sections)
                                 if section[0].rstrip(b"\0") in {b".drectve", b".sxdata"}})
+    # An empty SafeSEH table makes the VS2008 linker reject the object (LNK1236)
+    # or crash during archive lookup (LNK1000). Keep it only for live handlers.
+    retained = [index for index in retained if sections[index - 1][0].rstrip(b"\0") != b".sxdata"
+                or any(symbol in safe for symbol in struct.unpack(
+                    "<%dI" % (sections[index - 1][3] // 4),
+                    data[sections[index - 1][4]:sections[index - 1][4] + sections[index - 1][3]]))]
     section_ids = {old: new + 1 for new, old in enumerate(retained)}
     records, i = {}, 0
     while i < nsym:
@@ -951,7 +957,7 @@ def build_overlay(client, module, spec):
     if not spec:
         return None
     import hashlib
-    root = (ROOT / spec["root"]).resolve()
+    root = _spec_path(client, spec["root"]).resolve()
     patches = json.loads((ROOT / spec["patches"]).read_text(encoding="utf-8"))
     # one stable folder: a file is rewritten only when its patched text changes, so objects that do not
     # include it stay current (compile_direct tracks each object's includes)
@@ -1040,7 +1046,13 @@ def build_module(client, name, log=print):
     layer_dirs = []
     for layer in spec["layers"]:
         folder = out / ("layer-" + layer["name"])
-        if layer["mode"] == "recipe":
+        if layer["mode"] == "archive":
+            folder.mkdir(parents=True, exist_ok=True)
+            for member in layer["files"]:
+                (folder / member.replace("\\", "/").rsplit("/", 1)[-1]).write_bytes(
+                    libs.archive_unit(layer["recipe"], member, layer.get("cl", BUILD)))
+            errors = {}
+        elif layer["mode"] == "recipe":
             src = libs._case_path(libs.LIBS / libs.RECIPES[layer["recipe"]]["src"])
             listed = libs.RECIPES[layer["recipe"]].get("files")
             if layer["files"] == "recipe" and isinstance(listed, list):

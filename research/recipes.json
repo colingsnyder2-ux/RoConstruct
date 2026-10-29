@@ -24423,5 +24423,92 @@
       "new_verified": 0,
       "evidence": "2008-06/verification/ogre-native-20261029/dll-crt-replay.json in RoConstruct-findings"
     }
+  },
+  "g3d-native-module-fpfast-20261029": {
+    "op": "fanout",
+    "client": "2008-06",
+    "hypothesis": "Measure /fp:fast for whole genuine G3D 6.09 patched translation units, preserving each previously exact symbol/address pair and native layout before changing module flags.",
+    "sources": [
+      {
+        "recipe": "g3d-6.09-rbx2008",
+        "files": [
+          "G3Dcpp/AABox.cpp",
+          "G3Dcpp/BinaryFormat.cpp",
+          "G3Dcpp/BinaryInput.cpp",
+          "G3Dcpp/BinaryOutput.cpp",
+          "G3Dcpp/Box.cpp",
+          "G3Dcpp/Capsule.cpp",
+          "G3Dcpp/CollisionDetection.cpp",
+          "G3Dcpp/Color3.cpp",
+          "G3Dcpp/Color3uint8.cpp",
+          "G3Dcpp/Color4.cpp",
+          "G3Dcpp/Color4uint8.cpp",
+          "G3Dcpp/Cone.cpp",
+          "G3Dcpp/ConvexPolyhedron.cpp",
+          "G3Dcpp/CoordinateFrame.cpp",
+          "G3Dcpp/Crypto.cpp",
+          "G3Dcpp/Crypto_md5.cpp",
+          "G3Dcpp/Cylinder.cpp",
+          "G3Dcpp/debugAssert.cpp",
+          "G3Dcpp/Discovery.cpp",
+          "G3Dcpp/fileutils.cpp",
+          "G3Dcpp/format.cpp",
+          "G3Dcpp/g3derror.cpp",
+          "G3Dcpp/g3dmath.cpp",
+          "G3Dcpp/GCamera.cpp",
+          "G3Dcpp/GImage.cpp",
+          "G3Dcpp/GImage_bayer.cpp",
+          "G3Dcpp/GImage_bmp.cpp",
+          "G3Dcpp/GImage_jpeg.cpp",
+          "G3Dcpp/GImage_png.cpp",
+          "G3Dcpp/GImage_ppm.cpp",
+          "G3Dcpp/GImage_tga.cpp",
+          "G3Dcpp/GLight.cpp",
+          "G3Dcpp/GThread.cpp",
+          "G3Dcpp/license.cpp",
+          "G3Dcpp/Line.cpp",
+          "G3Dcpp/LineSegment.cpp",
+          "G3Dcpp/Log.cpp",
+          "G3Dcpp/Matrix3.cpp",
+          "G3Dcpp/Matrix4.cpp",
+          "G3Dcpp/MeshAlg.cpp",
+          "G3Dcpp/MeshAlgAdjacency.cpp",
+          "G3Dcpp/MeshAlgWeld.cpp",
+          "G3Dcpp/MeshBuilder.cpp",
+          "G3Dcpp/NetAddress.cpp",
+          "G3Dcpp/NetworkDevice.cpp",
+          "G3Dcpp/PhysicsFrame.cpp",
+          "G3Dcpp/Plane.cpp",
+          "G3Dcpp/prompt.cpp",
+          "G3Dcpp/Quat.cpp",
+          "G3Dcpp/Ray.cpp",
+          "G3Dcpp/RegistryUtil.cpp",
+          "G3Dcpp/Sphere.cpp",
+          "G3Dcpp/Stopwatch.cpp",
+          "G3Dcpp/stringutils.cpp",
+          "G3Dcpp/System.cpp",
+          "G3Dcpp/TextInput.cpp",
+          "G3Dcpp/TextOutput.cpp",
+          "G3Dcpp/Triangle.cpp",
+          "G3Dcpp/Vector2.cpp",
+          "G3Dcpp/Vector2int16.cpp",
+          "G3Dcpp/Vector3.cpp",
+          "G3Dcpp/Vector3int16.cpp",
+          "G3Dcpp/Vector4.cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /GS- /EHsc /MD",
+          "/O2 /GS- /EHsc /MD /fp:fast"
+        ]
+      }
+    ],
+    "result": {
+      "status": "all 63 genuine core TUs preserve every prior exact symbol/address pair under /fp:fast; +107 address candidates, actual forced-core unique-body candidates 707->739 (+32, zero losses), all 32 data-exact; core77/GL48/PNG21 forced roots link, runtime0 and verified-library map ownership. Server credit0.",
+      "new_verified": 0,
+      "evidence": "RoConstruct-findings 2008-06/verification/g3d-native-20261029/"
+    }
   }
 }

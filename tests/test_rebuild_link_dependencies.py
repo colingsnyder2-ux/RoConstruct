@@ -132,3 +132,36 @@ def test_native_import_provider_overrides_cached_helper_copy(tmp_path, monkeypat
     assert taken == {'_owner'}
     assert subsets == [({'_owner'}, {'_imported'}), ({'_owner'}, {'_imported'})]
     assert strips == [{'keep': {'_owner'}, 'drop': set()}]
+
+
+def test_overlay_root_resolves_recipe_tree_without_changing_vendor_sources(tmp_path, monkeypatch):
+    source = tmp_path / 'patched-tree'
+    source.mkdir()
+    (source / 'GApp.cpp').write_text('namespace G3D { main(); }')
+    patches = tmp_path / 'patches.json'
+    patches.write_text(json.dumps({'GApp.cpp': [['namespace G3D {', '#undef main\nnamespace G3D {']]}))
+    monkeypatch.setattr(rebuild, 'ROOT', tmp_path)
+    monkeypatch.setattr(rebuild, 'workspace', lambda _: tmp_path)
+    monkeypatch.setattr(rebuild, 'patched_tree', lambda client, recipe: source)
+    root, overlay = rebuild.build_overlay('test', 'G3D-GL', {'root': 'tree:g3d-test/', 'patches': 'patches.json'})
+    assert root == source
+    assert (overlay / 'GApp.cpp').read_text().startswith('#undef main\n')
+    assert (source / 'GApp.cpp').read_text() == 'namespace G3D { main(); }'
+
+
+def test_module_archive_layer_uses_exact_compiler_member(tmp_path, monkeypatch):
+    from roc import libs
+    calls = []
+    monkeypatch.setattr(rebuild, 'workspace', lambda _: tmp_path)
+    monkeypatch.setattr(rebuild, 'load_module', lambda *args: {'name': 'App', 'test': 'test', 'layers': [
+        {'name': 'crt-data', 'mode': 'archive', 'recipe': 'msvc-crt',
+         'files': ['libcpmt.lib/compile/path/xvalues.obj'], 'cl': 21022}]})
+    monkeypatch.setattr(libs, 'archive_unit', lambda *args: calls.append(args) or b'crt-data')
+    monkeypatch.setattr(rebuild, 'coff_externals', lambda _: {'__Inf': True})
+    monkeypatch.setattr(rebuild, 'resolve_objects', lambda *args, **kw: {
+        'linked': True, 'exit': 0, 'output': '', 'unresolved': []})
+    monkeypatch.setattr(rebuild, 'progress', lambda *args, **kw: None)
+    result = rebuild.build_module('test', 'app', log=lambda _: None)
+    assert result['linked'] and result['object_functions'] == 0
+    assert (tmp_path / 'out/App/layer-crt-data/xvalues.obj').read_bytes() == b'crt-data'
+    assert calls == [('msvc-crt', 'libcpmt.lib/compile/path/xvalues.obj', 21022)]

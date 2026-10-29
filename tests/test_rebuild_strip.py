@@ -136,6 +136,22 @@ def test_coff_subset_preserves_zero_initialized_storage_without_file_payload():
     assert rebuild.coff_externals(result) == {'_global': True}
 
 
+def test_coff_subset_omits_safeseh_table_when_no_handlers_survive():
+    # Both a compiler's empty table and a table pruned to zero entries must go.
+    # VS2008 reports LNK1236 (or LNK1000 in archive lookup) if either remains.
+    for payload in (b'', struct.pack('<I', 1)):
+        obj = bytearray(100)
+        struct.pack_into('<HHIIIHH', obj, 0, 0x14c, 2, 0, 101 + len(payload), 2, 0, 0)
+        struct.pack_into('<8sIIIIIIHHI', obj, 20, b'.text', 0, 0, 1, 100, 0, 0, 0, 0, 0x60000020)
+        struct.pack_into('<8sIIIIIIHHI', obj, 60, b'.sxdata', 0, 0, len(payload), 101, 0, 0, 0, 0, 0x300200)
+        obj += b'\xc3' + payload
+        obj += struct.pack('<8sIhHBB', b'_owner', 0, 1, 0x20, 2, 0)
+        obj += struct.pack('<8sIhHBB', b'_unused', 0, 0, 0x20, 2, 0) + struct.pack('<I', 4)
+        result, _ = rebuild._coff_subset(bytes(obj), {'_owner'})
+        assert struct.unpack_from('<H', result, 2)[0] == 1
+        assert match.coff_functions(result) == [('_owner', b'\xc3', [])]
+
+
 def test_coff_subset_resolves_forward_symbol_entry_to_its_later_definition():
     obj = struct.pack('<HHIIIHH', 0x14c, 2, 0, 117, 3, 0, 0)
     obj += struct.pack('<8sIIIIIIHHI', b'.text', 0, 0, 6, 100, 107, 0, 1, 0, 0x60000020)
