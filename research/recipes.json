@@ -24769,5 +24769,63 @@
       "harness_only_exacts_not_credited": 22
     },
     "rejected": "VS2005 TSS fails exactness. Split TSS objects duplicate private state; global vdrop removes both copies. Mixed preprocessing exception contexts crash TSS runtime. Missing program_options/UTF8 sources and colliding filesystem/program_options object basenames must be fixed.25 unlinked/nonmatching candidate gains not counted.22 harness-only exact instantiations also excluded from library gains."
+  },
+  "scintilla-native-mfc-cohort-20261029": {
+    "op": "fanout",
+    "client": "2008-06",
+    "library": "Scintilla native MFC/header cohort",
+    "hypothesis": "Target shared MFC9RTM and known pre1.20 CScintillaView slots; compare stock two-file source cohort before applying proven virtual-slot correction.",
+    "sources": [
+      {
+        "recipe": "scintilla-mfc-1.20-shared",
+        "files": [
+          "ScintillaCtrl.cpp",
+          "ScintillaDocView.cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ]
+      },
+      {
+        "recipe": "scintilla-mfc-1.20-shared-rtm",
+        "files": [
+          "ScintillaCtrl.cpp",
+          "ScintillaDocView.cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ]
+      },
+      {
+        "recipe": "scintilla-mfc-1.20-shared-mbcs-rtm",
+        "files": [
+          "ScintillaCtrl.cpp",
+          "ScintillaDocView.cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ]
+      }
+    ],
+    "result": {
+      "status": "Native overlay adds3 exact addresses;84 forced wrapper symbols represent65 exact body addresses, all actual library-owned; real shipped DLL runtime0. Recipe-only variants no gains/no symbol-pair losses. Placement405.",
+      "new_verified": 0,
+      "new_local_exact_addresses": [
+        "00462af0",
+        "00462e40",
+        "00462eb0"
+      ],
+      "evidence": "RoConstruct-findings 2008-06/verification/scintilla-native-20261029/"
+    },
+    "rejected": "Two-slot summary was incomplete: actual stored matching unit also removes GetReplaceAllTarget virtual slot. Header-only overlay did not override adjacent quoted header; unchanged source must compile from overlay. No Scintilla DLL source-body credits or full historical field-layout claim."
   }
 }
