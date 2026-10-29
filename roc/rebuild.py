@@ -1159,6 +1159,7 @@ def build_module(client, name, log=print):
     # an inline or template body that several of the module's own objects define is shared code: swapping the 2008 copy
     # in replaces it for every caller, including ones compiled in other contexts (seen crashing M4a/M5), so only
     # file-owned functions swap in
+    # Opt-in: resolve_objects selects one alternative per filename, never both layers.
     counts, base_functions = {}, set()
     for layer_dir in layer_dirs:
         for obj in Path(layer_dir).glob("*.obj"):
@@ -1168,8 +1169,9 @@ def build_module(client, name, log=print):
                 base_functions.update(sym for sym, _, _ in match.coff_functions(data) if externals.get(sym))
             for sym, defined in externals.items():
                 if defined:
-                    counts[sym] = counts.get(sym, 0) + 1
-    shared = {sym for sym, n in counts.items() if n > 1}
+                    counts.setdefault(sym, set()).add(
+                        obj.name if spec.get("deduplicate_layer_files") else str(obj))
+    shared = {sym for sym, providers in counts.items() if len(providers) > 1}
     for _ in range(12):  # a swapped-in function may call a helper nothing else emits: keep it, or swap the caller back out
         verified, drop = verified_layer(client, spec, log=log, exclude=excluded | shared, vdrop=vdrop, helpers=helpers,
                                        base_functions=base_functions)

@@ -185,3 +185,31 @@ def test_module_stages_shipped_import_dll_before_runtime_link(tmp_path, monkeypa
 
     monkeypatch.setattr(rebuild, 'resolve_objects', resolve)
     assert rebuild.build_module('test', 'ogre', log=lambda _: None)['test_exit'] == 0
+
+
+def test_alternative_layer_objects_are_not_simultaneous_providers(tmp_path, monkeypatch):
+    from roc import libs
+    layers = [{"name": n, "mode": "archive", "recipe": "test", "files": ["same.obj"]}
+              for n in ("first", "fallback")]
+    spec = {"name": "App", "layers": layers, "test": "test"}
+    exclusions = []
+    monkeypatch.setattr(rebuild, "workspace", lambda _: tmp_path)
+    monkeypatch.setattr(rebuild, "load_module", lambda *a: spec)
+    monkeypatch.setattr(rebuild, "build_overlay", lambda *a: None)
+    monkeypatch.setattr(libs, "archive_unit", lambda *a: b"object")
+    monkeypatch.setattr(rebuild, "coff_externals", lambda _: {"_owner": True})
+    monkeypatch.setattr(rebuild, "progress", lambda *a, **k: None)
+    def verified(*args, **kwargs):
+        exclusions.append(kwargs["exclude"])
+        return None, set()
+    monkeypatch.setattr(rebuild, "verified_layer", verified)
+    monkeypatch.setattr(rebuild, "resolve_objects", lambda *a, **k:
+                        {"linked": True, "exit": 0, "unresolved": [], "output": ""})
+    rebuild.build_module("test", "app", log=lambda _: None)
+    assert exclusions[-1] == {"_owner"}
+    spec["deduplicate_layer_files"] = True
+    rebuild.build_module("test", "app", log=lambda _: None)
+    assert exclusions[-1] == set()
+    layers[1]["files"].append("different.obj")
+    rebuild.build_module("test", "app", log=lambda _: None)
+    assert exclusions[-1] == {"_owner"}

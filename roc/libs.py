@@ -839,6 +839,13 @@ for _name, _r in list(RECIPES.items()):
             src="mfc-9.0-rtm" if _r.get("src") == "mfc-9.0" else
                 _r["src"].replace("mfc-9.0/", "mfc-9.0-rtm/", 1) if "src" in _r else _r.get("src"))
 
+# The vendor prelude selects legacy theme enums; MFC 9 private messages need XP types.
+RECIPES["xtp-11.2.2-internals-vendor-xp-rtm"] = dict(
+    RECIPES["xtp-11.2.2-shared-mfc-internals-rtm"],
+    preinclude=["Common/XTPDLLExports.h", *RECIPES["xtp-11.2.2-shared-mfc-internals-rtm"]["preinclude"]],
+    defines=RECIPES["xtp-11.2.2-shared-mfc-internals-rtm"]["defines"] + " WINVER=0x0501 _WIN32_WINNT=0x0501")
+
+
 def _case_path(path):
     """The on-disk path for a possibly differently-cased recipe path.
 

@@ -24583,5 +24583,72 @@
       "evidence": "RoConstruct-findings 2008-06/verification/ogre-owner-repair-20261029/"
     },
     "rejected": "Stock Rect2D::xywh adds clamping and fails code exactness; genuine Rect2D(Vector2) requires /fp:fast. Old global visitor owner contradicts target RTTI. No invented release helpers added."
+  },
+  "xtp-vendor-xp-native-providers-20261029": {
+    "op": "fanout",
+    "client": "2008-06",
+    "library": "XTP 11.2.2 native fallback providers",
+    "hypothesis": "Vendor DLL export prelude retains legacy theme enums; XP defines supply MFC 9 private raw-input/menu declarations. Same-name layer objects are alternatives, never simultaneous providers.",
+    "sources": [
+      {
+        "recipe": "xtp-11.2.2-shared-mfc-internals-rtm",
+        "files": [
+          "Source/Controls/XTComboBoxEx.cpp",
+          "Source/Controls/XTDateTimeCtrl.cpp",
+          "Source/Controls/XTExcelTabCtrl.cpp",
+          "Source/CommandBars/XTPCommandBar.cpp",
+          "Source/CommandBars/XTPCustomizeSheet.cpp",
+          "Source/Common/XTPDrawHelpers.cpp",
+          "Source/PropertyGrid/XTPPropertyGridInplaceEdit.cpp",
+          "Source/PropertyGrid/XTPPropertyGridItemExt.cpp",
+          "Source/Controls/XTPPropertyPage.cpp",
+          "Source/SkinFramework/XTPSkinObjectTab.cpp",
+          "Source/CommandBars/XTPStatusBar.cpp",
+          "Source/Controls/XTSplitterWnd.cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /MD /GS /EHsc /Ob1"
+        ]
+      },
+      {
+        "recipe": "xtp-11.2.2-internals-vendor-xp-rtm",
+        "files": [
+          "Source/Controls/XTComboBoxEx.cpp",
+          "Source/Controls/XTDateTimeCtrl.cpp",
+          "Source/Controls/XTExcelTabCtrl.cpp",
+          "Source/CommandBars/XTPCommandBar.cpp",
+          "Source/CommandBars/XTPCustomizeSheet.cpp",
+          "Source/Common/XTPDrawHelpers.cpp",
+          "Source/PropertyGrid/XTPPropertyGridInplaceEdit.cpp",
+          "Source/PropertyGrid/XTPPropertyGridItemExt.cpp",
+          "Source/Controls/XTPPropertyPage.cpp",
+          "Source/SkinFramework/XTPSkinObjectTab.cpp",
+          "Source/CommandBars/XTPStatusBar.cpp",
+          "Source/Controls/XTSplitterWnd.cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /MD /GS /EHsc /Ob1"
+        ]
+      }
+    ],
+    "result": {
+      "date": "2026-10-29",
+      "compile_success": [
+        11,
+        12
+      ],
+      "forced_roots_before": 412,
+      "forced_roots_after": 441,
+      "new_verified": 0,
+      "evidence": "RoConstruct-findings 2008-06/verification/xtp-native-20261029/",
+      "status": "All 441 forced roots code/data exact and verified-library owned; no old root lost; runtime0. Unique masked whole-module address matches4784->4837 are diagnostic, not new server credits."
+    },
+    "rejected": "Unmodified early vendor prelude targets NT4 and fails MFC9 private declarations. VC8 shared-MFC recovers failed NONCLIENTMETRICS constructor but matches existing module copy, no gain."
   }
 }
