@@ -1,23 +1,23 @@
 {
-  "updated": "2026-10-29 09:49 UTC",
+  "updated": "2026-10-29 10:17 UTC",
   "clients": {
     "2008-06": {
       "phase": "8",
       "phaseLabel": "Runtime",
-      "overall": 0.2382,
+      "overall": 0.2479,
       "bars": {
         "compiled": {
-          "value": 14,
+          "value": 15,
           "total": 15,
           "label": "Modules reporting"
         },
         "linked": {
-          "value": 14,
-          "total": 14,
+          "value": 15,
+          "total": 15,
           "label": "Modules linked"
         },
         "exact": {
-          "value": 9812,
+          "value": 10214,
           "total": 41196,
           "label": "Byte-exact functions"
         },
@@ -86,6 +86,14 @@
           "test": 0,
           "exact": 441,
           "objectFunctions": 941,
+          "unresolved": 0
+        },
+        {
+          "name": "Ogre",
+          "linked": true,
+          "test": 0,
+          "exact": 891,
+          "objectFunctions": 388748,
           "unresolved": 0
         },
         {

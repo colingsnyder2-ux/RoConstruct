@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-29 09:47 UTC",
+ "updated": "2026-10-29 10:16 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -93,14 +93,14 @@
    "started": true,
    "functions": 19819,
    "matched": 11296,
-   "partial": 8111,
+   "partial": 8112,
    "source_matched": 6830,
    "mined_matched": 4466,
    "bytes": 3196410,
    "matched_bytes": 1027503,
    "source_bytes": 837102,
    "mined_bytes": 190401,
-   "partial_bytes": 1909230,
+   "partial_bytes": 1909361,
    "data_bytes": 1361658,
    "leaderboard": [
     {
@@ -124,11 +124,11 @@
     {
      "user": "Yeetserama",
      "matched": 14,
-     "mining_points": 945,
-     "points": 945,
+     "mining_points": 1002,
+     "points": 1002,
      "native_integrated": 0,
-     "submissions": 30,
-     "last": 1793266136.6636283
+     "submissions": 34,
+     "last": 1793268924.0140119
     },
     {
      "user": "colinlaptop",
@@ -242,12 +242,12 @@
    "functions": 22293,
    "matched": 22291,
    "partial": 2,
-   "source_matched": 13822,
-   "mined_matched": 8469,
+   "source_matched": 13821,
+   "mined_matched": 8470,
    "bytes": 3738870,
    "matched_bytes": 3734387,
-   "source_bytes": 2783854,
-   "mined_bytes": 950533,
+   "source_bytes": 2783109,
+   "mined_bytes": 951278,
    "partial_bytes": 4483,
    "data_bytes": 1559926,
    "leaderboard": [
@@ -327,10 +327,10 @@
      "user": "nuck16",
      "matched": 42,
      "mining_points": 1514,
-     "points": 1516,
-     "native_integrated": 2,
+     "points": 1520,
+     "native_integrated": 6,
      "submissions": 70,
-     "last": 1793261476.9871926
+     "last": 1793268316.91637
     },
     {
      "user": "Intel",
@@ -836,10 +836,10 @@
    "user": "nuck16",
    "matched": 2441,
    "mining_points": 213723,
-   "points": 213725,
-   "native_integrated": 2,
+   "points": 213729,
+   "native_integrated": 6,
    "submissions": 2789,
-   "last": 1793261476.9871926
+   "last": 1793268316.91637
   },
   {
    "user": "why2",
@@ -952,11 +952,11 @@
   {
    "user": "Yeetserama",
    "matched": 14,
-   "mining_points": 945,
-   "points": 945,
+   "mining_points": 1002,
+   "points": 1002,
    "native_integrated": 0,
-   "submissions": 30,
-   "last": 1793266136.6636283
+   "submissions": 34,
+   "last": 1793268924.0140119
   },
   {
    "user": "41k",
