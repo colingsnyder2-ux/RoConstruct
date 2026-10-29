@@ -19,6 +19,34 @@ If a client was explicitly selected earlier, keep it; do not ask again. Native i
 **2008-06** only. Other clients can use ordinary source mining; explain their native limitation in the choices.
 Keep the selected client locked for this run.
 
+## Verify RoConstruct is up to date
+
+After client selection, before setup, claims or native trials in a new or resumed
+session, fetch the current Worker manifest below with cache busting. Compare its
+`workflow_version` and package `sha256` with the installed package identity.
+Having the files or meeting this guide's minimum version is not enough: a package
+can be republished with fixes without changing that minimum. Record the checked
+manifest version/hash and installed package identity in the session checkpoint.
+
+If the Worker is outdated or its identity cannot be verified, download and
+SHA-256-check the latest package using the bootstrap below, into a fresh private
+folder. Preserve the old checkout, local edits, saved proofs, claims and pending
+job IDs. Reconcile saved work with the current accepted baseline and revalidate
+it before submitting. Never overwrite a running agent's files or reset/stash
+someone else's changes to perform an update.
+
+For a normal Git installation, inspect status and its configured remote/upstream,
+fetch updates, and use a fast-forward update only when the checkout is clean and
+that upstream is unambiguous. Preserve dirty/diverged work in its current checkout;
+use a separate current checkout instead of forcing an update. Packaged Workers
+must use the verified package-refresh path, not `roc update`.
+
+If the update check fails, report the actual error and that currency is unverified;
+do not claim RoConstruct is up to date. Recheck after a long interruption or a
+server compatibility error, not before every unchanged local trial. If the newest
+package still disagrees with the server's generator/protocol, preserve work and
+report both versions; do not repeatedly download the same incompatible archive.
+
 ## Automatic Worker download
 
 Do not ask the user to locate or attach a Worker ZIP. If `roc/native_try.py`, `research/native-units.json`,
