@@ -25657,5 +25657,34 @@
       "evidence": "RoConstruct-findings2008-06/verification/lua-native-20261029"
     },
     "rejected": "Whole-file fast math loses42 old symbol/address pairs. Only two scoped math functions gain with zero old pair losses. Missing Roblox VM hook remains excluded."
+  },
+  "ogre-native-subentity-accessors-20261029": {
+    "op": "fanout",
+    "client": "2008-06",
+    "hypothesis": "Replace four padded analogs with fields already established by exact native RbxSubEntity constructor and genuine Ogre1.4.5 SubEntity/ShadowCaster bases. Add no fields or virtual slots; compare precise/fast profiles and preserve existing constructor/exception roots.",
+    "sources": [
+      {
+        "recipe": "ogre-1.4.5-dll",
+        "files": [
+          "roc_native_subentity_accessors_bdcd7bf36dc8a930.cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"
+        ]
+      }
+    ],
+    "result": {
+      "status": "five native header methods forced, code/data/map exact and executed",
+      "new_verified": 0,
+      "native_header_replacements": 5,
+      "forced_roots": 311,
+      "source_representatives": 340,
+      "placed_distinct": 410,
+      "evidence": "RoConstruct-findings2008-06/verification/ogre-native-accessors-20261029"
+    },
+    "rejected": "Initial runtime class was abstract because getPointExtrusionDistance pure virtual was missing. Genuine inherited signature/helper recovers exact fifth method; no placeholder implementation. Redundant callback owner alias normalized during complete native replay."
   }
 }
