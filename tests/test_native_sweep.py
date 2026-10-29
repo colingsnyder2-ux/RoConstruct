@@ -597,7 +597,9 @@ def test_pipeline_recompiles_minimal_fix_before_claim_and_apply(tmp_path, monkey
                 assert args.model == 'codex:original-writer'
             sweep.integration.atomic_json(root / 'work/integration-client/claims/own/job.json', {'id': 'verified-job'})
     monkeypatch.setattr(sweep.integration, 'command', command)
+    # This fixture models assertion removal only; other compiler recipes have no simulated effect.
     config = {'manifest': str(manifest), 'owned_report': str(owned), 'files': ['App/*.cpp'],
+              'modes': ['assertions'], 'scoped_modes': [],
               'apply': True, 'submit': bool(terminal), 'wait': bool(terminal), 'model': 'human'}
     if saved_proof:
         proposals = root / 'proposals.json'
