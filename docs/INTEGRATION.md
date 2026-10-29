@@ -268,6 +268,93 @@ integrator processes must load the updated code to enable this reporting route.
 Benchmark without model requests or submissions:
 `python benchmarks/native_search.py --workers 1,2,4 --files 4`.
 
+## Automatic recovery families and client profiles
+
+`native-search-complete-2008` selects all registered clients. For 2008-06 it runs
+the real native module; other clients use their own `rebuild/CLIENT/modules`,
+function manifest, native symbol report and registered historical compiler.
+Missing authentic inputs produce `missing-native-profile` summaries. This does
+not manufacture other clients' source trees or provide their missing server-side
+native verifiers. Other-client discovery retains proposals without claiming
+2008 native credits. Per-client `native_sweep.profiles` can select a module,
+file list and evidence-backed flags independently.
+
+`automatic_transforms=true` generates separate method trials for declared map
+value types/named entries, temporary inlining/naming, narrowed last-use scopes,
+and arithmetic grouping. Diagnostic immediate replacements require a unique
+matching source literal and a decoded target operand. A transform is a search
+hypothesis, not a semantic assertion. Only exact code/data and ownership proofs
+promote changes; no-loss partials remain suggestions. Inline methods, ambiguous
+overloads and unsupported source syntax still need explicit evidence edits.
+
+Visible callee definitions and template instantiations use `proven_facts` entries:
+`file`, `kind` (`visible-callee` or `template-emission`), `target`, `evidence`, and
+anchored `edits`. Their real declarations/source must accompany the evidence;
+the generator does not fabricate unavailable native implementations.
+The automatic callee index also follows actual target call instructions to
+available, unambiguous native method definitions already scored exact; it can
+trial those definitions visibly at the caller. Factory instantiation trials
+derive the zero-argument `T* create() const` signature from compiler-selected
+ServiceProvider headers. Missing implementations/signatures remain blockers.
+
+`propagate_siblings=true` discovers methods with the winning token shape,
+rebinds existing identifiers, recompiles and checks all existing exacts and every
+new witness. It never treats a similar source shape as an ownership proof.
+GUI model passes run a bounded free compiler prepass first (`automatic_prepass`,
+`prepass_limit`, default 12), then start the model from a revalidated retained
+partial if no exact was found. Use `automatic_prepass=false` for model-only runs.
+
+Partial records now embed the compiler command/environment/dependency hashes
+and dependency signature, with stale revisions archived under `partials/history`.
+Blocker queues distinguish ABI review, wrong immediates, missing bodies, data,
+ownership and unavailable scheduling claims. New server receipts measure actual
+verification time; synchronous clients separately measure verification wait.
+`roc native-search-status --hours 6` reads accepted server receipts and
+native credit rows without counting local proofs as throughput.
+
+## New declarations and build units from contributors
+
+Ordinary integration uploads still reject whole-file adoption directives and
+new class definitions. A proven missing class/build unit should instead use an
+immutable declaration packet, submitted with:
+
+```text
+roc native-promote submit packet.json
+```
+
+The packet contains `client=2008-06`, `base_revision`, actual writer `model`,
+known exact-mined `targets`, detailed `evidence`, declarative `patches`, and
+`declarations` records naming each real type, its `header`, `size` and evidence.
+An absent source/header is created with an empty-old append edit, not `@replace`.
+The server validates allocation sizes against its binary evidence manifest.
+Embedded types without direct allocations instead need `binary_sites` containing
+exact address/byte witnesses and a `size_derivation` for owner review; the server
+checks those bytes against its installed client. A screenshot or asserted size
+alone is insufficient.
+
+Packets are quarantined under `work/integration/type-proposals` and in the
+server database. They cannot self-approve, stage patches or grant any credit.
+The owner, in the server checkout, reviews and queues exact packet contents:
+
+```text
+roc native-promote list
+roc native-promote inspect PACKET_ID
+roc native-promote queue PACKET_ID --reviewed-sha256 PACKET_ID
+```
+
+Queued packets go through the existing independent snapshot, compile/link,
+M2/M4a/M5, size/base, zero-loss and unique ownership gates. Additional sizeof
+assertions cover the packet's declarations, and every cited target must become
+owned by the module. Dropping any required packet patch rejects the promotion.
+Only verifier acceptance publishes it and grants the normal exact credits.
+Accepted overlay-only headers enter class scheduling, ABI probes see their
+actual declarations, and overlay-only CPP units matching the module's source
+patterns participate in compilation and content-cache invalidation.
+
+An external contributor's missing `orc-lane-map.md` or source packet cannot be
+reconstructed from a screenshot. Submit that evidence via this route rather
+than disabling the invented-type guard.
+
 ## Retry and acceptance
 
 Use `--retry` to rerun an unchanged rejected batch after a verifier/environment
@@ -410,8 +497,10 @@ cannot make a valid rebuild fail.
 Native contributor submissions now run the independent linked build locally before staging.
 `roc native-try preflight` checks all saved proposals without claiming/submitting. The same
 M2/M4a/M5, size/base, linked ownership and global coverage gates remain mandatory on the server.
-Private baseline caches live in `work/native-linked-preflight/`; candidate receipts and logs
-are under `work/native-try/linked-preflight-*` (automatic submissions use `work/native-try/submit/`).
+Private baseline caches live in `work/native-linked-preflight/`. Candidate builds
+use short managed paths under `work/nv/ID` so historical MSVC can open Boost/SDK
+headers within its Windows path limit. Candidate receipts/logs live there; the
+requested output's `linked-preflight-*` directory also stores the receipt/index.
 Cold baseline builds can take minutes. A baseline advance requires fresh revalidation;
 failed proofs retain saved proposals. Successful replacement checks archive their prior file.
 

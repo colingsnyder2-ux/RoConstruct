@@ -706,7 +706,8 @@ def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- 
               [os.environ.get(k, "") for k in ("CL", "_CL_")]]
 
     def signature(orig, src, deps):
-        files = sorted(set([Path(orig), src] + ([Path(append)] if append else []) + list(map(Path, deps))))
+        files = sorted(set(([Path(orig)] if Path(orig).exists() else []) + [src]
+                           + ([Path(append)] if append else []) + list(map(Path, deps))))
         dirs = [src.parent, Path(orig).parent] + list(includes) + [
             tc[k] for k in ("vc_include", "atlmfc_include", "sdk_include") if tc.get(k)]
         dirs += sorted({p.parent for p in files} - set(map(Path, dirs)))
@@ -941,6 +942,11 @@ def build_module(client, name, log=print):
                 files = sorted(p.relative_to(src).as_posix() for g in globs for p in src.glob(g)
                                if not p.name.startswith("roc_"))
             files = [f for f in files if f not in layer.get("exclude", [])]
+            if ov and src.resolve().is_relative_to(Path(ov[0]).resolve()) and not isinstance(listed, list):
+                overlay_src = Path(ov[1]) / src.resolve().relative_to(Path(ov[0]).resolve())
+                extra = {p.relative_to(overlay_src).as_posix() for g in globs for p in overlay_src.glob(g)
+                         if not p.name.startswith('roc_')}
+                files = sorted((set(files) | extra) - set(layer.get('exclude', [])))
             if layer.get("direct"):  # plain cl: /MD defines _DLL, so CRT data is imported as the linker expects
                 rep = {"compile_errors": {f: "direct" for f in files}}
             else:

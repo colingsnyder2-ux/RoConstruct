@@ -721,9 +721,11 @@ def run(name, server=None, jobs=1, limit=None, log=print, campaign_id=None, clie
         with job_lock(output / ".research-job.lock"):
             if "native_sweep" in spec:
                 if name_client != CLIENT:
-                    raise ValueError("Native sweep supports 2008-06 only")
+                    from roc.native_search import client_profile
+                    results[name_client] = client_profile(spec['native_sweep'], name_client, output, jobs, limit, log)
+                    continue
                 from roc import native_sweep
-                results[name_client] = native_sweep.run(spec, name, server, jobs, limit, output, log)
+                results[name_client] = native_sweep.run(dict(spec, client=name_client), name, server, jobs, limit, output, log)
             else:
                 results[name_client] = _run(name, server, jobs, limit, log, campaign_id, name_client, output)
     return results[names[0]] if len(names) == 1 else {"clients": results}

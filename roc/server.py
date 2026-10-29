@@ -762,6 +762,7 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
                                        "recipe_versions": recipe_versions,
                                        "native_integration": {"version": 3, "enabled": integration is not None, "invitation_required": False,
                                                               "claim_inventory": True, "explicit_park": True, "submission_recovery": True,
+                                                              "type_proposals": True, "native_search_profiles": ["2008-06"],
                                                               "max_batch": 16}})
             if url.path == "/v1/status":
                 status = store.status()
@@ -869,6 +870,9 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
                     elif path.endswith('/partials'):
                         from roc.integration_notify import record_partials
                         result = record_partials(integration, user, body)
+                    elif path.endswith('/type-proposals'):
+                        from roc.native_promotions import receive
+                        result = receive(integration, user, body.get('packet'))
                     elif path.endswith("/force-queue"):
                         result = integration.force_queue(user, body.get("id"))
                     elif path.rsplit("/", 1)[-1] in ("renew", "release", "park", "unpark"):

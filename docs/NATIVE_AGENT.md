@@ -1,5 +1,21 @@
 # Native integration with an agent (Codex, Claude)
 
+## Missing native types or build units
+
+Do not bypass the invented-type gate or upload `@replace` adoption directives.
+For a genuine missing declaration/build unit, create a JSON evidence packet and
+run `roc native-promote submit packet.json`. Include client, baseline revision,
+actual writer model, exact-mined target witnesses, source/RTTI/ABI evidence,
+anchored patches, and declaration header/size records. Direct allocation sizes
+must match server binary evidence. Embedded types require exact binary instruction
+sites plus a size derivation for owner review. See docs/INTEGRATION.md for schema
+and host-only inspect/queue commands. A quarantined packet grants no credits;
+only independent compile/link/runtime/ABI/ownership acceptance publishes it.
+
+Other contributors can submit packets from their own PCs; the owner does not
+need their local lane-map file. Send the packet ID when escalating. Do not claim
+the class is promoted until its server job is accepted.
+
 Paste this file into a Codex or Claude Code session opened in a RoConstruct checkout. It runs the same loop as
 the DeepSeek native pass (`roc research run native-model-2008`). You write the edits; the tools compile the real
 2008-06 file, check exact bytes and referenced data, minimize your edits, and submit verified batches.

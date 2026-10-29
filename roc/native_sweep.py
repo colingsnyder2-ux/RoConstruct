@@ -14,7 +14,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from types import SimpleNamespace
 
-from roc import fingerprint, integration, libs, match, rebuild, worker, native_search
+from roc import fingerprint, integration, libs, match, rebuild, worker, native_search, native_transforms
 
 ROOT = Path(__file__).resolve().parent.parent
 FLAGS = "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD"
@@ -321,7 +321,11 @@ def experiments(text, modes=None):
 def grid_discovery(config, texts, targets, matcher, output, jobs, compile_source, names, by_addr, log):
     """Compile and match in separate bounded pools; process results as they finish."""
     from concurrent.futures import wait, FIRST_COMPLETED
+    output = Path(output).resolve()
     started = time.monotonic()
+    client = config.get('client', '2008-06')
+    def module_ownership(data, hits):
+        return ownership_candidates(data, hits) if client == '2008-06' else ownership_candidates(data, hits, client)
     journal = native_search.Journal(output)
     def partial_event(row):
         log('native partial %s %s: %.3f%% -> %.3f%% (local search; no exact credit)' % (row['file'], row['addr'], row['previous'], row['score']))
@@ -339,6 +343,10 @@ def grid_discovery(config, texts, targets, matcher, output, jobs, compile_source
         scoped = config.get('scoped_modes', ['scoped-osize', 'scoped-speed', 'scoped-fp', 'scoped-noautoinline'])
         extra = list(native_search.scoped_variants(text, scoped, selected))
         extra += list(native_search.explicit_variants(text, config.get('rewrite_rules', []), rel))
+        extra += list(native_transforms.method_variants(text, selected, config.get('declaration_context', ''),
+                     config.get('transform_modes'))) if config.get('automatic_transforms', True) else []
+        extra += list(native_transforms.proven_variants(text, config.get('proven_facts', []), rel))
+        extra = [(m + '#' + integration.digest(s)[:12], s, e) for m, s, e in extra]
         deferred[rel] = []
         seen = set()
         for mode, source, error in variants + [(m, s, None) for m, s, _ in extra]:
@@ -370,7 +378,8 @@ def grid_discovery(config, texts, targets, matcher, output, jobs, compile_source
         data = Path(result['object']).read_bytes() if result['ok'] else None
         result['hits'] = matcher.scan(data) if data is not None else []
         if data is not None and config.get('keep_partials', True):
-            result['diagnostics'] = native_search.diagnose(data, symbols.get(result['file'], {}))
+            result['diagnostics'] = (native_search.diagnose(data, symbols.get(result['file'], {})) if client == '2008-06'
+                                     else native_search.diagnose(data, symbols.get(result['file'], {}), client))
         result['match_seconds'] = round(time.monotonic() - tick, 3)
         return result
 
@@ -380,10 +389,29 @@ def grid_discovery(config, texts, targets, matcher, output, jobs, compile_source
             if result['ok']:
                 baseline[rel] = {h['addr'] for h in result['hits']}
                 diagnostics[rel] = result.get('diagnostics', {})
+                if config.get('automatic_transforms', True):
+                    context_paths = result.get('compiler_config', {}).get('dependencies', {})
+                    context = '\n'.join(Path(p).read_text(errors='replace') for p in context_paths
+                        if '/App/include/' in str(p).replace('\\', '/') and Path(p).is_file())
+                    selected = {symbol_method(s) for s in symbols.get(rel, {}).values()}
+                    generated = list(native_transforms.immediate_variants(texts[rel], diagnostics[rel]))
+                    if context:
+                        generated += list(native_transforms.method_variants(texts[rel], selected, context, config.get('transform_modes')))
+                        generated += list(native_transforms.template_variants(texts[rel], context))
+                    known = {integration.digest(s) for (r, _), s in sources.items() if r == rel and s is not None}
+                    for label, source, edits in generated:
+                        hashed = integration.digest(source)
+                        if hashed in known:
+                            continue
+                        known.add(hashed)
+                        label += '#' + hashed[:12]
+                        sources[rel, label], explicit[rel, label] = source, edits
+                        deferred[rel].append((label, source, None))
                 cache_key = integration.digest([result.get('input_signature'), config.get('base_revision'),
                     getattr(matcher, 'identity', None), sorted(targets), deferred[rel],
                     config.get('targeted_recipes', True), config.get('keep_partials', True),
                     hashlib.sha256(Path(native_search.__file__).read_bytes()).hexdigest(),
+                    hashlib.sha256(Path(native_transforms.__file__).read_bytes()).hexdigest(),
                     hashlib.sha256(Path(__file__).read_bytes()).hexdigest()])
                 cache_path = output / 'exhausted-grid' / (integration.digest(rel) + '.json')
                 exhausted[rel] = cache_path, cache_key
@@ -393,9 +421,12 @@ def grid_discovery(config, texts, targets, matcher, output, jobs, compile_source
                 result['search_cache_hit'] = bool(cached)
                 for label, source, error in (() if cached else deferred[rel]):
                     profile, _, method = label.partition(':')
+                    method = method.split('#', 1)[0]
                     applicable = [d for d in diagnostics[rel].values() if symbol_method(d.get('symbol', '')) == method]
-                    if (config.get('targeted_recipes', True) and profile.startswith('scoped-') and applicable
-                            and not any(profile in d['recipes'] for d in applicable)):
+                    families = {'temporary-inline': 'expression-lifetime', 'temporary-name': 'expression-lifetime',
+                                'map-value-entry': 'map-value-type', 'expression-grouping': 'expression-lifetime'}
+                    if (config.get('targeted_recipes', True) and (profile.startswith('scoped-') or profile in families or profile == 'scope-lifetime') and applicable
+                            and not any(families.get(profile, profile) in d['recipes'] for d in applicable)):
                         continue
                     item = (rel, label, source, error)
                     tasks.append(item)
@@ -409,10 +440,21 @@ def grid_discovery(config, texts, targets, matcher, output, jobs, compile_source
             partials.retain(rel, texts[rel], sources[rel, mode], result, result.get('diagnostics', {}), diagnostics[rel], lost)
             new_hits = [h for h in result['hits'] if h['addr'] in targets - baseline[rel]]
             if new_hits:
-                ownership = ownership_candidates(Path(result['object']).read_bytes(), new_hits)
+                ownership = module_ownership(Path(result['object']).read_bytes(), new_hits)
                 unique = [h for h in new_hits if ownership.get(h['addr']) == [h['addr']]]
                 result['ownership_candidates'] = ownership
                 if unique:
+                    source = sources[rel,mode]
+                    covered = {symbol_method(h['symbol']) for h in result['hits']}
+                    changed = native_transforms.changed_methods(texts[rel], source)
+                    family, _, selected_method = mode.partition(':')
+                    selected_method = selected_method.split('#',1)[0]
+                    if (((rel,mode) in explicit and changed-covered)
+                            or family.startswith('scoped-') and selected_method not in covered
+                            or not native_search.visible_callees_ok(source, Path(result['object']).read_bytes(), config.get('proven_facts',[]), rel, client)):
+                        result['blocker'] = 'unproven-method-change'
+                        journal.add([result])
+                        return
                     proposal = (dict(edits=explicit[rel, mode], witnesses=unique, mode=mode)
                                 if (rel, mode) in explicit else proven_proposal(texts[rel], mode, unique, baseline[rel]))
                     if proposal:
@@ -464,12 +506,46 @@ def grid_discovery(config, texts, targets, matcher, output, jobs, compile_source
             result['losses'] = sorted(lost)
             checks.append(result)
             if result['ok'] and not lost and wanted <= found:
-                owners = ownership_candidates(Path(result['object']).read_bytes(), [h for h in result['hits'] if h['addr'] in wanted])
+                owners = module_ownership(Path(result['object']).read_bytes(), [h for h in result['hits'] if h['addr'] in wanted])
                 if all(owners.get(a) == [a] for a in wanted):
                     return result
         merged = native_search.merge_choices(texts[rel], variants, verify)
         if merged:
             proposals.append(dict(merged, file=rel))
+    if config.get('propagate_siblings', True):
+        seen_siblings = set()
+        for winner in list(proposals):
+            for rel, label, source, edits in native_transforms.sibling_variants(texts, winner, texts[winner['file']]):
+                key = rel, integration.digest(source)
+                if key in seen_siblings:
+                    continue
+                seen_siblings.add(key)
+                if rel not in baseline:
+                    result = compare(compile_source(texts[rel], rel, 'baseline'))
+                    journal.add([result])
+                    if not result['ok']:
+                        continue
+                    baseline[rel] = {h['addr'] for h in result['hits']}
+                    diagnostics[rel] = result.get('diagnostics', {})
+                sources[rel, label], explicit[rel, label] = source, edits
+                result = compare(compile_source(source, rel, 'sibling-' + key[1][:16]))
+                # compile_source labels carry their hash; process() indexes the original trial name.
+                result['mode'] = label
+                process(result)
+        # Combine propagated and original witnesses using the same complete TU proof.
+        for rel, variants in choices.items():
+            def sibling_verify(source, wanted):
+                result = compare(compile_source(source, rel, 'sibling-final-' + integration.digest(source)[:16]))
+                found = {h['addr'] for h in result['hits']}
+                result['losses'] = sorted(baseline[rel] - found)
+                checks.append(result)
+                if result['ok'] and not result['losses'] and wanted <= found:
+                    owners = module_ownership(Path(result['object']).read_bytes(), [h for h in result['hits'] if h['addr'] in wanted])
+                    if all(owners.get(a) == [a] for a in wanted):
+                        return result
+            merged = native_search.merge_choices(texts[rel], variants, sibling_verify)
+            if merged:
+                proposals = [p for p in proposals if p['file'] != rel] + [dict(merged, file=rel)]
     journal.flush()
     for rel, (path, key) in exhausted.items():
         rows = [r for r in journal.records if r['file'] == rel]
@@ -482,12 +558,13 @@ def grid_discovery(config, texts, targets, matcher, output, jobs, compile_source
 
 
 class Matcher:
-    def __init__(self, addresses, cache_dir=None):
-        self.target = fingerprint.Target("2008-06")
+    def __init__(self, addresses, cache_dir=None, client='2008-06'):
+        self.client = client
+        self.target = fingerprint.Target(client)
         self.index = defaultdict(list)
         self.cache, self.cache_lock = {}, threading.Lock()
         self.prefixes = {}
-        functions = match._functions("2008-06")
+        functions = match._functions(client)
         for addr in sorted(addresses):
             if addr in functions and functions[addr].get("kind", "code") == "code":
                 self.index[functions[addr]["size"]].append(addr)
@@ -542,7 +619,7 @@ class Matcher:
                     if data_index is None:
                         data_index = match._coff_data_index(obj)
                     refs = match.coff_data_refs(obj, symbol, index=data_index)
-                _, bad = match.data_check("2008-06", addr, exe, refs)
+                _, bad = match.data_check(self.client, addr, exe, refs)
                 if not bad:
                     found[addr] = symbol
         hits = [{"addr": addr, "symbol": found[addr]} for addr in sorted(found)]
@@ -555,17 +632,18 @@ class Matcher:
         return hits
 
 
-def ownership_candidates(obj, hits):
+def ownership_candidates(obj, hits, client='2008-06'):
     """Use the server's whole-binary pairing, not the discovery target subset."""
     if not hits:
         return {}
     symbols = {h["symbol"] for h in hits}
     candidates = {symbol: addrs for symbol, _, addrs in rebuild.pair(
-        "2008-06", [f for f in match.coff_functions(obj) if f[0] in symbols])}
+        client, [f for f in match.coff_functions(obj) if f[0] in symbols])}
     return {h["addr"]: candidates.get(h["symbol"], []) for h in hits}
 
 
 def compile_unit(source, rel, label, output, tree, overlay, includes, defines, flags, translation_unit=None, related_headers=None):
+    output = Path(output).resolve()
     if related_headers:
         previous, hashes = {}, {}
         try:
@@ -637,6 +715,8 @@ def compile_unit(source, rel, label, output, tree, overlay, includes, defines, f
             "compile_cache_hit": ok and message == 'content cache hit',
             "input_signature": json.loads(obj.with_suffix('.compile.json').read_text()).get('inputs')
                                if ok and obj.with_suffix('.compile.json').exists() else None,
+            "compiler_config": json.loads(obj.with_suffix('.command.json').read_text())
+                               if obj.with_suffix('.command.json').exists() else dict(client='2008-06', flags=flags, defines=defines, includes=[str(p) for p in siblings + includes]),
             "error": message if not ok else None}
 
 
@@ -648,6 +728,7 @@ def linked_preflight_progress(root, additions, output, log, interval=30):
     def report(message):
         nonlocal phase
         phase = (time.monotonic(), str(message))
+        integration.atomic_json(Path(output)/'progress.json', dict(phase='linked-preflight', message=str(message)))
         log(message)
     def heartbeat():
         while not stopped.wait(interval):
@@ -713,7 +794,8 @@ def restore_submitted_baseline(identifier, log=print):
 
 
 def wait_for_job(api, identifier, timeout, log):
-    deadline, previous = time.monotonic() + timeout, None
+    started = time.monotonic()
+    deadline, previous = started + timeout, None
     while time.monotonic() < deadline:
         jobs = api.call("/v1/integration?id=" + identifier)["jobs"]
         if not jobs:
@@ -724,6 +806,7 @@ def wait_for_job(api, identifier, timeout, log):
             log("native job %s: %s / %s" % (identifier, *phase))
             previous = phase
         if job["state"] in ("accepted", "rejected"):
+            job['verification_wait_seconds'] = round(time.monotonic() - started, 3)
             return job
         time.sleep(5)
     raise TimeoutError("Native verification still pending: " + identifier)
@@ -1189,10 +1272,12 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
         negative_key = integration.digest([base.get('input_signature'), base.get('object_sha256'),
             getattr(matcher, 'identity', None), pending, config.get('base_revision'), model, rounds,
             seed['source_sha256'] if seed else None,
-            {k: config.get(k) for k in ('thinking', 'max_tokens', 'generation', 'context', 'compile_batch', 'provider_options')
+            {k: config.get(k) for k in ('thinking', 'max_tokens', 'generation', 'context', 'compile_batch', 'provider_options',
+                                       'automatic_prepass', 'prepass_limit', 'proven_facts', 'rewrite_rules', 'transform_modes', 'scoped_modes')
              if k != 'provider_options'},
             {k: v for k, v in config.get('provider_options', {}).items() if isinstance(v, (str, int, float, bool, type(None)))},
             hashlib.sha256(Path(native_search.__file__).read_bytes()).hexdigest(),
+            hashlib.sha256(Path(native_transforms.__file__).read_bytes()).hexdigest(),
             hashlib.sha256(Path(__file__).read_bytes()).hexdigest()])
         if (config.get('search_cache', True) and base.get('input_signature') and not config.get('retry_exhausted')
                 and negative.exists() and json.loads(negative.read_text()).get('key') == negative_key):
@@ -1206,12 +1291,17 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
                     seed_data = Path(trial['object']).read_bytes()
                     hits = {h['addr'] for h in matcher.scan(seed_data)}
                     current = native_search.diagnose(seed_data, symbol_map)
-                    if not baseline - hits and any(current[a]['score'] > baseline_diagnostics[a]['score'] for a in current):
+                    if not baseline - hits and any(current[a]['score'] > baseline_diagnostics[a]['score']
+                            or current[a].get('frame_ok') and not baseline_diagnostics[a].get('frame_ok')
+                            or current[a].get('calls_ok') and not baseline_diagnostics[a].get('calls_ok') for a in current):
                         working = seed['source']
+                        data = seed_data
                         log('Resuming recompiled no-loss partial: ' + seed['addr'])
 
         def trial_compile(source, label):
             result = compile_source(source, rel, label)
+            if result['ok'] and not native_search.visible_callees_ok(source, Path(result['object']).read_bytes(), config.get('proven_facts',[]), rel):
+                result.update(ok=False, error='Visible callee emitted different code/data; keep original source', blocker='callee-codegen')
             if partials and result['ok']:
                 obj = Path(result['object']).read_bytes()
                 found = {h['addr'] for h in matcher.scan(obj)}
@@ -1231,13 +1321,63 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
                                     baseline, trial_compile, matcher, 'seed-composition',
                                     definitions=proposal['proof'].get('defined_symbols', ()))
             if (not proposal and base.get('input_signature') and config.get('search_cache', True)
-                    and len(trials) >= rounds and all(t.get('ok') and not t.get('error') for t in trials)):
+                    and len([t for t in trials if t.get('generation')]) >= rounds
+                    and all(t.get('ok') and not t.get('error') for t in trials)):
                 integration.atomic_json(negative, dict(key=negative_key, blocker='exhausted-rounds', accepted=False))
             return proposal, [base] + trials
 
         def diff(obj, addr):
             return body_diff(obj, names[addr]["symbol"], addr) if names.get(addr, {}).get("symbol") else "no rebuilt body"
         try:
+            prepass = []
+            if config.get('automatic_prepass'):
+                selected_methods = {symbol_method(symbol_map[a]) for a in pending[:3] if a in symbol_map}
+                dependencies = base.get('compiler_config', {}).get('dependencies', {})
+                declaration_context = config.get('declaration_context', '') + '\n' + '\n'.join(
+                    Path(p).read_text(errors='replace') for p in dependencies
+                    if '/App/include/' in str(p).replace('\\','/') and Path(p).is_file())
+                local_trials = list(native_transforms.method_variants(working, selected_methods,
+                    declaration_context, config.get('transform_modes')))
+                local_trials += list(native_transforms.immediate_variants(working, baseline_diagnostics))
+                local_trials += list(native_transforms.proven_variants(working, config.get('proven_facts', []), rel))
+                local_trials += list(native_search.explicit_variants(working, config.get('rewrite_rules', []), rel))
+                local_trials += list(native_transforms.template_variants(working, declaration_context))
+                local_trials += list(native_search.scoped_variants(working,
+                    config.get('scoped_modes', ['scoped-osize', 'scoped-speed', 'scoped-fp', 'scoped-noautoinline']), selected_methods))
+                if config.get('targeted_recipes', True) and baseline_diagnostics:
+                    families = {'temporary-inline':'expression-lifetime','temporary-name':'expression-lifetime',
+                                'expression-grouping':'expression-lifetime','map-value-entry':'map-value-type'}
+                    def relevant(item):
+                        family, _, method = item[0].partition(':')
+                        rows = [r for r in baseline_diagnostics.values() if symbol_method(r.get('symbol','')) == method]
+                        return not rows or any(families.get(family,family) in r.get('recipes',[]) for r in rows)
+                    local_trials = [item for item in local_trials if relevant(item)]
+                seen = set()
+                for mode, candidate, edits in local_trials[:config.get('prepass_limit', 12)]:
+                    key = integration.digest(candidate)
+                    if key in seen:
+                        continue
+                    seen.add(key)
+                    result = trial_compile(candidate, 'prepass-'+key[:16])
+                    hits = matcher.scan(Path(result['object']).read_bytes()) if result['ok'] else []
+                    found = {h['addr'] for h in hits}
+                    result.update(hits=hits, losses=sorted(baseline-found) if result['ok'] else [], search_family=mode)
+                    prepass.append(result)
+                    new = (found & set(pending))-baseline
+                    if native_transforms.changed_methods(working,candidate)-{symbol_method(h['symbol']) for h in hits}:
+                        result['blocker'] = 'unproven-method-change'
+                        continue
+                    if new and not baseline-found:
+                        proposal = minimize(rel, working, edits, new, baseline, trial_compile, matcher,
+                            'prepass', definitions=result.get('defined_symbols', ()), verified=result)
+                        return completed(proposal, prepass)
+                if partials:
+                    improved_seed = partials.seed(rel, original, pending)
+                    if improved_seed and improved_seed['source'] != working:
+                        trial = trial_compile(improved_seed['source'], 'prepass-seed-'+improved_seed['source_sha256'][:16])
+                        if trial['ok'] and not baseline-{h['addr'] for h in matcher.scan(Path(trial['object']).read_bytes())}:
+                            working = improved_seed['source']
+                            data = Path(trial['object']).read_bytes()
             if compile_batch > 1 and options.get('generation', 'edits') != 'edits':
                 from roc import native_batch
                 groups = {}
@@ -1254,7 +1394,7 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
                     if any(t.get('error_category') in providers.FATAL_ERRORS for t in trials):
                         provider_failed.set()
                     if proposal or provider_failed.is_set() or options.get('generation') == 'method' or rounds <= 1:
-                        return completed(proposal, trials)
+                        return completed(proposal, prepass + trials)
                     feedback = '\n'.join(str(t.get('error', '')) for t in trials if t.get('error'))
                     diagnostic = next((t for t in trials if t.get('ok') and t.get('object')), None)
                     if diagnostic:
@@ -1265,7 +1405,7 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
                         trial_compile, matcher, evidence,
                         log, dict(options, generation='edits', initial_feedback=feedback), diff,
                         excerpt(working, [names[a]['symbol'] for a in pending[:3]]) if context == 'methods' else None)
-                    return completed(proposal, trials + repairs)
+                    return completed(proposal, prepass + trials + repairs)
             proposal, trials = model_proposal(rel, working, pending, baseline, owned, model, rounds,
                                               trial_compile, matcher, evidence,
                                               log, options, diff,
@@ -1277,7 +1417,7 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
                 provider_failed.set()
                 log("Provider configuration failed; queued files skipped: " + str(error))
             return None, [base, {"file": rel, "mode": "model", "ok": False, "error": str(error)[:500], "error_category": getattr(error, "category", "")}]
-        return completed(proposal, trials)
+        return completed(proposal, prepass + trials)
 
     slots, slots_lock = list(range(jobs)), threading.Lock()
     def one(rel):
@@ -1416,12 +1556,13 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
     config = dict(spec["native_sweep"])
     run_started = time.monotonic()
     config.setdefault('keep_partials', True)
+    config.setdefault('automatic_prepass', True)
     partial_lock = threading.Lock()
     if config.get("llm"):
         config.setdefault("model", config["llm"])  # submissions name the model that wrote the edits
     if spec.get("client", "2008-06") != "2008-06":
         raise ValueError("Native sweep supports the coherent 2008-06 module only")
-    output = Path(output or ROOT / "work/research" / name)
+    output = Path(output or ROOT / "work/research" / name).resolve()
     output.mkdir(parents=True, exist_ok=True)
     outbox = output / 'partial-reports.json'
     def retain_report(row):
@@ -1461,6 +1602,7 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
         if metrics_path.exists():
             measured = json.loads(metrics_path.read_text())
             measured.update(server_verified=summary.get('new_verified', 0),
+                            verification_wait_seconds=summary.get('verification_wait_seconds', 0),
                             verified_per_hour=summary.get('new_verified', 0) * 3600 / max(time.monotonic() - run_started, .001))
             integration.atomic_json(metrics_path, measured)
             summary['metrics'] = measured
@@ -1519,6 +1661,18 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
         log("Native setup: resolving historical compiler and source files")
         rebuild.toolchain()  # Resolve discovery once before compile workers start.
         texts = {rel: (overlay / rel if (overlay / rel).exists() else tree / rel).read_text(errors="replace") for rel in files}
+        if config.get('automatic_transforms', True):
+            all_sources = dict(texts)
+            for p in tree.glob('App/*/*.cpp'):
+                if p.name.startswith('roc_'):
+                    continue
+                rel = p.relative_to(tree).as_posix()
+                if rel not in all_sources:
+                    selected_source = overlay/rel if (overlay/rel).exists() else p
+                    all_sources[rel] = selected_source.read_text(errors='replace')
+            homes = target_files(texts, targets-owned, ctx.names, by_addr)
+            config['proven_facts'] = list(config.get('proven_facts', [])) + native_transforms.callee_facts(
+                all_sources, homes, ctx.names, by_addr)
         discovery_targets = targets - owned
         if config.get("targets_only"):
             discovery_targets -= getattr(ctx, "integrated", set())
@@ -1633,6 +1787,11 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
                 needed.add(unit if re.fullmatch(r"RBX::(?:\w+::)*\w+", unit) else hit["claim_unit"])
             if (labels | needed) & (parked | foreign):
                 blocked.update((labels | needed) & (parked | foreign))
+                blockers_path = output / 'blockers.json'
+                blockers = json.loads(blockers_path.read_text()) if blockers_path.exists() else {}
+                blockers.setdefault('scheduling-claim', []).append(dict(file=proposal['file'],
+                    units=sorted((labels | needed) & (parked | foreign)), accepted=False))
+                integration.atomic_json(blockers_path, blockers)
                 continue
             if inventory is not None:
                 absent = needed - inventory.keys()
@@ -1735,7 +1894,8 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
             finish(summary)
             if config.get("wait"):
                 job = wait_for_job(api, summary["job"], config.get("verify_timeout", 4 * 3600), log)
-                summary.update(state=job["state"], receipt=job["receipt"])
+                summary.update(state=job["state"], receipt=job["receipt"],
+                               verification_wait_seconds=job.get('verification_wait_seconds', 0))
                 if job["state"] == "accepted" and job["receipt"].get("accepted"):
                     summary["new_verified"] = job["receipt"].get("credits", 0)
                     integration.command(SimpleNamespace(action="sync", server=server, user=None, token=integration.native_token()))

@@ -207,3 +207,30 @@ def test_model_resumes_partial_emits_once_and_rebases_winner_to_original(tmp_pat
     assert len(partial_events) == 1 and partial_events[0]['previous'] == 70 and partial_events[0]['score'] == 80
     assert partial_events[0]['slot'] == 0 and not partial_events[0]['accepted']
     assert any('return 2' in source for source in compiled)
+
+
+def test_retained_partial_embeds_compiler_config_and_dependency_signature(tmp_path):
+    store = search.Partials(tmp_path, 'revision')
+    config = dict(compiler='cl.exe', args=['/O2','/MD'], dependencies={'header.h':'abc'}, environment={'CL':''})
+    store.retain('App/A.cpp', 'original', 'better', dict(ok=True, compiler_config=config, input_signature='deps'),
+        {'a':dict(score=90)}, {'a':dict(score=70)}, [])
+    saved = store.seed('App/A.cpp', 'original', ['a'])
+    assert saved['compiler_config'] == config and saved['input_signature'] == 'deps'
+
+
+def test_diagnostics_distinguish_abi_and_proven_immediate_deltas(monkeypatch):
+    monkeypatch.setattr(match, 'coff_functions', lambda obj:[('f',bytes.fromhex('b818000000c20400'),[])])
+    monkeypatch.setattr(match, 'target', lambda *args:(bytes.fromhex('b819000000c20400'),[],None))
+    row=search.diagnose(b'object',{'a':'f'})['a']
+    assert row['blocker']=='wrong-immediate' and row['immediates'][0]['value']==25
+    monkeypatch.setattr(match, 'target', lambda *args:(bytes.fromhex('b819000000c20800'),[],None))
+    assert search.diagnose(b'object',{'a':'f'})['a']['blocker']=='abi-review'
+
+
+def test_visible_callee_context_cannot_override_original_with_different_bytes(monkeypatch):
+    fact=dict(file='App/A.cpp', required_symbol='helper', definition='inline int B::helper(){return 2;}', target='00500000')
+    monkeypatch.setattr(match,'coff_functions',lambda data:[('helper',bytes.fromhex('b802000000c3'),[])])
+    monkeypatch.setattr(match,'target',lambda *args:(bytes.fromhex('b803000000c3'),[],None))
+    assert not search.visible_callees_ok(fact['definition'],b'object',[fact],'App/A.cpp')
+    monkeypatch.setattr(match,'coff_functions',lambda data:[])
+    assert search.visible_callees_ok(fact['definition'],b'object',[fact],'App/A.cpp')

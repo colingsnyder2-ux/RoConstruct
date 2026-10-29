@@ -43,6 +43,8 @@ CREATE TABLE IF NOT EXISTS integration_config(
  key TEXT PRIMARY KEY, value TEXT);
 CREATE TABLE IF NOT EXISTS integration_queue_priority(
  job TEXT PRIMARY KEY, requested INTEGER);
+CREATE TABLE IF NOT EXISTS integration_type_proposals(
+ id TEXT PRIMARY KEY,user TEXT,packet TEXT,state TEXT,job TEXT,created REAL);
 """
 
 
@@ -84,7 +86,7 @@ def native_token(root=ROOT, fallback=None, create=False):
     return None
 
 
-def validate_patches(patches):
+def validate_patches(patches, allowed_types=()):
     if not isinstance(patches, dict) or not 1 <= len(patches) <= MAX_OVERLAY_PATHS:
         raise ValueError("Need 1-%d source overlay paths" % MAX_OVERLAY_PATHS)
     if len(json.dumps(patches).encode()) > MAX_OVERLAY_BYTES:
@@ -122,8 +124,8 @@ def validate_patches(patches):
                 raise ValueError("Assembly/byte emission is not a source promotion")
             if re.search(r"\breinterpret_cast\b|\b(?:char|BYTE)\s+pad\w*\s*\[", new):
                 raise ValueError("Padding structs and offset views are not native source")
-            types = r"\b(?:struct|class|union)\s+([\w:]+)\s*(?::[^;{]+)?\{"
-            if set(re.findall(types, new)) - set(re.findall(types, old)):
+            types = r"\b(?:struct|class|union)\s+(?:__declspec\([^)]*\)\s+)?([\w:]+)\s*(?::[^;{]+)?\{"
+            if set(re.findall(types, new)) - set(re.findall(types, old)) - set(allowed_types):
                 raise ValueError("Promote existing native classes; do not append invented snippet types")
     canonical_patches(patches)
     return patches
@@ -245,6 +247,23 @@ def resume_pending(api, directory, user):
     return recovered
 
 
+def overlay_text(tree, name, patches):
+    path = tree/name
+    text = path.read_text(errors='replace') if path.exists() else ''
+    for old, new in patches.get(name, []):
+        if old == '@replace':
+            text = (tree/new).read_text(errors='replace')
+        elif old.startswith('@all:'):
+            text = text.replace(old[5:], new)
+        elif old:
+            if old not in text:
+                raise ValueError('Accepted overlay anchor changed: '+name)
+            text = text.replace(old, new, 1)
+        else:
+            text += new
+    return text
+
+
 class Promotions:
     def __init__(self, store, root=ROOT):
         self.store, self.root = store, Path(root)
@@ -305,22 +324,28 @@ class Promotions:
         queue = path.parent.parent / "out" / "agent-queue.json"
         with self.store.lock:
             accepted_version = self.store.db.execute("SELECT COUNT(*),MAX(ts) FROM integration_accepted").fetchone()
-        key = (path.stat().st_mtime_ns, report.stat().st_mtime_ns if report.exists() else 0,
+        key = (path.stat().st_mtime_ns, self.overlay.stat().st_mtime_ns, report.stat().st_mtime_ns if report.exists() else 0,
                queue.stat().st_mtime_ns if queue.exists() else 0, accepted_version)
         if self.catalog_key != key:
             from collections import defaultdict
             tree = self.root / "tools/rbxgs/Client"
-            header_texts = [(p, p.read_text(errors="replace")) for p in (tree / "App/include").rglob("*.h")]
+            accepted_overlay = json.loads(self.overlay.read_text())
+            header_names = {p.relative_to(tree).as_posix() for p in (tree/'App/include').rglob('*.h')}
+            header_names.update(name for name in accepted_overlay if name.startswith('App/include/') and name.endswith('.h'))
+            header_texts = [(tree/name, overlay_text(tree, name, accepted_overlay)) for name in sorted(header_names)]
             classes = set()
             self.native_paths = {}
             for p, text in header_texts:
-                for cls in re.findall(r"\bclass\s+(\w+)", text):
+                for cls in re.findall(r"\b(?:class|struct)\s+(?:__declspec\([^)]*\)\s+)?(\w+)", text):
                     classes.add(cls)
                     self.native_paths.setdefault(cls, set()).add(p.relative_to(tree).as_posix())
-            for p in (tree / "App").rglob("*.cpp"):
+            source_names = {p.relative_to(tree).as_posix() for p in (tree/'App').rglob('*.cpp')}
+            source_names.update(name for name in accepted_overlay if name.startswith('App/') and name.endswith('.cpp'))
+            for name in sorted(source_names):
+                p = tree/name
                 if p.name.startswith("roc_"):
                     continue
-                for cls in set(re.findall(r"\b(\w+)::~?\w+\s*\(", p.read_text(errors="replace"))):
+                for cls in set(re.findall(r"\b(\w+)::~?\w+\s*\(", overlay_text(tree, name, accepted_overlay))):
                     self.native_paths.setdefault(cls, set()).add(p.relative_to(tree).as_posix())
             owned = set(json.loads(report.read_text()).get("owned_addrs", [])) if report.exists() else set()
             with self.store.lock:
@@ -576,11 +601,11 @@ class Promotions:
             if not rows:
                 return None
             lead, members = rows[0], [rows[0]]
-            if lead["phase"] != "solo":
+            if lead["phase"] != "solo" and not lead['evidence'].startswith('TYPE-PROMOTION:'):
                 files = {name.casefold() for name in json.loads(lead["patches"])}
                 for row in rows[1:]:
                     patches = {name.casefold() for name in json.loads(row["patches"])}
-                    if len(members) < MAX_MERGE and row["phase"] != "solo" and not files & patches and \
+                    if len(members) < MAX_MERGE and row["phase"] != "solo" and not row['evidence'].startswith('TYPE-PROMOTION:') and not files & patches and \
                             (row["user"], row["model"], row["base"]) == (lead["user"], lead["model"], lead["base"]):
                         members.append(row)
                         files |= patches
@@ -640,6 +665,8 @@ class Promotions:
             for member in members:
                 self.store.db.execute("UPDATE integration_jobs SET state=?,phase=?,receipt=?,updated=? WHERE id=?",
                     ("accepted" if accepted else "rejected", "complete", json.dumps(receipt), time.time(), member))
+                self.store.db.execute('UPDATE integration_type_proposals SET state=? WHERE job=?',
+                    ('accepted' if accepted else 'rejected', member))
                 claims = self.store.db.execute("SELECT claim_id FROM integration_jobs WHERE id=?", (member,)).fetchone()[0]
                 for identifier in json.loads(claims):
                     self.store.db.execute("UPDATE integration_claims SET state=?,expires=? WHERE id=?",

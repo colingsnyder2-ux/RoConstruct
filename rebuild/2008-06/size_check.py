@@ -24,7 +24,9 @@ def header_of(cls, cache={}):
     if not cache:
         cache.update((path.relative_to(TREE / "include").as_posix(), path.read_text(errors="replace"))
                      for path in sorted((TREE / "include").rglob("*.h")))
-    pattern = re.compile(r"^\s*class\s+%s\b[^;]*$" % re.escape(cls), re.M)
+        cache.update((path.relative_to(OVERLAY / 'App/include').as_posix(), path.read_text(errors='replace'))
+                     for path in sorted((OVERLAY / 'App/include').rglob('*.h')))
+    pattern = re.compile(r"^\s*(?:class|struct)\s+(?:__declspec\([^)]*\)\s+)?%s\b[^;]*$" % re.escape(cls), re.M)
     for header, text in cache.items():
         if pattern.search(text):
             return header

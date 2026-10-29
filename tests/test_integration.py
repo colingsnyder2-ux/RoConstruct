@@ -78,6 +78,18 @@ def upload(claims, user="alice"):
             "patches": {"App/Test.cpp": [["old", "new"]]}}
 
 
+def test_catalog_discovers_accepted_overlay_only_declarations(promotions):
+    base = json.loads(promotions.overlay.read_text())
+    include = promotions.root/'tools/rbxgs/Client/App/include/Classes.h'
+    include.write_text('class First {};')
+    base['App/include/Second.h'] = [['', 'class __declspec(novtable) Second {};']]
+    base['App/v8datamodel/Second.cpp'] = [['', 'void Second::run() {}']]
+    promotions.overlay.write_text(json.dumps(base))
+    rows = promotions.catalog()
+    assert any(row[0] == 'RBX::Second' for row in rows)
+    assert 'App/include/Second.h' in promotions.native_paths['Second']
+
+
 def test_native_partial_webhook_dedupes_without_score_or_credit_changes(promotions, monkeypatch):
     from roc import reports
     revision = promotions.baseline()['revision']
@@ -302,7 +314,7 @@ def test_two_thousand_targets_share_one_compact_batch_and_job(promotions):
 
 def test_target_budget_stops_at_whole_class_and_skips_old_baseline(promotions):
     old = promotions.claim('alice', 'pc')['claims'][0]
-    promotions.overlay.write_text(json.dumps({'App/Fresh.cpp': [['a', 'b']]}))
+    promotions.overlay.write_text(json.dumps({'App/Fresh.cpp': [['', 'void fresh() {}']]}))
     result = promotions.claim('alice', 'pc', targets=1, compact=True)
     assert result['classes'] == result['targets'] == 1
     assert result['claims'][0]['id'] != old['id']
@@ -629,7 +641,7 @@ def test_cli_renew_falls_back_for_old_server(promotions, monkeypatch, modern):
 
 def test_claim_packet_keeps_original_base_when_other_work_is_accepted(promotions):
     claim = promotions.claim("alice", "pc")["claims"][0]
-    promotions.overlay.write_text(json.dumps({"App/Fresh.cpp": [["a", "b"]]}))
+    promotions.overlay.write_text(json.dumps({"App/Fresh.cpp": [["", "void fresh() {}"]]}))
     resumed = promotions.claim("alice", "pc")["claims"][0]
     assert resumed["base_revision"] == claim["base_revision"]
     assert resumed["baseline"]["overlay"] == {}
@@ -944,7 +956,9 @@ def test_contributor_linked_preflight_detects_losses_and_writes_receipt(promotio
     assert receipt['gains'] == ['00500001']
     assert receipt['losses'] == (['00500000'] if lost else [])
     assert receipt['uncovered_losses'] == receipt['losses']
-    assert receipt['artifacts'] == str(receipt_file.parent)
+    assert (Path(receipt['artifacts'])/'preflight-receipt.json').exists()
+    assert json.loads((Path(receipt['artifacts'])/'preflight-receipt.json').read_text()) == receipt
+    assert Path(receipt['artifacts']).parent == root/'work/nv'
     assert receipt['baseline_artifacts'] == str(cache)
 
 

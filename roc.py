@@ -2896,6 +2896,8 @@ def main(argv=None):
         (["name"], {}), (["addr"], {}), (["--limit"], {"type": int, "default": 10}),
         (["--band"], {"type": float, "default": 0.25, "help": "max size difference as a fraction"}))
     __import__("roc.native_try").native_try.register(cmd)
+    __import__("roc.native_promotions").native_promotions.register(cmd)
+    __import__("roc.native_search").native_search.register(cmd)
     cmd("standins", lambda a: __import__("roc.standins").standins.main([a.name, a.addr]),
         "map an exact mined source's placeholder externs to the real symbols the exe relocates",
         (["name"], {}), (["addr"], {}))

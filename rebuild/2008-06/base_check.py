@@ -60,6 +60,9 @@ def header_of(cls, cache={}):
         for path in sorted((TREE / "include").rglob("*.h")):
             for c in re.findall(r"^\s*class\s+(?:__declspec\(\w+\)\s+)?(\w+)\s*:", path.read_text(errors="replace"), re.M):
                 cache.setdefault(c, path.relative_to(TREE / "include").as_posix())
+        for path in sorted((OVERLAY / 'App/include').rglob('*.h')):
+            for c in re.findall(r'^\s*class\s+(?:__declspec\(\w+\)\s+)?(\w+)\s*:', path.read_text(errors='replace'), re.M):
+                cache[c] = path.relative_to(OVERLAY / 'App/include').as_posix()
     return cache.get(cls)
 
 

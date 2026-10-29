@@ -39,7 +39,7 @@ SERVER_MODULES = ["cluster", "progress", "reports", "server"]
 WORKER_MODULES += ["bounds_proof", "agent_memory", "research", "agent_recovery", "bruteforce", "extents", "remill", "repair_scan", "rtti", "boundaries",
                    "claims", "packet", "scout", "ranking", "routing"]
 WORKER_MODULES += ["integration", "integrator", "rebuild", "rebuild_install", "mutsearch", "twinpatch", "native_try", "native_sweep", "native_batch", "standins"]
-WORKER_MODULES += ["integration_verify", "native_search"]  # contributor linked preflight shares authoritative build/gates
+WORKER_MODULES += ["integration_verify", "native_search", "native_transforms", "native_promotions"]  # contributor linked preflight shares authoritative build/gates
 SERVER_MODULES += ["integration_notify", "integration_site"]
 
 COMMON_FILES = ["roc.py", "roc.cmd", "roc.sh", "install.cmd", "install.sh",
@@ -320,7 +320,7 @@ def prepare_downloads(package):
     shutil.copy2(package, archive)
     for name in ("NATIVE_AGENT.md", "MATCHING_AGENT.md"):
         shutil.copy2(ROOT / "docs" / name, folder / name)
-    data.update(schema=1, workflow_version=12, matching_workflow_version=4,
+    data.update(schema=1, workflow_version=13, matching_workflow_version=4,
                 abi_manifest_sha256=hashlib.sha256(abi).hexdigest(), abi_manifest_classes=len(json.loads(abi)),
                 url=base + archive.name, sha256=hashlib.sha256(archive.read_bytes()).hexdigest(),
                 size=archive.stat().st_size, guide=base + "NATIVE_AGENT.md", matching_guide=base + "MATCHING_AGENT.md",

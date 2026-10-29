@@ -8,6 +8,27 @@ import pytest
 from roc import libs, rebuild
 
 
+def test_recipe_layer_compiles_reviewed_overlay_only_cpp(tmp_path, monkeypatch):
+    tree, overlay = tmp_path/'vendor', tmp_path/'overlay'
+    tree.mkdir(); overlay.mkdir()
+    (tree/'Existing.cpp').write_text('int existing();')
+    (overlay/'New.cpp').write_text('int added();')
+    monkeypatch.setattr(rebuild, 'ROOT', tmp_path)
+    monkeypatch.setattr(libs, 'LIBS', tmp_path)
+    monkeypatch.setitem(libs.RECIPES, 'promoted', dict(src='vendor',files='*.cpp',include=[],defines=''))
+    monkeypatch.setattr(rebuild, 'load_module', lambda *args: dict(name='Example',layers=[dict(
+        name='native',mode='recipe',recipe='promoted',files='*.cpp',flags='/O2',direct=True)]))
+    monkeypatch.setattr(rebuild, 'build_overlay', lambda *args:(tree,overlay))
+    monkeypatch.setattr(rebuild, 'patched_tree', lambda *args:tree)
+    class ReachedCompiler(Exception):pass
+    def compile(client, sources, *args, **kwargs):
+        assert {p.name for p in sources} == {'Existing.cpp','New.cpp'}
+        raise ReachedCompiler()
+    monkeypatch.setattr(rebuild,'compile_direct',compile)
+    with pytest.raises(ReachedCompiler):
+        rebuild.build_module('2008-06','example',log=lambda _:None)
+
+
 def tree_fixture(tmp_path, monkeypatch):
     source = tmp_path / 'vendor'
     source.mkdir()

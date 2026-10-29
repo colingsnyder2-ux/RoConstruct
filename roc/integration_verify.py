@@ -10,6 +10,7 @@ import subprocess
 import sys
 import threading
 import time
+import uuid
 from pathlib import Path
 
 from roc.integration import CLIENT, MODULE, ROOT, atomic_json, digest, merge_patches, canonical_patches
@@ -19,7 +20,7 @@ WRITABLE_OUT = {"RbxgsApp", "tests"}  # out/ folders a snapshot build or milesto
 WATCHDOG_SECONDS = 20 * 60  # cold baselines take minutes; stacks only after this long without a verdict
 
 # Compiler, matcher and gate implementation. Queue/UI/webhook code does not build native artifacts.
-NATIVE_CODE = ("__init__", "analyze", "clients", "fingerprint", "integration", "integration_verify", "libs", "match",
+NATIVE_CODE = ("__init__", "analyze", "clients", "fingerprint", "integration", "integration_context", "integration_verify", "native_promotions", "libs", "match",
                "rebuild", "rebuild_install", "repair", "rtti", "setup", "telemetry", "worker")
 
 
@@ -372,7 +373,9 @@ def linked_preflight(root, patches, output, log=print):
         check_gates(before)
         before["linked_addresses"] = json.loads((cache / "integration-linked.json").read_text())
         atomic_json(cache / "integration-result.json", before)
-    candidate = output / ("linked-preflight-" + str(time.time_ns()))
+    identifier = uuid.uuid4().hex[:12]
+    candidate = root / 'work/nv' / identifier
+    evidence = output / ('linked-preflight-' + identifier)
     snapshot(cache, candidate, link=True)
     atomic_json(candidate / "rebuild/2008-06/patches/rbxgs-client.json", combined)
     receipt = {"accepted": False, "baseline_artifacts": str(cache), "artifacts": str(candidate),
@@ -394,6 +397,7 @@ def linked_preflight(root, patches, output, log=print):
         raise
     finally:
         atomic_json(candidate / "preflight-receipt.json", receipt)
+        atomic_json(evidence / 'preflight-receipt.json', receipt)
         log("Linked preflight receipt: " + str(candidate / "preflight-receipt.json"))
     return receipt
 
@@ -578,6 +582,8 @@ def verify(promotions, job):
     job["diagnostics"].update(ownership_diagnostics(before, after, elsewhere))
     atomic_json(candidate / "integration-diagnostics.json", job["diagnostics"])
     check_gates(after, before, elsewhere)
+    from roc.native_promotions import check_result
+    check_result(promotions, job, after, dropped, candidate)
     if input_hash(root, live_only=True) != live_hash or promotions.baseline()["revision"] != baseline["revision"]:
         raise ValueError("Server inputs changed during candidate verification; retry on a stable baseline")
     old_owned = set(before["report"]["owned_addrs"])
@@ -660,6 +666,7 @@ def loop(promotions, log=print):
         stacks = open(promotions.directory / "verifier-stacks.log", "a")
         faulthandler.dump_traceback_later(WATCHDOG_SECONDS, repeat=True, file=stacks)
         try:
+            verification_started = time.monotonic()
             receipt = verify(promotions, job)
         except (OSError, ValueError, RuntimeError, subprocess.SubprocessError) as error:
             receipt = dict(job.get("diagnostics", {}), accepted=False, reason=str(error)[:1000])
@@ -668,6 +675,7 @@ def loop(promotions, log=print):
         finally:
             faulthandler.cancel_dump_traceback_later()
             stacks.close()
+        receipt['verification_seconds'] = round(time.monotonic() - verification_started, 3)
         try:
             finished = promotions.finish(job, receipt, lambda edits: publish(promotions, edits))
         except (OSError, ValueError, subprocess.SubprocessError) as error:

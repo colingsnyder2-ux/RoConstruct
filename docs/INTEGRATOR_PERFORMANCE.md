@@ -344,6 +344,31 @@ recompilation, caches unchanged exhausted searches, and appends trial journals
 with periodic JSON checkpoints. GUI partial events and Server Mining partial
 digests report local observations separately from verified native integration.
 
+## Completion validation (2026-10-29)
+
+A real proposals-only run of `native-search-complete-2008` performed 109 historical
+MSVC trials in 233.688s of discovery time (814.248 summed compile seconds,
+18.439 match/diagnostic seconds). It retained eight partial alternatives and six
+local exact witnesses across Camera, World and DragUtilities. These are local
+proofs, not independently accepted gains. Fresh ownership evidence still listed
+all six as waiting at audit time. Seven other registered clients returned explicit
+missing-native-profile records; no 2008 source/compiler/ABI was reused for them.
+
+A separate two-TU real-source check ran the same four baseline/profile trials
+with one and four compiler workers. Discovery took 4.860s versus 3.844s; neither
+run produced a new exact. End-to-end times were 16.610s and 6.266s, but first-run
+setup warm-up makes that larger difference unsuitable as a search speed claim.
+The six-hour production receipt report counted 26 independently credited native
+functions (4.333/hour); it does not attribute those existing credits to this
+change. Older receipts lack verification-duration fields, so timed-job count was
+zero. Updated server receipts now record that duration explicitly.
+
+Configured Server Mining webhook transport was exercised successfully (HTTP 204)
+with an explicitly labeled transport-check message claiming no improvement or
+credit. Real partial observations use the separate deduplicated telemetry route.
+Local experiment artifacts live under `work/native-search-completion`, with
+source/proof artifacts in the private workspace recorded by `workspace.json`.
+
 ## Exhausted providers and ambiguous local hits
 
 Explicit OpenCode allowance failures (`Free usage limit reached`, `Go usage limit

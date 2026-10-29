@@ -9,6 +9,27 @@ from pathlib import Path
 from roc import rebuild
 
 
+def test_overlay_only_source_compiles_caches_and_detects_new_original(tmp_path, monkeypatch):
+    tree, overlay, output = tmp_path/'tree', tmp_path/'overlay', tmp_path/'out'
+    tree.mkdir(); overlay.mkdir()
+    original = tree/'Promoted.cpp'
+    (overlay/'Promoted.cpp').write_text('int promoted(){return 1;}')
+    monkeypatch.setattr(rebuild, 'toolchain', lambda _: {})
+    calls = []
+    def run(tc, tool, args, cwd):
+        calls.append(args)
+        (cwd/'Promoted.obj').write_bytes(b'object')
+        return 0, ''
+    monkeypatch.setattr(rebuild, 'run', run)
+    def build():
+        return rebuild.compile_direct('2008-06', [original], output, [], '', overlay=(tree,overlay))
+    assert build()[str(original)][0]
+    assert build()[str(original)] == (True, 'content cache hit')
+    original.write_text('different authentic source now exists')
+    build()
+    assert len(calls) == 2
+
+
 def test_direct_compile_overlaps_independent_sources_and_keeps_result_order(tmp_path, monkeypatch):
     sources = [tmp_path / (name + '.cpp') for name in ('first', 'second', 'third', 'fourth')]
     for source in sources:

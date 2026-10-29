@@ -24045,6 +24045,28 @@
     },
     "targets": {}
   },
+  "native-search-complete-2008": {
+    "op": "grid",
+    "client": "all",
+    "hypothesis": "Run evidence-driven source transforms and compiler profiles per client, retain partials, propagate exact sibling edits and combine zero-loss witnesses. Missing authentic native profiles produce explicit blockers rather than borrowing another client's ABI.",
+    "native_sweep": {
+      "files": ["App/*/*.cpp"],
+      "targets_only": true,
+      "modes": ["assertions"],
+      "scoped_modes": ["scoped-osize", "scoped-speed", "scoped-fp", "scoped-noautoinline"],
+      "automatic_transforms": true,
+      "propagate_siblings": true,
+      "targeted_recipes": true,
+      "keep_partials": true,
+      "partial_floor": 50,
+      "search_cache": true,
+      "match_workers": 2,
+      "apply": false,
+      "submit": false,
+      "model": "gpt-6.1-sol"
+    },
+    "targets": {}
+  },
   "native-search-partials-2008": {
     "op": "grid",
     "client": "2008-06",
