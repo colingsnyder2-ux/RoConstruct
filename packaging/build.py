@@ -40,6 +40,7 @@ WORKER_MODULES += ["bounds_proof", "agent_memory", "research", "agent_recovery",
                    "claims", "packet", "scout", "ranking", "routing"]
 WORKER_MODULES += ["integration", "integrator", "rebuild", "rebuild_install", "mutsearch", "twinpatch", "native_try", "native_sweep", "native_batch", "standins"]
 WORKER_MODULES += ["integration_verify", "native_search", "native_transforms", "native_promotions"]  # contributor linked preflight shares authoritative build/gates
+WORKER_MODULES += ["native_repair"]
 SERVER_MODULES += ["integration_notify", "integration_site"]
 
 COMMON_FILES = ["roc.py", "roc.cmd", "roc.sh", "install.cmd", "install.sh",

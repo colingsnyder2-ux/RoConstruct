@@ -165,13 +165,39 @@ def methods(text):
 
 @functools.lru_cache(maxsize=32)
 def _method_spans(text):
-    """Unambiguous out-of-line methods only; constructors/templates/operators defer."""
+    """Unambiguous out-of-line methods, including balanced constructor initializers."""
     clean = masked_cpp(text)
     result = defaultdict(list)
     for found in re.finditer(r"\b(\w+)::(~?\w+)\s*\(", clean):
         end = closing(clean, clean.index("(", found.start()), "(", ")") + 1
-        brace = clean.find("{", end)
-        if brace < 0 or not re.fullmatch(r"\s*(?:(?:const|volatile|override|final)\s*)*", clean[end:brace]):
+        cursor = end
+        while cursor < len(clean) and clean[cursor].isspace():
+            cursor += 1
+        if found[1] == found[2] and clean[cursor:cursor+1] == ':':
+            cursor += 1
+            while True:
+                initializer = re.match(r'\s*[A-Za-z_]\w*(?:::\w+)*\s*', clean[cursor:])
+                if not initializer:
+                    break
+                cursor += initializer.end()
+                if clean[cursor:cursor+1] == '<':
+                    cursor = closing(clean, cursor, '<', '>') + 1
+                    while cursor < len(clean) and clean[cursor].isspace():
+                        cursor += 1
+                if clean[cursor:cursor+1] != '(':
+                    break
+                cursor = closing(clean, cursor, '(', ')') + 1
+                while cursor < len(clean) and clean[cursor].isspace():
+                    cursor += 1
+                if clean[cursor:cursor+1] != ',':
+                    break
+                cursor += 1
+            brace = cursor if clean[cursor:cursor+1] == '{' else -1
+        else:
+            brace = clean.find("{", end)
+            if brace >= 0 and not re.fullmatch(r"\s*(?:(?:const|volatile|override|final)\s*)*", clean[end:brace]):
+                brace = -1
+        if brace < 0:
             continue
         finish = closing(clean, brace, "{", "}") + 1
         if re.search(r"(?m)^\s*#\s*(?:if|elif|else|endif)\b", clean[brace:finish]):
@@ -1099,12 +1125,28 @@ def model_proposal(rel, text, addrs, baseline, owned, model, rounds, compile_rou
             return None, trials
         settings.setdefault("max_tokens", 3072 if settings["thinking"] == "disabled" else 32768)
         log("Requesting %s · %s · round %d/%d" % (model, rel, n + 1, rounds))
-        reply = providers.generate(model, messages, settings)
+        trials.append(dict(file=rel, mode='model-request', target_addresses=[selected['addr']] if selected and selected.get('addr') else
+                           [item.get('addr', addr) for item, addr in zip(items, addrs)]))
+        try:
+            reply = providers.generate(model, messages, settings)
+        except Exception as error:
+            trials.append(dict(file=rel, mode='model-error', ok=False, error=str(error)[:500],
+                               error_category=getattr(error, 'category', '')))
+            return None, trials
         log("Round %d/%d · AI %.1fs · %d in / %d out tokens" % (n + 1, rounds, getattr(reply, "latency_s", 0) or 0,
                                                               getattr(reply, "input_tokens", 0), getattr(reply, "output_tokens", 0)))
         messages.append({"role": "assistant", "content": providers_text(reply)})
         try:
-            edits = method_edits(text, reply, method) if response_mode == "method" else parse_edits(reply)
+            if response_mode == 'method':
+                edits = method_edits(text, reply, method)
+            else:
+                try:
+                    edits = parse_edits(reply)
+                except ValueError:
+                    if generation != 'auto' or not method:
+                        raise
+                    edits = method_edits(text, reply, method)
+                    response_mode = 'method-fallback'
             edits = [pair for pair in edits if pair[0] != pair[1]]
             if not edits:
                 raise ValueError("Reply made no source change; target is still not exact")
@@ -1298,7 +1340,9 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
                         data = seed_data
                         log('Resuming recompiled no-loss partial: ' + seed['addr'])
 
+        attempted_sources = set()
         def trial_compile(source, label):
+            attempted_sources.add(integration.digest(source))
             result = compile_source(source, rel, label)
             if result['ok'] and not native_search.visible_callees_ok(source, Path(result['object']).read_bytes(), config.get('proven_facts',[]), rel):
                 result.update(ok=False, error='Visible callee emitted different code/data; keep original source', blocker='callee-codegen')
@@ -1315,6 +1359,21 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
                         diagnostic=baseline_diagnostics.get(addr, {}))
 
         def completed(proposal, trials):
+            if any(t.get('error_category') in providers.FATAL_ERRORS for t in trials):
+                provider_failed.set()
+            if not proposal and config.get('repair_rounds', 2):
+                from roc import native_repair
+                attempted = {a for t in trials for a in t.get('target_addresses', []) if a in symbol_map}
+                repair_seed = partials.seed(rel, original, sorted(attempted)) if partials and attempted else None
+                proposal, repairs = native_repair.run(rel, working,
+                    {a: symbol_map[a] for a in sorted(attempted)}, baseline, trial_compile, matcher, log,
+                    rounds=config.get('repair_rounds', 2), limit=config.get('repair_trials', 24),
+                    context=declaration_context,
+                    seed=repair_seed['source'] if repair_seed else None,
+                    diagnostics=baseline_diagnostics,
+                    seen=attempted_sources,
+                    before_trial=options.get('before_request'))
+                trials += repairs
             if proposal and working != original:
                 proposal['edits'] = native_search.anchored_changes(original, apply_edits(working, proposal['edits']))
                 proposal = minimize(rel, original, proposal['edits'], {h['addr'] for h in proposal['witnesses']},
@@ -1322,7 +1381,9 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
                                     definitions=proposal['proof'].get('defined_symbols', ()))
             if (not proposal and base.get('input_signature') and config.get('search_cache', True)
                     and len([t for t in trials if t.get('generation')]) >= rounds
-                    and all(t.get('ok') and not t.get('error') for t in trials)):
+                    and all(t.get('ok') and not t.get('error') for t in trials
+                            if t.get('mode') not in ('model-request', 'repair-coverage'))
+                    and not any(t.get('stopped') or t.get('deferred_targets') for t in trials if t.get('mode') == 'repair-coverage')):
                 integration.atomic_json(negative, dict(key=negative_key, blocker='exhausted-rounds', accepted=False))
             return proposal, [base] + trials
 
@@ -1330,6 +1391,11 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
             return body_diff(obj, names[addr]["symbol"], addr) if names.get(addr, {}).get("symbol") else "no rebuilt body"
         try:
             prepass = []
+            trials = []
+            dependencies = base.get('compiler_config', {}).get('dependencies', {})
+            declaration_context = config.get('declaration_context', '') + '\n' + '\n'.join(
+                Path(p).read_text(errors='replace') for p in dependencies
+                if '/App/include/' in str(p).replace('\\','/') and Path(p).is_file())
             if config.get('automatic_prepass'):
                 selected_methods = {symbol_method(symbol_map[a]) for a in pending[:3] if a in symbol_map}
                 dependencies = base.get('compiler_config', {}).get('dependencies', {})
@@ -1416,7 +1482,7 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
             if getattr(error, "category", "") in providers.FATAL_ERRORS:
                 provider_failed.set()
                 log("Provider configuration failed; queued files skipped: " + str(error))
-            return None, [base, {"file": rel, "mode": "model", "ok": False, "error": str(error)[:500], "error_category": getattr(error, "category", "")}]
+            return completed(None, prepass + trials + [{"file": rel, "mode": "model", "ok": False, "error": str(error)[:500], "error_category": getattr(error, "category", "")}])
         return completed(proposal, prepass + trials)
 
     slots, slots_lock = list(range(jobs)), threading.Lock()
@@ -1557,6 +1623,12 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
     run_started = time.monotonic()
     config.setdefault('keep_partials', True)
     config.setdefault('automatic_prepass', True)
+    config.setdefault('repair_rounds', 2)
+    config.setdefault('repair_trials', 24)
+    if type(config['repair_rounds']) is not int or not 0 <= config['repair_rounds'] <= 8:
+        raise ValueError('Repair rounds must be 0-8')
+    if type(config['repair_trials']) is not int or not 1 <= config['repair_trials'] <= 256:
+        raise ValueError('Repair trial limit must be 1-256')
     partial_lock = threading.Lock()
     if config.get("llm"):
         config.setdefault("model", config["llm"])  # submissions name the model that wrote the edits

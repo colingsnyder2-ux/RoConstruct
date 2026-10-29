@@ -383,3 +383,30 @@ inflating the gain counter. Mixed batches minimize down to uniquely owned gains
 and re-prove the remaining edits with baseline loss checks. Server acceptance gates
 are unchanged. Historical local counters may include repeat addresses and ambiguous
 matches; they are not counts of distinct server credits.
+
+## Post-model experimental repair
+
+After unsuccessful model rounds, the integrator runs compiler-only mutations for
+the actual requested target methods. The default is two rounds, at most 24 trial
+compiles per round (expanded to one slot per attempted method for coverage).
+`native_repair_rounds=0` disables it in worker config; `native_repair_trials`
+adjusts the budget. Native recipe equivalents are `repair_rounds`/`repair_trials`.
+
+Trials use retained no-loss partials, anchored method rewrites, source-proven
+immediates, and scoped compiler profiles. Round-robin scheduling prevents one
+method consuming the whole budget. Candidate hashes skip already tested model
+and prepass sources. Coverage records list every requested address, trial counts,
+unsupported method locators, cancellation and deferred addresses. An additional
+round explores the strongest compiled no-loss source found so far. Partial events
+use the existing GUI/webhook path; no AI request is made during repair.
+
+Any exact still needs minimization, zero-loss code/data matching, unique ownership
+and independent linked server verification. Repair derived from model sources
+keeps the actual model's submission attribution.
+
+Real compiler validation on saved Name, Reflection, World and Feature partials
+ran 16 mutations with no compile failures and no additional score/exact gains.
+Existing 79.26%, 93.37%, 93.97% and 93.89% partials survived revalidation.
+This experiment exposed a constructor-initializer locator gap: balanced unique
+constructors now receive trials. Ambiguous Reflection constructor overloads
+remain explicitly reported as unsupported rather than edited by guesswork.

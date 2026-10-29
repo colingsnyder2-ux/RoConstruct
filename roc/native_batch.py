@@ -27,6 +27,7 @@ def model_batch(rel, text, groups, baseline, model, rounds, compile_round, match
         if settings.get('before_request') and not settings['before_request']():
             return None, None
         log('Requesting %s · %s · %s · batch round %d/%d' % (model, rel, method, attempt + 1, attempts))
+        records.append(dict(file=rel, mode='model-request', method=method, target_addresses=list(targets)))
         reply = providers.generate(model, state, settings)
         state.append({'role': 'assistant', 'content': sweep.providers_text(reply)})
         try:

@@ -368,8 +368,9 @@ def test_failed_model_compile_reports_no_comparison_instead_of_false_losses(monk
         lambda *args:dict(ok=False, error='error C2065: missing', object='absent.obj'),
         SimpleNamespace(scan=scan), lambda _:dict(rebuilt_symbol='?f@A@RBX@@QAEHXZ'),
         logs.append, options=dict(generation='method'))
-    assert proposal is None and len(trials) == 1
-    assert trials[0]['losses'] == [] and not trials[0]['comparison_complete']
+    assert proposal is None and len(trials) == 2
+    assert trials[0]['target_addresses'] == ['target']
+    assert trials[1]['losses'] == [] and not trials[1]['comparison_complete']
     assert any('compile failed; no match comparison' in line for line in logs)
 
 
