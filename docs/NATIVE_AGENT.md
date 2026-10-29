@@ -1,5 +1,97 @@
 # Native integration with an agent (Codex, Claude)
 
+## Command compatibility
+
+This guide's manual loop uses `roc native-try targets / evidence / check / submit`.
+The GUI's continuous session uses `roc integrator`. Keep these supported paths;
+`roc integrate work` and `roc integrate packet` do not exist. Earlier workflow
+instructions requiring those actions were incorrect. Their absence in Worker v12
+is not a reason to download that same package again or stop native-try work.
+
+Before setup, inspect the installed CLI once:
+
+```text
+roc native-try --help
+roc integrate --help
+```
+
+On Windows use `roc.cmd`; on Linux use `./roc.sh`. For explicit class claims,
+use `roc integrate next --count 4`. If the installed CLI lists `context`, retrieve
+one claimed target with:
+
+```text
+roc integrate context --claim CLAIM_ID --address ADDRESS
+```
+
+`context` needs the configured server and a saved local claim containing ADDRESS.
+It saves `context/ADDRESS/context.json`, `mined.cpp`, `target.asm` and native source
+files beneath `work/integration-client/claims/CLAIM_ID/`. It does not generate
+CONTEXT.md or accept `--max-tokens` / `--unit` search hints. Missing `context`
+does not block this guide's native-try evidence loop. Use the actual command help
+and server capabilities rather than assuming a package version supplies an action.
+Compiler smoke success establishes compiler readiness only; report native credit
+only after independent server acceptance.
+
+## Match the current GUI Integrator
+
+Choose one execution path for a mutable workspace. For the GUI, run `roc gui`,
+open **Workers → + New → Integrator**, select the actual model, contributor and
+server, then **Start Integrator**. Native sessions currently use 2008-06 only.
+The equivalent continuous CLI uses the same backend:
+
+```text
+roc integrator --model YOUR_ACTUAL_MODEL --workers 4 --rounds 3 --output-budget 3072 --batch-files 1 --compile-workers auto --compile-batch 4 --context methods --generation auto --thinking disabled --cloud-concurrency auto --allow-cloud
+```
+
+Use remote prompts only within the operator's authorization. The GUI offers
+signed-in CLIs, API providers and local models. Selecting a model does not change
+the independent acceptance gates. The manual agent path below writes its own
+anchored edits through native-try; it follows the same evidence/acceptance goals
+but does not automatically acquire the GUI's scheduling or shared compiler jobs.
+Do not launch a second editor or continuous session in its mutable staging tree.
+
+| Current GUI control | Behavior to preserve |
+| --- | --- |
+| Concurrent AI workers / Cloud concurrency | File-job slots and simultaneous provider requests are separate limits. More slots do not bypass rate limits. |
+| Parallel local compilers | Independent compiler limit; `auto` caps at 8 slots subject to CPU capacity. |
+| Files per integration batch | Set 1 for immediate per-file submission (program default: 40). This does not promise acceptance. |
+| Methods per shared compile | Default 4 independent edits per file; split conflicting/failing combinations, recompile retained edits. |
+| Source context / AI output | Default `methods` / `auto`: one complete method, then anchored repairs. Manual native-try still consumes SEARCH/REPLACE blocks. |
+| Rounds / Output tokens | New native sessions start at 3 / 3072; configured presets or edits can override these values. |
+| Request / Token / Estimated spend caps | Session-wide limits. Editing a cap retains usage already spent; unknown pricing is not zero cost. CLI subscription dollar caps are unsupported. |
+
+GUI presets are shared with mining workers. **Balanced** preset does not select
+the CLI's native `--mode balanced` ranking policy. The current GUI form does not
+expose native selection/escalation/no-improvement controls; use supported CLI
+flags when the operator requests those settings.
+
+Keep the agent's progress loop aligned with the GUI:
+
+1. Sync the accepted baseline, inspect saved proposals before generating more
+   edits, and work from genuine declarations and target evidence.
+2. Test one hypothesis, preserve local gains, isolate failures, and stop spending
+   on an unchanged exhausted target. Broaden method context only when needed.
+3. Queue each completed passing fix immediately. Record each job ID, keep discovery moving,
+   and check pending jobs between batches. Local exact, queued and accepted are
+   separate states; only accepted receipts add verified native credits.
+4. On baseline advance, reconcile and recheck saved proofs before new generation.
+   The automatic backend can recover saved proposals without another AI request;
+   the manual path uses native-try revalidation and submit recovery described below.
+5. Rotate pending targets after a discovery pass. Revisit exhausted targets only
+   when relevant inputs change; respect provider/attempt budgets and stop/pause.
+
+The GUI snapshots mutable runtime/rebuild inputs under `local/integrators/<id>/`.
+**Restart offline / failed** reuses that same session's owned workspace, proofs
+and compiler cache. **+ New** creates a separate workspace; a new CLI invocation
+does not imply recovery of an earlier GUI session. Keep its printed path and job
+IDs when diagnosing failures.
+
+Use **Configure → Apply changes** for supported live settings. Pause/stop is
+checked before the next file or AI round; already-sent requests and submitted
+server batches can finish. Closing the browser tab leaves the dashboard running;
+exiting the dashboard stops its process trees. Verify final server job states
+when resuming instead of assuming interrupted local monitoring cancelled a batch.
+
 ## Missing native types or build units
 
 Do not bypass the invented-type gate or upload `@replace` adoption directives.
@@ -16,8 +108,8 @@ Other contributors can submit packets from their own PCs; the owner does not
 need their local lane-map file. Send the packet ID when escalating. Do not claim
 the class is promoted until its server job is accepted.
 
-Paste this file into a Codex or Claude Code session opened in a RoConstruct checkout. It runs the same loop as
-the DeepSeek native pass (`roc research run native-model-2008`). You write the edits; the tools compile the real
+Paste this file into a Codex or Claude Code session opened in a RoConstruct checkout. It follows the native
+conversion workflow used by the automatic Integrator. You write the edits; the tools compile the real
 2008-06 file, check exact bytes and referenced data, minimize your edits, and submit verified batches.
 
 ## Continuous, terse operation
@@ -32,8 +124,9 @@ Select once. Reuse client, checkout, installed dependencies and successful setup
 retries/restarts. Repeat setup only for actual missing dependencies or changed build inputs.
 Read this guide once; prefer `--brief` evidence and small method excerpts afterwards.
 
-Batch 10–30 targets when available. Save submitted job IDs, then immediately discover more
-proposals: submit restores the private baseline. Check pending jobs once per batch or every
+Submit each completed passing fix immediately; do not accumulate 10–30 targets or wait
+for the rest of a file list. Include only inseparable supporting edits in its coherent batch.
+Save the submitted job ID, then immediately discover more proposals: submit restores the private baseline. Check pending jobs once per batch or every
 few minutes. Use `integrate watch` only when the user requests waiting or a dependent step
 requires acceptance. Revalidate after baseline changes, not after every status poll.
 
@@ -52,29 +145,17 @@ A rejected batch needs repair; it does not end the session. If no fresh
 targets remain, stay alive at a modest polling interval; revisit after source/evidence changes.
 Respect stop/pause and configured limits. Report only meaningful blockers or new progress.
 
-Worker v11's automatic integrator starts another discovery cycle after at most 60s
-without fresh files, rotating pending targets instead of waiting indefinitely for
-published statistics to change. Failed linked preflight preserves saved proposals
-and continues other files after 30s; it never turns a rejected proof into an accepted
-one. Compact mode shows batch/preflight stages after file workers finish. Explicit
-stop/pause, provider authentication failures, configured budgets and the two-hour
-server-outage deadline still apply.
-
-Worker v11 disconnects noninteractive build/generator processes from the controller's
-stdin. On Windows an inherited command pipe can block Python before the generator
-starts, causing repeated 120-second timeouts. Explicit controller pipes remain active.
-Restarting the same dashboard session reuses its owned private workspace and retains
-native edits, saved proofs and build outputs while refreshing runtime code. New sessions
-stay isolated. Reused outputs still pass input-content, compiler, ownership and runtime
-checks; reuse is not acceptance.
+The automatic Integrator starts another discovery cycle within 60s without fresh
+files, rotating pending targets. Failed linked preflight retains saved proposals
+and continues other files after 30s. Idle AI slots during linked preflight are
+expected; inspect phase heartbeats before diagnosing a stalled controller.
 
 For OpenCode NVIDIA sign-in, select `opencode:nvidia/nvidia/nemotron-3-ultra-550b-a55b#none`;
 direct NVIDIA API uses `nvidia:nvidia/nemotron-3-ultra-550b-a55b` with `NVIDIA_API_KEY`.
 Keep the full vendor namespace. HTTP 401/403 means repair credentials/access, 402 means
 provider balance, and 404 means repair model ID/endpoint. Do not retry these as outages.
-Worker v11 skips queued files on permanent provider errors and avoids duplicate CLI
-generations after uncertain HTTP results. Automatic integrator mode can request complete
-method bodies, then use anchored repairs. Manual native edits remain fenced SEARCH/REPLACE blocks.
+Permanent provider errors stop generation and skip queued files. Do not duplicate
+CLI generations after uncertain HTTP results.
 
 Automatic integrator workers share a whole-source-file compile for independent method edits:
 `roc integrator --compile-batch 4 --compile-workers auto`. The default is four methods;
@@ -82,10 +163,7 @@ Automatic integrator workers share a whole-source-file compile for independent m
 split for diagnosis, and recovered combinations are compiled again. Exact code/data,
 baseline-loss, linked ownership, ABI and runtime checks remain mandatory. Compiler auto
 caps at eight or half the logical CPUs; more AI workers need not mean more compilers.
-Windows dependency-tree publication retries brief directory locks without copying again.
-Warm compiler caching normalizes Windows path casing while retaining header/shadow hashes.
-
-Worker v12 automatically queues immutable saved proposals when the accepted baseline
+The automatic Integrator queues immutable saved proposals when the accepted baseline
 advances before submission. The next automatic pass rechecks them without AI, using
 their original model attribution. Current compiler/code/data/ownership proofs and
 combined linked/runtime/ABI checks remain mandatory. Already integrated targets are
@@ -94,14 +172,50 @@ safe files. Gateway recovery checks existing server state before replaying reque
 Rejected server batches are not blindly resubmitted. Recovery archives and tickets
 live under the run's `recovery-proposals/` and `recovery-pending/` directories.
 
-Automatic scheduling fills a short fresh-file batch with different pending targets
-from earlier files when available. It avoids refilling files whose known targets
-were exhausted; source/baseline changes refresh scheduling evidence. The dashboard
-shows active file workers versus configured slots. AI slots can legitimately be idle
-during linked preflight. Thirty-second phase heartbeats distinguish those checks
-from a stalled controller. The RakNet runtime test binds both peers to localhost
-with ephemeral ports, preserving reliable-packet verification without listening on
-LAN interfaces or colliding with another session's fixed test port.
+Automatic scheduling fills short batches with different pending targets from
+earlier files. Exhausted files reopen when relevant source/baseline inputs change.
+
+## Failure and recovery
+
+| Observed result | Next action |
+| --- | --- |
+| Unknown CLI action | Inspect installed help. Use native-try or supported next/context commands; do not require work/packet actions. |
+| Compiler / SDK / include error | Repair the named prerequisite or evidenced source error. Reuse working setup; rerun only the failed trial. |
+| Method bytes or referenced data differ | Read the first relevant diff; test one hypothesis in the real TU. Never promote masked-code agreement alone. |
+| Lost exact / ambiguous ownership | Isolate the offending edit. Require linked surviving ownership or remove that edit before submitting. |
+| Missing declaration / ABI evidence | Save the precise missing fact, move to another target; use the documented promotion path for genuine missing native types. |
+| Baseline advanced / stale anchors | Preserve proposals, sync, reconcile changed anchors and recheck. Retain the original writer attribution. |
+| Submission timeout / gateway error | Save job/request identifiers, inspect server state, then use integrate resume or native-try submit recovery. Never create a second batch blindly. |
+| Server rejected / failed | Read the receipt, repair its actual cause, revalidate; continue independent work. A rejected receipt grants no credit. |
+| HTTP 401/403, 402 or 404 from provider | Fix credentials/access, balance or model/endpoint respectively. These are not transient outages. |
+| Server unreachable | Follow the bounded outage policy above; preserve proofs and job IDs. Refresh claims and baseline after recovery. |
+| Provider budget reached / operator stop | Save the checkpoint below; stop new generation. Already-submitted server jobs may finish. |
+| Repeated build/generator timeout | Inspect phase logs and process state; preserve artifacts. Noninteractive children must not inherit controller stdin. Do not regenerate the same edits as a timeout workaround. |
+
+## Durable checkpoint
+
+Keep one small `native-agent-checkpoint.md` in the active private checkout. Update
+it after saving a useful proof, submitting a batch, changing baseline, or stopping.
+Reference existing receipts rather than copying large evidence packets. Never
+include credentials, provider keys or lease tokens.
+
+```text
+Client / server / contributor / actual model: ...
+Absolute checkout / GUI session ID (if applicable): ...
+Accepted baseline revision / generator hash: ...
+Current file / targets / hypothesis / rejected variants: ...
+Saved proposals / object and source proof paths: ...
+Claim IDs / last confirmed lease state: ...
+Pending job IDs / last confirmed states / receipt paths: ...
+Accepted new native credits / local-only gains: ...
+Budget spent / remaining (unknown where unavailable): ...
+Blocker / next command / stop or pause instruction: ...
+```
+
+On resume, retain the recorded workspace and selected client. Honor recorded
+stop/pause until the operator resumes work. Check pending server jobs first, then
+refresh baseline/claims and revalidate affected proofs. Do not infer acceptance
+from a saved local score, or replay an uncertain request with a new identity.
 
 ## First response: select the client
 
@@ -117,6 +231,44 @@ Use the agent's question tool when available. Wait for selection before client d
 If a client was explicitly selected earlier, keep it; do not ask again. Native integration currently supports
 **2008-06** only. Other clients can use ordinary source mining; explain their native limitation in the choices.
 Keep the selected client locked for this run.
+
+## Verify RoConstruct is up to date
+
+First locate existing work. Prefer the checkpoint's absolute checkout, then the
+current directory, then immediate `RoConstruct*` folders in this authorized
+workspace and its parent. Inspect `roc.py`, package identity, contributor/server
+configuration, saved proposals and pending job IDs. Reuse a suitable idle private
+checkout; do not create another folder merely because a new chat started. Never
+take over another active session or a checkout containing `work/server.db`.
+Do not recursively search the whole drive or reset existing edits.
+
+After client selection, before setup, claims or native trials in a new or resumed
+session, fetch the current Worker manifest below with cache busting. Compare its
+`workflow_version` and package `sha256` with the installed package identity.
+Having the files or meeting this guide's minimum version is not enough: a package
+can be republished with fixes without changing that minimum. Record the checked
+manifest version/hash and installed package identity in the session checkpoint.
+
+If the Worker needs updating, first look for a cached ZIP matching the manifest's
+SHA-256 in the chosen workspace, immediate RoConstruct folders, `local/packages`,
+`local/findings/data` and the user's Downloads folder. Reuse verified media;
+download only when no matching archive exists. Extract an update into a fresh
+private folder. Preserve the old checkout, local edits, saved proofs, claims and pending
+job IDs. Reconcile saved work with the current accepted baseline and revalidate
+it before submitting. Never overwrite a running agent's files or reset/stash
+someone else's changes to perform an update.
+
+For a normal Git installation, inspect status and its configured remote/upstream,
+fetch updates, and use a fast-forward update only when the checkout is clean and
+that upstream is unambiguous. Preserve dirty/diverged work in its current checkout;
+use a separate current checkout instead of forcing an update. Packaged Workers
+must use the verified package-refresh path, not `roc update`.
+
+If the update check fails, report the actual error and that currency is unverified;
+do not claim RoConstruct is up to date. Recheck after a long interruption or a
+server compatibility error, not before every unchanged local trial. If the newest
+package still disagrees with the server's generator/protocol, preserve work and
+report both versions; do not repeatedly download the same incompatible archive.
 
 ## Automatic Worker download
 
@@ -139,10 +291,33 @@ $nativeManifest = Invoke-RestMethod ('https://raw.githubusercontent.com/colingsn
 if ($nativeManifest.workflow_version -lt 12 -or
     $nativeManifest.url -ne 'https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.zip' -or
     $nativeManifest.sha256 -notmatch '^[0-9a-fA-F]{64}$') { throw 'Invalid Worker manifest' }
-$nativeFolder = Join-Path (Get-Location) ('RoConstruct-Native-' + [guid]::NewGuid().ToString('N'))
+$nativeWorkspace = (Get-Location).Path
+$nativeSearch = @($nativeWorkspace, (Split-Path -Parent $nativeWorkspace), (Join-Path $env:USERPROFILE 'Downloads'))
+$nativeSearch += @(Get-ChildItem -LiteralPath $nativeWorkspace -Directory -Filter 'RoConstruct*' | Select-Object -ExpandProperty FullName)
+$nativeSearch += @(Get-ChildItem -LiteralPath (Split-Path -Parent $nativeWorkspace) -Directory -Filter 'RoConstruct*' | Select-Object -ExpandProperty FullName)
+$nativeCached = $null
+foreach ($nativeBase in ($nativeSearch | Select-Object -Unique)) {
+    foreach ($nativeCache in @($nativeBase, (Join-Path $nativeBase 'local/packages'), (Join-Path $nativeBase 'local/findings/data'))) {
+        if (-not (Test-Path -LiteralPath $nativeCache -PathType Container)) { continue }
+        foreach ($nativeZip in (Get-ChildItem -LiteralPath $nativeCache -File -Filter '*.zip')) {
+            if ((Get-FileHash -LiteralPath $nativeZip.FullName -Algorithm SHA256).Hash -eq $nativeManifest.sha256) {
+                $nativeCached = $nativeZip.FullName
+                break
+            }
+        }
+        if ($nativeCached) { break }
+    }
+    if ($nativeCached) { break }
+}
+$nativeFolder = Join-Path $nativeWorkspace ('RoConstruct-Native-' + [guid]::NewGuid().ToString('N'))
 New-Item -ItemType Directory -Path $nativeFolder -ErrorAction Stop | Out-Null
 $nativeArchive = Join-Path $nativeFolder 'worker.zip'
-Invoke-WebRequest -UseBasicParsing -Uri ($nativeManifest.url + '?sha256=' + $nativeManifest.sha256) -OutFile $nativeArchive
+if ($nativeCached) {
+    Copy-Item -LiteralPath $nativeCached -Destination $nativeArchive
+    Write-Output ('Reusing verified Worker ZIP: ' + $nativeCached)
+} else {
+    Invoke-WebRequest -UseBasicParsing -Uri ($nativeManifest.url + '?sha256=' + $nativeManifest.sha256) -OutFile $nativeArchive
+}
 if ((Get-FileHash -LiteralPath $nativeArchive -Algorithm SHA256).Hash -ne $nativeManifest.sha256) {
     throw 'Worker ZIP hash mismatch'
 }
@@ -152,7 +327,8 @@ $env:ROC_NONINTERACTIVE = '1'
 Write-Output ('Native checkout: ' + $nativeFolder)
 ```
 
-On Linux use the same HTTPS manifest/package, verify SHA-256, and extract into a fresh authorized folder.
+On Linux use the same discovery/cache checks and HTTPS manifest/package, verify
+SHA-256, and extract only a needed update into a fresh authorized folder.
 Capture the printed absolute checkout path and use it as the explicit working directory for every later
 tool call. `Set-Location` and process environment changes do not persist across separate terminal calls.
 Set `ROC_NONINTERACTIVE=1` again in the grouped setup call if needed.
@@ -160,6 +336,10 @@ Read the extracted `AGENTS.md` and `CLAUDE.md`, then execute setup below. Use an
 configuration when supplied, otherwise use the manifest's `server` URL. Never copy another contributor's
 credentials. Ask only for missing contributor identity. Native integration is public; no invitation required.
 If downloads fail, retry and report the actual URL/error; never invent a successful install.
+After extraction, check `native-try --help` again. If required native-try commands
+or files remain missing, report the manifest version, package revision and exact
+error. Preserve the existing checkout and edits; do not repeat the same download
+indefinitely. Never require the nonexistent `integrate work / packet` actions.
 
 ## Goal
 
@@ -178,7 +358,8 @@ Use a current Worker package or checkout with `roc native-try --help`. The Worke
 `native_try`, `native_sweep`, `standins`, `rebuild_install`, this document and `research/libs-bundle.json`.
 If a public clone lacks `roc/native_try.py`, use Automatic Worker download above rather than cloning
 that same public revision again. A pasted copy of this guide is sufficient to obtain the package.
-Extract into a fresh folder inside this chat's authorized workspace; keep older checkouts and edits intact.
+Reuse a compatible private checkout; extract into a fresh authorized folder only
+when installation/update is needed. Keep older checkouts and edits intact.
 A guide cannot grant filesystem or network permissions. Packaged installs contain `roconstruct-package.json`;
 their installer keeps the bundled code instead of replacing it with potentially older public Git code.
 Do not run `roc update` on that standalone package; use Automatic Worker download for a fresh update.
@@ -201,7 +382,26 @@ if not already configured. Use the supplied server URL, not the owner's `localho
 Leave `ROC_NATIVE_EVIDENCE_ROOT` unset on
 another PC; it is an optional same-machine testing override.
 
-On Windows, run these existing commands through `.\roc.cmd` (Linux: `./roc.sh`), in this order:
+Before downloads, inventory existing dependencies once. Run `roc doctor` and
+`roc rebuild 2008-06 doctor`; inspect this checkout's tools, client executable,
+analysis files and native source trees. Also check the selected checkpoint and
+nearby existing RoConstruct installs for working tools and compiler media.
+`roc install` already skips detected compiler builds. For compilers outside its
+tool tree, set `ROC_CL` to the verified cl.exe paths (platform path separator);
+for a working SDK use `ROC_WINSDK`. Do not reinstall working Python, Git or SDKs.
+
+Compiler downloads first reuse pinned ISO/MSI hashes from `tools/dl`, immediate
+nearby RoConstruct installs, the workspace parent and Downloads. Extra cache
+directories can be supplied through `ROC_DOWNLOAD_CACHE` (platform path
+separator). Original ISO names `DVD1.ISO` and
+`Micorosft_Visual_C++_2005_Express.iso` are recognized too. Never trust filenames
+alone or remove another checkout's cached files. Reuse existing vendor trees
+through supported configuration/shared inputs; never copy credentials or blindly
+replace this checkout's modified tools.
+
+On Windows, use `.\roc.cmd` (Linux: `./roc.sh`). The following is the dependency
+order for missing/stale prerequisites, not a mandatory full setup on every run.
+Run only needed steps; keep baseline sync and validation before new trials:
 
 ```text
 roc install --yes --client 2008-06
@@ -308,9 +508,12 @@ If doctor cannot find an installed SDK, set `ROC_WINSDK` to this PC's SDK folder
    `roc native-try check FILE`. If anchors changed, reconcile the edits before checking again.
    For example, `roc native-try check App/include/util/Events.h blocks.txt --only 0055ae20`
    automatically finds and compiles `Instance.cpp`; it never compiles the header as a standalone TU.
-5. Read the diff, make one hypothesis per try, and stop a file after about 3 tries without progress. Move on.
-6. After several saved proposals (aim for 10–30 targets), run `roc integrate sync`, then
-   `roc native-try submit --model YOUR_ACTUAL_MODEL`. It claims, stages and queues one batch.
+5. Read the diff and make one hypothesis per try. If a check saves a new exact proposal
+   with no loss, go immediately to step 6 before trying another unrelated target or file.
+   Stop a file after about 3 tries without progress; record its blocker and move on.
+6. **Submit after every completed passing fix.** Run `roc integrate sync`, then
+   `roc native-try submit --model YOUR_ACTUAL_MODEL`. It rechecks the required gates,
+   claims, stages and queues the fix. Do not wait for 10–30 targets, all files, or session end.
    - When the accepted baseline moves, submit recompiles versioned saved edits against
      the latest clean baseline automatically. Changed anchors, lost gains or regressions
      stop submission and retain saved proposals for repair.
@@ -344,6 +547,9 @@ If doctor cannot find an installed SDK, set `ROC_WINSDK` to this PC's SDK folder
      A partial batch archives only the submitted proposals; the remaining proposals stay saved.
 
    After submitting:
+   - Record the server job ID before starting the next fix. If no job was created, preserve
+     the proposal and report the exact blocking gate, claim, baseline or transport error.
+     A local exact without a submission is not a completed integration.
    - `native-try submit` keeps the submitted snapshot and restores the local baseline,
      so more discovery can run while the server verifies the batch. Concurrent generator edits are preserved.
    - Record JOB and continue discovery. Use `roc integrate status --id JOB` for a single status check;

@@ -329,6 +329,10 @@ def download(url, dest, tries=6):
     """Download with resume (HTTP Range) and retries: archive.org drops big transfers."""
     if dest.exists() and dest.stat().st_size > 0:
         return dest
+    cached = cached_compiler_bundle(url, dest)
+    if cached:
+        print("Reusing verified compiler bundle: %s" % cached)
+        return cached
     dest.parent.mkdir(parents=True, exist_ok=True)
     part = dest.with_suffix(dest.suffix + ".part")
     print("Downloading %s ..." % dest.name)
@@ -359,6 +363,34 @@ def download(url, dest, tries=6):
             print()
             print("  %s, retrying in %d s (attempt %d/%d)..." % (error, wait, attempt + 1, tries))
             time.sleep(wait)
+
+def cached_compiler_bundle(url, dest):
+    """Reuse pinned compiler media in nearby installs without copying large ISOs."""
+    pins = {VS2008_URL: ('sha1', VS2008_SHA1, 'DVD1.ISO'),
+            VS2005_URL: ('sha1', VS2005_SHA1, 'Micorosft_Visual_C++_2005_Express.iso'),
+            VCPY_URL: ('sha256', VCPY_SHA256, 'VCForPython27.msi')}
+    if url not in pins:
+        return None
+    algorithm, expected, original = pins[url]
+    folders = [Path(p).expanduser() for p in os.environ.get('ROC_DOWNLOAD_CACHE', '').split(os.pathsep) if p]
+    folders += [DL, ROOT, ROOT.parent, Path.home() / 'Downloads']
+    for checkout in sorted(ROOT.parent.iterdir()):
+        if checkout.is_dir() and checkout.name.lower().startswith('roconstruct'):
+            folders.extend([checkout / 'tools/dl', checkout])
+    seen = set()
+    for folder in folders:
+        for name in dict.fromkeys((dest.name, original)):
+            candidate = folder / name
+            identity = os.path.normcase(str(candidate.resolve()))
+            if identity in seen or not candidate.is_file() or candidate == dest:
+                continue
+            seen.add(identity)
+            with candidate.open('rb') as handle:
+                actual = hashlib.file_digest(handle, algorithm).hexdigest()
+            if actual == expected:
+                return candidate
+    return None
+
 
 def sha1(path):
     h = hashlib.sha1()
