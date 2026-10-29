@@ -189,3 +189,27 @@ def test_complete_native_context_refresh_preserves_omitted_old_addresses(tmp_pat
     assert swap_build.kept_addresses(live) == {"a", "b"}
     assert (live / "0000.obj").read_bytes() == b"new native context"
     assert (live / "live-0000.obj").read_bytes() == b"obj"
+
+
+@pytest.mark.parametrize("alias", [False, True])
+def test_raknet_units_use_real_headers_and_reject_private_aliases(tmp_path, monkeypatch, alias):
+    root = tmp_path / "raknet"
+    root.mkdir()
+    text = '#include "BitStream.h"\n'
+    if alias:
+        text = '#pragma include_alias("BitStream.h", "private.h")\n' + text
+    fetched = []
+    def fetch(recipe):
+        fetched.append(recipe)
+        (root / "roc_geometry.cpp").write_text(text)
+        return root
+    monkeypatch.setattr(swap_build.libs, "fetch", fetch)
+    monkeypatch.setattr(swap_build.libs, "LIBS", tmp_path)
+    monkeypatch.setitem(swap_build.libs.RECIPES, "openrbx-raknet", {"src": "raknet"})
+    assert swap_build.compatible("RakNet", "roc_geometry.cpp", "openrbx-raknet") is not alias
+    assert fetched == ["openrbx-raknet"]
+
+
+def test_raknet_recipe_routing_excludes_app_families():
+    assert swap_build.of_module("RakNet", "openrbx-raknet", "BitStream.cpp")
+    assert not swap_build.of_module("RakNet", "openrbx-client", "Streaming.cpp")

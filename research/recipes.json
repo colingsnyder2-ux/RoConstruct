@@ -24827,5 +24827,38 @@
       "evidence": "RoConstruct-findings 2008-06/verification/scintilla-native-20261029/"
     },
     "rejected": "Two-slot summary was incomplete: actual stored matching unit also removes GetReplaceAllTarget virtual slot. Header-only overlay did not override adjacent quoted header; unchanged source must compile from overlay. No Scintilla DLL source-body credits or full historical field-layout claim."
+  },
+  "raknet-native-geometry-cohort-20261029": {
+    "op": "fanout",
+    "client": "2008-06",
+    "library": "Native RakNet BitStream geometry templates",
+    "hypothesis": "Instantiate genuine float/double vector, quaternion and matrix serializers absent from current compiled module; compare precise/fast x87 flags without changing BitStream layout.",
+    "sources": [
+      {
+        "recipe": "openrbx-raknet",
+        "files": [
+          "roc_native_bitstream_geometry_5e4a747d48d02719.cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /GS- /EHsc /MD",
+          "/O2 /GS- /EHsc /MD /fp:fast"
+        ]
+      }
+    ],
+    "result": {
+      "status": "4 forced actual library-owned code/data exact float methods;392->396 inventory no loss; geometry and3-message50321-byte reliable ordered loopback0; placement407",
+      "new_verified": 0,
+      "new_local_exact_addresses": [
+        "004a5dd0",
+        "004c9c80",
+        "004ca0f0",
+        "004ca210"
+      ],
+      "evidence": "RoConstruct-findings 2008-06/verification/raknet-native-20261029/"
+    },
+    "rejected": "Broad native header adoption rejects15 genuine sources, zero strict gains; isolated only. Double template variants no exact gains. Existing bool reader already exact in all10 current providers and not swapped. Standalone WriteCompressed specialization force-proven; wire algorithm tested through vector packing."
   }
 }
