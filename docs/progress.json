@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-29 07:15 UTC",
+ "updated": "2026-10-29 08:18 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -240,15 +240,15 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22293,
-   "matched": 22288,
-   "partial": 5,
-   "source_matched": 13820,
+   "matched": 22289,
+   "partial": 4,
+   "source_matched": 13821,
    "mined_matched": 8468,
    "bytes": 3738870,
-   "matched_bytes": 3725730,
-   "source_bytes": 2782396,
+   "matched_bytes": 3726443,
+   "source_bytes": 2783109,
    "mined_bytes": 943334,
-   "partial_bytes": 13140,
+   "partial_bytes": 12427,
    "data_bytes": 1559926,
    "leaderboard": [
     {
@@ -290,11 +290,11 @@
     {
      "user": "EspClaude",
      "matched": 533,
-     "mining_points": 16117,
-     "points": 16117,
+     "mining_points": 16118,
+     "points": 16118,
      "native_integrated": 0,
-     "submissions": 825,
-     "last": 1793257036.0678446
+     "submissions": 826,
+     "last": 1793258212.7683654
     },
     {
      "user": "Espeon",
@@ -307,12 +307,12 @@
     },
     {
      "user": "coldek",
-     "matched": 146,
-     "mining_points": 10332,
-     "points": 10404,
+     "matched": 147,
+     "mining_points": 10336,
+     "points": 10408,
      "native_integrated": 72,
-     "submissions": 301,
-     "last": 1793251966.6697705
+     "submissions": 302,
+     "last": 1793259770.9129267
     },
     {
      "user": "Cezant64gamejr",
@@ -327,10 +327,10 @@
      "user": "nuck16",
      "matched": 42,
      "mining_points": 1514,
-     "points": 1515,
-     "native_integrated": 1,
+     "points": 1516,
+     "native_integrated": 2,
      "submissions": 70,
-     "last": 1793254478.6290004
+     "last": 1793261476.9871926
     },
     {
      "user": "Intel",
@@ -836,10 +836,10 @@
    "user": "nuck16",
    "matched": 2441,
    "mining_points": 213723,
-   "points": 213724,
-   "native_integrated": 1,
+   "points": 213725,
+   "native_integrated": 2,
    "submissions": 2789,
-   "last": 1793254478.6290004
+   "last": 1793261476.9871926
   },
   {
    "user": "why2",
@@ -862,11 +862,11 @@
   {
    "user": "EspClaude",
    "matched": 533,
-   "mining_points": 16117,
-   "points": 16117,
+   "mining_points": 16118,
+   "points": 16118,
    "native_integrated": 0,
-   "submissions": 825,
-   "last": 1793257036.0678446
+   "submissions": 826,
+   "last": 1793258212.7683654
   },
   {
    "user": "intel",
@@ -888,12 +888,12 @@
   },
   {
    "user": "coldek",
-   "matched": 146,
-   "mining_points": 10332,
-   "points": 10404,
+   "matched": 147,
+   "mining_points": 10336,
+   "points": 10408,
    "native_integrated": 72,
-   "submissions": 301,
-   "last": 1793251966.6697705
+   "submissions": 302,
+   "last": 1793259770.9129267
   },
   {
    "user": "TrollStein",
