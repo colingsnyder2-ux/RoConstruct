@@ -373,6 +373,38 @@ def test_failed_model_compile_reports_no_comparison_instead_of_false_losses(monk
     assert any('compile failed; no match comparison' in line for line in logs)
 
 
+def test_linked_preflight_heartbeat_preserves_phases_receipt_and_stops(monkeypatch, tmp_path):
+    import threading
+    from roc import integration_verify
+    observed, messages = threading.Event(), []
+    receipt = {'accepted':False, 'losses':['00500000']}
+    def log(message):
+        messages.append(message)
+        if 'still running' in message:
+            observed.set()
+    def preflight(root, additions, output, progress):
+        progress('Linked preflight baseline: building')
+        assert observed.wait(3), 'No progress heartbeat during a live verifier wait'
+        progress('Linked preflight candidate: checking')
+        return receipt
+    monkeypatch.setattr(integration_verify, 'linked_preflight', preflight)
+    assert sweep.linked_preflight_progress(tmp_path, {}, tmp_path, log, interval=.01) is receipt
+    assert any(m.startswith('Linked preflight baseline: building · still running') for m in messages)
+    assert messages[-1] == 'Linked preflight candidate: checking'
+    assert not any(t.name == 'roc-preflight-progress' for t in threading.enumerate())
+
+
+def test_linked_preflight_heartbeat_propagates_gate_failure_and_stops(monkeypatch, tmp_path):
+    import threading
+    from roc import integration_verify
+    def preflight(*args):
+        raise ValueError('Linked ownership regression')
+    monkeypatch.setattr(integration_verify, 'linked_preflight', preflight)
+    with pytest.raises(ValueError, match='Linked ownership regression'):
+        sweep.linked_preflight_progress(tmp_path, {}, tmp_path, lambda _:None, interval=.01)
+    assert not any(t.name == 'roc-preflight-progress' for t in threading.enumerate())
+
+
 def test_ownership_checks_twins_outside_discovery_targets(monkeypatch):
     monkeypatch.setattr(sweep.match, 'coff_functions', lambda obj: [('f', b'body', []), ('unrelated', b'other', [])])
     def pair(client, functions):

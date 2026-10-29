@@ -286,3 +286,9 @@ Previously an absent object produced an empty match set and misleadingly listed
 every baseline exact as lost. Successful compilations still compare every prior
 exact and retain real lost addresses. Compilation success remains mandatory for
 any proposal; batch isolation and combined-proof checks are unchanged.
+
+Long contributor preflights emit a phase heartbeat every thirty seconds. The
+controller reports each coordinator message once, rather than duplicating it as
+both a worker log and a stage. Heartbeats stop when verification returns or fails;
+the original receipt/exception propagates unchanged. These controller changes do
+not modify verifier inputs or invalidate an otherwise matching baseline cache.

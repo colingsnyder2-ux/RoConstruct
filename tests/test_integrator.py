@@ -292,6 +292,19 @@ def continuous_native(monkeypatch, tmp_path):
     return config, control, events, tmp_path
 
 
+def test_native_coordinator_reports_one_stage_without_duplicate_worker_log(continuous_native, monkeypatch):
+    config, control, events, _ = continuous_native
+    message = 'Linked preflight baseline: building'
+    def run(*args, **kwargs):
+        kwargs['log'](message)
+        control.command({'action':'stop'})
+        return {'files_tried':[]}
+    monkeypatch.setattr(native_sweep, 'run', run)
+    gui_worker.native_loop(config, control, lambda event, **fields:events.append((event, fields)))
+    matching = [(event, fields) for event, fields in events if fields.get('message') == message]
+    assert matching == [('stage', {'message':message, 'task_status':'running'})]
+
+
 def test_exhausted_discovery_restarts_with_rotated_targets_without_changed_stats(continuous_native, monkeypatch):
     config, control, events, _ = continuous_native
     calls = []

@@ -269,7 +269,6 @@ def native_loop(config, control, emit):
     tried = set()
     target_offset = 0
     def report(message):
-        emit('log', slot=0, message=str(message))
         emit('stage', message=str(message), task_status='running')
     def recover_pass(error):
         # A rejected candidate must not kill discovery or regenerate the same

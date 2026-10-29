@@ -350,6 +350,30 @@ def compile_unit(source, rel, label, output, tree, overlay, includes, defines, f
             "error": message if not ok else None}
 
 
+def linked_preflight_progress(root, additions, output, log, interval=30):
+    """Keep long independent builds visible without changing verifier inputs/gates."""
+    from roc.integration_verify import linked_preflight
+    stopped = threading.Event()
+    phase = (time.monotonic(), 'Linked preflight: preparing')
+    def report(message):
+        nonlocal phase
+        phase = (time.monotonic(), str(message))
+        log(message)
+    def heartbeat():
+        while not stopped.wait(interval):
+            started, message = phase
+            elapsed = time.monotonic() - started
+            if elapsed >= interval:
+                log('%s · still running (%ds)' % (message, elapsed))
+    thread = threading.Thread(target=heartbeat, name='roc-preflight-progress', daemon=True)
+    thread.start()
+    try:
+        return linked_preflight(root, additions, output, report)
+    finally:
+        stopped.set()
+        thread.join()
+
+
 def foreign_claims(user, identity):
     """Classes with a live claim (claimed/submitted/parked) by any other worker, from the host server DB."""
     import sqlite3
@@ -1279,8 +1303,7 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
         renewed = api.call("/v1/integration/renew", {"user": settings["user"], "claims": [units[u]["id"] for u in sorted(used)]})
         if not renewed.get("ok"):
             raise ValueError("Claims changed before linked preflight; saved proposals retained")
-        from roc.integration_verify import linked_preflight
-        linked = linked_preflight(ROOT, additions, output, log)
+        linked = linked_preflight_progress(ROOT, additions, output, log)
         if api.call("/v1/integration/base")["revision"] != base["revision"]:
             raise ValueError("Accepted baseline advanced during linked preflight; saved proposals retained, sync and retry")
         for unit in used:
