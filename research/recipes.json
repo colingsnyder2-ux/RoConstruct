@@ -24650,5 +24650,78 @@
       "status": "All 441 forced roots code/data exact and verified-library owned; no old root lost; runtime0. Unique masked whole-module address matches4784->4837 are diagnostic, not new server credits."
     },
     "rejected": "Unmodified early vendor prelude targets NT4 and fails MFC9 private declarations. VC8 shared-MFC recovers failed NONCLIENTMETRICS constructor but matches existing module copy, no gain."
+  },
+  "png-native-layout-cohort-20261029": {
+    "op": "fanout",
+    "client": "2008-06",
+    "library": "libpng native state layout cohort",
+    "hypothesis": "Target appended state fields require authentic1.2.6 layout:1.2.5 size608 vs1.2.6 size620, target writes608 and reads612/616. Native module helpers prevent duplicate retained alternate providers.",
+    "sources": [
+      {
+        "recipe": "libpng-1.2.5",
+        "files": [
+          "png.c",
+          "pngerror.c",
+          "pngget.c",
+          "pngmem.c",
+          "pngpread.c",
+          "pngread.c",
+          "pngrio.c",
+          "pngrtran.c",
+          "pngrutil.c",
+          "pngset.c",
+          "pngtrans.c",
+          "pngwio.c",
+          "pngwrite.c",
+          "pngwtran.c",
+          "pngwutil.c"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ]
+      },
+      {
+        "recipe": "libpng-1.2.6",
+        "files": [
+          "png.c",
+          "pngerror.c",
+          "pngget.c",
+          "pngmem.c",
+          "pngpread.c",
+          "pngread.c",
+          "pngrio.c",
+          "pngrtran.c",
+          "pngrutil.c",
+          "pngset.c",
+          "pngtrans.c",
+          "pngwio.c",
+          "pngwrite.c",
+          "pngwtran.c",
+          "pngwutil.c"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ]
+      }
+    ],
+    "result": {
+      "date": "2026-10-29",
+      "forced_roots": 43,
+      "actual_linked_strict_gains": 51,
+      "new_masked_candidates": 53,
+      "old_masked_addresses_lost": 0,
+      "runtime_cases": 10,
+      "runtime_exit": 0,
+      "xtp_roots": 441,
+      "new_verified": 0,
+      "evidence": "RoConstruct-findings 2008-06/verification/png-native-20261029/"
+    },
+    "rejected": "1.2.5 state corrupts heap or fails user limits;1.2.6 without native helper preference duplicates user-limit functions. Two extra candidate static helpers fail actual map-owner byte comparison. Lua hook unavailable; no fake provider."
   }
 }
