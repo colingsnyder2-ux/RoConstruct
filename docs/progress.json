@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-29 05:06 UTC",
+ "updated": "2026-10-29 06:11 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -240,15 +240,15 @@
    "built": "2008-06-20",
    "started": true,
    "functions": 22293,
-   "matched": 22285,
-   "partial": 8,
-   "source_matched": 13818,
-   "mined_matched": 8467,
+   "matched": 22287,
+   "partial": 6,
+   "source_matched": 13819,
+   "mined_matched": 8468,
    "bytes": 3738870,
-   "matched_bytes": 3718842,
-   "source_bytes": 2776076,
-   "mined_bytes": 942766,
-   "partial_bytes": 20028,
+   "matched_bytes": 3723114,
+   "source_bytes": 2779780,
+   "mined_bytes": 943334,
+   "partial_bytes": 15756,
    "data_bytes": 1559926,
    "leaderboard": [
     {
@@ -289,12 +289,12 @@
     },
     {
      "user": "EspClaude",
-     "matched": 530,
-     "mining_points": 16082,
-     "points": 16082,
+     "matched": 532,
+     "mining_points": 16115,
+     "points": 16115,
      "native_integrated": 0,
-     "submissions": 819,
-     "last": 1793249958.5877357
+     "submissions": 824,
+     "last": 1793252874.9247978
     },
     {
      "user": "Espeon",
@@ -308,11 +308,11 @@
     {
      "user": "coldek",
      "matched": 146,
-     "mining_points": 10331,
-     "points": 10393,
-     "native_integrated": 62,
-     "submissions": 300,
-     "last": 1793249124.4987495
+     "mining_points": 10332,
+     "points": 10404,
+     "native_integrated": 72,
+     "submissions": 301,
+     "last": 1793251966.6697705
     },
     {
      "user": "Cezant64gamejr",
@@ -861,12 +861,12 @@
   },
   {
    "user": "EspClaude",
-   "matched": 530,
-   "mining_points": 16082,
-   "points": 16082,
+   "matched": 532,
+   "mining_points": 16115,
+   "points": 16115,
    "native_integrated": 0,
-   "submissions": 819,
-   "last": 1793249958.5877357
+   "submissions": 824,
+   "last": 1793252874.9247978
   },
   {
    "user": "intel",
@@ -889,11 +889,11 @@
   {
    "user": "coldek",
    "matched": 146,
-   "mining_points": 10331,
-   "points": 10393,
-   "native_integrated": 62,
-   "submissions": 300,
-   "last": 1793249124.4987495
+   "mining_points": 10332,
+   "points": 10404,
+   "native_integrated": 72,
+   "submissions": 301,
+   "last": 1793251966.6697705
   },
   {
    "user": "TrollStein",
