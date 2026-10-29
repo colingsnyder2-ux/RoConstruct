@@ -848,6 +848,7 @@ RECIPES["xtp-11.2.2-internals-vendor-xp-rtm"] = dict(
 
 # Match the compiler's /EHsc feature macro during preprocessing as well as compilation.
 RECIPES["boost-1.34.1-dll-eh"] = dict(RECIPES["boost-1.34.1-dll"], defines="_DLL _CPPUNWIND")
+RECIPES["boost-1.35.0-dll-eh"] = dict(RECIPES["boost-1.35.0-dll"], defines="_DLL _CPPUNWIND")
 
 # mfc/src/mfc/mfcdll.mak builds DLL core sources with this implementation prelude.
 RECIPES["mfc-9.0-shared-coreimpl"] = dict(

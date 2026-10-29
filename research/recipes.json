@@ -25460,5 +25460,36 @@
       "evidence": "RoConstruct-findings 2008-06/verification/mfcatl-shared-20261029/"
     },
     "rejected": "Shared headers alone preserve byte exacts but source stdafx forces DLL-private RTTI data. Core implementation prelude belongs in preprocessing recipe defines, not final /D flags after flattened preprocessing. wincore compiles with genuine core prelude but its DLL-private graph is not installed; Outlook still rejects static data import. Ribbon replay retained exact bytes but did not yield a valid forced root. Only DHTML shared-client runtime recipe installed. Address twins deduplicated per symbol before native replay;7/8 apparent exact address hits are not distinct source functions. CComBSTR destructor in test headers shadowed its existing library copy; explicit test_library_symbols restores verified owner. Heap virtual deletion can use shipped DLL vtable; scalar deleting exact body is force/map checked, not claimed directly executed."
+  },
+  "boostextra-gregorian-native-20261029": {
+    "op": "fanout",
+    "client": "2008-06",
+    "library": "BoostExtra1.35 Gregorian native exception templates",
+    "hypothesis": "Existing whole-thread source emits date exceptions but retains unrelated regex dependencies; missing _CPPUNWIND selects user-defined BOOST_NO_EXCEPTIONS hook. Minimal real-header date validation unit with proper EH context and explicit DLL C++ runtime dependency may preserve exact constructors without fake hooks.",
+    "sources": [
+      {
+        "recipe": "boost-1.35.0-dll-eh",
+        "files": [
+          "roc_native_gregorian_dff6dc93480d66da.cpp"
+        ],
+        "langs": [
+          "cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /GS- /EHsc /MD"
+        ]
+      }
+    ],
+    "result": {
+      "status": "Four vendor-header exception functions exact and actually library owned; separate module now6 forced roots including2 labeled analogs.14 valid/invalid date cases pass. Raw inventory10; no new server credits.",
+      "new_verified": 0,
+      "vendor_header_forced_roots": 4,
+      "all_forced_roots": 6,
+      "evidence": "RoConstruct-findings 2008-06/verification/boostextra-native-20261029/"
+    },
+    "rejected": "Whole thread.cpp retains unrelated regex deps. Header preprocessing without _CPPUNWIND uses user-defined throw hook; no fake hook added. DLL CRT C++ import library was missing from empty harness, now declared. Test helper initially had C linkage: /EHsc treats C calls as nonthrowing and removed catch registration, causing termination even for full unpruned objects and direct native compile. C++ linkage restores handlers. Boost1.35 year upper bound is inclusive10000; invalid test must10001. Existing generated app-bind root and Boost1.36 IO failure are kept as separate codegen analogs, not original-source/version claims."
   }
 }
