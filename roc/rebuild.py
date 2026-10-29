@@ -481,13 +481,144 @@ def coff_externals(data):
     while i < nsym:
         raw, _, secnum, _, cls, naux = struct.unpack_from("<8sIhHBB", data, symptr + 18 * i)
         if cls == 2:
-            name = data[strtab + struct.unpack_from("<I", raw, 4)[0]:].split(b"\0", 1)[0] if raw[:4] == b"\0\0\0\0" \
-                else raw.rstrip(b"\0")
+            if raw[:4] == b"\0\0\0\0":
+                start = strtab + struct.unpack_from("<I", raw, 4)[0]
+                name = data[start:data.index(b"\0", start)]
+            else:
+                name = raw.rstrip(b"\0")
             name = name.decode("latin-1")
             out[name] = out.get(name, False) or secnum > 0
         i += 1 + naux
     return out
 
+
+def _coff_closure(data, roots, external=frozenset()):
+    """Sections, external names and symbol indices reachable from selected definitions."""
+    import struct
+    _, nsec, _, symptr, nsym, optsz, _ = struct.unpack_from("<HHIIIHH", data)
+    strtab = symptr + nsym * 18
+    sections = [struct.unpack_from("<8sIIIIIIHHI", data, 20 + optsz + 40 * i) for i in range(nsec)]
+    symbols, weak, children, pending, i = {}, {}, {}, [], 0
+    while i < nsym:
+        raw, value, section, typ, storage, aux = struct.unpack_from("<8sIhHBB", data, symptr + 18 * i)
+        if raw[:4] == b"\0\0\0\0":
+            start = strtab + struct.unpack_from("<I", raw, 4)[0]
+            name = data[start:data.index(b"\0", start)].decode("latin-1")
+        else:
+            name = raw.rstrip(b"\0").decode("latin-1")
+        symbols[i] = (section, storage, name)
+        if section > 0 and name in roots:
+            pending.append(section)
+        if storage == 105 and aux:  # weak external's fallback symbol
+            weak[i] = struct.unpack_from("<I", data, symptr + 18 * (i + 1))[0]
+        if storage == 3 and aux and section > 0 and value == 0:
+            parent, selection = struct.unpack_from("<HB", data, symptr + 18 * (i + 1) + 12)
+            if selection == 5:
+                children.setdefault(parent, []).append(section)
+        i += 1 + aux
+    for index, (_, _, name) in symbols.items():
+        if name not in roots or index not in weak:
+            continue
+        target, seen = index, set()
+        while target in weak and target not in seen:
+            seen.add(target)
+            target = weak[target]
+        section = symbols.get(target, (0,))[0]
+        if section > 0:
+            pending.append(section)
+    definitions = {name: section for section, storage, name in symbols.values() if section > 0 and storage == 2}
+    reached = set()
+    while pending:
+        section = pending.pop()
+        if section in reached:
+            continue
+        reached.add(section)
+        pending.extend(children.get(section, ()))
+        descriptor = sections[section - 1]
+        for i in range(descriptor[7]):
+            target = struct.unpack_from("<I", data, descriptor[5] + 10 * i + 4)[0]
+            seen = set()
+            while target in weak and target not in seen:
+                seen.add(target)
+                target = weak[target]
+            target_section, storage, target_name = symbols.get(target, (0, 0, ""))
+            if storage == 2 and target_section == 0:
+                target_section = definitions.get(target_name, 0)
+            if target_section > 0 and not (storage == 2 and target_name in external):
+                pending.append(target_section)
+    return (reached, {name for section, storage, name in symbols.values() if section in reached and storage == 2},
+            {i for i, (section, _, name) in symbols.items() if section in reached or name in roots})
+
+def _coff_subset(data, roots, external=frozenset()):
+    """Compact a real COFF dependency closure, remapping sections and symbol indices."""
+    import struct
+    reached, names, safe = _coff_closure(data, roots, external)
+    _, nsec, _, symptr, nsym, optsz, _ = struct.unpack_from("<HHIIIHH", data)
+    strtab = symptr + nsym * 18
+    sections = [list(struct.unpack_from("<8sIIIIIIHHI", data, 20 + optsz + 40 * i)) for i in range(nsec)]
+    retained = sorted(reached | {i + 1 for i, section in enumerate(sections)
+                                if section[0].rstrip(b"\0") in {b".drectve", b".sxdata"}})
+    section_ids = {old: new + 1 for new, old in enumerate(retained)}
+    records, i = {}, 0
+    while i < nsym:
+        _, _, section, _, storage, aux = struct.unpack_from("<8sIhHBB", data, symptr + 18 * i)
+        records[i] = (bytearray(data[symptr + 18 * i:symptr + 18 * (i + 1 + aux)]), section, storage, aux)
+        i += 1 + aux
+    wanted = set(safe)
+    for section_id in retained:
+        section = sections[section_id - 1]
+        for i in range(section[7]):
+            wanted.add(struct.unpack_from("<I", data, section[5] + 10 * i + 4)[0])
+    pending = list(wanted)
+    while pending:
+        index = pending.pop()
+        record, _, storage, aux = records[index]
+        if storage == 105 and aux:
+            fallback = struct.unpack_from("<I", record, 18)[0]
+            if fallback not in wanted:
+                wanted.add(fallback)
+                pending.append(fallback)
+    indices, count = {}, 0
+    for index in sorted(wanted):
+        indices[index] = count
+        count += 1 + records[index][3]
+    output = bytearray(data[:20 + optsz]) + bytearray(40 * len(retained))
+    for section_id in retained:
+        section = sections[section_id - 1][:]
+        uninitialized = section[4] == 0 and section[3] > 0
+        payload = b"" if uninitialized else data[section[4]:section[4] + section[3]]
+        if section[0].rstrip(b"\0") == b".sxdata":
+            payload = b"".join(struct.pack("<I", indices[index])
+                               for index in struct.unpack("<%dI" % (len(payload) // 4), payload) if index in safe)
+        relocation = bytearray()
+        for i in range(section[7]):
+            offset, symbol, typ = struct.unpack_from("<IIH", data, section[5] + 10 * i)
+            relocation += struct.pack("<IIH", offset, indices[symbol], typ)
+        section[3], section[4] = section[3] if uninitialized else len(payload), len(output) if payload else 0
+        output += payload
+        section[5] = len(output) if relocation else 0
+        output += relocation
+        section[6], section[8] = 0, 0
+        struct.pack_into("<8sIIIIIIHHI", output, 20 + optsz + 40 * (section_ids[section_id] - 1), *section)
+    new_symptr = len(output)
+    for index in sorted(wanted):
+        record, section, storage, aux = records[index]
+        if section > 0:
+            if section not in section_ids:
+                struct.pack_into("<Ih", record, 8, 0, 0)
+            else:
+                struct.pack_into("<h", record, 12, section_ids[section])
+        if storage == 3 and aux and section > 0:
+            parent, selection = struct.unpack_from("<HB", record, 30)
+            if selection == 5:
+                struct.pack_into("<H", record, 30, section_ids[parent])
+        elif storage == 105 and aux:
+            struct.pack_into("<I", record, 18, indices[struct.unpack_from("<I", record, 18)[0]])
+        output += record
+    output += data[strtab:]
+    struct.pack_into("<H", output, 2, len(retained))
+    struct.pack_into("<II", output, 8, new_symptr, count)
+    return bytes(output), names
 
 def strip_symbols(data, keep=None, drop=()):
     """COFF rewrite for per-function swaps. Each external definition that is dropped (named in drop, or, with
@@ -501,6 +632,7 @@ def strip_symbols(data, keep=None, drop=()):
     strtab = symptr + nsym * 18
     sec_at = lambda i: 20 + optsz + 40 * i  # noqa: E731
     remove, comdat_key, assoc, shared, twins, i = set(), {}, [], set(), {}, 0
+    exports = keep
     while i < nsym:
         at = symptr + 18 * i
         raw, value, secnum, typ, cls, naux = struct.unpack_from("<8sIhHBB", data, at)
@@ -513,8 +645,11 @@ def strip_symbols(data, keep=None, drop=()):
                 if selection != 1:
                     shared.add(secnum)  # any/same-size/largest: duplicates link fine, keep (e.g. string literals)
         elif cls == 2 and secnum > 0:
-            name = bytes(data[strtab + struct.unpack_from("<I", raw, 4)[0]:].split(b"\0", 1)[0]) \
-                if raw[:4] == b"\0\0\0\0" else raw.rstrip(b"\0")
+            if raw[:4] == b"\0\0\0\0":
+                start = strtab + struct.unpack_from("<I", raw, 4)[0]
+                name = bytes(data[start:data.index(b"\0", start)])
+            else:
+                name = raw.rstrip(b"\0")
             name = name.decode("latin-1")
             if secnum in comdat_key and comdat_key[secnum] is None:
                 comdat_key[secnum] = name
@@ -530,8 +665,19 @@ def strip_symbols(data, keep=None, drop=()):
         i += 1 + naux
     if keep is not None:
         for s in range(1, nsec + 1):
-            if bytes(data[sec_at(s - 1):sec_at(s - 1) + 8]).startswith(b".CRT$X"):
+            section = sec_at(s - 1)
+            name = bytes(data[section:section + 8])
+            if name.startswith(b".CRT$X"):
                 remove.add(s)
+            elif name == b".drectve":
+                size, start = struct.unpack_from("<II", data, section + 16)
+                def retain_export(found):
+                    symbol = found.group().split(b":", 1)[1].replace(b'"', b'').split(b",", 1)[0].rsplit(b"=", 1)[-1]
+                    return found.group() if symbol.decode("latin-1") in exports else b" " * len(found.group())
+                # Whole mining TUs can export thousands of unselected methods.
+                # Those directives otherwise force unrelated bodies into the link.
+                data[start:start + size] = re.sub(rb'(?i)[/-]EXPORT:(?:[^\s"]+|"[^"]*")+', retain_export,
+                                                 bytes(data[start:start + size]))
     for child, parent in assoc:
         if parent in remove:
             remove.add(child)
@@ -566,20 +712,36 @@ def verified_layer(client, spec, log=print, exclude=frozenset(), vdrop=frozenset
     for old in layer.glob("*.obj"):
         old.unlink()
     taken = set()
-    for item in json.loads((folder / "swaps.json").read_text())["swaps"]:
+    items = json.loads((folder / "swaps.json").read_text())["swaps"]
+    reserved = (set(helpers or {}) | set(spec.get("external_helpers", []))) - vdrop
+    if spec.get("prune_unselected_sections"):
+        for item in items:
+            definitions = coff_externals((folder / item["obj"]).read_bytes())
+            reserved.update(k for k in item["keep"] if definitions.get(k)
+                            and not k.startswith(("??__E", "??__F")) and k not in exclude and k not in vdrop)
+    for item in items:
         data = (folder / item["obj"]).read_bytes()
         externals = coff_externals(data)
         # Local callbacks and EH labels travel with their owner. /INCLUDE cannot
         # force them from an archive, nor can another object resolve them.
         keep = {k for k in item["keep"] if externals.get(k)
                 and not k.startswith(("??__E", "??__F"))} - taken - exclude - vdrop
-        if keep:
+        extra = {h for h, o in (helpers or {}).items() if o == item["obj"]} - vdrop - set(spec.get("external_helpers", []))
+        if keep or (spec.get("prune_unselected_sections") and extra):
             taken |= keep
-            extra = {h for h, o in (helpers or {}).items() if o == item["obj"]} - vdrop
             # Mining objects also emit unselected inline bodies. Let the module's
             # own header context supply these whenever it has a real definition.
-            (layer / ("verified_" + item["obj"])).write_bytes(
-                strip_symbols(data, keep=keep | extra, drop=vdrop | (base_functions - keep)))
+            roots = keep | extra
+            exported = roots
+            if spec.get("prune_unselected_sections"):
+                data, retained = _coff_subset(data, roots, external=reserved - roots)
+            else:
+                retained = roots
+            data = strip_symbols(data, keep=retained, drop=vdrop | (base_functions - keep))
+            if spec.get("prune_unselected_sections"):
+                # Explicitly dropped helpers can leave orphan unwind/data records.
+                data, _ = _coff_subset(data, exported, external=reserved - exported)
+            (layer / ("verified_" + item["obj"])).write_bytes(data)
     log("verified layer: %d exact symbols swapped in" % len(taken))
     return layer, taken
 
@@ -940,7 +1102,7 @@ def build_module(client, name, log=print):
     excluded = set(json.loads(excluded_path.read_text())) if excluded_path.exists() else set()
     vdrop_path = out / "verified" / "vdrop.json"
     vdrop = set(json.loads(vdrop_path.read_text())) if vdrop_path.exists() else set()
-    helpers_path = out / "verified" / "helpers.json"
+    helpers_path = out / "verified" / ("helpers-pruned.json" if spec.get("prune_unselected_sections") else "helpers.json")
     helpers = json.loads(helpers_path.read_text()) if helpers_path.exists() else {}
     # an inline or template body that several of the module's own objects define is shared code: swapping the 2008 copy
     # in replaces it for every caller, including ones compiled in other contexts (seen crashing M4a/M5), so only

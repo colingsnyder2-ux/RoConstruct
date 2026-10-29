@@ -23921,10 +23921,14 @@
     "client": "2008-06",
     "hypothesis": "Try method-scoped assertion omissions only on files with not-yet-integrated native targets; preserve every existing exact and submit one independently verified batch.",
     "native_sweep": {
-      "files": ["App/*/*.cpp"],
+      "files": [
+        "App/*/*.cpp"
+      ],
       "targets_only": true,
       "after_job": "1e2b177dff244c0491e0efee031489c9",
-      "modes": ["assertions"],
+      "modes": [
+        "assertions"
+      ],
       "apply": true,
       "submit": true,
       "model": "gpt-6",
@@ -23937,9 +23941,14 @@
     "client": "2008-06",
     "hypothesis": "Try numeric nonempty container guards, alone or with method-scoped assertion omissions; retain only exact instruction/data gains without losing existing exacts.",
     "native_sweep": {
-      "files": ["App/*/*.cpp"],
+      "files": [
+        "App/*/*.cpp"
+      ],
       "targets_only": true,
-      "modes": ["nonempty", "assertions-nonempty"],
+      "modes": [
+        "nonempty",
+        "assertions-nonempty"
+      ],
       "apply": true,
       "submit": true,
       "model": "gpt-6",
@@ -23952,10 +23961,15 @@
     "client": "2008-06",
     "hypothesis": "Try historical MSVC floating-point settings on remaining native targets, alone and with assertion omissions; retain only real native exact gains without losing existing exacts.",
     "native_sweep": {
-      "files": ["App/*/*.cpp"],
+      "files": [
+        "App/*/*.cpp"
+      ],
       "targets_only": true,
       "after_job": "95bf425f0c844159841e3e58d02cda7c",
-      "modes": ["fp-fast", "assertions-fp-fast"],
+      "modes": [
+        "fp-fast",
+        "assertions-fp-fast"
+      ],
       "apply": true,
       "submit": true,
       "model": "gpt-6.1-sol",
@@ -23968,9 +23982,14 @@
     "client": "2008-06",
     "hypothesis": "Try MSVC size optimization profiles on remaining native targets, with and without assertion omissions; save only exact code/data proposals preserving existing exacts for later baseline revalidation.",
     "native_sweep": {
-      "files": ["App/*/*.cpp"],
+      "files": [
+        "App/*/*.cpp"
+      ],
       "targets_only": true,
-      "modes": ["osize", "assertions-osize"],
+      "modes": [
+        "osize",
+        "assertions-osize"
+      ],
       "apply": false,
       "submit": false,
       "model": "gpt-6.1-sol"
@@ -23982,9 +24001,14 @@
     "client": "2008-06",
     "hypothesis": "Try equivalent conditional returns, following the proven numChildren near-miss repair; minimize to exact native methods and preserve all existing exacts.",
     "native_sweep": {
-      "files": ["App/*/*.cpp"],
+      "files": [
+        "App/*/*.cpp"
+      ],
       "targets_only": true,
-      "modes": ["ternary", "assertions-ternary"],
+      "modes": [
+        "ternary",
+        "assertions-ternary"
+      ],
       "apply": false,
       "submit": false,
       "model": "gpt-6.1-sol"
@@ -23996,9 +24020,16 @@
     "client": "2008-06",
     "hypothesis": "Try authentic C++ int and size_t loop counters, alone or with assertion omissions, to close signed-branch near misses; keep only uniquely attributable exact methods preserving baseline exacts.",
     "native_sweep": {
-      "files": ["App/*/*.cpp"],
+      "files": [
+        "App/*/*.cpp"
+      ],
       "targets_only": true,
-      "modes": ["index-int", "index-size_t", "assertions-index-int", "assertions-index-size_t"],
+      "modes": [
+        "index-int",
+        "index-size_t",
+        "assertions-index-int",
+        "assertions-index-size_t"
+      ],
       "apply": true,
       "submit": true,
       "wait": false,
@@ -24044,5 +24075,353 @@
       "model": "gpt-6.1-sol"
     },
     "targets": {}
+  },
+  "ogre-native-header-accessors-20261029": {
+    "op": "fanout",
+    "client": "2008-06",
+    "hypothesis": "Re-emit genuine Ogre 1.4.5 inherited inline accessors and actual SharedPtr instantiations without invented fields; test against remaining snippet analogs before any native swap.",
+    "sources": [
+      {
+        "recipe": "ogre-1.4.5-dll",
+        "files": [
+          "roc_native_header_accessors_f042f32e3705715a.cpp"
+        ],
+        "builds": [
+          21022,
+          50727
+        ],
+        "flags": [
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD",
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast"
+        ]
+      }
+    ],
+    "result": {
+      "date": "2026-10-29",
+      "new_verified": 0,
+      "status": "local native replay; full Ogre link remains blocked by 12 owner/subclass symbols",
+      "evidence": "2008-06/verification/ogre-native-20261029/ in RoConstruct-findings"
+    }
+  },
+  "ogre-native-scene-callbacks-20261029": {
+    "op": "fanout",
+    "client": "2008-06",
+    "hypothesis": "Supply missing RbxSceneManager listener/visitor definitions from genuine Ogre 1.4.5 bodies using its already reconstructed subclass declaration. Access protected base APIs through the actual derived owner, as established by its constructor. Require byte/data checks before exact claims.",
+    "sources": [
+      {
+        "recipe": "ogre-1.4.5-dll",
+        "files": [
+          "roc_native_scene_callbacks_9975fd58eb7f0dbb.cpp"
+        ],
+        "builds": [
+          21022,
+          50727
+        ],
+        "flags": [
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD",
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast"
+        ]
+      }
+    ],
+    "result": {
+      "date": "2026-10-29",
+      "new_verified": 0,
+      "status": "local native replay; full Ogre link remains blocked by 12 owner/subclass symbols",
+      "evidence": "2008-06/verification/ogre-native-20261029/ in RoConstruct-findings"
+    }
+  },
+  "ogre-native-resource-templates-20261029": {
+    "op": "fanout",
+    "client": "2008-06",
+    "hypothesis": "Replay actual SharedPtr<Resource>, SharedPtr<AnimableValue>, vector<Plane> and vector<Vector3> on the client 1.4.5 headers to replace later-Ogre template bodies without incompatible allocator dependencies. Require the same decorated symbol, code and referenced data.",
+    "sources": [
+      {
+        "recipe": "ogre-1.4.5-dll",
+        "files": [
+          "roc_native_resource_templates_f9febbef6239dc27.cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD",
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast"
+        ]
+      }
+    ],
+    "result": {
+      "date": "2026-10-29",
+      "new_verified": 0,
+      "status": "local native replay; full Ogre link remains blocked by 12 owner/subclass symbols",
+      "evidence": "2008-06/verification/ogre-native-20261029/ in RoConstruct-findings"
+    }
+  },
+  "ogre-native-hardware-sharedptr-20261029": {
+    "op": "fanout",
+    "client": "2008-06",
+    "hypothesis": "Genuine Ogre 1.4.5 DLL-template context emits the exported HardwareVertexBuffer SharedPtr destructor; client-import context suppresses that specialization. Replace the later-Ogre exact body only after code/data checks.",
+    "sources": [
+      {
+        "recipe": "ogre-1.4.5-dll",
+        "files": [
+          "roc_native_hardware_sharedptr_16493fe4099d30fc.cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"
+        ]
+      }
+    ],
+    "result": {
+      "date": "2026-10-29",
+      "new_verified": 0,
+      "status": "local native replay; full Ogre link remains blocked by 12 owner/subclass symbols",
+      "evidence": "2008-06/verification/ogre-native-20261029/ in RoConstruct-findings"
+    }
+  },
+  "ogre-native-sphere-cache-storage-20261029": {
+    "op": "fanout",
+    "client": "2008-06",
+    "hypothesis": "Supply the shared cache pointer used by native map initializer 006822e0; its compare/store operands identify 0097dbc4, whose PE initial bytes are zero. No placeholder method bodies and no extra function credit.",
+    "sources": [
+      {
+        "recipe": "ogre-1.4.5-dll",
+        "files": [
+          "roc_native_sphere_cache_storage_6d8b5b766c240faa.cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /GS- /EHsc /MD"
+        ]
+      }
+    ],
+    "result": {
+      "date": "2026-10-29",
+      "new_verified": 0,
+      "status": "local native replay; full Ogre link remains blocked by 12 owner/subclass symbols",
+      "evidence": "2008-06/verification/ogre-native-20261029/ in RoConstruct-findings"
+    }
+  },
+  "ogre-dll-crt-replay-20261029": {
+    "op": "fanout",
+    "client": "2008-06",
+    "hypothesis": "Ogre DLL-header objects compiled /MT request LIBCMT alongside the module DLL CRT. Recompile /MD and require every requested instruction/data match to survive.",
+    "sources": [
+      {
+        "recipe": "ogre-1.4.9-dll",
+        "files": [
+          "OgreAlignedAllocator.cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"
+        ]
+      },
+      {
+        "recipe": "ogre-1.4.9-dll",
+        "files": [
+          "OgreAutoParamDataSource.cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"
+        ]
+      },
+      {
+        "recipe": "ogre-1.4.9-dll",
+        "files": [
+          "OgreAutoParamDataSource.cpp"
+        ],
+        "builds": [
+          50727
+        ],
+        "flags": [
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"
+        ]
+      },
+      {
+        "recipe": "ogre-1.4.9-dll",
+        "files": [
+          "OgreMeshSerializerImpl.cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"
+        ]
+      },
+      {
+        "recipe": "ogre-1.4.9-dll",
+        "files": [
+          "OgreSceneManager.cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"
+        ]
+      },
+      {
+        "recipe": "ogre-1.4.9-dll",
+        "files": [
+          "OgreSceneManager.cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast"
+        ]
+      },
+      {
+        "recipe": "ogre-1.4.9-dll",
+        "files": [
+          "OgreSceneManager.cpp"
+        ],
+        "builds": [
+          50727
+        ],
+        "flags": [
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"
+        ]
+      },
+      {
+        "recipe": "ogre-1.4.9-dll",
+        "files": [
+          "OgreSceneManager.cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast"
+        ]
+      },
+      {
+        "recipe": "ogre-1.6.4-dll",
+        "files": [
+          "OgreAlignedAllocator.cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"
+        ]
+      },
+      {
+        "recipe": "ogre-1.6.4-dll",
+        "files": [
+          "OgreAlignedAllocator.cpp"
+        ],
+        "builds": [
+          50727
+        ],
+        "flags": [
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"
+        ]
+      },
+      {
+        "recipe": "ogre-1.6.4-dll",
+        "files": [
+          "OgreConvexBody.cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"
+        ]
+      },
+      {
+        "recipe": "ogre-1.6.4-dll",
+        "files": [
+          "OgreMovableObject.cpp"
+        ],
+        "builds": [
+          50727
+        ],
+        "flags": [
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"
+        ]
+      },
+      {
+        "recipe": "ogre-1.6.4-dll",
+        "files": [
+          "OgreRenderQueueSortingGrouping.cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"
+        ]
+      },
+      {
+        "recipe": "ogre-1.6.4-dll",
+        "files": [
+          "OgreResourceGroupManager.cpp"
+        ],
+        "builds": [
+          50727
+        ],
+        "flags": [
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"
+        ]
+      },
+      {
+        "recipe": "ogre-1.6.4-dll",
+        "files": [
+          "OgreSceneManager.cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"
+        ]
+      },
+      {
+        "recipe": "ogre-1.6.4-dll",
+        "files": [
+          "OgreSceneManager.cpp"
+        ],
+        "builds": [
+          50727
+        ],
+        "flags": [
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"
+        ]
+      },
+      {
+        "recipe": "ogre-1.6.4-dll",
+        "files": [
+          "OgreTextureUnitState.cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"
+        ]
+      }
+    ],
+    "result": {
+      "date": "2026-10-29",
+      "groups": 17,
+      "all_requested_matches_preserved": true,
+      "new_verified": 0,
+      "evidence": "2008-06/verification/ogre-native-20261029/dll-crt-replay.json in RoConstruct-findings"
+    }
   }
 }
