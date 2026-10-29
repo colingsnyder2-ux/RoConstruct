@@ -24860,5 +24860,42 @@
       "evidence": "RoConstruct-findings 2008-06/verification/raknet-native-20261029/"
     },
     "rejected": "Broad native header adoption rejects15 genuine sources, zero strict gains; isolated only. Double template variants no exact gains. Existing bool reader already exact in all10 current providers and not swapped. Standalone WriteCompressed specialization force-proven; wire algorithm tested through vector packing."
+  },
+  "jpeg-native-float-dct-cohort-20261029": {
+    "op": "fanout",
+    "client": "2008-06",
+    "library": "IJG6b native float DCT cohort",
+    "hypothesis": "Recent genuine RakNet float methods need /fp:fast; test the same actual x87 expression policy on float DCT leaves and their managers, preserving source and JPEG layout.",
+    "sources": [
+      {
+        "recipe": "jpeg-6b",
+        "files": [
+          "jfdctflt.c",
+          "jidctflt.c",
+          "jcdctmgr.c",
+          "jddctmgr.c"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /GS- /MD",
+          "/O2 /GS- /MD /fp:fast"
+        ]
+      }
+    ],
+    "result": {
+      "status": "4 new actual library code/data-exact bodies;256->260 no loss;48 verified codec combinations and malformed-input recovery0; stale old object cache selects preferred float cohort; placement407",
+      "new_verified": 0,
+      "new_local_exact_addresses": [
+        "00539360",
+        "005399c0",
+        "0053cba0",
+        "0053e0e0"
+      ],
+      "focused_tests_passed": 49,
+      "evidence": "RoConstruct-findings 2008-06/verification/jpeg-native-20261029/"
+    },
+    "rejected": "Inverse manager has no gain and remains precise. Do not change all46 files globally. Float layer must precede stale upstream objects. tmpfile() failure was test setup, not codec; use writable workspace file."
   }
 }
