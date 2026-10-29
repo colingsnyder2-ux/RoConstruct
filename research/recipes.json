@@ -25491,5 +25491,40 @@
       "evidence": "RoConstruct-findings 2008-06/verification/boostextra-native-20261029/"
     },
     "rejected": "Whole thread.cpp retains unrelated regex deps. Header preprocessing without _CPPUNWIND uses user-defined throw hook; no fake hook added. DLL CRT C++ import library was missing from empty harness, now declared. Test helper initially had C linkage: /EHsc treats C calls as nonthrowing and removed catch registration, causing termination even for full unpruned objects and direct native compile. C++ linkage restores handlers. Boost1.35 year upper bound is inclusive10000; invalid test must10001. Existing generated app-bind root and Boost1.36 IO failure are kept as separate codegen analogs, not original-source/version claims."
+  },
+  "g3d-png-native-float-20261029": {
+    "op": "fanout",
+    "client": "2008-06",
+    "library": "G3D bundled libpng1.2.7 native float cohort",
+    "hypothesis": "Accepted sources already identify /fp:fast for pngset/pngrtran/pngrutil. Compare unchanged complete C files under actual module ABI, preserve existing pairs and all21 forced roots; expand native format/interlace runtime coverage.",
+    "sources": [
+      {
+        "recipe": "g3d-6.09-png-dll",
+        "files": [
+          "pngset.c",
+          "pngrtran.c",
+          "pngrutil.c"
+        ],
+        "langs": [
+          "c"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /GS- /MD",
+          "/O2 /GS- /MD /fp:fast"
+        ]
+      }
+    ],
+    "result": {
+      "status": "G3D-PNG180->181, one new actual-library strict body0051cae0 png_set_cHRM_fixed;21 PNG roots and184 old unique code/data pairs preserved.12 format/metadata/gamma cases, gamma error0. RGB/RGBA GImage PNG memory roundtrips0; all77 G3D roots preserved.",
+      "new_verified": 0,
+      "new_module_addresses": [
+        "0051cae0"
+      ],
+      "evidence": "RoConstruct-findings 2008-06/verification/g3d-png-native-20261029/"
+    },
+    "rejected": "Six per-file gains shrink to one module gain because5 already existed via verified objects. Keep preferred float layer before stale upstream alternatives; exactly3 same-name file alternatives, opt-in filename dedup preserves21 forced roots without relaxing different-file sharing. No global /fp:fast for entire codec. Native1.2.7 remains; do not transplant standalone1.2.6 headers/layout."
   }
 }
