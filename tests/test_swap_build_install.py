@@ -213,3 +213,84 @@ def test_raknet_units_use_real_headers_and_reject_private_aliases(tmp_path, monk
 def test_raknet_recipe_routing_excludes_app_families():
     assert swap_build.of_module("RakNet", "openrbx-raknet", "BitStream.cpp")
     assert not swap_build.of_module("RakNet", "openrbx-client", "Streaming.cpp")
+
+
+def test_transient_access_denied_retries_without_losing_layer(tmp_path, monkeypatch):
+    live, built = tmp_path / 'verified', tmp_path / 'verified.building'
+    layer(live, ['a', 'b'])
+    layer(built, ['a', 'b', 'c'])
+    original, failures, delays = Path.rename, [], []
+
+    def rename(path, target):
+        if path == built and len(failures) < 2:
+            failures.append(path)
+            raise PermissionError('scanner lock')
+        return original(path, target)
+
+    monkeypatch.setattr(Path, 'rename', rename)
+    monkeypatch.setattr(swap_build.time, 'sleep', delays.append)
+    assert 'installed' in swap_build.install(live, built)
+    assert swap_build.kept_addresses(live) == {'a', 'b', 'c'}
+    assert len(delays) == 2 and not built.exists()
+
+
+def test_failed_swap_restores_live_and_preserves_staged_layer(tmp_path, monkeypatch):
+    live, built = tmp_path / 'verified', tmp_path / 'verified.building'
+    layer(live, ['a', 'b'])
+    layer(built, ['a', 'b', 'c'])
+    original, attempts = Path.rename, []
+
+    def rename(path, target):
+        if path == built:
+            attempts.append(path)
+            raise PermissionError('persistent lock')
+        return original(path, target)
+
+    monkeypatch.setattr(Path, 'rename', rename)
+    monkeypatch.setattr(swap_build.time, 'sleep', lambda _: None)
+    with pytest.raises(PermissionError, match='persistent lock'):
+        swap_build.install(live, built)
+    assert len(attempts) == 5
+    assert swap_build.kept_addresses(live) == {'a', 'b'}
+    assert swap_build.kept_addresses(built) == {'a', 'b', 'c'}
+    assert not live.with_name('verified.old').exists()
+
+
+def test_blocked_backup_move_preserves_live_and_staged_layers(tmp_path, monkeypatch):
+    live, built = tmp_path / 'verified', tmp_path / 'verified.building'
+    layer(live, ['a'])
+    layer(built, ['a', 'b'])
+    original = Path.rename
+
+    def rename(path, target):
+        if path == live:
+            raise PermissionError('backup move blocked')
+        return original(path, target)
+
+    monkeypatch.setattr(Path, 'rename', rename)
+    monkeypatch.setattr(swap_build.time, 'sleep', lambda _: None)
+    with pytest.raises(PermissionError, match='backup move blocked'):
+        swap_build.install(live, built)
+    assert swap_build.kept_addresses(live) == {'a'}
+    assert swap_build.kept_addresses(built) == {'a', 'b'}
+
+
+def test_blocked_rollback_reports_preserved_backup_and_staged_paths(tmp_path, monkeypatch):
+    live, built = tmp_path / 'verified', tmp_path / 'verified.building'
+    old = live.with_name('verified.old')
+    layer(live, ['a'])
+    layer(built, ['a', 'b'])
+    original = Path.rename
+
+    def rename(path, target):
+        if target == live:
+            raise PermissionError('destination blocked')
+        return original(path, target)
+
+    monkeypatch.setattr(Path, 'rename', rename)
+    monkeypatch.setattr(swap_build.time, 'sleep', lambda _: None)
+    with pytest.raises(RuntimeError) as error:
+        swap_build.install(live, built)
+    assert str(old) in str(error.value) and str(built) in str(error.value)
+    assert swap_build.kept_addresses(old) == {'a'}
+    assert swap_build.kept_addresses(built) == {'a', 'b'}

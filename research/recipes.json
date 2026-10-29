@@ -25686,5 +25686,36 @@
       "evidence": "RoConstruct-findings2008-06/verification/ogre-native-accessors-20261029"
     },
     "rejected": "Initial runtime class was abstract because getPointExtrusionDistance pure virtual was missing. Genuine inherited signature/helper recovers exact fifth method; no placeholder implementation. Redundant callback owner alias normalized during complete native replay."
+  },
+  "ogre-native-shadow-20261029": {
+    "op": "fanout",
+    "client": "2008-06",
+    "hypothesis": "Reconcile differing RbxSubEntity declarations into the constructor-proven native SubEntity/ShadowCaster contract, retaining genuine nested shadow-renderable fields and existing exact bodies. Replace padded visibility analog with direct real SubEntity virtual call proved by binary. Validate authentic CPU shadow vertex/index buffer lifecycle and visibility with real DefaultHardwareBufferManager.",
+    "sources": [
+      {
+        "recipe": "ogre-1.4.5-dll",
+        "files": [
+          "roc_native_subentity_shadow_ef04b164e068272c.cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"
+        ]
+      }
+    ],
+    "result": {
+      "status": "coherent native class and real CPU shadow-buffer runtime pass",
+      "new_verified": 0,
+      "native_header_replacements": 1,
+      "forced_roots": 312,
+      "all_prior_roots_preserved": 311,
+      "merged_target_proofs": 16,
+      "placed_distinct": 410,
+      "evidence": "RoConstruct-findings2008-06/verification/ogre-native-shadow-20261029",
+      "full_suite_passed": 1097,
+      "full_suite_skipped": 3
+    }
   }
 }
