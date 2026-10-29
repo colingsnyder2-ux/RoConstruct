@@ -1,29 +1,29 @@
 {
-  "updated": "2026-10-29 10:17 UTC",
+  "updated": "2026-10-29 11:23 UTC",
   "clients": {
     "2008-06": {
-      "phase": "8",
-      "phaseLabel": "Runtime",
-      "overall": 0.2479,
+      "phase": "6",
+      "phaseLabel": "Link closure",
+      "overall": 0.2476,
       "bars": {
         "compiled": {
-          "value": 15,
-          "total": 15,
+          "value": 18,
+          "total": 18,
           "label": "Modules reporting"
         },
         "linked": {
-          "value": 15,
-          "total": 15,
+          "value": 16,
+          "total": 18,
           "label": "Modules linked"
         },
         "exact": {
-          "value": 10214,
+          "value": 10199,
           "total": 41196,
           "label": "Byte-exact functions"
         },
         "unresolved": {
-          "value": 0,
-          "total": 1,
+          "value": 5,
+          "total": 5,
           "label": "Unresolved symbols",
           "invert": true
         },
@@ -34,18 +34,34 @@
           "invert": true
         },
         "runtime": {
-          "value": 3,
+          "value": 0,
           "total": 7,
           "label": "Runtime milestones"
         }
       },
       "modules": [
         {
+          "name": "BoostExtra",
+          "linked": true,
+          "test": 0,
+          "exact": 0,
+          "objectFunctions": 0,
+          "unresolved": 0
+        },
+        {
           "name": "Boost",
           "linked": true,
           "test": 0,
           "exact": 346,
           "objectFunctions": 10298,
+          "unresolved": 0
+        },
+        {
+          "name": "CodegenAnalogs",
+          "linked": true,
+          "test": 0,
+          "exact": 7,
+          "objectFunctions": 124,
           "unresolved": 0
         },
         {
@@ -89,6 +105,14 @@
           "unresolved": 0
         },
         {
+          "name": "MfcAtl",
+          "linked": false,
+          "test": null,
+          "exact": 163,
+          "objectFunctions": 1422,
+          "unresolved": 1
+        },
+        {
           "name": "Ogre",
           "linked": true,
           "test": 0,
@@ -106,11 +130,11 @@
         },
         {
           "name": "RbxApp",
-          "linked": true,
-          "test": 0,
-          "exact": 1086,
-          "objectFunctions": 57637,
-          "unresolved": 0
+          "linked": false,
+          "test": null,
+          "exact": 895,
+          "objectFunctions": 48635,
+          "unresolved": 4
         },
         {
           "name": "RbxUtil",
@@ -123,9 +147,9 @@
         {
           "name": "RbxgsApp",
           "linked": true,
-          "test": 0,
-          "exact": 3142,
-          "objectFunctions": 116339,
+          "test": 3221225477,
+          "exact": 3295,
+          "objectFunctions": 110128,
           "unresolved": 0
         },
         {
@@ -140,8 +164,8 @@
           "name": "XTP",
           "linked": true,
           "test": 0,
-          "exact": 4803,
-          "objectFunctions": 111385,
+          "exact": 4784,
+          "objectFunctions": 86461,
           "unresolved": 0
         },
         {
