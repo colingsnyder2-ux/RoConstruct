@@ -24897,5 +24897,42 @@
       "evidence": "RoConstruct-findings 2008-06/verification/jpeg-native-20261029/"
     },
     "rejected": "Inverse manager has no gain and remains precise. Do not change all46 files globally. Float layer must precede stale upstream objects. tmpfile() failure was test setup, not codec; use writable workspace file."
+  },
+  "g3d-ijg-float-dct-cohort-20261029": {
+    "op": "fanout",
+    "client": "2008-06",
+    "library": "G3D bundled IJG floating DCT",
+    "hypothesis": "Bundled IJG source text equals the JPEG6b cohort; test float flags under its actual direct C compiler context, then verify real GImage consumers and source-pair no-loss.",
+    "sources": [
+      {
+        "recipe": "g3d-6.09-rbx2008",
+        "files": [
+          "IJG/jfdctflt.c",
+          "IJG/jidctflt.c",
+          "IJG/jcdctmgr.c"
+        ],
+        "langs": [
+          "c"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /GS- /MD",
+          "/O2 /GS- /MD /fp:fast"
+        ]
+      }
+    ],
+    "result": {
+      "status": "739->741 no lost addresses;77 forced roots preserved, all actual verified-library code/data exact; real GImage and bundled float codec runtime0; M2/M4a/M5 pass, M4b same36 blockers; placement407",
+      "new_verified": 0,
+      "new_module_addresses": [
+        "00539360",
+        "005399c0"
+      ],
+      "new_global_addresses": 0,
+      "evidence": "RoConstruct-findings 2008-06/verification/g3d-ijg-native-20261029/"
+    },
+    "rejected": "Two leaves already matched before this propagation; do not claim4 new G3D bodies or sum duplicate standalone JPEG addresses. Same-name stale alternatives falsely excluded two roots until opt-in filename deduplication; different-filename shared symbols remain blocked."
   }
 }
