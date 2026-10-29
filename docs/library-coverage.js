@@ -5,6 +5,7 @@ classify = function (data) {
     const f = data.funcs[i], src = f[2] === 100 && f[5], unit = data.units[f[3]] || "";
     if (src && /^(wildmagic-|templates-)/.test(src[0]))
       return ["Codegen analogs", src[0] + " (source authenticity unproven)", exact];
+    if (lib === "Wild Magic") return [UNLABELED, "Near codegen analogs (ownership unproven)", false];
     if (lib === "Ogre") {
       part = src && /^ogre-1\.4\.5(?:-|$)/.test(src[0]) ? "Ogre 1.4.5 recipe"
         : src && /^ogre-/.test(src[0]) ? "Other Ogre versions (codegen analogs)"
@@ -45,12 +46,12 @@ libraryTable = function (data, integration = false, switcher = false) {
   return `<div class="head"><h2><small>Breakdown</small>Libraries</h2><p>Executable functions only; membership estimated from recipes, symbols and nearby class labels. Imported DLL bodies are outside this denominator. <b>Byte-exact</b> means mined reproduction; <b>Integrated</b> uses published integration addresses. Local test passes add no integration credit. Expand Ogre for source origins; alternate SDK recipes remain codegen analogs.</p></div>
     ${switcher ? sectionMode("libraries", "Library coverage view") : ""}
     <div class="table"><table id="libs"><thead><tr><th>Library / source origin</th><th>Byte-exact</th>${native ? "<th>Integrated</th>" : ""}<th>${integration ? "Integrated" : "Matched"} %</th><th>Code</th><th>Bytes ${integration ? "integrated" : "matched"}</th></tr></thead><tbody>
-    ${bySize(rows).map(([lib,r],i) => `<tr class="lib" data-lib="${i}"><td><span class="caret">â–¸</span>${esc(lib)}</td>${cells(r)}</tr>` +
-      bySize(r.parts).map(([part,p],j) => (data.groups.set(`${i}.${j}`,[`${lib} â€º ${part}`,p.fs]),
+    ${bySize(rows).map(([lib,r],i) => `<tr class="lib" data-lib="${i}"><td><span class="caret">\u25b8</span>${esc(lib)}</td>${cells(r)}</tr>` +
+      bySize(r.parts).map(([part,p],j) => (data.groups.set(`${i}.${j}`,[`${lib} \u203a ${part}`,p.fs]),
         `<tr class="part" data-of="${i}" hidden><td>${esc(part)} <button class="mapbtn" data-g="${i}.${j}">Map</button></td>${cells(p)}</tr>`)).join("")).join("")}
     </tbody></table></div>
-    <div class="legend">${integration ? '<span>purple: integrated Â· blue: exact, waiting Â· dark: not exact</span>' : '<span>blue: source recipe Â· green: mined Â· striped: partial source</span>'}</div>
-    ${data.name === "2008-06" ? `<details><summary>Local native builds â€” separate from published integration</summary><p>2026-10-29 snapshot, Codex isolated worktree. Ogre: 300 selected roots pass code/data checks; full forced link blocked by 12 unresolved symbols. Native Ogre 1.4.5 header subset: 22 forced roots link and run successfully. RbxApp / RbxgsApp: 84 / 136 forced roots, both link and run successfully. These counts overlap mining and integration; do not add them.</p><p>G3D experiment: /fp:fast preserves all existing exact symbol/address pairs across 63 core files; 107 extra address candidates still need placement and integration checks. Bundled PNG: 21 forced roots link and run. Core G3D forced-link validation remains blocked. <a href="https://github.com/colingsnyder2-ux/RoConstruct-findings/tree/codex/force-link-findings-20261029/2008-06/verification/ogre-native-20261029" target="_blank" rel="noopener">Ogre evidence</a></p></details>` : ""}`;
+    <div class="legend">${integration ? '<span>purple: integrated \u00b7 blue: exact, waiting \u00b7 dark: not exact</span>' : '<span>blue: source recipe \u00b7 green: mined \u00b7 striped: partial source</span>'}</div>
+    ${data.name === "2008-06" ? `<details><summary>Local native builds \u2014 separate from published integration</summary><p>2026-10-29 snapshot, Codex isolated worktree. Ogre: 300 selected roots pass code/data checks; full forced link blocked by 12 unresolved symbols. Native Ogre 1.4.5 header subset: 22 forced roots link and run successfully. RbxApp / RbxgsApp: 84 / 136 forced roots, both link and run successfully. These counts overlap mining and integration; do not add them.</p><p>G3D experiment: /fp:fast preserves all existing exact symbol/address pairs across 63 core files; 107 extra address candidates still need placement and integration checks. Bundled PNG: 21 forced roots link and run. Core G3D forced-link validation remains blocked. <a href="https://github.com/colingsnyder2-ux/RoConstruct-findings/tree/codex/force-link-findings-20261029/2008-06/verification/ogre-native-20261029" target="_blank" rel="noopener">Ogre evidence</a></p></details>` : ""}`;
 };
 
 if (typeof progress !== "undefined" && progress) route(false);
