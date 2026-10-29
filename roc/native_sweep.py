@@ -25,6 +25,117 @@ PRAGMAS = {"fp": "#pragma float_control(precise, off)\n", "osize": '#pragma opti
 OUTPUT_MARKER = 'out.write_text(json.dumps(patches, indent=1) + "\\n", encoding="utf-8")'
 
 
+class BaselineAdvanced(ValueError):
+    """Saved proposals require fresh proofs against the latest accepted baseline."""
+
+
+class SavedProposalError(ValueError):
+    """One saved candidate cannot be safely rebased; other candidates may proceed."""
+
+
+def hold_proposals(output, proposals, revision, ticket=None, state='pending', model=None):
+    content = (json.dumps(proposals, sort_keys=True, indent=2) + '\n').encode()
+    key = hashlib.sha256(content).hexdigest()
+    archive = Path(output)/'recovery-proposals'/(key+'.json')
+    if not archive.exists():
+        archive.parent.mkdir(parents=True, exist_ok=True)
+        temporary = archive.with_name(key+'.'+uuid.uuid4().hex+'.tmp')
+        temporary.write_bytes(content)
+        os.replace(temporary, archive)
+    if hashlib.sha256(archive.read_bytes()).hexdigest() != key:
+        raise ValueError('Saved recovery archive hash mismatch')
+    ticket = Path(ticket) if ticket else Path(output)/'recovery-pending'/(integration.digest([key, model])+'.json')
+    integration.atomic_json(ticket, dict(format=1, state=state, proposals=archive.relative_to(output).as_posix(),
+        sha256=key, model=model, attempted_revision=revision if state == 'blocked' else None))
+    return ticket
+
+
+def pending_proposals(output, revision):
+    output = Path(output).resolve()
+    for ticket in sorted((output/'recovery-pending').glob('*.json')):
+        record = json.loads(ticket.read_text())
+        if record.get('format') != 1 or record.get('state') == 'done' or not record.get('model'):
+            continue
+        if record.get('state') == 'blocked' and record.get('attempted_revision') == revision:
+            continue
+        archive = (output/record['proposals']).resolve()
+        if not archive.is_relative_to(output/'recovery-proposals'):
+            raise ValueError('Saved recovery path escapes its proposal archive')
+        if hashlib.sha256(archive.read_bytes()).hexdigest() != record['sha256']:
+            raise ValueError('Saved recovery archive hash mismatch')
+        integration.atomic_json(ticket, dict(record, state='rechecking', attempted_revision=revision))
+        return ticket, archive
+    return None, None
+
+
+def rebase_saved_edits(text, edits):
+    kept = []
+    for old, new in edits:
+        if old and text.count(old) == 1:
+            kept.append([old, new])
+        elif new and text.count(new) == 1 and (not old or old not in text):
+            continue  # Already applied exactly; never fuzzy-match a changed anchor.
+        elif old and old not in text and not new:
+            continue  # An already absent deletion changes nothing; the new proof is still required.
+        elif not old and new not in text:
+            kept.append([old, new])
+        else:
+            raise SavedProposalError('Saved edit anchor changed or became ambiguous')
+    return kept
+
+
+def recheck_proposal(proposal, ctx, texts, output, revision, log, recover=False):
+    rel = proposal['file']
+    if rel not in texts:
+        texts[rel] = (ctx.overlay/rel if (ctx.overlay/rel).exists() else ctx.tree/rel).read_text(errors='replace')
+    log('native rechecking ' + rel)
+    if not proposal.get('base_revision'):
+        raise SavedProposalError('Saved proof is unversioned; run roc native-try check ' + rel)
+    if proposal['base_revision'] != revision:
+        log('accepted baseline advanced; independently revalidating saved edits: ' + rel)
+    options = {'translation_unit':proposal['translation_unit']} if proposal.get('translation_unit') else {}
+    baseline = compile_unit(texts[rel], rel, 'recheck-baseline', output, ctx.tree, ctx.overlay,
+                            ctx.includes, ctx.defines, ctx.flags, **options)
+    if not baseline['ok']:
+        raise ValueError('Saved proposal baseline compile failed: ' + rel)
+    keep = {h['addr'] for h in ctx.matcher.scan(Path(baseline['object']).read_bytes())}
+    wanted = {h['addr'] for h in proposal['witnesses']}
+    if recover:
+        wanted -= keep | ctx.integrated
+        if not wanted:
+            log('Saved targets already exact/integrated; no submission needed: ' + rel)
+            return None
+        proposal['edits'] = rebase_saved_edits(texts[rel], proposal['edits'])
+        for name, edits in list(proposal.get('related_headers', {}).items()):
+            path = ctx.overlay/name if (ctx.overlay/name).exists() else ctx.tree/name
+            proposal['related_headers'][name] = rebase_saved_edits(path.read_text(errors='replace'), edits)
+    try:
+        source = apply_edits(texts[rel], proposal['edits']) if proposal['edits'] else texts[rel]
+    except ValueError as error:
+        raise SavedProposalError(str(error)) from error
+    final = compile_unit(source, rel, 'recheck-final', output, ctx.tree, ctx.overlay,
+                         ctx.includes, ctx.defines, ctx.flags,
+                         **dict(options, **({'related_headers':proposal['related_headers']} if proposal.get('related_headers') else {})))
+    if not final['ok']:
+        raise SavedProposalError('Saved proposal compile failed: ' + rel)
+    missing = set(proposal.get('proof', {}).get('defined_symbols', ())).intersection(final.get('undefined_symbols', ()))
+    if missing:
+        raise SavedProposalError('Saved proposal lost required definitions: ' + ', '.join(sorted(missing)))
+    hits = ctx.matcher.scan(Path(final['object']).read_bytes())
+    found = {h['addr'] for h in hits}
+    if not wanted <= found or keep - found:
+        raise SavedProposalError('Saved proposal lost exact matches; rerun roc native-try check ' + rel)
+    ownership = ownership_candidates(Path(final['object']).read_bytes(), [h for h in hits if h['addr'] in wanted])
+    if not any(candidates == [addr] for addr, candidates in ownership.items()):
+        log('no unique module ownership candidates; proposal retained locally: ' + rel)
+        return None
+    proposal['proof'] = dict(final, hits=hits, losses=[], ownership_candidates=ownership)
+    if recover:
+        proposal['witnesses'] = [dict(h, claim_unit=claim_unit(h, ctx.by_addr[h['addr']])) for h in hits if h['addr'] in wanted]
+    proposal['base_revision'] = revision
+    return proposal
+
+
 def require_private_workspace():
     if (ROOT / "work/server.db").exists():
         raise ValueError("Native finding must use a private contributor checkout; server workspace detected")
@@ -800,8 +911,17 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
     homes = target_files(texts, wanted, names, by_addr)
     skip = set(config.get("exclude_files", []))
     homes = {rel: sorted(addrs, key=lambda a: (-(names.get(a, {}).get("score") or 0), by_addr.get(a, {}).get("size", 0))) for rel, addrs in homes.items()}
-    files = sorted((rel for rel in homes if rel not in skip),
-                   key=lambda rel: (-max(names.get(a, {}).get("score") or 0 for a in homes[rel]), len(texts[rel])))[:config.get("max_files")]
+    ranked = sorted(homes, key=lambda rel: (-max(names.get(a, {}).get('score') or 0 for a in homes[rel]), len(texts[rel])))
+    files = [rel for rel in ranked if rel not in skip][:config.get('max_files')]
+    if config.get('rolling_workers'):
+        capacity = min(jobs, config.get('max_files') or len(ranked))
+        retry = config.get('retry_targets', {})
+        offsets = config.get('file_offsets', {})
+        refill = [rel for rel in ranked if rel in skip and offsets.get(rel, 0) < retry.get(rel, 0)]
+        extra = refill[:max(0, capacity-len(files))]
+        files += extra
+        if extra:
+            log('Filling %d idle file slots with different pending targets' % len(extra))
     model, rounds = config["llm"], config.get("rounds", 3)
     options = {key: config[key] for key in ("thinking", "max_tokens", "generation") if key in config}
     options.update(config.get("provider_options", {}))
@@ -850,13 +970,14 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
         comparing = time.monotonic()
         baseline = {h["addr"] for h in matcher.scan(data)}
         log("Baseline comparison: %.1fs · %d exact" % (time.monotonic() - comparing, len(baseline)))
-        if set(homes[rel]) <= baseline:
+        pending = [addr for addr in homes[rel] if addr not in baseline]
+        base['pending_targets'] = len(pending)
+        if not pending:
             log("Skipping AI: all %d targets already code/data exact locally" % len(homes[rel]))
             return None, [base]
         if provider_failed.is_set():
             return None, [base]
-        pending = [addr for addr in homes[rel] if addr not in baseline]
-        offset = int(config.get('target_offset', 0)) % len(pending)
+        offset = int(config.get('file_offsets', {}).get(rel, config.get('target_offset', 0))) % len(pending)
         pending = pending[offset:] + pending[:offset]
 
         def diff(obj, addr):
@@ -1014,7 +1135,7 @@ def server_evidence(api):
 def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
     """Discover, minimize, recompile, claim, stage, and optionally submit real native fixes."""
     require_private_workspace()
-    config = spec["native_sweep"]
+    config = dict(spec["native_sweep"])
     if config.get("llm"):
         config.setdefault("model", config["llm"])  # submissions name the model that wrote the edits
     if spec.get("client", "2008-06") != "2008-06":
@@ -1029,10 +1150,16 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
         if not archive.exists():
             archive.write_bytes(content)
     run_id = uuid.uuid4().hex
+    recovery_ticket, recovery_blocked = None, []
     integration.atomic_json(output / "summary.json", {"recipe": name, "state": "running", "run_id": run_id, "new_verified": 0})
     integration.atomic_json(output / "progress.json", {"phase": "setup", "run_id": run_id})
     def finish(summary):
         summary.update(run_id=run_id, state=summary.get("state") or ("queued" if summary.get("job") else "staged" if summary.get("applied_files") else "proposals" if summary.get("proposed_files") else "no-proposals"))
+        if recovery_ticket and summary['state'] != 'failed':
+            record = json.loads(recovery_ticket.read_text())
+            integration.atomic_json(recovery_ticket, dict(record, state='done', job=summary.get('job')))
+        if recovery_blocked:
+            hold_proposals(output, recovery_blocked, base['revision'], state='blocked', model=config.get('model'))
         integration.atomic_json(output / "summary.json", summary)
         integration.atomic_json(output / "runs" / (run_id + ".json"), summary)
         integration.atomic_json(output / "progress.json", {"phase": summary["state"], "run_id": run_id,
@@ -1090,9 +1217,15 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
             if limit:
                 files = files[:limit]
             texts = {rel: texts[rel] for rel in files}
-        if config.get("proposals_file"):
+        saved_path = config.get('proposals_file')
+        if config.get('resume_saved') and not saved_path:
+            recovery_ticket, saved_path = pending_proposals(output, base['revision'])
+            if recovery_ticket:
+                config['model'] = json.loads(recovery_ticket.read_text())['model']
+                log('Recovering saved proposals against current baseline; no AI requests; original model ' + config['model'])
+        if saved_path:
             # Proposals an agent already proved with `roc native-try check`: claim, stage and submit them as one batch.
-            saved_bytes = Path(config["proposals_file"]).read_bytes()
+            saved_bytes = Path(saved_path).read_bytes()
             archive = output / ("saved-proposals-" + hashlib.sha256(saved_bytes).hexdigest()[:20] + ".json")
             if not archive.exists():
                 archive.write_bytes(saved_bytes)
@@ -1115,44 +1248,30 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
                     integration.atomic_json(output / 'blocked-proposals' / (integration.digest(rel)[:16] + '.json'),
                                             dict(proposal=proposal, reason=str(error)))
                     log('Proposal retained, not staged: %s: %s' % (rel, error))
+                    if recovery_ticket:
+                        recovery_blocked.append(proposal)
                     continue
-                if rel not in texts:
-                    texts[rel] = (overlay / rel if (overlay / rel).exists() else tree / rel).read_text(errors="replace")
-                log("native rechecking " + rel)
-                if not proposal.get("base_revision"):
-                    raise ValueError("Saved proof is unversioned; run roc native-try check " + rel)
-                if proposal["base_revision"] != base["revision"]:
-                    log("accepted baseline advanced; independently revalidating saved edits: " + rel)
-                options = {"translation_unit": proposal["translation_unit"]} if proposal.get("translation_unit") else {}
-                baseline = compile_unit(texts[rel], rel, "recheck-baseline", output, tree, overlay, includes, defines, flags, **options)
-                if not baseline["ok"]:
-                    raise ValueError("Saved proposal baseline compile failed: " + rel)
-                keep = {h["addr"] for h in matcher.scan(Path(baseline["object"]).read_bytes())}
-                final = compile_unit(apply_edits(texts[rel], proposal["edits"]) if proposal["edits"] else texts[rel], rel, "recheck-final", output,
-                                     tree, overlay, includes, defines, flags,
-                                     **dict(options, **({"related_headers": proposal["related_headers"]} if proposal.get("related_headers") else {})))
-                if not final["ok"]:
-                    raise ValueError("Saved proposal compile failed: " + rel)
-                missing = set(proposal.get("proof", {}).get("defined_symbols", ())).intersection(final.get("undefined_symbols", ()))
-                if missing:
-                    raise ValueError("Saved proposal lost required definitions: " + ", ".join(sorted(missing)))
-                hits = matcher.scan(Path(final["object"]).read_bytes())
-                found = {h["addr"] for h in hits}
-                wanted = {h["addr"] for h in proposal["witnesses"]}
-                if not wanted <= found or keep - found:
-                    raise ValueError("Saved proposal lost exact matches; rerun roc native-try check " + rel)
-                ownership = ownership_candidates(Path(final["object"]).read_bytes(), [h for h in hits if h["addr"] in wanted])
-                if not any(candidates == [addr] for addr, candidates in ownership.items()):
-                    log("no unique module ownership candidates; proposal retained locally: " + rel)
+                original_proposal = json.loads(json.dumps(proposal))
+                try:
+                    proposal = recheck_proposal(proposal, ctx, texts, output, base['revision'], log, recover=bool(recovery_ticket))
+                except SavedProposalError as error:
+                    if not recovery_ticket:
+                        raise
+                    recovery_blocked.append(original_proposal)
+                    integration.atomic_json(output/'blocked-proposals'/(integration.digest(original_proposal)+'.json'),
+                                            dict(proposal=original_proposal, reason=str(error)))
+                    log('Saved proposal retained for repair: %s: %s' % (rel, error))
                     continue
-                proposal["proof"] = dict(final, hits=hits, losses=[])
-                proposal["proof"]["ownership_candidates"] = ownership
-                proposal["base_revision"] = base["revision"]
+                if proposal is None:
+                    continue
                 final_checks.append(proposal["proof"])
                 rechecked.append(proposal)
             proposals = rechecked
         elif config.get("llm"):
-            proposals, records = model_discovery(dict(config, base_revision=base['revision']), texts, discovery_targets, owned, by_addr, matcher, output, jobs, log,
+            discovery = dict(config, base_revision=base['revision'])
+            if config.get('rolling_workers') and config.get('tried_revision') != base['revision']:
+                discovery.update(exclude_files=[], file_offsets={}, retry_targets={})
+            proposals, records = model_discovery(discovery, texts, discovery_targets, owned, by_addr, matcher, output, jobs, log,
                                                  lambda source, rel, label: compile_unit(source, rel, label, output, tree,
                                                                                          overlay, includes, defines, flags),
                                                  ctx.names)
@@ -1209,17 +1328,20 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
         for proposal in proposals:
             proposal["base_revision"] = base["revision"]
         proposal_output = output / "proposals.json"
-        if config.get("proposals_file") and Path(config["proposals_file"]).resolve() == proposal_output.resolve():
+        if saved_path and Path(saved_path).resolve() == proposal_output.resolve():
             proposal_output = output / "rechecked-proposals.json"
         integration.atomic_json(proposal_output, proposals)
         integration.atomic_json(output / "final-checks.json", final_checks)
         summary = {"recipe": name, "client": "2008-06", "op": "native-grid", "tried": len(records),
                    "proposed_files": len(proposals), "local_exact": sum(len(p["witnesses"]) for p in proposals),
-                   "new_verified": 0, "files_tried": sorted({r["file"] for r in records})}
+                   "new_verified": 0, "files_tried": sorted({r["file"] for r in records}),
+                   "base_revision":base['revision'],
+                   "pending_files":{r['file']:r['pending_targets'] for r in records if 'pending_targets' in r}}
         if not proposals or not config.get("apply"):
             return finish(summary)
         if api.call("/v1/integration/base")["revision"] != base["revision"]:
-            raise ValueError("Accepted baseline changed; rerun discovery before applying")
+            hold_proposals(output, proposals, base['revision'], ticket=recovery_ticket, model=config.get('model'))
+            raise BaselineAdvanced("Accepted baseline changed; saved proofs queued for revalidation before applying")
         identity_file = ROOT / "work/integration-client/identity.json"
         if not identity_file.exists():
             integration.atomic_json(identity_file, {"id": uuid.uuid4().hex})
@@ -1305,7 +1427,8 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
             raise ValueError("Claims changed before linked preflight; saved proposals retained")
         linked = linked_preflight_progress(ROOT, additions, output, log)
         if api.call("/v1/integration/base")["revision"] != base["revision"]:
-            raise ValueError("Accepted baseline advanced during linked preflight; saved proposals retained, sync and retry")
+            hold_proposals(output, proposals, base['revision'], ticket=recovery_ticket, model=config.get('model'))
+            raise BaselineAdvanced("Accepted baseline advanced during linked preflight; saved proofs queued for revalidation")
         for unit in used:
             claim = units[unit]
             folder = ROOT / "work/integration-client/claims" / claim["id"]
@@ -1350,6 +1473,11 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
                     integration.command(SimpleNamespace(action="sync", server=server, user=None, token=integration.native_token()))
         return finish(summary)
     except BaseException as error:
+        if recovery_ticket and not isinstance(error, BaselineAdvanced):
+            record = json.loads(recovery_ticket.read_text())
+            integration.atomic_json(recovery_ticket, dict(record,
+                state='pending' if isinstance(error, worker.ApiFailure) else 'blocked',
+                error=str(error), attempted_revision=base['revision']))
         state = summary.get("state") if summary.get("state") in ("accepted", "rejected") else "queued" if summary.get("job") else "failed"
         finish(dict(summary, recipe=name, state=state, error=str(error), new_verified=summary.get("new_verified", 0)))
         raise

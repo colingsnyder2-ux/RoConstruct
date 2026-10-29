@@ -69,6 +69,24 @@ caps at eight or half the logical CPUs; more AI workers need not mean more compi
 Windows dependency-tree publication retries brief directory locks without copying again.
 Warm compiler caching normalizes Windows path casing while retaining header/shadow hashes.
 
+Worker v12 automatically queues immutable saved proposals when the accepted baseline
+advances before submission. The next automatic pass rechecks them without AI, using
+their original model attribution. Current compiler/code/data/ownership proofs and
+combined linked/runtime/ABI checks remain mandatory. Already integrated targets are
+skipped; stale individual edits are retained separately for repair without blocking
+safe files. Gateway recovery checks existing server state before replaying requests.
+Rejected server batches are not blindly resubmitted. Recovery archives and tickets
+live under the run's `recovery-proposals/` and `recovery-pending/` directories.
+
+Automatic scheduling fills a short fresh-file batch with different pending targets
+from earlier files when available. It avoids refilling files whose known targets
+were exhausted; source/baseline changes refresh scheduling evidence. The dashboard
+shows active file workers versus configured slots. AI slots can legitimately be idle
+during linked preflight. Thirty-second phase heartbeats distinguish those checks
+from a stalled controller. The RakNet runtime test binds both peers to localhost
+with ephemeral ports, preserving reliable-packet verification without listening on
+LAN interfaces or colliding with another session's fixed test port.
+
 ## First response: select the client
 
 Before setup or identity questions, fetch the public server's `/v1/status` using the agent's HTTP tool
@@ -88,7 +106,7 @@ Keep the selected client locked for this run.
 
 Do not ask the user to locate or attach a Worker ZIP. If `roc/native_try.py`, `research/native-units.json`,
 or `research/native-source-lock.json` is missing, `roc native-try --help` is unavailable, or a package marker
-reports `native_workflow_version` below 11, download the current Worker package yourself:
+reports `native_workflow_version` below 12, download the current Worker package yourself:
 
 - Manifest: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.json
 - Package: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.zip
@@ -102,7 +120,7 @@ into a new folder without overwriting the user's existing checkout or edits:
 $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 $nativeManifest = Invoke-RestMethod ('https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.json?t=' + [guid]::NewGuid().ToString('N'))
-if ($nativeManifest.workflow_version -lt 11 -or
+if ($nativeManifest.workflow_version -lt 12 -or
     $nativeManifest.url -ne 'https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.zip' -or
     $nativeManifest.sha256 -notmatch '^[0-9a-fA-F]{64}$') { throw 'Invalid Worker manifest' }
 $nativeFolder = Join-Path (Get-Location) ('RoConstruct-Native-' + [guid]::NewGuid().ToString('N'))

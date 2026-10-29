@@ -109,6 +109,40 @@ def test_twenty_ai_workers_in_discovery_share_the_same_file_compile(tmp_path,mon
     assert len(proposals)==1 and len(proposals[0]['witnesses'])==20
 
 
+@pytest.mark.parametrize('workers,fresh,old', [(20,7,13),(2,1,1)])
+def test_short_batch_refills_idle_workers_with_untried_targets(tmp_path, monkeypatch, workers, fresh, old):
+    import threading
+    texts, names, rows = {}, {}, {}
+    prior = []
+    for i in range(fresh+old):
+        cls = 'A%02d' % i
+        rel = 'App/'+cls+'.cpp'
+        texts[rel] = '\n'.join('int %s::f%d(){return 0;}' % (cls,n) for n in range(10))
+        if i >= fresh:
+            prior.append(rel)
+        for n in range(10):
+            addr = '%08x' % (i*16+n)
+            names[addr] = dict(symbol='?f%d@%s@RBX@@QAEHXZ' % (n,cls),score=90)
+            rows[addr] = dict(unit='RBX::'+cls,size=6)
+    barrier, seen = threading.Barrier(workers), {}
+    def proposal(rel, text, addrs, *args, **kwargs):
+        seen[rel] = addrs[0]
+        barrier.wait(timeout=5)
+        return None, []
+    monkeypatch.setattr(native_sweep, 'model_proposal', proposal)
+    def compile(source, rel, label):
+        path = tmp_path/(Path(rel).stem+'.obj')
+        path.write_bytes(b'baseline')
+        return dict(ok=True,object=str(path))
+    _, records = native_sweep.model_discovery(dict(llm='codex:default',rounds=1,max_files=40,
+        rolling_workers=True,exclude_files=prior,retry_targets=dict.fromkeys(prior,10),
+        file_offsets=dict.fromkeys(prior,4)),texts,set(names),set(),rows,
+        SimpleNamespace(scan=lambda _:[]),tmp_path,workers,lambda _:None,compile,names)
+    assert len(seen) == workers
+    assert all(int(addr,16)%16 == (4 if rel in prior else 0) for rel,addr in seen.items())
+    assert all(r['pending_targets'] == 10 for r in records)
+
+
 def test_cached_method_spans_do_not_leak_mutable_maps():
     text='int A::f(){return 1;}'
     first=native_sweep.methods(text);first.clear()

@@ -305,6 +305,27 @@ def test_native_coordinator_reports_one_stage_without_duplicate_worker_log(conti
     assert matching == [('stage', {'message':message, 'task_status':'running'})]
 
 
+def test_baseline_advance_preserves_scheduling_and_rechecks_without_error_count(continuous_native, monkeypatch):
+    config, control, events, root = continuous_native
+    output = root/'work/research/native-model-2008'
+    output.mkdir(parents=True)
+    calls = []
+    def run(spec, *args, **kwargs):
+        calls.append(dict(spec['native_sweep']))
+        if len(calls) == 1:
+            (output/'summary.json').write_text(json.dumps(dict(files_tried=['App/A.cpp'],base_revision='old',pending_files={'App/A.cpp':20})))
+            raise native_sweep.BaselineAdvanced('Saved proofs queued')
+        control.command({'action':'stop'})
+        return dict(files_tried=[],base_revision='new')
+    monkeypatch.setattr(native_sweep, 'run', run)
+    gui_worker.native_loop(config, control, lambda event, **fields:events.append((event,fields)))
+    assert calls[1]['resume_saved'] and calls[1]['rolling_workers']
+    assert calls[1]['file_offsets'] == {'App/A.cpp':4}
+    assert calls[1]['retry_targets'] == {'App/A.cpp':20} and calls[1]['tried_revision'] == 'old'
+    assert control.errors == 0
+    assert any('without AI' in fields.get('message','') for _,fields in events)
+
+
 def test_exhausted_discovery_restarts_with_rotated_targets_without_changed_stats(continuous_native, monkeypatch):
     config, control, events, _ = continuous_native
     calls = []

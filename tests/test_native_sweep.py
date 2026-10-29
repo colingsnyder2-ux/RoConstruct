@@ -524,6 +524,8 @@ def test_pipeline_recompiles_minimal_fix_before_claim_and_apply(tmp_path, monkey
         def call(self, path, body=None):
             calls.append(path)
             if path.endswith('/base'):
+                if saved_proof in ('advance-before-claim','advance-after-preflight') and calls.count(path) >= (2 if saved_proof == 'advance-before-claim' else 3):
+                    return dict(base, revision='next-base')
                 return base
             if path == '/v1/integration':
                 return {'jobs': []}
@@ -591,6 +593,8 @@ def test_pipeline_recompiles_minimal_fix_before_claim_and_apply(tmp_path, monkey
     def command(args):
         actions.append(args.action)
         if args.action == 'submit':
+            if saved_proof == 'auto-recovery-mixed':
+                assert args.model == 'codex:original-writer'
             sweep.integration.atomic_json(root / 'work/integration-client/claims/own/job.json', {'id': 'verified-job'})
     monkeypatch.setattr(sweep.integration, 'command', command)
     config = {'manifest': str(manifest), 'owned_report': str(owned), 'files': ['App/*.cpp'],
@@ -607,6 +611,16 @@ def test_pipeline_recompiles_minimal_fix_before_claim_and_apply(tmp_path, monkey
                                          'base_revision': None if saved_proof == 'unversioned' else
                                                           'old-base' if saved_proof == 'stale' else 'base'}]))
         config['proposals_file'] = str(proposals)
+        if saved_proof == 'auto-recovery-mixed':
+            data = json.loads(proposals.read_text())
+            bad = dict(data[0], file='App/B.cpp', edits=[['absent old anchor', '']])
+            (tree/'App/B.cpp').write_text(source.read_text())
+            recovery_ticket = sweep.hold_proposals(root/'work/sweep', [bad]+data, 'old-base', model='codex:original-writer')
+            config.pop('proposals_file')
+            config.update(resume_saved=True, llm='deepseek:new-dropdown-model')
+            def no_ai(*args, **kwargs):
+                raise AssertionError('Saved proof recovery must not request AI')
+            monkeypatch.setattr(sweep, 'model_discovery', no_ai)
         if saved_proof == 'mixed-invalid':
             data = json.loads(proposals.read_text())
             data.append(dict(file='App/Bad.cpp', edits=[['old','struct Invented { int x; };']],
@@ -643,6 +657,16 @@ def test_pipeline_recompiles_minimal_fix_before_claim_and_apply(tmp_path, monkey
         assert proposals.read_bytes() == saved_bytes and generator.read_bytes() == original
         assert not actions and calls.count('/v1/integration/release') == 1
         return
+    if saved_proof in ('advance-before-claim','advance-after-preflight'):
+        with pytest.raises(sweep.BaselineAdvanced, match='baseline'):
+            sweep.run({'native_sweep':config}, 'test', output=root/'work/sweep', log=lambda _:None)
+        ticket, archive = sweep.pending_proposals(root/'work/sweep', 'next-base')
+        assert ticket and json.loads(ticket.read_text())['model'] == 'human'
+        assert json.loads(archive.read_text())[0]['file'] == 'App/A.cpp'
+        assert not actions and generator.read_bytes() == original
+        if saved_proof == 'advance-before-claim':
+            assert '/v1/integration/claim' not in calls
+        return
     if terminal == 'timeout':
         def timeout(*args):
             raise TimeoutError('verification still pending')
@@ -653,6 +677,12 @@ def test_pipeline_recompiles_minimal_fix_before_claim_and_apply(tmp_path, monkey
         assert pending['state'] == 'queued' and pending['job'] == 'verified-job'
         return
     result = sweep.run({'native_sweep': config}, 'test', output=root / 'work/sweep', log=lambda _: None)
+    if saved_proof == 'auto-recovery-mixed':
+        assert json.loads(recovery_ticket.read_text())['state'] == 'done'
+        assert sweep.pending_proposals(root/'work/sweep', 'base') == (None, None)
+        blocked, archive = sweep.pending_proposals(root/'work/sweep', 'next-base')
+        assert blocked != recovery_ticket
+        assert [p['file'] for p in json.loads(archive.read_text())] == ['App/B.cpp']
     if saved_proof == 'mixed-invalid':
         assert len(list((root / 'work/sweep/blocked-proposals').glob('*.json'))) == 1
         assert result['applied_paths'] == ['App/A.cpp']
@@ -671,6 +701,17 @@ def test_pipeline_recompiles_minimal_fix_before_claim_and_apply(tmp_path, monkey
         assert all('A::keep' not in old and 'A::unrelated' not in old for old, _ in edits)
         assert calls.count('/v1/integration/claim') == (2 if saved_proof == 'stale' else 0 if saved_proof == 'reuse' else 1)
         assert calls.count('/v1/integration/release') == (1 if saved_proof == 'stale' else 0)
+
+
+def test_auto_recovery_isolates_stale_file_and_submits_fresh_proof_with_original_model(tmp_path, monkeypatch):
+    test_pipeline_recompiles_minimal_fix_before_claim_and_apply(tmp_path, monkeypatch,
+        lose_owned=False, existing_owned=True, terminal='accepted', saved_proof='auto-recovery-mixed')
+
+
+@pytest.mark.parametrize('stage', ['advance-before-claim','advance-after-preflight'])
+def test_baseline_advance_queues_immutable_proof_without_staging_or_submitting(tmp_path, monkeypatch, stage):
+    test_pipeline_recompiles_minimal_fix_before_claim_and_apply(tmp_path, monkeypatch,
+        lose_owned=False, existing_owned=True, terminal=None, saved_proof=stage)
 
 
 def test_submit_network_failure_is_persisted_and_api_closed(tmp_path, monkeypatch):

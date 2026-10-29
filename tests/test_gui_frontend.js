@@ -290,3 +290,13 @@ assert.ok(feedContext.items.some(([,html])=>html.includes("Next discovery cycle"
 })().catch(error=>{console.error(error);process.exitCode=1;});
 
 assert.match(source,/deep:\{rounds:6,max_size:0,max_tokens:4096\}/);
+
+const nativeCardsContext={workerRun:"native",logs:[],jobs:[{id:"native",kind:"worker",status:"running",
+  config:{lease_mode:"native"},slots:Object.fromEntries(Array.from({length:20},(_,i)=>[i,{busy:i<7}])),
+  matched:0,attempted:0}],isWorker:()=>true,active:()=>true,badge:String,esc:String,endRun:()=>""};
+vm.createContext(nativeCardsContext);
+vm.runInContext(source.slice(source.indexOf("function workerCards("),source.indexOf("function commands(")),nativeCardsContext);
+const nativeCardsHTML=nativeCardsContext.workerCards();
+assert.match(nativeCardsHTML,/<b>7<\/b> active \/ <b>20<\/b> slots/);
+assert.match(nativeCardsHTML,/Waiting for file/);
+assert.doesNotMatch(nativeCardsHTML,/20<\/b> loops/);

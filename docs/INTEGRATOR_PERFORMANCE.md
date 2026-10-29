@@ -292,3 +292,38 @@ controller reports each coordinator message once, rather than duplicating it as
 both a worker log and a stage. Heartbeats stop when verification returns or fails;
 the original receipt/exception propagates unchanged. These controller changes do
 not modify verifier inputs or invalidate an otherwise matching baseline cache.
+
+## Saved-proof recovery and file-slot utilization
+
+Baseline changes now queue content-hashed, immutable proposal archives before
+leaving a pass. Automatic recovery synchronizes accepted sources, recompiles the
+current TU and saved edits, verifies code/data and existing exacts, checks ownership
+and runs the combined linked proof before submission. It requests no new AI output
+and preserves the original writer's model identity. Already covered targets need
+no candidate compile; changed/ambiguous anchors remain quarantined for repair.
+Exact already-applied edits can be removed during rebase. No fuzzy anchors or
+stale compiler proofs are accepted. Invalid files do not prevent other saved files
+from being revalidated. Blocked recovery is retried after a baseline change;
+completed/submitted tickets are not blindly replayed.
+
+The file coordinator keeps per-file target offsets and known remaining-target
+counts. A short fresh-file pass fills unused slots from previously visited files
+with different pending targets. A regression test reproduces seven fresh files
+plus thirteen revisits with twenty simultaneous file workers. Exhausted files are
+not used as filler; revision changes invalidate old scheduling evidence. Linked
+verification still requires a complete batch, so idle AI slots during that phase
+are expected and the UI now reports actual active slots separately.
+
+The RakNet loopback test previously bound both sockets to all interfaces on a fixed
+server port. It now binds only 127.0.0.1 and discovers an ephemeral server port.
+Genuine VS2008 compilation/linking and twenty parallel reliable-packet tests passed.
+The payload and connection assertions remain mandatory. No firewall policy or
+administrator configuration is changed.
+
+A replay of the real held twelve-file/sixteen-target proposal archive against a
+new accepted baseline took 80.609s with model generation and server writes disabled.
+Seven files' saved targets were already covered, three had no unique ownership
+candidate and remained in their immutable archive, and two yielded fresh local
+code/data proofs with zero losses. This was a contributor recheck, not new server
+credit or a completed combined linked proof. The original Codex model identity was
+retained throughout recovery.

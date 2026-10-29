@@ -267,7 +267,21 @@ def native_loop(config, control, emit):
             control.command({"action": "stop"})
 
     tried = set()
+    file_offsets, retry_targets = {}, {}
+    tried_revision = None
     target_offset = 0
+    def remember(summary, step):
+        nonlocal tried_revision
+        revision = summary.get('base_revision')
+        if revision is not None and revision != tried_revision:
+            tried.clear()
+            file_offsets.clear()
+            retry_targets.clear()
+            tried_revision = revision
+        tried.update(summary.get('files_tried', []))
+        retry_targets.update(summary.get('pending_files', {}))
+        for rel in summary.get('files_tried', []):
+            file_offsets[rel] = file_offsets.get(rel, target_offset) + step
     def report(message):
         emit('stage', message=str(message), task_status='running')
     def recover_pass(error):
@@ -275,7 +289,11 @@ def native_loop(config, control, emit):
         # files immediately. Native run archived their source and local proofs.
         path = native_sweep.ROOT / 'work/research/native-model-2008/summary.json'
         if path.exists():
-            tried.update(json.loads(path.read_text()).get('files_tried', []))
+            remember(json.loads(path.read_text()), current['native_compile_batch'])
+        if isinstance(error, native_sweep.BaselineAdvanced):
+            emit('stage', message='Accepted baseline advanced; rechecking saved proofs without AI', task_status='running')
+            control.wait(1)
+            return
         control.errors += 1
         emit('error', slot=0, message='Native pass failed; proofs retained. Continuing in 30s: ' + str(error))
         emit('stage', message='Recovering native pass; retrying in 30s', task_status='running')
@@ -310,6 +328,7 @@ def native_loop(config, control, emit):
             break
         if refresh_pending():
             tried.clear()
+            file_offsets.clear()
         for slot in range(control.workers):
             emit("applied", slot=slot, revision=control.revision)
         inflight = providers.cloud_slots(current["model"],control.workers,current["cloud_concurrency"])
@@ -320,7 +339,8 @@ def native_loop(config, control, emit):
             max_files=current["native_batch_files"], context=current["native_context"],
             generation=current["native_generation"],
             compile_batch=current["native_compile_batch"],
-            target_offset=target_offset,
+            target_offset=target_offset, resume_saved=True, rolling_workers=True,
+            file_offsets=dict(file_offsets), retry_targets=dict(retry_targets), tried_revision=tried_revision,
             compile_workers=current["native_compile_workers"],
             provider_options={"allow_cloud": current["cloud_allowed"], "budget": control.budget,
                 "gate": providers.CloudGate(inflight),
@@ -350,7 +370,7 @@ def native_loop(config, control, emit):
             continue
         emit("log", slot=0, message="native pass: %s, %s local exact, %s verified" % (
             summary.get("state"), summary.get("local_exact", 0), summary.get("new_verified", 0)))
-        tried.update(summary.get("files_tried", []))
+        remember(summary, current['native_compile_batch'])
         if summary.get("job"):
             pending.add(summary["job"])
         control.completed += len(summary.get("files_tried", []))
@@ -373,6 +393,7 @@ def native_loop(config, control, emit):
             while not control.stopping:
                 if refresh_pending():
                     tried.clear()
+                    file_offsets.clear()
                     break
                 api = worker.Api(current["server"], worker.load_settings().get("token"))
                 try:
@@ -380,6 +401,7 @@ def native_loop(config, control, emit):
                     changed = (status.get("matched"), status.get("integrated"), status.get("functions"), control.revision)
                     if signature is not None and changed != signature:
                         tried.clear()
+                        file_offsets.clear()
                         break
                     signature = changed
                 except worker.ApiFailure:
@@ -388,6 +410,7 @@ def native_loop(config, control, emit):
                     api.close()
                 if time.monotonic() >= restart_at:
                     tried.clear()
+                    file_offsets.clear()
                     target_offset += current['native_compile_batch']
                     report('Starting next discovery cycle with rotated pending targets')
                     break
