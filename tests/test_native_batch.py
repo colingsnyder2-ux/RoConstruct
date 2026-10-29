@@ -102,11 +102,41 @@ def test_twenty_ai_workers_in_discovery_share_the_same_file_compile(tmp_path,mon
     monkeypatch.setattr(providers,'generate',reply)
     monkeypatch.setattr(native_sweep,'model_evidence',lambda addr,*args:{'addr':addr,'rebuilt_symbol':names[addr]['symbol']})
     monkeypatch.setattr(native_sweep,'body_diff',lambda *args:'target diff')
+    monkeypatch.setattr(native_sweep,'ownership_candidates',lambda obj,hits:{h['addr']:[h['addr']] for h in hits})
     proposals,trials=native_sweep.model_discovery({'llm':'codex:default','rounds':1,'generation':'method','compile_batch':20},
         {'App/util/A.cpp':text},set(names),{'keeper'}, {a:{'unit':'RBX::A','size':6} for a in names},matcher,tmp_path,20,
         lambda _:None,lambda source,rel,label:compile(source,label),names)
     assert len(calls)==20 and len(compiled)==2  # baseline + shared proposal
     assert len(proposals)==1 and len(proposals[0]['witnesses'])==20
+
+
+@pytest.mark.parametrize('mixed', [False, True])
+def test_discovery_retains_ambiguous_proofs_without_counting_them_as_gains(tmp_path, monkeypatch, mixed):
+    import re
+    from roc import providers
+    text, candidates, compile, matcher, compiled = fixture(tmp_path)
+    names = {'%08x'%n:dict(symbol='?f%d@A@RBX@@QAEHXZ'%n,score=90) for n in range(4)}
+    def reply(model,messages,options):
+        n = int(re.search(r'Repair ONLY A::f(\d+)',messages[1]['content'])[1])
+        return SimpleNamespace(text='```cpp\nint A::f%d(){return %d;}\n```'%(n,100+n))
+    monkeypatch.setattr(providers,'generate',reply)
+    monkeypatch.setattr(native_sweep,'model_evidence',lambda addr,*args:dict(addr=addr,rebuilt_symbol=names[addr]['symbol']))
+    monkeypatch.setattr(native_sweep,'body_diff',lambda *args:'diff')
+    monkeypatch.setattr(native_sweep,'ownership_candidates',lambda obj,hits:{h['addr']:[h['addr']] if mixed and h['addr']!='00000003' else [h['addr'],'alias'] for h in hits})
+    events = []
+    proposals, trials = native_sweep.model_discovery(dict(llm='codex:default',rounds=1,generation='method',compile_batch=4,
+        provider_options=dict(event=lambda event,**fields:events.append((event,fields)))),
+        {'App/A.cpp':text},set(names),{'keeper'},{a:dict(unit='RBX::A',size=6) for a in names},matcher,
+        tmp_path,4,lambda _:None,lambda source,rel,label:compile(source,label),names)
+    assert list((tmp_path/'ambiguous-proposals').glob('*.json'))
+    result = next(fields for event,fields in events if event=='native_result')
+    if mixed:
+        assert len(proposals[0]['witnesses']) == result['local_exact'] == 3
+        assert 'return 103;' not in native_sweep.apply_edits(text,proposals[0]['edits'])
+        assert proposals[0]['proof']['losses'] == []
+    else:
+        assert not proposals and result['local_exact'] == 0
+        assert result['error_category'] == 'ambiguous_ownership'
 
 
 @pytest.mark.parametrize('workers,fresh,old', [(20,7,13),(2,1,1)])
@@ -188,8 +218,9 @@ def test_proposal_checkpoint_is_saved_before_slower_files_finish(tmp_path, monke
             assert saved[0]['base_revision'] == 'accepted-baseline'
             return None, []
         return dict(file=rel, edits=[['return 0;', 'return 10;']],
-                    witnesses=[{'addr':'00000001','symbol':'?f@A@RBX@@QAEHXZ'}], proof={}), []
+                    witnesses=[{'addr':'00000001','symbol':'?f@A@RBX@@QAEHXZ'}], proof={'object':str(obj)}), []
     monkeypatch.setattr(native_sweep,'model_proposal',propose)
+    monkeypatch.setattr(native_sweep,'ownership_candidates',lambda obj,hits:{h['addr']:[h['addr']] for h in hits})
     obj = tmp_path/'baseline.obj'
     obj.write_bytes(b'baseline')
     names = {'00000001':{'symbol':'?f@A@RBX@@QAEHXZ'},'00000002':{'symbol':'?f@B@RBX@@QAEHXZ'}}

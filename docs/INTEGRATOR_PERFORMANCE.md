@@ -327,3 +327,18 @@ candidate and remained in their immutable archive, and two yielded fresh local
 code/data proofs with zero losses. This was a contributor recheck, not new server
 credit or a completed combined linked proof. The original Codex model identity was
 retained throughout recovery.
+
+## Exhausted providers and ambiguous local hits
+
+Explicit OpenCode allowance failures (`Free usage limit reached`, `Go usage limit
+exceeded`) and API `insufficient_quota` now require provider action instead of
+opening a retry circuit for every file. Ordinary request-rate throttles, per-minute
+quota messages and transport failures retain transient retry handling. Existing
+proofs remain saved when an allowance stops new generation.
+
+Automatic discovery checks whole-binary ownership before emitting local gains.
+Ambiguous code/data matches are archived under `ambiguous-proposals/` instead of
+inflating the gain counter. Mixed batches minimize down to uniquely owned gains
+and re-prove the remaining edits with baseline loss checks. Server acceptance gates
+are unchanged. Historical local counters may include repeat addresses and ambiguous
+matches; they are not counts of distinct server credits.

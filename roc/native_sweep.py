@@ -1043,6 +1043,27 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
                 log(message)
         try:
             proposal, trials = discover(rel, report, dict(options, log=report))
+            if proposal:
+                proof = proposal['proof']
+                ownership = ownership_candidates(Path(proof['object']).read_bytes(), proposal['witnesses'])
+                unique = {h['addr'] for h in proposal['witnesses'] if ownership.get(h['addr']) == [h['addr']]}
+                if len(unique) != len(proposal['witnesses']):
+                    archive = output/'ambiguous-proposals'/(integration.digest([
+                        rel, proposal['edits'], proposal.get('related_headers'), config.get('base_revision')])+'.json')
+                    if not archive.exists():
+                        integration.atomic_json(archive, dict(proposal=proposal, ownership_candidates=ownership))
+                    report('%d code/data matches lack unique ownership; proof retained locally' %
+                           (len(proposal['witnesses'])-len(unique)))
+                    if unique:
+                        proposal = minimize(rel, texts[rel], proposal['edits'], unique,
+                            {h['addr'] for h in matcher.scan(Path(trials[0]['object']).read_bytes())},
+                            lambda source,label:compile_source(source,rel,label), matcher, 'unique-ownership',
+                            definitions=proof.get('defined_symbols', ()), verified=proof)
+                    else:
+                        proposal = None
+                    if proposal is None:
+                        trials.append(dict(file=rel, mode='ownership', ok=False, error_category='ambiguous_ownership',
+                            error='Code/data matched, but no uniquely owned gain; proof retained locally'))
             if event:
                 event("native_result", slot=slot, file=rel,
                       local_exact=len(proposal["witnesses"]) if proposal else 0,

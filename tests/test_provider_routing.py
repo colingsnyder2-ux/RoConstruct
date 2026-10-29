@@ -9,6 +9,32 @@ import pytest
 from roc import gui_worker, native_sweep, providers
 
 
+@pytest.mark.parametrize('message', ['Go usage limit exceeded', 'Free usage limit reached. Free models work in OpenCode', 'insufficient_quota'])
+def test_exhausted_allowance_is_actionable_not_a_rate_limit_retry(message):
+    error = providers._opencode_failure(dict(status=429,message=message))
+    assert error.category == 'provider_quota' and error.category in providers.FATAL_ERRORS
+
+
+@pytest.mark.parametrize('message', ['Rate limit exceeded', 'Too many requests', 'Quota exceeded for requests per minute', 'The socket connection was closed unexpectedly'])
+def test_temporary_provider_throttles_and_transport_errors_still_retry(message):
+    assert providers._opencode_failure(dict(status=429,message=message)).category == 'provider_retry'
+
+
+def test_http_quota_exhaustion_does_not_echo_body_or_retry_forever(monkeypatch):
+    monkeypatch.setenv('NVIDIA_API_KEY','test-key')
+    send = Mock(side_effect=urllib.error.HTTPError('https://example.invalid',429,'',{},
+        io.BytesIO(b'{"code":"insufficient_quota","message":"private account detail"}')))
+    monkeypatch.setattr(providers.urllib.request,'urlopen',send)
+    sleep = Mock()
+    monkeypatch.setattr(providers.time,'sleep',sleep)
+    with pytest.raises(providers.ProviderError) as failure:
+        providers.generate('nvidia/model','request',dict(allow_cloud=True,retry_forever=True))
+    assert failure.value.category == 'provider_quota'
+    assert 'private' not in str(failure.value)
+    send.assert_called_once()
+    sleep.assert_not_called()
+
+
 @pytest.mark.parametrize('model,remote', [
     ('nvidia/nemotron-3-ultra-550b-a55b', 'nvidia/nemotron-3-ultra-550b-a55b'),
     ('nvidia:nvidia/nemotron-3-ultra-550b-a55b', 'nvidia/nemotron-3-ultra-550b-a55b'),

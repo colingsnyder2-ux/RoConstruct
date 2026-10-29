@@ -53,7 +53,7 @@ SYSTEM = "Reconstruct compact valid C++ only. Never emit inline assembly. Follow
 USER_AGENT = "RoConstruct/1.0"
 # Providers that rejected the thinking field once; the process skips it after that.
 NO_THINKING = set()
-FATAL_ERRORS = frozenset(("provider_auth", "provider_key", "provider_config", "provider_model"))
+FATAL_ERRORS = frozenset(("provider_auth", "provider_key", "provider_config", "provider_model", "provider_quota"))
 MODEL_CATALOG = {}
 MODEL_CATALOG_LOCK = threading.Lock()
 
@@ -63,6 +63,12 @@ class ProviderError(RuntimeError):
     def __init__(self, category, message, status=None):
         self.category, self.status = category, status
         super().__init__("%s: %s" % (category, message))
+
+
+def quota_exhausted(message):
+    detail = str(message).lower()
+    return any(term in detail for term in ('insufficient_quota', 'insufficient balance',
+        'usage limit reached', 'usage limit exceeded', 'free usage limit'))
 
 
 @dataclass
@@ -480,6 +486,8 @@ def _post(url, body, headers, timeout, allow_empty=False):
             raise ProviderError("provider_auth", "HTTP %d: check API key and model access" % error.code, error.code) from None
         if error.code == 404:
             raise ProviderError("provider_model", "HTTP 404: model or endpoint not found; check full model ID and base URL", 404) from None
+        if quota_exhausted(detail):
+            raise ProviderError('provider_quota', 'HTTP %d: provider allowance exhausted; retry after reset or change model' % error.code, error.code) from None
         retry = (error.code in (408, 429) or error.code >= 500 or
                  any(text in detail for text in ("insufficient_quota", "usage limit", "rate limit",
                                                   "quota exceeded", "current quota", "insufficient balance")))
@@ -690,7 +698,9 @@ def _opencode_failure(error):
     status = error.get("status") if isinstance(error.get("status"), int) else None
     message = str(error.get("message") or error.get("type") or "OpenCode request failed")
     transient = any(term in message.lower() for term in ("socket connection was closed", "econnreset", "econnrefused", "etimedout", "fetch failed"))
-    if status in (408, 429) or (status or 0) >= 500 or status is None and transient:
+    if quota_exhausted(message):
+        category = 'provider_quota'
+    elif status in (408, 429) or (status or 0) >= 500 or status is None and transient:
         category = "provider_retry"
     elif status in (401, 402, 403):
         category = "provider_auth"  # quota/refusal: waiting will not clear it
