@@ -13,6 +13,7 @@ Each zip is staged, then imported for real before it is packed: a package that
 cannot import its own modules is a build failure, not a download problem later.
 """
 import ast
+import json
 import shutil
 import subprocess
 import sys
@@ -35,7 +36,7 @@ WORKER_MODULES = [
 SERVER_MODULES = ["cluster", "progress", "reports", "server"]
 WORKER_MODULES += ["agent_memory", "research", "agent_recovery", "bruteforce", "extents", "remill", "repair_scan", "rtti", "boundaries",
                    "claims", "packet", "scout", "ranking", "routing"]
-WORKER_MODULES += ["integration", "rebuild", "rebuild_install", "mutsearch", "twinpatch"]
+WORKER_MODULES += ["integration", "rebuild", "rebuild_install", "mutsearch", "twinpatch", "native_try", "native_sweep", "standins"]
 SERVER_MODULES += ["integration_verify", "integration_notify", "integration_site", "findings_publish",
                    "findings_transport", "findings_links", "rebuild_package", "rebuild_package_launcher"]
 
@@ -50,8 +51,7 @@ COMMON_FILES = ["roc.py", "roc.cmd", "roc.sh", "install.cmd", "install.sh",
                 "docs/logo.png", "docs/favicon.png",
                 "clients/clients.json", "clients/sources.json", "clients/donor.json"]
 # Native contributors need trusted recipes/generator, never private vendor trees.
-COMMON_FILES += ["docs/INTEGRATION.md"]
-
+COMMON_FILES += ["docs/INTEGRATION.md", "docs/NATIVE_AGENT.md", "research/libs-bundle.json", "research/native-units.json", "research/native-source-lock.json"]
 
 PACKAGES = {
     "worker": {
@@ -164,6 +164,25 @@ def stage(slug, spec, out):
         target = out / relative
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(source, target)
+    # Adopted headers are compiler inputs even if no ordinary mined snippet named them.
+    overlay = ROOT / 'rebuild/2008-06/patches/rbxgs-client.json'
+    native = json.loads((ROOT / 'research/native-units.json').read_text(encoding='utf-8'))
+    adopted = {}
+    for edits in json.loads(overlay.read_text(encoding='utf-8')).values():
+        for old, ref in edits:
+            if old != '@replace':
+                continue
+            relative = Path(ref)
+            if relative.parts[0] != 'App' or '..' in relative.parts or not relative.name.startswith('roc_'):
+                raise SystemExit('Unsupported native dependency: ' + ref)
+            name = Path(*relative.parts[1:]).as_posix()
+            path = ROOT / 'tools/rbxgs/Client' / relative
+            text = path.read_text(errors='replace') if path.exists() else native.get('../rbxgs/Client/App', {}).get(name)
+            if text is None:
+                raise SystemExit('Missing native dependency: ' + ref)
+            adopted[name] = text
+    (out / 'research/native-units.json').write_text(json.dumps(
+        {'../rbxgs/Client/App': adopted}, indent=1, sort_keys=True) + '\n', encoding='utf-8')
     for module in spec["modules"]:
         source = ROOT / "roc" / ("%s.py" % module)
         if not source.is_file():
@@ -171,6 +190,8 @@ def stage(slug, spec, out):
         shutil.copyfile(source, out / "roc" / source.name)
     shutil.copytree(ROOT / "roc" / "web", out / "roc" / "web", dirs_exist_ok=True)
     (out / "roc" / "__init__.py").write_text("", encoding="utf-8")
+    (out / "roconstruct-package.json").write_text(json.dumps(
+        {"package": slug, "revision": version(), "native_workflow": True, "native_workflow_version": 3}, indent=2) + "\n", encoding="utf-8")
     for name, text in spec["docs"].items():
         (out / name).write_text(text, encoding="utf-8")
     return out
@@ -194,6 +215,11 @@ def referenced_modules(staged):
             # need_module("server", ...) is how a package leaves a module out on purpose.
             if node.args and isinstance(node.args[0], ast.Constant) and isinstance(node.args[0].value, str):
                 names.add(node.args[0].value)
+        elif isinstance(node, ast.Call) and getattr(node.func, "id", "") == "__import__":
+            if node.args and isinstance(node.args[0], ast.Constant) and isinstance(node.args[0].value, str):
+                module = node.args[0].value
+                if module.startswith("roc."):
+                    names.add(module.split(".", 1)[1])
     return names
 
 

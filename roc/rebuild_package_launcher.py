@@ -87,7 +87,7 @@ def main():
         link(root / 'tools', run / 'tools')
         if (root / 'src').is_dir():
             link(root / 'src', run / 'src')
-        native = str(package / 'src/rbxgs/Client').replace('\\', '/')
+        native = str(package / 'src/Client').replace('\\', '/')
 
         def paths(value):
             if isinstance(value, dict):

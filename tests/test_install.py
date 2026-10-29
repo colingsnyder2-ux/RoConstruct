@@ -393,7 +393,8 @@ def test_packages_split_keeps_maintainer_modules_out():
                               "integration_notify", "integration_site", "findings_publish",
                               "findings_transport", "findings_links", "rebuild_package", "rebuild_package_launcher"}
     assert not (worker_modules & server_modules), "helper packages must not carry server code"
-    for helper in ("worker", "link", "doctor", "setup", "analyze", "draft", "providers"):
+    for helper in ("worker", "link", "doctor", "setup", "analyze", "draft", "providers",
+                   "native_try", "native_sweep", "standins", "rebuild_install"):
         assert helper in worker_modules, "%s must ship to helpers" % helper
     assert set(build.PACKAGES) == {"worker", "local-ai", "server"}
     for slug in ("worker", "local-ai"):
@@ -401,6 +402,7 @@ def test_packages_split_keeps_maintainer_modules_out():
     # One launcher: roc.cmd (plus install.cmd for first-time bootstrap) in every package.
     for spec in build.PACKAGES.values():
         assert {"roc.cmd", "install.cmd", "roc.sh", "install.sh"} <= set(spec["files"])
+        assert {"docs/NATIVE_AGENT.md", "research/libs-bundle.json", "research/native-units.json"} <= set(spec["files"])
         assert not [f for f in spec["files"] if f.endswith(".cmd") and f not in ("roc.cmd", "install.cmd")]
 
 
@@ -419,6 +421,17 @@ def test_packages_audit_allows_the_maintainer_modules():
     build = load_build()
     assert build.audit(ROOT, build.PACKAGES["worker"]) == ["cluster", "progress", "reports", "server"]
     assert build.audit(ROOT, build.PACKAGES["server"]) == []
+
+
+def test_packages_audit_detects_native_dynamic_import():
+    build = load_build()
+    spec = dict(build.PACKAGES['worker'])
+    spec['modules'] = [name for name in spec['modules'] if name != 'native_try']
+    try:
+        build.audit(ROOT, spec)
+        assert False, 'native-try parser import must ship in helper packages'
+    except SystemExit as error:
+        assert 'native_try' in str(error)
 
 
 def test_download_resumes_an_interrupted_transfer():
@@ -478,7 +491,8 @@ def test_install_cmd_installs_only_packages_and_compilers():
     script = (ROOT / "install.cmd").read_text(encoding="utf-8")
     flat = " ".join(script.split())
     # what it must do
-    assert "py -3.12 -c \"import sys\"" in flat, "it must detect Python 3.12"
+    assert 'set "PY=python"' in flat and 'set "PY=py -3.12"' in flat
+    assert 'sys.version_info[:2] != (3,12)' in flat, "it must detect Python 3.12"
     assert "Python.Python.3.12" in flat, "a missing 3.12 is installed"
     assert "pip install --user -q --disable-pip-version-check pefile capstone" in flat
     assert "roc.py install" in flat, "the compiler bundles come from roc install"

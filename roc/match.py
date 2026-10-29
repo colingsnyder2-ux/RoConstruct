@@ -6,6 +6,7 @@ import difflib
 import errno
 import contextlib
 import functools
+from bisect import bisect_left
 import hashlib
 import json
 import os
@@ -62,7 +63,7 @@ def _remember_compile_error(key, message):
             pass
 
 
-@functools.lru_cache(maxsize=512)
+@functools.lru_cache(maxsize=32)
 def coff_functions(obj):
     """[(name, bytes, reloc offsets)] for every function symbol in a COFF .obj."""
     _, nsec, _, symptr, nsym, optsz, _ = struct.unpack_from("<HHIIIHH", obj, 0)
@@ -74,13 +75,26 @@ def coff_functions(obj):
         if raw[:4] == b"\0\0\0\0":
             off = strtab + struct.unpack_from("<I", raw, 4)[0]
             raw = obj[off:obj.index(b"\0", off)]
-        if secnum > 0 and typ == 0x20:
+        if secnum > 0 and typ == 0x20 and not secs[secnum - 1][-1] & 0x800:
             syms.append((secnum - 1, value, raw.rstrip(b"\0").decode("latin-1")))
         i += 1 + naux
+    starts, ends, labels = {}, {}, {}
+    for sec, value, name in syms:
+        starts.setdefault(sec, set()).add(value)
+        labels.setdefault((sec, value), []).append(name)
+    for sec, values in starts.items():
+        ordered = sorted(values)
+        for value, following in zip(ordered, ordered[1:] + [secs[sec][3]]):
+            ends[sec, value] = min(following, secs[sec][3])
     out = []
     for sec, value, name in syms:
         _, _, _, rawsize, rawptr, relptr, _, nrel, _, _ = secs[sec]
-        nxt = min([v for s, v, _ in syms if s == sec and v > value] + [rawsize])
+        nxt = ends[sec, value]
+        # MSVC places embedded catches and the owner's normal continuation in
+        # the same section. Their function labels are not owner boundaries.
+        while nxt < rawsize and all(label.startswith("__catch$" + name + "$")
+                                    for label in labels[sec, nxt]):
+            nxt = ends[sec, nxt]
         relocs = [struct.unpack_from("<I", obj, relptr + 10 * k)[0] - value for k in range(nrel)]
         relocs = [r for r in relocs if 0 <= r < nxt - value]
         body = obj[rawptr + value:rawptr + nxt]
@@ -144,10 +158,15 @@ def _base_relocs(client):
     return frozenset(reloc_sites(pefile.PE(str(clients.exe_path(client, entry)))))
 
 
+@functools.lru_cache(maxsize=4)
+def _relocation_index(relocs):
+    return tuple(sorted(relocs))
+
+
 def data_check(client, addr, code, refs):
     """Compare referenced data against the exe. Returns (matched [(va, len)], mismatch notes)."""
     base, image = _image(client)
-    exe_relocs = _base_relocs(client)
+    exe_relocs = _relocation_index(frozenset(_base_relocs(client)))
     ok, bad = [], []
     for off, data, inner in refs:
         if off + 4 > len(code):
@@ -157,7 +176,8 @@ def data_check(client, addr, code, refs):
         if not 0 <= rva < len(image) or not data:
             continue
         exe = bytes(image[rva:rva + len(data)])
-        mask = set(inner) | {r - va for r in exe_relocs if va <= r < va + len(data)}
+        lo, hi = bisect_left(exe_relocs, va), bisect_left(exe_relocs, va + len(data))
+        mask = set(inner) | {r - va for r in exe_relocs[lo:hi]}
         if masked(exe, mask) == masked(data, mask):
             ok.append((va, len(data)))
         else:
@@ -522,6 +542,8 @@ def diagnose(target_code, target_relocs, cand, cand_relocs):
         mismatch = "stack-frame/layout mismatch"
     elif t_op == c_op and t_reg != c_reg:
         mismatch = "register allocation difference"
+    elif step_counts["reorder"] and not step_counts["ins"] and not step_counts["del"] and not step_counts["regalloc"]:
+        mismatch = "scheduling-only"
     elif t_op != c_op:
         mismatch = "instruction-selection mismatch"
     else:
@@ -545,7 +567,15 @@ def diagnose(target_code, target_relocs, cand, cand_relocs):
     if step_counts["regalloc"] and not step_counts["args"] and not step_counts["del"] and not step_counts["ins"]:
         add_class("register allocation difference", 0.82,
                   ["alignment pairs same opcodes with register-only operand changes",
-                   "register deltas=%s" % sorted(register_delta)])
+                   "register deltas=%s" % sorted(register_delta),
+                   "fix to try first: hoist the chained member load into a named local "
+                   "(const T* t = obj->field;) before the if/call using it — forces MSVC eax chaining; "
+                   "fixed 92-93% near-misses in one try (00445e50/00445f10/0059b730/0059b650/0059f310/005ef240)"])
+    if step_counts["reorder"] and not step_counts["ins"] and not step_counts["del"] and not step_counts["regalloc"]:
+        add_class("scheduling-only", 0.85,
+                  ["alignment pairs same opcodes with only instruction order differing",
+                   "MSVC scheduler store/save timing; source-level fixes are usually ineffective",
+                   "steps: reorder=%d, args=%d" % (step_counts["reorder"], step_counts["args"])])
     if len(t_ins) != len(c_ins):
         add_class("missing/extra instruction", 0.9, ["instruction counts differ"])
     if t_op != c_op:
@@ -647,6 +677,7 @@ def _functions(client):
     return _functions_at(path, stat.st_mtime_ns, stat.st_size)
 
 
+@_single_load
 @functools.lru_cache(maxsize=8)
 def _functions_at(path, mtime_ns, size):
     rows = {}
@@ -675,6 +706,8 @@ def target(client, addr):
     except KeyError:
         raise SystemExit("%s: no function starts at %s (pick one on the site or from `roc next %s`)"
                          % (client, addr, client))
+    if row.get("kind") == "data":
+        raise CompileError("%s %s is reviewed data, not a function" % (client, addr))
     base, image = _image(client)
     va = int(addr, 16) - base
     return bytes(image[va:va + row["size"]]), row["relocs"], row
@@ -695,7 +728,7 @@ def reject_asm(text):
 def directives(text):
     """`// roc-<key>: value` lines: lang (c|cpp), flags, cl (compiler build), lib (recipe + file).
     Library code matched with its own build settings carries them, so anyone re-checks it the same way."""
-    return dict(re.findall(r"(?m)^//\s*roc-(lang|flags|cl|lib|archive):\s*(.+?)\s*$", text))
+    return dict(re.findall(r"(?m)^//[ \t]*roc-(lang|flags|cl|lib|archive):[ \t]*(\S.*?)[ \t]*$", text))
 
 
 def compile_text(client, text, flags=None, build=None):
@@ -705,6 +738,7 @@ def compile_text(client, text, flags=None, build=None):
     reject_asm(text)
     entry = clients.load()[client]
     d = directives(text)
+    library_prelude_includes = "lib" in d and bool(re.search(r"(?m)^\s*#\s*include\b", text))
     build = build or (int(d["cl"]) if d.get("cl", "").isdigit() else entry["compiler_build"])
     if "archive" in d:  # exact CRT/STL COFF member from matching installed compiler
         from roc import libs
@@ -714,12 +748,24 @@ def compile_text(client, text, flags=None, build=None):
         from roc import libs
         recipe, _, path = d["lib"].partition(" ")
         try:
-            text = "%s\n%s" % (text, libs.unit(recipe, path.strip(), build))
+            body = libs.unit(recipe, path.strip(), build)
+            # Metadata-only wrappers expand to the same preprocessed C++ regardless
+            # of address/author comments. Settings are already captured in d.
+            metadata_only = all(not line.strip() or (line.strip().startswith("//") and
+                                not line.rstrip().endswith("\\")) for line in text.splitlines())
+            text = body if metadata_only else "%s\n%s" % (text, body)
         except SystemExit as error:  # local-only tree (e.g. rbxgs) not on this PC
             raise CompileError(str(error))
     flags = flags or d.get("flags") or entry.get("flags") or DEFAULT_FLAGS
     compile_fn = _compile if _cacheable(text) else _compile_uncached
-    return compile_fn(text, flags, build, d.get("lang") == "c")
+    try:
+        return compile_fn(text, flags, build, d.get("lang") == "c")
+    except CompileError as error:
+        if library_prelude_includes and "C1083" in str(error):
+            raise CompileError(str(error) + "\nThe roc-lib candidate contains raw includes outside its preprocessed unit. "
+                "Those lines do not receive recipe include paths. For vendor header/body changes, "
+                "register the complete unit with libs.add_unit and reference it with libs.source_for.") from error
+        raise
 
 
 @contextlib.contextmanager
@@ -737,7 +783,8 @@ def compile_directory():
         shutil.rmtree(directory)
 
 
-@functools.lru_cache(maxsize=512)
+# Expanded native TUs can be megabytes; persistent objects handle older reuse.
+@functools.lru_cache(maxsize=32)
 def _compile(text, flags, build, c_lang):
     key = hashlib.sha256(json.dumps([1, text, flags, build, c_lang]).encode()).hexdigest()
     if not _cacheable(text):
@@ -797,6 +844,16 @@ def _compile_uncached(text, flags, build, c_lang):
     if not cl:
         raise SystemExit("Missing compiler build %s. Run: roc install" % build)
     env = setup.cl_env(cl)
+    if re.search(r"(?m)^\s*#\s*include\s*<Ogre[A-Za-z0-9_]*\.h>", text):
+        ogre = setup.TOOLS / "libs" / "ogre-1.4.5" / "ogrenew" / "OgreMain" / "include"
+        if not (ogre / "Ogre.h").is_file():
+            raise CompileError("Missing Ogre 1.4.5 headers: %s" % ogre)
+        from roc import libs
+        sdk = libs.winsdk_include()
+        if not sdk:
+            raise CompileError("Missing WinSDK/Include in tools/; run roc install")
+        paths = [env.get("INCLUDE", ""), setup.cl_path(ogre), setup.cl_path(sdk)]
+        env["INCLUDE"] = ";".join(p for p in paths if p)
     with compile_directory() as tmp:
         src, obj = Path(tmp) / ("f.c" if c_lang else "f.cpp"), Path(tmp) / "f.obj"
         src.write_text(text)
@@ -859,16 +916,36 @@ def select_exact_data(client, addr, code, obj, candidates):
     return first
 
 
-def check_text(client, addr, text, flags=None, include_diagnosis=False, obj=None):
+def check_text(client, addr, text, flags=None, include_diagnosis=False, obj=None, minimum=None):
     """(score, symbol, asm diff, data spans) for the best function in text vs the target.
-    A byte-identical function whose own strings/constants differ from the exe scores 99."""
+    A byte-identical function whose own strings/constants differ from the exe scores 99.
+    With minimum set, return a None score when no candidate can improve it; exact
+    and referenced-data verification remain unchanged. This avoids fuzzy work on
+    candidates whose length or byte-count upper bound cannot beat the stored best."""
     code, relocs, _ = target(client, addr)
     obj = compile_text(client, text, flags) if obj is None else obj
     funcs = coff_functions(obj)
     if not funcs:
         result = (0, None, "no functions compiled (is the function body empty or inline?)", [])
         return result + ({},) if include_diagnosis else result
-    scored = [(score(code, relocs, f[1], f[2]), f) for f in funcs]
+    scored = []
+    for function in funcs:
+        if minimum is not None and not exact_match(code, relocs, function[1], function[2]):
+            if minimum >= 99:
+                continue
+            length = len(code) + len(function[1])
+            if length and int(200 * min(len(code), len(function[1])) / length) <= minimum:
+                continue
+            mask = set(relocs) | set(function[2])
+            upper = difflib.SequenceMatcher(None, masked(code, mask), masked(function[1], mask), autojunk=False).quick_ratio()
+            if int(100 * upper) <= minimum:
+                continue
+        value = score(code, relocs, function[1], function[2])
+        if minimum is None or value > minimum:
+            scored.append((value, function))
+    if not scored:
+        result = (None, None, "no compiled candidate exceeds score %s" % minimum, [])
+        return result + ({},) if include_diagnosis else result
     highest = max(value for value, _ in scored)
     # Alignment only breaks byte-score ties; don't align losing candidates.
     best = max((f for value, f in scored if value == highest),
@@ -897,9 +974,12 @@ def save_data(client, addr, spans):
     if not spans:
         return
     path = ROOT / "work" / client / "data.json"
-    data = json.loads(path.read_text()) if path.exists() else {}
-    data[addr] = spans
-    path.write_text(json.dumps(data, separators=(",", ":")))
+    with _object_lock(path):
+        data = json.loads(path.read_text()) if path.exists() else {}
+        data[addr] = spans
+        tmp = path.with_suffix(".%s.tmp" % uuid.uuid4().hex)
+        tmp.write_text(json.dumps(data, separators=(",", ":")))
+        os.replace(tmp, path)
 
 
 def check(client, addr, src, flags=None):
@@ -911,16 +991,25 @@ _SCORES_LOCK = threading.Lock()
 
 def save_score(client, addr, value):
     """Keep the best score per function in work/<client>/scores.json."""
+    return save_scores(client, {addr: value}).get(addr, 0)
+
+
+def save_scores(client, values):
+    """Merge a batch without rereading and rewriting the whole cache per row."""
     path = ROOT / "work" / client / "scores.json"
     with _SCORES_LOCK:
         scores = json.loads(path.read_text()) if path.exists() else {}
-        if value > scores.get(addr, 0):
-            scores[addr] = value
+        changed = False
+        for addr, value in values.items():
+            if value > scores.get(addr, 0):
+                scores[addr] = value
+                changed = True
+        if changed:
             path.parent.mkdir(parents=True, exist_ok=True)
             tmp = path.with_name("scores.%d.tmp" % os.getpid())  # replace atomically: readers never see a half file
             tmp.write_text(json.dumps(scores, indent=0, sort_keys=True))
             os.replace(tmp, path)
-        return scores.get(addr, 0)
+        return scores
 
 
 def template(client, addr):

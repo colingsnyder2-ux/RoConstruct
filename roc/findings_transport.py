@@ -9,6 +9,85 @@ import tempfile
 import uuid
 
 
+def publish_downloads(root, git_exe, log=print):
+    """Publish only reviewed native Worker assets, preserving the remote findings tree."""
+    root = Path(root)
+    folder = root / 'local/findings/data'
+    files = ['native-worker.zip', 'native-worker.json', 'NATIVE_AGENT.md']
+    manifest = json.loads((folder / 'native-worker.json').read_text(encoding='utf-8'))
+    if hashlib.sha256((folder / 'native-worker.zip').read_bytes()).hexdigest() != manifest['sha256']:
+        raise ValueError('Worker download hash mismatch; rebuild the download bundle')
+    index = root / 'work' / ('downloads-index-' + uuid.uuid4().hex)
+    index.parent.mkdir(exist_ok=True)
+    env = dict(os.environ, GIT_INDEX_FILE=str(index))
+    def git(*args):
+        result = subprocess.run([git_exe, *args], cwd=root, env=env, capture_output=True, text=True, timeout=120)
+        if result.returncode:
+            raise RuntimeError('Download publication failed: ' + result.stderr.strip()[-300:])
+        return result.stdout.strip()
+    try:
+        git('fetch', 'findings', 'refs/heads/main:refs/remotes/findings/main')
+        parent = git('rev-parse', 'refs/remotes/findings/main')
+        git('read-tree', parent)
+        for name in files:
+            blob = git('hash-object', '-w', '--', str(folder / name))
+            git('update-index', '--add', '--cacheinfo', '100644', blob, 'data/' + name)
+        tree = git('write-tree')
+        if tree == git('rev-parse', parent + '^{tree}'):
+            return log('Native Worker download already current.')
+        commit = git('commit-tree', tree, '-p', parent, '-m', 'Publish native Worker download')
+        git('push', 'findings', commit + ':refs/heads/main')
+        log('Native Worker download published: ' + commit)
+    finally:
+        index.unlink(missing_ok=True)
+
+
+def publish_package(root, git_exe, log=print):
+    """Update the native package using existing blobs for unchanged or renamed files."""
+    root = Path(root)
+    folder = root / 'local/findings/2008-06'
+    manifest = json.loads((folder / 'package.json').read_text(encoding='utf-8'))
+    index = root / 'work' / ('package-index-' + uuid.uuid4().hex)
+    index.parent.mkdir(exist_ok=True)
+    env = dict(os.environ, GIT_INDEX_FILE=str(index))
+    def git(*args, **kwargs):
+        result = subprocess.run([git_exe, *args], cwd=root, env=env, capture_output=True,
+                                text=True, encoding='utf-8', errors='replace', timeout=120, **kwargs)
+        if result.returncode:
+            raise RuntimeError('Package publication failed: ' + result.stderr.strip()[-300:])
+        return result.stdout.strip()
+    try:
+        git('fetch', 'findings', 'refs/heads/main:refs/remotes/findings/main')
+        parent = git('rev-parse', 'refs/remotes/findings/main')
+        previous = json.loads(git('show', parent + ':2008-06/package.json'))
+        git('read-tree', parent)
+        blobs = {}
+        for row in git('ls-tree', '-r', '-z', parent, '--', '2008-06').split('\0'):
+            if row:
+                meta, path = row.split('\t', 1)
+                blobs[path] = meta.split()[2]
+        rows = ['0 ' + '0' * 40 + '\t2008-06/' + path + '\0'
+                for path in previous['files'].keys() - manifest['files'].keys()]
+        for relative in [*manifest['files'], 'package.json']:
+            old = relative
+            if old not in previous['files'] and relative.startswith('src/Client/'):
+                old = relative.replace('src/Client/', 'src/rbxgs/Client/', 1)
+            same = relative != 'package.json' and manifest['files'][relative] == previous['files'].get(old)
+            blob = blobs.get('2008-06/' + old) if same else None
+            if not blob:
+                blob = git('hash-object', '-w', '--', str(folder / relative))
+            rows.append('100644 ' + blob + '\t2008-06/' + relative + '\0')
+        git('update-index', '-z', '--index-info', input=''.join(rows))
+        tree = git('write-tree')
+        if tree == git('rev-parse', parent + '^{tree}'):
+            return log('Native package already current.')
+        commit = git('commit-tree', tree, '-p', parent, '-m', 'Flatten native Client source path')
+        git('push', 'findings', commit + ':refs/heads/main')
+        log('Native package published: ' + commit)
+    finally:
+        index.unlink(missing_ok=True)
+
+
 def publish(root, git_exe, log=print):
     """Copy local recovered sources into the separate findings repository."""
     from roc.server import findings_source

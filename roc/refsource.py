@@ -22,7 +22,9 @@ The tree is only indexed once and cached, because it is tens of thousands of fil
 """
 import functools
 import json
+import os
 import re
+import subprocess
 from concurrent.futures import ThreadPoolExecutor
 from collections import defaultdict
 from pathlib import Path
@@ -33,13 +35,40 @@ ROOT = Path(__file__).resolve().parent.parent
 TREE = ROOT / "tools" / "roblox2016" / "src"
 CACHE = ROOT / "work" / "refsource.json"
 META_CACHE = ROOT / "work" / "refsource-meta.json"
+LITERAL_CACHE = ROOT / "work" / "refsource-literals.json"
+CROSS_CACHE = ROOT / "work" / "refsource-cross.json"
 _INDEX = None
 _INDEX_KEY = None
+_LITERAL_INDEX = None
+_LITERAL_KEY = None
+_LITERAL_SEARCHED = set()
 
 SOURCE_SUFFIXES = {".cpp", ".c", ".h", ".hpp", ".inl", ".cc", ".cxx"}
 # The repo nests everything under ROBLOX2016-main/<Module>/...
 SKIP_DIRS = {".git", "ThirdParty", "ThirdPartyIncluded", "UnitTest", "UnitTests",
              "Test", "Tests", "Android", "Mac", "Installer", "PrepAllForUpload"}
+SKIP_DIRS_LOWER = {name.lower() for name in SKIP_DIRS} | {
+    "3rdparty", "dependencies", "build", "bin", "lib", "libs", "docs", "docsource"
+}
+
+
+def reference_trees():
+    """Small authentic source trees used when stale linker unit names mislead lookup."""
+    rbxgs = ROOT / "tools" / "rbxgs" / "Client"
+    openrbx = ROOT / "tools" / "openrbx" / "Client"
+    source2016 = TREE / "ROBLOX2016-main"
+    return {
+        "rbxgs-app": rbxgs / "App", "rbxgs-net": rbxgs / "Network",
+        "rbxgs-appdraw": rbxgs / "Rendering" / "AppDraw",
+        "rbxgs-g3d": rbxgs / "Rendering" / "g3d" / "G3Dcpp",
+        "rbxgs-glg3d": rbxgs / "Rendering" / "g3d" / "GLG3Dcpp",
+        "rbxgs-renderlib": rbxgs / "Rendering" / "RenderLib",
+        "openrbx-app": openrbx / "App", "openrbx-net": openrbx / "Network",
+        "openrbx-appdraw": openrbx / "Rendering" / "AppDraw",
+        "openrbx-renderlib": openrbx / "Rendering" / "RenderLib",
+        "2016-app": source2016 / "App", "2016-net": source2016 / "Network",
+        "2016-studio": source2016 / "RobloxStudio",
+    }
 
 CLASS_RE = re.compile(r"\b(?:class|struct)\s+([A-Za-z_]\w*)")
 NAMESPACE_RE = re.compile(r"^\s*namespace\s+([A-Za-z_]\w*)", re.M)
@@ -52,13 +81,313 @@ TOKEN_RE = re.compile(r"[A-Za-z_]\w*|\d+(?:\.\d+)?|==|!=|<=|>=|->|\+\+|--|&&|\|\
 FUNC_RE = re.compile(r"^[ \t]*[\w:<>,*& \t]*?\b([A-Za-z_]\w*)[ \t]*\(", re.M)
 
 
+def _decode_literal(value):
+    try:
+        return bytes(value, "utf-8").decode("unicode_escape")
+    except UnicodeDecodeError:
+        return value
+
+
+def function_facts(client, addr):
+    """Read one analyzed row without loading the full matcher/PE state."""
+    path = ROOT / "work" / client / "functions.jsonl"
+    wanted = str(addr).lower().removeprefix("0x").zfill(8)
+    try:
+        for line in path.read_text().splitlines():
+            row = json.loads(line)
+            if row.get("addr", "").lower() == wanted:
+                return row
+    except (OSError, ValueError):
+        pass
+    return None
+
+
+@functools.lru_cache(maxsize=32)
+def _client_size_index(client):
+    rows = defaultdict(list)
+    for addr, row in match._functions(client).items():
+        rows[row.get("size", 0)].append((addr, row))
+    return rows
+
+
+@functools.lru_cache(maxsize=8192)
+def _same_size_rows(client, size):
+    """Use host DB metadata when present; avoid loading every client's JSONL."""
+    database = ROOT / "work" / "server.db"
+    if database.exists():
+        try:
+            import sqlite3
+            connection = sqlite3.connect(str(database))
+            rows = connection.execute(
+                "select addr, unit from funcs where client=? and size=?", (client, size)).fetchall()
+            connection.close()
+            return tuple((addr, {"size": size, "unit": unit or ""}) for addr, unit in rows)
+        except (OSError, sqlite3.Error):
+            pass
+    return tuple(_client_size_index(client).get(size, ()))
+
+
+@functools.lru_cache(maxsize=2048)
+def cross_client_sources(client, addr, limit=4):
+    """Stored sources for byte-identical functions in other client binaries."""
+    try:
+        cached = json.loads(CROSS_CACHE.read_text()).get(client, {})
+        if addr in cached:
+            rows = []
+            for sibling in cached[addr][:limit]:
+                path = Path(sibling["path"])
+                if path.exists():
+                    rows.append({**sibling, "text": path.read_text(errors="replace")})
+            return rows
+    except (OSError, ValueError, KeyError):
+        pass
+    facts = function_facts(client, addr)
+    if not facts:
+        return []
+    try:
+        target_code, target_relocs, _ = match.target(client, addr)
+    except (KeyError, OSError, ValueError):
+        return []
+    rows = []
+    for other in sorted(clients.load()):
+        if other == client:
+            continue
+        for other_addr, row in _same_size_rows(other, facts.get("size")):
+            try:
+                code, relocs, _ = match.target(other, other_addr)
+            except (KeyError, OSError, ValueError):
+                continue
+            if not match.exact_match(target_code, target_relocs, code, relocs):
+                continue
+            path = ROOT / "src" / other / (other_addr + ".cpp")
+            if not path.exists():
+                continue
+            try:
+                text = path.read_text(errors="replace")
+            except OSError:
+                continue
+            rows.append({"client": other, "addr": other_addr, "unit": row.get("unit", ""),
+                         "path": str(path), "text": text})
+            if len(rows) >= limit:
+                return rows
+    return rows
+
+
+@functools.lru_cache(maxsize=2048)
+def shape_client_sources(client, addr, limit=4):
+    """Stored sources with the same normalized instruction shape in another client."""
+    facts = function_facts(client, addr)
+    shape = (facts or {}).get("shape")
+    if not shape:
+        return []
+    found = []
+    database = ROOT / "work" / "server.db"
+    if database.exists():
+        try:
+            import sqlite3
+            connection = sqlite3.connect(str(database))
+            rows = connection.execute(
+                "select client,addr,unit,score from funcs where client<>? and shape=? order by score desc",
+                (client, shape)).fetchall()
+            connection.close()
+        except (OSError, sqlite3.Error):
+            rows = []
+    else:
+        rows = [(other, other_addr, row.get("unit", ""), 0)
+                for other in clients.load() if other != client
+                for other_addr, row in match._functions(other).items()
+                if row.get("shape") == shape]
+    for other, other_addr, unit, score in rows:
+        path = ROOT / "src" / other / (other_addr + ".cpp")
+        if not path.exists():
+            continue
+        found.append({"client": other, "addr": other_addr, "unit": unit or "",
+                      "score": score or 0, "path": str(path),
+                      "text": path.read_text(errors="replace")})
+        if len(found) >= limit:
+            break
+    return found
+
+
+def warm_lineage(client="2008-06", min_size=500, max_score=39, log=print):
+    """Persist exact-binary cross-client source matches for one low-score queue."""
+    scores_path = ROOT / "work" / client / "scores.json"
+    try:
+        scores = json.loads(scores_path.read_text())
+        targets = [row for row in match._functions(client).values()
+                   if row.get("kind", "code") == "code" and int(row.get("size", 0)) >= min_size
+                   and int(scores.get(row.get("addr"), 0)) <= max_score]
+    except (OSError, ValueError):
+        return 0
+    rows = {}
+    for i, target in enumerate(targets, 1):
+        addr = target["addr"]
+        siblings = []
+        try:
+            target_code, target_relocs, _ = match.target(client, addr)
+        except (KeyError, OSError, ValueError):
+            rows[addr] = siblings
+            continue
+        for other in sorted(clients.load()):
+            if other == client:
+                continue
+            for other_addr, row in _same_size_rows(other, target.get("size")):
+                try:
+                    code, relocs, _ = match.target(other, other_addr)
+                except (KeyError, OSError, ValueError):
+                    continue
+                path = ROOT / "src" / other / (other_addr + ".cpp")
+                if path.exists() and match.exact_match(target_code, target_relocs, code, relocs):
+                    siblings.append({"client": other, "addr": other_addr,
+                                     "unit": row.get("unit", ""), "path": str(path)})
+        rows[addr] = siblings
+        if i % 50 == 0:
+            log("lineage: %d/%d targets" % (i, len(targets)))
+    try:
+        data = json.loads(CROSS_CACHE.read_text()) if CROSS_CACHE.exists() else {}
+    except (OSError, ValueError):
+        data = {}
+    data[client] = rows
+    CROSS_CACHE.parent.mkdir(parents=True, exist_ok=True)
+    CROSS_CACHE.write_text(json.dumps(data, separators=(",", ":")))
+    cross_client_sources.cache_clear()
+    return sum(bool(value) for value in rows.values())
+
+
+def _observed_strings(client="2008-06"):
+    path = ROOT / "work" / client / "functions.jsonl"
+    wanted = set()
+    try:
+        for line in path.read_text().splitlines():
+            row = json.loads(line)
+            wanted.update(value for value in row.get("strings", ())
+                          if len(value) >= 5 and value.isprintable())
+    except (OSError, ValueError):
+        pass
+    return wanted
+
+
+def build_literal_index(strings=(), force=False, log=lambda *a: None):
+    """Map exact C/C++ string literals to files across local Roblox source trees."""
+    global _LITERAL_INDEX, _LITERAL_KEY, _LITERAL_SEARCHED
+    trees = reference_trees()
+    key = tuple(sorted((name, str(path)) for name, path in trees.items()))
+    requested = {value for value in strings if len(value) >= 5 and value.isprintable()
+                 and "\n" not in value and "\r" not in value}
+    if _LITERAL_INDEX is None or _LITERAL_KEY != key or force:
+        _LITERAL_INDEX, _LITERAL_SEARCHED, _LITERAL_KEY = {}, set(), key
+    if LITERAL_CACHE.exists() and not force and not _LITERAL_SEARCHED:
+        try:
+            data = json.loads(LITERAL_CACHE.read_text())
+            if tuple(map(tuple, data.get("trees", []))) == key:
+                _LITERAL_INDEX = data["literals"]
+                _LITERAL_SEARCHED = set(data.get("searched", _LITERAL_INDEX))
+        except (OSError, ValueError, KeyError):
+            pass
+    wanted = requested - _LITERAL_SEARCHED
+    if not wanted:
+        return _LITERAL_INDEX
+    index = defaultdict(list, {value: list(paths) for value, paths in _LITERAL_INDEX.items()})
+    pattern_values = defaultdict(set)
+    for value in wanted:
+        if "\n" in value or "\r" in value:
+            continue
+        pattern_values[value].add(value)
+        pattern_values[json.dumps(value)[1:-1]].add(value)
+    patterns = ROOT / "work" / "refsource-literals.patterns"
+    patterns.parent.mkdir(parents=True, exist_ok=True)
+    patterns.write_text("\n".join(sorted(pattern_values)), encoding="utf-8")
+    roots = [str(path) for path in trees.values() if path.is_dir()]
+    command = ["rg", "--json", "-F", "-f", str(patterns), "-g", "*.cpp", "-g", "*.c",
+               "-g", "*.cc", "-g", "*.cxx", "-g", "*.h", "-g", "*.hpp", "-g", "*.inl",
+               "-g", "!roc_*", *roots]
+    run = subprocess.run(command, cwd=ROOT, capture_output=True, text=True, encoding="utf-8", errors="replace")
+    if run.returncode not in (0, 1):
+        raise OSError(run.stderr.strip() or "rg source scan failed")
+    files = set()
+    resolved = [(name, path.resolve()) for name, path in trees.items() if path.is_dir()]
+    for line in run.stdout.splitlines():
+        try:
+            event = json.loads(line)
+            if event.get("type") != "match":
+                continue
+            path = (ROOT / event["data"]["path"]["text"]).resolve()
+            owner = next(((name, root) for name, root in resolved if path.is_relative_to(root)), None)
+            if not owner:
+                continue
+            name, root = owner
+            ref = "%s:%s" % (name, path.relative_to(root).as_posix())
+            files.add(ref)
+            for submatch in event["data"].get("submatches", ()):
+                for value in pattern_values.get(submatch["match"]["text"], ()):
+                    if ref not in index[value]:
+                        index[value].append(ref)
+        except (KeyError, ValueError):
+            continue
+    result = {literal: paths for literal, paths in index.items()}
+    _LITERAL_SEARCHED.update(wanted)
+    LITERAL_CACHE.parent.mkdir(parents=True, exist_ok=True)
+    LITERAL_CACHE.write_text(json.dumps({"trees": key, "searched": sorted(_LITERAL_SEARCHED),
+                                        "literals": result}, separators=(",", ":")))
+    _LITERAL_INDEX, _LITERAL_KEY = result, key
+    log("indexed %d source file(s): %d target string literal(s)" % (len(files), len(result)))
+    return result
+
+
+def _reference_path(ref):
+    name, rel = ref.split(":", 1)
+    return reference_trees()[name] / rel
+
+
+def _literal_snippet(ref, wanted, lines=16):
+    try:
+        rows = _reference_path(ref).read_text(errors="replace").splitlines()
+    except (OSError, KeyError):
+        return ""
+    at = next((i for i, row in enumerate(rows) if any(value in row for value in wanted)), 0)
+    start = max(0, at - lines // 3)
+    return "\n".join(rows[start:start + lines])
+
+
+def literal_sources(strings, limit=5, log=None):
+    """Rank source files by exact target-string overlap, independent of stale unit labels."""
+    wanted = {value for value in strings or () if len(value) >= 5 and value.isprintable()}
+    if not wanted:
+        return []
+    index = build_literal_index(wanted, log=log or (lambda *a: None))
+    files = defaultdict(set)
+    for value in wanted:
+        for ref in index.get(value, ()):
+            files[ref].add(value)
+    rows = sorted(files.items(), key=lambda item: (-len(item[1]), item[0]))[:limit]
+    return [{"path": ref, "matches": sorted(values),
+             "text": _literal_snippet(ref, values)} for ref, values in rows]
+
+
+def warm_large(client="2008-06", min_size=500, max_score=39, log=print):
+    """Cache string lookup for current large low-score queue in one source scan."""
+    scores_path = ROOT / "work" / client / "scores.json"
+    functions_path = ROOT / "work" / client / "functions.jsonl"
+    try:
+        scores = json.loads(scores_path.read_text())
+        rows = (json.loads(line) for line in functions_path.read_text().splitlines())
+        strings = {value for row in rows
+                   if row.get("kind", "code") == "code" and int(row.get("size", 0)) >= min_size
+                   and int(scores.get(row.get("addr"), 0)) <= max_score
+                   for value in row.get("strings", ())}
+    except (OSError, ValueError):
+        return 0
+    build_literal_index(strings, log=log)
+    return len(strings)
+
+
 def _walk(root):
-    for path in sorted(root.rglob("*")):
-        if path.suffix.lower() not in SOURCE_SUFFIXES or not path.is_file():
-            continue
-        if any(part in SKIP_DIRS for part in path.parts):
-            continue
-        yield path
+    for folder, dirs, names in os.walk(root):
+        dirs[:] = sorted(d for d in dirs if d.lower() not in SKIP_DIRS_LOWER)
+        for name in sorted(names):
+            path = Path(folder) / name
+            if path.suffix.lower() in SOURCE_SUFFIXES:
+                yield path
 
 
 def build_index(force=False, log=print):
@@ -388,9 +717,32 @@ def prompt_hints(unit, limit=3, max_chars=1800, target_facts=None, client=None):
     """
     facts = target_facts or {}
     strings = tuple(sorted(facts.get("strings", [])))
-    return _prompt_hints_cached(unit, limit, max_chars, strings, _target_terms(facts),
+    rows = []
+    if client and facts.get("addr"):
+        for sibling in cross_client_sources(client, facts["addr"], limit=limit):
+            rows.append({"path": "cross:%s:%s" % (sibling["client"], sibling["addr"]),
+                         "score": 10000, "text": sibling["text"][:max_chars], "method": "",
+                         "facts": {"byte_identical": True}, "source_year": None,
+                         "client_year": _client_year(client), "age_delta": None})
+        for sibling in shape_client_sources(client, facts["addr"], limit=limit):
+            rows.append({"path": "shape:%s:%s:%s" %
+                         (sibling["client"], sibling["addr"], sibling["unit"]),
+                         "score": 9000 + sibling["score"], "text": sibling["text"][:max_chars],
+                         "method": "", "facts": {"shape_identical": True},
+                         "source_year": None, "client_year": _client_year(client), "age_delta": None})
+    rows += _prompt_hints_cached(unit, limit, max_chars, strings, _target_terms(facts),
                                 int(facts.get("calls", 0) or 0), int(facts.get("branch_count", 0) or 0),
                                 _client_year(client))
+    seen = {row["path"] for row in rows}
+    for row in literal_sources(strings, limit=limit):
+        if row["path"] in seen:
+            continue
+        rows.append({"path": row["path"], "score": 200 + 25 * len(row["matches"]),
+                     "text": row["text"][:max_chars], "method": "",
+                     "facts": {"literals": row["matches"]}, "source_year": None,
+                     "client_year": _client_year(client), "age_delta": None})
+    rows.sort(key=lambda row: -row["score"])
+    return rows[:limit]
 
 
 @functools.lru_cache(maxsize=2048)
@@ -441,11 +793,9 @@ def _prompt_hints_cached(unit, limit=3, max_chars=1800, wanted_strings=(), wante
 
 
 def compile_candidates(client, addr, unit, flags=None, limit=2, log=None):
-    """Try source-tree files directly with the target client's compiler.
+    """Try exact-string source hits, then 2016 hints, with the target compiler.
 
     Returns ``(score, source, path)`` for the best verified candidate, or None.
-    Only files belonging to a local rbx2016 library recipe are considered; source
-    outside those recipes remains prompt-only evidence.
     """
     try:
         from roc import libs
@@ -456,7 +806,66 @@ def compile_candidates(client, addr, unit, flags=None, limit=2, log=None):
         candidates = []
         direct_attempts = 0
         tried = 0
+        facts = function_facts(client, addr) or {}
+        for sibling in cross_client_sources(client, addr, limit=max(1, limit)):
+            source = sibling["text"]
+            source = re.sub(r"(?m)^//\s*roc-cl:.*$", "// roc-cl: %d" % build, source)
+            source = re.sub(r"(?m)^//\s*roc-flags:.*$", "// roc-flags: %s" % flags, source)
+            candidates.append((source, "cross:%s:%s" % (sibling["client"], sibling["addr"])))
+        for sibling in shape_client_sources(client, addr, limit=max(1, limit)):
+            source = sibling["text"]
+            source = re.sub(r"(?m)^//\s*roc-cl:.*$", "// roc-cl: %d" % build, source)
+            source = re.sub(r"(?m)^//\s*roc-flags:.*$", "// roc-flags: %s" % flags, source)
+            candidates.append((source, "shape:%s:%s" % (sibling["client"], sibling["addr"])))
+        recipe_names = {
+            "rbxgs-app": ("rbxgs", ("rbxgs-dll", "rbxgs")),
+            "rbxgs-net": ("rbxgs-net", ("rbxgs-net-dll", "rbxgs-net")),
+            "rbxgs-g3d": ("rbxgs-g3d", ("rbxgs-g3d-dll", "rbxgs-g3d")),
+            "rbxgs-glg3d": ("rbxgs-g3d", ("rbxgs-g3d-dll", "rbxgs-g3d")),
+            "rbxgs-appdraw": ("rbxgs-appdraw", ("rbxgs-appdraw-dll", "rbxgs-appdraw")),
+            "rbxgs-renderlib": ("rbxgs-render", ("rbxgs-render-dll", "rbxgs-render")),
+            "openrbx-app": (None, ("openrbx-client-dll", "openrbx-client")),
+            "openrbx-net": (None, ("openrbx-client-dll", "openrbx-client")),
+            "openrbx-appdraw": (None, ("openrbx-client-dll", "openrbx-client")),
+            "openrbx-renderlib": (None, ("openrbx-client-dll", "openrbx-client")),
+        }
+        literal_flags = "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD"
+        literal_limit = max(limit, 4)
+        hits = literal_sources(facts.get("strings", ()), limit=max(4, limit))
+        for hit in hits:
+            # One short/common literal creates many costly false source hits.
+            if len(hit["matches"]) == 1 and len(hit["matches"][0]) < 12:
+                continue
+            prefix = hit["path"].split(":", 1)[0]
+            target = _reference_path(hit["path"]).resolve()
+            if target.suffix.lower() not in {".c", ".cc", ".cpp", ".cxx"}:
+                continue
+            unit_recipe, names = recipe_names.get(prefix, (None, ()))
+            generated_unit = None
+            if unit_recipe:
+                generated_unit = libs.add_unit(unit_recipe, "#define private public\n" + target.read_text(errors="replace"),
+                                               prefix="roc_refsource_%s_" % target.stem.lower())
+            for name in names:
+                row = libs.RECIPES.get(name)
+                if not row:
+                    continue
+                folder = (libs.LIBS / row["src"]).resolve()
+                if not target.is_relative_to(folder):
+                    continue
+                path = generated_unit or str(target.relative_to(folder)).replace("\\", "/")
+                lang = "c" if target.suffix.lower() == ".c" else "cpp"
+                for candidate_build in dict.fromkeys((build, 50727)):
+                    candidates.append((libs.source_for(name, path, lang, candidate_build, literal_flags),
+                                       "%s#%s-%s" % (hit["path"], name, candidate_build)))
+                    if len(candidates) >= literal_limit:
+                        break
+                if len(candidates) >= literal_limit:
+                    break
+            if len(candidates) >= literal_limit:
+                break
         for _hint_score, rel, _snippet in sources_for(unit, limit=max(limit * 4, limit), log=log):
+            if len(candidates) >= literal_limit:
+                break
             if Path(rel).suffix.lower() not in {".c", ".cc", ".cpp", ".cxx"}:
                 continue
             target = (TREE / rel).resolve()
@@ -500,20 +909,36 @@ def compile_candidates(client, addr, unit, flags=None, limit=2, log=None):
             source = libs.source_for(name, relpath, lang, build, flags)
             candidates.append((source, rel))
 
-        candidates = candidates[:limit]
+        literal_candidates = bool(candidates and "#" in candidates[0][1])
+        candidates = candidates[:literal_limit if literal_candidates else limit]
+
+        # Old MSVC /fp:fast often changes x87 scheduling enough to double scores.
+        # Restrict retry to floating-point targets and strong source lineages.
+        if (literal_candidates or any(rel.startswith("shape:") for _source, rel in candidates)) and any(
+                op in facts.get("shape", "") for op in (" fld ", " fst", " fmul", " fadd", " fsub", " fdiv")):
+            fast = []
+            for source, rel in candidates:
+                if not (literal_candidates or rel.startswith("shape:")) or "/fp:fast" in source:
+                    continue
+                candidate = re.sub(r"(?m)^(//\s*roc-flags:.*)$", r"\1 /fp:fast", source, count=1)
+                if candidate != source:
+                    fast.append((candidate, rel + "#fp-fast"))
+            candidates += fast
 
         def verify(item):
             source, rel = item
             if log:
-                log("  compiling 2016 source: %s" % rel)
+                log("  compiling source: %s" % rel)
             try:
-                score, _ = match.check_text(client, addr, source, flags)
-            except (match.CompileError, OSError, SystemExit):
+                score = match.check_text(client, addr, source, flags)[0]
+            except (match.CompileError, OSError, SystemExit) as error:
+                if log:
+                    log("  source candidate failed: %s" % str(error).splitlines()[0])
                 return None
             return score, source, rel
 
         if candidates:
-            with ThreadPoolExecutor(max_workers=min(2, len(candidates))) as pool:
+            with ThreadPoolExecutor(max_workers=min(4, len(candidates))) as pool:
                 for result in pool.map(verify, candidates):
                     if result and (best is None or result[0] > best[0]):
                         best = result
@@ -563,10 +988,23 @@ def main(argv=None):
     ap.add_argument("unit", nargs="?", help="a client unit name, e.g. RBX::VHat::?$FactoryProduct::Creator")
     ap.add_argument("--summarise", action="store_true", help="how much of each client the tree explains")
     ap.add_argument("--client", help="restrict --summarise to one client")
+    ap.add_argument("--addr", help="rank source by exact strings from this client function")
+    ap.add_argument("--warm-large", action="store_true", help="cache source ranking for large low-score functions")
     ap.add_argument("--limit", type=int, default=5)
     a = ap.parse_args(argv)
     if a.summarise:
         summarise(a.client)
+        return 0
+    if a.addr:
+        client = a.client or "2008-06"
+        row = function_facts(client, a.addr)
+        if not row:
+            ap.error("unknown %s function %s" % (client, a.addr))
+        for source in literal_sources(row.get("strings", []), limit=a.limit, log=print):
+            print("%d %s %s" % (len(source["matches"]), source["path"], repr(source["matches"])))
+        return 0
+    if a.warm_large:
+        print("cached %d target string(s)" % warm_large(a.client or "2008-06"))
         return 0
     if not a.unit:
         ap.error("give a unit name or --summarise")

@@ -29,8 +29,8 @@ def test_curated_package_preserves_native_source_and_required_build_inputs(tmp_p
     assert (destination / 'config/a.json').read_text() == '{}'
     assert (destination / 'src/glue/test.cpp').is_file()
     assert (destination / 'verification/manifests/functions.json').is_file()
-    assert (destination / 'src/rbxgs/Client/App/test.cpp').read_text() == 'new'
-    assert (destination / 'src/rbxgs/Client/App/added.h').read_text() == 'added'
+    assert (destination / 'src/Client/App/test.cpp').read_text() == 'new'
+    assert (destination / 'src/Client/App/added.h').read_text() == 'added'
     assert native.read_text() == 'old'
     assert not (destination / 'work/build/native-integration-token').exists()
     assert not (destination / 'work/build/engine/linked/linked.lib').exists()
@@ -132,9 +132,9 @@ def test_adopted_units_survive_but_unreferenced_probe_units_are_excluded(tmp_pat
     (patches / 'rbxgs-client.json').write_text(json.dumps({'App/include/Thing.h': [['@replace', 'App/roc_adopted.cpp']]}))
     destination = tmp_path / 'local/findings/2008-06'
     result = rebuild_package.export(tmp_path, destination)
-    assert (destination / 'src/rbxgs/Client/App/include/Thing.h').read_text() == 'class Thing {};'
-    assert 'src/rbxgs/Client/App/roc_adopted.cpp' in result['files']
-    assert 'src/rbxgs/Client/App/roc_unused.cpp' not in result['files']
+    assert (destination / 'src/Client/App/include/Thing.h').read_text() == 'class Thing {};'
+    assert 'src/Client/App/roc_adopted.cpp' in result['files']
+    assert 'src/Client/App/roc_unused.cpp' not in result['files']
 
 
 def test_overlay_paths_apply_regardless_of_filename_case(tmp_path):
@@ -146,4 +146,4 @@ def test_overlay_paths_apply_regardless_of_filename_case(tmp_path):
     patch.write_text(json.dumps({'App/include/util/Object.h': [['old', 'new']]}))
     destination = tmp_path / 'local/findings/2008-06'
     rebuild_package.export(tmp_path, destination)
-    assert (destination / 'src/rbxgs/Client/App/include/util/object.h').read_text() == 'new'
+    assert (destination / 'src/Client/App/include/util/object.h').read_text() == 'new'

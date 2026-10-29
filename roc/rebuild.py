@@ -5,6 +5,8 @@ Outputs go to rebuild/<client>/ (manifests/ and out/ stay untracked until
 rebuild/<client>/POLICY.md allows publishing them).
 """
 import json
+import hashlib
+import functools
 import os
 import re
 import subprocess
@@ -55,15 +57,22 @@ def _ci(folder, name):
     return next((p for p in folder.iterdir() if p.name.lower() == low), None)
 
 
+@functools.lru_cache(maxsize=8)
+def sdk_roots(tools):
+    """Discover installed SDKs once per tools tree, not once per compile batch."""
+    return tuple(sorted(tools.glob("*/**/WinSDK")))
+
+
 def toolchain(build=BUILD):
     """Paths for one period toolchain; None where a piece is missing. Never substitutes a newer build."""
     cl = setup.compilers().get(build)
     cl = Path(cl) if cl else None
     vc = cl.parents[1] if cl else None
     ide = cl.parents[2] / "Common7" / "IDE" if cl else None
-    sdk_roots = [Path(p) for p in os.environ.get("ROC_WINSDK", "").split(os.pathsep) if p]
-    sdk_roots += sorted(TOOLS.glob("*/**/WinSDK"))
-    sdk = next((r for r in sdk_roots if _ci(r / "Lib", "kernel32.lib")), None)
+    candidates = [Path(p) for p in os.environ.get("ROC_WINSDK", "").split(os.pathsep) if p]
+    sdk = next((r for r in candidates if _ci(r / "Lib", "kernel32.lib")), None)
+    if sdk is None:
+        sdk = next((r for r in sdk_roots(TOOLS) if _ci(r / "Lib", "kernel32.lib")), None)
     atlmfc = _first(os.environ.get("ROC_ATLMFC"), TOOLS / "libs" / "mfc-9.0-rtm" / "atlmfc")
     return {
         "build": build,
@@ -353,6 +362,7 @@ _INDEX = {}
 def size_index(client):
     """{size: [(addr, code, relocs)]} over every code function of the client (built once per process)."""
     if client not in _INDEX:
+        _paired_addresses.cache_clear()
         idx = {}
         for addr, f in match._functions(client).items():
             if f.get("kind", "code") == "code":
@@ -362,10 +372,17 @@ def size_index(client):
     return _INDEX[client]
 
 
+@functools.lru_cache(maxsize=16384)
+def _paired_addresses(client, body, relocs):
+    """Template bodies recur across TUs; cache immutable matches, including twins."""
+    return tuple(a for a, code, trel in _INDEX[client].get(len(body), ())
+                 if match.exact_match(code, trel, body, relocs))
+
+
 def pair(client, funcs):
     """[(symbol, size, [2008 addrs whose masked bytes equal it])] against the whole binary."""
-    idx = size_index(client)
-    return [(name, len(body), [a for a, code, trel in idx.get(len(body), ()) if match.exact_match(code, trel, body, relocs)])
+    size_index(client)
+    return [(name, len(body), list(_paired_addresses(client, body, tuple(relocs))))
             for name, body, relocs in funcs]
 
 
@@ -415,7 +432,7 @@ def build_library(client, recipe, files, flags, name, cl=BUILD, jobs=6, log=prin
 
 def unresolved_symbols(text):
     """Decorated names from LNK2001/LNK2019 lines (C++: the parenthesised name after the quoted one; C: bare)."""
-    return [a or b for a, b in re.findall(r'unresolved external symbol (?:"[^"]*" \((\?[^)]+)\)|(_\w+))', text)]
+    return [a or b for a, b in re.findall(r'unresolved external symbol (?:"[^"]*" \(([^)]+)\)|([?\w@$]+))', text)]
 
 
 # #pragma comment(lib) names vendor headers ask for; rebuilt modules supply that code instead
@@ -534,13 +551,13 @@ def strip_symbols(data, keep=None, drop=()):
     return bytes(data)
 
 
-def verified_layer(client, spec, log=print, exclude=frozenset(), vdrop=frozenset(), helpers=None, sinks=()):
+def verified_layer(client, spec, log=print, exclude=frozenset(), vdrop=frozenset(), helpers=None,
+                   base_functions=frozenset()):
     """out/<Module>/verified (rebuild/2008-06/swap_build.py) as a preferred layer of kept symbols only, and the
     set of those symbols, to drop from every other object. A symbol kept by several groups is taken once.
     helpers: {symbol: obj} non-exact helpers a swapped function calls that no other object defines, kept in that one
-    object (not counted, not dropped elsewhere).
-    sinks: symbols only dead bodies left in verified .text sections still name (their own symbols were stripped, so
-    nothing calls them); a small MASM object defines each as an int 3 trap so those objects can link."""
+    object (not counted, not dropped elsewhere). Missing dependencies must resolve to real implementations;
+    symbol references alone cannot prove that a body is unreachable."""
     folder = workspace(client) / "out" / spec["name"] / "verified"
     if not spec.get("verified") or not (folder / "swaps.json").exists():
         return None, set()
@@ -550,19 +567,19 @@ def verified_layer(client, spec, log=print, exclude=frozenset(), vdrop=frozenset
         old.unlink()
     taken = set()
     for item in json.loads((folder / "swaps.json").read_text())["swaps"]:
-        keep = {k for k in item["keep"] if not k.startswith(("??__E", "??__F"))} - taken - exclude - vdrop  # initializers never run here
+        data = (folder / item["obj"]).read_bytes()
+        externals = coff_externals(data)
+        # Local callbacks and EH labels travel with their owner. /INCLUDE cannot
+        # force them from an archive, nor can another object resolve them.
+        keep = {k for k in item["keep"] if externals.get(k)
+                and not k.startswith(("??__E", "??__F"))} - taken - exclude - vdrop
         if keep:
             taken |= keep
             extra = {h for h, o in (helpers or {}).items() if o == item["obj"]} - vdrop
-            (layer / ("verified_" + item["obj"])).write_bytes(strip_symbols((folder / item["obj"]).read_bytes(), keep=keep | extra, drop=vdrop))
-    sinks = sorted(s for s in sinks if len(s) < 240)
-    if sinks:
-        src = layer / "verified_sinks.asm"
-        src.write_text(".386\n.model flat\noption casemap:none\n.code\n"
-                       + "".join("PUBLIC %s\n%s:\n" % (s, s) for s in sinks) + "\tint 3\nEND\n")
-        code, text = run(toolchain(), _ml(), ["/nologo", "/c", "/Fo" + str(layer / "verified_sinks.obj"), str(src)], layer)
-        if code:
-            log("verified: sink object failed: " + text[-300:])
+            # Mining objects also emit unselected inline bodies. Let the module's
+            # own header context supply these whenever it has a real definition.
+            (layer / ("verified_" + item["obj"])).write_bytes(
+                strip_symbols(data, keep=keep | extra, drop=vdrop | (base_functions - keep)))
     log("verified layer: %d exact symbols swapped in" % len(taken))
     return layer, taken
 
@@ -629,27 +646,80 @@ def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- 
     tc = toolchain(cl)
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
-    results = {}
     includes, compiled = _overlaid(includes, sources, overlay)
-    # incremental: an object is current when it is newer than its source, the appended header and every
-    # file it included last time (/showIncludes, saved next to it); a missing include forces a rebuild
-    for orig, src in zip(sources, compiled):
+    @functools.lru_cache(maxsize=None)
+    def cache_path(path):
+        path = Path(os.path.abspath(path))
+        return path.relative_to(ROOT).as_posix() if path.is_relative_to(ROOT) else str(path)
+
+    @functools.lru_cache(maxsize=None)
+    def content(path):
+        with Path(path).open("rb") as stream:
+            return hashlib.file_digest(stream, "sha256").hexdigest()
+
+    @functools.lru_cache(maxsize=None)
+    def inventory(folder):
+        # New files can shadow previously resolved includes without changing them.
+        names = {}
+        for root, dirs, files in os.walk(folder):
+            dirs[:] = [d for d in dirs if d != "_wrap"]
+            prefix = os.path.relpath(root, folder)
+            for name in files:
+                if not name.endswith((".obj", ".deps", ".compile.json")):
+                    names.setdefault(name.casefold(), []).append(os.path.join(prefix, name))
+        return {name: sorted(paths) for name, paths in names.items()}
+
+    # Shared headers recur in every object's deps: stat each once per build (~141k checks per rbxgs-app build).
+    @functools.lru_cache(maxsize=None)
+    def shadowed_dep(dep):
+        return _twin(dep, overlay).exists()
+
+    @functools.lru_cache(maxsize=None)
+    def dep_exists(dep):
+        return Path(dep).exists()
+
+    compiler_files = []
+    if tc.get("cl"):
+        compiler_files = sorted(p for p in Path(tc["cl"]).parent.iterdir()
+                                if p.suffix.lower() in (".exe", ".dll"))
+    if tc.get("mspdb"):
+        compiler_files.append(Path(tc["mspdb"]))
+    config = [client, cl, flags, defines, cache_path(append) if append else None,
+              {k: cache_path(v) if isinstance(v, Path) else v for k, v in tc.items()},
+              [(cache_path(p), content(p)) for p in compiler_files],
+              [os.environ.get(k, "") for k in ("CL", "_CL_")]]
+
+    def signature(orig, src, deps):
+        files = sorted(set([Path(orig), src] + ([Path(append)] if append else []) + list(map(Path, deps))))
+        dirs = [src.parent, Path(orig).parent] + list(includes) + [
+            tc[k] for k in ("vc_include", "atlmfc_include", "sdk_include") if tc.get(k)]
+        dirs += sorted({p.parent for p in files} - set(map(Path, dirs)))
+        # Only a matching basename can shadow an include already used by this TU.
+        # Unrelated generated sources must not invalidate every cached object.
+        names = sorted({p.name.casefold() for p in files})
+        payload = [config, [(cache_path(p), content(p)) for p in files],
+                   [(cache_path(p), [(name, inventory(p).get(name, [])) for name in names]) for p in dirs]]
+        return hashlib.sha256(json.dumps(payload, sort_keys=True).encode()).hexdigest()
+
+    def compile_one(pair):
+        orig, src = pair
         src = Path(src)
         obj = out / (src.stem + ".obj")
         deps_file = obj.with_suffix(".deps")
-        if obj.exists() and deps_file.exists():
-            deps = [src, Path(orig)] + ([Path(append)] if append else []) + [Path(d) for d in json.loads(deps_file.read_text())]
-            built = obj.stat().st_mtime
+        cache_file = obj.with_suffix(".compile.json")
+        if obj.exists() and deps_file.exists() and cache_file.exists() and src.suffix.lower() != ".asm":
+            deps = json.loads(deps_file.read_text())
             # a header that gained an overlay twin since this object was built is shadowed now: rebuild
-            shadowed = overlay and any(_twin(d, overlay).exists() for d in deps[2:])
-            if not shadowed and all(d.exists() and d.stat().st_mtime < built for d in deps):
-                results[str(orig)] = (True, "up to date")
-                continue
+            shadowed = overlay and any(shadowed_dep(d) for d in deps)
+            if not shadowed and all(dep_exists(d) for d in deps):
+                saved = json.loads(cache_file.read_text())
+                if saved == {"inputs": signature(orig, src, deps), "object": content(obj)}:
+                    return str(orig), (True, "content cache hit")
         obj.unlink(missing_ok=True)  # a failed compile must not leave a stale object
+        cache_file.unlink(missing_ok=True)
         if src.suffix.lower() == ".asm":
             code, text = run(tc, _ml(), ["/nologo", "/c", "/Fo" + str(obj), str(src)], out)
-            results[str(orig)] = (code == 0, text[-400:])
-            continue
+            return str(orig), (code == 0, text[-400:])
         unit = src
         if append:
             unit = out / "_wrap" / (src.stem + ".cpp")
@@ -665,8 +735,16 @@ def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- 
         text = "\n".join(l for l in text.splitlines() if not l.startswith("Note: including file:"))
         if code == 0:
             deps_file.write_text(json.dumps(sorted(set(included))))
-        results[str(orig)] = (code == 0, "\n".join(l for l in text.splitlines() if " error " in l)[:2000] or text[-400:])
-    return results
+            if obj.exists():
+                cache_file.write_text(json.dumps({"inputs": signature(orig, src, included),
+                                                  "object": hashlib.sha256(obj.read_bytes()).hexdigest()}))
+        return str(orig), (code == 0, "\n".join(l for l in text.splitlines() if " error " in l)[:2000] or text[-400:])
+
+    import concurrent.futures
+    # Objects/dependency files use source stems; colliding stems must stay serial.
+    jobs = 4 if len({Path(s).stem.casefold() for s in compiled}) == len(compiled) else 1
+    with concurrent.futures.ThreadPoolExecutor(max_workers=jobs) as pool:
+        return dict(pool.map(compile_one, zip(sources, compiled)))
 
 
 # ---------- modules: reproducible layered builds ----------
@@ -864,20 +942,27 @@ def build_module(client, name, log=print):
     vdrop = set(json.loads(vdrop_path.read_text())) if vdrop_path.exists() else set()
     helpers_path = out / "verified" / "helpers.json"
     helpers = json.loads(helpers_path.read_text()) if helpers_path.exists() else {}
-    sinks_path = out / "verified" / "sinks.json"
-    sinks = set(json.loads(sinks_path.read_text())) if sinks_path.exists() else set()
     # an inline or template body that several of the module's own objects define is shared code: swapping the 2008 copy
     # in replaces it for every caller, including ones compiled in other contexts (seen crashing M4a/M5), so only
     # file-owned functions swap in
-    counts = {}
+    counts, base_functions = {}, set()
     for layer_dir in layer_dirs:
         for obj in Path(layer_dir).glob("*.obj"):
-            for sym, defined in coff_externals(obj.read_bytes()).items():
+            data = obj.read_bytes()
+            externals = coff_externals(data)
+            if spec.get("prefer_module_helpers"):
+                base_functions.update(sym for sym, _, _ in match.coff_functions(data) if externals.get(sym))
+            for sym, defined in externals.items():
                 if defined:
                     counts[sym] = counts.get(sym, 0) + 1
     shared = {sym for sym, n in counts.items() if n > 1}
     for _ in range(12):  # a swapped-in function may call a helper nothing else emits: keep it, or swap the caller back out
-        verified, drop = verified_layer(client, spec, log=log, exclude=excluded | shared, vdrop=vdrop, helpers=helpers, sinks=sinks)
+        verified, drop = verified_layer(client, spec, log=log, exclude=excluded | shared, vdrop=vdrop, helpers=helpers,
+                                       base_functions=base_functions)
+        if spec.get("force_verified"):  # the test links every swapped symbol, so each one's dependencies must resolve
+            (out / "force").mkdir(exist_ok=True)
+            (out / "force" / "force_verified.h").write_text(
+                "".join('#pragma comment(linker, "/INCLUDE:%s")\n' % s for s in sorted(drop)))
         result = resolve_objects(client, spec["test"], ([verified] if verified else []) + layer_dirs, spec["name"] + "/linked",
                                  includes=_overlaid([_spec_path(client, i) for i in spec.get("test_includes", [])], [], ov)[0], log=log,
                                  extra_libs=deps, defines=spec.get("test_defines"), drop=drop)
@@ -894,15 +979,8 @@ def build_module(client, name, log=print):
                 log("verified: keeping %d helpers the swapped functions call" % added)
                 continue
         back = set(result.get("referencers", [])) & drop
-        if verified and not result["linked"] and result["unresolved"] and not back:
-            fresh = set(result["unresolved"]) - sinks
-            if fresh:  # only dead bodies name them: give them a trap to bind to instead of evicting whole objects
-                sinks |= fresh
-                _dump(sinks_path, sorted(sinks))
-                log("verified: %d symbols only dead bodies reference; bound to a trap" % len(fresh))
-                continue
         if not back and verified and result["unresolved"]:
-            # dead bodies left in a verified .text still name the helper: take that whole object out
+            # Indirect calls and retained bodies can reach these dependencies: remove the whole incompatible object.
             missing = set(result["unresolved"])
             for obj in verified.glob("*.obj"):
                 ext = coff_externals(obj.read_bytes())
@@ -1024,12 +1102,15 @@ def placed(client="2008-06", log=print):
         report = out / "report.json"
         if not report.exists() or not json.loads(report.read_text()).get("linked"):
             continue
+        if any(obj.stat().st_mtime_ns > report.stat().st_mtime_ns for obj in (out / "linked").glob("*.obj")):
+            log("%s: build newer than link report; placement deferred" % spec["name"])
+            continue
         cache_path = out / "placed.json"
         cache = json.loads(cache_path.read_text()) if cache_path.exists() else {}
         fresh = {}
         for obj in sorted((out / "linked").glob("*.obj")):
             data = obj.read_bytes()
-            key = hashlib.sha256(data).hexdigest()
+            key = hashlib.sha256(b"placed-live-sections-v2\0" + data).hexdigest()
             if key not in cache:
                 hits = []
                 for name, size, h in pair(client, match.coff_functions(data)):

@@ -16,6 +16,14 @@ ROOT = Path(__file__).resolve().parent.parent
 CLIENT = "2008-06"
 MODULE = "rbxgs-app"
 LEASE_SECONDS = 2 * 3600
+MAX_CLAIMS = 1024
+MAX_MERGE = 8  # queued jobs verified together in one linked rebuild
+MAX_TARGETS = 100_000
+MAX_OVERLAY_PATHS = 1024
+MAX_EDITS_PER_PATH = 4096
+MAX_OVERLAY_BYTES = 24 * 1024 * 1024
+MAX_EVIDENCE_BYTES = 2 * 1024 * 1024
+MAX_REQUEST_BYTES = 32 * 1024 * 1024
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS integration_claims(
  id TEXT PRIMARY KEY, client TEXT, unit TEXT, user TEXT, worker TEXT,
@@ -33,6 +41,8 @@ CREATE TABLE IF NOT EXISTS integration_bases(
  revision TEXT PRIMARY KEY, payload TEXT);
 CREATE TABLE IF NOT EXISTS integration_config(
  key TEXT PRIMARY KEY, value TEXT);
+CREATE TABLE IF NOT EXISTS integration_queue_priority(
+ job TEXT PRIMARY KEY, requested INTEGER);
 """
 
 
@@ -49,7 +59,7 @@ def atomic_json(path, value):
 
 
 def native_token(root=ROOT, fallback=None, create=False):
-    """Native builds execute submitted C++; invitations are separate from public mining."""
+    """Read legacy native credentials for older servers; public servers need none."""
     import secrets
     secret = os.environ.get("ROC_NATIVE_TOKEN") or fallback
     path = Path(root) / "local/config/native-integration-token"
@@ -68,10 +78,10 @@ def native_token(root=ROOT, fallback=None, create=False):
 
 
 def validate_patches(patches):
-    if not isinstance(patches, dict) or not 1 <= len(patches) <= 40:
-        raise ValueError("Need 1-40 source overlay paths")
-    if len(json.dumps(patches).encode()) > 750_000:
-        raise ValueError("Overlay exceeds 750000 bytes")
+    if not isinstance(patches, dict) or not 1 <= len(patches) <= MAX_OVERLAY_PATHS:
+        raise ValueError("Need 1-%d source overlay paths" % MAX_OVERLAY_PATHS)
+    if len(json.dumps(patches).encode()) > MAX_OVERLAY_BYTES:
+        raise ValueError("Overlay exceeds %d bytes" % MAX_OVERLAY_BYTES)
     for name, change in patches.items():
         if not isinstance(name, str):
             raise ValueError("Overlay paths must be strings")
@@ -88,8 +98,8 @@ def validate_patches(patches):
             before, edits = change["before"], change["after"]
         else:
             edits = change
-        if not isinstance(edits, list) or not 1 <= len(edits) <= 100 or len(before) > 100:
-            raise ValueError("Need 1-100 edits per path")
+        if not isinstance(edits, list) or not 1 <= len(edits) <= MAX_EDITS_PER_PATH or len(before) > MAX_EDITS_PER_PATH:
+            raise ValueError("Need 1-%d edits per path" % MAX_EDITS_PER_PATH)
         for edit in edits:
             if (not isinstance(edit, list) or len(edit) != 2
                     or not all(isinstance(s, str) for s in edit)):
@@ -176,17 +186,23 @@ class Promotions:
             for row in self.store.db.execute("SELECT patches FROM integration_accepted ORDER BY ts,job"):
                 accepted.append(json.loads(row[0]))
             result = {"revision": digest([base, generator]), "overlay": base,
-                      "generator": generator, "accepted": accepted}
+                      "generator": generator, "accepted": accepted,
+                      "limits": {"claims": MAX_CLAIMS, "targets": MAX_TARGETS,
+                                 "overlay_paths": MAX_OVERLAY_PATHS, "edits_per_path": MAX_EDITS_PER_PATH,
+                                 "overlay_bytes": MAX_OVERLAY_BYTES, "evidence_bytes": MAX_EVIDENCE_BYTES,
+                                 "request_bytes": MAX_REQUEST_BYTES}}
             self.store.db.execute("INSERT OR IGNORE INTO integration_bases VALUES(?,?)",
                                   (result["revision"], json.dumps(result)))
         return result
 
-    def catalog(self):
+    def catalog(self, requested_unit=None):
         path = self.root / "rebuild" / CLIENT / "manifests" / "functions.json"
         report = path.parent.parent / "out" / "RbxgsApp" / "report.json"
         queue = path.parent.parent / "out" / "agent-queue.json"
+        with self.store.lock:
+            accepted_version = self.store.db.execute("SELECT COUNT(*),MAX(ts) FROM integration_accepted").fetchone()
         key = (path.stat().st_mtime_ns, report.stat().st_mtime_ns if report.exists() else 0,
-               queue.stat().st_mtime_ns if queue.exists() else 0)
+               queue.stat().st_mtime_ns if queue.exists() else 0, accepted_version, requested_unit)
         if self.catalog_key != key:
             from collections import defaultdict
             tree = self.root / "tools/rbxgs/Client"
@@ -208,7 +224,7 @@ class Promotions:
                 owned.update(json.loads(receipt).get("gains", []))
             groups = defaultdict(list)
             state = json.loads(queue.read_text()) if queue.exists() else {}
-            skipped = set(state.get("done", [])) | set(state.get("parked", {}))
+            skipped = (set(state.get("done", [])) - {requested_unit}) | set(state.get("parked", {}))
             for f in json.loads(path.read_text(encoding="utf-8")):
                 unit = f.get("unit") or ""
                 m = re.fullmatch(r"RBX::(?:\w+::)*(\w+)", unit)
@@ -220,7 +236,27 @@ class Promotions:
             self.catalog_key = key
         return self.catalog_rows
 
-    def packet(self, claim):
+    def native_names(self):
+        """rebuild/2008-06/out/native-names.json ({addr: {symbol, score, strings}}), reloaded when it changes."""
+        path = self.root / "rebuild" / CLIENT / "out" / "native-names.json"
+        stamp = path.stat().st_mtime if path.exists() else None
+        if getattr(self, "_names_stamp", False) != stamp:
+            self._names = json.loads(path.read_text()) if stamp else {}
+            self._names_stamp = stamp
+        return self._names
+
+    def evidence(self):
+        """Native discovery inputs for contributor PCs without local rebuild artifacts: rebuilt symbol names, the
+        addresses the accepted linked rebuild owns, and every exact mined RBX target ({addr: [unit, size]})."""
+        progress = self.directory / "progress-native.json"
+        with self.store.lock:
+            rows = self.store.db.execute("SELECT addr,unit,size FROM funcs WHERE client=? AND score=100 AND unit LIKE 'RBX::%'",
+                                         (CLIENT,)).fetchall()
+        return {"names": self.native_names(),
+                "linked": json.loads(progress.read_text())["addresses"] if progress.exists() else [],
+                "targets": {addr: [unit, size] for addr, unit, size in rows}}
+
+    def packet(self, claim, baselines=None, abi=None, compact=False):
         identifier, unit, user, worker, expires, addresses, revision = claim
         evidence = []
         for addr in json.loads(addresses)[:5]:
@@ -233,27 +269,41 @@ class Promotions:
                 instructions = match.disasm(code, int(addr, 16))
                 evidence[-1]["disassembly"] = instructions[:200]
                 evidence[-1]["disassembly_truncated"] = len(instructions) > 200
-        abi = self.root / "rebuild" / CLIENT / "manifests" / "abi-evidence.json"
-        with self.store.lock:
-            baseline = json.loads(self.store.db.execute("SELECT payload FROM integration_bases WHERE revision=?",
-                                                       (revision,)).fetchone()[0])
-        return {"id": identifier, "client": CLIENT, "module": MODULE, "unit": unit,
+        baselines = baselines if baselines is not None else {}
+        if revision not in baselines:
+            with self.store.lock:
+                baselines[revision] = json.loads(self.store.db.execute("SELECT payload FROM integration_bases WHERE revision=?",
+                                                                      (revision,)).fetchone()[0])
+        if abi is None:
+            path = self.root / "rebuild" / CLIENT / "manifests" / "abi-evidence.json"
+            abi = json.loads(path.read_text()) if path.exists() else {}
+        names = self.native_names()
+        packet = {"id": identifier, "client": CLIENT, "module": MODULE, "unit": unit,
                 "user": user, "worker": worker, "expires": expires,
                 "addresses": json.loads(addresses), "base_revision": revision,
-                "baseline": baseline, "snippets": evidence,
+                "snippets": evidence,
+                # Real rebuilt symbol per target where vtables/call graph name it, with its current rebuilt score.
+                "native_names": {a: names[a] for a in json.loads(addresses) if a in names},
                 "native_paths": sorted(self.native_paths.get(unit.rsplit("::", 1)[-1], [])),
-                "abi": json.loads(abi.read_text()).get(unit, {}) if abi.exists() else {},
+                "abi": abi.get(unit, {}),
                 "instructions": "Edit make_rbxgs_client.py only; regenerate; submit a declarative overlay. "
                 "Derive every change from target bytes. No pad structs, offset views or invented fields."}
+        if not compact:
+            packet["baseline"] = baselines[revision]
+        return packet
 
-    def claim(self, user, worker, count=1, unit=None):
-        if not isinstance(count, int) or not 1 <= count <= 16:
-            raise ValueError("Claim count must be 1-16")
+    def claim(self, user, worker, count=1, unit=None, targets=None, compact=False):
+        if type(count) is not int or not 1 <= count <= MAX_CLAIMS:
+            raise ValueError("Claim count must be 1-%d" % MAX_CLAIMS)
+        if targets is not None and (type(targets) is not int or not 1 <= targets <= MAX_TARGETS):
+            raise ValueError("Target count must be 1-%d" % MAX_TARGETS)
+        if targets is not None:
+            count = MAX_CLAIMS
         if not re.fullmatch(r"[A-Za-z0-9_.-]{2,32}", user) or not worker or len(worker) > 100:
             raise ValueError("Need a valid user and worker identity")
         revision = self.baseline()["revision"]
-        candidates = self.catalog()
-        now, claimed = time.time(), []
+        candidates = self.catalog(unit) if unit else self.catalog()
+        now, claimed, target_count = time.time(), [], 0
         with self.store.lock, self.store.db:
             # IMMEDIATE also serializes two separate server connections/processes.
             self.store.db.execute("BEGIN IMMEDIATE")
@@ -275,33 +325,52 @@ class Promotions:
                                           "(id,client,unit,user,worker,expires,state,addresses,base) "
                                           "VALUES(?,?,?,?,?,?,'claimed',?,?)",
                                           (row[0], CLIENT, name, user, worker, row[4], row[5], revision))
+                if targets is not None and row[6] != revision:
+                    continue  # A target-sized batch must share one submit baseline.
                 claimed.append(row)
-                if len(claimed) == count:
+                target_count += len(json.loads(row[5]))
+                if len(claimed) == count or targets is not None and target_count >= targets:
                     break
-        return {"claims": [self.packet(row) for row in claimed]}
+        baselines = {}
+        abi_path = self.root / "rebuild" / CLIENT / "manifests" / "abi-evidence.json"
+        abi = json.loads(abi_path.read_text()) if abi_path.exists() else {}
+        result = {"claims": [self.packet(row, baselines, abi, compact) for row in claimed],
+                  "classes": len(claimed), "targets": target_count}
+        if compact:
+            result["baselines"] = baselines
+        return result
 
     def renew(self, user, identifier, release=False, reason=None):
+        return self.renew_many(user, [identifier], release, reason)
+
+    def renew_many(self, user, identifiers, release=False, reason=None):
+        if (not isinstance(identifiers, list) or not 1 <= len(identifiers) <= MAX_CLAIMS
+                or any(not isinstance(i, str) for i in identifiers) or len(set(identifiers)) != len(identifiers)):
+            raise ValueError("Need 1-%d distinct claim IDs" % MAX_CLAIMS)
         parked = release and bool(reason)
         if reason is not None and (not isinstance(reason, str) or len(reason) > 500):
             raise ValueError("Park reason must be at most 500 characters")
         with self.store.lock, self.store.db:
-            changed = self.store.db.execute("UPDATE integration_claims SET expires=?,state=? "
+            now = time.time()
+            expires = now if release and not parked else now + LEASE_SECONDS
+            state = "parked: " + reason if parked else "released" if release else "claimed"
+            changed = self.store.db.executemany("UPDATE integration_claims SET expires=?,state=? "
                 "WHERE id=? AND user=? AND state='claimed' AND expires>?",
-                (time.time() if release and not parked else time.time() + LEASE_SECONDS,
-                 "parked: " + reason if parked else "released" if release else "claimed", identifier, user, time.time())).rowcount
-        return {"ok": bool(changed)}
+                [(expires, state, identifier, user, now) for identifier in identifiers]).rowcount
+        return {"ok": changed == len(identifiers), "changed": changed, "requested": len(identifiers)}
 
     def submit(self, user, body):
         patches = validate_patches(body.get("patches"))
         model, evidence = body.get("model"), body.get("evidence")
         if not isinstance(model, str) or not model.strip() or len(model) > 120:
             raise ValueError("Record the actual model, or human for manual work")
-        if not isinstance(evidence, str) or not 1 <= len(evidence) <= 16000:
+        if not isinstance(evidence, str) or not 1 <= len(evidence.encode()) <= MAX_EVIDENCE_BYTES:
             raise ValueError("Evidence notes are required")
+        cited = set(re.findall(r"(?i)(?<![0-9a-f])[0-9a-f]{8}(?![0-9a-f])", evidence.lower()))
         identifiers = body.get("claims", [body.get("claim")])
-        if (not isinstance(identifiers, list) or not 1 <= len(identifiers) <= 16
+        if (not isinstance(identifiers, list) or not 1 <= len(identifiers) <= MAX_CLAIMS
                 or any(not isinstance(i, str) for i in identifiers) or len(set(identifiers)) != len(identifiers)):
-            raise ValueError("Need 1-16 distinct claim IDs")
+            raise ValueError("Need 1-%d distinct claim IDs" % MAX_CLAIMS)
         identifiers = sorted(identifiers)
         base = str(body.get("base_revision", ""))
         retry = body.get("retry_of")
@@ -322,7 +391,7 @@ class Promotions:
                     "WHERE id=? AND user=? AND state='claimed' AND expires>?", (identifier, user, time.time())).fetchone()
                 if not claim or claim[2] != base:
                     raise ValueError("Missing, expired or mismatched claim; renew/reclaim before submitting")
-                if not any(addr in evidence for addr in json.loads(claim[1])):
+                if not cited.intersection(json.loads(claim[1])):
                     raise ValueError("Cite a claimed target address for " + claim[0])
                 claims.append(claim)
             job = uuid.uuid4().hex
@@ -349,16 +418,58 @@ class Promotions:
                                  (*r[:-1], json.loads(r[-1]) if r[-1] else None))) for r in rows],
                 "leaderboard": [{"user": u, "model": m, "native_credits": n} for u, m, n in leaders]}
 
-    def take(self):
+    def force_queue(self, user, identifier):
+        """Prioritize an owned queued batch; the active verifier keeps running."""
+        if not isinstance(identifier, str) or not re.fullmatch(r"[0-9a-f]{32}", identifier):
+            raise ValueError("Invalid batch ID")
         with self.store.lock, self.store.db:
             self.store.db.execute("BEGIN IMMEDIATE")
-            row = self.store.db.execute("SELECT id,user,model,unit,base,patches,evidence FROM integration_jobs "
-                                       "WHERE state='queued' ORDER BY created LIMIT 1").fetchone()
-            if not row:
+            row = self.store.db.execute("SELECT user,state FROM integration_jobs WHERE id=?", (identifier,)).fetchone()
+            if not row or row[0] != user:
+                raise ValueError("Batch not found or belongs to another user")
+            if row[1] != "queued":
+                raise ValueError("Force queue requires a queued batch; current state: " + row[1])
+            self.store.db.execute("INSERT OR REPLACE INTO integration_queue_priority VALUES(?,?)",
+                                  (identifier, time.time_ns()))
+            self.store.db.execute("UPDATE integration_jobs SET phase=CASE WHEN phase='solo' THEN phase "
+                                  "ELSE 'priority queued' END,updated=? WHERE id=?", (time.time(), identifier))
+        self.wake.set()
+        return {"id": identifier, "state": "queued", "priority": "next", "waits_for_active": True}
+
+    def take(self):
+        """Prioritized jobs first, then FIFO. Later jobs from the same user/model/baseline that edit disjoint files ride along
+        in one verification (one linked rebuild for all); a merged batch that fails is re-queued as solo jobs."""
+        fields = ("id", "user", "model", "unit", "base", "patches", "evidence", "phase")
+        with self.store.lock, self.store.db:
+            self.store.db.execute("BEGIN IMMEDIATE")
+            rows = [dict(zip(fields, r)) for r in self.store.db.execute(
+                "SELECT j.id,j.user,j.model,j.unit,j.base,j.patches,j.evidence,j.phase FROM integration_jobs j "
+                "LEFT JOIN integration_queue_priority p ON p.job=j.id "
+                "WHERE j.state='queued' ORDER BY p.requested IS NULL,p.requested DESC,j.created")]
+            if not rows:
                 return None
-            self.store.db.execute("UPDATE integration_jobs SET state='verifying',phase='snapshot',updated=? WHERE id=?",
-                                  (time.time(), row[0]))
-        return dict(zip(("id", "user", "model", "unit", "base", "patches", "evidence"), row))
+            lead, members = rows[0], [rows[0]]
+            if lead["phase"] != "solo":
+                files = set(json.loads(lead["patches"]))
+                for row in rows[1:]:
+                    patches = set(json.loads(row["patches"]))
+                    if len(members) < MAX_MERGE and row["phase"] != "solo" and not files & patches and \
+                            (row["user"], row["model"], row["base"]) == (lead["user"], lead["model"], lead["base"]):
+                        members.append(row)
+                        files |= patches
+            for row in members:
+                self.store.db.execute("DELETE FROM integration_queue_priority WHERE job=?", (row["id"],))
+                self.store.db.execute("UPDATE integration_jobs SET state='verifying',phase=?,updated=? WHERE id=?",
+                                      ("snapshot" if row is lead else "merged into " + lead["id"][:8], time.time(), row["id"]))
+        job = {k: lead[k] for k in fields[:-1]}
+        if len(members) > 1:
+            merged = {}
+            for row in members:
+                merged.update(json.loads(row["patches"]))
+            job.update(patches=json.dumps(merged), members=[row["id"] for row in members],
+                       unit=", ".join(row["unit"] for row in members),
+                       evidence="\n\n".join(row["evidence"] for row in members))
+        return job
 
     def progress(self, identifier, phase):
         with self.store.lock, self.store.db:
@@ -373,6 +484,14 @@ class Promotions:
             if not current or current[0] != "verifying":
                 return False
             accepted = receipt.get("accepted") is True
+            members = job.get("members", [job["id"]])
+            if len(members) > 1 and not accepted:
+                # One member may have broken the shared build: verify each on its own instead of rejecting all.
+                note = json.dumps({"merged_failure": receipt.get("reason", ""), "merged_jobs": members})
+                for identifier in members:
+                    self.store.db.execute("UPDATE integration_jobs SET state='queued',phase='solo',receipt=?,updated=? "
+                                          "WHERE id=? AND state='verifying'", (note, time.time(), identifier))
+                return False
             if accepted:
                 for addr in receipt["new_distinct"]:
                     self.store.db.execute("INSERT OR IGNORE INTO integration_credit VALUES(?,?,?,?,?,?)",
@@ -389,18 +508,58 @@ class Promotions:
                 receipt["credits"] = self.store.db.execute("SELECT COUNT(*) FROM integration_credit WHERE job=?",
                                                            (job["id"],)).fetchone()[0]
             receipt.update({"job": job["id"], "user": job["user"], "model": job["model"], "unit": job["unit"]})
-            self.store.db.execute("UPDATE integration_jobs SET state=?,phase=?,receipt=?,updated=? WHERE id=?",
-                ("accepted" if accepted else "rejected", "complete", json.dumps(receipt), time.time(), job["id"]))
-            claims = self.store.db.execute("SELECT claim_id FROM integration_jobs WHERE id=?", (job["id"],)).fetchone()[0]
-            for identifier in json.loads(claims):
-                self.store.db.execute("UPDATE integration_claims SET state=?,expires=? WHERE id=?",
-                    ("released" if accepted else "claimed", 0 if accepted else time.time() + LEASE_SECONDS, identifier))
+            if len(members) > 1:
+                receipt["merged_jobs"] = members
+            for member in members:
+                self.store.db.execute("UPDATE integration_jobs SET state=?,phase=?,receipt=?,updated=? WHERE id=?",
+                    ("accepted" if accepted else "rejected", "complete", json.dumps(receipt), time.time(), member))
+                claims = self.store.db.execute("SELECT claim_id FROM integration_jobs WHERE id=?", (member,)).fetchone()[0]
+                for identifier in json.loads(claims):
+                    self.store.db.execute("UPDATE integration_claims SET state=?,expires=? WHERE id=?",
+                        ("released" if accepted else "claimed", 0 if accepted else time.time() + LEASE_SECONDS, identifier))
         self.catalog_key = None
         return True
 
 
+def add_standins(claim):
+    """Each exact snippet's binary-proven placeholder -> real symbol map (roc/standins.py), when it compiles here."""
+    from roc import standins
+    for item in claim.get("snippets", []):
+        try:
+            item["standins"] = standins.mapping(CLIENT, item["addr"], item["source"])
+        except Exception as error:  # noqa: BLE001 - evidence is optional; the packet stays usable without it
+            item["standins_error"] = str(error)[:200]
+    return claim
+
+
+def sync_client_baseline(root, base, only_if_clean=False):
+    generator = root / "rebuild/2008-06/patches/make_rbxgs_client.py"
+    overlay = generator.with_name("rbxgs-client.json")
+    marker = root / "work/integration-client/baseline.json"
+    if only_if_clean:
+        if not marker.exists():
+            return False
+        previous = json.loads(marker.read_text())
+        current = hashlib.sha256(generator.read_bytes()).hexdigest()
+        if current != previous["generator"] or current != base["generator"] or \
+                json.loads(overlay.read_text()) != previous["overlay"]:
+            return False
+    atomic_json(generator.with_name("native-promotions.json"), base["accepted"])
+    subprocess.run([sys.executable, str(generator)], cwd=root, check=True, capture_output=True)
+    if json.loads(overlay.read_text()) != base["overlay"]:
+        raise ValueError("Local source/overlay baseline differs from server; update before claiming")
+    atomic_json(marker, base)
+    return True
+
+
 def command(args):
     from roc import worker
+    if args.action == "fingerprint":
+        from roc.integration_verify import input_hashes
+        started = time.monotonic()
+        full, live = input_hashes(ROOT)
+        print(json.dumps({"inputs": full, "live": live, "seconds": round(time.monotonic() - started, 3)}))
+        return
     settings = worker.load_settings()
     server = args.server or settings.get("server") or worker.site_server()
     user = args.user or settings.get("user")
@@ -413,15 +572,28 @@ def command(args):
     action = args.action
 
     if action == "invite":
-        secret = native_token()
-        if not secret:
-            raise SystemExit("Run this on the configured native build server")
-        print("Private helper invite; share only with trusted contributors:")
-        print(secret)
+        print("Native integration is public. No invitation or native token required.")
+        return
+
+    if action == "force-queue":
+        if not args.id:
+            raise SystemExit("Force queue needs --id JOB_ID")
+        try:
+            result = api.call("/v1/integration/force-queue", {"user": user, "id": args.id})
+        except worker.ApiFailure as error:
+            if error.category == "bad_request" and "Unknown integration action" in str(error):
+                raise SystemExit("Server needs the force-queue update and restart; active verification is unchanged") from None
+            raise
+        finally:
+            api.close()
+        print("Priority queued %s; starts after active verification completes" % result["id"])
         return
 
     if action == "next":
         base = api.call("/v1/integration/base")
+        limits = base.get("limits", {"claims": 16})
+        if args.count > limits["claims"] or getattr(args, "targets", None) is not None and not limits.get("targets"):
+            raise SystemExit("Server needs the bulk integration update and restart before this request")
         if not generator.exists() or not (ROOT / "tools/rbxgs/Client/App/include").exists():
             raise SystemExit("Native integration needs the rebuild recipes and your local rbxgs source tree; see docs/INTEGRATION.md")
         if hashlib.sha256(generator.read_bytes()).hexdigest() != base["generator"]:
@@ -434,18 +606,26 @@ def command(args):
         if not identity_file.exists():
             atomic_json(identity_file, {"id": uuid.uuid4().hex})
         identity = json.loads(identity_file.read_text())["id"]
+        bulk = args.count > 16 or getattr(args, "targets", None) is not None
         result = api.call("/v1/integration/claim", {"user": user,
             "worker": user + "@" + socket.gethostname()[:40] + ":" + identity[:12],
-            "count": args.count, "unit": args.unit})
+            "count": args.count, "unit": args.unit, "targets": getattr(args, "targets", None),
+            "compact": bulk}, **({"timeout": 300} if bulk else {}))
         for claim in result["claims"]:
+            if "baseline" not in claim:
+                claim["baseline"] = result["baselines"][claim["base_revision"]]
             folder = directory / "claims" / claim["id"]
             if not (folder / "packet.json").exists():
+                if not bulk:
+                    add_standins(claim)
                 atomic_json(folder / "packet.json", claim)
                 if generator.exists():
                     (folder / "generator-base.py").write_bytes(generator.read_bytes())
                 prompt = ("Integrate " + claim["unit"] + " in RoConstruct (2008-06).\n\n"
                     "Read CLAUDE.md, rebuild/2008-06/POLICY.md and patches/make_rbxgs_client.py.\n"
                     "Read packet.json: exact snippets are evidence, not structures to paste.\n"
+                    "Each snippet's standins maps its placeholder externs to the real symbol/RTTI type/import the exe\n"
+                    "relocates at that spot (binary-proven); use the real names, never the placeholders.\n"
                     "Find the real class/method; derive fields, signatures, constants and control flow from bytes.\n"
                     "Change real C++ only through make_rbxgs_client.py overlay patches. Cite addresses.\n"
                     "Never edit tools/, src/, clients/ or bounds.json. No padding structs or offset views.\n"
@@ -457,7 +637,15 @@ def command(args):
                 (folder / "PROMPT.md").write_text(prompt, encoding="utf-8")
                 (folder / "notes.md").write_text("Evidence addresses: " + " ".join(claim["addresses"][:5]) +
                                                 "\n\nDescribe the byte-proven source correction here.\n", encoding="utf-8")
-            print("%s: %d targets; claim %s\n  %s" % (claim["unit"], len(claim["addresses"]), claim["id"], folder))
+            if len(result["claims"]) <= 16:
+                print("%s: %d targets; claim %s\n  %s" % (claim["unit"], len(claim["addresses"]), claim["id"], folder))
+        if result["claims"]:
+            batch = directory / "batches" / (uuid.uuid4().hex + ".json")
+            total = sum(len(c["addresses"]) for c in result["claims"])
+            atomic_json(batch, {"claims": [c["id"] for c in result["claims"]], "targets": total})
+            print("Claimed %d classes / %d targets; batch %s" % (len(result["claims"]), total, batch))
+            if getattr(args, "targets", None) and total < args.targets:
+                print("Requested %d targets; fewer eligible unclaimed targets available." % args.targets)
         if not result["claims"]:
             print("No unclaimed eligible native classes available.")
         return
@@ -471,12 +659,24 @@ def command(args):
             return not marker.exists() or states.get(json.loads(marker.read_text())["id"]) == "rejected"
         claims = [c for c in claims if c["user"] == user and
                   (c["id"] == args.claim if args.claim else active(c))]
-        if not claims or (len(claims) > 1 and not args.all):
-            raise SystemExit("Select --claim ID, or --all for a batch of local claims")
+        batch_file = getattr(args, "batch", None)
+        if batch_file:
+            if args.claim:
+                raise SystemExit("Select --claim or --batch, not both")
+            selected = set(json.loads(Path(batch_file).read_text(encoding="utf-8"))["claims"])
+            claims = [c for c in claims if c["id"] in selected]
+            if {c["id"] for c in claims} != selected:
+                raise SystemExit("Batch contains missing or inactive local claims")
+        if not claims or (len(claims) > 1 and not args.all and not batch_file):
+            raise SystemExit("Select --claim ID, --batch FILE, or --all for local claims")
         if action != "submit":
-            for c in claims:
-                print(c["id"], api.call("/v1/integration/" + action,
-                    {"user": user, "claim": c["id"], "reason": args.reason}))
+            if len(claims) > 1 and api.call("/v1/integration/base").get("limits"):
+                print(api.call("/v1/integration/" + action,
+                    {"user": user, "claims": [c["id"] for c in claims], "reason": args.reason}))
+            else:
+                for c in claims:
+                    print(c["id"], api.call("/v1/integration/" + action,
+                        {"user": user, "claim": c["id"], "reason": args.reason}))
             return
         if not args.model or not args.evidence_file:
             raise SystemExit("Submit needs --model ACTUAL_MODEL (or human) and --evidence-file FILE")
@@ -520,6 +720,12 @@ def command(args):
                 previous = phases
             if action == "status" or not result["jobs"] or all(j["state"] in ("accepted", "rejected") for j in result["jobs"]):
                 print("Native credits:", json.dumps(result["leaderboard"]))
+                api.close()
+                if action == "watch":
+                    if not result["jobs"] and args.id:
+                        raise SystemExit("Native job missing: " + args.id)
+                    if any(j["state"] == "rejected" for j in result["jobs"]):
+                        raise SystemExit(1)
                 return
             time.sleep(2)
 
@@ -540,8 +746,5 @@ def command(args):
                     break
             if not restored:
                 raise SystemExit("Generator differs from server; preserve local edits and update before syncing")
-        atomic_json(generator.with_name("native-promotions.json"), base["accepted"])
-        subprocess.run([sys.executable, str(generator)], cwd=ROOT, check=True)
-        if json.loads(overlay.read_text(encoding="utf-8")) != base["overlay"]:
-            raise SystemExit("Local source/overlay baseline differs from server; update before claiming")
+        sync_client_baseline(ROOT, base)
         print("Accepted overlays synced:", base["revision"])

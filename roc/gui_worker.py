@@ -71,7 +71,7 @@ def validate(values, base=None, check_model=True):
                           ("order", ("auto", "best", "matched", "unmatched", "easiest", "random")),
                           ("thinking", ("auto", "enabled", "disabled")),
                           ("reasoning_effort", (None, "auto", "low", "medium", "high", "max")),
-                          ("lease_mode", ("function", "family", "unit"))):
+                          ("lease_mode", ("function", "family", "unit", "native"))):
         if config[key] not in choices:
             raise ValueError("Invalid %s" % key)
     for key in ("use_revng", "use_remill", "guided_mutations", "near_repair", "source_only", "cloud_allowed"):
@@ -206,6 +206,28 @@ class Control:
             self.command({"action": "stop"})
 
 
+def native_loop(config, control, emit):
+    """Native integration: each pass lets the model edit native files that define waiting exact targets, submits
+    locally proven edits as one verified batch, waits for the verdict and syncs; later passes skip tried files."""
+    from roc import native_sweep, research
+    spec = json.loads(json.dumps(research.recipes()["native-model-2008"]))
+    tried = set()
+    while not control.stopping:
+        spec["native_sweep"].update(llm=config["model"], rounds=config["rounds"], wait=True, exclude_files=sorted(tried))
+        try:
+            summary = native_sweep.run(spec, "native-model-2008", server=config["server"] or None, jobs=control.workers,
+                                       log=lambda message: emit("log", slot=0, message=str(message)))
+        except (Exception, SystemExit) as error:  # noqa: BLE001 - report and stop like a worker slot
+            emit("error", slot=0, message=str(error))
+            break
+        emit("log", slot=0, message="native pass: %s, %s local exact, %s verified" % (
+            summary.get("state"), summary.get("local_exact", 0), summary.get("new_verified", 0)))
+        tried.update(summary.get("files_tried", []))
+        if not summary.get("files_tried"):
+            break
+    emit("slot_stopped", slot=0)
+
+
 def main():
     initial = json.loads(sys.stdin.readline())
     output_lock = threading.Lock()
@@ -257,6 +279,9 @@ def main():
             emit("slot_stopped", slot=slot)
 
     worker.keep_awake()
+    if config["lease_mode"] == "native":
+        native_loop(config, control, emit)
+        return
     while True:
         with control.condition:
             if not control.stopping:

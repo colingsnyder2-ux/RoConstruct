@@ -3,3 +3,5 @@ research/log.jsonl merge=union
 
 # End-user source archives omit developer CI tests; Git checkouts retain them.
 /tests export-ignore
+# Integration baselines hash the generator bytes across contributor checkouts.
+rebuild/2008-06/patches/make_rbxgs_client.py text eol=lf

@@ -25,7 +25,7 @@ class LeaseQueueTests(unittest.TestCase):
                 return None
 
             def status(self):
-                return {"ok": True}
+                return {"ok": True, "clients": []}
 
         server = ThreadingHTTPServer(("127.0.0.1", 0), make_handler(Store(), None, set()))
         thread = threading.Thread(target=server.serve_forever, daemon=True)
@@ -49,7 +49,7 @@ class LeaseQueueTests(unittest.TestCase):
                         lease()
                     api = Api(address)
                     try:
-                        self.assertEqual(api.call("/v1/status"), {"ok": True})
+                        self.assertEqual(api.call("/v1/status"), {"ok": True, "clients": []})
                     finally:
                         api._conn.close()
                 finally:

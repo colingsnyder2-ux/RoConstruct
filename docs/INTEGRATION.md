@@ -15,14 +15,18 @@ The existing `roc lib-fetch rbxgs` command fetches the configured source recipe
 when its source bundle is available to your installation.
 
 Configure your contributor name and the existing group server with `roc config`.
-The build-server owner runs `roc integrate invite` and privately gives trusted
-helpers the invitation token. Pass it as `--token INVITE` to integration commands,
-or set `ROC_NATIVE_TOKEN` in your own environment. Public mining needs no new
-password. Do not post invitation tokens, executables or vendor trees.
+Native integration is public: no invitation, native token or owner approval required.
+Claims, queue ownership and independent server verification still apply.
 
 Native verification compiles and runs submitted C++. Operate the verifier under
 a dedicated build account/VM for contributors you do not already trust. Private
 build directories isolate artifacts; they are not an operating-system sandbox.
+
+Whole-file rebuilds reuse objects only when source/header contents, compiler
+binaries, flags, defines and include search paths still match. Include-directory
+inventories detect newly shadowing headers; touching unchanged files keeps cache
+hits. Object hashes detect replaced artifacts. Cache records sit beside objects
+as `.compile.json`; old timestamp-only outputs rebuild once to seed them.
 
 ## Quick flow
 
@@ -62,6 +66,65 @@ name, or `human`. Repeating the same upload returns the same job.
 If verification rejects a candidate, your claims remain available for correction
 for another two hours. Edit the generator/evidence and submit again; changed
 source becomes a new job, while network replays remain idempotent.
+
+## Thousands of targets in one batch
+
+```text
+roc integrate next --targets 2000
+roc integrate submit --batch work/integration-client/batches/BATCH_ID.json --model ACTUAL_MODEL --evidence-file batch-notes.md --wait
+```
+
+`next` prints the actual saved batch path. It reserves whole classes from one
+baseline until it reaches the requested target count, or exhausts eligible work.
+The reported count is actual availability; a request for 2,000 is not a claim
+that 2,000 matches exist. `--count` instead selects up to 1,024 classes.
+Batch JSON selects exactly those claims, avoiding unrelated local packets.
+Use `renew --batch FILE` or `release --batch FILE` for one bulk lease request.
+
+Large claim replies share each baseline once on the wire; local packets retain
+their full evidence. One submission accepts up to 1,024 source paths, 4,096 edits
+per path, 24 MiB of overlays and 2 MiB of evidence, within a 32 MiB authenticated
+native HTTP request. Ordinary mining uploads keep their 1 MiB limit. Update both
+client and server, then restart the server to load these limits.
+
+Claims reserve work; they do not generate source corrections. Implement and
+preflight real methods before submitting. All classes share one independent
+linked rebuild and the same runtime, ABI, body-preservation and distinct gates.
+These limits increase batch capacity without awarding credit before verification.
+
+## Automatic finding and application
+
+```text
+roc research run native-auto-pilot-2008 --jobs 4
+roc research run native-auto-fixes-2008 --jobs 4
+```
+
+These named grid recipes run the native finder, bypassing ordinary snippet mining.
+It compiles real TUs against the accepted overlay, tests method assertion omissions
+and the observed x87 profile, then scans instruction bytes **and referenced data**.
+Diagnostic changes are minimized to newly exact, unambiguous out-of-line methods.
+The final minimized TU is compiled again; losing an existing locally reproduced
+owned body rejects that proposal. It claims only successful candidates, applies
+declarative generator edits, and queues one independently verified native batch.
+The finder respects the running server's class limit, including older 16-class servers.
+
+Evidence and progress live under `work/research/RECIPE/`: `trials.json`,
+`final-checks.json`, `proposals.json`, source/object hashes, compiler artifacts,
+`batch-notes.txt`, `batch.json` and `summary.json`. The summary's job ID is queued,
+not accepted credit; use `roc integrate watch --id ID` and sync after acceptance.
+The pilot selects a few real source files; the full recipe scans the App TUs.
+
+Recipes use the checkout's installed native manifests, target executable and
+analysis. `ROC_NATIVE_EVIDENCE_ROOT` may point at a local read-only manifest/report
+checkout; compilation and generator edits still stay in the working checkout.
+Use `native_sweep.apply=false` for proposals only, or `submit=false` to stage and
+review proven changes before submission. Staged claims remain leased for review.
+Ambiguous overloads, templates, conditional method bodies and layout/signature
+recovery defer to manual work. This automates specific proven fix families; it
+does not invent fields, offsets, source bodies or claim unverified credit.
+
+## Retry and acceptance
+
 Use `--retry` to rerun an unchanged rejected batch after a verifier/environment
 problem has been fixed. Use `release --claim ID --reason "blocker + addresses"`
 to park blocked work for two hours instead of immediately assigning it again.
@@ -97,8 +160,8 @@ batching does not change its leases, matching scores, points or webhook routing.
 
 The normal `roc server`/`roc host` service starts a serialized native verifier.
 It keeps claims, queued work, accepted recipes and credits in `work/server.db`.
-An invitation is generated privately on first startup when no server/native
-token is configured. Restart the existing service after installing this feature;
+Native contribution endpoints are public, even when ordinary mining has a server
+password configured. Restart the existing service after installing this feature;
 do not start another listener on port 8765.
 
 Each verification uses private writable build outputs. Uploaded bundles contain
@@ -112,11 +175,37 @@ restart it after changing the configured toolchain. SDK/compiler discovery is
 not repeated for every ABI probe. Accepted candidates become the next cached
 baseline, including failed-candidate retries against an unchanged baseline.
 
+To move your queued batch to the front of the waiting queue:
+
+```text
+roc integrate force-queue --id JOB_ID
+```
+
+The latest force-queue request is selected first after active verification finishes.
+Priority survives server restarts, keeps submission timestamps, and preserves normal
+batch merging and all verification gates. Only the batch owner may prioritize it;
+verifying and completed jobs cannot be force-queued. The server must load the updated
+queue handler before using this command; restart it when no verification is active.
+
 Cold verification can take many minutes. Batch several coherent fixes to amortize
 it. Current phases are snapshot, baseline build/checks, preflight, building,
 checking and complete; no fabricated compiler percentage is shown.
 
-Server Mining receives one editable digest: purple integrated native bodies,
+Use `roc integrate fingerprint` for a read-only fingerprint timing check. Initial
+full/live fingerprints share one input walk and one content-read pass; later live
+checks still detect source/toolchain changes during verification, including edits
+that preserve file size and timestamps. Output/cache trees are pruned before descent.
+The native cache key covers compiler/matcher/gate modules and build inputs, excluding
+CLI, queue, UI and webhook code. Milestones execute the build module directly.
+
+Compiler/SDK path discovery is persisted in `work/integration/toolchain.json`, checked
+against resolver code, installation state, configuration and existing paths. Compiler,
+SDK and source bytes are still content-hashed. New baseline snapshots checkpoint their
+prepared input identity before compiling; after interruption, matching snapshots reuse
+their private content-checked objects and rerun every gate. Unprepared snapshots are
+retained for diagnostics. Completed baseline receipts remain required for acceptance.
+
+Server Mining receives a fresh digest when progress changes: purple integrated native bodies,
 blue exact mined sources awaiting integration, yellow partial mined sources,
 white unmined targets. The 23-cell bar measures target bytes; category counts and
 remaining functions are shown separately. User points are real, native credit

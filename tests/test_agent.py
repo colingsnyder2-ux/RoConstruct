@@ -137,14 +137,17 @@ def test_goal_mode_allows_roc_commands_and_web(monkeypatch):
     assert "match RakNet in 2008-06" in seen[0][0] and seen[0][1] is True
 
 
-def test_goal_shortlist_mixes_near_large_and_random(monkeypatch):
+def test_goal_shortlist_samples_all_scores_without_near_match_priority(monkeypatch):
     from roc import agent_auto
     rows = [dict(client="C", addr="%08x" % n, unit="Unit", score=99 if n < 30 else 30,
                  size=n*100, priority=100-n, group_parked=False, evidence_hash=str(n), source_hash=str(n)) for n in range(70)]
     monkeypatch.setattr(agent_auto, "history", lambda: [])
     monkeypatch.setattr(agent_auto, "portfolio", lambda *a, **kw: {"areas": [{"targets": rows}]})
+    seen = []
+    monkeypatch.setattr(agent.random, "sample", lambda pool, count: seen.extend(pool) or pool[-count:])
     targets = agent.goal_targets("localhost", None, "C", {})
-    assert [sum(row["selection"] == label for row in targets) for label in ("near-miss", "large", "explore")] == [14,7,3]
+    assert seen == rows
+    assert all(row["selection"] == "random" for row in targets)
     assert len({row["addr"] for row in targets}) == 24
     assert any(row["score"] < 70 for row in targets)
 
@@ -159,18 +162,15 @@ def test_function_evidence_resolves_neighbors_without_inventing_semantics():
     assert "likely_behavior" not in evidence
 
 
-def test_goal_seeds_candidate_and_supplies_runnable_commands(tmp_path, monkeypatch):
+def test_server_goal_uses_single_function_recovery_pipeline(tmp_path, monkeypatch):
     from roc import agent_auto
     monkeypatch.setattr(agent, "ROOT", tmp_path)
     monkeypatch.setattr(agent_auto, "prepare_clients", lambda *a: None)
-    monkeypatch.setattr(agent, "goal_targets", lambda *a: [dict(client="C", addr="00401000", unit="Unit", size=500,
-        score=99, selection="near-miss", source="int f(){return 1;}", evidence_hash="revision", source_hash="source")])
-    prompts = []
-    monkeypatch.setattr(agent, "run_agent", lambda cli, prompt, *a, **kw: prompts.append(prompt) or 0)
+    calls = []
+    monkeypatch.setattr(agent_auto, "run", lambda *args, **kwargs: calls.append((args, kwargs)) or {"errors": 0})
     assert agent.run_goal("opencode", "match", server="localhost", user="tester", log=lambda *a: None) == 0
-    files = list((tmp_path / "work" / "agent-goals").glob("*/C/00401000.cpp"))
-    assert len(files) == 1 and files[0].read_text() == "int f(){return 1;}"
-    assert "Candidate files already exist" in prompts[0] and "--file" in prompts[0]
+    assert calls[0][1]["goal"] == "match"
+    assert calls[0][1]["batch_size"] == 1 and calls[0][1]["workers"] == 1
 
 
 def test_every_agent_prompt_requests_concision_and_fast_work(monkeypatch):
@@ -185,7 +185,7 @@ def test_every_agent_prompt_requests_concision_and_fast_work(monkeypatch):
         assert "Assigned target" in prompt
         assert "libs.source_for" in prompt and "g3d-6.09-ijg jidctflt.c" in prompt
         assert "likely purpose plus one supporting fact" in prompt
-        assert "verified=true, improved=true, score=100" in prompt
+        assert "referenced-data results" in prompt and "instruction equality alone is insufficient" in prompt
         assert "caveman" not in prompt.lower()
 
 
@@ -298,8 +298,59 @@ def test_memory_prompt_bounds_context_and_prioritizes_family():
             "recent": [{"client": "2009-12"}], "shared_recent": [], "slow_commands": []}
     prompt = agent.memory_prompt(data, "2008-06", "ogre-1.4.5/ogrenew")
     assert "ogre-rejected" in prompt and "other-client" not in prompt
-    assert "xtp-4" in prompt and "xtp-5" not in prompt
+    assert "xtp-1" in prompt and "xtp-2" not in prompt
     assert len(data["lessons"]) == 12  # Rendering must not change shared memory.
+
+
+def test_workflow_keeps_improvement_heading_before_truncated_output(monkeypatch):
+    from roc import agent_memory
+    records = []
+    monkeypatch.setattr(agent_memory, "append_record", records.append)
+
+    def run(cli, prompt, model, minutes, log, *args):
+        log("Improvements\n- check: cached failure repeated; key by source hash; avoid duplicate compiles.\n" + " " * 1500)
+        return 0
+
+    monkeypatch.setattr(agent, "_run_agent", run)
+    assert agent.run_agent("codex", "task", log=lambda message: None, auto=True) == 0
+    assert records[0]["improvements"] == [
+        "check: cached failure repeated; key by source hash; avoid duplicate compiles."]
+    assert "Improvements" not in records[0]["output_tail"][0]
+
+
+def test_workflow_keeps_exception_origin_for_runtime_failures(monkeypatch):
+    from roc import agent_memory
+    records = []
+    monkeypatch.setattr(agent_memory, "append_record", records.append)
+    def fail(*args):
+        raise OSError(22, "Invalid argument")
+    monkeypatch.setattr(agent, "_run_agent", fail)
+    with pytest.raises(OSError, match="Invalid argument"):
+        agent.run_agent("opencode", "task")
+    assert records[0]["error_type"] == "OSError"
+    assert "in fail" in records[0]["error_traceback"]
+    assert "[Errno 22] Invalid argument" in records[0]["error_traceback"]
+    assert len(records[0]["error_traceback"]) <= 6000
+
+
+def test_time_extension_requires_verified_gain(tmp_path, monkeypatch):
+    import json
+    monkeypatch.setattr(agent, "ROOT", tmp_path)
+    path = tmp_path / "work/agent-memory/attempts.jsonl"
+    path.parent.mkdir(parents=True)
+    started = "2026-10-14T20:00:00+00:00"
+    for fields, expected in [
+        ({"kind": "success_summary", "before": 98, "after": 100}, False),
+        ({"outcome": "improved", "after": 99}, False),
+        ({"receipt": {"verified": True, "improved": False}}, False),
+        ({"receipt": {"verified": False, "improved": True}}, False),
+        ({"kind": "session", "outcome": "no_gain", "server_stored": 99, "before": 99}, False),
+        ({"kind": "session", "outcome": "improved", "server_stored": 99, "before": 98}, True),
+        ({"receipt": {"verified": True, "improved": True}}, True),
+    ]:
+        path.write_text(json.dumps(dict(date=started, **fields)))
+        assert agent._progress_since(started) is expected
+    assert not agent._progress_since("2026-10-15T00:00:00+00:00")
 
 
 def test_session_memory_records_rollback_and_server_result(tmp_path, monkeypatch):
@@ -478,7 +529,7 @@ def test_goal_targets_skip_functions_failed_in_earlier_sessions(monkeypatch):
     picked = agent.goal_targets("s", None, "c", {"records": failed})
     assert [row["addr"] for row in picked] == ["b"]
     once = agent.goal_targets("s", None, "c", {"records": failed[:1]})
-    assert [row["addr"] for row in once][0] == "b" and once[1]["prior_sessions"] == 1
+    assert {row["addr"]: row["prior_sessions"] for row in once} == {"a": 1, "b": 0}
 
 
 def test_reuse_gate_sweep_runs_once_per_source(tmp_path, monkeypatch):

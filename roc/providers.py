@@ -4,6 +4,7 @@ Keys are read from environment variables first, or a user-local secrets file
 outside the repository. This module owns provider HTTP details so matching,
 MSVC compilation, and server leases stay local and provider-agnostic.
 """
+import base64
 import json
 import math
 import os
@@ -386,7 +387,7 @@ def _url(config, suffix):
     return config["base_url"].rstrip("/") + suffix
 
 
-def _post(url, body, headers, timeout):
+def _post(url, body, headers, timeout, allow_empty=False):
     headers = dict(headers)
     # Some OpenAI-compatible gateways sit behind a WAF that rejects the default
     # Python-urllib User-Agent (Cloudflare "error code: 1010"). Send our own.
@@ -394,7 +395,10 @@ def _post(url, body, headers, timeout):
     req = urllib.request.Request(url, data=json.dumps(body).encode("utf-8"), headers=headers, method="POST")
     try:
         with urllib.request.urlopen(req, timeout=timeout) as response:
-            return json.loads(response.read()), dict(response.headers)
+            raw = response.read()
+            if not raw and allow_empty:
+                return {}, dict(response.headers)
+            return json.loads(raw), dict(response.headers)
     except urllib.error.HTTPError as error:
         detail = error.read().decode("utf-8", "replace").lower()
         retry = (error.code in (408, 429) or error.code >= 500 or
@@ -587,6 +591,22 @@ def _opencode_failure(error):
     return ProviderError(category, message, status)
 
 
+_OPENCODE_STANDALONE = []
+
+
+def _opencode_run_flags():
+    """`--standalone` only exists in newer OpenCode builds; probe once like the agent path."""
+    if not _OPENCODE_STANDALONE:
+        exe = shutil.which("opencode")
+        try:
+            text = subprocess.run([exe, "run", "--help"], capture_output=True, text=True,
+                                  timeout=30).stdout if exe else ""
+        except (OSError, subprocess.SubprocessError):
+            text = ""
+        _OPENCODE_STANDALONE.append(["--standalone"] if "--standalone" in text else [])
+    return _OPENCODE_STANDALONE[0]
+
+
 def _opencode_run(argv, prompt, timeout):
     """One non-interactive `opencode run`; the whole process tree dies on timeout."""
     process = subprocess.Popen(argv, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
@@ -612,6 +632,72 @@ def _opencode_run(argv, prompt, timeout):
     return process.returncode, output or ""
 
 
+def _opencode_service():
+    """(url, password) for the running OpenCode server, or None when absent.
+
+    OpenCode writes its background service address and password here, so RoConstruct
+    can call the same signed-in API the CLI uses without storing credentials.
+    """
+    override = os.environ.get("OPENCODE_SERVER_URL")
+    if override:
+        return override.rstrip("/"), os.environ.get("OPENCODE_SERVER_PASSWORD", "")
+    home = Path.home()
+    candidates = [home / ".local" / "state" / "opencode" / "service.json",
+                  home / ".local" / "share" / "opencode" / "service.json"]
+    local = os.environ.get("LOCALAPPDATA") or os.environ.get("XDG_STATE_HOME")
+    if local:
+        candidates.append(Path(local) / "opencode" / "service.json")
+    for path in candidates:
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, ValueError, TypeError):
+            continue
+        url = data.get("url") if isinstance(data, dict) else None
+        password = data.get("password", "") if isinstance(data, dict) else ""
+        if isinstance(url, str) and url.startswith(("http://", "https://")):
+            return url.rstrip("/"), str(password or "")
+    return None
+
+
+def _opencode_api(remote, messages, prompt, options):
+    """One OpenCode HTTP call through the running signed-in server.
+
+    Unlike `opencode run`, this keeps a real HTTP session with the model and
+    returns the text in one response, so an unresponsive CLI no longer wedges a
+    worker. The model string is provider/model with an optional #variant.
+    """
+    service = _opencode_service()
+    if not service:
+        raise ProviderError("provider_config", "OpenCode server not running")
+    base, password = service
+    model = str(remote).partition("#")[0]
+    provider_id, slash, model_id = model.partition("/")
+    if not slash or not provider_id or not model_id:
+        raise ProviderError("provider_config", "OpenCode API model must be provider/model")
+    headers = {"Content-Type": "application/json", "User-Agent": USER_AGENT}
+    if password:
+        token = base64.b64encode(("opencode:" + password).encode("utf-8")).decode("ascii")
+        headers["Authorization"] = "Basic " + token
+    timeout = int(options.get("timeout") or 180)
+    session, _ = _post(base + "/api/session", {"title": "RoConstruct"}, headers, min(timeout, 30))
+    session_id = ((session or {}).get("data") or {}).get("id")
+    if not session_id:
+        raise ProviderError("provider_error", "OpenCode API returned no session")
+    ref = {"providerID": provider_id, "id": model_id}
+    variant = str(remote).partition("#")[2]
+    if variant:
+        ref["variant"] = variant
+    _post(base + "/api/session/%s/model" % session_id, {"model": ref}, headers, min(timeout, 30),
+          allow_empty=True)
+    reply, _ = _post(base + "/api/session/%s/generate" % session_id, {"prompt": prompt}, headers, timeout)
+    text = str(((reply or {}).get("data") or {}).get("text") or "")
+    if not text.strip():
+        raise ProviderError("provider_error", "OpenCode API produced no text")
+    text = strip_reasoning(text)
+    return Generation(text, {"messages": messages + [{"role": "assistant", "content": text}]},
+                      provider="opencode", model=remote, finish_reason="completed")
+
+
 def _opencode_cli(provider, remote, config, prompt, state, options):
     """Generate through the signed-in OpenCode CLI: plan allowances, no API key.
 
@@ -630,9 +716,20 @@ def _opencode_cli(provider, remote, config, prompt, state, options):
                                           else "Previous context", message["content"])
                          for message in others[:-1])
     body = (system + "\n\n" if system else "") + transcript + others[-1]["content"]
+    discipline = ("RESPOND WITH EXACTLY ONE ```cpp CODE BLOCK AND NOTHING ELSE.\n"
+                  "Do NOT use tools. Do NOT read files. Do NOT explore the repository.\n"
+                  "Do NOT add prose outside the code block. Your entire reply must be one "
+                  "fenced code block of C++ source.\n\n")
+    if options.get("opencode_api"):
+        try:
+            return _opencode_api(remote, messages, discipline + body, options)
+        except ProviderError:
+            # No running server, wrong port, or a transient HTTP failure: the
+            # one-shot CLI is still a valid signed-in route.
+            pass
     # -m takes provider/model#variant; no --auto: a draft needs text, not tools.
     code, output = _opencode_run([exe, "run", "-m", remote, "--format", "json"],
-                                 body, options["timeout"])
+                                  discipline + body, options["timeout"])
     text, failure = "", None
     for line in output.splitlines():
         try:
@@ -713,8 +810,8 @@ def generate(model, messages, options=None, state=None):
             raise ProviderError("cloud_budget", "ChatGPT uses plan limits, not USD pricing. Remove the USD cap; manage app limits in ChatGPT Settings > Usage.")
     elif config["kind"] == "opencode-cli":
         options["retry_forever"] = False
-        if options.get("timeout") == 180:
-            options["timeout"] = 0  # Match (worker flow) inherits Agent: no per-call cap.
+        if not options.get("timeout"):
+            options["timeout"] = 180  # Avoid an unresponsive model wedging worker forever.
         if options.get("budget") and options["budget"].max_cost is not None:
             raise ProviderError("cloud_budget", "OpenCode models use the CLI's plan allowances (Go subscription monthly limits), not USD API pricing. Remove the spend cap; usage is shown in the OpenCode console.")
     gate, lock = options.get("gate"), None
@@ -781,10 +878,15 @@ def generate(model, messages, options=None, state=None):
                             gate.done(provider, False)
                     raise
                 retries += 1
-                delay = min(60, 0.5 * (2 ** min(attempt, 7)))
+                # Free-tier OpenCode models rate-limit hard (429); the 0.5s
+                # steps are too fast and the worker just loops "waiting for cloud
+                # model" until exhausted. Give 429s a 60s floor and cap retries.
+                _retry_delay = min(180, 0.5 * (2 ** min(attempt, 7)))
+                if getattr(error, "status", None) == 429:
+                    _retry_delay = max(60, _retry_delay)
                 if options.get("on_retry"):
-                    options["on_retry"](error, retries, delay)
-                time.sleep(delay)
+                    options["on_retry"](error, retries, _retry_delay)
+                time.sleep(_retry_delay)
                 attempt += 1
     finally:
         if lock:

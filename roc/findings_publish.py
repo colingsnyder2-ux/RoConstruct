@@ -78,6 +78,8 @@ def export_native(root, db):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, required=True)
+    parser.add_argument("--downloads-only", action="store_true", help="publish the Worker bundle without a database export")
+    parser.add_argument("--package-only", action="store_true", help="publish the prepared native package without a database export")
     args = parser.parse_args()
     root = args.root.resolve()
     # Load the live checkout's established publisher, without editing its protected inputs.
@@ -88,6 +90,19 @@ def main():
     if helper_path not in roc.__path__:
         roc.__path__.append(helper_path)
     from roc import server, libs
+    if args.package_only:
+        from roc.findings_transport import publish_package
+        from roc.rebuild_package import export
+        package = export(root, root / 'local/findings/2008-06')
+        print('Packaged %d files.' % len(package['files']), flush=True)
+        publish_package(root, shutil.which('git'))
+        return
+    if args.downloads_only:
+        from roc.findings_transport import publish_downloads
+        # This small update uses its own Git index and a normal fast-forward push.
+        # A concurrent findings update is rejected safely instead of being overwritten.
+        publish_downloads(root, shutil.which('git'))
+        return
     store = server.Store.__new__(server.Store)
     store.lock = threading.Lock()
     store.db = sqlite3.connect((root / "work/server.db").as_uri() + "?mode=ro", uri=True)

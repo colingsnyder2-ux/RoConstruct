@@ -194,7 +194,7 @@ def build(client, addr, api=None, root=None, max_tokens=2000, include_diff=True,
         "address": addr, "size": row.get("size"), "unit": row.get("unit"),
         "shape": row.get("shape"), "family": row.get("family"),
         "code_sha256": hashlib.sha256(code).hexdigest(),
-        "asm": list(asm)[:120], "facts": facts, "data_facts": data_facts,
+        "asm": list(asm), "facts": facts, "data_facts": data_facts,
         "confidence": PROVEN,
     }
     source, origin, source_score = _source(client, addr, api, root)

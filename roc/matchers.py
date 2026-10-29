@@ -434,22 +434,36 @@ def _fingerprint():
     return fingerprint
 
 
-def matched_sources(log=print):
+def matched_sources(log=print, exact_only=False, client_names=None, allowed_sizes=None,
+                    allowed_shapes=None):
     """[(body, [(origin client, addr), ...])] for every stored match, deduped by body text.
 
     The template header (disassembly comments) is dropped: it names the origin client
     and address and would be wrong in the copy. Deduplication matters because the same
     trivial function is often stored under many addresses."""
     groups = {}
-    for client in sorted(clients.load()):
+    registry = clients.load()
+    for client in sorted(client_names or registry):
         folder = ROOT / "src" / client
         if not folder.is_dir():
             continue
-        for path in sorted(folder.glob("*.cpp")):
-            text = path.read_text(errors="replace")
-            if "\n\n" not in text:
+        scores = {}
+        if exact_only:
+            try:
+                scores = json.loads((ROOT / "work" / client / "scores.json").read_text())
+            except (OSError, ValueError):
                 continue
-            body = text.split("\n\n", 1)[1].strip()
+        metadata = (match._functions(client)
+                    if allowed_sizes is not None or allowed_shapes is not None else {})
+        paths = ([folder / (addr + ".cpp") for addr, score in scores.items()
+                  if score == 100
+                  and (allowed_sizes is None or metadata.get(addr, {}).get("size") in allowed_sizes)
+                  and (allowed_shapes is None or metadata.get(addr, {}).get("shape") in allowed_shapes)]
+                 if exact_only else folder.glob("*.cpp"))
+        for path in sorted(path for path in paths if path.exists()):
+            text = path.read_text(errors="replace")
+            header, separator, body = text.partition("\n\n")
+            body = (body if separator and not match.directives(header) else text).strip()
             if not body:
                 continue
             key = hashlib.sha256(body.encode()).hexdigest()
@@ -457,7 +471,8 @@ def matched_sources(log=print):
                 groups[key] = (body, [])
             groups[key][1].append((client, path.stem))
     out = [v for v in groups.values()]
-    log("%d distinct matched source(s) from %d client(s)" % (len(out), len(clients.load())))
+    log("%d distinct matched source(s) from %d client(s)" %
+        (len(out), len(client_names or registry)))
     return out
 
 
@@ -472,7 +487,7 @@ def needs_global_scope(body):
     headers fail with "fpos_t is not a member of global namespace" because their
     using-declarations land in the wrong namespace. C has no namespaces at all. These
     get one translation unit each instead."""
-    return _lang(body) == "c" or "#include" in body
+    return _lang(body) == "c" or "#include" in body or bool(match.directives(body))
 
 
 def _build_of(body, origins, reg):
@@ -540,9 +555,14 @@ def _match_batch(target, obj, sources_by_tag, client):
     found = {}
     for name, code, relocs in match.coff_functions(obj):
         tag = TAG.search(name)
-        if not tag or tag.group(0) not in sources_by_tag:
+        if tag and tag.group(0) in sources_by_tag:
+            source = sources_by_tag[tag.group(0)]
+        elif len(sources_by_tag) == 1:
+            if len(code) < 6:  # Native support thunks alone carry too little evidence.
+                continue
+            source = next(iter(sources_by_tag.values()))
+        else:
             continue
-        source = sources_by_tag[tag.group(0)]
         for addr in target.index.get(len(code), []):
             if addr in found:
                 continue
@@ -575,7 +595,7 @@ def compile_batch(target, clients, reg, log):
                 text, by_tag = _batch_alone(chunk[0][0])
             else:
                 text, by_tag = _batch_cpp(chunk)
-            obj = match.compile_text(target, text, build=reg[target].get("compiler_build"))
+            obj = match.compile_text(target, text)
         except match.CompileError as error:
             if len(chunk) == 1:
                 bad.append((chunk[0][0], str(error).splitlines()[0]))
@@ -586,7 +606,13 @@ def compile_batch(target, clients, reg, log):
             return
         out.append((obj, by_tag))
 
-    attempt(clients)
+    grouped = []
+    for candidate in clients:
+        if needs_global_scope(candidate[0]):
+            attempt([candidate])
+        else:
+            grouped.append(candidate)
+    attempt(grouped)
     if bad:
         log("  %d source(s) failed even alone and were skipped" % len(bad))
         for text, why in bad[:4]:
@@ -596,21 +622,49 @@ def compile_batch(target, clients, reg, log):
     return out
 
 
-def run(targets=None, log=print, limit=None, dry_run=False):
+def run(targets=None, log=print, limit=None, dry_run=False, cross_only=False,
+        min_size=0, max_score=99):
     """Copy stored matches into the given clients (default: all). Returns {client: new}."""
     reg = clients.load()
     targets = [c for c in (targets or sorted(reg)) if c in reg]
-    sources = matched_sources(log=log)
-    if not clients:
+    source_clients = None
+    if cross_only and len(targets) == 1:
+        build = reg[targets[0]].get("compiler_build")
+        source_clients = [name for name, row in reg.items()
+                          if name != targets[0] and row.get("compiler_build") == build]
+    filtering = len(targets) == 1 and (min_size or max_score < 99)
+    eligible = {}
+    if filtering:
+        if source_clients is None:
+            build = reg[targets[0]].get("compiler_build")
+            source_clients = [name for name, row in reg.items()
+                              if row.get("compiler_build") == build]
+        scores = json.loads((ROOT / "work" / targets[0] / "scores.json").read_text())
+        eligible = {addr: row.get("size", 0) for addr, row in match._functions(targets[0]).items()
+                    if row.get("size", 0) >= min_size and scores.get(addr, 0) <= max_score}
+    allowed_shapes = ({row.get("shape") for addr, row in match._functions(targets[0]).items()
+                       if addr in eligible and row.get("shape")} if filtering else None)
+    sources = matched_sources(log=log, exact_only=cross_only or filtering, client_names=source_clients,
+                              allowed_sizes=set(eligible.values()) if filtering else None,
+                              allowed_shapes=allowed_shapes)
+    if not sources:
         log("Nothing stored to copy yet. Run  roc auto <client>  or match some by hand first.")
         return {}
 
     result = {}
     for target in targets:
-        cands = _order(clients, target, reg)
+        cands = _order(sources, target, reg)
+        if cross_only:
+            cands = [(body, origins) for body, origins in cands
+                     if not all(client == target for client, _addr in origins)]
         if limit:
             cands = cands[:limit]
         probe = _fingerprint().Target(target)
+        if filtering:
+            for size in list(probe.index):
+                probe.index[size] = [addr for addr in probe.index[size] if addr in eligible]
+                if not probe.index[size]:
+                    del probe.index[size]
         open_before = sum(len(v) for v in probe.index.values())
         if not open_before:
             log("%-8s nothing open to match" % target)

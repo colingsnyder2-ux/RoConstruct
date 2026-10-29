@@ -46,6 +46,26 @@ REPO_OPT_CANDIDATES = (
     "tools/remill/dependencies/install/bin/{name}",
     "tools/bin/{name}",
 )
+
+# Common user-home installation paths (auto-detected when env vars are unset).
+# These make Remill work across PCs without manual configuration.
+USER_HOME_REMILL_PATTERNS = (
+    "remill/build-remill-*/bin/lift/{name}",
+    "remill/build-remill*/bin/lift/{name}",
+    "remill/build/bin/lift/{name}",
+    "remill/build/bin/{name}",
+    "remill/bin/lift/{name}",
+    "remill/bin/{name}",
+    "remill/{name}",
+)
+USER_HOME_OPT_PATTERNS = (
+    "msys64/mingw64/bin/{name}",
+    "msys64/usr/bin/{name}",
+    "llvm/bin/{name}",
+    "llvm-17/bin/{name}",
+    "remill/bin/{name}",
+    "remill/dependencies/install/bin/{name}",
+)
 LIFT_OPTIONS = {"arch": "x86", "os": "windows"}
 
 _MEMO = {}
@@ -127,12 +147,63 @@ def _identity(path, kind):
                 "version": _version_hint(path, kind)}
 
 
+_CONFIG_CACHE_PATH = None
+
+
+def _config_cache_path():
+    global _CONFIG_CACHE_PATH
+    if _CONFIG_CACHE_PATH is not None:
+        return _CONFIG_CACHE_PATH
+    # Look for roconstruct-settings.json in common locations
+    candidates = [
+        Path.cwd() / "local" / "config" / "roconstruct-settings.json",
+        Path.home() / ".roconstruct" / "roconstruct-settings.json",
+    ]
+    for p in candidates:
+        if p.is_file():
+            _CONFIG_CACHE_PATH = p
+            return p
+    # Default to repo-local config
+    _CONFIG_CACHE_PATH = Path.cwd() / "local" / "config" / "roconstruct-settings.json"
+    return _CONFIG_CACHE_PATH
+
+
+def _load_cached_paths():
+    """Load cached Remill/LLVM paths from config file."""
+    try:
+        path = _config_cache_path()
+        if path.is_file():
+            data = json.loads(path.read_text(encoding="utf-8"))
+            return data.get("remill_cache", {})
+    except Exception:
+        pass
+    return {}
+
+
+def _save_cached_paths(exe_path, opt_path):
+    """Save resolved Remill/LLVM paths to config file for cross-PC sharing."""
+    try:
+        path = _config_cache_path()
+        data = {}
+        if path.is_file():
+            data = json.loads(path.read_text(encoding="utf-8"))
+        data["remill_cache"] = {
+            "ROC_REMILL_EXE": str(exe_path) if exe_path else None,
+            "ROC_LLVM_OPT": str(opt_path) if opt_path else None,
+        }
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps(data, indent=2), encoding="utf-8")
+    except Exception:
+        pass
+
+
 def _resolve_one(env_key, repo_templates, basenames, kind, explicit=None):
     """Resolve one tool, returning (path, source, problem).
 
     Precedence is explicit path, explicit directory (LLVM only), repository-local
-    tree, then ``PATH``.  A set-but-invalid override is reported instead of being
-    silently replaced by a different binary."""
+    tree, then user-home directories, then common Windows paths, then PATH.
+    Cached paths from roconstruct-settings.json are used as fallbacks.
+    A set-but-invalid override is reported instead of being silently replaced."""
     override = os.environ.get(env_key, "").strip()
     if override:
         path = Path(override).expanduser()
@@ -150,6 +221,59 @@ def _resolve_one(env_key, repo_templates, basenames, kind, explicit=None):
     found = _first_file(_repo_candidates(repo_templates, basenames))
     if found:
         return found, "repo", None
+    # Check user-home installation directories (portable across PCs)
+    home = Path.home()
+    user_patterns = USER_HOME_REMILL_PATTERNS if kind == "remill" else USER_HOME_OPT_PATTERNS
+    user_candidates = []
+    for pattern in user_patterns:
+        for basename in basenames:
+            for name in _platform_names(basename):
+                # Handle glob patterns (* in path)
+                if "*" in pattern:
+                    # Use pathlib's glob directly on the home directory
+                    glob_pattern = pattern.format(name=name)
+                    try:
+                        for match in home.glob(glob_pattern):
+                            if match.is_file() and match.name in _platform_names(basename):
+                                user_candidates.append(match)
+                    except (OSError, ValueError):
+                        pass
+                else:
+                    user_candidates.append(home / pattern.format(name=name))
+    found = _first_file(user_candidates)
+    if found:
+        return found, "user-home", None
+    # Check common Windows installation directories
+    if os.name == "nt":
+        common_dirs = []
+        if kind == "remill":
+            common_dirs = [Path("C:/Users"), Path("C:/Program Files"), Path("C:/Program Files (x86)")]
+        else:
+            common_dirs = [Path("C:/msys64/mingw64/bin"), Path("C:/msys64/usr/bin"),
+                           Path("C:/Program Files/LLVM/bin"), Path("C:/Program Files (x86)/LLVM/bin")]
+        common_candidates = []
+        for d in common_dirs:
+            for basename in basenames:
+                for name in _platform_names(basename):
+                    common_candidates.append(d / name)
+        # Also glob for remill in user directories
+        if kind == "remill":
+            for user_dir in Path("C:/Users").iterdir() if Path("C:/Users").is_dir() else []:
+                if user_dir.is_dir():
+                    for pattern in USER_HOME_REMILL_PATTERNS:
+                        for basename in basenames:
+                            for name in _platform_names(basename):
+                                common_candidates.append(user_dir / pattern.format(name=name))
+        found = _first_file(common_candidates)
+        if found:
+            return found, "user-home", None
+    # Check cached paths from config (portable across sessions on the same PC)
+    cached = _load_cached_paths()
+    cached_path = cached.get(env_key, "").strip() if cached else ""
+    if cached_path:
+        cached_p = Path(cached_path).expanduser()
+        if cached_p.is_file():
+            return cached_p, "cache", None
     found = _which(basenames)
     if found:
         return found, "path", None
@@ -182,7 +306,11 @@ def resolve_tools(refresh=False):
     if exe and opt:
         exe_version = _version_hint(exe, "remill")
         opt_version = _version_hint(opt, "llvm")
-        if exe_version != "unknown" and opt_version != "unknown" and exe_version != opt_version:
+        # Compare major versions only (e.g., "17" matches "17.0.6")
+        exe_major = exe_version.split(".")[0] if exe_version != "unknown" else "unknown"
+        opt_major = opt_version.split(".")[0] if opt_version != "unknown" else "unknown"
+        if (exe_major != "unknown" and opt_major != "unknown"
+                and exe_major != opt_major):
             problems.append("lifter and LLVM major versions differ (%s vs %s); prefer a matching opt-17"
                             % (exe_version, opt_version))
         cache_key = hashlib.sha256(json.dumps({
@@ -216,6 +344,9 @@ def resolve_tools(refresh=False):
         },
     }
     resolve_tools._cache = dict(result)
+    # Cache resolved paths for cross-session and cross-PC portability
+    if result.get("available"):
+        _save_cached_paths(result.get("exe"), result.get("opt"))
     return result
 
 
@@ -421,9 +552,12 @@ def lift_function(client, addr, out_dir=None, timeout=180, max_chars=1800, refre
     proc = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
     verified = False
     verify_error = ""
-    if paths["bc"].is_file():
+    # Prefer .ll (text IR) over .bc (bitcode) — Remill's bitcode format
+    # is not always readable by newer LLVM opt versions.
+    verify_path = paths["ll"] if paths["ll"].is_file() else paths["bc"]
+    if verify_path.is_file():
         try:
-            v = subprocess.run([tools["opt"], "-passes=verify", "-disable-output", str(paths["bc"])],
+            v = subprocess.run([tools["opt"], "-passes=verify", "-disable-output", str(verify_path)],
                                capture_output=True, text=True, timeout=120)
             verified = (v.returncode == 0)
             verify_error = (v.stderr or v.stdout or "").strip()

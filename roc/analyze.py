@@ -4,6 +4,7 @@ Each row: addr, size, relocs (offsets of 4-byte fields the loader patches,
 masked when diffing), calls (direct call count; 0 = leaf), call_targets/callers,
 unit (RTTI class or seg_<64 KB block>).
 """
+import hashlib
 import json
 import pefile
 import re
@@ -36,31 +37,166 @@ def reloc_sites(pe):
     return sorted(base + e.rva for block in getattr(pe, "DIRECTORY_ENTRY_BASERELOC", [])
                   for e in block.entries if e.type == 3)
 
-def find_functions(code, text_va, seeds, relocs, proven=(), keep=None):
+def known_data(client, read):
+    """Reviewed non-code spans, pinned to the exact binary bytes."""
+    path = ROOT / "research" / "function-data.json"
+    spans = []
+    for row in json.loads(path.read_text()).get(client, []) if path.exists() else []:
+        start = int(row["addr"], 16)
+        if hashlib.sha256(read(start, row["size"])).hexdigest() != row["sha256"]:
+            raise ValueError("Reviewed data bytes changed: %s %s" % (client, row["addr"]))
+        spans.append((start, row["size"]))
+    return spans
+
+
+def seh_tail_entries(code, text_va, start, md):
+    """Tail entries from a tiny frame-free dispatcher to an aligned SEH prologue.
+
+    Inspect every local path; calls, stack changes, stores, nonvolatile writes
+    and branches outside the 64-byte dispatcher invalidate the observation.
+    This catches adjacent methods without an int3 gap (ToneMap's PS14/PS20).
+    """
+    todo, seen, entries = [start], set(), set()
+    while todo:
+        address = todo.pop()
+        if address in seen:
+            continue
+        if not start <= address < min(start + 64, text_va + len(code)):
+            return set()
+        seen.add(address)
+        insn = next(md.disasm_lite(code[address - text_va:address - text_va + 15], address, 1), None)
+        if insn is None:
+            return set()
+        _, size, mnemonic, operands = insn
+        if mnemonic == "ret":
+            continue
+        if mnemonic == "jmp":
+            if not operands.startswith("0x"):
+                return set()
+            target = int(operands, 16)
+            offset = target - text_va
+            prefix = code[offset:offset + 21] if 0 <= offset < len(code) else b""
+            if (target & 15 or len(prefix) != 21 or prefix[:3] != b"\x6a\xff\x68"
+                    or prefix[7:] != b"\x64\xa1\0\0\0\0\x50\x64\x89\x25\0\0\0\0"
+                    or not text_va <= int.from_bytes(prefix[3:7], "little") < text_va + len(code)):
+                return set()
+            entries.add(target)
+            continue
+        if mnemonic.startswith("j"):
+            if not operands.startswith("0x"):
+                return set()
+            todo.append(int(operands, 16))
+        elif mnemonic not in ("cmp", "test", "nop"):
+            if (mnemonic not in ("mov", "lea", "add", "sub", "and", "or", "xor")
+                    or operands.split(",", 1)[0] not in ("eax", "ecx", "edx")):
+                return set()
+        todo.append(address + size)
+    return entries
+
+
+def embedded_catch_entries(code, text_va, starts, conts, branches, called, protected, md):
+    """Catch labels sharing a framed parent's normal exit are not new functions."""
+    order = sorted(starts)
+    merged = {}
+    for continuation, last_mov in conts.items():
+        parent_index = bisect_left(order, continuation + 1) - 1
+        handler_index = bisect_left(order, last_mov + 1) - 1
+        if parent_index < 0 or handler_index != parent_index + 1:
+            continue
+        parent, handler = order[parent_index], order[handler_index]
+        stop = order[handler_index + 1] if handler_index + 1 < len(order) else text_va + len(code)
+        if (parent in protected or handler in protected or handler in called or handler % 16 == 0
+                or code[handler - text_va - 1] == 0xCC or stop - parent > 32768):
+            continue
+        prefix = list(md.disasm_lite(code[parent - text_va:handler - text_va], parent))
+        if (len(prefix) < 2 or prefix[0][2:] != ("push", "ebp")
+                or prefix[-1][0] + prefix[-1][1] != handler
+                or prefix[1][2] not in ("mov", "lea") or not prefix[1][3].startswith("ebp,")
+                or not any("fs:[0]" in op for _, _, _, op in prefix[:24])
+                or any(m.startswith("ret") for _, _, m, _ in prefix)):
+            continue
+        handler_body = list(md.disasm_lite(code[handler - text_va:last_mov + 6 - text_va], handler))
+        if (len(handler_body) < 2 or handler_body[-2][0] != last_mov
+                or handler_body[-1][0:3] != (last_mov + 5, 1, "ret")
+                or not any("[ebp" in op for _, _, _, op in handler_body)
+                or any((m == "push" and op == "ebp") or op.startswith("ebp,")
+                       for _, _, m, op in handler_body)):
+            continue
+        exits = [target for source, target in branches if parent <= source < handler
+                 and last_mov + 6 <= target < stop]
+        if not exits:
+            continue
+        tail = list(md.disasm_lite(code[last_mov + 6 - text_va:stop - text_va], last_mov + 6))
+        epilogues = [a for (a, _, m, op), (_, _, m2, op2), (_, _, m3, _) in zip(tail, tail[1:], tail[2:])
+                     if (m, op, m2, op2) == ("mov", "esp, ebp", "pop", "ebp") and m3 == "ret"]
+        decoded = {a: (size, m, op) for a, size, m, op in tail}
+        todo, seen, valid, reached_exit = list(exits), set(), True, False
+        while todo and valid:
+            address = todo.pop()
+            if address in seen:
+                continue
+            seen.add(address)
+            if address in epilogues:
+                reached_exit = True
+                continue
+            if address not in decoded:
+                valid = False
+                break
+            size, mnemonic, operands = decoded[address]
+            if (mnemonic.startswith("ret") or mnemonic in ("int3", "hlt", "ud2")
+                    or (mnemonic == "push" and operands == "ebp")
+                    or (mnemonic in ("mov", "lea", "pop") and operands.split(",")[0] == "ebp")):
+                valid = False
+                break
+            if mnemonic.startswith(("j", "loop")):
+                if not operands.startswith("0x"):
+                    valid = False
+                    break
+                todo.append(int(operands, 16))
+                if mnemonic == "jmp":
+                    continue
+            todo.append(address + size)
+        if not valid or not reached_exit:
+            continue
+        merged[handler] = dict(parent=parent, continuation=continuation, normal_entries=sorted(set(exits)))
+    return merged
+
+
+def find_functions(code, text_va, seeds, relocs, proven=(), keep=None, data=(), locked=()):
     """Recursive descent from seeds over .text (code at text_va).
     New starts: direct call targets and `push/mov offset fn` immediates.
+    Tiny frame-free dispatchers also seed aligned, independently framed SEH
+    tail entries, even when the preceding method has no int3 gap.
     Switch jump tables are followed so their case blocks count as reached.
     MSVC aligns functions to 16 after int3 padding, so aligned non-cc bytes
     after cc also seed (unless a jump table sits there).
     With `keep` (a set of trusted starts), a start that reached code falls into
     (no ret/jmp/call before it) or that a catch funclet returns to is an interior
     label, and is dropped unless it is a call target or in keep;
-    trailing jump tables then no longer make a function "bad"."""
+    trailing jump tables then no longer make a function "bad".
+    Reviewed data spans remain in the inventory as data, without seeding code."""
     end = text_va + len(code)
+    data = dict(data)
+    in_data = lambda va: any(start <= va < start + size for start, size in data.items())
     reloc_set = set(relocs)
     rd = lambda va: int.from_bytes(code[va - text_va:va - text_va + 4], "little")
     pointed = set(seeds)  # entry + pointers from data: real starts even if a decode straddles them
     seeds = pointed | {text_va + i for i in range(16, len(code), 16)
                           if code[i - 1] == 0xCC and code[i] != 0xCC
                           and text_va + i not in reloc_set}
-    starts = {s for s in seeds if text_va <= s < end}
+    starts = {s for s in seeds if text_va <= s < end and not in_data(s)} | set(data)
     md = Cs(CS_ARCH_X86, CS_MODE_32)
-    seen, calls, work, falls, called, tables, conts = set(), set(), list(starts), set(), set(), set(), {}
-    straddled, callbacks = set(), set()
+    seen, calls, work, falls, called, tables, conts = set(data), set(), list(starts - data.keys()), set(), set(), set(), {}
+    straddled, branches, callbacks = set(), [], set()
     while work:
         a = work.pop()
+        if a in starts:
+            entries = seh_tail_entries(code, text_va, a, md)
+            starts.update(t for t in entries if not in_data(t))
+            called.update(entries)
+            work.extend(entries - seen)
         cont = None
-        while text_va <= a < end and a not in seen:
+        while text_va <= a < end and a not in seen and (not data or not in_data(a)):
             insn = next(md.disasm_lite(code[a - text_va:a - text_va + 15], a, 1), None)
             if insn is None:
                 starts.discard(a)
@@ -91,13 +227,14 @@ def find_functions(code, text_va, seeds, relocs, proven=(), keep=None):
                 t = int(op, 16)
                 if text_va <= t < end:
                     starts.add(t)
-                    callbacks.add(t)
                     work.append(t)
                     calls.add(a)
                     called.add(t)
             elif mnem.startswith(("j", "loop")):
                 if op.startswith("0x"):
-                    work.append(int(op, 16))
+                    target = int(op, 16)
+                    work.append(target)
+                    branches.append((a, target))
                 if mnem == "jmp":
                     break
                 falls.add(a + size)
@@ -115,21 +252,28 @@ def find_functions(code, text_va, seeds, relocs, proven=(), keep=None):
         invalid = straddled - called - pointed - callbacks
         starts -= invalid
         proven = [(start, size) for start, size in proven if start not in invalid]
+    embedded = embedded_catch_entries(code, text_va, starts & seen, conts, branches, called,
+                                      set(locked) | {start for start, _ in proven}, md) if keep is not None else {}
+    starts -= embedded.keys()
     # Proven extents (a compiled function matched these bytes exactly): no start
     # inside one, and whatever follows it starts a new function.
     for start, size in proven:
+        if in_data(start):
+            continue  # An old source score cannot turn reviewed data back into code.
         starts -= {s for s in starts if start < s < start + size}
         starts.add(start)
         seen.add(start)
         if start + size < end and code[start + size - text_va] != 0xCC:
             starts.add(start + size)
             seen.add(start + size)
+    starts = {s for s in starts if not in_data(s)} | set(data)
     order = sorted(s for s in starts if s in seen) + [end]
     call_sites = sorted(calls)
     tables = sorted(tables) if keep is not None else []
     out = []
     for start, nxt in zip(order, order[1:]):
-        body = code[start - text_va:nxt - text_va].rstrip(b"\xcc")  # MSVC int3 padding
+        body = (code[start - text_va:start - text_va + data[start]] if start in data
+                else code[start - text_va:nxt - text_va].rstrip(b"\xcc"))  # MSVC int3 padding
         if not body:
             continue
         stop = start + len(body)
@@ -143,9 +287,14 @@ def find_functions(code, text_va, seeds, relocs, proven=(), keep=None):
             "size": len(body),
             "relocs": rel,
             "calls": bisect_left(call_sites, stop) - bisect_left(call_sites, start),
-            "kind": "eh" if _catch_funclet(code, text_va, start, body, reloc_set, rd)
+            "kind": "data" if start in data else "eh" if _catch_funclet(code, text_va, start, body, reloc_set, rd)
                     else kind_of(body[:code_len], [r for r in rel if r < code_len]),
         })
+        joined = [dict(handler="%08x" % handler, continuation="%08x" % item["continuation"],
+                       normal_entries=["%08x" % va for va in item["normal_entries"]])
+                  for handler, item in embedded.items() if item["parent"] == start]
+        if joined:
+            out[-1]["embedded_catches"] = joined
     if keep is not None:
         from roc.boundaries import branch_merges
         repairs = branch_merges(code, text_va, out, pointed | called | callbacks)
@@ -209,6 +358,8 @@ def kind_of(code, relocs):
     if len(code) <= 4 and not insns[-1][2].startswith(("ret", "jmp")):
         return "bad"  # tiny and never returns: data bytes, not code
     shape = " ; ".join(re.sub(r"0x[0-9a-f]+", "N", "%s %s" % (m, o)).strip() for _, _, m, o in insns)
+    if shape.count("add byte ptr [eax], al") >= 8:
+        return "bad"  # 00 00 run density: a data table (GUID/dispatch/static array), not code
     if any(p.search(shape) for p in GENERATED):
         return "gen"
     for kind, p in THUNKS:
@@ -253,6 +404,116 @@ def rtti_vtables(read, relocs, in_text):
         out.append((cls, site + 4, fns))
     return out
 
+def msvc_unwind_actions(read, relocs, in_text):
+    """Action provenance from validated x86 MSVC FuncInfo/unwind maps."""
+    sites = set(relocs)
+    actions = {}
+    for site in sorted(sites):
+        if not in_text(site) or read(site - 1, 1) != b"\xb8" or read(site + 4, 1) != b"\xe9":
+            continue
+        info = int.from_bytes(read(site, 4), "little")
+        header = read(info, 12)
+        if len(header) != 12 or header[:4] != b"\x22\x05\x93\x19" or info + 8 not in sites:
+            continue
+        count = int.from_bytes(header[4:8], "little", signed=True)
+        table = int.from_bytes(header[8:12], "little")
+        if count <= 0:
+            continue
+        entries = read(table, count * 8)
+        if len(entries) != count * 8:
+            continue
+        parsed = [(int.from_bytes(entries[i:i + 4], "little", signed=True),
+                   int.from_bytes(entries[i + 4:i + 8], "little")) for i in range(0, len(entries), 8)]
+        if any(not -1 <= state < index or (action and
+               (not in_text(action) or table + index * 8 + 4 not in sites))
+               for index, (state, action) in enumerate(parsed)):
+            continue
+        for index, (state, action) in enumerate(parsed):
+            if action:
+                actions.setdefault(action, []).append(dict(handler=site - 1, func_info=info,
+                    unwind_map=table, state=index, to_state=state))
+    return actions
+
+
+def mark_unwind_actions(funcs, actions, read):
+    """Keep map provenance; classify only actions that require the parent's EBP."""
+    md = Cs(CS_ARCH_X86, CS_MODE_32)
+    for row in funcs:
+        start = int(row["addr"], 16)
+        if start not in actions or row["kind"] == "data":
+            continue
+        row["unwind_context"] = actions[start]
+        insns = list(md.disasm_lite(read(start, row["size"]), start))
+        if row["kind"] == "code" and any("[ebp" in op for _, _, _, op in insns) and not any(
+                (m == "push" and op == "ebp") or op.startswith("ebp,") for _, _, m, op in insns):
+            row["kind"] = "eh"
+
+
+def msvc_catch_handlers(read, relocs, in_text):
+    """Catch entry provenance from validated x86 MSVC FuncInfo try maps."""
+    sites, found = set(relocs), {}
+    for site in sorted(sites):
+        if not in_text(site) or read(site-1, 1) != b"\xb8" or read(site+4, 1) != b"\xe9":
+            continue
+        info = int.from_bytes(read(site, 4), "little")
+        header = read(info, 20)
+        if len(header) != 20 or header[:4] != b"\x22\x05\x93\x19" or info+16 not in sites:
+            continue
+        states = int.from_bytes(header[4:8], "little", signed=True)
+        count = int.from_bytes(header[12:16], "little", signed=True)
+        table = int.from_bytes(header[16:20], "little")
+        if not 0 < states <= 65536 or not 0 < count <= 4096:
+            continue
+        entries = read(table, count*20)
+        if len(entries) != count*20:
+            continue
+        pending, valid = [], True
+        for index in range(count):
+            entry = entries[index*20:index*20+20]
+            low, high, catch_high, catches = [int.from_bytes(entry[i:i+4], "little", signed=True)
+                                            for i in range(0, 16, 4)]
+            handlers = int.from_bytes(entry[16:20], "little")
+            if (not 0 <= low <= high <= catch_high < states or not 0 < catches <= 1024
+                    or table+index*20+16 not in sites):
+                valid = False
+                break
+            records = read(handlers, catches*16)
+            if len(records) != catches*16:
+                valid = False
+                break
+            for catch in range(catches):
+                record = records[catch*16:catch*16+16]
+                descriptor = int.from_bytes(record[4:8], "little")
+                address = int.from_bytes(record[12:16], "little")
+                if (not in_text(address) or handlers+catch*16+12 not in sites
+                        or (descriptor and (handlers+catch*16+4 not in sites or len(read(descriptor, 8)) != 8))):
+                    valid = False
+                    break
+                pending.append((address, dict(handler=site-1, func_info=info, try_map=table,
+                    handler_array=handlers, try_low=low, try_high=high, catch_high=catch_high,
+                    catch_type=descriptor, catch_object=int.from_bytes(record[8:12], "little", signed=True))))
+            if not valid:
+                break
+        if valid:
+            for address, context in pending:
+                found.setdefault(address, []).append(context)
+    return found
+
+
+def mark_catch_handlers(funcs, handlers, read):
+    """A mapped catch using its parent's EBP is not an independent function."""
+    md = Cs(CS_ARCH_X86, CS_MODE_32)
+    for row in funcs:
+        start = int(row["addr"], 16)
+        if start not in handlers or row["kind"] == "data":
+            continue
+        row["catch_context"] = handlers[start]
+        insns = list(md.disasm_lite(read(start, row["size"]), start))
+        if any("[ebp" in op for _, _, _, op in insns) and not any(
+                (m == "push" and op == "ebp") or op.startswith("ebp,") for _, _, m, op in insns):
+            row["kind"] = "eh"
+
+
 def rtti_classes(read, relocs, in_text):
     """{function va: class} from MSVC vtables.
     A function shared by several vtables goes to the smallest one (the base)."""
@@ -283,13 +544,132 @@ def mark_matched_code(funcs, matched):
         if f["addr"] in matched and f["kind"] == "bad":
             f["kind"] = "code"
 
+def entry_ecx_constructors(body, start, imports):
+    """Imported constructors reached from entry ECX before the first branch.
+
+    These are observed addresses, not a declaration of the complete object layout.
+    Loads through a pointer lose their origin; calls clobber volatile registers.
+    """
+    from capstone.x86_const import X86_OP_REG, X86_OP_MEM, X86_OP_IMM
+    md = Cs(CS_ARCH_X86, CS_MODE_32)
+    md.detail = True
+    origins, found = {"ecx": 0}, []
+    for insn in md.disasm(body, start):
+        if insn.mnemonic in STOP or insn.mnemonic.startswith(("j", "loop")):
+            break
+        ops, derived = insn.operands, None
+        if insn.mnemonic == "call":
+            if ops[0].type == X86_OP_MEM and not ops[0].mem.base and not ops[0].mem.index:
+                name = imports.get(ops[0].mem.disp, "")
+                if name.rsplit("!", 1)[-1].startswith("??0") and origins.get("ecx", -1) >= 0:
+                    found.append(dict(offset=origins["ecx"], constructor=name[:256], call="%08x" % insn.address))
+            for reg in ("eax", "ecx", "edx"):
+                origins.pop(reg, None)
+            if len(found) == 16:
+                break
+            continue
+        if len(ops) == 2 and ops[0].type == X86_OP_REG and ops[0].size == 4:
+            dest = insn.reg_name(ops[0].reg)
+            if insn.mnemonic == "mov" and ops[1].type == X86_OP_REG:
+                derived = origins.get(insn.reg_name(ops[1].reg))
+            elif insn.mnemonic == "lea" and ops[1].type == X86_OP_MEM and not ops[1].mem.index:
+                origin = origins.get(insn.reg_name(ops[1].mem.base))
+                if origin is not None:
+                    derived = origin + ops[1].mem.disp
+            elif insn.mnemonic in ("add", "sub") and ops[1].type == X86_OP_IMM and dest in origins:
+                derived = origins[dest] + ops[1].imm * (1 if insn.mnemonic == "add" else -1)
+        for reg in insn.regs_access()[1]:
+            name = insn.reg_name(reg)
+            if name in ("si", "di", "bp", "sp"):
+                name = "e" + name
+            elif len(name) == 2 and name[0] in "abcd" and name[1] in "lhx":
+                name = "e" + name[0] + "x"
+            origins.pop(name, None)
+        if derived is not None:
+            origins[dest] = derived
+    return found
+
+
+def virtual_dispatch_slots(body, start):
+    """Candidate vtable slots, requiring the same object in ECX at the call.
+
+    Keep provenance inside basic blocks; these clues do not identify a class.
+    """
+    from capstone.x86_const import X86_OP_REG, X86_OP_MEM, X86_OP_IMM
+    from capstone import x86_const
+    md = Cs(CS_ARCH_X86, CS_MODE_32)
+    md.detail = True
+    instructions = list(md.disasm(body, start))
+    joins = {i.operands[0].imm for i in instructions
+             if i.mnemonic.startswith(("j", "loop")) and i.operands
+             and i.operands[0].type == X86_OP_IMM}
+    registers = {name: getattr(x86_const, "X86_REG_" + name.upper())
+                 for name in ("eax", "ebx", "ecx", "edx", "esi", "edi", "ebp", "esp")}
+    values = {reg: (start, reg) for reg in registers.values()}
+    tables, methods, found = {}, {}, []
+    for insn in instructions:
+        if insn.address in joins:
+            tables.clear()
+            methods.clear()
+            values = {reg: (insn.address, reg) for reg in registers.values()}
+        ops = insn.operands
+        if insn.mnemonic in ("call", "jmp") and ops:
+            method = None
+            if ops[0].type == X86_OP_REG:
+                method = methods.get(ops[0].reg)
+            elif (ops[0].type == X86_OP_MEM and ops[0].mem.base in tables
+                  and not ops[0].mem.index and ops[0].mem.disp >= 0
+                  and ops[0].mem.disp % 4 == 0):
+                method = (tables[ops[0].mem.base], ops[0].mem.disp // 4)
+            if method is not None and method[0] == values[registers["ecx"]]:
+                found.append(method[1])
+        table, method, value = None, None, None
+        if insn.mnemonic == "mov" and len(ops) == 2 and ops[0].type == X86_OP_REG and ops[0].size == 4:
+            if ops[1].type == X86_OP_REG:
+                table, method = tables.get(ops[1].reg), methods.get(ops[1].reg)
+                value = values.get(ops[1].reg)
+            elif ops[1].type == X86_OP_MEM and not ops[1].mem.index:
+                mem = ops[1].mem
+                if mem.base in tables and mem.disp >= 0 and mem.disp % 4 == 0:
+                    method = (tables[mem.base], mem.disp // 4)
+                elif mem.base in values and mem.disp == 0:
+                    table = values[mem.base]
+        for reg in insn.regs_access()[1]:
+            name = insn.reg_name(reg)
+            if name in ("si", "di", "bp", "sp"):
+                name = "e" + name
+            elif len(name) == 2 and name[0] in "abcd" and name[1] in "lhx":
+                name = "e" + name[0] + "x"
+            full = registers.get(name)
+            if full is not None:
+                tables.pop(full, None)
+                methods.pop(full, None)
+                values[full] = (insn.address, full)
+        if value is not None:
+            values[ops[0].reg] = value
+        if table is not None:
+            tables[ops[0].reg] = table
+        if method is not None:
+            methods[ops[0].reg] = method
+        if insn.mnemonic == "call":
+            for name in ("eax", "ecx", "edx"):
+                reg = registers[name]
+                tables.pop(reg, None)
+                methods.pop(reg, None)
+                values[reg] = (insn.address, reg)
+        if insn.mnemonic in STOP or insn.mnemonic.startswith(("j", "loop")):
+            tables.clear()
+            methods.clear()
+            values = {reg: (insn.address, reg) for reg in registers.values()}
+    return sorted(set(found))[:8]
+
+
 def binary_facts(pe, image, base, body, start, imports, local_targets=None):
     """Small structured clues from one function; bounded for prompt/index use."""
     md = Cs(CS_ARCH_X86, CS_MODE_32)
     data_refs, strings, imported_names, external_calls, global_reads, global_writes = [], [], [], [], [], []
-    virtual_slots, stack_args, branches, constants = [], [], 0, []
+    stack_args, branches, constants = [], 0, []
     this_reads, this_writes = [], []
-    vtable_regs = set()
     seen = set()
     for insn in md.disasm(body, start):
         text = insn.op_str.lower()
@@ -302,20 +682,10 @@ def binary_facts(pe, image, base, body, start, imports, local_targets=None):
                     external_calls.append(address)
         for raw in re.findall(r"\[ecx(?: \+ (0x[0-9a-f]+|\d+))?\]", text):
             offset = int(raw or "0", 0)
-            (this_writes if insn.mnemonic == "mov" and text.startswith("mov") and text.split(",", 1)[0].endswith("]")
+            (this_writes if insn.mnemonic == "mov" and text.split(",", 1)[0].endswith("]")
              else this_reads).append(offset)
         if insn.mnemonic.startswith(("j", "loop")):
             branches += 1
-        mload = re.match(r"mov\s+(e[a-d]x|e[sd]i|e[bs]p),\s*dword ptr \[ecx\]", text)
-        if mload:
-            vtable_regs.add(mload.group(1))
-        if insn.mnemonic in ("call", "jmp") and vtable_regs:
-            m = re.search(r"\[(%s) \+ (0x[0-9a-f]+|\d+)\]" % "|".join(vtable_regs), text)
-            if m:
-                try:
-                    virtual_slots.append(int(m.group(1), 0) // 4)
-                except ValueError:
-                    pass
         for raw in re.findall(r"0x[0-9a-f]+", text):
             value = int(raw, 16)
             if value in imports:
@@ -330,10 +700,14 @@ def binary_facts(pe, image, base, body, start, imports, local_targets=None):
             data_refs.append(raw)
             (global_writes if insn.mnemonic == "mov" and text.split(",", 1)[0].startswith("dword ptr [")
              else global_reads).append(raw)
-            chunk = image[value - base:value - base + 128]
-            match = PRINTABLE.search(chunk)
-            if match:
-                strings.append(match.group().decode("latin-1"))
+            if not ((insn.mnemonic == "push" and text == raw)
+                    or (insn.mnemonic == "mov" and text.rsplit(",", 1)[-1].strip() == raw)
+                    or (insn.mnemonic == "lea" and text.endswith("[" + raw + "]"))):
+                continue  # pointer literals only: code destinations and float loads are not strings
+            chunk = image[value - base:value - base + 256]
+            literal, end, _ = chunk.partition(b"\0")
+            if end and len(literal) >= 4 and all(c in (9, 10, 13) or 32 <= c < 127 for c in literal):
+                strings.append(literal[:128].decode("ascii"))
         stack_args.extend(int(x, 0) for x in re.findall(r"\[esp \+ (0x[0-9a-f]+|\d+)\]", text))
         for raw in re.findall(r"(?<![+\w])-?\b\d+\b", text):
             try:
@@ -342,22 +716,46 @@ def binary_facts(pe, image, base, body, start, imports, local_targets=None):
                     constants.append(n)
             except ValueError:
                 pass
+    returns = [i for i in md.disasm(body, start) if i.mnemonic == "ret"]
     return {
         "imports": sorted(set(imported_names))[:12],
         "external_calls": sorted(set(external_calls))[:12],
-        "strings": sorted(set(s for s in strings if len(s) >= 4))[:12],
+        "strings": list(dict.fromkeys(strings))[:12],
+        "entry_ecx_constructors": entry_ecx_constructors(body, start, imports),
         "data_refs": sorted(set(data_refs))[:16],
         "global_reads": sorted(set(global_reads))[:16],
         "global_writes": sorted(set(global_writes))[:16],
-        "virtual_slots": sorted(set(virtual_slots))[:8],
+        "virtual_slots": virtual_dispatch_slots(body, start),
         "stack_args": sorted(set(stack_args))[:8],
         "this_reads": sorted(set(this_reads))[:16],
         "this_writes": sorted(set(this_writes))[:16],
-        "calling_convention": "callee" if any(i.mnemonic == "ret" and i.op_str.strip()
-                                                 for i in md.disasm(body, start)) else "caller",
+        "calling_convention": "callee" if any(i.op_str.strip() for i in returns) else "caller",
+        "return_stack_bytes": sorted({int(i.op_str or "0", 0) for i in returns}),
         "branches": branches,
         "constants": sorted(set(constants))[:16],
     }
+
+def import_symbols(pe, functions, read):
+    """Keep named/ordinal imports and exact one-instruction IAT jump stubs."""
+    imports = {}
+    for dll in getattr(pe, "DIRECTORY_ENTRY_IMPORT", []):
+        for item in dll.imports:
+            if item.address:
+                name = item.name.decode("latin-1") if item.name else "#%d" % item.ordinal
+                imports[item.address] = "%s!%s" % (dll.dll.decode("latin-1"), name)
+    thunks = {}
+    for function in functions:
+        if function["size"] != 6 or function.get("kind") in ("data", "bad", "eh"):
+            continue
+        start = int(function["addr"], 16)
+        body = read(start, 6)
+        if len(body) == 6 and body[:2] == b"\xff\x25":
+            slot = int.from_bytes(body[2:], "little")
+            if slot in imports:
+                thunks[start] = imports[slot]
+    imports.update(thunks)
+    return imports
+
 
 def analyze(client, exe):
     pe = pefile.PE(str(exe))
@@ -369,11 +767,6 @@ def analyze(client, exe):
     image = pe.get_memory_mapped_image()
     read = lambda va, n: image[va - base:va - base + n] if 0 <= va - base < len(image) else b""
     relocs = reloc_sites(pe)
-    imports = {}
-    for dll in getattr(pe, "DIRECTORY_ENTRY_IMPORT", []):
-        for item in dll.imports:
-            if item.address and item.name:
-                imports[item.address] = "%s!%s" % (dll.dll.decode("latin-1"), item.name.decode("latin-1"))
     seeds = {base + pe.OPTIONAL_HEADER.AddressOfEntryPoint}
     # Pointers stored outside .text (vtables, callback tables) into .text.
     seeds.update(v for v in (int.from_bytes(read(s, 4), "little") for s in relocs if not in_text(s))
@@ -387,11 +780,16 @@ def analyze(client, exe):
     # Trusted starts a fallthrough cannot retire: entry, vtable slots, proven extents, exact matches.
     keep = ({base + pe.OPTIONAL_HEADER.AddressOfEntryPoint} | {s for s, _ in proven} | {int(a, 16) for a in matched}
             | {fn for _, _, fns in rtti_vtables(read, relocs, in_text) for fn in fns})
-    funcs = find_functions(code, text_va, seeds, relocs, proven, keep)
+    funcs = find_functions(code, text_va, seeds, relocs, proven, keep, known_data(client, read),
+                           locked={int(addr, 16) for addr in matched})
+    imports = import_symbols(pe, funcs, read)
     # Persist direct-call edges so source retrieval can use neighboring functions.
     by_addr = {int(f["addr"], 16): f for f in funcs}
     md = Cs(CS_ARCH_X86, CS_MODE_32)
     for f in funcs:
+        if f["kind"] == "data":
+            f.update(call_targets=[], shape="")
+            continue
         start = int(f["addr"], 16)
         body = code[start - text_va:start - text_va + f["size"]]
         targets = []
@@ -410,14 +808,22 @@ def analyze(client, exe):
         f["callers"] = callers.get(f["addr"], [])
         start = int(f["addr"], 16)
         body = code[start - text_va:start - text_va + f["size"]]
-        f.update(binary_facts(pe, image, base, body, start, imports, by_addr))
+        if f["kind"] != "data":
+            f.update(binary_facts(pe, image, base, body, start, imports, by_addr))
+    mark_unwind_actions(funcs, msvc_unwind_actions(read, relocs, in_text), read)
+    mark_catch_handlers(funcs, msvc_catch_handlers(read, relocs, in_text), read)
     classes = rtti_classes(read, relocs, in_text)
     assign_units(funcs, classes)
     siblings = {}
     for f in funcs:
+        if f["kind"] == "data":
+            continue
         siblings.setdefault(f["unit"], []).append(f["addr"])
     sibling_index = {unit: {addr: i for i, addr in enumerate(peers)} for unit, peers in siblings.items()}
     for f in funcs:
+        if f["kind"] == "data":
+            f["siblings"] = []
+            continue
         peers = siblings.get(f["unit"], [])
         index = sibling_index[f["unit"]][f["addr"]]
         f["siblings"] = peers[max(0, index - 2):index] + peers[index + 1:index + 3]
@@ -426,7 +832,7 @@ def analyze(client, exe):
     if libmatch.exists():
         runtime = set(json.loads(libmatch.read_text()))
         for f in funcs:
-            if f["addr"] in runtime:
+            if f["addr"] in runtime and f["kind"] != "data":
                 f["kind"] = "gen"
     # Anything already byte-matched by real source is code, whatever a pattern guessed.
     mark_matched_code(funcs, matched)

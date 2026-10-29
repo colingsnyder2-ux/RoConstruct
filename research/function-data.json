@@ -1,0 +1,120 @@
+{
+  "2008-06": [
+    {
+      "addr": "0042dda4",
+      "size": 48,
+      "sha256": "6f1c536ff5090fc3fa58ecf0c014c4a7d27dd194e692b3e745d48627f5a73521",
+      "reason": "12 relocated switch targets, dispatched by jmp [ecx*4+0042dda4] at 0042db59; targets are case blocks."
+    },
+    {
+      "addr": "0069eb20",
+      "size": 176,
+      "sha256": "bfc8973bffe9f5e62a00b37a18cc3f40c6384f4323e433af9b0cfe2086a94324",
+      "reason": "DirectInput mouse object descriptors: DIDATAFORMAT at 0084ff0c specifies 11 records of 16 bytes, 20-byte mouse state."
+    },
+    {
+      "addr": "0069ebd0",
+      "size": 4096,
+      "sha256": "a609d0159dc0630b16fd9d4958c5a69207762135959362dc1098e3e3163b2413",
+      "reason": "DirectInput keyboard object descriptors: DIDATAFORMAT at 00850114 specifies 256 records of 16 bytes, 256-byte keyboard state."
+    }
+  ],
+  "2007-08": [
+    {
+      "addr": "0072a670",
+      "size": 4096,
+      "sha256": "7bdda3e00f40856acc9d272d7de6c76c580d16c1a313a3cf5e426f3d4c69b1fc",
+      "reason": "DirectInput keyboard descriptors: DIDATAFORMAT at 007e55bc specifies 256 16-byte records, 256-byte state; complete GUID_Key and instance-index sequence verified."
+    },
+    {
+      "addr": "0072a5c0",
+      "size": 176,
+      "sha256": "cc3c7ea0687c9ce24e00ff4d258c4e3dc4a4a9bc8fe6a49ad5163399c61f506b",
+      "reason": "DirectInput mouse descriptors: DIDATAFORMAT at 007e53b4 specifies 11 records of 16 bytes and 20-byte state; all GUID values, offsets, type/instance and flags match reviewed 2008 format."
+    }
+  ],
+  "2009-06": [
+    {
+      "addr": "00716e20",
+      "size": 4096,
+      "sha256": "b046ecf344e25a6fcd622dddf3eaff6c2c6d275a7ea09be294ca339b4014b659",
+      "reason": "DirectInput keyboard descriptors: DIDATAFORMAT at 008f1154 specifies 256 16-byte records, 256-byte state; complete GUID_Key and instance-index sequence verified."
+    },
+    {
+      "addr": "00716d70",
+      "size": 176,
+      "sha256": "dfd714b233d32e5f724c4d2cb32f6cf8332a06b00a628e1f0293d8718b6363c8",
+      "reason": "DirectInput mouse descriptors: DIDATAFORMAT at 008f0f4c specifies 11 records of 16 bytes and 20-byte state; all GUID values, offsets, type/instance and flags match reviewed 2008 format."
+    }
+  ],
+  "2010-06": [
+    {
+      "addr": "007a68e0",
+      "size": 4096,
+      "sha256": "3d4f437773354f5d3e67c451524d92ccdc999eb05edab7dd298fd3d6d1c9bbb3",
+      "reason": "DirectInput keyboard descriptors: DIDATAFORMAT at 00a5591c specifies 256 16-byte records, 256-byte state; complete GUID_Key and instance-index sequence verified."
+    },
+    {
+      "addr": "007a6830",
+      "size": 176,
+      "sha256": "ffbd5717de5089ab89fa8cc8a3944cf89e5d1a309f3f601e1118bb8bc6136b68",
+      "reason": "DirectInput mouse descriptors: DIDATAFORMAT at 00a55714 specifies 11 records of 16 bytes and 20-byte state; all GUID values, offsets, type/instance and flags match reviewed 2008 format."
+    }
+  ],
+  "2011-06": [
+    {
+      "addr": "00808f20",
+      "size": 4096,
+      "sha256": "1877e2b12e006b4bfe262315d06e90d5d5855ae0df756be969b85a8d2fc32676",
+      "reason": "DirectInput keyboard descriptors: DIDATAFORMAT at 00ac150c specifies 256 16-byte records, 256-byte state; complete GUID_Key and instance-index sequence verified."
+    },
+    {
+      "addr": "00808e70",
+      "size": 176,
+      "sha256": "6dd061dac215fc3a8390c41a435161cade0a8ed47fc5191ec125d928c307bcc9",
+      "reason": "DirectInput mouse descriptors: DIDATAFORMAT at 00ac1304 specifies 11 records of 16 bytes and 20-byte state; all GUID values, offsets, type/instance and flags match reviewed 2008 format."
+    }
+  ],
+  "2012-06": [
+    {
+      "addr": "00980fd0",
+      "size": 4096,
+      "sha256": "f983a4a1018283bcb082abcc1f1912239736dd1c5403d1be34dff6f3041e6a98",
+      "reason": "DirectInput keyboard descriptors: DIDATAFORMAT at 00c0cbdc specifies 256 16-byte records, 256-byte state; complete GUID_Key and instance-index sequence verified."
+    },
+    {
+      "addr": "00980f20",
+      "size": 176,
+      "sha256": "118d3e8e7cd9bb46354f44aae95c5ad042f0eeae77fd0f26592fad2313cbd409",
+      "reason": "DirectInput mouse descriptors: DIDATAFORMAT at 00c0c9d4 specifies 11 records of 16 bytes and 20-byte state; all GUID values, offsets, type/instance and flags match reviewed 2008 format."
+    }
+  ],
+  "2007-03": [
+    {
+      "addr": "0072ac50",
+      "size": 176,
+      "sha256": "6e866a6e4ff7f694950f8d0a00a2bc5848cbb4468a5773188a031b197e3f60ef",
+      "reason": "DirectInput mouse descriptors: DIDATAFORMAT at 007e6fec specifies 11 records of 16 bytes and 20-byte state; all GUID values, offsets, type/instance and flags match reviewed 2008 format."
+    },
+    {
+      "addr": "0072ad00",
+      "size": 4096,
+      "sha256": "71b45339054f2b5d8692d2d8c968a10ac3265c64355070d392c7bd88102f5501",
+      "reason": "DirectInput keyboard descriptors: DIDATAFORMAT at 007e71f4 specifies 256 records of 16 bytes and 256-byte state; all GUID values, offsets, type/instance and flags match reviewed 2008 format."
+    }
+  ],
+  "2009-12": [
+    {
+      "addr": "007f26f0",
+      "size": 176,
+      "sha256": "8ec2061e6ee5f154e685a28c15db89df275a703845448582ac127a5fbdf80737",
+      "reason": "DirectInput mouse descriptors: DIDATAFORMAT at 009f140c specifies 11 records of 16 bytes and 20-byte state; all GUID values, offsets, type/instance and flags match reviewed 2008 format."
+    },
+    {
+      "addr": "007f27a0",
+      "size": 4096,
+      "sha256": "7a96fd652032db3f6847309e82eee3a7668cbf825703743f2903b5c99e6acd84",
+      "reason": "DirectInput keyboard descriptors: DIDATAFORMAT at 009f1614 specifies 256 records of 16 bytes and 256-byte state; all GUID values, offsets, type/instance and flags match reviewed 2008 format."
+    }
+  ]
+}

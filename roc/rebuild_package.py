@@ -138,7 +138,7 @@ def export(root, destination):
                         raise ValueError('Overlay anchor missing: ' + relative.as_posix())
                     text = text.replace(needle, new) if old.startswith('@all:') else text.replace(old, new, 1) if old else text + new
             data = text.encode(locale.getpreferredencoding(False))
-        copy(path, Path('src/rbxgs/Client') / relative, data)
+        copy(path, Path('src/Client') / relative, data)
     native_files = list(files(tree))
     native_names = {path.relative_to(tree).as_posix().casefold() for path in native_files}
     with ThreadPoolExecutor(max_workers=8) as pool:
@@ -148,14 +148,14 @@ def export(root, destination):
             continue
         if any(old for old, _ in edits):
             raise ValueError('Overlay source missing: ' + relative)
-        write(Path('src/rbxgs/Client') / relative, ''.join(new for _, new in edits).encode())
+        write(Path('src/Client') / relative, ''.join(new for _, new in edits).encode())
 
     # The current build helpers are retained for diagnostics. The package launcher
     # builds a private legacy view so existing ROC commands keep their proven paths.
     launcher = Path(__file__).with_name('rebuild_package_launcher.py')
     copy(launcher, Path('scripts/compile_test.py'))
     write('compile_test.bat', b'@echo off\r\nsetlocal\r\npython "%~dp0scripts\\compile_test.py" %*\r\nset "result=%errorlevel%"\r\nif "%~1"=="" pause\r\nexit /b %result%\r\n')
-    write('README.md', b'# 2008-06 native rebuild\n\nRun compile_test.bat with ROC_ROOT set to a configured RoConstruct checkout containing the historical compilers and dependencies. The default builds engine modules and runs their runtime harnesses. --smoke-only checks the toolchain; --tests-only relinks against a prior local build. Renderer failures are reported honestly; this is not yet a complete playable client.\n\n- src/: assembled native C++ and required assets, plus build glue.\n- ../src/2008-06/: recovered functions and library build recipes (stable URLs).\n- config/ and patches/: module definitions, overlays and their provenance. Native source already has the overlay applied.\n- tests/: only runtime harnesses required by module definitions and compile_test.bat.\n- scripts/: build and ABI checks used by RoConstruct.\n- verification/: accepted integration history, proposal states, source locations and required binary-analysis manifests.\n\nBuild outputs stay local under work/. Compiler installs and external library dependencies are supplied by RoConstruct. Original vendor license notices remain with their sources. Package metadata is not a new acceptance receipt.\n')
+    write('README.md', b'# 2008-06 native rebuild\n\nRun compile_test.bat with ROC_ROOT set to a configured RoConstruct checkout containing the historical compilers and dependencies. The default builds engine modules and runs their runtime harnesses. --smoke-only checks the toolchain; --tests-only relinks against a prior local build. Renderer failures are reported honestly; this is not yet a complete playable client.\n\n- src/Client/: assembled native C++ and required assets.\n- src/glue/: build glue.\n- ../src/2008-06/: recovered functions and library build recipes (stable URLs).\n- config/ and patches/: module definitions, overlays and their provenance. Native source already has the overlay applied.\n- tests/: only runtime harnesses required by module definitions and compile_test.bat.\n- scripts/: build and ABI checks used by RoConstruct.\n- verification/: accepted integration history, proposal states, source locations and required binary-analysis manifests.\n\nBuild outputs stay local under work/. Compiler installs and external library dependencies are supplied by RoConstruct. Original vendor license notices remain with their sources. Package metadata is not a new acceptance receipt.\n')
     for name in ('accepted-integrations.json', 'integration-jobs.json', 'native-credit.json', 'inventory.json', 'runtime-tests.json'):
         path = destination / 'verification' / name
         if path.exists():

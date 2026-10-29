@@ -19,7 +19,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 
-from roc import clients, match, setup
+from roc import clients, match, setup, integration as integration_protocol
 
 ROOT = Path(__file__).resolve().parent.parent
 USER_RE = re.compile(r"^[A-Za-z0-9_.-]{2,32}$")
@@ -532,6 +532,17 @@ class Store:
                                     "AND new = 100 AND old < 100", (client, now - window)).fetchone()[0]
         return (count or 0) / window
 
+    def match_byte_rate(self, client, window=86400):
+        """Target bytes newly matched per second over the recent window."""
+        now = time.time()
+        with self.lock:
+            size = self.db.execute(
+                "SELECT SUM(f.size) FROM funcs f JOIN "
+                "(SELECT DISTINCT addr FROM events WHERE client=? AND ts>=? "
+                "AND new=100 AND old<100) e ON e.addr=f.addr WHERE f.client=?",
+                (client, now - window, client)).fetchone()[0]
+        return (size or 0) / window
+
     def scores(self):
         with self.lock:
             rows = self.db.execute("SELECT client, addr, score FROM funcs WHERE score > 0").fetchall()
@@ -675,8 +686,6 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
     if integration is None and getattr(store, "db", None) is not None:
         from roc.integration import Promotions
         integration = Promotions(store)
-    from roc.integration import native_token as integration_token
-    native_token = integration_token(integration.root if integration else ROOT, token)
     from roc import libs
     recipe_versions = libs.recipe_versions()
     lease_slots = threading.BoundedSemaphore(8)
@@ -715,10 +724,12 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
         def do_GET(self):
             url = urlparse(self.path)
             q = {k: v[0] for k, v in parse_qs(url.query).items()}
-            if url.path in ("/v1/integration", "/v1/integration/base"):
+            if url.path in ("/v1/integration", "/v1/integration/base", "/v1/integration/evidence"):
                 if integration is None:
                     return self.send(503, {"error": "Native integration unavailable"})
                 try:
+                    if url.path.endswith("/evidence"):
+                        return self.send(200, integration.evidence())
                     return self.send(200, integration.baseline() if url.path.endswith("/base")
                                      else integration.status(q.get("id")))
                 except (ValueError, OSError) as error:
@@ -728,10 +739,19 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
                 return self.send(200, {"clients": {n: {k: e.get(k) for k in ("sha256", "compiler", "compiler_build", "flags")}
                                                    for n, e in reg.items()}, "verify": sorted(can_verify),
                                        "recipe_versions": recipe_versions,
-                                       "native_integration": {"version": 1, "enabled": bool(native_token),
+                                       "native_integration": {"version": 2, "enabled": integration is not None, "invitation_required": False,
                                                               "max_batch": 16}})
             if url.path == "/v1/status":
-                return self.send(200, store.status())
+                status = store.status()
+                progress = integration.root / "work/integration/progress-native.json" if integration else None
+                linked = set(json.loads(progress.read_text())["addresses"]) if progress and progress.exists() else None
+                for client in status["clients"]:
+                    supported = integration is not None and client["client"] == integration_protocol.CLIENT
+                    count = len(linked) if supported and linked is not None else None
+                    client.update(native_supported=supported, integrated=count,
+                                  integration_percent=100 * count / client["functions"]
+                                  if count is not None and client["functions"] else None)
+                return self.send(200, status)
             if url.path == "/v1/progress":
                 return self.send(200, store.progress_snapshot(q.get("client")))
             if url.path == "/v1/function-history":
@@ -796,25 +816,23 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
             self.send(404, {"error": "unknown endpoint"})
 
         def do_POST(self):
-            if (not urlparse(self.path).path.startswith("/v1/integration/")
+            path = urlparse(self.path).path
+            native = path.startswith("/v1/integration/")
+            if (not native
                     and token and self.headers.get("X-Roc-Token") != token):
                 return self.send(403, {"error": "wrong or missing server password (token)"})
             try:
                 length = int(self.headers.get("Content-Length") or 0)
-                if length > 1 << 20:
+                if not 0 <= length <= (integration_protocol.MAX_REQUEST_BYTES if native else 1 << 20):
+                    self.close_connection = True
                     return self.send(413, {"error": "too large"})
                 body = json.loads(self.rfile.read(length) or b"{}")
             except (ValueError, json.JSONDecodeError):
                 return self.send(400, {"error": "bad json"})
-            path = urlparse(self.path).path
             user = str(body.get("user", ""))
             if path.startswith("/v1/integration/"):
                 if integration is None:
                     return self.send(503, {"error": "Native integration unavailable"})
-                if not native_token:
-                    return self.send(503, {"error": "Native integration needs a configured server token"})
-                if self.headers.get("X-Roc-Token") != native_token:
-                    return self.send(403, {"error": "Native integration token required"})
                 if not USER_RE.fullmatch(user):
                     return self.send(400, {"error": "Need a valid contributor username"})
                 try:
@@ -822,11 +840,15 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
                         if integration.worker_error:
                             return self.send(503, {"error": "Native verifier unavailable: " + integration.worker_error})
                         result = integration.claim(user, str(body.get("worker", "")),
-                                                   body.get("count", 1), body.get("unit"))
+                                                   body.get("count", 1), body.get("unit"),
+                                                   body.get("targets"), body.get("compact", False))
                     elif path.endswith("/submit"):
                         result = integration.submit(user, body)
+                    elif path.endswith("/force-queue"):
+                        result = integration.force_queue(user, body.get("id"))
                     elif path.endswith("/renew") or path.endswith("/release"):
-                        result = integration.renew(user, str(body.get("claim", "")), path.endswith("/release"), body.get("reason"))
+                        identifiers = body.get("claims", [str(body.get("claim", ""))])
+                        result = integration.renew_many(user, identifiers, path.endswith("/release"), body.get("reason"))
                     else:
                         return self.send(404, {"error": "Unknown integration action"})
                     return self.send(200, result)
@@ -1058,8 +1080,6 @@ def serve(host="0.0.0.0", port=8765, db=None, token=None, lease_seconds=900,
     from roc.integration import Promotions
     from roc.integration_verify import loop as integration_loop
     integration = Promotions(store)
-    from roc.integration import native_token as integration_token
-    integration_token(ROOT, token, create=True)
     httpd = ThreadingHTTPServer((host, port), make_handler(store, token, can_verify,
                                                        mine_log=mine_log, server_mine_log=server_mine_log,
                                                        integration=integration))
@@ -1214,6 +1234,7 @@ def _publish_once(store, public_url, log=print):
     git("commit", "-m", "Update progress", "--", *site)
     push = git("push", "origin", "HEAD")
     log("Progress published." if push.returncode == 0 else "Progress push failed: %s" % push.stderr.strip()[-300:])
+
 
 
 def publish_pages(git_exe, log=print):
