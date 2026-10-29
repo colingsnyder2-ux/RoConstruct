@@ -24510,5 +24510,78 @@
       "new_verified": 0,
       "evidence": "RoConstruct-findings 2008-06/verification/g3d-native-20261029/"
     }
+  },
+  "ogre-native-owner-contracts-20261029": {
+    "op": "fanout",
+    "client": "2008-06",
+    "hypothesis": "Use RTTI-correct visitor ownership, constructor-proved ShadowCaster adjustment/delegation, original exception strings, and genuine G3D reference counting to remove Ogre forced-link blockers without placeholder helpers. Preserve known outer analog provenance.",
+    "sources": [
+      {
+        "recipe": "ogre-1.4.5-g3d-refcount",
+        "files": [
+          "roc_g3d_texture_bounds_vector_context_c35a9cb275530619.cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast"
+        ]
+      },
+      {
+        "recipe": "ogre-1.4.5-g3d-refcount",
+        "files": [
+          "roc_g3d_texture_proxy_context_2c0b3c7d469c1d40.cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"
+        ]
+      },
+      {
+        "recipe": "ogre-1.4.5-g3d-refcount",
+        "files": [
+          "roc_g3d_materiallevel_context_d9a3d6c7ffbfabc3.cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"
+        ]
+      },
+      {
+        "recipe": "ogre-1.4.5-dll",
+        "files": [
+          "roc_native_subentity_contracts_3c134af6ce3f7619.cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"
+        ]
+      },
+      {
+        "recipe": "ogre-1.4.5-dll",
+        "files": [
+          "roc_native_shadow_delegation_5a9fe7bdf9d3d332.cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"
+        ]
+      }
+    ],
+    "result": {
+      "status": "local full306-root forced link/run0, zero unresolved, all roots code/data exact and verified-library owned; native-only29-root run0; weak-reference cleanup runtime0;329->335 source addresses, none lost; placed384->386 with stale modules deferred",
+      "new_verified": 0,
+      "evidence": "RoConstruct-findings 2008-06/verification/ogre-owner-repair-20261029/"
+    },
+    "rejected": "Stock Rect2D::xywh adds clamping and fails code exactness; genuine Rect2D(Vector2) requires /fp:fast. Old global visitor owner contradicts target RTTI. No invented release helpers added."
   }
 }

@@ -1032,6 +1032,40 @@ def mfc_import_lib(client):
     return out / "mfc90.lib"
 
 
+def dll_exports(path):
+    """Names a PE DLL exports by name (export directory, data directory 0)."""
+    import struct
+    data = Path(path).read_bytes()
+    pe = struct.unpack_from("<I", data, 0x3c)[0]
+    nsec, optsz = struct.unpack_from("<H", data, pe + 6)[0], struct.unpack_from("<H", data, pe + 20)[0]
+    sections = [struct.unpack_from("<IIII", data, pe + 24 + optsz + 40 * i + 8) for i in range(nsec)]
+    def at(rva):
+        for vsize, va, rawsize, raw in sections:
+            if va <= rva < va + max(vsize, rawsize):
+                return rva - va + raw
+        raise ValueError("rva %x outside sections" % rva)
+    export_rva = struct.unpack_from("<I", data, pe + 24 + 96)[0]
+    count, _, names = struct.unpack_from("<III", data, at(export_rva) + 24)
+    starts = [at(struct.unpack_from("<I", data, at(names) + 4 * i)[0]) for i in range(count)]
+    return [data[start:data.index(b"\0", start)].decode("latin-1") for start in starts]
+
+def dll_import_lib(client, dll):
+    """out/importlibs/<dll>.lib: an import library for a DLL the 2008 exe ships (e.g. rgmain.dll, the client's
+    OgreMain), made by the period lib.exe from the DLL's own export names."""
+    out = workspace(client) / "out" / "importlibs"
+    lib = out / (Path(dll).stem + ".lib")
+    if not lib.exists():
+        out.mkdir(parents=True, exist_ok=True)
+        path = ROOT / "clients" / client / dll
+        (out / (Path(dll).stem + ".def")).write_text(
+            "LIBRARY %s\nEXPORTS\n" % Path(dll).name + "".join("  %s\n" % n for n in dll_exports(path)))
+        code, text = run(toolchain(), "lib", ["/nologo", "/MACHINE:X86", "/DEF:" + Path(dll).stem + ".def",
+                                              "/NAME:" + Path(dll).name, "/OUT:" + lib.name], out)
+        if code:
+            raise RuntimeError("%s: %s" % (lib.name, text[-300:]))
+    return lib
+
+
 def build_module(client, name, log=print):
     """Build every layer of modules/<name>.json, resolve the link, run its test, write a report."""
     from roc import libs
@@ -1110,6 +1144,12 @@ def build_module(client, name, log=print):
             build_module(client, dep, log=log)
         deps.append(dep_lib)
         pending += dep_spec.get("depends", [])
+    for dll in spec.get("import_dlls", []):
+        import shutil
+        deps.append(dll_import_lib(client, dll))
+        test_dir = workspace(client) / "out" / "tests" / spec["test"]
+        test_dir.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(ROOT / "clients" / client / dll, test_dir / Path(dll).name)
     excluded_path = out / "verified" / "excluded.json"
     excluded = set(json.loads(excluded_path.read_text())) if excluded_path.exists() else set()
     vdrop_path = out / "verified" / "vdrop.json"

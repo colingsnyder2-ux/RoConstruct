@@ -165,3 +165,23 @@ def test_module_archive_layer_uses_exact_compiler_member(tmp_path, monkeypatch):
     assert result['linked'] and result['object_functions'] == 0
     assert (tmp_path / 'out/App/layer-crt-data/xvalues.obj').read_bytes() == b'crt-data'
     assert calls == [('msvc-crt', 'libcpmt.lib/compile/path/xvalues.obj', 21022)]
+
+
+def test_module_stages_shipped_import_dll_before_runtime_link(tmp_path, monkeypatch):
+    source = tmp_path / 'clients/test/rgmain.dll'
+    source.parent.mkdir(parents=True)
+    source.write_bytes(b'shipped DLL')
+    monkeypatch.setattr(rebuild, 'ROOT', tmp_path)
+    monkeypatch.setattr(rebuild, 'workspace', lambda _: tmp_path)
+    monkeypatch.setattr(rebuild, 'load_module', lambda *args: {
+        'name': 'Ogre', 'test': 'ogre_test', 'layers': [], 'import_dlls': ['rgmain.dll']})
+    monkeypatch.setattr(rebuild, 'dll_import_lib', lambda *args: tmp_path / 'rgmain.lib')
+    monkeypatch.setattr(rebuild, 'progress', lambda *args, **kw: None)
+
+    def resolve(*args, **kwargs):
+        assert (tmp_path / 'out/tests/ogre_test/rgmain.dll').read_bytes() == source.read_bytes()
+        assert kwargs['extra_libs'] == [tmp_path / 'rgmain.lib']
+        return {'linked': True, 'exit': 0, 'output': '', 'unresolved': []}
+
+    monkeypatch.setattr(rebuild, 'resolve_objects', resolve)
+    assert rebuild.build_module('test', 'ogre', log=lambda _: None)['test_exit'] == 0

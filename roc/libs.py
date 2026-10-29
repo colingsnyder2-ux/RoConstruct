@@ -566,6 +566,12 @@ RECIPES["ogre-1.4.5"] = dict(
     # No /O2: rgmain.dll was built with /Ob2 /Oi /Ot /Oy /GF but without /Og (/O2 matches nothing).
     grid=["/Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD", "/Ob2 /Oi /Ot /Oy /GF /EHsc /MD"], files="*.cpp")
 
+# Client Ogre wrappers also own G3D reference-counted resources.
+RECIPES["ogre-1.4.5-g3d-refcount"] = dict(
+    RECIPES["ogre-1.4.5"], defines=RECIPES["ogre-1.4.5"]["defines"] + " _DLL",
+    include=RECIPES["ogre-1.4.5"]["include"] + ["g3d-6.09/source/include"],
+    needs=["g3d-6.09"])
+
 # Roblox's own 2016 source tree (roc/refsource.py) keeps the forks the clients were built
 # from: G3D 8.00 (gone from the web), their modified Lua 5.1.4, RakNet, libjpeg and libpng.
 # Code unchanged since 2012 compiles to the same bytes with the client's compiler.

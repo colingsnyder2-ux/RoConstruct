@@ -117,3 +117,55 @@ def test_native_storage_requires_real_definition_without_awarding_functions(tmp_
 def test_g3d_swap_groups_have_one_native_owner(recipe, file, owner):
     assert [name for name in ('G3D', 'G3D-GL', 'G3D-PNG')
             if swap_build.of_module(name, recipe, file)] == [owner]
+
+
+@pytest.mark.parametrize('registry_exact', [True, False])
+def test_registry_replay_preserves_provenance_and_replaces_legacy_owner_only_when_exact(tmp_path, monkeypatch, registry_exact):
+    out = tmp_path / 'out'
+    out.mkdir()
+    (out / 'swap-plan.json').write_text(json.dumps({'groups': [
+        {'recipe': 'ogre-test', 'file': 'legacy.cpp', 'addrs': ['00401000']}]}))
+    modules = tmp_path / 'rebuild/2008-06/modules'
+    modules.mkdir(parents=True)
+    unit = {'recipe': 'ogre-test', 'file': 'context.cpp', 'addrs': ['00401000'],
+            'provenance': 'Analog outer layout; genuine G3D ownership'}
+    (modules / 'ogre.json').write_text(json.dumps({'name': 'Ogre', 'native_units': [unit]}))
+    monkeypatch.setattr(swap_build, 'ROOT', tmp_path)
+    monkeypatch.setattr(swap_build, 'OUT', out)
+    monkeypatch.setattr(swap_build, 'compatible', lambda *args: True)
+    def build(job):
+        item = job[2]
+        objects = [] if item.get('native') and not registry_exact else [
+            (b'obj', {'_scoped_owner' if item.get('native') else '_legacy_owner': '00401000'})]
+        return item, objects, None
+    monkeypatch.setattr(swap_build, 'build_group', build)
+    swap_build.main('Ogre')
+    saved = json.loads((out / 'Ogre/verified/swaps.json').read_text())
+    assert len(saved['swaps']) == 1
+    assert saved['swaps'][0]['keep'] == {'_scoped_owner' if registry_exact else '_legacy_owner': '00401000'}
+    if registry_exact:
+        assert saved['swaps'][0]['provenance'] == unit['provenance']
+        results = json.loads((out / 'Ogre/swap-results.json').read_text())
+        assert results['groups'][1]['covered_by_registry'] == ['00401000']
+
+
+@pytest.mark.parametrize('data_exact', [True, False])
+def test_bound_symbol_replay_cannot_select_an_identical_body_from_another_owner(monkeypatch, data_exact):
+    monkeypatch.setattr(swap_build, 'libs_recipes', lambda: {'ogre-test': {'defines': '_DLL'}})
+    monkeypatch.setattr(swap_build.libs, 'source_for', lambda *args: 'source')
+    monkeypatch.setattr(swap_build.match, 'compile_text', lambda *args: b'object')
+    monkeypatch.setattr(swap_build.match, 'coff_functions', lambda _: [('_wrong', b'\xc3', []), ('_right', b'\xc3', [])])
+    monkeypatch.setattr(swap_build.rebuild, 'coff_externals', lambda _: {'_wrong': True, '_right': True})
+    monkeypatch.setattr(swap_build.match, 'target', lambda *args: (b'\xc3', [], {}))
+    checked = []
+    monkeypatch.setattr(swap_build.match, 'coff_data_refs', lambda obj, sym: checked.append(sym) or [])
+    monkeypatch.setattr(swap_build.match, 'data_check', lambda *args: ([], [] if data_exact else ['bad data']))
+    def arbitrary_owner(*args, **kwargs):
+        raise AssertionError('explicit binding must not fall back to an arbitrary exact body')
+    monkeypatch.setattr(swap_build.match, 'check_text', arbitrary_owner)
+    item, objects, error = swap_build.build_group(('Ogre', 0, {
+        'native': True, 'recipe': 'ogre-test', 'file': 'unit.cpp', 'cl': '21022', 'flags': '/O2 /MD',
+        'addrs': ['00401000'], 'symbols': {'00401000': '_right'}}))
+    assert error is None and checked == ['_right']
+    assert objects == ([(b'object', {'_right': '00401000'})] if data_exact else [])
+    assert item['results'][0]['score'] == (100 if data_exact else 99)
