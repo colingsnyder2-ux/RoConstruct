@@ -846,6 +846,10 @@ RECIPES["xtp-11.2.2-internals-vendor-xp-rtm"] = dict(
     defines=RECIPES["xtp-11.2.2-shared-mfc-internals-rtm"]["defines"] + " WINVER=0x0501 _WIN32_WINNT=0x0501")
 
 
+# Match the compiler's /EHsc feature macro during preprocessing as well as compilation.
+RECIPES["boost-1.34.1-dll-eh"] = dict(RECIPES["boost-1.34.1-dll"], defines="_DLL _CPPUNWIND")
+
+
 def _case_path(path):
     """The on-disk path for a possibly differently-cased recipe path.
 

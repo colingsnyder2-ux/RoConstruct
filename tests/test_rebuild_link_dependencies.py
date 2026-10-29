@@ -192,7 +192,7 @@ def test_alternative_layer_objects_are_not_simultaneous_providers(tmp_path, monk
     layers = [{"name": n, "mode": "archive", "recipe": "test", "files": ["same.obj"]}
               for n in ("first", "fallback")]
     spec = {"name": "App", "layers": layers, "test": "test"}
-    exclusions = []
+    exclusions, providers = [], []
     monkeypatch.setattr(rebuild, "workspace", lambda _: tmp_path)
     monkeypatch.setattr(rebuild, "load_module", lambda *a: spec)
     monkeypatch.setattr(rebuild, "build_overlay", lambda *a: None)
@@ -201,6 +201,7 @@ def test_alternative_layer_objects_are_not_simultaneous_providers(tmp_path, monk
     monkeypatch.setattr(rebuild, "progress", lambda *a, **k: None)
     def verified(*args, **kwargs):
         exclusions.append(kwargs["exclude"])
+        providers.append(kwargs["base_functions"])
         return None, set()
     monkeypatch.setattr(rebuild, "verified_layer", verified)
     monkeypatch.setattr(rebuild, "resolve_objects", lambda *a, **k:
@@ -213,3 +214,12 @@ def test_alternative_layer_objects_are_not_simultaneous_providers(tmp_path, monk
     layers[1]["files"].append("different.obj")
     rebuild.build_module("test", "app", log=lambda _: None)
     assert exclusions[-1] == {"_owner"}
+
+    monkeypatch.setattr(rebuild, "coff_externals", lambda _: {"_owner": True, "_state": True})
+    monkeypatch.setattr(rebuild.match, "coff_functions", lambda _: [("_owner", b"code", [])])
+    spec["prefer_module_helpers"] = True
+    rebuild.build_module("test", "app", log=lambda _: None)
+    assert providers[-1] == {"_owner"}
+    spec["prefer_module_data"] = True
+    rebuild.build_module("test", "app", log=lambda _: None)
+    assert providers[-1] == {"_owner", "_state"}

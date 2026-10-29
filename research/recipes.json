@@ -24723,5 +24723,51 @@
       "evidence": "RoConstruct-findings 2008-06/verification/png-native-20261029/"
     },
     "rejected": "1.2.5 state corrupts heap or fails user limits;1.2.6 without native helper preference duplicates user-limit functions. Two extra candidate static helpers fail actual map-owner byte comparison. Lua hook unavailable; no fake provider."
+  },
+  "boost-native-tss-cohort-20261029": {
+    "op": "fanout",
+    "client": "2008-06",
+    "library": "Boost native TSS and program_options integration",
+    "hypothesis": "Compile genuine1.34.1 TSS under the same exception prelude for native providers and four exact methods. Coalesce the methods into one unit; use native data providers to retain one TLS-key/cleanup state.",
+    "sources": [
+      {
+        "recipe": "boost-1.34.1-dll",
+        "files": [
+          "libs/thread/src/tss.cpp"
+        ],
+        "builds": [
+          21022,
+          50727
+        ],
+        "flags": [
+          "/O2 /GS- /EHsc /MD"
+        ]
+      },
+      {
+        "recipe": "boost-1.34.1-dll-eh",
+        "files": [
+          "libs/thread/src/tss.cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /GS- /EHsc /MD"
+        ]
+      }
+    ],
+    "result": {
+      "date": "2026-10-29",
+      "actual_linked_source_code_data_exact_gains": 43,
+      "masked_candidates": 90,
+      "old_masked_losses": 0,
+      "forced_source_roots": 30,
+      "forced_generic_helpers": 1,
+      "runtime_exit": 0,
+      "new_verified": 0,
+      "evidence": "RoConstruct-findings 2008-06/verification/boost-native-20261029/",
+      "harness_only_exacts_not_credited": 22
+    },
+    "rejected": "VS2005 TSS fails exactness. Split TSS objects duplicate private state; global vdrop removes both copies. Mixed preprocessing exception contexts crash TSS runtime. Missing program_options/UTF8 sources and colliding filesystem/program_options object basenames must be fixed.25 unlinked/nonmatching candidate gains not counted.22 harness-only exact instantiations also excluded from library gains."
   }
 }

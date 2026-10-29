@@ -139,7 +139,13 @@ def test_registry_replay_preserves_provenance_and_replaces_legacy_owner_only_whe
             (b'obj', {'_scoped_owner' if item.get('native') else '_legacy_owner': '00401000'})]
         return item, objects, None
     monkeypatch.setattr(swap_build, 'build_group', build)
+    real_install, refresh = swap_build.install, []
+    def install(live, built, **kwargs):
+        refresh.append(kwargs.get('refresh_native', False))
+        return real_install(live, built, **kwargs)
+    monkeypatch.setattr(swap_build, 'install', install)
     swap_build.main('Ogre')
+    assert refresh == [registry_exact]
     saved = json.loads((out / 'Ogre/verified/swaps.json').read_text())
     assert len(saved['swaps']) == 1
     assert saved['swaps'][0]['keep'] == {'_scoped_owner' if registry_exact else '_legacy_owner': '00401000'}
@@ -169,3 +175,17 @@ def test_bound_symbol_replay_cannot_select_an_identical_body_from_another_owner(
     assert error is None and checked == ['_right']
     assert objects == ([(b'object', {'_right': '00401000'})] if data_exact else [])
     assert item['results'][0]['score'] == (100 if data_exact else 99)
+
+
+def test_complete_native_context_refresh_preserves_omitted_old_addresses(tmp_path):
+    live, built = tmp_path / "verified", tmp_path / "verified.building"
+    layer(live, ["a", "b"])
+    layer(built, ["a"])
+    (built / "0000.obj").write_bytes(b"new native context")
+    assert "kept existing" in swap_build.install(live, built)
+    layer(built, ["a"])
+    (built / "0000.obj").write_bytes(b"new native context")
+    assert "installed" in swap_build.install(live, built, refresh_native=True)
+    assert swap_build.kept_addresses(live) == {"a", "b"}
+    assert (live / "0000.obj").read_bytes() == b"new native context"
+    assert (live / "live-0000.obj").read_bytes() == b"obj"

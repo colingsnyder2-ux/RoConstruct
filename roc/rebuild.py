@@ -1167,6 +1167,8 @@ def build_module(client, name, log=print):
             externals = coff_externals(data)
             if spec.get("prefer_module_helpers"):
                 base_functions.update(sym for sym, _, _ in match.coff_functions(data) if externals.get(sym))
+            if spec.get("prefer_module_data"):
+                base_functions.update(sym for sym, defined in externals.items() if defined)
             for sym, defined in externals.items():
                 if defined:
                     counts.setdefault(sym, set()).add(
