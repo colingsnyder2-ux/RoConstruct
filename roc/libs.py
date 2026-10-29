@@ -849,6 +849,16 @@ RECIPES["xtp-11.2.2-internals-vendor-xp-rtm"] = dict(
 # Match the compiler's /EHsc feature macro during preprocessing as well as compilation.
 RECIPES["boost-1.34.1-dll-eh"] = dict(RECIPES["boost-1.34.1-dll"], defines="_DLL _CPPUNWIND")
 
+# mfc/src/mfc/mfcdll.mak builds DLL core sources with this implementation prelude.
+RECIPES["mfc-9.0-shared-coreimpl"] = dict(
+    RECIPES["mfc-9.0-shared"], defines="_AFXDLL _DLL _AFX_CORE_IMPL")
+
+# Restore afx.h's shared-client RTTI accessor; DLL stdafx.h otherwise names private data.
+RECIPES["mfc-9.0-shared-client-runtime"] = dict(
+    RECIPES["mfc-9.0-shared"], patches={"atlmfc/src/mfc/stdafx.h": [
+        ("#define RUNTIME_CLASS(class_name) _RUNTIME_CLASS(class_name)",
+         "#define RUNTIME_CLASS(class_name) (class_name::GetThisClass())")]})
+
 
 def _case_path(path):
     """The on-disk path for a possibly differently-cased recipe path.

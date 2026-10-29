@@ -442,7 +442,7 @@ VENDOR_AUTOLINK = ("zlib.lib", "G3D.lib", "GLG3D.lib", "sdl.lib", "sdlmain.lib",
 
 def link_test(client, test, libs, includes=(), defines="WIN32 NDEBUG _MBCS _CRT_SECURE_NO_WARNINGS", flags="/O2 /GS- /EHsc /MD",
               system_libs=("kernel32.lib", "user32.lib", "gdi32.lib", "advapi32.lib", "shell32.lib", "ole32.lib",
-                           "oleaut32.lib", "comdlg32.lib", "ws2_32.lib", "winmm.lib", "opengl32.lib", "glu32.lib"), cl=BUILD, run_args=()):
+                           "oleaut32.lib", "comdlg32.lib", "ws2_32.lib", "winmm.lib", "opengl32.lib", "glu32.lib"), cl=BUILD, run_args=(), library_symbols=()):
     """Compile tests/<test>.cpp, link it against rebuilt libs with the period linker, run it.
     Returns dict(compiled, linked, ran, exit, output, unresolved, map)."""
     tc = toolchain(cl)
@@ -455,6 +455,9 @@ def link_test(client, test, libs, includes=(), defines="WIN32 NDEBUG _MBCS _CRT_
     result = {"compiled": code == 0, "linked": False, "ran": False, "exit": None, "output": text[-1500:], "unresolved": []}
     if code:
         return result
+    if library_symbols:
+        obj = out / (test + ".obj")
+        obj.write_bytes(strip_symbols(obj.read_bytes(), drop=library_symbols))
     code, text = run(tc, "link", ["/nologo", "/SUBSYSTEM:CONSOLE", "/MACHINE:X86", "/MAP:%s.map" % test,
                                   "/OUT:%s.exe" % test, test + ".obj"] + [str(l) for l in libs] + list(system_libs)
                        + ["imagehlp.lib", "version.lib", "wininet.lib", "dbghelp.lib", "psapi.lib"] + ["/NODEFAULTLIB:" + l for l in VENDOR_AUTOLINK], out)
@@ -753,7 +756,7 @@ def verified_layer(client, spec, log=print, exclude=frozenset(), vdrop=frozenset
 
 
 def resolve_objects(client, test, layers, name, includes=(), max_rounds=20, log=print, extra_libs=(), defines=None,
-                    drop=frozenset()):
+                    drop=frozenset(), library_symbols=()):
     """layers: [dir, ...] most-preferred first (e.g. 2008-verified partial files, then complete upstream).
     Start from each file's most-preferred object; when the link reports an unresolved symbol, switch the
     file that defines it in a later layer to that layer. Returns the final link_test result plus choices."""
@@ -777,6 +780,8 @@ def resolve_objects(client, test, layers, name, includes=(), max_rounds=20, log=
         lib_name = Path(name).name + ".lib"
         code, text = run(tc, "lib", ["/nologo", "/OUT:" + lib_name] + sorted(choice), out)
         kwargs = {"defines": defines} if defines else {}
+        if library_symbols:
+            kwargs["library_symbols"] = library_symbols
         result = link_test(client, test, [out / lib_name] + list(extra_libs), includes=includes, **kwargs)
         result["choices"] = {f: layers[rank] and str(Path(layers[rank]).name) for f, (rank, _) in choice.items()}
         missing = result["unresolved"]  # full list, not the truncated output
@@ -1183,7 +1188,8 @@ def build_module(client, name, log=print):
                 "".join('#pragma comment(linker, "/INCLUDE:%s")\n' % s for s in sorted(drop)))
         result = resolve_objects(client, spec["test"], ([verified] if verified else []) + layer_dirs, spec["name"] + "/linked",
                                  includes=_overlaid([_spec_path(client, i) for i in spec.get("test_includes", [])], [], ov)[0], log=log,
-                                 extra_libs=deps, defines=spec.get("test_defines"), drop=drop)
+                                 extra_libs=deps, defines=spec.get("test_defines"), drop=drop,
+                                 library_symbols=drop & set(spec.get("test_library_symbols", [])))
         if verified and not result["linked"] and result["unresolved"]:
             # a missing helper defined by one of the verified objects themselves: keep it there
             missing, added = set(result["unresolved"]) - set(helpers) - vdrop, 0

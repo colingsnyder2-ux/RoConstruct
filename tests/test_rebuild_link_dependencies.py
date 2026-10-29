@@ -1,6 +1,34 @@
 import json
+from types import SimpleNamespace
 
 from roc import rebuild
+
+
+def test_harness_definition_can_delegate_to_verified_library(tmp_path, monkeypatch):
+    """A header-emitted COMDAT must not satisfy a requested native library root."""
+    seen = []
+
+    def run(tc, tool, args, out):
+        obj = out / 'smoke.obj'
+        if tool == 'cl':
+            obj.write_bytes(b'harness definition')
+        else:
+            assert obj.read_bytes() == b'library reference'
+        return 0, ''
+
+    def strip(data, **kwargs):
+        seen.append((data, kwargs['drop']))
+        return b'library reference'
+
+    monkeypatch.setattr(rebuild, 'workspace', lambda _: tmp_path)
+    monkeypatch.setattr(rebuild, 'toolchain', lambda _: {})
+    monkeypatch.setattr(rebuild, 'run', run)
+    monkeypatch.setattr(rebuild, 'strip_symbols', strip)
+    monkeypatch.setattr(rebuild.subprocess, 'run', lambda *args, **kwargs:
+                        SimpleNamespace(returncode=0, stdout='', stderr=''))
+    result = rebuild.link_test('test', 'smoke', [], library_symbols={'_native'})
+    assert result['linked'] and result['exit'] == 0
+    assert seen == [(b'harness definition', {'_native'})]
 
 
 def test_unresolved_symbols_keeps_imported_cpp_names():

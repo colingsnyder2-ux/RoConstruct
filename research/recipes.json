@@ -25376,5 +25376,89 @@
       "evidence": "RoConstruct-findings 2008-06/verification/mfcatl-native-20261029/"
     },
     "rejected": "Unpruned objects retain unrelated generated references and collapse to5 roots. Pruning without real shared-MFC headers leaves81 imports unresolved. Helper accumulation after removing callers keeps8 orphan dependencies alive.12 passes stop before dependency closure converges. Remaining44 external roots excluded for genuine unresolved dependencies and23 duplicate definitions pruned; no stubs, fake DLL exports or private MFC data."
+  },
+  "mfcatl-shared-native-20261029": {
+    "op": "fanout",
+    "client": "2008-06",
+    "library": "MFC shared-header native closure",
+    "hypothesis": "Eight remaining genuine MFC TU targets were compiled with static MFC declarations. Replay unchanged sources under their existing shared-MFC recipe, test /Gy isolation only after exact code/data checks. No private DLL internals or fake exports. Vendor mfcdll.mak TARGDEFS explicitly sets _AFX_CORE_IMPL: test that build prelude on the two dllimport-data compile failures. DHTML vtable closure reaches DLL-internal RUNTIME_CLASS direct data. Restore the exact official afx.h shared-client GetThisClass macro in an opt-in declarative stdafx patch; preserve selected destructor code/data and exercise real lifecycles.",
+    "sources": [
+      {
+        "recipe": "mfc-9.0-shared",
+        "files": [
+          "atlmfc/src/mfc/afxoutlookbartabctrl.cpp",
+          "atlmfc/src/mfc/afxribbonedit.cpp",
+          "atlmfc/src/mfc/dlgdhtml.cpp",
+          "atlmfc/src/mfc/wincore.cpp"
+        ],
+        "langs": [
+          "cpp"
+        ],
+        "builds": [
+          30729
+        ],
+        "flags": [
+          "/O2 /GS- /MD",
+          "/O2 /GS- /MD /Gy"
+        ]
+      },
+      {
+        "recipe": "mfc-9.0-shared",
+        "files": [
+          "atlmfc/src/mfc/afxoutlookbartabctrl.cpp",
+          "atlmfc/src/mfc/wincore.cpp"
+        ],
+        "langs": [
+          "cpp"
+        ],
+        "builds": [
+          30729
+        ],
+        "flags": [
+          "/O2 /GS- /MD /D_AFX_CORE_IMPL",
+          "/O2 /GS- /MD /Gy /D_AFX_CORE_IMPL"
+        ]
+      },
+      {
+        "recipe": "mfc-9.0-shared-coreimpl",
+        "files": [
+          "atlmfc/src/mfc/afxoutlookbartabctrl.cpp",
+          "atlmfc/src/mfc/wincore.cpp"
+        ],
+        "langs": [
+          "cpp"
+        ],
+        "builds": [
+          30729
+        ],
+        "flags": [
+          "/O2 /GS- /MD /Gy"
+        ]
+      },
+      {
+        "recipe": "mfc-9.0-shared-client-runtime",
+        "files": [
+          "atlmfc/src/mfc/dlgdhtml.cpp"
+        ],
+        "langs": [
+          "cpp"
+        ],
+        "builds": [
+          30729
+        ],
+        "flags": [
+          "/O2 /GS- /MD /Gy"
+        ]
+      }
+    ],
+    "result": {
+      "status": "MFC forced147->152, all old roots preserved; raw inventory175->182 without loss; six unique actual-library code/data gains, one harness-only GUID match excluded. Official shared-client RTTI macro removes private data deps; direct stack destructor and real heap lifecycle pass.1093 repository tests pass.",
+      "new_verified": 0,
+      "forced_roots": 152,
+      "new_forced_roots": 5,
+      "actual_library_inventory_gains": 6,
+      "evidence": "RoConstruct-findings 2008-06/verification/mfcatl-shared-20261029/"
+    },
+    "rejected": "Shared headers alone preserve byte exacts but source stdafx forces DLL-private RTTI data. Core implementation prelude belongs in preprocessing recipe defines, not final /D flags after flattened preprocessing. wincore compiles with genuine core prelude but its DLL-private graph is not installed; Outlook still rejects static data import. Ribbon replay retained exact bytes but did not yield a valid forced root. Only DHTML shared-client runtime recipe installed. Address twins deduplicated per symbol before native replay;7/8 apparent exact address hits are not distinct source functions. CComBSTR destructor in test headers shadowed its existing library copy; explicit test_library_symbols restores verified owner. Heap virtual deletion can use shipped DLL vtable; scalar deleting exact body is force/map checked, not claimed directly executed."
   }
 }
