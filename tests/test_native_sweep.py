@@ -274,20 +274,79 @@ def test_matcher_resets_variants_and_requires_referenced_data(monkeypatch):
     reads = []
     class Target:
         def __init__(self, client):
-            pass
+            self.base, self.image = 0x500000, b'x'*31
         def same(self, addr, code, relocs):
             return code
     monkeypatch.setattr(sweep.fingerprint, 'Target', Target)
     monkeypatch.setattr(sweep.match, '_functions', lambda _: {addr: {'size': 30} for addr in ['00500000', '00500001']})
     monkeypatch.setattr(sweep.match, 'coff_functions', lambda _: [('?f@A@RBX@@', b'x'*30, [])])
-    monkeypatch.setattr(sweep.match, 'coff_data_refs', lambda obj, name: reads.append(name) or ['refs'])
+    monkeypatch.setattr(sweep.match, '_coff_data_index', lambda obj: None)
+    monkeypatch.setattr(sweep.match, 'coff_data_refs', lambda obj, name, index=None: reads.append(name) or ['refs'])
     def check(client, addr, code, refs):
         assert refs == ['refs']
         return [], ['data mismatch'] if addr == '00500001' else []
     monkeypatch.setattr(sweep.match, 'data_check', check)
     matcher = sweep.Matcher({'00500000', '00500001'})
     assert matcher.scan(b'object') == matcher.scan(b'object') == [{'addr': '00500000', 'symbol': '?f@A@RBX@@'}]
+    assert len(reads) == 1  # identical immutable object reuses its code/data proof
+    matcher.scan(b'changed object')
     assert len(reads) == 2
+
+
+@pytest.mark.parametrize('seed', [0, 19, 97])
+def test_matcher_prefix_filter_preserves_exhaustive_code_relocation_and_data_checks(monkeypatch, seed):
+    import random
+    from roc.fingerprint import Target
+    rng = random.Random(seed)
+    target = Target.__new__(Target)
+    target.client, target.base = '2008-06', 0x500000
+    image, rows, bodies, target_relocs = bytearray(128*64), {}, [], []
+    for i in range(64):
+        size = (6, 8, 12, 32)[i % 4]
+        body = b'\x55\x8b\xec' + rng.randbytes(size-3)
+        # Include genuine prefix collisions: only the later bytes distinguish these.
+        if size > 8 and i % 3 == 0:
+            body = b'\x55\x8b\xec\x83\xec\x08\x53\x56' + body[8:]
+        offset, addr = i*128, '%08x' % (target.base+i*128)
+        image[offset:offset+size] = body
+        rows[addr] = {'size':size}
+        bodies.append((addr, body))
+        if i % 3:
+            target_relocs.append(target.base+offset+(0, 4, min(7, size-1))[i % 3])
+    target.image, target.relocs = bytes(image), sorted(target_relocs)
+    functions = []
+    for i, (_, body) in enumerate(bodies):
+        offsets = [r for r in (0, 4, 7, 8, len(body)-1) if 0 <= r < len(body) and rng.randrange(2)]
+        candidate = bytearray(body)
+        for r in offsets:
+            candidate[r:r+4] = rng.randbytes(len(candidate[r:r+4]))
+        functions.append(('symbol%d' % i, bytes(candidate), offsets))
+    monkeypatch.setattr(sweep.fingerprint, 'Target', lambda _:target)
+    monkeypatch.setattr(sweep.match, '_functions', lambda _:rows)
+    monkeypatch.setattr(sweep.match, 'coff_functions', lambda _:functions)
+    monkeypatch.setattr(sweep.match, '_coff_data_index', lambda _:None)
+    monkeypatch.setattr(sweep.match, 'coff_data_refs', lambda *args, **kwargs:[])
+    def data_check(client, addr, code, refs):
+        return [], ['wrong referenced data'] if int(addr,16)//128 % 5 == 0 else []
+    monkeypatch.setattr(sweep.match, 'data_check', data_check)
+    expected = {}
+    for symbol, code, relocs in functions:
+        for addr in sorted(rows):
+            if addr in expected or rows[addr]['size'] != len(code):
+                continue
+            exe = target.same(addr, code, relocs)
+            if exe is not None and not data_check('2008-06', addr, exe, [])[1]:
+                expected[addr] = symbol
+    matcher = sweep.Matcher(set(rows))
+    wanted = [{'addr':addr, 'symbol':expected[addr]} for addr in sorted(expected)]
+    assert wanted
+    from concurrent.futures import ThreadPoolExecutor
+    with ThreadPoolExecutor(20) as pool:
+        assert list(pool.map(matcher.scan, [str(i).encode() for i in range(20)])) == [wanted]*20
+    for size in range(6, 270):
+        matcher.candidates(b'x'*size, [])
+    assert len(matcher.prefixes) == 256
+    assert matcher.scan(b'after-eviction') == wanted
 
 
 def test_target_routing_does_not_fall_back_from_known_template_to_stale_inventory():
@@ -295,6 +354,55 @@ def test_target_routing_does_not_fall_back_from_known_template_to_stale_inventor
     inventory = {'00500000': {'unit': 'RBX::DataModel'}}
     assert sweep.target_files(texts, {'00500000'}, {}, inventory) == {'App/v8datamodel/DataModel.cpp': ['00500000']}
     assert not sweep.target_files(texts, {'00500000'}, {'00500000': {'symbol': '??$raise@VWorkspace@@'}}, inventory)
+
+
+def test_failed_model_compile_reports_no_comparison_instead_of_false_losses(monkeypatch):
+    from roc import providers
+    monkeypatch.setattr(providers, 'generate', lambda *args:SimpleNamespace(
+        text='```cpp\nint A::f(){return missing;}\n```'))
+    def scan(_):
+        raise AssertionError('Failed compilation cannot supply match evidence')
+    logs = []
+    proposal, trials = sweep.model_proposal('App/util/A.cpp', 'int A::f(){return 1;}',
+        ['target'], {'keeper'}, set(), 'codex:default', 1,
+        lambda *args:dict(ok=False, error='error C2065: missing', object='absent.obj'),
+        SimpleNamespace(scan=scan), lambda _:dict(rebuilt_symbol='?f@A@RBX@@QAEHXZ'),
+        logs.append, options=dict(generation='method'))
+    assert proposal is None and len(trials) == 1
+    assert trials[0]['losses'] == [] and not trials[0]['comparison_complete']
+    assert any('compile failed; no match comparison' in line for line in logs)
+
+
+def test_linked_preflight_heartbeat_preserves_phases_receipt_and_stops(monkeypatch, tmp_path):
+    import threading
+    from roc import integration_verify
+    observed, messages = threading.Event(), []
+    receipt = {'accepted':False, 'losses':['00500000']}
+    def log(message):
+        messages.append(message)
+        if 'still running' in message:
+            observed.set()
+    def preflight(root, additions, output, progress):
+        progress('Linked preflight baseline: building')
+        assert observed.wait(3), 'No progress heartbeat during a live verifier wait'
+        progress('Linked preflight candidate: checking')
+        return receipt
+    monkeypatch.setattr(integration_verify, 'linked_preflight', preflight)
+    assert sweep.linked_preflight_progress(tmp_path, {}, tmp_path, log, interval=.01) is receipt
+    assert any(m.startswith('Linked preflight baseline: building · still running') for m in messages)
+    assert messages[-1] == 'Linked preflight candidate: checking'
+    assert not any(t.name == 'roc-preflight-progress' for t in threading.enumerate())
+
+
+def test_linked_preflight_heartbeat_propagates_gate_failure_and_stops(monkeypatch, tmp_path):
+    import threading
+    from roc import integration_verify
+    def preflight(*args):
+        raise ValueError('Linked ownership regression')
+    monkeypatch.setattr(integration_verify, 'linked_preflight', preflight)
+    with pytest.raises(ValueError, match='Linked ownership regression'):
+        sweep.linked_preflight_progress(tmp_path, {}, tmp_path, lambda _:None, interval=.01)
+    assert not any(t.name == 'roc-preflight-progress' for t in threading.enumerate())
 
 
 def test_ownership_checks_twins_outside_discovery_targets(monkeypatch):
@@ -385,12 +493,16 @@ def test_wait_uses_authoritative_terminal_receipt(monkeypatch, state):
 @pytest.mark.parametrize('lose_owned,existing_owned,terminal', [(False, True, None), (True, True, None), (False, False, None),
                                                             (False, True, 'accepted'), (False, True, 'rejected'),
                                                             (False, True, 'timeout')])
-@pytest.mark.parametrize('saved_proof', [False, True, 'stale', 'unversioned', 'ambiguous'])
+@pytest.mark.parametrize('saved_proof', [False, True, 'stale', 'unversioned', 'ambiguous', 'linked-failure',
+                                      'catalog-alias', 'parked', 'carrier', 'reuse', 'mixed-invalid'])
 def test_pipeline_recompiles_minimal_fix_before_claim_and_apply(tmp_path, monkeypatch, lose_owned, existing_owned, terminal, saved_proof):
     root = tmp_path / 'checkout'
     tree, overlay = root / 'tools/rbxgs/Client', root / 'work/overlay'
     source = tree / 'App/A.cpp'
     source.parent.mkdir(parents=True)
+    (root / 'roc').mkdir()
+    (root / 'roc/__init__.py').write_text('')
+    (root / 'roc/integration.py').write_bytes(Path(sweep.integration.__file__).read_bytes())
     source.write_text('void A::keep(){RBXASSERT(keep);}\n'
                       'void A::candidate(){RBXASSERT(candidate);}\n'
                       'void A::unrelated(){RBXASSERT(unrelated);}\n')
@@ -412,23 +524,40 @@ def test_pipeline_recompiles_minimal_fix_before_claim_and_apply(tmp_path, monkey
         def call(self, path, body=None):
             calls.append(path)
             if path.endswith('/base'):
+                if saved_proof in ('advance-before-claim','advance-after-preflight') and calls.count(path) >= (2 if saved_proof == 'advance-before-claim' else 3):
+                    return dict(base, revision='next-base')
                 return base
             if path == '/v1/integration':
                 return {'jobs': []}
+            if path == '/v1/integration?claims=1' and saved_proof in ('catalog-alias', 'parked', 'carrier', 'reuse'):
+                unit = 'RBX::Humanoid' if saved_proof == 'catalog-alias' else 'RBX::Carrier' if saved_proof == 'carrier' else 'RBX::A'
+                state = {'inventory': {unit: ['00500000' if saved_proof == 'carrier' else '00500001']},
+                         'parked_units': ['RBX::A'] if saved_proof == 'parked' else []}
+                if saved_proof == 'reuse':
+                    identity = json.loads((root / 'work/integration-client/identity.json').read_text())['id'][:12]
+                    state['claims'] = [dict(id='own', unit=unit, user='alice', worker='alice@native-sweep:' + identity,
+                                           expires=sweep.time.time() + 7200, state='claimed', base_revision='base')]
+                return state
             if path.startswith('/v1/integration?id='):
                 return {'jobs': [{'state': terminal, 'phase': 'complete', 'receipt':
                                  {'accepted': terminal == 'accepted', 'credits': 1 if terminal == 'accepted' else 0}}]}
             if path.endswith('/claim'):
+                if saved_proof == 'catalog-alias':
+                    assert body.get('unit') == 'RBX::Humanoid'
+                if saved_proof == 'carrier':
+                    assert not body.get('unit')  # absent classes retain the generic carrier fallback
                 if saved_proof == 'stale' and not getattr(self, 'refreshed_claim', False):
                     self.refreshed_claim = True
                     return {'claims': [{'id': 'stale', 'base_revision': 'old-base'}]}
-                return {'claims': [{'id': 'own', 'unit': 'RBX::A', 'addresses': ['00500001'],
+                return {'claims': [{'id': 'own', 'unit': 'RBX::Humanoid' if saved_proof == 'catalog-alias' else
+                                    'RBX::Carrier' if saved_proof == 'carrier' else 'RBX::A',
+                                    'addresses': ['00500000' if saved_proof == 'carrier' else '00500001'],
                                     'base_revision': 'base', 'baseline': base, 'user': 'alice'}]}
             return {'ok': True}
         def close(self):
             pass
     class Matcher:
-        def __init__(self, addresses):
+        def __init__(self, addresses, cache_dir=None):
             assert addresses == ({'00500000', '00500001'} if existing_owned else {'00500001'})
         def scan(self, obj):
             text = obj.decode()
@@ -452,18 +581,31 @@ def test_pipeline_recompiles_minimal_fix_before_claim_and_apply(tmp_path, monkey
     monkeypatch.setitem(sweep.libs.RECIPES, 'rbxgs', {'include': [], 'defines': ''})
     monkeypatch.setattr(sweep, 'Matcher', Matcher)
     monkeypatch.setattr(sweep, 'compile_unit', compile_unit)
+    from roc import integration_verify
+    def linked_preflight(*args):
+        assert not actions  # no staged submission before the full linked proof
+        if saved_proof == 'linked-failure':
+            raise ValueError('linked ownership loss')
+    monkeypatch.setattr(integration_verify, 'linked_preflight', linked_preflight)
     monkeypatch.setattr(sweep, 'ownership_candidates', lambda obj, hits: {
         h['addr']: [h['addr'], '00500099'] if saved_proof == 'ambiguous' else [h['addr']] for h in hits})
     actions = []
     def command(args):
         actions.append(args.action)
         if args.action == 'submit':
+            if saved_proof == 'auto-recovery-mixed':
+                assert args.model == 'codex:original-writer'
             sweep.integration.atomic_json(root / 'work/integration-client/claims/own/job.json', {'id': 'verified-job'})
     monkeypatch.setattr(sweep.integration, 'command', command)
+    # This fixture models assertion removal only; other compiler recipes have no simulated effect.
     config = {'manifest': str(manifest), 'owned_report': str(owned), 'files': ['App/*.cpp'],
+              'modes': ['assertions'], 'scoped_modes': [],
               'apply': True, 'submit': bool(terminal), 'wait': bool(terminal), 'model': 'human'}
     if saved_proof:
         proposals = root / 'proposals.json'
+        if saved_proof == 'linked-failure':
+            proposals = root / 'work/sweep/proposals.json'
+            proposals.parent.mkdir(parents=True)
         proposals.write_text(json.dumps([{'file': 'App/A.cpp', 'edits': [['RBXASSERT(candidate)', '']],
                                          'mode': 'model', 'proof': {'object': 'missing-stale.obj'},
                                          'witnesses': [{'addr': '00500001', 'symbol': '?candidate@A@RBX@@QAEXXZ',
@@ -471,6 +613,28 @@ def test_pipeline_recompiles_minimal_fix_before_claim_and_apply(tmp_path, monkey
                                          'base_revision': None if saved_proof == 'unversioned' else
                                                           'old-base' if saved_proof == 'stale' else 'base'}]))
         config['proposals_file'] = str(proposals)
+        if saved_proof == 'auto-recovery-mixed':
+            data = json.loads(proposals.read_text())
+            bad = dict(data[0], file='App/B.cpp', edits=[['absent old anchor', '']])
+            (tree/'App/B.cpp').write_text(source.read_text())
+            recovery_ticket = sweep.hold_proposals(root/'work/sweep', [bad]+data, 'old-base', model='codex:original-writer')
+            config.pop('proposals_file')
+            config.update(resume_saved=True, llm='deepseek:new-dropdown-model')
+            def no_ai(*args, **kwargs):
+                raise AssertionError('Saved proof recovery must not request AI')
+            monkeypatch.setattr(sweep, 'model_discovery', no_ai)
+        if saved_proof == 'mixed-invalid':
+            data = json.loads(proposals.read_text())
+            data.append(dict(file='App/Bad.cpp', edits=[['old','struct Invented { int x; };']],
+                             witnesses=[], base_revision='base'))
+            proposals.write_text(json.dumps(data))
+        if saved_proof == 'catalog-alias':
+            data = json.loads(proposals.read_text())
+            data[0]['witnesses'][0]['claim_unit'] = 'RBX::ICharacterSubject'
+            proposals.write_text(json.dumps(data))
+        if saved_proof == 'reuse':
+            sweep.integration.atomic_json(root / 'work/integration-client/claims/own/packet.json',
+                dict(id='own', unit='RBX::A', user='alice', base_revision='base', baseline=base, addresses=['00500001']))
     if saved_proof and (lose_owned or saved_proof == 'unversioned'):
         with pytest.raises(ValueError, match='unversioned|lost exact matches'):
             sweep.run({'native_sweep': config}, 'test', output=root / 'work/sweep', log=lambda _: None)
@@ -482,6 +646,29 @@ def test_pipeline_recompiles_minimal_fix_before_claim_and_apply(tmp_path, monkey
         assert result['proposed_files'] == 0 and result['local_exact'] == 0
         assert generator.read_bytes() == original and '/v1/integration/claim' not in calls
         return
+    if saved_proof == 'parked':
+        before = proposals.read_bytes()
+        result = sweep.run({'native_sweep': config}, 'test', output=root / 'work/sweep', log=lambda _: None)
+        assert result['state'] == 'blocked' and '/v1/integration/claim' not in calls
+        assert proposals.read_bytes() == before and generator.read_bytes() == original
+        return
+    if saved_proof == 'linked-failure':
+        saved_bytes = proposals.read_bytes()
+        with pytest.raises(ValueError, match='linked ownership loss'):
+            sweep.run({'native_sweep': config}, 'test', output=root / 'work/sweep', log=lambda _: None)
+        assert proposals.read_bytes() == saved_bytes and generator.read_bytes() == original
+        assert not actions and calls.count('/v1/integration/release') == 1
+        return
+    if saved_proof in ('advance-before-claim','advance-after-preflight'):
+        with pytest.raises(sweep.BaselineAdvanced, match='baseline'):
+            sweep.run({'native_sweep':config}, 'test', output=root/'work/sweep', log=lambda _:None)
+        ticket, archive = sweep.pending_proposals(root/'work/sweep', 'next-base')
+        assert ticket and json.loads(ticket.read_text())['model'] == 'human'
+        assert json.loads(archive.read_text())[0]['file'] == 'App/A.cpp'
+        assert not actions and generator.read_bytes() == original
+        if saved_proof == 'advance-before-claim':
+            assert '/v1/integration/claim' not in calls
+        return
     if terminal == 'timeout':
         def timeout(*args):
             raise TimeoutError('verification still pending')
@@ -492,6 +679,16 @@ def test_pipeline_recompiles_minimal_fix_before_claim_and_apply(tmp_path, monkey
         assert pending['state'] == 'queued' and pending['job'] == 'verified-job'
         return
     result = sweep.run({'native_sweep': config}, 'test', output=root / 'work/sweep', log=lambda _: None)
+    if saved_proof == 'auto-recovery-mixed':
+        assert json.loads(recovery_ticket.read_text())['state'] == 'done'
+        assert sweep.pending_proposals(root/'work/sweep', 'base') == (None, None)
+        blocked, archive = sweep.pending_proposals(root/'work/sweep', 'next-base')
+        assert blocked != recovery_ticket
+        assert [p['file'] for p in json.loads(archive.read_text())] == ['App/B.cpp']
+    if saved_proof == 'mixed-invalid':
+        assert len(list((root / 'work/sweep/blocked-proposals').glob('*.json'))) == 1
+        assert result['applied_paths'] == ['App/A.cpp']
+        assert len(json.loads(proposals.read_text())) == 2
     assert result['new_verified'] == (1 if terminal == 'accepted' else 0)
     if terminal:
         assert actions == (['submit', 'sync'] if terminal == 'accepted' else ['submit'])
@@ -504,8 +701,19 @@ def test_pipeline_recompiles_minimal_fix_before_claim_and_apply(tmp_path, monkey
         edits = json.loads(generator.with_name('rbxgs-client.json').read_text())['App/A.cpp']
         assert len(edits) == 1 and ('A::candidate' in edits[0][0] or saved_proof)
         assert all('A::keep' not in old and 'A::unrelated' not in old for old, _ in edits)
-        assert calls.count('/v1/integration/claim') == (2 if saved_proof == 'stale' else 1)
+        assert calls.count('/v1/integration/claim') == (2 if saved_proof == 'stale' else 0 if saved_proof == 'reuse' else 1)
         assert calls.count('/v1/integration/release') == (1 if saved_proof == 'stale' else 0)
+
+
+def test_auto_recovery_isolates_stale_file_and_submits_fresh_proof_with_original_model(tmp_path, monkeypatch):
+    test_pipeline_recompiles_minimal_fix_before_claim_and_apply(tmp_path, monkeypatch,
+        lose_owned=False, existing_owned=True, terminal='accepted', saved_proof='auto-recovery-mixed')
+
+
+@pytest.mark.parametrize('stage', ['advance-before-claim','advance-after-preflight'])
+def test_baseline_advance_queues_immutable_proof_without_staging_or_submitting(tmp_path, monkeypatch, stage):
+    test_pipeline_recompiles_minimal_fix_before_claim_and_apply(tmp_path, monkeypatch,
+        lose_owned=False, existing_owned=True, terminal=None, saved_proof=stage)
 
 
 def test_submit_network_failure_is_persisted_and_api_closed(tmp_path, monkeypatch):

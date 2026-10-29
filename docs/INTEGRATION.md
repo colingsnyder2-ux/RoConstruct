@@ -1,5 +1,12 @@
 # Native integration contributors
 
+Worker v8 includes provider routing and OpenCode task-delivery fixes, plus the published original-binary ABI manifest. After source/toolchain
+setup, `roc rebuild 2008-06 prepare` validates ABI data, generates missing RTTI,
+checks every declared compiler profile, and builds missing dependency libraries with
+their ordinary recipes before a native baseline starts. A partial `rebuild install`
+no longer treats the presence of rbxgs-app.json as proof that ABI evidence is installed.
+VS2005 dependency builds remain separate from the pinned VS2008 native verifier.
+
 This is separate from source mining. A mined 100% snippet becomes readable code
 in the coherent rbxgs rebuild; an independent server build must reproduce its
 bytes before credit is awarded. Original miners keep their mining points.
@@ -40,6 +47,7 @@ remain readable/usable.
 roc integrator --model codex:gpt-6.1-sol --workers 16 --compile-workers 4 --batch-files 80 --allow-cloud
 roc integrator --model claude:sonnet --workers 8 --allow-cloud
 roc integrator --model opencode:PROVIDER/MODEL --workers 16 --allow-cloud
+roc integrator --model opencode:nvidia/nvidia/nemotron-3-ultra-550b-a55b#none --workers 4 --compile-workers 2 --allow-cloud
 roc worker --model codex:gpt-6.1-sol --workers 16 --cloud-concurrency 16 --allow-cloud
 ```
 
@@ -52,6 +60,20 @@ the same anchored edits and local compilation loop as API responses. Codex runs
 in a temporary read-only workspace; Claude's text-provider invocation has tools
 disabled. CLI subscription usage has no reliable ROC USD estimate; dollar caps
 are rejected. Request/token caps still apply at the shared provider boundary.
+
+NVIDIA API models keep their full namespace: `nvidia:nvidia/nemotron-3-ultra-550b-a55b`
+(the bare `nvidia/nemotron-3-ultra-550b-a55b` also works). OpenCode adds its provider
+prefix: `opencode:nvidia/nvidia/nemotron-3-ultra-550b-a55b#none`. OpenCode credentials
+stay in OpenCode; direct NVIDIA needs `NVIDIA_API_KEY`. Nemotron Ultra accepts
+`none`, `medium`, or `high` reasoning; direct API disabled thinking maps to `none`.
+
+HTTP 401/403 require fixing credentials/access; environment keys override saved ROC
+keys. HTTP 402 requires provider balance. HTTP 404 requires the correct model ID and
+endpoint. These stop the run and skip queued native files rather than opening a
+retry circuit. Only transient network/rate/server failures count toward the circuit.
+OpenCode gets native SEARCH/REPLACE blocks inside a code fence. CLI tasks use an
+explicit attachment instead of stdin-only delivery. A failed HTTP generation never
+silently starts a second CLI generation.
 
 Each integration session snapshots runtime/rebuild files into
 `local/integrators/<id>`. Writable overlays, generator changes, claims and outputs
@@ -172,11 +194,132 @@ Ambiguous overloads, templates, conditional method bodies and layout/signature
 recovery defer to manual work. This automates specific proven fix families; it
 does not invent fields, offsets, source bodies or claim unverified credit.
 
+## Retained partials and targeted native search
+
+Run `roc research run native-search-partials-2008 --jobs 4` in a private contributor
+workspace for an offline, proposals-only pass. This recipe makes no model requests
+and does not stage or submit patches. Native integration currently supports the
+coherent 2008-06 module; other clients still use their separate matching workflows.
+
+Native sweeps retain improving no-loss candidates under `partials/`, keyed by file,
+target, accepted baseline revision and original source hash. Each target keeps up
+to three alternatives for byte similarity, stack frame and call sequence. Records
+include source/object hashes, residual assembly diff and `accepted=false`. Fuzzy
+scores guide search only; code/data and module ownership checks still prove exacts.
+Model passes recompile saved seeds, compare them with the current baseline, then
+compose any winning edits against the original source and minimize/re-prove them.
+Header bundles require separate caller proofs and are not reconstructed from a
+CPP-only partial record.
+
+`scoped_modes` accepts `scoped-osize`, `scoped-speed`, `scoped-fp` and
+`scoped-noautoinline`. Each candidate wraps one known native method and restores
+compiler settings afterward. Files with existing optimization pragmas defer to
+explicit recipes. `targeted_recipes=true` uses baseline frame/call/FP diagnostics
+to select relevant profiles; set false to test the full requested profile list.
+`scoped_modes=[]` disables these trials. `keep_partials=false` disables retention;
+`partial_floor` sets the minimum search score (default 50).
+
+For semantic rewrites, declare `rewrite_rules` inside `native_sweep`, for example:
+
+```json
+{
+  "rewrite_rules": [{
+    "name": "measured-map-value-type",
+    "files": ["App/v8datamodel/BrickColor.cpp"],
+    "evidence": "path/to/target-and-compiler-evidence.json",
+    "edits": [["std::pair<Number, G3D::Color4>", "std::pair<const Number, G3D::Color4>"]]
+  }]
+}
+```
+
+Rules require an explicit file family, evidence reference and unique anchors.
+List sibling files only after checking their declarations and target evidence.
+This supports scoped map-value, temporary-lifetime, genuine callee/template and
+constant fixes without guessing types or replacing numeric literals globally.
+Compatible disjoint winners are combined incrementally; every combined TU must
+preserve baseline exacts and uniquely reproduce all retained witnesses.
+
+`search_cache=true` retains object scan results, including negatives, against
+target bytes/relocations/extents and matcher implementation hashes. Exhausted
+searches additionally depend on compiler dependency signatures, source/config,
+accepted revision and search implementation. Changed inputs invalidate them;
+`retry_exhausted=true` forces search retries. Compiler failures and provider errors
+are not recorded as exhausted searches.
+
+Results append immediately to `trials.jsonl`; `trials.json` checkpoints every ten
+seconds and at completion. `blockers.json` groups missing bodies, frame/lifetime,
+callee context, FP, referenced-data and ownership issues. `metrics.json` records
+compile/match/model/queue times, cache hits, local proofs and server-verified
+gains/hour. Local partials and fixture matches never increase verified coverage.
+Grid compilation and matching use separate bounded queues; `match_workers`
+defaults to 2. Model compiler concurrency still uses `compile_workers`.
+
+Each newly retained score/frame/call improvement emits `native_partial` in the
+integrator GUI, including address, before/after similarity and structural gains.
+The session counts these separately from local exacts and server-verified credits.
+Reports persist in `partial-reports.json` and batch to `/v1/integration/partials`
+at run completion. The server validates known targets/revisions and source/object
+hashes, deduplicates observations, and posts a partial digest to the existing
+Server Mining webhook. This telemetry is contributor-reported local search data;
+it never changes function scores, points, native ownership or exact credits.
+An unavailable endpoint leaves reports queued for the next run. Both server and
+integrator processes must load the updated code to enable this reporting route.
+
+Benchmark without model requests or submissions:
+`python benchmarks/native_search.py --workers 1,2,4 --files 4`.
+
 ## Retry and acceptance
 
 Use `--retry` to rerun an unchanged rejected batch after a verifier/environment
-problem has been fixed. Use `release --claim ID --reason "blocker + addresses"`
-to park blocked work for two hours instead of immediately assigning it again.
+problem has been fixed. Claim operations are explicit:
+
+```text
+roc integrate release --claim ID
+roc integrate park --claim ID --reason "blocker + addresses"
+roc integrate unpark --claim ID
+roc integrate unpark --all
+```
+
+Release frees work immediately; it does not park. `release --reason` is rejected
+with guidance. Park holds a blocker for two hours. Unpark clears your owned park
+and frees that class immediately; another contributor's claim cannot be unparked. `unpark
+--unit RBX::Class` selects owned parks for that inventory unit, including claims
+created on another PC. Status includes park IDs and owners.
+
+Discovery routes claims by the server's address-to-unit inventory rather than
+assuming a native method's class is its scheduling label. For example, an
+ICharacterSubject method cataloged under RBX::Humanoid claims Humanoid. Parked
+classes are skipped; absent units are never requested. Catalog-less proposals
+retain the existing carrier-claim fallback and every linked/runtime gate.
+
+Gateway errors do not require rediscovery or a new batch:
+
+```text
+roc integrate resume
+```
+
+Before POST, the client commits a hash-checked request journal under
+`work/integration-client/requests/`: exact payload, generator/base snapshots,
+applied files and the linked-proof artifact location. Resume first queries server
+state by the same request digest. It recovers already queued/completed jobs or
+replays the identical idempotent payload with still-valid claims. It never invents
+new claim IDs or retries a rejected job automatically. Both native-try submission
+and integrator startup recover unresolved intents before starting new work.
+Expired/parked/mismatched claims and incomplete/modified journals retain their
+artifacts and require explicit repair. Valid owned leases are reused and renewed
+before linked preflight. Protocol version 3 supplies claim inventory, explicit
+park/unpark and digest lookup; deploy the updated server before using new endpoints.
+
+Use eight AI workers and four compiler slots initially. Observed 2026-10-28 logs
+had a 400.8-second median file run, versus 43.7-second baseline and 40-second trial
+compiles; more AI workers can increase compiler waiting. New logs separate compile,
+queue and comparison time. Method prompts now carry three targets and request
+small unique anchors. Identical candidate source reuses a dependency-checked
+compile path; identical objects reuse code/data comparisons. Minimization reuses
+an already verified final object. Independent linked verification is unchanged.
+The signed launcher and direct worker CLI now pass job limits and worker counts
+by name, fixing the duplicate `use_remill` error and accidental positional binding
+of worker counts to lift controls. Worker v7 / matching workflow v2 includes these fixes.
 
 `status` shows jobs and the separate native-credit leaderboard. The server checks
 the linked rebuild, M2/M4a/M5, size/base regressions, owned addresses and global
@@ -246,7 +389,9 @@ full/live fingerprints share one input walk and one content-read pass; later liv
 checks still detect source/toolchain changes during verification, including edits
 that preserve file size and timestamps. Output/cache trees are pruned before descent.
 The native cache key covers compiler/matcher/gate modules and build inputs, excluding
-CLI, queue, UI and webhook code. Milestones execute the build module directly.
+unrelated CLI, UI, reporting and webhook modules. The shared integration module is
+included because it merges source overlays, even though it also contains queue logic.
+Milestones execute the build module directly.
 
 Compiler/SDK path discovery is persisted in `work/integration/toolchain.json`, checked
 against resolver code, installation state, configuration and existing paths. Compiler,
@@ -255,9 +400,26 @@ prepared input identity before compiling; after interruption, matching snapshots
 their private content-checked objects and rerun every gate. Unprepared snapshots are
 retained for diagnostics. Completed baseline receipts remain required for acceptance.
 
-Player Mining receives a fresh digest for accepted native gains: purple integrated native bodies,
+Server Mining receives a fresh digest for accepted native gains: purple integrated native bodies,
 blue exact mined sources awaiting integration, white remaining targets.
 The 23-cell bar measures code bytes, excluding compiler stubs; category counts and
 remaining functions are shown separately. Combined points include one point per
 distinct native integration; native counts remain visible. ETA is a rough recent-rate estimate. Notifications
 cannot make a valid rebuild fail.
+
+Native contributor submissions now run the independent linked build locally before staging.
+`roc native-try preflight` checks all saved proposals without claiming/submitting. The same
+M2/M4a/M5, size/base, linked ownership and global coverage gates remain mandatory on the server.
+Private baseline caches live in `work/native-linked-preflight/`; candidate receipts and logs
+are under `work/native-try/linked-preflight-*` (automatic submissions use `work/native-try/submit/`).
+Cold baseline builds can take minutes. A baseline advance requires fresh revalidation;
+failed proofs retain saved proposals. Successful replacement checks archive their prior file.
+
+Native source paths use case-insensitive identity, preserving the accepted registry spelling.
+`App/gui/Gui.cpp` must extend accepted `App/gui/GUI.cpp`, not overwrite its floating-point pragma
+through a second registry key. Ambiguous duplicate keys fail before overlay writes. Guarded
+recipe replacement still requires the exact previous recipe. Verifier input hashes include
+the shared merge implementation. Objects carry `.command.json` provenance alongside their
+content-checked `.compile.json` and resolved `.deps`; legacy objects without provenance rebuild.
+Rejections record gained/lost/uncovered addresses, baseline revision and diagnostic folders
+when a completed candidate comparison exists; early build failures retain available artifact paths.

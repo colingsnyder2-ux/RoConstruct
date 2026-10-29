@@ -20,6 +20,7 @@ import struct
 import subprocess
 import sys
 import tempfile
+import threading
 import time
 import urllib.request
 from pathlib import Path
@@ -267,10 +268,45 @@ def compiler_ready():
     """True when a cl.exe could run at all: always on Windows, Wine elsewhere."""
     return WINDOWS or wine_exe() is not None
 
+_TOOLCHAIN_SCAN_LOCK = threading.Lock()
+
+
+@functools.lru_cache(maxsize=8)
+def _toolchain_paths(tools):
+    """One walk for the same installed VC/SDK candidates formerly found by globs."""
+    compilers, sdks = [], []
+    case = re.IGNORECASE if os.name == 'nt' else 0
+    sdk_name, vc_name = re.compile('WinSDK',case), re.compile('VC',case)
+    for package in sorted(p for p in tools.iterdir() if p.is_dir()) if tools.exists() else ():
+        # Start at each explicit top-level package, matching */** traversal:
+        # top-level links are followed, recursive directory links are not.
+        for directory, folders, _ in os.walk(package):
+            for name in folders:
+                if sdk_name.fullmatch(name):
+                    sdks.append(Path(directory)/name)
+                elif vc_name.fullmatch(name):
+                    compilers.extend((Path(directory)/name).glob('bin/cl.exe'))
+    return tuple(sorted(compilers)), tuple(sorted(sdks))
+
+
+def toolchain_paths(tools):
+    with _TOOLCHAIN_SCAN_LOCK:
+        return _toolchain_paths(Path(tools))
+
+
+def clear_toolchain_paths():
+    with _TOOLCHAIN_SCAN_LOCK:
+        _toolchain_paths.cache_clear()
+
+
+toolchain_paths.cache_clear = clear_toolchain_paths
+toolchain_paths.cache_info = _toolchain_paths.cache_info
+
+
 @functools.lru_cache(maxsize=None)
 def compilers():
     """{build: cl.exe path} for every old MSVC found."""
-    paths = CL_PATHS + sorted(TOOLS.glob("*/**/VC/bin/cl.exe"))
+    paths = CL_PATHS + list(toolchain_paths(TOOLS)[0])
     paths += [Path(p) for p in os.environ.get("ROC_CL", "").split(os.pathsep) if p]
     if not compiler_ready():
         return {}
@@ -281,7 +317,7 @@ def compilers():
             continue
         try:
             banner = subprocess.run(cl_command(cl), capture_output=True, text=True,
-                                    cwd=cl.parent, env=cl_env(cl), timeout=timeout).stderr
+                                    cwd=cl.parent, env=cl_env(cl), stdin=subprocess.DEVNULL, timeout=timeout).stderr
         except (OSError, subprocess.TimeoutExpired):
             continue
         m = re.search(r"Version \d+\.\d+\.(\d+)", banner)
@@ -962,6 +998,7 @@ def install_compilers(only=None, ask=input, assume_yes=False):
         except SystemExit as error:  # one failed download must not stop the others
             print(error)
         compilers.cache_clear()
+        toolchain_paths.cache_clear()
     return done
 
 def register_link():

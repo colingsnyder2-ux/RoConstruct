@@ -24044,5 +24044,44 @@
       "model": "gpt-6.1-sol"
     },
     "targets": {}
+  },
+  "native-search-partials-2008": {
+    "op": "grid",
+    "client": "2008-06",
+    "hypothesis": "Rank native near misses by measured frame/call/FP diagnostics; retain no-loss partials and test method-scoped compiler profiles. Merge compatible uniquely owned exact witnesses, without applying or submitting discoveries.",
+    "native_sweep": {
+      "files": ["App/*/*.cpp"],
+      "targets_only": true,
+      "modes": ["assertions", "fp-fast", "assertions-fp-fast"],
+      "scoped_modes": ["scoped-osize", "scoped-speed", "scoped-fp", "scoped-noautoinline"],
+      "targeted_recipes": true,
+      "keep_partials": true,
+      "partial_floor": 50,
+      "search_cache": true,
+      "match_workers": 2,
+      "apply": false,
+      "submit": false,
+      "model": "gpt-6.1-sol"
+    },
+    "targets": {}
+  },
+  "native-campaign-noautoinline-sol-2008": {
+    "op": "grid",
+    "client": "2008-06",
+    "hypothesis": "Find native methods built without automatic inlining; retain code/data candidates for method-scoped recovery when a whole-TU profile loses existing matches.",
+    "native_sweep": {
+      "files": [
+        "App/*/*.cpp"
+      ],
+      "targets_only": true,
+      "modes": [
+        "noautoinline"
+      ],
+      "apply": false,
+      "submit": false,
+      "model": "gpt-6.1-sol",
+      "wait": false
+    },
+    "targets": {}
   }
 }

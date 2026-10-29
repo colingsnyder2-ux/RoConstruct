@@ -10,6 +10,7 @@ import math
 import os
 import re
 import shutil
+import socket
 import subprocess
 import threading
 import time
@@ -37,6 +38,8 @@ BUILTINS = {
                "key_env": "NVIDIA_API_KEY", "defaults": ["nvidia/nemotron-3-ultra-550b-a55b"]},
     "deepseek": {"kind": "openai-chat", "base_url": "https://api.deepseek.com",
                  "key_env": "DEEPSEEK_API_KEY", "defaults": ["deepseek-flash"]},
+    "openrouter": {"kind": "openai-chat", "base_url": "https://openrouter.ai/api/v1",
+                   "key_env": "OPENROUTER_API_KEY", "defaults": ["google/gemini-2.5-flash"]},
     "openai": {"kind": "openai-responses", "base_url": "https://api.openai.com/v1",
                "key_env": "OPENAI_API_KEY", "defaults": ["gpt-5-mini"]},
     "anthropic": {"kind": "anthropic-messages", "base_url": "https://api.anthropic.com/v1",
@@ -50,6 +53,9 @@ SYSTEM = "Reconstruct compact valid C++ only. Never emit inline assembly. Follow
 USER_AGENT = "RoConstruct/1.0"
 # Providers that rejected the thinking field once; the process skips it after that.
 NO_THINKING = set()
+FATAL_ERRORS = frozenset(("provider_auth", "provider_key", "provider_config", "provider_model", "provider_quota"))
+MODEL_CATALOG = {}
+MODEL_CATALOG_LOCK = threading.Lock()
 
 
 class ProviderError(RuntimeError):
@@ -57,6 +63,12 @@ class ProviderError(RuntimeError):
     def __init__(self, category, message, status=None):
         self.category, self.status = category, status
         super().__init__("%s: %s" % (category, message))
+
+
+def quota_exhausted(message):
+    detail = str(message).lower()
+    return any(term in detail for term in ('insufficient_quota', 'insufficient balance',
+        'usage limit reached', 'usage limit exceeded', 'free usage limit'))
 
 
 @dataclass
@@ -134,23 +146,29 @@ class CloudGate:
         self.concurrency = max(1, int(concurrency or 1))
         self.failures = max(1, int(failures or 3))
         self._locks, self._failed, self._lock = {}, {}, threading.Lock()
-        self._disabled = set()
+        self._disabled = {}
 
     def enter(self, provider):
         with self._lock:
+            if provider in self._disabled:
+                raise ProviderError(*self._disabled[provider])
             if self._failed.get(provider, 0) >= self.failures:
                 raise ProviderError("provider_circuit", "%s circuit is open" % provider)
             lock = self._locks.setdefault(provider, threading.BoundedSemaphore(self.concurrency))
         lock.acquire()
         with self._lock:
+            if provider in self._disabled:
+                lock.release()
+                raise ProviderError(*self._disabled[provider])
             if self._failed.get(provider, 0) >= self.failures:
                 lock.release()
                 raise ProviderError("provider_circuit", "%s circuit is open" % provider)
         return lock
 
-    def disable(self, provider):
+    def disable(self, provider, error=None):
         with self._lock:
-            self._disabled.add(provider)
+            error = error or ProviderError("provider_config", "%s disabled; fix configuration and restart" % provider)
+            self._disabled[provider] = (error.category, str(error).partition(": ")[2], error.status)
             self._failed[provider] = self.failures
 
     def done(self, provider, ok):
@@ -198,6 +216,32 @@ def codex_models():
     return list(dict.fromkeys(["default", *(row["slug"] for row in rows
         if isinstance(row, dict) and isinstance(row.get("slug"), str) and row["slug"]
         and row.get("visibility", "list") == "list")]))
+
+
+def provider_models(name, config):
+    """Public model discovery only; never sends prompts or credentials."""
+    if name != 'openrouter':
+        return config.get('defaults', [])
+    url = _url(config, '/models')
+    with MODEL_CATALOG_LOCK:
+        expires, models = MODEL_CATALOG.get(url, (0, config.get('defaults', [])))
+        if time.monotonic() < expires:
+            return list(models)
+        try:
+            request = urllib.request.Request(url, headers={'User-Agent': USER_AGENT})
+            with urllib.request.urlopen(request, timeout=5) as response:
+                rows = json.load(response)['data']
+            found = sorted({row['id'] for row in rows if isinstance(row, dict)
+                and isinstance(row.get('id'), str) and row['id']
+                and 'text' in ((row.get('architecture') or {}).get('output_modalities') or ['text'])})
+            if not found:
+                raise ValueError('Empty model catalog')
+            models = found
+            expires = time.monotonic() + 300
+        except (OSError, ValueError, KeyError, TypeError):
+            expires = time.monotonic() + 30  # retain last catalog through an outage
+        MODEL_CATALOG[url] = expires, models
+        return list(models)
 
 
 def secrets_path():
@@ -337,12 +381,21 @@ def parse_model(model):
     if not sep and "/" in model:
         head, slash, tail = model.partition("/")
         if head in registry and tail:
-            return head, tail, registry[head]
+            # NVIDIA's own models include the vendor namespace in the API ID.
+            return head, model if head == "nvidia" and "/" not in tail else tail, registry[head]
     return "local", model, {"kind": "ollama", "base_url": OLLAMA}
 
 
 def is_cloud(model):
     return parse_model(model)[0] != "local"
+
+
+def cloud_slots(model, workers, value="auto"):
+    """Keep extra file workers useful without flooding the shared NVIDIA OpenCode transport."""
+    if value != "auto":
+        return int(value)
+    provider, remote, _ = parse_model(model)
+    return min(workers, 8) if provider == "opencode" and remote.startswith("nvidia/") else workers
 
 
 def available(model):
@@ -372,7 +425,10 @@ def credential_hint(model):
         return "ChatGPT plan sign-in required: roc chatgpt login"
     if provider == "opencode":
         return "OpenCode CLI missing or not signed in: npm i -g opencode-ai, then opencode auth login"
-    return "Cloud key missing: set %s (roc provider setup)" % config.get("key_env", "")
+    hint = "Cloud key missing: set %s (roc provider setup)" % config.get("key_env", "")
+    if provider == "nvidia":
+        hint += "; OpenCode sign-in uses opencode:nvidia/" + _remote
+    return hint
 
 
 def _chatgpt_plan(provider, remote, config, prompt, state, options):
@@ -426,10 +482,16 @@ def _post(url, body, headers, timeout, allow_empty=False):
         detail = error.read().decode("utf-8", "replace").lower()
         if error.code == 402:
             raise ProviderError("provider_auth", "HTTP 402: insufficient provider balance; check API billing", 402) from None
+        if error.code in (401, 403):
+            raise ProviderError("provider_auth", "HTTP %d: check API key and model access" % error.code, error.code) from None
+        if error.code == 404:
+            raise ProviderError("provider_model", "HTTP 404: model or endpoint not found; check full model ID and base URL", 404) from None
+        if quota_exhausted(detail):
+            raise ProviderError('provider_quota', 'HTTP %d: provider allowance exhausted; retry after reset or change model' % error.code, error.code) from None
         retry = (error.code in (408, 429) or error.code >= 500 or
                  any(text in detail for text in ("insufficient_quota", "usage limit", "rate limit",
                                                   "quota exceeded", "current quota", "insufficient balance")))
-        raise ProviderError("provider_retry" if retry else "provider_auth" if error.code in (401, 403) else "provider_error",
+        raise ProviderError("provider_retry" if retry else "provider_error",
                             "HTTP %d" % error.code, error.code)
     except (urllib.error.URLError, OSError, ValueError) as error:
         raise ProviderError("provider_retry", type(error).__name__)
@@ -505,6 +567,14 @@ def _cloud_messages(prompt, state, keep_last=2):
     return messages
 
 
+def _nemotron_effort(options):
+    think, effort = options.get("thinking"), options.get("reasoning_effort")
+    if think is not None and str(think).lower() != "auto":
+        disabled = str(think).lower() == "disabled" or isinstance(think, dict) and think.get("type") == "disabled"
+        effort = "none" if disabled else effort or "high"
+    return "medium" if effort in ("minimal", "low") else effort
+
+
 def _openai_chat(provider, remote, config, prompt, state, options):
     messages = _cloud_messages(prompt, state, options.get("history_keep_last", 2))
     key = secret(config["key_env"])
@@ -515,7 +585,21 @@ def _openai_chat(provider, remote, config, prompt, state, options):
     if options.get("seed") is not None:
         body["seed"] = int(options["seed"])
     think = options.get("thinking")
-    if think is not None and str(think).lower() != "auto":
+    nemotron_ultra = provider == "nvidia" and remote == "nvidia/nemotron-3-ultra-550b-a55b"
+    if provider == 'openrouter':
+        effort = options.get('reasoning_effort')
+        if think is not None and str(think).lower() != 'auto':
+            disabled = str(think).lower() == 'disabled' or isinstance(think, dict) and think.get('type') == 'disabled'
+            body['reasoning'] = {'enabled': not disabled}
+            if not disabled and effort not in (None, 'auto'):
+                body['reasoning']['effort'] = str(effort)
+        elif effort not in (None, 'auto'):
+            body['reasoning'] = {'effort': str(effort)}
+    elif nemotron_ultra:
+        effort = _nemotron_effort(options)
+        if effort is not None:
+            body["reasoning_effort"] = str(effort)
+    elif think is not None and str(think).lower() != "auto":
         disabled = ((isinstance(think, dict) and think.get("type") == "disabled")
                     or str(think).lower() == "disabled")
         if provider in NO_THINKING:
@@ -524,14 +608,20 @@ def _openai_chat(provider, remote, config, prompt, state, options):
             body.setdefault("reasoning_effort", "low" if disabled else "high")
         else:
             body["thinking"] = think if isinstance(think, dict) else {"type": str(think)}
-    if options.get("reasoning_effort") is not None:
+    if provider != 'openrouter' and not nemotron_ultra and options.get("reasoning_effort") is not None:
         body["reasoning_effort"] = str(options["reasoning_effort"])
     data, headers = _post(_url(config, "/chat/completions"), body,
                           {"Content-Type": "application/json", "Authorization": "Bearer " + key}, options["timeout"])
     choice = (data.get("choices") or [{}])[0]
+    if provider == 'openrouter' and (data.get('error') or choice.get('error')):
+        error = data.get('error') or choice['error']
+        status = error.get('code') if isinstance(error, dict) else None
+        category = ('provider_auth' if status in (401, 402, 403) else 'provider_model' if status == 404
+                    else 'provider_retry' if status in (408, 429) or isinstance(status, int) and status >= 500 else 'provider_error')
+        raise ProviderError(category, 'OpenRouter generation failed (code %s)' % status, status)
     message = choice.get("message") or {}
     content = message.get("content")
-    if not content:
+    if not content and provider != 'openrouter':
         content = message.get("reasoning_content") or message.get("reasoning") or ""
     text = strip_reasoning(content or "")
     return Generation(text, {"messages": messages + [{"role": "assistant", "content": text}]},
@@ -607,7 +697,10 @@ def _opencode_failure(error):
     """Map one `opencode run` error event to a safe ProviderError."""
     status = error.get("status") if isinstance(error.get("status"), int) else None
     message = str(error.get("message") or error.get("type") or "OpenCode request failed")
-    if status in (408, 429) or (status or 0) >= 500:
+    transient = any(term in message.lower() for term in ("socket connection was closed", "econnreset", "econnrefused", "etimedout", "fetch failed"))
+    if quota_exhausted(message):
+        category = 'provider_quota'
+    elif status in (408, 429) or (status or 0) >= 500 or status is None and transient:
         category = "provider_retry"
     elif status in (401, 402, 403):
         category = "provider_auth"  # quota/refusal: waiting will not clear it
@@ -634,9 +727,16 @@ def _opencode_run_flags():
 
 def _opencode_run(argv, prompt, timeout):
     """One non-interactive `opencode run`; the whole process tree dies on timeout."""
+    task = Path(argv[argv.index("--file") + 1]) if "--file" in argv else None
+    workspace = Path(tempfile.gettempdir()) / "roconstruct-model-workspace" if task else None
+    if workspace:
+        workspace.mkdir(exist_ok=True)
+    service = _opencode_service() if "--server" in argv else None
+    env = dict(os.environ, OPENCODE_SERVER_PASSWORD=service[1]) if service else None
     process = subprocess.Popen(argv, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                                stderr=subprocess.STDOUT, text=True,
-                               encoding="utf-8", errors="replace")
+                               encoding="utf-8", errors="replace", cwd=workspace, env=env,
+                               creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
     to = int(timeout or 0)
     try:
         output, _unused = process.communicate(prompt, timeout=(None if to <= 0 else max(5, to)))
@@ -680,6 +780,12 @@ def _opencode_service():
         url = data.get("url") if isinstance(data, dict) else None
         password = data.get("password", "") if isinstance(data, dict) else ""
         if isinstance(url, str) and url.startswith(("http://", "https://")):
+            parsed = urlparse(url)
+            try:
+                with socket.create_connection((parsed.hostname, parsed.port or (443 if parsed.scheme == "https" else 80)), timeout=1):
+                    pass
+            except (OSError, ValueError):
+                continue  # Stale metadata must not pin every worker to a dead service.
             return url.rstrip("/"), str(password or "")
     return None
 
@@ -734,6 +840,10 @@ def _opencode_cli(provider, remote, config, prompt, state, options):
     if not exe:
         raise ProviderError("provider_auth",
                             "OpenCode CLI not found: npm i -g opencode-ai, then opencode auth login")
+    if remote == "nvidia/nvidia/nemotron-3-ultra-550b-a55b":
+        effort = _nemotron_effort(options)
+        if effort not in (None, "auto"):
+            remote += "#" + str(effort)
     messages = _cloud_messages(prompt, state, options.get("history_keep_last", 2))
     system = "\n\n".join(message["content"] for message in messages if message["role"] == "system")
     others = [message for message in messages if message["role"] != "system"]
@@ -741,20 +851,29 @@ def _opencode_cli(provider, remote, config, prompt, state, options):
                                           else "Previous context", message["content"])
                          for message in others[:-1])
     body = (system + "\n\n" if system else "") + transcript + others[-1]["content"]
-    discipline = ("RESPOND WITH EXACTLY ONE ```cpp CODE BLOCK AND NOTHING ELSE.\n"
+    discipline = ("RESPOND WITH ONLY THE REQUESTED SEARCH/REPLACE BLOCKS IN ONE ```cpp CODE FENCE.\n"
+                  "The fence must contain edit blocks, not a complete replacement source file.\n"
+                  "Do NOT use tools. Do NOT read files. Do NOT explore the repository.\n\n") if options.get("edit_blocks") else (
+                  "RESPOND WITH EXACTLY ONE ```cpp CODE BLOCK AND NOTHING ELSE.\n"
                   "Do NOT use tools. Do NOT read files. Do NOT explore the repository.\n"
                   "Do NOT add prose outside the code block. Your entire reply must be one "
                   "fenced code block of C++ source.\n\n")
-    if options.get("opencode_api"):
-        try:
-            return _opencode_api(remote, messages, discipline + body, options)
-        except ProviderError:
-            # No running server, wrong port, or a transient HTTP failure: the
-            # one-shot CLI is still a valid signed-in route.
-            pass
+    if options.get("opencode_api") and _opencode_service():
+        # Once submitted, a timeout may still leave generation running remotely.
+        # Do not start a duplicate CLI generation after an uncertain HTTP result.
+        return _opencode_api(remote, messages, discipline + body, options)
     # -m takes provider/model#variant; no --auto: a draft needs text, not tools.
-    code, output = _opencode_run([exe, "run", "-m", remote, "--format", "json"],
-                                  discipline + body, options["timeout"])
+    # Current OpenCode builds do not consume a stdin-only task. A task attachment
+    # also avoids Windows command-line limits for whole native translation units.
+    with tempfile.TemporaryDirectory(prefix="roc-opencode-task-") as folder:
+        task = Path(folder) / "task.txt"
+        task.write_text(discipline + body, encoding="utf-8")
+        # Explicit attachment avoids a timed-out CLI owning/killing a new shared service.
+        service = _opencode_service()
+        server = ["--server", service[0]] if service else _opencode_run_flags()
+        code, output = _opencode_run([exe, "run", "-m", remote, "--format", "json", *server, "--file", str(task),
+                                      "Follow the attached task exactly. Return only its requested output. Do not use tools."],
+                                     "", options["timeout"])
     text, failure = "", None
     for line in output.splitlines():
         try:
@@ -925,12 +1044,15 @@ def generate(model, messages, options=None, state=None):
     if gate:
         lock = gate.enter(provider)
     started, retries = time.monotonic(), 0
+    deadline = None if options.get("retry_forever") else started + max(1, float(options.get("timeout") or 180))
     try:
         attempt = 0
         dropped_knobs = False
         while True:
             ticket = None
             try:
+                if deadline is not None and time.monotonic() >= deadline:
+                    raise ProviderError("provider_retry", "Generation deadline exceeded")
                 if budget:
                     ticket = budget.reserve(estimate_tokens,
                                             _cost(config, estimate_input, int(options["max_tokens"]), remote) or 0.0)
@@ -938,7 +1060,8 @@ def generate(model, messages, options=None, state=None):
                       "codex-cli": _coding_cli, "claude-cli": _coding_cli,
                       "openai-chat": _openai_chat, "openai-responses": _openai_responses,
                       "anthropic-messages": _anthropic, "gemini": _gemini}[config["kind"]]
-                out = fn(provider, remote, config, prompt, state, options)
+                request_options = dict(options, timeout=min(options["timeout"], max(1, math.ceil(deadline-time.monotonic())))) if deadline else options
+                out = fn(provider, remote, config, prompt, state, request_options)
                 out.latency_s = time.monotonic() - started
                 out.retries = retries
                 out.cost = _cost(config, out.input_tokens, out.output_tokens, remote)
@@ -971,13 +1094,20 @@ def generate(model, messages, options=None, state=None):
                         budget.settle(ticket, 0, 0.0)  # the provider did not bill this
                     continue
                 if (error.category != "provider_retry" or
+                        deadline is not None and time.monotonic() >= deadline or
                         (not options.get("retry_forever") and attempt >= int(options.get("retries", 2)))):
-                    if gate and error.category != "cloud_budget":
-                        if error.category == "provider_auth":
-                            gate.disable(provider)
-                        else:
+                    if error.status in (401, 403):
+                        error = ProviderError(error.category, "%s HTTP %d: check %s and model access; environment overrides saved key" %
+                                              (provider, error.status, config.get("key_env", "provider sign-in")), error.status)
+                    elif error.status == 404:
+                        error = ProviderError(error.category, "%s model %s: HTTP 404; check full model ID and base URL" %
+                                              (provider, sanitize_prompt(remote)[:160]), error.status)
+                    if gate:
+                        if error.category in FATAL_ERRORS:
+                            gate.disable(provider, error)
+                        elif error.category == "provider_retry":
                             gate.done(provider, False)
-                    raise
+                    raise error
                 retries += 1
                 # Free-tier OpenCode models rate-limit hard (429); the 0.5s
                 # steps are too fast and the worker just loops "waiting for cloud
@@ -985,6 +1115,8 @@ def generate(model, messages, options=None, state=None):
                 _retry_delay = min(180, 0.5 * (2 ** min(attempt, 7)))
                 if getattr(error, "status", None) == 429:
                     _retry_delay = max(60, _retry_delay)
+                if deadline:
+                    _retry_delay = min(_retry_delay, max(0, deadline - time.monotonic()))
                 if options.get("on_retry"):
                     options["on_retry"](error, retries, _retry_delay)
                 time.sleep(_retry_delay)

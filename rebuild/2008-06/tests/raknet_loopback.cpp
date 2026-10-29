@@ -12,11 +12,11 @@ int main()
 {
     RakPeerInterface* server = RakNetworkFactory::GetRakPeerInterface();
     RakPeerInterface* client = RakNetworkFactory::GetRakPeerInterface();
-    SocketDescriptor serverSocket(61234, 0), clientSocket(0, 0);
+    SocketDescriptor serverSocket(0, "127.0.0.1"), clientSocket(0, "127.0.0.1");
     if (!server->Startup(4, 0, &serverSocket, 1) || !client->Startup(1, 0, &clientSocket, 1))
         return printf("startup failed\n"), 2;
     server->SetMaximumIncomingConnections(4);
-    if (!client->Connect("127.0.0.1", 61234, 0, 0))
+    if (!client->Connect("127.0.0.1", server->GetInternalID().port, 0, 0))
         return printf("connect call failed\n"), 3;
 
     const char message[] = { (char)ID_USER_PACKET_ENUM, 'r', 'o', 'c', '2', '0', '0', '8' };

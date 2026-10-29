@@ -516,7 +516,7 @@ def test_opencode_cli_provider():
         runs = []
 
         def fake_run(argv, prompt, timeout):
-            runs.append((argv, prompt))
+            runs.append((argv, Path(argv[argv.index("--file") + 1]).read_text(encoding="utf-8")))
             return 0, json.dumps({"type": "text", "part": {"text": "```cpp\nint f(){}\n```"}}) + "\n"
 
         providers._opencode_run = fake_run
@@ -525,7 +525,8 @@ def test_opencode_cli_provider():
         assert out.provider == "opencode" and out.model == "opencode-go/deepseek-v4.1-flash#high"
         assert "int f(){}" in out.text
         assert runs[0][0][0].endswith("opencode.cmd")
-        assert runs[0][0][1:] == ["run", "-m", "opencode-go/deepseek-v4.1-flash#high", "--format", "json"]
+        assert runs[0][0][1:6] == ["run", "-m", "opencode-go/deepseek-v4.1-flash#high", "--format", "json"]
+        assert "--file" in runs[0][0] and runs[0][0][-1].startswith("Follow the attached task exactly")
         assert "write cpp" in runs[0][1] and "Reconstruct compact valid C++" in runs[0][1]
         try:
             providers.generate("opencode:opencode/x", "p", options={})

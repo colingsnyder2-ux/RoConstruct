@@ -57,10 +57,13 @@ def _ci(folder, name):
     return next((p for p in folder.iterdir() if p.name.lower() == low), None)
 
 
-@functools.lru_cache(maxsize=8)
 def sdk_roots(tools):
     """Discover installed SDKs once per tools tree, not once per compile batch."""
-    return tuple(sorted(tools.glob("*/**/WinSDK")))
+    return setup.toolchain_paths(tools)[1]
+
+
+sdk_roots.cache_clear = setup.toolchain_paths.cache_clear
+sdk_roots.cache_info = setup.toolchain_paths.cache_info
 
 
 def toolchain(build=BUILD):
@@ -105,7 +108,7 @@ def run(tc, tool, args, cwd, timeout=600):
     """Run cl/link/lib (or a tool path such as ml.exe); returns (returncode, combined output)."""
     exe = tc[tool] if isinstance(tool, str) and tool in tc else Path(tool)
     cmd = setup.cl_command(exe) + [str(a) for a in args]  # Wine on Linux
-    done = subprocess.run(cmd, cwd=cwd, env=env(tc), capture_output=True, text=True, errors="replace", timeout=timeout)
+    done = subprocess.run(cmd, cwd=cwd, env=env(tc), stdin=subprocess.DEVNULL, capture_output=True, text=True, errors="replace", timeout=timeout)
     return done.returncode, (done.stdout + done.stderr).strip()
 
 
@@ -154,7 +157,7 @@ def smoke(client, tc=None):
         return False, "link failed: " + text[-400:]
     try:
         done = subprocess.run([str(out / "smoke.exe")] if setup.WINDOWS else [setup.wine_exe(), str(out / "smoke.exe")],
-                              capture_output=True, text=True, timeout=60)
+                              stdin=subprocess.DEVNULL, capture_output=True, text=True, timeout=60)
     except OSError as error:
         return False, "run failed: %s (the VC90 CRT msvcr90.dll must be loadable)" % error
     return done.returncode == 0 and "rebuild-smoke 1500" in done.stdout, done.stdout.strip() or done.stderr.strip()
@@ -464,7 +467,7 @@ def link_test(client, test, libs, includes=(), defines="WIN32 NDEBUG _MBCS _CRT_
     result.update(linked=code == 0, output=text[-1500:], map=str(out / (test + ".map")))
     if code:
         return result
-    done = subprocess.run([str(out / (test + ".exe"))] + list(run_args), capture_output=True, text=True, timeout=300)
+    done = subprocess.run([str(out / (test + ".exe"))] + list(run_args), stdin=subprocess.DEVNULL, capture_output=True, text=True, timeout=300)
     result.update(ran=True, exit=done.returncode, output=(done.stdout + done.stderr).strip()[-1500:])
     return result
 
@@ -638,10 +641,12 @@ def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- 
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
     includes, compiled = _overlaid(includes, sources, overlay)
+    cache_root = os.path.normcase(os.path.abspath(ROOT))
+    cache_prefix = cache_root.rstrip(os.sep) + os.sep
     @functools.lru_cache(maxsize=None)
     def cache_path(path):
-        path = Path(os.path.abspath(path))
-        return path.relative_to(ROOT).as_posix() if path.is_relative_to(ROOT) else str(path)
+        name = os.path.normcase(os.path.abspath(path))
+        return "." if name == cache_root else name[len(cache_prefix):] if name.startswith(cache_prefix) else name
 
     @functools.lru_cache(maxsize=None)
     def content(path):
@@ -649,25 +654,45 @@ def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- 
             return hashlib.file_digest(stream, "sha256").hexdigest()
 
     @functools.lru_cache(maxsize=None)
+    def inventory_path(path):
+        return os.path.normcase(path)
+
+    inventories, inventory_walked = {}, {}
+    @match._single_load
+    @functools.lru_cache(maxsize=None)
     def inventory(folder):
         # New files can shadow previously resolved includes without changing them.
+        folder = Path(folder)
+        for parent in folder.parents:
+            if parent not in inventories or folder not in inventory_walked[parent]:
+                continue
+            prefix = str(folder.relative_to(parent)) + os.sep
+            normalized = inventory_path(prefix)
+            names = {}
+            for name, paths in inventories[parent].items():
+                selected = [p[len(prefix):] for p in paths if inventory_path(p).startswith(normalized)]
+                if selected:
+                    names[name] = sorted(os.path.join('.', p) if os.sep not in p else p for p in selected)
+            inventories[folder] = names
+            inventory_walked[folder] = inventory_walked[parent]
+            return names
         names = {}
+        walked = set()
         for root, dirs, files in os.walk(folder):
+            walked.add(Path(root))
             dirs[:] = [d for d in dirs if d != "_wrap"]
             prefix = os.path.relpath(root, folder)
             for name in files:
                 if not name.endswith((".obj", ".deps", ".compile.json")):
                     names.setdefault(name.casefold(), []).append(os.path.join(prefix, name))
-        return {name: sorted(paths) for name, paths in names.items()}
+        inventories[folder] = {name: sorted(paths) for name, paths in names.items()}
+        inventory_walked[folder] = walked
+        return inventories[folder]
 
-    # Shared headers recur in every object's deps: stat each once per build (~141k checks per rbxgs-app build).
+    # Shared headers recur in every object's deps: probe each overlay twin once per build.
     @functools.lru_cache(maxsize=None)
     def shadowed_dep(dep):
         return _twin(dep, overlay).exists()
-
-    @functools.lru_cache(maxsize=None)
-    def dep_exists(dep):
-        return Path(dep).exists()
 
     compiler_files = []
     if tc.get("cl"):
@@ -687,9 +712,19 @@ def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- 
         dirs += sorted({p.parent for p in files} - set(map(Path, dirs)))
         # Only a matching basename can shadow an include already used by this TU.
         # Unrelated generated sources must not invalidate every cached object.
-        names = sorted({p.name.casefold() for p in files})
+        names = {p.name.casefold() for p in files}
+        # Missing basenames need no repeated empty entries: any new shadowing
+        # header becomes a nonempty entry and still changes the input digest.
+        directory_inputs = []
+        # Walk broad roots first; nested dependency directories reuse that exact
+        # listing. Keep compiler include order unchanged in the serialized key.
+        for folder in sorted(set(map(Path, dirs)), key=lambda p: len(p.parts)):
+            inventory(folder)
+        for folder in dirs:
+            contents = inventory(folder)
+            directory_inputs.append((cache_path(folder), [(name, contents[name]) for name in sorted(names & contents.keys())]))
         payload = [config, [(cache_path(p), content(p)) for p in files],
-                   [(cache_path(p), [(name, inventory(p).get(name, [])) for name in names]) for p in dirs]]
+                   directory_inputs]
         return hashlib.sha256(json.dumps(payload, sort_keys=True).encode()).hexdigest()
 
     def compile_one(pair):
@@ -698,14 +733,19 @@ def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- 
         obj = out / (src.stem + ".obj")
         deps_file = obj.with_suffix(".deps")
         cache_file = obj.with_suffix(".compile.json")
-        if obj.exists() and deps_file.exists() and cache_file.exists() and src.suffix.lower() != ".asm":
+        command_file = obj.with_suffix(".command.json")
+        if obj.exists() and deps_file.exists() and cache_file.exists() and command_file.exists() and src.suffix.lower() != ".asm":
             deps = json.loads(deps_file.read_text())
             # a header that gained an overlay twin since this object was built is shadowed now: rebuild
             shadowed = overlay and any(shadowed_dep(d) for d in deps)
-            if not shadowed and all(dep_exists(d) for d in deps):
+            if not shadowed:
                 saved = json.loads(cache_file.read_text())
-                if saved == {"inputs": signature(orig, src, deps), "object": content(obj)}:
-                    return str(orig), (True, "content cache hit")
+                try:
+                    # Hashing opens every dependency: a separate existence pass is redundant.
+                    if saved == {"inputs": signature(orig, src, deps), "object": content(obj)}:
+                        return str(orig), (True, "content cache hit")
+                except FileNotFoundError:
+                    pass  # Removed headers/objects require the ordinary compiler path.
         obj.unlink(missing_ok=True)  # a failed compile must not leave a stale object
         cache_file.unlink(missing_ok=True)
         if src.suffix.lower() == ".asm":
@@ -723,6 +763,12 @@ def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- 
                ["/I" + str(i) for i in siblings + list(includes)] + ["/showIncludes", "/Fo" + src.stem + ".obj", str(unit)]
         code, text = run(tc, "cl", args, out)
         included = re.findall(r"^Note: including file:\s*(.+?)\s*$", text, re.M)
+        command_file.write_text(json.dumps({"compiler": str(tc.get("cl")), "args": args,
+            "cwd": str(out), "source": str(src), "source_sha256": content(src),
+            "environment": dict({k: os.environ.get(k, "") for k in ("CL", "_CL_")},
+                                INCLUDE=";".join(str(tc[k]) for k in ("vc_include", "atlmfc_include", "sdk_include") if tc.get(k))),
+            "dependencies": {p: content(Path(p)) for p in sorted(set(included)) if Path(p).exists()},
+            "exit": code}, indent=2))
         text = "\n".join(l for l in text.splitlines() if not l.startswith("Note: including file:"))
         if code == 0:
             deps_file.write_text(json.dumps(sorted(set(included))))
@@ -751,6 +797,7 @@ def patched_tree(client, recipe):
     Without patches the pristine tree is used in place."""
     import hashlib
     import shutil
+    import tempfile
     from roc import libs
     r = libs.RECIPES[recipe]
     src = libs._case_path(libs.LIBS / r["src"]).resolve()
@@ -759,10 +806,9 @@ def patched_tree(client, recipe):
     key = hashlib.sha256(json.dumps(r["patches"], sort_keys=True).encode()).hexdigest()[:12]
     tree = workspace(client) / "out" / "trees" / ("%s-%s" % (recipe, key))
     if not tree.exists():
-        tmp = tree.with_name(tree.name + ".tmp")
-        if tmp.exists():
-            shutil.rmtree(tmp)
-        shutil.copytree(src, tmp)
+        tree.parent.mkdir(parents=True, exist_ok=True)
+        tmp = Path(tempfile.mkdtemp(prefix=tree.name + "-", suffix=".tmp", dir=tree.parent))
+        shutil.copytree(src, tmp, dirs_exist_ok=True)
         for rel, edits in r["patches"].items():
             text = (tmp / rel).read_text(errors="replace")
             for old, new in edits:
@@ -770,7 +816,21 @@ def patched_tree(client, recipe):
                     raise ValueError("patch for %s no longer applies: %r" % (rel, old[:60]))
                 text = text.replace(old, new)
             (tmp / rel).write_text(text)
-        tmp.rename(tree)
+        # Windows scanners can briefly hold the freshly copied directory open.
+        # Independent builders use separate temporary trees; neither deletes the
+        # other's in-progress copy. Only a complete tree becomes the cache entry.
+        for attempt in range(11):
+            try:
+                tmp.rename(tree)
+                break
+            except OSError as error:
+                if tree.is_dir():
+                    assert tmp.parent.resolve() == tree.parent.resolve()
+                    shutil.rmtree(tmp, ignore_errors=True)
+                    break
+                if getattr(error, 'winerror', None) not in (5, 32, 33) or attempt == 10:
+                    raise
+                time.sleep(min(.1 * 2 ** attempt, 1))
     return tree
 
 def build_overlay(client, module, spec):
@@ -782,6 +842,8 @@ def build_overlay(client, module, spec):
     import hashlib
     root = (ROOT / spec["root"]).resolve()
     patches = json.loads((ROOT / spec["patches"]).read_text(encoding="utf-8"))
+    from roc.integration import canonical_patches
+    patches = canonical_patches(patches)
     # one stable folder: a file is rewritten only when its patched text changes, so objects that do not
     # include it stay current (compile_direct tracks each object's includes)
     overlay = workspace(client) / "out" / module / "overlay"
@@ -1157,6 +1219,8 @@ import time
 
 def progress(client="2008-06", log=print, notify=True):
     """Summarize rebuild module reports into docs/rebuild-progress.json."""
+    if os.environ.get('ROC_INTEGRATOR_PRIVATE') == '1':
+        return None  # private builds retain module receipts, not public site aggregates
     module_dir = ROOT / "rebuild" / client / "modules"
     out_dir = workspace(client) / "out"
     specs = sorted(module_dir.glob("*.json"))

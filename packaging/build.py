@@ -22,6 +22,7 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
 DIST = ROOT / "local" / "packages"
 
 # Every module a working cloud worker needs (transitive closure of worker, link,
@@ -35,10 +36,11 @@ WORKER_MODULES = [
 ]
 # Only the maintainer's server needs these, so they stay out of the helper zips.
 SERVER_MODULES = ["cluster", "progress", "reports", "server"]
-WORKER_MODULES += ["agent_memory", "research", "agent_recovery", "bruteforce", "extents", "remill", "repair_scan", "rtti", "boundaries",
+WORKER_MODULES += ["bounds_proof", "agent_memory", "research", "agent_recovery", "bruteforce", "extents", "remill", "repair_scan", "rtti", "boundaries",
                    "claims", "packet", "scout", "ranking", "routing"]
-WORKER_MODULES += ["integration", "integrator", "rebuild", "rebuild_install", "mutsearch", "twinpatch", "native_try", "native_sweep", "standins"]
-SERVER_MODULES += ["integration_verify", "integration_notify", "integration_site"]
+WORKER_MODULES += ["integration", "integrator", "rebuild", "rebuild_install", "mutsearch", "twinpatch", "native_try", "native_sweep", "native_batch", "standins"]
+WORKER_MODULES += ["integration_verify", "native_search"]  # contributor linked preflight shares authoritative build/gates
+SERVER_MODULES += ["integration_notify", "integration_site"]
 
 COMMON_FILES = ["roc.py", "roc.cmd", "roc.sh", "install.cmd", "install.sh",
                 "packaging/organize-local.ps1", "research/repair-patterns.json", "docs/SETUP.md", "docs/SERVER.md",
@@ -51,7 +53,8 @@ COMMON_FILES = ["roc.py", "roc.cmd", "roc.sh", "install.cmd", "install.sh",
                 "docs/logo.png", "docs/favicon.png",
                 "clients/clients.json", "clients/sources.json", "clients/donor.json"]
 # Native contributors need trusted recipes/generator, never private vendor trees.
-COMMON_FILES += ["docs/INTEGRATION.md", "docs/NATIVE_AGENT.md", "docs/MATCHING_AGENT.md", "research/libs-bundle.json", "research/native-units.json", "research/native-source-lock.json"]
+COMMON_FILES += ["docs/INTEGRATION.md", "docs/INTEGRATOR_PERFORMANCE.md", "benchmarks/native_compile_batches.py", "benchmarks/native_matcher.py", "docs/NATIVE_AGENT.md", "docs/MATCHING_AGENT.md", "research/libs-bundle.json", "research/native-units.json", "research/native-source-lock.json"]
+COMMON_FILES += ["benchmarks/native_search.py"]
 COMMON_FILES += subprocess.check_output(["git", "ls-files", "rebuild/2008-06"],
                                         cwd=ROOT, text=True).splitlines()
 
@@ -156,6 +159,8 @@ def version():
 
 def stage(slug, spec, out):
     """Copy one package into out/ so it can be imported and zipped."""
+    from roc.rebuild_install import ensure_abi
+    abi = ensure_abi(ROOT)
     if out.exists():
         shutil.rmtree(out)
     (out / "roc").mkdir(parents=True)
@@ -166,6 +171,9 @@ def stage(slug, spec, out):
         target = out / relative
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(source, target)
+    target = out / 'rebuild/2008-06/manifests/abi-evidence.json'
+    target.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(abi, target)
     # Adopted headers are compiler inputs even if no ordinary mined snippet named them.
     overlay = ROOT / 'rebuild/2008-06/patches/rbxgs-client.json'
     native = json.loads((ROOT / 'research/native-units.json').read_text(encoding='utf-8'))
@@ -193,8 +201,8 @@ def stage(slug, spec, out):
     shutil.copytree(ROOT / "roc" / "web", out / "roc" / "web", dirs_exist_ok=True)
     (out / "roc" / "__init__.py").write_text("", encoding="utf-8")
     (out / "roconstruct-package.json").write_text(json.dumps(
-        {"package": slug, "revision": version(), "native_workflow": True, "native_workflow_version": 5,
-         "matching_workflow_version": 1}, indent=2) + "\n", encoding="utf-8")
+        {"package": slug, "revision": version(), "native_workflow": True, "native_workflow_version": 12,
+         "matching_workflow_version": 4}, indent=2) + "\n", encoding="utf-8")
     for name, text in spec["docs"].items():
         (out / name).write_text(text, encoding="utf-8")
     return out
@@ -298,9 +306,11 @@ def prepare_downloads(package):
     """Refresh the shared bootstrap ZIP/manifest and both standalone agent guides."""
     with zipfile.ZipFile(package) as zipped:
         marker = json.loads(zipped.read("roconstruct-package.json"))
-        if marker.get("matching_workflow_version", 0) < 1 or not {
-                "docs/MATCHING_AGENT.md", "docs/NATIVE_AGENT.md"} <= set(zipped.namelist()):
+        if marker.get("matching_workflow_version", 0) < 4 or not {
+                "docs/MATCHING_AGENT.md", "docs/NATIVE_AGENT.md",
+                "rebuild/2008-06/manifests/abi-evidence.json"} <= set(zipped.namelist()):
             raise ValueError("Worker ZIP lacks the matching/native workflows; rebuild it")
+        abi = zipped.read('rebuild/2008-06/manifests/abi-evidence.json')
     folder = ROOT / "local/findings/data"
     folder.mkdir(parents=True, exist_ok=True)
     manifest = folder / "native-worker.json"
@@ -310,7 +320,8 @@ def prepare_downloads(package):
     shutil.copy2(package, archive)
     for name in ("NATIVE_AGENT.md", "MATCHING_AGENT.md"):
         shutil.copy2(ROOT / "docs" / name, folder / name)
-    data.update(schema=1, workflow_version=5, matching_workflow_version=1,
+    data.update(schema=1, workflow_version=12, matching_workflow_version=4,
+                abi_manifest_sha256=hashlib.sha256(abi).hexdigest(), abi_manifest_classes=len(json.loads(abi)),
                 url=base + archive.name, sha256=hashlib.sha256(archive.read_bytes()).hexdigest(),
                 size=archive.stat().st_size, guide=base + "NATIVE_AGENT.md", matching_guide=base + "MATCHING_AGENT.md",
                 native_clients=["2008-06"], invitation_required=False)

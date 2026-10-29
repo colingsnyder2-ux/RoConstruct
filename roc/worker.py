@@ -481,7 +481,7 @@ def main_args(payload, argv=()):
         return None
     keep_awake()
     return run_concurrent(server, user, token, model, rounds, max_size, use_revng,
-                          given.jobs, workers=workers, only=only_clients(client),
+                          max_jobs=given.jobs, workers=workers, only=only_clients(client),
                           use_remill=use_remill, force_lift=given.force_lift,
                           cloud_allowed=cloud_allowed, cloud_budget=budget,
                           max_tokens=max_tokens, thinking=thinking, order=order,
@@ -947,7 +947,7 @@ def run(server, user, token=None, model=None, rounds=4, max_size=256, use_revng=
                 control.command({"action": "stop"})
         save_session_state(worker, user, model, done, matched, failures)
         if provider_options.get("budget_exhausted"):
-            log("Cloud budget exhausted; worker stopped.")
+            log(provider_options.get("stop_reason", "Cloud budget exhausted") + "; worker stopped.")
             break
         if done % 10 == 0:
             log("== %s: %d functions tried, %d matched this session ==" % (time.strftime("%H:%M"), done, matched))
@@ -978,7 +978,7 @@ def run_concurrent(server, user, token=None, model=None, rounds=4, max_size=256,
     workers = resolve_workers(workers, model, source_only)
     if cloud_gate is None:
         from roc import providers
-        cloud_gate = providers.CloudGate(workers)
+        cloud_gate = providers.CloudGate(providers.cloud_slots(model,workers))
     shared_examples, shared_sources = {}, {}
     family_state, family_lock = {"id": family_id}, threading.Lock()
     if workers == 1:
@@ -1436,8 +1436,9 @@ def work_one(api, user, job, info, model, rounds, revng, log, examples_cache=Non
             failure_reason = "api"
         else:
             failure_reason = "worker_error"
-        if failure_reason in ("cloud_budget", "provider_auth") and provider_options is not None:
+        if (failure_reason == "cloud_budget" or failure_reason in providers.FATAL_ERRORS) and provider_options is not None:
             provider_options["budget_exhausted"] = True
+            provider_options["stop_reason"] = "Cloud budget exhausted" if failure_reason == "cloud_budget" else "Provider configuration failed: " + failure
         if getattr(error, "category", "") == "provider_circuit":
             provider, _remote, _config = providers.parse_model(model)
             log("  cloud circuit open; waiting 60s before retrying %s." % provider)

@@ -569,6 +569,10 @@ def cmd_rebuild(a):
     if a.action == "install":
         install(ROOT, a.name, a.target)
         return
+    if a.action == 'prepare':
+        from roc.rebuild_install import prepare
+        prepare(a.name)
+        return
     if not (ROOT / "rebuild" / a.name / "modules").exists():
         install(ROOT, a.name)
     if a.action == "doctor":
@@ -613,7 +617,8 @@ def cmd_integrator(a):
               "rounds": a.rounds, "max_tokens": a.output_budget, "thinking": a.thinking,
               "reasoning_effort": a.reasoning_effort, "cloud_allowed": a.allow_cloud or saved.get("cloud_allowed", False),
               "cloud_concurrency": "auto" if a.cloud_concurrency == "auto" else int(a.cloud_concurrency), "native_batch_files": a.batch_files,
-              "native_compile_workers": a.compile_workers, "native_context": a.context,
+              "native_compile_workers": a.compile_workers, "native_context": a.context, "native_generation": a.generation,
+              "native_compile_batch": a.compile_batch,
               "max_cloud_requests": a.max_cloud_requests, "max_cloud_tokens": a.max_cloud_tokens,
               "max_cloud_cost": a.max_cloud_cost}
     config = gui_worker.validate(config)
@@ -2105,7 +2110,7 @@ def cmd_worker(a):
         raise SystemExit("Unit lease needs --unit NAME")
     worker.save_settings(user=user, server=srv, model=a.model, order=order)
     worker.run_concurrent(srv, user, a.token or s.get("token"), chosen, a.rounds, a.max_size,
-                          not a.no_revng, a.jobs, a.workers or "1", source_only=a.source_only,
+                          not a.no_revng, max_jobs=a.jobs, workers=a.workers or "1", source_only=a.source_only,
                           only=[a.client] if a.client else None, strategy=a.strategy,
                           cloud_allowed=cloud_allowed, cloud_budget=budget, cloud_gate=gate,
                           diverse_candidates=a.diverse_candidates, cloud_min_size=a.cloud_min_size,
@@ -2122,6 +2127,13 @@ def cmd_worker(a):
 
 def cmd_provider(a):
     from roc import providers
+    if a.sub == 'models':
+        config = providers.providers().get(a.name)
+        if config is None:
+            raise SystemExit('Unknown provider: ' + a.name)
+        for model in providers.provider_models(a.name, config):
+            print(a.name + ':' + model)
+        return
     if a.sub == "list":
         for name, config in sorted(providers.providers().items()):
             if name == "chatgpt":
@@ -2757,16 +2769,16 @@ def main(argv=None):
     p.set_defaults(fn=cmd_client_remove)
     cmd("rebuild", cmd_rebuild, "2008 client rebuild: doctor | audit | module NAME (see rebuild/<client>/POLICY.md)",
         (["name"], {"help": "client, e.g. 2008-06"}),
-        (["action"], {"choices": ["install", "doctor", "audit", "module", "status", "closure", "milestones", "progress", "placed"]}),
+        (["action"], {"choices": ["install", "prepare", "doctor", "audit", "module", "status", "closure", "milestones", "progress", "placed"]}),
         (["target"], {"nargs": "?", "help": "module name for `module` (rebuild/<client>/modules/NAME.json)"}),
         (["--no-notify"], {"action": "store_true", "help": "do not send the Discord webhook"}))
     cmd("integrate", cmd_integrate, "claim native integration work, bulk submit, track verified credit",
-        (["action"], {"nargs": "?", "default": "next", "choices": ["next", "submit", "force-queue", "fingerprint", "status", "watch", "renew", "release", "sync", "invite"]}),
+        (["action"], {"nargs": "?", "default": "next", "choices": ["next", "submit", "resume", "force-queue", "fingerprint", "status", "watch", "renew", "release", "park", "unpark", "sync", "invite"]}),
         (["--count"], {"type": int, "default": 1, "help": "claim 1-1024 classes; --all submits them as one verified batch"}),
         (["--targets"], {"type": int, "help": "claim enough classes for this many targets (up to 100000), one baseline"}),
         (["--batch"], {"help": "saved batch JSON from next; select its claims for submit/renew/release"}),
         (["--unit"], {}), (["--claim"], {}), (["--all"], {"action": "store_true"}),
-        (["--reason"], {"help": "park a released class for two hours, citing the blocker"}),
+        (["--reason"], {"help": "blocker for explicit park (two hours); release frees immediately; unpark frees your owned parked claims"}),
         (["--id"], {}), (["--model"], {}), (["--evidence-file"], {}),
         (["--retry"], {"action": "store_true", "help": "retry a rejected batch after a verifier/environment failure"}),
         (["--wait"], {"action": "store_true"}), (["--server"], {}), (["--user"], {}), (["--token"], {}))
@@ -3004,6 +3016,9 @@ def main(argv=None):
     p = sub.add_parser("provider", help="configure or test non-secret cloud model providers")
     ps = p.add_subparsers(dest="sub", required=True)
     ps.add_parser("list", help="show providers and whether their key environment variable is set").set_defaults(fn=cmd_provider)
+    pm = ps.add_parser('models', help='list provider models; OpenRouter uses its cached public catalog')
+    pm.add_argument('name')
+    pm.set_defaults(fn=cmd_provider)
     psecret = ps.add_parser("secrets", help="show safe user-local API-key file path")
     psecret.add_argument("--open", action="store_true", help="create and open the file in Notepad")
     psecret.set_defaults(fn=cmd_provider)
@@ -3100,9 +3115,11 @@ def main(argv=None):
     cmd("uninstall", cmd_uninstall, "remove what install put on this PC; asks before every step",
         (["--yes"], {"action": "store_true"}))
     cmd("integrator", cmd_integrator, "parallel AI native integration with independent server verification",
+        (["--generation"], {"choices": ["auto", "edits", "method"], "default": "auto", "help": "auto: one-shot method then anchored repair; edits: SEARCH/REPLACE; method: complete method body"}),
+        (["--compile-batch"], {"type": int, "default": 4, "help": "AI method workers sharing one source-file compile (1-32; 1 disables)"}),
         (["--model"], {"help": "codex:default, claude:sonnet, opencode:provider/model, API or local model"}),
         (["--workers"], {"default": "4", "help": "parallel AI jobs (1-256 or auto)"}),
-        (["--compile-workers"], {"type": int, "default": 4, "help": "concurrent local compilers (1-64)"}),
+        (["--compile-workers"], {"type": lambda v: v if v == "auto" else int(v), "default": "auto", "help": "local compilers: auto CPU-aware up to 8, or 1-64"}),
         (["--batch-files"], {"type": int, "default": 40, "help": "files per verified batch (1-1024)"}),
         (["--rounds"], {"type": int, "default": 3}),
         (["--output-budget"], {"type": int, "default": 3072}),

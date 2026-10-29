@@ -216,7 +216,7 @@ class Dashboard:
                 "providers": [{"name": name, "ready": providers.provider_ready(name),
                                "auth": "chatgpt" if name == "chatgpt" else "cli" if name in ("opencode", "codex", "claude") else "api-key",
                                "models": ([model["slug"] for model in chatgpt.models(refresh=False)]
-                                          if name == "chatgpt" else row.get("defaults", []))}
+                                          if name == "chatgpt" else providers.provider_models(name, row))}
                               for name, row in providers.providers().items()],
                 "libraries": libs.NAMES,
                 "commands": [{"name": name, "title": row[0], "description": row[1], "target": row[2], "group": "Start here" if name in ("doctor","install","client-fetch","analyze","pull") else "Match and submit" if name in ("mass","auto","xcopy","libs","donor","check","submit") else "Advanced"}
@@ -408,6 +408,11 @@ class Dashboard:
                 elif kind == "job_started":
                     job["slots"].setdefault(str(fields["slot"]), {}).update(addr=fields["addr"], client=fields["client"],
                                                                           area=fields.get("area", ""), busy=True)
+                elif kind == 'native_partial':
+                    job['native_partials'] = job.get('native_partials', 0) + 1
+                    job['slots'].setdefault(str(fields['slot']), {}).update(
+                        file=fields['file'], partial_score=fields['score'],
+                        phase='Partial %.3f%% -> %.3f%% (local)' % (fields['previous'], fields['score']))
                 elif kind in ("native_started", "native_progress", "native_result"):
                     job["slots"].setdefault(str(fields["slot"]), {}).update(
                         file=fields["file"], phase=fields.get("message", "Working"),

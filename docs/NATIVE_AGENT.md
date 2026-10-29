@@ -36,6 +36,57 @@ A rejected batch needs repair; it does not end the session. If no fresh
 targets remain, stay alive at a modest polling interval; revisit after source/evidence changes.
 Respect stop/pause and configured limits. Report only meaningful blockers or new progress.
 
+Worker v11's automatic integrator starts another discovery cycle after at most 60s
+without fresh files, rotating pending targets instead of waiting indefinitely for
+published statistics to change. Failed linked preflight preserves saved proposals
+and continues other files after 30s; it never turns a rejected proof into an accepted
+one. Compact mode shows batch/preflight stages after file workers finish. Explicit
+stop/pause, provider authentication failures, configured budgets and the two-hour
+server-outage deadline still apply.
+
+Worker v11 disconnects noninteractive build/generator processes from the controller's
+stdin. On Windows an inherited command pipe can block Python before the generator
+starts, causing repeated 120-second timeouts. Explicit controller pipes remain active.
+Restarting the same dashboard session reuses its owned private workspace and retains
+native edits, saved proofs and build outputs while refreshing runtime code. New sessions
+stay isolated. Reused outputs still pass input-content, compiler, ownership and runtime
+checks; reuse is not acceptance.
+
+For OpenCode NVIDIA sign-in, select `opencode:nvidia/nvidia/nemotron-3-ultra-550b-a55b#none`;
+direct NVIDIA API uses `nvidia:nvidia/nemotron-3-ultra-550b-a55b` with `NVIDIA_API_KEY`.
+Keep the full vendor namespace. HTTP 401/403 means repair credentials/access, 402 means
+provider balance, and 404 means repair model ID/endpoint. Do not retry these as outages.
+Worker v11 skips queued files on permanent provider errors and avoids duplicate CLI
+generations after uncertain HTTP results. Automatic integrator mode can request complete
+method bodies, then use anchored repairs. Manual native edits remain fenced SEARCH/REPLACE blocks.
+
+Automatic integrator workers share a whole-source-file compile for independent method edits:
+`roc integrator --compile-batch 4 --compile-workers auto`. The default is four methods;
+1 disables shared compilation, up to 32 is supported. Conflicting edits and failing batches
+split for diagnosis, and recovered combinations are compiled again. Exact code/data,
+baseline-loss, linked ownership, ABI and runtime checks remain mandatory. Compiler auto
+caps at eight or half the logical CPUs; more AI workers need not mean more compilers.
+Windows dependency-tree publication retries brief directory locks without copying again.
+Warm compiler caching normalizes Windows path casing while retaining header/shadow hashes.
+
+Worker v12 automatically queues immutable saved proposals when the accepted baseline
+advances before submission. The next automatic pass rechecks them without AI, using
+their original model attribution. Current compiler/code/data/ownership proofs and
+combined linked/runtime/ABI checks remain mandatory. Already integrated targets are
+skipped; stale individual edits are retained separately for repair without blocking
+safe files. Gateway recovery checks existing server state before replaying requests.
+Rejected server batches are not blindly resubmitted. Recovery archives and tickets
+live under the run's `recovery-proposals/` and `recovery-pending/` directories.
+
+Automatic scheduling fills a short fresh-file batch with different pending targets
+from earlier files when available. It avoids refilling files whose known targets
+were exhausted; source/baseline changes refresh scheduling evidence. The dashboard
+shows active file workers versus configured slots. AI slots can legitimately be idle
+during linked preflight. Thirty-second phase heartbeats distinguish those checks
+from a stalled controller. The RakNet runtime test binds both peers to localhost
+with ephemeral ports, preserving reliable-packet verification without listening on
+LAN interfaces or colliding with another session's fixed test port.
+
 ## First response: select the client
 
 Before setup or identity questions, fetch the public server's `/v1/status` using the agent's HTTP tool
@@ -55,7 +106,7 @@ Keep the selected client locked for this run.
 
 Do not ask the user to locate or attach a Worker ZIP. If `roc/native_try.py`, `research/native-units.json`,
 or `research/native-source-lock.json` is missing, `roc native-try --help` is unavailable, or a package marker
-reports `native_workflow_version` below 5, download the current Worker package yourself:
+reports `native_workflow_version` below 12, download the current Worker package yourself:
 
 - Manifest: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.json
 - Package: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.zip
@@ -69,7 +120,7 @@ into a new folder without overwriting the user's existing checkout or edits:
 $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 $nativeManifest = Invoke-RestMethod ('https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.json?t=' + [guid]::NewGuid().ToString('N'))
-if ($nativeManifest.workflow_version -lt 5 -or
+if ($nativeManifest.workflow_version -lt 12 -or
     $nativeManifest.url -ne 'https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.zip' -or
     $nativeManifest.sha256 -notmatch '^[0-9a-fA-F]{64}$') { throw 'Invalid Worker manifest' }
 $nativeFolder = Join-Path (Get-Location) ('RoConstruct-Native-' + [guid]::NewGuid().ToString('N'))
@@ -140,16 +191,25 @@ On Windows, run these existing commands through `.\roc.cmd` (Linux: `./roc.sh`),
 roc install --yes --client 2008-06
 roc client-fetch 2008-06
 roc analyze 2008-06
+roc vtables 2008-06
 roc rebuild 2008-06 install
 roc pull 2008-06
 roc lib-fetch rbxgs rbxgs-net rbxgs-appdraw rbxgs-render rbxgs-view openrbx-client
 roc libs-bundle fetch mfc-9.0-rtm
+roc rebuild 2008-06 prepare
 roc integrate sync
 roc rebuild 2008-06 doctor
 roc native-try targets --limit 20
 ```
 
-Skip `analyze` when `work/2008-06/functions.jsonl` already covers the current verified client. `install`
+Skip analysis setup only when both `work/2008-06/functions.jsonl` and `vtables.json` cover the current verified client.
+If only the RTTI index is missing, run `roc vtables 2008-06` without repeating analysis.
+`rebuild prepare` validates the published ABI evidence, RTTI index, all declared historical compiler
+profiles and dependency libraries before a cold native baseline. Missing libraries build through
+their ordinary module recipes (including VS2005/50727 where declared), outside the pinned
+VS2008/21022 app verifier. It does not relax that profile or any acceptance gate. Worker packages
+include the original-binary ABI manifest; `rebuild install` also fills it when recipes already exist.
+`install`
 installs Python packages and historical compilers; the VCForPython bundle supplies the Windows SDK.
 `lib-fetch` downloads rbxgs and its Git submodules; `pull` downloads mined sources and generated units,
 which `lib-fetch` then installs. The Worker also bundles the accepted adopted native headers in
@@ -238,7 +298,32 @@ If doctor cannot find an installed SDK, set `ROC_WINSDK` to this PC's SDK folder
    - When the accepted baseline moves, submit recompiles versioned saved edits against
      the latest clean baseline automatically. Changed anchors, lost gains or regressions
      stop submission and retain saved proposals for repair.
-   - Submission recompiles saved proposals and verifies their gains and preserved exacts before claiming or staging.
+   - Submission recompiles saved proposals, then independently builds the combined linked module
+     and runs M2/M4a/M5, size/base, global coverage and ownership gates before staging.
+     `roc native-try preflight` runs the linked batch proof without claiming or submitting.
+     First proof needs a cold baseline build; later proofs reuse content-checked baseline objects.
+     Per-file `check` is preliminary: local exact bytes do not prove linked ownership.
+   - Claims follow the server's address-to-unit inventory. Skip parked classes and absent units;
+     a method named ICharacterSubject may be scheduled under RBX::Humanoid. Keep the existing
+     carrier-claim fallback for catalog-less proposals. Reuse valid owned claims.
+   - After a gateway error/timeout, use `roc integrate resume`, or rerun native-try submit.
+     A hash-checked journal saves the exact request and proof locations before POST. Recovery
+     checks server state first and reuses the identical idempotent request; never create a new
+     batch blindly. Retain proposals when claims expire or a saved request needs repair.
+   - Forbidden invented-type edits fail before trial compilation. Invalid saved proposals are
+     retained under `blocked-proposals/`; they do not prevent valid saved files from proceeding.
+   - `roc integrate release --claim ID` frees immediately. To park a real blocker for two hours,
+     use `roc integrate park --claim ID --reason TEXT`. `release --reason` is rejected.
+     `roc integrate unpark --claim ID` (or `--all`) clears your owned parks and frees those classes immediately.
+     New park/unpark and claim-inventory APIs require the protocol-3 server update.
+   - Source identity is case-insensitive. Keep the accepted registry spelling (`GUI.cpp`, for example).
+     A single alias is canonicalized; two differently cased keys in one registry/batch are rejected.
+     Never duplicate a file entry to bypass its existing edits or floating-point pragmas.
+   - Linked proof receipts record gained/lost/uncovered addresses and baseline/candidate folders.
+     Compiler objects have `.command.json` evidence: actual source hash, flags, defines,
+     include search order, resolved header hashes and compiler environment.
+     Failed revalidation leaves saved proposals intact. Replacing a successful saved check
+     archives its previous proposal file under `work/native-try/archive/`.
    - If another worker holds a required class, submit reports the blocked class and retains the proposal for a later retry.
      A partial batch archives only the submitted proposals; the remaining proposals stay saved.
 

@@ -6,6 +6,7 @@
   roc native-try check FILE BLOCKS.txt          apply SEARCH/REPLACE blocks, compile the real file, report;
                                                 a new exact with no loss is minimized and saved as a proposal
   roc native-try check FILE                     revalidate saved edits after syncing a new baseline
+  roc native-try preflight                      independently build/link saved batch and run acceptance gates
   roc native-try submit --model MODEL           claim, stage and submit every saved proposal as one verified batch
 
 Saved proposals live in work/native-try/proposals.json; later checks of a file build on its saved edits.
@@ -59,7 +60,21 @@ def context():
 
 
 def saved():
-    return json.loads(PROPOSALS.read_text()) if PROPOSALS.exists() else []
+    proposals = json.loads(PROPOSALS.read_text()) if PROPOSALS.exists() else []
+    overlay = native_sweep.ROOT / "rebuild/2008-06/patches/rbxgs-client.json"
+    base = json.loads(overlay.read_text()) if overlay.exists() else {}
+    names = integration.canonical_patches({p["file"]: [] for p in proposals}, base)
+    canonical = {name.casefold(): name for name in names}
+    seen = set()
+    for proposal in proposals:
+        name = canonical[proposal["file"].casefold()]
+        if name.casefold() in seen:
+            raise ValueError("Duplicate saved source proposals: " + name)
+        seen.add(name.casefold())
+        proposal["file"] = name
+        if "related_headers" in proposal:
+            proposal["related_headers"] = integration.canonical_patches(proposal["related_headers"], base)
+    return proposals
 
 
 def file_state(ctx, rel):
@@ -256,8 +271,31 @@ def cmd_check(ctx, args):
         proposal["translation_unit"] = ctx.translation_unit
     if ctx.related_headers:
         proposal["related_headers"] = {name: pairs for name, pairs in ctx.related_headers.items() if pairs}
+    if PROPOSALS.exists():
+        archive = OUT / "archive" / ("before-check-" + integration.digest(PROPOSALS.read_text()) + ".json")
+        if not archive.exists():
+            integration.atomic_json(archive, json.loads(PROPOSALS.read_text()))
     integration.atomic_json(PROPOSALS, rest + [proposal])
     print("saved: %d edit(s) for %s" % (len(proposal["edits"]), ", ".join(w["addr"] for w in proposal["witnesses"])))
+
+
+def cmd_preflight(args):
+    native_sweep.require_private_workspace()
+    from roc.rebuild_install import prepare
+    prepare()
+    context()  # sync the accepted baseline before combining saved recipes
+    proposals = saved()
+    if not proposals:
+        raise ValueError("no saved proposals")
+    additions = {}
+    for proposal in proposals:
+        for name, edits in dict(proposal.get("related_headers", {}), **{proposal["file"]: proposal["edits"]}).items():
+            for edit in edits:
+                if edit not in additions.setdefault(name, []):
+                    additions[name].append(edit)
+    from roc.integration_verify import linked_preflight
+    receipt = linked_preflight(native_sweep.ROOT, additions, OUT, lambda message: print(message, flush=True))
+    print(json.dumps(receipt, indent=1))
 
 
 def cmd_submit(args):
@@ -290,11 +328,13 @@ def main(args):
 
 
 def dispatch(args):
+    if args.action == "preflight":
+        return cmd_preflight(args)
     if args.action == "submit":
         return cmd_submit(args)
     if args.action == "reset":
         if getattr(args, "file", None):
-            remaining = [p for p in saved() if p["file"] != args.file]
+            remaining = [p for p in saved() if p["file"].casefold() != args.file.casefold()]
             if remaining:
                 integration.atomic_json(PROPOSALS, remaining)
             else:
@@ -305,12 +345,16 @@ def dispatch(args):
     if args.action in ("evidence", "check") and not args.file:
         raise ValueError(args.action + " requires a source FILE")
     ctx = context()
+    if getattr(args, "file", None):
+        registry = native_sweep.ROOT / "rebuild/2008-06/patches/rbxgs-client.json"
+        if registry.exists():
+            args.file = next(iter(integration.canonical_patches({args.file: []}, json.loads(registry.read_text()))))
     {"targets": cmd_targets, "evidence": cmd_evidence, "check": cmd_check}[args.action](ctx, args)
 
 
 def register(cmd):
     cmd("native-try", main, "agent-driven native integration: targets, evidence, check, submit (docs/NATIVE_AGENT.md)",
-        (["action"], {"choices": ["targets", "evidence", "check", "submit", "reset"]}),
+        (["action"], {"choices": ["targets", "evidence", "check", "preflight", "submit", "reset"]}),
         (["file"], {"nargs": "?"}), (["blocks"], {"nargs": "?"}),
         (["--context"], {"choices": ["file", "methods"], "default": "file"}),
         (["--limit"], {"type": int, "default": 25}), (["--model"], {}),

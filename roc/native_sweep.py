@@ -1,6 +1,7 @@
 """Recipe-driven native discovery. Local proofs are proposals, never native credit."""
 import json
 import hashlib
+import functools
 import os
 import re
 import subprocess
@@ -8,12 +9,12 @@ import sys
 import time
 import threading
 import uuid
-from collections import Counter, defaultdict
+from collections import Counter, defaultdict, deque
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from types import SimpleNamespace
 
-from roc import fingerprint, integration, libs, match, rebuild, worker
+from roc import fingerprint, integration, libs, match, rebuild, worker, native_search
 
 ROOT = Path(__file__).resolve().parent.parent
 FLAGS = "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD"
@@ -22,6 +23,117 @@ MODES = tuple(os.environ.get("ROC_NATIVE_MODES", "assertions,fp-fast,assertions-
 PRAGMAS = {"fp": "#pragma float_control(precise, off)\n", "osize": '#pragma optimize("s", on)\n',
            "noautoinline": "#pragma auto_inline(off)\n"}
 OUTPUT_MARKER = 'out.write_text(json.dumps(patches, indent=1) + "\\n", encoding="utf-8")'
+
+
+class BaselineAdvanced(ValueError):
+    """Saved proposals require fresh proofs against the latest accepted baseline."""
+
+
+class SavedProposalError(ValueError):
+    """One saved candidate cannot be safely rebased; other candidates may proceed."""
+
+
+def hold_proposals(output, proposals, revision, ticket=None, state='pending', model=None):
+    content = (json.dumps(proposals, sort_keys=True, indent=2) + '\n').encode()
+    key = hashlib.sha256(content).hexdigest()
+    archive = Path(output)/'recovery-proposals'/(key+'.json')
+    if not archive.exists():
+        archive.parent.mkdir(parents=True, exist_ok=True)
+        temporary = archive.with_name(key+'.'+uuid.uuid4().hex+'.tmp')
+        temporary.write_bytes(content)
+        os.replace(temporary, archive)
+    if hashlib.sha256(archive.read_bytes()).hexdigest() != key:
+        raise ValueError('Saved recovery archive hash mismatch')
+    ticket = Path(ticket) if ticket else Path(output)/'recovery-pending'/(integration.digest([key, model])+'.json')
+    integration.atomic_json(ticket, dict(format=1, state=state, proposals=archive.relative_to(output).as_posix(),
+        sha256=key, model=model, attempted_revision=revision if state == 'blocked' else None))
+    return ticket
+
+
+def pending_proposals(output, revision):
+    output = Path(output).resolve()
+    for ticket in sorted((output/'recovery-pending').glob('*.json')):
+        record = json.loads(ticket.read_text())
+        if record.get('format') != 1 or record.get('state') == 'done' or not record.get('model'):
+            continue
+        if record.get('state') == 'blocked' and record.get('attempted_revision') == revision:
+            continue
+        archive = (output/record['proposals']).resolve()
+        if not archive.is_relative_to(output/'recovery-proposals'):
+            raise ValueError('Saved recovery path escapes its proposal archive')
+        if hashlib.sha256(archive.read_bytes()).hexdigest() != record['sha256']:
+            raise ValueError('Saved recovery archive hash mismatch')
+        integration.atomic_json(ticket, dict(record, state='rechecking', attempted_revision=revision))
+        return ticket, archive
+    return None, None
+
+
+def rebase_saved_edits(text, edits):
+    kept = []
+    for old, new in edits:
+        if old and text.count(old) == 1:
+            kept.append([old, new])
+        elif new and text.count(new) == 1 and (not old or old not in text):
+            continue  # Already applied exactly; never fuzzy-match a changed anchor.
+        elif old and old not in text and not new:
+            continue  # An already absent deletion changes nothing; the new proof is still required.
+        elif not old and new not in text:
+            kept.append([old, new])
+        else:
+            raise SavedProposalError('Saved edit anchor changed or became ambiguous')
+    return kept
+
+
+def recheck_proposal(proposal, ctx, texts, output, revision, log, recover=False):
+    rel = proposal['file']
+    if rel not in texts:
+        texts[rel] = (ctx.overlay/rel if (ctx.overlay/rel).exists() else ctx.tree/rel).read_text(errors='replace')
+    log('native rechecking ' + rel)
+    if not proposal.get('base_revision'):
+        raise SavedProposalError('Saved proof is unversioned; run roc native-try check ' + rel)
+    if proposal['base_revision'] != revision:
+        log('accepted baseline advanced; independently revalidating saved edits: ' + rel)
+    options = {'translation_unit':proposal['translation_unit']} if proposal.get('translation_unit') else {}
+    baseline = compile_unit(texts[rel], rel, 'recheck-baseline', output, ctx.tree, ctx.overlay,
+                            ctx.includes, ctx.defines, ctx.flags, **options)
+    if not baseline['ok']:
+        raise ValueError('Saved proposal baseline compile failed: ' + rel)
+    keep = {h['addr'] for h in ctx.matcher.scan(Path(baseline['object']).read_bytes())}
+    wanted = {h['addr'] for h in proposal['witnesses']}
+    if recover:
+        wanted -= keep | ctx.integrated
+        if not wanted:
+            log('Saved targets already exact/integrated; no submission needed: ' + rel)
+            return None
+        proposal['edits'] = rebase_saved_edits(texts[rel], proposal['edits'])
+        for name, edits in list(proposal.get('related_headers', {}).items()):
+            path = ctx.overlay/name if (ctx.overlay/name).exists() else ctx.tree/name
+            proposal['related_headers'][name] = rebase_saved_edits(path.read_text(errors='replace'), edits)
+    try:
+        source = apply_edits(texts[rel], proposal['edits']) if proposal['edits'] else texts[rel]
+    except ValueError as error:
+        raise SavedProposalError(str(error)) from error
+    final = compile_unit(source, rel, 'recheck-final', output, ctx.tree, ctx.overlay,
+                         ctx.includes, ctx.defines, ctx.flags,
+                         **dict(options, **({'related_headers':proposal['related_headers']} if proposal.get('related_headers') else {})))
+    if not final['ok']:
+        raise SavedProposalError('Saved proposal compile failed: ' + rel)
+    missing = set(proposal.get('proof', {}).get('defined_symbols', ())).intersection(final.get('undefined_symbols', ()))
+    if missing:
+        raise SavedProposalError('Saved proposal lost required definitions: ' + ', '.join(sorted(missing)))
+    hits = ctx.matcher.scan(Path(final['object']).read_bytes())
+    found = {h['addr'] for h in hits}
+    if not wanted <= found or keep - found:
+        raise SavedProposalError('Saved proposal lost exact matches; rerun roc native-try check ' + rel)
+    ownership = ownership_candidates(Path(final['object']).read_bytes(), [h for h in hits if h['addr'] in wanted])
+    if not any(candidates == [addr] for addr, candidates in ownership.items()):
+        log('no unique module ownership candidates; proposal retained locally: ' + rel)
+        return None
+    proposal['proof'] = dict(final, hits=hits, losses=[], ownership_candidates=ownership)
+    if recover:
+        proposal['witnesses'] = [dict(h, claim_unit=claim_unit(h, ctx.by_addr[h['addr']])) for h in hits if h['addr'] in wanted]
+    proposal['base_revision'] = revision
+    return proposal
 
 
 def require_private_workspace():
@@ -48,6 +160,11 @@ def closing(text, start, left, right):
 
 
 def methods(text):
+    return dict(_method_spans(text))
+
+
+@functools.lru_cache(maxsize=32)
+def _method_spans(text):
     """Unambiguous out-of-line methods only; constructors/templates/operators defer."""
     clean = masked_cpp(text)
     result = defaultdict(list)
@@ -61,7 +178,7 @@ def methods(text):
             continue
         token = found[1] + "::" + found[2]
         result[token].append((found.start(), finish))
-    return {token: spans[0] for token, spans in result.items() if len(spans) == 1}
+    return tuple((token, spans[0]) for token, spans in result.items() if len(spans) == 1)
 
 
 def without_assertions(text):
@@ -201,22 +318,219 @@ def experiments(text, modes=None):
     return result
 
 
+def grid_discovery(config, texts, targets, matcher, output, jobs, compile_source, names, by_addr, log):
+    """Compile and match in separate bounded pools; process results as they finish."""
+    from concurrent.futures import wait, FIRST_COMPLETED
+    started = time.monotonic()
+    journal = native_search.Journal(output)
+    def partial_event(row):
+        log('native partial %s %s: %.3f%% -> %.3f%% (local search; no exact credit)' % (row['file'], row['addr'], row['previous'], row['score']))
+        if config.get('partial_report'):
+            config['partial_report'](row)
+    partials = native_search.Partials(output, config.get('base_revision'), config.get('partial_floor', 50), on_improvement=partial_event)
+    homes = target_files(texts, targets, names, by_addr)
+    symbols = {rel: {a: names[a]['symbol'] for a in addrs if names.get(a, {}).get('symbol')}
+               for rel, addrs in homes.items()}
+    tasks, sources, explicit, deferred, exhausted = [], {}, {}, {}, {}
+    for rel, text in texts.items():
+        modes = config.get('modes')
+        variants = experiments(text, modes)
+        selected = {symbol_method(s) for s in symbols.get(rel, {}).values()}
+        scoped = config.get('scoped_modes', ['scoped-osize', 'scoped-speed', 'scoped-fp', 'scoped-noautoinline'])
+        extra = list(native_search.scoped_variants(text, scoped, selected))
+        extra += list(native_search.explicit_variants(text, config.get('rewrite_rules', []), rel))
+        deferred[rel] = []
+        seen = set()
+        for mode, source, error in variants + [(m, s, None) for m, s, _ in extra]:
+            key = integration.digest(source) if source is not None else mode
+            if key in seen:
+                continue
+            seen.add(key)
+            sources[rel, mode] = source
+            if mode == 'baseline':
+                tasks.append((rel, mode, source, error))
+            else:
+                deferred[rel].append((mode, source, error))
+        explicit.update({(rel, m): edits for m, _, edits in extra})
+        if len(seen) == 1:
+            tasks = [t for t in tasks if t[0] != rel]
+    baseline, diagnostics, buffered, choices = {}, {}, defaultdict(list), defaultdict(list)
+
+    def compile_one(item):
+        rel, mode, source, error = item
+        if error:
+            return dict(file=rel, mode=mode, ok=False, error=error, seconds=0)
+        try:
+            return compile_source(source, rel, mode)
+        except ValueError as failure:
+            return dict(file=rel, mode=mode, ok=False, error=str(failure), seconds=0)
+
+    def compare(result):
+        tick = time.monotonic()
+        data = Path(result['object']).read_bytes() if result['ok'] else None
+        result['hits'] = matcher.scan(data) if data is not None else []
+        if data is not None and config.get('keep_partials', True):
+            result['diagnostics'] = native_search.diagnose(data, symbols.get(result['file'], {}))
+        result['match_seconds'] = round(time.monotonic() - tick, 3)
+        return result
+
+    def process(result):
+        rel, mode = result['file'], result['mode']
+        if mode == 'baseline':
+            if result['ok']:
+                baseline[rel] = {h['addr'] for h in result['hits']}
+                diagnostics[rel] = result.get('diagnostics', {})
+                cache_key = integration.digest([result.get('input_signature'), config.get('base_revision'),
+                    getattr(matcher, 'identity', None), sorted(targets), deferred[rel],
+                    config.get('targeted_recipes', True), config.get('keep_partials', True),
+                    hashlib.sha256(Path(native_search.__file__).read_bytes()).hexdigest(),
+                    hashlib.sha256(Path(__file__).read_bytes()).hexdigest()])
+                cache_path = output / 'exhausted-grid' / (integration.digest(rel) + '.json')
+                exhausted[rel] = cache_path, cache_key
+                cached = (config.get('search_cache', True) and result.get('input_signature')
+                          and not config.get('retry_exhausted') and cache_path.exists()
+                          and json.loads(cache_path.read_text()).get('key') == cache_key)
+                result['search_cache_hit'] = bool(cached)
+                for label, source, error in (() if cached else deferred[rel]):
+                    profile, _, method = label.partition(':')
+                    applicable = [d for d in diagnostics[rel].values() if symbol_method(d.get('symbol', '')) == method]
+                    if (config.get('targeted_recipes', True) and profile.startswith('scoped-') and applicable
+                            and not any(profile in d['recipes'] for d in applicable)):
+                        continue
+                    item = (rel, label, source, error)
+                    tasks.append(item)
+                    queue.append(item)
+        elif rel not in baseline:
+            buffered[rel].append(result)
+            return
+        elif result['ok']:
+            lost = baseline[rel] - {h['addr'] for h in result['hits']}
+            result['losses'] = sorted(lost)
+            partials.retain(rel, texts[rel], sources[rel, mode], result, result.get('diagnostics', {}), diagnostics[rel], lost)
+            new_hits = [h for h in result['hits'] if h['addr'] in targets - baseline[rel]]
+            if new_hits:
+                ownership = ownership_candidates(Path(result['object']).read_bytes(), new_hits)
+                unique = [h for h in new_hits if ownership.get(h['addr']) == [h['addr']]]
+                result['ownership_candidates'] = ownership
+                if unique:
+                    proposal = (dict(edits=explicit[rel, mode], witnesses=unique, mode=mode)
+                                if (rel, mode) in explicit else proven_proposal(texts[rel], mode, unique, baseline[rel]))
+                    if proposal:
+                        for hit in proposal['witnesses']:
+                            hit['claim_unit'] = claim_unit(hit, by_addr[hit['addr']])
+                        choices[rel].append(proposal)
+        journal.add([result])
+        log('native %s %s: %d exact code+data' % (rel, mode, len(result['hits'])))
+        integration.atomic_json(output / 'progress.json', dict(phase='discovery', tried=len(journal.records), total=len(tasks), file=rel, mode=mode))
+        if mode == 'baseline':
+            for pending in buffered.pop(rel, []):
+                if rel in baseline:
+                    process(pending)
+                else:
+                    pending['blocker'] = 'baseline-compile'
+                    journal.add([pending])
+
+    match_jobs = max(1, min(int(config.get('match_workers', 2)), 64))
+    with ThreadPoolExecutor(max_workers=jobs) as compilers, ThreadPoolExecutor(max_workers=match_jobs) as scanners:
+        queue = deque(tasks)
+        compiling, scanning = set(), set()
+        # Bound queued objects and source work. A slow match cannot consume unbounded RAM.
+        def refill():
+            while len(compiling) + len(scanning) < jobs + match_jobs:
+                item = queue.popleft() if queue else None
+                if item is None:
+                    break
+                compiling.add(compilers.submit(compile_one, item))
+        refill()
+        try:
+            while compiling or scanning:
+                done, _ = wait(compiling | scanning, return_when=FIRST_COMPLETED)
+                for future in done:
+                    if future in compiling:
+                        compiling.remove(future)
+                        scanning.add(scanners.submit(compare, future.result()))
+                    else:
+                        scanning.remove(future)
+                        process(future.result())
+                refill()
+        finally:
+            journal.flush()
+    proposals, checks = [], []
+    for rel, variants in choices.items():
+        def verify(source, wanted):
+            result = compare(compile_source(source, rel, 'combined-' + integration.digest(source)[:16]))
+            found = {h['addr'] for h in result['hits']}
+            lost = baseline[rel] - found
+            result['losses'] = sorted(lost)
+            checks.append(result)
+            if result['ok'] and not lost and wanted <= found:
+                owners = ownership_candidates(Path(result['object']).read_bytes(), [h for h in result['hits'] if h['addr'] in wanted])
+                if all(owners.get(a) == [a] for a in wanted):
+                    return result
+        merged = native_search.merge_choices(texts[rel], variants, verify)
+        if merged:
+            proposals.append(dict(merged, file=rel))
+    journal.flush()
+    for rel, (path, key) in exhausted.items():
+        rows = [r for r in journal.records if r['file'] == rel]
+        if (not choices[rel] and config.get('search_cache', True) and rows
+                and rows[0].get('input_signature') and all(r.get('ok') for r in rows)):
+            integration.atomic_json(path, dict(key=key, accepted=False, blocker='exhausted-recipes'))
+    integration.atomic_json(output / 'metrics.json', native_search.metrics(journal.records + checks, time.monotonic() - started, proposals))
+    integration.atomic_json(output / 'blockers.json', native_search.blocker_queues(journal.records))
+    return proposals, journal.records, checks
+
+
 class Matcher:
-    def __init__(self, addresses):
+    def __init__(self, addresses, cache_dir=None):
         self.target = fingerprint.Target("2008-06")
         self.index = defaultdict(list)
+        self.cache, self.cache_lock = {}, threading.Lock()
+        self.prefixes = {}
         functions = match._functions("2008-06")
         for addr in sorted(addresses):
             if addr in functions and functions[addr].get("kind", "code") == "code":
                 self.index[functions[addr]["size"]].append(addr)
+        self.cache_dir = Path(cache_dir) if cache_dir else None
+        self.identity = integration.digest([hashlib.sha256(self.target.image).hexdigest(),
+                                           self.target.base, getattr(self.target, 'relocs', []), dict(self.index),
+                                           hashlib.sha256(Path(match.__file__).read_bytes()).hexdigest(),
+                                           hashlib.sha256(Path(fingerprint.__file__).read_bytes()).hexdigest(),
+                                           hashlib.sha256(Path(__file__).read_bytes()).hexdigest()]) if cache_dir else None
+
+    def candidates(self, code, relocs):
+        """Prune by relocated prefix; same() and data_check() remain authoritative."""
+        width = min(8, len(code))
+        offsets = tuple(sorted(r for r in relocs if r < width))
+        key = (len(code), offsets)
+        with self.cache_lock:
+            if key not in self.prefixes:
+                if len(self.prefixes) >= 256:
+                    self.prefixes.pop(next(iter(self.prefixes)))
+                prefixes = defaultdict(list)
+                for addr in self.index.get(len(code), ()):
+                    offset = int(addr, 16) - self.target.base
+                    prefix = bytes(self.target.image[offset:offset + width])
+                    prefixes[match.masked(prefix, offsets)].append(addr)
+                self.prefixes[key] = prefixes
+            return self.prefixes[key].get(match.masked(code[:width], offsets), ())
 
     def scan(self, obj):
-        found = {}
+        key = hashlib.sha256(obj).digest()
+        cached = self.cache.get(key)
+        if cached is not None:
+            return [dict(hit) for hit in cached]
+        disk = self.cache_dir / self.identity / (key.hex() + '.json') if self.cache_dir else None
+        if disk and disk.exists():
+            saved = json.loads(disk.read_text())
+            if saved.get('object_sha256') == key.hex() and saved.get('identity') == self.identity:
+                return saved['hits']
+        found, data_index = {}, None
         for symbol, code, relocs in match.coff_functions(obj):
             if len(code) < 6:
                 continue
             refs = None
-            for addr in self.index.get(len(code), []):
+            for addr in self.candidates(code, relocs):
                 if addr in found:
                     continue
                 exe = self.target.same(addr, code, relocs)
@@ -225,11 +539,20 @@ class Matcher:
                 # Shared tiny bodies can hit many addresses. Parse this symbol's
                 # COFF data once, while checking each target's referenced bytes.
                 if refs is None:
-                    refs = match.coff_data_refs(obj, symbol)
+                    if data_index is None:
+                        data_index = match._coff_data_index(obj)
+                    refs = match.coff_data_refs(obj, symbol, index=data_index)
                 _, bad = match.data_check("2008-06", addr, exe, refs)
                 if not bad:
                     found[addr] = symbol
-        return [{"addr": addr, "symbol": found[addr]} for addr in sorted(found)]
+        hits = [{"addr": addr, "symbol": found[addr]} for addr in sorted(found)]
+        with self.cache_lock:
+            if len(self.cache) >= 128:
+                self.cache.pop(next(iter(self.cache)))
+            self.cache[key] = [dict(hit) for hit in hits]
+        if disk:
+            integration.atomic_json(disk, dict(identity=self.identity, object_sha256=key.hex(), hits=hits))
+        return hits
 
 
 def ownership_candidates(obj, hits):
@@ -311,7 +634,34 @@ def compile_unit(source, rel, label, output, tree, overlay, includes, defines, f
             "object_sha256": hashlib.sha256(obj.read_bytes()).hexdigest() if ok else None,
             "defined_symbols": sorted(name for name, defined in externals.items() if defined),
             "undefined_symbols": sorted(name for name, defined in externals.items() if not defined),
+            "compile_cache_hit": ok and message == 'content cache hit',
+            "input_signature": json.loads(obj.with_suffix('.compile.json').read_text()).get('inputs')
+                               if ok and obj.with_suffix('.compile.json').exists() else None,
             "error": message if not ok else None}
+
+
+def linked_preflight_progress(root, additions, output, log, interval=30):
+    """Keep long independent builds visible without changing verifier inputs/gates."""
+    from roc.integration_verify import linked_preflight
+    stopped = threading.Event()
+    phase = (time.monotonic(), 'Linked preflight: preparing')
+    def report(message):
+        nonlocal phase
+        phase = (time.monotonic(), str(message))
+        log(message)
+    def heartbeat():
+        while not stopped.wait(interval):
+            started, message = phase
+            elapsed = time.monotonic() - started
+            if elapsed >= interval:
+                log('%s · still running (%ds)' % (message, elapsed))
+    thread = threading.Thread(target=heartbeat, name='roc-preflight-progress', daemon=True)
+    thread.start()
+    try:
+        return linked_preflight(root, additions, output, report)
+    finally:
+        stopped.set()
+        thread.join()
 
 
 def foreign_claims(user, identity):
@@ -338,8 +688,10 @@ def stage_generator(generator, original, additions):
         raise ValueError("Generator output anchor is ambiguous")
     integration.validate_patches(additions)
     block = ("# Native sweep: method-scoped corrections passed exact code/data preflight.\n"
-             "for native_file, native_edits in json.loads(%r).items():\n"
-             "    patches.setdefault(native_file, []).extend(native_edits)\n\n") % json.dumps(additions, sort_keys=True)
+             "import sys\n"
+             "sys.path.insert(0, str(Path(__file__).resolve().parents[3]))\n"
+             "from roc.integration import merge_patches\n"
+             "patches = merge_patches(patches, json.loads(%r))\n\n") % json.dumps(additions, sort_keys=True)
     generator.write_bytes(text.replace(OUTPUT_MARKER, block + OUTPUT_MARKER).encode("utf-8"))
 
 
@@ -356,7 +708,7 @@ def restore_submitted_baseline(identifier, log=print):
     if current != snapshot.read_bytes():
         return log("generator changed after submission; preserved local edits")
     generator.write_bytes(base.read_bytes())
-    subprocess.run([sys.executable, str(generator)], cwd=ROOT, check=True, capture_output=True)
+    integration.run_generator(generator, ROOT)
     log("submitted snapshot retained; local baseline restored for next discovery")
 
 
@@ -378,13 +730,14 @@ def wait_for_job(api, identifier, timeout, log):
 
 
 MODEL_RULES = """You repair real 2008 Roblox C++ so MSVC compiles it to the exact bytes of the 2008 exe.
-Edit ONLY the file below. Reply with one or more blocks, nothing else:
+Edit ONLY the file below. Reply with one or more blocks inside one ```cpp fence, nothing else:
 <<<<<<< SEARCH
 exact old text, copied verbatim from the file
 =======
 new text
 >>>>>>> REPLACE
 Each SEARCH text must occur exactly once in the file as shown. Blocks apply in order.
+Prefer one target and 1-3 small blocks. Include enough unchanged method context to make every anchor unique.
 The mined sources are byte-exact proofs written with placeholder types: copy their control flow, call order,
 constants and evaluation order, but use the real classes, members and methods. "standins" maps each placeholder
 to the real symbol, RTTI type or import the exe uses at that spot. Never add padding structs, offset views,
@@ -564,11 +917,42 @@ def providers_text(reply):
 
 
 def model_prompt(rel, shown, items):
-    return "%s\n\nFILE %s\n```cpp\n%s\n```\n\nTARGETS (exact 2008 functions this file should produce)\n%s" % (
+    return ("%s\n\nFILE %s\n```cpp\n%s\n```\n\nTARGETS (exact 2008 functions this file should produce)\n%s"
+            "\n\nReturn SEARCH/REPLACE blocks inside one ```cpp fence. Do not return the whole source file.") % (
         MODEL_RULES, rel, shown[:60000], json.dumps(items, separators=(",", ":")))
 
 
-def minimize(rel, text, edits, new, keep, compile_round, matcher, label, allow_empty=False, definitions=()):
+def method_prompt(rel, text, selected, method):
+    return ("Repair ONLY %s in %s for the genuine VS2008 compiler. Return its complete qualified method "
+            "definition in one ```cpp fence. Keep the signature unchanged. No SEARCH/REPLACE, extra methods, "
+            "invented types/fields, raw offsets, assembly or prose. Use standins mappings to translate mined "
+            "placeholders to real symbols. Match the target code AND data.\n\n"
+            "CONTEXT\n```cpp\n%s\n```\nTARGET\n%s") % (
+                method, rel, excerpt(text, [selected['rebuilt_symbol']], around=6)[:60000],
+                json.dumps(selected, separators=(',', ':')))
+
+
+def method_edits(text, reply, method):
+    """Accept one complete method, retain its original declaration, and edit only its body."""
+    code = providers_text(reply).strip()
+    fenced = re.fullmatch(r"```(?:cpp|c\+\+)?\s*\n(.*?)\n```", code, re.S)
+    if fenced:
+        code = fenced[1]
+    original, returned = methods(text), methods(code)
+    if method not in original or set(returned) != {method}:
+        raise ValueError("reply must contain only the unambiguous method " + method)
+    start, end = original[method]
+    new_start, new_end = returned[method]
+    old_clean, new_clean = masked_cpp(text), masked_cpp(code)
+    brace, new_brace = old_clean.index("{", start), new_clean.index("{", new_start)
+    if re.sub(r"\s+", "", old_clean[start:brace]) != re.sub(r"\s+", "", new_clean[new_start:new_brace]):
+        raise ValueError("method signature must stay unchanged")
+    if not re.fullmatch(r"[\w\s:<>,*&~]*", new_clean[:new_start]) or new_clean[new_end:].strip() not in ("", ";"):
+        raise ValueError("reply contains extra code outside the requested method")
+    return [[text[start:end], text[start:brace] + code[new_brace:new_end]]]
+
+
+def minimize(rel, text, edits, new, keep, compile_round, matcher, label, allow_empty=False, definitions=(), verified=None):
     """Only the edits the new exacts need, re-proved by a final compile; None if that proof fails. Models rewrite
     neighbouring methods too, and an unproven behaviour change in a method that was not exact would pass the
     loss check. keep: exacts this file already produced, which must survive."""
@@ -581,7 +965,8 @@ def minimize(rel, text, edits, new, keep, compile_round, matcher, label, allow_e
         found = {h["addr"] for h in matcher.scan(Path(trial["object"]).read_bytes())} if trial["ok"] else set()
         if new <= found and not keep - found and not set(definitions).intersection(trial.get("undefined_symbols", ())):
             edits = rest
-    result = compile_round(apply_edits(text, edits) if edits else text, "final-%s" % label)
+            verified = trial
+    result = verified or compile_round(apply_edits(text, edits) if edits else text, "final-%s" % label)
     hits = matcher.scan(Path(result["object"]).read_bytes()) if result["ok"] else []
     found = {h["addr"] for h in hits}
     if not (new <= found and not keep - found) or set(definitions).intersection(result.get("undefined_symbols", ())):
@@ -596,12 +981,37 @@ def model_proposal(rel, text, addrs, baseline, owned, model, rounds, compile_rou
     """Ask the model for anchored edits to one native file; keep the first that makes a new target exact and
     loses no owned exact in that file. Every round compiles the real TU; failures go back as feedback."""
     from roc import providers
-    prompt = model_prompt(rel, shown or text, [evidence(a) for a in addrs[:6]])
-    messages, trials = [{"role": "user", "content": prompt}], []
+    addrs = [addr for addr in addrs if addr not in baseline]
+    if not addrs:
+        return None, []
+    generation = (options or {}).get("generation", "edits")
+    if generation not in ("auto", "edits", "method"):
+        raise ValueError("Unknown native generation mode: " + str(generation))
+    spans = methods(text)
+    items, selected = [], None
+    for addr in addrs[:3]:
+        item = evidence(addr)
+        items.append(item)
+        span = spans.get(symbol_method(item.get("rebuilt_symbol") or ""))
+        if generation != "edits" and span and span[1] - span[0] <= 6000:
+            selected = item
+            break
+    method = symbol_method(selected["rebuilt_symbol"]) if selected else None
+    one_shot = generation != "edits" and method is not None
+    prompt = model_prompt(rel, shown or text, items)
+    if one_shot:
+        prompt = method_prompt(rel, text, selected, method)
+    if (options or {}).get('initial_feedback'):
+        prompt += '\n\nPrevious worker batch diagnostics:\n' + options['initial_feedback'][-4000:]
+    messages, trials = [{"role": "system", "content": "Repair native C++; return only the requested output inside one ```cpp fence. No tools or prose."},
+                        {"role": "user", "content": prompt}], []
+    seen_candidates, best_partial = set(), None
     for n in range(rounds):
         # Edit blocks are short: no thinking and a small reply cap keep each round to seconds, not a minute.
         # With thinking on, reasoning shares max_tokens: an 8192 cap left 27 of 29 replies without any edit.
         settings = dict({"allow_cloud": True, "timeout": 180, "thinking": "disabled"}, **(options or {}))
+        response_mode = "method" if one_shot and (n == 0 or generation == "method") else "edits"
+        settings["edit_blocks"] = response_mode == "edits"
         if settings.get("before_request") and not settings["before_request"]():
             return None, trials
         settings.setdefault("max_tokens", 3072 if settings["thinking"] == "disabled" else 32768)
@@ -611,22 +1021,45 @@ def model_proposal(rel, text, addrs, baseline, owned, model, rounds, compile_rou
                                                               getattr(reply, "input_tokens", 0), getattr(reply, "output_tokens", 0)))
         messages.append({"role": "assistant", "content": providers_text(reply)})
         try:
-            edits = parse_edits(reply)
-            result = compile_round(apply_edits(text, edits), "model-%d" % n)
+            edits = method_edits(text, reply, method) if response_mode == "method" else parse_edits(reply)
+            edits = [pair for pair in edits if pair[0] != pair[1]]
+            if not edits:
+                raise ValueError("Reply made no source change; target is still not exact")
+            integration.validate_patches({rel: edits})
+            candidate = apply_edits(text, edits)
+            fingerprint = integration.digest(candidate)
+            if fingerprint in seen_candidates:
+                raise ValueError("Repeated failed candidate; choose a different correction")
+            seen_candidates.add(fingerprint)
+            result = compile_round(candidate, "model-" + fingerprint[:16])
+            log("Round %d/%d · compile %.1fs · queue %.1fs" %
+                (n + 1, rounds, result.get("seconds", 0), result.get("queue_seconds", 0)))
         except ValueError as error:
-            trials.append({"file": rel, "mode": "model-%d" % n, "ok": False, "error": str(error)[:500],
+            trials.append({"file": rel, "mode": "model-%d" % n, "generation": response_mode, "ok": False, "error": str(error)[:500],
                            "reply": providers_text(reply)[:3000]})
-            messages.append({"role": "user", "content": "Rejected: %s\nReply with corrected SEARCH/REPLACE blocks." % error})
+            instruction = ("Return only the complete corrected method in one cpp fence." if generation == "method" and method else
+                           "Return SEARCH/REPLACE blocks in one cpp fence: <<<<<<< SEARCH, exact original text, =======, new text, >>>>>>> REPLACE.")
+            messages.append({"role": "user", "content": "Rejected: %s\n%s" % (error, instruction)})
             continue
         hits = matcher.scan(Path(result["object"]).read_bytes()) if result["ok"] else []
         found = {h["addr"] for h in hits}
-        new, lost = (found & set(addrs)) - baseline, baseline - found
-        result.update(hits=hits, losses=sorted(lost), reply=providers_text(reply)[:3000])
+        new, lost = (found & set(addrs)) - baseline, baseline - found if result['ok'] else set()
+        result.update(hits=hits, losses=sorted(lost), comparison_complete=bool(result['ok']),
+                      reply=providers_text(reply)[:3000], generation=response_mode,
+                      generation_seconds=getattr(reply, "latency_s", None),
+                      input_tokens=getattr(reply, "input_tokens", None), output_tokens=getattr(reply, "output_tokens", None))
         trials.append(result)
-        log("model %s round %d: %d new exact, %d lost" % (rel, n, len(new), len(lost)))
+        if result['ok'] and not lost and result.get('diagnostics'):
+            strength = sum(d['score'] for d in result['diagnostics'].values())
+            if best_partial is None or strength > best_partial[0]:
+                best_partial = strength, edits, result['diagnostics']
+        if result['ok']:
+            log("model %s round %d: %d new exact, %d lost" % (rel, n, len(new), len(lost)))
+        else:
+            log("model %s round %d: compile failed; no match comparison" % (rel, n))
         if new and not lost:
             proposal = minimize(rel, text, edits, new, baseline, compile_round, matcher, "%d" % n,
-                                definitions=result.get("defined_symbols", ()))
+                                definitions=result.get("defined_symbols", ()), verified=result)
             if not proposal:
                 trials.append(dict(result, error="minimized edits lost the proof"))
             return proposal, trials
@@ -637,13 +1070,38 @@ def model_proposal(rel, text, addrs, baseline, owned, model, rounds, compile_rou
             data = Path(result["object"]).read_bytes()
             feedback += "".join("\n\n%s target vs your rebuilt code:\n%s" % (a, diff(data, a))
                                 for a in sorted(set(addrs) - found)[:2])
-        messages.append({"role": "user", "content": feedback + "\nReply with the complete corrected set of "
-                         "SEARCH/REPLACE blocks against the ORIGINAL file."})
+        if best_partial:
+            feedback += '\nBest no-loss partial so far (search hint, not exact):\n' + json.dumps(
+                dict(edits=best_partial[1], diagnostics=best_partial[2]), separators=(',', ':'))[:12000]
+        instruction = ("Return the complete corrected method in one cpp fence." if generation == "method" and method else
+                       "Return the complete corrected set of SEARCH/REPLACE blocks against the ORIGINAL file in one cpp fence. "
+                       "Use <<<<<<< SEARCH, exact original text, =======, new text, >>>>>>> REPLACE delimiters.")
+        messages.append({"role": "user", "content": feedback + "\n" + instruction})
     return None, trials
+
+
+def resolve_compile_workers(value, jobs):
+    count = min(jobs, 8, max(1, (os.cpu_count() or 2) // 2)) if value == "auto" else int(value)
+    if not 1 <= count <= 64:
+        raise ValueError("Native compiler count must be auto or 1-64")
+    return count
 
 
 def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs, log, compile_source, names):
     """Near-exact targets first; smaller files break ties to reach the first result sooner."""
+    from roc import providers
+    output = Path(output)
+    journal = native_search.Journal(output)
+    search_started = time.monotonic()
+    local_slot = threading.local()
+    def partial_event(row):
+        if event:
+            event('native_partial', slot=local_slot.slot, **row)
+        else:
+            log('native partial %s %s: %.3f%% -> %.3f%% (local search; no exact credit)' % (row['file'], row['addr'], row['previous'], row['score']))
+        if config.get('partial_report'):
+            config['partial_report'](row)
+    partials = native_search.Partials(output, config.get('base_revision'), config.get('partial_floor', 50), on_improvement=partial_event) if config.get('keep_partials') else None
     if config.get("only_rebuilt", True):
         # Near misses first: the rebuild already compiles a body for the address, so the fix is local to that method.
         # Targets with no rebuilt body need new methods and header declarations; .cpp-only edits rarely reach them.
@@ -651,50 +1109,183 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
     homes = target_files(texts, wanted, names, by_addr)
     skip = set(config.get("exclude_files", []))
     homes = {rel: sorted(addrs, key=lambda a: (-(names.get(a, {}).get("score") or 0), by_addr.get(a, {}).get("size", 0))) for rel, addrs in homes.items()}
-    files = sorted((rel for rel in homes if rel not in skip),
-                   key=lambda rel: (-max(names.get(a, {}).get("score") or 0 for a in homes[rel]), len(texts[rel])))[:config.get("max_files")]
+    ranked = sorted(homes, key=lambda rel: (-max(names.get(a, {}).get('score') or 0 for a in homes[rel]), len(texts[rel])))
+    files = [rel for rel in ranked if rel not in skip][:config.get('max_files')]
+    if config.get('rolling_workers'):
+        capacity = min(jobs, config.get('max_files') or len(ranked))
+        retry = config.get('retry_targets', {})
+        offsets = config.get('file_offsets', {})
+        refill = [rel for rel in ranked if rel in skip and offsets.get(rel, 0) < retry.get(rel, 0)]
+        extra = refill[:max(0, capacity-len(files))]
+        files += extra
+        if extra:
+            log('Filling %d idle file slots with different pending targets' % len(extra))
     model, rounds = config["llm"], config.get("rounds", 3)
-    options = {key: config[key] for key in ("thinking", "max_tokens") if key in config}
+    options = {key: config[key] for key in ("thinking", "max_tokens", "generation") if key in config}
     options.update(config.get("provider_options", {}))
+    options.setdefault("gate", providers.CloudGate(jobs))
+    compile_batch = int(config.get('compile_batch', 1))
+    if not 1 <= compile_batch <= 32:
+        raise ValueError('Methods per compile must be 1-32')
+    provider_failed = threading.Event()
     event = options.pop("event", None)
-    compile_slots = threading.Semaphore(config.get("compile_workers", jobs))
+    compile_workers = resolve_compile_workers(config.get("compile_workers", "auto"), jobs)
+    compile_slots = threading.Condition()
+    active, waiting_proofs = 0, 0
     raw_compile = compile_source
+    compile_records = []
     def compile_source(source, rel, label):
+        nonlocal active, waiting_proofs
+        queued = time.monotonic()
+        proof = label != "baseline"
         with compile_slots:
-            return raw_compile(source, rel, label)
+            if proof:
+                waiting_proofs += 1
+            try:
+                compile_slots.wait_for(lambda: active < compile_workers and (proof or waiting_proofs == 0))
+                active += 1
+            finally:
+                if proof:
+                    waiting_proofs -= 1
+        waited = time.monotonic() - queued
+        try:
+            result = dict(raw_compile(source, rel, label), queue_seconds=round(waited, 2))
+            compile_records.append(result)
+            return result
+        finally:
+            with compile_slots:
+                active -= 1
+                compile_slots.notify_all()
     context = config.get("context", "file")
-    log("Native discovery: %d files · %d AI workers · %d compiler slots" % (len(files), jobs, config.get("compile_workers", jobs)))
+    log("Native discovery: %d files · %d AI workers · %d compiler slots" % (len(files), jobs, compile_workers))
 
     def discover(rel, log, options):
-        if options.get("before_request") and not options["before_request"]():
+        if provider_failed.is_set() or options.get("before_request") and not options["before_request"]():
             return None, []
         log("Compiling baseline")
         base = compile_source(texts[rel], rel, "baseline")
         if not base["ok"]:
             return None, [base]
+        log("Baseline: compile %.1fs · queue %.1fs" % (base.get("seconds", 0), base.get("queue_seconds", 0)))
         data = Path(base["object"]).read_bytes()
+        comparing = time.monotonic()
         baseline = {h["addr"] for h in matcher.scan(data)}
+        log("Baseline comparison: %.1fs · %d exact" % (time.monotonic() - comparing, len(baseline)))
+        pending = [addr for addr in homes[rel] if addr not in baseline]
+        base['pending_targets'] = len(pending)
+        if not pending:
+            log("Skipping AI: all %d targets already code/data exact locally" % len(homes[rel]))
+            return None, [base]
+        if provider_failed.is_set():
+            return None, [base]
+        offset = int(config.get('file_offsets', {}).get(rel, config.get('target_offset', 0))) % len(pending)
+        pending = pending[offset:] + pending[:offset]
+        original, working = texts[rel], texts[rel]
+        symbol_map = {a: names[a]['symbol'] for a in pending if names.get(a, {}).get('symbol')}
+        baseline_diagnostics = native_search.diagnose(data, symbol_map) if partials else {}
+        base['diagnostics'] = baseline_diagnostics
+        seed = partials.seed(rel, original, pending) if partials else None
+        negative = output / 'exhausted' / (integration.digest(rel) + '.json')
+        negative_key = integration.digest([base.get('input_signature'), base.get('object_sha256'),
+            getattr(matcher, 'identity', None), pending, config.get('base_revision'), model, rounds,
+            seed['source_sha256'] if seed else None,
+            {k: config.get(k) for k in ('thinking', 'max_tokens', 'generation', 'context', 'compile_batch', 'provider_options')
+             if k != 'provider_options'},
+            {k: v for k, v in config.get('provider_options', {}).items() if isinstance(v, (str, int, float, bool, type(None)))},
+            hashlib.sha256(Path(native_search.__file__).read_bytes()).hexdigest(),
+            hashlib.sha256(Path(__file__).read_bytes()).hexdigest()])
+        if (config.get('search_cache', True) and base.get('input_signature') and not config.get('retry_exhausted')
+                and negative.exists() and json.loads(negative.read_text()).get('key') == negative_key):
+            base['search_cache_hit'] = True
+            log('Skipping exhausted search: unchanged source, dependencies, compiler, targets and search settings')
+            return None, [base]
+        if partials:
+            if seed:
+                trial = compile_source(seed['source'], rel, 'partial-seed-' + seed['source_sha256'][:16])
+                if trial['ok']:
+                    seed_data = Path(trial['object']).read_bytes()
+                    hits = {h['addr'] for h in matcher.scan(seed_data)}
+                    current = native_search.diagnose(seed_data, symbol_map)
+                    if not baseline - hits and any(current[a]['score'] > baseline_diagnostics[a]['score'] for a in current):
+                        working = seed['source']
+                        log('Resuming recompiled no-loss partial: ' + seed['addr'])
+
+        def trial_compile(source, label):
+            result = compile_source(source, rel, label)
+            if partials and result['ok']:
+                obj = Path(result['object']).read_bytes()
+                found = {h['addr'] for h in matcher.scan(obj)}
+                result['diagnostics'] = native_search.diagnose(obj, symbol_map)
+                result['partials_saved'] = partials.retain(rel, original, source, result, result['diagnostics'],
+                                                          baseline_diagnostics, baseline - found)
+            return result
+
+        def evidence(addr):
+            return dict(model_evidence(addr, names, by_addr), current_diff=diff(data, addr),
+                        diagnostic=baseline_diagnostics.get(addr, {}))
+
+        def completed(proposal, trials):
+            if proposal and working != original:
+                proposal['edits'] = native_search.anchored_changes(original, apply_edits(working, proposal['edits']))
+                proposal = minimize(rel, original, proposal['edits'], {h['addr'] for h in proposal['witnesses']},
+                                    baseline, trial_compile, matcher, 'seed-composition',
+                                    definitions=proposal['proof'].get('defined_symbols', ()))
+            if (not proposal and base.get('input_signature') and config.get('search_cache', True)
+                    and len(trials) >= rounds and all(t.get('ok') and not t.get('error') for t in trials)):
+                integration.atomic_json(negative, dict(key=negative_key, blocker='exhausted-rounds', accepted=False))
+            return proposal, [base] + trials
 
         def diff(obj, addr):
             return body_diff(obj, names[addr]["symbol"], addr) if names.get(addr, {}).get("symbol") else "no rebuilt body"
         try:
-            proposal, trials = model_proposal(rel, texts[rel], homes[rel], baseline, owned, model, rounds,
-                                              lambda source, label: compile_source(source, rel, label), matcher,
-                                              lambda addr: dict(model_evidence(addr, names, by_addr), current_diff=diff(data, addr)),
+            if compile_batch > 1 and options.get('generation', 'edits') != 'edits':
+                from roc import native_batch
+                groups = {}
+                spans = methods(working)
+                for addr in pending:
+                    method = symbol_method(names.get(addr, {}).get('symbol') or '')
+                    if addr not in baseline and method in spans and spans[method][1] - spans[method][0] <= 6000:
+                        groups.setdefault(method, []).append(addr)
+                if len(groups) > 1:
+                    selected = dict(list(groups.items())[:compile_batch])
+                    proposal, trials = native_batch.model_batch(rel, working, selected, baseline, model, rounds,
+                        trial_compile, matcher, evidence,
+                        log, options, ai_pool, diff)
+                    if any(t.get('error_category') in providers.FATAL_ERRORS for t in trials):
+                        provider_failed.set()
+                    if proposal or provider_failed.is_set() or options.get('generation') == 'method' or rounds <= 1:
+                        return completed(proposal, trials)
+                    feedback = '\n'.join(str(t.get('error', '')) for t in trials if t.get('error'))
+                    diagnostic = next((t for t in trials if t.get('ok') and t.get('object')), None)
+                    if diagnostic:
+                        feedback += '\nBatch compiled; existing exact lost: %s.' % diagnostic.get('losses', [])[:12]
+                        obj = Path(diagnostic['object']).read_bytes()
+                        feedback += ''.join('\n%s target vs batch:\n%s' % (addr, diff(obj, addr)) for addr in pending[:2])
+                    proposal, repairs = model_proposal(rel, working, pending, baseline, owned, model, rounds - 1,
+                        trial_compile, matcher, evidence,
+                        log, dict(options, generation='edits', initial_feedback=feedback), diff,
+                        excerpt(working, [names[a]['symbol'] for a in pending[:3]]) if context == 'methods' else None)
+                    return completed(proposal, trials + repairs)
+            proposal, trials = model_proposal(rel, working, pending, baseline, owned, model, rounds,
+                                              trial_compile, matcher, evidence,
                                               log, options, diff,
-                                              excerpt(texts[rel], [names[a]["symbol"] for a in homes[rel][:6]
+                                              excerpt(working, [names[a]["symbol"] for a in pending[:3]
                                                                    if names.get(a, {}).get("symbol")])
                                               if context == "methods" else None)
         except Exception as error:  # noqa: BLE001 - one provider/compile failure must not stop the other files
+            if getattr(error, "category", "") in providers.FATAL_ERRORS:
+                provider_failed.set()
+                log("Provider configuration failed; queued files skipped: " + str(error))
             return None, [base, {"file": rel, "mode": "model", "ok": False, "error": str(error)[:500], "error_category": getattr(error, "category", "")}]
-        return proposal, [base] + trials
+        return completed(proposal, trials)
 
     slots, slots_lock = list(range(jobs)), threading.Lock()
     def one(rel):
-        if options.get("before_request") and not options["before_request"]():
+        if provider_failed.is_set() or options.get("before_request") and not options["before_request"]():
             return None, []
         with slots_lock:
             slot = slots.pop(0)
+        local_slot.slot = slot
         started = time.monotonic()
         if event:
             event("native_started", slot=slot, file=rel, model=model)
@@ -705,30 +1296,68 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
                 log(message)
         try:
             proposal, trials = discover(rel, report, dict(options, log=report))
+            if proposal:
+                proof = proposal['proof']
+                ownership = ownership_candidates(Path(proof['object']).read_bytes(), proposal['witnesses'])
+                unique = {h['addr'] for h in proposal['witnesses'] if ownership.get(h['addr']) == [h['addr']]}
+                if len(unique) != len(proposal['witnesses']):
+                    archive = output/'ambiguous-proposals'/(integration.digest([
+                        rel, proposal['edits'], proposal.get('related_headers'), config.get('base_revision')])+'.json')
+                    if not archive.exists():
+                        integration.atomic_json(archive, dict(proposal=proposal, ownership_candidates=ownership))
+                    report('%d code/data matches lack unique ownership; proof retained locally' %
+                           (len(proposal['witnesses'])-len(unique)))
+                    if unique:
+                        proposal = minimize(rel, texts[rel], proposal['edits'], unique,
+                            {h['addr'] for h in matcher.scan(Path(trials[0]['object']).read_bytes())},
+                            lambda source,label:compile_source(source,rel,label), matcher, 'unique-ownership',
+                            definitions=proof.get('defined_symbols', ()), verified=proof)
+                    else:
+                        proposal = None
+                    if proposal is None:
+                        trials.append(dict(file=rel, mode='ownership', ok=False, error_category='ambiguous_ownership',
+                            error='Code/data matched, but no uniquely owned gain; proof retained locally'))
             if event:
                 event("native_result", slot=slot, file=rel,
                       local_exact=len(proposal["witnesses"]) if proposal else 0,
-                      error_category=next((t["error_category"] for t in reversed(trials) if t.get("error_category")), ""),
+                      error_category="" if proposal else next((t["error_category"] for t in reversed(trials) if t.get("error_category")), ""),
                       seconds=round(time.monotonic() - started, 1),
-                      error=next((t.get("error", "") for t in reversed(trials) if t.get("error")), "")[:240])
+                      error="" if proposal else next((t.get("error", "") for t in reversed(trials) if t.get("error")), "")[:240])
             return proposal, trials
         finally:
             with slots_lock:
                 slots.append(slot)
 
     proposals, records = [], []
-    with ThreadPoolExecutor(max_workers=jobs) as pool:
+    with ThreadPoolExecutor(max_workers=jobs) as ai_pool, ThreadPoolExecutor(max_workers=jobs) as pool:
         futures = [pool.submit(one, rel) for rel in files]
         for n, future in enumerate(as_completed(futures)):
             proposal, trials = future.result()
             records.extend(trials)
+            journal.add(trials)
             if proposal:
+                try:
+                    integration.validate_patches({proposal["file"]: proposal["edits"]})
+                except ValueError as error:
+                    integration.atomic_json(output / 'blocked-proposals' / (integration.digest(proposal['file'])[:16] + '.json'),
+                                            dict(proposal=proposal, reason=str(error)))
+                    records.append(dict(file=proposal["file"], error="Proposal retained, not staged: " + str(error)))
+                    log("Proposal retained, not staged: %s: %s" % (proposal["file"], error))
+                    continue
                 for hit in proposal["witnesses"]:
                     hit["claim_unit"] = claim_unit(hit, by_addr[hit["addr"]])
+                if config.get('base_revision'):
+                    proposal['base_revision'] = config['base_revision']
                 proposals.append(proposal)
-            integration.atomic_json(output / "trials.json", records)
+                integration.atomic_json(output / 'proposals.json', proposals)
+                log('Saved %d local exact across %d files; %d/%d files finished, linked preflight follows discovery' % (
+                    sum(len(p['witnesses']) for p in proposals), len(proposals), n + 1, len(files)))
             integration.atomic_json(output / "progress.json", {"phase": "model", "files_done": n + 1, "total": len(files),
                                                                "proposals": len(proposals)})
+    journal.flush()
+    integration.atomic_json(output / 'metrics.json', native_search.metrics(records, time.monotonic() - search_started, proposals,
+                                                                        compilations=compile_records))
+    integration.atomic_json(output / 'blockers.json', native_search.blocker_queues(records))
     return proposals, records
 
 
@@ -768,7 +1397,7 @@ def native_context(config, api, addresses=None):
         targets &= set(addresses)
     return SimpleNamespace(tree=tree, overlay=overlay, includes=includes, defines=defines, flags=config.get("flags", FLAGS),
                            by_addr={row["addr"]: row for row in rows}, owned=owned, targets=targets,
-                             matcher=Matcher(targets | owned), names=names, integrated=integrated)
+                             matcher=Matcher(targets | owned, ROOT / 'work/native-search/matches' if config.get('search_cache', True) else None), names=names, integrated=integrated)
 
 
 EVIDENCE_CACHE = ROOT / "work/integration-client/evidence.json"
@@ -784,18 +1413,63 @@ def server_evidence(api):
 def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
     """Discover, minimize, recompile, claim, stage, and optionally submit real native fixes."""
     require_private_workspace()
-    config = spec["native_sweep"]
+    config = dict(spec["native_sweep"])
+    run_started = time.monotonic()
+    config.setdefault('keep_partials', True)
+    partial_lock = threading.Lock()
     if config.get("llm"):
         config.setdefault("model", config["llm"])  # submissions name the model that wrote the edits
     if spec.get("client", "2008-06") != "2008-06":
         raise ValueError("Native sweep supports the coherent 2008-06 module only")
     output = Path(output or ROOT / "work/research" / name)
     output.mkdir(parents=True, exist_ok=True)
+    outbox = output / 'partial-reports.json'
+    def retain_report(row):
+        with partial_lock:
+            pending = json.loads(outbox.read_text()) if outbox.exists() else []
+            pending.append(row)
+            integration.atomic_json(outbox, pending)
+    config['partial_report'] = retain_report
+    previous = output / 'proposals.json'
+    if previous.exists():
+        content = previous.read_bytes()
+        archive = output / 'proposal-history' / (hashlib.sha256(content).hexdigest() + '.json')
+        archive.parent.mkdir(exist_ok=True)
+        if not archive.exists():
+            archive.write_bytes(content)
     run_id = uuid.uuid4().hex
+    recovery_ticket, recovery_blocked = None, []
     integration.atomic_json(output / "summary.json", {"recipe": name, "state": "running", "run_id": run_id, "new_verified": 0})
     integration.atomic_json(output / "progress.json", {"phase": "setup", "run_id": run_id})
     def finish(summary):
+        if outbox.exists() and settings.get('user'):
+            pending = json.loads(outbox.read_text())
+            for revision in sorted({r['base_revision'] for r in pending}):
+                selected = [r for r in pending if r['base_revision'] == revision]
+                for start in range(0, len(selected), 64):
+                    batch = selected[start:start + 64]
+                    try:
+                        api.call('/v1/integration/partials', dict(user=settings['user'],
+                            model=config.get('model') or config.get('llm') or 'native-grid',
+                            base_revision=revision, partials=batch), timeout=15)
+                    except (worker.ApiFailure, OSError, ValueError):
+                        log('Partial webhook report pending; retained for next run')
+                        break
+                    pending = [r for r in pending if r not in batch]
+                    integration.atomic_json(outbox, pending)
+        metrics_path = output / 'metrics.json'
+        if metrics_path.exists():
+            measured = json.loads(metrics_path.read_text())
+            measured.update(server_verified=summary.get('new_verified', 0),
+                            verified_per_hour=summary.get('new_verified', 0) * 3600 / max(time.monotonic() - run_started, .001))
+            integration.atomic_json(metrics_path, measured)
+            summary['metrics'] = measured
         summary.update(run_id=run_id, state=summary.get("state") or ("queued" if summary.get("job") else "staged" if summary.get("applied_files") else "proposals" if summary.get("proposed_files") else "no-proposals"))
+        if recovery_ticket and summary['state'] != 'failed':
+            record = json.loads(recovery_ticket.read_text())
+            integration.atomic_json(recovery_ticket, dict(record, state='done', job=summary.get('job')))
+        if recovery_blocked:
+            hold_proposals(output, recovery_blocked, base['revision'], state='blocked', model=config.get('model'))
         integration.atomic_json(output / "summary.json", summary)
         integration.atomic_json(output / "runs" / (run_id + ".json"), summary)
         integration.atomic_json(output / "progress.json", {"phase": summary["state"], "run_id": run_id,
@@ -817,6 +1491,13 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
             if prior["state"] != "accepted" or not prior["receipt"].get("accepted"):
                 raise ValueError("Prerequisite native batch was rejected; discovery not started")
             integration.command(SimpleNamespace(action="sync", server=server, user=None, token=integration.native_token()))
+        recovered = integration.resume_pending(api, ROOT / "work/integration-client", settings.get("user"))
+        if recovered:
+            result = recovered[0]
+            restore_submitted_baseline(result["id"], log)
+            return finish(dict(recipe=name, job=result["id"], state=result["state"],
+                               applied_paths=result.get("applied_paths", []), files_tried=[],
+                               applied_files=len(result.get("applied_paths", [])), new_verified=0))
         original = generator.read_bytes()
         base = api.call("/v1/integration/base")
         if hashlib.sha256(original).hexdigest() != base["generator"]:
@@ -846,126 +1527,128 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
             if limit:
                 files = files[:limit]
             texts = {rel: texts[rel] for rel in files}
-        if config.get("proposals_file"):
+        saved_path = config.get('proposals_file')
+        if config.get('resume_saved') and not saved_path:
+            recovery_ticket, saved_path = pending_proposals(output, base['revision'])
+            if recovery_ticket:
+                config['model'] = json.loads(recovery_ticket.read_text())['model']
+                log('Recovering saved proposals against current baseline; no AI requests; original model ' + config['model'])
+        if saved_path:
             # Proposals an agent already proved with `roc native-try check`: claim, stage and submit them as one batch.
-            proposals, records = json.loads(Path(config["proposals_file"]).read_text()), []
+            saved_bytes = Path(saved_path).read_bytes()
+            archive = output / ("saved-proposals-" + hashlib.sha256(saved_bytes).hexdigest()[:20] + ".json")
+            if not archive.exists():
+                archive.write_bytes(saved_bytes)
+            proposals, records = json.loads(saved_bytes), []
             final_checks, trials, rechecked = [], [], []
+            seen = set()
             for proposal in proposals:
+                proposal["file"] = next(iter(integration.canonical_patches({proposal["file"]: []}, base["overlay"])))
                 rel = proposal["file"]
-                if rel not in texts:
-                    texts[rel] = (overlay / rel if (overlay / rel).exists() else tree / rel).read_text(errors="replace")
-                log("native rechecking " + rel)
-                if not proposal.get("base_revision"):
-                    raise ValueError("Saved proof is unversioned; run roc native-try check " + rel)
-                if proposal["base_revision"] != base["revision"]:
-                    log("accepted baseline advanced; independently revalidating saved edits: " + rel)
-                options = {"translation_unit": proposal["translation_unit"]} if proposal.get("translation_unit") else {}
-                baseline = compile_unit(texts[rel], rel, "recheck-baseline", output, tree, overlay, includes, defines, flags, **options)
-                if not baseline["ok"]:
-                    raise ValueError("Saved proposal baseline compile failed: " + rel)
-                keep = {h["addr"] for h in matcher.scan(Path(baseline["object"]).read_bytes())}
-                final = compile_unit(apply_edits(texts[rel], proposal["edits"]) if proposal["edits"] else texts[rel], rel, "recheck-final", output,
-                                     tree, overlay, includes, defines, flags,
-                                     **dict(options, **({"related_headers": proposal["related_headers"]} if proposal.get("related_headers") else {})))
-                if not final["ok"]:
-                    raise ValueError("Saved proposal compile failed: " + rel)
-                missing = set(proposal.get("proof", {}).get("defined_symbols", ())).intersection(final.get("undefined_symbols", ()))
-                if missing:
-                    raise ValueError("Saved proposal lost required definitions: " + ", ".join(sorted(missing)))
-                hits = matcher.scan(Path(final["object"]).read_bytes())
-                found = {h["addr"] for h in hits}
-                wanted = {h["addr"] for h in proposal["witnesses"]}
-                if not wanted <= found or keep - found:
-                    raise ValueError("Saved proposal lost exact matches; rerun roc native-try check " + rel)
-                ownership = ownership_candidates(Path(final["object"]).read_bytes(), [h for h in hits if h["addr"] in wanted])
-                if not any(candidates == [addr] for addr, candidates in ownership.items()):
-                    log("no unique module ownership candidates; proposal retained locally: " + rel)
+                if rel.casefold() in seen:
+                    raise ValueError("Duplicate saved source proposals: " + rel)
+                seen.add(rel.casefold())
+                if proposal.get("related_headers"):
+                    proposal["related_headers"] = integration.canonical_patches(proposal["related_headers"], base["overlay"])
+                changes = {name: edits for name, edits in dict(proposal.get('related_headers', {}),
+                           **{rel: proposal['edits']}).items() if edits}
+                try:
+                    integration.validate_patches(changes)
+                except ValueError as error:
+                    integration.atomic_json(output / 'blocked-proposals' / (integration.digest(rel)[:16] + '.json'),
+                                            dict(proposal=proposal, reason=str(error)))
+                    log('Proposal retained, not staged: %s: %s' % (rel, error))
+                    if recovery_ticket:
+                        recovery_blocked.append(proposal)
                     continue
-                proposal["proof"] = dict(final, hits=hits, losses=[])
-                proposal["proof"]["ownership_candidates"] = ownership
-                proposal["base_revision"] = base["revision"]
+                original_proposal = json.loads(json.dumps(proposal))
+                try:
+                    proposal = recheck_proposal(proposal, ctx, texts, output, base['revision'], log, recover=bool(recovery_ticket))
+                except SavedProposalError as error:
+                    if not recovery_ticket:
+                        raise
+                    recovery_blocked.append(original_proposal)
+                    integration.atomic_json(output/'blocked-proposals'/(integration.digest(original_proposal)+'.json'),
+                                            dict(proposal=original_proposal, reason=str(error)))
+                    log('Saved proposal retained for repair: %s: %s' % (rel, error))
+                    continue
+                if proposal is None:
+                    continue
                 final_checks.append(proposal["proof"])
                 rechecked.append(proposal)
             proposals = rechecked
         elif config.get("llm"):
-            proposals, records = model_discovery(config, texts, discovery_targets, owned, by_addr, matcher, output, jobs, log,
+            discovery = dict(config, base_revision=base['revision'])
+            if config.get('rolling_workers') and config.get('tried_revision') != base['revision']:
+                discovery.update(exclude_files=[], file_offsets={}, retry_targets={})
+            proposals, records = model_discovery(discovery, texts, discovery_targets, owned, by_addr, matcher, output, jobs, log,
                                                  lambda source, rel, label: compile_unit(source, rel, label, output, tree,
                                                                                          overlay, includes, defines, flags),
                                                  ctx.names)
             final_checks = [p["proof"] for p in proposals]
             trials = []
         else:
-            trials = [(rel, *trial) for rel in files for trial in experiments(texts[rel], config.get("modes"))]
-            records, proofs, baseline_hits, baseline_ready = [], defaultdict(list), {}, set()
-            def compile_trial(item):
-                rel, mode, source, error = item
-                if error:
-                    return {"file": rel, "mode": mode, "ok": False, "error": error, "seconds": 0}
-                try:
-                    return compile_unit(source, rel, mode, output, tree, overlay, includes, defines, flags)
-                except ValueError as error:
-                    return {"file": rel, "mode": mode, "ok": False, "error": str(error), "seconds": 0}
-            with ThreadPoolExecutor(max_workers=jobs) as pool:
-                for result in pool.map(compile_trial, trials):
-                    result["hits"] = matcher.scan(Path(result["object"]).read_bytes()) if result["ok"] else []
-                    records.append(result)
-                    rel, mode = result["file"], result["mode"]
-                    if mode == "baseline":
-                        baseline_hits[rel] = {h["addr"] for h in result["hits"]}
-                        if result["ok"]:
-                            baseline_ready.add(rel)
-                    elif result["ok"] and rel in baseline_ready:
-                        new_hits = [h for h in result["hits"] if h["addr"] in discovery_targets - baseline_hits.get(rel, set())]
-                        result["ownership_candidates"] = ownership_candidates(Path(result["object"]).read_bytes(), new_hits)
-                        unique_hits = [h for h in new_hits if result["ownership_candidates"].get(h["addr"]) == [h["addr"]]]
-                        proposal = proven_proposal(texts[rel], mode, unique_hits,
-                                                   baseline_hits.get(rel, set()))
-                        if proposal:
-                            proposal["file"] = rel
-                            for hit in proposal["witnesses"]:
-                                hit["claim_unit"] = claim_unit(hit, by_addr[hit["addr"]])
-                            proofs[rel].append(proposal)
-                    log("native %s %s: %d exact code+data" % (rel, mode, len(result["hits"])))
-                    integration.atomic_json(output / "trials.json", records)
-                    integration.atomic_json(output / "progress.json", {"phase": "discovery", "tried": len(records), "total": len(trials), "file": rel, "mode": mode})
-            proposals, final_checks = [], []
-            for rel, choices in proofs.items():
-                for proposal in sorted(choices, key=lambda p: (-len(p["witnesses"]), len(p["edits"]))):
-                    final = compile_unit(proposal["source"], rel, "final-" + proposal["mode"], output, tree, overlay, includes, defines, flags)
-                    hits = matcher.scan(Path(final["object"]).read_bytes()) if final["ok"] else []
-                    addresses = {h["addr"] for h in hits}
-                    wanted = {h["addr"] for h in proposal["witnesses"]}
-                    lost = baseline_hits[rel] - addresses
-                    proposal["proof"] = dict(final, hits=hits, losses=sorted(lost))
-                    final_checks.append(proposal["proof"])
-                    proposal.pop("source")
-                    if not lost and wanted <= addresses:
-                        proposals.append(proposal)
-                        break
+            proposals, records, final_checks = grid_discovery(dict(config, base_revision=base['revision']), texts,
+                discovery_targets, matcher, output, jobs,
+                lambda source, rel, label: compile_unit(source, rel, label, output, tree, overlay, includes, defines, flags),
+                ctx.names, by_addr, log)
+            trials = []
         for proposal in proposals:
             proposal["base_revision"] = base["revision"]
-        integration.atomic_json(output / "proposals.json", proposals)
+        proposal_output = output / "proposals.json"
+        if saved_path and Path(saved_path).resolve() == proposal_output.resolve():
+            proposal_output = output / "rechecked-proposals.json"
+        integration.atomic_json(proposal_output, proposals)
         integration.atomic_json(output / "final-checks.json", final_checks)
         summary = {"recipe": name, "client": "2008-06", "op": "native-grid", "tried": len(records),
                    "proposed_files": len(proposals), "local_exact": sum(len(p["witnesses"]) for p in proposals),
-                   "new_verified": 0, "files_tried": sorted({r["file"] for r in records})}
+                   "new_verified": 0, "files_tried": sorted({r["file"] for r in records}),
+                   "base_revision":base['revision'],
+                   "pending_files":{r['file']:r['pending_targets'] for r in records if 'pending_targets' in r}}
         if not proposals or not config.get("apply"):
             return finish(summary)
         if api.call("/v1/integration/base")["revision"] != base["revision"]:
-            raise ValueError("Accepted baseline changed; rerun discovery before applying")
+            hold_proposals(output, proposals, base['revision'], ticket=recovery_ticket, model=config.get('model'))
+            raise BaselineAdvanced("Accepted baseline changed; saved proofs queued for revalidation before applying")
         identity_file = ROOT / "work/integration-client/identity.json"
         if not identity_file.exists():
             integration.atomic_json(identity_file, {"id": uuid.uuid4().hex})
         identity = json.loads(identity_file.read_text())["id"][:12]
-        units, selected, blocked = {}, [], set()
+        units, selected, blocked, routed = {}, [], set(), {}
+        claim_state = api.call("/v1/integration?claims=1")
+        inventory = claim_state.get("inventory")
+        parked = set(claim_state.get("parked_units", [])) | {item["unit"] for item in claim_state.get("parked", [])}
+        catalog_units = {addr: unit for unit, addresses in (inventory or {}).items() for addr in addresses}
+        worker_name = settings["user"] + "@native-sweep:" + identity
+        live = [c for c in claim_state.get("claims", []) if c["expires"] > time.time() or c["state"] == "submitted"]
+        foreign = {c["unit"] for c in live if c["state"] in ("claimed", "submitted") and
+                   (c["user"], c["worker"]) != (settings["user"], worker_name)}
         max_claims = base.get("limits", {}).get("claims", 16)
         for proposal in proposals:
-            needed = {h["claim_unit"] for h in proposal["witnesses"]}
+            labels = {h["claim_unit"] for h in proposal["witnesses"]}
+            labels.update(by_addr[h["addr"]]["unit"] for h in proposal["witnesses"] if h["addr"] in by_addr)
+            needed = set()
+            for hit in proposal["witnesses"]:
+                unit = catalog_units.get(hit["addr"], by_addr.get(hit["addr"], {}).get("unit", hit["claim_unit"]))
+                needed.add(unit if re.fullmatch(r"RBX::(?:\w+::)*\w+", unit) else hit["claim_unit"])
+            if (labels | needed) & (parked | foreign):
+                blocked.update((labels | needed) & (parked | foreign))
+                continue
+            if inventory is not None:
+                absent = needed - inventory.keys()
+                if absent:
+                    log("Skipping unavailable claim units: " + ", ".join(sorted(absent)))
+                needed &= inventory.keys()
+            routed[proposal["file"]] = needed
             if len(set(units) | needed) > max_claims:
                 continue
             for unit in sorted(needed - set(units)):
                 log("native claiming " + unit)
-                result = api.call("/v1/integration/claim", {"user": settings["user"], "worker": settings["user"] + "@native-sweep:" + identity,
+                existing = next((c for c in live if c["unit"] == unit and c["user"] == settings["user"]
+                                 and c["worker"] == worker_name and c["state"] == "claimed"
+                                 and c["base_revision"] == base["revision"]), None)
+                packet = ROOT / "work/integration-client/claims" / existing["id"] / "packet.json" if existing else None
+                result = {"claims": [json.loads(packet.read_text())]} if packet and packet.exists() else api.call("/v1/integration/claim", {"user": settings["user"], "worker": worker_name,
                                                           "unit": unit, "count": 1})
                 if result["claims"] and result["claims"][0]["base_revision"] != base["revision"] and \
                         api.call("/v1/integration/base")["revision"] == base["revision"]:
@@ -982,7 +1665,7 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
             # Gains are credited from the linked rebuild, not per claim: take a proposal when it holds at least one
             # claim and no other worker holds a live claim on any class it touches (catalog-less classes and
             # sub-24-byte targets cannot be claimed at all).
-            conflicts = needed & foreign_claims(settings["user"], identity)
+            conflicts = (labels | needed) & foreign_claims(settings["user"], identity)
             if not conflicts:
                 selected.append(proposal)  # rides on any claim this batch holds; at least one is required below
             else:
@@ -993,7 +1676,7 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
             for claim in result["claims"]:
                 claimed.append(claim)
                 units[claim["unit"]] = claim
-        used = {h["claim_unit"] for p in selected for h in p["witnesses"]} & units.keys()
+        used = {unit for p in selected for unit in routed[p["file"]]} & units.keys()
         if selected and not used and units:
             used = {sorted(units)[0]}  # carrier claim for catalog-less classes
         additions = {}
@@ -1006,6 +1689,14 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
             summary.update(state="blocked", blocked_units=sorted(blocked),
                            reason="Classes held by another worker" if blocked else "No native claim available")
             return finish(summary)
+        additions = integration.canonical_patches(additions, base["overlay"])
+        renewed = api.call("/v1/integration/renew", {"user": settings["user"], "claims": [units[u]["id"] for u in sorted(used)]})
+        if not renewed.get("ok"):
+            raise ValueError("Claims changed before linked preflight; saved proposals retained")
+        linked = linked_preflight_progress(ROOT, additions, output, log)
+        if api.call("/v1/integration/base")["revision"] != base["revision"]:
+            hold_proposals(output, proposals, base['revision'], ticket=recovery_ticket, model=config.get('model'))
+            raise BaselineAdvanced("Accepted baseline advanced during linked preflight; saved proofs queued for revalidation")
         for unit in used:
             claim = units[unit]
             folder = ROOT / "work/integration-client/claims" / claim["id"]
@@ -1035,7 +1726,8 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
         keep_claims = True
         if config.get("submit"):
             args = SimpleNamespace(action="submit", server=server, user=None, token=integration.native_token(),
-                                   claim=None, all=False, batch=str(batch), model=config["model"], evidence_file=str(notes), retry=False, wait=False)
+                                   claim=None, all=False, batch=str(batch), model=config["model"], evidence_file=str(notes), retry=False, wait=False,
+                                   applied_paths=summary["applied_paths"], preflight_artifacts=linked.get("artifacts") if linked else None)
             integration.command(args)
             marker = ROOT / "work/integration-client/claims" / units[sorted(used)[0]]["id"] / "job.json"
             summary["job"] = json.loads(marker.read_text())["id"]
@@ -1049,6 +1741,11 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
                     integration.command(SimpleNamespace(action="sync", server=server, user=None, token=integration.native_token()))
         return finish(summary)
     except BaseException as error:
+        if recovery_ticket and not isinstance(error, BaselineAdvanced):
+            record = json.loads(recovery_ticket.read_text())
+            integration.atomic_json(recovery_ticket, dict(record,
+                state='pending' if isinstance(error, worker.ApiFailure) else 'blocked',
+                error=str(error), attempted_revision=base['revision']))
         state = summary.get("state") if summary.get("state") in ("accepted", "rejected") else "queued" if summary.get("job") else "failed"
         finish(dict(summary, recipe=name, state=state, error=str(error), new_verified=summary.get("new_verified", 0)))
         raise

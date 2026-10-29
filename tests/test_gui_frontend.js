@@ -182,6 +182,11 @@ assert.match(nativeResult,/native_result exact/);
 assert.match(nativeResult,/w3/);
 assert.match(nativeResult,/3 local exact/);
 assert.match(nativeResult,/awaiting verification/);
+const nativePartial=feedContext.terminalMessage({job:"native",seq:2,time:2,event:"native_partial",slot:2,file:"App/Block.cpp",addr:"00500000",previous:75,score:82,frame_before:false,frame_ok:true},new Map(),true);
+assert.match(nativePartial,/native_partial improved/);
+assert.match(nativePartial,/75% → 82%/);
+assert.match(nativePartial,/frame improved/);
+assert.match(nativePartial,/local search, no exact credit/);
 const longAgentRow={job:"agent",seq:1,time:1,event:"log",message:"Command finished · exit 0\n"+"large output ".repeat(500)};
 const quotedFailure={...longAgentRow,message:"Command finished · exit 0\nDocs: compiler failed; Error: example only"};
 assert.doesNotMatch(feedContext.terminalMessage(quotedFailure,new Map(),true),/terminal-row error/);
@@ -254,6 +259,12 @@ feedContext.chatFollow=true;
 assert.doesNotMatch(fs.readFileSync("roc/web/style.css","utf8"),/\.workers-page \.worker-chat\{max-width:960px/);
 assert.match(feedNodes["#worker-tabs"].innerHTML,/dot running/);
 console.log("Compact: one result per function, benchmarks, 3/4/100-loop boundary passed");
+feedContext.jobs[0]={...feedContext.jobs[0],kind:"worker",config:{lease_mode:"native"}};
+feedContext.logs.push({job:"run",seq:101,time:5,event:"log",slot:0,message:"Linked preflight baseline: building"});
+feedContext.logs.push({job:"run",seq:102,time:6,event:"stage",message:"Next discovery cycle"});
+feedContext.chatSignature="";feedContext.renderWorkerChat();
+assert.ok(feedContext.items.some(([,html])=>html.includes("Linked preflight baseline: building")));
+assert.ok(feedContext.items.some(([,html])=>html.includes("Next discovery cycle")));
 (async()=>{
   context.fetch=async()=>{throw new TypeError("Failed to fetch");};
   await context.selectWorker("saved");
@@ -284,3 +295,13 @@ console.log("Compact: one result per function, benchmarks, 3/4/100-loop boundary
 })().catch(error=>{console.error(error);process.exitCode=1;});
 
 assert.match(source,/deep:\{rounds:6,max_size:0,max_tokens:4096\}/);
+
+const nativeCardsContext={workerRun:"native",logs:[],jobs:[{id:"native",kind:"worker",status:"running",
+  config:{lease_mode:"native"},slots:Object.fromEntries(Array.from({length:20},(_,i)=>[i,{busy:i<7}])),
+  matched:0,attempted:0}],isWorker:()=>true,active:()=>true,badge:String,esc:String,endRun:()=>""};
+vm.createContext(nativeCardsContext);
+vm.runInContext(source.slice(source.indexOf("function workerCards("),source.indexOf("function commands(")),nativeCardsContext);
+const nativeCardsHTML=nativeCardsContext.workerCards();
+assert.match(nativeCardsHTML,/<b>7<\/b> active \/ <b>20<\/b> slots/);
+assert.match(nativeCardsHTML,/Waiting for file/);
+assert.doesNotMatch(nativeCardsHTML,/20<\/b> loops/);

@@ -12,15 +12,15 @@ import threading
 import time
 from pathlib import Path
 
-from roc.integration import CLIENT, MODULE, ROOT, atomic_json, digest, merge_patches
+from roc.integration import CLIENT, MODULE, ROOT, atomic_json, digest, merge_patches, canonical_patches
 
 WRITABLE_OUT = {"RbxgsApp", "tests"}  # out/ folders a snapshot build or milestone link writes into
 
 WATCHDOG_SECONDS = 20 * 60  # cold baselines take minutes; stacks only after this long without a verdict
 
 # Compiler, matcher and gate implementation. Queue/UI/webhook code does not build native artifacts.
-NATIVE_CODE = ("__init__", "analyze", "clients", "fingerprint", "integration_verify", "libs", "match",
-               "rebuild", "repair", "rtti", "setup", "telemetry", "worker")
+NATIVE_CODE = ("__init__", "analyze", "clients", "fingerprint", "integration", "integration_verify", "libs", "match",
+               "rebuild", "rebuild_install", "repair", "rtti", "setup", "telemetry", "worker")
 
 
 @functools.lru_cache(maxsize=1)
@@ -143,7 +143,7 @@ def input_paths(root, live_only=False):
     parent = root / "rebuild" / CLIENT
     paths.extend(input_files(parent, ("out", "__pycache__")))
     work = root / "work" / CLIENT
-    paths.extend(p for p in (work / "functions.jsonl", work / "bounds.json") if p.is_file())
+    paths.extend(p for p in (work / "functions.jsonl", work / "bounds.json", work / "vtables.json") if p.is_file())
     out = root / "rebuild" / CLIENT / "out"
     paths.extend(p for p in out.glob("*/verified/*") if p.is_file())
     paths.extend(p for p in out.glob("*/*.json") if p.is_file()
@@ -176,8 +176,20 @@ def digest_paths(root, paths, contents=None):
     if contents is None:
         with concurrent.futures.ThreadPoolExecutor(max_workers=8) as pool:
             contents = dict(zip(paths, pool.map(file_hash, paths)))
+    absolute = root.is_absolute()
+    # pathlib Windows paths use Python lower(), not Win32 normcase's Unicode map.
+    fold = str.lower if os.name == 'nt' else lambda name: name
+    prefix = fold(str(root).rstrip(os.sep) + os.sep)
+    root_parts = len(root.parts)
     for path in paths:
-        label = path.relative_to(root).as_posix() if path.is_relative_to(root) else str(path)
+        if absolute:
+            name = str(path)
+            # Avoid building every ancestor Path for each external tool/header.
+            # Join parts rather than slicing text: Unicode case aliases can
+            # have different string lengths on Windows.
+            label = '.' if path == root else '/'.join(path.parts[root_parts:]) if fold(name).startswith(prefix) else name
+        else:
+            label = path.relative_to(root).as_posix() if path.is_relative_to(root) else str(path)
         result.update(label.encode() + b"\0" + contents[path])
     for name in ("INCLUDE", "LIB", "LIBPATH", "CL", "_CL_", "PATH", "WINEPREFIX", "ROC_CL", "ROC_WINSDK", "ROC_ATLMFC"):
         result.update(name.encode() + b"=" + os.environ.get(name, "").encode())
@@ -196,7 +208,7 @@ def snapshot(root, destination, link=False):
         source, target = (root / name).resolve(), destination / name
         if os.name == "nt":
             subprocess.run(["cmd", "/c", "mklink", "/J", str(target), str(source)],
-                           check=True, capture_output=True)
+                           check=True, capture_output=True, stdin=subprocess.DEVNULL)
         else:
             target.symlink_to(source, target_is_directory=True)
     for name in ("work/2008-06", "local/units"):
@@ -297,7 +309,7 @@ else:
     with log.open("w", encoding="utf-8") as stream:
         try:
             subprocess.run([sys.executable, "-c", bootstrap, json.dumps(args)], cwd=root, env=env, stdout=stream,
-                           stderr=subprocess.STDOUT, check=True, timeout=4 * 3600)
+                           stderr=subprocess.STDOUT, stdin=subprocess.DEVNULL, check=True, timeout=4 * 3600)
         except subprocess.SubprocessError:
             stream.flush()
             tail = log.read_text(encoding="utf-8", errors="replace")[-2500:]
@@ -327,6 +339,63 @@ def other_module_owned(root):
             if data.get("linked"):
                 owned.update(data.get("owned_addrs", []))
     return owned
+
+
+def ownership_diagnostics(before, after, elsewhere=()):
+    old = set(before["report"]["owned_addrs"])
+    new = set(after["report"]["owned_addrs"])
+    return {"gains": sorted(new - old), "losses": sorted(old - new),
+            "uncovered_losses": sorted(old - new - set(elsewhere))}
+
+
+def linked_preflight(root, patches, output, log=print):
+    """Contributor proof uses the independent verifier's snapshots, build and gates."""
+    root, output = Path(root), Path(output)
+    log('Native preflight: validating cold setup and dependencies before baseline')
+    subprocess.run([sys.executable, '-u', '-c', 'from roc.rebuild_install import prepare; prepare()'],
+                   cwd=root, stdin=subprocess.DEVNULL, check=True)
+    base = json.loads((root / "rebuild/2008-06/patches/rbxgs-client.json").read_text())
+    combined, _, dropped = preflight(root, base, patches)
+    if dropped:
+        raise ValueError("Saved proposals stale; retained for repair: " + json.dumps(dropped))
+    key, live = input_hashes(root)
+    cache = root / "work/native-linked-preflight" / key[:20]
+    cache.parent.mkdir(parents=True, exist_ok=True)
+    result_file = cache / "integration-result.json"
+    checkpoint = cache / "integration-prepared.json"
+    if result_file.exists() and checkpoint.exists() and json.loads(checkpoint.read_text()) == {"format": 1, "inputs": key}:
+        before = json.loads(result_file.read_text())
+    else:
+        cache, _ = prepare_baseline(root, cache, key)
+        log("Linked preflight baseline artifacts: " + str(cache))
+        before = verify_build(cache, lambda phase: log("Linked preflight baseline: " + phase))
+        check_gates(before)
+        before["linked_addresses"] = json.loads((cache / "integration-linked.json").read_text())
+        atomic_json(cache / "integration-result.json", before)
+    candidate = output / ("linked-preflight-" + str(time.time_ns()))
+    snapshot(cache, candidate, link=True)
+    atomic_json(candidate / "rebuild/2008-06/patches/rbxgs-client.json", combined)
+    receipt = {"accepted": False, "baseline_artifacts": str(cache), "artifacts": str(candidate),
+               "input_hash": key, "overlay_hash": digest(combined)}
+    try:
+        after = verify_build(candidate, lambda phase: log("Linked preflight candidate: " + phase))
+        atomic_json(candidate / "integration-result.json", after)
+        elsewhere = other_module_owned(candidate)
+        receipt.update(ownership_diagnostics(before, after, elsewhere))
+        check_gates(after, before, elsewhere)
+        new_distinct = set(receipt["gains"]) - set(before["linked_addresses"])
+        if after["distinct"] - before["distinct"] != len(new_distinct):
+            raise ValueError("Linked coverage changed outside the submitted module")
+        if input_hash(root, live_only=True) != live:
+            raise ValueError("Inputs changed during linked preflight; proposals retained")
+        receipt["accepted"] = True
+    except (OSError, ValueError, RuntimeError, subprocess.SubprocessError) as error:
+        receipt["reason"] = str(error)
+        raise
+    finally:
+        atomic_json(candidate / "preflight-receipt.json", receipt)
+        log("Linked preflight receipt: " + str(candidate / "preflight-receipt.json"))
+    return receipt
 
 
 def check_gates(result, baseline=None, elsewhere=frozenset()):
@@ -370,6 +439,8 @@ def preflight(root, base, patches):
     """Cheap anchor validation/rebase before hashing inputs or building anything.
     A file whose edits no longer apply is dropped from the batch, so one stale file does not cost the rest;
     returns (combined overlay, kept patches, {dropped file: reason}). Raises when nothing applies."""
+    base = canonical_patches(base)
+    patches = canonical_patches(patches, base)
     tree = root / "tools/rbxgs/Client"
     kept, dropped = {}, {}
     for name, change in patches.items():
@@ -497,8 +568,15 @@ def verify(promotions, job):
     progress("preparing candidate snapshot")
     snapshot(cache, candidate, link=True)  # the baseline cache is never rebuilt: share its read-only objects
     atomic_json(candidate / "rebuild" / CLIENT / "patches" / "rbxgs-client.json", combined)
+    job["diagnostics"] = {"artifacts": candidate.relative_to(root).as_posix(),
+                          "baseline_artifacts": cache.relative_to(root).as_posix(),
+                          "baseline_revision": baseline["revision"], "submitted_revision": job["base"],
+                          "input_hash": before_hash}
     after = verify_build(candidate, progress)
+    atomic_json(candidate / "integration-result.json", after)
     elsewhere = other_module_owned(candidate)
+    job["diagnostics"].update(ownership_diagnostics(before, after, elsewhere))
+    atomic_json(candidate / "integration-diagnostics.json", job["diagnostics"])
     check_gates(after, before, elsewhere)
     if input_hash(root, live_only=True) != live_hash or promotions.baseline()["revision"] != baseline["revision"]:
         raise ValueError("Server inputs changed during candidate verification; retry on a stable baseline")
@@ -529,7 +607,7 @@ def publish(promotions, patches=None):
     try:
         atomic_json(path, promotions.accepted() if patches is None else patches)
         subprocess.run([sys.executable, str(promotions.generator)], cwd=promotions.root,
-                       check=True, capture_output=True, timeout=60)
+                       check=True, capture_output=True, stdin=subprocess.DEVNULL, timeout=60)
     except BaseException:
         if old_ledger is None:
             path.unlink(missing_ok=True)
@@ -584,7 +662,9 @@ def loop(promotions, log=print):
         try:
             receipt = verify(promotions, job)
         except (OSError, ValueError, RuntimeError, subprocess.SubprocessError) as error:
-            receipt = {"accepted": False, "reason": str(error)[:1000]}
+            receipt = dict(job.get("diagnostics", {}), accepted=False, reason=str(error)[:1000])
+            if receipt.get("artifacts"):
+                atomic_json(promotions.root / receipt["artifacts"] / "rejection-receipt.json", receipt)
         finally:
             faulthandler.cancel_dump_traceback_later()
             stacks.close()

@@ -68,6 +68,15 @@ Cloud dollar caps need your exact model rates:
 `roc optimize --model M` calibrates a per-model worker profile on local verified matches
 (never submits).
 
+**OpenRouter:** choose OpenRouter in Worker or Integrator, then save its key in
+Settings → Provider credentials (or `roc provider setup`). It uses `OPENROUTER_API_KEY`;
+Google models through OpenRouter use this key, not `GEMINI_API_KEY`. The model dropdown
+loads OpenRouter's public text-model catalog, cached for five minutes. Manual IDs also
+work, including `:free` variants: `openrouter:google/gemini-2.5-flash`. Terminal catalog:
+`roc provider models openrouter`. Signed-in OpenCode users can instead select its
+`opencode:openrouter/google/...` entry. Reasoning settings use OpenRouter's unified
+`reasoning` parameter; mandatory reasoning still depends on the chosen model.
+
 ## Dashboard
 
 `roc gui` opens the local dashboard (loopback only; keep its session link private).
@@ -129,4 +138,7 @@ anything in use.
 | `missing VS2005 / VS2008` | `roc install` again (resumes) |
 | `cannot reach server` | server offline; workers retry |
 | `no cloud model key is set` | `roc provider setup`, or `roc local-ai` |
+| NVIDIA 404 for Nemotron Ultra | Keep namespace: `nvidia:nvidia/nemotron-3-ultra-550b-a55b`. For OpenCode sign-in: `opencode:nvidia/nvidia/nemotron-3-ultra-550b-a55b#none`. |
+| Cloud HTTP 401/403 | Check key/model access; environment keys override ROC's saved key. OpenCode credentials require an `opencode:` model. |
+| DeepSeek HTTP 402 | API balance exhausted; fix billing. Retrying or switching reasoning cannot repair billing. |
 | `worker config was edited` | delete `local/config/roconstruct-worker.json`, run `roc setup` |

@@ -94,7 +94,7 @@ class ControlTests(unittest.TestCase):
                 time.sleep(0.01)
             self.assertTrue(predicate())
 
-        with patch.object(sys, "stdin", stream), patch.object(gui_worker, "prepare_clients"), \
+        with patch.object(sys, "stdin", stream), patch.object(gui_worker, "command_lines", side_effect=iter), patch.object(gui_worker, "prepare_clients"), \
              patch.object(worker, "run", side_effect=run), \
              patch.object(worker, "keep_awake"), patch("builtins.print"):
             thread = threading.Thread(target=main, daemon=True)
@@ -134,7 +134,7 @@ class ControlTests(unittest.TestCase):
             deadline=time.time()+10
             while len(running)!=count and time.time()<deadline:time.sleep(.01)
             self.assertEqual(len(running),count)
-        with patch.object(sys,"stdin",stream),patch.object(gui_worker,"prepare_clients"),patch.object(worker,"run",side_effect=run),patch.object(worker,"keep_awake"),patch("builtins.print"):
+        with patch.object(sys,"stdin",stream),patch.object(gui_worker,"command_lines",side_effect=iter),patch.object(gui_worker,"prepare_clients"),patch.object(worker,"run",side_effect=run),patch.object(worker,"keep_awake"),patch("builtins.print"):
             thread=threading.Thread(target=main,daemon=True);thread.start()
             try:
                 wait_for(10)
@@ -397,12 +397,14 @@ class DashboardTests(unittest.TestCase):
             identifier = self.app.start({"kind": "worker", "config": config(lease_mode="native", client="2008-06", source_only=False, model="codex:default", cloud_allowed=True)})
             rows = [dict(event="native_started", slot=2, file="App/Block.cpp"),
                     dict(event="native_progress", slot=2, file="App/Block.cpp", message="Compiling baseline"),
+                    dict(event='native_partial', slot=2, file='App/Block.cpp', addr='00500000', previous=75, score=82),
                     dict(event="native_result", slot=2, file="App/Block.cpp", local_exact=3, seconds=20),
                     dict(event="benchmark", completed=1, matched=0, improved=0)]
             process = Mock(stdout=io.StringIO("".join("ROC_EVENT " + json.dumps(row) + "\n" for row in rows)), stdin=None)
             process.wait.return_value = 0
             self.app.consume(identifier, process)
         self.assertEqual(self.app.jobs[identifier]["local_exact"], 3)
+        self.assertEqual(self.app.jobs[identifier]['native_partials'], 1)
         self.assertEqual(self.app.jobs[identifier]["matched"], 0)
         self.assertEqual(self.app.jobs[identifier]["attempted"], 1)
 

@@ -105,42 +105,25 @@ def libs_recipes():
 
 def build_group(job):
     module, n, item = job
-    text = original = (ROOT / "src" / CLIENT / (item["addrs"][0] + ".cpp")).read_text(errors="replace")
+    text = (ROOT / "src" / CLIENT / (item["addrs"][0] + ".cpp")).read_text(errors="replace")
     twin = DLL_TWIN.get(item["recipe"])
     if twin is None and "_DLL" not in libs_recipes().get(item["recipe"], {}).get("defines", "")             and item["recipe"] + "-dll" in libs_recipes():
         twin = item["recipe"] + "-dll"  # e.g. g3d-6.09 -> g3d-6.09-dll
     if twin:
         item = dict(item, recipe=twin)
         text = re.sub(r"(?m)^(// roc-lib: )%s " % re.escape(job[2]["recipe"]), r"\g<1>%s " % twin, text)
-    objs = []
+    # No fallback to the static-CRT object mining verified: it links under /MD but crashed the M4a/M5 runtime
+    # gates (int 3 at startup, 2026-10-27) although every kept body was byte-exact. Only the _DLL twin is safe.
     try:
         obj = compile_against_overlay(module, item, n) if item.get("overlay") else match.compile_text(CLIENT, text)
     except Exception as error:  # noqa: BLE001 - report and continue with the other groups
-        if not twin:
-            return item, [], str(error)[:300]
-        obj = None
-    missed = list(item["addrs"])
-
-    def take(source, candidate):
-        keep = {}
-        for addr in missed:
-            value, symbol, _, _ = match.check_text(CLIENT, addr, source, obj=candidate)
-            if value == 100 and symbol:
-                keep.setdefault(symbol, addr)
-        if keep:
-            objs.append((candidate, keep))
-        return [a for a in missed if a not in set(keep.values())]
-
-    if obj is not None:
-        missed = take(text, obj)
-    # The twin rebuilds most groups inexact (sampled: 51 of 568 openrbx-client addresses); the addresses it misses
-    # fall back to the object mining verified. The module link then proves its CRT references resolve under /MD.
-    if twin and missed:
-        try:
-            missed = take(original, match.compile_text(CLIENT, original))
-        except Exception:  # noqa: BLE001 - the twin result stands
-            pass
-    return item, objs, None
+        return item, [], str(error)[:300]
+    keep = {}
+    for addr in item["addrs"]:
+        value, symbol, _, _ = match.check_text(CLIENT, addr, text, obj=obj)
+        if value == 100 and symbol:
+            keep.setdefault(symbol, addr)
+    return item, [(obj, keep)] if keep else [], None
 
 
 def main(module, limit=None):

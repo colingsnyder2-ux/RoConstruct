@@ -85,11 +85,27 @@ def probe(header, rows, tmp, tc):
     if not (tmp / "probe.exe").exists():
         return None, text[-400:]
     run = [str(tmp / "probe.exe")] if setup.WINDOWS else [setup.wine_exe(), str(tmp / "probe.exe")]
-    done = subprocess.run(run, capture_output=True, text=True, timeout=60)
-    return {int(a): int(b) for a, b in (l.split() for l in done.stdout.splitlines() if l.strip())}, None
+    try:
+        done = subprocess.run(run, capture_output=True, text=True, timeout=60)
+    except subprocess.TimeoutExpired:
+        return None, "Probe runtime timed out after 60 seconds"
+    if done.returncode:
+        return None, "Probe runtime exit=%s (0x%08X): %s" % (
+            done.returncode, done.returncode & 0xffffffff, (done.stdout + done.stderr)[-400:])
+    try:
+        offsets = {int(a): int(b) for a, b in (line.split() for line in done.stdout.splitlines() if line.strip())}
+    except ValueError:
+        return None, "Invalid probe output: " + done.stdout[-400:]
+    if set(offsets) != set(range(len(rows))):
+        return None, "Incomplete probe output: " + done.stdout[-400:]
+    return offsets, None
 
 
 def main():
+    if setup.WINDOWS:
+        import ctypes
+        # Children inherit this: report crash codes instead of blocking on Windows error dialogs.
+        ctypes.windll.kernel32.SetErrorMode(0x0001 | 0x0002 | 0x8000)
     tc = rebuild.toolchain()
     by_header = {}
     for cls, bases in sorted(rtti_bases().items()):

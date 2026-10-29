@@ -18,11 +18,11 @@ DEFAULTS = dict(client="", server="", user="", model="", workers=1, rounds=4,
                 cloud_allowed=False, cloud_concurrency="auto", max_cloud_requests=None,
                 max_cloud_tokens=None, max_cloud_cost=None, lease_mode="function",
                 unit_name=None, family_id=None, targets=None, library="",
-                native_batch_files=40, native_compile_workers=4, native_context="methods")
+                native_batch_files=40, native_compile_workers="auto", native_context="methods", native_generation="auto", native_compile_batch=4)
 LIVE = {"workers", "model", "rounds", "max_size", "max_tokens", "strategy", "order",
         "thinking", "reasoning_effort", "use_revng", "use_remill", "min_score", "max_score",
         "diverse_candidates", "guided_mutations", "near_repair", "max_cloud_requests",
-        "max_cloud_tokens", "max_cloud_cost", "native_batch_files", "native_compile_workers", "native_context"}
+        "max_cloud_tokens", "max_cloud_cost", "native_batch_files", "native_compile_workers", "native_context", "native_generation", "native_compile_batch"}
 
 
 def prepare_clients(config, log):
@@ -54,9 +54,10 @@ def validate(values, base=None, check_model=True):
     config = {**DEFAULTS, **(base or {}), **values}
     for key, low, high in (("workers", 1, 256), ("rounds", 1, 100), ("max_size", 0, 1000000),
                            ("native_batch_files", 1, 1024), ("native_compile_workers", 1, 64),
+                           ("native_compile_batch", 1, 32),
                            ("max_tokens", 128, 32768), ("diverse_candidates", 1, 16),
                            ("cloud_concurrency", 1, 256)):
-        if key in ("workers", "rounds", "max_tokens", "cloud_concurrency") and config[key] == "auto":
+        if key in ("workers", "rounds", "max_tokens", "cloud_concurrency", "native_compile_workers") and config[key] == "auto":
             continue
         if type(config[key]) is not int or not low <= config[key] <= high:
             raise ValueError("%s must be %d-%d" % (key, low, high))
@@ -80,6 +81,8 @@ def validate(values, base=None, check_model=True):
             raise ValueError("Invalid %s" % key)
     if config["native_context"] not in ("methods", "file"):
         raise ValueError("Invalid native context")
+    if config["native_generation"] not in ("auto", "edits", "method"):
+        raise ValueError("Invalid native generation mode")
     if config["lease_mode"] == "native":
         if config["client"] not in ("", "2008-06"):
             raise ValueError("Integrator currently supports 2008-06")
@@ -222,18 +225,79 @@ def native_loop(config, control, emit):
     """Native integration: each pass lets the model edit native files that define waiting exact targets, submits
     locally proven edits as one verified batch; discovery continues while the server verifies."""
     from roc import integration, native_sweep, research
+    outage_started = None
+    def server_wait(error):
+        nonlocal outage_started
+        if error.category == 'auth_fail':
+            emit('error', slot=0, message='Server authentication failed; saved proofs retained: ' + str(error))
+            control.command({'action': 'stop'})
+            return False
+        if error.category in ('offline', 'server_fail'):
+            if outage_started is None:
+                outage_started = time.monotonic()
+            if time.monotonic() - outage_started >= 7200:
+                emit('error', slot=0, message='Server unreachable for two hours; saved proofs retained. Session stopped.')
+                control.command({'action': 'stop'})
+                return False
+        emit('log', slot=0, message='Server request failed; saved proofs retained. Retry in 30s: ' + str(error))
+        emit('stage', message='Waiting for server; retrying in 30s', task_status='running')
+        control.wait(30)
+        return not control.stopping
+    if not providers.available(config["model"]):
+        raise providers.ProviderError("provider_key", providers.credential_hint(config["model"]))
     spec = json.loads(json.dumps(research.recipes()["native-model-2008"]))
+    emit('log', slot=0, message='Startup: validating ABI, RTTI and dependency compiler profiles')
+    from roc.rebuild_install import prepare
+    prepare(log=lambda message: emit('log', slot=0, message=message))
     worker.save_settings(user=config["user"], server=config["server"])
     emit("log", slot=0, message="Startup: syncing accepted native baseline (unchanged overlays are reused)")
-    integration.command(SimpleNamespace(action="sync", server=config["server"], user=config["user"], token=None))
+    while not control.stopping:
+        try:
+            integration.command(SimpleNamespace(action="sync", server=config["server"], user=config["user"], token=None))
+            outage_started = None
+            break
+        except worker.ApiFailure as error:
+            if not server_wait(error):
+                return
     emit("log", slot=0, message="Startup complete: selecting exact mined targets for parallel integration")
     def native_event(kind, **fields):
         emit(kind, **fields)
-        if fields.get("error_category") in ("provider_auth", "cloud_budget"):
+        if fields.get("error_category") in providers.FATAL_ERRORS or fields.get("error_category") == "cloud_budget":
             emit("error", slot=fields["slot"], message="Provider unavailable; session stopped. " + fields.get("error", ""))
             control.command({"action": "stop"})
 
     tried = set()
+    file_offsets, retry_targets = {}, {}
+    tried_revision = None
+    target_offset = 0
+    def remember(summary, step):
+        nonlocal tried_revision
+        revision = summary.get('base_revision')
+        if revision is not None and revision != tried_revision:
+            tried.clear()
+            file_offsets.clear()
+            retry_targets.clear()
+            tried_revision = revision
+        tried.update(summary.get('files_tried', []))
+        retry_targets.update(summary.get('pending_files', {}))
+        for rel in summary.get('files_tried', []):
+            file_offsets[rel] = file_offsets.get(rel, target_offset) + step
+    def report(message):
+        emit('stage', message=str(message), task_status='running')
+    def recover_pass(error):
+        # A rejected candidate must not kill discovery or regenerate the same
+        # files immediately. Native run archived their source and local proofs.
+        path = native_sweep.ROOT / 'work/research/native-model-2008/summary.json'
+        if path.exists():
+            remember(json.loads(path.read_text()), current['native_compile_batch'])
+        if isinstance(error, native_sweep.BaselineAdvanced):
+            emit('stage', message='Accepted baseline advanced; rechecking saved proofs without AI', task_status='running')
+            control.wait(1)
+            return
+        control.errors += 1
+        emit('error', slot=0, message='Native pass failed; proofs retained. Continuing in 30s: ' + str(error))
+        emit('stage', message='Recovering native pass; retrying in 30s', task_status='running')
+        control.wait(30)
     pending = set()
     def refresh_pending():
         if not pending:
@@ -262,17 +326,24 @@ def native_loop(config, control, emit):
         current = control.before_lease(0)
         if current is None:
             break
-        refresh_pending()
+        if refresh_pending():
+            tried.clear()
+            file_offsets.clear()
         for slot in range(control.workers):
             emit("applied", slot=slot, revision=control.revision)
-        emit("stage", message="Integrator: %d AI workers · %d compilers · up to %d files per batch" % (
-            control.workers, current["native_compile_workers"], current["native_batch_files"]))
+        inflight = providers.cloud_slots(current["model"],control.workers,current["cloud_concurrency"])
+        emit("stage", message="Integrator: %d file workers · %d AI requests · %d compilers · up to %d files per batch" % (
+            control.workers, inflight, native_sweep.resolve_compile_workers(current["native_compile_workers"], control.workers), current["native_batch_files"]))
         spec["native_sweep"].update(llm=current["model"], model=current["model"],
             rounds=3 if current["rounds"] == "auto" else current["rounds"], wait=False, exclude_files=sorted(tried),
             max_files=current["native_batch_files"], context=current["native_context"],
+            generation=current["native_generation"],
+            compile_batch=current["native_compile_batch"],
+            target_offset=target_offset, resume_saved=True, rolling_workers=True,
+            file_offsets=dict(file_offsets), retry_targets=dict(retry_targets), tried_revision=tried_revision,
             compile_workers=current["native_compile_workers"],
             provider_options={"allow_cloud": current["cloud_allowed"], "budget": control.budget,
-                "gate": providers.CloudGate(control.workers if current["cloud_concurrency"] == "auto" else current["cloud_concurrency"]),
+                "gate": providers.CloudGate(inflight),
                 "max_tokens": 3072 if current["max_tokens"] == "auto" else current["max_tokens"],
                 "thinking": current["thinking"], "reasoning_effort": current["reasoning_effort"] if current["reasoning_effort"] not in (None, "auto") else
                     ("low" if current["model"].startswith(("codex:", "claude:")) else None),
@@ -280,17 +351,26 @@ def native_loop(config, control, emit):
                 "before_request": lambda: control.before_lease(0) is not None})
         try:
             summary = native_sweep.run(spec, "native-model-2008", server=config["server"] or None, jobs=control.workers,
-                                       log=lambda message: emit("log", slot=0, message=str(message)))
+                                       log=report)
+            outage_started = None
         except worker.ApiFailure as error:
-            emit("log", slot=0, message="Server temporarily unavailable; proposals saved. Retry in 30s: " + str(error))
-            control.wait(30)
+            if error.category == 'bad_request':
+                outage_started = None
+                recover_pass(error)
+            elif not server_wait(error):
+                break
             continue
-        except (Exception, SystemExit) as error:  # noqa: BLE001 - report and stop like a worker slot
-            emit("error", slot=0, message=str(error))
-            raise
+        except (Exception, SystemExit) as error:  # noqa: BLE001 - failed native passes preserve proofs and retry
+            if getattr(error, 'category', '') in providers.FATAL_ERRORS or getattr(error, 'category', '') == 'cloud_budget':
+                emit('error', slot=0, message=str(error))
+                control.command({'action': 'stop'})
+                break
+            outage_started = None
+            recover_pass(error)
+            continue
         emit("log", slot=0, message="native pass: %s, %s local exact, %s verified" % (
             summary.get("state"), summary.get("local_exact", 0), summary.get("new_verified", 0)))
-        tried.update(summary.get("files_tried", []))
+        remember(summary, current['native_compile_batch'])
         if summary.get("job"):
             pending.add(summary["job"])
         control.completed += len(summary.get("files_tried", []))
@@ -306,12 +386,14 @@ def native_loop(config, control, emit):
         if exhausted:
             emit("log", slot=0, message="Cloud budget cap reached; finishing session.")
             control.command({"action": "stop"})
-        if not summary.get("files_tried"):
-            emit("stage", message="No fresh native targets; staying active, checking for new evidence every 30s")
+        if not summary.get("files_tried") and not summary.get("job"):
+            emit("stage", message="Discovery cycle complete; checking updates and rotating targets within 60s", task_status='running')
             signature = None
+            restart_at = time.monotonic() + 60
             while not control.stopping:
                 if refresh_pending():
                     tried.clear()
+                    file_offsets.clear()
                     break
                 api = worker.Api(current["server"], worker.load_settings().get("token"))
                 try:
@@ -319,25 +401,48 @@ def native_loop(config, control, emit):
                     changed = (status.get("matched"), status.get("integrated"), status.get("functions"), control.revision)
                     if signature is not None and changed != signature:
                         tried.clear()
+                        file_offsets.clear()
                         break
                     signature = changed
                 except worker.ApiFailure:
                     pass  # Keep local proofs while the shared service recovers.
                 finally:
                     api.close()
+                if time.monotonic() >= restart_at:
+                    tried.clear()
+                    file_offsets.clear()
+                    target_offset += current['native_compile_batch']
+                    report('Starting next discovery cycle with rotated pending targets')
+                    break
                 control.wait(30)
     for slot in range(control.workers):
         emit("slot_stopped", slot=slot)
 
 
+def command_lines(stream):
+    """Read controller JSON without holding stdin's buffered lock at shutdown."""
+    pending = b''
+    while True:
+        chunk = os.read(stream.fileno(), 65536)
+        if not chunk:
+            if pending:
+                yield pending.decode('utf-8')
+            return
+        pending += chunk
+        while b'\n' in pending:
+            line, pending = pending.split(b'\n', 1)
+            yield line.decode('utf-8')
+
+
 def main(initial=None, receive_commands=True):
-    initial = initial or json.loads(sys.stdin.readline())
+    commands = command_lines(sys.stdin)
+    initial = initial or json.loads(next(commands))
     if not receive_commands:
         initial["terminal"] = True
     initial["config"] = validate(initial["config"])
     if initial["config"].get("lease_mode") == "native" and not os.environ.get("ROC_INTEGRATOR_PRIVATE"):
         from roc import integrator
-        return integrator.run_private(initial, receive_commands)
+        return integrator.run_private(initial, receive_commands, commands)
     output_lock = threading.Lock()
 
     def emit(event, **fields):
@@ -350,6 +455,9 @@ def main(initial=None, receive_commands=True):
                         " | " + fields["error"] if fields.get("error") else ""), flush=True)
                 elif event == "native_started":
                     print("[%s] %s | baseline" % (slot, fields["file"]), flush=True)
+                elif event == 'native_partial':
+                    print('[%s] %s %s | partial %.3f%% -> %.3f%% | local search, no exact credit' % (
+                        slot, fields['file'], fields['addr'], fields['previous'], fields['score']), flush=True)
                 elif event == "native_progress":
                     if "Requesting" in fields["message"] or "new exact" in fields["message"]:
                         print("[%s] %s | %s" % (slot, fields["file"], fields["message"]), flush=True)
@@ -366,7 +474,7 @@ def main(initial=None, receive_commands=True):
     emit("log", slot=0, message="Startup: client dependencies ready")
 
     def receive():
-        for line in sys.stdin:
+        for line in commands:
             try:
                 control.command(json.loads(line))
             except (ValueError, KeyError, TypeError) as error:
@@ -377,7 +485,7 @@ def main(initial=None, receive_commands=True):
         threading.Thread(target=receive, daemon=True).start()
     shared_examples, shared_sources = {}, {}
     family_state, family_lock = {"id": config["family_id"]}, threading.Lock()
-    gate = providers.CloudGate(control.workers if config["cloud_concurrency"] == "auto" else config["cloud_concurrency"])
+    gate = providers.CloudGate(providers.cloud_slots(config["model"],control.workers,config["cloud_concurrency"]))
     threads, failures = {}, []
 
     def run_slot(slot):
@@ -385,7 +493,7 @@ def main(initial=None, receive_commands=True):
             current = dict(control.config)
         options = {key: value for key, value in current.items() if key not in
                    ("workers", "client", "max_cloud_requests", "max_cloud_tokens", "max_cloud_cost", "cloud_concurrency",
-                    "native_batch_files", "native_compile_workers", "native_context")}
+                    "native_batch_files", "native_compile_workers", "native_context", "native_generation", "native_compile_batch")}
         options.update(token=initial.get("token"), only=[current["client"]] if current["client"] else None,
                        model=current["model"] or None, forever=True, cloud_budget=control.budget, cloud_gate=gate,
                        examples_cache=shared_examples, source_cache=shared_sources,

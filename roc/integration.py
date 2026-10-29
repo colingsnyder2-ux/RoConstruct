@@ -55,7 +55,14 @@ def atomic_json(path, value):
     path.parent.mkdir(parents=True, exist_ok=True)
     temp = path.with_name(path.name + "." + uuid.uuid4().hex + ".tmp")
     temp.write_text(json.dumps(value, indent=1) + "\n", encoding="utf-8")
-    temp.replace(path)
+    for attempt in range(8):
+        try:
+            temp.replace(path)
+            break
+        except PermissionError as error:
+            if getattr(error, "winerror", None) not in (5, 32, 33) or attempt == 7:
+                raise
+            time.sleep(0.025 * (attempt + 1))
 
 
 def native_token(root=ROOT, fallback=None, create=False):
@@ -118,10 +125,31 @@ def validate_patches(patches):
             types = r"\b(?:struct|class|union)\s+([\w:]+)\s*(?::[^;{]+)?\{"
             if set(re.findall(types, new)) - set(re.findall(types, old)):
                 raise ValueError("Promote existing native classes; do not append invented snippet types")
+    canonical_patches(patches)
     return patches
 
 
+def canonical_patches(patches, base=None):
+    """Windows source identity, preserving the accepted registry's spelling."""
+    names = {}
+    for name in base or {}:
+        key = name.casefold()
+        if key in names:
+            raise ValueError("Case-colliding native paths: %s / %s" % (names[key], name))
+        names[key] = name
+    result, seen = {}, {}
+    for name, edits in patches.items():
+        key = name.casefold()
+        if key in seen:
+            raise ValueError("Case-colliding native paths: %s / %s" % (seen[key], name))
+        seen[key] = name
+        result[names.get(key, name)] = edits
+    return result
+
+
 def merge_patches(base, additions):
+    base = canonical_patches(base)
+    additions = canonical_patches(additions, base)
     result = {name: list(edits) for name, edits in base.items()}
     for name, change in additions.items():
         if isinstance(change, dict):
@@ -135,6 +163,8 @@ def merge_patches(base, additions):
 
 def overlay_delta(base, candidate):
     """Add recipes, or replace an existing recipe with an exact baseline guard."""
+    base = canonical_patches(base)
+    candidate = canonical_patches(candidate, base)
     result = {}
     for name in set(base) | set(candidate):
         before, after = base.get(name, []), candidate.get(name, [])
@@ -147,6 +177,74 @@ def overlay_delta(base, candidate):
     return validate_patches(result)
 
 
+def submission_key(body):
+    return digest([body["user"], sorted(body.get("claims", [body.get("claim")])),
+                   body["base_revision"], body["model"], body["patches"], body["evidence"], body.get("retry_of")])
+
+
+def submit_intent(api, directory, folder, body=None, generator=None, base_generator=None, context=None):
+    """Persist before sending; recover the exact request, never invent a replacement batch."""
+    from roc import worker
+    from urllib.parse import urlencode
+    ready_file = folder / "ready.json"
+    if body is not None and not ready_file.exists():
+        atomic_json(folder / "submission.json", body)
+        (folder / "submitted-generator.py").write_bytes(generator.read_bytes())
+        (folder / "generator-base.py").write_bytes(base_generator.read_bytes())
+        atomic_json(folder / "context.json", context or {})
+        atomic_json(ready_file, {"request": submission_key(body), "files": {
+            name: hashlib.sha256((folder / name).read_bytes()).hexdigest() for name in
+            ("submission.json", "submitted-generator.py", "generator-base.py", "context.json")}})
+    if not ready_file.exists():
+        raise ValueError("Saved request snapshot incomplete; retained for repair: " + str(folder))
+    ready = json.loads(ready_file.read_text())
+    if any(hashlib.sha256((folder / name).read_bytes()).hexdigest() != value for name, value in ready["files"].items()):
+        raise ValueError("Saved request changed; retained for repair: " + str(folder))
+    body = json.loads((folder / "submission.json").read_text())
+    key = submission_key(body)
+    if key != ready["request"]:
+        raise ValueError("Saved request identity changed; retained for repair: " + str(folder))
+    path = "/v1/integration?" + urlencode(dict(request=key, user=body["user"], claims=1))
+    def inspect():
+        state = api.call(path)
+        jobs = state.get("jobs", []) if state.get("request") == key else []
+        return state, next((j for j in jobs if j["user"] == body["user"]), None)
+    state, result = inspect()
+    if result is None:
+        if "claims" in state:
+            claims = {c["id"]: c for c in state["claims"]}
+            if any(i not in claims or claims[i]["user"] != body["user"] or claims[i]["state"] != "claimed"
+                   or claims[i]["expires"] <= time.time() or claims[i]["base_revision"] != body["base_revision"]
+                   for i in body["claims"]):
+                raise ValueError("Saved submission retained; claims expired, parked or changed. Renew/revalidate before resuming")
+        try:
+            result = api.call("/v1/integration/submit", body)
+        except worker.ApiFailure as error:
+            if error.category not in ("offline", "server_fail"):
+                raise
+            _, result = inspect()
+            if result is None:
+                raise error
+    target = directory / "jobs" / result["id"]
+    atomic_json(target / "submission.json", body)
+    for name in ("submitted-generator.py", "generator-base.py", "context.json"):
+        (target / name).write_bytes((folder / name).read_bytes())
+    for identifier in body["claims"]:
+        atomic_json(directory / "claims" / identifier / "job.json", result)
+    atomic_json(folder / "result.json", result)
+    return result
+
+
+def resume_pending(api, directory, user):
+    recovered = []
+    for path in sorted((directory / "requests").glob("*/submission.json")):
+        if path.with_name("result.json").exists() or json.loads(path.read_text())["user"] != user:
+            continue
+        result = submit_intent(api, directory, path.parent)
+        recovered.append(dict(result, **json.loads(path.with_name("context.json").read_text())))
+    return recovered
+
+
 class Promotions:
     def __init__(self, store, root=ROOT):
         self.store, self.root = store, Path(root)
@@ -156,6 +254,8 @@ class Promotions:
         self.wake = threading.Event()
         self.worker_error = None
         self.catalog_key, self.catalog_rows = None, []
+        self.catalog_done = set()
+        self.catalog_lock = threading.Lock()
         self.native_paths = {}
         with store.lock:
             store.db.executescript(SCHEMA)
@@ -196,21 +296,26 @@ class Promotions:
         return result
 
     def catalog(self, requested_unit=None):
+        with self.catalog_lock:
+            return self._catalog(requested_unit)
+
+    def _catalog(self, requested_unit):
         path = self.root / "rebuild" / CLIENT / "manifests" / "functions.json"
         report = path.parent.parent / "out" / "RbxgsApp" / "report.json"
         queue = path.parent.parent / "out" / "agent-queue.json"
         with self.store.lock:
             accepted_version = self.store.db.execute("SELECT COUNT(*),MAX(ts) FROM integration_accepted").fetchone()
         key = (path.stat().st_mtime_ns, report.stat().st_mtime_ns if report.exists() else 0,
-               queue.stat().st_mtime_ns if queue.exists() else 0, accepted_version, requested_unit)
+               queue.stat().st_mtime_ns if queue.exists() else 0, accepted_version)
         if self.catalog_key != key:
             from collections import defaultdict
             tree = self.root / "tools/rbxgs/Client"
             header_texts = [(p, p.read_text(errors="replace")) for p in (tree / "App/include").rglob("*.h")]
-            headers = "\n".join(t for _, t in header_texts)
+            classes = set()
             self.native_paths = {}
             for p, text in header_texts:
                 for cls in re.findall(r"\bclass\s+(\w+)", text):
+                    classes.add(cls)
                     self.native_paths.setdefault(cls, set()).add(p.relative_to(tree).as_posix())
             for p in (tree / "App").rglob("*.cpp"):
                 if p.name.startswith("roc_"):
@@ -224,17 +329,18 @@ class Promotions:
                 owned.update(json.loads(receipt).get("gains", []))
             groups = defaultdict(list)
             state = json.loads(queue.read_text()) if queue.exists() else {}
-            skipped = (set(state.get("done", [])) - {requested_unit}) | set(state.get("parked", {}))
+            self.catalog_done = set(state.get('done', []))
+            skipped = set(state.get("parked", {}))
             for f in json.loads(path.read_text(encoding="utf-8")):
                 unit = f.get("unit") or ""
                 m = re.fullmatch(r"RBX::(?:\w+::)*(\w+)", unit)
                 if (f.get("score") == 100 and f.get("source_kind") == "snippet"
                         and unit not in skipped and f["addr"] not in owned and f["size"] >= 24 and m
-                        and re.search(r"\bclass\s+" + re.escape(m[1]) + r"\b", headers)):
+                        and m[1] in classes):
                     groups[unit].append(f)
             self.catalog_rows = sorted(groups.items(), key=lambda x: (-len(x[1]), x[0]))
             self.catalog_key = key
-        return self.catalog_rows
+        return [(unit, rows) for unit, rows in self.catalog_rows if unit not in self.catalog_done or unit == requested_unit]
 
     def native_names(self):
         """rebuild/2008-06/out/native-names.json ({addr: {symbol, score, strings}}), reloaded when it changes."""
@@ -343,21 +449,29 @@ class Promotions:
     def renew(self, user, identifier, release=False, reason=None):
         return self.renew_many(user, [identifier], release, reason)
 
-    def renew_many(self, user, identifiers, release=False, reason=None):
+    def renew_many(self, user, identifiers, release=False, reason=None, action=None):
         if (not isinstance(identifiers, list) or not 1 <= len(identifiers) <= MAX_CLAIMS
                 or any(not isinstance(i, str) for i in identifiers) or len(set(identifiers)) != len(identifiers)):
             raise ValueError("Need 1-%d distinct claim IDs" % MAX_CLAIMS)
-        parked = release and bool(reason)
+        action = action or ("release" if release else "renew")
+        if action not in ("renew", "release", "park", "unpark"):
+            raise ValueError("Unknown claim operation")
+        if action == "release" and reason:
+            raise ValueError("Release frees a claim immediately; use park --reason TEXT for a two-hour blocker")
+        if action == "park" and (not isinstance(reason, str) or not reason.strip()):
+            raise ValueError("Park requires a blocker reason; use release for diagnostic cleanup")
         if reason is not None and (not isinstance(reason, str) or len(reason) > 500):
             raise ValueError("Park reason must be at most 500 characters")
         with self.store.lock, self.store.db:
             now = time.time()
-            expires = now if release and not parked else now + LEASE_SECONDS
-            state = "parked: " + reason if parked else "released" if release else "claimed"
+            expires = now if action in ("release", "unpark") else now + LEASE_SECONDS
+            state = "parked: " + reason if action == "park" else "released" if action in ("release", "unpark") else "claimed"
+            condition = "state LIKE 'parked:%'" if action == "unpark" else "state='claimed' AND expires>?"
             changed = self.store.db.executemany("UPDATE integration_claims SET expires=?,state=? "
-                "WHERE id=? AND user=? AND state='claimed' AND expires>?",
-                [(expires, state, identifier, user, now) for identifier in identifiers]).rowcount
-        return {"ok": changed == len(identifiers), "changed": changed, "requested": len(identifiers)}
+                "WHERE id=? AND user=? AND " + condition,
+                [(expires, state, identifier, user) + (() if action == "unpark" else (now,)) for identifier in identifiers]).rowcount
+        return {"ok": changed == len(identifiers), "changed": changed, "requested": len(identifiers),
+                "operation": action, "state": state, "expires": expires}
 
     def submit(self, user, body):
         patches = validate_patches(body.get("patches"))
@@ -376,7 +490,8 @@ class Promotions:
         retry = body.get("retry_of")
         if retry is not None and (not isinstance(retry, str) or not re.fullmatch(r"[0-9a-f]{32}", retry)):
             raise ValueError("Invalid retry job ID")
-        key = digest([user, identifiers, base, model, patches, evidence, retry])
+        key = submission_key(dict(user=user, claims=identifiers, base_revision=base, model=model,
+                                  patches=patches, evidence=evidence, retry_of=retry))
         with self.store.lock, self.store.db:
             self.store.db.execute("BEGIN IMMEDIATE")
             previous = self.store.db.execute("SELECT id,state FROM integration_jobs WHERE digest=?", (key,)).fetchone()
@@ -403,20 +518,32 @@ class Promotions:
         self.wake.set()
         return {"id": job, "state": "queued", "duplicate": False}
 
-    def status(self, identifier=None):
+    def status(self, identifier=None, request=None, user=None, include_claims=False):
         with self.store.lock:
+            where, params = ("WHERE id=? ", (identifier,)) if identifier else ("", ())
+            if request:
+                where, params = "WHERE digest=? AND user=? ", (request, user)
             rows = self.store.db.execute("SELECT id,user,model,unit,state,phase,created,updated,receipt "
-                "FROM integration_jobs " + ("WHERE id=? " if identifier else "") + "ORDER BY created DESC LIMIT 100",
-                (identifier,) if identifier else ()).fetchall()
+                "FROM integration_jobs " + where + "ORDER BY created DESC LIMIT 100", params).fetchall()
             leaders = self.store.db.execute("SELECT user,model,COUNT(*) FROM integration_credit "
                                            "GROUP BY user,model ORDER BY COUNT(*) DESC,user").fetchall()
-            parked = self.store.db.execute("SELECT unit,state,expires FROM integration_claims "
+            parked = self.store.db.execute("SELECT unit,state,expires,id,user FROM integration_claims "
                                            "WHERE state LIKE 'parked:%' AND expires>?", (time.time(),)).fetchall()
-        return {"verifier_error": self.worker_error,
-                "parked": [{"unit": u, "reason": s[8:], "until": e} for u, s, e in parked],
+            claims = self.store.db.execute("SELECT id,unit,user,worker,expires,state,base FROM integration_claims").fetchall() if include_claims else []
+        result = {"verifier_error": self.worker_error,
+                "parked": [{"unit": u, "reason": s[8:], "until": e, "id": i, "user": owner} for u, s, e, i, owner in parked],
                 "jobs": [dict(zip(("id", "user", "model", "unit", "state", "phase", "created", "updated", "receipt"),
                                  (*r[:-1], json.loads(r[-1]) if r[-1] else None))) for r in rows],
                 "leaderboard": [{"user": u, "model": m, "native_credits": n} for u, m, n in leaders]}
+        if request:
+            result["request"] = request
+        if include_claims:
+            queue = self.root / "rebuild" / CLIENT / "out/agent-queue.json"
+            queue_parked = json.loads(queue.read_text()).get("parked", {}) if queue.exists() else {}
+            result.update(inventory={unit: [f["addr"] for f in functions] for unit, functions in self.catalog()},
+                          parked_units=sorted({row[0] for row in parked} | set(queue_parked)),
+                          claims=[dict(zip(("id", "unit", "user", "worker", "expires", "state", "base_revision"), row)) for row in claims])
+        return result
 
     def force_queue(self, user, identifier):
         """Prioritize an owned queued batch; the active verifier keeps running."""
@@ -450,9 +577,9 @@ class Promotions:
                 return None
             lead, members = rows[0], [rows[0]]
             if lead["phase"] != "solo":
-                files = set(json.loads(lead["patches"]))
+                files = {name.casefold() for name in json.loads(lead["patches"])}
                 for row in rows[1:]:
-                    patches = set(json.loads(row["patches"]))
+                    patches = {name.casefold() for name in json.loads(row["patches"])}
                     if len(members) < MAX_MERGE and row["phase"] != "solo" and not files & patches and \
                             (row["user"], row["model"], row["base"]) == (lead["user"], lead["model"], lead["base"]):
                         members.append(row)
@@ -537,11 +664,12 @@ def run_generator(generator, root, timeout=120):
     started = time.monotonic()
     print("Generating native overlay...", flush=True)
     process = subprocess.Popen([sys.executable, "-u", str(generator)], cwd=root,
+                               stdin=subprocess.DEVNULL,
                                stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
                                creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
     while True:
         try:
-            output, _ = process.communicate(timeout=10)
+            output, _ = process.communicate(timeout=max(.01, min(10, timeout - (time.monotonic() - started))))
             break
         except subprocess.TimeoutExpired:
             elapsed = time.monotonic() - started
@@ -603,6 +731,47 @@ def command(args):
         print("Native integration is public. No invitation or native token required.")
         return
 
+    if action == "resume":
+        try:
+            recovered = resume_pending(api, directory, user)
+            print(json.dumps(recovered, indent=1) if recovered else "No unresolved saved submissions")
+            return recovered
+        finally:
+            api.close()
+
+    if action == "submit":
+        recovered = resume_pending(api, directory, user)
+        if recovered:
+            print("Recovered saved submission(s); no new batch created: " + json.dumps(recovered))
+            api.close()
+            return recovered
+
+    if action in ("renew", "release", "park", "unpark") and (getattr(args, "claim", None) or action == "unpark"):
+        if action == "release" and args.reason:
+            raise SystemExit("release frees immediately; omit --reason for cleanup, or use park --reason TEXT")
+        if action == "park" and not args.reason:
+            raise SystemExit("park requires --reason TEXT; release does not park")
+        try:
+            if args.claim:
+                identifiers = [args.claim]
+            elif args.all or args.unit:
+                status = api.call("/v1/integration?claims=1")
+                identifiers = [c["id"] for c in status["parked"] if c.get("user") == user and
+                               (not args.unit or c["unit"] == args.unit)]
+            else:
+                raise SystemExit("unpark needs --claim ID, --unit CLASS, or --all; only owned parks can change")
+            if not identifiers:
+                return print("No owned parked claims selected")
+            result = api.call("/v1/integration/" + action, {"user": user, "claims": identifiers, "reason": args.reason})
+            print(action + ": " + json.dumps(result))
+            return result
+        except worker.ApiFailure as error:
+            if action in ("park", "unpark") and "Unknown integration action" in str(error):
+                raise SystemExit("Server needs native protocol 3 for park/unpark; claims unchanged") from None
+            raise
+        finally:
+            api.close()
+
     if action == "force-queue":
         if not args.id:
             raise SystemExit("Force queue needs --id JOB_ID")
@@ -627,7 +796,7 @@ def command(args):
         if hashlib.sha256(generator.read_bytes()).hexdigest() != base["generator"]:
             raise SystemExit("Generator differs from server; preserve local edits, sync/update before claiming")
         atomic_json(generator.with_name("native-promotions.json"), base["accepted"])
-        subprocess.run([sys.executable, str(generator)], cwd=ROOT, check=True)
+        run_generator(generator, ROOT)
         if json.loads(overlay.read_text()) != base["overlay"]:
             raise SystemExit("Local overlay does not match the server baseline")
         identity_file = directory / "identity.json"
@@ -678,7 +847,11 @@ def command(args):
             print("No unclaimed eligible native classes available.")
         return
 
-    if action in ("submit", "renew", "release"):
+    if action in ("submit", "renew", "release", "park", "unpark"):
+        if action == "release" and args.reason:
+            raise SystemExit("release frees immediately; omit --reason for cleanup, or use park --reason TEXT")
+        if action == "park" and not args.reason:
+            raise SystemExit("park requires --reason TEXT; release does not park")
         paths = sorted((directory / "claims").glob("*/packet.json"))
         claims = [json.loads(p.read_text(encoding="utf-8")) for p in paths]
         states = {j["id"]: j["state"] for j in api.call("/v1/integration")["jobs"]}
@@ -710,7 +883,7 @@ def command(args):
             raise SystemExit("Submit needs --model ACTUAL_MODEL (or human) and --evidence-file FILE")
         if len({c["base_revision"] for c in claims}) != 1:
             raise SystemExit("Batch claims have different bases; submit each baseline separately")
-        subprocess.run([sys.executable, str(generator)], cwd=ROOT, check=True)
+        run_generator(generator, ROOT)
         patches = overlay_delta(claims[0]["baseline"]["overlay"], json.loads(overlay.read_text(encoding="utf-8")))
         body = {"user": user, "claims": [c["id"] for c in claims], "model": args.model,
                 "base_revision": claims[0]["base_revision"], "patches": patches,
@@ -722,14 +895,11 @@ def command(args):
             if len(jobs) != 1:
                 raise SystemExit("Retry one rejected batch at a time")
             body["retry_of"] = jobs.pop()
-        result = api.call("/v1/integration/submit", body)
-        folder = directory / "jobs" / result["id"]
-        atomic_json(folder / "submission.json", body)
-        (folder / "submitted-generator.py").write_bytes(generator.read_bytes())
-        (folder / "generator-base.py").write_bytes(
-            (directory / "claims" / claims[0]["id"] / "generator-base.py").read_bytes())
-        for c in claims:
-            atomic_json(directory / "claims" / c["id"] / "job.json", result)
+        folder = directory / "requests" / submission_key(body)
+        result = submit_intent(api, directory, folder, body, generator,
+            directory / "claims" / claims[0]["id"] / "generator-base.py",
+            {"applied_paths": getattr(args, "applied_paths", []),
+             "preflight_artifacts": getattr(args, "preflight_artifacts", None)})
         print("Queued %s (%d classes, one independent verification)" % (result["id"], len(claims)))
         if not args.wait:
             return

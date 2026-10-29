@@ -87,6 +87,21 @@ def test_signed_launcher_keeps_auto_and_saved_output():
     assert "auto" in link.knobs("auto", 512, False, "auto")
 
 
+def test_signed_launcher_binds_job_limit_without_duplicate_remill():
+    import inspect
+    signature = inspect.signature(worker.run_concurrent)
+    calls = []
+    def run(*args, **kwargs):
+        calls.append(signature.bind(*args, **kwargs))
+    with patch.object(worker, 'resolve_model', return_value=('local', False)), \
+         patch.object(worker, 'load_settings', return_value={}), \
+         patch.object(worker, 'save_settings'), patch.object(worker, 'keep_awake'), \
+         patch.object(worker, 'run_concurrent', run):
+        worker.main_args(dict(user='tester', server='localhost:8765'), ['--jobs', '5'])
+    assert calls[0].arguments['max_jobs'] == 5
+    assert calls[0].arguments['use_remill'] is True
+
+
 @pytest.mark.parametrize("extra,rounds,tokens,size,loops,order", [
     ([], "auto", "auto", 512, "auto", "random"),
     (["--rounds", "3", "--output-budget", "4096", "--max-size", "96", "--workers", "2", "--order", "random"],
@@ -101,12 +116,28 @@ def test_cli_automatic_preserves_overrides(extra, rounds, tokens, size, loops, o
          patch.object(worker, "run_concurrent") as run:
         cli.main(["worker", "--no-update", "--server", "localhost:8765", "--user", "tester",
                   "--source-only", "--preset", preset, *extra])
-    assert run.call_args.args[4:8] == (rounds, size, False, None)
-    assert run.call_args.args[8] == loops
+    assert run.call_args.args[4:7] == (rounds, size, False)
+    assert run.call_args.kwargs['max_jobs'] is None
+    assert run.call_args.kwargs['workers'] == loops
     assert run.call_args.kwargs["max_tokens"] == tokens
     assert run.call_args.kwargs["order"] == order
     assert run.call_args.kwargs["cloud_min_size"] == 0
     assert run.call_args.kwargs["only"] is None
+
+
+def test_direct_worker_cli_binds_worker_count_and_job_limit():
+    import inspect
+    signature = inspect.signature(worker.run_concurrent)
+    spec = importlib.util.spec_from_file_location('roc_worker_binding_cli', Path(__file__).resolve().parents[1] / 'roc.py')
+    cli = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(cli)
+    with patch.object(cli, 'settings', return_value={}), patch.object(worker, 'save_settings'), \
+         patch.object(worker, 'run_concurrent') as run:
+        cli.main(['worker', '--no-update', '--server', 'localhost:8765', '--user', 'tester',
+                  '--source-only', '--jobs', '7', '--workers', '3'])
+    call = signature.bind(*run.call_args.args, **run.call_args.kwargs)
+    assert call.arguments['max_jobs'] == 7 and call.arguments['workers'] == '3'
+    assert 'force_lift' not in call.arguments and 'use_remill' not in call.arguments
 
 
 def test_concurrent_cloud_auto_uses_eight_loops():

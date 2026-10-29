@@ -93,6 +93,9 @@ def test_content_cache_checks_inputs_and_ignores_timestamps(tmp_path, monkeypatc
         return rebuild.compile_direct('2008-06', [source], out, includes, defines, flags)
 
     build()
+    command = json.loads((out / 'unit.command.json').read_text())
+    assert command['source'] == str(source) and '/O2' in command['args']
+    assert str(header) in command['dependencies'] and command['exit'] == 0
     assert build()[str(source)] == (True, 'content cache hit')
     assert len(calls) == 1
     if change == 'touch':
@@ -141,6 +144,31 @@ def test_overlay_header_creation_invalidates_content_cache(tmp_path, monkeypatch
     assert len(calls) == 2
 
 
+def test_removed_dependency_invalidates_cache_and_failed_rebuild_removes_old_object(tmp_path, monkeypatch):
+    source, header = tmp_path/'unit.cpp', tmp_path/'shared.h'
+    source.write_text('#include "shared.h"\nint f();')
+    header.write_text('int shared;')
+    output = tmp_path/'out'
+    calls = []
+    monkeypatch.setattr(rebuild, 'toolchain', lambda _: {})
+    def run(tc, tool, args, cwd):
+        calls.append(args)
+        if not header.exists():
+            return 1, 'unit.cpp: error C1083: Cannot open include file: shared.h'
+        (cwd/'unit.obj').write_bytes(b'object')
+        return 0, 'Note: including file: ' + str(header)
+    monkeypatch.setattr(rebuild, 'run', run)
+    def build():
+        return rebuild.compile_direct('2008-06', [source], output, [], '')[str(source)]
+    assert build()[0]
+    assert build() == (True, 'content cache hit')
+    header.unlink()
+    assert not build()[0]
+    assert len(calls) == 2
+    assert not (output/'unit.obj').exists()
+    assert not (output/'unit.compile.json').exists()
+
+
 def test_sdk_discovery_is_cached_per_tools_tree(tmp_path):
     tools = tmp_path / 'tools'
     sdk = tools / 'compiler' / 'WinSDK'
@@ -160,6 +188,21 @@ def test_explicit_sdk_skips_tree_scan(tmp_path, monkeypatch):
     monkeypatch.setattr(rebuild.setup, 'compilers', lambda: {})
     monkeypatch.setattr(rebuild, 'sdk_roots', lambda _: pytest.fail('override must skip discovery'))
     assert rebuild.toolchain()['sdk_include'] == sdk / 'Include'
+
+
+def test_parallel_sdk_discovery_runs_once_for_twenty_workers(monkeypatch,tmp_path):
+    from concurrent.futures import ThreadPoolExecutor
+    calls=[]
+    tools=tmp_path/'tools'
+    (tools/'compiler').mkdir(parents=True)
+    def walk(folder):
+        calls.append(folder)
+        time.sleep(.03)
+        return []
+    monkeypatch.setattr(rebuild.setup.os,'walk',walk)
+    with ThreadPoolExecutor(20) as pool:
+        assert list(pool.map(rebuild.sdk_roots,[tools]*20)) == [()]*20
+    assert calls == [tools/'compiler']
 
 
 def test_content_cache_survives_private_snapshot_remapping(tmp_path, monkeypatch):
@@ -185,3 +228,57 @@ def test_content_cache_survives_private_snapshot_remapping(tmp_path, monkeypatch
     source = after / 'src' / 'unit.cpp'
     result = rebuild.compile_direct('2008-06', [source], after / 'out', [], '')
     assert result[str(source)] == (True, 'content cache hit') and len(calls) == 1
+
+
+@pytest.mark.skipif(os.name != 'nt', reason='Windows include path aliases are case insensitive')
+def test_windows_header_case_aliases_do_not_recompile_identical_inputs(tmp_path,monkeypatch):
+    source=tmp_path/'source.cpp';source.write_text('int f();')
+    header=tmp_path/'WinSDK'/'Include'/'PshPack.h';header.parent.mkdir(parents=True);header.write_text('')
+    monkeypatch.setattr(rebuild,'toolchain',lambda _: {})
+    calls=[]
+    def run(tc,tool,args,cwd):
+        calls.append(args)
+        (cwd/'source.obj').write_bytes(b'object')
+        # MSVC can report the same file twice; serialized deps are sorted, unlike
+        # the compiler stream. A Path set must not leak the surviving spelling.
+        return 0,'Note: including file: '+str(header).lower()+'\nNote: including file: '+str(header)
+    monkeypatch.setattr(rebuild,'run',run)
+    out=tmp_path/'out'
+    rebuild.compile_direct('2008-06',[source],out,[],'')
+    result=rebuild.compile_direct('2008-06',[source],out,[],'')
+    assert result[str(source)] == (True,'content cache hit')
+    assert len(calls)==1
+
+
+def test_nested_header_inventories_reuse_parent_walk_but_scan_excluded_wrap(tmp_path, monkeypatch):
+    source = tmp_path / 'src/unit.cpp'
+    source.parent.mkdir()
+    source.write_text('int f();')
+    includes = tmp_path / 'include'
+    nested, wrap = includes / 'nested', includes / '_wrap'
+    nested.mkdir(parents=True)
+    wrap.mkdir()
+    header, wrapped = nested / 'shared.h', wrap / 'generated.h'
+    header.write_text('int a;')
+    wrapped.write_text('int b;')
+    monkeypatch.setattr(rebuild, 'toolchain', lambda _: {})
+    walk = os.walk
+    walks, compiles = [], []
+    def counted_walk(folder):
+        walks.append(Path(folder))
+        return walk(folder)
+    def run(tc, tool, args, cwd):
+        compiles.append(args)
+        (cwd / 'unit.obj').write_bytes(b'object')
+        return 0, '\n'.join('Note: including file: ' + str(p) for p in (header, wrapped))
+    monkeypatch.setattr(rebuild.os, 'walk', counted_walk)
+    monkeypatch.setattr(rebuild, 'run', run)
+    def build():
+        return rebuild.compile_direct('2008-06', [source], tmp_path / 'out', [includes, nested, wrap], '')
+    build()
+    assert nested not in walks and includes in walks and wrap in walks
+    assert build()[str(source)] == (True, 'content cache hit')
+    (nested / 'deeper').mkdir()
+    (nested / 'deeper/shared.h').write_text('new shadow')
+    build()
+    assert len(compiles) == 2

@@ -1,6 +1,8 @@
 """Private contributor workspaces for controlled, parallel native integration sessions."""
 import json
+from contextlib import contextmanager
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -15,7 +17,7 @@ ROOT = Path(__file__).resolve().parent.parent
 def link_directory(source, target):
     if os.name == "nt":
         subprocess.run(["cmd", "/d", "/c", "mklink", "/J", str(target), str(source)],
-                       check=True, capture_output=True, timeout=30)
+                       check=True, capture_output=True, stdin=subprocess.DEVNULL, timeout=30)
     else:
         target.symlink_to(source, target_is_directory=True)
 
@@ -59,10 +61,66 @@ def workspace(log=print):
     return folder
 
 
-def run_private(initial, receive_commands=True):
+@contextmanager
+def session_workspace(log=print):
+    """A dashboard restart keeps its private sources/proofs, never another run's."""
+    identifier = os.environ.get('ROC_TASK_ID', '')
+    if not re.fullmatch(r'[0-9a-f]{12,32}', identifier):
+        yield workspace(log)
+        return
+    directory = ROOT/'work/integrator-sessions'
+    directory.mkdir(parents=True, exist_ok=True)
+    with (directory/(identifier+'.lock')).open('a+b') as handle:
+        if handle.tell() == 0:
+            handle.write(b'\0');handle.flush()
+        handle.seek(0)
+        try:
+            if os.name == 'nt':
+                import msvcrt
+                msvcrt.locking(handle.fileno(), msvcrt.LK_NBLCK, 1)
+            else:
+                import fcntl
+                fcntl.flock(handle, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except OSError:
+            raise RuntimeError('This integrator session is already active') from None
+        try:
+            marker = directory/(identifier+'.json')
+            if marker.exists():
+                folder = Path(json.loads(marker.read_text())['workspace']).resolve()
+                managed = (ROOT/'local/integrators').resolve()
+                if folder == managed or not folder.is_relative_to(managed) or not (folder/'roc.py').is_file():
+                    raise ValueError('Session workspace is outside the managed integrator folders or missing')
+                owner = folder/'integrator-session.json'
+                if not owner.exists() or json.loads(owner.read_text()).get('session') != identifier:
+                    raise ValueError('Private workspace belongs to a different integrator session')
+                log('Reusing private integrator workspace; sources, proofs and build cache retained: '+str(folder))
+                shutil.copytree(ROOT/'roc', folder/'roc', dirs_exist_ok=True,
+                                ignore=shutil.ignore_patterns('__pycache__', 'web'))
+                shutil.copy2(ROOT/'roc.py', folder/'roc.py')
+                if (ROOT/'local/config').exists():
+                    shutil.copytree(ROOT/'local/config', folder/'local/config', dirs_exist_ok=True)
+            else:
+                folder = workspace(log)
+                from roc.integration import atomic_json
+                atomic_json(folder/'integrator-session.json', {'session':identifier})
+                atomic_json(marker, {'workspace':str(folder)})
+            yield folder
+        finally:
+            handle.seek(0)
+            if os.name == 'nt':
+                msvcrt.locking(handle.fileno(), msvcrt.LK_UNLCK, 1)
+            else:
+                fcntl.flock(handle, fcntl.LOCK_UN)
+
+
+def run_private(initial, receive_commands=True, commands=None):
     def log(message):
         print("ROC_EVENT " + json.dumps({"event": "log", "slot": 0, "message": message}), flush=True)
-    folder = workspace(log)
+    with session_workspace(log) as folder:
+        _run_private(folder, initial, receive_commands, log, commands)
+
+
+def _run_private(folder, initial, receive_commands, log, commands=None):
     log("Starting private integrator process")
     env = dict(os.environ, ROC_NATIVE_EVIDENCE_ROOT=str(ROOT), ROC_INTEGRATOR_PRIVATE="1")
     process = subprocess.Popen([sys.executable, "-u", "-m", "roc.gui_worker"], cwd=folder, env=env,
@@ -72,10 +130,13 @@ def run_private(initial, receive_commands=True):
     process.stdin.flush()
     log("Private integrator started; checking installed client and accepted baseline")
     if receive_commands:
+        if commands is None:
+            from roc.gui_worker import command_lines
+            commands = command_lines(sys.stdin)
         def forward():
             try:
-                for line in sys.stdin:
-                    process.stdin.write(line)
+                for line in commands:
+                    process.stdin.write(line.rstrip('\r\n')+'\n')
                     process.stdin.flush()
             except (BrokenPipeError, OSError):
                 pass

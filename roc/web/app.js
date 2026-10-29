@@ -14,9 +14,9 @@ let agentAutoConfig = {cli:"claude",model:"",goal:"",workers:2,jobs:24,minutes:1
 let cpu = null, cpuCluster = "", cpuLoaded = 0, cpuLoading = false, serverSetupOpen = initialPage === "cpu";
 const isWorker = job => ["worker","agent_worker"].includes(job.kind) || !!job.args?.includes("--automatic");
 const active = job => ["running", "paused", "stopping"].includes(job.status);
-const liveKeys = new Set(["workers","model","rounds","max_size","max_tokens","strategy","order","thinking","reasoning_effort","use_revng","use_remill","min_score","max_score","diverse_candidates","guided_mutations","near_repair","max_cloud_requests","max_cloud_tokens","max_cloud_cost","native_batch_files","native_compile_workers","native_context"]);
+const liveKeys = new Set(["workers","model","rounds","max_size","max_tokens","strategy","order","thinking","reasoning_effort","use_revng","use_remill","min_score","max_score","diverse_candidates","guided_mutations","near_repair","max_cloud_requests","max_cloud_tokens","max_cloud_cost","native_batch_files","native_compile_workers","native_context","native_generation","native_compile_batch"]);
 const nullable = new Set(["min_score","max_score","max_cloud_requests","max_cloud_tokens","max_cloud_cost","reasoning_effort","unit_name","family_id"]);
-const numeric = new Set(["native_batch_files","native_compile_workers","workers","rounds","max_size","max_tokens","min_score","max_score","diverse_candidates","cloud_concurrency","max_cloud_requests","max_cloud_tokens","max_cloud_cost"]);
+const numeric = new Set(["native_batch_files","native_compile_workers","native_compile_batch","workers","rounds","max_size","max_tokens","min_score","max_score","diverse_candidates","cloud_concurrency","max_cloud_requests","max_cloud_tokens","max_cloud_cost"]);
 const automatic = {rounds:"auto",max_size:512,max_tokens:"auto",order:"random",strategy:"direct",thinking:"auto",reasoning_effort:"auto",use_revng:false,use_remill:true,cloud_concurrency:"auto",near_repair:false,diverse_candidates:1};
 
 async function api(path, data) {
@@ -127,7 +127,7 @@ const modelBase = model => String(model || "").split("#")[0];
 const variantOf = model => { const parts = String(model || "").split("#"); return parts.length > 1 ? parts.slice(1).join("#") : ""; };
 const usesOpenCode = model => { const base = modelBase(model); return base.startsWith("opencode:") || base.startsWith("hosted:opencode/"); };
 const CLI_CHOICES = [["claude","Anthropic (Claude Code)"],["codex","OpenAI (Codex)"],["opencode","OpenCode"],["custom","Custom"]];
-const WORKER_PROVIDERS = [["codex","Codex CLI · signed-in plan"],["claude","Claude Code · signed-in plan"],["opencode","OpenCode · signed-in models"],["openai","OpenAI API"],["deepseek","DeepSeek API"],["anthropic","Anthropic API"],["chatgpt","ChatGPT plan"],["custom","Other API / local Ollama"]];
+const WORKER_PROVIDERS = [["codex","Codex CLI · signed-in plan"],["claude","Claude Code · signed-in plan"],["opencode","OpenCode · signed-in models"],["openrouter","OpenRouter API · Google, Anthropic, more"],["openai","OpenAI API"],["deepseek","DeepSeek API"],["anthropic","Anthropic API"],["chatgpt","ChatGPT plan"],["custom","Other API / local Ollama"]];
 const cliFor = cli => cli === "custom" ? "opencode" : cli;
 const PROVIDER_CLI = {openai:"openai", anthropic:"anthropic", opencode:"opencode", custom:"custom"};
 function customProviders() { return meta.providers.filter(provider => !["openai","anthropic","opencode","chatgpt","codex","claude"].includes(provider.name)); }
@@ -164,13 +164,15 @@ function workerForm(config) {
     field(native ? "Rounds per file" : "Rounds per function", "rounds", config.rounds, {placeholder:"auto or 1–100"}) +
     field("Output tokens", "max_tokens", config.max_tokens, {placeholder:"auto or 128–32768"}) +
     (native ? field("Files per integration batch", "native_batch_files", config.native_batch_files ?? 40, {type:"number",min:1,max:1024}) +
-      field("Parallel local compilers", "native_compile_workers", config.native_compile_workers ?? 4, {type:"number",min:1,max:64}) +
-      field("Source context", "native_context", config.native_context || "methods", {choices:[["methods","Target methods · faster"],["file","Whole source file"]]}) :
+      field("Parallel local compilers", "native_compile_workers", config.native_compile_workers ?? "auto", {placeholder:"auto or 1–64"}) +
+      field("Methods per shared compile", "native_compile_batch", config.native_compile_batch ?? 4, {type:"number",min:1,max:32}) +
+      field("Source context", "native_context", config.native_context || "methods", {choices:[["methods","Target methods · faster"],["file","Whole source file"]]}) +
+      field("AI output", "native_generation", config.native_generation || "auto", {choices:[["auto","Auto · one-shot + repair"],["method","One-shot method"],["edits","SEARCH/REPLACE"]]}) :
       field("Maximum function bytes (0 = unlimited)", "max_size", config.max_size, {type:"number",min:0}) +
       field("Function order", "order", config.order, {choices:["random","auto","best","matched","unmatched","easiest"]}) + field("Strategy", "strategy", config.strategy, {choices:["auto","direct","structured","reference"]})) +
     field("Thinking", "thinking", config.thinking, {choices:["auto","enabled","disabled"]}) + field("Reasoning effort", "reasoning_effort", config.reasoning_effort, {choices:[["","Provider default"],"auto","low","medium","high","max"]}) +
     field("Cloud concurrency", "cloud_concurrency", config.cloud_concurrency, {placeholder:"auto or 1–256"}) +
-    (native ? '<p class="help-note">AI jobs edit separate source files in a private workspace. Local compilers preflight edits; one server rebuild verifies the batch. Pause / stop applies before the next file or AI round.</p></div>' :
+    (native ? '<p class="help-note">Auto tries one complete method, then anchored repairs. Compiler auto uses CPU capacity, up to 8 slots. OpenCode NVIDIA auto limits simultaneous AI requests to 8; explicit counts override. Independent server verification still checks every batch. Pause / stop applies before the next file or AI round.</p></div>' :
       field("Minimum score", "min_score", config.min_score, {type:"number",min:0,max:100,placeholder:"Any"}) + field("Maximum score", "max_score", config.max_score, {type:"number",min:0,max:100,placeholder:"Any"}) +
       field("Diverse candidates", "diverse_candidates", config.diverse_candidates, {type:"number",min:1,max:16}) +
       field("Lease mode", "lease_mode", config.lease_mode === "native" ? "function" : config.lease_mode, {choices:["function","family","unit"]}) + field("Unit name", "unit_name", config.unit_name) + field("Family fingerprint", "family_id", config.family_id, {full:true}) +
@@ -213,6 +215,7 @@ function terminalMessage(row, functions, compact=false) {
   else if(row.event==="job_started") {marker="›";text=`${row.client} ${row.addr} ${row.size ?? "?"} B ${row.unit || ""} · best ${row.previous ?? row.score ?? "?"}%${row.area ? " · "+row.area : ""}`;}
   else if(row.event==="job_finished") {kind+=" "+(row.score===100 ? "exact" : row.score>row.previous ? "improved" : "no-gain");marker=row.score===100 ? "✓" : row.score>row.previous ? "↑" : "·";text=`${row.client} ${row.addr}${row.supercompact ? " · "+(row.size ?? "?")+" B" : " "+(row.unit || fn?.unit || "")+" · "+(row.size ?? "?")+" B"} · ${row.previous}% → ${row.score}%${row.score===100 ? " EXACT" : row.score<=row.previous ? " no gain" : " improved"}${row.seconds===undefined ? "" : " · "+row.seconds+"s"}`;if(row.score===100)extra=`<div class="match-success">✓ Exact match</div>`;else if(row.score>row.previous)extra=`<div class="match-success improvement">↑ Improved ${row.previous}% → ${row.score}%</div>`;}
   else if(row.event==="native_started") {marker="›";text=`${row.file} · compiling baseline`;}
+  else if(row.event==="native_partial") {marker="↑";kind+=" improved";text=`${row.file} ${row.addr} · partial ${row.previous}% → ${row.score}%${row.frame_ok&&!row.frame_before ? " · frame improved" : ""}${row.calls_ok&&!row.calls_before ? " · calls improved" : ""} · local search, no exact credit`;}
   else if(row.event==="native_result") {marker=row.local_exact ? "✓" : row.error ? "!" : "·";kind+=row.local_exact ? " exact" : row.error ? " error" : " no-gain";text=`${row.file} · +${row.local_exact} local exact · ${row.seconds}s${row.local_exact ? " · awaiting verification" : row.error ? " · "+row.error : ""}`;}
   else if(row.event==="native_accepted") {marker="✓";kind+=" exact";text=row.message;}
   else if(row.event==="benchmark") {marker="≡";text=`${row.matched} exact · ${row.improved} improved${row.errors ? " · "+row.errors+" errors" : ""}`;if(row.matched>0)kind+=" matched-note";}
@@ -297,7 +300,7 @@ function renderWorkerChat() {
   $("#chat-compact").textContent=supercompact ? "Supercompact · auto" : chatCompact ? "Regular" : "Compact";
   const foldSource=compact;
   const ids=new Set(workerJobs.map(job=>job.id));
-  const rows=logs.filter(r=>ids.has(r.job)&&(!workerRun||r.job===workerRun)&&(workerLoop===""||String(r.slot)===workerLoop||r.event==="benchmark")&&(compact ? (jobs.find(j=>j.id===r.job)?.kind==="agent_worker" || r.startup || ["job_finished","native_started","native_result","native_accepted","benchmark","error","rejected"].includes(r.event)) : !["control","applied","usage"].includes(r.event))).slice(-180);
+  const rows=logs.filter(r=>ids.has(r.job)&&(!workerRun||r.job===workerRun)&&(workerLoop===""||String(r.slot)===workerLoop||["benchmark","stage"].includes(r.event))&&(compact ? (jobs.find(j=>j.id===r.job)?.kind==="agent_worker" || r.startup || r.event==="log"&&jobs.find(j=>j.id===r.job)?.config?.lease_mode==="native" || ["job_finished","native_started","native_result","native_partial","native_accepted","benchmark","stage","error","rejected"].includes(r.event)) : !["control","applied","usage"].includes(r.event))).slice(-180);
   const signature=compact+":"+supercompact+":"+rows.map(r=>r.job+":"+r.seq).join();
   setChatFollow(chatFollow);
   const viewFilter=workerRun+":"+workerLoop+":"+compact+":"+supercompact;
@@ -321,7 +324,12 @@ function renderWorkerChat() {
 function workerCards() {
   const selected=jobs.find(j=>j.id===workerRun), current=selected || jobs.find(j=>isWorker(j)&&active(j));
   if(!current)return '<span class="muted">Idle</span>';
-  return `<div class="live-session"><span class="session-summary">${badge(current.status)} <b>${Object.keys(current.slots).length}</b> loops · ${current.config.lease_mode==="native" ? `<b>${current.local_exact || 0}</b> local · <b>${current.matched}</b> server verified` : `<b>${current.matched}</b> exact · <b>${current.improved}</b> improved`} · ${current.attempted} ${current.kind==="agent_worker" ? "server gains" : "tried"}</span>${current.config.lease_mode==="native" ? `<span class="native-slots">${Object.entries(current.slots).map(([slot,state])=>`<span title="${esc(state.phase || "Waiting")}"><b>w${Number(slot)+1}</b> ${esc(state.file?.split("/").pop() || "Ready")} · ${esc(state.busy ? state.phase || "Working" : "Ready")}</span>`).join("")}</span>` : ""}${active(current) ? (current.kind==="worker" ? `<button class="text-button" data-action="${current.status==="paused" ? "resume" : "pause"}" data-id="${current.id}" ${current.status==="stopping" ? "disabled" : ""}>${current.status==="paused" ? "Resume" : "Pause"}</button>` : "")+`${endRun(current)}<button class="text-button" data-action="kill" data-id="${current.id}" aria-label="Stop immediately">×</button>` : ""}</div>`;
+  const slotSummary=current.config.lease_mode==="native"
+    ? `<b>${Object.values(current.slots).filter(slot=>slot.busy).length}</b> active / <b>${Object.keys(current.slots).length}</b> slots`
+    : `<b>${Object.keys(current.slots).length}</b> loops`;
+  const batchPhase=current.config.lease_mode==="native"&&!Object.values(current.slots).some(slot=>slot.busy)
+    ? [...logs].reverse().find(row=>row.job===current.id&&["log","stage"].includes(row.event)&&row.message)?.message || current.stage : "";
+  return `<div class="live-session"><span class="session-summary">${badge(current.status)} ${slotSummary} · ${current.config.lease_mode==="native" ? `<b>${current.local_exact || 0}</b> local exact · <b>${current.native_partials || 0}</b> partial improvements · <b>${current.matched}</b> server verified` : `<b>${current.matched}</b> exact · <b>${current.improved}</b> improved`} · ${current.attempted} ${current.kind==="agent_worker" ? "server gains" : "tried"}</span>${current.config.lease_mode==="native" ? `<span class="native-slots">${Object.entries(current.slots).map(([slot,state])=>`<span title="${esc(state.phase || "Waiting")}"><b>w${Number(slot)+1}</b> ${esc(state.file?.split("/").pop() || "Waiting for file")} · ${esc(state.busy ? state.phase || "Working" : state.local_exact ? "Proof saved" : "File checked")}</span>`).join("")}</span>` : ""}${batchPhase ? `<span class="native-batch-phase" title="${esc(batchPhase)}">${esc(batchPhase)}</span>` : ""}${active(current) ? (current.kind==="worker" ? `<button class="text-button" data-action="${current.status==="paused" ? "resume" : "pause"}" data-id="${current.id}" ${current.status==="stopping" ? "disabled" : ""}>${current.status==="paused" ? "Resume" : "Pause"}</button>` : "")+`${endRun(current)}<button class="text-button" data-action="kill" data-id="${current.id}" aria-label="Stop immediately">×</button>` : ""}</div>`;
 }
 function commands() {
   const command = meta.commands.find(command=>command.name===selectedCommand), names = meta.clients.map(client=>client.name);
@@ -436,7 +444,7 @@ function readWorker() {
     const key=input.name;
     if(key==="model_custom") { if(!input.disabled && input.value.trim()) config.model=input.value.trim(); continue; }
     if(input.disabled || key==="addresses" || key==="model_variant" || key==="model_provider") continue;
-    config[key]=input.type==="checkbox" ? input.checked : ["workers","rounds","max_tokens","cloud_concurrency"].includes(key) && input.value==="auto" ? "auto" : numeric.has(key) ? (input.value==="" && nullable.has(key) ? null : Number(input.value)) : (input.value==="" && nullable.has(key) ? null : input.value);
+    config[key]=input.type==="checkbox" ? input.checked : ["workers","rounds","max_tokens","cloud_concurrency","native_compile_workers"].includes(key) && input.value==="auto" ? "auto" : numeric.has(key) ? (input.value==="" && nullable.has(key) ? null : Number(input.value)) : (input.value==="" && nullable.has(key) ? null : input.value);
   }
   const modelParts=String(config.model||"").split("#");
   if((modelParts[0].startsWith("opencode:")||modelParts[0].startsWith("hosted:opencode/")) && form.elements.model && form.elements.model_variant)

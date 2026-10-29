@@ -6,11 +6,45 @@ import sqlite3
 import threading
 from concurrent.futures import ThreadPoolExecutor
 from http.server import ThreadingHTTPServer
+from pathlib import Path
 from types import SimpleNamespace
 
 import pytest
 
 from roc import integration, integration_verify, integration_notify, server, worker
+
+
+def test_windows_overlay_alias_preserves_accepted_fp_pragma(tmp_path, monkeypatch):
+    from roc import rebuild
+    source = tmp_path / 'tools/rbxgs/Client/App/gui/GUI.cpp'
+    source.parent.mkdir(parents=True)
+    source.write_text('#include "gui/Gui.h"\n\t\tRBXASSERT(!focus);\n\t\treturn processNonFocus(event);')
+    base = {'App/gui/GUI.cpp': [['#include "gui/Gui.h"\n', '#pragma float_control(precise, off)\n#include "gui/Gui.h"\n']]}
+    edits = {'App/gui/Gui.cpp': [['\t\tRBXASSERT(!focus);\n\t\treturn processNonFocus(event);', '\t\treturn processNonFocus(event);']]}
+    combined, kept, dropped = integration_verify.preflight(tmp_path, base, edits)
+    assert list(combined) == ['App/gui/GUI.cpp'] and not dropped
+    assert integration.overlay_delta(base, combined) == kept
+    registry = tmp_path / 'patches.json'
+    registry.write_text(json.dumps(combined))
+    monkeypatch.setattr(rebuild, 'ROOT', tmp_path)
+    spec = {'root': 'tools/rbxgs/Client', 'patches': 'patches.json'}
+    _, overlay = rebuild.build_overlay('2008-06', 'RbxgsApp', spec)
+    text = (overlay / 'App/gui/GUI.cpp').read_text()
+    assert text.startswith('#pragma float_control(precise, off)') and 'RBXASSERT' not in text
+    registry.write_text(json.dumps(dict(base, **edits)))
+    with pytest.raises(ValueError, match='Case-colliding'):
+        rebuild.build_overlay('2008-06', 'RbxgsApp', spec)
+    assert (overlay / 'App/gui/GUI.cpp').read_text() == text
+    with pytest.raises(ValueError, match='Case-colliding'):
+        integration.merge_patches({}, dict(base, **edits))
+
+
+def test_recipe_replacement_alias_still_requires_exact_baseline_guard():
+    base = {'App/gui/GUI.cpp': [['old', 'accepted']]}
+    assert integration.merge_patches(base, {'App/gui/Gui.cpp': {'before': base['App/gui/GUI.cpp'],
+        'after': [['old', 'corrected']]}}) == {'App/gui/GUI.cpp': [['old', 'corrected']]}
+    with pytest.raises(ValueError, match='Stale recipe replacement'):
+        integration.merge_patches(base, {'App/gui/Gui.cpp': {'before': [], 'after': [['old', 'unsafe']]}})
 
 
 def make_store(path):
@@ -42,6 +76,44 @@ def upload(claims, user="alice"):
             "base_revision": claims[0]["base_revision"],
             "evidence": "constructor evidence " + " ".join(c["addresses"][0] for c in claims),
             "patches": {"App/Test.cpp": [["old", "new"]]}}
+
+
+def test_native_partial_webhook_dedupes_without_score_or_credit_changes(promotions, monkeypatch):
+    from roc import reports
+    revision = promotions.baseline()['revision']
+    row = dict(file='App/Test.cpp', addr='00500000', previous=70, score=80,
+               frame_before=False, frame_ok=True, calls_before=False, calls_ok=False,
+               source_sha256='a'*64, object_sha256='b'*64, base_revision=revision)
+    body = dict(base_revision=revision, model='gpt-6.1-sol', partials=[row])
+    sent = []
+    class ImmediateThread:
+        def __init__(self, target, args, daemon):
+            self.target, self.args = target, args
+        def start(self):
+            self.target(*self.args)
+    monkeypatch.setattr(integration_notify, 'server_mines_webhook', lambda: 'https://example.invalid/hook')
+    monkeypatch.setattr(threading, 'Thread', ImmediateThread)
+    monkeypatch.setattr(reports, '_post', lambda url, payload: sent.append(payload))
+    promotions.store.db.execute('CREATE TABLE funcs(addr TEXT,score INTEGER)')
+    promotions.store.db.execute("INSERT INTO funcs VALUES('00500000',100)")
+    promotions.store.db.commit()
+    before = promotions.store.db.execute('SELECT * FROM funcs').fetchall()
+    result = integration_notify.record_partials(promotions, 'alice', body)
+    assert result == dict(recorded=1, local_only=True, exact_credits=0)
+    assert integration_notify.record_partials(promotions, 'alice', body)['recorded'] == 0
+    assert len(sent) == 1
+    text = str(sent[0])
+    assert '70.000% → 80.000%' in text and 'frame improved' in text
+    assert 'not server-verified exacts' in text and '0 exact credits' in text
+    assert sent[0]['allowed_mentions'] == {'parse': []}
+    assert promotions.store.db.execute('SELECT * FROM funcs').fetchall() == before
+    assert promotions.store.db.execute('SELECT COUNT(*) FROM integration_credit').fetchone()[0] == 0
+    with pytest.raises(ValueError, match='score'):
+        integration_notify.record_partials(promotions, 'alice', dict(body, partials=[dict(row, score=float('nan'))]))
+    with pytest.raises(ValueError, match='target'):
+        integration_notify.record_partials(promotions, 'alice', dict(body, partials=[dict(row, addr='ffffffff')]))
+    with pytest.raises(ValueError, match='hashes'):
+        integration_notify.record_partials(promotions, 'alice', dict(body, partials=[dict(row, object_sha256='bad')]))
 
 
 def test_claims_atomic_across_two_server_connections_and_restart(promotions):
@@ -108,7 +180,7 @@ def test_disjoint_same_author_jobs_verify_together_and_share_receipt(promotions)
 
 def test_webhook_posts_only_accepted_gains(promotions, monkeypatch):
     posts = []
-    monkeypatch.setattr(integration_notify, "player_mines_webhook", lambda: "https://example.invalid/hook")
+    monkeypatch.setattr(integration_notify, "server_mines_webhook", lambda: "https://example.invalid/hook")
     monkeypatch.setattr(integration_notify, "payload", lambda *a: posts.append(a) or {"embeds": [{"timestamp": 0}]})
     monkeypatch.setattr(integration_notify.urllib.request, "urlopen", lambda *a, **k: (_ for _ in ()).throw(OSError("offline")))
     job = {"id": "j", "user": "alice", "model": "human"}
@@ -253,6 +325,60 @@ def test_explicit_class_can_revisit_done_hint_but_not_parked_blocker(promotions)
     assert promotions.claim('alice', 'pc', unit='RBX::Second')['claims'] == []
 
 
+@pytest.mark.parametrize('mode',['absolute','relative','drive','unicode-case'])
+def test_input_fingerprint_fast_labels_preserve_original_digest(tmp_path, mode):
+    import hashlib
+    if mode == 'unicode-case' and os.name != 'nt':
+        pytest.skip('Windows Unicode case alias')
+    root = (Path('relative-root') if mode == 'relative' else Path(tmp_path.anchor) if mode == 'drive'
+            else Path('C:/native/İ') if mode == 'unicode-case' else tmp_path/'root')
+    paths = [root,root/'file.cpp',root/'nested/header.h',root/'../sibling/file.cpp',
+             root.parent/(root.name+'-other')/'same-prefix.h',tmp_path/'outside/header.h']
+    if mode == 'unicode-case':
+        paths.append(Path('c:/NATIVE/i\u0307/Header.h'))
+    contents = {path:hashlib.sha256(str(path).encode()).digest() for path in paths}
+    before = hashlib.sha256(b'native-inputs-v2\0')
+    for path in sorted(set(paths),key=str):
+        label = path.relative_to(root).as_posix() if path.is_relative_to(root) else str(path)
+        before.update(label.encode()+b'\0'+contents[path])
+    for name in ('INCLUDE','LIB','LIBPATH','CL','_CL_','PATH','WINEPREFIX','ROC_CL','ROC_WINSDK','ROC_ATLMFC'):
+        before.update(name.encode()+b'='+os.environ.get(name,'').encode())
+    assert integration_verify.digest_paths(root,paths,contents) == before.hexdigest()
+
+
+def test_catalog_reuses_class_index_across_requested_units_and_preserves_queue_rules(promotions, monkeypatch):
+    queue = promotions.root/'rebuild/2008-06/out/agent-queue.json'
+    queue.parent.mkdir(parents=True)
+    queue.write_text(json.dumps({'done':['RBX::First'],'parked':{'RBX::Second':'layout'}}))
+    original = Path.read_text
+    reads = []
+    def reading(path, *args, **kwargs):
+        if path.name == 'Classes.h':reads.append(path)
+        return original(path, *args, **kwargs)
+    monkeypatch.setattr(Path,'read_text',reading)
+    assert [unit for unit,_ in promotions.catalog()] == ['RBX::Third']
+    assert [unit for unit,_ in promotions.catalog('RBX::First')] == ['RBX::First','RBX::Third']
+    assert [unit for unit,_ in promotions.catalog('RBX::Second')] == ['RBX::Third']
+    assert len(reads) == 1
+    queue.write_text(json.dumps({'done':[],'parked':{}}))
+    assert len(promotions.catalog()) == 3
+    assert len(reads) == 2
+
+
+def test_twenty_parallel_catalog_requests_build_source_index_once(promotions, monkeypatch):
+    from concurrent.futures import ThreadPoolExecutor
+    original = Path.read_text
+    reads = []
+    def reading(path, *args, **kwargs):
+        if path.name == 'Classes.h':reads.append(path)
+        return original(path,*args,**kwargs)
+    monkeypatch.setattr(Path,'read_text',reading)
+    with ThreadPoolExecutor(20) as pool:
+        results = list(pool.map(promotions.catalog, ['RBX::First','RBX::Second']*10))
+    assert all(len(result)==3 for result in results)
+    assert len(reads) == 1
+
+
 @pytest.mark.parametrize('count,targets', [(0, None), (1025, None), (True, None), (1, 0), (1, 100001)])
 def test_bulk_claim_limits_remain_bounded(promotions, count, targets):
     with pytest.raises(ValueError):
@@ -297,9 +423,115 @@ def test_unchanged_rejected_batch_explicit_retry_is_idempotent(promotions):
 
 def test_park_reason_hides_blocked_class_from_other_pc(promotions):
     claim = promotions.claim("alice", "pc")["claims"][0]
-    assert promotions.renew("alice", claim["id"], True, "missing class; 00500000")["ok"]
+    assert promotions.renew_many("alice", [claim["id"]], action="park", reason="missing class; 00500000")["ok"]
     assert promotions.claim("bob", "other")["claims"][0]["unit"] != claim["unit"]
     assert promotions.status()["parked"][0]["reason"] == "missing class; 00500000"
+
+
+def test_release_park_and_unpark_are_explicit_and_owner_scoped(promotions):
+    claim = promotions.claim('alice', 'pc')['claims'][0]
+    with pytest.raises(ValueError, match='Release frees'):
+        promotions.renew('alice', claim['id'], True, 'diagnostic cleanup')
+    assert promotions.renew_many('alice', [claim['id']], action='park', reason='missing facts')['ok']
+    assert not promotions.renew_many('bob', [claim['id']], action='unpark')['ok']
+    status = promotions.status(include_claims=True)
+    assert status['parked'][0]['id'] == claim['id'] and status['parked'][0]['user'] == 'alice'
+    assert promotions.renew_many('alice', [claim['id']], action='unpark')['ok']
+    assert not promotions.status()['parked']
+    other = promotions.claim('bob', 'other', unit=claim['unit'])['claims'][0]
+    assert other['id'] != claim['id']
+    assert not promotions.renew('alice', claim['id'], True)['ok']
+    assert promotions.renew('bob', other['id'], True)['ok']
+    assert not promotions.status()['parked']
+    assert promotions.claim('bob', 'other', unit=claim['unit'])['claims']
+
+
+def test_cli_unpark_all_uses_owned_server_parks_without_local_packets(promotions, tmp_path, monkeypatch):
+    a = promotions.claim('alice', 'pc')['claims'][0]
+    b = promotions.claim('bob', 'pc')['claims'][0]
+    for user, claim in [('alice', a), ('bob', b)]:
+        promotions.renew_many(user, [claim['id']], action='park', reason='missing facts')
+    class Api:
+        def call(self, path, body=None):
+            return promotions.status(include_claims=True) if body is None else \
+                promotions.renew_many(body['user'], body['claims'], action='unpark')
+        def close(self):
+            pass
+    monkeypatch.setattr(worker, 'Api', lambda *a: Api())
+    monkeypatch.setattr(worker, 'load_settings', lambda: {'user': 'alice', 'server': 'http://test'})
+    monkeypatch.setattr(integration, 'ROOT', tmp_path / 'another-pc-without-packets')
+    result = integration.command(SimpleNamespace(action='unpark', claim=None, all=True, unit=None, reason=None,
+        server=None, user=None, token=None))
+    assert result['changed'] == 1
+    assert promotions.status()['parked'][0]['id'] == b['id']
+
+
+@pytest.mark.parametrize('committed', [False, True])
+def test_gateway_submission_recovers_exact_saved_intent_without_duplicate(promotions, committed):
+    from urllib.parse import urlparse, parse_qs
+    directory = promotions.root / 'work/integration-client'
+    claims = promotions.claim('alice', 'pc')['claims']
+    body = upload(claims)
+    original_generator = promotions.generator.read_bytes()
+    folder = directory / 'requests' / integration.submission_key(body)
+    calls = []
+    class Api:
+        fail = True
+        def call(self, path, payload=None):
+            if payload is None:
+                query = {k: v[0] for k, v in parse_qs(urlparse(path).query).items()}
+                return promotions.status(request=query['request'], user=query['user'], include_claims=True)
+            calls.append(payload)
+            if self.fail:
+                self.fail = False
+                if committed:
+                    promotions.submit('alice', payload)
+                raise worker.ApiFailure('server_fail', 'gateway timeout')
+            return promotions.submit('alice', payload)
+    api = Api()
+    if committed:
+        result = integration.submit_intent(api, directory, folder, body, promotions.generator, promotions.generator,
+                                           {'applied_paths': ['App/Test.cpp']})
+    else:
+        with pytest.raises(worker.ApiFailure):
+            integration.submit_intent(api, directory, folder, body, promotions.generator, promotions.generator,
+                                      {'applied_paths': ['App/Test.cpp']})
+        assert json.loads((folder / 'submission.json').read_text()) == body
+        promotions.generator.write_bytes(b'# unrelated local edits after gateway failure\n')
+        result = integration.resume_pending(api, directory, 'alice')[0]
+    assert result['state'] == 'queued'
+    assert promotions.store.db.execute('SELECT COUNT(*) FROM integration_jobs').fetchone()[0] == 1
+    assert all(item == body for item in calls)
+    assert json.loads((directory / 'claims' / claims[0]['id'] / 'job.json').read_text())['id'] == result['id']
+    assert (directory / 'jobs' / result['id'] / 'submitted-generator.py').read_bytes() == original_generator
+    if not committed:
+        assert promotions.generator.read_bytes() == b'# unrelated local edits after gateway failure\n'
+    assert not integration.resume_pending(api, directory, 'alice')
+
+
+def test_incomplete_or_modified_intent_never_posts(promotions):
+    body = upload(promotions.claim('alice', 'pc')['claims'])
+    directory = promotions.root / 'work/integration-client'
+    folder = directory / 'requests' / integration.submission_key(body)
+    calls = []
+    api = SimpleNamespace(call=lambda *args: calls.append(args) or {'jobs': []})
+    integration.atomic_json(folder / 'submission.json', body)
+    with pytest.raises(ValueError, match='snapshot incomplete'):
+        integration.resume_pending(api, directory, 'alice')
+    assert not calls
+    class Offline:
+        def call(self, path, payload=None):
+            calls.append(path)
+            if payload is not None:
+                raise worker.ApiFailure('server_fail', 'gateway timeout')
+            return {'jobs': []}
+    with pytest.raises(worker.ApiFailure):
+        integration.submit_intent(Offline(), directory, folder, body, promotions.generator, promotions.generator)
+    (folder / 'submitted-generator.py').write_bytes(b'changed')
+    count = len(calls)
+    with pytest.raises(ValueError, match='Saved request changed'):
+        integration.resume_pending(Offline(), directory, 'alice')
+    assert len(calls) == count
 
 
 def test_cli_worker_identity_is_stable_per_checkout_not_shared_by_same_pc(promotions, monkeypatch):
@@ -501,7 +733,7 @@ def test_registry_updates_do_not_invalidate_installed_native_inputs(promotions):
     assert integration_verify.input_hash(promotions.root) != before
 
 
-@pytest.mark.parametrize('name', ['roc.py', 'roc/server.py', 'roc/integration.py', 'roc/reports.py', 'roc/native_try.py'])
+@pytest.mark.parametrize('name', ['roc.py', 'roc/server.py', 'roc/reports.py', 'roc/native_try.py'])
 def test_service_edits_do_not_discard_native_baseline(promotions, name):
     path = promotions.root / name
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -511,7 +743,7 @@ def test_service_edits_do_not_discard_native_baseline(promotions, name):
     assert integration_verify.input_hash(promotions.root) == before
 
 
-@pytest.mark.parametrize('name', ['rebuild', 'match', 'libs', 'integration_verify'])
+@pytest.mark.parametrize('name', ['rebuild', 'match', 'libs', 'integration', 'integration_verify'])
 def test_native_implementation_edits_invalidate_baseline(promotions, name):
     path = promotions.root / 'roc' / (name + '.py')
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -680,6 +912,51 @@ def gate_result():
             "distinct": 5, "milestones": {m: {"passed": True, "exit": 0} for m in ("M2", "M4a", "M5")},
             "size": {"rows": [{"class": "First", "delta": 0}], "probe_errors": {}},
             "base": {"checked": 4, "mismatch": [], "probe_errors": {}}}
+
+
+@pytest.mark.parametrize('lost', [False, True])
+def test_contributor_linked_preflight_detects_losses_and_writes_receipt(promotions, monkeypatch, lost):
+    monkeypatch.setattr(integration_verify.subprocess, 'run', lambda *a, **k: None)
+    root = promotions.root
+    before = gate_result()
+    before['linked_addresses'] = ['00500000']
+    after = copy.deepcopy(before)
+    after['report']['owned_addrs'] = ['00500001'] if lost else ['00500000', '00500001']
+    after['distinct'] += 1
+    cache = root / 'work/native-linked-preflight/fingerprint'
+    integration.atomic_json(cache / 'integration-result.json', before)
+    integration.atomic_json(cache / 'integration-prepared.json', {'format': 1, 'inputs': 'fingerprint'})
+    monkeypatch.setattr(integration_verify, 'input_hashes', lambda root: ('fingerprint', 'live'))
+    monkeypatch.setattr(integration_verify, 'input_hash', lambda *a, **kw: 'live')
+    monkeypatch.setattr(integration_verify, 'snapshot', lambda root, destination, **kw: destination.mkdir(parents=True))
+    monkeypatch.setattr(integration_verify, 'verify_build', lambda *a: after)
+    monkeypatch.setattr(integration_verify, 'other_module_owned', lambda root: set())
+    patches = {'App/include/Classes.h': [['class First {};', 'class First {}; // trial']]}
+    output = root / 'proof'
+    if lost:
+        with pytest.raises(ValueError, match='without losing'):
+            integration_verify.linked_preflight(root, patches, output, lambda _: None)
+    else:
+        integration_verify.linked_preflight(root, patches, output, lambda _: None)
+    receipt_file = next(output.glob('*/preflight-receipt.json'))
+    receipt = json.loads(receipt_file.read_text())
+    assert receipt['accepted'] is not lost
+    assert receipt['gains'] == ['00500001']
+    assert receipt['losses'] == (['00500000'] if lost else [])
+    assert receipt['uncovered_losses'] == receipt['losses']
+    assert receipt['artifacts'] == str(receipt_file.parent)
+    assert receipt['baseline_artifacts'] == str(cache)
+
+
+def test_rtti_index_content_is_part_of_native_cache_identity(promotions):
+    path = promotions.root / 'work/2008-06/vtables.json'
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text('[{"class":"A"}]')
+    before = integration_verify.input_hash(promotions.root)
+    stamp = path.stat()
+    path.write_text('[{"class":"B"}]')
+    os.utime(path, ns=(stamp.st_atime_ns, stamp.st_mtime_ns))
+    assert integration_verify.input_hash(promotions.root) != before
 
 
 def test_runtime_failure_includes_test_and_windows_exception():
@@ -890,7 +1167,7 @@ def test_contributor_without_server_artifacts_syncs_fetches_evidence_and_submits
         monkeypatch.setattr(native_sweep.rebuild, 'load_module', lambda *a: {'overlay': {}})
         monkeypatch.setattr(native_sweep.rebuild, 'build_overlay', lambda *a: (remote / 'tools/rbxgs/Client', remote / 'overlay'))
         monkeypatch.setitem(native_sweep.libs.RECIPES, 'rbxgs', {'include': [], 'defines': 'WIN32'})
-        monkeypatch.setattr(native_sweep, 'Matcher', lambda addresses: set(addresses))
+        monkeypatch.setattr(native_sweep, 'Matcher', lambda addresses, cache_dir=None: set(addresses))
         ctx = native_sweep.native_context({}, api)
         assert ctx.targets == {'00500000'} and ctx.names == names
         assert not ctx.owned and ctx.matcher == {'00500000'}
@@ -962,7 +1239,7 @@ def test_native_digest_resends_changes_without_fake_mining_points(promotions, mo
     response.__exit__ = Mock(return_value=False)
     response.read.return_value = b'{"id":"123"}'
     send = Mock(return_value=response)
-    monkeypatch.setattr(integration_notify, "player_mines_webhook", lambda: "https://discord.invalid/webhooks/example")
+    monkeypatch.setattr(integration_notify, "server_mines_webhook", lambda: "https://discord.invalid/webhooks/example")
     monkeypatch.setattr(integration_notify.urllib.request, "urlopen", send)
     integration_notify.notify(promotions, job)
     send.assert_not_called()
