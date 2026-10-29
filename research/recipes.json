@@ -25030,5 +25030,351 @@
       "evidence": "RoConstruct-findings 2008-06/verification/zlib-native-20261029/"
     },
     "rejected": "VS2005 deflate/inflate helper matches belong to the existing stdcall copy; no cross-ABI transplantation. Cached27/24 inventories refresh to29/26 without code changes; allocator helpers are not gains. Genuine C files and static copyright overlay retained."
+  },
+  "mfcatl-forced-closure-20261029": {
+    "op": "fanout",
+    "client": "2008-06",
+    "library": "MFC/ATL forced-link integration",
+    "hypothesis": "Existing source-plan exacts need real shared MFC import context and reachable-section closure. Rebuild the plan, then force every retained external body; dropping an incompatible caller must release its cached helper roots.",
+    "sources": [
+      {
+        "recipe": "atl-8.0-dll",
+        "files": [
+          "atl.cpp"
+        ],
+        "langs": [
+          "cpp"
+        ],
+        "builds": [
+          50727
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ]
+      },
+      {
+        "recipe": "atl-9.0-dll",
+        "files": [
+          "roc_espclaude_14507603bc13e812.cpp",
+          "roc_espeon_atlreporterrorunwind59eab001a8c0d0a3.cpp",
+          "roc_espeon_bstransiasign6671a088facdff20.cpp",
+          "roc_espeon_propertylistimportedf7def85c6a9d6756.cpp"
+        ],
+        "langs": [
+          "cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /GS- /EHsc /MD"
+        ]
+      },
+      {
+        "recipe": "atl-9.0-dll",
+        "files": [
+          "atl.cpp"
+        ],
+        "langs": [
+          "cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ]
+      },
+      {
+        "recipe": "atl-9.0-dll",
+        "files": [
+          "atl.cpp"
+        ],
+        "langs": [
+          "cpp"
+        ],
+        "builds": [
+          30729
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ]
+      },
+      {
+        "recipe": "atl-9.0-dll-rtm",
+        "files": [
+          "atl.cpp",
+          "roc_atl_module_term_aa49747d7f898d5b.cpp",
+          "roc_atl_rtm_unwind_3caebe54ee562fd5.cpp",
+          "roc_atl_static_registry_wide_dc589bf9570d98db.cpp",
+          "roc_atl_typeinfo_getti_88c46520c3afb67d.cpp",
+          "roc_atl_typeinfo_noinline_febe0641d88ed97b.cpp",
+          "roc_boost_atl_f4b0910a5d2d7185.cpp",
+          "roc_campaign_enum_e48885f48ab9e114.cpp",
+          "roc_espclaude_04fd8290f2921435.cpp",
+          "roc_espclaude_13551b6034a59a28.cpp",
+          "roc_espclaude_188c2f09ea8697a7.cpp",
+          "roc_espclaude_1f2246b5cad71147.cpp",
+          "roc_espclaude_2e752666f44a81f5.cpp",
+          "roc_espclaude_43b5b584c2f00b13.cpp",
+          "roc_espclaude_43f0d040995d240c.cpp",
+          "roc_espclaude_448d9bca34009ac9.cpp",
+          "roc_espclaude_5d9a25f9d36be9fc.cpp",
+          "roc_espclaude_6baccc4b01dbd792.cpp",
+          "roc_espclaude_720efa37bcc08351.cpp",
+          "roc_espclaude_7576742091a0fd5e.cpp",
+          "roc_espclaude_7e1dea9a7966a33a.cpp",
+          "roc_espclaude_819913a7344f1e19.cpp",
+          "roc_espclaude_8a1f827b418cba68.cpp",
+          "roc_espclaude_92ffea660fe41891.cpp",
+          "roc_espclaude_acf6ced398afe108.cpp",
+          "roc_espclaude_b32a63565f36d548.cpp",
+          "roc_espclaude_d2657038b371ce18.cpp",
+          "roc_espclaude_da5a2b380f6d46c8.cpp",
+          "roc_espclaude_daa9467bfe875fbf.cpp",
+          "roc_espclaude_ef514ace34b2232d.cpp",
+          "roc_espeon_contentdistinctstringtemps61ed3b750b05af46.cpp",
+          "roc_espeon_outputdequecomptr7681cb2019cac6fe.cpp",
+          "roc_king_originala_browser_dispatch_4935761f6beb402b.cpp",
+          "roc_king_originala_content_aggregate_ea2170ac4e02f923.cpp",
+          "roc_native_connection_enum_f6f7621be8b6b8a3.cpp",
+          "roc_unit_0d9fbeb40c0490eb.cpp",
+          "roc_unit_10b9dcc0d5db3c98.cpp",
+          "roc_unit_11cb71645bae7820.cpp",
+          "roc_unit_aa49747d7f898d5b.cpp"
+        ],
+        "langs": [
+          "cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /GS- /EHsc /MD"
+        ]
+      },
+      {
+        "recipe": "atl-9.0-dll-rtm",
+        "files": [
+          "roc_espeon_varianttypeaccessor21691409a28158c7.cpp"
+        ],
+        "langs": [
+          "cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /GS- /EHsc /MD /fp:fast"
+        ]
+      },
+      {
+        "recipe": "atl-9.0-dll-rtm",
+        "files": [
+          "roc_campaign_image_d03f79e985c078b2.cpp",
+          "roc_espeon_nativeatldirabi3272e783e3521ab9.cpp"
+        ],
+        "langs": [
+          "cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ]
+      },
+      {
+        "recipe": "atl-9.0-dll-rtm",
+        "files": [
+          "roc_espclaude_8da179552268be3c.cpp",
+          "roc_espclaude_dd992e6b9a44b58d.cpp"
+        ],
+        "langs": [
+          "cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /Ob0 /GS- /EHsc /MD"
+        ]
+      },
+      {
+        "recipe": "atl-9.0-dll-rtm",
+        "files": [
+          "roc_espeon_contentinterface6da1be04c6837004.cpp"
+        ],
+        "langs": [
+          "cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /Ob2 /GS- /EHsc /MD"
+        ]
+      },
+      {
+        "recipe": "atl-9.0-rtm",
+        "files": [
+          "roc-lane-d-probe/connections.cpp",
+          "roc-lane-d-probe/enum.cpp",
+          "roc_atl_static_registry_wide_dc589bf9570d98db.cpp",
+          "roc_escapexml_dll_efe68300ee96d383.cpp"
+        ],
+        "langs": [
+          "cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ]
+      },
+      {
+        "recipe": "mfc-9.0",
+        "files": [
+          "atlmfc/src/mfc/afxbasetabctrl.cpp",
+          "atlmfc/src/mfc/afxeditbrowsectrl.cpp",
+          "atlmfc/src/mfc/afxglobalutils.cpp",
+          "atlmfc/src/mfc/afxmdiclientareawnd.cpp",
+          "atlmfc/src/mfc/afxtaskspane.cpp",
+          "atlmfc/src/mfc/afxvisualmanager.cpp",
+          "atlmfc/src/mfc/dlgcore.cpp"
+        ],
+        "langs": [
+          "cpp"
+        ],
+        "builds": [
+          30729
+        ],
+        "flags": [
+          "/O1 /GS- /MD"
+        ]
+      },
+      {
+        "recipe": "mfc-9.0",
+        "files": [
+          "atlmfc/src/mfc/ThemeHelper.cpp",
+          "atlmfc/src/mfc/afxautohidebar.cpp",
+          "atlmfc/src/mfc/afxbasepane.cpp",
+          "atlmfc/src/mfc/afxbaseribbonelement.cpp",
+          "atlmfc/src/mfc/afxbasetabbedpane.cpp",
+          "atlmfc/src/mfc/afxbasetabctrl.cpp",
+          "atlmfc/src/mfc/afxcmdusagecount.cpp",
+          "atlmfc/src/mfc/afxcolorbar.cpp",
+          "atlmfc/src/mfc/afxcolorpropertysheet.cpp",
+          "atlmfc/src/mfc/afxdrawmanager.cpp",
+          "atlmfc/src/mfc/afxoutlookbartabctrl.cpp",
+          "atlmfc/src/mfc/afxpropertygridctrl.cpp",
+          "atlmfc/src/mfc/afxribbonedit.cpp",
+          "atlmfc/src/mfc/afxsettingsstore.cpp",
+          "atlmfc/src/mfc/afxstate.cpp",
+          "atlmfc/src/mfc/afxtoolbarimages.cpp",
+          "atlmfc/src/mfc/ctlcore.cpp",
+          "atlmfc/src/mfc/ctlpbag.cpp",
+          "atlmfc/src/mfc/dcprev.cpp",
+          "atlmfc/src/mfc/dlgdhtml.cpp",
+          "atlmfc/src/mfc/dlgprntx.cpp",
+          "atlmfc/src/mfc/oleasmon.cpp",
+          "atlmfc/src/mfc/olecli3.cpp",
+          "atlmfc/src/mfc/roc_click_7d73bb003aafb5be.cpp",
+          "atlmfc/src/mfc/viewedit.cpp",
+          "atlmfc/src/mfc/viewform.cpp",
+          "atlmfc/src/mfc/wincore.cpp",
+          "atlmfc/src/mfc/winctrl3.cpp"
+        ],
+        "langs": [
+          "cpp"
+        ],
+        "builds": [
+          30729
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ]
+      },
+      {
+        "recipe": "mfc-9.0-shared",
+        "files": [
+          "roc_espeon_comenuminitnative_65941067da5b003c.cpp",
+          "roc_espeon_namecachemfcearly_8ee13228801bbb3a.cpp",
+          "roc_espeon_workspacecomfactoryfix_556dab054c034434.cpp",
+          "roc_king_originala_dxinput_ctor_e0e5fafa00b66f00.cpp",
+          "roc_ui_network_window_ee9082b9a35d3d1a.cpp",
+          "roc_unit_0e534b6d9cc556c5.cpp",
+          "roc_unit_2443da6d71cf756c.cpp"
+        ],
+        "langs": [
+          "cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /GS- /EHsc /MD"
+        ]
+      },
+      {
+        "recipe": "mfc-9.0-shared-rtm",
+        "files": [
+          "roc_espclaude_16a35be0d9598cd0.cpp",
+          "roc_espclaude_fb8f2fed57ddcec2.cpp",
+          "roc_espeon_colorentrynativevector160b2e39d0f8f701.cpp",
+          "roc_espeon_nativeplaytemplate90b9d8a6f4d63163.cpp",
+          "roc_espeon_texturedialogpointercopyfd8ed757bf5a89be.cpp",
+          "roc_unit_38a66487c88049f6.cpp",
+          "roc_unit_5826c6564e5bbc0e.cpp"
+        ],
+        "langs": [
+          "cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /GS- /EHsc /MD"
+        ]
+      },
+      {
+        "recipe": "mfc-9.0-shared-rtm",
+        "files": [
+          "roc_campaign_color_f35d68de5c521b95.cpp"
+        ],
+        "langs": [
+          "cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ]
+      },
+      {
+        "recipe": "mfc-9.0-shared-rtm",
+        "files": [
+          "roc_espeon_nativedocumentfamilyad94f610efff160c.cpp"
+        ],
+        "langs": [
+          "cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /Ob0 /GS- /EHsc /MD"
+        ]
+      }
+    ],
+    "result": {
+      "status": "Clean empty helper/exclusion/vdrop caches converge with32-pass budget:147 forced roots, all code/data exact and actual verified-library owned; inventory175; runtime MFC smoke0.109 vendor-TU roots plus38 generated-unit roots, not all original sources.",
+      "new_verified": 0,
+      "forced_roots": 147,
+      "evidence": "RoConstruct-findings 2008-06/verification/mfcatl-native-20261029/"
+    },
+    "rejected": "Unpruned objects retain unrelated generated references and collapse to5 roots. Pruning without real shared-MFC headers leaves81 imports unresolved. Helper accumulation after removing callers keeps8 orphan dependencies alive.12 passes stop before dependency closure converges. Remaining44 external roots excluded for genuine unresolved dependencies and23 duplicate definitions pruned; no stubs, fake DLL exports or private MFC data."
   }
 }

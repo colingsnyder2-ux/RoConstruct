@@ -48,6 +48,40 @@ def test_missing_indirect_dependency_excludes_entire_verified_object(tmp_path, m
     assert json.loads((out / 'verified' / 'excluded.json').read_text()) == ['_callback', '_owner']
 
 
+def test_pruned_module_releases_helpers_after_their_caller_is_excluded(tmp_path, monkeypatch):
+    out = tmp_path / 'out' / 'App'
+    (out / 'verified').mkdir(parents=True)
+    cache = out / 'verified' / 'helpers-pruned.json'
+    cache.write_text(json.dumps({'_orphan': 'a.obj'}))
+    layer = out / 'layer-verified'
+    layer.mkdir()
+    attempts = []
+
+    def verified_layer(client, spec, **kwargs):
+        roots = {'_bad', '_good'} - kwargs['exclude']
+        attempts.append((roots, dict(kwargs['helpers'])))
+        return layer, roots
+
+    def resolve(*args, **kwargs):
+        roots, helpers = attempts[-1]
+        missing = '_bad' in roots or '_orphan' in helpers
+        return {'linked': not missing, 'exit': None if missing else 0, 'output': '',
+                'unresolved': ['_missing'] if missing else [],
+                'referencers': ['_bad'] if '_bad' in roots else []}
+
+    monkeypatch.setattr(rebuild, 'workspace', lambda _: tmp_path)
+    monkeypatch.setattr(rebuild, 'load_module', lambda *args: {
+        'name': 'App', 'layers': [], 'test': 'test', 'prune_unselected_sections': True})
+    monkeypatch.setattr(rebuild, 'build_overlay', lambda *args: None)
+    monkeypatch.setattr(rebuild, 'verified_layer', verified_layer)
+    monkeypatch.setattr(rebuild, 'resolve_objects', resolve)
+    monkeypatch.setattr(rebuild, 'progress', lambda *args, **kwargs: None)
+
+    assert rebuild.build_module('test', 'app', log=lambda _: None)['linked']
+    assert attempts == [({'_bad', '_good'}, {'_orphan': 'a.obj'}), ({'_good'}, {})]
+    assert json.loads(cache.read_text()) == {}
+
+
 def test_verified_layer_discards_stale_trap_object(tmp_path, monkeypatch):
     folder = tmp_path / 'out' / 'App' / 'verified'
     folder.mkdir(parents=True)

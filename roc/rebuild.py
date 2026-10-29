@@ -1174,7 +1174,7 @@ def build_module(client, name, log=print):
                     counts.setdefault(sym, set()).add(
                         obj.name if spec.get("deduplicate_layer_files") else str(obj))
     shared = {sym for sym, providers in counts.items() if len(providers) > 1}
-    for _ in range(12):  # a swapped-in function may call a helper nothing else emits: keep it, or swap the caller back out
+    for _ in range(spec.get("resolve_passes", 12)):  # keep required helpers, or swap incompatible callers back out
         verified, drop = verified_layer(client, spec, log=log, exclude=excluded | shared, vdrop=vdrop, helpers=helpers,
                                        base_functions=base_functions)
         if spec.get("force_verified"):  # the test links every swapped symbol, so each one's dependencies must resolve
@@ -1215,6 +1215,11 @@ def build_module(client, name, log=print):
             break
         excluded |= back
         _dump(excluded_path, sorted(excluded))
+        if spec.get("prune_unselected_sections") and helpers:
+            # Removing callers invalidates their helper closure. Rediscover only
+            # dependencies of the remaining roots instead of retaining orphans.
+            helpers = {}
+            _dump(helpers_path, helpers)
         log("verified: %d swapped functions need helpers nothing else defines; swapping them back out" % len(back))
     linked = out / "linked"
     funcs, owned_addrs, owned16_addrs = 0, set(), set()
