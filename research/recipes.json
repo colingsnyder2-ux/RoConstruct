@@ -25526,5 +25526,78 @@
       "evidence": "RoConstruct-findings 2008-06/verification/g3d-png-native-20261029/"
     },
     "rejected": "Six per-file gains shrink to one module gain because5 already existed via verified objects. Keep preferred float layer before stale upstream alternatives; exactly3 same-name file alternatives, opt-in filename dedup preserves21 forced roots without relaxing different-file sharing. No global /fp:fast for entire codec. Native1.2.7 remains; do not transplant standalone1.2.6 headers/layout."
+  },
+  "g3d-gl-native-fast-20261029": {
+    "op": "fanout",
+    "client": "2008-06",
+    "library": "G3D GLG3D native floating compiler cohorts",
+    "hypothesis": "Accepted source profiles identify per-file /fp:fast variants absent from uniform upstream flags. Compare actual patched-tree TUs, preserve all existing exact pairs and forced roots, then verify native consumers including real hidden GL context where supported. Shared-provider audit identifies remaining precise copies of the same native header math symbols. Test only those whole TUs with /fp:fast and require no old exact pair losses before broadening the cohort.",
+    "sources": [
+      {
+        "recipe": "g3d-6.09-rbx2008",
+        "files": [
+          "GLG3Dcpp/DDSTexture.cpp",
+          "GLG3Dcpp/Draw.cpp",
+          "GLG3Dcpp/GFont.cpp",
+          "GLG3Dcpp/GLCaps.cpp",
+          "GLG3Dcpp/GModule.cpp",
+          "GLG3Dcpp/GWindow.cpp",
+          "GLG3Dcpp/LightingParameters.cpp",
+          "GLG3Dcpp/RenderDevice.cpp",
+          "GLG3Dcpp/Shader.cpp",
+          "GLG3Dcpp/Sky.cpp",
+          "GLG3Dcpp/Texture.cpp",
+          "GLG3Dcpp/TextureManager.cpp",
+          "GLG3Dcpp/Win32Window.cpp",
+          "GLG3Dcpp/glcalls.cpp"
+        ],
+        "langs": [
+          "cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /GS- /EHsc /MD",
+          "/O2 /GS- /EHsc /MD /fp:fast"
+        ]
+      },
+      {
+        "recipe": "g3d-6.09-rbx2008",
+        "files": [
+          "GLG3Dcpp/GApp.cpp",
+          "GLG3Dcpp/IFSModel.cpp",
+          "GLG3Dcpp/MD2Model.cpp",
+          "GLG3Dcpp/MD2Model_load.cpp",
+          "GLG3Dcpp/ManualCameraController.cpp",
+          "GLG3Dcpp/PosedModel.cpp",
+          "GLG3Dcpp/SDLWindow.cpp",
+          "GLG3Dcpp/Shape.cpp",
+          "contrib/ArticulatedModel/ToneMap.cpp",
+          "GLG3Dcpp/UserInput.cpp",
+          "GLG3Dcpp/edgeFeatures.cpp",
+          "GLG3Dcpp/shadowVolume.cpp",
+          "GLG3Dcpp/tesselate.cpp"
+        ],
+        "langs": [
+          "cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /GS- /EHsc /MD",
+          "/O2 /GS- /EHsc /MD /fp:fast"
+        ]
+      }
+    ],
+    "result": {
+      "status": "linked native GPU consumer passes",
+      "new_verified": 0,
+      "actual_linked_native_gains": 3,
+      "inventory_candidates_added": 35,
+      "forced_roots_preserved": 48,
+      "evidence": "RoConstruct-findings/2008-06/verification/g3d-gl-native-20261029"
+    }
   }
 }
