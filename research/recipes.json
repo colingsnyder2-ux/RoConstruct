@@ -24934,5 +24934,101 @@
       "evidence": "RoConstruct-findings 2008-06/verification/g3d-ijg-native-20261029/"
     },
     "rejected": "Two leaves already matched before this propagation; do not claim4 new G3D bodies or sum duplicate standalone JPEG addresses. Same-name stale alternatives falsely excluded two roots until opt-in filename deduplication; different-filename shared symbols remain blocked."
+  },
+  "zlib-native-accepted-profiles-20261029": {
+    "op": "fanout",
+    "client": "2008-06",
+    "library": "Native zlib accepted compiler contexts",
+    "hypothesis": "Existing accepted sources pin Ob1 deflate, VC8 deflate/inflate and GS inftrees contexts absent from uniform VC9 module; test only recorded winners.",
+    "sources": [
+      {
+        "recipe": "zlib-1.2.3",
+        "files": [
+          "deflate.c"
+        ],
+        "langs": [
+          "c"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ]
+      },
+      {
+        "recipe": "zlib-1.2.3",
+        "files": [
+          "deflate.c"
+        ],
+        "langs": [
+          "c"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /Ob1 /GS- /MD"
+        ]
+      },
+      {
+        "recipe": "zlib-1.2.3",
+        "files": [
+          "deflate.c"
+        ],
+        "langs": [
+          "c"
+        ],
+        "builds": [
+          50727
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ]
+      },
+      {
+        "recipe": "zlib-1.2.3",
+        "files": [
+          "inflate.c"
+        ],
+        "langs": [
+          "c"
+        ],
+        "builds": [
+          50727
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ]
+      },
+      {
+        "recipe": "zlib-1.2.3",
+        "files": [
+          "inftrees.c"
+        ],
+        "langs": [
+          "c"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /GS /MD"
+        ]
+      }
+    ],
+    "result": {
+      "status": "cdecl29->34: five code/data exact actual-library bodies, no old pair losses; stdcall26 unchanged;36 streaming cases per ABI and PNG runtime0; M2/M4a/M5 pass",
+      "new_verified": 0,
+      "new_module_addresses": [
+        "0079fdc0",
+        "0079fea0",
+        "0079ffd0",
+        "007a02f0",
+        "007a3730"
+      ],
+      "evidence": "RoConstruct-findings 2008-06/verification/zlib-native-20261029/"
+    },
+    "rejected": "VS2005 deflate/inflate helper matches belong to the existing stdcall copy; no cross-ABI transplantation. Cached27/24 inventories refresh to29/26 without code changes; allocator helpers are not gains. Genuine C files and static copyright overlay retained."
   }
 }
