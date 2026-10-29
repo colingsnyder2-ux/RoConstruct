@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-29 00:48 UTC",
+ "updated": "2026-10-29 01:53 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -264,10 +264,10 @@
      "user": "colin",
      "matched": 3108,
      "mining_points": 685188,
-     "points": 685469,
-     "native_integrated": 281,
+     "points": 685501,
+     "native_integrated": 313,
      "submissions": 23217,
-     "last": 1793218109.3673096
+     "last": 1793238289.7750053
     },
     {
      "user": "king_originala",
@@ -290,11 +290,11 @@
     {
      "user": "EspClaude",
      "matched": 522,
-     "mining_points": 16031,
-     "points": 16031,
+     "mining_points": 16055,
+     "points": 16055,
      "native_integrated": 0,
-     "submissions": 805,
-     "last": 1793233464.7368703
+     "submissions": 809,
+     "last": 1793238475.9526865
     },
     {
      "user": "Espeon",
@@ -309,10 +309,10 @@
      "user": "coldek",
      "matched": 145,
      "mining_points": 10329,
-     "points": 10370,
-     "native_integrated": 41,
+     "points": 10373,
+     "native_integrated": 44,
      "submissions": 299,
-     "last": 1793234695.0354106
+     "last": 1793235104.138277
     },
     {
      "user": "Cezant64gamejr",
@@ -809,10 +809,10 @@
    "user": "colin",
    "matched": 15221,
    "mining_points": 5524111,
-   "points": 5524392,
-   "native_integrated": 281,
+   "points": 5524424,
+   "native_integrated": 313,
    "submissions": 186099,
-   "last": 1793218109.3673096
+   "last": 1793238289.7750053
   },
   {
    "user": "atomic.potato",
@@ -862,11 +862,11 @@
   {
    "user": "EspClaude",
    "matched": 522,
-   "mining_points": 16031,
-   "points": 16031,
+   "mining_points": 16055,
+   "points": 16055,
    "native_integrated": 0,
-   "submissions": 805,
-   "last": 1793233464.7368703
+   "submissions": 809,
+   "last": 1793238475.9526865
   },
   {
    "user": "intel",
@@ -890,10 +890,10 @@
    "user": "coldek",
    "matched": 145,
    "mining_points": 10329,
-   "points": 10370,
-   "native_integrated": 41,
+   "points": 10373,
+   "native_integrated": 44,
    "submissions": 299,
-   "last": 1793234695.0354106
+   "last": 1793235104.138277
   },
   {
    "user": "TrollStein",
