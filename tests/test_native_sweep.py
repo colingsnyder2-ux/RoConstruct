@@ -356,6 +356,23 @@ def test_target_routing_does_not_fall_back_from_known_template_to_stale_inventor
     assert not sweep.target_files(texts, {'00500000'}, {'00500000': {'symbol': '??$raise@VWorkspace@@'}}, inventory)
 
 
+def test_failed_model_compile_reports_no_comparison_instead_of_false_losses(monkeypatch):
+    from roc import providers
+    monkeypatch.setattr(providers, 'generate', lambda *args:SimpleNamespace(
+        text='```cpp\nint A::f(){return missing;}\n```'))
+    def scan(_):
+        raise AssertionError('Failed compilation cannot supply match evidence')
+    logs = []
+    proposal, trials = sweep.model_proposal('App/util/A.cpp', 'int A::f(){return 1;}',
+        ['target'], {'keeper'}, set(), 'codex:default', 1,
+        lambda *args:dict(ok=False, error='error C2065: missing', object='absent.obj'),
+        SimpleNamespace(scan=scan), lambda _:dict(rebuilt_symbol='?f@A@RBX@@QAEHXZ'),
+        logs.append, options=dict(generation='method'))
+    assert proposal is None and len(trials) == 1
+    assert trials[0]['losses'] == [] and not trials[0]['comparison_complete']
+    assert any('compile failed; no match comparison' in line for line in logs)
+
+
 def test_ownership_checks_twins_outside_discovery_targets(monkeypatch):
     monkeypatch.setattr(sweep.match, 'coff_functions', lambda obj: [('f', b'body', []), ('unrelated', b'other', [])])
     def pair(client, functions):

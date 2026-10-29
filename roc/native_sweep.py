@@ -729,12 +729,16 @@ def model_proposal(rel, text, addrs, baseline, owned, model, rounds, compile_rou
             continue
         hits = matcher.scan(Path(result["object"]).read_bytes()) if result["ok"] else []
         found = {h["addr"] for h in hits}
-        new, lost = (found & set(addrs)) - baseline, baseline - found
-        result.update(hits=hits, losses=sorted(lost), reply=providers_text(reply)[:3000], generation=response_mode,
+        new, lost = (found & set(addrs)) - baseline, baseline - found if result['ok'] else set()
+        result.update(hits=hits, losses=sorted(lost), comparison_complete=bool(result['ok']),
+                      reply=providers_text(reply)[:3000], generation=response_mode,
                       generation_seconds=getattr(reply, "latency_s", None),
                       input_tokens=getattr(reply, "input_tokens", None), output_tokens=getattr(reply, "output_tokens", None))
         trials.append(result)
-        log("model %s round %d: %d new exact, %d lost" % (rel, n, len(new), len(lost)))
+        if result['ok']:
+            log("model %s round %d: %d new exact, %d lost" % (rel, n, len(new), len(lost)))
+        else:
+            log("model %s round %d: compile failed; no match comparison" % (rel, n))
         if new and not lost:
             proposal = minimize(rel, text, edits, new, baseline, compile_round, matcher, "%d" % n,
                                 definitions=result.get("defined_symbols", ()), verified=result)

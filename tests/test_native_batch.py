@@ -38,6 +38,11 @@ def test_bad_worker_is_isolated_and_remaining_methods_reproved_together(tmp_path
     assert bad not in native_sweep.apply_edits(text,proposal['edits'])
     assert proposal['proof']['losses']==[]
     assert native_sweep.apply_edits(text,proposal['edits'])==Path(proposal['proof']['object']).read_text()
+    failed = [r for r in trials if not r['ok']]
+    if bad == 'BROKEN':
+        assert failed and all(r['losses'] == [] and not r['comparison_complete'] for r in failed)
+    else:
+        assert any(r['losses'] == ['keeper'] and r['comparison_complete'] for r in trials)
 
 
 def test_nonexact_neighbour_edits_are_removed_and_recompiled(tmp_path):

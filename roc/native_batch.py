@@ -100,12 +100,16 @@ def prove(rel, text, candidates, baseline, compile_round, matcher, log=print):
             if result.get('source_sha256', key) != key:
                 raise ValueError('Compiler proof source does not match merged batch')
             hits = matcher.scan(Path(result['object']).read_bytes()) if result['ok'] else []
-            result.update(hits=hits, losses=sorted(set(baseline) - {h['addr'] for h in hits}),
+            result.update(hits=hits, losses=sorted(set(baseline) - {h['addr'] for h in hits}) if result['ok'] else [],
+                          comparison_complete=bool(result['ok']),
                           file=rel, generation='batch', batch_methods=[c['method'] for c in group],
                           expected_source_sha256=key)
             records.append(result)
             cache[key] = result
-            log('Batch compile: %d methods · %d existing exact lost' % (len(group), len(result['losses'])))
+            if result['ok']:
+                log('Batch compile: %d methods · %d existing exact lost' % (len(group), len(result['losses'])))
+            else:
+                log('Batch compile failed: %d methods · no match comparison' % len(group))
         result = cache[key]
         found = {h['addr'] for h in result['hits']}
         targets = {addr for c in group for addr in c['targets']}

@@ -280,3 +280,9 @@ The benchmark forbade compiler invocation and verified all object bytes and cach
 records stayed unchanged. These measure validation overhead, not cold compilation
 or accepted functions per minute. Same-mtime content mutation, new shadowing headers,
 include ordering, removed headers and failed-build cleanup remain regression-tested.
+
+Compile failures now report `comparison_complete=false` with no inferred losses.
+Previously an absent object produced an empty match set and misleadingly listed
+every baseline exact as lost. Successful compilations still compare every prior
+exact and retain real lost addresses. Compilation success remains mandatory for
+any proposal; batch isolation and combined-proof checks are unchanged.
