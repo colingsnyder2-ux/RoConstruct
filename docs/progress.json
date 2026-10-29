@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-29 08:18 UTC",
+ "updated": "2026-10-29 08:40 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -290,11 +290,11 @@
     {
      "user": "EspClaude",
      "matched": 533,
-     "mining_points": 16118,
-     "points": 16118,
+     "mining_points": 16119,
+     "points": 16119,
      "native_integrated": 0,
-     "submissions": 826,
-     "last": 1793258212.7683654
+     "submissions": 827,
+     "last": 1793261953.5779734
     },
     {
      "user": "Espeon",
@@ -862,11 +862,11 @@
   {
    "user": "EspClaude",
    "matched": 533,
-   "mining_points": 16118,
-   "points": 16118,
+   "mining_points": 16119,
+   "points": 16119,
    "native_integrated": 0,
-   "submissions": 826,
-   "last": 1793258212.7683654
+   "submissions": 827,
+   "last": 1793261953.5779734
   },
   {
    "user": "intel",
