@@ -55,3 +55,7 @@ docs/integration.json
 /*.err
 /*.out
 /*_trials.zip
+
+# Per-agent goals and research writer locks stay local.
+/.opencode/goals/
+/research/*.lock

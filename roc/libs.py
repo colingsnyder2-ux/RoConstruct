@@ -566,6 +566,12 @@ RECIPES["ogre-1.4.5"] = dict(
     # No /O2: rgmain.dll was built with /Ob2 /Oi /Ot /Oy /GF but without /Og (/O2 matches nothing).
     grid=["/Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD", "/Ob2 /Oi /Ot /Oy /GF /EHsc /MD"], files="*.cpp")
 
+# Client Ogre wrappers also own G3D reference-counted resources.
+RECIPES["ogre-1.4.5-g3d-refcount"] = dict(
+    RECIPES["ogre-1.4.5"], defines=RECIPES["ogre-1.4.5"]["defines"] + " _DLL",
+    include=RECIPES["ogre-1.4.5"]["include"] + ["g3d-6.09/source/include"],
+    needs=["g3d-6.09"])
+
 # Roblox's own 2016 source tree (roc/refsource.py) keeps the forks the clients were built
 # from: G3D 8.00 (gone from the web), their modified Lua 5.1.4, RakNet, libjpeg and libpng.
 # Code unchanged since 2012 compiles to the same bytes with the client's compiler.
@@ -832,6 +838,28 @@ for _name, _r in list(RECIPES.items()):
             _r, builds=[21022], include=[i.replace("mfc-9.0/", "mfc-9.0-rtm/", 1) for i in _inc],
             src="mfc-9.0-rtm" if _r.get("src") == "mfc-9.0" else
                 _r["src"].replace("mfc-9.0/", "mfc-9.0-rtm/", 1) if "src" in _r else _r.get("src"))
+
+# The vendor prelude selects legacy theme enums; MFC 9 private messages need XP types.
+RECIPES["xtp-11.2.2-internals-vendor-xp-rtm"] = dict(
+    RECIPES["xtp-11.2.2-shared-mfc-internals-rtm"],
+    preinclude=["Common/XTPDLLExports.h", *RECIPES["xtp-11.2.2-shared-mfc-internals-rtm"]["preinclude"]],
+    defines=RECIPES["xtp-11.2.2-shared-mfc-internals-rtm"]["defines"] + " WINVER=0x0501 _WIN32_WINNT=0x0501")
+
+
+# Match the compiler's /EHsc feature macro during preprocessing as well as compilation.
+RECIPES["boost-1.34.1-dll-eh"] = dict(RECIPES["boost-1.34.1-dll"], defines="_DLL _CPPUNWIND")
+RECIPES["boost-1.35.0-dll-eh"] = dict(RECIPES["boost-1.35.0-dll"], defines="_DLL _CPPUNWIND")
+
+# mfc/src/mfc/mfcdll.mak builds DLL core sources with this implementation prelude.
+RECIPES["mfc-9.0-shared-coreimpl"] = dict(
+    RECIPES["mfc-9.0-shared"], defines="_AFXDLL _DLL _AFX_CORE_IMPL")
+
+# Restore afx.h's shared-client RTTI accessor; DLL stdafx.h otherwise names private data.
+RECIPES["mfc-9.0-shared-client-runtime"] = dict(
+    RECIPES["mfc-9.0-shared"], patches={"atlmfc/src/mfc/stdafx.h": [
+        ("#define RUNTIME_CLASS(class_name) _RUNTIME_CLASS(class_name)",
+         "#define RUNTIME_CLASS(class_name) (class_name::GetThisClass())")]})
+
 
 def _case_path(path):
     """The on-disk path for a possibly differently-cased recipe path.

@@ -362,4 +362,3 @@ def register(cmd):
         (["--max-score"], {"type": int, "default": 100}),
         (["--brief"], {"action": "store_true", "help": "evidence: omit repeated rules and assembly; keep source, mined proof and diffs"}),
         (["--only"], {"help": "target addresses for evidence/check diagnostics; selects a header proof caller"}))
-

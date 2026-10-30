@@ -15,8 +15,10 @@ import pytest
     (None, 0, 'timed out'),
 ])
 def test_base_probe_reports_runtime_failure_without_inventing_offsets(tmp_path, monkeypatch, output, code, error):
-    spec = importlib.util.spec_from_file_location('base_check_runtime',
-        Path(__file__).resolve().parents[1] / 'rebuild/2008-06/base_check.py')
+    script = Path(__file__).resolve().parents[1] / 'rebuild/2008-06/base_check.py'
+    if not script.is_file():
+        pytest.skip('ABI probe requires the separate findings checkout')
+    spec = importlib.util.spec_from_file_location('base_check_runtime', script)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     monkeypatch.setitem(module.libs.RECIPES, 'rbxgs', {})

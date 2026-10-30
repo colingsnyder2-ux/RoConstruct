@@ -291,7 +291,7 @@ def test_audit_counts_unique_verified_new_exacts_only(tmp_path):
 
 def test_every_recipe_is_well_formed():
     for name, spec in research.recipes().items():
-        assert spec["op"] in ("grid", "fanout", "sweep") and spec.get("hypothesis"), name
+        assert spec["op"] in ("grid", "fanout", "sweep", "mutate") and spec.get("hypothesis"), name
         assert spec.get("client", "2008-06") == "2008-06", name
         if spec["op"] == "sweep":
             stages = spec.get("stages", []) + [stage for group in spec.get("stages_by_client", {}).values() for stage in group]
@@ -496,4 +496,3 @@ def test_recipe_source_evidence_distinguishes_c_and_cpp(tmp_path, monkeypatch):
     assert rows[0][0] != rows[1][0]
     rows = list(research.recipe_sources([{**item, "langs": ["cpp"]}]))
     assert len(rows) == 1 and rows[0][1]["lang"] == "cpp"
-

@@ -792,5 +792,16 @@
     "outcome": "server_verified_partial",
     "evidence": "work\\big-mining-2008-20261020\\twod-native-guarded-group-receipt.json",
     "next": "Do not mark every iterator accessor noinline: whole Command arrow9, combined-key while31, postfix-only34; correct loop+postfix44. Keep true checked SDK bodies and native Command48/Batch16. Three gates34/34/6 and oneobjectfanout0extra complete."
+  },
+  {
+    "id": "ogre-secondary-shadowcaster-this-and-native-refcount-20261029",
+    "client": "2008-06",
+    "library": "Ogre 1.4.5 / RbxSubEntity / G3D 6.09",
+    "hypothesis": "A tiny getter reading this+0x50 was attributed to stock SubEntity visibility, but target constructor and secondary vtable establish ShadowCaster this adjustment0xec: the field is castShadows at whole-object0x13c.",
+    "change": "Reproduce getCastShadows, virtual delegation slots4/5/6, original std::exception paths/messages and scoped RbxSceneManager visitor destructor. Use actual G3D ownership and Rect2D(Vector2) fp:fast in legacy wrapper contexts; keep outer-layout analog labels. Bind explicit symbols before admitting exact bodies so unrelated identical destructors do not replace owners.",
+    "exacts_gained": 0,
+    "outcome": "local_forced_link_verified_not_server_accepted",
+    "evidence": "findings:2008-06/verification/ogre-owner-repair-20261029/",
+    "next": "Full306-root link and runtime startup pass;29-root native subset and actual-library weak-reference cleanup pass. Outer owner layouts in three wrappers remain analogs; renderer behavior and server acceptance remain separate."
   }
 ]

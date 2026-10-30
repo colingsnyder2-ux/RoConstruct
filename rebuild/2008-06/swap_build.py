@@ -9,22 +9,26 @@ import json
 import re
 import shutil
 import sys
+import time
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
-from roc import match  # noqa: E402
+from roc import libs, match, rebuild  # noqa: E402
 
 CLIENT = "2008-06"
 RECIPES = {"RbxgsApp": {"rbxgs", "rbxgs-dll"}, "RbxApp": {"openrbx-client", "openrbx-client-dll"}}
-RECIPE_PREFIXES = {"XTP": ("xtp-11.2.2",), "G3D": ("g3d-6.09",), "Boost": ("boost-1.34.1",), "libpng": ("libpng-1.2",),
+RECIPE_PREFIXES = {"RakNet": ("openrbx-raknet",), "XTP": ("xtp-11.2.2",), "G3D": ("g3d-6.09",), "Boost": ("boost-1.34.1",), "libpng": ("libpng-1.2",),
                    "Lua": ("lua-5.1",), "Ogre": ("ogre-",),
                    "MfcAtl": ("mfc-9.0", "atl-"), "BoostExtra": ("boost-1.35", "boost-1.36", "boost-1.40"),
                    "CodegenAnalogs": ("wildmagic-2-core", "templates-")}
 
 
-def of_module(module, recipe):
+def of_module(module, recipe, file=""):
+    if recipe.startswith("g3d-6.09"):
+        owner = "G3D-PNG" if "-png" in recipe else "G3D-GL" if file.startswith(("GLG3Dcpp/", "contrib/")) else "G3D"
+        return module == owner
     return recipe in RECIPES.get(module, ()) or recipe.startswith(RECIPE_PREFIXES.get(module, ()))
 
 
@@ -53,9 +57,9 @@ def compatible(module, unit, recipe=None):
         return True  # isolated analog module makes no claim of native header compatibility
     if not unit.rsplit("/", 1)[-1].startswith("roc_"):
         return True
-    if module in ("Ogre", "MfcAtl", "BoostExtra"):  # no adopted headers: a unit written against the real library headers (no private copies) fits
+    if module in ("Ogre", "MfcAtl", "BoostExtra", "RakNet"):  # no adopted headers: a unit written against the real library headers (no private copies) fits
         from roc import libs
-        src = libs.LIBS / libs.RECIPES[recipe]["src"] / unit
+        src = libs.fetch(recipe) / unit  # materialize portable units before the header gate
         return src.exists() and not ALIAS.search(src.read_text(errors="replace"))
     src = TREES.get(module, Path("-")) / unit
     if not src.exists():
@@ -120,13 +124,21 @@ def build_group(job):
     module, n, item = job
     item = dict(item)
     item["results"] = []
-    text = (ROOT / "src" / CLIENT / (item["addrs"][0] + ".cpp")).read_text(errors="replace")
+    text = libs.source_for(item["recipe"], item["file"], "cpp", int(item["cl"]), item["flags"]) \
+        if item.get("native") else (ROOT / "src" / CLIENT / (item["addrs"][0] + ".cpp")).read_text(errors="replace")
     twin = DLL_TWIN.get(item["recipe"])
     if twin is None and "_DLL" not in libs_recipes().get(item["recipe"], {}).get("defines", "")             and item["recipe"] + "-dll" in libs_recipes():
         twin = item["recipe"] + "-dll"  # e.g. g3d-6.09 -> g3d-6.09-dll
     if twin:
         item = dict(item, recipe=twin)
         text = re.sub(r"(?m)^(// roc-lib: )%s " % re.escape(job[2]["recipe"]), r"\g<1>%s " % twin, text)
+    # /MT also injects LIBCMT into an otherwise _DLL-header object. Replay on
+    # the module's DLL CRT and recheck every retained body below.
+    if "_DLL" in libs_recipes().get(item["recipe"], {}).get("defines", "").split():
+        flags = re.sub(r"/MTd?\b", "/MD", item.get("flags", ""))
+        if flags != item.get("flags", ""):
+            item["flags"] = flags
+            text = re.sub(r"(?m)^// roc-flags:.*$", "// roc-flags: " + flags, text)
     # No fallback to the static-CRT object mining verified: it links under /MD but crashed the M4a/M5 runtime
     # gates (int 3 at startup, 2026-10-27) although every kept body was byte-exact. Only the _DLL twin is safe.
     try:
@@ -134,8 +146,20 @@ def build_group(job):
     except Exception as error:  # noqa: BLE001 - report and continue with the other groups
         return item, [], str(error)[:300]
     keep = {}
+    bindings = item.get("symbols", {})
+    functions = {s: (b, r) for s, b, r in match.coff_functions(obj)} if bindings else {}
+    externals = rebuild.coff_externals(obj) if bindings else {}
     for addr in item["addrs"]:
-        value, symbol, reason, _ = match.check_text(CLIENT, addr, text, obj=obj, minimum=99)
+        if addr in bindings:
+            symbol, value, reason = bindings[addr], 0, "bound symbol is absent or not code-exact"
+            if externals.get(symbol) and symbol in functions:
+                body, relocs = functions[symbol]
+                target, target_relocs, _ = match.target(CLIENT, addr)
+                if len(body) == len(target) and match.exact_match(target, target_relocs, body, relocs):
+                    _, bad = match.data_check(CLIENT, addr, target, match.coff_data_refs(obj, symbol))
+                    value, reason = (99, str(bad)) if bad else (100, "exact")
+        else:
+            value, symbol, reason, _ = match.check_text(CLIENT, addr, text, obj=obj, minimum=99)
         item["results"].append({"address": addr, "score": value, "symbol": symbol,
                                 "reason": str(reason)[:3000] if value != 100 else "exact",
                                 "cause": "exact" if value == 100 else
@@ -144,7 +168,11 @@ def build_group(job):
                                 "dll_twin": twin})
         if value == 100 and symbol:
             keep.setdefault(symbol, addr)
-    return item, [(obj, keep)] if keep else [], None
+    helpers = set(item.get("helper_symbols", []))
+    missing = helpers - {name for name, defined in rebuild.coff_externals(obj).items() if defined} if helpers else set()
+    if missing:
+        return item, [], "Missing declared native helpers: " + ", ".join(sorted(missing))
+    return item, [(obj, keep)] if keep or helpers else [], None
 
 
 def main(module, limit=None):
@@ -153,9 +181,15 @@ def main(module, limit=None):
     # is a header the module adopted with that same replacement (Phase 4 canonical headers)
     # is a header the module adopted with that same replacement (Phase 4 canonical headers); one that disagrees is
     # compiled against the module's overlay headers instead (compile_against_overlay)
-    groups, rejected = [], []
-    for g in plan["groups"]:
-        if not of_module(module, g["recipe"]):
+    groups, rejected, native = [], [], []
+    for path in (ROOT / "rebuild" / CLIENT / "modules").glob("*.json"):
+        spec = json.loads(path.read_text())
+        if spec.get("name") == module:
+            native = [dict(unit, native=True) for unit in spec.get("native_units", [])]
+            break
+    # Native replays use the same family/header gates and win duplicate symbols.
+    for g in native + plan["groups"]:
+        if not of_module(module, g["recipe"], g["file"]):
             continue
         if compatible(module, g["file"], g["recipe"]):
             groups.append(g)
@@ -172,6 +206,7 @@ def main(module, limit=None):
         shutil.rmtree(folder)
     folder.mkdir(parents=True)
     swaps, failed, results, wanted, found = [], [], [], 0, 0
+    registry_owned = set()
     with ThreadPoolExecutor(8) as pool:
         for n, (item, objs, error) in enumerate(pool.map(build_group, [(module, i, g) for i, g in enumerate(groups)])):
             wanted += len(item["addrs"])
@@ -180,17 +215,30 @@ def main(module, limit=None):
                 failed.append(dict(item, error=error))
                 continue
             for k, (obj, keep) in enumerate(objs):
+                if item.get("native"):
+                    registry_owned.update(keep.values())
+                else:
+                    covered = set(keep.values()) & registry_owned
+                    if covered:
+                        item["covered_by_registry"] = sorted(covered)
+                        keep = {symbol: addr for symbol, addr in keep.items() if addr not in registry_owned}
+                if not keep and not item.get("helper_symbols"):
+                    continue
                 found += len(set(keep.values()))
                 name = "%04d.obj" % n if not k else "%04d-mined.obj" % n
                 (folder / name).write_bytes(obj)
-                swaps.append({"obj": name, "recipe": item["recipe"], "file": item["file"], "keep": keep})
+                entry = {"obj": name, "recipe": item["recipe"], "file": item["file"], "keep": keep}
+                if item.get("provenance"):
+                    entry["provenance"] = item["provenance"]
+                swaps.append(entry)
     (folder / "swaps.json").write_text(json.dumps({"swaps": swaps, "failed": failed}, indent=1))
     # Keep diagnostics even when install preserves the stronger live layer.
     (live.parent / "swap-results.json").write_text(json.dumps({"groups": results, "rejected": rejected,
                                                               "failed": failed}, indent=1))
     print("%s: %d groups, %d/%d addresses found exact, %d groups failed to compile"
           % (module, len(groups), found, wanted, len(failed)))
-    print(install(live, folder))
+    requested_native = {a for g in groups if g.get("native") for a in g["addrs"]}
+    print(install(live, folder, refresh_native=bool(requested_native) and requested_native <= registry_owned))
 
 
 def kept_addresses(folder):
@@ -198,12 +246,22 @@ def kept_addresses(folder):
     return {a for s in json.loads(path.read_text())["swaps"] for a in s["keep"].values()} if path.exists() else set()
 
 
-def install(live, built):
-    """Replace the live layer only when the new one loses no exact address and gains at least one. Addresses the new
-    plan no longer lists (now owned elsewhere, or a regrouped compile) keep their verified objects from the live layer."""
+def rename_layer(source, destination):
+    """Retry transient access-denied errors without discarding either layer."""
+    for delay in (0.05, 0.1, 0.2, 0.4):
+        try:
+            return source.rename(destination)
+        except PermissionError:
+            time.sleep(delay)
+    return source.rename(destination)
+
+
+def install(live, built, refresh_native=False):
+    """Preserve every exact address; require gains unless a complete native replay requests a context refresh.
+    Addresses omitted by the new plan retain their verified objects from the live layer."""
     before, after = kept_addresses(live), kept_addresses(built)
     retained = {}
-    if before - after and after - before:
+    if before - after and (after - before or refresh_native):
         lost, data = before - after, json.loads((built / "swaps.json").read_text())
         for item in json.loads((live / "swaps.json").read_text())["swaps"]:
             keep = {s: a for s, a in item["keep"].items() if a in lost}
@@ -215,7 +273,7 @@ def install(live, built):
                 lost -= set(keep.values())
         (built / "swaps.json").write_text(json.dumps(data, indent=1))
         after = kept_addresses(built)
-    if before - after or not after - before:
+    if before - after or (not after - before and not refresh_native):
         shutil.rmtree(built)
         return "kept existing layer (%d addresses; new layer lost %d, gained %d)" % (
             len(before), len(before - after), len(after - before))
@@ -238,8 +296,16 @@ def install(live, built):
     if old.exists():
         shutil.rmtree(old)
     if live.exists():
-        live.rename(old)
-    built.rename(live)
+        rename_layer(live, old)
+    try:
+        rename_layer(built, live)
+    except OSError:
+        if old.exists() and not live.exists():
+            try:
+                rename_layer(old, live)
+            except OSError as rollback:
+                raise RuntimeError("Swap restore blocked: backup %s; staged layer %s" % (old, built)) from rollback
+        raise
     if old.exists():
         shutil.rmtree(old)
     return "installed new layer: %d -> %d addresses" % (len(before), len(after))

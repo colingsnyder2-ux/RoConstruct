@@ -350,6 +350,10 @@ Make byte-exact mined 2008 functions come out of the real rbxgs C++ (native inte
 that is already 100% mined and whose method already exists in the rebuild but compiles differently. Credit comes
 only from the server's independent linked rebuild.
 
+A source/library tag does not certify authentic headers or original variable names.
+Generated mining proofs can contain reconstructed declarations. Native work must use
+the real classes and evidenced layouts, then pass the independent integration gates.
+
 ## Setup (execute before mining)
 
 Install missing dependencies yourself; downloads are authorized. Do not stop at a setup plan or ask the
@@ -380,7 +384,9 @@ holding `work/server.db`. Server DB, manifests and compiled server outputs are n
 Keep one contributor checkout per concurrent agent. Preserve unsent edits when updating or syncing.
 
 Configure the contributor name and reachable group-server URL with `roc config --user NAME --server URL`
-if not already configured. Use the supplied server URL, not the owner's `localhost`. No native invitation,
+if not already configured. Use the human-provided username consistently for every claim and submission;
+for Colin's authorized agent runs, configure `roc config --user colin`. Record that identity with each job.
+A source author or model name does not replace the submitting contributor's username. Use the supplied server URL, not the owner's `localhost`. No native invitation,
 `ROC_NATIVE_TOKEN` or owner approval is required. Ask only for missing contributor identity.
 Leave `ROC_NATIVE_EVIDENCE_ROOT` unset on
 another PC; it is an optional same-machine testing override.

@@ -844,9 +844,9 @@ MODEL_RULES = """You repair real 2008 Roblox C++ so MSVC compiles it to the exac
 Edit ONLY the file below. Reply with one or more blocks inside one ```cpp fence, nothing else:
 <<<<<<< SEARCH
 exact old text, copied verbatim from the file
-=======
+\x3d======
 new text
->>>>>>> REPLACE
+\x3e>>>>>> REPLACE
 Each SEARCH text must occur exactly once in the file as shown. Blocks apply in order.
 Prefer one target and 1-3 small blocks. Include enough unchanged method context to make every anchor unique.
 The mined sources are byte-exact proofs written with placeholder types: copy their control flow, call order,

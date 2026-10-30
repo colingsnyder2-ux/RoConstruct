@@ -2398,9 +2398,10 @@ def test_repair_safety_guards():
 
 
 def test_auto_import_skips_dropped_functions(monkeypatch):
-    from roc import match
     from roc.server import Store, import_auto_matches
-    monkeypatch.setattr(match, "check_text", lambda *args: (100, "f", "", []))
+    from unittest.mock import Mock
+    checked = Mock(return_value=(100, "f", "", []))
+    monkeypatch.setattr("roc.server.match.check_text", checked)
     st = Store(":memory:", lease_seconds=1)
     st.db.execute("INSERT INTO funcs(client,addr,size,unit) VALUES('C','00401000',6,'A')")
     st.db.commit()
@@ -2408,6 +2409,7 @@ def test_auto_import_skips_dropped_functions(monkeypatch):
     assert import_auto_matches(st, "C", {"00401000": "void f(){}\n", "00401040": "void g(){}\n"},
                                log=lambda *a: None) == (1, 1)
     assert st.scores() == {"C": {"00401000": 100}}
+    checked.assert_called_once_with("C", "00401000", "void f(){}\n")
     assert st.db.execute("SELECT verified FROM mining_events").fetchone()[0] == 1
     try:
         st.submit("C", "00401040", "alice", 100, "x")

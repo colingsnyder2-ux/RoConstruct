@@ -778,4 +778,3 @@ def test_body_diff_handles_zero_displacement_symbol_with_scaled_index(monkeypatc
     monkeypatch.setattr(sweep.match, 'coff_functions', lambda obj: [('symbol', bytes.fromhex('8b048500000000c3'), [3])])
     monkeypatch.setattr(sweep.match, 'target', lambda *args: (bytes.fromhex('8b0485aabbccddc3'), [3], None))
     assert sweep.body_diff(b'obj', 'symbol', '00500000') == 'identical after masking'
-

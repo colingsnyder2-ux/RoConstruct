@@ -147,4 +147,3 @@ def test_data_relocation_range_keeps_both_boundaries_exact(monkeypatch):
     # Relocation at start is masked; relocation at end must not extend the mask.
     assert match.data_check('client', '00400000', code, [(0, b'----WXYZ', [])])[1] == []
     assert match.data_check('client', '00400000', code, [(0, b'----FAIL', [])])[1]
-
