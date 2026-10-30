@@ -558,6 +558,9 @@ If doctor cannot find an installed SDK, set `ROC_WINSDK` to this PC's SDK folder
    - Record JOB and continue discovery. Use `roc integrate status --id JOB` for a single status check;
      a rejection is a per-batch repair task, not a reason to end the session;
    - `roc integrate sync` after acceptance.
+   - `roc integrate submit` refreshes the server baseline first. If another worker
+     integrated the same recipe, it syncs and skips the stale claim instead of
+     creating a guaranteed stale-replacement job. Claim fresh work; do not retry it.
 
 ## Fewer commands and smaller evidence
 

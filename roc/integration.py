@@ -1045,6 +1045,10 @@ def command(args):
             raise SystemExit("Submit needs --model ACTUAL_MODEL (or human) and --evidence-file FILE")
         if len({c["base_revision"] for c in claims}) != 1:
             raise SystemExit("Batch claims have different bases; submit each baseline separately")
+        fresh_base = api.call("/v1/integration/base")
+        if fresh_base["revision"] != claims[0]["base_revision"]:
+            sync_client_baseline(ROOT, fresh_base)
+            raise SystemExit("Skipped stale claim: server baseline advanced and was synced; claim a fresh target")
         run_generator(generator, ROOT)
         patches = overlay_delta(claims[0]["baseline"]["overlay"], json.loads(overlay.read_text(encoding="utf-8")))
         if hasattr(args, 'no_local_check') and not args.no_local_check:
