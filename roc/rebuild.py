@@ -1339,6 +1339,11 @@ def build_module(client, name, log=print):
     if spec.get("mfc_import"):
         # Pruned mining objects can lose the header's DEFAULTLIB directive.
         deps.append(mfc_import_lib(client))
+    for key in spec.get("toolchain_libs", []):
+        support = toolchain().get(key)
+        if support is None:
+            raise RuntimeError("Missing toolchain library: " + key)
+        deps.append(support)
     for dll in spec.get("import_dlls", []):
         import shutil
         deps.append(dll_import_lib(client, dll))
