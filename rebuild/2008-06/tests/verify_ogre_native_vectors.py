@@ -1,0 +1,12 @@
+import json
+from pathlib import Path
+from roc import rebuild,native_finish
+r=Path.cwd();d=r/'work/ogre-native-headers-proof';d.mkdir(parents=True,exist_ok=True);out=r/'rebuild/2008-06/out';module=out/'OgreNativeHeaders';report=json.loads((module/'report.json').read_text());owners=json.loads((module/'owned-symbols.json').read_text());added=['0068e150','0068e250','0068e350','006901e0','006902a0','00699c60']; assert set(added) <= set(report['owned_addrs'])
+roots=set()
+for a in added:
+ for o in owners[a]:
+  if rebuild.coff_externals((module/'linked'/o['object']).read_bytes()).get(o['symbol']):roots.add(o['symbol'])
+source=(r/'rebuild/2008-06/tests/ogre_native_vectors.cpp').read_text();test='ogre_native_vectors_forced';(r/'rebuild/2008-06/tests'/(test+'.cpp')).write_text('\n'.join('#pragma comment(linker, "/INCLUDE:'+x+'")' for x in sorted(roots))+'\n'+source);inc=[r/'tools/libs/ogre-1.4.5/ogrenew/OgreMain/include'];result=rebuild.resolve_objects('2008-06',test,[module/'linked'],test+'/linked',includes=inc,defines='WIN32 NDEBUG _DLL',library_symbols=roots);(d/'forced-runtime-result.json').write_text(json.dumps(result,indent=1));print('roots',len(roots),'link',result['linked'],'exit',result['exit'],'unresolved',result.get('unresolved'),flush=True)
+assert result.get('linked') and result.get('exit')==0
+if result.get('linked') and result.get('exit')==0:
+ exe=out/'tests'/test/(test+'.exe');proof=native_finish.linked_proofs('2008-06',added,owners,out/test/'linked',exe,exe.with_suffix('.map'));(d/'linked-executable-proof.json').write_text(json.dumps(proof,indent=1));print('linked byte proofs',sum(p['code_exact_in_executable'] for p in proof),'of',len(proof)); assert all(p['code_exact_in_executable'] for p in proof)
