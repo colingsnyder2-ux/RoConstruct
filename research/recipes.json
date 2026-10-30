@@ -25838,5 +25838,46 @@
       "evidence": "RoConstruct-findings2008-06/verification/ogre-native-teardown-20261029"
     },
     "rejected": "Do not use the stream signature for filename-only world geometry: identical throwing bodies hide unused-argument ABI errors, but vtable slots prove distinct interfaces. Camera exception line was233 not232; retain target provenance. SDK-name hasCamera/hasSceneNode aliases collide with imports under real query calls; migrate actual Rbx owners rather than drop prior roots."
+  },
+  "ogre-native-render-20261029": {
+    "op": "fanout",
+    "client": "2008-06",
+    "hypothesis": "Unify genuine RbxSceneManager renderScene/setPass, queue, graph and visibility methods with the constructor-proven native class. Restore binary-proven render flag. Separate measured header FP context for real-header light-frustum body without changing class layout. Validate actual hidden-window D3D9 triangle pixel readback through the native scene virtual methods.",
+    "sources": [
+      {
+        "recipe": "ogre-1.4.5-dll",
+        "files": [
+          "roc_native_scene_render_741d6d159190f764.cpp",
+          "roc_native_scene_render_1a075c9bcc99c268.cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast"
+        ]
+      }
+    ],
+    "result": {
+      "status": "37 native scene roots;334 forced roots; real hidden D3D9 triangle and native call trace pass",
+      "new_verified": 0,
+      "new_local_integrations": 2,
+      "forced_roots": 334,
+      "prior_addresses_preserved": 332,
+      "native_replayed": 92,
+      "placed_distinct": 411,
+      "frame_rgb_centre": [
+        255,
+        0,
+        0
+      ],
+      "frame_rgb_corner": [
+        255,
+        0,
+        255
+      ],
+      "evidence": "RoConstruct-findings2008-06/verification/ogre-native-render-20261029"
+    },
+    "rejected": "Global precise loses4/36 old-context targets; precise Vector3 header loses other fast bodies, so select only exact1219B light root there with identical class layout. Missing default SDK Log crashes rendering initialization. SDK renderObjects uses its base visitor while native renderScene initializes Rbx visitor; require native61B override, never patch visitor state. Initial hardware-trace harness must handle WOW64 single-step notifications."
   }
 }
