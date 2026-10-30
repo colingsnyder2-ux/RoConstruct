@@ -1576,7 +1576,16 @@ def test_exact_unit_batch_claims_only_requested_classes(promotions):
 
 def test_catalog_skips_functions_already_owned_by_other_native_modules(promotions):
     report=promotions.root/'rebuild/2008-06/out/G3D/report.json'
-    integration.atomic_json(report,dict(linked=True,owned_addrs=['00500000']))
+    integration.atomic_json(report,dict(linked=True,test_exit=0,owned_addrs=['00500000']))
+    assert 'RBX::First' not in {u for u,_ in promotions.catalog()}
+
+
+def test_catalog_keeps_targets_from_failed_or_unverified_runtime(promotions):
+    report=promotions.root/'rebuild/2008-06/out/G3D/report.json'
+    for result in (1, None):
+        integration.atomic_json(report,dict(linked=True,test_exit=result,owned_addrs=['00500000']))
+        assert 'RBX::First' in {u for u,_ in promotions.catalog()}
+    integration.atomic_json(report,dict(linked=True,test_exit=0,owned_addrs=['00500000']))
     assert 'RBX::First' not in {u for u,_ in promotions.catalog()}
 
 

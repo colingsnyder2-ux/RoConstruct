@@ -357,7 +357,7 @@ class Promotions:
             owned = set()
             for coverage in coverage_reports:
                 data = json.loads(coverage.read_text())
-                if data.get("linked"):
+                if data.get("linked") and data.get("test_exit") == 0:
                     owned.update(data.get("owned_addrs", []))
             with self.store.lock:
                 accepted = self.store.db.execute("SELECT receipt FROM integration_jobs WHERE state='accepted'").fetchall()
