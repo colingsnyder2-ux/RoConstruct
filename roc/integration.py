@@ -962,6 +962,21 @@ def command(args):
             "count": args.count, "unit": args.unit, "targets": getattr(args, "targets", None),
             "compact": bulk, "mode": getattr(args, 'mode', 'balanced'),
             "revisit_parked": getattr(args, 'revisit_parked', False)}, **({"timeout": 300} if bulk else {}))
+        previous_jobs = {j["id"]: j for j in api.call("/v1/integration").get("jobs", [])}
+        stale = []
+        for claim in result["claims"]:
+            marker = directory / "claims" / claim["id"] / "job.json"
+            if not marker.exists():
+                continue
+            job = previous_jobs.get(json.loads(marker.read_text(encoding="utf-8"))["id"], {})
+            reason = (job.get("receipt") or {}).get("reason", "")
+            if job.get("state") == "rejected" and "Stale recipe replacement" in reason:
+                stale.append(claim["id"])
+        if stale:
+            api.call("/v1/integration/park", {"user": user, "claims": stale,
+                "reason": "Previously rejected stale recipe replacement."})
+            result["claims"] = [c for c in result["claims"] if c["id"] not in stale]
+            print("Skipped %d previously stale claim(s); parked for fresh evidence." % len(stale))
         for claim in result["claims"]:
             if "baseline" not in claim:
                 claim["baseline"] = result["baselines"][claim["base_revision"]]

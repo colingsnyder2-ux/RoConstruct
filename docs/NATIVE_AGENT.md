@@ -576,6 +576,8 @@ If doctor cannot find an installed SDK, set `ROC_WINSDK` to this PC's SDK folder
    - `roc integrate submit` refreshes the server baseline first. If another worker
      integrated the same recipe, it syncs and skips the stale claim instead of
      creating a guaranteed stale-replacement job. Claim fresh work; do not retry it.
+   - `roc integrate next` parks a class whose recorded receipt is a stale recipe
+     replacement, so it cannot loop back into the same obsolete claim.
 
 ## Fewer commands and smaller evidence
 
