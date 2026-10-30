@@ -44,6 +44,17 @@ def test_mixed_alias_delimiters_never_authorize_a_header(tmp_path, monkeypatch, 
     assert not swap_build.overlay_candidate('RbxgsApp', unit.name)
 
 
+@pytest.mark.parametrize('directive', [
+    '#pragma include_alias("native/Header.h", "private.cpp")',
+    '#pragma include_alias(<native/Header.h>, <private.cpp>)',
+])
+def test_overlay_replay_cannot_adopt_replacement_types_inside_unit(tmp_path, monkeypatch, directive):
+    unit = tmp_path / 'roc_view.cpp'
+    unit.write_text(directive + '\nstruct PrivateView { int field; };\n')
+    monkeypatch.setitem(swap_build.TREES, 'RbxgsApp', tmp_path)
+    assert not swap_build.overlay_candidate('RbxgsApp', unit.name)
+
+
 def layer(folder, addrs):
     folder.mkdir(parents=True)
     (folder / "swaps.json").write_text(json.dumps({"swaps": [{"obj": "0000.obj", "keep": {"s%s" % a: a for a in addrs}}]}))

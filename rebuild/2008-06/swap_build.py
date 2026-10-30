@@ -36,6 +36,7 @@ OUT = ROOT / "rebuild" / CLIENT / "out"
 
 
 ALIAS = re.compile(r'#pragma\s+include_alias\(\s*(?:"([^"\r\n]+)"\s*,\s*"([^"\r\n]+)"|<([^>\r\n]+)>\s*,\s*<([^>\r\n]+)>)\s*\)')
+TYPE_BODY = re.compile(r'\b(?:class|struct|union)\s+(?:__declspec\([^)]*\)\s+)?[\w:]+\s*(?::[^;{]+)?\{')
 TREES = {"RbxgsApp": ROOT / "tools" / "rbxgs" / "Client" / "App"}
 PATCHES = {"RbxgsApp": ROOT / "rebuild" / CLIENT / "patches" / "rbxgs-client.json"}
 
@@ -77,8 +78,12 @@ def overlay_candidate(module, unit):
     """A generated unit whose aliases disagree with the adopted headers: it can still be tried against the module's
     own (overlay) headers, which now carry the 2008 layouts its private header copies stood in for."""
     src = TREES.get(module, Path("-")) / unit
-    return module in OVERLAY_ROOTS and unit.rsplit("/", 1)[-1].startswith("roc_") and src.exists() \
-        and bool(ALIAS.search(src.read_text(errors="replace")))
+    if module not in OVERLAY_ROOTS or not unit.rsplit("/", 1)[-1].startswith("roc_") or not src.exists():
+        return False
+    text = src.read_text(errors="replace")
+    # Removing aliases cannot adopt types declared in the unit itself. Their
+    # layouts need native declaration review before they can replace module code.
+    return bool(ALIAS.search(text)) and not TYPE_BODY.search(text)
 
 
 def compile_against_overlay(module, item, n):
