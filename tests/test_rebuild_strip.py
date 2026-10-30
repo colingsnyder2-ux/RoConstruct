@@ -50,6 +50,7 @@ def test_placement_discards_old_parser_cache_and_defers_unfinished_build(tmp_pat
     monkeypatch.setattr(rebuild, 'ROOT', tmp_path)
     monkeypatch.setattr(rebuild, 'workspace', lambda client: tmp_path)
     monkeypatch.setattr(match, '_image', lambda client: (0, b''))
+    monkeypatch.setattr(rebuild, '_ownership_context', lambda client: 'target-context')
     monkeypatch.setattr(match, 'coff_functions', lambda data: [])
     calls = []
     monkeypatch.setattr(rebuild, 'pair', lambda *args: calls.append(args) or [])

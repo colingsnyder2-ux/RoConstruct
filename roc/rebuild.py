@@ -1611,13 +1611,33 @@ def closure(client, name, log=print):
     return result
 
 
+def _placed_object(client, data):
+    """Originally ambiguous bodies with complete data and unique object-level proofs."""
+    candidates = {name: match.coff_data_refs(data, name)
+                  for name, size, addresses in pair(client, match.coff_functions(data))
+                  if size >= 16 and 2 <= len(addresses) <= 64}
+    candidates = {name: refs for name, refs in candidates.items() if refs}
+    if not candidates:
+        return []
+    hits = set()
+    for name, _, addresses in pair_object(client, data, candidates):
+        if len(addresses) != 1:
+            continue
+        address = addresses[0]
+        code, _, _ = match.target(client, address)
+        checked, bad = match.data_check(client, address, code, candidates[name])
+        if not bad and len(checked) == len(candidates[name]):
+            hits.add(address)
+    return sorted(hits)
+
+
 def placed(client="2008-06", log=print):
     """2008 addresses an address-ambiguous body (byte-identical, relocations masked, to several 2008 functions;
     >= 16 bytes, at most 64 candidates) reproduces at exactly one place: the one candidate whose referenced data
-    (string literals, constants the body points to) also matches the exe. Cached per object hash in
+    (string literals, constants the body points to) completely matches the exe, with local callees
+    refined by pair_object. Cached per object and target/matcher context in
     out/<Module>/placed.json; writes out/placed.json {address: module}. Slow the first time (minutes per module)."""
-    import hashlib
-    base, image = match._image(client)
+    context = None
     found = {}
     for spec_path in sorted((ROOT / "rebuild" / client / "modules").glob("*.json")):
         spec = json.loads(spec_path.read_text(encoding="utf-8"))
@@ -1632,30 +1652,19 @@ def placed(client="2008-06", log=print):
         cache = json.loads(cache_path.read_text()) if cache_path.exists() else {}
         fresh = {}
         for obj in sorted((out / "linked").glob("*.obj")):
+            if context is None:
+                context = _ownership_context(client)
             data = obj.read_bytes()
-            key = hashlib.sha256(b"placed-live-sections-v2\0" + data).hexdigest()
+            key = hashlib.sha256(b"placed-complete-object-v3\0" + context.encode() + data).hexdigest()
             if key not in cache:
-                hits = []
-                for name, size, h in pair(client, match.coff_functions(data)):
-                    if len(h) < 2 or size < 16 or len(h) > 64:
-                        continue
-                    refs = match.coff_data_refs(data, name)
-                    fits = []
-                    for a in h if refs else ():
-                        at = int(a, 16) - base
-                        ok, bad = match.data_check(client, a, bytes(image[at:at + size]), refs)
-                        if ok and not bad:
-                            fits.append(a)
-                    if len(fits) == 1:
-                        hits.append(fits[0])
-                cache[key] = hits
+                cache[key] = _placed_object(client, data)
             fresh[key] = cache[key]
             for a in cache[key]:
                 found.setdefault(a, spec["name"])
         _dump(cache_path, fresh)
-        log("%s: %d placed by referenced data" % (spec["name"], len({a for v in fresh.values() for a in v})))
+        log("%s: %d placed by complete data/local callee proofs" % (spec["name"], len({a for v in fresh.values() for a in v})))
     _dump(workspace(client) / "out" / "placed.json", found)
-    log("placed by referenced data: %d addresses" % len(found))
+    log("placed by complete data/local callee proofs: %d addresses" % len(found))
     return found
 
 
