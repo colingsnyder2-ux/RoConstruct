@@ -66,6 +66,44 @@ batch process takes precedence over later single-method examples.
    local, queued, rejected and independently accepted counts separately; only
    accepted receipts grant native credit. Keep working on the next shared cause.
 
+## Prioritize the current integration backlog
+
+Start with the latest reports; old counts are snapshots, not today's progress.
+For failed swaps, group `swaps.json` failures and per-address comparisons by
+compile error, incompatible header, non-exact `_DLL` twin, or shared inline.
+For shared definitions, compare all providers and their compiler flags, code,
+relocations and class layouts. Test a symbol's compatible providers together;
+do not blanket-swap duplicates. For header rejects, fix one evidenced 2008 class
+layout in the adopted overlay and rebuild all affected units. Never guess a
+field name or type from a size difference. If the declaration is unavailable,
+record the binary sites and blocker and move to another batch.
+
+Before each build, save the prior module report and global accepted baseline.
+Check the actual compiler command and resolved headers, including symlinked
+vendor paths. Build in the existing private contributor checkout, wait for any
+other build there to finish, then check forced links, linked bytes/data, runtime
+fixtures, layer errors and lost addresses. Run `placed` after relevant builds
+finish; address twins remain ambiguous unless referenced data proves placement.
+Record exact commands, hashes, results and unresolved dependencies with each
+batch. A matching object whose dependency is unresolved is not an integration.
+
+Submit each completed, supported batch under the configured contributor (use
+`colin` when requested) and actual model. `native-finish` may submit a type
+proposal, which requires owner review; its local proof does not grant credit.
+Keep packet/job IDs and verify the server receipt. For distinct new local owned
+exacts, `native-finish` with `notify: true` uses the configured mining webhook,
+deduplicates against the specified `public_root`, and records delivery or pending
+state. Set `public_root` to the existing host checkout when it holds the global
+inventory; do not claim a notification was sent without its receipt. Server
+acceptance and its integration notification are separate events.
+
+Keep changes to RoConstruct commands, module recipes and this guide reviewable
+in source control. When the operator requests publishing, commit only the intended
+files, incorporate current `main` without overwriting other work, run relevant
+tests, and push to the requested repository's `main`. Publish evidence separately
+when supported; do not put private credentials, vendor copies or generated build
+outputs in the source commit.
+
 ## Command compatibility
 
 The `ogre-native-headers` module builds genuine Ogre 1.4.5 client-import
