@@ -1460,13 +1460,28 @@ def build_module(client, name, log=print):
                     counts.setdefault(sym, set()).add(
                         obj.name if spec.get("deduplicate_layer_files") else str(obj))
     shared = {sym for sym, providers in counts.items() if len(providers) > 1}
+    force_owned = set()
+    if spec.get("force_owned"):
+        if len(layer_dirs) != 1:
+            raise ValueError("force_owned requires one layer; multiple layers can select different providers")
+        for layer_dir in layer_dirs:
+            for obj in Path(layer_dir).glob("*.obj"):
+                if obj.name.startswith("roc_") and obj.name not in generated_objects:
+                    continue
+                data = obj.read_bytes()
+                external = coff_externals(data)
+                force_owned.update(sym for sym, _, addresses in pair(client, match.coff_functions(data))
+                                   if len(addresses) == 1 and external.get(sym))
     while True:  # keep required helpers, or swap incompatible callers back out
         verified, drop = verified_layer(client, spec, log=log, exclude=excluded | shared, vdrop=vdrop, helpers=helpers,
                                        base_functions=base_functions)
-        if spec.get("force_verified"):  # the test links every swapped symbol, so each one's dependencies must resolve
+        if spec.get("force_owned") and (verified or drop):
+            raise ValueError("force_owned does not support swapped providers")
+        if spec.get("force_verified") or spec.get("force_owned"):
             (out / "force").mkdir(exist_ok=True)
             (out / "force" / "force_verified.h").write_text(
-                "".join('#pragma comment(linker, "/INCLUDE:%s")\n' % s for s in sorted(drop)))
+                "".join('#pragma comment(linker, "/INCLUDE:%s")\n' % s for s in
+                        sorted(force_owned | (drop if spec.get("force_verified") else set()))))
         result = resolve_objects(client, spec["test"], ([verified] if verified else []) + layer_dirs, spec["name"] + "/linked",
                                  includes=_overlaid([_spec_path(client, i) for i in spec.get("test_includes", [])], [], ov)[0], log=log,
                                  extra_libs=deps, defines=spec.get("test_defines"), drop=drop,
