@@ -2,7 +2,8 @@
  "name": "G3D",
  "description": "G3D 6.09 core (G3Dcpp, no OpenGL) with the 2008 Roblox header/source patches (recipe g3d-6.09-rbx2008).",
  "depends": [
-  "zlib-winapi"
+  "zlib-winapi",
+  "libpng"
  ],
  "layers": [
   {

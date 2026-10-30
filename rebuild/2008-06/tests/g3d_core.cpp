@@ -7,9 +7,11 @@
 #include "G3D/Table.h"
 #include "G3D/BinaryOutput.h"
 #include "G3D/BinaryInput.h"
+#include "G3D/GImage.h"
 #include "G3D/format.h"
 #include <stdio.h>
 #include <math.h>
+#include <string.h>
 using namespace G3D;
 
 int main()
@@ -36,6 +38,15 @@ int main()
     out.writeInt32(0x12345678); out.writeFloat32(2.5f); out.writeString("roc");
     BinaryInput in(out.getCArray(), out.size(), G3D_LITTLE_ENDIAN, false, true);
     if (in.readInt32() != 0x12345678 || in.readFloat32() != 2.5f || in.readString() != "roc") ++failures;
+
+    GImage image(2, 1, 3);
+    const unsigned char pixels[] = { 12, 34, 56, 78, 90, 123 };
+    memcpy(image.byte(), pixels, sizeof(pixels));
+    BinaryOutput png("<memory>", G3D_LITTLE_ENDIAN);
+    image.encode(GImage::PNG, png);
+    GImage decoded(png.getCArray(), png.size(), GImage::PNG);
+    if (decoded.width != 2 || decoded.height != 1 || decoded.channels != 3 ||
+        memcmp(decoded.byte(), pixels, sizeof(pixels)) != 0) ++failures;
 
     printf("%s failures=%d\n", format("g3d %d.%02d", G3D_VER / 10000, (G3D_VER / 100) % 100).c_str(), failures);
     return failures;
