@@ -375,7 +375,7 @@ def test_explicit_native_unit_selection_preserves_wildcard_sweep_exclusion(tmp_p
     monkeypatch.setitem(libs.RECIPES, 'native-fixture', {'src': 'vendor', 'files': '*.cpp', 'include': []})
     monkeypatch.setattr(rebuild, 'load_module', lambda *args: {'name': 'Fixture', 'layers': [
         {'name': 'native', 'mode': 'recipe', 'recipe': 'native-fixture', 'files': selection,
-         'direct': True, 'flags': '/O2 /MD'}]})
+         'direct': True, 'flags': '/O2 /MD', 'extra_includes': ['tools/fmod/include']}]})
     monkeypatch.setattr(rebuild, 'build_overlay', lambda *args: None)
     monkeypatch.setattr(rebuild, 'patched_tree', lambda *args: tree)
 
@@ -384,6 +384,7 @@ def test_explicit_native_unit_selection_preserves_wildcard_sweep_exclusion(tmp_p
 
     def compile_direct(client, sources, *args, **kwargs):
         assert [p.name for p in sources] == expected
+        assert args[1][-1] == tmp_path / 'tools/fmod/include'
         raise CompileObserved()
 
     monkeypatch.setattr(rebuild, 'compile_direct', compile_direct)

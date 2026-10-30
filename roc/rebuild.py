@@ -1317,6 +1317,7 @@ def build_module(client, name, log=print):
                 tree = patched_tree(client, layer["recipe"])
                 includes = [tree] + [_in_tree(libs._case_path(libs.LIBS / i), src, tree)
                                      for i in recipe.get("include", []) if i != "WINSDK"]
+                includes += [(ROOT / i).resolve() for i in layer.get("extra_includes", [])]
                 defines = (recipe.get("defines", "") + " " + layer.get("extra_defines", "")).strip()
                 append = (ROOT / layer["append_include"]).resolve() if layer.get("append_include") else None
                 flags = " ".join([layer["flags"]] + ["/FI" + h for h in recipe.get("preinclude", [])])  # recipe preludes
