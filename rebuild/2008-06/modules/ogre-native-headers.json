@@ -19,5 +19,8 @@
  "test_includes": [
   "tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
  ],
- "test_defines": "WIN32 NDEBUG _DLL"
+ "test_defines": "WIN32 NDEBUG _DLL",
+ "import_dlls": [
+  "rgmain.dll"
+ ]
 }

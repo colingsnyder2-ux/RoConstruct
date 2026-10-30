@@ -5,7 +5,8 @@
 The `ogre-native-headers` module builds genuine Ogre 1.4.5 client-import
 header templates separately from the client subclass analogs. In a private
 worker, fetch the pinned source with `python -c "from roc import libs; libs.fetch('ogre-1.4.5')"`,
-then run `roc rebuild 2008-06 ogre-native-headers`. To recheck the six current
+then run `roc rebuild 2008-06 ogre-native-headers`. The TexturePtr tests use
+the client's `rgmain.dll` through its real imports. To recheck the ten current
 target bodies in a forced executable, run
 `python rebuild/2008-06/tests/verify_ogre_native_vectors.py` with the repository
 on `PYTHONPATH`. These are
