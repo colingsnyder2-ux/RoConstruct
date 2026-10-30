@@ -95,6 +95,26 @@ roc native-try --help
 roc integrate --help
 ```
 
+## Resume before setup
+
+A new chat, pasted copy of this guide, or reopened agent prompt is **not** an
+installation request. First reuse the recorded/current checkout and inspect it:
+
+```text
+roc native-try --help
+roc doctor
+roc rebuild 2008-06 doctor
+```
+
+Run only the command that repairs an actual missing or stale prerequisite named
+by those checks. Do not automatically run `roc install`, `client-fetch`,
+`analyze`, `vtables`, `pull`, `lib-fetch`, package download, or compiler setup
+when their verified outputs already exist. Keep the checkout path and checkpoint
+between chats; another AI must resume that path rather than bootstrap a fresh
+copy. A Worker manifest check can establish currency, but does not authorize a
+download/extract unless its hash/version differs or a required native command is
+missing.
+
 On Windows use `roc.cmd`; on Linux use `./roc.sh`. For explicit class claims,
 use `roc integrate next --count 4`. If the installed CLI lists `context`, retrieve
 one claimed target with:
@@ -475,7 +495,7 @@ A source/library tag does not certify authentic headers or original variable nam
 Generated mining proofs can contain reconstructed declarations. Native work must use
 the real classes and evidenced layouts, then pass the independent integration gates.
 
-## Setup (execute before mining)
+## Setup (repair only missing prerequisites before mining)
 
 Install missing dependencies yourself; downloads are authorized. Do not stop at a setup plan or ask the
 user to download dependencies manually. Reuse installed files. Group setup commands into one terminal
@@ -531,7 +551,9 @@ replace this checkout's modified tools.
 
 On Windows, use `.\roc.cmd` (Linux: `./roc.sh`). The following is the dependency
 order for missing/stale prerequisites, not a mandatory full setup on every run.
-Run only needed steps; keep baseline sync and validation before new trials:
+Never execute this whole block merely because a new agent/chat opened. Run only
+the first unmet prerequisite and recheck before proceeding; keep baseline sync
+and validation before new trials:
 
 ```text
 roc install --yes --client 2008-06
