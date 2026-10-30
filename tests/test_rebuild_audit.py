@@ -93,9 +93,10 @@ def test_status_per_kind_uses_linked_set_not_failed_report_counts(tmp_path, monk
     modules = workspace / 'modules'
     modules.mkdir(parents=True)
     for name, linked, addrs in [('Good', True, ['a', 'b']), ('Bad', False, ['b', 'c'])]:
-        (modules / (name + '.json')).write_text(json.dumps({'name': name}))
+        (modules / (name + '.json')).write_text(json.dumps({'name': name, 'layers': []}))
         out = workspace / 'out' / name
         (out / 'linked').mkdir(parents=True)
+        (out / 'linked/linked.lib').write_bytes(b'library')
         (out / 'report.json').write_text(json.dumps({'linked': linked, 'test_exit': 0 if linked else None,
             'owned_addrs': addrs, 'owned_2008': 2, 'object_functions': 2}))
         (out / 'linked/a.obj').write_bytes(b'object')

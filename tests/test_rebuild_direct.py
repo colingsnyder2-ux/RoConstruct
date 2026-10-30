@@ -403,7 +403,7 @@ def test_stale_generated_object_does_not_exclude_selected_native_roots(tmp_path,
     monkeypatch.setattr(rebuild, 'ROOT', tmp_path)
     monkeypatch.setattr(libs, 'LIBS', tmp_path / 'tools/libs')
     monkeypatch.setitem(libs.RECIPES, 'native-fixture', {'src': 'vendor', 'files': '*.cpp', 'include': []})
-    monkeypatch.setattr(rebuild, 'load_module', lambda *args: {'name': 'Fixture', 'layers': [
+    monkeypatch.setattr(rebuild, 'load_module', lambda *args: {'name': 'Fixture', 'test': 'fixture', 'layers': [
         {'name': 'native', 'mode': 'recipe', 'recipe': 'native-fixture', 'files': ['roc_selected.cpp'],
          'direct': True, 'flags': '/O2 /MD'}]})
     monkeypatch.setattr(rebuild, 'build_overlay', lambda *args: None)

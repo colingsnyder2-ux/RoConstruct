@@ -39,13 +39,14 @@ def test_explicitly_dropped_comdat_is_not_counted_as_reproduced_code():
 def test_placement_discards_old_parser_cache_and_defers_unfinished_build(tmp_path, monkeypatch):
     modules = tmp_path / 'rebuild' / 'test' / 'modules'
     modules.mkdir(parents=True)
-    (modules / 'module.json').write_text('{"name": "Module"}')
+    (modules / 'module.json').write_text('{"name": "Module", "layers": []}')
     out = tmp_path / 'out' / 'Module'
     (out / 'linked').mkdir(parents=True)
     obj = out / 'linked' / 'one.obj'
     obj.write_bytes(b'object')
+    (out / 'linked' / 'linked.lib').write_bytes(b'library')
     report = out / 'report.json'
-    report.write_text('{"linked": true}')
+    report.write_text('{"linked": true, "test_exit": 0}')
     (out / 'placed.json').write_text(json.dumps({hashlib.sha256(b'object').hexdigest(): ['old']}))
     monkeypatch.setattr(rebuild, 'ROOT', tmp_path)
     monkeypatch.setattr(rebuild, 'workspace', lambda client: tmp_path)

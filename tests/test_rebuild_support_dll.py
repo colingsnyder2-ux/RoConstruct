@@ -45,3 +45,28 @@ def test_support_import_rejects_wrong_architecture(tmp_path, monkeypatch):
     dll.write_bytes(pe_image(machine=0x8664))
     with pytest.raises(ValueError, match="x86 PE"):
         rebuild.dll_import_lib("2008-06", dll.name, source=dll)
+
+
+def test_dependency_support_dll_is_copied_and_linked(tmp_path, monkeypatch):
+    monkeypatch.setattr(rebuild, "ROOT", tmp_path)
+    monkeypatch.setattr(rebuild, "workspace", lambda client: tmp_path)
+    source = tmp_path / "vendor" / "SDL.dll"
+    source.parent.mkdir()
+    source.write_bytes(b"vendor runtime")
+    library = tmp_path / "SDL.lib"
+    monkeypatch.setattr(rebuild, "dll_import_lib", lambda client, dll, source=None: library)
+    specs = [{"name": "parent"}, {"name": "dependency", "import_support_dlls": ["vendor/SDL.dll"]}]
+    assert rebuild._link_support("2008-06", specs, "fixture") == [library]
+    assert (tmp_path / "out/tests/fixture/SDL.dll").read_bytes() == b"vendor runtime"
+
+
+def test_conflicting_dependency_runtime_names_are_rejected(tmp_path, monkeypatch):
+    monkeypatch.setattr(rebuild, "ROOT", tmp_path)
+    monkeypatch.setattr(rebuild, "workspace", lambda client: tmp_path)
+    for directory, content in (("a", b"one"), ("b", b"two")):
+        path = tmp_path / directory / "same.dll"
+        path.parent.mkdir()
+        path.write_bytes(content)
+    specs = [{"runtime_files": ["a/same.dll"]}, {"runtime_files": ["b/same.dll"]}]
+    with pytest.raises(ValueError, match="Conflicting runtime files"):
+        rebuild._link_support("2008-06", specs, "fixture")

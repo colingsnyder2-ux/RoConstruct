@@ -40,13 +40,16 @@ batch process takes precedence over later single-method examples.
    selected swaps. A passing fixture proves its link and exercised behavior, not
    all runtime paths.
    `import_support_dlls` can link an x86 vendor support DLL using its own exports;
-   identify its version and provenance separately from original-client code.
+   dependency runtimes and import libraries propagate to the parent fixture,
+   and conflicting runtime names fail. Identify support DLL version and
+   provenance separately from original-client code.
 4. Compare addresses against the prior report and the global server baseline.
    Check object code/data, actual linked executable bytes, source identity and
    dependencies. Resolve shared definitions or address twins with real evidence;
    identical tiny bodies or an unpulled object alone do not establish ownership.
    After relevant module links finish, run `roc rebuild 2008-06 placed` once;
-   its current pass handles eligible bodies of at least 16 bytes.
+   its current pass handles eligible bodies of at least 16 bytes. Status,
+   progress and placement exclude modules whose source layers or tests failed.
 5. Submit each completed passing fix or inseparable batch immediately through a
    server-supported path. For compatible RbxgsApp source changes, use the
    `native-try` or `native-finish` workflows below; retain job IDs and check

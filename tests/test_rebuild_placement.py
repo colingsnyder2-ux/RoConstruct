@@ -52,10 +52,11 @@ def test_incomplete_winner_never_qualifies(targets, monkeypatch):
 def test_placement_cache_rechecks_same_object_after_target_change(targets, tmp_path, monkeypatch):
     image, _, functions = targets
     modules = tmp_path / 'rebuild/test/modules';modules.mkdir(parents=True)
-    (modules / 'module.json').write_text('{"name":"Module"}')
+    (modules / 'module.json').write_text('{"name":"Module","layers":[]}')
     out = tmp_path / 'out/Module';(out / 'linked').mkdir(parents=True)
     (out / 'linked/Native.obj').write_bytes(long_object())
-    (out / 'report.json').write_text('{"linked":true}')
+    (out / 'linked/linked.lib').write_bytes(b'library')
+    (out / 'report.json').write_text('{"linked":true,"test_exit":0}')
     monkeypatch.setattr(rebuild, 'ROOT', tmp_path)
     monkeypatch.setattr(rebuild, 'workspace', lambda client: tmp_path)
     assert rebuild.placed('test', log=lambda _: None) == {'00500000':'Module'}

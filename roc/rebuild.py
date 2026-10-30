@@ -1370,23 +1370,56 @@ def _compile_failure_report(out, name, errors, dependency_errors=None):
     return report
 
 
+def _link_support(client, specs, test):
+    """Carry runtime and import-library requirements through dependency modules."""
+    import shutil
+    folder = workspace(client) / "out" / "tests" / test
+    copied, libraries = {}, []
+
+    def copy(source, name=None):
+        source = Path(source)
+        name = name or source.name
+        digest = hashlib.sha256(source.read_bytes()).hexdigest()
+        key = name.casefold()
+        if key in copied:
+            if copied[key] != digest:
+                raise ValueError("Conflicting runtime files: " + name)
+            return
+        folder.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(source, folder / name)
+        copied[key] = digest
+
+    def add(path):
+        if path not in libraries:
+            libraries.append(path)
+
+    for spec in specs:
+        if spec.get("mfc_import"):
+            lib = mfc_import_lib(client)
+            add(lib)
+            copy(lib, "mfc90.lib")
+        for key in spec.get("toolchain_libs", []):
+            support = toolchain().get(key)
+            if support is None:
+                raise RuntimeError("Missing toolchain library: " + key)
+            add(support)
+        for dll in spec.get("import_dlls", []):
+            add(dll_import_lib(client, dll))
+            copy(ROOT / "clients" / client / dll)
+        for dll in spec.get("import_support_dlls", []):
+            source = ROOT / dll
+            add(dll_import_lib(client, source.name, source=source))
+            copy(source)
+        for name in spec.get("runtime_files", []):
+            copy(ROOT / name)
+    return libraries
+
+
 def build_module(client, name, log=print):
     """Build every layer of modules/<name>.json, resolve the link, run its test, write a report."""
     from roc import libs
     spec = load_module(client, name)
     out = workspace(client) / "out" / spec["name"]
-    if spec.get("mfc_import"):  # MFC headers auto-link mfc90.lib by name: the linker finds it in the test's folder
-        import shutil
-        tests = workspace(client) / "out" / "tests" / spec["test"]
-        tests.mkdir(parents=True, exist_ok=True)
-        shutil.copyfile(mfc_import_lib(client), tests / "mfc90.lib")
-    if spec.get("runtime_files"):
-        import shutil
-        tests = workspace(client) / "out" / "tests" / spec["test"]
-        tests.mkdir(parents=True, exist_ok=True)
-        for name in spec["runtime_files"]:
-            source = ROOT / name
-            shutil.copyfile(source, tests / source.name)
     ov = build_overlay(client, spec["name"], spec.get("overlay"))
     layer_dirs, compile_errors = [], {}
     for layer in spec["layers"]:
@@ -1473,7 +1506,7 @@ def build_module(client, name, log=print):
     if compile_errors:
         log("module %s: compile errors; link skipped" % spec["name"])
         return _compile_failure_report(out, spec["name"], compile_errors)
-    deps, pending = [], list(spec.get("depends", []))
+    deps, pending, support_specs = [], list(spec.get("depends", [])), [spec]
     while pending:  # transitive: G3D needs zlib-winapi wherever G3D goes
         dep = pending.pop(0)
         dep_spec = load_module(client, dep)
@@ -1487,28 +1520,13 @@ def build_module(client, name, log=print):
                 log("module %s: dependency build failed: %s" % (spec["name"], dep))
                 return _compile_failure_report(out, spec["name"], {}, {dep: "dependency build failed"})
         deps.append(dep_lib)
+        support_specs.append(dep_spec)
         pending += dep_spec.get("depends", [])
-    if spec.get("mfc_import"):
-        # Pruned mining objects can lose the header's DEFAULTLIB directive.
-        deps.append(mfc_import_lib(client))
-    for key in spec.get("toolchain_libs", []):
-        support = toolchain().get(key)
-        if support is None:
-            raise RuntimeError("Missing toolchain library: " + key)
-        deps.append(support)
-    for dll in spec.get("import_dlls", []):
-        import shutil
-        deps.append(dll_import_lib(client, dll))
-        test_dir = workspace(client) / "out" / "tests" / spec["test"]
-        test_dir.mkdir(parents=True, exist_ok=True)
-        shutil.copyfile(ROOT / "clients" / client / dll, test_dir / Path(dll).name)
-    for dll in spec.get("import_support_dlls", []):
-        import shutil
-        source = ROOT / dll
-        deps.append(dll_import_lib(client, source.name, source=source))
-        test_dir = workspace(client) / "out" / "tests" / spec["test"]
-        test_dir.mkdir(parents=True, exist_ok=True)
-        shutil.copyfile(source, test_dir / source.name)
+    try:
+        deps.extend(_link_support(client, support_specs, spec["test"]))
+    except (OSError, ValueError, RuntimeError) as error:
+        log("module %s: runtime dependency failed: %s" % (spec["name"], error))
+        return _compile_failure_report(out, spec["name"], {}, {"runtime": str(error)})
     excluded_path = out / "verified" / "excluded.json"
     excluded = set(json.loads(excluded_path.read_text())) if excluded_path.exists() else set()
     vdrop_path = out / "verified" / "vdrop.json"
@@ -1747,7 +1765,7 @@ def placed(client="2008-06", log=print):
         spec = json.loads(spec_path.read_text(encoding="utf-8"))
         out = workspace(client) / "out" / spec["name"]
         report = out / "report.json"
-        if not report.exists() or not json.loads(report.read_text()).get("linked"):
+        if not report.exists() or not _module_ready(out, spec):
             continue
         if any(obj.stat().st_mtime_ns > report.stat().st_mtime_ns for obj in (out / "linked").glob("*.obj")):
             log("%s: build newer than link report; placement deferred" % spec["name"])
@@ -1775,7 +1793,7 @@ def placed(client="2008-06", log=print):
 def status(client="2008-06", log=print):
     """One line per built module from out/<module>/report.json, plus totals (no double counting of addresses)."""
     owned_all, shared_all, compiled_all = set(), set(), set()
-    rows = []
+    rows, ready_modules = [], set()
     for spec_path in sorted((ROOT / "rebuild" / client / "modules").glob("*.json")):
         spec = json.loads(spec_path.read_text(encoding="utf-8"))
         report_path = workspace(client) / "out" / spec["name"] / "report.json"
@@ -1784,16 +1802,20 @@ def status(client="2008-06", log=print):
             continue
         r = json.loads(report_path.read_text(encoding="utf-8"))
         compiled_all.update(r.get("owned_addrs", []))
-        linked = workspace(client) / "out" / spec["name"] / "linked"
-        for obj in linked.glob("*.obj") if r["linked"] else ():
+        module_out = workspace(client) / "out" / spec["name"]
+        ready = _module_ready(module_out, spec)
+        if ready:
+            ready_modules.add(spec["name"])
+        linked = module_out / "linked"
+        for obj in linked.glob("*.obj") if ready else ():
             for _, size, h in pair(client, match.coff_functions(obj.read_bytes())):
                 if len(h) == 1:
                     owned_all.update(h)
                 elif size >= 16:  # identical 2008 functions (e.g. template copies): reproduced, address ambiguous
                     shared_all.update(h)
-        rows.append((spec_path.stem, "linked" if r["linked"] else "LINK FAIL",
+        rows.append((spec_path.stem, "linked" if ready else "INCOMPLETE",
                      "test ok" if r.get("test_exit") == 0 else "test %s" % r.get("test_exit"),
-                     r["object_functions"], r["owned_2008"]))
+                     r["object_functions"], r["owned_2008"] if ready else 0))
     for name, state, test, funcs, owned in rows:
         log("%-12s %-9s %-8s %6s object functions  %5s owned 2008" % (name, state, test, funcs, owned))
     log("distinct 2008 functions reproduced by linked rebuilt code: %d" % len(owned_all))
@@ -1810,7 +1832,8 @@ def status(client="2008-06", log=print):
         log("compiler-piece review absent or stale: run roc rebuild %s review after builds finish" % client)
     placed_path = workspace(client) / "out" / "placed.json"
     if placed_path.exists():  # `roc rebuild <client> placed` (slow; cached)
-        extra = set(json.loads(placed_path.read_text())) - owned_all
+        extra = {address for address, module in json.loads(placed_path.read_text()).items()
+                 if module in ready_modules} - owned_all
         log("plus %d placed at one 2008 address by their referenced data (as of the last `placed` run)" % len(extra))
     log("plus %d (>= 16 bytes) whose bytes the rebuild reproduces but that have byte-identical twins in 2008 (address ambiguous)"
         % len(shared_all - owned_all))
@@ -1841,7 +1864,7 @@ def progress(client="2008-06", log=print, notify=True):
         if not report_path.exists():
             continue
         report = json.loads(report_path.read_text(encoding="utf-8"))
-        linked = bool(report.get("linked"))
+        linked = bool(_module_ready(out_dir / spec["name"], spec))
         if linked:
             linked_count += 1
             linked_dir = out_dir / spec["name"] / "linked"
@@ -1854,7 +1877,7 @@ def progress(client="2008-06", log=print, notify=True):
             "name": spec["name"],
             "linked": linked,
             "test": report.get("test_exit"),
-            "exact": report.get("owned_2008", 0),
+            "exact": report.get("owned_2008", 0) if linked else 0,
             "objectFunctions": report.get("object_functions", 0),
             "unresolved": len(unresolved),
         })
