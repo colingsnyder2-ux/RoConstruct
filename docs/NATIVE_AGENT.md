@@ -29,11 +29,12 @@ batch process takes precedence over later single-method examples.
    For RbxgsApp, also run `roc rebuild 2008-06 milestones` and report each
    milestone's result, including any unresolved renderer symbols.
 
-   For a single-layer module without verified swaps, `force_owned: true` forces
-   externally defined, uniquely matched object symbols through the link. Its
-   fixture must include `force_verified.h` and its test include paths must include
+   For a module without verified swaps, `force_owned: true` selects the linked
+   providers, forces their externally defined, uniquely matched symbols, relinks
+   until provider selection stabilizes, and checks the link map. Its fixture must
+   include `force_verified.h` and its test include paths must include
    `rebuild/2008-06/out/MODULE_NAME/force`. Internal functions are not all forced
-   directly. Multi-layer or swapped modules need their existing `force_verified`
+   directly. Modules with swapped providers need their existing `force_verified`
    support and an appropriate forced fixture; `force_owned` rejects them. A
    passing fixture proves its link and exercised behavior, not all runtime paths.
 4. Compare addresses against the prior report and the global server baseline.

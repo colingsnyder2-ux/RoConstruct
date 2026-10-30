@@ -1,3 +1,4 @@
+#include "force_verified.h"
 // Runtime test for the rebuilt RakNet 3.0 library: two peers connect over loopback,
 // the client sends one reliable user packet and the server must receive it intact.
 #include "RakNetworkFactory.h"

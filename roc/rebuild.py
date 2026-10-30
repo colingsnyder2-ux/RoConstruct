@@ -1461,17 +1461,7 @@ def build_module(client, name, log=print):
                         obj.name if spec.get("deduplicate_layer_files") else str(obj))
     shared = {sym for sym, providers in counts.items() if len(providers) > 1}
     force_owned = set()
-    if spec.get("force_owned"):
-        if len(layer_dirs) != 1:
-            raise ValueError("force_owned requires one layer; multiple layers can select different providers")
-        for layer_dir in layer_dirs:
-            for obj in Path(layer_dir).glob("*.obj"):
-                if obj.name.startswith("roc_") and obj.name not in generated_objects:
-                    continue
-                data = obj.read_bytes()
-                external = coff_externals(data)
-                force_owned.update(sym for sym, _, addresses in pair(client, match.coff_functions(data))
-                                   if len(addresses) == 1 and external.get(sym))
+    force_seen = set()
     while True:  # keep required helpers, or swap incompatible callers back out
         verified, drop = verified_layer(client, spec, log=log, exclude=excluded | shared, vdrop=vdrop, helpers=helpers,
                                        base_functions=base_functions)
@@ -1487,6 +1477,26 @@ def build_module(client, name, log=print):
                                  extra_libs=deps, defines=spec.get("test_defines"), drop=drop,
                                  library_symbols=drop & set(spec.get("test_library_symbols", [])),
                                  generated_objects=generated_objects)
+        if spec.get("force_owned") and result["linked"]:
+            selected = set()
+            for obj in (out / "linked").glob("*.obj"):
+                data = obj.read_bytes()
+                external = coff_externals(data)
+                selected.update(sym for sym, _, addresses in pair(client, match.coff_functions(data))
+                                if len(addresses) == 1 and external.get(sym))
+            if selected != force_owned:
+                fingerprint = frozenset(selected)
+                if fingerprint in force_seen or len(force_seen) >= 8:
+                    raise ValueError("force_owned provider selection did not stabilize")
+                force_seen.add(fingerprint)
+                force_owned = selected
+                log("force_owned: forcing %d selected symbols and relinking" % len(selected))
+                continue
+            mapped = {fields[1] for line in Path(result["map"]).read_text(errors="replace").splitlines()
+                      if len(fields := line.split()) >= 2}
+            missing = force_owned - mapped
+            if missing:
+                raise ValueError("force_owned symbols absent from link map: " + ", ".join(sorted(missing)[:8]))
         if verified and not result["linked"] and result["unresolved"]:
             # a missing helper defined by one of the verified objects themselves: keep it there
             missing, added = set(result["unresolved"]) - set(helpers) - vdrop, 0
