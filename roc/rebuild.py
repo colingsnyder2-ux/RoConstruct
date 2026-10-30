@@ -7,11 +7,14 @@ rebuild/<client>/POLICY.md allows publishing them).
 import json
 import hashlib
 import functools
+import inspect
+import marshal
 import collections
 import os
 import re
 import struct
 import subprocess
+import sys
 from pathlib import Path
 
 from roc import match, setup
@@ -488,6 +491,50 @@ def pair_object(client, obj, symbols=None):
             break
         known.update(added)
     return [(s,n,matches[s]) for s,n,_ in rows if s in requested]
+
+
+def _ownership_context(client):
+    """Fingerprint the actual matcher inputs and loaded implementation once per build."""
+    digest = hashlib.sha256(b"native-ownership-cache-v1")
+    base, image = match._image(client)
+    digest.update(str((sys.version, base)).encode())
+    digest.update(image)
+    digest.update(json.dumps(match._functions(client), sort_keys=True).encode())
+    digest.update(json.dumps(sorted(match._base_relocs(client))).encode())
+    # Hash loaded code, not files another process may have edited since import.
+    for module in (match, sys.modules[__name__]):
+        for name, value in sorted(vars(module).items()):
+            function = inspect.unwrap(value)
+            if inspect.isfunction(function) and function.__module__ == module.__name__:
+                digest.update(name.encode())
+                digest.update(marshal.dumps(function.__code__))
+    # A changed functions table/image must also retire the process-local index.
+    _INDEX.pop(client, None)
+    _paired_addresses.cache_clear()
+    return digest.hexdigest()
+
+
+def _ownership_rows(client, obj, cache, context):
+    """Reuse only complete object proofs for identical code, data and target context."""
+    from roc.integration import atomic_json, digest
+    body = obj.read_bytes()
+    key = hashlib.sha256(context.encode() + body).hexdigest()
+    try:
+        saved = json.loads(cache.read_text(encoding="utf-8"))
+        rows = saved["rows"]
+        if (saved["key"] == key and saved["digest"] == digest(rows)
+                and isinstance(rows, list)
+                and all(isinstance(row, list) and len(row) == 3
+                        and isinstance(row[0], str) and type(row[1]) is int
+                        and isinstance(row[2], list)
+                        and all(isinstance(a, str) and re.fullmatch(r"[0-9a-f]{8}", a)
+                                for a in row[2]) for row in rows)):
+            return [(s, n, addresses) for s, n, addresses in rows], True
+    except (OSError, ValueError, KeyError, TypeError):
+        pass
+    rows = pair_object(client, body)
+    atomic_json(cache, {"key": key, "rows": rows, "digest": digest(rows)})
+    return rows, False
 
 
 def build_library(client, recipe, files, flags, name, cl=BUILD, jobs=6, log=print):
@@ -1452,8 +1499,14 @@ def build_module(client, name, log=print):
     linked = out / "linked"
     funcs, owned_addrs, owned16_addrs = 0, set(), set()
     owned_symbols = {}
+    context = None
+    cached = checked = 0
     for obj in sorted(linked.glob("*.obj")):
-        rows = pair_object(client, obj.read_bytes())
+        if context is None:
+            context = _ownership_context(client)
+        rows, hit = _ownership_rows(client, obj, out / "ownership-cache" / (obj.name + ".json"), context)
+        cached += hit
+        checked += not hit
         funcs += len(rows)
         for symbol, _, addresses in rows:
             if len(addresses)==1:
@@ -1461,6 +1514,7 @@ def build_module(client, name, log=print):
         owned_addrs.update(h[0] for _, _, h in rows if len(h) == 1)  # COMDAT copies repeat across objects
         owned16_addrs.update(h[0] for _, s, h in rows if len(h) == 1 and s >= 16)
     owned, owned16 = len(owned_addrs), len(owned16_addrs)
+    log("ownership proofs: %d cached objects, %d checked" % (cached, checked))
     report = {"module": spec["name"], "linked": result["linked"], "test_exit": result["exit"], "test_output": result["output"][-500:],
               "unresolved": result["unresolved"], "object_functions": funcs, "owned_2008": owned, "owned_2008_16b": owned16,
               "choices": result.get("choices"), "owned_addrs": sorted(owned_addrs), "owned_symbols_file": "owned-symbols.json"}
