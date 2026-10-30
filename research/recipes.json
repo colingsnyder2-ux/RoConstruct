@@ -25749,5 +25749,34 @@
     },
     "provider_hypothesis": "Observed access violation at old VC2005 map insert helper selected from Ogre1.6.4 TU; it reads head at+4 while genuine VC2008 cohort uses+24. Recompile that producer TU under21022 and preserve both existing roots before changing helper ownership; no blanket flag-only swap across layouts.",
     "rejected": "Five library-scope candidates have indistinguishable full-binary twins; do not bind. Unoptimized helper changes imported string destructor call and loses2 matches. Old VC2005 donor map helper reads head+4 vs native VC2008+24 and crashes; migrate only its map-producing root to21022 while preserving unrelated merge at50727."
+  },
+  "ogre-native-scene-20261029": {
+    "op": "fanout",
+    "client": "2008-06",
+    "hypothesis": "Use RTTI and DLL/exe vtables to complete the missing getTypeName override and real factory metadata, unify native scene ctor/dtor/callbacks, correct owned method aliases and preserve real global String CRT initialization in an explicit state layer. Validate actual Root/scene/object/node lifecycle and preserve all prior target addresses.",
+    "sources": [
+      {
+        "recipe": "ogre-1.4.5-dll",
+        "files": [
+          "roc_native_scene_state_133ef0f703573e88.cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast"
+        ]
+      }
+    ],
+    "result": {
+      "status": "Native Root/RbxSceneManager lifecycle and329 forced roots pass",
+      "new_verified": 0,
+      "local_scene_integrations": 2,
+      "native_exact_targets": 68,
+      "forced_roots": 329,
+      "prior_addresses_preserved": 327,
+      "placed_distinct": 411,
+      "evidence": "RoConstruct-findings2008-06/verification/ogre-native-scene-20261029"
+    }
   }
 }

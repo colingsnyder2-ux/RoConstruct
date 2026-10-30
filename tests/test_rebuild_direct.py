@@ -185,3 +185,64 @@ def test_content_cache_survives_private_snapshot_remapping(tmp_path, monkeypatch
     source = after / 'src' / 'unit.cpp'
     result = rebuild.compile_direct('2008-06', [source], after / 'out', [], '')
     assert result[str(source)] == (True, 'content cache hit') and len(calls) == 1
+
+
+@pytest.mark.parametrize('selection,expected', [(['roc_selected.cpp'], ['roc_selected.cpp']), ('*.cpp', ['plain.cpp'])])
+def test_explicit_native_unit_selection_preserves_wildcard_sweep_exclusion(tmp_path, monkeypatch, selection, expected):
+    tree = tmp_path / 'tools/libs/vendor'
+    tree.mkdir(parents=True)
+    for name in ['roc_selected.cpp', 'roc_unrelated.cpp', 'plain.cpp']:
+        (tree / name).write_text('int native_unit;')
+    monkeypatch.setattr(rebuild, 'ROOT', tmp_path)
+    from roc import libs
+    monkeypatch.setattr(libs, 'LIBS', tmp_path / 'tools/libs')
+    monkeypatch.setitem(libs.RECIPES, 'native-fixture', {'src': 'vendor', 'files': '*.cpp', 'include': []})
+    monkeypatch.setattr(rebuild, 'load_module', lambda *args: {'name': 'Fixture', 'layers': [
+        {'name': 'native', 'mode': 'recipe', 'recipe': 'native-fixture', 'files': selection,
+         'direct': True, 'flags': '/O2 /MD'}]})
+    monkeypatch.setattr(rebuild, 'build_overlay', lambda *args: None)
+    monkeypatch.setattr(rebuild, 'patched_tree', lambda *args: tree)
+
+    class CompileObserved(Exception):
+        pass
+
+    def compile_direct(client, sources, *args, **kwargs):
+        assert [p.name for p in sources] == expected
+        raise CompileObserved()
+
+    monkeypatch.setattr(rebuild, 'compile_direct', compile_direct)
+    with pytest.raises(CompileObserved):
+        rebuild.build_module('2008-06', 'fixture')
+
+
+def test_stale_generated_object_does_not_exclude_selected_native_roots(tmp_path, monkeypatch):
+    from roc import libs
+    tree = tmp_path / 'tools/libs/vendor'
+    tree.mkdir(parents=True)
+    (tree / 'roc_selected.cpp').write_text('int native_unit;')
+    monkeypatch.setattr(rebuild, 'ROOT', tmp_path)
+    monkeypatch.setattr(libs, 'LIBS', tmp_path / 'tools/libs')
+    monkeypatch.setitem(libs.RECIPES, 'native-fixture', {'src': 'vendor', 'files': '*.cpp', 'include': []})
+    monkeypatch.setattr(rebuild, 'load_module', lambda *args: {'name': 'Fixture', 'layers': [
+        {'name': 'native', 'mode': 'recipe', 'recipe': 'native-fixture', 'files': ['roc_selected.cpp'],
+         'direct': True, 'flags': '/O2 /MD'}]})
+    monkeypatch.setattr(rebuild, 'build_overlay', lambda *args: None)
+    monkeypatch.setattr(rebuild, 'patched_tree', lambda *args: tree)
+    def compile_direct(client, sources, folder, *args, **kwargs):
+        folder.mkdir(parents=True, exist_ok=True)
+        (folder / 'roc_selected.obj').write_bytes(b'current')
+        (folder / 'roc_previous.obj').write_bytes(b'stale')
+        return {str(sources[0]): (True, '')}
+    monkeypatch.setattr(rebuild, 'compile_direct', compile_direct)
+    def externals(data):
+        assert data != b'stale'
+        return {'_native_root': True}
+    monkeypatch.setattr(rebuild, 'coff_externals', externals)
+    class OwnershipObserved(Exception):
+        pass
+    def verified_layer(client, spec, **kwargs):
+        assert '_native_root' not in kwargs['exclude']
+        raise OwnershipObserved()
+    monkeypatch.setattr(rebuild, 'verified_layer', verified_layer)
+    with pytest.raises(OwnershipObserved):
+        rebuild.build_module('2008-06', 'fixture')

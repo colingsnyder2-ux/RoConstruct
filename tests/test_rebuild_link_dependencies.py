@@ -285,3 +285,22 @@ def test_alternative_layer_objects_are_not_simultaneous_providers(tmp_path, monk
     spec["prefer_module_data"] = True
     rebuild.build_module("test", "app", log=lambda _: None)
     assert providers[-1] == {"_owner", "_state"}
+
+
+def test_resolver_links_only_explicitly_selected_generated_objects(tmp_path, monkeypatch):
+    layer = tmp_path / 'layer'
+    layer.mkdir()
+    for name in ['roc_selected.obj', 'roc_unselected.obj', 'vendor.obj']:
+        (layer / name).write_bytes(b'object')
+    monkeypatch.setattr(rebuild, 'workspace', lambda _: tmp_path)
+    monkeypatch.setattr(rebuild, 'toolchain', lambda: {})
+    monkeypatch.setattr(rebuild, 'defined_symbols', lambda _: set())
+    def run(tc, tool, args, out):
+        assert args[2:] == ['roc_selected.obj', 'vendor.obj']
+        return 0, ''
+    monkeypatch.setattr(rebuild, 'run', run)
+    monkeypatch.setattr(rebuild, 'link_test', lambda *args, **kwargs:
+                        {'linked': True, 'unresolved': []})
+    result = rebuild.resolve_objects('test', 'smoke', [layer], 'linked',
+                                     generated_objects={'roc_selected.obj'})
+    assert set(result['choices']) == {'roc_selected.obj', 'vendor.obj'}
