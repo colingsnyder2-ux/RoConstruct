@@ -573,6 +573,9 @@ If doctor cannot find an installed SDK, set `ROC_WINSDK` to this PC's SDK folder
      record it as unconfirmed; never fabricate a success post or resubmit accepted
      code merely to trigger a webhook. Local proofs and quarantined proposals do
      not count as accepted integrations.
+   - `roc integrate submit` refreshes the server baseline first. If another worker
+     integrated the same recipe, it syncs and skips the stale claim instead of
+     creating a guaranteed stale-replacement job. Claim fresh work; do not retry it.
 
 ## Fewer commands and smaller evidence
 
