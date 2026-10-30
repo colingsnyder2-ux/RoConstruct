@@ -25883,13 +25883,13 @@
   "ogre-native-entity-20261029": {
     "op": "fanout",
     "client": "2008-06",
-    "hypothesis": "Replace preprocessed declarations and unsafe LightList downcast in the2391B native renderSingleObject with genuine Ogre headers, constructor-proven RbxSubEntity and RTTI/allocation-proven RbxSceneNode receiver. Reproduce local view/projection helpers and exercise real GPU light iteration with verified batch counts.",
+    "hypothesis": "Replace preprocessed declarations and unsafe LightList downcast in the2391B native renderSingleObject with genuine Ogre headers, constructor-proven RbxSubEntity and RTTI-only RbxSceneNode identity view; complete node layout remains unverified. Reproduce local view/projection helpers and exercise real GPU light iteration with verified batch counts.",
     "sources": [
       {
         "recipe": "ogre-1.4.5-dll",
         "files": [
-          "roc_native_scene_entity_f7f3fb8e07cd1c02.cpp",
-          "roc_native_scene_entity_2135d4e65a59b065.cpp"
+          "roc_native_scene_entity_06b4ac9bd1d8d33c.cpp",
+          "roc_native_scene_entity_caeb837607e585e7.cpp"
         ],
         "builds": [
           21022
@@ -25913,7 +25913,8 @@
         2,
         1
       ],
-      "evidence": "RoConstruct-findings2008-06/verification/ogre-native-entity-20261029"
+      "evidence": "RoConstruct-findings2008-06/verification/ogre-native-entity-20261029",
+      "node_layout_correction": "RoConstruct-findings/2008-06/verification/ogre-native-node-20261029"
     },
     "rejected": "A derived begin override incorrectly made every begin out-of-line, yielding2446 vs2391 bytes. Use a genuine wrapper object with one distinct forwarding operation, eliminating the mined unsafe base-to-derived downcast. SDK setIteratePerLight defaults to point-only filtering; two lights then produce one batch. Explicit all-light mode must yield2 batches and the filtered mode1. Cached-transform/subentity geometry branch remains unverified."
   }
