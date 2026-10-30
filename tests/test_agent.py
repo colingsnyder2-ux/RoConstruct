@@ -22,6 +22,17 @@ def test_goal_and_interactive_sessions_sync_shared_memory(monkeypatch, offline_m
     assert len(offline_memory) == 4  # before and after each session
 
 
+def test_opencode_models_uses_debug_catalog_output(monkeypatch):
+    from types import SimpleNamespace
+    seen = []
+    monkeypatch.setattr(agent.shutil, "which", lambda name: "opencode.exe")
+    monkeypatch.setattr(agent.subprocess, "run", lambda argv, **kwargs: (
+        seen.append((argv, kwargs)) or SimpleNamespace(returncode=0,
+        stdout="nvidia/meta/muse-glimmer-30b\nopencode-go/kimi-k3\n", stderr="")))
+    assert agent.opencode_models() == ["nvidia/meta/muse-glimmer-30b", "opencode-go/kimi-k3"]
+    assert seen[0][0] == ["opencode.exe", "models", "--log-level", "debug"]
+
+
 def test_continuous_goal_refreshes_memory_and_changes_strategy(monkeypatch, offline_memory):
     prompts = []
 
