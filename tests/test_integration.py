@@ -124,7 +124,7 @@ def test_catalog_discovers_accepted_overlay_only_declarations(promotions):
     assert 'App/include/Second.h' in promotions.native_paths['Second']
 
 
-def test_native_partial_webhook_dedupes_without_score_or_credit_changes(promotions, monkeypatch):
+def test_native_partial_observations_never_send_webhooks(promotions, monkeypatch):
     from roc import reports
     revision = promotions.baseline()['revision']
     row = dict(file='App/Test.cpp', addr='00500000', previous=70, score=80,
@@ -147,11 +147,7 @@ def test_native_partial_webhook_dedupes_without_score_or_credit_changes(promotio
     result = integration_notify.record_partials(promotions, 'alice', body)
     assert result == dict(recorded=1, local_only=True, exact_credits=0)
     assert integration_notify.record_partials(promotions, 'alice', body)['recorded'] == 0
-    assert len(sent) == 1
-    text = str(sent[0])
-    assert '70.000% → 80.000%' in text and 'frame improved' in text
-    assert 'not server-verified exacts' in text and '0 exact credits' in text
-    assert sent[0]['allowed_mentions'] == {'parse': []}
+    assert sent == []
     assert promotions.store.db.execute('SELECT * FROM funcs').fetchall() == before
     assert promotions.store.db.execute('SELECT COUNT(*) FROM integration_credit').fetchone()[0] == 0
     with pytest.raises(ValueError, match='score'):
@@ -590,6 +586,8 @@ def test_cli_worker_identity_is_stable_per_checkout_not_shared_by_same_pc(promot
     api = Mock()
     identities = []
     def call(path, body=None):
+        if path == "/v1/integration":
+            return {"jobs": []}
         if path.endswith("/base"):
             return promotions.baseline()
         identities.append(body["worker"])
@@ -609,9 +607,10 @@ def test_cli_compact_claim_batch_selects_only_its_own_packets(promotions, monkey
     from unittest.mock import Mock
     api = Mock()
     calls = []
+    server_base = promotions.baseline()
     def call(path, body=None, **kwargs):
         if path.endswith('/base'):
-            return promotions.baseline()
+            return server_base
         if path.endswith('/claim'):
             assert body['targets'] == 2000 and body['compact'] and kwargs['timeout'] == 300
             return promotions.claim('alice', body['worker'], targets=2000, compact=True)
@@ -1263,6 +1262,9 @@ def test_native_digest_resends_changes_without_fake_mining_points(promotions, mo
     promotions.submit("alice", upload(claims))
     job = promotions.take()
     data = integration_notify.payload(promotions, job)
+    assert data["embeds"][0]["title"] == "⛏️ RoConstruct Mining Digest"
+    assert data["embeds"][0]["color"] == 0xA855F7
+    assert data["embeds"][0]["footer"] == {"text": "RoConstruct Mining"}
     assert data["allowed_mentions"] == {"parse": []}
     text = json.dumps(data)
     fields = data["embeds"][0]["fields"]
@@ -1598,3 +1600,22 @@ def test_public_metrics_and_exact_unit_batch_capabilities(promotions):
         api.close()
         httpd.shutdown()
         httpd.server_close()
+
+
+def test_owned_digest_reuses_server_mining_layout_with_purple_color():
+    from roc import reports
+    rows = [{'addr': '00500000', 'name': 'G3D::Array::resize', 'module': 'G3D'}]
+    data = integration_notify.owned_payload('colin', 'gpt-6 (Codex)', rows)
+    embed = data['embeds'][0]
+    normal = reports.mining_embed('description', [])
+    assert embed.keys() == normal.keys()
+    assert embed['title'] == normal['title']
+    assert embed['footer'] == normal['footer']
+    assert embed['color'] == 0xA855F7
+    assert normal['color'] == 0x58A6FF
+    assert [f['name'] for f in embed['fields']] == [
+        '🟣 Nearly Integrated', '⚡ Mining Rate', '🏆 Workers', '✅ Batch', '🔧 Models']
+    assert '00500000' in embed['fields'][0]['value']
+    assert 'colin' in str(embed) and '0 accepted integration credits' in str(embed)
+    assert 'partial' not in str(embed).lower()
+    assert data['allowed_mentions'] == {'parse': []}

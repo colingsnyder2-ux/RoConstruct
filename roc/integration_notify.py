@@ -11,28 +11,42 @@ from datetime import datetime, timezone
 from pathlib import PurePosixPath
 
 from roc.integration import CLIENT, atomic_json, digest
-from roc.reports import RATE_WINDOW, fmt_duration, inline_code, server_mines_webhook
+from roc.reports import RATE_WINDOW, fmt_duration, inline_code, mining_embed, server_mines_webhook
 
 
-def partial_payload(user, model, rows):
-    lines = []
-    for row in rows[:12]:
-        detail = []
-        if row['frame_ok'] and not row['frame_before']:
-            detail.append('frame improved')
-        if row['calls_ok'] and not row['calls_before']:
-            detail.append('calls improved')
-        lines.append('`%s` **%.3f%% → %.3f%%** %s%s' % (row['addr'], row['previous'], row['score'],
-            inline_code(row['file']), ' · ' + ', '.join(detail) if detail else ''))
-    if len(rows) > 12:
-        lines.append('+%d more partial improvements' % (len(rows) - 12))
-    return {'allowed_mentions': {'parse': []}, 'embeds': [{
-        'title': '🟡 RoConstruct Native Partial Improvements', 'color': 0xEAB308,
-        'description': ('**2008-06 Client**\nLocal compiler search observations · not server-verified exacts.\n\n' + '\n'.join(lines))[:4096],
-        'fields': [{'name': 'Worker', 'value': inline_code(user), 'inline': True},
-                   {'name': 'Model', 'value': inline_code(model), 'inline': True},
-                   {'name': 'Credit', 'value': '0 exact credits · verified coverage unchanged', 'inline': False}],
-        'timestamp': datetime.now(timezone.utc).isoformat()}]}
+def progress_text(groups):
+    """Disjoint stages; amber candidates never increase accepted coverage."""
+    keys = ('integrated', 'owned_waiting', 'exact_waiting')
+    sizes = [groups.get(key, {}).get('bytes', 0) for key in keys]
+    sizes.append(sum(groups[key]['bytes'] for key in ('partial', 'unmined')))
+    total = sum(sizes)
+    cells = [n * 23 // total if total else 0 for n in sizes]
+    for index in sorted(range(4), key=lambda i: sizes[i] * 23 % total if total else 0, reverse=True)[:23-sum(cells)]:
+        cells[index] += 1
+    bar = ''.join(color * n for color, n in zip(('🟪', '🟨', '🟦', '⬜'), cells))
+    integrated = groups['integrated']['functions']
+    nearly = groups.get('owned_waiting', {}).get('functions', 0)
+    functions = sum(row['functions'] for row in groups.values())
+    nearly_line = ('%s nearly integrated\n' % format(nearly, ',')) if 'owned_waiting' in groups else ''
+    return ('**2008-06 Client**\n%s / %s integrated · %s remaining\n%s\n'
+            '%s **%.2f%%** of target bytes integrated\n'
+            '🟪 integrated · 🟨 nearly integrated · 🟦 exact waiting · ⬜ not exact\n'
+            'Nearly integrated = owned byte-exact; checks/acceptance pending.') % (
+        format(integrated, ','), format(functions, ','), format(functions-integrated, ','), nearly_line,
+        bar, 100 * sizes[0] / total if total else 0)
+
+
+def owned_payload(user, model, rows, groups=None):
+    lines = ['`%s` %s · %s' % (row['addr'], inline_code(row['name'][:96]), inline_code(row['module'])) for row in rows]
+    fields = [
+        {'name': '🟣 Nearly Integrated', 'value': '\n'.join(lines)[:1024] or 'None', 'inline': False},
+        {'name': '⚡ Mining Rate', 'value': 'collecting native integration rate', 'inline': True},
+        {'name': '🏆 Workers', 'value': '**%s**' % user, 'inline': True},
+        {'name': '✅ Batch', 'value': '%d owned exacts · 0 accepted integration credits · acceptance pending' % len(rows), 'inline': True},
+        {'name': '🔧 Models', 'value': inline_code(model), 'inline': True},
+    ]
+    description = progress_text(groups) if groups else '**2008-06 Client**\nOwned byte-exact discoveries · acceptance pending'
+    return {'allowed_mentions': {'parse': []}, 'embeds': [mining_embed(description, fields, color=0xA855F7)]}
 
 
 def record_partials(promotions, user, body):
@@ -85,11 +99,6 @@ def record_partials(promotions, user, body):
                  row['frame_ok'] or bool(previous and previous[1]), row['calls_ok'] or bool(previous and previous[2]),
                  user, model, json.dumps(row), time.time()))
             fresh.append(row)
-    url = server_mines_webhook()
-    if fresh and url:
-        from roc.reports import _post
-        import threading
-        threading.Thread(target=_post, args=(url, partial_payload(user, model, fresh)), daemon=True).start()
     return dict(recorded=len(fresh), local_only=True, exact_credits=0)
 
 
@@ -108,19 +117,8 @@ def payload(promotions, job, receipt=None):
         native = set(json.loads(proof.read_text())["addresses"])
         from roc.integration_site import coverage
         groups, functions = coverage(root, scores, native)
-        counts = [groups["integrated"]["functions"], groups["exact_waiting"]["functions"], groups["partial"]["functions"] + groups["unmined"]["functions"]]
-        sizes = [groups["integrated"]["bytes"], groups["exact_waiting"]["bytes"], groups["partial"]["bytes"] + groups["unmined"]["bytes"]]
-        total = sum(sizes)
-        cells = [s * 23 // total if total else 0 for s in sizes]
-        for i in sorted(range(3), key=lambda i: sizes[i] * 23 % total if total else 0, reverse=True)[:23 - sum(cells)]:
-            cells[i] += 1
-        bar = "".join(c * n for c, n in zip(("\U0001f7ea", "\U0001f7e6", "\u2b1c"), cells))
-        description = ("**2008-06 Client**\n%s / %s integrated \u00b7 %s remaining\n\n%s **%.2f%%** of target bytes\n\n"
-            "\U0001f7ea integrated \u00b7 \U0001f7e6 exact waiting \u00b7 \u2b1c not integrated") % (
-                format(counts[0], ","), format(sum(counts), ","), format(sum(counts[1:]), ","),
-                bar, 100 * sizes[0] / total if total else 0)
-        description += "\n%s / %s target bytes" % (format(sizes[0], ","), format(total, ","))
-        remaining = sum(sizes[1:])
+        description = progress_text(groups)
+        remaining = sum(row['bytes'] for key, row in groups.items() if key != 'integrated')
     else:
         remaining = None
     recent_gains = {addr for row in recent for addr in json.loads(row[0]).get("gains", [])
@@ -141,20 +139,14 @@ def payload(promotions, job, receipt=None):
         matched += "\n+%d more integrated" % (len(gains) - 10)
     fields = [
         {"name": "\U0001f7e3 Fully Integrated", "value": matched[:1024], "inline": False},
-        {"name": "\u26a1 Integration Rate", "value": "**%g functions/hr** \u00b7 **%s B/hr** *(last 6h)* \u00b7 byte ETA %s" % (round(rate, 1), format(round(byte_rate * 3600), ","), eta), "inline": True},
+        {"name": "\u26a1 Mining Rate", "value": "**%g functions/hr** \u00b7 **%s B/hr** *(last 6h)* \u00b7 byte ETA %s" % (round(rate, 1), format(round(byte_rate * 3600), ","), eta), "inline": True},
         {"name": "\U0001f3c6 Workers", "value": "**%s** \u00b7 %s pts \u00b7 %s native integrated *(+%d)*" % (
             job["user"], format(store.user_points(job["user"]), ","), format(credits, ","), delta), "inline": True},
-        {"name": "\u2699\ufe0f Verification", "value": "server-verified \u00b7 %d integrated" % len(gains) if accepted else "rejected \u00b7 no native credit" if rejected else state, "inline": True},
+        {"name": "\u2705 Batch", "value": "server-verified \u00b7 %d integrated" % len(gains) if accepted else "rejected \u00b7 no native credit" if rejected else state, "inline": True},
         {"name": "\U0001f527 Models", "value": inline_code(job["model"]), "inline": True},
     ]
-    if accepted:
-        fields.append({"name": "\U0001f7ea Rebuild Ownership", "value": "**%s owned** (+%d) \u00b7 **%s distinct** (+%d)" % (
-            format(receipt["owned_after"], ","), receipt["owned_after"] - receipt["owned_before"],
-            format(receipt["distinct_after"], ","), receipt["distinct_after"] - receipt["distinct_before"]), "inline": False})
-    return {"allowed_mentions": {"parse": []}, "embeds": [{"title": "\u26cf\ufe0f RoConstruct Integration Digest",
-        "description": description, "color": 0xA855F7, "fields": fields,
-        "footer": {"text": "RoConstruct Integration"},
-        "timestamp": datetime.now(timezone.utc).isoformat()}]}
+    return {"allowed_mentions": {"parse": []}, "embeds": [mining_embed(description, fields, color=0xA855F7)]}
+
 
 
 def notify(promotions, job, receipt=None):

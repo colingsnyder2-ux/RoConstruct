@@ -181,6 +181,13 @@ def tool_digest(tool, description, fields=()):
     threading.Thread(target=_post, args=(webhook, {"embeds": [embed]}), daemon=True).start()
 
 
+def mining_embed(description, fields, color=0x58A6FF):
+    """Shared Server/Player Mining digest layout."""
+    return {"title": "⛏️ RoConstruct Mining Digest", "description": description,
+            "color": color, "fields": fields, "footer": {"text": "RoConstruct Mining"},
+            "timestamp": datetime.now(timezone.utc).isoformat()}
+
+
 class MineLog:
     """Thread-safe submit batcher. submit() never blocks the request handler."""
 
@@ -267,13 +274,10 @@ class MineLog:
                    people,
                    {"name": "✅ Batch", "value": "%d full · %d improved" % (len(full), len(partial)), "inline": True},
                    {"name": "🔧 Models", "value": ", ".join(functions), "inline": True}]
-        return {"title": "⛏️ RoConstruct Mining Digest",
-                "description": "**%s Client**\n%s / %s matched · %s remaining\n\n%s **%.2f%%**\n\n🟦 source · 🟩 mined · 🟨 partial · ⬜ remaining" % (
-                    client, format(matched, ","), format(total, ","), format(left, ","), bar, percent),
-                "color": 0x58A6FF,
-                "fields": fields,
-                "footer": {"text": "RoConstruct Mining"},
-                "timestamp": datetime.now(timezone.utc).isoformat()}
+        return mining_embed(
+            "**%s Client**\n%s / %s matched · %s remaining\n\n%s **%.2f%%**\n\n🟦 source · 🟩 mined · 🟨 partial · ⬜ remaining" % (
+                client, format(matched, ","), format(total, ","), format(left, ","), bar, percent), fields)
+
 
     def _send(self, events):
         clients = defaultdict(list)

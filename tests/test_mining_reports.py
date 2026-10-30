@@ -39,7 +39,7 @@ def test_mixed_clients_send_separate_messages(monkeypatch, automatic):
     assert "2012-06 Client" in second["description"] and "2 / 20 matched" in second["description"]
     assert "00800001" in str(first) and "00800002" in str(first) and "01200001" not in str(first)
     assert "01200001" in str(second) and "008000" not in str(second) and "colin" not in str(second)
-    assert first["fields"][-1]["name"] == ("🔧 Functions" if automatic else "🔧 Models")
+    assert first["fields"][-1]["name"] == "🔧 Models"
     assert "gpt-6.1-sol" in str(first) and "gpt-6.1-sol" not in str(second)
     assert "negative_squared_cross_mark" not in str(sent) and "❎" not in str(sent)
     assert ":yellow_square:" in first["description"] and "🟨 partial" in first["description"]
