@@ -1,5 +1,16 @@
 [
   {
+    "id": "native-instance-weak-base-ctor-order-20261029",
+    "client": "2008-06",
+    "library": "Native Instance construction and GuidItem teardown",
+    "hypothesis": "Receiver offsets alone do not establish base construction/EH order; compare early weak-state initialization and late weak teardown.",
+    "change": "Accepted Instance keeps GuidItem as primary polymorphic base but declares boost::enable_shared_from_this first. GuidItem is novtable, initializes its existing registeredGuid false, and uses real unregister teardown. Constructor/destructor counters match target. This refines the older GuidItem-after-weak layout recipe without changing verified offsets. Three authoritative exacts belong to other worker deepseek-v4.1-flash, not this contributor.",
+    "exacts_gained": 3,
+    "outcome": "server_verified",
+    "evidence": "research/native-instance-order-sol-20261029.json",
+    "next": "Preserve accepted hierarchy; 0055a540/0055b7e0/0055b960 are closed. Do not replay their archived partials."
+  },
+  {
     "id": "native-guiditem-inheritance-before-field-padding",
     "client": "2008-06",
     "library": "RBX Instance hierarchy and native weak ownership revision",

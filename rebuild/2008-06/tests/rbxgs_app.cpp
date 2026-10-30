@@ -1,3 +1,4 @@
+#include "force_verified.h"
 // rbxgs App rebuild test: instance tree (create, name, parent, find).
 #include "v8datamodel/Message.h"
 #include <cstdio>

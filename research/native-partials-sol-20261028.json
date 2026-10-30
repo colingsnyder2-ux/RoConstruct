@@ -1,0 +1,193 @@
+{
+  "model": "gpt-6.1-sol",
+  "date": "2026-10-28",
+  "workspace": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372",
+  "partials": [
+    {
+      "client": "2008-06",
+      "address": "005b4410",
+      "file": "App/v8datamodel/BrickColor.cpp",
+      "accepted": false,
+      "status": "compiled_partial_no_baseline_losses",
+      "base_revision": "1bdb79fe90687dcb370787300ab8604415a33e0aa1809842c813250a4015e79a",
+      "blocks_file": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372\\partial-handoff\\brick-value-type.txt",
+      "blocks": "<<<<<<< SEARCH\n\t\tG3D::Color4 color4 = G3D::Color4(c);\n\t\tmap2.insert(std::pair<Number, G3D::Color4>(number, color4));\n=======\n\t\t{\n\t\t\tstd::pair<const Number, G3D::Color4> entry(number, G3D::Color4(c));\n\t\t\tmap2.insert(entry);\n\t\t}\n>>>>>>> REPLACE\n",
+      "evidence_file": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372\\partial-handoff\\BrickColor\\BrickColor.evidence.json",
+      "source_sha256": "0f2a756f62c8f7b9a3528d848a897d28f7718a34c65ab6c974b984ef8b488560",
+      "object_sha256": "d953a11aa713c8263c3afbe039697f07bcb7dfb86f611d0155be54a985bb658a",
+      "lost": [],
+      "remaining_diff": "--- target\n+++ rebuilt\n@@ -36,15 +36,15 @@\n call sym\n-fld dword ptr [esp + 0x14]\n+fld dword ptr [eax]\n fstp dword ptr [esp + 0x28]\n lea edx, [esp + 0x24]\n-fld dword ptr [esp + 0x18]\n+fld dword ptr [eax + 4]\n push edx\n fstp dword ptr [esp + 0x30]\n+lea ecx, [esi + 0x50]\n+fld dword ptr [eax + 8]\n+mov dword ptr [esp + 0x28], edi\n+fstp dword ptr [esp + 0x34]\n+fld dword ptr [eax + 0xc]\n lea eax, [esp + 0x18]\n-fld dword ptr [esp + 0x20]\n push eax\n-fstp dword ptr [esp + 0x38]\n-lea ecx, [esi + 0x50]\n-fld dword ptr [esp + 0x28]\n-mov dword ptr [esp + 0x2c], edi\n fstp dword ptr [esp + 0x3c]\n@@ -53,13 +53,13 @@\n push ecx\n+lea ecx, [esp + 0x2c]\n+mov dword ptr [esp + 0x28], edi\n+call dword ptr [sym]\n+mov edx, dword ptr [esp + 0x24]\n+lea eax, [esp + 0x28]\n+push eax\n lea ecx, [esp + 0x4c]\n-mov dword ptr [esp + 0x48], edi\n+mov byte ptr [esp + 0x70], 1\n+mov dword ptr [esp + 0x48], edx\n call dword ptr [sym]\n-mov edx, dword ptr [esp + 0x44]\n-lea eax, [esp + 0x48]\n...",
+      "next_evidence": "Use scoped std::pair<const Number, G3D::Color4> map value. Native frame now matches target 0x5c (original frame 0x68). Remaining diff: color conversion reads through EAX versus stack, then string-pair lifetime/register allocation. Named color local regressed frame to 0x50; direct inline pair used 0x58. No exact gains or losses.",
+      "baseline_evidence_file": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372\\partial-handoff\\BrickColor\\baseline-evidence.txt",
+      "candidate_source_file": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372\\partial-handoff\\BrickColor\\BrickColor.cpp"
+    },
+    {
+      "client": "2008-06",
+      "address": "0055a540",
+      "file": "App/v8tree/Instance.cpp",
+      "accepted": false,
+      "status": "resolved_by_other_worker",
+      "base_revision": "f61919f949b893b13c9e80b72e8b2710cd74c413b7e16aa09f8b5aeb80845275",
+      "blocks_file": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372\\partial-handoff\\instance-lifetime-count.txt",
+      "blocks": "<<<<<<< SEARCH\n#include <algorithm>\n=======\n#include <algorithm>\n#include <windows.h>\n>>>>>>> REPLACE\n<<<<<<< SEARCH\n\tconst char* sInstance = \"Instance\";\n=======\n\tconst char* sInstance = \"Instance\";\n\tlong instanceCount = 0;\n>>>>>>> REPLACE\n<<<<<<< SEARCH\n\tInstance::~Instance()\n\t{\n\t\tRBXASSERT(!parent);\n\t}\n=======\n\tInstance::~Instance()\n\t{\n\t\tInterlockedDecrement(&instanceCount);\n\t}\n>>>>>>> REPLACE\n<<<<<<< SEARCH\n\tInstance::Instance(const char* name)\n\t\t: assoc(),\n\t\t  parent(NULL),\n\t\t  children(),\n\t\t  name(name),\n\t\t  archivable(true)\n\t{\n\t}\n=======\n\tInstance::Instance(const char* name)\n\t\t: assoc(),\n\t\t  parent(NULL),\n\t\t  children(),\n\t\t  name(name),\n\t\t  archivable(true)\n\t{\n\t\tInterlockedIncrement(&instanceCount);\n\t}\n>>>>>>> REPLACE\n<<<<<<< SEARCH\n\tInstance::Instance()\n\t\t: assoc(),\n\t\t  parent(NULL),\n\t\t  children(),\n\t\t  name(\"Instance\"),\n\t\t  archivable(true)\n\t{\n\t}\n=======\n\tInstance::Instance()\n\t\t: assoc(),\n\t\t  parent(NULL),\n\t\t  children(),\n\t\t  name(\"Instance\"),\n\t\t  archivable(true)\n\t{\n\t\tInterlockedIncrement(&instanceCount);\n\t}\n>>>>>>> REPLACE\n",
+      "evidence_file": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372\\partial-handoff\\InstanceLifetime\\Instance.evidence.json",
+      "source_sha256": "167521c8afc572c142c541f94c02edab14626309d867a17a343234e399507da1",
+      "object_sha256": "dab37cf1f9641770ee2f337e07fd57b7bf2884110f9dbbf6cb03be19464daf2b",
+      "lost": [],
+      "remaining_diff": "--- target\n+++ rebuilt\n@@ -28,8 +28,8 @@\n call dword ptr [sym]\n-mov edi, dword ptr [esi + 0x10c]\n-xor ebx, ebx\n+mov ebx, dword ptr [esi + 0x10c]\n+xor edi, edi\n mov byte ptr [esp + 0x1c], 0xa\n-cmp edi, ebx\n+cmp ebx, edi\n je X\n-lea eax, [edi + 4]\n+lea eax, [ebx + 4]\n or ecx, 0xffffffff\n@@ -37,7 +37,7 @@\n jne X\n-mov edx, dword ptr [edi]\n+mov edx, dword ptr [ebx]\n mov eax, dword ptr [edx + 4]\n-mov ecx, edi\n+mov ecx, ebx\n call eax\n-lea ecx, [edi + 8]\n+lea ecx, [ebx + 8]\n or edx, 0xffffffff\n@@ -45,5 +45,5 @@\n jne X\n-mov eax, dword ptr [edi]\n+mov eax, dword ptr [ebx]\n mov edx, dword ptr [eax + 8]\n-mov ecx, edi\n+mov ecx, ebx\n call edx\n@@ -52,94 +52,5 @@\n call sym\n-mov eax, dword ptr [esi + 0xd4]\n-cmp eax, ebx\n-je X\n-push eax\n...",
+      "next_evidence": "All three Instance targets now server-integrated by other-worker receipts; do not retry archived partials. See research/native-instance-order-sol-20261029.json.",
+      "baseline_evidence_file": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372\\partial-handoff\\InstanceLifetime\\baseline-evidence.txt",
+      "candidate_source_file": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372\\partial-handoff\\InstanceLifetime\\Instance.cpp",
+      "previous_candidate": {
+        "blocks_file": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372\\partial-handoff\\instance-count.txt",
+        "evidence_file": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372\\partial-handoff\\Instance\\Instance.evidence.json",
+        "source_sha256": "c687a11d8e64f64f3baa440f9bc3e9ecef663e0195f2e890316c785781212103",
+        "object_sha256": "3280ecfe2cdfa464febc4eefeb73893727ab1b64c4991d593d8702cd9d95f0a6",
+        "candidate_source_file": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372\\partial-handoff\\Instance\\Instance.cpp"
+      },
+      "related_addresses": [
+        "0055b7e0",
+        "0055b960"
+      ],
+      "related_diffs": {
+        "0055b7e0": "--- target\n+++ rebuilt\n@@ -10,11 +10,8 @@\n mov esi, ecx\n-xor eax, eax\n-mov dword ptr [esi + 0xe4], eax\n push edi\n+lea ecx, [esi + 8]\n mov dword ptr [esp + 0x14], esi\n-mov dword ptr [esi + 0xe8], eax\n-lea ecx, [esi + 8]\n-mov dword ptr [esp + 0x20], eax\n-mov byte ptr [esi + 4], al\n+mov dword ptr [esi], sym\n call sym\n+mov dword ptr [esp + 0x20], 0\n mov dword ptr [esi + 0x10], sym\n@@ -22,3 +19,3 @@\n mov ecx, edi\n-mov byte ptr [esp + 0x20], 2\n+mov byte ptr [esp + 0x20], 1\n call sym\n@@ -26,3 +23,3 @@\n mov ecx, ebp\n-mov byte ptr [esp + 0x20], 3\n+mov byte ptr [esp + 0x20], 2\n call sym\n@@ -30,16 +27,19 @@\n mov ecx, ebx\n+mov byte ptr [esp + 0x20], 3\n+call sym\n+lea ecx, [esi + 0x64]\n mov byte ptr [esp + 0x20], 4\n call sym\n-lea ecx, [esi + 0x64]\n+lea ecx, [esi + 0x84]\n mov byte ptr [esp + 0x20], 5\n call sym\n-lea ecx, [esi + 0x84]\n+lea ecx, [esi + 0xa4]\n...",
+        "0055b960": "--- target\n+++ rebuilt\n@@ -10,11 +10,8 @@\n mov esi, ecx\n-xor eax, eax\n-mov dword ptr [esi + 0xe4], eax\n push edi\n+lea ecx, [esi + 8]\n mov dword ptr [esp + 0x14], esi\n-mov dword ptr [esi + 0xe8], eax\n-lea ecx, [esi + 8]\n-mov dword ptr [esp + 0x20], eax\n-mov byte ptr [esi + 4], al\n+mov dword ptr [esi], sym\n call sym\n+mov dword ptr [esp + 0x20], 0\n mov dword ptr [esi + 0x10], sym\n@@ -22,3 +19,3 @@\n mov ecx, edi\n-mov byte ptr [esp + 0x20], 2\n+mov byte ptr [esp + 0x20], 1\n call sym\n@@ -26,3 +23,3 @@\n mov ecx, ebp\n-mov byte ptr [esp + 0x20], 3\n+mov byte ptr [esp + 0x20], 2\n call sym\n@@ -30,16 +27,19 @@\n mov ecx, ebx\n+mov byte ptr [esp + 0x20], 3\n+call sym\n+lea ecx, [esi + 0x64]\n mov byte ptr [esp + 0x20], 4\n call sym\n-lea ecx, [esi + 0x64]\n+lea ecx, [esi + 0x84]\n mov byte ptr [esp + 0x20], 5\n call sym\n-lea ecx, [esi + 0x84]\n+lea ecx, [esi + 0xa4]\n..."
+      },
+      "resolved": true,
+      "candidate_superseded": true,
+      "resolution_jobs": [
+        "957f8ed5ec114d20943bae0f124beb02",
+        "8b56d5e04a834b98b91b949ac79b3c48"
+      ]
+    },
+    {
+      "client": "2008-06",
+      "address": "0060a490",
+      "file": "App/v8datamodel/Feature.cpp",
+      "accepted": false,
+      "status": "accepted_native_partial",
+      "base_revision": "1bdb79fe90687dcb370787300ab8604415a33e0aa1809842c813250a4015e79a",
+      "blocks_file": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372\\partial-handoff\\feature-blocks.txt",
+      "blocks": "<<<<<<< SEARCH\n\t\t\t// for some reason local is being taken as operator*'s LHS\n\t\t\t// and not part->getCoordinateFrame()\n\t\t\tG3D::CoordinateFrame local = computeLocalCoordinateFrame();\n\t\t\tc = part->getCoordinateFrame()*local;\n=======\n\t\t\tc = part->getCoordinateFrame()*computeLocalCoordinateFrame();\n>>>>>>> REPLACE\n",
+      "evidence_file": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372\\partial-handoff\\Feature\\Feature.evidence.json",
+      "source_sha256": "6776dd9467099e12492b4e84497fe83dc7bbbfceb42a0f95499b351083cf8243",
+      "object_sha256": "e30032cb5a84f62dcee979b31cb4045e221e924f452e09f8808348405c79f943",
+      "lost": [],
+      "remaining_diff": "--- target\n+++ rebuilt\n@@ -15,10 +15,9 @@\n je X\n-lea ecx, [esp + 8]\n-push ecx\n+lea eax, [esp + 8]\n+push eax\n mov ecx, esi\n call sym\n-lea edx, [esp + 8]\n-push edx\n-lea eax, [esp + 0x3c]\n push eax\n+lea ecx, [esp + 0x3c]\n+push ecx\n mov ecx, edi",
+      "next_evidence": "Direct part->getCoordinateFrame()*computeLocalCoordinateFrame() fixes call scheduling; only seven-instruction address/register region remains different. Target recomputes local address in EDX; compiler reuses returned EAX. Explicit member-wise world copy regressed stack and store order. No exact credit.",
+      "baseline_evidence_file": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372\\partial-handoff\\Feature\\baseline-evidence.txt",
+      "candidate_source_file": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372\\partial-handoff\\Feature\\Feature.cpp",
+      "adopted": true,
+      "exact": false,
+      "server_job": "a442dca5cbb547d3951f2e3413fff6b6"
+    }
+  ],
+  "accepted_native_batch": {
+    "job": "0e9e29d062944c2195b02e71d3218e3f",
+    "accepted": true,
+    "local_owned_gain": 26,
+    "local_owned_losses": 0,
+    "submitted_files": 11,
+    "classes": 9,
+    "preflight_receipt": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372\\work\\native-try\\submit\\linked-preflight-1793235878955077800\\preflight-receipt.json",
+    "remaining_proposals": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372\\work\\native-try\\proposals.json",
+    "server_credits": 22,
+    "server_losses": 0,
+    "owned_before": 3271,
+    "owned_after": 3293,
+    "distinct_before": 9937,
+    "distinct_after": 9959,
+    "server_receipt": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372\\partial-handoff\\accepted-native-batch.json"
+  },
+  "rejected_profiles": {
+    "nonempty": 88,
+    "index_int_size_t": 55,
+    "ternary": 20,
+    "notifier_destructor_forceinline": "No improvement; no losses. Original header restored.",
+    "whole_tu_osize": 166,
+    "runservice_emission": 8,
+    "noautoinline": 164
+  },
+  "accepted_native_batches": [
+    {
+      "job": "0e9e29d062944c2195b02e71d3218e3f",
+      "accepted": true,
+      "local_owned_gain": 26,
+      "local_owned_losses": 0,
+      "submitted_files": 11,
+      "classes": 9,
+      "preflight_receipt": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372\\work\\native-try\\submit\\linked-preflight-1793235878955077800\\preflight-receipt.json",
+      "remaining_proposals": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372\\work\\native-try\\proposals.json",
+      "server_credits": 22,
+      "server_losses": 0,
+      "owned_before": 3271,
+      "owned_after": 3293,
+      "distinct_before": 9937,
+      "distinct_after": 9959,
+      "server_receipt": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372\\partial-handoff\\accepted-native-batch.json"
+    },
+    {
+      "job": "6fe1e88b9ac947f1b2cb7752944c43ab",
+      "accepted": true,
+      "local_exact_witnesses": 9,
+      "local_owned_gain": 10,
+      "local_owned_losses": 0,
+      "submitted_files": [
+        "App/v8datamodel/PartInstance.cpp",
+        "App/v8datamodel/custommesh.cpp"
+      ],
+      "classes": 2,
+      "preflight_receipt": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372\\work\\native-try\\submit\\linked-preflight-1793237691169576500\\preflight-receipt.json",
+      "server_credits": 10,
+      "server_losses": 0,
+      "owned_before": 3293,
+      "owned_after": 3303,
+      "distinct_before": 9959,
+      "distinct_after": 9969,
+      "server_receipt": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372\\partial-handoff\\accepted-native-batch-6fe1e88b.json"
+    },
+    {
+      "job": "a442dca5cbb547d3951f2e3413fff6b6",
+      "accepted": true,
+      "exact_target": "005ad000",
+      "partial_target": "0060a490",
+      "submitted_files": [
+        "App/script/ScriptContext.cpp",
+        "App/v8datamodel/Feature.cpp"
+      ],
+      "classes": 2,
+      "proofs": [
+        "work/native-try/objects/39b18088104adf0d8b6f/ScriptContext.evidence.json",
+        "work/native-try/objects/6085d636d8c8fb03f77a/Feature.evidence.json"
+      ],
+      "combined_verification": "Independent server accepted;1 exact credit,0 losses;Feature partial adopted.",
+      "server_credits": 1,
+      "server_losses": 0,
+      "server_receipt": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372\\partial-handoff\\accepted-native-batch-a442dca5.json",
+      "partial_adopted": true
+    },
+    {
+      "job": "c13640743d614ab99833830c9b3f3078",
+      "accepted": true,
+      "server_credits": 3,
+      "server_losses": 0,
+      "exact_targets": [
+        "005a5200",
+        "005a5710",
+        "005a59e0"
+      ],
+      "server_receipt": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372\\partial-handoff\\accepted-native-batch-c1364074.json",
+      "distinct_before": 10003,
+      "distinct_after": 10006,
+      "submitted_files": [
+        "App/v8datamodel/Workspace.cpp"
+      ],
+      "classes": 1,
+      "carrier_unit": "RBX::Soundscape::SoundService"
+    }
+  ],
+  "total_server_verified_gains": 36,
+  "scoped_osize_local_exact": "005ad000",
+  "last_updated": "2026-10-29",
+  "workspace_profiling_followup": "C:\\Users\\colin\\RoConstruct\\research\\native-workspace-profiling-sol-20261029.json"
+}

@@ -1,10 +1,10 @@
 {
-  "updated": "2026-10-29 12:28 UTC",
+  "updated": "2026-10-29 13:35 UTC",
   "clients": {
     "2008-06": {
       "phase": "6",
       "phaseLabel": "Link closure",
-      "overall": 0.2473,
+      "overall": 0.2376,
       "bars": {
         "compiled": {
           "value": 18,
@@ -12,18 +12,18 @@
           "label": "Modules reporting"
         },
         "linked": {
-          "value": 16,
+          "value": 15,
           "total": 18,
           "label": "Modules linked"
         },
         "exact": {
-          "value": 10186,
+          "value": 9787,
           "total": 41196,
           "label": "Byte-exact functions"
         },
         "unresolved": {
-          "value": 5,
-          "total": 5,
+          "value": 21,
+          "total": 21,
           "label": "Unresolved symbols",
           "invert": true
         },
@@ -114,11 +114,11 @@
         },
         {
           "name": "Ogre",
-          "linked": true,
-          "test": 0,
-          "exact": 891,
-          "objectFunctions": 388748,
-          "unresolved": 0
+          "linked": false,
+          "test": null,
+          "exact": 564,
+          "objectFunctions": 41795,
+          "unresolved": 16
         },
         {
           "name": "RakNet",

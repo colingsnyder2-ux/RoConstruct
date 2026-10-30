@@ -1591,7 +1591,7 @@ def pull_files(server, client, token=None, force=False, log=print):
     starts = match.function_starts(client)
     rows = [r for r in rows if re.fullmatch(r"[0-9a-f]{8}", r["addr"])
             and (starts is None or r["addr"] in starts)]
-    match.save_scores(client, {r["addr"]: r["score"] for r in rows})
+    match.save_scores(client, {r["addr"]: r["score"] for r in rows}, authoritative=True)
     for r in rows:
         path = folder / ("%s.cpp" % r["addr"])
         if path.exists() and not force:

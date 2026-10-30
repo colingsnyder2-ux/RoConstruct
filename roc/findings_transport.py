@@ -9,7 +9,7 @@ import tempfile
 import uuid
 
 
-def publish_downloads(root, git_exe, log=print):
+def publish_downloads(root, git_exe, log=print, guide_base=None):
     """Publish only reviewed native Worker assets, preserving the remote findings tree."""
     root = Path(root)
     folder = root / 'local/findings/data'
@@ -28,6 +28,11 @@ def publish_downloads(root, git_exe, log=print):
     try:
         git('fetch', 'findings', 'refs/heads/main:refs/remotes/findings/main')
         parent = git('rev-parse', 'refs/remotes/findings/main')
+        if guide_base:
+            for name in ('NATIVE_AGENT.md', 'MATCHING_AGENT.md'):
+                path = ':data/' + name
+                if git('rev-parse', parent + path) != git('rev-parse', guide_base + path):
+                    raise ValueError('Agent guide advanced; fetch and merge latest ' + name + ' before publishing')
         git('read-tree', parent)
         for name in files:
             blob = git('hash-object', '-w', '--', str(folder / name))

@@ -106,12 +106,14 @@
   "tools/rbxgs/Client/App/lua-5.1.1/src",
   "tools/rbxgs/Client/Rendering/SDL-1.2.6/include",
   "tools/rbxgs/Client/RbxViewBase",
-  "tools/rbxgs/Client/RbxView"
+  "tools/rbxgs/Client/RbxView",
+  "rebuild/2008-06/out/RbxgsApp/force"
  ],
  "test_defines": "WIN32 NDEBUG _LIB _RELEASE _RELEASEASSERT BOOST_ALL_NO_LIB",
  "overlay": {
   "root": "tools/rbxgs/Client",
   "patches": "rebuild/2008-06/patches/rbxgs-client.json"
  },
- "verified": true
+ "verified": true,
+ "force_verified": true
 }

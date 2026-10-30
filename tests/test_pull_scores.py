@@ -23,7 +23,7 @@ def test_pull_merges_valid_scores_once_and_preserves_handwritten_source(tmp_path
     monkeypatch.setattr(worker, 'Api', lambda *a: SimpleNamespace(
         call=lambda *a, **kw: rows, close=lambda: closed.append(True)))
     monkeypatch.setattr(match, 'function_starts', lambda *a: {'00500000', '00500001'})
-    monkeypatch.setattr(match, 'save_scores', lambda client, scores: batches.append((client, scores)))
+    monkeypatch.setattr(match, 'save_scores', lambda client, scores, **kw: batches.append((client, scores, kw)))
     monkeypatch.setattr(match, 'save_score', lambda *a: (_ for _ in ()).throw(AssertionError('per-row score IO')))
     monkeypatch.setattr(match, 'template', lambda *a: '// target\n\nvoid old() {}')
     folder = tmp_path / 'src/C'
@@ -31,7 +31,7 @@ def test_pull_merges_valid_scores_once_and_preserves_handwritten_source(tmp_path
     (folder / '00500000.cpp').write_text('handwritten work')
     worker.pull_files('http://test', 'C', log=lambda *a: None)
     assert closed == [True]
-    assert batches == [('C', {'00500000': 100, '00500001': 100})]
+    assert batches == [('C', {'00500000': 100, '00500001': 100}, {'authoritative': True})]
     assert (folder / '00500000.cpp').read_text() == 'handwritten work'
     assert 'return 42' in (folder / '00500001.cpp').read_text()
     assert not (folder / '00500002.cpp').exists()

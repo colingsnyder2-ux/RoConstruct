@@ -19,7 +19,9 @@ from roc import match  # noqa: E402
 CLIENT = "2008-06"
 RECIPES = {"RbxgsApp": {"rbxgs", "rbxgs-dll"}, "RbxApp": {"openrbx-client", "openrbx-client-dll"}}
 RECIPE_PREFIXES = {"XTP": ("xtp-11.2.2",), "G3D": ("g3d-6.09",), "Boost": ("boost-1.34.1",), "libpng": ("libpng-1.2",),
-                   "Lua": ("lua-5.1",)}
+                   "Lua": ("lua-5.1",), "Ogre": ("ogre-",),
+                   "MfcAtl": ("mfc-9.0", "atl-"), "BoostExtra": ("boost-1.35", "boost-1.36", "boost-1.40"),
+                   "CodegenAnalogs": ("wildmagic-2-core", "templates-")}
 
 
 def of_module(module, recipe):
@@ -46,9 +48,15 @@ def adopted(module):
     return out
 
 
-def compatible(module, unit):
+def compatible(module, unit, recipe=None):
+    if module == "CodegenAnalogs":
+        return True  # isolated analog module makes no claim of native header compatibility
     if not unit.rsplit("/", 1)[-1].startswith("roc_"):
         return True
+    if module in ("Ogre", "MfcAtl", "BoostExtra"):  # no adopted headers: a unit written against the real library headers (no private copies) fits
+        from roc import libs
+        src = libs.LIBS / libs.RECIPES[recipe]["src"] / unit
+        return src.exists() and not ALIAS.search(src.read_text(errors="replace"))
     src = TREES.get(module, Path("-")) / unit
     if not src.exists():
         return False
@@ -95,7 +103,12 @@ def compile_against_overlay(module, item, n):
 # The modules link against the DLL CRT (/MD). A group mining verified with a recipe that leaves _DLL undefined (static
 # CRT headers) carries inline STL/CRT code with another ABI (CRT data not imported, e.g. std::_BADOFF): recompile it with
 # its _DLL twin and keep only what is still byte-exact.
-DLL_TWIN = {"rbxgs": "rbxgs-dll", "openrbx-client": "openrbx-client-dll"}
+DLL_TWIN = {"rbxgs": "rbxgs-dll", "openrbx-client": "openrbx-client-dll",
+            # _DLL alone makes MFC reject /MD; the rebuild imports release MFC 9.0 RTM.
+            "xtp-11.2.2": "xtp-11.2.2-shared-mfc-rtm",
+            "xtp-11.2.2-dll": "xtp-11.2.2-shared-mfc-rtm",
+            "xtp-11.2.2-rtm": "xtp-11.2.2-shared-mfc-rtm",
+            "xtp-11.2.2-dll-rtm": "xtp-11.2.2-shared-mfc-rtm"}
 
 
 def libs_recipes():
@@ -105,6 +118,8 @@ def libs_recipes():
 
 def build_group(job):
     module, n, item = job
+    item = dict(item)
+    item["results"] = []
     text = (ROOT / "src" / CLIENT / (item["addrs"][0] + ".cpp")).read_text(errors="replace")
     twin = DLL_TWIN.get(item["recipe"])
     if twin is None and "_DLL" not in libs_recipes().get(item["recipe"], {}).get("defines", "")             and item["recipe"] + "-dll" in libs_recipes():
@@ -120,7 +135,13 @@ def build_group(job):
         return item, [], str(error)[:300]
     keep = {}
     for addr in item["addrs"]:
-        value, symbol, _, _ = match.check_text(CLIENT, addr, text, obj=obj)
+        value, symbol, reason, _ = match.check_text(CLIENT, addr, text, obj=obj, minimum=99)
+        item["results"].append({"address": addr, "score": value, "symbol": symbol,
+                                "reason": str(reason)[:3000] if value != 100 else "exact",
+                                "cause": "exact" if value == 100 else
+                                "not exact after _DLL twin recompile" if twin else
+                                "not exact against module headers" if item.get("overlay") else "not exact",
+                                "dll_twin": twin})
         if value == 100 and symbol:
             keep.setdefault(symbol, addr)
     return item, [(obj, keep)] if keep else [], None
@@ -132,14 +153,16 @@ def main(module, limit=None):
     # is a header the module adopted with that same replacement (Phase 4 canonical headers)
     # is a header the module adopted with that same replacement (Phase 4 canonical headers); one that disagrees is
     # compiled against the module's overlay headers instead (compile_against_overlay)
-    groups = []
+    groups, rejected = [], []
     for g in plan["groups"]:
         if not of_module(module, g["recipe"]):
             continue
-        if compatible(module, g["file"]):
+        if compatible(module, g["file"], g["recipe"]):
             groups.append(g)
         elif overlay_candidate(module, g["file"]):
             groups.append(dict(g, overlay=True))
+        else:
+            rejected.append(dict(g, cause="header incompatibility"))
     groups = groups[:limit]
     # Build beside the live layer and swap folders at the end: the native verifier snapshots out/<Module>/verified,
     # so it must never see a half-written layer.
@@ -148,12 +171,13 @@ def main(module, limit=None):
     if folder.exists():
         shutil.rmtree(folder)
     folder.mkdir(parents=True)
-    swaps, failed, wanted, found = [], [], 0, 0
+    swaps, failed, results, wanted, found = [], [], [], 0, 0
     with ThreadPoolExecutor(8) as pool:
         for n, (item, objs, error) in enumerate(pool.map(build_group, [(module, i, g) for i, g in enumerate(groups)])):
             wanted += len(item["addrs"])
+            results.append(item)
             if error:
-                failed.append({"file": item["file"], "cl": item["cl"], "flags": item["flags"], "error": error})
+                failed.append(dict(item, error=error))
                 continue
             for k, (obj, keep) in enumerate(objs):
                 found += len(set(keep.values()))
@@ -161,6 +185,9 @@ def main(module, limit=None):
                 (folder / name).write_bytes(obj)
                 swaps.append({"obj": name, "recipe": item["recipe"], "file": item["file"], "keep": keep})
     (folder / "swaps.json").write_text(json.dumps({"swaps": swaps, "failed": failed}, indent=1))
+    # Keep diagnostics even when install preserves the stronger live layer.
+    (live.parent / "swap-results.json").write_text(json.dumps({"groups": results, "rejected": rejected,
+                                                              "failed": failed}, indent=1))
     print("%s: %d groups, %d/%d addresses found exact, %d groups failed to compile"
           % (module, len(groups), found, wanted, len(failed)))
     print(install(live, folder))

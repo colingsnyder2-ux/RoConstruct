@@ -41,6 +41,8 @@ WORKER_MODULES += ["bounds_proof", "agent_memory", "research", "agent_recovery",
 WORKER_MODULES += ["integration", "integrator", "rebuild", "rebuild_install", "mutsearch", "twinpatch", "native_try", "native_sweep", "native_batch", "standins"]
 WORKER_MODULES += ["integration_verify", "native_search", "native_transforms", "native_promotions"]  # contributor linked preflight shares authoritative build/gates
 WORKER_MODULES += ["native_repair"]
+WORKER_MODULES += ["integration_local", "integration_context", "integration_policy", "integration_audit", "native_adapt", "native_refs"]
+WORKER_MODULES += ["rebuild_audit"]
 SERVER_MODULES += ["integration_notify", "integration_site"]
 
 COMMON_FILES = ["roc.py", "roc.cmd", "roc.sh", "install.cmd", "install.sh",
@@ -55,7 +57,8 @@ COMMON_FILES = ["roc.py", "roc.cmd", "roc.sh", "install.cmd", "install.sh",
                 "clients/clients.json", "clients/sources.json", "clients/donor.json"]
 # Native contributors need trusted recipes/generator, never private vendor trees.
 COMMON_FILES += ["docs/INTEGRATION.md", "docs/INTEGRATOR_PERFORMANCE.md", "benchmarks/native_compile_batches.py", "benchmarks/native_matcher.py", "docs/NATIVE_AGENT.md", "docs/MATCHING_AGENT.md", "research/libs-bundle.json", "research/native-units.json", "research/native-source-lock.json"]
-COMMON_FILES += ["benchmarks/native_search.py"]
+COMMON_FILES += ["benchmarks/native_search.py", "benchmarks/integration_local.py"]
+COMMON_FILES += ["docs/NATIVE_INTEGRATION_WORKFLOW.md"]
 COMMON_FILES += subprocess.check_output(["git", "ls-files", "rebuild/2008-06"],
                                         cwd=ROOT, text=True).splitlines()
 
@@ -262,6 +265,11 @@ def verify(staged):
     run = subprocess.run([sys.executable, "-c", code], cwd=staged, capture_output=True, text=True)
     if run.returncode:
         raise SystemExit("package does not import:\n%s" % (run.stderr.strip() or run.stdout.strip()))
+    help_run = subprocess.run([sys.executable, "roc.py", "integrate", "--help"],
+                              cwd=staged, capture_output=True, text=True)
+    if help_run.returncode or not all(action in help_run.stdout for action in
+                                      ("next", "context", "check", "submit")):
+        raise SystemExit("package lacks required native integration CLI actions")
     return run.stdout.strip()
 
 

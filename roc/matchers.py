@@ -9,7 +9,7 @@ import shutil
 import struct
 import subprocess
 from bisect import bisect_left
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import ThreadPoolExecutor, as_completed, wait, FIRST_COMPLETED
 from pathlib import Path
 
 from roc import clients, fingerprint, match, setup
@@ -435,7 +435,7 @@ def _fingerprint():
 
 
 def matched_sources(log=print, exact_only=False, client_names=None, allowed_sizes=None,
-                    allowed_shapes=None):
+                    allowed_shapes=None, twin_targets=None, libraries_only=False, source_server=None):
     """[(body, [(origin client, addr), ...])] for every stored match, deduped by body text.
 
     The template header (disassembly comments) is dropped: it names the origin client
@@ -443,12 +443,18 @@ def matched_sources(log=print, exact_only=False, client_names=None, allowed_size
     trivial function is often stored under many addresses."""
     groups = {}
     registry = clients.load()
+    twin_keys = set()
+    for client in twin_targets or ():
+        for addrs in _fingerprint().open_index(client).values():
+            for addr in addrs:
+                code, relocs, _ = match.target(client, addr)
+                twin_keys.add(hashlib.sha256(match.masked(code, relocs)).digest())
     for client in sorted(client_names or registry):
         folder = ROOT / "src" / client
-        if not folder.is_dir():
+        if not source_server and not folder.is_dir():
             continue
         scores = {}
-        if exact_only:
+        if exact_only and not source_server:
             try:
                 scores = json.loads((ROOT / "work" / client / "scores.json").read_text())
             except (OSError, ValueError):
@@ -460,16 +466,57 @@ def matched_sources(log=print, exact_only=False, client_names=None, allowed_size
                   and (allowed_sizes is None or metadata.get(addr, {}).get("size") in allowed_sizes)
                   and (allowed_shapes is None or metadata.get(addr, {}).get("shape") in allowed_shapes)]
                  if exact_only else folder.glob("*.cpp"))
-        for path in sorted(path for path in paths if path.exists()):
-            text = path.read_text(errors="replace")
+        def inputs():
+            if not source_server:
+                for path in sorted(path for path in paths if path.exists()):
+                    yield path.stem, path.read_text(errors="replace")
+                return
+            from roc import worker
+            api = worker.Api(source_server, worker.load_settings().get("token"))
+            after = ""
+            count = 0
+            try:
+                while True:
+                    rows = api.call("/v1/source-page?client=%s&after=%s&limit=1000" % (client, after), timeout=120)
+                    if not rows:
+                        break
+                    for row in rows:
+                        if exact_only and row["score"] != 100:
+                            continue
+                        if allowed_sizes is not None and metadata.get(row["addr"], {}).get("size") not in allowed_sizes:
+                            continue
+                        if allowed_shapes is not None and metadata.get(row["addr"], {}).get("shape") not in allowed_shapes:
+                            continue
+                        yield row["addr"], row["source"].replace("\r\n", "\n")
+                    after = rows[-1]["addr"]
+                    count += len(rows)
+                log("  %s: %d authoritative sources read" % (client, count))
+            finally:
+                api.close()
+
+        for addr, text in inputs():
+            if twin_targets:
+                code, relocs, _ = match.target(client, addr)
+                if hashlib.sha256(match.masked(code, relocs)).digest() not in twin_keys:
+                    continue
             header, separator, body = text.partition("\n\n")
-            body = (body if separator and not match.directives(header) else text).strip()
+            comment_header = all(not line.strip() or line.lstrip().startswith("//")
+                                 for line in header.splitlines())
+            body = (body if separator and comment_header and not match.directives(header) else text).strip()
             if not body:
                 continue
+            settings = match.directives(body)
+            native = {"lib", "archive"}.intersection(settings)
+            if libraries_only and not native:
+                continue
+            if native and all(not line.strip() or (line.lstrip().startswith("//") and
+                              not line.rstrip().endswith("\\")) for line in body.splitlines()):
+                body = "\n".join("// roc-%s: %s" % (key, settings[key])
+                                 for key in ("lang", "cl", "flags", "lib", "archive") if key in settings)
             key = hashlib.sha256(body.encode()).hexdigest()
             if key not in groups:
                 groups[key] = (body, [])
-            groups[key][1].append((client, path.stem))
+            groups[key][1].append((client, addr))
     out = [v for v in groups.values()]
     log("%d distinct matched source(s) from %d client(s)" %
         (len(out), len(client_names or registry)))
@@ -487,12 +534,13 @@ def needs_global_scope(body):
     headers fail with "fpos_t is not a member of global namespace" because their
     using-declarations land in the wrong namespace. C has no namespaces at all. These
     get one translation unit each instead."""
-    return _lang(body) == "c" or "#include" in body or bool(match.directives(body))
+    return (_lang(body) == "c" or "#include" in body or bool(match.directives(body))
+            or bool(TAG.search(body)) or bool(re.search(r"\boperator\s+(?:new|delete)\b", body)))
 
 
 def _build_of(body, origins, reg):
     """Which compiler produced these bytes: the library's own directive if it has one,
-    else the client it was matched in. A copy can only reach a client sharing it."""
+    else the client it was matched in. Other builds may still reproduce the function."""
     declared = match.directives(body).get("cl", "")
     if declared.isdigit():
         return int(declared)
@@ -508,8 +556,8 @@ def _order(clients, target, reg):
 
     Own sources come first on purpose: re-verifying them is what recovers a client
     whose scores.json was lost, and it is also the cheapest way to be sure the pool
-    reflects what is actually stored. Same-compiler sources are next because those are
-    the only ones that can reproduce identical bytes."""
+    reflects what is actually stored. Same-compiler sources are next because they
+    avoid compiler drift; other compiler families are still eligible."""
     build = reg[target].get("compiler_build")
     own, same, other = [], [], []
     for body, origins in clients:
@@ -539,7 +587,8 @@ def _batch_cpp(clients):
     snippets = []
     for i, (body, _origins) in enumerate(clients):
         tag = "ROCX%06x" % i
-        snippets.append((tag, "namespace ns_%s {\n%s\n}\n" % (tag, FUNC.sub("fn_%s" % tag, body))))
+        snippets.append((tag, "namespace ns_%s {\n%s\n}\n" %
+                         (tag, FUNC.sub(lambda m: "fn_%s_%s" % (tag, m.group(0)[5:]), body))))
     return "\n\n".join(text for _tag, text in snippets), dict(snippets)
 
 
@@ -547,7 +596,7 @@ def _batch_alone(source):
     """One candidate in its own translation unit: needed for C, and for anything that
     includes a system header."""
     tag = "ROCX000000"
-    return FUNC.sub("fn_%s" % tag, source), {tag: source}
+    return FUNC.sub(lambda m: "fn_%s_%s" % (tag, m.group(0)[5:]), source), {tag: source}
 
 
 def _match_batch(target, obj, sources_by_tag, client):
@@ -563,7 +612,9 @@ def _match_batch(target, obj, sources_by_tag, client):
             source = next(iter(sources_by_tag.values()))
         else:
             continue
-        for addr in target.index.get(len(code), []):
+        candidates = (target.candidates(code, relocs) if hasattr(target, "candidates")
+                      else target.index.get(len(code), []))
+        for addr in candidates:
             if addr in found:
                 continue
             exe = target.same(addr, code, relocs)
@@ -622,34 +673,129 @@ def compile_batch(target, clients, reg, log):
     return out
 
 
+def twin_candidates(client, sources, probe, reg=None):
+    """Shortlist donors by normalized binary identity; compilation still proves reuse."""
+    keys = set()
+    for addrs in probe.index.values():
+        for addr in addrs:
+            code, relocs, _ = match.target(client, addr)
+            keys.add(hashlib.sha256(match.masked(code, relocs)).digest())
+    found = []
+    seen = set()
+    for source, origins in sources:
+        twins = []
+        for donor, addr in origins:
+            if donor == client:
+                continue
+            code, relocs, _ = match.target(donor, addr)
+            if hashlib.sha256(match.masked(code, relocs)).digest() in keys:
+                twins.append(donor)
+        if not twins:
+            continue
+        variants = [source]
+        if reg:
+            settings = match.directives(source)
+            for donor in twins:
+                build = settings.get("cl") or str(reg[donor]["compiler_build"])
+                flags = settings.get("flags") or reg[donor].get("flags") or match.DEFAULT_FLAGS
+                if (build, flags) == (settings.get("cl") or str(reg[client]["compiler_build"]),
+                                      settings.get("flags") or reg[client].get("flags") or match.DEFAULT_FLAGS):
+                    continue
+                prelude = ("// roc-cl: %s\n" % build if "cl" not in settings else "")
+                prelude += ("// roc-flags: %s\n" % flags if "flags" not in settings else "")
+                variants.append(prelude + source)
+        for body in variants:
+            key = hashlib.sha256(body.encode()).digest()
+            if key not in seen:
+                seen.add(key)
+                found.append((body, origins))
+    return found
+
+
+def native_fanout(targets, sources, reg, jobs, retarget, cross_only, dry_run, limit, log):
+    """Compile complete native objects once, then reuse them across every destination."""
+    probes = {client: _fingerprint().Target(client) for client in targets}
+    counts = {client: 0 for client in targets}
+    variants = {}
+    for body, origins in sources:
+        settings = match.directives(body)
+        origin = reg[origins[0][0]]
+        body = (("// roc-cl: %s\n" % origin["compiler_build"] if "cl" not in settings else "") +
+                ("// roc-flags: %s\n" % (origin.get("flags") or match.DEFAULT_FLAGS)
+                 if "flags" not in settings else "") + body)
+        variants.setdefault(body, []).extend(origins)
+        if retarget and "lib" in settings:
+            for build in {reg[client]["compiler_build"] for client in targets}:
+                source = "// roc-cl: %s\n%s" % (build, re.sub(r"(?m)^//[ \t]*roc-cl:[^\n]*\n?", "", body))
+                variants.setdefault(source, []).extend(origins)
+    ordered = sorted(variants.items(), key=lambda item: ("roc-archive:" not in item[0], "roc_unit_" in item[0]))
+    pending = iter(ordered[:limit] if limit else ordered)
+    seen = set()
+    checked = set()
+    log("%d native source contexts -> %d clients; each object compiled once" % (len(variants), len(targets)))
+    with ThreadPoolExecutor(max_workers=max(1, jobs)) as pool:
+        queue = {}
+        def enqueue():
+            item = next(pending, None)
+            if item:
+                queue[pool.submit(match.compile_text, targets[0], item[0])] = item
+        for _ in range(max(1, jobs)):
+            enqueue()
+        completed = 0
+        while queue:
+            ready, _ = wait(queue, return_when=FIRST_COMPLETED)
+            for future in ready:
+                body, origins = queue.pop(future)
+                try:
+                    obj = future.result()
+                    key = hashlib.sha256(obj[:4] + obj[8:]).digest()
+                    for client, probe in probes.items():
+                        if (client, key) in checked or (cross_only and all(donor == client for donor, _ in origins)):
+                            continue
+                        hits = _match_batch(probe, obj, {"ROCX000000": body}, client)
+                        if hits:
+                            counts[client] += len(hits)
+                            if not dry_run:
+                                _fingerprint().save(client, hits, "copied from an identical function in another client")
+                            log("%s +%d local exacts (%d total)" % (client, len(hits), counts[client]))
+                        checked.add((client, key))
+                    seen.add(key)
+                except match.CompileError as error:
+                    log("  native source skipped: %s" % str(error).splitlines()[0][:160])
+                completed += 1
+                if completed % 25 == 0:
+                    log("  native contexts %d/%d; distinct objects %d" % (completed, len(variants), len(seen)))
+                enqueue()
+    return {client: (count, 0 if dry_run else count) for client, count in counts.items()}
+
+
 def run(targets=None, log=print, limit=None, dry_run=False, cross_only=False,
-        min_size=0, max_score=99):
+        min_size=0, max_score=99, twins=False, jobs=1, libraries_only=False, retarget=False, source_server=None):
     """Copy stored matches into the given clients (default: all). Returns {client: new}."""
     reg = clients.load()
     targets = [c for c in (targets or sorted(reg)) if c in reg]
     source_clients = None
     if cross_only and len(targets) == 1:
-        build = reg[targets[0]].get("compiler_build")
-        source_clients = [name for name, row in reg.items()
-                          if name != targets[0] and row.get("compiler_build") == build]
+        source_clients = [name for name in reg if name != targets[0]]
     filtering = len(targets) == 1 and (min_size or max_score < 99)
     eligible = {}
     if filtering:
         if source_clients is None:
-            build = reg[targets[0]].get("compiler_build")
-            source_clients = [name for name, row in reg.items()
-                              if row.get("compiler_build") == build]
+            source_clients = list(reg)
         scores = json.loads((ROOT / "work" / targets[0] / "scores.json").read_text())
         eligible = {addr: row.get("size", 0) for addr, row in match._functions(targets[0]).items()
                     if row.get("size", 0) >= min_size and scores.get(addr, 0) <= max_score}
     allowed_shapes = ({row.get("shape") for addr, row in match._functions(targets[0]).items()
                        if addr in eligible and row.get("shape")} if filtering else None)
-    sources = matched_sources(log=log, exact_only=cross_only or filtering, client_names=source_clients,
+    sources = matched_sources(log=log, exact_only=cross_only or filtering or twins, client_names=source_clients,
                               allowed_sizes=set(eligible.values()) if filtering else None,
-                              allowed_shapes=allowed_shapes)
+                              allowed_shapes=allowed_shapes, twin_targets=targets if twins else None,
+                              libraries_only=libraries_only, source_server=source_server)
     if not sources:
         log("Nothing stored to copy yet. Run  roc auto <client>  or match some by hand first.")
         return {}
+    if libraries_only and len(targets) > 1 and not twins and not min_size and max_score == 99:
+        return native_fanout(targets, sources, reg, jobs, retarget, cross_only, dry_run, limit, log)
 
     result = {}
     for target in targets:
@@ -657,8 +803,6 @@ def run(targets=None, log=print, limit=None, dry_run=False, cross_only=False,
         if cross_only:
             cands = [(body, origins) for body, origins in cands
                      if not all(client == target for client, _addr in origins)]
-        if limit:
-            cands = cands[:limit]
         probe = _fingerprint().Target(target)
         if filtering:
             for size in list(probe.index):
@@ -670,14 +814,56 @@ def run(targets=None, log=print, limit=None, dry_run=False, cross_only=False,
             log("%-8s nothing open to match" % target)
             result[target] = (0, 0)
             continue
+        if twins:
+            cands = twin_candidates(target, cands, probe, reg)
+        if retarget:
+            variants = {body: origins for body, origins in cands}
+            for body, origins in cands:
+                settings = match.directives(body)
+                if "lib" in settings and settings.get("cl") != str(reg[target]["compiler_build"]):
+                    text = re.sub(r"(?m)^//[ \t]*roc-cl:[^\n]*\n?", "", body)
+                    variants["// roc-cl: %s\n%s" % (reg[target]["compiler_build"], text)] = origins
+            cands = list(variants.items())
+        if limit:
+            cands = cands[:limit]
         log("%-8s %d candidate source(s) against %d open function(s)" % (target, len(cands), open_before))
 
         found = {}
-        chunks = [cands[i:i + CHUNK] for i in range(0, len(cands), CHUNK)]
-        for n, chunk in enumerate(chunks, 1):
-            for obj, by_tag in compile_batch(target, chunk, reg, log):
-                found.update(_match_batch(probe, obj, by_tag, target))
-            log("  chunk %d/%d: %d new so far" % (n, len(chunks), len(found)))
+        size = min(CHUNK, 32) if jobs > 1 else CHUNK
+        chunks, plain = [], []
+        for candidate in cands:
+            if needs_global_scope(candidate[0]):
+                chunks.append([candidate])
+            else:
+                plain.append(candidate)
+                if len(plain) == size:
+                    chunks.append(plain)
+                    plain = []
+        if plain:
+            chunks.append(plain)
+        pending = iter(chunks)
+        files = 0
+        before = _matched_count(target)
+        with ThreadPoolExecutor(max_workers=max(1, jobs)) as pool:
+            queue = {pool.submit(compile_batch, target, chunk, reg, log)
+                     for chunk in [next(pending, None) for _ in range(max(1, jobs))] if chunk}
+            n = 0
+            while queue:
+                ready, _ = wait(queue, return_when=FIRST_COMPLETED)
+                for future in ready:
+                    queue.remove(future)
+                    hits = {}
+                    for obj, by_tag in future.result():
+                        hits.update(_match_batch(probe, obj, by_tag, target))
+                    found.update(hits)
+                    if hits and not dry_run:
+                        files += _fingerprint().save(target, hits, "copied from an identical function in another client")
+                    n += 1
+                    if hits or n % 25 == 0 or n == len(chunks):
+                        log("  chunk %d/%d: %d new so far" % (n, len(chunks), len(found)))
+                    chunk = next(pending, None)
+                    if chunk:
+                        queue.add(pool.submit(compile_batch, target, chunk, reg, log))
 
         if not found:
             log("%-8s no new matches" % target)
@@ -687,8 +873,6 @@ def run(targets=None, log=print, limit=None, dry_run=False, cross_only=False,
             log("%-8s would verify %d function(s)" % (target, len(found)))
             result[target] = (len(found), 0)
             continue
-        before = _matched_count(target)
-        files = _fingerprint().save(target, found, "copied from an identical function in another client")
         after = _matched_count(target)
         log("%-8s %d verified byte-identical: %d new file(s), matched %d -> %d"
             % (target, len(found), files, before, after))
@@ -810,15 +994,30 @@ def build(targets, log=print):
     pool, named, marked = donor_functions(fetch()), names(), annotations()
     table = json.loads(TABLE.read_text()) if TABLE.exists() else {}
     for client in targets:
-        t, hits = fingerprint.Target(client), {}
+        t, hits, candidates = fingerprint.Target(client), {}, {}
+        # Naming is useful for already-exact snippets too. Target.index normally
+        # excludes them because it is a mining queue, not a symbol inventory.
+        t.index = {}
+        for addr, row in match._functions(client).items():
+            if row.get("kind", "code") == "code":
+                t.index.setdefault(row["size"], []).append(addr)
         for size, addrs in t.index.items():
             for va, code, rel in pool.get(size, ()):
                 if va not in named and va not in marked:
                     continue
                 for addr in addrs:
-                    if addr not in hits and t.same(addr, code, rel) is not None:
+                    if t.same(addr, code, rel) is not None:
                         kind, sym = named.get(va, ("source", ""))
-                        hits[addr] = ["%08x" % va, kind, sym, marked.get(va, "")]
+                        candidates.setdefault(addr, []).append(["%08x" % va, kind, sym, marked.get(va, "")])
+        ambiguous = {}
+        for addr, choices in candidates.items():
+            identities = {c[2] or c[3] for c in choices}
+            if len(identities) == 1:
+                hits[addr] = choices[0]
+            else:
+                ambiguous[addr] = choices
+        ambiguity_path = ROOT / "work" / client / "donor-ambiguous.json"
+        ambiguity_path.write_text(json.dumps(ambiguous, indent=1, sort_keys=True) + "\n")
         table[client] = dict(sorted(hits.items()))
         log("%s: %d functions identical to a named WebService.dll function" % (client, len(hits)))
     TABLE.write_text(json.dumps(table, indent=0, sort_keys=True) + "\n")

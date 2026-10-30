@@ -19,11 +19,11 @@ DEFAULTS = dict(client="", server="", user="", model="", workers=1, rounds=4,
                 max_cloud_tokens=None, max_cloud_cost=None, lease_mode="function",
                 unit_name=None, family_id=None, targets=None, library="",
                 native_batch_files=40, native_compile_workers="auto", native_context="methods", native_generation="auto", native_compile_batch=4,
-                native_repair_rounds=2, native_repair_trials=24)
+                native_selection='balanced', native_escalation_model='', native_escalate_after=2, native_max_no_improvement=3, native_repair_rounds=2, native_repair_trials=24)
 LIVE = {"workers", "model", "rounds", "max_size", "max_tokens", "strategy", "order",
         "thinking", "reasoning_effort", "use_revng", "use_remill", "min_score", "max_score",
         "diverse_candidates", "guided_mutations", "near_repair", "max_cloud_requests",
-        "max_cloud_tokens", "max_cloud_cost", "native_batch_files", "native_compile_workers", "native_context", "native_generation", "native_compile_batch", "native_repair_rounds", "native_repair_trials"}
+        "max_cloud_tokens", "max_cloud_cost", "native_batch_files", "native_compile_workers", "native_context", "native_generation", "native_compile_batch", "native_selection", "native_escalation_model", "native_escalate_after", "native_max_no_improvement", "native_repair_rounds", "native_repair_trials"}
 
 
 def prepare_clients(config, log):
@@ -55,7 +55,7 @@ def validate(values, base=None, check_model=True):
     config = {**DEFAULTS, **(base or {}), **values}
     for key, low, high in (("workers", 1, 256), ("rounds", 1, 100), ("max_size", 0, 1000000),
                            ("native_batch_files", 1, 1024), ("native_compile_workers", 1, 64),
-                           ("native_compile_batch", 1, 32),
+                           ("native_compile_batch", 1, 32), ("native_escalate_after", 1, 99), ("native_max_no_improvement", 1, 100),
                            ("native_repair_rounds", 0, 8), ("native_repair_trials", 1, 256),
                            ("max_tokens", 128, 32768), ("diverse_candidates", 1, 16),
                            ("cloud_concurrency", 1, 256)):
@@ -81,8 +81,20 @@ def validate(values, base=None, check_model=True):
                           ("lease_mode", ("function", "family", "unit", "native"))):
         if config[key] not in choices:
             raise ValueError("Invalid %s" % key)
+    escalation = config['native_escalation_model']
+    if not isinstance(escalation, str):
+        raise ValueError('Invalid escalation model')
+    if config['lease_mode'] == 'native' and escalation:
+        if providers.is_cloud(escalation) and not config['cloud_allowed']:
+            raise ValueError('Cloud consent required for escalation model')
+        if config['max_cloud_cost'] is not None and not providers.has_pricing(escalation):
+            raise ValueError('Escalation model has no USD pricing; use request/token caps')
+        if check_model and not providers.available(escalation):
+            raise ValueError(providers.credential_hint(escalation))
     if config["native_context"] not in ("methods", "file"):
         raise ValueError("Invalid native context")
+    if config['native_selection'] not in ('easy', 'balanced', 'large'):
+        raise ValueError('Invalid native selection')
     if config["native_generation"] not in ("auto", "edits", "method"):
         raise ValueError("Invalid native generation mode")
     if config["lease_mode"] == "native":
@@ -137,7 +149,7 @@ class Control:
         self.paused = self.stopping = False
         self.revision = 1
         self.budget = providers.CloudBudget(config["max_cloud_requests"], config["max_cloud_tokens"], config["max_cloud_cost"])
-        self.cost_known = config["source_only"] or not providers.is_cloud(config["model"]) or providers.has_pricing(config["model"])
+        self.cost_known = (config["source_only"] or not providers.is_cloud(config["model"]) or providers.has_pricing(config["model"])) and (not config["native_escalation_model"] or providers.has_pricing(config["native_escalation_model"]))
         self.applied = {}
         self.started_at = self.last_report = time.monotonic()
         self.completed = self.matched = self.improved = self.errors = 0
@@ -341,11 +353,13 @@ def native_loop(config, control, emit):
             max_files=current["native_batch_files"], context=current["native_context"],
             generation=current["native_generation"],
             compile_batch=current["native_compile_batch"],
-            repair_rounds=current["native_repair_rounds"], repair_trials=current["native_repair_trials"],
+            repair_rounds=current['native_repair_rounds'], repair_trials=current['native_repair_trials'],
+            selection=current['native_selection'], max_no_improvement=current['native_max_no_improvement'],
             target_offset=target_offset, resume_saved=True, rolling_workers=True,
             file_offsets=dict(file_offsets), retry_targets=dict(retry_targets), tried_revision=tried_revision,
             compile_workers=current["native_compile_workers"],
-            provider_options={"allow_cloud": current["cloud_allowed"], "budget": control.budget,
+            provider_options={"escalation_model": current["native_escalation_model"], "escalate_after": current["native_escalate_after"],
+                "allow_cloud": current["cloud_allowed"], "budget": control.budget,
                 "gate": providers.CloudGate(inflight),
                 "max_tokens": 3072 if current["max_tokens"] == "auto" else current["max_tokens"],
                 "thinking": current["thinking"], "reasoning_effort": current["reasoning_effort"] if current["reasoning_effort"] not in (None, "auto") else
@@ -496,7 +510,7 @@ def main(initial=None, receive_commands=True):
             current = dict(control.config)
         options = {key: value for key, value in current.items() if key not in
                    ("workers", "client", "max_cloud_requests", "max_cloud_tokens", "max_cloud_cost", "cloud_concurrency",
-                    "native_batch_files", "native_compile_workers", "native_context", "native_generation", "native_compile_batch", "native_repair_rounds", "native_repair_trials")}
+                    "native_batch_files", "native_compile_workers", "native_context", "native_generation", "native_compile_batch", "native_selection", "native_escalation_model", "native_escalate_after", "native_max_no_improvement", "native_repair_rounds", "native_repair_trials")}
         options.update(token=initial.get("token"), only=[current["client"]] if current["client"] else None,
                        model=current["model"] or None, forever=True, cloud_budget=control.budget, cloud_gate=gate,
                        examples_cache=shared_examples, source_cache=shared_sources,

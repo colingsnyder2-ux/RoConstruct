@@ -52,7 +52,7 @@ def make_store(path):
 
 
 @pytest.fixture
-def promotions(tmp_path):
+def promotions(tmp_path,monkeypatch):
     root = tmp_path / "checkout"
     patchdir = root / "rebuild/2008-06/patches"
     patchdir.mkdir(parents=True)
@@ -67,6 +67,8 @@ def promotions(tmp_path):
         "score": 100, "source_kind": "snippet", "size": 30}
         for i, name in enumerate(("First", "Second", "Third"))]))
     p = integration.Promotions(make_store(tmp_path / "server.db"), root)
+    # Tests that mock the whole native build exercise orchestration; COFF/reference proofs have separate tests.
+    monkeypatch.setattr(integration_verify,"check_native_refs",lambda *a:dict(checked=1))
     yield p
     p.store.db.close()
 
@@ -76,6 +78,38 @@ def upload(claims, user="alice"):
             "base_revision": claims[0]["base_revision"],
             "evidence": "constructor evidence " + " ".join(c["addresses"][0] for c in claims),
             "patches": {"App/Test.cpp": [["old", "new"]]}}
+
+
+def test_claim_context_complete_source_and_native_overlay(promotions):
+    from roc.integration_context import context
+    claim = promotions.claim('alice', 'pc')['claims'][0]
+    addr = claim['addresses'][0]
+    path = promotions.root / 'src/2008-06' / (addr + '.cpp')
+    path.parent.mkdir(parents=True)
+    text = '// roc-cl: 21022\n' + '// complete evidence\n' * 1000
+    path.write_text(text)
+    result = context(promotions, claim['id'], addr)
+    assert result['source'] == text and result['size'] == 30
+    assert result['mined_compiler']['cl'] == '21022'
+    assert result['mining_score'] == 100
+    assert result['native_files']['App/include/Classes.h'].startswith('class First')
+    assert promotions.store.db.execute('SELECT COUNT(*) FROM integration_credit').fetchone()[0] == 0
+    with pytest.raises(ValueError, match='not in this claim'):
+        context(promotions, claim['id'], '00999999')
+
+
+def test_claim_rank_modes_preserve_class_exclusivity(promotions):
+    manifest = promotions.root / 'rebuild/2008-06/manifests/functions.json'
+    rows = json.loads(manifest.read_text())
+    rows[0]['size'] = 4000
+    manifest.write_text(json.dumps(rows))
+    easy = promotions.claim('alice', 'pc', mode='easy')['claims'][0]
+    assert easy['unit'] != 'RBX::First'
+    large = promotions.claim('bob', 'other', mode='large')['claims'][0]
+    assert large['unit'] == 'RBX::First' and large['id'] != easy['id']
+    assert promotions.claim('carol', 'third', unit=large['unit'])['claims'] == []
+    with pytest.raises(ValueError, match='selection mode'):
+        promotions.claim('alice', 'pc', mode='unknown')
 
 
 def test_catalog_discovers_accepted_overlay_only_declarations(promotions):
@@ -362,33 +396,25 @@ def test_catalog_reuses_class_index_across_requested_units_and_preserves_queue_r
     queue = promotions.root/'rebuild/2008-06/out/agent-queue.json'
     queue.parent.mkdir(parents=True)
     queue.write_text(json.dumps({'done':['RBX::First'],'parked':{'RBX::Second':'layout'}}))
-    original = Path.read_text
-    reads = []
-    def reading(path, *args, **kwargs):
-        if path.name == 'Classes.h':reads.append(path)
-        return original(path, *args, **kwargs)
-    monkeypatch.setattr(Path,'read_text',reading)
+    from roc import native_adapt
+    native_adapt.declared_types.cache_clear()
     assert [unit for unit,_ in promotions.catalog()] == ['RBX::Third']
     assert [unit for unit,_ in promotions.catalog('RBX::First')] == ['RBX::First','RBX::Third']
     assert [unit for unit,_ in promotions.catalog('RBX::Second')] == ['RBX::Third']
-    assert len(reads) == 1
+    assert native_adapt.declared_types.cache_info().misses == 1
     queue.write_text(json.dumps({'done':[],'parked':{}}))
     assert len(promotions.catalog()) == 3
-    assert len(reads) == 2
+    assert native_adapt.declared_types.cache_info().misses == 1
 
 
 def test_twenty_parallel_catalog_requests_build_source_index_once(promotions, monkeypatch):
     from concurrent.futures import ThreadPoolExecutor
-    original = Path.read_text
-    reads = []
-    def reading(path, *args, **kwargs):
-        if path.name == 'Classes.h':reads.append(path)
-        return original(path,*args,**kwargs)
-    monkeypatch.setattr(Path,'read_text',reading)
+    from roc import native_adapt
+    native_adapt.declared_types.cache_clear()
     with ThreadPoolExecutor(20) as pool:
         results = list(pool.map(promotions.catalog, ['RBX::First','RBX::Second']*10))
     assert all(len(result)==3 for result in results)
-    assert len(reads) == 1
+    assert native_adapt.declared_types.cache_info().misses == 1
 
 
 @pytest.mark.parametrize('count,targets', [(0, None), (1025, None), (True, None), (1, 0), (1, 100001)])
@@ -1411,6 +1437,153 @@ def test_public_client_selection_reports_integration_not_mining(promotions):
         assert api.call('/v1/info')['native_integration']['invitation_required'] is False
         with pytest.raises(worker.ApiFailure, match='auth_fail'):
             api.call('/v1/claim', {'user': 'alice'})
+    finally:
+        api.close()
+        httpd.shutdown()
+        httpd.server_close()
+
+
+def test_runtime_audit_has_no_credit_bypass_and_detects_regressions():
+    before = gate_result()
+    after = copy.deepcopy(before)
+    with pytest.raises(ValueError, match='Need new'):
+        integration_verify.check_gates(after, before)
+    integration_verify.check_gates(after, before, require_gain=False)
+    after['report']['owned_addrs'] = []
+    with pytest.raises(ValueError, match='losing'):
+        integration_verify.check_gates(after, before, require_gain=False)
+
+
+def test_context_uses_claim_baseline_after_other_acceptance(promotions):
+    from roc.integration_context import context
+    claims = promotions.claim('alice', 'pc', count=2)['claims']
+    queued = promotions.submit('alice', upload(claims))
+    promotions.overlay.write_text(json.dumps({'App/include/Classes.h': [['class First {};', 'class First { int newer; };']]}))
+    result = context(promotions, claims[0]['id'], claims[0]['addresses'][0])
+    assert 'newer' not in result['native_files']['App/include/Classes.h']
+    assert result['previous_jobs'][0]['id'] == queued['id']
+
+
+def test_native_namespace_requires_declaration_and_actual_rebuilt_symbol(promotions):
+    header = promotions.root/'tools/rbxgs/Client/App/include/Classes.h'
+    header.write_text(header.read_text()+' namespace G3D { class Native {}; } namespace Ogre { class Fake {}; }')
+    manifest = promotions.root/'rebuild/2008-06/manifests/functions.json'
+    rows = json.loads(manifest.read_text())
+    rows += [dict(addr='00600000', unit='G3D::Native', size=40, score=100, source_kind='vendor-file'),
+             dict(addr='00600001', unit='Ogre::Fake', size=40, score=100, source_kind='snippet')]
+    manifest.write_text(json.dumps(rows))
+    integration.atomic_json(promotions.root/'rebuild/2008-06/out/native-names.json',
+                            {'00600000': dict(symbol='?f@Native@G3D@@QAEHXZ', score=95),
+                             '00600001': dict(symbol='?f@Fake@RBX@@QAEHXZ', score=95)})
+    units = {u for u,_ in promotions.catalog()}
+    assert 'G3D::Native' in units and 'Ogre::Fake' not in units
+    assert promotions.claim('alice','pc',unit='G3D::Native')['claims'][0]['unit'] == 'G3D::Native'
+
+
+def test_metrics_come_from_independent_final_receipts(promotions):
+    from roc.integration_policy import server_metrics
+    promotions.store.db.executescript(server.SCHEMA)
+    promotions.store.db.execute("INSERT INTO funcs(client,addr,size,unit,score) VALUES('2008-06','00500000',30,'RBX::First',100)")
+    promotions.store.db.commit()
+    claims = promotions.claim('alice','pc',unit='RBX::First')['claims']
+    identifier = promotions.submit('alice',upload(claims))['id']
+    job = promotions.take()
+    promotions.finish(job, dict(accepted=True, gains=['00500000'], new_distinct=['00500000'], verification_seconds=2), lambda *a:None)
+    report = server_metrics(promotions, 1)
+    assert report['functions_integrated'] == report['functions_per_hour'] == 1
+    assert report['native_bytes'] == report['native_bytes_per_hour'] == 30
+    assert report['acceptance_rate'] == 1 and report['verification_median_seconds'] == 2
+    assert report['tokens_per_success'] is None and report['independent_receipts_only']
+
+
+
+def test_parallel_early_reservations_exclude_duplicate_agent_work(promotions):
+    from roc.integration_policy import Reservations
+    class Api:
+        def call(self,path,body):
+            if path.endswith('/claim'):
+                return promotions.claim(body['user'],body['worker'],unit=body['unit'])
+            if path.endswith('/renew'):
+                return promotions.renew_many(body['user'],body['claims'])
+            return promotions.renew(body['user'],body['claim'],release=True)
+        def close(self):
+            pass
+    revision=promotions.baseline()['revision']
+    a=Reservations(Api,'alice','worker-a',revision,16,lambda c:None)
+    b=Reservations(Api,'bob','worker-b',revision,16,lambda c:None)
+    try:
+        with ThreadPoolExecutor(2) as pool:
+            results=list(pool.map(lambda owner:owner.reserve({'RBX::First'}),[a,b]))
+        assert sorted(results)==[False,True]
+        winner=a if results[0] else b
+        winner.renew_once()
+        assert not winner.lost
+        identifier=winner.claims['RBX::First']['id']
+        promotions.renew(winner.user,identifier,release=True)
+        winner.renew_once()
+        assert identifier in winner.lost
+        assert not winner.reserve({'RBX::Second'})
+    finally:
+        a.close();b.close()
+
+
+def test_tiny_native_members_need_rebuilt_symbol_evidence(promotions):
+    path=promotions.root/'rebuild/2008-06/manifests/functions.json'
+    rows=json.loads(path.read_text())
+    rows[0]['size']=8
+    path.write_text(json.dumps(rows))
+    assert 'RBX::First' not in {u for u,_ in promotions.catalog()}
+    integration.atomic_json(promotions.root/'rebuild/2008-06/out/native-names.json',
+                            {'00500000':dict(symbol='?f@First@RBX@@QAEHXZ',score=90)})
+    promotions.catalog_key=None
+    assert 'RBX::First' in {u for u,_ in promotions.catalog()}
+
+
+
+def test_server_rejects_credit_for_another_contributors_live_class(promotions):
+    alice=promotions.claim('alice','worker-a',unit='RBX::First')['claims']
+    bob=promotions.claim('bob','worker-b',unit='RBX::Second')['claims'][0]
+    queued=promotions.submit('alice',upload(alice))
+    job=promotions.take()
+    receipt=dict(accepted=True,gains=bob['addresses'],new_distinct=bob['addresses'])
+    published=[]
+    assert promotions.finish(job,receipt,lambda *args:published.append(args))
+    assert not receipt['accepted'] and receipt['lease_conflicts']==['RBX::Second']
+    assert not published and promotions.status(queued['id'])['jobs'][0]['state']=='rejected'
+    assert promotions.store.db.execute('SELECT COUNT(*) FROM integration_credit').fetchone()[0]==0
+
+
+def test_exact_unit_batch_claims_only_requested_classes(promotions):
+    result=promotions.claim('alice','pc',units=['RBX::First','RBX::Third'],compact=True)
+    assert {c['unit'] for c in result['claims']}=={'RBX::First','RBX::Third'}
+    assert result['classes']==2 and len(result['baselines'])==1
+    assert promotions.claim('bob','other',unit='RBX::Second')['classes']==1
+    with pytest.raises(ValueError,match='Exact unit'):
+        promotions.claim('alice','pc',units=['RBX::First','RBX::First'])
+
+
+def test_catalog_skips_functions_already_owned_by_other_native_modules(promotions):
+    report=promotions.root/'rebuild/2008-06/out/G3D/report.json'
+    integration.atomic_json(report,dict(linked=True,owned_addrs=['00500000']))
+    assert 'RBX::First' not in {u for u,_ in promotions.catalog()}
+
+
+def test_public_metrics_and_exact_unit_batch_capabilities(promotions):
+    httpd=ThreadingHTTPServer(('127.0.0.1',0),server.make_handler(
+        promotions.store,'ordinary-password',set(),integration=promotions))
+    threading.Thread(target=httpd.serve_forever,daemon=True).start()
+    api=worker.Api('http://127.0.0.1:%d'%httpd.server_port,None)
+    try:
+        base=api.call('/v1/integration/base')
+        integration.require_reference_gate(base)
+        assert base['features']['exact_unit_batches']
+        response=api.call('/v1/integration/claim',dict(user='alice',worker='pc',
+            units=['RBX::First','RBX::Third'],count=2,compact=True))
+        assert {c['unit'] for c in response['claims']}=={'RBX::First','RBX::Third'}
+        metrics=api.call('/v1/integration/metrics?hours=24')
+        assert metrics['functions_integrated']==0 and metrics['independent_receipts_only']
+        assert metrics['tokens_per_success'] is None
+        assert promotions.store.db.execute('SELECT COUNT(*) FROM integration_credit').fetchone()[0]==0
     finally:
         api.close()
         httpd.shutdown()

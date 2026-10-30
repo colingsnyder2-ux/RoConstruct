@@ -179,6 +179,11 @@ def overlay_delta(base, candidate):
     return validate_patches(result)
 
 
+def require_reference_gate(base):
+    if base.get('features', {}).get('native_reference_gate') != 1:
+        raise ValueError('Server needs native reference verification update and restart before new submissions')
+
+
 def submission_key(body):
     return digest([body["user"], sorted(body.get("claims", [body.get("claim")])),
                    body["base_revision"], body["model"], body["patches"], body["evidence"], body.get("retry_of")])
@@ -306,6 +311,7 @@ class Promotions:
                 accepted.append(json.loads(row[0]))
             result = {"revision": digest([base, generator]), "overlay": base,
                       "generator": generator, "accepted": accepted,
+                      "features": {"context": 1, "metrics": 1, "native_reference_gate": 1, "exact_unit_batches": True, "selection_modes": ["easy", "balanced", "large"]},
                       "limits": {"claims": MAX_CLAIMS, "targets": MAX_TARGETS,
                                  "overlay_paths": MAX_OVERLAY_PATHS, "edits_per_path": MAX_EDITS_PER_PATH,
                                  "overlay_bytes": MAX_OVERLAY_BYTES, "evidence_bytes": MAX_EVIDENCE_BYTES,
@@ -324,21 +330,22 @@ class Promotions:
         queue = path.parent.parent / "out" / "agent-queue.json"
         with self.store.lock:
             accepted_version = self.store.db.execute("SELECT COUNT(*),MAX(ts) FROM integration_accepted").fetchone()
+        from roc.native_adapt import type_paths, eligible, symbol_unit
+        analysis_path = self.root/'work'/CLIENT/'functions.jsonl'
+        analysis_stamp = (analysis_path.stat().st_mtime_ns, analysis_path.stat().st_size) if analysis_path.exists() else None
+        names_path = self.root/'rebuild'/CLIENT/'out/native-names.json'
+        names_stamp = (names_path.stat().st_mtime_ns,names_path.stat().st_size) if names_path.exists() else None
+        coverage_reports = sorted((path.parent.parent/'out').glob('*/report.json'))
+        coverage_stamp = tuple((str(p),p.stat().st_mtime_ns,p.stat().st_size) for p in coverage_reports)
+        indexed_paths, declaration_hash = type_paths(self.root, json.loads(self.overlay.read_text()))
         key = (path.stat().st_mtime_ns, self.overlay.stat().st_mtime_ns, report.stat().st_mtime_ns if report.exists() else 0,
-               queue.stat().st_mtime_ns if queue.exists() else 0, accepted_version)
+               queue.stat().st_mtime_ns if queue.exists() else 0, accepted_version, declaration_hash, analysis_stamp, names_stamp, coverage_stamp)
         if self.catalog_key != key:
             from collections import defaultdict
             tree = self.root / "tools/rbxgs/Client"
             accepted_overlay = json.loads(self.overlay.read_text())
-            header_names = {p.relative_to(tree).as_posix() for p in (tree/'App/include').rglob('*.h')}
-            header_names.update(name for name in accepted_overlay if name.startswith('App/include/') and name.endswith('.h'))
-            header_texts = [(tree/name, overlay_text(tree, name, accepted_overlay)) for name in sorted(header_names)]
-            classes = set()
-            self.native_paths = {}
-            for p, text in header_texts:
-                for cls in re.findall(r"\b(?:class|struct)\s+(?:__declspec\([^)]*\)\s+)?(\w+)", text):
-                    classes.add(cls)
-                    self.native_paths.setdefault(cls, set()).add(p.relative_to(tree).as_posix())
+            self.native_paths = indexed_paths
+            classes = {name.rsplit('::', 1)[-1] for name in indexed_paths}
             source_names = {p.relative_to(tree).as_posix() for p in (tree/'App').rglob('*.cpp')}
             source_names.update(name for name in accepted_overlay if name.startswith('App/') and name.endswith('.cpp'))
             for name in sorted(source_names):
@@ -347,7 +354,11 @@ class Promotions:
                     continue
                 for cls in set(re.findall(r"\b(\w+)::~?\w+\s*\(", overlay_text(tree, name, accepted_overlay))):
                     self.native_paths.setdefault(cls, set()).add(p.relative_to(tree).as_posix())
-            owned = set(json.loads(report.read_text()).get("owned_addrs", [])) if report.exists() else set()
+            owned = set()
+            for coverage in coverage_reports:
+                data = json.loads(coverage.read_text())
+                if data.get("linked"):
+                    owned.update(data.get("owned_addrs", []))
             with self.store.lock:
                 accepted = self.store.db.execute("SELECT receipt FROM integration_jobs WHERE state='accepted'").fetchall()
             for receipt, in accepted:
@@ -356,12 +367,21 @@ class Promotions:
             state = json.loads(queue.read_text()) if queue.exists() else {}
             self.catalog_done = set(state.get('done', []))
             skipped = set(state.get("parked", {}))
+            from roc import match
+            facts = match._functions_at(analysis_path, *analysis_stamp) if analysis_stamp else {}
             for f in json.loads(path.read_text(encoding="utf-8")):
+                f = dict(f)
+                evidence = facts.get(f['addr'], {})
+                if evidence:
+                    f.update(dependency_targets=evidence.get('call_targets', []),
+                             unresolved_dependencies=sum(a not in owned for a in evidence.get('call_targets', [])),
+                             virtual_calls=len(evidence.get('virtual_slots', [])), branches=evidence.get('branches', 0))
                 unit = f.get("unit") or ""
-                m = re.fullmatch(r"RBX::(?:\w+::)*(\w+)", unit)
-                if (f.get("score") == 100 and f.get("source_kind") == "snippet"
-                        and unit not in skipped and f["addr"] not in owned and f["size"] >= 24 and m
-                        and m[1] in classes):
+                m = re.fullmatch(r"(?:RBX|G3D|Ogre)::(?:\w+::)*(\w+)", unit)
+                if (f.get("score") == 100
+                        and unit not in skipped and f["addr"] not in owned and m
+                        and (f["size"] >= 24 or 6 <= f["size"] < 24 and symbol_unit(self.native_names().get(f["addr"], {}).get("symbol")) == unit)
+                        and m[1] in classes and eligible(unit, f["addr"], self.native_names(), self.native_paths)):
                     groups[unit].append(f)
             self.catalog_rows = sorted(groups.items(), key=lambda x: (-len(x[1]), x[0]))
             self.catalog_key = key
@@ -381,19 +401,36 @@ class Promotions:
         addresses the accepted linked rebuild owns, and every exact mined RBX target ({addr: [unit, size]})."""
         progress = self.directory / "progress-native.json"
         with self.store.lock:
-            rows = self.store.db.execute("SELECT addr,unit,size FROM funcs WHERE client=? AND score=100 AND unit LIKE 'RBX::%'",
+            rows = self.store.db.execute("SELECT addr,unit,size FROM funcs WHERE client=? AND score=100",
                                          (CLIENT,)).fetchall()
+        from roc.native_adapt import eligible
+        self.catalog()
+        targets = {addr: [unit, size] for addr, unit, size in rows
+                   if eligible(unit, addr, self.native_names(), self.native_paths)}
         return {"names": self.native_names(),
                 "linked": json.loads(progress.read_text())["addresses"] if progress.exists() else [],
-                "targets": {addr: [unit, size] for addr, unit, size in rows}}
+                "targets": targets}
 
-    def packet(self, claim, baselines=None, abi=None, compact=False):
+    def protected_native(self):
+        report = self.root/'rebuild'/CLIENT/'out/RbxgsApp/report.json'
+        if not report.exists():
+            return None
+        owned = set(json.loads(report.read_text()).get('owned_addrs', []))
+        with self.store.lock:
+            rows = self.store.db.execute("SELECT receipt FROM integration_jobs WHERE state='accepted'").fetchall()
+        for receipt, in rows:
+            owned.update(json.loads(receipt or '{}').get('gains', []))
+        return sorted(owned)
+
+    def packet(self, claim, baselines=None, abi=None, compact=False, protected=None):
         identifier, unit, user, worker, expires, addresses, revision = claim
         evidence = []
         for addr in json.loads(addresses)[:5]:
             path = self.root / "src" / CLIENT / (addr + ".cpp")
-            evidence.append({"addr": addr, "source": path.read_text(errors="replace")[:10000]
-                             if path.exists() else "Use roc pull to obtain this exact source."})
+            text = path.read_text(errors='replace') if path.exists() else None
+            evidence.append({"addr": addr, "source": text[:10000] if text else "Use roc pull to obtain this exact source.",
+                             "source_truncated": bool(text and len(text) > 10000),
+                             "context_command": 'roc integrate context --claim ' + identifier + ' --address ' + addr})
             if (self.root / "clients/2008-06/Roblox.exe").exists():
                 from roc import match
                 code, _, _ = match.target(CLIENT, addr)
@@ -415,17 +452,26 @@ class Promotions:
                 "snippets": evidence,
                 # Real rebuilt symbol per target where vtables/call graph name it, with its current rebuilt score.
                 "native_names": {a: names[a] for a in json.loads(addresses) if a in names},
-                "native_paths": sorted(self.native_paths.get(unit.rsplit("::", 1)[-1], [])),
+                "native_paths": sorted(self.native_paths.get(unit, self.native_paths.get(unit.rsplit("::", 1)[-1], []))),
                 "abi": abi.get(unit, {}),
                 "instructions": "Edit make_rbxgs_client.py only; regenerate; submit a declarative overlay. "
                 "Derive every change from target bytes. No pad structs, offset views or invented fields."}
         if not compact:
             packet["baseline"] = baselines[revision]
+            packet["protected_native"] = protected if protected is not None else self.protected_native()
         return packet
 
-    def claim(self, user, worker, count=1, unit=None, targets=None, compact=False):
+    def claim(self, user, worker, count=1, unit=None, targets=None, compact=False, mode='balanced', units=None):
+        if mode not in ('easy', 'balanced', 'large'):
+            raise ValueError('Invalid native selection mode')
         if type(count) is not int or not 1 <= count <= MAX_CLAIMS:
             raise ValueError("Claim count must be 1-%d" % MAX_CLAIMS)
+        if units is not None:
+            if (unit is not None or targets is not None or not isinstance(units,list) or not 1 <= len(units) <= MAX_CLAIMS
+                    or any(not isinstance(u,str) or not re.fullmatch(r'(?:RBX|G3D|Ogre)::(?:\w+::)*\w+',u) for u in units)
+                    or len(set(units)) != len(units)):
+                raise ValueError('Exact unit batches require distinct eligible class names')
+            count = len(units)
         if targets is not None and (type(targets) is not int or not 1 <= targets <= MAX_TARGETS):
             raise ValueError("Target count must be 1-%d" % MAX_TARGETS)
         if targets is not None:
@@ -434,12 +480,22 @@ class Promotions:
             raise ValueError("Need a valid user and worker identity")
         revision = self.baseline()["revision"]
         candidates = self.catalog(unit) if unit else self.catalog()
+        from roc.integration_context import rank
+        abi_path = self.root / 'rebuild' / CLIENT / 'manifests/abi-evidence.json'
+        abi = json.loads(abi_path.read_text()) if abi_path.exists() else {}
+        names = self.native_names()
+        from roc.integration_policy import learned
+        with self.store.lock:
+            history_rows = self.store.db.execute("SELECT unit,state,receipt FROM integration_jobs WHERE state IN ('accepted','rejected') ORDER BY updated DESC LIMIT 10000").fetchall()
+        history = learned([dict(unit=u, state=s, receipt=json.loads(r or '{}')) for u,s,r in history_rows])
+        candidates = sorted(candidates, key=lambda item: (
+            rank(item[1], names, self.native_paths.get(item[0].rsplit('::', 1)[-1], []), abi.get(item[0]), mode, history.get(item[0])), item[0]))
         now, claimed, target_count = time.time(), [], 0
         with self.store.lock, self.store.db:
             # IMMEDIATE also serializes two separate server connections/processes.
             self.store.db.execute("BEGIN IMMEDIATE")
             for name, functions in candidates:
-                if unit and name != unit:
+                if unit and name != unit or units is not None and name not in units:
                     continue
                 old = self.store.db.execute("SELECT id,user,worker,expires,state FROM integration_claims "
                                             "WHERE client=? AND unit=?", (CLIENT, name)).fetchone()
@@ -465,10 +521,12 @@ class Promotions:
         baselines = {}
         abi_path = self.root / "rebuild" / CLIENT / "manifests" / "abi-evidence.json"
         abi = json.loads(abi_path.read_text()) if abi_path.exists() else {}
-        result = {"claims": [self.packet(row, baselines, abi, compact) for row in claimed],
-                  "classes": len(claimed), "targets": target_count}
+        protected = self.protected_native()
+        result = {"claims": [self.packet(row, baselines, abi, compact, protected) for row in claimed],
+                  "classes": len(claimed), "targets": target_count, "mode": mode}
         if compact:
             result["baselines"] = baselines
+            result["protected_native"] = protected
         return result
 
     def renew(self, user, identifier, release=False, reason=None):
@@ -637,6 +695,24 @@ class Promotions:
                 return False
             accepted = receipt.get("accepted") is True
             members = job.get("members", [job["id"]])
+            if accepted:
+                own_claims = {claim for member in members for claim in json.loads(self.store.db.execute(
+                    'SELECT claim_id FROM integration_jobs WHERE id=?', (member,)).fetchone()[0])}
+                gains = set(receipt.get('gains', receipt['new_distinct']))
+                gained_units = set()
+                if self.store.db.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='funcs'").fetchone():
+                    for addr in gains:
+                        row = self.store.db.execute('SELECT unit FROM funcs WHERE client=? AND addr=?', (CLIENT,addr)).fetchone()
+                        if row and row[0]:
+                            gained_units.add(row[0])
+                conflicts = [unit for identifier,unit,addresses in self.store.db.execute(
+                    "SELECT id,unit,addresses FROM integration_claims WHERE client=? AND (state='submitted' OR (state='claimed' AND expires>?))",
+                    (CLIENT,time.time())) if identifier not in own_claims and
+                    (unit in gained_units or gains.intersection(json.loads(addresses)))]
+                if conflicts:
+                    accepted = False
+                    receipt.update(accepted=False, lease_conflicts=sorted(conflicts),
+                                   reason='Candidate gains belong to other active class claims: '+', '.join(sorted(conflicts)))
             if len(members) > 1 and not accepted:
                 # One member may have broken the shared build: verify each on its own instead of rejecting all.
                 note = json.dumps({"merged_failure": receipt.get("reason", ""), "merged_jobs": members})
@@ -737,6 +813,12 @@ def sync_client_baseline(root, base, only_if_clean=False):
 
 def command(args):
     from roc import worker
+    if args.action == 'adapt':
+        from roc.native_adapt import command as adapt
+        return adapt(args)
+    if args.action == 'check':
+        from roc.integration_local import command as local_check
+        return local_check(args)
     if args.action == "fingerprint":
         from roc.integration_verify import input_hashes
         started = time.monotonic()
@@ -754,6 +836,41 @@ def command(args):
     overlay = generator.with_name("rbxgs-client.json")
     action = args.action
 
+    if action == 'context':
+        if not args.claim or not getattr(args, 'address', None):
+            raise SystemExit('context needs --claim ID --address ADDR')
+        from roc.integration_context import retrieve
+        try:
+            return retrieve(api, directory, args.claim, args.address)
+        finally:
+            api.close()
+
+    if action == 'audit':
+        from roc.integration_audit import audit
+        try:
+            result = audit(ROOT, api.call('/v1/integration/base'), getattr(args, 'baseline_artifacts', None),
+                           current_profile=getattr(args, 'current_profile', False))
+            print(json.dumps(dict(passed=result['passed'], mode=result['mode'],
+                                  legacy_inventory_reproduced=result['legacy_inventory_reproduced'],
+                                  accepted_references=result.get('accepted_references'), seconds=result['seconds'], distinct=result['distinct'],
+                                  preserved_native=len(result['unchanged_owned']), artifacts=result['snapshot']), indent=1))
+            return result
+        except (OSError, ValueError, RuntimeError) as error:
+            raise SystemExit(str(error)) from None
+        finally:
+            api.close()
+
+    if action == 'metrics':
+        try:
+            result = api.call('/v1/integration/metrics?hours=' + str(args.hours))
+            integration_path = directory/'metrics.json'
+            atomic_json(integration_path, result)
+            print(json.dumps(dict({k:v for k,v in result.items() if k != 'learned_tasks'},
+                                  learned_task_count=len(result.get('learned_tasks', {})), details=str(integration_path)), indent=1))
+            return result
+        finally:
+            api.close()
+
     if action == "invite":
         print("Native integration is public. No invitation or native token required.")
         return
@@ -767,6 +884,7 @@ def command(args):
             api.close()
 
     if action == "submit":
+        require_reference_gate(api.call("/v1/integration/base"))
         recovered = resume_pending(api, directory, user)
         if recovered:
             print("Recovered saved submission(s); no new batch created: " + json.dumps(recovered))
@@ -815,6 +933,8 @@ def command(args):
 
     if action == "next":
         base = api.call("/v1/integration/base")
+        if getattr(args, "mode", "balanced") != "balanced" and not base.get("features", {}).get("selection_modes"):
+            raise SystemExit("Server needs the selection-mode update and restart before this request")
         limits = base.get("limits", {"claims": 16})
         if args.count > limits["claims"] or getattr(args, "targets", None) is not None and not limits.get("targets"):
             raise SystemExit("Server needs the bulk integration update and restart before this request")
@@ -834,10 +954,12 @@ def command(args):
         result = api.call("/v1/integration/claim", {"user": user,
             "worker": user + "@" + socket.gethostname()[:40] + ":" + identity[:12],
             "count": args.count, "unit": args.unit, "targets": getattr(args, "targets", None),
-            "compact": bulk}, **({"timeout": 300} if bulk else {}))
+            "compact": bulk, "mode": getattr(args, 'mode', 'balanced')}, **({"timeout": 300} if bulk else {}))
         for claim in result["claims"]:
             if "baseline" not in claim:
                 claim["baseline"] = result["baselines"][claim["base_revision"]]
+            if "protected_native" not in claim:
+                claim["protected_native"] = result.get("protected_native")
             folder = directory / "claims" / claim["id"]
             if not (folder / "packet.json").exists():
                 if not bulk:
@@ -858,6 +980,11 @@ def command(args):
                     "  roc integrate submit --claim " + claim["id"] + " --model ACTUAL_MODEL --evidence-file notes.md\n"
                     "The server independently rebuilds, checks M2/M4a/M5, size/base, ownership and distinct counts.\n"
                     "Only verified new distinct native bodies receive separate native credit; raw mining points stay unchanged.\n")
+                prompt += ('Retrieve full source, assembly and native declarations per function:\n'
+                           '  roc integrate context --claim ' + claim['id'] + ' --address ADDR\n'
+                           'Fast feedback (private workspace, no native credit):\n'
+                           '  roc integrate check --claim ' + claim['id'] + ' --fast\n'
+                           '  roc integrate check --claim ' + claim['id'] + ' --bytes\n')
                 (folder / "PROMPT.md").write_text(prompt, encoding="utf-8")
                 (folder / "notes.md").write_text("Evidence addresses: " + " ".join(claim["addresses"][:5]) +
                                                 "\n\nDescribe the byte-proven source correction here.\n", encoding="utf-8")
@@ -912,6 +1039,17 @@ def command(args):
             raise SystemExit("Batch claims have different bases; submit each baseline separately")
         run_generator(generator, ROOT)
         patches = overlay_delta(claims[0]["baseline"]["overlay"], json.loads(overlay.read_text(encoding="utf-8")))
+        if hasattr(args, 'no_local_check') and not args.no_local_check:
+            from roc.integration_local import command as local_check
+            import copy
+            check_args = copy.copy(args)
+            if not any(getattr(check_args, key, None) for key in ('claim', 'batch', 'all')):
+                check_args.claim = claims[0]['id']
+            report = local_check(check_args, fail=False)
+            unresolved = (report.get('compile_ok') and not report.get('lost') and report.get('targets')
+                          and all(t['status'] != 'mismatch' for t in report['targets'].values()))
+            if not report.get('ok') and not unresolved:
+                raise SystemExit('Local preflight failed; repair diagnostics before submitting')
         body = {"user": user, "claims": [c["id"] for c in claims], "model": args.model,
                 "base_revision": claims[0]["base_revision"], "patches": patches,
                 "evidence": Path(args.evidence_file).read_text(encoding="utf-8")}

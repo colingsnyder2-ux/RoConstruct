@@ -13,7 +13,7 @@ def model_batch(rel, text, groups, baseline, model, rounds, compile_round, match
     create another set of model workers."""
     from roc import native_sweep as sweep, providers
     sessions, records = {}, []
-    attempts = rounds if options.get('generation') == 'method' else 1
+    attempts = rounds if options.get('generation') == 'method' or options.get('escalation_model') else 1
 
     def request(method, targets, attempt):
         state = sessions.setdefault(method, [])
@@ -28,11 +28,21 @@ def model_batch(rel, text, groups, baseline, model, rounds, compile_round, match
             return None, None
         log('Requesting %s · %s · %s · batch round %d/%d' % (model, rel, method, attempt + 1, attempts))
         records.append(dict(file=rel, mode='model-request', method=method, target_addresses=list(targets)))
-        reply = providers.generate(model, state, settings)
+        from roc.integration_policy import model_for_attempt, usage
+        active_model = model_for_attempt(model, settings, attempt)
+        if settings.get('attempt_allowed') and not settings['attempt_allowed'](targets):
+            return None, None
+        request_record = dict(file=rel, method=method, mode='batch-request', model=active_model, target_addresses=list(targets))
+        records.append(request_record)
+        reply = providers.generate(active_model, state, settings)
+        request_record.update(usage(reply, active_model))
+        if settings.get('record_attempt'):
+            settings['record_attempt']([request_record])
         state.append({'role': 'assistant', 'content': sweep.providers_text(reply)})
         try:
             edits = sweep.method_edits(text, reply, method)
             candidate = method_candidate(text, method, edits, targets)
+            candidate['model'] = active_model
             candidate['generation_seconds'] = getattr(reply, 'latency_s', None)
             return candidate, None
         except ValueError as error:
@@ -58,6 +68,8 @@ def model_batch(rel, text, groups, baseline, model, rounds, compile_round, match
         log('Compiling shared %s: %d worker methods in one TU' % (rel, len(candidates)))
         proposal, trials = prove(rel, text, candidates, baseline, compile_round, matcher, log)
         records.extend(trials)
+        if options.get('record_attempt'):
+            options['record_attempt'](trials)
         if proposal:
             return proposal, records
         compiled = next((trial for trial in reversed(trials) if trial.get('ok') and trial.get('object')), None)
@@ -121,7 +133,7 @@ def prove(rel, text, candidates, baseline, compile_round, matcher, log=print):
         integration.validate_patches({rel: edits})
         return dict(file=rel, mode='batch', edits=edits,
                     witnesses=[h for h in result['hits'] if h['addr'] in new], proof=result,
-                    batch_candidates=group)
+                    batch_candidates=group, models=sorted({c['model'] for c in group if c.get('model')}))
 
     def verify(group):
         result, found, new = evaluate(group)
@@ -168,7 +180,10 @@ def prove(rel, text, candidates, baseline, compile_round, matcher, log=print):
     groups = []
     for candidate in candidates:
         try:
+            writer = candidate.get('model')
             candidate = method_candidate(text, candidate['method'], candidate['edits'], candidate['targets'])
+            if writer:
+                candidate['model'] = writer
         except ValueError as error:
             records.append(dict(file=rel, mode='batch-invalid', ok=False, error=str(error), candidate=candidate))
             continue

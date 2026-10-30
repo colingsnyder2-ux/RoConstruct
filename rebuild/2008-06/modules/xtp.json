@@ -23,8 +23,13 @@
  "test": "xtp_colors",
  "test_includes": [
   "tools/libs/xtp-11.2.2/Source",
-  "tools/libs/mfc-9.0-rtm/atlmfc/include"
+  "tools/libs/mfc-9.0-rtm/atlmfc/include",
+  "rebuild/2008-06/out/XTP/force"
  ],
  "test_defines": "WIN32 NDEBUG _MBCS _AFXDLL _XTP_STATICLINK _DLL _XTPLIB_NOAUTOLINK",
- "verified": true
+ "verified": true,
+ "force_verified": true,
+ "depends": [
+  "libpng"
+ ]
 }

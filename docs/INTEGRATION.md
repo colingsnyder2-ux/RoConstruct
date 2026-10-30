@@ -512,3 +512,107 @@ the shared merge implementation. Objects carry `.command.json` provenance alongs
 content-checked `.compile.json` and resolved `.deps`; legacy objects without provenance rebuild.
 Rejections record gained/lost/uncovered addresses, baseline revision and diagnostic folders
 when a completed candidate comparison exists; early build failures retain available artifact paths.
+
+
+## Claim-local feedback and complete context
+
+The manual claim path now shares the historical direct compiler and object/data
+matcher used by native discovery. These commands never award native credit:
+
+```text
+roc integrate next --mode balanced
+roc integrate context --claim ID --address 00512340
+roc integrate check --claim ID --fast
+roc integrate check --claim ID --bytes
+roc integrate check --claim ID --full
+roc integrator --mode easy --model YOUR_MODEL --rounds 3
+```
+
+`context` requires the updated server. It retrieves one claimed function at a
+time and saves complete mined source, assembly and accepted native files beneath
+`work/integration-client/claims/ID/context/ADDR/`. `context.json` points to local
+files with line ranges, compiler profiles, ABI evidence, native symbol hints,
+direct callees and previous server jobs. Packet previews explicitly mark source
+truncation. Cached mining scores remain hints about the source, not fresh proofs.
+
+`--fast` compiles changed translation units without linking. Changed headers use
+recorded include dependencies; missing include history compiles conservatively.
+Matching header basenames also detect newly shadowing headers. Each claim owns a
+persistent workspace and compiler outputs under `local/integrators/`; a process
+lock prevents two checkers from writing the same claim. Other claims can compile
+concurrently. Source trees, runtime and declarative overlays are copied into the
+private workspace; installed vendor/toolchain trees are read-only inputs.
+
+`--bytes` first establishes the affected baseline bodies, then compares candidate
+objects with original code and referenced data using the existing matcher. Losing
+any protected accepted native body that matched in the baseline objects rejects
+the check. Unrelated coincidental matches do not become no-loss obligations. Known native symbol hints
+provide size, relocation, instruction and ABI-review diagnostics. Unknown symbol
+mapping reports `not_established`; it never becomes a claimed exact. Object
+matches do not establish final linked ownership or address identity.
+
+`--full` runs local object checks first, then the existing independent linked
+preflight with M2/M4a/M5, size, base, ownership and distinct gates. Proven local
+mismatches/regressions stop before linking. An unresolved object mapping may
+proceed to linked verification. The baseline uses the claim's saved generator and
+accepted overlays. A successful contributor preflight still awards no credit;
+submit through the ordinary authoritative server path afterwards.
+
+Every check retains a separate JSON receipt in `claims/ID/checks/`, the latest
+`check.json`, compiler artifacts and `check-metrics.json`. Metrics report actual
+compile mean/median, success and cache rates; independent accepted throughput
+continues to come from `roc native-search-status`. Manual submission remains
+explicit; fast checks do not submit or change an accepted promotion.
+
+`--mode easy|balanced|large` works for class claims and the continuous integrator.
+Balanced is default. Ranking combines finalized server-job success/cost with
+target count/size, native header/ABI evidence, current scores and unresolved native
+callees. G3D/Ogre require qualified declarations and matching rebuilt member symbols;
+Ogre DLL replay alone supplies no native source TU layer. Existing parking, partial
+retention, model budgets, leases and independent batched acceptance remain in place.
+
+Run `python benchmarks/integration_local.py` for a bounded cold/warm historical
+compile benchmark. It performs no linking, model requests, claims or submissions.
+See [implementation report](INTEGRATION_WORKFLOW_V2.md) for scope and limitations.
+
+
+## Adaptation, bulk work, budgets and audit
+
+`integrate check --batch batch.json --bytes` and `--all --fast` check compatible
+claims together in a private workspace. Batch JSON has a `claims` ID list. Owner,
+baseline and generator must agree; original claims keep individual check receipts.
+`integrate adapt --claim ID --address ADDR --file App/path/File.cpp --method Class::method`
+produces body-only anchored edits and a reviewable diff. It refuses ambiguous or
+unsupported source/ABI adaptations and never awards credit.
+
+`integrator --escalation-model STRONG --escalate-after 2 --max-no-improvement 3`
+uses the requested stronger model after repeated attempts. Without an explicit
+escalation model it keeps the original model. No-improvement budgets persist per
+target and stop even a large round count; changed relevant inputs reopen targets.
+Class leases are acquired before paid model work, renewed and released when unused.
+Every response retains actual writer provenance and available measured usage.
+
+`integrate metrics --hours 24` saves current independent server throughput,
+acceptance, verification timing, pending/parked counts and learned tasks. Local
+checks/native-search records provide compile, cache, comparison and model metrics.
+Missing token usage is reported as unknown. Server token-per-success values are
+not invented. Manual submit runs local bytes checking unless `--no-local-check`;
+the server still requires its independent linked/runtime/no-loss/reference gates.
+Updated apply-mode clients require the server reference-gate capability.
+
+`integrate audit` revalidates an accepted baseline in an isolated private snapshot
+without new gains, source publication or credit. Failures retain build results,
+receipts and lost/uncovered addresses. The legacy-reproduction audit reports historical ownership losses. The follow-up
+current-profile rebuild fixes the shared-helper runtime crash and preserves all
+398 accepted native bodies. `--current-profile` explicitly checks every accepted
+credit plus runtime/ABI gates and reports legacy inventory changes separately;
+it requires the authoritative credit database and awards no credit. See `INTEGRATION_WORKFLOW_V2.md` for exact receipts and scope.
+The configured verifier has been restarted with the updated routes and gates.
+Automatic publishing is paused, as authorized; native verification remains active.
+
+
+The final fresh `integrate audit --current-profile` passed in 277.031 seconds:
+module test, M2/M4a/M5, ABI checks and all 398 native credits. Receipt:
+`work/integration-audit/e9f127f55c3b48c486b5c64f3343e665/audit-receipt.json`.
+Historical compiled counts are explicitly different; no accepted credits were
+removed and no new credit was granted by the audit.

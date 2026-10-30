@@ -1,3 +1,4 @@
+#include "force_verified.h"
 // XTP module test: the colour manager (XTPColorManager.cpp) answers system colours after MFC is initialised.
 #include <afxwin.h>
 #include <XTToolkitPro.h>

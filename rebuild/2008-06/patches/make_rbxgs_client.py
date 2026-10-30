@@ -985,7 +985,7 @@ patch(FACE, "\tclass FaceInstance : public Reflection::Described<FaceInstance, &
       "\tclass FaceInstance : public Reflection::Described<FaceInstance, &sFaceInstance, Instance>, public IRenderable\n")
 # DebrisService: rbxgs pads 8 bytes before queue to stand in for GuidItem's members missing from its Instance; with
 # the adopted 2008 Instance (0x130) the 2008 constructor (0x63be90) has queue at 0x130, maxItems 0x150, timer 0x154.
-patch("App/include/v8datamodel/DebrisService.h", "\t\tchar pad[8];\n", "")
+adopt("App/include/v8datamodel/DebrisService.h", "App/roc_native_debris_header_2c0ad23d27535ab8.cpp")
 # IDataState is a bare interface in 2008: DataModel's RTTI base list has no StateStack, and IDataState spans only
 # 0x1f0..0x1f4 (vptr) between VerbContainer and Evaluator.
 patch("App/include/v8tree/Verb.h", "\tclass __declspec(novtable) IDataState : public StateStack<XmlState> // NOTE: may not be intended for this file\n",
@@ -1268,6 +1268,365 @@ patch("App/script/ScriptContext.cpp",
       "Lua::LuaArguments::get(thread, static_cast<int>(i+1), result.get()->at(i));",
       "Lua::LuaArguments::get(thread, static_cast<int>(i+1), result.get()->at(i), true);")
 
+# --- 2008-06 kernel: Body.cpp/SimBody.cpp TU (claim "RBX::RevoluteLink"). Per-address evidence:
+# makeCofmDirty 00613f70 (first level inlined, recursion via call, assertions out, SimBody
+# dirty byte at +8), setPv 00613fb0 (parent guard, 0x48 PV copy, inlined getNextStateIndex),
+# setVelocity 00614040 (same; dirty byte +8), setMass 006140b0 (fcom against the member:
+# /fp:fast profile; makeCofmDirty inlined), setMoment 00614110 (Matrix3::operator!= call on
+# the member, makeCofmDirty inlined, rep movsd copy), step 00614200 (ret 4: ONE bool
+# parameter at [esp+0x50]; simBody->step() called with NO argument; SimBody::pv at +0xc;
+# inlined getNextStateIndex), setMeInParent(Link*) 00614380 (body missing from the tree;
+# link!=value -> link->setBody(NULL) inlined as [link+4]=0, value->setBody(this) as
+# [value+4]=this, makeCofmDirty inlined, root->advanceStateIndex inlined), resetRoot
+# 00614530 (no leading assertion; children indexed without the IndexArray operator[]
+# assertion), onChildRemoved 00614760 (fastRemove inlined including Array::resize(n-1,
+# false) at 0x5fa770 and child->index = -1; delete cofm; makeCofmDirty inlined), setParent
+# 006148b0 (no assertions; onChildRemoved/onChildAdded/~SimBody+delete/new SimBody calls;
+# calcRoot call 0x613ef0; inlined root store then a per-child resetRoot call loop),
+# ctor 006149c0 (layout shift above; new(0xb4) -> SimBody size 0xb4; EH states: children
+# state 0, new state 1, NO base-destruction state => the KernelIndex destructor is trivial;
+# no delete-on-throw funclet => SimBody's constructor is nothrow from Body.cpp), ~Body
+# 00614ac0 (no assertions; setParent(NULL), ~SimBody+delete, children data freed with
+# alignedFree inline; state 0 = children), initialize 00614b40 (?initialize@@YAXXZ, a
+# CRT-registered free function assigning a global Body* at 0x97bec4 from a plain
+# `new Body()` with a null check; the tree's lazy static local with guard + atexit is
+# wrong). 2008 SimBody ctor 00658ae0: body +0, float dt +4 (fldz), dirty +8, pv +0xc,
+# quaternion +0x54 (0,0,0,1), angMomentum +0x64, momentRecip +0x70, massRecip +0x7c (NOT
+# initialized), constantForceY +0x80, force +0x84, torque +0x90, two more zero vectors at
+# +0x9c and +0xa8, size 0xb4. Kernel::insertBody 005fb160 inlines fastAppend without its
+# assertions; Kernel::deletePoint 005fb3c0 (owned) has no assertion checks, so the
+# IndexArray helper assertions do not exist in 2008. ---
+KI_H = "App/include/v8kernel/KernelIndex.h"
+patch(KI_H,
+      "\t\t\tKernelIndex::KernelIndex():kernelIndex(-1) {}\n"
+      "\t\t\tKernelIndex::~KernelIndex() {RBXASSERT(kernelIndex == -1);}\n",
+      "\t\t\tKernelIndex::KernelIndex():kernelIndex(-1) {}\n")
+# IndexArray: no assertions in fastAppend, fastRemove or operator[] in 2008.
+IA_H = "App/include/util/IndexArray.h"
+patch_all(IA_H, "\t\t\tRBXASSERT(indexOf(array[index]) == index);\n", "")
+patch(IA_H,
+      "\t\tvoid fastAppend(tInstance* item)\n"
+      "\t\t{\n"
+      "\t\t\tRBXASSERT(item);\n"
+      "\t\t\tRBXASSERT(indexOf(item) == -1);\n"
+      "\t\t\tindexOf(item) = array.size();\n",
+      "\t\tvoid fastAppend(tInstance* item)\n"
+      "\t\t{\n"
+      "\t\t\tindexOf(item) = array.size();\n")
+patch(IA_H,
+      "\t\tvoid fastRemove(tInstance* item)\n"
+      "\t\t{\n"
+      "\t\t\tRBXASSERT(array.find(item) != array.end());\n\n"
+      "\t\t\tint removeIndex = indexOf(item);\n"
+      "\t\t\tRBXASSERT(removeIndex >= 0);\n"
+      "\t\t\tRBXASSERT(array[removeIndex] == item);\n",
+      "\t\tvoid fastRemove(tInstance* item)\n"
+      "\t\t{\n"
+      "\t\t\tint removeIndex = indexOf(item);\n")
+# SimBody: 2008 layout (0xb4) and the no-argument step.
+SB_H, SB_CPP = "App/include/v8kernel/SimBody.h", "App/v8kernel/SimBody.cpp"
+patch(SB_H,
+      "\t\t\tBody *body;\n\t\t\tbool dirty;\n",
+      "\t  Body *body;\n"
+      "\t  float dt;   // 0x4: ctor 00658ae0 stores 0.0f; SimBody::step() (no parameter) reads it\n"
+      "\t  bool dirty;\n")
+patch(SB_H,
+      "\t\tSimBody(RBX::Body* body);\n",
+      "\t\tSimBody(RBX::Body* body) throw();   // 006149c0 has no delete-on-throw funclet\n")
+patch(SB_H,
+      "\t\tvoid step(float dt);\n",
+      "\t\tvoid step();\n")
+patch(SB_H,
+      "\t\t\tG3D::Vector3 force;\n\t\t\tG3D::Vector3 torque;\n",
+      "\t\tG3D::Vector3 force;\n"
+      "\t\tG3D::Vector3 torque;\n"
+      "\t\tG3D::Vector3 unknown0x9c;  // 00658ae0 zero-initializes; name and use unknown\n"
+      "\t\tG3D::Vector3 unknown0xa8;  // 00658ae0 zero-initializes; name and use unknown\n")
+patch(SB_CPP,
+      "SimBody::SimBody(RBX::Body* _body)\n"
+      "\t\t\t:body(_body),\n"
+      "\t\t\tdirty(1),\n"
+      "\t\t\tforce(G3D::Vector3::zero()),\n"
+      "\t\t\ttorque(G3D::Vector3::zero()),\n"
+      "\t\t\tconstantForceY(0.0f)\n"
+      "{}\n",
+      "SimBody::SimBody(RBX::Body* _body) throw()\n"
+      "\t\t\t:body(_body),\n"
+      "\t\t\tdt(0.0f),\n"
+      "\t\t\tdirty(1),\n"
+      "\t\t\tforce(G3D::Vector3::zero()),\n"
+      "\t\t\ttorque(G3D::Vector3::zero()),\n"
+      "\t\t\tconstantForceY(0.0f),\n"
+      "\t\t\tunknown0x9c(G3D::Vector3::zero()),\n"
+      "\t\t\tunknown0xa8(G3D::Vector3::zero())\n"
+      "{}\n")
+patch(SB_CPP,
+      "void SimBody::step(float dt)\n",
+      "void SimBody::step()\n")
+# Body: one bool parameter to step (00614200 ret 4). Keep the older Kernel caller's
+# genuine two-argument API: its timestep now belongs in SimBody's cached field.
+patch("App/include/v8kernel/Body.h",
+      "\t\tvoid step(float, bool);\n",
+      "\t\tvoid step(float dt, bool throttling) { simBody->dt = dt; step(throttling); }\n"
+      "\t\tvoid step(bool);\n")
+BODY_CPP = "App/v8kernel/Body.cpp"
+# 006140b0 compares with fcom: the 2008 TU used the fp:fast profile.
+patch(BODY_CPP,
+      '#include "v8kernel/Body.h"\n#include "v8kernel/SimBody.h"\n#include "util/Debug.h"\n',
+      '#pragma float_control(precise, off)\n'
+      '#include "v8kernel/Body.h"\n#include "v8kernel/SimBody.h"\n#include "util/Debug.h"\n')
+patch(BODY_CPP,
+      "Body::~Body()\n"
+      "{\n"
+      "\tRBXASSERT(numChildren() == 0);\n"
+      "\tif (parent)\n"
+      "\t\tsetParent(NULL);\n"
+      "\tRBXASSERT(!parent);\n"
+      "\tRBXASSERT(!link);\n"
+      "\tRBXASSERT(index == -1);\n"
+      "\tRBXASSERT(simBody);\n"
+      "\tdelete simBody;\n"
+      "\tsimBody = NULL;\n"
+      "\tRBXASSERT(!cofm);\n"
+      "\tRBXASSERT(root == this);\n"
+      "}\n",
+      "Body::~Body()\n"
+      "{\n"
+      "\tif (parent)\n"
+      "\t\tsetParent(NULL);\n"
+      "\tdelete simBody;\n"
+      "\tsimBody = NULL;\n"
+      "}\n")
+patch(BODY_CPP,
+      "void Body::makeCofmDirty()\n"
+      "{\n"
+      "\tif (cofm && cofm->getIsDirty())\n"
+      "\t{\n"
+      "\t\t// TODO: this match is super fake, i dont know roblox managed to create this cursed assertion\n"
+      "\t\t#if defined(_DEBUG) || defined(_RELEASEASSERT)\n"
+      "\t\tif (Debugable::assertAction == Debugable::CrashOnAssert)\n"
+      "\t\t{\n"
+      "\t\t\tif (parent)\n"
+      "\t\t\t\tparent->validateParentCofmDirty();\n"
+      "\t\t\tRBXASSERT(getRootSimBody()->getDirty());\n"
+      "\t\t}\n"
+      "\t\t#endif\n"
+      "\t}\n"
+      "\telse\n"
+      "\t{\n"
+      "\t\tif (getParent())\n"
+      "\t\t{\n"
+      "\t\t\tRBXASSERT(!simBody);\n"
+      "\t\t\tgetParent()->makeCofmDirty();\n"
+      "\t\t}\n"
+      "\t\telse\n"
+      "\t\t{\n"
+      "\t\t\tRBXASSERT(root == this);\n"
+      "\t\t\tif (simBody)\n"
+      "\t\t\t\tsimBody->makeDirty();\n"
+      "\t\t}\n"
+      "\t\tif (cofm)\n"
+      "\t\t{\n"
+      "\t\t\tcofm->makeDirty();\n"
+      "\t\t\tRBXASSERT(numChildren() > 0);\n"
+      "\t\t}\n"
+      "\t\telse\n"
+      "\t\t{\n"
+      "\t\t\tRBXASSERT(!numChildren());\n"
+      "\t\t}\n"
+      "\t}\n"
+      "}\n",
+      "void Body::makeCofmDirty()\n"
+      "{\n"
+      "\tif (cofm && cofm->getIsDirty())\n"
+      "\t{\n"
+      "\t}\n"
+      "\telse\n"
+      "\t{\n"
+      "\t\tif (getParent())\n"
+      "\t\t\tgetParent()->makeCofmDirty();\n"
+      "\t\telse if (simBody)\n"
+      "\t\t\tsimBody->makeDirty();\n"
+      "\t\tif (cofm)\n"
+      "\t\t\tcofm->makeDirty();\n"
+      "\t}\n"
+      "}\n")
+patch(BODY_CPP,
+      "void Body::step(float dt, bool throttling)\n"
+      "{\n"
+      "\tRBXASSERT(!getParent());\n"
+      "\tRBXASSERT(simBody);\n\n"
+      "\tif (throttling && canThrottle)\n"
+      "\t{\n"
+      "\t\tsimBody->resetAccumulators();\n"
+      "\t}\n"
+      "\telse\n"
+      "\t{\n"
+      "\t\tsimBody->step(dt);\n\n"
+      "\t\tpv = cofm == NULL ? simBody->pv : simBody->getOwnerPV();\n"
+      "\t\tadvanceStateIndex();\n"
+      "\t}\n"
+      "}\n",
+      "void Body::step(bool throttling)\n"
+      "{\n"
+      "\tif (throttling && canThrottle)\n"
+      "\t{\n"
+      "\t\tsimBody->resetAccumulators();\n"
+      "\t}\n"
+      "\telse\n"
+      "\t{\n"
+      "\t\tsimBody->step();\n"
+      "\t\tpv = cofm == NULL ? simBody->pv : simBody->getOwnerPV();\n"
+      "\t\tadvanceStateIndex();\n"
+      "\t}\n"
+      "}\n")
+patch(BODY_CPP,
+      "void Body::setParent(Body* newParent)\n"
+      "{\n"
+      "\tRBXASSERT(!newParent || newParent->getParent() != this);\n"
+      "\tRBXASSERT(newParent != this);\n\n"
+      "\tif (parent != newParent)\n"
+      "\t{\n",
+      "void Body::setParent(Body* newParent)\n"
+      "{\n"
+      "\tif (parent != newParent)\n"
+      "\t{\n")
+patch(BODY_CPP,
+      "\t\tif (getParent())\n"
+      "\t\t{\n"
+      "\t\t\tRBXASSERT(root == getParent()->getRoot());\n"
+      "\t\t\tRBXASSERT(!simBody);\n"
+      "\t\t\tparent->onChildRemoved(this);\n"
+      "\t\t}\n"
+      "\t\telse\n"
+      "\t\t{\n"
+      "\t\t\tRBXASSERT(root = this);\n"
+      "\t\t\tRBXASSERT(simBody);\n"
+      "\t\t\tdelete simBody;\n"
+      "\t\t\tsimBody = NULL;\n"
+      "\t\t}\n",
+      "\t\tif (getParent())\n"
+      "\t\t{\n"
+      "\t\t\tparent->onChildRemoved(this);\n"
+      "\t\t}\n"
+      "\t\telse\n"
+      "\t\t{\n"
+      "\t\t\tdelete simBody;\n"
+      "\t\t\tsimBody = NULL;\n"
+      "\t\t}\n")
+patch(BODY_CPP,
+      "\t\tBody* myRoot = getParent() ? getParent()->calcRoot() : this;\n"
+      "\t\tmyRoot->advanceStateIndex();\n"
+      "\t\tresetRoot(myRoot);\n"
+      "\t}\n"
+      "}\n",
+      "\t\tBody* myRoot = getParent() ? getParent()->calcRoot() : this;\n"
+      "\t\tmyRoot->advanceStateIndex();\n"
+      "\t\troot = myRoot;\n"
+      "\t\tfor (int i = 0; i < children.size(); i++)\n"
+      "\t\t\tchildren[i]->resetRoot(myRoot);\n"
+      "\t}\n"
+      "}\n")
+patch(BODY_CPP,
+      "void Body::setPv(const PV& _pv)\n"
+      "{\n"
+      "\tif (parent)\n"
+      "\t{\n"
+      "\t\tRBXASSERT(0);\n"
+      "\t}\n"
+      "\telse\n"
+      "\t{\n"
+      "\t\tpv = _pv;\n"
+      "\t\tif (simBody)\n"
+      "\t\t\tsimBody->makeDirty();\n"
+      "\t\tadvanceStateIndex();\n"
+      "\t}\n"
+      "\tRBXASSERT(Math::longestVector3Component(pv.position.translation) < 1000000.0);\n"
+      "\tRBXASSERT(Math::isOrthonormal(pv.position.rotation));\n"
+      "\tRBXASSERT(!Math::isNanInfDenormVector3(pv.position.translation));\n"
+      "\tRBXASSERT(!Math::isNanInfDenormVector3(pv.velocity.linear));\n"
+      "\tRBXASSERT(!Math::isNanInfDenormVector3(pv.velocity.rotational));\n"
+      "}\n",
+      "void Body::setPv(const PV& _pv)\n"
+      "{\n"
+      "\tif (!parent)\n"
+      "\t{\n"
+      "\t\tpv = _pv;\n"
+      "\t\tif (simBody)\n"
+      "\t\t\tsimBody->makeDirty();\n"
+      "\t\tadvanceStateIndex();\n"
+      "\t}\n"
+      "}\n")
+patch(BODY_CPP,
+      "void Body::resetRoot(RBX::Body* newRoot)\n"
+      "{\n"
+      "\tRBXASSERT(newRoot == calcRoot());\n"
+      "\troot = newRoot;\n",
+      "void Body::resetRoot(RBX::Body* newRoot)\n"
+      "{\n"
+      "\troot = newRoot;\n")
+patch(BODY_CPP,
+      "void Body::onChildRemoved(RBX::Body* child)\n"
+      "{\n"
+      "\tRBXASSERT(cofm);\n"
+      "\tchildren.fastRemove(child);\n",
+      "void Body::onChildRemoved(RBX::Body* child)\n"
+      "{\n"
+      "\tchildren.fastRemove(child);\n")
+# setMeInParent(RBX::Link*) is declared in Body.h but never defined in the tree; 00614380.
+patch(BODY_CPP,
+      "\tif (getParent())\n"
+      "\t{\n"
+      "\t\tmeInParent = _meInParent;\n"
+      "\t\tmakeCofmDirty();\n"
+      "\t\troot->advanceStateIndex();\n"
+      "\t}\n"
+      "\telse\n"
+      "\t{\n"
+      "\t\tRBXASSERT(0);\n"
+      "\t}\n"
+      "}\n",
+      "\tif (getParent())\n"
+      "\t{\n"
+      "\t\tmeInParent = _meInParent;\n"
+      "\t\tmakeCofmDirty();\n"
+      "\t\troot->advanceStateIndex();\n"
+      "\t}\n"
+      "\telse\n"
+      "\t{\n"
+      "\t\tRBXASSERT(0);\n"
+      "\t}\n"
+      "}\n\n"
+      "void Body::setMeInParent(RBX::Link* value)\n"
+      "{\n"
+      "\tif (link && link != value)\n"
+      "\t\tlink->setBody(NULL);\n"
+      "\tif (getParent())\n"
+      "\t{\n"
+      "\t\tlink = value;\n"
+      "\t\tvalue->setBody(this);\n"
+      "\t\tmakeCofmDirty();\n"
+      "\t\troot->advanceStateIndex();\n"
+      "\t}\n"
+      "}\n")
+# 00614b40 is ?initialize@@YAXXZ: a plain `new Body()` into a global Body* (0x97bec4).
+patch(BODY_CPP,
+      "Body* Body::getWorldBody()\n"
+      "{\n"
+      "\tstatic Body b = Body();\n"
+      "\treturn &b;\n"
+      "}\n",
+      "static Body* gWorldBody = NULL;   // 2008: the global Body* at 0x97bec4\n\n"
+      "static void initialize()           // 00614b40 ?initialize@@YAXXZ\n"
+      "{\n"
+      "\tgWorldBody = new Body();\n"
+      "}\n\n"
+      "Body* Body::getWorldBody()\n"
+      "{\n"
+      "\tif (!gWorldBody)\n"
+      "\t\tinitialize();\n"
+      "\treturn gWorldBody;\n"
+      "}\n")
 # Independently accepted promotions are declarative edits, never uploaded Python.
 # The server verifier validates anchors and all ABI/runtime gates before publishing.
 native_promotions = out.with_name("native-promotions.json")

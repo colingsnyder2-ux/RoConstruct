@@ -20,7 +20,7 @@ WRITABLE_OUT = {"RbxgsApp", "tests"}  # out/ folders a snapshot build or milesto
 WATCHDOG_SECONDS = 20 * 60  # cold baselines take minutes; stacks only after this long without a verdict
 
 # Compiler, matcher and gate implementation. Queue/UI/webhook code does not build native artifacts.
-NATIVE_CODE = ("__init__", "analyze", "clients", "fingerprint", "integration", "integration_context", "integration_verify", "native_promotions", "libs", "match",
+NATIVE_CODE = ("__init__", "analyze", "clients", "fingerprint", "integration", "integration_context", "integration_policy", "integration_verify", "native_promotions", "native_adapt", "native_refs", "libs", "match",
                "rebuild", "rebuild_install", "repair", "rtti", "setup", "telemetry", "worker")
 
 
@@ -148,7 +148,7 @@ def input_paths(root, live_only=False):
     out = root / "rebuild" / CLIENT / "out"
     paths.extend(p for p in out.glob("*/verified/*") if p.is_file())
     paths.extend(p for p in out.glob("*/*.json") if p.is_file()
-                 and p.name != "report.json")
+                 and p.name not in ("report.json", "owned-symbols.json"))
     paths.extend(p for p in out.glob("*/report.json") if p.parent.name != "RbxgsApp")
     for path in sorted((root / "rebuild" / CLIENT / "out").glob("*/linked/*")):
         if path.parent.parent.name != "RbxgsApp" and path.is_file() and path.suffix in (".obj", ".lib"):
@@ -349,6 +349,34 @@ def ownership_diagnostics(before, after, elsewhere=()):
             "uncovered_losses": sorted(old - new - set(elsewhere))}
 
 
+def check_native_refs(root, report, gains):
+    from roc.native_refs import validate
+    return validate(root,report,gains)
+
+
+def check_credited(root, report, addresses):
+    """Tooling refreshes may correct inventories, but never erase accepted native bodies."""
+    wanted = set(addresses)
+    if not wanted:
+        return dict(checked=0, modules={})
+    missing = wanted.copy()
+    checked = {}
+    candidates = [report]
+    for path in (Path(root)/'rebuild'/CLIENT/'out').glob('*/report.json'):
+        if path.parent.name != report['module']:
+            other = json.loads(path.read_text())
+            if other.get('linked') and other.get('test_exit') == 0:
+                candidates.append(other)
+    for current in candidates:
+        present = missing & set(current.get('owned_addrs', []))
+        if present:
+            checked[current['module']] = check_native_refs(root, current, present)
+            missing -= present
+    if missing:
+        raise ValueError('Accepted native bodies missing from refreshed baseline: '+', '.join(sorted(missing)))
+    return dict(checked=len(wanted), modules=checked)
+
+
 def linked_preflight(root, patches, output, log=print):
     """Contributor proof uses the independent verifier's snapshots, build and gates."""
     root, output = Path(root), Path(output)
@@ -386,6 +414,7 @@ def linked_preflight(root, patches, output, log=print):
         elsewhere = other_module_owned(candidate)
         receipt.update(ownership_diagnostics(before, after, elsewhere))
         check_gates(after, before, elsewhere)
+        receipt["references"] = check_native_refs(candidate,after["report"],receipt["gains"])
         new_distinct = set(receipt["gains"]) - set(before["linked_addresses"])
         if after["distinct"] - before["distinct"] != len(new_distinct):
             raise ValueError("Linked coverage changed outside the submitted module")
@@ -402,7 +431,7 @@ def linked_preflight(root, patches, output, log=print):
     return receipt
 
 
-def check_gates(result, baseline=None, elsewhere=frozenset()):
+def check_gates(result, baseline=None, elsewhere=frozenset(), require_gain=True):
     """elsewhere: addresses another module still owns; RbxgsApp may stop claiming them (e.g. a coincidental
     match that a real layout fix moves away) because global coverage does not drop."""
     report = result["report"]
@@ -421,10 +450,14 @@ def check_gates(result, baseline=None, elsewhere=frozenset()):
     if not baseline:
         return
     before, after = set(baseline["report"]["owned_addrs"]), set(report["owned_addrs"])
-    if not after - before or before - after - set(elsewhere):
+    if (require_gain and not after - before) or before - after - set(elsewhere):
         raise ValueError("Need new module ownership without losing existing owned bodies")
     if result["distinct"] < baseline["distinct"]:
         raise ValueError("Global distinct coverage regressed")
+    check_abi(result, baseline)
+
+
+def check_abi(result, baseline):
     old_sizes = {r["class"]: r for r in baseline["size"]["rows"]}
     new_sizes = {r["class"]: r for r in result["size"]["rows"]}
     if set(old_sizes) - set(new_sizes):
@@ -564,6 +597,10 @@ def verify(promotions, job):
         atomic_json(index_file, index)
     else:
         before = json.loads(baseline_file.read_text())
+    with promotions.store.lock:
+        credited = {row[0] for row in promotions.store.db.execute(
+            "SELECT addr FROM integration_credit WHERE client=?", (CLIENT,))}
+    check_credited(cache, before['report'], credited)
     atomic_json(promotions.directory / "progress-native.json", {"addresses": before["linked_addresses"]})
     candidate = promotions.directory / "jobs" / job["id"]
     if candidate.exists():
@@ -589,10 +626,11 @@ def verify(promotions, job):
     old_owned = set(before["report"]["owned_addrs"])
     gains = set(after["report"]["owned_addrs"]) - old_owned
     new_distinct = gains - set(before["linked_addresses"])
+    references = check_native_refs(candidate,after["report"],gains)
     if after["distinct"] - before["distinct"] != len(new_distinct):
         raise ValueError("Linked coverage changed outside the submitted module")
     atomic_json(candidate / "integration-native.json", sorted(set(before["linked_addresses"]) | gains))
-    return {"accepted": True, "gains": sorted(gains),
+    return {"accepted": True, "gains": sorted(gains), "references": references,
             "losses": sorted(old_owned - set(after["report"]["owned_addrs"])),  # each still owned by another module
             "new_distinct": sorted(new_distinct), "owned_before": len(old_owned),
             "owned_after": len(after["report"]["owned_addrs"]),
