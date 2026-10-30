@@ -439,6 +439,14 @@ namespace RBX
 }
 """)
 
+# 0064dee0/0064df30: direct Tool pointer calls match 2008 shared_ptr lowering.
+patch("App/v8datamodel/ToolMouseCommand.cpp",
+      "\t\ttool->activate();\n",
+      "\t\ttool.get()->activate();\n")
+patch("App/v8datamodel/ToolMouseCommand.cpp",
+      "\t\ttool->deactivate();\n",
+      "\t\ttool.get()->deactivate();\n")
+
 # --- util/StateStack.h: undo/redo stack (bounded; rbxgs declares the members only) ---
 append("App/include/util/StateStack.h", """
 // rebuild overlay: StateStack members rbxgs declares but never defines
