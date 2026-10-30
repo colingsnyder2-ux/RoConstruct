@@ -1,5 +1,7 @@
 import json
 import struct
+import subprocess
+import sys
 
 import pytest
 
@@ -92,3 +94,25 @@ def test_cached_twins_stay_ambiguous(native_target):
     expected = [('_f', 6, ['00500000', '00500010'])]
     assert rebuild._ownership_rows('test', obj, cache, context) == (expected, False)
     assert rebuild._ownership_rows('test', obj, cache, context) == (expected, True)
+
+
+def test_loaded_code_identity_stable_across_process_hash_seeds():
+    program = '''
+import json
+from roc import rebuild
+def proof(value):
+    return value in {'alpha', 'beta', 'gamma'}
+print(json.dumps(rebuild._ownership_code(proof.__code__)))
+'''
+    import os
+    outputs = [subprocess.check_output([sys.executable, '-c', program],
+                                      env=dict(os.environ, PYTHONHASHSEED=seed))
+               for seed in ('1', '2')]
+    assert outputs[0] == outputs[1]
+
+
+def test_context_stable_after_matcher_execution(native_target):
+    _, _, _, obj, _ = native_target
+    before = rebuild._ownership_context('test')
+    rebuild.pair_object('test', obj.read_bytes())
+    assert rebuild._ownership_context('test') == before

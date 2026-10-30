@@ -8,13 +8,13 @@ import json
 import hashlib
 import functools
 import inspect
-import marshal
 import collections
 import os
 import re
 import struct
 import subprocess
 import sys
+import types
 from pathlib import Path
 
 from roc import match, setup
@@ -493,9 +493,22 @@ def pair_object(client, obj, symbols=None):
     return [(s,n,matches[s]) for s,n,_ in rows if s in requested]
 
 
+def _ownership_code(value):
+    """Stable loaded-code identity, independent of marshal reference flags or set order."""
+    if isinstance(value, types.CodeType):
+        return [value.co_code.hex(), getattr(value, "co_exceptiontable", b"").hex(),
+                value.co_names, value.co_varnames, value.co_freevars, value.co_cellvars,
+                value.co_argcount, value.co_posonlyargcount, value.co_kwonlyargcount,
+                value.co_nlocals, value.co_flags, [_ownership_code(c) for c in value.co_consts]]
+    if isinstance(value, (tuple, frozenset)):
+        items = [_ownership_code(v) for v in value]
+        return [type(value).__name__, sorted(items, key=repr) if isinstance(value, frozenset) else items]
+    return [type(value).__name__, value.hex() if isinstance(value, bytes) else repr(value)]
+
+
 def _ownership_context(client):
     """Fingerprint the actual matcher inputs and loaded implementation once per build."""
-    digest = hashlib.sha256(b"native-ownership-cache-v1")
+    digest = hashlib.sha256(b"native-ownership-cache-v2")
     base, image = match._image(client)
     digest.update(str((sys.version, base)).encode())
     digest.update(image)
@@ -507,7 +520,7 @@ def _ownership_context(client):
             function = inspect.unwrap(value)
             if inspect.isfunction(function) and function.__module__ == module.__name__:
                 digest.update(name.encode())
-                digest.update(marshal.dumps(function.__code__))
+                digest.update(json.dumps(_ownership_code(function.__code__)).encode())
     # A changed functions table/image must also retire the process-local index.
     _INDEX.pop(client, None)
     _paired_addresses.cache_clear()
