@@ -238,6 +238,27 @@ server batches can finish. Closing the browser tab leaves the dashboard running;
 exiting the dashboard stops its process trees. Verify final server job states
 when resuming instead of assuming interrupted local monitoring cancelled a batch.
 
+## Share near-exact drafts
+
+Contributors may upload useful near-exact source patches for review with
+`roc native-promote submit packet.json`. Use the current server baseline revision,
+`client: "2008-06"`, actual writer `model`, `targets` containing exact-mined
+addresses being reconstructed, `evidence` describing the local score/diff and
+remaining mismatch, `declarations: []`, and anchored `patches` in the existing
+promotion packet schema (see docs/INTEGRATION.md). The mined reference may be
+exact while the submitted native implementation is still partial.
+
+Save the returned packet ID and report `needs-owner-review`, zero native credits.
+This uploads draft source without changing the accepted baseline. Host review
+does not bypass exact code/data, linked ownership, runtime or ABI gates; a draft
+must satisfy those gates before integration. Do not blindly queue unchanged
+near-exacts for verification. Reject stale baseline packets and repair their
+anchors before retrying. Keep local source/proof files until confirmed uploaded.
+
+Automatic Integrator runs also send bounded partial-score observations to
+`/v1/integration/partials`, retaining failed uploads in `partial-reports.json`.
+Those observations contain hashes and metrics, not draft source or native credit.
+
 ## Missing native types or build units
 
 Do not bypass the invented-type gate or upload `@replace` adoption directives.

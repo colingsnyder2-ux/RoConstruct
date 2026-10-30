@@ -52,6 +52,20 @@ def test_owner_review_requires_exact_hash_and_queue_is_idempotent(host):
     assert host.store.db.execute('SELECT COUNT(*) FROM integration_credit').fetchone()[0] == 0
 
 
+def test_near_exact_source_draft_is_uploaded_without_queue_or_credit(host):
+    data = packet()
+    data.update(declarations=[], evidence='Local native score 98%; branch condition still differs.',
+                patches={'App/Clothing.cpp': [['return 1;', 'return 2;']]})
+    result = promotion.receive(host, 'alice', data)
+    assert result['state'] == 'needs-owner-review'
+    assert result['verified'] is False and result['credits'] == 0
+    stored = host.store.db.execute('SELECT packet FROM integration_type_proposals WHERE id=?', (result['id'],)).fetchone()
+    assert json.loads(stored[0]) == data
+    assert host.store.db.execute('SELECT COUNT(*) FROM integration_jobs').fetchone()[0] == 0
+    assert host.store.db.execute('SELECT COUNT(*) FROM integration_credit').fetchone()[0] == 0
+    assert not host.wake.is_set()
+
+
 def test_packet_rejects_unproven_abi_and_changed_baseline(host):
     data = packet()
     data['declarations'][0]['size'] = 400
