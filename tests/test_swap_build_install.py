@@ -13,6 +13,37 @@ swap_build = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(swap_build)
 
 
+@pytest.mark.parametrize('directive', [
+    '#pragma include_alias("native/Header.h", "private.cpp")',
+    '#pragma include_alias(<native/Header.h>, <private.cpp>)',
+])
+def test_alias_header_gate_and_overlay_replay_support_both_delimiters(tmp_path, monkeypatch, directive):
+    unit = tmp_path / 'roc_native.cpp'
+    unit.write_text(directive + '\n#include "native/Header.h"\n')
+    monkeypatch.setitem(swap_build.TREES, 'RbxgsApp', tmp_path)
+    monkeypatch.setattr(swap_build, 'adopted', lambda module: {})
+    assert not swap_build.compatible('RbxgsApp', unit.name)
+    assert swap_build.overlay_candidate('RbxgsApp', unit.name)
+    assert swap_build.ALIAS.sub('', unit.read_text()).strip() == '#include "native/Header.h"'
+    monkeypatch.setattr(swap_build, 'adopted', lambda module: {'native/Header.h': 'private.cpp'})
+    assert swap_build.compatible('RbxgsApp', unit.name)
+    monkeypatch.setattr(swap_build.libs, 'fetch', lambda recipe: tmp_path)
+    assert not swap_build.compatible('Ogre', unit.name, 'fixture')
+
+
+@pytest.mark.parametrize('directive', [
+    '#pragma include_alias(<native/Header.h>, "private.cpp")',
+    '#pragma include_alias("native/Header.h", <private.cpp>)',
+])
+def test_mixed_alias_delimiters_never_authorize_a_header(tmp_path, monkeypatch, directive):
+    unit = tmp_path / 'roc_native.cpp'
+    unit.write_text(directive)
+    monkeypatch.setitem(swap_build.TREES, 'RbxgsApp', tmp_path)
+    monkeypatch.setattr(swap_build, 'adopted', lambda module: {'native/Header.h': 'private.cpp'})
+    assert not swap_build.compatible('RbxgsApp', unit.name)
+    assert not swap_build.overlay_candidate('RbxgsApp', unit.name)
+
+
 def layer(folder, addrs):
     folder.mkdir(parents=True)
     (folder / "swaps.json").write_text(json.dumps({"swaps": [{"obj": "0000.obj", "keep": {"s%s" % a: a for a in addrs}}]}))

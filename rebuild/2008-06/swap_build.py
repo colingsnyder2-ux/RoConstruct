@@ -35,7 +35,7 @@ def of_module(module, recipe, file=""):
 OUT = ROOT / "rebuild" / CLIENT / "out"
 
 
-ALIAS = re.compile(r'#pragma\s+include_alias\(\s*"([^"]+)"\s*,\s*"([^"]+)"\s*\)')
+ALIAS = re.compile(r'#pragma\s+include_alias\(\s*(?:"([^"\r\n]+)"\s*,\s*"([^"\r\n]+)"|<([^>\r\n]+)>\s*,\s*<([^>\r\n]+)>)\s*\)')
 TREES = {"RbxgsApp": ROOT / "tools" / "rbxgs" / "Client" / "App"}
 PATCHES = {"RbxgsApp": ROOT / "rebuild" / CLIENT / "patches" / "rbxgs-client.json"}
 
@@ -64,7 +64,8 @@ def compatible(module, unit, recipe=None):
     src = TREES.get(module, Path("-")) / unit
     if not src.exists():
         return False
-    aliases = ALIAS.findall(src.read_text(errors="replace"))
+    aliases = [(old or angle_old, new or angle_new)
+               for old, new, angle_old, angle_new in ALIAS.findall(src.read_text(errors="replace"))]
     have = adopted(module)
     return bool(aliases) and all(have.get(h) == r.rsplit("/", 1)[-1] for h, r in aliases)
 
