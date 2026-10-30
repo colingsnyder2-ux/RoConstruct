@@ -371,6 +371,16 @@ def test_explicit_class_can_revisit_done_hint_but_not_parked_blocker(promotions)
     assert promotions.claim('alice', 'pc', unit='RBX::Second')['claims'] == []
 
 
+def test_revisit_parked_reopens_only_when_requested(promotions):
+    queue = promotions.root / 'rebuild/2008-06/out/agent-queue.json'
+    queue.parent.mkdir(parents=True)
+    queue.write_text(json.dumps({'done': ['RBX::First', 'RBX::Third'],
+                                 'parked': {'RBX::Second': 'needs layout proof'}}))
+    assert promotions.claim('alice', 'pc')['claims'] == []
+    claims = promotions.claim('alice', 'pc', revisit_parked=True)['claims']
+    assert [claim['unit'] for claim in claims] == ['RBX::Second']
+
+
 @pytest.mark.parametrize('mode',['absolute','relative','drive','unicode-case'])
 def test_input_fingerprint_fast_labels_preserve_original_digest(tmp_path, mode):
     import hashlib

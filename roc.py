@@ -2797,6 +2797,7 @@ def main(argv=None):
         (["--no-local-check"], {"action": "store_true", "help": "submit: defer local checking when local toolchain cannot establish result"}),
         (["--count"], {"type": int, "default": 1, "help": "claim 1-1024 classes; --all submits them as one verified batch"}),
         (["--targets"], {"type": int, "help": "claim enough classes for this many targets (up to 100000), one baseline"}),
+        (["--revisit-parked"], {"action": "store_true", "help": "next: explicitly retry parked eligible classes after reviewing their blockers"}),
         (["--batch"], {"help": "saved batch JSON from next; select its claims for submit/renew/release"}),
         (["--unit"], {}), (["--claim"], {}), (["--all"], {"action": "store_true"}),
         (["--reason"], {"help": "blocker for explicit park (two hours); release frees immediately; unpark frees your owned parked claims"}),

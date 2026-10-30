@@ -320,11 +320,11 @@ class Promotions:
                                   (result["revision"], json.dumps(result)))
         return result
 
-    def catalog(self, requested_unit=None):
+    def catalog(self, requested_unit=None, revisit_parked=False):
         with self.catalog_lock:
-            return self._catalog(requested_unit)
+            return self._catalog(requested_unit, revisit_parked)
 
-    def _catalog(self, requested_unit):
+    def _catalog(self, requested_unit, revisit_parked):
         path = self.root / "rebuild" / CLIENT / "manifests" / "functions.json"
         report = path.parent.parent / "out" / "RbxgsApp" / "report.json"
         queue = path.parent.parent / "out" / "agent-queue.json"
@@ -366,7 +366,7 @@ class Promotions:
             groups = defaultdict(list)
             state = json.loads(queue.read_text()) if queue.exists() else {}
             self.catalog_done = set(state.get('done', []))
-            skipped = set(state.get("parked", {}))
+            self.catalog_parked = set(state.get("parked", {}))
             from roc import match
             facts = match._functions_at(analysis_path, *analysis_stamp) if analysis_stamp else {}
             for f in json.loads(path.read_text(encoding="utf-8")):
@@ -379,13 +379,15 @@ class Promotions:
                 unit = f.get("unit") or ""
                 m = re.fullmatch(r"(?:RBX|G3D|Ogre)::(?:\w+::)*(\w+)", unit)
                 if (f.get("score") == 100
-                        and unit not in skipped and f["addr"] not in owned and m
+                        and f["addr"] not in owned and m
                         and (f["size"] >= 24 or 6 <= f["size"] < 24 and symbol_unit(self.native_names().get(f["addr"], {}).get("symbol")) == unit)
                         and m[1] in classes and eligible(unit, f["addr"], self.native_names(), self.native_paths)):
                     groups[unit].append(f)
             self.catalog_rows = sorted(groups.items(), key=lambda x: (-len(x[1]), x[0]))
             self.catalog_key = key
-        return [(unit, rows) for unit, rows in self.catalog_rows if unit not in self.catalog_done or unit == requested_unit]
+        return [(unit, rows) for unit, rows in self.catalog_rows
+                if (unit not in self.catalog_done or unit == requested_unit)
+                and (revisit_parked or unit not in self.catalog_parked)]
 
     def native_names(self):
         """rebuild/2008-06/out/native-names.json ({addr: {symbol, score, strings}}), reloaded when it changes."""
@@ -461,7 +463,8 @@ class Promotions:
             packet["protected_native"] = protected if protected is not None else self.protected_native()
         return packet
 
-    def claim(self, user, worker, count=1, unit=None, targets=None, compact=False, mode='balanced', units=None):
+    def claim(self, user, worker, count=1, unit=None, targets=None, compact=False, mode='balanced', units=None,
+              revisit_parked=False):
         if mode not in ('easy', 'balanced', 'large'):
             raise ValueError('Invalid native selection mode')
         if type(count) is not int or not 1 <= count <= MAX_CLAIMS:
@@ -479,7 +482,10 @@ class Promotions:
         if not re.fullmatch(r"[A-Za-z0-9_.-]{2,32}", user) or not worker or len(worker) > 100:
             raise ValueError("Need a valid user and worker identity")
         revision = self.baseline()["revision"]
-        candidates = self.catalog(unit) if unit else self.catalog()
+        if revisit_parked:
+            candidates = self.catalog(unit, True) if unit else self.catalog(revisit_parked=True)
+        else:
+            candidates = self.catalog(unit) if unit else self.catalog()
         from roc.integration_context import rank
         abi_path = self.root / 'rebuild' / CLIENT / 'manifests/abi-evidence.json'
         abi = json.loads(abi_path.read_text()) if abi_path.exists() else {}
@@ -954,7 +960,8 @@ def command(args):
         result = api.call("/v1/integration/claim", {"user": user,
             "worker": user + "@" + socket.gethostname()[:40] + ":" + identity[:12],
             "count": args.count, "unit": args.unit, "targets": getattr(args, "targets", None),
-            "compact": bulk, "mode": getattr(args, 'mode', 'balanced')}, **({"timeout": 300} if bulk else {}))
+            "compact": bulk, "mode": getattr(args, 'mode', 'balanced'),
+            "revisit_parked": getattr(args, 'revisit_parked', False)}, **({"timeout": 300} if bulk else {}))
         for claim in result["claims"]:
             if "baseline" not in claim:
                 claim["baseline"] = result["baselines"][claim["base_revision"]]
@@ -998,7 +1005,8 @@ def command(args):
             if getattr(args, "targets", None) and total < args.targets:
                 print("Requested %d targets; fewer eligible unclaimed targets available." % args.targets)
         if not result["claims"]:
-            print("No unclaimed eligible native classes available.")
+            suffix = " (including parked classes)." if getattr(args, 'revisit_parked', False) else "; try --revisit-parked to retry parked classes."
+            print("No unclaimed eligible native classes available" + suffix)
         return
 
     if action in ("submit", "renew", "release", "park", "unpark"):

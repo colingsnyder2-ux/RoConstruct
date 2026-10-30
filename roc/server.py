@@ -868,9 +868,10 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
                     if path.endswith("/claim"):
                         if integration.worker_error:
                             return self.send(503, {"error": "Native verifier unavailable: " + integration.worker_error})
-                        result = integration.claim(user, str(body.get("worker", "")),
-                                                   body.get("count", 1), body.get("unit"),
-                                                   body.get("targets"), body.get("compact", False), body.get('mode', 'balanced'), body.get("units"))
+                        claim_args = (user, str(body.get("worker", "")), body.get("count", 1), body.get("unit"),
+                                      body.get("targets"), body.get("compact", False), body.get('mode', 'balanced'), body.get("units"))
+                        result = integration.claim(*claim_args, **({'revisit_parked': True}
+                                                                   if body.get('revisit_parked') else {}))
                     elif path.endswith("/submit"):
                         result = integration.submit(user, body)
                     elif path.endswith('/partials'):

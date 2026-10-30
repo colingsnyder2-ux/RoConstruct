@@ -18,6 +18,7 @@ differences remain explicit; the old counts are not claimed as reproduced.
 
 ```text
 roc integrate next --mode balanced
+roc integrate next --revisit-parked
 roc integrate context --claim ID --address 00512340
 roc integrate check --claim ID --fast
 roc integrate check --claim ID --bytes
@@ -59,6 +60,12 @@ promotion merge loop, run `integrate check --bytes`, and remove it after a
 rejection. Submit only when the local receipt has no mismatches, no lost bodies,
 and an established target set. This avoids stale temporary generator patches,
 unnecessary server verification, and false ownership-loss rejections.
+
+When the normal queue is empty, `integrate next --revisit-parked` makes one
+explicit retry pass over parked eligible classes. It does not unpark another
+contributor's live lease or bypass local/server gates. If that pass is empty,
+the queue is exhausted until source, analysis, accepted baseline, or park state
+changes.
 
 ## Evidence and accounting
 
