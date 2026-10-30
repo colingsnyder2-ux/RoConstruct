@@ -90,7 +90,10 @@ def source_packet(base, candidate, report, prior, added, model, evidence, known)
             changes[name] = edits[len(before):] if edits[:len(before)] == before else dict(before=before, after=edits)
     if integration.merge_patches(base['overlay'], changes) != candidate:
         raise ValueError('Candidate removes accepted source paths')
-    targets = sorted(set(prior.get('targets', [])) | set(added))
+    witnessed = set(added) & known
+    if not witnessed:
+        raise ValueError('No new owned targets have known exact-mined witnesses')
+    targets = sorted(set(prior.get('targets', [])) | witnessed)
     if not targets or not set(targets) <= set(report['owned_addrs']) or not set(targets) <= known:
         raise ValueError('Packet witnesses need current ownership and known exact-mined targets')
     return dict(client='2008-06', base_revision=base['revision'], model=model, targets=targets,
@@ -264,6 +267,9 @@ def finish(config, directory, folder, log):
         known = {f['addr'] for f in json.loads((root / 'rebuild' / client / 'manifests/functions.json').read_text()) if f.get('score') == 100}
         prior = read('prior_packet') if config.get('prior_packet') else {}
         evidence = config['evidence']
+        unmined = sorted(set(added) - known)
+        if unmined:
+            evidence += '\nLocally verified gains without exact-mined witnesses (not packet targets): ' + ', '.join(unmined)
         if base['revision'] != expected['revision']:
             evidence += '\nAutomatically rebased independent accepted recipes onto ' + base['revision']
             if prior:

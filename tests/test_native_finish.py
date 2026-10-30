@@ -101,6 +101,16 @@ def test_packet_cannot_remove_accepted_path():
                              dict(owned_addrs=['00400000']), {}, ['00400000'], 'model', 'evidence', {'00400000'})
 
 
+def test_packet_uses_only_known_new_witnesses():
+    base = dict(revision='base', overlay={})
+    report = dict(owned_addrs=['00400000', '00400001'])
+    packet = finish.source_packet(base, {}, report, {}, ['00400000', '00400001'],
+                                  'model', 'evidence', {'00400000'})
+    assert packet['targets'] == ['00400000']
+    with pytest.raises(ValueError, match='No new owned targets'):
+        finish.source_packet(base, {}, report, {}, ['00400001'], 'model', 'evidence', {'00400000'})
+
+
 def test_nonconflicting_rebase_retains_both_changes_and_is_idempotent():
     before = dict(generator='same', overlay={'App/A.cpp': [['base', 'accepted']]})
     current = dict(generator='same', overlay={'App/A.cpp': [['base', 'accepted'], ['parameter', 'default10']]})
