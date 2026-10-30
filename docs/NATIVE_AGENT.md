@@ -14,6 +14,12 @@ local matches, not independently accepted server credits. Multiple genuine
 template specializations can share identical target bytes; this does not prove
 which specialization the original client used.
 
+`roc.library_verify` provides an allowlisted validation gate for a future
+server-owned Ogre build: passing baseline and candidate, complete layer checks,
+no lost ownership, and forced linked code/data proofs for every gain. It does
+not expose a submission route or grant credit. The server must build and collect
+its own evidence in an isolated snapshot before calling it.
+
 This guide's manual loop uses `roc native-try targets / evidence / check / submit`.
 The GUI's continuous session uses `roc integrator`. Keep these supported paths;
 `roc integrate work` and `roc integrate packet` do not exist. Earlier workflow
