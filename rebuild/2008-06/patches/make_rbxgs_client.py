@@ -421,6 +421,24 @@ namespace RBX
 }
 """)
 
+# --- 0064ef90 KeyButton input handling ---
+append("App/gui/GUI.cpp", """
+#include "gui/Button.h"
+
+namespace RBX
+{
+	// 0064ef90: KeyButton tracks its declared keyCode/keyIsDown fields then defers to Widget.
+	GuiResponse KeyButton::process(const GuiEvent& event)
+	{
+		if (event.eventType == UIEvent::KEY_DOWN && event.key == keyCode)
+			keyIsDown = true;
+		if (event.eventType == UIEvent::KEY_UP && event.key == keyCode)
+			keyIsDown = false;
+		return Widget::process(event);
+	}
+}
+""")
+
 # --- util/StateStack.h: undo/redo stack (bounded; rbxgs declares the members only) ---
 append("App/include/util/StateStack.h", """
 // rebuild overlay: StateStack members rbxgs declares but never defines
