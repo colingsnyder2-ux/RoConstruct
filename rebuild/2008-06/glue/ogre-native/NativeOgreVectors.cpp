@@ -18,3 +18,8 @@ template class std::map<Ogre::String,Ogre::ConfigOption>;
 template class std::map<Ogre::String,Ogre::GpuConstantDefinition>;
 template class std::map<Ogre::ResourceHandle,Ogre::ResourcePtr>;
 template class Ogre::SharedPtr<Ogre::Resource>;
+
+#include <OgreShadowCameraSetup.h>
+#include <OgreGpuProgram.h>
+template class Ogre::SharedPtr<Ogre::ShadowCameraSetup>;
+template class Ogre::SharedPtr<Ogre::GpuProgramParameters>;

@@ -1,3 +1,5 @@
+#include <OgreShadowCameraSetup.h>
+#include <OgreGpuProgram.h>
 #include <map>
 #include <OgreConfigOptionMap.h>
 #include <OgreGpuProgram.h>
@@ -21,5 +23,7 @@ int main() {
  if(options.find("mode")==options.end() || options["mode"].currentValue!="fast") return 7;
  std::map<Ogre::String,Ogre::GpuConstantDefinition> constants; constants["color"]=Ogre::GpuConstantDefinition(); if(constants.size()!=1) return 8;
  std::map<Ogre::ResourceHandle,Ogre::ResourcePtr> resources; resources[1]=Ogre::ResourcePtr(); if(resources.size()!=1 || !resources[1].isNull()) return 9;
+ { Ogre::ShadowCameraSetupPtr setup(new Ogre::DefaultShadowCameraSetup()); Ogre::ShadowCameraSetupPtr copy(setup); if(setup.isNull() || setup.useCount()!=2) return 10; }
+ { Ogre::GpuProgramParametersSharedPtr gpu(new Ogre::GpuProgramParameters()); Ogre::GpuProgramParametersSharedPtr copy(gpu); if(gpu.isNull() || gpu.useCount()!=2) return 11; }
  return 0;
 }
