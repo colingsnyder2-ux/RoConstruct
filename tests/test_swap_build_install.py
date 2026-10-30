@@ -339,3 +339,15 @@ def test_rejected_replay_keeps_live_resolution_metadata(tmp_path):
     assert "kept existing" in swap_build.install(live, built)
     for name, content in metadata.items():
         assert (live / name).read_text() == content
+
+
+def test_native_context_refresh_preserves_resolution_metadata_without_gain(tmp_path):
+    live, built = tmp_path / "verified", tmp_path / "verified.building"
+    layer(live, ["a"])
+    layer(built, ["a"])
+    (live / "excluded.json").write_text('["bad_swap"]')
+    (live / "helpers.json").write_text('{"helper": "0000.obj"}')
+
+    assert "installed" in swap_build.install(live, built, refresh_native=True)
+    assert json.loads((live / "excluded.json").read_text()) == ["bad_swap"]
+    assert json.loads((live / "helpers.json").read_text()) == {"helper": "0000.obj"}
