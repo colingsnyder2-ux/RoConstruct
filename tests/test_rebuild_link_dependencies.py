@@ -244,6 +244,27 @@ def test_overlay_root_resolves_recipe_tree_without_changing_vendor_sources(tmp_p
     assert (source / 'GApp.cpp').read_text() == 'namespace G3D { main(); }'
 
 
+def test_retired_overlay_unit_cannot_override_another_layers_provider(tmp_path, monkeypatch):
+    tree = tmp_path / 'tree'
+    tree.mkdir()
+    patches = tmp_path / 'patches.json'
+    patches.write_text(json.dumps({'names.cpp': [['', 'int names;']], 'keep.cpp': [['', 'int keep;']]}))
+    monkeypatch.setattr(rebuild, 'ROOT', tmp_path)
+    monkeypatch.setattr(rebuild, 'workspace', lambda _: tmp_path)
+    spec = {'root': str(tree), 'patches': 'patches.json'}
+    _, overlay = rebuild.build_overlay('test', 'App', spec)
+    layer = overlay.parent / 'layer-source'
+    layer.mkdir()
+    for name, source in [('names', overlay / 'names.cpp'), ('keep', overlay / 'keep.cpp'), ('vendor', tree / 'vendor.cpp')]:
+        (layer / (name + '.command.json')).write_text(json.dumps({'source': str(source)}))
+        (layer / (name + '.obj')).write_bytes(b'compiled')
+    patches.write_text(json.dumps({'keep.cpp': [['', 'int keep;']]}))
+    rebuild.build_overlay('test', 'App', spec)
+    assert not (layer / 'names.obj').exists()
+    assert (layer / 'keep.obj').read_bytes() == b'compiled'
+    assert (layer / 'vendor.obj').read_bytes() == b'compiled'
+
+
 def test_module_archive_layer_uses_exact_compiler_member(tmp_path, monkeypatch):
     from roc import libs
     calls = []

@@ -1155,6 +1155,11 @@ def build_overlay(client, module, spec):
         if not target.exists() or target.read_text(errors="replace") != text:
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_text(text)
+    # Retired generated units must not override live providers in another layer.
+    for command in overlay.parent.glob("layer-*/*.command.json"):
+        source = Path(json.loads(command.read_text()).get("source", ""))
+        if source.is_relative_to(overlay) and not source.exists():
+            command.with_name(command.name.removesuffix(".command.json") + ".obj").unlink(missing_ok=True)
     return root, overlay
 
 
