@@ -1336,6 +1336,9 @@ def build_module(client, name, log=print):
             build_module(client, dep, log=log)
         deps.append(dep_lib)
         pending += dep_spec.get("depends", [])
+    if spec.get("mfc_import"):
+        # Pruned mining objects can lose the header's DEFAULTLIB directive.
+        deps.append(mfc_import_lib(client))
     for dll in spec.get("import_dlls", []):
         import shutil
         deps.append(dll_import_lib(client, dll))
