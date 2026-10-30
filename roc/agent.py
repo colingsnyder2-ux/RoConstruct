@@ -1090,7 +1090,9 @@ def opencode_models():
     if not exe:
         return []
     try:
-        result = subprocess.run([exe, "models"], capture_output=True, text=True, encoding="utf-8",
+        # OpenCode 2 hides this catalog at its default log level.  Debug output
+        # still contains only public provider/model identifiers.
+        result = subprocess.run([exe, "models", "--log-level", "debug"], capture_output=True, text=True, encoding="utf-8",
                                 errors="replace", timeout=90)
     except subprocess.TimeoutExpired:
         raise ValueError("OpenCode model listing timed out; click Refresh models to try again")
