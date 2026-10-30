@@ -129,7 +129,9 @@ holding `work/server.db`. Server DB, manifests and compiled server outputs are n
 Keep one contributor checkout per concurrent agent. Preserve unsent edits when updating or syncing.
 
 Configure the contributor name and reachable group-server URL with `roc config --user NAME --server URL`
-if not already configured. Use the supplied server URL, not the owner's `localhost`. No native invitation,
+if not already configured. Use the human-provided username consistently for every claim and submission;
+for Colin's authorized agent runs, configure `roc config --user colin`. Record that identity with each job.
+A source author or model name does not replace the submitting contributor's username. Use the supplied server URL, not the owner's `localhost`. No native invitation,
 `ROC_NATIVE_TOKEN` or owner approval is required. Ask only for missing contributor identity.
 Leave `ROC_NATIVE_EVIDENCE_ROOT` unset on
 another PC; it is an optional same-machine testing override.
@@ -258,6 +260,13 @@ If doctor cannot find an installed SDK, set `ROC_WINSDK` to this PC's SDK folder
    - `roc integrate sync` after acceptance.
    - Report accepted native credit only from the server receipt. Watch an existing pending
      job rather than submitting duplicates. Do not restart a busy server to flush local work.
+   - Accepted jobs with real gains trigger the server's integration webhook automatically.
+     Include every accepted gain in the server submission; do not stop after a local compile,
+     module proof, commit or push. Those are not server acceptance receipts.
+   - Record webhook delivery/message ID when available. If delivery cannot be confirmed,
+     mark it pending or unverified and report the actual reporting problem separately from
+     native acceptance. Never claim webhook delivery from an attempted request alone.
+     Avoid posting a duplicate manual digest when the server already delivered it.
 
 This instruction changes the agent's workflow; it does not make `native-try check`
 submit automatically or change an already running agent that has not read this file.
