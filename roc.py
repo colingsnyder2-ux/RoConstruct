@@ -2776,7 +2776,7 @@ def main(argv=None):
     p.add_argument("--purge", action="store_true",
                    help="also delete clients/<name>/ and work/<name>/ (it re-downloads on demand)")
     p.set_defaults(fn=cmd_client_remove)
-    cmd("rebuild", cmd_rebuild, "2008 client rebuild: doctor | audit | module NAME (see rebuild/<client>/POLICY.md)",
+    cmd("rebuild", cmd_rebuild, "2008 native rebuild: install | doctor | audit | module NAME (sources in findings)",
         (["name"], {"help": "client, e.g. 2008-06"}),
         (["action"], {"choices": ["install", "prepare", "doctor", "audit", "review", "module", "status", "closure", "milestones", "progress", "placed"]}),
         (["target"], {"nargs": "?", "help": "module name for `module` (rebuild/<client>/modules/NAME.json)"}),

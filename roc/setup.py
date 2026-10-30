@@ -1233,7 +1233,7 @@ def try_update(log=print, timeout=60):
     """Fetch origin/main and fast-forward if behind, re-applying local edits (--autostash). Returns status."""
     if not shutil.which("git"):
         return "update skipped: git not installed"
-    if not (ROOT / ".git" / "HEAD").exists():
+    if not (ROOT / ".git").exists():
         return "update skipped: not a git checkout (run: roc update)"
     try:
         if _run("fetch", "--quiet", "origin", "main", timeout=timeout).returncode != 0:
@@ -1261,7 +1261,7 @@ def update(log=print, timeout=300):
     reset --hard only touches tracked files, so clients, work, models and settings stay."""
     if not shutil.which("git"):
         return "Git not found. Install Git, then run: roc update"
-    if not (ROOT / ".git" / "HEAD").exists():
+    if not (ROOT / ".git").exists():
         log("This copy was downloaded as a ZIP. Linking it to the repository so it can update...")
         for args in (("init", "-q"), ("remote", "add", "origin", REPOSITORY),
                      ("fetch", "--depth", "1", "origin", "main"), ("reset", "--hard", "origin/main"),

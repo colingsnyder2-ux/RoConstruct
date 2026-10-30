@@ -142,11 +142,11 @@ def test_findings_export_keeps_portable_evidence(shared_server, tmp_path, monkey
     stale.parent.mkdir(parents=True)
     stale.write_text("old guide")
     server.export_agent_findings(store)
-    folder = tmp_path / "local" / "findings" / "agent-memory"
-    assert not stale.exists()
-    assert json.loads((folder / "attempts.jsonl").read_text())["reported_by"] == "alice"
-    assert (folder / "context" / "docs" / "AGENT_GUIDE.md").is_file()
-    assert not (folder / "README.md").exists()
+    folder = tmp_path / 'local/findings/data'
+    assert (folder / 'lessons.json').is_file()
+    assert not (folder / 'attempts.jsonl').exists()
+    assert stale.exists()  # cleanup archives historical files separately
+    assert store.agent_memory()['records'][0]['reported_by'] == 'alice'
 
 
 def test_rejected_record_is_skipped_and_offline_keeps_queue(shared_server, tmp_path, monkeypatch):
