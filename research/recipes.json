@@ -25879,5 +25879,42 @@
       "evidence": "RoConstruct-findings2008-06/verification/ogre-native-render-20261029"
     },
     "rejected": "Global precise loses4/36 old-context targets; precise Vector3 header loses other fast bodies, so select only exact1219B light root there with identical class layout. Missing default SDK Log crashes rendering initialization. SDK renderObjects uses its base visitor while native renderScene initializes Rbx visitor; require native61B override, never patch visitor state. Initial hardware-trace harness must handle WOW64 single-step notifications."
+  },
+  "ogre-native-entity-20261029": {
+    "op": "fanout",
+    "client": "2008-06",
+    "hypothesis": "Replace preprocessed declarations and unsafe LightList downcast in the2391B native renderSingleObject with genuine Ogre headers, constructor-proven RbxSubEntity and RTTI/allocation-proven RbxSceneNode receiver. Reproduce local view/projection helpers and exercise real GPU light iteration with verified batch counts.",
+    "sources": [
+      {
+        "recipe": "ogre-1.4.5-dll",
+        "files": [
+          "roc_native_scene_entity_f7f3fb8e07cd1c02.cpp",
+          "roc_native_scene_entity_2135d4e65a59b065.cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast"
+        ]
+      }
+    ],
+    "result": {
+      "status": "40 native scene roots;337 forced roots and four GPU light modes pass",
+      "new_verified": 0,
+      "new_local_integrations": 3,
+      "forced_roots": 337,
+      "prior_addresses_preserved": 334,
+      "native_replayed": 95,
+      "placed_distinct": 411,
+      "gpu_batches": [
+        1,
+        1,
+        2,
+        1
+      ],
+      "evidence": "RoConstruct-findings2008-06/verification/ogre-native-entity-20261029"
+    },
+    "rejected": "A derived begin override incorrectly made every begin out-of-line, yielding2446 vs2391 bytes. Use a genuine wrapper object with one distinct forwarding operation, eliminating the mined unsafe base-to-derived downcast. SDK setIteratePerLight defaults to point-only filtering; two lights then produce one batch. Explicit all-light mode must yield2 batches and the filtered mode1. Cached-transform/subentity geometry branch remains unverified."
   }
 }
