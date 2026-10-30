@@ -25808,5 +25808,35 @@
       "evidence": "RoConstruct-findings2008-06/verification/ogre-native-factories-20261029"
     },
     "rejected": "Initial15-root precise profile preserves14 but existing shadow query becomes504 instead of520 bytes; retain fast. Old public collection-helper aliases fail dependency closure. Four owner migrations are prior reproduced targets, not four new function gains."
+  },
+  "ogre-native-teardown-20261029": {
+    "op": "fanout",
+    "client": "2008-06",
+    "hypothesis": "Unify camera construction/destruction, clearScene and both world-geometry overloads in the native constructor-proven RbxSceneManager class. DLL/exe vtable correspondence proves signatures and owners, correcting old filename-body stream alias. Real windowless rgdx plugin supplies camera-removal notifications. Validate actual camera and full scene teardown, preserving all prior forced addresses.",
+    "sources": [
+      {
+        "recipe": "ogre-1.4.5-dll",
+        "files": [
+          "roc_native_scene_teardown_4139150e949211ec.cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast"
+        ]
+      }
+    ],
+    "result": {
+      "status": "28 coherent native scene roots;332 forced roots and D3D9 camera/scene teardown pass",
+      "new_verified": 0,
+      "new_local_integrations": 1,
+      "forced_roots": 332,
+      "prior_addresses_preserved": 331,
+      "native_replayed": 83,
+      "placed_distinct": 411,
+      "evidence": "RoConstruct-findings2008-06/verification/ogre-native-teardown-20261029"
+    },
+    "rejected": "Do not use the stream signature for filename-only world geometry: identical throwing bodies hide unused-argument ABI errors, but vtable slots prove distinct interfaces. Camera exception line was233 not232; retain target provenance. SDK-name hasCamera/hasSceneNode aliases collide with imports under real query calls; migrate actual Rbx owners rather than drop prior roots."
   }
 }
