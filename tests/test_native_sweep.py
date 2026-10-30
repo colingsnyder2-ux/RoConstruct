@@ -407,11 +407,10 @@ def test_linked_preflight_heartbeat_propagates_gate_failure_and_stops(monkeypatc
 
 
 def test_ownership_checks_twins_outside_discovery_targets(monkeypatch):
-    monkeypatch.setattr(sweep.match, 'coff_functions', lambda obj: [('f', b'body', []), ('unrelated', b'other', [])])
-    def pair(client, functions):
-        assert [f[0] for f in functions] == ['f']
+    def pair_object(client, obj, symbols):
+        assert symbols == {'f'}
         return [('f', 4, ['00500000', '00500010'])]
-    monkeypatch.setattr(sweep.rebuild, 'pair', pair)
+    monkeypatch.setattr(sweep.rebuild, 'pair_object', pair_object)
     assert sweep.ownership_candidates(b'obj', [{'addr': '00500000', 'symbol': 'f'}]) == {
         '00500000': ['00500000', '00500010']}
 

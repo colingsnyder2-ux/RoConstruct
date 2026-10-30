@@ -663,8 +663,7 @@ def ownership_candidates(obj, hits, client='2008-06'):
     if not hits:
         return {}
     symbols = {h["symbol"] for h in hits}
-    candidates = {symbol: addrs for symbol, _, addrs in rebuild.pair(
-        client, [f for f in match.coff_functions(obj) if f[0] in symbols])}
+    candidates = {symbol: addrs for symbol, _, addrs in rebuild.pair_object(client, obj, symbols)}
     return {h["addr"]: candidates.get(h["symbol"], []) for h in hits}
 
 

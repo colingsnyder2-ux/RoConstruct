@@ -165,10 +165,23 @@ namespace RBX
 	XmlElement* Network::Server::write() { return NULL; }  // STUB
 
 	// sound statics
+#ifndef ROC_ARRAY_CLASS_NAMES
 	const char* Soundscape::sSoundChannel = "SoundChannel";
 	const char* Soundscape::sSoundService = "SoundService";
+#endif
 
 	// value statics
+#ifdef ROC_ARRAY_CLASS_NAMES
+	char sBoolValue[] = "BoolValue";
+	char sBrickColorValue[] = "BrickColorValue";
+	char sCFrameValue[] = "CFrameValue";
+	char sColor3Value[] = "Color3Value";
+	char sFloatValue[] = "FloatValue";
+	char sIntValue[] = "IntValue";
+	char sObjectValue[] = "ObjectValue";
+	char sStringValue[] = "StringValue";
+	char sVector3Value[] = "Vector3Value";
+#else
 	const char* sBoolValue = "BoolValue";
 	const char* sBrickColorValue = "BrickColorValue";
 	const char* sCFrameValue = "CFrameValue";
@@ -178,6 +191,7 @@ namespace RBX
 	const char* sObjectValue = "ObjectValue";
 	const char* sStringValue = "StringValue";
 	const char* sVector3Value = "Vector3Value";
+#endif
 
 	// sim job stage template instance
 }

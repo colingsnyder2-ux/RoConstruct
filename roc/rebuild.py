@@ -389,6 +389,31 @@ def pair(client, funcs):
             for name, body, relocs in funcs]
 
 
+def pair_object(client, obj, symbols=None):
+    """Whole-binary code candidates qualified by the object's referenced data."""
+    functions = [f for f in match.coff_functions(obj) if symbols is None or f[0] in symbols]
+    rows = pair(client, functions)
+    index = None
+    result = []
+    for symbol, size, addresses in rows:
+        qualified, complete = [], {}
+        if addresses:
+            if index is None:
+                index = match._coff_data_index(obj)
+            refs = match.coff_data_refs(obj, symbol, index=index)
+            for address in addresses:
+                code, _, _ = match.target(client, address)
+                checked, bad = match.data_check(client, address, code, refs)
+                if not bad:
+                    qualified.append(address)
+                    complete[address] = len(checked) == len(refs)
+            # Missing target data must not turn code twins into a unique owner.
+            if len(addresses) > 1 and len(qualified) == 1 and not complete[qualified[0]]:
+                qualified = addresses
+        result.append((symbol, size, qualified))
+    return result
+
+
 def build_library(client, recipe, files, flags, name, cl=BUILD, jobs=6, log=print):
     """Compile each authentic file whole into out/<name>/, archive <name>.lib, and write <name>.tudiff.json."""
     import concurrent.futures as cf
@@ -1051,7 +1076,7 @@ def build_module(client, name, log=print):
     linked = out / "linked"
     funcs, owned_addrs, owned16_addrs = 0, set(), set()
     for obj in sorted(linked.glob("*.obj")):
-        rows = pair(client, match.coff_functions(obj.read_bytes()))
+        rows = pair_object(client, obj.read_bytes())
         funcs += len(rows)
         owned_addrs.update(h[0] for _, _, h in rows if len(h) == 1)  # COMDAT copies repeat across objects
         owned16_addrs.update(h[0] for _, s, h in rows if len(h) == 1 and s >= 16)

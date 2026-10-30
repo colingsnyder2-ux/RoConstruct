@@ -34,7 +34,9 @@ namespace RBX
 
 	namespace Stats
 	{
+#ifndef ROC_ARRAY_CLASS_NAMES
 		const char* sStatsItem = "StatsItem";
+#endif
 	}
 
 	Reflection::SignalDesc<RunService, void(float, float)> RunService::event_Stepped("Stepped", "time", "step");
