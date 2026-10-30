@@ -362,14 +362,14 @@ def cmd_analyze(a):
 
 def _hot_reseed(name):
     """Tell a group server running on this PC to reload the new table (no restart)."""
-    from roc import server
-    if not server.ADMIN_KEY.exists():
+    admin_key = ROOT / "work" / "state" / "admin.key"
+    if not admin_key.exists():
         return
     import urllib.request
     s = settings()
     request = urllib.request.Request("http://127.0.0.1:8765/v1/admin/reseed", json.dumps({"client": name}).encode(),
                                      {"Content-Type": "application/json", "X-Roc-Token": s.get("token") or "",
-                                      "X-Roc-Admin": server.ADMIN_KEY.read_text().strip()})
+                                      "X-Roc-Admin": admin_key.read_text().strip()})
     try:
         with urllib.request.urlopen(request, timeout=1800) as response:
             result = json.loads(response.read())
