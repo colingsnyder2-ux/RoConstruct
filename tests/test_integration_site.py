@@ -4,6 +4,21 @@ import sqlite3
 from roc import integration_site
 
 
+def test_owned_inventory_is_disjoint_from_accepted_and_excludes_data(tmp_path):
+    out = tmp_path / 'rebuild/2008-06/out'
+    for module in ('First', 'Second', 'CodegenAnalogs'):
+        folder = out / module;folder.mkdir(parents=True)
+        addresses = ['00400000', '00400001', '00400003'] if module != 'CodegenAnalogs' else ['00400002']
+        (folder / 'report.json').write_text(json.dumps(dict(module=module, owned_addrs=addresses)))
+    work = tmp_path / 'work/2008-06';work.mkdir(parents=True)
+    (work / 'functions.jsonl').write_text('\n'.join(json.dumps(dict(addr='0040000'+str(n),size=10,kind='data' if n==3 else 'code')) for n in range(4)))
+    groups, functions = integration_site.coverage(tmp_path, {'00400001':100,'00400002':100}, {'00400000'})
+    assert groups['integrated']['functions'] == 1
+    assert groups['owned_waiting']['functions'] == 1
+    assert groups['exact_waiting']['functions'] == 1
+    assert sum(row['functions'] for row in groups.values()) == len(functions) == 3
+
+
 def test_site_groups_and_merged_receipts(tmp_path):
     work = tmp_path / 'work'
     (work / 'integration').mkdir(parents=True)
@@ -30,6 +45,7 @@ def test_site_groups_and_merged_receipts(tmp_path):
     db.close()
     data = integration_site.build(tmp_path, log=lambda _: None)
     assert data['groups'] == {
+        'owned_waiting': {'functions': 0, 'bytes': 0},
         'integrated': {'functions': 1, 'bytes': 10}, 'exact_waiting': {'functions': 1, 'bytes': 20},
         'partial': {'functions': 1, 'bytes': 30}, 'unmined': {'functions': 1, 'bytes': 40}}
     assert len(data['jobs']) == 1

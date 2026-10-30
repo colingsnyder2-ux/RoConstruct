@@ -2638,7 +2638,7 @@ def menu_hand():
 # listed by name under Advanced (`roc <command> --help` for its options).
 COMMAND_GROUPS = [
     ("Start here", ["install", "doctor", "config", "setup", "gui", "client-fetch", "analyze", "pull"]),
-    ("Match and submit", ["integrate", "research", "mass", "auto", "xcopy", "libs", "lib-fetch", "lib-info", "libs-bundle", "similar", "donor",
+    ("Match and submit", ["integrate", "native-finish", "research", "mass", "auto", "xcopy", "libs", "lib-fetch", "lib-info", "libs-bundle", "similar", "donor",
                           "check", "check-batch", "classify", "next", "work", "scout", "packet", "release",
                           "claim", "submit", "agent-context", "agent-block", "agent-metrics"]),
     ("Workers and server", ["worker", "integrator", "status", "host", "server", "link", "tasks", "cpu-worker", "cluster"]),
@@ -2924,6 +2924,7 @@ def main(argv=None):
         (["name"], {}), (["addr"], {}), (["--limit"], {"type": int, "default": 10}),
         (["--band"], {"type": float, "default": 0.25, "help": "max size difference as a fraction"}))
     __import__("roc.native_try").native_try.register(cmd)
+    __import__("roc.native_finish").native_finish.register(cmd)
     __import__("roc.native_promotions").native_promotions.register(cmd)
     __import__("roc.native_search").native_search.register(cmd)
     cmd("standins", lambda a: __import__("roc.standins").standins.main([a.name, a.addr]),

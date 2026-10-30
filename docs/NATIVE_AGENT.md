@@ -32,6 +32,47 @@ and server capabilities rather than assuming a package version supplies an actio
 Compiler smoke success establishes compiler readiness only; report native credit
 only after independent server acceptance.
 
+## Finish an authored module batch automatically
+
+Use `roc native-finish work/batch/finish.json` for each authored module batch
+in the existing private RbxgsApp checkout. It
+rebuilds all active layers, rejects compile errors or ownership losses, force-links
+the authored runtime fixture, checks gained instruction bytes in the executable
+and fresh object code/data, then optionally submits, notifies and publishes proofs.
+It reuses this checkout and takes a process lock; do not run another editor/build
+in its mutable output tree. Agent reasoning still supplies source fixes and tests.
+
+Paths below are relative to the configuration file; preserve the before report
+and accepted server baseline before editing. Use the actual writer model.
+
+```json
+{
+  "module": "rbxgs-app",
+  "before": "report-before.json",
+  "baseline": "server-base.json",
+  "test_source": "runtime.cpp",
+  "prior_packet": "previous-packet.json",
+  "user": "colin",
+  "model": "YOUR_ACTUAL_MODEL",
+  "evidence": "Native declarations, target instructions and source provenance for this batch.",
+  "submit": true,
+  "notify": true
+}
+```
+
+Omit `prior_packet` for a first proposal. Optional `server` overrides configuration;
+`public_root` points at the existing host checkout for global notification dedup.
+To publish review artifacts, add `publish_repo` for the existing Findings checkout
+and `publish_prefix` such as `2008-06/verification/native-batch-20261030`.
+Publication preserves its checkout and accepted defaults. Reruns recheck proofs,
+reuse content-addressed server proposals, deduplicate acknowledged webhooks and
+skip unchanged publications. Failure receipts and passing artifacts remain under
+`finished/` (or the configured `output`) for repair. Independent accepted recipe
+additions rebase automatically, with a saved backup and complete recheck. Conflicting
+anchors or generator changes stop for agent repair; `auto_rebase: false` disables it.
+Source proposals still require independent owner review and server acceptance;
+this command never approves a packet or grants native credit.
+
 ## Match the current GUI Integrator
 
 Choose one execution path for a mutable workspace. For the GUI, run `roc gui`,

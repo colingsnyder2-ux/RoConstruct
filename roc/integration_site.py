@@ -22,9 +22,31 @@ def readable(symbol):
     return symbol
 
 
-def coverage(root, scores, native):
+def owned_inventory(root, extra_reports=()):
+    """Unique compiled owners, including explicitly published unaccepted candidates."""
+    rows = {}
+    paths = sorted((root / 'rebuild' / CLIENT / 'out').glob('*/report.json'))
+    paths += [root / 'work/integration/owned-candidates.json',
+              root / 'local/findings/2008-06/verification/owned-candidates.json']
+    paths += list(extra_reports)
+    for path in paths:
+        if not path.exists():
+            continue
+        data = json.loads(path.read_text(encoding='utf-8'))
+        for report in data.get('reports', [data]):
+            module = report.get('module', path.parent.name)
+            if module.casefold() == 'codegenanalogs':
+                continue
+            for address in report.get('owned_addrs', []):
+                if re.fullmatch('[0-9a-f]{8}', address):
+                    rows.setdefault(address, {'module': module})
+    return rows
+
+
+def coverage(root, scores, native, owned=None):
     """Website and webhook share the same code-only function/byte denominator."""
-    groups = {key: {"functions": 0, "bytes": 0} for key in ("integrated", "exact_waiting", "partial", "unmined")}
+    owned = owned_inventory(root) if owned is None else owned
+    groups = {key: {"functions": 0, "bytes": 0} for key in ("integrated", "owned_waiting", "exact_waiting", "partial", "unmined")}
     functions = {}
     for line in (root / "work" / CLIENT / "functions.jsonl").read_text().splitlines():
         if not line.strip():
@@ -34,13 +56,13 @@ def coverage(root, scores, native):
             continue
         functions[f["addr"]] = f
         score = scores.get(f["addr"], 0)
-        key = "integrated" if f["addr"] in native else "exact_waiting" if score == 100 else "partial" if score else "unmined"
+        key = "integrated" if f["addr"] in native else "owned_waiting" if f["addr"] in owned else "exact_waiting" if score == 100 else "partial" if score else "unmined"
         groups[key]["functions"] += 1
         groups[key]["bytes"] += f["size"]
     return groups, functions
 
 
-def build(root=ROOT, log=print):
+def build(root=ROOT, log=print, output=None, extra_reports=()):
     out = root / "rebuild" / CLIENT / "out"
     native_path = root / "work/integration/progress-native.json"
     native = set(json.loads(native_path.read_text())["addresses"]) if native_path.exists() else set()
@@ -55,7 +77,8 @@ def build(root=ROOT, log=print):
                              "ORDER BY COUNT(*) DESC", (CLIENT,)).fetchall()
     finally:
         db.close()
-    groups, _ = coverage(root, scores, native)
+    owned = owned_inventory(root, extra_reports)
+    groups, functions = coverage(root, scores, native, owned)
     units = {job: unit for job, _, _, unit, _, _ in jobs}
     receipts = []
     daily = {}
@@ -84,19 +107,22 @@ def build(root=ROOT, log=print):
     data = {"client": CLIENT, "updated": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
             "groups": groups,
             "native": sorted(native),
+            "owned": sorted(set(owned) & functions.keys()),
+            "owned_waiting": sorted((set(owned) & functions.keys()) - native),
+            "ownership_note": "Nearly integrated means owned byte-exact candidates; link, runtime and server acceptance may still be pending.",
             "sources": {a: value for a, value in sources.items() if a in native},
             # addr -> [readable name, decorated symbol, rebuilt score (100 = integrated)]
             "names": {a: [readable(v["symbol"]), v["symbol"], 100 if a in native else v.get("score")] for a, v in sorted(shown.items())},
             "daily": [daily[day] for day in sorted(daily)],
             "jobs": receipts[:100],
             "leaderboard": [{"user": u, "model": m, "native_credits": n} for u, m, n in leaders]}
-    path = root / "docs/integration.json"
+    path = output or root / "docs/integration.json"
     previous = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
     history = {row["day"]: row for row in previous.get("history", [])} if previous.get("client") == CLIENT else {}
     day = datetime.now(ZoneInfo("America/New_York")).strftime("%Y-%m-%d")
     history[day] = {"day": day, "groups": data["groups"]}
     data["history"] = [history[day] for day in sorted(history)]
-    atomic_json(root / "docs/integration.json", data)
+    atomic_json(path, data)
     log("Integration site data: %d integrated, %d named" % (len(native), len(data["names"])))
     return data
 

@@ -16,6 +16,11 @@ const native = {client: "2008-06", updated: "2026-10-28 12:00 UTC", native: ["00
     {when: "2026-10-28 10:00 UTC", distinct_gains: 0, gains: 4},
   ]};
 const days = context.integrationDays(native);
+const owned = {...native, groups: {...native.groups,
+  owned_waiting: {bytes:20, functions:20}, exact_waiting:{bytes:55,functions:55}}};
+assert.match(context.integrationSummary(owned, owned.client), /class="y" style="width:20%"/);
+assert.match(context.integrationSummary(owned, owned.client), /aria-valuenow="25.00"/);
+assert.match(context.integrationDaily(owned), /Nearly integrated: 20; other exact: 55/);
 assert.deepEqual(Array.from(days, d => [d.day, d.gains, d.jobs]), [
   ["2026-10-26", 3, 1], ["2026-10-27", 0, 0], ["2026-10-28", 0, 1],
 ]);

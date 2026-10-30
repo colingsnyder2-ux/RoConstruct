@@ -430,15 +430,15 @@ function dailyGraph(days, integration = false, switcher = false) {
   const y = percent => 284 - percent * 2.4;
   const last = days.at(-1);
   const gain = d => d.gain === null ? "—" : `${d.gain > 0 ? "+" : ""}${fmt(d.gain)}`;
-  const remaining = d => Math.max(0, d.functions - d.matched - (d.partial || 0) - (integration ? d.waiting : 0));
-  const series = integration ? [["integrated", "Integrated", "#a855f7"], ["waiting", "Exact waiting", "#58a6ff"]] : [["source", "Original source", "#58a6ff"],
+  const remaining = d => Math.max(0, d.functions - d.matched - (d.partial || 0) - (integration ? d.waiting + (d.nearly || 0) : 0));
+  const series = integration ? [["integrated", "Integrated", "#a855f7"], ["nearly", "Nearly integrated", "#d29922"], ["waiting", "Other exact", "#58a6ff"]] : [["source", "Original source", "#58a6ff"],
     ["mined", "Mined", "#3fb950"], ["partial", "Partial", "#b6a04c"]];
   const count = n => n == null ? "—" : fmt(n);
   return `<div class="head"><h2><small>Daily progress</small>${integration ? "Integration" : "Mining"}</h2>
     <p>${fmt(last.matched)} / ${fmt(last.functions)} functions ${integration ? "integrated" : "matched"} · ${last.percent.toFixed(2)}% ${integration ? "of target bytes" : "complete"}.
     One stack per day (US Eastern), toward 100%. Full history since ${days[0].day}.</p></div>
     ${switcher ? sectionMode("daily", "Daily progress view") : ""}
-    <div class="panel mining-chart"><svg viewBox="0 0 ${width} 364" style="min-width:${Math.max(560, days.length * 28 + 96)}px" role="img" aria-label="Daily stacked function counts: ${integration ? "integrated, exact waiting and remaining" : "original source, mined, partial and remaining"}, zero to one hundred percent">
+    <div class="panel mining-chart"><svg viewBox="0 0 ${width} 364" style="min-width:${Math.max(560, days.length * 28 + 96)}px" role="img" aria-label="Daily stacked function counts: ${integration ? "integrated, nearly integrated, other exact and remaining" : "original source, mined, partial and remaining"}, zero to one hundred percent">
       ${[0, 20, 40, 60, 80, 100].map(p => `<line x1="56" x2="${width - 32}" y1="${y(p)}" y2="${y(p)}" stroke="var(--line2)"/>
         <text x="46" y="${y(p) + 4}" text-anchor="end">${p}%</text>`).join("")}
       ${days.map((d, i) => {
@@ -446,7 +446,7 @@ function dailyGraph(days, integration = false, switcher = false) {
         const segments = split ? series : [["matched", "Matched (source/mined split unavailable)", "#8a97a8"], series[2]];
         let bottom = 0;
         return `<g class="mining-stack" tabindex="0" role="img" aria-label="${d.day}: ${d.percent.toFixed(2)}% ${integration ? "of target bytes integrated" : "matched"}">
-          <title>${d.day}: ${fmt(d.matched)} ${integration ? "integrated" : "matched"} total / ${fmt(d.functions)} (${d.percent.toFixed(2)}%); daily change ${gain(d)}. ${integration ? `Exact waiting: ${count(d.waiting)};` : `Original source: ${count(d.source)}; mined: ${count(d.mined)}${d.estimated ? " (source/mined split estimated)" : ""}; partial: ${count(d.partial)};`} remaining: ${fmt(remaining(d))}</title>
+          <title>${d.day}: ${fmt(d.matched)} ${integration ? "integrated" : "matched"} total / ${fmt(d.functions)} (${d.percent.toFixed(2)}%); daily change ${gain(d)}. ${integration ? `Nearly integrated: ${count(d.nearly)}; other exact: ${count(d.waiting)};` : `Original source: ${count(d.source)}; mined: ${count(d.mined)}${d.estimated ? " (source/mined split estimated)" : ""}; partial: ${count(d.partial)};`} remaining: ${fmt(remaining(d))}</title>
           <rect x="${x(i)}" y="${y(100)}" width="${barWidth}" height="240" rx="3" fill="var(--panel2)"/>
           ${segments.map(([key, label, color]) => {
             const value = d[key] || 0, fraction = integration ? 100 * (d.byteGroups[key] || 0) / (d.bytes || 1) : 100 * value / d.functions, height = Math.min(100 - bottom, fraction);
@@ -484,28 +484,28 @@ function codeBar(source, mined, partial, total) {
    linked rebuild (docs/integration.json, published hourly). Same groups as the Discord integration digest. */
 function integrationBar(i, name) {
   if (!i || i.client !== name) return "";
-  const g = i.groups, total = Object.values(g).reduce((a, x) => a + x.bytes, 0) || 1;
+  const g = i.groups, nearly = g.owned_waiting || {functions:0,bytes:0}, total = Object.values(g).reduce((a, x) => a + x.bytes, 0) || 1;
   const w = n => (100 * n / total).toFixed(3) + "%";
   return `
     <div class="label">Integrated code <small>(${mb(g.integrated.bytes)} of ${mb(total)}) — ${pct(g.integrated.bytes, total)}</small></div>
-    <div class="bar native" role="progressbar" aria-label="Integrated code bytes" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${(100 * g.integrated.bytes / total).toFixed(2)}"><i class="n" style="width:${w(g.integrated.bytes)}"></i><i class="e" style="width:${w(g.exact_waiting.bytes)}"></i>
+    <div class="bar native" role="progressbar" aria-label="Integrated code bytes" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${(100 * g.integrated.bytes / total).toFixed(2)}"><i class="n" style="width:${w(g.integrated.bytes)}"></i><i class="y" style="width:${w(nearly.bytes)}"></i><i class="e" style="width:${w(g.exact_waiting.bytes)}"></i>
       <i class="u" style="width:${w(g.partial.bytes + g.unmined.bytes)}"></i></div>
     <div class="legend"><span><i style="background:#a855f7"></i>Integrated</span>
-      <span><i style="background:#58a6ff"></i>Exact waiting</span>
+      <span><i style="background:#d29922"></i>Nearly integrated</span><span><i style="background:#58a6ff"></i>Other exact</span>
       <span><i style="background:#3a3d45"></i>Not exact</span></div>
 `;
 }
 
 function integrationSection(i, name) {
   if (!i || i.client !== name) return "";
-  const g = i.groups;
+  const g = i.groups, nearly = g.owned_waiting || {functions:0,bytes:0};
   const funcs = Object.values(g).reduce((a, x) => a + x.functions, 0);
   return `
     <div class="stats">
       <div class="stat"><div class="ico">${ICON.code}</div><div><b>${fmt(g.integrated.functions)}</b><span>Integrated</span></div></div>
-      <div class="stat"><div class="ico">${ICON.chart}</div><div><b>${fmt(g.exact_waiting.functions)}</b><span>Exact waiting</span></div></div>
-      <div class="stat red"><div class="ico">${ICON.file}</div><div><b>${fmt(funcs - g.integrated.functions)}</b><span>Not integrated</span></div></div>
-    </div>`;
+      <div class="stat"><div class="ico">${ICON.chart}</div><div><b>${fmt(nearly.functions)}</b><span>Nearly integrated</span></div></div>
+      <div class="stat red"><div class="ico">${ICON.file}</div><div><b>${fmt(funcs - g.integrated.functions - nearly.functions)}</b><span>Other remaining</span></div></div>
+    </div><p class="note">Nearly integrated: owned byte-exact candidates; link, runtime and server checks may still be pending.</p>`;
 }
 
 function integrationSummary(i, name, compact = false) {
@@ -513,8 +513,9 @@ function integrationSummary(i, name, compact = false) {
   const total = Object.values(i.groups).reduce((sum, g) => sum + g.bytes, 0);
   const percent = total ? 100 * i.groups.integrated.bytes / total : 0;
   const waiting = total ? 100 * (i.groups.exact_waiting?.bytes || 0) / total : 0;
+  const nearly = total ? 100 * (i.groups.owned_waiting?.bytes || 0) / total : 0;
   return `<div class="integration-summary">${compact ? "" : `<div class="label">Integrated · ${percent.toFixed(2)}%</div>`}
-    <div class="bar native" role="progressbar" aria-label="Integrated code bytes" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${percent.toFixed(2)}"><i class="n" style="width:${percent}%"></i><i class="e" style="width:${waiting}%"></i></div></div>`;
+    <div class="bar native" role="progressbar" aria-label="Integrated code bytes" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${percent.toFixed(2)}"><i class="n" style="width:${percent}%"></i><i class="y" style="width:${nearly}%"></i><i class="e" style="width:${waiting}%"></i></div></div>`;
 }
 
 function integrationDays(i) {
@@ -555,8 +556,8 @@ function integrationDaily(i, switcher = false) {
     const functions = Object.values(row.groups).reduce((sum,g) => sum + g.functions, 0);
     const integrated = row.groups.integrated.functions, waiting = row.groups.exact_waiting.functions;
     const bytes = Object.values(row.groups).reduce((sum,g) => sum + g.bytes, 0);
-    return {day:row.day,functions,integrated,waiting,matched:integrated,bytes,
-      byteGroups:{integrated:row.groups.integrated.bytes,waiting:row.groups.exact_waiting.bytes},
+    return {day:row.day,functions,integrated,waiting,nearly:row.groups.owned_waiting?.functions,matched:integrated,bytes,
+      byteGroups:{integrated:row.groups.integrated.bytes,nearly:row.groups.owned_waiting?.bytes || 0,waiting:row.groups.exact_waiting.bytes},
       percent:bytes ? 100 * row.groups.integrated.bytes / bytes : 0,
       gain:index ? integrated - rows[index-1].groups.integrated.functions : null};
   });
@@ -569,8 +570,9 @@ function sectionMode(key, label) {
 
 function integrationCoverageBar(row) {
   const w = bytes => row.bytes ? 100 * bytes / row.bytes : 0;
-  return `<div class="bar native" aria-label="${pct(row.integratedBytes, row.bytes)} integrated, ${pct(row.waitingBytes, row.bytes)} exact waiting">
-    <i class="n" style="width:${w(row.integratedBytes)}%"></i><i class="e" style="width:${w(row.waitingBytes)}%"></i><i class="u" style="width:${w(row.bytes - row.integratedBytes - row.waitingBytes)}%"></i></div>`;
+  const nearly = row.nearlyBytes || 0;
+  return `<div class="bar native" aria-label="${pct(row.integratedBytes, row.bytes)} integrated, ${pct(nearly, row.bytes)} nearly integrated, ${pct(row.waitingBytes, row.bytes)} other exact">
+    <i class="n" style="width:${w(row.integratedBytes)}%"></i><i class="y" style="width:${w(nearly)}%"></i><i class="e" style="width:${w(row.waitingBytes)}%"></i><i class="u" style="width:${w(row.bytes - row.integratedBytes - nearly - row.waitingBytes)}%"></i></div>`;
 }
 
 /* One click opens the console, which then asks the two things that matter:
@@ -723,7 +725,7 @@ function parseFilter(text, units) {
 
 const MINING_LEGEND = `<span><i style="background:#58a6ff"></i>original source</span><span><i style="background:#3fb950"></i>mined match</span>
       <span><i style="background:#216841"></i>partial source</span><span><i style="background:#3a3d45"></i>source pending</span>`;
-const NATIVE_LEGEND = `<span><i style="background:#a855f7"></i>integrated</span><span><i style="background:#58a6ff"></i>exact, waiting</span>
+const NATIVE_LEGEND = `<span><i style="background:#a855f7"></i>integrated</span><span><i style="background:#d29922"></i>nearly integrated</span><span><i style="background:#58a6ff"></i>other exact</span>
       <span><i style="background:#d29922"></i>partial</span><span><i style="background:#3a3d45"></i>unmined</span>`;
 
 function color(score, original, harness) {
@@ -840,10 +842,11 @@ function classify(data) {
 
 function libraryTable(data, integration = false, switcher = false) {
   const integrated = new Set(integrationData?.native || []);
-  const blank = () => ({n: 0, m: 0, b: 0, mb: 0, sb: 0, pb: 0, parts: new Map(), fs: new Set()});
+  const nearly = new Set(integrationData?.owned_waiting || []);
+  const blank = () => ({n: 0, m: 0, b: 0, mb: 0, sb: 0, pb: 0, nb: 0, nf: 0, parts: new Map(), fs: new Set()});
   const add = (r, f) => {
     r.n++; r.b += f[1];
-    if (integration) { if (integrated.has(hex(f[0]))) {r.m++;r.mb+=f[1];} else if(f[2]===100) r.pb+=f[1]; }
+    if (integration) { if (integrated.has(hex(f[0]))) {r.m++;r.mb+=f[1];} else if(nearly.has(hex(f[0]))) {r.nf++;r.nb+=f[1];} else if(f[2]===100) r.pb+=f[1]; }
     else if (f[2] === 100) { r.m++; r.mb += f[1]; if (f[5]) r.sb += f[1]; } else if (f[2] > 0) r.pb += f[1];
   };
   const rows = new Map(), kinds = classify(data);
@@ -858,7 +861,7 @@ function libraryTable(data, integration = false, switcher = false) {
   data.groups = new Map();  // "lib.part" -> [title, Set of funcs], for the map button
   const bySize = m => [...m].sort((a, b) => b[1].b - a[1].b);
   const cells = r => `<td>${fmt(r.m)} / ${fmt(r.n)}</td><td>${pct(r.m, r.n)}</td>
-      <td>${pct(r.mb, r.b)} <small>of ${mb(r.b)}</small></td><td>${integration ? integrationCoverageBar({bytes:r.b,integratedBytes:r.mb,waitingBytes:r.pb}) : codeBar(r.sb, r.mb-r.sb,r.pb,r.b)}</td>`;
+      <td>${pct(r.mb, r.b)} <small>of ${mb(r.b)}</small></td><td>${integration ? integrationCoverageBar({bytes:r.b,integratedBytes:r.mb,nearlyBytes:r.nb,waitingBytes:r.pb}) : codeBar(r.sb, r.mb-r.sb,r.pb,r.b)}</td>`;
   return `<div class="head"><h2><small>Breakdown</small>Libraries</h2><p>Code rebuilt from source is labelled by that source; the rest by unit label (nearest RTTI class) or matched neighbours, so membership is approximate. Click a library to break it down; <b>Map</b> shows a subsection's functions on the unit map.</p></div>
     ${switcher ? sectionMode("libraries", "Library coverage view") : ""}
     <div class="table"><table id="libs"><thead><tr><th>Library</th><th>Functions</th><th>${integration ? "Integrated" : "Matched"}</th><th>Code</th><th style="width:30%">Bytes ${integration ? "integrated" : "matched"}</th></tr></thead><tbody>
@@ -866,7 +869,7 @@ function libraryTable(data, integration = false, switcher = false) {
       bySize(r.parts).map(([part, p], j) => (data.groups.set(`${i}.${j}`, [`${lib} › ${part}`, p.fs]),
         `<tr class="part" data-of="${i}" hidden><td>${esc(part)} <button class="mapbtn" data-g="${i}.${j}">Map</button></td>${cells(p)}</tr>`)).join("")).join("")}
     </tbody></table></div>
-    <div class="legend">${integration ? `<span><i style="background:#a855f7"></i>integrated</span><span><i style="background:#58a6ff"></i>exact, waiting</span><span><i style="background:#263244"></i>not exact</span>` : `<span><i style="background:#58a6ff"></i>original source</span><span><i style="background:#3fb950"></i>mined</span><span><i style="background:repeating-linear-gradient(135deg,#216841 0 5px,#193d2a 5px 10px)"></i>partial source</span>`}</div>`;
+    <div class="legend">${integration ? `<span><i style="background:#a855f7"></i>integrated</span><span><i style="background:#d29922"></i>nearly integrated</span><span><i style="background:#58a6ff"></i>other exact</span><span><i style="background:#263244"></i>not exact</span>` : `<span><i style="background:#58a6ff"></i>original source</span><span><i style="background:#3fb950"></i>mined</span><span><i style="background:repeating-linear-gradient(135deg,#216841 0 5px,#193d2a 5px 10px)"></i>partial source</span>`}</div>`;
 }
 
 function wireLibraries(onMap) {
