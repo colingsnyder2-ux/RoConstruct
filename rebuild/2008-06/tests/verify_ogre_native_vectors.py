@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 from roc import rebuild,native_finish
-r=Path.cwd();d=r/'work/ogre-native-headers-proof';d.mkdir(parents=True,exist_ok=True);out=r/'rebuild/2008-06/out';module=out/'OgreNativeHeaders';report=json.loads((module/'report.json').read_text());owners=json.loads((module/'owned-symbols.json').read_text());added=['0068e150','0068e250','0068e350','006901e0','006902a0','00699c60','004332f0','0048e410','0068e0b0','00697630']; assert set(added) <= set(report['owned_addrs'])
+r=Path.cwd();d=r/'work/ogre-native-headers-proof';d.mkdir(parents=True,exist_ok=True);out=r/'rebuild/2008-06/out';module=out/'OgreNativeHeaders';report=json.loads((module/'report.json').read_text());owners=json.loads((module/'owned-symbols.json').read_text());added=['0068e150','0068e250','0068e350','006901e0','006902a0','00699c60','004332f0','0048e410','0068e0b0','00697630','0067c5e0','0067c720','0067c890','0067c960','0067c9a0','0067d600']; assert set(added) <= set(report['owned_addrs'])
 roots=set()
 for a in added:
  for o in owners[a]:

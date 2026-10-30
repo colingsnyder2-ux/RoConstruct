@@ -1,3 +1,4 @@
+#include <OgrePlane.h>
 #include <vector>
 #include <OgreShadowTextureManager.h>
 #include <OgreSceneQuery.h>
@@ -9,5 +10,8 @@ int main() {
  if(results.size()!=3 || results[2].distance!=3.5f || results[0].movable) return 3;
  std::vector<Ogre::TexturePtr> textures; textures.push_back(Ogre::TexturePtr()); textures.resize(3); textures.erase(textures.begin());
  if(textures.size()!=2 || !textures[0].isNull()) return 4;
+ std::vector<Ogre::Plane> planes; Ogre::Plane plane; plane.normal=Ogre::Vector3(1,2,3); plane.d=4; planes.push_back(plane); planes.resize(4,plane);
+ if(planes.size()!=4 || planes[3].d!=4 || planes[0].normal.y!=2) return 5;
+ planes.erase(planes.begin()+1); if(planes.size()!=3) return 6;
  return 0;
 }

@@ -6,3 +6,6 @@ template class std::vector<Ogre::RaySceneQueryResultEntry>;
 
 template class std::vector<Ogre::TexturePtr>;
 template class Ogre::SharedPtr<Ogre::Texture>;
+
+#include <OgrePlane.h>
+template class std::vector<Ogre::Plane>;
