@@ -1,0 +1,20 @@
+{
+ "name": "jpeg",
+ "description": "IJG libjpeg 6b (recipe jpeg-6b, jmemnobs memory manager).",
+ "force_owned": true,
+ "layers": [
+  {
+   "name": "upstream",
+   "mode": "recipe",
+   "recipe": "jpeg-6b",
+   "files": "recipe",
+   "flags": "/O2 /GS- /MD",
+   "direct": true
+  }
+ ],
+ "test": "jpeg_roundtrip",
+ "test_includes": [
+  "rebuild/2008-06/out/jpeg/force",
+  "tools/libs/jpeg-6b"
+ ]
+}

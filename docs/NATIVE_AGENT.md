@@ -1,11 +1,65 @@
 # Native integration with an agent (Codex, Claude)
 
+## Current batch-first process
+
+Use the existing private contributor checkout. One writer and one build at a
+time per mutable checkout; never build in the server's or another person's
+output tree. Preserve local changes and pending work before updating RoConstruct
+or syncing the accepted server baseline. Check `roc rebuild --help` and the
+installed commands once; use `roc.cmd` on Windows or `./roc.sh` on Linux. This
+batch process takes precedence over later single-method examples.
+
+1. Start from actual module reports, linked objects, `swaps.json` and target
+   evidence. Prioritize one shared cause affecting many functions: native header
+   or class layout, compiler settings, shared inline/template definitions,
+   unresolved dependencies or address placement. Use authentic source and ABI
+   evidence; mined code is a byte-match reference, not proof of source identity.
+2. Group functions by that cause. Make one evidence-backed native change, then
+   compile the real units and compare target code and referenced data. Preserve
+   existing matches; split a failing batch and repair its cause. Do not invent
+   fields, padding, offset views or no-op implementations to make a link pass.
+3. Build and run the module, checking every layer's compile errors and the
+   forced-link fixture, not only the normal smoke test:
+
+   ```text
+   roc rebuild 2008-06 module MODULE
+   roc rebuild 2008-06 status
+   ```
+
+   For RbxgsApp, also run `roc rebuild 2008-06 milestones` and report each
+   milestone's result, including any unresolved renderer symbols.
+
+   For a single-layer module without verified swaps, `force_owned: true` forces
+   externally defined, uniquely matched object symbols through the link. Its
+   fixture must include `force_verified.h` and its test include paths must include
+   `rebuild/2008-06/out/MODULE_NAME/force`. Internal functions are not all forced
+   directly. Multi-layer or swapped modules need their existing `force_verified`
+   support and an appropriate forced fixture; `force_owned` rejects them. A
+   passing fixture proves its link and exercised behavior, not all runtime paths.
+4. Compare addresses against the prior report and the global server baseline.
+   Check object code/data, actual linked executable bytes, source identity and
+   dependencies. Resolve shared definitions or address twins with real evidence;
+   identical tiny bodies or an unpulled object alone do not establish ownership.
+   After relevant module links finish, run `roc rebuild 2008-06 placed` once;
+   its current pass handles eligible bodies of at least 16 bytes.
+5. Submit each completed passing fix or inseparable batch immediately through a
+   server-supported path. For compatible RbxgsApp source changes, use the
+   `native-try` or `native-finish` workflows below; retain job IDs and check
+   receipts. A type proposal may be quarantined for review. If a library, scoped
+   layer or required glue is unsupported by the server, save the proof and state
+   the limitation; do not claim acceptance or silently omit required source.
+6. Publish reviewable evidence and send the configured mining webhook under the
+   actual contributor when the supported progress workflow records a gain.
+   Label local owned matches as nearly integrated, not server-accepted. Report
+   local, queued, rejected and independently accepted counts separately; only
+   accepted receipts grant native credit. Keep working on the next shared cause.
+
 ## Command compatibility
 
 The `ogre-native-headers` module builds genuine Ogre 1.4.5 client-import
 header templates separately from the client subclass analogs. In a private
 worker, fetch the pinned source with `python -c "from roc import libs; libs.fetch('ogre-1.4.5')"`,
-then run `roc rebuild 2008-06 ogre-native-headers`. The TexturePtr tests use
+then run `roc rebuild 2008-06 module ogre-native-headers`. The TexturePtr tests use
 the client's `rgmain.dll` through its real imports. To recheck the 62 current
 target bodies in a forced executable, run
 `python rebuild/2008-06/tests/verify_ogre_native_vectors.py` with the repository
