@@ -9,6 +9,31 @@ from pathlib import Path
 from roc import rebuild
 
 
+def test_unchanged_source_uses_adopted_sibling_header_directory(tmp_path):
+    tree, overlay = tmp_path/'tree', tmp_path/'overlay'
+    tree.mkdir(); overlay.mkdir()
+    source = tree/'API.cpp'
+    source.write_text('#include "Client.h"\nint f(){return VALUE;}')
+    (tree/'Client.h').write_text('#define VALUE 1')
+    (overlay/'Client.h').write_text('#define VALUE 2')
+    includes, sources = rebuild._overlaid([tree], [source], (tree, overlay))
+    assert sources == [overlay/'API.cpp']
+    assert sources[0].read_bytes() == source.read_bytes()
+    assert includes == [overlay, tree]
+    assert (tree/'Client.h').read_text() == '#define VALUE 1'
+
+
+def test_adopted_source_is_never_overwritten_by_sibling_copy(tmp_path):
+    tree, overlay = tmp_path/'tree', tmp_path/'overlay'
+    tree.mkdir(); overlay.mkdir()
+    source = tree/'API.cpp'
+    source.write_text('old source')
+    (overlay/'Client.h').write_text('header')
+    (overlay/'API.cpp').write_text('accepted source patch')
+    assert rebuild._overlaid([], [source], (tree, overlay))[1] == [overlay/'API.cpp']
+    assert (overlay/'API.cpp').read_text() == 'accepted source patch'
+
+
 def test_overlay_only_source_compiles_caches_and_detects_new_original(tmp_path, monkeypatch):
     tree, overlay, output = tmp_path/'tree', tmp_path/'overlay', tmp_path/'out'
     tree.mkdir(); overlay.mkdir()

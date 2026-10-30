@@ -914,8 +914,19 @@ def _overlaid(includes, sources, overlay):
         if i.is_relative_to(root):
             inc.append(ov / i.relative_to(root))
         inc.append(i)
-    src = [ov / Path(x).resolve().relative_to(root) if Path(x).resolve().is_relative_to(root)
-           and (ov / Path(x).resolve().relative_to(root)).exists() else x for x in sources]
+    src = []
+    for original in sources:
+        path = Path(original).resolve()
+        if not path.is_relative_to(root):
+            src.append(original)
+            continue
+        target = ov / path.relative_to(root)
+        # Quoted includes search the source's folder before /I directories.
+        # An unchanged TU beside an adopted header must compile beside its twin.
+        if (not target.exists() and path.is_file() and target.parent.is_dir()
+                and any(p.suffix.lower() in ('.h', '.hpp', '.inl') for p in target.parent.iterdir())):
+            target.write_bytes(path.read_bytes())
+        src.append(target if target.exists() else original)
     return inc, src
 
 
