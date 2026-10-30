@@ -84,6 +84,7 @@ remain available. `unrecorded` means evidence is missing; it is not a model diag
 | Fetch library source | `roc lib-fetch boost-1.35.0` (recipe names: `roc libs`, `roc/libs.py`) | network | verified source in `tools/libs/` |
 | Similar exact functions | `roc similar 2008-06 ADDR` | analyze, pull | exact neighbours by shape, with local source paths |
 | Library version and history | `roc lib-info ogre-1.4.5` | - | recipe source/flags plus related lessons and experiments |
+| Class layouts and rebuild accounting | `roc rebuild 2008-06 review` | audit manifests, completed module builds | ranked snippet classes/buckets with receiver offsets and ABI evidence; vendor provenance conflicts; compiled versus linked sets; freshly checked parent-paired compiler pieces |
 | Scratch score | `roc check 2008-06 ADDR --file PATH` | compilers | score + diff, saves nothing |
 | Test many variants at once | `roc check-batch 2008-06 ADDR v1.cpp v2.cpp v3.cpp` | compilers | parallel scores, ranked best-first, winner's residue |
 | Check a shared change across assigned targets | `roc agent-check-batch 2008-06 PATH1 PATH2 --hypothesis "shared change"` | assigned sources | concurrent checks, per-target journals and preserved best sources |

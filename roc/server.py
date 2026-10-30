@@ -745,10 +745,16 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
         def do_GET(self):
             url = urlparse(self.path)
             q = {k: v[0] for k, v in parse_qs(url.query).items()}
-            if url.path in ("/v1/integration", "/v1/integration/base", "/v1/integration/evidence"):
+            if url.path in ("/v1/integration", "/v1/integration/base", "/v1/integration/evidence", "/v1/integration/context", "/v1/integration/metrics"):
                 if integration is None:
                     return self.send(503, {"error": "Native integration unavailable"})
                 try:
+                    if url.path.endswith('/metrics'):
+                        from roc.integration_policy import server_metrics
+                        return self.send(200, server_metrics(integration, float(q.get('hours', 24))))
+                    if url.path.endswith('/context'):
+                        from roc.integration_context import context
+                        return self.send(200, context(integration, q.get('claim'), q.get('addr')))
                     if url.path.endswith("/evidence"):
                         return self.send(200, integration.evidence())
                     return self.send(200, integration.baseline() if url.path.endswith("/base")
@@ -862,9 +868,10 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
                     if path.endswith("/claim"):
                         if integration.worker_error:
                             return self.send(503, {"error": "Native verifier unavailable: " + integration.worker_error})
-                        result = integration.claim(user, str(body.get("worker", "")),
-                                                   body.get("count", 1), body.get("unit"),
-                                                   body.get("targets"), body.get("compact", False))
+                        claim_args = (user, str(body.get("worker", "")), body.get("count", 1), body.get("unit"),
+                                      body.get("targets"), body.get("compact", False), body.get('mode', 'balanced'), body.get("units"))
+                        result = integration.claim(*claim_args, **({'revisit_parked': True}
+                                                                   if body.get('revisit_parked') else {}))
                     elif path.endswith("/submit"):
                         result = integration.submit(user, body)
                     elif path.endswith('/partials'):

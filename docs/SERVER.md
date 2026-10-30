@@ -106,3 +106,7 @@ separate credit are documented in [INTEGRATION.md](INTEGRATION.md). Use
 Match data sections, relink a byte-identical exe, name types and functions, swap
 third-party code for real source (Ogre, G3D, Lua, RakNet, Boost; open replacements for
 MFC, Codejock, FMOD), then port (WebAssembly, Linux, macOS).
+
+## Automatic source publishing
+
+`roc server --publish` owns the hourly source, native verification and website publication cycle. No Codex scheduler is required. One shared publish lock serializes writers; failures retry without stopping the API. `roc server --publisher-only --publisher-parent PID` runs the same publisher alongside an existing API host and exits when that host exits. Generated build output and historical experiments stay out of the findings tree.

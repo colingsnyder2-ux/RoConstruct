@@ -132,9 +132,9 @@ def test_find_functions():
     )
     funcs = find_functions(code, base, {base}, [0x1006])
     assert funcs == [
-        {"addr": "00001000", "size": 11, "relocs": [6], "calls": 1, "kind": "code"},
-        {"addr": "0000100c", "size": 3, "relocs": [], "calls": 0, "kind": "code"},
-        {"addr": "00001010", "size": 1, "relocs": [], "calls": 0, "kind": "code"},
+        {"addr": "00001000", "size": 11, "relocs": [6], "calls": 1, "kind": "code", "start_evidence": ["pointer"]},
+        {"addr": "0000100c", "size": 3, "relocs": [], "calls": 0, "kind": "code", "start_evidence": ["call"]},
+        {"addr": "00001010", "size": 1, "relocs": [], "calls": 0, "kind": "code", "start_evidence": ["aligned"]},
     ], funcs
     assert asm_shape(bytes.fromhex("8b442404c3"), 0x1000) == "mov eax, dword ptr [esp + N] ; ret"
 
@@ -1378,7 +1378,8 @@ def test_server_store():
     assert st.submit("C", "00401000", "bob", 100, "z") == (100, True)
     board = {r["user"]: r for r in st.leaderboard()}
     assert board["bob"]["matched"] == 1 and board["alice"]["points"] == 60
-    assert [r["user"] for r in st.leaderboard("C")] == ["bob", "alice"] and st.leaderboard("other") == []
+    assert board["bob"]["points"] == 40
+    assert [r["user"] for r in st.leaderboard("C")] == ["alice", "bob"] and st.leaderboard("other") == []
     assert st.lease("dave", "w4", ["C"], "ai", 4) is None  # matched one never handed out again
     assert st.examples("C", unit="A") and st.examples("C", unit="missing")
     st.db.execute("UPDATE funcs SET shape = 'same' WHERE addr = '00401000'")
@@ -1684,6 +1685,8 @@ def test_refsource_literal_ranking_ignores_wrong_unit_label(tmp_path, monkeypatc
 
 def test_refsource_compile_candidate_accepts_full_check_result(tmp_path, monkeypatch):
     from roc import clients, libs, match, refsource
+    monkeypatch.setattr(refsource, "cross_client_sources", lambda *_args, **_kwargs: [])
+    monkeypatch.setattr(refsource, "shape_client_sources", lambda *_args, **_kwargs: [])
     folder = tmp_path / "net"
     folder.mkdir()
     source = folder / "Player.cpp"
@@ -1707,6 +1710,8 @@ def test_refsource_compile_candidate_accepts_full_check_result(tmp_path, monkeyp
 
 def test_refsource_compile_retries_float_literal_source_with_fp_fast(tmp_path, monkeypatch):
     from roc import clients, libs, match, refsource
+    monkeypatch.setattr(refsource, "cross_client_sources", lambda *_args, **_kwargs: [])
+    monkeypatch.setattr(refsource, "shape_client_sources", lambda *_args, **_kwargs: [])
     folder = tmp_path / "app"
     folder.mkdir()
     source = folder / "Part.cpp"

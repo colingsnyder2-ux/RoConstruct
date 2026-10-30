@@ -9,7 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 LIBS = {"rbxgs", "rbxgs-dll", "openrbx-client", "openrbx-client-dll"}
-LIB_PREFIXES = ("xtp-11.2.2", "g3d-6.09", "boost-1.34.1", "libpng-1.2", "lua-5.1")  # library modules swap these in
+LIB_PREFIXES = ("xtp-11.2.2", "g3d-6.09", "boost-1.34.1", "libpng-1.2", "lua-5.1", "ogre-", "mfc-9.0", "atl-", "boost-1.35", "boost-1.36", "boost-1.40", "wildmagic-2-core", "templates-")  # codegen analogs stay in their own module
 OUT = ROOT / "rebuild" / "2008-06" / "out"
 
 

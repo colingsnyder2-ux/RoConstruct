@@ -59,6 +59,19 @@ def test_download_publication_preserves_remote_sources_and_local_edits(tmp_path)
     publish_downloads(root, shutil.which('git'), logs.append)
     assert git(remote, 'rev-parse', 'main') == version
     assert 'already current' in logs[-1]
+    editor = tmp_path / 'other-agent'
+    git(tmp_path, 'clone', str(remote), str(editor))
+    git(editor, 'config', 'user.email', 'test@example.invalid')
+    git(editor, 'config', 'user.name', 'Other agent')
+    (editor / 'data/NATIVE_AGENT.md').write_text('New concurrent guide instructions')
+    git(editor, 'add', 'data/NATIVE_AGENT.md')
+    git(editor, 'commit', '-m', 'Advance native guide')
+    git(editor, 'push', 'origin', 'main')
+    advanced = git(remote, 'rev-parse', 'main')
+    with pytest.raises(ValueError, match='guide advanced'):
+        publish_downloads(root, shutil.which('git'), logs.append, guide_base=version)
+    assert git(remote, 'rev-parse', 'main') == advanced
+    assert git(root, 'status', '--porcelain') == before
     package = root / 'local/findings/2008-06'
     native = package / 'src/Client/App/Widget.cpp'
     native.parent.mkdir(parents=True)

@@ -38,6 +38,7 @@ def test_auto_falls_back_to_anchored_repair_and_preserves_loss_gate(tmp_path, mo
         {'00000002'},{'00000002'},'codex:default',2,compile,matcher,
         lambda a:{'addr':a,'rebuilt_symbol':'?f@A@RBX@@QAEHXZ'},lambda _:None,{'generation':'auto'})
     assert formats == [False, True]
+    trials=[r for r in trials if r.get('mode')!='model-request']
     assert trials[0]['losses'] == ['00000002']
     assert proposal['edits'] == [['return 1;', 'return 3;']]
 
@@ -49,6 +50,7 @@ def test_one_shot_rejects_invented_types_before_compilation(monkeypatch):
     proposal,trials=native_sweep.model_proposal('App/util/A.cpp','int A::f(){return 1;}',['00000001'],
         set(),set(),'codex:default',1,compile,None,
         lambda a:{'addr':a,'rebuilt_symbol':'?f@A@RBX@@QAEHXZ'},lambda _:None,{'generation':'method'})
+    trials=[r for r in trials if r.get('mode')!='model-request']
     assert proposal is None and 'invented snippet types' in trials[0]['error']
 
 

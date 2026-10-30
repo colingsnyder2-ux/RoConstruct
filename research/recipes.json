@@ -23921,10 +23921,14 @@
     "client": "2008-06",
     "hypothesis": "Try method-scoped assertion omissions only on files with not-yet-integrated native targets; preserve every existing exact and submit one independently verified batch.",
     "native_sweep": {
-      "files": ["App/*/*.cpp"],
+      "files": [
+        "App/*/*.cpp"
+      ],
       "targets_only": true,
       "after_job": "1e2b177dff244c0491e0efee031489c9",
-      "modes": ["assertions"],
+      "modes": [
+        "assertions"
+      ],
       "apply": true,
       "submit": true,
       "model": "gpt-6",
@@ -23937,9 +23941,14 @@
     "client": "2008-06",
     "hypothesis": "Try numeric nonempty container guards, alone or with method-scoped assertion omissions; retain only exact instruction/data gains without losing existing exacts.",
     "native_sweep": {
-      "files": ["App/*/*.cpp"],
+      "files": [
+        "App/*/*.cpp"
+      ],
       "targets_only": true,
-      "modes": ["nonempty", "assertions-nonempty"],
+      "modes": [
+        "nonempty",
+        "assertions-nonempty"
+      ],
       "apply": true,
       "submit": true,
       "model": "gpt-6",
@@ -23952,10 +23961,15 @@
     "client": "2008-06",
     "hypothesis": "Try historical MSVC floating-point settings on remaining native targets, alone and with assertion omissions; retain only real native exact gains without losing existing exacts.",
     "native_sweep": {
-      "files": ["App/*/*.cpp"],
+      "files": [
+        "App/*/*.cpp"
+      ],
       "targets_only": true,
       "after_job": "95bf425f0c844159841e3e58d02cda7c",
-      "modes": ["fp-fast", "assertions-fp-fast"],
+      "modes": [
+        "fp-fast",
+        "assertions-fp-fast"
+      ],
       "apply": true,
       "submit": true,
       "model": "gpt-6.1-sol",
@@ -23968,9 +23982,14 @@
     "client": "2008-06",
     "hypothesis": "Try MSVC size optimization profiles on remaining native targets, with and without assertion omissions; save only exact code/data proposals preserving existing exacts for later baseline revalidation.",
     "native_sweep": {
-      "files": ["App/*/*.cpp"],
+      "files": [
+        "App/*/*.cpp"
+      ],
       "targets_only": true,
-      "modes": ["osize", "assertions-osize"],
+      "modes": [
+        "osize",
+        "assertions-osize"
+      ],
       "apply": false,
       "submit": false,
       "model": "gpt-6.1-sol"
@@ -23982,9 +24001,14 @@
     "client": "2008-06",
     "hypothesis": "Try equivalent conditional returns, following the proven numChildren near-miss repair; minimize to exact native methods and preserve all existing exacts.",
     "native_sweep": {
-      "files": ["App/*/*.cpp"],
+      "files": [
+        "App/*/*.cpp"
+      ],
       "targets_only": true,
-      "modes": ["ternary", "assertions-ternary"],
+      "modes": [
+        "ternary",
+        "assertions-ternary"
+      ],
       "apply": false,
       "submit": false,
       "model": "gpt-6.1-sol"
@@ -23996,9 +24020,16 @@
     "client": "2008-06",
     "hypothesis": "Try authentic C++ int and size_t loop counters, alone or with assertion omissions, to close signed-branch near misses; keep only uniquely attributable exact methods preserving baseline exacts.",
     "native_sweep": {
-      "files": ["App/*/*.cpp"],
+      "files": [
+        "App/*/*.cpp"
+      ],
       "targets_only": true,
-      "modes": ["index-int", "index-size_t", "assertions-index-int", "assertions-index-size_t"],
+      "modes": [
+        "index-int",
+        "index-size_t",
+        "assertions-index-int",
+        "assertions-index-size_t"
+      ],
       "apply": true,
       "submit": true,
       "wait": false,
@@ -24050,10 +24081,19 @@
     "client": "all",
     "hypothesis": "Run evidence-driven source transforms and compiler profiles per client, retain partials, propagate exact sibling edits and combine zero-loss witnesses. Missing authentic native profiles produce explicit blockers rather than borrowing another client's ABI.",
     "native_sweep": {
-      "files": ["App/*/*.cpp"],
+      "files": [
+        "App/*/*.cpp"
+      ],
       "targets_only": true,
-      "modes": ["assertions"],
-      "scoped_modes": ["scoped-osize", "scoped-speed", "scoped-fp", "scoped-noautoinline"],
+      "modes": [
+        "assertions"
+      ],
+      "scoped_modes": [
+        "scoped-osize",
+        "scoped-speed",
+        "scoped-fp",
+        "scoped-noautoinline"
+      ],
       "automatic_transforms": true,
       "propagate_siblings": true,
       "targeted_recipes": true,
@@ -24072,10 +24112,21 @@
     "client": "2008-06",
     "hypothesis": "Rank native near misses by measured frame/call/FP diagnostics; retain no-loss partials and test method-scoped compiler profiles. Merge compatible uniquely owned exact witnesses, without applying or submitting discoveries.",
     "native_sweep": {
-      "files": ["App/*/*.cpp"],
+      "files": [
+        "App/*/*.cpp"
+      ],
       "targets_only": true,
-      "modes": ["assertions", "fp-fast", "assertions-fp-fast"],
-      "scoped_modes": ["scoped-osize", "scoped-speed", "scoped-fp", "scoped-noautoinline"],
+      "modes": [
+        "assertions",
+        "fp-fast",
+        "assertions-fp-fast"
+      ],
+      "scoped_modes": [
+        "scoped-osize",
+        "scoped-speed",
+        "scoped-fp",
+        "scoped-noautoinline"
+      ],
       "targeted_recipes": true,
       "keep_partials": true,
       "partial_floor": 50,
@@ -24105,5 +24156,490 @@
       "wait": false
     },
     "targets": {}
+  },
+  "xtp-swap-shared-mfc-rtm-20261029": {
+    "op": "fanout",
+    "client": "2008-06",
+    "library": "XTP 11.2.2 / shared MFC 9.0 RTM",
+    "hypothesis": "Swap groups compiled with _DLL alone fail MFC C1189; genuine shared-MFC RTM recipe supplies _AFXDLL and matching imported CString ABI. Keep only byte/data exact results.",
+    "sources": [
+      {
+        "recipe": "xtp-11.2.2-shared-mfc-rtm",
+        "files": [
+          "Source/Calendar/XTPCalendarDayView.cpp"
+        ],
+        "builds": [
+          30729
+        ],
+        "flags": [
+          "/O1 /GS- /MD"
+        ],
+        "addresses": [
+          "00712b70",
+          "0074f0e0"
+        ]
+      },
+      {
+        "recipe": "xtp-11.2.2-shared-mfc-rtm",
+        "files": [
+          "Source/Calendar/XTPCalendarMAPIDataProvider.cpp"
+        ],
+        "builds": [
+          30729
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ],
+        "addresses": [
+          "0075ab30"
+        ]
+      },
+      {
+        "recipe": "xtp-11.2.2-shared-mfc-rtm",
+        "files": [
+          "Source/CommandBars/XTPControl.cpp"
+        ],
+        "builds": [
+          30729
+        ],
+        "flags": [
+          "/O1 /GS- /MD"
+        ],
+        "addresses": [
+          "007733a0"
+        ]
+      },
+      {
+        "recipe": "xtp-11.2.2-shared-mfc-rtm",
+        "files": [
+          "Source/CommandBars/XTPControlButton.cpp"
+        ],
+        "builds": [
+          30729
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ],
+        "addresses": [
+          "00713760",
+          "007178b0",
+          "007456b0"
+        ]
+      },
+      {
+        "recipe": "xtp-11.2.2-shared-mfc-rtm",
+        "files": [
+          "Source/CommandBars/XTPControlComboBox.cpp"
+        ],
+        "builds": [
+          30729
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ],
+        "addresses": [
+          "007425d0",
+          "00753970",
+          "00772be0"
+        ]
+      },
+      {
+        "recipe": "xtp-11.2.2-shared-mfc-rtm",
+        "files": [
+          "Source/CommandBars/XTPControlComboBoxExt.cpp"
+        ],
+        "builds": [
+          30729
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ],
+        "addresses": [
+          "0079a8d0"
+        ]
+      },
+      {
+        "recipe": "xtp-11.2.2-shared-mfc-rtm",
+        "files": [
+          "Source/CommandBars/XTPControlExt.cpp"
+        ],
+        "builds": [
+          30729
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ],
+        "addresses": [
+          "006ea260",
+          "006f5000",
+          "0079a730",
+          "0079a870"
+        ]
+      },
+      {
+        "recipe": "xtp-11.2.2-shared-mfc-rtm",
+        "files": [
+          "Source/CommandBars/XTPControlScrollBar.cpp"
+        ],
+        "builds": [
+          30729
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ],
+        "addresses": [
+          "00716fd0"
+        ]
+      },
+      {
+        "recipe": "xtp-11.2.2-shared-mfc-rtm",
+        "files": [
+          "Source/CommandBars/XTPImageEditor.cpp"
+        ],
+        "builds": [
+          30729
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ],
+        "addresses": [
+          "0076ed40"
+        ]
+      },
+      {
+        "recipe": "xtp-11.2.2-shared-mfc-rtm",
+        "files": [
+          "Source/CommandBars/XTPPopupBar.cpp"
+        ],
+        "builds": [
+          30729
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ],
+        "addresses": [
+          "006ee720"
+        ]
+      },
+      {
+        "recipe": "xtp-11.2.2-shared-mfc-rtm",
+        "files": [
+          "Source/CommandBars/XTPScrollBar.cpp"
+        ],
+        "builds": [
+          30729
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ],
+        "addresses": [
+          "0070fe00",
+          "00757e10",
+          "0075f370",
+          "00792be0"
+        ]
+      },
+      {
+        "recipe": "xtp-11.2.2-shared-mfc-rtm",
+        "files": [
+          "Source/CommandBars/XTPShadowsManager.cpp"
+        ],
+        "builds": [
+          30729
+        ],
+        "flags": [
+          "/O1 /GS- /MD"
+        ],
+        "addresses": [
+          "004d87f0",
+          "004d8800",
+          "004d8810",
+          "004d8820",
+          "004d8830"
+        ]
+      },
+      {
+        "recipe": "xtp-11.2.2-shared-mfc-rtm",
+        "files": [
+          "Source/Common/XTPPropExchange.cpp"
+        ],
+        "builds": [
+          30729
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ],
+        "addresses": [
+          "006fcf10"
+        ]
+      },
+      {
+        "recipe": "xtp-11.2.2-shared-mfc-rtm",
+        "files": [
+          "Source/Common/XTPSystemHelpers.cpp"
+        ],
+        "builds": [
+          30729
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ],
+        "addresses": [
+          "006e8340",
+          "006e8b50",
+          "006e8b90",
+          "006e8be0"
+        ]
+      },
+      {
+        "recipe": "xtp-11.2.2-shared-mfc-rtm",
+        "files": [
+          "Source/Common/XTPToolTipContext.cpp"
+        ],
+        "builds": [
+          30729
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ],
+        "addresses": [
+          "0070cb50"
+        ]
+      },
+      {
+        "recipe": "xtp-11.2.2-shared-mfc-rtm",
+        "files": [
+          "Source/Controls/XTColorSelectorCtrlTheme.cpp"
+        ],
+        "builds": [
+          30729
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ],
+        "addresses": [
+          "007a0c80"
+        ]
+      },
+      {
+        "recipe": "xtp-11.2.2-shared-mfc-rtm",
+        "files": [
+          "Source/Controls/XTHexEdit.cpp"
+        ],
+        "builds": [
+          30729
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ],
+        "addresses": [
+          "005d5f20"
+        ]
+      },
+      {
+        "recipe": "xtp-11.2.2-shared-mfc-rtm",
+        "files": [
+          "Source/Controls/XTShellTreeCtrlView.cpp"
+        ],
+        "builds": [
+          30729
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ],
+        "addresses": [
+          "00422a20",
+          "006db800",
+          "006db8a0",
+          "006db8d0",
+          "006db980",
+          "006dba10"
+        ]
+      },
+      {
+        "recipe": "xtp-11.2.2-shared-mfc-rtm",
+        "files": [
+          "Source/DockingPane/XTPDockingPaneManager.cpp"
+        ],
+        "builds": [
+          30729
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ],
+        "addresses": [
+          "006e5320"
+        ]
+      },
+      {
+        "recipe": "xtp-11.2.2-shared-mfc-rtm",
+        "files": [
+          "Source/DockingPane/XTPDockingPaneManager.cpp"
+        ],
+        "builds": [
+          30729
+        ],
+        "flags": [
+          "/O2 /GS- /MD /Ob1 /Oy-"
+        ],
+        "addresses": [
+          "006e5ad0"
+        ]
+      },
+      {
+        "recipe": "xtp-11.2.2-shared-mfc-rtm",
+        "files": [
+          "Source/DockingPane/XTPDockingPanePaintManager.cpp"
+        ],
+        "builds": [
+          30729
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ],
+        "addresses": [
+          "00728620"
+        ]
+      },
+      {
+        "recipe": "xtp-11.2.2-shared-mfc-rtm",
+        "files": [
+          "Source/PropertyGrid/XTPPropertyGridPaintManager.cpp"
+        ],
+        "builds": [
+          30729
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ],
+        "addresses": [
+          "007785a0"
+        ]
+      },
+      {
+        "recipe": "xtp-11.2.2-shared-mfc-rtm",
+        "files": [
+          "Source/SkinFramework/XTPSkinManager.cpp"
+        ],
+        "builds": [
+          30729
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ],
+        "addresses": [
+          "007faff0"
+        ]
+      },
+      {
+        "recipe": "xtp-11.2.2-shared-mfc-rtm",
+        "files": [
+          "Source/ReportControl/XTPReportControl.cpp"
+        ],
+        "builds": [
+          30729
+        ],
+        "flags": [
+          "/O2 /GS- /MD"
+        ],
+        "addresses": [
+          "00456fc0",
+          "00458150",
+          "006cb4b0",
+          "006cb510",
+          "006cb580",
+          "006cf0e0",
+          "006cf160",
+          "006cf3a0",
+          "006cf4a0",
+          "006cf810",
+          "006d0160",
+          "006d01b0",
+          "006d0210",
+          "006d0290",
+          "006d0460",
+          "006d06f0",
+          "006d0f00",
+          "006d0f50",
+          "006d1590",
+          "006d7ec0",
+          "006d8590",
+          "006d9b30",
+          "006db770",
+          "0074f160",
+          "0074f400",
+          "00752a30",
+          "008016f0",
+          "00801720",
+          "00801790"
+        ]
+      },
+      {
+        "recipe": "xtp-11.2.2-shared-mfc-rtm",
+        "files": [
+          "Source/SyntaxEdit/XTPSyntaxEditColorSampleText.cpp"
+        ],
+        "builds": [
+          30729
+        ],
+        "flags": [
+          "/O1 /GS- /MD"
+        ],
+        "addresses": [
+          "0045bf60"
+        ]
+      }
+    ],
+    "output": "work/swap-recovery-2026-10-29/xtp-shared",
+    "result": {
+      "date": "2026-10-29",
+      "trials": 25,
+      "addresses": 76,
+      "byte_data_exact": 76,
+      "new_verified": 0,
+      "evidence": "work/swap-recovery-2026-10-29/xtp-shared.jsonl"
+    }
+  },
+  "ogre-subentity-client-headers-20261029": {
+    "op": "fanout",
+    "client": "2008-06",
+    "library": "Ogre 1.4.5 client headers",
+    "hypothesis": "Re-emit genuine SubEntity method bodies on a real SubEntity-derived client class, preserving access rules; compare custom-client snippets before adopting.",
+    "sources": [
+      {
+        "recipe": "ogre-1.4.5-dll",
+        "files": [
+          "roc_native_subentity_6f9735b168d7275f.cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD"
+        ]
+      },
+      {
+        "recipe": "ogre-1.4.5-dll",
+        "files": [
+          "roc_native_subentity_21e9058b6879ff99.cpp"
+        ],
+        "builds": [
+          21022,
+          50727
+        ],
+        "flags": [
+          "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD"
+        ]
+      }
+    ],
+    "result": {
+      "date": "2026-10-29",
+      "trials": 3,
+      "methods": 16,
+      "new_verified": 0,
+      "status": "rejected",
+      "evidence": "work/swap-recovery-2026-10-29/subentity-scl0.json"
+    },
+    "next": "Need authentic RbxSubEntity declaration: native visibility reads +0x50, stock real headers read +0x58. Inherited friendship also prevents replaying nine parent-accessing methods. Do not invent padding or bypass access."
   }
 }

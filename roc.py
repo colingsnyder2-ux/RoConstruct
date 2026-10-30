@@ -580,6 +580,10 @@ def cmd_rebuild(a):
     if a.action == "audit":
         rebuild.audit(a.name)
         return
+    if a.action == "review":
+        from roc import rebuild_audit
+        rebuild_audit.review(a.name)
+        return
     if a.action == "status":
         rebuild.status(a.name)
         return
@@ -619,6 +623,10 @@ def cmd_integrator(a):
               "cloud_concurrency": "auto" if a.cloud_concurrency == "auto" else int(a.cloud_concurrency), "native_batch_files": a.batch_files,
               "native_compile_workers": a.compile_workers, "native_context": a.context, "native_generation": a.generation,
               "native_compile_batch": a.compile_batch,
+              "native_selection": getattr(a, 'mode', 'balanced'),
+              "native_escalation_model": getattr(a, 'escalation_model', '') or '',
+              "native_escalate_after": getattr(a, 'escalate_after', 2),
+              "native_max_no_improvement": getattr(a, 'max_no_improvement', 3),
               "max_cloud_requests": a.max_cloud_requests, "max_cloud_tokens": a.max_cloud_tokens,
               "max_cloud_cost": a.max_cloud_cost}
     config = gui_worker.validate(config)
@@ -1098,7 +1106,8 @@ def cmd_xcopy(a):
             sys.exit("%s is not registered. See:  roc client list" % name)
     result = matchers.run(targets=names, limit=a.limit, dry_run=a.dry_run,
                           cross_only=a.cross_only, min_size=a.min_size,
-                          max_score=a.max_score)
+                          max_score=a.max_score, twins=a.twins, jobs=a.jobs,
+                          libraries_only=a.libraries_only, retarget=a.retarget, source_server=a.source_server)
     print("\nClient       new files   newly matched")
     files = scored = 0
     for name in sorted(result):
@@ -2767,15 +2776,28 @@ def main(argv=None):
     p.add_argument("--purge", action="store_true",
                    help="also delete clients/<name>/ and work/<name>/ (it re-downloads on demand)")
     p.set_defaults(fn=cmd_client_remove)
-    cmd("rebuild", cmd_rebuild, "2008 client rebuild: doctor | audit | module NAME (see rebuild/<client>/POLICY.md)",
+    cmd("rebuild", cmd_rebuild, "2008 native rebuild: install | doctor | audit | module NAME (sources in findings)",
         (["name"], {"help": "client, e.g. 2008-06"}),
-        (["action"], {"choices": ["install", "prepare", "doctor", "audit", "module", "status", "closure", "milestones", "progress", "placed"]}),
+        (["action"], {"choices": ["install", "prepare", "doctor", "audit", "review", "module", "status", "closure", "milestones", "progress", "placed"]}),
         (["target"], {"nargs": "?", "help": "module name for `module` (rebuild/<client>/modules/NAME.json)"}),
         (["--no-notify"], {"action": "store_true", "help": "do not send the Discord webhook"}))
     cmd("integrate", cmd_integrate, "claim native integration work, bulk submit, track verified credit",
-        (["action"], {"nargs": "?", "default": "next", "choices": ["next", "submit", "resume", "force-queue", "fingerprint", "status", "watch", "renew", "release", "park", "unpark", "sync", "invite"]}),
+        (["action"], {"nargs": "?", "default": "next", "choices": ["next", "check", "context", "metrics", "adapt", "audit", "submit", "resume", "force-queue", "fingerprint", "status", "watch", "renew", "release", "park", "unpark", "sync", "invite"]}),
+        (["--mode"], {"choices": ["easy", "balanced", "large"], "default": "balanced", "help": "native claim selection policy"}),
+        (["--fast"], {"action": "store_true", "help": "check: compile affected native TUs without linking"}),
+        (["--bytes"], {"action": "store_true", "help": "check: compare object code and referenced data (default)"}),
+        (["--full"], {"action": "store_true", "help": "check: local object preflight followed by independent linked gates; no credit"}),
+        (["--address"], {"help": "context: claimed function address for complete evidence retrieval"}),
+        (["--hours"], {"type": float, "default": 24, "help": "metrics: independent receipt window"}),
+        (["--baseline-artifacts"], {"help": "audit: explicit accepted baseline cache"}),
+        (["--current-profile"], {"action": "store_true", "help": "audit: validate current tooling and every accepted credit; report legacy inventory differences separately"}),
+        (["--file"], {"help": "adapt: native file relative to Client tree"}),
+        (["--source"], {"help": "adapt: complete mined source file"}),
+        (["--method"], {"help": "adapt: unambiguous Class::method"}),
+        (["--no-local-check"], {"action": "store_true", "help": "submit: defer local checking when local toolchain cannot establish result"}),
         (["--count"], {"type": int, "default": 1, "help": "claim 1-1024 classes; --all submits them as one verified batch"}),
         (["--targets"], {"type": int, "help": "claim enough classes for this many targets (up to 100000), one baseline"}),
+        (["--revisit-parked"], {"action": "store_true", "help": "next: explicitly retry parked eligible classes after reviewing their blockers"}),
         (["--batch"], {"help": "saved batch JSON from next; select its claims for submit/renew/release"}),
         (["--unit"], {}), (["--claim"], {}), (["--all"], {"action": "store_true"}),
         (["--reason"], {"help": "blocker for explicit park (two hours); release frees immediately; unpark frees your owned parked claims"}),
@@ -2871,6 +2893,12 @@ def main(argv=None):
                                        "help": "try only the first N candidate sources (testing)"}),
         (["--cross-only"], {"action": "store_true",
                              "help": "skip target's own sources; probe cross-client exact reuse only"}),
+        (["--twins"], {"action": "store_true",
+                        "help": "shortlist exact binary twins across every compiler family"}),
+        (["--jobs"], {"type": int, "default": 1, "help": "parallel compiler batches"}),
+        (["--libraries-only"], {"action": "store_true", "help": "reuse complete native library/archive objects"}),
+        (["--retarget"], {"action": "store_true", "help": "also rebuild native library sources with the target compiler"}),
+        (["--source-server"], {"help": "read canonical donors directly from this server, preserving local edits"}),
         (["--min-size"], {"type": int, "default": 0,
                            "help": "restrict target functions by byte size"}),
         (["--max-score"], {"type": int, "default": 99,
@@ -3117,6 +3145,10 @@ def main(argv=None):
     cmd("uninstall", cmd_uninstall, "remove what install put on this PC; asks before every step",
         (["--yes"], {"action": "store_true"}))
     cmd("integrator", cmd_integrator, "parallel AI native integration with independent server verification",
+        (["--escalation-model"], {"help": "explicit stronger model after failed approaches"}),
+        (["--escalate-after"], {"type": int, "default": 2}),
+        (["--max-no-improvement"], {"type": int, "default": 3}),
+        (["--mode"], {"choices": ["easy", "balanced", "large"], "default": "balanced"}),
         (["--generation"], {"choices": ["auto", "edits", "method"], "default": "auto", "help": "auto: one-shot method then anchored repair; edits: SEARCH/REPLACE; method: complete method body"}),
         (["--compile-batch"], {"type": int, "default": 4, "help": "AI method workers sharing one source-file compile (1-32; 1 disables)"}),
         (["--model"], {"help": "codex:default, claude:sonnet, opencode:provider/model, API or local model"}),

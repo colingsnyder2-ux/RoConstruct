@@ -46,12 +46,14 @@
   "tools/openrbx/3rdparty/boost_1_34_1",
   "tools/openrbx/3rdparty/g3d/source/include",
   "tools/openrbx/3rdparty/lua-5.1.1/src",
-  "tools/openrbx/3rdparty/RakNet30/Source"
+  "tools/openrbx/3rdparty/RakNet30/Source",
+  "rebuild/2008-06/out/RbxApp/force"
  ],
  "test_defines": "WIN32 NDEBUG _LIB _MBCS BOOST_ALL_NO_LIB",
  "overlay": {
   "root": "tools/openrbx/Client",
   "patches": "rebuild/2008-06/patches/openrbx-client.json"
  },
- "verified": true
+ "verified": true,
+ "force_verified": true
 }

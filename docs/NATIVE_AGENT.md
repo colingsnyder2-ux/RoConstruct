@@ -142,7 +142,10 @@ or duplicate queued submissions. Authentication, invalid-request and verificatio
 need their actual repair; they are not server outages. If still unreachable at two hours,
 save progress, report the last error and pause network work until the user resumes it.
 A rejected batch needs repair; it does not end the session. If no fresh
-targets remain, stay alive at a modest polling interval; revisit after source/evidence changes.
+targets remain, run `roc integrate next --revisit-parked` once after reviewing
+parked blockers. It reopens parked eligible classes for a new evidence pass, but
+does not silently retry unchanged failed edits. If that is also empty, record the
+queue state and wait for source/evidence changes instead of polling forever.
 Respect stop/pause and configured limits. Report only meaningful blockers or new progress.
 
 The automatic Integrator starts another discovery cycle within 60s without fresh

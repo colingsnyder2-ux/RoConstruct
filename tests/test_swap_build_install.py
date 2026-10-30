@@ -77,3 +77,26 @@ def test_rejected_replay_keeps_live_resolution_metadata(tmp_path):
     assert "kept existing" in swap_build.install(live, built)
     for name, content in metadata.items():
         assert (live / name).read_text() == content
+
+def test_dll_twin_recheck_records_each_address_without_losing_twins(tmp_path, monkeypatch):
+    src = tmp_path / 'src' / swap_build.CLIENT
+    src.mkdir(parents=True)
+    (src / 'a.cpp').write_text('// roc-lib: rbxgs unit.cpp\n')
+    monkeypatch.setattr(swap_build, 'ROOT', tmp_path)
+    monkeypatch.setattr(swap_build.match, 'compile_text', lambda client, text: b'object')
+
+    def check(client, addr, text, **kwargs):
+        assert '// roc-lib: rbxgs-dll unit.cpp' in text
+        assert kwargs == {'obj': b'object', 'minimum': 99}
+        return (None, None, 'no exact candidate', []) if addr == 'c' else (100, '_shared', '', [])
+
+    monkeypatch.setattr(swap_build.match, 'check_text', check)
+    item, objects, error = swap_build.build_group(('RbxgsApp', 0, {
+        'recipe': 'rbxgs', 'file': 'unit.cpp', 'addrs': ['a', 'b', 'c'],
+    }))
+    assert error is None
+    assert objects == [(b'object', {'_shared': 'a'})]
+    assert [r['cause'] for r in item['results']] == [
+        'exact', 'exact', 'not exact after _DLL twin recompile',
+    ]
+    assert [r['address'] for r in item['results']] == ['a', 'b', 'c']

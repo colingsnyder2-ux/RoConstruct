@@ -320,6 +320,9 @@ def proven_proposal(text, mode, hits, baseline):
 
 def claim_unit(hit, row):
     unit = row["unit"]
+    from roc.native_adapt import symbol_unit
+    if unit.startswith(("G3D::", "Ogre::")) and symbol_unit(hit["symbol"]) == unit:
+        return unit
     method = symbol_method(hit["symbol"])
     if method and re.search(r"(?:@|\?\?[01])" + re.escape(method.split("::")[0]) + r"@RBX@@", hit["symbol"]):
         return "RBX::" + method.split("::")[0]
@@ -910,7 +913,13 @@ def model_evidence(addr, names, by_addr):
             pass  # Optional local proof; the compiled library reference remains available.
     assembly = match.disasm(code, int(addr, 16))
     # native_score: how close the rebuild's own method compiles today (the mined source is always 100%)
-    item = {"addr": addr, "size": by_addr.get(addr, {}).get("size"), "rebuilt_symbol": rebuilt.get("symbol"),
+    evidence_dir = ROOT/'work/native-evidence'/addr
+    evidence_dir.mkdir(parents=True, exist_ok=True)
+    for path, full in ((evidence_dir/'mined.cpp', source), (evidence_dir/'target.asm', '\n'.join(assembly))):
+        if not path.exists() or path.read_text(encoding='utf-8') != full:
+            path.write_text(full, encoding='utf-8')
+    item = {"addr": addr, "mined_source_file": str((evidence_dir/'mined.cpp').resolve()),
+            "target_asm_file": str((evidence_dir/'target.asm').resolve()), "size": by_addr.get(addr, {}).get("size"), "rebuilt_symbol": rebuilt.get("symbol"),
             "native_score": rebuilt.get("score"), "mined_source": displayed[:4000],
             "mined_source_origin": origin, "target_asm": assembly[:120]}
     if len(assembly) > 120:
@@ -1124,10 +1133,19 @@ def model_proposal(rel, text, addrs, baseline, owned, model, rounds, compile_rou
             return None, trials
         settings.setdefault("max_tokens", 3072 if settings["thinking"] == "disabled" else 32768)
         log("Requesting %s · %s · round %d/%d" % (model, rel, n + 1, rounds))
-        trials.append(dict(file=rel, mode='model-request', target_addresses=[selected['addr']] if selected and selected.get('addr') else
-                           [item.get('addr', addr) for item, addr in zip(items, addrs)]))
+        from roc.integration_policy import model_for_attempt, usage
+        active_model = model_for_attempt(model, settings, n)
+        request = dict(file=rel, mode='model-request', model=active_model,
+                       target_addresses=[selected['addr']] if selected and selected.get('addr') else
+                       [item.get('addr', addr) for item, addr in zip(items, addrs)])
+        if settings.get('attempt_allowed') and not settings['attempt_allowed'](request['target_addresses']):
+            return None, trials
+        trials.append(request)
         try:
-            reply = providers.generate(model, messages, settings)
+            reply = providers.generate(active_model, messages, settings)
+            request.update(usage(reply, active_model))
+            if settings.get('record_attempt'):
+                settings['record_attempt']([request])
         except Exception as error:
             trials.append(dict(file=rel, mode='model-error', ok=False, error=str(error)[:500],
                                error_category=getattr(error, 'category', '')))
@@ -1173,6 +1191,8 @@ def model_proposal(rel, text, addrs, baseline, owned, model, rounds, compile_rou
                       generation_seconds=getattr(reply, "latency_s", None),
                       input_tokens=getattr(reply, "input_tokens", None), output_tokens=getattr(reply, "output_tokens", None))
         trials.append(result)
+        if settings.get('record_attempt'):
+            settings['record_attempt']([result])
         if result['ok'] and not lost and result.get('diagnostics'):
             strength = sum(d['score'] for d in result['diagnostics'].values())
             if best_partial is None or strength > best_partial[0]:
@@ -1186,6 +1206,8 @@ def model_proposal(rel, text, addrs, baseline, owned, model, rounds, compile_rou
                                 definitions=result.get("defined_symbols", ()), verified=result)
             if not proposal:
                 trials.append(dict(result, error="minimized edits lost the proof"))
+            if proposal:
+                proposal['models'] = [active_model]
             return proposal, trials
         feedback = result["error"][-1500:] if not result["ok"] else \
             "Compiled. Newly exact: %s. Still not exact: %s. Lost previously exact: %s." % (
@@ -1233,7 +1255,13 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
     homes = target_files(texts, wanted, names, by_addr)
     skip = set(config.get("exclude_files", []))
     homes = {rel: sorted(addrs, key=lambda a: (-(names.get(a, {}).get("score") or 0), by_addr.get(a, {}).get("size", 0))) for rel, addrs in homes.items()}
-    ranked = sorted(homes, key=lambda rel: (-max(names.get(a, {}).get('score') or 0 for a in homes[rel]), len(texts[rel])))
+    from roc.integration_context import rank
+    selection = config.get('selection', 'balanced')
+    if selection not in ('easy', 'balanced', 'large'):
+        raise ValueError('Invalid native selection')
+    ranked = sorted(homes, key=lambda rel: (rank(
+        [dict(by_addr.get(a, {}), addr=a) for a in homes[rel]], names,
+        re.findall(r'^\s*#\s*include\s*[<"]([^>"\n]+)', texts[rel], re.M), {}, selection), len(texts[rel]), rel))
     files = [rel for rel in ranked if rel not in skip][:config.get('max_files')]
     if config.get('rolling_workers'):
         capacity = min(jobs, config.get('max_files') or len(ranked))
@@ -1325,6 +1353,31 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
             base['search_cache_hit'] = True
             log('Skipping exhausted search: unchanged source, dependencies, compiler, targets and search settings')
             return None, [base]
+        from roc.integration_policy import AttemptBudget
+        budget = AttemptBudget(output / 'attempt-budgets' / (integration.digest(rel) + '.json'),
+            integration.digest([base.get('input_signature'), base.get('object_sha256'), getattr(matcher, 'identity', None),
+                                sorted({(a, a in owned) for addr in pending for a in by_addr.get(addr, {}).get('call_targets', [])}),
+                                model, options.get('escalation_model'),
+                                options.get('escalate_after'),
+                                {k: config.get(k) for k in ('thinking','max_tokens','generation','context','compile_batch','proven_facts','rewrite_rules')},
+                                [hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in
+                                 (Path(__file__), Path(native_search.__file__), Path(native_transforms.__file__),
+                                  ROOT/'roc/native_adapt.py', ROOT/'roc/native_batch.py', ROOT/'roc/integration_policy.py') if Path(p).exists()]]),
+            config.get('max_no_improvement', 3)) if base.get('input_signature') else None
+        if budget:
+            budget.prime(baseline_diagnostics)
+            options = dict(options, attempt_allowed=lambda addrs: any(not budget.blocked(a) for a in addrs), record_attempt=budget.record)
+        if budget and not config.get('retry_exhausted'):
+            blocked = [a for a in pending if budget.blocked(a)]
+            pending = [a for a in pending if not budget.blocked(a)]
+            base['blocked_targets'] = blocked
+            if not pending:
+                base.update(search_cache_hit=True, blocker='no-improvement-budget')
+                log('All targets blocked by unchanged-input attempt budget; best partials retained')
+                return None, [base]
+        if config.get('reserve_file') and not config['reserve_file'](rel, pending):
+            base.update(blocker='class-lease-unavailable', deferred_targets=pending)
+            return None, [base]
         if partials:
             if seed:
                 trial = compile_source(seed['source'], rel, 'partial-seed-' + seed['source_sha256'][:16])
@@ -1384,6 +1437,8 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
                             if t.get('mode') not in ('model-request', 'repair-coverage'))
                     and not any(t.get('stopped') or t.get('deferred_targets') for t in trials if t.get('mode') == 'repair-coverage')):
                 integration.atomic_json(negative, dict(key=negative_key, blocker='exhausted-rounds', accepted=False))
+            if budget:
+                budget.record(trials, [h['addr'] for h in proposal['witnesses']] if proposal else [])
             return proposal, [base] + trials
 
         def diff(obj, addr):
@@ -1403,6 +1458,16 @@ def model_discovery(config, texts, wanted, owned, by_addr, matcher, output, jobs
                     if '/App/include/' in str(p).replace('\\','/') and Path(p).is_file())
                 local_trials = list(native_transforms.method_variants(working, selected_methods,
                     declaration_context, config.get('transform_modes')))
+                from roc.native_adapt import adapt
+                for address in pending[:3]:
+                    mined_file = next((p for p in (ROOT/'src/2008-06'/(address+'.cpp'), ROOT/'work/native-evidence'/address/'mined.cpp') if p.is_file()), None)
+                    method = symbol_method(symbol_map.get(address, ''))
+                    if mined_file and method:
+                        try:
+                            edits = adapt(mined_file.read_text(encoding='utf-8'), working, method, declaration_context)
+                            local_trials.insert(0, ('mined-body:'+method, apply_edits(working, edits), edits))
+                        except ValueError:
+                            pass  # Ambiguous/synthetic declarations require ABI work, not body transplantation.
                 local_trials += list(native_transforms.immediate_variants(working, baseline_diagnostics))
                 local_trials += list(native_transforms.proven_variants(working, config.get('proven_facts', []), rel))
                 local_trials += list(native_search.explicit_variants(working, config.get('rewrite_rules', []), rel))
@@ -1597,11 +1662,16 @@ def native_context(config, api, addresses=None):
             integrated.update(job["receipt"].get("gains", []))
     # Every byte-exact mined source kind (snippet, vendor-file, generated-unit) is a target: the linked
     # rebuild owns an address by exact bytes. Snippet-only targeting hid ~5k exact app functions.
-    targets = {row["addr"] for row in rows if row.get("score") == 100 and row.get("unit", "").startswith("RBX::")}
+    from roc.native_adapt import type_paths, eligible
+    native_paths, _ = type_paths(ROOT, json.loads((ROOT/'rebuild/2008-06/patches/rbxgs-client.json').read_text()))
+    targets = {row['addr'] for row in rows if row.get('score') == 100 and eligible(row.get('unit'), row['addr'], names, native_paths)}
     if addresses:
         targets &= set(addresses)
+    analysis_path = ROOT/'work/2008-06/functions.jsonl'
+    analysis = match._functions_at(analysis_path, analysis_path.stat().st_mtime_ns, analysis_path.stat().st_size) if analysis_path.exists() else {}
+    enriched = {row['addr']: dict(row, call_targets=analysis.get(row['addr'], {}).get('call_targets', [])) for row in rows}
     return SimpleNamespace(tree=tree, overlay=overlay, includes=includes, defines=defines, flags=config.get("flags", FLAGS),
-                           by_addr={row["addr"]: row for row in rows}, owned=owned, targets=targets,
+                           by_addr=enriched, owned=owned, targets=targets,
                              matcher=Matcher(targets | owned, ROOT / 'work/native-search/matches' if config.get('search_cache', True) else None), names=names, integrated=integrated)
 
 
@@ -1675,6 +1745,9 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
             measured.update(server_verified=summary.get('new_verified', 0),
                             verification_wait_seconds=summary.get('verification_wait_seconds', 0),
                             verified_per_hour=summary.get('new_verified', 0) * 3600 / max(time.monotonic() - run_started, .001))
+            count = summary.get('new_verified', 0)
+            measured['ai_requests_per_verified_function'] = measured.get('model_requests', 0)/count if count else None
+            measured['reported_tokens_per_verified_function'] = measured.get('reported_tokens', 0)/count if count and measured.get('token_reporting_complete') else None
             integration.atomic_json(metrics_path, measured)
             summary['metrics'] = measured
         summary.update(run_id=run_id, state=summary.get("state") or ("queued" if summary.get("job") else "staged" if summary.get("applied_files") else "proposals" if summary.get("proposed_files") else "no-proposals"))
@@ -1692,6 +1765,7 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
     api = worker.Api(server or settings["server"], integration.native_token() or settings.get("native_token") or settings.get("token"))
     claimed, used = [], set()
     keep_claims = False
+    reservations = None
     summary = {}
     generator = ROOT / "rebuild/2008-06/patches/make_rbxgs_client.py"
     try:
@@ -1713,6 +1787,8 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
                                applied_files=len(result.get("applied_paths", [])), new_verified=0))
         original = generator.read_bytes()
         base = api.call("/v1/integration/base")
+        if config.get("apply"):
+            integration.require_reference_gate(base)
         if hashlib.sha256(original).hexdigest() != base["generator"]:
             raise ValueError("Sync accepted work and preserve unsent generator edits before sweeping")
         overlay_file = generator.with_name("rbxgs-client.json")
@@ -1744,7 +1820,7 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
             homes = target_files(texts, targets-owned, ctx.names, by_addr)
             config['proven_facts'] = list(config.get('proven_facts', [])) + native_transforms.callee_facts(
                 all_sources, homes, ctx.names, by_addr)
-        discovery_targets = targets - owned
+        discovery_targets = targets - owned - getattr(ctx, "integrated", set())
         if config.get("targets_only"):
             discovery_targets -= getattr(ctx, "integrated", set())
             homes = target_files(texts, discovery_targets, ctx.names, by_addr)
@@ -1804,6 +1880,23 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
             proposals = rechecked
         elif config.get("llm"):
             discovery = dict(config, base_revision=base['revision'])
+            if config.get('apply') and config.get('reserve_before_ai', True):
+                from roc.integration_policy import Reservations
+                identity_file = ROOT/'work/integration-client/identity.json'
+                if not identity_file.exists():
+                    integration.atomic_json(identity_file, dict(id=uuid.uuid4().hex))
+                identity = json.loads(identity_file.read_text())['id'][:12]
+                inventory = api.call('/v1/integration?claims=1').get('inventory', {})
+                by_target = {a:u for u, addrs in inventory.items() for a in addrs}
+                def save_reserved(claim):
+                    folder = ROOT/'work/integration-client/claims'/claim['id']
+                    integration.atomic_json(folder/'packet.json', claim)
+                    (folder/'generator-base.py').write_bytes(generator.read_bytes())
+                reservations = Reservations(
+                    lambda: worker.Api(server or settings['server'], integration.native_token() or settings.get('native_token') or settings.get('token')),
+                    settings['user'], settings['user']+'@native-sweep:'+identity, base['revision'],
+                    base.get('limits', {}).get('claims', 16), save_reserved, bulk=base.get('features', {}).get('exact_unit_batches', False))
+                discovery['reserve_file'] = lambda rel, addrs: reservations.reserve({by_target[a] for a in addrs if a in by_target})
             if config.get('rolling_workers') and config.get('tried_revision') != base['revision']:
                 discovery.update(exclude_files=[], file_offsets={}, retry_targets={})
             proposals, records = model_discovery(discovery, texts, discovery_targets, owned, by_addr, matcher, output, jobs, log,
@@ -1955,8 +2048,12 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
                        batch=str(batch), evidence=str(notes))
         keep_claims = True
         if config.get("submit"):
+            writers = sorted({m for p in selected for m in (p.get("models") or [config["model"]])})
+            writer_label = " + ".join(writers)
+            if len(writer_label) > 120:
+                raise ValueError("Writer model attribution exceeds server limit; proposals retained")
             args = SimpleNamespace(action="submit", server=server, user=None, token=integration.native_token(),
-                                   claim=None, all=False, batch=str(batch), model=config["model"], evidence_file=str(notes), retry=False, wait=False,
+                                   claim=None, all=False, batch=str(batch), model=writer_label, evidence_file=str(notes), retry=False, wait=False,
                                    applied_paths=summary["applied_paths"], preflight_artifacts=linked.get("artifacts") if linked else None)
             integration.command(args)
             marker = ROOT / "work/integration-client/claims" / units[sorted(used)[0]]["id"] / "job.json"
@@ -1981,6 +2078,11 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
         finish(dict(summary, recipe=name, state=state, error=str(error), new_verified=summary.get("new_verified", 0)))
         raise
     finally:
+        if reservations:
+            try:
+                reservations.close({c['id'] for c in claimed})
+            except worker.ApiFailure as error:
+                log('Early reservation cleanup failed; leases remain bounded: '+str(error))
         for claim in claimed:
             if not keep_claims or claim["unit"] not in used:
                 try:

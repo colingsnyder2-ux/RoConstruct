@@ -259,9 +259,11 @@ def merge_choices(text, choices, verify):
 
 def metrics(records, seconds, proposals=(), verified=0, compilations=None, verification_wait=0):
     compiled = compilations if compilations is not None else records
-    return dict(wall_seconds=round(seconds, 3), compile_seconds=round(sum(r.get('seconds', 0) for r in compiled), 3),
+    from roc.integration_policy import local_metrics
+    measured = local_metrics(records, compiled)
+    return dict(measured, wall_seconds=round(seconds, 3), compile_seconds=round(sum(r.get('seconds', 0) for r in compiled), 3),
                 match_seconds=round(sum(r.get('match_seconds', 0) for r in records), 3),
-                generation_seconds=round(sum(r.get('generation_seconds') or 0 for r in records), 3),
+                generation_seconds=round(sum(r['generation_seconds'] for r in measured['model_usage'].values()) if measured['model_requests'] else sum(r.get('generation_seconds') or 0 for r in records), 3),
                 queue_seconds=round(sum(r.get('queue_seconds', 0) for r in compiled), 3),
                 compile_cache_hits=sum(bool(r.get('compile_cache_hit')) for r in compiled),
                 search_cache_hits=sum(bool(r.get('search_cache_hit')) for r in records),

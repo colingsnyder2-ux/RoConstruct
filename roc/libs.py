@@ -203,7 +203,7 @@ for _v, _sha in [("1.34.1", "ef99062117068a0d641f4045c421661768657262a3d119c4a27
 
 def winsdk_include():
     """Windows SDK headers ship inside the VCForPython compiler package."""
-    found = sorted(setup.TOOLS.glob("*/**/WinSDK/Include"))
+    found = sorted(root/'Include' for root in setup.toolchain_paths(setup.TOOLS)[1] if (root/'Include').is_dir())
     return str(found[0]) if found else ""
 
 def files_of(r, folder):

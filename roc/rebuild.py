@@ -7,6 +7,7 @@ rebuild/<client>/POLICY.md allows publishing them).
 import json
 import hashlib
 import functools
+import collections
 import os
 import re
 import struct
@@ -535,7 +536,7 @@ def build_library(client, recipe, files, flags, name, cl=BUILD, jobs=6, log=prin
 
 def unresolved_symbols(text):
     """Decorated names from LNK2001/LNK2019 lines (C++: the parenthesised name after the quoted one; C: bare)."""
-    return [a or b for a, b in re.findall(r'unresolved external symbol (?:"[^"]*" \((\?[^)]+)\)|(_\w+))', text)]
+    return [a or b for a, b in re.findall(r'unresolved external symbol (?:"[^"]*" \(([^)]+)\)|([?\w@$]+))', text)]
 
 
 # #pragma comment(lib) names vendor headers ask for; rebuilt modules supply that code instead
@@ -613,8 +614,8 @@ def strip_symbols(data, keep=None, drop=()):
                 assoc.append((secnum, number))
             elif struct.unpack_from("<I", data, sec_at(secnum - 1) + 36)[0] & 0x1000:
                 comdat_key.setdefault(secnum, None)
-                if selection != 1:
-                    shared.add(secnum)  # any/same-size/largest: duplicates link fine, keep (e.g. string literals)
+                if selection != 1 and not struct.unpack_from("<I", data, sec_at(secnum - 1) + 36)[0] & 0x20:
+                    shared.add(secnum)  # shared data (e.g. string literals), never unrequested inline code
         elif cls == 2 and secnum > 0:
             name = bytes(data[strtab + struct.unpack_from("<I", raw, 4)[0]:].split(b"\0", 1)[0]) \
                 if raw[:4] == b"\0\0\0\0" else raw.rstrip(b"\0")
@@ -669,11 +670,16 @@ def verified_layer(client, spec, log=print, exclude=frozenset(), vdrop=frozenset
         old.unlink()
     taken = set()
     for item in json.loads((folder / "swaps.json").read_text())["swaps"]:
-        keep = {k for k in item["keep"] if not k.startswith(("??__E", "??__F"))} - taken - exclude - vdrop  # initializers never run here
+        data = (folder / item["obj"]).read_bytes()
+        externals = coff_externals(data)
+        # Local callbacks and EH labels travel with their owner. /INCLUDE cannot
+        # force them from an archive, nor can another object resolve them.
+        keep = {k for k in item["keep"] if externals.get(k)
+                and not k.startswith(("??__E", "??__F"))} - taken - exclude - vdrop
         if keep:
             taken |= keep
             extra = {h for h, o in (helpers or {}).items() if o == item["obj"]} - vdrop
-            (layer / ("verified_" + item["obj"])).write_bytes(strip_symbols((folder / item["obj"]).read_bytes(), keep=keep | extra, drop=vdrop))
+            (layer / ("verified_" + item["obj"])).write_bytes(strip_symbols(data, keep=keep | extra, drop=vdrop | exclude))
     log("verified layer: %d exact symbols swapped in" % len(taken))
     return layer, taken
 
@@ -1029,6 +1035,41 @@ def mfc_import_lib(client):
     return out / "mfc90.lib"
 
 
+def dll_exports(path):
+    """Names a PE DLL exports by name (export directory, data directory 0)."""
+    import struct
+    data = Path(path).read_bytes()
+    pe = struct.unpack_from("<I", data, 0x3c)[0]
+    nsec, optsz = struct.unpack_from("<H", data, pe + 6)[0], struct.unpack_from("<H", data, pe + 20)[0]
+    sections = [struct.unpack_from("<IIII", data, pe + 24 + optsz + 40 * i + 8) for i in range(nsec)]
+    def at(rva):
+        for vsize, va, rawsize, raw in sections:
+            if va <= rva < va + max(vsize, rawsize):
+                return rva - va + raw
+        raise ValueError("rva %x outside sections" % rva)
+    export_rva = struct.unpack_from("<I", data, pe + 24 + 96)[0]
+    count, _, names = struct.unpack_from("<III", data, at(export_rva) + 24)
+    return [data[at(struct.unpack_from("<I", data, at(names) + 4 * i)[0]):].split(b"\0", 1)[0].decode("latin-1")
+            for i in range(count)]
+
+
+def dll_import_lib(client, dll):
+    """out/importlibs/<dll>.lib: an import library for a DLL the 2008 exe ships (e.g. rgmain.dll, the client's
+    OgreMain), made by the period lib.exe from the DLL's own export names."""
+    out = workspace(client) / "out" / "importlibs"
+    lib = out / (Path(dll).stem + ".lib")
+    if not lib.exists():
+        out.mkdir(parents=True, exist_ok=True)
+        path = ROOT / "clients" / client / dll
+        (out / (Path(dll).stem + ".def")).write_text(
+            "LIBRARY %s\nEXPORTS\n" % Path(dll).name + "".join("  %s\n" % n for n in dll_exports(path)))
+        code, text = run(toolchain(), "lib", ["/nologo", "/MACHINE:X86", "/DEF:" + Path(dll).stem + ".def",
+                                              "/NAME:" + Path(dll).name, "/OUT:" + lib.name], out)
+        if code:
+            raise RuntimeError("%s: %s" % (lib.name, text[-300:]))
+    return lib
+
+
 def build_module(client, name, log=print):
     """Build every layer of modules/<name>.json, resolve the link, run its test, write a report."""
     from roc import libs
@@ -1106,6 +1147,7 @@ def build_module(client, name, log=print):
             build_module(client, dep, log=log)
         deps.append(dep_lib)
         pending += dep_spec.get("depends", [])
+    deps += [dll_import_lib(client, dll) for dll in spec.get("import_dlls", [])]
     excluded_path = out / "verified" / "excluded.json"
     excluded = set(json.loads(excluded_path.read_text())) if excluded_path.exists() else set()
     vdrop_path = out / "verified" / "vdrop.json"
@@ -1122,8 +1164,12 @@ def build_module(client, name, log=print):
                 if defined:
                     counts[sym] = counts.get(sym, 0) + 1
     shared = {sym for sym, n in counts.items() if n > 1}
-    for _ in range(12):  # a swapped-in function may call a helper nothing else emits: keep it, or swap the caller back out
+    while True:  # each retry adds a helper/exclusion; stop only when linking or dependency resolution stops progressing
         verified, drop = verified_layer(client, spec, log=log, exclude=excluded | shared, vdrop=vdrop, helpers=helpers)
+        if spec.get("force_verified"):  # the test links every swapped symbol, so each one's dependencies must resolve
+            (out / "force").mkdir(exist_ok=True)
+            (out / "force" / "force_verified.h").write_text(
+                "".join('#pragma comment(linker, "/INCLUDE:%s")\n' % s for s in sorted(drop)))
         result = resolve_objects(client, spec["test"], ([verified] if verified else []) + layer_dirs, spec["name"] + "/linked",
                                  includes=_overlaid([_spec_path(client, i) for i in spec.get("test_includes", [])], [], ov)[0], log=log,
                                  extra_libs=deps, defines=spec.get("test_defines"), drop=drop)
@@ -1161,15 +1207,20 @@ def build_module(client, name, log=print):
         log("verified: %d swapped functions need helpers nothing else defines; swapping them back out" % len(back))
     linked = out / "linked"
     funcs, owned_addrs, owned16_addrs = 0, set(), set()
+    owned_symbols = {}
     for obj in sorted(linked.glob("*.obj")):
         rows = pair_object(client, obj.read_bytes())
         funcs += len(rows)
+        for symbol, _, addresses in rows:
+            if len(addresses)==1:
+                owned_symbols.setdefault(addresses[0],[]).append(dict(symbol=symbol,object=obj.name))
         owned_addrs.update(h[0] for _, _, h in rows if len(h) == 1)  # COMDAT copies repeat across objects
         owned16_addrs.update(h[0] for _, s, h in rows if len(h) == 1 and s >= 16)
     owned, owned16 = len(owned_addrs), len(owned16_addrs)
     report = {"module": spec["name"], "linked": result["linked"], "test_exit": result["exit"], "test_output": result["output"][-500:],
               "unresolved": result["unresolved"], "object_functions": funcs, "owned_2008": owned, "owned_2008_16b": owned16,
-              "choices": result.get("choices"), "owned_addrs": sorted(owned_addrs)}
+              "choices": result.get("choices"), "owned_addrs": sorted(owned_addrs), "owned_symbols_file": "owned-symbols.json"}
+    _dump(out / "owned-symbols.json", owned_symbols)
     _dump(out / "report.json", report)
     log("%s: linked=%s test_exit=%s; %d object functions, %d byte-identical to unique 2008 functions (%d of >=16 bytes)"
         % (spec["name"], result["linked"], result["exit"], funcs, owned, owned16))
@@ -1263,12 +1314,15 @@ def placed(client="2008-06", log=print):
         report = out / "report.json"
         if not report.exists() or not json.loads(report.read_text()).get("linked"):
             continue
+        if any(obj.stat().st_mtime_ns > report.stat().st_mtime_ns for obj in (out / "linked").glob("*.obj")):
+            log("%s: build newer than link report; placement deferred" % spec["name"])
+            continue
         cache_path = out / "placed.json"
         cache = json.loads(cache_path.read_text()) if cache_path.exists() else {}
         fresh = {}
         for obj in sorted((out / "linked").glob("*.obj")):
             data = obj.read_bytes()
-            key = hashlib.sha256(data).hexdigest()
+            key = hashlib.sha256(b"placed-live-sections-v2\0" + data).hexdigest()
             if key not in cache:
                 hits = []
                 for name, size, h in pair(client, match.coff_functions(data)):
@@ -1296,7 +1350,7 @@ def placed(client="2008-06", log=print):
 
 def status(client="2008-06", log=print):
     """One line per built module from out/<module>/report.json, plus totals (no double counting of addresses)."""
-    owned_all, shared_all = set(), set()
+    owned_all, shared_all, compiled_all = set(), set(), set()
     rows = []
     for spec_path in sorted((ROOT / "rebuild" / client / "modules").glob("*.json")):
         spec = json.loads(spec_path.read_text(encoding="utf-8"))
@@ -1305,6 +1359,7 @@ def status(client="2008-06", log=print):
             rows.append((spec_path.stem, "not built", "", "", ""))
             continue
         r = json.loads(report_path.read_text(encoding="utf-8"))
+        compiled_all.update(r.get("owned_addrs", []))
         linked = workspace(client) / "out" / spec["name"] / "linked"
         for obj in linked.glob("*.obj") if r["linked"] else ():
             for _, size, h in pair(client, match.coff_functions(obj.read_bytes())):
@@ -1318,6 +1373,17 @@ def status(client="2008-06", log=print):
     for name, state, test, funcs, owned in rows:
         log("%-12s %-9s %-8s %6s object functions  %5s owned 2008" % (name, state, test, funcs, owned))
     log("distinct 2008 functions reproduced by linked rebuilt code: %d" % len(owned_all))
+    log("cached compiled unique across all module reports (includes failed links): %d; %d absent from linked set"
+        % (len(compiled_all), len(compiled_all - owned_all)))
+    log("linked per-kind counts: %s" % dict(collections.Counter(
+        match._functions(client)[a].get('kind', 'code') for a in owned_all)))
+    from roc.rebuild_audit import cached_review
+    review = cached_review(client)
+    if review and set(review['linked_addrs']) == owned_all:
+        log("additional parent-paired compiler pieces, byte/data checked: %s (separate from source-code total)"
+            % review['paired_piece_counts'])
+    else:
+        log("compiler-piece review absent or stale: run roc rebuild %s review after builds finish" % client)
     placed_path = workspace(client) / "out" / "placed.json"
     if placed_path.exists():  # `roc rebuild <client> placed` (slow; cached)
         extra = set(json.loads(placed_path.read_text())) - owned_all

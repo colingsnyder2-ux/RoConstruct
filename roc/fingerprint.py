@@ -41,6 +41,7 @@ class Target:
         self.base, self.image = match._image(client)
         self.relocs = sorted(match._base_relocs(client))
         self.index = open_index(client)
+        self._masked_index = {}
 
     def exe_relocs(self, va, size):
         lo, hi = bisect_left(self.relocs, va), bisect_left(self.relocs, va + size)
@@ -55,13 +56,28 @@ class Target:
         exe = bytes(self.image[va - self.base:va - self.base + len(code)])
         return exe if match.masked(exe, relocs) == match.masked(code, relocs) else None
 
+    def candidates(self, code, relocs):
+        """Index each relocation pattern once instead of rescanning every same-size body."""
+        key = (len(code), tuple(sorted(relocs)))
+        if key not in self._masked_index:
+            rows = defaultdict(list)
+            for addr in self.index.get(len(code), []):
+                va = int(addr, 16)
+                if self.exe_relocs(va, len(code)) <= set(relocs):
+                    exe = self.image[va - self.base:va - self.base + len(code)]
+                    rows[match.masked(exe, relocs)].append(addr)
+            self._masked_index[key] = rows
+        active = self.index.get(len(code), [])
+        return [addr for addr in self._masked_index[key].get(match.masked(code, relocs), [])
+                if addr in active]
+
     def match_obj(self, obj, source, data_check=True):
         """{addr: (source, symbol, data spans)} for every object function found in the exe."""
         found = {}
         for name, code, relocs in match.coff_functions(obj):
             if len(code) < 6:  # too short to say anything (a lone ret matches everywhere)
                 continue
-            for addr in self.index.get(len(code), []):
+            for addr in self.candidates(code, relocs):
                 if addr in found:
                     continue
                 exe = self.same(addr, code, relocs)
@@ -82,12 +98,12 @@ def save(client, found, note):
     new = 0
     for addr, (source, symbol, spans) in found.items():
         path = ROOT / "src" / client / ("%s.cpp" % addr)
-        match.save_score(client, addr, 100)
         match.save_data(client, addr, spans)
         header = match.template(client, addr).split("\n\n")[0]
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text("%s\n// %s (function %s)\n\n%s" % (header, note, symbol, source))
         new += 1
+    match.save_scores(client, {addr: 100 for addr in found})
     return new
 
 

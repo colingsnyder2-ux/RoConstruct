@@ -76,7 +76,7 @@ def coff_functions(obj):
         if raw[:4] == b"\0\0\0\0":
             off = strtab + struct.unpack_from("<I", raw, 4)[0]
             raw = obj[off:obj.index(b"\0", off)]
-        if secnum > 0 and typ == 0x20:
+        if secnum > 0 and typ == 0x20 and not secs[secnum - 1][-1] & 0x800:
             syms.append((secnum - 1, value, raw.rstrip(b"\0").decode("latin-1")))
         i += 1 + naux
     starts, ends, labels = {}, {}, {}
@@ -1023,6 +1023,18 @@ def check_text(client, addr, text, flags=None, include_diagnosis=False, obj=None
     return result + (diagnosis,) if include_diagnosis else result
 
 
+def _replace_cache(source, destination):
+    """Windows readers and virus scanners can briefly deny an atomic replacement."""
+    for attempt in range(20):
+        try:
+            os.replace(source, destination)
+            return
+        except PermissionError:
+            if os.name != "nt" or attempt == 19:
+                raise
+            time.sleep(0.05)
+
+
 def save_data(client, addr, spans):
     """Record verified data (va, length) per function in work/<client>/data.json."""
     if not spans:
@@ -1033,7 +1045,7 @@ def save_data(client, addr, spans):
         data[addr] = spans
         tmp = path.with_suffix(".%s.tmp" % uuid.uuid4().hex)
         tmp.write_text(json.dumps(data, separators=(",", ":")))
-        os.replace(tmp, path)
+        _replace_cache(tmp, path)
 
 
 def check(client, addr, src, flags=None):
@@ -1048,21 +1060,21 @@ def save_score(client, addr, value):
     return save_scores(client, {addr: value}).get(addr, 0)
 
 
-def save_scores(client, values):
+def save_scores(client, values, authoritative=False):
     """Merge a batch without rereading and rewriting the whole cache per row."""
     path = ROOT / "work" / client / "scores.json"
-    with _SCORES_LOCK:
+    with _SCORES_LOCK, _object_lock(path):
         scores = json.loads(path.read_text()) if path.exists() else {}
         changed = False
         for addr, value in values.items():
-            if value > scores.get(addr, 0):
+            if value > scores.get(addr, 0) or (authoritative and value != scores.get(addr)):
                 scores[addr] = value
                 changed = True
         if changed:
             path.parent.mkdir(parents=True, exist_ok=True)
             tmp = path.with_name("scores.%d.tmp" % os.getpid())  # replace atomically: readers never see a half file
             tmp.write_text(json.dumps(scores, indent=0, sort_keys=True))
-            os.replace(tmp, path)
+            _replace_cache(tmp, path)
         return scores
 
 

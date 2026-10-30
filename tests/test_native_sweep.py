@@ -512,7 +512,8 @@ def test_pipeline_recompiles_minimal_fix_before_claim_and_apply(tmp_path, monkey
                 'out=Path(__file__).with_name("rbxgs-client.json")\n' + sweep.OUTPUT_MARKER + '\n').encode()
     generator.write_bytes(original)
     generator.with_name('rbxgs-client.json').write_text('{}')
-    base = {'generator': hashlib.sha256(original).hexdigest(), 'overlay': {}, 'revision': 'base'}
+    base = {'generator': hashlib.sha256(original).hexdigest(), 'overlay': {}, 'revision': 'base',
+            'features': {'native_reference_gate': 1}}
     manifest, owned = root / 'manifest.json', root / 'owned.json'
     manifest.write_text(json.dumps([{'addr': '00500001', 'score': 100, 'source_kind': 'snippet', 'unit': 'RBX::A'}]))
     owned.write_text(json.dumps({'owned_addrs': ['00500000'] if existing_owned else []}))
