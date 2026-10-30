@@ -363,12 +363,15 @@ def test_nested_header_inventories_reuse_parent_walk_but_scan_excluded_wrap(tmp_
     build()
     assert len(compiles) == 2
 
-@pytest.mark.parametrize('selection,expected', [(['roc_selected.cpp'], ['roc_selected.cpp']), ('*.cpp', ['plain.cpp'])])
+@pytest.mark.parametrize('selection,expected', [(['roc_selected.cpp'], ['roc_selected.cpp']), ('*.cpp', ['overlay_plain.cpp', 'plain.cpp'])])
 def test_explicit_native_unit_selection_preserves_wildcard_sweep_exclusion(tmp_path, monkeypatch, selection, expected):
     tree = tmp_path / 'tools/libs/vendor'
     tree.mkdir(parents=True)
     for name in ['roc_selected.cpp', 'roc_unrelated.cpp', 'plain.cpp']:
         (tree / name).write_text('int native_unit;')
+    overlay = tmp_path / 'overlay'
+    overlay.mkdir()
+    (overlay / 'overlay_plain.cpp').write_text('int overlay_unit;')
     monkeypatch.setattr(rebuild, 'ROOT', tmp_path)
     from roc import libs
     monkeypatch.setattr(libs, 'LIBS', tmp_path / 'tools/libs')
@@ -376,7 +379,7 @@ def test_explicit_native_unit_selection_preserves_wildcard_sweep_exclusion(tmp_p
     monkeypatch.setattr(rebuild, 'load_module', lambda *args: {'name': 'Fixture', 'layers': [
         {'name': 'native', 'mode': 'recipe', 'recipe': 'native-fixture', 'files': selection,
          'direct': True, 'flags': '/O2 /MD', 'extra_includes': ['tools/fmod/include']}]})
-    monkeypatch.setattr(rebuild, 'build_overlay', lambda *args: None)
+    monkeypatch.setattr(rebuild, 'build_overlay', lambda *args: (tree, overlay))
     monkeypatch.setattr(rebuild, 'patched_tree', lambda *args: tree)
 
     class CompileObserved(Exception):

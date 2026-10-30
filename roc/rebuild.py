@@ -1301,7 +1301,8 @@ def build_module(client, name, log=print):
                 files = sorted(p.relative_to(src).as_posix() for g in globs for p in src.glob(g)
                                if not p.name.startswith("roc_"))
             files = [f for f in files if f not in layer.get("exclude", [])]
-            if ov and src.resolve().is_relative_to(Path(ov[0]).resolve()) and not isinstance(listed, list):
+            if (ov and src.resolve().is_relative_to(Path(ov[0]).resolve())
+                    and not isinstance(layer["files"], list) and not isinstance(listed, list)):
                 overlay_src = Path(ov[1]) / src.resolve().relative_to(Path(ov[0]).resolve())
                 extra = {p.relative_to(overlay_src).as_posix() for g in globs for p in overlay_src.glob(g)
                          if not p.name.startswith('roc_')}
