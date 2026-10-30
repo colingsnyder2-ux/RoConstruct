@@ -25717,5 +25717,37 @@
       "full_suite_passed": 1097,
       "full_suite_skipped": 3
     }
+  },
+  "ogre-native-containers-20261029": {
+    "op": "fanout",
+    "client": "2008-06",
+    "hypothesis": "Recover synthetic POD/string/pointer STL snippets using real container types documented in Ogre1.4.5 headers: StringVector, keyframe times, Vector3/Vector4/Plane, LightList/RenderableList, EnabledAnimationStateList and MovableObjectMap. Do not infer original template spelling from identical code alone; bind unique target code/data pairs first and retain ambiguous twins as candidates.",
+    "sources": [
+      {
+        "recipe": "ogre-1.4.5-dll",
+        "files": [
+          "roc_native_ogre_containers_a87fcc1e65dfc17b.cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"
+        ]
+      }
+    ],
+    "result": {
+      "status": "15 globally unique header-STL targets and coherent runtime pass",
+      "new_verified": 0,
+      "header_based_stl_integrations": 15,
+      "original_template_spelling_proven": false,
+      "twins_left_unbound": 5,
+      "forced_roots": 327,
+      "prior_roots_preserved": 312,
+      "placed_distinct": 410,
+      "evidence": "RoConstruct-findings2008-06/verification/ogre-native-containers-20261029"
+    },
+    "provider_hypothesis": "Observed access violation at old VC2005 map insert helper selected from Ogre1.6.4 TU; it reads head at+4 while genuine VC2008 cohort uses+24. Recompile that producer TU under21022 and preserve both existing roots before changing helper ownership; no blanket flag-only swap across layouts.",
+    "rejected": "Five library-scope candidates have indistinguishable full-binary twins; do not bind. Unoptimized helper changes imported string destructor call and loses2 matches. Old VC2005 donor map helper reads head+4 vs native VC2008+24 and crashes; migrate only its map-producing root to21022 while preserving unrelated merge at50727."
   }
 }
