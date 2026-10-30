@@ -133,11 +133,9 @@ def prepare(client='2008-06', log=print):
                         libs.fetch(recipe)
     for name, spec in modules[:-1]:
         out = root / 'rebuild' / client / 'out' / spec['name']
-        report = json.loads((out / 'report.json').read_text()) if (out / 'report.json').exists() else {}
-        if not (out / 'linked/linked.lib').exists() or not report.get('linked') or \
-                spec.get('test') and report.get('test_exit') != 0:
+        if not rebuild._module_ready(out, spec):
             log('Native setup: building declared dependency ' + name)
             result = rebuild.build_module(client, name)
-            if not result.get('linked') or spec.get('test') and result.get('test_exit') != 0:
+            if not result.get('linked') or result.get('test_exit') != 0 or not rebuild._module_ready(out, spec):
                 raise ValueError('Dependency build/smoke failed: ' + name)
     log('Native setup: ABI, RTTI, compiler profiles and declared libraries ready')

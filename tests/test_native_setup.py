@@ -64,14 +64,20 @@ def test_cold_prepare_generates_rtti_and_builds_dependencies_with_declared_profi
     monkeypatch.setattr(libs, 'winsdk_include', lambda: 'SDK')
     monkeypatch.setattr(rebuild, 'toolchain', lambda *a: {k: 'installed' for k in
         ('cl', 'link', 'lib', 'vc_include', 'sdk_include', 'sdk_lib', 'atlmfc_include')})
-    specs = {'rbxgs-app': dict(name='RbxgsApp', depends=['g3d'], layers=[{'cl':21022}]),
-             'g3d': dict(name='G3D', depends=['zlib'], layers=[{'cl':21022}], test='g3d-smoke'),
-             'zlib': dict(name='Zlib', layers=[{'cl':50727}])}
+    specs = {'rbxgs-app': dict(name='RbxgsApp', depends=['g3d'], layers=[{'name':'core', 'cl':21022}]),
+             'g3d': dict(name='G3D', depends=['zlib'], layers=[{'name':'core', 'cl':21022}], test='g3d-smoke'),
+             'zlib': dict(name='Zlib', layers=[{'name':'core', 'cl':50727}])}
     monkeypatch.setattr(rebuild, 'load_module', lambda client, name: specs[name])
     built = []
     def build(client, name):
         assert 50727 in installed and (work / 'vtables.json').exists()
         built.append(name)
+        out = tmp_path / 'rebuild/2008-06/out' / specs[name]['name']
+        (out / 'linked').mkdir(parents=True)
+        (out / 'linked/linked.lib').write_bytes(b'library')
+        (out / 'report.json').write_text('{"linked": true, "test_exit": 0}')
+        (out / 'layer-core').mkdir()
+        (out / 'layer-core/errors.json').write_text('{}')
         return {'linked':True, 'test_exit':0}
     monkeypatch.setattr(rebuild, 'build_module', build)
     rebuild_install.prepare(log=lambda *a: None)

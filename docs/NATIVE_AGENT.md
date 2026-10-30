@@ -28,6 +28,8 @@ batch process takes precedence over later single-method examples.
 
    For RbxgsApp, also run `roc rebuild 2008-06 milestones` and report each
    milestone's result, including any unresolved renderer symbols.
+   Recorded compile errors, empty source lists and failed dependency builds
+   invalidate the report; the last successful report is saved for comparison.
 
    `force_owned: true` selects the linked providers, forces their externally
    defined symbols with unique object-level ownership, relinks

@@ -1337,6 +1337,39 @@ def dll_import_lib(client, dll, source=None):
     return lib
 
 
+def _module_ready(out, spec):
+    """A link is usable only when all source layers compiled and its test passed."""
+    try:
+        report = json.loads((out / "report.json").read_text())
+        return ((out / "linked" / "linked.lib").exists() and report.get("linked")
+                and report.get("test_exit") == 0
+                and all(not json.loads((out / ("layer-" + layer["name"]) / "errors.json").read_text())
+                        for layer in spec["layers"]))
+    except (OSError, ValueError, KeyError, TypeError):
+        return False
+
+
+def _compile_failure_report(out, name, errors, dependency_errors=None):
+    """Invalidate stale ownership after a failed layer, retaining the last success."""
+    report_path = out / "report.json"
+    try:
+        previous = json.loads(report_path.read_text())
+        if previous.get("linked") and previous.get("test_exit") == 0:
+            _dump(out / "report-before-compile-failure.json", previous)
+            symbols = out / "owned-symbols.json"
+            if symbols.exists():
+                _dump(out / "owned-symbols-before-compile-failure.json", json.loads(symbols.read_text()))
+    except (OSError, ValueError, AttributeError):
+        pass
+    report = {"module": name, "linked": False, "test_exit": None,
+              "test_output": "compile or dependency errors; link skipped",
+              "unresolved": [], "compile_errors": errors, "dependency_errors": dependency_errors or {}, "object_functions": 0,
+              "owned_2008": 0, "owned_2008_16b": 0, "owned_addrs": [], "choices": {}}
+    _dump(out / "owned-symbols.json", {})
+    _dump(report_path, report)
+    return report
+
+
 def build_module(client, name, log=print):
     """Build every layer of modules/<name>.json, resolve the link, run its test, write a report."""
     from roc import libs
@@ -1355,7 +1388,7 @@ def build_module(client, name, log=print):
             source = ROOT / name
             shutil.copyfile(source, tests / source.name)
     ov = build_overlay(client, spec["name"], spec.get("overlay"))
-    layer_dirs = []
+    layer_dirs, compile_errors = [], {}
     for layer in spec["layers"]:
         folder = out / ("layer-" + layer["name"])
         if layer["mode"] == "archive":
@@ -1365,6 +1398,7 @@ def build_module(client, name, log=print):
                     libs.archive_unit(layer["recipe"], member, layer.get("cl", BUILD)))
             errors = {}
         elif layer["mode"] == "recipe":
+            libs.fetch(layer["recipe"])
             src = libs._case_path(libs.LIBS / libs.RECIPES[layer["recipe"]]["src"])
             listed = libs.RECIPES[layer["recipe"]].get("files")
             if isinstance(layer["files"], list):
@@ -1382,6 +1416,11 @@ def build_module(client, name, log=print):
                 extra = {p.relative_to(overlay_src).as_posix() for g in globs for p in overlay_src.glob(g)
                          if not p.name.startswith('roc_')}
                 files = sorted((set(files) | extra) - set(layer.get('exclude', [])))
+            if not files:
+                errors = {"<sources>": "No sources found for recipe " + layer["recipe"]}
+                _dump(folder / "errors.json", errors)
+                log("layer %s: no sources; link skipped" % layer["name"])
+                return _compile_failure_report(out, spec["name"], {layer["name"]: errors})
             if layer.get("direct"):  # plain cl: /MD defines _DLL, so CRT data is imported as the linker expects
                 rep = {"compile_errors": {f: "direct" for f in files}}
             else:
@@ -1416,7 +1455,10 @@ def build_module(client, name, log=print):
             sources = [p for g in layer["files"].split() for p in sorted((ROOT / layer["dir"]).glob(g))
                        if not p.name.startswith("roc_") and p.name not in layer.get("exclude", [])]
             if not sources:
-                raise ValueError("No sources found for layer " + layer["name"] + ": " + layer["dir"])
+                errors = {"<sources>": "No sources found in " + layer["dir"]}
+                _dump(folder / "errors.json", errors)
+                log("layer %s: no sources; link skipped" % layer["name"])
+                return _compile_failure_report(out, spec["name"], {layer["name"]: errors})
             append = (ROOT / layer["append_include"]).resolve() if layer.get("append_include") else None
             res = compile_direct(client, sources, folder, includes, defines, layer["flags"], cl=layer.get("cl", BUILD), append=append, overlay=ov)
             if layer.get("fallback_cl"):
@@ -1425,7 +1467,12 @@ def build_module(client, name, log=print):
             errors = {Path(k).name: v for k, (ok, v) in res.items() if not ok}
         _dump(folder / "errors.json", errors)
         log("layer %s: %d compile errors%s" % (layer["name"], len(errors), (" (" + ", ".join(sorted(errors)) + ")") if errors else ""))
+        if errors:
+            compile_errors[layer["name"]] = errors
         layer_dirs.append(folder)
+    if compile_errors:
+        log("module %s: compile errors; link skipped" % spec["name"])
+        return _compile_failure_report(out, spec["name"], compile_errors)
     deps, pending = [], list(spec.get("depends", []))
     while pending:  # transitive: G3D needs zlib-winapi wherever G3D goes
         dep = pending.pop(0)
@@ -1433,8 +1480,12 @@ def build_module(client, name, log=print):
         dep_lib = workspace(client) / "out" / dep_spec["name"] / "linked" / "linked.lib"
         if dep_lib in deps:
             continue
-        if not dep_lib.exists():
-            build_module(client, dep, log=log)
+        dep_out = dep_lib.parent.parent
+        if not _module_ready(dep_out, dep_spec):
+            result = build_module(client, dep, log=log)
+            if not result.get("linked") or result.get("test_exit") != 0 or not _module_ready(dep_out, dep_spec):
+                log("module %s: dependency build failed: %s" % (spec["name"], dep))
+                return _compile_failure_report(out, spec["name"], {}, {dep: "dependency build failed"})
         deps.append(dep_lib)
         pending += dep_spec.get("depends", [])
     if spec.get("mfc_import"):
