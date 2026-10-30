@@ -195,6 +195,52 @@ take over their staging trees or start another writer there.
 4. Reconcile changed baseline/anchors and revalidate saved edits before submission.
 5. Move on after unchanged failed hypotheses; record the blocker and next action.
 
+## Reasoning and efficient manual work
+
+Spend reasoning on evidence interpretation and source reconstruction. Keep routine
+operations mechanical, using supported commands and saved receipts.
+
+| Task | Reasoning |
+| --- | --- |
+| Resume checkout, reuse tools, sync and inspect jobs | Low: follow recorded paths and actual command results |
+| Select targets | Medium: prioritize strong evidence, small remaining diffs and shared causes |
+| Recover types, fields, ABI and control flow | High: derive changes from binary and authentic source evidence |
+| Diagnose code/data mismatches or rejected proofs | High: identify the failing gate and form one testable hypothesis |
+| Compile, compare, save, upload and check receipts | Low: execute supported commands and record their results |
+
+Use deeper reasoning for shared layouts, ABI changes and ambiguous ownership;
+use lighter reasoning for an evidenced constant correction or routine command.
+These are effort guidelines, not instructions to switch models, launch another
+agent or change provider settings.
+
+For each manual cycle:
+
+1. Resume the checkpoint's checkout, selected client, tool paths, drafts and pending
+   IDs. Inspect existing results before generating edits. Repair setup only when
+   a prerequisite check identifies a missing or stale input.
+2. Choose an evidence-rich target or shared cause. Similarity percentage alone
+   does not establish correctness or priority. Skip already integrated work.
+3. Before editing, record a short note: target address, observed mismatch,
+   evidence-backed hypothesis and expected compiler effect. Do not write lengthy
+   speculative analysis; obtain the missing declaration or binary evidence.
+4. Compile one focused change in the real unit. Preserve useful gains with their
+   source, baseline revision, hashes, score and diff; preserve existing exacts.
+   Test inseparable shared changes together, splitting failures for diagnosis.
+5. After three attempts without new evidence or improvement, record the blocker
+   and switch targets. Revisit when relevant inputs or evidence change; do not
+   repeat recorded failed approaches against unchanged inputs.
+6. Submit completed passing exact fixes promptly through the normal gates.
+   Share useful partial source through the review-draft route below. Retain the
+   returned job or packet ID and distinguish uploaded, queued and accepted states.
+7. Update the durable checkpoint after useful proofs, uploads, baseline changes
+   and stops: saved artifact paths, failed hypotheses, IDs and the next command.
+   Check pending jobs between batches; revalidate affected edits when inputs change.
+
+Use existing deterministic commands for state, builds and transport while this
+chat agent supplies evidence-based C++ edits. A command wrapper, if used, must
+preserve the checkpoint and return failures for diagnosis; it must not silently
+start the GUI Integrator, another model session or an autonomous worker.
+
 ## Share near-exact drafts
 
 Contributors may upload useful near-exact source patches for review with
