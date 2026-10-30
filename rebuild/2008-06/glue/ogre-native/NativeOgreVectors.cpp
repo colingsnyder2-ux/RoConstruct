@@ -23,3 +23,6 @@ template class Ogre::SharedPtr<Ogre::Resource>;
 #include <OgreGpuProgram.h>
 template class Ogre::SharedPtr<Ogre::ShadowCameraSetup>;
 template class Ogre::SharedPtr<Ogre::GpuProgramParameters>;
+
+#include <OgreVector2.h>
+template class std::vector<Ogre::Vector2>;

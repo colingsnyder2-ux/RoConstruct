@@ -1,3 +1,4 @@
+#include <OgreVector2.h>
 #include <OgreShadowCameraSetup.h>
 #include <OgreGpuProgram.h>
 #include <map>
@@ -25,5 +26,6 @@ int main() {
  std::map<Ogre::ResourceHandle,Ogre::ResourcePtr> resources; resources[1]=Ogre::ResourcePtr(); if(resources.size()!=1 || !resources[1].isNull()) return 9;
  { Ogre::ShadowCameraSetupPtr setup(new Ogre::DefaultShadowCameraSetup()); Ogre::ShadowCameraSetupPtr copy(setup); if(setup.isNull() || setup.useCount()!=2) return 10; }
  { Ogre::GpuProgramParametersSharedPtr gpu(new Ogre::GpuProgramParameters()); Ogre::GpuProgramParametersSharedPtr copy(gpu); if(gpu.isNull() || gpu.useCount()!=2) return 11; }
+ std::vector<Ogre::Vector2> points; points.push_back(Ogre::Vector2(1,2)); points.resize(4,Ogre::Vector2(3,4)); if(points.size()!=4 || points[0].y!=2 || points[3].x!=3) return 12;
  return 0;
 }
