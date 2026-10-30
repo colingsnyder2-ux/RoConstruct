@@ -37,6 +37,8 @@ batch process takes precedence over later single-method examples.
    directly. Modules with swapped providers need their existing `force_verified`
    support and an appropriate forced fixture; `force_owned` rejects them. A
    passing fixture proves its link and exercised behavior, not all runtime paths.
+   `import_support_dlls` can link an x86 vendor support DLL using its own exports;
+   identify its version and provenance separately from original-client code.
 4. Compare addresses against the prior report and the global server baseline.
    Check object code/data, actual linked executable bytes, source identity and
    dependencies. Resolve shared definitions or address twins with real evidence;

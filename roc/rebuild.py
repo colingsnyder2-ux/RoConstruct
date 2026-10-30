@@ -1305,17 +1305,22 @@ def dll_exports(path):
     starts = [at(struct.unpack_from("<I", data, at(names) + 4 * i)[0]) for i in range(count)]
     return [data[start:data.index(b"\0", start)].decode("latin-1") for start in starts]
 
-def dll_import_lib(client, dll):
-    """out/importlibs/<dll>.lib: an import library for a DLL the 2008 exe ships (e.g. rgmain.dll, the client's
-    OgreMain), made by the period lib.exe from the DLL's own export names."""
+def dll_import_lib(client, dll, source=None):
+    """Build an import library from client or explicitly selected support DLL exports."""
     out = workspace(client) / "out" / "importlibs"
-    lib = out / (Path(dll).stem + ".lib")
+    path = Path(source) if source is not None else ROOT / "clients" / client / dll
+    stem = Path(dll).stem
+    if source is not None:
+        data = path.read_bytes()
+        if data[:2] != b"MZ" or struct.unpack_from("<H", data, struct.unpack_from("<I", data, 0x3c)[0] + 4)[0] != 0x14c:
+            raise ValueError("support DLL must be an x86 PE: " + str(path))
+        stem += "-" + hashlib.sha256(data).hexdigest()[:16]
+    lib = out / (stem + ".lib")
     if not lib.exists():
         out.mkdir(parents=True, exist_ok=True)
-        path = ROOT / "clients" / client / dll
-        (out / (Path(dll).stem + ".def")).write_text(
+        (out / (stem + ".def")).write_text(
             "LIBRARY %s\nEXPORTS\n" % Path(dll).name + "".join("  %s\n" % n for n in dll_exports(path)))
-        code, text = run(toolchain(), "lib", ["/nologo", "/MACHINE:X86", "/DEF:" + Path(dll).stem + ".def",
+        code, text = run(toolchain(), "lib", ["/nologo", "/MACHINE:X86", "/DEF:" + stem + ".def",
                                               "/NAME:" + Path(dll).name, "/OUT:" + lib.name], out)
         if code:
             raise RuntimeError("%s: %s" % (lib.name, text[-300:]))
@@ -1432,6 +1437,13 @@ def build_module(client, name, log=print):
         test_dir = workspace(client) / "out" / "tests" / spec["test"]
         test_dir.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(ROOT / "clients" / client / dll, test_dir / Path(dll).name)
+    for dll in spec.get("import_support_dlls", []):
+        import shutil
+        source = ROOT / dll
+        deps.append(dll_import_lib(client, source.name, source=source))
+        test_dir = workspace(client) / "out" / "tests" / spec["test"]
+        test_dir.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(source, test_dir / source.name)
     excluded_path = out / "verified" / "excluded.json"
     excluded = set(json.loads(excluded_path.read_text())) if excluded_path.exists() else set()
     vdrop_path = out / "verified" / "vdrop.json"

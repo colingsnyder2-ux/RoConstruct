@@ -1,0 +1,30 @@
+{
+ "name": "G3D",
+ "description": "G3D 6.09 core (G3Dcpp, no OpenGL) with the 2008 Roblox header/source patches (recipe g3d-6.09-rbx2008).",
+ "depends": [
+  "zlib-winapi"
+ ],
+ "layers": [
+  {
+   "name": "upstream",
+   "mode": "recipe",
+   "recipe": "g3d-6.09-rbx2008",
+   "files": "G3Dcpp/*.cpp",
+   "direct": true,
+   "flags": "/O2 /GS- /EHsc /MD"
+  },
+  {
+   "name": "ijg",
+   "mode": "direct",
+   "dir": "tools/libs/g3d-6.09/source/IJG",
+   "files": "*.c",
+   "flags": "/O2 /GS- /MD",
+   "defines": "WIN32 NDEBUG"
+  }
+ ],
+ "test": "g3d_core",
+ "test_includes": [
+  "tree:g3d-6.09-rbx2008/include"
+ ],
+ "verified": true
+}
