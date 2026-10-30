@@ -212,6 +212,11 @@ Keep the agent's progress loop aligned with the GUI:
    edits, and work from genuine declarations and target evidence.
 2. Test one hypothesis, preserve local gains, isolate failures, and stop spending
    on an unchanged exhausted target. Broaden method context only when needed.
+   A local near-exact improvement is a repair candidate, not a queued submission:
+   save its source, score, diff and proof, make one focused repair, then run the
+   linked preflight. If it becomes a linked exact with no loss, submit it
+   immediately; otherwise retain the local draft and move on. Never call a
+   local gain uploaded, queued or server-verified without a returned server job ID.
 3. Queue each completed passing fix immediately. Record each job ID, keep discovery moving,
    and check pending jobs between batches. Local exact, queued and accepted are
    separate states; only accepted receipts add verified native credits.
