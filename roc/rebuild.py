@@ -401,6 +401,9 @@ def pair_object(client, obj, symbols=None):
             if index is None:
                 index = match._coff_data_index(obj)
             refs = match.coff_data_refs(obj, symbol, index=index)
+            if not refs:
+                result.append((symbol, size, addresses))
+                continue
             for address in addresses:
                 code, _, _ = match.target(client, address)
                 checked, bad = match.data_check(client, address, code, refs)

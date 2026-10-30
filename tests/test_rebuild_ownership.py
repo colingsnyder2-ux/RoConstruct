@@ -40,3 +40,12 @@ def test_all_data_mismatches_reject_code_twins(monkeypatch):
 def test_ownership_symbol_filter_ignores_unrelated_functions(monkeypatch):
     targets(monkeypatch)
     assert rebuild.pair_object('test', object_bytes(), {'unrelated'}) == []
+
+
+def test_no_referenced_data_keeps_code_twins_without_target_reads(monkeypatch):
+    targets(monkeypatch)
+    monkeypatch.setattr(match, 'coff_data_refs', lambda *args, **kwargs: [])
+    def unexpected(*args):
+        raise AssertionError('No data to compare: target reads are unnecessary')
+    monkeypatch.setattr(match, 'target', unexpected)
+    assert rebuild.pair_object('test', object_bytes()) == [('_f', 6, ['00500000', '00500010'])]
