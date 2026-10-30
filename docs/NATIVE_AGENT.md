@@ -29,14 +29,14 @@ batch process takes precedence over later single-method examples.
    For RbxgsApp, also run `roc rebuild 2008-06 milestones` and report each
    milestone's result, including any unresolved renderer symbols.
 
-   For a module without verified swaps, `force_owned: true` selects the linked
-   providers, forces their externally defined, uniquely matched symbols, relinks
+   `force_owned: true` selects the linked providers, forces their externally
+   defined, uniquely matched symbols, relinks
    until provider selection stabilizes, and checks the link map. Its fixture must
    include `force_verified.h` and its test include paths must include
    `rebuild/2008-06/out/MODULE_NAME/force`. Internal functions are not all forced
-   directly. Modules with swapped providers need their existing `force_verified`
-   support and an appropriate forced fixture; `force_owned` rejects them. A
-   passing fixture proves its link and exercised behavior, not all runtime paths.
+   directly. For swapped providers, also enable `force_verified` to force the
+   selected swaps. A passing fixture proves its link and exercised behavior, not
+   all runtime paths.
    `import_support_dlls` can link an x86 vendor support DLL using its own exports;
    identify its version and provenance separately from original-client code.
 4. Compare addresses against the prior report and the global server baseline.

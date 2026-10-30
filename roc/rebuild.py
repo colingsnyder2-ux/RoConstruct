@@ -1396,6 +1396,8 @@ def build_module(client, name, log=print):
                                               source_names=source_names))
                 errors = {Path(k).name: v for k, (ok, v) in res.items() if not ok}
         else:
+            if layer.get("fetch_recipe"):
+                libs.fetch(layer["fetch_recipe"])
             recipe = libs.RECIPES[layer["includes_from_recipe"]] if layer.get("includes_from_recipe") else {"include": []}
             includes = [(libs.LIBS / i).resolve() for i in recipe["include"] if i != "WINSDK"]
             includes += [(ROOT / i).resolve() for i in layer.get("extra_includes", [])]
@@ -1403,6 +1405,8 @@ def build_module(client, name, log=print):
             defines = (defines + " " + layer.get("extra_defines", "")).strip()
             sources = [p for g in layer["files"].split() for p in sorted((ROOT / layer["dir"]).glob(g))
                        if not p.name.startswith("roc_") and p.name not in layer.get("exclude", [])]
+            if not sources:
+                raise ValueError("No sources found for layer " + layer["name"] + ": " + layer["dir"])
             append = (ROOT / layer["append_include"]).resolve() if layer.get("append_include") else None
             res = compile_direct(client, sources, folder, includes, defines, layer["flags"], cl=layer.get("cl", BUILD), append=append, overlay=ov)
             if layer.get("fallback_cl"):
@@ -1477,8 +1481,6 @@ def build_module(client, name, log=print):
     while True:  # keep required helpers, or swap incompatible callers back out
         verified, drop = verified_layer(client, spec, log=log, exclude=excluded | shared, vdrop=vdrop, helpers=helpers,
                                        base_functions=base_functions)
-        if spec.get("force_owned") and (verified or drop):
-            raise ValueError("force_owned does not support swapped providers")
         if spec.get("force_verified") or spec.get("force_owned"):
             (out / "force").mkdir(exist_ok=True)
             (out / "force" / "force_verified.h").write_text(
@@ -1520,6 +1522,8 @@ def build_module(client, name, log=print):
             if added:
                 _dump(helpers_path, helpers)
                 log("verified: keeping %d helpers the swapped functions call" % added)
+                force_owned.clear()
+                force_seen.clear()
                 continue
         back = set(result.get("referencers", [])) & drop
         if not back and verified and result["unresolved"]:
@@ -1535,11 +1539,15 @@ def build_module(client, name, log=print):
             vdrop |= dupes
             _dump(vdrop_path, sorted(vdrop))
             log("verified: %d duplicate definitions; undefined in verified objects" % len(dupes))
+            force_owned.clear()
+            force_seen.clear()
             continue
         if result["linked"] or not back:
             break
         excluded |= back
         _dump(excluded_path, sorted(excluded))
+        force_owned.clear()
+        force_seen.clear()
         if spec.get("prune_unselected_sections") and helpers:
             # Removing callers invalidates their helper closure. Rediscover only
             # dependencies of the remaining roots instead of retaining orphans.

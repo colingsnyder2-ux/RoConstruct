@@ -1,3 +1,4 @@
+#include "force_verified.h"
 // G3D core: vector/matrix/quaternion math, containers and binary serialization.
 #include "G3D/Vector3.h"
 #include "G3D/Matrix3.h"

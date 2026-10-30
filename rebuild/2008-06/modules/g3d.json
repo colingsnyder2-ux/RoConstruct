@@ -1,6 +1,8 @@
 {
  "name": "G3D",
  "description": "G3D 6.09 core (G3Dcpp, no OpenGL) with the 2008 Roblox header/source patches (recipe g3d-6.09-rbx2008).",
+ "force_owned": true,
+ "force_verified": true,
  "depends": [
   "zlib-winapi",
   "libpng"
@@ -25,6 +27,7 @@
  ],
  "test": "g3d_core",
  "test_includes": [
+  "rebuild/2008-06/out/G3D/force",
   "tree:g3d-6.09-rbx2008/include"
  ],
  "verified": true
