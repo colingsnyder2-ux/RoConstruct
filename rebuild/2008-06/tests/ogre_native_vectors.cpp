@@ -1,3 +1,7 @@
+#include <map>
+#include <OgreConfigOptionMap.h>
+#include <OgreGpuProgram.h>
+#include <OgreResourceManager.h>
 #include <OgrePlane.h>
 #include <vector>
 #include <OgreShadowTextureManager.h>
@@ -13,5 +17,9 @@ int main() {
  std::vector<Ogre::Plane> planes; Ogre::Plane plane; plane.normal=Ogre::Vector3(1,2,3); plane.d=4; planes.push_back(plane); planes.resize(4,plane);
  if(planes.size()!=4 || planes[3].d!=4 || planes[0].normal.y!=2) return 5;
  planes.erase(planes.begin()+1); if(planes.size()!=3) return 6;
+ std::map<Ogre::String,Ogre::ConfigOption> options; Ogre::ConfigOption option; option.name="mode"; option.currentValue="fast"; option.immutable=false; options["mode"]=option;
+ if(options.find("mode")==options.end() || options["mode"].currentValue!="fast") return 7;
+ std::map<Ogre::String,Ogre::GpuConstantDefinition> constants; constants["color"]=Ogre::GpuConstantDefinition(); if(constants.size()!=1) return 8;
+ std::map<Ogre::ResourceHandle,Ogre::ResourcePtr> resources; resources[1]=Ogre::ResourcePtr(); if(resources.size()!=1 || !resources[1].isNull()) return 9;
  return 0;
 }

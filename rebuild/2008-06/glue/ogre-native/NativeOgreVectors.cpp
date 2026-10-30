@@ -9,3 +9,12 @@ template class Ogre::SharedPtr<Ogre::Texture>;
 
 #include <OgrePlane.h>
 template class std::vector<Ogre::Plane>;
+
+#include <map>
+#include <OgreConfigOptionMap.h>
+#include <OgreGpuProgram.h>
+#include <OgreResourceManager.h>
+template class std::map<Ogre::String,Ogre::ConfigOption>;
+template class std::map<Ogre::String,Ogre::GpuConstantDefinition>;
+template class std::map<Ogre::ResourceHandle,Ogre::ResourcePtr>;
+template class Ogre::SharedPtr<Ogre::Resource>;
