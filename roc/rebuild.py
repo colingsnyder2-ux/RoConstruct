@@ -550,6 +550,16 @@ def _ownership_rows(client, obj, cache, context):
     return rows, False
 
 
+def _forced_owned_symbols(client, linked, cache_dir, context):
+    """Force the external symbols that the ownership report actually credits."""
+    selected = set()
+    for obj in linked.glob("*.obj"):
+        external = coff_externals(obj.read_bytes())
+        rows, _ = _ownership_rows(client, obj, cache_dir / (obj.name + ".json"), context)
+        selected.update(sym for sym, _, addresses in rows if len(addresses) == 1 and external.get(sym))
+    return selected
+
+
 def build_library(client, recipe, files, flags, name, cl=BUILD, jobs=6, log=print):
     """Compile each authentic file whole into out/<name>/, archive <name>.lib, and write <name>.tudiff.json."""
     import concurrent.futures as cf
@@ -1478,6 +1488,7 @@ def build_module(client, name, log=print):
     shared = {sym for sym, providers in counts.items() if len(providers) > 1}
     force_owned = set()
     force_seen = set()
+    force_context = None
     while True:  # keep required helpers, or swap incompatible callers back out
         verified, drop = verified_layer(client, spec, log=log, exclude=excluded | shared, vdrop=vdrop, helpers=helpers,
                                        base_functions=base_functions)
@@ -1492,12 +1503,9 @@ def build_module(client, name, log=print):
                                  library_symbols=drop & set(spec.get("test_library_symbols", [])),
                                  generated_objects=generated_objects)
         if spec.get("force_owned") and result["linked"]:
-            selected = set()
-            for obj in (out / "linked").glob("*.obj"):
-                data = obj.read_bytes()
-                external = coff_externals(data)
-                selected.update(sym for sym, _, addresses in pair(client, match.coff_functions(data))
-                                if len(addresses) == 1 and external.get(sym))
+            if force_context is None:
+                force_context = _ownership_context(client)
+            selected = _forced_owned_symbols(client, out / "linked", out / "ownership-cache", force_context)
             if selected != force_owned:
                 fingerprint = frozenset(selected)
                 if fingerprint in force_seen or len(force_seen) >= 8:

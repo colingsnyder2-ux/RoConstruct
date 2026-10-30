@@ -14,7 +14,7 @@
   {
    "name": "internals",
    "mode": "recipe",
-   "recipe": "xtp-11.2.2-shared-mfc-internals-rtm",
+   "recipe": "xtp-11.2.2-internals-vendor-xp-rtm",
    "files": "Source/Controls/XTComboBoxEx.cpp Source/Controls/XTDateTimeCtrl.cpp Source/Controls/XTExcelTabCtrl.cpp Source/CommandBars/XTPCommandBar.cpp Source/CommandBars/XTPCustomizeSheet.cpp Source/Common/XTPDrawHelpers.cpp Source/PropertyGrid/XTPPropertyGridInplaceEdit.cpp Source/PropertyGrid/XTPPropertyGridItemExt.cpp Source/Controls/XTPPropertyPage.cpp Source/SkinFramework/XTPSkinObjectTab.cpp Source/CommandBars/XTPStatusBar.cpp Source/Controls/XTSplitterWnd.cpp",
    "direct": true,
    "flags": "/O2 /MD /GS /EHsc /Ob1"
@@ -29,7 +29,13 @@
  "test_defines": "WIN32 NDEBUG _MBCS _AFXDLL _XTP_STATICLINK _DLL _XTPLIB_NOAUTOLINK",
  "verified": true,
  "force_verified": true,
+ "force_owned": true,
  "depends": [
   "libpng"
- ]
+ ],
+ "runtime_files": [
+  "tools/vc2008rtm/Windows/winsxs/x86_microsoft.vc90.mfc_1fc8b3b9a1e18e3b_9.0.21022.8_none_b81d038aaf540e86/mfc90.dll"
+ ],
+ "prune_unselected_sections": true,
+ "prefer_module_helpers": true
 }

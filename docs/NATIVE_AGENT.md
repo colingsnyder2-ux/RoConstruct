@@ -30,7 +30,7 @@ batch process takes precedence over later single-method examples.
    milestone's result, including any unresolved renderer symbols.
 
    `force_owned: true` selects the linked providers, forces their externally
-   defined, uniquely matched symbols, relinks
+   defined symbols with unique object-level ownership, relinks
    until provider selection stabilizes, and checks the link map. Its fixture must
    include `force_verified.h` and its test include paths must include
    `rebuild/2008-06/out/MODULE_NAME/force`. Internal functions are not all forced
