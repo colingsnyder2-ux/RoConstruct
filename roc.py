@@ -2986,7 +2986,7 @@ def main(argv=None):
         (["name"], {}), (["addr"], {}))
     cmd("bruteforce", cmd_bruteforce, "post-draft sweep: full compiler grid (incl /fp:fast) + same-shape family fanout",
         (["name"], {}), (["addr"], {"nargs": "?"}), (["--file"], {}),
-        (["--near"], {"type": int, "help": "brute-force every stored source at >= N%"}),
+        (["--near"], {"type": int, "help": "brute-force every stored source at >= N%%"}),
         (["--fast"], {"action": "store_true", "help": "only the 3 quick gates, not the full grid"}),
         (["--no-family"], {"action": "store_true", "help": "skip the sibling fanout"}))
     cmd("mass", cmd_mass, "run every automatic matcher (runtime, STL, libraries, shapes); takes a while",
@@ -3210,7 +3210,7 @@ def main(argv=None):
         (["--source-only"], {"action": "store_true", "help": "run deterministic candidates; never call Ollama"}),
         (["--guided-mutations"], {"action": "store_true", "help": "enable evidence-guided source mutations after compilation"}),
         (["--abi-only"], {"action": "store_true", "help": "limit compiler mutations to ABI/return/type families"}),
-        (["--near-repair"], {"action": "store_true", "help": "preserve 90%+ source; ask for one minimal evidence-backed change"}),
+        (["--near-repair"], {"action": "store_true", "help": "preserve 90%%+ source; ask for one minimal evidence-backed change"}),
         (["--no-update"], {"action": "store_true", "help": "skip the pre-run source update check"}))
     cmd("model-stats", cmd_model_stats, "compare models using worker telemetry")
     cmd("family-stats", cmd_family_stats, "show family coverage, propagation, cost, and exact rate")

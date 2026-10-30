@@ -34,17 +34,17 @@ if ! command -v "$WINE" >/dev/null 2>&1 && [ ! -x "$WINE" ]; then
     exit 1
 fi
 
-# Compiler bundles need both a cab reader and an ISO reader.
-if ! command -v cabextract >/dev/null 2>&1 && ! command -v 7z >/dev/null 2>&1; then
-    echo "cabextract or 7z is required to unpack the compiler archives."
+# Compiler bundles need a cab reader and 7-Zip (the ISOs and the MSI table streams).
+if ! command -v cabextract >/dev/null 2>&1 && ! command -v 7z >/dev/null 2>&1 && ! command -v 7zz >/dev/null 2>&1; then
+    echo "cabextract or 7-Zip is required to unpack the compiler archives."
     echo "  Arch:          sudo pacman -S cabextract"
     echo "  Debian/Ubuntu: sudo apt install cabextract"
     exit 1
 fi
-if ! command -v 7z >/dev/null 2>&1 && ! command -v bsdtar >/dev/null 2>&1; then
-    echo "7z or bsdtar is required to read the compiler ISOs."
+if ! command -v 7z >/dev/null 2>&1 && ! command -v 7zz >/dev/null 2>&1; then
+    echo "7-Zip (7z or 7zz) is required to read the compiler ISOs and MSI tables."
     echo "  Arch:          sudo pacman -S 7zip"
-    echo "  Debian/Ubuntu: sudo apt install p7zip-full libarchive-tools"
+    echo "  Debian/Ubuntu: sudo apt install p7zip-full"
     exit 1
 fi
 
@@ -59,8 +59,8 @@ if [ ! -x "$VENV/bin/python" ]; then
     fi
 fi
 
-echo "Checking Python packages (pefile, capstone)..."
-if ! "$VENV/bin/python" -m pip install -q --disable-pip-version-check pefile capstone; then
+echo "Checking Python packages (pefile, capstone, tzdata)..."
+if ! "$VENV/bin/python" -m pip install -q --disable-pip-version-check pefile capstone tzdata; then
     echo "pip failed. Check your internet connection and run this again."
     exit 1
 fi
