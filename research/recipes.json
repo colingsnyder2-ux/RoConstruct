@@ -25778,5 +25778,35 @@
       "placed_distinct": 411,
       "evidence": "RoConstruct-findings2008-06/verification/ogre-native-scene-20261029"
     }
+  },
+  "ogre-native-factories-20261029": {
+    "op": "fanout",
+    "client": "2008-06",
+    "hypothesis": "Migrate excluded factory create/destroy methods to the constructor-proven native RbxSceneManager header cohort and genuine protected collection helper. Binary exception data proves create line5338 and filename. Exercise actual DLL factory allocation, duplicate rejection, lookup and destruction.",
+    "sources": [
+      {
+        "recipe": "ogre-1.4.5-dll",
+        "files": [
+          "roc_native_scene_factories_e798f1e65cd88908.cpp"
+        ],
+        "builds": [
+          21022
+        ],
+        "flags": [
+          "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast"
+        ]
+      }
+    ],
+    "result": {
+      "status": "19 native-header scene roots;331 forced roots and real factory runtime pass",
+      "new_verified": 0,
+      "new_local_integrations": 2,
+      "old_addresses_preserved": 329,
+      "forced_roots": 331,
+      "native_replayed": 74,
+      "placed_distinct": 411,
+      "evidence": "RoConstruct-findings2008-06/verification/ogre-native-factories-20261029"
+    },
+    "rejected": "Initial15-root precise profile preserves14 but existing shadow query becomes504 instead of520 bytes; retain fast. Old public collection-helper aliases fail dependency closure. Four owner migrations are prior reproduced targets, not four new function gains."
   }
 }
