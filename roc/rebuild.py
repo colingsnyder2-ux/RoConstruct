@@ -1261,6 +1261,13 @@ def build_module(client, name, log=print):
         tests = workspace(client) / "out" / "tests" / spec["test"]
         tests.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(mfc_import_lib(client), tests / "mfc90.lib")
+    if spec.get("runtime_files"):
+        import shutil
+        tests = workspace(client) / "out" / "tests" / spec["test"]
+        tests.mkdir(parents=True, exist_ok=True)
+        for name in spec["runtime_files"]:
+            source = ROOT / name
+            shutil.copyfile(source, tests / source.name)
     ov = build_overlay(client, spec["name"], spec.get("overlay"))
     layer_dirs = []
     for layer in spec["layers"]:

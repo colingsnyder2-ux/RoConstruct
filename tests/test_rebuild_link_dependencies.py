@@ -47,6 +47,8 @@ def test_unresolved_symbols_keeps_imported_cpp_names():
 def test_mfc_import_is_explicit_when_pruning_removes_autolink(tmp_path, monkeypatch):
     import_lib = tmp_path / 'mfc90.lib'
     import_lib.write_bytes(b'import library')
+    runtime = tmp_path / 'mfc90.dll'
+    runtime.write_bytes(b'RTM runtime')
     support = {name: tmp_path / (name + '.lib') for name in ('atls', 'mfcs90')}
     for path in support.values():
         path.write_bytes(b'SDK support')
@@ -57,9 +59,11 @@ def test_mfc_import_is_explicit_when_pruning_removes_autolink(tmp_path, monkeypa
         return {'linked': True, 'exit': 0, 'output': '', 'unresolved': []}
 
     monkeypatch.setattr(rebuild, 'workspace', lambda _: tmp_path)
+    monkeypatch.setattr(rebuild, 'ROOT', tmp_path)
     monkeypatch.setattr(rebuild, 'load_module', lambda *args: {
         'name': 'MfcAtl', 'layers': [], 'test': 'test', 'mfc_import': True,
-        'prune_unselected_sections': True, 'toolchain_libs': ['atls', 'mfcs90']})
+        'prune_unselected_sections': True, 'toolchain_libs': ['atls', 'mfcs90'],
+        'runtime_files': ['mfc90.dll']})
     monkeypatch.setattr(rebuild, 'mfc_import_lib', lambda _: import_lib)
     monkeypatch.setattr(rebuild, 'toolchain', lambda: support)
     monkeypatch.setattr(rebuild, 'build_overlay', lambda *args: None)
@@ -69,6 +73,7 @@ def test_mfc_import_is_explicit_when_pruning_removes_autolink(tmp_path, monkeypa
     assert rebuild.build_module('test', 'mfc-atl', log=lambda _: None)['linked']
     assert seen == [import_lib, support['atls'], support['mfcs90']]
     assert (tmp_path / 'out/tests/test/mfc90.lib').read_bytes() == b'import library'
+    assert (tmp_path / 'out/tests/test/mfc90.dll').read_bytes() == b'RTM runtime'
 
 
 def test_missing_indirect_dependency_excludes_entire_verified_object(tmp_path, monkeypatch):
