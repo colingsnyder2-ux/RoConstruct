@@ -9,6 +9,7 @@ import hashlib
 import functools
 import os
 import re
+import struct
 import subprocess
 from pathlib import Path
 
@@ -389,32 +390,103 @@ def pair(client, funcs):
             for name, body, relocs in funcs]
 
 
+def _code_edges(obj, functions, index):
+    """Unadjusted direct calls/jumps and pushed callbacks defined in this object."""
+    sections, symbols, locations, _ = index
+    edges = {}
+    for symbol, (body, _) in functions.items():
+        value, section = locations[symbol]
+        header = sections[section]
+        refs = []
+        for n in range(header[7]):
+            at, ref, kind = struct.unpack_from('<IIH', obj, header[5] + n*10)
+            offset = at-value
+            if not 1 <= offset <= len(body)-4 or struct.unpack_from('<i', body, offset)[0]:
+                continue
+            callee = symbols[ref][0]
+            if callee not in functions:
+                continue
+            if kind == 20 and body[offset-1] in (0xe8, 0xe9):
+                refs.append((offset, callee, True))
+            elif kind == 6 and body[offset-1] == 0x68:
+                refs.append((offset, callee, False))
+        edges[symbol] = refs
+    return edges
+
+
 def pair_object(client, obj, symbols=None):
-    """Whole-binary code candidates qualified by the object's referenced data."""
-    functions = [f for f in match.coff_functions(obj) if symbols is None or f[0] in symbols]
-    rows = pair(client, functions)
-    index = None
-    result = []
+    """Whole-binary code/data matches, refined only by proven local callee addresses."""
+    functions = {s:(b,r) for s,b,r in match.coff_functions(obj)}
+    requested = set(functions) if symbols is None else set(functions).intersection(symbols)
+    if not requested:
+        return []
+    index = match._coff_data_index(obj)
+    edges = _code_edges(obj, functions, index)
+    active, pending = set(requested), list(requested)
+    while pending:
+        for _, callee, _ in edges[pending.pop()]:
+            if callee not in active:
+                active.add(callee)
+                pending.append(callee)
+    rows = pair(client, [(s,b,r) for s,(b,r) in functions.items() if s in active])
+    matches, known, data_state = {}, {}, {}
     for symbol, size, addresses in rows:
+        data_state[symbol] = {}
         qualified, complete = [], {}
         if addresses:
-            if index is None:
-                index = match._coff_data_index(obj)
             refs = match.coff_data_refs(obj, symbol, index=index)
             if not refs:
-                result.append((symbol, size, addresses))
+                matches[symbol] = addresses
+                data_state[symbol] = {a:True for a in addresses}
                 continue
             for address in addresses:
                 code, _, _ = match.target(client, address)
                 checked, bad = match.data_check(client, address, code, refs)
+                data_state[symbol][address] = False if bad else True if len(checked) == len(refs) else None
                 if not bad:
                     qualified.append(address)
                     complete[address] = len(checked) == len(refs)
             # Missing target data must not turn code twins into a unique owner.
             if len(addresses) > 1 and len(qualified) == 1 and not complete[qualified[0]]:
                 qualified = addresses
-        result.append((symbol, size, qualified))
-    return result
+            if len(qualified) == 1 and complete[qualified[0]]:
+                known[symbol] = qualified[0]
+        matches[symbol] = qualified
+    # Only earlier proofs seed each round. Cycles cannot bootstrap ownership.
+    for _ in range(len(rows)):
+        added = {}
+        unresolved = {s for s in matches if len(matches[s]) > 1}
+        for symbol, _, _ in rows:
+            if symbol in known or len(matches[symbol]) < 2:
+                continue
+            # Resolve ambiguous local dependencies first; a partial proof must
+            # not become an anchor before another callee can contradict it.
+            if any(callee in unresolved and callee not in known for _,callee,_ in edges[symbol]):
+                continue
+            constraints = [e for e in edges[symbol] if e[1] in known]
+            if not constraints:
+                continue
+            qualified = []
+            for address in matches[symbol]:
+                if data_state[symbol][address] is False:
+                    continue
+                code, _, _ = match.target(client, address)
+                for offset, callee, relative in constraints:
+                    destination = (int(address,16)+offset+4+struct.unpack_from('<i',code,offset)[0]
+                                   if relative else struct.unpack_from('<I',code,offset)[0])
+                    if destination != int(known[callee],16):
+                        break
+                else:
+                    qualified.append(address)
+            if len(qualified) == 1 and data_state[symbol][qualified[0]] is None:
+                continue  # Callees cannot waive unavailable referenced-data proof.
+            matches[symbol] = qualified
+            if len(qualified) == 1:
+                added[symbol] = qualified[0]
+        if not added:
+            break
+        known.update(added)
+    return [(s,n,matches[s]) for s,n,_ in rows if s in requested]
 
 
 def build_library(client, recipe, files, flags, name, cl=BUILD, jobs=6, log=print):
