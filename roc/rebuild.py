@@ -917,13 +917,14 @@ def _twin(path, overlay):
 
 
 def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- /EHsc /MD", cl=BUILD, append=None,
-                   overlay=None):
+                   overlay=None, source_names=None):
     """Plain whole-file cl /c build (no mining wrapper): header search order is the ABI choice.
     append: a header included after each source, e.g. template bodies a tree declares but never defines."""
     tc = toolchain(cl)
-    out = Path(out_dir)
+    out = Path(out_dir).resolve()
     out.mkdir(parents=True, exist_ok=True)
     includes, compiled = _overlaid(includes, sources, overlay)
+    source_names = {str(Path(p).resolve()): name for p, name in (source_names or {}).items()}
     cache_root = os.path.normcase(os.path.abspath(ROOT))
     cache_prefix = cache_root.rstrip(os.sep) + os.sep
     @functools.lru_cache(maxsize=None)
@@ -1009,6 +1010,8 @@ def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- 
             directory_inputs.append((cache_path(folder), [(name, contents[name]) for name in sorted(names & contents.keys())]))
         payload = [config, [(cache_path(p), content(p)) for p in files],
                    directory_inputs]
+        if source_names.get(str(Path(orig).resolve())):
+            payload.append(["source_name", source_names[str(Path(orig).resolve())]])
         return hashlib.sha256(json.dumps(payload, sort_keys=True).encode()).hexdigest()
 
     def compile_one(pair):
@@ -1036,19 +1039,27 @@ def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- 
             code, text = run(tc, _ml(), ["/nologo", "/c", "/Fo" + str(obj), str(src)], out)
             return str(orig), (code == 0, text[-400:])
         unit = src
-        if append:
+        source_name = source_names.get(str(Path(orig).resolve()))
+        if append or source_name:
             unit = out / "_wrap" / (src.stem + ".cpp")
             unit.parent.mkdir(exist_ok=True)
-            unit.write_text('#include "%s"\n#include "%s"\n' % (src.as_posix(), Path(append).as_posix()), encoding="utf-8")
+            text = ('#line 1 %s\n%s\n' % (json.dumps(source_name), src.read_text()) if source_name
+                    else '#include "%s"\n' % src.as_posix())
+            if append:
+                text += '#include "%s"\n' % Path(append).as_posix()
+            unit.write_text(text, encoding="utf-8")
         # a patched copy compiles from the overlay, so its original folder must stay on the path
         # for sibling "quoted" includes (overlay twin first, as everywhere else)
         siblings = [src.parent, Path(orig).parent] if src != Path(orig) else []
+        if unit != src and not siblings:
+            siblings = [src.parent]
         args = ["/nologo", "/c"] + flags.split() + ["/D" + d for d in defines.split()] + \
                ["/I" + str(i) for i in siblings + list(includes)] + ["/showIncludes", "/Fo" + src.stem + ".obj", str(unit)]
         code, text = run(tc, "cl", args, out)
         included = re.findall(r"^Note: including file:\s*(.+?)\s*$", text, re.M)
         command_file.write_text(json.dumps({"compiler": str(tc.get("cl")), "args": args,
             "cwd": str(out), "source": str(src), "source_sha256": content(src),
+            "source_name": source_name,
             "environment": dict({k: os.environ.get(k, "") for k in ("CL", "_CL_")},
                                 INCLUDE=";".join(str(tc[k]) for k in ("vc_include", "atlmfc_include", "sdk_include") if tc.get(k))),
             "dependencies": {p: content(Path(p)) for p in sorted(set(included)) if Path(p).exists()},
@@ -1309,11 +1320,13 @@ def build_module(client, name, log=print):
                 defines = (recipe.get("defines", "") + " " + layer.get("extra_defines", "")).strip()
                 append = (ROOT / layer["append_include"]).resolve() if layer.get("append_include") else None
                 flags = " ".join([layer["flags"]] + ["/FI" + h for h in recipe.get("preinclude", [])])  # recipe preludes
+                source_names = {str(tree / rel): libs.source_file_name(recipe, rel) for rel in errors}
                 res = compile_direct(client, [tree / rel for rel in errors], folder, includes, defines,
-                                     flags, cl=layer.get("cl", BUILD), append=append, overlay=ov)
+                                     flags, cl=layer.get("cl", BUILD), append=append, overlay=ov, source_names=source_names)
                 if layer.get("fallback_cl"):  # e.g. VS2005 accepts access checks VS2008 rejects
                     res.update(compile_direct(client, [Path(k) for k, (ok, _) in res.items() if not ok], folder, includes,
-                                              defines, layer["flags"], cl=layer["fallback_cl"], append=append, overlay=ov))
+                                              defines, layer["flags"], cl=layer["fallback_cl"], append=append, overlay=ov,
+                                              source_names=source_names))
                 errors = {Path(k).name: v for k, (ok, v) in res.items() if not ok}
         else:
             recipe = libs.RECIPES[layer["includes_from_recipe"]] if layer.get("includes_from_recipe") else {"include": []}

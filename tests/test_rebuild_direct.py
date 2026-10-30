@@ -9,6 +9,40 @@ from pathlib import Path
 from roc import rebuild
 
 
+def test_original_source_name_preserves_lines_siblings_and_cache_identity(tmp_path, monkeypatch):
+    source = tmp_path / 'vendor' / 'Stopwatch.cpp'
+    source.parent.mkdir()
+    source.write_text('#include "local.h"\nconst char* name = __FILE__;\n')
+    appended = tmp_path / 'after.h'
+    appended.write_text('// appended declarations')
+    monkeypatch.chdir(tmp_path)
+    output = Path('out')
+    calls = []
+    monkeypatch.setattr(rebuild, 'toolchain', lambda _: {})
+
+    def run(tc, tool, args, cwd):
+        assert Path(args[-1]).is_absolute()
+        calls.append(args)
+        (cwd / 'Stopwatch.obj').write_bytes(b'object')
+        return 0, ''
+
+    monkeypatch.setattr(rebuild, 'run', run)
+    name = '.\\g3dcpp\\Stopwatch.cpp'
+
+    def build(spelling, extra=None):
+        names = {str(source): spelling, **(extra or {})}
+        return rebuild.compile_direct('test', [source], output, [], '', append=appended, source_names=names)
+
+    assert build(name)[str(source)][0]
+    wrapper = Path(calls[0][-1]).read_text()
+    assert wrapper.startswith('#line 1 ' + json.dumps(name) + '\n' + source.read_text())
+    assert wrapper.endswith('#include "' + appended.as_posix() + '"\n')
+    assert '/I' + str(source.parent) in calls[0]
+    assert build(name, {str(tmp_path / 'unrelated.cpp'): 'other.cpp'})[str(source)] == (True, 'content cache hit')
+    build('different.cpp')
+    assert len(calls) == 2
+
+
 def test_unchanged_source_uses_adopted_sibling_header_directory(tmp_path):
     tree, overlay = tmp_path/'tree', tmp_path/'overlay'
     tree.mkdir(); overlay.mkdir()

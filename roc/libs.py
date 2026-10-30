@@ -177,7 +177,11 @@ RECIPES["g3d-6.09-rbx2008"] = dict(RECIPES["g3d-6.09"], patches={"include/G3D/GI
     # Inlined getCArray in GImage::load (0x510490) builds std::exception(const char* const&) from
     # "Cannot getCArray for a huge file" (0x820c68) and throws it.
     "include/G3D/BinaryInput.h": [('throw "Cannot getCArray for a huge file";',
-                                   'throw std::exception("Cannot getCArray for a huge file");')]})
+                                   'throw std::exception("Cannot getCArray for a huge file");')],
+    # The inline GWindow assertion at 0x47fa00 names this original header path.
+    "include/GLG3D/GWindow.h": [("/**\n  @file Window.h",
+        '#line 1 ' + json.dumps(r'd:\Roblox\Releases\2008.06.17\Client\Rendering\g3d\include\GLG3D/GWindow.h')
+        + '\n/**\n  @file Window.h')]})
 
 RECIPES["sdl-1.2.11"] = dict(url="https://www.libsdl.org/release/SDL-1.2.11.tar.gz",  # headers for GLG3D
                              sha256="6985823287b224b57390b1c1b6cbc54cc9a7d7757fbf9934ed20754b4cd23730",
@@ -1371,13 +1375,20 @@ def _cached_unit(cache, identity):
             _UNITS.pop(next(iter(_UNITS)))
     return body
 
-def _file_literal(recipe, src, path, body):
-    """__FILE__ as the original build spelled it (recipe `file_names`), not this PC's path."""
+def source_file_name(recipe, path):
+    """Source identity recorded by the original library build."""
     names = recipe.get("file_names")
     if not names:
-        return body
+        return None
     rel = path.replace("/", "\\")
-    spelled = names.get(rel) or names["*"](rel)
+    return names.get(rel) or names["*"](rel)
+
+
+def _file_literal(recipe, src, path, body):
+    """__FILE__ as the original build spelled it (recipe `file_names`), not this PC's path."""
+    spelled = source_file_name(recipe, path)
+    if spelled is None:
+        return body
     esc = lambda s: '"%s"' % s.replace("\\", "\\\\")
     return body.replace(esc(str(src)), esc(spelled))
 
