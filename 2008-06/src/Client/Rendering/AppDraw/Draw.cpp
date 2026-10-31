@@ -1,5 +1,3 @@
-// 2008 rbxgs-appdraw was compiled with /fp:fast
-#pragma float_control(precise, off)
 #include "AppDraw/Draw.h"
 #include "util/Math.h"
 

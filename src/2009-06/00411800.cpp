@@ -1,123 +1,50 @@
-// from server: 67% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/FlagStand.cpp
+// from server: 100% by EspClaude
+// roc 2009-06 00411800  unit: std::logic_error  size: 83 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 00411800
+//
+// 00411800  6aff                 push -1
+// 00411802  687aef8400           push 0x84ef7a
+// 00411807  64a100000000         mov eax, dword ptr fs:[0]
+// 0041180d  50                   push eax
+// 0041180e  64892500000000       mov dword ptr fs:[0], esp
+// 00411815  51                   push ecx
+// 00411816  56                   push esi
+// 00411817  68f0000000           push 0xf0
+// 0041181c  e817723000           call 0x718a38
+// 00411821  8bf0                 mov esi, eax
+// 00411823  83c404               add esp, 4
+// 00411826  89742404             mov dword ptr [esp + 4], esi
+// 0041182a  33c0                 xor eax, eax
+// 0041182c  89442410             mov dword ptr [esp + 0x10], eax
+// 00411830  3bf0                 cmp esi, eax
+// 00411832  740f                 je 0x411843
+// 00411834  8bce                 mov ecx, esi
+// 00411836  e889793000           call 0x7191c4
+// 0041183b  c7060cf38a00         mov dword ptr [esi], 0x8af30c
+// 00411841  8bc6                 mov eax, esi
+// 00411843  8b4c2408             mov ecx, dword ptr [esp + 8]
+// 00411847  5e                   pop esi
+// 00411848  64890d00000000       mov dword ptr fs:[0], ecx
+// 0041184f  83c410               add esp, 0x10
+// 00411852  c3                   ret 
+// copied from an identical function in another client (function ?fn_ROCX000000_00433280@@YAPAUCBrowserFrameWnd@@XZ)
 
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/FlagStand.h"
-#include "v8datamodel/Flag.h"
+void* __cdecl operator new(unsigned int);
+void __cdecl operator delete(void*) throw();
 
-namespace RBX
+struct FrameBase
 {
-	static Reflection::PropDescriptor<FlagStand, BrickColor> prop_Color("TeamColor", "Data", &FlagStand::getTeamColor, &FlagStand::setTeamColor, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::SignalDesc<FlagStand, void(boost::shared_ptr<Instance>)> event_FlagCaptured("FlagCaptured", "Player");
+    FrameBase();
+    virtual ~FrameBase();
+    char storage[236];
+};
 
-	FlagStand::FlagStand()
-	{
-		setName("FlagStand");
-	}
+struct CBrowserFrameWnd : FrameBase
+{
+    virtual ~CBrowserFrameWnd();
+};
 
-	BrickColor FlagStand::getTeamColor() const
-	{
-		return teamColor;
-	}
-
-	void FlagStand::setTeamColor(BrickColor color)
-	{
-		teamColor = color;
-		raisePropertyChanged(PartInstance::prop_Color);
-	}
-
-	void FlagStand::AffixFlag(Flag* flag)
-	{
-		if (!GetFlag())
-		{
-			flag->setParent(getParent());
-
-			PartInstance* handle = flag->getHandle();
-
-			handle->setCoordinateFrame(G3D::CoordinateFrame());
-
-			G3D::Vector3 location = getLocation().translation;
-			location.y += 0.5f;
-
-			handle->moveToPoint(location);
-			handle->join();
-		}
-	}
-
-	Flag* FlagStand::GetFlag()
-	{
-		Primitive* primitive = getPrimitive();
-
-		for (RigidJoint* current = primitive->getFirstRigid(); current != NULL; current = primitive->getNextRigid(current))
-		{
-			for (int i = 0; i < 2; i++)
-			{
-				Flag* flag = dynamic_cast<Flag*>(PartInstance::fromPrimitive(current->getPrimitive(i))->getParent());
-				if (flag)
-					return flag;
-			}
-		}
-
-		return NULL;
-	}
-
-	void FlagStand::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-	{
-		Instance::onServiceProvider(oldProvider, newProvider);
-
-		if (!oldProvider)
-		{
-			FlagStandService* flagStandService = ServiceProvider::create<FlagStandService>(newProvider);
-			RBXASSERT(flagStandService);
-
-			flagStandService->RegisterFlagStand(this);
-
-			standTouched = PartInstance::event_Touched.connect(this, boost::bind(&FlagStand::onEvent_standTouched, this, _1));
-		}
-
-		if (!newProvider)
-		{
-			FlagStandService* flagStandService = ServiceProvider::create<FlagStandService>(oldProvider);
-			RBXASSERT(flagStandService);
-
-			flagStandService->UnregisterFlagStand(this);
-
-			standTouched.disconnect();
-		}
-	}
-
-	FlagStandService::FlagStandService()
-	{
-		setName("FlagStandService");
-		propArchivable.setValue(this, false);
-	}
-
-	FlagStandService::~FlagStandService() {}
-
-	FlagStand* FlagStandService::FindStandWithFlag(Flag* f)
-	{
-		if (flagStands.empty())
-			return NULL;
-
-		for (std::list<FlagStand*>::const_iterator iter = flagStands.begin(); iter != flagStands.end(); iter++)
-		{
-			if ((*iter)->GetFlag() == f)
-				return *iter;
-		}
-
-		return NULL;
-	}
-
-	void FlagStandService::RegisterFlagStand(FlagStand* s)
-	{
-		flagStands.push_back(s);
-	}
-
-	void FlagStandService::UnregisterFlagStand(FlagStand* s)
-	{
-		flagStands.remove(s);
-	}
+CBrowserFrameWnd* func_00433280()
+{
+    return new CBrowserFrameWnd;
 }

@@ -1,3 +1,4 @@
+// from server: 100% by EspClaude
 // roc 2009-06 004010e0  unit: CAboutRobloxDialog  size: 33 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-06 004010e0
 //
@@ -14,18 +15,19 @@
 // 004010f8  e8c37b3100           call 0x718cc0
 // 004010fd  5e                   pop esi
 // 004010fe  c20800               ret 8
-// copied from an identical function in another client (function ?func@CAboutRobloxDialog@ns_ROCX000046@@QAEXHH@Z)
+// copied from an identical function in another client (function ?f@CAboutRobloxDialog@ns_ROCX000004@@QAEXHH@Z)
 
-namespace ns_ROCX000046 {
-struct CAboutRobloxDialog {
-    void sub_62fef0(int, int);
-    void sub_62feea(int);
-    void func(int a, int b);
+namespace ns_ROCX000004 {
+struct CAboutRobloxDialog
+{
+    void f(int a, int b);
+    void first(int a, int b);
+    void second(int value);
 };
 
-void CAboutRobloxDialog::func(int a, int b)
+void CAboutRobloxDialog::f(int a, int b)
 {
-    sub_62fef0(a, b);
-    sub_62feea(0);
+    first(a, b);
+    second(0);
 }
 }

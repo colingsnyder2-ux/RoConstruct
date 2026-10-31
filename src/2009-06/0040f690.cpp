@@ -1,3 +1,4 @@
+// from server: 100% by EspClaude
 // roc 2009-06 0040f690  unit: CChatPrompt  size: 44 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-06 0040f690
 //
@@ -16,23 +17,22 @@
 // 0040f6b3  b801000000           mov eax, 1
 // 0040f6b8  5e                   pop esi
 // 0040f6b9  c20400               ret 4
-// copied from an identical function in another client (function ?sub_40CC30@CChatPrompt@ns_ROCX000000@@QAEHH@Z)
+// copied from an identical function in another client (function ?f@ns_ROCX000016@@YGHPAUS@1@@Z)
 
-namespace ns_ROCX000000 {
-struct CChatPrompt {
-    int sub_40CC30(int);
+namespace ns_ROCX000016 {
+struct S {
+    unsigned char padding[0x20];
+    unsigned long flags;
 };
 
-extern "C" int __stdcall sub_63024A(int);
+extern "C" int __stdcall check(S* p);
 
-int CChatPrompt::sub_40CC30(int a1) {
-    if (sub_63024A(a1) == 0) {
+int __stdcall f(S* p)
+{
+    if (!check(p))
         return 0;
-    }
-    int v = *(int*)(a1 + 0x20);
-    v &= 0xffcfff7f;
-    v |= 0x8000000;
-    *(int*)(a1 + 0x20) = v;
+
+    p->flags = (p->flags & 0xFFCFFF7FUL) | 0x08000000UL;
     return 1;
 }
 }

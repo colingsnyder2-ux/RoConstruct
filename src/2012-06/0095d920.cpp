@@ -1,16 +1,19 @@
-// from server: 49% by atomic.potato
+// from server: 94% by Intel
 struct Climbing {
-    void f1();
-    int f2();
-    void* f3(void*);
-    void f4(void*, float);
+    void func_00903fd0();
+    int func_009001b0();
+    void func_00900f50(int*);
+    void func_00903f50(int, float);
+
+    void func_0095d920();
 };
 
-void Climbing::f1()
+void Climbing::func_0095d920()
 {
-    int local;
-    f2();
-    void* p = f3(&local);
-    float v = *(float*)((char*)p + 4);
-    f4((char*)this + 0x29c, v);
+    int local[3];
+    func_00903fd0();
+    int result = func_009001b0();
+    func_00900f50(local);
+    float value = *(float*)((char*)local + 4);
+    func_00903f50(result + 0x29c, value);
 }

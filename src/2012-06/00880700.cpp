@@ -1,17 +1,18 @@
-// from server: 25% by tester
-struct S {
-    void __cdecl f(char* out, const char* begin, const char* end);
+// from server: 43% by Intel
+struct TestService {
+    void __cdecl func(int* outStart, int* outEnd, const char* start, const char* end);
 };
 
-void S::f(char* out, const char* begin, const char* end)
-{
-    const char* p = begin;
-    while (p != end) {
-        char c = *p;
-        if (c != 0x20 && c != 9)
+void TestService::func(int* outStart, int* outEnd, const char* start, const char* end) {
+    const char* current = start;
+    while (current != end) {
+        char c = *current;
+        if (c != ' ' || c == '\t') {
+            ++current;
+        } else {
             break;
-        ++p;
+        }
     }
-    *(const char**)out = begin;
-    *(const char**)(out + 4) = p;
+    *outStart = reinterpret_cast<int>(start);
+    *outEnd = reinterpret_cast<int>(current);
 }

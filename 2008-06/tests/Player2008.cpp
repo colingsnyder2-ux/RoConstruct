@@ -112,7 +112,8 @@ static bool readPng(const char* path, Image& image)
     default: return false;
     }
 
-    size_t stride = (size_t)width * channels + 1;
+    size_t rowBytes = (size_t)width * channels;
+    size_t stride = rowBytes + 1;
     std::vector<unsigned char> raw(stride * height);
     z_stream stream;
     std::memset(&stream, 0, sizeof(stream));
@@ -127,19 +128,23 @@ static bool readPng(const char* path, Image& image)
     if (inflateResult != Z_STREAM_END || stream.total_out != raw.size())
         return false;
 
-    std::vector<unsigned char> pixels(stride * height);
+    std::vector<unsigned char> pixels(rowBytes * height);
     const unsigned char* src = &raw[0];
     unsigned char* dst = &pixels[0];
     size_t bpp = (size_t)channels;
     for (int y = 0; y < height; ++y)
     {
         unsigned char filter = *src++;
-        for (size_t x = 0; x < stride - 1; ++x)
+        std::printf("row %d filter=%d first raw=%d %d %d\n", y, filter, src[0], src[1], src[2]); std::fflush(stdout);
+        const unsigned char* rowSrc = src;
+        unsigned char* rowDst = dst;
+        const unsigned char* prevRow = (y > 0) ? (dst - rowBytes) : NULL;
+        for (size_t x = 0; x < rowBytes; ++x)
         {
-            unsigned char value = src[x];
-            unsigned char left = x >= bpp ? dst[x - bpp] : 0;
-            unsigned char up = y > 0 ? dst[x - stride] : 0;
-            unsigned char upLeft = (y > 0 && x >= bpp) ? dst[x - stride - bpp] : 0;
+            unsigned char value = rowSrc[x];
+            unsigned char left = (x >= bpp) ? rowDst[x - bpp] : 0;
+            unsigned char up = (prevRow) ? prevRow[x] : 0;
+            unsigned char upLeft = (prevRow && x >= bpp) ? prevRow[x - bpp] : 0;
             switch (filter)
             {
             case 0: break;
@@ -158,25 +163,27 @@ static bool readPng(const char* path, Image& image)
             }
             default: return false;
             }
-            dst[x] = value;
+            rowDst[x] = value;
+            if (y==0 && x==0) { std::printf("defilter: rowDst[0]=%d value=%d filter=%d\n", rowDst[0], value, filter); std::fflush(stdout); }
         }
-        src += stride - 1;
-        dst += stride;
+        src += rowBytes;
+        dst += rowBytes;
     }
 
+    std::printf("readPng: %dx%d channels=%d first rgb=(%d,%d,%d)\n", width, height, channels, pixels[0], pixels[1], pixels[2]); std::fflush(stdout);
     image.width = width;
     image.height = height;
     image.rgb.resize((size_t)width * height * 3);
     for (int y = 0; y < height; ++y)
     {
-        const unsigned char* row = &pixels[(size_t)y * stride + 1];
+        const unsigned char* row = &pixels[(size_t)y * rowBytes];
         for (int x = 0; x < width; ++x)
         {
             unsigned char r, g, b;
-            const unsigned char* p = row + (size_t)x * channels;
-            if (channels == 1) { r = g = b = p[0]; }
-            else if (channels == 2) { r = g = b = p[0]; }
-            else { r = p[0]; g = p[1]; b = p[2]; }
+            const unsigned char* pp = row + (size_t)x * channels;
+            if (channels == 1) { r = g = b = pp[0]; }
+            else if (channels == 2) { r = g = b = pp[0]; }
+            else { r = pp[0]; g = pp[1]; b = pp[2]; }
             unsigned char* out = &image.rgb[((size_t)y * width + x) * 3];
             out[0] = r; out[1] = g; out[2] = b;
         }
@@ -218,16 +225,16 @@ struct DrawEntry
 static Ogre::SceneManager* g_sceneManager = NULL;
 static std::map<const void*, DrawEntry> g_drawn;
 
-static void addFace(Ogre::ManualObject* object, const Ogre::Vector3& a, const Ogre::Vector3& b,
+static void addFace(Ogre::ManualObject* object, const Ogre::Vector3& a, const Ogre::Vector3& bvec,
                     const Ogre::Vector3& c, const Ogre::Vector3& d,
-                    float r, float g, float b)
+                    float cr, float cg, float cb)
 {
-    object->position(a); object->colour(r, g, b);
-    object->position(b); object->colour(r, g, b);
-    object->position(c); object->colour(r, g, b);
-    object->position(a); object->colour(r, g, b);
-    object->position(c); object->colour(r, g, b);
-    object->position(d); object->colour(r, g, b);
+    object->position(a); object->colour(cr, cg, cb);
+    object->position(bvec); object->colour(cr, cg, cb);
+    object->position(c); object->colour(cr, cg, cb);
+    object->position(a); object->colour(cr, cg, cb);
+    object->position(c); object->colour(cr, cg, cb);
+    object->position(d); object->colour(cr, cg, cb);
 }
 
 static void buildBox(DrawEntry& entry, const float size[3], const float color[3])
@@ -281,6 +288,7 @@ static void drawModels()
         DrawEntry& entry = g_drawn[model.id];
         if (!entry.object)
         {
+            std::printf("drawModels: creating object for %p pos=(%g,%g,%g) size=(%g,%g,%g) color=(%g,%g,%g)\n", model.id, model.position[0], model.position[1], model.position[2], model.size[0], model.size[1], model.size[2], model.color[0], model.color[1], model.color[2]); std::fflush(stdout);
             std::string name = "chunk_";
             char suffix[32];
             _snprintf(suffix, sizeof(suffix), "%p", model.id);
@@ -349,6 +357,7 @@ static int runSelftest(Ogre::Root* root, Ogre::RenderWindow* win)
     // Region B: where it must sit after CFrame (4,0,0).
     const int bx0 = 240, bx1 = 320, by0 = 90, by1 = 150;
 
+    drawModels();
     Image initial;
     if (!capture(root, win, "selftest_initial.png", initial)) return 1;
     int initialA = countGreen(initial, ax0, ay0, ax1, ay1);
@@ -359,6 +368,7 @@ static int runSelftest(Ogre::Root* root, Ogre::RenderWindow* win)
     if (!okInitial) ++failures;
 
     MovePartTo(4.0f, 0.0f, 0.0f);
+    drawModels();
     Image moved;
     if (!capture(root, win, "selftest_moved.png", moved)) return 1;
     int movedA = countGreen(moved, ax0, ay0, ax1, ay1);
@@ -371,6 +381,7 @@ static int runSelftest(Ogre::Root* root, Ogre::RenderWindow* win)
     // Remove through the DataModel: ancestryChanged must unlink the chunk.
     RemovePart();
     SceneBeginFrame();
+    drawModels();
     Image removed;
     if (!capture(root, win, "selftest_removed.png", removed)) return 1;
     int removedAll = countGreen(removed, 0, 0, removed.width, removed.height);
@@ -384,6 +395,7 @@ static int runSelftest(Ogre::Root* root, Ogre::RenderWindow* win)
     ClosePlace();
     if (LoadPlace(kEmptyPlace) != 0) { std::printf("selftest: empty place load failed\n"); return 1; }
     if (SceneAttach() != 0) { std::printf("selftest: empty scene attach failed\n"); return 1; }
+    drawModels();
     Image empty;
     if (!capture(root, win, "selftest_empty.png", empty)) return 1;
     int emptyAll = countGreen(empty, 0, 0, empty.width, empty.height);

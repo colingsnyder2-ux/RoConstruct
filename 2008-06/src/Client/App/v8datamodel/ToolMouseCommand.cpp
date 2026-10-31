@@ -29,14 +29,14 @@ namespace RBX
 	MouseCommand* ToolMouseCommand::onMouseDown(const UIEvent& uiEvent)
 	{
 		updateTargetPoint(uiEvent);
-		tool.get()->activate();
+		tool->activate();
 		return ScriptMouseCommand::onMouseDown(uiEvent);
 	}
 
 	MouseCommand* ToolMouseCommand::onMouseUp(const UIEvent& uiEvent)
 	{
 		updateTargetPoint(uiEvent);
-		tool.get()->deactivate();
+		tool->deactivate();
 		return ScriptMouseCommand::onMouseUp(uiEvent);
 	}
 

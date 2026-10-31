@@ -135,7 +135,6 @@ namespace RBX {
 				updatePV();
 				return pv.velocity;
 			}
-			const RBX::PV& getPvUnsafe() const {return pv;}
 			const RBX::PV& getPV() const
 			{
 				updatePV();

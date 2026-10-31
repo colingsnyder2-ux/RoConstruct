@@ -1,48 +1,105 @@
-// from server: 62% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client App/script/Script.cpp
+// from server: 100% by EspClaude
+// roc 2009-06 0040a400  unit: RBX::Reflection::ClassDescriptor  size: 134 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 0040a400
+//
+// 0040a400  64a100000000         mov eax, dword ptr fs:[0]
+// 0040a406  6aff                 push -1
+// 0040a408  68789d8600           push 0x869d78
+// 0040a40d  50                   push eax
+// 0040a40e  64892500000000       mov dword ptr fs:[0], esp
+// 0040a415  83ec0c               sub esp, 0xc
+// 0040a418  56                   push esi
+// 0040a419  8b742420             mov esi, dword ptr [esp + 0x20]
+// 0040a41d  85f6                 test esi, esi
+// 0040a41f  742c                 je 0x40a44d
+// 0040a421  8b0e                 mov ecx, dword ptr [esi]
+// 0040a423  85c9                 test ecx, ecx
+// 0040a425  7409                 je 0x40a430
+// 0040a427  8b01                 mov eax, dword ptr [ecx]
+// 0040a429  8b5004               mov edx, dword ptr [eax + 4]
+// 0040a42c  ffd2                 call edx
+// 0040a42e  eb05                 jmp 0x40a435
+// 0040a430  b8d4c29d00           mov eax, 0x9dc2d4
+// 0040a435  6804c39d00           push 0x9dc304
+// 0040a43a  8bc8                 mov ecx, eax
+// 0040a43c  ff15a4e98900         call dword ptr [0x89e9a4]
+// 0040a442  84c0                 test al, al
+// 0040a444  7407                 je 0x40a44d
+// 0040a446  8b06                 mov eax, dword ptr [esi]
+// 0040a448  83c004               add eax, 4
+// 0040a44b  7529                 jne 0x40a476
+// 0040a44d  6850d38a00           push 0x8ad350
+// 0040a452  8d4c2408             lea ecx, [esp + 8]
+// 0040a456  ff1570e98900         call dword ptr [0x89e970]
+// 0040a45c  c744240448d38a00     mov dword ptr [esp + 4], 0x8ad348
+// 0040a464  8d442404             lea eax, [esp + 4]
+// 0040a468  50                   push eax
+// 0040a469  c744241c00000000     mov dword ptr [esp + 0x1c], 0
+// 0040a471  e84afeffff           call 0x40a2c0
+// 0040a476  8b4c2410             mov ecx, dword ptr [esp + 0x10]
+// 0040a47a  5e                   pop esi
+// 0040a47b  64890d00000000       mov dword ptr fs:[0], ecx
+// 0040a482  83c418               add esp, 0x18
+// 0040a485  c3                   ret 
+// copied from an identical function in another client (function ?castValue@ns_ROCX000002@@YAPAXPBUAny@1@@Z)
 
-// Candidate translation unit (score above; library headers required).
-#include "script/Script.h"
-
-#include "network/Player.h"
-#include "util/ContentProvider.h"
-#include "util/Name.h"
-#include "v8datamodel/Team.h"
-
-namespace RBX {
-
-char sScript[] = "Script";
-
-char sLocalScript[] = "LocalScript";
-
-// FUNCTION: WEBSERVICE 0x10068d50
-boost::shared_ptr<const std::string> Script::requestCode()
-{
-	if (scriptId.isNull()) {
-		return embeddedSource;
-	}
-
-	return ContentProvider::singleton().requestContentString(scriptId);
+namespace ns_ROCX000002 {
+namespace std {
+    class type_info {
+    public:
+        bool operator==(const type_info&) const;
+    };
 }
 
-} // namespace RBX
+extern bool (__thiscall* typeInfoEqual)(
+    const std::type_info*, const std::type_info&);
 
-template const RBX::Name& RBX::Name::doDeclare<RBX::sTeam>();
-template const RBX::Name& RBX::Name::doDeclare<RBX::Network::sPlayer>();
-template void RBX::Name::callDoDeclare<RBX::sTeam>();
-template void RBX::Name::callDoDeclare<RBX::Network::sPlayer>();
+inline bool std::type_info::operator==(const type_info& other) const {
+    return typeInfoEqual(this, other);
+}
 
-template class RBX::FactoryProduct<RBX::Script, RBX::Instance, RBX::sScript>;
-template class RBX::Reflection::
-	Described<RBX::Script, RBX::sScript, RBX::FactoryProduct<RBX::Script, RBX::Instance, RBX::sScript> >;
-template class RBX::DescribedCreatable<RBX::Script, RBX::Instance, RBX::sScript>;
+struct BadAnyCast {
+    const void* table;
+    const char* message;
+    int owned;
 
-template class RBX::FactoryProduct<RBX::LocalScript, RBX::Script, RBX::sLocalScript>;
-template class RBX::Reflection::Described<
-	RBX::LocalScript,
-	RBX::sLocalScript,
-	RBX::FactoryProduct<RBX::LocalScript, RBX::Script, RBX::sLocalScript> >;
-template class RBX::DescribedCreatable<RBX::LocalScript, RBX::Script, RBX::sLocalScript>;
+    BadAnyCast();
+    ~BadAnyCast();
+};
+
+extern BadAnyCast* (__thiscall* badCastConstructor)(
+    BadAnyCast*, const char*);
+extern const void* badAnyCastTable[];
+
+inline BadAnyCast::BadAnyCast() {
+    badCastConstructor(this, "bad cast");
+    table = badAnyCastTable;
+}
+
+struct Placeholder {
+    virtual ~Placeholder();
+    virtual const std::type_info& type() const = 0;
+};
+
+struct Any {
+    Placeholder* content;
+};
+
+extern const std::type_info placeholderType;
+extern const std::type_info vectorType;
+
+__declspec(noreturn) void __cdecl throwBadCast(const BadAnyCast&);
+
+void* __cdecl castValue(const Any* value) {
+    if (value) {
+        const std::type_info& type =
+            value->content ? value->content->type() : placeholderType;
+        if (type == vectorType) {
+            void* result = reinterpret_cast<char*>(value->content) + 4;
+            if (result)
+                return result;
+        }
+    }
+    throwBadCast(BadAnyCast());
+}
+}

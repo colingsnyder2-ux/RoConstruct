@@ -1,650 +1,179 @@
-// from server: 33% by colin
-// roc-lang: cpp
+// from server: 100% by EspClaude
+// roc 2009-06 004137d0  unit: CRbxChildFrame  size: 455 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 004137d0
+//
+// 004137d0  6aff                 push -1
+// 004137d2  6874d88400           push 0x84d874
+// 004137d7  64a100000000         mov eax, dword ptr fs:[0]
+// 004137dd  50                   push eax
+// 004137de  64892500000000       mov dword ptr fs:[0], esp
+// 004137e5  83ec54               sub esp, 0x54
+// 004137e8  53                   push ebx
+// 004137e9  56                   push esi
+// 004137ea  8bf1                 mov esi, ecx
+// 004137ec  8974240c             mov dword ptr [esp + 0xc], esi
+// 004137f0  e8f3593000           call 0x7191e8
+// 004137f5  8d442408             lea eax, [esp + 8]
+// 004137f9  50                   push eax
+// 004137fa  33db                 xor ebx, ebx
+// 004137fc  6885000000           push 0x85
+// 00413801  895c246c             mov dword ptr [esp + 0x6c], ebx
+// 00413805  c70628f68a00         mov dword ptr [esi], 0x8af628
+// 0041380b  895c2410             mov dword ptr [esp + 0x10], ebx
+// 0041380f  e8dc113200           call 0x7349f0
+// 00413814  83c408               add esp, 8
+// 00413817  895c2414             mov dword ptr [esp + 0x14], ebx
+// 0041381b  c744241064f68a00     mov dword ptr [esp + 0x10], 0x8af664
+// 00413823  50                   push eax
+// 00413824  8d4c2414             lea ecx, [esp + 0x14]
+// 00413828  c644246801           mov byte ptr [esp + 0x68], 1
+// 0041382d  e8d0573000           call 0x719002
+// 00413832  53                   push ebx
+// 00413833  8bce                 mov ecx, esi
+// 00413835  53                   push ebx
+// 00413836  395c2410             cmp dword ptr [esp + 0x10], ebx
+// 0041383a  0f8496000000         je 0x4138d6
+// 00413840  6a20                 push 0x20
+// 00413842  6a10                 push 0x10
+// 00413844  6a10                 push 0x10
+// 00413846  e897593000           call 0x7191e2
+// 0041384b  85c0                 test eax, eax
+// 0041384d  7531                 jne 0x413880
+// 0041384f  6898f68a00           push 0x8af698
+// 00413854  8d4c241c             lea ecx, [esp + 0x1c]
+// 00413858  ff15b4e48900         call dword ptr [0x89e4b4]
+// 0041385e  8d4c2418             lea ecx, [esp + 0x18]
+// 00413862  51                   push ecx
+// 00413863  8d4c2438             lea ecx, [esp + 0x38]
+// 00413867  c644246802           mov byte ptr [esp + 0x68], 2
+// 0041386c  e89f5bffff           call 0x409410
+// 00413871  6850a79700           push 0x97a750
+// 00413876  8d542438             lea edx, [esp + 0x38]
+// 0041387a  52                   push edx
+// 0041387b  e8ca613000           call 0x719a4a
+// 00413880  8b4c2414             mov ecx, dword ptr [esp + 0x14]
+// 00413884  8b4604               mov eax, dword ptr [esi + 4]
+// 00413887  51                   push ecx
+// 00413888  51                   push ecx
+// 00413889  50                   push eax
+// 0041388a  e867543000           call 0x718cf6
+// 0041388f  8b8094000000         mov eax, dword ptr [eax + 0x94]
+// 00413895  8b08                 mov ecx, dword ptr [eax]
+// 00413897  e8c4fcffff           call 0x413560
+// 0041389c  83f8ff               cmp eax, -1
+// 0041389f  0f85ca000000         jne 0x41396f
+// 004138a5  6878f68a00           push 0x8af678
+// 004138aa  8d4c241c             lea ecx, [esp + 0x1c]
+// 004138ae  ff15b4e48900         call dword ptr [0x89e4b4]
+// 004138b4  8d4c2418             lea ecx, [esp + 0x18]
+// 004138b8  51                   push ecx
+// 004138b9  8d4c2438             lea ecx, [esp + 0x38]
+// 004138bd  c644246803           mov byte ptr [esp + 0x68], 3
+// 004138c2  e8495bffff           call 0x409410
+// 004138c7  6850a79700           push 0x97a750
+// 004138cc  8d542438             lea edx, [esp + 0x38]
+// 004138d0  52                   push edx
+// 004138d1  e874613000           call 0x719a4a
+// 004138d6  68ff000000           push 0xff
+// 004138db  6a10                 push 0x10
+// 004138dd  6a10                 push 0x10
+// 004138df  e8fe583000           call 0x7191e2
+// 004138e4  85c0                 test eax, eax
+// 004138e6  7531                 jne 0x413919
+// 004138e8  6898f68a00           push 0x8af698
+// 004138ed  8d4c241c             lea ecx, [esp + 0x1c]
+// 004138f1  ff15b4e48900         call dword ptr [0x89e4b4]
+// 004138f7  8d442418             lea eax, [esp + 0x18]
+// 004138fb  50                   push eax
+// 004138fc  8d4c2438             lea ecx, [esp + 0x38]
+// 00413900  c644246804           mov byte ptr [esp + 0x68], 4
+// 00413905  e8065bffff           call 0x409410
+// 0041390a  6850a79700           push 0x97a750
+// 0041390f  8d4c2438             lea ecx, [esp + 0x38]
+// 00413913  51                   push ecx
+// 00413914  e831613000           call 0x719a4a
+// 00413919  8b542414             mov edx, dword ptr [esp + 0x14]
+// 0041391d  8b4604               mov eax, dword ptr [esi + 4]
+// 00413920  68ff00ff00           push 0xff00ff
+// 00413925  52                   push edx
+// 00413926  50                   push eax
+// 00413927  e8ca533000           call 0x718cf6
+// 0041392c  8b8094000000         mov eax, dword ptr [eax + 0x94]
+// 00413932  8b08                 mov ecx, dword ptr [eax]
+// 00413934  e837fdffff           call 0x413670
+// 00413939  83f8ff               cmp eax, -1
+// 0041393c  7531                 jne 0x41396f
+// 0041393e  6878f68a00           push 0x8af678
+// 00413943  8d4c241c             lea ecx, [esp + 0x1c]
+// 00413947  ff15b4e48900         call dword ptr [0x89e4b4]
+// 0041394d  8d4c2418             lea ecx, [esp + 0x18]
+// 00413951  51                   push ecx
+// 00413952  8d4c2438             lea ecx, [esp + 0x38]
+// 00413956  c644246805           mov byte ptr [esp + 0x68], 5
+// 0041395b  e8b05affff           call 0x409410
+// 00413960  6850a79700           push 0x97a750
+// 00413965  8d542438             lea edx, [esp + 0x38]
+// 00413969  52                   push edx
+// 0041396a  e8db603000           call 0x719a4a
+// 0041396f  8d4c2410             lea ecx, [esp + 0x10]
+// 00413973  885c2464             mov byte ptr [esp + 0x64], bl
+// 00413977  c744241064f68a00     mov dword ptr [esp + 0x10], 0x8af664
+// 0041397f  e84cbbffff           call 0x40f4d0
+// 00413984  8b4c245c             mov ecx, dword ptr [esp + 0x5c]
+// 00413988  8bc6                 mov eax, esi
+// 0041398a  5e                   pop esi
+// 0041398b  5b                   pop ebx
+// 0041398c  64890d00000000       mov dword ptr fs:[0], ecx
+// 00413993  83c460               add esp, 0x60
+// 00413996  c3                   ret 
+// copied from an identical function in another client (function ??0CClassImages@@QAE@XZ)
+
+// from server: 100% by king_originala
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: boost-1.34.1 libs/regex/src/cregex.cpp
-
-// Candidate translation unit (score above; library headers required).
-/*
- *
- * Copyright (c) 1998-2002
- * John Maddock
- *
- * Use, modification and distribution are subject to the 
- * Boost Software License, Version 1.0. (See accompanying file 
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
- *
- */
-
- /*
-  *   LOCATION:    see http://www.boost.org for most recent version.
-  *   FILE:        cregex.cpp
-  *   VERSION:     see <boost/version.hpp>
-  *   DESCRIPTION: Implements high level class boost::RexEx
-  */
-
-
-#define BOOST_REGEX_SOURCE
-
-#include <boost/cregex.hpp>
-#include <boost/regex.hpp>
-#if !defined(BOOST_NO_STD_STRING)
-#include <map>
-#include <list>
-#include <boost/regex/v4/fileiter.hpp>
-typedef boost::match_flag_type match_flag_type;
-#include <cstdio>
-
-namespace boost{
-
-#ifdef __BORLANDC__
-#if __BORLANDC__ < 0x530
-//
-// we need to instantiate the vector classes we use
-// since declaring a reference to type doesn't seem to
-// do the job...
-std::vector<std::size_t> inst1;
-std::vector<std::string> inst2;
-#endif
-#endif
-
-namespace{
-
-template <class iterator>
-std::string to_string(iterator i, iterator j)
-{
-   std::string s;
-   while(i != j)
-   {
-      s.append(1, *i);
-      ++i;
-   }
-   return s;
-}
-
-inline std::string to_string(const char* i, const char* j)
-{
-   return std::string(i, j);
-}
-
-}
-namespace re_detail{
-
-class RegExData
-{
-public:
-   enum type
-   {
-      type_pc,
-      type_pf,
-      type_copy
-   };
-   regex e;
-   cmatch m;
-#ifndef BOOST_REGEX_NO_FILEITER
-   match_results<mapfile::iterator> fm;
-#endif
-   type t;
-   const char* pbase;
-#ifndef BOOST_REGEX_NO_FILEITER
-   mapfile::iterator fbase;
-#endif
-   std::map<int, std::string, std::less<int> > strings;
-   std::map<int, std::ptrdiff_t, std::less<int> > positions;
-   void update();
-   void clean();
-   RegExData() : e(), m(),
-#ifndef BOOST_REGEX_NO_FILEITER
-   fm(),
-#endif
-   t(type_copy), pbase(0),
-#ifndef BOOST_REGEX_NO_FILEITER
-   fbase(),
-#endif
-   strings(), positions() {}
+#include <stdexcept>
+typedef void* HANDLE;
+struct GdiObject {
+ HANDLE handle;
+ GdiObject():handle(0){}
+ virtual ~GdiObject(){DeleteObject();}
+ int Attach(HANDLE);
+ int DeleteObject();
 };
-
-void RegExData::update()
-{
-   strings.erase(strings.begin(), strings.end());
-   positions.erase(positions.begin(), positions.end());
-   if(t == type_pc)
-   {
-      for(unsigned int i = 0; i < m.size(); ++i)
-      {
-         if(m[i].matched) strings[i] = std::string(m[i].first, m[i].second);
-         positions[i] = m[i].matched ? m[i].first - pbase : -1;
-      }
-   }
-#ifndef BOOST_REGEX_NO_FILEITER
-   else
-   {
-      for(unsigned int i = 0; i < fm.size(); ++i)
-      {
-         if(fm[i].matched) strings[i] = to_string(fm[i].first, fm[i].second);
-         positions[i] = fm[i].matched ? fm[i].first - fbase : -1;
-      }
-   }
-#endif
-   t = type_copy;
-}
-
-void RegExData::clean()
-{
-#ifndef BOOST_REGEX_NO_FILEITER
-   fbase = mapfile::iterator();
-   fm = match_results<mapfile::iterator>();
-#endif
-}
-
-} // namespace
-
-RegEx::RegEx()
-{
-   pdata = new re_detail::RegExData();
-}
-
-RegEx::RegEx(const RegEx& o)
-{
-   pdata = new re_detail::RegExData(*(o.pdata));
-}
-
-RegEx::~RegEx()
-{
-   delete pdata;
-}
-
-RegEx::RegEx(const char* c, bool icase)
-{
-   pdata = new re_detail::RegExData();
-   SetExpression(c, icase);
-}
-
-RegEx::RegEx(const std::string& s, bool icase)
-{
-   pdata = new re_detail::RegExData();
-   SetExpression(s.c_str(), icase);
-}
-
-RegEx& RegEx::operator=(const RegEx& o)
-{
-   *pdata = *(o.pdata);
-   return *this;
-}
-
-RegEx& RegEx::operator=(const char* p)
-{
-   SetExpression(p, false);
-   return *this;
-}
-
-unsigned int RegEx::SetExpression(const char* p, bool icase)
-{
-   boost::uint_fast32_t f = icase ? regex::normal | regex::icase : regex::normal;
-   return pdata->e.set_expression(p, f);
-}
-
-unsigned int RegEx::error_code()const
-{
-   return pdata->e.error_code();
-}
-
-
-std::string RegEx::Expression()const
-{
-   return pdata->e.expression();
-}
-
-//
-// now matching operators:
-//
-bool RegEx::Match(const char* p, match_flag_type flags)
-{
-   pdata->t = re_detail::RegExData::type_pc;
-   pdata->pbase = p;
-   const char* end = p;
-   while(*end)++end;
-
-   if(regex_match(p, end, pdata->m, pdata->e, flags))
-   {
-      pdata->update();
-      return true;
-   }
-   return false;
-}
-
-bool RegEx::Search(const char* p, match_flag_type flags)
-{
-   pdata->t = re_detail::RegExData::type_pc;
-   pdata->pbase = p;
-   const char* end = p;
-   while(*end)++end;
-
-   if(regex_search(p, end, pdata->m, pdata->e, flags))
-   {
-      pdata->update();
-      return true;
-   }
-   return false;
-}
-namespace re_detail{
-struct pred1
-{
-   GrepCallback cb;
-   RegEx* pe;
-   pred1(GrepCallback c, RegEx* i) : cb(c), pe(i) {}
-   bool operator()(const cmatch& m)
-   {
-      pe->pdata->m = m;
-      return cb(*pe);
-   }
+struct Bitmap:GdiObject {};
+struct ImageList {
+ virtual ~ImageList();
+ HANDLE handle;
+ ImageList();
+ int Create(int,int,unsigned,int,int);
 };
-}
-unsigned int RegEx::Grep(GrepCallback cb, const char* p, match_flag_type flags)
-{
-   pdata->t = re_detail::RegExData::type_pc;
-   pdata->pbase = p;
-   const char* end = p;
-   while(*end)++end;
-
-   unsigned int result = regex_grep(re_detail::pred1(cb, this), p, end, pdata->e, flags);
-   if(result)
-      pdata->update();
-   return result;
-}
-namespace re_detail{
-struct pred2
-{
-   std::vector<std::string>& v;
-   RegEx* pe;
-   pred2(std::vector<std::string>& o, RegEx* e) : v(o), pe(e) {}
-   bool operator()(const cmatch& m)
-   {
-      pe->pdata->m = m;
-      v.push_back(std::string(m[0].first, m[0].second));
-      return true;
-   }
-private:
-   pred2& operator=(const pred2&);
+struct ImageManager {
+ int add(HANDLE,HANDLE,HANDLE);
+ int addMasked(HANDLE,HANDLE,unsigned);
 };
-}
-
-unsigned int RegEx::Grep(std::vector<std::string>& v, const char* p, match_flag_type flags)
-{
-   pdata->t = re_detail::RegExData::type_pc;
-   pdata->pbase = p;
-   const char* end = p;
-   while(*end)++end;
-
-   unsigned int result = regex_grep(re_detail::pred2(v, this), p, end, pdata->e, flags);
-   if(result)
-      pdata->update();
-   return result;
-}
-namespace re_detail{
-struct pred3
-{
-   std::vector<std::size_t>& v;
-   const char* base;
-   RegEx* pe;
-   pred3(std::vector<std::size_t>& o, const char* pb, RegEx* p) : v(o), base(pb), pe(p) {}
-   bool operator()(const cmatch& m)
-   {
-      pe->pdata->m = m;
-      v.push_back(static_cast<std::size_t>(m[0].first - base));
-      return true;
-   }
-private:
-   pred3& operator=(const pred3&);
+struct ModuleState {char prefix[0x94];ImageManager** manager;};
+extern "C" ModuleState* __stdcall GetModuleState();
+struct CXTPImageManagerIcon {static HANDLE __cdecl LoadBitmapFromResource(const char*,int*);};
+struct CClassImages:ImageList {
+ CClassImages();
+ virtual ~CClassImages();
 };
+CClassImages::CClassImages(){
+ int alpha=0;
+ HANDLE loaded=CXTPImageManagerIcon::LoadBitmapFromResource((const char*)133,&alpha);
+ Bitmap bitmap;
+ bitmap.Attach(loaded);
+ if(alpha){
+  if(!Create(16,16,32,0,0))throw std::runtime_error("Unable to create CClassImages");
+  HANDLE bitmapHandle=bitmap.handle;
+  HANDLE listHandle=handle;
+  if((*GetModuleState()->manager)->add(listHandle,bitmapHandle,bitmapHandle)==-1)
+   throw std::runtime_error("Unable to add IDB_CLASSIMAGES");
+ }else{
+  if(!Create(16,16,0xff,0,0))throw std::runtime_error("Unable to create CClassImages");
+  HANDLE bitmapHandle=bitmap.handle;
+  HANDLE listHandle=handle;
+  if((*GetModuleState()->manager)->addMasked(listHandle,bitmapHandle,0xff00ff)==-1)
+   throw std::runtime_error("Unable to add IDB_CLASSIMAGES");
+ }
 }
-unsigned int RegEx::Grep(std::vector<std::size_t>& v, const char* p, match_flag_type flags)
-{
-   pdata->t = re_detail::RegExData::type_pc;
-   pdata->pbase = p;
-   const char* end = p;
-   while(*end)++end;
-
-   unsigned int result = regex_grep(re_detail::pred3(v, p, this), p, end, pdata->e, flags);
-   if(result)
-      pdata->update();
-   return result;
-}
-#ifndef BOOST_REGEX_NO_FILEITER
-namespace re_detail{
-struct pred4
-{
-   GrepFileCallback cb;
-   RegEx* pe;
-   const char* file;
-   bool ok;
-   pred4(GrepFileCallback c, RegEx* i, const char* f) : cb(c), pe(i), file(f), ok(true) {}
-   bool operator()(const match_results<mapfile::iterator>& m)
-   {
-      pe->pdata->t = RegExData::type_pf;
-      pe->pdata->fm = m;
-      pe->pdata->update();
-      ok = cb(file, *pe);
-      return ok;
-   }
-};
-}
-namespace{
-void BuildFileList(std::list<std::string>* pl, const char* files, bool recurse)
-{
-   file_iterator start(files);
-   file_iterator end;
-   if(recurse)
-   {
-      // go through sub directories:
-      char buf[MAX_PATH];
-      re_detail::overflow_error_if_not_zero(re_detail::strcpy_s(buf, MAX_PATH, start.root()));
-      if(*buf == 0)
-      {
-         re_detail::overflow_error_if_not_zero(re_detail::strcpy_s(buf, MAX_PATH, "."));
-         re_detail::overflow_error_if_not_zero(re_detail::strcat_s(buf, MAX_PATH, directory_iterator::separator()));
-         re_detail::overflow_error_if_not_zero(re_detail::strcat_s(buf, MAX_PATH, "*"));
-      }
-      else
-      {
-         re_detail::overflow_error_if_not_zero(re_detail::strcat_s(buf, MAX_PATH, directory_iterator::separator()));
-         re_detail::overflow_error_if_not_zero(re_detail::strcat_s(buf, MAX_PATH, "*"));
-      }
-      directory_iterator dstart(buf);
-      directory_iterator dend;
-
-      // now get the file mask bit of "files":
-      const char* ptr = files;
-      while(*ptr) ++ptr;
-      while((ptr != files) && (*ptr != *directory_iterator::separator()) && (*ptr != '/'))--ptr;
-      if(ptr != files) ++ptr;
-
-      while(dstart != dend)
-      {
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-         (::sprintf_s)(buf, sizeof(buf), "%s%s%s", dstart.path(), directory_iterator::separator(), ptr);
-#else
-         (std::sprintf)(buf, "%s%s%s", dstart.path(), directory_iterator::separator(), ptr);
-#endif
-         BuildFileList(pl, buf, recurse);
-         ++dstart;
-      }
-   }
-   while(start != end)
-   {
-      pl->push_back(*start);
-      ++start;
-   }
-}
-}
-
-unsigned int RegEx::GrepFiles(GrepFileCallback cb, const char* files, bool recurse, match_flag_type flags)
-{
-   unsigned int result = 0;
-   std::list<std::string> file_list;
-   BuildFileList(&file_list, files, recurse);
-   std::list<std::string>::iterator start, end;
-   start = file_list.begin();
-   end = file_list.end();
-
-   while(start != end)
-   {
-      mapfile map((*start).c_str());
-      pdata->t = re_detail::RegExData::type_pf;
-      pdata->fbase = map.begin();
-      re_detail::pred4 pred(cb, this, (*start).c_str());
-      int r = regex_grep(pred, map.begin(), map.end(), pdata->e, flags);
-      result += r;
-      ++start;
-      pdata->clean();
-      if(pred.ok == false)
-         return result;
-   }
-
-   return result;
-}
-
-
-unsigned int RegEx::FindFiles(FindFilesCallback cb, const char* files, bool recurse, match_flag_type flags)
-{
-   unsigned int result = 0;
-   std::list<std::string> file_list;
-   BuildFileList(&file_list, files, recurse);
-   std::list<std::string>::iterator start, end;
-   start = file_list.begin();
-   end = file_list.end();
-
-   while(start != end)
-   {
-      mapfile map((*start).c_str());
-      pdata->t = re_detail::RegExData::type_pf;
-      pdata->fbase = map.begin();
-
-      if(regex_search(map.begin(), map.end(), pdata->fm, pdata->e, flags))
-      {
-         ++result;
-         if(false == cb((*start).c_str()))
-            return result;
-      }
-      //pdata->update();
-      ++start;
-      //pdata->clean();
-   }
-
-   return result;
-}
-#endif
-
-#ifdef BOOST_REGEX_V3
-#define regex_replace regex_merge
-#endif
-
-std::string RegEx::Merge(const std::string& in, const std::string& fmt,
-                    bool copy, match_flag_type flags)
-{
-   std::string result;
-   re_detail::string_out_iterator<std::string> i(result);
-   if(!copy) flags |= format_no_copy;
-   regex_replace(i, in.begin(), in.end(), pdata->e, fmt.c_str(), flags);
-   return result;
-}
-
-std::string RegEx::Merge(const char* in, const char* fmt,
-                    bool copy, match_flag_type flags)
-{
-   std::string result;
-   if(!copy) flags |= format_no_copy;
-   re_detail::string_out_iterator<std::string> i(result);
-   regex_replace(i, in, in + std::strlen(in), pdata->e, fmt, flags);
-   return result;
-}
-
-std::size_t RegEx::Split(std::vector<std::string>& v, 
-                      std::string& s,
-                      match_flag_type flags,
-                      unsigned max_count)
-{
-   return regex_split(std::back_inserter(v), s, pdata->e, flags, max_count);
-}
-
-
-
-//
-// now operators for returning what matched in more detail:
-//
-std::size_t RegEx::Position(int i)const
-{
-   switch(pdata->t)
-   {
-   case re_detail::RegExData::type_pc:
-      return pdata->m[i].matched ? pdata->m[i].first - pdata->pbase : RegEx::npos;
-#ifndef BOOST_REGEX_NO_FILEITER
-   case re_detail::RegExData::type_pf:
-      return pdata->fm[i].matched ? pdata->fm[i].first - pdata->fbase : RegEx::npos;
-#endif
-   case re_detail::RegExData::type_copy:
-      {
-      std::map<int, std::ptrdiff_t, std::less<int> >::iterator pos = pdata->positions.find(i);
-      if(pos == pdata->positions.end())
-         return RegEx::npos;
-      return (*pos).second;
-      }
-   }
-   return RegEx::npos;
-}
-
-std::size_t RegEx::Marks()const
-{
-   return pdata->e.mark_count();
-}
-
-
-std::size_t RegEx::Length(int i)const
-{
-   switch(pdata->t)
-   {
-   case re_detail::RegExData::type_pc:
-      return pdata->m[i].matched ? pdata->m[i].second - pdata->m[i].first : RegEx::npos;
-#ifndef BOOST_REGEX_NO_FILEITER
-   case re_detail::RegExData::type_pf:
-      return pdata->fm[i].matched ? pdata->fm[i].second - pdata->fm[i].first : RegEx::npos;
-#endif
-   case re_detail::RegExData::type_copy:
-      {
-      std::map<int, std::string, std::less<int> >::iterator pos = pdata->strings.find(i);
-      if(pos == pdata->strings.end())
-         return RegEx::npos;
-      return (*pos).second.size();
-      }
-   }
-   return RegEx::npos;
-}
-
-bool RegEx::Matched(int i)const
-{
-   switch(pdata->t)
-   {
-   case re_detail::RegExData::type_pc:
-      return pdata->m[i].matched;
-#ifndef BOOST_REGEX_NO_FILEITER
-   case re_detail::RegExData::type_pf:
-      return pdata->fm[i].matched;
-#endif      
-   case re_detail::RegExData::type_copy:
-      {
-      std::map<int, std::string, std::less<int> >::iterator pos = pdata->strings.find(i);
-      if(pos == pdata->strings.end())
-         return false;
-      return true;
-      }
-   }
-   return false;
-}
-
-
-std::string RegEx::What(int i)const
-{
-   std::string result;
-   switch(pdata->t)
-   {
-   case re_detail::RegExData::type_pc:
-      if(pdata->m[i].matched) 
-         result.assign(pdata->m[i].first, pdata->m[i].second);
-      break;
-   case re_detail::RegExData::type_pf:
-      if(pdata->m[i].matched) 
-         result.assign(to_string(pdata->m[i].first, pdata->m[i].second));
-      break;
-   case re_detail::RegExData::type_copy:
-      {
-      std::map<int, std::string, std::less<int> >::iterator pos = pdata->strings.find(i);
-      if(pos != pdata->strings.end())
-         result = (*pos).second;
-      break;
-      }
-   }
-   return result;
-}
-
-#ifdef BOOST_HAS_LONG_LONG
-const std::size_t RegEx::npos = static_cast<std::size_t>(~0ULL);
-#else
-const std::size_t RegEx::npos = static_cast<std::size_t>(~0UL);
-#endif
-
-} // namespace boost
-
-#if defined(__BORLANDC__) && (__BORLANDC__ >= 0x550) && (__BORLANDC__ <= 0x551) && !defined(_RWSTD_COMPILE_INSTANTIATE)
-//
-// this is an ugly hack to work around an ugly problem:
-// by default this file will produce unresolved externals during
-// linking unless _RWSTD_COMPILE_INSTANTIATE is defined (Borland bug).
-// However if _RWSTD_COMPILE_INSTANTIATE is defined then we get separate
-// copies of basic_string's static data in the RTL and this DLL, this messes
-// with basic_string's memory management and results in run-time crashes,
-// Oh sweet joy of Catch 22....
-//
-namespace std{
-template<> template<>
-basic_string<char>& BOOST_REGEX_DECL
-basic_string<char>::replace<const char*>(char* f1, char* f2, const char* i1, const char* i2)
-{
-   unsigned insert_pos = f1 - begin();
-   unsigned remove_len = f2 - f1;
-   unsigned insert_len = i2 - i1;
-   unsigned org_size = size();
-   if(insert_len > remove_len)
-   {
-      append(insert_len-remove_len, ' ');
-      std::copy_backward(begin() + insert_pos + remove_len, begin() + org_size, end());
-      std::copy(i1, i2, begin() + insert_pos);
-   }
-   else
-   {
-      std::copy(begin() + insert_pos + remove_len, begin() + org_size, begin() + insert_pos + insert_len);
-      std::copy(i1, i2, begin() + insert_pos);
-      erase(size() + insert_len - remove_len);
-   }
-   return *this;
-}
-template<> template<>
-basic_string<wchar_t>& BOOST_REGEX_DECL
-basic_string<wchar_t>::replace<const wchar_t*>(wchar_t* f1, wchar_t* f2, const wchar_t* i1, const wchar_t* i2)
-{
-   unsigned insert_pos = f1 - begin();
-   unsigned remove_len = f2 - f1;
-   unsigned insert_len = i2 - i1;
-   unsigned org_size = size();
-   if(insert_len > remove_len)
-   {
-      append(insert_len-remove_len, ' ');
-      std::copy_backward(begin() + insert_pos + remove_len, begin() + org_size, end());
-      std::copy(i1, i2, begin() + insert_pos);
-   }
-   else
-   {
-      std::copy(begin() + insert_pos + remove_len, begin() + org_size, begin() + insert_pos + insert_len);
-      std::copy(i1, i2, begin() + insert_pos);
-      erase(size() + insert_len - remove_len);
-   }
-   return *this;
-}
-} // namespace std
-#endif
-
-#endif
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
