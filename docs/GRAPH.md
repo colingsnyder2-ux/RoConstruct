@@ -169,3 +169,14 @@ Broader existing checks in this checkout exposed unrelated failures:
   baseline advances before the existing submit stale-claim check.
 
 These paths were not changed for the graph implementation.
+
+## Read implementation source
+
+`roc source CLIENT ADDRESS` resolves `roc-lib` through the existing recipe and
+managed-unit store, then prints the actual C++ implementation unit. Use `--json`
+for source text plus provenance, or `--output PATH` to save a separate readable
+view. Build pointers remain unchanged, preserving compiler flags and verification
+behavior. Implementation units may contain multiple recovered functions. Missing
+units fail explicitly; archive objects are labelled as archive references rather
+than fabricated source. Graph library-source links are labelled "Build pointer"
+and show the corresponding implementation-view command.

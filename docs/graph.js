@@ -102,12 +102,13 @@ if (typeof document !== 'undefined') {
     for (const [k,v] of Object.entries(rows)) list.append(text('dt',k),text('dd',String(v)));
     panel.append(list);
     const actions = document.createElement('div'); actions.className='actions';
-    for (const [label,path] of [['View source',n.source]]) if(path) {
+    for (const [label,path] of [[n.library_source ? 'Build pointer' : 'View source',n.source]]) if(path) {
       const a = text('a',label); a.href=`https://github.com/colingsnyder2-ux/${path.startsWith('src/') ? 'RoConstruct-findings' : 'RoConstruct'}/blob/main/${path.split('/').map(encodeURIComponent).join('/')}`; a.target='_blank'; a.rel='noopener'; actions.append(a);
     }
     if(n.native_source?.path){const a=text('a','Verified native source');a.href=`https://github.com/colingsnyder2-ux/RoConstruct-findings/blob/main/${n.native_source.path.split('/').map(encodeURIComponent).join('/')}#L${n.native_source.line || 1}`;a.target='_blank';a.rel='noopener';actions.append(a);}
     actions.append(action('Show callers',()=>expand([id],'incoming')),action('Show callees',()=>expand([id])),action('Show dependencies',()=>expand([id],'outgoing',false,['dependency','ownership'])),action('Show class',()=>expand([id],'outgoing',false,['class'])),action('Milestone path',()=>milestonePath(id)));
     panel.append(actions);
+    if(n.library_source)panel.append(text('p',`Read actual implementation: roc source ${client} ${id}`));
     const evidence = document.createElement('details'); evidence.append(text('summary','Evidence & ownership'),text('pre',JSON.stringify({evidence:n.evidence,ownership:n.ownership,edges:n.outgoing},null,2))); panel.append(evidence);
     cy.elements().unselect(); cy.getElementById(id).select();
   }

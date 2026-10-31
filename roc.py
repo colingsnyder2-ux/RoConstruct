@@ -611,6 +611,11 @@ def cmd_rebuild(a):
 
 
 
+def cmd_source(a):
+    from roc import source
+    source.command(a)
+
+
 def cmd_graph(a):
     from roc import graph
     graph.command(a)
@@ -2689,6 +2694,9 @@ def main(argv=None):
         p.set_defaults(fn=fn)
         return p
 
+    cmd("source", cmd_source, "show actual implementation behind a roc-lib build pointer",
+        (["client"], {}), (["addr"], {}), (["--json"], {"action": "store_true"}),
+        (["--output"], {}))
     cmd("graph", cmd_graph, "offline dependency graph and integration work queue",
         (["target"], {}), (["client"], {"nargs": "?"}),
         (["--focus"], {}), (["--why"], {}), (["--path"], {}),
