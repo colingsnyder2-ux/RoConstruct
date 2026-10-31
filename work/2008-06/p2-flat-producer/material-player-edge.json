@@ -1,0 +1,35 @@
+{
+  "Part_vtable": "00826f94",
+  "material_slot": 5,
+  "getMaterial": "004eb190",
+  "ordinary_branch": "usesMegaTexture -> MaterialFactory::getMegaMaterial",
+  "attributes": [
+    "Part color",
+    "Part alpha()",
+    "Part reflectance"
+  ],
+  "targets": {
+    "004eb190": {
+      "size": 2849,
+      "sha256": "493adbadc38f6bd2280476a4910265537d2c86e69c3c23a61cd9f5176bfe7989"
+    },
+    "004e5f80": {
+      "size": 106,
+      "sha256": "09ba21f84bd38514bd2d5b0aa12ce11e677a7c054e065c43f031a00d735cec06"
+    }
+  },
+  "Part_first12slots": [
+    "004ea470",
+    "0060a2f0",
+    "004e83a0",
+    "00565950",
+    "00565950",
+    "004eb190",
+    "004e6b50",
+    "004e5ff0",
+    "004e5b60",
+    "004e5b70",
+    "004ef930",
+    "004e6b00"
+  ]
+}

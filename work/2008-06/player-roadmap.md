@@ -1,5 +1,40 @@
 # Current player checkpoint
 
+Material/light player integration tested at sourcee177bc4a9e. Build links/exits0;
+normal selftest passes1879/2080/0/0, two cache9->8->0 cycles return mesh/material
+counts to baseline; cleanup levels/refs/backends all0. Falling240 smoke still
+y=-3.80274,2models; not a P0 sustained/clean-worktree proof. Receipt:
+p2-flat-producer/native-material-player-runtime/receipt.json. Loaded DLLs, source,
+EXE/map, actual asset, captures, fixture and selected providers hashed. Entity
+implementation and newer owner debug files unchanged. Known-good pre-material
+EXE/map/DLLs preserved locally in pre-material-player-0f567d02e8/.
+
+004eb190 is Part vtable5, ordinary path gets mega-material with color/alpha/
+reflectance. Chunk and renderer retain real MaterialRef.007ab0a0 backend assigns
+material per SubEntity; no diagnostic unlit/manual color pass. Actual model sky
+parameters feed recovered lights; extra native Lighting fields use005e1a40
+defaults because the donor model lacks them. This bridge keeps P2 open.
+
+Pixel metric explicitly changed: unchanged fixture quantizes to40/127/70 and
+native-lit face is about23/72/40. Old unlit G>120 threshold fails8/9pixels;
+final receipt retains its counts from the exact same captures. New metric
+G>50,G>2R,2G>3B keeps original area>300/noise<30 and removal/empty gates. No
+fixture/camera/light-value change to force the gate. Original-client visual
+comparison remains unproven. Initial smoke also exposed wrong caller indexing
+of unused addedEntities; replaced with existing Entity::getSubEntity(0), without
+editing entity implementations.
+
+Next P2 edge: native global sphere cache. Node ctor00674160/vtable0084d30c;
+actual setSphere slot113=00682350, getSphere114=00682040, has115=00682100.
+Sphere map lives at0097dbc4, distinct from per-node transform map+228.006822e0
+initializes map;00682150 removes key. Level cleanup005486e0 calls removal at
+00548766 and00548992, currently omitted by backend. Evidence:
+p2-flat-producer/node-sphere-next-edge.json and disassembly. Stored00682350
+source is empty/unmatched: do not adopt it. Recover real set/update/remove
+algorithm and hook original Level cleanup; exercise exact cache lifetime. Then
+replace remaining scene/metadata/selector bridges; do not mark P2 complete merely
+because lit pixels pass. P3-P10 and P0 clean-worktree/stability remain open.
+
 Lighting prerequisite tested at source33b464e8f6. p2-lighting build/test and
 normal process exit0. Receipt:p2-flat-producer/native-lighting-runtime/receipt.json.
 004dab50 is the real light-state writer: Lighting+270..2d0 -> Scene+338..398.

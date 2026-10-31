@@ -1,5 +1,16 @@
 # P2 flat producer checkpoint, 2026-10-31
 
+Material/light integration sourcee177bc4a9e builds and passes normal lit pixel
+controls1879/2080/0/0; cache two9->8->0 cycles and zero mesh cleanup pass.
+Receipt:work/2008-06/p2-flat-producer/native-material-player-runtime/receipt.json.
+Pixel metric changed explicitly for native-lit palette (G>50,G>2R,2G>3B), same
+fixture/area/noise gates; receipt retains old unlit metric failures8/9 on same
+captures. No diagnostic material remains. Original scene/Lighting bridge and
+metadata parent remain, so P2 stays open. Next: global sphere cache0097dbc4,
+set00682350/get00682040/remove00682150, Level cleanup005486e0. Node/cache evidence
+in node-sphere-next-edge.json; source for setter is empty/unmatched, do not reuse
+that empty body. Owner entity/debug edits preserved.
+
 Lighting prerequisite passes at source33b464e8f6. Native writer004dab50/default
 constructor005e1a40 traced. Typed007aacc0/007a9d30 extraction tests native light
 state in normal process, no GL/GPU pixels. Receipt at
