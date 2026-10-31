@@ -1,11 +1,7 @@
-// from server: 88% by why2
-struct S {
-    char pad[0x23c];
-    void f();
-};
-
-extern "C" void* __stdcall assign_string(void*, const char*);
-
-void S::f() {
-    assign_string((char*)this + 0x23c, ">Authoring");
-}
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+#include <string>
+struct S5f { char pad[0x23c]; std::string s; void clear(); };
+void S5f::clear() { s = ""; }

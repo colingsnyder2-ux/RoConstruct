@@ -1,5 +1,24 @@
-// from server: 80% by colin
+// from server: 100% by EspClaude
+// from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /Od /Ob1 /GS- /MT
-// roc-lib: wildmagic-2-core Geometry/WmlConvexClipper.cpp
+// Constructor analog for 00545e30: clears the pointer, then binds it to the
+// item's key (key 00540e80, assign 00598fa0).
+class Item {
+public:
+    int key() const;
+};
+
+class Handle {
+public:
+    Handle(const Item& item);
+    void assign(int key);
+    void* pointer;
+};
+
+Handle::Handle(const Item& item)
+{
+    pointer = 0;
+    assign(item.key());
+}

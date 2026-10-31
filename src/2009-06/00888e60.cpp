@@ -1,5 +1,10 @@
-// from server: 81% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MT
-// roc-lib: ogre-1.6.4 OgreConvexBody.cpp
+// roc-flags: /Od /Ob0 /GS- /EHsc /MD
+struct Range_00888e60 { void set(int b, int e); };
+extern Range_00888e60 g_00888e60;
+void func_00888e60()
+{
+    g_00888e60.set(0, -1);
+}

@@ -1,4 +1,4 @@
-// from server: 16% by atomic.potato
+// from server: 26% by Intel
 extern "C" void __stdcall sub_4015a0(int, int);
 extern "C" void* __stdcall make_value_0051bfa0();
 extern "C" void __cdecl sub_51de00();
@@ -28,7 +28,7 @@ void* W4CameraMode::method(int idx) {
         sub_864e70(need);
     } else {
         void* existing = ((void**)vec_begin)[(int)val];
-        if (existing != 0) {
+        if (existing == 0) {
             return existing;
         }
     }

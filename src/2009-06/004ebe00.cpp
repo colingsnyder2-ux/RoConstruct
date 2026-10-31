@@ -1,167 +1,167 @@
-// from server: 66% by colin
+// from server: 91% by EspClaude
+// from server: 100% by auto
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client App/util/RunStateOwner.cpp
+// roc-lib: rbxgs v8datamodel/Selection.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "util/RunStateOwner.h"
+#include "v8datamodel/Selection.h"
 
-#include "util/Timer.h"
-#include "v8datamodel/DataModel.h"
+static RBX::Reflection::BoundFuncDesc<RBX::Selection, boost::shared_ptr<const std::vector<boost::shared_ptr<RBX::Instance>>>(void), 0> func_getSelection(&RBX::Selection::getSelection2, "Get", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
+static RBX::Reflection::BoundFuncDesc<RBX::Selection, void(boost::shared_ptr<const std::vector<boost::shared_ptr<RBX::Instance>>>), 1> func_setSelection(&RBX::Selection::setSelection, "Set", "selection", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
 
-#include <algorithm>
-#include <boost/thread/thread.hpp>
-#include <boost/thread/xtime.hpp>
-
-namespace RBX {
-
-const char sRunService[] = "RunService";
-
-Reflection::SignalDesc<RunService, void(float, float)> RunService::event_Stepped("Stepped", "time", "step");
-
-static Reflection::SignalDesc<RunService, void(float)> event_Heartbeat("Heartbeat", "step");
-
-// FUNCTION: WEBSERVICE 0x10054320
-void RunService::endRunThread(bool join)
+namespace RBX
 {
-	stopRequested = true;
-	stateChangedCondition.notify_all();
-
-	if (join) {
-		runThread->join();
+	Selection::Selection()
+		: selection(std::vector<boost::shared_ptr<Instance>>())
+	{
+		setName("Selection");
 	}
-}
 
-// FUNCTION: WEBSERVICE 0x100543b0
-void RunService::onAncestorChanged(const AncestorChanged& event)
-{
-	if (getParent() == NULL) {
-		endRunThread(false);
+	Selection::~Selection()
+	{
+		RBXASSERT(size() == 0);
 	}
-}
 
-// FUNCTION: WEBSERVICE 0x10054cb0
-void RunService::runProc(boost::shared_ptr<DataModel> dataModel)
-{
-	double desiredTime = getRealTime();
+	void Selection::addFilteredSelection(ISelectionBase* fs)
+	{
+		filteredSelections.push_back(fs);
+	}
 
-	while (true) {
-		const double timeLeft = desiredTime - getRealTime();
+	void Selection::removeFilteredSelection(ISelectionBase* fs)
+	{
+		filteredSelections.erase(std::find(filteredSelections.begin(), filteredSelections.end(), fs));
+	}
 
+	void Selection::raiseAdded(boost::shared_ptr<Instance> instance)
+	{
+		SelectionChanged event(instance, boost::shared_ptr<Instance>());
+
+		for (std::vector<ISelectionBase*>::iterator iter = filteredSelections.begin(); iter != filteredSelections.end(); iter++)
 		{
-			boost::mutex::scoped_lock lock(viewMutex);
+			(*iter)->onSelectionChanged(event);
+		}
 
-			for (Views::iterator iter = views.begin(); iter != views.end(); ++iter) {
-				iter->first->AdjustThrottle(timeLeft);
+		Notifier<Selection, SelectionChanged>::raise(event);
+	}
+
+	void Selection::raiseRemoved(boost::shared_ptr<Instance> source)
+	{
+		SelectionChanged event(boost::shared_ptr<Instance>(), source);
+
+		for (std::vector<ISelectionBase*>::iterator iter = filteredSelections.begin(); iter != filteredSelections.end(); iter++)
+		{
+			(*iter)->onSelectionChanged(event);
+		}
+
+		Notifier<Selection, SelectionChanged>::raise(event);
+	}
+
+	void Selection::toggleSelection(Instance* instance)
+	{
+		boost::shared_ptr<Instance> shared = shared_from(instance);
+		boost::shared_ptr<std::vector<boost::shared_ptr<Instance>>> sel = selection.write();
+
+		std::vector<boost::shared_ptr<Instance>>::iterator found = std::find(sel->begin(), sel->end(), shared);
+
+		if (found == sel->end())
+		{
+			sel->push_back(shared);
+			instance->Notifier<Instance, AncestorChanged>::addListener(this);
+			raiseAdded(shared);
+		}
+		else
+		{
+			sel->erase(found);
+			instance->Notifier<Instance, AncestorChanged>::removeListener(this);
+			raiseRemoved(shared);
+		}
+	}
+
+	void Selection::addToSelection(Instance* instance)
+	{
+		boost::shared_ptr<Instance> shared = shared_from(instance);
+		RBXASSERT(instance);
+
+		boost::shared_ptr<std::vector<boost::shared_ptr<Instance>>> sel = selection.write();
+
+		std::vector<boost::shared_ptr<Instance>>::iterator found = std::find(sel->begin(), sel->end(), shared);
+
+		if (found == sel->end())
+		{
+			sel->push_back(shared);
+			instance->Notifier<Instance, AncestorChanged>::addListener(this);
+			raiseAdded(shared);
+		}
+	}
+	
+	void Selection::removeFromSelection(const Instance* instance)
+	{
+		RBXASSERT(instance);
+
+		boost::shared_ptr<std::vector<boost::shared_ptr<Instance>>> sel = selection.write();
+
+		std::vector<boost::shared_ptr<Instance>>::iterator found = std::find(sel->begin(), sel->end(), shared_from(instance));
+
+		if (found != sel->end())
+		{
+			boost::shared_ptr<Instance> nonConst = *found;
+
+			sel->erase(found);
+			instance->Notifier<Instance, AncestorChanged>::removeListener(this);
+			raiseRemoved(nonConst);
+		}
+	}
+
+	void Selection::clearSelection()
+	{
+		while (!selection->empty())
+		{
+			boost::shared_ptr<Instance> instance = selection->back();
+			selection.write()->pop_back();
+
+			instance->Notifier<Instance, AncestorChanged>::removeListener(this);
+			raiseRemoved(instance);
+		}
+	}
+
+	void Selection::setSelection(Instance* instance)
+	{
+		boost::shared_ptr<Instance> inst = shared_from(instance);
+		
+		while (!selection->empty())
+		{
+			boost::shared_ptr<Instance> item = selection->back();
+
+			if (item == inst)
+			{
+				if (selection->size() == 1)
+					return;
+
+				boost::shared_ptr<std::vector<boost::shared_ptr<Instance>>> sel = selection.write();
+				sel->back() = sel->front();
+				sel->front() = item;
+			}
+			else
+			{
+				selection.write()->pop_back();
+				item->Notifier<Instance, AncestorChanged>::removeListener(this);
+				raiseRemoved(item);
 			}
 		}
 
-		const double waitTime = std::max(0.0, timeLeft);
-
-		boost::xtime xt;
-
-		boost::xtime_get(&xt, boost::TIME_UTC);
-		xt.nsec += (int) (waitTime * 1000000000.0);
-
-		bool signalled;
-
+		if (inst)
 		{
-			boost::mutex::scoped_lock lock(runMutex);
-
-			signalled = stateChangedCondition.timed_wait(lock, xt);
+			selection.write()->push_back(inst);
+			instance->Notifier<Instance, AncestorChanged>::addListener(this);
+			raiseAdded(inst);
 		}
-
-		if (!signalled) {
-			boost::xtime xt;
-
-			boost::xtime_get(&xt, boost::TIME_UTC);
-			xt.sec += 1;
-
-			boost::mutex::scoped_lock lock(runMutex);
-
-			if (invalidRunViewCount != 0) {
-				runViewsDoneCondition.timed_wait(lock, xt);
-			}
-		}
-
-		if (timeLeft <= 0.0) {
-			desiredTime = getRealTime();
-		}
-
-		{
-			DataModel::Lock lock(dataModel);
-
-			if (stopRequested) {
-				break;
-			}
-
-			dataModel->step(framePeriod);
-		}
-
-		desiredTime += framePeriod;
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x10054fd0
-void RunService::invalidateRunViews()
-{
-	boost::mutex::scoped_lock lock(viewMutex);
-
-	if (invalidRunViewCount != 0) {
-		return;
 	}
 
-	invalidRunViewCount = views.size();
-
-	if (invalidRunViewCount > 0) {
-		for (Views::iterator iter = views.begin(); iter != views.end(); ++iter) {
-			iter->first->InvalidateRunView();
-			iter->second = false;
-		}
-
-		runViewsDoneCondition.notify_all();
+	void Selection::onEvent(const Instance* source, AncestorChanged event)
+	{
+		if (source->getRootAncestor() != this->getRootAncestor())
+			removeFromSelection(source);
 	}
 }
-
-// FUNCTION: WEBSERVICE 0x10055380
-RunService::~RunService()
-{
-}
-
-// FUNCTION: WEBSERVICE 0x10056950
-RunService::RunService()
-	: runState(RS_NORMAL), stopRequested(false), framePeriod(1.0f / 30.0f), runThread(NULL), invalidRunViewCount(0),
-	  runDisabled(false)
-{
-	setName("Run Service");
-}
-
-// STUB: WEBSERVICE 0x100573e0
-void RunService::start()
-{
-	STUB(0x100573e0);
-}
-
-// FUNCTION: WEBSERVICE 0x100577f0
-void RunService::raiseHeartbeat(float time, float step)
-{
-	Notifier<RunService, Heartbeat>::raise(Heartbeat(time, step));
-	event_Heartbeat.fire(this, step);
-}
-
-// FUNCTION: WEBSERVICE 0x10057860
-void RunService::raiseStepped(float time, float step)
-{
-	Notifier<RunService, Stepped>::raise(Stepped(time, step));
-	event_Stepped.fire(this, time, step);
-}
-
-} // namespace RBX
-
-template class RBX::FactoryProduct<RBX::RunService, RBX::Instance, RBX::sRunService>;
-template class RBX::Reflection::Described<
-	RBX::RunService,
-	RBX::sRunService,
-	RBX::FactoryProduct<RBX::RunService, RBX::Instance, RBX::sRunService> >;
-template class RBX::DescribedCreatable<RBX::RunService, RBX::Instance, RBX::sRunService>;

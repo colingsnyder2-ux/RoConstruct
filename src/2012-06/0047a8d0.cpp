@@ -1,49 +1,42 @@
-// roc 2012-06 0047a8d0  unit: CRobloxDoc  size: 136 bytes
-// Make this compile to the exact bytes below, then: roc check 2012-06 0047a8d0
-//
-// 0047a8d0  6aff                 push -1
-// 0047a8d2  684a0faa00           push 0xaa0f4a
-// 0047a8d7  64a100000000         mov eax, dword ptr fs:[0]
-// 0047a8dd  50                   push eax
-// 0047a8de  64892500000000       mov dword ptr fs:[0], esp
-// 0047a8e5  51                   push ecx
-// 0047a8e6  56                   push esi
-// 0047a8e7  8b742420             mov esi, dword ptr [esp + 0x20]
-// 0047a8eb  57                   push edi
-// 0047a8ec  8bce                 mov ecx, esi
-// 0047a8ee  c744240800000000     mov dword ptr [esp + 8], 0
-// 0047a8f6  ff154c46b200         call dword ptr [0xb2464c]
-// 0047a8fc  8b7c241c             mov edi, dword ptr [esp + 0x1c]
-// 0047a900  50                   push eax
-// 0047a901  8bcf                 mov ecx, edi
-// 0047a903  ff155046b200         call dword ptr [0xb24650]
-// 0047a909  8bce                 mov ecx, esi
-// 0047a90b  c744241400000000     mov dword ptr [esp + 0x14], 0
-// 0047a913  c744240801000000     mov dword ptr [esp + 8], 1
-// 0047a91b  ff155846b200         call dword ptr [0xb24658]
-// 0047a921  50                   push eax
-// 0047a922  8bce                 mov ecx, esi
-// 0047a924  ff159847b200         call dword ptr [0xb24798]
-// 0047a92a  8b742424             mov esi, dword ptr [esp + 0x24]
-// 0047a92e  50                   push eax
-// 0047a92f  56                   push esi
-// 0047a930  ff155446b200         call dword ptr [0xb24654]
-// 0047a936  83c404               add esp, 4
-// 0047a939  50                   push eax
-// 0047a93a  56                   push esi
-// 0047a93b  57                   push edi
-// 0047a93c  ff155c46b200         call dword ptr [0xb2465c]
-// 0047a942  8b4c2420             mov ecx, dword ptr [esp + 0x20]
-// 0047a946  83c414               add esp, 0x14
-// 0047a949  8bc7                 mov eax, edi
-// 0047a94b  5f                   pop edi
-// 0047a94c  5e                   pop esi
-// 0047a94d  64890d00000000       mov dword ptr fs:[0], ecx
-// 0047a954  83c410               add esp, 0x10
-// 0047a957  c3                   ret 
-// copied from an identical function in another client (function ??HATL@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@0@PBDABV10@@Z)
-
 // roc-cl: 21022
 // roc-lang: cpp
 // roc-flags: /O2 /Ob0 /GS- /EHsc /MD
 // roc-lib: mfc-9.0-shared-rtm roc_espeon_nativedocumentfamilyad94f610efff160c.cpp
+
+// Candidate translation unit (score above; library headers required).
+#include <afxwin.h>
+#include <afxpriv.h>
+#include <shlobj.h>
+#include <stdexcept>
+static __declspec(noinline) void executeCommand(const char* first,const char* second) {
+ CStringA directory;
+ if(SHGetFolderPathA(0,CSIDL_COMMON_APPDATA,0,0,directory.GetBuffer(MAX_PATH))!=S_OK)
+   throw std::runtime_error("Unable to get common document folder");
+ directory.ReleaseBuffer();
+ CStringA executable;
+ AfxGetModuleShortFileName(AfxGetApp()->m_hInstance,executable);
+ CStringA arguments;
+ if(first)arguments+=first;
+ if(second)arguments+=second;
+ CWnd* window=AfxGetMainWnd();
+ if(window)window=window->GetLastActivePopup();
+ if((INT_PTR)ShellExecuteA(window->GetSafeHwnd(),"open",executable,arguments,directory,5)<=32)
+   throw std::runtime_error("ShellExecute failed");
+}
+struct Document;
+extern CStringA makeText();
+extern CStringA documentText(Document*,const char*);
+struct Document{void visitGame();void startServer();void joinServer();};
+void Document::visitGame(){
+ try {executeCommand(documentText(this,"Visit")," -script \"loadfile('"+makeText()+"/game/visit.ashx')()\"");}
+ catch(const std::exception& e){AfxMessageBox(e.what(),0,0);}
+}
+
+void Document::startServer(){
+ try {executeCommand(documentText(this,"Server")," -script \"loadfile('"+makeText()+"/game/gameserver.ashx')(0, 53640)\"");}
+ catch(const std::exception& e){AfxMessageBox(e.what(),0,0);}
+}
+void Document::joinServer(){
+ try {executeCommand(0," -script \"loadfile('"+makeText()+"/game/join.ashx?UserID=0&serverPort=53640')()\"");}
+ catch(const std::exception& e){AfxMessageBox(e.what(),0,0);}
+}

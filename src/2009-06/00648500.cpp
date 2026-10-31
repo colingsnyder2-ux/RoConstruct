@@ -1,108 +1,38 @@
-// from server: 57% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+// from server: 90% by EspClaude
+// from server: 100% by king_originala
+// roc 2008-06 005bd330  unit: VStockSound::?$FactoryProduct  size: 44 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 005bd330
+//
+// 005bd330  8b442404             mov eax, dword ptr [esp + 4]
+// 005bd334  8b00                 mov eax, dword ptr [eax]
+// 005bd336  56                   push esi
+// 005bd337  8bf1                 mov esi, ecx
+// 005bd339  3b8670010000         cmp eax, dword ptr [esi + 0x170]
+// 005bd33f  7417                 je 0x5bd358
+// 005bd341  6894719700           push 0x977194
+// 005bd346  898670010000         mov dword ptr [esi + 0x170], eax
+// 005bd34c  e8af07e5ff           call 0x40db00
+// 005bd351  8bce                 mov ecx, esi
+// 005bd353  e828b5ffff           call 0x5b8880
+// 005bd358  5e                   pop esi
+// 005bd359  c20400               ret 4
 
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
+extern int property;
 
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
+struct S {
+    char padding[0x170];
+    int value;
 
-boost::mutex& moo2()
+    void setValue(const int& v);
+    void notify(const int* p);
+    void changed();
+};
+
+void S::setValue(const int& v)
 {
-	static boost::mutex mutex2;
-	return mutex2;
-}
-
-void initMoo()
-{
-	moo2();
-}
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
+    if (v != value) {
+        value = v;
+        notify(&property);
+        changed();
+    }
 }

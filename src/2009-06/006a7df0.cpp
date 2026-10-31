@@ -1,108 +1,222 @@
-// from server: 37% by colin
+// from server: 96% by EspClaude
+// from server: 100% by auto
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
+// roc-lib: openrbx-client App/v8kernel/Kernel.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
+#include "v8kernel/Kernel.h"
 
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
+#include "util/Profiling.h"
+#include "v8kernel/Body.h"
+#include "v8kernel/Connector.h"
+#include "v8kernel/Constants.h"
+#include "v8kernel/KernelData.h"
+#include "v8kernel/Point.h"
 
-boost::mutex& moo2()
+#include <cstddef>
+
+namespace RBX {
+
+// GLOBAL: WEBSERVICE 0x102e54c4
+int Kernel::numKernels = 0;
+
+// FUNCTION: WEBSERVICE 0x100d4f20
+int Kernel::numConnectors() const
 {
-	static boost::mutex mutex2;
-	return mutex2;
+	return kernelData->connectors.size();
 }
 
-void initMoo()
+// FUNCTION: WEBSERVICE 0x100d4f30
+float Kernel::connectorSpringEnergy() const
 {
-	moo2();
+	float springPotential = 0.0f;
+
+	for (int i = 0; i < kernelData->connectors.size(); ++i) {
+		springPotential += kernelData->connectors[i]->potentialEnergy();
+	}
+
+	return springPotential;
 }
 
-namespace RBX
+// FUNCTION: WEBSERVICE 0x100d5310
+int Kernel::numBodies() const
 {
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
+	return kernelData->bodies.size();
+}
+
+// FUNCTION: WEBSERVICE 0x100d5320
+int Kernel::numPoints() const
+{
+	return kernelData->points.size();
+}
+
+// FUNCTION: WEBSERVICE 0x100d5330
+float Kernel::bodyKineticEnergy() const
+{
+	float answer = 0.0f;
+
+	for (int i = 0; i < kernelData->bodies.size(); ++i) {
+		answer += kernelData->bodies[i]->kineticEnergy();
 	}
 
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
+	return answer;
+}
 
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
+// FUNCTION: WEBSERVICE 0x100d54c0
+void Kernel::insertConnector(Connector* c)
+{
+	kernelData->connectors.fastAppend(c);
+}
 
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
+// FUNCTION: WEBSERVICE 0x100d54f0
+void Kernel::insertConnector2ndPass(Connector* c)
+{
+	kernelData->connectors2ndPass.fastAppend(c);
+}
 
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
+// FUNCTION: WEBSERVICE 0x100d5520
+void Kernel::removeConnector(Connector* c)
+{
+	realTimeConnectors.resize(0, false);
 
-		boost::mutex::scoped_lock scoped_lock(mutex());
+	kernelData->connectors.fastRemove(c);
+}
 
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
+// FUNCTION: WEBSERVICE 0x100d5580
+void Kernel::removeConnector2ndPass(Connector* c)
+{
+	kernelData->connectors2ndPass.fastRemove(c);
+}
+
+// FUNCTION: WEBSERVICE 0x100d55d0
+void Kernel::stepWorld(int worldStepId, int uiStepId, bool throttling)
+{
+	KernelData* data = kernelData;
+
+	inStepCode = true;
+
+	Profiling::Mark mark(*profilingKernel, false);
+
+	float dt = Constants::kernelDt();
+	int kernelSteps = Constants::kernelStepsPerWorldStep();
+
+	if (throttling) {
+		realTimeConnectors.resize(0, false);
+
+		for (int i = 0; i < data->connectors.size(); ++i) {
+			if (!data->connectors[i]->canThrottle()) {
+				realTimeConnectors.append(data->connectors[i]);
 			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
 		}
 	}
 
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
+	for (int step = 0; step < kernelSteps; ++step) {
+		for (int i = 0; i < data->points.size(); ++i) {
+			data->points[i]->step();
 		}
-		else
-		{
-			return getNullName();
+
+		if (throttling) {
+			for (int i = 0; i < realTimeConnectors.size(); ++i) {
+				realTimeConnectors[i]->computeForce(dt, throttling);
+			}
+		}
+		else {
+			for (int i = 0; i < data->connectors.size(); ++i) {
+				data->connectors[i]->computeForce(dt, false);
+			}
+		}
+
+		for (int i = 0; i < data->points.size(); ++i) {
+			data->points[i]->forceToBody();
+		}
+
+		for (int i = 0; i < data->connectors2ndPass.size(); ++i) {
+			data->connectors2ndPass[i]->computeForce(dt, throttling);
+		}
+
+		for (int i = 0; i < data->bodies.size(); ++i) {
+			data->bodies[i]->step(dt, throttling);
 		}
 	}
 
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
+	inStepCode = false;
+}
 
-		return lookup(std::string(sName));
+// FUNCTION: WEBSERVICE 0x100d57e0
+void Kernel::insertBody(Body* b)
+{
+	kernelData->bodies.fastAppend(b);
+}
+
+// FUNCTION: WEBSERVICE 0x100d5800
+void Kernel::removeBody(Body* b)
+{
+	kernelData->bodies.fastRemove(b);
+}
+
+// FUNCTION: WEBSERVICE 0x100d5840
+void Kernel::removePoint(Point* p)
+{
+	kernelData->points.fastRemove(p);
+}
+
+// FUNCTION: WEBSERVICE 0x100d5890
+Point* Kernel::newPoint(Body* _body, const Vector3& worldPos)
+{
+	Point* point = new Point(_body);
+
+	point->setWorldPos(worldPos);
+
+	for (int i = 0; i < kernelData->points.size(); ++i) {
+		Point* other = kernelData->points[i];
+
+		if (Point::sameBodyAndOffset(point, other)) {
+			kernelData->points[i]->numOwners++;
+			delete point;
+
+			return kernelData->points[i];
+		}
+	}
+
+	kernelData->points.fastAppend(point);
+
+	return point;
+}
+
+// FUNCTION: WEBSERVICE 0x100d59f0
+void Kernel::deletePoint(Point* _point)
+{
+	if (_point != NULL) {
+
+		if (--_point->numOwners == 0) {
+			removePoint(_point);
+			delete _point;
+		}
 	}
 }
+
+// FUNCTION: WEBSERVICE 0x100d5a20
+Kernel::~Kernel()
+{
+	numKernels--;
+
+	delete kernelData;
+}
+
+// FUNCTION: WEBSERVICE 0x100d5ad0 FOLDED
+Kernel* Kernel::getKernel()
+{
+	return this;
+}
+
+// FUNCTION: WEBSERVICE 0x100d5ae0
+Kernel::Kernel(IStage* upstream)
+	: IStage(upstream, NULL), inStepCode(false), kernelData(new KernelData()), maxBodies(0), maxPoints(0),
+	  maxConnectors(0), profilingKernel(new Profiling::CodeProfiler("Kernel"))
+{
+	numKernels++;
+}
+
+} // namespace RBX

@@ -1,22 +1,22 @@
-// from server: 86% by atomic.potato
-extern "C" void __stdcall f_510870(void*);
-extern "C" void __stdcall f_510860(void*);
-
-struct RakPeer {
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+class SimpleMutex { public: void Lock(); void Unlock(); char data[0x1c]; };
+class C {
+public:
     char pad0[0xc];
-    unsigned int m_size;
+    unsigned int numberOfBitsUsed;
     char pad1[0x8];
-    unsigned int m_count;
+    unsigned int value;
     char pad2[0x530];
-    char m_cs[0x18];
-    void sub_004fe620(unsigned int* a, unsigned int* b);
+    SimpleMutex mutex;
+    void Get(unsigned int* a, unsigned int* b);
 };
-
-void RakPeer::sub_004fe620(unsigned int* a, unsigned int* b)
+void C::Get(unsigned int* a, unsigned int* b)
 {
-    char* p = m_cs;
-    f_510870(p);
-    *a = m_count;
-    *b = (m_size + 7) >> 3;
-    f_510860(p);
+    mutex.Lock();
+    *a = value;
+    *b = (numberOfBitsUsed + 7) >> 3;
+    mutex.Unlock();
 }

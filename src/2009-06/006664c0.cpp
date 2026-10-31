@@ -1,23 +1,16 @@
-// from server: 89% by atomic.potato
-struct RBX_KernelJoint {
-    void* vtbl0;
-    char pad0[0x1c];
-    void* vtbl20;
-    char pad1[0x74];
-    void* vtbl98;
-    void destroy();
+// from server: 100% by EspClaude
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+namespace RBX {
+class Edge { public: virtual ~Edge(); char pad[0x1c]; };
+class SpanningEdge { public: virtual void span(); char pad[0x74]; };
+class Joint : public Edge, public SpanningEdge { public: virtual ~Joint(); };
+class KernelIndex { public: int idx; };
+class Connector : public KernelIndex { public: virtual void conn(); };
+class KernelJoint : public Joint, public Connector {
+public:
+    virtual ~KernelJoint();
+    virtual void kj();
 };
-
-extern "C" void __stdcall sub_006a66d0();
-extern "C" void __cdecl sub_00718a32(void*);
-
-void RBX_KernelJoint::destroy()
-{
-    vtbl0 = (void*)0x8e2ca4;
-    vtbl20 = (void*)0x8e2c88;
-    vtbl98 = (void*)0x8e2c6c;
-    sub_006a66d0();
-    if (*(unsigned char*)((char*)this + 8) & 1) {
-        sub_00718a32(this);
-    }
+KernelJoint::~KernelJoint() {}
 }

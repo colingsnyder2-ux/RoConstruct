@@ -9,7 +9,7 @@
    "name": "engine",
    "mode": "direct",
    "dir": "rebuild/2008-06/tests",
-   "files": "PlayerEngine.cpp PlayerScene.cpp",
+   "files": "PlayerEngine.cpp PlayerScene.cpp PlayerMeshOrientation.cpp",
    "includes_from_recipe": "rbxgs",
    "defines_from_recipe": "rbxgs",
    "extra_defines": "BOOST_ALL_NO_LIB",

@@ -1,5 +1,6 @@
-// from server: 81% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /Od /Ob1 /GS- /MT
-// roc-lib: wildmagic-2-core Geometry/WmlConvexClipper.cpp
+// roc-cl: 21022
+// roc-flags: /Od /GS- /EHsc /MD
+struct S_005bacd0 { int* p; int* f(int); };
+int* S_005bacd0::f(int i) { return (int*)((char*)p + i); }

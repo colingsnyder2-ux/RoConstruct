@@ -1,123 +1,235 @@
-// from server: 42% by colin
+// from server: 98% by EspClaude
+// from server: 100% by auto
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/FlagStand.cpp
+// roc-lib: openrbx-client App/v8datamodel/DebugSettings.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "v8datamodel/FlagStand.h"
-#include "v8datamodel/Flag.h"
+#include "v8datamodel/DebugSettings.h"
 
-namespace RBX
+#include "reflection/property.h"
+#include "v8datamodel/ModelInstance.h"
+#include "v8datamodel/PartInstance.h"
+#include "v8datamodel/Workspace.h"
+#include "v8world/World.h"
+
+namespace RBX {
+
+const char sDebugSettings[] = "DebugSettings";
+
+using namespace Reflection;
+
+static PropDescriptor<DebugSettings, bool> prop_ValidatingDebug(
+	"ValidatingDebug",
+	"Errors",
+	&RBX::DebugSettings::getValidatingDebug,
+	&RBX::DebugSettings::setValidatingDebug
+);
+
+static EnumPropDescriptor<DebugSettings, Debugable::AssertAction> prop_assertAction(
+	"AssertAction",
+	"Errors",
+	&RBX::DebugSettings::getAssertAction,
+	&RBX::DebugSettings::setAssertAction
+);
+
+static EnumPropDescriptor<DebugSettings, DebugSettings::ErrorReporting> prop_errorReporting(
+	"errorReporting",
+	"Errors",
+	&RBX::DebugSettings::getErrorReporting,
+	&RBX::DebugSettings::setErrorReporting
+);
+
+static PropDescriptor<DebugSettings, bool> prop_AnchoredParts(
+	"ShowAnchors",
+	"Display",
+	&RBX::DebugSettings::getShowAnchoredParts,
+	&RBX::DebugSettings::setShowAnchoredParts
+);
+
+static PropDescriptor<DebugSettings, bool> prop_PartCoordinateFrames(
+	"ShowPartCoords",
+	"Display",
+	&RBX::DebugSettings::getShowPartCoordinateFrames,
+	&RBX::DebugSettings::setShowPartCoordinateFrames
+);
+
+static PropDescriptor<DebugSettings, bool> prop_ModelCoordinateFrames(
+	"ShowModelCoords",
+	"Display",
+	&RBX::DebugSettings::getShowModelCoordinateFrames,
+	&RBX::DebugSettings::setShowModelCoordinateFrames
+);
+
+static PropDescriptor<DebugSettings, bool> prop_WorldCoordinateFrames(
+	"ShowWorldCoords",
+	"Display",
+	&RBX::DebugSettings::getShowWorldCoordinateFrames,
+	&RBX::DebugSettings::setShowWorldCoordinateFrames
+);
+
+static PropDescriptor<DebugSettings, bool> prop_DisableEnvironmentalThrottle(
+	"DisableEnvironmentalThrottle",
+	"Display",
+	&RBX::DebugSettings::getDisableEnvironmentalThrottle,
+	&RBX::DebugSettings::setDisableEnvironmentalThrottle
+);
+
+// FUNCTION: WEBSERVICE 0x100b2d30
+bool DebugSettings::getValidatingDebug() const
 {
-	static Reflection::PropDescriptor<FlagStand, BrickColor> prop_Color("TeamColor", "Data", &FlagStand::getTeamColor, &FlagStand::setTeamColor, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::SignalDesc<FlagStand, void(boost::shared_ptr<Instance>)> event_FlagCaptured("FlagCaptured", "Player");
+	return Debugable::validatingDebug;
+}
 
-	FlagStand::FlagStand()
-	{
-		setName("FlagStand");
-	}
+// FUNCTION: WEBSERVICE 0x100b2d40
+Debugable::AssertAction DebugSettings::getAssertAction() const
+{
+	return Debugable::assertAction;
+}
 
-	BrickColor FlagStand::getTeamColor() const
-	{
-		return teamColor;
-	}
+// FUNCTION: WEBSERVICE 0x100b2d50
+DebugSettings::ErrorReporting DebugSettings::getErrorReporting() const
+{
+	return errorReporting;
+}
 
-	void FlagStand::setTeamColor(BrickColor color)
-	{
-		teamColor = color;
-		raisePropertyChanged(PartInstance::prop_Color);
-	}
+// FUNCTION: WEBSERVICE 0x100b2d60
+bool DebugSettings::getShowAnchoredParts() const
+{
+	return PartInstance::showAnchoredParts;
+}
 
-	void FlagStand::AffixFlag(Flag* flag)
-	{
-		if (!GetFlag())
-		{
-			flag->setParent(getParent());
+// FUNCTION: WEBSERVICE 0x100b2d70
+bool DebugSettings::getShowUnalignedParts() const
+{
+	return PartInstance::showUnalignedParts;
+}
 
-			PartInstance* handle = flag->getHandle();
+// FUNCTION: WEBSERVICE 0x100b2d80
+bool DebugSettings::getShowPartCoordinateFrames() const
+{
+	return PartInstance::showPartCoord;
+}
 
-			handle->setCoordinateFrame(G3D::CoordinateFrame());
+// FUNCTION: WEBSERVICE 0x100b2d90
+bool DebugSettings::getShowModelCoordinateFrames() const
+{
+	return ModelInstance::showModelCoord;
+}
 
-			G3D::Vector3 location = getLocation().translation;
-			location.y += 0.5f;
+// FUNCTION: WEBSERVICE 0x100b2da0
+bool DebugSettings::getShowWorldCoordinateFrames() const
+{
+	return Workspace::showWorldCoord;
+}
 
-			handle->moveToPoint(location);
-			handle->join();
-		}
-	}
+// FUNCTION: WEBSERVICE 0x100b2db0
+bool DebugSettings::getDisableEnvironmentalThrottle() const
+{
+	return World::disableEnvironmentalThrottle;
+}
 
-	Flag* FlagStand::GetFlag()
-	{
-		Primitive* primitive = getPrimitive();
+namespace Reflection {
 
-		for (RigidJoint* current = primitive->getFirstRigid(); current != NULL; current = primitive->getNextRigid(current))
-		{
-			for (int i = 0; i < 2; i++)
-			{
-				Flag* flag = dynamic_cast<Flag*>(PartInstance::fromPrimitive(current->getPrimitive(i))->getParent());
-				if (flag)
-					return flag;
-			}
-		}
+// FUNCTION: WEBSERVICE 0x100b3f40
+template <>
+EnumDesc<DebugSettings::ErrorReporting>::EnumDesc()
+	: EnumDescriptor("ErrorReporting", typeid(DebugSettings::ErrorReporting))
+{
+	addPair(DebugSettings::DontReport, "DontReport");
+	addPair(DebugSettings::Prompt, "Prompt");
+	addPair(DebugSettings::Report, "Report");
+}
 
-		return NULL;
-	}
+// FUNCTION: WEBSERVICE 0x100b40c0
+template <>
+EnumDesc<Debugable::AssertAction>::EnumDesc() : EnumDescriptor("AssertAction", typeid(Debugable::AssertAction))
+{
+	addPair(Debugable::CrashOnAssert, "CrashOnAssert");
+	addPair(Debugable::IgnoreAssert, "IgnoreAssert");
+}
 
-	void FlagStand::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-	{
-		Instance::onServiceProvider(oldProvider, newProvider);
+} // namespace Reflection
 
-		if (!oldProvider)
-		{
-			FlagStandService* flagStandService = ServiceProvider::create<FlagStandService>(newProvider);
-			RBXASSERT(flagStandService);
-
-			flagStandService->RegisterFlagStand(this);
-
-			standTouched = PartInstance::event_Touched.connect(this, boost::bind(&FlagStand::onEvent_standTouched, this, _1));
-		}
-
-		if (!newProvider)
-		{
-			FlagStandService* flagStandService = ServiceProvider::create<FlagStandService>(oldProvider);
-			RBXASSERT(flagStandService);
-
-			flagStandService->UnregisterFlagStand(this);
-
-			standTouched.disconnect();
-		}
-	}
-
-	FlagStandService::FlagStandService()
-	{
-		setName("FlagStandService");
-		propArchivable.setValue(this, false);
-	}
-
-	FlagStandService::~FlagStandService() {}
-
-	FlagStand* FlagStandService::FindStandWithFlag(Flag* f)
-	{
-		if (flagStands.empty())
-			return NULL;
-
-		for (std::list<FlagStand*>::const_iterator iter = flagStands.begin(); iter != flagStands.end(); iter++)
-		{
-			if ((*iter)->GetFlag() == f)
-				return *iter;
-		}
-
-		return NULL;
-	}
-
-	void FlagStandService::RegisterFlagStand(FlagStand* s)
-	{
-		flagStands.push_back(s);
-	}
-
-	void FlagStandService::UnregisterFlagStand(FlagStand* s)
-	{
-		flagStands.remove(s);
+// FUNCTION: WEBSERVICE 0x100b51f0
+void DebugSettings::setShowAnchoredParts(bool value)
+{
+	if (value != PartInstance::showAnchoredParts) {
+		PartInstance::showAnchoredParts = value;
+		raisePropertyChanged(prop_AnchoredParts);
 	}
 }
+
+// FUNCTION: WEBSERVICE 0x100b5220
+void DebugSettings::setShowUnalignedParts(bool value)
+{
+	if (value != PartInstance::showUnalignedParts) {
+		PartInstance::showUnalignedParts = value;
+		raisePropertyChanged(prop_PartCoordinateFrames);
+	}
+}
+
+// FUNCTION: WEBSERVICE 0x100b5250
+void DebugSettings::setShowPartCoordinateFrames(bool value)
+{
+	if (value != PartInstance::showPartCoord) {
+		PartInstance::showPartCoord = value;
+		raisePropertyChanged(prop_PartCoordinateFrames);
+	}
+}
+
+// FUNCTION: WEBSERVICE 0x100b5280
+void DebugSettings::setShowModelCoordinateFrames(bool value)
+{
+	if (value != ModelInstance::showModelCoord) {
+		ModelInstance::showModelCoord = value;
+		raisePropertyChanged(prop_ModelCoordinateFrames);
+	}
+}
+
+// FUNCTION: WEBSERVICE 0x100b52b0
+void DebugSettings::setShowWorldCoordinateFrames(bool value)
+{
+	if (value != Workspace::showWorldCoord) {
+		Workspace::showWorldCoord = value;
+		raisePropertyChanged(prop_WorldCoordinateFrames);
+	}
+}
+
+// FUNCTION: WEBSERVICE 0x100b52e0
+void DebugSettings::setDisableEnvironmentalThrottle(bool value)
+{
+	if (value != World::disableEnvironmentalThrottle) {
+		World::disableEnvironmentalThrottle = value;
+		raisePropertyChanged(prop_DisableEnvironmentalThrottle);
+	}
+}
+
+// FUNCTION: WEBSERVICE 0x100b5310
+void DebugSettings::setValidatingDebug(bool value)
+{
+	if (value != Debugable::validatingDebug) {
+		Debugable::validatingDebug = value;
+		raisePropertyChanged(prop_ValidatingDebug);
+	}
+}
+
+// FUNCTION: WEBSERVICE 0x100b5340
+void DebugSettings::setAssertAction(Debugable::AssertAction value)
+{
+	if (value != Debugable::assertAction) {
+		Debugable::assertAction = value;
+		raisePropertyChanged(prop_assertAction);
+	}
+}
+
+// FUNCTION: WEBSERVICE 0x100b5370
+void DebugSettings::setErrorReporting(ErrorReporting value)
+{
+	if (value != errorReporting) {
+		errorReporting = value;
+		raisePropertyChanged(prop_errorReporting);
+	}
+}
+} // namespace RBX

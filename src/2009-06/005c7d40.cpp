@@ -1,5 +1,6 @@
-// from server: 69% by colin
+// from server: 100% by EspClaude
+// from server: 100% by tester
 // roc-lang: cpp
-// roc-cl: 30729
-// roc-flags: /O2 /GS- /MD
-// roc-lib: mfc-9.0 atlmfc/src/mfc/afxbaseribbonelement.cpp
+// roc-cl: 50727
+// roc-flags: /Od /Ob0 /GS- /MD
+// roc-lib: wildmagic-2-core Containment/WmlConvexHull2.cpp

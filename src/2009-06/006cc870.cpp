@@ -1,108 +1,60 @@
-// from server: 71% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+// from server: 100% by EspClaude
+// from server: 100% by king_originala
+// roc 2008-06 00640280  unit: RBX::GameTool  size: 89 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 00640280
+//
+// 00640280  6aff                 push -1
+// 00640282  68f8a97d00           push 0x7da9f8
+// 00640287  64a100000000         mov eax, dword ptr fs:[0]
+// 0064028d  50                   push eax
+// 0064028e  64892500000000       mov dword ptr fs:[0], esp
+// 00640295  51                   push ecx
+// 00640296  8b442414             mov eax, dword ptr [esp + 0x14]
+// 0064029a  56                   push esi
+// 0064029b  8bf1                 mov esi, ecx
+// 0064029d  50                   push eax
+// 0064029e  89742408             mov dword ptr [esp + 8], esi
+// 006402a2  e84957fdff           call 0x6159f0
+// 006402a7  8d4e1c               lea ecx, [esi + 0x1c]
+// 006402aa  c744241000000000     mov dword ptr [esp + 0x10], 0
+// 006402b2  c70644a58400         mov dword ptr [esi], 0x84a544
+// 006402b8  c746042ca58400       mov dword ptr [esi + 4], 0x84a52c
+// 006402bf  ff1560248000         call dword ptr [0x802460]
+// 006402c5  8b4c2408             mov ecx, dword ptr [esp + 8]
+// 006402c9  8bc6                 mov eax, esi
+// 006402cb  5e                   pop esi
+// 006402cc  64890d00000000       mov dword ptr fs:[0], ecx
+// 006402d3  83c410               add esp, 0x10
+// 006402d6  c20400               ret 4
 
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
+struct Primary {
+    virtual void primary();
+};
 
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
+struct Secondary {
+    virtual void secondary();
+};
 
-boost::mutex& moo2()
+struct Base : Primary, Secondary {
+    char storage[20];
+    Base(int);
+    ~Base();
+};
+
+struct String {
+    char storage[28];
+};
+
+extern String* (__thiscall *constructString)(String*);
+
+struct GameTool : Base {
+    String cursor;
+    virtual void primary();
+    virtual void secondary();
+    GameTool(int);
+};
+
+GameTool::GameTool(int argument) : Base(argument)
 {
-	static boost::mutex mutex2;
-	return mutex2;
-}
-
-void initMoo()
-{
-	moo2();
-}
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
+    constructString(&cursor);
 }

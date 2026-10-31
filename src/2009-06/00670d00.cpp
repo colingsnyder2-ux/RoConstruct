@@ -1,591 +1,139 @@
-// from server: 84% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8world/Primitive.cpp
+// from server: 97% by EspClaude
+// from server: 100% by king_originala
+// roc 2008-06 005e7f20  unit: RBX::Primitive  size: 212 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 005e7f20
+//
+// 005e7f20  6aff                 push -1
+// 005e7f22  6828ae7d00           push 0x7dae28
+// 005e7f27  64a100000000         mov eax, dword ptr fs:[0]
+// 005e7f2d  50                   push eax
+// 005e7f2e  64892500000000       mov dword ptr fs:[0], esp
+// 005e7f35  83ec34               sub esp, 0x34
+// 005e7f38  56                   push esi
+// 005e7f39  8bf1                 mov esi, ecx
+// 005e7f3b  57                   push edi
+// 005e7f3c  8bbea0000000         mov edi, dword ptr [esi + 0xa0]
+// 005e7f42  8bcf                 mov ecx, edi
+// 005e7f44  e81714fbff           call 0x599360
+// 005e7f49  8b44244c             mov eax, dword ptr [esp + 0x4c]
+// 005e7f4d  50                   push eax
+// 005e7f4e  8d4c2424             lea ecx, [esp + 0x24]
+// 005e7f52  51                   push ecx
+// 005e7f53  8d8f94000000         lea ecx, [edi + 0x94]
+// 005e7f59  e8120af3ff           call 0x518970
+// 005e7f5e  d9ee                 fldz 
+// 005e7f60  8b442454             mov eax, dword ptr [esp + 0x54]
+// 005e7f64  d9542408             fst dword ptr [esp + 8]
+// 005e7f68  8b8e9c000000         mov ecx, dword ptr [esi + 0x9c]
+// 005e7f6e  d954240c             fst dword ptr [esp + 0xc]
+// 005e7f72  50                   push eax
+// 005e7f73  d95c2414             fstp dword ptr [esp + 0x14]
+// 005e7f77  8b11                 mov edx, dword ptr [ecx]
+// 005e7f79  8b5220               mov edx, dword ptr [edx + 0x20]
+// 005e7f7c  8d44240c             lea eax, [esp + 0xc]
+// 005e7f80  50                   push eax
+// 005e7f81  8d442428             lea eax, [esp + 0x28]
+// 005e7f85  50                   push eax
+// 005e7f86  c744245000000000     mov dword ptr [esp + 0x50], 0
+// 005e7f8e  ffd2                 call edx
+// 005e7f90  84c0                 test al, al
+// 005e7f92  744b                 je 0x5e7fdf
+// 005e7f94  8bb6a0000000         mov esi, dword ptr [esi + 0xa0]
+// 005e7f9a  8bce                 mov ecx, esi
+// 005e7f9c  e8bf13fbff           call 0x599360
+// 005e7fa1  8d442408             lea eax, [esp + 8]
+// 005e7fa5  50                   push eax
+// 005e7fa6  8d4c2418             lea ecx, [esp + 0x18]
+// 005e7faa  51                   push ecx
+// 005e7fab  8d8e94000000         lea ecx, [esi + 0x94]
+// 005e7fb1  e8eae6e8ff           call 0x4766a0
+// 005e7fb6  d900                 fld dword ptr [eax]
+// 005e7fb8  8b4c2450             mov ecx, dword ptr [esp + 0x50]
+// 005e7fbc  d919                 fstp dword ptr [ecx]
+// 005e7fbe  5f                   pop edi
+// 005e7fbf  d94004               fld dword ptr [eax + 4]
+// 005e7fc2  5e                   pop esi
+// 005e7fc3  d95904               fstp dword ptr [ecx + 4]
+// 005e7fc6  d94008               fld dword ptr [eax + 8]
+// 005e7fc9  b001                 mov al, 1
+// 005e7fcb  d95908               fstp dword ptr [ecx + 8]
+// 005e7fce  8b4c2434             mov ecx, dword ptr [esp + 0x34]
+// 005e7fd2  64890d00000000       mov dword ptr fs:[0], ecx
+// 005e7fd9  83c440               add esp, 0x40
+// 005e7fdc  c20c00               ret 0xc
+// 005e7fdf  8b4c243c             mov ecx, dword ptr [esp + 0x3c]
+// 005e7fe3  5f                   pop edi
+// 005e7fe4  32c0                 xor al, al
+// 005e7fe6  5e                   pop esi
+// 005e7fe7  64890d00000000       mov dword ptr fs:[0], ecx
+// 005e7fee  83c440               add esp, 0x40
+// 005e7ff1  c20c00               ret 0xc
 
-// Candidate translation unit (score above; library headers required).
-#include "v8world/Primitive.h"
-#include "v8world/Geometry.h"
-#include "v8world/Assembly.h"
-#include "v8world/Ball.h"
-#include "v8world/Block.h"
-#include "v8world/World.h"
-#include <cmath>
+struct Vector3 {
+    float x, y, z;
+    Vector3& operator=(const Vector3& value);
+};
 
-namespace RBX 
+inline Vector3& Vector3::operator=(const Vector3& value)
 {
-	bool Primitive::ignoreBool = false;
-	bool Primitive::disableSleep = false;
-
-	#pragma warning (push)
-	#pragma warning (disable : 4355) // warning C4355: 'this' : used in base member initializer list
-	Primitive::Primitive(Geometry::GeometryType geometryType) :
-		guidSetExternally(false),
-		world(NULL),
-		clump(NULL),
-		spatialNodes(NULL),
-		worldIndex(-1),
-		clumpDepth(-1),
-		traverseId(-1),
-		fuzzyExtentsStateId(-2),
-		geometry(newGeometry(geometryType)),
-		body(new Body),
-		elasticity(0.75f),
-		friction(0.0f),
-		myOwner(NULL),
-		anchorObject(NULL),
-		dragging(false),
-		anchored(false),
-		canCollide(true),
-		canSleep(true),
-		JointK(this, &Primitive::computeJointK),
-		controller(NullController::getStaticNullController())
-	{
-		for (int i = 0; i < 6; i++) 
-		{
-			surfaceType[i] = NO_SURFACE;
-			surfaceData[i] = NULL;
-		}
-	}
-	#pragma warning (pop)
-
-	Primitive::~Primitive()
-	{
-		Geometry::GeometryType type = geometry->getGeometryType();
-
-		if (type != Geometry::GEOMETRY_NONE) {
-			delete geometry;
-			delete body;
-		}
-
-		for (int i = 0; i < 6; i++)
-			delete surfaceData[i];
-
-		RBXASSERT(!world);
-		RBXASSERT(!clump);
-	}
-
-	G3D::Vector3 Primitive::clipToSafeSize(const G3D::Vector3& newSize)
-	{
-		G3D::Vector3 r = newSize.min(G3D::Vector3(512.0f, 512.0f, 512.0f));
-
-		if (r.x * r.y * r.z > 1e+6f) 
-		{
-			r.y = floorf(1e+6f / (r.x * r.z));
-		}
-
-		return r;
-	}
-
-	float Primitive::computeJointK() const 
-	{
-		Geometry::GeometryType type = geometry->getGeometryType();
-		return Constants::getJointK(geometry->getGridSize(), type == Geometry::GEOMETRY_BALL);
-	}
-
-	void Primitive::setGuid(const Guid& value) 
-	{
-		RBXASSERT(!world);
-		guid.copyDataFrom(value);
-		guidSetExternally = true;
-	}
-
-	void Primitive::setClump(Clump* set)
-	{
-		if (set != clump)
-		{
-			clump = set;
-		}
-	}
-
-	const G3D::CoordinateFrame& Primitive::getCoordinateFrame() const
-	{
-		return body->getPV().position;
-	}
-	
-	G3D::CoordinateFrame Primitive::getGridCorner() const
-	{
-		const G3D::CoordinateFrame& pos = body->getPV().position;
-		G3D::Vector3 hVec = -(geometry->getGridSize() * 0.5f);
-
-		return G3D::CoordinateFrame(pos.rotation, pos.pointToWorldSpace(hVec));
-	}
-
-	void Primitive::setGridCorner(const G3D::CoordinateFrame& gridCorner)
-	{
-		G3D::Vector3 hVec = geometry->getGridSize() * 0.5;
-		setCoordinateFrame(G3D::CoordinateFrame(gridCorner.rotation, gridCorner.pointToWorldSpace(hVec)));
-	}
-
-	void Primitive::setVelocity(const Velocity& vel)
-	{
-		body->setVelocity(vel);
-	}
-
-	float Primitive::getPlanarSize() const
-	{
-		return Math::planarSize(geometry->getGridSize());
-	}
-
-	bool Primitive::hitTest(const G3D::Ray& worldRay, G3D::Vector3& worldHitPoint, bool& inside) 
-	{
-		G3D::Ray localRay = body->getPV().position.toObjectSpace(worldRay);
-		G3D::Vector3 localHitPoint;
-
-		if (geometry->hitTest(localRay, localHitPoint, inside))
-		{
-			worldHitPoint = body->getPV().position.pointToWorldSpace(localHitPoint);
-			return true;
-		}
-		else return false;
-	}
-
-	Face Primitive::getFaceInObject(NormalId objectFace)
-	{
-		return Face::fromExtentsSide(getExtentsLocal(), objectFace);
-	}
-
-	Face Primitive::getFaceInWorld(NormalId objectFace)
-	{
-		return getFaceInObject(objectFace).toWorldSpace(body->getPV().position);
-	}
-
-	G3D::CoordinateFrame Primitive::getFaceCoordInObject(NormalId objectFace)
-	{
-		return G3D::CoordinateFrame(normalIdToMatrix3(objectFace), normalIdToVector3(objectFace) * geometry->getGridSize());
-	}
-
-	void Primitive::setSurfaceType(NormalId id, SurfaceType newSurfaceType)
-	{
-		if (surfaceType[id] != newSurfaceType)
-			surfaceType[id] = newSurfaceType;
-	}
-
-	void Primitive::setSurfaceData(NormalId id, const SurfaceData& newSurfaceData)
-	{
-		if (!surfaceData[id] && newSurfaceData.isEmpty())
-			return;
-
-		if (surfaceData[id] && *surfaceData[id] == newSurfaceData)
-			return;
-
-		if (newSurfaceData.isEmpty())
-		{
-			RBXASSERT(surfaceData[id]);
-			delete surfaceData[id];
-			surfaceData[id] = NULL;
-			return;
-		}
-		else if (!surfaceData[id])
-		{
-			surfaceData[id] = new SurfaceData;
-		}
-
-		*surfaceData[id] = newSurfaceData;
-	}
-
-	Edge* Primitive::getFirstEdge() const
-	{
-		return joints.first ? joints.first : contacts.first;
-	}
-
-	Joint* Primitive::getFirstJoint() const
-	{
-		return rbx_static_cast<Joint*>(joints.first);
-	}
-
-	Contact* Primitive::getFirstContact()
-	{
-		return rbx_static_cast<Contact*>(contacts.first);
-	}
-
-	RigidJoint* Primitive::getFirstRigid()
-	{
-		return getFirstRigidAt(getFirstEdge());
-	}
-
-	RigidJoint* Primitive::getNextRigid(RigidJoint* prev)
-	{
-		return getFirstRigidAt(getNextEdge(prev));
-	}
-
-	Geometry* Primitive::newGeometry(Geometry::GeometryType geometryType)
-	{
-		switch (geometryType)
-		{
-			case Geometry::GEOMETRY_BLOCK: return new Block;
-			case Geometry::GEOMETRY_BALL: return new Ball;
-			default: return Geometry::nullGeometry();
-		}
-	}
-
-	void newTouch(Primitive* touch, Primitive* touchOther)
-	{
-		Clump* clumpTouch = touch->getClump();
-		Clump* clumpOTouch = touchOther->getClump();
-
-		RBXASSERT(clumpTouch);
-		RBXASSERT(clumpOTouch);
-
-		if (touch->getOwner()->reportTouches() && 
-			((!clumpTouch->getAnchored() && clumpTouch->getSleepStatus() == Sim::AWAKE) ||
-			(!clumpOTouch->getAnchored() && clumpOTouch->getSleepStatus() == Sim::AWAKE)))
-		{
-			touch->getWorld()->onPrimitiveTouched(touch, touchOther);
-		}
-	};
-
-	void Primitive::onNewTouch(Primitive* p0, Primitive* p1)
-	{
-		newTouch(p0, p1);
-		newTouch(p1, p0);
-	}
-
-	Assembly* Primitive::getAssembly() const 
-	{
-		return clump ? clump->getAssembly() : NULL;
-	}
-
-	void Primitive::setPrimitiveType(Geometry::GeometryType geometryType)
-	{
-		RBXASSERT(geometry->getGeometryType() != Geometry::GEOMETRY_NONE);
-		RBXASSERT(geometryType != Geometry::GEOMETRY_NONE);
-
-		if (geometry->getGeometryType() != geometryType)
-		{
-			G3D::Vector3 oldSize = geometry->getGridSize();
-			if (geometry)
-				delete geometry;
-
-			geometry = newGeometry(geometryType);
-
-			if (world)
-				world->onPrimitiveGeometryTypeChanged(this);
-
-			setGridSize(oldSize);
-			JointK.setDirty();
-		}
-	}
-
-	void Primitive::setCoordinateFrame(const G3D::CoordinateFrame& value)
-	{
-		if (value != body->getPV().position)
-		{
-			Assembly* assembly = getAssembly();
-			if (!assembly)
-			{
-				body->setCoordinateFrame(value);
-				myOwner->notifyMoved();
-				if (world)
-					world->onPrimitiveExtentsChanged(this);
-			}
-			else
-			{
-				RBXASSERT(world);
-				if (assembly->getMainPrimitive() == this)
-				{
-					body->setCoordinateFrame(value);
-					assembly->notifyMoved();
-					world->onAssemblyExtentsChanged(assembly);
-					if (!anchored)
-						world->ticklePrimitive(this);
-				}
-			}
-		}
-	}
-
-	void Primitive::setDragging(bool _dragging)
-	{
-		if (dragging != _dragging)
-		{
-			bool oldDrag = !dragging && canCollide;
-			dragging = _dragging;
-
-			setAnchor(anchored);
-			if (world)
-			{
-				bool newDrag = !dragging && canCollide;
-				if (newDrag != oldDrag)
-					world->onPrimitiveCanCollideChanged(this);
-			}
-		}
-	}
-
-	void Primitive::setAnchor(bool _anchored)
-	{
-		anchored = _anchored;
-
-		bool exists = getAnchor();
-
-		if (_anchored || dragging)
-			_anchored = true;
-
-		if (_anchored == exists)
-			return;
-
-		if (_anchored)
-		{
-			RBXASSERT(!anchorObject);
-			anchorObject = new Anchor(this);
-			if (world)
-				world->onPrimitiveAddedAnchor(this);
-		}
-		else
-		{
-			RBXASSERT(anchorObject);
-			if (world)
-				world->onPrimitiveRemovingAnchor(this);
-			
-			if (anchorObject)
-				delete anchorObject;
-
-			anchorObject = NULL;
-		}
-	}
-
-	void Primitive::setCanCollide(bool value)
-	{
-		bool oldDrag = !dragging && canCollide;
-
-		if (canCollide != value)
-		{
-			canCollide = value;
-			if (world)
-			{
-				bool newDrag = !dragging && value;
-				if (oldDrag != newDrag)
-					world->onPrimitiveCanCollideChanged(this);
-			}
-		}
-	}
-
-	void Primitive::setCanSleep(bool _canSleep)
-	{
-		if (_canSleep != canSleep)
-		{
-			canSleep = _canSleep;
-			if (world)
-				world->onPrimitiveCanSleepChanged(this);
-		}
-	}
-
-	void Primitive::setFriction(float _friction)
-	{
-		if (_friction != friction)
-		{
-			friction = _friction;
-			if (world)
-				world->onPrimitiveContactParametersChanged(this);
-		}
-	}
-
-	void Primitive::setElasticity(float _elasticity)
-	{
-		if (_elasticity != elasticity)
-		{
-			elasticity = _elasticity;
-			if (world)
-				world->onPrimitiveContactParametersChanged(this);
-		}
-	}
-
-	void Primitive::setGridSize(const G3D::Vector3& gridSize) // 100% match when Body::setMoment is set as __declspec(noinline)
-	{
-		G3D::Vector3 protectedSize = clipToSafeSize(gridSize);
-
-		if (protectedSize != geometry->getGridSize())
-		{
-			fuzzyExtentsStateId = -2;
-			geometry->setGridSize(protectedSize);
-
-			float newSize = geometry->getGridVolume();
-			body->setMass(newSize);
-			body->setMoment(geometry->getMoment(newSize));
-			JointK.setDirty();
-
-			if (world)
-				world->onPrimitiveExtentsChanged(this);
-
-			JointK.setDirty();
-		}
-	}
-
-	bool Primitive::aaBoxCollide(const Primitive& p0, const Primitive& p1)
-	{
-		G3D::Vector3 delta = p0.getCoordinateFrame().translation - p1.getCoordinateFrame().translation;
-		float r0 = p0.getRadius();
-		float r1 = p1.getRadius();
-		
-		if (r0 + r1 < Math::longestVector3Component(delta))
-			return false;
-
-		const Extents& f1 = p1.getFastFuzzyExtents();
-		const Extents& f0 = p0.getFastFuzzyExtents();
-		return f0.overlapsOrTouches(f1);
-	}
-
-	Extents Primitive::computeFuzzyExtents() const
-	{
-		Extents ext = Extents::fromCenterCorner(body->getPV().position.translation, geometry->getCenterToCorner(body->getPV().position.rotation));
-		ext.expand(0.01f);
-
-		return ext;
-	}
-
-	void Primitive::setController(Controller* _controller)
-	{
-		if (!_controller)
-			_controller = NullController::getStaticNullController();
-
-		if (controller != _controller)
-			controller = _controller;
-	}
-
-	const Extents& Primitive::getFastFuzzyExtents() const
-	{
-		if (fuzzyExtentsStateId != body->getStateIndex())
-		{
-			fuzzyExtents = computeFuzzyExtents();
-			fuzzyExtentsStateId = body->getStateIndex();
-		}
-
-		return fuzzyExtents;
-	}
-
-	Joint* Primitive::getNextJoint(Joint* prev) const
-	{
-		return rbx_static_cast<Joint*>(prev->getNext(this));
-	}
-
-	Contact* Primitive::getNextContact(Contact* prev)
-	{
-		return rbx_static_cast<Contact*>(prev->getNext(this));
-	}
-
-	Edge* Primitive::getNextEdge(Edge* e) const
-	{
-		Edge* next = e->getNext(this);
-
-		if (next)
-			return next;
-		else
-			return Joint::isJoint(e) ? contacts.first : NULL;
-	}
-
-	Joint* Primitive::getJoint(Primitive* p0, Primitive* p1)
-	{
-		Primitive* least = p0->getNumJoints2() < p1->getNumJoints2() ? p0 : p1;
-
-		for (Joint* current = least->getFirstJoint(); current != NULL; current = least->getNextJoint(current))
-		{
-			if (p0 == current->getPrimitive(0) && p1 == current->getPrimitive(1) || p0 == current->getPrimitive(1) && p1 == current->getPrimitive(0))
-			   return current;
-		}
-		return NULL;
-	}
-
-	Contact* Primitive::getContact(Primitive* p0, Primitive* p1)
-	{
-		Primitive* least = p0->getNumContacts() < p1->getNumContacts() ? p0 : p1;
-
-		for (Contact* current = least->getFirstContact(); current != NULL; current = least->getNextContact(current))
-		{
-			if (p0 == current->getPrimitive(0) && p1 == current->getPrimitive(1) || p0 == current->getPrimitive(1) && p1 == current->getPrimitive(0))
-			   return current;
-		}
-		return NULL;
-	}
-
-	RigidJoint* Primitive::getFirstRigidAt(Edge* start)
-	{
-		for (Edge* current = start; current != NULL; current = getNextEdge(current))
-		{
-			if (RigidJoint::isRigidJoint(current))
-				return rbx_static_cast<RigidJoint*>(current);
-		}
-		return NULL;
-	}
-
-	int Primitive::countNumJoints() const
-	{
-		int counter = 0;
-		for (Joint* current = getFirstJoint(); current != NULL; current = getNextJoint(current))
-		{
-			Joint::JointType type = current->getJointType();
-			if (type != Joint::FREE_JOINT && type != Joint::ANCHOR_JOINT)
-				counter++;
-		}
-		return counter;
-	}
-
-	void Primitive::insertEdge(Edge* e)
-	{
-		Primitive* p0 = e->getPrimitive(0);
-		Primitive* p1 = e->getPrimitive(1);
-
-		if (Joint::isJoint(e))
-		{
-			EdgeList::insertEdge(p0, e, e->getPrimitive(0)->joints);
-
-			if (p1)
-				EdgeList::insertEdge(p1, e, e->getPrimitive(1)->joints);
-			else
-				RBXASSERT(rbx_static_cast<Joint*>(e)->getJointType() == Joint::ANCHOR_JOINT || rbx_static_cast<Joint*>(e)->getJointType() == Joint::FREE_JOINT);
-		}
-		else
-		{
-			EdgeList::insertEdge(p0, e, e->getPrimitive(0)->contacts);
-			EdgeList::insertEdge(p1, e, e->getPrimitive(1)->contacts);
-		}
-	}
-
-	void Primitive::removeEdge(Edge* e)
-	{
-		Primitive* p0 = e->getPrimitive(0);
-		Primitive* p1 = e->getPrimitive(1);
-
-		if (Joint::isJoint(e))
-		{
-			EdgeList::removeEdge(p0, e, e->getPrimitive(0)->joints);
-
-			if (p1)
-				EdgeList::removeEdge(p1, e, e->getPrimitive(1)->joints);
-			else
-				RBXASSERT(rbx_static_cast<Joint*>(e)->getJointType() == Joint::ANCHOR_JOINT || rbx_static_cast<Joint*>(e)->getJointType() == Joint::FREE_JOINT);
-		}
-		else
-		{
-			EdgeList::removeEdge(p0, e, e->getPrimitive(0)->contacts);
-			EdgeList::removeEdge(p1, e, e->getPrimitive(1)->contacts);
-		}
-	}
-
-	void EdgeList::insertEdge(Primitive* p, Edge* e, EdgeList& list)
-	{
-		e->setNext(p, list.first);
-		list.first = e;
-		list.num++;
-	}
-
-	void EdgeList::removeEdge(Primitive* p, Edge* e, EdgeList& list)
-	{
-		Edge* currentEdge = list.first;
-
-		if (list.first == e)
-		{
-			list.first = e->getNext(p);
-		}
-		else
-		{
-			while (currentEdge->getNext(p) != e)
-			{
-				currentEdge = currentEdge->getNext(p);
-			}
-
-			currentEdge->setNext(p, e->getNext(p));
-		}
-
-		list.num--;
-	}
+    x = value.x;
+    y = value.y;
+    z = value.z;
+    return *this;
+}
+
+struct Ray {
+    Vector3 origin;
+    Vector3 direction;
+    virtual ~Ray();
+};
+
+inline Ray::~Ray()
+{
+}
+
+struct Transform {
+    Ray transformRay(const Ray& ray) const;
+    Vector3 transformPoint(const Vector3& point) const;
+};
+
+struct Source {
+    char reserved[0x94];
+    Transform transform;
+    const void* get();
+};
+
+struct Provider {
+    virtual void slot0() = 0;
+    virtual void slot1() = 0;
+    virtual void slot2() = 0;
+    virtual void slot3() = 0;
+    virtual void slot4() = 0;
+    virtual void slot5() = 0;
+    virtual void slot6() = 0;
+    virtual void slot7() = 0;
+    virtual bool intersect(const Ray& ray, Vector3& point, float& limit) = 0;
+};
+
+struct Primitive {
+    char reserved[0x9c];
+    Provider* provider;
+    Source* source;
+    bool func_005e7f20(const Ray& ray, Vector3& point, float& limit);
+};
+
+bool Primitive::func_005e7f20(const Ray& ray, Vector3& point, float& limit)
+{
+    Source* current = source;
+    current->get();
+    Ray localRay = current->transform.transformRay(ray);
+    Vector3 localPoint = { 0.0f, 0.0f, 0.0f };
+
+    if (provider->intersect(localRay, localPoint, limit)) {
+        current = source;
+        current->get();
+        point = current->transform.transformPoint(localPoint);
+        return true;
+    }
+    return false;
 }

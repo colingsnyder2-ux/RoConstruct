@@ -1,161 +1,199 @@
-// from server: 43% by colin
+// from server: 80% by EspClaude
+// from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8xml/SerializerV2.cpp
+// roc-flags: /O2 /GS- /EHsc /MD
+// roc-lib: rbxgs-dll roc_espeon_clipboarddirectrange9f920a6de726796c.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "v8xml/SerializerV2.h"
-#include "v8datamodel/DataModel.h"
-#include <boost/bind.hpp>
 #include <algorithm>
+#include <vector>
+#include <boost/shared_ptr.hpp>
+#include <boost/bind.hpp>
+// from server: 91% by colin
+// roc-cl: 50727
+// roc-flags: /O2 /GS- /EHsc /MD
 
-bool ArchiveBinder::resolveRefs()
+extern "C" void* (__stdcall* GlobalAlloc)(unsigned int, unsigned long);
+extern "C" void* (__stdcall* GlobalLock)(void*);
+extern "C" int (__stdcall* GlobalUnlock)(void*);
+extern "C" int (__stdcall* OpenClipboard)(void*);
+extern "C" int (__stdcall* EmptyClipboard)();
+extern "C" int (__stdcall* CloseClipboard)();
+extern "C" unsigned int (__stdcall* RegisterClipboardFormatA)(const char*);
+extern "C" void* (__stdcall* SetClipboardData)(unsigned int, void*);
+extern "C" char* __cdecl strcpy(char*, const char*);
+#pragma intrinsic(strcpy)
+
+struct Text
 {
-	size_t counts = std::count_if(idrefBindings.begin(), idrefBindings.end(), boost::bind(&ArchiveBinder::resolveIDREF, this, _1));
+    unsigned char storage[20];
+    unsigned int length;
+    unsigned int capacity;
+    ~Text();
+    const char* c_str() const;
+};
 
-	return MergeBinder::resolveRefs() && counts == idrefBindings.size();
+struct Stream
+{
+    unsigned char storage[128];
+    Stream(int, int = 1);
+    ~Stream();
+    __declspec(dllimport) Text str() const;
+};
+
+extern void (__thiscall* constructStream)(Stream*, int, int);
+extern void (__thiscall* destroyStream)(Stream*);
+extern void (__thiscall* extractText)(const Stream*, Text*);
+extern void (__thiscall* destroyText)(Text*);
+extern const char* (__thiscall* textData)(const Text*);
+
+inline Stream::Stream(int mode, int initialize)
+{
+    constructStream(this, mode, initialize);
 }
 
-bool ArchiveBinder::resolveIDREF(IDREFBinding binding)
+inline Stream::~Stream()
 {
-	std::string s;
-	bool success = binding.valueIDREF->getValue(s);
-
-	RBXASSERT(success);
-	RBXASSERT(value_IDREF_nil.name.compare(s));
-	RBXASSERT(value_IDREF_null.name.compare(s));
-	RBXASSERT(s != "");
-
-	std::map<std::string, RBX::InstanceHandle>::iterator found = idMap.find(s);
-	if (found != idMap.end())
-	{
-		RBX::InstanceHandle& foundHandle = found->second;
-		binding.idref->assignIDREF(binding.propertyOwner,foundHandle);
-		return true;
-	}
-	else
-	{
-		binding.idref->assignIDREF(binding.propertyOwner,RBX::InstanceHandle(NULL));
-		return false;
-	}
+    destroyStream(this);
 }
 
-bool ArchiveBinder::processID(const XmlNameValuePair* valueID, RBX::Instance* source)
+inline Text::~Text()
 {
-	if (!MergeBinder::processID(valueID, source))
-	{
-		std::string s;
-		bool success = valueID->getValue(s);
-
-		RBXASSERT(success);
-		RBXASSERT(idMap.find(s) == idMap.end());
-
-		idMap[s] = shared_from(source);
-	}
-
-	return true;
+    destroyText(this);
 }
 
-bool ArchiveBinder::processIDREF(const XmlNameValuePair* valueIDREF, RBX::Reflection::DescribedBase* propertyOwner, const RBX::IIDREF* idref)
+inline const char* Text::c_str() const
 {
-	if (!MergeBinder::processIDREF(valueIDREF, propertyOwner, idref))
-	{
-		IDREFBinding binding = {valueIDREF, propertyOwner, idref};
-		idrefBindings.push_back(binding);
-	}
-
-	return true;
+    return textData(this);
 }
 
-static void buildIsolationMap(XmlElement* element, std::map<RBX::Instance*, RBX::InstanceHandle>& isolationMap)
+struct Resource
 {
-	XmlAttribute* referent = element->findAttribute(name_referent);
-	if (referent)
-	{
-		RBX::InstanceHandle h;
-		bool success = referent->getValue(h);
+    unsigned char storage[36];
+    ~Resource();
+};
 
-		RBXASSERT(success);
-		RBXASSERT(isolationMap.find(h.getTarget().get()) == isolationMap.end());
+struct SerializerBase {
+ virtual void slot();
+ Resource resource;
+ SerializerBase(Stream*);
+};
+struct Serializer:SerializerBase {
+ Serializer(Stream* s):SerializerBase(s) {}
+ virtual void slot();
+ void write(void*);
+};
 
-		isolationMap[h.getTarget().get()] = RBX::InstanceHandle();
-	}
+typedef std::vector<boost::shared_ptr<void> > Selection;
+typedef Selection::iterator Iterator;
 
-	for (XmlElement* child = element->firstChild(); child != NULL; child = element->nextChild(child))
-	{
-		buildIsolationMap(child, isolationMap);
-	}
-}
-
-static void isolate(XmlElement* element, const std::map<RBX::Instance*, RBX::InstanceHandle>& isolationMap)
+struct Document
 {
-	element->replaceHandles(isolationMap);
+    unsigned char reserved[0x154];
+    Selection* selection;
+};
 
-	for (XmlAttribute* attr = element->getFirstAttribute(); attr != NULL; attr = element->getNextAttribute(attr))
-	{
-		attr->replaceHandles(isolationMap);
-	}
-
-	for (XmlElement* elem = element->firstChild(); elem != NULL; elem = element->nextChild(elem))
-	{
-		isolate(elem, isolationMap);
-	}
-}
-
-void SerializerV2::isolateHandles(XmlElement* root)
+struct Owner
 {
-	std::map<RBX::Instance*, RBX::InstanceHandle> isolationMap;
+    Document* document();
+};
 
-	buildIsolationMap(root, isolationMap);
-	isolate(root, isolationMap);
-}
-
-XmlElement* SerializerV2::newRootElement()
+struct Window
 {
-	static const RBX::Name& tag_xmlnsxmime = RBX::Name::declare("xmlns:xmime", -1);
+    unsigned char reserved[0x20];
+    void* handle;
+};
 
-	XmlElement* thisElement = new XmlElement(tag_roblox);
-	thisElement->addAttribute(tag_xmlnsxmime,"http://www.w3.org/2005/05/xmlmime");
-	thisElement->addAttribute(tag_xmlnsxsi,"http://www.w3.org/2001/XMLSchema-instance");
-	thisElement->addAttribute(tag_xsinoNamespaceSchemaLocation,"http://www.roblox.com/roblox.xsd");
-
-	thisElement->addAttribute(tag_version, 4);
-
-	thisElement->pushBackChild(new XmlElement(tag_External, &value_IDREF_null));
-	thisElement->pushBackChild(new XmlElement(tag_External, &value_IDREF_nil));
-
-	return thisElement;
-}
-
-void SerializerV2::load(XmlElement* root, RBX::DataModel* dataModel)
+struct Application
 {
-	ArchiveBinder binder;
-	dataModel->readChildren(root, binder);
+    virtual void slot00();
+    virtual void slot01();
+    virtual void slot02();
+    virtual void slot03();
+    virtual void slot04();
+    virtual void slot05();
+    virtual void slot06();
+    virtual void slot07();
+    virtual void slot08();
+    virtual void slot09();
+    virtual void slot10();
+    virtual void slot11();
+    virtual void slot12();
+    virtual void slot13();
+    virtual void slot14();
+    virtual void slot15();
+    virtual void slot16();
+    virtual void slot17();
+    virtual void slot18();
+    virtual void slot19();
+    virtual void slot20();
+    virtual void slot21();
+    virtual void slot22();
+    virtual void slot23();
+    virtual void slot24();
+    virtual void slot25();
+    virtual void slot26();
+    virtual void slot27();
+    virtual void slot28();
+    virtual void slot29();
+    virtual void slot30();
+    virtual Window* window();
+};
 
-	binder.resolveRefs();
-}
-
-void SerializerV2::loadXML(std::istream& stream, RBX::DataModel* dataModel)
+struct Context
 {
-	TextXmlParser machine(stream.rdbuf());
-	std::auto_ptr<XmlElement> root = machine.parse();
+    void release();
+};
 
-	if (root->getTag() == tag_roblox)
-	{
-		XmlAttribute* version = root->findAttribute(tag_version);
-		if (!version->getValue(schemaVersionLoading))
-			throw std::runtime_error("SerializerV2::loadXML no version number");
+extern Context* __cdecl getContext();
+extern Application* __cdecl getApplication();
+extern void __cdecl freeContext(void*);
+extern void __cdecl copyItem(Context*,boost::shared_ptr<void>);
+extern void* serializerTable;
+extern unsigned long clipboardInitialized;
+extern unsigned int clipboardFormat;
+extern const char clipboardFormatName[];
 
-		if (schemaVersionLoading < 4)
-			throw std::runtime_error("SerializerV2::loadXML schemaVersionLoading<4");
+struct CopyVerb
+{
+    unsigned char reserved[0x20];
+    Owner* owner;
+    void execute(void*);
+};
 
-		load(root.get(), dataModel);
-		dataModel->setDirty(false);
-	}
-	else
-	{
-		schemaVersionLoading = 1;
-		throw std::runtime_error("SerializerV2::loadXML ill-formed XML. No Roblox tag");
-	}
+void CopyVerb::execute(void*)
+{
+    Context* context = getContext();
+    Document* document = owner ? owner->document() : 0;
+    std::for_each(document->selection->begin(),document->selection->end(),boost::bind(copyItem,context,_1));
+
+    Stream stream(2);
+    Serializer serializer(&stream);
+    serializer.write(context);
+
+    if (context)
+    {
+        context->release();
+        freeContext(context);
+    }
+
+    Application* application = getApplication();
+    Window* window = application ? application->window() : 0;
+    if (OpenClipboard(window->handle))
+    {
+        EmptyClipboard();
+        Text text = stream.str();
+        void* memory = GlobalAlloc(2, text.length + 1);
+        char* destination = static_cast<char*>(GlobalLock(memory));
+        strcpy(destination, text.c_str());
+        GlobalUnlock(memory);
+        if (!(clipboardInitialized & 1))
+        {
+            clipboardInitialized |= 1;
+            clipboardFormat = RegisterClipboardFormatA(clipboardFormatName);
+        }
+        SetClipboardData(clipboardFormat, memory);
+        CloseClipboard();
+    }
 }

@@ -1,11 +1,6 @@
-// from server: 88% by sophus
-struct S {
-};
-
-double __cdecl f(void* p) {
-    void** v = (void**)p;
-    void* a = v[1];
-    void* (*fn)(void*) = (void* (*)(void*))v[0];
-    void* r = fn(a);
-    return *(double*)r;
-}
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct Getter45 { double* (*fn)(void*); void* obj; };
+double __cdecl get45(Getter45* g) { return *g->fn(g->obj); }

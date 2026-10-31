@@ -1,601 +1,215 @@
-// from server: 52% by colin
+// from server: 84% by EspClaude
+// from server: 100% by auto
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8xml/XmlSerializer.cpp
+// roc-lib: rbxgs v8datamodel/Lighting.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "v8xml/XmlSerializer.h"
-#include "util/Debug.h"
-#include "util/base64.hpp"
-#include "reflection/type.h"
-#include <G3D/format.h>
-#include <sstream>
+#include "v8datamodel/Lighting.h"
+#include "util/RunStateOwner.h"
 
-class Whitespaces
+namespace RBX
 {
-public:
-	char data[256];
-  
-public:
-	Whitespaces()
+	const char* sLighting = "Lighting";
+
+	static Reflection::PropDescriptor<Lighting, G3D::Color3> desc_AmbientTop("TopAmbientV9", "Appearance", &Lighting::getAmbientTop, &Lighting::setAmbientTop, Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::PropDescriptor<Lighting, G3D::Color3> desc_AmbientBottom("BottomAmbientV9", "Appearance", &Lighting::getAmbientBottom, &Lighting::setAmbientBottom, Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::PropDescriptor<Lighting, G3D::Color3> desc_LightColor("SpotLightV9", "Appearance", &Lighting::getLightColor, &Lighting::setLightColor, Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::PropDescriptor<Lighting, G3D::Color3> desc_ClearColor("ClearColor", "Appearance", &Lighting::getClearColor3, &Lighting::setClearColor3, Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::PropDescriptor<Lighting, std::string> prop_Time("TimeOfDay", "Data", &Lighting::getTimeStr, &Lighting::setTimeStr, Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::PropDescriptor<Lighting, float> prop_GeographicLatitude("GeographicLatitude", "Data", &Lighting::getGeographicLatitude, &Lighting::setGeographicLatitude, Reflection::PropertyDescriptor::STANDARD);
+
+	static Reflection::BoundFuncDesc<Lighting, float(void), 0> prop_GetMoonPhase(&Lighting::getMoonPhase, "GetMoonPhase", Reflection::FunctionDescriptor::AnyCaller);
+	static Reflection::BoundFuncDesc<Lighting, G3D::Vector3(void), 0> prop_GetMoonPosition(&Lighting::getMoonPosition, "GetMoonDirection", Reflection::FunctionDescriptor::AnyCaller);
+	static Reflection::BoundFuncDesc<Lighting, G3D::Vector3(void), 0> prop_GetSunPosition(&Lighting::getSunPosition, "GetSunDirection", Reflection::FunctionDescriptor::AnyCaller);
+	static Reflection::BoundFuncDesc<Lighting, double(void), 0> prop_GetMinutesAfterMidnight(&Lighting::getMinutesAfterMidnight, "GetMinutesAfterMidnight", Reflection::FunctionDescriptor::AnyCaller);
+	static Reflection::BoundFuncDesc<Lighting, void(double), 1> prop_SetMinutesAfterMidnight(&Lighting::setMinutesAfterMidnight, "SetMinutesAfterMidnight", "minutes", Reflection::FunctionDescriptor::AnyCaller);
+
+	Lighting::Lighting()
+		: Base(),
+		  ambientTop(209/255.0f, 208/255.0f, 217/255.0f),
+		  ambientBottom(122/255.0f, 134/255.0f, 120/255.0f),
+		  hasSky(true),
+		  clearColor(G3D::Color3::white()),
+		  timeOfDay(boost::posix_time::duration_from_string("14:00:00"))
 	{
-		data[9] = true;
-		data[10] = true;
-		data[12] = true;
-		data[13] = true;
-		data[32] = true;
+		skyParameters.lightColor = G3D::Color3(152/255.0f, 137/255.0f, 102/255.0f);
+		skyParameters.setTime(timeOfDay.total_seconds());
+		setName("Lighting");
 	}
-};
 
-static Whitespaces whitespaces;
-
-XmlParser::XmlParser(std::streambuf* buffer)
-	: buffer(buffer)
-{
-	
-}
-
-void TextXmlParser::skipWhitespace()
-{
-	while (whitespaces.data[(char)buffer->sgetc()])
-		buffer->sbumpc();
-}
-
-std::string TextXmlParser::readTag()
-{
-	skipWhitespace();
-
-	if ((char)buffer->sbumpc() != '<')
-		throw std::runtime_error("tag expected");
-
-	std::string tag;
-	tag += '<';
-
-	char lastChar;
-	do
+	G3D::Vector3 Lighting::getMoonPosition()
 	{
-		lastChar = buffer->sbumpc();
-		tag += lastChar;
+		return (skyParameters.physicallyCorrect) ? skyParameters.trueMoonPosition : skyParameters.moonPosition;
 	}
-	while (lastChar != '>');
 
-	return tag;
-}
-
-std::string TextXmlParser::readFirstTag()
-{
-	skipWhitespace();
-
-	std::string s;
-	char c = buffer->sbumpc();
-	if (c != '<')
+	G3D::Vector3 Lighting::getSunPosition()
 	{
-		s += c;
-		c = buffer->sbumpc();
-		s += c;
-		c = buffer->sbumpc();
-		s += c;
-		c = buffer->sbumpc();
-		s += c;
-		if (c != '<')
+		return (skyParameters.physicallyCorrect) ? skyParameters.trueSunPosition : skyParameters.sunPosition;
+	}
+
+	void Lighting::replaceSky(Sky* newSky)
+	{
+		while (Sky* currentSky = findFirstChildOfType<Sky>())
 		{
-			for (int i = 0; i != 50; i++)
-			{
-				if (buffer->sgetc() == -1)
-					continue;
-				s += buffer->sbumpc();
-			}
+			currentSky->setParent(NULL);
+		}
 
-			std::string message = "tag expected after Byte-Order-Mark:";
-			message += s;
-			throw std::runtime_error(message);
+		newSky->setParent(this);
+	}
+
+	std::string Lighting::getTimeStr() const
+	{
+		return boost::posix_time::to_simple_string(timeOfDay);
+	}
+
+	void Lighting::setTimeStr(const std::string& value)
+	{
+		setTime(boost::posix_time::duration_from_string(value));
+	}
+
+	void Lighting::setClearColor(G3D::Color4 value)
+	{
+		if (value != clearColor)
+		{
+			clearColor = value;
+
+			raisePropertyChanged(desc_ClearColor);
+			fireLightingChanged(false);
+			RunService* runService = ServiceProvider::find<RunService>(this);
+			if (runService)
+				runService->invalidateRunViews();
 		}
 	}
 
-	std::string tag;
-	tag += c;
-
-	char lastChar;
-	do
+	void Lighting::setLightColor(G3D::Color3 value)
 	{
-		lastChar = buffer->sbumpc();
-		tag += lastChar;
-	}
-	while (lastChar != '>');
-
-	return tag;
-}
-
-std::string decodeString(std::string source)
-{
-	std::string result;
-
-	size_t i = 0;
-	while (i < source.size())
-	{
-		char c = source[i++];
-		if (c == '&')
+		if (value != skyParameters.lightColor)
 		{
-			std::string entity;
-			while (i < source.size())
-			{
-				c = source[i++];
-				if (c == ';')
-					break;
-				entity += c;
-			}
+			skyParameters.lightColor = value;
 
-			if (entity == "lt")
-				result += '<';
-			else if (entity == "gt")
-				result += '>';
-			else if (entity == "amp")
-				result += '&';
-			else if (entity == "quot")
-				result += '"';
-			else if (entity == "apos")
-				result += '\'';
-			else if (entity[0] == '#')
-				result += atoi(entity.substr(1).c_str());
-			else
-				RBXASSERT(0);
-		}
-		else
-		{
-			result += c;
+			raisePropertyChanged(desc_LightColor);
+			fireLightingChanged(false);
+			RunService* runService = ServiceProvider::find<RunService>(this);
+			if (runService)
+				runService->invalidateRunViews();
 		}
 	}
 
-	return result;
-}
-
-std::string TextXmlParser::readText(bool decode)
-{
-	skipWhitespace();
-
-	std::string text;
-	while ((char)buffer->sgetc() != '<')
-		text += buffer->sgetc();
-
-	if (decode)
-		text = decodeString(text);
-
-	return text;
-}
-
-std::string TextXmlParser::removeTag(const std::string& contents, int& index)
-{
-	size_t i = 0;
-	while (whitespaces.data[contents[i]] && i < contents.size())
-		i++;
-
-	size_t j = i;
-	while (!whitespaces.data[contents[j]] && j < contents.size())
-		j++;
-
-	std::string contentsNoTag = contents.substr(i, j - i);
-	index = (int)j + 1;
-
-	return contentsNoTag;
-}
-
-std::string TextXmlParser::findNextToken(const std::string& contents, int& index)
-{
-	size_t i;
-	for (i = index; i < contents.size(); i++)
+	void Lighting::setAmbientBottom(G3D::Color3 value)
 	{
-		if (!whitespaces.data[contents[i]])
-			break;
-	}
-
-	bool inQuotes = false;
-	size_t j = i;
-
-	for (; j < contents.size(); j++)
-	{
-		if (contents[j] == '"')
+		if (value != ambientBottom)
 		{
-			inQuotes = !inQuotes;
-		}
-		else if (!inQuotes && whitespaces.data[contents[j]])
-		{
-			break;
+			ambientBottom = value;
+
+			raisePropertyChanged(desc_AmbientBottom);
+			fireLightingChanged(false);
+			RunService* runService = ServiceProvider::find<RunService>(this);
+			if (runService)
+				runService->invalidateRunViews();
 		}
 	}
 
-	if (j != i)
+	void Lighting::setAmbientTop(G3D::Color3 value)
 	{
-		std::string answer = contents.substr(i, j - i);
-		index = (int)j + 1;
-		return answer;
+		if (value != ambientTop)
+		{
+			ambientTop = value;
+
+			raisePropertyChanged(desc_AmbientTop);
+			fireLightingChanged(false);
+			RunService* runService = ServiceProvider::find<RunService>(this);
+			if (runService)
+				runService->invalidateRunViews();
+		}
 	}
 
-	index = (int)contents.size();
-	return "";
-}
-
-XmlElement* TextXmlParser::parseAttributes(const std::string& currentTag)
-{
-	std::string tagGuts = currentTag.substr(1, currentTag.size() - 2);
-
-	int index = 0;
-	std::string tagName = removeTag(tagGuts, index);
-
-	XmlElement* element = new XmlElement(RBX::Name::lookup(tagName));
-
-	std::string attribute = findNextToken(tagGuts, index);
-	while (attribute.size() > 0)
+	void Lighting::setGeographicLatitude(float value)
 	{
-		size_t equalsSignIndex = attribute.find("=", 0, 1);
-		std::string attributeName = attribute.substr(0, equalsSignIndex);
+		if (value != skyParameters.geoLatitude)
+		{
+			skyParameters.geoLatitude = value;
 
-		size_t startQuoteMarkIndex = attribute.find('\"');
-		size_t endQuoteMarkIndex = attribute.rfind('\"');
-		std::string text = decodeString(attribute.substr(startQuoteMarkIndex + 1, endQuoteMarkIndex - startQuoteMarkIndex - 1));
-
-		element->addAttribute(RBX::Name::lookup(attributeName), text);
-
-		attribute = findNextToken(tagGuts, index);
+			raisePropertyChanged(prop_GeographicLatitude);
+			fireLightingChanged(false);
+			RunService* runService = ServiceProvider::find<RunService>(this);
+			if (runService)
+				runService->invalidateRunViews();
+		}
 	}
 
-	return element;
-}
-
-bool isCloseTag(const std::string& test)
-{
-	if (test.size() >= 2)
-		return test.substr(0, 2) == "</";
-
-	return false;
-}
-
-bool endsWithClose(const std::string& test)
-{
-	if (test.size() >= 2)
-		return test.substr(test.size() - 2, 2) == "/>";
-
-	return false;
-}
-
-std::auto_ptr<XmlElement> TextXmlParser::parse()
-{
-	if (buffer->sgetc() == -1)
-		throw std::runtime_error("TextXmlParser::parse empty file");
-
-	bool firstTag = true;
-	while (true)
+	void Lighting::setTime(const boost::posix_time::time_duration& value)
 	{
-		std::string currentTag;
-		if (firstTag)
+		int totalSeconds = value.total_seconds();
+		totalSeconds -= (totalSeconds / 86400) * 86400;
+
+		if (timeOfDay.total_seconds() != totalSeconds)
 		{
-			firstTag = false;
-			currentTag = readFirstTag();
-			if (currentTag.substr(0, 2) == "<?")
-				continue;
-		}
-		else
-		{
-			currentTag = readTag();
-		}
+			timeOfDay = boost::posix_time::seconds(totalSeconds);
+			skyParameters.setTime(timeOfDay.total_seconds());
 
-		XmlElement* currentElement = elements.empty() ? NULL : elements.top();
-		if (isCloseTag(currentTag))
-		{
-			if (!currentElement)
-				throw std::runtime_error(G3D::format("TextXmlParser::parse - Got close tag %s without open tag.", currentTag.c_str()));
-
-			elements.pop();
-			if (elements.empty())
-				return std::auto_ptr<XmlElement>(currentElement);
-		}
-		else
-		{
-			XmlElement* newElement = parseAttributes(currentTag);
-			elements.push(newElement);
-
-			if (newElement->getTag() == RBX::Reflection::Type::singleton<RBX::ContentId>().tag)
-			{
-				bool isXsiNil;
-				const XmlAttribute* xsiNilAttribute = newElement->findAttribute(name_xsinil);
-				if (xsiNilAttribute && xsiNilAttribute->getValue(isXsiNil) && !isXsiNil)
-				{
-					if (readText(false) == "")
-					{
-						const RBX::Name* mimeType;
-						const XmlAttribute* mimeTypeAttribute = newElement->findAttribute(tag_mimeType);
-						if (mimeTypeAttribute)
-							mimeTypeAttribute->getValue(mimeType);
-						else
-							mimeType = &RBX::Name::getNullName();
-
-						std::string contentChild = readTag();
-						std::string tagName = contentChild.substr(1, contentChild.size() - 2);
-
-						if (tagName.substr(0, 6) == "binary")
-						{
-							std::stringbuf encoded(readText(false), std::ios_base::in);
-							std::stringstream decoded;
-
-							int ioStatus = 0;
-							base64<char> decoder;
-							decoder.get(
-								std::istreambuf_iterator<char>(&encoded),
-								std::istreambuf_iterator<char>(),
-								std::ostreambuf_iterator<char>(decoded),
-								ioStatus);
-
-							decoded.flush();
-
-							RBX::ContentId contentId = RBX::ContentProvider::singleton().registerContent(decoded, *mimeType);
-							newElement->setValue(contentId);
-						}
-						else if (tag_hash == tagName)
-						{
-							std::string name = readText(false);
-							newElement->setValue(RBX::ContentId(name.c_str(), *mimeType));
-						}
-						else if (tagName.substr(0, 3) == "url")
-						{
-							std::string url = readText(true);
-							newElement->setValue(RBX::ContentId(url.c_str(), *mimeType));
-						}
-						else if (tag_null == tagName)
-						{
-							newElement->setValue(RBX::ContentId());
-						}
-						else
-						{
-							throw std::runtime_error(G3D::format("TextXmlParser::parse - Unknown tag '%s'.", tagName.substr(0, 32).c_str()));
-						}
-
-						std::string closingTag = readTag();
-						if (!isCloseTag(closingTag))
-							throw std::runtime_error(G3D::format("TextXmlParser::parse - '%s' should be a closing tag", tagName.substr(0, 32).c_str()));
-					}
-				}
-			}
-			else
-			{
-				newElement->setValue(readText(true));
-			}
-
-			currentElement->pushBackChild(newElement);
-
-			if (endsWithClose(currentTag))
-				elements.pop();
+			raisePropertyChanged(prop_Time);
+			fireLightingChanged(false);
+			RunService* runService = ServiceProvider::find<RunService>(this);
+			if (runService)
+				runService->invalidateRunViews();
 		}
 	}
-}
 
-XmlWriter::XmlWriter(std::ostream& stream)
-	: stream(stream)
-{
-}
-
-int XmlWriter::getHandleIndex(RBX::InstanceHandle h)
-{
-	std::map<RBX::InstanceHandle, int>::iterator iter = handles.find(h);
-	if (iter == handles.end())
+	double Lighting::getMinutesAfterMidnight()
 	{
-		int index = (int)handles.size();
-		handles[h] = index;
-		return index;
-	}
-	else
-	{
-		return iter->second;
-	}
-}
-
-void TextXmlWriter::writeOpenTag(const XmlElement* element, int depth, const XmlAttribute* extraAttribute)
-{
-	for (int i = 0; i < depth; i++)
-		stream << '\t';
-
-	stream << '<' << element->getTag().name;
-
-	for (const XmlAttribute* attribute = element->getFirstAttribute(); attribute != NULL; attribute = attribute->nextSibling())
-	{
-		stream << ' ' << attribute->getTag().name << "=\"";
-		encodedWrite(stream, attribute->toString(this));
-		stream << '\"';
+		return timeOfDay.total_milliseconds() / 60000.0;
 	}
 
-	if (extraAttribute)
+	void Lighting::setMinutesAfterMidnight(double value)
 	{
-		stream << ' ' << extraAttribute->getTag().name << "=\"";
-		encodedWrite(stream, extraAttribute->toString(this));
-		stream << '\"';
+		setTime(boost::posix_time::seconds(value * 60.0));
 	}
 
-	stream << '>';
-}
-
-void TextXmlWriter::writeCloseTag(const XmlElement* element, int depth)
-{
-	for (int i = 0; i < depth; i++)
-		stream << '\t';
-
-	stream << "</" << element->getTag().name << '>';
-}
-
-void TextXmlWriter::serializeNode(const XmlElement* xmlNode, int depth)
-{
-	if (xmlNode->isValueType<RBX::ContentId>())
+	void Lighting::onChildAdded(Instance* child)
 	{
-		writeOpenTag(xmlNode, depth, NULL);
+		Sky* newSky = dynamic_cast<Sky*>(child);
 
-		RBX::ContentId contentId;
-		xmlNode->getValue(contentId);
-		if (contentId.isNull())
+		if (newSky)
 		{
-			stream << "<null></null>";
-		}
-		else
-		{
-			stream << "<hash>";
-			stream << xmlNode->toString(this);
-			stream << "</hash>";
+			sky = shared_from(newSky);
+
+			fireLightingChanged(true);
+			RunService* runService = ServiceProvider::find<RunService>(this);
+			if (runService)
+				runService->invalidateRunViews();
 		}
 	}
-	else
-	{
-		writeOpenTag(xmlNode, depth, NULL);
-		encodedWrite(stream, xmlNode->toString(this));
-	}
-}
 
-void TextXmlWriter::serialize(const XmlElement* xmlNode)
-{
-	serialize(xmlNode, 0);
-}
-
-void TextXmlWriter::serialize(const XmlElement* xmlNode, int depth)
-{
-	if (xmlNode)
+	void Lighting::onChildRemoving(Instance* child)
 	{
-		serializeNode(xmlNode, depth);
-		if (xmlNode->firstChild())
+		if (sky.get() == child)
 		{
-			for (const XmlElement* child = xmlNode->firstChild(); child != NULL; child = child->nextSibling())
-			{
-				stream << '\n';
-				serialize(child, depth + 1);
-			}
-			stream << '\n';
-			writeCloseTag(xmlNode, depth);
-		}
-		else
-		{
-			writeCloseTag(xmlNode, 0);
+			sky.reset();
+
+			fireLightingChanged(true);
+			RunService* runService = ServiceProvider::find<RunService>(this);
+			if (runService)
+				runService->invalidateRunViews();
 		}
 	}
-}
 
-void TextXmlWriter::encodedWrite(std::ostream& stream, const std::string& text)
-{
-	encodedWrite(stream, text.c_str());
-}
-
-void TextXmlWriter::encodedWrite(std::ostream& stream, const char* text)
-{
-	size_t len = strlen(text);
-	for (size_t i = 0; i != len; ++i)
+	void Lighting::onChildChanged(Instance* instance, const PropertyChanged& event)
 	{
-		unsigned char c = *text++;
-		if (c == '<')
+		Instance::onChildChanged(instance, event);
+		if (sky.get() == instance)
 		{
-			stream << "&lt;";
-		}
-		else if (c == '>')
-		{
-			stream << "&gt;";
-		}
-		else if (c == '&')
-		{
-			stream << "&amp;";
-		}
-		else if (c == '"')
-		{
-			stream << "&quot;";
-		}
-		else if (c == '\'')
-		{
-			stream << "&apos";
-		}
-		else if (c >= ' ' && c <= '~') // every other printable character
-		{
-			stream << c;
-		}
-		else
-		{
-			char buffer[8];
-			sprintf(buffer, "&#%d;", c);
-			stream << buffer;
+			fireLightingChanged(true);
+
+			RunService* runService = ServiceProvider::find<RunService>(this);
+			if (runService)
+				runService->invalidateRunViews();
 		}
 	}
-}
 
-void TextXmlWriterWithEmbeddedContent::serializeNode(const XmlElement* xmlNode, int depth)
-{
-	if (xmlNode->isValueType<RBX::ContentId>())
+	bool Lighting::askAddChild(const Instance* instance) const
 	{
-		RBX::ContentId contentId;
-		xmlNode->getValue(contentId);
-
-		if (contentId.mimeType() == RBX::Name::getNullName())
-		{
-			writeOpenTag(xmlNode, depth, NULL);
-		}
-		else
-		{
-			XmlAttribute mimeTypeAttribute(tag_mimeType, contentId.mimeType().c_str());
-			writeOpenTag(xmlNode, depth, &mimeTypeAttribute);
-		}
-
-		if (!xmlNode->findAttribute(name_xsinil))
-		{
-			if (contentId.isNull())
-			{
-				stream << "<null></null>";
-			}
-			else
-			{
-				if (contentId.isAsset() || contentId.isHttp())
-				{
-					stream << "<url>";
-					TextXmlWriter::encodedWrite(stream, contentId.toString());
-					stream << "</url>";
-				}
-				else if (embeddedContent.find(contentId) == embeddedContent.end())
-				{
-					embeddedContent.insert(contentId);
-
-					std::auto_ptr<std::istream> contentStream;
-
-					try
-					{
-						contentStream = RBX::ContentProvider::singleton().getContent(contentId);
-
-						if (contentId.mimeType() == RBX::Name::getNullName())
-						{
-							stream << "<binary>";
-						}
-						else
-						{
-							stream << "<binary xmime:contentType=\"" << contentId.mimeType().c_str() << "\">";
-						}
-
-						std::istreambuf_iterator<char> _From(contentStream->rdbuf());
-						std::istreambuf_iterator<char> _To;
-						std::ostreambuf_iterator<char> _Out(stream.rdbuf());
-						int _State;
-
-						base64<char> encoder;
-						encoder.put(_From, _To, _Out, _State, base64<>::crlf());
-
-						stream << "</binary>";
-					}
-					catch (std::exception&)
-					{
-						goto hash;
-					}
-				}
-				else
-				{
-hash:
-					embeddedContent.insert(contentId);
-
-					stream << "<hash>";
-					stream << xmlNode->toString(this);
-					stream << "</hash>";
-				}
-			}
-		}
-	}
-	else
-	{
-		TextXmlWriter::serializeNode(xmlNode, depth);
+		return dynamic_cast<const Sky*>(instance) != NULL;
 	}
 }

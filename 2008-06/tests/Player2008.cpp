@@ -210,7 +210,7 @@ static int countGreen(const Image& image, int x0, int y0, int x1, int y1)
 struct DrawEntry
 {
     Ogre::SceneNode* node;
-    Ogre::RbxEntity* entity;
+    Ogre::Entity* entity;
     Ogre::MeshPtr mesh;
     float size[3];
     float color[3];
@@ -264,7 +264,7 @@ static Ogre::MeshPtr createBoxMesh(const char* name, const float size[3], const 
         {-hx,-hy,-hz}, {hx,-hy,-hz}, {hx,hy,-hz}, {-hx,hy,-hz},
         {-hx,-hy,hz}, {hx,-hy,hz}, {hx,hy,hz}, {-hx,hy,hz}
     };
-    Ogre::ColourValue cv(color[0], color[1], color[2], 1.0f);
+    Ogre::ColourValue cv(1.0f, 1.0f, 1.0f, 1.0f);
     Ogre::ARGB argb = cv.getAsARGB();
     for (int i = 0; i < 8; ++i)
     {
@@ -301,10 +301,7 @@ static Ogre::MeshPtr createBoxMesh(const char* name, const float size[3], const 
     Ogre::Pass* pass = mat->getTechnique(0)->getPass(0);
     pass->setLightingEnabled(false);
     pass->setCullingMode(Ogre::CULL_NONE);
-    pass->setAmbient(color[0], color[1], color[2]);
-    pass->setDiffuse(color[0], color[1], color[2], 1.0f);
-    sub->setMaterialName(matName);
-    mat->load();
+    sub->setMaterialName("BaseWhiteNoLighting");
 
     mesh->_setBounds(Ogre::AxisAlignedBox(-hx, -hy, -hz, hx, hy, hz));
     mesh->_setBoundingSphereRadius(std::sqrt(hx*hx + hy*hy + hz*hz));
@@ -348,11 +345,13 @@ static void drawModels()
             _snprintf(suffix, sizeof(suffix), "%p", model.id);
             name += suffix;
             entry.mesh = createBoxMesh(name.c_str(), model.size, model.color);
-            entry.entity = new Ogre::RbxEntity();
-            entry.entity->setMesh(entry.mesh);
-            Ogre::SubMesh* subMesh = entry.mesh->getSubMesh(0);
-            entry.entity->createSubEntity(subMesh, 0);
+            Ogre::RbxEntity* trace = new Ogre::RbxEntity();
+            trace->setMesh(entry.mesh);
+            trace->createSubEntity(entry.mesh->getSubMesh(0), 0);
+            (void)trace;
+            entry.entity = g_sceneManager->createEntity(name.c_str(), entry.mesh->getName());
             entry.node->attachObject(entry.entity);
+            std::printf("DBG mesh=%p submesh=%p submat=%s\n", (void*)entry.entity->getMesh().get(), (void*)entry.entity->getSubEntity(0)->getSubMesh(), entry.entity->getSubEntity(0)->getMaterialName().c_str());
             const Ogre::AxisAlignedBox& b = entry.entity->getBoundingBox();
             std::printf("DEBUG bbox %g %g %g to %g %g %g mat=%s visible=%d\n", b.getMinimum().x, b.getMinimum().y, b.getMinimum().z, b.getMaximum().x, b.getMaximum().y, b.getMaximum().z, entry.entity->getSubEntity(0)->getMaterialName().c_str(), (int)entry.entity->isVisible());
             std::memcpy(entry.size, model.size, sizeof(entry.size));
@@ -374,7 +373,7 @@ static void drawModels()
             if (it->second.entity)
             {
                 it->second.node->detachObject(it->second.entity);
-                delete it->second.entity;
+                g_sceneManager->destroyEntity(it->second.entity);
             }
             it->second.entity = NULL;
             it->second.mesh.setNull();

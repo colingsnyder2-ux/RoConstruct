@@ -1,108 +1,56 @@
-// from server: 63% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+// from server: 100% by EspClaude
+// from server: 100% by tester
+// roc 2008-06 00640300  unit: RBX::GameTool  size: 96 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 00640300
+//
+// 00640300  6aff                 push -1
+// 00640302  683bf47b00           push 0x7bf43b
+// 00640307  64a100000000         mov eax, dword ptr fs:[0]
+// 0064030d  50                   push eax
+// 0064030e  64892500000000       mov dword ptr fs:[0], esp
+// 00640315  51                   push ecx
+// 00640316  56                   push esi
+// 00640317  6a38                 push 0x38
+// 00640319  8bf1                 mov esi, ecx
+// 0064031b  e800060600           call 0x6a0920
+// 00640320  83c404               add esp, 4
+// 00640323  89442404             mov dword ptr [esp + 4], eax
+// 00640327  c744241000000000     mov dword ptr [esp + 0x10], 0
+// 0064032f  85c0                 test eax, eax
+// 00640331  741b                 je 0x64034e
+// 00640333  8b4e18               mov ecx, dword ptr [esi + 0x18]
+// 00640336  51                   push ecx
+// 00640337  8bc8                 mov ecx, eax
+// 00640339  e842ffffff           call 0x640280
+// 0064033e  5e                   pop esi
+// 0064033f  8b4c2404             mov ecx, dword ptr [esp + 4]
+// 00640343  64890d00000000       mov dword ptr fs:[0], ecx
+// 0064034a  83c410               add esp, 0x10
+// 0064034d  c3                   ret 
+// 0064034e  8b4c2408             mov ecx, dword ptr [esp + 8]
+// 00640352  33c0                 xor eax, eax
+// 00640354  5e                   pop esi
+// 00640355  64890d00000000       mov dword ptr fs:[0], ecx
+// 0064035c  83c410               add esp, 0x10
+// 0064035f  c3                   ret 
 
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
+void* __cdecl operator new(unsigned int);
+void __cdecl operator delete(void*);
 
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
+struct Context;
 
-boost::mutex& moo2()
+struct Tool {
+    char storage[56];
+    Tool(Context* context);
+};
+
+struct Verb {
+    char padding[24];
+    Context* context;
+    Tool* create();
+};
+
+Tool* Verb::create()
 {
-	static boost::mutex mutex2;
-	return mutex2;
-}
-
-void initMoo()
-{
-	moo2();
-}
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
+    return new Tool(context);
 }

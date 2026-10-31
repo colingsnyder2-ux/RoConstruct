@@ -1,91 +1,57 @@
-// from server: 42% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-view MaterialFactory.cpp
+// from server: 95% by EspClaude
+// from server: 100% by king_originala
+// roc 2008-06 004e6b50  unit: RBX::ViewNew::PartChunk  size: 61 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 004e6b50
+//
+// 004e6b50  51                   push ecx
+// 004e6b51  56                   push esi
+// 004e6b52  57                   push edi
+// 004e6b53  8bf9                 mov edi, ecx
+// 004e6b55  83bfcc00000000       cmp dword ptr [edi + 0xcc], 0
+// 004e6b5c  c744240800000000     mov dword ptr [esp + 8], 0
+// 004e6b64  7507                 jne 0x4e6b6d
+// 004e6b66  8b07                 mov eax, dword ptr [edi]
+// 004e6b68  8b5028               mov edx, dword ptr [eax + 0x28]
+// 004e6b6b  ffd2                 call edx
+// 004e6b6d  8b742410             mov esi, dword ptr [esp + 0x10]
+// 004e6b71  c70600000000         mov dword ptr [esi], 0
+// 004e6b77  8b87cc000000         mov eax, dword ptr [edi + 0xcc]
+// 004e6b7d  50                   push eax
+// 004e6b7e  8bce                 mov ecx, esi
+// 004e6b80  e81b240b00           call 0x598fa0
+// 004e6b85  5f                   pop edi
+// 004e6b86  8bc6                 mov eax, esi
+// 004e6b88  5e                   pop esi
+// 004e6b89  59                   pop ecx
+// 004e6b8a  c20400               ret 4
 
-// Candidate translation unit (score above; library headers required).
-#include "MaterialFactory.h"
-#include "util/ContentProvider.h"
+struct Chunk;
 
-static const float specular = 0.9f;
-static const float shiny = 50.0f;
+struct ChunkVTable {
+    void *unused[10];
+    void (__thiscall *initialize)(Chunk *);
+};
 
-namespace RBX
+struct StrongPointer {
+    void *value;
+    void assign(void *);
+};
+
+struct Chunk {
+    ChunkVTable *vtable;
+    unsigned char padding[200];
+    void *cached;
+    StrongPointer get();
+};
+
+StrongPointer Chunk::get()
 {
-	namespace View
-	{
-		MaterialFactory::MaterialFactory(G3D::TextureManager* textureManager)
-		{
-			surfacesTexture = new Render::TextureProxy(*textureManager, ContentProvider::singleton().getAssetFile("textures\\surfaces.png"), true);
-			fileMeshTexture = new Render::TextureProxy(*textureManager, ContentProvider::singleton().getAssetFile("textures\\JohnTex.png"), false);
-			megaTexture = new MegaTextureProxy(*textureManager, ContentProvider::singleton().getAssetFile("textures\\SurfacesStrip.png"));
-		}
+    volatile int temporary = 0;
+    if (cached == 0)
+        vtable->initialize(this);
 
-		G3D::ReferenceCountedPointer<Render::Material> MaterialFactory::getMaterial(Attributes attributes)
-		{
-			G3D::ReferenceCountedPointer<Render::Material> material;
-
-			std::map<Attributes, G3D::WeakReferenceCountedPointer<Render::Material>>::iterator iter = database.find(attributes);
-			if (iter != database.end())
-			{
-				material = iter->second.createStrongPtr();
-			}
-
-			if (material.isNull())
-			{
-				G3D::Color3 color3 = attributes.color.color3();
-				G3D::ReferenceCountedPointer<Render::TextureProxy> surfacesTexture = getSurfacesTexture(color3);
-
-				material = new Render::Material;
-				if (attributes.transparency == 1.0f)
-				{
-					material->appendEmptyLevel();
-				}
-				else
-				{
-					material->appendLevel(surfacesTexture, G3D::Color3::WHITE, specular, shiny, attributes.reflectance, attributes.transparency);
-				}
-
-				database[attributes] = material;
-			}
-
-			return material;
-		}
-
-		G3D::ReferenceCountedPointer<Render::Material> MaterialFactory::getMegaMaterial(Attributes attributes)
-		{
-			Attributes filteredAttributes = {BrickColor::defaultColor(), attributes.transparency, attributes.reflectance};
-
-			G3D::ReferenceCountedPointer<Render::Material> material;
-
-			std::map<Attributes, G3D::WeakReferenceCountedPointer<Render::Material>>::iterator iter = megaDatabase.find(filteredAttributes);
-			if (iter != megaDatabase.end())
-			{
-				material = iter->second.createStrongPtr();
-			}
-
-			if (material.isNull())
-			{
-				material = new Render::Material;
-				if (attributes.transparency == 1.0f)
-				{
-					material->appendEmptyLevel();
-				}
-				else
-				{
-					material->appendLevel(megaTexture, G3D::Color3::white(), specular, shiny, attributes.reflectance, attributes.transparency);
-				}
-
-				megaDatabase[filteredAttributes] = material;
-			}
-
-			return material;
-		}
-
-		G3D::ReferenceCountedPointer<Render::TextureProxy> MaterialFactory::getSurfacesTexture(G3D::Color3 tint)
-		{
-			return surfacesTexture->shade(tint, NULL);
-		}
-	}
+    StrongPointer result;
+    result.value = 0;
+    result.assign(cached);
+    return result;
 }

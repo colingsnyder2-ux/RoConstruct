@@ -1,10 +1,21 @@
-// from server: 23% by colin
+// from server: 98% by EspClaude
+// from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8kernel/Pair.cpp
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
+// roc-lib: rbxgs-dll roc_geopair_native_family_e0c506f05a63ac15.cpp
 
 // Candidate translation unit (score above; library headers required).
+#undef _RELEASEASSERT
+#include "v8kernel/Pair.h"
+namespace RBX {
+// Real public fast accessor, genuine2016 Body.h: cached PV, assertion only.
+// Native6136a0 loads coordinate frame directly at94; no updatePV call.
+class PairBodyApi {
+public:
+ const PV& getPvFast() const { return *(const PV*)((const char*)this+0x94); }
+};
+}
 #include "v8kernel/Pair.h"
 #include "util/Math.h"
 #include "util/Debug.h"
@@ -21,8 +32,8 @@ namespace RBX
 
 	void GeoPair::computeNormalPerpVel(float& normalVel, G3D::Vector3& perpVel, const PairParams& _params)
 	{
-		G3D::Vector3 body0Velocity = this->body0->getPV().linearVelocityAtPoint(_params.position);
-		G3D::Vector3 body1Velocity = this->body1->getPV().linearVelocityAtPoint(_params.position);
+		G3D::Vector3 body0Velocity = ((PairBodyApi*)this->body0)->getPvFast().linearVelocityAtPoint(_params.position);
+		G3D::Vector3 body1Velocity = ((PairBodyApi*)this->body1)->getPvFast().linearVelocityAtPoint(_params.position);
 		body1Velocity -= body0Velocity;
 
 		float body1VelDot = _params.normal.dot(body1Velocity);
@@ -40,8 +51,8 @@ namespace RBX
 
 	void GeoPair::computeBallBall(PairParams& _params)
 	{
-		const PV& body0PV = this->body0->getPV();
-		const PV& body1PV = this->body1->getPV();
+		const PV& body0PV = ((PairBodyApi*)this->body0)->getPvFast();
+		const PV& body1PV = ((PairBodyApi*)this->body1)->getPvFast();
 
 		const G3D::Vector3& body0Trans = body0PV.position.translation;
 		const G3D::Vector3& body1Trans = body1PV.position.translation;
@@ -53,8 +64,8 @@ namespace RBX
 
 	void GeoPair::computeBallPoint(PairParams& _params)
 	{
-		const G3D::Vector3& body0Trans = this->body0->getPV().position.translation;
-		const G3D::CoordinateFrame& body1Pos = this->body1->getPV().position;
+		const G3D::Vector3& body0Trans = ((PairBodyApi*)this->body0)->getPvFast().position.translation;
+		const G3D::CoordinateFrame& body1Pos = ((PairBodyApi*)this->body1)->getPvFast().position;
 
 		const G3D::Vector3& myoffset1 = *this->offset1;
 		_params.position = body1Pos.pointToWorldSpace(myoffset1);
@@ -69,8 +80,8 @@ namespace RBX
 
 	void GeoPair::computeBallEdge(PairParams& _params)
 	{
-		const G3D::Vector3& body0PV = this->body0->getPV().position.translation;
-		const G3D::CoordinateFrame& body1PV = this->body1->getPV().position;
+		const G3D::Vector3& body0PV = ((PairBodyApi*)this->body0)->getPvFast().position.translation;
+		const G3D::CoordinateFrame& body1PV = ((PairBodyApi*)this->body1)->getPvFast().position;
 		const G3D::Vector3& myoffset1 = *this->offset1;
 		const G3D::Vector3& worldPoint = body1PV.pointToWorldSpace(myoffset1);
 
@@ -84,8 +95,8 @@ namespace RBX
 
 	void GeoPair::computeBallPlane(RBX::PairParams& _params)
 	{
-		const G3D::Vector3& body0PV = this->body0->getPV().position.translation;
-		const G3D::CoordinateFrame& body1PV = this->body1->getPV().position;
+		const G3D::Vector3& body0PV = ((PairBodyApi*)this->body0)->getPvFast().position.translation;
+		const G3D::CoordinateFrame& body1PV = ((PairBodyApi*)this->body1)->getPvFast().position;
 		const G3D::Vector3& myoffset1 = *this->offset1;
 		const G3D::Vector3& worldPoint = body1PV.pointToWorldSpace(myoffset1);
 
@@ -101,8 +112,8 @@ namespace RBX
 
 	void GeoPair::computePointPlane(RBX::PairParams& _params)
 	{
-		_params.position = this->body0->getPV().position.pointToWorldSpace(*offset0);
-		const G3D::CoordinateFrame& body1PV = this->body1->getPV().position;
+		_params.position = ((PairBodyApi*)this->body0)->getPvFast().position.pointToWorldSpace(*offset0);
+		const G3D::CoordinateFrame& body1PV = ((PairBodyApi*)this->body1)->getPvFast().position;
 		G3D::Vector3 body1worldSpace = body1PV.pointToWorldSpace(*offset1);
 		_params.normal = -Math::getWorldNormal(this->pairData.normalID1, body1PV);
 		_params.length = _params.normal.dot(body1worldSpace - _params.position);
@@ -119,8 +130,8 @@ namespace RBX
 	
 	void GeoPair::computeEdgeEdgePlane(RBX::PairParams& _params)
 	{
-		const G3D::CoordinateFrame& body0PV = this->body0->getPV().position;
-		const G3D::CoordinateFrame& body1PV = this->body1->getPV().position;
+		const G3D::CoordinateFrame& body0PV = ((PairBodyApi*)this->body0)->getPvFast().position;
+		const G3D::CoordinateFrame& body1PV = ((PairBodyApi*)this->body1)->getPvFast().position;
 
 		//world space defines
 		G3D::Vector3 body0worldSpace = body0PV.pointToWorldSpace(*this->offset0);
@@ -151,8 +162,8 @@ namespace RBX
 
 	void GeoPair::computeEdgeEdge(RBX::PairParams& _params)
 	{
-		const G3D::CoordinateFrame& body0coord = this->body0->getPV().position;
-		const G3D::CoordinateFrame& body1coord = this->body1->getPV().position;
+		const G3D::CoordinateFrame& body0coord = ((PairBodyApi*)this->body0)->getPvFast().position;
+		const G3D::CoordinateFrame& body1coord = ((PairBodyApi*)this->body1)->getPvFast().position;
 
 		//world space defines
 		G3D::Vector3 body0worldSpace = body0coord.pointToWorldSpace(*this->offset0);

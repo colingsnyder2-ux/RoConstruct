@@ -1,601 +1,300 @@
-// from server: 46% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8xml/XmlSerializer.cpp
+// from server: 99% by EspClaude
+// from server: 100% by EspClaude
+// roc 2008-06 0044f8d0  unit: CRobloxDoc  size: 213 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 0044f8d0
+//
+// 0044f8d0  6aff                 push -1
+// 0044f8d2  6868917d00           push 0x7d9168
+// 0044f8d7  64a100000000         mov eax, dword ptr fs:[0]
+// 0044f8dd  50                   push eax
+// 0044f8de  64892500000000       mov dword ptr fs:[0], esp
+// 0044f8e5  83ec08               sub esp, 8
+// 0044f8e8  53                   push ebx
+// 0044f8e9  56                   push esi
+// 0044f8ea  57                   push edi
+// 0044f8eb  8bf9                 mov edi, ecx
+// 0044f8ed  8b8f94000000         mov ecx, dword ptr [edi + 0x94]
+// 0044f8f3  8d44240c             lea eax, [esp + 0xc]
+// 0044f8f7  50                   push eax
+// 0044f8f8  e843b00100           call 0x46a940
+// 0044f8fd  8b30                 mov esi, dword ptr [eax]
+// 0044f8ff  6a01                 push 1
+// 0044f901  56                   push esi
+// 0044f902  c744242400000000     mov dword ptr [esp + 0x24], 0
+// 0044f90a  e851650400           call 0x495e60
+// 0044f90f  83c408               add esp, 8
+// 0044f912  84c0                 test al, al
+// 0044f914  740f                 je 0x44f925
+// 0044f916  6a01                 push 1
+// 0044f918  56                   push esi
+// 0044f919  e852650400           call 0x495e70
+// 0044f91e  83c408               add esp, 8
+// 0044f921  84c0                 test al, al
+// 0044f923  7402                 je 0x44f927
+// 0044f925  b001                 mov al, 1
+// 0044f927  8b742410             mov esi, dword ptr [esp + 0x10]
+// 0044f92b  84c0                 test al, al
+// 0044f92d  0f94c3               sete bl
+// 0044f930  c744241cffffffff     mov dword ptr [esp + 0x1c], 0xffffffff
+// 0044f938  85f6                 test esi, esi
+// 0044f93a  742a                 je 0x44f966
+// 0044f93c  8d4e04               lea ecx, [esi + 4]
+// 0044f93f  83caff               or edx, 0xffffffff
+// 0044f942  f00fc111             lock xadd dword ptr [ecx], edx
+// 0044f946  751e                 jne 0x44f966
+// 0044f948  8b06                 mov eax, dword ptr [esi]
+// 0044f94a  8b5004               mov edx, dword ptr [eax + 4]
+// 0044f94d  8bce                 mov ecx, esi
+// 0044f94f  ffd2                 call edx
+// 0044f951  8d4608               lea eax, [esi + 8]
+// 0044f954  83c9ff               or ecx, 0xffffffff
+// 0044f957  f00fc108             lock xadd dword ptr [eax], ecx
+// 0044f95b  7509                 jne 0x44f966
+// 0044f95d  8b16                 mov edx, dword ptr [esi]
+// 0044f95f  8b4208               mov eax, dword ptr [edx + 8]
+// 0044f962  8bce                 mov ecx, esi
+// 0044f964  ffd0                 call eax
+// 0044f966  84db                 test bl, bl
+// 0044f968  7416                 je 0x44f980
+// 0044f96a  5f                   pop edi
+// 0044f96b  5e                   pop esi
+// 0044f96c  33c0                 xor eax, eax
+// 0044f96e  5b                   pop ebx
+// 0044f96f  8b4c2408             mov ecx, dword ptr [esp + 8]
+// 0044f973  64890d00000000       mov dword ptr fs:[0], ecx
+// 0044f97a  83c414               add esp, 0x14
+// 0044f97d  c20800               ret 8
+// 0044f980  8b4c2428             mov ecx, dword ptr [esp + 0x28]
+// 0044f984  8b542424             mov edx, dword ptr [esp + 0x24]
+// 0044f988  51                   push ecx
+// 0044f989  52                   push edx
+// 0044f98a  8bcf                 mov ecx, edi
+// 0044f98c  e867102500           call 0x6a09f8
+// 0044f991  8b4c2414             mov ecx, dword ptr [esp + 0x14]
+// 0044f995  5f                   pop edi
+// 0044f996  5e                   pop esi
+// 0044f997  5b                   pop ebx
+// 0044f998  64890d00000000       mov dword ptr fs:[0], ecx
+// 0044f99f  83c414               add esp, 0x14
+// 0044f9a2  c20800               ret 8
 
-// Candidate translation unit (score above; library headers required).
-#include "v8xml/XmlSerializer.h"
-#include "util/Debug.h"
-#include "util/base64.hpp"
-#include "reflection/type.h"
-#include <G3D/format.h>
-#include <sstream>
+// from server: 58% by colin
+// roc 2008-06 0044f8d0  unit: CRobloxDoc  size: 213 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 0044f8d0
+//
+// 0044f8d0  6aff                 push -1
+// 0044f8d2  6868917d00           push 0x7d9168
+// 0044f8d7  64a100000000         mov eax, dword ptr fs:[0]
+// 0044f8dd  50                   push eax
+// 0044f8de  64892500000000       mov dword ptr fs:[0], esp
+// 0044f8e5  83ec08               sub esp, 8
+// 0044f8e8  53                   push ebx
+// 0044f8e9  56                   push esi
+// 0044f8ea  57                   push edi
+// 0044f8eb  8bf9                 mov edi, ecx
+// 0044f8ed  8b8f94000000         mov ecx, dword ptr [edi + 0x94]
+// 0044f8f3  8d44240c             lea eax, [esp + 0xc]
+// 0044f8f7  50                   push eax
+// 0044f8f8  e843b00100           call 0x46a940
+// 0044f8fd  8b30                 mov esi, dword ptr [eax]
+// 0044f8ff  6a01                 push 1
+// 0044f901  56                   push esi
+// 0044f902  c744242400000000     mov dword ptr [esp + 0x24], 0
+// 0044f90a  e851650400           call 0x495e60
+// 0044f90f  83c408               add esp, 8
+// 0044f912  84c0                 test al, al
+// 0044f914  740f                 je 0x44f925
+// 0044f916  6a01                 push 1
+// 0044f918  56                   push esi
+// 0044f919  e852650400           call 0x495e70
+// 0044f91e  83c408               add esp, 8
+// 0044f921  84c0                 test al, al
+// 0044f923  7402                 je 0x44f927
+// 0044f925  b001                 mov al, 1
+// 0044f927  8b742410             mov esi, dword ptr [esp + 0x10]
+// 0044f92b  84c0                 test al, al
+// 0044f92d  0f94c3               sete bl
+// 0044f930  c744241cffffffff     mov dword ptr [esp + 0x1c], 0xffffffff
+// 0044f938  85f6                 test esi, esi
+// 0044f93a  742a                 je 0x44f966
+// 0044f93c  8d4e04               lea ecx, [esi + 4]
+// 0044f93f  83caff               or edx, 0xffffffff
+// 0044f942  f00fc111             lock xadd dword ptr [ecx], edx
+// 0044f946  751e                 jne 0x44f966
+// 0044f948  8b06                 mov eax, dword ptr [esi]
+// 0044f94a  8b5004               mov edx, dword ptr [eax + 4]
+// 0044f94d  8bce                 mov ecx, esi
+// 0044f94f  ffd2                 call edx
+// 0044f951  8d4608               lea eax, [esi + 8]
+// 0044f954  83c9ff               or ecx, 0xffffffff
+// 0044f957  f00fc108             lock xadd dword ptr [eax], ecx
+// 0044f95b  7509                 jne 0x44f966
+// 0044f95d  8b16                 mov edx, dword ptr [esi]
+// 0044f95f  8b4208               mov eax, dword ptr [edx + 8]
+// 0044f962  8bce                 mov ecx, esi
+// 0044f964  ffd0                 call eax
+// 0044f966  84db                 test bl, bl
+// 0044f968  7416                 je 0x44f980
+// 0044f96a  5f                   pop edi
+// 0044f96b  5e                   pop esi
+// 0044f96c  33c0                 xor eax, eax
+// 0044f96e  5b                   pop ebx
+// 0044f96f  8b4c2408             mov ecx, dword ptr [esp + 8]
+// 0044f973  64890d00000000       mov dword ptr fs:[0], ecx
+// 0044f97a  83c414               add esp, 0x14
+// 0044f97d  c20800               ret 8
+// 0044f980  8b4c2428             mov ecx, dword ptr [esp + 0x28]
+// 0044f984  8b542424             mov edx, dword ptr [esp + 0x24]
+// 0044f988  51                   push ecx
+// 0044f989  52                   push edx
+// 0044f98a  8bcf                 mov ecx, edi
+// 0044f98c  e867102500           call 0x6a09f8
+// 0044f991  8b4c2414             mov ecx, dword ptr [esp + 0x14]
+// 0044f995  5f                   pop edi
+// 0044f996  5e                   pop esi
+// 0044f997  5b                   pop ebx
+// 0044f998  64890d00000000       mov dword ptr fs:[0], ecx
+// 0044f99f  83c414               add esp, 0x14
+// 0044f9a2  c20800               ret 8
 
-class Whitespaces
-{
-public:
-	char data[256];
-  
-public:
-	Whitespaces()
-	{
-		data[9] = true;
-		data[10] = true;
-		data[12] = true;
-		data[13] = true;
-		data[32] = true;
-	}
+// from server: 54% by colin
+// roc 2008-06 0044f8d0  unit: CRobloxDoc  size: 213 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 0044f8d0
+//
+// 0044f8d0  6aff                 push -1
+// 0044f8d2  6868917d00           push 0x7d9168
+// 0044f8d7  64a100000000         mov eax, dword ptr fs:[0]
+// 0044f8dd  50                   push eax
+// 0044f8de  64892500000000       mov dword ptr fs:[0], esp
+// 0044f8e5  83ec08               sub esp, 8
+// 0044f8e8  53                   push ebx
+// 0044f8e9  56                   push esi
+// 0044f8ea  57                   push edi
+// 0044f8eb  8bf9                 mov edi, ecx
+// 0044f8ed  8b8f94000000         mov ecx, dword ptr [edi + 0x94]
+// 0044f8f3  8d44240c             lea eax, [esp + 0xc]
+// 0044f8f7  50                   push eax
+// 0044f8f8  e843b00100           call 0x46a940
+// 0044f8fd  8b30                 mov esi, dword ptr [eax]
+// 0044f8ff  6a01                 push 1
+// 0044f901  56                   push esi
+// 0044f902  c744242400000000     mov dword ptr [esp + 0x24], 0
+// 0044f90a  e851650400           call 0x495e60
+// 0044f90f  83c408               add esp, 8
+// 0044f912  84c0                 test al, al
+// 0044f914  740f                 je 0x44f925
+// 0044f916  6a01                 push 1
+// 0044f918  56                   push esi
+// 0044f919  e852650400           call 0x495e70
+// 0044f91e  83c408               add esp, 8
+// 0044f921  84c0                 test al, al
+// 0044f923  7402                 je 0x44f927
+// 0044f925  b001                 mov al, 1
+// 0044f927  8b742410             mov esi, dword ptr [esp + 0x10]
+// 0044f92b  84c0                 test al, al
+// 0044f92d  0f94c3               sete bl
+// 0044f930  c744241cffffffff     mov dword ptr [esp + 0x1c], 0xffffffff
+// 0044f938  85f6                 test esi, esi
+// 0044f93a  742a                 je 0x44f966
+// 0044f93c  8d4e04               lea ecx, [esi + 4]
+// 0044f93f  83caff               or edx, 0xffffffff
+// 0044f942  f00fc111             lock xadd dword ptr [ecx], edx
+// 0044f946  751e                 jne 0x44f966
+// 0044f948  8b06                 mov eax, dword ptr [esi]
+// 0044f94a  8b5004               mov edx, dword ptr [eax + 4]
+// 0044f94d  8bce                 mov ecx, esi
+// 0044f94f  ffd2                 call edx
+// 0044f951  8d4608               lea eax, [esi + 8]
+// 0044f954  83c9ff               or ecx, 0xffffffff
+// 0044f957  f00fc108             lock xadd dword ptr [eax], ecx
+// 0044f95b  7509                 jne 0x44f966
+// 0044f95d  8b16                 mov edx, dword ptr [esi]
+// 0044f95f  8b4208               mov eax, dword ptr [edx + 8]
+// 0044f962  8bce                 mov ecx, esi
+// 0044f964  ffd0                 call eax
+// 0044f966  84db                 test bl, bl
+// 0044f968  7416                 je 0x44f980
+// 0044f96a  5f                   pop edi
+// 0044f96b  5e                   pop esi
+// 0044f96c  33c0                 xor eax, eax
+// 0044f96e  5b                   pop ebx
+// 0044f96f  8b4c2408             mov ecx, dword ptr [esp + 8]
+// 0044f973  64890d00000000       mov dword ptr fs:[0], ecx
+// 0044f97a  83c414               add esp, 0x14
+// 0044f97d  c20800               ret 8
+// 0044f980  8b4c2428             mov ecx, dword ptr [esp + 0x28]
+// 0044f984  8b542424             mov edx, dword ptr [esp + 0x24]
+// 0044f988  51                   push ecx
+// 0044f989  52                   push edx
+// 0044f98a  8bcf                 mov ecx, edi
+// 0044f98c  e867102500           call 0x6a09f8
+// 0044f991  8b4c2414             mov ecx, dword ptr [esp + 0x14]
+// 0044f995  5f                   pop edi
+// 0044f996  5e                   pop esi
+// 0044f997  5b                   pop ebx
+// 0044f998  64890d00000000       mov dword ptr fs:[0], ecx
+// 0044f99f  83c414               add esp, 0x14
+// 0044f9a2  c20800               ret 8
+
+#include <intrin.h>
+
+struct sp_counted_base {
+    virtual ~sp_counted_base() {}
+    virtual void dispose() = 0;
+    virtual void destroy() { delete this; }
+    long use_count_;
+    long weak_count_;
+    void release() {
+        if (_InterlockedDecrement(&use_count_) == 0) {
+            dispose();
+            weak_release();
+        }
+    }
+    void weak_release() {
+        if (_InterlockedDecrement(&weak_count_) == 0)
+            destroy();
+    }
 };
 
-static Whitespaces whitespaces;
+struct shared_count {
+    sp_counted_base* pi_;
+    ~shared_count() { if (pi_ != 0) pi_->release(); }
+};
 
-XmlParser::XmlParser(std::streambuf* buffer)
-	: buffer(buffer)
+template<class T> struct shared_ptr {
+    T* px;
+    shared_count pn;
+    T* get() const { return px; }
+};
+
+struct DataModel;
+bool isLocked(DataModel* dm, bool b);
+bool isUnlocked(DataModel* dm, bool b);
+
+struct Workspace {
+    shared_ptr<DataModel> getDataModel();
+};
+
+struct CDocument {
+    int CanCloseFrame(void* frame, int x);
+};
+
+inline bool canEdit(DataModel* dm)
 {
-	
+    if (isLocked(dm, true) && !isUnlocked(dm, true))
+        return false;
+    return true;
 }
 
-void TextXmlParser::skipWhitespace()
+struct CRobloxDoc : CDocument {
+    char pad[0x94];
+    Workspace* workspace;
+    int CanCloseFrame(void* frame, int x);
+};
+
+int CRobloxDoc::CanCloseFrame(void* frame, int x)
 {
-	while (whitespaces.data[(char)buffer->sgetc()])
-		buffer->sbumpc();
-}
-
-std::string TextXmlParser::readTag()
-{
-	skipWhitespace();
-
-	if ((char)buffer->sbumpc() != '<')
-		throw std::runtime_error("tag expected");
-
-	std::string tag;
-	tag += '<';
-
-	char lastChar;
-	do
-	{
-		lastChar = buffer->sbumpc();
-		tag += lastChar;
-	}
-	while (lastChar != '>');
-
-	return tag;
-}
-
-std::string TextXmlParser::readFirstTag()
-{
-	skipWhitespace();
-
-	std::string s;
-	char c = buffer->sbumpc();
-	if (c != '<')
-	{
-		s += c;
-		c = buffer->sbumpc();
-		s += c;
-		c = buffer->sbumpc();
-		s += c;
-		c = buffer->sbumpc();
-		s += c;
-		if (c != '<')
-		{
-			for (int i = 0; i != 50; i++)
-			{
-				if (buffer->sgetc() == -1)
-					continue;
-				s += buffer->sbumpc();
-			}
-
-			std::string message = "tag expected after Byte-Order-Mark:";
-			message += s;
-			throw std::runtime_error(message);
-		}
-	}
-
-	std::string tag;
-	tag += c;
-
-	char lastChar;
-	do
-	{
-		lastChar = buffer->sbumpc();
-		tag += lastChar;
-	}
-	while (lastChar != '>');
-
-	return tag;
-}
-
-std::string decodeString(std::string source)
-{
-	std::string result;
-
-	size_t i = 0;
-	while (i < source.size())
-	{
-		char c = source[i++];
-		if (c == '&')
-		{
-			std::string entity;
-			while (i < source.size())
-			{
-				c = source[i++];
-				if (c == ';')
-					break;
-				entity += c;
-			}
-
-			if (entity == "lt")
-				result += '<';
-			else if (entity == "gt")
-				result += '>';
-			else if (entity == "amp")
-				result += '&';
-			else if (entity == "quot")
-				result += '"';
-			else if (entity == "apos")
-				result += '\'';
-			else if (entity[0] == '#')
-				result += atoi(entity.substr(1).c_str());
-			else
-				RBXASSERT(0);
-		}
-		else
-		{
-			result += c;
-		}
-	}
-
-	return result;
-}
-
-std::string TextXmlParser::readText(bool decode)
-{
-	skipWhitespace();
-
-	std::string text;
-	while ((char)buffer->sgetc() != '<')
-		text += buffer->sgetc();
-
-	if (decode)
-		text = decodeString(text);
-
-	return text;
-}
-
-std::string TextXmlParser::removeTag(const std::string& contents, int& index)
-{
-	size_t i = 0;
-	while (whitespaces.data[contents[i]] && i < contents.size())
-		i++;
-
-	size_t j = i;
-	while (!whitespaces.data[contents[j]] && j < contents.size())
-		j++;
-
-	std::string contentsNoTag = contents.substr(i, j - i);
-	index = (int)j + 1;
-
-	return contentsNoTag;
-}
-
-std::string TextXmlParser::findNextToken(const std::string& contents, int& index)
-{
-	size_t i;
-	for (i = index; i < contents.size(); i++)
-	{
-		if (!whitespaces.data[contents[i]])
-			break;
-	}
-
-	bool inQuotes = false;
-	size_t j = i;
-
-	for (; j < contents.size(); j++)
-	{
-		if (contents[j] == '"')
-		{
-			inQuotes = !inQuotes;
-		}
-		else if (!inQuotes && whitespaces.data[contents[j]])
-		{
-			break;
-		}
-	}
-
-	if (j != i)
-	{
-		std::string answer = contents.substr(i, j - i);
-		index = (int)j + 1;
-		return answer;
-	}
-
-	index = (int)contents.size();
-	return "";
-}
-
-XmlElement* TextXmlParser::parseAttributes(const std::string& currentTag)
-{
-	std::string tagGuts = currentTag.substr(1, currentTag.size() - 2);
-
-	int index = 0;
-	std::string tagName = removeTag(tagGuts, index);
-
-	XmlElement* element = new XmlElement(RBX::Name::lookup(tagName));
-
-	std::string attribute = findNextToken(tagGuts, index);
-	while (attribute.size() > 0)
-	{
-		size_t equalsSignIndex = attribute.find("=", 0, 1);
-		std::string attributeName = attribute.substr(0, equalsSignIndex);
-
-		size_t startQuoteMarkIndex = attribute.find('\"');
-		size_t endQuoteMarkIndex = attribute.rfind('\"');
-		std::string text = decodeString(attribute.substr(startQuoteMarkIndex + 1, endQuoteMarkIndex - startQuoteMarkIndex - 1));
-
-		element->addAttribute(RBX::Name::lookup(attributeName), text);
-
-		attribute = findNextToken(tagGuts, index);
-	}
-
-	return element;
-}
-
-bool isCloseTag(const std::string& test)
-{
-	if (test.size() >= 2)
-		return test.substr(0, 2) == "</";
-
-	return false;
-}
-
-bool endsWithClose(const std::string& test)
-{
-	if (test.size() >= 2)
-		return test.substr(test.size() - 2, 2) == "/>";
-
-	return false;
-}
-
-std::auto_ptr<XmlElement> TextXmlParser::parse()
-{
-	if (buffer->sgetc() == -1)
-		throw std::runtime_error("TextXmlParser::parse empty file");
-
-	bool firstTag = true;
-	while (true)
-	{
-		std::string currentTag;
-		if (firstTag)
-		{
-			firstTag = false;
-			currentTag = readFirstTag();
-			if (currentTag.substr(0, 2) == "<?")
-				continue;
-		}
-		else
-		{
-			currentTag = readTag();
-		}
-
-		XmlElement* currentElement = elements.empty() ? NULL : elements.top();
-		if (isCloseTag(currentTag))
-		{
-			if (!currentElement)
-				throw std::runtime_error(G3D::format("TextXmlParser::parse - Got close tag %s without open tag.", currentTag.c_str()));
-
-			elements.pop();
-			if (elements.empty())
-				return std::auto_ptr<XmlElement>(currentElement);
-		}
-		else
-		{
-			XmlElement* newElement = parseAttributes(currentTag);
-			elements.push(newElement);
-
-			if (newElement->getTag() == RBX::Reflection::Type::singleton<RBX::ContentId>().tag)
-			{
-				bool isXsiNil;
-				const XmlAttribute* xsiNilAttribute = newElement->findAttribute(name_xsinil);
-				if (xsiNilAttribute && xsiNilAttribute->getValue(isXsiNil) && !isXsiNil)
-				{
-					if (readText(false) == "")
-					{
-						const RBX::Name* mimeType;
-						const XmlAttribute* mimeTypeAttribute = newElement->findAttribute(tag_mimeType);
-						if (mimeTypeAttribute)
-							mimeTypeAttribute->getValue(mimeType);
-						else
-							mimeType = &RBX::Name::getNullName();
-
-						std::string contentChild = readTag();
-						std::string tagName = contentChild.substr(1, contentChild.size() - 2);
-
-						if (tagName.substr(0, 6) == "binary")
-						{
-							std::stringbuf encoded(readText(false), std::ios_base::in);
-							std::stringstream decoded;
-
-							int ioStatus = 0;
-							base64<char> decoder;
-							decoder.get(
-								std::istreambuf_iterator<char>(&encoded),
-								std::istreambuf_iterator<char>(),
-								std::ostreambuf_iterator<char>(decoded),
-								ioStatus);
-
-							decoded.flush();
-
-							RBX::ContentId contentId = RBX::ContentProvider::singleton().registerContent(decoded, *mimeType);
-							newElement->setValue(contentId);
-						}
-						else if (tag_hash == tagName)
-						{
-							std::string name = readText(false);
-							newElement->setValue(RBX::ContentId(name.c_str(), *mimeType));
-						}
-						else if (tagName.substr(0, 3) == "url")
-						{
-							std::string url = readText(true);
-							newElement->setValue(RBX::ContentId(url.c_str(), *mimeType));
-						}
-						else if (tag_null == tagName)
-						{
-							newElement->setValue(RBX::ContentId());
-						}
-						else
-						{
-							throw std::runtime_error(G3D::format("TextXmlParser::parse - Unknown tag '%s'.", tagName.substr(0, 32).c_str()));
-						}
-
-						std::string closingTag = readTag();
-						if (!isCloseTag(closingTag))
-							throw std::runtime_error(G3D::format("TextXmlParser::parse - '%s' should be a closing tag", tagName.substr(0, 32).c_str()));
-					}
-				}
-			}
-			else
-			{
-				newElement->setValue(readText(true));
-			}
-
-			currentElement->pushBackChild(newElement);
-
-			if (endsWithClose(currentTag))
-				elements.pop();
-		}
-	}
-}
-
-XmlWriter::XmlWriter(std::ostream& stream)
-	: stream(stream)
-{
-}
-
-int XmlWriter::getHandleIndex(RBX::InstanceHandle h)
-{
-	std::map<RBX::InstanceHandle, int>::iterator iter = handles.find(h);
-	if (iter == handles.end())
-	{
-		int index = (int)handles.size();
-		handles[h] = index;
-		return index;
-	}
-	else
-	{
-		return iter->second;
-	}
-}
-
-void TextXmlWriter::writeOpenTag(const XmlElement* element, int depth, const XmlAttribute* extraAttribute)
-{
-	for (int i = 0; i < depth; i++)
-		stream << '\t';
-
-	stream << '<' << element->getTag().name;
-
-	for (const XmlAttribute* attribute = element->getFirstAttribute(); attribute != NULL; attribute = attribute->nextSibling())
-	{
-		stream << ' ' << attribute->getTag().name << "=\"";
-		encodedWrite(stream, attribute->toString(this));
-		stream << '\"';
-	}
-
-	if (extraAttribute)
-	{
-		stream << ' ' << extraAttribute->getTag().name << "=\"";
-		encodedWrite(stream, extraAttribute->toString(this));
-		stream << '\"';
-	}
-
-	stream << '>';
-}
-
-void TextXmlWriter::writeCloseTag(const XmlElement* element, int depth)
-{
-	for (int i = 0; i < depth; i++)
-		stream << '\t';
-
-	stream << "</" << element->getTag().name << '>';
-}
-
-void TextXmlWriter::serializeNode(const XmlElement* xmlNode, int depth)
-{
-	if (xmlNode->isValueType<RBX::ContentId>())
-	{
-		writeOpenTag(xmlNode, depth, NULL);
-
-		RBX::ContentId contentId;
-		xmlNode->getValue(contentId);
-		if (contentId.isNull())
-		{
-			stream << "<null></null>";
-		}
-		else
-		{
-			stream << "<hash>";
-			stream << xmlNode->toString(this);
-			stream << "</hash>";
-		}
-	}
-	else
-	{
-		writeOpenTag(xmlNode, depth, NULL);
-		encodedWrite(stream, xmlNode->toString(this));
-	}
-}
-
-void TextXmlWriter::serialize(const XmlElement* xmlNode)
-{
-	serialize(xmlNode, 0);
-}
-
-void TextXmlWriter::serialize(const XmlElement* xmlNode, int depth)
-{
-	if (xmlNode)
-	{
-		serializeNode(xmlNode, depth);
-		if (xmlNode->firstChild())
-		{
-			for (const XmlElement* child = xmlNode->firstChild(); child != NULL; child = child->nextSibling())
-			{
-				stream << '\n';
-				serialize(child, depth + 1);
-			}
-			stream << '\n';
-			writeCloseTag(xmlNode, depth);
-		}
-		else
-		{
-			writeCloseTag(xmlNode, 0);
-		}
-	}
-}
-
-void TextXmlWriter::encodedWrite(std::ostream& stream, const std::string& text)
-{
-	encodedWrite(stream, text.c_str());
-}
-
-void TextXmlWriter::encodedWrite(std::ostream& stream, const char* text)
-{
-	size_t len = strlen(text);
-	for (size_t i = 0; i != len; ++i)
-	{
-		unsigned char c = *text++;
-		if (c == '<')
-		{
-			stream << "&lt;";
-		}
-		else if (c == '>')
-		{
-			stream << "&gt;";
-		}
-		else if (c == '&')
-		{
-			stream << "&amp;";
-		}
-		else if (c == '"')
-		{
-			stream << "&quot;";
-		}
-		else if (c == '\'')
-		{
-			stream << "&apos";
-		}
-		else if (c >= ' ' && c <= '~') // every other printable character
-		{
-			stream << c;
-		}
-		else
-		{
-			char buffer[8];
-			sprintf(buffer, "&#%d;", c);
-			stream << buffer;
-		}
-	}
-}
-
-void TextXmlWriterWithEmbeddedContent::serializeNode(const XmlElement* xmlNode, int depth)
-{
-	if (xmlNode->isValueType<RBX::ContentId>())
-	{
-		RBX::ContentId contentId;
-		xmlNode->getValue(contentId);
-
-		if (contentId.mimeType() == RBX::Name::getNullName())
-		{
-			writeOpenTag(xmlNode, depth, NULL);
-		}
-		else
-		{
-			XmlAttribute mimeTypeAttribute(tag_mimeType, contentId.mimeType().c_str());
-			writeOpenTag(xmlNode, depth, &mimeTypeAttribute);
-		}
-
-		if (!xmlNode->findAttribute(name_xsinil))
-		{
-			if (contentId.isNull())
-			{
-				stream << "<null></null>";
-			}
-			else
-			{
-				if (contentId.isAsset() || contentId.isHttp())
-				{
-					stream << "<url>";
-					TextXmlWriter::encodedWrite(stream, contentId.toString());
-					stream << "</url>";
-				}
-				else if (embeddedContent.find(contentId) == embeddedContent.end())
-				{
-					embeddedContent.insert(contentId);
-
-					std::auto_ptr<std::istream> contentStream;
-
-					try
-					{
-						contentStream = RBX::ContentProvider::singleton().getContent(contentId);
-
-						if (contentId.mimeType() == RBX::Name::getNullName())
-						{
-							stream << "<binary>";
-						}
-						else
-						{
-							stream << "<binary xmime:contentType=\"" << contentId.mimeType().c_str() << "\">";
-						}
-
-						std::istreambuf_iterator<char> _From(contentStream->rdbuf());
-						std::istreambuf_iterator<char> _To;
-						std::ostreambuf_iterator<char> _Out(stream.rdbuf());
-						int _State;
-
-						base64<char> encoder;
-						encoder.put(_From, _To, _Out, _State, base64<>::crlf());
-
-						stream << "</binary>";
-					}
-					catch (std::exception&)
-					{
-						goto hash;
-					}
-				}
-				else
-				{
-hash:
-					embeddedContent.insert(contentId);
-
-					stream << "<hash>";
-					stream << xmlNode->toString(this);
-					stream << "</hash>";
-				}
-			}
-		}
-	}
-	else
-	{
-		TextXmlWriter::serializeNode(xmlNode, depth);
-	}
+    if (!canEdit(workspace->getDataModel().get()))
+        return 0;
+    return CDocument::CanCloseFrame(frame, x);
 }

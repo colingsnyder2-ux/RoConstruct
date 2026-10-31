@@ -1,108 +1,69 @@
-// from server: 50% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+// from server: 100% by EspClaude
+// from server: 100% by king_originala
+// roc 2008-06 0063de30  unit: RBX::LockTool  size: 78 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 0063de30
+//
+// 0063de30  51                   push ecx
+// 0063de31  8b411c               mov eax, dword ptr [ecx + 0x1c]
+// 0063de34  56                   push esi
+// 0063de35  c744240400000000     mov dword ptr [esp + 4], 0
+// 0063de3d  85c0                 test eax, eax
+// 0063de3f  7425                 je 0x63de66
+// 0063de41  50                   push eax
+// 0063de42  e8f9c1f5ff           call 0x59a040
+// 0063de47  8b742410             mov esi, dword ptr [esp + 0x10]
+// 0063de4b  83c404               add esp, 4
+// 0063de4e  8bce                 mov ecx, esi
+// 0063de50  84c0                 test al, al
+// 0063de52  7418                 je 0x63de6c
+// 0063de54  68b4a28400           push 0x84a2b4
+// 0063de59  ff1558248000         call dword ptr [0x802458]
+// 0063de5f  8bc6                 mov eax, esi
+// 0063de61  5e                   pop esi
+// 0063de62  59                   pop ecx
+// 0063de63  c20400               ret 4
+// 0063de66  8b74240c             mov esi, dword ptr [esp + 0xc]
+// 0063de6a  8bce                 mov ecx, esi
+// 0063de6c  68a8a28400           push 0x84a2a8
+// 0063de71  ff1558248000         call dword ptr [0x802458]
+// 0063de77  8bc6                 mov eax, esi
+// 0063de79  5e                   pop esi
+// 0063de7a  59                   pop ecx
+// 0063de7b  c20400               ret 4
 
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
+struct String {
+    unsigned char data[28];
+};
 
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
+extern "C" bool __cdecl isLocked(void *);
+extern void (__thiscall *constructString)(String *, const char *);
+extern const char unlockCursor[];
+extern const char lockCursor[];
 
-boost::mutex& moo2()
+struct LockTool {
+    unsigned char padding[28];
+    void *object;
+
+    String *cursorName(String *result);
+};
+
+String *LockTool::cursorName(String *result)
 {
-	static boost::mutex mutex2;
-	return mutex2;
-}
+    volatile int state = 0;
 
-void initMoo()
-{
-	moo2();
-}
+    if (object) {
+        bool locked = isLocked(object);
+        String *out = result;
 
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
+        if (locked) {
+            constructString(out, unlockCursor);
+            return out;
+        }
 
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
+        constructString(out, lockCursor);
+        return out;
+    }
 
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
+    constructString(result, lockCursor);
+    return result;
 }

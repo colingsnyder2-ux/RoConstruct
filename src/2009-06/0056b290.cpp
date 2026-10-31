@@ -1,10 +1,10 @@
-// from server: 88% by why2
-extern "C" void __cdecl free(void*);
-
-void __cdecl sub_56B290(void* p)
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+extern "C" __declspec(dllimport) void __cdecl free(void*);
+void __cdecl aligned_free_56b290(void* p)
 {
     if (p != 0)
-    {
-        free(*(void**)((char*)p - 4));
-    }
+        free(((void**)p)[-1]);
 }

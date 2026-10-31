@@ -1,108 +1,23 @@
-// from server: 25% by colin
+// from server: 98% by EspClaude
+// from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+// roc-flags: /O2 /GS- /EHsc /MD
+// roc-lib: rbxgs-dll roc_espeon_historyundopropertymaps478b03b5d527bd39.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
-
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
-
-boost::mutex& moo2()
-{
-	static boost::mutex mutex2;
-	return mutex2;
-}
-
-void initMoo()
-{
-	moo2();
-}
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
-}
+#include <set>
+#include <map>
+#include <list>
+#include <deque>
+#include <boost/any.hpp>
+#include <boost/shared_ptr.hpp>
+struct Instance{void setParent(Instance*);};struct Service;struct Record;
+struct Variant{const void*type;boost::any content;};
+struct Descriptor{virtual void f0();virtual void f1();virtual void f2();virtual void f3();virtual void f4();virtual void set(void*,const Variant&)const;};
+extern Descriptor parentProperty;
+typedef std::pair<const Descriptor*const,Variant> Value;
+struct Record{Service*service;boost::shared_ptr<Instance>object;int kind;boost::shared_ptr<Instance>parent;typedef std::map<const Descriptor*,Variant> Values;Values values;bool operator<(const Record&)const;void restore();void undo();void undoProperty(const Value&);};
+struct Records:std::map<Instance*,Record>{__forceinline Record*lookup(Instance*key){iterator i=find(key);return i!=end()?&i->second:0;}};
+struct Service{char prefix[0x138];std::list<Records*>records;std::list<Records*>::iterator forward,backward;};
+void Record::undoProperty(const Value&key){bool isParent=key.first==&parentProperty;std::list<Records*>::iterator i=service->backward;while(i!=service->records.begin()){--i;Record*r=(*i)->lookup(object.get());if(r){Values::iterator found=r->values.find(key.first);if(found!=r->values.end()){Value v=*found;Instance*p=r->object.get();v.first->set(p?(char*)p+0x14:0,v.second);return;}if(isParent&&r->kind==1){object->setParent(r->parent.get());return;}}}}

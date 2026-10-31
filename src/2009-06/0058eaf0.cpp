@@ -1,590 +1,603 @@
-// from server: 30% by colin
-// roc-lang: cpp
+// from server: 95% by EspClaude
+// from server: 100% by colin
+// roc-lang: c
 // roc-cl: 21022
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: g3d-6.09 G3Dcpp/Quat.cpp
+// roc-flags: /O2 /GS- /MD
+// roc-lib: g3d-6.09-png-dll pngmem.c
 
 // Candidate translation unit (score above; library headers required).
-/**
-  @file Quat.cpp
- 
-  Quaternion implementation based on Watt & Watt page 363
-  
-  @author Morgan McGuire, graphics3d.com
-  
-  @created 2002-01-23
-  @edited  2006-01-31
+
+/* pngmem.c - stub functions for memory allocation
+ *
+ * libpng version 1.2.7 - September 12, 2004
+ * For conditions of distribution and use, see copyright notice in png.h
+ * Copyright (c) 1998-2004 Glenn Randers-Pehrson
+ * (Version 0.96 Copyright (c) 1996, 1997 Andreas Dilger)
+ * (Version 0.88 Copyright (c) 1995, 1996 Guy Eric Schalnat, Group 42, Inc.)
+ *
+ * This file provides a location for all memory allocation.  Users who
+ * need special memory handling are expected to supply replacement
+ * functions for png_malloc() and png_free(), and to use
+ * png_create_read_struct_2() and png_create_write_struct_2() to
+ * identify the replacement functions.
  */
 
-#include "G3D/Quat.h"
-#include "G3D/BinaryInput.h"
-#include "G3D/BinaryOutput.h"
+#define PNG_INTERNAL
+#include "png.h"
 
-namespace G3D {
+/* Borland DOS special memory handler */
+#if defined(__TURBOC__) && !defined(_Windows) && !defined(__FLAT__)
+/* if you change this, be sure to change the one in png.h also */
 
-Quat Quat::fromAxisAngleRotation(
-    const Vector3&      axis,
-    float               angle) {
+/* Allocate memory for a png_struct.  The malloc and memset can be replaced
+   by a single call to calloc() if this is thought to improve performance. */
+png_voidp /* PRIVATE */
+png_create_struct(int type)
+{
+#ifdef PNG_USER_MEM_SUPPORTED
+   return (png_create_struct_2(type, png_malloc_ptr_NULL, png_voidp_NULL));
+}
 
-    Quat q;
+/* Alternate version of png_create_struct, for use with user-defined malloc. */
+png_voidp /* PRIVATE */
+png_create_struct_2(int type, png_malloc_ptr malloc_fn, png_voidp mem_ptr)
+{
+#endif /* PNG_USER_MEM_SUPPORTED */
+   png_size_t size;
+   png_voidp struct_ptr;
 
-    q.w = cos(angle / 2.0f);
-    q.imag() = axis.direction() * sin(angle / 2.0f); 
+   if (type == PNG_STRUCT_INFO)
+     size = png_sizeof(png_info);
+   else if (type == PNG_STRUCT_PNG)
+     size = png_sizeof(png_struct);
+   else
+     return (png_get_copyright(NULL));
 
-    return q;
+#ifdef PNG_USER_MEM_SUPPORTED
+   if(malloc_fn != NULL)
+   {
+      png_struct dummy_struct;
+      png_structp png_ptr = &dummy_struct;
+      png_ptr->mem_ptr=mem_ptr;
+      struct_ptr = (*(malloc_fn))(png_ptr, (png_uint_32)size);
+   }
+   else
+#endif /* PNG_USER_MEM_SUPPORTED */
+      struct_ptr = (png_voidp)farmalloc(size);
+   if (struct_ptr != NULL)
+      png_memset(struct_ptr, 0, size);
+   return (struct_ptr);
+}
+
+/* Free memory allocated by a png_create_struct() call */
+void /* PRIVATE */
+png_destroy_struct(png_voidp struct_ptr)
+{
+#ifdef PNG_USER_MEM_SUPPORTED
+   png_destroy_struct_2(struct_ptr, png_free_ptr_NULL, png_voidp_NULL);
+}
+
+/* Free memory allocated by a png_create_struct() call */
+void /* PRIVATE */
+png_destroy_struct_2(png_voidp struct_ptr, png_free_ptr free_fn,
+    png_voidp mem_ptr)
+{
+#endif
+   if (struct_ptr != NULL)
+   {
+#ifdef PNG_USER_MEM_SUPPORTED
+      if(free_fn != NULL)
+      {
+         png_struct dummy_struct;
+         png_structp png_ptr = &dummy_struct;
+         png_ptr->mem_ptr=mem_ptr;
+         (*(free_fn))(png_ptr, struct_ptr);
+         return;
+      }
+#endif /* PNG_USER_MEM_SUPPORTED */
+      farfree (struct_ptr);
+   }
+}
+
+/* Allocate memory.  For reasonable files, size should never exceed
+ * 64K.  However, zlib may allocate more then 64K if you don't tell
+ * it not to.  See zconf.h and png.h for more information. zlib does
+ * need to allocate exactly 64K, so whatever you call here must
+ * have the ability to do that.
+ *
+ * Borland seems to have a problem in DOS mode for exactly 64K.
+ * It gives you a segment with an offset of 8 (perhaps to store its
+ * memory stuff).  zlib doesn't like this at all, so we have to
+ * detect and deal with it.  This code should not be needed in
+ * Windows or OS/2 modes, and only in 16 bit mode.  This code has
+ * been updated by Alexander Lehmann for version 0.89 to waste less
+ * memory.
+ *
+ * Note that we can't use png_size_t for the "size" declaration,
+ * since on some systems a png_size_t is a 16-bit quantity, and as a
+ * result, we would be truncating potentially larger memory requests
+ * (which should cause a fatal error) and introducing major problems.
+ */
+
+png_voidp PNGAPI
+png_malloc(png_structp png_ptr, png_uint_32 size)
+{
+   png_voidp ret;
+
+   if (png_ptr == NULL || size == 0)
+      return (NULL);
+
+#ifdef PNG_USER_MEM_SUPPORTED
+   if(png_ptr->malloc_fn != NULL)
+       ret = ((png_voidp)(*(png_ptr->malloc_fn))(png_ptr, (png_size_t)size));
+   else
+       ret = (png_malloc_default(png_ptr, size));
+   if (ret == NULL && (png_ptr->flags&PNG_FLAG_MALLOC_NULL_MEM_OK) == 0)
+       png_error(png_ptr, "Out of memory!");
+   return (ret);
+}
+
+png_voidp PNGAPI
+png_malloc_default(png_structp png_ptr, png_uint_32 size)
+{
+   png_voidp ret;
+#endif /* PNG_USER_MEM_SUPPORTED */
+
+#ifdef PNG_MAX_MALLOC_64K
+   if (size > (png_uint_32)65536L)
+   {
+      png_warning(png_ptr, "Cannot Allocate > 64K");
+      ret = NULL;
+   }
+   else
+#endif
+
+   if (size != (size_t)size)
+     ret = NULL;
+   else if (size == (png_uint_32)65536L)
+   {
+      if (png_ptr->offset_table == NULL)
+      {
+         /* try to see if we need to do any of this fancy stuff */
+         ret = farmalloc(size);
+         if (ret == NULL || ((png_size_t)ret & 0xffff))
+         {
+            int num_blocks;
+            png_uint_32 total_size;
+            png_bytep table;
+            int i;
+            png_byte huge * hptr;
+
+            if (ret != NULL)
+            {
+               farfree(ret);
+               ret = NULL;
+            }
+
+            if(png_ptr->zlib_window_bits > 14)
+               num_blocks = (int)(1 << (png_ptr->zlib_window_bits - 14));
+            else
+               num_blocks = 1;
+            if (png_ptr->zlib_mem_level >= 7)
+               num_blocks += (int)(1 << (png_ptr->zlib_mem_level - 7));
+            else
+               num_blocks++;
+
+            total_size = ((png_uint_32)65536L) * (png_uint_32)num_blocks+16;
+
+            table = farmalloc(total_size);
+
+            if (table == NULL)
+            {
+#ifndef PNG_USER_MEM_SUPPORTED
+               if ((png_ptr->flags&PNG_FLAG_MALLOC_NULL_MEM_OK) == 0)
+                  png_error(png_ptr, "Out Of Memory."); /* Note "O" and "M" */
+               else
+                  png_warning(png_ptr, "Out Of Memory.");
+#endif
+               return (NULL);
+            }
+
+            if ((png_size_t)table & 0xfff0)
+            {
+#ifndef PNG_USER_MEM_SUPPORTED
+               if ((png_ptr->flags&PNG_FLAG_MALLOC_NULL_MEM_OK) == 0)
+                  png_error(png_ptr,
+                    "Farmalloc didn't return normalized pointer");
+               else
+                  png_warning(png_ptr,
+                    "Farmalloc didn't return normalized pointer");
+#endif
+               return (NULL);
+            }
+
+            png_ptr->offset_table = table;
+            png_ptr->offset_table_ptr = farmalloc(num_blocks *
+               png_sizeof (png_bytep));
+
+            if (png_ptr->offset_table_ptr == NULL)
+            {
+#ifndef PNG_USER_MEM_SUPPORTED
+               if ((png_ptr->flags&PNG_FLAG_MALLOC_NULL_MEM_OK) == 0)
+                  png_error(png_ptr, "Out Of memory."); /* Note "O" and "M" */
+               else
+                  png_warning(png_ptr, "Out Of memory.");
+#endif
+               return (NULL);
+            }
+
+            hptr = (png_byte huge *)table;
+            if ((png_size_t)hptr & 0xf)
+            {
+               hptr = (png_byte huge *)((long)(hptr) & 0xfffffff0L);
+               hptr = hptr + 16L;  /* "hptr += 16L" fails on Turbo C++ 3.0 */
+            }
+            for (i = 0; i < num_blocks; i++)
+            {
+               png_ptr->offset_table_ptr[i] = (png_bytep)hptr;
+               hptr = hptr + (png_uint_32)65536L;  /* "+=" fails on TC++3.0 */
+            }
+
+            png_ptr->offset_table_number = num_blocks;
+            png_ptr->offset_table_count = 0;
+            png_ptr->offset_table_count_free = 0;
+         }
+      }
+
+      if (png_ptr->offset_table_count >= png_ptr->offset_table_number)
+      {
+#ifndef PNG_USER_MEM_SUPPORTED
+         if ((png_ptr->flags&PNG_FLAG_MALLOC_NULL_MEM_OK) == 0)
+            png_error(png_ptr, "Out of Memory."); /* Note "o" and "M" */
+         else
+            png_warning(png_ptr, "Out of Memory.");
+#endif
+         return (NULL);
+      }
+
+      ret = png_ptr->offset_table_ptr[png_ptr->offset_table_count++];
+   }
+   else
+      ret = farmalloc(size);
+
+#ifndef PNG_USER_MEM_SUPPORTED
+   if (ret == NULL)
+   {
+      if ((png_ptr->flags&PNG_FLAG_MALLOC_NULL_MEM_OK) == 0)
+         png_error(png_ptr, "Out of memory."); /* Note "o" and "m" */
+      else
+         png_warning(png_ptr, "Out of memory."); /* Note "o" and "m" */
+   }
+#endif
+
+   return (ret);
+}
+
+/* free a pointer allocated by png_malloc().  In the default
+   configuration, png_ptr is not used, but is passed in case it
+   is needed.  If ptr is NULL, return without taking any action. */
+void PNGAPI
+png_free(png_structp png_ptr, png_voidp ptr)
+{
+   if (png_ptr == NULL || ptr == NULL)
+      return;
+
+#ifdef PNG_USER_MEM_SUPPORTED
+   if (png_ptr->free_fn != NULL)
+   {
+      (*(png_ptr->free_fn))(png_ptr, ptr);
+      return;
+   }
+   else png_free_default(png_ptr, ptr);
+}
+
+void PNGAPI
+png_free_default(png_structp png_ptr, png_voidp ptr)
+{
+#endif /* PNG_USER_MEM_SUPPORTED */
+
+   if (png_ptr->offset_table != NULL)
+   {
+      int i;
+
+      for (i = 0; i < png_ptr->offset_table_count; i++)
+      {
+         if (ptr == png_ptr->offset_table_ptr[i])
+         {
+            ptr = NULL;
+            png_ptr->offset_table_count_free++;
+            break;
+         }
+      }
+      if (png_ptr->offset_table_count_free == png_ptr->offset_table_count)
+      {
+         farfree(png_ptr->offset_table);
+         farfree(png_ptr->offset_table_ptr);
+         png_ptr->offset_table = NULL;
+         png_ptr->offset_table_ptr = NULL;
+      }
+   }
+
+   if (ptr != NULL)
+   {
+      farfree(ptr);
+   }
+}
+
+#else /* Not the Borland DOS special memory handler */
+
+/* Allocate memory for a png_struct or a png_info.  The malloc and
+   memset can be replaced by a single call to calloc() if this is thought
+   to improve performance noticably. */
+png_voidp /* PRIVATE */
+png_create_struct(int type)
+{
+#ifdef PNG_USER_MEM_SUPPORTED
+   return (png_create_struct_2(type, png_malloc_ptr_NULL, png_voidp_NULL));
+}
+
+/* Allocate memory for a png_struct or a png_info.  The malloc and
+   memset can be replaced by a single call to calloc() if this is thought
+   to improve performance noticably. */
+png_voidp /* PRIVATE */
+png_create_struct_2(int type, png_malloc_ptr malloc_fn, png_voidp mem_ptr)
+{
+#endif /* PNG_USER_MEM_SUPPORTED */
+   png_size_t size;
+   png_voidp struct_ptr;
+
+   if (type == PNG_STRUCT_INFO)
+      size = png_sizeof(png_info);
+   else if (type == PNG_STRUCT_PNG)
+      size = png_sizeof(png_struct);
+   else
+      return (NULL);
+
+#ifdef PNG_USER_MEM_SUPPORTED
+   if(malloc_fn != NULL)
+   {
+      png_struct dummy_struct;
+      png_structp png_ptr = &dummy_struct;
+      png_ptr->mem_ptr=mem_ptr;
+      struct_ptr = (*(malloc_fn))(png_ptr, size);
+      if (struct_ptr != NULL)
+         png_memset(struct_ptr, 0, size);
+      return (struct_ptr);
+   }
+#endif /* PNG_USER_MEM_SUPPORTED */
+
+#if defined(__TURBOC__) && !defined(__FLAT__)
+   struct_ptr = (png_voidp)farmalloc(size);
+#else
+# if defined(_MSC_VER) && defined(MAXSEG_64K)
+   struct_ptr = (png_voidp)halloc(size,1);
+# else
+   struct_ptr = (png_voidp)malloc(size);
+# endif
+#endif
+   if (struct_ptr != NULL)
+      png_memset(struct_ptr, 0, size);
+
+   return (struct_ptr);
 }
 
 
-Quat::Quat(
-    const Matrix3& rot) {
-
-    static const int plus1mod3[] = {1, 2, 0};
-
-    // Find the index of the largest diagonal component
-	// These ? operations hopefully compile to conditional
-	// move instructions instead of branches.
-    int i = (rot[1][1] > rot[0][0]) ? 1 : 0;
-    i = (rot[2][2] > rot[i][i]) ? 2 : i;
-
-	// Find the indices of the other elements
-    int j = plus1mod3[i];
-    int k = plus1mod3[j];
-
-	// Index the elements of the vector part of the quaternion as a float*
-    float* v = (float*)(this);
-
-	// If we attempted to pre-normalize and trusted the matrix to be
-	// perfectly orthonormal, the result would be:
-	//
-    //   double c = sqrt((rot[i][i] - (rot[j][j] + rot[k][k])) + 1.0)
-    //   v[i] = -c * 0.5
-    //   v[j] = -(rot[i][j] + rot[j][i]) * 0.5 / c
-    //   v[k] = -(rot[i][k] + rot[k][i]) * 0.5 / c
-    //   w    =  (rot[j][k] - rot[k][j]) * 0.5 / c
-	//
-	// Since we're going to pay the sqrt anyway, we perform a post normalization, which also
-	// fixes any poorly normalized input.  Multiply all elements by 2*c in the above, giving:
-
-	// nc2 = -c^2
-    double nc2 = ((rot[j][j] + rot[k][k]) - rot[i][i]) - 1.0;
-    v[i] =  nc2;
-    w    =  (rot[j][k] - rot[k][j]);
-    v[j] = -(rot[i][j] + rot[j][i]);
-    v[k] = -(rot[i][k] + rot[k][i]);
-
-	// We now have the correct result with the wrong magnitude, so normalize it:
-    float s = sqrt(x*x + y*y + z*z + w*w);
-    if (s > 0.00001f) {
-	    s = 1.0f / s;
-	    x *= s;
-	    y *= s;
-	    z *= s;
-	    w *= s;
-    } else {
-        // The quaternion is nearly zero.  Make it 0 0 0 1
-        x = 0.0f;
-        y = 0.0f;
-        z = 0.0f;
-        w = 1.0f;
-    }
+/* Free memory allocated by a png_create_struct() call */
+void /* PRIVATE */
+png_destroy_struct(png_voidp struct_ptr)
+{
+#ifdef PNG_USER_MEM_SUPPORTED
+   png_destroy_struct_2(struct_ptr, png_free_ptr_NULL, png_voidp_NULL);
 }
 
-
-void Quat::toAxisAngleRotation(
-    Vector3&            axis,
-    double&             angle) const {
-   
-    // Decompose the quaternion into an angle and an axis.
-    
-    axis = Vector3(x, y, z);
-    angle = 2 * acos(w);
-
-    float len = sqrt(1.0f - w * w);
-
-    if (fuzzyGt(abs(len), 0.0f)) {
-        axis /= len;
-    }
-
-    // Reduce the range of the angle.
-
-    if (angle < 0) {		
-		angle = -angle;
-		axis = -axis;
-    }
-
-	while (angle > 2 * G3D_PI) {
-        angle -= 2 * G3D_PI;
-    }
-
-	if (abs(angle) > G3D_PI) {
-		angle -= 2 * G3D_PI;
-    }
-
-    // Make the angle positive.
-
-	if (angle < 0.0f) {		
-		angle = -angle;
-        axis = -axis;
-	}
+/* Free memory allocated by a png_create_struct() call */
+void /* PRIVATE */
+png_destroy_struct_2(png_voidp struct_ptr, png_free_ptr free_fn,
+    png_voidp mem_ptr)
+{
+#endif /* PNG_USER_MEM_SUPPORTED */
+   if (struct_ptr != NULL)
+   {
+#ifdef PNG_USER_MEM_SUPPORTED
+      if(free_fn != NULL)
+      {
+         png_struct dummy_struct;
+         png_structp png_ptr = &dummy_struct;
+         png_ptr->mem_ptr=mem_ptr;
+         (*(free_fn))(png_ptr, struct_ptr);
+         return;
+      }
+#endif /* PNG_USER_MEM_SUPPORTED */
+#if defined(__TURBOC__) && !defined(__FLAT__)
+      farfree(struct_ptr);
+#else
+# if defined(_MSC_VER) && defined(MAXSEG_64K)
+      hfree(struct_ptr);
+# else
+      free(struct_ptr);
+# endif
+#endif
+   }
 }
 
+/* Allocate memory.  For reasonable files, size should never exceed
+   64K.  However, zlib may allocate more then 64K if you don't tell
+   it not to.  See zconf.h and png.h for more information.  zlib does
+   need to allocate exactly 64K, so whatever you call here must
+   have the ability to do that. */
 
-Matrix3 Quat::toRotationMatrix() const {
-    Matrix3 out = Matrix3::zero();
+png_voidp PNGAPI
+png_malloc(png_structp png_ptr, png_uint_32 size)
+{
+   png_voidp ret;
 
-    toRotationMatrix(out);
+#ifdef PNG_USER_MEM_SUPPORTED
+   if (png_ptr == NULL || size == 0)
+      return (NULL);
 
-    return out;
+   if(png_ptr->malloc_fn != NULL)
+       ret = ((png_voidp)(*(png_ptr->malloc_fn))(png_ptr, (png_size_t)size));
+   else
+       ret = (png_malloc_default(png_ptr, size));
+   if (ret == NULL && (png_ptr->flags&PNG_FLAG_MALLOC_NULL_MEM_OK) == 0)
+       png_error(png_ptr, "Out of Memory!");
+   return (ret);
 }
 
+png_voidp PNGAPI
+png_malloc_default(png_structp png_ptr, png_uint_32 size)
+{
+   png_voidp ret;
+#endif /* PNG_USER_MEM_SUPPORTED */
 
-void Quat::toRotationMatrix(
-    Matrix3&            rot) const {
+   if (png_ptr == NULL || size == 0)
+      return (NULL);
 
-    rot = Matrix3(*this);
+#ifdef PNG_MAX_MALLOC_64K
+   if (size > (png_uint_32)65536L)
+   {
+#ifndef PNG_USER_MEM_SUPPORTED
+      if(png_ptr->flags&PNG_FLAG_MALLOC_NULL_MEM_OK) == 0)
+         png_error(png_ptr, "Cannot Allocate > 64K");
+      else
+#endif
+         return NULL;
+   }
+#endif
+
+ /* Check for overflow */
+#if defined(__TURBOC__) && !defined(__FLAT__)
+ if (size != (unsigned long)size)
+   ret = NULL;
+ else
+   ret = farmalloc(size);
+#else
+# if defined(_MSC_VER) && defined(MAXSEG_64K)
+ if (size != (unsigned long)size)
+   ret = NULL;
+ else
+   ret = halloc(size, 1);
+# else
+ if (size != (size_t)size)
+   ret = NULL;
+ else
+   ret = malloc((size_t)size);
+# endif
+#endif
+
+#ifndef PNG_USER_MEM_SUPPORTED
+   if (ret == NULL && (png_ptr->flags&PNG_FLAG_MALLOC_NULL_MEM_OK) == 0)
+      png_error(png_ptr, "Out of Memory");
+#endif
+
+   return (ret);
 }
 
-    
-Quat Quat::slerp(
-    const Quat&         _quat1,
-    float               alpha,
-    float               threshold) const {
+/* Free a pointer allocated by png_malloc().  If ptr is NULL, return
+   without taking any action. */
+void PNGAPI
+png_free(png_structp png_ptr, png_voidp ptr)
+{
+   if (png_ptr == NULL || ptr == NULL)
+      return;
 
-    // From: Game Physics -- David Eberly pg 538-540
-    // Modified to include lerp for small angles, which
-	// is a common practice.
+#ifdef PNG_USER_MEM_SUPPORTED
+   if (png_ptr->free_fn != NULL)
+   {
+      (*(png_ptr->free_fn))(png_ptr, ptr);
+      return;
+   }
+   else png_free_default(png_ptr, ptr);
+}
+void PNGAPI
+png_free_default(png_structp png_ptr, png_voidp ptr)
+{
+   if (png_ptr == NULL || ptr == NULL)
+      return;
 
-	// See also:
-	// http://number-none.com/product/Understanding%20Slerp,%20Then%20Not%20Using%20It/index.html
+#endif /* PNG_USER_MEM_SUPPORTED */
 
-    const Quat& quat0 = *this;
-    Quat quat1 = _quat1;
-
-    // angle between quaternion rotations
-    float phi;
-    float cosphi = quat0.dot(quat1);
-
-
-    if (cosphi < 0) {
-        // Change the sign and fix the dot product; we need to
-        // loop the other way to get the shortest path
-        quat1 = -quat1;
-        cosphi = quat0.dot(quat1);
-    }
-
-    // Using G3D::aCos will clamp the angle to 0 and pi
-    phi = static_cast<float>(G3D::aCos(cosphi));
-    
-    if (phi >= threshold) {
-        // For large angles, slerp
-        float scale0, scale1;
-
-        scale0 = sin((1.0f - alpha) * phi);
-        scale1 = sin(alpha * phi);
-        
-        return ( (quat0 * scale0) + (quat1 * scale1) ) / sin(phi);
-    } else {
-        // For small angles, linear interpolate
-		return quat0.nlerp(quat1, alpha);
-    }
+#if defined(__TURBOC__) && !defined(__FLAT__)
+   farfree(ptr);
+#else
+# if defined(_MSC_VER) && defined(MAXSEG_64K)
+   hfree(ptr);
+# else
+   free(ptr);
+# endif
+#endif
 }
 
+#endif /* Not Borland DOS special memory handler */
 
-Quat Quat::nlerp(
-    const Quat&         quat1,
-    float               alpha) const {
+#if defined(PNG_1_0_X)
+#  define png_malloc_warn png_malloc
+#else
+/* This function was added at libpng version 1.2.3.  The png_malloc_warn()
+ * function will set up png_malloc() to issue a png_warning and return NULL
+ * instead of issuing a png_error, if it fails to allocate the requested
+ * memory.
+ */
+png_voidp PNGAPI
+png_malloc_warn(png_structp png_ptr, png_uint_32 size)
+{
+   png_voidp ptr;
+   png_uint_32 save_flags=png_ptr->flags;
 
-    Quat result = (*this) * (1.0f - alpha) + quat1 * alpha;
-	return result / result.magnitude();
+   png_ptr->flags|=PNG_FLAG_MALLOC_NULL_MEM_OK;
+   ptr = (png_voidp)png_malloc((png_structp)png_ptr, size);
+   png_ptr->flags=save_flags;
+   return(ptr);
+}
+#endif
+
+png_voidp PNGAPI
+png_memcpy_check (png_structp png_ptr, png_voidp s1, png_voidp s2,
+   png_uint_32 length)
+{
+   png_size_t size;
+
+   size = (png_size_t)length;
+   if ((png_uint_32)size != length)
+      png_error(png_ptr,"Overflow in png_memcpy_check.");
+
+   return(png_memcpy (s1, s2, size));
 }
 
+png_voidp PNGAPI
+png_memset_check (png_structp png_ptr, png_voidp s1, int value,
+   png_uint_32 length)
+{
+   png_size_t size;
 
-Quat Quat::operator*(const Quat& other) const {
+   size = (png_size_t)length;
+   if ((png_uint_32)size != length)
+      png_error(png_ptr,"Overflow in png_memset_check.");
 
-    // Following Watt & Watt, page 360
-    const Vector3& v1 = imag();
-    const Vector3& v2 = other.imag();
-    float          s1 = w;
-    float          s2 = other.w;
+   return (png_memset (s1, value, size));
 
-    return Quat(s1*v2 + s2*v1 + v1.cross(v2), s1*s2 - v1.dot(v2));
 }
 
-
-// From "Uniform Random Rotations", Ken Shoemake, Graphics Gems III.
-Quat Quat::unitRandom() {
-    float x0 = uniformRandom();
-    float r1 = sqrtf(1 - x0), 
-          r2 = sqrtf(x0);
-    float t1 = (float)G3D::twoPi() * uniformRandom();
-    float t2 = (float)G3D::twoPi() * uniformRandom();
-    float c1 = cosf(t1), 
-          s1 = sinf(t1);
-    float c2 = cosf(t2), 
-          s2 = sinf(t2);
-    return Quat(s1 * r1, c1 * r1, s2 * r2, c2 * r2);
+#ifdef PNG_USER_MEM_SUPPORTED
+/* This function is called when the application wants to use another method
+ * of allocating and freeing memory.
+ */
+void PNGAPI
+png_set_mem_fn(png_structp png_ptr, png_voidp mem_ptr, png_malloc_ptr
+  malloc_fn, png_free_ptr free_fn)
+{
+   png_ptr->mem_ptr = mem_ptr;
+   png_ptr->malloc_fn = malloc_fn;
+   png_ptr->free_fn = free_fn;
 }
 
-
-void Quat::deserialize(class BinaryInput& b) {
-    x = b.readFloat32();
-    y = b.readFloat32();
-    z = b.readFloat32();
-    w = b.readFloat32();
+/* This function returns a pointer to the mem_ptr associated with the user
+ * functions.  The application should free any memory associated with this
+ * pointer before png_write_destroy and png_read_destroy are called.
+ */
+png_voidp PNGAPI
+png_get_mem_ptr(png_structp png_ptr)
+{
+   return ((png_voidp)png_ptr->mem_ptr);
 }
-
-
-void Quat::serialize(class BinaryOutput& b) const {
-    b.writeFloat32(x);
-    b.writeFloat32(y);
-    b.writeFloat32(z);
-    b.writeFloat32(w);
-}
-
-
-// 2-char swizzles
-
-Vector2 Quat::xx() const  { return Vector2       (x, x); }
-Vector2 Quat::yx() const  { return Vector2       (y, x); }
-Vector2 Quat::zx() const  { return Vector2       (z, x); }
-Vector2 Quat::wx() const  { return Vector2       (w, x); }
-Vector2 Quat::xy() const  { return Vector2       (x, y); }
-Vector2 Quat::yy() const  { return Vector2       (y, y); }
-Vector2 Quat::zy() const  { return Vector2       (z, y); }
-Vector2 Quat::wy() const  { return Vector2       (w, y); }
-Vector2 Quat::xz() const  { return Vector2       (x, z); }
-Vector2 Quat::yz() const  { return Vector2       (y, z); }
-Vector2 Quat::zz() const  { return Vector2       (z, z); }
-Vector2 Quat::wz() const  { return Vector2       (w, z); }
-Vector2 Quat::xw() const  { return Vector2       (x, w); }
-Vector2 Quat::yw() const  { return Vector2       (y, w); }
-Vector2 Quat::zw() const  { return Vector2       (z, w); }
-Vector2 Quat::ww() const  { return Vector2       (w, w); }
-
-// 3-char swizzles
-
-Vector3 Quat::xxx() const  { return Vector3       (x, x, x); }
-Vector3 Quat::yxx() const  { return Vector3       (y, x, x); }
-Vector3 Quat::zxx() const  { return Vector3       (z, x, x); }
-Vector3 Quat::wxx() const  { return Vector3       (w, x, x); }
-Vector3 Quat::xyx() const  { return Vector3       (x, y, x); }
-Vector3 Quat::yyx() const  { return Vector3       (y, y, x); }
-Vector3 Quat::zyx() const  { return Vector3       (z, y, x); }
-Vector3 Quat::wyx() const  { return Vector3       (w, y, x); }
-Vector3 Quat::xzx() const  { return Vector3       (x, z, x); }
-Vector3 Quat::yzx() const  { return Vector3       (y, z, x); }
-Vector3 Quat::zzx() const  { return Vector3       (z, z, x); }
-Vector3 Quat::wzx() const  { return Vector3       (w, z, x); }
-Vector3 Quat::xwx() const  { return Vector3       (x, w, x); }
-Vector3 Quat::ywx() const  { return Vector3       (y, w, x); }
-Vector3 Quat::zwx() const  { return Vector3       (z, w, x); }
-Vector3 Quat::wwx() const  { return Vector3       (w, w, x); }
-Vector3 Quat::xxy() const  { return Vector3       (x, x, y); }
-Vector3 Quat::yxy() const  { return Vector3       (y, x, y); }
-Vector3 Quat::zxy() const  { return Vector3       (z, x, y); }
-Vector3 Quat::wxy() const  { return Vector3       (w, x, y); }
-Vector3 Quat::xyy() const  { return Vector3       (x, y, y); }
-Vector3 Quat::yyy() const  { return Vector3       (y, y, y); }
-Vector3 Quat::zyy() const  { return Vector3       (z, y, y); }
-Vector3 Quat::wyy() const  { return Vector3       (w, y, y); }
-Vector3 Quat::xzy() const  { return Vector3       (x, z, y); }
-Vector3 Quat::yzy() const  { return Vector3       (y, z, y); }
-Vector3 Quat::zzy() const  { return Vector3       (z, z, y); }
-Vector3 Quat::wzy() const  { return Vector3       (w, z, y); }
-Vector3 Quat::xwy() const  { return Vector3       (x, w, y); }
-Vector3 Quat::ywy() const  { return Vector3       (y, w, y); }
-Vector3 Quat::zwy() const  { return Vector3       (z, w, y); }
-Vector3 Quat::wwy() const  { return Vector3       (w, w, y); }
-Vector3 Quat::xxz() const  { return Vector3       (x, x, z); }
-Vector3 Quat::yxz() const  { return Vector3       (y, x, z); }
-Vector3 Quat::zxz() const  { return Vector3       (z, x, z); }
-Vector3 Quat::wxz() const  { return Vector3       (w, x, z); }
-Vector3 Quat::xyz() const  { return Vector3       (x, y, z); }
-Vector3 Quat::yyz() const  { return Vector3       (y, y, z); }
-Vector3 Quat::zyz() const  { return Vector3       (z, y, z); }
-Vector3 Quat::wyz() const  { return Vector3       (w, y, z); }
-Vector3 Quat::xzz() const  { return Vector3       (x, z, z); }
-Vector3 Quat::yzz() const  { return Vector3       (y, z, z); }
-Vector3 Quat::zzz() const  { return Vector3       (z, z, z); }
-Vector3 Quat::wzz() const  { return Vector3       (w, z, z); }
-Vector3 Quat::xwz() const  { return Vector3       (x, w, z); }
-Vector3 Quat::ywz() const  { return Vector3       (y, w, z); }
-Vector3 Quat::zwz() const  { return Vector3       (z, w, z); }
-Vector3 Quat::wwz() const  { return Vector3       (w, w, z); }
-Vector3 Quat::xxw() const  { return Vector3       (x, x, w); }
-Vector3 Quat::yxw() const  { return Vector3       (y, x, w); }
-Vector3 Quat::zxw() const  { return Vector3       (z, x, w); }
-Vector3 Quat::wxw() const  { return Vector3       (w, x, w); }
-Vector3 Quat::xyw() const  { return Vector3       (x, y, w); }
-Vector3 Quat::yyw() const  { return Vector3       (y, y, w); }
-Vector3 Quat::zyw() const  { return Vector3       (z, y, w); }
-Vector3 Quat::wyw() const  { return Vector3       (w, y, w); }
-Vector3 Quat::xzw() const  { return Vector3       (x, z, w); }
-Vector3 Quat::yzw() const  { return Vector3       (y, z, w); }
-Vector3 Quat::zzw() const  { return Vector3       (z, z, w); }
-Vector3 Quat::wzw() const  { return Vector3       (w, z, w); }
-Vector3 Quat::xww() const  { return Vector3       (x, w, w); }
-Vector3 Quat::yww() const  { return Vector3       (y, w, w); }
-Vector3 Quat::zww() const  { return Vector3       (z, w, w); }
-Vector3 Quat::www() const  { return Vector3       (w, w, w); }
-
-// 4-char swizzles
-
-Vector4 Quat::xxxx() const  { return Vector4       (x, x, x, x); }
-Vector4 Quat::yxxx() const  { return Vector4       (y, x, x, x); }
-Vector4 Quat::zxxx() const  { return Vector4       (z, x, x, x); }
-Vector4 Quat::wxxx() const  { return Vector4       (w, x, x, x); }
-Vector4 Quat::xyxx() const  { return Vector4       (x, y, x, x); }
-Vector4 Quat::yyxx() const  { return Vector4       (y, y, x, x); }
-Vector4 Quat::zyxx() const  { return Vector4       (z, y, x, x); }
-Vector4 Quat::wyxx() const  { return Vector4       (w, y, x, x); }
-Vector4 Quat::xzxx() const  { return Vector4       (x, z, x, x); }
-Vector4 Quat::yzxx() const  { return Vector4       (y, z, x, x); }
-Vector4 Quat::zzxx() const  { return Vector4       (z, z, x, x); }
-Vector4 Quat::wzxx() const  { return Vector4       (w, z, x, x); }
-Vector4 Quat::xwxx() const  { return Vector4       (x, w, x, x); }
-Vector4 Quat::ywxx() const  { return Vector4       (y, w, x, x); }
-Vector4 Quat::zwxx() const  { return Vector4       (z, w, x, x); }
-Vector4 Quat::wwxx() const  { return Vector4       (w, w, x, x); }
-Vector4 Quat::xxyx() const  { return Vector4       (x, x, y, x); }
-Vector4 Quat::yxyx() const  { return Vector4       (y, x, y, x); }
-Vector4 Quat::zxyx() const  { return Vector4       (z, x, y, x); }
-Vector4 Quat::wxyx() const  { return Vector4       (w, x, y, x); }
-Vector4 Quat::xyyx() const  { return Vector4       (x, y, y, x); }
-Vector4 Quat::yyyx() const  { return Vector4       (y, y, y, x); }
-Vector4 Quat::zyyx() const  { return Vector4       (z, y, y, x); }
-Vector4 Quat::wyyx() const  { return Vector4       (w, y, y, x); }
-Vector4 Quat::xzyx() const  { return Vector4       (x, z, y, x); }
-Vector4 Quat::yzyx() const  { return Vector4       (y, z, y, x); }
-Vector4 Quat::zzyx() const  { return Vector4       (z, z, y, x); }
-Vector4 Quat::wzyx() const  { return Vector4       (w, z, y, x); }
-Vector4 Quat::xwyx() const  { return Vector4       (x, w, y, x); }
-Vector4 Quat::ywyx() const  { return Vector4       (y, w, y, x); }
-Vector4 Quat::zwyx() const  { return Vector4       (z, w, y, x); }
-Vector4 Quat::wwyx() const  { return Vector4       (w, w, y, x); }
-Vector4 Quat::xxzx() const  { return Vector4       (x, x, z, x); }
-Vector4 Quat::yxzx() const  { return Vector4       (y, x, z, x); }
-Vector4 Quat::zxzx() const  { return Vector4       (z, x, z, x); }
-Vector4 Quat::wxzx() const  { return Vector4       (w, x, z, x); }
-Vector4 Quat::xyzx() const  { return Vector4       (x, y, z, x); }
-Vector4 Quat::yyzx() const  { return Vector4       (y, y, z, x); }
-Vector4 Quat::zyzx() const  { return Vector4       (z, y, z, x); }
-Vector4 Quat::wyzx() const  { return Vector4       (w, y, z, x); }
-Vector4 Quat::xzzx() const  { return Vector4       (x, z, z, x); }
-Vector4 Quat::yzzx() const  { return Vector4       (y, z, z, x); }
-Vector4 Quat::zzzx() const  { return Vector4       (z, z, z, x); }
-Vector4 Quat::wzzx() const  { return Vector4       (w, z, z, x); }
-Vector4 Quat::xwzx() const  { return Vector4       (x, w, z, x); }
-Vector4 Quat::ywzx() const  { return Vector4       (y, w, z, x); }
-Vector4 Quat::zwzx() const  { return Vector4       (z, w, z, x); }
-Vector4 Quat::wwzx() const  { return Vector4       (w, w, z, x); }
-Vector4 Quat::xxwx() const  { return Vector4       (x, x, w, x); }
-Vector4 Quat::yxwx() const  { return Vector4       (y, x, w, x); }
-Vector4 Quat::zxwx() const  { return Vector4       (z, x, w, x); }
-Vector4 Quat::wxwx() const  { return Vector4       (w, x, w, x); }
-Vector4 Quat::xywx() const  { return Vector4       (x, y, w, x); }
-Vector4 Quat::yywx() const  { return Vector4       (y, y, w, x); }
-Vector4 Quat::zywx() const  { return Vector4       (z, y, w, x); }
-Vector4 Quat::wywx() const  { return Vector4       (w, y, w, x); }
-Vector4 Quat::xzwx() const  { return Vector4       (x, z, w, x); }
-Vector4 Quat::yzwx() const  { return Vector4       (y, z, w, x); }
-Vector4 Quat::zzwx() const  { return Vector4       (z, z, w, x); }
-Vector4 Quat::wzwx() const  { return Vector4       (w, z, w, x); }
-Vector4 Quat::xwwx() const  { return Vector4       (x, w, w, x); }
-Vector4 Quat::ywwx() const  { return Vector4       (y, w, w, x); }
-Vector4 Quat::zwwx() const  { return Vector4       (z, w, w, x); }
-Vector4 Quat::wwwx() const  { return Vector4       (w, w, w, x); }
-Vector4 Quat::xxxy() const  { return Vector4       (x, x, x, y); }
-Vector4 Quat::yxxy() const  { return Vector4       (y, x, x, y); }
-Vector4 Quat::zxxy() const  { return Vector4       (z, x, x, y); }
-Vector4 Quat::wxxy() const  { return Vector4       (w, x, x, y); }
-Vector4 Quat::xyxy() const  { return Vector4       (x, y, x, y); }
-Vector4 Quat::yyxy() const  { return Vector4       (y, y, x, y); }
-Vector4 Quat::zyxy() const  { return Vector4       (z, y, x, y); }
-Vector4 Quat::wyxy() const  { return Vector4       (w, y, x, y); }
-Vector4 Quat::xzxy() const  { return Vector4       (x, z, x, y); }
-Vector4 Quat::yzxy() const  { return Vector4       (y, z, x, y); }
-Vector4 Quat::zzxy() const  { return Vector4       (z, z, x, y); }
-Vector4 Quat::wzxy() const  { return Vector4       (w, z, x, y); }
-Vector4 Quat::xwxy() const  { return Vector4       (x, w, x, y); }
-Vector4 Quat::ywxy() const  { return Vector4       (y, w, x, y); }
-Vector4 Quat::zwxy() const  { return Vector4       (z, w, x, y); }
-Vector4 Quat::wwxy() const  { return Vector4       (w, w, x, y); }
-Vector4 Quat::xxyy() const  { return Vector4       (x, x, y, y); }
-Vector4 Quat::yxyy() const  { return Vector4       (y, x, y, y); }
-Vector4 Quat::zxyy() const  { return Vector4       (z, x, y, y); }
-Vector4 Quat::wxyy() const  { return Vector4       (w, x, y, y); }
-Vector4 Quat::xyyy() const  { return Vector4       (x, y, y, y); }
-Vector4 Quat::yyyy() const  { return Vector4       (y, y, y, y); }
-Vector4 Quat::zyyy() const  { return Vector4       (z, y, y, y); }
-Vector4 Quat::wyyy() const  { return Vector4       (w, y, y, y); }
-Vector4 Quat::xzyy() const  { return Vector4       (x, z, y, y); }
-Vector4 Quat::yzyy() const  { return Vector4       (y, z, y, y); }
-Vector4 Quat::zzyy() const  { return Vector4       (z, z, y, y); }
-Vector4 Quat::wzyy() const  { return Vector4       (w, z, y, y); }
-Vector4 Quat::xwyy() const  { return Vector4       (x, w, y, y); }
-Vector4 Quat::ywyy() const  { return Vector4       (y, w, y, y); }
-Vector4 Quat::zwyy() const  { return Vector4       (z, w, y, y); }
-Vector4 Quat::wwyy() const  { return Vector4       (w, w, y, y); }
-Vector4 Quat::xxzy() const  { return Vector4       (x, x, z, y); }
-Vector4 Quat::yxzy() const  { return Vector4       (y, x, z, y); }
-Vector4 Quat::zxzy() const  { return Vector4       (z, x, z, y); }
-Vector4 Quat::wxzy() const  { return Vector4       (w, x, z, y); }
-Vector4 Quat::xyzy() const  { return Vector4       (x, y, z, y); }
-Vector4 Quat::yyzy() const  { return Vector4       (y, y, z, y); }
-Vector4 Quat::zyzy() const  { return Vector4       (z, y, z, y); }
-Vector4 Quat::wyzy() const  { return Vector4       (w, y, z, y); }
-Vector4 Quat::xzzy() const  { return Vector4       (x, z, z, y); }
-Vector4 Quat::yzzy() const  { return Vector4       (y, z, z, y); }
-Vector4 Quat::zzzy() const  { return Vector4       (z, z, z, y); }
-Vector4 Quat::wzzy() const  { return Vector4       (w, z, z, y); }
-Vector4 Quat::xwzy() const  { return Vector4       (x, w, z, y); }
-Vector4 Quat::ywzy() const  { return Vector4       (y, w, z, y); }
-Vector4 Quat::zwzy() const  { return Vector4       (z, w, z, y); }
-Vector4 Quat::wwzy() const  { return Vector4       (w, w, z, y); }
-Vector4 Quat::xxwy() const  { return Vector4       (x, x, w, y); }
-Vector4 Quat::yxwy() const  { return Vector4       (y, x, w, y); }
-Vector4 Quat::zxwy() const  { return Vector4       (z, x, w, y); }
-Vector4 Quat::wxwy() const  { return Vector4       (w, x, w, y); }
-Vector4 Quat::xywy() const  { return Vector4       (x, y, w, y); }
-Vector4 Quat::yywy() const  { return Vector4       (y, y, w, y); }
-Vector4 Quat::zywy() const  { return Vector4       (z, y, w, y); }
-Vector4 Quat::wywy() const  { return Vector4       (w, y, w, y); }
-Vector4 Quat::xzwy() const  { return Vector4       (x, z, w, y); }
-Vector4 Quat::yzwy() const  { return Vector4       (y, z, w, y); }
-Vector4 Quat::zzwy() const  { return Vector4       (z, z, w, y); }
-Vector4 Quat::wzwy() const  { return Vector4       (w, z, w, y); }
-Vector4 Quat::xwwy() const  { return Vector4       (x, w, w, y); }
-Vector4 Quat::ywwy() const  { return Vector4       (y, w, w, y); }
-Vector4 Quat::zwwy() const  { return Vector4       (z, w, w, y); }
-Vector4 Quat::wwwy() const  { return Vector4       (w, w, w, y); }
-Vector4 Quat::xxxz() const  { return Vector4       (x, x, x, z); }
-Vector4 Quat::yxxz() const  { return Vector4       (y, x, x, z); }
-Vector4 Quat::zxxz() const  { return Vector4       (z, x, x, z); }
-Vector4 Quat::wxxz() const  { return Vector4       (w, x, x, z); }
-Vector4 Quat::xyxz() const  { return Vector4       (x, y, x, z); }
-Vector4 Quat::yyxz() const  { return Vector4       (y, y, x, z); }
-Vector4 Quat::zyxz() const  { return Vector4       (z, y, x, z); }
-Vector4 Quat::wyxz() const  { return Vector4       (w, y, x, z); }
-Vector4 Quat::xzxz() const  { return Vector4       (x, z, x, z); }
-Vector4 Quat::yzxz() const  { return Vector4       (y, z, x, z); }
-Vector4 Quat::zzxz() const  { return Vector4       (z, z, x, z); }
-Vector4 Quat::wzxz() const  { return Vector4       (w, z, x, z); }
-Vector4 Quat::xwxz() const  { return Vector4       (x, w, x, z); }
-Vector4 Quat::ywxz() const  { return Vector4       (y, w, x, z); }
-Vector4 Quat::zwxz() const  { return Vector4       (z, w, x, z); }
-Vector4 Quat::wwxz() const  { return Vector4       (w, w, x, z); }
-Vector4 Quat::xxyz() const  { return Vector4       (x, x, y, z); }
-Vector4 Quat::yxyz() const  { return Vector4       (y, x, y, z); }
-Vector4 Quat::zxyz() const  { return Vector4       (z, x, y, z); }
-Vector4 Quat::wxyz() const  { return Vector4       (w, x, y, z); }
-Vector4 Quat::xyyz() const  { return Vector4       (x, y, y, z); }
-Vector4 Quat::yyyz() const  { return Vector4       (y, y, y, z); }
-Vector4 Quat::zyyz() const  { return Vector4       (z, y, y, z); }
-Vector4 Quat::wyyz() const  { return Vector4       (w, y, y, z); }
-Vector4 Quat::xzyz() const  { return Vector4       (x, z, y, z); }
-Vector4 Quat::yzyz() const  { return Vector4       (y, z, y, z); }
-Vector4 Quat::zzyz() const  { return Vector4       (z, z, y, z); }
-Vector4 Quat::wzyz() const  { return Vector4       (w, z, y, z); }
-Vector4 Quat::xwyz() const  { return Vector4       (x, w, y, z); }
-Vector4 Quat::ywyz() const  { return Vector4       (y, w, y, z); }
-Vector4 Quat::zwyz() const  { return Vector4       (z, w, y, z); }
-Vector4 Quat::wwyz() const  { return Vector4       (w, w, y, z); }
-Vector4 Quat::xxzz() const  { return Vector4       (x, x, z, z); }
-Vector4 Quat::yxzz() const  { return Vector4       (y, x, z, z); }
-Vector4 Quat::zxzz() const  { return Vector4       (z, x, z, z); }
-Vector4 Quat::wxzz() const  { return Vector4       (w, x, z, z); }
-Vector4 Quat::xyzz() const  { return Vector4       (x, y, z, z); }
-Vector4 Quat::yyzz() const  { return Vector4       (y, y, z, z); }
-Vector4 Quat::zyzz() const  { return Vector4       (z, y, z, z); }
-Vector4 Quat::wyzz() const  { return Vector4       (w, y, z, z); }
-Vector4 Quat::xzzz() const  { return Vector4       (x, z, z, z); }
-Vector4 Quat::yzzz() const  { return Vector4       (y, z, z, z); }
-Vector4 Quat::zzzz() const  { return Vector4       (z, z, z, z); }
-Vector4 Quat::wzzz() const  { return Vector4       (w, z, z, z); }
-Vector4 Quat::xwzz() const  { return Vector4       (x, w, z, z); }
-Vector4 Quat::ywzz() const  { return Vector4       (y, w, z, z); }
-Vector4 Quat::zwzz() const  { return Vector4       (z, w, z, z); }
-Vector4 Quat::wwzz() const  { return Vector4       (w, w, z, z); }
-Vector4 Quat::xxwz() const  { return Vector4       (x, x, w, z); }
-Vector4 Quat::yxwz() const  { return Vector4       (y, x, w, z); }
-Vector4 Quat::zxwz() const  { return Vector4       (z, x, w, z); }
-Vector4 Quat::wxwz() const  { return Vector4       (w, x, w, z); }
-Vector4 Quat::xywz() const  { return Vector4       (x, y, w, z); }
-Vector4 Quat::yywz() const  { return Vector4       (y, y, w, z); }
-Vector4 Quat::zywz() const  { return Vector4       (z, y, w, z); }
-Vector4 Quat::wywz() const  { return Vector4       (w, y, w, z); }
-Vector4 Quat::xzwz() const  { return Vector4       (x, z, w, z); }
-Vector4 Quat::yzwz() const  { return Vector4       (y, z, w, z); }
-Vector4 Quat::zzwz() const  { return Vector4       (z, z, w, z); }
-Vector4 Quat::wzwz() const  { return Vector4       (w, z, w, z); }
-Vector4 Quat::xwwz() const  { return Vector4       (x, w, w, z); }
-Vector4 Quat::ywwz() const  { return Vector4       (y, w, w, z); }
-Vector4 Quat::zwwz() const  { return Vector4       (z, w, w, z); }
-Vector4 Quat::wwwz() const  { return Vector4       (w, w, w, z); }
-Vector4 Quat::xxxw() const  { return Vector4       (x, x, x, w); }
-Vector4 Quat::yxxw() const  { return Vector4       (y, x, x, w); }
-Vector4 Quat::zxxw() const  { return Vector4       (z, x, x, w); }
-Vector4 Quat::wxxw() const  { return Vector4       (w, x, x, w); }
-Vector4 Quat::xyxw() const  { return Vector4       (x, y, x, w); }
-Vector4 Quat::yyxw() const  { return Vector4       (y, y, x, w); }
-Vector4 Quat::zyxw() const  { return Vector4       (z, y, x, w); }
-Vector4 Quat::wyxw() const  { return Vector4       (w, y, x, w); }
-Vector4 Quat::xzxw() const  { return Vector4       (x, z, x, w); }
-Vector4 Quat::yzxw() const  { return Vector4       (y, z, x, w); }
-Vector4 Quat::zzxw() const  { return Vector4       (z, z, x, w); }
-Vector4 Quat::wzxw() const  { return Vector4       (w, z, x, w); }
-Vector4 Quat::xwxw() const  { return Vector4       (x, w, x, w); }
-Vector4 Quat::ywxw() const  { return Vector4       (y, w, x, w); }
-Vector4 Quat::zwxw() const  { return Vector4       (z, w, x, w); }
-Vector4 Quat::wwxw() const  { return Vector4       (w, w, x, w); }
-Vector4 Quat::xxyw() const  { return Vector4       (x, x, y, w); }
-Vector4 Quat::yxyw() const  { return Vector4       (y, x, y, w); }
-Vector4 Quat::zxyw() const  { return Vector4       (z, x, y, w); }
-Vector4 Quat::wxyw() const  { return Vector4       (w, x, y, w); }
-Vector4 Quat::xyyw() const  { return Vector4       (x, y, y, w); }
-Vector4 Quat::yyyw() const  { return Vector4       (y, y, y, w); }
-Vector4 Quat::zyyw() const  { return Vector4       (z, y, y, w); }
-Vector4 Quat::wyyw() const  { return Vector4       (w, y, y, w); }
-Vector4 Quat::xzyw() const  { return Vector4       (x, z, y, w); }
-Vector4 Quat::yzyw() const  { return Vector4       (y, z, y, w); }
-Vector4 Quat::zzyw() const  { return Vector4       (z, z, y, w); }
-Vector4 Quat::wzyw() const  { return Vector4       (w, z, y, w); }
-Vector4 Quat::xwyw() const  { return Vector4       (x, w, y, w); }
-Vector4 Quat::ywyw() const  { return Vector4       (y, w, y, w); }
-Vector4 Quat::zwyw() const  { return Vector4       (z, w, y, w); }
-Vector4 Quat::wwyw() const  { return Vector4       (w, w, y, w); }
-Vector4 Quat::xxzw() const  { return Vector4       (x, x, z, w); }
-Vector4 Quat::yxzw() const  { return Vector4       (y, x, z, w); }
-Vector4 Quat::zxzw() const  { return Vector4       (z, x, z, w); }
-Vector4 Quat::wxzw() const  { return Vector4       (w, x, z, w); }
-Vector4 Quat::xyzw() const  { return Vector4       (x, y, z, w); }
-Vector4 Quat::yyzw() const  { return Vector4       (y, y, z, w); }
-Vector4 Quat::zyzw() const  { return Vector4       (z, y, z, w); }
-Vector4 Quat::wyzw() const  { return Vector4       (w, y, z, w); }
-Vector4 Quat::xzzw() const  { return Vector4       (x, z, z, w); }
-Vector4 Quat::yzzw() const  { return Vector4       (y, z, z, w); }
-Vector4 Quat::zzzw() const  { return Vector4       (z, z, z, w); }
-Vector4 Quat::wzzw() const  { return Vector4       (w, z, z, w); }
-Vector4 Quat::xwzw() const  { return Vector4       (x, w, z, w); }
-Vector4 Quat::ywzw() const  { return Vector4       (y, w, z, w); }
-Vector4 Quat::zwzw() const  { return Vector4       (z, w, z, w); }
-Vector4 Quat::wwzw() const  { return Vector4       (w, w, z, w); }
-Vector4 Quat::xxww() const  { return Vector4       (x, x, w, w); }
-Vector4 Quat::yxww() const  { return Vector4       (y, x, w, w); }
-Vector4 Quat::zxww() const  { return Vector4       (z, x, w, w); }
-Vector4 Quat::wxww() const  { return Vector4       (w, x, w, w); }
-Vector4 Quat::xyww() const  { return Vector4       (x, y, w, w); }
-Vector4 Quat::yyww() const  { return Vector4       (y, y, w, w); }
-Vector4 Quat::zyww() const  { return Vector4       (z, y, w, w); }
-Vector4 Quat::wyww() const  { return Vector4       (w, y, w, w); }
-Vector4 Quat::xzww() const  { return Vector4       (x, z, w, w); }
-Vector4 Quat::yzww() const  { return Vector4       (y, z, w, w); }
-Vector4 Quat::zzww() const  { return Vector4       (z, z, w, w); }
-Vector4 Quat::wzww() const  { return Vector4       (w, z, w, w); }
-Vector4 Quat::xwww() const  { return Vector4       (x, w, w, w); }
-Vector4 Quat::ywww() const  { return Vector4       (y, w, w, w); }
-Vector4 Quat::zwww() const  { return Vector4       (z, w, w, w); }
-Vector4 Quat::wwww() const  { return Vector4       (w, w, w, w); }
-}
-
+#endif /* PNG_USER_MEM_SUPPORTED */

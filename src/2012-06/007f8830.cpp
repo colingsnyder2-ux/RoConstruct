@@ -1,123 +1,55 @@
-// from server: 42% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/FlagStand.cpp
+// from server: 66% by Intel
+struct VInstance {
+    int field_8;
+    int field_C;
+    int field_20;
+    int field_24;
+    int field_34;
+    void func(void* arg);
+};
 
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/FlagStand.h"
-#include "v8datamodel/Flag.h"
+void __stdcall sub_7DEFF0(int* ecx, void* edx, void* arg1, void* arg2);
+void __stdcall sub_982114(void* ptr);
+void __stdcall sub_B2263C(void* ecx);
 
-namespace RBX
-{
-	static Reflection::PropDescriptor<FlagStand, BrickColor> prop_Color("TeamColor", "Data", &FlagStand::getTeamColor, &FlagStand::setTeamColor, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::SignalDesc<FlagStand, void(boost::shared_ptr<Instance>)> event_FlagCaptured("FlagCaptured", "Player");
+void VInstance::func(void* arg) {
+    int* ebx = (int*)arg;
+    int eax = ebx[1];
+    int* esi = (int*)this;
 
-	FlagStand::FlagStand()
-	{
-		setName("FlagStand");
-	}
+    int* node1;
+    if (eax) {
+        node1 = (int*)((char*)(eax) - 0x20);
+    } else {
+        node1 = 0;
+    }
+    int val1 = node1[7];
+    esi[13] -= val1;
 
-	BrickColor FlagStand::getTeamColor() const
-	{
-		return teamColor;
-	}
+    eax = ebx[1];
+    int* node2;
+    if (eax) {
+        node2 = (int*)((char*)(eax) - 0x20);
+    } else {
+        node2 = 0;
+    }
+    int* edi = (int*)node2[7];
 
-	void FlagStand::setTeamColor(BrickColor color)
-	{
-		teamColor = color;
-		raisePropertyChanged(PartInstance::prop_Color);
-	}
+    if (edi != (int*)esi[2]) {
+        int* edx = (int*)edi[1];
+        int* ecx_val = (int*)edi[0];
+        *edx = (int)ecx_val;
+        ecx_val = (int*)edi[0];
+        edx = (int*)edi[1];
+        ecx_val[1] = (int)edx;
 
-	void FlagStand::AffixFlag(Flag* flag)
-	{
-		if (!GetFlag())
-		{
-			flag->setParent(getParent());
+        sub_B2263C(edi + 2);
+        sub_982114(edi);
+        esi[3]--;
+    }
 
-			PartInstance* handle = flag->getHandle();
-
-			handle->setCoordinateFrame(G3D::CoordinateFrame());
-
-			G3D::Vector3 location = getLocation().translation;
-			location.y += 0.5f;
-
-			handle->moveToPoint(location);
-			handle->join();
-		}
-	}
-
-	Flag* FlagStand::GetFlag()
-	{
-		Primitive* primitive = getPrimitive();
-
-		for (RigidJoint* current = primitive->getFirstRigid(); current != NULL; current = primitive->getNextRigid(current))
-		{
-			for (int i = 0; i < 2; i++)
-			{
-				Flag* flag = dynamic_cast<Flag*>(PartInstance::fromPrimitive(current->getPrimitive(i))->getParent());
-				if (flag)
-					return flag;
-			}
-		}
-
-		return NULL;
-	}
-
-	void FlagStand::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-	{
-		Instance::onServiceProvider(oldProvider, newProvider);
-
-		if (!oldProvider)
-		{
-			FlagStandService* flagStandService = ServiceProvider::create<FlagStandService>(newProvider);
-			RBXASSERT(flagStandService);
-
-			flagStandService->RegisterFlagStand(this);
-
-			standTouched = PartInstance::event_Touched.connect(this, boost::bind(&FlagStand::onEvent_standTouched, this, _1));
-		}
-
-		if (!newProvider)
-		{
-			FlagStandService* flagStandService = ServiceProvider::create<FlagStandService>(oldProvider);
-			RBXASSERT(flagStandService);
-
-			flagStandService->UnregisterFlagStand(this);
-
-			standTouched.disconnect();
-		}
-	}
-
-	FlagStandService::FlagStandService()
-	{
-		setName("FlagStandService");
-		propArchivable.setValue(this, false);
-	}
-
-	FlagStandService::~FlagStandService() {}
-
-	FlagStand* FlagStandService::FindStandWithFlag(Flag* f)
-	{
-		if (flagStands.empty())
-			return NULL;
-
-		for (std::list<FlagStand*>::const_iterator iter = flagStands.begin(); iter != flagStands.end(); iter++)
-		{
-			if ((*iter)->GetFlag() == f)
-				return *iter;
-		}
-
-		return NULL;
-	}
-
-	void FlagStandService::RegisterFlagStand(FlagStand* s)
-	{
-		flagStands.push_back(s);
-	}
-
-	void FlagStandService::UnregisterFlagStand(FlagStand* s)
-	{
-		flagStands.remove(s);
-	}
+    eax = ebx[1];
+    int ecx_val2 = ebx[0];
+    int* edx_ptr = (int*)((char*)esi + 0x20);
+    sub_7DEFF0(&ecx_val2, &eax, edx_ptr, edx_ptr + 1);
 }

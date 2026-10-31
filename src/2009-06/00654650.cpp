@@ -1,108 +1,65 @@
-// from server: 67% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+// from server: 100% by EspClaude
+// from server: 100% by king_originala
+// roc 2008-06 005c6c90  unit: RBX::HingeTool  size: 95 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 005c6c90
+//
+// 005c6c90  6aff                 push -1
+// 005c6c92  683bf47b00           push 0x7bf43b
+// 005c6c97  64a100000000         mov eax, dword ptr fs:[0]
+// 005c6c9d  50                   push eax
+// 005c6c9e  64892500000000       mov dword ptr fs:[0], esp
+// 005c6ca5  51                   push ecx
+// 005c6ca6  56                   push esi
+// 005c6ca7  57                   push edi
+// 005c6ca8  6a48                 push 0x48
+// 005c6caa  8bf9                 mov edi, ecx
+// 005c6cac  e86f9c0d00           call 0x6a0920
+// 005c6cb1  8bf0                 mov esi, eax
+// 005c6cb3  83c404               add esp, 4
+// 005c6cb6  89742408             mov dword ptr [esp + 8], esi
+// 005c6cba  33c0                 xor eax, eax
+// 005c6cbc  89442414             mov dword ptr [esp + 0x14], eax
+// 005c6cc0  3bf0                 cmp esi, eax
+// 005c6cc2  741a                 je 0x5c6cde
+// 005c6cc4  8b4718               mov eax, dword ptr [edi + 0x18]
+// 005c6cc7  50                   push eax
+// 005c6cc8  8bce                 mov ecx, esi
+// 005c6cca  e811310500           call 0x619de0
+// 005c6ccf  c70664948300         mov dword ptr [esi], 0x839464
+// 005c6cd5  c746044c948300       mov dword ptr [esi + 4], 0x83944c
+// 005c6cdc  8bc6                 mov eax, esi
+// 005c6cde  8b4c240c             mov ecx, dword ptr [esp + 0xc]
+// 005c6ce2  5f                   pop edi
+// 005c6ce3  5e                   pop esi
+// 005c6ce4  64890d00000000       mov dword ptr fs:[0], ecx
+// 005c6ceb  83c410               add esp, 0x10
+// 005c6cee  c3                   ret 
 
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
+void* __cdecl operator new(unsigned int);
+void __cdecl operator delete(void*);
 
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
+struct Base {
+    unsigned int table1;
+    unsigned int table2;
+    char storage[64];
+    Base(void*);
+};
 
-boost::mutex& moo2()
-{
-	static boost::mutex mutex2;
-	return mutex2;
+struct Object : Base {
+    Object(void*);
+};
+
+inline Object::Object(void* p) : Base(p) {
+    table1 = 0x839464;
+    table2 = 0x83944c;
 }
 
-void initMoo()
-{
-	moo2();
-}
+struct S {
+    char padding[24];
+    void* context;
+    Object* f();
+};
 
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
+Object* S::f() {
+    return new Object(context);
 }

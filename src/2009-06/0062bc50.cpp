@@ -1,29 +1,31 @@
-// from server: 67% by atomic.potato
-struct P8ModelInstance_GetSetImpl
-{
-    char pad[0x18];
-    void* fn;
-    int offset1c;
-    int offset20;
-    bool set(void* arg1, void* arg2);
-};
+// from server: 91% by EspClaude
+// from server: 100% by auto
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// roc-lib: openrbx-client App/v8datamodel/Flag.cpp
 
-bool P8ModelInstance_GetSetImpl::set(void* arg1, void* arg2)
+// Candidate translation unit (score above; library headers required).
+#include "v8datamodel/Flag.h"
+
+#include "reflection/property.h"
+
+namespace RBX {
+
+const char sFlag[] = "Flag";
+
+static Reflection::PropDescriptor<Flag, BrickColor> prop_Color(
+	"TeamColor",
+	"Data",
+	&RBX::Flag::getTeamColor,
+	&RBX::Flag::setTeamColor
+);
+
+// FUNCTION: WEBSERVICE 0x100cef60
+void Flag::setTeamColor(BrickColor color)
 {
-    char* p = (char*)arg1;
-    if (p)
-    {
-        p -= 0x18;
-    }
-    else
-    {
-        p = 0;
-    }
-    int idx = *(int*)arg2;
-    int off = *(int*)(p + 0x90);
-    int val = *(int*)(off + offset20);
-    val += offset1c;
-    void* fnptr = fn;
-    char* base = p + 0x90;
-    return ((bool (__thiscall*)(void*, int))fnptr)(base + val, idx);
+	teamColor = color;
+	raisePropertyChanged(prop_Color);
 }
+
+} // namespace RBX

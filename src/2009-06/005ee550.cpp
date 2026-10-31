@@ -1,48 +1,43 @@
-// from server: 30% by colin
+// from server: 99% by EspClaude
+// from server: 100% by tester
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client App/script/Script.cpp
+// roc-lib: rbxgs-dll v8datamodel/FaceInstance.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "script/Script.h"
-
-#include "network/Player.h"
-#include "util/ContentProvider.h"
-#include "util/Name.h"
-#include "v8datamodel/Team.h"
-
-namespace RBX {
-
-char sScript[] = "Script";
-
-char sLocalScript[] = "LocalScript";
-
-// FUNCTION: WEBSERVICE 0x10068d50
-boost::shared_ptr<const std::string> Script::requestCode()
+#include "v8datamodel/FaceInstance.h"
+#include "v8datamodel/PartInstance.h"
+#include "util/NormalId.h"
+#include "v8tree/Instance.h"
+#include "reflection/reflection.h"
+namespace RBX 
 {
-	if (scriptId.isNull()) {
-		return embeddedSource;
+	const char* sFaceInstance = "FaceInstance";
+	const Reflection::EnumPropDescriptor<FaceInstance,NormalId> FaceInstance::prop_Face("Face", "Data", &FaceInstance::getFace, &FaceInstance::setFace, Reflection::PropertyDescriptor::STANDARD);
+
+	FaceInstance::FaceInstance()
+		:face(NORM_Z_NEG)
+	{
 	}
 
-	return ContentProvider::singleton().requestContentString(scriptId);
+	void FaceInstance::setFace(NormalId value) 
+	{
+		if (face != value) 
+		{
+			face = value;
+			raisePropertyChanged(prop_Face);
+		}
+	}
+
+
+	NormalId FaceInstance::getFace() const 
+	{
+		return face;
+	}
+
+	bool FaceInstance::askSetParent(const Instance* instance) const 
+	{
+		return dynamic_cast<const PartInstance*>(instance) != NULL;
+	}
 }
-
-} // namespace RBX
-
-template const RBX::Name& RBX::Name::doDeclare<RBX::sTeam>();
-template const RBX::Name& RBX::Name::doDeclare<RBX::Network::sPlayer>();
-template void RBX::Name::callDoDeclare<RBX::sTeam>();
-template void RBX::Name::callDoDeclare<RBX::Network::sPlayer>();
-
-template class RBX::FactoryProduct<RBX::Script, RBX::Instance, RBX::sScript>;
-template class RBX::Reflection::
-	Described<RBX::Script, RBX::sScript, RBX::FactoryProduct<RBX::Script, RBX::Instance, RBX::sScript> >;
-template class RBX::DescribedCreatable<RBX::Script, RBX::Instance, RBX::sScript>;
-
-template class RBX::FactoryProduct<RBX::LocalScript, RBX::Script, RBX::sLocalScript>;
-template class RBX::Reflection::Described<
-	RBX::LocalScript,
-	RBX::sLocalScript,
-	RBX::FactoryProduct<RBX::LocalScript, RBX::Script, RBX::sLocalScript> >;
-template class RBX::DescribedCreatable<RBX::LocalScript, RBX::Script, RBX::sLocalScript>;

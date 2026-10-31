@@ -1,50 +1,41 @@
-// from server: 46% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8tree/Verb.cpp
+// from server: 100% by EspClaude
+// from server: 100% by king_originala
+// roc 2008-06 005832c0  unit: RBX::CameraZoomExtentsCommand  size: 28 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 005832c0
+//
+// 005832c0  51                   push ecx
+// 005832c1  8b4108               mov eax, dword ptr [ecx + 8]
+// 005832c4  85c0                 test eax, eax
+// 005832c6  7412                 je 0x5832da
+// 005832c8  8b4904               mov ecx, dword ptr [ecx + 4]
+// 005832cb  8d1424               lea edx, [esp]
+// 005832ce  890c24               mov dword ptr [esp], ecx
+// 005832d1  52                   push edx
+// 005832d2  8d4804               lea ecx, [eax + 4]
+// 005832d5  e8062ae8ff           call 0x405ce0
+// 005832da  59                   pop ecx
+// 005832db  c3                   ret 
 
-// Candidate translation unit (score above; library headers required).
-#include "v8tree/Verb.h"
+struct Receiver {
+    void invoke(void* const* value);
+};
 
-namespace RBX
+struct Target {
+    unsigned long padding;
+    Receiver receiver;
+};
+
+struct S {
+    unsigned long padding;
+    void* value;
+    Target* target;
+    void f();
+};
+
+void S::f()
 {
-	VerbContainer::VerbContainer(VerbContainer* parent) 
-		: parent(parent) 
-	{
-	}
-
-	VerbContainer::~VerbContainer()
-	{
-		while (verbs.begin() != verbs.end())
-		{
-			delete verbs.begin()->second;
-		}
-	}
-
-	void VerbContainer::setVerbParent(VerbContainer* parent)
-	{
-		this->parent = parent;
-	}
-
-	Verb* VerbContainer::getVerb(std::string name)
-	{
-		return getVerb(Name::lookup(name));
-	}
-
-	Verb* VerbContainer::getVerb(const Name& name)
-	{
-		if (Name::getNullName() == name)
-			return NULL;
-
-		std::map<const Name*, Verb*>::iterator iter = verbs.find(&name);
-
-		if (iter != verbs.end())
-			return iter->second;
-
-		if (!parent)
-			return NULL;
-
-		return parent->getVerb(name);
-	}
+    if (target) {
+        void* copy = value;
+        target->receiver.invoke(&copy);
+    }
 }

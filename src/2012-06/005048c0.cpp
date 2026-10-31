@@ -1,26 +1,28 @@
-// from server: 21% by atomic.potato
-struct S
-{
-    char* begin;
-    char* end;
-
-    void f();
+// from server: 97% by Intel
+struct OgreRbxMeshPartAdapter {
+    int field_0;
+    int field_4;
+    int field_8;
+    int field_C;
+    void func();
 };
 
-void S::f()
-{
-    char* dst = begin;
-    char* src = end;
-
-    if (dst != src)
-    {
-        while (src != src)
-        {
-            *(int*)dst = *(int*)src;
-            *(int*)(dst + 4) = *(int*)(src + 4);
-            src += 8;
-            dst += 8;
+void OgreRbxMeshPartAdapter::func() {
+    int* edx = reinterpret_cast<int*>(field_8);
+    int* esi = reinterpret_cast<int*>(field_C);
+    if (edx != esi) {
+        int* eax = esi;
+        if (esi) {
+            int* edi;
+            do {
+                edi = reinterpret_cast<int*>(*eax);
+                *edx = reinterpret_cast<int>(edi);
+                edi = reinterpret_cast<int*>(*(eax + 1));
+                *(edx + 1) = reinterpret_cast<int>(edi);
+                eax += 2;
+                edx += 2;
+            } while (eax != esi);
         }
-        end = dst;
+        field_C = reinterpret_cast<int>(edx);
     }
 }

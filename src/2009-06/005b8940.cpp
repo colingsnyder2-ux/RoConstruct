@@ -1,5 +1,6 @@
-// from server: 88% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /Od /Ob1 /GS- /MT
-// roc-lib: wildmagic-2-core Containment/WmlConvexHull3.cpp
+// roc-cl: 21022
+// roc-flags: /Od /GS- /EHsc /MD
+struct S_005b8940 { int a; int b; int c; int* f(int); };
+int* S_005b8940::f(int) { return &c; }

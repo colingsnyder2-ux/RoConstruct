@@ -1,71 +1,115 @@
-// from server: 52% by atomic.potato
+// from server: 81% by EspClaude
+// from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client App/v8datamodel/Selection.cpp
+// roc-lib: rbxgs-dll roc_selection_native_family_ad678e9424f0efdf.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "v8datamodel/Selection.h"
-
-#include "util/object.h"
-#include "util/standardout.h"
-
-#include <algorithm>
-
+#include <boost/shared_ptr.hpp>
+namespace RBX { class Instance; template<typename Class> boost::shared_ptr<Class> shared_from(Class*); template<> boost::shared_ptr<Instance> shared_from<Instance>(Instance*); template<> boost::shared_ptr<const Instance> shared_from<const Instance>(const Instance*); }
+#include <v8datamodel/Selection.h>
 namespace RBX {
+	void Selection::toggleSelection(Instance* instance)
+	{
+		boost::shared_ptr<Instance> shared = shared_from(instance);
+		boost::shared_ptr<std::vector<boost::shared_ptr<Instance>>> sel = (*(CopyOnWrite<std::vector<boost::shared_ptr<Instance>>>*)((char*)this+0x154)).write();
 
-const char sSelection[] = "Selection";
+		std::vector<boost::shared_ptr<Instance>>::iterator found = std::find(sel->begin(), sel->end(), shared);
 
-// FUNCTION: WEBSERVICE 0x1005d440
-void Selection::raiseRemoved(boost::shared_ptr<Instance> item)
-{
-	SelectionChanged event(boost::shared_ptr<Instance>(), item);
-
-	for (std::vector<ISelectionBase*>::iterator iter = filteredSelections.begin(); iter != filteredSelections.end();
-		 ++iter) {
-		(*iter)->VTable0x00(event);
+		if (found == sel->end())
+		{
+			sel->push_back(shared);
+			((const Notifier<Instance, AncestorChanged>*)((const char*)instance+0xa4))->addListener((Listener<Instance, AncestorChanged>*)((char*)this+0x150));
+			raiseAdded(shared);
+		}
+		else
+		{
+			sel->erase(found);
+			((const Notifier<Instance, AncestorChanged>*)((const char*)instance+0xa4))->removeListener((Listener<Instance, AncestorChanged>*)((char*)this+0x150));
+			raiseRemoved(shared);
+		}
 	}
 
-	Notifier<Selection, SelectionChanged>::raise(event);
-}
+	void Selection::addToSelection(Instance* instance)
+	{
+		boost::shared_ptr<Instance> shared = shared_from(instance);
+		RBXASSERT(instance);
 
-// FUNCTION: WEBSERVICE 0x1005d5e0
-Selection::~Selection()
-{
-}
+		boost::shared_ptr<std::vector<boost::shared_ptr<Instance>>> sel = (*(CopyOnWrite<std::vector<boost::shared_ptr<Instance>>>*)((char*)this+0x154)).write();
 
-// STUB: WEBSERVICE 0x1005e1f0
-void Selection::removeFromSelection(const Instance* instance)
-{
-	boost::shared_ptr<std::vector<boost::shared_ptr<Instance> > > items = selection.write();
+		std::vector<boost::shared_ptr<Instance>>::iterator found = std::find(sel->begin(), sel->end(), shared);
 
-	std::vector<boost::shared_ptr<Instance> >::iterator iter =
-		std::find(items->begin(), items->end(), shared_from(instance));
-
-	if (iter != items->end()) {
-		boost::shared_ptr<Instance> removedItem = *iter;
-
-		items->erase(iter);
-
-		instance->Notifier<Instance, AncestorChanged>::removeListener(this);
-
-		raiseRemoved(removedItem);
+		if (found == sel->end())
+		{
+			sel->push_back(shared);
+			((const Notifier<Instance, AncestorChanged>*)((const char*)instance+0xa4))->addListener((Listener<Instance, AncestorChanged>*)((char*)this+0x150));
+			raiseAdded(shared);
+		}
 	}
-}
+	
+	void Selection::removeFromSelection(const Instance* instance)
+	{
+		RBXASSERT(instance);
 
-// FUNCTION: WEBSERVICE 0x1005e870
-void Selection::onEvent(const Instance* source, AncestorChanged event)
-{
-	const Instance* sourceRoot = source->getParent() != NULL ? source->getParent()->getRootAncestor() : source;
+		boost::shared_ptr<std::vector<boost::shared_ptr<Instance>>> sel = (*(CopyOnWrite<std::vector<boost::shared_ptr<Instance>>>*)((char*)this+0x154)).write();
 
-	if (sourceRoot != getRootAncestor()) {
-		removeFromSelection(source);
+		std::vector<boost::shared_ptr<Instance>>::iterator found = std::find(sel->begin(), sel->end(), shared_from(instance));
+
+		if (found != sel->end())
+		{
+			boost::shared_ptr<Instance> nonConst = *found;
+
+			sel->erase(found);
+			((const Notifier<Instance, AncestorChanged>*)((const char*)instance+0xa4))->removeListener((Listener<Instance, AncestorChanged>*)((char*)this+0x150));
+			raiseRemoved(nonConst);
+		}
 	}
+
+	void Selection::clearSelection()
+	{
+		while ((*(CopyOnWrite<std::vector<boost::shared_ptr<Instance>>>*)((char*)this+0x154))->size() > 0)
+		{
+			boost::shared_ptr<Instance> instance = (*(CopyOnWrite<std::vector<boost::shared_ptr<Instance>>>*)((char*)this+0x154))->back();
+			(*(CopyOnWrite<std::vector<boost::shared_ptr<Instance>>>*)((char*)this+0x154)).write()->pop_back();
+
+			((const Notifier<Instance, AncestorChanged>*)((const char*)instance.get()+0xa4))->removeListener((Listener<Instance, AncestorChanged>*)((char*)this+0x150));
+			raiseRemoved(instance);
+		}
+	}
+
+	void Selection::setSelection(Instance* instance)
+	{
+		boost::shared_ptr<Instance> inst = shared_from(instance);
+		
+		while ((*(CopyOnWrite<std::vector<boost::shared_ptr<Instance>>>*)((char*)this+0x154))->size() > 0)
+		{
+			boost::shared_ptr<Instance> item = (*(CopyOnWrite<std::vector<boost::shared_ptr<Instance>>>*)((char*)this+0x154))->back();
+
+			if (item == inst)
+			{
+				if ((*(CopyOnWrite<std::vector<boost::shared_ptr<Instance>>>*)((char*)this+0x154))->size() == 1)
+					return;
+
+				boost::shared_ptr<std::vector<boost::shared_ptr<Instance>>> sel = (*(CopyOnWrite<std::vector<boost::shared_ptr<Instance>>>*)((char*)this+0x154)).write();
+				sel->back() = sel->front();
+				sel->front() = item;
+			}
+			else
+			{
+				(*(CopyOnWrite<std::vector<boost::shared_ptr<Instance>>>*)((char*)this+0x154)).write()->pop_back();
+				((const Notifier<Instance, AncestorChanged>*)((const char*)item.get()+0xa4))->removeListener((Listener<Instance, AncestorChanged>*)((char*)this+0x150));
+				raiseRemoved(item);
+			}
+		}
+
+		if (inst)
+		{
+			(*(CopyOnWrite<std::vector<boost::shared_ptr<Instance>>>*)((char*)this+0x154)).write()->push_back(inst);
+			((const Notifier<Instance, AncestorChanged>*)((const char*)instance+0xa4))->addListener((Listener<Instance, AncestorChanged>*)((char*)this+0x150));
+			raiseAdded(inst);
+		}
+	}
+
+
 }
-
-} // namespace RBX
-
-template class RBX::FactoryProduct<RBX::Selection, RBX::Instance, RBX::sSelection>;
-template class RBX::Reflection::
-	Described<RBX::Selection, RBX::sSelection, RBX::FactoryProduct<RBX::Selection, RBX::Instance, RBX::sSelection> >;
-template class RBX::DescribedCreatable<RBX::Selection, RBX::Instance, RBX::sSelection>;

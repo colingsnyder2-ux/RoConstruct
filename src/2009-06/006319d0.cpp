@@ -1,12 +1,10 @@
-// from server: 80% by why2
-struct S_func_006319d0 {
-    char pad[1];
-    void f(const void* arg);
-};
-
-extern "C" void* __stdcall sub_89e464(void*, const void*);
-
-void S_func_006319d0::f(const void* arg)
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <string>
+extern std::string g_006319d0;
+void func_006319d0(const std::string& v)
 {
-    sub_89e464((void*)0xa4b9e8, arg);
+    g_006319d0 = v;
 }

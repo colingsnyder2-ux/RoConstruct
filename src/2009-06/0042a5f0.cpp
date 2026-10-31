@@ -1,12 +1,18 @@
-// from server: 88% by colin
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-extern "C" void init(void*,void*);
-extern "C" void fini(void*);
-extern volatile int guard;
-extern volatile void* g;
-extern volatile int z;
-extern "C" __declspec(noinline) void* f(){
-    init((void*)0xa3a2a0,(void*)0x42a030);
-    if(!(*(volatile unsigned char*)&guard)){guard|=1; g=0; z=0; fini((void*)0x894130);}
-    return (void*)&g;
+namespace boost {
+struct once_flag { long state; };
+void call_once(once_flag& flag, void (*f)());
+template<class T> class shared_ptr { public: T* px; void* pn; shared_ptr() : px(0), pn(0) {} ~shared_ptr(); };
+}
+class Item;
+static boost::shared_ptr<Item>& instance() { static boost::shared_ptr<Item> sp; return sp; }
+static void initInstance() { instance(); }
+static boost::once_flag flag;
+boost::shared_ptr<Item>& getInstance()
+{
+    boost::call_once(flag, &initInstance);
+    return instance();
 }

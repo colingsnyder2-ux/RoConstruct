@@ -1,108 +1,47 @@
-// from server: 36% by colin
-// roc-lang: cpp
+// from server: 93% by EspClaude
+// from server: 100% by auto
+// roc 2008-06 0065e7f0  unit: seg_00650000  size: 90 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 0065e7f0
+//
+// 0065e7f0  8d4f01               lea ecx, [edi + 1]
+// 0065e7f3  81f9ffffff0f         cmp ecx, 0xfffffff
+// 0065e7f9  771c                 ja 0x65e817
+// 0065e7fb  8b4e1c               mov ecx, dword ptr [esi + 0x1c]
+// 0065e7fe  8bd7                 mov edx, edi
+// 0065e800  c1e204               shl edx, 4
+// 0065e803  52                   push edx
+// 0065e804  8b560c               mov edx, dword ptr [esi + 0xc]
+// 0065e807  c1e104               shl ecx, 4
+// 0065e80a  51                   push ecx
+// 0065e80b  52                   push edx
+// 0065e80c  50                   push eax
+// 0065e80d  e8de1e0000           call 0x6606f0
+// 0065e812  83c410               add esp, 0x10
+// 0065e815  eb09                 jmp 0x65e820
+// 0065e817  50                   push eax
+// 0065e818  e8b31e0000           call 0x6606d0
+// 0065e81d  83c404               add esp, 4
+// 0065e820  8b561c               mov edx, dword ptr [esi + 0x1c]
+// 0065e823  3bd7                 cmp edx, edi
+// 0065e825  89460c               mov dword ptr [esi + 0xc], eax
+// 0065e828  7d1c                 jge 0x65e846
+// 0065e82a  8bc2                 mov eax, edx
+// 0065e82c  8bcf                 mov ecx, edi
+// 0065e82e  c1e004               shl eax, 4
+// 0065e831  2bca                 sub ecx, edx
+// 0065e833  33d2                 xor edx, edx
+// 0065e835  53                   push ebx
+// 0065e836  8b5e0c               mov ebx, dword ptr [esi + 0xc]
+// 0065e839  89540308             mov dword ptr [ebx + eax + 8], edx
+// 0065e83d  83c010               add eax, 0x10
+// 0065e840  83e901               sub ecx, 1
+// 0065e843  75f1                 jne 0x65e836
+// 0065e845  5b                   pop ebx
+// 0065e846  897e1c               mov dword ptr [esi + 0x1c], edi
+// 0065e849  c3                   ret 
+// library lua-5.1/ltable.c (function _setarrayvector)
+
+// roc-lang: c
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
-
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
-
-boost::mutex& moo2()
-{
-	static boost::mutex mutex2;
-	return mutex2;
-}
-
-void initMoo()
-{
-	moo2();
-}
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
-}
+// roc-lib: lua-5.1 ltable.c

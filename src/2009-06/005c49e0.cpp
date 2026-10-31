@@ -1,205 +1,163 @@
-// from server: 57% by colin
-// roc-lang: cpp
+// from server: 78% by EspClaude
+// from server: 100% by colin
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client App/v8datamodel/Feature.cpp
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /Od /Ob0 /GS
+// roc-lang: cpp
+// roc-lib: rbxgs-render AggregatingSceneManager.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "v8datamodel/Feature.h"
+#include "RenderLib/AggregatingSceneManager.h"
 
-#include "reflection/property.h"
-#include "util/Name.h"
-
-namespace RBX {
-
-const char sVelocityMotor[] = "VelocityMotor";
-
-const char sHole[] = "Hole";
-
-const char sMotorFeature[] = "MotorFeature";
-
-const char sFeature[] = "Feature";
-
-using namespace Reflection;
-
-static EnumPropDescriptor<Feature, NormalId> prop_FaceId(
-	"FaceId",
-	"Data",
-	&RBX::Feature::getFaceId,
-	&RBX::Feature::setFaceId
-);
-
-static EnumPropDescriptor<Feature, Feature::TopBottom> prop_TopBottom(
-	"TopBottom",
-	"Data",
-	&RBX::Feature::getTopBottom,
-	&RBX::Feature::setTopBottom
-);
-
-static EnumPropDescriptor<Feature, Feature::LeftRight> prop_LeftRight(
-	"LeftRight",
-	"Data",
-	&RBX::Feature::getLeftRight,
-	&RBX::Feature::setLeftRight
-);
-
-static EnumPropDescriptor<Feature, Feature::InOut> prop_InOut(
-	"InOut",
-	"Data",
-	&RBX::Feature::getInOut,
-	&RBX::Feature::setInOut
-);
-
-static PropDescriptor<VelocityMotor, float> prop_MaxVelocity(
-	"MaxVelocity",
-	"Data",
-	&RBX::VelocityMotor::getMaxVelocity,
-	&RBX::VelocityMotor::setMaxVelocity
-);
-
-static PropDescriptor<VelocityMotor, float> prop_DesiredAngle(
-	"DesiredAngle",
-	"Data",
-	&RBX::VelocityMotor::getDesiredAngle,
-	&RBX::VelocityMotor::setDesiredAngle
-);
-
-static PropDescriptor<VelocityMotor, float> prop_CurrentAngle(
-	"CurrentAngle",
-	"Data",
-	&RBX::VelocityMotor::getCurrentAngle,
-	&RBX::VelocityMotor::setCurrentAngle
-);
-
-// FUNCTION: WEBSERVICE 0x100d7d70
-float VelocityMotor::getMaxVelocity() const
+namespace RBX
 {
-	return static_cast<MotorJoint*>(joint)->getMaxVelocity();
-}
+	namespace Render
+	{
+		AggregatingSceneManager::AggregatingSceneManager(RenderScene* renderScene)
+			: SceneManager(renderScene)
+		{
+		}
 
-// FUNCTION: WEBSERVICE 0x100d7d80
-float VelocityMotor::getDesiredAngle() const
-{
-	return static_cast<MotorJoint*>(joint)->getDesiredAngle();
-}
+		AggregatingSceneManager::~AggregatingSceneManager() {}
 
-// FUNCTION: WEBSERVICE 0x100e42d0
-float VelocityMotor::getCurrentAngle() const
-{
-	return static_cast<MotorJoint*>(joint)->getCurrentAngle();
-}
+		void AggregatingSceneManager::addModel(const G3D::ReferenceCountedPointer<Chunk>& chunk)
+		{
+			addToScene(chunk);
+		}
 
-namespace Reflection {
+		void AggregatingSceneManager::removeModel(const G3D::ReferenceCountedPointer<Chunk>& chunk)
+		{
+			invalidSleepingModels.erase(chunk);
+			invalidMovingModels.erase(chunk);
 
-// FUNCTION: WEBSERVICE 0x100e5950
-template <>
-EnumDesc<Feature::TopBottom>::EnumDesc() : EnumDescriptor("TopBottom", typeid(Feature::TopBottom))
-{
-	addPair(Feature::TOP, "Top");
-	addPair(Feature::CENTER_TB, "Center");
-	addPair(Feature::BOTTOM, "Bottom");
-}
+			G3D::ReferenceCountedPointer<AggregateChunk> aggregate = chunk->aggregate.createStrongPtr();
+			if (aggregate.notNull())
+				deconstructAggregate(aggregate);
 
-// FUNCTION: WEBSERVICE 0x100e5ad0
-template <>
-EnumDesc<Feature::LeftRight>::EnumDesc() : EnumDescriptor("LeftRight", typeid(Feature::LeftRight))
-{
-	addPair(Feature::LEFT, "Left");
-	addPair(Feature::CENTER_LR, "Center");
-	addPair(Feature::RIGHT, "Right");
-}
+			removeFromScene(chunk);
+			dequeueSleepingChunk(chunk);
+		}
 
-// FUNCTION: WEBSERVICE 0x100e5c50
-template <>
-EnumDesc<Feature::InOut>::EnumDesc() : EnumDescriptor("InOut", typeid(Feature::InOut))
-{
-	addPair(Feature::EDGE, "Edge");
-	addPair(Feature::INSET, "Inset");
-	addPair(Feature::CENTER_IO, "Center");
-}
+		void AggregatingSceneManager::setSleeping(const G3D::ReferenceCountedPointer<Chunk>& chunk, bool sleeping)
+		{
+			if (sleeping)
+			{
+				bool erased = invalidMovingModels.erase(chunk) == 1;
 
-} // namespace Reflection
+				if (erased)
+					invalidSleepingModels.insert(chunk);
 
-// FUNCTION: WEBSERVICE 0x100e7430
-void Feature::setFaceId(NormalId value)
-{
-	if (faceId != value) {
-		faceId = value;
-		raisePropertyChanged(prop_FaceId);
+				queueSleepingChunk(chunk);
+			}
+			else
+			{
+				bool erased = invalidSleepingModels.erase(chunk) == 1;
+
+				if (erased)
+					invalidMovingModels.insert(chunk);
+
+				G3D::ReferenceCountedPointer<AggregateChunk> aggregate = chunk->aggregate.createStrongPtr();
+				if (aggregate.notNull())
+					deconstructAggregate(aggregate);
+
+				dequeueSleepingChunk(chunk);
+			}
+		}
+
+		void AggregatingSceneManager::invalidateModel(const G3D::ReferenceCountedPointer<Chunk>& chunk, bool isSleeping)
+		{
+			if (isSleeping)
+				invalidSleepingModels.insert(chunk);
+			else
+				invalidMovingModels.insert(chunk);
+		}
+
+		void AggregatingSceneManager::dequeueSleepingChunk(const G3D::ReferenceCountedPointer<Chunk>& chunk)
+		{
+			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator iter = buckets.begin();
+			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator end = buckets.end();
+
+			for (; iter != end; iter++)
+			{
+				if (iter->second->dequeueSleepingChunk(chunk))
+					break;
+			}
+		}
+
+		void AggregatingSceneManager::clear()
+		{
+			invalidSleepingModels.clear();
+			invalidMovingModels.clear();
+
+			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator iter = buckets.begin();
+			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator end = buckets.end();
+
+			for (; iter != end; iter++)
+			{
+				iter->second->clear();
+			}
+
+			clearScene();
+		}
+
+		bool AggregatingSceneManager::Bucket::dequeueSleepingChunk(const G3D::ReferenceCountedPointer<Chunk>& chunk)
+		{
+			std::vector<G3D::ReferenceCountedPointer<Chunk>>::iterator found = std::find(queue.begin(), queue.end(), chunk);
+
+			if (found != queue.end())
+			{
+				queue.erase(found);
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+
+		void AggregatingSceneManager::queueSleepingChunk(const G3D::ReferenceCountedPointer<Chunk>& chunk)
+		{
+			G3D::ReferenceCountedPointer<Bucket> queue;
+
+			{
+				BucketKey key(chunk);
+
+				std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator iter = buckets.find(key);
+
+				if (iter == buckets.end())
+				{
+					queue = new Bucket;
+					buckets[key] = queue;
+				}
+				else
+				{
+					queue = iter->second;
+				}
+			}
+
+			queue->addToQueue(chunk);
+		}
+
+		bool AggregatingSceneManager::BucketKey::operator<(const AggregatingSceneManager::BucketKey& that) const
+		{
+			if (this->material < that.material)
+				return true;
+			if (this->material > that.material)
+				return false;
+
+			if (this->castsShadows < that.castsShadows)
+				return true;
+			if (this->castsShadows > that.castsShadows)
+				return false;
+
+			if (this->polygonOffset < that.polygonOffset)
+				return true;
+			if (this->polygonOffset > that.polygonOffset)
+				return false;
+
+			if (this->cullable < that.cullable)
+				return true;
+			else
+				return false;
+		}
 	}
 }
-
-// FUNCTION: WEBSERVICE 0x100e7460
-void Feature::setTopBottom(TopBottom value)
-{
-	if (topBottom != value) {
-		topBottom = value;
-		raisePropertyChanged(prop_TopBottom);
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x100e7490
-void Feature::setLeftRight(LeftRight value)
-{
-	if (leftRight != value) {
-		leftRight = value;
-		raisePropertyChanged(prop_LeftRight);
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x100e74c0
-void Feature::setInOut(InOut value)
-{
-	if (inOut != value) {
-		inOut = value;
-		raisePropertyChanged(prop_InOut);
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x100e7670
-void VelocityMotor::setMaxVelocity(float value)
-{
-	if (value != static_cast<MotorJoint*>(joint)->getMaxVelocity()) {
-		static_cast<MotorJoint*>(joint)->setMaxVelocity(value);
-		raisePropertyChanged(prop_MaxVelocity);
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x100e76b0
-void VelocityMotor::setDesiredAngle(float value)
-{
-	if (value != static_cast<MotorJoint*>(joint)->getDesiredAngle()) {
-		static_cast<MotorJoint*>(joint)->setDesiredAngle(value);
-		raisePropertyChanged(prop_DesiredAngle);
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x100e76f0
-void VelocityMotor::setCurrentAngle(float value)
-{
-	if (value != static_cast<MotorJoint*>(joint)->getCurrentAngle()) {
-		static_cast<MotorJoint*>(joint)->setCurrentAngle(value);
-		raisePropertyChanged(prop_CurrentAngle);
-	}
-}
-} // namespace RBX
-
-template const RBX::Name& RBX::Name::doDeclare<RBX::sFeature>();
-template void RBX::Name::callDoDeclare<RBX::sFeature>();
-
-template class RBX::FactoryProduct<RBX::Hole, RBX::Feature, RBX::sHole>;
-template class RBX::Reflection::
-	Described<RBX::Hole, RBX::sHole, RBX::FactoryProduct<RBX::Hole, RBX::Feature, RBX::sHole> >;
-template class RBX::DescribedCreatable<RBX::Hole, RBX::Feature, RBX::sHole>;
-
-template class RBX::FactoryProduct<RBX::MotorFeature, RBX::Feature, RBX::sMotorFeature>;
-template class RBX::Reflection::Described<
-	RBX::MotorFeature,
-	RBX::sMotorFeature,
-	RBX::FactoryProduct<RBX::MotorFeature, RBX::Feature, RBX::sMotorFeature> >;
-template class RBX::DescribedCreatable<RBX::MotorFeature, RBX::Feature, RBX::sMotorFeature>;
-
-template class RBX::NonFactoryProduct<RBX::Instance, RBX::sFeature>;
-template class RBX::Reflection::
-	Described<RBX::Feature, RBX::sFeature, RBX::NonFactoryProduct<RBX::Instance, RBX::sFeature> >;
-template class RBX::DescribedNonCreatable<RBX::Feature, RBX::Instance, RBX::sFeature>;

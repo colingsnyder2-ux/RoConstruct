@@ -1,108 +1,37 @@
-// from server: 50% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+// from server: 93% by EspClaude
+// from server: 100% by king_originala
+// roc 2008-06 005c8e70  unit: RBX::LaserTool  size: 45 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 005c8e70
+//
+// 005c8e70  51                   push ecx
+// 005c8e71  56                   push esi
+// 005c8e72  8bf1                 mov esi, ecx
+// 005c8e74  8b06                 mov eax, dword ptr [esi]
+// 005c8e76  8b5040               mov edx, dword ptr [eax + 0x40]
+// 005c8e79  c744240400000000     mov dword ptr [esp + 4], 0
+// 005c8e81  ffd2                 call edx
+// 005c8e83  81c638010000         add esi, 0x138
+// 005c8e89  56                   push esi
+// 005c8e8a  8b742410             mov esi, dword ptr [esp + 0x10]
+// 005c8e8e  8bce                 mov ecx, esi
+// 005c8e90  ff155c248000         call dword ptr [0x80245c]
+// 005c8e96  8bc6                 mov eax, esi
+// 005c8e98  5e                   pop esi
+// 005c8e99  59                   pop ecx
+// 005c8e9a  c20400               ret 4
 
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
+struct String;
 
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
+extern void (__thiscall *copyString)(String *, const String *);
 
-boost::mutex& moo2()
+struct LaserTool {
+    String *getValue(String *result);
+};
+
+String *LaserTool::getValue(String *result)
 {
-	static boost::mutex mutex2;
-	return mutex2;
-}
-
-void initMoo()
-{
-	moo2();
-}
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
+    volatile int state = 0;
+    (*(void (__thiscall **)(LaserTool *))(*(char **)this + 0x40))(this);
+    copyString(result, (const String *)((char *)this + 0x138));
+    return result;
 }

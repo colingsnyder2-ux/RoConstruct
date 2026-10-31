@@ -1,342 +1,52 @@
-// from server: 46% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client App/gui/GUI.cpp
+// from server: 100% by EspClaude
+// from server: 100% by king_originala
+// roc 2008-06 00411be0  unit: ChatEnter  size: 72 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 00411be0
+//
+// 00411be0  56                   push esi
+// 00411be1  8bf1                 mov esi, ecx
+// 00411be3  e89ef02800           call 0x6a0c86
+// 00411be8  33c0                 xor eax, eax
+// 00411bea  898688000000         mov dword ptr [esi + 0x88], eax
+// 00411bf0  c706ace18000         mov dword ptr [esi], 0x80e1ac
+// 00411bf6  89868c000000         mov dword ptr [esi + 0x8c], eax
+// 00411bfc  898690000000         mov dword ptr [esi + 0x90], eax
+// 00411c02  898698000000         mov dword ptr [esi + 0x98], eax
+// 00411c08  c7869400000068e08000 mov dword ptr [esi + 0x94], 0x80e068
+// 00411c12  89869c000000         mov dword ptr [esi + 0x9c], eax
+// 00411c18  8986a0000000         mov dword ptr [esi + 0xa0], eax
+// 00411c1e  8986a4000000         mov dword ptr [esi + 0xa4], eax
+// 00411c24  8bc6                 mov eax, esi
+// 00411c26  5e                   pop esi
+// 00411c27  c3                   ret 
 
-// Candidate translation unit (score above; library headers required).
-#include "gui/GUI.h"
+struct ChatEnter {
+    volatile unsigned long table;
+    unsigned char padding[0x84];
+    volatile unsigned long field88;
+    volatile unsigned long field8c;
+    volatile unsigned long field90;
+    volatile unsigned long table94;
+    volatile unsigned long field98;
+    volatile unsigned long field9c;
+    volatile unsigned long fielda0;
+    volatile unsigned long fielda4;
 
-#include "util/object.h"
+    void initializeBase();
+    ChatEnter* initialize();
+};
 
-#include <G3D/g3dmath.h>
-#include <algorithm>
-#include <math.h>
-
-namespace RBX {
-
-G3D::Vector2 GuiRoot::canvasSize;
-G3D::Matrix4 GuiRoot::oldProjectionMatrix;
-G3D::CoordinateFrame GuiRoot::oldCameraWorld;
-
-// FUNCTION: WEBSERVICE 0x100d0fc0
-const G3D::Color4& GuiItem::disabledFill()
+ChatEnter* ChatEnter::initialize()
 {
-	static G3D::Color4 c(0.7f, 0.7f, 0.7f, 0.5f);
-	return c;
+    initializeBase();
+    field88 = 0;
+    table = 0x80e1ac;
+    field8c = 0;
+    field90 = 0;
+    field98 = 0;
+    table94 = 0x80e068;
+    field9c = 0;
+    fielda0 = 0;
+    fielda4 = 0;
+    return this;
 }
-
-// FUNCTION: WEBSERVICE 0x100d1000
-const G3D::Color4& GuiItem::translucentBackdrop()
-{
-	static G3D::Color4 c(0.6f, 0.6f, 0.6f, 0.6f);
-	return c;
-}
-
-// FUNCTION: WEBSERVICE 0x100d1040 FOLDED
-GuiItem* GuiItem::getGuiParent()
-{
-	return dynamic_cast<GuiItem*>(getParent());
-}
-
-// FUNCTION: WEBSERVICE 0x100d1040 FOLDED
-const GuiItem* GuiItem::getGuiParent() const
-{
-	return dynamic_cast<const GuiItem*>(getParent());
-}
-
-// FUNCTION: WEBSERVICE 0x100d1060
-Rect GuiItem::getMyRect() const
-{
-	Vector2 pos = getPosition();
-
-	return Rect(pos, pos + getSize());
-}
-
-// STUB: WEBSERVICE 0x100d10b0
-void GuiItem::label2d(
-	Adorn* adorn,
-	const std::string& label,
-	const G3D::Color4& fill,
-	const G3D::Color4& border,
-	Adorn::XAlign align
-) const
-{
-	if (label.size() == 0) {
-		return;
-	}
-
-	Rect myRect = getMyRect();
-
-	G3D::Vector2 size = myRect.size();
-	G3D::Vector2 pos = myRect.center();
-
-	switch (align) {
-	case Adorn::XALIGN_RIGHT:
-		pos.x = myRect.high.x - size.x * 0.1f;
-		break;
-
-	case Adorn::XALIGN_CENTER:
-		break;
-
-	default:
-		pos.x = myRect.low.x + size.x * 0.1f;
-		break;
-	}
-
-	adorn
-		->drawFont2D(label, pos, getFontSize(), fill, border, align, Adorn::YALIGN_CENTER, Adorn::PROPORTIONAL_SPACING);
-}
-
-// FUNCTION: WEBSERVICE 0x100d1180
-void RelativePanel::init(const Layout& layout)
-{
-	setName("RelativePanel");
-	layoutStyle = layout.layoutStyle;
-	backdropColor = layout.backdropColor;
-	xLocation = layout.xLocation;
-	yLocation = layout.yLocation;
-	offset = layout.offset;
-}
-
-// FUNCTION: WEBSERVICE 0x100d1230
-void TopMenuBar::init()
-{
-	layoutStyle = Layout::HORIZONTAL;
-	backdropColor = G3D::Color4::clear();
-	visible = true;
-}
-
-// FUNCTION: WEBSERVICE 0x100d1270
-G3D::Vector2 GuiRoot::toPixelSize(const G3D::Vector2& percent)
-{
-	G3D::Vector2 pixelSize(0, 0);
-
-	if (canvasSize.y > 0.75f * canvasSize.x) {
-		pixelSize = (0.01f * percent) * G3D::Vector2(canvasSize.x, 0.75f * canvasSize.x);
-	}
-	else {
-		pixelSize = (0.01f * percent) * G3D::Vector2(1.33f * canvasSize.y, canvasSize.y);
-	}
-
-	return pixelSize;
-}
-
-// FUNCTION: WEBSERVICE 0x100d12f0
-int GuiRoot::normalizedFontSize(int fontSize)
-{
-	static G3D::Vector2 percentSize(100.0f, 75.0f);
-
-	return G3D::iRound(floorf(fontSize * toPixelSize(percentSize).x * 0.001f));
-}
-
-// FUNCTION: WEBSERVICE 0x100d1360
-G3D::Vector2 RelativePanel::getPosition() const
-{
-	Rect canvas(G3D::Vector2::zero(), GuiRoot::getCanvasSize());
-	Rect me(G3D::Vector2::zero(), getSize());
-
-	canvas = canvas.inset(offset);
-
-	return canvas.positionChild(me, xLocation, yLocation).low;
-}
-
-// FUNCTION: WEBSERVICE 0x100d14d0
-GuiItem::GuiItem() : guiSize(0, 0)
-{
-	setName("Unnamed GuiItem");
-}
-
-// FUNCTION: WEBSERVICE 0x100d15f0
-GuiRoot::GuiRoot()
-{
-	setName("GuiRoot");
-}
-
-// FUNCTION: WEBSERVICE 0x100d1700
-void GuiRoot::render2d(Adorn* adorn)
-{
-	setCanvasSize(G3D::Vector2(G3D::Vector2int16(adorn->getWidth(), adorn->getHeight())));
-
-	for (unsigned int i = 0; i < numChildren(); ++i) {
-		Instance* instance = (*getChildren())[i].get();
-		GuiItem* item = dynamic_cast<GuiItem*>(instance);
-
-		if (item != NULL) {
-			item->render2d(adorn);
-		}
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x100d17c0
-G3D::Vector2 TopMenuBar::getSize() const
-{
-	G3D::Vector2 size(0, 0);
-
-	for (unsigned int i = 0; i < numChildren(); ++i) {
-		Instance* child = (*getChildren())[i].get();
-		GuiItem* item = dynamic_cast<GuiItem*>(child);
-
-		if (item != NULL) {
-			G3D::Vector2 childSize = item->getSize();
-
-			switch (layoutStyle) {
-			case Layout::HORIZONTAL:
-				size.x += childSize.x;
-				size.y = std::max(size.y, childSize.y);
-				break;
-			case Layout::VERTICAL:
-				size.x = std::max(size.x, childSize.x);
-				size.y += childSize.y;
-				break;
-			}
-		}
-	}
-
-	return size;
-}
-
-// FUNCTION: WEBSERVICE 0x100d18d0
-G3D::Vector2 TopMenuBar::getChildPosition(const GuiItem* child) const
-{
-	G3D::Vector2 position = getPosition();
-	G3D::Vector2 mySize = getSize();
-
-	for (unsigned int i = 0; i < numChildren(); ++i) {
-		Instance* instance = (*getChildren())[i].get();
-		GuiItem* item = dynamic_cast<GuiItem*>(instance);
-
-		if (item != NULL) {
-			G3D::Vector2 myChildSize = item->getSize();
-
-			if (item == child) {
-				int other = (layoutStyle + 1) % 2;
-
-				position[other] += (mySize[other] - myChildSize[other]) * 0.5f;
-
-				return position;
-			}
-
-			switch (layoutStyle) {
-			case Layout::HORIZONTAL:
-			case Layout::VERTICAL:
-				position[layoutStyle] += item->getSize()[layoutStyle];
-				break;
-			}
-		}
-	}
-
-	return position;
-}
-
-// FUNCTION: WEBSERVICE 0x100d19f0
-void TopMenuBar::render2d(Adorn* adorn)
-{
-	if (!isVisible()) {
-		return;
-	}
-
-	if (backdropColor != G3D::Color4::clear()) {
-		adorn->rect2d(getMyRect2D(), backdropColor);
-	}
-
-	for (unsigned int i = 0; i < numChildren(); ++i) {
-		Instance* instance = (*getChildren())[i].get();
-		GuiItem* item = dynamic_cast<GuiItem*>(instance);
-
-		if (item != NULL) {
-			item->render2d(adorn);
-		}
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x100d1ae0
-void GuiItem::loseFocus()
-{
-	if (focus != NULL) {
-		focus->onLoseFocus();
-	}
-
-	focus.reset();
-}
-
-// FUNCTION: WEBSERVICE 0x100d1b50
-void GuiItem::onDescendentRemoving(const shared_ptr<Instance>& instance)
-{
-	if (instance.get() == focus.get()) {
-		loseFocus();
-	}
-
-	Instance::onDescendentRemoving(instance);
-}
-
-// STUB: WEBSERVICE 0x100d1b80
-GuiResponse GuiItem::processNonFocus(const GuiEvent& event)
-{
-	for (unsigned int i = 0; i < numChildren(); ++i) {
-		Instance* child = (*getChildren())[i].get();
-		GuiItem* item = dynamic_cast<GuiItem*>(child);
-
-		if (item != NULL && item != focus.get()) {
-			GuiResponse itemResponse = item->process(event);
-
-			if (itemResponse.wasUsed()) {
-				loseFocus();
-				focus = shared_from(item);
-				focus->loseFocus();
-
-				return itemResponse;
-			}
-		}
-	}
-
-	return GuiResponse::notUsed();
-}
-
-// FUNCTION: WEBSERVICE 0x100d1cf0
-GuiResponse GuiItem::process(const GuiEvent& event)
-{
-	if (event.isMouseEvent() && event.eventType == UIEvent::MOUSE_IDLE) {
-		return GuiResponse::notUsed();
-	}
-
-	if (focus != NULL) {
-		if (focus->canLoseFocus()) {
-			GuiResponse nonFocus = processNonFocus(event);
-
-			if (nonFocus.wasUsed()) {
-				return nonFocus;
-			}
-		}
-
-		GuiResponse focusResponse = focus->process(event);
-
-		if (focusResponse.wasUsed()) {
-			return focusResponse;
-		}
-
-		loseFocus();
-	}
-
-	return processNonFocus(event);
-}
-
-// FUNCTION: WEBSERVICE 0x100d1de0
-GuiResponse TopMenuBar::process(const GuiEvent& event)
-{
-	if (isVisible()) {
-		GuiResponse childResponse = GuiItem::process(event);
-
-		if (childResponse.wasUsed()) {
-			return childResponse;
-		}
-
-		if (backdropColor.a > 0 && event.isMouseEvent() && getMyRect().pointInRect(event.mousePosition)) {
-			return GuiResponse::used();
-		}
-	}
-
-	return GuiResponse::notUsed();
-}
-
-} // namespace RBX

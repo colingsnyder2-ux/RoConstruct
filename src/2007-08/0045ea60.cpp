@@ -1,10 +1,38 @@
-// from server: 52% by Viper
+// from server: 100% by Espeon
 // roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /GS- /MD
-// roc-lib: scintilla-mfc-1.20 ScintillaDocView.cpp
+// roc-cl: 50727
+// roc-flags: /O2 /Ob1 /Oy /GF /GS /EHsc /MD
+// roc-lib: xtp-11.2.2-vc8 roc_espeon_scintilla_2006_90600d35b640d706.cpp
 
 // Candidate translation unit (score above; library headers required).
+#define _AFXDLL 1
+#define _MT 1
+#define _DLL 1
+#define _MBCS 1
+#pragma include_alias("ScintillaCtrl.h", "../roc_espeon_scintilla_2006_header_1f91500e19393838.cpp")
+#pragma include_alias(<ScintillaCtrl.h>, <../roc_espeon_scintilla_2006_header_1f91500e19393838.cpp>)
+#pragma include_alias("scintillactrl.h", "../roc_espeon_scintilla_2006_header_1f91500e19393838.cpp")
+#pragma include_alias(<scintillactrl.h>, <../roc_espeon_scintilla_2006_header_1f91500e19393838.cpp>)
+#pragma include_alias("ScintillaDocView.h", "../roc_espeon_scintilla_2006_header_7888413bfc55e808.cpp")
+#pragma include_alias(<ScintillaDocView.h>, <../roc_espeon_scintilla_2006_header_7888413bfc55e808.cpp>)
+#pragma include_alias("scintilladocview.h", "../roc_espeon_scintilla_2006_header_7888413bfc55e808.cpp")
+#pragma include_alias(<scintilladocview.h>, <../roc_espeon_scintilla_2006_header_7888413bfc55e808.cpp>)
+#pragma include_alias("Platform.h", "../roc_espeon_scintilla_2006_header_ad094f2bda4f8987.cpp")
+#pragma include_alias(<Platform.h>, <../roc_espeon_scintilla_2006_header_ad094f2bda4f8987.cpp>)
+#pragma include_alias("platform.h", "../roc_espeon_scintilla_2006_header_ad094f2bda4f8987.cpp")
+#pragma include_alias(<platform.h>, <../roc_espeon_scintilla_2006_header_ad094f2bda4f8987.cpp>)
+#pragma include_alias("scintilla.h", "../roc_espeon_scintilla_2006_header_bdb7904747025dfa.cpp")
+#pragma include_alias(<scintilla.h>, <../roc_espeon_scintilla_2006_header_bdb7904747025dfa.cpp>)
+#pragma include_alias("Scintilla.h", "../roc_espeon_scintilla_2006_header_bdb7904747025dfa.cpp")
+#pragma include_alias(<Scintilla.h>, <../roc_espeon_scintilla_2006_header_bdb7904747025dfa.cpp>)
+#pragma include_alias("SciLexer.h", "../roc_espeon_scintilla_2006_header_55d95270879e6029.cpp")
+#pragma include_alias(<SciLexer.h>, <../roc_espeon_scintilla_2006_header_55d95270879e6029.cpp>)
+#pragma include_alias("scilexer.h", "../roc_espeon_scintilla_2006_header_55d95270879e6029.cpp")
+#pragma include_alias(<scilexer.h>, <../roc_espeon_scintilla_2006_header_55d95270879e6029.cpp>)
+#pragma include_alias("stdafx.h", "../roc_espeon_scintilla_2006_pch_f68bca6e84f2eb6d.cpp")
+#pragma include_alias(<stdafx.h>, <../roc_espeon_scintilla_2006_pch_f68bca6e84f2eb6d.cpp>)
+#pragma include_alias("resource.h", "../roc_espeon_scintilla_2006_pch_bdfa12dd385b2178.cpp")
+#pragma include_alias(<resource.h>, <../roc_espeon_scintilla_2006_pch_bdfa12dd385b2178.cpp>)
 /*
 Module : ScintillaDocView.CPP
 Purpose: Defines the implementation for MFC CView and CDocument derived wrapper classes for the Scintilla 
@@ -75,20 +103,8 @@ History: PJN / 12-08-2004 1. Made all the remaining non virtual functions relate
                           Thanks to Alexander Kirillov for reporting this bug. 
          PJN / 14-03-2006 1. Updated the internal function CScintillaView::SameAsSelected to support regular 
                           expressions. Thanks to Greg Smith for this update.
-         PJN / 22-05-2006 1. Fixed a flicker issue when the view is resized. Thanks to Michael Gunlock for reporting 
-                          this issue.
-         PJN / 29-06-2005 1. Code now uses new C++ style casts rather than old style C casts where necessary. 
-                          2. Code now supports persisting margin settings. Thanks to Krasimir Stoychev for this update
-                          3. Updated the code to clean compile in VC 2005
-         PJN / 17-09-2006 1. Updated OnReplaceSel and OnReplaceAll implementations to use TargetFromSelection and 
-                          ReplaceTargetRE/ReplaceTarget. Thanks to Matt Spear for reporting this issue.
-         PJN / 11-06-2007 1. Addition of a SCINTILLADOCVIEW_EXT_CLASS preprocessor macro to allow the classes to be 
-                          more easily used in an extension DLL.
-         PJN / 19-03-2008 1. Fixed a copy and paste bug in CScintillaView::PrintPage where the incorrect margin value
-                          was being used in the calculation of "rfPrint.rc.left". Thanks to Steve Arnold for reporting
-                          this bug.
 
-Copyright (c) 2004 - 2008 by PJ Naughter (Web: www.naughter.com, Email: pjna@naughter.com)
+Copyright (c) 2004 - 2006 by PJ Naughter (Web: www.naughter.com, Email: pjna@naughter.com)
 
 All rights reserved.
 
@@ -107,20 +123,21 @@ to maintain a single distribution point for the source code.
 
 #include "stdafx.h"
 #include "ScintillaDocView.h"
-#ifndef __AFXDISP_H__
-#pragma message("To avoid this message, please put afxdisp.h in your pre compiled header (normally stdafx.h)")
-#include <afxdisp.h>
-#endif
 #include "resource.h"
-
 
 
 
 //////////////////////////////// Statics / Macros /////////////////////////////
 
 #ifdef _DEBUG
+#undef THIS_FILE
+static char BASED_CODE THIS_FILE[] = __FILE__;
 #define new DEBUG_NEW
 #endif
+
+namespace Scintilla
+{
+
 
 
 ////////////////////////////////// Implementation /////////////////////////////
@@ -153,15 +170,13 @@ _SCINTILLA_EDIT_STATE::_SCINTILLA_EDIT_STATE() : bRegularExpression(FALSE),
 
 _SCINTILLA_EDIT_STATE _scintillaEditState;
 
-CScintillaFindReplaceDlg* CScintillaFindReplaceDlg::GetFindReplaceDlg()
-{
-	return _scintillaEditState.pFindReplaceDlg;
-}
+
 
 BEGIN_MESSAGE_MAP(CScintillaFindReplaceDlg, CFindReplaceDialog)
+	//{{AFX_MSG_MAP(CScintillaFindReplaceDlg)
+	//}}AFX_MSG_MAP
   ON_BN_CLICKED(IDC_REGULAR_EXPRESSION, OnRegularExpression)
 END_MESSAGE_MAP()
-
 
 CScintillaFindReplaceDlg::CScintillaFindReplaceDlg(): m_bRegularExpression(FALSE)
 {
@@ -187,8 +202,8 @@ BOOL CScintillaFindReplaceDlg::OnInitDialog()
 	BOOL bReturn = CFindReplaceDialog::OnInitDialog();
 
   //Should we check the regular expression check box
-  CButton* pCtrl = static_cast<CButton*>(GetDlgItem(IDC_REGULAR_EXPRESSION));
-  AFXASSUME(pCtrl);
+  CButton* pCtrl = (CButton*) GetDlgItem(IDC_REGULAR_EXPRESSION);
+  ASSERT(pCtrl);
   pCtrl->SetCheck(m_bRegularExpression);
 	
 	return bReturn;
@@ -197,10 +212,11 @@ BOOL CScintillaFindReplaceDlg::OnInitDialog()
 void CScintillaFindReplaceDlg::OnRegularExpression() 
 {
   //Save the state of the Regular expression checkbox into a member variable
-  CButton* pCtrl = static_cast<CButton*>(GetDlgItem(IDC_REGULAR_EXPRESSION));
-  AFXASSUME(pCtrl);
+  CButton* pCtrl = (CButton*) GetDlgItem(IDC_REGULAR_EXPRESSION);
+  ASSERT(pCtrl);
 	m_bRegularExpression = (pCtrl->GetCheck() == 1);
 }
+
 
 
 IMPLEMENT_DYNCREATE(CScintillaView, CView)
@@ -208,6 +224,7 @@ IMPLEMENT_DYNCREATE(CScintillaView, CView)
 const UINT _ScintillaMsgFindReplace = ::RegisterWindowMessage(FINDMSGSTRING);
 
 BEGIN_MESSAGE_MAP(CScintillaView, CView)
+	//{{AFX_MSG_MAP(CScintillaView)
 	ON_WM_PAINT()
 	ON_UPDATE_COMMAND_UI(ID_EDIT_CUT, OnUpdateNeedSel)
 	ON_UPDATE_COMMAND_UI(ID_EDIT_PASTE, OnUpdateNeedPaste)
@@ -227,7 +244,6 @@ BEGIN_MESSAGE_MAP(CScintillaView, CView)
 	ON_COMMAND(ID_EDIT_REPEAT, OnEditRepeat)
 	ON_WM_SETFOCUS()
 	ON_WM_SIZE()
-	ON_WM_ERASEBKGND()
 	ON_WM_CREATE()
 	ON_UPDATE_COMMAND_UI(ID_EDIT_COPY, OnUpdateNeedSel)
 	ON_UPDATE_COMMAND_UI(ID_EDIT_CLEAR, OnUpdateNeedTextAndFollowingText)
@@ -235,6 +251,7 @@ BEGIN_MESSAGE_MAP(CScintillaView, CView)
 	ON_UPDATE_COMMAND_UI(ID_EDIT_REPLACE, OnUpdateNeedText)
 	ON_COMMAND(ID_FILE_PAGE_SETUP, OnFilePageSetup)
 	ON_WM_DESTROY()
+	//}}AFX_MSG_MAP
 	ON_COMMAND(ID_FILE_PRINT, CView::OnFilePrint)
 	ON_COMMAND(ID_FILE_PRINT_DIRECT, CView::OnFilePrint)
  	ON_COMMAND(ID_FILE_PRINT_PREVIEW, CView::OnFilePrintPreview)
@@ -245,10 +262,9 @@ CScintillaView::CScintillaView() : m_rMargin(0, 0, 0, 0),
                                    m_bFirstSearch(TRUE),
                                    m_bUseROFileAttributeDuringLoading(TRUE),
                                    m_bPrintHeader(TRUE), 
-                                   m_bPrintFooter(TRUE),
-                                   m_bPersistMarginSettings(TRUE),
-                                   m_bUsingMetric(UserWantsMetric())
+                                   m_bPrintFooter(TRUE)
 {
+  m_bUsingMetric = UserWantsMetric();
 }
 
 CScintillaCtrl& CScintillaView::GetCtrl()
@@ -256,28 +272,6 @@ CScintillaCtrl& CScintillaView::GetCtrl()
   CScintillaCtrl& ctrl = m_Edit;
 
   return ctrl; 
-}
-
-void CScintillaView::LoadMarginSettings(const CString& sSection)
-{
-  //Get the margin values 
-  CWinApp* pApp = AfxGetApp();
-  AFXASSUME(pApp);
-	m_rMargin.left = pApp->GetProfileInt(sSection, _T("LeftMargin"), m_rMargin.left);
-	m_rMargin.right = pApp->GetProfileInt(sSection, _T("RightMargin"), m_rMargin.right);
-	m_rMargin.top = pApp->GetProfileInt(sSection, _T("TopMargin"), m_rMargin.top);
-	m_rMargin.bottom = pApp->GetProfileInt(sSection, _T("BottomMargin"), m_rMargin.bottom);
-}
-
-void CScintillaView::SaveMarginSettings(const CString& sSection)
-{
-  //Write out the margin values 
-  CWinApp* pApp = AfxGetApp();
-  AFXASSUME(pApp);
-	pApp->WriteProfileInt(sSection, _T("LeftMargin"), m_rMargin.left);
-	pApp->WriteProfileInt(sSection, _T("RightMargin"), m_rMargin.right);
-	pApp->WriteProfileInt(sSection, _T("TopMargin"), m_rMargin.top);
-	pApp->WriteProfileInt(sSection, _T("BottomMargin"), m_rMargin.bottom);
 }
 
 void CScintillaView::OnDestroy()
@@ -299,7 +293,7 @@ void CScintillaView::OnDestroy()
 			while (pos && (nScintillaViews == 0))
 			{
 				pTemplate = pApp->m_pDocManager->GetNextDocTemplate(pos);
-				AFXASSUME(pTemplate);
+				ASSERT(pTemplate);
 
 				//walk all documents in the template
 				POSITION pos2 = pTemplate->GetFirstDocPosition();
@@ -314,8 +308,7 @@ void CScintillaView::OnDestroy()
 					{
 						CView* pView = pDoc->GetNextView(pos3);
 						ASSERT(pView);
-						
-						//if we find another CScintillaView, skip code that closes find dialog
+						// if we find another CScintillaView, skip code that closes find dialog
 						if (pView->IsKindOf(RUNTIME_CLASS(CScintillaView)) && (pView != this) && ::IsWindow(pView->GetSafeHwnd()))
 							++nScintillaViews;
 					}
@@ -353,7 +346,7 @@ void CScintillaView::OnDraw(CDC*)
 
 void CScintillaView::OnPaint()
 {
-	//this is done to avoid CView::OnPaint
+	// this is done to avoid CView::OnPaint
 	Default();
 }
 
@@ -379,7 +372,6 @@ BOOL CScintillaView::OnPreparePrinting(CPrintInfo* pInfo)
 
 void CScintillaView::OnBeginPrinting(CDC* /*pDC*/, CPrintInfo* pInfo)
 {
-  //Validate our parameters
 	ASSERT_VALID(this);
 
   CScintillaCtrl& rCtrl = GetCtrl();
@@ -397,25 +389,24 @@ void CScintillaView::OnBeginPrinting(CDC* /*pDC*/, CPrintInfo* pInfo)
 
 BOOL CScintillaView::PaginateTo(CDC* pDC, CPrintInfo* pInfo)
 {
-  //Validate our parameters
 	ASSERT_VALID(this);
 	ASSERT_VALID(pDC);
 
   CRect rectSave = pInfo->m_rectDraw;
 	UINT nPageSave = pInfo->m_nCurPage;
 	ASSERT(nPageSave > 1);
-	ASSERT(nPageSave >= static_cast<UINT>(m_aPageStart.GetSize()));
+	ASSERT(nPageSave >= (UINT) m_aPageStart.GetSize());
 	VERIFY(pDC->SaveDC() != 0);
 	pDC->IntersectClipRect(0, 0, 0, 0);
 	pInfo->m_nCurPage = m_aPageStart.GetSize();
 	while (pInfo->m_nCurPage < nPageSave)
 	{
-		ASSERT(pInfo->m_nCurPage == static_cast<UINT>(m_aPageStart.GetSize()));
+		ASSERT(pInfo->m_nCurPage == (UINT) m_aPageStart.GetSize());
 		OnPrepareDC(pDC, pInfo);
 		ASSERT(pInfo->m_bContinuePrinting);
 		pInfo->m_rectDraw.SetRect(0, 0,	pDC->GetDeviceCaps(HORZRES), pDC->GetDeviceCaps(VERTRES));
 		OnPrint(pDC, pInfo);
-		if (pInfo->m_nCurPage == static_cast<UINT>(m_aPageStart.GetSize()))
+		if (pInfo->m_nCurPage == (UINT) m_aPageStart.GetSize())
 			break;
 		++pInfo->m_nCurPage;
 	}
@@ -432,11 +423,11 @@ void CScintillaView::OnPrepareDC(CDC* pDC, CPrintInfo* pInfo)
   //Validate our parameters
 	ASSERT_VALID(this);
 	ASSERT_VALID(pDC);
-	AFXASSUME(pInfo != NULL);
+	ASSERT(pInfo != NULL);
 
   if (pInfo->m_nCurPage <= pInfo->GetMaxPage())
   {
-	  if ((pInfo->m_nCurPage > static_cast<UINT>(m_aPageStart.GetSize())) &&	!PaginateTo(pDC, pInfo))
+	  if ((pInfo->m_nCurPage > (UINT)m_aPageStart.GetSize()) &&	!PaginateTo(pDC, pInfo))
 	  {
 		  //can't paginate to that page, thus cannot print it.
 		  pInfo->m_bContinuePrinting = FALSE;
@@ -513,14 +504,12 @@ void CScintillaView::PrintFooter(CDC* pDC, CPrintInfo* pInfo, RangeToFormat& frP
 BOOL CScintillaView::UserWantsMetric()
 {
   TCHAR localeInfo[3];
-  localeInfo[0] = _T('\0');
   GetLocaleInfo(LOCALE_USER_DEFAULT, LOCALE_IMEASURE, localeInfo, 3);
   return (localeInfo[0] == _T('0')) ;
 }
 
 long CScintillaView::PrintPage(CDC* pDC, CPrintInfo* pInfo, long nIndexStart, long nIndexStop)
 {
-  //Validate our parameters
 	ASSERT_VALID(this);
 	ASSERT_VALID(pDC);
 
@@ -534,8 +523,8 @@ long CScintillaView::PrintPage(CDC* pDC, CPrintInfo* pInfo, long nIndexStart, lo
   {
     //Get printer resolution
     CPoint pDpi;
-    pDpi.x = pDC->GetDeviceCaps(LOGPIXELSX);  //DPI in X direction
-    pDpi.y = pDC->GetDeviceCaps(LOGPIXELSY);  //DPI in Y direction
+    pDpi.x = pDC->GetDeviceCaps(LOGPIXELSX);  //Dpi in X direction
+    pDpi.y = pDC->GetDeviceCaps(LOGPIXELSY);  //Dpi in Y direction
 
 		//Convert the hundredths of millimeters or thousandths of inches margin values
 		//from the Page Setup dialog to device units.
@@ -556,7 +545,7 @@ long CScintillaView::PrintPage(CDC* pDC, CPrintInfo* pInfo, long nIndexStart, lo
 	rfPrint.rcPage.bottom = pInfo->m_rectDraw.bottom - 1;
 
   //Fill in the area to print
-  rfPrint.rc.left = rfPrint.rcPage.left + rMargins.left;
+  rfPrint.rc.left = rfPrint.rcPage.left + rMargins.right;
   rfPrint.rc.top = rfPrint.rcPage.top + rMargins.top;
   rfPrint.rc.right = rfPrint.rcPage.right - rMargins.right;
   rfPrint.rc.bottom = rfPrint.rcPage.bottom - rMargins.bottom;
@@ -579,10 +568,9 @@ long CScintillaView::PrintPage(CDC* pDC, CPrintInfo* pInfo, long nIndexStart, lo
 
 void CScintillaView::OnPrint(CDC* pDC, CPrintInfo* pInfo)
 {
-  //Validate our parameters
 	ASSERT_VALID(this);
 	ASSERT_VALID(pDC);
-	AFXASSUME(pInfo != NULL);
+	ASSERT(pInfo != NULL);
 	ASSERT(pInfo->m_bContinuePrinting);
 
 	UINT nPage = pInfo->m_nCurPage;
@@ -612,41 +600,35 @@ void CScintillaView::OnPrint(CDC* pDC, CPrintInfo* pInfo)
 	}
 	else
 	{
-		ASSERT(nPage+1 <= static_cast<UINT>(m_aPageStart.GetSize()));
+		ASSERT(nPage+1 <= (UINT) m_aPageStart.GetSize());
 		ASSERT(nIndex == m_aPageStart[nPage+1-1]);
 	}
 }
 
 void CScintillaView::OnEndPrinting(CDC*, CPrintInfo*)
 {
-  //Validate our parameters
 	ASSERT_VALID(this);
-	
 	m_aPageStart.RemoveAll();
 }
 
 void CScintillaView::OnUpdateNeedPaste(CCmdUI* pCmdUI)
 {
-  //Validate our parameters
 	ASSERT_VALID(this);
-	
 	pCmdUI->Enable(GetCtrl().CanPaste());
 }
 
 void CScintillaView::OnUpdateNeedText(CCmdUI* pCmdUI)
 {
-  //Validate our parameters
 	ASSERT_VALID(this);
-	
 	pCmdUI->Enable(GetCtrl().GetTextLength() != 0);
 }
 
 void CScintillaView::OnUpdateNeedTextAndFollowingText(CCmdUI* pCmdUI)
 {
-  //Validate our parameters
+  CScintillaCtrl& rCtrl = GetCtrl();
+
 	ASSERT_VALID(this);
 
-  CScintillaCtrl& rCtrl = GetCtrl();
   int nLength = rCtrl.GetTextLength();
   long nStartChar = rCtrl.GetSelectionStart();
 
@@ -655,34 +637,27 @@ void CScintillaView::OnUpdateNeedTextAndFollowingText(CCmdUI* pCmdUI)
 
 void CScintillaView::OnUpdateNeedFind(CCmdUI* pCmdUI)
 {
-  //Validate our parameters
 	ASSERT_VALID(this);
-	
 	pCmdUI->Enable(GetCtrl().GetLength() != 0 && !_scintillaEditState.strFind.IsEmpty());
 }
 
 void CScintillaView::OnUpdateEditUndo(CCmdUI* pCmdUI)
 {
-  //Validate our parameters
 	ASSERT_VALID(this);
-	
 	pCmdUI->Enable(GetCtrl().CanUndo());
 }
 
 void CScintillaView::OnUpdateEditRedo(CCmdUI* pCmdUI)
 {
-  //Validate our parameters
 	ASSERT_VALID(this);
-	
 	pCmdUI->Enable(GetCtrl().CanRedo());
 }
 
 void CScintillaView::OnUpdateNeedSel(CCmdUI* pCmdUI)
 {
-  //Validate our parameters
-	ASSERT_VALID(this);
-	
   CScintillaCtrl& rCtrl = GetCtrl();
+  
+	ASSERT_VALID(this);
   long nStartChar = rCtrl.GetSelectionStart();
   long nEndChar = rCtrl.GetSelectionEnd();
 	pCmdUI->Enable(nStartChar != nEndChar);
@@ -690,90 +665,68 @@ void CScintillaView::OnUpdateNeedSel(CCmdUI* pCmdUI)
 
 void CScintillaView::OnEditCut()
 {
-  //Validate our parameters
 	ASSERT_VALID(this);
-	
 	GetCtrl().Cut();
 }
 
 void CScintillaView::OnEditCopy()
 {
-  //Validate our parameters
 	ASSERT_VALID(this);
-	
 	GetCtrl().Copy();
 }
 
 void CScintillaView::OnEditPaste()
 {
-  //Validate our parameters
 	ASSERT_VALID(this);
-	
 	GetCtrl().Paste();
 }
 
 void CScintillaView::OnEditClear()
 {
-  //Validate our parameters
 	ASSERT_VALID(this);
-	
 	GetCtrl().Clear();
 }
 
 void CScintillaView::OnEditUndo()
 {
-  //Validate our parameters
 	ASSERT_VALID(this);
-	
 	GetCtrl().Undo();
 }
 
 void CScintillaView::OnEditRedo()
 {
-  //Validate our parameters
 	ASSERT_VALID(this);
-	
 	GetCtrl().Redo();
 }
 
 void CScintillaView::OnEditSelectAll()
 {
-  //Validate our parameters
 	ASSERT_VALID(this);
-	
 	GetCtrl().SelectAll();
 }
 
 void CScintillaView::OnEditFind()
 {
-  //Validate our parameters
 	ASSERT_VALID(this);
-	
 	OnEditFindReplace(TRUE);
 }
 
 void CScintillaView::OnEditReplace()
 {
-  //Validate our parameters
 	ASSERT_VALID(this);
-	
 	OnEditFindReplace(FALSE);
 }
 
 void CScintillaView::OnEditRepeat()
 {
-  //Validate our parameters
 	ASSERT_VALID(this);
-	
 	if (!FindText(_scintillaEditState.strFind, _scintillaEditState.bNext, _scintillaEditState.bCase, _scintillaEditState.bWord, _scintillaEditState.bRegularExpression))
 		TextNotFound(_scintillaEditState.strFind, _scintillaEditState.bNext, _scintillaEditState.bCase, _scintillaEditState.bWord, _scintillaEditState.bRegularExpression, FALSE);
 }
 
 void CScintillaView::AdjustFindDialogPosition()
 {
-  //Validate our parameters
-	AFXASSUME(_scintillaEditState.pFindReplaceDlg);
-	
+	ASSERT(_scintillaEditState.pFindReplaceDlg);
   CScintillaCtrl& rCtrl = GetCtrl();
   int nStart = rCtrl.GetSelectionStart();
 	CPoint point;
@@ -803,7 +756,6 @@ CScintillaFindReplaceDlg* CScintillaView::CreateFindReplaceDialog()
 
 void CScintillaView::OnEditFindReplace(BOOL bFindOnly)
 {
-  //Validate our parameters
 	ASSERT_VALID(this);
 
 	m_bFirstSearch = TRUE;
@@ -824,14 +776,14 @@ void CScintillaView::OnEditFindReplace(BOOL bFindOnly)
 		}
 	}
   CScintillaCtrl& rCtrl = GetCtrl();
-	CString strFind(rCtrl.GetSelText());
+	CString strFind = rCtrl.GetSelText();
 	//if selection is empty or spans multiple lines use old find text
 	if (strFind.IsEmpty() || (strFind.FindOneOf(_T("\n\r")) != -1))
 		strFind = _scintillaEditState.strFind;
 
-	CString strReplace(_scintillaEditState.strReplace);
+	CString strReplace = _scintillaEditState.strReplace;
 	_scintillaEditState.pFindReplaceDlg = CreateFindReplaceDialog();
-	AFXASSUME(_scintillaEditState.pFindReplaceDlg != NULL);
+	ASSERT(_scintillaEditState.pFindReplaceDlg != NULL);
 	DWORD dwFlags = NULL;
 	if (_scintillaEditState.bNext)
 		dwFlags |= FR_DOWN;
@@ -857,9 +809,7 @@ void CScintillaView::OnEditFindReplace(BOOL bFindOnly)
 
 void CScintillaView::OnFindNext(LPCTSTR lpszFind, BOOL bNext, BOOL bCase, BOOL bWord, BOOL bRegularExpression)
 {
-  //Validate our parameters
 	ASSERT_VALID(this);
-	
 	_scintillaEditState.strFind = lpszFind;
 	_scintillaEditState.bCase = bCase;
 	_scintillaEditState.bWord = bWord;
@@ -875,17 +825,13 @@ void CScintillaView::OnFindNext(LPCTSTR lpszFind, BOOL bNext, BOOL bCase, BOOL b
 
 void CScintillaView::OnReplaceSel(LPCTSTR lpszFind, BOOL bNext, BOOL bCase,	BOOL bWord, BOOL bRegularExpression, LPCTSTR lpszReplace)
 {
-  //Validate our parameters
 	ASSERT_VALID(this);
-	
 	_scintillaEditState.strFind = lpszFind;
 	_scintillaEditState.strReplace = lpszReplace;
 	_scintillaEditState.bCase = bCase;
 	_scintillaEditState.bWord = bWord;
 	_scintillaEditState.bNext = bNext;
   _scintillaEditState.bRegularExpression = bRegularExpression;
-
-  CScintillaCtrl& rCtrl = GetCtrl();
 
 	if (!SameAsSelected(_scintillaEditState.strFind, bCase, bWord, bRegularExpression))
 	{
@@ -896,13 +842,7 @@ void CScintillaView::OnReplaceSel(LPCTSTR lpszFind, BOOL bNext, BOOL bCase,	BOOL
 		return;
 	}
 
-  if (bRegularExpression)
-  {
-    rCtrl.TargetFromSelection();
-    rCtrl.ReplaceTargetRE(_scintillaEditState.strReplace.GetLength(), _scintillaEditState.strReplace);    
-  }
-  else
-  	GetCtrl().ReplaceSel(_scintillaEditState.strReplace);
+	GetCtrl().ReplaceSel(_scintillaEditState.strReplace);
 	if (!FindText(_scintillaEditState.strFind, bNext, bCase, bWord, bRegularExpression))
 		TextNotFound(_scintillaEditState.strFind, bNext, bCase, bWord, bRegularExpression, TRUE);
 	else
@@ -912,9 +852,7 @@ void CScintillaView::OnReplaceSel(LPCTSTR lpszFind, BOOL bNext, BOOL bCase,	BOOL
 
 void CScintillaView::OnReplaceAll(LPCTSTR lpszFind, LPCTSTR lpszReplace, BOOL bCase, BOOL bWord, BOOL bRegularExpression)
 {
-  //Validate our parameters
 	ASSERT_VALID(this);
-	
 	_scintillaEditState.strFind = lpszFind;
 	_scintillaEditState.strReplace = lpszReplace;
 	_scintillaEditState.bCase = bCase;
@@ -925,46 +863,20 @@ void CScintillaView::OnReplaceAll(LPCTSTR lpszFind, LPCTSTR lpszReplace, BOOL bC
 	CWaitCursor wait;
 
   //Set the selection to the begining of the document to ensure all text is replaced in the document
-  long start_pos, end_pos;
-  GetReplaceAllTarget(start_pos,end_pos);
+  CScintillaCtrl& rCtrl = GetCtrl();
+  rCtrl.SetSel(0, 0);
 
-  CScintillaCtrl& c = GetCtrl();
-  bool has_selection = c.GetSelectionStart() != c.GetSelectionEnd();
-
-  int flags = 0;
-
-  if (bCase)
-	  flags |= SCFIND_MATCHCASE;
-
-  if (bRegularExpression)
-	  flags |= SCFIND_REGEXP;
-
-  if (bWord)
-	  flags |= SCFIND_WHOLEWORD;
-
-  c.SetSearchFlags(flags);
-  c.BeginUndoAction();
-
-  c.SetTargetStart(start_pos);
-  c.SetTargetEnd(end_pos);
-
-  long find_pos;
-  bool bFoundSomething = false;
-
-  while ((find_pos = c.SearchInTarget(_scintillaEditState.strFind.GetLength(),_scintillaEditState.strFind)) != -1)
+  //Do the replacments
+	rCtrl.HideSelection(TRUE, FALSE);
+  BOOL bFoundSomething = FALSE;
+	while (FindTextSimple(_scintillaEditState.strFind, _scintillaEditState.bNext, bCase, bWord, bRegularExpression))
   {
-	  c.ReplaceTarget(_scintillaEditState.strReplace.GetLength(),_scintillaEditState.strReplace);
-	  c.SetTargetStart(c.GetTargetEnd() + 1);
-	  c.SetTargetEnd(end_pos); // Still end position
-
-	  if (!bFoundSomething)
-		  bFoundSomething = true;
+    bFoundSomething = TRUE;
+		rCtrl.ReplaceSel(_scintillaEditState.strReplace);
   }
 
-  c.EndUndoAction();
-
-  if (has_selection) // Was the text previously selected?
-	  c.SetSel(start_pos,c.GetTargetEnd());
+  //Restore the old selection
+	rCtrl.HideSelection(FALSE, FALSE);
 
   //Inform the user if we could not find anything
   if (!bFoundSomething)
@@ -975,11 +887,10 @@ void CScintillaView::OnReplaceAll(LPCTSTR lpszFind, LPCTSTR lpszReplace, BOOL bC
 
 LRESULT CScintillaView::OnFindReplaceCmd(WPARAM /*wParam*/, LPARAM lParam)
 {
-  //Validate our parameters
 	ASSERT_VALID(this);
 
-	CScintillaFindReplaceDlg* pDialog = static_cast<CScintillaFindReplaceDlg*>(CFindReplaceDialog::GetNotifier(lParam));
-	AFXASSUME(pDialog != NULL);
+	CScintillaFindReplaceDlg* pDialog = (CScintillaFindReplaceDlg*) CFindReplaceDialog::GetNotifier(lParam);
+	ASSERT(pDialog != NULL);
 	ASSERT(pDialog == _scintillaEditState.pFindReplaceDlg);
 
 	if (pDialog->IsTerminating())
@@ -1018,7 +929,7 @@ BOOL CScintillaView::SameAsSelected(LPCTSTR lpszCompare, BOOL bCase, BOOL bWord,
   iFlags |= bRegularExpression ? SCFIND_REGEXP : 0;
   rCtrl.SetSearchFlags(iFlags);
   rCtrl.TargetFromSelection();                     //set target
-  if (rCtrl.SearchInTarget(static_cast<int>(nLen), lpszCompare) < 0) //see what we got
+  if (rCtrl.SearchInTarget(nLen, lpszCompare) < 0) //see what we got
     return FALSE;                                  //no match
 
   //If we got a match, the target is set to the found text
@@ -1027,31 +938,25 @@ BOOL CScintillaView::SameAsSelected(LPCTSTR lpszCompare, BOOL bCase, BOOL bWord,
 
 BOOL CScintillaView::FindText(LPCTSTR lpszFind, BOOL bNext, BOOL bCase, BOOL bWord, BOOL bRegularExpression)
 {
-  //Validate our parameters
 	ASSERT_VALID(this);
-	
 	CWaitCursor wait;
 	return FindTextSimple(lpszFind, bNext, bCase, bWord, bRegularExpression);
 }
 
 BOOL CScintillaView::FindTextSimple(LPCTSTR lpszFind, BOOL bNext, BOOL bCase, BOOL bWord, BOOL bRegularExpression)
 {
-  //Validate our parameters
-	ASSERT(lpszFind != NULL);
+	USES_CONVERSION;
 
   CScintillaCtrl& rCtrl = GetCtrl();
 
+	ASSERT(lpszFind != NULL);
 	TextToFind ft;
   ft.chrg.cpMin = rCtrl.GetSelectionStart();
   ft.chrg.cpMax = rCtrl.GetSelectionEnd();
 	if (m_bFirstSearch)
 		m_bFirstSearch = FALSE;
 
-#ifdef _UNICODE
-	CScintillaCtrl::W2UTF8(lpszFind, -1, ft.lpstrText);
-#else
-	ft.lpstrText = T2A(const_cast<LPTSTR>(lpszFind));
-#endif
+	ft.lpstrText = T2A((LPTSTR)lpszFind);
 	if (ft.chrg.cpMin != ft.chrg.cpMax) // i.e. there is a selection
 	{
 #ifndef _UNICODE
@@ -1098,15 +1003,8 @@ BOOL CScintillaView::FindTextSimple(LPCTSTR lpszFind, BOOL bNext, BOOL bCase, BO
     ft.chrg.cpMax = ncpMinTemp;
   }
 
-	//if we find the text return TRUE
-	BOOL bFound = (FindAndSelect(dwFlags, ft) != -1);
-
-#ifdef _UNICODE
-  //Tidy up the heap memory before we return
-  delete [] ft.lpstrText;
-#endif
-
-  return bFound;
+	// if we find the text return TRUE
+	return (FindAndSelect(dwFlags, ft) != -1);
 }
 
 long CScintillaView::FindAndSelect(DWORD dwFlags, TextToFind& ft)
@@ -1120,9 +1018,7 @@ long CScintillaView::FindAndSelect(DWORD dwFlags, TextToFind& ft)
 
 void CScintillaView::TextNotFound(LPCTSTR /*lpszFind*/, BOOL /*bNext*/, BOOL /*bCase*/, BOOL /*bWord*/, BOOL /*bRegularExpression*/, BOOL /*bReplaced*/)
 {
-  //Validate our parameters
 	ASSERT_VALID(this);
-	
 	m_bFirstSearch = TRUE;
   MessageBeep(MB_ICONHAND);
 }
@@ -1142,13 +1038,6 @@ void CScintillaView::OnSize(UINT nType, int cx, int cy)
   CRect r;
   GetClientRect(&r);
   m_Edit.MoveWindow(&r);	
-}
-
-BOOL CScintillaView::OnEraseBkgnd(CDC* /*pDC*/) 
-{
-  //We do nothing here, because the scintilla control takes up the entire 
-  //client area of our view;
-	return TRUE;
 }
 
 void CScintillaView::OnActivateView(BOOL bActivate, CView* pActivateView, CView* pDeactiveView)
@@ -1181,7 +1070,6 @@ void CScintillaView::AssertValid() const
   //Let the base class do its thing
 	CView::AssertValid();
 
-  //Validate our parameters
 	ASSERT_VALID(&m_aPageStart);
 
 	if (_scintillaEditState.pFindReplaceDlg != NULL)
@@ -1193,27 +1081,26 @@ void CScintillaView::Dump(CDumpContext& dc) const
   //Let the base class do its thing
 	CView::Dump(dc);
 
-	dc << _T("\nm_aPageStart ") << &m_aPageStart;
-  dc << _T("\nbUseROFileAttributeDuringLoading = ") << m_bUseROFileAttributeDuringLoading;
+	AFX_DUMP1(dc, "\nm_aPageStart ", &m_aPageStart);
+  AFX_DUMP1(dc, "\nbUseROFileAttributeDuringLoading = ", m_bUseROFileAttributeDuringLoading);
 
-	dc << _T("\n Static Member Data:");
+	AFX_DUMP0(dc, "\n Static Member Data:");
 	if (_scintillaEditState.pFindReplaceDlg != NULL)
 	{
-		dc << _T("\npFindReplaceDlg = ") <<	static_cast<void*>(_scintillaEditState.pFindReplaceDlg);
-		dc << _T("\nbFindOnly = ") << _scintillaEditState.bFindOnly;
+		AFX_DUMP1(dc, "\npFindReplaceDlg = ",	(void*)_scintillaEditState.pFindReplaceDlg);
+		AFX_DUMP1(dc, "\nbFindOnly = ", _scintillaEditState.bFindOnly);
 	}
-	dc << _T("\nstrFind = ") << _scintillaEditState.strFind;
-	dc << _T("\nstrReplace = ") << _scintillaEditState.strReplace;
-	dc << _T("\nbCase = ") << _scintillaEditState.bCase;
-	dc << _T("\nbWord = ") << _scintillaEditState.bWord;
-	dc << _T("\nbNext = ") << _scintillaEditState.bNext;
-  dc << _T("\nbRegularExpression = ") << _scintillaEditState.bRegularExpression;
+	AFX_DUMP1(dc, "\nstrFind = ", _scintillaEditState.strFind);
+	AFX_DUMP1(dc, "\nstrReplace = ", _scintillaEditState.strReplace);
+	AFX_DUMP1(dc, "\nbCase = ", _scintillaEditState.bCase);
+	AFX_DUMP1(dc, "\nbWord = ", _scintillaEditState.bWord);
+	AFX_DUMP1(dc, "\nbNext = ", _scintillaEditState.bNext);
+  AFX_DUMP1(dc, "\nbRegularExpression = ", _scintillaEditState.bRegularExpression);
 }
 #endif //_DEBUG
 
 void CScintillaView::Serialize(CArchive& ar)
 {
-  //Validate our parameters
 	ASSERT_VALID(this);
 	
   CScintillaCtrl& rCtrl = GetCtrl();
@@ -1289,9 +1176,6 @@ void CScintillaView::OnFilePageSetup()
   else
     dlg.m_psd.Flags |= PSD_INTHOUSANDTHSOFINCHES;
 
-  if (m_bPersistMarginSettings)
-    LoadMarginSettings();
-
   //Set the current margin settings to the current value from m_rectMargin 
   dlg.m_psd.rtMargin = m_rMargin;
 
@@ -1308,9 +1192,6 @@ void CScintillaView::OnFilePageSetup()
 	{
     //Save the new margin value in to the member variable
     m_rMargin = dlg.m_psd.rtMargin;
-
-    if (m_bPersistMarginSettings)
-      SaveMarginSettings();
 
     //Update the printer settings
 		pApp->SelectPrinter(dlg.m_psd.hDevNames, dlg.m_psd.hDevMode);
@@ -1437,7 +1318,7 @@ void CScintillaView::OnKillFocus()
 
 BOOL CScintillaView::OnCommand(WPARAM wParam, LPARAM lParam)
 {
-  HWND hWndControl = reinterpret_cast<HWND>(lParam);
+  HWND hWndControl = (HWND) lParam;
   
   if (hWndControl == GetCtrl().GetSafeHwnd())
   {
@@ -1474,14 +1355,14 @@ BOOL CScintillaView::OnCommand(WPARAM wParam, LPARAM lParam)
 
 BOOL CScintillaView::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult)
 {
-  NMHDR* pNMHdr = reinterpret_cast<NMHDR*>(lParam);
-  AFXASSUME(pNMHdr);
+  NMHDR* pNMHdr = (NMHDR*)lParam;
+  ASSERT(pNMHdr);
 
   //Is it a notification from the embedded control
   CScintillaCtrl& rCtrl = GetCtrl();
   if (pNMHdr->hwndFrom == rCtrl.GetSafeHwnd())
   {
-    SCNotification* pSCNotification = reinterpret_cast<SCNotification*>(lParam);
+    SCNotification* pSCNotification = (SCNotification*) lParam;
     switch (pNMHdr->code)
     {
       case SCN_STYLENEEDED:
@@ -1598,10 +1479,9 @@ BOOL CScintillaView::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult)
   }
 }
 
-void CScintillaView::GetReplaceAllTarget( long& s, long& e )
-{
-	s = 0; e = GetCtrl().GetLength();
-}
+
+
+
 
 IMPLEMENT_DYNAMIC(CScintillaDoc, CDocument)
 
@@ -1624,7 +1504,7 @@ CScintillaView* CScintillaDoc::GetView() const
 	{
 		pView = GetNextView(pos);
 		if (pView->IsKindOf(RUNTIME_CLASS(CScintillaView)))
-			return static_cast<CScintillaView*>(pView);
+			return (CScintillaView*) pView;
 	}
 
 	//can't find one--return NULL
@@ -1634,7 +1514,7 @@ CScintillaView* CScintillaDoc::GetView() const
 void CScintillaDoc::SetModifiedFlag(BOOL bModified)
 {
   CScintillaView* pView = GetView();
-  AFXASSUME(pView);
+  ASSERT(pView);
 
   if (bModified == FALSE)
     pView->GetCtrl().SetSavePoint();
@@ -1645,7 +1525,7 @@ void CScintillaDoc::SetModifiedFlag(BOOL bModified)
 BOOL CScintillaDoc::IsModified()
 {
   CScintillaView* pView = GetView();
-  AFXASSUME(pView);
+  ASSERT(pView);
 
 	return m_bModified || pView->GetCtrl().GetModify();
 }
@@ -1665,8 +1545,7 @@ void CScintillaDoc::DeleteContents()
 void CScintillaDoc::Serialize(CArchive& ar)
 {
 	CScintillaView* pView = GetView();
-	AFXASSUME(pView);
-	
+	ASSERT(pView);
 	pView->Serialize(ar);
 }
 
@@ -1676,10 +1555,10 @@ BOOL CScintillaDoc::OnSaveDocument(LPCTSTR lpszPathName)
 	BOOL bSuccess = CDocument::OnSaveDocument(lpszPathName);
   if (bSuccess)
   {
-		CScintillaView* pView = GetView();
-		AFXASSUME(pView);
+		CScintillaView *pView = GetView();
+		ASSERT(pView);
 		
-		CScintillaCtrl& rCtrl = pView->GetCtrl();
+		CScintillaCtrl &rCtrl = pView->GetCtrl();
 
 		//Tell the control that the document has now been saved
 		rCtrl.SetSavePoint();
@@ -1688,6 +1567,7 @@ BOOL CScintillaDoc::OnSaveDocument(LPCTSTR lpszPathName)
 
 	return bSuccess;
 } 
+
 
 #ifdef _DEBUG
 void CScintillaDoc::AssertValid() const
@@ -1702,4 +1582,6 @@ void CScintillaDoc::Dump(CDumpContext& dc) const
 	CDocument::Dump(dc);
 }
 #endif //_DEBUG
+
+} // namespace Scintilla
 

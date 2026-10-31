@@ -1,162 +1,131 @@
-// from server: 35% by colin
+// from server: 98% by EspClaude
+// from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-render AggregatingSceneManager.cpp
+// roc-flags: /O2 /GS- /EHsc /MD
+// roc-lib: rbxgs-dll roc_espeon_renderdeviceautoptreefad870f7e7913d.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "RenderLib/AggregatingSceneManager.h"
+#include <memory>
+// from server: 93% by king_originala
+typedef unsigned int size_t;
 
-namespace RBX
+struct String;
+extern void (__thiscall *stringConstruct)(String*, const char*);
+
+struct String {
+    char storage[28];
+    String(const char*);
+    ~String();
+};
+
+inline String::String(const char* text)
 {
-	namespace Render
-	{
-		AggregatingSceneManager::AggregatingSceneManager(RenderScene* renderScene)
-			: SceneManager(renderScene)
-		{
-		}
+    stringConstruct(this, text);
+}
 
-		AggregatingSceneManager::~AggregatingSceneManager() {}
+extern bool (__cdecl *stringEqual)(const String&, const char*);
+extern const String& __cdecl getRendererName();
+extern void* __cdecl getConfiguration();
+extern unsigned int (__stdcall *getGLError)();
+extern void* __cdecl operator new(size_t);
+extern void __cdecl operator delete(void*);
 
-		void AggregatingSceneManager::addModel(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			addToScene(chunk);
-		}
+struct GraphicsError {
+    char storage[40];
+    GraphicsError(const String&);
+    GraphicsError(const GraphicsError&);
+    ~GraphicsError();
+};
 
-		void AggregatingSceneManager::removeModel(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			invalidSleepingModels.erase(chunk);
-			invalidMovingModels.erase(chunk);
+struct Context {
+    virtual void v0();
+    virtual void v1();
+    virtual void v2();
+    virtual void v3();
+    virtual void v4();
+    virtual void v5();
+    virtual void v6();
+    virtual void v7();
+    virtual void v8();
+    virtual void v9();
+    virtual void v10();
+    virtual void v11();
+    virtual void v12();
+    virtual void v13();
+    virtual void v14();
+    virtual void v15();
+    virtual void v16();
+    virtual void v17();
+    virtual void v18();
+    virtual void v19();
+    virtual void v20();
+    virtual void v21();
+    virtual void v22();
+    virtual void v23();
+    virtual void v24();
+    virtual void v25();
+    virtual void v26();
+    virtual void v27();
+    virtual void v28();
+    virtual void v29();
+    virtual void v30();
+    virtual void v31();
+    virtual void v32();
+    virtual void v33();
+    virtual void v34();
+    virtual void v35();
+    virtual void v36();
+    virtual void v37();
+    virtual void activate();
+};
 
-			G3D::ReferenceCountedPointer<AggregateChunk> aggregate = chunk->aggregate.createStrongPtr();
-			if (aggregate.notNull())
-				deconstructAggregate(aggregate);
+struct RenderDevice {
+    char storage[0x8b0];
+    RenderDevice();
+    ~RenderDevice();
+    bool init(Context*, void*);
+    void setOption(bool);
+    void begin();
+};
 
-			removeFromScene(chunk);
-			dequeueSleepingChunk(chunk);
-		}
+extern Context* currentContext;
+extern bool deviceCreated;
+extern const char driverWarning[];
 
-		void AggregatingSceneManager::setSleeping(const G3D::ReferenceCountedPointer<Chunk>& chunk, bool sleeping)
-		{
-			if (sleeping)
-			{
-				bool erased = invalidMovingModels.erase(chunk) == 1;
+struct CRobloxWnd {
+    char padding0[0x88];
+    bool beginImmediately;
+    char padding1[0x1b];
+    Context* context;
+    char padding2[4];
+    std::auto_ptr<RenderDevice> renderDevice;
 
-				if (erased)
-					invalidSleepingModels.insert(chunk);
+    void createRenderDevice(Context*);
+};
 
-				queueSleepingChunk(chunk);
-			}
-			else
-			{
-				bool erased = invalidSleepingModels.erase(chunk) == 1;
+void CRobloxWnd::createRenderDevice(Context* value)
+{
+    context = value;
+    if (currentContext != value) {
+        value->activate();
+        currentContext = value;
+    }
 
-				if (erased)
-					invalidMovingModels.insert(chunk);
+    if (stringEqual(getRendererName(), "GDI Generic"))
+        throw GraphicsError(String(driverWarning));
 
-				G3D::ReferenceCountedPointer<AggregateChunk> aggregate = chunk->aggregate.createStrongPtr();
-				if (aggregate.notNull())
-					deconstructAggregate(aggregate);
+    renderDevice.reset(new RenderDevice);
+    if (!renderDevice->init(context, getConfiguration())) {
+        renderDevice.reset();
+        throw GraphicsError(String("renderDevice->init failed"));
+    }
 
-				dequeueSleepingChunk(chunk);
-			}
-		}
+    deviceCreated = true;
+    renderDevice->setOption(false);
+    if (beginImmediately)
+        renderDevice->begin();
 
-		void AggregatingSceneManager::invalidateModel(const G3D::ReferenceCountedPointer<Chunk>& chunk, bool isSleeping)
-		{
-			if (isSleeping)
-				invalidSleepingModels.insert(chunk);
-			else
-				invalidMovingModels.insert(chunk);
-		}
-
-		void AggregatingSceneManager::dequeueSleepingChunk(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator iter = buckets.begin();
-			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator end = buckets.end();
-
-			for (; iter != end; iter++)
-			{
-				if (iter->second->dequeueSleepingChunk(chunk))
-					break;
-			}
-		}
-
-		void AggregatingSceneManager::clear()
-		{
-			invalidSleepingModels.clear();
-			invalidMovingModels.clear();
-
-			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator iter = buckets.begin();
-			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator end = buckets.end();
-
-			for (; iter != end; iter++)
-			{
-				iter->second->clear();
-			}
-
-			clearScene();
-		}
-
-		bool AggregatingSceneManager::Bucket::dequeueSleepingChunk(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			std::vector<G3D::ReferenceCountedPointer<Chunk>>::iterator found = std::find(queue.begin(), queue.end(), chunk);
-
-			if (found != queue.end())
-			{
-				queue.erase(found);
-				return true;
-			}
-			else
-			{
-				return false;
-			}
-		}
-
-		void AggregatingSceneManager::queueSleepingChunk(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			G3D::ReferenceCountedPointer<Bucket> queue;
-
-			{
-				BucketKey key(chunk);
-
-				std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator iter = buckets.find(key);
-
-				if (iter == buckets.end())
-				{
-					queue = new Bucket;
-					buckets[key] = queue;
-				}
-				else
-				{
-					queue = iter->second;
-				}
-			}
-
-			queue->addToQueue(chunk);
-		}
-
-		bool AggregatingSceneManager::BucketKey::operator<(const AggregatingSceneManager::BucketKey& that) const
-		{
-			if (this->material < that.material)
-				return true;
-			if (this->material > that.material)
-				return false;
-
-			if (this->castsShadows < that.castsShadows)
-				return true;
-			if (this->castsShadows > that.castsShadows)
-				return false;
-
-			if (this->polygonOffset < that.polygonOffset)
-				return true;
-			if (this->polygonOffset > that.polygonOffset)
-				return false;
-
-			if (this->cullable < that.cullable)
-				return true;
-			else
-				return false;
-		}
-	}
+    if (getGLError() != 0)
+        throw GraphicsError(String("GL error creating RenderDevice"));
 }

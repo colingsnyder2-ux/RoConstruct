@@ -1,20 +1,6 @@
-// from server: 34% by atomic.potato
-struct CXTIconHandle {
-    void* m_vtable;
-    void* m_ptr;
-    void* Realloc(void* p, unsigned int size);
-};
-
-extern "C" void* __stdcall HeapReAlloc(void*, unsigned int, void*, unsigned int);
-
-void* CXTIconHandle::Realloc(void* p, unsigned int size)
-{
-    if (p == 0) {
-        return ((void* (__thiscall*)(void*, unsigned int))m_vtable)(this, size);
-    }
-    if (size == 0) {
-        ((void (__thiscall*)(void*, void*))((char*)m_vtable + 4))(this, p);
-        return 0;
-    }
-    return HeapReAlloc(m_ptr, 0, p, size);
-}
+// from server: 100% by EspClaude
+// from server: 100% by tester
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /MD
+// roc-archive: msvc-atlmfc-rtm atls.lib/f:/dd/vctools/vc7libs/ship/atlmfc/src/atl/atls/staticrelease/obj1r/i386/atlstr.obj

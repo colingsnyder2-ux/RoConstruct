@@ -1,113 +1,34 @@
-// from server: 42% by colin
+// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs tool/GroupDragTool.cpp
+// roc-flags: /O2 /GS- /EHsc /MD /fp:fast
+struct Vector2int16 {
+    short x;
+    short y;
+    Vector2int16(short x, short y) : x(x), y(y) {}
+};
 
-// Candidate translation unit (score above; library headers required).
-#include "tool/GroupDragTool.h"
-#include "tool/Dragger.h"
-#include "util/Math.h"
+struct Vector2 {
+    float x, y;
+    Vector2(float x, float y) : x(x), y(y) {}
+};
 
-namespace RBX
-{
-	GroupDragTool::GroupDragTool(PartInstance* mousePart, const G3D::Vector3& hitPointWorld, const std::vector<boost::weak_ptr<PartInstance>>& partArray, Workspace* workspace)
-		: Base(workspace),
-		  dragging(false)
-	{
-		RBXASSERT(mousePart);
-		megaDragger.reset(new MegaDragger(mousePart, partArray, (RootInstance*)workspace));
-	}
+struct WinRect { int left, top, right, bottom; };
 
-	GroupDragTool::~GroupDragTool()
-	{
-		if (dragging)
-			RBXASSERT(0);
-	}
+extern "C" __declspec(dllimport) int __stdcall GetClientRect(void* hwnd, WinRect* rect);
 
-	const std::string GroupDragTool::getCursorName() const
-	{
-		return dragging ? "GrabRotateCursor" : "DragCursor";
-	}
+struct Window { char pad[0x20]; void* m_hWnd; };
 
-	MouseCommand* GroupDragTool::onKeyDown(const UIEvent& uiEvent)
-	{
-		if (dragging)
-		{
-			switch (uiEvent.key)
-			{
-			case SDLK_r:
-				megaDragger->safeRotate(Math::matrixRotateY());
-				break;
-			case SDLK_t:
-				megaDragger->safeRotate(Math::matrixTiltZ());
-				break;
-			}
+struct CSettingsDialog {
+    char pad[0x16c];
+    Window* view;
+    Vector2int16 getSize();
+};
 
-			return this;
-		}
-		else
-		{
-			RBXASSERT(0);
-			return NULL;
-		}
-	}
-
-	MouseCommand* GroupDragTool::onMouseDown(const UIEvent& uiEvent)
-	{
-		downPoint = uiEvent.mousePosition;
-		capture();
-
-		return this;
-	}
-
-	void GroupDragTool::onMouseIdle(const UIEvent& uiEvent)
-	{
-		RBXASSERT(captured());
-
-		G3D::Vector3 hit;
-
-		if (captured() && dragging && megaDragger->mousePartAlive() &&
-			Math::intersectRayPlane(getSearchRay(uiEvent), G3D::Plane(G3D::Vector3::unitY(), G3D::Vector3::zero()), hit))
-		{
-			hit = megaDragger->hitObjectOrPlane(uiEvent);
-			megaDragger->continueDragging();
-
-			G3D::Vector3 hitSnapped = Dragger::toGrid(hit);
-			G3D::Vector3 delta = Dragger::toGrid(hitSnapped - lastHit);
-			lastHit = hitSnapped;
-
-			megaDragger->safeMoveYDrop(delta);
-		}
-	}
-
-	void GroupDragTool::onMouseMove(const UIEvent& uiEvent)
-	{
-		RBXASSERT(captured());
-
-		if (!dragging && (G3D::Vector2(uiEvent.mousePosition) - downPoint).length() > 4.0f)
-		{
-			dragging = true;
-
-			megaDragger->startDragging();
-			megaDragger->alignAndCleanParts();
-			lastHit = megaDragger->hitObjectOrPlane(uiEvent);
-		}
-
-		onMouseIdle(uiEvent);
-	}
-
-	MouseCommand* GroupDragTool::onMouseUp(const UIEvent& uiEvent)
-	{
-		RBXASSERT(captured());
-
-		if (dragging)
-		{
-			megaDragger->finishDragging();
-			dragging = false;
-		}
-
-		releaseCapture();
-		return NULL;
-	}
+Vector2int16 CSettingsDialog::getSize() {
+    WinRect rect;
+    GetClientRect(view->m_hWnd, &rect);
+    Vector2 size((float)(rect.right - rect.left), (float)(rect.bottom - rect.top));
+    return Vector2int16((short)size.x, (short)size.y);
 }

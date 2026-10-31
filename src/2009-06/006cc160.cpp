@@ -1,108 +1,55 @@
-// from server: 76% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+// from server: 100% by EspClaude
+// from server: 100% by king_originala
+// roc 2008-06 0063fba0  unit: RBX::GrabTool  size: 94 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 0063fba0
+//
+// 0063fba0  6aff                 push -1
+// 0063fba2  68f8a97d00           push 0x7da9f8
+// 0063fba7  64a100000000         mov eax, dword ptr fs:[0]
+// 0063fbad  50                   push eax
+// 0063fbae  64892500000000       mov dword ptr fs:[0], esp
+// 0063fbb5  51                   push ecx
+// 0063fbb6  8b442414             mov eax, dword ptr [esp + 0x14]
+// 0063fbba  56                   push esi
+// 0063fbbb  8bf1                 mov esi, ecx
+// 0063fbbd  50                   push eax
+// 0063fbbe  89742408             mov dword ptr [esp + 8], esi
+// 0063fbc2  e8295efdff           call 0x6159f0
+// 0063fbc7  6850388300           push 0x833850
+// 0063fbcc  8d4e1c               lea ecx, [esi + 0x1c]
+// 0063fbcf  c744241400000000     mov dword ptr [esp + 0x14], 0
+// 0063fbd7  c70654a48400         mov dword ptr [esi], 0x84a454
+// 0063fbdd  c746043ca48400       mov dword ptr [esi + 4], 0x84a43c
+// 0063fbe4  ff1558248000         call dword ptr [0x802458]
+// 0063fbea  8b4c2408             mov ecx, dword ptr [esp + 8]
+// 0063fbee  8bc6                 mov eax, esi
+// 0063fbf0  5e                   pop esi
+// 0063fbf1  64890d00000000       mov dword ptr fs:[0], ecx
+// 0063fbf8  83c410               add esp, 0x10
+// 0063fbfb  c20400               ret 4
 
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
+struct Base {
+    char storage[28];
+    Base(int);
+    ~Base();
+};
 
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
+struct S : Base {
+    char cursor[28];
+    S(int);
+};
 
-boost::mutex& moo2()
+extern unsigned long primaryTable[];
+extern unsigned long secondaryTable[];
+
+typedef void* (__thiscall *StringConstructor)(void*, const char*);
+extern StringConstructor constructString;
+
+S::S(int a1) : Base(a1)
 {
-	static boost::mutex mutex2;
-	return mutex2;
-}
-
-void initMoo()
-{
-	moo2();
-}
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
+    constructString(
+        (*(unsigned long**)((char*)this + 0) = primaryTable,
+         *(unsigned long**)((char*)this + 4) = secondaryTable,
+         cursor),
+        "ArrowCursor");
 }

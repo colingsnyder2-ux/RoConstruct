@@ -1,108 +1,43 @@
-// from server: 55% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+// from server: 100% by EspClaude
+// from server: 100% by king_originala
+// roc 2008-06 00599220  unit: RBX::VPartInstance::?$FactoryProduct  size: 48 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 00599220
+//
+// 00599220  53                   push ebx
+// 00599221  56                   push esi
+// 00599222  57                   push edi
+// 00599223  8b7c2410             mov edi, dword ptr [esp + 0x10]
+// 00599227  8bd9                 mov ebx, ecx
+// 00599229  33f6                 xor esi, esi
+// 0059922b  eb03                 jmp 0x599230
+// 0059922d  8d4900               lea ecx, [ecx]
+// 00599230  56                   push esi
+// 00599231  8bcb                 mov ecx, ebx
+// 00599233  e8c8390500           call 0x5ecc00
+// 00599238  8bc8                 mov ecx, eax
+// 0059923a  e851800500           call 0x5f1290
+// 0059923f  8904b7               mov dword ptr [edi + esi*4], eax
+// 00599242  46                   inc esi
+// 00599243  83fe06               cmp esi, 6
+// 00599246  7ce8                 jl 0x599230
+// 00599248  8bc7                 mov eax, edi
+// 0059924a  5f                   pop edi
+// 0059924b  5e                   pop esi
+// 0059924c  5b                   pop ebx
+// 0059924d  c20400               ret 4
 
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
+struct FaceInstance {
+    int getSurfaceType() const;
+};
 
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
+struct S {
+    FaceInstance* getFace(int index);
+    int* getSurfaceTypes(int* result);
+};
 
-boost::mutex& moo2()
+int* S::getSurfaceTypes(int* result)
 {
-	static boost::mutex mutex2;
-	return mutex2;
-}
-
-void initMoo()
-{
-	moo2();
-}
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
+    for (int i = 0; i < 6; ++i)
+        result[i] = getFace(i)->getSurfaceType();
+    return result;
 }

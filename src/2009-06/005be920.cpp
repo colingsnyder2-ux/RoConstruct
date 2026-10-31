@@ -1,162 +1,67 @@
-// from server: 37% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-render AggregatingSceneManager.cpp
+// from server: 100% by EspClaude
+// from server: 100% by king_originala
+// roc 2008-06 0053f9e0  unit: RBX::RenderBase::AggregatingSceneManager  size: 100 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 0053f9e0
+//
+// 0053f9e0  55                   push ebp
+// 0053f9e1  8bec                 mov ebp, esp
+// 0053f9e3  51                   push ecx
+// 0053f9e4  8b4d08               mov ecx, dword ptr [ebp + 8]
+// 0053f9e7  e8f45ff6ff           call 0x4a59e0
+// 0053f9ec  0fb6c0               movzx eax, al
+// 0053f9ef  85c0                 test eax, eax
+// 0053f9f1  7504                 jne 0x53f9f7
+// 0053f9f3  32c0                 xor al, al
+// 0053f9f5  eb49                 jmp 0x53fa40
+// 0053f9f7  c745fc00000000       mov dword ptr [ebp - 4], 0
+// 0053f9fe  eb09                 jmp 0x53fa09
+// 0053fa00  8b4dfc               mov ecx, dword ptr [ebp - 4]
+// 0053fa03  83c101               add ecx, 1
+// 0053fa06  894dfc               mov dword ptr [ebp - 4], ecx
+// 0053fa09  837dfc03             cmp dword ptr [ebp - 4], 3
+// 0053fa0d  7d2f                 jge 0x53fa3e
+// 0053fa0f  8b55fc               mov edx, dword ptr [ebp - 4]
+// 0053fa12  52                   push edx
+// 0053fa13  8b4d08               mov ecx, dword ptr [ebp + 8]
+// 0053fa16  e865deefff           call 0x43d880
+// 0053fa1b  d900                 fld dword ptr [eax]
+// 0053fa1d  83ec08               sub esp, 8
+// 0053fa20  dd1c24               fstp qword ptr [esp]
+// 0053fa23  e8b822fdff           call 0x511ce0
+// 0053fa28  83c408               add esp, 8
+// 0053fa2b  dc1df8ce8200         fcomp qword ptr [0x82cef8]
+// 0053fa31  dfe0                 fnstsw ax
+// 0053fa33  f6c441               test ah, 0x41
+// 0053fa36  7504                 jne 0x53fa3c
+// 0053fa38  32c0                 xor al, al
+// 0053fa3a  eb04                 jmp 0x53fa40
+// 0053fa3c  ebc2                 jmp 0x53fa00
+// 0053fa3e  b001                 mov al, 1
+// 0053fa40  8be5                 mov esp, ebp
+// 0053fa42  5d                   pop ebp
+// 0053fa43  c3                   ret 
 
-// Candidate translation unit (score above; library headers required).
-#include "RenderLib/AggregatingSceneManager.h"
-
-namespace RBX
+struct Vector3
 {
-	namespace Render
-	{
-		AggregatingSceneManager::AggregatingSceneManager(RenderScene* renderScene)
-			: SceneManager(renderScene)
-		{
-		}
+    bool isFinite() const;
+    const float& operator[](int index) const;
+};
 
-		AggregatingSceneManager::~AggregatingSceneManager() {}
+extern double __cdecl absoluteValue(double value);
+extern const double limit;
 
-		void AggregatingSceneManager::addModel(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			addToScene(chunk);
-		}
+#pragma optimize("", off)
 
-		void AggregatingSceneManager::removeModel(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			invalidSleepingModels.erase(chunk);
-			invalidMovingModels.erase(chunk);
+bool __cdecl checkVector(const Vector3& value)
+{
+    if (!value.isFinite())
+        return false;
 
-			G3D::ReferenceCountedPointer<AggregateChunk> aggregate = chunk->aggregate.createStrongPtr();
-			if (aggregate.notNull())
-				deconstructAggregate(aggregate);
+    for (int i = 0; i < 3; ++i)
+    {
+        if (absoluteValue(value[i]) > limit)
+            return false;
+    }
 
-			removeFromScene(chunk);
-			dequeueSleepingChunk(chunk);
-		}
-
-		void AggregatingSceneManager::setSleeping(const G3D::ReferenceCountedPointer<Chunk>& chunk, bool sleeping)
-		{
-			if (sleeping)
-			{
-				bool erased = invalidMovingModels.erase(chunk) == 1;
-
-				if (erased)
-					invalidSleepingModels.insert(chunk);
-
-				queueSleepingChunk(chunk);
-			}
-			else
-			{
-				bool erased = invalidSleepingModels.erase(chunk) == 1;
-
-				if (erased)
-					invalidMovingModels.insert(chunk);
-
-				G3D::ReferenceCountedPointer<AggregateChunk> aggregate = chunk->aggregate.createStrongPtr();
-				if (aggregate.notNull())
-					deconstructAggregate(aggregate);
-
-				dequeueSleepingChunk(chunk);
-			}
-		}
-
-		void AggregatingSceneManager::invalidateModel(const G3D::ReferenceCountedPointer<Chunk>& chunk, bool isSleeping)
-		{
-			if (isSleeping)
-				invalidSleepingModels.insert(chunk);
-			else
-				invalidMovingModels.insert(chunk);
-		}
-
-		void AggregatingSceneManager::dequeueSleepingChunk(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator iter = buckets.begin();
-			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator end = buckets.end();
-
-			for (; iter != end; iter++)
-			{
-				if (iter->second->dequeueSleepingChunk(chunk))
-					break;
-			}
-		}
-
-		void AggregatingSceneManager::clear()
-		{
-			invalidSleepingModels.clear();
-			invalidMovingModels.clear();
-
-			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator iter = buckets.begin();
-			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator end = buckets.end();
-
-			for (; iter != end; iter++)
-			{
-				iter->second->clear();
-			}
-
-			clearScene();
-		}
-
-		bool AggregatingSceneManager::Bucket::dequeueSleepingChunk(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			std::vector<G3D::ReferenceCountedPointer<Chunk>>::iterator found = std::find(queue.begin(), queue.end(), chunk);
-
-			if (found != queue.end())
-			{
-				queue.erase(found);
-				return true;
-			}
-			else
-			{
-				return false;
-			}
-		}
-
-		void AggregatingSceneManager::queueSleepingChunk(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			G3D::ReferenceCountedPointer<Bucket> queue;
-
-			{
-				BucketKey key(chunk);
-
-				std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator iter = buckets.find(key);
-
-				if (iter == buckets.end())
-				{
-					queue = new Bucket;
-					buckets[key] = queue;
-				}
-				else
-				{
-					queue = iter->second;
-				}
-			}
-
-			queue->addToQueue(chunk);
-		}
-
-		bool AggregatingSceneManager::BucketKey::operator<(const AggregatingSceneManager::BucketKey& that) const
-		{
-			if (this->material < that.material)
-				return true;
-			if (this->material > that.material)
-				return false;
-
-			if (this->castsShadows < that.castsShadows)
-				return true;
-			if (this->castsShadows > that.castsShadows)
-				return false;
-
-			if (this->polygonOffset < that.polygonOffset)
-				return true;
-			if (this->polygonOffset > that.polygonOffset)
-				return false;
-
-			if (this->cullable < that.cullable)
-				return true;
-			else
-				return false;
-		}
-	}
+    return true;
 }
