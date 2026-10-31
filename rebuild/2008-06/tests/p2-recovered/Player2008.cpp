@@ -1,4 +1,5 @@
 #include <Ogre.h>
+#include <OgreWindowEventUtilities.h>
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -691,6 +692,8 @@ int main(int argc, char** argv)
         bool moved = false, removed = false;
         while (!win->isClosed())
         {
+            Ogre::WindowEventUtilities::messagePump();
+            if(win->isClosed())break;
             unsigned long now = timer.getMilliseconds();
             float dt = (now - last) / 1000.0f;
             if (dt <= 0) dt = 1.0f / 60.0f;

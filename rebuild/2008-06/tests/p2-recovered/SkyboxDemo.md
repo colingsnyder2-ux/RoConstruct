@@ -21,7 +21,9 @@ developer override for the atlas input. Green `--selftest` remains separate.
 `--capture-spin 180` writes180 actual800x600 backbuffer PNGs, one complete turn.
 `python rebuild/2008-06/tests/capture_sky_demo.py` records the six-second30fps VP8
 video and screenshot, validates six sky directions and missing-file errors,
-and saves revision/input/output receipts under work/2008-06/sky-demo.
+and saves revision/input/output receipts in a new dated work/2008-06/sky-demo-*
+directory. Use --output DIRECTORY for a chosen new destination; existing captures
+are preserved.
 Encoding uses installed Python OpenCV; normal player launch does not require it.
 
 Sky setup reuses004d9e00's material text (byte-confirmed at00940660), face order

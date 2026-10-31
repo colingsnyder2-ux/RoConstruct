@@ -1,5 +1,9 @@
 """Capture real player frames, verify six sky directions and encode a VP8 spin."""
 import hashlib
+import argparse
+import ctypes
+from ctypes import wintypes
+from datetime import datetime
 import json
 import os
 from pathlib import Path
@@ -13,7 +17,9 @@ from PIL import Image
 import psutil
 
 root = Path(__file__).resolve().parents[3]
-output = root / 'work/2008-06/sky-demo'
+parser=argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--output',type=Path,default=root/'work/2008-06'/datetime.now().strftime('sky-demo-%Y%m%d-%H%M%S-%f'))
+output=parser.parse_args().output.resolve()
 output.mkdir(exist_ok=False)
 binary = root / 'rebuild/2008-06/out/tests/P2RecoveredPlayer/P2RecoveredPlayer.exe'
 content = binary.parent / 'Content'
@@ -81,11 +87,15 @@ for path in paths:
 writer.release()
 reader = cv2.VideoCapture(str(video))
 assert reader.isOpened() and int(reader.get(cv2.CAP_PROP_FRAME_COUNT)) == 180
+decoded=0
+while reader.read()[0]:decoded+=1
+assert decoded==180
 reader.release()
 receipt['capture'] = {'frame_count': 180, 'fps': 30, 'seconds': 6, 'size': [800, 600],
                       'codec': 'VP8/WebM', 'frame_sha256': hashes, 'video_sha256': sha(video),
                       'picture_sha256': sha(image), 'first_red_pixels': int(red(first).sum()),
-                      'quarter_turn_mask_difference': int(np.count_nonzero(red(first) ^ red(quarter)))}
+                      'quarter_turn_mask_difference': int(np.count_nonzero(red(first) ^ red(quarter))),
+                      'fully_decoded_frame_count': decoded, 'encoding_tool_version': cv2.__version__}
 
 views, _ = run('sky-directions', ['--capture-sky'])
 expected = {'front': ('bk', 0), 'back': ('ft', 0), 'left': ('lf', 0), 'right': ('rt', 0), 'up': ('up', 1), 'down': ('dn', 3)}
@@ -109,9 +119,39 @@ _, text = run('missing-sky', ['--capture-spin', '1', '--content-root', str(bad)]
 assert 'missing sky face: null_plainsky512_dn.jpg' in text
 _, text = run('missing-place', ['--frames', '1', str(output / 'does-not-exist.rbxl')], 1)
 assert 'could not read place:' in text
+
+# Exercise the actual no-argument default launch and normal WM_CLOSE handling.
+folder=output/'default-launch';folder.mkdir()
+user32=ctypes.WinDLL('user32',use_last_error=True)
+callback_type=ctypes.WINFUNCTYPE(wintypes.BOOL,wintypes.HWND,wintypes.LPARAM)
+user32.EnumWindows.argtypes=[callback_type,wintypes.LPARAM]
+user32.GetWindowThreadProcessId.argtypes=[wintypes.HWND,ctypes.POINTER(wintypes.DWORD)]
+user32.IsWindowVisible.argtypes=[wintypes.HWND]
+user32.PostMessageW.argtypes=[wintypes.HWND,wintypes.UINT,wintypes.WPARAM,wintypes.LPARAM]
+with (folder/'stdout.txt').open('w') as stream:
+    process=subprocess.Popen([str(binary)],cwd=folder,env=env,stdout=stream,stderr=subprocess.STDOUT)
+    windows=[]
+    @callback_type
+    def owned_window(window,parameter):
+        owner=wintypes.DWORD();user32.GetWindowThreadProcessId(window,ctypes.byref(owner))
+        if owner.value==process.pid and user32.IsWindowVisible(window):windows.append(window)
+        return True
+    deadline=time.monotonic()+20
+    while process.poll() is None and time.monotonic()<deadline:
+        windows.clear();user32.EnumWindows(owned_window,0)
+        log=folder/'player.log'
+        if windows and log.exists() and 'RbxGfx: created light' in log.read_text():break
+        time.sleep(.02)
+    assert windows and process.poll() is None, f'Inspect default launch process {process.pid}'
+    assert user32.PostMessageW(windows[0],0x10,0,0)
+    assert process.wait(timeout=10)==0
+text=(folder/'stdout.txt').read_text()
+assert 'size=(4,1.2,2)' in text and 'faces=6 distance=2700' in text
+assert 'mesh cleanup: levels=0 refs=0 backends=0 spheres=0' in text
+receipt['runs']['default-launch']={'args':[],'cwd':str(folder),'exit':0,'closed_own_window_with_WM_CLOSE':True,'stdout_sha256':sha(folder/'stdout.txt')}
 receipt['source_sha256'] = {f'rebuild/2008-06/{name}': sha(root / 'rebuild/2008-06' / name) for name in (
     'tests/PlayerSkybox.cpp', 'tests/PlayerSkybox.h', 'tests/p2-recovered/Player2008.cpp',
-    'tests/p2-recovered/PlayerEngine.cpp', 'modules/p2-recovered-player.json', 'tests/stage_demo_content.py')}
+    'tests/p2-recovered/PlayerEngine.cpp', 'modules/p2-recovered-player.json', 'tests/stage_demo_content.py','tests/capture_sky_demo.py')}
 receipt['limits'] = ['Uses identified period external assets; exact June distribution identity unproven.',
                      'Default local sky path; custom Sky ContentIds/online service integration remain later roadmap work.',
                      'Capture is actual D3D9 backbuffer; video encoding is separate tooling.']
