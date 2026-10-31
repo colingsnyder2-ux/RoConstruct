@@ -27,7 +27,9 @@
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Workspace.h"
 #include "v8datamodel/PartInstance.h"
+#include "v8datamodel/Lighting.h"
 #include "reflection/property.h"
+#include "../PlayerLighting.h"
 
 #include <G3D/CoordinateFrame.h>
 #include <G3D/Vector3.h>
@@ -39,6 +41,7 @@
 #include <vector>
 #include <algorithm>
 #include <cstdio>
+#include <cstdlib>
 
 RBX::DataModel* EngineDataModel();
 
@@ -53,6 +56,7 @@ struct MeshData
     G3D::Vector3 size;
     G3D::Color3 color;
     PlayerBlockMesh::MeshRef geometry;
+    PlayerNativeMaterial::MaterialRef material;
     bool valid;
 
     MeshData() : size(1, 1, 1), color(0.5f, 0.5f, 0.5f), valid(false) {}
@@ -168,6 +172,7 @@ public:
     std::vector<Chunk*> models;
     std::vector<Chunk*> removed;
     SceneManager sceneManager;
+    PlayerNativeMaterial::MaterialFactory materialFactory;
 
 private:
     RBX::DataModel* dataModel;
@@ -211,6 +216,9 @@ void PartChunk::updateMesh()
     if(partInstance->getPartType()==RBX::Part::BLOCK_PART &&
        std::max(meshData.size.x,std::max(meshData.size.y,meshData.size.z))<30.0f)
         meshData.geometry=PlayerBlockMesh::BlockMesh::create(meshData.size,surfaces,partInstance->getColor());
+    // 004eb190 ordinary mega-material branch; native cache owns only weak refs.
+    PlayerNativeMaterial::Attributes attributes={partInstance->getColor(),partInstance->alpha(),partInstance->getReflectance()};
+    meshData.material=view->materialFactory.getMegaMaterial(attributes);
     meshData.valid = true;
 }
 
@@ -225,6 +233,8 @@ void PartChunk::onPropertyChanged(const RBX::Reflection::PropertyDescriptor* des
 {
     if (*descriptor == RBX::PartInstance::prop_Size ||
         *descriptor == RBX::PartInstance::prop_Color ||
+        *descriptor == RBX::PartInstance::prop_Transparency ||
+        *descriptor == RBX::PartInstance::prop_Reflectance ||
         *descriptor == RBX::PartInstance::prop_shapeXml ||
         RBX::Surfaces::isSurfaceDescriptor(*descriptor))
     {
@@ -235,7 +245,8 @@ void PartChunk::onPropertyChanged(const RBX::Reflection::PropertyDescriptor* des
 View::View(RBX::DataModel* dataModel)
     : dataModel(dataModel),
       workspace(dataModel ? dataModel->getWorkspace() : NULL),
-      sceneManager(&models, &removed)
+      sceneManager(&models, &removed),
+      materialFactory(0,"","",getenv("ROC_TEXTURE_STRIP"))
 {
     if (!workspace)
         return;
@@ -284,6 +295,7 @@ extern "C" int SceneAttach(void)
     RBX::DataModel* dataModel = EngineDataModel();
     if (!dataModel)
         return 1;
+    if(!getenv("ROC_TEXTURE_STRIP"))return 1;
 
     g_view = new ViewNew::View(dataModel);
     std::printf("scene attached: %d model(s)\n", (int)g_view->models.size());
@@ -321,9 +333,10 @@ extern "C" int SceneModelGet(int index, SceneModel* out)
     const ViewNew::MeshData& mesh = chunk->mesh();
     const G3D::CoordinateFrame& frame = partChunk->cframe();
 
-    if(mesh.geometry.isNull())return 3;
+    if(mesh.geometry.isNull() || !mesh.material->detailLevel(0))return 3;
     out->id = chunk;
     out->geometry = mesh.geometry.operator->();
+    out->material = mesh.material.getPointer();
     for (int row = 0; row < 3; ++row)
         for (int col = 0; col < 3; ++col)
             out->rotation[row * 3 + col] = frame.rotation[row][col];
@@ -343,6 +356,16 @@ extern "C" void SceneDetach(void)
 {
     delete g_view;
     g_view = NULL;
+}
+
+extern "C" void SceneApplyLighting(Ogre::SceneManager* manager,const Ogre::AxisAlignedBox* bounds)
+{
+    if(!g_view)return;
+    RBX::Lighting* source=RBX::ServiceProvider::create<RBX::Lighting>(EngineDataModel());
+    G3D::LightingRef lighting=PlayerLighting::preset(source->getSkyParameters(),source->getAmbientTop(),source->getAmbientBottom());
+    // Native extra fields are absent from the donor model. Their005e1a40 defaults
+    // are proven; full native Lighting/View/RenderScene integration remains open.
+    PlayerLighting::apply(*manager,lighting,PlayerLighting::Settings(),bounds,false);
 }
 
 
