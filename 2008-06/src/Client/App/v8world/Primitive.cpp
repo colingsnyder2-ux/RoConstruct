@@ -312,12 +312,23 @@ namespace RBX
 		{
 			anchored = _anchored;
 			bool isAnchored = dragging || anchored || flag0xaa;
-			if (isAnchored != wasAnchored && world)
+			if (isAnchored != wasAnchored)
 			{
 				if (isAnchored)
-					world->onPrimitiveAddedAnchor(this);
+				{
+					RBXASSERT(!getAnchorObject());
+					setAnchorObject(new Anchor(this));
+					if (world)
+						world->onPrimitiveAddedAnchor(this);
+				}
 				else
-					world->onPrimitiveRemovingAnchor(this);
+				{
+					RBXASSERT(getAnchorObject());
+					if (world)
+						world->onPrimitiveRemovingAnchor(this);
+					delete getAnchorObject();
+					setAnchorObject(NULL);
+				}
 			}
 		}
 	}

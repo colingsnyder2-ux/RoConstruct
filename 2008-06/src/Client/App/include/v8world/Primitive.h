@@ -176,7 +176,7 @@ namespace RBX
 		void setFlag0xaa(bool value); // 0x5e8140
 		bool getAnchor() const
 		{
-			return getAnchorObject() != NULL;
+			return dragging || anchored || flag0xaa;
 		}
 		Anchor* getAnchorObject() const; // rebuild shim (glue_anchor_registry.cpp)
 		void setAnchorObject(Anchor* anchor);

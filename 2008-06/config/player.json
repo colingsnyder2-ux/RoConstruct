@@ -13,10 +13,6 @@
    "includes_from_recipe": "rbxgs",
    "defines_from_recipe": "rbxgs",
    "extra_defines": "BOOST_ALL_NO_LIB",
-   "extra_includes": [
-    "tools/rbxgs/Client/RbxViewBase",
-    "tools/rbxgs/Client/RbxView"
-   ],
    "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD"
   }
  ],

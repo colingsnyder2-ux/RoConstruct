@@ -1,317 +1,76 @@
-// from server: 41% by atomic.potato
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: g3d-6.09 G3Dcpp/AABox.cpp
+// from server: 100% by EspClaude
+// roc 2009-06 00437f40  unit: Vector3Item  size: 126 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 00437f40
+//
+// 00437f40  6aff                 push -1
+// 00437f42  68d9b88500           push 0x85b8d9
+// 00437f47  64a100000000         mov eax, dword ptr fs:[0]
+// 00437f4d  50                   push eax
+// 00437f4e  64892500000000       mov dword ptr fs:[0], esp
+// 00437f55  83ec28               sub esp, 0x28
+// 00437f58  d9ee                 fldz 
+// 00437f5a  8b4c2438             mov ecx, dword ptr [esp + 0x38]
+// 00437f5e  d91424               fst dword ptr [esp]
+// 00437f61  56                   push esi
+// 00437f62  d9542408             fst dword ptr [esp + 8]
+// 00437f66  d95c240c             fstp dword ptr [esp + 0xc]
+// 00437f6a  ff15d0fc8900         call dword ptr [0x89fcd0]
+// 00437f70  50                   push eax
+// 00437f71  8d4c2414             lea ecx, [esp + 0x14]
+// 00437f75  ff15b4e48900         call dword ptr [0x89e4b4]
+// 00437f7b  8d442404             lea eax, [esp + 4]
+// 00437f7f  50                   push eax
+// 00437f80  8d4c2414             lea ecx, [esp + 0x14]
+// 00437f84  51                   push ecx
+// 00437f85  c744243c00000000     mov dword ptr [esp + 0x3c], 0
+// 00437f8d  e85e3f2100           call 0x64bef0
+// 00437f92  83c408               add esp, 8
+// 00437f95  8d4c2410             lea ecx, [esp + 0x10]
+// 00437f99  0fb6f0               movzx esi, al
+// 00437f9c  c7442434ffffffff     mov dword ptr [esp + 0x34], 0xffffffff
+// 00437fa4  ff15c4e48900         call dword ptr [0x89e4c4]
+// 00437faa  8b4c242c             mov ecx, dword ptr [esp + 0x2c]
+// 00437fae  8bc6                 mov eax, esi
+// 00437fb0  5e                   pop esi
+// 00437fb1  64890d00000000       mov dword ptr fs:[0], ecx
+// 00437fb8  83c434               add esp, 0x34
+// 00437fbb  c20400               ret 4
+// copied from an identical function in another client (function ?readVector@ns_ROCX000009@@YGHPAUInput@1@@Z)
 
-// Candidate translation unit (score above; library headers required).
-/**
-  @file AABox.cpp
+namespace ns_ROCX000009 {
+struct String;
 
-  @maintainer Morgan McGuire, matrix@graphics3d.com
+extern void (__thiscall* constructString)(String*, const char*);
+extern void (__thiscall* destroyString)(String*);
 
-  @created 2004-01-10
-  @edited  2006-01-11
-*/
+struct String {
+    char reserved[4];
+    union {
+        char buffer[16];
+        char* pointer;
+    } data;
+    unsigned int length;
+    unsigned int capacity;
 
-#include "G3D/platform.h"
-#   if defined(_MSC_VER) && (_MSC_VER <= 1200)
-        // VC6 std:: has signed/unsigned problems
-#       pragma warning (disable : 4018)
-#   endif
+    String(const char* text) { constructString(this, text); }
+    ~String() { destroyString(this); }
+};
 
-#include "G3D/AABox.h"
-#include "G3D/Box.h"
-#include "G3D/Plane.h"
-#include "G3D/Sphere.h"
-#include "G3D/BinaryInput.h"
-#include "G3D/BinaryOutput.h"
+struct Vector3 {
+    float x;
+    float y;
+    float z;
+};
 
+struct Input;
 
-namespace G3D {
+extern const char* (__thiscall* getText)(Input*);
+extern bool __cdecl parseVector(const String&, Vector3&);
 
-Box AABox::toBox() const {
-    return Box(lo, hi);
+int __stdcall readVector(Input* input)
+{
+    Vector3 value = { 0.0f, 0.0f, 0.0f };
+    String text(getText(input));
+    return parseVector(text, value);
 }
-
-
-void AABox::serialize(class BinaryOutput& b) const {
-    b.writeVector3(lo);
-    b.writeVector3(hi);
 }
-
-
-void AABox::deserialize(class BinaryInput& b) {
-    lo = b.readVector3();
-    hi = b.readVector3();
-}
-
-
-void AABox::split(const Vector3::Axis& axis, float location, AABox& low, AABox& high) const {
-    // Low, medium, and high along the chosen axis
-    float L = G3D::min(location, lo[axis]);
-    float M = G3D::min(G3D::max(location, lo[axis]), hi[axis]);
-    float H = G3D::max(location, hi[axis]);
-
-    // Copy over this box.
-    high = low = *this;
-
-    // Now move the split points along the special axis
-    low.lo[axis] = L;
-    low.hi[axis] = M;
-    high.lo[axis] = M;
-    high.hi[axis] = H;
-}
-
-
-Vector3 AABox::randomSurfacePoint() const {
-    Vector3 extent = hi - lo;
-    float aXY = extent.x * extent.y;
-    float aYZ = extent.y * extent.z;
-    float aZX = extent.z * extent.x;
-
-    float r = (float)random(0, aXY + aYZ + aZX);
-
-    // Choose evenly between positive and negative face planes
-    float d = ((float)random(0, 1) < 0.5f) ? 0.0f : 1.0f;
-
-    // The probability of choosing a given face is proportional to
-    // its area.
-    if (r < aXY) {
-        return 
-            lo + 
-            Vector3(
-                (float)random(0, extent.x),
-                (float)random(0, extent.y),
-                d * extent.z);
-    } else if (r < aYZ) {
-        return 
-            lo + 
-            Vector3(
-                d * extent.x,
-                (float)random(0, extent.y),
-                (float)random(0, extent.z));
-    } else {
-        return 
-            lo + 
-            Vector3(
-                (float)random(0, extent.x),
-                d * extent.y,
-                (float)random(0, extent.z));
-    }
-}
-
-
-Vector3 AABox::randomInteriorPoint() const {
-    return Vector3(
-        (float)random(lo.x, hi.x), 
-        (float)random(lo.y, hi.y), 
-        (float)random(lo.z, hi.z));
-}
-
-
-bool AABox::intersects(const AABox& other) const {
-    // Must be overlap along all three axes.
-    // Try to find a separating axis.
-
-    for (int a = 0; a < 3; ++a) {
-
-        //     |--------|
-        // |------|
-
-        if ((lo[a] > other.hi[a]) ||
-            (hi[a] < other.lo[a])) {
-            return false;
-        }
-    }
-
-    return true;
-}
-
-
-bool AABox::culledBy(
-    const Array<Plane>&		plane,
-	int&				    cullingPlaneIndex,
-	const uint32			inMask,
-	uint32&					outMask) const {
-
-	return culledBy(plane.getCArray(), plane.size(), cullingPlaneIndex, inMask, outMask);
-}
-
-
-bool AABox::culledBy(
-    const Array<Plane>&		plane,
-	int&				    cullingPlaneIndex,
-	const uint32			inMask) const {
-
-	return culledBy(plane.getCArray(), plane.size(), cullingPlaneIndex, inMask);
-}
-
-
-int AABox::dummy = 0;
-
-
-bool AABox::culledBy(
-    const class Plane*  plane,
-    int                 numPlanes,
-	int&				cullingPlane,
-	const uint32		_inMask,
-    uint32&             childMask) const {
-
-	uint32 inMask = _inMask;
-	assert(numPlanes < 31);
-
-    childMask = 0;
-
-    const bool finite = 
-        (abs(lo.x) < G3D::inf()) &&
-        (abs(hi.x) < G3D::inf()) &&
-        (abs(lo.y) < G3D::inf()) &&
-        (abs(hi.y) < G3D::inf()) &&
-        (abs(lo.z) < G3D::inf()) &&
-        (abs(hi.z) < G3D::inf());
-
-    // See if there is one plane for which all of the
-	// vertices are in the negative half space.
-    for (int p = 0; p < numPlanes; p++) {
-
-		// Only test planes that are not masked
-		if ((inMask & 1) != 0) {
-		
-			Vector3 corner;
-
-            int numContained = 0;
-            int v = 0;
-
-            // We can early-out only if we have found one point on each
-            // side of the plane (i.e. if we are straddling).  That
-            // occurs when (numContained < v) && (numContained > 0)
-			for (v = 0; (v < 8) && ((numContained == v) || (numContained == 0)); ++v) {
-                // Unrolling these 3 if's into a switch decreases performance
-                // by about 2x
-				corner.x = (v & 1) ? hi.x : lo.x;
-				corner.y = (v & 2) ? hi.y : lo.y;
-				corner.z = (v & 4) ? hi.z : lo.z;
-        
-                if (finite) { // this branch is highly predictable
-                    if (plane[p].halfSpaceContainsFinite(corner)) {
-                        ++numContained;
-                    }
-                } else {
-                    if (plane[p].halfSpaceContains(corner)) {
-                        ++numContained;
-                    }
-                }
-			}
-
-			if (numContained == 0) {
-				// Plane p culled the box
-				cullingPlane = p;
-
-                // The caller should not recurse into the children,
-                // since the parent is culled.  If they do recurse,
-                // make them only test against this one plane, which
-                // will immediately cull the volume.
-                childMask = 1 << p;
-				return true;
-
-            } else if (numContained < v) {
-                // The bounding volume straddled the plane; we have
-                // to keep testing against this plane
-                childMask |= (1 << p);
-            }
-		}
-
-        // Move on to the next bit.
-		inMask = inMask >> 1;
-    }
-
-    // None of the planes could cull this box
-	cullingPlane = -1;
-    return false;
-}
-
-
-bool AABox::culledBy(
-    const class Plane*  plane,
-    int                 numPlanes,
-	int&				cullingPlane,
-	const uint32		_inMask) const {
-
-	uint32 inMask = _inMask;
-	assert(numPlanes < 31);
-    
-    const bool finite = 
-        (abs(lo.x) < G3D::inf()) &&
-        (abs(hi.x) < G3D::inf()) &&
-        (abs(lo.y) < G3D::inf()) &&
-        (abs(hi.y) < G3D::inf()) &&
-        (abs(lo.z) < G3D::inf()) &&
-        (abs(hi.z) < G3D::inf());
-
-    // See if there is one plane for which all of the
-	// vertices are in the negative half space.
-    for (int p = 0; p < numPlanes; p++) {
-
-		// Only test planes that are not masked
-		if ((inMask & 1) != 0) {
-		
-			bool culled = true;
-			Vector3 corner;
-
-            int v;
-
-			// Assume this plane culls all points.  See if there is a point
-			// not culled by the plane... early out when at least one point
-            // is in the positive half space.
-			for (v = 0; (v < 8) && culled; ++v) {
-
-                // Unrolling these 3 if's into a switch decreases performance
-                // by about 2x
-				corner.x = (v & 1) ? hi.x : lo.x;
-				corner.y = (v & 2) ? hi.y : lo.y;
-				corner.z = (v & 4) ? hi.z : lo.z;
-        
-                if (finite) { // this branch is highly predictable
-                    culled = ! plane[p].halfSpaceContainsFinite(corner);
-                } else {
-                    culled = ! plane[p].halfSpaceContains(corner);
-                }
-			}
-
-			if (culled) {
-				// Plane p culled the box
-				cullingPlane = p;
-
-				return true;
-            }
-		}
-
-        // Move on to the next bit.
-		inMask = inMask >> 1;
-    }
-
-    // None of the planes could cull this box
-	cullingPlane = -1;
-    return false;
-}
-
-
-bool AABox::intersects(const class Sphere& sphere) const {
-    double d = 0; 
-
-    //find the square of the distance
-    //from the sphere to the box
-    for (int i = 0; i < 3; ++i) {
-        if (sphere.center[i] < lo[i]) {
-            d += square(sphere.center[i] - lo[i]);
-        } else if (sphere.center[i] > hi[i]) {
-            d += square(sphere.center[i] - hi[i]);
-        }
-    }
-
-    return d <= square(sphere.radius);
-}
-
-
-} // namespace

@@ -3796,7 +3796,7 @@
   "path": "2008-06/src/Client/App/include/v8world/Ball.h"
  },
  "005e7420": {
-  "line": 602,
+  "line": 613,
   "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
  },
  "005e74c0": {
@@ -3848,11 +3848,11 @@
   "path": "2008-06/src/Client/App/include/v8world/Geometry.h"
  },
  "005e7980": {
-  "line": 432,
+  "line": 443,
   "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
  },
  "005e7a50": {
-  "line": 449,
+  "line": 460,
   "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
  },
  "005e7bd0": {
@@ -3860,7 +3860,7 @@
   "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
  },
  "005e7be0": {
-  "line": 465,
+  "line": 476,
   "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
  },
  "005e7c80": {
@@ -3896,11 +3896,11 @@
   "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
  },
  "005e85e0": {
-  "line": 440,
+  "line": 451,
   "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
  },
  "005e8610": {
-  "line": 576,
+  "line": 587,
   "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
  },
  "005e86f0": {
@@ -3908,7 +3908,7 @@
   "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
  },
  "005e8990": {
-  "line": 569,
+  "line": 580,
   "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
  },
  "005e9190": {
@@ -7828,11 +7828,11 @@
   "path": "2008-06/src/Client/Rendering/g3d/include/GLG3D/Texture.h"
  },
  "00773250": {
-  "line": 471,
+  "line": 482,
   "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
  },
  "00773630": {
-  "line": 505,
+  "line": 516,
   "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
  },
  "00773670": {

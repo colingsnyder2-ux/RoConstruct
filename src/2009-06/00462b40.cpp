@@ -1,3 +1,4 @@
+// from server: 100% by EspClaude
 // roc 2009-06 00462b40  unit: Scintilla::CScintillaFindReplaceDlg  size: 46 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-06 00462b40
 //
@@ -18,22 +19,23 @@
 // 00462b66  89869c010000         mov dword ptr [esi + 0x19c], eax
 // 00462b6c  5e                   pop esi
 // 00462b6d  c3                   ret 
-// copied from an identical function in another client (function ?fn_ROCX000019@Scintilla_CScintillaFindReplaceDlg@ns_ROCX000019@@QAEXXZ)
+// copied from an identical function in another client (function ?InitDialog@CScintillaFindReplaceDlg@ns_ROCX00006a@@QAEXXZ)
 
-namespace ns_ROCX000019 {
-struct Scintilla_CScintillaFindReplaceDlg {
-    char m_pad[0x19c];
-    int m_field19c;
-    void fn_ROCX000019();
+namespace ns_ROCX00006a {
+struct CScintillaFindReplaceDlg {
+    char pad[0x19c];
+    int field_19c;
+    void InitDialog();
 };
 
-extern "C" void * __stdcall sub_0063096A(int);
-extern "C" long (__stdcall *SendMessageA)(void *, unsigned int, unsigned int, long);
+extern "C" void* __stdcall sub_6a1418(int);
+extern "C" long (__stdcall *SendMessageA)(void*, unsigned int, unsigned int, long);
 
-void Scintilla_CScintillaFindReplaceDlg::fn_ROCX000019()
+void CScintillaFindReplaceDlg::InitDialog()
 {
-    void *p = sub_0063096A(0x412);
-    int v = (int)SendMessageA(*(void **)((char *)p + 0x20), 0xf0, 0, 0);
-    this->m_field19c = (v - 1 == 0) ? 1 : 0;
+    void* p = sub_6a1418(0x412);
+    int h = *(int*)((char*)p + 0x20);
+    long r = SendMessageA((void*)h, 0xf0, 0, 0);
+    field_19c = (r != 1) ? 0 : 1;
 }
 }

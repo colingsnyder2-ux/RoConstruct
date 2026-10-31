@@ -1,5 +1,8 @@
-// from server: 92% by atomic.potato
-extern "C" void __stdcall _invalid_parameter_noinfo();
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+extern "C" __declspec(dllimport) void __cdecl _invalid_parameter_noinfo();
 
 struct S {
     unsigned int field0;
@@ -7,22 +10,19 @@ struct S {
     unsigned int field8;
     unsigned int fieldC;
     unsigned int field10;
-    unsigned int field14;
-    unsigned int field18;
-    void method(double value, int flag, int unused);
+    double* first;
+    double* last;
+    void method(double value, bool flag);
 };
 
-void S::method(double value, int flag, int unused) {
-    unsigned int size = (field18 - field14) >> 3;
+void S::method(double value, bool flag) {
+    unsigned int size = last - first;
     unsigned int index = field4;
     if (index >= size) {
         _invalid_parameter_noinfo();
     }
-    double* data = (double*)field14;
-    data[index] = value;
-    if (flag != 0) {
-        unsigned int next = field4 + 1;
-        unsigned int rem = next % field0;
-        field4 = rem;
+    first[index] = value;
+    if (flag) {
+        field4 = (field4 + 1) % field0;
     }
 }

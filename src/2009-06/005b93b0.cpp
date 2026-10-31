@@ -1,5 +1,15 @@
-// from server: 90% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /Od /Ob1 /GS- /MT
-// roc-lib: wildmagic-2-core Geometry/WmlConvexClipper.cpp
+struct Elem;
+struct Holder;
+void initHolder(Holder* self, const Holder& other);
+struct Holder {
+    Elem* data;
+    Holder(const Holder& other);
+};
+Holder::Holder(const Holder& other)
+{
+    initHolder(this, other);
+}

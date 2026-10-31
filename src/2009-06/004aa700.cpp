@@ -1,142 +1,199 @@
-// from server: 27% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: g3d-6.09 GLG3Dcpp/SDLWindow.cpp
+// roc-flags: /O2 /GS- /EHsc /MD /fp:fast
+// roc-lib: g3d-6.09 GLG3Dcpp/Win32Window.cpp
 
 // Candidate translation unit (score above; library headers required).
 /**
-  @file SDLWindow.cpp
+  @file Win32Window.cpp
 
-  @maintainer Morgan McGuire, morgan@graphics3d.com
-  @created 2004-02-10
-  @edited  2006-02-24
+  @maintainer Corey Taylor, vejita@users.sf.net 
+  @cite       Written by Corey Taylor & Morgan McGuire
+  @cite       Special thanks to Max McGuire of Ironlore
+  @created 	  2004-05-21
+  @edited  	  2006-01-15
+    
+  Copyright 2000-2006, Morgan McGuire.
+  All rights reserved.
 */
 
-#include "G3D/Log.h"
-#include "G3D/g3derror.h"
-#include "G3D/Rect2D.h"
-#include "GLG3D/SDLWindow.h"
-#include "GLG3D/glcalls.h"
+#include "G3D/platform.h"
 #include "GLG3D/GLCaps.h"
 
+// This file is ignored on other platforms
 #ifdef G3D_WIN32
-    // GetSystemMetrics parameters missing in header files
-    #ifndef SM_XVIRTUALSCREEN
-    #define SM_XVIRTUALSCREEN       76
-    #endif
-    #ifndef SM_YVIRTUALSCREEN
-    #define SM_YVIRTUALSCREEN       77
-    #endif
-    #ifndef SM_CXVIRTUALSCREEN
-    #define SM_CXVIRTUALSCREEN      78
-    #endif
-    #ifndef SM_CYVIRTUALSCREEN
-    #define SM_CYVIRTUALSCREEN      79
-    #endif
-    #ifndef SM_CMONITORS
-    #define SM_CMONITORS            80
-    #endif
-    #ifndef SM_SAMEDISPLAYFORMAT
-    #define SM_SAMEDISPLAYFORMAT    81
-    #endif
+
+#include <windows.h>
+#include "graphics3d.h"
+#include "GLG3D/Win32Window.h"
+#include "GLG3D/glcalls.h"
+#include "GLG3D/UserInput.h"
+#include "directinput8.h"
+
+#include <time.h>
+#include <sstream>
+#if !defined(G3D_MINGW32)
+#include <crtdbg.h>
 #endif
 
-#define SDL_FSAA (SDL_MAJOR_VERSION * 100 + SDL_MINOR_VERSION * 10 + SDL_PATCHLEVEL > 125)
+using G3D::_internal::_DirectInput;
+
+/*
+    DirectInput8 support is added by loading dinupt8.dll if found.
+
+    COM calls are not used to limit the style of code and includes needed.
+    DirectInput8 has a special creation function that lets us do this properly.
+
+    The joystick state structure used simulates the exports found in dinput8.lib
+
+    The joystick axis order returned to users is: X, Y, Z, Slider1, Slider2, rX, rY, rZ.
+
+    Important:  The cooperation level of Win32Window joysticks is Foreground:Non-Exclusive.
+    This means that other programs can get access to the joystick(preferably non-exclusive) and the joystick
+     is only aquired when Win32Window is in the foreground.
+*/
 
 namespace G3D {
 
-#ifdef G3D_WIN32
-int screenWidth() {
-    return GetSystemMetrics(SM_CXFULLSCREEN);
-    /*
-    int w = GetSystemMetrics(SM_CXVIRTUALSCREEN);
+static const UINT BLIT_BUFFER = 0xC001;
 
-    if (w == 0) {
-        // This call is not supported on older versions of windows
-        return GetSystemMetrics(SM_CXFULLSCREEN);
-    } else {
-        return w;
-    }
-    */
-}
+#define WGL_SAMPLE_BUFFERS_ARB	0x2041
+#define WGL_SAMPLES_ARB		    0x2042
 
+static bool hasWGLMultiSampleSupport = false;
 
-int screenHeight() {
-    return GetSystemMetrics(SM_CYFULLSCREEN);
-    /*
-    int h = GetSystemMetrics(SM_CYVIRTUALSCREEN);
+static PFNWGLCHOOSEPIXELFORMATARBPROC wglChoosePixelFormatARB = NULL;
 
-    if (h == 0) {
-        // This call is not supported on older versions of windows
-        return GetSystemMetrics(SM_CYFULLSCREEN);
-    } else {
-        return h;
-    }
-    */
-}
+static unsigned int _sdlKeys[SDLK_LAST];
+static bool sdlKeysInitialized = false;
+
+// Prototype static helper functions at end of file
+static bool ChangeResolution(int, int, int, int);
+static void makeKeyEvent(int, int, GEvent&);
+static void mouseButton(bool, int, DWORD, GEvent&);
+static void initWin32KeyMap();
+//static LRESULT WINAPI _internal::window_proc(HWND window, UINT message, WPARAM wparam, LPARAM lparam);
+
+#if 0
+// For use when debugging format negotiation
+static void printPixelFormatDescription(int, HDC, TextOutput&);
 #endif
 
+/** Return the G3D window class, which owns a private DC. 
+    See http://www.starstonesoftware.com/OpenGL/whyyou.htm
+    for a discussion of why this is necessary. */
+static const char* G3DWndClass();
 
-#ifdef G3D_LINUX
-
-int screenWidth(Display* display) {
-	const int screenNumber = DefaultScreen(display);
-	return DisplayWidth(display, screenNumber);
-}
-
-int screenHeight(Display* display) {
-	const int screenNumber = DefaultScreen(display);
-	return DisplayHeight(display, screenNumber);
-}
-
-#endif
+std::auto_ptr<Win32Window> Win32Window::_shareWindow(NULL);
 
 
-#if defined(G3D_LINUX)
+Win32Window::Win32Window(const GWindow::Settings& s, bool creatingShareWindow)
+:createdWindow(true)
+,_diDevices(NULL)
 
-/** Replacement for the default assertion hook on Linux. */
-static bool SDL_handleDebugAssert_(
-    const char* expression,
-    const std::string& message,
-    const char* filename,
-    int         lineNumber,
-    bool&       ignoreAlways,
-    bool        useGuiPrompt) {
+{
+    _receivedCloseEvent = false;
 
-    SDL_ShowCursor(SDL_ENABLE);
-    SDL_WM_GrabInput(SDL_GRAB_OFF);
+    initWGL();
+
+	_hDC = NULL;
+	_mouseVisible = true;
+	_inputCapture = false;
+    _windowActive = false;
+	_thread = ::GetCurrentThread();
+
+    if (!sdlKeysInitialized) {
+        initWin32KeyMap();
+    }
+
+	settings = s;
+    
+	std::string name = "";
+    
+    // Add the non-client area
+	RECT rect;
+	rect.left = 0;
+	rect.top = 0;
+	rect.right = settings.width;
+	rect.bottom = settings.height;
+
+	DWORD style = 0;
 	
-	return _internal::_handleDebugAssert_(expression, message, filename, lineNumber, ignoreAlways, useGuiPrompt);
-}
+	if (s.framed) {
 
-/** Replacement for the default failure hook on Linux. */
-static bool SDL_handleErrorCheck_(
-    const char* expression,
-    const std::string& message,
-    const char* filename,
-    int         lineNumber,
-    bool&       ignoreAlways,
-    bool        useGuiPrompt) {
+        // http://msdn.microsoft.com/library/default.asp?url=/library/en-us/winui/WinUI/WindowsUserInterface/Windowing/Windows/WindowReference/WindowStyles.asp
+		style |= WS_BORDER | WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU;
 
-    SDL_ShowCursor(SDL_ENABLE);
-    SDL_WM_GrabInput(SDL_GRAB_OFF);
+		if (s.resizable) {
+			style |= WS_SIZEBOX;
+		}
 
-	return _internal::_handleErrorCheck_(expression, message, filename, lineNumber, ignoreAlways, useGuiPrompt);
-}
-#endif
+    } else {
 
+        // Show nothing but the client area (cannot move window with mouse)
+        style |= WS_POPUP;
+    }
 
-SDLWindow::SDLWindow(const GWindowSettings& settings) {
+    int oldTop = rect.top;
+    int oldLeft = rect.left;
+	AdjustWindowRect(&rect, style, false);
 
-	if (SDL_Init(SDL_INIT_NOPARACHUTE | SDL_INIT_VIDEO | 
-                 SDL_INIT_JOYSTICK) < 0 ) {
+    clientRectOffset.x = oldLeft - rect.left;
+    clientRectOffset.y = oldTop - rect.top;
 
-        fprintf(stderr, "Unable to initialize SDL: %s\n", SDL_GetError());
-		debugPrintf("Unable to initialize SDL: %s\n", SDL_GetError());
-        Log::common()->printf("Unable to initialize SDL: %s\n", SDL_GetError());
-		exit(1);
-	}
+	int total_width  = rect.right - rect.left;
+	int total_height = rect.bottom - rect.top;
+
+    int startX = 0;
+    int startY = 0;
+
+    if (! s.fullScreen) {
+        if (s.center) {
+            
+            startX = (GetSystemMetrics(SM_CXSCREEN) - total_width) / 2;
+            startY = (GetSystemMetrics(SM_CYSCREEN) - total_height) / 2;
+        } else {
+
+            startX = s.x;
+            startY = s.y;
+        }
+    }
+
+    clientX = settings.x = startX;
+    clientY = settings.y = startY;
+    
+    HWND window = CreateWindow(G3DWndClass(), 
+        name.c_str(),
+        style,
+        startX,
+        startY,
+        total_width,
+        total_height,
+        NULL,
+        NULL,
+        GetModuleHandle(NULL),
+        NULL);
+
+    alwaysAssertM(window != NULL, "");
+
+    // Set early so windows messages have value
+    this->window = window;
+
+    SetWindowLong(window, GWL_USERDATA, (LONG)this);
+
+    if (s.visible) {
+        ShowWindow(window, SW_SHOW);
+    }         
+
+    if (settings.fullScreen) {
+	    // Change the desktop resolution if we are running in fullscreen mode
+        if (!ChangeResolution(settings.width, settings.height, (settings.rgbBits * 3) + settings.alphaBits, settings.refreshRate)) {
+			alwaysAssertM(false, "Failed to change resolution");
+        }
+    }
+
+	init(window, creatingShareWindow);
 
     // Set default icon if available
     if (settings.defaultIconFilename != "nodefault") {
@@ -149,561 +206,1220 @@ SDLWindow::SDLWindow(const GWindowSettings& settings) {
             setIcon(defaultIcon);
         } catch (const GImage::Error& e) {
             // Throw away default icon
-            fprintf(stderr, "GWindow's default icon failed to load: %s (%s)", e.filename.c_str(), e.reason.c_str());
 		    debugPrintf("GWindow's default icon failed to load: %s (%s)", e.filename.c_str(), e.reason.c_str());
             Log::common()->printf("GWindow's default icon failed to load: %s (%s)", e.filename.c_str(), e.reason.c_str());            
         }
     }
-
-    if (! settings.fullScreen) {
-        // This doesn't really work very well due to SDL bugs so we fix up 
-        // the position after the window is created.
-        if (settings.center) {
-            System::setEnv("SDL_VIDEO_CENTERED", "");
-        } else {
-            System::setEnv("SDL_VIDEO_WINDOW_POS", format("%d,%d", settings.x, settings.y));
-        }
-    }
-
-    _mouseVisible = true;
-    _inputCapture = false;
-
-	// Request various OpenGL parameters
-	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE,      settings.depthBits);
-	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER,    1);
-	SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE,    settings.stencilBits);
-	SDL_GL_SetAttribute(SDL_GL_RED_SIZE,        settings.rgbBits);
-	SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE,      settings.rgbBits);
-	SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE,       settings.rgbBits);
-	SDL_GL_SetAttribute(SDL_GL_ALPHA_SIZE,      settings.alphaBits);
-	SDL_GL_SetAttribute(SDL_GL_STEREO,          settings.stereo);
-
-    #if SDL_FSAA
-        if (settings.fsaaSamples > 1) {
-            SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
-            SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 
-                                settings.fsaaSamples);
-        }
-    #endif
-
-	// Create a width x height OpenGL screen 
-    int flags = 
-        SDL_HWSURFACE |
-        SDL_OPENGL |
-        (settings.fullScreen ? SDL_FULLSCREEN : 0) |
-        (settings.resizable ? SDL_RESIZABLE : 0) |
-        (settings.framed ? 0 : SDL_NOFRAME);
-
-	if (SDL_SetVideoMode(settings.width, settings.height, 0, flags) == NULL) {
-        debugAssert(false);
-        Log::common()->printf("Unable to create OpenGL screen: %s\n", 
-                              SDL_GetError());
-		error("Critical Error", 
-              format("Unable to create OpenGL screen: %s\n", 
-                     SDL_GetError()).c_str(), true);
-		SDL_Quit();
-		exit(2);
-	}
-
-    // See what video mode we really got
-    _settings = settings;
-    int depthBits, stencilBits, redBits, greenBits, blueBits, alphaBits;
-    glGetIntegerv(GL_DEPTH_BITS, &depthBits);
-    glGetIntegerv(GL_STENCIL_BITS, &stencilBits);
-
-    glGetIntegerv(GL_RED_BITS,   &redBits);
-    glGetIntegerv(GL_GREEN_BITS, &greenBits);
-    glGetIntegerv(GL_BLUE_BITS,  &blueBits);
-    glGetIntegerv(GL_ALPHA_BITS, &alphaBits);
-    int actualFSAABuffers = 0, actualFSAASamples = 0;
-
-    #if SDL_FSAA
-        SDL_GL_GetAttribute(SDL_GL_MULTISAMPLEBUFFERS, &actualFSAABuffers);
-        SDL_GL_GetAttribute(SDL_GL_MULTISAMPLESAMPLES, &actualFSAASamples);
-    #else
-        (void)actualFSAABuffers;
-        (void)actualFSAASamples;
-    #endif
-    _settings.rgbBits     = iMin(iMin(redBits, greenBits), blueBits);
-    _settings.alphaBits   = alphaBits;
-    _settings.stencilBits = stencilBits;
-    _settings.depthBits   = depthBits;
-    _settings.fsaaSamples = actualFSAASamples;
-
-    SDL_version ver;
-    SDL_VERSION(&ver);
-    _version = format("%d,%0d.%0d", ver.major, ver.minor, ver.patch);
-
-    SDL_EnableUNICODE(1);
-    setCaption("G3D");
-
-    SDL_SysWMinfo info;
-    SDL_VERSION(&info.version);
-    SDL_GetWMInfo(&info);
-
-    _glContext = glGetCurrentContext();
-
-    #if defined(G3D_WIN32)
-        // Extract SDL HDC/HWND on Win32
-        _Win32HWND  = info.window;
-        _Win32HDC   = wglGetCurrentDC();
-    #elif defined(G3D_LINUX)
-        // Extract SDL's internal Display pointer on Linux        
-        _X11Display = info.info.x11.display;
-        _X11Window  = info.info.x11.window;
-        _X11WMWindow  = info.info.x11.wmwindow;
-
-        if (glXGetCurrentDisplay != NULL) {
-            G3D::_internal::x11Display = glXGetCurrentDisplay();
-        } else {
-            G3D::_internal::x11Display = info.info.x11.display;
-        }
-
-        if (glXGetCurrentDrawable != NULL) {
-            // A Drawable appears to be either a Window or a Pixmap
-            G3D::_internal::x11Window  = glXGetCurrentDrawable();
-        } else {
-            G3D::_internal::x11Window  = info.info.x11.window;
-        }
-    #endif
-
-    // Adjust window position
-    #ifdef G3D_WIN32
-        if (! settings.fullScreen) {
-            int W = screenWidth();
-            int H = screenHeight();
-            int x = iClamp(settings.x, 0, W);
-            int y = iClamp(settings.y, 0, H);
-
-            if (settings.center) {
-                x = (W - settings.width) / 2;
-                y = (H - settings.height) / 2;
-            }
-
-            SetWindowPos(_Win32HWND, NULL, x, y, 0, 0, SWP_NOZORDER | SWP_NOSIZE);
-        }
-    #endif
-
-	#ifdef G3D_LINUX
-		 if (! settings.fullScreen) {
-            int W = screenWidth(_X11Display);
-            int H = screenHeight(_X11Display);
-            int x = iClamp(settings.x, 0, W);
-            int y = iClamp(settings.y, 0, H);
-
-            if (settings.center) {
-                x = (W  - settings.width) / 2;
-                y = (H - settings.height) / 2;
-            }
-			XMoveWindow(_X11Display, _X11WMWindow, x, y);
-        }
-	#endif
-
-
-	// Check for joysticks
-    int j = SDL_NumJoysticks();
-    if ((j < 0) || (j > 10)) {
-        // If there is no joystick adapter on Win32,
-        // SDL returns ridiculous numbers.
-        j = 0;
-    }
-
-	if (j > 0) {
-        SDL_JoystickEventState(SDL_ENABLE);
-        // Turn on the joysticks
-
-        joy.resize(j);
-        for (int i = 0; i < j; ++i) {
-            joy[i] = SDL_JoystickOpen(i);
-            debugAssert(joy[i]);
-        }
-	}
-
-    GLCaps::init();
-
-	// Register this window as the current window
-	makeCurrent();
-
-#	if defined(G3D_LINUX)
-		// If G3D is using the default assertion hooks, replace them with our own that use
-		// SDL functions to release the mouse, since we've been unable to implement
-		// a non-SDL way of releasing the mouse using the X11 handle directly.
-		if (assertionHook() == _internal::_handleDebugAssert_) {
-			setFailureHook(SDL_handleDebugAssert_);
-		}
-
-		if (failureHook() == _internal::_handleErrorCheck_) {
-			setFailureHook(SDL_handleErrorCheck_);
-		}
-#	endif
 }
 
 
 
-SDLWindow::~SDLWindow() {
-	// Close joysticks, if opened
-    for (int j = 0; j < joy.size(); ++j) {
-  		SDL_JoystickClose(joy[j]);
-	}
+Win32Window::Win32Window(const GWindow::Settings& s, HWND hwnd) : createdWindow(false), _diDevices(NULL) {
+    initWGL();
 
-    // Release the mouse
-    setMouseVisible(true);
-    setInputCapture(false);
+	_thread = ::GetCurrentThread();
+	settings = s;
+	init(hwnd);
 
-    joy.clear();
-
-    SDL_Quit();
+    _windowActive = hasFocus();
 }
 
 
-::SDL_Joystick* SDLWindow::getSDL_Joystick(unsigned int num) const {
-    if ((unsigned int)joy.size() >= num) {
-        return joy[num];
-    } else {
-        return NULL;
-    }
+Win32Window::Win32Window(const GWindow::Settings& s, HDC hdc) : createdWindow(false), _diDevices(NULL)  {
+    initWGL();
+
+	_thread = ::GetCurrentThread();
+	settings = s;
+
+    HWND hwnd = ::WindowFromDC(hdc);
+
+    debugAssert(hwnd != NULL);
+
+	init(hwnd);
+
+    _windowActive = hasFocus();
 }
 
 
-void SDLWindow::getSettings(GWindowSettings& settings) const {
-    settings = _settings;
-}
+Win32Window* Win32Window::create(const GWindow::Settings& settings) {
 
-
-int SDLWindow::width() const {
-    return _settings.width;
-}
-
-
-int SDLWindow::height() const {
-    return _settings.height;
-}
-
-
-Rect2D SDLWindow::dimensions() const {
-    return Rect2D::xywh(0, 0, _settings.width, _settings.height);;
-}
-
-
-void SDLWindow::setDimensions(const Rect2D& dims) {
-    #ifdef G3D_WIN32
-        int W = screenWidth();
-        int H = screenHeight();
-
-        int x = iClamp((int)dims.x0(), 0, W);
-        int y = iClamp((int)dims.y0(), 0, H);
-        int w = iClamp((int)dims.width(), 1, W);
-        int h = iClamp((int)dims.height(), 1, H);
-
-        SetWindowPos(_Win32HWND, NULL, x, y, w, h, SWP_NOZORDER);
-        // Do not update settings-- wait for an event to notify us
-    #endif
-
-	#ifdef G3D_LINUX
-		//TODO: Linux
-	#endif 
-
-    // TODO: OS X
-}
-
-
-void SDLWindow::setPosition(int x, int y) {
-    #ifdef G3D_WIN32
-        int W = screenWidth();
-        int H = screenHeight();
-
-        x = iClamp(x, 0, W);
-        y = iClamp(y, 0, H);
-
-        SetWindowPos(_Win32HWND, NULL, x, y, 0, 0, SWP_NOZORDER | SWP_NOSIZE);
-        // Do not update settings-- wait for an event to notify us
-    #endif
-
-	#ifdef G3D_LINUX
-	    const int W = screenWidth(_X11Display);
-        const int H = screenHeight(_X11Display);
-
-        x = iClamp(x, 0, W);
-        y = iClamp(y, 0, H);
-
-		XMoveWindow(_X11Display, _X11WMWindow, x, y);
-	#endif
-    // TODO: OS X
-}
-
-
-bool SDLWindow::hasFocus() const {
-    uint8 s = SDL_GetAppState();
+    // Create Win32Window which uses DI8 joysticks but WM_ keyboard messages
+    return new Win32Window(settings);    
     
-    return ((s & SDL_APPMOUSEFOCUS) != 0) &&
-           ((s & SDL_APPINPUTFOCUS) != 0) &&
-           ((s & SDL_APPACTIVE) != 0);
 }
 
 
-std::string SDLWindow::getAPIVersion() const {
-    return _version;
+Win32Window* Win32Window::create(const GWindow::Settings& settings, HWND hwnd) {
+
+    // Create Win32Window which uses DI8 joysticks but WM_ keyboard messages
+    return new Win32Window(settings, hwnd);    
+    
+}
+
+Win32Window* Win32Window::create(const GWindow::Settings& settings, HDC hdc) {
+
+    // Create Win32Window which uses DI8 joysticks but WM_ keyboard messages
+    return new Win32Window(settings, hdc);    
+    
 }
 
 
-std::string SDLWindow::getAPIName() const {
-    return "SDL";
+void Win32Window::init(HWND hwnd, bool creatingShareWindow) {
+
+	if (! creatingShareWindow) {
+		createShareWindow(settings);
+	}
+
+	window = hwnd;
+
+    // Initialize mouse buttons to up
+    _mouseButtons[0] = _mouseButtons[1] = _mouseButtons[2] = false;
+
+    // Clear all keyboard buttons to up (not down)
+    memset(_keyboardButtons, 0, sizeof(_keyboardButtons));
+ 
+    // Setup the pixel format properties for the output device
+    _hDC = GetDC(window);
+
+    bool foundARBFormat = false;
+    int pixelFormat = 0;
+
+    if (wglChoosePixelFormatARB != NULL) {
+        // Use wglChoosePixelFormatARB to override the pixel format choice for antialiasing.
+        // Based on http://nehe.gamedev.net/data/lessons/lesson.asp?lesson=46
+        // and http://oss.sgi.com/projects/ogl-sample/registry/ARB/wgl_pixel_format.txt
+
+        Array<float> fAttributes;
+        fAttributes.append(0.0, 0.0);
+
+        Array<int> iAttributes;
+
+        iAttributes.append(WGL_DRAW_TO_WINDOW_ARB, GL_TRUE);
+		iAttributes.append(WGL_SUPPORT_OPENGL_ARB, GL_TRUE);
+        if (settings.hardware) {
+		    iAttributes.append(WGL_ACCELERATION_ARB,   WGL_FULL_ACCELERATION_ARB);
+        }
+        iAttributes.append(WGL_DOUBLE_BUFFER_ARB,  GL_TRUE);
+        iAttributes.append(WGL_COLOR_BITS_ARB,     settings.rgbBits * 3);
+        iAttributes.append(WGL_RED_BITS_ARB,       settings.rgbBits);
+        iAttributes.append(WGL_GREEN_BITS_ARB,     settings.rgbBits);
+        iAttributes.append(WGL_BLUE_BITS_ARB,      settings.rgbBits);
+        iAttributes.append(WGL_ALPHA_BITS_ARB,     settings.alphaBits);
+        iAttributes.append(WGL_DEPTH_BITS_ARB,     settings.depthBits);
+        iAttributes.append(WGL_STENCIL_BITS_ARB,   settings.stencilBits);
+        iAttributes.append(WGL_STEREO_ARB,         settings.stereo);
+        if (hasWGLMultiSampleSupport && (settings.fsaaSamples > 1)) {
+            // On some ATI cards, even setting the samples to false will turn it on,
+            // so we only take this branch when FSAA is explicitly requested.
+            iAttributes.append(WGL_SAMPLE_BUFFERS_ARB, settings.fsaaSamples > 1);
+		    iAttributes.append(WGL_SAMPLES_ARB,        settings.fsaaSamples);
+        } else {
+            // Report actual settings
+            settings.fsaaSamples = 0;
+        }
+        iAttributes.append(0, 0); // end sentinel
+        
+        // http://www.nvidia.com/dev_content/nvopenglspecs/WGL_ARB_pixel_format.txt
+        uint32 numFormats;
+        int valid = wglChoosePixelFormatARB(
+            _hDC,
+            iAttributes.getCArray(), 
+            fAttributes.getCArray(),
+            1,
+            &pixelFormat,
+            &numFormats);
+
+        // "If the function succeeds, the return value is TRUE. If the function
+        // fails the return value is FALSE. To get extended error information,
+        // call GetLastError. If no matching formats are found then nNumFormats
+        // is set to zero and the function returns TRUE."  -- I think this means
+        // that when numFormats == 0 some reasonable format is still selected.
+        
+        // Corey - I don't think it does, but now I check for valid pixelFormat + valid return only.
+
+        if ( valid && (pixelFormat > 0)) {
+            // Found a valid format
+            foundARBFormat = true;
+        }
+
+    }
+
+    PIXELFORMATDESCRIPTOR pixelFormatDesc;
+
+    if ( !foundARBFormat ) {
+
+        ZeroMemory(&pixelFormatDesc, sizeof(PIXELFORMATDESCRIPTOR));
+
+        pixelFormatDesc.nSize        = sizeof(PIXELFORMATDESCRIPTOR);
+        pixelFormatDesc.nVersion     = 1; 
+        pixelFormatDesc.dwFlags      = PFD_DRAW_TO_WINDOW | PFD_SUPPORT_OPENGL | PFD_DOUBLEBUFFER;
+        pixelFormatDesc.iPixelType   = PFD_TYPE_RGBA; 
+        pixelFormatDesc.cColorBits   = settings.rgbBits * 3;
+        pixelFormatDesc.cDepthBits   = settings.depthBits;
+        pixelFormatDesc.cStencilBits = settings.stencilBits;
+        pixelFormatDesc.iLayerType   = PFD_MAIN_PLANE; 
+        pixelFormatDesc.cRedBits     = settings.rgbBits;
+        pixelFormatDesc.cGreenBits   = settings.rgbBits;
+        pixelFormatDesc.cBlueBits    = settings.rgbBits;
+        pixelFormatDesc.cAlphaBits   = settings.alphaBits;
+
+        // Reset for completeness
+        pixelFormat = 0;
+
+        // Get the initial pixel format.  We'll override this below in a moment.
+        pixelFormat = ChoosePixelFormat(_hDC, &pixelFormatDesc);
+    } else {
+        DescribePixelFormat(_hDC, pixelFormat, sizeof(PIXELFORMATDESCRIPTOR), &pixelFormatDesc);
+    }
+
+    alwaysAssertM(pixelFormat != 0, "[0] Unsupported video mode");
+
+    if (SetPixelFormat(_hDC, pixelFormat, &pixelFormatDesc) == FALSE) {
+		alwaysAssertM(false, "[1] Unsupported video mode");
+    }
+
+    // Create the OpenGL context
+    _glContext = wglCreateContext(_hDC);
+
+	alwaysAssertM(_glContext != NULL, "Failed to create OpenGL context.");
+
+	if (! creatingShareWindow) {
+		// Now share resources with the global window
+		wglShareLists(_shareWindow->_glContext, _glContext);
+	}
+
+	this->makeCurrent();
+
+	if (! creatingShareWindow) {
+        GLCaps::init();
+    }
+}
+
+/* TODO
+const Array<GWindow::Settings>& Win32Window::SupportedWindowSettings() {
+    return _supportedSettings;
+}
+
+bool Win32Window::ClosestSupportedWindowSettings(const GWindow::Settings& desired, GWindow::Settings& closest) {
+    return false;
+}
+*/
+
+int Win32Window::width() const {
+	return settings.width;
 }
 
 
-void SDLWindow::setGammaRamp(const Array<uint16>& gammaRamp) {
+int Win32Window::height() const {
+	return settings.height;
+}
+
+
+void Win32Window::setDimensions(const Rect2D& dims) {
+
+    int W = ::GetSystemMetrics(SM_CXSCREEN);
+    int H = ::GetSystemMetrics(SM_CYSCREEN);
+
+    int x = iClamp((int)dims.x0(), 0, W);
+    int y = iClamp((int)dims.y0(), 0, H);
+    int w = iClamp((int)dims.width(), 1, W);
+    int h = iClamp((int)dims.height(), 1, H);
+
+    // Set dimensions and repaint.
+    ::MoveWindow(window, x, y, w, h, true);
+}
+
+
+Rect2D Win32Window::dimensions() const {
+	return Rect2D::xywh((float)clientX, (float)clientY, (float)width(), (float)height());
+}
+
+
+bool Win32Window::hasFocus() const {
+    // Double check state with foreground and visibility just to be sure.
+    return ( (window == ::GetForegroundWindow()) && (::IsWindowVisible(window)) );
+}
+
+
+std::string Win32Window::getAPIVersion() const {
+	return "1.1";
+}
+
+
+std::string Win32Window::getAPIName() const {
+	return "Win32";
+}
+
+
+bool Win32Window::requiresMainLoop() const {
+    return false;
+}
+
+
+void Win32Window::setIcon(const GImage& image) {
+    alwaysAssertM((image.channels == 3) ||
+                  (image.channels == 4), 
+                  "Icon image must have at least 3 channels.");
+
+    alwaysAssertM((image.width == 32) && (image.height == 32),
+        "Icons must be 32x32 on windows.");
+
+    uint8 bwMaskData[128];
+    uint8 colorMaskData[1024*4];
+
+
+    GImage icon;
+    if (image.channels == 3) {
+        
+        GImage alpha(image.width, image.height, 1);
+        System::memset(alpha.byte(), 255, (image.width * image.height));
+        icon = image.insertRedAsAlpha(alpha);
+    } else {
+        icon = image;
+    }
+
+    int colorMaskIdx = 0;
+    System::memset(bwMaskData, 0x00, 128);
+    for (int y = 0; y < 32; ++y) {
+        for (int x = 0; x < 32; ++x) {
+            bwMaskData[ (y * 4) + (x / 8) ] |= ((icon.pixel4(x, y).a > 127) ? 1 : 0) << (x % 8);
+
+            // Windows icon images are BGRA like a lot of windows image data
+            colorMaskData[colorMaskIdx] = icon.pixel4()[y * 32 + x].b;
+            colorMaskData[colorMaskIdx + 1] = icon.pixel4()[y * 32 + x].g;
+            colorMaskData[colorMaskIdx + 2] = icon.pixel4()[y * 32 + x].r;
+            colorMaskData[colorMaskIdx + 3] = icon.pixel4()[y * 32 + x].a;
+            colorMaskIdx += 4;
+        }
+    }
+
+    HBITMAP bwMask = ::CreateBitmap(32, 32, 1, 1, bwMaskData);  
+    HBITMAP colorMask = ::CreateBitmap(32, 32, 1, 32, colorMaskData);
+
+    ICONINFO iconInfo;
+    iconInfo.xHotspot = 0;
+    iconInfo.yHotspot = 0;
+    iconInfo.hbmColor = colorMask;
+    iconInfo.hbmMask = bwMask;
+    iconInfo.fIcon = true;
+
+    HICON hicon = ::CreateIconIndirect(&iconInfo);
+    _usedIcons.insert((int)hicon);
+
+    // Purposely leak any icon created indirectly like hicon becase we don't know.
+    HICON hsmall = (HICON)::SendMessage(this->window, WM_SETICON, (WPARAM)ICON_SMALL, (LPARAM)hicon);
+    HICON hlarge = (HICON)::SendMessage(this->window, WM_SETICON, (WPARAM)ICON_BIG, (LPARAM)hicon);
+
+    if (_usedIcons.contains((int)hsmall)) {
+        ::DestroyIcon(hsmall);
+        _usedIcons.remove((int)hsmall);
+    }
+    
+    if (_usedIcons.contains((int)hlarge)) {
+        ::DestroyIcon(hlarge);
+        _usedIcons.remove((int)hlarge);
+    }
+
+    ::DeleteObject(bwMask);
+    ::DeleteObject(colorMask);
+}
+
+
+void Win32Window::swapGLBuffers() {
+	SwapBuffers(hdc());
+}
+
+
+void Win32Window::close() {
+    PostMessage(window, WM_CLOSE, 0, 0);
+}
+
+
+Win32Window::~Win32Window() {
+	if (GWindow::current() == this) {
+		if (wglMakeCurrent(NULL, NULL) == FALSE)	{
+			debugAssertM(false, "Failed to set context");
+		}
+
+        if (createdWindow) {
+            // Release the mouse
+            setMouseVisible(true);
+            setInputCapture(false);
+        }
+	}
+
+	if (createdWindow) {
+        SetWindowLong(window, GWL_USERDATA, (LONG)NULL);
+		close();
+	}
+
+    // Do not need to release private HDC's
+
+    delete _diDevices;
+}
+
+
+void Win32Window::getSettings(GWindow::Settings& s) const {
+	s = settings;
+}
+
+
+void Win32Window::setCaption(const std::string& caption) {
+	if (_title != caption) {
+		_title = caption;
+		SetWindowText(window, _title.c_str());
+	}
+}
+
+
+std::string Win32Window::caption() {
+	return _title;
+}
+
+
+bool Win32Window::pollEvent(GEvent& e) {
+    MSG message;
+
+    while (PeekMessage(&message, window, 0, 0, PM_REMOVE)) {
+        TranslateMessage(&message);
+		DispatchMessage(&message);
+
+        if (message.hwnd == window) {
+            switch (message.message) {
+            case WM_KEYDOWN:
+            case WM_SYSKEYDOWN:
+
+				e.key.type = SDL_KEYDOWN;
+				e.key.state = SDL_PRESSED;
+
+                // Fix invalid repeat key flag
+                if (justReceivedFocus) {
+                    justReceivedFocus = false;
+                    message.lParam &= ~(0x40000000);
+                }
+
+                // Need the repeat messages to find LSHIFT and RSHIFT
+				if (!((message.lParam >> 30) & 0x01)) {
+					// This is not an autorepeat message
+					makeKeyEvent(message.wParam, message.lParam, e);
+                    _keyboardButtons[message.wParam] = true;
+					return true;
+				}
+				break;
+
+
+			case WM_KEYUP:
+            case WM_SYSKEYUP:
+				e.key.type = SDL_KEYUP;
+				e.key.state = SDL_RELEASED;
+
+				makeKeyEvent(message.wParam, message.lParam, e);
+                _keyboardButtons[message.wParam] = false;
+				return true;
+				break;
+
+
+            case WM_LBUTTONDOWN:
+				mouseButton(true, SDL_LEFT_MOUSE_KEY, message.wParam, e); 
+                _mouseButtons[0] = true;
+				return true;
+
+            case WM_MBUTTONDOWN:
+				mouseButton(true, SDL_MIDDLE_MOUSE_KEY, message.wParam, e); 
+                _mouseButtons[1] = true;
+				return true;
+
+            case WM_RBUTTONDOWN:
+				mouseButton(true, SDL_RIGHT_MOUSE_KEY, message.wParam, e); 
+                _mouseButtons[2] = true;
+				return true;
+
+            case WM_LBUTTONUP:
+				mouseButton(false, SDL_LEFT_MOUSE_KEY, message.wParam, e); 
+                _mouseButtons[0] = false;
+				return true;
+
+            case WM_MBUTTONUP:
+				mouseButton(false, SDL_MIDDLE_MOUSE_KEY, message.wParam, e); 
+                _mouseButtons[1] = false;
+				return true;
+
+            case WM_RBUTTONUP:
+				mouseButton(false, SDL_RIGHT_MOUSE_KEY, message.wParam, e); 
+                _mouseButtons[2] = false;
+				return true;
+            } // switch
+        } // if
+    } // while
+
+    // We never seem to "receive" the WM_QUIT message 
+    // so test for WM_CLOSE in the window_proc
+    if (_receivedCloseEvent) {
+
+        // Reset so SDL_QUIT is only sent once
+        _receivedCloseEvent = false;
+
+        e.type = SDL_QUIT;
+        return true;
+    }
+
+    RECT rect;
+    GetWindowRect(window, &rect);
+    settings.x = rect.left;
+    settings.y = rect.top;
+
+    GetClientRect(window, &rect);
+    settings.width = rect.right - rect.left;
+    settings.height = rect.bottom - rect.top;
+
+    clientX = settings.x;
+    clientY = settings.y;
+
+    if (settings.framed) {
+        // Add the border offset
+        clientX	+= GetSystemMetrics(settings.resizable ? SM_CXSIZEFRAME : SM_CXFIXEDFRAME);
+        clientY += GetSystemMetrics(settings.resizable ? SM_CYSIZEFRAME : SM_CYFIXEDFRAME) + GetSystemMetrics(SM_CYCAPTION);
+    }
+
+    // Check for a resize event and use only most recent
+    // Just use an array instead of used flag and variable
+    // This will be clearer in the 7.0 event system
+    if (sizeEventInjects.size() > 0) {
+        e = sizeEventInjects.last();
+        sizeEventInjects.clear();
+        return true;
+    }
+
+    return false;
+}
+
+
+void Win32Window::setMouseVisible(bool b) {
+    m_mouseHideCount = b ? 0 : 1;
+
+    if (_mouseVisible == b) {
+        return;
+    }
+
+    if (b) {
+        while (ShowCursor(true) < 0);
+    } else {
+        while (ShowCursor(false) >= 0); 
+    }
+
+    _mouseVisible = b;
+}
+
+
+bool Win32Window::mouseVisible() const {
+    return _mouseVisible;
+}
+
+
+void Win32Window::notifyResize(int w, int h) {
+    settings.width = w;
+    settings.height = h;
+}
+
+
+bool Win32Window::inputCapture() const {
+    return _inputCapture;
+}
+
+
+void Win32Window::setGammaRamp(const Array<uint16>& gammaRamp) {
     alwaysAssertM(gammaRamp.size() >= 256, "Gamma ramp must have at least 256 entries");
 
     Log* debugLog = Log::common();
 
     uint16* ptr = const_cast<uint16*>(gammaRamp.getCArray());
-    #ifdef WIN32
-        // On windows, use the more reliable SetDeviceGammaRamp function.
-        // It requires separate RGB gamma ramps.
-        uint16 wptr[3 * 256];
-        for (int i = 0; i < 256; ++i) {
-            wptr[i] = wptr[i + 256] = wptr[i + 512] = ptr[i]; 
-        }
-        BOOL success = SetDeviceGammaRamp(wglGetCurrentDC(), wptr);
-    #else
-        bool success = (SDL_SetGammaRamp(ptr, ptr, ptr) != -1);
-    #endif
+    uint16 wptr[3 * 256];
+    for (int i = 0; i < 256; ++i) {
+        wptr[i] = wptr[i + 256] = wptr[i + 512] = ptr[i]; 
+    }
+    BOOL success = SetDeviceGammaRamp(hdc(), wptr);
 
     if (! success) {
-        if (debugLog) {debugLog->println("Error setting gamma ramp!");}
-
-        #ifdef WIN32
-            debugAssertM(false, "Failed to set gamma ramp");
-        #else
-            if (debugLog) {debugLog->println(SDL_GetError());}
-            debugAssertM(false, SDL_GetError());
-        #endif
+        if (debugLog) {debugLog->println("Error setting gamma ramp! (Possibly LCD monitor)");}
     }
 }
 
 
-int SDLWindow::numJoysticks() const {
-    return joy.size();
+void Win32Window::setRelativeMousePosition(double x, double y) {
+	SetCursorPos(iRound(x + clientX), iRound(y + clientY));
 }
 
 
-void SDLWindow::getJoystickState(
-    unsigned int    stickNum,
-    Array<float>&   axis,
-    Array<bool>&    button) {
-
-    debugAssert(stickNum < ((unsigned int) joy.size()));
-
-    SDL_Joystick* sdlstick = joy[stickNum];
-
-    axis.resize(SDL_JoystickNumAxes(sdlstick), DONT_SHRINK_UNDERLYING_ARRAY);
-
-    for (int a = 0; a < axis.size(); ++a) {
-        axis[a] = SDL_JoystickGetAxis(sdlstick, a) / 32768.0;
-    }
-
-    button.resize(SDL_JoystickNumButtons(sdlstick), DONT_SHRINK_UNDERLYING_ARRAY);
-
-    for (int b = 0; b < button.size(); ++b) {
-        button[b] = (SDL_JoystickGetButton(sdlstick, b) != 0);
-    }
-}
-
-
-std::string SDLWindow::joystickName(unsigned int sticknum) {
-    debugAssert(sticknum < ((unsigned int) joy.size()));
-    return SDL_JoystickName(sticknum);
-}
-
-
-void SDLWindow::setCaption(const std::string& caption) {
-    _caption = caption;
-	SDL_WM_SetCaption(_caption.c_str(), NULL);
-}
-
-
-std::string SDLWindow::caption() {
-    return _caption;
-}
-
-
-void SDLWindow::setIcon(const GImage& image) {
-    alwaysAssertM((image.channels == 3) ||
-                  (image.channels == 4), 
-                  "Icon image must have at least 3 channels.");
-
-    #ifdef G3D_WIN32
-        alwaysAssertM((image.width == 32) && (image.height == 32),
-            "Icons must be 32x32 on windows.");
-    #endif
-
-    uint32 amask = 0xFF000000;
-    uint32 bmask = 0x00FF0000;
-    uint32 gmask = 0x0000FF00;
-    uint32 rmask = 0x000000FF;
-
-    if (image.channels == 3) {
-        // Take away the 4th channel.
-        amask = 0x00000000;
-    }
-
-    int pixelBitLen     = image.channels * 8;
-    int scanLineByteLen = image.channels * image.width;
-
-    SDL_Surface* surface =
-        SDL_CreateRGBSurfaceFrom((void*)image.byte(), image.width, image.height,
-        pixelBitLen, scanLineByteLen, 
-        rmask, gmask, bmask, amask);
-
-    alwaysAssertM((surface != NULL),
-        "Icon data failed to load into SDL.");
-
-    // Let SDL create mask from image data directly
-    SDL_WM_SetIcon(surface, NULL);
-
-    SDL_FreeSurface(surface);
-}
-
-
-void SDLWindow::swapGLBuffers() {
-    SDL_GL_SwapBuffers();
-}
-
-
-void SDLWindow::notifyResize(int w, int h) {
-    debugAssert(w > 0);
-    debugAssert(h > 0);
-    _settings.width = w;
-    _settings.height = h;
-
-	// Mutate the SDL surface (which one is not supposed to do).
-	// We can't resize the actual surface or SDL will destroy
-	// our GL context, however.
-	SDL_Surface* surface = SDL_GetVideoSurface();
-	surface->w = w;
-	surface->h = h;
-	surface->clip_rect.x = 0;
-	surface->clip_rect.y = 0;
-	surface->clip_rect.w = w;
-	surface->clip_rect.h = h;
-}
-
-
-void SDLWindow::setRelativeMousePosition(double x, double y) {
-    SDL_WarpMouse(iRound(x), iRound(y));
-}
-
-
-void SDLWindow::setRelativeMousePosition(const Vector2& p) {
+void Win32Window::setRelativeMousePosition(const Vector2& p) {
     setRelativeMousePosition(p.x, p.y);
 }
 
 
-void SDLWindow::getRelativeMouseState(Vector2& p, uint8& mouseButtons) const {
+void Win32Window::getRelativeMouseState(Vector2& p, uint8& mouseButtons) const {
     int x, y;
     getRelativeMouseState(x, y, mouseButtons);
-    p.x = x;
-    p.y = y;
+    p.x = (float)x;
+    p.y = (float)y;
 }
 
 
-void SDLWindow::getRelativeMouseState(int& x, int& y, uint8& mouseButtons) const {
-    mouseButtons = SDL_GetMouseState(&x, &y);
+void Win32Window::getRelativeMouseState(int& x, int& y, uint8& mouseButtons) const {
+	POINT point;
+	GetCursorPos(&point);
+	x = point.x - clientX;
+	y = point.y - clientY;
+
+    // Clear mouseButtons and set each button bit.
+	mouseButtons ^= mouseButtons;
+    mouseButtons |= (_mouseButtons[0] ? 1 : 0) << 0;
+    mouseButtons |= (_mouseButtons[1] ? 1 : 0) << 1;
+    mouseButtons |= (_mouseButtons[2] ? 1 : 0) << 2;
 }
 
 
-void SDLWindow::getRelativeMouseState(double& x, double& y, uint8& mouseButtons) const {
+void Win32Window::getRelativeMouseState(double& x, double& y, uint8& mouseButtons) const {
     int ix, iy;
     getRelativeMouseState(ix, iy, mouseButtons);
     x = ix;
     y = iy;
 }
 
+inline void Win32Window::enableDirectInput() const {
+    if (_diDevices==NULL)
+		_diDevices = new _DirectInput(window);
+}
 
-void SDLWindow::setMouseVisible(bool v) {
-    m_mouseHideCount = v ? 0 : 1;
+int Win32Window::numJoysticks() const {
+	enableDirectInput();
+    return _diDevices->getNumJoysticks();
+}
 
-    if (v) {
-        SDL_ShowCursor(SDL_ENABLE);
-    } else {
-        SDL_ShowCursor(SDL_DISABLE);
+
+std::string Win32Window::joystickName(unsigned int sticknum)
+{
+	enableDirectInput();
+    return _diDevices->getJoystickName(sticknum);
+}
+
+
+void Win32Window::getJoystickState(unsigned int stickNum, Array<float>& axis, Array<bool>& button) {
+
+	enableDirectInput();
+    if (!_diDevices->joystickExists(stickNum)) {
+        return;
     }
 
-    _mouseVisible = v;
+    _diDevices->getJoystickState(stickNum, axis, button);
 }
 
 
-bool SDLWindow::mouseVisible() const {
-    return _mouseVisible;
-}
-
-
-void SDLWindow::setInputCapture(bool c) {
+void Win32Window::setInputCapture(bool c) {
     m_inputCaptureCount = c ? 1 : 0;
 
-    if (_inputCapture != c) {
-        _inputCapture = c;
+	if (c != _inputCapture) {
+		_inputCapture = c;
 
-        if (_inputCapture) {
-            SDL_WM_GrabInput(SDL_GRAB_ON);
-        } else {
-            SDL_WM_GrabInput(SDL_GRAB_OFF);
+		if (_inputCapture) {
+            RECT wrect;
+            GetWindowRect(window, &wrect);
+            clientX = wrect.left;
+            clientY = wrect.top;
+
+            RECT rect = 
+            {clientX + clientRectOffset.x, 
+             clientY + clientRectOffset.y, 
+             clientX + settings.width + clientRectOffset.x, 
+             clientY + settings.height + clientRectOffset.y};
+			ClipCursor(&rect);
+		} else {
+			ClipCursor(NULL);
+		}
+	}
+}
+
+
+void Win32Window::initWGL() {
+    
+    // This function need only be called once
+    static bool wglInitialized = false;
+    if (wglInitialized) {
+        return;
+    }
+    wglInitialized = true;
+
+    std::string name = "G3D";
+    WNDCLASS window_class;
+    
+    window_class.style         = CS_HREDRAW | CS_VREDRAW;
+    window_class.lpfnWndProc   = _internal::window_proc;
+    window_class.cbClsExtra    = 0; 
+    window_class.cbWndExtra    = 0;
+    window_class.hInstance     = GetModuleHandle(NULL);
+    window_class.hIcon         = LoadIcon(NULL, IDI_APPLICATION); 
+    window_class.hCursor       = LoadCursor(NULL, IDC_ARROW);
+    window_class.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
+    window_class.lpszMenuName  = name.c_str();
+    window_class.lpszClassName = "window"; 
+    
+    int ret = RegisterClass(&window_class);
+	alwaysAssertM(ret, "Registration Failed");
+
+    // Create some dummy pixel format.
+	PIXELFORMATDESCRIPTOR pfd =	
+    {
+		sizeof (PIXELFORMATDESCRIPTOR),									// Size Of This Pixel Format Descriptor
+		1,																// Version Number
+		PFD_DRAW_TO_WINDOW |											// Format Must Support Window
+		PFD_SUPPORT_OPENGL |											// Format Must Support OpenGL
+		PFD_DOUBLEBUFFER,												// Must Support Double Buffering
+		PFD_TYPE_RGBA,													// Request An RGBA Format
+		24,		                        								// Select Our Color Depth
+		0, 0, 0, 0, 0, 0,												// Color Bits Ignored
+		1,																// Alpha Buffer
+		0,																// Shift Bit Ignored
+		0,																// No Accumulation Buffer
+		0, 0, 0, 0,														// Accumulation Bits Ignored
+		16,																// 16Bit Z-Buffer (Depth Buffer)  
+		0,																// No Stencil Buffer
+		0,																// No Auxiliary Buffer
+		PFD_MAIN_PLANE,													// Main Drawing Layer
+		0,																// Reserved
+		0, 0, 0															// Layer Masks Ignored
+	};
+
+    HWND hWnd = CreateWindow("window", "", 0, 0, 0, 100, 100, NULL, NULL, GetModuleHandle(NULL), NULL);
+    debugAssert(hWnd);
+
+    HDC  hDC  = GetDC(hWnd);
+    debugAssert(hDC);
+    
+	int pixelFormat = ChoosePixelFormat(hDC, &pfd);
+    debugAssert(pixelFormat);
+
+    if (SetPixelFormat(hDC, pixelFormat, &pfd) == FALSE) {
+        debugAssertM(false, "Failed to set pixel format");
+	}
+
+	HGLRC hRC = wglCreateContext(hDC);
+    debugAssert(hRC);
+
+	if (wglMakeCurrent(hDC, hRC) == FALSE)	{
+        debugAssertM(false, "Failed to set context");
+	}
+
+    // We've now brought OpenGL online.  Grab the pointers we need and 
+    // destroy everything.
+
+    wglChoosePixelFormatARB =
+        (PFNWGLCHOOSEPIXELFORMATARBPROC)wglGetProcAddress("wglChoosePixelFormatARB");
+
+    PFNWGLGETEXTENSIONSSTRINGARBPROC wglGetExtensionsStringARB =
+        (PFNWGLGETEXTENSIONSSTRINGARBPROC)wglGetProcAddress("wglGetExtensionsStringARB");
+
+    if (wglGetExtensionsStringARB != NULL) {
+        
+        std::string wglExtensions = wglGetExtensionsStringARB(hDC);
+
+        std::istringstream extensionsStream;
+        extensionsStream.str(wglExtensions.c_str());
+        
+        std::string extension;
+        while ( extensionsStream >> extension ) {
+            if (extension == "WGL_ARB_multisample") {
+                hasWGLMultiSampleSupport = true;
+                break;
+            }
+        }
+
+    } else {
+        hasWGLMultiSampleSupport = false;
+    }
+
+    // Now destroy the dummy windows
+    wglDeleteContext(hRC);					
+    hRC = 0;	
+	ReleaseDC(hWnd, hDC);	
+	hWnd = 0;				
+	DestroyWindow(hWnd);			
+	hWnd = 0;
+}
+
+
+void Win32Window::createShareWindow(GWindow::Settings settings) {
+	static bool init = false;
+	if (init) {
+		return;
+	}
+	
+	init = true;	
+
+	// We want a small (low memory), invisible window
+	settings.visible = false;
+	settings.width = 16;
+	settings.height = 16;
+	settings.framed = false;
+
+	// This call will force us to re-enter createShareWindow, however
+	// the second time through init will be true, so we'll skip the 
+	// recursion.
+#	if defined(_MSC_VER) && (_MSC_VER <= 1200)
+		// VC6 doesn't have a "reset" method on auto_ptr.  This statement 
+		// accomplishes the same purpose for that implementation, however.
+		// Morgan verified that the source correctly passes ownership from the
+		// newly created auto_ptr to the old one.
+		_shareWindow = std::auto_ptr<Win32Window>(new Win32Window(settings, true));
+#	else
+		_shareWindow.reset(new Win32Window(settings, true));
+#	endif
+}
+
+
+void Win32Window::reallyMakeCurrent() const {
+	debugAssertM(_thread == ::GetCurrentThread(), 
+		"Cannot call GWindow::makeCurrent on different threads.");
+
+	if (wglMakeCurrent(_hDC, _glContext) == FALSE)	{
+        debugAssertM(false, "Failed to set context");
+	}
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+    Static helper functions for Win32Window
+*/
+
+
+/** Changes the screen resolution */
+static bool ChangeResolution(int width, int height, int bpp, int refreshRate) {
+
+	if (refreshRate == 0) {
+		refreshRate = 85;
+	}
+
+    DEVMODE deviceMode;
+
+    ZeroMemory(&deviceMode, sizeof(DEVMODE));
+
+    int bppTries[3];
+    bppTries[0] = bpp;
+    bppTries[1] = 32;
+    bppTries[2] = 16;
+
+    deviceMode.dmSize       = sizeof(DEVMODE);
+	deviceMode.dmPelsWidth  = width;
+	deviceMode.dmPelsHeight = height;
+	deviceMode.dmFields     = DM_BITSPERPEL | DM_PELSWIDTH | DM_PELSHEIGHT | DM_DISPLAYFREQUENCY;
+    deviceMode.dmDisplayFrequency = refreshRate;
+
+    LONG result = -1;
+
+    for (int i = 0; (i < 3) && (result != DISP_CHANGE_SUCCESSFUL); ++i) {
+    	deviceMode.dmBitsPerPel = bppTries[i];
+        result = ChangeDisplaySettings(&deviceMode, CDS_FULLSCREEN);
+    }
+
+    if (result != DISP_CHANGE_SUCCESSFUL) {
+        // If it didn't work, try just changing the resolution and not the
+        // refresh rate.
+        deviceMode.dmFields = DM_BITSPERPEL | DM_PELSWIDTH | DM_PELSHEIGHT;
+        for (int i = 0; (i < 3) && (result != DISP_CHANGE_SUCCESSFUL); ++i) {
+    	    deviceMode.dmBitsPerPel = bppTries[i];
+            result = ChangeDisplaySettings(&deviceMode, CDS_FULLSCREEN);
         }
     }
+
+    return result == DISP_CHANGE_SUCCESSFUL;
 }
 
 
-bool SDLWindow::pollEvent(GEvent& e) {
-    return (SDL_PollEvent(&e) != 0);
+static void makeKeyEvent(int vkCode, int lParam, GEvent& e) {
+
+    // If true, we're looking at the right hand version of
+    // Fix VK_SHIFT, VK_CONTROL, VK_MENU
+    bool extended = (lParam >> 24) & 0x01;
+
+    // Check for normal letter event
+    if ((vkCode >= 'A') && (vkCode <= 'Z')) {
+
+        // Make key codes lower case canonically
+        e.key.keysym.sym = (SDLKey)(vkCode - 'A' + 'a');
+
+    } else if (vkCode == VK_SHIFT) {
+
+        e.key.keysym.sym = (SDLKey)(extended ? SDLK_RSHIFT : SDLK_LSHIFT);
+
+    } else if (vkCode == VK_CONTROL) {
+
+        e.key.keysym.sym = (SDLKey)(extended ? SDLK_RCTRL : SDLK_LCTRL);
+
+    } else if (vkCode == VK_MENU) {
+
+        e.key.keysym.sym = (SDLKey)(extended ? SDLK_RALT : SDLK_LALT);
+
+    } else {
+
+        e.key.keysym.sym = (SDLKey)_sdlKeys[iClamp(vkCode, 0, SDLK_LAST)];
+
+    }
+
+    e.key.keysym.scancode = MapVirtualKey(vkCode, 0); 
+        //(lParam >> 16) & 0x7F;
+
+    static BYTE lpKeyState[256];
+    GetKeyboardState(lpKeyState);
+
+    int mod = 0;
+    if (lpKeyState[VK_LSHIFT] & 0x80) {
+        mod = mod | KMOD_LSHIFT;
+    }
+
+    if (lpKeyState[VK_RSHIFT] & 0x80) {
+        mod = mod | KMOD_RSHIFT;
+    }
+
+    if (lpKeyState[VK_LCONTROL] & 0x80) {
+        mod = mod | KMOD_LCTRL;
+    }
+
+    if (lpKeyState[VK_RCONTROL] & 0x80) {
+        mod = mod | KMOD_RCTRL;
+    }
+
+    if (lpKeyState[VK_LMENU] & 0x80) {
+        mod = mod | KMOD_LALT;
+    }
+
+    if (lpKeyState[VK_RMENU] & 0x80) {
+        mod = mod | KMOD_RALT;
+    }
+    e.key.keysym.mod = (SDLMod)mod;
+
+    ToUnicode(vkCode, e.key.keysym.scancode, lpKeyState, (LPWSTR)&e.key.keysym.unicode, 1, 0);
 }
 
 
-bool SDLWindow::inputCapture() const {
-    return _inputCapture;
+/** 
+ Configures a mouse up/down event
+ */
+static void mouseButton(bool down, int keyEvent, DWORD flags, GEvent& e) {
+    (void)flags;
+    // TODO: process flags
+	if (down) {
+		e.key.type  = SDL_KEYDOWN;
+		e.key.state = SDL_PRESSED;
+	} else {
+		e.key.type  = SDL_KEYUP;
+		e.key.state = SDL_RELEASED;
+	}
+
+    e.key.keysym.unicode = ' ';
+	e.key.keysym.sym = (SDLKey)keyEvent;
+
+
+    e.key.keysym.scancode = 0;
+
+    static BYTE lpKeyState[256];
+    GetKeyboardState(lpKeyState);
+
+    int mod = 0;
+    if (lpKeyState[VK_LSHIFT] & 0x80) {
+        mod = mod | KMOD_LSHIFT;
+    }
+
+    if (lpKeyState[VK_RSHIFT] & 0x80) {
+        mod = mod | KMOD_RSHIFT;
+    }
+
+    if (lpKeyState[VK_LCONTROL] & 0x80) {
+        mod = mod | KMOD_LCTRL;
+    }
+
+    if (lpKeyState[VK_RCONTROL] & 0x80) {
+        mod = mod | KMOD_RCTRL;
+    }
+
+    if (lpKeyState[VK_LMENU] & 0x80) {
+        mod = mod | KMOD_LALT;
+    }
+
+    if (lpKeyState[VK_RMENU] & 0x80) {
+        mod = mod | KMOD_RALT;
+    }
+    e.key.keysym.mod = (SDLMod)mod;
 }
 
 
-#if defined(G3D_LINUX)
+/**
+ Initializes SDL to Win32 key map
+ */
+static void initWin32KeyMap() {
+    memset(_sdlKeys, 0, sizeof(_sdlKeys));
 
-Window SDLWindow::x11Window() const {
-    return _X11Window;
+	_sdlKeys[VK_BACK] = SDLK_BACKSPACE;
+	_sdlKeys[VK_TAB] = SDLK_TAB;
+	_sdlKeys[VK_CLEAR] = SDLK_CLEAR;
+	_sdlKeys[VK_RETURN] = SDLK_RETURN;
+	_sdlKeys[VK_PAUSE] = SDLK_PAUSE;
+	_sdlKeys[VK_ESCAPE] = SDLK_ESCAPE;
+	_sdlKeys[VK_SPACE] = SDLK_SPACE;
+	_sdlKeys[VK_APOSTROPHE] = SDLK_QUOTE;
+	_sdlKeys[VK_COMMA] = SDLK_COMMA;
+	_sdlKeys[VK_MINUS] = SDLK_MINUS;
+	_sdlKeys[VK_PERIOD] = SDLK_PERIOD;
+	_sdlKeys[VK_SLASH] = SDLK_SLASH;
+	_sdlKeys['0'] = SDLK_0;
+	_sdlKeys['1'] = SDLK_1;
+	_sdlKeys['2'] = SDLK_2;
+	_sdlKeys['3'] = SDLK_3;
+	_sdlKeys['4'] = SDLK_4;
+	_sdlKeys['5'] = SDLK_5;
+	_sdlKeys['6'] = SDLK_6;
+	_sdlKeys['7'] = SDLK_7;
+	_sdlKeys['8'] = SDLK_8;
+	_sdlKeys['9'] = SDLK_9;
+	_sdlKeys[VK_SEMICOLON] = SDLK_SEMICOLON;
+	_sdlKeys[VK_EQUALS] = SDLK_EQUALS;
+	_sdlKeys[VK_LBRACKET] = SDLK_LEFTBRACKET;
+	_sdlKeys[VK_BACKSLASH] = SDLK_BACKSLASH;
+	_sdlKeys[VK_RBRACKET] = SDLK_RIGHTBRACKET;
+	_sdlKeys[VK_GRAVE] = SDLK_BACKQUOTE;
+	_sdlKeys[VK_BACKTICK] = SDLK_BACKQUOTE;
+	_sdlKeys[VK_DELETE] = SDLK_DELETE;
+
+	_sdlKeys[VK_NUMPAD0] = SDLK_KP0;
+	_sdlKeys[VK_NUMPAD1] = SDLK_KP1;
+	_sdlKeys[VK_NUMPAD2] = SDLK_KP2;
+	_sdlKeys[VK_NUMPAD3] = SDLK_KP3;
+	_sdlKeys[VK_NUMPAD4] = SDLK_KP4;
+	_sdlKeys[VK_NUMPAD5] = SDLK_KP5;
+	_sdlKeys[VK_NUMPAD6] = SDLK_KP6;
+	_sdlKeys[VK_NUMPAD7] = SDLK_KP7;
+	_sdlKeys[VK_NUMPAD8] = SDLK_KP8;
+	_sdlKeys[VK_NUMPAD9] = SDLK_KP9;
+	_sdlKeys[VK_DECIMAL] = SDLK_KP_PERIOD;
+	_sdlKeys[VK_DIVIDE] = SDLK_KP_DIVIDE;
+	_sdlKeys[VK_MULTIPLY] = SDLK_KP_MULTIPLY;
+	_sdlKeys[VK_SUBTRACT] = SDLK_KP_MINUS;
+	_sdlKeys[VK_ADD] = SDLK_KP_PLUS;
+
+	_sdlKeys[VK_UP] = SDLK_UP;
+	_sdlKeys[VK_DOWN] = SDLK_DOWN;
+	_sdlKeys[VK_RIGHT] = SDLK_RIGHT;
+	_sdlKeys[VK_LEFT] = SDLK_LEFT;
+	_sdlKeys[VK_INSERT] = SDLK_INSERT;
+	_sdlKeys[VK_HOME] = SDLK_HOME;
+	_sdlKeys[VK_END] = SDLK_END;
+	_sdlKeys[VK_PRIOR] = SDLK_PAGEUP;
+	_sdlKeys[VK_NEXT] = SDLK_PAGEDOWN;
+
+	_sdlKeys[VK_F1] = SDLK_F1;
+	_sdlKeys[VK_F2] = SDLK_F2;
+	_sdlKeys[VK_F3] = SDLK_F3;
+	_sdlKeys[VK_F4] = SDLK_F4;
+	_sdlKeys[VK_F5] = SDLK_F5;
+	_sdlKeys[VK_F6] = SDLK_F6;
+	_sdlKeys[VK_F7] = SDLK_F7;
+	_sdlKeys[VK_F8] = SDLK_F8;
+	_sdlKeys[VK_F9] = SDLK_F9;
+	_sdlKeys[VK_F10] = SDLK_F10;
+	_sdlKeys[VK_F11] = SDLK_F11;
+	_sdlKeys[VK_F12] = SDLK_F12;
+	_sdlKeys[VK_F13] = SDLK_F13;
+	_sdlKeys[VK_F14] = SDLK_F14;
+	_sdlKeys[VK_F15] = SDLK_F15;
+
+	_sdlKeys[VK_NUMLOCK] = SDLK_NUMLOCK;
+	_sdlKeys[VK_CAPITAL] = SDLK_CAPSLOCK;
+	_sdlKeys[VK_SCROLL] = SDLK_SCROLLOCK;
+	_sdlKeys[VK_RSHIFT] = SDLK_RSHIFT;
+	_sdlKeys[VK_LSHIFT] = SDLK_LSHIFT;
+	_sdlKeys[VK_RCONTROL] = SDLK_RCTRL;
+	_sdlKeys[VK_LCONTROL] = SDLK_LCTRL;
+	_sdlKeys[VK_RMENU] = SDLK_RALT;
+	_sdlKeys[VK_LMENU] = SDLK_LALT;
+	_sdlKeys[VK_RWIN] = SDLK_RSUPER;
+	_sdlKeys[VK_LWIN] = SDLK_LSUPER;
+
+	_sdlKeys[VK_HELP] = SDLK_HELP;
+	_sdlKeys[VK_PRINT] = SDLK_PRINT;
+	_sdlKeys[VK_SNAPSHOT] = SDLK_PRINT;
+	_sdlKeys[VK_CANCEL] = SDLK_BREAK;
+	_sdlKeys[VK_APPS] = SDLK_MENU;
+
+    sdlKeysInitialized = true;
 }
 
 
-Display* SDLWindow::x11Display() const {
-    return _X11Display;
+#if 0
+static void printPixelFormatDescription(int format, HDC hdc, TextOutput& out) {
+
+    PIXELFORMATDESCRIPTOR pixelFormat;
+    DescribePixelFormat(hdc, format, sizeof(PIXELFORMATDESCRIPTOR), &pixelFormat);
+
+    /*
+    typedef struct tagPIXELFORMATDESCRIPTOR { // pfd   
+      WORD  nSize; 
+      WORD  nVersion; 
+      DWORD dwFlags; 
+      BYTE  iPixelType; 
+      BYTE  cColorBits; 
+      BYTE  cRedBits; 
+      BYTE  cRedShift; 
+      BYTE  cGreenBits; 
+      BYTE  cGreenShift; 
+      BYTE  cBlueBits; 
+      BYTE  cBlueShift; 
+      BYTE  cAlphaBits; 
+      BYTE  cAlphaShift; 
+      BYTE  cAccumBits; 
+      BYTE  cAccumRedBits; 
+      BYTE  cAccumGreenBits; 
+      BYTE  cAccumBlueBits; 
+      BYTE  cAccumAlphaBits; 
+      BYTE  cDepthBits; 
+      BYTE  cStencilBits; 
+      BYTE  cAuxBuffers; 
+      BYTE  iLayerType; 
+      BYTE  bReserved; 
+      DWORD dwLayerMask; 
+      DWORD dwVisibleMask; 
+      DWORD dwDamageMask; 
+    } PIXELFORMATDESCRIPTOR; 
+    */
+
+    out.printf("#%d Format Description\n", format);
+    out.printf("nSize:\t\t\t\t%d\n", pixelFormat.nSize);
+    out.printf("nVersion:\t\t\t%d\n", pixelFormat.nVersion);
+    std::string s = (std::string((pixelFormat.dwFlags&PFD_DRAW_TO_WINDOW) ? "PFD_DRAW_TO_WINDOW|" : "") + 
+                                     std::string((pixelFormat.dwFlags&PFD_DRAW_TO_BITMAP) ? "PFD_DRAW_TO_BITMAP|" : "") + 
+                                     std::string((pixelFormat.dwFlags&PFD_SUPPORT_GDI) ? "PFD_SUPPORT_GDI|" : "") + 
+                                     std::string((pixelFormat.dwFlags&PFD_SUPPORT_OPENGL) ? "PFD_SUPPORT_OPENGL|" : "") + 
+                                     std::string((pixelFormat.dwFlags&PFD_GENERIC_ACCELERATED) ? "PFD_GENERIC_ACCELERATED|" : "") + 
+                                     std::string((pixelFormat.dwFlags&PFD_GENERIC_FORMAT) ? "PFD_GENERIC_FORMAT|" : "") + 
+                                     std::string((pixelFormat.dwFlags&PFD_NEED_PALETTE) ? "PFD_NEED_PALETTE|" : "") + 
+                                     std::string((pixelFormat.dwFlags&PFD_NEED_SYSTEM_PALETTE) ? "PFD_NEED_SYSTEM_PALETTE|" : "") + 
+                                     std::string((pixelFormat.dwFlags&PFD_DOUBLEBUFFER) ? "PFD_DOUBLEBUFFER|" : "") + 
+                                     std::string((pixelFormat.dwFlags&PFD_STEREO) ? "PFD_STEREO|" : "") +
+                                     std::string((pixelFormat.dwFlags&PFD_SWAP_LAYER_BUFFERS) ? "PFD_SWAP_LAYER_BUFFERS" : ""));
+
+    out.printf("dwFlags:\t\t\t%s\n", s.c_str());
+    out.printf("iPixelType:\t\t\t%d\n", pixelFormat.iPixelType);
+    out.printf("cColorBits:\t\t\t%d\n", pixelFormat.cColorBits);
+    out.printf("cRedBits:\t\t\t%d\n", pixelFormat.cRedBits);
+    out.printf("cRedShift:\t\t\t%d\n", pixelFormat.cRedShift);
+    out.printf("cGreenBits:\t\t\t%d\n", pixelFormat.cGreenBits);
+    out.printf("cGreenShift:\t\t\t%d\n", pixelFormat.cGreenShift);
+    out.printf("cBlueBits:\t\t\t%d\n", pixelFormat.cBlueBits);
+    out.printf("cBlueShift:\t\t\t%d\n", pixelFormat.cBlueShift);
+    out.printf("cAlphaBits:\t\t\t%d\n", pixelFormat.cAlphaBits);
+    out.printf("cAlphaShift:\t\t\t%d\n", pixelFormat.cAlphaShift);
+    out.printf("cAccumBits:\t\t\t%d\n", pixelFormat.cAccumBits);
+    out.printf("cAccumRedBits:\t\t\t%d\n", pixelFormat.cAccumRedBits);
+    out.printf("cAccumGreenBits:\t\t%d\n", pixelFormat.cAccumGreenBits);
+    out.printf("cAccumBlueBits:\t\t\t%d\n", pixelFormat.cAccumBlueBits);
+    out.printf("cAccumAlphaBits:\t\t%d\n", pixelFormat.cAccumAlphaBits);
+    out.printf("cDepthBits:\t\t\t%d\n", pixelFormat.cDepthBits);
+    out.printf("cStencilBits:\t\t\t%d\n", pixelFormat.cStencilBits);
+    out.printf("cAuxBuffers:\t\t\t%d\n", pixelFormat.cAuxBuffers);
+    out.printf("iLayerType:\t\t\t%d\n", pixelFormat.iLayerType);
+    out.printf("bReserved:\t\t\t%d\n", pixelFormat.bReserved);
+    out.printf("dwLayerMask:\t\t\t%d\n", pixelFormat.dwLayerMask);
+    out.printf("dwDamageMask:\t\t\t%d\n", pixelFormat.dwDamageMask);
+
+    out.printf("\n");
 }
-
-#elif defined(G3D_WIN32)
-
-HDC SDLWindow::win32HDC() const {
-    return _Win32HDC;
-}
-
-
-HWND SDLWindow::win32HWND() const {
-    return _Win32HWND;
-}
-
 #endif
 
-void SDLWindow::reallyMakeCurrent() const {
-#   ifdef G3D_WIN32
-	    if (wglMakeCurrent(_Win32HDC, _glContext) == FALSE)	{
-            debugAssertM(false, "Failed to set context");
-	    }
-#   elif defined(G3D_LINUX)
-        if (! glXMakeCurrent(_X11Display, _X11Window, _glContext)) {
-            //debugAssertM(false, "Failed to set context");
-            // only check OpenGL as False seems to be returned when
-            // context is already current
-            debugAssertGLOk();
+namespace _internal{
+static LRESULT WINAPI window_proc(
+    HWND                window,
+    UINT                message,
+    WPARAM              wparam,
+    LPARAM              lparam) {
+    
+    Win32Window* this_window = (Win32Window*)GetWindowLong(window, GWL_USERDATA);
+    
+    if (this_window != NULL) {
+        switch (message) {
+        case WM_ACTIVATE:
+            if ((LOWORD(wparam) != WA_INACTIVE) &&
+                (HIWORD(wparam) == 0) &&
+                ((HWND)lparam != this_window->hwnd())) { // non-zero is minimized 
+                this_window->_windowActive = true;
+            } else if ((HWND)lparam != this_window->hwnd()) {
+                this_window->_windowActive = false;
+            }
+            break;
+
+        case WM_CLOSE:
+            this_window->_receivedCloseEvent = true;
+			break;
+
+        case WM_SIZE:
+            if ((wparam == SIZE_MAXIMIZED) ||
+                (wparam == SIZE_RESTORED)) {
+                this_window->injectSizeEvent(LOWORD(lparam), HIWORD(lparam));
+            }
+            break;
+
+        case WM_SETFOCUS:
+            this_window->justReceivedFocus = true;
+            break;
+
+        case WM_KILLFOCUS:
+            for (int i = 0; i < sizeof(this_window->_keyboardButtons); ++i) {
+                if (this_window->_keyboardButtons[i]) {
+                    ::PostMessage(window, WM_KEYUP, i, 0);
+                }
+            }
+            memset(this_window->_keyboardButtons, 0, sizeof(this_window->_keyboardButtons));
+            break;
+
+        case WM_SYSCOMMAND:
+            // Only upper 12-bits are public
+            if ((wparam & 0xFFF0) == SC_KEYMENU) {
+                // Ignore Alt button that opens system menu, freezes render
+                return 0;
+            }
+            break;
         }
-#   elif defined(G3D_OSX)
-        
-#   else
-#       error SDLWindow not implemented for this platform.
-#   endif
+    }
+    
+    return DefWindowProc(window, message, wparam, lparam);
+}
 }
 
-} // namespace
+static const char* G3DWndClass() {
+
+    static char const* g3dWindowClassName = NULL;
+
+    if (g3dWindowClassName == NULL) {
+        
+        WNDCLASS wndcls;
+        
+        wndcls.style = CS_HREDRAW | CS_VREDRAW | CS_DBLCLKS | CS_OWNDC;
+        wndcls.lpfnWndProc = _internal::window_proc;
+        wndcls.cbClsExtra = wndcls.cbWndExtra = 0;
+        wndcls.hInstance = ::GetModuleHandle(NULL);
+        wndcls.hIcon = NULL;
+        wndcls.hCursor = ::LoadCursor(NULL, IDC_ARROW);
+        wndcls.hbrBackground = NULL;
+        wndcls.lpszMenuName = NULL;
+        wndcls.lpszClassName = "G3DWindow";
+        
+        if (!RegisterClass(&wndcls)) {
+            Log::common()->printf("\n**** WARNING: could not create G3DWindow class ****\n");
+            // error!  Return the default window class.
+            return "window";
+        }
+        
+        g3dWindowClassName = wndcls.lpszClassName;        
+    }
+    
+    return g3dWindowClassName;
+}
+
+} // G3D namespace
+
+#endif // G3D_WIN32

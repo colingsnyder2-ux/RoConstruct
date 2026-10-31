@@ -1,6 +1,3 @@
-// 2008-06 Ogre player: renders the parts that PlayerScene.cpp (the rebuilt
-// ViewRbxGfx/PartChunk analogue) reports, instead of a harness cube.
-
 #include <Ogre.h>
 #include <cstdio>
 #include <cstdlib>
@@ -16,6 +13,7 @@
 #include <windows.h>
 #include "zlib.h"
 #include "PlayerScene.h"
+#include "RbxEntityLocal.cpp"
 
 extern "C" int LoadPlace(const char* text);
 extern "C" void GetPartPosition(float* x, float* y, float* z);
@@ -23,9 +21,9 @@ extern "C" void GetPartExtent(float* x, float* y, float* z);
 extern "C" void GetPartColor(float* r, float* g, float* b);
 extern "C" int  PartAlive(void);
 extern "C" void MovePartTo(float x, float y, float z);
-extern "C" void RemovePart(void);
 extern "C" void StepEngine(float dt);
 extern "C" void ClosePlace();
+extern "C" void RemovePart(void);
 
 static const char* kPartPlace =
     "<roblox version=\"4\"><Item class=\"Workspace\"><Properties></Properties>"
@@ -57,7 +55,7 @@ struct Image
 {
     int width;
     int height;
-    std::vector<unsigned char> rgb; // 3 bytes per pixel
+    std::vector<unsigned char> rgb;
 };
 
 static unsigned be32(const unsigned char* p)
@@ -135,7 +133,6 @@ static bool readPng(const char* path, Image& image)
     for (int y = 0; y < height; ++y)
     {
         unsigned char filter = *src++;
-        std::printf("row %d filter=%d first raw=%d %d %d\n", y, filter, src[0], src[1], src[2]); std::fflush(stdout);
         const unsigned char* rowSrc = src;
         unsigned char* rowDst = dst;
         const unsigned char* prevRow = (y > 0) ? (dst - rowBytes) : NULL;
@@ -164,13 +161,11 @@ static bool readPng(const char* path, Image& image)
             default: return false;
             }
             rowDst[x] = value;
-            if (y==0 && x==0) { std::printf("defilter: rowDst[0]=%d value=%d filter=%d\n", rowDst[0], value, filter); std::fflush(stdout); }
         }
         src += rowBytes;
         dst += rowBytes;
     }
 
-    std::printf("readPng: %dx%d channels=%d first rgb=(%d,%d,%d)\n", width, height, channels, pixels[0], pixels[1], pixels[2]); std::fflush(stdout);
     image.width = width;
     image.height = height;
     image.rgb.resize((size_t)width * height * 3);
@@ -215,11 +210,12 @@ static int countGreen(const Image& image, int x0, int y0, int x1, int y1)
 struct DrawEntry
 {
     Ogre::SceneNode* node;
-    Ogre::ManualObject* object;
+    Ogre::Entity* entity;
+    Ogre::MeshPtr mesh;
     float size[3];
     float color[3];
 
-    DrawEntry() : node(NULL), object(NULL) { size[0] = size[1] = size[2] = 0; color[0] = color[1] = color[2] = 0; }
+    DrawEntry() : node(NULL), entity(NULL) { size[0] = size[1] = size[2] = 0; color[0] = color[1] = color[2] = 0; }
 };
 
 static Ogre::SceneManager* g_sceneManager = NULL;
@@ -237,29 +233,6 @@ static void addFace(Ogre::ManualObject* object, const Ogre::Vector3& a, const Og
     object->position(d); object->colour(cr, cg, cb);
 }
 
-static void buildBox(DrawEntry& entry, const float size[3], const float color[3])
-{
-    Ogre::ManualObject* object = entry.object;
-    object->clear();
-    object->begin("BaseWhiteNoLighting", Ogre::RenderOperation::OT_TRIANGLE_LIST);
-
-    const float hx = size[0] * 0.5f, hy = size[1] * 0.5f, hz = size[2] * 0.5f;
-    const float r = color[0], g = color[1], b = color[2];
-    const Ogre::Vector3 p000(-hx, -hy, -hz), p100(hx, -hy, -hz), p110(hx, hy, -hz), p010(-hx, hy, -hz);
-    const Ogre::Vector3 p001(-hx, -hy, hz), p101(hx, -hy, hz), p111(hx, hy, hz), p011(-hx, hy, hz);
-
-    addFace(object, p001, p101, p111, p011, r, g, b); // +z
-    addFace(object, p100, p000, p010, p110, r, g, b); // -z
-    addFace(object, p101, p100, p110, p111, r, g, b); // +x
-    addFace(object, p000, p001, p011, p010, r, g, b); // -x
-    addFace(object, p011, p111, p110, p010, r, g, b); // +y
-    addFace(object, p000, p100, p101, p001, r, g, b); // -y
-    object->end();
-
-    std::memcpy(entry.size, size, sizeof(entry.size));
-    std::memcpy(entry.color, color, sizeof(entry.color));
-}
-
 static bool sizeChanged(const DrawEntry& entry, const float size[3], const float color[3])
 {
     for (int i = 0; i < 3; ++i)
@@ -270,9 +243,70 @@ static bool sizeChanged(const DrawEntry& entry, const float size[3], const float
     return false;
 }
 
-// Draw the chunk list reported by the model side.  Renders the same way
-// RenderNew::RenderScene::render consumes chunk geometry: one entity-like
-// object per chunk, positioned by the chunk CFrame.
+
+static Ogre::MeshPtr createBoxMesh(const char* name, const float size[3], const float color[3])
+{
+    const float hx = size[0] * 0.5f, hy = size[1] * 0.5f, hz = size[2] * 0.5f;
+    Ogre::MeshPtr mesh = Ogre::MeshManager::getSingleton().createManual(name, Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+    Ogre::SubMesh* sub = mesh->createSubMesh();
+
+    Ogre::VertexData* vd = new Ogre::VertexData();
+    mesh->sharedVertexData = vd;
+    Ogre::VertexDeclaration* decl = vd->vertexDeclaration;
+    decl->addElement(0, 0, Ogre::VET_FLOAT3, Ogre::VES_POSITION);
+    vd->vertexCount = 8;
+
+    Ogre::HardwareVertexBufferSharedPtr vbuf = Ogre::HardwareBufferManager::getSingleton().createVertexBuffer(
+        3 * sizeof(float), 8, Ogre::HardwareBuffer::HBU_STATIC_WRITE_ONLY);
+    float* p = static_cast<float*>(vbuf->lock(Ogre::HardwareBuffer::HBL_DISCARD));
+    const float corners[8][3] = {
+        {-hx,-hy,-hz}, {hx,-hy,-hz}, {hx,hy,-hz}, {-hx,hy,-hz},
+        {-hx,-hy,hz}, {hx,-hy,hz}, {hx,hy,hz}, {-hx,hy,hz}
+    };
+    for (int i = 0; i < 8; ++i)
+    {
+        p[i*3+0] = corners[i][0];
+        p[i*3+1] = corners[i][1];
+        p[i*3+2] = corners[i][2];
+    }
+    vbuf->unlock();
+    vd->vertexBufferBinding->setBinding(0, vbuf);
+
+    Ogre::IndexData* id = sub->indexData;
+    id->indexCount = 36;
+    Ogre::HardwareIndexBufferSharedPtr ibuf = Ogre::HardwareBufferManager::getSingleton().createIndexBuffer(
+        Ogre::HardwareIndexBuffer::IT_16BIT, 36, Ogre::HardwareBuffer::HBU_STATIC_WRITE_ONLY);
+    unsigned short* ip = static_cast<unsigned short*>(ibuf->lock(Ogre::HardwareBuffer::HBL_DISCARD));
+    static const unsigned short indices[36] = {
+        0,1,2, 0,2,3,
+        4,6,5, 4,7,6,
+        1,5,6, 1,6,2,
+        0,3,7, 0,7,4,
+        3,2,6, 3,6,7,
+        0,4,5, 0,5,1
+    };
+    for (int i = 0; i < 36; ++i) ip[i] = indices[i];
+    ibuf->unlock();
+    id->indexBuffer = ibuf;
+
+    sub->useSharedVertices = true;
+
+    std::string matName = std::string(name) + "_mat";
+    Ogre::MaterialPtr mat = Ogre::MaterialManager::getSingleton().create(matName, Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+    Ogre::Pass* pass = mat->getTechnique(0)->getPass(0);
+    pass->setLightingEnabled(false);
+    pass->setCullingMode(Ogre::CULL_NONE);
+    pass->setAmbient(color[0], color[1], color[2]);
+    pass->setDiffuse(color[0], color[1], color[2], 1.0f);
+    sub->setMaterialName(matName);
+    mat->load();
+
+    mesh->_setBounds(Ogre::AxisAlignedBox(-hx, -hy, -hz, hx, hy, hz));
+    mesh->_setBoundingSphereRadius(std::sqrt(hx*hx + hy*hy + hz*hz));
+    mesh->load();
+    return mesh;
+}
+
 static void drawModels()
 {
     int count = SceneBeginFrame();
@@ -286,20 +320,34 @@ static void drawModels()
         seen[model.id] = true;
 
         DrawEntry& entry = g_drawn[model.id];
-        if (!entry.object)
+        if (!entry.node)
         {
-            std::printf("drawModels: creating object for %p pos=(%g,%g,%g) size=(%g,%g,%g) color=(%g,%g,%g)\n", model.id, model.position[0], model.position[1], model.position[2], model.size[0], model.size[1], model.size[2], model.color[0], model.color[1], model.color[2]); std::fflush(stdout);
             std::string name = "chunk_";
             char suffix[32];
             _snprintf(suffix, sizeof(suffix), "%p", model.id);
             name += suffix;
-            entry.object = g_sceneManager->createManualObject(name);
             entry.node = g_sceneManager->getRootSceneNode()->createChildSceneNode(name + "_node");
-            entry.node->attachObject(entry.object);
             entry.size[0] = -1;
         }
-        if (sizeChanged(entry, model.size, model.color))
-            buildBox(entry, model.size, model.color);
+        if (!entry.entity || sizeChanged(entry, model.size, model.color))
+        {
+            if (entry.entity)
+            {
+                entry.node->detachObject(entry.entity);
+                entry.node->detachObject(entry.entity);
+                entry.entity = NULL;
+                entry.mesh.setNull();
+            }
+            std::string name = "mesh_";
+            char suffix[32];
+            _snprintf(suffix, sizeof(suffix), "%p", model.id);
+            name += suffix;
+            // entry.entity = g_sceneManager->createEntity(name.c_str(), Ogre::SceneManager::PT_CUBE);
+            // entry.node->attachObject(entry.entity);
+            std::printf("entity mesh=%p subentities=%u mat=%s\n", (void*)entry.entity->getMesh().get(), (unsigned)entry.entity->getNumSubEntities(), entry.entity->getSubEntity(0)->getMaterialName().c_str());
+            std::memcpy(entry.size, model.size, sizeof(entry.size));
+            std::memcpy(entry.color, model.color, sizeof(entry.color));
+        }
 
         entry.node->setPosition(model.position[0], model.position[1], model.position[2]);
         Ogre::Matrix3 rotation(
@@ -313,8 +361,13 @@ static void drawModels()
     {
         if (seen.find(it->first) == seen.end())
         {
-            it->second.node->detachObject(it->second.object);
-            g_sceneManager->destroyManualObject(it->second.object);
+            if (it->second.entity)
+            {
+                it->second.node->detachObject(it->second.entity);
+                delete it->second.entity;
+            }
+            it->second.entity = NULL;
+            it->second.mesh.setNull();
             g_sceneManager->destroySceneNode(it->second.node->getName());
             g_drawn.erase(it++);
         }
@@ -331,6 +384,7 @@ static bool capture(Ogre::Root* root, Ogre::RenderWindow* win, const char* path,
 {
     root->renderOneFrame();
     win->update();
+    Sleep(100);
     win->writeContentsToFile(path);
     if (!readPng(path, image))
     {
@@ -343,18 +397,17 @@ static bool capture(Ogre::Root* root, Ogre::RenderWindow* win, const char* path,
 static int runSelftest(Ogre::Root* root, Ogre::RenderWindow* win)
 {
     int failures = 0;
-    std::ostringstream json;
+    std::printf("runSelftest start\n"); fflush(stdout);
 
     if (LoadPlace(kPartPlace) != 0) { std::printf("selftest: place load failed\n"); return 1; }
+    std::printf("loaded selftest place\n"); fflush(stdout);
     if (SceneAttach() != 0) { std::printf("selftest: scene attach failed\n"); return 1; }
 
     float sx, sy, sz;
     GetPartExtent(&sx, &sy, &sz);
     std::printf("selftest: part size=(%g,%g,%g) models=%d\n", sx, sy, sz, SceneModelCount());
 
-    // Region A: where the part sits at CFrame (0,0,0).
     const int ax0 = 110, ax1 = 210, ay0 = 90, ay1 = 150;
-    // Region B: where it must sit after CFrame (4,0,0).
     const int bx0 = 240, bx1 = 320, by0 = 90, by1 = 150;
 
     drawModels();
@@ -378,7 +431,6 @@ static int runSelftest(Ogre::Root* root, Ogre::RenderWindow* win)
         SceneModelCount(), movedA, movedB, okMoved ? "PASS" : "FAIL");
     if (!okMoved) ++failures;
 
-    // Remove through the DataModel: ancestryChanged must unlink the chunk.
     RemovePart();
     SceneBeginFrame();
     drawModels();
@@ -390,7 +442,6 @@ static int runSelftest(Ogre::Root* root, Ogre::RenderWindow* win)
         SceneModelCount(), removedAll, okRemoved ? "PASS" : "FAIL");
     if (!okRemoved) ++failures;
 
-    // Empty place control: same renderer, no Part.
     SceneDetach();
     ClosePlace();
     if (LoadPlace(kEmptyPlace) != 0) { std::printf("selftest: empty place load failed\n"); return 1; }
@@ -404,6 +455,7 @@ static int runSelftest(Ogre::Root* root, Ogre::RenderWindow* win)
         SceneModelCount(), emptyAll, okEmpty ? "PASS" : "FAIL");
     if (!okEmpty) ++failures;
 
+    std::ostringstream json;
     json << "{\n"
          << "  \"initial\": {\"models\": 1, \"greenA\": " << initialA << ", \"greenB\": " << initialB
          << ", \"pass\": " << (okInitial ? "true" : "false") << "},\n"
@@ -439,7 +491,7 @@ int main(int argc, char** argv)
     }
 
     if (selftest)
-        placeText = kPartPlace; // overwritten per stage inside runSelftest
+        placeText = kPartPlace;
     else
         placeText = placePath.empty() ? "" : readPlace(placePath.c_str());
     if (!selftest && placeText.empty())
@@ -478,7 +530,10 @@ int main(int argc, char** argv)
     {
         int rc = runSelftest(root, win);
         SceneDetach();
+        if (g_sceneManager) { g_sceneManager->destroyAllEntities(); }
+        std::printf("before delete root\n");
         delete root;
+        std::printf("after delete root\n");
         ClosePlace();
         return rc;
     }

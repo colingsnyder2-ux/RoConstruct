@@ -1,4 +1,4 @@
-// from server: 43% by atomic.potato
+// from server: 100% by EspClaude
 // roc 2009-06 00428c50  unit: MyXTPCommandBars  size: 246 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-06 00428c50
 //
@@ -57,41 +57,64 @@
 // 00428d38  64890d00000000       mov dword ptr fs:[0], ecx
 // 00428d3f  81c488020000         add esp, 0x288
 // 00428d45  c3                   ret 
+// copied from an identical function in another client (function ?Customize@CMainFrame@ns_ROCX0000f7@@QAEXXZ)
 
-struct MyXTPCommandBars
+namespace ns_ROCX0000f7 {
+struct CommandBars;
+
+struct CommandsPage
 {
-    char pad0[0xec];
-    void* p0;
-    void f();
+    void Initialize(int resource, int category);
+    void AddCategories(int resource, int position);
+    void AddMenuCategory(int menu, int resource, int position);
+    void AddAllCommandsCategory(int resource, int position);
 };
 
-extern "C" void __stdcall sub_7648C0(void*, void*, void*);
-extern "C" void __stdcall sub_765620(void*, void*);
-extern "C" void __stdcall sub_762BE0(void*, void*);
-extern "C" void __stdcall sub_7667D0(void*, int, int);
-extern "C" void __stdcall sub_766460(void*, int, int);
-extern "C" void __stdcall sub_766130(void*, int, int, int);
-extern "C" void __stdcall sub_7662A0(void*, int, int);
-extern "C" void __stdcall sub_764AF0(void*);
-extern "C" void __stdcall sub_765010(void*);
-extern "C" void __stdcall sub_762AE0(void*);
+struct OptionsPage;
 
-void MyXTPCommandBars::f()
+struct CustomizeSheet
 {
-    if (p0 != 0)
+    unsigned char reserved0[176];
+    CommandsPage* commandsPage;
+    unsigned char reserved1[16];
+
+    CustomizeSheet(CommandBars* bars, int flags);
+    ~CustomizeSheet();
+    void AddPage(OptionsPage* page);
+    int DoModal();
+};
+
+struct OptionsPage
+{
+    int reserved[110];
+
+    OptionsPage(CustomizeSheet* sheet);
+    ~OptionsPage();
+};
+
+struct CMainFrame
+{
+    unsigned char reserved[236];
+    CommandBars* commandBars;
+
+    void Customize();
+};
+
+void CMainFrame::Customize()
+{
+    if (commandBars)
     {
-        char buf1[0xc8];
-        char buf2[0x1b4];
-        sub_7648C0(buf1, p0, 0);
-        sub_765620(buf2, buf1);
-        sub_762BE0(buf1, buf2);
-        void* q = *(void**)(buf1 + 0xb0);
-        sub_7667D0(q, 0x81, 0);
-        sub_766460(q, 0x23d1, -1);
-        sub_766130(q, 0x81, 0x23d6, -1);
-        sub_7662A0(q, 0x23ca, -1);
-        sub_764AF0(buf1);
-        sub_765010(buf2);
-        sub_762AE0(buf1);
+        CustomizeSheet sheet(commandBars, 0);
+        OptionsPage options(&sheet);
+        sheet.AddPage(&options);
+
+        CommandsPage* page = sheet.commandsPage;
+        page->Initialize(0x81, 0);
+        page->AddCategories(0x23d1, -1);
+        page->AddMenuCategory(0x81, 0x23d6, -1);
+        page->AddAllCommandsCategory(0x23ca, -1);
+
+        sheet.DoModal();
     }
+}
 }

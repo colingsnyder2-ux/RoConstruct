@@ -1,29 +1,31 @@
-// from server: 92% by atomic.potato
-struct S_func_006d5c70 {
-    char pad0[4];
-    int m_x;
-    void f(int a1);
+// from server: 100% by EspClaude
+// roc 2009-06 006f6da0  unit: RBX::MechToAssemblyStage  size: 48 bytes
+struct Primitive;
+struct Stage {
+    void f(Primitive* a1);
+};
+typedef void (Stage::*StageFn)(Primitive*);
+
+struct Functor { StageFn fn; Stage* s; Functor(StageFn f, Stage* p) : fn(f), s(p) {} };
+struct Prims {
+    void visit(Functor fn);
 };
 
-struct S_func_006dada0 {
-    void f(int a1);
-};
-
-struct S_func_006f6d20 {
-    void f(void* a1, void* a2);
+struct Primitive {
+    char pad0[8];
+    Prims prims;
+    void attach(void* a1);
 };
 
 struct S {
     char pad0[8];
-    S_func_006dada0* m_p;
-    void f(S_func_006d5c70* a1);
+    Stage* m_p;
+    void f(Primitive* a1);
 };
 
-void S::f(S_func_006d5c70* a1)
+void S::f(Primitive* a1)
 {
-    a1->f((int)this);
-    m_p->f((int)a1);
-    S_func_006dada0* p = m_p;
-    S_func_006f6d20* q = (S_func_006f6d20*)((char*)a1 + 8);
-    q->f(p, (void*)0x6dada0);
+    a1->attach(this);
+    m_p->f(a1);
+    a1->prims.visit(Functor(&Stage::f, m_p));
 }

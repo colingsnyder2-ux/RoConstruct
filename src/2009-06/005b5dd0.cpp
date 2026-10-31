@@ -1,5 +1,6 @@
-// from server: 94% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /Od /Ob1 /GS- /MT
-// roc-lib: wildmagic-2-core Geometry/WmlAxisAlignedBox2.cpp
+struct A { char p[0x44]; float x; float f() const; };
+float A::f() const { return x; }

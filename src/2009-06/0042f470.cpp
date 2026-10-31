@@ -1,3 +1,4 @@
+// from server: 100% by EspClaude
 // roc 2009-06 0042f470  unit: COutputView  size: 22 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-06 0042f470
 //
@@ -9,17 +10,18 @@
 // 0042f47f  e800a12e00           call 0x719584
 // 0042f484  5e                   pop esi
 // 0042f485  c3                   ret 
-// copied from an identical function in another client (function ?func@COutputView@ns_ROCX000013@@QAEXXZ)
+// copied from an identical function in another client (function ?Prepare@COutputView@ns_ROCX000012@@QAEXXZ)
 
-namespace ns_ROCX000013 {
-struct COutputView {
-    void sub_6300B8();
-    void sub_630670(int);
-    void func();
+namespace ns_ROCX000012 {
+struct COutputView
+{
+    void Prepare();
+    void SetMode(int);
 };
 
-void COutputView::func() {
-    sub_6300B8();
-    sub_630670(0x86);
+void COutputView::Prepare()
+{
+    Prepare();
+    SetMode(134);
 }
 }

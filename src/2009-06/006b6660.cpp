@@ -1,66 +1,39 @@
-// from server: 97% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/ToolMouseCommand.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/ToolMouseCommand.h"
-#include "v8datamodel/PartInstance.h"
-#include "v8datamodel/Tool.h"
-#include "humanoid/Humanoid.h"
-
-namespace RBX
+namespace boost {
+template<class T> class shared_ptr {
+public:
+    T* px; void* pn;
+    T* operator->() const { return px; }
+};
+}
+namespace RBX {
+class UIEvent;
+class Tool { public: void activate(); void deactivate(); };
+class MouseCommand {
+public:
+    virtual ~MouseCommand();
+    virtual MouseCommand* onMouseDown(const UIEvent& uiEvent);
+    virtual MouseCommand* onMouseUp(const UIEvent& uiEvent);
+};
+class ScriptMouseCommand : public MouseCommand {
+public:
+    char pad[0x24 - 4];
+    virtual MouseCommand* onMouseDown(const UIEvent& uiEvent);
+    virtual MouseCommand* onMouseUp(const UIEvent& uiEvent);
+};
+class ToolMouseCommand : public ScriptMouseCommand {
+    boost::shared_ptr<Tool> tool;
+    void updateTargetPoint(const UIEvent& uiEvent);
+public:
+    virtual MouseCommand* onMouseUp(const UIEvent& uiEvent);
+};
+MouseCommand* ToolMouseCommand::onMouseUp(const UIEvent& uiEvent)
 {
-	ToolMouseCommand::ToolMouseCommand(Workspace* workspace, Tool* tool)
-		: Base(workspace),
-		  tool(shared_from(tool))
-	{
-	}
-
-	ToolMouseCommand::~ToolMouseCommand() {}
-
-	void ToolMouseCommand::onMouseHover(const UIEvent& uiEvent)
-	{
-		updateTargetPoint(uiEvent);
-		ScriptMouseCommand::onMouseHover(uiEvent);
-	}
-
-	void ToolMouseCommand::onMouseIdle(const UIEvent& uiEvent)
-	{
-		updateTargetPoint(uiEvent);
-		ScriptMouseCommand::onMouseIdle(uiEvent);
-	}
-
-	MouseCommand* ToolMouseCommand::onMouseDown(const UIEvent& uiEvent)
-	{
-		updateTargetPoint(uiEvent);
-		tool->activate();
-		return ScriptMouseCommand::onMouseDown(uiEvent);
-	}
-
-	MouseCommand* ToolMouseCommand::onMouseUp(const UIEvent& uiEvent)
-	{
-		updateTargetPoint(uiEvent);
-		tool->deactivate();
-		return ScriptMouseCommand::onMouseUp(uiEvent);
-	}
-
-	void ToolMouseCommand::updateTargetPoint(const UIEvent& uiEvent)
-	{
-		G3D::Vector3 hitWorld;
-		
-		Humanoid* humanoid = Humanoid::getLocalHumanoidFromContext(tool.get());
-		if (!humanoid)
-			return;
-
-		if (!getPartByLocalCharacter(uiEvent, hitWorld))
-		{
-			G3D::Ray ray = getSearchRay(uiEvent);
-			hitWorld = humanoid->getHead() ? humanoid->getHead()->getCoordinateFrame().translation : ray.origin;
-			hitWorld += ray.direction;
-		}
-
-		humanoid->setTargetPoint(hitWorld);
-	}
+    updateTargetPoint(uiEvent);
+    tool->deactivate();
+    return ScriptMouseCommand::onMouseUp(uiEvent);
+}
 }

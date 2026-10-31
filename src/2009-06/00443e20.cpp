@@ -1,219 +1,80 @@
-// from server: 47% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: boost-1.34.1 libs/thread/src/tss_hooks.cpp
+// from server: 100% by EspClaude
+// roc 2009-06 00443e20  unit: VCRenderSettingsItem::?$EnumPropDescriptor  size: 85 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 00443e20
+//
+// 00443e20  56                   push esi
+// 00443e21  8bf1                 mov esi, ecx
+// 00443e23  8b4c240c             mov ecx, dword ptr [esp + 0xc]
+// 00443e27  57                   push edi
+// 00443e28  ff15bce48900         call dword ptr [0x89e4bc]
+// 00443e2e  8b7e20               mov edi, dword ptr [esi + 0x20]
+// 00443e31  8d4c2410             lea ecx, [esp + 0x10]
+// 00443e35  51                   push ecx
+// 00443e36  50                   push eax
+// 00443e37  e8449b1800           call 0x5cd980
+// 00443e3c  83c404               add esp, 4
+// 00443e3f  50                   push eax
+// 00443e40  8bcf                 mov ecx, edi
+// 00443e42  e809a71a00           call 0x5ee550
+// 00443e47  84c0                 test al, al
+// 00443e49  7423                 je 0x443e6e
+// 00443e4b  8b542410             mov edx, dword ptr [esp + 0x10]
+// 00443e4f  8b4e1c               mov ecx, dword ptr [esi + 0x1c]
+// 00443e52  89542410             mov dword ptr [esp + 0x10], edx
+// 00443e56  8b01                 mov eax, dword ptr [ecx]
+// 00443e58  8b400c               mov eax, dword ptr [eax + 0xc]
+// 00443e5b  8d542410             lea edx, [esp + 0x10]
+// 00443e5f  52                   push edx
+// 00443e60  8b542410             mov edx, dword ptr [esp + 0x10]
+// 00443e64  52                   push edx
+// 00443e65  ffd0                 call eax
+// 00443e67  5f                   pop edi
+// 00443e68  b001                 mov al, 1
+// 00443e6a  5e                   pop esi
+// 00443e6b  c20800               ret 8
+// 00443e6e  5f                   pop edi
+// 00443e6f  32c0                 xor al, al
+// 00443e71  5e                   pop esi
+// 00443e72  c20800               ret 8
+// copied from an identical function in another client (function ?set@Descriptor@ns_ROCX00003b@@QAE_NPAXABUString@2@@Z)
 
-// Candidate translation unit (score above; library headers required).
-// Copyright (C) 2004 Michael Glassford
-// Copyright (C) 2006 Roland Schwarz
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+namespace ns_ROCX00003b {
+struct String;
+extern const char* (__thiscall *string_c_str)(const String*);
 
-#include <boost/thread/detail/config.hpp>
+extern const void* __cdecl internName(const char*);
 
-#if defined(BOOST_HAS_WINTHREADS)
+struct EnumMap {
+    bool lookup(const void*, int*);
+};
 
-    #include <boost/thread/detail/tss_hooks.hpp>
+struct Property {
+    virtual void slot0();
+    virtual void slot1();
+    virtual void slot2();
+    virtual void set(void*, const int&);
+};
 
-    #include <boost/assert.hpp>
-//    #include <boost/thread/mutex.hpp>
-    #include <boost/thread/once.hpp>
+struct Descriptor {
+    char padding[0x1c];
+    Property* property;
+    EnumMap* enumMap;
 
-    #include <list>
+    bool set(void*, const String&);
+};
 
-    #define WIN32_LEAN_AND_MEAN
-    #include <windows.h>
+bool Descriptor::set(void* instance, const String& text)
+{
+    int result;
+    const char* name = string_c_str(&text);
+    EnumMap* map = enumMap;
 
-    namespace
-    {
-        class CScopedCSLock
-        {
-        public:
-            CScopedCSLock(LPCRITICAL_SECTION cs) : cs(cs), lk(true) {
-                ::EnterCriticalSection(cs);
-            }
-            ~CScopedCSLock() {
-                if (lk) ::LeaveCriticalSection(cs);
-            }
-            void Unlock() {
-                lk = false;
-                ::LeaveCriticalSection(cs);
-            }
-        private:
-            bool lk;
-            LPCRITICAL_SECTION cs;
-        };
-
-        typedef std::list<thread_exit_handler> thread_exit_handlers;
-
-        boost::once_flag once_init_threadmon_mutex = BOOST_ONCE_INIT;
-        //boost::mutex* threadmon_mutex;
-        // We don't use boost::mutex here, to avoid a memory leak report,
-        // because we cannot delete it again easily.
-        CRITICAL_SECTION threadmon_mutex;
-        void init_threadmon_mutex(void)
-        {
-            //threadmon_mutex = new boost::mutex;
-            //if (!threadmon_mutex)
-            //    throw boost::thread_resource_error();
-            ::InitializeCriticalSection(&threadmon_mutex);
-        }
-
-        const DWORD invalid_tls_key = TLS_OUT_OF_INDEXES;
-        DWORD tls_key = invalid_tls_key;
-
-        unsigned long attached_thread_count = 0;
+    if (map->lookup(internName(name), &result)) {
+        *(volatile int*)&result = result;
+        property->set(instance, result);
+        return true;
     }
 
-    /*
-    Calls to DllMain() and tls_callback() are serialized by the OS;
-    however, calls to at_thread_exit are not, so it must be protected
-    by a mutex. Since we already need a mutex for at_thread_exit(),
-    and since there is no guarantee that on_process_enter(),
-    on_process_exit(), on_thread_enter(), and on_thread_exit()
-    will be called only from DllMain() or tls_callback(), it makes
-    sense to protect those, too.
-    */
-
-    extern "C" BOOST_THREAD_DECL int at_thread_exit(
-        thread_exit_handler exit_handler
-        )
-    {
-        boost::call_once(init_threadmon_mutex, once_init_threadmon_mutex);
-        //boost::mutex::scoped_lock lock(*threadmon_mutex);
-        CScopedCSLock lock(&threadmon_mutex);
-
-        //Allocate a tls slot if necessary.
-
-        if (tls_key == invalid_tls_key)
-            tls_key = TlsAlloc();
-
-        if (tls_key == invalid_tls_key)
-            return -1;
-
-        //Get the exit handlers list for the current thread from tls.
-
-        thread_exit_handlers* exit_handlers =
-            static_cast<thread_exit_handlers*>(TlsGetValue(tls_key));
-
-        if (!exit_handlers)
-        {
-            //No exit handlers list was created yet.
-
-            try
-            {
-                //Attempt to create a new exit handlers list.
-
-                exit_handlers = new thread_exit_handlers;
-                if (!exit_handlers)
-                    return -1;
-
-                //Attempt to store the list pointer in tls.
-
-                if (TlsSetValue(tls_key, exit_handlers))
-                    ++attached_thread_count;
-                else
-                {
-                    delete exit_handlers;
-                    return -1;
-                }
-            }
-            catch (...)
-            {
-                return -1;
-            }
-        }
-
-        //Like the C runtime library atexit() function,
-        //functions should be called in the reverse of
-        //the order they are added, so push them on the
-        //front of the list.
-
-        try
-        {
-            exit_handlers->push_front(exit_handler);
-        }
-        catch (...)
-        {
-            return -1;
-        }
-
-        //Like the atexit() function, a result of zero
-        //indicates success.
-
-        return 0;
-    }
-
-    extern "C" BOOST_THREAD_DECL void on_process_enter(void)
-    {
-        boost::call_once(init_threadmon_mutex, once_init_threadmon_mutex);
-//        boost::mutex::scoped_lock lock(*threadmon_mutex);
-        CScopedCSLock lock(&threadmon_mutex);
-
-        BOOST_ASSERT(attached_thread_count == 0);
-    }
-
-    extern "C" BOOST_THREAD_DECL void on_process_exit(void)
-    {
-        boost::call_once(init_threadmon_mutex, once_init_threadmon_mutex);
-//        boost::mutex::scoped_lock lock(*threadmon_mutex);
-        CScopedCSLock lock(&threadmon_mutex);
-
-        BOOST_ASSERT(attached_thread_count == 0);
-
-        //Free the tls slot if one was allocated.
-
-        if (tls_key != invalid_tls_key)
-        {
-            TlsFree(tls_key);
-            tls_key = invalid_tls_key;
-        }
-    }
-
-    extern "C" BOOST_THREAD_DECL void on_thread_enter(void)
-    {
-        //boost::call_once(init_threadmon_mutex, once_init_threadmon_mutex);
-        //boost::mutex::scoped_lock lock(*threadmon_mutex);
-    }
-
-    extern "C" BOOST_THREAD_DECL void on_thread_exit(void)
-    {
-        boost::call_once(init_threadmon_mutex, once_init_threadmon_mutex);
-//        boost::mutex::scoped_lock lock(*threadmon_mutex);
-        CScopedCSLock lock(&threadmon_mutex);
-
-        //Get the exit handlers list for the current thread from tls.
-
-        if (tls_key == invalid_tls_key)
-            return;
-
-        thread_exit_handlers* exit_handlers =
-            static_cast<thread_exit_handlers*>(TlsGetValue(tls_key));
-
-        //If a handlers list was found, use it.
-
-        if (exit_handlers && TlsSetValue(tls_key, 0))
-        {
-            BOOST_ASSERT(attached_thread_count > 0);
-            --attached_thread_count;
-
-            //lock.unlock();
-            lock.Unlock();
-
-            //Call each handler and remove it from the list
-
-            while (!exit_handlers->empty())
-            {
-                if (thread_exit_handler exit_handler = *exit_handlers->begin())
-                    (*exit_handler)();
-                exit_handlers->pop_front();
-            }
-
-            delete exit_handlers;
-            exit_handlers = 0;
-        }
-    }
-
-#endif //defined(BOOST_HAS_WINTHREADS)
+    return false;
+}
+}

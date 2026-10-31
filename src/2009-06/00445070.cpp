@@ -1,3 +1,4 @@
+// from server: 100% by EspClaude
 // roc 2009-06 00445070  unit: CRbxPlayDocTemplate  size: 37 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-06 00445070
 //
@@ -13,21 +14,22 @@
 // 00445090  5f                   pop edi
 // 00445091  5e                   pop esi
 // 00445092  c20400               ret 4
-// copied from an identical function in another client (function ?fn_ROCX000002@CRbxPlayDocTemplate@ns_ROCX000002@@QAEXPAX@Z)
+// copied from an identical function in another client (function ?method@CRbxPlayDocTemplate@ns_ROCX00000d@@QAEXPAX@Z)
 
-namespace ns_ROCX000002 {
+namespace ns_ROCX00000d {
 struct CRbxPlayDocTemplate
 {
-    char pad[0x90];
-    void* field_0x90;
-    void sub_63074e(void*);
-    void fn_ROCX000002(void*);
+    void* pad[36];
+    void* field_90;
+    void method(void*);
 };
 
-void CRbxPlayDocTemplate::fn_ROCX000002(void* arg)
+extern "C" void __stdcall sub_006A11F6(void*);
+
+void CRbxPlayDocTemplate::method(void* value)
 {
-    sub_63074e(arg);
-    if (arg == field_0x90)
-        field_0x90 = 0;
+    sub_006A11F6(value);
+    if (value == field_90)
+        field_90 = 0;
 }
 }

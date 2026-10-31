@@ -1,19 +1,13 @@
-// from server: 93% by why2
-struct S_func_006157d0 {
-    char pad0[0x24];
-    char m_str[0x1c];
-    int m_x40;
-    int m_x44;
-    void f();
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <string>
+struct S {
+    char pad[0x24];
+    std::string s;
+    int a;
+    int b;
+    void reset();
 };
-
-struct StringClear {
-    void clear();
-};
-
-void S_func_006157d0::f()
-{
-    ((StringClear*)&m_str[0])->clear();
-    m_x40 = 0;
-    m_x44 = 0;
-}
+void S::reset() { s.clear(); a = 0; b = 0; }

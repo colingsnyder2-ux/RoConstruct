@@ -1,3 +1,4 @@
+// from server: 100% by EspClaude
 // roc 2009-06 00427920  unit: CWrapperView  size: 35 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-06 00427920
 //
@@ -13,20 +14,22 @@
 // 0042793a  b801000000           mov eax, 1
 // 0042793f  5e                   pop esi
 // 00427940  c20400               ret 4
-// copied from an identical function in another client (function ?sub_42ecf0@CWrapperView@ns_ROCX000001@@QAEHPAX@Z)
+// copied from an identical function in another client (function ?update@ns_ROCX0000e6@@YGHPAUObject@1@@Z)
 
-namespace ns_ROCX000001 {
-extern "C" int __stdcall sub_630442(void*);
-
-struct CWrapperView {
-    int sub_42ecf0(void*);
+namespace ns_ROCX0000e6 {
+struct Object {
+    char padding[0x2c];
+    unsigned int flags;
 };
 
-int CWrapperView::sub_42ecf0(void* arg) {
-    if (sub_630442(arg) == 0) {
+extern "C" int __stdcall check(Object* object);
+
+int __stdcall update(Object* object)
+{
+    if (!check(object))
         return 0;
-    }
-    *(unsigned int*)((char*)arg + 0x2c) &= 0xfffffdff;
+
+    object->flags &= ~0x200u;
     return 1;
 }
 }

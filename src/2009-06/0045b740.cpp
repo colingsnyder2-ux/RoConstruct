@@ -1,5 +1,4 @@
-// from server: 40% by colin
-// from server: 100% by tester
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD /fp:fast

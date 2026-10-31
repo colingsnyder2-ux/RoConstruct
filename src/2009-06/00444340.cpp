@@ -1,219 +1,204 @@
-// from server: 34% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: boost-1.34.1 libs/thread/src/tss_hooks.cpp
+// from server: 100% by EspClaude
+// roc 2009-06 00444340  unit: VCRenderSettingsItem::?$EnumPropDescriptor  size: 321 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 00444340
+//
+// 00444340  64a100000000         mov eax, dword ptr fs:[0]
+// 00444346  6aff                 push -1
+// 00444348  68d9b88500           push 0x85b8d9
+// 0044434d  50                   push eax
+// 0044434e  64892500000000       mov dword ptr fs:[0], esp
+// 00444355  83ec20               sub esp, 0x20
+// 00444358  56                   push esi
+// 00444359  57                   push edi
+// 0044435a  8b7c243c             mov edi, dword ptr [esp + 0x3c]
+// 0044435e  8bf1                 mov esi, ecx
+// 00444360  8bcf                 mov ecx, edi
+// 00444362  e8895c1c00           call 0x609ff0
+// 00444367  84c0                 test al, al
+// 00444369  0f85ff000000         jne 0x44446e
+// 0044436f  53                   push ebx
+// 00444370  8d5f10               lea ebx, [edi + 0x10]
+// 00444373  55                   push ebp
+// 00444374  8bcb                 mov ecx, ebx
+// 00444376  e885561c00           call 0x609a00
+// 0044437b  8b6c2440             mov ebp, dword ptr [esp + 0x40]
+// 0044437f  84c0                 test al, al
+// 00444381  0f84bd000000         je 0x444444
+// 00444387  8d4c2414             lea ecx, [esp + 0x14]
+// 0044438b  ff15c0e48900         call dword ptr [0x89e4c0]
+// 00444391  8d442414             lea eax, [esp + 0x14]
+// 00444395  50                   push eax
+// 00444396  8bcb                 mov ecx, ebx
+// 00444398  c744243c00000000     mov dword ptr [esp + 0x3c], 0
+// 004443a0  e86b561c00           call 0x609a10
+// 004443a5  84c0                 test al, al
+// 004443a7  0f8485000000         je 0x444432
+// 004443ad  8d4c2414             lea ecx, [esp + 0x14]
+// 004443b1  ff15bce48900         call dword ptr [0x89e4bc]
+// 004443b7  8b7e20               mov edi, dword ptr [esi + 0x20]
+// 004443ba  8d4c2444             lea ecx, [esp + 0x44]
+// 004443be  51                   push ecx
+// 004443bf  50                   push eax
+// 004443c0  e8bb951800           call 0x5cd980
+// 004443c5  83c404               add esp, 4
+// 004443c8  50                   push eax
+// 004443c9  8bcf                 mov ecx, edi
+// 004443cb  e880a11a00           call 0x5ee550
+// 004443d0  84c0                 test al, al
+// 004443d2  7441                 je 0x444415
+// 004443d4  8b542444             mov edx, dword ptr [esp + 0x44]
+// 004443d8  8b4e1c               mov ecx, dword ptr [esi + 0x1c]
+// 004443db  89542444             mov dword ptr [esp + 0x44], edx
+// 004443df  8b01                 mov eax, dword ptr [ecx]
+// 004443e1  8b400c               mov eax, dword ptr [eax + 0xc]
+// 004443e4  8d542444             lea edx, [esp + 0x44]
+// 004443e8  52                   push edx
+// 004443e9  8bd5                 mov edx, ebp
+// 004443eb  52                   push edx
+// 004443ec  ffd0                 call eax
+// 004443ee  8d4c2414             lea ecx, [esp + 0x14]
+// 004443f2  c7442438ffffffff     mov dword ptr [esp + 0x38], 0xffffffff
+// 004443fa  ff15c4e48900         call dword ptr [0x89e4c4]
+// 00444400  5d                   pop ebp
+// 00444401  5b                   pop ebx
+// 00444402  5f                   pop edi
+// 00444403  5e                   pop esi
+// 00444404  8b4c2420             mov ecx, dword ptr [esp + 0x20]
+// 00444408  64890d00000000       mov dword ptr fs:[0], ecx
+// 0044440f  83c42c               add esp, 0x2c
+// 00444412  c20c00               ret 0xc
+// 00444415  8d4c2414             lea ecx, [esp + 0x14]
+// 00444419  ff1568e48900         call dword ptr [0x89e468]
+// 0044441f  85c0                 test eax, eax
+// 00444421  750f                 jne 0x444432
+// 00444423  8b16                 mov edx, dword ptr [esi]
+// 00444425  50                   push eax
+// 00444426  8b4234               mov eax, dword ptr [edx + 0x34]
+// 00444429  55                   push ebp
+// 0044442a  8bce                 mov ecx, esi
+// 0044442c  ffd0                 call eax
+// 0044442e  84c0                 test al, al
+// 00444430  75bc                 jne 0x4443ee
+// 00444432  8d4c2414             lea ecx, [esp + 0x14]
+// 00444436  c7442438ffffffff     mov dword ptr [esp + 0x38], 0xffffffff
+// 0044443e  ff15c4e48900         call dword ptr [0x89e4c4]
+// 00444444  8d4c2410             lea ecx, [esp + 0x10]
+// 00444448  51                   push ecx
+// 00444449  8bcb                 mov ecx, ebx
+// 0044444b  e890581c00           call 0x609ce0
+// 00444450  84c0                 test al, al
+// 00444452  7418                 je 0x44446c
+// 00444454  8b542410             mov edx, dword ptr [esp + 0x10]
+// 00444458  8b4e1c               mov ecx, dword ptr [esi + 0x1c]
+// 0044445b  89542440             mov dword ptr [esp + 0x40], edx
+// 0044445f  8b01                 mov eax, dword ptr [ecx]
+// 00444461  8b400c               mov eax, dword ptr [eax + 0xc]
+// 00444464  8d542440             lea edx, [esp + 0x40]
+// 00444468  52                   push edx
+// 00444469  55                   push ebp
+// 0044446a  ffd0                 call eax
+// 0044446c  5d                   pop ebp
+// 0044446d  5b                   pop ebx
+// 0044446e  8b4c2428             mov ecx, dword ptr [esp + 0x28]
+// 00444472  5f                   pop edi
+// 00444473  5e                   pop esi
+// 00444474  64890d00000000       mov dword ptr fs:[0], ecx
+// 0044447b  83c42c               add esp, 0x2c
+// 0044447e  c20c00               ret 0xc
+// copied from an identical function in another client (function ?read@S@ns_ROCX00003c@@QAEXPAXPAUElement@2@H@Z)
 
-// Candidate translation unit (score above; library headers required).
-// Copyright (C) 2004 Michael Glassford
-// Copyright (C) 2006 Roland Schwarz
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+namespace ns_ROCX00003c {
+struct String
+{
+    char storage[28];
+    __declspec(dllimport) String();
+    __declspec(dllimport) ~String();
+    __declspec(dllimport) const char* data() const;
+    __declspec(dllimport) unsigned int size() const;
+};
 
-#include <boost/thread/detail/config.hpp>
+struct Name;
+extern const Name& __cdecl lookupName(const char*);
 
-#if defined(BOOST_HAS_WINTHREADS)
+enum EnumValue
+{
+    EnumValueZero = 0
+};
 
-    #include <boost/thread/detail/tss_hooks.hpp>
+struct Value
+{
+    bool isString() const;
+    bool getString(String&) const;
+    bool getInteger(int&) const;
+};
 
-    #include <boost/assert.hpp>
-//    #include <boost/thread/mutex.hpp>
-    #include <boost/thread/once.hpp>
+struct Element
+{
+    char padding[16];
+    Value value;
+    bool isNull() const;
+};
 
-    #include <list>
+struct EnumDescriptor
+{
+    bool convert(const Name&, int&) const;
+};
 
-    #define WIN32_LEAN_AND_MEAN
-    #include <windows.h>
+struct Setter
+{
+    virtual void slot0();
+    virtual void slot1();
+    virtual void slot2();
+    virtual void set(void*, const EnumValue&);
+};
 
-    namespace
+struct S
+{
+    virtual void slot0();
+    virtual void slot1();
+    virtual void slot2();
+    virtual void slot3();
+    virtual void slot4();
+    virtual void slot5();
+    virtual void slot6();
+    virtual void slot7();
+    virtual void slot8();
+    virtual void slot9();
+    virtual void slot10();
+    virtual void slot11();
+    virtual void slot12();
+    virtual bool setEmpty(void*, int);
+
+    char padding[24];
+    Setter* setter;
+    EnumDescriptor* descriptor;
+
+    void read(void*, Element*, int);
+    void setValue(void* o, EnumValue value) { setter->set(o, value); }
+    __forceinline bool convertToValue(const char* text, EnumValue& value) { EnumDescriptor* d = descriptor; int v; if (d->convert(lookupName(text), v)) { value = (EnumValue)v; return true; } return false; }
+};
+
+void S::read(void* object, Element* element, int)
+{
+    if (element->isNull())
+        return;
+    if (element->value.isString())
     {
-        class CScopedCSLock
+        String text;
+        if (element->value.getString(text))
         {
-        public:
-            CScopedCSLock(LPCRITICAL_SECTION cs) : cs(cs), lk(true) {
-                ::EnterCriticalSection(cs);
-            }
-            ~CScopedCSLock() {
-                if (lk) ::LeaveCriticalSection(cs);
-            }
-            void Unlock() {
-                lk = false;
-                ::LeaveCriticalSection(cs);
-            }
-        private:
-            bool lk;
-            LPCRITICAL_SECTION cs;
-        };
-
-        typedef std::list<thread_exit_handler> thread_exit_handlers;
-
-        boost::once_flag once_init_threadmon_mutex = BOOST_ONCE_INIT;
-        //boost::mutex* threadmon_mutex;
-        // We don't use boost::mutex here, to avoid a memory leak report,
-        // because we cannot delete it again easily.
-        CRITICAL_SECTION threadmon_mutex;
-        void init_threadmon_mutex(void)
-        {
-            //threadmon_mutex = new boost::mutex;
-            //if (!threadmon_mutex)
-            //    throw boost::thread_resource_error();
-            ::InitializeCriticalSection(&threadmon_mutex);
-        }
-
-        const DWORD invalid_tls_key = TLS_OUT_OF_INDEXES;
-        DWORD tls_key = invalid_tls_key;
-
-        unsigned long attached_thread_count = 0;
-    }
-
-    /*
-    Calls to DllMain() and tls_callback() are serialized by the OS;
-    however, calls to at_thread_exit are not, so it must be protected
-    by a mutex. Since we already need a mutex for at_thread_exit(),
-    and since there is no guarantee that on_process_enter(),
-    on_process_exit(), on_thread_enter(), and on_thread_exit()
-    will be called only from DllMain() or tls_callback(), it makes
-    sense to protect those, too.
-    */
-
-    extern "C" BOOST_THREAD_DECL int at_thread_exit(
-        thread_exit_handler exit_handler
-        )
-    {
-        boost::call_once(init_threadmon_mutex, once_init_threadmon_mutex);
-        //boost::mutex::scoped_lock lock(*threadmon_mutex);
-        CScopedCSLock lock(&threadmon_mutex);
-
-        //Allocate a tls slot if necessary.
-
-        if (tls_key == invalid_tls_key)
-            tls_key = TlsAlloc();
-
-        if (tls_key == invalid_tls_key)
-            return -1;
-
-        //Get the exit handlers list for the current thread from tls.
-
-        thread_exit_handlers* exit_handlers =
-            static_cast<thread_exit_handlers*>(TlsGetValue(tls_key));
-
-        if (!exit_handlers)
-        {
-            //No exit handlers list was created yet.
-
-            try
+            EnumValue val;
+            if (convertToValue(text.data(), val))
             {
-                //Attempt to create a new exit handlers list.
-
-                exit_handlers = new thread_exit_handlers;
-                if (!exit_handlers)
-                    return -1;
-
-                //Attempt to store the list pointer in tls.
-
-                if (TlsSetValue(tls_key, exit_handlers))
-                    ++attached_thread_count;
-                else
-                {
-                    delete exit_handlers;
-                    return -1;
-                }
+                setValue(object, val);
+                return;
             }
-            catch (...)
-            {
-                return -1;
-            }
-        }
-
-        //Like the C runtime library atexit() function,
-        //functions should be called in the reverse of
-        //the order they are added, so push them on the
-        //front of the list.
-
-        try
-        {
-            exit_handlers->push_front(exit_handler);
-        }
-        catch (...)
-        {
-            return -1;
-        }
-
-        //Like the atexit() function, a result of zero
-        //indicates success.
-
-        return 0;
-    }
-
-    extern "C" BOOST_THREAD_DECL void on_process_enter(void)
-    {
-        boost::call_once(init_threadmon_mutex, once_init_threadmon_mutex);
-//        boost::mutex::scoped_lock lock(*threadmon_mutex);
-        CScopedCSLock lock(&threadmon_mutex);
-
-        BOOST_ASSERT(attached_thread_count == 0);
-    }
-
-    extern "C" BOOST_THREAD_DECL void on_process_exit(void)
-    {
-        boost::call_once(init_threadmon_mutex, once_init_threadmon_mutex);
-//        boost::mutex::scoped_lock lock(*threadmon_mutex);
-        CScopedCSLock lock(&threadmon_mutex);
-
-        BOOST_ASSERT(attached_thread_count == 0);
-
-        //Free the tls slot if one was allocated.
-
-        if (tls_key != invalid_tls_key)
-        {
-            TlsFree(tls_key);
-            tls_key = invalid_tls_key;
+            if (text.size() == 0 && setEmpty(object, 0))
+                return;
         }
     }
-
-    extern "C" BOOST_THREAD_DECL void on_thread_enter(void)
-    {
-        //boost::call_once(init_threadmon_mutex, once_init_threadmon_mutex);
-        //boost::mutex::scoped_lock lock(*threadmon_mutex);
-    }
-
-    extern "C" BOOST_THREAD_DECL void on_thread_exit(void)
-    {
-        boost::call_once(init_threadmon_mutex, once_init_threadmon_mutex);
-//        boost::mutex::scoped_lock lock(*threadmon_mutex);
-        CScopedCSLock lock(&threadmon_mutex);
-
-        //Get the exit handlers list for the current thread from tls.
-
-        if (tls_key == invalid_tls_key)
-            return;
-
-        thread_exit_handlers* exit_handlers =
-            static_cast<thread_exit_handlers*>(TlsGetValue(tls_key));
-
-        //If a handlers list was found, use it.
-
-        if (exit_handlers && TlsSetValue(tls_key, 0))
-        {
-            BOOST_ASSERT(attached_thread_count > 0);
-            --attached_thread_count;
-
-            //lock.unlock();
-            lock.Unlock();
-
-            //Call each handler and remove it from the list
-
-            while (!exit_handlers->empty())
-            {
-                if (thread_exit_handler exit_handler = *exit_handlers->begin())
-                    (*exit_handler)();
-                exit_handlers->pop_front();
-            }
-
-            delete exit_handlers;
-            exit_handlers = 0;
-        }
-    }
-
-#endif //defined(BOOST_HAS_WINTHREADS)
+    int value;
+    if (element->value.getInteger(value))
+        setValue(object, (EnumValue)value);
+}
+}

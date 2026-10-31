@@ -1,3 +1,4 @@
+// from server: 100% by EspClaude
 // roc 2009-06 004645f0  unit: CScriptEditor  size: 32 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-06 004645f0
 //
@@ -11,24 +12,23 @@
 // 00464608  8bce                 mov ecx, esi
 // 0046460a  5e                   pop esi
 // 0046460b  e924482b00           jmp 0x718e34
-// copied from an identical function in another client (function ?sub_45F9D0@CScriptEditor@ns_ROCX000004@@QAEXXZ)
+// copied from an identical function in another client (function ?fn_ROCX000079_00463980@CScriptEditor@ns_ROCX000079@@QAEXXZ)
 
-namespace ns_ROCX000004 {
-extern "C" __declspec(dllimport) int __stdcall FreeLibrary(void*);
+namespace ns_ROCX000079 {
+extern int libraryReferences;
+extern void* libraryHandle;
+extern "C" int (__stdcall* FreeLibrary)(void*);
 
-extern int dword_8BC0A0;
-extern void* dword_8BC09C;
-
-struct CScriptEditor {
-    void sub_45F9D0();
+struct CScriptEditor
+{
+    void cleanup();
+    void fn_ROCX000079_00463980();
 };
 
-void CScriptEditor::sub_45F9D0() {
-    if (--dword_8BC0A0 == 0) {
-        FreeLibrary(dword_8BC09C);
-    }
-    // tail call to 0x63005e
-    extern void __fastcall sub_63005E(CScriptEditor*);
-    sub_63005E(this);
+void CScriptEditor::fn_ROCX000079_00463980()
+{
+    if (--libraryReferences == 0)
+        FreeLibrary(libraryHandle);
+    cleanup();
 }
 }

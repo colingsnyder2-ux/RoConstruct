@@ -1,3 +1,4 @@
+// from server: 100% by EspClaude
 // roc 2009-06 00445d80  unit: CBrowserDocManager  size: 27 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-06 00445d80
 //
@@ -10,24 +11,25 @@
 // 00445d92  ffd0                 call eax
 // 00445d94  8bc8                 mov ecx, eax
 // 00445d96  e945dd0000           jmp 0x453ae0
-// copied from an identical function in another client (function ?method@CRbxDocTemplate@ns_ROCX00000a@@QAEXXZ)
+// copied from an identical function in another client (function ?method@CRbxPlayDocTemplate@ns_ROCX000000@@QAEXXZ)
 
-namespace ns_ROCX00000a {
-struct CRbxDocTemplate {
+namespace ns_ROCX000000 {
+struct Result {
+    void finish();
+};
+
+struct CRbxPlayDocTemplate {
     char pad[0x58];
     void* field_58;
     void method();
 };
 
-void sub_4525A0();
-
-void CRbxDocTemplate::method()
+void CRbxPlayDocTemplate::method()
 {
-    void* p = field_58;
-    void* q = *(void**)((char*)p + 0x24);
-    void** vtbl = *(void***)q;
-    void* (__stdcall *fn)(int, int) = (void* (__stdcall *)(int, int))vtbl[0x88 / 4];
-    void* r = fn(0, 1);
-    ((void (__thiscall*)(void*))sub_4525A0)(r);
+    void* q = *(void**)((char*)field_58 + 0x24);
+    void** vtable = *(void***)q;
+    Result* (__thiscall *fn)(void*, int, int) =
+        (Result* (__thiscall *)(void*, int, int))vtable[0x88 / 4];
+    fn(q, 0, 1)->finish();
 }
 }
