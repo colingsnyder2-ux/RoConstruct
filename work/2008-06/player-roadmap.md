@@ -2,6 +2,7 @@
 
 P2 IN PROGRESS; P0 clean-worktree gate and P3-P10 remain unproven.
 Last pushed revision a2cf9bc1b0 records tested source a03ec3bcbf.
+Local owner-layout commit3043e89063; capture correction being finalized.
 Known-good isolated target: `roc rebuild 2008-06 module p2-recovered-player --no-notify`.
 Normal --selftest passes 1891/2152/0/0 pixels and zero levels/refs/backends;
 receipt: p2-flat-producer/recovered-runtime/receipt.json. Loaded DLL paths/hashes
@@ -16,7 +17,12 @@ Current experiment: replace the levels-only owner with measured full 0x88-byte M
 +50/+68, backend +80 and kind +84. 00548a90 proves +80 owns a RbxSubMesh resource.
 Matched 004e53c0 analog incorrectly calls the vectors AABoxes: 0054c500 proves
 stride2 index storage and 0054d940 stride12 vertex storage; 004e3570 output calls
-confirm roles. Compile-time offsets/size and standalone lifetime tests pass; normal player rerun pending.
+confirm roles. Compile-time offsets/size and standalone lifetime tests pass. Normal run exposed
+front-buffer capture contamination (Codex pixels, not rendered window). Ogre1.4
+writeContentsToFile uses GetFrontBufferData. New writeBackbuffer reads the same
+window render surface before Present using GetRenderTargetData; probe passes
+1891/2152/0/0 while occluded. Final exact-revision receipt pending under
+p2-flat-producer/native-owner-backbuffer-runtime/. No entity changes involved.
 Evidence: p2-flat-producer/native-owner-evidence.json and factory-abi-disassembly.txt.
 Shadow element types retain donor Mesh.h evidence; do not claim all shadow paths proven.
 

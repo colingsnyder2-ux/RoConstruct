@@ -31,3 +31,10 @@ No P2/P3 completion, whole-executable reconstruction, or new server match claime
 
 Evidence/checkpoint: work/2008-06/player-roadmap.md and
 work/2008-06/p2-flat-producer/recovered-runtime/receipt.json.
+
+Capture correction: Ogre 1.4 window writeContentsToFile reads the desktop front
+buffer, so occluding apps can contaminate pixel controls. writeBackbuffer uses
+D3DDEVICE/DDBACKBUFFER attributes from the real Ogre D3D9 window, renders without
+Present, reads that surface with GetRenderTargetData, saves RGB PNG and presents.
+Selftest and frame captures share it. Screenshot failures must fail the run;
+no desktop/foreground fallback. The renderer/entity/geometry path stays the same.

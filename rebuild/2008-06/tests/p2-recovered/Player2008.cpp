@@ -11,6 +11,7 @@
 #include <cmath>
 
 #include <windows.h>
+#include <d3d9.h>
 #include "zlib.h"
 #include "PlayerScene.h"
 #include "RbxEntity.h"
@@ -336,12 +337,45 @@ static void drawModels()
 
 // ------------------------------------------------------------------ selftest
 
+static bool writeBackbuffer(Ogre::RenderWindow* win, const char* path)
+{
+    // Ogre 1.4's window screenshot uses GetFrontBufferData (desktop pixels).
+    // Read our rendered backbuffer before Present, even while another app covers it.
+    win->update(false);
+    IDirect3DDevice9* device=0;
+    IDirect3DSurface9* back=0;
+    IDirect3DSurface9* copy=0;
+    win->getCustomAttribute("D3DDEVICE",&device);
+    win->getCustomAttribute("DDBACKBUFFER",&back); // Borrowed surface.
+    D3DSURFACE_DESC desc;
+    HRESULT result=back->GetDesc(&desc);
+    if(FAILED(result) || (desc.Format!=D3DFMT_X8R8G8B8 && desc.Format!=D3DFMT_A8R8G8B8))return false;
+    result=device->CreateOffscreenPlainSurface(desc.Width,desc.Height,desc.Format,D3DPOOL_SYSTEMMEM,&copy,0);
+    if(FAILED(result))return false;
+    result=device->GetRenderTargetData(back,copy);
+    if(FAILED(result)){copy->Release();return false;}
+    D3DLOCKED_RECT pixels;
+    result=copy->LockRect(&pixels,0,D3DLOCK_READONLY);
+    if(FAILED(result)){copy->Release();return false;}
+    std::vector<unsigned char> rgb(desc.Width*desc.Height*3);
+    for(unsigned y=0;y<desc.Height;++y)
+        for(unsigned x=0;x<desc.Width;++x){
+            const unsigned char* pixel=static_cast<unsigned char*>(pixels.pBits)+y*pixels.Pitch+x*4;
+            unsigned char* out=&rgb[(y*desc.Width+x)*3];
+            out[0]=pixel[2];out[1]=pixel[1];out[2]=pixel[0];
+        }
+    copy->UnlockRect();copy->Release();
+    Ogre::Image output;
+    output.loadDynamicImage(&rgb[0],desc.Width,desc.Height,1,Ogre::PF_BYTE_RGB,false);
+    output.save(path);
+    win->swapBuffers();
+    return true;
+}
+
 static bool capture(Ogre::Root* root, Ogre::RenderWindow* win, const char* path, Image& image)
 {
     root->renderOneFrame();
-    win->update();
-    Sleep(100);
-    win->writeContentsToFile(path);
+    if(!writeBackbuffer(win,path))return false;
     if (!readPng(path, image))
     {
         std::printf("selftest: could not read %s\n", path);
@@ -498,10 +532,10 @@ int main(int argc, char** argv)
     if (quick)
     {
         drawModels();
-        root->renderOneFrame(); win->update(); win->writeContentsToFile("frame1.png"); std::printf("frame1 written\n");
+        root->renderOneFrame(); if(!writeBackbuffer(win,"frame1.png"))return 7; std::printf("frame1 written\n");
         MovePartTo(4.0f, 0.0f, 0.0f);
         drawModels();
-        root->renderOneFrame(); win->update(); win->writeContentsToFile("frame2.png"); std::printf("frame2 written\n");
+        root->renderOneFrame(); if(!writeBackbuffer(win,"frame2.png"))return 7; std::printf("frame2 written\n");
     }
     else if (frames)
     {
@@ -515,7 +549,7 @@ int main(int argc, char** argv)
         GetPartPosition(&x, &y, &z);
         std::printf("after %d frames: Brick at (%g,%g,%g), models=%d\n", frameCount, x, y, z, SceneModelCount());
         drawModels();
-        root->renderOneFrame(); win->update(); win->writeContentsToFile("last.png");
+        root->renderOneFrame(); if(!writeBackbuffer(win,"last.png"))return 7;
     }
     else
     {

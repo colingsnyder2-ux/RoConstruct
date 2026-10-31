@@ -104,3 +104,28 @@ Read tests/p2-recovered/README.md for scope. No later milestone advanced.
 Next: prove/integrate full native Mesh factory/owner and material path, preserving
 this passing isolated target. Then P3 shape/lifecycle/resource baseline, followed
 by remaining roadmap. Do not overwrite local Player2008/PlayerEngine/RbxEntity.h.
+
+
+## Full Mesh owner and capture correction
+
+Native 00548570/00548a90 now have a typed 0x88-byte Mesh owner. Compile-time checks
+cover levels0c, ShadowSurface18, radius4c, index vector50, vertex vector68,
+shadow-backend80 and kind84. The 004e53c0 matched analog's AABox declarations are
+false semantic labels: member constructors prove vector stride2/12, and the
+004e3570 caller confirms index/vertex output roles. Tests exercise both Level
+backend destruction and the separate Mesh shadow backend branch. Shadow element
+types retain donor evidence; remaining native shadow behavior is not complete.
+
+Normal acceptance initially captured Codex desktop pixels. The original Ogre1.4
+screenshot API uses GetFrontBufferData; that receipt cannot establish a geometry
+regression. A harness-only D3D9 backbuffer read fixes occlusion deterministically
+for selftest and frame captures. Owner changes preserve all four controls with
+zero leaked levels/refs/backends; inspect native-owner-backbuffer-runtime receipt
+for the exact revision and output hashes.
+
+Next factory evidence: 004e58b0 uses boost::recursive_mutex (00563090 maintains a
+recursion count at+8), cache mutex offset20 and allocation30. Initial bevel flag
+009413c0 is1. Factory first builds with bevel0.065, then calls the same004e2c80
+again with bevel0/buildingShadowMesh=true. Current direct constructor bypasses
+factory cache and this paired-level policy, keeping P2 open. Integrate that
+existing source next, including its purge and shared resource ownership.
