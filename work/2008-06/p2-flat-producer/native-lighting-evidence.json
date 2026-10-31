@@ -1,0 +1,43 @@
+{
+  "field_writer": "004dab50",
+  "settings_source_range": [
+    "0x270",
+    "0x2d0"
+  ],
+  "settings_scene_range": [
+    "0x338",
+    "0x398"
+  ],
+  "defaults_constructor": "005e1a40",
+  "targets": {
+    "004dab50": {
+      "size": 958,
+      "sha256": "50fe4b19dcf21e989744ce4a36e7e114d4a6446f53c6e0f91ed3f3562fe786f0"
+    },
+    "005e1a40": {
+      "size": 666,
+      "sha256": "a4d188bffb0a2f7724613c11f1bf38ee8feb12f8b80f523a4db44f0d2ee07f29"
+    },
+    "007aacc0": {
+      "size": 350,
+      "sha256": "9cd928927085edc37c7462163e0b1899b8844b7394d198cc2473b9480b8b7973"
+    },
+    "007a9d30": {
+      "size": 2616,
+      "sha256": "4cd2fd70964b622c26bc13ab75e7837cbac5360b2daac6f2e68d73c8d6bfa68d"
+    },
+    "007aae40": {
+      "size": 606,
+      "sha256": "672d6e9ff1f1d64ce5e8a8b7dc546dd853c412d43fdc04495ca6e221e1864892"
+    }
+  },
+  "native_constants": {
+    "00819bac": 0.5,
+    "00826fc8": 0.8999999761581421,
+    "008288b8": 0.699999988079071,
+    "0083de40": 0.7200000286102295,
+    "0083de3c": 0.5960784554481506,
+    "0083de38": 0.5372549295425415,
+    "00832a18": 0.4000000059604645
+  }
+}

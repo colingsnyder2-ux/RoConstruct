@@ -1,0 +1,142 @@
+00421940 00421965 lea edi, [esi + 0x378]
+00421a50 00421a90 lea ecx, [esi + 0x378]
+00421a50 00421b57 lea ecx, [esi + 0x378]
+00421bc0 00421bdb lea ebx, [esi + 0x378]
+00450450 004506a0 lea ecx, [esi + 0x36c]
+00457a40 00457a65 lea edi, [esi + 0x378]
+00458700 004587a3 lea ebp, [esi + 0x378]
+00458700 00458927 lea eax, [esi + 0x378]
+00458b70 00458b8d lea ebp, [esi + 0x378]
+00458c80 00458cc8 mov dword ptr [esi + 0x378], 0x818e64
+00458d80 00458dc1 mov dword ptr [esi + 0x378], 0x818c7c
+00466b90 00466bd1 mov dword ptr [esi + 0x378], 0x81bde0
+0046b0e0 0046b168 lea ecx, [eax + 0x344]
+0046b5c0 0046b6eb lea ecx, [eax + 0x344]
+00479a70 00479af0 mov eax, dword ptr [esi + 0x36c]
+00479a70 00479b09 mov ecx, dword ptr [esi + 0x36c]
+00479a70 00479b14 mov ecx, dword ptr [esi + 0x36c]
+00479a70 00479b26 mov dword ptr [esi + 0x36c], ebx
+00479a70 00479ba4 mov eax, dword ptr [esi + 0x360]
+00479a70 00479bbc mov ecx, dword ptr [esi + 0x360]
+00479a70 00479bc7 mov ecx, dword ptr [esi + 0x360]
+00479a70 00479bd9 mov dword ptr [esi + 0x360], ebx
+0047a200 0047a381 mov dword ptr [ebx + 0x338], ecx
+0047a200 0047a3a5 fstp dword ptr [ebx + 0x344]
+0047a200 0047a3bd fstp qword ptr [ebx + 0x350]
+0047a200 0047a3c3 lea ecx, [ebx + 0x360]
+0047a200 0047a40c lea ecx, [ebx + 0x36c]
+0047a200 0047a42f fstp qword ptr [ebx + 0x378]
+0047a200 0047a471 fstp dword ptr [ebx + 0x390]
+0047a4f0 0047a81f mov ecx, dword ptr [ebx + 0x338]
+0047a4f0 0047a840 fld qword ptr [ebx + 0x378]
+0047a4f0 0047aa29 fld dword ptr [ebx + 0x390]
+0047a4f0 0047ab8f fld qword ptr [ebx + 0x350]
+0047a4f0 0047acf0 lea ecx, [ebx + 0x360]
+0047a4f0 0047ae26 cmp dword ptr [ebx + 0x36c], ecx
+0047a4f0 0047ae43 mov ecx, dword ptr [ebx + 0x36c]
+0047a4f0 0047ae57 mov edi, dword ptr [ebx + 0x36c]
+0047b0d0 0047b26a mov ecx, dword ptr [esi + 0x338]
+0047b0d0 0047b270 mov dword ptr [ebx + 0x338], ecx
+0047b0d0 0047b28e fld dword ptr [esi + 0x344]
+0047b0d0 0047b294 fstp dword ptr [ebx + 0x344]
+0047b0d0 0047b29a lea ecx, [ebx + 0x360]
+0047b0d0 0047b2ac fld qword ptr [esi + 0x350]
+0047b0d0 0047b2b2 fstp qword ptr [ebx + 0x350]
+0047b0d0 0047b2ca mov edx, dword ptr [esi + 0x360]
+0047b0d0 0047b310 lea ecx, [ebx + 0x36c]
+0047b0d0 0047b31c mov eax, dword ptr [esi + 0x36c]
+0047b0d0 0047b34a fld qword ptr [esi + 0x378]
+0047b0d0 0047b350 fstp qword ptr [ebx + 0x378]
+0047b0d0 0047b395 fld dword ptr [esi + 0x390]
+0047b0d0 0047b39c fstp dword ptr [ebx + 0x390]
+004cea10 004cea2d lea ecx, [esi + 0x354]
+004d2c70 004d3515 mov eax, dword ptr [esi + edx*4 + 0x354]
+004d2c70 004d357e mov dword ptr [esi + edx*4 + 0x354], ecx
+004dab50 004dadb0 fstp dword ptr [eax + 0x338]
+004dab50 004dadd6 fstp dword ptr [eax + 0x344]
+004dab50 004dadee fstp dword ptr [eax + 0x350]
+004dab50 004dae0b fstp dword ptr [eax + 0x354]
+004dab50 004dae31 fstp dword ptr [eax + 0x360]
+004dab50 004dae57 fstp dword ptr [eax + 0x36c]
+004dab50 004dae7d fstp dword ptr [eax + 0x378]
+004dab50 004daea3 fstp dword ptr [eax + 0x384]
+004dab50 004daec9 fstp dword ptr [eax + 0x390]
+0057f5b0 0057f621 lea ecx, [esi + 0x344]
+00581630 005816f4 lea ecx, [eax + 0x344]
+00581750 0058182d lea ecx, [eax + 0x344]
+0059d4d0 0059d6ba fst dword ptr [esi + 0x338]
+005a1b90 005a1bae lea ecx, [esi + 0x344]
+005a1bc0 005a1c03 lea ecx, [esi + 0x344]
+005a1c20 005a1c3b lea ecx, [esi + 0x344]
+005a2580 005a26b7 lea ecx, [edi + 0x344]
+005a28c0 005a2979 mov dword ptr [esi + 0x344], 0x833960
+005a28c0 005a298d mov dword ptr [esi + 0x384], 0x833944
+005a28c0 005a2b9a mov dword ptr [esi + 0x378], ebx
+005a28c0 005a2bab mov eax, dword ptr [esi + 0x354]
+005a28c0 005a2bc8 mov dword ptr [esi + 0x354], ebx
+005a2db0 005a2dc3 lea ecx, [esi + 0x344]
+005a4d90 005a4dfa mov dword ptr [esi + 0x390], ebx
+005a4d90 005a4e2a lea ecx, [esi + 0x344]
+005a4d90 005a4edd mov dword ptr [esi + 0x344], 0x833960
+005a4d90 005a4ef1 mov dword ptr [esi + 0x384], 0x833944
+005a66b0 005a66d9 lea edi, [esi + 0x384]
+005a66b0 005a6738 lea eax, [esi + 0x384]
+005b2670 005b26c7 lea ecx, [eax + 0x344]
+005c7ea0 005c80de lea ecx, [esi + 0x36c]
+005d11e0 005d1223 lea ecx, [eax + 0x344]
+005ffb70 005ffbc7 lea ecx, [eax + 0x344]
+0068bc80 0068bc82 mov eax, dword ptr [eax + 0x338]
+0068bd20 0068bd35 mov eax, dword ptr [edx + 0x338]
+00698890 006988a5 mov edx, dword ptr [eax + 0x344]
+006c4ed0 006c4ed0 cmp dword ptr [ecx + 0x36c], 0
+006c4f50 006c4f50 cmp dword ptr [ecx + 0x36c], 0
+006c5070 006c5102 mov dword ptr [esi + 0x360], eax
+006c5070 006c5120 mov dword ptr [esi + 0x36c], ebx
+006c5150 006c517e mov ecx, dword ptr [esi + 0x360]
+006c5150 006c5195 mov dword ptr [esi + 0x360], 0
+006c53b0 006c540f mov ecx, dword ptr [esi + 0x360]
+006c53b0 006c5427 mov ecx, dword ptr [esi + 0x360]
+006c53b0 006c5440 mov ecx, dword ptr [esi + 0x360]
+006c53b0 006c5453 mov ecx, dword ptr [esi + 0x360]
+006c5df0 006c5e19 cmp dword ptr [esi + 0x360], 0
+006c5df0 006c5e7c mov ecx, dword ptr [esi + 0x360]
+006c5df0 006c5eac mov ecx, dword ptr [esi + 0x360]
+006c5df0 006c5ee2 mov ecx, dword ptr [esi + 0x360]
+006c5df0 006c5efe mov ecx, dword ptr [esi + 0x360]
+006c5df0 006c5f89 mov ecx, dword ptr [esi + 0x360]
+006c5fd0 006c5ff9 cmp dword ptr [esi + 0x360], 0
+006c5fd0 006c601e mov ecx, dword ptr [esi + 0x360]
+006c5fd0 006c6041 mov edx, dword ptr [esi + 0x360]
+006c5fd0 006c6180 mov eax, dword ptr [esi + 0x360]
+006c6220 006c6225 cmp dword ptr [esi + 0x360], 0
+006c62c0 006c640b mov eax, dword ptr [ebx + 0x360]
+006c62c0 006c655b mov eax, dword ptr [ebx + 0x360]
+006c68a0 006c69e1 mov ecx, dword ptr [esi + 0x360]
+006c68a0 006c6aaa mov eax, dword ptr [esi + 0x360]
+00727bc0 00727d9d mov dword ptr [esi + 0x390], eax
+00727bc0 00727ece mov dword ptr [esi + 0x378], eax
+00727bc0 00727ff4 mov dword ptr [esi + 0x384], eax
+00727bc0 00727ffa mov dword ptr [esi + 0x36c], 0x868686
+00727bc0 00728004 mov dword ptr [esi + 0x354], 0xfafafa
+00735a70 00736175 mov dword ptr [esi + 0x354], 0xf6f6f6
+00735a70 007361c3 mov dword ptr [esi + 0x36c], eax
+00735a70 00736207 mov dword ptr [esi + 0x378], ebp
+00735a70 0073620d mov dword ptr [esi + 0x384], ebp
+00735a70 00736213 mov dword ptr [esi + 0x390], ebp
+0078b180 0078b26e lea ebx, [esi + 0x378]
+0078b3f0 0078b4d1 lea ecx, [esi + 0x378]
+0078b590 0078b611 lea edx, [edi + 0x378]
+007a9d30 007a9d75 fld dword ptr [ebx + 0x354]
+007a9d30 007a9db4 fadd dword ptr [ebx + 0x344]
+007a9d30 007a9dc2 fld dword ptr [ebx + 0x344]
+007a9d30 007a9dfd fadd dword ptr [ebx + 0x338]
+007a9d30 007a9e05 fld dword ptr [ebx + 0x338]
+007a9d30 007a9e27 fld dword ptr [ebx + 0x350]
+007a9d30 007aa586 lea ecx, [ebx + 0x390]
+007a9d30 007aa5b5 lea edx, [ebx + 0x378]
+007a9d30 007aa683 lea edx, [ebx + 0x384]
+007aae40 007aaf72 fst dword ptr [esi + 0x360]
+007aae40 007aaf8f fst dword ptr [esi + 0x36c]
+007aae40 007aafa1 fst dword ptr [esi + 0x378]
+007aae40 007aafb3 fst dword ptr [esi + 0x384]
+007aae40 007aafc5 fst dword ptr [esi + 0x390]

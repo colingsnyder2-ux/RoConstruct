@@ -1,5 +1,13 @@
 # P2 flat producer checkpoint, 2026-10-31
 
+Lighting prerequisite passes at source33b464e8f6. Native writer004dab50/default
+constructor005e1a40 traced. Typed007aacc0/007a9d30 extraction tests native light
+state in normal process, no GL/GPU pixels. Receipt at
+work/2008-06/p2-flat-producer/native-lighting-runtime/receipt.json. Original
+specular conditional compares addresses, not zero RGB; source analogy corrected.
+Next wire materials/lights into isolated player and rerun pixel/cache controls.
+P2 remains open; owner entity/debug files preserved.
+
 Renderer material setup prerequisite now passes at sourceb78e67f137, including
 normal process, five mesh-kind branches, two passes and real atlas binding.
 Receipt:work/2008-06/p2-flat-producer/native-material-backend-runtime/receipt.json.

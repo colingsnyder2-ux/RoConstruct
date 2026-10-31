@@ -1,5 +1,22 @@
 # Current player checkpoint
 
+Lighting prerequisite tested at source33b464e8f6. p2-lighting build/test and
+normal process exit0. Receipt:p2-flat-producer/native-lighting-runtime/receipt.json.
+004dab50 is the real light-state writer: Lighting+270..2d0 -> Scene+338..398.
+005e1a40 proves zero tints,brightness1,ambient.5,main diffuse/specular and fill
+diffuse/scale1,fill specular0. Typed Settings value group has no invented
+enclosing padding. 007aacc0 preset and007a9d30 setup tests cover actual light
+state, bounds placement, clamping, tint, flags, surplus lights and retained fill.
+Important corrected source interpretation:007aa1a6/007aa1c0 compares field and
+automatic-object addresses, not RGB zero. Initial specular normalization test8
+failed; original instructions disprove that expectation. Zero multiplier stays
+zero. Full native Lighting class ABI and sky environment path remain unproven.
+Next: preserve known-good player EXE/DLLs before rebuilding; wire native MaterialRef
+ownership, renderer backend and actual lighting inputs into isolated p2-recovered
+player. Remove diagnostic unlit/manual color material. Do not change entity code
+or owner Player2008/PlayerEngine/RbxEntity debug edits. Run normal four controls
+and cache cycles, save exact-revision evidence; full scene/selector still open.
+
 Renderer material prerequisite now tested at sourceb78e67f137. Original007ab0a0
 pass setup extracted into PlayerMaterialBackend.cpp using measured native types.
 Build/test and normal-process test exit0; receipt at
