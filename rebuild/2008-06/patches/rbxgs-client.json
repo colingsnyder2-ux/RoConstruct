@@ -566,7 +566,7 @@
   ],
   [
    "\t\t\treturn anchorObject != NULL;\n\t\t}\n\t\tAnchor* getAnchorObject()\n\t\t{\n\t\t\treturn anchorObject;\n\t\t}\n",
-   "\t\t\treturn getAnchorObject() != NULL;\n\t\t}\n\t\tAnchor* getAnchorObject() const; // rebuild shim (glue_anchor_registry.cpp)\n\t\tvoid setAnchorObject(Anchor* anchor);\n"
+   "\t\t\treturn dragging || anchored || flag0xaa;\n\t\t}\n\t\tAnchor* getAnchorObject() const; // rebuild shim (glue_anchor_registry.cpp)\n\t\tvoid setAnchorObject(Anchor* anchor);\n"
   ],
   [
    "\t\t\treturn joints.num;",
@@ -708,7 +708,7 @@
   ],
   [
    "\tvoid Primitive::setAnchor(bool _anchored)\n\t{\n\t\tanchored = _anchored;\n\n\t\tbool exists = getAnchor();\n\n\t\tif (_anchored || dragging)\n\t\t\t_anchored = true;\n\n\t\tif (_anchored == exists)\n\t\t\treturn;\n\n\t\tif (_anchored)\n\t\t{\n\t\t\tRBXASSERT(!getAnchorObject());\n\t\t\tsetAnchorObject(new Anchor(this));\n\t\t\tif (world)\n\t\t\t\tworld->onPrimitiveAddedAnchor(this);\n\t\t}\n\t\telse\n\t\t{\n\t\t\tRBXASSERT(getAnchorObject());\n\t\t\tif (world)\n\t\t\t\tworld->onPrimitiveRemovingAnchor(this);\n\t\t\t\n\t\t\tdelete getAnchorObject();\n\t\t\tsetAnchorObject(NULL);\n\t\t}\n\t}",
-   "\tvoid Primitive::setAnchor(bool _anchored)\n\t{\n\t\tbool wasAnchored = dragging || anchored || flag0xaa;\n\t\tif (anchored != _anchored)\n\t\t{\n\t\t\tanchored = _anchored;\n\t\t\tbool isAnchored = dragging || anchored || flag0xaa;\n\t\t\tif (isAnchored != wasAnchored && world)\n\t\t\t{\n\t\t\t\tif (isAnchored)\n\t\t\t\t\tworld->onPrimitiveAddedAnchor(this);\n\t\t\t\telse\n\t\t\t\t\tworld->onPrimitiveRemovingAnchor(this);\n\t\t\t}\n\t\t}\n\t}"
+   "\tvoid Primitive::setAnchor(bool _anchored)\n\t{\n\t\tbool wasAnchored = dragging || anchored || flag0xaa;\n\t\tif (anchored != _anchored)\n\t\t{\n\t\t\tanchored = _anchored;\n\t\t\tbool isAnchored = dragging || anchored || flag0xaa;\n\t\t\tif (isAnchored != wasAnchored)\n\t\t\t{\n\t\t\t\tif (isAnchored)\n\t\t\t\t{\n\t\t\t\t\tRBXASSERT(!getAnchorObject());\n\t\t\t\t\tsetAnchorObject(new Anchor(this));\n\t\t\t\t\tif (world)\n\t\t\t\t\t\tworld->onPrimitiveAddedAnchor(this);\n\t\t\t\t}\n\t\t\t\telse\n\t\t\t\t{\n\t\t\t\t\tRBXASSERT(getAnchorObject());\n\t\t\t\t\tif (world)\n\t\t\t\t\t\tworld->onPrimitiveRemovingAnchor(this);\n\t\t\t\t\tdelete getAnchorObject();\n\t\t\t\t\tsetAnchorObject(NULL);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}"
   ],
   [
    "\tvoid Primitive::setCanCollide(bool value)\n\t{",

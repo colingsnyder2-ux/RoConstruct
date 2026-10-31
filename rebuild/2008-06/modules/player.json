@@ -9,7 +9,7 @@
    "name": "engine",
    "mode": "direct",
    "dir": "rebuild/2008-06/tests",
-   "files": "PlayerEngine.cpp",
+   "files": "PlayerEngine.cpp PlayerScene.cpp",
    "includes_from_recipe": "rbxgs",
    "defines_from_recipe": "rbxgs",
    "extra_defines": "BOOST_ALL_NO_LIB",
@@ -23,7 +23,8 @@
  "test": "Player2008",
  "verified": false,
  "test_includes": [
-  "tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
+  "tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
+  "tools/libs/zlib-1.2.3"
  ],
  "import_dlls": [
   "rgmain.dll",
