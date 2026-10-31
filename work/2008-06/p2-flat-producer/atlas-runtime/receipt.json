@@ -1,0 +1,104 @@
+{
+  "revision": "248136093fbcce43638414f8965b1b830b9c7942",
+  "ROC_BUILD": null,
+  "ROC_TEXTURE_STRIP": "C:\\Users\\colin\\RoConstruct\\work\\client2007\\content\\textures\\SurfacesStrip.png",
+  "asset_sha256": "dc5418f1c8dbd2e1fc218c392b41e3b55461817930a9468d821c5d48bdae85e4",
+  "asset_provenance": {
+    "august2007_exe_sha256": "f97e83df31a12860f73324d8d279cfb2bba4a2fdf579e487904ed32bbb548c46",
+    "may2008_rcc_exe_sha256": "08b819f3eea633ce18b3dc7b43ea4648adec3780b3274282dc7960b4d95aaa31",
+    "rcc_PE_timestamp_UTC": "2008-05-14T19:37:55+00:00",
+    "installer_sha256": "6c7ecf38a37fc299d7304e18c7f30869957753a21e2359471515379cd74a0c23"
+  },
+  "compiler_sha256": "a8fb826379837492f19b249a3553acc3f904afe4c93e643054d0e48340ae717a",
+  "source_sha256": {
+    "rebuild/2008-06/modules/p2-image-core.json": "2cb5bd42abcfbdd56ecac3854dfac6aa3460d7c0f835f0a980883ee6e18141f3",
+    "rebuild/2008-06/modules/p2-texture-atlas.json": "6385ba0b6c1f9a04ab5d10cdf6f8c37ef2001c7405ef21e25c417000f748062b",
+    "rebuild/2008-06/tests/P2ImageCodecTest.cpp": "1203cff01864d4e934f429a96e96bde356dd38aae439f679eefa4fd52710d17f",
+    "rebuild/2008-06/tests/P2TextureAtlasTest.cpp": "1245ce537b47017222223501c723203c866fc37b7e20be01c695f0f655b49da2",
+    "rebuild/2008-06/tests/PlayerTextureAtlas.cpp": "85ac4cd3d43e6f299a970d7c89d3933158c2a3051ad634ef641f46cfe1d6b17a",
+    "rebuild/2008-06/tests/PlayerTextureAtlas.h": "7b8a49272cadeb972ef1cb2900cb55fbe384f24daaaf719dc4581f0c31112d3a",
+    "roc/libs.py": "0bec8319f7e4fcb5d1a6178334862642274c0c239b84bbf722c192ec994622d5",
+    "roc/rebuild.py": "e1734fa7e88a1b40163e9680041cdefcec756a6f4781d8d073b2a0e3f37479aa"
+  },
+  "runs": {
+    "P2ImageCodecTest": {
+      "command": [
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2ImageCodecTest\\P2ImageCodecTest.exe"
+      ],
+      "cwd": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p2-flat-producer\\atlas-runtime\\P2ImageCodecTest",
+      "exit": 0,
+      "exe_sha256": "cdb45f6511e9bbdd22ecb7ebf99b070de7fc213c5e68fa67e2731bcbb8cebdfb",
+      "map_sha256": "e35da8aa69831a6ece8d9add1f71ac33f88cbf03c127a3bad5e4d505f84cc9c3",
+      "module_report_sha256": "1bb9a205e356a4b4433fa5a4f030a0912e372ab1197f0e2d99dae9397e4ad90f",
+      "no_verified_sinks_in_map": true,
+      "library_sha256": "642c97c5d2d49a8c7b881e0a15be989e1fd73d201b47ca257d0517414c8507ef"
+    },
+    "P2TextureAtlasTest": {
+      "command": [
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2TextureAtlasTest\\P2TextureAtlasTest.exe"
+      ],
+      "cwd": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p2-flat-producer\\atlas-runtime\\P2TextureAtlasTest",
+      "exit": 0,
+      "exe_sha256": "99ba41065fdbbf61f4be713e5bb3979073183a4903f79bfb24e95c32bcd8b95d",
+      "map_sha256": "ba006376810b90250e91fe20c68ec48836fcd37eba167b585238759d5c983897",
+      "module_report_sha256": "9e067e926ed13d49cd30e30ccd8431e4f3038250de9ef5e9e89c3018c1a01184",
+      "no_verified_sinks_in_map": true,
+      "library_sha256": "8a44ed04fed40feb3ff79682456c4e4a31c68e334b4b1e5d58eba7ffd77b3bf6"
+    }
+  },
+  "loaded_dlls": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2TextureAtlasTest\\rgdx.dll": "dfce3291ea1214f37aae8e009af1891c45ab7843eb639a914d9791418559a50e",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2TextureAtlasTest\\rgmain.dll": "b67d2e96c5bf28fe48799a96c7927c57b91c74e483b30975ee58ca45f470153c"
+  },
+  "selected_symbols": {
+    "P2ImageCodecTest": [
+      "0001:00006720       ?decodePNG@GImage@G3D@@AAEXAAVBinaryInput@2@@Z 00407720 f   linked:GImage_png.obj",
+      "0001:00010c90       _png_create_read_struct    00411c90 f   linked:pngread.obj"
+    ],
+    "P2TextureAtlasTest": [
+      "0001:00002190       ?shadePixel@PlayerTextureAtlas@@YAXABVColor3uint8@G3D@@AAV23@@Z 00403190 f   linked:PlayerTextureAtlas.obj",
+      "0001:00002290       ?build@PlayerTextureAtlas@@YAXABVGImage@G3D@@AAV23@@Z 00403290 f   linked:PlayerTextureAtlas.obj",
+      "0001:000026d0       ?load@PlayerTextureAtlas@@YA?AVTexturePtr@Ogre@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 004036d0 f   linked:PlayerTextureAtlas.obj",
+      "0001:00008e40       ?decodePNG@GImage@G3D@@AAEXAAVBinaryInput@2@@Z 00409e40 f   linked:GImage_png.obj",
+      "0001:000133a0       _png_create_read_struct    004143a0 f   linked:pngread.obj"
+    ]
+  },
+  "preserved_factory_player_sha256": "547f328d6d0997c806b975925f6e29d2e03d62b203802a83d49b81dfaf745374",
+  "preserved_factory_source_revision": "0f567d02e8474bb64ea060edb7256d90e71c8d2e",
+  "native_evidence_sha256": "7665a9ab1b6bcee320d1562203b0c03968bbcae93af1ad9647ca7254c368c82b",
+  "fpu_observation": "D3D9 device changes0009001f->000a001f. CPU byte reference built after device creation; full GPU comparison passes without tolerance.",
+  "limits": [
+    "Actual asset found in August2007 client and May2008 RCCService installer, hashes agree. Exact June2008 distribution identity remains unproven.",
+    "Standalone atlas prerequisite; player executable preserved unchanged, P2 material/texture wiring remains open.",
+    "Bundled libpng1.2.7 is used coherently with G3D image headers; no new target-native/server credit claimed."
+  ],
+  "artifacts": {
+    "P2ImageCodecTest/image-codec-roundtrip.png": "5099281c7568e577d6e4f8cb616f269616b7ee579f1c157b09fddb2b8e4f149c",
+    "P2ImageCodecTest/stdout.log": "f17e583944b77d84fa8037c7519394cf6219626b10bf5737badc4de53e8ad9a6",
+    "P2TextureAtlasTest/p2-texture-atlas.log": "89ba165b1aed15beb63f6b051a58739cacafc7e2110f02b39454c85bb83870ee",
+    "P2TextureAtlasTest/stdout.log": "17840a3effa2f08c0004c796ed7b7b4f75a15f778a22b1ef91389f1a89e30ee1",
+    "P2TextureAtlasTest/texture-atlas-cpu.png": "0622771fd24d8a09d9d8fbe8189347a0cbf2ee7fa9828dcf16fd83c3f327d933",
+    "P2TextureAtlasTest/texture-atlas-gpu.png": "008fa3add5fe9d8cb8fae1ab25a7cb7089d5e47027159c26e62e0c4a7842a825"
+  },
+  "legacy_trap_provider": {
+    "object": "rebuild/2008-06/out/G3D/linked/verified_sinks.obj",
+    "object_sha256": "6861325ee88e0655c7a8fecdbe45b7397130e519457f67d6ab68a7106821416a",
+    "G3D_archive_sha256": "7f42e7b90860080d448f10ab17e41360adc8ed5a775688a8b88360ce6f104863",
+    "defines_png": [
+      "_png_read_info",
+      "_png_iCCP",
+      "_png_write_compressed_data_out",
+      "_png_create_info_struct",
+      "_png_set_swap",
+      "_png_gAMA",
+      "_png_free_data",
+      "_png_set_write_fn",
+      "_png_handle_as_unknown",
+      "_png_set_invert_mono",
+      "_png_pass_inc",
+      "_png_destroy_read_struct"
+    ],
+    "native_debug_log_sha256": "00418b71cf578bd9f48ab7574181cdb1212c2c29fe5c2fb0d8f4de8ae51c826d",
+    "initial_exception": "80000003 at0040e494; png_create_read_struct selected the common trap provider"
+  }
+}

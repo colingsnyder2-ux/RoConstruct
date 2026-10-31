@@ -148,3 +148,21 @@ Material remains diagnostic. Next proven handoff is vtable00826f94 slot5 ->
 004eb190 ->004f1a60 mega-material factory, using textures/SurfacesStrip.png.
 Original atlas absent from currently searched dependency roots; do not invent it.
 P2 and later gates remain open.
+
+
+## Original atlas prerequisite
+
+Source248136093f adds a standalone recovered007add10/007ae4e0 atlas module plus
+clean G3D image dependency. Both build and normal runs exit0. Actual64x256 strip
+expands to32 palette columns;2048x256 GPU RGB readback equals CPU bytes exactly
+in the same device FPU mode. Neutral/shading anchors, cache identity, missing-file
+failure and resource release pass. Source/exe/map/DLL/asset hashes and CPU/GPU PNGs
+are retained in p2-flat-producer/atlas-runtime/receipt.json.
+
+Two real corrections precede this result: old G3D archive PNG calls resolved into
+verified_sinks.obj traps, replaced only for this isolated target by clean vendor
+build; D3D9 changes x87 precision, so pre-device CPU shading is not the correct
+reference for post-device upload. No tolerance was introduced. Existing player
+EXE hash is unchanged. Real strip also occurs in May2008 RCCService installer;
+exact June2008 asset identity is unproven. Atlas helper is not yet wired through
+native Material/TextureProxy classes, so P2 remains open.

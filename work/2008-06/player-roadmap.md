@@ -46,16 +46,41 @@ Normal selftest1879/2080/0/0 passes; cachetest two9->8->0 cycles returns every
 mesh/material/level/ref/backend count to baseline. Final tested revision0f567d02e8 recorded in factory-runtime/receipt.json.
 Versioned fixture: rebuild/2008-06/tests/fixtures/cache-blocks.rbxl.
 
-Next: replace diagnostic material for this same ordinary block. Constructor004ebcc0
-writes vtable00826f94; slot5 is getMaterial004eb190. Its usesMegaTexture check at
-004eba08 leads to getMegaMaterial004f1a60 at004eba31. Existing source exported to
-work/2008-06/source-view/004eb190.cpp and004f1a60.cpp; read latter first. It uses
-textures/SurfacesStrip.png and filters BrickColor from material cache (palette
-is in geometry UVs). No atlas found under clients/tools/rbxgs/rebuild yet. Recover
-real Material/TextureProxy/Ogre boundaries and locate original dependency assets;
-do not fabricate atlas or adopt padded DataModel declarations from mined source.
-Native scene bounds-cache/shared-index, full selector/child handling and original
-material keep P2 open. No active server claims/jobs.
+Current material prerequisite: source248136093f builds p2-image-core and
+p2-texture-atlas, both link/exit0. Normal-process receipt:atlas-runtime/receipt.json.
+Existing007add10 shading and007ae4e0 expansion produce2048x256 RGB atlas from
+real64x256 strip. Full GPU bytes match CPU reference in device FPU mode, neutral
+palette/shading anchors/cache identity/missing file/teardown pass. CPU/GPU images
+saved. Factory player hash remains identical to0f567d02e8 acceptance executable.
+
+Important decoder correction: old G3D linked library routes PNG entry points into
+verified_sinks.obj traps. Native debug runner and map prove breakpoint0040e494.
+Clean p2-image-core recompiles real G3D/IJG and bundled libpng1.2.7 in a separate
+output; final core/atlas maps contain no verified_sinks. Existing libraries remain
+preserved. Do not route new image code through the old sink-bearing library.
+
+GPU comparison initially differed byone: D3D9 changes x87 precision0009001f to
+000a001f. CPU palette computed before device creation differed from the native
+post-device upload. Compare in same device FPU state; no tolerance or forced
+precision preservation was added. Real strip hashdc5418f1...dae85e4 matches both
+August2007 client and RCCService0.3.784.0 installer (PEMay14,2008). Exact June2008
+asset identity remains unproven; record it as external dependency, not replacement art.
+
+Next: native Material/Level/TextureProxy ownership and original renderer material
+creation for this same block. Read atlas-material-evidence.json first. Material
+size18, Level38; constructor007ad230 leaves matte null (no donor alphaOnlyVersion
+call); destructor007ad310 unregisters Ogre material. Native Level slot2 resolves
+proxy with context, slot3 returns proxy ref: provisional header order is wrong.
+TextureProxyBase is30 bytes with eight slots: dtor, set/getint28, set/getfloat2c,
+getSize, resolve, shade. Donor getSize slot1 is incompatible with native slot5.
+00551bf0 initializes28=1,2c=1.0. Native RenderNew proxy fields30/34/38/3c/40/44/48/54
+and Mega extra60/allocation64 have binary evidence. Do not invent padded classes
+or placeholder virtual methods. Exported source007ae4e0 contains the existing
+atlas body; current helper deliberately does not claim the full proxy class ABI.
+
+P2 stays open: atlas is standalone, player material still diagnostic. Native scene
+bounds-cache/shared-index, selector/child handling and remaining roadmap still open.
+No new server-native credit or active claims/jobs.
 
 ## Earlier observations (historical; current state above takes precedence)
 
