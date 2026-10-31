@@ -1,10 +1,10 @@
 {
-  "updated": "2026-10-31 19:29 UTC",
+  "updated": "2026-10-31 20:44 UTC",
   "clients": {
     "2008-06": {
       "phase": "6",
       "phaseLabel": "Link closure",
-      "overall": 0.2378,
+      "overall": 0.238,
       "bars": {
         "compiled": {
           "value": 19,
@@ -17,7 +17,7 @@
           "label": "Modules linked"
         },
         "exact": {
-          "value": 9797,
+          "value": 9804,
           "total": 41196,
           "label": "Byte-exact functions"
         },
@@ -124,8 +124,8 @@
           "name": "Player",
           "linked": true,
           "test": 0,
-          "exact": 78,
-          "objectFunctions": 718,
+          "exact": 87,
+          "objectFunctions": 929,
           "unresolved": 0
         },
         {
