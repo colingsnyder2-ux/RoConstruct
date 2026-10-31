@@ -1,7 +1,7 @@
 {
   "Material": {
     "original_table": "00874ac0",
-    "compiled_table": "0043b638",
+    "compiled_table": "0043c6c0",
     "original_RTTI_bases": [
       ".?AVMaterial@RenderNew@RBX@@",
       ".?AVMaterialBase@RenderBase@RBX@@",
@@ -20,7 +20,7 @@
       {
         "slot": 1,
         "original": "007ad760",
-        "compiled": "004054c0",
+        "compiled": "00405be0",
         "symbols": [
           "?appendEmptyLevel@Material@PlayerNativeMaterial@@UAEABVLevel@MaterialBase@2@XZ"
         ]
@@ -28,7 +28,7 @@
       {
         "slot": 2,
         "original": "007ad8a0",
-        "compiled": "00405010",
+        "compiled": "00405770",
         "symbols": [
           "?appendLevel@Material@PlayerNativeMaterial@@UAEABVLevel@MaterialBase@2@VColor3@G3D@@MMMM@Z"
         ]
@@ -36,7 +36,7 @@
       {
         "slot": 3,
         "original": "007ad790",
-        "compiled": "00405770",
+        "compiled": "00405e90",
         "symbols": [
           "?appendLevel@Material@PlayerNativeMaterial@@UAEABVLevel@MaterialBase@2@V?$ReferenceCountedPointer@VTextureProxyBase@PlayerNativeMaterial@@@G3D@@VColor3@6@MMMM@Z"
         ]
@@ -44,7 +44,7 @@
       {
         "slot": 4,
         "original": "007acda0",
-        "compiled": "004047f0",
+        "compiled": "00404f60",
         "symbols": [
           "?levelCount@Material@PlayerNativeMaterial@@UBEHXZ"
         ]
@@ -52,7 +52,7 @@
       {
         "slot": 5,
         "original": "007acdb0",
-        "compiled": "00404800",
+        "compiled": "00404f70",
         "symbols": [
           "?getLevel@Material@PlayerNativeMaterial@@UAEAAVLevel@MaterialBase@2@H@Z"
         ]
@@ -60,7 +60,7 @@
       {
         "slot": 6,
         "original": "007acdd0",
-        "compiled": "00404820",
+        "compiled": "00404f90",
         "symbols": [
           "?detailLevel@Material@PlayerNativeMaterial@@UBEPBVLevel@MaterialBase@2@M@Z"
         ]
@@ -68,7 +68,7 @@
       {
         "slot": 7,
         "original": "007acd70",
-        "compiled": "004048b0",
+        "compiled": "00405020",
         "symbols": [
           "?veryTransparent@Material@PlayerNativeMaterial@@UBE_NXZ"
         ]
@@ -77,7 +77,7 @@
   },
   "Level@Material": {
     "original_table": "00874ae4",
-    "compiled_table": "0043b5c0",
+    "compiled_table": "0043c648",
     "original_RTTI_bases": [
       ".?AVLevel@Material@RenderNew@RBX@@",
       ".?AVLevel@MaterialBase@RenderBase@RBX@@"
@@ -86,7 +86,7 @@
       {
         "slot": 0,
         "original": "007acef0",
-        "compiled": "004046d0",
+        "compiled": "00404e50",
         "symbols": [
           "?isEmptyLevel@Level@Material@PlayerNativeMaterial@@UBE_NXZ"
         ]
@@ -103,7 +103,7 @@
       {
         "slot": 2,
         "original": "007ad0a0",
-        "compiled": "00404d40",
+        "compiled": "004054a0",
         "symbols": [
           "?baseTexture@Level@Material@PlayerNativeMaterial@@UBE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAX@Z"
         ]
@@ -111,7 +111,7 @@
       {
         "slot": 3,
         "original": "007b7810",
-        "compiled": "00404e50",
+        "compiled": "004055b0",
         "symbols": [
           "?baseTexture@Level@Material@PlayerNativeMaterial@@UBE?AV?$ReferenceCountedPointer@VTextureProxyBase@PlayerNativeMaterial@@@G3D@@XZ"
         ]
@@ -119,7 +119,7 @@
       {
         "slot": 4,
         "original": "007ad0e0",
-        "compiled": "00404e80",
+        "compiled": "004055e0",
         "symbols": [
           "?setBaseTexture@Level@Material@PlayerNativeMaterial@@UAEXV?$ReferenceCountedPointer@VTextureProxyBase@PlayerNativeMaterial@@@G3D@@@Z"
         ]
@@ -127,7 +127,7 @@
       {
         "slot": 5,
         "original": "007ad160",
-        "compiled": "00404f00",
+        "compiled": "00405660",
         "symbols": [
           "?matte@Level@Material@PlayerNativeMaterial@@UBE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAX@Z"
         ]
@@ -135,7 +135,7 @@
       {
         "slot": 6,
         "original": "007b76a0",
-        "compiled": "004046e0",
+        "compiled": "00404e60",
         "symbols": [
           "?color@Level@Material@PlayerNativeMaterial@@UBEABVColor3@G3D@@XZ"
         ]
@@ -143,7 +143,7 @@
       {
         "slot": 7,
         "original": "007b76b0",
-        "compiled": "004046f0",
+        "compiled": "00404e70",
         "symbols": [
           "?specular@Level@Material@PlayerNativeMaterial@@UBEMXZ"
         ]
@@ -151,7 +151,7 @@
       {
         "slot": 8,
         "original": "007b76c0",
-        "compiled": "00404700",
+        "compiled": "00404e80",
         "symbols": [
           "?shiny@Level@Material@PlayerNativeMaterial@@UBEMXZ"
         ]
@@ -159,7 +159,7 @@
       {
         "slot": 9,
         "original": "00503cb0",
-        "compiled": "00404710",
+        "compiled": "00404e90",
         "symbols": [
           "?reflect@Level@Material@PlayerNativeMaterial@@UBEMXZ"
         ]
@@ -167,7 +167,7 @@
       {
         "slot": 10,
         "original": "007b76d0",
-        "compiled": "00404720",
+        "compiled": "00404ea0",
         "symbols": [
           "?transparent@Level@Material@PlayerNativeMaterial@@UBEMXZ"
         ]
@@ -176,7 +176,7 @@
   },
   "TextureProxyBase": {
     "original_table": "0082d168",
-    "compiled_table": "0043b7fc",
+    "compiled_table": "0043c8ac",
     "original_RTTI_bases": [
       ".?AVTextureProxyBase@RBX@@",
       ".?AVReferenceCountedObject@G3D@@"
@@ -185,7 +185,7 @@
       {
         "slot": 0,
         "original": "00551d50",
-        "compiled": "00406b40",
+        "compiled": "00407260",
         "symbols": [
           "??_GTextureProxyBase@PlayerNativeMaterial@@UAEPAXI@Z",
           "??_ETextureProxyBase@PlayerNativeMaterial@@UAEPAXI@Z"
@@ -194,7 +194,7 @@
       {
         "slot": 1,
         "original": "00551c70",
-        "compiled": "00406860",
+        "compiled": "00406f80",
         "symbols": [
           "?setValue28@TextureProxyBase@PlayerNativeMaterial@@UAEXH@Z"
         ]
@@ -202,7 +202,7 @@
       {
         "slot": 2,
         "original": "00551c90",
-        "compiled": "00406870",
+        "compiled": "00406f90",
         "symbols": [
           "?getValue28@TextureProxyBase@PlayerNativeMaterial@@UBEHXZ"
         ]
@@ -210,7 +210,7 @@
       {
         "slot": 3,
         "original": "00551cb0",
-        "compiled": "00406880",
+        "compiled": "00406fa0",
         "symbols": [
           "?setValue2c@TextureProxyBase@PlayerNativeMaterial@@UAEXM@Z"
         ]
@@ -218,7 +218,7 @@
       {
         "slot": 4,
         "original": "00551cd0",
-        "compiled": "00406890",
+        "compiled": "00406fb0",
         "symbols": [
           "?getValue2c@TextureProxyBase@PlayerNativeMaterial@@UBEMXZ"
         ]
@@ -226,7 +226,7 @@
       {
         "slot": 5,
         "original": "006a16be",
-        "compiled": "00436eb4",
+        "compiled": "00437e64",
         "symbols": [
           "__purecall"
         ]
@@ -234,7 +234,7 @@
       {
         "slot": 6,
         "original": "006a16be",
-        "compiled": "00436eb4",
+        "compiled": "00437e64",
         "symbols": [
           "__purecall"
         ]
@@ -242,7 +242,7 @@
       {
         "slot": 7,
         "original": "006a16be",
-        "compiled": "00436eb4",
+        "compiled": "00437e64",
         "symbols": [
           "__purecall"
         ]
@@ -251,7 +251,7 @@
   },
   "TextureProxy": {
     "original_table": "0082d18c",
-    "compiled_table": "0043b848",
+    "compiled_table": "0043c8f8",
     "original_RTTI_bases": [
       ".?AVTextureProxy@RenderNew@RBX@@",
       ".?AVTextureProxyBase@RBX@@",
@@ -261,18 +261,18 @@
       {
         "slot": 0,
         "original": "00551f00",
-        "compiled": "004077b0",
+        "compiled": "00407ec0",
         "symbols": [
           "??_GMegaTextureProxy@PlayerNativeMaterial@@UAEPAXI@Z",
           "??_EMegaTextureProxy@PlayerNativeMaterial@@UAEPAXI@Z",
-          "??_GTextureProxy@PlayerNativeMaterial@@UAEPAXI@Z",
-          "??_ETextureProxy@PlayerNativeMaterial@@UAEPAXI@Z"
+          "??_ETextureProxy@PlayerNativeMaterial@@UAEPAXI@Z",
+          "??_GTextureProxy@PlayerNativeMaterial@@UAEPAXI@Z"
         ]
       },
       {
         "slot": 1,
         "original": "00551c70",
-        "compiled": "00406860",
+        "compiled": "00406f80",
         "symbols": [
           "?setValue28@TextureProxyBase@PlayerNativeMaterial@@UAEXH@Z"
         ]
@@ -280,7 +280,7 @@
       {
         "slot": 2,
         "original": "00551c90",
-        "compiled": "00406870",
+        "compiled": "00406f90",
         "symbols": [
           "?getValue28@TextureProxyBase@PlayerNativeMaterial@@UBEHXZ"
         ]
@@ -288,7 +288,7 @@
       {
         "slot": 3,
         "original": "00551cb0",
-        "compiled": "00406880",
+        "compiled": "00406fa0",
         "symbols": [
           "?setValue2c@TextureProxyBase@PlayerNativeMaterial@@UAEXM@Z"
         ]
@@ -296,7 +296,7 @@
       {
         "slot": 4,
         "original": "00551cd0",
-        "compiled": "00406890",
+        "compiled": "00406fb0",
         "symbols": [
           "?getValue2c@TextureProxyBase@PlayerNativeMaterial@@UBEMXZ"
         ]
@@ -304,7 +304,7 @@
       {
         "slot": 5,
         "original": "007adb70",
-        "compiled": "004068a0",
+        "compiled": "00406fc0",
         "symbols": [
           "?getSize@TextureProxy@PlayerNativeMaterial@@UAE?AVVector2@G3D@@XZ"
         ]
@@ -312,7 +312,7 @@
       {
         "slot": 6,
         "original": "007aec70",
-        "compiled": "004089d0",
+        "compiled": "004090a0",
         "symbols": [
           "?resolve@TextureProxy@PlayerNativeMaterial@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAX@Z"
         ]
@@ -320,7 +320,7 @@
       {
         "slot": 7,
         "original": "007aded0",
-        "compiled": "00406fb0",
+        "compiled": "004076d0",
         "symbols": [
           "?shade@TextureProxy@PlayerNativeMaterial@@UAE?AV?$ReferenceCountedPointer@VTextureProxyBase@PlayerNativeMaterial@@@G3D@@ABVColor3@4@ABV34@@Z"
         ]
@@ -329,7 +329,7 @@
   },
   "MegaTextureProxy": {
     "original_table": "00874bd8",
-    "compiled_table": "0043b86c",
+    "compiled_table": "0043c91c",
     "original_RTTI_bases": [
       ".?AVMegaTextureProxy@RenderNew@RBX@@",
       ".?AVTextureProxy@RenderNew@RBX@@",
@@ -340,18 +340,18 @@
       {
         "slot": 0,
         "original": "007aea40",
-        "compiled": "004077b0",
+        "compiled": "00407ec0",
         "symbols": [
           "??_GMegaTextureProxy@PlayerNativeMaterial@@UAEPAXI@Z",
           "??_EMegaTextureProxy@PlayerNativeMaterial@@UAEPAXI@Z",
-          "??_GTextureProxy@PlayerNativeMaterial@@UAEPAXI@Z",
-          "??_ETextureProxy@PlayerNativeMaterial@@UAEPAXI@Z"
+          "??_ETextureProxy@PlayerNativeMaterial@@UAEPAXI@Z",
+          "??_GTextureProxy@PlayerNativeMaterial@@UAEPAXI@Z"
         ]
       },
       {
         "slot": 1,
         "original": "00551c70",
-        "compiled": "00406860",
+        "compiled": "00406f80",
         "symbols": [
           "?setValue28@TextureProxyBase@PlayerNativeMaterial@@UAEXH@Z"
         ]
@@ -359,7 +359,7 @@
       {
         "slot": 2,
         "original": "00551c90",
-        "compiled": "00406870",
+        "compiled": "00406f90",
         "symbols": [
           "?getValue28@TextureProxyBase@PlayerNativeMaterial@@UBEHXZ"
         ]
@@ -367,7 +367,7 @@
       {
         "slot": 3,
         "original": "00551cb0",
-        "compiled": "00406880",
+        "compiled": "00406fa0",
         "symbols": [
           "?setValue2c@TextureProxyBase@PlayerNativeMaterial@@UAEXM@Z"
         ]
@@ -375,7 +375,7 @@
       {
         "slot": 4,
         "original": "00551cd0",
-        "compiled": "00406890",
+        "compiled": "00406fb0",
         "symbols": [
           "?getValue2c@TextureProxyBase@PlayerNativeMaterial@@UBEMXZ"
         ]
@@ -383,7 +383,7 @@
       {
         "slot": 5,
         "original": "007adb70",
-        "compiled": "004068a0",
+        "compiled": "00406fc0",
         "symbols": [
           "?getSize@TextureProxy@PlayerNativeMaterial@@UAE?AVVector2@G3D@@XZ"
         ]
@@ -391,7 +391,7 @@
       {
         "slot": 6,
         "original": "007ae4e0",
-        "compiled": "00407100",
+        "compiled": "00407820",
         "symbols": [
           "?resolve@MegaTextureProxy@PlayerNativeMaterial@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAX@Z"
         ]
@@ -399,7 +399,7 @@
       {
         "slot": 7,
         "original": "007b8fe0",
-        "compiled": "00406fb0",
+        "compiled": "004076d0",
         "symbols": [
           "?shade@TextureProxy@PlayerNativeMaterial@@UAE?AV?$ReferenceCountedPointer@VTextureProxyBase@PlayerNativeMaterial@@@G3D@@ABVColor3@4@ABV34@@Z"
         ]

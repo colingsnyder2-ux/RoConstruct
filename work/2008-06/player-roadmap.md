@@ -1,5 +1,16 @@
 # Current player checkpoint
 
+Renderer material prerequisite now tested at sourceb78e67f137. Original007ab0a0
+pass setup extracted into PlayerMaterialBackend.cpp using measured native types.
+Build/test and normal-process test exit0; receipt at
+p2-flat-producer/native-material-backend-runtime/receipt.json. All five mesh-kind
+branches, two-pass creation, reuse, lit diffuse/ambient/specular/shininess,
+depth bias/write, transparency blending and real atlas binding checked. Alpha
+texture and reflection image branches retained but not runtime exercised. This
+does not establish the enclosing RenderScene ABI. Next: derive actual lighting
+values/setup007a9d30, then wire material/proxy/backend into published player.
+Player remains unchanged, owner debug files preserved, P2 remains open.
+
 Native material prerequisite now tested at source18624d7141. Modules
 p2-texture-interop/p2-native-material link and exit0; normal-process runs also
 exit0. Receipt:p2-flat-producer/native-material-runtime/receipt.json. Measured

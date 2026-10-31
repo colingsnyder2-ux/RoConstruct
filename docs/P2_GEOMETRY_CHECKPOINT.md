@@ -1,5 +1,11 @@
 # P2 flat producer checkpoint, 2026-10-31
 
+Renderer material setup prerequisite now passes at sourceb78e67f137, including
+normal process, five mesh-kind branches, two passes and real atlas binding.
+Receipt:work/2008-06/p2-flat-producer/native-material-backend-runtime/receipt.json.
+Source extraction007ab0a0 retains original material state; player integration
+and original light values/setup007a9d30 remain next. P2 remains open.
+
 Latest material prerequisite: source18624d7141, normal-process receipt at
 work/2008-06/p2-flat-producer/native-material-runtime/receipt.json. Real native
 Material/Level/TextureProxy layout/ownership tests and independent original/PE
