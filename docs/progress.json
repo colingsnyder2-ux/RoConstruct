@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-31 21:55 UTC",
+ "updated": "2026-10-31 23:08 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -101,15 +101,15 @@
    "built": "2007-08-19",
    "started": true,
    "functions": 19819,
-   "matched": 16712,
-   "partial": 2976,
-   "source_matched": 12094,
-   "mined_matched": 4618,
+   "matched": 16733,
+   "partial": 2955,
+   "source_matched": 12116,
+   "mined_matched": 4617,
    "bytes": 3196410,
-   "matched_bytes": 2274770,
-   "source_bytes": 2073374,
-   "mined_bytes": 201396,
-   "partial_bytes": 816172,
+   "matched_bytes": 2277192,
+   "source_bytes": 2075876,
+   "mined_bytes": 201316,
+   "partial_bytes": 813750,
    "data_bytes": 1361658,
    "leaderboard": [
     {
@@ -132,12 +132,12 @@
     },
     {
      "user": "Espeon",
-     "matched": 4391,
-     "mining_points": 167117,
-     "points": 167117,
+     "matched": 4412,
+     "mining_points": 168196,
+     "points": 168196,
      "native_integrated": 0,
-     "submissions": 4413,
-     "last": 1793483512.921383
+     "submissions": 4436,
+     "last": 1793486375.265732
     },
     {
      "user": "Yeetserama",
@@ -478,15 +478,15 @@
    "built": "2009-06-16",
    "started": true,
    "functions": 26124,
-   "matched": 17721,
-   "partial": 4357,
-   "source_matched": 10703,
-   "mined_matched": 7018,
+   "matched": 18010,
+   "partial": 4330,
+   "source_matched": 10754,
+   "mined_matched": 7256,
    "bytes": 4310694,
-   "matched_bytes": 2247201,
-   "source_bytes": 1888160,
-   "mined_bytes": 359041,
-   "partial_bytes": 827511,
+   "matched_bytes": 2292284,
+   "source_bytes": 1895793,
+   "mined_bytes": 396491,
+   "partial_bytes": 868149,
    "data_bytes": 1809822,
    "leaderboard": [
     {
@@ -509,12 +509,12 @@
     },
     {
      "user": "EspClaude",
-     "matched": 1121,
-     "mining_points": 79406,
-     "points": 79406,
+     "matched": 1410,
+     "mining_points": 120417,
+     "points": 120417,
      "native_integrated": 0,
-     "submissions": 1538,
-     "last": 1793483661.5113025
+     "submissions": 2260,
+     "last": 1793488013.0209424
     },
     {
      "user": "why2",
@@ -733,15 +733,15 @@
    "built": "2012-06-13",
    "started": true,
    "functions": 39655,
-   "matched": 17271,
-   "partial": 10575,
+   "matched": 17273,
+   "partial": 10583,
    "source_matched": 9875,
-   "mined_matched": 7396,
+   "mined_matched": 7398,
    "bytes": 6736062,
-   "matched_bytes": 1622117,
+   "matched_bytes": 1622272,
    "source_bytes": 1431437,
-   "mined_bytes": 190680,
-   "partial_bytes": 1835552,
+   "mined_bytes": 190835,
+   "partial_bytes": 1836791,
    "data_bytes": 3396596,
    "leaderboard": [
     {
@@ -773,12 +773,12 @@
     },
     {
      "user": "Intel",
-     "matched": 95,
-     "mining_points": 20398,
-     "points": 20398,
+     "matched": 97,
+     "mining_points": 20899,
+     "points": 20899,
      "native_integrated": 0,
-     "submissions": 428,
-     "last": 1793483615.65972
+     "submissions": 445,
+     "last": 1793487607.9236076
     },
     {
      "user": "intel",
@@ -888,21 +888,21 @@
   },
   {
    "user": "Espeon",
-   "matched": 4988,
-   "mining_points": 182570,
-   "points": 182570,
+   "matched": 5009,
+   "mining_points": 183649,
+   "points": 183649,
    "native_integrated": 0,
-   "submissions": 5342,
-   "last": 1793483512.921383
+   "submissions": 5365,
+   "last": 1793486375.265732
   },
   {
    "user": "EspClaude",
-   "matched": 1657,
-   "mining_points": 95540,
-   "points": 95592,
+   "matched": 1946,
+   "mining_points": 136551,
+   "points": 136603,
    "native_integrated": 52,
-   "submissions": 2369,
-   "last": 1793483661.5113025
+   "submissions": 3091,
+   "last": 1793488013.0209424
   },
   {
    "user": "why2",
@@ -915,12 +915,12 @@
   },
   {
    "user": "Intel",
-   "matched": 102,
-   "mining_points": 20839,
-   "points": 20839,
+   "matched": 104,
+   "mining_points": 21340,
+   "points": 21340,
    "native_integrated": 0,
-   "submissions": 445,
-   "last": 1793483615.65972
+   "submissions": 462,
+   "last": 1793487607.9236076
   },
   {
    "user": "intel",

@@ -1,23 +1,23 @@
 {
-  "updated": "2026-10-31 21:59 UTC",
+  "updated": "2026-10-31 23:12 UTC",
   "clients": {
     "2008-06": {
       "phase": "6",
       "phaseLabel": "Link closure",
-      "overall": 0.2382,
+      "overall": 0.2391,
       "bars": {
         "compiled": {
-          "value": 26,
-          "total": 26,
+          "value": 30,
+          "total": 30,
           "label": "Modules reporting"
         },
         "linked": {
-          "value": 23,
-          "total": 26,
+          "value": 27,
+          "total": 30,
           "label": "Modules linked"
         },
         "exact": {
-          "value": 9811,
+          "value": 9852,
           "total": 41196,
           "label": "Byte-exact functions"
         },
@@ -124,24 +124,40 @@
           "name": "P2BlockFactory",
           "linked": true,
           "test": 0,
-          "exact": 134,
-          "objectFunctions": 1087,
+          "exact": 147,
+          "objectFunctions": 1198,
           "unresolved": 0
         },
         {
           "name": "P2BlockMesh",
           "linked": true,
           "test": 0,
-          "exact": 134,
-          "objectFunctions": 1087,
+          "exact": 147,
+          "objectFunctions": 1198,
+          "unresolved": 0
+        },
+        {
+          "name": "P2ImageCore",
+          "linked": true,
+          "test": 0,
+          "exact": 816,
+          "objectFunctions": 6244,
+          "unresolved": 0
+        },
+        {
+          "name": "P2Lighting",
+          "linked": true,
+          "test": 0,
+          "exact": 29,
+          "objectFunctions": 81,
           "unresolved": 0
         },
         {
           "name": "P2MeshBackend",
           "linked": true,
           "test": 0,
-          "exact": 42,
-          "objectFunctions": 238,
+          "exact": 55,
+          "objectFunctions": 349,
           "unresolved": 0
         },
         {
@@ -150,6 +166,14 @@
           "test": 0,
           "exact": 0,
           "objectFunctions": 6,
+          "unresolved": 0
+        },
+        {
+          "name": "P2NativeMaterial",
+          "linked": true,
+          "test": 0,
+          "exact": 129,
+          "objectFunctions": 874,
           "unresolved": 0
         },
         {
@@ -164,16 +188,24 @@
           "name": "P2RecoveredPlayer",
           "linked": true,
           "test": 0,
-          "exact": 188,
-          "objectFunctions": 2028,
+          "exact": 203,
+          "objectFunctions": 2177,
           "unresolved": 0
         },
         {
           "name": "P2TextureAtlas",
           "linked": true,
-          "test": 2147483651,
+          "test": 0,
           "exact": 11,
           "objectFunctions": 57,
+          "unresolved": 0
+        },
+        {
+          "name": "P2TextureInterop",
+          "linked": true,
+          "test": 0,
+          "exact": 425,
+          "objectFunctions": 5822,
           "unresolved": 0
         },
         {
