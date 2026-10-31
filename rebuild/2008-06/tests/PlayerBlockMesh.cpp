@@ -20,6 +20,20 @@ typedef char LevelDirty[offsetof(Level,dirty)==0x1c?1:-1];
 typedef char LevelSharedIndex[offsetof(Level,sharedIndex)==0x20?1:-1];
 typedef char LevelBackend[offsetof(Level,backend)==0x24?1:-1];
 typedef char NativeArray[sizeof(Array<Vector3>)==12?1:-1];
+typedef char ShadowSize[sizeof(ShadowSurface)==0x34?1:-1];
+typedef char ShadowNormals[offsetof(ShadowSurface,faceNormals)==0x0c?1:-1];
+typedef char ShadowFaces[offsetof(ShadowSurface,faces)==0x18?1:-1];
+typedef char ShadowGeometry[offsetof(ShadowSurface,geometry)==0x24?1:-1];
+typedef char ShadowDrop[offsetof(ShadowSurface,dropShadow)==0x30?1:-1];
+typedef char MeshSize[sizeof(Mesh)==0x88?1:-1];
+typedef char MeshLevels[offsetof(Mesh,levels)==0x0c?1:-1];
+typedef char MeshShadow[offsetof(Mesh,shadow)==0x18?1:-1];
+typedef char MeshRadius[offsetof(Mesh,debugBoundingRadius)==0x4c?1:-1];
+typedef char MeshIndices[offsetof(Mesh,shadowIndices)==0x50?1:-1];
+typedef char MeshVertices[offsetof(Mesh,shadowVertices)==0x68?1:-1];
+typedef char MeshBackend[offsetof(Mesh,shadowBackend)==0x80?1:-1];
+typedef char MeshKind[offsetof(Mesh,geometryKind)==0x84?1:-1];
+typedef char BrickMeshSize[sizeof(BlockMesh)==0x88?1:-1];
 namespace {
 Array<Vector3> meshPositions,meshNormals,meshTangents;
 Array<Vector2> meshUVs;
@@ -66,8 +80,12 @@ Level::~Level(){
     if(backend)PlayerMeshBackend::destroyIndexed(backend);
     --levelsAlive;
 }
+Mesh::Mesh():debugBoundingRadius(0),shadowBackend(0),geometryKind(0){initializeBank();}
+Mesh::~Mesh(){ // 00548a90: shadow backend first, then member/Level destruction.
+    if(shadowBackend)PlayerMeshBackend::destroyIndexed(shadowBackend);
+}
 BlockMesh::BlockMesh(const Vector3& size,RBX::View::RenderSurfaceTypes surfaces,RBX::BrickColor color){
-    initializeBank();populate(size,surfaces,color);++builds;
+    geometryKind=1;populate(size,surfaces,color);++builds;
 }
 template<RBX::NormalId id>
 static inline G3D::Vector3 faceHalf(const G3D::Vector3& size,float inset){

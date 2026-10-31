@@ -1,3 +1,39 @@
+# Current player checkpoint
+
+P2 IN PROGRESS; P0 clean-worktree gate and P3-P10 remain unproven.
+Last pushed revision a2cf9bc1b0 records tested source a03ec3bcbf.
+Known-good isolated target: `roc rebuild 2008-06 module p2-recovered-player --no-notify`.
+Normal --selftest passes 1891/2152/0/0 pixels and zero levels/refs/backends;
+receipt: p2-flat-producer/recovered-runtime/receipt.json. Loaded DLL paths/hashes
+are captured. Existing owner Player2008.cpp/PlayerEngine.cpp/RbxEntity.h untouched.
+
+Recovered 004e2c80 produces loaded small block level0; 00549a50 uploads it through
+0067c130 to measured RbxSubMesh. Entity implementation was preserved. No handwritten
+box geometry in this target. Still diagnostic material and partial original selector.
+
+Current experiment: replace the levels-only owner with measured full 0x88-byte Mesh.
+00548570 constructs levels +0c, ShadowSurface +18 (34 bytes), radius +4c, vectors
++50/+68, backend +80 and kind +84. 00548a90 proves +80 owns a RbxSubMesh resource.
+Matched 004e53c0 analog incorrectly calls the vectors AABoxes: 0054c500 proves
+stride2 index storage and 0054d940 stride12 vertex storage; 004e3570 output calls
+confirm roles. Compile-time offsets/size and standalone lifetime tests pass; normal player rerun pending.
+Evidence: p2-flat-producer/native-owner-evidence.json and factory-abi-disassembly.txt.
+Shadow element types retain donor Mesh.h evidence; do not claim all shadow paths proven.
+
+Next after final owner tests: original 004e58b0 factory/cache. Its existing mined
+source declares recursive_mutex; binary locks cache+20 and counts at+2c:
+00563090 +8 recursion count proves boost::recursive_mutex (12 bytes); earlier
+plain-mutex inference confused backend mutex offset with size and is rejected.
+Existing factory declaration agrees. Retain original
+variation selection, lifetime and purge semantics; trace bevel policy rather than
+forcing an undocumented value. Initialized useBevels byte009413c0=1: factory
+builds first level with bevel0.065 then calls same004e2c80 again with bevel0 and
+buildingShadowMesh=true. Current direct constructor bypasses this paired policy.
+Native geometry cache/shared indices/materials and
+full selector still keep P2 open. No active server claims/jobs.
+
+## Earlier observations (historical; current state above takes precedence)
+
 # Current player checkpoint — verified observations, not imported status claims
 
 P2 OPEN. Graph implementation exists and focused graph tests pass. Existing entity

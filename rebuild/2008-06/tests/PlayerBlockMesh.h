@@ -6,6 +6,8 @@
 #include "QuadVolume.h"
 #include "v8datamodel/BrickColor.h"
 #include "PlayerMeshBackend.h"
+#include <G3D/MeshAlg.h>
+#include <vector>
 
 // Typed integration of the touched native Level prefix; no donor Mesh/GL state.
 // BlockMesh owns levels through the original G3D reference-counting contract.
@@ -22,8 +24,27 @@ public:
     void upload(bool indices32,Ogre::AxisAlignedBox& bounds);
 };
 typedef G3D::ReferenceCountedPointer<Level> LevelRef;
-class BlockMesh : public G3D::ReferenceCountedObject {
+struct ShadowSurface {
+    G3D::Array<G3D::MeshAlg::Edge> edges;
+    G3D::Array<G3D::Vector3> faceNormals;
+    G3D::Array<G3D::MeshAlg::Face> faces;
+    G3D::Array<G3D::Vector3> geometry;
+    LevelRef dropShadow;
+};
+// 00548570/00548a90: genuine G3D/STL members, no opaque padding.
+class Mesh : public G3D::ReferenceCountedObject {
+public:
     G3D::Array<LevelRef> levels;
+    ShadowSurface shadow;
+    float debugBoundingRadius;
+    std::vector<short> shadowIndices;
+    std::vector<G3D::Vector3> shadowVertices;
+    Ogre::RbxSubMesh* shadowBackend;
+    int geometryKind;
+    Mesh();
+    ~Mesh();
+};
+class BlockMesh : public Mesh {
     void populate(const G3D::Vector3&,RBX::View::RenderSurfaceTypes,RBX::BrickColor);
 public:
     BlockMesh(const G3D::Vector3&,RBX::View::RenderSurfaceTypes,RBX::BrickColor);

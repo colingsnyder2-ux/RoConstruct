@@ -21,7 +21,9 @@ Delete entity, release geometry, then remove metadata/material before Ogre shutd
 Scope: ordinary small block, flat/no-bevel LOD, 16-bit upload in this player.
 Standalone p2-block-mesh tests exercise both index widths and smooth/studded faces.
 Part colours currently use a diagnostic fixed-function material, not the original
-atlas/material path. Native whole Mesh ABI, shared-index branch, scene bounds-cache
+atlas/material path. Full Mesh member layout now has compile-time checks against 00548570/00548a90;
+shadow element semantics outside exercised paths remain donor-backed hypotheses.
+Factory/cache, shared-index branch, scene bounds-cache
 registration/removal, modifier/humanoid branch selection, non-box/large geometry,
 child signals and complete original material/surface behavior remain unintegrated.
 The small-block selector does not yet reproduce all original preconditions.
