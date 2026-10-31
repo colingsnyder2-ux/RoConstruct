@@ -18,12 +18,12 @@ bounds/animation metadata only, with no handwritten vertex/index geometry.
 An explicit non-owning parent is needed by SDK SubMesh::getVertexAnimationType.
 Delete entity, release geometry, then remove metadata/material before Ogre shutdown.
 
-Scope: ordinary small block, flat/no-bevel LOD, 16-bit upload in this player.
+Scope: ordinary small block, native-default paired bevel/flat levels, 16-bit level0 upload in this player.
 Standalone p2-block-mesh tests exercise both index widths and smooth/studded faces.
 Part colours currently use a diagnostic fixed-function material, not the original
 atlas/material path. Full Mesh member layout now has compile-time checks against 00548570/00548a90;
 shadow element semantics outside exercised paths remain donor-backed hypotheses.
-Factory/cache, shared-index branch, scene bounds-cache
+Shared-index branch, scene bounds-cache
 registration/removal, modifier/humanoid branch selection, non-box/large geometry,
 child signals and complete original material/surface behavior remain unintegrated.
 The small-block selector does not yet reproduce all original preconditions.
@@ -38,3 +38,18 @@ D3DDEVICE/DDBACKBUFFER attributes from the real Ogre D3D9 window, renders withou
 Present, reads that surface with GetRenderTargetData, saves RGB PNG and presents.
 Selftest and frame captures share it. Screenshot failures must fail the run;
 no desktop/foreground fallback. The renderer/entity/geometry path stays the same.
+
+Factory/cache: existing 004e58b0 now selects up to four variants per size/surface/
+BrickColor key, including native default bevel0.065 first level and flat second
+level through the same004e2c80 producer. Measured cache is0x30 with recursive mutex
+at20 and creation counter2c. Original004e5710 purge drops cache-only references;
+keys/count remain. Renderer metadata/material is shared by geometry identity and
+removed at its last renderer user, accounting for Ogre's three system references.
+Call flushUnused after entities/chunks are gone, before Ogre shutdown.
+
+`roc rebuild 2008-06 module p2-block-factory --no-notify` stresses512 requests,
+paired level geometry/upload widths, and the every100-creation recursive purge.
+`P2RecoveredPlayer.exe --cachetest <absolute path to tests/fixtures/cache-blocks.rbxl>`
+loads nine overlapping same-key Parts, removes one, reopens, and checks two9->8->0
+cycles with metadata/material counts returning to baseline. This closes cache
+integration coverage, not the complete P3 acceptance gate or original material path.

@@ -9,6 +9,8 @@
 #include <cstdlib>
 #include <cstdio>
 #include <cstddef>
+#include <boost/thread/recursive_mutex.hpp>
+#include <boost/thread/once.hpp>
 
 namespace PlayerBlockMesh {
 using namespace G3D;
@@ -43,7 +45,8 @@ int references;
 unsigned levelsAlive,builds;
 bool bankInitialized;
 bool buildingShadowMesh=false;
-float meshBevel=0.0f; // Initial flat/no-bevel path, not the separate bevel LOD.
+float meshBevel=0.0f;
+bool useBevels=true; // Original initialized byte 009413c0.
 // Original initialized data at 009413c4/c8, read by 004de360.
 const Vector2 flatTextureOrigin(0.015625f,0.8888888955116272f);
 void initializeBank() { // 00547f60: reserve slot zero.
@@ -85,7 +88,96 @@ Mesh::~Mesh(){ // 00548a90: shadow backend first, then member/Level destruction.
     if(shadowBackend)PlayerMeshBackend::destroyIndexed(shadowBackend);
 }
 BlockMesh::BlockMesh(const Vector3& size,RBX::View::RenderSurfaceTypes surfaces,RBX::BrickColor color){
-    geometryKind=1;populate(size,surfaces,color);++builds;
+    geometryKind=1;populate(size,surfaces,color);
+}
+
+namespace {
+// Existing Lookup comparator: roc_espclaude_ccb4c01f44e452a8.cpp.
+struct Lookup {
+    Vector3 size;
+    RenderSurfaceTypes surfaces;
+    RBX::BrickColor color;
+    bool operator<(const Lookup& other) const {
+        for(int i=0;i<3;++i){
+            if(size[i]<other.size[i])return true;
+            if(size[i]>other.size[i])return false;
+        }
+        if(surfaces.data<other.surfaces.data)return true;
+        if(surfaces.data>other.surfaces.data)return false;
+        return color.number<other.color.number;
+    }
+};
+struct Variations {
+    int count;
+    MeshRef meshes[4];
+    Variations():count(0){}
+};
+struct Cache {
+    std::map<Lookup,Variations> entries;
+    boost::recursive_mutex mutex;
+    int count;
+    Cache():count(0){}
+};
+typedef char LookupSize[sizeof(Lookup)==0x14?1:-1];
+typedef char VariationsSize[sizeof(Variations)==0x14?1:-1];
+typedef char CacheSize[sizeof(Cache)==0x30?1:-1];
+typedef char CacheMutex[offsetof(Cache,mutex)==0x20?1:-1];
+typedef char CacheCount[offsetof(Cache,count)==0x2c?1:-1];
+Cache* cache;
+boost::once_flag cacheOnce=BOOST_ONCE_INIT;
+void closeCache(){delete cache;}
+void initializeCache(){cache=new Cache;std::atexit(closeCache);}
+}
+
+// Existing 004e58b0 body; 004e5a40 calls populate again, not the alternate
+// 004e3720 producer. Typed Mesh/Level replace the mining unit's padded base.
+MeshRef BlockMesh::create(const Vector3& size,RenderSurfaceTypes surfaces,RBX::BrickColor color){
+    Lookup lookup={size,surfaces,color};
+    boost::call_once(initializeCache,cacheOnce);
+    Cache* c=cache;
+    boost::recursive_mutex::scoped_lock lock(c->mutex);
+    Variations& variation=c->entries[lookup];
+    size_t index=variation.count==4 ? G3D::iRandom(0,3) : std::min(3,G3D::iRandom(0,8));
+    MeshRef mesh=variation.meshes[index];
+    if(mesh.isNull()){
+        buildingShadowMesh=false;
+        if(useBevels){
+            meshBevel=0.065f;
+            mesh=new BlockMesh(size,surfaces,color);
+            meshBevel=0;
+            buildingShadowMesh=true;
+            mesh->populate(size,surfaces,color);
+            buildingShadowMesh=false;
+        }else{
+            meshBevel=0;
+            mesh=new BlockMesh(size,surfaces,color);
+        }
+        variation.meshes[index]=mesh;
+        ++variation.count;
+        if(++c->count%100==0){
+            MeshRef keep=variation.meshes[index];
+            flushUnused();
+        }
+    }
+    return mesh;
+}
+
+// 004e5710 drops cache-only references without erasing keys or resetting count.
+void flushUnused(){
+    boost::call_once(initializeCache,cacheOnce);
+    boost::recursive_mutex::scoped_lock lock(cache->mutex);
+    for(std::map<Lookup,Variations>::iterator it=cache->entries.begin();it!=cache->entries.end();++it)
+        for(int i=0;i<4;++i)
+            if(it->second.meshes[i].notNull() && it->second.meshes[i].isLastReference())
+                it->second.meshes[i]=MeshRef();
+}
+unsigned cachedMeshes(){
+    if(!cache)return 0;
+    boost::recursive_mutex::scoped_lock lock(cache->mutex);
+    unsigned count=0;
+    for(std::map<Lookup,Variations>::iterator it=cache->entries.begin();it!=cache->entries.end();++it)
+        for(int i=0;i<4;++i)if(it->second.meshes[i].notNull())++count;
+    return count;
 }
 template<RBX::NormalId id>
 static inline G3D::Vector3 faceHalf(const G3D::Vector3& size,float inset){
@@ -205,6 +297,7 @@ template void recoveredMeshFace<RBX::NORM_Y_NEG>(const G3D::Vector3&,float,RBX::
 template void recoveredMeshFace<RBX::NORM_Z_NEG>(const G3D::Vector3&,float,RBX::View::RenderSurfaceTypes,float,LevelRef&,unsigned*);
 
 void BlockMesh::populate(const Vector3& size,RenderSurfaceTypes surfaces,RBX::BrickColor color) {
+ ++builds;
  LevelRef level=new Level(RenderDevice::QUADS);
  Level* nativeLevel=level.getPointer();
  levels.append(level);

@@ -210,7 +210,7 @@ void PartChunk::updateMesh()
     meshData.geometry=PlayerBlockMesh::MeshRef();
     if(partInstance->getPartType()==RBX::Part::BLOCK_PART &&
        std::max(meshData.size.x,std::max(meshData.size.y,meshData.size.z))<30.0f)
-        meshData.geometry=new PlayerBlockMesh::BlockMesh(meshData.size,surfaces,partInstance->getColor());
+        meshData.geometry=PlayerBlockMesh::BlockMesh::create(meshData.size,surfaces,partInstance->getColor());
     meshData.valid = true;
 }
 

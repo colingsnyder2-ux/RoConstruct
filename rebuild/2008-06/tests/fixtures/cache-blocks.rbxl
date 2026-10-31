@@ -1,0 +1,275 @@
+<roblox version="4">
+  <Item class="Workspace">
+    <Properties />
+    <Item class="Part" referent="Cache0">
+      <Properties>
+        <string name="Name">Brick</string>
+        <bool name="Anchored">true</bool>
+        <Vector3 name="size">
+          <X>2</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </Vector3>
+        <Color3 name="Color">
+          <R>0</R>
+          <G>1</G>
+          <B>0</B>
+        </Color3>
+        <CoordinateFrame name="CFrame">
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="Cache1">
+      <Properties>
+        <string name="Name">Copy1</string>
+        <bool name="Anchored">true</bool>
+        <Vector3 name="size">
+          <X>2</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </Vector3>
+        <Color3 name="Color">
+          <R>0</R>
+          <G>1</G>
+          <B>0</B>
+        </Color3>
+        <CoordinateFrame name="CFrame">
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="Cache2">
+      <Properties>
+        <string name="Name">Copy2</string>
+        <bool name="Anchored">true</bool>
+        <Vector3 name="size">
+          <X>2</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </Vector3>
+        <Color3 name="Color">
+          <R>0</R>
+          <G>1</G>
+          <B>0</B>
+        </Color3>
+        <CoordinateFrame name="CFrame">
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="Cache3">
+      <Properties>
+        <string name="Name">Copy3</string>
+        <bool name="Anchored">true</bool>
+        <Vector3 name="size">
+          <X>2</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </Vector3>
+        <Color3 name="Color">
+          <R>0</R>
+          <G>1</G>
+          <B>0</B>
+        </Color3>
+        <CoordinateFrame name="CFrame">
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="Cache4">
+      <Properties>
+        <string name="Name">Copy4</string>
+        <bool name="Anchored">true</bool>
+        <Vector3 name="size">
+          <X>2</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </Vector3>
+        <Color3 name="Color">
+          <R>0</R>
+          <G>1</G>
+          <B>0</B>
+        </Color3>
+        <CoordinateFrame name="CFrame">
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="Cache5">
+      <Properties>
+        <string name="Name">Copy5</string>
+        <bool name="Anchored">true</bool>
+        <Vector3 name="size">
+          <X>2</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </Vector3>
+        <Color3 name="Color">
+          <R>0</R>
+          <G>1</G>
+          <B>0</B>
+        </Color3>
+        <CoordinateFrame name="CFrame">
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="Cache6">
+      <Properties>
+        <string name="Name">Copy6</string>
+        <bool name="Anchored">true</bool>
+        <Vector3 name="size">
+          <X>2</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </Vector3>
+        <Color3 name="Color">
+          <R>0</R>
+          <G>1</G>
+          <B>0</B>
+        </Color3>
+        <CoordinateFrame name="CFrame">
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="Cache7">
+      <Properties>
+        <string name="Name">Copy7</string>
+        <bool name="Anchored">true</bool>
+        <Vector3 name="size">
+          <X>2</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </Vector3>
+        <Color3 name="Color">
+          <R>0</R>
+          <G>1</G>
+          <B>0</B>
+        </Color3>
+        <CoordinateFrame name="CFrame">
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="Cache8">
+      <Properties>
+        <string name="Name">Copy8</string>
+        <bool name="Anchored">true</bool>
+        <Vector3 name="size">
+          <X>2</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </Vector3>
+        <Color3 name="Color">
+          <R>0</R>
+          <G>1</G>
+          <B>0</B>
+        </Color3>
+        <CoordinateFrame name="CFrame">
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+      </Properties>
+    </Item>
+  </Item>
+</roblox>

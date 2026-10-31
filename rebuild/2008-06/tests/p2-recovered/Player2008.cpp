@@ -227,6 +227,8 @@ static std::map<const void*, DrawEntry> g_drawn;
 // Ogre Mesh here supplies entity bounds only; Level owns the detached RbxSubMesh.
 static Ogre::MeshPtr createRecoveredMesh(const char* name, PlayerBlockMesh::BlockMesh* geometry, const float color[3])
 {
+    Ogre::MeshPtr existing=Ogre::MeshManager::getSingleton().getByName(name);
+    if(!existing.isNull())return existing;
     PlayerBlockMesh::Level& level=geometry->level0();
     Ogre::AxisAlignedBox bounds;
     level.upload(false,bounds);
@@ -253,10 +255,13 @@ static void releaseGeometry(DrawEntry& entry)
 {
     if(entry.mesh.isNull())return;
     std::string name=entry.mesh->getName();
+    bool lastUser=entry.mesh.useCount()==Ogre::ResourceGroupManager::RESOURCE_SYSTEM_NUM_REFERENCE_COUNTS+1;
     entry.geometry=PlayerBlockMesh::MeshRef();
     entry.mesh.setNull();
-    Ogre::MeshManager::getSingleton().remove(name);
-    Ogre::MaterialManager::getSingleton().remove(name+"_mat");
+    if(lastUser){
+        Ogre::MeshManager::getSingleton().remove(name);
+        Ogre::MaterialManager::getSingleton().remove(name+"_mat");
+    }
 }
 
 static void drawModels()
@@ -292,7 +297,7 @@ static void drawModels()
             }
             std::string name = "mesh_";
             char suffix[32];
-            _snprintf(suffix, sizeof(suffix), "%p", model.id);
+            _snprintf(suffix, sizeof(suffix), "%p", model.geometry);
             name += suffix;
             entry.geometry=model.geometry;
             entry.mesh = createRecoveredMesh(name.c_str(), model.geometry, model.color);
@@ -461,11 +466,59 @@ static int runSelftest(Ogre::Root* root, Ogre::RenderWindow* win)
     return failures == 0 ? 0 : 5;
 }
 
+static unsigned resourceCount(Ogre::ResourceManager& manager){
+    unsigned count=0;
+    Ogre::ResourceManager::ResourceMapIterator it=manager.getResourceIterator();
+    while(it.hasMoreElements()){it.getNext();++count;}
+    return count;
+}
+
+static int runCacheTest(Ogre::Root* root,Ogre::RenderWindow* win,const std::string& place){
+    unsigned meshes=resourceCount(Ogre::MeshManager::getSingleton());
+    unsigned materials=resourceCount(Ogre::MaterialManager::getSingleton());
+    for(int cycle=0;cycle<2;++cycle){
+        if(cycle && LoadPlace(place.c_str()))return 1;
+        if(SceneAttach())return 2;
+        drawModels();
+        if(g_drawn.size()!=9)return 3;
+        std::map<PlayerBlockMesh::BlockMesh*,int> users;
+        for(std::map<const void*,DrawEntry>::iterator it=g_drawn.begin();it!=g_drawn.end();++it){
+            DrawEntry& entry=it->second;
+            if(entry.geometry->levels.size()!=2 || entry.geometry->level0().backend->parent!=entry.mesh.getPointer())return 4;
+            ++users[entry.geometry.getPointer()];
+        }
+        bool shared=false;
+        for(std::map<PlayerBlockMesh::BlockMesh*,int>::iterator it=users.begin();it!=users.end();++it)
+            if(it->second>1)shared=true;
+        if(!shared)return 5;
+        Image image;
+        if(!capture(root,win,"cache_initial.png",image) || !countGreen(image,110,90,210,150))return 6;
+        RemovePart();drawModels();
+        if(g_drawn.size()!=8)return 7;
+        for(std::map<const void*,DrawEntry>::iterator it=g_drawn.begin();it!=g_drawn.end();++it){
+            DrawEntry& entry=it->second;
+            if(entry.geometry->level0().backend->parent!=entry.mesh.getPointer() ||
+               entry.entity->getMesh().getPointer()!=entry.mesh.getPointer() ||
+               Ogre::MeshManager::getSingleton().getByName(entry.mesh->getName()).getPointer()!=entry.mesh.getPointer() ||
+               entry.node->getPosition()!=Ogre::Vector3::ZERO)return 8;
+        }
+        if(!capture(root,win,"cache_remaining.png",image) || !countGreen(image,110,90,210,150))return 9;
+        SceneDetach();drawModels();ClosePlace();PlayerBlockMesh::flushUnused();
+        if(!g_drawn.empty() || PlayerBlockMesh::cachedMeshes() || PlayerBlockMesh::liveLevels() ||
+           PlayerBlockMesh::activeReferences() || PlayerMeshBackend::liveMeshes())return 10;
+        if(resourceCount(Ogre::MeshManager::getSingleton())!=meshes ||
+           resourceCount(Ogre::MaterialManager::getSingleton())!=materials)return 11;
+        std::printf("cachetest cycle=%d models9->8->0 metadata/material baseline PASS\n",cycle);
+    }
+    return 0;
+}
+
 // ---------------------------------------------------------------------- main
 
 int main(int argc, char** argv)
 {
     bool selftest = false;
+    bool cachetest = false;
     bool frames = false;
     int frameCount = 0;
     std::string placeText;
@@ -474,6 +527,7 @@ int main(int argc, char** argv)
     for (int i = 1; i < argc; ++i)
     {
         if (std::strcmp(argv[i], "--selftest") == 0) selftest = true;
+        else if (std::strcmp(argv[i], "--cachetest") == 0) cachetest = true;
         else if (std::strcmp(argv[i], "--frames") == 0 && i + 1 < argc) { frames = true; frameCount = std::atoi(argv[++i]); }
         else if (argv[i][0] != '-') placePath = argv[i];
     }
@@ -482,6 +536,7 @@ int main(int argc, char** argv)
         placeText = kPartPlace;
     else
         placeText = placePath.empty() ? "" : readPlace(placePath.c_str());
+    if(cachetest && placeText.empty()){std::printf("cachetest requires readable fixture\n");return 1;}
     if (!selftest && placeText.empty())
     {
         std::printf("could not read %s; using built-in part place\n", placePath.empty() ? "(none)" : placePath.c_str());
@@ -514,11 +569,12 @@ int main(int argc, char** argv)
     Ogre::Viewport* vp = win->addViewport(cam);
     vp->setBackgroundColour(Ogre::ColourValue(1, 0, 1));
 
-    if (selftest)
+    if (selftest || cachetest)
     {
-        int rc = runSelftest(root, win);
+        int rc = selftest ? runSelftest(root, win) : runCacheTest(root,win,placeText);
         SceneDetach();
         drawModels();
+        PlayerBlockMesh::flushUnused();
         std::printf("mesh cleanup: levels=%u refs=%u backends=%u\n",PlayerBlockMesh::liveLevels(),PlayerBlockMesh::activeReferences(),PlayerMeshBackend::liveMeshes());
         if(PlayerBlockMesh::liveLevels() || PlayerBlockMesh::activeReferences() || PlayerMeshBackend::liveMeshes())rc=7;
         delete root;
@@ -585,6 +641,7 @@ int main(int argc, char** argv)
 
     SceneDetach();
     drawModels();
+    PlayerBlockMesh::flushUnused();
     std::printf("mesh cleanup: levels=%u refs=%u backends=%u\n",PlayerBlockMesh::liveLevels(),PlayerBlockMesh::activeReferences(),PlayerMeshBackend::liveMeshes());
     delete root;
     ClosePlace();

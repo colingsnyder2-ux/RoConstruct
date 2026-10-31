@@ -1,0 +1,75 @@
+{
+  "client": "2008-06",
+  "factory": "004e58b0",
+  "purge": "004e5710",
+  "cache_layout": {
+    "size": "0x30",
+    "map": "0",
+    "recursive_mutex": "0x20",
+    "creation_count": "0x2c",
+    "key_size": "0x14",
+    "variations_size": "0x14"
+  },
+  "producer_policy": {
+    "useBevels_data_address": "009413c0",
+    "initialized_value": 1,
+    "first_level_bevel": 0.065,
+    "second_level_bevel": 0,
+    "second_call_site": "004e5a40",
+    "producer": "004e2c80",
+    "second_level_buildingShadowMesh": true
+  },
+  "scope": [
+    "Retargeted existing source uses measured typed Mesh and Level.",
+    "No new exact/native/server match claimed.",
+    "Player still uses diagnostic fixed-function material; P2 remains open."
+  ],
+  "targets": {
+    "004e58b0": {
+      "size": 639,
+      "sha256": "09a4e60c20763bb209e32defdb3c255859e5b91f6bbc86e6c567587b6c2263b9"
+    },
+    "004e5710": {
+      "size": 408,
+      "sha256": "d0c11d9d8e78476a030117938112c3264b7b0ea902551cf8a3b881687eb33c92"
+    },
+    "004e5300": {
+      "size": 89,
+      "sha256": "78e6d5d35451c5e6446eccd362d066bf7369e6f9cbcffa769c59b9225ba090b9"
+    },
+    "004e5360": {
+      "size": 96,
+      "sha256": "e2e3ec18ac751e72aceb6af43c598371c3695e051002634a15ad9b865592ad5c"
+    },
+    "00563090": {
+      "size": 68,
+      "sha256": "1a6f37f282cea84126be7343b95ddedc34a2b3eac6117c7ea12443d7b309d775"
+    },
+    "004eb190": {
+      "size": 2849,
+      "sha256": "493adbadc38f6bd2280476a4910265537d2c86e69c3c23a61cd9f5176bfe7989"
+    },
+    "004f1a60": {
+      "size": 506,
+      "sha256": "7db284c396bfad4c4579c3f3dc546bda47ad8d642f632025f82f6b8afd2034d8"
+    }
+  },
+  "next_material_edge": {
+    "constructor": "004ebcc0",
+    "vtable": "00826f94",
+    "slot": 5,
+    "getMaterial": "004eb190",
+    "usesMegaTexture_call_site": "004eba08",
+    "megaMaterial_call_site": "004eba31",
+    "megaMaterial": "004f1a60",
+    "atlas": "textures/SurfacesStrip.png",
+    "atlas_search": "No matching file found under clients, tools/rbxgs or rebuild/2008-06."
+  },
+  "metadata_lifetime": {
+    "rule": "Shared by geometry identity; remove after final renderer user.",
+    "SDK_constant": "Ogre::ResourceGroupManager::RESOURCE_SYSTEM_NUM_REFERENCE_COUNTS",
+    "system_references": 3,
+    "source_proof": "OgreResourceManager::addImpl stores name/handle references; ResourceGroupManager stores third.",
+    "rejected": "Counting only one manager reference leaked metadata; cachetest exit11. Corrected to system references+one DrawEntry."
+  }
+}

@@ -12,6 +12,8 @@
 // Typed integration of the touched native Level prefix; no donor Mesh/GL state.
 // BlockMesh owns levels through the original G3D reference-counting contract.
 namespace PlayerBlockMesh {
+class BlockMesh;
+typedef G3D::ReferenceCountedPointer<BlockMesh> MeshRef;
 class Level : public G3D::ReferenceCountedObject {
 public:
     G3D::Array<unsigned> indexArray;
@@ -48,9 +50,11 @@ class BlockMesh : public Mesh {
     void populate(const G3D::Vector3&,RBX::View::RenderSurfaceTypes,RBX::BrickColor);
 public:
     BlockMesh(const G3D::Vector3&,RBX::View::RenderSurfaceTypes,RBX::BrickColor);
+    static MeshRef create(const G3D::Vector3&,RBX::View::RenderSurfaceTypes,RBX::BrickColor);
     Level& level0() { return *levels[0]; }
 };
-typedef G3D::ReferenceCountedPointer<BlockMesh> MeshRef;
+void flushUnused();
+unsigned cachedMeshes();
 unsigned activeReferences();
 unsigned liveLevels();
 unsigned producerCalls();

@@ -129,3 +129,22 @@ recursion count at+8), cache mutex offset20 and allocation30. Initial bevel flag
 again with bevel0/buildingShadowMesh=true. Current direct constructor bypasses
 factory cache and this paired-level policy, keeping P2 open. Integrate that
 existing source next, including its purge and shared resource ownership.
+
+
+## Original block factory/cache connected
+
+004e58b0 now drives the loaded small block. Existing source retains four random
+variants per measured key, native default bevel0.065 first level, flat second
+level, and004e5710 purge of cache-only references. 512-lookups/120-key fixture
+passes, including both index widths and recursive every100-creation purge.
+Renderer metadata/material now share geometry identity. A real cachetest caught
+an initial resource leak: Ogre has three system references, not one. Corrected
+last-user check uses the SDK constant; two loaded9->8->0 cycles now return all
+mesh/material counts and live geometry/backend references to baseline.
+
+Normal pixel controls with default bevels:1879/2080/0/0. Direct flat regression
+still passes. Final evidence goes under p2-flat-producer/factory-runtime/.
+Material remains diagnostic. Next proven handoff is vtable00826f94 slot5 ->
+004eb190 ->004f1a60 mega-material factory, using textures/SurfacesStrip.png.
+Original atlas absent from currently searched dependency roots; do not invent it.
+P2 and later gates remain open.

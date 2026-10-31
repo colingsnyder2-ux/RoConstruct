@@ -1,6 +1,6 @@
 # Current player checkpoint
 
-P2 IN PROGRESS; P0 clean-worktree gate and P3-P10 remain unproven.
+P2 IN PROGRESS; factory/cache now integrated.  P0 clean-worktree gate and P3-P10 remain unproven.
 Last pushed revision a2cf9bc1b0 records tested source a03ec3bcbf.
 Owner-layout commit3043e89063; capture-corrected tested source c301f9241e.
 Receipt: p2-flat-producer/native-owner-backbuffer-runtime/receipt.json.
@@ -30,17 +30,27 @@ p2-flat-producer/native-owner-backbuffer-runtime/. No entity changes involved.
 Evidence: p2-flat-producer/native-owner-evidence.json and factory-abi-disassembly.txt.
 Shadow element types retain donor Mesh.h evidence; do not claim all shadow paths proven.
 
-Next after final owner tests: original 004e58b0 factory/cache. Its existing mined
-source declares recursive_mutex; binary locks cache+20 and counts at+2c:
-00563090 +8 recursion count proves boost::recursive_mutex (12 bytes); earlier
-plain-mutex inference confused backend mutex offset with size and is rejected.
-Existing factory declaration agrees. Retain original
-variation selection, lifetime and purge semantics; trace bevel policy rather than
-forcing an undocumented value. Initialized useBevels byte009413c0=1: factory
-builds first level with bevel0.065 then calls same004e2c80 again with bevel0 and
-buildingShadowMesh=true. Current direct constructor bypasses this paired policy.
-Native geometry cache/shared indices/materials and
-full selector still keep P2 open. No active server claims/jobs.
+Current completed edge: 004e58b0 factory/cache and004e5710 purge integrated with
+measured Lookup/Variations20-byte records and48-byte cache. Retains four variants,
+recursive mutex, every100-creations purge, and native default paired bevel/flat
+levels. Geometry-shared renderer metadata/material survives removal of one user;
+SDK's three system references matter. Initial one-reference check leaked resources
+(cachetest exit11); corrected to RESOURCE_SYSTEM_NUM_REFERENCE_COUNTS+1.
+Factory fixture512 lookups/120 new keys passes; direct flat regression passes.
+Normal selftest1879/2080/0/0 passes; cachetest two9->8->0 cycles returns every
+mesh/material/level/ref/backend count to baseline. Final revision receipt pending.
+Versioned fixture: rebuild/2008-06/tests/fixtures/cache-blocks.rbxl.
+
+Next: replace diagnostic material for this same ordinary block. Constructor004ebcc0
+writes vtable00826f94; slot5 is getMaterial004eb190. Its usesMegaTexture check at
+004eba08 leads to getMegaMaterial004f1a60 at004eba31. Existing source exported to
+work/2008-06/source-view/004eb190.cpp and004f1a60.cpp; read latter first. It uses
+textures/SurfacesStrip.png and filters BrickColor from material cache (palette
+is in geometry UVs). No atlas found under clients/tools/rbxgs/rebuild yet. Recover
+real Material/TextureProxy/Ogre boundaries and locate original dependency assets;
+do not fabricate atlas or adopt padded DataModel declarations from mined source.
+Native scene bounds-cache/shared-index, full selector/child handling and original
+material keep P2 open. No active server claims/jobs.
 
 ## Earlier observations (historical; current state above takes precedence)
 
