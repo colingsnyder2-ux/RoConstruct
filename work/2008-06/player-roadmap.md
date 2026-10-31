@@ -1,5 +1,27 @@
 # Current player checkpoint
 
+Requested demo COMPLETE / user accepted. Sourceb8cd526f04 builds/exits0. Default
+launch now shows red4x1.2x2 anchored block, full2x4 stud rows, period default sky.
+Original004d9e00 material template byte-confirmed at00940660; polar UV basis
+corrected for stock Ogre (+90up,-90down), all six GPU views match source images.
+Fractional2.5 depth caused cut stud rows; demo uses whole4x2 dimensions. Real
+180-frame/30fps/6s VP8 capture and PNG:work/2008-06/sky-demo-final/.
+Receipt pins same source/EXE/DLLs/assets, full video decode180, six-view errors,
+missing-sky exit8, missing-place exit1, default no-argument launch and normal
+WM_CLOSE exit0. Content staged beside EXE; no developer env needed for demo.
+Original external assets are not committed; exact June distribution unproven.
+
+Final same-revision P2 regression:1879/2080/0/0 pixels, two cache cycles,
+zero levels/refs/backends/spheres, hardware identity/removal trace pass.
+Receipts:p2-flat-producer/final-sky-p2-regression/receipt.json and
+final-sky-p2-trace/receipt.json. Existing owner debug edits preserved.
+
+User now requests resuming roadmap. Next first open gate: P0 clean second-worktree
+reproduction and sustained falling stability / missing-place error. Then full P3
+lifecycle and non-box silhouette. P2 ordinary-block gate stays passed. No P4-P10
+completion claimed by default sky/demo; custom Sky/service/startup integration
+remains later work. Reuse immutable prerequisite receipts, do not redo entity work.
+
 P2 PASSED for ordinary block/first-level gate at source3f89605232. Acceptance
 audit:rebuild/2008-06/tests/p2-recovered/p2-acceptance-audit.md. Normal receipt:
 p2-flat-producer/p2-acceptance-runtime/receipt.json. Hardware receipt:

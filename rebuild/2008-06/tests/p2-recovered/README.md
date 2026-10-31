@@ -1,8 +1,9 @@
 # Isolated recovered-block player
 
 Build: `roc rebuild 2008-06 module p2-recovered-player --no-notify`.
-Set ROC_TEXTURE_STRIP to an identified original SurfacesStrip.png before building
-or running. Missing variable is an explicit error. See TextureAtlasRecovery.md.
+Stage original Content with tests/stage_demo_content.py (see SkyboxDemo.md).
+Default launch uses the red studded block and skybox. ROC_TEXTURE_STRIP remains
+an optional developer override; otherwise assets resolve beside the executable.
 ROC_SKY_SPHERE supplies the original sky sphere image for reflective materials;
 that branch is not exercised by this ordinary opaque-block gate.
 Run `rebuild/2008-06/out/tests/P2RecoveredPlayer/P2RecoveredPlayer.exe --selftest`
@@ -39,7 +40,8 @@ P2 completion is assessed in p2-acceptance-audit.md against the ordinary block
 gate. No complete P3, whole-executable reconstruction or new server match claimed.
 
 Evidence/checkpoint: work/2008-06/player-roadmap.md and
-work/2008-06/p2-flat-producer/recovered-runtime/receipt.json.
+work/2008-06/p2-flat-producer/p2-acceptance-runtime/receipt.json.
+Current sky demo/capture evidence: work/2008-06/sky-demo-final/receipt.json.
 
 Capture correction: Ogre 1.4 window writeContentsToFile reads the desktop front
 buffer, so occluding apps can contaminate pixel controls. writeBackbuffer uses

@@ -1,0 +1,17 @@
+{
+  "function": "004d9e00",
+  "function_sha256": "da2ea9e58f59a413e3d21b32e872f839c3120360f1dc1907d16ae7690800a469",
+  "function_size": 3367,
+  "material_template_address": "00940660",
+  "material_template": "material %s\n{\n\ttechnique\n\t{\n\t\tpass\n\t\t{\n\t\t\tlighting off\n\t\t\tdepth_write off\n\t\t\ttexture_unit\n\t\t\t{\n\t\t\t\tcubic_texture %s %s %s %s %s %s separateUV\n\t\t\t\ttex_address_mode clamp\n\t\t\t}\n\t\t}\n\t}\n}\n",
+  "native_face_order": [
+    "back",
+    "front",
+    "left",
+    "right",
+    "up",
+    "down"
+  ],
+  "distance": 2700,
+  "scope": "Default named local faces; ContentProvider/custom Sky/service-layout integration deferred."
+}
