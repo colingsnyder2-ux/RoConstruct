@@ -1,23 +1,23 @@
 {
-  "updated": "2026-10-31 20:44 UTC",
+  "updated": "2026-10-31 21:59 UTC",
   "clients": {
     "2008-06": {
       "phase": "6",
       "phaseLabel": "Link closure",
-      "overall": 0.238,
+      "overall": 0.2382,
       "bars": {
         "compiled": {
-          "value": 19,
-          "total": 19,
+          "value": 26,
+          "total": 26,
           "label": "Modules reporting"
         },
         "linked": {
-          "value": 16,
-          "total": 19,
+          "value": 23,
+          "total": 26,
           "label": "Modules linked"
         },
         "exact": {
-          "value": 9804,
+          "value": 9811,
           "total": 41196,
           "label": "Byte-exact functions"
         },
@@ -121,11 +121,67 @@
           "unresolved": 16
         },
         {
+          "name": "P2BlockFactory",
+          "linked": true,
+          "test": 0,
+          "exact": 134,
+          "objectFunctions": 1087,
+          "unresolved": 0
+        },
+        {
+          "name": "P2BlockMesh",
+          "linked": true,
+          "test": 0,
+          "exact": 134,
+          "objectFunctions": 1087,
+          "unresolved": 0
+        },
+        {
+          "name": "P2MeshBackend",
+          "linked": true,
+          "test": 0,
+          "exact": 42,
+          "objectFunctions": 238,
+          "unresolved": 0
+        },
+        {
+          "name": "P2MeshOrientation",
+          "linked": true,
+          "test": 0,
+          "exact": 0,
+          "objectFunctions": 6,
+          "unresolved": 0
+        },
+        {
+          "name": "P2PlayerBaseline",
+          "linked": true,
+          "test": 0,
+          "exact": 87,
+          "objectFunctions": 927,
+          "unresolved": 0
+        },
+        {
+          "name": "P2RecoveredPlayer",
+          "linked": true,
+          "test": 0,
+          "exact": 188,
+          "objectFunctions": 2028,
+          "unresolved": 0
+        },
+        {
+          "name": "P2TextureAtlas",
+          "linked": true,
+          "test": 2147483651,
+          "exact": 11,
+          "objectFunctions": 57,
+          "unresolved": 0
+        },
+        {
           "name": "Player",
           "linked": true,
           "test": 0,
           "exact": 87,
-          "objectFunctions": 929,
+          "objectFunctions": 935,
           "unresolved": 0
         },
         {
