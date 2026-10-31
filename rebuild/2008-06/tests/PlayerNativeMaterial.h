@@ -124,4 +124,7 @@ public:
     MaterialRef getMaterial(Attributes);
     MaterialRef getMegaMaterial(Attributes);
 };
+// Typed extraction of007ab0a0's backend setup, not a RenderScene ABI declaration.
+Ogre::MaterialPtr prepareBackend(MaterialBase&,void* context,int meshKind,int primitive,
+                                float depthBias,const std::string& skySphereFile);
 }

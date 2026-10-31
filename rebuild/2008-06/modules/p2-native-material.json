@@ -11,7 +11,7 @@
       "name": "block",
       "mode": "direct",
       "dir": "rebuild/2008-06/tests",
-      "files": "PlayerNativeMaterial.cpp PlayerNativeTexture.cpp PlayerTextureAtlas.cpp",
+      "files": "PlayerNativeMaterial.cpp PlayerNativeTexture.cpp PlayerTextureAtlas.cpp PlayerMaterialBackend.cpp",
       "includes_from_recipe": "rbxgs-view-dll",
       "defines_from_recipe": "rbxgs-view-dll",
       "extra_defines": "BOOST_ALL_NO_LIB",

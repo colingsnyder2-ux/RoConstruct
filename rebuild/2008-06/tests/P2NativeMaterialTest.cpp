@@ -75,6 +75,22 @@ int main(){
         reinterpret_cast<TexturedSlot>(slots[3])(probe.getPointer(),proxy,G3D::Color3::white(),.9f,50,0,0);
         if(probe->levelCount()!=2 || probe->getLevel(0).baseTexture().notNull() || probe->getLevel(1).baseTexture().getPointer()!=proxy.getPointer())return 19;
     }
+    // Original renderer state: all levels are created before backend binding.
+    for(int kind=0;kind<=4;++kind){
+        MaterialRef probe=new Material;
+        TextureRef proxy=new MegaTextureProxy(0,strip);
+        probe->appendLevel(proxy,G3D::Color3(.2f,.3f,.4f),.9f,50,0,0);
+        probe->appendLevel(G3D::Color3::white(),.6f,30,0,.3f);
+        Ogre::MaterialPtr backend=prepareBackend(*probe,0,kind,2,.125f,"");
+        if(backend.isNull() || prepareBackend(*probe,0,kind,2,.125f,"").getPointer()!=backend.getPointer())return 20;
+        Ogre::Technique* technique=backend->getTechnique(0);
+        if(technique->getNumPasses()!=2)return 21;
+        Ogre::Pass* opaque=technique->getPass(0),*alpha=technique->getPass(1);
+        if(!opaque->getLightingEnabled() || opaque->getDiffuse()!=Ogre::ColourValue(.2f,.3f,.4f,1) || opaque->getAmbient()!=Ogre::ColourValue(.2f,.3f,.4f))return 22;
+        if(opaque->getShininess()!=(kind==2?40.0f:kind==1 || kind==3?18.0f:10.0f) || opaque->getDepthWriteEnabled()!=(kind!=4))return 23;
+        if(opaque->getNumTextureUnitStates()!=1 || opaque->getTextureUnitState(0)->getTextureName()!="TextureAtlas" || opaque->getDepthBiasConstant()!=-2)return 24;
+        if(alpha->getDepthWriteEnabled() || alpha->getSourceBlendFactor()!=static_cast<Ogre::SceneBlendFactor>(7) || alpha->getDestBlendFactor()!=static_cast<Ogre::SceneBlendFactor>(9) || alpha->getDiffuse().a!=.7f)return 25;
+    }
     // 007ace40 copies backend refs; 007ad310 still unregisters on each destructor.
     // Preserve this target behavior instead of inventing move/last-ref semantics.
     {

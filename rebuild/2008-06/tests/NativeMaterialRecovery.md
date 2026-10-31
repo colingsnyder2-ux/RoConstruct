@@ -40,3 +40,13 @@ This standalone test does not close P2. The published recovered player remains
 unchanged. Next wire native material creation from007ab0a0, then original lighting
 setup007a9d30 using evidenced scene values instead of the mined padded analog.
 Full scene/cache/selector integration and final player controls remain open.
+
+PlayerMaterialBackend.cpp extracts the material block of007ab0a0 using these
+measured types. It retains native lighting-enabled passes, mesh-kind specular
+and shininess, depth bias, transparency blending, texture filtering/addressing,
+alpha rejection and reflection setup. The external sky sphere filename is an
+explicit asset input, not an invented content root. Tests check all five kind
+branches, two-pass creation, idempotent backend reuse, real atlas binding and
+material values. Alpha-texture and reflective-image branches are retained source
+but are not yet runtime exercised. This typed extraction does not reconstruct
+the enclosing RenderScene layout or close the player integration gate.

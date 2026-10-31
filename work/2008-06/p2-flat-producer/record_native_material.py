@@ -4,6 +4,7 @@ import json
 import os
 from pathlib import Path
 import subprocess
+import sys
 import time
 
 import psutil
@@ -15,7 +16,7 @@ def sha(path):
 
 
 def record():
-    output = Path(__file__).with_name('native-material-runtime')
+    output = Path(__file__).with_name(sys.argv[1] if len(sys.argv)>1 else 'native-material-runtime')
     output.mkdir(exist_ok=True)
     env = os.environ.copy()
     env.pop('ROC_BUILD', None)
@@ -31,6 +32,7 @@ def record():
     source_files = [
         'tests/PlayerNativeMaterial.h', 'tests/PlayerNativeMaterial.cpp',
         'tests/PlayerNativeTexture.cpp', 'tests/P2NativeMaterialTest.cpp',
+        'tests/PlayerMaterialBackend.cpp',
         'tests/P2TextureInteropTest.cpp', 'tests/PlayerTextureAtlas.cpp',
         'tests/PlayerTextureAtlas.h', 'modules/p2-native-material.json',
         'modules/p2-texture-interop.json', 'modules/p2-image-core.json',
