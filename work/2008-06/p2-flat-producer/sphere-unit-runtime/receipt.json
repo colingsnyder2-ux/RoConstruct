@@ -1,0 +1,95 @@
+{
+  "revision": "ad921338f69afcedfc980add5c14a927780c1756",
+  "ROC_BUILD": null,
+  "runs": {
+    "P2MeshBackendTest": {
+      "command": [
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2MeshBackendTest\\P2MeshBackendTest.exe"
+      ],
+      "cwd": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p2-flat-producer\\sphere-unit-runtime\\P2MeshBackendTest",
+      "exit": 0,
+      "exe_sha256": "2affa2c993f279455d76c2df4b99c35fea511fee3e791f3c145608b0c05d833d",
+      "map_sha256": "03d081eeb0970e454f908f7be698c4ecc2e9d7febd0fa1a8f87da6a9975a9f2f",
+      "report_sha256": "a6dd96d647f0d2e632bc1cc7e29a38af0092e41238c2ae6fa19380091cb7c723",
+      "library_sha256": "1603dfd2098e16faab08541776bcf4f016c37e6abdb0be2d9ac05c6ef0db2031",
+      "stdout_sha256": "a834b277b36eaf4f9acf6493c00d669f8b00f7f3568435ec834916edaa53f5c5",
+      "selected_symbols": [
+        "0001:000035f0       ?get@PlayerSphereCache@@YAABVSphere@Ogre@@K@Z 004045f0 f   linked:PlayerMeshBackend.obj",
+        "0001:00003700       ?has@PlayerSphereCache@@YA_NK@Z 00404700 f   linked:PlayerMeshBackend.obj",
+        "0001:00003750       ?remove@PlayerSphereCache@@YA_NK@Z 00404750 f   linked:PlayerMeshBackend.obj",
+        "0001:00003b20       ?set@PlayerSphereCache@@YAXKABVSphere@Ogre@@@Z 00404b20 f   linked:PlayerMeshBackend.obj",
+        "0001:00005700       __unwindfunclet$?get@PlayerSphereCache@@YAABVSphere@Ogre@@K@Z$0 00406700 f   linked:PlayerMeshBackend.obj",
+        "0001:00005709       __ehhandler$?get@PlayerSphereCache@@YAABVSphere@Ogre@@K@Z 00406709 f   linked:PlayerMeshBackend.obj",
+        "0001:000057a0       __unwindfunclet$?set@PlayerSphereCache@@YAXKABVSphere@Ogre@@@Z$0 004067a0 f   linked:PlayerMeshBackend.obj",
+        "0001:000057ab       __ehhandler$?set@PlayerSphereCache@@YAXKABVSphere@Ogre@@@Z 004067ab f   linked:PlayerMeshBackend.obj"
+      ],
+      "runtime_dll_inputs": {
+        "rgmain.dll": "b67d2e96c5bf28fe48799a96c7927c57b91c74e483b30975ee58ca45f470153c",
+        "rgdx.dll": "dfce3291ea1214f37aae8e009af1891c45ab7843eb639a914d9791418559a50e"
+      }
+    },
+    "P2BlockMeshTest": {
+      "command": [
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2BlockMeshTest\\P2BlockMeshTest.exe"
+      ],
+      "cwd": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p2-flat-producer\\sphere-unit-runtime\\P2BlockMeshTest",
+      "exit": 0,
+      "exe_sha256": "b4021377230ad115e368a68de2bce8b00822c41a3a7b513b0bcaa17aef72bff1",
+      "map_sha256": "eeb8a636ca192dcd1bf9efe7aa4b807fe9a5ca2b8462d2366d03d8a58421f97e",
+      "report_sha256": "4d7f0b311aaaaeb65b082a2610f5c47abf440a72fc1c24e1b7aacf4c795e72ef",
+      "library_sha256": "b10843310ce34da8c627881e0e3a53b95b16d0f199c467f3d7def1380ff372d4",
+      "stdout_sha256": "b0825cbdcfcdd0e9ab9b6d2cc199776e671250ffaf5adf17b43e56a0a49d1c8c",
+      "selected_symbols": [
+        "0001:0000c130       ?get@PlayerSphereCache@@YAABVSphere@Ogre@@K@Z 0040d130 f   linked:PlayerMeshBackend.obj",
+        "0001:0000c240       ?has@PlayerSphereCache@@YA_NK@Z 0040d240 f   linked:PlayerMeshBackend.obj",
+        "0001:0000c290       ?remove@PlayerSphereCache@@YA_NK@Z 0040d290 f   linked:PlayerMeshBackend.obj",
+        "0001:0000c400       ?set@PlayerSphereCache@@YAXKABVSphere@Ogre@@@Z 0040d400 f   linked:PlayerMeshBackend.obj",
+        "0001:00017ad0       __unwindfunclet$?get@PlayerSphereCache@@YAABVSphere@Ogre@@K@Z$0 00418ad0 f   linked:PlayerMeshBackend.obj",
+        "0001:00017ad9       __ehhandler$?get@PlayerSphereCache@@YAABVSphere@Ogre@@K@Z 00418ad9 f   linked:PlayerMeshBackend.obj",
+        "0001:00017b30       __unwindfunclet$?set@PlayerSphereCache@@YAXKABVSphere@Ogre@@@Z$0 00418b30 f   linked:PlayerMeshBackend.obj",
+        "0001:00017b3b       __ehhandler$?set@PlayerSphereCache@@YAXKABVSphere@Ogre@@@Z 00418b3b f   linked:PlayerMeshBackend.obj"
+      ],
+      "runtime_dll_inputs": {
+        "rgmain.dll": "b67d2e96c5bf28fe48799a96c7927c57b91c74e483b30975ee58ca45f470153c",
+        "rgdx.dll": "dfce3291ea1214f37aae8e009af1891c45ab7843eb639a914d9791418559a50e"
+      }
+    },
+    "P2BlockFactoryTest": {
+      "command": [
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2BlockFactoryTest\\P2BlockFactoryTest.exe"
+      ],
+      "cwd": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p2-flat-producer\\sphere-unit-runtime\\P2BlockFactoryTest",
+      "exit": 0,
+      "exe_sha256": "7acc0542255c620a2be0714f6975248dd0f52d989ee88718e0c27c9a3c301008",
+      "map_sha256": "82625533232f10e3c5ddcbefe604712f0ab6cf8202261af64f0f9ad4f473f6da",
+      "report_sha256": "1ea6838b699bcc5042bb3c9f914019b76a2c2adc7f16879b3f0eae6cd88351f5",
+      "library_sha256": "ece83a5cc7b675e366fcefc6e8a1fbba3ced677719df4fd46210ff387f18a811",
+      "stdout_sha256": "b3a08514dc942084e0499ba54fea490356e07d045c10a6ecc5267cd19eaa47ce",
+      "selected_symbols": [
+        "0001:0000db00       ?remove@PlayerSphereCache@@YA_NK@Z 0040eb00 f   linked:PlayerMeshBackend.obj"
+      ],
+      "runtime_dll_inputs": {
+        "rgmain.dll": "b67d2e96c5bf28fe48799a96c7927c57b91c74e483b30975ee58ca45f470153c",
+        "rgdx.dll": "dfce3291ea1214f37aae8e009af1891c45ab7843eb639a914d9791418559a50e"
+      }
+    }
+  },
+  "source_sha256": {
+    "rebuild/2008-06/tests/PlayerMeshBackend.cpp": "b27eabf490dac098cd276a6619f3621e0351089fc48457a958dcb85519765c32",
+    "rebuild/2008-06/tests/PlayerMeshBackend.h": "c53b22cd7a5330b08488dab2d5cad680c93a66d7433fe737c049cc3ea7606cf3",
+    "rebuild/2008-06/tests/PlayerBlockMesh.cpp": "e211d388ca7950fbaa8309189d1719a6d4f5a34d981bce6fe07aec2d3b81a7a7",
+    "rebuild/2008-06/tests/P2MeshBackendTest.cpp": "6dc84b0bf13ff9daad026547862b8a288ddf8628391e0dbd747f9bcb03682352",
+    "rebuild/2008-06/tests/P2BlockMeshTest.cpp": "e1ec6ad13cc9f8e7b1bb267c6851c12cd3a3364c551c088a3a463bac8d86b4b4",
+    "rebuild/2008-06/tests/P2BlockFactoryTest.cpp": "dbc3bdca8a1da24444a8af90953f9263e6a8c0342f509c83780fd389614fa771"
+  },
+  "coverage": [
+    "Map insertion/update/reference stability/key zero/missing error/removal.",
+    "32 smooth/tiled block lifetimes, both index widths, retained owner preserves sphere until final destruction.",
+    "512 factory requests,120-key purge regression."
+  ],
+  "limits": [
+    "Unit DLL inputs hashed; actual loaded DLL paths are traced separately in sphere-player-runtime.",
+    "Empty global container persists as in native initializer.",
+    "Shared-index and full node/scene integration remain open."
+  ]
+}

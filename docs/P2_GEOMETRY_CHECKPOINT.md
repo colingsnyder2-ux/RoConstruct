@@ -1,5 +1,15 @@
 # P2 flat producer checkpoint, 2026-10-31
 
+Sphere cache now integrated at sourcead921338f6. Four builds and three normal
+unit regressions pass; normal player pixels1879/2080/0/0, two cache cycles,
+levels/refs/backends/spheres0 pass. Receipts:sphere-unit-runtime/receipt.json and
+sphere-player-runtime/receipt.json under work/2008-06/p2-flat-producer/. Setter
+extent corrected locally to212-byte evidence; registry/server unchanged.
+Next audit remaining P2 acceptance against the ordinary-block/first-level scope,
+then resolve the actual scene/node/metadata/selector bridge questions. P2 open.
+After P2, user requests default skybox + red studded block and an actual rendered
+picture or spinning video. Green acceptance fixture stays separate.
+
 Material/light integration sourcee177bc4a9e builds and passes normal lit pixel
 controls1879/2080/0/0; cache two9->8->0 cycles and zero mesh cleanup pass.
 Receipt:work/2008-06/p2-flat-producer/native-material-player-runtime/receipt.json.

@@ -1,5 +1,42 @@
 # Current player checkpoint
 
+User follow-up: after P2, make skybox work with a default skybox and a visible red
+block with studs. Use identified original period sky assets; default demo camera
+must show the studded face. Keep green acceptance fixture separate. This is an
+additional deliverable, not permission to skip unfinished P2 connections.
+When that demo is finished, deliver an actual rendered screenshot or a video of
+it spinning; user prefers either. Prefer a short spinning video if capture tools
+are available. Capture the real player output, not a synthetic mockup.
+
+Sphere-cache lifetime now integrated at sourcead921338f6. p2-mesh-backend,
+p2-block-mesh,p2-block-factory,p2-recovered-player all link/test0. Three normal
+unit processes pass; receipt:p2-flat-producer/sphere-unit-runtime/receipt.json.
+Normal player selftest1879/2080/0/0 and two cache cycles pass; final cleanup
+levels/refs/backends/spheres all0. Falling240 smoke still y=-3.80274. Player
+receipt:p2-flat-producer/sphere-player-runtime/receipt.json. Backend key is
+registered from original007aba1d/007abae7 behavior and erased after Level backend
+deletion per00548766. Tests cover stable mapped references,zero key,missing
+error,update,erase,32 retained Level lifetimes and two reload cycles. Empty
+global map persists like native initializer; no all-heap-freed claim.
+
+Setter00682350 stored extent211 cut the final short jump in half. Actual
+00682422->006823f0 ends00682424, then int3 padding: full size212. Full disassembly
+and hashes in sphere-setter-extent.json/sphere-setter-full-disassembly.txt. No
+client registry/server extent edited, no new exact credit. Shared-index removal
+at00548992 remains outside exercised first-level branch. Prior passing player
+EXE/map/DLLs preserved locally in pre-sphere-player-e177bc4a9e/.
+
+Next: audit remaining P2 requirements against the actual roadmap, keeping the
+ordinary block/first-level scope distinct from full-executable P9/P10 work.
+Remaining bridge questions are original scene/node use, metadata parent and
+selector, plus original-client runtime/visual proof. Current native node table
+0084d30c has116 slots:64=00681190 _update,86=006817e0 _updateBounds,
+87=00681560 _findVisibleObjects,110=00681f90 setTransform,111=006818e0
+getTransform,112=00681a00 hasTransform,113/114/115 sphere set/get/has.
+These names must be checked against the binary; mined units are provisional.
+The owner entity implementations and debug edits remain unchanged. P2 remains
+open pending that acceptance audit; do not equate these cache tests with closure.
+
 Material/light player integration tested at sourcee177bc4a9e. Build links/exits0;
 normal selftest passes1879/2080/0/0, two cache9->8->0 cycles return mesh/material
 counts to baseline; cleanup levels/refs/backends all0. Falling240 smoke still
