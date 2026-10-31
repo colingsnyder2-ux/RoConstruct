@@ -1,5 +1,13 @@
 # P2 flat producer checkpoint, 2026-10-31
 
+Latest material prerequisite: source18624d7141, normal-process receipt at
+work/2008-06/p2-flat-producer/native-material-runtime/receipt.json. Real native
+Material/Level/TextureProxy layout/ownership tests and independent original/PE
+vtable audit pass. Thirty-two factory/backend lifetimes and texture GC pass.
+Clean GLG3D dependency avoids inherited verified_sinks. Generic legacy resolver
+branches remain runtime-unproven. Player remains unchanged; renderer material
+creation007ab0a0/light setup007a9d30 are next. P2 remains open.
+
 Imported OpenCode milestone claims were checked against current local files.
 Entity code was preserved. `--p3test` is absent from this revision's parser, and
 missing-place paths silently use the built-in fixture. These are acceptance gaps.

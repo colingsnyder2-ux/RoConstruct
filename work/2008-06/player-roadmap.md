@@ -1,5 +1,17 @@
 # Current player checkpoint
 
+Native material prerequisite now tested at source18624d7141. Modules
+p2-texture-interop/p2-native-material link and exit0; normal-process runs also
+exit0. Receipt:p2-flat-producer/native-material-runtime/receipt.json. Measured
+Material/Level/TextureProxy hierarchy, offsets and five emitted vtables checked
+against original tables/RTTI. Fixed-slot calls cover Material2/3 and Level2/3.
+MSVC reverses overloaded virtual declaration groups; declarations now emit the
+original order. Real mega atlas resolution,32 weak-cache/backend lifetimes and
+texture GC pass. No verified_sinks in either map. Legacy file/shade resolver
+branches remain runtime-unproven. Player executable/source remain unchanged.
+Next: original renderer material creation007ab0a0 and lighting007a9d30; do not
+adopt the mined padded scene/owner declarations. P2 remains open.
+
 P2 IN PROGRESS. Factory/cache and native-default paired levels now integrated.
 Tested source:0f567d02e8; receipt:p2-flat-producer/factory-runtime/receipt.json.
 Builds:p2-block-factory, p2-block-mesh, p2-recovered-player all link/exit0.
@@ -66,11 +78,12 @@ precision preservation was added. Real strip hashdc5418f1...dae85e4 matches both
 August2007 client and RCCService0.3.784.0 installer (PEMay14,2008). Exact June2008
 asset identity remains unproven; record it as external dependency, not replacement art.
 
-Next: native Material/Level/TextureProxy ownership and original renderer material
+Earlier next edge (ownership prerequisite now completed above): native Material/Level/TextureProxy ownership and original renderer material
 creation for this same block. Read atlas-material-evidence.json first. Material
 size18, Level38; constructor007ad230 leaves matte null (no donor alphaOnlyVersion
 call); destructor007ad310 unregisters Ogre material. Native Level slot2 resolves
-proxy with context, slot3 returns proxy ref: provisional header order is wrong.
+proxy with context, slot3 returns proxy ref: provisional donor order was wrong;
+new declarations account for MSVC overload reversal and emitted tables pass.
 TextureProxyBase is30 bytes with eight slots: dtor, set/getint28, set/getfloat2c,
 getSize, resolve, shade. Donor getSize slot1 is incompatible with native slot5.
 00551bf0 initializes28=1,2c=1.0. Native RenderNew proxy fields30/34/38/3c/40/44/48/54
