@@ -1,0 +1,31 @@
+{
+ "name": "MfcAtl",
+ "description": "Static MFC 9.0 / ATL 8.0-9.0 code the 2008-06 exe links (mfcs90.lib, atls.lib). No upstream layer: only exact mined mfc-*/atl-* sources, swapped in by swap_build.py (verified layer) and force-linked by the test.",
+ "mfc_import": true,
+ "layers": [
+  {
+   "name": "sdk-helpers",
+   "mode": "direct",
+   "dir": "rebuild/2008-06/glue/mfcatl",
+   "files": "sdk_helpers.cpp",
+   "defines": "WIN32 NDEBUG _MBCS _CRT_SECURE_NO_WARNINGS",
+   "flags": "/O2 /Ob0 /GS- /EHsc /MD"
+  }
+ ],
+ "test": "mfcatl_link",
+ "test_includes": [
+  "rebuild/2008-06/out/MfcAtl/force"
+ ],
+ "verified": true,
+ "force_verified": true,
+ "prune_unselected_sections": true,
+ "toolchain_libs": [
+  "atls",
+  "mfcs90"
+ ],
+ "prefer_module_helpers": true,
+ "runtime_files": [
+  "tools/vc2008rtm/Windows/winsxs/x86_microsoft.vc90.mfc_1fc8b3b9a1e18e3b_9.0.21022.8_none_b81d038aaf540e86/mfc90.dll"
+ ],
+ "force_owned": true
+}
