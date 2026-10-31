@@ -1,105 +1,118 @@
-// from server: 65% by atomic.potato
-// roc 2009-06 00659b20  unit: RBX::VCamera::?$FactoryProduct  size: 181 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 00659b20
+// from server: 90% by EspClaude
+// from server: 100% by Espeon
+// roc 2008-06 005cc740  unit: RBX::VCamera::?$FactoryProduct  size: 201 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 005cc740
 //
-// 00659b20  d9ee                 fldz 
-// 00659b22  83ec0c               sub esp, 0xc
-// 00659b25  d85c2410             fcomp dword ptr [esp + 0x10]
-// 00659b29  56                   push esi
-// 00659b2a  8bf1                 mov esi, ecx
-// 00659b2c  dfe0                 fnstsw ax
-// 00659b2e  f6c444               test ah, 0x44
-// 00659b31  0f8b95000000         jnp 0x659bcc
-// 00659b37  8d442408             lea eax, [esp + 8]
-// 00659b3b  50                   push eax
-// 00659b3c  8d4c2408             lea ecx, [esp + 8]
-// 00659b40  51                   push ecx
-// 00659b41  8d542414             lea edx, [esp + 0x14]
-// 00659b45  52                   push edx
-// 00659b46  8bce                 mov ecx, esi
-// 00659b48  e893faffff           call 0x6595e0
-// 00659b4d  f6058ccba40001       test byte ptr [0xa4cb8c], 1
-// 00659b54  7515                 jne 0x659b6b
-// 00659b56  d905b0118e00         fld dword ptr [0x8e11b0]
-// 00659b5c  830d8ccba40001       or dword ptr [0xa4cb8c], 1
-// 00659b63  d91588cba400         fst dword ptr [0xa4cb88]
-// 00659b69  eb06                 jmp 0x659b71
-// 00659b6b  d90588cba400         fld dword ptr [0xa4cb88]
-// 00659b71  d9442404             fld dword ptr [esp + 4]
-// 00659b75  d9442414             fld dword ptr [esp + 0x14]
-// 00659b79  d8c1                 fadd st(1)
-// 00659b7b  d9c2                 fld st(2)
-// 00659b7d  d9e0                 fchs 
-// 00659b7f  d8d1                 fcom st(1)
-// 00659b81  dfe0                 fnstsw ax
-// 00659b83  f6c401               test ah, 1
-// 00659b86  7533                 jne 0x659bbb
-// 00659b88  ddd9                 fstp st(1)
-// 00659b8a  ddda                 fstp st(2)
-// 00659b8c  dde9                 fucomp st(1)
-// 00659b8e  dfe0                 fnstsw ax
-// 00659b90  f6c444               test ah, 0x44
-// 00659b93  7b35                 jnp 0x659bca
-// 00659b95  d9442408             fld dword ptr [esp + 8]
-// 00659b99  83ec0c               sub esp, 0xc
-// 00659b9c  d95c2408             fstp dword ptr [esp + 8]
-// 00659ba0  8bce                 mov ecx, esi
-// 00659ba2  d95c2404             fstp dword ptr [esp + 4]
-// 00659ba6  d9442418             fld dword ptr [esp + 0x18]
-// 00659baa  d91c24               fstp dword ptr [esp]
-// 00659bad  e8defeffff           call 0x659a90
-// 00659bb2  b001                 mov al, 1
-// 00659bb4  5e                   pop esi
-// 00659bb5  83c40c               add esp, 0xc
-// 00659bb8  c20400               ret 4
-// 00659bbb  ddd8                 fstp st(0)
-// 00659bbd  d8d2                 fcom st(2)
-// 00659bbf  dfe0                 fnstsw ax
-// 00659bc1  f6c401               test ah, 1
-// 00659bc4  75c4                 jne 0x659b8a
-// 00659bc6  ddd8                 fstp st(0)
-// 00659bc8  ebc2                 jmp 0x659b8c
-// 00659bca  ddd8                 fstp st(0)
-// 00659bcc  32c0                 xor al, al
-// 00659bce  5e                   pop esi
-// 00659bcf  83c40c               add esp, 0xc
-// 00659bd2  c20400               ret 4
+// 005cc740  d9ee                 fldz 
+// 005cc742  83ec0c               sub esp, 0xc
+// 005cc745  d85c2410             fcomp dword ptr [esp + 0x10]
+// 005cc749  56                   push esi
+// 005cc74a  8bf1                 mov esi, ecx
+// 005cc74c  dfe0                 fnstsw ax
+// 005cc74e  f6c444               test ah, 0x44
+// 005cc751  0f8ba9000000         jnp 0x5cc800
+// 005cc757  8d442408             lea eax, [esp + 8]
+// 005cc75b  50                   push eax
+// 005cc75c  8d4c2408             lea ecx, [esp + 8]
+// 005cc760  51                   push ecx
+// 005cc761  8d542414             lea edx, [esp + 0x14]
+// 005cc765  52                   push edx
+// 005cc766  8bce                 mov ecx, esi
+// 005cc768  e853f9ffff           call 0x5cc0c0
+// 005cc76d  f605ac98970001       test byte ptr [0x9798ac], 1
+// 005cc774  7515                 jne 0x5cc78b
+// 005cc776  d905e8a38300         fld dword ptr [0x83a3e8]
+// 005cc77c  830dac98970001       or dword ptr [0x9798ac], 1
+// 005cc783  d915a8989700         fst dword ptr [0x9798a8]
+// 005cc789  eb06                 jmp 0x5cc791
+// 005cc78b  d905a8989700         fld dword ptr [0x9798a8]
+// 005cc791  d9442404             fld dword ptr [esp + 4]
+// 005cc795  d9442414             fld dword ptr [esp + 0x14]
+// 005cc799  d8c1                 fadd st(1)
+// 005cc79b  d9c2                 fld st(2)
+// 005cc79d  d9e0                 fchs 
+// 005cc79f  d8d1                 fcom st(1)
+// 005cc7a1  dfe0                 fnstsw ax
+// 005cc7a3  f6c401               test ah, 1
+// 005cc7a6  7547                 jne 0x5cc7ef
+// 005cc7a8  ddd9                 fstp st(1)
+// 005cc7aa  ddda                 fstp st(2)
+// 005cc7ac  dde9                 fucomp st(1)
+// 005cc7ae  dfe0                 fnstsw ax
+// 005cc7b0  f6c444               test ah, 0x44
+// 005cc7b3  7b49                 jnp 0x5cc7fe
+// 005cc7b5  d9442408             fld dword ptr [esp + 8]
+// 005cc7b9  83ec0c               sub esp, 0xc
+// 005cc7bc  d95c2408             fstp dword ptr [esp + 8]
+// 005cc7c0  8bce                 mov ecx, esi
+// 005cc7c2  d95c2404             fstp dword ptr [esp + 4]
+// 005cc7c6  d9442418             fld dword ptr [esp + 0x18]
+// 005cc7ca  d91c24               fstp dword ptr [esp]
+// 005cc7cd  e8befeffff           call 0x5cc690
+// 005cc7d2  8bce                 mov ecx, esi
+// 005cc7d4  e877f7ffff           call 0x5cbf50
+// 005cc7d9  85c0                 test eax, eax
+// 005cc7db  7409                 je 0x5cc7e6
+// 005cc7dd  8b10                 mov edx, dword ptr [eax]
+// 005cc7df  8bc8                 mov ecx, eax
+// 005cc7e1  8b420c               mov eax, dword ptr [edx + 0xc]
+// 005cc7e4  ffd0                 call eax
+// 005cc7e6  b001                 mov al, 1
+// 005cc7e8  5e                   pop esi
+// 005cc7e9  83c40c               add esp, 0xc
+// 005cc7ec  c20400               ret 4
+// 005cc7ef  ddd8                 fstp st(0)
+// 005cc7f1  d8d2                 fcom st(2)
+// 005cc7f3  dfe0                 fnstsw ax
+// 005cc7f5  f6c401               test ah, 1
+// 005cc7f8  75b0                 jne 0x5cc7aa
+// 005cc7fa  ddd8                 fstp st(0)
+// 005cc7fc  ebae                 jmp 0x5cc7ac
+// 005cc7fe  ddd8                 fstp st(0)
+// 005cc800  32c0                 xor al, al
+// 005cc802  5e                   pop esi
+// 005cc803  83c40c               add esp, 0xc
+// 005cc806  c20400               ret 4
 
-extern float g_8e11b0;
-extern float g_a4cb88;
-extern int g_a4cb8c;
+// from server: 82% by colin
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD /fp:fast
+extern float g83a3e8;
 
-struct VCamera {
-    char pad[0x100];
-    bool sub_6595e0(float* a, float* b, float* c);
-    void sub_659a90(float a, float b, float c);
-    bool func(float arg);
+namespace RBX {
+struct ICameraOwner {
+    virtual void slot0();
+    virtual void slot1();
+    virtual void slot2();
+    virtual void f();
 };
 
-bool VCamera::func(float arg) {
-    if (arg == 0.0f) {
+struct Camera {
+    ICameraOwner* getCameraOwner();
+    void getAngles(float&, float&, float&);
+    void setAngles(float, float, float);
+    bool adjust(float);
+};
+}
+
+bool RBX::Camera::adjust(float delta) {
+    if (delta == 0.0f)
         return false;
+
+    float x, y, z;
+    getAngles(x, y, z);
+
+    static float limit = g83a3e8;
+    double value = (double)delta + y;
+    value = -(double)limit >= value ? -(double)limit :
+        (value >= (double)limit ? (double)limit : value);
+
+    if (value != y) {
+        setAngles(x, (float)value, z);
+        ICameraOwner* owner = getCameraOwner();
+        if (owner)
+            owner->f();
+        return true;
     }
-    float a, b, c;
-    sub_6595e0(&a, &b, &c);
-    if ((g_a4cb8c & 1) == 0) {
-        g_a4cb88 = g_8e11b0;
-        g_a4cb8c |= 1;
-    }
-    float t = g_a4cb88;
-    float sum = b + t;
-    float neg = -c;
-    if (neg < sum) {
-        if (neg == sum) {
-            return false;
-        }
-    } else {
-        if (neg > sum) {
-            if (neg == sum) {
-                return false;
-            }
-        }
-    }
-    sub_659a90(a, t, c);
-    return true;
+    return false;
 }

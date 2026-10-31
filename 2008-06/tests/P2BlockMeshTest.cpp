@@ -26,12 +26,17 @@ int main() {
         if(bounds.getMinimum()!=Ogre::Vector3(-1,-2,-3) || bounds.getMaximum()!=Ogre::Vector3(1,2,3))return 6;
         if(level.backend->indexData->indexCount!=static_cast<unsigned>(level.indexArray.size()*3/2))return 7;
         Ogre::RbxSubMesh* uploaded=level.backend;
+        PlayerSphereCache::Key key=reinterpret_cast<PlayerSphereCache::Key>(uploaded);
+        PlayerSphereCache::set(key,Ogre::Sphere(bounds.getCenter(),bounds.getHalfSize().length()));
         level.upload(i%2!=0,bounds);
         if(level.backend!=uploaded || PlayerMeshBackend::liveMeshes()!=1)return 10;
         PlayerBlockMesh::MeshRef retained=mesh;mesh=PlayerBlockMesh::MeshRef();
         if(PlayerBlockMesh::liveLevels()!=1 || PlayerMeshBackend::liveMeshes()!=1)return 8;
+        if(!PlayerSphereCache::has(key) || PlayerSphereCache::size()!=1 ||
+           PlayerSphereCache::get(key).getCenter()!=Ogre::Vector3::ZERO)return 14;
         retained=PlayerBlockMesh::MeshRef();
         if(PlayerBlockMesh::liveLevels() || PlayerBlockMesh::activeReferences() || PlayerMeshBackend::liveMeshes())return 9;
+        if(PlayerSphereCache::has(key) || PlayerSphereCache::size())return 15;
     }
     // Exercise native Mesh +0x80 ownership independently of Level +0x24.
     G3D::ReferenceCountedPointer<PlayerBlockMesh::Mesh> shadowOwner=new PlayerBlockMesh::Mesh;

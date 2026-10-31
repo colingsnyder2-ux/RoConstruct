@@ -1,136 +1,60 @@
-// from server: 84% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8tree/Service.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "v8tree/Service.h"
-#include <G3D/format.h>
-
-namespace RBX
-{
-	const char* sServiceProvider = "ServiceProvider";
-
-	Reflection::BoundFuncDesc<ServiceProvider, boost::shared_ptr<Instance>(std::string), 1> ServiceProvider::func_service(&ServiceProvider::findServiceByClassNameString, "service", "name", Reflection::FunctionDescriptor::AnyCaller);
-	Reflection::BoundFuncDesc<ServiceProvider, boost::shared_ptr<Instance>(std::string), 1> ServiceProvider::func_GetService(&ServiceProvider::findServiceByClassNameString, "GetService", "name", Reflection::FunctionDescriptor::AnyCaller);
-
-	size_t ServiceProvider::newIndex()
-	{
-		static size_t index = 0xFFFFFFFF; // max unsigned integer
-		return InterlockedIncrement((LONG*)&index);
-	}
-
-	void ServiceProvider::onChildAdded(Instance* instance)
-	{
-		RBXASSERT(dynamic_cast<ServiceProvider*>(instance)==NULL);
-
-		if (dynamic_cast<Service*>(instance))
-		{
-			if (instance->getClassName() != Name::getNullName())
-			{
-				RBXASSERT(!findServiceByClassName(instance->getClassName()));
-				serviceMap[&instance->getClassName()] = shared_from(instance);
-			}
-			Notifier<ServiceProvider, ServiceAdded>::raise(ServiceAdded(instance));
-		}
-	}
-
-	void ServiceProvider::onChildRemoving(Instance* instance)
-	{
-		std::map<const Name*, boost::shared_ptr<Instance>>::iterator it = serviceMap.find(&instance->getClassName());
-		if (it != serviceMap.end())
-			Notifier<ServiceProvider, ServiceRemoving>::raise(ServiceRemoving(instance));
-	}
-
-	void ServiceProvider::onDescendentAdded(Instance* instance)
-	{
-		Instance::onDescendentAdded(instance);
-		instance->onServiceProvider(NULL, this);
-	}
-
-	void ServiceProvider::onDescendentRemoving(const boost::shared_ptr<Instance>& instance)
-	{
-		instance->onServiceProvider(this, NULL);
-		Instance::onDescendentRemoving(instance);
-	}
-
-	void ServiceProvider::onAddListener(Listener<ServiceProvider, ServiceAdded>* listener) const
-	{
-		if (getChildren())
-		{
-			std::vector<boost::shared_ptr<Instance>>::const_iterator end = getChildren()->end();
-			std::vector<boost::shared_ptr<Instance>>::const_iterator iter = getChildren()->begin();
-
-			for (; iter != end; iter++)
-			{
-				if (dynamic_cast<Service*>(iter->get()))
-				{
-					Notifier<ServiceProvider, ServiceAdded>::raise(ServiceAdded(iter->get()), listener);
-				}
-			}
-		}
-	}
-
-	void ServiceProvider::clearServices()
-	{
-		RBXASSERT(numChildren()==0);
-		serviceArray.clear();
-		serviceMap.clear();
-	}
-
-	boost::shared_ptr<Instance> ServiceProvider::createChild(const Name& className)
-	{
-		RBXASSERT(className!=RBX::Name::getNullName());
-
-		boost::shared_ptr<Instance> instance = findServiceByClassName(className);
-		if (instance)
-		{
-			return instance;
-		}
-
-		return AbstractFactoryProduct<Instance>::create(className);
-	}
-
-	boost::shared_ptr<Instance> ServiceProvider::findServiceByClassName(const Name& className) const
-	{
-		RBXASSERT(className!=RBX::Name::getNullName());
-
-		std::map<const Name*, boost::shared_ptr<Instance>>::const_iterator it = serviceMap.find(&className);
-		if (it != serviceMap.end())
-			return (*it).second;
-
-		return boost::shared_ptr<Instance>();
-	}
-
-	boost::shared_ptr<Instance> ServiceProvider::findServiceByClassNameString(std::string sName)
-	{
-		const Name& name = Name::lookup(sName);
-		if (name.empty())
-			throw std::runtime_error(G3D::format("'%s' is not a valid Service name", sName.c_str()));
-
-		return RBX::shared_from(create(this, name));
-	}
-
-	Instance* ServiceProvider::create(Instance* context, const Name& name)
-	{
-		ServiceProvider* provider = Instance::findFirstAncestorOfClass<ServiceProvider>(context);
-		if (!provider)
-			return NULL;
-
-		boost::shared_ptr<Instance> child = provider->createChild(name);
-		if (child)
-			child->setParent(provider);
-
-		return child.get();
-	}
-
-	// See: DataModel::askAddChild
-	// ServiceProvider likely has an implementation similar to this, but DataModel just reimplemented it in exactly the same way
-	// Many other ServiceProviders have implementations like this
-	// TODO: check match
-	bool ServiceProvider::askAddChild(const Instance* instance) const
-	{
-		return dynamic_cast<const Service*>(instance) != NULL;
-	}
+namespace boost { template<class T> class shared_ptr { T* px; void* pn; }; }
+#include <string>
+#include <vector>
+namespace RBX {
+class Instance;
+class ContentId { public: std::string id; };
+class Name { public: static const Name& declare(const char* name); };
+namespace Reflection {
+class ClassDescriptor;
+class Type { public: template<class T> static const Type& singleton(); };
+template<class T> struct ExeCounter { static int n; };
+template<class T> inline const Type& countedType() { ++ExeCounter<T>::n; return Type::singleton<T>(); }
+class Value { public: Value(); ~Value(); char pad[8]; };
+class FunctionDescriptor {
+public:
+    enum Security { AnyCaller };
+    struct Signature {
+        const Type* resultType; char pad[0x20];
+        void addArgument(const Name& name, const Type& type, const Value& def);
+    };
+protected:
+    FunctionDescriptor(ClassDescriptor& c, const char* name, Security security);
+public:
+    virtual ~FunctionDescriptor();
+    char pad[0x10];
+    Signature signature;
+};
+template<class Class> class FuncDesc : public FunctionDescriptor {
+public:
+    FuncDesc(const char* name, Security security)
+        : FunctionDescriptor(Class::classDescriptor(), name, security) {}
+};
+template<class Class, class Function, int N> class BoundFuncDesc;
+template<class Class, class R, class Arg1> class BoundFuncDesc<Class, R(Arg1), 1> : public FuncDesc<Class> {
+public:
+    typedef R (Class::*FunctionSig)(Arg1);
+    FunctionSig function;
+    Value default1;
+    void declareSignature(const char* arg1Name)
+    {
+        signature.resultType = &countedType<R>();
+        signature.addArgument(Name::declare(arg1Name), countedType<Arg1>(), default1);
+    }
+    BoundFuncDesc(FunctionSig function, const char* name, const char* arg1Name, Security security)
+        : FuncDesc<Class>(name, security), function(function)
+    {
+        declareSignature(arg1Name);
+    }
+    virtual ~BoundFuncDesc() {}
+};
+}
+class ExeBase { public: virtual void f(); };
+class ExeBase2 { public: virtual void g(); };
+class ServiceProvider : public ExeBase, public ExeBase2 { public: static Reflection::ClassDescriptor& classDescriptor(); };
+template class Reflection::BoundFuncDesc<ServiceProvider, boost::shared_ptr<Instance>(std::string), 1>;
 }

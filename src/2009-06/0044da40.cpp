@@ -1,4 +1,4 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc 2008-06 0044f730  unit: ExitCommand  size: 105 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0044f730
@@ -90,7 +90,7 @@
 struct Window {
     char padding0[0x20];
     void* handle;
-    char padding1[0xE0];
+    char padding1[0xE4];
     unsigned char closing;
 };
 

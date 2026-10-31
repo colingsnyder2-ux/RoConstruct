@@ -1,36 +1,73 @@
-// from server: 47% by atomic.potato
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 76% by EspClaude
+// from server: 100% by auto
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// roc-lib: rbxgs util/standardout.cpp
 
-struct Inner {
-    void sub_5e1b80(void*);
-    char pad[8];
-};
+// Candidate translation unit (score above; library headers required).
+#include "util/standardout.h"
+#include "util/Log.h"
+#include <G3D/format.h>
 
-struct Outer {
-    void* field0;
-    Inner field4;
-    void assign(void*);
-};
+namespace RBX
+{
+	void StandardOut::print(MessageType type, const char* format, ...)
+	{
+		va_list argsList;
+		va_start(argsList, format);
+		std::string message = G3D::vformat(format, argsList);
+		va_end(argsList);
 
-void Outer::assign(void* p) {
-    field0 = p;
-    field4.sub_5e1b80(p);
-    if (p) {
-        *(void**)p = p;
-        void* ebx = *(void**)&field4;
-        if (ebx != *(void**)((char*)p + 4)) {
-            if (ebx) {
-                _InterlockedExchangeAdd((volatile long*)((char*)ebx + 8), 1);
-            }
-            void* ecx = *(void**)((char*)p + 4);
-            if (ecx) {
-                if (_InterlockedExchangeAdd((volatile long*)((char*)ecx + 8), -1) == 1) {
-                    void** vt = *(void***)ecx;
-                    ((void (__stdcall*)(void*))vt[2])(ecx);
-                }
-            }
-            *(void**)((char*)p + 4) = ebx;
-        }
-    }
+		if (Log::current())
+		{
+			if (type == MESSAGE_ERROR)
+				Log::current()->writeEntry(Log::Error, message.c_str());
+			else if (type == MESSAGE_WARNING)
+				Log::current()->writeEntry(Log::Warning, message.c_str());
+			else if (type == MESSAGE_INFO)
+				Log::current()->writeEntry(Log::Information, message.c_str());
+		}
+
+		if (Notifier<StandardOut, StandardOutMessage>::hasListeners())
+		{
+			boost::mutex::scoped_lock lock(sync);
+			if (Notifier<StandardOut, StandardOutMessage>::hasListeners())
+				Notifier<StandardOut, StandardOutMessage>::raise(StandardOutMessage(type, message.c_str()));
+		}
+	}
+
+	void StandardOut::print(MessageType type, const std::exception& exp)
+	{
+		print(type, exp.what());
+	}
+
+	void StandardOut::print_exception(const boost::function0<void>& f, MessageType type, bool rethrow)
+	{
+		try
+		{
+			f();
+		}
+		catch (std::exception& ex)
+		{
+			singleton()->print(type, ex);
+
+			if (rethrow)
+				throw;
+		}
+	}
+
+	boost::shared_ptr<StandardOut> StandardOut::singleton()
+	{
+		static boost::shared_ptr<StandardOut> standardOut(new StandardOut());
+		return standardOut;
+	}
+
+	StandardOut::StandardOut()
+	{
+	}
+
+	StandardOut::~StandardOut()
+	{
+	}
 }

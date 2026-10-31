@@ -1,4 +1,4 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by auto
 // roc 2008-06 005922d0  unit: RBX::RootInstance  size: 117 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005922d0
@@ -42,7 +42,7 @@
 // standard library set<pod36> (function ??0?$_Tree@V?$_Tset_traits@UE@@U?$less@UE@@@std@@V?$allocator@UE@@@3@$0A@@std@@@std@@QAE@ABU?$less@UE@@@1@ABV?$allocator@UE@@@1@@Z)
 
 // stl: set<pod36>
-struct E { int v[9]; };
+struct E { int v[22]; };
 #include <set>
 bool operator<(const E&, const E&);
 template class std::set<E>;

@@ -1,219 +1,172 @@
-// from server: 53% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: boost-1.34.1 libs/thread/src/tss_hooks.cpp
+// from server: 100% by EspClaude
+// roc 2009-06 005ccb00  unit: VCRenderSettingsItem::?$EnumPropDescriptor  size: 48 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 005ccb00
+//
+// 005ccb00  8b491c               mov ecx, dword ptr [ecx + 0x1c]
+// 005ccb03  8b01                 mov eax, dword ptr [ecx]
+// 005ccb05  8b542404             mov edx, dword ptr [esp + 4]
+// 005ccb09  8b4008               mov eax, dword ptr [eax + 8]
+// 005ccb0c  56                   push esi
+// 005ccb0d  57                   push edi
+// 005ccb0e  52                   push edx
+// 005ccb0f  ffd0                 call eax
+// 005ccb11  8b742410             mov esi, dword ptr [esp + 0x10]
+// 005ccb15  83c610               add esi, 0x10
+// 005ccb18  8bce                 mov ecx, esi
+// 005ccb1a  8bf8                 mov edi, eax
+// 005ccb1c  e8afcf0300           call 0x609ad0
+// 005ccb21  897e08               mov dword ptr [esi + 8], edi
+// 005ccb24  5f                   pop edi
+// 005ccb25  c7460405000000       mov dword ptr [esi + 4], 5
+// 005ccb2c  5e                   pop esi
+// 005ccb2d  c20800               ret 8
+// copied from an identical function in another client (function ?writeValue@?$EnumPropDescriptor@VFaceInstance@RBX@@W4NormalId@2@@Reflection@RBX@@UBEXPBVDescribedBase@23@PAVXmlElement@@@Z)
 
-// Candidate translation unit (score above; library headers required).
-// Copyright (C) 2004 Michael Glassford
-// Copyright (C) 2006 Roland Schwarz
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+#include <memory>
+#include <string>
 
-#include <boost/thread/detail/config.hpp>
+namespace RBX {
+class Name;
+class ContentId;
+class BrickColor
+{
+    int number;
+public:
+    int asInt() const { return number; }
+    bool operator==(const BrickColor& other) const { return number == other.number; }
+};
+namespace Reflection {
+class DescribedBase;
+class IReferenceBinder;
+}
+}
 
-#if defined(BOOST_HAS_WINTHREADS)
+class XmlNameValuePair
+{
+public:
+    enum ValueType { NONE, HANDLE, NAME, BOOL, FLOAT, INT, UINT, CONTENTID, STRING };
 
-    #include <boost/thread/detail/tss_hooks.hpp>
-
-    #include <boost/assert.hpp>
-//    #include <boost/thread/mutex.hpp>
-    #include <boost/thread/once.hpp>
-
-    #include <list>
-
-    #define WIN32_LEAN_AND_MEAN
-    #include <windows.h>
-
-    namespace
+private:
+    const RBX::Name& tag;
+    ValueType valueType;
+    union
     {
-        class CScopedCSLock
-        {
-        public:
-            CScopedCSLock(LPCRITICAL_SECTION cs) : cs(cs), lk(true) {
-                ::EnterCriticalSection(cs);
-            }
-            ~CScopedCSLock() {
-                if (lk) ::LeaveCriticalSection(cs);
-            }
-            void Unlock() {
-                lk = false;
-                ::LeaveCriticalSection(cs);
-            }
-        private:
-            bool lk;
-            LPCRITICAL_SECTION cs;
-        };
+        bool boolValue;
+        float floatValue;
+        int intValue;
+        unsigned uintValue;
+        std::string* stringValue;
+    };
 
-        typedef std::list<thread_exit_handler> thread_exit_handlers;
+    void clearValue();
 
-        boost::once_flag once_init_threadmon_mutex = BOOST_ONCE_INIT;
-        //boost::mutex* threadmon_mutex;
-        // We don't use boost::mutex here, to avoid a memory leak report,
-        // because we cannot delete it again easily.
-        CRITICAL_SECTION threadmon_mutex;
-        void init_threadmon_mutex(void)
-        {
-            //threadmon_mutex = new boost::mutex;
-            //if (!threadmon_mutex)
-            //    throw boost::thread_resource_error();
-            ::InitializeCriticalSection(&threadmon_mutex);
-        }
+public:
+    bool getValue(int&) const;
+    bool getValue(std::string& value) const;
 
-        const DWORD invalid_tls_key = TLS_OUT_OF_INDEXES;
-        DWORD tls_key = invalid_tls_key;
+    void setValue(int value)
+    {
+        clearValue();
+        intValue = value;
+        valueType = INT;
+    }
+    void setValue(std::string value);
+};
 
-        unsigned long attached_thread_count = 0;
+class XmlNode
+{
+    void* links[4];
+};
+
+class XmlElement : public XmlNode, public XmlNameValuePair
+{
+public:
+    bool isXsiNil() const;
+};
+
+namespace RBX {
+namespace Reflection {
+class PropertyDescriptor
+{
+    char data[0x14];
+public:
+    virtual ~PropertyDescriptor();
+    virtual bool equalValues(const DescribedBase* a, const DescribedBase* b) const = 0;
+    virtual void readValue(DescribedBase* instance, const XmlElement* element, IReferenceBinder& binder) const = 0;
+    virtual void writeValue(const DescribedBase* instance, XmlElement* element) const = 0;
+};
+
+template<typename PropType>
+class TypedPropertyDescriptor : public PropertyDescriptor
+{
+public:
+    class GetSet
+    {
+    public:
+        virtual ~GetSet();
+        virtual bool isReadOnly() const = 0;
+        virtual PropType getValue(const DescribedBase* object) const = 0;
+        virtual void setValue(DescribedBase* object, const PropType& value) const = 0;
+    };
+
+protected:
+    std::auto_ptr<GetSet> getset;
+
+public:
+    PropType getValue(const DescribedBase* object) const
+    {
+        return getset->getValue(object);
+    }
+    void setValue(DescribedBase* object, const PropType& value) const
+    {
+        getset->setValue(object, value);
+    }
+    virtual bool equalValues(const DescribedBase* a, const DescribedBase* b) const
+    {
+        return getValue(b) == getValue(a);
     }
 
-    /*
-    Calls to DllMain() and tls_callback() are serialized by the OS;
-    however, calls to at_thread_exit are not, so it must be protected
-    by a mutex. Since we already need a mutex for at_thread_exit(),
-    and since there is no guarantee that on_process_enter(),
-    on_process_exit(), on_thread_enter(), and on_thread_exit()
-    will be called only from DllMain() or tls_callback(), it makes
-    sense to protect those, too.
-    */
+private:
+    virtual void readValue(DescribedBase* instance, const XmlElement* element, IReferenceBinder& binder) const;
+    virtual void writeValue(const DescribedBase* instance, XmlElement* element) const;
+};
+}
+}
 
-    extern "C" BOOST_THREAD_DECL int at_thread_exit(
-        thread_exit_handler exit_handler
-        )
+namespace RBX {
+namespace Reflection {
+class EnumDescriptor;
+
+class EnumPropertyDescriptor : public PropertyDescriptor
+{
+protected:
+    const EnumDescriptor& enumDescriptor;
+};
+
+template<class Class, typename Enum>
+class EnumPropDescriptor : public EnumPropertyDescriptor
+{
+private:
+    std::auto_ptr<typename TypedPropertyDescriptor<Enum>::GetSet> getset;
+
+public:
+    Enum getValue(const DescribedBase* object) const
     {
-        boost::call_once(init_threadmon_mutex, once_init_threadmon_mutex);
-        //boost::mutex::scoped_lock lock(*threadmon_mutex);
-        CScopedCSLock lock(&threadmon_mutex);
-
-        //Allocate a tls slot if necessary.
-
-        if (tls_key == invalid_tls_key)
-            tls_key = TlsAlloc();
-
-        if (tls_key == invalid_tls_key)
-            return -1;
-
-        //Get the exit handlers list for the current thread from tls.
-
-        thread_exit_handlers* exit_handlers =
-            static_cast<thread_exit_handlers*>(TlsGetValue(tls_key));
-
-        if (!exit_handlers)
-        {
-            //No exit handlers list was created yet.
-
-            try
-            {
-                //Attempt to create a new exit handlers list.
-
-                exit_handlers = new thread_exit_handlers;
-                if (!exit_handlers)
-                    return -1;
-
-                //Attempt to store the list pointer in tls.
-
-                if (TlsSetValue(tls_key, exit_handlers))
-                    ++attached_thread_count;
-                else
-                {
-                    delete exit_handlers;
-                    return -1;
-                }
-            }
-            catch (...)
-            {
-                return -1;
-            }
-        }
-
-        //Like the C runtime library atexit() function,
-        //functions should be called in the reverse of
-        //the order they are added, so push them on the
-        //front of the list.
-
-        try
-        {
-            exit_handlers->push_front(exit_handler);
-        }
-        catch (...)
-        {
-            return -1;
-        }
-
-        //Like the atexit() function, a result of zero
-        //indicates success.
-
-        return 0;
+        return getset->getValue(object);
     }
-
-    extern "C" BOOST_THREAD_DECL void on_process_enter(void)
+    virtual bool equalValues(const DescribedBase* a, const DescribedBase* b) const
     {
-        boost::call_once(init_threadmon_mutex, once_init_threadmon_mutex);
-//        boost::mutex::scoped_lock lock(*threadmon_mutex);
-        CScopedCSLock lock(&threadmon_mutex);
-
-        BOOST_ASSERT(attached_thread_count == 0);
+        return getValue(a) == getValue(b);
     }
-
-    extern "C" BOOST_THREAD_DECL void on_process_exit(void)
+    virtual void readValue(DescribedBase* instance, const XmlElement* element, IReferenceBinder& binder) const;
+    virtual void writeValue(const DescribedBase* instance, XmlElement* element) const
     {
-        boost::call_once(init_threadmon_mutex, once_init_threadmon_mutex);
-//        boost::mutex::scoped_lock lock(*threadmon_mutex);
-        CScopedCSLock lock(&threadmon_mutex);
-
-        BOOST_ASSERT(attached_thread_count == 0);
-
-        //Free the tls slot if one was allocated.
-
-        if (tls_key != invalid_tls_key)
-        {
-            TlsFree(tls_key);
-            tls_key = invalid_tls_key;
-        }
+        element->setValue(getValue(instance));
     }
+};
+}
 
-    extern "C" BOOST_THREAD_DECL void on_thread_enter(void)
-    {
-        //boost::call_once(init_threadmon_mutex, once_init_threadmon_mutex);
-        //boost::mutex::scoped_lock lock(*threadmon_mutex);
-    }
-
-    extern "C" BOOST_THREAD_DECL void on_thread_exit(void)
-    {
-        boost::call_once(init_threadmon_mutex, once_init_threadmon_mutex);
-//        boost::mutex::scoped_lock lock(*threadmon_mutex);
-        CScopedCSLock lock(&threadmon_mutex);
-
-        //Get the exit handlers list for the current thread from tls.
-
-        if (tls_key == invalid_tls_key)
-            return;
-
-        thread_exit_handlers* exit_handlers =
-            static_cast<thread_exit_handlers*>(TlsGetValue(tls_key));
-
-        //If a handlers list was found, use it.
-
-        if (exit_handlers && TlsSetValue(tls_key, 0))
-        {
-            BOOST_ASSERT(attached_thread_count > 0);
-            --attached_thread_count;
-
-            //lock.unlock();
-            lock.Unlock();
-
-            //Call each handler and remove it from the list
-
-            while (!exit_handlers->empty())
-            {
-                if (thread_exit_handler exit_handler = *exit_handlers->begin())
-                    (*exit_handler)();
-                exit_handlers->pop_front();
-            }
-
-            delete exit_handlers;
-            exit_handlers = 0;
-        }
-    }
-
-#endif //defined(BOOST_HAS_WINTHREADS)
+class FaceInstance;
+enum NormalId { NORM_X, NORM_Y, NORM_Z, NORM_X_NEG, NORM_Y_NEG, NORM_Z_NEG };
+}
+template void RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance, RBX::NormalId>::writeValue(const RBX::Reflection::DescribedBase*, XmlElement*) const;

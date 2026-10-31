@@ -1,31 +1,40 @@
-// from server: 31% by colin
+// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs script/ScriptEvent.cpp
+// roc-lib: rbxgs-dll roc_espclaude_1f29ee3c3c2214e7.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "script/ScriptEvent.h"
+#define YieldingThreads YieldingThreadsHeader
+#include "script/ScriptContext.h"
+#include "script/ThreadRef.h"
+#include "util/RunStateOwner.h"
+#include "lua.h"
+#undef YieldingThreads
 
 namespace RBX
 {
     namespace Lua
     {
-        YieldingThreads::YieldingThreads(ScriptContext* context)
-            : context(context)
+        class YieldingThreads
         {
-        }
+        private:
+            struct WaitingThread
+            {
+            public:
+                boost::shared_ptr<ThreadRef> thread;
+                double requestedDelay;
+                double elapsedTime;
+            };
 
-        void YieldingThreads::queueWaiter(lua_State* L)
-        {
-            queueWaiter(L, 0.0f);
-        }
+        private:
+            ScriptContext* context;
+            std::vector<WaitingThread> waitingThreads;
 
-        void YieldingThreads::queueWaiter(lua_State* L, float delay)
-        {
-            RobloxExtraSpace::get(L)->yieldCaptured = true;
-            waitingThreads.push_back(WaitingThread(L, delay));
-        }
+        public:
+            void resume(Heartbeat heartbeat);
+        };
 
         void YieldingThreads::resume(Heartbeat heartbeat)
         {
@@ -41,7 +50,6 @@ namespace RBX
                 if (it->thread->empty())
                     continue;
 
-                // TODO: LHS and RHS swapped in codegen
                 it->elapsedTime += heartbeat.step;
 
                 if (it->elapsedTime < it->requestedDelay)
@@ -53,7 +61,8 @@ namespace RBX
                 lua_State* L = it->thread->thread();
                 const int oldTop = lua_gettop(L);
                 lua_pushnumber(L, it->elapsedTime);
-                context->resume(L, 1);
+                lua_pushnumber(L, heartbeat.time);
+                context->resume(L, 2);
                 lua_settop(L, oldTop);
             }
         }

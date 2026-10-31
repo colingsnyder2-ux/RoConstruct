@@ -1,187 +1,79 @@
-// from server: 25% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Face.cpp
+// from server: 96% by EspClaude
+// from server: 100% by king_originala
+// roc 2008-06 00614560  unit: RBX::RevoluteLink  size: 113 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 00614560
+//
+// 00614560  83ec4c               sub esp, 0x4c
+// 00614563  56                   push esi
+// 00614564  8bf1                 mov esi, ecx
+// 00614566  d9868c000000         fld dword ptr [esi + 0x8c]
+// 0061456c  d95c2404             fstp dword ptr [esp + 4]
+// 00614570  e8eb4df8ff           call 0x599360
+// 00614575  8d4668               lea eax, [esi + 0x68]
+// 00614578  50                   push eax
+// 00614579  8d4c240c             lea ecx, [esp + 0xc]
+// 0061457d  e89eecefff           call 0x513220
+// 00614582  8d8e94000000         lea ecx, [esi + 0x94]
+// 00614588  51                   push ecx
+// 00614589  8d54240c             lea edx, [esp + 0xc]
+// 0061458d  52                   push edx
+// 0061458e  8d442434             lea eax, [esp + 0x34]
+// 00614592  50                   push eax
+// 00614593  e8d895fcff           call 0x5ddb70
+// 00614598  83c40c               add esp, 0xc
+// 0061459b  8bce                 mov ecx, esi
+// 0061459d  e8be4df8ff           call 0x599360
+// 006145a2  d9442404             fld dword ptr [esp + 4]
+// 006145a6  8b542458             mov edx, dword ptr [esp + 0x58]
+// 006145aa  51                   push ecx
+// 006145ab  d91c24               fstp dword ptr [esp]
+// 006145ae  8d4c2430             lea ecx, [esp + 0x30]
+// 006145b2  51                   push ecx
+// 006145b3  52                   push edx
+// 006145b4  81c6b8000000         add esi, 0xb8
+// 006145ba  56                   push esi
+// 006145bb  8b742464             mov esi, dword ptr [esp + 0x64]
+// 006145bf  56                   push esi
+// 006145c0  e8ab94fcff           call 0x5dda70
+// 006145c5  83c414               add esp, 0x14
+// 006145c8  8bc6                 mov eax, esi
+// 006145ca  5e                   pop esi
+// 006145cb  83c44c               add esp, 0x4c
+// 006145ce  c20800               ret 8
 
-// Candidate translation unit (score above; library headers required).
-#include "util/Face.h"
-#include "util/Math.h"
+struct Matrix {
+    float data[9];
+    Matrix(const Matrix&);
+    Matrix() {}
+};
 
-namespace RBX
+struct Result {
+    float data[12];
+};
+
+extern void __cdecl combine(Matrix*, const Matrix*, const Matrix*);
+extern void __cdecl evaluate(Result*, const Result&, const Result&, const Matrix&, float);
+
+struct S {
+    char reserved0[0x68];
+    Matrix rotation;
+    float angle;
+    char reserved1[4];
+    Matrix adjustment;
+    Result frame;
+
+    const void* get();
+    Result* f(Result*, const Result&);
+};
+
+Result* S::f(Result* output, const Result& value)
 {
-	const G3D::Vector3& Face::operator[](int i) const
-	{
-		return ((G3D::Vector3*)this)[i];
-	}
-
-	G3D::Vector3& Face::operator[](int i)
-	{
-		return ((G3D::Vector3*)this)[i];
-	}
-
-	void Face::snapToGrid(float grid)
-	{
-		for (int i = 0; i < 4; ++i)
-		{
-			G3D::Vector3& v = (*this)[i];
-			v = Math::toGrid(v, grid);
-		}
-	}
-
-	bool Face::overlapWithinPlanes(const Face& f0, const Face& f1, float tolerance)
-	{
-		for (int i = 0; i < 2; ++i)
-		{
-			const Face& face = i == 0 ? f0 : f1;
-			const Face& otherFace = i == 0 ? f1 : f0;
-
-			G3D::Plane p0(face.c0, face.c1, face.c3);
-			
-			G3D::Vector3 normal;
-			double distance;
-			p0.getEquation(normal, distance);
-
-			Face overlapOn1 = otherFace.projectOverlapOnMe(face);
-
-			for (int j = 0; j < 4; ++j)
-			{
-				if (overlapOn1[j].dot(normal) > tolerance)
-					return false;
-			}
-		}
-
-		return true;
-	}
-
-	bool Face::fuzzyContainsInExtrusion(const G3D::Vector3& point, float tolerance) const
-	{
-		RBXASSERT(tolerance >= 0.0);
-
-		for (int i = 0; i < 4; ++i)
-		{
-			const G3D::Vector3& v1 = (*this)[i];
-			const G3D::Vector3& v2 = (*this)[(i + 1) % 4];
-
-			if ((v2 - v1).dot(point - v1) < -tolerance)
-				return false;
-		}
-
-		return true;
-	}
-
-	void Face::minMax(const G3D::Vector3& point, const G3D::Vector3& normal, float& min, float& max) const
-	{
-		min = 1.0e10;
-		max = -1.0e10;
-
-		for (int i = 0; i < 4; ++i)
-		{
-			const G3D::Vector3& v = (*this)[i];
-			float temp = (v - point).dot(normal);
-			min = G3D::min(min, temp);
-			max = G3D::max(max, temp);
-		}
-	}
-
-	bool Face::hasOverlap(const Face& f0, const Face& f1, float byAtLeast)
-	{
-		for (int i = 0; i < 2; ++i)
-		{
-			G3D::Vector3 axis = f0.getAxis(i);
-
-			float f0min, f0max;
-			f0.minMax(f0.c0, axis, f0min, f0max);
-
-			float f1min, f1max;
-			f1.minMax(f0.c0, axis, f1min, f1max);
-
-			if ((f0min - byAtLeast) < f1min || (f0max + byAtLeast) > f1max)
-				return false;
-		}
-		
-		return true;
-	}
-
-	bool Face::cornersAligned(const Face& f0, const Face& f1, float tolerance)
-	{
-		RBXASSERT(tolerance > 0.0);
-
-		float toleranceSquared = tolerance*tolerance;
-
-		for (int i = 0; i < 4; ++i)
-		{
-			bool aligned = false;
-
-			for (int j = 0; j < 4; ++j)
-			{
-				const G3D::Vector3& v1 = f0[i];
-				const G3D::Vector3& v2 = f1[j];
-
-				if ((v1 - v2).squaredMagnitude() < toleranceSquared)
-				{
-					aligned = true;
-					break;
-				}
-			}
-
-			if (!aligned)
-				return false;
-		}
-
-		return true;
-	}
-
-	Face Face::projectOverlapOnMe(const Face& other) const
-	{
-		G3D::Vector3 normal = getU();
-		G3D::Vector3 v2 = getV();
-
-		float minL[2];
-		float maxL[2];
-		for (int i = 0; i < 2; ++i)
-		{
-			float f0min, f0max;
-			this->minMax(this->c0, normal, f0min, f0max);
-
-			float f1min, f1max;
-			other.minMax(this->c0, normal, f1min, f1max);
-
-			minL[i] = G3D::min(f0min, f1min);
-			maxL[i] = G3D::max(f0max, f1max);
-		}
-
-		return Face(
-			(normal * minL[1]) + (v2 * minL[1]) + this->c0,
-			(normal * minL[1]) + (v2 * minL[0]) + this->c0,
-			(normal * maxL[1]) + (v2 * minL[0]) + this->c0,
-			(normal * maxL[1]) + (v2 * minL[1]) + this->c0);
-	}
-
-	Face Face::fromExtentsSide(const Extents& e, NormalId faceId)
-	{
-		Face face;
-		e.getFaceCorners(faceId, face.c0, face.c1, face.c2, face.c3);
-		return face;
-	}
-
-	Face Face::toWorldSpace(const G3D::CoordinateFrame& objectCoord) const
-	{
-		Face face;
-		for (int i = 0; i < 4; ++i)
-		{
-			face[i] = objectCoord.pointToWorldSpace((*this)[i]);
-		}
-		return face;
-	}
-
-	Face Face::toObjectSpace(const G3D::CoordinateFrame& objectCoord) const
-	{
-		Face face;
-		for (int i = 0; i < 4; ++i)
-		{
-			face[i] = objectCoord.pointToObjectSpace((*this)[i]);
-		}
-		return face;
-	}
+    float savedAngle = angle;
+    get();
+    Matrix local(rotation);
+    Matrix adjusted;
+    combine(&adjusted, &local, &adjustment);
+    get();
+    evaluate(output, frame, value, adjusted, savedAngle);
+    return output;
 }

@@ -1,138 +1,74 @@
-// from server: 70% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-appdraw Draw.cpp
+// from server: 100% by EspClaude
+// from server: 100% by king_originala
+// roc 2008-06 00677030  unit: RBX::AdornG3D  size: 121 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 00677030
+//
+// 00677030  83ec10               sub esp, 0x10
+// 00677033  837c241c00           cmp dword ptr [esp + 0x1c], 0
+// 00677038  753a                 jne 0x677074
+// 0067703a  b801000000           mov eax, 1
+// 0067703f  840538db9700         test byte ptr [0x97db38], al
+// 00677045  7526                 jne 0x67706d
+// 00677047  d90504e78100         fld dword ptr [0x81e704]
+// 0067704d  090538db9700         or dword ptr [0x97db38], eax
+// 00677053  d91d2cdb9700         fstp dword ptr [0x97db2c]
+// 00677059  d90538f88200         fld dword ptr [0x82f838]
+// 0067705f  d91d30db9700         fstp dword ptr [0x97db30]
+// 00677065  d9e8                 fld1 
+// 00677067  d91d34db9700         fstp dword ptr [0x97db34]
+// 0067706d  b82cdb9700           mov eax, 0x97db2c
+// 00677072  eb05                 jmp 0x677079
+// 00677074  e837d9e9ff           call 0x5149b0
+// 00677079  d900                 fld dword ptr [eax]
+// 0067707b  8b4c2418             mov ecx, dword ptr [esp + 0x18]
+// 0067707f  8b542414             mov edx, dword ptr [esp + 0x14]
+// 00677083  d91c24               fstp dword ptr [esp]
+// 00677086  d94004               fld dword ptr [eax + 4]
+// 00677089  d95c2404             fstp dword ptr [esp + 4]
+// 0067708d  d94008               fld dword ptr [eax + 8]
+// 00677090  8d0424               lea eax, [esp]
+// 00677093  50                   push eax
+// 00677094  d95c240c             fstp dword ptr [esp + 0xc]
+// 00677098  d9e8                 fld1 
+// 0067709a  51                   push ecx
+// 0067709b  52                   push edx
+// 0067709c  d95c2418             fstp dword ptr [esp + 0x18]
+// 006770a0  e85bfdffff           call 0x676e00
+// 006770a5  83c41c               add esp, 0x1c
+// 006770a8  c3                   ret 
 
-// Candidate translation unit (score above; library headers required).
-#include "AppDraw/Draw.h"
-#include "util/Math.h"
+extern const float colorComponent0;
+extern const float colorComponent1;
 
-namespace RBX
+struct Vec3 {
+    float x, y, z;
+    Vec3(float a, float b, float c);
+};
+
+inline Vec3::Vec3(float a, float b, float c)
+    : x(a), y(b), z(c) {}
+
+struct Vec4 {
+    float x, y, z, w;
+};
+
+extern const Vec3& __cdecl alternateColor();
+extern void __cdecl draw(void*, void*, const Vec4&);
+
+void __cdecl render(void* a, void* b, int mode)
 {
-	void Draw::spokes(float radius, float axis, Adorn* adorn)
-    {
-        // no idea where the 0.51 comes from lol
-        float halfAxis = axis*0.51f;
-        float subRadius = radius*0.7f;
-
-        for (int i = 0; i < 2; i++)
-        {
-            float x = (i == 0) ? halfAxis : -halfAxis;
-            float ccw = i ? -1.0f : 1.0f;
-
-            for (int j = 0; j < 2; j++)
-            {
-                float y = (j == 0) ? subRadius : 0.1f;
-                float z = (j == 0) ? 0.1f : subRadius;
-
-                adorn->quad(
-                    G3D::Vector3(x, y * ccw, z),
-                    G3D::Vector3(x, -y * ccw, z),
-                    G3D::Vector3(x, -y * ccw, -z),
-                    G3D::Vector3(x, y * ccw, -z),
-                    G3D::Color4(0.5f, 0.5f, 0.5f, 1.0f)
-                );
-            }
-        }
+    const Vec3* selected;
+    if (mode == 0) {
+        static const Vec3 color(colorComponent0, colorComponent1, 1.0f);
+        selected = &color;
+    } else {
+        selected = &alternateColor();
     }
 
-	void Draw::partAdorn(const Part& part, Adorn* adorn, const G3D::Color3& controllerColor)
-    {
-        adornSurfaces(part, adorn, controllerColor);
-
-        if (part.type == Part::CYLINDER_PART)
-        {
-            adorn->setObjectToWorldMatrix(part.coordinateFrame);
-
-            G3D::Vector3 bleh = part.gridSize;
-            spokes(bleh.z * 0.5, bleh.x, adorn);
-        }
-    }
-
-    const G3D::Color3& Draw::selectColor()
-    {
-        static G3D::Color3 c(0.1f, 0.6f, 1.0f);
-        return c;
-    }
-
-	void Draw::selectionBox(const Part& part, Adorn* adorn, SelectState selectState)
-    {
-        Draw::selectionBox(part, adorn, (selectState == SELECT_NORMAL) ? Draw::selectColor() : G3D::Color3(0.2f, 0.7f, 1.0f));
-    }
-
-	void Draw::adornSurfaces(const Part& part, Adorn* adorn, const G3D::Color3& controllerColor)
-    {
-        for (int i = 0; i < 6; i++)
-        {
-			SurfaceType type = part.surfaceType[i];
-            if (type >= ROTATE && type <= ROTATE_P) // ROTATE, ROTATE_V, ROTATE_P
-            {
-                Draw::constraint(part, adorn, i, controllerColor);
-            }
-        }
-    }
-
-    // TODO: 94.56% match
-	// classic case of MSVC optimizer being really inconsistent
-	void Draw::constraint(const Part& part, Adorn* adorn, int face, const G3D::Color3& controllerColor)
-    {
-		SurfaceType surfaceType = part.surfaceType[face];
-
-        G3D::Vector3 halfSize = part.gridSize * 0.5f;
-
-        const G3D::Matrix3& rot = Math::getAxisRotationMatrix(face);
-
-        G3D::Vector3 relativeTranslation;
-
-        int axis = face % 3;
-        float posNeg = (face > 2) ? -1.0f : 1.0f;
-
-        relativeTranslation[axis] = halfSize[axis]*posNeg;
-
-        G3D::CoordinateFrame translation(rot, relativeTranslation);
-        G3D::CoordinateFrame newObject = part.coordinateFrame*translation;
-
-        adorn->setObjectToWorldMatrix(newObject);
-        adorn->cylinderAlongX(0.2f, 1.0f, G3D::Color3::yellow(), G3D::Color4::clear());
-
-        if (surfaceType == ROTATE_V || surfaceType == ROTATE_P)
-        {
-            adorn->cylinderAlongX(0.4f, 0.25f, controllerColor, G3D::Color4::clear());
-        }
-    }
-
-	void Draw::selectionBox(const Part& part, Adorn* adorn, const G3D::Color4& selectColor)
-    {
-        adorn->setObjectToWorldMatrix(part.coordinateFrame);
-
-        G3D::Vector3 halfSize = part.gridSize*0.5;
-
-        const float offset = 0.15f;
-
-        for (int ix = 0; ix < 3; ix++)
-        {
-            int iy = (ix+1) % 3;
-            int iz = (ix+2) % 3;
-
-            for (int d2 = -1; d2 < 2; d2+=2)
-            {
-                for (int d3 = -1; d3 < 2; d3+=2)
-                {
-                    G3D::Vector3 p0;
-                    G3D::Vector3 p1;
-
-                    p0[ix] = -halfSize[ix] - offset;
-                    p0[iy] = d2 * halfSize[iy] - offset;
-                    p0[iz] = d3 * halfSize[iz] - offset;
-
-                    p1[ix] = halfSize[ix] + offset;
-                    p1[iy] = d2 * halfSize[iy] + offset;
-                    p1[iz] = d3 * halfSize[iz] + offset;
-
-                    adorn->box(G3D::AABox(p0, p1), selectColor, G3D::Color4::clear());
-                }
-            }
-        }
-    }
+    Vec4 color;
+    color.x = selected->x;
+    color.y = selected->y;
+    color.z = selected->z;
+    color.w = 1.0f;
+    draw(a, b, color);
 }

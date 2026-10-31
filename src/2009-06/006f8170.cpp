@@ -1,247 +1,161 @@
-// from server: 49% by colin
-// roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs tool/RunDragger.cpp
+// from server: 100% by EspClaude
+// from server: 100% by colin
+// roc 2008-06 0066ced0  unit: RBX::GroupDragTool  size: 253 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 0066ced0
+//
+// 0066ced0  81ec94000000         sub esp, 0x94
+// 0066ced6  53                   push ebx
+// 0066ced7  8b9c249c000000       mov ebx, dword ptr [esp + 0x9c]
+// 0066cede  56                   push esi
+// 0066cedf  57                   push edi
+// 0066cee0  8bcb                 mov ecx, ebx
+// 0066cee2  e8c9bdf2ff           call 0x598cb0
+// 0066cee7  8bf0                 mov esi, eax
+// 0066cee9  56                   push esi
+// 0066ceea  8d4c2420             lea ecx, [esp + 0x20]
+// 0066ceee  e82d63eaff           call 0x513220
+// 0066cef3  d94624               fld dword ptr [esi + 0x24]
+// 0066cef6  8b8c24a8000000       mov ecx, dword ptr [esp + 0xa8]
+// 0066cefd  d95c2440             fstp dword ptr [esp + 0x40]
+// 0066cf01  d94628               fld dword ptr [esi + 0x28]
+// 0066cf04  6a00                 push 0
+// 0066cf06  d95c2448             fstp dword ptr [esp + 0x48]
+// 0066cf0a  8d442450             lea eax, [esp + 0x50]
+// 0066cf0e  d9462c               fld dword ptr [esi + 0x2c]
+// 0066cf11  50                   push eax
+// 0066cf12  d95c2450             fstp dword ptr [esp + 0x50]
+// 0066cf16  e82563eaff           call 0x513240
+// 0066cf1b  8d4c241c             lea ecx, [esp + 0x1c]
+// 0066cf1f  51                   push ecx
+// 0066cf20  8d542450             lea edx, [esp + 0x50]
+// 0066cf24  52                   push edx
+// 0066cf25  e83616f7ff           call 0x5de560
+// 0066cf2a  8bc8                 mov ecx, eax
+// 0066cf2c  b856555555           mov eax, 0x55555556
+// 0066cf31  f7e9                 imul ecx
+// 0066cf33  8bc2                 mov eax, edx
+// 0066cf35  c1e81f               shr eax, 0x1f
+// 0066cf38  03c2                 add eax, edx
+// 0066cf3a  8d1440               lea edx, [eax + eax*2]
+// 0066cf3d  2bca                 sub ecx, edx
+// 0066cf3f  03c0                 add eax, eax
+// 0066cf41  83c404               add esp, 4
+// 0066cf44  d9448c20             fld dword ptr [esp + ecx*4 + 0x20]
+// 0066cf48  8d542414             lea edx, [esp + 0x14]
+// 0066cf4c  d9448c2c             fld dword ptr [esp + ecx*4 + 0x2c]
+// 0066cf50  d9448c38             fld dword ptr [esp + ecx*4 + 0x38]
+// 0066cf54  b901000000           mov ecx, 1
+// 0066cf59  2bc8                 sub ecx, eax
+// 0066cf5b  894c2410             mov dword ptr [esp + 0x10], ecx
+// 0066cf5f  8d44245c             lea eax, [esp + 0x5c]
+// 0066cf63  db442410             fild dword ptr [esp + 0x10]
+// 0066cf67  d9c0                 fld st(0)
+// 0066cf69  decc                 fmulp st(4)
+// 0066cf6b  d9cb                 fxch st(3)
+// 0066cf6d  d95c2414             fstp dword ptr [esp + 0x14]
+// 0066cf71  d9c2                 fld st(2)
+// 0066cf73  deca                 fmulp st(2)
+// 0066cf75  d9c9                 fxch st(1)
+// 0066cf77  d95c2418             fstp dword ptr [esp + 0x18]
+// 0066cf7b  dec9                 fmulp st(1)
+// 0066cf7d  d95c241c             fstp dword ptr [esp + 0x1c]
+// 0066cf81  d90574e38100         fld dword ptr [0x81e374]
+// 0066cf87  d91c24               fstp dword ptr [esp]
+// 0066cf8a  52                   push edx
+// 0066cf8b  50                   push eax
+// 0066cf8c  e8ef66eaff           call 0x513680
+// 0066cf91  83c40c               add esp, 0xc
+// 0066cf94  8d4c241c             lea ecx, [esp + 0x1c]
+// 0066cf98  51                   push ecx
+// 0066cf99  8d942480000000       lea edx, [esp + 0x80]
+// 0066cfa0  52                   push edx
+// 0066cfa1  8d4c2460             lea ecx, [esp + 0x60]
+// 0066cfa5  e8a663eaff           call 0x513350
+// 0066cfaa  8bf0                 mov esi, eax
+// 0066cfac  b909000000           mov ecx, 9
+// 0066cfb1  8d7c241c             lea edi, [esp + 0x1c]
+// 0066cfb5  8d44241c             lea eax, [esp + 0x1c]
+// 0066cfb9  f3a5                 rep movsd dword ptr es:[edi], dword ptr [esi]
+// 0066cfbb  50                   push eax
+// 0066cfbc  8bcb                 mov ecx, ebx
+// 0066cfbe  e8dd08f3ff           call 0x59d8a0
+// 0066cfc3  5f                   pop edi
+// 0066cfc4  5e                   pop esi
+// 0066cfc5  5b                   pop ebx
+// 0066cfc6  81c494000000         add esp, 0x94
+// 0066cfcc  c3                   ret 
 
-// Candidate translation unit (score above; library headers required).
-#include "tool/RunDragger.h"
-#include "tool/Dragger.h"
-#include "v8datamodel/PartInstance.h"
-#include "v8datamodel/Filters.h"
-#include "v8datamodel/Surfaces.h"
-#include "v8datamodel/MouseCommand.h"
-#include "v8datamodel/Workspace.h"
-#include "v8world/Primitive.h"
-#include "v8world/Contact.h"
-#include "v8world/ContactManager.h"
+#pragma float_control(precise, off, push)
 
-namespace RBX
+struct Vector3 {
+    float x, y, z;
+
+    Vector3(float a, float b, float c);
+    Vector3(const Vector3& v);
+    Vector3 operator*(float s) const;
+    Vector3& operator*=(float s);
+};
+
+inline Vector3::Vector3(float a, float b, float c)
+    : x(a), y(b), z(c)
 {
-	void RunDragger::SnapInfo::updateSurfaceFromHit()
-	{
-		G3D::Vector3 hitInSnap = snap->getCoordinateFrame().pointToObjectSpace(hitWorld);
-		Extents snapExtents = snap->getExtentsLocal();
-
-		surface = snapExtents.closestFace(hitInSnap);
-	}
-
-	void RunDragger::SnapInfo::updateHitFromSurface(const G3D::Ray& mouseRay)
-	{
-		Extents snapExtents = snap->getExtentsLocal();
-		const G3D::CoordinateFrame& cframe = snap->getCoordinateFrame();
-
-		G3D::Ray rayInSnap = cframe.toObjectSpace(mouseRay);
-		G3D::Plane plane = snapExtents.getPlane(surface);
-		G3D::Vector3 hitInSnap;
-
-		if (Math::intersectRayPlane(rayInSnap, plane, hitInSnap))
-		{
-			hitWorld = cframe.pointToWorldSpace(hitInSnap);
-		}
-		else
-		{
-			RBXASSERT(0);
-			Math::intersectRayPlane(rayInSnap, plane, hitInSnap);
-		}
-	}
-
-	float RunDragger::SnapInfo::hitOutsideExtents()
-	{
-		Extents snapExtents = snap->getExtentsLocal();
-		G3D::Vector3 hitInSnap = snap->getCoordinateFrame().pointToObjectSpace(hitWorld);
-		G3D::Vector3 clipInSnap = hitInSnap.clamp(snapExtents.min(), snapExtents.max());
-
-		return (hitInSnap - clipInSnap).magnitude();
-	}
-
-	RunDragger::RunDragger()
-		: workspace(NULL),
-		  drag(NULL)
-	{
-	}
-
-	RunDragger::~RunDragger() {}
-
-	bool RunDragger::adjacent(Primitive* p0, Primitive* p1)
-	{
-		for (Contact* current = p0->getFirstContact(); current != NULL; current = p0->getNextContact(current))
-		{
-			if (current->otherPrimitive(p0) == p1)
-				return current->computeIsAdjacent(0.01f);
-		}
-
-		return false;
-	}
-
-	bool RunDragger::tooCloseToCamera()
-	{
-		return (drag->getCoordinateFrame().pointToWorldSpace(dragPointLocal) - mouseRay.origin).magnitude() < 6.0f;
-	}
-
-	void RunDragger::rotatePart(PartInstance* part)
-	{
-		RBXASSERT(part);
-
-		G3D::CoordinateFrame rotated = part->getCoordinateFrame();
-		Math::rotateMatrixAboutY90(rotated.rotation, 1);
-
-		part->setCoordinateFrame(rotated);
-	}
-
-	RunDragger::SnapInfo RunDragger::createSnapSurface(Primitive* snap, G3D::Array<NormalId>* ignore)
-	{
-		RBXASSERT(snap);
-
-		SnapInfo answer;
-		answer.snap = snap;
-
-		Extents snapExtents = snap->getExtentsLocal();
-		const G3D::CoordinateFrame& cframe = snap->getCoordinateFrame();
-		G3D::Ray rayInSnap = cframe.toObjectSpace(mouseRay);
-
-		float bestDistance = 0.0f;
-		bool found = false;
-
-		for (int i = 0; i < 6; i++)
-		{
-			NormalId id = (NormalId)i;
-
-			if (!ignore || ignore->find(id) == ignore->end())
-			{
-				G3D::Plane plane = snapExtents.getPlane(id);
-				if (plane.halfSpaceContainsFinite(rayInSnap.origin))
-				{
-					G3D::Vector3 hitInSnap;
-					if (Math::intersectRayPlane(rayInSnap, plane, hitInSnap))
-					{
-						G3D::Vector3 hitWorld = cframe.pointToWorldSpace(hitInSnap);
-						float distance = (mouseRay.origin - hitWorld).magnitude();
-						if (distance > bestDistance)
-						{
-							bestDistance = distance;
-							answer.surface = id;
-							found = true;
-							answer.hitWorld = hitWorld;
-						}
-					}
-				}
-			}
-		}
-		
-		return found ? answer : SnapInfo();
-	}
-
-	bool RunDragger::notTried(Primitive* check, const G3D::Array<Primitive*>& tried)
-	{
-		RBXASSERT(check != drag);
-		return check && tried.find(check) == tried.end();
-	}
-
-	RunDragger::SnapInfo RunDragger::bestProximatePart(const G3D::Array<Primitive*>& triedSnap, bool (Contact::* proximityTest)(float))
-	{
-		SnapInfo answer;
-
-		for (Contact* current = drag->getFirstContact(); current != NULL; current = drag->getNextContact(current))
-		{
-			if ((current->*proximityTest)(0.01f))
-			{
-				Primitive* otherPrimitive = current->otherPrimitive(drag);
-				if (notTried(otherPrimitive, triedSnap))
-				{
-					SnapInfo testInfo = createSnapSurface(otherPrimitive, NULL);
-					if (testInfo.snap && testInfo.hitOutsideExtents() < 1e+10)
-						answer = testInfo;
-				}
-			}
-		}
-
-		return answer;
-	}
-
-	void RunDragger::turnUpright(PartInstance* part)
-	{
-		RBXASSERT(part);
-
-		if (part->getSurfaces().isStandardPart())
-		{
-			G3D::CoordinateFrame dragCoord = part->getCoordinateFrame();
-			if (Math::getClosestObjectNormalId(G3D::Vector3::unitY(), dragCoord.rotation) != NORM_Y)
-			{
-				dragCoord.rotation = G3D::Matrix3::identity();
-				part->setCoordinateFrame(dragCoord);
-			}
-		}
-	}
-
-	void RunDragger::tiltPart(PartInstance* part, const G3D::CoordinateFrame& camera)
-	{
-		RBXASSERT(part);
-
-		G3D::CoordinateFrame dragCoord = part->getCoordinateFrame();
-		G3D::Vector3 axis = Math::getWorldNormal(Math::getClosestObjectNormalId(camera.rightVector(), dragCoord.rotation), dragCoord);
-		G3D::Matrix3 tiltM = G3D::Matrix3::fromAxisAngle(axis, G3D::halfPi());
-
-		dragCoord.rotation = tiltM * dragCoord.rotation;
-		part->setCoordinateFrame(dragCoord);
-	}
-
-	RunDragger::SnapInfo RunDragger::rayHitsPart(const G3D::Array<Primitive*>& triedSnap, bool forceAdjacent)
-	{
-		SnapInfo answer;
-		PartByLocalCharacter filter((Instance*)workspace);
-
-		if (PartInstance* mousePart = MouseCommand::getMousePart(mouseRay, workspace->getWorld()->getContactManager(), drag, &filter, answer.hitWorld, 2048.0f))
-		{
-			answer.snap = mousePart->getPrimitive();
-			if (notTried(answer.snap, triedSnap) && (!forceAdjacent || adjacent(answer.snap, drag)))
-			{
-				answer.updateSurfaceFromHit();
-				return answer;
-			}
-		}
-
-		return SnapInfo();
-	}
-
-	bool RunDragger::rayHitsCloserPart()
-	{
-		G3D::Array<Primitive*> ignoreNone;
-		SnapInfo answer = rayHitsPart(ignoreNone, false);
-
-		if (answer.snap && answer.snap != snapInfo.snap)
-		{
-			if ((answer.hitWorld - mouseRay.origin).magnitude() < (snapInfo.hitWorld - mouseRay.origin).magnitude())
-				return true;
-		}
-
-		return false;
-	}
-
-	void RunDragger::findSafeY()
-	{
-		if (workspace->getWorld()->getContactManager().intersectingOthers(drag, 0.01f))
-		{
-			PartInstance* part = PartInstance::fromPrimitive(drag);
-			G3D::Array<Primitive*> temp;
-			temp.push_back(part->getPrimitive());
-
-			G3D::Vector3 moved = Dragger::safeMoveNoDrop(temp, G3D::Vector3::zero(), workspace->getWorld()->getContactManager());
-			RBXASSERT(moved.x == 0.0f);
-			RBXASSERT(moved.y != 0.0f);
-
-			G3D::CoordinateFrame newC = drag->getCoordinateFrame();
-			newC.translation += moved;
-
-			dragPart.lock()->setCoordinateFrame(newC);
-		}
-	}
-
-	void RunDragger::findNoSnapPosition(const G3D::CoordinateFrame& original)
-	{
-		dragPart.lock()->setCoordinateFrame(original);
-		findSafeY();
-
-		RBXASSERT(!workspace->getWorld()->getContactManager().intersectingOthers(drag, 0.01f));
-	}
 }
+
+inline Vector3::Vector3(const Vector3& v)
+    : x(v.x), y(v.y), z(v.z)
+{
+}
+
+inline Vector3 Vector3::operator*(float s) const
+{
+    return Vector3(x * s, y * s, z * s);
+}
+
+inline Vector3& Vector3::operator*=(float s)
+{
+    x *= s;
+    y *= s;
+    z *= s;
+    return *this;
+}
+
+struct Matrix3 {
+    float m[3][3];
+
+    Matrix3(const Matrix3&);
+    Vector3 column(int) const;
+    Matrix3 operator*(const Matrix3&) const;
+    static Matrix3 fromAxisAngle(const Vector3&, float);
+};
+
+struct Frame {
+    Matrix3 rotation;
+    Vector3 translation;
+};
+
+struct Object {
+    const Frame& getFrame() const;
+    void setFrame(const Frame&);
+};
+
+extern int __cdecl closestAxis(const Vector3&, const Frame&);
+extern const float rotationAngle;
+
+void __cdecl rotateFrame(Object* object, const Matrix3& reference)
+{
+    Frame frame = object->getFrame();
+    Vector3 direction = reference.column(0);
+    int face = closestAxis(direction, frame);
+    int column = face % 3;
+
+    Vector3 axis(frame.rotation.m[0][column],
+                frame.rotation.m[1][column],
+                frame.rotation.m[2][column]);
+    axis *= float(1 - 2 * (face / 3));
+
+    Matrix3 rotation = Matrix3::fromAxisAngle(axis, rotationAngle);
+    frame.rotation = rotation * frame.rotation;
+    object->setFrame(frame);
+}
+
+#pragma float_control(pop)

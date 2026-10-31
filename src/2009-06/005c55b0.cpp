@@ -1,205 +1,216 @@
-// from server: 52% by colin
-// roc-lang: cpp
+// from server: 100% by EspClaude
+// from server: 100% by colin
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client App/v8datamodel/Feature.cpp
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /Od /Ob0 /GS
+// roc-lang: cpp
+// roc-lib: rbxgs v8datamodel/UserController.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "v8datamodel/Feature.h"
+#include "v8datamodel/PVInstance.h"
+#include "v8datamodel/UserController.h"
+#include "util/Math.h"
+#include <G3D/Vector3.h>
 
-#include "reflection/property.h"
-#include "util/Name.h"
-
-namespace RBX {
-
-const char sVelocityMotor[] = "VelocityMotor";
-
-const char sHole[] = "Hole";
-
-const char sMotorFeature[] = "MotorFeature";
-
-const char sFeature[] = "Feature";
-
-using namespace Reflection;
-
-static EnumPropDescriptor<Feature, NormalId> prop_FaceId(
-	"FaceId",
-	"Data",
-	&RBX::Feature::getFaceId,
-	&RBX::Feature::setFaceId
-);
-
-static EnumPropDescriptor<Feature, Feature::TopBottom> prop_TopBottom(
-	"TopBottom",
-	"Data",
-	&RBX::Feature::getTopBottom,
-	&RBX::Feature::setTopBottom
-);
-
-static EnumPropDescriptor<Feature, Feature::LeftRight> prop_LeftRight(
-	"LeftRight",
-	"Data",
-	&RBX::Feature::getLeftRight,
-	&RBX::Feature::setLeftRight
-);
-
-static EnumPropDescriptor<Feature, Feature::InOut> prop_InOut(
-	"InOut",
-	"Data",
-	&RBX::Feature::getInOut,
-	&RBX::Feature::setInOut
-);
-
-static PropDescriptor<VelocityMotor, float> prop_MaxVelocity(
-	"MaxVelocity",
-	"Data",
-	&RBX::VelocityMotor::getMaxVelocity,
-	&RBX::VelocityMotor::setMaxVelocity
-);
-
-static PropDescriptor<VelocityMotor, float> prop_DesiredAngle(
-	"DesiredAngle",
-	"Data",
-	&RBX::VelocityMotor::getDesiredAngle,
-	&RBX::VelocityMotor::setDesiredAngle
-);
-
-static PropDescriptor<VelocityMotor, float> prop_CurrentAngle(
-	"CurrentAngle",
-	"Data",
-	&RBX::VelocityMotor::getCurrentAngle,
-	&RBX::VelocityMotor::setCurrentAngle
-);
-
-// FUNCTION: WEBSERVICE 0x100d7d70
-float VelocityMotor::getMaxVelocity() const
+namespace RBX
 {
-	return static_cast<MotorJoint*>(joint)->getMaxVelocity();
-}
 
-// FUNCTION: WEBSERVICE 0x100d7d80
-float VelocityMotor::getDesiredAngle() const
-{
-	return static_cast<MotorJoint*>(joint)->getDesiredAngle();
-}
+#pragma warning (push)
+#pragma warning (disable : 4355) // warning C4355: 'this' : used in base member initializer list
 
-// FUNCTION: WEBSERVICE 0x100e42d0
-float VelocityMotor::getCurrentAngle() const
-{
-	return static_cast<MotorJoint*>(joint)->getCurrentAngle();
-}
+	ControllerService::ControllerService()
+		: playerController(NULL),
+		  hardwareDevice(NULL),
+		  keyboardPrimaryController(new KeyboardPrimaryController(this)),
+		  keyboardSecondaryController(new KeyboardSecondaryController(this)),
+		  nullController(new NullController)
+	{
+	}
 
-namespace Reflection {
+#pragma warning (pop)
 
-// FUNCTION: WEBSERVICE 0x100e5950
-template <>
-EnumDesc<Feature::TopBottom>::EnumDesc() : EnumDescriptor("TopBottom", typeid(Feature::TopBottom))
-{
-	addPair(Feature::TOP, "Top");
-	addPair(Feature::CENTER_TB, "Center");
-	addPair(Feature::BOTTOM, "Bottom");
-}
+	G3D::ReferenceCountedPointer<Controller> ControllerService::getController(Controller::ControllerType type, const PVInstance* controlledInstance)
+	{
+		switch (type)
+		{
+		case Controller::PLAYER_CONTROLLER:
+			return new PlayerController(this, controlledInstance);
 
-// FUNCTION: WEBSERVICE 0x100e5ad0
-template <>
-EnumDesc<Feature::LeftRight>::EnumDesc() : EnumDescriptor("LeftRight", typeid(Feature::LeftRight))
-{
-	addPair(Feature::LEFT, "Left");
-	addPair(Feature::CENTER_LR, "Center");
-	addPair(Feature::RIGHT, "Right");
-}
+		case Controller::PRIMARY_CONTROLLER:
+			return keyboardPrimaryController;
 
-// FUNCTION: WEBSERVICE 0x100e5c50
-template <>
-EnumDesc<Feature::InOut>::EnumDesc() : EnumDescriptor("InOut", typeid(Feature::InOut))
-{
-	addPair(Feature::EDGE, "Edge");
-	addPair(Feature::INSET, "Inset");
-	addPair(Feature::CENTER_IO, "Center");
-}
+		case Controller::SECONDARY_CONTROLLER:
+			return keyboardSecondaryController;
 
-} // namespace Reflection
+		case Controller::AI_CHASE_CONTROLLER:
+			return new AIChaseController(controlledInstance);
 
-// FUNCTION: WEBSERVICE 0x100e7430
-void Feature::setFaceId(NormalId value)
-{
-	if (faceId != value) {
-		faceId = value;
-		raisePropertyChanged(prop_FaceId);
+		case Controller::AI_FLEE_CONTROLLER:
+			return new AIFleeController(controlledInstance);
+
+		default:
+			return nullController;
+		}
+	}
+
+	AIController::AIController(const PVInstance* controlledInstance)
+		: SteppingController(controlledInstance),
+		  retargetTime(0.0f)
+	{
+		for (int i = 0; i < Controller::NUM_INPUT_TYPES; i++)
+		{
+			buffer[i] = 0.0f;
+		}
+
+		buffer[Controller::CONSTANT_INPUT] = 1.0f;
+	}
+
+	AIController::~AIController() {}
+
+	float AIController::getValue(Controller::InputType inputType) const
+	{
+		return buffer[inputType];
+	}
+
+	void AIController::chaseTarget(const G3D::Vector3& localChasePoint)
+	{
+		float chaseAngle = atan2f(-localChasePoint.x, -localChasePoint.z);
+		float leftInput, rightInput;
+
+		if (chaseAngle > Math::pi() * 144.0f/360.0f)
+		{
+			leftInput = -0.9f;
+			rightInput = 0.9f;
+		}
+		else if (chaseAngle < Math::pi() * -144.0f/360.0f)
+		{
+			leftInput = 0.9f;
+			rightInput = -0.9f;
+		}
+		else if (chaseAngle > Math::pi() * 54.0/360.0)
+		{
+			leftInput = 0.0f;
+			rightInput = 0.9f;
+		}
+		else if (chaseAngle < Math::pi() * -54.0/360.0)
+		{
+			leftInput = 0.9f;
+			rightInput = 0.0f;
+		}
+		else
+		{
+			leftInput = 0.9f;
+			rightInput = 0.9f;
+		}
+
+		buffer[Controller::LEFT_TRACK_INPUT] = leftInput;
+		buffer[Controller::RIGHT_TRACK_INPUT] = rightInput;
+		buffer[Controller::RIGHT_LEFT_INPUT] = chaseAngle * (1.0f/Math::pi());
+		buffer[Controller::BACK_FORWARD_INPUT] = localChasePoint.z < 0.0f ? 0.9f : 0.0f;
+	}
+
+	G3D::Vector3 AIController::getLocalTargetPosition() const
+	{
+		G3D::Vector3 result;
+
+		boost::shared_ptr<const PVInstance> lockPV = controlledInstance.lock();
+		boost::shared_ptr<const PVInstance> lockTarget = target.lock();
+
+		RBXASSERT(lockPV);
+
+		if (lockPV && lockTarget)
+		{
+			G3D::CoordinateFrame controlledCoord = lockPV->getLocation();
+			G3D::Vector3 targetLoc = lockTarget->getLocation().translation;
+
+			result = controlledCoord.pointToObjectSpace(targetLoc);
+		}
+		
+		return result;
+	}
+
+	void AIController::updateTarget(Controller::ControllerType excludeType, float time)
+	{
+		if (time < retargetTime)
+			return;
+
+		retargetTime = time + G3D::uniformRandom(1.0f, 3.0f);
+
+		boost::shared_ptr<const PVInstance> pvLock = controlledInstance.lock();
+		if (!pvLock)
+			return;
+
+		const PVInstance* pvRoot = pvLock->getTypedRoot<PVInstance>();
+		if (!pvRoot)
+			return;
+
+		float bestDistance = 1e+20f;
+		G3D::CoordinateFrame controlledCoord = pvLock->getLocation();
+
+		for (size_t i = 0; i < pvRoot->numChildren(); i++)
+		{
+			const PVInstance* current = pvRoot->queryTypedChild<PVInstance>((int)i);
+
+			if (current && current != pvLock.get() && current->isChaseable() &&
+				current->getTopPVController()->getControllerType() != excludeType)
+			{
+				float distance = (current->getLocation().translation - controlledCoord.translation).magnitude();
+				if (distance < bestDistance)
+				{
+					bestDistance = distance;
+					target = shared_from(current);
+				}
+			}
+		}
+	}
+
+	void AIChaseController::updateBuffer(float time)
+	{
+		updateTarget(Controller::AI_CHASE_CONTROLLER, time);
+
+		if (!target.expired())
+		{
+			chaseTarget(getLocalTargetPosition());
+		}
+		else
+		{
+			buffer[Controller::LEFT_TRACK_INPUT] = -1.0f;
+			buffer[Controller::RIGHT_TRACK_INPUT] = 1.0f;
+			buffer[Controller::RIGHT_LEFT_INPUT] = 1.0f;
+		}
+	}
+
+	void AIFleeController::updateBuffer(float time)
+	{
+		updateTarget(Controller::AI_FLEE_CONTROLLER, time);
+
+		if (!target.expired())
+		{
+			chaseTarget(-getLocalTargetPosition());
+		}
+	}
+
+	SteppingController::SteppingController(const PVInstance* _controlledInstance)
+		: runService(shared_from(ServiceProvider::create<RunService>(_controlledInstance))),
+		  controlledInstance(shared_from(_controlledInstance))
+	{
+		Notifier<RunService, Heartbeat>::connect(runService, this);
+	}
+
+	SteppingController::~SteppingController()
+	{
+		Notifier<RunService, Heartbeat>::disconnect(runService, this);
+	}
+
+	PlayerController::PlayerController(ControllerService* _controllerService, const PVInstance* _controlledInstance)
+		: SteppingController(_controlledInstance),
+		  controllerService(shared_from(_controllerService)),
+		  stepsRotating(0)
+	{
+	}
+
+	const UserInputBase* PlayerController::getHardwareDevice() const
+	{
+		RBXASSERT(!controllerService.expired());
+		return controllerService.expired() ? NULL : controllerService.lock()->getHardwareDevice();
 	}
 }
-
-// FUNCTION: WEBSERVICE 0x100e7460
-void Feature::setTopBottom(TopBottom value)
-{
-	if (topBottom != value) {
-		topBottom = value;
-		raisePropertyChanged(prop_TopBottom);
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x100e7490
-void Feature::setLeftRight(LeftRight value)
-{
-	if (leftRight != value) {
-		leftRight = value;
-		raisePropertyChanged(prop_LeftRight);
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x100e74c0
-void Feature::setInOut(InOut value)
-{
-	if (inOut != value) {
-		inOut = value;
-		raisePropertyChanged(prop_InOut);
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x100e7670
-void VelocityMotor::setMaxVelocity(float value)
-{
-	if (value != static_cast<MotorJoint*>(joint)->getMaxVelocity()) {
-		static_cast<MotorJoint*>(joint)->setMaxVelocity(value);
-		raisePropertyChanged(prop_MaxVelocity);
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x100e76b0
-void VelocityMotor::setDesiredAngle(float value)
-{
-	if (value != static_cast<MotorJoint*>(joint)->getDesiredAngle()) {
-		static_cast<MotorJoint*>(joint)->setDesiredAngle(value);
-		raisePropertyChanged(prop_DesiredAngle);
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x100e76f0
-void VelocityMotor::setCurrentAngle(float value)
-{
-	if (value != static_cast<MotorJoint*>(joint)->getCurrentAngle()) {
-		static_cast<MotorJoint*>(joint)->setCurrentAngle(value);
-		raisePropertyChanged(prop_CurrentAngle);
-	}
-}
-} // namespace RBX
-
-template const RBX::Name& RBX::Name::doDeclare<RBX::sFeature>();
-template void RBX::Name::callDoDeclare<RBX::sFeature>();
-
-template class RBX::FactoryProduct<RBX::Hole, RBX::Feature, RBX::sHole>;
-template class RBX::Reflection::
-	Described<RBX::Hole, RBX::sHole, RBX::FactoryProduct<RBX::Hole, RBX::Feature, RBX::sHole> >;
-template class RBX::DescribedCreatable<RBX::Hole, RBX::Feature, RBX::sHole>;
-
-template class RBX::FactoryProduct<RBX::MotorFeature, RBX::Feature, RBX::sMotorFeature>;
-template class RBX::Reflection::Described<
-	RBX::MotorFeature,
-	RBX::sMotorFeature,
-	RBX::FactoryProduct<RBX::MotorFeature, RBX::Feature, RBX::sMotorFeature> >;
-template class RBX::DescribedCreatable<RBX::MotorFeature, RBX::Feature, RBX::sMotorFeature>;
-
-template class RBX::NonFactoryProduct<RBX::Instance, RBX::sFeature>;
-template class RBX::Reflection::
-	Described<RBX::Feature, RBX::sFeature, RBX::NonFactoryProduct<RBX::Instance, RBX::sFeature> >;
-template class RBX::DescribedNonCreatable<RBX::Feature, RBX::Instance, RBX::sFeature>;

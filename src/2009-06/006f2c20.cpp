@@ -1,108 +1,51 @@
-// from server: 54% by colin
+// from server: 100% by EspClaude
+// from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
-
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
-
-boost::mutex& moo2()
-{
-	static boost::mutex mutex2;
-	return mutex2;
+namespace G3D {
+class Vector3 { public: float x, y, z; };
+class Ray {
+public:
+    Vector3 origin;
+    Vector3 direction;
+    virtual ~Ray() {}
+};
 }
-
-void initMoo()
+namespace RBX {
+class UIEvent;
+class MegaDragger {
+public:
+    bool mousePartAlive();
+    void continueDragging();
+};
+class RunDragger {
+public:
+    void snap(const G3D::Ray& ray);
+};
+class MouseCommand {
+public:
+    virtual ~MouseCommand();
+    char pad04[0x10];
+    bool isCaptured;            // 0x14
+    char pad15[0x7];
+    RunDragger* runDragger;     // 0x1c
+    MegaDragger* megaDragger;   // 0x20
+    char pad24[0x10];
+    bool dragging;              // 0x34
+    bool captured() const { return isCaptured; }
+    G3D::Ray getUnitMouseRay(const UIEvent& uiEvent);
+};
+class PartDragTool : public MouseCommand {
+public:
+    virtual void onMouseIdle(const UIEvent& uiEvent);
+};
+void PartDragTool::onMouseIdle(const UIEvent& uiEvent)
 {
-	moo2();
+    if (captured() && dragging && megaDragger->mousePartAlive())
+    {
+        megaDragger->continueDragging();
+        runDragger->snap(getUnitMouseRay(uiEvent));
+    }
 }
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
 }

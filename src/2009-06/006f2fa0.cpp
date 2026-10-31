@@ -1,108 +1,83 @@
-// from server: 21% by colin
+// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+// roc-lib: rbxgs-dll roc_espclaude_74d006487e31440b.cpp
 
 // Candidate translation unit (score above; library headers required).
+#undef _RELEASEASSERT
+#undef _DEBUG
+#define _DLL
+#define private public
+#include "util/IRenderable.h"
+#undef private
+#include "util/Object.h"
+#define hasListeners() hasListeners() const { return listeners.size() > 0; } bool hasListenersEmpty()
+#include "util/Events.h"
+#undef hasListeners
+namespace RBX { template<class T> class GuidItem { public: virtual ~GuidItem() {} char guidPad[0xc]; }; }
+namespace RBX { template<class T> class GuidAFP : public AbstractFactoryProduct<T> { protected: virtual void onGuidChanged() {} }; }
+#define AbstractFactoryProduct GuidItem<Instance>, public GuidAFP
+#include "util/Guid.h"
+namespace RBX { class GuidStub { public: typedef Guid::Data Data; void assign(const Data&) {} operator const Guid&() const { return *(const Guid*)0; } }; }
+#define Guid GuidStub
+#include "v8tree/Instance.h"
+#undef Guid
+#undef AbstractFactoryProduct
+#define undoState undoState()
+#include "v8datamodel/MouseCommand.h"
+#undef undoState
 #include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
-
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
-
-boost::mutex& moo2()
-{
-	static boost::mutex mutex2;
-	return mutex2;
-}
-
-void initMoo()
-{
-	moo2();
-}
+#include "tool/RunDragger.h"
+#include "tool/MegaDragger.h"
+#include "v8datamodel/PartInstance.h"
+#include "v8datamodel/Workspace.h"
 
 namespace RBX
 {
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
+	extern const char* sPartDragTool;
 
-	std::map<int, Name*>& Name::dictionary()
+	class PartDragTool : public Named<MouseCommand, &sPartDragTool>
 	{
-		static std::map<int, Name*> d;
-		return d;
-	}
+	private:
+		std::auto_ptr<RunDragger> runDragger;
+		std::auto_ptr<MegaDragger> megaDragger;
+		boost::shared_ptr<Instance> exeShared;
+		G3D::Vector2 downPoint;
+		bool dragging;
+		G3D::Vector3 hitWorld;
 
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
+	public:
+		virtual MouseCommand* onMouseDown(const UIEvent& uiEvent);
+		virtual void onMouseIdle(const UIEvent& uiEvent);
+		virtual void onMouseMove(const UIEvent&);
+		virtual void onMouseDelta(const UIEvent& uiEvent);
+		virtual MouseCommand* onMouseUp(const UIEvent& uiEvent);
+		virtual MouseCommand* onKeyDown(const UIEvent& uiEvent);
+		virtual void render3dAdorn(Adorn* adorn);
 
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
+		virtual const std::string getCursorName() const
 		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
+			return dragging ? "GrabRotateCursor" : "DragCursor";
 		}
 
-		boost::mutex::scoped_lock scoped_lock(mutex());
+		PartDragTool(PartInstance* mousePart, const G3D::Vector3& hitPointWorld, Workspace* workspace, boost::shared_ptr<Instance> exeArg);
+		virtual ~PartDragTool();
+	};
 
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
+	PartDragTool::PartDragTool(PartInstance* mousePart, const G3D::Vector3& hitPointWorld, Workspace* workspace, boost::shared_ptr<Instance> exeArg)
+		: Base(workspace),
+		  exeShared(exeArg),
+		  hitWorld(hitPointWorld),
+		  dragging(false)
 	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
+		RBXASSERT(mousePart);
+		runDragger.reset(new RunDragger);
 
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
+		std::vector<PVInstance*> pvInstances;
+		pvInstances.push_back(mousePart);
 
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
+		megaDragger.reset(new MegaDragger(mousePart, pvInstances, (RootInstance*)workspace));
 	}
 }

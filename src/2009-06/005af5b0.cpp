@@ -1,51 +1,73 @@
-// from server: 31% by colin
-// roc-lang: cpp
+// from server: 81% by EspClaude
+// from server: 100% by colin
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-render TextureProxy.cpp
+#pragma optimize("", off)
+#pragma strict_gs_check(on)
 
-// Candidate translation unit (score above; library headers required).
-#include "RenderLib/TextureProxy.h"
+struct String;
+extern void (__thiscall *assignString)(String*, const String&);
 
-namespace RBX
+struct String {
+    unsigned char data[28];
+};
+
+struct Base {
+    virtual ~Base();
+    unsigned char reserved0[8];
+    String name;
+    unsigned char reserved1[8];
+    Base();
+};
+
+struct IteratorBase {
+    unsigned int link;
+    IteratorBase();
+    ~IteratorBase();
+};
+
+struct Reference {
+    void* value;
+    Reference();
+    ~Reference();
+};
+
+struct EmptyState {
+    unsigned char data[12];
+    EmptyState();
+};
+
+struct TexturePtr {
+    void* object;
+    void* control;
+    __declspec(dllimport) TexturePtr();
+    __declspec(dllimport) ~TexturePtr();
+};
+
+struct TextureProxy : Base {
+    IteratorBase iterator;
+    bool flag;
+    void* owner;
+    bool option;
+    Reference first;
+    Reference second;
+    EmptyState state;
+    TexturePtr texture;
+
+    TextureProxy(void*, const String&, bool);
+    virtual ~TextureProxy();
+};
+
+TextureProxy::TextureProxy(void* p, const String& s, bool b)
+    : Base(),
+      iterator(),
+      flag(false),
+      owner(p),
+      option(b),
+      first(),
+      second(),
+      state(),
+      texture()
 {
-	namespace Render
-	{
-		G3D::ReferenceCountedPointer<G3D::Texture> TextureProxy::getIfResolved() const
-		{
-			return texture;
-		}
-
-		G3D::ReferenceCountedPointer<TextureProxy> TextureProxy::alphaOnlyVersion()
-		{
-			return new TextureProxy(this);
-		}
-
-		G3D::Vector2 TextureProxy::getSize()
-		{
-			G3D::ReferenceCountedPointer<G3D::Texture> t = getIfResolved();
-			G3D::Vector2 out;
-			if (t.notNull())
-			{
-				out.x = t->texelWidth();
-				out.y = t->texelHeight();
-			}
-			else
-			{
-				out.y = 0.0f;
-				out.x = 0.0f;
-			}
-			return out;
-		}
-
-		G3D::ReferenceCountedPointer<TextureProxy> TextureProxy::shade(const G3D::Color3& baseColor, const G3D::ReferenceCountedPointer<TextureProxy>& baseTex)
-		{
-			TextureProxy* newTex = new TextureProxy(baseTex);
-			newTex->textureManager = textureManager;
-			newTex->root = baseTex;
-			newTex->shadeColor = baseColor;
-			newTex->shadeTexture = this;
-			return newTex;
-		}
-	}
+    assignString(&name, s);
 }

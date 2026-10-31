@@ -189,7 +189,10 @@ static bool readPng(const char* path, Image& image)
 
 static bool isGreen(const unsigned char* p)
 {
-    return p[1] > 120 && p[0] < 90 && p[2] < 90;
+    // Fixture quantizes to BrickColor(40,127,70). Native ambient/atlas shading
+    // makes its front face about(23,72,40); the old unlit G>120 is inapplicable.
+    // Require green chroma and visible brightness; keep all area/noise gates.
+    return p[1] > 50 && p[1] > p[0]*2 && p[1]*2 > p[2]*3;
 }
 
 static int countGreen(const Image& image, int x0, int y0, int x1, int y1)
@@ -214,6 +217,7 @@ struct DrawEntry
     Ogre::RbxEntity* entity;
     Ogre::MeshPtr mesh;
     PlayerBlockMesh::MeshRef geometry;
+    PlayerNativeMaterial::MaterialRef material;
     float size[3];
     float color[3];
 
@@ -225,27 +229,19 @@ static std::map<const void*, DrawEntry> g_drawn;
 
 // Geometry is produced by recovered 004e2c80 and uploaded by 00549a50.
 // Ogre Mesh here supplies entity bounds only; Level owns the detached RbxSubMesh.
-static Ogre::MeshPtr createRecoveredMesh(const char* name, PlayerBlockMesh::BlockMesh* geometry, const float color[3])
+static Ogre::MeshPtr createRecoveredMesh(const char* name, PlayerBlockMesh::BlockMesh* geometry)
 {
     Ogre::MeshPtr existing=Ogre::MeshManager::getSingleton().getByName(name);
     if(!existing.isNull())return existing;
     PlayerBlockMesh::Level& level=geometry->level0();
     Ogre::AxisAlignedBox bounds;
     level.upload(false,bounds);
+    PlayerSphereCache::set(reinterpret_cast<PlayerSphereCache::Key>(level.backend),
+        Ogre::Sphere(bounds.getCenter(),bounds.getHalfSize().length())); // 007aba1d ->00682350.
     Ogre::MeshPtr mesh=Ogre::MeshManager::getSingleton().createManual(name,Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
     // SDK SubMesh::getVertexAnimationType dereferences parent. Mesh is metadata
     // only: it does not adopt this Level-owned submesh into its deletion list.
     level.backend->parent=mesh.getPointer();
-    std::string matName=std::string(name)+"_mat";
-    Ogre::MaterialPtr mat=Ogre::MaterialManager::getSingleton().create(matName,Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
-    Ogre::Pass* pass=mat->getTechnique(0)->getPass(0);
-    pass->setLightingEnabled(false);
-    pass->setCullingMode(Ogre::CULL_NONE);
-    // Recovered upload has no diffuse stream; fixed-function manual colour supplies Part colour.
-    pass->setDiffuse(color[0],color[1],color[2],1.0f);
-    Ogre::TextureUnitState* unit=pass->createTextureUnitState();
-    unit->setColourOperationEx(Ogre::LBX_SOURCE1,Ogre::LBS_MANUAL,Ogre::LBS_CURRENT,Ogre::ColourValue(color[0],color[1],color[2]));
-    level.backend->setMaterialName(matName);mat->load();
     mesh->_setBounds(bounds);mesh->_setBoundingSphereRadius(level.backend->radius);mesh->load();
     std::printf("recovered block: producer=004e2c80 upload=00549a50 calls=%u indices=%u\n",PlayerBlockMesh::producerCalls(),static_cast<unsigned>(level.backend->indexData->indexCount));
     return mesh;
@@ -257,10 +253,10 @@ static void releaseGeometry(DrawEntry& entry)
     std::string name=entry.mesh->getName();
     bool lastUser=entry.mesh.useCount()==Ogre::ResourceGroupManager::RESOURCE_SYSTEM_NUM_REFERENCE_COUNTS+1;
     entry.geometry=PlayerBlockMesh::MeshRef();
+    entry.material=PlayerNativeMaterial::MaterialRef();
     entry.mesh.setNull();
     if(lastUser){
         Ogre::MeshManager::getSingleton().remove(name);
-        Ogre::MaterialManager::getSingleton().remove(name+"_mat");
     }
 }
 
@@ -300,7 +296,7 @@ static void drawModels()
             _snprintf(suffix, sizeof(suffix), "%p", model.geometry);
             name += suffix;
             entry.geometry=model.geometry;
-            entry.mesh = createRecoveredMesh(name.c_str(), model.geometry, model.color);
+            entry.mesh = createRecoveredMesh(name.c_str(), model.geometry);
             entry.entity = new Ogre::RbxEntity();
             entry.entity->setMesh(entry.mesh);
             Ogre::SubMesh* subMesh = entry.geometry->level0().backend;
@@ -309,6 +305,16 @@ static void drawModels()
             const Ogre::AxisAlignedBox& b = entry.entity->getBoundingBox();
             std::memcpy(entry.size, model.size, sizeof(entry.size));
             std::memcpy(entry.color, model.color, sizeof(entry.color));
+        }
+        if(entry.material.getPointer()!=model.material){
+            entry.material=model.material;
+            const char* sky=getenv("ROC_SKY_SPHERE");
+            Ogre::MaterialPtr backend=PlayerNativeMaterial::prepareBackend(*entry.material,0,
+                entry.geometry->geometryKind,entry.geometry->level0().primitive,0,sky?sky:"");
+            entry.entity->getSubEntity(0)->setMaterialName(backend->getName());
+            std::printf("native material: getter=004eb190 renderer=007ab0a0 name=%s texture=%s lit=%d\n",
+                backend->getName().c_str(),backend->getTechnique(0)->getPass(0)->getTextureUnitState(0)->getTextureName().c_str(),
+                backend->getTechnique(0)->getPass(0)->getLightingEnabled());
         }
 
         entry.node->setPosition(model.position[0], model.position[1], model.position[2]);
@@ -338,6 +344,12 @@ static void drawModels()
             ++it;
         }
     }
+    Ogre::AxisAlignedBox bounds;
+    for(std::map<const void*,DrawEntry>::iterator it=g_drawn.begin();it!=g_drawn.end();++it){
+        Ogre::AxisAlignedBox transformed=it->second.mesh->getBounds();
+        transformed.transformAffine(it->second.node->_getFullTransform());bounds.merge(transformed);
+    }
+    SceneApplyLighting(g_sceneManager,&bounds);
 }
 
 // ------------------------------------------------------------------ selftest
@@ -450,6 +462,7 @@ static int runSelftest(Ogre::Root* root, Ogre::RenderWindow* win)
 
     std::ostringstream json;
     json << "{\n"
+         << "  \"pixel_metric\": \"lit green: G>50, G>2R, 2G>3B\",\n"
          << "  \"initial\": {\"models\": 1, \"greenA\": " << initialA << ", \"greenB\": " << initialB
          << ", \"pass\": " << (okInitial ? "true" : "false") << "},\n"
          << "  \"moved\": {\"models\": 1, \"greenA\": " << movedA << ", \"greenB\": " << movedB
@@ -485,12 +498,15 @@ static int runCacheTest(Ogre::Root* root,Ogre::RenderWindow* win,const std::stri
         for(std::map<const void*,DrawEntry>::iterator it=g_drawn.begin();it!=g_drawn.end();++it){
             DrawEntry& entry=it->second;
             if(entry.geometry->levels.size()!=2 || entry.geometry->level0().backend->parent!=entry.mesh.getPointer())return 4;
+            PlayerSphereCache::Key key=reinterpret_cast<PlayerSphereCache::Key>(entry.geometry->level0().backend);
+            if(!PlayerSphereCache::has(key) || PlayerSphereCache::get(key).getRadius()!=entry.geometry->level0().backend->radius)return 12;
             ++users[entry.geometry.getPointer()];
         }
         bool shared=false;
         for(std::map<PlayerBlockMesh::BlockMesh*,int>::iterator it=users.begin();it!=users.end();++it)
             if(it->second>1)shared=true;
         if(!shared)return 5;
+        if(PlayerSphereCache::size()!=users.size())return 13;
         Image image;
         if(!capture(root,win,"cache_initial.png",image) || !countGreen(image,110,90,210,150))return 6;
         RemovePart();drawModels();
@@ -501,11 +517,12 @@ static int runCacheTest(Ogre::Root* root,Ogre::RenderWindow* win,const std::stri
                entry.entity->getMesh().getPointer()!=entry.mesh.getPointer() ||
                Ogre::MeshManager::getSingleton().getByName(entry.mesh->getName()).getPointer()!=entry.mesh.getPointer() ||
                entry.node->getPosition()!=Ogre::Vector3::ZERO)return 8;
+            if(!PlayerSphereCache::has(reinterpret_cast<PlayerSphereCache::Key>(entry.geometry->level0().backend)))return 14;
         }
         if(!capture(root,win,"cache_remaining.png",image) || !countGreen(image,110,90,210,150))return 9;
         SceneDetach();drawModels();ClosePlace();PlayerBlockMesh::flushUnused();
         if(!g_drawn.empty() || PlayerBlockMesh::cachedMeshes() || PlayerBlockMesh::liveLevels() ||
-           PlayerBlockMesh::activeReferences() || PlayerMeshBackend::liveMeshes())return 10;
+           PlayerBlockMesh::activeReferences() || PlayerMeshBackend::liveMeshes() || PlayerSphereCache::size())return 10;
         if(resourceCount(Ogre::MeshManager::getSingleton())!=meshes ||
            resourceCount(Ogre::MaterialManager::getSingleton())!=materials)return 11;
         std::printf("cachetest cycle=%d models9->8->0 metadata/material baseline PASS\n",cycle);
@@ -517,6 +534,7 @@ static int runCacheTest(Ogre::Root* root,Ogre::RenderWindow* win,const std::stri
 
 int main(int argc, char** argv)
 {
+    if(!getenv("ROC_TEXTURE_STRIP")){std::printf("ROC_TEXTURE_STRIP must name the original SurfacesStrip.png\n");return 1;}
     bool selftest = false;
     bool cachetest = false;
     bool frames = false;
@@ -575,8 +593,8 @@ int main(int argc, char** argv)
         SceneDetach();
         drawModels();
         PlayerBlockMesh::flushUnused();
-        std::printf("mesh cleanup: levels=%u refs=%u backends=%u\n",PlayerBlockMesh::liveLevels(),PlayerBlockMesh::activeReferences(),PlayerMeshBackend::liveMeshes());
-        if(PlayerBlockMesh::liveLevels() || PlayerBlockMesh::activeReferences() || PlayerMeshBackend::liveMeshes())rc=7;
+        std::printf("mesh cleanup: levels=%u refs=%u backends=%u spheres=%u\n",PlayerBlockMesh::liveLevels(),PlayerBlockMesh::activeReferences(),PlayerMeshBackend::liveMeshes(),PlayerSphereCache::size());
+        if(PlayerBlockMesh::liveLevels() || PlayerBlockMesh::activeReferences() || PlayerMeshBackend::liveMeshes() || PlayerSphereCache::size())rc=7;
         delete root;
         ClosePlace();
         return rc;
@@ -642,7 +660,7 @@ int main(int argc, char** argv)
     SceneDetach();
     drawModels();
     PlayerBlockMesh::flushUnused();
-    std::printf("mesh cleanup: levels=%u refs=%u backends=%u\n",PlayerBlockMesh::liveLevels(),PlayerBlockMesh::activeReferences(),PlayerMeshBackend::liveMeshes());
+    std::printf("mesh cleanup: levels=%u refs=%u backends=%u spheres=%u\n",PlayerBlockMesh::liveLevels(),PlayerBlockMesh::activeReferences(),PlayerMeshBackend::liveMeshes(),PlayerSphereCache::size());
     delete root;
     ClosePlace();
     return 0;

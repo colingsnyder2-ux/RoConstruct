@@ -1,4 +1,4 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 005c72f0  unit: RBX::VLockTool::?$TToolVerb  size: 101 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005c72f0
@@ -39,6 +39,9 @@
 void* __cdecl operator new(unsigned int);
 void __cdecl operator delete(void*);
 
+extern char vtA[];
+extern char vtB[];
+
 struct Base {
     void* table1;
     void* table2;
@@ -51,12 +54,12 @@ struct Tool : Base {
 };
 
 __forceinline Tool::Tool(void* p) : Base(p) {
-    table1 = (void*)0x8397f4;
-    table2 = (void*)0x8397dc;
+    table1 = vtA;
+    table2 = vtB;
 }
 
 struct Context {
-    char padding[0x204];
+    char padding[0x20c];
     void* value;
 };
 

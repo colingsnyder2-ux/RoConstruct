@@ -1,4 +1,4 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0048ab70  unit: RBX::Network::P8Player::?$GetSetImpl  size: 128 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0048ab70
@@ -96,7 +96,7 @@ struct S
 String S::f(void* object)
 {
     Getter* base = object
-        ? reinterpret_cast<Getter*>(static_cast<char*>(object) - 20)
+        ? reinterpret_cast<Getter*>(static_cast<char*>(object) - 24)
         : 0;
     return (base->*getter)();
 }

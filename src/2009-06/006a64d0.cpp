@@ -1,47 +1,55 @@
-// from server: 20% by colin
+// from server: 96% by EspClaude
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8world/RigidJoint.cpp
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
+// roc-lib: openrbx-client roc_espclaude_872167d21248def9.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "v8world/RigidJoint.h"
-#include "v8world/Primitive.h"
-#include "util/Math.h"
+#define private public
+#include "v8world/Joint.h"
+#include "v8world/World.h"
+#include "v8world/IWorldStage.h"
+#undef private
+#include "decomp.h"
+#include <cstddef>
 
-namespace RBX
+namespace RBX {
+
+// exe build has one stage fewer than OpenRBX: KERNEL_STAGE == 7
+static inline World* exGetWorld(IPipelined* p)
 {
-	// TODO: check which of these belong to the header
-
-	bool RigidJoint::isAligned()
-	{
-		G3D::CoordinateFrame c0World = getPrimitive(0)->getCoordinateFrame() * jointCoord0;
-		G3D::CoordinateFrame c1World = getPrimitive(1)->getCoordinateFrame() * jointCoord1;
-		return Math::fuzzyEq(c0World, c1World, 0.00001f, 0.00001f);
+	if (p->currentStage == NULL) {
+		return NULL;
 	}
 
-	G3D::CoordinateFrame RigidJoint::align(Primitive* pMove, Primitive* pStay)
-	{
-		const G3D::CoordinateFrame& c0 = getJointCoord(pMove == getPrimitive(0) ? 0 : 1);
-		const G3D::CoordinateFrame& c1 = getJointCoord(pStay == getPrimitive(0) ? 0 : 1);
+	IStage* stage;
 
-		G3D::CoordinateFrame jointWorld = pStay->getCoordinateFrame() * c1;
-		return jointWorld * c0.inverse();
+	if (p->currentStage->getStageType() != (IStage::StageType)7) {
+		stage = p->currentStage;
+	}
+	else {
+		stage = p->currentStage->getUpstream();
 	}
 
-	G3D::CoordinateFrame RigidJoint::getChildInParent(Primitive* parent, Primitive* child)
-	{
-		const G3D::CoordinateFrame& c0 = getJointCoord(parent == getPrimitive(0) ? 0 : 1);
-		const G3D::CoordinateFrame& c1 = getJointCoord(child == getPrimitive(0) ? 0 : 1);
+	return static_cast<IWorldStage*>(stage)->getWorld();
+}
 
-		return c0 * c1.inverse();
+void Joint::setJointCoord(int i, const CoordinateFrame& c)
+{
+	if (c != getJointCoord(i)) {
+		if (i == 0) {
+			jointCoord0 = c;
+		}
+		else {
+			jointCoord1 = c;
+		}
+
+		if (World* world = exGetWorld(this)) {
+			world->removeJoint(this);
+			world->insertJoint(this);
+		}
 	}
+}
 
-	void RigidJoint::faceIdToCoords(Primitive* p0, Primitive* p1, NormalId nId0, NormalId nId1, G3D::CoordinateFrame& c0, G3D::CoordinateFrame& c1)
-	{
-		c0 = p0->getFaceCoordInObject(nId0);
-
-		G3D::CoordinateFrame worldC = p0->getCoordinateFrame() * c0;
-		c1 = p1->getCoordinateFrame().toObjectSpace(worldC);
-	}
 }

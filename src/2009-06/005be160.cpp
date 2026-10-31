@@ -1,4 +1,4 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0053f200  unit: RBX::RenderBase::AggregatingSceneManager  size: 125 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0053f200
@@ -67,7 +67,7 @@ struct Source {
     virtual bool second();
     virtual Color color();
 
-    unsigned char padding[20];
+    unsigned char padding[12];
     float value;
 };
 

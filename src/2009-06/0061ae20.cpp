@@ -1,108 +1,43 @@
-// from server: 30% by colin
+// from server: 94% by EspClaude
+// from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+// roc-lib: openrbx-client-dll roc_espeon_historyiteratorcopy_1d0e289ac2ce8df7.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
+#include <list>
+struct String;
+extern void (__thiscall *string_construct)(String *, const char *);
+extern void (__cdecl *invalid_parameter_noinfo)();
 
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
+struct String {
+    unsigned int proxy;
+    char storage[16];
+    unsigned int length;
+    unsigned int capacity;
 
-boost::mutex& moo2()
-{
-	static boost::mutex mutex2;
-	return mutex2;
+    String(const char *text);
+    ~String();
+};
+
+inline String::String(const char *text) {
+    string_construct(this, text);
 }
 
-void initMoo()
-{
-	moo2();
-}
+struct Exception {
+    virtual ~Exception();
+    char *message;
+    int owned;
+};
 
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
+struct RuntimeError : Exception {
+    String text;
+    RuntimeError(const String &);
+    ~RuntimeError();
+};
 
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
-}
+struct Change{void unplay();};
+struct RestoreFlag{bool* flag;bool previous;RestoreFlag(bool& v):flag(&v),previous(v){v=true;}~RestoreFlag(){*flag=previous;}};
+struct S{char padding[0x138];std::list<Change*> history;std::list<Change*>::iterator saved,current;bool playing,enabled;void unplay();};
+void S::unplay(){if(playing)throw RuntimeError(String("ChangeHistoryService is currently playing"));if(!enabled)throw RuntimeError(String("ChangeHistoryService is disabled"));if(current==history.begin())throw RuntimeError(String("Attempt to unplay before the change history"));RestoreFlag restore(playing);(*current)->unplay();saved=current;--current;}

@@ -1,108 +1,62 @@
-// from server: 54% by colin
+// from server: 85% by EspClaude
+// from server: 100% by auto
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+// roc-lib: openrbx-client App/reflection/reflection_object.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
+#include "reflection/reflection.h"
 
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
+namespace RBX {
+namespace Reflection {
 
-boost::mutex& moo2()
+// GLOBAL: WEBSERVICE 0x102f59a1
+bool ClassDescriptor::lockedDown;
+
+// FUNCTION: WEBSERVICE 0x10047430
+bool ClassDescriptor::operator==(const ClassDescriptor& other) const
 {
-	static boost::mutex mutex2;
-	return mutex2;
+	return this == &other;
 }
 
-void initMoo()
+// FUNCTION: WEBSERVICE 0x10047800
+ClassDescriptor::ClassDescriptor()
+	: Descriptor("<<<ROOT>>>"), MemberDescriptorContainer<PropertyDescriptor>(NULL),
+	  MemberDescriptorContainer<SignalDescriptor>(NULL), MemberDescriptorContainer<FunctionDescriptor>(NULL), base(NULL)
 {
-	moo2();
 }
 
-namespace RBX
+// FUNCTION: WEBSERVICE 0x100478c0
+ClassDescriptor::ClassDescriptor(ClassDescriptor& base, const char* name)
+	: Descriptor(name), MemberDescriptorContainer<PropertyDescriptor>(&base),
+	  MemberDescriptorContainer<SignalDescriptor>(&base), MemberDescriptorContainer<FunctionDescriptor>(&base),
+	  base(&base)
 {
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
+	boost::recursive_mutex::scoped_lock lock(sync());
 
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
+	base.derivedClasses.push_back(this);
 }
+
+// FUNCTION: WEBSERVICE 0x100479c0
+bool MemberDescriptor::isMemberOf(const ClassDescriptor& classDescriptor) const
+{
+	const ClassDescriptor* c = &classDescriptor;
+
+	do {
+		if (c == &owner) {
+			return true;
+		}
+	} while ((c = c->getBase()) != &ClassDescriptor::rootDescriptor());
+
+	return false;
+}
+
+// FUNCTION: WEBSERVICE 0x10047a60
+bool MemberDescriptor::isMemberOf(const DescribedBase* instance) const
+{
+	return isMemberOf(instance->getDescriptor());
+}
+
+} // namespace Reflection
+} // namespace RBX

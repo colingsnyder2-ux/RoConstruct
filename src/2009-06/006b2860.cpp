@@ -1,4 +1,4 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0060e310  unit: RBX::BlockBlockContact  size: 117 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0060e310
@@ -67,7 +67,7 @@ void __cdecl process(Array*, void*, void*);
 
 struct Contact {
     char padding[8];
-    char state[32];
+    char state[36];
     void* value;
 
     void update(void*);

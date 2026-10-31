@@ -1,162 +1,58 @@
-// from server: 47% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-render AggregatingSceneManager.cpp
+// from server: 90% by EspClaude
+// from server: 100% by tester
+// roc 2008-06 004a50c0  unit: RBX::VHint::?$FactoryProduct::Creator  size: 87 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 004a50c0
+//
+// 004a50c0  56                   push esi
+// 004a50c1  57                   push edi
+// 004a50c2  8b7c240c             mov edi, dword ptr [esp + 0xc]
+// 004a50c6  81ff00010000         cmp edi, 0x100
+// 004a50cc  8bf1                 mov esi, ecx
+// 004a50ce  c70600000000         mov dword ptr [esi], 0
+// 004a50d4  c7460800000000       mov dword ptr [esi + 8], 0
+// 004a50db  7f18                 jg 0x4a50f5
+// 004a50dd  8d4611               lea eax, [esi + 0x11]
+// 004a50e0  89460c               mov dword ptr [esi + 0xc], eax
+// 004a50e3  5f                   pop edi
+// 004a50e4  c7460400080000       mov dword ptr [esi + 4], 0x800
+// 004a50eb  8bc6                 mov eax, esi
+// 004a50ed  c6461001             mov byte ptr [esi + 0x10], 1
+// 004a50f1  5e                   pop esi
+// 004a50f2  c20400               ret 4
+// 004a50f5  57                   push edi
+// 004a50f6  ff15b0288000         call dword ptr [0x8028b0]
+// 004a50fc  83c404               add esp, 4
+// 004a50ff  8d0cfd00000000       lea ecx, [edi*8]
+// 004a5106  89460c               mov dword ptr [esi + 0xc], eax
+// 004a5109  5f                   pop edi
+// 004a510a  894e04               mov dword ptr [esi + 4], ecx
+// 004a510d  8bc6                 mov eax, esi
+// 004a510f  c6461001             mov byte ptr [esi + 0x10], 1
+// 004a5113  5e                   pop esi
+// 004a5114  c20400               ret 4
 
-// Candidate translation unit (score above; library headers required).
-#include "RenderLib/AggregatingSceneManager.h"
+extern "C" void* (__cdecl *malloc)(unsigned int size);
 
-namespace RBX
-{
-	namespace Render
-	{
-		AggregatingSceneManager::AggregatingSceneManager(RenderScene* renderScene)
-			: SceneManager(renderScene)
-		{
-		}
+struct BoundFuncDesc {
+    void* field0;
+    unsigned int field4;
+    void* field8;
+    void* fieldC;
+    unsigned char field10;
+    char field11;
+    void* construct(unsigned int size);
+};
 
-		AggregatingSceneManager::~AggregatingSceneManager() {}
-
-		void AggregatingSceneManager::addModel(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			addToScene(chunk);
-		}
-
-		void AggregatingSceneManager::removeModel(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			invalidSleepingModels.erase(chunk);
-			invalidMovingModels.erase(chunk);
-
-			G3D::ReferenceCountedPointer<AggregateChunk> aggregate = chunk->aggregate.createStrongPtr();
-			if (aggregate.notNull())
-				deconstructAggregate(aggregate);
-
-			removeFromScene(chunk);
-			dequeueSleepingChunk(chunk);
-		}
-
-		void AggregatingSceneManager::setSleeping(const G3D::ReferenceCountedPointer<Chunk>& chunk, bool sleeping)
-		{
-			if (sleeping)
-			{
-				bool erased = invalidMovingModels.erase(chunk) == 1;
-
-				if (erased)
-					invalidSleepingModels.insert(chunk);
-
-				queueSleepingChunk(chunk);
-			}
-			else
-			{
-				bool erased = invalidSleepingModels.erase(chunk) == 1;
-
-				if (erased)
-					invalidMovingModels.insert(chunk);
-
-				G3D::ReferenceCountedPointer<AggregateChunk> aggregate = chunk->aggregate.createStrongPtr();
-				if (aggregate.notNull())
-					deconstructAggregate(aggregate);
-
-				dequeueSleepingChunk(chunk);
-			}
-		}
-
-		void AggregatingSceneManager::invalidateModel(const G3D::ReferenceCountedPointer<Chunk>& chunk, bool isSleeping)
-		{
-			if (isSleeping)
-				invalidSleepingModels.insert(chunk);
-			else
-				invalidMovingModels.insert(chunk);
-		}
-
-		void AggregatingSceneManager::dequeueSleepingChunk(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator iter = buckets.begin();
-			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator end = buckets.end();
-
-			for (; iter != end; iter++)
-			{
-				if (iter->second->dequeueSleepingChunk(chunk))
-					break;
-			}
-		}
-
-		void AggregatingSceneManager::clear()
-		{
-			invalidSleepingModels.clear();
-			invalidMovingModels.clear();
-
-			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator iter = buckets.begin();
-			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator end = buckets.end();
-
-			for (; iter != end; iter++)
-			{
-				iter->second->clear();
-			}
-
-			clearScene();
-		}
-
-		bool AggregatingSceneManager::Bucket::dequeueSleepingChunk(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			std::vector<G3D::ReferenceCountedPointer<Chunk>>::iterator found = std::find(queue.begin(), queue.end(), chunk);
-
-			if (found != queue.end())
-			{
-				queue.erase(found);
-				return true;
-			}
-			else
-			{
-				return false;
-			}
-		}
-
-		void AggregatingSceneManager::queueSleepingChunk(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			G3D::ReferenceCountedPointer<Bucket> queue;
-
-			{
-				BucketKey key(chunk);
-
-				std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator iter = buckets.find(key);
-
-				if (iter == buckets.end())
-				{
-					queue = new Bucket;
-					buckets[key] = queue;
-				}
-				else
-				{
-					queue = iter->second;
-				}
-			}
-
-			queue->addToQueue(chunk);
-		}
-
-		bool AggregatingSceneManager::BucketKey::operator<(const AggregatingSceneManager::BucketKey& that) const
-		{
-			if (this->material < that.material)
-				return true;
-			if (this->material > that.material)
-				return false;
-
-			if (this->castsShadows < that.castsShadows)
-				return true;
-			if (this->castsShadows > that.castsShadows)
-				return false;
-
-			if (this->polygonOffset < that.polygonOffset)
-				return true;
-			if (this->polygonOffset > that.polygonOffset)
-				return false;
-
-			if (this->cullable < that.cullable)
-				return true;
-			else
-				return false;
-		}
-	}
+void* BoundFuncDesc::construct(unsigned int size) {
+    field0 = 0;
+    field8 = 0;
+    if ((int)size <= 0x100) {
+        fieldC = (char*)this + 0x11;
+        field4 = 0x800;
+    } else {
+        fieldC = malloc(size);
+        field4 = size * 8;
+    }
+    field10 = 1;
+    return this;
 }

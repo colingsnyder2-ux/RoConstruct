@@ -1,270 +1,123 @@
-// from server: 55% by colin
-// roc-lang: c
-// roc-cl: 21022
-// roc-flags: /O2 /GS- /MD
-// roc-lib: lua-5.1.4 lmathlib.c
+// from server: 100% by EspClaude
+// from server: 100% by king_originala
+// roc 2008-06 00623d90  unit: lua_exception  size: 146 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 00623d90
+//
+// 00623d90  53                   push ebx
+// 00623d91  56                   push esi
+// 00623d92  8b742410             mov esi, dword ptr [esp + 0x10]
+// 00623d96  8b4620               mov eax, dword ptr [esi + 0x20]
+// 00623d99  57                   push edi
+// 00623d9a  50                   push eax
+// 00623d9b  56                   push esi
+// 00623d9c  e85fb80300           call 0x65f600
+// 00623da1  8b46f4               mov eax, dword ptr [esi - 0xc]
+// 00623da4  ff08                 dec dword ptr [eax]
+// 00623da6  8b7ef8               mov edi, dword ptr [esi - 8]
+// 00623da9  8d5ef4               lea ebx, [esi - 0xc]
+// 00623dac  83c408               add esp, 8
+// 00623daf  85ff                 test edi, edi
+// 00623db1  742a                 je 0x623ddd
+// 00623db3  8d4f04               lea ecx, [edi + 4]
+// 00623db6  83caff               or edx, 0xffffffff
+// 00623db9  f00fc111             lock xadd dword ptr [ecx], edx
+// 00623dbd  751e                 jne 0x623ddd
+// 00623dbf  8b07                 mov eax, dword ptr [edi]
+// 00623dc1  8b5004               mov edx, dword ptr [eax + 4]
+// 00623dc4  8bcf                 mov ecx, edi
+// 00623dc6  ffd2                 call edx
+// 00623dc8  8d4708               lea eax, [edi + 8]
+// 00623dcb  83c9ff               or ecx, 0xffffffff
+// 00623dce  f00fc108             lock xadd dword ptr [eax], ecx
+// 00623dd2  7509                 jne 0x623ddd
+// 00623dd4  8b17                 mov edx, dword ptr [edi]
+// 00623dd6  8b4208               mov eax, dword ptr [edx + 8]
+// 00623dd9  8bcf                 mov ecx, edi
+// 00623ddb  ffd0                 call eax
+// 00623ddd  8b4630               mov eax, dword ptr [esi + 0x30]
+// 00623de0  8b5628               mov edx, dword ptr [esi + 0x28]
+// 00623de3  8b7c2410             mov edi, dword ptr [esp + 0x10]
+// 00623de7  8d0c40               lea ecx, [eax + eax*2]
+// 00623dea  03c9                 add ecx, ecx
+// 00623dec  03c9                 add ecx, ecx
+// 00623dee  6a00                 push 0
+// 00623df0  03c9                 add ecx, ecx
+// 00623df2  51                   push ecx
+// 00623df3  52                   push edx
+// 00623df4  57                   push edi
+// 00623df5  e8f6c80300           call 0x6606f0
+// 00623dfa  8b462c               mov eax, dword ptr [esi + 0x2c]
+// 00623dfd  8b4e20               mov ecx, dword ptr [esi + 0x20]
+// 00623e00  6a00                 push 0
+// 00623e02  c1e004               shl eax, 4
+// 00623e05  50                   push eax
+// 00623e06  51                   push ecx
+// 00623e07  57                   push edi
+// 00623e08  e8e3c80300           call 0x6606f0
+// 00623e0d  6a00                 push 0
+// 00623e0f  6884000000           push 0x84
+// 00623e14  53                   push ebx
+// 00623e15  57                   push edi
+// 00623e16  e8d5c80300           call 0x6606f0
+// 00623e1b  83c430               add esp, 0x30
+// 00623e1e  5f                   pop edi
+// 00623e1f  5e                   pop esi
+// 00623e20  5b                   pop ebx
+// 00623e21  c3                   ret 
 
-// Candidate translation unit (score above; library headers required).
-/*
-** $Id: lmathlib.c,v 1.67.1.1 2007/12/27 13:02:25 roberto Exp $
-** Standard mathematical library
-** See Copyright Notice in lua.h
-*/
+extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
+#pragma intrinsic(_InterlockedExchangeAdd)
+extern "C" long __cdecl _InterlockedDecrement(volatile long*);
+#pragma intrinsic(_InterlockedDecrement)
 
-
-#include <stdlib.h>
-#include <math.h>
-
-#define lmathlib_c
-#define LUA_LIB
-
-#include "lua.h"
-
-#include "lauxlib.h"
-#include "lualib.h"
-
-
-#undef PI
-#define PI (3.14159265358979323846)
-#define RADIANS_PER_DEGREE (PI/180.0)
-
-
-
-static int math_abs (lua_State *L) {
-  lua_pushnumber(L, fabs(luaL_checknumber(L, 1)));
-  return 1;
-}
-
-static int math_sin (lua_State *L) {
-  lua_pushnumber(L, sin(luaL_checknumber(L, 1)));
-  return 1;
-}
-
-static int math_sinh (lua_State *L) {
-  lua_pushnumber(L, sinh(luaL_checknumber(L, 1)));
-  return 1;
-}
-
-static int math_cos (lua_State *L) {
-  lua_pushnumber(L, cos(luaL_checknumber(L, 1)));
-  return 1;
-}
-
-static int math_cosh (lua_State *L) {
-  lua_pushnumber(L, cosh(luaL_checknumber(L, 1)));
-  return 1;
-}
-
-static int math_tan (lua_State *L) {
-  lua_pushnumber(L, tan(luaL_checknumber(L, 1)));
-  return 1;
-}
-
-static int math_tanh (lua_State *L) {
-  lua_pushnumber(L, tanh(luaL_checknumber(L, 1)));
-  return 1;
-}
-
-static int math_asin (lua_State *L) {
-  lua_pushnumber(L, asin(luaL_checknumber(L, 1)));
-  return 1;
-}
-
-static int math_acos (lua_State *L) {
-  lua_pushnumber(L, acos(luaL_checknumber(L, 1)));
-  return 1;
-}
-
-static int math_atan (lua_State *L) {
-  lua_pushnumber(L, atan(luaL_checknumber(L, 1)));
-  return 1;
-}
-
-static int math_atan2 (lua_State *L) {
-  lua_pushnumber(L, atan2(luaL_checknumber(L, 1), luaL_checknumber(L, 2)));
-  return 1;
-}
-
-static int math_ceil (lua_State *L) {
-  lua_pushnumber(L, ceil(luaL_checknumber(L, 1)));
-  return 1;
-}
-
-static int math_floor (lua_State *L) {
-  lua_pushnumber(L, floor(luaL_checknumber(L, 1)));
-  return 1;
-}
-
-static int math_fmod (lua_State *L) {
-  lua_pushnumber(L, fmod(luaL_checknumber(L, 1), luaL_checknumber(L, 2)));
-  return 1;
-}
-
-static int math_modf (lua_State *L) {
-  double ip;
-  double fp = modf(luaL_checknumber(L, 1), &ip);
-  lua_pushnumber(L, ip);
-  lua_pushnumber(L, fp);
-  return 2;
-}
-
-static int math_sqrt (lua_State *L) {
-  lua_pushnumber(L, sqrt(luaL_checknumber(L, 1)));
-  return 1;
-}
-
-static int math_pow (lua_State *L) {
-  lua_pushnumber(L, pow(luaL_checknumber(L, 1), luaL_checknumber(L, 2)));
-  return 1;
-}
-
-static int math_log (lua_State *L) {
-  lua_pushnumber(L, log(luaL_checknumber(L, 1)));
-  return 1;
-}
-
-static int math_log10 (lua_State *L) {
-  lua_pushnumber(L, log10(luaL_checknumber(L, 1)));
-  return 1;
-}
-
-static int math_exp (lua_State *L) {
-  lua_pushnumber(L, exp(luaL_checknumber(L, 1)));
-  return 1;
-}
-
-static int math_deg (lua_State *L) {
-  lua_pushnumber(L, luaL_checknumber(L, 1)/RADIANS_PER_DEGREE);
-  return 1;
-}
-
-static int math_rad (lua_State *L) {
-  lua_pushnumber(L, luaL_checknumber(L, 1)*RADIANS_PER_DEGREE);
-  return 1;
-}
-
-static int math_frexp (lua_State *L) {
-  int e;
-  lua_pushnumber(L, frexp(luaL_checknumber(L, 1), &e));
-  lua_pushinteger(L, e);
-  return 2;
-}
-
-static int math_ldexp (lua_State *L) {
-  lua_pushnumber(L, ldexp(luaL_checknumber(L, 1), luaL_checkint(L, 2)));
-  return 1;
-}
-
-
-
-static int math_min (lua_State *L) {
-  int n = lua_gettop(L);  /* number of arguments */
-  lua_Number dmin = luaL_checknumber(L, 1);
-  int i;
-  for (i=2; i<=n; i++) {
-    lua_Number d = luaL_checknumber(L, i);
-    if (d < dmin)
-      dmin = d;
-  }
-  lua_pushnumber(L, dmin);
-  return 1;
-}
-
-
-static int math_max (lua_State *L) {
-  int n = lua_gettop(L);  /* number of arguments */
-  lua_Number dmax = luaL_checknumber(L, 1);
-  int i;
-  for (i=2; i<=n; i++) {
-    lua_Number d = luaL_checknumber(L, i);
-    if (d > dmax)
-      dmax = d;
-  }
-  lua_pushnumber(L, dmax);
-  return 1;
-}
-
-
-static int math_random (lua_State *L) {
-  /* the `%' avoids the (rare) case of r==1, and is needed also because on
-     some systems (SunOS!) `rand()' may return a value larger than RAND_MAX */
-  lua_Number r = (lua_Number)(rand()%RAND_MAX) / (lua_Number)RAND_MAX;
-  switch (lua_gettop(L)) {  /* check number of arguments */
-    case 0: {  /* no arguments */
-      lua_pushnumber(L, r);  /* Number between 0 and 1 */
-      break;
-    }
-    case 1: {  /* only upper limit */
-      int u = luaL_checkint(L, 1);
-      luaL_argcheck(L, 1<=u, 1, "interval is empty");
-      lua_pushnumber(L, floor(r*u)+1);  /* int between 1 and `u' */
-      break;
-    }
-    case 2: {  /* lower and upper limits */
-      int l = luaL_checkint(L, 1);
-      int u = luaL_checkint(L, 2);
-      luaL_argcheck(L, l<=u, 2, "interval is empty");
-      lua_pushnumber(L, floor(r*(u-l+1))+l);  /* int between `l' and `u' */
-      break;
-    }
-    default: return luaL_error(L, "wrong number of arguments");
-  }
-  return 1;
-}
-
-
-static int math_randomseed (lua_State *L) {
-  srand(luaL_checkint(L, 1));
-  return 0;
-}
-
-
-static const luaL_Reg mathlib[] = {
-  {"abs",   math_abs},
-  {"acos",  math_acos},
-  {"asin",  math_asin},
-  {"atan2", math_atan2},
-  {"atan",  math_atan},
-  {"ceil",  math_ceil},
-  {"cosh",   math_cosh},
-  {"cos",   math_cos},
-  {"deg",   math_deg},
-  {"exp",   math_exp},
-  {"floor", math_floor},
-  {"fmod",   math_fmod},
-  {"frexp", math_frexp},
-  {"ldexp", math_ldexp},
-  {"log10", math_log10},
-  {"log",   math_log},
-  {"max",   math_max},
-  {"min",   math_min},
-  {"modf",   math_modf},
-  {"pow",   math_pow},
-  {"rad",   math_rad},
-  {"random",     math_random},
-  {"randomseed", math_randomseed},
-  {"sinh",   math_sinh},
-  {"sin",   math_sin},
-  {"sqrt",  math_sqrt},
-  {"tanh",   math_tanh},
-  {"tan",   math_tan},
-  {NULL, NULL}
+struct Control
+{
+    virtual void unused();
+    virtual void dispose();
+    virtual void destroy();
+    volatile long strong;
+    volatile long weak;
 };
 
+struct Header
+{
+    int* count;
+    Control* control;
+    unsigned int unused;
+};
 
-/*
-** Open math library
-*/
-LUALIB_API int luaopen_math (lua_State *L) {
-  luaL_register(L, LUA_MATHLIBNAME, mathlib);
-  lua_pushnumber(L, PI);
-  lua_setfield(L, -2, "pi");
-  lua_pushnumber(L, HUGE_VAL);
-  lua_setfield(L, -2, "huge");
-#if defined(LUA_COMPAT_MOD)
-  lua_getfield(L, -1, "fmod");
-  lua_setfield(L, -2, "mod");
-#endif
-  return 1;
+struct Object
+{
+    unsigned char padding[32];
+    void* first;
+    unsigned int unused;
+    void* second;
+    unsigned int firstCount;
+    unsigned int secondCount;
+};
+
+extern void __cdecl cleanup(Object*, void*);
+extern void __cdecl resizeBlock(void*, void*, unsigned int, unsigned int);
+
+void __cdecl releaseObject(void* state, Object* object)
+{
+    cleanup(object, object->first);
+
+    Header* header = reinterpret_cast<Header*>(object) - 1;
+    --*header->count;
+
+    Control* control = header->control;
+    if (control)
+    {
+        if (_InterlockedDecrement(&control->strong) == 0)
+        {
+            control->dispose();
+            if (_InterlockedDecrement(&control->weak) == 0)
+                control->destroy();
+        }
+    }
+
+    resizeBlock(state, object->second, object->secondCount * 24, 0);
+    resizeBlock(state, object->first, object->firstCount * 16, 0);
+    resizeBlock(state, header, 0x84, 0);
 }
-

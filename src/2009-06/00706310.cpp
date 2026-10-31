@@ -1,67 +1,30 @@
-// from server: 81% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: boost-1.34.1 libs/regex/src/usinstances.cpp
-
-// Candidate translation unit (score above; library headers required).
-/*
- *
- * Copyright (c) 1998-2002
- * John Maddock
- *
- * Use, modification and distribution are subject to the 
- * Boost Software License, Version 1.0. (See accompanying file 
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
- *
- */
-
- /*
-  *   LOCATION:    see http://www.boost.org for most recent version.
-  *   FILE:        winstances.cpp
-  *   VERSION:     see <boost/version.hpp>
-  *   DESCRIPTION: regex unsigned short template instances (MSVC only).
-  */
-
-#define BOOST_REGEX_SOURCE
-
-#include <boost/regex/config.hpp>
-
-#if !defined(BOOST_NO_WREGEX) && defined(BOOST_REGEX_HAS_OTHER_WCHAR_T) && !defined(BOOST_REGEX_NO_EXTERNAL_TEMPLATES)
-#define BOOST_REGEX_US_INSTANTIATE
-
-#ifdef _DLL_CPPLIB
-#include <boost/detail/workaround.hpp>
-//
-// This is a horrible workaround, without declaring these symbols extern we get
-// duplicate symbol errors when linking if the application is built without
-// /Zc:wchar_t
-//
-namespace std{
-template _CRTIMP2 bool __cdecl operator==(
-   const basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >&,
-   const basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >&);
-template _CRTIMP2 bool __cdecl operator==(
-   const unsigned short *,
-   const basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >&);
-template _CRTIMP2 bool __cdecl operator==(
-   const basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >&,
-   const unsigned short *);
-template _CRTIMP2 bool __cdecl operator<(
-   const basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >&,
-   const basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >&);
-template _CRTIMP2 bool __cdecl operator>(
-   const basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >&,
-   const basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >&);
-#if BOOST_WORKAROUND(BOOST_MSVC, > 1300) && BOOST_WORKAROUND(BOOST_MSVC, BOOST_TESTED_AT(1400))
-template<> _CRTIMP2 std::size_t __cdecl char_traits<unsigned short>::length(unsigned short const*);
-#endif
+#include <string>
+namespace boost { namespace detail { namespace function {
+union function_buffer { void* obj_ptr; struct { void* a; void* b; void* c; } bound; __declspec(align(8)) char data[0x18]; };
+enum functor_manager_operation_type { clone_functor_tag, move_functor_tag, destroy_functor_tag };
+struct vtable_base {
+	void (*manager)(const function_buffer& in_buffer, function_buffer& out_buffer, functor_manager_operation_type op);
+	void clear(function_buffer& functor) { if (manager) manager(functor, functor, destroy_functor_tag); }
+};
+} }
+class function_base {
+public:
+	detail::function::vtable_base* vtable;
+	mutable detail::function::function_buffer functor;
+};
+class function0 : public function_base {
+public:
+	~function0() { clear(); }
+	void clear() { if (vtable) { vtable->clear(this->functor); vtable = 0; } }
+};
 }
-#endif
-
-
-#include <boost/regex.hpp>
-
-#endif
-
-
+struct S {
+	boost::function0 f;
+	std::string s;
+	~S();
+};
+S::~S() {}

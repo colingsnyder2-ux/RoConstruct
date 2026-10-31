@@ -1,4 +1,4 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by Gemini
 // roc 2008-06 0046b860  unit: VCWorkspace::?$CComObject  size: 112 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0046b860
@@ -72,7 +72,7 @@ struct Writer {
 };
 
 struct S {
-    char padding[36];
+    char padding[28];
     Context* context;
 
     int f(unsigned int count, void* argument);

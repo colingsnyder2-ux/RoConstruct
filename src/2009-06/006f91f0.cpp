@@ -1,247 +1,375 @@
-// from server: 34% by colin
-// roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs tool/RunDragger.cpp
+// from server: 100% by EspClaude
+// from server: 100% by colin
+// roc 2008-06 0066e1a0  unit: RBX::GroupDragTool  size: 397 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 0066e1a0
+//
+// 0066e1a0  6aff                 push -1
+// 0066e1a2  683bc67d00           push 0x7dc63b
+// 0066e1a7  64a100000000         mov eax, dword ptr fs:[0]
+// 0066e1ad  50                   push eax
+// 0066e1ae  64892500000000       mov dword ptr fs:[0], esp
+// 0066e1b5  81ec90000000         sub esp, 0x90
+// 0066e1bb  53                   push ebx
+// 0066e1bc  33db                 xor ebx, ebx
+// 0066e1be  56                   push esi
+// 0066e1bf  8bf1                 mov esi, ecx
+// 0066e1c1  895c240c             mov dword ptr [esp + 0xc], ebx
+// 0066e1c5  895c2410             mov dword ptr [esp + 0x10], ebx
+// 0066e1c9  895c2408             mov dword ptr [esp + 8], ebx
+// 0066e1cd  8b4e24               mov ecx, dword ptr [esi + 0x24]
+// 0066e1d0  899c24a0000000       mov dword ptr [esp + 0xa0], ebx
+// 0066e1d7  3bcb                 cmp ecx, ebx
+// 0066e1d9  0f8415010000         je 0x66e2f4
+// 0066e1df  55                   push ebp
+// 0066e1e0  8bac24ac000000       mov ebp, dword ptr [esp + 0xac]
+// 0066e1e7  57                   push edi
+// 0066e1e8  8d7e28               lea edi, [esi + 0x28]
+// 0066e1eb  eb03                 jmp 0x66e1f0
+// 0066e1ed  8d4900               lea ecx, [ecx]
+// 0066e1f0  8b07                 mov eax, dword ptr [edi]
+// 0066e1f2  50                   push eax
+// 0066e1f3  8d542424             lea edx, [esp + 0x24]
+// 0066e1f7  52                   push edx
+// 0066e1f8  e8b39ff7ff           call 0x5e81b0
+// 0066e1fd  8b4660               mov eax, dword ptr [esi + 0x60]
+// 0066e200  50                   push eax
+// 0066e201  8d4c2454             lea ecx, [esp + 0x54]
+// 0066e205  51                   push ecx
+// 0066e206  8b4e14               mov ecx, dword ptr [esi + 0x14]
+// 0066e209  e8a29ff7ff           call 0x5e81b0
+// 0066e20e  d90560378400         fld dword ptr [0x843760]
+// 0066e214  51                   push ecx
+// 0066e215  8d542454             lea edx, [esp + 0x54]
+// 0066e219  d91c24               fstp dword ptr [esp]
+// 0066e21c  52                   push edx
+// 0066e21d  8d442428             lea eax, [esp + 0x28]
+// 0066e221  50                   push eax
+// 0066e222  e869bcfdff           call 0x649e90
+// 0066e227  83c40c               add esp, 0xc
+// 0066e22a  84c0                 test al, al
+// 0066e22c  0f85c0000000         jne 0x66e2f2
+// 0066e232  8b442414             mov eax, dword ptr [esp + 0x14]
+// 0066e236  3b442418             cmp eax, dword ptr [esp + 0x18]
+// 0066e23a  8b4c2410             mov ecx, dword ptr [esp + 0x10]
+// 0066e23e  7d16                 jge 0x66e256
+// 0066e240  8d0c81               lea ecx, [ecx + eax*4]
+// 0066e243  3bcb                 cmp ecx, ebx
+// 0066e245  7408                 je 0x66e24f
+// 0066e247  8b17                 mov edx, dword ptr [edi]
+// 0066e249  8911                 mov dword ptr [ecx], edx
+// 0066e24b  8b442414             mov eax, dword ptr [esp + 0x14]
+// 0066e24f  40                   inc eax
+// 0066e250  89442414             mov dword ptr [esp + 0x14], eax
+// 0066e254  eb3b                 jmp 0x66e291
+// 0066e256  3bf9                 cmp edi, ecx
+// 0066e258  721d                 jb 0x66e277
+// 0066e25a  8d0c81               lea ecx, [ecx + eax*4]
+// 0066e25d  3bf9                 cmp edi, ecx
+// 0066e25f  7316                 jae 0x66e277
+// 0066e261  8b17                 mov edx, dword ptr [edi]
+// 0066e263  8d44241c             lea eax, [esp + 0x1c]
+// 0066e267  50                   push eax
+// 0066e268  8d4c2414             lea ecx, [esp + 0x14]
+// 0066e26c  89542420             mov dword ptr [esp + 0x20], edx
+// 0066e270  e84bf1ffff           call 0x66d3c0
+// 0066e275  eb1a                 jmp 0x66e291
+// 0066e277  53                   push ebx
+// 0066e278  40                   inc eax
+// 0066e279  50                   push eax
+// 0066e27a  8d4c2418             lea ecx, [esp + 0x18]
+// 0066e27e  e84dedffff           call 0x66cfd0
+// 0066e283  8b0f                 mov ecx, dword ptr [edi]
+// 0066e285  8b542414             mov edx, dword ptr [esp + 0x14]
+// 0066e289  8b442410             mov eax, dword ptr [esp + 0x10]
+// 0066e28d  894c90fc             mov dword ptr [eax + edx*4 - 4], ecx
+// 0066e291  8b5624               mov edx, dword ptr [esi + 0x24]
+// 0066e294  8d4c2410             lea ecx, [esp + 0x10]
+// 0066e298  51                   push ecx
+// 0066e299  52                   push edx
+// 0066e29a  8d842488000000       lea eax, [esp + 0x88]
+// 0066e2a1  50                   push eax
+// 0066e2a2  8bce                 mov ecx, esi
+// 0066e2a4  e8c7e6ffff           call 0x66c970
+// 0066e2a9  8b08                 mov ecx, dword ptr [eax]
+// 0066e2ab  894e24               mov dword ptr [esi + 0x24], ecx
+// 0066e2ae  8b5004               mov edx, dword ptr [eax + 4]
+// 0066e2b1  895628               mov dword ptr [esi + 0x28], edx
+// 0066e2b4  d94008               fld dword ptr [eax + 8]
+// 0066e2b7  d95e2c               fstp dword ptr [esi + 0x2c]
+// 0066e2ba  d9400c               fld dword ptr [eax + 0xc]
+// 0066e2bd  d95e30               fstp dword ptr [esi + 0x30]
+// 0066e2c0  d94010               fld dword ptr [eax + 0x10]
+// 0066e2c3  d95e34               fstp dword ptr [esi + 0x34]
+// 0066e2c6  d94014               fld dword ptr [eax + 0x14]
+// 0066e2c9  d95e38               fstp dword ptr [esi + 0x38]
+// 0066e2cc  d94018               fld dword ptr [eax + 0x18]
+// 0066e2cf  d95e3c               fstp dword ptr [esi + 0x3c]
+// 0066e2d2  d9401c               fld dword ptr [eax + 0x1c]
+// 0066e2d5  d95e40               fstp dword ptr [esi + 0x40]
+// 0066e2d8  395e24               cmp dword ptr [esi + 0x24], ebx
+// 0066e2db  7415                 je 0x66e2f2
+// 0066e2dd  8bce                 mov ecx, esi
+// 0066e2df  e8acfaffff           call 0x66dd90
+// 0066e2e4  884500               mov byte ptr [ebp], al
+// 0066e2e7  8b4e24               mov ecx, dword ptr [esi + 0x24]
+// 0066e2ea  3bcb                 cmp ecx, ebx
+// 0066e2ec  0f85fefeffff         jne 0x66e1f0
+// 0066e2f2  5f                   pop edi
+// 0066e2f3  5d                   pop ebp
+// 0066e2f4  395e24               cmp dword ptr [esi + 0x24], ebx
+// 0066e2f7  8b442408             mov eax, dword ptr [esp + 8]
+// 0066e2fb  50                   push eax
+// 0066e2fc  0f94c3               sete bl
+// 0066e2ff  c78424a4000000ffffffff mov dword ptr [esp + 0xa4], 0xffffffff
+// 0066e30a  e8119ae9ff           call 0x507d20
+// 0066e30f  8b8c249c000000       mov ecx, dword ptr [esp + 0x9c]
+// 0066e316  83c404               add esp, 4
+// 0066e319  5e                   pop esi
+// 0066e31a  8ac3                 mov al, bl
+// 0066e31c  5b                   pop ebx
+// 0066e31d  64890d00000000       mov dword ptr fs:[0], ecx
+// 0066e324  81c49c000000         add esp, 0x9c
+// 0066e32a  c20400               ret 4
 
-// Candidate translation unit (score above; library headers required).
-#include "tool/RunDragger.h"
-#include "tool/Dragger.h"
-#include "v8datamodel/PartInstance.h"
-#include "v8datamodel/Filters.h"
-#include "v8datamodel/Surfaces.h"
-#include "v8datamodel/MouseCommand.h"
-#include "v8datamodel/Workspace.h"
-#include "v8world/Primitive.h"
-#include "v8world/Contact.h"
-#include "v8world/ContactManager.h"
+// from server: 98% by king_originala
+// roc 2008-06 0066e1a0  unit: RBX::GroupDragTool  size: 397 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 0066e1a0
+//
+// 0066e1a0  6aff                 push -1
+// 0066e1a2  683bc67d00           push 0x7dc63b
+// 0066e1a7  64a100000000         mov eax, dword ptr fs:[0]
+// 0066e1ad  50                   push eax
+// 0066e1ae  64892500000000       mov dword ptr fs:[0], esp
+// 0066e1b5  81ec90000000         sub esp, 0x90
+// 0066e1bb  53                   push ebx
+// 0066e1bc  33db                 xor ebx, ebx
+// 0066e1be  56                   push esi
+// 0066e1bf  8bf1                 mov esi, ecx
+// 0066e1c1  895c240c             mov dword ptr [esp + 0xc], ebx
+// 0066e1c5  895c2410             mov dword ptr [esp + 0x10], ebx
+// 0066e1c9  895c2408             mov dword ptr [esp + 8], ebx
+// 0066e1cd  8b4e24               mov ecx, dword ptr [esi + 0x24]
+// 0066e1d0  899c24a0000000       mov dword ptr [esp + 0xa0], ebx
+// 0066e1d7  3bcb                 cmp ecx, ebx
+// 0066e1d9  0f8415010000         je 0x66e2f4
+// 0066e1df  55                   push ebp
+// 0066e1e0  8bac24ac000000       mov ebp, dword ptr [esp + 0xac]
+// 0066e1e7  57                   push edi
+// 0066e1e8  8d7e28               lea edi, [esi + 0x28]
+// 0066e1eb  eb03                 jmp 0x66e1f0
+// 0066e1ed  8d4900               lea ecx, [ecx]
+// 0066e1f0  8b07                 mov eax, dword ptr [edi]
+// 0066e1f2  50                   push eax
+// 0066e1f3  8d542424             lea edx, [esp + 0x24]
+// 0066e1f7  52                   push edx
+// 0066e1f8  e8b39ff7ff           call 0x5e81b0
+// 0066e1fd  8b4660               mov eax, dword ptr [esi + 0x60]
+// 0066e200  50                   push eax
+// 0066e201  8d4c2454             lea ecx, [esp + 0x54]
+// 0066e205  51                   push ecx
+// 0066e206  8b4e14               mov ecx, dword ptr [esi + 0x14]
+// 0066e209  e8a29ff7ff           call 0x5e81b0
+// 0066e20e  d90560378400         fld dword ptr [0x843760]
+// 0066e214  51                   push ecx
+// 0066e215  8d542454             lea edx, [esp + 0x54]
+// 0066e219  d91c24               fstp dword ptr [esp]
+// 0066e21c  52                   push edx
+// 0066e21d  8d442428             lea eax, [esp + 0x28]
+// 0066e221  50                   push eax
+// 0066e222  e869bcfdff           call 0x649e90
+// 0066e227  83c40c               add esp, 0xc
+// 0066e22a  84c0                 test al, al
+// 0066e22c  0f85c0000000         jne 0x66e2f2
+// 0066e232  8b442414             mov eax, dword ptr [esp + 0x14]
+// 0066e236  3b442418             cmp eax, dword ptr [esp + 0x18]
+// 0066e23a  8b4c2410             mov ecx, dword ptr [esp + 0x10]
+// 0066e23e  7d16                 jge 0x66e256
+// 0066e240  8d0c81               lea ecx, [ecx + eax*4]
+// 0066e243  3bcb                 cmp ecx, ebx
+// 0066e245  7408                 je 0x66e24f
+// 0066e247  8b17                 mov edx, dword ptr [edi]
+// 0066e249  8911                 mov dword ptr [ecx], edx
+// 0066e24b  8b442414             mov eax, dword ptr [esp + 0x14]
+// 0066e24f  40                   inc eax
+// 0066e250  89442414             mov dword ptr [esp + 0x14], eax
+// 0066e254  eb3b                 jmp 0x66e291
+// 0066e256  3bf9                 cmp edi, ecx
+// 0066e258  721d                 jb 0x66e277
+// 0066e25a  8d0c81               lea ecx, [ecx + eax*4]
+// 0066e25d  3bf9                 cmp edi, ecx
+// 0066e25f  7316                 jae 0x66e277
+// 0066e261  8b17                 mov edx, dword ptr [edi]
+// 0066e263  8d44241c             lea eax, [esp + 0x1c]
+// 0066e267  50                   push eax
+// 0066e268  8d4c2414             lea ecx, [esp + 0x14]
+// 0066e26c  89542420             mov dword ptr [esp + 0x20], edx
+// 0066e270  e84bf1ffff           call 0x66d3c0
+// 0066e275  eb1a                 jmp 0x66e291
+// 0066e277  53                   push ebx
+// 0066e278  40                   inc eax
+// 0066e279  50                   push eax
+// 0066e27a  8d4c2418             lea ecx, [esp + 0x18]
+// 0066e27e  e84dedffff           call 0x66cfd0
+// 0066e283  8b0f                 mov ecx, dword ptr [edi]
+// 0066e285  8b542414             mov edx, dword ptr [esp + 0x14]
+// 0066e289  8b442410             mov eax, dword ptr [esp + 0x10]
+// 0066e28d  894c90fc             mov dword ptr [eax + edx*4 - 4], ecx
+// 0066e291  8b5624               mov edx, dword ptr [esi + 0x24]
+// 0066e294  8d4c2410             lea ecx, [esp + 0x10]
+// 0066e298  51                   push ecx
+// 0066e299  52                   push edx
+// 0066e29a  8d842488000000       lea eax, [esp + 0x88]
+// 0066e2a1  50                   push eax
+// 0066e2a2  8bce                 mov ecx, esi
+// 0066e2a4  e8c7e6ffff           call 0x66c970
+// 0066e2a9  8b08                 mov ecx, dword ptr [eax]
+// 0066e2ab  894e24               mov dword ptr [esi + 0x24], ecx
+// 0066e2ae  8b5004               mov edx, dword ptr [eax + 4]
+// 0066e2b1  895628               mov dword ptr [esi + 0x28], edx
+// 0066e2b4  d94008               fld dword ptr [eax + 8]
+// 0066e2b7  d95e2c               fstp dword ptr [esi + 0x2c]
+// 0066e2ba  d9400c               fld dword ptr [eax + 0xc]
+// 0066e2bd  d95e30               fstp dword ptr [esi + 0x30]
+// 0066e2c0  d94010               fld dword ptr [eax + 0x10]
+// 0066e2c3  d95e34               fstp dword ptr [esi + 0x34]
+// 0066e2c6  d94014               fld dword ptr [eax + 0x14]
+// 0066e2c9  d95e38               fstp dword ptr [esi + 0x38]
+// 0066e2cc  d94018               fld dword ptr [eax + 0x18]
+// 0066e2cf  d95e3c               fstp dword ptr [esi + 0x3c]
+// 0066e2d2  d9401c               fld dword ptr [eax + 0x1c]
+// 0066e2d5  d95e40               fstp dword ptr [esi + 0x40]
+// 0066e2d8  395e24               cmp dword ptr [esi + 0x24], ebx
+// 0066e2db  7415                 je 0x66e2f2
+// 0066e2dd  8bce                 mov ecx, esi
+// 0066e2df  e8acfaffff           call 0x66dd90
+// 0066e2e4  884500               mov byte ptr [ebp], al
+// 0066e2e7  8b4e24               mov ecx, dword ptr [esi + 0x24]
+// 0066e2ea  3bcb                 cmp ecx, ebx
+// 0066e2ec  0f85fefeffff         jne 0x66e1f0
+// 0066e2f2  5f                   pop edi
+// 0066e2f3  5d                   pop ebp
+// 0066e2f4  395e24               cmp dword ptr [esi + 0x24], ebx
+// 0066e2f7  8b442408             mov eax, dword ptr [esp + 8]
+// 0066e2fb  50                   push eax
+// 0066e2fc  0f94c3               sete bl
+// 0066e2ff  c78424a4000000ffffffff mov dword ptr [esp + 0xa4], 0xffffffff
+// 0066e30a  e8119ae9ff           call 0x507d20
+// 0066e30f  8b8c249c000000       mov ecx, dword ptr [esp + 0x9c]
+// 0066e316  83c404               add esp, 4
+// 0066e319  5e                   pop esi
+// 0066e31a  8ac3                 mov al, bl
+// 0066e31c  5b                   pop ebx
+// 0066e31d  64890d00000000       mov dword ptr fs:[0], ecx
+// 0066e324  81c49c000000         add esp, 0x9c
+// 0066e32a  c20400               ret 4
 
-namespace RBX
+void __cdecl alignedFree(void*);
+
+struct Transform {
+    float data[12];
+};
+
+struct Context {
+    Transform get(int);
+};
+
+extern const float tolerance;
+bool __cdecl equivalent(const Transform&, const Transform&, float);
+
+struct Array {
+    int* data;
+    int size;
+    int capacity;
+
+    Array();
+    ~Array();
+    void append(const int&);
+    void resize(int, bool);
+};
+
+inline Array::Array()
 {
-	void RunDragger::SnapInfo::updateSurfaceFromHit()
-	{
-		G3D::Vector3 hitInSnap = snap->getCoordinateFrame().pointToObjectSpace(hitWorld);
-		Extents snapExtents = snap->getExtentsLocal();
+    size = 0;
+    capacity = 0;
+    data = 0;
+}
 
-		surface = snapExtents.closestFace(hitInSnap);
-	}
+inline Array::~Array()
+{
+    alignedFree(data);
+}
 
-	void RunDragger::SnapInfo::updateHitFromSurface(const G3D::Ray& mouseRay)
-	{
-		Extents snapExtents = snap->getExtentsLocal();
-		const G3D::CoordinateFrame& cframe = snap->getCoordinateFrame();
+#include <intrin.h>
 
-		G3D::Ray rayInSnap = cframe.toObjectSpace(mouseRay);
-		G3D::Plane plane = snapExtents.getPlane(surface);
-		G3D::Vector3 hitInSnap;
+struct State {
+    Context* context;
+    int handle;
+    float values[6];
 
-		if (Math::intersectRayPlane(rayInSnap, plane, hitInSnap))
-		{
-			hitWorld = cframe.pointToWorldSpace(hitInSnap);
-		}
-		else
-		{
-			RBXASSERT(0);
-			Math::intersectRayPlane(rayInSnap, plane, hitInSnap);
-		}
-	}
+    State& operator=(const State&);
+};
 
-	float RunDragger::SnapInfo::hitOutsideExtents()
-	{
-		Extents snapExtents = snap->getExtentsLocal();
-		G3D::Vector3 hitInSnap = snap->getCoordinateFrame().pointToObjectSpace(hitWorld);
-		G3D::Vector3 clipInSnap = hitInSnap.clamp(snapExtents.min(), snapExtents.max());
+inline State& State::operator=(const State& other)
+{
+    context = other.context;
+    handle = other.handle;
+    values[0] = other.values[0];
+    values[1] = other.values[1];
+    values[2] = other.values[2];
+    values[3] = other.values[3];
+    values[4] = other.values[4];
+    values[5] = other.values[5];
+    return *this;
+}
 
-		return (hitInSnap - clipInSnap).magnitude();
-	}
+struct S {
+    char reserved0[0x14];
+    Context* context;
+    char reserved1[0x0c];
+    State state;
+    char reserved2[0x1c];
+    int handle;
 
-	RunDragger::RunDragger()
-		: workspace(NULL),
-		  drag(NULL)
-	{
-	}
+    State next(Context*, const Array&);
+    bool update();
+    bool f(bool*);
+};
 
-	RunDragger::~RunDragger() {}
+bool S::f(bool* changed)
+{
+    Array excluded;
+    Context* current = state.context;
 
-	bool RunDragger::adjacent(Primitive* p0, Primitive* p1)
-	{
-		for (Contact* current = p0->getFirstContact(); current != NULL; current = p0->getNextContact(current))
-		{
-			if (current->otherPrimitive(p0) == p1)
-				return current->computeIsAdjacent(0.01f);
-		}
+    while (current) {
+        Transform first = current->get(state.handle);
+        Transform second = context->get(handle);
 
-		return false;
-	}
+        if (equivalent(first, second, tolerance))
+            break;
 
-	bool RunDragger::tooCloseToCamera()
-	{
-		return (drag->getCoordinateFrame().pointToWorldSpace(dragPointLocal) - mouseRay.origin).magnitude() < 6.0f;
-	}
+        if (excluded.size < excluded.capacity) {
+            int* destination = excluded.data + excluded.size;
+            if (destination)
+                *destination = state.handle;
+            ++excluded.size;
+        } else if (&state.handle >= excluded.data &&
+                   &state.handle < excluded.data + excluded.size) {
+            int temporary = state.handle;
+            excluded.append(temporary);
+        } else {
+            excluded.resize(excluded.size + 1, false);
+            excluded.data[excluded.size - 1] = state.handle;
+        }
 
-	void RunDragger::rotatePart(PartInstance* part)
-	{
-		RBXASSERT(part);
+        state = next(state.context, excluded);
+        _ReadWriteBarrier();
 
-		G3D::CoordinateFrame rotated = part->getCoordinateFrame();
-		Math::rotateMatrixAboutY90(rotated.rotation, 1);
+        if (!state.context)
+            break;
 
-		part->setCoordinateFrame(rotated);
-	}
+        *changed = update();
+        current = state.context;
+    }
 
-	RunDragger::SnapInfo RunDragger::createSnapSurface(Primitive* snap, G3D::Array<NormalId>* ignore)
-	{
-		RBXASSERT(snap);
-
-		SnapInfo answer;
-		answer.snap = snap;
-
-		Extents snapExtents = snap->getExtentsLocal();
-		const G3D::CoordinateFrame& cframe = snap->getCoordinateFrame();
-		G3D::Ray rayInSnap = cframe.toObjectSpace(mouseRay);
-
-		float bestDistance = 0.0f;
-		bool found = false;
-
-		for (int i = 0; i < 6; i++)
-		{
-			NormalId id = (NormalId)i;
-
-			if (!ignore || ignore->find(id) == ignore->end())
-			{
-				G3D::Plane plane = snapExtents.getPlane(id);
-				if (plane.halfSpaceContainsFinite(rayInSnap.origin))
-				{
-					G3D::Vector3 hitInSnap;
-					if (Math::intersectRayPlane(rayInSnap, plane, hitInSnap))
-					{
-						G3D::Vector3 hitWorld = cframe.pointToWorldSpace(hitInSnap);
-						float distance = (mouseRay.origin - hitWorld).magnitude();
-						if (distance > bestDistance)
-						{
-							bestDistance = distance;
-							answer.surface = id;
-							found = true;
-							answer.hitWorld = hitWorld;
-						}
-					}
-				}
-			}
-		}
-		
-		return found ? answer : SnapInfo();
-	}
-
-	bool RunDragger::notTried(Primitive* check, const G3D::Array<Primitive*>& tried)
-	{
-		RBXASSERT(check != drag);
-		return check && tried.find(check) == tried.end();
-	}
-
-	RunDragger::SnapInfo RunDragger::bestProximatePart(const G3D::Array<Primitive*>& triedSnap, bool (Contact::* proximityTest)(float))
-	{
-		SnapInfo answer;
-
-		for (Contact* current = drag->getFirstContact(); current != NULL; current = drag->getNextContact(current))
-		{
-			if ((current->*proximityTest)(0.01f))
-			{
-				Primitive* otherPrimitive = current->otherPrimitive(drag);
-				if (notTried(otherPrimitive, triedSnap))
-				{
-					SnapInfo testInfo = createSnapSurface(otherPrimitive, NULL);
-					if (testInfo.snap && testInfo.hitOutsideExtents() < 1e+10)
-						answer = testInfo;
-				}
-			}
-		}
-
-		return answer;
-	}
-
-	void RunDragger::turnUpright(PartInstance* part)
-	{
-		RBXASSERT(part);
-
-		if (part->getSurfaces().isStandardPart())
-		{
-			G3D::CoordinateFrame dragCoord = part->getCoordinateFrame();
-			if (Math::getClosestObjectNormalId(G3D::Vector3::unitY(), dragCoord.rotation) != NORM_Y)
-			{
-				dragCoord.rotation = G3D::Matrix3::identity();
-				part->setCoordinateFrame(dragCoord);
-			}
-		}
-	}
-
-	void RunDragger::tiltPart(PartInstance* part, const G3D::CoordinateFrame& camera)
-	{
-		RBXASSERT(part);
-
-		G3D::CoordinateFrame dragCoord = part->getCoordinateFrame();
-		G3D::Vector3 axis = Math::getWorldNormal(Math::getClosestObjectNormalId(camera.rightVector(), dragCoord.rotation), dragCoord);
-		G3D::Matrix3 tiltM = G3D::Matrix3::fromAxisAngle(axis, G3D::halfPi());
-
-		dragCoord.rotation = tiltM * dragCoord.rotation;
-		part->setCoordinateFrame(dragCoord);
-	}
-
-	RunDragger::SnapInfo RunDragger::rayHitsPart(const G3D::Array<Primitive*>& triedSnap, bool forceAdjacent)
-	{
-		SnapInfo answer;
-		PartByLocalCharacter filter((Instance*)workspace);
-
-		if (PartInstance* mousePart = MouseCommand::getMousePart(mouseRay, workspace->getWorld()->getContactManager(), drag, &filter, answer.hitWorld, 2048.0f))
-		{
-			answer.snap = mousePart->getPrimitive();
-			if (notTried(answer.snap, triedSnap) && (!forceAdjacent || adjacent(answer.snap, drag)))
-			{
-				answer.updateSurfaceFromHit();
-				return answer;
-			}
-		}
-
-		return SnapInfo();
-	}
-
-	bool RunDragger::rayHitsCloserPart()
-	{
-		G3D::Array<Primitive*> ignoreNone;
-		SnapInfo answer = rayHitsPart(ignoreNone, false);
-
-		if (answer.snap && answer.snap != snapInfo.snap)
-		{
-			if ((answer.hitWorld - mouseRay.origin).magnitude() < (snapInfo.hitWorld - mouseRay.origin).magnitude())
-				return true;
-		}
-
-		return false;
-	}
-
-	void RunDragger::findSafeY()
-	{
-		if (workspace->getWorld()->getContactManager().intersectingOthers(drag, 0.01f))
-		{
-			PartInstance* part = PartInstance::fromPrimitive(drag);
-			G3D::Array<Primitive*> temp;
-			temp.push_back(part->getPrimitive());
-
-			G3D::Vector3 moved = Dragger::safeMoveNoDrop(temp, G3D::Vector3::zero(), workspace->getWorld()->getContactManager());
-			RBXASSERT(moved.x == 0.0f);
-			RBXASSERT(moved.y != 0.0f);
-
-			G3D::CoordinateFrame newC = drag->getCoordinateFrame();
-			newC.translation += moved;
-
-			dragPart.lock()->setCoordinateFrame(newC);
-		}
-	}
-
-	void RunDragger::findNoSnapPosition(const G3D::CoordinateFrame& original)
-	{
-		dragPart.lock()->setCoordinateFrame(original);
-		findSafeY();
-
-		RBXASSERT(!workspace->getWorld()->getContactManager().intersectingOthers(drag, 0.01f));
-	}
+    return state.context == 0;
 }

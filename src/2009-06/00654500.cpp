@@ -1,108 +1,75 @@
-// from server: 67% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+// from server: 100% by EspClaude
+// roc 2009-06 00654500  unit: RBX::UniversalTool  size: 95 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 00654500
+//
+// 00654500  6aff                 push -1
+// 00654502  687b9c8600           push 0x869c7b
+// 00654507  64a100000000         mov eax, dword ptr fs:[0]
+// 0065450d  50                   push eax
+// 0065450e  64892500000000       mov dword ptr fs:[0], esp
+// 00654515  51                   push ecx
+// 00654516  56                   push esi
+// 00654517  57                   push edi
+// 00654518  6a48                 push 0x48
+// 0065451a  8bf9                 mov edi, ecx
+// 0065451c  e817450c00           call 0x718a38
+// 00654521  8bf0                 mov esi, eax
+// 00654523  83c404               add esp, 4
+// 00654526  89742408             mov dword ptr [esp + 8], esi
+// 0065452a  33c0                 xor eax, eax
+// 0065452c  89442414             mov dword ptr [esp + 0x14], eax
+// 00654530  3bf0                 cmp esi, eax
+// 00654532  741a                 je 0x65454e
+// 00654534  8b4718               mov eax, dword ptr [edi + 0x18]
+// 00654537  50                   push eax
+// 00654538  8bce                 mov ecx, esi
+// 0065453a  e8e13e0600           call 0x6b8420
+// 0065453f  c7061c028e00         mov dword ptr [esi], 0x8e021c
+// 00654545  c7460400028e00       mov dword ptr [esi + 4], 0x8e0200
+// 0065454c  8bc6                 mov eax, esi
+// 0065454e  8b4c240c             mov ecx, dword ptr [esp + 0xc]
+// 00654552  5f                   pop edi
+// 00654553  5e                   pop esi
+// 00654554  64890d00000000       mov dword ptr fs:[0], ecx
+// 0065455b  83c410               add esp, 0x10
+// 0065455e  c3                   ret 
+// copied from an identical function in another client (function ?createCursor@Tool@@QAEPAUCursor@@XZ)
 
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
+typedef unsigned int size_t;
 
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
+void* __cdecl operator new(size_t);
+void __cdecl operator delete(void*);
 
-boost::mutex& moo2()
+struct Primary {
+    virtual void first();
+};
+
+struct Secondary {
+    virtual void second();
+};
+
+struct CursorBase : Primary, Secondary {
+    char reserved[64];
+    CursorBase(void*);
+};
+
+struct Cursor : CursorBase {
+    Cursor(void*);
+    virtual void first();
+    virtual void second();
+};
+
+inline Cursor::Cursor(void* context) : CursorBase(context)
 {
-	static boost::mutex mutex2;
-	return mutex2;
 }
 
-void initMoo()
+struct Tool {
+    char reserved[24];
+    void* context;
+    Cursor* createCursor();
+};
+
+Cursor* Tool::createCursor()
 {
-	moo2();
-}
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
+    return new Cursor(context);
 }

@@ -2,6 +2,8 @@
   "name": "P2RecoveredPlayer",
   "description": "Isolated recovered block producer player; preserves local player diagnostics",
   "depends": [
+    "p2-native-material",
+    "p2-lighting",
     "rbxgs-app"
   ],
   "layers": [

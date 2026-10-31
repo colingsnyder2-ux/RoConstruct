@@ -1,108 +1,125 @@
-// from server: 25% by colin
+// from server: 98% by EspClaude
+// from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+// roc-flags: /O2 /GS- /EHsc /MD
+// roc-lib: openrbx-client-dll roc_espeon_lasertool_a73b1193b03a933d.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
 
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
 
-boost::mutex& moo2()
-{
-	static boost::mutex mutex2;
-	return mutex2;
+extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
+#pragma intrinsic(_InterlockedExchangeAdd)
+extern "C" long __cdecl _InterlockedIncrement(volatile long*);
+#pragma intrinsic(_InterlockedIncrement)
+extern "C" long __cdecl _InterlockedDecrement(volatile long*);
+#pragma intrinsic(_InterlockedDecrement)
+
+namespace RBX {
+class Instance {
+public:
+    virtual ~Instance();
+    char pad[0x100];
+    Instance* next;
+};
+class ServiceProvider : public Instance {
+public:
+    ServiceProvider* finish();
+    void setState(int);
+};
 }
 
-void initMoo()
-{
-	moo2();
-}
+struct Vector3 {
+    float x, y, z;
+};
 
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
+struct Transform {
+    char pad[0x24];
+    Vector3 position;
+};
 
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
+struct Source {
+    Transform* getTransform();
+};
 
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
+struct Object {
+    char pad[0x14];
+    void attach(RBX::Instance*);
+};
 
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
+#include <boost/shared_ptr.hpp>
+typedef boost::shared_ptr<Object> Handle;
 
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
+struct VectorProperty {
+    virtual void slot0();
+    virtual void slot1();
+    virtual void slot2();
+    virtual void set(void*, const Vector3*);
+};
 
-		boost::mutex::scoped_lock scoped_lock(mutex());
+struct FloatProperty {
+    virtual void slot0();
+    virtual void slot1();
+    virtual void slot2();
+    virtual void set(void*, const float*);
+};
 
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
+struct Hit {
+    char pad[0x1f0];
+    unsigned char active;
+    void activate();
+};
 
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
+extern VectorProperty* vectorProperty;
+extern FloatProperty* floatProperty;
 
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
+Source* __cdecl findSource(RBX::Instance*);
+Handle __cdecl makeHandle();
+RBX::ServiceProvider* __cdecl func_005807b0(RBX::Instance*);
 
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
+struct S {
+    char pad[0x18];
+    RBX::Instance* instance;
+    int state;
+    Vector3 position;
 
-		return lookup(std::string(sName));
-	}
+    Hit* findHit(void*, int, Vector3*);
+    S* f(void*);
+};
+
+S* S::f(void* argument) {
+    Source* source = findSource(instance);
+    if (source) {
+        const Vector3& origin = source->getTransform()->position;
+        position.x = origin.x;
+        position.y = origin.y;
+        position.z = origin.z;
+
+        Vector3 point;
+        point.x = 0.0f;
+        point.y = 0.0f;
+        point.z = 0.0f;
+
+        Hit* hit = findHit(argument, 0, &point);
+        if (hit) {
+            Handle handle = makeHandle();
+
+            vectorProperty->set(
+                handle.get() ? reinterpret_cast<char*>(handle.get()) + 0x14 : 0,
+                &point);
+
+            float value = 0.0f;
+            floatProperty->set(
+                handle.get() ? reinterpret_cast<char*>(handle.get()) + 0x14 : 0,
+                &value);
+
+            handle.get()->attach(instance);
+            if (!hit->active)
+                hit->activate();
+
+            func_005807b0(instance)->setState(9);
+        }
+        state = 4;
+    }
+    return this;
 }

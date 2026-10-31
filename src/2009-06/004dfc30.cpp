@@ -1,459 +1,103 @@
-// from server: 43% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-net Streaming.cpp
+// from server: 81% by EspClaude
+// from server: 100% by king_originala
+// roc 2008-06 004a8cc0  unit: RBX::VHint::?$FactoryProduct::Creator  size: 129 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 004a8cc0
+//
+// 004a8cc0  83ec08               sub esp, 8
+// 004a8cc3  56                   push esi
+// 004a8cc4  8b742414             mov esi, dword ptr [esp + 0x14]
+// 004a8cc8  57                   push edi
+// 004a8cc9  8bf9                 mov edi, ecx
+// 004a8ccb  85f6                 test esi, esi
+// 004a8ccd  744f                 je 0x4a8d1e
+// 004a8ccf  8bce                 mov ecx, esi
+// 004a8cd1  e8ca2effff           call 0x49bba0
+// 004a8cd6  8b4608               mov eax, dword ptr [esi + 8]
+// 004a8cd9  8b4e0c               mov ecx, dword ptr [esi + 0xc]
+// 004a8cdc  8b742414             mov esi, dword ptr [esp + 0x14]
+// 004a8ce0  89442408             mov dword ptr [esp + 8], eax
+// 004a8ce4  83c004               add eax, 4
+// 004a8ce7  50                   push eax
+// 004a8ce8  894c2410             mov dword ptr [esp + 0x10], ecx
+// 004a8cec  56                   push esi
+// 004a8ced  8d8f30010000         lea ecx, [edi + 0x130]
+// 004a8cf3  e8a8eeffff           call 0x4a7ba0
+// 004a8cf8  84c0                 test al, al
+// 004a8cfa  7508                 jne 0x4a8d04
+// 004a8cfc  5f                   pop edi
+// 004a8cfd  5e                   pop esi
+// 004a8cfe  83c408               add esp, 8
+// 004a8d01  c20800               ret 8
+// 004a8d04  6a01                 push 1
+// 004a8d06  6a18                 push 0x18
+// 004a8d08  8d542414             lea edx, [esp + 0x14]
+// 004a8d0c  52                   push edx
+// 004a8d0d  8bce                 mov ecx, esi
+// 004a8d0f  e8ecc8ffff           call 0x4a5600
+// 004a8d14  5f                   pop edi
+// 004a8d15  b001                 mov al, 1
+// 004a8d17  5e                   pop esi
+// 004a8d18  83c408               add esp, 8
+// 004a8d1b  c20800               ret 8
+// 004a8d1e  e84db50a00           call 0x554270
+// 004a8d23  83c004               add eax, 4
+// 004a8d26  50                   push eax
+// 004a8d27  8b442418             mov eax, dword ptr [esp + 0x18]
+// 004a8d2b  50                   push eax
+// 004a8d2c  8d8f30010000         lea ecx, [edi + 0x130]
+// 004a8d32  e8e9f0ffff           call 0x4a7e20
+// 004a8d37  5f                   pop edi
+// 004a8d38  b001                 mov al, 1
+// 004a8d3a  5e                   pop esi
+// 004a8d3b  83c408               add esp, 8
+// 004a8d3e  c20800               ret 8
 
-// Candidate translation unit (score above; library headers required).
-#include <BitStream.h>
-#include <StringCompressor.h>
-#include "Streaming.h"
-#include "IdManager.h"
-#include "v8tree/Service.h"
-#include <G3D/vectorMath.h>
-#include <algorithm>
+struct Stream {
+    void write(const void* data, int bits, bool flag);
+};
 
-namespace RBX
+struct Source {
+    unsigned char padding[8];
+    unsigned char* data;
+    unsigned int value;
+
+    void prepare();
+};
+
+struct State {
+    bool encode(Stream* stream, const void* data);
+    void encodeDefault(Stream* stream, const void* data);
+};
+
+extern "C" unsigned char* __cdecl defaultData();
+
+struct S {
+    unsigned char padding[0x130];
+    State state;
+
+    bool f(Stream* stream, Source* source);
+};
+
+bool S::f(Stream* stream, Source* source)
 {
-	namespace Network
-	{
-		RakNet::BitStream& operator<<(RakNet::BitStream& stream, bool value)
-		{
-			stream.Write(value);
-			return stream;
-		}
+    if (source) {
+        source->prepare();
 
-		RakNet::BitStream& operator<<(RakNet::BitStream& stream, int value)
-		{
-			stream.Write(value);
-			return stream;
-		}
+        struct Record {
+            unsigned char* data;
+            unsigned int value;
+        } record;
 
-		RakNet::BitStream& operator<<(RakNet::BitStream& stream, long value)
-		{
-			stream.Write(value);
-			return stream;
-		}
+        record.data = source->data;
+        record.value = source->value;
 
-		RakNet::BitStream& operator<<(RakNet::BitStream& stream, unsigned int value)
-		{
-			stream.Write(value);
-			return stream;
-		}
+        if (!state.encode(stream, record.data + 4))
+            return false;
 
-		RakNet::BitStream& operator<<(RakNet::BitStream& stream, unsigned char value)
-		{
-			stream.Write(value);
-			return stream;
-		}
+        stream->write(&record.value, 24, true);
+        return true;
+    }
 
-		RakNet::BitStream& operator<<(RakNet::BitStream& stream, float value)
-		{
-			stream.Write(value);
-			return stream;
-		}
-
-		RakNet::BitStream& operator<<(RakNet::BitStream& stream, const std::string& value)
-		{
-			stream.Write((unsigned)value.size());
-			stringCompressor->EncodeString(value.c_str(), (int)value.size() + 1, &stream);
-			return stream;
-		}
-
-		RakNet::BitStream& operator<<(RakNet::BitStream& stream, const G3D::Vector3& value)
-		{
-			stream << value.x;
-			stream << value.y;
-			stream << value.z;
-			return stream;
-		}
-
-		RakNet::BitStream& operator<<(RakNet::BitStream& stream, const G3D::Color3& value)
-		{
-			stream << value.r;
-			stream << value.g;
-			stream << value.b;
-			return stream;
-		}
-
-		RakNet::BitStream& operator>>(RakNet::BitStream& stream, bool& value)
-		{
-			stream.Read(value);
-			return stream;
-		}
-
-		RakNet::BitStream& operator>>(RakNet::BitStream& stream, int& value)
-		{
-			stream.Read(value);
-			return stream;
-		}
-
-		RakNet::BitStream& operator<<(RakNet::BitStream& stream, long& value)
-		{
-			stream.Write(value);
-			return stream;
-		}
-
-		RakNet::BitStream& operator>>(RakNet::BitStream& stream, unsigned int& value)
-		{
-			stream.Read(value);
-			return stream;
-		}
-
-
-		RakNet::BitStream& operator>>(RakNet::BitStream& stream, unsigned char& value)
-		{
-			stream.Read(value);
-			return stream;
-		}
-
-		RakNet::BitStream& operator>>(RakNet::BitStream& stream, float& value)
-		{
-			stream.Read(value);
-			return stream;
-		}
-
-		RakNet::BitStream& operator>>(RakNet::BitStream& stream, std::string& value)
-		{
-			unsigned int strSize;
-			stream >> strSize;
-
-			char* strBuf = new char[strSize + 1];
-			stringCompressor->DecodeString(strBuf, strSize + 1, &stream);
-			value = strBuf;
-
-			delete[] strBuf;
-			return stream;
-		}
-
-		RakNet::BitStream& operator>>(RakNet::BitStream& stream, G3D::Vector3& value)
-		{
-			stream >> value.x;
-			stream >> value.y;
-			stream >> value.z;
-			return stream;
-		}
-
-		RakNet::BitStream& operator>>(RakNet::BitStream& stream, G3D::Color3& value)
-		{
-			stream >> value.r;
-			stream >> value.g;
-			stream >> value.b;
-			return stream;
-		}
-
-		template<typename T>
-		RakNet::BitStream& operator>>(RakNet::BitStream& stream, T& value) // TODO: check match
-		{
-			return operator>>(stream, value);
-		}
-
-		bool brickEq(float a, float b)
-		{
-			return a == b || fabs(a - b) <= 0.0005f;
-		}
-
-		static bool isBrickLocation(const G3D::Vector3& v, short& x, unsigned short& y, short& z)
-		{
-			if (v.x >= 512.0f)
-				return false;
-
-			if (v.x <= -512.0f)
-				return false;
-
-			if (v.z >= 512.0f)
-				return false;
-
-			if (v.z <= -512.0f)
-				return false;
-			
-			if (v.y >= 204.8)
-				return false;
-
-			if (v.y < 0.0f)
-				return false;
-
-			float dx = v.x * 2.0f;
-			x = (short)dx;
-
-			if ((float)x != dx)
-				return false;
-
-			float dz = v.z * 2.0f;
-			z = (short)dz;
-
-			if ((float)z != dz)
-				return false;
-
-			float dy = v.y * 10.0f;
-			y = (unsigned short)dy;
-
-			if (!brickEq((float)y, dy))
-				return false;
-
-			return true;
-		}
-
-		void writeBrickVector(RakNet::BitStream& stream, const G3D::Vector3& value)
-		{
-			short x;
-			unsigned short y;
-			short z;
-
-			if (isBrickLocation(value, x, y, z))
-			{
-				stream.Write(true);
-				stream.WriteBits((unsigned char*)&x, 11);
-				stream.WriteBits((unsigned char*)&y, 11);
-				stream.WriteBits((unsigned char*)&z, 11);
-			}
-			else
-			{
-				stream.Write(false);
-				stream.Write(value.x);
-				stream.Write(value.y);
-				stream.Write(value.z);
-			}
-		}
-
-		void readBrickVector(RakNet::BitStream& stream, G3D::Vector3& value)
-		{
-			bool isBrickLocation;
-			stream.Read(isBrickLocation);
-
-			if (isBrickLocation)
-			{
-				short x = 0;
-				unsigned short y = 0;
-				short z = 0;
-
-				stream.ReadBits((unsigned char*)&x, 11);
-				stream.ReadBits((unsigned char*)&y, 11);
-				stream.ReadBits((unsigned char*)&z, 11);
-
-				if (x & 0x400) // sign extend x and z
-					x |= 0xfc00;
-
-				if (z & 0x400)
-					z |= 0xfc00;
-
-				value.x = (float)(x * 0.5);
-				value.y = (float)(y / 10.0);
-				value.z = (float)(z * 0.5);
-			}
-			else
-			{
-				stream.Read(value.x);
-				stream.Read(value.y);
-				stream.Read(value.z);
-			}
-		}
-
-		void rationalize(G3D::CoordinateFrame& value)
-		{
-			if (!value.translation.isFinite())
-			{
-				value.translation = G3D::Vector3(0.0f, -1e+6f, 0.0f);
-			}
-			else
-			{
-				value.translation = G3D::clamp(G3D::Vector3(-1e+6f, -1e+6f, -1e+6f), value.translation, G3D::Vector3(1e+6f, 1e+6f, 1e+6f));
-			}
-		}
-
-		void deserializeEnum(Reflection::Property& property, RakNet::BitStream& bitStream)
-		{
-			const Reflection::EnumPropertyDescriptor& prop = static_cast<const Reflection::EnumPropertyDescriptor&>(property.getDescriptor());
-
-			int value = 0;
-			bitStream.ReadBits((unsigned char*)&value, (int)prop.enumDescriptor.getEnumCountMSB() + 1);
-
-			RBXASSERT(value >= 0);
-			RBXASSERT(value < (int)prop.enumDescriptor.getEnumCount());
-
-			prop.setIndexValue(property.getInstance(), value);
-		}
-
-		void serializeEnum(const Reflection::ConstProperty& property, RakNet::BitStream& bitStream)
-		{
-			const Reflection::EnumPropertyDescriptor& prop = static_cast<const Reflection::EnumPropertyDescriptor&>(property.getDescriptor());
-
-			int value = prop.getIndexValue(property.getInstance());
-
-			RBXASSERT(value >= 0);
-			RBXASSERT(value < (int)prop.enumDescriptor.getEnumCount());
-
-			bitStream.WriteBits((unsigned char*)&value, (int)prop.enumDescriptor.getEnumCountMSB() + 1);
-		}
-
-		void StringReceiver::receive(RakNet::BitStream& stream, std::string& value)
-		{
-			unsigned char id;
-			stream >> id;
-
-			if (id == 0)
-			{
-				value.clear();
-			}
-			else if (id >> 7)
-			{
-				stream >> value;
-				dictionary[id & 127] = value;
-			}
-			else
-			{
-				value = dictionary[id];
-			}
-		}
-
-		void StringReceiver::receive(RakNet::BitStream& stream, const Name*& value)
-		{
-			std::string s;
-			receive(stream, s);
-
-			value = &Name::declare(s.c_str(), -1);
-		}
-
-		void StringReceiver::deserializeString(Reflection::Property& property, RakNet::BitStream& bitStream)
-		{
-			std::string value;
-			receive(bitStream, value);
-			
-			Instance* instance = static_cast<Instance*>(property.getInstance());
-			const Reflection::PropertyDescriptor& desc = property.getDescriptor();
-
-			desc.setStringValue(instance, value);
-		}
-
-		void StringSender::serializeString(const Reflection::ConstProperty& property, RakNet::BitStream& bitStream)
-		{
-			const Instance* instance = static_cast<const Instance*>(property.getInstance());
-			const Reflection::PropertyDescriptor& desc = property.getDescriptor();
-
-			std::string value = desc.getStringValue(instance);
-			send(bitStream, value);
-		}
-
-		void StringSender::send(RakNet::BitStream& stream, const std::string& value)
-		{
-			if (value == "")
-			{
-				stream << (unsigned char)0;
-			}
-			else
-			{
-				std::pair<std::map<std::string, unsigned char>::iterator, bool> pair = dictionary.insert(std::pair<const std::string, unsigned char>(value, 0));
-
-				if (!pair.second)
-				{
-					stream << pair.first->second;
-				}
-				else
-				{
-					lastIndex = lastIndex % 127 + 1;
-					dictionary.erase(strings[lastIndex]);
-					pair.first->second = lastIndex;
-					strings[lastIndex] = value;
-
-					stream << (unsigned char)(lastIndex | 0x80);
-					stream << value;
-				}
-			}
-		}
-
-		bool StringSender::trySend(RakNet::BitStream& stream, const std::string& value)
-		{
-			if (value == "")
-			{
-				stream << (unsigned char)0;
-				return true;
-			}
-
-			std::map<std::string, unsigned char>::const_iterator iter = dictionary.find(value);
-
-			if (iter == dictionary.end())
-			{
-				return false;
-			}
-			else
-			{
-				stream << iter->second;
-				return true;
-			}
-		}
-
-		void IdSerializer::serializeId(RakNet::BitStream& stream, const Instance* instance)
-		{
-			if (instance)
-			{
-				Guid::Data id;
-				instance->getGuid().extract(id);
-
-				scopeNames.send(stream, id.scope->name);
-
-				RBXASSERT((id.index & 0xff000000) == 0);
-				stream.WriteBits((unsigned char*)&id.index, 24);
-			}
-			else
-			{
-				scopeNames.send(stream, Name::getNullName().name);
-			}
-		}
-
-		bool IdSerializer::trySerializeId(RakNet::BitStream& stream, const Instance* instance)
-		{
-			if (instance)
-			{
-				Guid::Data id;
-				instance->getGuid().extract(id);
-
-				if (!scopeNames.trySend(stream, id.scope->name))
-					return false;
-
-				RBXASSERT((id.index & 0xff000000) == 0);
-				stream.WriteBits((unsigned char*)&id.index, 24);
-				return true;
-			}
-			else
-			{
-				scopeNames.send(stream, Name::getNullName().name);
-				return true;
-			}
-		}
-
-		void IdSerializer::resolvePendingBindings(Instance* instance, Guid::Data id)
-		{
-			std::map<Guid::Data, std::vector<WaitItem>>::iterator iter = waitItems.find(id);
-			if (iter != waitItems.end())
-			{
-				std::for_each(iter->second.begin(), iter->second.end(), boost::bind(&IdSerializer::setRefValue, _1, instance));
-				waitItems.erase(iter);
-			}
-		}
-
-		void IdSerializer::serializeRef(const Reflection::ConstProperty& property, RakNet::BitStream& bitStream)
-		{
-			const Reflection::RefPropertyDescriptor& prop = static_cast<const Reflection::RefPropertyDescriptor&>(property.getDescriptor());
-			serializeId(bitStream, (Instance*)prop.getRefValue(property.getInstance()));
-		}
-
-		void IdSerializer::setRefValue(WaitItem& wi, Instance* instance)
-		{
-			wi.desc->setRefValue(wi.instance.get(), instance);
-		}
-
-		void IdSerializer::deserializeId(RakNet::BitStream& stream, Guid::Data& id)
-		{
-			scopeNames.receive(stream, id.scope);
-			if (*id.scope != Name::getNullName())
-			{
-				id.index = 0;
-				stream.ReadBits((unsigned char*)&id.index, 24);
-			}
-			else
-			{
-				id.index = 0;
-			}
-		}
-	}
+    state.encodeDefault(stream, defaultData() + 4);
+    return true;
 }

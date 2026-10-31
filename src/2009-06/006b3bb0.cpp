@@ -1,236 +1,35 @@
-// from server: 61% by colin
-// roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs tool/DragUtilities.cpp
+// from server: 98% by EspClaude
+// from server: 100% by king_originala
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+// roc-lib: openrbx-client-dll roc_king_originala_physics_e24ee4e3b4be38d6.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "tool/DragUtilities.h"
-#include "tool/Dragger.h"
-#include "v8datamodel/Workspace.h"
-#include "v8datamodel/PartInstance.h"
-#include "v8datamodel/MouseCommand.h"
-#include "v8world/ContactManager.h"
-
-namespace RBX
-{
-	bool DragUtilities::anyPartAlive(const std::vector<boost::weak_ptr<PartInstance>>& parts)
-	{
-		for (size_t i = 0; i < parts.size(); i++)
-		{
-			if (PartInstance::nonNullInWorkspace(parts[i].lock()))
-				return true;
-		}
-
-		return false;
-	}
-
-	void DragUtilities::clean(PartInstance* part)
-	{
-		if (part->aligned())
-			alignToGrid(part);
-	}
-
-	void DragUtilities::alignToGrid(PartInstance* part)
-	{
-		const G3D::CoordinateFrame& partCoord = part->getCoordinateFrame();
-		G3D::CoordinateFrame snapToGrid = Math::snapToGrid(partCoord, 0.1f);
-
-		if (snapToGrid != partCoord)
-			part->setCoordinateFrame(snapToGrid);
-	}
-
-	void DragUtilities::clean(const std::vector<boost::weak_ptr<PartInstance>>& parts)
-	{
-		for (size_t i = 0; i < parts.size(); i++)
-		{
-			boost::shared_ptr<PartInstance> part = parts[i].lock();
-			if (part)
-				clean(part.get());
-		}
-	}
-
-	void DragUtilities::move(const std::vector<boost::weak_ptr<PartInstance>>& parts, G3D::CoordinateFrame from, G3D::CoordinateFrame to)
-	{
-		for (size_t i = 0; i < parts.size(); i++)
-		{
-			boost::shared_ptr<PartInstance> part = parts[i].lock();
-
-			if (part)
-			{
-				G3D::CoordinateFrame coord = from.toObjectSpace(part->getCoordinateFrame());
-				Math::orthonormalizeIfNecessary(coord.rotation);
-
-				part->setCoordinateFrame(to * coord);
-			}
-		}
-	}
-
-	Extents DragUtilities::computeExtents(const std::vector<boost::weak_ptr<PartInstance>>& parts)
-	{
-		G3D::Array<Primitive*> primitives;
-
-		partsToPrimitives(parts, primitives);
-		return Dragger::computeExtents(primitives);
-	}
-
-	void DragUtilities::getPrimitivesConst(const Instance* instance, std::vector<const Primitive*>& primitives)
-	{
-		const PartInstance* partInstance = dynamic_cast<const PartInstance*>(instance);
-
-		if (partInstance)
-			primitives.push_back(partInstance->getPrimitive());
-
-		for (size_t i = 0; i < instance->numChildren(); i++)
-		{
-			getPrimitivesConst(instance->getChild(i), primitives);
-		}
-	}
-
-	void DragUtilities::instancesToParts(const std::vector<Instance*>& instances, std::vector<boost::weak_ptr<PartInstance>>& parts)
-	{
-		for (size_t i = 0; i < instances.size(); i++)
-		{
-			PartInstance::findParts(instances[i], parts);
-		}
-	}
-
-	void DragUtilities::join(const std::vector<boost::weak_ptr<PartInstance>>& parts)
-	{
-		RBXASSERT(notJoined(parts));
-		
-		for (size_t i = 0; i < parts.size(); i++)
-		{
-			boost::shared_ptr<PartInstance> part = parts[i].lock();
-			if (PartInstance::nonNullInWorkspace(part))
-				part->join();
-		}
-	}
-
-	void DragUtilities::joinAndStopDragging(const std::vector<boost::weak_ptr<PartInstance>>& parts)
-	{
-		joinToOutsiders(parts);
-
-		for (size_t i = 0; i < parts.size(); i++)
-		{
-			boost::shared_ptr<PartInstance> part = parts[i].lock();
-			if (PartInstance::nonNullInWorkspace(part))
-			{
-				part->setDragging(false);
-				if (parts.size() == 1)
-				{
-					part->setLinearVelocity(G3D::Vector3::zero());
-					part->setRotationalVelocity(G3D::Vector3::zero());
-				}
-			}
-		}
-	}
-
-	void DragUtilities::joinToOutsiders(const std::vector<boost::weak_ptr<PartInstance>>& parts)
-	{
-		G3D::Array<Primitive*> primitives;
-
-		World* world = partsToPrimitives(parts, primitives);
-		if (world)
-			world->createJointsToWorld(primitives);
-	}
-
-	void DragUtilities::moveAndClean(PartInstance* part, const G3D::Vector3& pos)
-	{
-		RBXASSERT(pos == Math::toGrid(pos, 0.1f));
-
-		G3D::CoordinateFrame partCoord = part->getCoordinateFrame();
-		partCoord.translation += pos;
-
-		if (part->aligned())
-			partCoord = Math::snapToGrid(partCoord, 0.1f);
-
-		part->setCoordinateFrame(partCoord);
-	}
-
-	bool DragUtilities::notJoined(const std::vector<boost::weak_ptr<PartInstance>>& parts)
-	{
-		for (size_t i = 0; i < parts.size(); i++)
-		{
-			boost::shared_ptr<PartInstance> part = parts[i].lock();
-			if (PartInstance::nonNullInWorkspace(part))
-			{
-				if (part->getPrimitive()->countNumJoints() != 0)
-					return false;
-			}
-		}
-
-		return true;
-	}
-
-	World* DragUtilities::partsToPrimitives(const std::vector<boost::weak_ptr<PartInstance>>& parts, G3D::Array<Primitive*>& primitives)
-	{
-		RBXASSERT(primitives.size() == 0);
-
-		World* world = NULL;
-
-		for (size_t i = 0; i < parts.size(); i++)
-		{
-			boost::shared_ptr<PartInstance> part = parts[i].lock();
-			if (PartInstance::nonNullInWorkspace(part))
-			{
-				primitives.push_back(part->getPrimitive());
-
-				if (!world)
-					world = Workspace::getMyWorldFast(part.get());
-
-				RBXASSERT(world);
-			}
-		}
-
-		return world;
-	}
-
-	void DragUtilities::pvsToParts(const std::vector<PVInstance*>& pvInstances, std::vector<boost::weak_ptr<PartInstance>>& parts)
-	{
-		for (size_t i = 0; i < pvInstances.size(); i++)
-		{
-			PartInstance::findParts(pvInstances[i], parts);
-		}
-	}
-
-	void DragUtilities::unJoinAndSetDragging(const std::vector<boost::weak_ptr<PartInstance>>& parts)
-	{
-		unJoinFromOutsiders(parts);
-
-		for (size_t i = 0; i < parts.size(); i++)
-		{
-			boost::shared_ptr<PartInstance> part = parts[i].lock();
-			if (PartInstance::nonNullInWorkspace(part))
-				part->setDragging(true);
-		}
-	}
-
-	void DragUtilities::unJoinFromOutsiders(const std::vector<boost::weak_ptr<PartInstance>>& parts)
-	{
-		G3D::Array<Primitive*> primitives;
-		World* world = partsToPrimitives(parts, primitives);
-
-		if (world)
-			world->destroyJointsToWorld(primitives);
-	}
-
-	bool DragUtilities::hitObjectOrPlane(const ContactManager& contactManager, const G3D::Ray& unitSearchRay, const G3D::Array<Primitive*>* ignorePrims, G3D::Vector3& hit)
-	{
-		RBXASSERT(unitSearchRay.direction.isUnit());
-		G3D::Ray ray = MouseCommand::getSearchRay(unitSearchRay);
-
-		if (!contactManager.getHit(ray, toConstPrimitives(ignorePrims), NULL, hit))
-		{
-			if (!Math::intersectRayPlane(ray, G3D::Plane(G3D::Vector3::unitY(), G3D::Vector3::zero()), hit))
-			{
-				hit = G3D::Vector3::zero();
-				return false;
-			}
-		}
-
-		hit = Dragger::toGrid(hit);
-
-		return true;
-	}
+#include <boost/shared_ptr.hpp>
+#include <boost/weak_ptr.hpp>
+#include <vector>
+#include <G3D/Array.h>
+struct Primitive;
+// Borrowed PartInstance receiver; native LEA edi+228 and sibling construction
+// establish the embedded Primitive address. No owner is constructed here.
+struct Object {Primitive* getPrimitive(){return reinterpret_cast<Primitive*>(reinterpret_cast<char*>(this)+0x228);}};
+typedef boost::shared_ptr<Object> Shared;
+typedef std::vector<boost::weak_ptr<Object> > Collection;
+typedef G3D::Array<Primitive*> Output;
+bool __cdecl accepted(Shared);
+void* __cdecl getResult(Object*);
+void* __cdecl reconstruct(Collection* collection,Output* output) {
+ void* result=0;
+ for(unsigned int i=0;i<collection->size();++i) {
+  Shared item=(*collection)[i].lock();
+  Object* object=item.get();
+  if(accepted(item)) {
+   Primitive* value=object->getPrimitive();
+   output->append(value);
+   if(!result)result=getResult(object);
+  }
+ }
+ return result;
 }
+typedef char weak_size[sizeof(boost::weak_ptr<Object>)==8?1:-1];
+typedef char vector_size[sizeof(Collection)==24?1:-1];

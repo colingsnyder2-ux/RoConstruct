@@ -1,4 +1,4 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00670380  unit: RBX::AdornRbxGfx  size: 118 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00670380
@@ -47,7 +47,7 @@ struct String {
 };
 
 struct Object {
-    unsigned char data[96];
+    unsigned char data[104];
     Object(const String&);
 };
 

@@ -2,7 +2,20 @@
 #include "PlayerMeshBackend.h"
 #include <cstdio>
 #include <cmath>
+#include <cstring>
 int main() {
+    if(PlayerSphereCache::size() || PlayerSphereCache::remove(7))return 10;
+    PlayerSphereCache::set(0,Ogre::Sphere(Ogre::Vector3(2,3,4),5));
+    if(!PlayerSphereCache::has(0) || PlayerSphereCache::has(7) || PlayerSphereCache::size()!=1)return 11;
+    const Ogre::Sphere* retainedSphere=&PlayerSphereCache::get(0);
+    PlayerSphereCache::set(0,Ogre::Sphere(Ogre::Vector3(6,7,8),9));
+    PlayerSphereCache::set(7,Ogre::Sphere(Ogre::Vector3(10,11,12),13));
+    if(PlayerSphereCache::size()!=2 || retainedSphere!=&PlayerSphereCache::get(0) ||
+       retainedSphere->getCenter()!=Ogre::Vector3(6,7,8) || retainedSphere->getRadius()!=9)return 12;
+    if(!PlayerSphereCache::remove(0) || PlayerSphereCache::remove(0) || !PlayerSphereCache::has(7))return 13;
+    try{PlayerSphereCache::get(0);return 14;}
+    catch(const std::runtime_error& error){if(std::strcmp(error.what(),"bsphere map error"))return 15;}
+    if(!PlayerSphereCache::remove(7) || PlayerSphereCache::size())return 16;
     Ogre::Root root("","","p2-backend.log");
     root.loadPlugin("rgdx.dll");
     Ogre::RenderSystemList* renderers=root.getAvailableRenderers();

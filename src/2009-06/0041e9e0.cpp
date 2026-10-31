@@ -1,162 +1,67 @@
-// from server: 64% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-render AggregatingSceneManager.cpp
+// from server: 74% by EspClaude
+// from server: 100% by king_originala
+// roc 2008-06 00424510  unit: CSelectionTreeCtrl  size: 111 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 00424510
+//
+// 00424510  6aff                 push -1
+// 00424512  6874ea7b00           push 0x7bea74
+// 00424517  64a100000000         mov eax, dword ptr fs:[0]
+// 0042451d  50                   push eax
+// 0042451e  64892500000000       mov dword ptr fs:[0], esp
+// 00424525  51                   push ecx
+// 00424526  56                   push esi
+// 00424527  8bf1                 mov esi, ecx
+// 00424529  89742404             mov dword ptr [esp + 4], esi
+// 0042452d  8d8ec4000000         lea ecx, [esi + 0xc4]
+// 00424533  c744241002000000     mov dword ptr [esp + 0x10], 2
+// 0042453b  e870071700           call 0x594cb0
+// 00424540  8d8ebc000000         lea ecx, [esi + 0xbc]
+// 00424546  c644241001           mov byte ptr [esp + 0x10], 1
+// 0042454b  e8e0e9feff           call 0x412f30
+// 00424550  8d8e98000000         lea ecx, [esi + 0x98]
+// 00424556  c644241000           mov byte ptr [esp + 0x10], 0
+// 0042455b  e820f81200           call 0x553d80
+// 00424560  8bce                 mov ecx, esi
+// 00424562  c7442410ffffffff     mov dword ptr [esp + 0x10], 0xffffffff
+// 0042456a  e851752b00           call 0x6dbac0
+// 0042456f  8b4c2408             mov ecx, dword ptr [esp + 8]
+// 00424573  5e                   pop esi
+// 00424574  64890d00000000       mov dword ptr fs:[0], ecx
+// 0042457b  83c410               add esp, 0x10
+// 0042457e  c3                   ret 
 
-// Candidate translation unit (score above; library headers required).
-#include "RenderLib/AggregatingSceneManager.h"
+struct Base_00424510 {
+    char storage[0x98];
+    ~Base_00424510();
+};
 
-namespace RBX
+struct Aggregate_00424510 {
+    char storage[0x24];
+    ~Aggregate_00424510();
+};
+
+struct MemberBase_00424510 {
+    virtual ~MemberBase_00424510();
+};
+
+struct Member_00424510 : MemberBase_00424510 {
+    char storage[4];
+    ~Member_00424510();
+};
+
+struct Resource_00424510 {
+    void *object;
+    bool criticalSection;
+    ~Resource_00424510();
+};
+
+struct S_00424510 : Base_00424510 {
+    Aggregate_00424510 aggregate;
+    Member_00424510 member;
+    Resource_00424510 resource;
+    ~S_00424510();
+};
+
+S_00424510::~S_00424510()
 {
-	namespace Render
-	{
-		AggregatingSceneManager::AggregatingSceneManager(RenderScene* renderScene)
-			: SceneManager(renderScene)
-		{
-		}
-
-		AggregatingSceneManager::~AggregatingSceneManager() {}
-
-		void AggregatingSceneManager::addModel(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			addToScene(chunk);
-		}
-
-		void AggregatingSceneManager::removeModel(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			invalidSleepingModels.erase(chunk);
-			invalidMovingModels.erase(chunk);
-
-			G3D::ReferenceCountedPointer<AggregateChunk> aggregate = chunk->aggregate.createStrongPtr();
-			if (aggregate.notNull())
-				deconstructAggregate(aggregate);
-
-			removeFromScene(chunk);
-			dequeueSleepingChunk(chunk);
-		}
-
-		void AggregatingSceneManager::setSleeping(const G3D::ReferenceCountedPointer<Chunk>& chunk, bool sleeping)
-		{
-			if (sleeping)
-			{
-				bool erased = invalidMovingModels.erase(chunk) == 1;
-
-				if (erased)
-					invalidSleepingModels.insert(chunk);
-
-				queueSleepingChunk(chunk);
-			}
-			else
-			{
-				bool erased = invalidSleepingModels.erase(chunk) == 1;
-
-				if (erased)
-					invalidMovingModels.insert(chunk);
-
-				G3D::ReferenceCountedPointer<AggregateChunk> aggregate = chunk->aggregate.createStrongPtr();
-				if (aggregate.notNull())
-					deconstructAggregate(aggregate);
-
-				dequeueSleepingChunk(chunk);
-			}
-		}
-
-		void AggregatingSceneManager::invalidateModel(const G3D::ReferenceCountedPointer<Chunk>& chunk, bool isSleeping)
-		{
-			if (isSleeping)
-				invalidSleepingModels.insert(chunk);
-			else
-				invalidMovingModels.insert(chunk);
-		}
-
-		void AggregatingSceneManager::dequeueSleepingChunk(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator iter = buckets.begin();
-			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator end = buckets.end();
-
-			for (; iter != end; iter++)
-			{
-				if (iter->second->dequeueSleepingChunk(chunk))
-					break;
-			}
-		}
-
-		void AggregatingSceneManager::clear()
-		{
-			invalidSleepingModels.clear();
-			invalidMovingModels.clear();
-
-			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator iter = buckets.begin();
-			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator end = buckets.end();
-
-			for (; iter != end; iter++)
-			{
-				iter->second->clear();
-			}
-
-			clearScene();
-		}
-
-		bool AggregatingSceneManager::Bucket::dequeueSleepingChunk(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			std::vector<G3D::ReferenceCountedPointer<Chunk>>::iterator found = std::find(queue.begin(), queue.end(), chunk);
-
-			if (found != queue.end())
-			{
-				queue.erase(found);
-				return true;
-			}
-			else
-			{
-				return false;
-			}
-		}
-
-		void AggregatingSceneManager::queueSleepingChunk(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			G3D::ReferenceCountedPointer<Bucket> queue;
-
-			{
-				BucketKey key(chunk);
-
-				std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator iter = buckets.find(key);
-
-				if (iter == buckets.end())
-				{
-					queue = new Bucket;
-					buckets[key] = queue;
-				}
-				else
-				{
-					queue = iter->second;
-				}
-			}
-
-			queue->addToQueue(chunk);
-		}
-
-		bool AggregatingSceneManager::BucketKey::operator<(const AggregatingSceneManager::BucketKey& that) const
-		{
-			if (this->material < that.material)
-				return true;
-			if (this->material > that.material)
-				return false;
-
-			if (this->castsShadows < that.castsShadows)
-				return true;
-			if (this->castsShadows > that.castsShadows)
-				return false;
-
-			if (this->polygonOffset < that.polygonOffset)
-				return true;
-			if (this->polygonOffset > that.polygonOffset)
-				return false;
-
-			if (this->cullable < that.cullable)
-				return true;
-			else
-				return false;
-		}
-	}
 }

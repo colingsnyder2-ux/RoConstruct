@@ -1,8 +1,9 @@
+// from server: 100% by EspClaude
 // from server: 86% by colin
-// roc-lang: c
+// roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /MD
-// roc-lib: lua-5.1.4 ldo.c
+// roc-lib: lua-5.1.4 roc_espclaude_c86b57451e619507.cpp
 
 // Candidate translation unit (score above; library headers required).
 /*
@@ -19,6 +20,7 @@
 #define ldo_c
 #define LUA_CORE
 
+extern "C" {
 #include "lua.h"
 
 #include "ldebug.h"
@@ -429,6 +431,7 @@ LUA_API int lua_resume (lua_State *L, int nargs) {
   if (L->nCcalls >= LUAI_MAXCCALLS)
     return resume_error(L, "C stack overflow");
   luai_userstateresume(L, nargs);
+  { struct RES { int a, b; char yieldCaptured; }; RES* r = L ? (RES*)((char*)L - 12) : 0; r->yieldCaptured = 0; }
   lua_assert(L->errfunc == 0);
   L->baseCcalls = ++L->nCcalls;
   status = luaD_rawrunprotected(L, resume, L->top - nargs);
@@ -523,3 +526,6 @@ int luaD_protectedparser (lua_State *L, ZIO *z, const char *name) {
 }
 
 
+
+
+}

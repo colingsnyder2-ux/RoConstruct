@@ -1,351 +1,153 @@
-// from server: 40% by colin
-// roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/RootInstance.cpp
+// from server: 100% by EspClaude
+// from server: 100% by king_originala
+// roc 2008-06 00590440  unit: RBX::RootInstance  size: 185 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 00590440
+//
+// 00590440  83ec10               sub esp, 0x10
+// 00590443  53                   push ebx
+// 00590444  55                   push ebp
+// 00590445  56                   push esi
+// 00590446  8b742420             mov esi, dword ptr [esp + 0x20]
+// 0059044a  57                   push edi
+// 0059044b  8b7e10               mov edi, dword ptr [esi + 0x10]
+// 0059044e  33ed                 xor ebp, ebp
+// 00590450  bbf0a85500           mov ebx, 0x55a8f0
+// 00590455  397e0c               cmp dword ptr [esi + 0xc], edi
+// 00590458  7606                 jbe 0x590460
+// 0059045a  ff1590288000         call dword ptr [0x802890]
+// 00590460  8b560c               mov edx, dword ptr [esi + 0xc]
+// 00590463  8b06                 mov eax, dword ptr [esi]
+// 00590465  89442410             mov dword ptr [esp + 0x10], eax
+// 00590469  89542424             mov dword ptr [esp + 0x24], edx
+// 0059046d  3b5610               cmp edx, dword ptr [esi + 0x10]
+// 00590470  760a                 jbe 0x59047c
+// 00590472  ff1590288000         call dword ptr [0x802890]
+// 00590478  8b542424             mov edx, dword ptr [esp + 0x24]
+// 0059047c  8b0e                 mov ecx, dword ptr [esi]
+// 0059047e  83ec10               sub esp, 0x10
+// 00590481  8bc4                 mov eax, esp
+// 00590483  8918                 mov dword ptr [eax], ebx
+// 00590485  8b5c2438             mov ebx, dword ptr [esp + 0x38]
+// 00590489  896804               mov dword ptr [eax + 4], ebp
+// 0059048c  895808               mov dword ptr [eax + 8], ebx
+// 0059048f  8b5c242c             mov ebx, dword ptr [esp + 0x2c]
+// 00590493  57                   push edi
+// 00590494  89580c               mov dword ptr [eax + 0xc], ebx
+// 00590497  8b442424             mov eax, dword ptr [esp + 0x24]
+// 0059049b  50                   push eax
+// 0059049c  52                   push edx
+// 0059049d  51                   push ecx
+// 0059049e  8d4c2430             lea ecx, [esp + 0x30]
+// 005904a2  51                   push ecx
+// 005904a3  e848ffffff           call 0x5903f0
+// 005904a8  8b4610               mov eax, dword ptr [esi + 0x10]
+// 005904ab  2b460c               sub eax, dword ptr [esi + 0xc]
+// 005904ae  8b5c2450             mov ebx, dword ptr [esp + 0x50]
+// 005904b2  c1f803               sar eax, 3
+// 005904b5  83c424               add esp, 0x24
+// 005904b8  33ff                 xor edi, edi
+// 005904ba  85c0                 test eax, eax
+// 005904bc  7628                 jbe 0x5904e6
+// 005904be  3bf8                 cmp edi, eax
+// 005904c0  7206                 jb 0x5904c8
+// 005904c2  ff1590288000         call dword ptr [0x802890]
+// 005904c8  8b560c               mov edx, dword ptr [esi + 0xc]
+// 005904cb  8b04fa               mov eax, dword ptr [edx + edi*8]
+// 005904ce  53                   push ebx
+// 005904cf  50                   push eax
+// 005904d0  e86bc10000           call 0x59c640
+// 005904d5  8b4610               mov eax, dword ptr [esi + 0x10]
+// 005904d8  2b460c               sub eax, dword ptr [esi + 0xc]
+// 005904db  47                   inc edi
+// 005904dc  c1f803               sar eax, 3
+// 005904df  83c408               add esp, 8
+// 005904e2  3bf8                 cmp edi, eax
+// 005904e4  72e2                 jb 0x5904c8
+// 005904e6  53                   push ebx
+// 005904e7  e854e80700           call 0x60ed40
+// 005904ec  83c404               add esp, 4
+// 005904ef  5f                   pop edi
+// 005904f0  5e                   pop esi
+// 005904f1  5d                   pop ebp
+// 005904f2  5b                   pop ebx
+// 005904f3  83c410               add esp, 0x10
+// 005904f6  c20c00               ret 0xc
 
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/RootInstance.h"
-#include "v8datamodel/PartInstance.h"
-#include "v8datamodel/SpawnLocation.h"
-#include "v8datamodel/Camera.h"
-#include "v8datamodel/Teams.h"
-#include "v8datamodel/Hopper.h"
-#include "v8datamodel/Backpack.h"
-#include "v8datamodel/Tool.h"
-#include "v8datamodel/Lighting.h"
-#include "v8datamodel/Sky.h"
-#include "Network/Players.h"
-#include "tool/Dragger.h"
-#include "tool/MegaDragger.h"
-#include "tool/DragUtilities.h"
-#include <boost/bind.hpp>
+struct Base1 {};
+struct Base2 {};
 
-namespace RBX
+struct __multiple_inheritance Object : Base1, Base2
 {
-	const char* sRootInstance = "RootInstance";
+    void callback();
+};
 
-#pragma warning (push)
-#pragma warning (disable : 4355) // warning C4355: 'this' : used in base member initializer list
-	RootInstance::RootInstance()
-		: Base(),
-		  ControllersUsed(this, &RootInstance::computeControllersUsed),
-		  insertPoint(G3D::Vector3::zero()),
-		  viewPort(G3D::Vector2(800.0f, 600.0f)),
-		  world(new World())
-	{
-	}
-#pragma warning (pop)
+struct Entry
+{
+    Object* object;
+    int unused;
+};
 
-	RootInstance::~RootInstance()
-	{
-	}
+struct Iterator
+{
+    int unused;
+    Entry* position;
+};
 
-	void RootInstance::onDescendentAdded(Instance* instance)
-	{
-		ModelInstance::onDescendentAdded(instance);
-		ControllersUsed.setDirty();
-	}
+struct Functor
+{
+    void (Object::*function)();
+    void* argument;
+    int unused;
+};
 
-	void RootInstance::onDescendentRemoving(const boost::shared_ptr<Instance>& instance)
-	{
-		ControllersUsed.setDirty();
-		ModelInstance::onDescendentRemoving(instance);
-	}
+struct Container
+{
+    int owner;
+    int unused1;
+    int unused2;
+    Entry* first;
+    Entry* last;
+};
 
-	void RootInstance::setInsertPoint(const G3D::Vector3& topCenter)
-	{
-		insertPoint = Dragger::toGrid(topCenter);
-	}
+extern "C" void (__cdecl* _invalid_parameter_noinfo)();
+extern Functor __cdecl apply(Iterator, Iterator, Functor);
+extern void __cdecl visit(Object*, void*);
+extern void __cdecl finish(void*);
 
-	G3D::Vector3 RootInstance::computeIdeInsertPoint() const
-	{
-		insertPoint.y = G3D::max(0.0f, insertPoint.y);
-		float tempY = insertPoint.y;
+void __stdcall process(Container* container, void* argument, void* context)
+{
+    Entry* end = container->last;
 
-		G3D::Vector3 newInsertPoint = getExtentsWorld().clip(insertPoint);
+    Functor operation;
+    operation.function = &Object::callback;
+    operation.argument = argument;
 
-		insertPoint = newInsertPoint;
-		insertPoint.y = tempY;
+    if (container->first > end)
+        _invalid_parameter_noinfo();
 
-		insertPoint = Dragger::toGrid(insertPoint);
-		return insertPoint;
-	}
+    Iterator last;
+    last.unused = container->owner;
+    last.position = end;
 
-	G3D::Vector3 RootInstance::computeCharacterInsertPoint(const Extents& extents) const
-	{
-		ModelInstance* character = Network::Players::findLocalCharacter(this);
-		if (character)
-		{
-			G3D::Vector3 cameraLook = getCamera()->getCameraCoordinateFrame().lookVector();
-			cameraLook.unitize();
+    Entry* begin = container->first;
+    if (begin > container->last)
+        _invalid_parameter_noinfo();
 
-			G3D::Vector3 halfSize = extents.size() * 0.5f;
+    Iterator first;
+    first.unused = container->owner;
+    first.position = begin;
 
-			std::vector<boost::weak_ptr<PartInstance>> partArray;
-			PartInstance::findParts(character, partArray);
+    apply(first, last, operation);
 
-			Extents modelExtents = DragUtilities::computeExtents(partArray);
+    for (unsigned int i = 0;
+         i < static_cast<unsigned int>(container->last - container->first);
+         ++i)
+    {
+        if (i >= static_cast<unsigned int>(container->last - container->first))
+            _invalid_parameter_noinfo();
 
-			G3D::Vector3 insertPoint = modelExtents.center() + (cameraLook * 7.0f) + (halfSize * cameraLook) * G3D::Vector3(1,0,1);
-			insertPoint = Dragger::toGrid(insertPoint);
+        visit(container->first[i].object, context);
+    }
 
-			return insertPoint;
-		}
-		else
-		{
-			RBXASSERT(0);
-			return computeIdeInsertPoint();
-		}
-	}
-
-	void RootInstance::moveSafe(MegaDragger& megaDragger, G3D::Vector3 move, MoveType moveType)
-	{
-		megaDragger.startDragging();
-		megaDragger.alignAndCleanParts();
-
-		if (moveType == MOVE_DROP)
-			megaDragger.safeMoveYDrop(move);
-		else
-			megaDragger.safeMoveNoDrop(move);
-
-		megaDragger.finishDragging();
-	}
-
-	void RootInstance::moveSafe(std::vector<boost::weak_ptr<PartInstance>>& partArray, G3D::Vector3 move, MoveType moveType)
-	{
-		MegaDragger megaDragger(NULL, partArray, this);
-		moveSafe(megaDragger, move, moveType);
-	}
-
-	void RootInstance::moveToPoint(PVInstance* pv, G3D::Vector3 point)
-	{
-		if (this->contains(pv))
-		{
-			RBXASSERT(pv->getPrimaryPart());
-
-			std::vector<PVInstance*> pvInstances;
-			pvInstances.push_back(pv);
-
-			G3D::Vector3 move = Dragger::toGrid(point - pv->getLocation().translation);
-
-			MegaDragger megaDragger(pv->getPrimaryPart(), pvInstances, this);
-			moveSafe(megaDragger, move, MOVE_NO_DROP);
-		}
-	}
-
-	void RootInstance::moveToCharacterInsertPoint(std::vector<boost::weak_ptr<PartInstance>>& partArray)
-	{
-		if (!partArray.empty())
-		{
-			Extents extents = DragUtilities::computeExtents(partArray);
-
-			G3D::Vector3 characterInsertPoint = computeCharacterInsertPoint(extents);
-			G3D::Vector3 moveToInsert = Dragger::toGrid(characterInsertPoint - extents.bottomCenter());
-
-			moveSafe(partArray, moveToInsert, MOVE_DROP);
-		}
-	}
-
-	void RootInstance::moveToIdeInsertPoint(std::vector<boost::weak_ptr<PartInstance>>& partArray)
-	{
-		if (!partArray.empty())
-		{
-			Extents extents = DragUtilities::computeExtents(partArray);
-
-			G3D::Vector3 insertPoint = computeIdeInsertPoint();
-			G3D::Vector3 moveToInsert = Dragger::toGrid(insertPoint - extents.bottomCenter());
-
-			moveSafe(partArray, moveToInsert, MOVE_DROP);
-		}
-	}
-
-	void RootInstance::insertRaw(const std::vector<boost::shared_ptr<Instance>>& instances, Instance* requestedParent, std::vector<boost::weak_ptr<PartInstance>>& partArray)
-	{
-		RBXASSERT(requestedParent && this->contains(requestedParent));
-
-		std::for_each(instances.begin(), instances.end(), boost::bind(&Instance::setParent, _1, requestedParent));
-
-		for (size_t i = 0; i < instances.size(); ++i)
-			PartInstance::findParts(instances[i].get(), partArray);
-
-		DragUtilities::join(partArray);
-	}
-
-	void RootInstance::insertToTree(const std::vector<boost::shared_ptr<Instance>>& instances, Instance* requestedParent)
-	{
-		std::vector<boost::weak_ptr<PartInstance>> partArray;
-		insertRaw(instances, requestedParent, partArray);
-
-		if (!partArray.empty())
-			moveSafe(partArray, G3D::Vector3::zero(), MOVE_NO_DROP);
-	}
-
-	void RootInstance::insertCharacterView(const std::vector<boost::shared_ptr<Instance>>& instances, std::vector<boost::weak_ptr<PartInstance>>& partArray)
-	{
-		RBXASSERT(instances.size() > 0);
-
-		if (instances.size() == 1)
-		{
-			Instance* instance = instances[0].get();
-			if (dynamic_cast<HopperBin*>(instance))
-			{
-				Network::Player* localPlayer = Network::Players::findLocalPlayer(this);
-				if (localPlayer)
-				{
-					instance->setParent(localPlayer->getPlayerBackpack());
-					return;
-				}
-			}
-		}
-
-		insertRaw(instances, this, partArray);
-		moveToCharacterInsertPoint(partArray);
-	}
-
-	void RootInstance::insertIdeView(const std::vector<boost::shared_ptr<Instance>>& instances, std::vector<boost::weak_ptr<PartInstance>>& partArray, PromptMode promptMode)
-	{
-		RBXASSERT(instances.size() > 0);
-
-		if (instances.size() == 1)
-		{
-			Instance* instance = instances[0].get();
-			if (dynamic_cast<HopperBin*>(instance))
-			{
-				instance->setParent(ServiceProvider::create<StarterPackService>(this));
-				return;
-			}
-			else if (dynamic_cast<Tool*>(instance))
-			{
-				if (promptMode == ALLOW_PROMPTS && MessageBoxA(NULL, "Put this tool into the starter pack (otherwise drop into the 3d view)?", "Inserting Tool", MB_YESNO) == IDYES)
-				{
-					instance->setParent(ServiceProvider::create<StarterPackService>(this));
-					return;
-				}
-			}
-		}
-
-		insertRaw(instances, this, partArray);
-		if (!partArray.empty())
-		{
-			moveToIdeInsertPoint(partArray);
-			Extents extents = DragUtilities::computeExtents(partArray);
-			getCamera()->lookAt(extents.center());
-		}
-	}
-
-	void RootInstance::insert3dView(const std::vector<boost::shared_ptr<Instance>>& instances, PromptMode promptMode)
-	{
-		RBXASSERT(instances.size() > 0);
-
-		std::vector<boost::weak_ptr<PartInstance>> partArray;
-		if (Network::Players::findLocalCharacter(this))
-			insertCharacterView(instances, partArray);
-		else
-			insertIdeView(instances, partArray, promptMode);
-
-		if (!partArray.empty())
-		{
-			Extents extents = DragUtilities::computeExtents(partArray);
-			getCamera()->zoomExtents(extents, viewPort, Camera::ZOOM_OUT_ONLY);
-		}
-	}
-
-	void RootInstance::insertHopperBin(HopperBin* h)	
-	{
-		Network::Player* localPlayer = Network::Players::findLocalPlayer(this);
-		if (localPlayer)
-			h->setParent(localPlayer->getPlayerBackpack());
-		else
-			h->setParent(ServiceProvider::create<StarterPackService>(this));
-	}
-
-	void RootInstance::insertSpawnLocation(SpawnLocation* s)
-	{
-		if (!s->neutral)
-		{
-			Teams* teams = ServiceProvider::create<Teams>(this);
-			if (!teams->teamExists(s->getTeamColor()))
-			{
-				boost::shared_ptr<Team> team = Creatable<Instance>::create<Team>();
-				team->setParent(teams);
-				team->setTeamColor(s->getTeamColor());
-				team->setName(s->getTeamColor().name() + " Team");
-			}
-		}
-	}
-
-	void RootInstance::insertInstances(const std::vector<boost::shared_ptr<Instance>>& instances, Instance* requestedParent, InsertMode insertMode, PromptMode promptMode)
-	{
-		RBXASSERT(instances.size() > 0);
-		RBXASSERT(!requestedParent || this->contains(requestedParent));
-		RBXASSERT(!((insertMode == INSERT_TO_3D_VIEW) && (requestedParent != this)));
-
-		std::vector<boost::shared_ptr<Instance>> remaining;
-		for (size_t i = 0; i < instances.size(); ++i)
-		{
-			Instance* instance = instances[i].get();
-			if (Sky* sky = dynamic_cast<Sky*>(instance))
-			{
-				Lighting* lighting = ServiceProvider::create<Lighting>(this);
-				lighting->replaceSky(sky);
-			}
-			else if (Team* team = dynamic_cast<Team*>(instance))
-			{
-				instance->setParent(ServiceProvider::create<Teams>(this));
-			}
-			else if (HopperBin* hopperBin = dynamic_cast<HopperBin*>(instance))
-			{
-				insertHopperBin(hopperBin);
-			}
-			else if (SpawnLocation* spawnLocation = dynamic_cast<SpawnLocation*>(instance))	
-			{
-				insertSpawnLocation(spawnLocation);
-				remaining.push_back(instances[i]);
-			}
-			else
-			{
-				remaining.push_back(instances[i]);
-			}
-		}
-
-		if (!remaining.empty())
-		{
-			if (requestedParent && !this->contains(requestedParent))
-				std::for_each(remaining.begin(), remaining.end(), boost::bind(&Instance::setParent, _1, requestedParent));
-
-			switch (insertMode)
-			{
-			case INSERT_TO_3D_VIEW:
-				insert3dView(remaining, promptMode);
-				return;
-			case INSERT_TO_TREE:
-				insertToTree(remaining, requestedParent);
-				return;
-			case INSERT_RAW:
-				{
-					std::vector<boost::weak_ptr<PartInstance>> partArray;
-					insertRaw(remaining, requestedParent, partArray);
-				}
-				return;
-			}
-		}
-	}
-
-	ControllerTypeArray RootInstance::computeControllersUsed() const
-	{
-		ControllerTypeArray array;
-
-		for (size_t i = 0; i < numChildren(); ++i)
-		{
-			const PVInstance* pvChild = queryTypedChild<PVInstance>(i);
-			if (pvChild)
-			{
-				if (pvChild->isControllable())
-					array.setController(pvChild->getControllerType(), true);
-			}
-		}
-
-		return array;
-	}
+    finish(context);
 }

@@ -1,108 +1,145 @@
-// from server: 23% by colin
+// from server: 98% by EspClaude
+// from server: 100% by auto
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+// roc-lib: openrbx-client App/gui/Widget.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
+#include "gui/Widget.h"
 
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
+namespace RBX {
 
-boost::mutex& moo2()
+// FUNCTION: WEBSERVICE 0x10116aa0
+GuiResponse Widget::processMouse(const GuiEvent& event)
 {
-	static boost::mutex mutex2;
-	return mutex2;
-}
+	bool inRect = getMyRect().pointInRect(event.mousePosition);
 
-void initMoo()
-{
-	moo2();
-}
+	switch (widgetState) {
+	case NOTHING:
+	case HOVER:
+		if (inRect) {
+			if (!isEnabled()) {
+				widgetState = NOTHING;
 
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
+				return GuiResponse::used();
 			}
-			return *iter->second;
+
+			switch (event.eventType) {
+			case UIEvent::MOUSE_LEFT_BUTTON_DOWN:
+				widgetState = DOWN_OVER;
+				onDown(event);
+				break;
+
+			case UIEvent::MOUSE_MOVE:
+				widgetState = HOVER;
+				break;
+
+			default:
+				return GuiResponse::notUsed();
+			}
+
+			return GuiResponse::used();
 		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
+		else {
+			widgetState = NOTHING;
+
+			return GuiResponse::notUsed();
 		}
+		break;
+
+	case DOWN_OVER:
+		switch (event.eventType) {
+		case UIEvent::MOUSE_LEFT_BUTTON_DOWN:
+			return GuiResponse::used();
+
+		case UIEvent::MOUSE_MOVE:
+			if (!inRect) {
+				widgetState = onDrag(event) ? NOTHING : DOWN_AWAY;
+			}
+
+			return GuiResponse::used();
+
+		case UIEvent::MOUSE_LEFT_BUTTON_UP:
+			widgetState = NOTHING;
+			onUp(event);
+
+			if (inRect) {
+				onClick(event);
+
+				return GuiResponse::finished();
+			}
+
+			return GuiResponse::notUsed();
+		}
+		break;
+
+	case DOWN_AWAY:
+		switch (event.eventType) {
+		case UIEvent::MOUSE_LEFT_BUTTON_DOWN:
+			return GuiResponse::used();
+
+		case UIEvent::MOUSE_MOVE:
+			widgetState = inRect ? DOWN_OVER : DOWN_AWAY;
+
+			return GuiResponse::used();
+
+		case UIEvent::MOUSE_LEFT_BUTTON_UP:
+			widgetState = NOTHING;
+			onUp(event);
+
+			if (inRect) {
+				onClick(event);
+
+				return GuiResponse::used();
+			}
+
+			return GuiResponse::notUsed();
+		}
+		break;
 	}
 
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
+	return GuiResponse::notUsed();
 }
+
+// FUNCTION: WEBSERVICE 0x10116cd0
+GuiResponse Widget::process(const GuiEvent& event)
+{
+	if (isEnabled() && event.isMouseEvent()) {
+		return processMouse(event);
+	}
+
+	return GuiResponse::notUsed();
+}
+
+// FUNCTION: WEBSERVICE 0x10116d40
+Widget::Widget() : widgetState(NOTHING)
+{
+	setGuiSize(G3D::Vector2(100, 24));
+}
+
+// FUNCTION: WEBSERVICE 0x10116dd0
+void Widget::render2d(Adorn* adorn)
+{
+	if (!isVisible()) {
+		return;
+	}
+
+	if (widgetState == HOVER || widgetState == DOWN_AWAY) {
+		adorn->rect2d(getMyRect2D(), G3D::Color4(G3D::Color3::gray(), 1));
+	}
+
+	else if (widgetState == DOWN_OVER) {
+		adorn->rect2d(getMyRect2D(), G3D::Color4(G3D::Color3::yellow(), 1));
+	}
+
+	label2d(
+		adorn,
+		getTitle(),
+		isEnabled() ? getFontColor() : disabledFill(),
+		G3D::Color4(0.5f, 0.5f, 0.5f, 0.25f),
+		Adorn::XALIGN_LEFT
+	);
+}
+
+} // namespace RBX

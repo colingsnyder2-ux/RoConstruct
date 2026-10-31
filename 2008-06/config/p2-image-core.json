@@ -1,0 +1,42 @@
+{
+  "name": "P2ImageCore",
+  "description": "Clean G3D/PNG image dependency; no inherited verified_sinks object",
+  "depends": [
+    "zlib-winapi",
+    "zlib"
+  ],
+  "layers": [
+    {
+      "name": "upstream",
+      "mode": "recipe",
+      "recipe": "g3d-6.09-rbx2008",
+      "files": "G3Dcpp/*.cpp",
+      "direct": true,
+      "flags": "/O2 /GS- /EHsc /MD"
+    },
+    {
+      "name": "ijg",
+      "mode": "direct",
+      "dir": "tools/libs/g3d-6.09/source/IJG",
+      "files": "*.c",
+      "flags": "/O2 /GS- /MD",
+      "defines": "WIN32 NDEBUG"
+    },
+    {
+      "name": "png",
+      "mode": "direct",
+      "dir": "tools/libs/g3d-6.09/source/png",
+      "files": "*.c",
+      "defines": "WIN32 NDEBUG",
+      "flags": "/O2 /GS- /MD",
+      "extra_includes": [
+        "tools/libs/zlib-1.2.3"
+      ]
+    }
+  ],
+  "test": "P2ImageCodecTest",
+  "test_includes": [
+    "tree:g3d-6.09-rbx2008/include"
+  ],
+  "verified": false
+}

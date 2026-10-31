@@ -1,5 +1,6 @@
-// from server: 84% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
-// roc-cl: 30729
+// roc-cl: 21022
 // roc-flags: /O2 /GS /EHsc /MD
-// roc-lib: ogre-1.7.0 OgreScriptTranslator.cpp
+#include <map>
+template class std::_Tree<std::_Tmap_traits<int,int,std::less<int>,std::allocator<std::pair<const int,int> >,false> >;

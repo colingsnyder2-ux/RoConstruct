@@ -1,435 +1,106 @@
-// from server: 43% by colin
-// from server: 100% by colin
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lang: cpp
-// roc-lib: rbxgs-atl90-dll util/ContentProvider.cpp
+// from server: 100% by EspClaude
+// from server: 100% by king_originala
+// roc 2008-06 0055df40  unit: RBX::VInstance::?$NonFactoryProduct  size: 141 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 0055df40
+//
+// 0055df40  55                   push ebp
+// 0055df41  56                   push esi
+// 0055df42  57                   push edi
+// 0055df43  8b7c2410             mov edi, dword ptr [esp + 0x10]
+// 0055df47  8bf1                 mov esi, ecx
+// 0055df49  8b16                 mov edx, dword ptr [esi]
+// 0055df4b  8b6af4               mov ebp, dword ptr [edx - 0xc]
+// 0055df4e  85ff                 test edi, edi
+// 0055df50  7504                 jne 0x55df56
+// 0055df52  33c0                 xor eax, eax
+// 0055df54  eb14                 jmp 0x55df6a
+// 0055df56  8bc7                 mov eax, edi
+// 0055df58  53                   push ebx
+// 0055df59  8d5801               lea ebx, [eax + 1]
+// 0055df5c  8d642400             lea esp, [esp]
+// 0055df60  8a08                 mov cl, byte ptr [eax]
+// 0055df62  40                   inc eax
+// 0055df63  84c9                 test cl, cl
+// 0055df65  75f9                 jne 0x55df60
+// 0055df67  2bc3                 sub eax, ebx
+// 0055df69  5b                   pop ebx
+// 0055df6a  b901000000           mov ecx, 1
+// 0055df6f  2b4afc               sub ecx, dword ptr [edx - 4]
+// 0055df72  8b52f8               mov edx, dword ptr [edx - 8]
+// 0055df75  8d442801             lea eax, [eax + ebp + 1]
+// 0055df79  2bd0                 sub edx, eax
+// 0055df7b  0bca                 or ecx, edx
+// 0055df7d  7d08                 jge 0x55df87
+// 0055df7f  50                   push eax
+// 0055df80  8bce                 mov ecx, esi
+// 0055df82  e87994eaff           call 0x407400
+// 0055df87  8b06                 mov eax, dword ptr [esi]
+// 0055df89  57                   push edi
+// 0055df8a  50                   push eax
+// 0055df8b  ff15182b8000         call dword ptr [0x802b18]
+// 0055df91  8bf8                 mov edi, eax
+// 0055df93  8b06                 mov eax, dword ptr [esi]
+// 0055df95  8b48f8               mov ecx, dword ptr [eax - 8]
+// 0055df98  85c0                 test eax, eax
+// 0055df9a  740f                 je 0x55dfab
+// 0055df9c  51                   push ecx
+// 0055df9d  50                   push eax
+// 0055df9e  ff1570288000         call dword ptr [0x802870]
+// 0055dfa4  83c408               add esp, 8
+// 0055dfa7  85c0                 test eax, eax
+// 0055dfa9  7c18                 jl 0x55dfc3
+// 0055dfab  8b0e                 mov ecx, dword ptr [esi]
+// 0055dfad  3b41f8               cmp eax, dword ptr [ecx - 8]
+// 0055dfb0  7f11                 jg 0x55dfc3
+// 0055dfb2  8941f4               mov dword ptr [ecx - 0xc], eax
+// 0055dfb5  8b0e                 mov ecx, dword ptr [esi]
+// 0055dfb7  c6040800             mov byte ptr [eax + ecx], 0
+// 0055dfbb  8bc7                 mov eax, edi
+// 0055dfbd  5f                   pop edi
+// 0055dfbe  5e                   pop esi
+// 0055dfbf  5d                   pop ebp
+// 0055dfc0  c20400               ret 4
+// 0055dfc3  6857000780           push 0x80070057
+// 0055dfc8  e83330eaff           call 0x401000
 
-// Candidate translation unit (score above; library headers required).
-#include "util/ContentProvider.h"
-#include "util/standardout.h"
-#include "util/Http.h"
-#include "util/FileSystem.h"
-#include "v8xml/SerializerV2.h"
-#include <atlutil.h>
-#include <G3D/format.h>
-#include <boost/shared_ptr.hpp>
-#include <boost/iostreams/copy.hpp>
+extern "C" unsigned int __cdecl strlen(const char *);
+extern "C" unsigned int (__cdecl *strnlen)(const char *, unsigned int);
+extern "C" int (__stdcall *PathAppendA)(char *, const char *);
 
-namespace RBX
+namespace ATL {
+    __declspec(noreturn) void __stdcall AtlThrowImpl(long);
+}
+
+struct S {
+    char *data;
+    void grow(int);
+    int append(const char *);
+};
+
+int S::append(const char *path)
 {
-	// TODO: check match
-	bool operator<(const ContentId& a, const ContentId& b)
-	{
-		return a.toString() < b.toString();
-	}
-
-	bool operator!=(const ContentId& a, const ContentId& b)
-	{
-		return a.toString() != b.toString();
-	}
-
-	ContentId ContentId::fromAssets(const std::string& filePath)
-	{
-		std::string header = "rbxasset://";
-		return ContentId(header + filePath);
-	}
-
-	ContentProvider::ContentProvider()
-	{
-		char path[MAX_PATH];
-		if (SHGetFolderPathAndSubDirA(NULL, CSIDL_COMMON_APPDATA, NULL, SHGFP_TYPE_CURRENT, "Roblox\\content\\", (LPSTR)&path) == S_OK)
-		{
-			this->singleton().setAssetFolder(path);
-		}
-		else
-		{
-			StandardOut::singleton()->print(MESSAGE_WARNING, "Failed to get asset folder");
-		}
-
-		requestProcessor.reset(new worker_thread(boost::bind(&ContentProvider::processRequests, this), "rbx_content"));
-	}
-
-	ContentProvider::~ContentProvider()
-	{
-		requestProcessor->join();
-	}
-
-	bool ContentProvider::isHttpUrl(const std::string& s)
-	{
-		if (s.find("http://") == 0)
-			return true;
-
-		if (s.find("https://") == 0)
-			return true;
-
-		return false;
-	}
-
-	std::string ContentProvider::assetFolder() const
-	{
-		return assetFolderPath;
-	}
-
-	bool ContentProvider::isRequestQueueEmpty()
-	{
-		boost::mutex::scoped_lock lock(requestSync);
-		return requestQueue.empty();
-	}
-
-	bool ContentProvider::isUrlBad(const char* url)
-	{
-		boost::mutex::scoped_lock lock(requestSync);
-
-		std::list<FailedUrl>::iterator iter = failedUrls.begin();
-		std::list<FailedUrl>::iterator end = failedUrls.end();
-
-		for (; iter != end; iter++)
-		{
-			if (boost::posix_time::second_clock::local_time() >= iter->expiration)
-			{
-				failedUrls.erase(iter, end);
-				return false;
-			}
-			else if (iter->url == url)
-			{
-				return true;
-			}
-		}
-
-		return false;
-	}
-
-	void ContentProvider::clearContentCache()
-	{
-		boost::mutex::scoped_lock lock(contentCacheMutex);
-		contentCache.clear();
-	}
-
-	void ContentProvider::load(ContentId id, std::vector<boost::shared_ptr<Instance>>& instances)
-	{
-		boost::scoped_ptr<std::istream> stream(getContent(id));
-		
-		TextXmlParser machine(stream->rdbuf());
-		boost::scoped_ptr<XmlElement> root(machine.parse());
-
-		SerializerV2().loadInstances(root.get(), instances);
-	}
-
-	bool ContentProvider::hasContent(ContentId id)
-	{
-		return loadContent(id, NoHttpRequest) != NULL;
-	}
-
-	std::string ContentProvider::getAssetFile(const std::string& filePath)
-	{
-		return getFile(ContentId::fromAssets(filePath));
-	}
-
-	std::string ContentProvider::getFile(ContentId ticket)
-	{
-		CachedContent* content = loadContent(ticket, SyncHttpRequest);
-		if (content && registerFile(content))
-		{
-			return *content->filename;
-		}
-
-		throw std::runtime_error(G3D::format("Unable to load %s", ticket.c_str()));
-	}
-
-	bool ContentProvider::requestContentFile(ContentId id, std::string& filename)
-	{
-		CachedContent* content = loadContent(id, AsyncHttpRequest);
-		if (!content)
-			return false;
-
-		if (!registerFile(content))
-			return false;
-
-		filename = *content->filename;
-		return true;
-	}
-
-	boost::shared_ptr<const std::string> ContentProvider::requestContentString(ContentId id)
-	{
-		CachedContent* content = loadContent(id, AsyncHttpRequest);
-		if (!content)
-			return boost::shared_ptr<const std::string>();
-
-		boost::mutex::scoped_lock lock(contentCacheMutex);
-
-		if (!content->data)
-		{
-			std::ifstream stream(content->filename->c_str(), std::ios::binary | std::ios::in);
-			std::ostringstream data;
-
-			boost::iostreams::copy(stream, data);
-
-			content->data.reset(new std::string(data.str()));
-		}
-
-		return content->data;
-	}
-
-	std::string ContentProvider::findAsset(ContentId contentId)
-	{
-		RBXASSERT(contentId.isAsset());
-
-		ATL::CPath filePath((assetFolderPath + (contentId.c_str() + 11)).c_str());
-		if (!filePath.FileExists())
-			return "";
-
-		return std::string(filePath);
-	}
-
-	std::string ContentProvider::findFile(ContentId contentId)
-	{
-		RBXASSERT(contentId.isFile());
-
-		const char* file = contentId.c_str();
-		file += 7;
-
-		ATL::CPath filePath(file);
-		if (!filePath.FileExists())
-			return "";
-
-		return std::string(filePath);
-	}
-
-	static ATL::CPath getLocalCachePath(bool createPath)
-	{
-		ATL::CPath path;
-
-		if (createPath)
-		{
-			static std::string s = FileSystem::getCacheDirectory(true);
-			path.m_strPath.SetString(s.c_str());
-		}
-		else
-		{
-			static std::string s = FileSystem::getCacheDirectory(false);
-			path.m_strPath.SetString(s.c_str());
-		}
-
-		return path;
-	}
-
-	std::string ContentProvider::findHashFile(ContentId contentId)
-	{
-		ATL::CPath cachePath = getLocalCachePath(true);
-
-		ATL::CPath filePath = cachePath;
-		filePath.Append(contentId.c_str());
-
-		if (!filePath.FileExists())
-			return "";
-
-		return std::string(filePath);
-	}
-
-	void ContentProvider::setAssetFolder(const char* sPath)
-	{
-		StandardOut::singleton()->print(MESSAGE_INFO, "setAssetFolder %s", sPath);
-
-		ATL::CPath path(sPath);
-
-		if (path.IsRelative())
-			throw std::runtime_error(G3D::format("The path \'%s\' is a relative path", path));
-
-		if (!path.IsDirectory())
-			throw std::runtime_error(G3D::format("The path \'%s\' does not exist", path));
-
-		path.AddBackslash();
-		assetFolderPath = path;
-	}
-
-	ContentId ContentProvider::registerContent(std::istream& content, const Name& mimeType)
-	{
-		ContentId id;
-
-		{
-			boost::scoped_ptr<MD5Hasher> hasher(MD5Hasher::create());
-			hasher->addData(content);
-			id = ContentId(hasher->toString(), mimeType);
-		}
-
-		ATL::CPath filePath = getLocalCachePath(true);
-		filePath.Append(id.c_str());
-
-		if (!filePath.FileExists())
-		{
-			std::ofstream outStream(filePath, std::ios::binary | std::ios::out);
-			content.clear();
-			content.seekg(0, std::ios::beg);
-
-			do
-			{
-				char buffer[1024];
-				content.read(buffer, sizeof(buffer));
-				outStream.write(buffer, content.gcount());
-			}
-			while (content.gcount() > 0);
-		}
-
-		return id;
-	}
-
-	bool ContentProvider::registerFile(CachedContent* item)
-	{
-		CachedContent temp;
-
-		{
-			boost::mutex::scoped_lock lock(contentCacheMutex);
-			temp = *item;
-		}
-
-		if (!temp.filename)
-		{
-			std::istringstream ss(*temp.data);
-			ContentId hash = registerContent(ss, Name::getNullName());
-
-			std::string filename = findHashFile(hash);
-			if (filename.empty())
-				return false;
-
-			temp.filename.reset(new std::string(filename));
-
-			boost::mutex::scoped_lock lock(contentCacheMutex);
-			*item = temp;
-		}
-
-		return true;
-	}
-
-	ContentId ContentProvider::readContent(const char* id, std::istream& stream, unsigned long dataLength)
-	{
-		ContentId contentId(id);
-
-		if (hasContent(contentId))
-		{
-			stream.clear();
-			stream.seekg(dataLength, std::ios::cur);
-		}
-		else
-		{
-			ATL::CPath filePath = getLocalCachePath(true);
-			filePath.Append(contentId.c_str());
-
-			std::ofstream content;
-			content.open(filePath, std::ios::binary | std::ios::out);
-
-			char data;
-
-			for (unsigned long i = 0; i < dataLength; i++)
-			{
-				RBXASSERT(content.good());
-				stream.get(data);
-				content << data;
-			}
-		}
-
-		return contentId;
-	}
-
-	ContentProvider::FailedUrl::FailedUrl(const char* url)
-		: url(url),
-		  expiration(boost::posix_time::second_clock::local_time() + boost::posix_time::minutes(5))
-	{
-	}
-
-	class MD5HasherImpl : public MD5Hasher
-	{
-	private:
-		HCRYPTPROV hProv;
-		HCRYPTHASH hHash;
-		std::string result;
-
-	public:
-		MD5HasherImpl()
-			: hProv(NULL),
-			  hHash(NULL),
-			  result()
-		{
-			if (!CryptAcquireContextA(&hProv, NULL, NULL, PROV_RSA_FULL, CRYPT_VERIFYCONTEXT))
-			{
-				StandardOut::singleton()->print(MESSAGE_ERROR, "Error during CryptAcquireContext. GetLastError = %d", GetLastError());
-			}
-
-			if (!CryptCreateHash(hProv, CALG_MD5, NULL, NULL, &hHash))
-			{
-				StandardOut::singleton()->print(MESSAGE_ERROR, "Error during CryptCreateHash. GetLastError = %d", GetLastError());
-			}
-		}
-		~MD5HasherImpl()
-		{
-		}
-
-	public:
-		virtual void addData(const char* data, size_t nBytes)
-		{
-			if (!CryptHashData(hHash, (const BYTE*)data, (DWORD)nBytes, 0))
-			{
-				StandardOut::singleton()->print(MESSAGE_ERROR, "Error during CryptHashData. GetLastError = %d", GetLastError());
-			}
-		}
-		virtual void addData(const std::string& data)
-		{
-			if (!CryptHashData(hHash, (const BYTE*)data.c_str(), (DWORD)data.length(), 0))
-			{
-				StandardOut::singleton()->print(MESSAGE_ERROR, "Error during CryptHashData. GetLastError = %d", GetLastError());
-			}
-		}
-		virtual void addData(std::istream& data)
-		{
-			data.clear();
-			data.seekg(0, std::ios_base::beg);
-
-			char buffer[1024];
-			do
-			{
-				data.read(buffer, sizeof(buffer));
-				addData(buffer, data.gcount());
-			}
-			while (data.gcount() > 0);
-		}
-		virtual std::string toString()
-		{
-			c_str();
-			return result;
-		}
-		virtual const char* c_str()
-		{
-			if (result.empty())
-			{
-				DWORD hashSize;
-				DWORD hashSizeLen = sizeof(DWORD);
-				if (!CryptGetHashParam(hHash, HP_HASHSIZE, (BYTE*)&hashSize, &hashSizeLen, 0))
-				{
-					StandardOut::singleton()->print(MESSAGE_ERROR, "Error during CryptGetHashParam. GetLastError = %d", GetLastError());
-				}
-
-				char* hashValue = new char[hashSize];
-				if (!CryptGetHashParam(hHash, HP_HASHVAL, (BYTE*)&hashValue, &hashSize, 0))
-				{
-					StandardOut::singleton()->print(MESSAGE_ERROR, "Error during CryptGetHashParam. GetLastError = %d", GetLastError());
-				}
-
-				for (int i = 0; i < (int)hashSize; ++i)
-				{
-					ATL::CString temp;
-					temp.Format("%x", hashValue[i]);
-					result += temp.GetString();
-				}
-
-				delete[] hashValue;
-			}
-
-			return result.c_str();
-		}
-	};
-
-	MD5Hasher* MD5Hasher::create()
-	{
-		return new MD5HasherImpl();
-	}
+    int *header = reinterpret_cast<int *>(data);
+    int oldLength = header[-3];
+    int length = path == 0 ? 0 : static_cast<int>(strlen(path));
+    int required = oldLength + length + 1;
+
+    if (((1 - header[-1]) | (header[-2] - required)) < 0)
+        grow(required);
+
+    int result = PathAppendA(data, path);
+
+    char *buffer = data;
+    int capacity = *reinterpret_cast<int *>(
+        reinterpret_cast<unsigned int>(buffer) - 8);
+    int newLength = buffer == 0
+        ? 0
+        : static_cast<int>(strnlen(buffer, capacity));
+
+    if (newLength < 0 ||
+        newLength > reinterpret_cast<int *>(data)[-2])
+        ATL::AtlThrowImpl(static_cast<long>(0x80070057UL));
+
+    reinterpret_cast<int *>(data)[-3] = newLength;
+    data[newLength] = 0;
+    return result;
 }

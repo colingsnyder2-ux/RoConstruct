@@ -1,5 +1,28 @@
-// from server: 44% by colin
-// roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /Od /Ob1 /GS- /MT
-// roc-lib: wildmagic-2-core Containment/WmlConvexHull2.cpp
+// from server: 76% by EspClaude
+// from server: 100% by colin
+// roc-cl: 21022
+// roc-flags: /Od /Ob0 /GS /EHsc /MD
+#pragma optimize("", off)
+
+struct Handle {
+    void* value;
+    ~Handle();
+    Handle& operator=(const Handle&);
+};
+
+Handle __cdecl makeHandle(void*, void*, void*);
+
+struct TextureProxy {
+    char padding[0x1c];
+    char first[0x10];
+    Handle handle;
+    char second[0xc0];
+    char third;
+
+    void update();
+};
+
+void TextureProxy::update()
+{
+    handle = makeHandle(&third, second, first);
+}

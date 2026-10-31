@@ -1,4 +1,4 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 006439b0  unit: RBX::HUMAN::Landed  size: 125 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 006439b0
@@ -59,7 +59,7 @@ struct Camera
 
 struct Body
 {
-    char padding[0x94];
+    char padding[0x9c];
     Camera camera;
 
     const void* get();

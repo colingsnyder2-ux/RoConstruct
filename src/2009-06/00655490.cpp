@@ -1,4 +1,4 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 005c7b10  unit: RBX::VSlingshotTool::?$TToolVerb  size: 105 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005c7b10
@@ -63,7 +63,7 @@ struct Tool : Base {
 inline Tool::Tool(void* p) : Base(p, 1, 5) {}
 
 struct Context {
-    char padding[0x204];
+    char padding[0x20c];
     void* value;
 };
 

@@ -1,187 +1,195 @@
-// from server: 38% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Face.cpp
+// from server: 79% by EspClaude
+// from server: 100% by king_originala
+// roc 2008-06 006149c0  unit: RBX::RevoluteLink  size: 251 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 006149c0
+//
+// 006149c0  6aff                 push -1
+// 006149c2  68168e7d00           push 0x7d8e16
+// 006149c7  64a100000000         mov eax, dword ptr fs:[0]
+// 006149cd  50                   push eax
+// 006149ce  64892500000000       mov dword ptr fs:[0], esp
+// 006149d5  83ec08               sub esp, 8
+// 006149d8  53                   push ebx
+// 006149d9  33db                 xor ebx, ebx
+// 006149db  83c8ff               or eax, 0xffffffff
+// 006149de  56                   push esi
+// 006149df  8bf1                 mov esi, ecx
+// 006149e1  8906                 mov dword ptr [esi], eax
+// 006149e3  894604               mov dword ptr [esi + 4], eax
+// 006149e6  895e08               mov dword ptr [esi + 8], ebx
+// 006149e9  885e0c               mov byte ptr [esi + 0xc], bl
+// 006149ec  895e10               mov dword ptr [esi + 0x10], ebx
+// 006149ef  895e14               mov dword ptr [esi + 0x14], ebx
+// 006149f2  894618               mov dword ptr [esi + 0x18], eax
+// 006149f5  89742408             mov dword ptr [esp + 8], esi
+// 006149f9  895e20               mov dword ptr [esi + 0x20], ebx
+// 006149fc  895e24               mov dword ptr [esi + 0x24], ebx
+// 006149ff  895e1c               mov dword ptr [esi + 0x1c], ebx
+// 00614a02  8d4e38               lea ecx, [esi + 0x38]
+// 00614a05  895c2418             mov dword ptr [esp + 0x18], ebx
+// 00614a09  895e28               mov dword ptr [esi + 0x28], ebx
+// 00614a0c  895e2c               mov dword ptr [esi + 0x2c], ebx
+// 00614a0f  c6463001             mov byte ptr [esi + 0x30], 1
+// 00614a13  895e34               mov dword ptr [esi + 0x34], ebx
+// 00614a16  e8b538e6ff           call 0x4782d0
+// 00614a1b  e800f4efff           call 0x513e20
+// 00614a20  50                   push eax
+// 00614a21  8d4e68               lea ecx, [esi + 0x68]
+// 00614a24  e8f7e7efff           call 0x513220
+// 00614a29  d9ee                 fldz 
+// 00614a2b  a198a89500           mov eax, dword ptr [0x95a898]
+// 00614a30  d99e8c000000         fstp dword ptr [esi + 0x8c]
+// 00614a36  40                   inc eax
+// 00614a37  a398a89500           mov dword ptr [0x95a898], eax
+// 00614a3c  3dffffff7f           cmp eax, 0x7fffffff
+// 00614a41  750a                 jne 0x614a4d
+// 00614a43  b801000000           mov eax, 1
+// 00614a48  a398a89500           mov dword ptr [0x95a898], eax
+// 00614a4d  57                   push edi
+// 00614a4e  8dbe94000000         lea edi, [esi + 0x94]
+// 00614a54  8bcf                 mov ecx, edi
+// 00614a56  898690000000         mov dword ptr [esi + 0x90], eax
+// 00614a5c  e86f38e6ff           call 0x4782d0
+// 00614a61  8d4f30               lea ecx, [edi + 0x30]
+// 00614a64  e807f7ffff           call 0x614170
+// 00614a69  68b4000000           push 0xb4
+// 00614a6e  897610               mov dword ptr [esi + 0x10], esi
+// 00614a71  e8aabe0800           call 0x6a0920
+// 00614a76  83c404               add esp, 4
+// 00614a79  89442410             mov dword ptr [esp + 0x10], eax
+// 00614a7d  c644241c01           mov byte ptr [esp + 0x1c], 1
+// 00614a82  5f                   pop edi
+// 00614a83  3bc3                 cmp eax, ebx
+// 00614a85  741e                 je 0x614aa5
+// 00614a87  56                   push esi
+// 00614a88  8bc8                 mov ecx, eax
+// 00614a8a  e851400400           call 0x658ae0
+// 00614a8f  89462c               mov dword ptr [esi + 0x2c], eax
+// 00614a92  8bc6                 mov eax, esi
+// 00614a94  5e                   pop esi
+// 00614a95  5b                   pop ebx
+// 00614a96  8b4c2408             mov ecx, dword ptr [esp + 8]
+// 00614a9a  64890d00000000       mov dword ptr fs:[0], ecx
+// 00614aa1  83c414               add esp, 0x14
+// 00614aa4  c3                   ret 
+// 00614aa5  8b4c2410             mov ecx, dword ptr [esp + 0x10]
+// 00614aa9  895e2c               mov dword ptr [esi + 0x2c], ebx
+// 00614aac  8bc6                 mov eax, esi
+// 00614aae  5e                   pop esi
+// 00614aaf  5b                   pop ebx
+// 00614ab0  64890d00000000       mov dword ptr fs:[0], ecx
+// 00614ab7  83c414               add esp, 0x14
+// 00614aba  c3                   ret 
 
-// Candidate translation unit (score above; library headers required).
-#include "util/Face.h"
-#include "util/Math.h"
+struct Matrix {
+    float values[9];
+    Matrix(const Matrix&);
+};
 
-namespace RBX
+extern const Matrix& __cdecl identity();
+
+struct Frame {
+    float values[12];
+    Frame();
+};
+
+struct State {
+    unsigned char data[1];
+    State();
+};
+
+struct Storage {
+    void* first;
+    void* last;
+    void* end;
+
+    Storage();
+    ~Storage();
+};
+
+inline Storage::Storage()
 {
-	const G3D::Vector3& Face::operator[](int i) const
-	{
-		return ((G3D::Vector3*)this)[i];
-	}
+    last = 0;
+    end = 0;
+    first = 0;
+}
 
-	G3D::Vector3& Face::operator[](int i)
-	{
-		return ((G3D::Vector3*)this)[i];
-	}
+struct FrameState {
+    Frame frame;
+    State state;
+    FrameState();
+};
 
-	void Face::snapToGrid(float grid)
-	{
-		for (int i = 0; i < 4; ++i)
-		{
-			G3D::Vector3& v = (*this)[i];
-			v = Math::toGrid(v, grid);
-		}
-	}
+inline FrameState::FrameState()
+    : frame(), state()
+{
+}
 
-	bool Face::overlapWithinPlanes(const Face& f0, const Face& f1, float tolerance)
-	{
-		for (int i = 0; i < 2; ++i)
-		{
-			const Face& face = i == 0 ? f0 : f1;
-			const Face& otherFace = i == 0 ? f1 : f0;
+extern int counter;
 
-			G3D::Plane p0(face.c0, face.c1, face.c3);
-			
-			G3D::Vector3 normal;
-			double distance;
-			p0.getEquation(normal, distance);
+inline int nextIdentifier(float& value)
+{
+    int result = counter;
+    value = 0.0f;
+    ++result;
+    counter = result;
+    if (result == 0x7fffffff) {
+        result = 1;
+        counter = result;
+    }
+    return result;
+}
 
-			Face overlapOn1 = otherFace.projectOverlapOnMe(face);
+struct S;
 
-			for (int j = 0; j < 4; ++j)
-			{
-				if (overlapOn1[j].dot(normal) > tolerance)
-					return false;
-			}
-		}
+struct Object {
+    unsigned char data[180];
+    Object(S*);
+};
 
-		return true;
-	}
+void* __cdecl operator new(unsigned int);
+void __cdecl operator delete(void*);
 
-	bool Face::fuzzyContainsInExtrusion(const G3D::Vector3& point, float tolerance) const
-	{
-		RBXASSERT(tolerance >= 0.0);
+struct S {
+    int first;
+    int second;
+    int third;
+    bool flag;
+    S* owner;
+    void* pointer;
+    int index;
+    Storage storage;
+    void* extra;
+    Object* object;
+    bool enabled;
+    int reserved;
+    Frame frame;
+    Matrix matrix;
+    float value;
+    int identifier;
+    FrameState frameState;
 
-		for (int i = 0; i < 4; ++i)
-		{
-			const G3D::Vector3& v1 = (*this)[i];
-			const G3D::Vector3& v2 = (*this)[(i + 1) % 4];
+    S();
+};
 
-			if ((v2 - v1).dot(point - v1) < -tolerance)
-				return false;
-		}
-
-		return true;
-	}
-
-	void Face::minMax(const G3D::Vector3& point, const G3D::Vector3& normal, float& min, float& max) const
-	{
-		min = 1.0e10;
-		max = -1.0e10;
-
-		for (int i = 0; i < 4; ++i)
-		{
-			const G3D::Vector3& v = (*this)[i];
-			float temp = (v - point).dot(normal);
-			min = G3D::min(min, temp);
-			max = G3D::max(max, temp);
-		}
-	}
-
-	bool Face::hasOverlap(const Face& f0, const Face& f1, float byAtLeast)
-	{
-		for (int i = 0; i < 2; ++i)
-		{
-			G3D::Vector3 axis = f0.getAxis(i);
-
-			float f0min, f0max;
-			f0.minMax(f0.c0, axis, f0min, f0max);
-
-			float f1min, f1max;
-			f1.minMax(f0.c0, axis, f1min, f1max);
-
-			if ((f0min - byAtLeast) < f1min || (f0max + byAtLeast) > f1max)
-				return false;
-		}
-		
-		return true;
-	}
-
-	bool Face::cornersAligned(const Face& f0, const Face& f1, float tolerance)
-	{
-		RBXASSERT(tolerance > 0.0);
-
-		float toleranceSquared = tolerance*tolerance;
-
-		for (int i = 0; i < 4; ++i)
-		{
-			bool aligned = false;
-
-			for (int j = 0; j < 4; ++j)
-			{
-				const G3D::Vector3& v1 = f0[i];
-				const G3D::Vector3& v2 = f1[j];
-
-				if ((v1 - v2).squaredMagnitude() < toleranceSquared)
-				{
-					aligned = true;
-					break;
-				}
-			}
-
-			if (!aligned)
-				return false;
-		}
-
-		return true;
-	}
-
-	Face Face::projectOverlapOnMe(const Face& other) const
-	{
-		G3D::Vector3 normal = getU();
-		G3D::Vector3 v2 = getV();
-
-		float minL[2];
-		float maxL[2];
-		for (int i = 0; i < 2; ++i)
-		{
-			float f0min, f0max;
-			this->minMax(this->c0, normal, f0min, f0max);
-
-			float f1min, f1max;
-			other.minMax(this->c0, normal, f1min, f1max);
-
-			minL[i] = G3D::min(f0min, f1min);
-			maxL[i] = G3D::max(f0max, f1max);
-		}
-
-		return Face(
-			(normal * minL[1]) + (v2 * minL[1]) + this->c0,
-			(normal * minL[1]) + (v2 * minL[0]) + this->c0,
-			(normal * maxL[1]) + (v2 * minL[0]) + this->c0,
-			(normal * maxL[1]) + (v2 * minL[1]) + this->c0);
-	}
-
-	Face Face::fromExtentsSide(const Extents& e, NormalId faceId)
-	{
-		Face face;
-		e.getFaceCorners(faceId, face.c0, face.c1, face.c2, face.c3);
-		return face;
-	}
-
-	Face Face::toWorldSpace(const G3D::CoordinateFrame& objectCoord) const
-	{
-		Face face;
-		for (int i = 0; i < 4; ++i)
-		{
-			face[i] = objectCoord.pointToWorldSpace((*this)[i]);
-		}
-		return face;
-	}
-
-	Face Face::toObjectSpace(const G3D::CoordinateFrame& objectCoord) const
-	{
-		Face face;
-		for (int i = 0; i < 4; ++i)
-		{
-			face[i] = objectCoord.pointToObjectSpace((*this)[i]);
-		}
-		return face;
-	}
+S::S()
+    : first(-1),
+      second(-1),
+      third(0),
+      flag(false),
+      owner(0),
+      pointer(0),
+      index(-1),
+      storage(),
+      extra(0),
+      object(0),
+      enabled(true),
+      reserved(0),
+      frame(),
+      matrix(identity()),
+      identifier(nextIdentifier(value)),
+      frameState()
+{
+    owner = this;
+    object = new Object(this);
 }

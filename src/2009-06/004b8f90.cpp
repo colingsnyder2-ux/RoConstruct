@@ -1,4 +1,4 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0048d530  unit: RBX::VBrickColor::?$TypedPropertyDescriptor  size: 115 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0048d530
@@ -62,7 +62,7 @@ __forceinline Function::~Function()
         void (__cdecl *manager)(FunctionBuffer*, FunctionBuffer*, int) =
             table->manager;
         if (manager)
-            manager(&buffer, &buffer, 1);
+            manager(&buffer, &buffer, 2);
     }
 }
 

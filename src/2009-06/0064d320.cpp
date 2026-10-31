@@ -1,108 +1,145 @@
-// from server: 26% by colin
+// from server: 97% by EspClaude
+// from server: 100% by EspClaude
+// from server: 98% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+// roc-flags: /O2 /GS- /EHsc /MD /fp:fast
+// roc-lib: rbxgs-dll roc_espclaude_082fafcb387d2616.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
 
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
+#pragma float_control(precise, off)
 
-boost::mutex& moo2()
+#include "G3D/Vector3.h"
+typedef G3D::Vector3 Vec3;
+
+struct Body
 {
-	static boost::mutex mutex2;
-	return mutex2;
-}
+    char pad0[8];
+    unsigned char dirty;
+    char pad1[0x9f];
+    Vec3 accumulated;
+    void update();
+    void addForce(Vec3 f) { if (dirty) update(); accumulated += f; }
+    void apply(const Vec3*, const Vec3*);
+};
 
-void initMoo()
+struct Link
 {
-	moo2();
-}
+    char pad[0x2c];
+    Body* body;
+};
 
-namespace RBX
+struct Attachment
 {
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
+    char pad[0x10];
+    Link* link;
+};
 
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
+struct Transform
+{
+    char pad[0x24];
+    Vec3 position;
+};
 
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
+struct PartInstance
+{
+    virtual void slot0();
+    virtual void slot1();
+    virtual void slot2();
+    virtual float size();
+    char pad[0x9c];
+    Attachment* attachment;
+    Transform* transform();
+    void detach();
+};
 
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
+struct GetSetImpl
+{
+    static PartInstance* get(PartInstance*);
+};
 
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
+struct Context
+{
+    void reset();
+    void insert(PartInstance*, int);
+};
 
-		boost::mutex::scoped_lock scoped_lock(mutex());
+struct Parts
+{
+    PartInstance** data;
+    int count;
+};
 
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
+struct Explosion
+{
+    char pad[0x148];
+    Vec3 position;
+    float radius;
+    float pressure;
+    void explode(Parts*);
+};
 
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
+extern Context* __cdecl getContext(Explosion*);
+extern bool __cdecl isProtected(PartInstance*);
+extern "C" double __cdecl sqrt(double);
+#pragma intrinsic(sqrt)
 
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
+extern float zeroX, zeroY, zeroZ;
+extern unsigned int zeroInitialized;
+extern Vec3 upVector;
+extern unsigned int upInitialized;
+extern const float forceScale;
+extern const float secondaryScale;
 
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
+void Explosion::explode(Parts* parts)
+{
+    if (pressure > 0.0f)
+    {
+        Context* context = getContext(this);
+        for (int i = 0; i < parts->count; ++i)
+        {
+            PartInstance* part = parts->data[i];
+            float limit = radius + radius;
+            if (part->size() < limit)
+            {
+                PartInstance* instance = GetSetImpl::get(part);
+                if (!isProtected(instance))
+                    instance->detach();
+            }
+        }
 
-		return lookup(std::string(sName));
-	}
+        context->reset();
+
+        for (int i = 0; i < parts->count; ++i)
+        {
+            PartInstance* part = parts->data[i];
+            float limit = radius + radius;
+            if (part->size() < limit)
+            {
+                Vec3 delta(0,0,0);
+                context->insert(part, 1);
+                delta = part->transform()->position - position;
+
+                Vec3 unit = delta == Vec3::zero() ? Vec3::unitY() : delta.direction();
+                float size = part->size();
+                Vec3 impulse(0,0,0);
+                Attachment* attachment = part->attachment;
+                float square = size * size;
+                Vec3 force = ((unit * pressure) * square) * forceScale;
+
+                const Vec3* point = &part->transform()->position;
+                Body* body = attachment->link->body;
+                if (body)
+                    body->apply(&force, point);
+
+                Body* secondary = part->attachment->link->body;
+                impulse = (force * secondaryScale) * size;
+                if (secondary)
+                {
+                    secondary->addForce(impulse);
+                }
+            }
+        }
+    }
 }

@@ -1,102 +1,112 @@
-// from server: 31% by colin
-// roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-view View.cpp
+// from server: 87% by EspClaude
+// from server: 100% by king_originala
+// roc 2008-06 006773f0  unit: RBX::AdornG3D  size: 164 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 006773f0
+//
+// 006773f0  83ec64               sub esp, 0x64
+// 006773f3  8b442470             mov eax, dword ptr [esp + 0x70]
+// 006773f7  56                   push esi
+// 006773f8  57                   push edi
+// 006773f9  50                   push eax
+// 006773fa  e8d176f6ff           call 0x5dead0
+// 006773ff  8b742478             mov esi, dword ptr [esp + 0x78]
+// 00677403  83c404               add esp, 4
+// 00677406  50                   push eax
+// 00677407  8d4c241c             lea ecx, [esp + 0x1c]
+// 0067740b  51                   push ecx
+// 0067740c  8bce                 mov ecx, esi
+// 0067740e  e83dbfe9ff           call 0x513350
+// 00677413  50                   push eax
+// 00677414  8d4c2440             lea ecx, [esp + 0x40]
+// 00677418  e803bee9ff           call 0x513220
+// 0067741d  d94624               fld dword ptr [esi + 0x24]
+// 00677420  d95c2460             fstp dword ptr [esp + 0x60]
+// 00677424  8d44243c             lea eax, [esp + 0x3c]
+// 00677428  d94628               fld dword ptr [esi + 0x28]
+// 0067742b  50                   push eax
+// 0067742c  d95c2468             fstp dword ptr [esp + 0x68]
+// 00677430  d9462c               fld dword ptr [esi + 0x2c]
+// 00677433  8b742474             mov esi, dword ptr [esp + 0x74]
+// 00677437  8b16                 mov edx, dword ptr [esi]
+// 00677439  d95c246c             fstp dword ptr [esp + 0x6c]
+// 0067743d  8b5238               mov edx, dword ptr [edx + 0x38]
+// 00677440  8bce                 mov ecx, esi
+// 00677442  ffd2                 call edx
+// 00677444  8b842484000000       mov eax, dword ptr [esp + 0x84]
+// 0067744b  d900                 fld dword ptr [eax]
+// 0067744d  8b3e                 mov edi, dword ptr [esi]
+// 0067744f  d95c2408             fstp dword ptr [esp + 8]
+// 00677453  d94004               fld dword ptr [eax + 4]
+// 00677456  d95c240c             fstp dword ptr [esp + 0xc]
+// 0067745a  d94008               fld dword ptr [eax + 8]
+// 0067745d  d95c2410             fstp dword ptr [esp + 0x10]
+// 00677461  d9e8                 fld1 
+// 00677463  d95c2414             fstp dword ptr [esp + 0x14]
+// 00677467  e8a43a1400           call 0x7baf10
+// 0067746c  d944247c             fld dword ptr [esp + 0x7c]
+// 00677470  8b5750               mov edx, dword ptr [edi + 0x50]
+// 00677473  50                   push eax
+// 00677474  8d44240c             lea eax, [esp + 0xc]
+// 00677478  50                   push eax
+// 00677479  83ec08               sub esp, 8
+// 0067747c  d95c2404             fstp dword ptr [esp + 4]
+// 00677480  8bce                 mov ecx, esi
+// 00677482  d9842490000000       fld dword ptr [esp + 0x90]
+// 00677489  d91c24               fstp dword ptr [esp]
+// 0067748c  ffd2                 call edx
+// 0067748e  5f                   pop edi
+// 0067748f  5e                   pop esi
+// 00677490  83c464               add esp, 0x64
+// 00677493  c3                   ret 
 
-// Candidate translation unit (score above; library headers required).
-#include "RbxView/View.h"
-#include "BrickMesh.h"
-#include "CylinderMesh.h"
-#include "SphereMesh.h"
-#include "PBBMesh.h"
-#include "Part.h"
-#include "RenderLib/AggregatingSceneManager.h"
-#include "v8datamodel/Lighting.h"
-#include "v8datamodel/DataModel.h"
-#include "v8datamodel/Workspace.h"
-#include "v8datamodel/Decal.h"
+struct Matrix {
+    float m[9];
+    Matrix(const Matrix&);
+    const Matrix& multiply(Matrix& result, const Matrix&) const;
+};
 
-namespace RBX
+struct Vector3 {
+    float x, y, z;
+};
+
+struct Frame {
+    Matrix rotation;
+    Vector3 translation;
+};
+
+struct Color {
+    float r, g, b, a;
+};
+
+struct Adorn;
+
+struct AdornTable {
+    char reserved0[56];
+    void (__thiscall *setFrame)(Adorn*, const Frame&);
+    char reserved1[20];
+    void (__thiscall *draw)(Adorn*, float, float, const Color&, const Color&);
+};
+
+struct Adorn {
+    AdornTable* table;
+};
+
+extern const Matrix& __cdecl convertRotation(const Vector3&);
+extern const Color& __cdecl defaultColor();
+
+void __cdecl render(Adorn* adorn, const Frame* frame,
+                    const Vector3& rotation, float first, float second,
+                    const Vector3& rgb)
 {
-	namespace View
-	{
-		View::View(boost::shared_ptr<DataModel> dataModel)
-			: dataModel(dataModel),
-			  renderLibScene(new Render::RenderScene),
-			  textureManager(new G3D::TextureManager),
-			  lightingValid(false)
-		{
-			sceneManager.reset(new Render::AggregatingSceneManager(renderLibScene.get()));
-			materialFactory.reset(new MaterialFactory(textureManager.get()));
+    float temporary[9];
+    Frame transformed = {
+        frame->rotation.multiply(
+            *reinterpret_cast<Matrix*>(temporary), convertRotation(rotation)),
+        { frame->translation.x, frame->translation.y, frame->translation.z }
+    };
+    adorn->table->setFrame(adorn, transformed);
 
-			renderLibScene->setThrottle(0.0f, 0.0f, false, 0.0f);
-
-			Lighting* lighting = ServiceProvider::find<Lighting>(dataModel.get());
-			lightingChangedConnection = Lighting::event_LightingChanged.connect(lighting, boost::bind(&View::invalidateLighting, this, _1));
-
-			dataModel->getWorkspace()->visitDescendents(boost::bind(&View::onWorkspaceDescendentAdded, this, _1));
-			workspaceDescendentAddedConnection = Instance::event_descendentAdded.connect(dataModel->getWorkspace(), boost::bind(&View::onWorkspaceDescendentAdded, this, _1));
-		}
-
-		View::~View()
-		{
-			sceneManager->clear();
-
-			Lighting* unused = ServiceProvider::create<Lighting>(dataModel.get());
-
-			MeshFactory<CylinderAlongXMesh, 1>::flushCache();
-			MeshFactory<SphereMesh, 1>::flushCache();
-			MeshFactory<PBBMesh, 4>::flushCache();
-			BrickMesh::flushCache();
-		}
-
-		void View::suppressSkybox()
-		{
-			Lighting* lighting = ServiceProvider::create<Lighting>(dataModel.get());
-
-			renderLibScene->presetLighting(NULL, lighting->getSkyParameters(), lighting->getAmbientTop(), lighting->getAmbientBottom());
-			sky = NULL;
-			renderLibScene->colorClearValue = lighting->getClearColor();
-		}
-
-		Instance* View::getWorkspace()
-		{
-			return dataModel->getWorkspace();
-		}
-
-		float View::getMeshDetail() const
-		{
-			return renderLibScene->getMeshDetail();
-		}
-
-		float View::getShadingQuality() const
-		{
-			return renderLibScene->getShadingQuality();
-		}
-
-		RenderStats& View::getRenderStats()
-		{
-			return renderLibScene->renderStats;
-		}
-
-		void View::invalidateLighting(bool updateSkybox)
-		{
-			lightingValid = false;
-			if (updateSkybox)
-				sky = NULL;
-		}
-
-		void View::render(void* rd)
-		{
-			updateLighting();
-			sceneManager->prerender(0.1f); // intentional type mismatch! causes value of constant to be different
-			renderLibScene->render((G3D::RenderDevice*)rd, dataModel->getWorkspace()->getGCamera());
-		}
-
-		void View::updateSettings(float shadingQuality, float meshDetail, bool shadows, float cameraDistance)
-		{
-			renderLibScene->setThrottle(shadingQuality, meshDetail, shadows, cameraDistance);
-		}
-	}
+    AdornTable* table = adorn->table;
+    Color color = { rgb.x, rgb.y, rgb.z, 1.0f };
+    table->draw(adorn, second, first, color, defaultColor());
 }

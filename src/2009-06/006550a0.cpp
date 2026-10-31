@@ -1,4 +1,4 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 005c77f0  unit: RBX::VCloneTool::?$TToolVerb  size: 102 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005c77f0
@@ -39,7 +39,7 @@ void* __cdecl operator new(unsigned int);
 void __cdecl operator delete(void*);
 
 struct Context {
-    char pad[0x204];
+    char pad[0x20c];
     void* value;
     __forceinline void* get();
 };

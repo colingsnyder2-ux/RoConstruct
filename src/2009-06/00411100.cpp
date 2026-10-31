@@ -1,650 +1,434 @@
-// from server: 70% by TrollStein
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: boost-1.34.1 libs/regex/src/cregex.cpp
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// roc-lib: rbxgs-atl90-dll util/ContentProvider.cpp
 
 // Candidate translation unit (score above; library headers required).
-/*
- *
- * Copyright (c) 1998-2002
- * John Maddock
- *
- * Use, modification and distribution are subject to the 
- * Boost Software License, Version 1.0. (See accompanying file 
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
- *
- */
+#include "util/ContentProvider.h"
+#include "util/standardout.h"
+#include "util/Http.h"
+#include "util/FileSystem.h"
+#include "v8xml/SerializerV2.h"
+#include <atlutil.h>
+#include <G3D/format.h>
+#include <boost/shared_ptr.hpp>
+#include <boost/iostreams/copy.hpp>
 
- /*
-  *   LOCATION:    see http://www.boost.org for most recent version.
-  *   FILE:        cregex.cpp
-  *   VERSION:     see <boost/version.hpp>
-  *   DESCRIPTION: Implements high level class boost::RexEx
-  */
-
-
-#define BOOST_REGEX_SOURCE
-
-#include <boost/cregex.hpp>
-#include <boost/regex.hpp>
-#if !defined(BOOST_NO_STD_STRING)
-#include <map>
-#include <list>
-#include <boost/regex/v4/fileiter.hpp>
-typedef boost::match_flag_type match_flag_type;
-#include <cstdio>
-
-namespace boost{
-
-#ifdef __BORLANDC__
-#if __BORLANDC__ < 0x530
-//
-// we need to instantiate the vector classes we use
-// since declaring a reference to type doesn't seem to
-// do the job...
-std::vector<std::size_t> inst1;
-std::vector<std::string> inst2;
-#endif
-#endif
-
-namespace{
-
-template <class iterator>
-std::string to_string(iterator i, iterator j)
+namespace RBX
 {
-   std::string s;
-   while(i != j)
-   {
-      s.append(1, *i);
-      ++i;
-   }
-   return s;
+	// TODO: check match
+	bool operator<(const ContentId& a, const ContentId& b)
+	{
+		return a.toString() < b.toString();
+	}
+
+	bool operator!=(const ContentId& a, const ContentId& b)
+	{
+		return a.toString() != b.toString();
+	}
+
+	ContentId ContentId::fromAssets(const std::string& filePath)
+	{
+		std::string header = "rbxasset://";
+		return ContentId(header + filePath);
+	}
+
+	ContentProvider::ContentProvider()
+	{
+		char path[MAX_PATH];
+		if (SHGetFolderPathAndSubDirA(NULL, CSIDL_COMMON_APPDATA, NULL, SHGFP_TYPE_CURRENT, "Roblox\\content\\", (LPSTR)&path) == S_OK)
+		{
+			this->singleton().setAssetFolder(path);
+		}
+		else
+		{
+			StandardOut::singleton()->print(MESSAGE_WARNING, "Failed to get asset folder");
+		}
+
+		requestProcessor.reset(new worker_thread(boost::bind(&ContentProvider::processRequests, this), "rbx_content"));
+	}
+
+	ContentProvider::~ContentProvider()
+	{
+		requestProcessor->join();
+	}
+
+	bool ContentProvider::isHttpUrl(const std::string& s)
+	{
+		if (s.find("http://") == 0)
+			return true;
+
+		if (s.find("https://") == 0)
+			return true;
+
+		return false;
+	}
+
+	std::string ContentProvider::assetFolder() const
+	{
+		return assetFolderPath;
+	}
+
+	bool ContentProvider::isRequestQueueEmpty()
+	{
+		boost::mutex::scoped_lock lock(requestSync);
+		return requestQueue.empty();
+	}
+
+	bool ContentProvider::isUrlBad(const char* url)
+	{
+		boost::mutex::scoped_lock lock(requestSync);
+
+		std::list<FailedUrl>::iterator iter = failedUrls.begin();
+		std::list<FailedUrl>::iterator end = failedUrls.end();
+
+		for (; iter != end; iter++)
+		{
+			if (boost::posix_time::second_clock::local_time() >= iter->expiration)
+			{
+				failedUrls.erase(iter, end);
+				return false;
+			}
+			else if (iter->url == url)
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	void ContentProvider::clearContentCache()
+	{
+		boost::mutex::scoped_lock lock(contentCacheMutex);
+		contentCache.clear();
+	}
+
+	void ContentProvider::load(ContentId id, std::vector<boost::shared_ptr<Instance>>& instances)
+	{
+		boost::scoped_ptr<std::istream> stream(getContent(id));
+		
+		TextXmlParser machine(stream->rdbuf());
+		boost::scoped_ptr<XmlElement> root(machine.parse());
+
+		SerializerV2().loadInstances(root.get(), instances);
+	}
+
+	bool ContentProvider::hasContent(ContentId id)
+	{
+		return loadContent(id, NoHttpRequest) != NULL;
+	}
+
+	std::string ContentProvider::getAssetFile(const std::string& filePath)
+	{
+		return getFile(ContentId::fromAssets(filePath));
+	}
+
+	std::string ContentProvider::getFile(ContentId ticket)
+	{
+		CachedContent* content = loadContent(ticket, SyncHttpRequest);
+		if (content && registerFile(content))
+		{
+			return *content->filename;
+		}
+
+		throw std::runtime_error(G3D::format("Unable to load %s", ticket.c_str()));
+	}
+
+	bool ContentProvider::requestContentFile(ContentId id, std::string& filename)
+	{
+		CachedContent* content = loadContent(id, AsyncHttpRequest);
+		if (!content)
+			return false;
+
+		if (!registerFile(content))
+			return false;
+
+		filename = *content->filename;
+		return true;
+	}
+
+	boost::shared_ptr<const std::string> ContentProvider::requestContentString(ContentId id)
+	{
+		CachedContent* content = loadContent(id, AsyncHttpRequest);
+		if (!content)
+			return boost::shared_ptr<const std::string>();
+
+		boost::mutex::scoped_lock lock(contentCacheMutex);
+
+		if (!content->data)
+		{
+			std::ifstream stream(content->filename->c_str(), std::ios::binary | std::ios::in);
+			std::ostringstream data;
+
+			boost::iostreams::copy(stream, data);
+
+			content->data.reset(new std::string(data.str()));
+		}
+
+		return content->data;
+	}
+
+	std::string ContentProvider::findAsset(ContentId contentId)
+	{
+		RBXASSERT(contentId.isAsset());
+
+		ATL::CPath filePath((assetFolderPath + (contentId.c_str() + 11)).c_str());
+		if (!filePath.FileExists())
+			return "";
+
+		return std::string(filePath);
+	}
+
+	std::string ContentProvider::findFile(ContentId contentId)
+	{
+		RBXASSERT(contentId.isFile());
+
+		const char* file = contentId.c_str();
+		file += 7;
+
+		ATL::CPath filePath(file);
+		if (!filePath.FileExists())
+			return "";
+
+		return std::string(filePath);
+	}
+
+	static ATL::CPath getLocalCachePath(bool createPath)
+	{
+		ATL::CPath path;
+
+		if (createPath)
+		{
+			static std::string s = FileSystem::getCacheDirectory(true);
+			path.m_strPath.SetString(s.c_str());
+		}
+		else
+		{
+			static std::string s = FileSystem::getCacheDirectory(false);
+			path.m_strPath.SetString(s.c_str());
+		}
+
+		return path;
+	}
+
+	std::string ContentProvider::findHashFile(ContentId contentId)
+	{
+		ATL::CPath cachePath = getLocalCachePath(true);
+
+		ATL::CPath filePath = cachePath;
+		filePath.Append(contentId.c_str());
+
+		if (!filePath.FileExists())
+			return "";
+
+		return std::string(filePath);
+	}
+
+	void ContentProvider::setAssetFolder(const char* sPath)
+	{
+		StandardOut::singleton()->print(MESSAGE_INFO, "setAssetFolder %s", sPath);
+
+		ATL::CPath path(sPath);
+
+		if (path.IsRelative())
+			throw std::runtime_error(G3D::format("The path \'%s\' is a relative path", path));
+
+		if (!path.IsDirectory())
+			throw std::runtime_error(G3D::format("The path \'%s\' does not exist", path));
+
+		path.AddBackslash();
+		assetFolderPath = path;
+	}
+
+	ContentId ContentProvider::registerContent(std::istream& content, const Name& mimeType)
+	{
+		ContentId id;
+
+		{
+			boost::scoped_ptr<MD5Hasher> hasher(MD5Hasher::create());
+			hasher->addData(content);
+			id = ContentId(hasher->toString(), mimeType);
+		}
+
+		ATL::CPath filePath = getLocalCachePath(true);
+		filePath.Append(id.c_str());
+
+		if (!filePath.FileExists())
+		{
+			std::ofstream outStream(filePath, std::ios::binary | std::ios::out);
+			content.clear();
+			content.seekg(0, std::ios::beg);
+
+			do
+			{
+				char buffer[1024];
+				content.read(buffer, sizeof(buffer));
+				outStream.write(buffer, content.gcount());
+			}
+			while (content.gcount() > 0);
+		}
+
+		return id;
+	}
+
+	bool ContentProvider::registerFile(CachedContent* item)
+	{
+		CachedContent temp;
+
+		{
+			boost::mutex::scoped_lock lock(contentCacheMutex);
+			temp = *item;
+		}
+
+		if (!temp.filename)
+		{
+			std::istringstream ss(*temp.data);
+			ContentId hash = registerContent(ss, Name::getNullName());
+
+			std::string filename = findHashFile(hash);
+			if (filename.empty())
+				return false;
+
+			temp.filename.reset(new std::string(filename));
+
+			boost::mutex::scoped_lock lock(contentCacheMutex);
+			*item = temp;
+		}
+
+		return true;
+	}
+
+	ContentId ContentProvider::readContent(const char* id, std::istream& stream, unsigned long dataLength)
+	{
+		ContentId contentId(id);
+
+		if (hasContent(contentId))
+		{
+			stream.clear();
+			stream.seekg(dataLength, std::ios::cur);
+		}
+		else
+		{
+			ATL::CPath filePath = getLocalCachePath(true);
+			filePath.Append(contentId.c_str());
+
+			std::ofstream content;
+			content.open(filePath, std::ios::binary | std::ios::out);
+
+			char data;
+
+			for (unsigned long i = 0; i < dataLength; i++)
+			{
+				RBXASSERT(content.good());
+				stream.get(data);
+				content << data;
+			}
+		}
+
+		return contentId;
+	}
+
+	ContentProvider::FailedUrl::FailedUrl(const char* url)
+		: url(url),
+		  expiration(boost::posix_time::second_clock::local_time() + boost::posix_time::minutes(5))
+	{
+	}
+
+	class MD5HasherImpl : public MD5Hasher
+	{
+	private:
+		HCRYPTPROV hProv;
+		HCRYPTHASH hHash;
+		std::string result;
+
+	public:
+		MD5HasherImpl()
+			: hProv(NULL),
+			  hHash(NULL),
+			  result()
+		{
+			if (!CryptAcquireContextA(&hProv, NULL, NULL, PROV_RSA_FULL, CRYPT_VERIFYCONTEXT))
+			{
+				StandardOut::singleton()->print(MESSAGE_ERROR, "Error during CryptAcquireContext. GetLastError = %d", GetLastError());
+			}
+
+			if (!CryptCreateHash(hProv, CALG_MD5, NULL, NULL, &hHash))
+			{
+				StandardOut::singleton()->print(MESSAGE_ERROR, "Error during CryptCreateHash. GetLastError = %d", GetLastError());
+			}
+		}
+		~MD5HasherImpl()
+		{
+		}
+
+	public:
+		virtual void addData(const char* data, size_t nBytes)
+		{
+			if (!CryptHashData(hHash, (const BYTE*)data, (DWORD)nBytes, 0))
+			{
+				StandardOut::singleton()->print(MESSAGE_ERROR, "Error during CryptHashData. GetLastError = %d", GetLastError());
+			}
+		}
+		virtual void addData(const std::string& data)
+		{
+			if (!CryptHashData(hHash, (const BYTE*)data.c_str(), (DWORD)data.length(), 0))
+			{
+				StandardOut::singleton()->print(MESSAGE_ERROR, "Error during CryptHashData. GetLastError = %d", GetLastError());
+			}
+		}
+		virtual void addData(std::istream& data)
+		{
+			data.clear();
+			data.seekg(0, std::ios_base::beg);
+
+			char buffer[1024];
+			do
+			{
+				data.read(buffer, sizeof(buffer));
+				addData(buffer, data.gcount());
+			}
+			while (data.gcount() > 0);
+		}
+		virtual std::string toString()
+		{
+			c_str();
+			return result;
+		}
+		virtual const char* c_str()
+		{
+			if (result.empty())
+			{
+				DWORD hashSize;
+				DWORD hashSizeLen = sizeof(DWORD);
+				if (!CryptGetHashParam(hHash, HP_HASHSIZE, (BYTE*)&hashSize, &hashSizeLen, 0))
+				{
+					StandardOut::singleton()->print(MESSAGE_ERROR, "Error during CryptGetHashParam. GetLastError = %d", GetLastError());
+				}
+
+				char* hashValue = new char[hashSize];
+				if (!CryptGetHashParam(hHash, HP_HASHVAL, (BYTE*)&hashValue, &hashSize, 0))
+				{
+					StandardOut::singleton()->print(MESSAGE_ERROR, "Error during CryptGetHashParam. GetLastError = %d", GetLastError());
+				}
+
+				for (int i = 0; i < (int)hashSize; ++i)
+				{
+					ATL::CString temp;
+					temp.Format("%x", hashValue[i]);
+					result += temp.GetString();
+				}
+
+				delete[] hashValue;
+			}
+
+			return result.c_str();
+		}
+	};
+
+	MD5Hasher* MD5Hasher::create()
+	{
+		return new MD5HasherImpl();
+	}
 }
-
-inline std::string to_string(const char* i, const char* j)
-{
-   return std::string(i, j);
-}
-
-}
-namespace re_detail{
-
-class RegExData
-{
-public:
-   enum type
-   {
-      type_pc,
-      type_pf,
-      type_copy
-   };
-   regex e;
-   cmatch m;
-#ifndef BOOST_REGEX_NO_FILEITER
-   match_results<mapfile::iterator> fm;
-#endif
-   type t;
-   const char* pbase;
-#ifndef BOOST_REGEX_NO_FILEITER
-   mapfile::iterator fbase;
-#endif
-   std::map<int, std::string, std::less<int> > strings;
-   std::map<int, std::ptrdiff_t, std::less<int> > positions;
-   void update();
-   void clean();
-   RegExData() : e(), m(),
-#ifndef BOOST_REGEX_NO_FILEITER
-   fm(),
-#endif
-   t(type_copy), pbase(0),
-#ifndef BOOST_REGEX_NO_FILEITER
-   fbase(),
-#endif
-   strings(), positions() {}
-};
-
-void RegExData::update()
-{
-   strings.erase(strings.begin(), strings.end());
-   positions.erase(positions.begin(), positions.end());
-   if(t == type_pc)
-   {
-      for(unsigned int i = 0; i < m.size(); ++i)
-      {
-         if(m[i].matched) strings[i] = std::string(m[i].first, m[i].second);
-         positions[i] = m[i].matched ? m[i].first - pbase : -1;
-      }
-   }
-#ifndef BOOST_REGEX_NO_FILEITER
-   else
-   {
-      for(unsigned int i = 0; i < fm.size(); ++i)
-      {
-         if(fm[i].matched) strings[i] = to_string(fm[i].first, fm[i].second);
-         positions[i] = fm[i].matched ? fm[i].first - fbase : -1;
-      }
-   }
-#endif
-   t = type_copy;
-}
-
-void RegExData::clean()
-{
-#ifndef BOOST_REGEX_NO_FILEITER
-   fbase = mapfile::iterator();
-   fm = match_results<mapfile::iterator>();
-#endif
-}
-
-} // namespace
-
-RegEx::RegEx()
-{
-   pdata = new re_detail::RegExData();
-}
-
-RegEx::RegEx(const RegEx& o)
-{
-   pdata = new re_detail::RegExData(*(o.pdata));
-}
-
-RegEx::~RegEx()
-{
-   delete pdata;
-}
-
-RegEx::RegEx(const char* c, bool icase)
-{
-   pdata = new re_detail::RegExData();
-   SetExpression(c, icase);
-}
-
-RegEx::RegEx(const std::string& s, bool icase)
-{
-   pdata = new re_detail::RegExData();
-   SetExpression(s.c_str(), icase);
-}
-
-RegEx& RegEx::operator=(const RegEx& o)
-{
-   *pdata = *(o.pdata);
-   return *this;
-}
-
-RegEx& RegEx::operator=(const char* p)
-{
-   SetExpression(p, false);
-   return *this;
-}
-
-unsigned int RegEx::SetExpression(const char* p, bool icase)
-{
-   boost::uint_fast32_t f = icase ? regex::normal | regex::icase : regex::normal;
-   return pdata->e.set_expression(p, f);
-}
-
-unsigned int RegEx::error_code()const
-{
-   return pdata->e.error_code();
-}
-
-
-std::string RegEx::Expression()const
-{
-   return pdata->e.expression();
-}
-
-//
-// now matching operators:
-//
-bool RegEx::Match(const char* p, match_flag_type flags)
-{
-   pdata->t = re_detail::RegExData::type_pc;
-   pdata->pbase = p;
-   const char* end = p;
-   while(*end)++end;
-
-   if(regex_match(p, end, pdata->m, pdata->e, flags))
-   {
-      pdata->update();
-      return true;
-   }
-   return false;
-}
-
-bool RegEx::Search(const char* p, match_flag_type flags)
-{
-   pdata->t = re_detail::RegExData::type_pc;
-   pdata->pbase = p;
-   const char* end = p;
-   while(*end)++end;
-
-   if(regex_search(p, end, pdata->m, pdata->e, flags))
-   {
-      pdata->update();
-      return true;
-   }
-   return false;
-}
-namespace re_detail{
-struct pred1
-{
-   GrepCallback cb;
-   RegEx* pe;
-   pred1(GrepCallback c, RegEx* i) : cb(c), pe(i) {}
-   bool operator()(const cmatch& m)
-   {
-      pe->pdata->m = m;
-      return cb(*pe);
-   }
-};
-}
-unsigned int RegEx::Grep(GrepCallback cb, const char* p, match_flag_type flags)
-{
-   pdata->t = re_detail::RegExData::type_pc;
-   pdata->pbase = p;
-   const char* end = p;
-   while(*end)++end;
-
-   unsigned int result = regex_grep(re_detail::pred1(cb, this), p, end, pdata->e, flags);
-   if(result)
-      pdata->update();
-   return result;
-}
-namespace re_detail{
-struct pred2
-{
-   std::vector<std::string>& v;
-   RegEx* pe;
-   pred2(std::vector<std::string>& o, RegEx* e) : v(o), pe(e) {}
-   bool operator()(const cmatch& m)
-   {
-      pe->pdata->m = m;
-      v.push_back(std::string(m[0].first, m[0].second));
-      return true;
-   }
-private:
-   pred2& operator=(const pred2&);
-};
-}
-
-unsigned int RegEx::Grep(std::vector<std::string>& v, const char* p, match_flag_type flags)
-{
-   pdata->t = re_detail::RegExData::type_pc;
-   pdata->pbase = p;
-   const char* end = p;
-   while(*end)++end;
-
-   unsigned int result = regex_grep(re_detail::pred2(v, this), p, end, pdata->e, flags);
-   if(result)
-      pdata->update();
-   return result;
-}
-namespace re_detail{
-struct pred3
-{
-   std::vector<std::size_t>& v;
-   const char* base;
-   RegEx* pe;
-   pred3(std::vector<std::size_t>& o, const char* pb, RegEx* p) : v(o), base(pb), pe(p) {}
-   bool operator()(const cmatch& m)
-   {
-      pe->pdata->m = m;
-      v.push_back(static_cast<std::size_t>(m[0].first - base));
-      return true;
-   }
-private:
-   pred3& operator=(const pred3&);
-};
-}
-unsigned int RegEx::Grep(std::vector<std::size_t>& v, const char* p, match_flag_type flags)
-{
-   pdata->t = re_detail::RegExData::type_pc;
-   pdata->pbase = p;
-   const char* end = p;
-   while(*end)++end;
-
-   unsigned int result = regex_grep(re_detail::pred3(v, p, this), p, end, pdata->e, flags);
-   if(result)
-      pdata->update();
-   return result;
-}
-#ifndef BOOST_REGEX_NO_FILEITER
-namespace re_detail{
-struct pred4
-{
-   GrepFileCallback cb;
-   RegEx* pe;
-   const char* file;
-   bool ok;
-   pred4(GrepFileCallback c, RegEx* i, const char* f) : cb(c), pe(i), file(f), ok(true) {}
-   bool operator()(const match_results<mapfile::iterator>& m)
-   {
-      pe->pdata->t = RegExData::type_pf;
-      pe->pdata->fm = m;
-      pe->pdata->update();
-      ok = cb(file, *pe);
-      return ok;
-   }
-};
-}
-namespace{
-void BuildFileList(std::list<std::string>* pl, const char* files, bool recurse)
-{
-   file_iterator start(files);
-   file_iterator end;
-   if(recurse)
-   {
-      // go through sub directories:
-      char buf[MAX_PATH];
-      re_detail::overflow_error_if_not_zero(re_detail::strcpy_s(buf, MAX_PATH, start.root()));
-      if(*buf == 0)
-      {
-         re_detail::overflow_error_if_not_zero(re_detail::strcpy_s(buf, MAX_PATH, "."));
-         re_detail::overflow_error_if_not_zero(re_detail::strcat_s(buf, MAX_PATH, directory_iterator::separator()));
-         re_detail::overflow_error_if_not_zero(re_detail::strcat_s(buf, MAX_PATH, "*"));
-      }
-      else
-      {
-         re_detail::overflow_error_if_not_zero(re_detail::strcat_s(buf, MAX_PATH, directory_iterator::separator()));
-         re_detail::overflow_error_if_not_zero(re_detail::strcat_s(buf, MAX_PATH, "*"));
-      }
-      directory_iterator dstart(buf);
-      directory_iterator dend;
-
-      // now get the file mask bit of "files":
-      const char* ptr = files;
-      while(*ptr) ++ptr;
-      while((ptr != files) && (*ptr != *directory_iterator::separator()) && (*ptr != '/'))--ptr;
-      if(ptr != files) ++ptr;
-
-      while(dstart != dend)
-      {
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-         (::sprintf_s)(buf, sizeof(buf), "%s%s%s", dstart.path(), directory_iterator::separator(), ptr);
-#else
-         (std::sprintf)(buf, "%s%s%s", dstart.path(), directory_iterator::separator(), ptr);
-#endif
-         BuildFileList(pl, buf, recurse);
-         ++dstart;
-      }
-   }
-   while(start != end)
-   {
-      pl->push_back(*start);
-      ++start;
-   }
-}
-}
-
-unsigned int RegEx::GrepFiles(GrepFileCallback cb, const char* files, bool recurse, match_flag_type flags)
-{
-   unsigned int result = 0;
-   std::list<std::string> file_list;
-   BuildFileList(&file_list, files, recurse);
-   std::list<std::string>::iterator start, end;
-   start = file_list.begin();
-   end = file_list.end();
-
-   while(start != end)
-   {
-      mapfile map((*start).c_str());
-      pdata->t = re_detail::RegExData::type_pf;
-      pdata->fbase = map.begin();
-      re_detail::pred4 pred(cb, this, (*start).c_str());
-      int r = regex_grep(pred, map.begin(), map.end(), pdata->e, flags);
-      result += r;
-      ++start;
-      pdata->clean();
-      if(pred.ok == false)
-         return result;
-   }
-
-   return result;
-}
-
-
-unsigned int RegEx::FindFiles(FindFilesCallback cb, const char* files, bool recurse, match_flag_type flags)
-{
-   unsigned int result = 0;
-   std::list<std::string> file_list;
-   BuildFileList(&file_list, files, recurse);
-   std::list<std::string>::iterator start, end;
-   start = file_list.begin();
-   end = file_list.end();
-
-   while(start != end)
-   {
-      mapfile map((*start).c_str());
-      pdata->t = re_detail::RegExData::type_pf;
-      pdata->fbase = map.begin();
-
-      if(regex_search(map.begin(), map.end(), pdata->fm, pdata->e, flags))
-      {
-         ++result;
-         if(false == cb((*start).c_str()))
-            return result;
-      }
-      //pdata->update();
-      ++start;
-      //pdata->clean();
-   }
-
-   return result;
-}
-#endif
-
-#ifdef BOOST_REGEX_V3
-#define regex_replace regex_merge
-#endif
-
-std::string RegEx::Merge(const std::string& in, const std::string& fmt,
-                    bool copy, match_flag_type flags)
-{
-   std::string result;
-   re_detail::string_out_iterator<std::string> i(result);
-   if(!copy) flags |= format_no_copy;
-   regex_replace(i, in.begin(), in.end(), pdata->e, fmt.c_str(), flags);
-   return result;
-}
-
-std::string RegEx::Merge(const char* in, const char* fmt,
-                    bool copy, match_flag_type flags)
-{
-   std::string result;
-   if(!copy) flags |= format_no_copy;
-   re_detail::string_out_iterator<std::string> i(result);
-   regex_replace(i, in, in + std::strlen(in), pdata->e, fmt, flags);
-   return result;
-}
-
-std::size_t RegEx::Split(std::vector<std::string>& v, 
-                      std::string& s,
-                      match_flag_type flags,
-                      unsigned max_count)
-{
-   return regex_split(std::back_inserter(v), s, pdata->e, flags, max_count);
-}
-
-
-
-//
-// now operators for returning what matched in more detail:
-//
-std::size_t RegEx::Position(int i)const
-{
-   switch(pdata->t)
-   {
-   case re_detail::RegExData::type_pc:
-      return pdata->m[i].matched ? pdata->m[i].first - pdata->pbase : RegEx::npos;
-#ifndef BOOST_REGEX_NO_FILEITER
-   case re_detail::RegExData::type_pf:
-      return pdata->fm[i].matched ? pdata->fm[i].first - pdata->fbase : RegEx::npos;
-#endif
-   case re_detail::RegExData::type_copy:
-      {
-      std::map<int, std::ptrdiff_t, std::less<int> >::iterator pos = pdata->positions.find(i);
-      if(pos == pdata->positions.end())
-         return RegEx::npos;
-      return (*pos).second;
-      }
-   }
-   return RegEx::npos;
-}
-
-std::size_t RegEx::Marks()const
-{
-   return pdata->e.mark_count();
-}
-
-
-std::size_t RegEx::Length(int i)const
-{
-   switch(pdata->t)
-   {
-   case re_detail::RegExData::type_pc:
-      return pdata->m[i].matched ? pdata->m[i].second - pdata->m[i].first : RegEx::npos;
-#ifndef BOOST_REGEX_NO_FILEITER
-   case re_detail::RegExData::type_pf:
-      return pdata->fm[i].matched ? pdata->fm[i].second - pdata->fm[i].first : RegEx::npos;
-#endif
-   case re_detail::RegExData::type_copy:
-      {
-      std::map<int, std::string, std::less<int> >::iterator pos = pdata->strings.find(i);
-      if(pos == pdata->strings.end())
-         return RegEx::npos;
-      return (*pos).second.size();
-      }
-   }
-   return RegEx::npos;
-}
-
-bool RegEx::Matched(int i)const
-{
-   switch(pdata->t)
-   {
-   case re_detail::RegExData::type_pc:
-      return pdata->m[i].matched;
-#ifndef BOOST_REGEX_NO_FILEITER
-   case re_detail::RegExData::type_pf:
-      return pdata->fm[i].matched;
-#endif      
-   case re_detail::RegExData::type_copy:
-      {
-      std::map<int, std::string, std::less<int> >::iterator pos = pdata->strings.find(i);
-      if(pos == pdata->strings.end())
-         return false;
-      return true;
-      }
-   }
-   return false;
-}
-
-
-std::string RegEx::What(int i)const
-{
-   std::string result;
-   switch(pdata->t)
-   {
-   case re_detail::RegExData::type_pc:
-      if(pdata->m[i].matched) 
-         result.assign(pdata->m[i].first, pdata->m[i].second);
-      break;
-   case re_detail::RegExData::type_pf:
-      if(pdata->m[i].matched) 
-         result.assign(to_string(pdata->m[i].first, pdata->m[i].second));
-      break;
-   case re_detail::RegExData::type_copy:
-      {
-      std::map<int, std::string, std::less<int> >::iterator pos = pdata->strings.find(i);
-      if(pos != pdata->strings.end())
-         result = (*pos).second;
-      break;
-      }
-   }
-   return result;
-}
-
-#ifdef BOOST_HAS_LONG_LONG
-const std::size_t RegEx::npos = static_cast<std::size_t>(~0ULL);
-#else
-const std::size_t RegEx::npos = static_cast<std::size_t>(~0UL);
-#endif
-
-} // namespace boost
-
-#if defined(__BORLANDC__) && (__BORLANDC__ >= 0x550) && (__BORLANDC__ <= 0x551) && !defined(_RWSTD_COMPILE_INSTANTIATE)
-//
-// this is an ugly hack to work around an ugly problem:
-// by default this file will produce unresolved externals during
-// linking unless _RWSTD_COMPILE_INSTANTIATE is defined (Borland bug).
-// However if _RWSTD_COMPILE_INSTANTIATE is defined then we get separate
-// copies of basic_string's static data in the RTL and this DLL, this messes
-// with basic_string's memory management and results in run-time crashes,
-// Oh sweet joy of Catch 22....
-//
-namespace std{
-template<> template<>
-basic_string<char>& BOOST_REGEX_DECL
-basic_string<char>::replace<const char*>(char* f1, char* f2, const char* i1, const char* i2)
-{
-   unsigned insert_pos = f1 - begin();
-   unsigned remove_len = f2 - f1;
-   unsigned insert_len = i2 - i1;
-   unsigned org_size = size();
-   if(insert_len > remove_len)
-   {
-      append(insert_len-remove_len, ' ');
-      std::copy_backward(begin() + insert_pos + remove_len, begin() + org_size, end());
-      std::copy(i1, i2, begin() + insert_pos);
-   }
-   else
-   {
-      std::copy(begin() + insert_pos + remove_len, begin() + org_size, begin() + insert_pos + insert_len);
-      std::copy(i1, i2, begin() + insert_pos);
-      erase(size() + insert_len - remove_len);
-   }
-   return *this;
-}
-template<> template<>
-basic_string<wchar_t>& BOOST_REGEX_DECL
-basic_string<wchar_t>::replace<const wchar_t*>(wchar_t* f1, wchar_t* f2, const wchar_t* i1, const wchar_t* i2)
-{
-   unsigned insert_pos = f1 - begin();
-   unsigned remove_len = f2 - f1;
-   unsigned insert_len = i2 - i1;
-   unsigned org_size = size();
-   if(insert_len > remove_len)
-   {
-      append(insert_len-remove_len, ' ');
-      std::copy_backward(begin() + insert_pos + remove_len, begin() + org_size, end());
-      std::copy(i1, i2, begin() + insert_pos);
-   }
-   else
-   {
-      std::copy(begin() + insert_pos + remove_len, begin() + org_size, begin() + insert_pos + insert_len);
-      std::copy(i1, i2, begin() + insert_pos);
-      erase(size() + insert_len - remove_len);
-   }
-   return *this;
-}
-} // namespace std
-#endif
-
-#endif
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

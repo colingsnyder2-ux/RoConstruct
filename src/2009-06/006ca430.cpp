@@ -1,108 +1,63 @@
-// from server: 27% by colin
-// roc-lang: cpp
+// from server: 96% by EspClaude
+// from server: 100% by king_originala
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
-
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
-
-boost::mutex& moo2()
-{
-	static boost::mutex mutex2;
-	return mutex2;
+#include <vector>
+#include <intrin.h>
+#include <utility>
+namespace boost {
+namespace detail {
+struct sp_counted_base {
+    virtual ~sp_counted_base() {}
+    virtual void dispose()=0;
+    virtual void destroy(){delete this;}
+    long use_count_,weak_count_;
+    void weak_release(){if(_InterlockedDecrement(&weak_count_)==0)destroy();}
+    void release(){if(_InterlockedDecrement(&use_count_)==0){dispose();weak_release();}}
+};
+struct shared_count {
+    sp_counted_base* pi_;
+    shared_count():pi_(0){}
+    shared_count& operator=(const shared_count& r){sp_counted_base* tmp=r.pi_;if(tmp!=pi_){if(tmp)_InterlockedIncrement(&tmp->use_count_);if(pi_)pi_->release();pi_=tmp;}return *this;}
+    void swap(shared_count& r){sp_counted_base* tmp=r.pi_;r.pi_=pi_;pi_=tmp;}
+    shared_count(const shared_count& r):pi_(r.pi_){if(pi_)_InterlockedIncrement(&pi_->use_count_);}
+    ~shared_count(){if(pi_)pi_->release();}
+};
+}
+template<class T> class shared_ptr {
+public:
+    T* px; detail::shared_count pn;
+    shared_ptr():px(0),pn(){}
+    shared_ptr& operator=(const shared_ptr& r){px=r.px;pn=r.pn;return *this;}
+    void swap(shared_ptr& r){std::swap(px,r.px);pn.swap(r.pn);}
+    void reset(){shared_ptr().swap(*this);}
+    typedef T* shared_ptr::*unspecified_bool_type;
+    operator unspecified_bool_type()const{return px==0?0:&shared_ptr::px;}
+    shared_ptr(const shared_ptr& r):px(r.px),pn(r.pn){}
+    template<class Y> shared_ptr(const shared_ptr<Y>& r):px(r.px),pn(r.pn){}
+    T* get()const{return px;}
+    T* operator->()const{return px;}
+};
+template<class T,class U> bool operator==(const shared_ptr<T>& a,const shared_ptr<U>& b){return a.get()==b.get();}
 }
 
-void initMoo()
-{
-	moo2();
+namespace RBX {
+class Instance;class Adorn;
+typedef std::vector<boost::shared_ptr<Instance> > Instances;
+struct Children {boost::shared_ptr<Instances> object;operator boost::shared_ptr<Instances>::unspecified_bool_type()const{return object;}__declspec(noinline) boost::shared_ptr<const Instances> read()const{return object;}};
+class Instance {public:virtual ~Instance();char prefix[0x108-4];Children children;};
+class PartInstance:public Instance {public:bool getLocked()const;};
+Instance* findUnlockedPart(Instance* instance){
+ PartInstance* part=dynamic_cast<PartInstance*>(instance);
+ if(part&&!part->getLocked())return part;
+ boost::shared_ptr<const Instances> c=instance->children.read();
+ if(c){
+  Instances::const_iterator end=c->end();
+  Instances::const_iterator iter=c->begin();
+  for(;iter!=end;iter++){
+   if(findUnlockedPart((*iter).get()))return (*iter).get();
+  }
+ }
+ return 0;
 }
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
 }

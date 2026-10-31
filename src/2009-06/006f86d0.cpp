@@ -1,108 +1,23 @@
-// from server: 48% by colin
-// roc-lang: cpp
+// from server: 97% by EspClaude
+// from server: 100% by king_originala
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+// roc-lib: rbxgs-dll roc_king_originala_physics_939c6f841021e3eb.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
-
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
-
-boost::mutex& moo2()
-{
-	static boost::mutex mutex2;
-	return mutex2;
+#include "tool/RunDragger.h"
+#include <boost/shared_ptr.hpp>
+#include <stddef.h>
+namespace RBX {
+bool __cdecl check(boost::shared_ptr<PartInstance>);
+void RunDragger::smartPtrHackPost() {
+ typedef char weak_offset[offsetof(RunDragger,snapPart)==8?1:-1];
+ typedef char snap_offset[offsetof(RunDragger,snapInfo)==0x24?1:-1];
+ boost::shared_ptr<PartInstance> value=snapPart.lock();
+ // Native LEA/add228 establishes the embedded Primitive on this borrowed receiver.
+ if(check(value))snapInfo.snap=reinterpret_cast<Primitive*>(reinterpret_cast<char*>(value.get())+0x228);
+ else snapInfo.snap=0;
 }
-
-void initMoo()
-{
-	moo2();
 }
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
-}
+typedef char weak_size[sizeof(boost::weak_ptr<RBX::PartInstance>)==8?1:-1];
+typedef char snap_size[sizeof(RBX::RunDragger::SnapInfo)==32?1:-1];

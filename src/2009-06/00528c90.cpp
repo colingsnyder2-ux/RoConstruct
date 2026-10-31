@@ -1,38 +1,51 @@
-// from server: 82% by atomic.potato
-struct S_func_00528c90 {
-    char pad0[4];
-    char m_5;
-    char pad6[2];
-    int m_8;
-    int m_c;
-    int m_10;
-    char pad14[4];
-    int m_18;
-    char pad1c[0x1c];
-    int m_38;
-    int m_3c;
-    int m_40;
-    int m_44;
-    S_func_00528c90* ctor(int, int, int);
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+extern "C" __declspec(dllimport) long __stdcall InterlockedIncrement(long volatile*);
+namespace boost { class Instance; template<class T> class shared_ptr { T* p; void* c; }; namespace noncopyable_ { class noncopyable { protected: noncopyable() {} }; } }
+namespace RBX {
+class Instance;
+template<class T> class Countable {
+	static long count;
+public:
+	Countable() { InterlockedIncrement(&count); }
 };
-
-extern "C" long (__stdcall *g_inc)(long volatile*);
-extern "C" void __stdcall sub_00528bd0(int, int);
-
-S_func_00528c90* S_func_00528c90::ctor(int a, int b, int c)
-{
-    g_inc((long volatile*)0xa3a1bc);
-    *(int*)this = 0x8afff4;
-    m_5 = 1;
-    m_8 = 0;
-    m_c = *(int*)0x8ef840;
-    m_10 = c;
-    *(int*)this = 0x8b0074;
-    *(int*)((char*)this + 0x18) = 0;
-    sub_00528bd0(a, b);
-    m_38 = 0;
-    m_3c = 0;
-    m_40 = 0;
-    m_44 = 0;
-    return this;
 }
+extern void* const gDefault;
+struct NP { void* p; NP() : p(0) {} };
+namespace rbx { namespace signals {
+class connection {
+public:
+	class slot : boost::noncopyable_::noncopyable, RBX::Countable<slot> {
+	public:
+		slot(void* owner) : connected(true), def(gDefault), owner(owner) {}
+		virtual ~slot();
+		bool connected;
+		NP next;
+		void* def;
+		void* owner;
+	};
+};
+struct function_base {
+	void* vtable;
+	union { __declspec(align(8)) char buf[0x18]; } functor;
+	function_base() : vtable(0) {}
+};
+template<class Sig> struct function : function_base {
+	template<class F> function(F f) { assign_to(f); }
+	template<class F> void assign_to(F f) throw();
+};
+struct Functor { void* a; void* b; };
+template<class Sig> class signal {
+public:
+	class slot : public connection::slot {
+	public:
+		slot(Functor f, void* owner) : connection::slot(owner), func(f), a(0), b(0), c(0), d(0) {}
+		virtual ~slot();
+		function<Sig> func;
+		int a, b, c, d;
+	};
+};
+template class signal<void(boost::shared_ptr<RBX::Instance>)>::slot;
+} }

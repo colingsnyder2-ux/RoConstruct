@@ -1,108 +1,65 @@
-// from server: 38% by colin
+// from server: 87% by EspClaude
+// from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+// roc-lib: rbxgs-dll roc_unit_317ea390c5522f93.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
+#include <vector>
+#include <boost/shared_ptr.hpp>
+#include "v8datamodel/BrickColor.h"
+typedef G3D::Color3 Vector3;
+struct Team {
+    int func_005d5f40() const;
+};
 
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
+typedef RBX::BrickColor TeamColor;
 
-boost::mutex& moo2()
-{
-	static boost::mutex mutex2;
-	return mutex2;
+namespace RBX {
+    class Instance { public:
+        virtual ~Instance();
+        char padding[0x100];
+        Instance* next;
+    };
+
+    typedef std::vector<boost::shared_ptr<Instance> > Children;
+
+    struct ServiceProvider : Instance {
+        Children* children;
+        unsigned int func_0048ae20() const;
+    };
+
+    struct VTeams : Instance {
+        Vector3 func_005d6180(int teamId);
+    };
 }
 
-void initMoo()
-{
-	moo2();
+namespace RBX { namespace Network {
+    class Player : public RBX::Instance { public:
+        char padding[0x68];
+        Team* team;
+        int reserved;
+        TeamColor color;
+        bool neutral;
+        TeamColor getTeamColor() const { return color; }
+    };
 }
 
-namespace RBX
+}
+extern RBX::ServiceProvider* __cdecl func_00491d50(RBX::Instance*);
+extern const Vector3& __cdecl func_00514a60();
+Vector3 RBX::VTeams::func_005d6180(int teamId)
 {
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
+    ServiceProvider* provider = func_00491d50(this);
+    for (unsigned int i = 0; i < provider->func_0048ae20(); ++i) {
+        Children* children = provider->children;
+        Network::Player* player = dynamic_cast<Network::Player*>((*children)[i].get());
 
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
+        if (player && !player->neutral && player->team &&
+            player->team->func_005d5f40() == teamId) {
+            return player->getTeamColor().color3();
+        }
+    }
+    return func_00514a60();
 }

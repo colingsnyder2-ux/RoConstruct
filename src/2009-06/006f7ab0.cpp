@@ -1,108 +1,45 @@
-// from server: 36% by colin
+// from server: 99% by EspClaude
+// from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+// roc-flags: /O2 /GS- /EHsc /MD /fp:fast
+// roc-lib: openrbx-client-dll roc_espeon_extentobject2ba6da6b13b49e6a.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
+#include <G3D/CoordinateFrame.h>
+typedef G3D::Vector3 Vector3;
+typedef G3D::CoordinateFrame Frame;
+struct Extents { Vector3 low, high; Extents(const Vector3& a,const Vector3& b):low(a),high(b){} };
+struct Body {
+    char pad[0x94];
+    Vector3 value;
+    void updatePV();
+};
 
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
+struct Dimensions {
+    char pad[4];
+    Vector3 size;
+};
 
-boost::mutex& moo2()
-{
-	static boost::mutex mutex2;
-	return mutex2;
-}
+struct Primitive {
+    char pad[0x9c];
+    Dimensions* dimensions;
+    Body* body;
+    const Frame& getValue();
+};
 
-void initMoo()
-{
-	moo2();
-}
+struct S {
+    Primitive* primitive;
+    char pad[4];
+    Vector3 position;
+    float f();
+};
 
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
+float S::f(){
+ Vector3 half=primitive->dimensions->size*0.5f;
+ Extents bounds(-half,half);
+ Vector3 local=primitive->getValue().pointToObjectSpace(position);
+ Vector3 nearest=local.clamp(bounds.low,bounds.high);
+ float dx=local.x-nearest.x,dy=local.y-nearest.y,dz=local.z-nearest.z;
+ return (float)sqrt(dz*dz+dy*dy+dx*dx);
 }

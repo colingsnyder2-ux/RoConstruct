@@ -1,8 +1,8 @@
-// from server: 14% by atomic.potato
+// from server: 47% by Intel
 extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
 #pragma intrinsic(_InterlockedExchangeAdd)
 
-extern "C" void __cdecl func_00439330();
+extern "C" void __cdecl func_00439330(void* ecx, void* outPtr);
 extern "C" void __cdecl func_0053de50();
 
 struct RefCounted
@@ -12,75 +12,74 @@ struct RefCounted
     volatile long ref2;
 };
 
-struct Holder
-{
-    RefCounted* ptr;
-};
-
 struct VPlayerEventDesc
 {
-    void __cdecl construct(Holder* a, Holder* b);
+    void __thiscall construct(RefCounted* a, RefCounted* b);
 };
 
-void VPlayerEventDesc::construct(Holder* a, Holder* b)
+void VPlayerEventDesc::construct(RefCounted* a, RefCounted* b)
 {
-    Holder local;
-    local.ptr = 0;
+    int cookie = -1;
+    void* sehRecord = 0;
+    void* prevSEH = 0;
+    RefCounted* localPtr = 0;
+    char state = 0;
 
-    func_00439330();
+    func_00439330(this, &localPtr);
+    state = 2;
 
-    RefCounted* p = local.ptr;
-    if (p)
+    RefCounted* ecx = localPtr;
+    if (ecx)
     {
-        Holder tmp;
-        tmp.ptr = a->ptr;
-        Holder tmp2;
-        tmp2.ptr = b->ptr;
-        if (tmp2.ptr)
+        RefCounted* edx = a;
+        RefCounted* eax = b;
+        if (eax)
         {
-            _InterlockedExchangeAdd(&tmp2.ptr->ref1, 1);
+            _InterlockedExchangeAdd(&eax->ref1, 1);
         }
         func_0053de50();
     }
 
-    RefCounted* esi = local.ptr;
+    RefCounted* esi = localPtr;
+    state = 1;
     if (esi)
     {
         if (_InterlockedExchangeAdd(&esi->ref1, -1) == 1)
         {
-            esi->vptr;
-            void (*f1)(RefCounted*) = *(void(**)(RefCounted*))((char*)esi->vptr + 4);
-            f1(esi);
+            void (__thiscall* func)(RefCounted*) = *reinterpret_cast<void (__thiscall**)(RefCounted*)>((char*)esi->vptr + 4);
+            func(esi);
             if (_InterlockedExchangeAdd(&esi->ref2, -1) == 1)
             {
-                void (*f2)(RefCounted*) = *(void(**)(RefCounted*))((char*)esi->vptr + 8);
-                f2(esi);
+                void (__thiscall* func2)(RefCounted*) = *reinterpret_cast<void (__thiscall**)(RefCounted*)>((char*)esi->vptr + 8);
+                func2(esi);
             }
         }
     }
 
-    RefCounted* eax = local.ptr;
-    if (eax)
+    RefCounted* eax2 = localPtr;
+    state = 0;
+    if (eax2)
     {
-        RefCounted* ecx = eax;
-        if (_InterlockedExchangeAdd(&eax->ref2, -1) == 1)
+        RefCounted* ecx2 = eax2;
+        if (_InterlockedExchangeAdd(&eax2->ref2, -1) == 1)
         {
-            void (*f3)(RefCounted*) = *(void(**)(RefCounted*))((char*)ecx->vptr + 8);
-            f3(ecx);
+            void (__thiscall* func3)(RefCounted*) = *reinterpret_cast<void (__thiscall**)(RefCounted*)>((char*)ecx2->vptr + 8);
+            func3(ecx2);
         }
     }
 
-    RefCounted* esi2 = b->ptr;
+    RefCounted* esi2 = b;
+    state = -1;
     if (esi2)
     {
         if (_InterlockedExchangeAdd(&esi2->ref1, -1) == 1)
         {
-            void (*f4)(RefCounted*) = *(void(**)(RefCounted*))((char*)esi2->vptr + 4);
-            f4(esi2);
+            void (__thiscall* func4)(RefCounted*) = *reinterpret_cast<void (__thiscall**)(RefCounted*)>((char*)esi2->vptr + 4);
+            func4(esi2);
             if (_InterlockedExchangeAdd(&esi2->ref2, -1) == 1)
             {
-                void (*f5)(RefCounted*) = *(void(**)(RefCounted*))((char*)esi2->vptr + 8);
-                f5(esi2);
+                void (__thiscall* func5)(RefCounted*) = *reinterpret_cast<void (__thiscall**)(RefCounted*)>((char*)esi2->vptr + 8);
+                func5(esi2);
             }
         }
     }

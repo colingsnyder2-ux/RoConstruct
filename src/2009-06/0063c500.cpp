@@ -1,366 +1,84 @@
-// from server: 75% by colin
-// roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/Accoutrement.cpp
+// from server: 92% by EspClaude
+// from server: 100% by king_originala
+// roc 2008-06 005b0840  unit: RBX::Accoutrement  size: 96 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 005b0840
+//
+// 005b0840  51                   push ecx
+// 005b0841  a138539700           mov eax, dword ptr [0x975338]
+// 005b0846  56                   push esi
+// 005b0847  57                   push edi
+// 005b0848  8b7c2410             mov edi, dword ptr [esp + 0x10]
+// 005b084c  8bf1                 mov esi, ecx
+// 005b084e  50                   push eax
+// 005b084f  8bcf                 mov ecx, edi
+// 005b0851  c744240c00000000     mov dword ptr [esp + 0xc], 0
+// 005b0859  e852bafcff           call 0x57c2b0
+// 005b085e  85c0                 test eax, eax
+// 005b0860  742b                 je 0x5b088d
+// 005b0862  8d4c2408             lea ecx, [esp + 8]
+// 005b0866  51                   push ecx
+// 005b0867  8d4808               lea ecx, [eax + 8]
+// 005b086a  e8f1bafcff           call 0x57c360
+// 005b086f  84c0                 test al, al
+// 005b0871  741a                 je 0x5b088d
+// 005b0873  8b542408             mov edx, dword ptr [esp + 8]
+// 005b0877  83c204               add edx, 4
+// 005b087a  680c4a8300           push 0x834a0c
+// 005b087f  52                   push edx
+// 005b0880  ff156c238000         call dword ptr [0x80236c]
+// 005b0886  83c408               add esp, 8
+// 005b0889  84c0                 test al, al
+// 005b088b  750d                 jne 0x5b089a
+// 005b088d  8b442414             mov eax, dword ptr [esp + 0x14]
+// 005b0891  50                   push eax
+// 005b0892  57                   push edi
+// 005b0893  8bce                 mov ecx, esi
+// 005b0895  e8d688faff           call 0x559170
+// 005b089a  5f                   pop edi
+// 005b089b  5e                   pop esi
+// 005b089c  59                   pop ecx
+// 005b089d  c20800               ret 8
 
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/Accoutrement.h"
-#include "v8datamodel/PartInstance.h"
-#include "v8datamodel/JointInstance.h"
-#include "tool/DragUtilities.h"
-#include "v8xml/SerializerV2.h"
-#include "Network/Players.h"
+struct String {};
 
-namespace RBX
+struct Object {
+    unsigned char prefix[4];
+    String text;
+};
+
+struct Value {
+    bool extract(Object** result);
+};
+
+struct Node {
+    unsigned char prefix[8];
+    Value value;
+};
+
+struct Descriptor {
+    Node* lookup(void* key);
+};
+
+struct Accoutrement {
+    void fallback(Descriptor* descriptor, void* argument);
+    void update(Descriptor* descriptor, void* argument);
+};
+
+typedef bool (__cdecl *StringEqual)(const String&, const char*);
+
+extern void* lookupKey;
+extern StringEqual stringEqual;
+extern const char backendState[];
+
+void Accoutrement::update(Descriptor* descriptor, void* argument)
 {
-	static Reflection::PropDescriptor<Accoutrement, G3D::CoordinateFrame> prop_AttachmentPoint("AttachmentPoint", "Appearance", &Accoutrement::getAttachmentPoint, &Accoutrement::setAttachmentPoint, Reflection::PropertyDescriptor::STREAMING);
-	static Reflection::PropDescriptor<Accoutrement, G3D::Vector3> prop_AttachmentPos("AttachmentPos", "Appearance", &Accoutrement::getAttachmentPos, &Accoutrement::setAttachmentPos, Reflection::PropertyDescriptor::UI);
-	static Reflection::PropDescriptor<Accoutrement, G3D::Vector3> prop_AttachmentForward("AttachmentForward", "Appearance", &Accoutrement::getAttachmentForward, &Accoutrement::setAttachmentForward, Reflection::PropertyDescriptor::UI);
-	static Reflection::PropDescriptor<Accoutrement, G3D::Vector3> prop_AttachmentUp("AttachmentUp", "Appearance", &Accoutrement::getAttachmentUp, &Accoutrement::setAttachmentUp, Reflection::PropertyDescriptor::UI);
-	static Reflection::PropDescriptor<Accoutrement, G3D::Vector3> prop_AttachmentRight("AttachmentRight", "Appearance", &Accoutrement::getAttachmentRight, &Accoutrement::setAttachmentRight, Reflection::PropertyDescriptor::UI);
-	static Reflection::PropDescriptor<Accoutrement, int> prop_BackendAccoutrementState("BackendAccoutrementState", "Appearance", &Accoutrement::getBackendAccoutrementState, &Accoutrement::setBackendAccoutrementState, Reflection::PropertyDescriptor::STREAMING);
+    Object* object = 0;
+    Node* node = descriptor->lookup(lookupKey);
 
-	Accoutrement::Accoutrement()
-		: backendAccoutrementState(NOTHING)
-	{
-		setName("Accoutrement");
-	}
+    if (node && node->value.extract(&object)) {
+        if (stringEqual(object->text, backendState))
+            return;
+    }
 
-	Accoutrement::~Accoutrement()
-	{
-		RBXASSERT(!weld);
-		RBXASSERT(!handleTouched.connected());
-		RBXASSERT(!characterChildAdded.connected());
-		RBXASSERT(!characterChildRemoved.connected());
-	}
-
-	//99.29% match
-	//see Tool::readProperty
-	void Accoutrement::readProperty(const XmlElement* propertyElement, IReferenceBinder& binder)
-	{
-		const Name* name = NULL;
-
-		if (const XmlAttribute* attrib = propertyElement->findAttribute(name_name))
-		{
-			if (attrib->getValue(name))
-			{
-				if (name->toString() == "BackendAccoutrementState")
-					return;
-			}
-		}
-
-		Instance::readProperty(propertyElement, binder);
-	}
-
-	__declspec(noinline) void Accoutrement::downFrom_InCharacter()
-	{
-		characterChildAdded.disconnect();
-		characterChildRemoved.disconnect();
-	}
-
-	const G3D::Vector3 Accoutrement::getAttachmentPos() const
-	{
-		return attachmentPoint.translation;
-	}
-
-	const G3D::Vector3 Accoutrement::getAttachmentForward() const
-	{
-		return attachmentPoint.lookVector();
-	}
-
-	const G3D::Vector3 Accoutrement::getAttachmentUp() const
-	{
-		return attachmentPoint.upVector();
-	}
-
-	const G3D::Vector3 Accoutrement::getAttachmentRight() const
-	{
-		return attachmentPoint.rightVector();
-	}
-
-	PartInstance* Accoutrement::getHandle()
-	{
-		return const_cast<PartInstance*>(getHandleConst());
-	}
-
-	const G3D::CoordinateFrame Accoutrement::getLocation() const
-	{
-		const PartInstance* handle = getHandleConst();
-		return handle ? handle->getCoordinateFrame() : G3D::CoordinateFrame();
-	}
-
-	Accoutrement::AccoutrementState Accoutrement::computeDesiredState()
-	{
-		RBXASSERT(Network::Players::backendProcessing(this, true));
-
-		if (!getHandleConst())
-			return NOTHING;
-
-		if (!Workspace::contextInWorkspace(this))
-			return HAS_HANDLE;
-
-		return computeDesiredState(getParent());
-	}
-
-	Accoutrement::AccoutrementState Accoutrement::computeDesiredState(Instance* testParent)
-	{
-		Humanoid* humanoid = Humanoid::modelIsCharacter(testParent);
-		if (!humanoid)
-			return IN_WORKSPACE;
-
-		if (!humanoid->getTorso())
-			return NOTHING;
-
-		return EQUIPPED;
-	}
-
-	void Accoutrement::onCameraNear(float distance)
-	{
-		for (size_t i = 0; i < numChildren(); i++)
-		{
-			if (ICameraSubject* subject = queryTypedChild<ICameraSubject>((int)i))
-				subject->onCameraNear(distance);
-		}
-	}
-
-	void Accoutrement::render3dSelect(Adorn* adorn, SelectState selectState)
-	{
-		for (size_t i = 0; i < numChildren(); i++)
-		{
-			if (IRenderable* renderable = queryTypedChild<IRenderable>((int)i))
-				renderable->render3dSelect(adorn, selectState);
-		}
-	}
-
-	void Accoutrement::onEvent_AddedBackend(boost::shared_ptr<Instance> child)
-	{
-		if (child.get() != this)
-		{
-			RBXASSERT(ServiceProvider::findServiceProvider(this));
-			RBXASSERT(Network::Players::backendProcessing(this, true));
-
-			AccoutrementState state = computeDesiredState();
-			const ServiceProvider* serviceProvider = ServiceProvider::findServiceProvider(this);
-
-			RBXASSERT(serviceProvider);
-
-			setDesiredState(state, serviceProvider);
-		}
-	}
-
-	void Accoutrement::onEvent_RemovedBackend(boost::shared_ptr<Instance> child)
-	{
-		if (child.get() != this)
-		{
-			RBXASSERT(ServiceProvider::findServiceProvider(this));
-			RBXASSERT(Network::Players::backendProcessing(this, true));
-
-			if (child.get() == (Instance*)this->weld.get())
-			{
-				RBXASSERT(Accoutrement::drawSelected());
-				setDesiredState(NOTHING, ServiceProvider::findServiceProvider(this));
-			}
-
-			AccoutrementState state = computeDesiredState();
-			const ServiceProvider* serviceProvider = ServiceProvider::findServiceProvider(this);
-
-			RBXASSERT(serviceProvider);
-
-			setDesiredState(state, serviceProvider);
-		}
-	}
-
-	void Accoutrement::onEvent_HandleTouched(boost::shared_ptr<Instance> other)
-	{
-		RBXASSERT(Network::Players::backendProcessing(this, true));
-
-		if (backendAccoutrementState == IN_WORKSPACE)
-		{
-			Instance* otherParent = other->getParent();
-			Humanoid* humanoid = Humanoid::modelIsCharacter(otherParent);
-
-			if (humanoid && humanoid->getTorso() && !otherParent->findFirstChildOfType<Accoutrement>())
-			{
-				setParent(otherParent);
-			}
-		}
-	}
-
-	XmlElement* Accoutrement::write()
-	{
-		if (!writeUnlocked)
-			return new XmlElement(tag_External, InstanceHandle(this));
-		else
-			return Instance::write();
-	}
-
-	void Accoutrement::upTo_Equipped()
-	{
-		handleTouched.disconnect();
-
-		std::vector<boost::weak_ptr<PartInstance>> parts;
-		PartInstance::findParts(this, parts);
-		DragUtilities::unJoinFromOutsiders(parts);
-
-		Humanoid* humanoid = Humanoid::modelIsCharacter(getParent());
-		RBXASSERT(humanoid);
-
-		PartInstance* head = humanoid->getHead();
-		RBXASSERT(head);
-
-		PartInstance* handle = getHandle();
-		RBXASSERT(handle);
-
-		buildWeld(head, handle, humanoid->getTopOfHead(), attachmentPoint, "HeadWeld");
-	}
-
-	void Accoutrement::upTo_InCharacter()
-	{
-		RBXASSERT(Humanoid::modelIsCharacter(getParent()));
-
-		characterChildAdded = Instance::event_childAdded.connect(getParent(), boost::bind(&Accoutrement::onEvent_AddedBackend, this, _1));
-		characterChildRemoved = Instance::event_childRemoved.connect(getParent(), boost::bind(&Accoutrement::onEvent_RemovedBackend, this, _1));
-	}
-
-	void Accoutrement::connectTouchEvent()
-	{
-		if (PartInstance* handle = getHandle())
-		{
-			handleTouched = PartInstance::event_Touched.connect(handle, boost::bind(&Accoutrement::onEvent_HandleTouched, this, _1));
-		}
-		else
-		{
-			handleTouched.disconnect();
-		}
-	}
-
-	void Accoutrement::setBackendAccoutrementState(int value)
-	{
-		if (value != backendAccoutrementState)
-		{
-			backendAccoutrementState = (AccoutrementState)value;
-			raisePropertyChanged(prop_BackendAccoutrementState);
-		}
-	}
-
-	void Accoutrement::setAttachmentPoint(const G3D::CoordinateFrame& value)
-	{
-		if (value != attachmentPoint)
-		{
-			attachmentPoint = value;
-
-			if (Workspace* workspace = ServiceProvider::find<Workspace>(this))
-				workspace->raiseDrawChanged();
-
-			raisePropertyChanged(prop_AttachmentPoint);
-
-			if (weld)
-			{
-				RBXASSERT(Network::Players::backendProcessing(this, true));
-				weld->setC1(attachmentPoint);
-			}
-		}
-	}
-
-	void Accoutrement::setAttachmentPos(const G3D::Vector3& v)
-	{
-		setAttachmentPoint(G3D::CoordinateFrame(attachmentPoint.rotation, v));
-	}
-
-	void Accoutrement::setAttachmentForward(const G3D::Vector3& v)
-	{
-		G3D::CoordinateFrame c = attachmentPoint;
-		G3D::Vector3 oldX = c.rotation.getColumn(0);
-		G3D::Vector3 oldY = c.rotation.getColumn(1);
-
-		G3D::Vector3 z = -v.direction();
-
-		G3D::Vector3 x = oldY.cross(z);
-		x.unitize();
-
-		G3D::Vector3 y = z.cross(x);
-		y.unitize();
-		
-		c.rotation.setColumn(0, x);
-		c.rotation.setColumn(1, y);
-		c.rotation.setColumn(2, z);
-
-		setAttachmentPoint(c);
-	}
-
-	const PartInstance* Accoutrement::getHandleConst() const
-	{
-		return dynamic_cast<PartInstance*>(findFirstChildByName("Handle"));
-	}
-
-	void Accoutrement::upTo_InWorkspace()
-	{
-		RBXASSERT(ServiceProvider::findServiceProvider(this));
-		RBXASSERT(Network::Players::backendProcessing(this, true));
-	}
-
-	void Accoutrement::downFrom_HasHandle()
-	{
-		handleTouched.disconnect();
-	}
-
-	void Accoutrement::setDesiredState(AccoutrementState desiredState, const ServiceProvider* serviceProvider)
-	{
-		do
-		{
-			RBXASSERT(Network::Players::backendProcessing(serviceProvider, true));
-
-			if (backendAccoutrementState < desiredState)
-			{
-				switch (backendAccoutrementState)
-				{
-				case IN_CHARACTER:
-					upTo_Equipped();
-					break;
-				case IN_WORKSPACE:
-					upTo_InCharacter();
-					break;
-				case HAS_HANDLE:
-					upTo_InWorkspace();
-					break;
-				case NOTHING:
-					connectTouchEvent();
-					break;
-				default:
-					RBXASSERT(false);
-					break;
-				}
-
-				setBackendAccoutrementState(backendAccoutrementState + HAS_HANDLE);
-			}
-			else if (desiredState < backendAccoutrementState)
-			{
-				switch (backendAccoutrementState)
-				{
-				case EQUIPPED:
-					downFrom_Equipped();
-					break;
-				case IN_CHARACTER:
-					downFrom_InCharacter();
-					break;
-				case IN_WORKSPACE:
-					break;
-				case HAS_HANDLE:
-					downFrom_HasHandle();
-					break;
-				default:
-					RBXASSERT(false);
-					break;
-				}
-
-				setBackendAccoutrementState(backendAccoutrementState - HAS_HANDLE);
-			} 
-		} while (desiredState != backendAccoutrementState);
-	}
-
-	Hat::Hat()
-	{
-		setName("Hat");
-	}
+    fallback(descriptor, argument);
 }

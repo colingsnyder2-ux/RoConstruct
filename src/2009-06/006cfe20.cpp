@@ -1,108 +1,56 @@
-// from server: 30% by colin
-// roc-lang: cpp
+// from server: 78% by EspClaude
+// from server: 100% by EspClaude
+// roc 2008-06 006444f0  unit: RBX::HUMAN::Climbing
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+#include <vector>
+#include <set>
 
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
+namespace RBX {
+class Primitive;
+class ContactManager {
+public:
+    bool intersectingOthers(Primitive* p, const std::set<Primitive*>& ignore, float overlap);
+};
+class World {
+public:
+    char pad[0x84];
+    ContactManager* contactManager;
+    ContactManager* getContactManager() const { return contactManager; }
+};
+class Humanoid {
+public:
+    char pad[0x21c];
+    World* world;
+    World* getWorld() const { return world; }
+    void getPrimitives(std::vector<Primitive*>& primitives);
+    Primitive* getLeftArm();
+    Primitive* getRightArm();
+};
+namespace HUMAN {
+class Climbing {
+public:
+    void* vtbl;
+    void* pad;
+    Humanoid* humanoid;
+    bool armsTouching();
+};
 
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
-
-boost::mutex& moo2()
+bool Climbing::armsTouching()
 {
-	static boost::mutex mutex2;
-	return mutex2;
+    World* world = humanoid->getWorld();
+    if (world)
+    {
+        std::vector<Primitive*> primitives;
+        humanoid->getPrimitives(primitives);
+        std::set<Primitive*> ignore(primitives.begin(), primitives.end());
+
+        if (humanoid->getLeftArm() && world->getContactManager()->intersectingOthers(humanoid->getLeftArm(), ignore, 0.0f))
+            return true;
+        if (humanoid->getRightArm() && world->getContactManager()->intersectingOthers(humanoid->getRightArm(), ignore, 0.0f))
+            return true;
+    }
+    return false;
 }
-
-void initMoo()
-{
-	moo2();
 }
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
 }

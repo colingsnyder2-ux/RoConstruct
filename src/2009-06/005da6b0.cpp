@@ -1,237 +1,434 @@
-// from server: 68% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: g3d-6.09 G3Dcpp/stringutils.cpp
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// roc-lib: rbxgs-atl90-dll util/ContentProvider.cpp
 
 // Candidate translation unit (score above; library headers required).
-/**
- @file stringutils.cpp
+#include "util/ContentProvider.h"
+#include "util/standardout.h"
+#include "util/Http.h"
+#include "util/FileSystem.h"
+#include "v8xml/SerializerV2.h"
+#include <atlutil.h>
+#include <G3D/format.h>
+#include <boost/shared_ptr.hpp>
+#include <boost/iostreams/copy.hpp>
 
- @maintainer Morgan McGuire, matrix@graphics3d.com
+namespace RBX
+{
+	// TODO: check match
+	bool operator<(const ContentId& a, const ContentId& b)
+	{
+		return a.toString() < b.toString();
+	}
 
- @created 2000-09-09
- @edited  2005-09-10
-*/
+	bool operator!=(const ContentId& a, const ContentId& b)
+	{
+		return a.toString() != b.toString();
+	}
 
-#include "G3D/platform.h"
-#include "G3D/stringutils.h"
-#include "G3D/BinaryInput.h"
-#include <algorithm>
+	ContentId ContentId::fromAssets(const std::string& filePath)
+	{
+		std::string header = "rbxasset://";
+		return ContentId(header + filePath);
+	}
 
-namespace G3D {
+	ContentProvider::ContentProvider()
+	{
+		char path[MAX_PATH];
+		if (SHGetFolderPathAndSubDirA(NULL, CSIDL_COMMON_APPDATA, NULL, SHGFP_TYPE_CURRENT, "Roblox\\content\\", (LPSTR)&path) == S_OK)
+		{
+			this->singleton().setAssetFolder(path);
+		}
+		else
+		{
+			StandardOut::singleton()->print(MESSAGE_WARNING, "Failed to get asset folder");
+		}
 
-#ifdef G3D_WIN32
-    // disable: "C++ exception handler used"
-#   pragma warning (push)
-#   pragma warning (disable : 4530)
-    const char* NEWLINE = "\r\n";
-#else
-    const char* NEWLINE = "\n";
-    static bool iswspace(int ch) { return (ch==' ' || ch=='\t' || ch=='\n'); }
-#endif
+		requestProcessor.reset(new worker_thread(boost::bind(&ContentProvider::processRequests, this), "rbx_content"));
+	}
 
-bool beginsWith(
-    const std::string& test,
-    const std::string& pattern) {
+	ContentProvider::~ContentProvider()
+	{
+		requestProcessor->join();
+	}
 
-    if (test.size() >= pattern.size()) {
-        for (int i = 0; i < (int)pattern.size(); ++i) {
-            if (pattern[i] != test[i]) {
-                return false;
-            }
-        }
-        return true;
-    } else {
-        return false;
-    }
+	bool ContentProvider::isHttpUrl(const std::string& s)
+	{
+		if (s.find("http://") == 0)
+			return true;
+
+		if (s.find("https://") == 0)
+			return true;
+
+		return false;
+	}
+
+	std::string ContentProvider::assetFolder() const
+	{
+		return assetFolderPath;
+	}
+
+	bool ContentProvider::isRequestQueueEmpty()
+	{
+		boost::mutex::scoped_lock lock(requestSync);
+		return requestQueue.empty();
+	}
+
+	bool ContentProvider::isUrlBad(const char* url)
+	{
+		boost::mutex::scoped_lock lock(requestSync);
+
+		std::list<FailedUrl>::iterator iter = failedUrls.begin();
+		std::list<FailedUrl>::iterator end = failedUrls.end();
+
+		for (; iter != end; iter++)
+		{
+			if (boost::posix_time::second_clock::local_time() >= iter->expiration)
+			{
+				failedUrls.erase(iter, end);
+				return false;
+			}
+			else if (iter->url == url)
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	void ContentProvider::clearContentCache()
+	{
+		boost::mutex::scoped_lock lock(contentCacheMutex);
+		contentCache.clear();
+	}
+
+	void ContentProvider::load(ContentId id, std::vector<boost::shared_ptr<Instance>>& instances)
+	{
+		boost::scoped_ptr<std::istream> stream(getContent(id));
+		
+		TextXmlParser machine(stream->rdbuf());
+		boost::scoped_ptr<XmlElement> root(machine.parse());
+
+		SerializerV2().loadInstances(root.get(), instances);
+	}
+
+	bool ContentProvider::hasContent(ContentId id)
+	{
+		return loadContent(id, NoHttpRequest) != NULL;
+	}
+
+	std::string ContentProvider::getAssetFile(const std::string& filePath)
+	{
+		return getFile(ContentId::fromAssets(filePath));
+	}
+
+	std::string ContentProvider::getFile(ContentId ticket)
+	{
+		CachedContent* content = loadContent(ticket, SyncHttpRequest);
+		if (content && registerFile(content))
+		{
+			return *content->filename;
+		}
+
+		throw std::runtime_error(G3D::format("Unable to load %s", ticket.c_str()));
+	}
+
+	bool ContentProvider::requestContentFile(ContentId id, std::string& filename)
+	{
+		CachedContent* content = loadContent(id, AsyncHttpRequest);
+		if (!content)
+			return false;
+
+		if (!registerFile(content))
+			return false;
+
+		filename = *content->filename;
+		return true;
+	}
+
+	boost::shared_ptr<const std::string> ContentProvider::requestContentString(ContentId id)
+	{
+		CachedContent* content = loadContent(id, AsyncHttpRequest);
+		if (!content)
+			return boost::shared_ptr<const std::string>();
+
+		boost::mutex::scoped_lock lock(contentCacheMutex);
+
+		if (!content->data)
+		{
+			std::ifstream stream(content->filename->c_str(), std::ios::binary | std::ios::in);
+			std::ostringstream data;
+
+			boost::iostreams::copy(stream, data);
+
+			content->data.reset(new std::string(data.str()));
+		}
+
+		return content->data;
+	}
+
+	std::string ContentProvider::findAsset(ContentId contentId)
+	{
+		RBXASSERT(contentId.isAsset());
+
+		ATL::CPath filePath((assetFolderPath + (contentId.c_str() + 11)).c_str());
+		if (!filePath.FileExists())
+			return "";
+
+		return std::string(filePath);
+	}
+
+	std::string ContentProvider::findFile(ContentId contentId)
+	{
+		RBXASSERT(contentId.isFile());
+
+		const char* file = contentId.c_str();
+		file += 7;
+
+		ATL::CPath filePath(file);
+		if (!filePath.FileExists())
+			return "";
+
+		return std::string(filePath);
+	}
+
+	static ATL::CPath getLocalCachePath(bool createPath)
+	{
+		ATL::CPath path;
+
+		if (createPath)
+		{
+			static std::string s = FileSystem::getCacheDirectory(true);
+			path.m_strPath.SetString(s.c_str());
+		}
+		else
+		{
+			static std::string s = FileSystem::getCacheDirectory(false);
+			path.m_strPath.SetString(s.c_str());
+		}
+
+		return path;
+	}
+
+	std::string ContentProvider::findHashFile(ContentId contentId)
+	{
+		ATL::CPath cachePath = getLocalCachePath(true);
+
+		ATL::CPath filePath = cachePath;
+		filePath.Append(contentId.c_str());
+
+		if (!filePath.FileExists())
+			return "";
+
+		return std::string(filePath);
+	}
+
+	void ContentProvider::setAssetFolder(const char* sPath)
+	{
+		StandardOut::singleton()->print(MESSAGE_INFO, "setAssetFolder %s", sPath);
+
+		ATL::CPath path(sPath);
+
+		if (path.IsRelative())
+			throw std::runtime_error(G3D::format("The path \'%s\' is a relative path", path));
+
+		if (!path.IsDirectory())
+			throw std::runtime_error(G3D::format("The path \'%s\' does not exist", path));
+
+		path.AddBackslash();
+		assetFolderPath = path;
+	}
+
+	ContentId ContentProvider::registerContent(std::istream& content, const Name& mimeType)
+	{
+		ContentId id;
+
+		{
+			boost::scoped_ptr<MD5Hasher> hasher(MD5Hasher::create());
+			hasher->addData(content);
+			id = ContentId(hasher->toString(), mimeType);
+		}
+
+		ATL::CPath filePath = getLocalCachePath(true);
+		filePath.Append(id.c_str());
+
+		if (!filePath.FileExists())
+		{
+			std::ofstream outStream(filePath, std::ios::binary | std::ios::out);
+			content.clear();
+			content.seekg(0, std::ios::beg);
+
+			do
+			{
+				char buffer[1024];
+				content.read(buffer, sizeof(buffer));
+				outStream.write(buffer, content.gcount());
+			}
+			while (content.gcount() > 0);
+		}
+
+		return id;
+	}
+
+	bool ContentProvider::registerFile(CachedContent* item)
+	{
+		CachedContent temp;
+
+		{
+			boost::mutex::scoped_lock lock(contentCacheMutex);
+			temp = *item;
+		}
+
+		if (!temp.filename)
+		{
+			std::istringstream ss(*temp.data);
+			ContentId hash = registerContent(ss, Name::getNullName());
+
+			std::string filename = findHashFile(hash);
+			if (filename.empty())
+				return false;
+
+			temp.filename.reset(new std::string(filename));
+
+			boost::mutex::scoped_lock lock(contentCacheMutex);
+			*item = temp;
+		}
+
+		return true;
+	}
+
+	ContentId ContentProvider::readContent(const char* id, std::istream& stream, unsigned long dataLength)
+	{
+		ContentId contentId(id);
+
+		if (hasContent(contentId))
+		{
+			stream.clear();
+			stream.seekg(dataLength, std::ios::cur);
+		}
+		else
+		{
+			ATL::CPath filePath = getLocalCachePath(true);
+			filePath.Append(contentId.c_str());
+
+			std::ofstream content;
+			content.open(filePath, std::ios::binary | std::ios::out);
+
+			char data;
+
+			for (unsigned long i = 0; i < dataLength; i++)
+			{
+				RBXASSERT(content.good());
+				stream.get(data);
+				content << data;
+			}
+		}
+
+		return contentId;
+	}
+
+	ContentProvider::FailedUrl::FailedUrl(const char* url)
+		: url(url),
+		  expiration(boost::posix_time::second_clock::local_time() + boost::posix_time::minutes(5))
+	{
+	}
+
+	class MD5HasherImpl : public MD5Hasher
+	{
+	private:
+		HCRYPTPROV hProv;
+		HCRYPTHASH hHash;
+		std::string result;
+
+	public:
+		MD5HasherImpl()
+			: hProv(NULL),
+			  hHash(NULL),
+			  result()
+		{
+			if (!CryptAcquireContextA(&hProv, NULL, NULL, PROV_RSA_FULL, CRYPT_VERIFYCONTEXT))
+			{
+				StandardOut::singleton()->print(MESSAGE_ERROR, "Error during CryptAcquireContext. GetLastError = %d", GetLastError());
+			}
+
+			if (!CryptCreateHash(hProv, CALG_MD5, NULL, NULL, &hHash))
+			{
+				StandardOut::singleton()->print(MESSAGE_ERROR, "Error during CryptCreateHash. GetLastError = %d", GetLastError());
+			}
+		}
+		~MD5HasherImpl()
+		{
+		}
+
+	public:
+		virtual void addData(const char* data, size_t nBytes)
+		{
+			if (!CryptHashData(hHash, (const BYTE*)data, (DWORD)nBytes, 0))
+			{
+				StandardOut::singleton()->print(MESSAGE_ERROR, "Error during CryptHashData. GetLastError = %d", GetLastError());
+			}
+		}
+		virtual void addData(const std::string& data)
+		{
+			if (!CryptHashData(hHash, (const BYTE*)data.c_str(), (DWORD)data.length(), 0))
+			{
+				StandardOut::singleton()->print(MESSAGE_ERROR, "Error during CryptHashData. GetLastError = %d", GetLastError());
+			}
+		}
+		virtual void addData(std::istream& data)
+		{
+			data.clear();
+			data.seekg(0, std::ios_base::beg);
+
+			char buffer[1024];
+			do
+			{
+				data.read(buffer, sizeof(buffer));
+				addData(buffer, data.gcount());
+			}
+			while (data.gcount() > 0);
+		}
+		virtual std::string toString()
+		{
+			c_str();
+			return result;
+		}
+		virtual const char* c_str()
+		{
+			if (result.empty())
+			{
+				DWORD hashSize;
+				DWORD hashSizeLen = sizeof(DWORD);
+				if (!CryptGetHashParam(hHash, HP_HASHSIZE, (BYTE*)&hashSize, &hashSizeLen, 0))
+				{
+					StandardOut::singleton()->print(MESSAGE_ERROR, "Error during CryptGetHashParam. GetLastError = %d", GetLastError());
+				}
+
+				char* hashValue = new char[hashSize];
+				if (!CryptGetHashParam(hHash, HP_HASHVAL, (BYTE*)&hashValue, &hashSize, 0))
+				{
+					StandardOut::singleton()->print(MESSAGE_ERROR, "Error during CryptGetHashParam. GetLastError = %d", GetLastError());
+				}
+
+				for (int i = 0; i < (int)hashSize; ++i)
+				{
+					ATL::CString temp;
+					temp.Format("%x", hashValue[i]);
+					result += temp.GetString();
+				}
+
+				delete[] hashValue;
+			}
+
+			return result.c_str();
+		}
+	};
+
+	MD5Hasher* MD5Hasher::create()
+	{
+		return new MD5HasherImpl();
+	}
 }
-
-
-bool endsWith(
-    const std::string& test,
-    const std::string& pattern) {
-
-    if (test.size() >= pattern.size()) {
-        int te = test.size() - 1;
-        int pe = pattern.size() - 1;
-        for (int i = pattern.size() - 1; i >= 0; --i) {
-            if (pattern[pe - i] != test[te - i]) {
-                return false;
-            }
-        }
-        return true;
-    } else {
-        return false;
-    }
-}
-
-
-std::string wordWrap(
-    const std::string&      input,
-    int                     numCols) {
-
-    std::string output;
-    size_t      c = 0;
-    int         len;
-
-    // Don't make lines less than this length
-    int         minLength = numCols / 4;
-    size_t      inLen = input.size();
-
-    bool first = true;
-    while (c < inLen) {
-        if (first) {
-            first = false;
-        } else {
-            output += NEWLINE;
-        }
-
-        if ((int)inLen - (int)c - 1 < numCols) {
-            // The end
-            output += input.substr(c, inLen - c);
-            break;
-        }
-
-        len = numCols;
-
-        // Look at character c + numCols, see if it is a space.
-        while ((len > minLength) &&
-               (input[c + len] != ' ')) {
-            len--;
-        }
-
-        if (len == minLength) {
-            // Just crop
-            len = numCols;
-
-        }
-
-        output += input.substr(c, len);
-        c += len;
-        if (c < input.size()) {
-            // Collapse multiple spaces.
-            while ((input[c] == ' ') && (c < input.size())) {
-                c++;
-            }
-        }
-    }
-
-    return output;
-}
-
-
-int stringCompare(
-    const std::string&      s1,
-    const std::string&      s2) {
-
-    return stringPtrCompare(&s1, &s2);
-}
-
-
-int stringPtrCompare(
-    const std::string*      s1,
-    const std::string*      s2) {
-
-    return s1->compare(*s2);
-}
-
-
-std::string toUpper(const std::string& x) {
-    std::string result = x;
-    std::transform(result.begin(), result.end(), result.begin(), toupper);
-    return result;
-}
-
-
-std::string toLower(const std::string& x) {
-    std::string result = x;
-    std::transform(result.begin(), result.end(), result.begin(), tolower);
-    return result;
-}
-
-
-Array<std::string> stringSplit(
-    const std::string&          x,
-    char                        splitChar) {
-
-    size_t prev, cur = 0;
-    Array<std::string> out;
-
-    while (cur < x.size()) {
-        prev = cur;
-        cur = x.find(splitChar, prev + 1);
-
-        if (cur == std::string::npos) {
-            cur = x.size();
-        }
-
-        out.append(x.substr(prev, cur - prev));
-        ++cur;
-    }
-
-    return out;
-}
-
-
-std::string stringJoin(
-    const Array<std::string>&   a,
-    char                        joinChar) {
-
-    std::string out;
-
-    for (int i = 0; i < (int)a.size() - 1; ++i) {
-        out += a[i] + joinChar;
-    }
-
-    if (a.size() > 0) {
-        return out + a.last();
-    } else {
-        return out;
-    }
-}
-
-
-std::string stringJoin(
-    const Array<std::string>&   a,
-    const std::string&          joinStr) {
-
-    std::string out;
-
-    for (int i = 0; i < (int)a.size() - 1; ++i) {
-        out += a[i] + joinStr;
-    }
-
-    if (a.size() > 0) {
-        return out + a.last();
-    } else {
-        return out;
-    }
-}
-
-
-std::string trimWhitespace(
-    const std::string&              s) {
-
-    size_t left = 0;
-    
-    // Trim from left
-    while ((left < s.length()) && iswspace(s[left])) {
-        ++left;
-    }
-
-    int right = s.length() - 1;
-    // Trim from right
-    while ((right > (int)left) && iswspace(s[right])) {
-        --right;
-    }
-    
-    return s.substr(left, right - left + 1);
-}
-
-}; // namespace
-
-#undef NEWLINE
-#ifdef G3D_WIN32
-#   pragma warning (pop)
-#endif

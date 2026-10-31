@@ -1,20 +1,16 @@
-// from server: 70% by colin
+// from server: 87% by EspClaude
+// from server: 100% by colin
 // roc-lang: cpp
-// roc-cl: 50727
+// roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/Teams.cpp
+// roc-lib: rbxgs-dll roc_unit_1e49fe32c2e377dc.cpp
 
 // Candidate translation unit (score above; library headers required).
+#undef _RELEASEASSERT
+#pragma include_alias("v8tree/Instance.h","roc_unit_b34763c2f3d3f398.cpp")
+#pragma include_alias("v8datamodel/IRenderable.h","roc_unit_b8671ae8d3010f90.cpp")
 #include "v8datamodel/Teams.h"
-#include "v8datamodel/ModelInstance.h"
-#include "Network/Players.h"
-
-namespace RBX
-{
-	const char* sTeams = "Teams";
-
-	static Reflection::BoundFuncDesc<Teams, void(void), 0> teams_rebalanceTeamsFunction(&Teams::rebalanceTeams, "RebalanceTeams", Reflection::FunctionDescriptor::AnyCaller);
-	static Reflection::BoundFuncDesc<Teams, boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>>(void), 0> func_teams(&Teams::getTeams, "GetTeams", Reflection::FunctionDescriptor::AnyCaller);
+namespace RBX {
 
 	Teams::Teams()
 		: teams(std::vector<boost::shared_ptr<Instance>>())
@@ -24,26 +20,6 @@ namespace RBX
 
 	Teams::~Teams()
 	{
-	}
-
-	int Teams::getNumPlayersInTeam(BrickColor brickColor)
-	{
-		int numOfPlayers = 0;
-
-		Network::Players* players = ServiceProvider::find<Network::Players>(this);
-		RBXASSERT(players);
-
-		for (size_t i = 0; i < players->numChildren(); i++)
-		{
-			Network::Player* player = dynamic_cast<Network::Player*>(players->getChild(i));
-			if (player)
-			{
-				if (!player->getNeutral() && player->getTeamColor() == brickColor)
-					numOfPlayers++;
-			}
-		}
-		
-		return numOfPlayers;
 	}
 	
 	bool Teams::teamExists(BrickColor brickColor)
@@ -61,59 +37,6 @@ namespace RBX
 		}
 		
 		return NULL;
-	}
-
-	G3D::Color3 Teams::getTeamColorForHumanoid(Humanoid* humanoid)
-	{
-		Network::Players* players = ServiceProvider::find<Network::Players>(this);
-		RBXASSERT(players);
-
-		for (size_t i = 0; i < players->numChildren(); i++)
-		{
-			Network::Player* player = dynamic_cast<Network::Player*>(players->getChild(i));
-			if (player)
-			{
-				if (!player->getNeutral() && player->getCharacter())
-				{
-					ModelInstance* character = player->getCharacter();
-					if (character->findFirstChildOfType<Humanoid>() == humanoid)
-					{
-						return player->getTeamColor().color3();
-					}
-				}
-			}
-		}
-
-		return G3D::Color3::white();
-	}
-
-	void Teams::assignNewPlayerToTeam(Network::Player* player)
-	{
-		BrickColor best = BrickColor::lego_28;
-		int best_count = 10000;
-		bool found = false;
-
-		for (size_t i = 0; i < numChildren(); i++)
-		{
-			Team* team = dynamic_cast<Team*>(getChild(i));
-			if (team && team->getAutoAssignable() == true)
-			{
-				int count = getNumPlayersInTeam(team->getTeamColor());
-
-				if (count < best_count)
-				{
-					best = team->getTeamColor();
-					best_count = count;
-					found = true;
-				}
-			}
-		}
-		
-		if (found)
-		{
-			player->setTeamColor(best);
-			player->setNeutral(false);
-		}
 	}
 
 	void Teams::onChildAdded(Instance* child)

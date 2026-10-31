@@ -1,304 +1,162 @@
-// from server: 45% by colin
-// roc-lang: cpp
-// roc-cl: 30729
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client App/v8tree/Instance.cpp
+// from server: 79% by EspClaude
+// from server: 100% by colin
+// roc 2008-06 005574d0  unit: RBX::VInstance::?$NonFactoryProduct  size: 249 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 005574d0
+//
+// 005574d0  6aff                 push -1
+// 005574d2  6802c57c00           push 0x7cc502
+// 005574d7  64a100000000         mov eax, dword ptr fs:[0]
+// 005574dd  50                   push eax
+// 005574de  64892500000000       mov dword ptr fs:[0], esp
+// 005574e5  83ec3c               sub esp, 0x3c
+// 005574e8  56                   push esi
+// 005574e9  8bf1                 mov esi, ecx
+// 005574eb  8b8e04010000         mov ecx, dword ptr [esi + 0x104]
+// 005574f1  c744240400000000     mov dword ptr [esp + 4], 0
+// 005574f9  85c9                 test ecx, ecx
+// 005574fb  0f84a3000000         je 0x5575a4
+// 00557501  83b90401000000       cmp dword ptr [ecx + 0x104], 0
+// 00557508  7473                 je 0x55757d
+// 0055750a  8d442424             lea eax, [esp + 0x24]
+// 0055750e  50                   push eax
+// 0055750f  e8bcffffff           call 0x5574d0
+// 00557514  688cca8100           push 0x81ca8c
+// 00557519  50                   push eax
+// 0055751a  8d4c2410             lea ecx, [esp + 0x10]
+// 0055751e  51                   push ecx
+// 0055751f  c744245400000000     mov dword ptr [esp + 0x54], 0
+// 00557527  ff15e4238000         call dword ptr [0x8023e4]
+// 0055752d  81c610010000         add esi, 0x110
+// 00557533  56                   push esi
+// 00557534  8b742460             mov esi, dword ptr [esp + 0x60]
+// 00557538  50                   push eax
+// 00557539  56                   push esi
+// 0055753a  c644246001           mov byte ptr [esp + 0x60], 1
+// 0055753f  ff15a8248000         call dword ptr [0x8024a8]
+// 00557545  83c418               add esp, 0x18
+// 00557548  8d4c2408             lea ecx, [esp + 8]
+// 0055754c  c644244800           mov byte ptr [esp + 0x48], 0
+// 00557551  ff1568248000         call dword ptr [0x802468]
+// 00557557  8d4c2424             lea ecx, [esp + 0x24]
+// 0055755b  c7442448ffffffff     mov dword ptr [esp + 0x48], 0xffffffff
+// 00557563  ff1568248000         call dword ptr [0x802468]
+// 00557569  8bc6                 mov eax, esi
+// 0055756b  5e                   pop esi
+// 0055756c  8b4c243c             mov ecx, dword ptr [esp + 0x3c]
+// 00557570  64890d00000000       mov dword ptr fs:[0], ecx
+// 00557577  83c448               add esp, 0x48
+// 0055757a  c20400               ret 4
+// 0055757d  81c610010000         add esi, 0x110
+// 00557583  56                   push esi
+// 00557584  8b742454             mov esi, dword ptr [esp + 0x54]
+// 00557588  8bce                 mov ecx, esi
+// 0055758a  ff155c248000         call dword ptr [0x80245c]
+// 00557590  8bc6                 mov eax, esi
+// 00557592  5e                   pop esi
+// 00557593  8b4c243c             mov ecx, dword ptr [esp + 0x3c]
+// 00557597  64890d00000000       mov dword ptr fs:[0], ecx
+// 0055759e  83c448               add esp, 0x48
+// 005575a1  c20400               ret 4
+// 005575a4  8b742450             mov esi, dword ptr [esp + 0x50]
+// 005575a8  6816b78000           push 0x80b716
+// 005575ad  8bce                 mov ecx, esi
+// 005575af  ff1558248000         call dword ptr [0x802458]
+// 005575b5  8b4c2440             mov ecx, dword ptr [esp + 0x40]
+// 005575b9  8bc6                 mov eax, esi
+// 005575bb  5e                   pop esi
+// 005575bc  64890d00000000       mov dword ptr fs:[0], ecx
+// 005575c3  83c448               add esp, 0x48
+// 005575c6  c20400               ret 4
 
-// Candidate translation unit (score above; library headers required).
-#include "v8tree/Instance.h"
+// from server: 88% by king_originala
+// roc 2008-06 005574d0  unit: RBX::VInstance::?$NonFactoryProduct  size: 249 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 005574d0
+//
+// 005574d0  6aff                 push -1
+// 005574d2  6802c57c00           push 0x7cc502
+// 005574d7  64a100000000         mov eax, dword ptr fs:[0]
+// 005574dd  50                   push eax
+// 005574de  64892500000000       mov dword ptr fs:[0], esp
+// 005574e5  83ec3c               sub esp, 0x3c
+// 005574e8  56                   push esi
+// 005574e9  8bf1                 mov esi, ecx
+// 005574eb  8b8e04010000         mov ecx, dword ptr [esi + 0x104]
+// 005574f1  c744240400000000     mov dword ptr [esp + 4], 0
+// 005574f9  85c9                 test ecx, ecx
+// 005574fb  0f84a3000000         je 0x5575a4
+// 00557501  83b90401000000       cmp dword ptr [ecx + 0x104], 0
+// 00557508  7473                 je 0x55757d
+// 0055750a  8d442424             lea eax, [esp + 0x24]
+// 0055750e  50                   push eax
+// 0055750f  e8bcffffff           call 0x5574d0
+// 00557514  688cca8100           push 0x81ca8c
+// 00557519  50                   push eax
+// 0055751a  8d4c2410             lea ecx, [esp + 0x10]
+// 0055751e  51                   push ecx
+// 0055751f  c744245400000000     mov dword ptr [esp + 0x54], 0
+// 00557527  ff15e4238000         call dword ptr [0x8023e4]
+// 0055752d  81c610010000         add esi, 0x110
+// 00557533  56                   push esi
+// 00557534  8b742460             mov esi, dword ptr [esp + 0x60]
+// 00557538  50                   push eax
+// 00557539  56                   push esi
+// 0055753a  c644246001           mov byte ptr [esp + 0x60], 1
+// 0055753f  ff15a8248000         call dword ptr [0x8024a8]
+// 00557545  83c418               add esp, 0x18
+// 00557548  8d4c2408             lea ecx, [esp + 8]
+// 0055754c  c644244800           mov byte ptr [esp + 0x48], 0
+// 00557551  ff1568248000         call dword ptr [0x802468]
+// 00557557  8d4c2424             lea ecx, [esp + 0x24]
+// 0055755b  c7442448ffffffff     mov dword ptr [esp + 0x48], 0xffffffff
+// 00557563  ff1568248000         call dword ptr [0x802468]
+// 00557569  8bc6                 mov eax, esi
+// 0055756b  5e                   pop esi
+// 0055756c  8b4c243c             mov ecx, dword ptr [esp + 0x3c]
+// 00557570  64890d00000000       mov dword ptr fs:[0], ecx
+// 00557577  83c448               add esp, 0x48
+// 0055757a  c20400               ret 4
+// 0055757d  81c610010000         add esi, 0x110
+// 00557583  56                   push esi
+// 00557584  8b742454             mov esi, dword ptr [esp + 0x54]
+// 00557588  8bce                 mov ecx, esi
+// 0055758a  ff155c248000         call dword ptr [0x80245c]
+// 00557590  8bc6                 mov eax, esi
+// 00557592  5e                   pop esi
+// 00557593  8b4c243c             mov ecx, dword ptr [esp + 0x3c]
+// 00557597  64890d00000000       mov dword ptr fs:[0], ecx
+// 0055759e  83c448               add esp, 0x48
+// 005575a1  c20400               ret 4
+// 005575a4  8b742450             mov esi, dword ptr [esp + 0x50]
+// 005575a8  6816b78000           push 0x80b716
+// 005575ad  8bce                 mov ecx, esi
+// 005575af  ff1558248000         call dword ptr [0x802458]
+// 005575b5  8b4c2440             mov ecx, dword ptr [esp + 0x40]
+// 005575b9  8bc6                 mov eax, esi
+// 005575bb  5e                   pop esi
+// 005575bc  64890d00000000       mov dword ptr fs:[0], ecx
+// 005575c3  83c448               add esp, 0x48
+// 005575c6  c20400               ret 4
 
-#include "decomp.h"
 
-#include <algorithm>
-#include <cstddef>
 
-namespace RBX {
+#include <string>
+typedef std::string String;
 
-const char sInstance[] = "Instance";
+struct Instance {
+    char padding[0x104];
+    Instance *parent;
+    char reserved[8];
+    String name;
 
-const Reflection::RefPropDescriptor<Instance, Instance> Instance::propParent(
-	"Parent",
-	"Data",
-	&Instance::getParent,
-	&Instance::setParent,
-	Reflection::PropertyDescriptor::UI
-);
+    String fullName();
+};
 
-Reflection::SignalDesc<Instance, void(shared_ptr<Instance>)> Instance::event_childAdded("ChildAdded", "child");
-
-Reflection::SignalDesc<Instance, void(shared_ptr<Instance>)> Instance::event_childRemoved("ChildRemoved", "child");
-
-Reflection::SignalDesc<Instance, void(shared_ptr<Instance>)> Instance::event_ancestryChanged(
-	"AncestryChanged",
-	"child"
-);
-
-Reflection::SignalDesc<Instance, void(const Reflection::PropertyDescriptor*)> Instance::event_propertyChanged(
-	"Changed",
-	"property"
-);
-
-ChildAdded::ChildAdded(Instance* child) : child(shared_from(child))
+String Instance::fullName()
 {
+    if (parent) {
+        if (parent->parent)
+            return parent->fullName() + "." + name;
+        return name;
+    }
+    return "";
 }
-
-ChildRemoved::ChildRemoved(Instance* child) : child(shared_from(child))
-{
-}
-
-// STUB: WEBSERVICE 0x10047af0
-void Instance::onChildChanged(Instance* instance, const PropertyChanged& event)
-{
-	if (parent != NULL) {
-		parent->onChildChanged(instance, event);
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x10047b20
-bool Instance::contains(const Instance* child) const
-{
-	while (child != 0) {
-		if (child == this) {
-			return true;
-		}
-
-		child = child->parent;
-	}
-
-	return false;
-}
-
-// FUNCTION: WEBSERVICE 0x10048340
-void Instance::readProperties(const XmlElement* container, IReferenceBinder& binder)
-{
-	for (XmlElement* child = container->firstChild(); child != NULL; child = child->nextSibling()) {
-		readProperty(child, binder);
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x10048370
-void Instance::writeChildren(XmlElement* container)
-{
-	const std::vector<shared_ptr<Instance> >* kids = children.operator->();
-
-	if (kids != NULL) {
-		for (std::vector<shared_ptr<Instance> >::const_iterator it = kids->begin(); it != kids->end(); ++it) {
-			XmlElement* child = (*it)->write();
-
-			if (child != NULL) {
-				container->addChild(child);
-			}
-		}
-	}
-}
-
-// STUB: WEBSERVICE 0x100483f0
-Instance* Instance::findFirstChildByName(const std::string& findName) const
-{
-	STUB(0x100483f0);
-	return NULL;
-}
-
-// FUNCTION: WEBSERVICE 0x10048fb0
-void Instance::signalDescendentAdded(Instance* instance, Instance* beginParent, Instance* oldParent)
-{
-	for (Instance* walk = beginParent; walk != NULL; walk = walk->parent) {
-		if (walk == oldParent) {
-			break;
-		}
-
-		if (walk->isAncestorOf(oldParent)) {
-			break;
-		}
-
-		walk->onDescendentAdded(instance);
-	}
-
-	boost::shared_ptr<const std::vector<shared_ptr<Instance> > > c = instance->children.read();
-
-	if (c) {
-		for (std::vector<shared_ptr<Instance> >::const_iterator it = c->begin(); it != c->end(); ++it) {
-			signalDescendentAdded(it->get(), beginParent, oldParent);
-		}
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x100490d0
-void Instance::signalDescendentRemoving(
-	const shared_ptr<Instance>& instance,
-	Instance* beginParent,
-	Instance* newParent
-)
-{
-	for (Instance* walk = beginParent; walk != NULL; walk = walk->parent) {
-		if (walk == newParent) {
-			break;
-		}
-
-		if (walk->isAncestorOf(newParent)) {
-			break;
-		}
-
-		walk->onDescendentRemoving(instance);
-	}
-
-	boost::shared_ptr<const std::vector<shared_ptr<Instance> > > c = instance->children.read();
-
-	if (c) {
-		for (std::vector<shared_ptr<Instance> >::const_iterator it = c->begin(); it != c->end(); ++it) {
-			signalDescendentRemoving(*it, beginParent, newParent);
-		}
-	}
-}
-
-// STUB: WEBSERVICE 0x10049d40
-XmlElement* Instance::write()
-{
-	STUB(0x10049d40);
-	return NULL;
-}
-
-// STUB: WEBSERVICE 0x1004a010
-void Instance::readProperty(const XmlElement* propertyElement, IReferenceBinder& binder)
-{
-	STUB(0x1004a010);
-}
-
-// STUB: WEBSERVICE 0x1004cdf0
-shared_ptr<Instance> Instance::createChild(const Name& className)
-{
-	STUB(0x1004cdf0);
-	return shared_ptr<Instance>();
-}
-
-// STUB: WEBSERVICE 0x1004d0b0
-Instance::~Instance()
-{
-}
-
-// STUB: WEBSERVICE 0x1004da80
-void Instance::setParent(Instance* newParent)
-{
-	if (newParent == parent) {
-		return;
-	}
-
-	shared_ptr<Instance> oldParent = shared_from(parent);
-	shared_ptr<Instance> self = shared_from_this();
-
-	if (oldParent) {
-		if (!oldParent->contains(newParent)) {
-			signalDescendentRemoving(self, oldParent.get(), newParent);
-		}
-
-		oldParent->onChildRemoving(this);
-
-		shared_ptr<std::vector<shared_ptr<Instance> > >& children = oldParent->children.write();
-
-		children->erase(std::find(children->begin(), children->end(), self));
-
-		if (children->size() == 0) {
-			oldParent->children.reset();
-		}
-
-		parent = NULL;
-
-		event_childRemoved.fire(oldParent.get(), self);
-
-		oldParent->Notifier<Instance, ChildRemoved>::raise(this);
-		oldParent->onChildRemoved(this);
-
-		if (oldParent->numChildren() == 0) {
-			oldParent->onLastChildRemoved();
-		}
-	}
-
-	if (newParent != NULL) {
-		newParent->children.write()->push_back(self);
-	}
-
-	parent = newParent;
-
-	if (newParent != NULL) {
-		newParent->onChildAdded(this);
-
-		if (!newParent->contains(oldParent.get())) {
-			signalDescendentAdded(this, newParent, oldParent.get());
-		}
-
-		newParent->Notifier<Instance, ChildAdded>::raise(this);
-
-		event_childAdded.fire(newParent, self);
-	}
-
-	onAncestorChanged(AncestorChanged(this, oldParent.get(), newParent));
-	raisePropertyChanged(propParent);
-}
-
-// STUB: WEBSERVICE 0x1004ddb0
-void Instance::onAncestorChanged(const AncestorChanged& event)
-{
-	STUB(0x1004ddb0);
-}
-
-// STUB: WEBSERVICE 0x1004dee0
-void Instance::onDescendentAdded(Instance* instance)
-{
-	STUB(0x1004dee0);
-}
-
-// STUB: WEBSERVICE 0x1004df50
-void Instance::onDescendentRemoving(const shared_ptr<Instance>& instance)
-{
-	STUB(0x1004df50);
-}
-
-// STUB: WEBSERVICE 0x1004e040
-void Instance::setName(const std::string& value)
-{
-	STUB(0x1004e040);
-}
-
-// STUB: WEBSERVICE 0x1004e0f0
-void Instance::predelete()
-{
-	STUB(0x1004e0f0);
-}
-
-// STUB: WEBSERVICE 0x1004e5e0
-void Instance::readChild(const XmlElement* childElement, IReferenceBinder& binder)
-{
-	STUB(0x1004e5e0);
-}
-
-// STUB: WEBSERVICE 0x1004e6e0
-void Instance::readChildren(const XmlElement* element, IReferenceBinder& binder)
-{
-	if (element != NULL) {
-		const XmlElement* item = element->findFirstChildByTag(tag_Item);
-
-		while (item != NULL) {
-			readChild(item, binder);
-			item = element->findNextChildWithSameTag(item);
-		}
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x1004e7b0
-void Instance::predelete(Instance* instance)
-{
-	instance->predelete();
-}
-
-// STUB: WEBSERVICE 0x1004eb10
-Instance::Instance() : parent(0), archivable(true)
-{
-}
-
-// STUB: WEBSERVICE 0x1004ec70
-Instance::Instance(const char* name) : name(name), parent(0), archivable(true)
-{
-	STUB(0x1004ec70);
-}
-
-} // namespace RBX

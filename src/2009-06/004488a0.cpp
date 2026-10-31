@@ -1,102 +1,71 @@
-// from server: 67% by colin
-// roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-view View.cpp
+// from server: 81% by EspClaude
+// from server: 100% by king_originala
+// roc 2008-06 0044c360  unit: CRobloxModule  size: 102 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 0044c360
+//
+// 0044c360  6aff                 push -1
+// 0044c362  6820127c00           push 0x7c1220
+// 0044c367  64a100000000         mov eax, dword ptr fs:[0]
+// 0044c36d  50                   push eax
+// 0044c36e  64892500000000       mov dword ptr fs:[0], esp
+// 0044c375  83ec08               sub esp, 8
+// 0044c378  56                   push esi
+// 0044c379  8bf1                 mov esi, ecx
+// 0044c37b  57                   push edi
+// 0044c37c  89742408             mov dword ptr [esp + 8], esi
+// 0044c380  8d7e30               lea edi, [esi + 0x30]
+// 0044c383  c744241800000000     mov dword ptr [esp + 0x18], 0
+// 0044c38b  897c240c             mov dword ptr [esp + 0xc], edi
+// 0044c38f  8bcf                 mov ecx, edi
+// 0044c391  c644241801           mov byte ptr [esp + 0x18], 1
+// 0044c396  e835b4fbff           call 0x4077d0
+// 0044c39b  8b3f                 mov edi, dword ptr [edi]
+// 0044c39d  57                   push edi
+// 0044c39e  e8d7422500           call 0x6a067a
+// 0044c3a3  83c404               add esp, 4
+// 0044c3a6  8bce                 mov ecx, esi
+// 0044c3a8  c7442418ffffffff     mov dword ptr [esp + 0x18], 0xffffffff
+// 0044c3b0  e8a74e2500           call 0x6a125c
+// 0044c3b5  8b4c2410             mov ecx, dword ptr [esp + 0x10]
+// 0044c3b9  5f                   pop edi
+// 0044c3ba  5e                   pop esi
+// 0044c3bb  64890d00000000       mov dword ptr fs:[0], ecx
+// 0044c3c2  83c414               add esp, 0x14
+// 0044c3c5  c3                   ret 
 
-// Candidate translation unit (score above; library headers required).
-#include "RbxView/View.h"
-#include "BrickMesh.h"
-#include "CylinderMesh.h"
-#include "SphereMesh.h"
-#include "PBBMesh.h"
-#include "Part.h"
-#include "RenderLib/AggregatingSceneManager.h"
-#include "v8datamodel/Lighting.h"
-#include "v8datamodel/DataModel.h"
-#include "v8datamodel/Workspace.h"
-#include "v8datamodel/Decal.h"
+void __cdecl operator delete(void *) throw();
 
-namespace RBX
+struct Base {
+    unsigned char data[48];
+    ~Base();
+};
+
+struct TreeStorage {
+    void *head;
+    unsigned char data[16];
+    __forceinline ~TreeStorage();
+};
+
+struct Tree : TreeStorage {
+    void clear();
+    __forceinline ~Tree();
+};
+
+struct S : Base {
+    Tree tree;
+    ~S();
+};
+
+__forceinline TreeStorage::~TreeStorage()
 {
-	namespace View
-	{
-		View::View(boost::shared_ptr<DataModel> dataModel)
-			: dataModel(dataModel),
-			  renderLibScene(new Render::RenderScene),
-			  textureManager(new G3D::TextureManager),
-			  lightingValid(false)
-		{
-			sceneManager.reset(new Render::AggregatingSceneManager(renderLibScene.get()));
-			materialFactory.reset(new MaterialFactory(textureManager.get()));
+    delete head;
+}
 
-			renderLibScene->setThrottle(0.0f, 0.0f, false, 0.0f);
+__forceinline Tree::~Tree()
+{
+    clear();
+}
 
-			Lighting* lighting = ServiceProvider::find<Lighting>(dataModel.get());
-			lightingChangedConnection = Lighting::event_LightingChanged.connect(lighting, boost::bind(&View::invalidateLighting, this, _1));
-
-			dataModel->getWorkspace()->visitDescendents(boost::bind(&View::onWorkspaceDescendentAdded, this, _1));
-			workspaceDescendentAddedConnection = Instance::event_descendentAdded.connect(dataModel->getWorkspace(), boost::bind(&View::onWorkspaceDescendentAdded, this, _1));
-		}
-
-		View::~View()
-		{
-			sceneManager->clear();
-
-			Lighting* unused = ServiceProvider::create<Lighting>(dataModel.get());
-
-			MeshFactory<CylinderAlongXMesh, 1>::flushCache();
-			MeshFactory<SphereMesh, 1>::flushCache();
-			MeshFactory<PBBMesh, 4>::flushCache();
-			BrickMesh::flushCache();
-		}
-
-		void View::suppressSkybox()
-		{
-			Lighting* lighting = ServiceProvider::create<Lighting>(dataModel.get());
-
-			renderLibScene->presetLighting(NULL, lighting->getSkyParameters(), lighting->getAmbientTop(), lighting->getAmbientBottom());
-			sky = NULL;
-			renderLibScene->colorClearValue = lighting->getClearColor();
-		}
-
-		Instance* View::getWorkspace()
-		{
-			return dataModel->getWorkspace();
-		}
-
-		float View::getMeshDetail() const
-		{
-			return renderLibScene->getMeshDetail();
-		}
-
-		float View::getShadingQuality() const
-		{
-			return renderLibScene->getShadingQuality();
-		}
-
-		RenderStats& View::getRenderStats()
-		{
-			return renderLibScene->renderStats;
-		}
-
-		void View::invalidateLighting(bool updateSkybox)
-		{
-			lightingValid = false;
-			if (updateSkybox)
-				sky = NULL;
-		}
-
-		void View::render(void* rd)
-		{
-			updateLighting();
-			sceneManager->prerender(0.1f); // intentional type mismatch! causes value of constant to be different
-			renderLibScene->render((G3D::RenderDevice*)rd, dataModel->getWorkspace()->getGCamera());
-		}
-
-		void View::updateSettings(float shadingQuality, float meshDetail, bool shadows, float cameraDistance)
-		{
-			renderLibScene->setThrottle(shadingQuality, meshDetail, shadows, cameraDistance);
-		}
-	}
+S::~S()
+{
 }
