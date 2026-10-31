@@ -1,5 +1,32 @@
 # Current player checkpoint
 
+P2 PASSED for ordinary block/first-level gate at source3f89605232. Acceptance
+audit:rebuild/2008-06/tests/p2-recovered/p2-acceptance-audit.md. Normal receipt:
+p2-flat-producer/p2-acceptance-runtime/receipt.json. Hardware receipt:
+p2-flat-producer/p2-acceptance-trace/receipt.json. Four controls1879/2080/0/0,
+two cache cycles, levels/refs/backends/spheres0. Existing lit metric documented;
+same captures retain old unlit-mask failure counts. No whole-roadmap completion.
+
+Critical final edge: native SubEntity vtable0084e90c slot3=00684fd0
+getRenderOperation. Existing recovered source directly calls detached SubMesh
+_getRenderOperation, avoiding stock animation-data selection. Added only that
+override plus native size15c/lod134 compile checks; existing entity methods and
+owner debug edits preserved. Removed fabricated SubMesh parent link; cachetest
+asserts parent remains null. Hardware breakpoints prove exact Mesh->level0->
+uploaded SubMesh->created child->actual render-op identity. Same parent entity
+is destroyed between before/after removal DebugString stage events. EXE bytes
+unchanged by observer, actual DLL identities pinned. No server exact credit.
+
+Next: requested default skybox + red studded block demo and actual screenshot/
+spinning video. Use real identified period assets and recovered skybox setup;
+keep green selftest fixture/camera separate. Then continue remaining roadmap
+gates. P0 clean-worktree/stability and complete P3-P10 remain unproven. Full
+enclosing scene/Lighting classes, aggregation, non-box/shared-index/selector and
+unused shadow branches remain separately tracked; do not mistake P2 for these.
+
+Earlier checkpoints below retain investigation history and are superseded by
+the scoped acceptance verdict above.
+
 User follow-up: after P2, make skybox work with a default skybox and a visible red
 block with studs. Use identified original period sky assets; default demo camera
 must show the studded face. Keep green acceptance fixture separate. This is an

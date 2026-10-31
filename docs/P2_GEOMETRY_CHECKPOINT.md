@@ -1,5 +1,15 @@
 # P2 flat producer checkpoint, 2026-10-31
 
+P2 ordinary-block gate passes at source3f89605232. See scoped requirement audit
+rebuild/2008-06/tests/p2-recovered/p2-acceptance-audit.md and exact-revision
+p2-acceptance-runtime/p2-acceptance-trace receipts. Recovered00684fd0 render-op
+removes fabricated SubMesh parent link; actual producer/upload/entity/render-op
+and removal identity proven by hardware breakpoints with ordered phase events.
+Four lit controls1879/2080/0/0, cache cycles and zero sphere/mesh cleanup pass.
+P0 clean-worktree/stability, full P3-P10 and native enclosing scene inventory are
+not claimed complete. Next user demo: default skybox/red studs/screenshot or video.
+Older entries below are retained history, superseded by this acceptance verdict.
+
 Sphere cache now integrated at sourcead921338f6. Four builds and three normal
 unit regressions pass; normal player pixels1879/2080/0/0, two cache cycles,
 levels/refs/backends/spheres0 pass. Receipts:sphere-unit-runtime/receipt.json and
