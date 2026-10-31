@@ -16,6 +16,7 @@ public:
     RbxSubEntity(Entity* parent);
     RbxSubEntity(Entity* parent, SubMesh* mesh, unsigned int lod);
     ~RbxSubEntity();
+    void getRenderOperation(RenderOperation&);
     bool getCastShadows() const;
     const AxisAlignedBox& getWorldBoundingBox(bool derive = false) const;
     const AxisAlignedBox& getLightCapBounds() const;

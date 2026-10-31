@@ -1,5 +1,6 @@
 #undef OGRE_NONCLIENT_BUILD
 #include <Ogre.h>
+#include <cstddef>
 namespace Ogre {
 class RbxSubEntity : public SubEntity, public ShadowCaster {
 public:
@@ -13,6 +14,7 @@ public:
     RbxSubEntity(Entity* parent);
     RbxSubEntity(Entity* parent, SubMesh* mesh, unsigned int lod);
     ~RbxSubEntity();
+    void getRenderOperation(RenderOperation&);
     bool getCastShadows() const;
     const AxisAlignedBox& getWorldBoundingBox(bool derive = false) const;
     const AxisAlignedBox& getLightCapBounds() const;
@@ -24,6 +26,8 @@ public:
     Real getPointExtrusionDistance(const Light*) const;
     const Vector3& getPosition() const;
 };
+typedef char NativeSubEntitySize[sizeof(RbxSubEntity)==0x15c?1:-1];
+typedef char NativeSubEntityLod[offsetof(RbxSubEntity,lodIndex)==0x134?1:-1];
 RbxSubEntity::RbxSubEntity(Entity* parent)
     : SubEntity(parent, 0), lodIndex(0), castShadows(true) {
     shadow = 0;
@@ -39,6 +43,11 @@ RbxSubEntity::RbxSubEntity(Entity* parent, SubMesh* mesh, unsigned int lod)
 RbxSubEntity::~RbxSubEntity() {
     for (int i = 0; i < (int)shadows.size(); ++i) delete shadows[i];
     shadows.clear();
+}
+// Existing00684fd0 bypasses stock SubEntity animation-data selection.
+void RbxSubEntity::getRenderOperation(RenderOperation& operation) {
+    if(!lodIndex)mSubMesh->_getRenderOperation(operation,0);
+    else lodMeshes[lodIndex-1]->_getRenderOperation(operation,0);
 }
 const Vector3& RbxSubEntity::getPosition() const {
     static Vector3 position = transform.getTrans();

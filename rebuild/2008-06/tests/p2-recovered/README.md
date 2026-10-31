@@ -19,7 +19,8 @@ indices and a detached RbxSubMesh. Renderer retains the same owner until entity
 removal. Geometry comes from existing 004e2c80 producer/face templates, native
 vertex-bank algorithms, 00549a50 upload, and 0067c130 backend. The Ogre Mesh is
 bounds/animation metadata only, with no handwritten vertex/index geometry.
-An explicit non-owning parent is needed by SDK SubMesh::getVertexAnimationType.
+Original00684fd0 getRenderOperation now binds detached submesh data directly.
+The earlier non-owning parent workaround is removed; SubMesh parent stays null.
 Delete entity, release geometry, then remove metadata/material before Ogre shutdown.
 
 Scope: ordinary small block, native-default paired bevel/flat levels, 16-bit level0 upload in this player.
@@ -31,11 +32,11 @@ parameters and proven005e1a40 defaults for extra fields absent from the donor
 Lighting class. This remaining model/scene bridge is explicit; no complete native
 Lighting/View/RenderScene ABI is claimed. Full Mesh layout has checks against 00548570/00548a90;
 shadow element semantics outside exercised paths remain donor-backed hypotheses.
-Shared-index branch, scene bounds-cache
-registration/removal, modifier/humanoid branch selection, non-box/large geometry,
+Shared-index branch, modifier/humanoid branch selection, non-box/large geometry,
 child signals and complete original material/surface behavior remain unintegrated.
 The small-block selector does not yet reproduce all original preconditions.
-No P2/P3 completion, whole-executable reconstruction, or new server match claimed.
+P2 completion is assessed in p2-acceptance-audit.md against the ordinary block
+gate. No complete P3, whole-executable reconstruction or new server match claimed.
 
 Evidence/checkpoint: work/2008-06/player-roadmap.md and
 work/2008-06/p2-flat-producer/recovered-runtime/receipt.json.
@@ -51,7 +52,7 @@ Factory/cache: existing 004e58b0 now selects up to four variants per size/surfac
 BrickColor key, including native default bevel0.065 first level and flat second
 level through the same004e2c80 producer. Measured cache is0x30 with recursive mutex
 at20 and creation counter2c. Original004e5710 purge drops cache-only references;
-keys/count remain. Renderer metadata/material is shared by geometry identity and
+keys/count remain. Renderer bounds metadata is shared by geometry identity and
 removed at its last renderer user, accounting for Ogre's three system references.
 Call flushUnused after entities/chunks are gone, before Ogre shutdown.
 
@@ -64,7 +65,10 @@ integration coverage, not the complete P3 acceptance gate or original scene path
 
 Material refs belong to chunks and renderer entries. Geometry metadata remains
 shared by geometry identity; materials have their own native weak-cache/lifetime,
-and are assigned per SubEntity. Entity implementation files remain unchanged.
+and are assigned per SubEntity. Existing entity methods are preserved; one
+missing original SubEntity render-op override bypasses stock animation-data
+selection. Allocation15c and lodIndex134 have compile checks. Owner debug files
+remain unchanged.
 The pre-material EXE/map/DLLs are preserved locally in
 work/2008-06/p2-flat-producer/pre-material-player-0f567d02e8/ with pinned hashes.
 
@@ -76,4 +80,5 @@ The new classifier requires G>50, G>2R,2G>3B. Initial/moved area>300, opposite
 region noise<30, removal/empty controls and all camera/fixture settings remain
 unchanged. Receipts identify the metric and retain old-threshold counts for
 comparison. This test update does not substitute for original-client comparison
-or close P2's remaining original scene/selector/ownership gates.
+or prove complete original scene/selector coverage. Those remaining branches
+must be tracked separately from the exercised ordinary-block gate.

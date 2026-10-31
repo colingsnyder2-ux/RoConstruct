@@ -239,9 +239,8 @@ static Ogre::MeshPtr createRecoveredMesh(const char* name, PlayerBlockMesh::Bloc
     PlayerSphereCache::set(reinterpret_cast<PlayerSphereCache::Key>(level.backend),
         Ogre::Sphere(bounds.getCenter(),bounds.getHalfSize().length())); // 007aba1d ->00682350.
     Ogre::MeshPtr mesh=Ogre::MeshManager::getSingleton().createManual(name,Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
-    // SDK SubMesh::getVertexAnimationType dereferences parent. Mesh is metadata
-    // only: it does not adopt this Level-owned submesh into its deletion list.
-    level.backend->parent=mesh.getPointer();
+    // Native00684fd0 binds detached submesh data directly. No fabricated parent
+    // link or adoption into this bounds-only Mesh's deletion list is required.
     mesh->_setBounds(bounds);mesh->_setBoundingSphereRadius(level.backend->radius);mesh->load();
     std::printf("recovered block: producer=004e2c80 upload=00549a50 calls=%u indices=%u\n",PlayerBlockMesh::producerCalls(),static_cast<unsigned>(level.backend->indexData->indexCount));
     return mesh;
@@ -497,7 +496,7 @@ static int runCacheTest(Ogre::Root* root,Ogre::RenderWindow* win,const std::stri
         std::map<PlayerBlockMesh::BlockMesh*,int> users;
         for(std::map<const void*,DrawEntry>::iterator it=g_drawn.begin();it!=g_drawn.end();++it){
             DrawEntry& entry=it->second;
-            if(entry.geometry->levels.size()!=2 || entry.geometry->level0().backend->parent!=entry.mesh.getPointer())return 4;
+            if(entry.geometry->levels.size()!=2 || entry.geometry->level0().backend->parent)return 4;
             PlayerSphereCache::Key key=reinterpret_cast<PlayerSphereCache::Key>(entry.geometry->level0().backend);
             if(!PlayerSphereCache::has(key) || PlayerSphereCache::get(key).getRadius()!=entry.geometry->level0().backend->radius)return 12;
             ++users[entry.geometry.getPointer()];
@@ -513,7 +512,7 @@ static int runCacheTest(Ogre::Root* root,Ogre::RenderWindow* win,const std::stri
         if(g_drawn.size()!=8)return 7;
         for(std::map<const void*,DrawEntry>::iterator it=g_drawn.begin();it!=g_drawn.end();++it){
             DrawEntry& entry=it->second;
-            if(entry.geometry->level0().backend->parent!=entry.mesh.getPointer() ||
+            if(entry.geometry->level0().backend->parent ||
                entry.entity->getMesh().getPointer()!=entry.mesh.getPointer() ||
                Ogre::MeshManager::getSingleton().getByName(entry.mesh->getName()).getPointer()!=entry.mesh.getPointer() ||
                entry.node->getPosition()!=Ogre::Vector3::ZERO)return 8;
