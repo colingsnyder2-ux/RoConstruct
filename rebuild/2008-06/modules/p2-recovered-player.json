@@ -1,0 +1,66 @@
+{
+  "name": "P2RecoveredPlayer",
+  "description": "Isolated recovered block producer player; preserves local player diagnostics",
+  "depends": [
+    "rbxgs-app"
+  ],
+  "layers": [
+    {
+      "name": "engine",
+      "mode": "direct",
+      "dir": "rebuild/2008-06/tests/p2-recovered",
+      "files": "PlayerEngine.cpp PlayerScene.cpp RbxEntityLocal.cpp",
+      "includes_from_recipe": "rbxgs",
+      "defines_from_recipe": "rbxgs",
+      "extra_defines": "BOOST_ALL_NO_LIB",
+      "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD",
+      "extra_includes": [
+        "tools/rbxgs/Client/RbxView",
+        "tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
+      ]
+    },
+    {
+      "name": "block",
+      "mode": "direct",
+      "dir": "rebuild/2008-06/tests",
+      "files": "PlayerBlockMesh.cpp PlayerMeshBackend.cpp PlayerMeshOrientation.cpp",
+      "includes_from_recipe": "rbxgs-view-dll",
+      "defines_from_recipe": "rbxgs-view-dll",
+      "extra_defines": "BOOST_ALL_NO_LIB",
+      "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast",
+      "extra_includes": [
+        "tools/rbxgs/Client/RbxView",
+        "tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
+      ]
+    }
+  ],
+  "overlay": {
+    "root": "tools/rbxgs/Client",
+    "patches": "rebuild/2008-06/patches/rbxgs-client.json"
+  },
+  "test": "P2RecoveredPlayer",
+  "verified": false,
+  "test_includes": [
+    "tools/rbxgs/Client/RbxView",
+    "tools/rbxgs/Client/RbxView/include",
+    "tools/rbxgs/Client/RbxViewBase",
+    "tools/rbxgs/Client/App/include",
+    "tools/rbxgs/Client/RbxGraphics/include",
+    "tools/rbxgs/Client/Network/include",
+    "tools/rbxgs/Client/Rendering/RenderLib/include",
+    "tools/rbxgs/Client/Rendering/AppDraw/include",
+    "tools/rbxgs/Client/Rendering/g3d/include",
+    "tools/rbxgs/Client/Rendering/g3d/zlib",
+    "tools/rbxgs/Client/Rendering/png",
+    "tools/rbxgs/Client/boost_1_34_1/src",
+    "tools/rbxgs/Client/App/lua-5.1.1/src",
+    "tools/rbxgs/Client/Rendering/SDL-1.2.6/include",
+    "tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
+    "tools/libs/zlib-1.2.3"
+  ],
+  "import_dlls": [
+    "rgmain.dll",
+    "rgdx.dll"
+  ],
+  "test_defines": "WIN32 NDEBUG _RELEASE"
+}

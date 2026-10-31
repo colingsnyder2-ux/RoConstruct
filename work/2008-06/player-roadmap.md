@@ -120,3 +120,35 @@ and original reuse/refcount algorithms (00547f60/00548000/00547fc0/00548640).
 Use the isolated passing player snapshot; original local debug/entity files stay
 untouched. Do not add arbitrary array aliases to satisfy the old donor linker.
 Native shared-index path and full scene bounds-cache lifetime remain open.
+
+
+## Loaded block producer integration (P2 still open)
+
+`p2-block-mesh` now builds and passes 32 recovered-producer/upload/teardown cycles,
+including smooth/studded faces, alternating 16/32-bit uploads, asymmetric bounds,
+retained G3D references, repeated-upload reuse and zero live refs/levels/backends.
+Existing 004e2c80 body and face templates run against one typed bank using native
+00547f60/00548000/00547fc0/00548640 algorithms and measured Level offsets.
+
+`roc rebuild 2008-06 module p2-recovered-player --no-notify` provides an isolated,
+published source target preserving newer local player edits. Loaded Part now owns
+that recovered mesh; renderer retains it through RbxEntity lifetime. Handwritten
+box vertices/indices were removed from this target. Existing entity provider stays
+unchanged. SDK SubMesh animation lookup requires a non-owning metadata Mesh parent;
+leaving the native detached submesh parent null caused an access violation, resolved
+by setting its parent without transferring deletion ownership.
+
+Normal --selftest passes initial/moved/removed/empty pixel controls (1891/2152/0/0).
+Source hashes, executable/map hashes, logs and captures are recorded under
+work/2008-06/p2-flat-producer/recovered-runtime/. Recheck receipt for exact tested
+revision; build-only quick execution does not count as visual evidence.
+
+This is recovered geometry integration, not full P2 closure. Fixed-function colour
+material remains diagnostic; full native Mesh/factory ABI, shared indices and scene
+bounds-cache ownership are not integrated. Original modifier/humanoid selection,
+bevel policy, child signals, non-box and >=30-stud producer paths remain open.
+Read tests/p2-recovered/README.md for scope. No later milestone advanced.
+
+Next: prove/integrate full native Mesh factory/owner and material path, preserving
+this passing isolated target. Then P3 shape/lifecycle/resource baseline, followed
+by remaining roadmap. Do not overwrite local Player2008/PlayerEngine/RbxEntity.h.
