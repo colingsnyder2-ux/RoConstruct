@@ -57,3 +57,18 @@ through 0054ac70 -> 006824e0 (Ogre::RbxSubMesh). Reusing the donor Level destruc
 alone would omit backend cleanup. Vertex-bank initialization 00547f60 reserves
 slot zero across the position, normal, tangent, UV and reference-count arrays.
 P2 remains open pending coherent native bank and backend-resource integration.
+
+## Backend upload group
+
+`roc rebuild 2008-06 module p2-mesh-backend --no-notify` now builds and passes a
+hidden D3D9 test. Existing 00679ae0/0067c130 upload bodies and 00678470/006824e0
+RbxSubMesh construction/destruction use genuine SDK and Boost declarations.
+Size/offset checks replace padded mining declarations. Tests cover both index
+widths, asymmetric bounds, normal/UV channels, 32 teardown cycles, registry return
+to zero and release of GPU buffer ownership. Optional colour upload is not yet
+exercised; the current recovered level upload passes null colours.
+
+This closes a backend prerequisite, not P2: the loaded Part still needs its
+recovered level-0 producer and reference-counted vertex-bank ownership connected.
+`work/2008-06/p2-flat-producer/backend-receipt.json` records this test image and
+source hashes. Geometry bounds-cache removal remains the Level owner's work.

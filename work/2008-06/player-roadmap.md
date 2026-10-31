@@ -88,3 +88,35 @@ work/2008-06/source-view/0067c130.cpp`. Trace returned submesh ownership into th
 native Level +24 cleanup before adapting the recovered producer/upload group.
 Use passing isolated snapshot as renderer baseline; do not overwrite local debug
 work or redo entity implementations. P2 and later milestones remain open.
+
+## Recovered backend upload group
+
+PlayerMeshBackend.h/.cpp adapts existing 00679ae0 vertex-buffer upload, 0067c130
+indexed upload, 00678470 constructor and 006824e0 destructor to genuine Ogre SDK
+and Boost declarations. No padded SubMesh/VertexData or fabricated vtable methods.
+Compile-time checks prove SubMesh c4, RbxSubMesh f0, bounds cc, radius ec,
+VertexData38, IndexData14, context30 and mutex24 for this compiler/profile.
+
+Repro command: `roc rebuild 2008-06 module p2-mesh-backend --no-notify`.
+It links and exits0. Hidden D3D9 fixture checks 16/32-bit indices, asymmetric bounds,
+normal/UV channels, 32 create/destroy cycles, empty registry and sole retained GPU
+buffer ownership after mesh destruction. Optional colour-data upload remains
+unexercised; current 00549a50 caller passes null colours. Recorded target quirk
+repeats the red component in all colour channels; retained rather than guessed.
+
+Ownership: createIndexed returns a detached Ogre::RbxSubMesh (parent=null,
+useSharedVertices=false), owns VertexData/IndexData, and records it in the typed
+context. destroyIndexed removes that registry entry and deletes the submesh/edges.
+Geometry bounds-cache removal remains the Level owner's responsibility; not
+claimed integrated. No new native/server credit. backend-receipt.json records
+EXE/input hashes and the module report.
+
+Push permission explicitly granted by user; verified commits through bf99dbe0ab
+pushed normally to origin/codex/native-partial-search-20261029. No force pushes.
+
+Next: adapt the existing 004e2c80 producer and 00549a50 upload together around a
+single typed, reference-counted Level/vertex bank. Preserve slot0 initialization
+and original reuse/refcount algorithms (00547f60/00548000/00547fc0/00548640).
+Use the isolated passing player snapshot; original local debug/entity files stay
+untouched. Do not add arbitrary array aliases to satisfy the old donor linker.
+Native shared-index path and full scene bounds-cache lifetime remain open.
