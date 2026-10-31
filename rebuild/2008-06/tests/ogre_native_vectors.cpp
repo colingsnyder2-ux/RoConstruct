@@ -1,3 +1,4 @@
+#include "force_verified.h"
 #include <OgreVector2.h>
 #include <OgreShadowCameraSetup.h>
 #include <OgreGpuProgram.h>
