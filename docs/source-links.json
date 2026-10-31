@@ -64,83 +64,22 @@
  "lua-5.1": {
   "url": "https://www.lua.org/ftp/lua-5.1.tar.gz",
   "kind": "archive",
-  "files": [
-   "lapi.c",
-   "lbaselib.c",
-   "lcode.c",
-   "ldebug.c",
-   "ldo.c",
-   "lgc.c",
-   "lobject.c",
-   "lparser.c",
-   "lstrlib.c",
-   "ltable.c",
-   "lundump.c",
-   "lvm.c",
-   "roc_ltable_cpp_e4929b9c47845379.cpp"
-  ]
+  "files": []
  },
  "lua-5.1.1": {
   "url": "https://www.lua.org/ftp/lua-5.1.1.tar.gz",
   "kind": "archive",
-  "files": [
-   "lapi.c",
-   "lauxlib.c",
-   "lbaselib.c",
-   "lcode.c",
-   "ldebug.c",
-   "ldo.c",
-   "ldump.c",
-   "lfunc.c",
-   "lgc.c",
-   "liolib.c",
-   "llex.c",
-   "lmathlib.c",
-   "lmem.c",
-   "lobject.c",
-   "lparser.c",
-   "lstate.c",
-   "lstring.c",
-   "lstrlib.c",
-   "ltable.c",
-   "ltablib.c",
-   "ltm.c",
-   "lundump.c",
-   "lvm.c",
-   "lzio.c"
-  ]
+  "files": []
  },
  "lua-5.1.2": {
   "url": "https://www.lua.org/ftp/lua-5.1.2.tar.gz",
   "kind": "archive",
-  "files": [
-   "lauxlib.c",
-   "lbaselib.c",
-   "lcode.c",
-   "ldebug.c",
-   "ldo.c",
-   "lgc.c",
-   "liolib.c",
-   "lmathlib.c",
-   "lparser.c",
-   "lstrlib.c",
-   "ltablib.c",
-   "lvm.c",
-   "roc_espeon_nativeparlistcontext810a97d37dd18cf0.cpp",
-   "roc_unit_6495e238f1ebcec5.cpp",
-   "roc_unit_6878e048cc528e62.cpp",
-   "roc_unit_f1a645ffa1da17e2.cpp"
-  ]
+  "files": []
  },
  "lua-5.1.3": {
   "url": "https://www.lua.org/ftp/lua-5.1.3.tar.gz",
   "kind": "archive",
-  "files": [
-   "lbaselib.c",
-   "lstrlib.c",
-   "ltablib.c",
-   "lundump.c"
-  ]
+  "files": []
  },
  "lua-5.1.4": {
   "url": "https://www.lua.org/ftp/lua-5.1.4.tar.gz",
@@ -177,16 +116,12 @@
  "lua-5.1.2-rbx": {
   "url": "https://www.lua.org/ftp/lua-5.1.2.tar.gz",
   "kind": "archive",
-  "files": [
-   "lstate.c"
-  ]
+  "files": []
  },
  "lua-5.1.3-rbx": {
   "url": "https://www.lua.org/ftp/lua-5.1.3.tar.gz",
   "kind": "archive",
-  "files": [
-   "lstate.c"
-  ]
+  "files": []
  },
  "lua-5.0": {
   "url": "https://www.lua.org/ftp/lua-5.0.tar.gz",
@@ -216,7 +151,6 @@
    "crc32.c",
    "deflate.c",
    "inflate.c",
-   "roc_unit_cc0da05a02dcd115.cpp",
    "trees.c",
    "uncompr.c"
   ]
@@ -249,58 +183,22 @@
  "libpng-1.2.6": {
   "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.6.tar.gz",
   "kind": "archive",
-  "files": [
-   "png.c",
-   "pngerror.c",
-   "pngget.c",
-   "pngread.c",
-   "pngrtran.c",
-   "pngrutil.c",
-   "pngset.c",
-   "pngwrite.c",
-   "pngwtran.c",
-   "pngwutil.c"
-  ]
+  "files": []
  },
  "libpng-1.2.7": {
   "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.7.tar.gz",
   "kind": "archive",
-  "files": [
-   "png.c",
-   "pngerror.c",
-   "pngget.c",
-   "pngmem.c",
-   "pngread.c",
-   "pngrio.c",
-   "pngrtran.c",
-   "pngrutil.c",
-   "pngset.c",
-   "pngtrans.c",
-   "pngwio.c",
-   "pngwrite.c",
-   "pngwtran.c",
-   "pngwutil.c"
-  ]
+  "files": []
  },
  "libpng-1.2.8": {
   "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.8.tar.gz",
   "kind": "archive",
-  "files": [
-   "pngget.c",
-   "pngtrans.c"
-  ]
+  "files": []
  },
  "libpng-1.2.10": {
   "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.10.tar.gz",
   "kind": "archive",
-  "files": [
-   "png.c",
-   "pngerror.c",
-   "pngrutil.c",
-   "pngset.c",
-   "pngwrite.c",
-   "pngwtran.c"
-  ]
+  "files": []
  },
  "libpng-1.2.12": {
   "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.12.tar.gz",
@@ -310,93 +208,47 @@
  "libpng-1.2.16": {
   "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.16.tar.gz",
   "kind": "archive",
-  "files": [
-   "png.c",
-   "pngmem.c",
-   "pngread.c",
-   "pngrio.c",
-   "pngrtran.c",
-   "pngrutil.c",
-   "pngtrans.c",
-   "pngwio.c",
-   "pngwutil.c"
-  ]
+  "files": []
  },
  "libpng-1.2.18": {
   "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.18.tar.gz",
   "kind": "archive",
-  "files": [
-   "pngrutil.c",
-   "pngset.c"
-  ]
+  "files": []
  },
  "libpng-1.2.22": {
   "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.22.tar.gz",
   "kind": "archive",
-  "files": [
-   "png.c",
-   "pngmem.c",
-   "pngrtran.c",
-   "pngrutil.c",
-   "pngset.c",
-   "pngwutil.c"
-  ]
+  "files": []
  },
  "libpng-1.2.24": {
   "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.24.tar.gz",
   "kind": "archive",
-  "files": [
-   "pngerror.c",
-   "pngset.c"
-  ]
+  "files": []
  },
  "libpng-1.2.29": {
   "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.29.tar.gz",
   "kind": "archive",
-  "files": [
-   "pngread.c",
-   "pngrtran.c",
-   "pngrutil.c",
-   "pngset.c",
-   "pngwrite.c"
-  ]
+  "files": []
  },
  "libpng-1.2.32": {
   "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.32.tar.gz",
   "kind": "archive",
-  "files": [
-   "pngerror.c",
-   "pngread.c",
-   "pngrutil.c",
-   "pngset.c",
-   "pngwrite.c",
-   "pngwutil.c"
-  ]
+  "files": []
  },
  "libpng-1.2.35": {
   "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.35.tar.gz",
   "kind": "archive",
-  "files": [
-   "png.c",
-   "pngerror.c",
-   "pngrutil.c",
-   "pngset.c",
-   "pngwutil.c"
-  ]
+  "files": []
  },
  "libpng-1.2.37": {
   "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.37.tar.gz",
   "kind": "archive",
-  "files": [
-   "pngset.c"
-  ]
+  "files": []
  },
  "libpng-1.2.40": {
   "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.40.tar.gz",
   "kind": "archive",
-  "files": [
-   "pngwutil.c"
-  ]
+  "files": []
  },
  "libpng-1.2.44": {
   "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.44.tar.gz",
@@ -406,9 +258,7 @@
  "libpng-1.2.6-winapi": {
   "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.6.tar.gz",
   "kind": "archive",
-  "files": [
-   "pngwutil.c"
-  ]
+  "files": []
  },
  "g3d-6.09": {
   "url": "https://archive.org/download/g3d-src-6_09/g3d-src-6_09.zip",
@@ -533,6 +383,8 @@
   "url": "https://archive.org/download/g3d-src-6_09/g3d-src-6_09.zip",
   "kind": "archive",
   "files": [
+   "png.c",
+   "pngmem.c",
    "pngread.c",
    "pngrtran.c",
    "pngrutil.c",
@@ -650,23 +502,12 @@
  "boost-1.36.0": {
   "url": "https://archives.boost.io/release/1.36.0/source/boost_1_36_0.tar.gz",
   "kind": "archive",
-  "files": [
-   "libs/filesystem/src/operations.cpp",
-   "libs/iostreams/src/mapped_file.cpp",
-   "libs/regex/src/instances.cpp",
-   "libs/regex/src/wide_posix_api.cpp",
-   "libs/system/src/error_code.cpp",
-   "libs/thread/src/win32/thread.cpp"
-  ]
+  "files": []
  },
  "boost-1.35.0": {
   "url": "https://archives.boost.io/release/1.35.0/source/boost_1_35_0.tar.gz",
   "kind": "archive",
-  "files": [
-   "roc_espeon_scriptargumentbind135bf95ed9e0b65612b.cpp",
-   "roc_espeon_scriptdefaultbind1358c320093deaa2206.cpp",
-   "roc_espeon_scriptthreadbind1357faa61c775a47f40.cpp"
-  ]
+  "files": []
  },
  "boost-1.37.0": {
   "url": "https://archives.boost.io/release/1.37.0/source/boost_1_37_0.tar.gz",
@@ -686,23 +527,12 @@
  "boost-1.40.0": {
   "url": "https://archives.boost.io/release/1.40.0/source/boost_1_40_0.tar.gz",
   "kind": "archive",
-  "files": [
-   "libs/program_options/src/cmdline.cpp",
-   "libs/regex/src/cregex.cpp",
-   "libs/regex/src/instances.cpp",
-   "libs/thread/src/win32/thread.cpp",
-   "roc_bf139_3095a0e32ec5068e.cpp",
-   "roc_bf139_b5c2acb2406f46de.cpp"
-  ]
+  "files": []
  },
  "boost-1.44.0": {
   "url": "https://archives.boost.io/release/1.44.0/source/boost_1_44_0.tar.gz",
   "kind": "archive",
-  "files": [
-   "libs/iostreams/src/file_descriptor.cpp",
-   "libs/regex/src/cregex.cpp",
-   "libs/regex/src/instances.cpp"
-  ]
+  "files": []
  },
  "boost-1.47.0": {
   "url": "https://archives.boost.io/release/1.47.0/source/boost_1_47_0.tar.gz",
@@ -901,26 +731,26 @@
    "rijndael.cpp"
   ],
   "functions": {
-   "?InsertBranchDown@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEPAU?$Page@IPAUInternalPacket@@$0CA@@2@IABQAUInternalPacket@@PAU32@PAUReturnAction@12@PA_N@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L704",
-   "?Insert@?$RangeList@I@DataStructures@@QAEXI@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_RangeList.h#L134",
-   "?Clear@?$RangeList@I@DataStructures@@QAEXXZ": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_RangeList.h#L196",
-   "?Insert@?$OrderedList@PADUMapNode@?$Map@PADPAUDatabaseTable@LightweightDatabaseServer@@$1?DatabaseTableComp@2@SAHABQAD0@Z@DataStructures@@$1?NodeComparisonFunc@23@SAHABQADABU123@@Z@DataStructures@@QAEIABQADABUMapNode@?$Map@PADPAUDatabaseTable@LightweightDatabaseServer@@$1?DatabaseTableComp@2@SAHABQAD0@Z@2@_NP6AH01@Z@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_OrderedList.h#L167",
-   "?Deserialize@?$RangeList@I@DataStructures@@QAE_NPAVBitStream@RakNet@@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_RangeList.h#L92",
    "?CanRotateRight@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAE_NPAU?$Page@IPAUInternalPacket@@$0CA@@2@H@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L664",
-   "?FindDeleteRebalance@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAE_NIPAU?$Page@IPAUInternalPacket@@$0CA@@2@PA_NIPAUReturnAction@12@AAPAUInternalPacket@@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L208",
-   "?Insert@?$OrderedList@USystemAddress@@U1@$1??$defaultOrderedListComparison@USystemAddress@@U1@@DataStructures@@YAHABU1@0@Z@DataStructures@@QAEIABUSystemAddress@@0_NP6AH00@Z@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_OrderedList.h#L167",
-   "?ShiftNodeLeft@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXPAU?$Page@IPAUInternalPacket@@$0CA@@2@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L482",
-   "?RotateRight@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXPAU?$Page@IPAUInternalPacket@@$0CA@@2@HPAUReturnAction@12@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L670",
-   "?DeleteFromPageAtIndex@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXHPAU?$Page@IPAUInternalPacket@@$0CA@@2@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L144",
-   "?CanRotateLeft@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAE_NPAU?$Page@IPAUInternalPacket@@$0CA@@2@H@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L639",
-   "?Serialize@?$RangeList@I@DataStructures@@QAEIPAVBitStream@RakNet@@H_N@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_RangeList.h#L48",
    "?FixUnderflow@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAE_NHPAU?$Page@IPAUInternalPacket@@$0CA@@2@IPAUReturnAction@12@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L283",
-   "?FreePages@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXXZ": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L928",
-   "?RotateLeft@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXPAU?$Page@IPAUInternalPacket@@$0CA@@2@HPAUReturnAction@12@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L645",
-   "?Clear@?$SingleProducerConsumer@PAURemoteClient@@@DataStructures@@QAEXXZ": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/SingleProducerConsumer.h#L217",
+   "?Insert@?$OrderedList@USystemAddress@@U1@$1??$defaultOrderedListComparison@USystemAddress@@U1@@DataStructures@@YAHABU1@0@Z@DataStructures@@QAEIABUSystemAddress@@0_NP6AH00@Z@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_OrderedList.h#L167",
+   "?Insert@?$OrderedList@PADUMapNode@?$Map@PADPAUDatabaseTable@LightweightDatabaseServer@@$1?DatabaseTableComp@2@SAHABQAD0@Z@DataStructures@@$1?NodeComparisonFunc@23@SAHABQADABU123@@Z@DataStructures@@QAEIABQADABUMapNode@?$Map@PADPAUDatabaseTable@LightweightDatabaseServer@@$1?DatabaseTableComp@2@SAHABQAD0@Z@2@_NP6AH01@Z@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_OrderedList.h#L167",
+   "?Clear@?$RangeList@I@DataStructures@@QAEXXZ": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_RangeList.h#L196",
    "?Insert@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@QAE_NIABQAUInternalPacket@@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L812",
-   "?InsertIntoNode@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEPAU?$Page@IPAUInternalPacket@@$0CA@@2@IABQAUInternalPacket@@HPAU32@1PAUReturnAction@12@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L500",
-   "?ShiftNodeRight@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXPAU?$Page@IPAUInternalPacket@@$0CA@@2@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L463"
+   "?InsertBranchDown@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEPAU?$Page@IPAUInternalPacket@@$0CA@@2@IABQAUInternalPacket@@PAU32@PAUReturnAction@12@PA_N@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L704",
+   "?Clear@?$SingleProducerConsumer@PAURemoteClient@@@DataStructures@@QAEXXZ": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/SingleProducerConsumer.h#L217",
+   "?ShiftNodeRight@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXPAU?$Page@IPAUInternalPacket@@$0CA@@2@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L463",
+   "?ShiftNodeLeft@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXPAU?$Page@IPAUInternalPacket@@$0CA@@2@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L482",
+   "?DeleteFromPageAtIndex@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXHPAU?$Page@IPAUInternalPacket@@$0CA@@2@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L144",
+   "?RotateLeft@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXPAU?$Page@IPAUInternalPacket@@$0CA@@2@HPAUReturnAction@12@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L645",
+   "?FindDeleteRebalance@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAE_NIPAU?$Page@IPAUInternalPacket@@$0CA@@2@PA_NIPAUReturnAction@12@AAPAUInternalPacket@@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L208",
+   "?FreePages@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXXZ": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L928",
+   "?Deserialize@?$RangeList@I@DataStructures@@QAE_NPAVBitStream@RakNet@@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_RangeList.h#L92",
+   "?CanRotateLeft@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAE_NPAU?$Page@IPAUInternalPacket@@$0CA@@2@H@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L639",
+   "?Insert@?$RangeList@I@DataStructures@@QAEXI@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_RangeList.h#L134",
+   "?RotateRight@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXPAU?$Page@IPAUInternalPacket@@$0CA@@2@HPAUReturnAction@12@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L670",
+   "?Serialize@?$RangeList@I@DataStructures@@QAEIPAVBitStream@RakNet@@H_N@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_RangeList.h#L48",
+   "?InsertIntoNode@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEPAU?$Page@IPAUInternalPacket@@$0CA@@2@IABQAUInternalPacket@@HPAU32@1PAUReturnAction@12@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L500"
   }
  },
  "rbxgs-view": {
@@ -1048,315 +878,20 @@
    "?enableAlphaWrite@RenderDevice@G3D@@QAEXXZ": "https://github.com/RBLXDecomp/g3d/blob/2a2fc86c37d46e3c9b2b571795d09a6f667154c0/include/GLG3D/RenderDevice.h#L1794"
   }
  },
- "openrbx-client": {
-  "url": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/Client/",
-  "kind": "file",
-  "files": [
-   "App/gui/GUI.cpp",
-   "App/gui/Widget.cpp",
-   "App/humanoid/Balancing.cpp",
-   "App/humanoid/FallingDown.cpp",
-   "App/humanoid/Flying.cpp",
-   "App/humanoid/Freefall.cpp",
-   "App/humanoid/GettingUp.cpp",
-   "App/humanoid/Humanoid.cpp",
-   "App/humanoid/Jumping.cpp",
-   "App/humanoid/Running.cpp",
-   "App/humanoid/Seated.cpp",
-   "App/reflection/reflection_function.cpp",
-   "App/reflection/reflection_object.cpp",
-   "App/reflection/reflection_property.cpp",
-   "App/reflection/signal.cpp",
-   "App/reflection/type.cpp",
-   "App/script/LuaAtomicClasses.cpp",
-   "App/script/LuaInstanceBridge.cpp",
-   "App/script/LuaSignalBridge.cpp",
-   "App/script/Script.cpp",
-   "App/script/ScriptContext.cpp",
-   "App/script/ScriptEvent.cpp",
-   "App/util/Extents.cpp",
-   "App/util/Guid.cpp",
-   "App/util/IRenderable.cpp",
-   "App/util/IndexBox.cpp",
-   "App/util/Math.cpp",
-   "App/util/NormalId.cpp",
-   "App/util/RunStateOwner.cpp",
-   "App/util/SoundWorld.cpp",
-   "App/util/Timer.cpp",
-   "App/util/UserInputBase.cpp",
-   "App/util/standardout.cpp",
-   "App/v8datamodel/Accoutrement.cpp",
-   "App/v8datamodel/Camera.cpp",
-   "App/v8datamodel/CharacterAppearance.cpp",
-   "App/v8datamodel/DebugSettings.cpp",
-   "App/v8datamodel/Decal.cpp",
-   "App/v8datamodel/Enums.cpp",
-   "App/v8datamodel/FaceInstance.cpp",
-   "App/v8datamodel/Feature.cpp",
-   "App/v8datamodel/Flag.cpp",
-   "App/v8datamodel/FlagStand.cpp",
-   "App/v8datamodel/GlobalSettings.cpp",
-   "App/v8datamodel/Gyro.cpp",
-   "App/v8datamodel/Hopper.cpp",
-   "App/v8datamodel/JointInstance.cpp",
-   "App/v8datamodel/Lighting.cpp",
-   "App/v8datamodel/Message.cpp",
-   "App/v8datamodel/ModelInstance.cpp",
-   "App/v8datamodel/PVInstance.cpp",
-   "App/v8datamodel/PartInstance.cpp",
-   "App/v8datamodel/RootInstance.cpp",
-   "App/v8datamodel/Selection.cpp",
-   "App/v8datamodel/Sky.cpp",
-   "App/v8datamodel/SpawnLocation.cpp",
-   "App/v8datamodel/Surfaces.cpp",
-   "App/v8datamodel/Team.cpp",
-   "App/v8datamodel/Teams.cpp",
-   "App/v8datamodel/Tool.cpp",
-   "App/v8datamodel/custommesh.cpp",
-   "App/v8kernel/Body.cpp",
-   "App/v8kernel/Connector.cpp",
-   "App/v8kernel/Constants.cpp",
-   "App/v8kernel/Kernel.cpp",
-   "App/v8kernel/Link.cpp",
-   "App/v8kernel/Pair.cpp",
-   "App/v8kernel/Point.cpp",
-   "App/v8kernel/SimBody.cpp",
-   "App/v8tree/Instance.cpp",
-   "App/v8tree/Service.cpp",
-   "App/v8tree/enumproperty.cpp",
-   "App/v8world/Assembly2.cpp",
-   "App/v8world/AssemblyStage2.cpp",
-   "App/v8world/Block.cpp",
-   "App/v8world/Clump2.cpp",
-   "App/v8world/ClumpStage2.cpp",
-   "App/v8world/Contact.cpp",
-   "App/v8world/ContactManager.cpp",
-   "App/v8world/Controller.cpp",
-   "App/v8world/Edge.cpp",
-   "App/v8world/IMoving.cpp",
-   "App/v8world/IPipelined.cpp",
-   "App/v8world/IWorldStage.cpp",
-   "App/v8world/Joint.cpp",
-   "App/v8world/JointStage.cpp",
-   "App/v8world/Mechanism.cpp",
-   "App/v8world/MotorJoint.cpp",
-   "App/v8world/MultiJoint.cpp",
-   "App/v8world/Primitive.cpp",
-   "App/v8world/RotateJoint.cpp",
-   "App/v8world/SimJobStage.cpp",
-   "App/v8world/SleepStage2.cpp",
-   "App/v8world/SpatialHash.cpp",
-   "App/v8world/World.cpp",
-   "App/v8xml/SerializerV2.cpp",
-   "App/v8xml/XmlElement.cpp",
-   "App/v8xml/XmlSerializer.cpp",
-   "Network/Player.cpp",
-   "RbxView/PBBMesh.cpp",
-   "RbxView/Part.cpp",
-   "RbxView/QuadVolume.cpp",
-   "Rendering/AppDraw/AdornG3D.cpp",
-   "Rendering/AppDraw/Draw.cpp",
-   "Rendering/AppDraw/DrawAdorn.cpp",
-   "Rendering/AppDraw/DrawPrimitives.cpp",
-   "Rendering/AppDraw/HitTest.cpp",
-   "Rendering/AppDraw/Textures.cpp",
-   "Rendering/RenderLib/Clusterer.cpp",
-   "Rendering/RenderLib/DepthBlur.cpp",
-   "Rendering/RenderLib/EffectSettings.cpp",
-   "Rendering/RenderLib/Mesh.cpp",
-   "Rendering/RenderLib/Profiler.cpp",
-   "Rendering/RenderLib/RenderScene.cpp",
-   "Rendering/RenderLib/RenderStats.cpp",
-   "Rendering/RenderLib/RenderSurface.cpp",
-   "Rendering/RenderLib/TextureProxy.cpp"
-  ],
-  "functions": {
-   "?removeFromKernel@Contact@RBX@@EAEXXZ": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/Client/App/include/v8world/Contact.h#L196",
-   "?downstreamOfStage@IPipelined@RBX@@QBE_NPAVIStage@2@@Z": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/Client/App/include/v8world/IPipelined.h#L71",
-   "?createDecal@?$MeshFactory@VPBBMesh@View@RBX@@$03@View@RBX@@SAPAVPBBMesh@23@ABVVector3@G3D@@W4NormalId@3@@Z": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/Client/RbxView/MeshFactory.h#L113",
-   "?getEdgeVertex@Block@RBX@@QBEPBVVector3@G3D@@H@Z": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/Client/App/include/v8world/Block.h#L105",
-   "?createTexture@?$MeshFactory@VPBBMesh@View@RBX@@$03@View@RBX@@SAPAVPBBMesh@23@ABVVector3@G3D@@W4NormalId@3@ABVVector2@6@@Z": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/Client/RbxView/MeshFactory.h#L129"
-  }
- },
- "rccservice": {
-  "url": "https://github.com/verify-stack/rccservice-decompile/blob/35dc07d25ef89e2fbcba7d484828c3bd0c060321/RBXGS/",
-  "kind": "file",
-  "files": [
-   "gSOAP/generated/stdsoap2.cpp"
-  ]
- },
- "openrbx-client-dll": {
-  "url": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/Client/",
-  "kind": "file",
-  "files": [
-   "App/humanoid/Humanoid.cpp",
-   "App/reflection/reflection_function.cpp",
-   "App/reflection/reflection_object.cpp",
-   "App/reflection/reflection_property.cpp",
-   "App/reflection/signal.cpp",
-   "App/reflection/type.cpp",
-   "App/script/LuaAtomicClasses.cpp",
-   "App/script/LuaSignalBridge.cpp",
-   "App/script/Script.cpp",
-   "App/util/Guid.cpp",
-   "App/util/Log.cpp",
-   "App/util/Name.cpp",
-   "App/util/RunStateOwner.cpp",
-   "App/util/Utilities.cpp",
-   "App/util/standardout.cpp",
-   "App/v8datamodel/Accoutrement.cpp",
-   "App/v8datamodel/Camera.cpp",
-   "App/v8datamodel/CharacterAppearance.cpp",
-   "App/v8datamodel/DebrisService.cpp",
-   "App/v8datamodel/Decal.cpp",
-   "App/v8datamodel/ForceField.cpp",
-   "App/v8datamodel/GlobalSettings.cpp",
-   "App/v8datamodel/Gyro.cpp",
-   "App/v8datamodel/Message.cpp",
-   "App/v8datamodel/Selection.cpp",
-   "App/v8datamodel/Sky.cpp",
-   "App/v8datamodel/Teams.cpp",
-   "App/v8tree/Instance.cpp",
-   "App/v8tree/Service.cpp",
-   "App/v8world/AssemblyStage2.cpp",
-   "App/v8world/ClumpStage2.cpp",
-   "App/v8world/IMoving.cpp",
-   "App/v8world/JointStage.cpp",
-   "App/v8world/Mechanism.cpp",
-   "App/v8world/SimJobStage.cpp",
-   "App/v8world/World.cpp",
-   "App/v8xml/SerializerV2.cpp",
-   "App/v8xml/XmlElement.cpp",
-   "App/v8xml/XmlSerializer.cpp"
-  ]
- },
- "openrbx-raknet": {
-  "url": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/",
-  "kind": "file",
-  "files": [
-   "BitStream.cpp",
-   "CheckSum.cpp",
-   "DS_HuffmanEncodingTree.cpp",
-   "DataBlockEncryptor.cpp",
-   "FileOperations.cpp",
-   "GetTime.cpp",
-   "PacketLogger.cpp",
-   "RakNetTypes.cpp",
-   "RakPeer.cpp",
-   "ReliabilityLayer.cpp",
-   "StringCompressor.cpp",
-   "rijndael.cpp"
-  ],
-  "functions": {
-   "?GetIndexFromKey@?$OrderedList@IPAUInternalPacket@@$1?SplitPacketIndexComp@@YAHABIABQAU1@@Z@DataStructures@@QBEIABIPA_NP6AH0ABQAUInternalPacket@@@Z@Z": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/DS_OrderedList.h#L131",
-   "?Allocate@?$MemoryPool@UInternalPacket@@@DataStructures@@QAEPAUInternalPacket@@XZ": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/DS_MemoryPool.h#L99",
-   "?Clear@?$SingleProducerConsumer@URequestedConnectionStruct@RakPeer@@@DataStructures@@QAEXXZ": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/SingleProducerConsumer.h#L240",
-   "?InitPage@?$MemoryPool@U?$Page@IPAUInternalPacket@@$0CA@@DataStructures@@@DataStructures@@IAEXPAUPage@12@0@Z": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/DS_MemoryPool.h#L73",
-   "?Release@?$MemoryPool@U?$Page@IPAUInternalPacket@@$0CA@@DataStructures@@@DataStructures@@QAEXPAU?$Page@IPAUInternalPacket@@$0CA@@2@@Z": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/DS_MemoryPool.h#L167",
-   "?Remove@?$OrderedList@USystemAddress@@USystemAddressAndIndex@@$1?SystemAddressAndIndexComp@@YAHABU1@ABU2@@Z@DataStructures@@QAEIABUSystemAddress@@P6AH0ABUSystemAddressAndIndex@@@Z@Z": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/DS_OrderedList.h#L207",
-   "?GetIndexFromKey@?$OrderedList@HUMapNode@?$Map@HPAVHuffmanEncodingTree@@$1??$defaultMapKeyComparison@H@DataStructures@@YAHABH0@Z@DataStructures@@$1?NodeComparisonFunc@23@SAHABHABU123@@Z@DataStructures@@QBEIABHPA_NP6AH0ABUMapNode@?$Map@HPAVHuffmanEncodingTree@@$1??$defaultMapKeyComparison@H@DataStructures@@YAHABH0@Z@2@@Z@Z": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/DS_OrderedList.h#L131",
-   "?WriteLock@?$SingleProducerConsumer@UBufferedCommandStruct@RakPeer@@@DataStructures@@QAEPAUBufferedCommandStruct@RakPeer@@XZ": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/SingleProducerConsumer.h#L154",
-   "?WriteLock@?$SingleProducerConsumer@URequestedConnectionStruct@RakPeer@@@DataStructures@@QAEPAURequestedConnectionStruct@RakPeer@@XZ": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/SingleProducerConsumer.h#L154",
-   "?GetIndexFromKey@?$OrderedList@USystemAddress@@USystemAddressAndIndex@@$1?SystemAddressAndIndexComp@@YAHABU1@ABU2@@Z@DataStructures@@QBEIABUSystemAddress@@PA_NP6AH0ABUSystemAddressAndIndex@@@Z@Z": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/DS_OrderedList.h#L131",
-   "?Clear@?$MemoryPool@UInternalPacket@@@DataStructures@@QAEXXZ": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/DS_MemoryPool.h#L221",
-   "?Clear@?$SingleProducerConsumer@UBufferedCommandStruct@RakPeer@@@DataStructures@@QAEXXZ": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/SingleProducerConsumer.h#L240",
-   "?Release@?$MemoryPool@UInternalPacket@@@DataStructures@@QAEXPAUInternalPacket@@@Z": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/DS_MemoryPool.h#L167",
-   "?InitPage@?$MemoryPool@UInternalPacket@@@DataStructures@@IAEXPAUPage@12@0@Z": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/DS_MemoryPool.h#L73",
-   "?Clear@?$OrderedList@IU?$RangeNode@I@DataStructures@@$1??$RangeNodeComp@I@2@YAHABIABU12@@Z@DataStructures@@QAEXXZ": "https://github.com/Asphaltian/OpenRBX/blob/06b6c3fe52af754e3123a6518da2f85c43e3bd65/3rdparty/RakNet30/Source/DS_OrderedList.h#L262"
-  }
- },
  "ogre-1.7.0": {
   "url": "https://downloads.sourceforge.net/project/ogre/ogre/1.7/ogre-v1-7-0.zip",
   "kind": "archive",
-  "files": [
-   "OgreAnimationState.cpp",
-   "OgreAnimationTrack.cpp",
-   "OgreCompositionPass.cpp",
-   "OgreCompositorInstance.cpp",
-   "OgreConfigFile.cpp",
-   "OgreDataStream.cpp",
-   "OgreEdgeListBuilder.cpp",
-   "OgreGpuProgramUsage.cpp",
-   "OgreInstancedGeometry.cpp",
-   "OgreMaterialSerializer.cpp",
-   "OgreMesh.cpp",
-   "OgreMeshSerializerImpl.cpp",
-   "OgreOptimisedUtilGeneral.cpp",
-   "OgrePixelFormat.cpp",
-   "OgreProgressiveMesh.cpp",
-   "OgreRenderSystem.cpp",
-   "OgreRenderTarget.cpp",
-   "OgreResource.cpp",
-   "OgreResourceManager.cpp",
-   "OgreRotationSpline.cpp",
-   "OgreScriptLexer.cpp",
-   "OgreScriptTranslator.cpp",
-   "OgreShadowCameraSetupPlaneOptimal.cpp",
-   "OgreShadowCaster.cpp",
-   "OgreSkeleton.cpp",
-   "OgreSubMesh.cpp",
-   "OgreTangentSpaceCalc.cpp",
-   "OgreTechnique.cpp",
-   "OgreUTFString.cpp"
-  ]
+  "files": []
  },
  "ogre-1.6.4": {
   "url": "https://downloads.sourceforge.net/project/ogre/ogre/1.6.4/ogre-v1-6-4.tar.bz2",
   "kind": "archive",
-  "files": [
-   "OgreAlignedAllocator.cpp",
-   "OgreAnimation.cpp",
-   "OgreAutoParamDataSource.cpp",
-   "OgreBillboard.cpp",
-   "OgreBillboardChain.cpp",
-   "OgreBillboardSet.cpp",
-   "OgreBorderPanelOverlayElement.cpp",
-   "OgreCompiler2Pass.cpp",
-   "OgreCompositorScriptCompiler.cpp",
-   "OgreCompositorSerializer.cpp",
-   "OgreConvexBody.cpp",
-   "OgreDataStream.cpp",
-   "OgreDefaultSceneQueries.cpp",
-   "OgreEdgeListBuilder.cpp",
-   "OgreFileSystem.cpp",
-   "OgreFontManager.cpp",
-   "OgreMesh.cpp",
-   "OgreMovableObject.cpp",
-   "OgreParticle.cpp",
-   "OgreParticleEmitter.cpp",
-   "OgreParticleSystem.cpp",
-   "OgrePass.cpp",
-   "OgrePredefinedControllers.cpp",
-   "OgreRenderQueueSortingGrouping.cpp",
-   "OgreRenderSystem.cpp",
-   "OgreRenderTarget.cpp",
-   "OgreResourceBackgroundQueue.cpp",
-   "OgreResourceGroupManager.cpp",
-   "OgreSceneManager.cpp",
-   "OgreSceneManagerEnumerator.cpp",
-   "OgreScriptCompiler.cpp",
-   "OgreSubEntity.cpp",
-   "OgreTextureUnitState.cpp",
-   "OgreWindowEventUtilities.cpp"
-  ]
+  "files": []
  },
  "ogre-1.4.9": {
   "url": "https://downloads.sourceforge.net/project/ogre/ogre/1.4.9/ogre-v1-4-9.tar.bz2",
   "kind": "archive",
-  "files": [
-   "OgreAlignedAllocator.cpp",
-   "OgreAutoParamDataSource.cpp",
-   "OgreEdgeListBuilder.cpp",
-   "OgreFileSystem.cpp",
-   "OgreGpuProgramManager.cpp",
-   "OgreMesh.cpp",
-   "OgreMeshSerializerImpl.cpp",
-   "OgreRenderSystem.cpp",
-   "OgreSceneManager.cpp",
-   "OgreSceneManagerEnumerator.cpp",
-   "OgreShadowCameraSetupPlaneOptimal.cpp",
-   "OgreSubEntity.cpp"
-  ]
+  "files": []
  },
  "ogre-1.4.5": {
   "url": "https://downloads.sourceforge.net/project/ogre/ogre/1.4.5/ogre-win32-v1-4-5.zip",
@@ -1399,36 +934,17 @@
  "lua-5.1-dll": {
   "url": "https://www.lua.org/ftp/lua-5.1.tar.gz",
   "kind": "archive",
-  "files": [
-   "lauxlib.c",
-   "lbaselib.c",
-   "ldebug.c",
-   "ldo.c",
-   "lgc.c",
-   "liolib.c",
-   "llex.c",
-   "lmathlib.c",
-   "lobject.c",
-   "lparser.c",
-   "lstrlib.c",
-   "lvm.c"
-  ]
+  "files": []
  },
  "lua-5.1.1-dll": {
   "url": "https://www.lua.org/ftp/lua-5.1.1.tar.gz",
   "kind": "archive",
-  "files": [
-   "liolib.c",
-   "lvm.c"
-  ]
+  "files": []
  },
  "lua-5.1.2-dll": {
   "url": "https://www.lua.org/ftp/lua-5.1.2.tar.gz",
   "kind": "archive",
-  "files": [
-   "lmathlib.c",
-   "roc_unit_6878e048cc528e62.cpp"
-  ]
+  "files": []
  },
  "lua-5.1.3-dll": {
   "url": "https://www.lua.org/ftp/lua-5.1.3.tar.gz",
@@ -1486,9 +1002,7 @@
  "zlib-1.2.3-winapi-dll": {
   "url": "https://zlib.net/fossils/zlib-1.2.3.tar.gz",
   "kind": "archive",
-  "files": [
-   "roc_unit_cc0da05a02dcd115.cpp"
-  ]
+  "files": []
  },
  "zlib-1.1.4-dll": {
   "url": "https://zlib.net/fossils/zlib-1.1.4.tar.gz",
@@ -1704,17 +1218,7 @@
  "boost-1.35.0-dll": {
   "url": "https://archives.boost.io/release/1.35.0/source/boost_1_35_0.tar.gz",
   "kind": "archive",
-  "files": [
-   "libs/iostreams/src/mapped_file.cpp",
-   "libs/program_options/src/cmdline.cpp",
-   "libs/program_options/src/value_semantic.cpp",
-   "libs/signals/src/named_slot_map.cpp",
-   "libs/signals/src/signal_base.cpp",
-   "libs/signals/src/trackable.cpp",
-   "libs/thread/src/win32/thread.cpp",
-   "roc_espeon_dhtmlnativefunction034ab6d87e50f0c3f.cpp",
-   "roc_espeon_humanoidstateslotff087c81fef193c1.cpp"
-  ]
+  "files": []
  },
  "boost-1.37.0-dll": {
   "url": "https://archives.boost.io/release/1.37.0/source/boost_1_37_0.tar.gz",
@@ -1852,11 +1356,6 @@
    "GLG3Dcpp/ToneMap.cpp"
   ]
  },
- "rccservice-dll": {
-  "url": "https://github.com/verify-stack/rccservice-decompile/blob/35dc07d25ef89e2fbcba7d484828c3bd0c060321/RBXGS/",
-  "kind": "file",
-  "files": []
- },
  "ogre-1.7.0-dll": {
   "url": "https://downloads.sourceforge.net/project/ogre/ogre/1.7/ogre-v1-7-0.zip",
   "kind": "archive",
@@ -1870,33 +1369,7 @@
  "ogre-1.4.9-dll": {
   "url": "https://downloads.sourceforge.net/project/ogre/ogre/1.4.9/ogre-v1-4-9.tar.bz2",
   "kind": "archive",
-  "files": [
-   "OgreAlignedAllocator.cpp",
-   "OgreAnimation.cpp",
-   "OgreArchiveManager.cpp",
-   "OgreAutoParamDataSource.cpp",
-   "OgreBillboardChain.cpp",
-   "OgreBillboardSet.cpp",
-   "OgreCodec.cpp",
-   "OgreCompiler2Pass.cpp",
-   "OgreCompositionTechnique.cpp",
-   "OgreDefaultSceneQueries.cpp",
-   "OgreFileSystem.cpp",
-   "OgreFontManager.cpp",
-   "OgreGpuProgramUsage.cpp",
-   "OgreHardwareBufferManager.cpp",
-   "OgreInstancedGeometry.cpp",
-   "OgreMesh.cpp",
-   "OgreOverlayManager.cpp",
-   "OgreProfiler.cpp",
-   "OgreRenderQueueInvocation.cpp",
-   "OgreRenderSystemCapabilities.cpp",
-   "OgreResourceGroupManager.cpp",
-   "OgreSceneManager.cpp",
-   "roc_client_map_bounds.cpp",
-   "roc_fork_ccf250026627378f.cpp",
-   "roc_ogre_map_string_value84_300b0b85e3ca9437.cpp"
-  ]
+  "files": []
  },
  "ogre-1.4.5-dll": {
   "url": "https://downloads.sourceforge.net/project/ogre/ogre/1.4.5/ogre-win32-v1-4-5.zip",

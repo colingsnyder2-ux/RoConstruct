@@ -1,23 +1,23 @@
 {
-  "updated": "2026-10-29 13:35 UTC",
+  "updated": "2026-10-31 17:16 UTC",
   "clients": {
     "2008-06": {
       "phase": "6",
       "phaseLabel": "Link closure",
-      "overall": 0.2376,
+      "overall": 0.2371,
       "bars": {
         "compiled": {
-          "value": 18,
-          "total": 18,
+          "value": 19,
+          "total": 19,
           "label": "Modules reporting"
         },
         "linked": {
-          "value": 15,
-          "total": 18,
+          "value": 16,
+          "total": 19,
           "label": "Modules linked"
         },
         "exact": {
-          "value": 9787,
+          "value": 9766,
           "total": 41196,
           "label": "Byte-exact functions"
         },
@@ -119,6 +119,14 @@
           "exact": 564,
           "objectFunctions": 41795,
           "unresolved": 16
+        },
+        {
+          "name": "Player",
+          "linked": true,
+          "test": 0,
+          "exact": 78,
+          "objectFunctions": 718,
+          "unresolved": 0
         },
         {
           "name": "RakNet",
