@@ -210,7 +210,7 @@ static int countGreen(const Image& image, int x0, int y0, int x1, int y1)
 struct DrawEntry
 {
     Ogre::SceneNode* node;
-    Ogre::Entity* entity;
+    Ogre::RbxEntity* entity;
     Ogre::MeshPtr mesh;
     float size[3];
     float color[3];
@@ -339,6 +339,7 @@ static void drawModels()
             if (entry.entity)
             {
                 entry.node->detachObject(entry.entity);
+                delete entry.entity;
                 entry.entity = NULL;
                 entry.mesh.setNull();
             }
@@ -347,12 +348,10 @@ static void drawModels()
             _snprintf(suffix, sizeof(suffix), "%p", model.id);
             name += suffix;
             entry.mesh = createBoxMesh(name.c_str(), model.size, model.color);
-            Ogre::RbxEntity* trace = new Ogre::RbxEntity();
-            trace->setMesh(entry.mesh);
+            entry.entity = new Ogre::RbxEntity();
+            entry.entity->setMesh(entry.mesh);
             Ogre::SubMesh* subMesh = entry.mesh->getSubMesh(0);
-            trace->createSubEntity(subMesh, 0);
-            (void)trace;
-            entry.entity = g_sceneManager->createEntity(name.c_str(), entry.mesh->getName());
+            entry.entity->createSubEntity(subMesh, 0);
             entry.node->attachObject(entry.entity);
             const Ogre::AxisAlignedBox& b = entry.entity->getBoundingBox();
             std::memcpy(entry.size, model.size, sizeof(entry.size));
@@ -374,6 +373,7 @@ static void drawModels()
             if (it->second.entity)
             {
                 it->second.node->detachObject(it->second.entity);
+                delete it->second.entity;
             }
             it->second.entity = NULL;
             it->second.mesh.setNull();
