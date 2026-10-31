@@ -594,8 +594,12 @@ def cmd_rebuild(a):
         rebuild.placed(a.name)
         return
     if a.action == "milestones":
-        rebuild.milestones(a.name)
-        return
+        results = rebuild.milestones(a.name)
+        sys.exit(0 if results and all(bool(item.get("passed")) for item in results.values()) else 1)
+    if a.action == "player":
+        a.action = "module"
+        a.target = "player"
+        install(ROOT, a.name) if not (ROOT / "rebuild" / a.name / "modules").exists() else None
     if a.action == "progress":
         rebuild.progress(a.name, notify=not getattr(a, "no_notify", False))
         return
@@ -2778,7 +2782,7 @@ def main(argv=None):
     p.set_defaults(fn=cmd_client_remove)
     cmd("rebuild", cmd_rebuild, "2008 client rebuild: doctor | audit | module NAME (see rebuild/<client>/POLICY.md)",
         (["name"], {"help": "client, e.g. 2008-06"}),
-        (["action"], {"choices": ["install", "prepare", "doctor", "audit", "review", "module", "status", "closure", "milestones", "progress", "placed"]}),
+        (["action"], {"choices": ["install", "prepare", "doctor", "audit", "review", "module", "status", "closure", "milestones", "progress", "placed", "player"]}),
         (["target"], {"nargs": "?", "help": "module name for `module` (rebuild/<client>/modules/NAME.json)"}),
         (["--no-notify"], {"action": "store_true", "help": "do not send the Discord webhook"}))
     cmd("integrate", cmd_integrate, "claim native integration work, bulk submit, track verified credit",

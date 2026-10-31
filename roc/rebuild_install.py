@@ -33,11 +33,36 @@ def ensure_abi(root, client='2008-06'):
     return path
 
 
+def _restore_missing_inputs(package, destination):
+    package = Path(package)
+    destination = Path(destination)
+    copies = []
+    for source, target in [('config', 'modules'), ('patches', 'patches'), ('tests', 'tests'),
+                           ('src/glue', 'glue'), ('verification/manifests', 'manifests'), ('scripts', '')]:
+        source_root = package / source
+        if not source_root.is_dir():
+            continue
+        for path in source_root.rglob('*'):
+            if not path.is_file() or path.name == 'compile_test.py':
+                continue
+            copies.append((path, destination / target / path.relative_to(source_root)))
+    if not any(target == destination / 'modules' / 'rbxgs-app.json' for _, target in copies):
+        raise ValueError('Findings package lacks rbxgs-app.json')
+    for source, target in copies:
+        if target.exists():
+            continue
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(source, target)
+
+
 def install(root, client='2008-06', package=None):
     root = Path(root)
     destination = root / 'rebuild' / client
     if (destination / 'modules/rbxgs-app.json').exists():
         ensure_abi(root, client)
+        package_path = Path(package) if package else root / 'local' / 'findings' / client
+        if (package_path / 'config' / 'rbxgs-app.json').exists():
+            _restore_missing_inputs(package_path, destination)
         return destination
     if client != '2008-06':
         raise ValueError('No findings rebuild package configured for ' + client)

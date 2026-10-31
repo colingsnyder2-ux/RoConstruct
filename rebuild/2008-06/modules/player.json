@@ -1,0 +1,33 @@
+{
+ "name": "Player",
+ "description": "Ogre player smoke test",
+ "depends": [
+  "rbxgs-app"
+ ],
+ "layers": [
+  {
+   "name": "engine",
+   "mode": "direct",
+   "dir": "rebuild/2008-06/tests",
+   "files": "PlayerEngine.cpp",
+   "includes_from_recipe": "rbxgs",
+   "defines_from_recipe": "rbxgs",
+   "extra_defines": "BOOST_ALL_NO_LIB",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD"
+  }
+ ],
+ "overlay": {
+  "root": "tools/rbxgs/Client",
+  "patches": "rebuild/2008-06/patches/rbxgs-client.json"
+ },
+ "test": "Player2008",
+ "verified": false,
+ "test_includes": [
+  "tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
+ ],
+ "import_dlls": [
+  "rgmain.dll",
+  "rgdx.dll"
+ ],
+ "test_defines": "WIN32 NDEBUG _RELEASE"
+}

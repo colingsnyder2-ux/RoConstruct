@@ -9,6 +9,7 @@ import hashlib
 import functools
 import collections
 import os
+import shutil
 import re
 import subprocess
 from pathlib import Path
@@ -444,7 +445,7 @@ VENDOR_AUTOLINK = ("zlib.lib", "G3D.lib", "GLG3D.lib", "sdl.lib", "sdlmain.lib",
                    "ToolkitPro1122vc90S.lib", "ToolkitPro1122vc90LDS.lib")
 
 
-def link_test(client, test, libs, includes=(), defines="WIN32 NDEBUG _MBCS _CRT_SECURE_NO_WARNINGS", flags="/O2 /GS- /EHsc /MD",
+def link_test(client=None, test=None, libs=(), includes=(), defines="WIN32 NDEBUG _MBCS _CRT_SECURE_NO_WARNINGS", flags="/O2 /GS- /EHsc /MD",
               system_libs=("kernel32.lib", "user32.lib", "gdi32.lib", "advapi32.lib", "shell32.lib", "ole32.lib",
                            "oleaut32.lib", "comdlg32.lib", "ws2_32.lib", "winmm.lib", "opengl32.lib", "glu32.lib"), cl=BUILD, run_args=()):
     """Compile tests/<test>.cpp, link it against rebuilt libs with the period linker, run it.
@@ -453,6 +454,12 @@ def link_test(client, test, libs, includes=(), defines="WIN32 NDEBUG _MBCS _CRT_
     ws = workspace(client)
     out = ws / "out" / "tests" / test
     out.mkdir(parents=True, exist_ok=True)
+    if client is not None:
+        for lib in libs:
+            stem = Path(lib).stem
+            dll = ROOT / "clients" / client / (stem + ".dll")
+            if dll.is_file():
+                shutil.copyfile(dll, out / dll.name)
     src = ws / "tests" / (test + ".cpp")
     args = ["/nologo", "/c"] + flags.split() + ["/D" + d for d in defines.split()] + ["/I" + str(i) for i in includes]
     code, text = run(tc, "cl", args + ["/Fo" + test + ".obj", str(src)], out)
@@ -468,7 +475,9 @@ def link_test(client, test, libs, includes=(), defines="WIN32 NDEBUG _MBCS _CRT_
     result.update(linked=code == 0, output=text[-1500:], map=str(out / (test + ".map")))
     if code:
         return result
-    done = subprocess.run([str(out / (test + ".exe"))] + list(run_args), stdin=subprocess.DEVNULL, capture_output=True, text=True, timeout=300)
+    run_env = dict(os.environ)
+    run_env['ROC_BUILD'] = '1'
+    done = subprocess.run([str(out / (test + ".exe"))] + list(run_args), stdin=subprocess.DEVNULL, capture_output=True, text=True, timeout=300, env=run_env)
     result.update(ran=True, exit=done.returncode, output=(done.stdout + done.stderr).strip()[-1500:])
     return result
 
@@ -607,9 +616,11 @@ def resolve_objects(client, test, layers, name, includes=(), max_rounds=20, log=
             data = obj.read_bytes()
             (out / f).write_bytes(strip_symbols(data, drop=drop) if drop and not f.startswith("verified_") else data)
         lib_name = Path(name).name + ".lib"
-        code, text = run(tc, "lib", ["/nologo", "/OUT:" + lib_name] + sorted(choice), out)
+        if choice:
+            code, text = run(tc, "lib", ["/nologo", "/OUT:" + lib_name] + sorted(choice), out)
         kwargs = {"defines": defines} if defines else {}
-        result = link_test(client, test, [out / lib_name] + list(extra_libs), includes=includes, **kwargs)
+        link_libs = ([out / lib_name] if choice else []) + list(extra_libs)
+        result = link_test(client, test, link_libs, includes=includes, **kwargs)
         result["choices"] = {f: layers[rank] and str(Path(layers[rank]).name) for f, (rank, _) in choice.items()}
         missing = result["unresolved"]  # full list, not the truncated output
         if result["linked"] or not missing:

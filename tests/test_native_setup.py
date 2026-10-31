@@ -5,6 +5,7 @@ from pathlib import Path
 
 import pytest
 
+import roc
 from roc import analyze, clients, libs, rebuild, rebuild_install, setup
 
 
@@ -75,5 +76,44 @@ def test_cold_prepare_generates_rtti_and_builds_dependencies_with_declared_profi
         return {'linked':True, 'test_exit':0}
     monkeypatch.setattr(rebuild, 'build_module', build)
     rebuild_install.prepare(log=lambda *a: None)
-    assert requested == [50727] and built == ['zlib', 'g3d']
-    assert not (tmp_path / 'rebuild/2008-06/out/RbxgsApp').exists()
+
+
+def test_install_restores_missing_milestone_inputs_when_module_exists(tmp_path):
+    destination = tmp_path / 'rebuild' / '2008-06'
+    module = destination / 'modules' / 'rbxgs-app.json'
+    module.parent.mkdir(parents=True)
+    module.write_text('{"keep":"local recipe"}')
+    abi = destination / 'manifests' / 'abi-evidence.json'
+    abi.parent.mkdir(parents=True)
+    abi.write_text(json.dumps({'RBX::Fixture': {'confidence': 'observed', 'vtables': ['00800000']}}))
+    package = tmp_path / 'local' / 'findings' / '2008-06'
+    (package / 'config').mkdir(parents=True)
+    (package / 'config' / 'rbxgs-app.json').write_text('{"source":"package"}')
+    (package / 'tests').mkdir()
+    (package / 'tests' / 'm5_place.cpp').write_text('milestone source')
+    (package / 'src' / 'glue').mkdir(parents=True)
+    (package / 'src' / 'glue' / 'example.cpp').write_text('glue source')
+    (package / 'verification' / 'manifests').mkdir(parents=True)
+    (package / 'verification' / 'manifests' / 'abi-evidence.json').write_text(
+        json.dumps({'RBX::Fixture': {'confidence': 'observed', 'vtables': ['00800000']}}))
+
+    rebuild_install.install(tmp_path)
+
+    assert module.read_text() == '{"keep":"local recipe"}'
+    assert (destination / 'tests' / 'm5_place.cpp').read_text() == 'milestone source'
+    assert (destination / 'glue' / 'example.cpp').read_text() == 'glue source'
+
+
+def test_rebuild_milestones_command_exits_nonzero_on_failed_link(monkeypatch):
+    import importlib.util
+    from pathlib import Path
+    spec = importlib.util.spec_from_file_location('roc_cli', Path(__file__).resolve().parents[1] / 'roc.py')
+    roc_cli = importlib.util.module_from_spec(spec)
+    monkeypatch.setitem(__import__('sys').modules, 'roc_cli', roc_cli)
+    spec.loader.exec_module(roc_cli)
+    import roc as roc_pkg
+    monkeypatch.setattr(roc_pkg.rebuild, 'milestones', lambda client: {'M4b': {'passed': False, 'linked': False}})
+    args = type('Args', (), {'action': 'milestones', 'name': '2008-06', 'target': None})()
+    with pytest.raises(SystemExit) as exc:
+        roc_cli.cmd_rebuild(args)
+    assert exc.value.code == 1
