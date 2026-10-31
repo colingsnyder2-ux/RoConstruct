@@ -36,3 +36,24 @@ Continue from `work/2008-06/player-roadmap.md`. Native Level/vertex-bank ABI
 resolution precedes a player wiring change. P2 remains open; no later milestone
 is advanced by these diagnostics. The separate source-view fix is documented in
 GRAPH.md (`roc source CLIENT ADDRESS`).
+
+## Follow-up: orientation providers and baseline isolation
+
+Six authentic NormalId template instances now have a reproducible module target:
+`roc rebuild 2008-06 module p2-mesh-orientation --no-notify`. Its linked asymmetric
+fixture passes. Producer link errors reduced from 24 to 18. The player module
+also compiles these providers; no byte-exact credit is claimed.
+
+Earlier failed pixel controls used local white-material/stock-Entity debugging
+changes. Those files remain untouched. An isolated snapshot using committed
+91903d1caf player sources plus the pre-existing local RbxEntityLocal.cpp passes
+all four normal-environment pixel controls. Hashes and captures are retained in
+`work/2008-06/p2-flat-producer/snapshot-runtime/`. The local entity provider is
+absent from the old commit, so this is not a clean-clone reproducibility claim.
+
+Native Level destructor evidence adds a real prerequisite: 004dd340 calls
+005489b0, which calls backend cleanup 005486e0. The Level +24 resource is deleted
+through 0054ac70 -> 006824e0 (Ogre::RbxSubMesh). Reusing the donor Level destructor
+alone would omit backend cleanup. Vertex-bank initialization 00547f60 reserves
+slot zero across the position, normal, tangent, UV and reference-count arrays.
+P2 remains open pending coherent native bank and backend-resource integration.

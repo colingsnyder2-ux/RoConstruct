@@ -49,3 +49,42 @@ stub Level construction. Re-run normal pixel controls after successful linkage.
 Source viewing fixed separately: `roc source CLIENT ADDRESS [--json|--output PATH]`.
 Readable factory files: work/2008-06/source-view/004e54e0.cpp and 004e58b0.cpp.
 Pending claims/jobs: none acquired by this session.
+
+## Continued P2 prerequisite work
+
+Added PlayerMeshOrientation.cpp: authentic NormalId template body plus six explicit
+instances, preserving existing helpers. `roc rebuild 2008-06 module
+p2-mesh-orientation --no-notify` links/runs successfully. Asymmetric (2,3,5)
+fixture checks all six signed axis mappings. Forced producer probe now has 18
+unresolved symbols instead of 24. No new byte-exact/native credit claimed.
+Player config includes this unit; build linked=True/test_exit=0 with all recorded
+source inputs stable before/after. See orientation-build-inputs.json.
+
+Important correction to earlier baseline interpretation: local Player2008.cpp
+contains white-material/stock-Entity diagnostic changes relative to 91903d1caf.
+Those explain the green pixel failures; the recovered entity code was not redone.
+A separate player-snapshot used committed 91903d1caf player sources plus the
+existing local RbxEntityLocal.cpp (missing from that commit), with every input
+hashed. Isolated P2PlayerBaseline builds and all four normal-environment pixel
+controls pass: initial 1891 green pixels, moved 2152, removed/empty zero.
+EXE and input hashes: snapshot-runtime/receipt.json. This does not prove a clean
+clone can build; RbxEntityLocal.cpp remains a required local input to preserve.
+All original local diagnostic files remain untouched.
+
+Native lifetime evidence saved in native-lifetime-evidence.json:
+- 004dd340 -> 005489b0 -> 005486e0. Native Level destructor includes backend cleanup;
+  defaulting a derived donor destructor would omit resource removal.
+- Cleanup's +24 pointer is an Ogre::RbxSubMesh: delete thunk 0054ac70 calls
+  006824e0. Existing source has actual imported SubMesh base + EdgeData deletion.
+- 00682150 is used for geometry bounds-cache removal. Its mined label
+  forgetLightPosition/Light* is an analog, not the actual key's semantic type.
+- Bank globals: positions 009738f0, normals 009738fc, tangents 00973928,
+  UVs 00973934, reference counts 009738c4, free list 009738ac.
+- 00548570 -> 00547f60 initializes all arrays to size 1; reference-count slot 0
+  starts at 1. Preserve this reserved slot. 00548000 allocates/reuses slots.
+
+Next command: `roc source 2008-06 0067c130 --output
+work/2008-06/source-view/0067c130.cpp`. Trace returned submesh ownership into the
+native Level +24 cleanup before adapting the recovered producer/upload group.
+Use passing isolated snapshot as renderer baseline; do not overwrite local debug
+work or redo entity implementations. P2 and later milestones remain open.
