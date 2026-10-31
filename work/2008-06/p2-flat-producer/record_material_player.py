@@ -4,6 +4,7 @@ import json
 import os
 from pathlib import Path
 import subprocess
+import sys
 import time
 
 from PIL import Image
@@ -17,7 +18,7 @@ def sha(path):
 
 
 def record():
-    output = Path(__file__).with_name('native-material-player-runtime')
+    output = Path(__file__).with_name(sys.argv[1] if len(sys.argv)>1 else 'native-material-player-runtime')
     output.mkdir(exist_ok=True)
     binary = ROOT / 'rebuild/2008-06/out/tests/P2RecoveredPlayer/P2RecoveredPlayer.exe'
     asset = ROOT / 'work/client2007/content/textures/SurfacesStrip.png'
@@ -64,6 +65,7 @@ def record():
         assert process.returncode == 0, (name, process.returncode)
         stdout = (folder / 'stdout.txt').read_text()
         assert 'mesh cleanup: levels=0 refs=0 backends=0' in stdout
+        if 'spheres=' in stdout:assert 'mesh cleanup: levels=0 refs=0 backends=0 spheres=0' in stdout
         assert 'texture=TextureAtlas lit=1' in stdout
         run = {'command': [str(binary), *args], 'cwd': str(folder), 'exit': process.returncode,
                'cleanup_zero': True, 'stdout_sha256': sha(folder / 'stdout.txt')}
@@ -97,6 +99,7 @@ def record():
                'tests/p2-recovered/PlayerScene.h', 'tests/p2-recovered/PlayerEngine.cpp', 'tests/p2-recovered/RbxEntity.h',
                'tests/p2-recovered/RbxEntityLocal.cpp', 'tests/PlayerNativeMaterial.cpp', 'tests/PlayerNativeTexture.cpp',
                'tests/PlayerMaterialBackend.cpp', 'tests/PlayerLighting.cpp', 'tests/PlayerBlockMesh.cpp']
+    sources += ['tests/PlayerMeshBackend.cpp','tests/PlayerMeshBackend.h','tests/PlayerBlockMesh.h']
     receipt['source_sha256'] = {f'rebuild/2008-06/{p}': sha(ROOT / 'rebuild/2008-06' / p) for p in sources}
     receipt['limits'] = ['Pixel classifier changed for native lit palette; original-threshold failure explicitly retained.',
                          'Default extra Lighting fields bridge the older donor model, complete native class ABI unproven.',

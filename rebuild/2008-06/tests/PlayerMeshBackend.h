@@ -23,3 +23,13 @@ Ogre::RbxSubMesh* createIndexed(const float* vertices, unsigned vertexCount,
 void destroyIndexed(Ogre::RbxSubMesh* mesh);
 unsigned liveMeshes();
 }
+
+// Global map0097dbc4; independent of RbxSceneNode's per-node transform map.
+namespace PlayerSphereCache {
+typedef unsigned long Key;
+void set(Key,const Ogre::Sphere&);
+const Ogre::Sphere& get(Key);
+bool has(Key);
+bool remove(Key);
+unsigned size(); // Diagnostic entry count; native empty singleton remains allocated.
+}

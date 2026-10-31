@@ -80,7 +80,11 @@ unsigned producerCalls(){return builds;}
 Level::Level(RenderDevice::Primitive p):primitive(p),dirty(true),sharedIndex(-1),backend(0){++levelsAlive;}
 Level::~Level(){
     for(int i=0;i<indexArray.size();++i)release(indexArray[i]);
-    if(backend)PlayerMeshBackend::destroyIndexed(backend);
+    if(backend){
+        PlayerSphereCache::Key key=reinterpret_cast<PlayerSphereCache::Key>(backend);
+        PlayerMeshBackend::destroyIndexed(backend);
+        PlayerSphereCache::remove(key); // 005486e0 ->00682150 after backend deletion.
+    }
     --levelsAlive;
 }
 Mesh::Mesh():debugBoundingRadius(0),shadowBackend(0),geometryKind(0){initializeBank();}

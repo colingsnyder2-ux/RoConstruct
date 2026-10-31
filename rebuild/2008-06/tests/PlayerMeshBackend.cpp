@@ -6,6 +6,7 @@
 #include <vector>
 #include <cstdlib>
 #include <cstddef>
+#include <stdexcept>
 
 typedef char SubMeshSize[sizeof(Ogre::SubMesh)==0xc4?1:-1];
 typedef char RbxSubMeshSize[sizeof(Ogre::RbxSubMesh)==0xf0?1:-1];
@@ -16,6 +17,35 @@ typedef char IndexDataSize[sizeof(Ogre::IndexData)==0x14?1:-1];
 
 Ogre::RbxSubMesh::RbxSubMesh() : prepared(false), edges(0) {} // 00678470
 Ogre::RbxSubMesh::~RbxSubMesh() { delete edges; } // 006824e0
+
+namespace PlayerSphereCache {
+namespace {
+typedef std::map<Key,Ogre::Sphere> SphereMap;
+typedef char MapSize[sizeof(SphereMap)==0x20?1:-1];
+typedef char PairSize[sizeof(SphereMap::value_type)==0x14?1:-1];
+typedef char SphereSize[sizeof(Ogre::Sphere)==0x10?1:-1];
+SphereMap* spheres; // 006822e0 allocates once; native has no container teardown here.
+}
+void set(Key key,const Ogre::Sphere& sphere){ // 00682350, map operations from target.
+    if(!spheres)spheres=new SphereMap;
+    SphereMap::iterator found=spheres->find(key);
+    if(found==spheres->end())found=spheres->insert(SphereMap::value_type(key,Ogre::Sphere())).first;
+    found->second=sphere;
+}
+const Ogre::Sphere& get(Key key){ // Existing00682040 source, genuine SphereMap types.
+    SphereMap::const_iterator found=spheres->find(key);
+    if(found==spheres->end())throw std::runtime_error("bsphere map error");
+    return found->second;
+}
+bool has(Key key){return spheres->find(key)!=spheres->end();} // 00682100 requires initialized map.
+bool remove(Key key){ // 00682150: absence before first allocation is valid.
+    if(!spheres)return false;
+    SphereMap::iterator found=spheres->find(key);
+    if(found==spheres->end())return false;
+    spheres->erase(found);return true;
+}
+unsigned size(){return spheres?static_cast<unsigned>(spheres->size()):0;}
+}
 
 namespace PlayerMeshBackend {
 namespace {
