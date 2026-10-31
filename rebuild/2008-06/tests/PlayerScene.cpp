@@ -42,6 +42,9 @@
 
 RBX::DataModel* EngineDataModel();
 
+
+#include "RbxEntity.h"
+
 namespace ViewNew
 {
 
@@ -320,3 +323,7 @@ extern "C" void SceneDetach(void)
     delete g_view;
     g_view = NULL;
 }
+
+
+
+

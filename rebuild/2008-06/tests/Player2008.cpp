@@ -13,6 +13,7 @@
 #include <windows.h>
 #include "zlib.h"
 #include "PlayerScene.h"
+#include "RbxEntity.h"
 
 extern "C" int LoadPlace(const char* text);
 extern "C" void GetPartPosition(float* x, float* y, float* z);
@@ -209,11 +210,12 @@ static int countGreen(const Image& image, int x0, int y0, int x1, int y1)
 struct DrawEntry
 {
     Ogre::SceneNode* node;
-    Ogre::ManualObject* object;
+    Ogre::Entity* entity;
+    Ogre::MeshPtr mesh;
     float size[3];
     float color[3];
 
-    DrawEntry() : node(NULL), object(NULL) { size[0] = size[1] = size[2] = 0; color[0] = color[1] = color[2] = 0; }
+    DrawEntry() : node(NULL), entity(NULL) { size[0] = size[1] = size[2] = 0; color[0] = color[1] = color[2] = 0; }
 };
 
 static Ogre::SceneManager* g_sceneManager = NULL;
@@ -231,29 +233,6 @@ static void addFace(Ogre::ManualObject* object, const Ogre::Vector3& a, const Og
     object->position(d); object->colour(cr, cg, cb);
 }
 
-static void buildBox(DrawEntry& entry, const float size[3], const float color[3])
-{
-    Ogre::ManualObject* object = entry.object;
-    object->clear();
-    object->begin("BaseWhiteNoLighting", Ogre::RenderOperation::OT_TRIANGLE_LIST);
-
-    const float hx = size[0] * 0.5f, hy = size[1] * 0.5f, hz = size[2] * 0.5f;
-    const float r = color[0], g = color[1], b = color[2];
-    const Ogre::Vector3 p000(-hx, -hy, -hz), p100(hx, -hy, -hz), p110(hx, hy, -hz), p010(-hx, hy, -hz);
-    const Ogre::Vector3 p001(-hx, -hy, hz), p101(hx, -hy, hz), p111(hx, hy, hz), p011(-hx, hy, hz);
-
-    addFace(object, p001, p101, p111, p011, r, g, b);
-    addFace(object, p100, p000, p010, p110, r, g, b);
-    addFace(object, p101, p100, p110, p111, r, g, b);
-    addFace(object, p000, p001, p011, p010, r, g, b);
-    addFace(object, p011, p111, p110, p010, r, g, b);
-    addFace(object, p000, p100, p101, p001, r, g, b);
-    object->end();
-
-    std::memcpy(entry.size, size, sizeof(entry.size));
-    std::memcpy(entry.color, color, sizeof(entry.color));
-}
-
 static bool sizeChanged(const DrawEntry& entry, const float size[3], const float color[3])
 {
     for (int i = 0; i < 3; ++i)
@@ -262,6 +241,75 @@ static bool sizeChanged(const DrawEntry& entry, const float size[3], const float
         if (std::fabs(entry.color[i] - color[i]) > 1e-4f) return true;
     }
     return false;
+}
+
+
+static Ogre::MeshPtr createBoxMesh(const char* name, const float size[3], const float color[3])
+{
+    const float hx = size[0] * 0.5f, hy = size[1] * 0.5f, hz = size[2] * 0.5f;
+    Ogre::MeshPtr mesh = Ogre::MeshManager::getSingleton().createManual(name, Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+    Ogre::SubMesh* sub = mesh->createSubMesh();
+
+    Ogre::VertexData* vd = new Ogre::VertexData();
+    mesh->sharedVertexData = vd;
+    Ogre::VertexDeclaration* decl = vd->vertexDeclaration;
+    decl->addElement(0, 0, Ogre::VET_FLOAT3, Ogre::VES_POSITION);
+    decl->addElement(0, 12, Ogre::VET_COLOUR, Ogre::VES_DIFFUSE);
+    vd->vertexCount = 8;
+
+    Ogre::HardwareVertexBufferSharedPtr vbuf = Ogre::HardwareBufferManager::getSingleton().createVertexBuffer(
+        16, 8, Ogre::HardwareBuffer::HBU_STATIC_WRITE_ONLY);
+    unsigned char* raw = static_cast<unsigned char*>(vbuf->lock(Ogre::HardwareBuffer::HBL_DISCARD));
+    const float corners[8][3] = {
+        {-hx,-hy,-hz}, {hx,-hy,-hz}, {hx,hy,-hz}, {-hx,hy,-hz},
+        {-hx,-hy,hz}, {hx,-hy,hz}, {hx,hy,hz}, {-hx,hy,hz}
+    };
+    Ogre::ColourValue cv(color[0], color[1], color[2], 1.0f);
+    Ogre::ARGB argb = cv.getAsARGB();
+    for (int i = 0; i < 8; ++i)
+    {
+        float* fp = reinterpret_cast<float*>(raw + i * 16);
+        fp[0] = corners[i][0];
+        fp[1] = corners[i][1];
+        fp[2] = corners[i][2];
+        *reinterpret_cast<Ogre::ARGB*>(raw + i * 16 + 12) = argb;
+    }
+    vbuf->unlock();
+    vd->vertexBufferBinding->setBinding(0, vbuf);
+
+    Ogre::IndexData* id = sub->indexData;
+    id->indexCount = 36;
+    Ogre::HardwareIndexBufferSharedPtr ibuf = Ogre::HardwareBufferManager::getSingleton().createIndexBuffer(
+        Ogre::HardwareIndexBuffer::IT_16BIT, 36, Ogre::HardwareBuffer::HBU_STATIC_WRITE_ONLY);
+    unsigned short* ip = static_cast<unsigned short*>(ibuf->lock(Ogre::HardwareBuffer::HBL_DISCARD));
+    static const unsigned short indices[36] = {
+        0,1,2, 0,2,3,
+        4,6,5, 4,7,6,
+        1,5,6, 1,6,2,
+        0,3,7, 0,7,4,
+        3,2,6, 3,6,7,
+        0,4,5, 0,5,1
+    };
+    for (int i = 0; i < 36; ++i) ip[i] = indices[i];
+    ibuf->unlock();
+    id->indexBuffer = ibuf;
+
+    sub->useSharedVertices = true;
+
+    std::string matName = std::string(name) + "_mat";
+    Ogre::MaterialPtr mat = Ogre::MaterialManager::getSingleton().create(matName, Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+    Ogre::Pass* pass = mat->getTechnique(0)->getPass(0);
+    pass->setLightingEnabled(false);
+    pass->setCullingMode(Ogre::CULL_NONE);
+    pass->setAmbient(color[0], color[1], color[2]);
+    pass->setDiffuse(color[0], color[1], color[2], 1.0f);
+    sub->setMaterialName(matName);
+    mat->load();
+
+    mesh->_setBounds(Ogre::AxisAlignedBox(-hx, -hy, -hz, hx, hy, hz));
+    mesh->_setBoundingSphereRadius(std::sqrt(hx*hx + hy*hy + hz*hz));
+    mesh->load();
+    return mesh;
 }
 
 static void drawModels()
@@ -277,19 +325,39 @@ static void drawModels()
         seen[model.id] = true;
 
         DrawEntry& entry = g_drawn[model.id];
-        if (!entry.object)
+        if (!entry.node)
         {
             std::string name = "chunk_";
             char suffix[32];
             _snprintf(suffix, sizeof(suffix), "%p", model.id);
             name += suffix;
-            entry.object = g_sceneManager->createManualObject(name);
             entry.node = g_sceneManager->getRootSceneNode()->createChildSceneNode(name + "_node");
-            entry.node->attachObject(entry.object);
             entry.size[0] = -1;
         }
-        if (sizeChanged(entry, model.size, model.color))
-            buildBox(entry, model.size, model.color);
+        if (!entry.entity || sizeChanged(entry, model.size, model.color))
+        {
+            if (entry.entity)
+            {
+                entry.node->detachObject(entry.entity);
+                entry.entity = NULL;
+                entry.mesh.setNull();
+            }
+            std::string name = "mesh_";
+            char suffix[32];
+            _snprintf(suffix, sizeof(suffix), "%p", model.id);
+            name += suffix;
+            entry.mesh = createBoxMesh(name.c_str(), model.size, model.color);
+            Ogre::RbxEntity* trace = new Ogre::RbxEntity();
+            trace->setMesh(entry.mesh);
+            Ogre::SubMesh* subMesh = entry.mesh->getSubMesh(0);
+            trace->createSubEntity(subMesh, 0);
+            (void)trace;
+            entry.entity = g_sceneManager->createEntity(name.c_str(), entry.mesh->getName());
+            entry.node->attachObject(entry.entity);
+            const Ogre::AxisAlignedBox& b = entry.entity->getBoundingBox();
+            std::memcpy(entry.size, model.size, sizeof(entry.size));
+            std::memcpy(entry.color, model.color, sizeof(entry.color));
+        }
 
         entry.node->setPosition(model.position[0], model.position[1], model.position[2]);
         Ogre::Matrix3 rotation(
@@ -303,8 +371,12 @@ static void drawModels()
     {
         if (seen.find(it->first) == seen.end())
         {
-            it->second.node->detachObject(it->second.object);
-            g_sceneManager->destroyManualObject(it->second.object);
+            if (it->second.entity)
+            {
+                it->second.node->detachObject(it->second.entity);
+            }
+            it->second.entity = NULL;
+            it->second.mesh.setNull();
             g_sceneManager->destroySceneNode(it->second.node->getName());
             g_drawn.erase(it++);
         }
