@@ -122,6 +122,17 @@ extern "C" void SetPartYaw(float yaw)
     g_brick->setCoordinateFrame(G3D::CoordinateFrame(rotation,g_brick->getCoordinateFrame().translation));
 }
 
+extern "C" int GetContactState(float* expectedY,float* floorY,int* anchored)
+{
+    RBX::DataModel::Lock lock(g_dataModel);
+    RBX::PartInstance* floor=dynamic_cast<RBX::PartInstance*>(g_dataModel->getWorkspace()->findFirstChildByName("Floor"));
+    if(!g_brick || !floor)return 1;
+    *floorY=floor->getCoordinateFrame().translation.y;
+    *expectedY=*floorY+(floor->getPartSizeXml().y+g_brick->getPartSizeXml().y)*.5f;
+    *anchored=floor->getAnchored();
+    return 0;
+}
+
 extern "C" void ClosePlace()
 {
     g_brick = NULL;

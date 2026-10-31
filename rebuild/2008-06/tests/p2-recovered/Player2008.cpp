@@ -28,6 +28,7 @@ extern "C" void StepEngine(float dt);
 extern "C" void ClosePlace();
 extern "C" void RemovePart(void);
 extern "C" void SetPartYaw(float);
+extern "C" int GetContactState(float*,float*,int*);
 
 static const char* kPartPlace =
     "<roblox version=\"4\"><Item class=\"Workspace\"><Properties></Properties>"
@@ -557,6 +558,8 @@ int main(int argc, char** argv)
     bool frames = false;
     bool demo = false;
     bool skytest = false;
+    bool stability = false;
+    int stabilityExit = 0;
     int spinFrames = 0;
     std::string contentRoot;
     int frameCount = 0;
@@ -567,6 +570,7 @@ int main(int argc, char** argv)
     {
         if (std::strcmp(argv[i], "--selftest") == 0) selftest = true;
         else if (std::strcmp(argv[i], "--demo") == 0) demo = true;
+        else if (std::strcmp(argv[i], "--stability-test") == 0) stability = true;
         else if (std::strcmp(argv[i], "--capture-sky") == 0) { demo=true;skytest=true; }
         else if (std::strcmp(argv[i], "--capture-spin") == 0 && i+1<argc) { spinFrames=std::atoi(argv[++i]);demo=true; }
         else if (std::strcmp(argv[i], "--content-root") == 0 && i+1<argc) contentRoot=argv[++i];
@@ -574,6 +578,7 @@ int main(int argc, char** argv)
         else if (std::strcmp(argv[i], "--frames") == 0 && i + 1 < argc) { frames = true; frameCount = std::atoi(argv[++i]); }
         else if (argv[i][0] != '-') placePath = argv[i];
     }
+    if(stability && (!frames || frameCount<240)){std::printf("stability test requires --frames 240 or more\n");return 1;}
 
     if(contentRoot.empty()){
         char path[MAX_PATH];GetModuleFileNameA(0,path,sizeof(path));
@@ -673,11 +678,41 @@ int main(int argc, char** argv)
     }
     else if (frames)
     {
+        float expectedY=0,initialFloorY=0,minY=1e30f,maxY=-1e30f;
+        int anchored=0,tailSamples=0;bool stable=true,floorStable=true;
+        std::ofstream samples;
+        if(stability){
+            if(GetContactState(&expectedY,&initialFloorY,&anchored)){std::printf("stability fixture needs Brick and Floor\n");return 9;}
+            samples.open("stability_samples.csv",std::ios::binary);samples.precision(9);
+            if(!samples)return 7;
+            samples<<"frame,brick_y,floor_y,expected_y,anchored\n";
+        }
         for (int i = 0; i < frameCount; ++i)
         {
             StepEngine(1.0f / 60.0f);
             drawModels();
             root->renderOneFrame(); win->update();
+            if(stability){
+                float x,y,z,currentExpected,floorY;
+                GetPartPosition(&x,&y,&z);
+                if(GetContactState(&currentExpected,&floorY,&anchored))return 9;
+                floorStable=floorStable && anchored && std::fabs(floorY-initialFloorY)<.0001f && std::fabs(currentExpected-expectedY)<.0001f;
+                samples<<(i+1)<<","<<y<<","<<floorY<<","<<currentExpected<<","<<anchored<<"\n";
+                if(i>=frameCount/2){
+                    ++tailSamples;stable=stable && std::fabs(y-expectedY)<=.01f;
+                    minY=std::min(minY,y);maxY=std::max(maxY,y);
+                }
+            }
+        }
+        if(stability){
+            stable=stable && floorStable && tailSamples>=120 && maxY-minY<=.002f;
+            std::ofstream result("stability_result.json",std::ios::binary);result.precision(9);
+            result<<"{\"pass\":"<<(stable?"true":"false")<<",\"frames\":"<<frameCount<<",\"expected_y\":"<<expectedY
+                  <<",\"initial_floor_y\":"<<initialFloorY<<",\"floor_stable_and_anchored\":"<<(floorStable?"true":"false")
+                  <<",\"tail_samples\":"<<tailSamples<<",\"tail_min_y\":"<<minY<<",\"tail_max_y\":"<<maxY<<"}\n";
+            if(!result || !samples)return 7;
+            std::printf("stability: %s tail=%d y=[%g,%g] expected=%g anchored=%d\n",stable?"PASS":"FAIL",tailSamples,minY,maxY,expectedY,anchored);
+            if(!stable)stabilityExit=9;
         }
         float x, y, z;
         GetPartPosition(&x, &y, &z);
@@ -725,5 +760,5 @@ int main(int argc, char** argv)
     std::printf("mesh cleanup: levels=%u refs=%u backends=%u spheres=%u\n",PlayerBlockMesh::liveLevels(),PlayerBlockMesh::activeReferences(),PlayerMeshBackend::liveMeshes(),PlayerSphereCache::size());
     delete root;
     ClosePlace();
-    return 0;
+    return stabilityExit;
 }
