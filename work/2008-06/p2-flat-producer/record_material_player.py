@@ -25,10 +25,11 @@ def record():
     fixture = ROOT / 'rebuild/2008-06/tests/fixtures/cache-blocks.rbxl'
     env = os.environ.copy()
     env.pop('ROC_BUILD', None)
+    env.pop('ROC_TRACE_STAGES', None)
     env['ROC_TEXTURE_STRIP'] = str(asset)
     receipt = {
         'revision': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
-        'scope': 'Recovered materials/lights integrated into isolated player; original scene bridge remains, P2 open',
+        'scope': 'Ordinary block native render path; milestone verdict is recorded in p2-acceptance-audit.md',
         'ROC_BUILD': env.get('ROC_BUILD'), 'asset': str(asset), 'asset_sha256': sha(asset),
         'exe_sha256': sha(binary), 'map_sha256': sha(binary.with_suffix('.map')),
         'fixture_sha256': sha(fixture), 'runs': {}, 'loaded_dlls': {},
@@ -103,7 +104,7 @@ def record():
     receipt['source_sha256'] = {f'rebuild/2008-06/{p}': sha(ROOT / 'rebuild/2008-06' / p) for p in sources}
     receipt['limits'] = ['Pixel classifier changed for native lit palette; original-threshold failure explicitly retained.',
                          'Default extra Lighting fields bridge the older donor model, complete native class ABI unproven.',
-                         'Metadata parent, original bounds cache/shared-index/selector/child integration remain open.',
+                         'Shared-index, complete selector/child and native enclosing scene integration remain outside this exercised block path.',
                          'Fall smoke uses unversioned fixture and one final observation, not full P0 stability proof.',
                          'Not a clean second-worktree run or original-client visual comparison.']
     (output / 'receipt.json').write_text(json.dumps(receipt, indent=2) + '\n')

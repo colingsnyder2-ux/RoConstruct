@@ -35,10 +35,11 @@ def record():
         found = [(m.group(1), m.group(2)) for m in rows if m and m.group(1).startswith(key)]
         assert len(found) == 1, (key, found)
         selected[key] = {'symbol': found[0][0], 'address': found[0][1]}
-    output = parent / 'native-operation-hardware-trace'
+    output = parent / (sys.argv[1] if len(sys.argv)>1 else 'native-operation-hardware-trace')
     output.mkdir(exist_ok=False)
     env = os.environ.copy()
     env.pop('ROC_BUILD', None)
+    env['ROC_TRACE_STAGES'] = '1'
     asset = ROOT / 'work/client2007/content/textures/SurfacesStrip.png'
     env['ROC_TEXTURE_STRIP'] = str(asset)
     before = sha(binary)
@@ -53,6 +54,7 @@ def record():
         if not line.startswith('TRACE_'):
             continue
         fields = dict(re.findall(r'(\w+)=([0-9a-f]+)', line))
+        if line.startswith('TRACE_STAGE '):fields={'name':line.split('name=',1)[1]}
         events.append({'event': line.split()[0], **fields})
     def one(kind):
         matches = [e for e in events if e['event'] == kind]
@@ -70,6 +72,10 @@ def record():
     assert returned['subentity'] == operation['subentity'] != '00000000'
     assert created['lod'] == operation['lod'] == '0'
     assert one('TRACE_EXIT')['code'] == '0'
+    positions={e['name']:i for i,e in enumerate(events) if e['event']=='TRACE_STAGE'}
+    assert positions['P2_STAGE_LOADED'] < events.index(producers[0])
+    assert events.index(operation) < positions['P2_STAGE_BEFORE_MOVE'] < positions['P2_STAGE_BEFORE_REMOVE']
+    assert positions['P2_STAGE_BEFORE_REMOVE'] < events.index(destroyed) < positions['P2_STAGE_AFTER_REMOVE']
     assert all(e['code'] == '406d1388' for e in events if e['event'] == 'TRACE_EXCEPTION')
     pixels = json.loads((output / 'selftest_result.json').read_text())
     assert pixels['failures'] == 0
@@ -78,7 +84,7 @@ def record():
     assert '00684fd0' in json.loads(report.read_text())['owned_addrs']
     receipt = {
         'revision': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
-        'command': command, 'exit': result.returncode, 'ROC_BUILD': env.get('ROC_BUILD'),
+        'command': command, 'exit': result.returncode, 'ROC_BUILD': env.get('ROC_BUILD'), 'ROC_TRACE_STAGES':env.get('ROC_TRACE_STAGES'),
         'target_exe_sha256_before_and_after': before, 'map_sha256': sha(binary.with_suffix('.map')),
         'debugger_sha256': sha(build / 'trace_player.exe'), 'debugger_source_sha256': sha(parent / 'trace_player.cpp'),
         'compiler_sha256': sha(tc['cl']), 'asset_sha256': sha(asset), 'selected_symbols': selected,

@@ -57,6 +57,12 @@ int main(int argc,char** argv){
             if(thread!=process.hThread)CloseHandle(thread);
         }else if(event.dwDebugEventCode==LOAD_DLL_DEBUG_EVENT){
             if(event.u.LoadDll.hFile)CloseHandle(event.u.LoadDll.hFile);
+        }else if(event.dwDebugEventCode==OUTPUT_DEBUG_STRING_EVENT){
+            char text[256]={0};
+            SIZE_T size=event.u.DebugString.nDebugStringLength;
+            if(size>255)size=255;
+            if(!event.u.DebugString.fUnicode && read(process.hProcess,reinterpret_cast<DWORD>(event.u.DebugString.lpDebugStringData),text,size)
+                    && std::string(text).find("P2_STAGE_")==0)std::printf("TRACE_STAGE name=%s\n",text);
         }else if(event.dwDebugEventCode==EXCEPTION_DEBUG_EVENT){
             DWORD code=event.u.Exception.ExceptionRecord.ExceptionCode;
             if(code==EXCEPTION_BREAKPOINT && !loader){loader=true;}

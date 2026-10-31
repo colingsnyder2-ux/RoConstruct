@@ -406,6 +406,7 @@ static int runSelftest(Ogre::Root* root, Ogre::RenderWindow* win)
 
     if (LoadPlace(kPartPlace) != 0) { std::printf("selftest: place load failed\n"); return 1; }
     if (SceneAttach() != 0) { std::printf("selftest: scene attach failed\n"); return 1; }
+    if(getenv("ROC_TRACE_STAGES"))OutputDebugStringA("P2_STAGE_LOADED");
 
     float sx, sy, sz;
     GetPartExtent(&sx, &sy, &sz);
@@ -424,6 +425,7 @@ static int runSelftest(Ogre::Root* root, Ogre::RenderWindow* win)
         SceneModelCount(), initialA, initialB, okInitial ? "PASS" : "FAIL");
     if (!okInitial) ++failures;
 
+    if(getenv("ROC_TRACE_STAGES"))OutputDebugStringA("P2_STAGE_BEFORE_MOVE");
     MovePartTo(4.0f, 0.0f, 0.0f);
     drawModels();
     Image moved;
@@ -435,10 +437,12 @@ static int runSelftest(Ogre::Root* root, Ogre::RenderWindow* win)
         SceneModelCount(), movedA, movedB, okMoved ? "PASS" : "FAIL");
     if (!okMoved) ++failures;
 
+    if(getenv("ROC_TRACE_STAGES"))OutputDebugStringA("P2_STAGE_BEFORE_REMOVE");
     RemovePart();
     SceneBeginFrame();
     drawModels();
     Image removed;
+    if(getenv("ROC_TRACE_STAGES"))OutputDebugStringA("P2_STAGE_AFTER_REMOVE");
     if (!capture(root, win, "selftest_removed.png", removed)) return 1;
     int removedAll = countGreen(removed, 0, 0, removed.width, removed.height);
     bool okRemoved = SceneModelCount() == 0 && removedAll < 30;
