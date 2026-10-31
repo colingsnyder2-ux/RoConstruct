@@ -115,6 +115,13 @@ extern "C" void RemovePart()
     g_dataModel->step(1.0f / 30.0f);
 }
 
+extern "C" void SetPartYaw(float yaw)
+{
+    RBX::DataModel::Lock lock(g_dataModel);
+    G3D::Matrix3 rotation=G3D::Matrix3::fromAxisAngle(G3D::Vector3::unitY(),yaw);
+    g_brick->setCoordinateFrame(G3D::CoordinateFrame(rotation,g_brick->getCoordinateFrame().translation));
+}
+
 extern "C" void ClosePlace()
 {
     g_brick = NULL;
