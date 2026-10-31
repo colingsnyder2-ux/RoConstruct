@@ -1,0 +1,7 @@
+{
+  "initial": {"models": 1, "greenA": 1891, "greenB": 0, "pass": true},
+  "moved": {"models": 1, "greenA": 0, "greenB": 2152, "pass": true},
+  "removed": {"models": 0, "green": 0, "pass": true},
+  "empty": {"models": 0, "green": 0, "pass": true},
+  "failures": 0
+}
