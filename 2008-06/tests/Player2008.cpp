@@ -13,7 +13,7 @@
 #include <windows.h>
 #include "zlib.h"
 #include "PlayerScene.h"
-#include "RbxEntityLocal.cpp"
+#include "RbxEntity.h"
 
 extern "C" int LoadPlace(const char* text);
 extern "C" void GetPartPosition(float* x, float* y, float* z);
@@ -210,7 +210,7 @@ static int countGreen(const Image& image, int x0, int y0, int x1, int y1)
 struct DrawEntry
 {
     Ogre::SceneNode* node;
-    Ogre::Entity* entity;
+    Ogre::RbxEntity* entity;
     Ogre::MeshPtr mesh;
     float size[3];
     float color[3];
@@ -254,20 +254,25 @@ static Ogre::MeshPtr createBoxMesh(const char* name, const float size[3], const 
     mesh->sharedVertexData = vd;
     Ogre::VertexDeclaration* decl = vd->vertexDeclaration;
     decl->addElement(0, 0, Ogre::VET_FLOAT3, Ogre::VES_POSITION);
+    decl->addElement(0, 12, Ogre::VET_COLOUR, Ogre::VES_DIFFUSE);
     vd->vertexCount = 8;
 
     Ogre::HardwareVertexBufferSharedPtr vbuf = Ogre::HardwareBufferManager::getSingleton().createVertexBuffer(
-        3 * sizeof(float), 8, Ogre::HardwareBuffer::HBU_STATIC_WRITE_ONLY);
-    float* p = static_cast<float*>(vbuf->lock(Ogre::HardwareBuffer::HBL_DISCARD));
+        16, 8, Ogre::HardwareBuffer::HBU_STATIC_WRITE_ONLY);
+    unsigned char* raw = static_cast<unsigned char*>(vbuf->lock(Ogre::HardwareBuffer::HBL_DISCARD));
     const float corners[8][3] = {
         {-hx,-hy,-hz}, {hx,-hy,-hz}, {hx,hy,-hz}, {-hx,hy,-hz},
         {-hx,-hy,hz}, {hx,-hy,hz}, {hx,hy,hz}, {-hx,hy,hz}
     };
+    Ogre::ColourValue cv(color[0], color[1], color[2], 1.0f);
+    Ogre::ARGB argb = cv.getAsARGB();
     for (int i = 0; i < 8; ++i)
     {
-        p[i*3+0] = corners[i][0];
-        p[i*3+1] = corners[i][1];
-        p[i*3+2] = corners[i][2];
+        float* fp = reinterpret_cast<float*>(raw + i * 16);
+        fp[0] = corners[i][0];
+        fp[1] = corners[i][1];
+        fp[2] = corners[i][2];
+        *reinterpret_cast<Ogre::ARGB*>(raw + i * 16 + 12) = argb;
     }
     vbuf->unlock();
     vd->vertexBufferBinding->setBinding(0, vbuf);
@@ -334,7 +339,7 @@ static void drawModels()
             if (entry.entity)
             {
                 entry.node->detachObject(entry.entity);
-                entry.node->detachObject(entry.entity);
+                delete entry.entity;
                 entry.entity = NULL;
                 entry.mesh.setNull();
             }
@@ -342,9 +347,14 @@ static void drawModels()
             char suffix[32];
             _snprintf(suffix, sizeof(suffix), "%p", model.id);
             name += suffix;
-            // entry.entity = g_sceneManager->createEntity(name.c_str(), Ogre::SceneManager::PT_CUBE);
-            // entry.node->attachObject(entry.entity);
-            std::printf("entity mesh=%p subentities=%u mat=%s\n", (void*)entry.entity->getMesh().get(), (unsigned)entry.entity->getNumSubEntities(), entry.entity->getSubEntity(0)->getMaterialName().c_str());
+            entry.mesh = createBoxMesh(name.c_str(), model.size, model.color);
+            entry.entity = new Ogre::RbxEntity();
+            entry.entity->setMesh(entry.mesh);
+            Ogre::SubMesh* subMesh = entry.mesh->getSubMesh(0);
+            entry.entity->createSubEntity(subMesh, 0);
+            entry.node->attachObject(entry.entity);
+            const Ogre::AxisAlignedBox& b = entry.entity->getBoundingBox();
+            std::printf("DEBUG bbox %g %g %g to %g %g %g mat=%s visible=%d\n", b.getMinimum().x, b.getMinimum().y, b.getMinimum().z, b.getMaximum().x, b.getMaximum().y, b.getMaximum().z, entry.entity->getSubEntity(0)->getMaterialName().c_str(), (int)entry.entity->isVisible());
             std::memcpy(entry.size, model.size, sizeof(entry.size));
             std::memcpy(entry.color, model.color, sizeof(entry.color));
         }
@@ -397,10 +407,8 @@ static bool capture(Ogre::Root* root, Ogre::RenderWindow* win, const char* path,
 static int runSelftest(Ogre::Root* root, Ogre::RenderWindow* win)
 {
     int failures = 0;
-    std::printf("runSelftest start\n"); fflush(stdout);
 
     if (LoadPlace(kPartPlace) != 0) { std::printf("selftest: place load failed\n"); return 1; }
-    std::printf("loaded selftest place\n"); fflush(stdout);
     if (SceneAttach() != 0) { std::printf("selftest: scene attach failed\n"); return 1; }
 
     float sx, sy, sz;
@@ -530,10 +538,7 @@ int main(int argc, char** argv)
     {
         int rc = runSelftest(root, win);
         SceneDetach();
-        if (g_sceneManager) { g_sceneManager->destroyAllEntities(); }
-        std::printf("before delete root\n");
         delete root;
-        std::printf("after delete root\n");
         ClosePlace();
         return rc;
     }

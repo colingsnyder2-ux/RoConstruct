@@ -1,8 +1,9 @@
+// from server: 100% by EspClaude
 // from server: 92% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client App/v8xml/SerializerV2.cpp
+// roc-lib: openrbx-client roc_espclaude_b04246b16f858a33.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include "v8xml/SerializerV2.h"
@@ -16,6 +17,7 @@
 #include <list>
 #include <map>
 #include <string>
+namespace RBX { const Name& declare1(const char* name); }
 
 // SIZE 0x2c
 class ArchiveBinder : public RBX::MergeBinder
@@ -52,7 +54,7 @@ DECOMP_SIZE_ASSERT(ArchiveBinder::IDREFBinding, 0x0c)
 // FUNCTION: WEBSERVICE 0x100963c0
 XmlElement* SerializerV2::newRootElement()
 {
-	static const RBX::Name& tag_xmlnsxmime = RBX::Name::declare("xmlns:xmime", -1);
+	static const RBX::Name& tag_xmlnsxmime = RBX::declare1("xmlns:xmime");
 
 	XmlElement* root = new XmlElement(tag_roblox);
 
@@ -194,3 +196,4 @@ void SerializerV2::load(XmlElement* root, RBX::DataModel* dataModel)
 
 	binder.resolveRefs();
 }
+

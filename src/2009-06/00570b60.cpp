@@ -1,8 +1,9 @@
+// from server: 100% by EspClaude
 // from server: 99% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: g3d-6.09 G3Dcpp/GImage.cpp
+// roc-lib: g3d-6.09 roc_espclaude_e5312d95d90248d5.cpp
 
 // Candidate translation unit (score above; library headers required).
 /**
@@ -909,6 +910,7 @@ void GImage::convertToRGBA() {
         return;
 
     default:
+#line 3113 ".\\G3Dcpp\\GImage.cpp"
         alwaysAssertM(false, "Bad number of channels in input image");
     }
 }

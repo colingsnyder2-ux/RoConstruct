@@ -1,123 +1,51 @@
-// from server: 62% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/FlagStand.cpp
+// from server: 71% by Intel
 
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/FlagStand.h"
-#include "v8datamodel/Flag.h"
 
-namespace RBX
-{
-	static Reflection::PropDescriptor<FlagStand, BrickColor> prop_Color("TeamColor", "Data", &FlagStand::getTeamColor, &FlagStand::setTeamColor, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::SignalDesc<FlagStand, void(boost::shared_ptr<Instance>)> event_FlagCaptured("FlagCaptured", "Player");
 
-	FlagStand::FlagStand()
-	{
-		setName("FlagStand");
-	}
 
-	BrickColor FlagStand::getTeamColor() const
-	{
-		return teamColor;
-	}
+struct VInstance {
+    int vftable;
+    int field_4;
 
-	void FlagStand::setTeamColor(BrickColor color)
-	{
-		teamColor = color;
-		raisePropertyChanged(PartInstance::prop_Color);
-	}
+    int sub_545840(int arg);
+};
 
-	void FlagStand::AffixFlag(Flag* flag)
-	{
-		if (!GetFlag())
-		{
-			flag->setParent(getParent());
+extern "C" void __stdcall sub_9831f5(int);
 
-			PartInstance* handle = flag->getHandle();
+unsigned char g_flag_e21634;
+int g_ptr_e21628;
+int g_ptr_e2162c;
+int g_ptr_e21630;
 
-			handle->setCoordinateFrame(G3D::CoordinateFrame());
+int VInstance::sub_545840(int arg) {
+    int eax = 1;
+    VInstance* esi = this;
 
-			G3D::Vector3 location = getLocation().translation;
-			location.y += 0.5f;
+    if (!g_flag_e21634) {
+        g_flag_e21634 = 1;
+        sub_9831f5(0xB13950);
+        g_ptr_e21628 = 0xD824DC;
+        g_ptr_e21630 = 0x5708D0;
+        g_ptr_e2162c = 0x59A790;
+    }
 
-			handle->moveToPoint(location);
-			handle->join();
-		}
-	}
+    if (esi->vftable == (int)&g_ptr_e21628) {
+        int* arg_ptr = (int*)(arg);
+        esi->field_4 = *arg_ptr;
+        return (int)esi;
+    }
 
-	Flag* FlagStand::GetFlag()
-	{
-		Primitive* primitive = getPrimitive();
+    if (esi->vftable) {
+        int (__thiscall *func)(VInstance*, int) = (int (__thiscall*)(VInstance*, int))(*(int*)(esi->vftable + 4));
+        func(esi, arg);
+        esi->vftable = 0;
+    }
 
-		for (RigidJoint* current = primitive->getFirstRigid(); current != NULL; current = primitive->getNextRigid(current))
-		{
-			for (int i = 0; i < 2; i++)
-			{
-				Flag* flag = dynamic_cast<Flag*>(PartInstance::fromPrimitive(current->getPrimitive(i))->getParent());
-				if (flag)
-					return flag;
-			}
-		}
+    if (&esi->field_4) {
+        int* arg_ptr = (int*)(arg);
+        esi->field_4 = *arg_ptr;
+    }
 
-		return NULL;
-	}
-
-	void FlagStand::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-	{
-		Instance::onServiceProvider(oldProvider, newProvider);
-
-		if (!oldProvider)
-		{
-			FlagStandService* flagStandService = ServiceProvider::create<FlagStandService>(newProvider);
-			RBXASSERT(flagStandService);
-
-			flagStandService->RegisterFlagStand(this);
-
-			standTouched = PartInstance::event_Touched.connect(this, boost::bind(&FlagStand::onEvent_standTouched, this, _1));
-		}
-
-		if (!newProvider)
-		{
-			FlagStandService* flagStandService = ServiceProvider::create<FlagStandService>(oldProvider);
-			RBXASSERT(flagStandService);
-
-			flagStandService->UnregisterFlagStand(this);
-
-			standTouched.disconnect();
-		}
-	}
-
-	FlagStandService::FlagStandService()
-	{
-		setName("FlagStandService");
-		propArchivable.setValue(this, false);
-	}
-
-	FlagStandService::~FlagStandService() {}
-
-	FlagStand* FlagStandService::FindStandWithFlag(Flag* f)
-	{
-		if (flagStands.empty())
-			return NULL;
-
-		for (std::list<FlagStand*>::const_iterator iter = flagStands.begin(); iter != flagStands.end(); iter++)
-		{
-			if ((*iter)->GetFlag() == f)
-				return *iter;
-		}
-
-		return NULL;
-	}
-
-	void FlagStandService::RegisterFlagStand(FlagStand* s)
-	{
-		flagStands.push_back(s);
-	}
-
-	void FlagStandService::UnregisterFlagStand(FlagStand* s)
-	{
-		flagStands.remove(s);
-	}
+    esi->vftable = (int)&g_ptr_e21628;
+    return (int)esi;
 }

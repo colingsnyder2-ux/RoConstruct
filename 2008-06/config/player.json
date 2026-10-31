@@ -13,7 +13,10 @@
    "includes_from_recipe": "rbxgs",
    "defines_from_recipe": "rbxgs",
    "extra_defines": "BOOST_ALL_NO_LIB",
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD"
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD",
+   "extra_includes": [
+    "tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
+   ]
   }
  ],
  "overlay": {

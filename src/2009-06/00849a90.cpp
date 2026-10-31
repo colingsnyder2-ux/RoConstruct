@@ -1,11 +1,13 @@
-// from server: 99% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-render TextureProxy.cpp
+// roc-lib: rbxgs-render roc_espclaude_e4709e8f6228ed75.cpp
 
 // Candidate translation unit (score above; library headers required).
+#define getIfResolved exeV0(); virtual void exeV1(); virtual void exeV2(); virtual void exeV3(); virtual void exeV4(); virtual void exeV5(); virtual void exeV6(); virtual void exeV7(); virtual G3D::ReferenceCountedPointer<G3D::Texture> getIfResolved
 #include "RenderLib/TextureProxy.h"
+#undef getIfResolved
 
 namespace RBX
 {
@@ -49,3 +51,4 @@ namespace RBX
 		}
 	}
 }
+

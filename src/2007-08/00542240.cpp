@@ -1,454 +1,125 @@
-// from server: 74% by colin
+// from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8tree/Instance.cpp
+// roc-lib: rbxgs roc_espeon_aug2007_signal_adapter_ctors_16654b997e392328.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "v8tree/Instance.h"
-#include "reflection/function.h"
-#include "reflection/property.h"
-#include <algorithm>
-
-namespace RBX
-{
-	const char* sInstance = "Instance";
-
-	Reflection::BoundProp<bool, 1> Instance::propArchivable("archivable", "Behavior", &Instance::archivable, Reflection::PropertyDescriptor::STANDARD); // L14
-	static Reflection::BoundFuncDesc<Instance, boost::shared_ptr<Instance>(std::string, bool), 2> findFirstChild(&Instance::findFirstChildByName2, "FindFirstChild", "name", "recursive", false, Reflection::FunctionDescriptor::AnyCaller); // L15
-	static Reflection::BoundFuncDesc<Instance, boost::shared_ptr<Instance>(), 0> func_clone(&Instance::clone, "Clone", Reflection::FunctionDescriptor::AnyCaller); // L16
-	static Reflection::BoundFuncDesc<Instance, void(), 0> func_Remove(&Instance::remove, "Remove", Reflection::FunctionDescriptor::AnyCaller); // L17
-	static Reflection::BoundFuncDesc<Instance, boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>>(), 0> func_childrenOld(&Instance::getChildren2, "children", Reflection::FunctionDescriptor::AnyCaller); // L18
-	static Reflection::BoundFuncDesc<Instance, boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>>(), 0> func_children(&Instance::getChildren2, "GetChildren", Reflection::FunctionDescriptor::AnyCaller); // L19
-	static Reflection::BoundFuncDesc<Instance, bool(boost::shared_ptr<Instance>), 1> func_isDescendentOf(&Instance::isDescendentOf2, "IsDescendentOf", "ancestor", Reflection::FunctionDescriptor::AnyCaller); // L20
-	static Reflection::BoundFuncDesc<Instance, bool(boost::shared_ptr<Instance>), 1> func_isAncestorOf(&Instance::isAncestorOf2, "IsAncestorOf", "descendent", Reflection::FunctionDescriptor::AnyCaller); // L21
-	static Reflection::PropDescriptor<Instance, std::string> prop_className("className", "Data", &Instance::getClassNameStr, NULL, Reflection::PropertyDescriptor::UI); // L22
-
-	const Reflection::PropDescriptor<Instance, std::string> Instance::desc_Name("Name", "Data", &Instance::getName, &Instance::setName, Reflection::PropertyDescriptor::STANDARD); // L24
-	const Reflection::RefPropDescriptor<Instance, Instance> Instance::propParent("Parent", "Data", &Instance::getParent, &Instance::setParent, Reflection::PropertyDescriptor::UI); // L25
-
-	Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> Instance::event_childAdded("ChildAdded", "child"); // L27
-	Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> Instance::event_childRemoved("ChildRemoved", "child"); // L28
-	Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> Instance::event_descendentAdded("DescendentAdded", "descendent"); // L29
-	Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> Instance::event_descendentRemoving("DescendentRemoving", "descendent"); // L30
-	Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> Instance::event_ancestryChanged("AncestryChanged", "child"); // L31
-	Reflection::SignalDesc<Instance, void(const Reflection::PropertyDescriptor*)> Instance::event_propertyChanged("Changed", "property"); // L32 
-
-	Instance::Instance(const char* name)
-		: assoc(),
-		  parent(NULL),
-		  children(),
-		  name(name),
-		  archivable(true),
-		  guid()
-	{
-	}
-
-	Instance::Instance()
-		: assoc(),
-		  parent(NULL),
-		  children(),
-		  name("Instance"),
-		  archivable(true),
-		  guid()
-	{
-	}
-
-	Instance::~Instance()
-	{
-		RBXASSERT(!parent);
-	}
-
-	bool Instance::askAddChild(const Instance* instance) const
-	{
-		return false;
-	}
-
-	bool Instance::askSetParent(const Instance* instance) const
-	{
-		return false;
-	}
-
-	void Instance::setName(const std::string& value)
-	{
-		if (name != value)
-		{
-			name = value;
-			raisePropertyChanged(desc_Name);
-		}
-	}
-
-	void Instance::onDescendentAdded(Instance* instance)
-	{
-		if (Notifier<Instance, DescendentAdded>::hasListeners())
-			Notifier<Instance, DescendentAdded>::raise(DescendentAdded(instance, instance->parent));
-
-		event_descendentAdded.fire(this, shared_from(instance));
-	}
-
-	void Instance::onDescendentRemoving(const boost::shared_ptr<Instance>& instance)
-	{
-		event_descendentRemoving.fire(this, instance);
-
-		if (Notifier<Instance, DescendentRemoving>::hasListeners())
-			Notifier<Instance, DescendentRemoving>::raise(DescendentRemoving(instance, shared_from(instance->parent)));
-	}
-
-	class RaiseDescendentAdded2
-	{
-	private:
-		const Instance* notifier;
-		Listener<Instance, DescendentAdded>* listener;
-	  
-	public:
-		RaiseDescendentAdded2(const Instance* notifier, Listener<Instance, DescendentAdded>* listener)
-			: notifier(notifier),
-			  listener(listener)
-		{
-		}
-	public:
-		void operator()(Instance* instance)
-		{
-			notifier->Notifier<Instance, DescendentAdded>::raise(DescendentAdded(instance, instance->parent), listener);
-			instance->for_eachChild(*this);
-		}
-	};
-
-	void Instance::onAddListener(Listener<Instance, DescendentAdded>* listener) const
-	{
-		for_eachChild(RaiseDescendentAdded2(this, listener));
-	}
-
-	void Instance::onAddListener(Listener<Instance, ChildAdded>* listener) const
-	{
-		if (children)
-		{
-			boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>> c = children.read();
-			for (std::vector<boost::shared_ptr<Instance>>::const_iterator iter = c->begin(); iter != c->end(); iter++)
-			{
-				Notifier<Instance, ChildAdded>::raise(ChildAdded((*iter).get()), listener);
-			}
-		}
-	}
-
-	void Instance::removeAllChildren()
-	{
-		while (children)
-		{
-			children->back()->setParent(NULL);
-		}
-	}
-
-	void Instance::onChildChanged(Instance* instance, const PropertyChanged& event)
-	{
-		Instance* p = parent;
-
-		if (p)
-			p->onChildChanged(instance, event);
-	}
-
-	void Instance::readProperties(const XmlElement* container, IReferenceBinder& binder)
-	{
-		for (const XmlElement* i = container->firstChild(); i != NULL; i = i->nextSibling())
-			readProperty(i, binder);
-	}
-
-	void Instance::readChild(const XmlElement* childElement, IReferenceBinder& binder)
-	{
-		const Name* className = NULL;
-		const XmlAttribute* classAttrib = childElement->findAttribute(tag_class);
-
-		if (classAttrib)
-		{
-			if (classAttrib->getValue(className))
-			{
-				boost::shared_ptr<Instance> childInstance = createChild(*className);
-				if (childInstance)
-				{
-					childInstance->read(childElement, binder);
-					if (childInstance)
-						childInstance->setParent(this);
-				}
-				else
-				{
-					const XmlAttribute* nameRef = childElement->findAttribute(name_referent);
-					if (nameRef)
-						binder.announceID(nameRef, NULL);
-				}
-			}
-		}
-	}
-
-	void Instance::readChildren(const XmlElement* element, IReferenceBinder& binder)
-	{
-		if (element)
-		{
-			for (const XmlElement* current = element->findFirstChildByTag(tag_Item); current != NULL; current = element->findNextChildWithSameTag(current))
-			{
-				readChild(current, binder);
-			}
-		}
-	}
-
-	void Instance::read(const XmlElement* element, IReferenceBinder& binder)
-	{
-		const XmlAttribute* nameRef = element->findAttribute(name_referent);
-		if (nameRef)
-		{
-			binder.announceID(nameRef, this);
-		}
-
-		if (element->getTag() == tag_Item)
-		{
-			const XmlElement* properties = element->findFirstChildByTag(tag_Properties);
-			if (properties)
-			{
-				readProperties(properties, binder);
-			}
-			readChildren(element, binder);
-		}
-		else
-			readProperty(element, binder);
-	}
-
-	void Instance::predelete(Instance* instance)
-	{
-		instance->predelete();
-	}
-
-	void Instance::onAncestorChanged(const AncestorChanged& event)
-	{
-		typedef std::vector<boost::shared_ptr<Instance>>::const_iterator Iterator;
-
-		if (children)
-		{
-			boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>> r = children.read();
-
-			for (Iterator it = r->begin(); it != r->end(); it++)
-			{
-				(*it)->onAncestorChanged(event);
-			}
-		}
-
-		event_ancestryChanged.fire(this, shared_from(event.child));
-		Notifier<Instance, AncestorChanged>::raise(event);
-	}
-
-	void Instance::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-	{
-		return;
-	}
-
-	bool Instance::contains(const Instance* child) const
-	{
-		for (; child != NULL; child = child->parent)
-		{
-			if (child == this)
-				return true;
-		}
-
-		return false;
-	}
-
-	boost::shared_ptr<Instance> Instance::createChild(const Name& className)
-	{
-		return AbstractFactoryProduct::create(className);
-	}
-
-	int Instance::findChildIndex(const Instance* instance) const
-	{
-		RBXASSERT(children);
-
-		const std::vector<boost::shared_ptr<Instance>>& c = *children;
-
-		std::vector<boost::shared_ptr<Instance>>::const_iterator found = std::find(c.begin(), c.end(), instance->shared_from_this());
-		return (int)std::distance(c.begin(), found);
-	}
-
-	void Instance::writeChildren(XmlElement* container)
-	{
-		if (children)
-		{
-			const std::vector<boost::shared_ptr<Instance>>& c = *children;
-
-			for (std::vector<boost::shared_ptr<Instance>>::const_iterator it = c.begin(); it != c.end(); it++)
-			{
-				XmlElement* element = (*it)->write();
-				if (element)
-					container->pushBackChild(element);
-			}
-		}
-	}
-
-	Instance* Instance::findFirstChildByName(const std::string& findName) const
-	{
-		if (!children)
-			return NULL;
-
-		const std::vector<boost::shared_ptr<Instance>>& c = *children;
-
-		for (size_t i = 0; i < c.size(); i++)
-		{
-			if (c[i]->name == findName)
-				return c[i].get();
-		}
-
-		return NULL;
-	}
-
-	Instance* Instance::findFirstChildByNameRecursive(const std::string& findName) const
-	{
-		Instance* foundChild = findFirstChildByName(findName);
-		if (foundChild)
-			return foundChild;
-
-		if (!children)
-			return NULL;
-
-		const std::vector<boost::shared_ptr<Instance>>& c = *children;
-
-		for (size_t i = 0; i < c.size(); i++)
-		{
-			Instance* child = c[i]->findFirstChildByNameRecursive(findName);
-			if (child)
-				return child;
-		}
-
-		return NULL;
-	}
-
-	void Instance::signalDescendentAdded(Instance* instance, Instance* beginParent, Instance* oldParent)
-	{
-		for (Instance* parent = beginParent; parent != NULL; parent = parent->getParent())
-		{
-			if (parent == oldParent || parent->isAncestorOf(oldParent))
-				break;
-
-			parent->onDescendentAdded(instance);
-		}
-
-		boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>> c = instance->children.read();
-
-		if (c)
-		{
-			for (std::vector<boost::shared_ptr<Instance>>::const_iterator iter = c->begin(); iter != c->end(); iter++)
-			{
-				signalDescendentAdded((*iter).get(), beginParent, oldParent);
-			}
-		}
-	}
-
-	void Instance::signalDescendentRemoving(const boost::shared_ptr<Instance>& instance, Instance* beginParent, Instance* newParent)
-	{
-		for (Instance* parent = beginParent; parent != NULL; parent = parent->getParent())
-		{
-			if (parent == newParent || parent->isAncestorOf(newParent))
-				break;
-
-			parent->onDescendentRemoving(instance);
-		}
-
-		boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>> c = instance->children.read();
-
-		if (c)
-		{
-			for (std::vector<boost::shared_ptr<Instance>>::const_iterator iter = c->begin(); iter != c->end(); iter++)
-			{
-				signalDescendentRemoving((*iter), beginParent, newParent);
-			}
-		}
-	}
-
-	//96.19% matching.
-	void Instance::readProperty(const XmlElement* propertyElement, IReferenceBinder& binder)
-	{
-		const Name* value = NULL;
-
-		if (const XmlAttribute* attribute = propertyElement->findAttribute(name_name))
-		{
-			if (attribute->getValue(value))
-			{
-				Reflection::PropertyIterator iter = findProperty(*value);
-
-				if (iter != properties_end())
-				{
-					(*iter).read(propertyElement, binder);
-				}
-			}
-		}
-	}
-
-	XmlElement* Instance::write()
-	{
-		if (archivable)
-		{
-			if (getClassName() != Name::getNullName())
-			{
-				XmlElement* element = new XmlElement(tag_Item);
-				element->addAttribute(tag_class, &getClassName());
-				element->addAttribute(name_referent, InstanceHandle(this));
-
-				writeProperties(element->addChild(tag_Properties));
-				writeChildren(element);
-
-				return element;
-			}
-		}
-
-		return new XmlElement(tag_External, InstanceHandle(this));
-	}
-  
-	void Instance::setParent(Instance* newParent)
-	{
-		if (newParent == parent)
-			return;
-
-		boost::shared_ptr<Instance> oldParent = shared_from(parent);
-		boost::shared_ptr<Instance> self = this->shared_from_this();
-
-		if (oldParent)
-		{
-			if (!oldParent->contains(newParent))
-				signalDescendentRemoving(self, oldParent.get(), newParent);
-
-			oldParent->onChildRemoving(this);
-
-			boost::shared_ptr<std::vector<boost::shared_ptr<Instance>>>& c = oldParent->children.write();
-			c->erase(std::find(c->begin(), c->end(), self));
-
-			if (c->empty())
-				oldParent->children.reset();
-
-			parent = NULL;
-
-			event_childRemoved.fire(oldParent.get(), self);
-			oldParent->Notifier<Instance, ChildRemoved>::raise(ChildRemoved(this));
-
-			oldParent->onChildRemoved(this);
-
-			if (oldParent->numChildren() == 0)
-				oldParent->onLastChildRemoved();
-		}
-
-		if (newParent)
-		{
-			newParent->children.write()->push_back(self);
-		}
-
-		parent = newParent;
-
-		if (newParent)
-		{
-			newParent->onChildAdded(this);
-
-			if (!newParent->contains(oldParent.get()))
-				signalDescendentAdded(this, newParent, oldParent.get());
-
-			newParent->Notifier<Instance, ChildAdded>::raise(ChildAdded(this));
-			event_childAdded.fire(newParent, self);
-		}
-
-		onAncestorChanged(AncestorChanged(this, oldParent.get(), newParent));
-		raisePropertyChanged(propParent);
-	}
-}
+#undef _RELEASEASSERT
+#pragma include_alias("v8world/Edge.h", "../roc_espeon_aug2007_edge_header_cb216aa0cb409651.cpp")
+#pragma include_alias(<v8world/Edge.h>, <../roc_espeon_aug2007_edge_header_cb216aa0cb409651.cpp>)
+#pragma include_alias("v8world/Contact.h", "../roc_espeon_aug2007_contact_header_5ec74239b50ff6ca.cpp")
+#pragma include_alias(<v8world/Contact.h>, <../roc_espeon_aug2007_contact_header_5ec74239b50ff6ca.cpp>)
+#define _MT 1
+#define _DLL 1
+#pragma include_alias("v8kernel/KernelIndex.h", "../roc_espeon_aug2007_kernelindex_header_d7778b4d74bcf4c0.cpp")
+#pragma include_alias("v8kernel/Body.h", "../roc_espeon_aug2007_body_header_b251c002665e01af.cpp")
+#pragma include_alias("util/Extents.h", "../roc_espeon_aug2007_extents_inline_58e475d56d206314.cpp")
+#pragma include_alias("reflection/object.h", "../roc_espeon_aug2007_describedbase_e64c736f24da029d.cpp")
+#pragma include_alias("util/Debug.h", "../roc_espeon_aug2007_ctor_debugable_025e0cb3bb8217d3.cpp")
+#pragma include_alias(<util/Debug.h>, <../roc_espeon_aug2007_ctor_debugable_025e0cb3bb8217d3.cpp>)
+#pragma include_alias("util/Events.h", "../roc_espeon_aug2007_datamodel_header_e4d5a36bea2e4f16.cpp")
+#pragma include_alias("reflection/reflection.h", "../roc_espeon_aug2007_described_arg_header_14221fd67bb3ca43.cpp")
+#pragma include_alias("v8tree/Instance.h", "../roc_espeon_aug2007_instance_header_47f25dc9e4368119.cpp")
+#pragma include_alias("v8datamodel/PartInstance.h", "../roc_espeon_aug2007_part_flags_header_a6acc69782cd7c29.cpp")
+#pragma include_alias("v8world/Primitive.h", "../roc_espeon_aug2007_primitive_trivial_header_ac300ff64c6fc5e6.cpp")
+#pragma include_alias("v8datamodel/DataModel.h", "../roc_espeon_aug2007_datamodel_mutex_header_321a3c67de644a82.cpp")
+#pragma include_alias("v8tree/Verb.h", "../roc_espeon_aug2007_datamodel_header_c06d28d1a6b724f6.cpp")
+#pragma include_alias("util/Evaluator.h", "../roc_espeon_aug2007_datamodel_header_4ba4cf67c400aa66.cpp")
+#pragma include_alias(<boost/signals/signal_template.hpp>, <../roc_espeon_boost133_signals_header_a54048d539243d2e.cpp>)
+#pragma include_alias("boost/signals/signal_template.hpp", "../roc_espeon_boost133_signals_header_a54048d539243d2e.cpp")
+#include "roc_espeon_boost133_header_d432d72f8740aec3.cpp"
+#include "roc_espeon_boost133_header_d9eb4711b7fc841c.cpp"
+#include "roc_espeon_boost133_signals_header_be197e98651271fa.cpp"
+
+#pragma include_alias("v8world/Joint.h", "../roc_espeon_aug2007_joint_header_bb71fe27a95b99c9.cpp")
+#pragma include_alias(<v8world/Joint.h>, <../roc_espeon_aug2007_joint_header_bb71fe27a95b99c9.cpp>)
+#pragma include_alias("v8world/IPipelined.h", "../roc_espeon_aug2007_ipipelined_header_459cfa06a40ba136.cpp")
+#pragma include_alias(<v8world/IPipelined.h>, <../roc_espeon_aug2007_ipipelined_header_459cfa06a40ba136.cpp>)
+#pragma include_alias("v8world/Joint.h", "../roc_espeon_aug2007_joint_accessor_header_d77e5f1c0b32672c.cpp")
+#pragma include_alias(<v8world/Joint.h>, <../roc_espeon_aug2007_joint_accessor_header_d77e5f1c0b32672c.cpp>)
+#pragma include_alias("util/IRenderable.h", "../roc_espeon_aug2007_bucket_header_1deff476fbc5a7ac.cpp")
+#pragma include_alias(<util/IRenderable.h>, <../roc_espeon_aug2007_bucket_header_1deff476fbc5a7ac.cpp>)
+#pragma include_alias("v8datamodel/JointInstance.h", "../roc_espeon_aug2007_jointinstance_header_2070a5362277cad1.cpp")
+#pragma include_alias(<v8datamodel/JointInstance.h>, <../roc_espeon_aug2007_jointinstance_header_2070a5362277cad1.cpp>)
+#pragma include_alias("v8world/IMoving.h", "../roc_espeon_aug2007_imoving_header_a7323a6be498a3c4.cpp")
+#pragma include_alias(<v8world/IMoving.h>, <../roc_espeon_aug2007_imoving_header_a7323a6be498a3c4.cpp>)
+#pragma include_alias("v8kernel/IStage.h", "../roc_espeon_aug2007_istage_header_b0262a91d28a95d1.cpp")
+#pragma include_alias(<v8kernel/IStage.h>, <../roc_espeon_aug2007_istage_header_b0262a91d28a95d1.cpp>)
+#pragma include_alias("reflection/function.h", "../roc_espeon_aug2007_abstract_header_991b5e9635f5d75d.cpp")
+#pragma include_alias(<reflection/function.h>, <../roc_espeon_aug2007_abstract_header_991b5e9635f5d75d.cpp>)
+#pragma include_alias("reflection/member.h", "../roc_espeon_aug2007_abstract_header_56ab3d07f46302ce.cpp")
+#pragma include_alias(<reflection/member.h>, <../roc_espeon_aug2007_abstract_header_56ab3d07f46302ce.cpp>)
+#pragma include_alias("reflection/property.h", "../roc_espeon_aug2007_abstract_header_4b7af236c124d7bd.cpp")
+#pragma include_alias(<reflection/property.h>, <../roc_espeon_aug2007_abstract_header_4b7af236c124d7bd.cpp>)
+#pragma include_alias("reflection/signal.h", "../roc_espeon_aug2007_abstract_header_35400af2df14a7cc.cpp")
+#pragma include_alias(<reflection/signal.h>, <../roc_espeon_aug2007_abstract_header_35400af2df14a7cc.cpp>)
+#pragma include_alias("script/Script.h", "../roc_espeon_aug2007_abstract_header_206648adc176eff8.cpp")
+#pragma include_alias(<script/Script.h>, <../roc_espeon_aug2007_abstract_header_206648adc176eff8.cpp>)
+#pragma include_alias("util/ICameraSubject.h", "../roc_espeon_aug2007_abstract_header_15846f007cad7f25.cpp")
+#pragma include_alias(<util/ICameraSubject.h>, <../roc_espeon_aug2007_abstract_header_15846f007cad7f25.cpp>)
+#pragma include_alias("util/IControllable.h", "../roc_espeon_aug2007_abstract_header_134fb1e5a9dd6b81.cpp")
+#pragma include_alias(<util/IControllable.h>, <../roc_espeon_aug2007_abstract_header_134fb1e5a9dd6b81.cpp>)
+#pragma include_alias("util/ILocation.h", "../roc_espeon_aug2007_abstract_header_b220b165aaf2f641.cpp")
+#pragma include_alias(<util/ILocation.h>, <../roc_espeon_aug2007_abstract_header_b220b165aaf2f641.cpp>)
+#pragma include_alias("v8datamodel/ICameraOwner.h", "../roc_espeon_aug2007_abstract_header_328a7f313eb894b0.cpp")
+#pragma include_alias(<v8datamodel/ICameraOwner.h>, <../roc_espeon_aug2007_abstract_header_328a7f313eb894b0.cpp>)
+#pragma include_alias("v8datamodel/ICharacterSubject.h", "../roc_espeon_aug2007_abstract_header_72d3fec55ed90c1f.cpp")
+#pragma include_alias(<v8datamodel/ICharacterSubject.h>, <../roc_espeon_aug2007_abstract_header_72d3fec55ed90c1f.cpp>)
+#pragma include_alias("v8datamodel/IPrimaryPart.h", "../roc_espeon_aug2007_abstract_header_d558c6e252d36c0e.cpp")
+#pragma include_alias(<v8datamodel/IPrimaryPart.h>, <../roc_espeon_aug2007_abstract_header_d558c6e252d36c0e.cpp>)
+#pragma include_alias("v8datamodel/PVInstance.h", "../roc_espeon_aug2007_abstract_header_e7c5a66547093118.cpp")
+#pragma include_alias(<v8datamodel/PVInstance.h>, <../roc_espeon_aug2007_abstract_header_e7c5a66547093118.cpp>)
+#pragma include_alias("v8tree/Service.h", "../roc_espeon_aug2007_abstract_header_cf6415ca14eaa52c.cpp")
+#pragma include_alias(<v8tree/Service.h>, <../roc_espeon_aug2007_abstract_header_cf6415ca14eaa52c.cpp>)
+#pragma include_alias("util/UIEvent.h", "../roc_espeon_aug2007_uievent_viewport_header_04331f71cbc5bc08.cpp")
+#pragma include_alias(<util/UIEvent.h>, <../roc_espeon_aug2007_uievent_viewport_header_04331f71cbc5bc08.cpp>)
+#pragma include_alias("v8datamodel/Workspace.h", "../roc_espeon_aug2007_workspace_header_d38fc45c16cb1519.cpp")
+#pragma include_alias(<v8datamodel/Workspace.h>, <../roc_espeon_aug2007_workspace_header_d38fc45c16cb1519.cpp>)
+#pragma include_alias("v8datamodel/ICharacterSubject.h", "../roc_espeon_aug2007_character_state_f342eee04d017582.cpp")
+#pragma include_alias(<v8datamodel/ICharacterSubject.h>, <../roc_espeon_aug2007_character_state_f342eee04d017582.cpp>)
+#pragma include_alias("humanoid/Humanoid.h", "../roc_espeon_aug2007_humanoid_state_f78ef0aa0660622a.cpp")
+#pragma include_alias(<humanoid/Humanoid.h>, <../roc_espeon_aug2007_humanoid_state_f78ef0aa0660622a.cpp>)
+#pragma include_alias("humanoid/Running.h", "../roc_espeon_aug2007_running_balance_hook_875f0bb95aec50f5.cpp")
+#pragma include_alias(<humanoid/Running.h>, <../roc_espeon_aug2007_running_balance_hook_875f0bb95aec50f5.cpp>)
+#pragma include_alias("humanoid/Balancing.h", "../roc_espeon_aug2007_balancing_balance_hook_37ced1d1de755090.cpp")
+#pragma include_alias(<humanoid/Balancing.h>, <../roc_espeon_aug2007_balancing_balance_hook_37ced1d1de755090.cpp>)
+#pragma include_alias("humanoid/FallingDown.h", "../roc_espeon_aug2007_fallingdown_state_7499778b68c8dff0.cpp")
+#pragma include_alias(<humanoid/FallingDown.h>, <../roc_espeon_aug2007_fallingdown_state_7499778b68c8dff0.cpp>)
+#pragma include_alias("humanoid/Flying.h", "../roc_espeon_aug2007_flying_balance_hook_a9eee8e762225c01.cpp")
+#pragma include_alias(<humanoid/Flying.h>, <../roc_espeon_aug2007_flying_balance_hook_a9eee8e762225c01.cpp>)
+#pragma include_alias("humanoid/Freefall.h", "../roc_espeon_aug2007_freefall_state_671ebe3411c8030d.cpp")
+#pragma include_alias(<humanoid/Freefall.h>, <../roc_espeon_aug2007_freefall_state_671ebe3411c8030d.cpp>)
+#pragma include_alias("humanoid/GettingUp.h", "../roc_espeon_aug2007_gettingup_balance_hook_972ad7ec2ed27c84.cpp")
+#pragma include_alias(<humanoid/GettingUp.h>, <../roc_espeon_aug2007_gettingup_balance_hook_972ad7ec2ed27c84.cpp>)
+#pragma include_alias("humanoid/Jumping.h", "../roc_espeon_aug2007_jumping_state_9af9b1e45a772018.cpp")
+#pragma include_alias(<humanoid/Jumping.h>, <../roc_espeon_aug2007_jumping_state_9af9b1e45a772018.cpp>)
+#pragma include_alias("humanoid/Seated.h", "../roc_espeon_aug2007_seated_state_df5e271a3b8e21cd.cpp")
+#pragma include_alias(<humanoid/Seated.h>, <../roc_espeon_aug2007_seated_state_df5e271a3b8e21cd.cpp>)
+#pragma include_alias("RbxGraphics/Adorn.h", "../roc_espeon_aug2007_adorn_header_6887d8bb2eb92360.cpp")
+#pragma include_alias(<RbxGraphics/Adorn.h>, <../roc_espeon_aug2007_adorn_header_6887d8bb2eb92360.cpp>)
+#pragma include_alias("AppDraw/AdornG3D.h", "../roc_espeon_aug2007_adorng3d_header_62d495574bf52995.cpp")
+#pragma include_alias(<AppDraw/AdornG3D.h>, <../roc_espeon_aug2007_adorng3d_header_62d495574bf52995.cpp>)
+#pragma include_alias("v8kernel/Kernel.h", "../roc_espeon_aug2007_kernel_inline_header_359388a626d15479.cpp")
+#pragma include_alias(<v8kernel/Kernel.h>, <../roc_espeon_aug2007_kernel_inline_header_359388a626d15479.cpp>)
+#pragma include_alias("v8kernel/Point.h", "../roc_espeon_aug2007_point_inline_header_aac7baa3a10948cb.cpp")
+#pragma include_alias(<v8kernel/Point.h>, <../roc_espeon_aug2007_point_inline_header_aac7baa3a10948cb.cpp>)
+
+#include "v8datamodel/Value.h"
+#include "reflection/signal.h"
+typedef RBX::Reflection::SignalDescImpl<1,void(int)>::GenericSlotAdapter Adapter0;
+boost::function<void(int)>* emitAdapter0(Adapter0 value) { return new boost::function<void(int)>(value); }
+typedef RBX::Reflection::SignalDescImpl<1,void(bool)>::GenericSlotAdapter Adapter1;
+boost::function<void(bool)>* emitAdapter1(Adapter1 value) { return new boost::function<void(bool)>(value); }
+typedef RBX::Reflection::SignalDescImpl<1,void(float)>::GenericSlotAdapter Adapter2;
+boost::function<void(float)>* emitAdapter2(Adapter2 value) { return new boost::function<void(float)>(value); }
+typedef RBX::Reflection::SignalDescImpl<1,void(std::string)>::GenericSlotAdapter Adapter3;
+boost::function<void(std::string)>* emitAdapter3(Adapter3 value) { return new boost::function<void(std::string)>(value); }
+typedef RBX::Reflection::SignalDescImpl<1,void(G3D::Vector3)>::GenericSlotAdapter Adapter4;
+boost::function<void(G3D::Vector3)>* emitAdapter4(Adapter4 value) { return new boost::function<void(G3D::Vector3)>(value); }
+typedef RBX::Reflection::SignalDescImpl<1,void(G3D::CoordinateFrame)>::GenericSlotAdapter Adapter5;
+boost::function<void(G3D::CoordinateFrame)>* emitAdapter5(Adapter5 value) { return new boost::function<void(G3D::CoordinateFrame)>(value); }
+typedef RBX::Reflection::SignalDescImpl<1,void(G3D::Color3)>::GenericSlotAdapter Adapter6;
+boost::function<void(G3D::Color3)>* emitAdapter6(Adapter6 value) { return new boost::function<void(G3D::Color3)>(value); }
+typedef RBX::Reflection::SignalDescImpl<1,void(RBX::BrickColor)>::GenericSlotAdapter Adapter7;
+boost::function<void(RBX::BrickColor)>* emitAdapter7(Adapter7 value) { return new boost::function<void(RBX::BrickColor)>(value); }

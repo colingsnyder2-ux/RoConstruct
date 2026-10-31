@@ -1,16 +1,19 @@
+// from server: 100% by EspClaude
 // from server: 99% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-appdraw AdornG3D.cpp
+// roc-lib: rbxgs-appdraw roc_espclaude_53b43c2534b99db1.cpp
 
 // Candidate translation unit (score above; library headers required).
+#define resolve exeR0(); virtual void exeR1(); virtual void exeR2(); virtual G3D::ReferenceCountedPointer<G3D::Texture> resolve
+#include "RenderLib/TextureProxy.h"
+#undef resolve
 #include "AppDraw/AdornG3D.h"
 #include "AppDraw/DrawPrimitives.h"
 #include "AppDraw/Fonts.h"
 #include "GLG3D/Draw.h"
 #include "GLG3D/Texture.h"
-#include "RenderLib/TextureProxy.h"
 #include "RbxGraphics/TextureProxyBase.h"
 
 namespace RBX
@@ -149,3 +152,4 @@ namespace RBX
         renderDevice->setColor(color);
     }
 }
+

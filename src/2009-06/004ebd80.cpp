@@ -1,99 +1,46 @@
-// from server: 90% by colin
+// from server: 100% by EspClaude
+namespace boost { template<class T> class shared_ptr; }
+namespace std { template<class T> class allocator; template<class T, class A> class vector; }
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/RunStateOwner.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/RunStateOwner.h"
-#include "v8datamodel/DataModel.h"
-
-namespace RBX
-{
-	static Reflection::BoundFuncDesc<RunService, void(void), 0> runFunction(&RunService::run, "Run", Reflection::FunctionDescriptor::NeedTrustedCaller);
-	static Reflection::BoundFuncDesc<RunService, void(void), 0> pauseFunction(&RunService::pause, "Pause", Reflection::FunctionDescriptor::NeedTrustedCaller);
-	static Reflection::BoundFuncDesc<RunService, void(void), 0> resetFunction(&RunService::reset, "Reset", Reflection::FunctionDescriptor::NeedTrustedCaller);
-
-	static Reflection::SignalDesc<RunService, void(float)> event_Heartbeat("Heartbeat", "interval");
-
-	RunService::RunService()
-		: framePeriod(1.0f/30.0f),
-		  runState(RS_NORMAL),
-		  invalidRunViewCount(0),
-		  stopRequested(false),
-		  runDisabled(false)
-	{
-		setName("Run Service");
-	}
-
-	RunService::~RunService()
-	{
-		RBXASSERT(views.empty());
-	}
-
-	void RunService::endRunThread(bool join)
-	{
-		stopRequested = true;
-		stateChangedCondition.notify_all();
-
-		if (join)
-			runThread->join();
-	}
-
-	void RunService::onAncestorChanged(const AncestorChanged& event)
-	{
-		if (!getParent())
-		{
-			stopRequested = true;
-			stateChangedCondition.notify_all();
-		}
-	}
-
-	void RunService::setRunState(RunState newState)
-	{
-		RunTransition transition(runState, newState);
-		runState = newState;
-
-		Notifier<RunService, RunState>::raise(newState);
-		Notifier<RunService, RunTransition>::raise(transition);
-	}
-
-	void RunService::raiseStepped(float time, float step)
-	{
-		Notifier<RunService, Stepped>::raise(Stepped(time, step));
-		event_Stepped.fire(this, time, step);
-	}
-
-	void RunService::raiseHeartbeat(float time, float step)
-	{
-		Notifier<RunService, Heartbeat>::raise(Heartbeat(time, step));
-		event_Heartbeat.fire(this, step);
-	}
-
-	void RunService::invalidateRunViews()
-	{
-		boost::mutex::scoped_lock lock(viewMutex);
-
-		if (invalidRunViewCount == 0)
-		{
-			invalidRunViewCount = (int)views.size();
-			if (invalidRunViewCount > 0)
-			{
-				for (std::map<IRunView*, bool>::iterator iter = views.begin(); iter != views.end(); iter++)
-				{
-					iter->first->InvalidateRunView();
-					iter->second = false;
-				}
-				runViewsDoneCondition.notify_all();
-			}
-		}
-	}
-
-	void RunService::start()
-	{
-		RBXASSERT(!runThread);
-
-		boost::shared_ptr<DataModel> dataModel = shared_from(dynamic_cast<DataModel*>(getParent()));
-		runThread.reset(new boost::thread(background_function(boost::bind(&RunService::runProc, shared_from(this), dataModel), "rbx_runProc")));
-	}
+namespace RBX {
+namespace Reflection {
+class ClassDescriptor;
+class Type { public: template<class T> static const Type& singleton(); };
+template<class T> struct ExeCounter { static int n; };
+class FunctionDescriptor {
+public:
+    enum Security { AnyCaller };
+    struct Signature { const Type* resultType; char pad[0x1c]; Signature(); };
+protected:
+    FunctionDescriptor(ClassDescriptor& c, const char* name, Security security);
+public:
+    virtual ~FunctionDescriptor();
+    char pad[0x10];
+    Signature signature;
+};
+template<class Class> class FuncDesc : public FunctionDescriptor {
+public:
+    FuncDesc(const char* name, Security security)
+        : FunctionDescriptor(Class::classDescriptor(), name, security) {}
+};
+template<class Class, class Function, int N> class BoundFuncDesc;
+template<class Class, class R> class BoundFuncDesc<Class, R(), 0> : public FuncDesc<Class> {
+public:
+    typedef R (Class::*FunctionSig)();
+    FunctionSig function;
+    BoundFuncDesc(FunctionSig function, const char* name, Security security)
+        : FuncDesc<Class>(name, security), function(function)
+    {
+        ++ExeCounter<R>::n;
+        signature.resultType = &Type::singleton<R>();
+    }
+    virtual ~BoundFuncDesc() {}
+};
+}
+class ExeBase { public: virtual void f(); };
+class ExeBase2 { public: virtual void g(); };
+class RunService : public ExeBase, public ExeBase2 { public: static Reflection::ClassDescriptor& classDescriptor(); };
+template class Reflection::BoundFuncDesc<RunService, void(), 0>;
 }

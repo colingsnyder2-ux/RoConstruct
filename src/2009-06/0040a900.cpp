@@ -1,48 +1,29 @@
-// from server: 98% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client App/script/Script.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "script/Script.h"
-
-#include "network/Player.h"
-#include "util/ContentProvider.h"
-#include "util/Name.h"
-#include "v8datamodel/Team.h"
-
-namespace RBX {
-
-char sScript[] = "Script";
-
-char sLocalScript[] = "LocalScript";
-
-// FUNCTION: WEBSERVICE 0x10068d50
-boost::shared_ptr<const std::string> Script::requestCode()
-{
-	if (scriptId.isNull()) {
-		return embeddedSource;
-	}
-
-	return ContentProvider::singleton().requestContentString(scriptId);
+namespace boost {
+template<class T> class shared_ptr {
+public:
+    T* px; void* pn;
+    template<class Y, class D> shared_ptr(Y* p, D d);
+    ~shared_ptr();
+};
 }
-
-} // namespace RBX
-
-template const RBX::Name& RBX::Name::doDeclare<RBX::sTeam>();
-template const RBX::Name& RBX::Name::doDeclare<RBX::Network::sPlayer>();
-template void RBX::Name::callDoDeclare<RBX::sTeam>();
-template void RBX::Name::callDoDeclare<RBX::Network::sPlayer>();
-
-template class RBX::FactoryProduct<RBX::Script, RBX::Instance, RBX::sScript>;
-template class RBX::Reflection::
-	Described<RBX::Script, RBX::sScript, RBX::FactoryProduct<RBX::Script, RBX::Instance, RBX::sScript> >;
-template class RBX::DescribedCreatable<RBX::Script, RBX::Instance, RBX::sScript>;
-
-template class RBX::FactoryProduct<RBX::LocalScript, RBX::Script, RBX::sLocalScript>;
-template class RBX::Reflection::Described<
-	RBX::LocalScript,
-	RBX::sLocalScript,
-	RBX::FactoryProduct<RBX::LocalScript, RBX::Script, RBX::sLocalScript> >;
-template class RBX::DescribedCreatable<RBX::LocalScript, RBX::Script, RBX::sLocalScript>;
+namespace RBX {
+class Instance { public: virtual ~Instance(); };
+template<class Base> class Creatable {
+public:
+    class Deleter { public: void operator()(Base* p); };
+    template<class T> static boost::shared_ptr<T> create()
+    {
+        return boost::shared_ptr<T>(new T(), Deleter());
+    }
+};
+class Script : public Instance {
+public:
+    Script();
+    char pad[0x90 - 4];
+};
+template boost::shared_ptr<Script> Creatable<Instance>::create<Script>();
+}

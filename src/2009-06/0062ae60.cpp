@@ -1,10 +1,12 @@
-// from server: 83% by why2
-struct S {
-    int f();
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct Base { virtual void a(); virtual void b(); virtual char* c(); };
+struct S : Base {
+    char* f();
 };
 
-int S::f() {
-    int (*fn)(void);
-    fn = *(int (**)(void))(*(int*)this + 8);
-    return fn() + 0x98;
+char* S::f() {
+    return c() + 0x98;
 }

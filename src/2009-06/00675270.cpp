@@ -1,141 +1,67 @@
-// from server: 98% by colin
-// roc-lang: cpp
-// roc-cl: 50727
+// from server: 100% by EspClaude
+// roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/Teams.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/Teams.h"
-#include "v8datamodel/ModelInstance.h"
-#include "Network/Players.h"
-
-namespace RBX
+#include <intrin.h>
+namespace boost {
+namespace detail {
+class sp_counted_base {
+public:
+    virtual ~sp_counted_base() {}
+    virtual void dispose() = 0;
+    virtual void destroy() { delete this; }
+    long use_count_;
+    long weak_count_;
+    void release() {
+        if (_InterlockedDecrement(&use_count_) == 0) {
+            dispose();
+            weak_release();
+        }
+    }
+    void weak_release() {
+        if (_InterlockedDecrement(&weak_count_) == 0) destroy();
+    }
+};
+class shared_count {
+public:
+    sp_counted_base* pi_;
+    ~shared_count() { if (pi_ != 0) pi_->release(); }
+};
+}
+template<class T> class shared_ptr {
+public:
+    T* px;
+    detail::shared_count pn;
+    shared_ptr(const shared_ptr&);
+    T* operator->() const { return px; }
+    T* get() const { return px; }
+};
+}
+namespace std {
+template<class T> class vector {
+public:
+    void push_back(const T&);
+};
+}
+namespace RBX {
+class Instance { public: virtual ~Instance(); };
+class Team : public Instance { };
+boost::shared_ptr<Instance> shared_from(Instance*);
+template<class T> class copy_on_write_ptr {
+public:
+    boost::shared_ptr<T>& write();
+};
+class Teams : public Instance {
+protected:
+    virtual void onChildAdded(Instance* child);
+    char pad[0x88];
+    copy_on_write_ptr<std::vector<boost::shared_ptr<Instance> > > teams;
+};
+void Teams::onChildAdded(Instance* child)
 {
-	const char* sTeams = "Teams";
-
-	static Reflection::BoundFuncDesc<Teams, void(void), 0> teams_rebalanceTeamsFunction(&Teams::rebalanceTeams, "RebalanceTeams", Reflection::FunctionDescriptor::AnyCaller);
-	static Reflection::BoundFuncDesc<Teams, boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>>(void), 0> func_teams(&Teams::getTeams, "GetTeams", Reflection::FunctionDescriptor::AnyCaller);
-
-	Teams::Teams()
-		: teams(std::vector<boost::shared_ptr<Instance>>())
-	{
-		setName("Teams");
-	}
-
-	Teams::~Teams()
-	{
-	}
-
-	int Teams::getNumPlayersInTeam(BrickColor brickColor)
-	{
-		int numOfPlayers = 0;
-
-		Network::Players* players = ServiceProvider::find<Network::Players>(this);
-		RBXASSERT(players);
-
-		for (size_t i = 0; i < players->numChildren(); i++)
-		{
-			Network::Player* player = dynamic_cast<Network::Player*>(players->getChild(i));
-			if (player)
-			{
-				if (!player->getNeutral() && player->getTeamColor() == brickColor)
-					numOfPlayers++;
-			}
-		}
-		
-		return numOfPlayers;
-	}
-	
-	bool Teams::teamExists(BrickColor brickColor)
-	{
-		return getTeamFromTeamColor(brickColor) != NULL;
-	}
-
-	Team* Teams::getTeamFromTeamColor(BrickColor brickColor)
-	{
-		for (size_t i = 0; i < numChildren(); i++)
-		{
-			Team* team = dynamic_cast<Team*>(getChild(i));
-			if (team && team->getTeamColor() == brickColor)
-				return team;
-		}
-		
-		return NULL;
-	}
-
-	G3D::Color3 Teams::getTeamColorForHumanoid(Humanoid* humanoid)
-	{
-		Network::Players* players = ServiceProvider::find<Network::Players>(this);
-		RBXASSERT(players);
-
-		for (size_t i = 0; i < players->numChildren(); i++)
-		{
-			Network::Player* player = dynamic_cast<Network::Player*>(players->getChild(i));
-			if (player)
-			{
-				if (!player->getNeutral() && player->getCharacter())
-				{
-					ModelInstance* character = player->getCharacter();
-					if (character->findFirstChildOfType<Humanoid>() == humanoid)
-					{
-						return player->getTeamColor().color3();
-					}
-				}
-			}
-		}
-
-		return G3D::Color3::white();
-	}
-
-	void Teams::assignNewPlayerToTeam(Network::Player* player)
-	{
-		BrickColor best = BrickColor::lego_28;
-		int best_count = 10000;
-		bool found = false;
-
-		for (size_t i = 0; i < numChildren(); i++)
-		{
-			Team* team = dynamic_cast<Team*>(getChild(i));
-			if (team && team->getAutoAssignable() == true)
-			{
-				int count = getNumPlayersInTeam(team->getTeamColor());
-
-				if (count < best_count)
-				{
-					best = team->getTeamColor();
-					best_count = count;
-					found = true;
-				}
-			}
-		}
-		
-		if (found)
-		{
-			player->setTeamColor(best);
-			player->setNeutral(false);
-		}
-	}
-
-	void Teams::onChildAdded(Instance* child)
-	{
-		if (dynamic_cast<Team*>(child))
-		{
-			boost::shared_ptr<std::vector<boost::shared_ptr<Instance>>>& myTeams = teams.write();
-			myTeams->push_back(shared_from(child));
-		}
-	}
-
-	void Teams::onChildRemoving(Instance* child)
-	{
-		if (dynamic_cast<Team*>(child))
-		{
-			boost::shared_ptr<std::vector<boost::shared_ptr<Instance>>>& myTeams = teams.write();
-			myTeams->erase(std::find(myTeams->begin(), myTeams->end(), shared_from(child)));
-		}
-	}
-
-	void Teams::rebalanceTeams()
-	{
-		return;
-	}
+    if (dynamic_cast<Team*>(child))
+    {
+        boost::shared_ptr<std::vector<boost::shared_ptr<Instance> > >& myTeams = teams.write();
+        myTeams->push_back(shared_from(child));
+    }
+}
 }

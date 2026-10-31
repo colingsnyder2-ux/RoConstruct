@@ -1,152 +1,48 @@
-// from server: 97% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs tool/MegaDragger.cpp
+// roc-lib: rbxgs roc_espclaude_d38dadd676b0cd16.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "tool/MegaDragger.h"
-#include "tool/DragUtilities.h"
-#include "tool/Dragger.h"
-#include "v8world/ContactManager.h"
-#include "v8datamodel/PartInstance.h"
-#include "v8datamodel/RootInstance.h"
-#include "v8datamodel/MouseCommand.h"
-
-namespace RBX
+#include "G3D/Vector3.h"
+#include "G3D/Ray.h"
+#include "G3D/Array.h"
+#include <vector>
+#include <boost/weak_ptr.hpp>
+namespace RBX {
+class PartInstance;
+class Primitive;
+class ContactManager;
+class UIEvent;
+class ICameraOwner { public: virtual ~ICameraOwner(); };
+class ExePad118 { public: virtual void exeV(); char pad[0x114]; };
+class RootInstance : public ExePad118, public ICameraOwner { };
+class World;
+class DragUtilities {
+public:
+    static World* partsToPrimitives(const std::vector<boost::weak_ptr<PartInstance> >& parts, G3D::Array<Primitive*>& primitives);
+    static bool hitObjectOrPlane(const ContactManager& contactManager, const G3D::Ray& unitSearchRay, const G3D::Array<Primitive*>* ignorePrims, G3D::Vector3& hit);
+};
+class MouseCommand {
+public:
+    static G3D::Ray getUnitMouseRay(const UIEvent& uiEvent, ICameraOwner* _workspace);
+};
+class MegaDragger {
+public:
+    G3D::Vector3 hitObjectOrPlane(const UIEvent& uiEvent);
+    boost::weak_ptr<PartInstance> mousePart;
+    std::vector<boost::weak_ptr<PartInstance> > dragParts;
+    char pad18[0x8];
+    RootInstance* rootInstance;
+    ContactManager& contactManager;
+};
+G3D::Vector3 MegaDragger::hitObjectOrPlane(const UIEvent& uiEvent)
 {
-	MegaDragger::MegaDragger(PartInstance* mousePartPtr, const std::vector<PVInstance*>& pvInstances, RootInstance* rootInstance)
-		: mousePart(shared_from(mousePartPtr)),
-		  dragParts(),
-		  joined(true),
-		  rootInstance(rootInstance),
-          contactManager(rootInstance->getWorld()->getContactManager())
-	{
-		DragUtilities::pvsToParts(pvInstances, dragParts);
-	}
-
-	MegaDragger::MegaDragger(PartInstance* mousePartPtr, const std::vector<boost::weak_ptr<PartInstance>>& partArray, RootInstance* rootInstance)
-		: mousePart(shared_from(mousePartPtr)),
-		  dragParts(partArray),
-		  rootInstance(rootInstance),
-		  joined(true),
-		  contactManager(rootInstance->getWorld()->getContactManager())
-	{
-	}
-
-
-	MegaDragger::~MegaDragger()
-	{
-		if (!joined)
-		{
-			RBXASSERT(0);
-			DragUtilities::joinAndStopDragging(dragParts);
-		}
-	}
-
-	void MegaDragger::startDragging()
-	{
-		DragUtilities::unJoinAndSetDragging(dragParts);
-
-		if (PartInstance::nonNullInWorkspace(mousePart.lock()))
-		{
-			rootInstance->setCameraIgnoreParts(mousePart.lock().get());
-		}
-		joined = false;
-	}
-
-	void MegaDragger::continueDragging()
-	{
-		RBXASSERT(!joined);
-		DragUtilities::unJoinAndSetDragging(dragParts);
-	}
-
-	void MegaDragger::finishDragging()
-	{
-		RBXASSERT(!joined);
-		rootInstance->clearCameraIgnoreParts();
-		DragUtilities::joinAndStopDragging(dragParts);
-		if (DragUtilities::anyPartAlive(dragParts))
-		{
-			rootInstance->setInsertPoint(DragUtilities::computeExtents(dragParts).topCenter());
-		}
-		joined = true;
-	}
-
-	G3D::Vector3 MegaDragger::hitObjectOrPlane(const UIEvent& uiEvent)
-	{
-		G3D::Vector3 result;
-		G3D::Array<Primitive*> primitives;
-		DragUtilities::partsToPrimitives(dragParts, primitives);
-		DragUtilities::hitObjectOrPlane(contactManager, MouseCommand::getUnitMouseRay(uiEvent, rootInstance), &primitives, result);
-		return result;
-	}
-
-	void MegaDragger::alignAndCleanParts()
-	{
-		RBXASSERT(!joined);
-		if (PartInstance::nonNullInWorkspace(mousePart.lock()))
-		{
-			PartInstance* part = mousePart.lock().get();
-
-			if (!part->aligned())
-			{
-				G3D::CoordinateFrame snap = part->worldSnapLocation();
-				G3D::CoordinateFrame snapToGrid = Math::snapToGrid(snap, Dragger::dragSnap());
-				DragUtilities::move(dragParts, snap, snapToGrid);
-			}
-		}
-		DragUtilities::clean(dragParts);
-	}
-
-	G3D::Vector3 MegaDragger::safeMoveYDrop(const G3D::Vector3& tryDrag)
-	{
-		RBXASSERT(!joined);
-		RBXASSERT(tryDrag == Math::toGrid(tryDrag, 0.1f));
-
-		G3D::Array<Primitive*> primitives;
-		DragUtilities::partsToPrimitives(dragParts, primitives);
-
-		RBXASSERT(primitives.size() > 0);
-
-		G3D::Vector3 result = Dragger::safeMoveYDrop(primitives, tryDrag, contactManager);
-
-		RBXASSERT(!contactManager.intersectingOthers(primitives, 0.01f));
-		return result;
-	}
-
-	G3D::Vector3 MegaDragger::safeMoveNoDrop(const G3D::Vector3& tryDrag)
-	{
-		RBXASSERT(!joined);
-		RBXASSERT(tryDrag == Math::toGrid(tryDrag, 0.1f));
-
-		G3D::Array<Primitive*> primitives;
-		DragUtilities::partsToPrimitives(dragParts, primitives);
-
-		RBXASSERT(primitives.size() > 0);
-
-		G3D::Vector3 result = Dragger::safeMoveNoDrop(primitives, tryDrag, contactManager);
-
-		RBXASSERT(!contactManager.intersectingOthers(primitives, 0.01f));
-		return result;
-	}
-
-	void MegaDragger::safeRotate(const G3D::Matrix3& rotMatrix)
-	{
-		RBXASSERT(!joined);
-
-		G3D::Array<Primitive*> primitives;
-		DragUtilities::partsToPrimitives(dragParts, primitives);
-
-		RBXASSERT(primitives.size() > 0);
-
-		Dragger::safeRotate(primitives, rotMatrix, contactManager);
-
-		RBXASSERT(!contactManager.intersectingOthers(primitives, 0.01f));
-	}
-
-	bool MegaDragger::mousePartAlive()
-	{
-		return PartInstance::nonNullInWorkspace(mousePart.lock());
-	}
+    G3D::Vector3 result;
+    G3D::Array<Primitive*> primitives;
+    DragUtilities::partsToPrimitives(dragParts, primitives);
+    DragUtilities::hitObjectOrPlane(contactManager, MouseCommand::getUnitMouseRay(uiEvent, rootInstance), &primitives, result);
+    return result;
+}
 }

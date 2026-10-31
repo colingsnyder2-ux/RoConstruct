@@ -1,16 +1,15 @@
-// from server: 85% by why2
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
 struct ClientReplicator
 {
     char pad[0x830];
-    int field_830;
-    int field_834;
+    long long value;
     long long func_004f53d0();
 };
 
 long long ClientReplicator::func_004f53d0()
 {
-    long long result;
-    *(int*)&result = field_830;
-    *(int*)((char*)&result + 4) = field_834;
-    return result;
+    return value;
 }

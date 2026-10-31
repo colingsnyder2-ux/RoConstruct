@@ -1,166 +1,88 @@
-// from server: 91% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/Selection.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/Selection.h"
-
-static RBX::Reflection::BoundFuncDesc<RBX::Selection, boost::shared_ptr<const std::vector<boost::shared_ptr<RBX::Instance>>>(void), 0> func_getSelection(&RBX::Selection::getSelection2, "Get", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
-static RBX::Reflection::BoundFuncDesc<RBX::Selection, void(boost::shared_ptr<const std::vector<boost::shared_ptr<RBX::Instance>>>), 1> func_setSelection(&RBX::Selection::setSelection, "Set", "selection", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
-
-namespace RBX
-{
-	Selection::Selection()
-		: selection(std::vector<boost::shared_ptr<Instance>>())
-	{
-		setName("Selection");
-	}
-
-	Selection::~Selection()
-	{
-		RBXASSERT(size() == 0);
-	}
-
-	void Selection::addFilteredSelection(ISelectionBase* fs)
-	{
-		filteredSelections.push_back(fs);
-	}
-
-	void Selection::removeFilteredSelection(ISelectionBase* fs)
-	{
-		filteredSelections.erase(std::find(filteredSelections.begin(), filteredSelections.end(), fs));
-	}
-
-	void Selection::raiseAdded(boost::shared_ptr<Instance> instance)
-	{
-		SelectionChanged event(instance, boost::shared_ptr<Instance>());
-
-		for (std::vector<ISelectionBase*>::iterator iter = filteredSelections.begin(); iter != filteredSelections.end(); iter++)
-		{
-			(*iter)->onSelectionChanged(event);
-		}
-
-		Notifier<Selection, SelectionChanged>::raise(event);
-	}
-
-	void Selection::raiseRemoved(boost::shared_ptr<Instance> source)
-	{
-		SelectionChanged event(boost::shared_ptr<Instance>(), source);
-
-		for (std::vector<ISelectionBase*>::iterator iter = filteredSelections.begin(); iter != filteredSelections.end(); iter++)
-		{
-			(*iter)->onSelectionChanged(event);
-		}
-
-		Notifier<Selection, SelectionChanged>::raise(event);
-	}
-
-	void Selection::toggleSelection(Instance* instance)
-	{
-		boost::shared_ptr<Instance> shared = shared_from(instance);
-		boost::shared_ptr<std::vector<boost::shared_ptr<Instance>>> sel = selection.write();
-
-		std::vector<boost::shared_ptr<Instance>>::iterator found = std::find(sel->begin(), sel->end(), shared);
-
-		if (found == sel->end())
-		{
-			sel->push_back(shared);
-			instance->Notifier<Instance, AncestorChanged>::addListener(this);
-			raiseAdded(shared);
-		}
-		else
-		{
-			sel->erase(found);
-			instance->Notifier<Instance, AncestorChanged>::removeListener(this);
-			raiseRemoved(shared);
-		}
-	}
-
-	void Selection::addToSelection(Instance* instance)
-	{
-		boost::shared_ptr<Instance> shared = shared_from(instance);
-		RBXASSERT(instance);
-
-		boost::shared_ptr<std::vector<boost::shared_ptr<Instance>>> sel = selection.write();
-
-		std::vector<boost::shared_ptr<Instance>>::iterator found = std::find(sel->begin(), sel->end(), shared);
-
-		if (found == sel->end())
-		{
-			sel->push_back(shared);
-			instance->Notifier<Instance, AncestorChanged>::addListener(this);
-			raiseAdded(shared);
-		}
-	}
-	
-	void Selection::removeFromSelection(const Instance* instance)
-	{
-		RBXASSERT(instance);
-
-		boost::shared_ptr<std::vector<boost::shared_ptr<Instance>>> sel = selection.write();
-
-		std::vector<boost::shared_ptr<Instance>>::iterator found = std::find(sel->begin(), sel->end(), shared_from(instance));
-
-		if (found != sel->end())
-		{
-			boost::shared_ptr<Instance> nonConst = *found;
-
-			sel->erase(found);
-			instance->Notifier<Instance, AncestorChanged>::removeListener(this);
-			raiseRemoved(nonConst);
-		}
-	}
-
-	void Selection::clearSelection()
-	{
-		while (!selection->empty())
-		{
-			boost::shared_ptr<Instance> instance = selection->back();
-			selection.write()->pop_back();
-
-			instance->Notifier<Instance, AncestorChanged>::removeListener(this);
-			raiseRemoved(instance);
-		}
-	}
-
-	void Selection::setSelection(Instance* instance)
-	{
-		boost::shared_ptr<Instance> inst = shared_from(instance);
-		
-		while (!selection->empty())
-		{
-			boost::shared_ptr<Instance> item = selection->back();
-
-			if (item == inst)
-			{
-				if (selection->size() == 1)
-					return;
-
-				boost::shared_ptr<std::vector<boost::shared_ptr<Instance>>> sel = selection.write();
-				sel->back() = sel->front();
-				sel->front() = item;
-			}
-			else
-			{
-				selection.write()->pop_back();
-				item->Notifier<Instance, AncestorChanged>::removeListener(this);
-				raiseRemoved(item);
-			}
-		}
-
-		if (inst)
-		{
-			selection.write()->push_back(inst);
-			instance->Notifier<Instance, AncestorChanged>::addListener(this);
-			raiseAdded(inst);
-		}
-	}
-
-	void Selection::onEvent(const Instance* source, AncestorChanged event)
-	{
-		if (source->getRootAncestor() != this->getRootAncestor())
-			removeFromSelection(source);
-	}
+extern "C" long __cdecl _InterlockedDecrement(long volatile*);
+#pragma intrinsic(_InterlockedDecrement)
+namespace boost {
+namespace detail {
+class sp_counted_base {
+public:
+    long use_count_;
+    long weak_count_;
+    virtual ~sp_counted_base() {}
+    virtual void dispose() = 0;
+    virtual void destroy() { delete this; }
+    void release()
+    {
+        if (_InterlockedDecrement(&use_count_) == 0)
+        {
+            dispose();
+            weak_release();
+        }
+    }
+    void weak_release()
+    {
+        if (_InterlockedDecrement(&weak_count_) == 0)
+            destroy();
+    }
+};
+}
+}
+namespace boost {
+namespace detail {
+class shared_count {
+public:
+    sp_counted_base* pi_;
+    ~shared_count() { if (pi_ != 0) pi_->release(); }
+};
+}
+template<class T> class shared_ptr {
+public:
+    T* px;
+    detail::shared_count pn;
+};
+}
+namespace std { template<class T> class allocator; template<class T, class A> class vector; }
+namespace RBX {
+class Instance;
+namespace Reflection {
+class Type { public: template<class T> static const Type& singleton(); };
+template<class T> struct ExeCounter { static int n; };
+class Any { public: template<class T> Any& operator=(const T& v); };
+class Value {
+public:
+    const Type* type;
+    Any value;
+    template<class T> Value& operator=(const T& v)
+    {
+        ++ExeCounter<T>::n;
+        type = &Type::singleton<T>();
+        value = v;
+        return *this;
+    }
+};
+class FunctionDescriptor {
+public:
+    virtual ~FunctionDescriptor();
+    char pad[0x34];
+};
+template<class Class, class Function, int N> class BoundFuncDesc;
+template<class Class, class R> class BoundFuncDesc<Class, R(), 0> : public FunctionDescriptor {
+public:
+    typedef R (Class::*FunctionSig)();
+    FunctionSig function;
+    void exec(Class* o, Value& v) const { call<R>(o, v); }
+private:
+    template<class RR> void call(Class* o, Value& returnValue) const
+    {
+        returnValue = (o->*function)();
+    }
+};
+}
+class ExeBase { public: virtual void f(); };
+class ExeBase2 { public: virtual void g(); };
+class Selection : public ExeBase, public ExeBase2 { };
+typedef boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>, std::allocator<boost::shared_ptr<Instance> > > > SelR;
+template class Reflection::BoundFuncDesc<Selection, SelR(), 0>;
 }

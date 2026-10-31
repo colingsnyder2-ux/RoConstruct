@@ -1,25 +1,29 @@
-// from server: 92% by atomic.potato
-struct VProfilingItem_BoundFuncDesc {
-    char pad_0[0x8c];
-    void* f_8c;
-    void* f_90;
-    void* f_94;
-    VProfilingItem_BoundFuncDesc* ctor();
+// from server: 100% by EspClaude
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+extern "C" __declspec(dllimport) long __stdcall InterlockedIncrement(long volatile*);
+class P0 { public: virtual ~P0(); char p[0x10]; };
+class P1 { public: virtual ~P1(); };
+class P2 { public: virtual ~P2(); int p; };
+class P3 { public: virtual ~P3(); char p[0x68]; };
+class Base : public P0, public P1, public P2, public P3 {
+public:
+    Base();
+    virtual ~Base();
 };
-
-extern "C" void __stdcall sub_005D2E80();
-extern "C" void* __stdcall sub_0089E1D0(void*);
-
-VProfilingItem_BoundFuncDesc* VProfilingItem_BoundFuncDesc::ctor() {
-    sub_005D2E80();
-    f_8c = (void*)0x8df72c;
-    sub_0089E1D0((void*)0xa3a1b8);
-    f_90 = 0;
-    f_94 = 0;
-    *(void**)((char*)this + 0x00) = (void*)0x8e0e8c;
-    *(void**)((char*)this + 0x14) = (void*)0x8e0e80;
-    *(void**)((char*)this + 0x18) = (void*)0x8e0e78;
-    *(void**)((char*)this + 0x20) = (void*)0x8e0e70;
-    f_8c = (void*)0x8e0e64;
-    return this;
+class Item {
+public:
+    static long count;
+    void* a;
+    void* b;
+    Item() { InterlockedIncrement(&count); a = 0; b = 0; }
+    virtual ~Item();
+};
+class Derived : public Base, public Item {
+public:
+    Derived();
+    virtual ~Derived();
+};
+Derived::Derived()
+{
 }
