@@ -1,0 +1,255 @@
+{
+  "updated": "2026-10-31 21:59 UTC",
+  "clients": {
+    "2008-06": {
+      "phase": "6",
+      "phaseLabel": "Link closure",
+      "overall": 0.2382,
+      "bars": {
+        "compiled": {
+          "value": 26,
+          "total": 26,
+          "label": "Modules reporting"
+        },
+        "linked": {
+          "value": 23,
+          "total": 26,
+          "label": "Modules linked"
+        },
+        "exact": {
+          "value": 9811,
+          "total": 41196,
+          "label": "Byte-exact functions"
+        },
+        "unresolved": {
+          "value": 21,
+          "total": 21,
+          "label": "Unresolved symbols",
+          "invert": true
+        },
+        "stubs": {
+          "value": 16,
+          "total": 16,
+          "label": "Temporary stubs",
+          "invert": true
+        },
+        "runtime": {
+          "value": 0,
+          "total": 7,
+          "label": "Runtime milestones"
+        }
+      },
+      "modules": [
+        {
+          "name": "BoostExtra",
+          "linked": true,
+          "test": 0,
+          "exact": 0,
+          "objectFunctions": 0,
+          "unresolved": 0
+        },
+        {
+          "name": "Boost",
+          "linked": true,
+          "test": 0,
+          "exact": 346,
+          "objectFunctions": 10298,
+          "unresolved": 0
+        },
+        {
+          "name": "CodegenAnalogs",
+          "linked": true,
+          "test": 0,
+          "exact": 7,
+          "objectFunctions": 124,
+          "unresolved": 0
+        },
+        {
+          "name": "G3D-GL",
+          "linked": true,
+          "test": 0,
+          "exact": 425,
+          "objectFunctions": 5822,
+          "unresolved": 0
+        },
+        {
+          "name": "G3D",
+          "linked": true,
+          "test": 0,
+          "exact": 1168,
+          "objectFunctions": 16751,
+          "unresolved": 0
+        },
+        {
+          "name": "jpeg",
+          "linked": true,
+          "test": 0,
+          "exact": 256,
+          "objectFunctions": 335,
+          "unresolved": 0
+        },
+        {
+          "name": "libpng",
+          "linked": true,
+          "test": 0,
+          "exact": 109,
+          "objectFunctions": 332,
+          "unresolved": 0
+        },
+        {
+          "name": "Lua",
+          "linked": true,
+          "test": 0,
+          "exact": 441,
+          "objectFunctions": 941,
+          "unresolved": 0
+        },
+        {
+          "name": "MfcAtl",
+          "linked": false,
+          "test": null,
+          "exact": 163,
+          "objectFunctions": 1422,
+          "unresolved": 1
+        },
+        {
+          "name": "Ogre",
+          "linked": false,
+          "test": null,
+          "exact": 564,
+          "objectFunctions": 41795,
+          "unresolved": 16
+        },
+        {
+          "name": "P2BlockFactory",
+          "linked": true,
+          "test": 0,
+          "exact": 134,
+          "objectFunctions": 1087,
+          "unresolved": 0
+        },
+        {
+          "name": "P2BlockMesh",
+          "linked": true,
+          "test": 0,
+          "exact": 134,
+          "objectFunctions": 1087,
+          "unresolved": 0
+        },
+        {
+          "name": "P2MeshBackend",
+          "linked": true,
+          "test": 0,
+          "exact": 42,
+          "objectFunctions": 238,
+          "unresolved": 0
+        },
+        {
+          "name": "P2MeshOrientation",
+          "linked": true,
+          "test": 0,
+          "exact": 0,
+          "objectFunctions": 6,
+          "unresolved": 0
+        },
+        {
+          "name": "P2PlayerBaseline",
+          "linked": true,
+          "test": 0,
+          "exact": 87,
+          "objectFunctions": 927,
+          "unresolved": 0
+        },
+        {
+          "name": "P2RecoveredPlayer",
+          "linked": true,
+          "test": 0,
+          "exact": 188,
+          "objectFunctions": 2028,
+          "unresolved": 0
+        },
+        {
+          "name": "P2TextureAtlas",
+          "linked": true,
+          "test": 2147483651,
+          "exact": 11,
+          "objectFunctions": 57,
+          "unresolved": 0
+        },
+        {
+          "name": "Player",
+          "linked": true,
+          "test": 0,
+          "exact": 87,
+          "objectFunctions": 935,
+          "unresolved": 0
+        },
+        {
+          "name": "RakNet",
+          "linked": true,
+          "test": 0,
+          "exact": 392,
+          "objectFunctions": 2890,
+          "unresolved": 0
+        },
+        {
+          "name": "RbxApp",
+          "linked": false,
+          "test": null,
+          "exact": 895,
+          "objectFunctions": 48635,
+          "unresolved": 4
+        },
+        {
+          "name": "RbxUtil",
+          "linked": true,
+          "test": 0,
+          "exact": 508,
+          "objectFunctions": 5140,
+          "unresolved": 0
+        },
+        {
+          "name": "RbxgsApp",
+          "linked": true,
+          "test": 0,
+          "exact": 3323,
+          "objectFunctions": 95352,
+          "unresolved": 0
+        },
+        {
+          "name": "Scintilla",
+          "linked": true,
+          "test": 0,
+          "exact": 127,
+          "objectFunctions": 718,
+          "unresolved": 0
+        },
+        {
+          "name": "XTP",
+          "linked": true,
+          "test": 0,
+          "exact": 4784,
+          "objectFunctions": 86461,
+          "unresolved": 0
+        },
+        {
+          "name": "zlib-winapi",
+          "linked": true,
+          "test": 0,
+          "exact": 24,
+          "objectFunctions": 108,
+          "unresolved": 0
+        },
+        {
+          "name": "zlib",
+          "linked": true,
+          "test": 0,
+          "exact": 27,
+          "objectFunctions": 108,
+          "unresolved": 0
+        }
+      ],
+      "next": "Run roc rebuild 2008-06 status for details"
+    }
+  }
+}
