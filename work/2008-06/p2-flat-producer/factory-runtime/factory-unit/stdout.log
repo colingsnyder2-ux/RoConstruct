@@ -1,0 +1,142 @@
+Creating resource group General
+Creating resource group Internal
+Creating resource group Autodetect
+SceneManagerFactory for type 'DefaultSceneManager' registered.
+Registering ResourceManager for type Material
+Registering ResourceManager for type Mesh
+Registering ResourceManager for type Skeleton
+MovableObjectFactory for type 'ParticleSystem' registered.
+OverlayElementFactory for type Panel registered.
+OverlayElementFactory for type BorderPanel registered.
+OverlayElementFactory for type TextArea registered.
+Registering ResourceManager for type Font
+ArchiveFactory for archive type FileSystem registered.
+ArchiveFactory for archive type Zip registered.
+FreeImage version: 3.10.0
+This program uses FreeImage, a free, open source image library supporting all common bitmap formats. See http://freeimage.sourceforge.net for details
+Supported formats: bmp,ico,jpg,jif,jpeg,jpe,jng,koa,iff,lbm,mng,pbm,pbm,pcd,pcx,pgm,pgm,png,ppm,ppm,ras,tga,targa,tif,tiff,wap,wbmp,wbm,psd,cut,xbm,xpm,gif,hdr,g3,sgi,exr,j2k,j2c,jp2
+DDS codec registering
+Registering ResourceManager for type HighLevelGpuProgram
+Registering ResourceManager for type Compositor
+MovableObjectFactory for type 'Entity' registered.
+MovableObjectFactory for type 'Light' registered.
+MovableObjectFactory for type 'BillboardSet' registered.
+MovableObjectFactory for type 'ManualObject' registered.
+MovableObjectFactory for type 'BillboardChain' registered.
+MovableObjectFactory for type 'RibbonTrail' registered.
+*-*-* OGRE Initialising
+*-*-* Version 1.4.4 (Eihort)
+Loading library rgdx.dll
+Installing plugin: D3D9 RenderSystem
+D3D9 : Direct3D9 Rendering Subsystem created.
+D3D9: Driver Detection Starts
+D3D9: Driver Detection Ends
+Plugin successfully installed
+D3D9 : RenderSystem Option: Full Screen = No
+CPU Identifier & Features
+-------------------------
+ *   CPU ID: GenuineIntel: 12th Gen Intel(R) Core(TM) i7-12700K
+ *      SSE: yes
+ *     SSE2: yes
+ *     SSE3: yes
+ *      MMX: yes
+ *   MMXEXT: yes
+ *    3DNOW: no
+ * 3DNOWEXT: no
+ *     CMOV: yes
+ *      TSC: yes
+ *      FPU: yes
+ *      PRO: yes
+ *       HT: no
+-------------------------
+D3D9 : Subsystem Initialising
+***************************************
+*** D3D9 : Subsystem Initialised OK ***
+***************************************
+D3D9RenderSystem::createRenderWindow "P2BlockFactory", 64x64 windowed  miscParams: hidden=true 
+D3D9 : Created D3D9 Rendering Window 'P2BlockFactory' : 120x64, 32bpp
+D3D9 : WARNING - disabling VSync in windowed mode can cause timing issues at lower frame rates, turn VSync on if you observe this problem.
+Registering ResourceManager for type Texture
+Registering ResourceManager for type GpuProgram
+Multiple render targets with independent bit depths supported
+D3D9: Vertex texture format supported - PF_A8R8G8B8
+D3D9: Vertex texture format supported - PF_B8G8R8A8
+D3D9: Vertex texture format supported - PF_FLOAT16_RGB
+D3D9: Vertex texture format supported - PF_FLOAT16_RGBA
+D3D9: Vertex texture format supported - PF_FLOAT32_RGB
+D3D9: Vertex texture format supported - PF_FLOAT32_RGBA
+D3D9: Vertex texture format supported - PF_R8G8B8A8
+D3D9: Vertex texture format supported - PF_DEPTH
+D3D9: Vertex texture format supported - PF_FLOAT16_R
+D3D9: Vertex texture format supported - PF_FLOAT32_R
+D3D9: Vertex texture format supported - PF_FLOAT16_GR
+D3D9: Vertex texture format supported - PF_FLOAT32_GR
+RenderSystem capabilities
+-------------------------
+ * Hardware generation of mipmaps: yes
+ * Texture blending: yes
+ * Anisotropic texture filtering: yes
+ * Dot product texture operation: yes
+ * Cube mapping: yes
+ * Hardware stencil buffer: yes
+   - Stencil depth: 8
+   - Two sided stencil support: yes
+   - Wrap stencil values: yes
+ * Hardware vertex / index buffers: yes
+ * Vertex programs: yes
+   - Max vertex program version: vs_3_0
+ * Fragment programs: yes
+   - Max fragment program version: ps_3_0
+ * Texture Compression: yes
+   - DXT: yes
+   - VTC: no
+ * Scissor Rectangle: yes
+ * Hardware Occlusion Query: yes
+ * User clip planes: yes
+ * VET_UBYTE4 vertex element type: yes
+ * Infinite far plane projection: yes
+ * Hardware render-to-texture: yes
+ * Floating point textures: yes
+ * Non-power-of-two textures: yes
+ * Volume textures: yes
+ * Multiple Render Targets: 4
+ * Point Sprites: yes
+ * Extended point parameters: yes
+ * Max Point Size: 8192
+ * Vertex texture fetch: yes
+   - Max vertex textures: 4
+   - Vertex textures shared: no
+ResourceBackgroundQueue - threading disabled
+Particle Renderer Type 'billboard' registered
+RBX cr sms0
+RBX cr sms1
+RBX cr sms2
+RBX cr sms3
+RBX cr sms4
+RBX cr sms5
+RBX cr sms6
+RBX cr sms7
+RBX rm sms6
+RBX rm sms7
+RBX rm sms4
+RBX rm sms5
+RBX rm sms2
+RBX rm sms3
+RBX rm sms0
+RBX rm sms1
+PASS: 512 lookups reuse four paired-level variants; 100-creation purge preserves live owners; complete release
+*-*-* OGRE Shutdown
+Unregistering ResourceManager for type Compositor
+Unregistering ResourceManager for type Font
+Unregistering ResourceManager for type Skeleton
+Unregistering ResourceManager for type Mesh
+Unregistering ResourceManager for type HighLevelGpuProgram
+Uninstalling plugin: D3D9 RenderSystem
+Render Target 'P2BlockFactory' Average FPS: 0 Best FPS: 0 Worst FPS: 999
+D3D9 : Shutting down cleanly.
+Unregistering ResourceManager for type Texture
+Unregistering ResourceManager for type GpuProgram
+D3D9 : Direct3D9 Rendering Subsystem destroyed.
+Plugin successfully uninstalled
+Unloading library rgdx.dll
+Unregistering ResourceManager for type Material

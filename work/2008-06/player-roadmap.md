@@ -1,22 +1,27 @@
 # Current player checkpoint
 
-P2 IN PROGRESS; factory/cache now integrated.  P0 clean-worktree gate and P3-P10 remain unproven.
-Last pushed revision a2cf9bc1b0 records tested source a03ec3bcbf.
-Owner-layout commit3043e89063; capture-corrected tested source c301f9241e.
-Receipt: p2-flat-producer/native-owner-backbuffer-runtime/receipt.json.
-Normal pixel controls1891/2152/0/0 pass; levels/refs/backends zero.
-Separate --frames240 falling.rbxl smoke exits0, y=-3.80274, models2 and cleanup0.
-Falling fixture remains local/unversioned: this does not close clean-worktree P0.
-Known-good isolated target: `roc rebuild 2008-06 module p2-recovered-player --no-notify`.
-Normal --selftest passes 1891/2152/0/0 pixels and zero levels/refs/backends;
-receipt: p2-flat-producer/recovered-runtime/receipt.json. Loaded DLL paths/hashes
-are captured. Existing owner Player2008.cpp/PlayerEngine.cpp/RbxEntity.h untouched.
+P2 IN PROGRESS. Factory/cache and native-default paired levels now integrated.
+Tested source:0f567d02e8; receipt:p2-flat-producer/factory-runtime/receipt.json.
+Builds:p2-block-factory, p2-block-mesh, p2-recovered-player all link/exit0.
+Normal --selftest:1879/2080/0/0 pixels; all four pass. --cachetest versioned
+cache-blocks.rbxl:two9->8->0 cycles pass, mesh/material counts return to baseline.
+All cleanup levels/vertex refs/backend counts zero. Separate falling240 smoke
+settles y=-3.80274 with2models and clean shutdown; fixture remains local/unversioned.
+512-lookups/120-key factory fixture passes, including both upload widths and
+recursive every100-creation purge. Loaded DLL paths/hashes and linked map symbols
+recorded. P0 clean-second-worktree and P3-P10 remain unproven.
+
+Launch target:rebuild/2008-06/out/tests/P2RecoveredPlayer/P2RecoveredPlayer.exe.
+Build:`roc rebuild 2008-06 module p2-recovered-player --no-notify`.
+Use normal environment (unset ROC_BUILD) and a fresh capture directory.
+Existing owner Player2008.cpp/PlayerEngine.cpp/RbxEntity.h remain untouched.
+Earlier known-good source c301f9241e retained in native-owner-backbuffer-runtime/.
 
 Recovered 004e2c80 produces loaded small block level0; 00549a50 uploads it through
 0067c130 to measured RbxSubMesh. Entity implementation was preserved. No handwritten
 box geometry in this target. Still diagnostic material and partial original selector.
 
-Current experiment: replace the levels-only owner with measured full 0x88-byte Mesh.
+Owner layout verified: levels-only owner replaced with measured full 0x88-byte Mesh.
 00548570 constructs levels +0c, ShadowSurface +18 (34 bytes), radius +4c, vectors
 +50/+68, backend +80 and kind +84. 00548a90 proves +80 owns a RbxSubMesh resource.
 Matched 004e53c0 analog incorrectly calls the vectors AABoxes: 0054c500 proves
@@ -38,7 +43,7 @@ SDK's three system references matter. Initial one-reference check leaked resourc
 (cachetest exit11); corrected to RESOURCE_SYSTEM_NUM_REFERENCE_COUNTS+1.
 Factory fixture512 lookups/120 new keys passes; direct flat regression passes.
 Normal selftest1879/2080/0/0 passes; cachetest two9->8->0 cycles returns every
-mesh/material/level/ref/backend count to baseline. Final revision receipt pending.
+mesh/material/level/ref/backend count to baseline. Final tested revision0f567d02e8 recorded in factory-runtime/receipt.json.
 Versioned fixture: rebuild/2008-06/tests/fixtures/cache-blocks.rbxl.
 
 Next: replace diagnostic material for this same ordinary block. Constructor004ebcc0
