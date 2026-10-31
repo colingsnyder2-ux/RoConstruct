@@ -1,0 +1,35 @@
+{
+  "nodes": {
+    "004e53c0": {
+      "label": "RBX::ViewNew::BrickMesh::BrickMesh",
+      "evidence": "src/2008-06/004e53c0.cpp:45; source label, not original declaration"
+    },
+    "004e5ff0": {
+      "label": "PartChunk::cframe",
+      "evidence": "src/2008-06/004e5ff0.cpp:roc-lib rbxgs-dll roc_espeon_partchunkcframe_bd1a1158d696da97.cpp"
+    },
+    "007ab0a0": {
+      "label": "RBX::RenderNew::RenderScene::render",
+      "evidence": "src/2008-06/007ab0a0.cpp:352; source label, not original declaration"
+    },
+    "0067d1f0": {
+      "label": "Ogre::RbxEntity::RbxEntity",
+      "evidence": "work/big-mining-2008-20261020/renderer-native-sdk-contract.json:entity native_ctor and RTTI at 0067d224"
+    },
+    "0067d9b0": {
+      "label": "Ogre::RbxEntity::createSubEntity",
+      "evidence": "src/2008-06/0067d9b0.cpp:roc-lib ogre-1.4.5-dll roc_try_8e6003da0d343385.cpp; original renderer calls 007ac5aa and 007ac5d7"
+    },
+    "00549a50": {
+      "label": "RBX::RenderBase::Mesh::Level::updateGeometry",
+      "confidence": "source-supported semantic label; original declaration unproven",
+      "evidence": "docs/GRAPH_EVIDENCE.md:original call 007ab9c7 -> 00549a50; recovered source NativeMeshLevel::upload"
+    },
+    "00549610": {
+      "label": "RBX::RenderBase::Mesh::Level::updateSpecialGeometry",
+      "confidence": "source-supported semantic label; original declaration unproven",
+      "evidence": "docs/GRAPH_EVIDENCE.md:original call 007aba67 -> 00549610; recovered source NativeMeshLevel::makeHWSubMesh"
+    }
+  },
+  "edges": []
+}

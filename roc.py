@@ -611,6 +611,11 @@ def cmd_rebuild(a):
 
 
 
+def cmd_graph(a):
+    from roc import graph
+    graph.command(a)
+
+
 def cmd_integrate(a):
     from roc import integration
     integration.command(a)
@@ -2684,6 +2689,15 @@ def main(argv=None):
         p.set_defaults(fn=fn)
         return p
 
+    cmd("graph", cmd_graph, "offline dependency graph and integration work queue",
+        (["target"], {}), (["client"], {"nargs": "?"}),
+        (["--focus"], {}), (["--why"], {}), (["--path"], {}),
+        (["--cycles"], {"action": "store_true"}), (["--order"], {"action": "store_true"}),
+        (["--depth"], {"type": int, "choices": range(1, 6), "default": 2}),
+        (["--next"], {"type": int, "default": 20}), (["--milestone"], {}),
+        (["--upstream"], {"action": "store_true"}),
+        (["--web"], {"action": "store_true"}), (["--json"], {"action": "store_true"}),
+        (["--server"], {}), (["--token"], {}))
     cmd("gui", cmd_gui, "open the local worker and command dashboard",
         (["--port"], {"type": int, "default": 0, "help": "local port (default: choose a free port)"}),
         (["--no-browser"], {"action": "store_true", "help": "print session link without opening browser"}))

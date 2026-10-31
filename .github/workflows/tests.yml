@@ -31,3 +31,5 @@ jobs:
         run: node tests/test_live_progress.js
       - name: Run integration frontend tests
         run: node tests/test_integration_frontend.js
+      - name: Run dependency graph frontend tests
+        run: node --test tests/graph_ui.test.js

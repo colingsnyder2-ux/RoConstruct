@@ -25,6 +25,14 @@ Never: inline assembly, `__emit`, byte blobs, patched target bytes, invented str
 fields/offsets/ABIs, replacing a better stored source, hand edits under `clients/` or
 `tools/`. A matching source is a codegen analog, not proof of the original declaration.
 
+## Dependency graph
+
+Before reconstruction/integration, query `roc graph CLIENT --why ADDRESS --json`
+or `roc graph CLIENT --next 20 --milestone p2 --json` (P2: June 2008).
+Reuse existing mined/library/native implementations; graph hints do not grant
+ownership. Refresh the existing server claim before work. See [GRAPH.md](GRAPH.md)
+for generation, evidence limits, dependency ordering and the public explorer.
+
 ## Tool routing
 
 Recovery packets include relocated RTTI vtable stores in the target and up to eight
