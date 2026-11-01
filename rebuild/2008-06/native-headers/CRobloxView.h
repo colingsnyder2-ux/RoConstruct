@@ -5,6 +5,7 @@
 #include "util/IMetric.h"
 #include "util/RunStateOwner.h"
 #include <afxcmn.h>
+#include <boost/shared_ptr.hpp>
 
 namespace RBX {
 class ServiceProvider;
@@ -40,7 +41,7 @@ public:
     bool flag_a8;
     void* slots_ac_b8[4];
     unsigned unaccessed_bc;    // same evidence as unaccessed_8c
-    CRobloxWnd();
+    explicit CRobloxWnd(int);
     // Interface overrides; bodies not recovered here. IRunView vtable 008199e8, IMetric 008199dc.
     virtual void InvalidateRunView();
     virtual void AdjustThrottle(double);
@@ -54,6 +55,14 @@ public:
     CReflectorWnd();
 };
 
+// Owned pointer whose pointee type is not yet recovered. The destructor is real in
+// the original (unwind states), the body is not. Layout: one pointer.
+struct OwnedSlot {
+    void* value;
+    OwnedSlot() : value(0) {}
+    ~OwnedSlot(); // out of line in the original (unwind states); body not recovered
+};
+
 class CRobloxView : public VerbBinder<CRobloxView, CView>,
                     public RBX::VerbContainer,
                     public RBX::Listener<RBX::ServiceProvider, RBX::ServiceAdded>,
@@ -62,11 +71,14 @@ class CRobloxView : public VerbBinder<CRobloxView, CView>,
     DECLARE_DYNCREATE(CRobloxView)
 public:
     CRobloxWnd window;        // +0xb0
-    void* slot_170;
-    void* slot_174;
+    boost::shared_ptr<void> owner_170;  // pointer and control block, zeroed by its constructor
     CMenu popupMenu;          // +0x178, menu resource 0x67 loaded at construction
     CReflectorWnd reflector;  // +0x180
-    void* slots_1d8_1ec[6];   // zeroed by the constructor
+    OwnedSlot slot_1d8;
+    OwnedSlot slot_1dc;
+    OwnedSlot slot_1e0;
+    OwnedSlot slot_1e4;
+    boost::shared_ptr<void> owner_1e8;
 
     CRobloxView();
     DECLARE_MESSAGE_MAP()

@@ -1,3 +1,4 @@
+#include "../native-classes/CRobloxView.cpp"
 #include "../native-headers/CRobloxView.h"
 #include <cstddef>
 
@@ -9,5 +10,5 @@ typedef char ViewSize[sizeof(CRobloxView) == 0x1f0 ? 1 : -1];
 typedef char WindowOffset[offsetof(CRobloxView, window) == 0xb0 ? 1 : -1];
 typedef char MenuOffset[offsetof(CRobloxView, popupMenu) == 0x178 ? 1 : -1];
 typedef char ReflectorOffset[offsetof(CRobloxView, reflector) == 0x180 ? 1 : -1];
-typedef char TailOffset[offsetof(CRobloxView, slots_1d8_1ec) == 0x1d8 ? 1 : -1];
+typedef char TailOffset[offsetof(CRobloxView, slot_1d8) == 0x1d8 ? 1 : -1];
 
