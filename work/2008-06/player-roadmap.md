@@ -1668,3 +1668,25 @@ wall-clock phase even without code changes. Do not tune physics to one such
 maximum. Next add an original Lua simulation-time marker and align observations
 by that clock. Receipts: p5-tandem-fall-timing and its -repeat. These are
 observational; fixed-step/contact parity and P5 remain open.
+
+## P5 checkpoint: simulation-time-aligned high fall (46537cf31d)
+
+New authored p5-simtime-fall.rbxl freezes thirteen Stepped callback records
+in anchored, noncolliding marker Parts. Each marker contains the simulation
+timestamp and torso height from the same callback; both clients run identical
+Lua. The observer reads the original markers through read-only process memory,
+requires at least two agreeing updated copies, and compares against rebuilt
+marker snapshots. All recorded timestamps must agree within 0.0001 seconds;
+the vertical gate is 0.1 studs. Original markers freeze after sampling, so
+foreground-launch wall-time phase no longer selects the measured pose.
+
+Two runs at 46537cf31d reproduce all thirteen samples exactly. Maximum original
+versus rebuilt height difference is 0.07494 studs; before landing it remains
+under 0.022. Thus earlier multi-stud maxima on this high fall were wall-clock
+sampling artifacts after the landing initialization fix. Receipts:
+p5-simtime-verified and p5-simtime-verified-repeat. This closes the bounded
+high-fall comparison for this fixture, not all character/contact physics.
+Original joint construction still differs and closure required forced
+termination of the observer-owned process. Desktop locks released in TANDEM.
+Next apply frozen simulation-time sampling to grounded jump and air movement,
+then continue native frame/state lifetime integration and other P5 gates.
