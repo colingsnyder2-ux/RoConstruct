@@ -1,4 +1,6 @@
 {
+ "App/script/ScriptEvent.cpp": [["                lua_pushnumber(L, it->elapsedTime);\n                context->resume(L, 1);", "                lua_pushnumber(L, it->elapsedTime);\n                lua_pushnumber(L, heartbeat.time);\n                context->resume(L, 2);"]],
+ "App/include/script/ScriptEvent.h": [["                float requestedDelay;\n                float elapsedTime;", "                double requestedDelay;\n                double elapsedTime;"]],
  "App/script/LuaSignalBridge.cpp": [
    [
      "#include \"script/LuaInstanceBridge.h\"",
