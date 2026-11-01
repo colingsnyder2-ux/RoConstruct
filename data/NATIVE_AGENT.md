@@ -684,3 +684,24 @@ TARGET 005e7ca0  rebuilt ?getNextRigid@Primitive@RBX@@...  (score 37)
 Reading it: in the target, the next-edge lookup is inlined and the call is a tail jump. The rebuilt code calls two
 out-of-line helpers. So the fix lives in how `getNextEdge`/`EdgeList::next` are declared or written, which is
 inlining-related, not in the body of `getNextRigid`.
+
+## Shared-header method claims
+
+Provisional until the first native class swap lands. Published candidate headers:
+`CRobloxDoc` and `VerbBinder` are owned by Codex under
+`rebuild/2008-06/native-headers/`; supporting `RBX::StandardVerbs`, `XmlElement`
+and `RobloxLib` interface declarations are also maintained by Codex. UI
+implementation remains Claude's. `CRobloxView`, `CMainFrame` and HUMAN state
+layouts have evidence only, not published complete shared headers.
+
+Layouts are owner-only; helpers claim method bodies against the shared headers.
+Never add padded or invented fields. P5 and scoped P6 gates must pass after an
+active swap; a standalone byte match is insufficient.
+
+Report milestones with:
+
+```text
+roc integrate header-report --class-name CRobloxDoc --exact N --total 49 --note TEXT --model NAME
+```
+
+The feed is a contributor report only and earns no credit.
