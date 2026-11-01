@@ -1,3 +1,21 @@
+# Sound controls and device checkpoint
+
+Source 729294d0b3 recovers Volume and Looped setters/getters, PlayOnRemove,
+IsPlaying/IsPaused and Play/Pause/Stop reflection. Serialized non-default
+properties pass, and descriptor dispatch drives a real FMOD channel with
+volume/loop/pause/stop verified. Device test opens native FMOD via WASAPI
+(output9) and reports the test tone playing; hearing it is not independently
+verified. Player rebuild, fixture load and P3 lifetime/self/cache tests pass.
+Evidence: p4-sound-controls-runtime-729294d0b3/,
+p4-sound-controls-load-729294d0b3/ and
+p4-sound-controls-regressions-729294d0b3/.
+
+Same user place retains six of eight sounds. The missing two are beneath
+StarterGui > ScreenGui; neither class name appears as an ASCII string in the
+original executable. This does not prove absence of equivalent GUI behavior.
+P4 remains open: original audio comparison, real-place full asset handling,
+Sound callback/security equivalence and remaining compatibility.
+
 # Sound service and factory checkpoint
 
 Source bbe43074c2 connects recovered SoundService provider lifecycle, stock
