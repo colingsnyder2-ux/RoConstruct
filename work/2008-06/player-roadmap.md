@@ -2151,3 +2151,5 @@ Selection service lookup candidate b47729ee61 uses recovered Name::declare templ
 Document destructor resolved at 9235c01ed5: original recovered VerbBinder is __declspec(novtable), removing extra vtable store. MSVC21022 candidate now matches original 00451940, 198 bytes with relocations masked; probe requires this match. Doc virtual-slot/layout, DataModel and base compiler probes pass. Relocated call targets and other Doc virtual bodies remain unverified; inactive class, no P5/P6 swap.
 
 Doc native methods at 6373c250da: SetModifiedFlag 0044fad0 (166 bytes) and SetTitle 0044fb80 (199 bytes) match original with relocations masked. Probe now enforces 11 Doc bodies plus three destructors; all pass. Call-target linkage and remaining virtual methods still open. Candidate inactive; no P5/P6 rerun or running-exe count change.
+
+Doc IsModified 004508f0 recovered at 2daa5d7d1b: DataModel lock and virtual dirty query compile to original 377 bytes with relocations masked. Regression probe passes 12 Doc bodies and three destructors. Call-target linkage and remaining virtual methods unverified; no active swap or running-exe count change.
