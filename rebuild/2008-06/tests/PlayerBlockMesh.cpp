@@ -214,6 +214,29 @@ public:
     void buildFront(Purpose p){buildFace<RBX::NORM_Z_NEG>(PBBFace(),Vector2int16(1,1),p);}
     void buildBack(Purpose p){buildFace<RBX::NORM_Z>(PBBFace(),Vector2int16(1,1),p);}
 };
+// 004fd4a0 and 004fd530: native cylinder endcap and side callbacks.
+void cylinderEndcap(Vector3& vertex,Vector3&,Vector2&,const Vector3&,const Vector2int16&){
+    float dominant=std::max(static_cast<float>(fabs(vertex.x)),static_cast<float>(fabs(vertex.y)));
+    float scale=dominant==0?0:dominant/static_cast<float>(sqrt(vertex.x*vertex.x+vertex.y*vertex.y));
+    vertex.x*=scale;vertex.y*=scale;
+}
+void cylinderSide(Vector3& vertex,Vector3& normal,Vector2&,const Vector3& radius,const Vector2int16&){
+    float inverseLength=1.0f/static_cast<float>(sqrt(vertex.y*vertex.y+vertex.z*vertex.z));
+    float y=vertex.y*inverseLength,z=vertex.z*inverseLength;
+    vertex.y=radius.x*y;vertex.z=radius.y*z;normal=Vector3(0,y,z);
+}
+class CylinderBuilder : public SphereLevelBuilder {
+public:
+    const size_t elements;
+    CylinderBuilder(LevelRef& level,Vector3 size,RenderSurfaceTypes surfaces,size_t slices):
+        SphereLevelBuilder(level,size,surfaces),elements(std::max<size_t>(slices/4,1)){}
+    void buildTop(Purpose p){buildFace<RBX::NORM_Y>(cylinderSide,Vector2int16(elements,1),p);}
+    void buildBottom(Purpose p){buildFace<RBX::NORM_Y_NEG>(cylinderSide,Vector2int16(elements,1),p);}
+    void buildLeft(Purpose p){buildFace<RBX::NORM_X_NEG>(cylinderEndcap,Vector2int16(elements,elements),p);}
+    void buildRight(Purpose p){buildFace<RBX::NORM_X>(cylinderEndcap,Vector2int16(elements,elements),p);}
+    void buildFront(Purpose p){buildFace<RBX::NORM_Z_NEG>(cylinderSide,Vector2int16(elements,1),p);}
+    void buildBack(Purpose p){buildFace<RBX::NORM_Z>(cylinderSide,Vector2int16(elements,1),p);}
+};
 typedef char NativeBuilderSize[sizeof(SphereLevelBuilder)==0x20?1:-1];
 typedef char NativeBuilderHalf[offsetof(SphereLevelBuilder,halfSize)==4?1:-1];
 typedef char NativeBuilderSurfaces[offsetof(SphereLevelBuilder,surfaceTypes)==0x10?1:-1];
@@ -224,6 +247,8 @@ typedef char NativeSphereElements[offsetof(SphereBuilder,elements)==0x20?1:-1];
 typedef char NativePBBFace[sizeof(PBBFace)==12?1:-1];
 typedef char NativePBBBuilder[sizeof(PBBBuilder)==0x28?1:-1];
 typedef char NativePBBStrips[offsetof(PBBBuilder,strips)==0x20?1:-1];
+typedef char NativeCylinderBuilder[sizeof(CylinderBuilder)==0x24?1:-1];
+typedef char NativeCylinderElements[offsetof(CylinderBuilder,elements)==0x20?1:-1];
 
 struct SphereVariations { MeshRef meshes[1]; };
 // Genuine unused decal/texture key members from MeshFactory.h. These paths are
@@ -248,6 +273,10 @@ typedef char NativeSphereCounter[offsetof(SphereCache,count)==0x5c?1:-1];
 SphereCache* sphereCache;
 boost::once_flag sphereOnce=BOOST_ONCE_INIT;
 void initializeSphereCache(){sphereCache=new SphereCache;} // 004d97b0; persistent singleton.
+SphereCache* cylinderCache;
+boost::once_flag cylinderOnce=BOOST_ONCE_INIT;
+void initializeCylinderCache(){cylinderCache=new SphereCache;}
+typedef char NativeCylinderMesh[sizeof(CylinderMesh)==0x8c?1:-1];
 struct PBBVariations { MeshRef meshes[4]; };
 typedef G3D::Table<Vector3,PBBVariations> PBBSizes;
 typedef G3D::Table<unsigned,PBBSizes> PBBSurfaces;
@@ -274,6 +303,42 @@ SphereMesh::SphereMesh(const Vector3& size,RenderSurfaceTypes surfaces){
 PBBMesh::PBBMesh(const Vector3& size,RenderSurfaceTypes surfaces){
     levels.push_back(new Level(RenderDevice::QUADS));
     PBBBuilder builder(levels.last(),size,surfaces);builder.build(SphereLevelBuilder::Surface);
+}
+// 004fd6b0: twelve slices, native QUADS level and geometry kind 3.
+CylinderMesh::CylinderMesh(const Vector3& size,RenderSurfaceTypes surfaces){
+    geometryKind=3;levels.push_back(new Level(RenderDevice::QUADS));
+    CylinderBuilder builder(levels.last(),size,surfaces,12);builder.build(SphereLevelBuilder::Surface);
+}
+// 004eef30: one cached cylinder variation per size/surface key.
+template<> CylinderMesh* MeshFactory<CylinderMesh,1>::create(const Vector3& size,RenderSurfaceTypes surfaces){
+    boost::call_once(initializeCylinderCache,cylinderOnce);
+    boost::recursive_mutex::scoped_lock lock(cylinderCache->mutex);
+    if(!cylinderCache->cache1.containsKey(surfaces.data))cylinderCache->cache1.set(surfaces.data,SphereSizes());
+    SphereSizes& sizes=cylinderCache->cache1.get(surfaces.data);
+    if(!sizes.containsKey(size))sizes.set(size,SphereVariations());
+    SphereVariations& variation=sizes.get(size);
+    CylinderMesh* mesh=static_cast<CylinderMesh*>(variation.meshes[0].getPointer());
+    if(!mesh){
+        mesh=new CylinderMesh(size,surfaces);variation.meshes[0]=mesh;
+        if(++cylinderCache->count%100==0){MeshRef keep=variation.meshes[0];PlayerBlockMesh::flushUnused();}
+    }
+    return mesh;
+}
+template<> void MeshFactory<CylinderMesh,1>::flushUnused(){
+    boost::call_once(initializeCylinderCache,cylinderOnce);
+    boost::recursive_mutex::scoped_lock lock(cylinderCache->mutex);
+    for(SphereSurfaces::Iterator i=cylinderCache->cache1.begin();i!=cylinderCache->cache1.end();++i)
+        for(SphereSizes::Iterator j=i->value.begin();j!=i->value.end();++j)
+            if(j->value.meshes[0].notNull() && j->value.meshes[0].isLastReference())j->value.meshes[0]=MeshRef();
+}
+template<> unsigned MeshFactory<CylinderMesh,1>::cachedMeshes(){
+    boost::call_once(initializeCylinderCache,cylinderOnce);
+    boost::recursive_mutex::scoped_lock lock(cylinderCache->mutex);
+    unsigned count=0;
+    for(SphereSurfaces::Iterator i=cylinderCache->cache1.begin();i!=cylinderCache->cache1.end();++i)
+        for(SphereSizes::Iterator j=i->value.begin();j!=i->value.end();++j)
+            if(j->value.meshes[0].notNull())++count;
+    return count;
 }
 // 004edb20: four independently generated variations for each size/surface key.
 template<> PBBMesh* MeshFactory<PBBMesh,4>::create(const Vector3& size,RenderSurfaceTypes surfaces){
@@ -469,6 +534,7 @@ MeshRef BlockMesh::create(const Vector3& size,RenderSurfaceTypes surfaces,RBX::B
 void flushUnused(){
     SphereMesh::flushUnused();
     PBBMesh::flushUnused();
+    CylinderMesh::flushUnused();
     boost::call_once(initializeCache,cacheOnce);
     boost::recursive_mutex::scoped_lock lock(cache->mutex);
     for(std::map<Lookup,Variations>::iterator it=cache->entries.begin();it!=cache->entries.end();++it)
@@ -477,12 +543,12 @@ void flushUnused(){
                 it->second.meshes[i]=MeshRef();
 }
 unsigned cachedMeshes(){
-    if(!cache)return SphereMesh::cachedMeshes()+PBBMesh::cachedMeshes();
+    if(!cache)return SphereMesh::cachedMeshes()+PBBMesh::cachedMeshes()+CylinderMesh::cachedMeshes();
     boost::recursive_mutex::scoped_lock lock(cache->mutex);
     unsigned count=0;
     for(std::map<Lookup,Variations>::iterator it=cache->entries.begin();it!=cache->entries.end();++it)
         for(int i=0;i<4;++i)if(it->second.meshes[i].notNull())++count;
-    return count+SphereMesh::cachedMeshes()+PBBMesh::cachedMeshes();
+    return count+SphereMesh::cachedMeshes()+PBBMesh::cachedMeshes()+CylinderMesh::cachedMeshes();
 }
 template<RBX::NormalId id>
 static inline G3D::Vector3 faceHalf(const G3D::Vector3& size,float inset){

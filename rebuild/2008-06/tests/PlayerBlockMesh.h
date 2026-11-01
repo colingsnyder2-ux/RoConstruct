@@ -69,6 +69,10 @@ class PBBMesh : public Mesh, public MeshFactory<PBBMesh,4> {
 public:
     PBBMesh(const G3D::Vector3&,RBX::View::RenderSurfaceTypes);
 };
+class CylinderMesh : public Mesh, public MeshFactory<CylinderMesh,1> {
+public:
+    CylinderMesh(const G3D::Vector3&,RBX::View::RenderSurfaceTypes);
+};
 class FileMesh : public Mesh {
 public:
     bool loadFromMeshFile(RBX::ContentProvider*,const G3D::Vector3&,RBX::MeshId);
@@ -80,6 +84,9 @@ template<> unsigned MeshFactory<SphereMesh,1>::cachedMeshes();
 template<> PBBMesh* MeshFactory<PBBMesh,4>::create(const G3D::Vector3&,RBX::View::RenderSurfaceTypes);
 template<> void MeshFactory<PBBMesh,4>::flushUnused();
 template<> unsigned MeshFactory<PBBMesh,4>::cachedMeshes();
+template<> CylinderMesh* MeshFactory<CylinderMesh,1>::create(const G3D::Vector3&,RBX::View::RenderSurfaceTypes);
+template<> void MeshFactory<CylinderMesh,1>::flushUnused();
+template<> unsigned MeshFactory<CylinderMesh,1>::cachedMeshes();
 void flushUnused();
 unsigned cachedMeshes();
 unsigned activeReferences();

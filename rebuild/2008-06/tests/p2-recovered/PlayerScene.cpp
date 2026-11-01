@@ -249,6 +249,8 @@ void PartChunk::updateMesh()
         meshData.geometry=PlayerBlockMesh::PBBMesh::create(meshData.size,surfaces);
     else if(partInstance->getPartType()==RBX::Part::BALL_PART)
         meshData.geometry=PlayerBlockMesh::SphereMesh::create(meshData.size,surfaces);
+    else if(partInstance->getPartType()==RBX::Part::CYLINDER_PART)
+        meshData.geometry=PlayerBlockMesh::CylinderMesh::create(meshData.size,surfaces);
     // 004eb190 ordinary mega-material branch; native cache owns only weak refs.
     PlayerNativeMaterial::Attributes attributes={partInstance->getColor(),partInstance->alpha(),partInstance->getReflectance()};
     meshData.material=megaBlock ? view->materialFactory.getMegaMaterial(attributes) : view->materialFactory.getMaterial(attributes);
@@ -377,7 +379,8 @@ extern "C" int SceneModelGet(int index, SceneModel* out)
     const ViewNew::MeshData& mesh = chunk->mesh();
     const G3D::CoordinateFrame& frame = partChunk->cframe();
 
-    if(mesh.geometry.isNull() || !mesh.material->detailLevel(0))return 3;
+    if(mesh.geometry.isNull())return 3;
+    if(!mesh.material->detailLevel(0))return 4;
     out->id = chunk;
     out->geometry = mesh.geometry.operator->();
     out->material = mesh.material.getPointer();

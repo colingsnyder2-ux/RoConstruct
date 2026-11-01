@@ -83,3 +83,22 @@ members. The 004edb20 factory retains up to four random variations per key.
 The scene dispatch selects this path for non-mega blocks and uses the ordinary
 surface material. The shadow branch and original-client image comparison
 remain open; do not treat this as full P4 fidelity.
+
+## Cylinder and fully transparent Parts
+
+The cylinder surface constructor 004fd6b0 invokes builder 004fd430 with twelve
+slices and native geometry kind 3. The six face wrappers use endcap callback
+004fd4a0 and side callback 004fd530 with the existing native vertex bank. The
+004eef30 factory caches one variation per size/surface key. The scene uses the
+ordinary surface material. A rotated authored fixture rendered a 12-sided
+silhouette; an original-client comparison measured normalized IoU 0.991203.
+This checks silhouette only, not lighting, nonuniform dimensions or other
+camera angles. Cylinder decal/texture factory paths remain open.
+
+SceneModelGet now distinguishes missing geometry (status 3) from an empty
+material level (status 4). On the supplied place, 784 visible models render,
+eight have valid geometry but empty material, and none lack geometry. The XML
+contains eight fully transparent Parts; the material factories deliberately
+produce an empty level when transparency equals 1. The matching totals are
+supporting evidence, not per-object identity proof. P4 remains open for sound,
+additional real-place coverage and reference fidelity.

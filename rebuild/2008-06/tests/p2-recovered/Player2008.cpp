@@ -252,7 +252,7 @@ static Ogre::MeshPtr createRecoveredMesh(const char* name, PlayerBlockMesh::Mesh
     // link or adoption into this bounds-only Mesh's deletion list is required.
     mesh->_setBounds(bounds);mesh->_setBoundingSphereRadius(level.backend->radius);mesh->load();
     std::printf("native mesh: producer=%s upload=00549a50 block_calls=%u indices=%u\n",
-        dynamic_cast<PlayerBlockMesh::PBBMesh*>(geometry)?"004f4cb0":geometry->geometryKind==2?"004fcfb0":geometry->geometryKind==1?"004e2c80":"00500780",PlayerBlockMesh::producerCalls(),static_cast<unsigned>(level.backend->indexData->indexCount));
+        dynamic_cast<PlayerBlockMesh::PBBMesh*>(geometry)?"004f4cb0":geometry->geometryKind==3?"004fd6b0":geometry->geometryKind==2?"004fcfb0":geometry->geometryKind==1?"004e2c80":"00500780",PlayerBlockMesh::producerCalls(),static_cast<unsigned>(level.backend->indexData->indexCount));
     return mesh;
 }
 
