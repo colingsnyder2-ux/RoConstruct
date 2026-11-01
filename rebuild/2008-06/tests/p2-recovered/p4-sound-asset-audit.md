@@ -123,3 +123,9 @@ not link: onAncestorChanged remains missing (askSetParent was subsequently
 implemented). The channel object is therefore not selected or runtime-tested.
 The spatial and detach error reporting uses the same documented warning-gate
 adaptation as the asset loader. No audible playback or server credit is claimed.
+
+SoundChannel::releaseChannel 005b97f0 and updateListenState 005bc5b0 are now
+implemented with genuine Sound, FMOD and RunService declarations. The latter
+subscribes only when a Part, 3D mode and channel are present. Provider detach
+uses the same release body. These methods still require the missing ancestry
+path before an actual channel can be constructed and exercised.

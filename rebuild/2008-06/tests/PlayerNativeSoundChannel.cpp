@@ -31,14 +31,26 @@ void SoundChannel::update3D(FMOD::Channel* channel){
     }
 }
 
-// 005b9840: detach FMOD's callback owner and release the cached Sound reference.
-void SoundChannel::onServiceProvider(const ServiceProvider*,const ServiceProvider*){
+// 005b97f0: detach FMOD's callback owner and release the cached Sound reference.
+void SoundChannel::releaseChannel(){
     if(fmod_channel){
         FMOD_RESULT result=fmod_channel->setUserData(0);
         if(result!=FMOD_OK)StandardOut::singleton()->print(MESSAGE_WARNING,"FMOD %d: %s",result,FMOD_ErrorString(result));
         fmod_channel=0;
     }
     if(sound){--sound->refCount;sound.reset();}
+}
+
+// 005b9840 performs the same release when the provider changes.
+void SoundChannel::onServiceProvider(const ServiceProvider*,const ServiceProvider*){releaseChannel();}
+
+// 005bc5b0: only active spatial channels need heartbeat updates.
+void SoundChannel::updateListenState(){
+    RunService* runService=ServiceProvider::find<RunService>(this);
+    if(part && is3D && fmod_channel)
+        Notifier<RunService,Heartbeat>::connect(runService,this);
+    else
+        Notifier<RunService,Heartbeat>::disconnect(runService,this);
 }
 
 // 005ba3d0: refresh a live, unpaused channel's spatial state.
