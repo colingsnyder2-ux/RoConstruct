@@ -44,7 +44,12 @@ namespace RBX
 			return this;
 		}
 	public:
-		RecoveredLanded(Humanoid* humanoid) : Running(humanoid), remaining(0.45f) {}
+		RecoveredLanded(Humanoid* humanoid) : Running(humanoid), remaining(0.45f) {
+			// 00645450 / 006453a0 refresh replacement floor before its first force.
+			Controller& controller = *NullController::getStaticNullController();
+			Balancing::onStep(0.0f, controller);
+			updateGoals(controller);
+		}
 		virtual const Name& getName() const { return Name::declare("Landed", -1); }
 	};
 	Humanoid::State* CreateRecoveredLanded(Humanoid* humanoid) { return new RecoveredLanded(humanoid); }
