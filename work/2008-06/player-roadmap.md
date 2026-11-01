@@ -1,3 +1,20 @@
+# P5 anchor/drag overlap checkpoint
+
+Source bf2c154c4c fixes a reproduced access violation when dragging an
+unanchored live Part. Original descriptor 007f4810 binds Anchored getter
+00598d40 to the individual Primitive +a9 flag; the prior donor getter used
+the aggregate. Original setters 005e8050/005e80d0/005e8140 update +a8/+a9/+aa
+and signal the world on aggregate changes. The legacy Anchor registry shim now
+creates/removes its object for transitions through any flag. It remains a shim;
+original stage 0064cc40/0064ccf0 swaps AnchorJoint and FreeJoint instead.
+
+All eight flag combinations pass. Lua-driven release/reanchor/release and
+drag/anchor overlap pass, settle at y=-3.8027389, and repeat identically after
+reopen. P5 script, P3 lifetime, P4 asset and audio controls pass. Evidence:
+p5-anchor-overlap-before/, p5-anchor-overlap-bf2c154c4c/ and the matching
+p5-anchor-*-bf2c154c4c/ regression receipts. Native joint integration, original
+physics comparison, normal launch, character input and full P5 remain open.
+
 # P5 scripted play checkpoint
 
 Source a8b6964fcd adds an opt-in --p5-play diagnostic: the existing RunService
