@@ -1012,3 +1012,25 @@ This is not wired into runtime humanoid states; original-client sensor parity,
 state transitions, force behavior and Climbing event remain open. The 00666410
 and 00666550 recovered sources identify desired velocity and force paths; port
 them with the state transitions, then compare movement and signal output.
+
+## P5 checkpoint: adapted climb state (226e4308cc)
+
+The recovered climb detector now drives an adapted donor-ABI Climbing state.
+It uses the 00666410 velocity/heading transform, the no-floor part of
+00666550 force math, 006432e0 ray filtering, and the 006451c0 limb policy.
+Climbing signals are registered and fired. Original character Animate and
+Sound scripts no longer log their prior missing-event errors in the 120-frame
+spawn control; full playback and animation fidelity are not proven.
+
+At 226e4308cc, a near-rung input run emits nine Climbing events (peak 15.8392),
+delivers the event to Lua, and reaches torso y=3.6511 at frame 18 versus
+2.8146 for the noncollidable control. The event stops after leaving the sensor;
+idle stays stable. Sensor, controller, authored script, spawn, P3 lifetime,
+P4 assets/sound prerequisite and P0 regressions pass. Receipts are in
+p5-climb-*-226e4308cc. The original-client comparison, floor reaction and
+moving-floor velocity, exact state transitions, avatar/camera integration,
+full animation/sound behavior, and later milestones remain open.
+
+The existing RunService constructor overlay had accidentally omitted
+runDisabled initialization, causing path-dependent missed script starts. It now
+initializes false, verified after constructing over poisoned memory.
