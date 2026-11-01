@@ -2139,3 +2139,5 @@ Native DataModel storage candidate at 3aefaca713: full0x264 size, six key member
 
 
 Native Selection layout candidate at da05c686d1: size0x174, notifier0x130, ancestor listener0x150, selection storage0x154, filtered list0x15c. Original factory00409620 allocation and RTTI agree; MSVC21022 compiler probe, Doc and DataModel probes pass. Workspace DrawChanged notifier original offset0x344 documented in workspace-selection-rtti.json; full Workspace renderer/base layout and cleanup linkage remain open. Candidate Selection inactive; original executable hash unchanged and scoped baseline2997/14344 remains. Receipts pin da05c686d1.
+
+Native CWorkspace cleanup candidate at a501d1e3a2 compiles (MSVC21022): 242/242 bytes, relocation-normalized mismatch in listener-call register scheduling. Constructor and getDataModel remain exact. Service lookup alias and closeDataModel linkage remain unresolved; workspace notifier +0x344 uses RTTI evidence. Candidate inactive; no runtime gate or coverage claim. Receipt: shared-layouts/workspace-cleanup-compile.json.
