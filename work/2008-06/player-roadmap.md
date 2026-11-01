@@ -2070,3 +2070,6 @@ checks were restored after a stale overwrite; incoming copy preserved locally
 in TANDEM. No class swap occurred: merged exe hash unchanged, P5 stop-line
 PASS/P6 scoped PASS, selected code2997/14344 unchanged. Native P6, remaining
 shared classes and P9/P10 remain open. Other agent edits preserved.
+
+
+Workspace owner trace: +0x2c is shared_ptr<RBX::RunService>. Original initialization0046b5c0 calls DataModel service getter004530f0, whose factory00405fa0 allocates0x2d8 and calls00556b00. Constructor stores vtable0082d4c4 at00556b94; its complete-object RTTI names RunService. Service-name literal0082d328 independently says RunService. Prior GuiItem attribution was an ambiguous shared_from template match, not pointee proof. Evidence: shared-layouts/workspace-owner-trace.json. Next complete CWorkspace shared fields with DataModel and RunService owners, then Doc cleanup. Active executable unchanged.
