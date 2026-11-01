@@ -947,3 +947,19 @@ actual Humanoid signals and animation runtime, testing against the original clie
 Head dispatch update: entry 0 of the original 004f02e0 jump table calls
 004ef430 (matched HeadMesh factory), which constructs via 00500180 and
 004fdaf0. See p5-head-trace.md. Trace virtual face builders next.
+
+## P5 checkpoint: character head (4732a013da)
+
+Original HeadMesh factory 004ef430 / constructor 00500180 and recovered
+004fdcc0 / 004fdbd0 face transforms now feed the existing mesh bank and
+scene. See p5-head-trace.md. Original-character 120-frame idle and movement
+runs now render all seven models; the head has 1944 source quad indices and
+2916 backend indices. Cleanup counters return to zero. Same-revision spawn,
+controller, P3 lifetime and P4 asset regression receipts are in
+p5-head-*-4732a013da. The 004fdbd0 source is 97% matched, and full original
+client visual comparison and decal support remain unproven.
+
+P5 remains open: original humanoid Sound and Animate scripts error, including
+missing FreeFalling signal. Recover and integrate actual humanoid state event
+registration and firing before claiming script functionality; then normal launch,
+camera, native physics/joints and scheduler parity.
