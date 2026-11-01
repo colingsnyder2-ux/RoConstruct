@@ -1034,3 +1034,25 @@ full animation/sound behavior, and later milestones remain open.
 The existing RunService constructor overlay had accidentally omitted
 runDisabled initialization, causing path-dependent missed script starts. It now
 initializes false, verified after constructing over poisoned memory.
+
+## P5 checkpoint: character camera adapter (7143c96f2c)
+
+The opt-in `--p5-native-camera` path now drives Ogre from the existing
+DataModel character camera's position, rotation, horizontal FOV converted to
+viewport vertical FOV, and clip planes. The default staged sky is enabled in
+this mode. The camera subject retains the actual Instance rather than an
+invalid ModelInstance downcast. The character-focus/occlusion implementation
+in glue_camera.cpp and the skybox remain behavioral reconstructions, not
+byte-verified original implementations; see p5-camera-adapter.md.
+
+At 7143c96f2c, the 120-frame movement test moves actor z by -15.9994 and the
+camera by the same amount relative to its idle control; the turn test changes
+look x to -0.7041. Ogre/native position and rotation agree to 1e-5 or better,
+and projection conversion and clipping checks pass. A focused real-time
+spawn test moves actor z from 25.5 to 16.0328 and turns camera look x to
+-0.7973, then exits cleanly. Camera, controller, climb, spawn, script,
+lifetime, P4 asset and P0 receipts are in p5-camera*-7143c96f2c.
+
+This is opt-in; normal launch, original camera/occlusion comparison, mouse
+input, original frame-loop/physics parity, P5's complete acceptance and later
+milestones remain open.

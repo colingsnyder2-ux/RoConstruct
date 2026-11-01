@@ -1,0 +1,125 @@
+{
+  "revision": "7143c96f2c3012ab3cf6a8387939522818653643",
+  "checkout": "C:\\Users\\colin\\RoConstruct",
+  "exe_sha256": "f3acec73b2cfedf222097a2b30ef54f1607e802816ffc995cb062ba1671edc8b",
+  "map_sha256": "e6dfbf897c7af08e47876c85bdc117f8316ae531a58078faaf5857cab904bed0",
+  "fixture_sha256": "07eb68599bafa3ccaf014a695451e7a0d66f6490fd19b2112966196096c7013e",
+  "environment_removed": [
+    "ROC_BUILD",
+    "ROC_TEXTURE_STRIP",
+    "ROC_SKY_SPHERE",
+    "ROC_TRACE_STAGES"
+  ],
+  "runs": {
+    "selftest": {
+      "command": [
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\P2RecoveredPlayer.exe",
+        "--selftest"
+      ],
+      "cwd": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p5-camera-p0-7143c96f2c\\selftest",
+      "exit": 0,
+      "result": {
+        "pixel_metric": "lit green: G>50, G>2R, 2G>3B",
+        "initial": {
+          "models": 1,
+          "greenA": 1879,
+          "greenB": 0,
+          "pass": true
+        },
+        "moved": {
+          "models": 1,
+          "greenA": 0,
+          "greenB": 2080,
+          "pass": true
+        },
+        "removed": {
+          "models": 0,
+          "green": 0,
+          "pass": true
+        },
+        "empty": {
+          "models": 0,
+          "green": 0,
+          "pass": true
+        },
+        "failures": 0
+      },
+      "files": {
+        "player.log": "498ae1811d0a44fca3c74e6af46f3990fdb39bea30694e6465815ead49dbca9f",
+        "selftest_empty.png": "43b90f1bd66171f89cd34a1f8320045431e7e41db921e3572405f83f9ad955de",
+        "selftest_initial.png": "c45f954cbf174bb689c58c6dc7eab0fc2de0cd4b5c9c5c4ff86b0c57b8263844",
+        "selftest_moved.png": "f88f0fd09c79c139f3313fdfa418acc84adb8b2b2ae89f703052f0d1db5b02b4",
+        "selftest_removed.png": "43b90f1bd66171f89cd34a1f8320045431e7e41db921e3572405f83f9ad955de",
+        "selftest_result.json": "a4e8122cd39a76909bc0129b0405f306368add686bd710f7b1307b9720467b69",
+        "stdout.txt": "f04662bca2088e2d60509a03828801e7a2ebe656e2b4c4289c78abfa14ccf4d4"
+      }
+    },
+    "falling240": {
+      "command": [
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\P2RecoveredPlayer.exe",
+        "--frames",
+        "240",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\fixtures\\falling.rbxl"
+      ],
+      "cwd": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p5-camera-p0-7143c96f2c\\falling240",
+      "exit": 0,
+      "files": {
+        "last.png": "00b52f98c32110a40ae2f430c7e577430704c0ccc89c84ad993d39fab9487157",
+        "player.log": "87fda248eff7eda63875803e1e1b110a876f4ecb200d852388a94f52f1b9e0c2",
+        "stdout.txt": "54b1b583ecbb0a34fa245b9d1b310d413cbada80d687dd7c80d7b6e66e0a16fd"
+      }
+    },
+    "stability600": {
+      "command": [
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\P2RecoveredPlayer.exe",
+        "--frames",
+        "600",
+        "--stability-test",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\fixtures\\falling.rbxl"
+      ],
+      "cwd": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p5-camera-p0-7143c96f2c\\stability600",
+      "exit": 0,
+      "result": {
+        "pass": true,
+        "frames": 600,
+        "expected_y": -3.79999995,
+        "initial_floor_y": -5,
+        "floor_stable_and_anchored": true,
+        "tail_samples": 300,
+        "tail_min_y": -3.80272245,
+        "tail_max_y": -3.80272245
+      },
+      "independent_csv_audit": {
+        "samples": 600,
+        "tail": 300,
+        "min": -3.80272245,
+        "max": -3.80272245
+      },
+      "files": {
+        "last.png": "00b52f98c32110a40ae2f430c7e577430704c0ccc89c84ad993d39fab9487157",
+        "player.log": "32cf084ba470028e17055cd4eb7dfee4bb3584b7c391b7d3cababa4b5b7fb19b",
+        "stability_result.json": "2a28f607eff8d05533011fa51195c4cbb8d6d310b5bfe97720ab36454496587d",
+        "stability_samples.csv": "cbc8fcb329ab2e53e02923287e6d178d8c69ef41d74ba59aa3e9d999a8096419",
+        "stdout.txt": "c6a53f9e9feefdb3d353761b7553a8552bdbd5cb3c6ba910d68dba26a2b796da"
+      }
+    },
+    "missing-place": {
+      "command": [
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\P2RecoveredPlayer.exe",
+        "--frames",
+        "240",
+        "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p5-camera-p0-7143c96f2c\\absent.rbxl"
+      ],
+      "cwd": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p5-camera-p0-7143c96f2c\\missing-place",
+      "exit": 1,
+      "files": {
+        "stdout.txt": "0e824b75b312704a2acb7e5d7945790fc3acde8167766f63fa77297464feccca"
+      }
+    }
+  },
+  "loaded_dlls": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\rgmain.dll": "b67d2e96c5bf28fe48799a96c7927c57b91c74e483b30975ee58ca45f470153c",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\rgdx.dll": "dfce3291ea1214f37aae8e009af1891c45ab7843eb639a914d9791418559a50e"
+  },
+  "scope": "Direct runtime evidence only; source export and clean-build provenance require separate audit."
+}

@@ -1,0 +1,174 @@
+{
+  "revision": "7143c96f2c3012ab3cf6a8387939522818653643",
+  "exe_sha256": "f3acec73b2cfedf222097a2b30ef54f1607e802816ffc995cb062ba1671edc8b",
+  "observer_sha256": "6660ed2790568b34e98d81c794f34bc37bf4d22c2abcd1ead00075812a606db5",
+  "runs": {
+    "checks": {
+      "exit": 0
+    },
+    "clock": {
+      "exit": 0,
+      "precision": "00010000",
+      "delta": 0.00999999046,
+      "calls": 1
+    },
+    "idle": {
+      "exit": 0,
+      "positions": [
+        [
+          0.0,
+          -1.0,
+          0.0
+        ],
+        [
+          2.98567492e-18,
+          2.81360984,
+          2.98580541e-18
+        ],
+        [
+          2.97976658e-18,
+          4.31361008,
+          2.99432041e-18
+        ],
+        [
+          -1.5,
+          2.81360984,
+          2.98692975e-18
+        ],
+        [
+          1.5,
+          2.81360984,
+          2.98468106e-18
+        ],
+        [
+          -0.5,
+          0.813609838,
+          2.97482665e-18
+        ],
+        [
+          0.5,
+          0.813609838,
+          2.97407723e-18
+        ]
+      ],
+      "fixture_sha256": "28d1e28077672764de0f7356f692dca7844d9c9c54d35f123e6a430f7388d0ff",
+      "snapshot_sha256": "79aa2ee11c4b7d5dabff6ee33eeaa8d6aaa6ab2409b3a8144699bd247753673b"
+    },
+    "input": {
+      "exit": 0,
+      "positions": [
+        [
+          0.0,
+          -1.0,
+          0.0
+        ],
+        [
+          2.98567492e-18,
+          2.81360984,
+          -15.999383
+        ],
+        [
+          2.97976658e-18,
+          4.31361008,
+          -15.999383
+        ],
+        [
+          -1.5,
+          2.81360984,
+          -15.999383
+        ],
+        [
+          1.5,
+          2.81360984,
+          -15.999383
+        ],
+        [
+          -0.5,
+          0.813609838,
+          -15.999383
+        ],
+        [
+          0.5,
+          0.813609838,
+          -15.999383
+        ]
+      ],
+      "fixture_sha256": "28d1e28077672764de0f7356f692dca7844d9c9c54d35f123e6a430f7388d0ff",
+      "snapshot_sha256": "0530da853dce02c096b4e118ffe8c0797f63462712e2ce119a511721e53d3b48"
+    },
+    "script": {
+      "exit": 0,
+      "positions": [
+        [
+          0.0,
+          -1.0,
+          0.0
+        ],
+        [
+          27.6008358,
+          2.81360984,
+          2.98580541e-18
+        ],
+        [
+          27.6008358,
+          4.31361008,
+          2.99432041e-18
+        ],
+        [
+          26.1008358,
+          2.81360984,
+          2.98692975e-18
+        ],
+        [
+          29.1008358,
+          2.81360984,
+          2.98468106e-18
+        ],
+        [
+          27.1008358,
+          0.813609838,
+          2.97482665e-18
+        ],
+        [
+          28.1008358,
+          0.813609838,
+          2.97407723e-18
+        ]
+      ],
+      "fixture_sha256": "0e72207f4c2a2bbd9372a6cda400c9af85744904c1acd62e4a1d8d7fa0e2a4bc",
+      "snapshot_sha256": "f7a3691d81f61a39d5d6f2c684b356f97f2e640f82a6329f062d8d30d0ae94f9"
+    },
+    "live": {
+      "exit": 0,
+      "forced": false,
+      "observation": {
+        "actor_start_x": 0.0,
+        "actor_start_y": 5.0,
+        "actor_start_z": 0.0,
+        "actor_end_x": 1.82193251e-18,
+        "actor_end_y": 2.81360722,
+        "actor_end_z": -9.59942341,
+        "camera_start_x": 0.0,
+        "camera_start_y": 0.0,
+        "camera_start_z": 10.0,
+        "camera_end_x": 0.0,
+        "camera_end_y": 4.0299983,
+        "camera_end_z": 10.0,
+        "look_start_x": 0.0,
+        "look_start_y": 0.0,
+        "look_start_z": -1.0,
+        "look_end_x": 0.0,
+        "look_end_y": 0.0,
+        "look_end_z": -1.0
+      },
+      "observation_sha256": "d26490d0f820432fa524478ccc529a0beddb9edf5165db2ca558e936ece2b8d4"
+    }
+  },
+  "P5_complete": false,
+  "scope": "Joined fixture with donor Humanoid forces, recovered controller behavior and Win32 input adapter.",
+  "remaining": [
+    "Original movement/physics parity",
+    "Original input/window integration",
+    "Normal-launch spawn and camera synchronization"
+  ]
+}
