@@ -60,5 +60,31 @@
    "relocation_normalized_exact": true,
    "first_difference": 3
   }
- ]
+ ],
+ "onInitialUpdate_0045a4a0": {
+  "status": "traced, not compiled; roughly 1 KB with about 15 unrecovered callees",
+  "proven": {
+   "View+0x54": "CView::m_pDocument; reads document+0x94, the CWorkspace pointer, matching the Doc layout",
+   "View+0x170": "boost shared_ptr<DataModel>: 46a940 returns it from the workspace, stored pointer at +0x170, control at +0x174",
+   "listeners": "View+0xa0 registers on DataModel+0x150, View+0xa4 on DataModel+0x170 through 004218a0",
+   "VerbContainer parent": "583210 sets the container at View+0x78 to the data model verb container at DataModel+0x204 +0x2ec (null if absent)",
+   "owned slots": "1dc-1ec hold heap objects created here (0x20-byte object via 458ec0, 0x10-byte objects with vtable 00819140 and a \"Help\" string), so they are Verb-like polymorphic owners; the first stores into +0x1e0",
+   "window": "CRobloxWnd (View+0xb0) method 45f7b0 is called twice, with 0 and then with the workspace pointer"
+  },
+  "unrecovered_callees": [
+   "45a2f0",
+   "45f7b0",
+   "456e80",
+   "6a0cc2",
+   "46a940",
+   "4025b0",
+   "411b40",
+   "4218a0",
+   "583210",
+   "458ec0",
+   "5833e0"
+  ],
+  "next": "Recover the callee signatures one by one, then compile. Start with 45f7b0 (CRobloxWnd method) and 46a940 (workspace to data model)."
+ },
+ "owned_slot_type_hint": "Verb-derived objects created in OnInitialUpdate; replace OwnedPolymorphic once their class is recovered"
 }
