@@ -43,4 +43,14 @@ FMOD::Sound* Sound::get(){
     }
     return fmod_sound;
 }
+
+// 005bb5f0: separate caches for spatial and non-spatial sounds.
+boost::shared_ptr<Sound> SoundService::loadSound(SoundId id,bool is3D){
+    std::map<SoundId,boost::shared_ptr<Sound> >& cache=is3D?loaded3DSounds:loadedSounds;
+    std::map<SoundId,boost::shared_ptr<Sound> >::iterator found=cache.find(id);
+    if(found!=cache.end())return found->second;
+    boost::shared_ptr<Sound> sound(new Sound(system,id,is3D));
+    cache[id]=sound;
+    return sound;
+}
 } }
