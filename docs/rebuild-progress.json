@@ -1,10 +1,10 @@
 {
-  "updated": "2026-11-01 12:21 UTC",
+  "updated": "2026-11-01 14:55 UTC",
   "clients": {
     "2008-06": {
       "phase": "6",
       "phaseLabel": "Link closure",
-      "overall": 0.1907,
+      "overall": 0.2418,
       "bars": {
         "compiled": {
           "value": 35,
@@ -12,18 +12,18 @@
           "label": "Modules reporting"
         },
         "linked": {
-          "value": 31,
+          "value": 32,
           "total": 35,
           "label": "Modules linked"
         },
         "exact": {
-          "value": 7856,
+          "value": 9963,
           "total": 41196,
           "label": "Byte-exact functions"
         },
         "unresolved": {
-          "value": 121,
-          "total": 121,
+          "value": 21,
+          "total": 21,
           "label": "Unresolved symbols",
           "invert": true
         },
@@ -188,8 +188,8 @@
           "name": "P2RecoveredPlayer",
           "linked": true,
           "test": 0,
-          "exact": 333,
-          "objectFunctions": 4185,
+          "exact": 335,
+          "objectFunctions": 4277,
           "unresolved": 0
         },
         {
@@ -252,8 +252,8 @@
           "name": "P2RecoveredPlayer",
           "linked": true,
           "test": 0,
-          "exact": 333,
-          "objectFunctions": 4185,
+          "exact": 335,
+          "objectFunctions": 4277,
           "unresolved": 0
         },
         {
@@ -282,11 +282,11 @@
         },
         {
           "name": "RbxgsApp",
-          "linked": false,
-          "test": null,
-          "exact": 3324,
-          "objectFunctions": 94523,
-          "unresolved": 100
+          "linked": true,
+          "test": 0,
+          "exact": 3375,
+          "objectFunctions": 98102,
+          "unresolved": 0
         },
         {
           "name": "Scintilla",
