@@ -1075,3 +1075,17 @@ contains 91 IntValue, 9 StringValue, 201 ObjectValue and 8 NumberValue objects.
 The cause is unproven: compare loaded class counts and hierarchy next. Only
 hashes and aggregate results are recorded. P5 and later milestones remain open,
 including original-client behavior and startup comparisons.
+
+## P5 checkpoint: place class inventory (353cd4e2f5)
+
+`--load-only` now reports class counts and exits after closing. At 353cd4e2f5,
+build and selftest pass; authored fixture loads and closes. On the supplied
+place, serialized Workspace has 126 Models, 786 Parts, 91 IntValues, 9
+StringValues, 201 ObjectValues and 8 NumberValues. Loaded DataModel has 126
+Models, 786 Parts and zero of those value classes. Receipt:
+p5-inventory-353cd4e2f5/receipt.json. Class counts use different traversal
+roots; missing values are definitive here because the larger loaded root has
+zero. Reconstructed factory registration calls classDescriptor but does not
+establish these creators; forcing getCreator references alone did not change
+the counts. Creator/descriptor implementation and serialized Value properties
+still need recovery and verification before claiming script compatibility.
