@@ -1,8 +1,8 @@
 {
-  "revision": "f10b69e2955aff82cf330fefef3589bc016f1510",
+  "revision": "cb7f066c59733d4c4260c95a431edb652a1dea69",
   "sources": {
-    "rebuild\\2008-06\\native-classes\\CRobloxDHtmlDialog.cpp": "b6c3b86a23ff25f0dc69a335f51e1d3de0dbbc496640e3881036831fed459d14",
-    "rebuild\\2008-06\\native-headers\\CRobloxDHtmlDialog.h": "ecd6e917ca328eb7818e234ff0d0e4f7b0b7afd10bbc797d79f010315f189dde",
+    "rebuild\\2008-06\\native-classes\\CRobloxDHtmlDialog.cpp": "456bbabbde7838124745c3ba79ba71de69febc7a508f773d2e410a5c566058cf",
+    "rebuild\\2008-06\\native-headers\\CRobloxDHtmlDialog.h": "16357866b06bcd6d9ea55a60ae1097627e1c04dde8f2746cdaf34a981ac2bd55",
     "rebuild\\2008-06\\native-classes\\CAboutRobloxDialog.cpp": "f0b941d00a51b4653d18724503606358229028ffb37a901d9bd6ac3245c55579",
     "rebuild\\2008-06\\native-headers\\CAboutRobloxDialog.h": "0c5f5179acfa995263ea9322b1e62e25cc6f2e1cc0701ebaea2e157aa08056f7",
     "rebuild\\2008-06\\tests\\record_native_dhtml_dialog.py": "de51dbda76351877a16c0f1892266ee6d0a5ecd1848179241fe8c858ff4ea8ce"

@@ -51,6 +51,9 @@ class Host:
                   * (self.root/recovery.NATIVE/'tests').glob('record_native_*.py'),manifest,
                   self.root/recovery.NATIVE/'out/native-names.json',self.root/'work/2008-06/functions.jsonl']:
             if p.exists():inputs[str(p)]=[p.stat().st_size,p.stat().st_mtime_ns]
+        canonical=self.promotions.source_root
+        registry=self.promotions.overlay
+        if registry.exists():inputs[str(registry)]=[registry.stat().st_size,registry.stat().st_mtime_ns]
         key=integration.digest(inputs)
         if key!=self.cache_key:
             files={Path(p).relative_to(self.root).as_posix():Path(p).read_text(encoding='utf-8-sig')
@@ -105,10 +108,13 @@ class Host:
                 clean.append(task)
             # Prefer bodies that can use the existing independent integration route.
             mappings={}
-            tree=self.root/'tools/rbxgs/Client'
-            for source in tree.glob('App/*/*.cpp'):
-                for method in sweep.methods(source.read_text(errors='replace')):
-                    mappings.setdefault(method,[]).append(source.relative_to(tree).as_posix())
+            tree=canonical/'tools/rbxgs/Client'
+            patches=json.loads(registry.read_text(encoding='utf-8')) if registry.exists() else {}
+            sources={p.relative_to(tree).as_posix() for p in tree.glob('App/*/*.cpp')}
+            sources.update(p for p in patches if p.startswith('App/') and p.endswith('.cpp'))
+            for rel in sorted(sources):
+                for method in sweep.methods(integration.overlay_text(tree,rel,patches)):
+                    mappings.setdefault(method,[]).append(rel)
             for task in clean:
                 paths=mappings.get(task['method'],[])
                 task['integration_mapping']=paths[0] if len(paths)==1 else None
@@ -121,7 +127,13 @@ class Host:
         with self.store.lock:
             busy={r[0] for r in self.store.db.execute("SELECT target FROM native_method_leases WHERE (state='claimed' AND expires>?) OR state='submitted'",(time.time(),))}
             verified=dict(self.store.db.execute('SELECT target,signature FROM native_recovery_verified'))
-        return dict(self.cached,tasks=[dict(t,available=t['target'] not in busy and verified.get(t['target'])!=t['signature']) for t in self.cached['tasks']])
+            integrated={r[0] for r in self.store.db.execute('SELECT addr FROM integration_credit WHERE client=?',(integration.CLIENT,))}
+        progress=self.promotions.directory/'progress-native.json'
+        if progress.exists():integrated.update(json.loads(progress.read_text(encoding='utf-8'))['addresses'])
+        tasks=[dict(t,available=t['target'] not in busy and verified.get(t['target'])!=t['signature'],
+                    integration_state='integrated' if t['addr'] in integrated else 'unintegrated') for t in self.cached['tasks']]
+        tasks.sort(key=lambda t:(t['integration_state']=='integrated',not bool(t['integration_mapping'])))
+        return dict(self.cached,tasks=tasks)
 
     def claim(self,user,body):
         worker_id=body.get('worker')

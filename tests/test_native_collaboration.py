@@ -21,7 +21,10 @@ def service(tmp_path,monkeypatch):
     root=tmp_path/'host';p=root/REL;p.parent.mkdir(parents=True);p.write_text(BEFORE)
     headers=root/'rebuild/2008-06/native-headers';headers.mkdir();(headers/'A.h').write_text('struct A{int f();int g();};')
     store=SimpleNamespace(db=sqlite3.connect(tmp_path/'db',check_same_thread=False),lock=threading.Lock())
-    promotions=SimpleNamespace(root=root,store=store)
+    patches=root/'rebuild/2008-06/patches';patches.mkdir()
+    (patches/'make_rbxgs_client.py').write_text('# trusted fixture')
+    (patches/'rbxgs-client.json').write_text('{}')
+    promotions=integration.Promotions(store,root)
     monkeypatch.setattr(recovery,'nominations',lambda *a:[dict(file=REL,method='A::f',addr='00400000')])
     result=host.Host(promotions)
     yield result
@@ -300,3 +303,24 @@ def test_cross_pc_contributor_limit_waits_and_recovers_without_blocking_other_us
     assert service.claim('Someone',request)['claimed']
     service.renew('Colin',body(leases[0]),release=True)
     assert take((52,tasks[0]))['claimed']
+
+
+def test_recovery_maps_generated_accepted_methods_and_refreshes_changed_overlay(service):
+    registry=service.promotions.overlay
+    integration.atomic_json(registry,{'App/util/Generated.cpp':[['','int A::f(){return 1;}']]})
+    task=service.catalog()['tasks'][0]
+    assert task['integration_mapping']=='App/util/Generated.cpp'
+    integration.atomic_json(registry,{'App/util/New.cpp':[['','int A::f(){return 1;}']]})
+    assert service.catalog()['tasks'][0]['integration_mapping']=='App/util/New.cpp'
+
+
+def test_recovery_prioritizes_unintegrated_work_without_changing_source_leases(service,monkeypatch):
+    tree=service.root/'tools/rbxgs/Client/App/util';tree.mkdir(parents=True)
+    (tree/'A.cpp').write_text(BEFORE)
+    monkeypatch.setattr(recovery,'nominations',lambda *a:[dict(file=REL,method='A::f',addr='00400000'),dict(file=REL,method='A::g',addr='00400001')])
+    before=service.catalog()['tasks'];signature=before[0]['signature']
+    integration.atomic_json(service.promotions.directory/'progress-native.json',dict(addresses=['00400000']))
+    tasks=service.catalog()['tasks']
+    assert [t['addr'] for t in tasks]==['00400001','00400000']
+    assert tasks[1]['integration_state']=='integrated' and tasks[1]['signature']==signature
+    assert all(t['available'] for t in tasks)

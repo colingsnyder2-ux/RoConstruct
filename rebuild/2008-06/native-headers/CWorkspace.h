@@ -53,4 +53,5 @@ public:
     void cleanup();
     std::auto_ptr<XmlElement> writeXmlModel();
     void load(std::istream&); // 0046aa70; original symbol linkage pending.
+    void insert(std::istream&, bool); // 0046b9d0; implementation pending.
 };

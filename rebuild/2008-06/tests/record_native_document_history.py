@@ -25,7 +25,7 @@ assert code == 0, log
 raw = obj.read_bytes()
 sections, symbols, definitions, _ = match._coff_data_index(raw)
 rows = []
-for address, destination in [('00453670',0x58a130),('004538b0',0x588780),('00453750',0x587b70),('00453990',0x587a90),('00453af0',0x4153b0),('00454040',0x4530f0),('00454300',0x495e60),('00454170',0x49ac80),('00450a70',0x5757d0),('00450c00',0x5757e0),('00454490',0x42de90),('004547b0',0x5a9120)]:
+for address, destination in [('00453670',0x58a130),('004538b0',0x588780),('00453750',0x587b70),('00453990',0x587a90),('00453af0',0x4153b0),('00454040',0x4530f0),('00454300',0x495e60),('00454170',0x49ac80),('00450a70',0x5757d0),('00450c00',0x5757e0),('00454490',0x42de90),('004547b0',0x5a9120),('00450d90',0x5757f0),('00454920',0x5a6bc0),('0044f7c0',0x401180),('0044fc50',0x44f500),('0044fcc0',0x44f660),('00455580',0x5a0de0),('00450f30',0x46b9d0)]:
     name, candidate, refs = next(x for x in match.coff_functions(raw) if x[0].startswith('?handle_'+address[2:]+'@CRobloxDoc'))
     target, target_refs, _ = match.target('2008-06', address)
     assert match.exact_match(target, target_refs, candidate, refs), address
@@ -38,9 +38,12 @@ for address, destination in [('00453670',0x58a130),('004538b0',0x588780),('00453
         if 0 <= offset <= len(candidate)-4 and kind == 20:
             edges[symbols[symbol_index][0]] = hex((int(address,16) + offset + 4 + struct.unpack_from('<i',target,offset)[0]) & 0xffffffff)
     assert hex(destination) in edges.values(), address
+    if address == '00455580': assert {'0x554da0','0x578ef0','0x593500','0x5a0de0'} <= set(edges.values())
+    if address == '0044f7c0':
+        assert target[0xc3:0xc6] == bytes.fromhex('8b 51 20')  # IWorkspace slot 8
     rows.append(dict(address=address,size=len(candidate),direct_calls=edges))
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
-inputs = [Path(__file__), ROOT/'rebuild/2008-06/native-classes/CRobloxDoc.cpp', ROOT/'rebuild/2008-06/native-headers/CRobloxDoc.h', ROOT/'rebuild/2008-06/native-headers/v8datamodel/ChangeHistoryService.h', ROOT/'rebuild/2008-06/native-headers/v8datamodel/Selection.h', ROOT/'rebuild/2008-06/native-headers/v8datamodel/DataModel.h', ROOT/'rebuild/2008-06/native-headers/script/ScriptContext.h', ROOT/'rebuild/2008-06/tests/NativeDocumentLayout.cpp']
+inputs = [Path(__file__), ROOT/'rebuild/2008-06/native-classes/CRobloxDoc.cpp', ROOT/'rebuild/2008-06/native-headers/CRobloxDoc.h', ROOT/'rebuild/2008-06/native-headers/CWorkspace.h', ROOT/'rebuild/2008-06/native-headers/RobloxLib.h', ROOT/'rebuild/2008-06/native-headers/CSaveToRobloxDialog.h', ROOT/'rebuild/2008-06/native-headers/v8datamodel/ChangeHistoryService.h', ROOT/'rebuild/2008-06/native-headers/v8datamodel/Selection.h', ROOT/'rebuild/2008-06/native-headers/v8datamodel/DataModel.h', ROOT/'rebuild/2008-06/native-headers/script/ScriptContext.h', ROOT/'tools/rbxgs/Client/App/include/util/Log.h', ROOT/'tools/rbxgs/Client/App/include/v8datamodel/Workspace.h', ROOT/'tools/rbxgs/Client/App/include/v8xml/SerializerV2.h', ROOT/'rebuild/2008-06/tests/NativeDocumentLayout.cpp']
 receipt = dict(sources={str(p.relative_to(ROOT)):sha(p) for p in inputs},object_sha256=sha(obj),profile=profile,preprocess_flags=flags,compile_flags=compile_flags,methods=rows,scope='Inactive compiler proof, direct history targets verified; no runtime integration credit.')
 (ROOT/'work/2008-06/shared-layouts/document-history-working.json').write_text(json.dumps(receipt,indent=2)+'\n')
-print('PASS: twelve Doc command bodies and direct targets')
+print('PASS: nineteen Doc command bodies and direct targets')

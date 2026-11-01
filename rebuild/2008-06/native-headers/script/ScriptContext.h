@@ -14,6 +14,7 @@
 #include <set>
 #include <boost/thread/mutex.hpp>
 #include <boost/thread/condition.hpp>
+#include <boost/thread/thread.hpp>
 #include "lua.h"
 
 // TODO: where do these numbers actually come from? i don't think
@@ -69,7 +70,8 @@ namespace RBX
         // Provisional member types; 005ae490/005ae730 establish offsets, not full ABI.
         double exeTime0;
         double exeTime1;
-        boost::shared_ptr<void> exeShared;
+        int exeState;
+        boost::scoped_ptr<boost::thread> exeThread;
         boost::mutex exeMutex;
         boost::condition exeCondition;
     

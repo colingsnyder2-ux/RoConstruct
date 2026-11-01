@@ -22,6 +22,13 @@ CRobloxDHtmlDialog::CRobloxDHtmlDialog(UINT dialog, UINT html, CWnd* parent)
     SetHostFlags(m_dwHostFlags | 0x01844013);
 }
 
+CRobloxDHtmlDialog::CRobloxDHtmlDialog(UINT dialog, const char* location, CWnd* parent)
+    : CDHtmlDialog(dialog, 0x72, parent), url(location)
+{
+    m_bUseHtmlTitle = TRUE;
+    SetHostFlags(m_dwHostFlags | 0x01844013);
+}
+
 BOOL CRobloxDHtmlDialog::OnInitDialog()
 {
     CDHtmlDialog::OnInitDialog();

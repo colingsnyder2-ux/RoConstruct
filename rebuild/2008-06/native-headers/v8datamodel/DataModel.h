@@ -56,6 +56,8 @@ public:
     Workspace* getWorkspace() const { return workspace.get(); }
     double getGameTime() const;
     double getFrameRate() const;
+    double getDutyCycle() const;
+    void clearContents();
     static void closeDataModel(boost::shared_ptr<DataModel>, bool);
 };
 }

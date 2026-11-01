@@ -1,15 +1,21 @@
 {
   "sources": {
-    "rebuild\\2008-06\\tests\\record_native_document_history.py": "78e876c415a86edc1c9155c38f7f8ed0fb89644514121afdbfe5e6b2f35afcac",
-    "rebuild\\2008-06\\native-classes\\CRobloxDoc.cpp": "b751735b7b03860f558821f52411cbb05e5aa12937675adc98ad2c58949de12b",
+    "rebuild\\2008-06\\tests\\record_native_document_history.py": "1c2635dd4119a45cc1acce8a41171717030a22f8cccbdcc742f7679f244bd86c",
+    "rebuild\\2008-06\\native-classes\\CRobloxDoc.cpp": "3fc1d450cb6946b17d07d9bf94ea093d5bb57616afbbfa8b787e35c89ceaac51",
     "rebuild\\2008-06\\native-headers\\CRobloxDoc.h": "bd63e71b42041c61756532b71353f57096361d17372c8093813bda7a3830fceb",
+    "rebuild\\2008-06\\native-headers\\CWorkspace.h": "0afe97a9a03851a77495d43048b08ab42e515715ea7e6ab13ce8ced5557209c1",
+    "rebuild\\2008-06\\native-headers\\RobloxLib.h": "032fab4066a9b203ac532fccaa1d6e9d46ffad9b9b0000f67a37591d064a05a4",
+    "rebuild\\2008-06\\native-headers\\CSaveToRobloxDialog.h": "ce4fb2cd5181f9aa8b732f49d02b447764c6f6352fc20cfc92e9147301bc3838",
     "rebuild\\2008-06\\native-headers\\v8datamodel\\ChangeHistoryService.h": "d17468e5b74420e801fcb144fcb79614b22780274b134a574235ec378e5eb6c6",
     "rebuild\\2008-06\\native-headers\\v8datamodel\\Selection.h": "b6a0cfa8124e4724bf6288321bb3a6bbe33f38abe174bad5b3a559cd86861a0f",
-    "rebuild\\2008-06\\native-headers\\v8datamodel\\DataModel.h": "eb785af6c82c30802e8df8be411c69cb7a0ed6e40e385cac821108d093c1b64b",
-    "rebuild\\2008-06\\native-headers\\script\\ScriptContext.h": "a2dd1fa4e71585de6c28194e2f1e2522019f75fde188fcb8113e27859b45b522",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\DataModel.h": "5c85881dfc4a919e8a178af3ace242ccc0c3a505d9356d61844fd54253fed79f",
+    "rebuild\\2008-06\\native-headers\\script\\ScriptContext.h": "ef1554c1d86dc1d058c7db8b6b11d910bda8ec3b51c3a1f0ac330f360cc2099d",
+    "tools\\rbxgs\\Client\\App\\include\\util\\Log.h": "8caadf614c181ee1fe3cd46ac3bb0cb61a82a0d47c2d2b1d6b5df3669f7f71c6",
+    "tools\\rbxgs\\Client\\App\\include\\v8datamodel\\Workspace.h": "2ed391867e49e12497e567740dccb42655e413d90112d7f918a8b9d1fe2beb07",
+    "tools\\rbxgs\\Client\\App\\include\\v8xml\\SerializerV2.h": "624c06919715364772dee0f0a63911e589d5282b659c5d8ff6684b311e091d08",
     "rebuild\\2008-06\\tests\\NativeDocumentLayout.cpp": "46c6138324eff27502f3c69b3eb12a8e23aaefecb25dba8772bd2c5250313d9c"
   },
-  "object_sha256": "9c1dcbdb24c81145f275f2d1ac3edfed47ac6e36c0444f1dfdb8570e0926293c",
+  "object_sha256": "6a65bafcd156b66126d51198471c2560dbf550c10d8641bdfcde557669a7066f",
   "profile": [
     "const _Elem * c_str() const",
     "operator PCXSTR() const throw()\n\t{\n\t\treturn( m_pszData );"
@@ -197,6 +203,90 @@
         "??$create@VScriptContext@RBX@@@ServiceProvider@RBX@@QBEPAVScriptContext@1@XZ": "0x42de90",
         "?getThreadCount@ScriptContext@RBX@@QBEIXZ": "0x5a9120",
         "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0"
+      }
+    },
+    {
+      "address": "00450d90",
+      "size": 401,
+      "direct_calls": {
+        "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x403040",
+        "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x46a940",
+        "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": "0x411b40",
+        "?getDutyCycle@DataModel@RBX@@QBENXZ": "0x5757f0",
+        "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0"
+      }
+    },
+    {
+      "address": "00454920",
+      "size": 409,
+      "direct_calls": {
+        "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x46a940",
+        "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": "0x411b40",
+        "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x403040",
+        "??$create@VScriptContext@RBX@@@ServiceProvider@RBX@@QBEPAVScriptContext@1@XZ": "0x42de90",
+        "?getHeapStats@LuaAllocator@@QBEXAAI0@Z": "0x5c8940",
+        "?formatMem@Log@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@I@Z": "0x5a6bc0",
+        "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0"
+      }
+    },
+    {
+      "address": "0044f7c0",
+      "size": 258,
+      "direct_calls": {
+        "??0CFileDialog@@QAE@HPBD0K0PAVCWnd@@KH@Z": "0x6a0e72",
+        "?DoModal@CFileDialog@@UAEHXZ": "0x6a0e6c",
+        "?GetPathName@CFileDialog@@QBE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ": "0x6a0e66",
+        "??0CComBSTR@ATL@@QAE@PBD@Z": "0x401180",
+        "??1CFileDialog@@UAE@XZ": "0x6a0e5a"
+      }
+    },
+    {
+      "address": "0044fc50",
+      "size": 104,
+      "direct_calls": {
+        "??0CPublishAsPlaceDialog@@QAE@PAUIDispatch@@PAVCWnd@@@Z": "0x44f500",
+        "?DoModal@CDialog@@UAEHXZ": "0x6a084e",
+        "??1CSaveToRobloxDialog@@UAE@XZ": "0x45fe20"
+      }
+    },
+    {
+      "address": "0044fcc0",
+      "size": 104,
+      "direct_calls": {
+        "??0CSaveModelToRobloxDialog@@QAE@PAUIDispatch@@PAVCWnd@@@Z": "0x44f660",
+        "?DoModal@CDialog@@UAEHXZ": "0x6a084e",
+        "??1CSaveToRobloxDialog@@UAE@XZ": "0x45fe20"
+      }
+    },
+    {
+      "address": "00455580",
+      "size": 669,
+      "direct_calls": {
+        "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x46a940",
+        "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": "0x411b40",
+        "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x403040",
+        "??$create@VRunService@RBX@@@ServiceProvider@RBX@@QBEPAVRunService@1@XZ": "0x4530f0",
+        "?setRunState@RunService@RBX@@QAEXW4RunState@2@@Z": "0x554da0",
+        "?clearContents@DataModel@RBX@@QAEXXZ": "0x578ef0",
+        "?load@SerializerV2@@SAXPAVXmlElement@@PAVDataModel@RBX@@@Z": "0x593500",
+        "?joinAllHack@Workspace@RBX@@QAEXXZ": "0x5a0de0",
+        "??1XmlElement@@QAE@XZ": "0x413a70",
+        "??3@YAXPAX@Z": "0x6a067a",
+        "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0"
+      }
+    },
+    {
+      "address": "00450f30",
+      "size": 436,
+      "direct_calls": {
+        "??0CFileDialog@@QAE@HPBD0K0PAVCWnd@@KH@Z": "0x6a0e72",
+        "?DoModal@CFileDialog@@UAEHXZ": "0x6a0e6c",
+        "?GetPathName@CFileDialog@@QBE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ": "0x6a0e66",
+        "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x46a940",
+        "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": "0x411b40",
+        "?insert@CWorkspace@@QAEXAAV?$basic_istream@DU?$char_traits@D@std@@@std@@_N@Z": "0x46b9d0",
+        "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0",
+        "??1CFileDialog@@UAE@XZ": "0x6a0e5a"
       }
     }
   ],

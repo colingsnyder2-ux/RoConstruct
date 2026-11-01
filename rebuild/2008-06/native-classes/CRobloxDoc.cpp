@@ -1,15 +1,20 @@
 #include <afxwin.h>
+#include <afxdlgs.h>
 #include "v8xml/XmlElement.h"
 #include "v8xml/SerializerV2.h"
 #include "v8tree/Verb.h"
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Selection.h"
+#include "v8datamodel/Workspace.h"
 #include "v8datamodel/ChangeHistoryService.h"
 #include "script/ScriptContext.h"
 #include "../native-headers/CRobloxDoc.h"
+#include "../native-headers/CSaveToRobloxDialog.h"
 #include "../native-headers/StandardVerbs.h"
 #include "../native-headers/CWorkspace.h"
 #include "util/RunStateOwner.h"
+#include "util/Log.h"
+#include "Network/Players.h"
 #include <exception>
 #include <fstream>
 #include <shlobj.h>
@@ -67,8 +72,6 @@ extern CRobloxDoc* currentDocument;
 void setCurrentDocument(int, CRobloxDoc*);
 // Native predicates 00495e60/00495e70 resolve to NetworkClient/NetworkServer lookups.
 namespace RBX { namespace Network {
-class Player;
-class Players { public: static Player* findLocalPlayer(const Instance*); };
 class Client { public: static bool clientIsPresent(const Instance*, bool); };
 class Server { public: static bool serverIsPresent(const Instance*, bool); };
 } }
@@ -209,6 +212,84 @@ void CRobloxDoc::handle_4547b0(CCmdUI* ui) {
     } else {
         ui->SetText("");
         ui->Enable(FALSE);
+    }
+}
+
+// 00450d90: display simulation duty cycle.
+void CRobloxDoc::handle_450d90(CCmdUI* ui) {
+    if (getDataModel()) {
+        RBX::DataModel::Lock lock(workspace->getDataModel());
+        double value = getDataModel()->getDutyCycle() * 100.0;
+        char text[32];
+        sprintf(text, "%.3g%%", value);
+        ui->SetText(text);
+    }
+}
+
+// 00454920: display script allocator heap usage.
+void CRobloxDoc::handle_454920(CCmdUI* ui) {
+    RBX::DataModel::Lock lock(workspace->getDataModel());
+    RBX::ScriptContext* context = RBX::ServiceProvider::create<RBX::ScriptContext>(getDataModel().get());
+    if (context && context->allocator) {
+        size_t bytes, blocks;
+        context->allocator->getHeapStats(bytes, blocks);
+        std::string text = RBX::Log::formatMem(bytes);
+        ui->SetText(text.c_str());
+        ui->Enable(TRUE);
+    } else {
+        ui->SetText("");
+        ui->Enable(FALSE);
+    }
+}
+
+// 00454f30: enable abuse reporting when the players service supports it.
+void CRobloxDoc::handle_454f30(CCmdUI* ui) {
+    RBX::DataModel::Lock lock(workspace->getDataModel());
+    ui->Enable(getDataModel()->create<RBX::Network::Players>()->canReportAbuse());
+}
+
+// 0044f7c0: save selected instances to a model file.
+void CRobloxDoc::handle_44f7c0() {
+    CString filter;
+    filter.LoadString(184);
+    CFileDialog dialog(FALSE, "rbxm", NULL, 6, filter, NULL, 0, TRUE);
+    if (dialog.DoModal() == IDOK) {
+        ATL::CComBSTR filename((LPCSTR)dialog.GetPathName());
+        workspace->SaveSelectionToFile(filename);
+    }
+}
+
+// 0044fc50 / 0044fcc0: open native publish dialogs.
+void CRobloxDoc::handle_44fc50() {
+    CPublishAsPlaceDialog dialog(workspace, 0);
+    dialog.DoModal();
+}
+void CRobloxDoc::handle_44fcc0() {
+    CSaveModelToRobloxDialog dialog(workspace, 0);
+    dialog.DoModal();
+}
+
+// 00455580: stop simulation, restore the saved place and rebuild joints.
+void CRobloxDoc::handle_455580() {
+    RBX::DataModel::Lock lock(workspace->getDataModel());
+    if (getDataModel()->create<RBX::RunService>()->getRunState() != RBX::RS_NORMAL) {
+        documentRunService(getDataModel())->setRunState(RBX::RS_NORMAL);
+        getDataModel()->clearContents();
+        SerializerV2::load(savedState.get(), getDataModel().get());
+        getDataModel()->getWorkspace()->joinAllHack();
+        savedState.reset();
+    }
+}
+
+// 00450f30: insert a model file into the current place.
+void CRobloxDoc::handle_450f30() {
+    CString filter;
+    filter.LoadString(184);
+    CFileDialog dialog(TRUE, "rbxm", NULL, 6, filter, NULL, 0, TRUE);
+    if (dialog.DoModal() == IDOK) {
+        std::ifstream input(dialog.GetPathName(), std::ios::in | std::ios::binary);
+        RBX::DataModel::Lock lock(workspace->getDataModel());
+        workspace->insert(input, true);
     }
 }
 
