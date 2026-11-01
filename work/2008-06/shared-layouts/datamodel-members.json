@@ -1,13 +1,19 @@
 {
-  "revision": "aea284c006117ea41b46a6b9b652819b522c6e2d",
+  "revision": "464a00f92f7b6a85d847b1b403a0282c50f7c586",
   "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
-  "observer_sha256": "394fcb1a1ffad2d37f2cd52ec900a1f7161d4030f071fd151fd75ac9cf2bbdb4",
+  "observer_sha256": "fcdb184aa7b7e3754cdf29ae7244b022b9881f70324f47e59edde217534bf768",
   "fields": {
     "0x204": {
       "type": "boost::shared_ptr<RBX::Workspace>",
       "factory": "00576ff0",
       "constructor": "005a4d90",
       "vtable": "00833a54"
+    },
+    "0x20c": {
+      "type": "boost::shared_ptr<RBX::RunService>",
+      "getter": "004530f0",
+      "store": "0057ab20",
+      "proof": "workspace-owner-trace.json"
     },
     "0x21c": {
       "type": "boost::shared_ptr<RBX::GuiRoot>",

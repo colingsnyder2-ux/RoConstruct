@@ -2127,3 +2127,6 @@ Native ServiceProvider candidate at c1aedcaf36 builds on native Instance and ori
 
 
 Native DataModel base probe at 5c3a4c18bd combines recovered Instance/ServiceProvider, VerbContainer, IDataState, Evaluator and RunTransition listener. MSVC21022 reproduces original RTTI offsets 0x1c8/0x1f0/0x1f4/0x1f8 and base extent0x1fc. Split native VerbContainer declaration avoids donor StateStack-based IDataState; existing constructor source matches original00583460, 40 bytes with relocations masked. Reproduce record_native_datamodel_bases.py; receipt shared-layouts/datamodel-bases.json. Probe omits DataModel members; none of these classes are active or yet proven behaviorally complete.
+
+
+Native DataModel +0x20c/+0x210 is shared_ptr<RunService>: initialization0057a9f0 calls independently traced RunService getter004530f0 and stores its shared owner at0057ab20. Verified original instruction bytes and prior factory RTTI; datamodel-members.json pins observer revision464a00f92f. Remaining owner types still need proof; no active ABI swap.
