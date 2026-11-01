@@ -1512,3 +1512,25 @@ before a correct integration. Observational receipts p5-landed-probe-* cover
 the trial executable only; they are not exact committed-source evidence.
 Original bouncing remains intentional. Restored player build and P3 lifetime,
 selftest and cache checks pass at df7973e8c7. P5 remains open.
+
+## P5 checkpoint: limb CanCollide during high fall (80641d326d)
+
+Original descriptor 007f4870 binds getter 00598d20 and setter 0059dd80.
+The getter combines the drag byte and the inverse of Primitive+0xab; setter
+inverts CanCollide before invoking 005e75e0. Thus 0xab is connected to the
+public collision property, not merely a ray filter. Original state update
+006451c0 calls 00643bc0/00643c20 with values from the state's vtable.
+Freefall, Landed and Running all select the same limb flags in their vtables.
+
+A new fixture records whether both legs report CanCollide. At 0.25, 0.5,
+0.75 and 1.0 seconds the original marker says false while the rebuilt marker
+says true; at 1.5 and 2 seconds both report false. Original timing is wall
+clock +/-35 ms and the clients have different startup/joint construction.
+Receipt: p5-limb-final-comparison. This is a measured mismatch, not an
+assertion that limb collision alone causes the character bounce discrepancy.
+
+Trials to apply state flags on donor state swaps and each donor state step did
+not alter the early samples, so they were reverted. Trace when the rebuilt
+Humanoid receives its world and first Stepped event before modifying the
+lifecycle. The clean player was rebuilt at 80641d326d; original bouncing is
+preserved. P5 remains open.
