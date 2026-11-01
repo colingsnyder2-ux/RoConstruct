@@ -1,5 +1,17 @@
 # Current player checkpoint
 
+P4 SoundService cache method recovered at source e37a158e83. Original call
+005bceb0 -> 005bb5f0 selects maps at +0x180/+0x1a0, returns cached shared Sound
+or allocates0x30 and invokes ctor005b6f70. Genuine SoundService::loadSound now
+implements that algorithm with actual typed members. Local owned-symbol report
+identifies its object code uniquely with 005bb5f0; this is not server credit.
+Sound diagnostic builds/executes0 on the same source; receipt
+p4-sound-cache-e37a158e83/. The new method is not selected in the diagnostic
+executable and has not run: service construction and runtime cache behavior
+remain open. Next recover genuine service/channel constructors, factory and
+lifecycle, then exercise same-ID cache identity, 2D/3D separation and playback.
+
+
 P4 overlay correction verified at sourcea225dbb170. Prior raw-donor sound
 diagnostic witness and software-setting result are superseded: actual app overlay
 already restores GuidItem<Instance>. Native RTTI and global descriptor initializers
