@@ -1123,3 +1123,21 @@ children absent from their serialized parent models; see the aggregate-only
 p5-typed-map-audit receipt. This does not prove the place is playable or rule
 out other runtime issues. Continue testing other supplied places and roadmap
 acceptance; P5 and later milestones remain open.
+
+## P5 checkpoint: contact and script startup (a4af240151)
+
+A ball-block contact with overlapping bounds but no actual collision called an
+unconditional connector-removal helper with a null connector. The ball-block
+caller now checks for a connector, consistent with the existing ball-ball caller.
+A directly detached script is no longer started, and detached script naming no
+longer constructs a string from null. Authored fixtures reproduced both crashes
+before the fixes and pass afterward, including the removed script not running.
+Build, P0, lifetime, values and script scheduling regressions pass. Receipts are
+in p5-contact-script-*-a4af240151.
+
+At ce27d11d18 another supplied place ran 30 frames with 1,796 rendered models,
+zero script error stacks and clean exit (p5-rocket-audit-ce27d11d18). A different
+supplied place reached 30 frames and reported clean mesh cleanup at a4af240151,
+but then exited with access violation 0xc0000005; the shutdown cause remains
+unproven (p5-golf-negative-a4af240151). Neither run proves full playability or
+native parity. Trace shutdown next; P5 and later milestones remain open.
