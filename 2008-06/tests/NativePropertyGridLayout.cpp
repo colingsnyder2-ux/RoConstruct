@@ -19,4 +19,7 @@ C_ASSERT(sizeof(RBX::SelectionGroup) == 0x20);
 C_ASSERT(sizeof(RBX::PropertyChanged) == 8);
 C_ASSERT(sizeof(RBX::Reflection::Property) == 8);
 
-C_ASSERT(sizeof(CPropGrid::Item) == 4);
+C_ASSERT(sizeof(CPropGrid::Item) == 0x20);
+
+C_ASSERT(offsetof(CPropGrid::Item, classes) == 4);
+C_ASSERT(offsetof(CPropGrid::Item, grid) == 0x1c);

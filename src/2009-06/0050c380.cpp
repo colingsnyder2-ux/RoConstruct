@@ -1,31 +1,43 @@
-// from server: 51% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/PV.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/PV.h"
-
-namespace RBX
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
+namespace G3D {
+class Vector3 {
+public:
+    float x, y, z;
+    Vector3(const Vector3& v) : x(v.x), y(v.y), z(v.z) {}
+};
+class Matrix3 {
+public:
+    Matrix3(const Matrix3& m);
+    float elt[3][3];
+};
+class CoordinateFrame {
+public:
+    Matrix3 rotation;
+    Vector3 translation;
+    CoordinateFrame(const CoordinateFrame& o) : rotation(o.rotation), translation(o.translation) {}
+    CoordinateFrame lerp(const CoordinateFrame& other, float alpha) const;
+};
+}
+namespace RBX {
+class Velocity {
+public:
+    G3D::Vector3 linear;
+    G3D::Vector3 rotational;
+    Velocity(const Velocity& v) : linear(v.linear), rotational(v.rotational) {}
+    Velocity lerp(const Velocity& other, float alpha) const;
+};
+class PV {
+public:
+    G3D::CoordinateFrame position;
+    Velocity velocity;
+    PV(const G3D::CoordinateFrame& p, const Velocity& v) : position(p), velocity(v) {}
+    PV lerp(const PV& other, float alpha) const;
+};
+PV PV::lerp(const PV& other, float alpha) const
 {
-	Velocity PV::velocityAtPoint(const G3D::Vector3& worldPos) const
-	{
-		G3D::Vector3 v1 = worldPos - this->position.translation;
-		G3D::Vector3 v2 = this->velocity.rotational.cross(v1);
-		return Velocity(this->velocity.linear + v2, this->velocity.rotational);
-	}
-
-	PV PV::pvAtLocalCoord(const G3D::CoordinateFrame& localCoord) const
-	{
-		G3D::CoordinateFrame worldPos = this->position * localCoord;
-		Velocity worldVel = this->velocityAtPoint(worldPos.translation);
-		return PV(worldPos, worldVel);
-	}
-
-	PV PV::pvAtLocalOffset(const G3D::Vector3& localOffset) const
-	{
-		G3D::CoordinateFrame cf(G3D::Matrix3::identity(), localOffset);
-		return this->pvAtLocalCoord(cf);
-	}
+    return PV(position.lerp(other.position, alpha), velocity.lerp(other.velocity, alpha));
+}
 }

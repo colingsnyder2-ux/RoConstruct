@@ -6,7 +6,7 @@
 #include <set>
 #include "SelectionGroup.h"
 
-namespace RBX { class DataModel; class Instance; class PropertyChanged;
+namespace RBX { class DataModel; class Instance; class PropertyChanged; class Name;
 namespace Reflection { class PropertyDescriptor; } }
 
 // Inactive typed storage recovery. Pointer-container payload identities,
@@ -19,6 +19,10 @@ public:
     class Item {
     public:
         virtual void update(RBX::SelectionGroup*) = 0;
+        std::vector<const RBX::Reflection::ClassDescriptor*> classes;
+        CPropGrid* grid;
+        Item(const RBX::Reflection::PropertyDescriptor*, CPropGrid*);
+        void addClass(const RBX::Reflection::ClassDescriptor*);
     };
     CPropGrid();
     virtual ~CPropGrid();
@@ -35,6 +39,7 @@ public:
     }
     afx_msg int OnCreate(LPCREATESTRUCT);
     afx_msg LRESULT OnUpdate(WPARAM, LPARAM);
+    CXTPPropertyGridItem* getCategory(const RBX::Name&);
     void rebuild(const RBX::Reflection::ClassDescriptor*);
     virtual void addProperty(const RBX::Reflection::ClassDescriptor*, const RBX::Reflection::PropertyDescriptor*);
     boost::recursive_mutex mutex;

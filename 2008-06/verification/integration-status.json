@@ -61,8 +61,9 @@
     },
     {
       "name": "CPropGrid / CSelectionPropGrid / CDataModelPropGrid",
-      "status": "inactive; three layouts, eight separate-TU lifecycle/runtime bodies and tree constructors verified; genuine model-change callback 00442900 matches. Pointer payload identities, full virtual/message ABI and property behavior open",
-      "source": "native-headers/CDataModelPropGrid.h"
+      "status": "inactive typed recovery: 12 selection/property/group/map/refresh/rebuild bodies match, plus8 lifecycle bodies. Descriptor/vector grouping and RTTI-proven one-slot CPropGrid::Item correct prior placeholder container types. 91 primary virtual slots; appended slot90 targets00440e30 property-row creation. Refresh uses actual paired DataModelLock.cpp source. Concrete row factories, reverse-map payloads, complete bindings and game integration remain open",
+      "source": "native-headers/CDataModelPropGrid.h",
+      "evidence": "work/2008-06/shared-layouts/selection-grid-checkpoint.json"
     }
   ],
   "gates": {

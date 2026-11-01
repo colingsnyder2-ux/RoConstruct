@@ -17,6 +17,7 @@ CLASSES = ROOT / 'rebuild/2008-06/native-classes'
 HEADERS = ROOT / 'rebuild/2008-06/native-headers'
 flags = json.loads((ROOT / 'work/2008-06/shared-layouts/property-grid-working-probe.json').read_text())['flags']
 jobs = (
+    ('CPropGridItem', (('0043a070', '??0Item@CPropGrid'), ('00439600', '?addClass@Item@CPropGrid'))),
     ('CPropGridRebuild', (('004391d0', '?rebuild@CPropGrid'), ('00438010', '??_9CPropGrid@@'))),
     ('CPropGridMap', (('004385f0', '?OnCreate@CPropGrid'), ('00440d20', '?GetMessageMap@CPropGrid'))),
     ('CPropGridRefresh', (('00439d70', '?OnUpdate@CPropGrid'),)),
@@ -50,6 +51,7 @@ bindings = {'?add@SelectionGroup': 0x442350, '?remove@SelectionGroup': 0x439660,
             '?addInstance@CPropGrid': 0x4423f0, '?removeInstance@CPropGrid': 0x439cd0,
             '?removeListener@': 0x5e5a80, '?addListener@': 0x4218a0,
             '??$shared_from@': 0x618a40, '??4shared_count@': 0x4025b0,
+            '?addClass@Item@CPropGrid@@': 0x439600,
             '?sync@Reflection@RBX@@': 0x438060, '??_9CPropGrid@@': 0x438010,
             '?rebuild@CPropGrid': 0x4391d0, '?rootDescriptor@ClassDescriptor@Reflection@RBX@@': 0x40ad20,
             '?doLock@Lock@DataModel@RBX@@': 0x576f00, '??1Lock@DataModel@RBX@@': 0x5773c0,
@@ -135,8 +137,8 @@ receipt = dict(revision=subprocess.check_output(['git', 'rev-parse', 'HEAD'], cw
                objects={obj.name: sha(obj) for obj, _ in results},
                scope='Inactive typed recovery. SelectionGroup is a recovery name. Descriptor-keyed map of '
                      'shared Instance vectors replaces disproven set<string> at CPropGrid+0x218. '
-                     'Twelve body matches, selected bindings, two-message map and original one-slot Item RTTI interface; full helper closure, other containers, '
+                     'Fourteen body matches, selected bindings, two-message map and original one-slot Item RTTI interface; full helper closure, other containers, '
                      'property-grid behavior, linking and runtime remain open. No game integration credit.')
 (ROOT / 'work/2008-06/shared-layouts/selection-grid-working-probe.json').write_text(
     json.dumps(receipt, indent=2) + '\n')
-print('PASS: twelve native grid bodies; typed grouping/items, message map and selected bindings verified')
+print('PASS: fourteen native grid bodies; typed grouping/items, message map and selected bindings verified')
