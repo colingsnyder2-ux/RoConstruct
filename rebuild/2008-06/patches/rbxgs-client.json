@@ -1,4 +1,11 @@
 {
+ "App/humanoid/Freefall.cpp": [
+  ["#include \"humanoid/Running.h\"", "#include \"humanoid/Running.h\"\n#include \"v8datamodel/PartInstance.h\""],
+  ["\t\t: Base(humanoid)\n\t{\n\t}", "\t\t: Base(humanoid), savedHeadFriction(0), savedTorsoFriction(0)\n\t{\n\t\tHumanoid::event_FreeFalling.fire(humanoid, true);\n\t\tif (humanoid->getHead()) { savedHeadFriction=humanoid->getHead()->getFriction(); humanoid->getHead()->setFriction(0); }\n\t\tif (humanoid->getTorso()) { savedTorsoFriction=humanoid->getTorso()->getFriction(); humanoid->getTorso()->setFriction(0); }\n\t}\n\n\tFreefall::~Freefall()\n\t{\n\t\tHumanoid::event_FreeFalling.fire(humanoid, false);\n\t\tif (humanoid->getHead()) humanoid->getHead()->setFriction(savedHeadFriction);\n\t\tif (humanoid->getTorso()) humanoid->getTorso()->setFriction(savedTorsoFriction);\n\t}"]
+ ],
+ "App/include/humanoid/Freefall.h": [
+  ["\t\tFreefall(Humanoid* humanoid);", "\t\tFreefall(Humanoid* humanoid);\n\t\tvirtual ~Freefall();\n\tprivate:\n\t\tfloat savedHeadFriction, savedTorsoFriction;"]
+ ],
  "App/include/util/object.h": [
   [
    "\tclass AbstractFactoryProduct : public Creatable<T>\n\t{\n",

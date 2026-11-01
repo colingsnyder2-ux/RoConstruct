@@ -2,6 +2,7 @@
 #include "v8datamodel/Workspace.h"
 #include "v8datamodel/PartInstance.h"
 #include "humanoid/Humanoid.h"
+#include "humanoid/Freefall.h"
 #include "v8xml/SerializerV2.h"
 #include "script/ScriptContext.h"
 #include "security/SecurityContext.h"
@@ -150,6 +151,26 @@ extern "C" int CheckNativeMD5()
     boost::scoped_ptr<RBX::MD5Hasher> binary(RBX::MD5Hasher::create());
     const char bytes[]={0,static_cast<char>(0xff),0x10};binary->addData(bytes,sizeof(bytes));
     return binary->toString()=="481e4551ec039aada760901cf52b1917"?0:3;
+}
+
+static void RecordFreefall(std::vector<int>* values,bool active){values->push_back(active?1:0);}
+extern "C" int CheckFreefallTransitions()
+{
+    if(!g_dataModel)return 1;
+    RBX::DataModel::Lock lock(g_dataModel);
+    RBX::ModelInstance* actor=dynamic_cast<RBX::ModelInstance*>(g_dataModel->getWorkspace()->findFirstChildByName("Actor"));
+    RBX::Humanoid* humanoid=actor?RBX::Humanoid::modelIsCharacter(actor):NULL;
+    if(!humanoid || !humanoid->getHead() || !humanoid->getTorso())return 2;
+    RBX::PartInstance* head=humanoid->getHead();RBX::PartInstance* torso=humanoid->getTorso();
+    head->setFriction(.23f);torso->setFriction(.67f);
+    std::vector<int> events;
+    boost::signals::connection connection=RBX::Humanoid::event_FreeFalling.connect(humanoid,boost::bind(&RecordFreefall,&events,_1));
+    {
+        RBX::Freefall falling(humanoid);
+        if(events.size()!=1 || events[0]!=1 || head->getFriction()!=0 || torso->getFriction()!=0)return 3;
+    }
+    connection.disconnect();
+    return events.size()==2 && events[1]==0 && fabs(head->getFriction()-.23f)<.0001f && fabs(torso->getFriction()-.67f)<.0001f ? 0 : 4;
 }
 
 // Diagnostic: use the existing Humanoid joint builder on the authored actor.
