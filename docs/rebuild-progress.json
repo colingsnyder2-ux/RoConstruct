@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-01 04:03 UTC",
+  "updated": "2026-11-01 05:14 UTC",
   "clients": {
     "2008-06": {
       "phase": "6",
@@ -17,7 +17,7 @@
           "label": "Modules linked"
         },
         "exact": {
-          "value": 9902,
+          "value": 9905,
           "total": 41196,
           "label": "Byte-exact functions"
         },
@@ -188,8 +188,8 @@
           "name": "P2RecoveredPlayer",
           "linked": true,
           "test": 0,
-          "exact": 259,
-          "objectFunctions": 2964,
+          "exact": 316,
+          "objectFunctions": 3856,
           "unresolved": 0
         },
         {
@@ -252,8 +252,8 @@
           "name": "P2RecoveredPlayer",
           "linked": true,
           "test": 0,
-          "exact": 259,
-          "objectFunctions": 2964,
+          "exact": 316,
+          "objectFunctions": 3856,
           "unresolved": 0
         },
         {
@@ -284,8 +284,8 @@
           "name": "RbxgsApp",
           "linked": true,
           "test": 0,
-          "exact": 3318,
-          "objectFunctions": 95329,
+          "exact": 3319,
+          "objectFunctions": 95560,
           "unresolved": 0
         },
         {
