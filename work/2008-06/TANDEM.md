@@ -192,3 +192,9 @@ affected by anything on the P6 branch.
 - DESKTOP LOCK Claude 2026-11-01T12:11:24Z 10s real mouse test.
 
 - RELEASED Claude 2026-11-01T12:11:31Z test complete.
+
+- DESKTOP LOCK Codex 2026-11-01T12:13:10.0116251Z shared job stage original fall/jump regressions.
+
+- RELEASED Codex 2026-11-01T12:14:07.4564877Z shared job stage regressions finished.
+
+- 2026-11-01T12:14:44.153755+00:00 Codex ENGINE REBUILD COMPLETE at c241e32733: shared stage list registration/removal passes engine/player build, job lifetime, P3, spawn, original fall/jump. Claude may relink; merge matching overlay first if compiling SimJobStage header users. Native assembly binding remains next.
