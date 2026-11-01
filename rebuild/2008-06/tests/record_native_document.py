@@ -103,7 +103,7 @@ receipt = dict(revision=subprocess.check_output(['git', 'rev-parse', 'HEAD'], cw
                virtual_slots=[dict(slot=slot, source_symbol=name, original_address=hex(native[slot]))
                               for slot, name in sorted(slots.items())],
                active_client_changed=False,
-               scope='Compiler-only document storage, virtual-slot declarations, seven document bodies and two ownership destructor proofs. Document destructor remains open. Other virtual bodies and relocated targets remain unverified. No active class swap, linked-function increase or server verification claimed.')
+               scope='Compiler-only document storage, virtual-slot declarations, nine document bodies and three destructor proofs, including the document destructor. Other virtual bodies and relocated targets remain unverified. No active class swap, linked-function increase or server verification claimed.')
 output = ROOT / 'work/2008-06' / sys.argv[1]
 output.parent.mkdir(parents=True, exist_ok=True)
 output.write_text(json.dumps(receipt, indent=2) + '\n')
