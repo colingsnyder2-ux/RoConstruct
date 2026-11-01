@@ -9,6 +9,7 @@
 
 namespace RBX {
 class ServiceProvider;
+class DataModel;
 struct ServiceAdded;
 struct ServiceRemoving;
 namespace Network { class Players; struct SuperSafeChanged; }
@@ -42,6 +43,7 @@ public:
     void* slots_ac_b8[4];
     unsigned unaccessed_bc;    // same evidence as unaccessed_8c
     explicit CRobloxWnd(int);
+    void setDataModel(void*); // 0045f7b0, argument is compared with +0x6c
     virtual ~CRobloxWnd(); // 0045fbe0, called out of line from 00459ba0
     // Interface overrides; bodies not recovered here. IRunView vtable 008199e8, IMetric 008199dc.
     virtual void InvalidateRunView();
@@ -65,6 +67,11 @@ struct OwnedPolymorphic {
 struct OwnedSlot {
     OwnedPolymorphic* value;
     OwnedSlot() : value(0) {}
+    template<class T> void assign(T* replacement) { // original stores first, then deletes the old value virtually
+        OwnedPolymorphic* old = value;
+        value = reinterpret_cast<OwnedPolymorphic*>(replacement);
+        delete old;
+    }
     ~OwnedSlot() { delete value; }
 };
 
@@ -76,7 +83,7 @@ class CRobloxView : public VerbBinder<CRobloxView, CView>,
     DECLARE_DYNCREATE(CRobloxView)
 public:
     CRobloxWnd window;        // +0xb0
-    boost::shared_ptr<void> owner_170;  // pointer and control block, zeroed by its constructor
+    boost::shared_ptr<RBX::DataModel> owner_170;  // pointer and control block, zeroed by its constructor
     CMenu popupMenu;          // +0x178, menu resource 0x67 loaded at construction
     CReflectorWnd reflector;  // +0x180
     void* slot_1d8;           // not destroyed by 00459ba0, so not owned
@@ -88,5 +95,7 @@ public:
 
     CRobloxView();
     virtual ~CRobloxView(); // 00459ba0, scalar deleting wrapper 00459fb0
+    virtual void OnInitialUpdate(); // 0045a4a0
+    void detachDataModel();         // 0045a2f0
     DECLARE_MESSAGE_MAP()
 };

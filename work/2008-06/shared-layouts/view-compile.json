@@ -107,7 +107,7 @@
    "\"Help\" verb and sibling constructors after 45a6b9",
    "remainder of OnInitialUpdate after 45a6b9 (not yet read)"
   ],
-  "size": "0x45a4a0 to 0x45ac08, 1897 bytes",
+  "size": "1915 bytes (0x45a4a0 to 0x45ac1b)",
   "verbs_created": {
    "ToggleToolbox": "458ec0, EXACT, 0x20 bytes, stored at View+0x1e0",
    "Help": "inline in OnInitialUpdate: Verb ctor 5833e0, then vtable 00819140 and view pointer at +0xc, 0x10 bytes",
@@ -121,6 +121,18 @@
    "DataModel header (Codex owns)": "Still needed: DataModel+0x150 and +0x170, the notifier bases the view listens to through Notifier::addListener 4218a0. RESOLVED: DataModel+0x204 is the workspace shared_ptr (offsetof(DataModel, workspace) == 0x204 in the native header, checked with MSVC 21022); +0x2ec is a VerbContainer inside the workspace object.",
    "CRobloxWnd+0xfc": "45a597-45a5c8 reads and replaces an owned pointer at offset 0xfc of the object stored at View+0x1d8, so that type needs recovery before this function can compile.",
    "45f7b0 chain": "55a8f0, 45dce0, 555830, 5773c0 plus DataModel::Lock bodies 411b40 and 576f00"
+  },
+  "first_source": {
+   "file": "rebuild/2008-06/native-classes/CRobloxViewInit.cpp",
+   "status": "COMPILES, partial: covers base call, window and data model setup, listeners, verb parent and the toolbox verb (383 bytes of the original 1915)",
+   "not_comparable_yet": "The original uses an ebp frame because of its by-value std::string argument temporaries later in the function; a partial function cannot reproduce that prologue, so a prefix byte diff is meaningless until the whole body exists.",
+   "flags_note": "Mined source records /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD; record_native_function.py uses a slightly different set (no /Oi /Ot). Add them before the full compare.",
+   "scaffolding": [
+    "ListenerSite::addListener stands in for the Notifier members at DataModel+0x150 and +0x170",
+    "workspace+0x2ec reinterpret_cast stands in for the workspace VerbContainer member",
+    "shared_ptr<DataModel> owner_170 replaces shared_ptr<void>"
+   ],
+   "next": "Write the remaining sections: the object at View+0x1d8 (+0xfc assignment), Help, ToggleFullScreen and LockPlayMode verbs, and the 16 getVerb bindings; then enable /Oi /Ot and compare all 1915 bytes."
   }
  },
  "owned_slot_type_hint": "Verb-derived objects created in OnInitialUpdate; replace OwnedPolymorphic once their class is recovered"
