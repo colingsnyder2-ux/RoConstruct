@@ -1,3 +1,4 @@
+// from server: 100% by Yeetserama
 // roc 2011-06 0048baa0  unit: Scintilla::CScintillaFindReplaceDlg  size: 75 bytes
 // Make this compile to the exact bytes below, then: roc check 2011-06 0048baa0
 //
@@ -26,13 +27,29 @@
 // 0048bae2  e871f43700           call 0x80af58
 // 0048bae7  5e                   pop esi
 // 0048bae8  c21400               ret 0x14
-// copied from an identical function in another client (function ?Init@CScintillaFindReplaceDlg@ns_ROCX000008@ns_ROCX000027@@QAEXHHHHH@Z)
+// copied from an identical function in another client (function ?f@S@ns_ROCX000002@@QAEHHHHHH@Z)
 
-namespace ns_ROCX000008 {
-extern char G;
+namespace ns_ROCX000002 {
+// from server: 100% by king_originala
+extern "C" void* __stdcall sub_6a0926();
 
-char* fn_ROCX000008()
+struct S {
+    char pad_0[0x7c];
+    void* field_7c;
+    unsigned int field_80;
+    char pad_84[0x14];
+    int field_98;
+
+    int sub_6a1412(int, int, int, int, int);
+    int f(int, int, int, int, int);
+};
+
+int S::f(int a, int b, int c, int d, int e)
 {
-    return &G;
+    void* h = *(void**)((char*)sub_6a0926() + 0x0c);
+    field_80 |= 0x200;
+    field_7c = h;
+    field_98 = a ? 0x65 : 0x66;
+    return sub_6a1412(a, b, c, d, e);
 }
 }

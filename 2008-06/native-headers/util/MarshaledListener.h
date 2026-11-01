@@ -18,7 +18,13 @@ public:
 
     MarshaledListener() : threadId(GetCurrentThreadId()), window(acquireMarshalWindow()) {}
     virtual ~MarshaledListener() { detach(); releaseMarshalWindow(window); }
-    virtual void onEvent(const Source*, Event);
+    virtual void onEvent(const Source* source, Event event) throw()
+    {
+        ATL::CCriticalSection& criticalSection = window->criticalSection;
+        criticalSection.Enter();
+        marshal(source, event);
+        criticalSection.Leave();
+    }
     virtual void onMarshaledEvent(const Target*, TargetEvent) = 0;
     virtual void marshal(const Source*, Event);
     void detach();

@@ -1,39 +1,17 @@
-// from server: 50% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client App/script/ScriptEvent.cpp
+// roc-flags: /O2 /GS- /EHsc /MD
 
-// Candidate translation unit (score above; library headers required).
-#include "script/ScriptEvent.h"
+struct Vector2 {
+    float x, y;
+    Vector2() {}
+    Vector2(const Vector2& o) : x(o.x), y(o.y) {}
+};
 
-#include <lua.h>
+const Vector2* getVector2(const void* v);
 
-namespace RBX {
-namespace Lua {
-
-// STUB: WEBSERVICE 0x100b5790
-YieldingThreads::WaitingThread::WaitingThread(lua_State* L, double requestedDelay)
-	: thread(new ThreadRef(L)), requestedDelay(requestedDelay), elapsedTime(0.0)
+Vector2 readVector2(const void* v)
 {
+    return *getVector2(v);
 }
-
-// FUNCTION: WEBSERVICE 0x100b5e00
-YieldingThreads::YieldingThreads(ScriptContext* context) : context(context)
-{
-}
-
-// STUB: WEBSERVICE 0x100b5f80
-void YieldingThreads::queueWaiter(lua_State* L, double requestedDelay)
-{
-	waitingThreads.push_back(WaitingThread(L, requestedDelay));
-}
-
-// FUNCTION: WEBSERVICE 0x100b61d0
-void YieldingThreads::queueWaiter(lua_State* L)
-{
-	queueWaiter(L, 0.0);
-}
-
-} // namespace Lua
-} // namespace RBX

@@ -1,3 +1,4 @@
+// from server: 100% by Yeetserama
 // roc 2011-06 0048d9b0  unit: CScriptEditor  size: 49 bytes
 // Make this compile to the exact bytes below, then: roc check 2011-06 0048d9b0
 //
@@ -22,27 +23,26 @@
 // 0048d9da  e811c8ffff           call 0x48a1f0
 // 0048d9df  5e                   pop esi
 // 0048d9e0  c3                   ret 
-// copied from an identical function in another client (function ?init@CScriptEditor@ns_ROCX000000@@QAEXXZ)
+// copied from an identical function in another client (function ?fn_ROCX00001e_00464100@CScriptEditor@ns_ROCX00001e@@QAEXXZ)
 
-namespace ns_ROCX000000 {
+namespace ns_ROCX00001e {
+// from server: 100% by king_originala
+struct Control {
+    int query(int, bool);
+    void update(int, int, bool);
+};
+
 struct CScriptEditor {
-    void init();
+    int* control();
+    void fn_ROCX00001e_00464100();
 };
 
-struct Helper {
-    int f1(int a, int b);
-    int f2(int a, int b, int c);
-};
-
-extern "C" void* __cdecl sub_45D230();
-
-void CScriptEditor::init()
+void CScriptEditor::fn_ROCX00001e_00464100()
 {
-    Helper* p = (Helper*)sub_45D230();
-    if (p->f1(1, 1)) {
-        p->f2(1, 0, 1);
-    } else {
-        p->f2(1, 0x10, 1);
-    }
+    Control* p = reinterpret_cast<Control*>(control());
+    if (p->query(1, true))
+        p->update(1, 0, true);
+    else
+        p->update(1, 16, true);
 }
 }

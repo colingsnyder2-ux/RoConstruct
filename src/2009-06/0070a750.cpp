@@ -1,5 +1,16 @@
-// from server: 50% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: boost-1.36.0 libs/thread/src/win32/thread.cpp
+
+struct Dur {
+    double v;
+    Dur() {}
+};
+
+Dur subtract(const Dur& a, const Dur& b)
+{
+    Dur r;
+    r.v = a.v - b.v;
+    return r;
+}

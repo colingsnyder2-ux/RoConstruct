@@ -55,12 +55,12 @@
     },
     {
       "name": "CMarshalWindow / MarshaledListener / FilteredListener / CSelectionCaption",
-      "status": "inactive typed frame-pane recovery; five physical layouts and 12/13 selected bodies verified. Caption virtual/message ABI, weak pointee identity, marshal registry/dispatch and property-grid behavior remain open; no runtime credit",
+      "status": "inactive typed frame-pane recovery; five layouts and 12/13 marshalling lifecycle bodies verified; 14 pane/activation/caption bodies separately match. Caption message map/parent import and selected call/global bindings verified. Full marshal dispatch, global initialization, remaining virtual bindings and runtime open; no runtime credit",
       "source": "native-headers/CSelectionCaption.h and util/MarshalWindow.h"
     },
     {
       "name": "CPropGrid / CSelectionPropGrid / CDataModelPropGrid",
-      "status": "inactive; three physical layouts, eight separate-TU lifecycle/runtime bodies and three tree constructors verified; pointer payload identities, full virtual/message ABI and property/selection behavior open",
+      "status": "inactive; three layouts, eight separate-TU lifecycle/runtime bodies and tree constructors verified; genuine model-change callback 00442900 matches. Pointer payload identities, full virtual/message ABI and property behavior open",
       "source": "native-headers/CDataModelPropGrid.h"
     }
   ],
