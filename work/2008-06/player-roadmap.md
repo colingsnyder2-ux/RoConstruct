@@ -924,3 +924,22 @@ large-block comparison and shadow branch are unproven. No server exact claimed.
 Next: trace cylinder builder 004fd430 and transforms 004fd4a0/004fd530, compare
 the original, integrate and test remaining shapes. Then complete P4 native sound,
 real-place fidelity and the remaining roadmap. Preserve newer local player files.
+
+## P5 checkpoint: original character spawn (0f8a33aff3)
+
+The opt-in `--p5-spawn` loads four externally staged original character assets through
+the donor `Player::loadCharacter()` and attaches the existing controller. MD5 digest
+buffer/format corrections follow target 0055e320; the Lua object bridge now reads
+userdata as its stored shared pointer rather than treating it as a Value. Three MD5
+vectors pass. At revision 0f8a33aff3, 120-frame idle/input runs load seven models,
+move the torso from z=25.5 to z=9.49949 under input, and clean mesh counters to zero.
+P0, P3 lifetime, P4 asset/sound prerequisites and P5 controller/script regressions
+pass. Receipts are in p5-*-0f8a33aff3; original assets remain external.
+
+P5 is incomplete: the Head SpecialMesh has no geometry (status 3), and original
+Sound and Animate scripts report errors, including missing Humanoid.FreeFalling.
+Normal launch, camera integration, native joint/physics and scheduler parity remain
+unproven. Donor loadCharacter differs from target's bool signature; no parity claim.
+The target mesh dispatcher 004ef930 routes SpecialShape HEAD_MESH to createHead;
+trace its original call and integrate the recovered head producer next. Then address
+actual Humanoid signals and animation runtime, testing against the original client.
