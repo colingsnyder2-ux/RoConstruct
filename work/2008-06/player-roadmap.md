@@ -1,5 +1,11 @@
 # Current player checkpoint
 
+Reverb005b8880 recovered at source3bc3f92f3b. All24 real SDK preset structs
+match original target bytes under x86 emulation; invalid enums/null system skip.
+Original Room and PaddedCell share one preset. Actual FMOD NOSOUND accepts the
+Room preset; existing audio diagnostics pass. Evidence: p4-reverb-build-3bc3f92f3b/
+and p4-reverb-runtime-3bc3f92f3b/. Service method remains unexecuted in player.
+
 SoundService::openFmod005ba060 is recovered at source091c56b252 against real
 overlay/FMOD fields: original gates, driver/version checks, stereo fallback,
 3D settings, reverb and exception cleanup. Original zero-initialized global flag
