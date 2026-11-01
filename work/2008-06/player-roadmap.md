@@ -1056,3 +1056,22 @@ lifetime, P4 asset and P0 receipts are in p5-camera*-7143c96f2c.
 This is opt-in; normal launch, original camera/occlusion comparison, mouse
 input, original frame-loop/physics parity, P5's complete acceptance and later
 milestones remain open.
+
+## P5 checkpoint: standalone play path (c76495854b)
+
+The recovered-player harness now launches an authored playable place with no
+arguments; `--play [path]` also accepts XML or gzip places. `--demo` retains the
+red studded block. Original character assets remain externally staged. This is
+not the original client bootstrap; see p5-play-path.md.
+
+At c76495854b, two focused no-argument launches, keyboard movement and turn,
+collision, Lua touch response, reopening, XML/gzip loading and corrupt-gzip
+rejection pass. Camera, climb, controller, spawn, script, lifetime, P4 assets,
+P0 and demo checks also pass. Receipts are in p5-*-c76495854b.
+
+One supplied place loaded for 30 frames with 798 models, 790 status 0 and 8
+status 4; it produced 74 missing-member Lua errors. Its serialized Workspace
+contains 91 IntValue, 9 StringValue, 201 ObjectValue and 8 NumberValue objects.
+The cause is unproven: compare loaded class counts and hierarchy next. Only
+hashes and aggregate results are recorded. P5 and later milestones remain open,
+including original-client behavior and startup comparisons.

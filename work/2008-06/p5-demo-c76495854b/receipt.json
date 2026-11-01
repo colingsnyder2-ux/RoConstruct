@@ -1,0 +1,13 @@
+{
+  "revision": "c76495854bedacc1f84f755600afe3b677284bdc",
+  "exe_sha256": "6c01dd6ba3aeb9baef7b9e9838bfc8a702bc422f2d54ad8ee02ea79bc3b67556",
+  "exit": 0,
+  "models": 1,
+  "color": [
+    0.768628,
+    0.156863,
+    0.105882
+  ],
+  "frames": 2,
+  "scope": "Existing explicit red-block demo"
+}
