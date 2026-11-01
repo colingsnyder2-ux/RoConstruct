@@ -2073,3 +2073,6 @@ shared classes and P9/P10 remain open. Other agent edits preserved.
 
 
 Workspace owner trace: +0x2c is shared_ptr<RBX::RunService>. Original initialization0046b5c0 calls DataModel service getter004530f0, whose factory00405fa0 allocates0x2d8 and calls00556b00. Constructor stores vtable0082d4c4 at00556b94; its complete-object RTTI names RunService. Service-name literal0082d328 independently says RunService. Prior GuiItem attribution was an ambiguous shared_from template match, not pointee proof. Evidence: shared-layouts/workspace-owner-trace.json. Next complete CWorkspace shared fields with DataModel and RunService owners, then Doc cleanup. Active executable unchanged.
+
+
+CWorkspace shared storage candidate added: genuine ATL bases in original RTTI order, DataModel and RunService shared owners. MSVC21022 passes size0x34, owner offsets0x24/0x2c and safety-base size8. Probe NativeWorkspaceLayout.cpp; receipt shared-layouts/workspace-compile.json pins source hashes. Candidate remains abstract/inactive: COM overrides, callbacks, constructor/destructor and safety bodies pending. No active ABI swap or runtime-count change.

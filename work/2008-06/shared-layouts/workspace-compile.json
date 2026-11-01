@@ -1,0 +1,18 @@
+{
+  "revision": "215e73ed9bf2498b4cab1b5b64bdd7f21215b878",
+  "compiler": 21022,
+  "compile_exit": 0,
+  "sizes": {
+    "CWorkspace": 52,
+    "SafetyBase": 8
+  },
+  "offsets": {
+    "dataModel": 36,
+    "runService": 44
+  },
+  "sources": {
+    "rebuild/2008-06/native-headers/CWorkspace.h": "083f40b526e635906d5a88355fe01e8d64749fa42a8854f3672dce27c71371a1",
+    "rebuild/2008-06/tests/NativeWorkspaceLayout.cpp": "4caa498f6d9fb7f1861ed3a7306c22bdb894b04b0038c2406289ef9b406954b9"
+  },
+  "scope": "Inactive abstract declaration; storage gates only. COM methods, callbacks and constructor/destructor still need recovery. No active class swap."
+}
