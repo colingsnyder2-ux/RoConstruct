@@ -1,5 +1,83 @@
 # Native integration with an agent (Codex, Claude)
 
+## Native source recovery with ten real Codex agents (Worker 19)
+
+For tool-using batch recovery, open `roc gui`, choose **Workers → Integrator →
+10 Codex agents · shared native files**, select your signed-in Codex model and
+budget, then start. The existing **10-worker recovery** preset remains the smaller
+method-generation mode; it does not merge into shared native folders.
+
+Equivalent CLI (worker count defaults to ten):
+
+```text
+roc integrator --generation agent --model codex:gpt-6-luna --workers 10 --compile-workers 2 --agent-minutes 4 --agent-checks 6 --max-cloud-requests 10 --allow-cloud
+```
+
+Real Codex subprocesses read original assembly/RTTI and genuine headers, edit private
+C++, run `python check.py`, and iterate from compiler errors and target diffs. Each
+agent has one method assignment and a private snapshot including uncommitted native
+work. Installed clients, compilers and original source inputs are reused. Recovery
+setup defers full dependency builds until submission needs them. Compiler concurrency
+is separate from agent concurrency. Only signed-in `codex:` models support this mode;
+API/local models remain available in method-generation mode.
+
+Proven method bodies merge into the launching checkout's
+`rebuild/2008-06/native-classes`, `native-headers`, or `native-world`, according to the
+assignment. Another agent's changed target body causes a conflict, never a stale
+whole-file replacement. Unrelated changes are preserved. Current shared source and
+candidate are recompiled against freshly copied current headers; existing matches
+must survive. Source/header changes during recheck abort that write. Backups, hashes,
+source candidates and receipts are retained. No commit, player swap or credit is
+implied by merge-back. A different editor can still save its own stale copy later;
+recovery controllers cannot govern unrelated editors' later writes.
+
+Automatic discovery uses unambiguous existing out-of-line C++ methods, original
+address annotations and compiler-probe nominations. Missing evidence is a blocker,
+not permission to guess a layout. Header bodies and specific assignments can use
+`--agent-tasks PATH` (GUI: **Native task manifest**), a JSON list:
+
+```json
+[
+  {
+    "file": "rebuild/2008-06/native-classes/CRobloxDoc.cpp",
+    "method": "CRobloxDoc::SetModifiedFlag",
+    "addr": "0044fad0"
+  }
+]
+```
+
+Header tasks require `translation_unit`, naming an existing consuming native `.cpp`
+or `rebuild/2008-06/tests/Native*.cpp` probe. They support unambiguous qualified
+method definitions; in-class inline definitions, fields, signatures and layout changes
+remain owner work. Existing C++ sources under `native-world` use the same mechanism;
+a manifest alone is not a recoverable C++ body. An explicit `add_method: true` task
+may append one missing qualified definition to an existing source; its genuine header
+declaration must already exist and compile. It cannot add fields or declarations.
+
+Method claims are atomic across local sessions in `work/native-recovery/claims.sqlite`.
+Snapshots/proofs use a persistent short path printed at startup (Windows:
+`%LOCALAPPDATA%/RoConstruct/nr/<session-hash>`), avoiding historical MSVC path limits.
+Restarting the same GUI session retains private work; expired claims can be recovered.
+Pause holds new tasks. Stop kills active agent process trees; partial source stays
+saved. No stronger-model escalation occurs automatically.
+
+**Submissions stay independently gated.** A native method with one supported
+accepted-module mapping is recompiled in that canonical context, then joins one combined submission batch per model. That batch follows the
+existing claims, linked preflight and server verifier. Missing mapping or linkage
+leaves an explicit pending candidate. Uncheck **Submit linkable recoveries** or use
+`--no-agent-submit` for local-only recovery; drafts persist for later submission.
+The GUI distinguishes local recovery, merged changes, conflicts, submitted jobs,
+accepted jobs and pending work. Only server receipts establish credit. P5/P6 are
+still required for an actual active class swap; the shared-header workflow remains
+provisional until that first swap lands.
+
+A request cap in this mode counts launched Codex agents, not their internal model
+turns. Subscription token usage is reported after an agent exits; in-flight agents
+can exceed a token cap. Time and check budgets bound each task. CLI subscription
+runs have no reliable USD cap. Start with one worker/one agent for a cheap trial.
+Contributor source/evidence are untrusted data, never agent instructions. Inbox
+uploads are never automatically queued into chats.
+
 ## Native recovery loop (default)
 
 Trace original code, reconstruct native pieces, compile focused probes, record
@@ -154,7 +232,7 @@ reuse the recorded inventory; rescan only missing/moved paths or changed require
 
 ## Editable integration workspace (when ready)
 
-Use a current Worker with `roc native-try edit --help` and native workflow version 18.
+Use a current Worker with `roc native-try edit --help` and native workflow version 19.
 This workspace is for edits against the accepted tree after the native recovery
 loop produces a coherent supported change; it is not mandatory for inactive probes.
 Edit real C++/header files in the editable workspace printed by the tool. No hand-written
@@ -560,7 +638,7 @@ report both versions; do not repeatedly download the same incompatible archive.
 
 Do not ask the user to locate or attach a Worker ZIP. If `roc/native_try.py`, `research/native-units.json`,
 or `research/native-source-lock.json` is missing, `roc native-try --help` is unavailable, or a package marker
-reports `native_workflow_version` below 18, download the current Worker package yourself:
+reports `native_workflow_version` below 19, download the current Worker package yourself:
 
 - Manifest: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.json
 - Package: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.zip
@@ -574,7 +652,7 @@ into a new folder without overwriting the user's existing checkout or edits:
 $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 $nativeManifest = Invoke-RestMethod ('https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.json?t=' + [guid]::NewGuid().ToString('N'))
-if ($nativeManifest.workflow_version -lt 18 -or
+if ($nativeManifest.workflow_version -lt 19 -or
     $nativeManifest.url -ne 'https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.zip' -or
     $nativeManifest.sha256 -notmatch '^[0-9a-fA-F]{64}$') { throw 'Invalid Worker manifest' }
 $nativeWorkspace = (Get-Location).Path
