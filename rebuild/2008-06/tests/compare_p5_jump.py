@@ -1,12 +1,12 @@
-"""Compare scripted character walking or moving-platform behavior across clients."""
+"""Measure original and rebuilt jumps; vertical parity is not assumed."""
 import csv,ctypes,hashlib,json,pathlib,statistics,struct,subprocess,sys,time
 from ctypes import wintypes
-root=pathlib.Path(__file__).resolve().parents[3];original=root/'work/2008-06/original-p4-reference/Roblox.exe';player=root/'rebuild/2008-06/out/tests/P2RecoveredPlayer/P2RecoveredPlayer.exe';mode=sys.argv[2] if len(sys.argv)>2 else 'grounded';assert mode in ('grounded','early');fixture=root/'rebuild/2008-06/tests/fixtures'/('p5-original-jump-early.rbxl' if mode=='early' else 'p5-original-jump.rbxl');out=root/'work/2008-06'/sys.argv[1];out.mkdir(exist_ok=False);sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();rebuilt={}
+root=pathlib.Path(__file__).resolve().parents[3];original=root/'work/2008-06/original-p4-reference/Roblox.exe';player=root/'rebuild/2008-06/out/tests/P2RecoveredPlayer/P2RecoveredPlayer.exe';mode=sys.argv[2] if len(sys.argv)>2 else 'grounded';assert mode in ('grounded','early','airborne');fixture=root/'rebuild/2008-06/tests/fixtures'/({'grounded':'p5-original-jump.rbxl','early':'p5-original-jump-early.rbxl','airborne':'p5-original-jump-airborne.rbxl'}[mode]);out=root/'work/2008-06'/sys.argv[1];out.mkdir(exist_ok=False);sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();rebuilt={}
 for frames in (15,30,45,60,75,90,105,120,150,180,240):
  folder=out/str(frames);folder.mkdir();run=subprocess.run([str(player),'--p5-join','--p5-play','--frames',str(frames),'--inspect-place',str(fixture)],cwd=folder,capture_output=True,text=True,timeout=90)
  assert run.returncode==0 and 'mesh cleanup: levels=0 refs=0 backends=0 spheres=0' in run.stdout and '[output]    stack end' not in run.stdout
  with (folder/'place_snapshot.csv').open() as f:rows=list(csv.DictReader(f))
- assert len(rows)==(8 if mode=='floor' else 7) and all(v['status']=='0' for v in rows)
+ assert len(rows)==7 and all(v['status']=='0' for v in rows)
  torso=[float(rows[1][k]) for k in ('x','y','z')];head=[float(rows[2][k]) for k in ('x','y','z')]
  assert max(abs(head[i]-torso[i]-(1.5 if i==1 else 0)) for i in range(3))<.05
  rebuilt[frames]={'torso':torso,'head':head,'floor':[float(rows[0][k]) for k in ('x','y','z')],'snapshot_sha256':sha(folder/'place_snapshot.csv')}
@@ -27,7 +27,7 @@ try:
  assert windows;time.sleep(8);h=windows[0];handle=k.OpenProcess(0x410,False,x.pid);assert handle
  def read(addr,n):
   buf=ctypes.create_string_buffer(n);got=ctypes.c_size_t();ok=k.ReadProcessMemory(handle,ctypes.c_void_p(addr),buf,n,ctypes.byref(got));return buf.raw[:got.value] if ok else b''
- needles=[struct.pack('<3f',137.25,y,71.75) for y in ((5,6.5,-1) if mode=='floor' else ((7,8.5) if mode=='tall' else (5,6.5)))];hits=[[] for _ in needles];addr=0;mbi=MBI()
+ needles=[struct.pack('<3f',137.25,y,71.75) for y in ((30,31.5) if mode=='airborne' else (5,6.5))];hits=[[] for _ in needles];addr=0;mbi=MBI()
  while addr<0x80000000 and k.VirtualQueryEx(handle,ctypes.c_void_p(addr),ctypes.byref(mbi),ctypes.sizeof(mbi)):
   start=mbi.BaseAddress or 0;size=mbi.RegionSize
   if mbi.State==0x1000 and not mbi.Protect&0x101 and (mbi.Protect&0xff) in (2,4,8,0x20,0x40,0x80) and size<=64*1024*1024:
@@ -67,11 +67,6 @@ try:
   actual,positions=min(candidates,key=lambda z:abs(z[0]-target));delta=[positions[0][i]-rebuilt[frames]['torso'][i] for i in range(3)]
   assert abs(delta[0]) < .05 and abs(delta[2]) < .05, (frames,delta)
   check={'frame':frames,'original_time':actual,'original_torso':positions[0],'original_head':positions[1],'delta':delta}
-  if mode=='unused_floor':
-   floor_delta=[positions[2][i]-rebuilt[frames]['floor'][i] for i in range(3)]
-   offset_delta=(positions[2][0]-positions[0][0])-(rebuilt[frames]['floor'][0]-rebuilt[frames]['torso'][0])
-   assert abs(floor_delta[0])<.25 and abs(floor_delta[1])<.05 and abs(offset_delta)<.6,(frames,floor_delta,offset_delta)
-   check.update(original_floor=positions[2],floor_delta=floor_delta,rider_offset_delta=offset_delta)
   comparisons.append(check)
 finally:
  if handle:k.CloseHandle(handle)
