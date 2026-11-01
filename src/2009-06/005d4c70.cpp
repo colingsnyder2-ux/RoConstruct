@@ -1,71 +1,30 @@
-// from server: 54% by TrollStein
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client App/v8datamodel/Selection.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/Selection.h"
-
-#include "util/object.h"
-#include "util/standardout.h"
-
-#include <algorithm>
-
 namespace RBX {
-
-const char sSelection[] = "Selection";
-
-// FUNCTION: WEBSERVICE 0x1005d440
-void Selection::raiseRemoved(boost::shared_ptr<Instance> item)
+class Instance;
+class __multiple_inheritance Selection;
+struct Connection { void* px; void* pn; Connection& operator=(const Connection&); ~Connection(); };
+struct Base1 { virtual void a(); };
+struct Base2 { virtual void b(); };
+struct mf1 { void (Selection::*f_)(Instance*); explicit mf1(void (Selection::*f)(Instance*)) : f_(f) {} };
+template<class T> struct value { T t_; value(const T& t) : t_(t) {} };
+struct list2 { value<Selection*> a1_; value<Instance*> a2_; list2(value<Selection*> a1, value<Instance*> a2) : a1_(a1), a2_(a2) {} };
+struct BindT { mf1 f_; list2 l_; BindT(mf1 f, const list2& l) : f_(f), l_(l) {} };
+inline BindT bind(void (Selection::*f)(Instance*), Selection* s, Instance* i) { return BindT(mf1(f), list2(s, i)); }
+struct Signal { Connection connect(BindT slot); };
+class Instance { public: char pad[0x84]; Signal ancestryChangedSignal; };
+template<class K, class V> struct Map { V& operator[](const K& k); };
+class Selection : public Base1, public Base2 {
+public:
+    char pad[0xa4];
+    Map<Instance*, Connection> connections;
+    void onAncestryChanged(Instance* instance);
+    void connectInstance(Instance* instance);
+};
+void Selection::connectInstance(Instance* instance)
 {
-	SelectionChanged event(boost::shared_ptr<Instance>(), item);
-
-	for (std::vector<ISelectionBase*>::iterator iter = filteredSelections.begin(); iter != filteredSelections.end();
-		 ++iter) {
-		(*iter)->VTable0x00(event);
-	}
-
-	Notifier<Selection, SelectionChanged>::raise(event);
+    connections[instance] = instance->ancestryChangedSignal.connect(bind(&Selection::onAncestryChanged, this, instance));
 }
-
-// FUNCTION: WEBSERVICE 0x1005d5e0
-Selection::~Selection()
-{
 }
-
-// STUB: WEBSERVICE 0x1005e1f0
-void Selection::removeFromSelection(const Instance* instance)
-{
-	boost::shared_ptr<std::vector<boost::shared_ptr<Instance> > > items = selection.write();
-
-	std::vector<boost::shared_ptr<Instance> >::iterator iter =
-		std::find(items->begin(), items->end(), shared_from(instance));
-
-	if (iter != items->end()) {
-		boost::shared_ptr<Instance> removedItem = *iter;
-
-		items->erase(iter);
-
-		instance->Notifier<Instance, AncestorChanged>::removeListener(this);
-
-		raiseRemoved(removedItem);
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x1005e870
-void Selection::onEvent(const Instance* source, AncestorChanged event)
-{
-	const Instance* sourceRoot = source->getParent() != NULL ? source->getParent()->getRootAncestor() : source;
-
-	if (sourceRoot != getRootAncestor()) {
-		removeFromSelection(source);
-	}
-}
-
-} // namespace RBX
-
-template class RBX::FactoryProduct<RBX::Selection, RBX::Instance, RBX::sSelection>;
-template class RBX::Reflection::
-	Described<RBX::Selection, RBX::sSelection, RBX::FactoryProduct<RBX::Selection, RBX::Instance, RBX::sSelection> >;
-template class RBX::DescribedCreatable<RBX::Selection, RBX::Instance, RBX::sSelection>;

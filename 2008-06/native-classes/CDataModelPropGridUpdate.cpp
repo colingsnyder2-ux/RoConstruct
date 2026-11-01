@@ -3,7 +3,7 @@
 #include "v8datamodel/Selection.h"
 
 void CDataModelPropGrid::update(boost::shared_ptr<RBX::DataModel> model,
-                              boost::shared_ptr<RBX::Instance>)
+                              boost::shared_ptr<RBX::DataModel>)
 {
     if (dataModel) {
         RBX::DataModel::Lock lock(dataModel);

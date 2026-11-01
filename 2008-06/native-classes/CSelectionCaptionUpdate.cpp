@@ -11,7 +11,7 @@ CSelectionCaption::~CSelectionCaption()
 }
 
 void CSelectionCaption::update(boost::shared_ptr<RBX::DataModel> model,
-                               boost::shared_ptr<RBX::Instance>)
+                               boost::shared_ptr<RBX::DataModel>)
 {
     {
         RBX::DataModel::Lock lock(dataModel);

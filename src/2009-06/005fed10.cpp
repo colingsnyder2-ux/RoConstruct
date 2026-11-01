@@ -1,4 +1,4 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
@@ -6,7 +6,8 @@
 namespace boost {
 namespace _bi {
 template<class T> struct value { T t_; };
-template<class A1, class A2> struct list2 { A1 a1_; A2 a2_; list2(const list2&); ~list2(); };
+struct S2 { std::string a, b; S2(const S2&); ~S2(); };
+template<class A1> struct list1 { A1 a1_; };
 template<class R, class F, class L> struct bind_t { F f_; L l_; };
 }
 namespace detail { namespace function {
@@ -29,6 +30,6 @@ public:
         else vtable = 0;
     }
 };
-typedef _bi::bind_t<std::string, std::string (*)(std::string, std::string), _bi::list2<_bi::value<std::string>, _bi::value<std::string> > > B;
+typedef _bi::bind_t<std::string, std::string (*)(std::string, std::string), _bi::list1<_bi::S2> > B;
 template void function0<void>::assign_to<B>(B);
 }

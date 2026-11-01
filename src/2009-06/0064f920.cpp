@@ -1,125 +1,64 @@
-// from server: 54% by colin
+// from server: 82% by EspClaude
 // roc-lang: cpp
-// roc-cl: 50727
+// roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/Explosion.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/Explosion.h"
-#include "v8datamodel/Workspace.h"
-#include "v8datamodel/PartInstance.h"
-#include "v8world/ContactManager.h"
-#include "v8world/World.h"
-
-namespace RBX
+namespace boost {
+namespace detail { namespace function {
+struct X;
+union function_buffer {
+    void* obj_ptr;
+    struct type_t { const void* type; bool c; bool v; } type;
+    void (*func_ptr)();
+    struct bound_memfunc_ptr_t { void (X::*memfunc_ptr)(int); void* obj_ptr; } bound_memfunc_ptr;
+    double d;
+    char data[0x18];
+};
+enum functor_manager_operation_type { clone_functor_tag, move_functor_tag, destroy_functor_tag, check_functor_type_tag, get_functor_type_tag };
+struct vtable_base {
+    void (*manager)(const function_buffer& in_buffer, function_buffer& out_buffer, functor_manager_operation_type op);
+    void clear(function_buffer& functor)
+    {
+        if (manager)
+            manager(functor, functor, destroy_functor_tag);
+    }
+};
+}}
+class function_base {
+public:
+    function_base() : vtable(0) {}
+    bool empty() const { return !vtable; }
+    detail::function::vtable_base* vtable;
+    mutable detail::function::function_buffer functor;
+};
+template<class R> class function0 : public function_base {
+public:
+    function0(const function0& f) : function_base() { assign_to_own(f); }
+    ~function0() { if (this->vtable) this->vtable->clear(this->functor); }
+    void assign_to_own(const function0& f)
+    {
+        if (!f.empty()) {
+            this->vtable = f.vtable;
+            f.vtable->manager(f.functor, this->functor, detail::function::clone_functor_tag);
+        }
+    }
+};
+namespace signals {
+class connection { public: ~connection(); void* con[3]; };
+}
+}
+namespace RBX {
+class Signal {
+public:
+    boost::signals::connection connect(int group, boost::function0<void> f);
+};
+template<class T> class Lazy { public: T* p; T* operator->(); };
+class Explosion {
+public:
+    Lazy<Signal> signal;
+    boost::signals::connection connect(int group, boost::function0<void> f);
+};
+boost::signals::connection Explosion::connect(int group, boost::function0<void> f)
 {
-	static Reflection::PropDescriptor<Explosion, float> propBlastRadius("BlastRadius", "Data", &Explosion::getBlastRadius, &Explosion::setBlastRadius, Reflection::PropertyDescriptor::STANDARD);
-
-	Reflection::SignalDesc<Explosion, void(boost::shared_ptr<Instance>, float)> signal_Hit("Hit", "part", "distance");
-
-	Reflection::BoundProp<G3D::Vector3, 1> Explosion::propPosition("Position", "Data", &Explosion::position, Reflection::PropertyDescriptor::STANDARD);
-	Reflection::BoundProp<float, 1> Explosion::propBlastPressure("BlastPressure", "Data", &Explosion::blastPressure, Reflection::PropertyDescriptor::STANDARD);
-
-	Explosion::Explosion()
-		: blastRadius(4.0f),
-		  blastPressure(500000.0f),
-		  age(0.0f)
-	{
-		setName("Explosion");
-	}
-
-	bool Explosion::askSetParent(const Instance* instance) const
-	{
-		return true;
-	}
-
-	void Explosion::setBlastRadius(float _blastRadius)
-	{
-		float newRadius = G3D::clamp(_blastRadius, 0.0f, 100.0f);
-		if (blastRadius != newRadius)
-		{
-			blastRadius = newRadius;
-			raisePropertyChanged(propBlastRadius);
-		}
-	}
-
-	void Explosion::signalBlast(const G3D::Array<Primitive*>& primitives)
-	{
-		if (!signal_Hit.empty(this))
-		{
-			for (int i = 0; i < primitives.size(); i++)
-			{
-				Primitive* current = primitives[i];
-
-				if (blastRadius * 2.0f > current->getRadius())
-				{
-					if (Instance* part = PartInstance::fromPrimitive(current))
-					{
-						float distance = (current->getCoordinateFrame().translation - position).magnitude();
-						signal_Hit.fire(this, shared_from(part), distance);
-					}
-				}
-			}
-		}
-	}
-
-	//99% match
-	void Explosion::doBlast(const G3D::Array<Primitive*>& primitives)
-	{
-		if (blastPressure > 0.0f)
-		{
-			World* world = Workspace::getMyWorldFast(this);
-			RBXASSERT(world);
-
-			for (int i = 0; i < primitives.size(); i++)
-			{
-				Primitive* current = primitives[i];
-
-				if (blastRadius * 2.0f > current->getRadius())
-				{
-					PartInstance::fromPrimitive(current)->destroyJoints();
-				}
-			}
-
-			world->update();
-
-			for (int i = 0; i < primitives.size(); i++)
-			{
-				Primitive* current = primitives[i];
-
-				if (blastRadius * 2.0f > current->getRadius())
-				{
-					G3D::Vector3 delta = current->getCoordinateFrame().translation - position;
-					G3D::Vector3 normal = delta == G3D::Vector3::zero() ? G3D::Vector3::unitY() : delta.direction();
-					RBXASSERT(normal.magnitude() <= 1.001);
-
-					float radius = current->getRadius();
-					float squaredRadius = radius * radius;
-
-					G3D::Vector3 impulse = normal * blastPressure * squaredRadius * (1.0f/4560.0f);
-					G3D::Vector3 force = impulse * Constants::kernelStepsPerSec();
-
-					world->ticklePrimitive(current);
-
-					Body* body = current->getBody();
-
-					const G3D::Vector3& pos = body->getCoordinateFrame().translation;
-					body->accumulateForce(force, pos);
-
-					current->getBody()->accumulateTorque(force * 0.5f * radius);
-
-					world->addedBodyForce();
-				}
-			}
-		}
-	}
-
-	void Explosion::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-	{
-		Notifier<RunService, Stepped>::disconnect(ServiceProvider::find<RunService>(oldProvider), this);
-
-		Instance::onServiceProvider(oldProvider, newProvider);
-
-		Notifier<RunService, Stepped>::connect(ServiceProvider::find<RunService>(newProvider), this);
-	}
+    return signal->connect(group, f);
+}
 }
