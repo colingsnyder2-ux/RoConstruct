@@ -1399,3 +1399,24 @@ comparisons also pass. Receipts: p5-turn-68be-*. Original sampling is wall time
 within 35 ms of fixed-step targets; joint construction differs and the original
 process required forced termination. This is a donor-ABI adaptation; reverse,
 turning-in-place, ramps, animation and full state/scheduler parity remain open.
+
+## P5 checkpoint: original jump discrepancy (6052d0d73c)
+
+Two authored fixtures now measure original and rebuilt torso/head positions
+at eleven times over four seconds, using original read-only process-memory
+copies and fixed-step rebuilt snapshots. These are observations, not parity
+passes: original wall-time samples may differ by up to 35 ms; joint construction
+also differs and original closure required forced termination.
+
+At 6052d0d73c, a jump requested after one second gave original/rebuilt torso
+Y of 10.38/9.07 at 1.25 s and 7.18/4.96 at 1.5 s. A jump requested after
+0.2 s showed original/rebuilt Y 3.01/8.60 at 0.75 s: the rebuilt actor jumped
+after landing while original did not in this run. Receipts:
+p5-jump-6052-grounded/ and p5-jump-6052-early/.
+
+Original 00667a40 uses a force based on a 50 velocity target and gain 5000,
+with opposing floor force. A first donor-ABI adaptation produced an extra
+landing rebound and worse sampled agreement, so it was reverted. Next trace
+native jump/freefall transitions, contact solver and when the jump request is
+cleared; implement and retest rather than claiming parity from the force alone.
+P5 and all later unfinished milestones remain open.
