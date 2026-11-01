@@ -1420,3 +1420,21 @@ landing rebound and worse sampled agreement, so it was reverted. Next trace
 native jump/freefall transitions, contact solver and when the jump request is
 cleared; implement and retest rather than claiming parity from the force alone.
 P5 and all later unfinished milestones remain open.
+
+## P5 checkpoint: transient controls on state construction (a05a67263b)
+
+Original HumanoidState constructor 00643e00 calls the setters at 005dc270
+(Jump) and 005dc230 (Strafe) with false. The donor state constructor now
+adapts those resets. An authored airborne fixture records Jump as a marker:
+original and rebuilt both retain it at 0.25/0.5 s and clear it by 0.75 s
+through 2 s. This observes Jump; Strafe reset is source-derived but not yet
+independently compared. The observer uses original wall-time samples within
+35 ms of fixed-step targets and forced original termination.
+
+This does not resolve jump physics or near-floor buffering: the early request
+still yields a rebuilt jump absent from the sampled original. A high fall also
+rebounds much higher in the rebuild: at 1 s original/rebuilt torso Y was about
+2.96/17.31. Investigate original contact and state-transition behavior next.
+P0, timing, joint contact, floor, force, controller, climbing, spawn, combined
+play and original right-turn checks pass. Receipts: p5-state-a05a-*; P5 remains
+open.
