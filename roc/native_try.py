@@ -11,12 +11,14 @@ vendor sources stay unchanged. Only independently accepted submissions grant cre
 """
 import hashlib
 import json
+import os
 import re
 from pathlib import Path
 
 from roc import integration, native_edit, native_sweep, worker
 
-OUT = native_sweep.ROOT / "work/native-try"
+# ROC_NATIVE_TRY_OUT gives each parallel worker its own edits/proposals (one native file per worker).
+OUT = Path(os.environ["ROC_NATIVE_TRY_OUT"]).resolve() if os.environ.get("ROC_NATIVE_TRY_OUT") else native_sweep.ROOT / "work/native-try"
 PROPOSALS = OUT / "proposals.json"
 
 
