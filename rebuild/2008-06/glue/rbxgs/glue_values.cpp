@@ -15,6 +15,10 @@ template class Value<int, &sIntValue>;
 template class Value<bool, &sBoolValue>;
 template class Value<float, &sFloatValue>;
 template class Value<std::string, &sStringValue>;
+template class Value<G3D::Vector3, &sVector3Value>;
+template class Value<G3D::Color3, &sColor3Value>;
+template class Value<BrickColor, &sBrickColorValue>;
+template class Value<G3D::CoordinateFrame, &sCFrameValue>;
 
 Reflection::RefPropDescriptor<ObjectValue, Instance> ObjectValue::desc_Value("Value", "Data", &ObjectValue::getValue, &ObjectValue::setValue, Reflection::PropertyDescriptor::STANDARD);
 Reflection::SignalDesc<ObjectValue, void(boost::shared_ptr<Instance>)> ObjectValue::desc_ValueChanged("Changed", "value");
@@ -30,6 +34,14 @@ void registerRecoveredValues()
     (void)FloatValue::desc_Value;
     (void)BoolValue::desc_Value;
     (void)ObjectValue::desc_Value;
+    (void)Vector3Value::desc_Value;
+    (void)Color3Value::desc_Value;
+    (void)BrickColorValue::desc_Value;
+    (void)CFrameValue::desc_Value;
+    Creatable<Instance>::create<Vector3Value>();
+    Creatable<Instance>::create<Color3Value>();
+    Creatable<Instance>::create<BrickColorValue>();
+    Creatable<Instance>::create<CFrameValue>();
     Creatable<Instance>::create<ObjectValue>();
     Creatable<Instance>::create<FloatValue>();
     Creatable<Instance>::create<BoolValue>();

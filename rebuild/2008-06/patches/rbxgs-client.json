@@ -1,4 +1,18 @@
 {
+ "App/script/LuaSignalBridge.cpp": [
+   [
+     "#include \"script/LuaInstanceBridge.h\"",
+     "#include \"script/LuaInstanceBridge.h\"\n#include \"script/LuaAtomicClasses.h\""
+   ],
+   [
+     "        else if (argType == typeid(const Reflection::PropertyDescriptor*))",
+     "        else if (argType == typeid(G3D::Vector3))\n            Vector3Bridge::pushVector3(L, boost::any_cast<G3D::Vector3>(*iter));\n        else if (argType == typeid(G3D::Color3))\n            Color3Bridge::pushColor3(L, boost::any_cast<G3D::Color3>(*iter));\n        else if (argType == typeid(BrickColor))\n            BrickColorBridge::pushNewObject(L, boost::any_cast<BrickColor>(*iter));\n        else if (argType == typeid(G3D::CoordinateFrame))\n            CoordinateFrameBridge::pushCoordinateFrame(L, boost::any_cast<G3D::CoordinateFrame>(*iter));\n        else if (argType == typeid(const Reflection::PropertyDescriptor*))"
+   ],
+   [
+     "            argType.name();",
+     "            lua_pushnil(L);"
+   ]
+ ],
  "App/humanoid/Freefall.cpp": [
   ["#include \"humanoid/Freefall.h\"", "#include \"humanoid/Freefall.h\"\nnamespace RBX { bool DetectClimb(Humanoid*); Humanoid::State* CreateRecoveredClimbing(Humanoid*); }\n"],
   ["\t\tif (newState == this)\n\t\t{\n\t\t\tif (floorPart)", "\t\tif (newState == this)\n\t\t{\n\t\t\tif (DetectClimb(humanoid)) return CreateRecoveredClimbing(humanoid);\n\t\t\tif (floorPart)"],
