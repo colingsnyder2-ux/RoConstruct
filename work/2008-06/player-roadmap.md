@@ -943,3 +943,7 @@ unproven. Donor loadCharacter differs from target's bool signature; no parity cl
 The target mesh dispatcher 004ef930 routes SpecialShape HEAD_MESH to createHead;
 trace its original call and integrate the recovered head producer next. Then address
 actual Humanoid signals and animation runtime, testing against the original client.
+
+Head dispatch update: entry 0 of the original 004f02e0 jump table calls
+004ef430 (matched HeadMesh factory), which constructs via 00500180 and
+004fdaf0. See p5-head-trace.md. Trace virtual face builders next.
