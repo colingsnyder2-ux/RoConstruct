@@ -415,7 +415,7 @@ extern "C" void SceneApplyLighting(Ogre::SceneManager* manager,const Ogre::AxisA
     G3D::LightingRef lighting=PlayerLighting::preset(source->getSkyParameters(),source->getAmbientTop(),source->getAmbientBottom());
     // Native extra fields are absent from the donor model. Their005e1a40 defaults
     // are proven; full native Lighting/View/RenderScene integration remains open.
-    PlayerLighting::apply(*manager,lighting,PlayerLighting::Settings(),bounds,false);
+    PlayerLighting::apply(*manager,lighting,PlayerLighting::Settings(),bounds,manager->getShadowTechnique()!=Ogre::SHADOWTYPE_NONE);
 }
 
 

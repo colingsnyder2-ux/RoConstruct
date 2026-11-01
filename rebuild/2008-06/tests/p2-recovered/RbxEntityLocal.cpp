@@ -63,6 +63,7 @@ public:
     unsigned int limit;
     std::vector<SubEntity*> addedEntities;
     RbxEntity();
+    void setSceneName(const String& name) { mName = name; }
     ~RbxEntity();
     SubEntity* createSubEntity(SubMesh* mesh, unsigned int lod);
     void setMesh(const MeshPtr& mesh);

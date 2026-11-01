@@ -305,9 +305,22 @@ static Ogre::MeshPtr createRecoveredMesh(const char* name, PlayerBlockMesh::Mesh
     PlayerSphereCache::set(reinterpret_cast<PlayerSphereCache::Key>(level.backend),
         Ogre::Sphere(bounds.getCenter(),bounds.getHalfSize().length())); // 007aba1d ->00682350.
     Ogre::MeshPtr mesh=Ogre::MeshManager::getSingleton().createManual(name,Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
-    // Native00684fd0 binds detached submesh data directly. No fabricated parent
-    // link or adoption into this bounds-only Mesh's deletion list is required.
+    // Visible geometry remains owned by Level. Ogre's stencil path needs an
+    // owned metadata submesh and prepared shadow-volume vertex data.
     mesh->_setBounds(bounds);mesh->_setBoundingSphereRadius(level.backend->radius);mesh->load();
+    if(g_sceneManager && g_sceneManager->getShadowTechnique()!=Ogre::SHADOWTYPE_NONE &&
+       level.backend->vertexData->vertexCount<=32767){
+        Ogre::SubMesh* shadowMesh=mesh->createSubMesh();
+        shadowMesh->useSharedVertices=false;
+        shadowMesh->vertexData=level.backend->vertexData->clone(false);
+        delete shadowMesh->indexData;
+        shadowMesh->indexData=level.backend->indexData->clone(false);
+        mesh->freeEdgeList();
+        shadowMesh->vertexData->prepareForShadowVolume();
+        mesh->buildEdgeList();
+        // Non-owning: the detached submesh needs a parent for Ogre's animation metadata.
+        level.backend->parent=mesh.getPointer();
+    }
     std::printf("native mesh: producer=%s upload=00549a50 block_calls=%u indices=%u\n",
         dynamic_cast<PlayerBlockMesh::PBBMesh*>(geometry)?"004f4cb0":dynamic_cast<PlayerBlockMesh::HeadMesh*>(geometry)?"00500180":geometry->geometryKind==3?"004fd6b0":geometry->geometryKind==2?"004fcfb0":geometry->geometryKind==1?"004e2c80":"00500780",PlayerBlockMesh::producerCalls(),static_cast<unsigned>(level.backend->indexData->indexCount));
     return mesh;
@@ -318,6 +331,8 @@ static void releaseGeometry(DrawEntry& entry)
     if(entry.mesh.isNull())return;
     std::string name=entry.mesh->getName();
     bool lastUser=entry.mesh.useCount()==Ogre::ResourceGroupManager::RESOURCE_SYSTEM_NUM_REFERENCE_COUNTS+1;
+    if(lastUser && !entry.geometry.isNull() && entry.geometry->level0().backend->parent==entry.mesh.getPointer())
+        entry.geometry->level0().backend->parent=NULL;
     entry.geometry=PlayerBlockMesh::MeshRef();
     entry.material=PlayerNativeMaterial::MaterialRef();
     entry.mesh.setNull();
@@ -352,6 +367,7 @@ static void drawModels()
         {
             if (entry.entity)
             {
+                g_sceneManager->extractMovableObject(entry.entity);
                 entry.node->detachObject(entry.entity);
                 delete entry.entity;
                 entry.entity = NULL;
@@ -364,10 +380,12 @@ static void drawModels()
             entry.geometry=model.geometry;
             entry.mesh = createRecoveredMesh(name.c_str(), model.geometry);
             entry.entity = new Ogre::RbxEntity();
+            entry.entity->setSceneName(entry.node->getName()+"_entity");
             entry.entity->setMesh(entry.mesh);
             Ogre::SubMesh* subMesh = entry.geometry->level0().backend;
             entry.entity->createSubEntity(subMesh, 0);
             entry.node->attachObject(entry.entity);
+            g_sceneManager->injectMovableObject(entry.entity);
             const Ogre::AxisAlignedBox& b = entry.entity->getBoundingBox();
             std::memcpy(entry.size, model.size, sizeof(entry.size));
             std::memcpy(entry.color, model.color, sizeof(entry.color));
@@ -397,6 +415,7 @@ static void drawModels()
         {
             if (it->second.entity)
             {
+                g_sceneManager->extractMovableObject(it->second.entity);
                 it->second.node->detachObject(it->second.entity);
                 delete it->second.entity;
             }
@@ -567,7 +586,10 @@ static int runCacheTest(Ogre::Root* root,Ogre::RenderWindow* win,const std::stri
         std::map<PlayerBlockMesh::Mesh*,int> users;
         for(std::map<const void*,DrawEntry>::iterator it=g_drawn.begin();it!=g_drawn.end();++it){
             DrawEntry& entry=it->second;
-            if(entry.geometry->levels.size()!=2 || entry.geometry->level0().backend->parent)return 4;
+            Ogre::SubMesh* backend=entry.geometry->level0().backend;
+            bool shadow=g_sceneManager->getShadowTechnique()!=Ogre::SHADOWTYPE_NONE && backend->vertexData->vertexCount<=32767;
+            if(entry.geometry->levels.size()!=2 || backend->parent!=(shadow?entry.mesh.getPointer():NULL) ||
+               entry.mesh->getNumSubMeshes()!=(shadow?1:0))return 4;
             PlayerSphereCache::Key key=reinterpret_cast<PlayerSphereCache::Key>(entry.geometry->level0().backend);
             if(!PlayerSphereCache::has(key) || PlayerSphereCache::get(key).getRadius()!=entry.geometry->level0().backend->radius)return 12;
             ++users[entry.geometry.getPointer()];
@@ -583,7 +605,9 @@ static int runCacheTest(Ogre::Root* root,Ogre::RenderWindow* win,const std::stri
         if(g_drawn.size()!=8)return 7;
         for(std::map<const void*,DrawEntry>::iterator it=g_drawn.begin();it!=g_drawn.end();++it){
             DrawEntry& entry=it->second;
-            if(entry.geometry->level0().backend->parent ||
+            Ogre::SubMesh* backend=entry.geometry->level0().backend;
+            bool shadow=g_sceneManager->getShadowTechnique()!=Ogre::SHADOWTYPE_NONE && backend->vertexData->vertexCount<=32767;
+            if(backend->parent!=(shadow?entry.mesh.getPointer():NULL) ||
                entry.entity->getMesh().getPointer()!=entry.mesh.getPointer() ||
                Ogre::MeshManager::getSingleton().getByName(entry.mesh->getName()).getPointer()!=entry.mesh.getPointer() ||
                entry.node->getPosition()!=Ogre::Vector3::ZERO)return 8;
@@ -737,6 +761,7 @@ int main(int argc, char** argv)
     bool p5TimingCheck = false;
     bool p5AnimateObserve = false;
     bool p5NotifierCheck = false;
+    bool noShadows = false;
     bool p5ClimbObserve = false;
     bool p5LuaObjectCheck = false;
     bool p5FreefallCheck = false;
@@ -754,6 +779,7 @@ int main(int argc, char** argv)
         if (std::strcmp(argv[i], "--selftest") == 0) selftest = true;
         else if (std::strcmp(argv[i], "--p3test") == 0) lifetest = true;
         else if (std::strcmp(argv[i], "--demo") == 0) demo = true;
+        else if (std::strcmp(argv[i], "--no-shadows") == 0) noShadows = true;
         else if (std::strcmp(argv[i], "--stability-test") == 0) stability = true;
         else if (std::strcmp(argv[i], "--inspect-place") == 0) inspectPlace = true;
         else if (std::strcmp(argv[i], "--load-only") == 0) loadOnly = true;
@@ -883,6 +909,11 @@ int main(int argc, char** argv)
         delete root;ClosePlace();return calls==1?0:11;
     }
     Ogre::SceneManager* sm = root->createSceneManager(Ogre::ST_GENERIC, "sm");
+    if(!noShadows){
+        sm->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_MODULATIVE);
+        sm->setShadowColour(Ogre::ColourValue(0.55f,0.55f,0.55f));
+        sm->setShadowFarDistance(300.0f);
+    }
     g_sceneManager = sm;
     Ogre::Camera* cam = sm->createCamera("cam");
     cam->setPosition(0, 0, 10);
@@ -909,6 +940,8 @@ int main(int argc, char** argv)
         delete root;ClosePlace();return 0;
     }
 
+    // Ogre creates shared stencil materials lazily; warm them before lifetime baselines.
+    if(cachetest || lifetest)root->renderOneFrame();
     if (selftest || cachetest || lifetest)
     {
         int rc = selftest ? runSelftest(root, win) : lifetest ? runLifetimeTest(root,win,placeText) : runCacheTest(root,win,placeText);
@@ -1012,6 +1045,7 @@ int main(int argc, char** argv)
         std::printf("after %d frames: Brick at (%g,%g,%g), models=%d\n", frameCount, x, y, z, SceneModelCount());
         drawModels();
         root->renderOneFrame(); if(!writeBackbuffer(win,"last.png"))return 7;
+
         if(p5NativeCamera){
             float actorEnd[3],pose[15];if(GetActorTorsoPosition(&actorEnd[0],&actorEnd[1],&actorEnd[2]) || GetPlayerCameraPose(pose))return 1;
             Ogre::Vector3 end=cam->getPosition();Ogre::Matrix3 rotation;cam->getOrientation().ToRotationMatrix(rotation);
