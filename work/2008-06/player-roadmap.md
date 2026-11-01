@@ -1,5 +1,20 @@
 # Current player checkpoint
 
+P4 SoundService constructor recovered at source29cf44360b. Genuine members,
+normal base constructors, original name Soundscape, doppler1/distance10/rolloff1,
+NoReverb, G3D::System::getTick, null FMOD, empty maps; no fabricated padding.
+Native005bc160 and constant00827490 prove initialization;005083d0 maps to
+G3D getTick. Local owned-symbol report identifies unique005bc160; no server
+credit claimed. Diagnostic build and existing sound asset test pass, receipt
+p4-sound-service-ctor-29cf44360b/. Constructor object is not selected by the
+diagnostic executable and has not run. Native primary vtable slot12 resolves
+onServiceProvider005bdcf0; original attachment source and disassembly show
+listener removal/addition, stats detach/create, close/open FMOD, stock sounds.
+Next recover destructor, heartbeat and attachment and their real dependencies;
+then instantiate genuine SoundService and test cache identities/playback.
+Native audio/P4 remains OPEN.
+
+
 P4 SoundService cache method recovered at source e37a158e83. Original call
 005bceb0 -> 005bb5f0 selects maps at +0x180/+0x1a0, returns cached shared Sound
 or allocates0x30 and invokes ctor005b6f70. Genuine SoundService::loadSound now
