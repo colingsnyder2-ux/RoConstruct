@@ -1,6 +1,6 @@
 """Link out/p6/Roblox.exe: MFC client, RTM appmodul.cpp, original resources, and
 the player's engine libraries from this worktree's own player build."""
-import shutil, sys
+import hashlib, json, shutil, sys
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 HERE = Path(__file__).parent
@@ -13,6 +13,18 @@ client = "2008-06"
 SNAPSHOT = Path(sys.argv[1]) if len(sys.argv) > 1 else rebuild.workspace(client) / "out"
 out = rebuild.workspace(client) / "out" / "p6"
 out.mkdir(parents=True, exist_ok=True)
+runtime = SNAPSHOT / "tests" / "P2RecoveredPlayer"
+for folder in ("Content", "Places"):
+    shutil.copytree(runtime / folder, out / folder, dirs_exist_ok=True)
+for dll in ("rgmain.dll", "rgdx.dll", "fmodex.dll"):
+    shutil.copyfile(runtime / dll, out / dll)
+shutil.copyfile(ROOT / "clients" / client / "SciLexer.dll", out / "SciLexer.dll")
+(out / "runtime-stage.json").write_text(json.dumps({
+    str(path.relative_to(runtime)): hashlib.sha256(path.read_bytes()).hexdigest()
+    for path in runtime.rglob("*")
+    if path.is_file() and (path.parts[len(runtime.parts)] in ("Content", "Places")
+                          or path.name in ("rgmain.dll", "rgdx.dll", "fmodex.dll"))
+}, indent=2) + "\n")
 tc = rebuild.toolchain()
 shutil.copyfile(ROOT / "clients" / client / "ReflectionMetadata.xml", out / "ReflectionMetadata.xml")
 gen_res.generate(str(ROOT / "clients" / client / "Roblox.exe"), str(out / "roblox.res"))

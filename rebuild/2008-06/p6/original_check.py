@@ -28,6 +28,7 @@ if found:
     title = ctypes.create_unicode_buffer(200)
     user.GetWindowTextW(found[0], title, 200)
     print("title", title.value)
+    user.ShowWindow(found[0], 9)
     user.keybd_event(0x12, 0, 0, 0)
     user.SetForegroundWindow(found[0])
     user.keybd_event(0x12, 0, 2, 0)
