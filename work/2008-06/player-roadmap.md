@@ -1891,3 +1891,40 @@ pass (maximum Y errors about .07494/.10348). Novetus animation checked separatel
 Receipts: p5-simjob-stage-verified (including build-receipt.json), -p3, -spawn,
 -fall, -jump and -animation. No original declaration or native byte identity is
 claimed for the adapted stage. P5 remains open; Claude retains P6 ownership.
+
+## P5 checkpoint: active single-assembly jobs (e61d0b6cbb)
+
+Original 0064d200 allocates 40 bytes and calls 005e51e0; RTTI at 0083f73c
+identifies AssemblySimJob deriving from SimJob. The active stage now uses this
+single-assembly ownership model instead of donor Mechanism groups. Local class
+AssemblyJob has the evidenced pointer after the 36-byte base. SimJobStage's one
+job list compiles to 44 bytes. insert/remove bind/clear the assembly owner,
+transfer observers, and erase the saved iterator. Assembly add/remove own and
+delete the ordinary wrapper in original order. Legacy Mechanism remains only
+for source compatibility and ownership diagnostics, outside stage traversal.
+
+Assembly's owner API and existing reporter now accept generic SimJob owners;
+packet-budget resume/ignore tests visit non-mechanism jobs. This changes the
+existing donor network API, not its protocol fidelity. P7 remains open. Stage
+numbering and Assembly's other fields still follow the donor pipeline: matching
+sizes alone do not establish native ABI equivalence or server byte credit.
+
+Engine/player build passes with zero compile errors. P3 lifetime/self/cache,
+spawn/movement, real actor AssemblyJob identity/back-pointer, tracker lifetime,
+reporter resume/ignore, frozen original fall/jump and Novetus animation pass.
+Receipts: p5-assembly-job-verified (build-receipt.json includes RTTI/provider/source
+hashes), -p3, -spawn, -fall, -jump-retry and -animation. First jump observation
+failed foreground acquisition before play; retry passed without code changes.
+The original observer now verifies RunningNoPhysics's torso -> Primitive+0x5c
+-> object+0x24 -> assembly+0x40 points back to its registered state job, with
+anchor flags [0,0,1]. Original fall/jump Y bounds remain .1/.12 respectively.
+
+Next: recover anchor-joint pipeline before enabling native MovingNoPhysicsBase.
+005e8140 routes through 005e94a0/005e94e0 to ClumpStage's 0064cc40/0064ccf0.
+The existing matched source is tools/openrbx/Client/App/v8world/ClumpStage2.cpp:
+insert AnchorJoint before removing FreeJoint, and reverse on release. Its
+TreeStage/Assembly2 dependencies differ from the active donor pipeline; inspect
+and integrate those ownership edges rather than force world->update inside a
+state constructor. Local original observation confirms the clump and root
+assembly can be the same object, unlike donor's separate Clump/Assembly types.
+RunningNoPhysics, native frame/scheduler and full P5 remain open. P6 stays Claude's.
