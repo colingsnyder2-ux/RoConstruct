@@ -135,3 +135,10 @@ detaches both sound caches, clears them and releases the FMOD system. The
 original 005ba2b0 callback independently confirms handle detachment. This
 source compiles against the app overlay but is not yet called or runtime-tested;
 its error-reporting gate has the same documented adaptation as the loader.
+
+SoundService::update3DSettings 005b97b0 and descriptor callback 005ba020
+apply the native doppler, distance and rolloff values through FMOD. Descriptor
+initializer 007f5220 references 005ba020. They compile but are not yet called
+or runtime-tested. An aggregate scan of the user's supplied compressed places
+found Sound instances in 39 of 58 readable XML places; four files were unreadable
+or non-XML. These user files and their content remain private.
