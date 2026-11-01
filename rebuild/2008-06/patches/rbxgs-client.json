@@ -47,6 +47,10 @@
   [
     "static void transferTrackers(Mechanism*, Mechanism*);",
     "static void transferTrackers(SimJob*, SimJob*);"
+  ],
+  [
+    "\ttypedef char SimJobSize[sizeof(SimJob)==36?1:-1];",
+    "\ttypedef char SimJobSize[sizeof(SimJob)==36?1:-1];\n\n\t// 005e51e0 / 0074eed0: one assembly pointer after the 36-byte base.\n\tclass AssemblyJob : public SimJob\n\t{\n\t\tAssembly* assembly;\n\tpublic:\n\t\texplicit AssemblyJob(Assembly* value) : assembly(value) {}\n\t\tvirtual Assembly* getAssembly() { return assembly; }\n\t\tvirtual const Assembly* getAssembly() const { return assembly; }\n\t};\n\ttypedef char AssemblyJobSize[sizeof(AssemblyJob)==40?1:-1];"
   ]
 ],
  "App/v8world/Mechanism.cpp": [
@@ -243,20 +247,8 @@
  ],
  "App/include/v8world/SimJobStage.h": [
   [
-    "\tclass Mechanism;",
-    "\tclass SimJob;\n\tclass Mechanism;"
-  ],
-  [
-    "\t\tstd::list<Mechanism*> mechanisms;",
-    "\t\tstd::list<SimJob*> jobs;\n\t\tstd::list<Mechanism*> mechanisms;"
-  ],
-  [
-    "\t\tvoid notifyMovingPrimitives();",
-    "\t\tvoid notifyMovingPrimitives();\n\t\tvoid insertJob(SimJob* job);\n\t\tvoid removeJob(SimJob* job);"
-  ],
-  [
-    "",
-    "\n// rebuild overlay: SimJobStage::reportMechanisms rbxgs declares but never defines\n#include \"v8world/Mechanism.h\"\nnamespace RBX\n{\n\ttemplate<typename Class>\n\tvoid SimJobStage::reportMechanisms(Class& callback, MechanismTracker& tracker, const Mechanism* ignore)\n\t{\n\t\tif (mechanisms.empty())\n\t\t\treturn;\n\t\tMechanism* start = tracker.tracking() ? tracker.getMechanism() : NULL;\n\t\tif (!start) start = mechanisms.front();\n\t\tMechanism* current = start;\n\t\tdo\n\t\t{\n\t\t\tif (current != ignore && !callback(*current))\n\t\t\t{\n\t\t\t\ttracker.setMechanism(nextMechanism(mechanisms, current));  // reporter is full: resume after this one\n\t\t\t\treturn;\n\t\t\t}\n\t\t\tcurrent = nextMechanism(mechanisms, current);\n\t\t} while (current != start);\n\t\ttracker.setMechanism(start);\n\t}\n}\n"
+    "#pragma once\n#include <list>\n#include \"v8world/IWorldStage.h\"\n\nnamespace RBX\n{\n\tclass Mechanism;\n\tclass MechanismTracker;\n\tclass Assembly;\n\tclass World;\n\tclass Edge;\n\n\tclass SimJobStage : public IWorldStage\n\t{\n\tprivate:\n\t\tstd::list<Mechanism*> mechanisms;\n\t  \n\tprivate:\n\t\tvoid combineMechanisms(Edge* e);\n\t\tvoid insertMechanism(Mechanism* m);\n\t\tvoid destroyMechanism(Mechanism* m);\n\t\tvoid splitMechanisms(Assembly*, Assembly*);\n\t\tbool validateEdge(Edge* e);\n\tpublic:\n\t\tMechanism* nextMechanism(std::list<Mechanism*>& list, const Mechanism* current);\n\tpublic:\n\t\tSimJobStage(IStage* upstream, World* world);\n\t\tvirtual ~SimJobStage();\n\tpublic:\n\t\tvirtual StageType getStageType()\n\t\t{\n\t\t\treturn SIMJOB_STAGE;\n\t\t}\n\t\tvirtual void onEdgeAdded(Edge* e);\n\t\tvirtual void onEdgeRemoving(Edge* e);\n\t\tvoid onAssemblyAdded(Assembly* a);\n\t\tvoid onAssemblyRemoving(Assembly* a);\n\t\tvoid notifyMovingPrimitives();\n\n\t\ttemplate<typename Class>\n\t\tvoid reportMechanisms(Class& callback, MechanismTracker& tracker, const Mechanism* ignore);\n\t};\n}\n",
+    "#pragma once\n#include <list>\n#include \"v8world/IWorldStage.h\"\n#include \"v8world/Mechanism.h\"\n\nnamespace RBX\n{\n\tclass Assembly;\n\tclass World;\n\tclass Edge;\n\n\tclass SimJobStage : public IWorldStage\n\t{\n\t\tstd::list<SimJob*> jobs;\n\tpublic:\n\t\tSimJobStage(IStage* upstream, World* world);\n\t\tvirtual ~SimJobStage();\n\t\tvirtual StageType getStageType() { return SIMJOB_STAGE; }\n\t\tvirtual void onEdgeAdded(Edge* e);\n\t\tvirtual void onEdgeRemoving(Edge* e);\n\t\tvoid onAssemblyAdded(Assembly* a);\n\t\tvoid onAssemblyRemoving(Assembly* a);\n\t\tvoid notifyMovingPrimitives();\n\t\tvoid insertJob(SimJob* job);\n\t\tvoid removeJob(SimJob* job);\n\n\t\ttemplate<typename Class>\n\t\tvoid reportJobs(Class& callback, MechanismTracker& tracker, const SimJob* ignore)\n\t\t{\n\t\t\tif (jobs.empty()) return;\n\t\t\tSimJob* start = tracker.tracking() ? tracker.getJob() : jobs.front();\n\t\t\tstd::list<SimJob*>::iterator it = start->jobIterator;\n\t\t\tdo\n\t\t\t{\n\t\t\t\tSimJob* current = *it;\n\t\t\t\tif (++it == jobs.end()) it = jobs.begin();\n\t\t\t\tif (current != ignore && !callback(*current))\n\t\t\t\t{\n\t\t\t\t\ttracker.setJob(*it);\n\t\t\t\t\treturn;\n\t\t\t\t}\n\t\t\t} while (*it != start);\n\t\t\ttracker.setJob(start);\n\t\t}\n\t};\n\ttypedef char SimJobStageSize[sizeof(SimJobStage)==44?1:-1];\n}\n"
   ]
 ],
  "App/include/v8tree/Service.h": [
@@ -1846,10 +1838,38 @@
  ],
  "Network/Replicator.cpp": [
   [
-   "#include <RakPeer.h>\n",
-   "#pragma float_control(precise, off)\n#include <RakPeer.h>\n"
+    "#include <RakPeer.h>\n",
+    "#pragma float_control(precise, off)\n#include <RakPeer.h>\n"
+  ],
+  [
+    "findTargetPlayerCharacterMechanism",
+    "findTargetPlayerCharacterJob"
+  ],
+  [
+    "const Mechanism&",
+    "const SimJob&"
+  ],
+  [
+    "Mechanism*",
+    "SimJob*"
+  ],
+  [
+    "sim.reportMechanisms(",
+    "sim.reportJobs("
+  ],
+  [
+    "return Mechanism::getMechanismFromPrimitive(part->getPrimitive());",
+    "{\n\t\t\t\t\tAssembly* assembly = part->getPrimitive()->getAssembly();\n\t\t\t\t\treturn assembly ? assembly->getJob() : NULL;\n\t\t\t\t}"
+  ],
+  [
+    "findTargetPlayerCharacterMechanism",
+    "findTargetPlayerCharacterJob"
+  ],
+  [
+    "Mechanism*",
+    "SimJob*"
   ]
- ],
+],
  "App/v8datamodel/Selection.cpp": [
   [
    "\tvoid Selection::clearSelection()\n\t{\n\t\twhile (!selection->empty())",
@@ -2118,24 +2138,8 @@
  ],
  "App/v8world/SimJobStage.cpp": [
   [
-    "\tvoid SimJobStage::onEdgeAdded(Edge* e)\n\t{\n\t\tRBXASSERT(validateEdge(e));\n\n\t\te->putInStage(this);\n\n\t\tif (e->getEdgeType() == Edge::JOINT)\n\t\t{\n\t\t\tAssembly* a0 = e->getPrimitive(0)->getAssembly();\n\t\t\tAssembly* a1 = e->getPrimitive(1)->getAssembly();\n\n\t\t\tif (a0->inOrDownstreamOfStage(this) && a1->inOrDownstreamOfStage(this))\n\t\t\t{\n\t\t\t\tRBXASSERT(a0->getDof() > 0);\n\t\t\t\tRBXASSERT(a1->getDof() > 0);\n\n\t\t\t\tcombineMechanisms(e);\n\t\t\t}\n\t\t}\n\n\t\te->putInKernel(getKernel());\n\t}\n",
-    "\tvoid SimJobStage::onEdgeAdded(Edge* e)\n\t{\n\t\te->putInStage(this);\n\t\te->putInKernel(getKernel());\n\t}"
-  ],
-  [
-    "SimJobStage::onEdgeRemoving(Edge* e)\n\t{\n\t\tRBXASSERT(validateEdge(e));\n\n\t\te->removeFromKernel();\n\t\te->removeFromStage(this);\n\t}",
-    "SimJobStage::onEdgeRemoving(Edge* e)\n\t{\n\te->removeFromKernel();\n\te->removeFromStage(this);\n}"
-  ],
-  [
-    "\tSimJobStage::~SimJobStage()\n\t{}",
-    "\tSimJobStage::~SimJobStage()\n\t{ RBXASSERT(jobs.empty()); }\n\n\t// 0064d0f0 / 0064d180 list and tracker contract. Assembly binding is separate\n\t// while donor Mechanism still groups multiple assemblies. Jobs stay caller-owned.\n\tvoid SimJobStage::insertJob(SimJob* job)\n\t{\n\t\tjobs.push_back(job);\n\t\tjob->jobIterator = --jobs.end();\n\t}\n\n\tvoid SimJobStage::removeJob(SimJob* job)\n\t{\n\t\tstd::list<SimJob*>::iterator next = job->jobIterator;\n\t\t++next;\n\t\tif (next == jobs.end()) next = jobs.begin();\n\t\tMechanismTracker::transferTrackers(job, jobs.size() > 1 ? *next : NULL);\n\t\tjobs.erase(job->jobIterator);\n\t}"
-  ],
-  [
-    "\t\tthis->mechanisms.push_back(m);",
-    "\t\tinsertJob(m);\n\t\tthis->mechanisms.push_back(m);"
-  ],
-  [
-    "\t\tMechanism* next = this->mechanisms.size() > 1 ? this->nextMechanism(this->mechanisms, m) : NULL;\n\t\tMechanismTracker::transferTrackers(m, next);",
-    "\t\tremoveJob(m);"
+    "#include \"v8world/SimJobStage.h\"\n#include \"v8world/Mechanism.h\"\n#include \"v8world/Primitive.h\"\n#include \"v8world/Edge.h\"\n#include \"v8world/Assembly.h\"\n#include \"v8world/RigidJoint.h\"\n#include \"v8world/MotorJoint.h\"\n\nnamespace RBX\n{\n\tbool SimJobStage::validateEdge(Edge* e)\n\t{\n\t\tAssembly* a0 = e->getPrimitive(0)->getAssembly();\n\t\tAssembly* a1 = e->getPrimitive(1)->getAssembly();\n\t\tRBXASSERT(a0 && a1);\n\n\t\treturn true;\n\t}\n\n\tMechanism* SimJobStage::nextMechanism(std::list<Mechanism*>& list, const Mechanism* current)\n\t{\n\t\tRBXASSERT(!list.empty());\n\t\tstd::list<Mechanism*>::iterator myIt = current->myIt;\n\t\tmyIt++;\n\t\tif (myIt == list.end())\n\t\t{\n\t\t\treturn *list.begin();\n\t\t}\n\t\telse\n\t\t{\n\t\t\treturn *myIt;\n\t\t}\n\t}\n\n\tvoid SimJobStage::onEdgeRemoving(Edge* e)\n\t{\n\t\tRBXASSERT(validateEdge(e));\n\n\t\te->removeFromKernel();\n\t\te->removeFromStage(this);\n\t}\n\n#pragma warning (push)\n#pragma warning (disable : 4355) // warning C4355: 'this' : used in base member initializer list\n\tSimJobStage::SimJobStage(IStage* upstream, World* world)\n\t\t: IWorldStage(upstream, new Kernel(this), world)\n\t{}\n#pragma warning (pop)\n\n\tSimJobStage::~SimJobStage()\n\t{}\n\n\tvoid SimJobStage::insertMechanism(Mechanism* m)\n\t{\n\t\tthis->mechanisms.push_back(m);\n\t\tstd::list<Mechanism*>::iterator mechEnd = this->mechanisms.end();\n\t\tmechEnd--;\n\t\tRBXASSERT(*mechEnd == m);\n\t\tm->myIt = mechEnd;\n\t}\n\n\tvoid call_notifyMovingPrimitives(Mechanism* m)\n\t{\n\t\tm->notifyMovingPrimitives();\n\t}\n\n\tvoid SimJobStage::notifyMovingPrimitives()\n\t{\n\t\tstd::for_each(this->mechanisms.begin(), this->mechanisms.end(), call_notifyMovingPrimitives);\n\t}\n\n\tvoid SimJobStage::destroyMechanism(Mechanism* m)\n\t{\n\t\tRBXASSERT(std::find(this->mechanisms.begin(), this->mechanisms.end(), m) == m->myIt);\n\t\tMechanism* next = this->mechanisms.size() > 1 ? this->nextMechanism(this->mechanisms, m) : NULL;\n\t\tMechanismTracker::transferTrackers(m, next);\n\t\tthis->mechanisms.erase(m->myIt);\n\t\tdelete m;\n\t}\n\n\tvoid SimJobStage::onAssemblyAdded(Assembly* a)\n\t{\n\t\ta->putInStage(this);\n\t\tRBXASSERT(!a->getMechanism());\n\t\tMechanism* newMech = new Mechanism;\n\t\tnewMech->insertAssembly(a);\n\t\tthis->insertMechanism(newMech);\n\t\ta->putInKernel(this->getKernel());\n\t}\n\n\tvoid SimJobStage::onAssemblyRemoving(Assembly* a)\n\t{\n\t\ta->removeFromKernel();\n\t\tMechanism* mech = a->getMechanism();\n\t\tmech->removeAssembly(a);\n\t\tif (mech->getAssemblies().empty())\n\t\t\tthis->destroyMechanism(mech);\n\t\ta->removeFromStage(this);\n\t}\n\n\tvoid SimJobStage::combineMechanisms(Edge* e)\n\t{\n\t\tRBXASSERT(e->getEdgeType() == Edge::JOINT);\n\t\tRBXASSERT(!RigidJoint::isRigidJoint(e));\n\t\tRBXASSERT(!MotorJoint::isMotorJoint(e));\n\n\t\tJoint* j = rbx_static_cast<Joint*>(e);\n\t\tAssembly* a0 = e->getPrimitive(0)->getAssembly();\n\t\tAssembly* a1 = e->getPrimitive(1)->getAssembly();\n\t\tRBXASSERT(a0->inOrDownstreamOfStage(this));\n\t\tRBXASSERT(a1->inOrDownstreamOfStage(this));\n\n\t\tMechanism* m0 = a0->getMechanism();\n\t\tMechanism* m1 = a1->getMechanism();\n\t\tif (m0 != m1)\n\t\t{\n\t\t\tMechanism* m = (m0->getAssemblies().size() > m1->getAssemblies().size()) ? m0 : m1;\n\t\t\tMechanism* other = (m == m1) ? m0 : m1;\n\n\t\t\tm->absorb(other);\n\t\t\tdestroyMechanism(other);\n\t\t}\n\t}\n\n\tvoid SimJobStage::onEdgeAdded(Edge* e)\n\t{\n\t\tRBXASSERT(validateEdge(e));\n\n\t\te->putInStage(this);\n\n\t\tif (e->getEdgeType() == Edge::JOINT)\n\t\t{\n\t\t\tAssembly* a0 = e->getPrimitive(0)->getAssembly();\n\t\t\tAssembly* a1 = e->getPrimitive(1)->getAssembly();\n\n\t\t\tif (a0->inOrDownstreamOfStage(this) && a1->inOrDownstreamOfStage(this))\n\t\t\t{\n\t\t\t\tRBXASSERT(a0->getDof() > 0);\n\t\t\t\tRBXASSERT(a1->getDof() > 0);\n\n\t\t\t\tcombineMechanisms(e);\n\t\t\t}\n\t\t}\n\n\t\te->putInKernel(getKernel());\n\t}\n}\n",
+    "#include \"v8world/SimJobStage.h\"\n#include \"v8world/Assembly.h\"\n#include \"v8world/Edge.h\"\n#include \"v8kernel/Kernel.h\"\n\nnamespace RBX\n{\n#pragma warning (push)\n#pragma warning (disable : 4355)\n\tSimJobStage::SimJobStage(IStage* upstream, World* world)\n\t\t: IWorldStage(upstream, new Kernel(this), world) {}\n#pragma warning (pop)\n\tSimJobStage::~SimJobStage() { RBXASSERT(jobs.empty()); }\n\n\t// 0064d0f0 / 0064d180: association, saved iterator, observer transfer.\n\t// Externally registered jobs remain caller-owned.\n\tvoid SimJobStage::insertJob(SimJob* job)\n\t{\n\t\tif (job->getAssembly()) job->getAssembly()->setJob(job);\n\t\tjobs.push_back(job);\n\t\tjob->jobIterator = --jobs.end();\n\t}\n\n\tvoid SimJobStage::removeJob(SimJob* job)\n\t{\n\t\tstd::list<SimJob*>::iterator next = job->jobIterator;\n\t\tif (++next == jobs.end()) next = jobs.begin();\n\t\tMechanismTracker::transferTrackers(job, jobs.size() > 1 ? *next : NULL);\n\t\tjobs.erase(job->jobIterator);\n\t\tif (job->getAssembly()) job->getAssembly()->setJob(NULL);\n\t}\n\n\t// 0064d200 / 0064d2a0 own the ordinary assembly job, not a donor group.\n\tvoid SimJobStage::onAssemblyAdded(Assembly* a)\n\t{\n\t\ta->putInStage(this);\n\t\ta->putInKernel(getKernel());\n\t\tinsertJob(new AssemblyJob(a));\n\t}\n\n\tvoid SimJobStage::onAssemblyRemoving(Assembly* a)\n\t{\n\t\tSimJob* job = a->getJob();\n\t\tremoveJob(job);\n\t\tdelete job;\n\t\ta->removeFromKernel();\n\t\ta->removeFromStage(this);\n\t}\n\n\tvoid SimJobStage::notifyMovingPrimitives()\n\t{\n\t\tfor (std::list<SimJob*>::iterator it = jobs.begin(); it != jobs.end(); ++it)\n\t\t\tif ((*it)->getAssembly()) (*it)->getAssembly()->notifyMoved();\n\t}\n\n\tvoid SimJobStage::onEdgeAdded(Edge* e)\n\t{\n\t\te->putInStage(this);\n\t\te->putInKernel(getKernel());\n\t}\n\n\tvoid SimJobStage::onEdgeRemoving(Edge* e)\n\t{\n\t\te->removeFromKernel();\n\t\te->removeFromStage(this);\n\t}\n}\n"
   ]
 ],
  "App/util/RunStateOwner.cpp": [
@@ -2615,4 +2619,73 @@
    "temp.Format(\"%02x\", (unsigned char)hashValue[i]);"
   ]
  ]
+,
+ "App/include/v8world/Assembly.h": [
+  [
+    "\tclass Mechanism;",
+    "\tclass Mechanism;\n\tclass SimJob;"
+  ],
+  [
+    "\t\tMechanism* mechanism;",
+    "\t\tSimJob* job;"
+  ],
+  [
+    "\t\tvoid setMechanism(Mechanism* m) {this->mechanism = m;}",
+    "\t\tvoid setMechanism(Mechanism* m);\n\t\tvoid setJob(SimJob* value) { job = value; }\n\t\tSimJob* getJob() const { return job; }"
+  ]
+]
+,
+ "App/v8world/Assembly.cpp": [
+  [
+    "#include \"v8world/Assembly.h\"",
+    "#include \"v8world/Assembly.h\"\n#include \"v8world/Mechanism.h\""
+  ],
+  [
+    "mechanism(NULL)",
+    "job(NULL)"
+  ],
+  [
+    "\t\treturn mechanism;",
+    "\t\treturn dynamic_cast<Mechanism*>(job);"
+  ],
+  [
+    "\tMechanism* Assembly::getMechanism()",
+    "\tvoid Assembly::setMechanism(Mechanism* value) { job = value; }\n\n\tMechanism* Assembly::getMechanism()"
+  ],
+  [
+    "RBXASSERT(!mechanism);",
+    "RBXASSERT(!job);"
+  ]
+]
+,
+ "Network/Replicator.h": [
+  [
+    "findTargetPlayerCharacterMechanism",
+    "findTargetPlayerCharacterJob"
+  ],
+  [
+    "const Mechanism&",
+    "const SimJob&"
+  ],
+  [
+    "Mechanism&",
+    "SimJob&"
+  ],
+  [
+    "Mechanism*",
+    "SimJob*"
+  ],
+  [
+    "const Mechanism&",
+    "const SimJob&"
+  ],
+  [
+    "Mechanism*",
+    "SimJob*"
+  ]
+]
+,
+ "Network/Server.h": [["", "\n// Overlay copy: relative Replicator.h must resolve to the generic job API.\n"]]
+,
+ "Network/Client.h": [["", "\n// Overlay copy: relative Replicator.h must resolve to the generic job API.\n"]]
 }

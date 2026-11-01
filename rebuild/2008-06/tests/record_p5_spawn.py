@@ -34,6 +34,7 @@ def main():
             assert 'RunService initialization: PASS (0)' in run.stdout
         elif name == 'freefall':
             assert 'freefall transitions: PASS (0)' in run.stdout
+            assert 'native assembly job association: PASS' in run.stdout
         elif name == 'lua-object':
             assert 'Lua object conversion: PASS (0)' in run.stdout
         elif name == 'lookup':
