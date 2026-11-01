@@ -334,7 +334,7 @@ assert.doesNotMatch(nativeCardsHTML,/20<\/b> loops/);
 const nativeOnly=formContext.workerForm({...automaticForm,lease_mode:"native",native_generation:"method",model:"opencode:legacy",workers:1});
 assert.match(nativeOnly,/name="native_generation" value="agent"/);
 assert.match(nativeOnly,/name="workers" value="10"/);
-assert.match(nativeOnly,/codex:gpt-6.1-terra/);
+assert.match(nativeOnly,/codex:gpt-5.6-terra/);
 assert.doesNotMatch(nativeOnly,/SEARCH\/REPLACE|Legacy auto|data-native-batch|data-preset=|Model connection/);
 assert.equal(formContext.nativeRecoveryConfig({native_generation:"agent",model:"codex:gpt-6-luna",workers:2,max_cloud_requests:1}).workers,2);
 
@@ -344,3 +344,6 @@ const nativeConfigure={jobs:[{id:"saved",kind:"worker",status:"completed",config
 vm.createContext(nativeConfigure);
 vm.runInContext('(function(){'+source.slice(source.indexOf('  if(target.hasAttribute("data-configure"))'),source.indexOf('  if(target.hasAttribute("data-close-controls"))'))+'})()',nativeConfigure);
 assert.equal(nativeConfigure.workerMode,"native");assert.equal(nativeConfigure.editing,null);assert.equal(nativeConfigure.rendered.max_cloud_requests,1);
+
+assert.equal(formContext.nativeRecoveryConfig({native_generation:"agent",model:"codex:gpt-5.6-terra",workers:3,max_cloud_requests:null}).max_cloud_requests,null);
+assert.equal(formContext.nativeRecoveryConfig({native_generation:"method",model:"opencode:old",max_cloud_requests:null}).max_cloud_requests,10);

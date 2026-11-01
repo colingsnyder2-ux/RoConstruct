@@ -1347,7 +1347,7 @@ def test_verify_build_runs_header_gates_beside_the_build(tmp_path, monkeypatch):
 def test_snapshot_links_read_only_module_objects_and_copies_writable_outputs(tmp_path):
     root = tmp_path / "root"
     out = root / "rebuild/2008-06/out"
-    for rel in ("XTP/linked/a.obj", "XTP/placed.json", "RbxgsApp/layer-rbxgs/b.obj", "tests/t/c.obj"):
+    for rel in ("XTP/linked/a.obj", "XTP/placed.json", "XTP/owned-symbols.json", "RbxgsApp/layer-rbxgs/b.obj", "tests/t/c.obj"):
         (out / rel).parent.mkdir(parents=True, exist_ok=True)
         (out / rel).write_text(rel)
     for name in ("roc", "research", "rebuild/2008-06/patches", "tools", "clients", "src"):
@@ -1359,6 +1359,12 @@ def test_snapshot_links_read_only_module_objects_and_copies_writable_outputs(tmp
     integration_verify.snapshot(root, tmp_path / "snap", link=True)
     copy = tmp_path / "snap/rebuild/2008-06/out"
     assert os.path.samefile(out / "XTP/linked/a.obj", copy / "XTP/linked/a.obj")
+    assert (copy / "XTP/owned-symbols.json").read_text()=="XTP/owned-symbols.json"
+    assert not os.path.samefile(out / "XTP/owned-symbols.json",copy / "XTP/owned-symbols.json")
+    assert out/"XTP/owned-symbols.json" in integration_verify.input_paths(root)[0]
+    before=integration_verify.input_hash(root)
+    (out/"XTP/owned-symbols.json").write_text("changed binding metadata")
+    assert integration_verify.input_hash(root)!=before
     for rel in ("XTP/placed.json", "RbxgsApp/layer-rbxgs/b.obj"):
         assert not os.path.samefile(out / rel, copy / rel)
     assert not (copy / 'tests').exists()

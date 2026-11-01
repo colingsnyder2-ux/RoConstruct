@@ -1,6 +1,6 @@
 # Native integration with an agent (Codex, Claude)
 
-## Native source recovery with real Codex agents (Worker 27)
+## Native source recovery with real Codex agents (Worker 28)
 
 Open `roc gui`, choose **Workers → Integrator**, select your Codex model and
 launch cap, then **Start native recovery**. This panel exposes native C++ recovery
@@ -1075,3 +1075,12 @@ continues and other contributors can still claim distinct work.
 Native source adoptions resolve inside the current Worker workspace even when
 installed vendor tools are junctions to another checkout. Private rechecks must
 never read another agent's live native headers through a reused tools path.
+
+Worker 28 includes and hashes other modules' owned-symbol metadata in independent
+verification snapshots. Missing metadata must never be mistaken for a byte mismatch.
+Partially blocked canonical batches retain unsubmitted proofs for later retry;
+accepted credit comes only from actual receipt gains. Host source merges are
+counted separately, including when canonical linking is pending or already integrated.
+Tasks now include the real declaration headers and bounded genuine source context.
+The GUI defaults new Codex model selections to GPT-5.6 Terra. Clear the launch cap
+for continuous watching; worker count remains adjustable and can be set to one.

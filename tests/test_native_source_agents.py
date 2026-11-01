@@ -469,3 +469,33 @@ def test_canonical_body_transfer_preserves_typed_signature_and_member_names():
     assert 'object.next()' in changed and '"next"' in changed
     with pytest.raises(ValueError):recovery.native_methods.canonical_edits(native,body.replace('RunState next','int next'),'RunService::setRunState')
     with pytest.raises(ValueError):recovery.native_methods.canonical_edits(native,body.replace('consume(next)','consume(next,newState)'),'RunService::setRunState')
+
+
+def test_assigned_headers_follow_real_include_names_and_world_declarations(tmp_path):
+    header=tmp_path/'rebuild/2008-06/native-headers/gui/Gui.h';header.parent.mkdir(parents=True);header.write_text('class GuiItem {};')
+    task=dict(method='GuiItem::process',declaration_header=header.relative_to(tmp_path).as_posix())
+    assert recovery.assigned_headers(tmp_path,task,'#include "gui/Gui.h"')==[task['declaration_header']]
+    task.pop('declaration_header')
+    assert recovery.assigned_headers(tmp_path,task,'#include "gui/Gui.h"')==[header.relative_to(tmp_path).as_posix()]
+    world=tmp_path/'rebuild/2008-06/native-world/App/include/v8world/Assembly.h';world.parent.mkdir(parents=True);world.write_text('class Assembly {};')
+    assert recovery.assigned_headers(tmp_path,dict(method='Assembly::f'),'#include "v8world/Assembly.h"')==[world.relative_to(tmp_path).as_posix()]
+    with pytest.raises(ValueError):recovery.assigned_headers(tmp_path,dict(method='A::f',declaration_header='../outside.h'),'')
+
+
+def test_partial_batch_keeps_unsubmitted_proofs_pending():
+    queued=dict(job='job',submitted_addresses=['00400000'])
+    included=dict(task=dict(addr='00400000'));blocked=dict(task=dict(addr='00400001'))
+    assert recovery.submission_state(queued,included,remote=True)=='submitted'
+    assert recovery.submission_state(queued,blocked,remote=True)=='remote-submitted'
+    assert blocked['canonical_retry']
+    assert recovery.submission_state(dict(state='blocked',reason='Class held on another PC'),blocked)=='recovered'
+    assert recovery.submission_state(dict(state='already-integrated'),blocked,remote=True)=='host-merged'
+
+
+def test_reference_source_uses_current_overlay_and_requires_unique_method(tmp_path):
+    tree=tmp_path/'vendor';overlay=tmp_path/'overlay';p=tree/'App/gui/GUI.cpp';p.parent.mkdir(parents=True);p.write_text('int A::f(){return 1;}')
+    current=overlay/'App/gui/GUI.cpp';current.parent.mkdir(parents=True);current.write_text('int A::f(){return 2;}')
+    context=SimpleNamespace(tree=tree,overlay=overlay)
+    assert recovery.canonical_methods(context,'A::f')==[('App/gui/GUI.cpp','int A::f(){return 2;}')]
+    (tree/'App/gui/Other.cpp').write_text('int A::f(){return 3;}')
+    assert len(recovery.canonical_methods(context,'A::f'))==2

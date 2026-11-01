@@ -151,6 +151,7 @@ def input_paths(root, live_only=False):
     paths.extend(p for p in out.glob("*/*.json") if p.is_file()
                  and p.name not in ("report.json", "owned-symbols.json"))
     paths.extend(p for p in out.glob("*/report.json") if p.parent.name != "RbxgsApp")
+    paths.extend(p for p in out.glob("*/owned-symbols.json") if p.parent.name != "RbxgsApp")
     for path in sorted((root / "rebuild" / CLIENT / "out").glob("*/linked/*")):
         if path.parent.parent.name != "RbxgsApp" and path.is_file() and path.suffix in (".obj", ".lib"):
             paths.append(path)
@@ -246,7 +247,7 @@ def snapshot(root, destination, link=False):
             if relative[0] == "RbxgsApp":
                 return [name for name in names if name != "verified" and not (link and name.startswith("layer-"))]
             if relative[0] != "mfclib":
-                return [name for name in names if name not in {"linked", "report.json", "placed.json"}]
+                return [name for name in names if name not in {"linked", "report.json", "owned-symbols.json", "placed.json"}]
         return [name for name in names if name.endswith((".pdb", ".ilk"))]
 
     if source.exists():

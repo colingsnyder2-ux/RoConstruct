@@ -159,7 +159,8 @@ def test_http_two_pcs_share_real_server_lease_routes(service):
 
 
 @pytest.mark.parametrize('cold_resume',[False,True])
-def test_controller_two_pcs_host_recheck_and_restart_without_extra_ai(service,tmp_path,monkeypatch,cold_resume):
+@pytest.mark.parametrize('canonical_wait',[False,True])
+def test_controller_two_pcs_host_recheck_and_restart_without_extra_ai(service,tmp_path,monkeypatch,cold_resume,canonical_wait):
     from roc import native_sweep as sweep,gui_worker,match,native_refs
     service.promotions.recovery=service
     service.promotions.baseline=lambda:dict(revision='base',features=dict(native_recovery_collaboration=1))
@@ -171,6 +172,13 @@ def test_controller_two_pcs_host_recheck_and_restart_without_extra_ai(service,tm
     monkeypatch.setattr(match,'_functions',lambda *a:{})
     monkeypatch.setattr(native_refs,'import_checks',lambda *a:[])
     monkeypatch.setattr(recovery,'stage_submission',lambda *a,**kw:dict(state='pending-mapping'))
+    batches=[]
+    if canonical_wait:
+        monkeypatch.setattr(recovery,'stage_submission',lambda *a,**kw:dict(state='mapped',proposals='saved.json'))
+        def submit(*a,**kw):
+            batches.append(1)
+            return dict(state='blocked',reason='Class held on another PC') if len(batches)==1 else dict(job='queued',submitted_addresses=['00400000'])
+        monkeypatch.setattr(recovery,'submit_batch',submit)
     def target(data,*a):return dict(target_exact=b'return 3;' in data,symbol='?f@A@@QAEHXZ',diff='fixture diff')
     monkeypatch.setattr(recovery,'target_proof',target)
     def compile(root,rel,*a,**kw):
@@ -215,7 +223,10 @@ def test_controller_two_pcs_host_recheck_and_restart_without_extra_ai(service,tm
         assert 'return 77;' in (tmp_path/'pc1'/REL).read_text()
         result=service.process(service.take());assert result['receipt']['state']=='merged'
         assert (service.root/REL).read_text()==AFTER
-        resumed=run('pc1');assert resumed['host_merged']==1 and resumed['merged']==1 and resumed['remote_pending']==0 and controls['pc1'].budget.requests==1 and calls==['A::f']
+        resumed=run('pc1');assert resumed['host_merged']==1 and resumed['merged']==1 and resumed['remote_pending']==int(canonical_wait) and controls['pc1'].budget.requests==1 and calls==['A::f']
+        if canonical_wait:
+            retried=run('pc1');assert retried['host_merged']==0 and retried['submitted']==1 and retried['remote_pending']==0 and retried['integration_pending']==1
+            assert len(batches)==2 and controls['pc1'].budget.requests==1 and calls==['A::f']
     finally:http.shutdown();http.server_close();thread.join()
 
 

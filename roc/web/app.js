@@ -148,10 +148,10 @@ function modelChoices(config, choice="openai") {
 function nativeRecoveryConfig(config) {
   const fresh=config.native_generation!=="agent" || !String(config.model||"").startsWith("codex:");
   return {...config,lease_mode:"native",client:"2008-06",native_generation:"agent",native_escalation_model:"",source_only:false,max_cloud_cost:null,
-    model:String(config.model||"").startsWith("codex:") && config.model!=="codex:default" ? config.model : "codex:gpt-6.1-terra",
+    model:String(config.model||"").startsWith("codex:") && config.model!=="codex:default" ? config.model : "codex:gpt-5.6-terra",
     workers:fresh ? 10 : config.workers ?? 10,cloud_concurrency:fresh ? 10 : config.cloud_concurrency ?? 10,
     native_compile_workers:config.native_compile_workers && config.native_compile_workers!=="auto" ? config.native_compile_workers : 2,
-    max_cloud_requests:config.max_cloud_requests ?? 10};
+    max_cloud_requests:fresh ? config.max_cloud_requests ?? 10 : Object.hasOwn(config,"max_cloud_requests") ? config.max_cloud_requests : 10};
 }
 function nativeRecoveryForm(input) {
   const config=nativeRecoveryConfig(input);
@@ -163,14 +163,14 @@ function nativeRecoveryForm(input) {
     field("Server","server",config.server,{full:true})+field("Codex model","model",config.model,{choices:modelChoices(config,"codex"),full:true})+
     field("Concurrent AI workers","workers",config.workers,{type:"number",min:1,max:256})+
     field("Parallel local compilers","native_compile_workers",config.native_compile_workers,{type:"number",min:1,max:64})+
-    field("Agent launch cap","max_cloud_requests",config.max_cloud_requests,{type:"number",min:1})+
+    field("Agent launch cap","max_cloud_requests",config.max_cloud_requests,{type:"number",min:1,placeholder:"Blank = continuous"})+
     field("Minutes per agent","native_agent_minutes",config.native_agent_minutes ?? 4,{type:"number",min:1,max:60})+
     field("Probes per agent","native_agent_checks",config.native_agent_checks ?? 6,{type:"number",min:1,max:30})+
     `</div><div class="form-section">${check("Submit linkable recoveries after independent preflight","native_agent_submit",config.native_agent_submit ?? true)}</div>`+
     `<details class="form-section"><summary>Advanced limits</summary><div class="field-grid">`+
     field("Token cap","max_cloud_tokens",config.max_cloud_tokens,{type:"number",min:1,placeholder:"Optional"})+
     field("Native task manifest (optional)","native_agent_tasks",config.native_agent_tasks||"",{full:true})+
-    `</div><p class="help-note">Launch caps stop new agents. Running agents and queued checks finish. Token usage arrives after each run; time/probe limits bound work. Layouts remain owner-only.</p></details>`+
+    `</div><p class="help-note">Blank launch cap keeps watching for new eligible work. Caps stop new agents; running agents and queued checks finish. Token usage arrives after each run; time/probe limits bound work. Layouts remain owner-only.</p></details>`+
     `<div class="consent">${check("Allow cloud prompts for this session","cloud_allowed",config.cloud_allowed)}<p>Target assembly and source go to your selected Codex model.</p></div>`+
     `<div class="form-footer">${button(editing ? "Apply changes" : "Start native recovery",'type="submit"')}</div>`+
     `<button type="button" class="text-button" data-agent-setup="codex">Codex sign-in</button><button type="button" class="text-button" id="refresh-models">Refresh models</button></form>`;
@@ -590,7 +590,7 @@ document.addEventListener("click", event=>act(async()=>{
   if(target.dataset.clientWorker) { workerMode="function";controlsOpen=true;editing=null;navigate("workers",{...meta.initial,client:target.dataset.clientWorker}); }
   if(target.dataset.log) { $("#log-job").value=target.dataset.log;renderLogs(); }
   if(target.dataset.step) { const input=$("#worker-form").elements[target.dataset.field];input.value=Math.max(Number(input.min||1),Math.min(Number(input.max||1000000),Number(input.value)+Number(target.dataset.step))); }
-  if(target.hasAttribute("data-native-agents")) {const config=readWorker();render({...config,model:config.model.startsWith("codex:") && config.model!=="codex:default" ? config.model : "codex:gpt-6.1-terra",max_cloud_requests:config.max_cloud_requests ?? 10,workers:10,cloud_concurrency:10,native_generation:"agent",native_agent_minutes:4,native_agent_checks:6,native_escalation_model:"",native_compile_workers:"auto"});return;}
+  if(target.hasAttribute("data-native-agents")) {const config=readWorker();render({...config,model:config.model.startsWith("codex:") && config.model!=="codex:default" ? config.model : "codex:gpt-5.6-terra",max_cloud_requests:config.max_cloud_requests ?? 10,workers:10,cloud_concurrency:10,native_generation:"agent",native_agent_minutes:4,native_agent_checks:6,native_escalation_model:"",native_compile_workers:"auto"});return;}
   if(target.hasAttribute("data-native-batch")) {render({...readWorker(),workers:10,cloud_concurrency:10,native_generation:"method",native_compile_batch:10,native_batch_files:40,native_compile_workers:"auto",native_selection:"easy",native_escalation_model:"",rounds:3,max_tokens:2048,thinking:"disabled",reasoning_effort:"low"});return;}
   if(target.dataset.preset) { const config=readWorker(),presets={automatic,fast:{rounds:2,max_size:96,max_tokens:1024,use_revng:false},balanced:{rounds:4,max_size:256,max_tokens:2048},deep:{rounds:6,max_size:0,max_tokens:4096}};render({...config,...presets[target.dataset.preset]});document.querySelectorAll("[data-preset]").forEach(button=>button.classList.toggle("active",button.dataset.preset===target.dataset.preset)); }
   if(target.dataset.agentMode) {readAgentAuto();agentAutoConfig.mode=target.dataset.agentMode;render();}
