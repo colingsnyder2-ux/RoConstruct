@@ -122,6 +122,17 @@ extern "C" void SetPartYaw(float yaw)
     g_brick->setCoordinateFrame(G3D::CoordinateFrame(rotation,g_brick->getCoordinateFrame().translation));
 }
 
+// Harness entry: execute genuine model/script property changes for P3 controls.
+extern "C" int ExecutePlayerScript(const char* command)
+{
+    RBX::DataModel::Lock lock(g_dataModel);
+    RBX::ScriptContext* scripts=RBX::ServiceProvider::create<RBX::ScriptContext>(g_dataModel.get());
+    try { scripts->executeInNewThread(RBX::Security::CmdLine,command,"player-lifetime"); }
+    catch(std::exception& e){std::printf("script: %s\n",e.what());return 1;}
+    g_dataModel->step(1.0f/30.0f);
+    return 0;
+}
+
 extern "C" int GetContactState(float* expectedY,float* floorY,int* anchored)
 {
     RBX::DataModel::Lock lock(g_dataModel);
