@@ -8,3 +8,10 @@ have no Climbing implementation. The original Animate script now reaches
 this missing event at line 561. Merely registering an inert descriptor would
 hide the error without restoring behavior. Trace the original climbing state,
 entry/exit and movement before integrating and testing it.
+
+00643660 selects Climbing for humanoid state 10. Recovered 00644a30 checks a
+box ahead of the torso against nearby parts, excluding descendants of the
+character; its relationship to actual state transition and force integration
+still needs proof. The present Running::onStep is a reconstructed donor path
+and has no Climbing transition. Recover transition predicates and force update
+before adding an event-only shim.
