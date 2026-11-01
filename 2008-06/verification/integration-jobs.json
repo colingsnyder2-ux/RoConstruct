@@ -8383,5 +8383,45 @@
     "unit": "RBX::AdornG3D",
     "updated": 1793466416.2500527,
     "user": "EspClaude"
+  },
+  {
+    "created": 1793569265.2966697,
+    "id": "09995d6812f849f4a30530d651dca4cb",
+    "model": "gpt-6.1-sol",
+    "patches": {
+      "App/util/RunStateOwner.cpp": [
+        [
+          "RunService::setRunState(RunState newState)\n\t{\n\t\tRunTransition transition(runState, newState);\n\t\trunState = newState;\n\n\t\tNotifier<RunService, RunState>::raise(newState);\n\t\tNotifier<RunService, RunTransition>::raise(transition);\n\t}",
+          "RunService::setRunState(RunState newState)\n\t{\n    if (newState == RS_RUNNING) {\n        if (runState != RS_NORMAL && runState != RS_PAUSED) return;\n    } else if (newState == RS_PAUSED) {\n        if (runState != RS_RUNNING) return;\n    } else if (newState == RS_NORMAL) {\n        unknown0x1b8 = 0.0;\n    }\n    RunState old = runState;\n    if (old != newState) {\n        runState = newState;\n        Notifier<RunService, RunState>::raise(newState);\n        Notifier<RunService, RunTransition>::raise(RunTransition(old, newState));\n    }\n}"
+        ]
+      ]
+    },
+    "phase": "complete",
+    "receipt": {
+      "accepted": false
+    },
+    "state": "rejected",
+    "unit": "RBX::RunService",
+    "updated": 1793569910.2707949,
+    "user": "colin"
+  },
+  {
+    "created": 1793570908.2260478,
+    "id": "d497fe6a85ca4b468534ed463a48d756",
+    "model": "gpt-6.1-sol",
+    "patches": {
+      "App/util/RunStateOwner.cpp": [
+        [
+          "RunService::setRunState(RunState newState)\n\t{\n\t\tRunTransition transition(runState, newState);\n\t\trunState = newState;\n\n\t\tNotifier<RunService, RunState>::raise(newState);\n\t\tNotifier<RunService, RunTransition>::raise(transition);\n\t}",
+          "RunService::setRunState(RunState newState)\n\t{\n    if (newState == RS_RUNNING) {\n        if (runState != RS_NORMAL && runState != RS_PAUSED) return;\n    } else if (newState == RS_PAUSED) {\n        if (runState != RS_RUNNING) return;\n    } else if (newState == RS_NORMAL) {\n        unknown0x1b8 = 0.0;\n    }\n    RunState old = runState;\n    if (old != newState) {\n        runState = newState;\n        Notifier<RunService, RunState>::raise(newState);\n        Notifier<RunService, RunTransition>::raise(RunTransition(old, newState));\n    }\n}"
+        ]
+      ]
+    },
+    "phase": "baseline: building",
+    "receipt": {},
+    "state": "verifying",
+    "unit": "RBX::RunService",
+    "updated": 1793571012.9534283,
+    "user": "colin"
   }
 ]

@@ -17,6 +17,18 @@ public:
         SetReadOnly(property->isReadOnly());
     }
     virtual void update(RBX::SelectionGroup*);
+    virtual void OnValueChanged(CString value)
+    {
+        GridItem::OnValueChanged(value);
+        T converted = readValue();
+        applyValue(converted);
+    }
+    void applyValue(const T&);
+    virtual T readValue();
+    virtual void displayValue(const T&);
+    virtual bool equalValues(const T& left, const T& right) { return left == right; }
+    virtual void writeValue(RBX::Instance*, const T&);
+    virtual bool emptyValue() { return GetValue().IsEmpty(); }
 };
 
 typedef XItem<bool, CXTPPropertyGridItemBool, RBX::Reflection::TypedPropertyDescriptor<bool> > BoolItemBase;
@@ -28,3 +40,18 @@ public:
         SetCheckBoxStyle(TRUE);
     }
 };
+
+// Native attachment algorithm; use the real descriptor map and SDK ownership.
+template<class Editor>
+void CPropGrid::addItem(Editor* item)
+{
+    CXTPPropertyGridItem* category = getCategory(item->descriptor->category);
+    int index = 0;
+    for (; index < category->GetChilds()->GetCount(); ++index) {
+        CXTPPropertyGridItem* other = category->GetChilds()->GetAt(index);
+        if (item->GetCaption().Compare(other->GetCaption()) < 0) break;
+    }
+    category->InsertChildItem(index, item);
+    propertyItems[item->descriptor] = &static_cast<Item&>(*item);
+    items.push_back(&static_cast<Item&>(*item));
+}

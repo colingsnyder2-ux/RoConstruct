@@ -1,130 +1,58 @@
-// from server: 51% by sophus
+// from server: 100% by EspClaude
 // roc-lang: cpp
-// roc-cl: 30729
+// roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs script/Script.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "script/Script.h"
-#include "script/ScriptContext.h"
-#include "v8tree/Service.h"
-#include "boost/thread/once.hpp"
-
-using namespace RBX;
-
-const Reflection::PropDescriptor<Script, std::string> Script::prop_EmbeddedSourceCode("Source", "Data", &Script::getEmbeddedCode, &Script::setEmbeddedCode, Reflection::PropertyDescriptor::LEGACY);
-const Reflection::PropDescriptor<Script, ContentId> Script::prop_SourceCodeId("LinkedSource", "Data", &Script::getScriptId, &Script::setScriptId, Reflection::PropertyDescriptor::LEGACY);
-Reflection::BoundProp<bool, true> Script::prop_Disabled("Disabled", "Behavior", &Script::disabled, Reflection::PropertyDescriptor::STANDARD);
-
-static boost::shared_ptr<const std::string> helloWorld;
-static boost::once_flag flagInitScriptCpp = BOOST_ONCE_INIT;
-
-void initScriptCpp()
-{
-    helloWorld.reset(new std::string("print(\"Hello world!\")\r\n"));
+#include <utility>
+#include <string>
+namespace boost {
+	class any {
+		struct placeholder { virtual ~placeholder() {} };
+		template<class V> struct holder : placeholder { holder(const V& v) : held(v) {} V held; };
+	public:
+		any() : content(0) {}
+		template<class V> any(const V& v);
+		~any() { delete content; }
+		any& swap(any& rhs) { std::swap(content, rhs.content); return *this; }
+		template<class V> any& operator=(const V& rhs) { any(rhs).swap(*this); return *this; }
+		placeholder* content;
+	};
 }
-
-const char* RBX::sScript = "Script";
-
-Script::Script()
-    : DescribedCreatable("Script"),
-      disabled(false),
-      owner(NULL)
-{
-    boost::call_once(&initScriptCpp, flagInitScriptCpp);
-    embeddedSource = helloWorld;
-}
-
-const char* RBX::sLocalScript = "LocalScript";
-
-LocalScript::LocalScript()
-{
-    setName("LocalScript");
-}
-
-Script::~Script()
-{
-    RBXASSERT(owner == NULL);
-}
-
-void Script::setEmbeddedCode(const std::string& value)
-{
-    if (getEmbeddedCode() != value)
-    {
-        embeddedSource.reset(new std::string(value));
-        raisePropertyChanged(prop_EmbeddedSourceCode);
-    }
-}
-
-void Script::setScriptId(const ContentId& value)
-{
-    if (getScriptId() != value)
-    {
-        scriptId = value;
-        requestCode();
-        raisePropertyChanged(prop_SourceCodeId);
-    }
-}
-
-void Script::onAncestorChanged(const AncestorChanged& event)
-{
-    Instance::onAncestorChanged(event);
-
-    IScriptOwner* newOwner = NULL;
-    Instance* parent = this->getParent();
-
-    while (parent)
-    {
-        IScriptOwner* parentOwner = dynamic_cast<IScriptOwner*>(parent);
-
-        if (parentOwner)
-        {
-            newOwner = parentOwner->scriptShouldRun(this);
-
-            if (newOwner)
-                break;
-        }
-
-        parent = parent->getParent();
-    }
-
-    if (newOwner != owner)
-    {
-        if (owner)
-            owner->releaseScript(this);
-
-        owner = newOwner;
-
-        ScriptContext* sc = ServiceProvider::find<ScriptContext>(this);
-
-        if (sc)
-        {
-            sc->removeScript(this);
-
-            if (owner)
-                owner->runScript(this, sc);
-        }
-    }
-}
-
-void Script::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-{
-	if (ScriptContext* sc = ServiceProvider::find<ScriptContext>(oldProvider))
-	{
-		sc->removeScript(this);
-	}
-
-	Instance::onServiceProvider(oldProvider, newProvider);
-}
-
-boost::shared_ptr<const std::string> Script::requestCode()
-{
-    if (scriptId.isNull())
-    {
-        return embeddedSource;
-    }
-    else 
-    {
-        return ContentProvider::singleton().requestContentString(scriptId);
-    }
-}
+namespace RBX {
+	class Instance;
+	class ContentId { public: std::string id; int extra; };
+	namespace Reflection {
+		class Type {
+		public:
+			template<typename T> static const Type& singleton();
+		};
+		template<class T> struct ExeCounter { static int n; };
+		class Value {
+			const Type* _type;
+			boost::any value;
+		public:
+			template<typename T>
+			Value& operator=(const T& rhs)
+			{
+				++ExeCounter<T>::n;
+				this->_type = &Type::singleton<T>();
+				this->value = rhs;
+				return *this;
+			}
+		};
+		template<class V> class GetSet {
+		public:
+			virtual ~GetSet();
+			virtual void v1();
+			virtual V get(const Instance* instance) const = 0;
+		};
+		class StringPropDescriptor {
+		public:
+			char pad[0x18];
+			GetSet<ContentId>* getset;
+			void getValue(const Instance* instance, Value& value) const;
+		};
+		void StringPropDescriptor::getValue(const Instance* instance, Value& value) const
+		{
+			value = getset->get(instance);
+		}
+}}

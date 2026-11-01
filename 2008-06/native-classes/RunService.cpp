@@ -27,3 +27,16 @@ void RunService::setRunState(RunState next) {
     }
 }
 }
+
+void RBX::RunService::invalidateRunViews() {
+    boost::mutex::scoped_lock guard(viewMutex);
+    if (invalidRunViewCount != 0) return;
+    invalidRunViewCount = views.size();
+    if (invalidRunViewCount > 0) {
+        for (std::map<IRunView*, bool>::iterator it = views.begin(); it != views.end(); ++it) {
+            it->first->InvalidateRunView();
+            it->second = false;
+        }
+        runViewsDoneCondition.notify_all();
+    }
+}

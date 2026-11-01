@@ -58,6 +58,13 @@ public:
     virtual void onServiceProvider(const ServiceProvider*, const ServiceProvider*);
     virtual boost::shared_ptr<Instance> createChild(const Name&);
     const std::string& getName() const { return name; }
+    size_t numChildren() const
+    {
+        if (children) return children->size();
+        return 0;
+    }
+    const Instance* getChild(size_t i) const { return (*children)[i].get(); }
+    Instance* getChild(size_t i) { return (*children)[i].get(); }
     void setParent(Instance*);
     void writeChildren(::XmlElement*);
     virtual XmlElement* write();

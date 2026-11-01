@@ -39,6 +39,7 @@ public:
     }
     afx_msg int OnCreate(LPCREATESTRUCT);
     afx_msg LRESULT OnUpdate(WPARAM, LPARAM);
+    template<class Editor> void addItem(Editor*);
     CXTPPropertyGridItem* getCategory(const RBX::Name&);
     void rebuild(const RBX::Reflection::ClassDescriptor*);
     virtual void addProperty(const RBX::Reflection::ClassDescriptor*, const RBX::Reflection::PropertyDescriptor*);

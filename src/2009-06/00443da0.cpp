@@ -1,42 +1,40 @@
-// from server: 50% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/FaceInstance.cpp
+#include <vector>
+#include <algorithm>
 
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/FaceInstance.h"
-#include "v8datamodel/PartInstance.h"
-#include "util/NormalId.h"
-#include "v8tree/Instance.h"
-#include "reflection/reflection.h"
-namespace RBX 
+namespace RBX {
+struct Item
 {
-	const char* sFaceInstance = "FaceInstance";
-	const Reflection::EnumPropDescriptor<FaceInstance,NormalId> FaceInstance::prop_Face("Face", "Data", &FaceInstance::getFace, &FaceInstance::setFace, Reflection::PropertyDescriptor::STANDARD);
+    char pad[0xc];
+    int id;
+};
 
-	FaceInstance::FaceInstance()
-		:face(NORM_Z_NEG)
-	{
-	}
+static bool hasId(Item* item, int id)
+{
+    return item->id == id;
+}
 
-	void FaceInstance::setFace(NormalId value) 
-	{
-		if (face != value) 
-		{
-			face = value;
-			raisePropertyChanged(prop_Face);
-		}
-	}
+struct BoundPred
+{
+    bool (*f)(Item*, int);
+    int id;
+    BoundPred(bool (*f)(Item*, int), int id) : f(f), id(id) {}
+    bool operator()(Item* p) const { return f(p, id); }
+};
 
+class Container
+{
+    char pad[0x14];
+    std::vector<Item*> items;
+public:
+    bool contains(int id);
+};
 
-	NormalId FaceInstance::getFace() const 
-	{
-		return face;
-	}
-
-	bool FaceInstance::askSetParent(const Instance* instance) const 
-	{
-		return dynamic_cast<const PartInstance*>(instance) != NULL;
-	}
+bool Container::contains(int id)
+{
+    return std::find_if(items.begin(), items.end(), BoundPred(&hasId, id)) != items.end();
+}
 }

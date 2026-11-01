@@ -1,207 +1,50 @@
-// from server: 50% by tester
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client App/v8datamodel/JointInstance.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/JointInstance.h"
-
-#include "reflection/property.h"
-#include "util/Name.h"
-#include "v8datamodel/PartInstance.h"
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
+#include <math.h>
 
 namespace RBX {
+namespace Reflection { class PropertyDescriptor; }
+extern Reflection::PropertyDescriptor prop_DesiredAngle;
+extern Reflection::PropertyDescriptor prop_CurrentAngle;
 
-const char sAutoJoint[] = "AutoJoint";
-
-const char sJointInstance[] = "JointInstance";
-
-const char sMotor[] = "Motor";
-
-const char sRotateV[] = "RotateV";
-
-const char sRotateP[] = "RotateP";
-
-const char sRotate[] = "Rotate";
-
-const char sGlue[] = "Glue";
-
-const char sWeld[] = "Weld";
-
-const char sSnap[] = "Snap";
-
-static Reflection::PropDescriptor<Motor, float> prop_MaxVelocity(
-	"MaxVelocity",
-	"Data",
-	&RBX::Motor::getMaxVelocity,
-	&RBX::Motor::setMaxVelocity
-);
-
-static Reflection::PropDescriptor<Motor, float> prop_CurrentAngle(
-	"CurrentAngle",
-	"Data",
-	&RBX::Motor::getCurrentAngle,
-	&RBX::Motor::setCurrentAngle
-);
-
-float Motor::getMaxVelocity() const
+class MotorJoint
 {
-	return static_cast<MotorJoint*>(joint)->getMaxVelocity();
+    char pad[0xa4];
+    float desiredAngle;
+public:
+    float getDesiredAngle() const { return desiredAngle; }
+    void setDesiredAngle(float v) { desiredAngle = v; }
+};
+
+class Instance
+{
+public:
+    void raisePropertyChanged(const Reflection::PropertyDescriptor& desc);
+};
+
+class Motor : public Instance
+{
+    char pad[0xac];
+    MotorJoint* joint;
+public:
+    void setDesiredAngle(float value);
+};
+
+static inline bool fuzzyEq(float a, float b)
+{
+    return a == b || fabs(a - b) <= (fabs(a) + 1.0f) * 0.034906585f;
 }
 
-float Motor::getCurrentAngle() const
+void Motor::setDesiredAngle(float value)
 {
-	return static_cast<MotorJoint*>(joint)->getCurrentAngle();
+    MotorJoint* j = joint;
+    float current = j->getDesiredAngle();
+    if (value != current && !(fabs(value - current) <= (fabs(value) + 1.0f) * 0.034906585f)) {
+        j->setDesiredAngle(value);
+        raisePropertyChanged(prop_DesiredAngle);
+        raisePropertyChanged(prop_CurrentAngle);
+    }
 }
-
-// FUNCTION: WEBSERVICE 0x100d7df0
-JointInstance::~JointInstance()
-{
-	joint->setJointOwner(NULL);
-	delete joint;
-	joint = NULL;
 }
-
-// STUB: WEBSERVICE 0x100d8030
-void AutoJoint::setPart(int index, PartInstance* value)
-{
-	if (part[index].get() == value) {
-		return;
-	}
-
-	part[index] = shared_from(value);
-	joint->setPrimitive(index, value ? value->getPrimitive() : NULL);
-}
-
-// STUB: WEBSERVICE 0x100d8110
-AutoJoint::~AutoJoint()
-{
-	setPart(0, NULL);
-	setPart(1, NULL);
-}
-
-// FUNCTION: WEBSERVICE 0x100d9020
-void Motor::setMaxVelocity(float value)
-{
-	if (value != static_cast<MotorJoint*>(joint)->getMaxVelocity()) {
-		static_cast<MotorJoint*>(joint)->setMaxVelocity(value);
-		raisePropertyChanged(prop_MaxVelocity);
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x100d90c0
-void Motor::setCurrentAngle(float value)
-{
-	if (value != static_cast<MotorJoint*>(joint)->getCurrentAngle()) {
-		static_cast<MotorJoint*>(joint)->setCurrentAngle(value);
-		raisePropertyChanged(prop_CurrentAngle);
-	}
-}
-
-Snap::Snap(Joint* joint) : DescribedCreatable<Snap, AutoJoint, sSnap>(joint)
-{
-}
-
-// STUB: WEBSERVICE 0x100d9b20
-Snap::Snap() : DescribedCreatable<Snap, AutoJoint, sSnap>(new SnapJoint())
-{
-	setName("Snap");
-}
-
-// STUB: WEBSERVICE 0x100d9c20
-Weld::Weld(Joint* joint) : DescribedCreatable<Weld, AutoJoint, sWeld>(joint)
-{
-}
-
-// STUB: WEBSERVICE 0x100d9cb0
-Weld::Weld() : DescribedCreatable<Weld, AutoJoint, sWeld>(new WeldJoint())
-{
-}
-
-// FUNCTION: WEBSERVICE 0x100d9d80
-Glue::Glue(Joint* joint) : DescribedCreatable<Glue, AutoJoint, sGlue>(joint)
-{
-}
-
-// FUNCTION: WEBSERVICE 0x100d9e00
-Glue::Glue() : DescribedCreatable<Glue, AutoJoint, sGlue>(new GlueJoint())
-{
-}
-
-// STUB: WEBSERVICE 0x100d9ec0
-Rotate::Rotate(Joint* joint) : DescribedCreatable<Rotate, AutoJoint, sRotate>(joint)
-{
-}
-
-// STUB: WEBSERVICE 0x100d9f90
-Rotate::Rotate() : DescribedCreatable<Rotate, AutoJoint, sRotate>(new RotateJoint())
-{
-}
-
-// STUB: WEBSERVICE 0x100da050
-RotateP::RotateP(Joint* joint) : DescribedCreatable<RotateP, AutoJoint, sRotateP>(joint)
-{
-}
-
-// STUB: WEBSERVICE 0x100da100
-RotateP::RotateP() : DescribedCreatable<RotateP, AutoJoint, sRotateP>(new RotatePJoint())
-{
-}
-
-// STUB: WEBSERVICE 0x100da1d0
-RotateV::RotateV(Joint* joint) : DescribedCreatable<RotateV, AutoJoint, sRotateV>(joint)
-{
-}
-
-// STUB: WEBSERVICE 0x100da280
-RotateV::RotateV() : DescribedCreatable<RotateV, AutoJoint, sRotateV>(new RotateVJoint())
-{
-}
-
-Motor::Motor(Joint* joint) : DescribedCreatable<Motor, AutoJoint, sMotor>(joint)
-{
-}
-
-// FUNCTION: WEBSERVICE 0x100da370
-Motor::Motor() : DescribedCreatable<Motor, AutoJoint, sMotor>(new MotorJoint())
-{
-	setName("Motor");
-}
-
-} // namespace RBX
-
-template const RBX::Name& RBX::Name::doDeclare<RBX::sJointInstance>();
-template void RBX::Name::callDoDeclare<RBX::sJointInstance>();
-template const RBX::Name& RBX::Name::doDeclare<RBX::sAutoJoint>();
-template void RBX::Name::callDoDeclare<RBX::sAutoJoint>();
-
-template class RBX::FactoryProduct<RBX::Glue, RBX::AutoJoint, RBX::sGlue>;
-template class RBX::Reflection::
-	Described<RBX::Glue, RBX::sGlue, RBX::FactoryProduct<RBX::Glue, RBX::AutoJoint, RBX::sGlue> >;
-template class RBX::DescribedCreatable<RBX::Glue, RBX::AutoJoint, RBX::sGlue>;
-
-template class RBX::FactoryProduct<RBX::Rotate, RBX::AutoJoint, RBX::sRotate>;
-template class RBX::Reflection::
-	Described<RBX::Rotate, RBX::sRotate, RBX::FactoryProduct<RBX::Rotate, RBX::AutoJoint, RBX::sRotate> >;
-template class RBX::DescribedCreatable<RBX::Rotate, RBX::AutoJoint, RBX::sRotate>;
-
-template class RBX::FactoryProduct<RBX::RotateP, RBX::AutoJoint, RBX::sRotateP>;
-template class RBX::Reflection::
-	Described<RBX::RotateP, RBX::sRotateP, RBX::FactoryProduct<RBX::RotateP, RBX::AutoJoint, RBX::sRotateP> >;
-template class RBX::DescribedCreatable<RBX::RotateP, RBX::AutoJoint, RBX::sRotateP>;
-
-template class RBX::FactoryProduct<RBX::RotateV, RBX::AutoJoint, RBX::sRotateV>;
-template class RBX::Reflection::
-	Described<RBX::RotateV, RBX::sRotateV, RBX::FactoryProduct<RBX::RotateV, RBX::AutoJoint, RBX::sRotateV> >;
-template class RBX::DescribedCreatable<RBX::RotateV, RBX::AutoJoint, RBX::sRotateV>;
-
-template class RBX::FactoryProduct<RBX::Snap, RBX::AutoJoint, RBX::sSnap>;
-template class RBX::Reflection::
-	Described<RBX::Snap, RBX::sSnap, RBX::FactoryProduct<RBX::Snap, RBX::AutoJoint, RBX::sSnap> >;
-template class RBX::DescribedCreatable<RBX::Snap, RBX::AutoJoint, RBX::sSnap>;
-
-template class RBX::FactoryProduct<RBX::Weld, RBX::AutoJoint, RBX::sWeld>;
-template class RBX::Reflection::
-	Described<RBX::Weld, RBX::sWeld, RBX::FactoryProduct<RBX::Weld, RBX::AutoJoint, RBX::sWeld> >;
-template class RBX::DescribedCreatable<RBX::Weld, RBX::AutoJoint, RBX::sWeld>;

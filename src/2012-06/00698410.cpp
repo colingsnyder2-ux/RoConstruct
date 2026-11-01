@@ -1,4 +1,4 @@
-// from server: 28% by Intel
+// from server: 37% by Intel
 struct EnumDesc {
     void* vftable;
     char pad[0xAC];
@@ -6,11 +6,11 @@ struct EnumDesc {
     int Init(int a2, int a3, int a4);
 };
 
-extern "C" int __stdcall sub_6974A0(int, int);
-extern "C" int __stdcall sub_75FAE0(int, int, int);
-extern "C" void __stdcall sub_46C000(int, int);
-extern "C" void __stdcall sub_75F9C0(int, int);
-extern "C" void __stdcall sub_596B70(int, int);
+extern "C" int __cdecl sub_6974A0(int, int);
+extern "C" int __cdecl sub_75FAE0(int, int, int);
+extern "C" void __cdecl sub_46C000(int, int);
+extern "C" void __cdecl sub_75F9C0(int, int);
+extern "C" void __cdecl sub_596B70(int, int);
 
 int EnumDesc::Init(int a2, int a3, int a4) {
     int v5 = 0;

@@ -1,108 +1,51 @@
-// from server: 51% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
-
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
-
-boost::mutex& moo2()
-{
-	static boost::mutex mutex2;
-	return mutex2;
+struct lua_State;
+typedef int (*lua_CFunction)(lua_State* L);
+extern "C" {
+int luaL_newmetatable(lua_State* L, const char* tname);
+void lua_pushstring(lua_State* L, const char* s);
+void lua_pushcclosure(lua_State* L, lua_CFunction fn, int n);
+void lua_settable(lua_State* L, int idx);
+void lua_setreadonly(lua_State* L, int idx, int enabled);
+void lua_settop(lua_State* L, int idx);
 }
-
-void initMoo()
+#define lua_pushcfunction(L,f) lua_pushcclosure(L, (f), 0)
+#define lua_pop(L,n) lua_settop(L, -(n)-1)
+namespace RBX { namespace Lua {
+template<class T> class Bridge {
+public:
+    static const char* className;
+    static int on_index(lua_State* L);
+    static int on_newindex(lua_State* L);
+    static int on_gc(lua_State* L);
+    static int on_eq(lua_State* L);
+    static int on_tostring(lua_State* L);
+    static void registerClass(lua_State* L);
+};
+template<class T> void Bridge<T>::registerClass(lua_State* L)
 {
-	moo2();
+    luaL_newmetatable(L, className);
+    lua_pushstring(L, "__index");
+    lua_pushcfunction(L, on_index);
+    lua_settable(L, -3);
+    lua_pushstring(L, "__newindex");
+    lua_pushcfunction(L, on_newindex);
+    lua_settable(L, -3);
+    lua_pushstring(L, "__gc");
+    lua_pushcfunction(L, on_gc);
+    lua_settable(L, -3);
+    lua_pushstring(L, "__eq");
+    lua_pushcfunction(L, on_eq);
+    lua_settable(L, -3);
+    lua_pushstring(L, "__tostring");
+    lua_pushcfunction(L, on_tostring);
+    lua_settable(L, -3);
+    lua_setreadonly(L, -1, 1);
+    lua_pop(L, 1);
 }
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
-}
+struct Tag {};
+template class Bridge<Tag>;
+} }
