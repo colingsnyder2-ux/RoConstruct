@@ -81,3 +81,14 @@ SoundService/SoundChannel methods, using genuine members. Reject saved source
 opaque padded declarations and wrong Script.cpp/Ogre donor resolutions. Then
 load authored tone.wav through a serialized Sound and native playback/heartbeat,
 capture actual audio, and compare with the original.
+
+Additional ABI witness: VS2008 `/d1reportSingleClassLayoutSoundService` reports
+donor SoundService size 560 (0x230), system at300/0x12c, mySoundDisabled at440,
+and four embedded property descriptor objects at444/472/500/528. Original factory
+00440a00 calls00440980, which allocates0x1c8/456 at0044099f and calls actual
+constructor005bc160 at004409c4. Native system is0x134, mySoundDisabled0x1c0.
+The donor embeds descriptors that cannot fit this original allocation; establish
+their static/global ownership and correct declarations before integrating the
+service. Even after removing those instance descriptors, its base/member prefix
+still differs by8 bytes. Do not fill that difference with invented padding.
+Witness files: `work/2008-06/p4-sound-layout/` and native factory disassemblies.

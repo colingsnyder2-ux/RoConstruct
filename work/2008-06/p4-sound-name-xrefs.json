@@ -1,0 +1,85 @@
+{
+  "Sound": [
+    {
+      "string_va": "00818748",
+      "code_refs": [
+        {
+          "operand_va": "00456991",
+          "owner_candidate": "00456820"
+        },
+        {
+          "operand_va": "00456b22",
+          "owner_candidate": "00456820"
+        },
+        {
+          "operand_va": "005bc54e",
+          "owner_candidate": "005bc480"
+        },
+        {
+          "operand_va": "005bcc77",
+          "owner_candidate": "005bcc40"
+        },
+        {
+          "operand_va": "007f55f8",
+          "owner_candidate": "007f55f0"
+        },
+        {
+          "operand_va": "007f5628",
+          "owner_candidate": "007f5620"
+        }
+      ]
+    },
+    {
+      "string_va": "00838814",
+      "code_refs": []
+    },
+    {
+      "string_va": "00845852",
+      "code_refs": []
+    },
+    {
+      "string_va": "0094d309",
+      "code_refs": []
+    },
+    {
+      "string_va": "0094d310",
+      "code_refs": [
+        {
+          "operand_va": "00437fbb",
+          "owner_candidate": "00437f90"
+        },
+        {
+          "operand_va": "005bb889",
+          "owner_candidate": "005bb860"
+        }
+      ]
+    }
+  ],
+  "SoundChannel": [],
+  "SoundService": [
+    {
+      "string_va": "0094d2f4",
+      "code_refs": [
+        {
+          "operand_va": "00437f4b",
+          "owner_candidate": "00437f20"
+        },
+        {
+          "operand_va": "005bb819",
+          "owner_candidate": "005bb7f0"
+        }
+      ]
+    }
+  ],
+  "Soundscape": [
+    {
+      "string_va": "00837e90",
+      "code_refs": [
+        {
+          "operand_va": "005bc270",
+          "owner_candidate": "005bc160"
+        }
+      ]
+    }
+  ]
+}

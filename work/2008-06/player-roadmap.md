@@ -1,5 +1,35 @@
 # Current player checkpoint
 
+P4 audio prerequisite PASSED at sourcea67fa9d7e2, not full audio/P4. New
+PlayerNativeSound.cpp integrates real Sound constructor/get/detach/destructor
+using genuine Sound.h members and existing005bc6f0 algorithm; no padded mining
+declarations. Sound size0x30,SoundId0x20,actual SDKcreatesoundinfo0x6c asserted.
+Constructor locally matches unique005b6f70, no new server credit claimed.
+SDK4.08.08 headers used with real targetDLL reporting4.14.06; undecorated C
+System_Create import alias preserves stdcall. get() singletonContentProvider is
+the existing offline adapter; June get(context) provider discovery still open.
+Diagnostic NOSOUND only:16lifetimes,cache hits,detach/reload,2D/3D,missingasset,
+all5512PCM16samples match authored440Hz within1unit,11024bytes; provider cache
+cleared beforePCMverification. ActualFMODDLLpath/hash pins original dependency.
+Receipt:work/2008-06/p4-sound-asset-a67fa9d7e2/receipt.json.
+Native descriptors005bb860/005bb7f0 prove classesSound/SoundService; ctor005bc160
+sets default nameSoundscape. Fixed glue's incorrect SoundChannel class string
+toSound, rebuilt rbxgs-app explicitly and canonicalplayer. Same-revision normal
+P4asset5cases and mixed-shapeP3lifetime/selftest/cachetest allPASS:
+p4-assets-sound-regression-a67fa9d7e2/,p4-sound-lifetime-a67fa9d7e2/.
+Next native edge:005bceb0->005bb5f0 SoundService::loadSound selects2D/3D map,
+returns cached sharedSound or creates/inserts genuineSound. Existing source
+p4-sound-service-cache-source.cpp has correct algorithm but padded declarations:
+do not adopt declarations. Before service integration fix proven donor ABI issue:
+compiler layout SoundService560(0x230), four embedded descriptors444/472/500/528;
+nativefactory00440a00->00440980 allocates456(0x1c8) and calls005bc160. Its actual
+system134/myDisabled1c0 vs donor12c/1b8. Resolve descriptor static/global ownership
+then remaining8-byte base prefix with evidence, never padding. Witness:
+p4-sound-layout/compiler-output.txt, p4-sound-service-create-instance.txt.
+SoundService/Channel lifecycle, real reflection/factory, heartbeat/callbacks,
+audible output and original audio comparison still OPEN. No builds live. Owner
+debug3files remain39insertions/12deletions; docsprogress is local build output.
+
 P4 original asset comparison advanced after88e67662d4. Unmodified oracle in new
 work/2008-06/original-p4-reference/ with independent copied Content, no junction
 writes. Same2fixtures render same quadrant orientation/red sphere; Explorer
