@@ -7,6 +7,7 @@
 #include <afxext.h>
 #include <XTToolkitPro.h>
 #include <stdio.h>
+#include <vector>
 #include "P6Engine.h"
 #pragma comment(lib, "version.lib")
 
@@ -52,6 +53,8 @@ public:
 static CString g_capture, g_script, g_saveAs, g_runFile;
 static CString g_select, g_setProperty;
 static CDialog* g_about;
+struct UndoMove { void* item; float position[3]; };
+static std::vector<UndoMove> g_undo; // ponytail: moves only, unbounded; original undo covers every edit
 static bool g_play;
 static UINT g_post;
 static bool g_openFailed;
@@ -253,6 +256,7 @@ public:
         return !status;
     }
     virtual void OnCloseDocument() {
+        g_undo.clear();
         P6EngineClose();
         CDocument::OnCloseDocument();
     }
@@ -263,6 +267,10 @@ class CRobloxView : public CView {
     DECLARE_DYNCREATE(CRobloxView)
 public:
     CPoint dragFrom;
+    void* dragged;
+    float dragStart[3];
+public:
+    CRobloxView() : dragged(NULL) {}
     virtual void OnDraw(CDC*) {}
     afx_msg void OnPlaySolo() {
         int status = P6EnginePlay();
@@ -300,12 +308,39 @@ public:
         CRect rect;
         GetClientRect(rect);
         SetFocus();
-        void* hit = P6EnginePick(float(point.x) / rect.Width(), float(point.y) / rect.Height());
-        if (hit) static_cast<CMainFrame*>(AfxGetMainWnd())->SelectHandle(hit);
+        dragged = P6EngineDragBegin(float(point.x) / rect.Width(), float(point.y) / rect.Height(), dragStart);
+        if (!dragged) return;
+        static_cast<CMainFrame*>(AfxGetMainWnd())->SelectHandle(dragged);
+        SetCapture();
     }
+    afx_msg void OnLButtonUp(UINT, CPoint) {
+        if (!dragged) return;
+        ReleaseCapture();
+        float end[3];
+        if (!P6DataGetPosition(dragged, end) && (end[0] != dragStart[0] || end[2] != dragStart[2])) {
+            UndoMove move = {dragged, {dragStart[0], dragStart[1], dragStart[2]}};
+            g_undo.push_back(move);
+            GetDocument()->SetModifiedFlag();
+            printf("p6: moved %g %g %g\n", end[0], end[1], end[2]);
+        }
+        dragged = NULL;
+    }
+    afx_msg void OnUndo() {
+        if (g_undo.empty()) return;
+        UndoMove move = g_undo.back();
+        g_undo.pop_back();
+        printf("p6: undo %d\n", P6DataSetPosition(move.item, move.position));
+    }
+    afx_msg void OnUpdateUndo(CCmdUI* ui) { ui->Enable(!g_undo.empty()); }
     afx_msg void OnRButtonDown(UINT, CPoint point) { dragFrom = point; SetCapture(); }
     afx_msg void OnRButtonUp(UINT, CPoint) { ReleaseCapture(); }
     afx_msg void OnMouseMove(UINT flags, CPoint point) {
+        if (dragged) {
+            CRect rect;
+            GetClientRect(rect);
+            P6EngineDragTo(float(point.x) / rect.Width(), float(point.y) / rect.Height());
+            return;
+        }
         if (!(flags & MK_RBUTTON)) return;
         P6EngineOrbit(-0.01f * (point.x - dragFrom.x), 0.01f * (point.y - dragFrom.y));
         dragFrom = point;
@@ -324,6 +359,9 @@ IMPLEMENT_DYNCREATE(CRobloxView, CView)
 BEGIN_MESSAGE_MAP(CRobloxView, CView)
     ON_WM_SIZE()
     ON_WM_LBUTTONDOWN()
+    ON_WM_LBUTTONUP()
+    ON_COMMAND(ID_EDIT_UNDO, &CRobloxView::OnUndo)
+    ON_UPDATE_COMMAND_UI(ID_EDIT_UNDO, &CRobloxView::OnUpdateUndo)
     ON_WM_RBUTTONDOWN()
     ON_WM_RBUTTONUP()
     ON_WM_MOUSEMOVE()

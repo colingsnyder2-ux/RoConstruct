@@ -48,6 +48,35 @@ extern "C" void* P6DataPartAt(float x, float y, float z)
     return partAt(model, G3D::Vector3(x, y, z));
 }
 
+static RBX::PartInstance* livePart(void* handle);
+
+extern "C" int P6DataGetPosition(void* handle, float* position)
+{
+    RBX::DataModel* model = EngineDataModel();
+    if (!model) return 1;
+    RBX::DataModel::Lock lock(model);
+    RBX::PartInstance* part = livePart(handle);
+    if (!part) return 2;
+    const G3D::Vector3& at = part->getCoordinateFrame().translation;
+    position[0] = at.x;
+    position[1] = at.y;
+    position[2] = at.z;
+    return 0;
+}
+
+extern "C" int P6DataSetPosition(void* handle, const float* position)
+{
+    RBX::DataModel* model = EngineDataModel();
+    if (!model) return 1;
+    RBX::DataModel::Lock lock(model);
+    RBX::PartInstance* part = livePart(handle);
+    if (!part) return 2;
+    G3D::CoordinateFrame frame = part->getCoordinateFrame();
+    frame.translation = G3D::Vector3(position[0], position[1], position[2]);
+    part->setCoordinateFrame(frame);
+    return 0;
+}
+
 // Tree items can outlive their instance, so resolve them against the live model.
 static bool contains(RBX::Instance* item, const void* wanted)
 {
@@ -57,6 +86,12 @@ static bool contains(RBX::Instance* item, const void* wanted)
     for (size_t i = 0; i < children->size(); ++i)
         if (contains((*children)[i].get(), wanted)) return true;
     return false;
+}
+
+static RBX::PartInstance* livePart(void* handle)
+{
+    if (!contains(EngineDataModel(), handle)) return NULL;
+    return dynamic_cast<RBX::PartInstance*>(static_cast<RBX::Instance*>(handle));
 }
 
 extern "C" int P6DataProperties(void* handle, P6PropertyVisitor visitor, void* context)

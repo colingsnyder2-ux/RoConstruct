@@ -257,6 +257,40 @@ extern "C" void* P6EnginePick(float x, float y)
     return P6DataPartAt(best.position[0], best.position[1], best.position[2]);
 }
 
+static void* g_drag;
+static float g_dragStart[3];
+static Ogre::Vector3 g_dragOrigin;
+
+static bool dragPoint(float x, float y, Ogre::Vector3& point)
+{
+    Ogre::Ray ray = g_camera->getCameraToViewportRay(x, y);
+    std::pair<bool, Ogre::Real> hit = ray.intersects(Ogre::Plane(Ogre::Vector3::UNIT_Y, g_dragStart[1]));
+    if (!hit.first) return false;
+    point = ray.getPoint(hit.second);
+    return true;
+}
+
+// Drags on the Part's horizontal plane, snapping to whole studs.
+extern "C" void* P6EngineDragBegin(float x, float y, float* start)
+{
+    g_drag = P6EnginePick(x, y);
+    if (!g_drag || P6DataGetPosition(g_drag, g_dragStart) || !dragPoint(x, y, g_dragOrigin)) {
+        g_drag = NULL;
+        return NULL;
+    }
+    for (int i = 0; i < 3; ++i) start[i] = g_dragStart[i];
+    return g_drag;
+}
+
+extern "C" int P6EngineDragTo(float x, float y)
+{
+    Ogre::Vector3 point;
+    if (!g_drag || !dragPoint(x, y, point)) return 0;
+    Ogre::Vector3 delta = point - g_dragOrigin;
+    float position[3] = {g_dragStart[0] + floorf(delta.x + .5f), g_dragStart[1], g_dragStart[2] + floorf(delta.z + .5f)};
+    return !P6DataSetPosition(g_drag, position);
+}
+
 extern "C" int P6EngineCapture(const char* path)
 {
     return g_window && writeBackbuffer(g_window, path);
