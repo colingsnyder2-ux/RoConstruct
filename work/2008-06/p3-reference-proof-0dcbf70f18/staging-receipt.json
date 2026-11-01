@@ -1,0 +1,18 @@
+{
+  "source": "C:\\Users\\colin\\RoConstruct\\clients\\2008-06",
+  "sha256": {
+    "AppSettings.xml": "6e491765c134a12c3420a4b4eea8f8c60c1a46a2c60226003103657c224ab82a",
+    "copyrights.txt": "9d095de46dc55e51c66d5ebf3c7321efaec0777f8d038bcbe55994235ee097a2",
+    "fmodex.dll": "6b99d7373d5426a271c9f61ec732704195addd0ba7bd49699f5a4727d39cd570",
+    "ReflectionMetadata.xml": "e69b6687a6380401cde4f2790f776db1ea97ce92a86359580aa9446ba0fefa87",
+    "rgdx.dll": "dfce3291ea1214f37aae8e009af1891c45ab7843eb639a914d9791418559a50e",
+    "rggl.dll": "6178fbc6fd0ee00738901cf5803b9399ad4f60987a3e031e10651626836b8480",
+    "rgmain.dll": "b67d2e96c5bf28fe48799a96c7927c57b91c74e483b30975ee58ca45f470153c",
+    "rgpar.dll": "97ffa2b58ccf5a9fab91e2d536521348ce0a529c8fc024e5e1de892a6a43d801",
+    "Roblox.exe": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+    "RobloxInstall.dll": "ffe76f466744b2e3b1d92a8964580c2368a6a928c79fc360a53bb727ffca86b6",
+    "RobloxLauncher.dll": "16f31fe344e21d0d117fa041cc8b8770eba4658a4bd6679a26afbda5aa64248a",
+    "SciLexer.dll": "19135c5e18534f584c3416582da80fe017ab2707b50eb6ad89adde3de014b869"
+  },
+  "scope": "Unmodified original executable/DLLs; period RCC Content supplied separately."
+}

@@ -1,0 +1,10 @@
+{
+  "pid": 49384,
+  "command": [
+    "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\original-sphere-reference\\Roblox.exe",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\fixtures\\sphere.rbxl"
+  ],
+  "cwd": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\original-sphere-reference",
+  "exe_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "fixture_sha256": "cd06a901f8012140715325327f2572bb077fef5ff1b2d572245cc814c9df3b49"
+}

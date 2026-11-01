@@ -1,0 +1,6 @@
+{
+  "pass": false,
+  "normalized_iou": 0.9793225602950454,
+  "minimum_iou": 0.98,
+  "reason": "Different original Zoom Extents camera; corrected by versioned Camera fixture, not threshold change."
+}

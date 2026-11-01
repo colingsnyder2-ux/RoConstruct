@@ -1,5 +1,44 @@
 # Current player checkpoint
 
+P3 PASSED at source0dcbf70f18. Audit:
+rebuild/2008-06/tests/p2-recovered/p3-acceptance-audit.md. Native ball path now
+integrated with genuine Mesh/Level/builder/cache members; no entity redo. Shared
+MeshRef now targets Mesh base. Sphere geometry294vertices/864QUAD indices/1296GPU
+indices; unit32lifetimes/sharedreuse/100creationpurge pass. Normal GPU sphere
+renders10757pixels, fill.7858. HW trace proves sphere ctor Mesh->Level->uploaded
+SubMesh->actual RbxSubEntity render operation->entity teardown, EXE unpatched.
+Final normal selftest/cachetest and P2 hardware trace also pass.
+
+Mixed block/ball --p3test repeats both full lifetime cycles: resize/move/rotate,
+reparent,detach/reattach,insert/remove,removeBrick,emptyplace,reopen. Other retains
+node/mesh/size/transform and exact foreground silhouette throughout. Initial red
+color-threshold oracle failed1pixel due curved-surface lighting; color counts kept,
+geometric foreground mask is now the gate. Mesh/material/texture/root-node counts
+return3/3/0/0; native levels/refs/backends/sphere entries0. Final receipts:
+p3-mixed-lifetime-0dcbf70f18/,p3-sphere-final-0dcbf70f18/,
+p2-flat-producer/p3-sphere-block-final-trace-0dcbf70f18/.
+
+Original target staged unmodified in work/2008-06/original-sphere-reference/
+(EXE SHA2fbb...764); content junction points to original RCC period assets.
+Original CLI opens versioned sphere-reference.rbxl with explicit identity Camera
+at0,0,10/focus0. Captured helper JPEG vs rebuilt same-fixture backbuffer PNG:
+normalizedIoU.98403556 passes fixed.98, manualboxcontrol.79270935 fails.9.
+Earlier tilted ZoomExtents capture failed.97932256; retained, threshold unchanged.
+Reference proof:p3-reference-proof-0dcbf70f18/; rebuilt comparison:
+p3-aligned-player-0dcbf70f18/comparison.json. Original UI helper close failed;
+owned test PID35304 terminated after capture, clean original exit not credited.
+
+Known adapter: standard TextureProxy previously null-read805. Null harness context
+now explicitly enables mipmaps/AA0; genuine +805/+800 reads preserved for real
+context. Full renderer context is P6/native work, not an invented padded object.
+stage_demo_content.py now also stages original textures/Surfaces.png. Rebuild
+p2-native-material explicitly after its sources change; canonical player reuses
+cached dependency archives. Owner3debugfiles still39insertions/12deletions.
+Next P4: read roadmap gate, build two redistributable disk places exercising
+parent/child refs, local texture/mesh/sound and observed failure behavior; compare
+against original. Current findings package36160f15 still pins P0; later source
+package publication must include these committed P3 inputs. No P4-P10 completion.
+
 P3 block lifetime subgate PASSED at sourcee7145c8a63. Canonical player builds,
 normal --p3test lifetime-blocks.rbxl,selftest,cachetest all exit0. Two in-process
 cycles cover initial2parts,resize/move/rotate,reparentwithinWorkspace,detach/
