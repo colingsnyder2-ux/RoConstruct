@@ -1,4 +1,8 @@
-# Isolated recovered-block player
+# Isolated recovered-mesh player
+
+P3 now passes on source0dcbf70f18: ordinary blocks and native balls, repeated
+mixed-shape lifetime controls and original-client silhouette comparison.
+See p3-acceptance-audit.md for exact receipts and remaining context/native limits.
 
 Build: `roc rebuild 2008-06 module p2-recovered-player --no-notify`.
 Stage original Content with tests/stage_demo_content.py (see SkyboxDemo.md).
@@ -15,7 +19,7 @@ module keeps newer local player diagnostics untouched. Entity implementations
 are preserved, including their existing omitted shadow behavior; this work does
 not claim to complete those native functions.
 
-The scene owns a reference-counted BlockMesh; its measured 40-byte Level owns
+The scene owns a reference-counted Mesh base (BlockMesh or SphereMesh); its measured 40-byte Level owns
 indices and a detached RbxSubMesh. Renderer retains the same owner until entity
 removal. Geometry comes from existing 004e2c80 producer/face templates, native
 vertex-bank algorithms, 00549a50 upload, and 0067c130 backend. The Ogre Mesh is
@@ -24,7 +28,10 @@ Original00684fd0 getRenderOperation now binds detached submesh data directly.
 The earlier non-owning parent workaround is removed; SubMesh parent stays null.
 Delete entity, release geometry, then remove metadata/material before Ogre shutdown.
 
-Scope: ordinary small block, native-default paired bevel/flat levels, 16-bit level0 upload in this player.
+P2 scope: ordinary small block, native-default paired bevel/flat levels, 16-bit level0 upload in this player.
+P3 adds the recovered six-face sphere producer and measured factory cache. Balls
+use original shaded Surfaces.png through getMaterial; the harness explicitly
+uses mipmaps/AA0 when the full native texture context is absent (P6 dependency).
 Standalone p2-block-mesh tests exercise both index widths and smooth/studded faces.
 Part colours now come from the original atlas UVs and recovered Material/Level/
 TextureProxy plus007ab0a0 backend setup. Diagnostic unlit/manual color pass is
@@ -33,11 +40,12 @@ parameters and proven005e1a40 defaults for extra fields absent from the donor
 Lighting class. This remaining model/scene bridge is explicit; no complete native
 Lighting/View/RenderScene ABI is claimed. Full Mesh layout has checks against 00548570/00548a90;
 shadow element semantics outside exercised paths remain donor-backed hypotheses.
-Shared-index branch, modifier/humanoid branch selection, non-box/large geometry,
+Shared-index branch, modifier/humanoid branch selection, other shapes/large geometry,
 child signals and complete original material/surface behavior remain unintegrated.
 The small-block selector does not yet reproduce all original preconditions.
 P2 completion is assessed in p2-acceptance-audit.md against the ordinary block
-gate. No complete P3, whole-executable reconstruction or new server match claimed.
+gate. P3 is audited separately. Whole-executable reconstruction and new server
+credit are not claimed by these runtime milestones.
 
 Evidence/checkpoint: work/2008-06/player-roadmap.md and
 work/2008-06/p2-flat-producer/p2-acceptance-runtime/receipt.json.

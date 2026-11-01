@@ -44,5 +44,6 @@ P3SphereMeshTest verifies GPU streams:294 vertices,864 retained quad indices,
 1296 triangle indices, unit normals, ellipsoid scaling and flat(.125,.25) UV.
 It exercises32 release cycles, repeated shared lookups,120 new sizes across the
 100-creation purge, and zero live levels/bank refs/backends afterward.
-Reference-client silhouette comparison and mixed-shape lifetime acceptance remain
-required before closing P3. Runtime/map receipts must pin the exact source build.
+Reference-client silhouette comparison and mixed-shape lifetime acceptance now
+pass at source0dcbf70f18; see p3-acceptance-audit.md for pinned runtime/map receipts.
+The full native-context/settings integration remains separately open.
