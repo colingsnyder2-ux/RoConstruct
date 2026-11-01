@@ -66,13 +66,15 @@ def main():
                 def red(image):
                     r, g, b = image[:, :, 0], image[:, :, 1], image[:, :, 2]
                     return (r > 50) & (r > 2*g) & (2*r > 3*b)
-                fixed = red(images['loaded'])
-                assert fixed.sum() > 100
+                def silhouette(image):
+                    return np.any(image[:, image.shape[1]//2:] != [255, 0, 255], axis=2)
+                fixed = silhouette(images['loaded'])
+                assert fixed.sum() > 100 and red(images['loaded']).sum() > 100
                 for stage, expected in zip(stages, [2, 2, 2, 1, 2, 3, 2, 1]):
                     row = next(row for row in rows if int(row['cycle']) == cycle and row['stage'] == stage)
                     assert int(row['models']) == int(row['drawn']) == expected
                     assert int(row['red']) == red(images[stage]).sum()
-                    assert np.array_equal(fixed, red(images[stage])), (cycle, stage, 'red silhouette moved')
+                    assert np.array_equal(fixed, silhouette(images[stage])), (cycle, stage, 'stationary silhouette moved')
                 transform_delta = int(np.any(images['loaded'] != images['transformed'], axis=2).sum())
                 insert_delta = int(np.any(images['reattached'] != images['inserted'], axis=2).sum())
                 assert transform_delta > 100 and insert_delta > 100
@@ -83,7 +85,8 @@ def main():
                 assert np.array_equal(images['reattached'], images['insert_removed'])
                 empty = np.array(Image.open(folder / f'p3_{cycle}_empty.png').convert('RGB'), dtype=np.int32)
                 assert not red(empty).any()
-                audits.append({'cycle': cycle, 'stationary_red_mask_pixels': int(fixed.sum()),
+                audits.append({'cycle': cycle, 'stationary_foreground_pixels': int(fixed.sum()),
+                               'initial_red_color_pixels': int(red(images['loaded']).sum()),
                                'transform_changed_pixels': transform_delta, 'insert_changed_pixels': insert_delta,
                                'insert_new_foreground_pixels': len(xx),
                                'insert_foreground_bounds': [int(xx.min()), int(yy.min()), int(xx.max()), int(yy.max())],

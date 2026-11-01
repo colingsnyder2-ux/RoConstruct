@@ -557,19 +557,21 @@ static int runCacheTest(Ogre::Root* root,Ogre::RenderWindow* win,const std::stri
 static bool lifetimeFrame(Ogre::Root* root,Ogre::RenderWindow* win,int cycle,
     const char* stage,int expected,bool green,const void* stationaryId,
     Ogre::SceneNode* stationaryNode,PlayerBlockMesh::Mesh* stationaryMesh,const float* stationarySize,
-    int& redBaseline,std::ofstream& records)
+    std::vector<unsigned char>& stationaryPixels,std::ofstream& records)
 {
     drawModels();
     char name[96];_snprintf(name,sizeof(name),"p3_%d_%s.png",cycle,stage);
     Image image;
     if(!capture(root,win,name,image))return false;
     int red=0;
+    std::vector<unsigned char> silhouette;
     for(int y=0;y<image.height;++y)for(int x=0;x<image.width;++x){
         const unsigned char* pixel=&image.rgb[(y*image.width+x)*3];
         if(pixel[0]>50 && pixel[0]>2*pixel[1] && 2*pixel[0]>3*pixel[2])++red;
+        if(x>=image.width/2)silhouette.push_back(pixel[0]!=255 || pixel[1]!=0 || pixel[2]!=255);
     }
     int greenPixels=countGreen(image,0,0,image.width,image.height);
-    if(redBaseline<0)redBaseline=red;
+    if(stationaryPixels.empty())stationaryPixels=silhouette;
     std::map<const void*,DrawEntry>::iterator stationary=g_drawn.find(stationaryId);
     bool stable=stationary!=g_drawn.end() && stationary->second.node==stationaryNode &&
         stationary->second.geometry.getPointer()==stationaryMesh &&
@@ -577,7 +579,7 @@ static bool lifetimeFrame(Ogre::Root* root,Ogre::RenderWindow* win,int cycle,
         stationaryNode->getOrientation()==Ogre::Quaternion::IDENTITY &&
         std::memcmp(stationary->second.size,stationarySize,sizeof(stationary->second.size))==0;
     bool pass=SceneModelCount()==expected && g_drawn.size()==static_cast<unsigned>(expected) &&
-        stable && red>100 && red==redBaseline && (green?greenPixels>100:greenPixels<30);
+        stable && red>100 && silhouette==stationaryPixels && (green?greenPixels>100:greenPixels<30);
     records<<cycle<<","<<stage<<","<<SceneModelCount()<<","<<g_drawn.size()<<","<<red<<","<<greenPixels<<","<<stable<<","<<pass<<"\n";
     std::printf("p3 cycle=%d %s models=%d red=%d green=%d stationary=%d %s\n",
         cycle,stage,SceneModelCount(),red,greenPixels,stable,pass?"PASS":"FAIL");
@@ -605,8 +607,8 @@ static int runLifetimeTest(Ogre::Root* root,Ogre::RenderWindow* win,const std::s
         Ogre::SceneNode* stationaryNode=stationary.node;
         PlayerBlockMesh::Mesh* stationaryMesh=stationary.geometry.getPointer();
         float stationarySize[3];std::memcpy(stationarySize,stationary.size,sizeof(stationarySize));
-        int red=-1;
-        if(!lifetimeFrame(root,win,cycle,"loaded",2,true,stationaryId,stationaryNode,stationaryMesh,stationarySize,red,records))return 5;
+        std::vector<unsigned char> stationaryPixels;
+        if(!lifetimeFrame(root,win,cycle,"loaded",2,true,stationaryId,stationaryNode,stationaryMesh,stationarySize,stationaryPixels,records))return 5;
         const char* commands[]={
             "game.Workspace.Brick.Size=Vector3.new(3,1.2,1); game.Workspace.Brick.CFrame=CFrame.new(-2,.5,0)*CFrame.fromEulerAnglesXYZ(0,0,.6)",
             "p3Group=Instance.new('Model');p3Group.Name='Group';p3Group.Parent=game.Workspace;p3Held=game.Workspace.Brick;p3Held.Parent=p3Group",
@@ -621,7 +623,7 @@ static int runLifetimeTest(Ogre::Root* root,Ogre::RenderWindow* win,const std::s
         for(int step=0;step<7;++step){
             if(ExecutePlayerScript(commands[step]))return 6;
             if(!lifetimeFrame(root,win,cycle,stages[step],counts[step],step!=2 && step!=6,
-                stationaryId,stationaryNode,stationaryMesh,stationarySize,red,records))return 7;
+                stationaryId,stationaryNode,stationaryMesh,stationarySize,stationaryPixels,records))return 7;
             if(step==0){
                 bool transformed=false;
                 for(int i=0;i<SceneModelCount();++i){

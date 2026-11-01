@@ -10,7 +10,11 @@ The versioned fixture has two anchored Parts: green Brick at(-2,0,0), size
 script engine to resize, move and rotate Brick; reparent it into a Workspace
 Model; detach/reattach it; insert and remove another Part; then remove Brick.
 Other must retain its node, geometry, position, orientation, dimensions and
-visible red-pixel count throughout. Resize/rotation are checked against model
+visible foreground silhouette throughout. Color threshold counts remain recorded;
+curved specular shading can move a pixel across the color threshold as the scene
+bounds change, so that color count is not the stationary-shape oracle. The exact
+right-half foreground mask excludes the fixed magenta background. Both fixtures
+keep the changing/inserted Parts on the left. Resize/rotation are checked against model
 values, not merely accepted script calls.
 
 Two cycles close the place, collect resources, load an empty place, and reopen
