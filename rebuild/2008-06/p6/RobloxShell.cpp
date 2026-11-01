@@ -28,14 +28,16 @@ public:
     bool autoClose;
     bool visible;
     bool play;
+    bool pickTest;
     CString* expecting;
     CString capture, script, saveAs, post, runFile, select, setProperty;
-    CRobloxCommandLineInfo() : autoClose(false), visible(false), play(false), expecting(NULL) {}
+    CRobloxCommandLineInfo() : autoClose(false), visible(false), play(false), pickTest(false), expecting(NULL) {}
     virtual void ParseParam(const char* param, BOOL flag, BOOL last) {
         if (expecting) { *expecting = param; expecting = NULL; return; }
         if (flag && !lstrcmpiA(param, "p6-autoclose")) { autoClose = true; return; }
         if (flag && !lstrcmpiA(param, "p6-visible")) { autoClose = visible = true; return; }
         if (flag && !lstrcmpiA(param, "p6-play")) { play = true; return; }
+        if (flag && !lstrcmpiA(param, "p6-pick-test")) { pickTest = true; return; }
         if (flag && !lstrcmpiA(param, "p6-capture")) { expecting = &capture; return; }
         if (flag && !lstrcmpiA(param, "p6-script")) { expecting = &script; return; }
         if (flag && !lstrcmpiA(param, "p6-saveas")) { expecting = &saveAs; return; }
@@ -53,6 +55,7 @@ static CDialog* g_about;
 static bool g_play;
 static UINT g_post;
 static bool g_openFailed;
+static bool g_pickTest;
 
 // 00431d00: status bar 0000e801, then command bars with the frame menu.
 class CMainFrame : public CXTPMDIFrameWnd {
@@ -94,6 +97,27 @@ class CMainFrame : public CXTPMDIFrameWnd {
     HTREEITEM path[64];
     bool shown;
 public:
+    void SelectHandle(void* handle, HTREEITEM item = NULL) {
+        if (!item) item = explorer.GetRootItem();
+        for (; item; item = explorer.GetNextSiblingItem(item)) {
+            if ((void*)explorer.GetItemData(item) == handle) { explorer.SelectItem(item); return; }
+            if (explorer.GetChildItem(item)) SelectHandle(handle, explorer.GetChildItem(item));
+        }
+    }
+    CString NameOf(void* handle, HTREEITEM item) {
+        for (; item; item = explorer.GetNextSiblingItem(item)) {
+            if ((void*)explorer.GetItemData(item) == handle) return explorer.GetItemText(item);
+            CString name = NameOf(handle, explorer.GetChildItem(item));
+            if (!name.IsEmpty()) return name;
+        }
+        return CString();
+    }
+    void TestPicks() {
+        for (int i = 1; i < 10; ++i) {
+            void* hit = P6EnginePick(i / 10.0f, 0.5f);
+            printf("p6: pick %.1f %s\n", i / 10.0f, hit ? (LPCSTR)NameOf(hit, explorer.GetRootItem()) : "-");
+        }
+    }
     void ShowProperties(void* item) {
         selected = item;
         properties.ResetContent();
@@ -188,6 +212,7 @@ public:
         }
         printf("p6: autoclose frames=%d\n", P6EngineFrames());
         P6EngineReport();
+        if (g_pickTest) TestPicks();
         if (!g_saveAs.IsEmpty()) {
             CFrameWnd* child = GetActiveFrame();
             CDocument* document = child ? child->GetActiveDocument() : NULL;
@@ -237,6 +262,7 @@ IMPLEMENT_DYNCREATE(CRobloxDoc, CDocument)
 class CRobloxView : public CView {
     DECLARE_DYNCREATE(CRobloxView)
 public:
+    CPoint dragFrom;
     virtual void OnDraw(CDC*) {}
     afx_msg void OnPlaySolo() {
         int status = P6EnginePlay();
@@ -260,12 +286,33 @@ public:
         GetClientRect(rect);
         int status = P6EngineOpen(m_hWnd, GetDocument()->GetPathName(), rect.Width(), rect.Height(), g_play);
         printf("p6: engine open %d\n", status);
+        CRect screen(rect);
+        ClientToScreen(screen);
+        printf("p6: view %d %d %d %d\n", screen.left, screen.top, screen.Width(), screen.Height());
         if (!status && !g_script.IsEmpty()) printf("p6: script %d\n", P6EngineScript(g_script));
         if (!status && !g_runFile.IsEmpty()) {
             RunScriptFile(g_runFile);
             g_runFile.Empty();
         }
         static_cast<CMainFrame*>(AfxGetMainWnd())->RefreshExplorer();
+    }
+    afx_msg void OnLButtonDown(UINT, CPoint point) {
+        CRect rect;
+        GetClientRect(rect);
+        SetFocus();
+        void* hit = P6EnginePick(float(point.x) / rect.Width(), float(point.y) / rect.Height());
+        if (hit) static_cast<CMainFrame*>(AfxGetMainWnd())->SelectHandle(hit);
+    }
+    afx_msg void OnRButtonDown(UINT, CPoint point) { dragFrom = point; SetCapture(); }
+    afx_msg void OnRButtonUp(UINT, CPoint) { ReleaseCapture(); }
+    afx_msg void OnMouseMove(UINT flags, CPoint point) {
+        if (!(flags & MK_RBUTTON)) return;
+        P6EngineOrbit(-0.01f * (point.x - dragFrom.x), 0.01f * (point.y - dragFrom.y));
+        dragFrom = point;
+    }
+    afx_msg BOOL OnMouseWheel(UINT, short delta, CPoint) {
+        P6EngineZoom(delta > 0 ? 0.9f : 1.1f);
+        return TRUE;
     }
     afx_msg void OnSize(UINT type, int width, int height) {
         CView::OnSize(type, width, height);
@@ -276,6 +323,11 @@ public:
 IMPLEMENT_DYNCREATE(CRobloxView, CView)
 BEGIN_MESSAGE_MAP(CRobloxView, CView)
     ON_WM_SIZE()
+    ON_WM_LBUTTONDOWN()
+    ON_WM_RBUTTONDOWN()
+    ON_WM_RBUTTONUP()
+    ON_WM_MOUSEMOVE()
+    ON_WM_MOUSEWHEEL()
     ON_COMMAND(ID_TOOLS_PLAY_SOLO, &CRobloxView::OnPlaySolo)
     ON_COMMAND(ID_RUN, &CRobloxView::OnRun)
     ON_COMMAND(ID_PAUSE, &CRobloxView::OnPause)
@@ -350,6 +402,7 @@ public:
         g_setProperty = command.setProperty;
         g_saveAs = command.saveAs;
         g_play = command.play;
+        g_pickTest = command.pickTest;
         m_pDocManager = new CIDEDocManager;
         Stage("00449910", "CIDEDocManager");
         CMainFrame* frame = new CMainFrame;

@@ -20,20 +20,41 @@ static bool g_play;
 static bool g_running;
 static bool g_started;
 
+// Edit camera orbits a focus point; the first frame frames every model.
+static float g_yaw = 0.6f, g_pitch = 0.45f, g_distance = 30;
+static Ogre::Vector3 g_focus(0, 0, 0);
+static bool g_framed;
+static Ogre::SceneNode* g_selected;
+
+static void frameModels()
+{
+    int count = SceneModelCount();
+    if (!count) return;
+    Ogre::AxisAlignedBox bounds;
+    for (int i = 0; i < count; ++i) {
+        SceneModel model;
+        if (SceneModelGet(i, &model)) continue;
+        Ogre::Vector3 center(model.position[0], model.position[1], model.position[2]);
+        Ogre::Vector3 half(model.size[0] / 2, model.size[1] / 2, model.size[2] / 2);
+        bounds.merge(center - half);
+        bounds.merge(center + half);
+    }
+    g_focus = bounds.getCenter();
+    g_distance = std::max(4.0f, bounds.getSize().length() * 1.6f);
+    g_framed = true;
+}
+
 static void syncEditCamera()
 {
     float pose[13];
-    if (P6DataCamera(pose)) {
-        g_camera->setPosition(0, 10, 30);
-        g_camera->lookAt(0, 0, 0);
-        return;
-    }
-    g_camera->setPosition(pose[9], pose[10], pose[11]);
-    g_camera->setOrientation(Ogre::Quaternion(Ogre::Matrix3(pose[0], pose[1], pose[2], pose[3], pose[4], pose[5], pose[6], pose[7], pose[8])));
+    float fov = P6DataCamera(pose) ? 1.2f : pose[12];
+    Ogre::Vector3 offset(std::sin(g_yaw) * std::cos(g_pitch), std::sin(g_pitch), std::cos(g_yaw) * std::cos(g_pitch));
+    g_camera->setPosition(g_focus + offset * g_distance);
+    g_camera->lookAt(g_focus);
     if (g_viewport->getActualWidth() > 0 && g_viewport->getActualHeight() > 0) {
         float aspect = float(g_viewport->getActualWidth()) / float(g_viewport->getActualHeight());
         g_camera->setAspectRatio(aspect);
-        g_camera->setFOVy(Ogre::Radian(float(2.0 * atan(tan(pose[12] * .5) / aspect))));
+        g_camera->setFOVy(Ogre::Radian(float(2.0 * atan(tan(fov * .5) / aspect))));
     }
 }
 
@@ -68,6 +89,8 @@ extern "C" int P6EngineOpen(void* window, const char* path, int width, int heigh
     g_play = play != 0;
     g_running = false;
     g_started = g_play;
+    g_framed = false;
+    g_selected = NULL;
     if (g_play) {
         if (AttachPlayerController(1)) return 4;
         float pose[15];
@@ -122,6 +145,10 @@ extern "C" int P6EngineFrame(void)
         if (!SyncPlayerCamera(g_camera, g_viewport)) return 0;
     } else syncEditCamera();
     drawModels();
+    if (!g_play && !g_framed) {
+        frameModels();
+        syncEditCamera();
+    }
     g_root->renderOneFrame();
     ++g_frames;
     return 1;
@@ -183,6 +210,53 @@ extern "C" int P6EngineSave(const char* path)
     return P6DataSave(path);
 }
 
+extern "C" void P6EngineOrbit(float yaw, float pitch)
+{
+    g_yaw += yaw;
+    g_pitch = std::min(1.5f, std::max(-1.5f, g_pitch + pitch));
+}
+
+extern "C" void P6EngineZoom(float factor)
+{
+    g_distance = std::max(1.0f, g_distance * factor);
+}
+
+// Ray against each model's oriented box; x and y are 0..1 over the viewport.
+extern "C" void* P6EnginePick(float x, float y)
+{
+    if (!g_timer) return NULL;
+    Ogre::Ray ray = g_camera->getCameraToViewportRay(x, y);
+    float nearest = 1e30f;
+    SceneModel best;
+    best.id = NULL;
+    int count = SceneModelCount();
+    for (int i = 0; i < count; ++i) {
+        SceneModel model;
+        if (SceneModelGet(i, &model)) continue;
+        Ogre::Matrix3 rotation(model.rotation[0], model.rotation[1], model.rotation[2], model.rotation[3], model.rotation[4],
+                               model.rotation[5], model.rotation[6], model.rotation[7], model.rotation[8]);
+        Ogre::Matrix3 inverse = rotation.Transpose();
+        Ogre::Vector3 center(model.position[0], model.position[1], model.position[2]);
+        Ogre::Vector3 origin = inverse * (ray.getOrigin() - center);
+        Ogre::Vector3 direction = inverse * ray.getDirection();
+        Ogre::Vector3 half(model.size[0] / 2, model.size[1] / 2, model.size[2] / 2);
+        std::pair<bool, Ogre::Real> hit = Ogre::Ray(origin, direction).intersects(Ogre::AxisAlignedBox(-half, half));
+        if (hit.first && hit.second < nearest) {
+            nearest = hit.second;
+            best = model;
+        }
+    }
+    if (g_selected) g_selected->showBoundingBox(false);
+    g_selected = NULL;
+    if (!best.id) return NULL;
+    std::map<const void*, DrawEntry>::iterator entry = g_drawn.find(best.id);
+    if (entry != g_drawn.end() && entry->second.node) {
+        g_selected = entry->second.node;
+        g_selected->showBoundingBox(true);
+    }
+    return P6DataPartAt(best.position[0], best.position[1], best.position[2]);
+}
+
 extern "C" int P6EngineCapture(const char* path)
 {
     return g_window && writeBackbuffer(g_window, path);
@@ -195,6 +269,7 @@ extern "C" void P6EngineResize(void)
 
 extern "C" void P6EngineClose(void)
 {
+    g_selected = NULL;
     if (g_timer) {
         delete g_timer;
         g_timer = NULL;

@@ -2,17 +2,18 @@
  "milestone": "P6",
  "status": "OPEN",
  "scope": "XTP MFC client: edit mode, save, reopen, play mode with real input",
- "exe_sha256": "90806514c35340923f4aeb1f8d3f733b186070a9ee86014ebd28e6e0be1b92ee",
+ "exe_sha256": "7b98e92ae69ab9a25b3609d795c4ca16a4ca9a877a91981ea234ce49c3b01783",
  "capture_sha256": "93b0646bf6d8a27f053487b7b80490872b79e6215d7674f30517832cf593c85e",
  "place": "7e44dc577dacb884e6971bd25de8c23769eba12f2978fa219080d4b45c04181d",
  "sources": {
-  "RobloxShell.cpp": "6f04259e3266c53a3a2c367397f39f1865890d84f6a75c0222ddb1c89ba0d077",
-  "P6Engine.cpp": "e6f0aa2c14d902b9493f0563f67f93bd0fd8df7e54c20e1582a54bc30c38f5b7",
-  "P6Data.cpp": "513268792257f0373fd7d06fa1f5819ec2e20587b2346e93eb4ab935acabca56",
-  "P6Engine.h": "55ee7cc34855589ed93e1adf190fd9a7757807ad97ab0a1d13e6f74e1ba41788",
+  "RobloxShell.cpp": "20a66a7c68e097aaceb4da365e661f0440c943cf9391f668f825bbc0d1cb017c",
+  "P6Engine.cpp": "dc7afc13b3d2b654b9cea4eb945c5425494b8f77958bba79eabedbab6def17fb",
+  "P6Data.cpp": "33997a4db11761c1dbfc31c1bcc0b014f18d2ce7faf5a6944685b0a22f616fa6",
+  "P6Engine.h": "94c18d173adfc925c92f3d33255a41db4b1a35c15f045e816801402380e16ee5",
   "build_client.py": "883a911fc951ac8d3c4c41dce96bc548d765fe707d3e0054ecb70e3bdaeaad66",
   "gen_res.py": "780cf9a95025f0d3f315bbac95703dfabe1378308ec5da220be5eb3e1f787497",
   "input_test.py": "d8201e701c37d76f11d1ab2e9f53bc4ff7ff67f42538afb407c44c6b3087c7f2",
+  "click_test.py": "38a5bde2510935890b618b396a9f4d97d8e37bede90306c69740e451af137090",
   "original_check.py": "61e158d23bd868df42ceac4e32d52309c8d725210b0935b417724e33b811b418"
  },
  "player_libs": "C:/Users/colin/RoConstruct/rebuild/2008-06/out built 06:17, before later Codex commits",
@@ -62,8 +63,8 @@
   "exit": 0,
   "keys": "real W keybd_event for 1.5 s after engine open",
   "actor_end": [
-   -1.01146e-06,
-   2.9984,
+   -1.00814e-06,
+   2.99842,
    18.9892
   ],
   "idle_actor_end": [
@@ -98,7 +99,8 @@
    "title": "Roblox - [saved.rbxl]",
    "observed": "Opens with no error dialog; red ball over default sky. Visual only, no position read from original memory.",
    "capture": "work/2008-06/p6-client/original-saved.png"
-  }
+  },
+  "rerun_saved_sha256": "a0281e6bf4dfc5e416ac316a7c5b095ab005c40039203196784085a4234603b1"
  },
  "menu_commands": {
   "33028 Play Solo": "WM_COMMAND switches edit to play; status 0; explorer nodes 14 to 56",
@@ -107,11 +109,7 @@
   "57664 About": "dialog 117 DoModal returned IDCANCEL (2)",
   "32966 Run": "toolbar command runs simulation, status logged, cleanup zero"
  },
- "not_rerun_on_this_exe": [
-  "visible_input_run",
-  "edit_save_reopen",
-  "property_edit"
- ],
+ "not_rerun_on_this_exe": [],
  "execute_script": "RunFile via -p6-runfile moved Brick to 1,2,3; file dialog path not exercised",
  "property_edit": {
   "select": "Brick",
@@ -131,5 +129,10 @@
    "templates 185, 207, 138",
    "openFiles multi-file path"
   ]
+ },
+ "edit_selection": {
+  "pick_scan": "Brick at 0.3-0.4, Other at 0.6-0.7, empty elsewhere",
+  "real_click": "click at 35 percent width selected a Part, properties 50, exit 0",
+  "limits": "Right-drag orbit and wheel zoom are wired but not driven in a test; picking uses oriented boxes, so a ball picks by its box"
  }
 }

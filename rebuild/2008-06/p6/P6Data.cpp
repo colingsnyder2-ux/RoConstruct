@@ -2,6 +2,7 @@
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Workspace.h"
 #include "v8datamodel/Camera.h"
+#include "v8datamodel/PartInstance.h"
 #include "v8xml/SerializerV2.h"
 #include "v8xml/XmlSerializer.h"
 #include <boost/scoped_ptr.hpp>
@@ -24,6 +25,27 @@ extern "C" void P6DataWalk(P6TreeVisitor visitor, void* context)
     if (!model) return;
     RBX::DataModel::Lock lock(model);
     walk(model, 0, visitor, context);
+}
+
+static RBX::Instance* partAt(RBX::Instance* item, const G3D::Vector3& position)
+{
+    RBX::PartInstance* part = dynamic_cast<RBX::PartInstance*>(item);
+    if (part && (part->getCoordinateFrame().translation - position).squaredMagnitude() < 1e-4f) return item;
+    if (!item->getChildren()) return NULL;
+    boost::shared_ptr<const std::vector<boost::shared_ptr<RBX::Instance> > > children = item->getChildren().read();
+    for (size_t i = 0; i < children->size(); ++i) {
+        RBX::Instance* found = partAt((*children)[i].get(), position);
+        if (found) return found;
+    }
+    return NULL;
+}
+
+extern "C" void* P6DataPartAt(float x, float y, float z)
+{
+    RBX::DataModel* model = EngineDataModel();
+    if (!model) return NULL;
+    RBX::DataModel::Lock lock(model);
+    return partAt(model, G3D::Vector3(x, y, z));
 }
 
 // Tree items can outlive their instance, so resolve them against the live model.
