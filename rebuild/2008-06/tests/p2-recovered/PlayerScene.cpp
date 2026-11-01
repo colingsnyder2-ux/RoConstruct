@@ -163,7 +163,7 @@ public:
 class View
 {
 public:
-    explicit View(RBX::DataModel* dataModel);
+    View(RBX::DataModel* dataModel,const std::string& surfaces);
     ~View();
 
     // ViewRbxGfx::onWorkspaceDescendentAdded
@@ -211,14 +211,17 @@ void PartChunk::updateMesh()
         surfaces.data|=type<<(3*face);
     }
     // 004e5f80 -> 004e58b0 -> 004e53c0 -> 004e2c80 ordinary small block path.
-    // Other shapes require their own recovered producer; never substitute a box.
+    // Ball shape0:004f00a4 ->004eea30 ->004fcfb0.
     meshData.geometry=PlayerBlockMesh::MeshRef();
     if(partInstance->getPartType()==RBX::Part::BLOCK_PART &&
        std::max(meshData.size.x,std::max(meshData.size.y,meshData.size.z))<30.0f)
         meshData.geometry=PlayerBlockMesh::BlockMesh::create(meshData.size,surfaces,partInstance->getColor());
+    else if(partInstance->getPartType()==RBX::Part::BALL_PART)
+        meshData.geometry=PlayerBlockMesh::SphereMesh::create(meshData.size,surfaces);
     // 004eb190 ordinary mega-material branch; native cache owns only weak refs.
     PlayerNativeMaterial::Attributes attributes={partInstance->getColor(),partInstance->alpha(),partInstance->getReflectance()};
-    meshData.material=view->materialFactory.getMegaMaterial(attributes);
+    meshData.material=partInstance->getPartType()==RBX::Part::BALL_PART ?
+        view->materialFactory.getMaterial(attributes) : view->materialFactory.getMegaMaterial(attributes);
     meshData.valid = true;
 }
 
@@ -242,11 +245,11 @@ void PartChunk::onPropertyChanged(const RBX::Reflection::PropertyDescriptor* des
     }
 }
 
-View::View(RBX::DataModel* dataModel)
+View::View(RBX::DataModel* dataModel,const std::string& surfaces)
     : dataModel(dataModel),
       workspace(dataModel ? dataModel->getWorkspace() : NULL),
       sceneManager(&models, &removed),
-      materialFactory(0,"","",getenv("ROC_TEXTURE_STRIP"))
+      materialFactory(0,surfaces,"",getenv("ROC_TEXTURE_STRIP"))
 {
     if (!workspace)
         return;
@@ -297,7 +300,8 @@ extern "C" int SceneAttach(void)
         return 1;
     if(!getenv("ROC_TEXTURE_STRIP"))return 1;
 
-    g_view = new ViewNew::View(dataModel);
+    std::string strip=getenv("ROC_TEXTURE_STRIP");
+    g_view = new ViewNew::View(dataModel,strip.substr(0,strip.find_last_of("\\/")+1)+"Surfaces.png");
     std::printf("scene attached: %d model(s)\n", (int)g_view->models.size());
     return 0;
 }

@@ -11,7 +11,7 @@ int main(){
     root.setRenderSystem(renderer);renderer->setConfigOption("Full Screen","No");root.initialise(false);
     Ogre::NameValuePairList options;options["hidden"]="true";root.createRenderWindow("P2BlockFactory",64,64,false,&options);
     RBX::View::RenderSurfaceTypes surfaces;
-    std::map<PlayerBlockMesh::BlockMesh*,PlayerBlockMesh::MeshRef> owners;
+    std::map<PlayerBlockMesh::Mesh*,PlayerBlockMesh::MeshRef> owners;
     unsigned before=PlayerBlockMesh::producerCalls();
     for(int i=0;i<512;++i){
         PlayerBlockMesh::MeshRef mesh=PlayerBlockMesh::BlockMesh::create(G3D::Vector3(2,4,6),surfaces,RBX::BrickColor());

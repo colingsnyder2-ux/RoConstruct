@@ -246,7 +246,7 @@ static std::map<const void*, DrawEntry> g_drawn;
 
 // Geometry is produced by recovered 004e2c80 and uploaded by 00549a50.
 // Ogre Mesh here supplies entity bounds only; Level owns the detached RbxSubMesh.
-static Ogre::MeshPtr createRecoveredMesh(const char* name, PlayerBlockMesh::BlockMesh* geometry)
+static Ogre::MeshPtr createRecoveredMesh(const char* name, PlayerBlockMesh::Mesh* geometry)
 {
     Ogre::MeshPtr existing=Ogre::MeshManager::getSingleton().getByName(name);
     if(!existing.isNull())return existing;
@@ -259,7 +259,8 @@ static Ogre::MeshPtr createRecoveredMesh(const char* name, PlayerBlockMesh::Bloc
     // Native00684fd0 binds detached submesh data directly. No fabricated parent
     // link or adoption into this bounds-only Mesh's deletion list is required.
     mesh->_setBounds(bounds);mesh->_setBoundingSphereRadius(level.backend->radius);mesh->load();
-    std::printf("recovered block: producer=004e2c80 upload=00549a50 calls=%u indices=%u\n",PlayerBlockMesh::producerCalls(),static_cast<unsigned>(level.backend->indexData->indexCount));
+    std::printf("native mesh: producer=%s upload=00549a50 block_calls=%u indices=%u\n",
+        geometry->geometryKind==2?"004fcfb0":"004e2c80",PlayerBlockMesh::producerCalls(),static_cast<unsigned>(level.backend->indexData->indexCount));
     return mesh;
 }
 
@@ -514,7 +515,7 @@ static int runCacheTest(Ogre::Root* root,Ogre::RenderWindow* win,const std::stri
         if(SceneAttach())return 2;
         drawModels();
         if(g_drawn.size()!=9)return 3;
-        std::map<PlayerBlockMesh::BlockMesh*,int> users;
+        std::map<PlayerBlockMesh::Mesh*,int> users;
         for(std::map<const void*,DrawEntry>::iterator it=g_drawn.begin();it!=g_drawn.end();++it){
             DrawEntry& entry=it->second;
             if(entry.geometry->levels.size()!=2 || entry.geometry->level0().backend->parent)return 4;
@@ -523,7 +524,7 @@ static int runCacheTest(Ogre::Root* root,Ogre::RenderWindow* win,const std::stri
             ++users[entry.geometry.getPointer()];
         }
         bool shared=false;
-        for(std::map<PlayerBlockMesh::BlockMesh*,int>::iterator it=users.begin();it!=users.end();++it)
+        for(std::map<PlayerBlockMesh::Mesh*,int>::iterator it=users.begin();it!=users.end();++it)
             if(it->second>1)shared=true;
         if(!shared)return 5;
         if(PlayerSphereCache::size()!=users.size())return 13;
@@ -555,7 +556,7 @@ static int runCacheTest(Ogre::Root* root,Ogre::RenderWindow* win,const std::stri
 // P3 block lifetime gate. Non-box/reference silhouette remains a separate gate.
 static bool lifetimeFrame(Ogre::Root* root,Ogre::RenderWindow* win,int cycle,
     const char* stage,int expected,bool green,const void* stationaryId,
-    Ogre::SceneNode* stationaryNode,PlayerBlockMesh::BlockMesh* stationaryMesh,
+    Ogre::SceneNode* stationaryNode,PlayerBlockMesh::Mesh* stationaryMesh,
     int& redBaseline,std::ofstream& records)
 {
     drawModels();
@@ -602,7 +603,7 @@ static int runLifetimeTest(Ogre::Root* root,Ogre::RenderWindow* win,const std::s
         if(!stationaryId)return 4;
         DrawEntry& stationary=g_drawn.find(stationaryId)->second;
         Ogre::SceneNode* stationaryNode=stationary.node;
-        PlayerBlockMesh::BlockMesh* stationaryMesh=stationary.geometry.getPointer();
+        PlayerBlockMesh::Mesh* stationaryMesh=stationary.geometry.getPointer();
         int red=-1;
         if(!lifetimeFrame(root,win,cycle,"loaded",2,true,stationaryId,stationaryNode,stationaryMesh,red,records))return 5;
         const char* commands[]={
@@ -722,6 +723,7 @@ int main(int argc, char** argv)
     }
     if (!rs) { std::printf("no d3d9 renderer\n"); delete root; ClosePlace(); return 3; }
     root->setRenderSystem(rs);
+    Ogre::ResourceGroupManager::getSingleton().addResourceLocation(contentRoot,"FileSystem","General");
     rs->setConfigOption("Full Screen", "No");
     rs->setConfigOption("Video Mode", demo?"800 x 600 @ 32-bit colour":"320 x 240 @ 32-bit colour");
     Ogre::RenderWindow* win = root->initialise(true, "Player2008");

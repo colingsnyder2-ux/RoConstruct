@@ -11,6 +11,8 @@
 #include <cstddef>
 #include <boost/thread/recursive_mutex.hpp>
 #include <boost/thread/once.hpp>
+#include <G3D/Table.h>
+#include <G3D/Vector2int16.h>
 
 namespace PlayerBlockMesh {
 using namespace G3D;
@@ -73,6 +75,177 @@ void release(unsigned index) { // 00548640
     if(referenceCounts[index]==1){referenceCounts[index]=0;freeSlots.append(index);}
     else --referenceCounts[index];
 }
+}
+
+namespace {
+// 00500d80/00500d30 and six native face instantiations. Genuine members from
+// QuadVolume.h; LevelRef is retargeted to the measured shared native bank.
+class SphereLevelBuilder {
+public:
+    enum Purpose { Surface,Decal,Shadow };
+    const Vector3 halfSize;
+    const RenderSurfaceTypes surfaceTypes;
+    const LevelRef level;
+    Vector2 textureScale;
+    SphereLevelBuilder(LevelRef& value,Vector3 size,RenderSurfaceTypes surfaces):
+        halfSize(size*.5f),surfaceTypes(surfaces),level(value),textureScale(2,2){}
+    virtual void build(Purpose purpose){
+        buildTop(purpose);buildBottom(purpose);buildLeft(purpose);
+        buildRight(purpose);buildFront(purpose);buildBack(purpose);
+    }
+    virtual void buildTop(Purpose)=0;
+    virtual void buildBottom(Purpose)=0;
+    virtual void buildLeft(Purpose)=0;
+    virtual void buildRight(Purpose)=0;
+    virtual void buildFront(Purpose)=0;
+    virtual void buildBack(Purpose)=0;
+
+    typedef void (*Function)(Vector3&,Vector3&,Vector2&,const Vector3&,const Vector2int16&);
+    template<RBX::NormalId id>
+    void emit(Function function,Vector2 minimum,Vector2 maximum,float depth,
+        Vector2 origin,Vector2 extent,int axis,Vector2int16 divisions){
+        Vector3 mapped=RBX::uvwToObject<id>(halfSize);
+        Vector3 radius(fabs(mapped.x),fabs(mapped.y),fabs(mapped.z));
+        Vector2 positionStep=(maximum-minimum)/Vector2(divisions.x,divisions.y);
+        Vector2 textureStep=extent/Vector2(divisions.x,divisions.y);
+        unsigned count=(divisions.x+1)*(divisions.y+1);
+        unsigned* vertices=new unsigned[count];
+        float x=minimum.x,u=origin.x;
+        for(int i=0;i<=divisions.x;++i){
+            float y=minimum.y,v=origin.y;
+            for(int j=0;j<=divisions.y;++j){
+                Vector3 position(x,y,depth),normal(0,0,1);
+                Vector2 texture;texture[1-axis]=u;texture[axis]=v;
+                function(position,normal,texture,radius,Vector2int16(i,j));
+                if(extent==Vector2::zero())texture=origin; // 00509ba0 zero vector.
+                vertices[i*(divisions.y+1)+j]=allocate(RBX::uvwToObject<id>(position),
+                    RBX::uvwToObject<id>(normal),texture*.5f,true); // 00819bac.
+                y+=positionStep.y;v+=textureStep.y;
+            }
+            x+=positionStep.x;u+=textureStep.x;
+        }
+        for(int i=0;i<divisions.x;++i)for(int j=0;j<divisions.y;++j){
+            int index=(divisions.y+1)*i+j,next=index+divisions.y;
+            unsigned a=vertices[index+1],b=vertices[index],c=vertices[next+1],d=vertices[next+2];
+            // 00500eb0 QUADS branch retains each appended bank index.
+            level->indexArray.append(addReferences(a,1),addReferences(b,1),addReferences(c,1),addReferences(d,1));
+        }
+        for(unsigned i=0;i<count;++i)release(vertices[i]);
+        delete[] vertices;
+    }
+    template<RBX::NormalId id>
+    void buildFace(Function function,Vector2int16 grid,Purpose purpose){
+        unsigned surface=(surfaceTypes.data>>(3*id))&7;
+        Vector3 mapped=RBX::uvwToObject<id>(halfSize);
+        Vector3 size(fabs(mapped.x),fabs(mapped.y),fabs(mapped.z));
+        int axis=!(purpose==Surface && size.x<size.y);
+        int steps=purpose==Surface && surface ? G3D::iRound(static_cast<float>(ceil(size[axis]*.5))):1;
+        Vector2int16 divisions;
+        short n=grid[1-axis];
+        divisions[axis]=std::max<short>(1,static_cast<short>(n/steps));divisions[1-axis]=n;
+        Vector2 begin=-size.xy(),end=size.xy(),origin,extent;
+        switch(purpose){
+        case Surface:
+            if(!surface){origin=Vector2(.25f,.5f);extent=Vector2::zero();}
+            else{
+                origin[1-axis]=0;origin[axis]=surface==RBX::View::INLET?.5f:surface==RBX::View::WELD?1:surface==RBX::View::GLUE?1.5f:0;
+                extent[1-axis]=size[1-axis]*2;extent[axis]=.5f;
+                if(axis==1)extent.x=-extent.x;
+            }
+            break;
+        case Decal:origin=Vector2(0,textureScale.y);extent=Vector2(textureScale.x,-textureScale.y);break;
+        case Shadow:origin=extent=Vector2::zero();break;
+        }
+        for(int i=0;i<steps;++i){
+            if(i==steps-1){end[axis]=size[axis];if(purpose==Surface && surface)extent[axis]=(end[axis]-begin[axis])*extent[axis]*.25f;}
+            else end[axis]=begin[axis]+4;
+            emit<id>(function,begin,end,size.z,origin,extent,axis,divisions);
+            begin[axis]=end[axis];
+        }
+    }
+};
+// 004fabb0: preserve target normal before component radius scaling.
+void sphereTransform(Vector3& vertex,Vector3& normal,Vector2&,const Vector3& radius,const Vector2int16&){
+    float inverseLength=1.0f/static_cast<float>(sqrt(vertex.x*vertex.x+vertex.y*vertex.y+vertex.z*vertex.z));
+    normal=vertex*inverseLength;vertex=normal*radius;
+}
+class SphereBuilder : public SphereLevelBuilder {
+public:
+    const int elements;
+    SphereBuilder(LevelRef& level,Vector3 size,RenderSurfaceTypes surfaces):SphereLevelBuilder(level,size,surfaces),elements(6){}
+    void buildTop(Purpose p){buildFace<RBX::NORM_Y>(sphereTransform,Vector2int16(elements,elements),p);}
+    void buildBottom(Purpose p){buildFace<RBX::NORM_Y_NEG>(sphereTransform,Vector2int16(elements,elements),p);}
+    void buildLeft(Purpose p){buildFace<RBX::NORM_X_NEG>(sphereTransform,Vector2int16(elements,elements),p);}
+    void buildRight(Purpose p){buildFace<RBX::NORM_X>(sphereTransform,Vector2int16(elements,elements),p);}
+    void buildFront(Purpose p){buildFace<RBX::NORM_Z_NEG>(sphereTransform,Vector2int16(elements,elements),p);}
+    void buildBack(Purpose p){buildFace<RBX::NORM_Z>(sphereTransform,Vector2int16(elements,elements),p);}
+};
+typedef char NativeBuilderSize[sizeof(SphereLevelBuilder)==0x20?1:-1];
+typedef char NativeBuilderHalf[offsetof(SphereLevelBuilder,halfSize)==4?1:-1];
+typedef char NativeBuilderSurfaces[offsetof(SphereLevelBuilder,surfaceTypes)==0x10?1:-1];
+typedef char NativeBuilderLevel[offsetof(SphereLevelBuilder,level)==0x14?1:-1];
+typedef char NativeBuilderTexture[offsetof(SphereLevelBuilder,textureScale)==0x18?1:-1];
+typedef char NativeSphereBuilder[sizeof(SphereBuilder)==0x24?1:-1];
+typedef char NativeSphereElements[offsetof(SphereBuilder,elements)==0x20?1:-1];
+
+struct SphereVariations { MeshRef meshes[1]; };
+// Genuine unused decal/texture key members from MeshFactory.h. These paths are
+// not implemented or credited here; their maps remain empty for ordinary balls.
+struct SphereDecalKey { Vector3 size;RBX::NormalId face;bool operator<(const SphereDecalKey&)const; };
+struct SphereTextureKey : SphereDecalKey { Vector2 studsPerTile;bool operator<(const SphereTextureKey&)const; };
+typedef G3D::Table<Vector3,SphereVariations> SphereSizes;
+// RenderSurfaceTypes is one unsigned key with identity hash/equality in target.
+typedef G3D::Table<unsigned,SphereSizes> SphereSurfaces;
+struct SphereCache {
+    SphereSurfaces cache1;
+    boost::recursive_mutex mutex;
+    std::map<SphereDecalKey,MeshRef> decalCache;
+    std::map<SphereTextureKey,MeshRef> textureCache;
+    int count;
+    SphereCache():count(0){}
+};
+typedef char NativeSphereSize[sizeof(SphereMesh)==0x8c?1:-1];
+typedef char NativeSphereCache[sizeof(SphereCache)==0x60?1:-1];
+typedef char NativeSphereMutex[offsetof(SphereCache,mutex)==0x10?1:-1];
+typedef char NativeSphereCounter[offsetof(SphereCache,count)==0x5c?1:-1];
+SphereCache* sphereCache;
+boost::once_flag sphereOnce=BOOST_ONCE_INIT;
+void initializeSphereCache(){sphereCache=new SphereCache;} // 004d97b0; persistent singleton.
+}
+
+SphereMesh::SphereMesh(const Vector3& size,RenderSurfaceTypes surfaces){
+    geometryKind=2;levels.push_back(new Level(RenderDevice::QUADS));
+    SphereBuilder builder(levels.last(),size,surfaces);builder.build(SphereLevelBuilder::Surface);
+}
+template<> SphereMesh* MeshFactory<SphereMesh,1>::create(const Vector3& size,RenderSurfaceTypes surfaces){
+    boost::call_once(initializeSphereCache,sphereOnce);
+    boost::recursive_mutex::scoped_lock lock(sphereCache->mutex);
+    if(!sphereCache->cache1.containsKey(surfaces.data))sphereCache->cache1.set(surfaces.data,SphereSizes());
+    SphereSizes& sizes=sphereCache->cache1.get(surfaces.data);
+    if(!sizes.containsKey(size))sizes.set(size,SphereVariations());
+    SphereVariations& variation=sizes.get(size);
+    SphereMesh* mesh=static_cast<SphereMesh*>(variation.meshes[0].getPointer());
+    if(!mesh){
+        mesh=new SphereMesh(size,surfaces);variation.meshes[0]=mesh;
+        if(++sphereCache->count%100==0){MeshRef keep=variation.meshes[0];flushUnused();}
+    }
+    return mesh;
+}
+template<> void MeshFactory<SphereMesh,1>::flushUnused(){
+    boost::call_once(initializeSphereCache,sphereOnce);
+    boost::recursive_mutex::scoped_lock lock(sphereCache->mutex);
+    for(SphereSurfaces::Iterator i=sphereCache->cache1.begin();i!=sphereCache->cache1.end();++i)
+        for(SphereSizes::Iterator j=i->value.begin();j!=i->value.end();++j)
+            if(j->value.meshes[0].notNull() && j->value.meshes[0].isLastReference())j->value.meshes[0]=MeshRef();
+}
+template<> unsigned MeshFactory<SphereMesh,1>::cachedMeshes(){
+    boost::call_once(initializeSphereCache,sphereOnce);
+    boost::recursive_mutex::scoped_lock lock(sphereCache->mutex);
+    unsigned count=0;
+    for(SphereSurfaces::Iterator i=sphereCache->cache1.begin();i!=sphereCache->cache1.end();++i)
+        for(SphereSizes::Iterator j=i->value.begin();j!=i->value.end();++j)
+            if(j->value.meshes[0].notNull())++count;
+    return count;
 }
 unsigned activeReferences(){return references;}
 unsigned liveLevels(){return levelsAlive;}
@@ -150,7 +323,7 @@ MeshRef BlockMesh::create(const Vector3& size,RenderSurfaceTypes surfaces,RBX::B
             mesh=new BlockMesh(size,surfaces,color);
             meshBevel=0;
             buildingShadowMesh=true;
-            mesh->populate(size,surfaces,color);
+            static_cast<BlockMesh*>(mesh.getPointer())->populate(size,surfaces,color);
             buildingShadowMesh=false;
         }else{
             meshBevel=0;
@@ -168,6 +341,7 @@ MeshRef BlockMesh::create(const Vector3& size,RenderSurfaceTypes surfaces,RBX::B
 
 // 004e5710 drops cache-only references without erasing keys or resetting count.
 void flushUnused(){
+    SphereMesh::flushUnused();
     boost::call_once(initializeCache,cacheOnce);
     boost::recursive_mutex::scoped_lock lock(cache->mutex);
     for(std::map<Lookup,Variations>::iterator it=cache->entries.begin();it!=cache->entries.end();++it)
@@ -176,12 +350,12 @@ void flushUnused(){
                 it->second.meshes[i]=MeshRef();
 }
 unsigned cachedMeshes(){
-    if(!cache)return 0;
+    if(!cache)return SphereMesh::cachedMeshes();
     boost::recursive_mutex::scoped_lock lock(cache->mutex);
     unsigned count=0;
     for(std::map<Lookup,Variations>::iterator it=cache->entries.begin();it!=cache->entries.end();++it)
         for(int i=0;i<4;++i)if(it->second.meshes[i].notNull())++count;
-    return count;
+    return count+SphereMesh::cachedMeshes();
 }
 template<RBX::NormalId id>
 static inline G3D::Vector3 faceHalf(const G3D::Vector3& size,float inset){

@@ -8,7 +8,7 @@ import sys
 root = Path(__file__).resolve().parents[3]
 source = Path(sys.argv[1]).resolve()
 target = root / 'rebuild/2008-06/out/tests/P2RecoveredPlayer/Content'
-files = ['textures/SurfacesStrip.png'] + ['sky/null_plainsky512_' + face + '.jpg' for face in ('bk', 'ft', 'lf', 'rt', 'up', 'dn')]
+files = ['textures/SurfacesStrip.png', 'textures/Surfaces.png'] + ['sky/null_plainsky512_' + face + '.jpg' for face in ('bk', 'ft', 'lf', 'rt', 'up', 'dn')]
 hashes = {}
 for name in files:
     data = (source / name).read_bytes()

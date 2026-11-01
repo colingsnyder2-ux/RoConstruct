@@ -288,7 +288,10 @@ G3D::TextureRef TextureProxy::resolve(void* engine) {
                 }
                 Ogre::Image finalImage;
                 std::vector<unsigned char> mipData;
-                if (!*reinterpret_cast<bool*>(reinterpret_cast<char*>(engine)+0x805)) {
+                // Player harness has no enclosing native render context. Its
+                // explicit mode enables mipmaps; retain native reads when present.
+                bool disableMipmaps=engine && *reinterpret_cast<bool*>(reinterpret_cast<char*>(engine)+0x805);
+                if (!disableMipmaps) {
                     int width = image.getWidth();
                     int height = image.getHeight();
                     int mipmaps = Ogre::Bitwise::getBitShift(Ogre::Bitwise::firstPO2From((width > height ? width : height)));
@@ -335,7 +338,7 @@ G3D::TextureRef TextureProxy::resolve(void* engine) {
                 if (!loadTexture(filename, image)) {
                     ogreTexture.setNull();
                 } else if (image.getFormat() && image.getWidth() > 0 && image.getHeight() > 0) {
-                    int aaMode = *reinterpret_cast<int*>(reinterpret_cast<char*>(engine)+0x800);
+                    int aaMode = engine ? *reinterpret_cast<int*>(reinterpret_cast<char*>(engine)+0x800) : 0;
                     if (aaMode == 1) {
                         int width = nextPowerOfTwo(image.getWidth());
                         int height = nextPowerOfTwo(image.getHeight());
