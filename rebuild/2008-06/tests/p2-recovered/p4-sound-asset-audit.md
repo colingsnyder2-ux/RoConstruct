@@ -129,3 +129,9 @@ implemented with genuine Sound, FMOD and RunService declarations. The latter
 subscribes only when a Part, 3D mode and channel are present. Provider detach
 uses the same release body. These methods still require the missing ancestry
 path before an actual channel can be constructed and exercised.
+
+SoundService::closeFmod 005ba970 now clears stock channels and children,
+detaches both sound caches, clears them and releases the FMOD system. The
+original 005ba2b0 callback independently confirms handle detachment. This
+source compiles against the app overlay but is not yet called or runtime-tested;
+its error-reporting gate has the same documented adaptation as the loader.
