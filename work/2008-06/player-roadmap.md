@@ -1,3 +1,13 @@
+# Sound attachment investigation (unfinished)
+
+Native provider callback 005bdcf0, stock loaders 005bdb10/005bd6d0 and
+SoundId setter 005bd360 are drafted in p4-sound-attachment-wip.patch, outside
+the active build. Forcing a real SoundService constructor exposed missing
+SoundId reflection specializations, sStockSound and SoundChannel ancestry
+005bd890. Recover and link those behaviors before applying the patch; do not
+replace them with stubs. The constructor test currently fails to link, so
+service attachment and P4 audio remain unproven.
+
 # Current player checkpoint
 
 At sourcebf6f987578, recovered StockSound constructor005bd250 and SoundService
