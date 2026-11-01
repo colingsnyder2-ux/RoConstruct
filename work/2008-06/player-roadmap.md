@@ -2088,3 +2088,6 @@ Doc getter00403040 now matches all47 bytes with relocations masked: explicit ear
 
 
 Doc DeleteContents source port at 2de64d130b now uses typed DataModel lock, owned-verb cleanup, StandardVerbs deletion, workspace cleanup/Release, current-document handling and CDocument cleanup in original order. Original workspace cleanup call is 0046b0e0. Compiler accepts shared types and existing Doc gates pass; body is459 bytes vs original449, not exact, and cleanup/current-document links remain unresolved. Candidate stays inactive; no class swap or runtime gate change claimed.
+
+
+Doc DeleteContents004513c0 now matches449 bytes with relocation fields masked. Caching end iterator, as in recovered source, removed the 10-byte mismatch. Verified at 147e8d8b5e; document-compile.json records the body. Workspace cleanup0046b0e0 and current-document helper00405aa0 remain unresolved; class inactive. Doc destructor still204/198. No selected-executable or runtime gate changes.
