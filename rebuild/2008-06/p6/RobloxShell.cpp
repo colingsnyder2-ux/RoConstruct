@@ -32,14 +32,16 @@ public:
     bool visible;
     bool play;
     bool pickTest;
+    bool holdW;
     CString* expecting;
     CString capture, script, saveAs, post, runFile, select, setProperty, editScript;
-    CRobloxCommandLineInfo() : autoClose(false), visible(false), play(false), pickTest(false), expecting(NULL) {}
+    CRobloxCommandLineInfo() : autoClose(false), visible(false), play(false), pickTest(false), holdW(false), expecting(NULL) {}
     virtual void ParseParam(const char* param, BOOL flag, BOOL last) {
         if (expecting) { *expecting = param; expecting = NULL; return; }
         if (flag && !lstrcmpiA(param, "p6-autoclose")) { autoClose = true; return; }
         if (flag && !lstrcmpiA(param, "p6-visible")) { autoClose = visible = true; return; }
         if (flag && !lstrcmpiA(param, "p6-play")) { play = true; return; }
+        if (flag && !lstrcmpiA(param, "p6-holdw")) { holdW = true; return; }
         if (flag && !lstrcmpiA(param, "p6-pick-test")) { pickTest = true; return; }
         if (flag && !lstrcmpiA(param, "p6-capture")) { expecting = &capture; return; }
         if (flag && !lstrcmpiA(param, "p6-script")) { expecting = &script; return; }
@@ -76,6 +78,9 @@ static bool g_pickTest;
 class CMainFrame : public CXTPMDIFrameWnd {
     DECLARE_DYNAMIC(CMainFrame)
     CXTPStatusBar statusBar;
+    CXTPTabClientWnd tabs;
+    int fpsFrames;
+    DWORD fpsTick;
     CXTPDockingPaneManager panes;
     CTreeCtrl explorer;
     CEdit output;
@@ -147,6 +152,15 @@ public:
             printf("p6: undone to %g %g %g\n", end[0], end[1], end[2]);
         }
     }
+    void UpdateFps() {
+        DWORD now = GetTickCount();
+        if (now - fpsTick < 1000) return;
+        CString text;
+        text.Format("%dfps", (P6EngineFrames() - fpsFrames) * 1000 / int(now - fpsTick));
+        statusBar.SetPaneText(1, text);
+        fpsFrames = P6EngineFrames();
+        fpsTick = now;
+    }
     void DrainOutput() {
         CSingleLock lock(&g_outputLock, TRUE);
         if (g_outputPending.IsEmpty()) return;
@@ -215,8 +229,11 @@ public:
     afx_msg void OnUpdateViewExplorer(CCmdUI* ui) { ui->SetCheck(!panes.IsPaneClosed(ID_VIEW_EXPLORER)); }
     afx_msg int OnCreate(LPCREATESTRUCT create) {
         if (CXTPMDIFrameWnd::OnCreate(create) == -1) return -1;
-        static const UINT indicators[] = {ID_SEPARATOR};
-        if (!statusBar.Create(this) || !statusBar.SetIndicators(indicators, 1)) return -1;
+        static const UINT indicators[] = {ID_SEPARATOR, ID_INDICATOR_CAPS};
+        if (!statusBar.Create(this) || !statusBar.SetIndicators(indicators, 2)) return -1;
+        statusBar.SetPaneInfo(1, ID_INDICATOR_CAPS, SBPS_NORMAL, 60);
+        fpsFrames = 0;
+        fpsTick = GetTickCount();
         if (!InitCommandBars()) return -1;
         CXTPCommandBars* bars = GetCommandBars();
         XTPPaintManager()->SetTheme(xtpThemeOffice2003);
@@ -245,9 +262,11 @@ public:
         log->SetTitle(_T("Output"));
         log->Attach(&output);
         P6DataSetOutput(queueOutput);
+        tabs.Attach(this, TRUE);
         return 0;
     }
     afx_msg void OnTimer(UINT_PTR id) {
+        if (id == 3) { KillTimer(id); P6EngineHoldW(0); return; }
         if (id == ID_P6_COMMAND) {
             KillTimer(id);
             printf("p6: command %u\n", g_post);
@@ -386,7 +405,7 @@ public:
     void* dragged;
     float dragStart[3];
 public:
-    CRobloxView() : dragged(NULL) {}
+    CRobloxView() : dragged(NULL), pendingOpen(false) {}
     virtual void OnDraw(CDC*) {}
     afx_msg void OnPlaySolo() {
         int status = P6EnginePlay();
@@ -404,10 +423,18 @@ public:
     }
     afx_msg void OnUpdateRun(CCmdUI* ui) { ui->Enable(P6EngineIsOpen() && !P6EngineRunning()); }
     afx_msg void OnUpdatePause(CCmdUI* ui) { ui->Enable(P6EngineRunning()); }
+    bool pendingOpen;
     virtual void OnInitialUpdate() {
         CView::OnInitialUpdate();
+        pendingOpen = true;
+        OpenEngine();
+    }
+    // Tabbed MDI children start at zero size, which D3D cannot use.
+    void OpenEngine() {
         CRect rect;
         GetClientRect(rect);
+        if (!pendingOpen || rect.IsRectEmpty()) return;
+        pendingOpen = false;
         int status = P6EngineOpen(m_hWnd, GetDocument()->GetPathName(), rect.Width(), rect.Height(), g_play);
         printf("p6: engine open %d\n", status);
         CRect screen(rect);
@@ -467,6 +494,7 @@ public:
     }
     afx_msg void OnSize(UINT type, int width, int height) {
         CView::OnSize(type, width, height);
+        OpenEngine();
         P6EngineResize();
     }
     DECLARE_MESSAGE_MAP()
@@ -568,11 +596,15 @@ public:
         m_pMainWnd = frame;
         CXTPCommandBar* menu = frame->GetCommandBars()->GetMenuBar();
         printf("p6: frame=%p menus=%d\n", frame->m_hWnd, menu ? menu->GetControlCount() : -1);
-        frame->ShowWindow(command.autoClose && !command.visible ? SW_HIDE : m_nCmdShow);
+        if (command.autoClose && !command.visible) // off screen: tab layout needs a shown frame, and focus stays untouched
+            frame->SetWindowPos(NULL, -4000, 0, 1100, 760, SWP_NOZORDER | SWP_NOACTIVATE | SWP_SHOWWINDOW);
+        else
+            frame->ShowWindow(m_nCmdShow);
         frame->UpdateWindow();
         Stage("00449bf0", "frame ready");
         if (command.m_nShellCommand == CCommandLineInfo::FileOpen && !ProcessShellCommand(command)) return FALSE;
         if (command.autoClose) frame->SetTimer(ID_P6_AUTOCLOSE, 5000, NULL);
+        if (command.holdW) { P6EngineHoldW(1); frame->SetTimer(3, 1500, NULL); }
         g_commands = command.post;
         g_post = (UINT)atoi(command.post);
         if (g_post) frame->SetTimer(ID_P6_COMMAND, 1000, NULL);
@@ -581,6 +613,7 @@ public:
     virtual BOOL OnIdle(LONG count) {
         BOOL more = CWinApp::OnIdle(count);
         static_cast<CMainFrame*>(m_pMainWnd)->DrainOutput();
+        static_cast<CMainFrame*>(m_pMainWnd)->UpdateFps();
         return P6EngineFrame() || more;
     }
     afx_msg void OnAbout() {

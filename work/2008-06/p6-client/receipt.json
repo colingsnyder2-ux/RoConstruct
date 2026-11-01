@@ -2,17 +2,17 @@
  "milestone": "P6",
  "status": "OPEN",
  "scope": "XTP MFC client: edit mode, save, reopen, play mode with real input",
- "exe_sha256": "7fcbb9579b1e31900e086d5e10c93af7e10387aa3208a5a45d5bd3127957d83b",
+ "exe_sha256": "803c4d116a544665f4c1269d5905659229155f71da6a50185ea7830e09b6be18",
  "capture_sha256": "93b0646bf6d8a27f053487b7b80490872b79e6215d7674f30517832cf593c85e",
  "place": "7e44dc577dacb884e6971bd25de8c23769eba12f2978fa219080d4b45c04181d",
  "sources": {
-  "RobloxShell.cpp": "e3517ffbb2c87075c943417499c2c3333d12fdd7a21ce0d0288335ce5fbeeb8b",
-  "P6Engine.cpp": "4c928418d62e0d149ee4a4e6d163bbe5cdabc5412ba7316de5082aaf71a63706",
+  "RobloxShell.cpp": "b1da868ded3aab529ec6b54ef1ef6b7ff2e4ca4c45b2c517b7bdd07537664c81",
+  "P6Engine.cpp": "99b8d87560f7809bb56e0a7a3b80e5db14aded6cae6dec6f757d60dbd753ddb3",
   "P6Data.cpp": "1aa8388835c2c711f631d6e06673c245027ded9ad0b7cb45e68c4cc3741be65a",
-  "P6Engine.h": "e392a36d8ccc93d5974ca04f17691572b77de26407d676f0faf67148ac00b402",
+  "P6Engine.h": "d87e0ce385461524bae50fc8c4820569576b446414b4a28b81e3af42da6b6ac1",
   "build_client.py": "1c03ac121894014da38199dc9c42f9a2064411f6195372bf5f8398ebd450e477",
   "gen_res.py": "780cf9a95025f0d3f315bbac95703dfabe1378308ec5da220be5eb3e1f787497",
-  "input_test.py": "d8201e701c37d76f11d1ab2e9f53bc4ff7ff67f42538afb407c44c6b3087c7f2",
+  "input_test.py": "cbd32f5e7284ed6a3b116f8e1220c80c0186beec55bc6dd82543da18a51daf32",
   "click_test.py": "5891541d9212ce039647a229c7fd358ccb64faa3feb3ff8417cb1516742d3a76",
   "original_check.py": "61e158d23bd868df42ceac4e32d52309c8d725210b0935b417724e33b811b418"
  },
@@ -63,9 +63,9 @@
   "exit": 0,
   "keys": "real W keybd_event for 1.5 s after engine open",
   "actor_end": [
-   -1.00814e-06,
-   2.99842,
-   18.9892
+   2.87672e-07,
+   2.99911,
+   18.989
   ],
   "idle_actor_end": [
    0,
@@ -73,7 +73,8 @@
    25.5
   ],
   "frames": 301,
-  "cleanup": "levels=0 refs=0 backends=0 spheres=0"
+  "cleanup": "levels=0 refs=0 backends=0 spheres=0",
+  "note": "W pressed 2 s after open. Pressed at 0.3 s on merged engine moves only 0.53 studs; before cc5796493c it moved 6.5."
  },
  "edit_save_reopen": {
   "fixture": "lifetime-shapes.rbxl",
@@ -112,8 +113,7 @@
   "32968 Reset": "reloads document, cleanup zero both opens"
  },
  "not_rerun_on_this_exe": [
-  "real W input",
-  "real drag"
+  "final relink only removed a debug trace line"
  ],
  "execute_script": "RunFile via -p6-runfile moved Brick to 1,2,3; file dialog path not exercised",
  "property_edit": {
@@ -156,5 +156,6 @@
  },
  "output_pane": "print marker reached the pane on hidden run",
  "script_editor": "Scintilla from SciLexer.dll; TriggerScript opened 250 chars, edited, saved to Source 262 chars. Double-click path shares OnExplorerOpen, not driven with a real mouse.",
- "merged_codex": "cc5796493c"
+ "merged_codex": "cc5796493c",
+ "tabs_fps": "CXTPTabClientWnd tabs and status FPS, screenshot showed 46fps; engine open deferred to first nonzero OnSize; test mode now off screen, not SW_HIDE"
 }

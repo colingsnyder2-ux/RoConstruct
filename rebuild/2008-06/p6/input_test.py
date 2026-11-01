@@ -35,7 +35,7 @@ user.keybd_event(0x12, 0, 2, 0)
 if not ready.wait(20):
     process.kill()
     sys.exit("engine not ready")
-time.sleep(0.3)
+time.sleep(2.0)  # spawn falls and lands first
 focused = user.GetForegroundWindow() == found[0]
 user.keybd_event(0x57, 0x11, 0, 0)
 time.sleep(1.5)

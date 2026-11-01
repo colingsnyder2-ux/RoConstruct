@@ -8,6 +8,7 @@ int P6EngineStartup(void);
 int P6EngineReadable(const char* path);
 int P6EngineOpen(void* window, const char* path, int width, int height, int play);
 int P6EngineScript(const char* command);
+void P6EngineHoldW(int down);
 void P6EngineOrbit(float yaw, float pitch);
 void P6EngineZoom(float factor);
 void* P6EnginePick(float x, float y);

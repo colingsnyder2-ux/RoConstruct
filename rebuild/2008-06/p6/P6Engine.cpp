@@ -200,6 +200,11 @@ extern "C" int P6EngineIsOpen(void)
     return g_timer != NULL;
 }
 
+extern "C" void P6EngineHoldW(int down)
+{
+    SetPlayerTestKey(down);
+}
+
 extern "C" int P6EngineScript(const char* command)
 {
     return ExecutePlayerScript(command);
