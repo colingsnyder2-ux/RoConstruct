@@ -99,7 +99,7 @@
    "576f00": "RBX::DataModel::Lock::doLock"
   },
   "note": "Mined unit labels for these addresses are unreliable; confirm each from bytes before use.",
-  "estimate": "Not one pass: blocked on DataModel members and about 20 verb and helper recoveries. Realistic effort is a day or more of focused work, best split with Codex.",
+  "estimate": "Smaller than feared: remaining recoveries are 45f7b0 chain, DataModel::Lock bodies, 4 inline verb classes and DataModel notifier members. A day of focused work, less if Codex adds the notifier members.",
   "real_remaining": [
    "45a2f0 body after +0x45a3c8",
    "45f7b0 (+55a8f0,45dce0,555830,5773c0)",
@@ -113,31 +113,13 @@
    "Help": "inline in OnInitialUpdate: Verb ctor 5833e0, then vtable 00819140 and view pointer at +0xc, 0x10 bytes",
    "ToggleFullScreen": "inline: Verb ctor then vtable 00819114",
    "LockPlayMode": "inline: Verb ctor then vtable 008190ec",
-   "camera and selection verbs": [
-    "CameraPanLeft",
-    "CameraPanRight",
-    "CameraTiltUp",
-    "CameraTiltDown",
-    "CameraZoomIn",
-    "CameraZoomOut",
-    "CameraCenter",
-    "CameraZoomExtents",
-    "CameraModelView",
-    "FixedCamera",
-    "AttachCamera",
-    "TrackCamera",
-    "FollowCamera",
-    "WatchCamera",
-    "SelectionRotate",
-    "SelectionTilt"
-   ],
+   "camera and selection verbs": "CORRECTION: these are not constructed. Each is a command binding, binderMap[commandId] = Name of workspace verb container getVerb(\"CameraPanLeft\"), or the null Name (554270) when absent. 583380 is VerbContainer::getVerb(std::string), 5644a0 is map operator[] on the View binder map at +0x58. First ids: CameraPanLeft 0x8027, CameraPanRight 0x8028. It is the Doc bindExisting pattern.",
    "note": "Camera verbs look like donor RBX::Camera*Command types (mined unit label for 5833e0 is CameraZoomExtentsCommand). Their constructors may already exist in mined or donor code."
   },
-  "plan": "Write OnInitialUpdate in one source against the shared headers with the Help, ToggleFullScreen and LockPlayMode verbs as inline derived classes, then match 1897 bytes. It is a single large function, not twenty separate callees.",
+  "plan": "Write OnInitialUpdate with 16 getVerb-and-bind steps (a View::bindExisting analogue), three inline derived verbs (Help, ToggleFullScreen, LockPlayMode), ToggleToolbox (exact), listener registration, and the data model lock. Then match 1897 bytes.",
   "blockers": {
-   "DataModel header (Codex owns)": "OnInitialUpdate reads DataModel+0x150 and +0x170 (listener notifiers the view subscribes to through 4218a0), DataModel+0x1c8 (VerbContainer base, already present), and +0x204 then +0x2ec (a verb container reached from the workspace pointer). The native DataModel.h does not declare the notifier members or whatever sits at +0x204.",
+   "DataModel header (Codex owns)": "Still needed: DataModel+0x150 and +0x170, the notifier bases the view listens to through Notifier::addListener 4218a0. RESOLVED: DataModel+0x204 is the workspace shared_ptr (offsetof(DataModel, workspace) == 0x204 in the native header, checked with MSVC 21022); +0x2ec is a VerbContainer inside the workspace object.",
    "CRobloxWnd+0xfc": "45a597-45a5c8 reads and replaces an owned pointer at offset 0xfc of the object stored at View+0x1d8, so that type needs recovery before this function can compile.",
-   "camera and selection verbs": "No donor or native classes exist for the 16 camera and selection verbs; each constructor must be recovered or its mined body adapted. Mined unit labels name them RBX::Camera*Command.",
    "45f7b0 chain": "55a8f0, 45dce0, 555830, 5773c0 plus DataModel::Lock bodies 411b40 and 576f00"
   }
  },
