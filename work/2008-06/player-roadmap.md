@@ -1479,3 +1479,20 @@ updates them. P3 lifetime/cache, Novetus animation and a 606-model supplied
 place pass. Receipts: ce9c96c-shadow, ce9c96c-shadow-p3,
 ce9c96c-shadow-animation and ce9c96c-shadow-supplied. Meshes exceeding 32767
 vertices do not cast stencil shadows; shadow distance is currently 300 studs.
+
+## P5 checkpoint: bounce source and landing state (3dc292489e)
+
+Original 00649320 is attributed to rbxgs Constants::getElasticMultiplier.
+Its thresholds and multipliers, read from the pinned original executable,
+match the donor implementation: .05/.28, .26/.42, .51/.57, .76/.8, else 1.
+Existing original block observations independently show a bounce from y=-4.009
+at 0.5s to y=9.164 at 0.797s. Preserve bouncing; do not force zero restitution.
+The 3dc292489e probe and receipt p5-elasticity-source-322f7a5c31 pin the bytes
+and prior observation. This does not establish character landing parity.
+
+The original state factory 00643660 includes a distinct Landed state (6);
+its constructor 00666ac0 initializes a 0.25-second value at 0084cc84 and its
+vtable includes 00666b20 and recovered force 00666550. The donor Freefall
+onStep switches directly to Running. The native transition conditions and
+Landed timer semantics remain unproven; do not infer that the missing state
+alone causes the high-fall discrepancy. Trace state transitions before editing.
