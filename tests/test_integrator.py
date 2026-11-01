@@ -423,3 +423,14 @@ def test_generator_timeout_reports_liveness_and_terminates_child(tmp_path, monke
         integration.run_generator(tmp_path / 'generator.py', tmp_path, timeout=0)
     process.kill.assert_called_once()
     assert 'still running' in capsys.readouterr().out
+
+
+def test_new_integrator_uses_canonical_lane_without_touching_project_or_saved_sessions(private_session_root):
+    root=private_session_root
+    frozen=root/'work/integration/sources/accepted/rebuild/2008-06/patches'
+    frozen.mkdir(parents=True)
+    (frozen/'make_rbxgs_client.py').write_text('# accepted source')
+    integration.atomic_json(root/'work/integration/source-root.json',dict(path='sources/accepted'))
+    with integrator.session_workspace(lambda _:None) as folder:
+        assert (folder/'rebuild/2008-06/patches/make_rbxgs_client.py').read_text()=='# accepted source'
+    assert (root/'rebuild/2008-06/patches/make_rbxgs_client.py').read_text()=='# original'

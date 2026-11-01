@@ -24,6 +24,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 DIST = ROOT / "local" / "packages"
+NATIVE_WORKFLOW_VERSION = 30
 
 # Every module a working cloud worker needs (transitive closure of worker, link,
 # handoff, doctor, setup, analyze, draft, optimizer and the matchers).
@@ -165,12 +166,14 @@ def version():
 def stage(slug, spec, out):
     """Copy one package into out/ so it can be imported and zipped."""
     from roc.rebuild_install import ensure_abi
-    abi = ensure_abi(ROOT)
+    from roc.integration import source_root, adopted_path
+    inputs = source_root(ROOT)
+    abi = ensure_abi(inputs)
     if out.exists():
         shutil.rmtree(out)
     (out / "roc").mkdir(parents=True)
     for relative in spec["files"]:
-        source = ROOT / relative
+        source = inputs / relative if relative.startswith("rebuild/") and (inputs / relative).is_file() else ROOT / relative
         if not source.is_file():
             raise SystemExit("missing file for %s: %s" % (slug, relative))
         target = out / relative
@@ -180,16 +183,16 @@ def stage(slug, spec, out):
     target.parent.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(abi, target)
     # Adopted headers are compiler inputs even if no ordinary mined snippet named them.
-    overlay = ROOT / 'rebuild/2008-06/patches/rbxgs-client.json'
+    overlay = inputs / 'rebuild/2008-06/patches/rbxgs-client.json'
     native = json.loads((ROOT / 'research/native-units.json').read_text(encoding='utf-8'))
     adopted = {}
     for edits in json.loads(overlay.read_text(encoding='utf-8')).values():
         for old, ref in edits:
             if old != '@replace':
                 continue
-            path = (ROOT / 'tools/rbxgs/Client' / ref).resolve()
-            if path.is_relative_to(ROOT / 'rebuild'):
-                relative = path.relative_to(ROOT)
+            path = adopted_path(inputs / 'tools/rbxgs/Client', ref, inputs)
+            if path.is_relative_to(inputs / 'rebuild'):
+                relative = path.relative_to(inputs)
                 if relative.as_posix() not in spec['files'] or not (out / relative).is_file():
                     raise SystemExit('Missing packaged native dependency: ' + ref)
                 continue
@@ -212,7 +215,7 @@ def stage(slug, spec, out):
     shutil.copytree(ROOT / "roc" / "web", out / "roc" / "web", dirs_exist_ok=True)
     (out / "roc" / "__init__.py").write_text("", encoding="utf-8")
     (out / "roconstruct-package.json").write_text(json.dumps(
-        {"package": slug, "revision": version(), "native_workflow": True, "native_workflow_version": 28,
+        {"package": slug, "revision": version(), "native_workflow": True, "native_workflow_version": NATIVE_WORKFLOW_VERSION,
          "matching_workflow_version": 4}, indent=2) + "\n", encoding="utf-8")
     for name, text in spec["docs"].items():
         (out / name).write_text(text, encoding="utf-8")
@@ -389,7 +392,7 @@ def prepare_downloads(package):
     shutil.copy2(package, archive)
     for name in ("NATIVE_AGENT.md", "MATCHING_AGENT.md"):
         shutil.copy2(ROOT / "docs" / name, folder / name)
-    data.update(schema=1, workflow_version=29, matching_workflow_version=4,
+    data.update(schema=1, workflow_version=NATIVE_WORKFLOW_VERSION, matching_workflow_version=4,
                 abi_manifest_sha256=hashlib.sha256(abi).hexdigest(), abi_manifest_classes=len(json.loads(abi)),
                 url=base + archive.name, sha256=hashlib.sha256(archive.read_bytes()).hexdigest(),
                 size=archive.stat().st_size, guide=base + "NATIVE_AGENT.md", matching_guide=base + "MATCHING_AGENT.md",

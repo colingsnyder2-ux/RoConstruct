@@ -1725,3 +1725,37 @@ def test_native_adoption_stays_in_private_workspace_with_reused_vendor_junction(
     paths,_=integration_verify.input_paths(root)
     assert own.resolve() in paths and other.resolve() not in paths
     assert other.read_text()=='other agent declaration'
+
+
+def test_canonical_source_lane_keeps_live_sources_and_authoritative_state_separate(promotions, monkeypatch):
+    root=promotions.root
+    frozen=root/'work/integration/sources/accepted'
+    patchdir=frozen/'rebuild/2008-06/patches'
+    patchdir.mkdir(parents=True)
+    (patchdir/'make_rbxgs_client.py').write_text('# accepted generator\n')
+    (patchdir/'rbxgs-client.json').write_text('{"App/Frozen.cpp": []}')
+    (root/'roc').mkdir();(root/'roc/current.py').write_text('# current verifier\n')
+    (root/'roc.py').write_text('# current CLI\n')
+    integration.atomic_json(root/'work/integration/source-root.json',dict(path='sources/accepted'))
+    pinned=integration.Promotions(promotions.store,root)
+    assert pinned.root==root and pinned.directory==promotions.directory
+    assert pinned.source_root==frozen.resolve()
+    assert pinned.baseline()['overlay']=={'App/Frozen.cpp': []}
+    assert (frozen/'roc/current.py').read_text()=='# current verifier\n'
+    before=promotions.overlay.read_bytes()
+    def generate(argv,**kw):
+        assert Path(argv[-1])==pinned.generator and kw['cwd']==frozen.resolve()
+        pinned.overlay.write_text('{}')
+    monkeypatch.setattr(integration_verify.subprocess,'run',generate)
+    integration_verify.publish(pinned,[])
+    assert promotions.overlay.read_bytes()==before
+    assert json.loads(pinned.overlay.read_text())=={}
+    assert pinned.overlay.with_name('native-promotions.json').exists()
+    assert not promotions.overlay.with_name('native-promotions.json').exists()
+
+
+@pytest.mark.parametrize('selected',['../../outside','jobs/accepted','.','sources'])
+def test_canonical_source_pin_cannot_modify_receipt_artifacts_or_escape_state(tmp_path,selected):
+    integration.atomic_json(tmp_path/'work/integration/source-root.json',dict(path=selected))
+    with pytest.raises(ValueError,match='inside work/integration/sources'):
+        integration.source_root(tmp_path)

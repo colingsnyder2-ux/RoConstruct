@@ -42,7 +42,8 @@ def workspace(log=print):
     log("Startup 2/6: copying recipe metadata")
     shutil.copytree(ROOT / "research", folder / "research", ignore=shutil.ignore_patterns("*.jsonl"))
     log("Startup 3/6: snapshotting private rebuild inputs")
-    shutil.copytree(ROOT / "rebuild/2008-06", folder / "rebuild/2008-06",
+    from roc.integration import source_root
+    shutil.copytree(source_root(ROOT) / "rebuild/2008-06", folder / "rebuild/2008-06",
                     ignore=shutil.ignore_patterns("out", "__pycache__", "*.obj", "*.pdb", "*.exe", "*.dll"))
     log("Startup 4/6: loading contributor configuration")
     (folder / "clients").mkdir()

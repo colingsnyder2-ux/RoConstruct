@@ -140,3 +140,17 @@ existing mining webhook (`allowed_mentions` and 429 handling apply). Incoming
 candidate text remains untrusted data in the file inbox; it never becomes coding
 agent instructions. No player swap occurs. Restart the supervised server child
 to activate these endpoints; update/restart Integrators for Worker 24.
+
+### Separate canonical integration source
+
+A committed player/P5 compatibility baseline can differ from the accepted integration source.
+Do not replace an owner's native edits or bypass accepted-body regression checks to reconcile them.
+The maintainer can select a private source lane with `work/integration/source-root.json`, for example
+`{"path":"sources/accepted-20261101"}`. Paths must stay under `work/integration/sources/`;
+never point at immutable job receipts. Prepare the lane from an independently reverified accepted
+snapshot, keeping the compiler inputs, module profiles and adopted headers together.
+The authoritative DB, queue, inbox and current shared native recovery files stay in the main checkout.
+Server startup copies the current verifier runtime into the lane. Restart is required after selecting it.
+New GUI private workspaces and packaged Worker rebuild inputs use the selected lane; existing private
+workspaces and proposals remain saved. Publish the matching Worker before resuming other PCs.
+Source body matches, linked integration acceptance and P5/P6 executable swaps remain separate gates.

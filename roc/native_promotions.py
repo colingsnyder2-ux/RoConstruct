@@ -61,7 +61,7 @@ def validate(packet, root, baseline):
 
 
 def receive(promotions, user, packet):
-    validate(packet, promotions.root, promotions.baseline())
+    validate(packet, promotions.source_root, promotions.baseline())
     key = integration.digest(packet)
     with promotions.store.lock, promotions.store.db as db:
         db.execute('INSERT OR IGNORE INTO integration_type_proposals VALUES(?,?,?,?,?,?)',
@@ -82,7 +82,7 @@ def queue(promotions, identifier, reviewed_hash):
     packet = json.loads(content)
     if integration.digest(packet) != reviewed_hash:
         raise ValueError('Declaration packet changed after review')
-    validate(packet, promotions.root, promotions.baseline())
+    validate(packet, promotions.source_root, promotions.baseline())
     with promotions.store.lock, promotions.store.db as db:
         db.execute('BEGIN IMMEDIATE')
         current = db.execute('SELECT job FROM integration_type_proposals WHERE id=?', (identifier,)).fetchone()[0]

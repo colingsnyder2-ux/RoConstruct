@@ -1,6 +1,6 @@
 # Native integration with an agent (Codex, Claude)
 
-## Native source recovery with real Codex agents (Worker 29)
+## Native source recovery with real Codex agents (Worker 30)
 
 Open `roc gui`, choose **Workers → Integrator**, select your Codex model and
 launch cap, then **Start native recovery**. This panel exposes native C++ recovery
@@ -1089,3 +1089,9 @@ Worker 29 rechecks explicitly assigned targets even when discovery eligibility o
 A canonical body already exact but not linked stays pending linkage and earns no credit.
 Failed saved canonical proofs wait for changed source/baseline inputs; candidates remain saved.
 GUI reports canonical blockers separately from active host checks.
+
+Worker 30 keeps independently accepted integration inputs separate from ongoing player/P5 source
+work. Maintainer-pinned canonical inputs ship in the Worker and seed new GUI private workspaces;
+shared native recovery still uses the host's current published sources and guarded method merges.
+Old private work and proposals remain saved; use the updated Worker/new recovery session when the
+server announces a changed baseline. All accepted-body, ABI, runtime and reference gates remain active.
