@@ -34,7 +34,10 @@ extern "C" void SetPlayerTestKey(int);
 extern "C" int CheckPlayerController();
 extern "C" int CheckShortTimer();
 extern "C" int CheckNativeMD5();
+extern "C" int CheckRunServiceInitialization();
 extern "C" int CheckClimbProbe();
+extern "C" int BeginClimbObservation();
+extern "C" int EndClimbObservation(float*);
 extern "C" int CheckLuaObjectConversion();
 extern "C" int CheckFreefallTransitions();
 extern "C" int GetActorTorsoPosition(float*,float*,float*);
@@ -691,7 +694,9 @@ int main(int argc, char** argv)
     bool p5LiveObserve = false;
     bool p5ClockCheck = false;
     bool p5HashCheck = false;
+    bool p5RunInitCheck = false;
     bool p5ClimbProbe = false;
+    bool p5ClimbObserve = false;
     bool p5LuaObjectCheck = false;
     bool p5FreefallCheck = false;
     bool anchorTrace = false;
@@ -718,7 +723,10 @@ int main(int argc, char** argv)
         else if (std::strcmp(argv[i], "--p5-live-observe") == 0) p5LiveObserve = true;
         else if (std::strcmp(argv[i], "--p5-clock-check") == 0) p5ClockCheck = true;
         else if (std::strcmp(argv[i], "--p5-hash-check") == 0) p5HashCheck = true;
+        else if (std::strcmp(argv[i], "--p5-run-init-check") == 0) p5RunInitCheck = true;
         else if (std::strcmp(argv[i], "--p5-climb-probe") == 0) {p5ClimbProbe=true;p5Join=true;}
+        else if (std::strcmp(argv[i], "--p5-climb-observe") == 0) {p5ClimbObserve=true;p5Join=true;p5Control=true;p5Play=true;}
+        else if (std::strcmp(argv[i], "--p5-climb-watch") == 0) {p5ClimbObserve=true;p5Join=true;p5Play=true;}
         else if (std::strcmp(argv[i], "--p5-lua-object-check") == 0) p5LuaObjectCheck = true;
         else if (std::strcmp(argv[i], "--p5-freefall-check") == 0) p5FreefallCheck = true;
         else if (std::strcmp(argv[i], "--p5-controller-check") == 0) {p5Control=true;p5ControllerCheck=true;}
@@ -764,6 +772,7 @@ int main(int argc, char** argv)
     if(loadOnly && selftest){std::fprintf(stderr,"load-only requires a disk place\n");return 1;}
     if(loadOnly){std::fprintf(stderr,"load-only: deserializing\n");std::fflush(stderr);}
     if (!selftest && LoadPlace(placeText.c_str()) != 0) { std::printf("place load failed\n"); return 1; }
+    if(p5RunInitCheck){int result=CheckRunServiceInitialization();std::printf("RunService initialization: %s (%d)\n",result?"FAIL":"PASS",result);ClosePlace();return result;}
     if(p5HashCheck){
         int result=CheckNativeMD5();std::printf("MD5 vectors: %s (%d)\n",result?"FAIL":"PASS",result);
         ClosePlace();return result;
@@ -784,6 +793,7 @@ int main(int argc, char** argv)
         int result=CheckPlayerController();std::printf("controller checks: %s (%d)\n",result?"FAIL":"PASS",result);
         ClosePlace();return result;
     }
+    if(p5ClimbObserve && BeginClimbObservation()){ClosePlace();return 1;}
     if(p5Play)StartPlay();
 
     Ogre::Root* root = new Ogre::Root("", "", "player.log");
@@ -988,6 +998,7 @@ int main(int argc, char** argv)
         }
     }
 
+    if(p5ClimbObserve){float speed=0;int count=EndClimbObservation(&speed);std::printf("climb events: %d max_speed=%g detected=%d\n",count,speed,CheckClimbProbe());}
     SceneDetach();
     drawModels();
     PlayerBlockMesh::flushUnused();

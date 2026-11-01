@@ -23,6 +23,7 @@
 #include <sstream>
 #include <cstdio>
 #include <cstring>
+#include <new>
 
 static boost::shared_ptr<RBX::DataModel> g_dataModel;
 static boost::shared_ptr<RBX::PartInstance> g_brickRef;
@@ -55,6 +56,7 @@ extern "C" int LoadPlace(const char* text)
     try { serializer.loadXML(stream, g_dataModel.get()); }
     catch (std::exception& e) { std::printf("load: %s\n", e.what()); return 1; }
     RBX::Workspace* workspace = g_dataModel->getWorkspace();
+
     g_brick = dynamic_cast<RBX::PartInstance*>(workspace->findFirstChildByNameRecursive("Brick"));
     if (!g_brick && workspace->getChildren()) {
         const std::vector<boost::shared_ptr<RBX::Instance> >& children = *workspace->getChildren();
@@ -144,6 +146,16 @@ extern "C" int PartAlive(void)
     return g_brick && g_brickRef && g_brick->getParent() != NULL;
 }
 
+// Verify the constructor does not inherit a nonzero runDisabled byte.
+extern "C" int CheckRunServiceInitialization()
+{
+    void* storage=::operator new(sizeof(RBX::RunService));
+    std::memset(storage,0xff,sizeof(RBX::RunService));
+    RBX::RunService* service=::new(storage) RBX::RunService();
+    int result=service->runDisabled?1:0;
+    service->~RunService();::operator delete(storage);return result;
+}
+
 // 0055e320: verify digest buffer, unsigned bytes and zero-padded hex.
 extern "C" int CheckNativeMD5()
 {
@@ -196,44 +208,25 @@ extern "C" int CheckFreefallTransitions()
     return events.size()==2 && events[1]==0 && fabs(head->getFriction()-.23f)<.0001f && fabs(torso->getFriction()-.67f)<.0001f ? 0 : 4;
 }
 
-// 00644a30 / 00644c80: candidate box and vertical obstruction ray sweep.
-class ClimbRayFilter : public RBX::HitTestFilter {
-    const RBX::Humanoid* humanoid;
-public:
-    explicit ClimbRayFilter(const RBX::Humanoid* value):humanoid(value){}
-    Result filterResult(const RBX::Primitive* primitive) const {
-        RBX::Primitive* torso=humanoid->getTorsoPrimitive();
-        return primitive->getDragging() || !primitive->getCanCollide() ||
-            (torso && torso->getAssembly()==primitive->getAssembly()) ? IGNORE_PRIM : INCLUDE_PRIM;
-    }
-};
-static bool DetectClimb(RBX::Humanoid* humanoid)
+namespace RBX { bool DetectClimb(Humanoid*); }
+static boost::signals::connection g_climbConnection;
+static int g_climbEvents;
+static float g_climbMaxSpeed;
+static void ObserveClimb(float speed){++g_climbEvents;g_climbMaxSpeed=std::max(g_climbMaxSpeed,speed);}
+extern "C" int BeginClimbObservation()
 {
-    RBX::Body* torso=humanoid->getTorsoBody();
-    if(!torso || !humanoid->getWorld())return false;
-    const G3D::CoordinateFrame& frame=torso->getCoordinateFrame();
-    RBX::ContactManager& contact=humanoid->getWorld()->getContactManager();
-    G3D::Vector3 center=frame.translation+frame.lookVector();
-    G3D::Array<RBX::Primitive*> candidates;
-    contact.getPrimitivesTouchingExtents(RBX::Extents(center-G3D::Vector3(1,2.7f,1),center+G3D::Vector3(1,0,1)),NULL,candidates);
-    const RBX::Instance* character=humanoid->getParent();
-    bool nearby=false;
-    for(int i=0;i<candidates.size();++i){
-        RBX::PartInstance* part=RBX::PartInstance::fromPrimitive(candidates[i]);
-        if(part && !part->isDescendentOf(character)){nearby=true;break;}
-    }
-    if(!nearby)return false;
-    ClimbRayFilter filter(humanoid);float firstHeight=0,span=0;bool first=true,inContact=false;
-    for(int i=1;i<18;++i){
-        float height=float(i)*.1428571492433548f;
-        G3D::Vector3 origin=frame.translation+G3D::Vector3(0,height-2.7f,0),hit;
-        float distance=0;
-        G3D::Ray ray=G3D::Ray::fromOriginAndDirection(origin,frame.lookVector());
-        bool close=contact.getHitLegacy(ray,NULL,&filter,hit,distance,2.0f) && (hit-origin).magnitude()<.7f;
-        if(close){if(first){first=false;firstHeight=height;inContact=true;}}
-        else if(inContact){inContact=false;span=height-firstHeight;}
-    }
-    return firstHeight<2.45f && span>0 && span<2.45f;
+    if(!g_dataModel)return 1;
+    RBX::DataModel::Lock lock(g_dataModel);
+    RBX::ModelInstance* actor=dynamic_cast<RBX::ModelInstance*>(g_dataModel->getWorkspace()->findFirstChildByName("Actor"));
+    RBX::Humanoid* humanoid=actor?RBX::Humanoid::modelIsCharacter(actor):NULL;
+    if(!humanoid)return 2;
+    g_climbEvents=0;g_climbMaxSpeed=0;
+    g_climbConnection=RBX::Humanoid::event_Climbing.connect(humanoid,&ObserveClimb);
+    return 0;
+}
+extern "C" int EndClimbObservation(float* maxSpeed)
+{
+    g_climbConnection.disconnect();*maxSpeed=g_climbMaxSpeed;return g_climbEvents;
 }
 extern "C" int CheckClimbProbe()
 {
@@ -241,7 +234,7 @@ extern "C" int CheckClimbProbe()
     RBX::DataModel::Lock lock(g_dataModel);
     RBX::ModelInstance* actor=dynamic_cast<RBX::ModelInstance*>(g_dataModel->getWorkspace()->findFirstChildByName("Actor"));
     RBX::Humanoid* humanoid=actor?RBX::Humanoid::modelIsCharacter(actor):NULL;
-    return humanoid?int(DetectClimb(humanoid)):-1;
+    return humanoid?int(RBX::DetectClimb(humanoid)):-1;
 }
 
 // Diagnostic: use the existing Humanoid joint builder on the authored actor.

@@ -34,3 +34,17 @@ state entry/exit, and climb forces remain unproven.
 Original ray filter vtable 0084acc8 points to 006432e0: ignore dragged,
 noncollidable, and same-assembly primitives; broadphase excludes character
 descendants separately. The probe follows those existing filter semantics.
+
+The diagnostic sweep now feeds an adapted runtime Climbing state from Running
+and Freefall. 00666410 supplies heading and the 0.7 climb velocity transform;
+00666550 supplies the no-floor acceleration and torque calculations. The
+006451c0 virtual flags drive limb collision updates after the donor state swap.
+The donor ABI, floor reaction, moving-floor velocity, exit-to-Landed details,
+and original-client parity are not yet recovered; this is not native parity.
+Runtime controls cover ascent, no-input stability, exit, signal delivery to
+Lua, and a noncollidable obstacle.
+
+Integration exposed a RunService overlay regression: its constructor rewrite
+omitted runDisabled initialization, making identical places start scripts or
+not depending on allocator contents. The constructor now sets it false; a
+placement-construction check poisons storage before verifying this field.

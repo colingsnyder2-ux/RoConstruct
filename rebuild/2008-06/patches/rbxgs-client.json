@@ -1,5 +1,7 @@
 {
  "App/humanoid/Freefall.cpp": [
+  ["#include \"humanoid/Freefall.h\"", "#include \"humanoid/Freefall.h\"\nnamespace RBX { bool DetectClimb(Humanoid*); Humanoid::State* CreateRecoveredClimbing(Humanoid*); }\n"],
+  ["\t\tif (newState == this)\n\t\t{\n\t\t\tif (floorPart)", "\t\tif (newState == this)\n\t\t{\n\t\t\tif (DetectClimb(humanoid)) return CreateRecoveredClimbing(humanoid);\n\t\t\tif (floorPart)"],
   ["#include \"humanoid/Running.h\"", "#include \"humanoid/Running.h\"\n#include \"v8datamodel/PartInstance.h\""],
   ["\t\t: Base(humanoid)\n\t{\n\t}", "\t\t: Base(humanoid), savedHeadFriction(0), savedTorsoFriction(0)\n\t{\n\t\tHumanoid::event_FreeFalling.fire(humanoid, true);\n\t\tif (humanoid->getHead()) { savedHeadFriction=humanoid->getHead()->getFriction(); humanoid->getHead()->setFriction(0); }\n\t\tif (humanoid->getTorso()) { savedTorsoFriction=humanoid->getTorso()->getFriction(); humanoid->getTorso()->setFriction(0); }\n\t}\n\n\tFreefall::~Freefall()\n\t{\n\t\tHumanoid::event_FreeFalling.fire(humanoid, false);\n\t\tif (humanoid->getHead()) humanoid->getHead()->setFriction(savedHeadFriction);\n\t\tif (humanoid->getTorso()) humanoid->getTorso()->setFriction(savedTorsoFriction);\n\t}"]
  ],
@@ -445,6 +447,8 @@
   ]
  ],
  "App/humanoid/Humanoid.cpp": [
+  ["#include \"humanoid/Humanoid.h\"", "#include \"humanoid/Humanoid.h\"\nnamespace RBX { void ApplyRecoveredClimbCollision(Humanoid*,bool,bool); }\n"],
+  ["\tvoid Humanoid::setState(State* value)\n\t{\n\t\tif (value != currentState.get())\n\t\t\tcurrentState.reset(value);\n\t}", "\tvoid Humanoid::setState(State* value)\n\t{\n\t\tif (value != currentState.get()) {\n\t\t\tbool previousClimb=currentState.get() && currentState->getName()==\"Climbing\";\n\t\t\tbool climbing=value && value->getName()==\"Climbing\";\n\t\t\tbool running=value && value->getName()==\"Running\";\n\t\t\tcurrentState.reset(value);\n\t\t\tif(previousClimb || climbing) ApplyRecoveredClimbCollision(this,climbing,running);\n\t\t}\n\t}"],
   [
    "@all:AutoJoint",
    "JointInstance"
@@ -2017,7 +2021,7 @@
  "App/util/RunStateOwner.cpp": [
   [
    "\tRunService::RunService()\n\t\t: framePeriod(1.0f/30.0f),\n\t\t  runState(RS_NORMAL),\n\t\t  invalidRunViewCount(0),\n\t\t  stopRequested(false),\n\t\t  runDisabled(false)\n\t{\n\t\tsetName(\"Run Service\");\n\t}\n",
-   "\tRunService::RunService()\n\t\t: framePeriod(1.0f/30.0f),\n\t\t  runState(RS_NORMAL),\n\t\t  unknown0x1b8(0.0),\n\t\t  unknown0x1c8(0.0), unknown0x1d0(0.0), unknown0x1d8(0.0), unknown0x1e0(0.0),\n\t\t  invalidRunViewCount(0),\n\t\t  stopRequested(false)\n\t{\n\t\tsetName(\"Run Service\");\n\t\tunknownStopwatch0x1e8.tick();\n\t}\n"
+   "\tRunService::RunService()\n\t\t: framePeriod(1.0f/30.0f),\n\t\t  runState(RS_NORMAL),\n\t\t  unknown0x1b8(0.0),\n\t\t  unknown0x1c8(0.0), unknown0x1d0(0.0), unknown0x1d8(0.0), unknown0x1e0(0.0),\n\t\t  invalidRunViewCount(0),\n\t\t  stopRequested(false)\n\t{\n\t\tsetName(\"Run Service\");\n\t\trunDisabled = false;\n\t\tunknownStopwatch0x1e8.tick();\n\t}\n"
   ],
   [
    "RunService::start()\n\t{\n\t\tRBXASSERT(!runThread);\n\n\t\tboost::shared_ptr<DataModel> dataModel = shared_from(dynamic_cast<DataModel*>(getParent()));\n\t\trunThread.reset(new boost::thread(background_function(boost::bind(&RunService::runProc, shared_from(this), dataModel), \"rbx_runProc\")));\n\t}",
