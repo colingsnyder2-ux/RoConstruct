@@ -85,6 +85,24 @@ Compiler/profile updates reopen previously blocked local assignments on restart.
 The feed distinguishes already locally exact methods (AI skipped) from baseline
 failures, and expandable errors retain the complete compiler diagnostic.
 
+Worker 21 reuses missing library/source directories from verified compiler/client
+locations before any dependency downloads. Native-only startup prepares the RTM
+compiler, SDK/MFC, donor sources and required XTP headers; standalone linked-library
+recipes (including SDL 1.2.11) wait until submission needs them. New private sessions
+share the launching checkout's tool/client cache, and resumed sessions repair missing
+or broken input links while preserving private source and proofs.
+
+For an additional installed input cache, set `ROC_REUSE_TOOLS` to its `tools`
+directory (multiple roots use the platform path separator), or record:
+
+```json
+{"tools_roots": ["C:/path/to/existing/RoConstruct/tools"]}
+```
+
+in `local/config/roconstruct-inputs.json`. Only missing directories are linked;
+existing files are preserved. These paths are local configuration, not contributor
+instructions. A genuinely missing required input still needs installation.
+
 ## Native recovery loop (default)
 
 Trace original code, reconstruct native pieces, compile focused probes, record
@@ -239,7 +257,7 @@ reuse the recorded inventory; rescan only missing/moved paths or changed require
 
 ## Editable integration workspace (when ready)
 
-Use a current Worker with `roc native-try edit --help` and native workflow version 20.
+Use a current Worker with `roc native-try edit --help` and native workflow version 21.
 This workspace is for edits against the accepted tree after the native recovery
 loop produces a coherent supported change; it is not mandatory for inactive probes.
 Edit real C++/header files in the editable workspace printed by the tool. No hand-written
@@ -645,7 +663,7 @@ report both versions; do not repeatedly download the same incompatible archive.
 
 Do not ask the user to locate or attach a Worker ZIP. If `roc/native_try.py`, `research/native-units.json`,
 or `research/native-source-lock.json` is missing, `roc native-try --help` is unavailable, or a package marker
-reports `native_workflow_version` below 20, download the current Worker package yourself:
+reports `native_workflow_version` below 21, download the current Worker package yourself:
 
 - Manifest: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.json
 - Package: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.zip
@@ -659,7 +677,7 @@ into a new folder without overwriting the user's existing checkout or edits:
 $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 $nativeManifest = Invoke-RestMethod ('https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.json?t=' + [guid]::NewGuid().ToString('N'))
-if ($nativeManifest.workflow_version -lt 20 -or
+if ($nativeManifest.workflow_version -lt 21 -or
     $nativeManifest.url -ne 'https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.zip' -or
     $nativeManifest.sha256 -notmatch '^[0-9a-fA-F]{64}$') { throw 'Invalid Worker manifest' }
 $nativeWorkspace = (Get-Location).Path
