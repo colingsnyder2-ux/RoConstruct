@@ -1,0 +1,12 @@
+004fcef0  51                   push ecx
+004fcef1  8b4120               mov eax, dword ptr [ecx + 0x20]
+004fcef4  66890424             mov word ptr [esp], ax
+004fcef8  6689442402           mov word ptr [esp + 2], ax
+004fcefd  8b442408             mov eax, dword ptr [esp + 8]
+004fcf01  8b1424               mov edx, dword ptr [esp]
+004fcf04  50                   push eax
+004fcf05  52                   push edx
+004fcf06  68b0ab4f00           push 0x4fabb0
+004fcf0b  e840f4ffff           call 0x4fc350
+004fcf10  59                   pop ecx
+004fcf11  c20400               ret 4

@@ -1,0 +1,114 @@
+{
+  "revision": "e7145c8a635d95866188a04ede0905ac80270b42",
+  "original_pe_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "functions": {
+    "004ebcc0": {
+      "size": 425,
+      "sha256": "f2a2d6dd72d12bbd52a9101118c867cff76a5943724786f0f4d37c8f1fa10dbe"
+    },
+    "004ef930": {
+      "size": 2508,
+      "sha256": "c12a03b78a048070ba374c5791e64cc9fa0d9ba8bdd48afd65b7348857d1641e"
+    },
+    "004eea30": {
+      "size": 537,
+      "sha256": "b7744bce6b75738d345d5dc8cf813bf130387610c278e1032fc8d54189aaea9a"
+    },
+    "004fcfb0": {
+      "size": 342,
+      "sha256": "b6cc8a8e10cdf084da956d22c634011e0e74163da2dd474775ca2e7877181170"
+    },
+    "00500d80": {
+      "size": 88,
+      "sha256": "7c4fb65bb6d38e9e071717e7a502b1d378703890bace98cd35bbe687acd223f1"
+    },
+    "00500d30": {
+      "size": 71,
+      "sha256": "84cb414a31427dc07d0114151f5992c48f4c7e7db473bc01305c5be15e56ac54"
+    },
+    "004fabb0": {
+      "size": 91,
+      "sha256": "9b9562828cbda1fffcbc6402d99bab448ca4ce0a078392860c0d6b400d7a433c"
+    },
+    "004fce90": {
+      "size": 36,
+      "sha256": "677704a9fff9bfbc86994463ab73fa91c2ac803f979c736997685ce1030c91fa"
+    },
+    "004fcec0": {
+      "size": 36,
+      "sha256": "f3e7d2b8d85923cbbacf2325b1885ac6a4d1b83ea225966386a6b636f4deebed"
+    },
+    "004fcef0": {
+      "size": 36,
+      "sha256": "8ba6877ca95bf08d22efce5267d78e7dba41910abc4d9afa1f9121070eeece86"
+    },
+    "004fcf20": {
+      "size": 36,
+      "sha256": "4476244b5977c9f08a8f73e2d3d5454b420e303eb7d5eda5fa73b5ef7786cfe9"
+    },
+    "004fcf50": {
+      "size": 36,
+      "sha256": "fbf5b24e674d03a25bb4681c23c7f88dca8344889ea51994fe55fd62f189ceed"
+    },
+    "004fcf80": {
+      "size": 36,
+      "sha256": "da46ff732cfd671a2e19aaf5c15799136e578cdcf2c3541e2afaed16dd980115"
+    }
+  },
+  "part_vtable_00826f94": [
+    "004ea470",
+    "0060a2f0",
+    "004e83a0",
+    "00565950",
+    "00565950",
+    "004eb190",
+    "004e6b50",
+    "004e5ff0",
+    "004e5b60",
+    "004e5b70",
+    "004ef930",
+    "004e6b00"
+  ],
+  "builder_vtable_00827134": [
+    "00500d30",
+    "004fcec0",
+    "004fcf50",
+    "004fcf20",
+    "004fce90",
+    "004fcf80",
+    "004fcef0"
+  ],
+  "files": {
+    "p3-ball-builder-ctor-source.cpp": "3c840a48895d9907fce8d435aa5a4810307eda3fab71d8996d1a8d6047a7d4f5",
+    "p3-ball-ctor-disassembly.txt": "c527b641f98ecdc688e5f6f555272590e0ea81db818814d1633ce1b16390159d",
+    "p3-ball-ctor.cpp": "aa4b9b6caa301915ea226a0b44828e51db70edf979365fb5567f72797a031743",
+    "p3-ball-factory-disassembly.txt": "4270442cd8e17a57e7cd5fd03aab794661a2c4b6f78dcc670851a53add3a8388",
+    "p3-ball-factory.cpp": "4aa088f97746e3c23b324f44c7fce68aa1ca4ecabbf7f37d0cc400b1fd9f717f",
+    "p3-ball-helper-004fce90.txt": "9f988a556eaa02c641a528df2848b4bf2936e932b6018ee521e6f01f09e96490",
+    "p3-ball-helper-004fcec0.txt": "58b724458228441cbee21453ec1435fd656676647ae49b02372bd3966ceeba03",
+    "p3-ball-helper-004fcef0.txt": "9a77753a66c9ea9ff5fd40e8383c158126933412beacfef7e3a44e4ce1f72b20",
+    "p3-ball-helper-004fcf20.txt": "fcf3a778639ac11e6c8838d791c638caede8ac5a21cdfacf2347dde8723fe51a",
+    "p3-ball-helper-004fcf50.txt": "22310406dc9ef39f700eccc0f56f9fc938ccbb6126f2acca7f82b9313ac589ac",
+    "p3-ball-helper-004fcf80.txt": "8557463b14cc5169da93b4f0b25ae5fc281733d6524dd268ba9b7e5cbf919b65",
+    "p3-ball-helper-00500d30.txt": "460c873192d5ed77846c1b27b380d19051d5acfe27a0021b8b275a6e08a44aef",
+    "p3-ball-helper-00500d80.txt": "5d3d9517a8bab42b9d76380f12e289f071be5f9458df0cd3307df64aeb0e05ce",
+    "p3-ball-right-source.cpp": "a60d019e4ba440bf20d203e3ce2076984549e709413bd6b5029729b8b42155df",
+    "p3-ball-transform-disassembly.txt": "943c604d6df0ad1e3349fa11a2cda10554231bbf3c80b5fd10f7f89167eed740",
+    "p3-ball-transform-source.cpp": "9aea74f7f6780c5900d259b6758662ec0edec7e8a53a0ba70f6210210343cd9c",
+    "p3-native-update-mesh.cpp": "01311406da3d2898769a7d76b1cb98c197d44e62dba5ee57d925cde7883b4e86",
+    "p3-update-mesh-disassembly.txt": "a4d1f6c97d648d2af77b8bd0d90a4b21fccdca7f7a395d2204cc503798cfdd45"
+  },
+  "proven": [
+    "Part slot10 ->004ef930; no-special-shape shape0 ->004eea30 -> allocation8c ->004fcfb0.",
+    "Ctor writes geometryKind2 at84, QUADS Level, subdivision6 at builder20.",
+    "Builder face wrapper004fce90 passes callback004fabb0 to004fbdb0.",
+    "004fabb0 normalizes vertex, copies unit normal, scales vertex by component radius; UV untouched."
+  ],
+  "limits": [
+    "Resolved004fce90 source points at CylinderMesh.cpp; relocation-masked mined provider is not proof of callback identity. Native callback is spherical004fabb0.",
+    "004fabb0 metadata labels TorsoBuilder; machine code/callers prove spherical normalize/scale behavior.",
+    "Constructor/factory mined padding is not accepted ABI. Integrate genuine members, cache and vertex-bank ownership before claiming native sphere support.",
+    "No new native integration or server credit claimed."
+  ],
+  "next": "Recover004fbdb0 and five sibling face templates against genuine LevelBuilder layout; integrate with shared measured Mesh/Level/vertex bank and correct non-mega material path."
+}

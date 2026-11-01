@@ -1,5 +1,30 @@
 # Current player checkpoint
 
+P3 block lifetime subgate PASSED at sourcee7145c8a63. Canonical player builds,
+normal --p3test lifetime-blocks.rbxl,selftest,cachetest all exit0. Two in-process
+cycles cover initial2parts,resize/move/rotate,reparentwithinWorkspace,detach/
+reattach,insertion/removal,removeBrick,emptyplace,reopen. Red Other retains node,
+geometry,dimensions,position/orientation and exact2450-pixel silhouette across
+all16stages. Resize/rotation model values checked. Insert adds1314foreground
+pixels at85,159..118,198; removal restores exact preceding frame. Baselines
+mesh3/material3/texture0/rootchildren0 restored; refs/levels/backends/spheres0.
+Receipt:work/2008-06/p3-lifetime-accepted-e7145c8a63/receipt.json pins EXE/map,
+fixture,sources,observer,actual DLLs,CSV,captures and independent image audit.
+P3 remains OPEN: native non-box production/reference silhouette still absent.
+
+Ball trace saved:work/2008-06/p3-ball-trace-e7145c8a63/. Native Part ctor installs
+00826f94; slot10=004ef930. Shape0 branch004f00a4 calls004eea30; factory alloc8c,
+ctor004fcfb0,geometryKind2@84,QUADS Level, builder00500d80 then00500d30,6elements.
+Builder00827134 slots:00500d30,004fcec0,004fcf50,004fcf20,004fce90,004fcf80,
+004fcef0. Facewrapper004fce90 passes actual callback004fabb0 to004fbdb0. Callback
+normalizes vertex, copies unitnormal, component-scales radius; UV unchanged.
+Resolved roc-lib source for004fce90 points at CylinderMesh.cpp (wrong callback
+family), and004fabb0 metadata calls it TorsoBuilder. Do not trust those names or
+adopt padded mining structs. Genuine QuadVolume.h LevelBuilder has halfSize,
+surfaceTypes,LevelRef,textureScale; native elements offset20 agrees. Next recover
+six face templates/shared-bank access and non-mega material path, then integrate
+native sphere subtype/cache and compare against original. No entity redo.
+
 P0 PASSED at source51cc35d301, findings36160f15c42b980a9ea93de4a633bf597dd44617.
 Full published byte audit covers7978files,zero mismatches. Publication preserved
 22existing diagnostic/module/verification files instead of removing newer work.
