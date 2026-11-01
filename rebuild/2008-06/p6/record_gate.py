@@ -59,7 +59,7 @@ for index in range(3):
     assert 'held samples 30' in movement and 'lost focus False' in movement
     assert 'mesh cleanup: levels=0 refs=0 backends=0 spheres=0' in movement
 click = run('real-click-drag', [sys.executable, HERE / 'click_test.py', EXE, PLACE, OUT / 'click.png'])
-assert 'selected True exit 0' in click
+assert 'selected True exit 0' in click and 'p6: moved' in click
 original = run('original-opens-save', [sys.executable, HERE / 'original_check.py',
                ROOT / 'work/2008-06/original-p4-reference/Roblox.exe', saved, OUT / 'original.png'])
 assert 'alive True windows 1' in original and 'title Roblox - [gate.rbxl]' in original
