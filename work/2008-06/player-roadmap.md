@@ -1,3 +1,24 @@
+# P4 acceptance checkpoint; begin P5
+
+At source 866583a618, two authored disk places load from clean working
+directories; expected model positions, source geometry, texture quadrants and
+material fallback match bounded original-client observations. Removed mesh,
+removed texture and bad path controls pass. Redistributable fixture assets and
+original external dependencies are listed in p2-recovered/p4-local-assets-audit.md
+and the P4 staging receipts. The original and rebuilt clients both play the
+authored looping 2D tone: loopback 440 Hz amplitude ratio 0.99994 and RMS
+ratio 0.99994. Rebuilt player closes cleanly; original required terminating its
+owned process after window close. Raw loopback audio was not saved. Evidence:
+p4-assets-compare-HEAD/ and p4-audio-compare-HEAD/. Original and rebuilt
+captures remain local; receipts pin their hashes and source revision.
+
+P4 scoped acceptance passes for these fixtures. This is not full place,
+renderer or audio parity: later user-place GUI classes, spatial/scripting audio,
+original startup/UI, and ContentProvider contextual ownership remain open.
+The audio observer uses optional local SoundCard; it is not yet packaged.
+Begin P5: recover frame/input, scripting, character/controller and anchoring
+behavior; preserve the known anchoring shim until its original is verified.
+
 # Sound controls and device checkpoint
 
 Source 729294d0b3 recovers Volume and Looped setters/getters, PlayOnRemove,
