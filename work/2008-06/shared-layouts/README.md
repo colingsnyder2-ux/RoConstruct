@@ -36,7 +36,8 @@ stores its name (+4) into the map at +0x54. Original command routing 00451690
 looks up the command ID, resolves the name through VerbContainer, and invokes
 Verb::doIt or updates CCmdUI. The map search uses unsigned key comparison.
 The view's recovered OnInitialUpdate independently uses the same UINT/Name*
-storage at +0x58. The shared candidate now declares map<UINT, const Name*>.
+storage at +0x58. Initial candidate used map<UINT, const Name*>; the subsequent
+bind-method compilation below refines that declaration to DWORD keys.
 
 Compiler-only checkpoint 0254dea8e6:
 
@@ -52,7 +53,38 @@ or active integration. OnCmdMsg remains a declaration; explicit instantiation
 emits expected missing-definition warnings. No constructor match is added to
 the running-executable count until selected by the linked client.
 
-Next: recover binder command-routing definitions and document owner pointees;
+## Document field and binding recovery
+
+The new candidate CRobloxDoc.h has no storage padding: owning XML snapshot at
+0x74, vector<Verb*> at 0x78, owning StandardVerbs pointer at 0x90 and manually
+released CWorkspace pointer at 0x94. Original run/stop 00455820/00455580 use
+SerializerV2's XML root factory 00591a30 and loader 00593500; destructor
+00451940 destroys the snapshot through 00413a70. StandardVerbs is explicitly
+deleted before vector cleanup; the workspace is released in DeleteContents,
+not through an automatic COM-pointer member destructor. The precise XML owner
+template spelling remains unproven; std::auto_ptr reproduces the observed ABI.
+
+```
+python rebuild/2008-06/tests/record_native_document.py shared-layouts/document-compile.json
+```
+
+Pinned compilation verifies complete size 0x98 and all four member offsets.
+COFF vtable relocations identify the 46 inherited virtual slots and all native
+Doc overrides. Declaring those methods does not prove their implementations.
+Constructor 00451ac0 matches 124 bytes; bindExisting 00451a10 matches 78 bytes;
+bindOwned 00451a60 matches 91 bytes (relocation fields masked throughout).
+The bodies now use shared fields rather than opaque offset accessors.
+
+The binding comparison exposed a distinction absent from the constructor:
+UINT map keys reused the input parameter address, producing 62/75-byte bodies.
+DWORD keys require the original's unsigned key conversion. Separately reading
+the name before map mutation reproduces the original evaluation order, including
+the null-verb branch. These changes produce both complete exact bind bodies.
+DWORD is the supported declaration choice; typedef spelling is not recoverable
+from bytes alone. Active client still uses the passing shell; selected-function
+count remains 2,997/14,344. No completed native class swap is claimed.
+
+Next: recover binder command-routing definitions and document lifecycle bodies;
 derive View/Frame constructor member boundaries and complete Humanoid state
 fields. Compile size/offset probes with the pinned original compiler before
 using shared declarations. Run P5 and scoped P6 gates after each active swap.
