@@ -1,0 +1,22 @@
+{
+  "build-report.json": "0acbc440fa1ffff0b431e326254a65dd78a0d452538b8d0ea895d387581cb204",
+  "build.log": "390e69d206200a127f2bd2ccb1e43d31bd9fe1c9be343637cc83693718448d79",
+  "receipt.json": "d88fc7efe28f755d162e7d9218c09bae26f2956e0d62127c687094366a8eadf1",
+  "bad-place\\stdout.txt": "3dbbfe0846ce50c2b54c1510ff8fc7c944d4e2921b2ce5336683f3027e7b599c",
+  "gallery\\last.png": "c99b595bfdeaa3813084bcba912bcfe1c88d2e93e8625cb9b7574f5b168cd3bd",
+  "gallery\\place_snapshot.csv": "7992125578ce87b40a8e3c43864d96757e06a83c19fb058e1730613173ffa8f1",
+  "gallery\\player.log": "299bed22348528026d3deb48a4f84493d473da176232f43d8ed3fcc8efef1d00",
+  "gallery\\stdout.txt": "06da7f339dbec415e09dd2d952aedac92ca7dd5aa6c837bb2a1141c3ce27229c",
+  "missing-mesh\\last.png": "43b90f1bd66171f89cd34a1f8320045431e7e41db921e3572405f83f9ad955de",
+  "missing-mesh\\place_snapshot.csv": "9b779ebe41a5ab772d181e34934fe77c53a8015f62faa74389a275509cf6b81f",
+  "missing-mesh\\player.log": "1adae456579f4879a982f575f8c5675a35a41ee6db1ef00d5fbc84b629fdd82b",
+  "missing-mesh\\stdout.txt": "2e95e54686776ba54beab5bc3e6d59245b1f5b8dd41dc67935729d684c195cbf",
+  "missing-texture\\last.png": "b73b0b809cff67af01a704e27da8aec4cc2a4a6d5a781d5aac3596a563f2ea9c",
+  "missing-texture\\place_snapshot.csv": "ea567e53e57619074d8c879d4cb31cda7de4b04bd8f1ce647d833efdbc7e9f1b",
+  "missing-texture\\player.log": "8cf26b2ad5f34df6923cbf646282eb4342006c4e888241a0b1fb041d15ccde60",
+  "missing-texture\\stdout.txt": "011b90460c3fdd7ee20f1ea3268f84275665f48626263a9a790183c892e5f495",
+  "panel\\last.png": "feba5d6a69d9484d6c02dc0c588814e84161cc266818addbca0ad5314e241d0b",
+  "panel\\place_snapshot.csv": "ea567e53e57619074d8c879d4cb31cda7de4b04bd8f1ce647d833efdbc7e9f1b",
+  "panel\\player.log": "b09a861c5b4306e0a11b2d871f3a55f5bbe94292cd18489b09ece8db3b0cad80",
+  "panel\\stdout.txt": "31dc6b4a972311e368e19fadd4fc7c9f622ef6bf02257ab9077769b145088ad7"
+}

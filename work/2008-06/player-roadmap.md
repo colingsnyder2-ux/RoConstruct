@@ -1,5 +1,27 @@
 # Current player checkpoint
 
+P4 IN PROGRESS, source88e67662d4. Canonical build linked/test0. Normal/default
+launch reads disk places; native00500b90/00500780 FileMesh and004eb190 file
+texture branch integrated with existing entities. Actual RBX::SpecialShape
+child/property signals now supported for FILE_MESH. Overlay fixes Content XML
+type and absent xsi:nil parsing, proven at0056cd80/0058f6c0; rbxgs-app rebuilt.
+CC0 panel.mesh/quadrants.png/tone.wav separated from original external assets.
+Both disk fixtures pass from clean CWD: panel1model at0; nestedgallery2models
+at-2/+2. Four UV quadrant pixels verified, sphere864source/1296GPUindices.
+Missingmesh hides geometry/status3, missingtexture renders ordinary fallback,
+badplace exits1. All render cleanup counters0. Final receipts pin exact source,
+EXE/map/content/fixtures, actual loaded DLL paths/hashes and observer:
+work/2008-06/p4-disk-assets-88e67662d4/receipt.json.
+Same EXE mixed-shape P3 lifetime/selftest/cachetest all PASS:
+work/2008-06/p4-lifetime-regression-88e67662d4/receipt.json.
+Audit:rebuild/2008-06/tests/p2-recovered/p4-local-assets-audit.md.
+P4 NOT COMPLETE: original-client comparison and native sound path remain open;
+tone.wav unused. No native camera consumption credited by XML camera reference.
+Next: stage separate original-reference Content (never write through prior
+content junction), open same two disk fixtures, compare selected assets/materials
+and missingasset behavior. Then native audio recovery. Existing owner3debugfiles
+still39insertions/12deletions, docs/rebuild-progress.json local build output kept.
+
 P3 PASSED at source0dcbf70f18. Audit:
 rebuild/2008-06/tests/p2-recovered/p3-acceptance-audit.md. Native ball path now
 integrated with genuine Mesh/Level/builder/cache members; no entity redo. Shared
