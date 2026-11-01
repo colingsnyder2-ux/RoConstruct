@@ -32,7 +32,8 @@ def fixed(out, name, fixture, extra):
     assert len(rows)==7 and all(row['status']=='0' for row in rows)
     positions=[[float(row[k]) for k in ('x','y','z')] for row in rows]
     torso=positions[1]
-    expected=[(0,1.5,0),(-1.5,0,0),(1.5,0,0),(-.5,-2,0),(.5,-2,0)]
+    expected=([(0,1.5,0),(0,0,-1.5),(0,0,1.5),(0,-2,-.5),(0,-2,.5)] if name=='script' else
+              [(0,1.5,0),(-1.5,0,0),(1.5,0,0),(-.5,-2,0),(.5,-2,0)])
     for position,relative in zip(positions[2:],expected):
         assert max(abs(position[i]-torso[i]-relative[i]) for i in range(3))<.05, (name,positions)
     assert abs(torso[1]-3.0)<.06, (name,torso)

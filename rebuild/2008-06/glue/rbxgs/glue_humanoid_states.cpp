@@ -137,9 +137,13 @@ namespace RBX
 		G3D::Vector3 direction = humanoid->updateWalkDirection();
 		direction.y = 0;
 		desiredVelocity = direction * 16.0f;
-		desiredYRotationalVelocity = humanoid->getWalkRotationalVelocity();
-		if (direction.squaredLength() > 0.0001f)
-			intendedYRotation = atan2f(-direction.x, -direction.z);
+		desiredYRotationalVelocity = 0.0f;
+		if (direction.squaredLength() > 0.0f) {
+			// Original 00666410 turns toward movement using the shortest angle.
+			intendedYRotation = Math::getHeading(direction);
+			desiredYRotationalVelocity = (float)G3D::wrap(
+				intendedYRotation - humanoid->getTorsoHeading(), -Math::pi(), Math::pi()) * 8.0f;
+		}
 		// Original 00643360: torso half-height plus left leg, or right leg if absent.
 		desiredAltitude = floorTouchInWorld.y;
 		Primitive* torso = humanoid->getTorsoPrimitive();
