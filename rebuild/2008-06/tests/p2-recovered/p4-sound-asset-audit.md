@@ -142,3 +142,11 @@ initializer 007f5220 references 005ba020. They compile but are not yet called
 or runtime-tested. An aggregate scan of the user's supplied compressed places
 found Sound instances in 39 of 58 readable XML places; four files were unreadable
 or non-XML. These user files and their content remain private.
+
+An authored fixture with one Workspace Sound currently loads but retains zero
+Sounds. The load-only class-name traversal agrees with the independent Humanoid
+RTTI count on a control. A supplied place containing eight serialized Sounds
+also loads with zero retained Sounds; one was directly under Workspace. This is
+a deserialization failure, not evidence of playback. The application glue
+currently initializes class descriptors, but factory registration and native
+channel construction still require proof and integration.

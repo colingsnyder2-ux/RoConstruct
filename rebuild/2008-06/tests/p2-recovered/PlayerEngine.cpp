@@ -82,6 +82,23 @@ extern "C" int CountHumanoids()
     return count;
 }
 
+extern "C" int CountInstancesByClass(const char* name)
+{
+    if(!g_dataModel)return 0;
+    RBX::DataModel::Lock lock(g_dataModel);
+    std::vector<RBX::Instance*> pending(1,g_dataModel.get());
+    int count=0;
+    while(!pending.empty()){
+        RBX::Instance* item=pending.back();pending.pop_back();
+        if(item->getClassName().toString()==name)++count;
+        if(item->getChildren()){
+            boost::shared_ptr<const std::vector<boost::shared_ptr<RBX::Instance> > > children=item->getChildren().read();
+            for(size_t i=0;i<children->size();++i)pending.push_back((*children)[i].get());
+        }
+    }
+    return count;
+}
+
 extern "C" void GetPartPosition(float* x, float* y, float* z)
 {
     if (!g_brick) { if (x) *x=0; if (y)*y=0; if (z)*z=0; return; }
