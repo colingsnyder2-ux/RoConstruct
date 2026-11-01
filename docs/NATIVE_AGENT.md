@@ -1096,5 +1096,5 @@ shared native recovery still uses the host's current published sources and guard
 Old private work and proposals remain saved; use the updated Worker/new recovery session when the
 server announces a changed baseline. All accepted-body, ABI, runtime and reference gates remain active.
 
-Worker 31 retains the genuine `NO_SDL_MAIN` dependency build flag in the canonical
-G3D-GL profile, preventing SDL entry-point macros from breaking cold contributor setup.
+Worker 31 retains current cold-build dependency compatibility: G3D-GL `NO_SDL_MAIN`,
+RakNet `/FImalloc.h`, and Boost source recipe metadata. Canonical application source stays separate.
