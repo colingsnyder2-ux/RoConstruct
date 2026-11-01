@@ -11,7 +11,7 @@ run=subprocess.run([str(player),'--p5-play','--frames','600','--anchor-trace',st
 assert run.returncode==0 and 'mesh cleanup: levels=0 refs=0 backends=0 spheres=0' in run.stdout
 with (out/'anchor_samples.csv').open() as f: rows=list(csv.DictReader(f))
 assert len(rows)==600 and all(v['floor_anchored']=='1' and abs(float(v['floor_y'])+5)<1e-4 for v in rows)
-rebuilt=[float(v['brick_y']) for v in rows];states=[int(v['brick_anchored']) for v in rows];trans=[i+1 for i in range(1,len(states)) if states[i]!=states[i-1]];assert states[0]==1 and states[-1]==0 and trans==[6,15,24];u=ctypes.windll.user32;k=ctypes.windll.kernel32;k.OpenProcess.restype=wintypes.HANDLE;k.VirtualQueryEx.restype=ctypes.c_size_t
+rebuilt=[float(v['brick_y']) for v in rows];states=[int(v['brick_anchored']) for v in rows];trans=[i+1 for i in range(1,len(states)) if states[i]!=states[i-1]];assert states[0]==1 and states[-1]==0 and trans==[6,16,26];u=ctypes.windll.user32;k=ctypes.windll.kernel32;k.OpenProcess.restype=wintypes.HANDLE;k.VirtualQueryEx.restype=ctypes.c_size_t
 class MBI(ctypes.Structure):
  _fields_=[('BaseAddress',ctypes.c_void_p),('AllocationBase',ctypes.c_void_p),('AllocationProtect',wintypes.DWORD),('PartitionId',wintypes.WORD),('RegionSize',ctypes.c_size_t),('State',wintypes.DWORD),('Protect',wintypes.DWORD),('Type',wintypes.DWORD)]
 x=subprocess.Popen([str(original),str(fixture)],cwd=original.parent,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL);windows=[];handle=None;forced=False
@@ -67,7 +67,7 @@ try:
   assert events;marker_times.append(events[0])
  assert .05<marker_times[0]<.2 and .2<marker_times[1]<.4 and .35<marker_times[2]<.6,marker_times
  for t in (.1,.2,.3,.4,.5,.6,.8,1.,1.5,2.,3.,4.):
-  actual,value=observe(t);frame=max(1,min(600,round(actual*60)));lo=max(1,frame-3);hi=min(600,frame+3);error=min(abs(value-rebuilt[n-1]) for n in range(lo,hi+1));assert error<1.25,(t,actual,value,frame,error);checks.append({'time':actual,'original_y':value,'fixed_frame_window':[lo,hi],'best_error':error})
+  actual,value=observe(t);frame=max(1,min(600,round(actual*60)));lo=max(1,frame-3);hi=min(600,frame+3);error=min(abs(value-rebuilt[n-1]) for n in range(lo,hi+1));assert error<.25,(t,actual,value,frame,error);checks.append({'time':actual,'original_y':value,'fixed_frame_window':[lo,hi],'best_error':error})
  endtime,end=observe(4.);assert abs(end-rebuilt[-1])<.01 and abs(end+3.8)<.01
 finally:
  if handle:k.CloseHandle(handle)

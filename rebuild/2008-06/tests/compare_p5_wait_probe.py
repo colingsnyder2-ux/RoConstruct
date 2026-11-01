@@ -70,6 +70,7 @@ try:
  assert len(snapshot)==5
  rebuilt_wait=[float(snapshot[j+1]['y'])-specs[j][1] for j in range(1,4)]
  assert all(.09 < t < .2 for t in original_wait+rebuilt_wait)
+ assert max(abs(a-b) for a,b in zip(original_wait,rebuilt_wait))<1e-5
  assert '[output]    stack end' not in run.stdout
  print('original waits',original_wait,'rebuilt waits',rebuilt_wait,'transitions',trans,flush=True)
  assert .05<marker_times[0]<.2 and .2<marker_times[1]<.4 and .35<marker_times[2]<.6,marker_times

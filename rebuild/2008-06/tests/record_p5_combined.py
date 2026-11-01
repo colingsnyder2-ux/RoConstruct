@@ -12,7 +12,7 @@ for name,pressed in [('idle',False),('play',True),('reopen',True)]:
  assert all(v['floor_anchored']=='1' and abs(float(v['floor_y'])+1)<1e-4 for v in rows)
  markers=[x.stdout.count(s) for s in ('COMBINED_TRIGGER','COMBINED_ANCHOR','COMBINED_RELEASE')]
  if pressed:
-  assert markers==[1,1,1] and trans==[43,51,60] and abs(y[-1]-1)<.01 and max(y[-60:])-min(y[-60:])<.002
+  assert markers==[1,1,1] and trans==[44,52,62] and abs(y[-1]-1)<.01 and max(y[-60:])-min(y[-60:])<.002
  else:assert markers==[0,0,0] and not trans and abs(y[-1]-12)<1e-4
  with (folder/'p5_camera.csv').open() as f:camera={k:float(v) for k,v in next(csv.DictReader(f)).items()}
  if pressed:assert camera['actor_end_z']<camera['actor_start_z']-3

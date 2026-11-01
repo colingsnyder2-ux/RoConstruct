@@ -29,6 +29,8 @@ static boost::shared_ptr<RBX::DataModel> g_dataModel;
 static boost::shared_ptr<RBX::PartInstance> g_brickRef;
 static RBX::PartInstance* g_brick = NULL;
 static bool g_playing = false;
+static float g_eventElapsed = 0.0f;
+static float g_eventStepped = 0.0f;
 static PlayerNativeInput* g_input = NULL;
 static RBX::ModelInstance* g_actor = NULL;
 
@@ -374,7 +376,15 @@ extern "C" void StartPlay()
     if (!g_dataModel) return;
     RBX::DataModel::Lock lock(g_dataModel);
     RBX::ServiceProvider::create<RBX::RunService>(g_dataModel.get())->run();
+    g_eventElapsed = g_eventStepped = 0.0f;
     g_playing = true;
+}
+
+// The donor humanoid needs one internal update per 60 Hz physics step.
+// Lua Stepped and Heartbeat use the original observed 30 Hz cadence.
+void RBX::RunService::raiseSteppedCompat(float time, float step)
+{
+    Notifier<RunService, Stepped>::raise(Stepped(time, step));
 }
 
 extern "C" void StepEngine(float dt)
@@ -382,10 +392,16 @@ extern "C" void StepEngine(float dt)
     if (!g_dataModel) return;
     RBX::DataModel::Lock lock(g_dataModel);
     float stepped = g_dataModel->step(dt);
-    if (g_playing) {
-        RBX::RunService* run = RBX::ServiceProvider::create<RBX::RunService>(g_dataModel.get());
-        run->raiseStepped(g_dataModel->getSimTime(), stepped);
-        run->raiseHeartbeat(g_dataModel->getSimTime(), dt);
+    if (!g_playing) return;
+    RBX::RunService* run = RBX::ServiceProvider::create<RBX::RunService>(g_dataModel.get());
+    run->raiseSteppedCompat(g_dataModel->getSimTime(), stepped);
+    g_eventElapsed += dt;
+    g_eventStepped += stepped;
+    if (g_eventElapsed >= 1.0f / 30.0f) {
+        float interval = g_eventElapsed, simulated = g_eventStepped;
+        g_eventElapsed = g_eventStepped = 0.0f;
+        RBX::RunService::event_Stepped.fire(run, g_dataModel->getSimTime(), simulated);
+        run->raiseHeartbeat(g_dataModel->getSimTime(), interval);
     }
 }
 
@@ -480,6 +496,7 @@ extern "C" int GetContactState(float* expectedY,float* floorY,int* anchored)
 extern "C" void ClosePlace()
 {
     g_playing = false;
+    g_eventElapsed = g_eventStepped = 0.0f;
     if (g_input && g_dataModel) {
         RBX::DataModel::Lock lock(g_dataModel);
         RBX::ControllerService* service=RBX::ServiceProvider::find<RBX::ControllerService>(g_dataModel.get());

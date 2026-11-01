@@ -56,9 +56,9 @@ def main():
             changes=[]
         else:
             changes=[i+1 for i in range(1,len(anchored)) if anchored[i]!=anchored[i-1]]
-            assert changes==[6,15,24], changes
-            assert anchored[:5]==[1]*5 and anchored[5:14]==[0]*9 and anchored[14:23]==[1]*9 and not any(anchored[23:])
-            assert y[13]<y[6]<20 and max(y[14:24])-min(y[14:24])<.0001 and y[29]<y[24]
+            assert changes==[6,16,26], changes
+            assert anchored[:5]==[1]*5 and anchored[5:15]==[0]*10 and anchored[15:25]==[1]*10 and not any(anchored[25:])
+            assert y[14]<y[6]<20 and max(y[15:26])-min(y[15:26])<.0001 and y[31]<y[26]
             assert all(abs(value+3.8)<.01 for value in y[300:]) and max(y[300:])-min(y[300:])<.002
             tracks.append(y)
         receipt['runs'][name]={'exit':run.returncode,'frames':frames,'transitions':changes,

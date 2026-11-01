@@ -1002,6 +1002,7 @@
   ]
  ],
  "App/include/util/RunStateOwner.h": [
+  ["\t\tvoid raiseStepped(float time, float step);", "\t\tvoid raiseStepped(float time, float step);\n\t\tvoid raiseSteppedCompat(float time, float step);"],
   [
    "\t\tRunState runState;\n\t\tboost::mutex runMutex;\n\t\tbool stopRequested;\n\t\tboost::condition runViewsDoneCondition;\n\t\tboost::condition stateChangedCondition;\n\t\tfloat framePeriod;\n\t\tboost::scoped_ptr<boost::thread> runThread;\n\t\tboost::mutex viewMutex;\n\t\tstd::map<IRunView*, bool> views;\n\t\tint invalidRunViewCount;\n",
    "\t\tRunState runState;\n\t\tdouble unknown0x1b8;\n\t\tfloat framePeriod;\n\t\tdouble unknown0x1c8[4]; // names unknown\n\t\tG3D::Stopwatch unknownStopwatch0x1e8;\n\t\tboost::mutex runMutex;\n\t\tbool stopRequested;\n\t\tboost::condition runViewsDoneCondition;\n\t\tboost::condition stateChangedCondition;\n\t\tboost::scoped_ptr<boost::thread> runThread;\n\t\tboost::mutex viewMutex;\n\t\tstd::map<IRunView*, bool> views;\n\t\tint invalidRunViewCount;\n\t\tboost::mutex unknownMutex0x2ac;\n\t\tstd::deque<void*> unknownQueue0x2b4; // element type unknown\n"
