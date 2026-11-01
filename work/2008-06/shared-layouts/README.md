@@ -29,14 +29,30 @@ at +0x54 through 00446110. Doc then sets vtable 00817ce4, zeros +0x74, builds a
 vector-like member at +0x78, and zeros +0x90/+0x94. Constructor shapes establish
 storage and lifetime boundaries, not pointee types.
 
-Important unresolved distinction: src/2008-06/00451590.cpp uses map<int,int>;
-the mined destructor analog uses set<void*>. Neither establishes the native
-template arguments. CRobloxView's recovered OnInitialUpdate uses a command-ID
-to Name-pointer map at +0x58, providing a useful next lead for the common binder.
-The binder template's document instantiation must be checked through native
-binding and command-routing uses before selecting the shared member type.
+Resolved binder storage: src/2008-06/00451590.cpp uses map<int,int>, while the
+mined destructor analog uses set<void*>. Those declarations were insufficient.
+Original 00451a60 appends a verb pointer to the document vector at +0x78 and
+stores its name (+4) into the map at +0x54. Original command routing 00451690
+looks up the command ID, resolves the name through VerbContainer, and invokes
+Verb::doIt or updates CCmdUI. The map search uses unsigned key comparison.
+The view's recovered OnInitialUpdate independently uses the same UINT/Name*
+storage at +0x58. The shared candidate now declares map<UINT, const Name*>.
 
-Next: resolve VerbBinder member semantics and document owner/vector pointees;
+Compiler-only checkpoint 0254dea8e6:
+
+```
+python rebuild/2008-06/tests/record_native_binder.py shared-layouts/binder-compile.json
+```
+
+Pinned MSVC 21022 verifies CDocument=0x54, CView=0x58, Doc binder=0x74, View
+binder=0x78. The actual template-named Doc binder constructor matches original
+00451590's 86 bytes with relocation fields masked. Header and observer hashes
+are pinned in binder-compile.json. This does not establish the complete vtable
+or active integration. OnCmdMsg remains a declaration; explicit instantiation
+emits expected missing-definition warnings. No constructor match is added to
+the running-executable count until selected by the linked client.
+
+Next: recover binder command-routing definitions and document owner pointees;
 derive View/Frame constructor member boundaries and complete Humanoid state
 fields. Compile size/offset probes with the pinned original compiler before
 using shared declarations. Run P5 and scoped P6 gates after each active swap.

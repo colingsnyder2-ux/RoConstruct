@@ -2005,3 +2005,12 @@ Codex owns new shared-header recovery; Claude keeps UI implementation ownership.
 No active shared header/class swap yet. Next: resolve binder map semantics and
 Doc members, then compile pinned size/offset probes. Both gates after each swap.
 P7/P8 stay deferred; donor physics tuning stays stopped.
+
+
+Shared header checkpoint 0254dea8e6: native Doc binding 00451a60 and command
+routing 00451690 establish map<UINT, const Name*> storage. New inactive
+native-headers/VerbBinder.h compiles with MSVC 21022. Four base/binder size
+checks pass; Doc binder constructor 00451590 matches all 86 bytes after masking
+relocations. Evidence: shared-layouts/binder-compile.json. No active class swap
+or executable-count gain claimed. Next recover routing definitions and Doc
+owned members before integration; P5/P6 remain on the unchanged passing binary.
