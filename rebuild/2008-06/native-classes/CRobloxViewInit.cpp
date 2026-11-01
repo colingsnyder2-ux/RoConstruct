@@ -88,11 +88,11 @@ void CRobloxView::OnInitialUpdate() {
     bindExisting(0x80a6, cameraVerbs(owner_170.get())->getVerb(std::string("CameraCenter")));
     bindExisting(0x802d, cameraVerbs(owner_170.get())->getVerb(std::string("CameraZoomExtents")));
     bindExisting(0x80d7, cameraVerbs(owner_170.get())->getVerb(std::string("CameraModelView")));
-    bindExisting(0x802f, cameraVerbs(owner_170.get())->getVerb(std::string("FixedCamera")));
-    bindExisting(0x8030, cameraVerbs(owner_170.get())->getVerb(std::string("AttachCamera")));
-    bindExisting(0x80a3, cameraVerbs(owner_170.get())->getVerb(std::string("TrackCamera")));
-    bindExisting(0x8032, cameraVerbs(owner_170.get())->getVerb(std::string("FollowCamera")));
-    bindExisting(0x80a2, cameraVerbs(owner_170.get())->getVerb(std::string("WatchCamera")));
+    commandNames[0x802f] = &RBX::Name::lookup("FixedCamera");
+    commandNames[0x8030] = &RBX::Name::lookup("AttachCamera");
+    commandNames[0x80a3] = &RBX::Name::lookup("TrackCamera");
+    commandNames[0x8032] = &RBX::Name::lookup("FollowCamera");
+    commandNames[0x80a2] = &RBX::Name::lookup("WatchCamera");
     commandNames[0x8043] = &RBX::Name::lookup("SelectionRotate");
     commandNames[0x8044] = &RBX::Name::lookup("SelectionTilt");
     window.finishAttach();                                            // 0045ead0
