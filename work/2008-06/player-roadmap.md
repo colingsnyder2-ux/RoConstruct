@@ -1,3 +1,29 @@
+# P5 local input and renderer precision checkpoint
+
+Source 1f22f9eb1c connects the address-identified 005cb530 PlayerController
+behavior to an opt-in local-player fixture, existing Humanoid joint builder,
+and a focused Win32 UserInputBase adapter. WASD/arrow precedence, diagonal
+normalization, camera pan, jump and idle controls pass. A joined six-part
+character walks and stays together; a visible run with injected real Windows
+W/Q input moves torso about 9.5 units and camera about 4 units, then closes
+cleanly. This uses donor Humanoid movement physics, an explicitly created local
+Players service, and a harness camera; it is not normal-launch/original physics
+parity. Cursor-lock member offset 0x3c was compiler-verified against the target
+controller getter. Evidence: p5-controller-1f22f9eb1c/ and
+p5-controller-layout-1f22f9eb1c/.
+
+Two earlier fixed-step runs spun in TimerService: D3D9 changed x87 to 24-bit
+precision, rounding a 0.01-second timer delay to zero at epoch-scale time.
+Original renderer setup 0067ab34..0067abfd forces Floating-point mode to
+Consistent; the player now does likewise. The regression shows 53-bit precision,
+nonzero delay and one callback instead of four. Eight alternating controller
+starts pass afterward: p5-controller-stress-1f22f9eb1c/. P0, P3, P4, P5 script,
+anchor and sound regressions pass at the same source revision.
+
+P5 remains open: native frame/scheduler and character physics, original
+fixed-step comparison, automatic local spawn, camera/input integration and
+full real-place coverage. The anchor/heartbeat/Win32 adapters remain tracked.
+
 # P5 anchor/drag overlap checkpoint
 
 Source bf2c154c4c fixes a reproduced access violation when dragging an
