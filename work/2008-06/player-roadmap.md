@@ -978,3 +978,9 @@ longer logs the missing FreeFalling member during 120-frame idle/input runs.
 Receipts are in p5-freefall-*-9484069c6b. This does not establish original
 physics or sound playback parity. Animate still reports an error at
 GetPlayerFromCharacter (line 113); trace the Lua call and its arguments next.
+
+At b9a76e6c2a, direct native local-player lookup passes inside controller
+checks, alongside idle/input/script/live-input regression runs. Lua controls
+show object and method lookup succeed, but invoking the method fails with a
+function-valued error. Evidence: p5-lookup-controller-b9a76e6c2a/receipt.json
+and p5-player-lookup-trace.md. Continue tracing the Lua member-call boundary.
