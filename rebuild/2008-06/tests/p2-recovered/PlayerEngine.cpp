@@ -13,6 +13,9 @@
 #include "Network/Players.h"
 #include "v8datamodel/UserController.h"
 #include "v8datamodel/Camera.h"
+#include "v8world/World.h"
+#include "v8world/ContactManager.h"
+#include "v8kernel/Body.h"
 #include "v8datamodel/TimerService.h"
 #include "util/standardout.h"
 #include "util/Utilities.h"
@@ -191,6 +194,53 @@ extern "C" int CheckFreefallTransitions()
     }
     connection.disconnect();
     return events.size()==2 && events[1]==0 && fabs(head->getFriction()-.23f)<.0001f && fabs(torso->getFriction()-.67f)<.0001f ? 0 : 4;
+}
+
+// 00644a30 / 00644c80: candidate box and vertical obstruction ray sweep.
+class ClimbRayFilter : public RBX::HitTestFilter {
+    const RBX::Instance* character;
+public:
+    explicit ClimbRayFilter(const RBX::Instance* value):character(value){}
+    Result filterResult(const RBX::Primitive* primitive) const {
+        const RBX::PartInstance* part=RBX::PartInstance::fromPrimitiveConst(primitive);
+        return part && part->isDescendentOf(character) ? IGNORE_PRIM : INCLUDE_PRIM;
+    }
+};
+static bool DetectClimb(RBX::Humanoid* humanoid)
+{
+    RBX::Body* torso=humanoid->getTorsoBody();
+    if(!torso || !humanoid->getWorld())return false;
+    const G3D::CoordinateFrame& frame=torso->getCoordinateFrame();
+    RBX::ContactManager& contact=humanoid->getWorld()->getContactManager();
+    G3D::Vector3 center=frame.translation+frame.lookVector();
+    G3D::Array<RBX::Primitive*> candidates;
+    contact.getPrimitivesTouchingExtents(RBX::Extents(center-G3D::Vector3(1,2.7f,1),center+G3D::Vector3(1,0,1)),NULL,candidates);
+    const RBX::Instance* character=humanoid->getParent();
+    bool nearby=false;
+    for(int i=0;i<candidates.size();++i){
+        RBX::PartInstance* part=RBX::PartInstance::fromPrimitive(candidates[i]);
+        if(part && !part->isDescendentOf(character)){nearby=true;break;}
+    }
+    if(!nearby)return false;
+    ClimbRayFilter filter(character);float firstHeight=0,span=0;bool first=true,inContact=false;
+    for(int i=1;i<18;++i){
+        float height=float(i)*.1428571492433548f;
+        G3D::Vector3 origin=frame.translation+G3D::Vector3(0,height-2.7f,0),hit;
+        float distance=0;
+        G3D::Ray ray=G3D::Ray::fromOriginAndDirection(origin,frame.lookVector());
+        bool close=contact.getHitLegacy(ray,NULL,&filter,hit,distance,2.0f) && (hit-origin).magnitude()<.7f;
+        if(close){if(first){first=false;firstHeight=height;inContact=true;}}
+        else if(inContact){inContact=false;span=height-firstHeight;}
+    }
+    return firstHeight<2.45f && span>0 && span<2.45f;
+}
+extern "C" int CheckClimbProbe()
+{
+    if(!g_dataModel)return -1;
+    RBX::DataModel::Lock lock(g_dataModel);
+    RBX::ModelInstance* actor=dynamic_cast<RBX::ModelInstance*>(g_dataModel->getWorkspace()->findFirstChildByName("Actor"));
+    RBX::Humanoid* humanoid=actor?RBX::Humanoid::modelIsCharacter(actor):NULL;
+    return humanoid?int(DetectClimb(humanoid)):-1;
 }
 
 // Diagnostic: use the existing Humanoid joint builder on the authored actor.
