@@ -64,3 +64,12 @@ Open:
 - Output pane, script editor, document tabs, Explorer icons, FPS readout,
   in-game menu overlay.
 - Links libraries from the Codex build, so rebuild after engine changes.
+
+## Source swap start
+
+`runtime-classes.json` holds real sizes and in-exe bases for 104 MFC classes.
+
+`CRobloxDoc` is 0x98, on a 0x54 `CDocument`. Constructor 00451ac0 calls 00451590,
+then zeroes +0x74, builds a member at +0x78 with zeroed fields at +0x84, +0x88 and
++0x8c, and zeroes +0x90 and +0x94 (`workspace`). +0x54 to +0x70 is unread so far;
+start at 00451590. Class swaps wait for P5 and the branch merge.
