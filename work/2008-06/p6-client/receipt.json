@@ -2,11 +2,11 @@
  "milestone": "P6",
  "status": "OPEN",
  "scope": "XTP MFC client: edit mode, save, reopen, play mode with real input",
- "exe_sha256": "803c4d116a544665f4c1269d5905659229155f71da6a50185ea7830e09b6be18",
+ "exe_sha256": "d5af8ad65e0a1b61f51c54675d4b9cc1dc55b53454aedfbcb5bb321c9b3b6038",
  "capture_sha256": "93b0646bf6d8a27f053487b7b80490872b79e6215d7674f30517832cf593c85e",
  "place": "7e44dc577dacb884e6971bd25de8c23769eba12f2978fa219080d4b45c04181d",
  "sources": {
-  "RobloxShell.cpp": "b1da868ded3aab529ec6b54ef1ef6b7ff2e4ca4c45b2c517b7bdd07537664c81",
+  "RobloxShell.cpp": "8aeac1f952f31a14c7c52bc5e06eb6d2d811b370789444cf03a7dd505367526c",
   "P6Engine.cpp": "99b8d87560f7809bb56e0a7a3b80e5db14aded6cae6dec6f757d60dbd753ddb3",
   "P6Data.cpp": "1aa8388835c2c711f631d6e06673c245027ded9ad0b7cb45e68c4cc3741be65a",
   "P6Engine.h": "d87e0ce385461524bae50fc8c4820569576b446414b4a28b81e3af42da6b6ac1",
@@ -157,5 +157,6 @@
  "output_pane": "print marker reached the pane on hidden run",
  "script_editor": "Scintilla from SciLexer.dll; TriggerScript opened 250 chars, edited, saved to Source 262 chars. Double-click path shares OnExplorerOpen, not driven with a real mouse.",
  "merged_codex": "cc5796493c",
- "tabs_fps": "CXTPTabClientWnd tabs and status FPS, screenshot showed 46fps; engine open deferred to first nonzero OnSize; test mode now off screen, not SW_HIDE"
+ "tabs_fps": "CXTPTabClientWnd tabs and status FPS, screenshot showed 46fps; engine open deferred to first nonzero OnSize; test mode now off screen, not SW_HIDE",
+ "edit_camera": "wheel and right-drag sent as view messages: scan before --BB-OO--, zoomed -BBB-OOOO, orbited BBB--OOOO"
 }

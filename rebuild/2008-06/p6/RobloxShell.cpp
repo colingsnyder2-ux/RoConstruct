@@ -133,6 +133,28 @@ public:
         }
         return CString();
     }
+    void PickScan(const char* label) {
+        CString line;
+        for (int i = 1; i < 10; ++i) {
+            void* hit = P6EnginePick(i / 10.0f, 0.5f);
+            line += hit ? (LPCTSTR)NameOf(hit, explorer.GetRootItem()).Left(1) : _T("-");
+        }
+        printf("p6: scan %s %s\n", label, (LPCSTR)line);
+    }
+    void TestCamera() {
+        CView* view = GetActiveFrame()->GetActiveView();
+        PickScan("before");
+        for (int i = 0; i < 6; ++i) view->SendMessage(WM_MOUSEWHEEL, MAKEWPARAM(0, 120), 0);
+        P6EngineFrame();
+        PickScan("zoomed");
+        view->SendMessage(WM_RBUTTONDOWN, MK_RBUTTON, MAKELPARAM(100, 100));
+        view->SendMessage(WM_MOUSEMOVE, MK_RBUTTON, MAKELPARAM(190, 100));
+        view->SendMessage(WM_RBUTTONUP, 0, MAKELPARAM(190, 100));
+        P6EngineFrame();
+        Sleep(20);
+        P6EngineFrame();
+        PickScan("orbited");
+    }
     void TestPicks() {
         for (int i = 1; i < 10; ++i) {
             void* hit = P6EnginePick(i / 10.0f, 0.5f);
@@ -290,6 +312,7 @@ public:
         output.GetWindowText(text);
         printf("p6: output chars=%d marker=%d\n", text.GetLength(), text.Find("p6-output-marker") >= 0);
         P6EngineReport();
+        if (g_pickTest) TestCamera();
         if (g_pickTest) TestPicks();
         if (!g_saveAs.IsEmpty()) {
             CFrameWnd* child = GetActiveFrame();
