@@ -10,3 +10,9 @@ object)` conceals its cause. An experimental fix for metatable stack
 imbalance in Bridge::getValue did not change either result; it was reverted.
 Next trace the member-call boundary, argument conversion and Lua error stack.
 This result is not evidence of animation, sound or complete player parity.
+
+Controls: `pcall` succeeds for reading Players, Actor, and the lookup method;
+only calling the method fails. An instrumented controller check also invokes
+`Players::getPlayerFromCharacter(actor)` directly and obtains the local Player,
+so the observed failure lies in the Lua/member-call boundary or argument/result
+conversion, not the native player lookup itself. Further trace is required.

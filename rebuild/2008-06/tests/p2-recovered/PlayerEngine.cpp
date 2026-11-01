@@ -245,6 +245,7 @@ extern "C" int CheckPlayerController()
     RBX::Camera* camera=g_dataModel->getWorkspace()->getCamera();
     RBX::RunService* run=RBX::ServiceProvider::create<RBX::RunService>(g_dataModel.get());
     if (!humanoid || !camera || !run) return 2;
+    if (RBX::Network::Players::getPlayerFromCharacter(actor)!=RBX::ServiceProvider::create<RBX::Network::Players>(g_dataModel.get())->getLocalPlayer()) return 9;
     camera->setCameraCoordinateFrameNoLerp(G3D::CoordinateFrame());
     g_input->setKeyState(SDLK_w,true);g_input->setKeyState(SDLK_s,true);
     run->raiseHeartbeat(0,1.0f/60.0f);
