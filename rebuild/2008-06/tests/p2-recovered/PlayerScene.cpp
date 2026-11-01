@@ -239,7 +239,10 @@ void PartChunk::updateMesh()
         std::max(std::fabs(meshData.size.x),std::max(std::fabs(meshData.size.y),std::fabs(meshData.size.z)))<30.0f;
     meshData.geometry=PlayerBlockMesh::MeshRef();
     if(specialShape){
-        if(specialShape->getMeshType()==RBX::SpecialShape::FILE_MESH){
+        if(specialShape->getMeshType()==RBX::SpecialShape::HEAD_MESH){
+            G3D::Vector3 scale=specialShape->getScale();
+            meshData.geometry=PlayerBlockMesh::HeadMesh::create(G3D::Vector3(meshData.size.x*scale.x,meshData.size.y*scale.y,meshData.size.z*scale.z),surfaces);
+        }else if(specialShape->getMeshType()==RBX::SpecialShape::FILE_MESH){
             meshData.geometry=PlayerBlockMesh::FileMesh::create(&RBX::ContentProvider::singleton(),specialShape->getScale(),specialShape->getMeshId());
             if(meshData.geometry.isNull())std::printf("file mesh unavailable: %s\n",specialShape->getMeshId().c_str());
         }

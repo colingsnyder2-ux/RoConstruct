@@ -1,4 +1,4 @@
-"""Record partial original-character spawn; script and head support remain open."""
+"""Record partial original-character spawn; script support remains open."""
 import csv
 import hashlib
 import json
@@ -20,7 +20,7 @@ def main():
     receipt = {'revision': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
                'exe_sha256': sha(EXE), 'fixture_sha256': sha(FIXTURE), 'observer_sha256': sha(Path(__file__)),
                'assets_sha256': {name: sha(CONTENT / name) for name in ('character.rbxm','humanoidSound.rbxm','humanoidHealth.rbxm','humanoidAnimate.rbxm')},
-               'P5_complete': False, 'remaining': ['Head mesh rendering', 'Original sound and animation scripts', 'Normal launch, camera, physics and scheduler parity'], 'runs': {}}
+               'P5_complete': False, 'remaining': ['Original sound and animation scripts', 'Normal launch, camera, physics and scheduler parity'], 'runs': {}}
     for name, flags in [('hash', ['--p5-hash-check']), ('idle', ['--p5-spawn']), ('input', ['--p5-spawn', '--p5-input-test'])]:
         folder = out / name
         folder.mkdir()
@@ -36,15 +36,17 @@ def main():
             assert 'FreeFalling is not a valid member of Humanoid' in run.stdout
             with (folder/'place_snapshot.csv').open() as stream:
                 rows = list(csv.DictReader(stream))
-            assert len(rows) == 7 and rows[1]['status'] == '3' and all(r['status'] == '0' for r in rows[2:])
+            assert len(rows) == 7 and all(r['status'] == '0' for r in rows)
+            assert int(rows[1]['source_indices']) == 1944 and int(rows[1]['backend_indices']) == 2916
+            assert 'native mesh: producer=00500180' in run.stdout
             torso = [float(rows[2][k]) for k in ('x','y','z')]
             assert abs(torso[1] - 2.8) < .1
             assert (24 < torso[2] < 27) if name == 'idle' else (8 < torso[2] < 11)
-            receipt['runs'][name] = {'exit': run.returncode, 'torso': torso, 'head_mesh_status': 3, 'snapshot_sha256': sha(folder/'place_snapshot.csv')}
+            receipt['runs'][name] = {'exit': run.returncode, 'torso': torso, 'head_mesh_status': 0, 'snapshot_sha256': sha(folder/'place_snapshot.csv')}
             continue
         receipt['runs'][name] = {'exit': run.returncode}
     (out/'receipt.json').write_text(json.dumps(receipt, indent=2)+'\n')
-    print('MD5 and partial spawn/movement: PASS; scripts/head remain open')
+    print('MD5 and partial spawn/movement: PASS; scripts remain open')
 
 if __name__ == '__main__':
     main()

@@ -237,6 +237,46 @@ public:
     void buildFront(Purpose p){buildFace<RBX::NORM_Z_NEG>(cylinderSide,Vector2int16(elements,1),p);}
     void buildBack(Purpose p){buildFace<RBX::NORM_Z>(cylinderSide,Vector2int16(elements,1),p);}
 };
+// 004fdcc0 / 004fdbd0: rounded head endcaps and sides.
+struct HeadEndcap {
+    float bevel;
+    explicit HeadEndcap(float b):bevel(b){}
+    void operator()(Vector3& v,Vector3&,Vector2&,const Vector3& size,const Vector2int16&) const {
+        float dominant=std::max(fabs(v.x),fabs(v.y));
+        float scale=dominant==0?0:dominant/static_cast<float>(sqrt(v.x*v.x+v.y*v.y))*(1-bevel/(fabs(v.y)>=fabs(v.x)?size.y:size.x));
+        v.x*=scale;v.y*=scale;
+    }
+};
+struct HeadSide {
+    float bevel;int steps;
+    HeadSide(float b,int s):bevel(b),steps(s){}
+    void operator()(Vector3& v,Vector3& n,Vector2& tex,const Vector3& radius,const Vector2int16& index) const {
+        float ax=v.x/radius.x*.7853981852531433f;
+        float ay=float(index.y-steps+1)*1.5707963705062866f/float(steps-1);
+        float sx=static_cast<float>(sin(ax)),cx=static_cast<float>(cos(ax));
+        float sy=static_cast<float>(sin(ay)),cy=static_cast<float>(cos(ay));
+        v.x=(radius.x-(1-cy)*bevel)*sx;
+        v.y=index.y>=steps?radius.y-(1-sy)*bevel:(sy+1)*bevel-radius.y;
+        v.z=(radius.z-(1-cy)*bevel)*cx;
+        n=Vector3(cy*sx,sy,cy*cx);
+        float arc=1.5707963705062866f*bevel, factor=arc/(radius.y+arc-bevel);
+        if(index.y>=steps)tex.y*=factor;
+        else tex.y=2*radius.y-(1-(tex.y-radius.y)/radius.y)*radius.y*factor;
+    }
+};
+class HeadBuilder : public SphereLevelBuilder {
+public:
+    float bevel;int elements;
+    HeadBuilder(LevelRef& level,Vector3 size,RenderSurfaceTypes surfaces):
+        SphereLevelBuilder(level,Vector3(std::min(size.x,size.z),size.y,std::min(size.x,size.z)),surfaces),
+        bevel(std::min(size.x,size.z)*.25f),elements(9){}
+    void buildTop(Purpose p){buildFace<RBX::NORM_Y>(HeadEndcap(bevel),Vector2int16(elements,elements),p);}
+    void buildBottom(Purpose p){buildFace<RBX::NORM_Y_NEG>(HeadEndcap(bevel),Vector2int16(elements,elements),p);}
+    void buildLeft(Purpose p){buildFace<RBX::NORM_X_NEG>(HeadSide(bevel,(elements+1)/2),Vector2int16(elements,elements),p);}
+    void buildRight(Purpose p){buildFace<RBX::NORM_X>(HeadSide(bevel,(elements+1)/2),Vector2int16(elements,elements),p);}
+    void buildFront(Purpose p){buildFace<RBX::NORM_Z_NEG>(HeadSide(bevel,(elements+1)/2),Vector2int16(elements,elements),p);}
+    void buildBack(Purpose p){buildFace<RBX::NORM_Z>(HeadSide(bevel,(elements+1)/2),Vector2int16(elements,elements),p);}
+};
 typedef char NativeBuilderSize[sizeof(SphereLevelBuilder)==0x20?1:-1];
 typedef char NativeBuilderHalf[offsetof(SphereLevelBuilder,halfSize)==4?1:-1];
 typedef char NativeBuilderSurfaces[offsetof(SphereLevelBuilder,surfaceTypes)==0x10?1:-1];
@@ -273,6 +313,9 @@ typedef char NativeSphereCounter[offsetof(SphereCache,count)==0x5c?1:-1];
 SphereCache* sphereCache;
 boost::once_flag sphereOnce=BOOST_ONCE_INIT;
 void initializeSphereCache(){sphereCache=new SphereCache;} // 004d97b0; persistent singleton.
+SphereCache* headCache;
+boost::once_flag headOnce=BOOST_ONCE_INIT;
+void initializeHeadCache(){headCache=new SphereCache;}
 SphereCache* cylinderCache;
 boost::once_flag cylinderOnce=BOOST_ONCE_INIT;
 void initializeCylinderCache(){cylinderCache=new SphereCache;}
@@ -309,6 +352,11 @@ CylinderMesh::CylinderMesh(const Vector3& size,RenderSurfaceTypes surfaces){
     geometryKind=3;levels.push_back(new Level(RenderDevice::QUADS));
     CylinderBuilder builder(levels.last(),size,surfaces,12);builder.build(SphereLevelBuilder::Surface);
 }
+// 00500180, 004fdaf0, 00500d30: native rounded head level.
+HeadMesh::HeadMesh(const Vector3& size,RenderSurfaceTypes surfaces){
+    levels.push_back(new Level(RenderDevice::QUADS));
+    HeadBuilder builder(levels.last(),size,surfaces);builder.build(SphereLevelBuilder::Surface);
+}
 // 004eef30: one cached cylinder variation per size/surface key.
 template<> CylinderMesh* MeshFactory<CylinderMesh,1>::create(const Vector3& size,RenderSurfaceTypes surfaces){
     boost::call_once(initializeCylinderCache,cylinderOnce);
@@ -336,6 +384,37 @@ template<> unsigned MeshFactory<CylinderMesh,1>::cachedMeshes(){
     boost::recursive_mutex::scoped_lock lock(cylinderCache->mutex);
     unsigned count=0;
     for(SphereSurfaces::Iterator i=cylinderCache->cache1.begin();i!=cylinderCache->cache1.end();++i)
+        for(SphereSizes::Iterator j=i->value.begin();j!=i->value.end();++j)
+            if(j->value.meshes[0].notNull())++count;
+    return count;
+}
+// 004ef430: one cached head variation per size/surface key.
+template<> HeadMesh* MeshFactory<HeadMesh,1>::create(const Vector3& size,RenderSurfaceTypes surfaces){
+    boost::call_once(initializeHeadCache,headOnce);
+    boost::recursive_mutex::scoped_lock lock(headCache->mutex);
+    if(!headCache->cache1.containsKey(surfaces.data))headCache->cache1.set(surfaces.data,SphereSizes());
+    SphereSizes& sizes=headCache->cache1.get(surfaces.data);
+    if(!sizes.containsKey(size))sizes.set(size,SphereVariations());
+    SphereVariations& variation=sizes.get(size);
+    HeadMesh* mesh=static_cast<HeadMesh*>(variation.meshes[0].getPointer());
+    if(!mesh){
+        mesh=new HeadMesh(size,surfaces);variation.meshes[0]=mesh;
+        if(++headCache->count%100==0){MeshRef keep=variation.meshes[0];PlayerBlockMesh::flushUnused();}
+    }
+    return mesh;
+}
+template<> void MeshFactory<HeadMesh,1>::flushUnused(){
+    boost::call_once(initializeHeadCache,headOnce);
+    boost::recursive_mutex::scoped_lock lock(headCache->mutex);
+    for(SphereSurfaces::Iterator i=headCache->cache1.begin();i!=headCache->cache1.end();++i)
+        for(SphereSizes::Iterator j=i->value.begin();j!=i->value.end();++j)
+            if(j->value.meshes[0].notNull() && j->value.meshes[0].isLastReference())j->value.meshes[0]=MeshRef();
+}
+template<> unsigned MeshFactory<HeadMesh,1>::cachedMeshes(){
+    boost::call_once(initializeHeadCache,headOnce);
+    boost::recursive_mutex::scoped_lock lock(headCache->mutex);
+    unsigned count=0;
+    for(SphereSurfaces::Iterator i=headCache->cache1.begin();i!=headCache->cache1.end();++i)
         for(SphereSizes::Iterator j=i->value.begin();j!=i->value.end();++j)
             if(j->value.meshes[0].notNull())++count;
     return count;
@@ -535,6 +614,7 @@ void flushUnused(){
     SphereMesh::flushUnused();
     PBBMesh::flushUnused();
     CylinderMesh::flushUnused();
+    HeadMesh::flushUnused();
     boost::call_once(initializeCache,cacheOnce);
     boost::recursive_mutex::scoped_lock lock(cache->mutex);
     for(std::map<Lookup,Variations>::iterator it=cache->entries.begin();it!=cache->entries.end();++it)
@@ -543,12 +623,12 @@ void flushUnused(){
                 it->second.meshes[i]=MeshRef();
 }
 unsigned cachedMeshes(){
-    if(!cache)return SphereMesh::cachedMeshes()+PBBMesh::cachedMeshes()+CylinderMesh::cachedMeshes();
+    if(!cache)return SphereMesh::cachedMeshes()+PBBMesh::cachedMeshes()+CylinderMesh::cachedMeshes()+HeadMesh::cachedMeshes();
     boost::recursive_mutex::scoped_lock lock(cache->mutex);
     unsigned count=0;
     for(std::map<Lookup,Variations>::iterator it=cache->entries.begin();it!=cache->entries.end();++it)
         for(int i=0;i<4;++i)if(it->second.meshes[i].notNull())++count;
-    return count+SphereMesh::cachedMeshes()+PBBMesh::cachedMeshes()+CylinderMesh::cachedMeshes();
+    return count+SphereMesh::cachedMeshes()+PBBMesh::cachedMeshes()+CylinderMesh::cachedMeshes()+HeadMesh::cachedMeshes();
 }
 template<RBX::NormalId id>
 static inline G3D::Vector3 faceHalf(const G3D::Vector3& size,float inset){
