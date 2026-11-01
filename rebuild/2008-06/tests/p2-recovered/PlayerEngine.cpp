@@ -30,7 +30,6 @@ static boost::shared_ptr<RBX::PartInstance> g_brickRef;
 static RBX::PartInstance* g_brick = NULL;
 static bool g_playing = false;
 static float g_eventElapsed = 0.0f;
-static float g_eventStepped = 0.0f;
 static PlayerNativeInput* g_input = NULL;
 static RBX::ModelInstance* g_actor = NULL;
 
@@ -376,26 +375,33 @@ extern "C" void StartPlay()
     if (!g_dataModel) return;
     RBX::DataModel::Lock lock(g_dataModel);
     RBX::ServiceProvider::create<RBX::RunService>(g_dataModel.get())->run();
-    g_eventElapsed = g_eventStepped = 0.0f;
+    g_eventElapsed = 0.0f;
     g_playing = true;
 }
 
 // The original exposes Stepped and Heartbeat at 30 Hz; physics remains 60 Hz.
 extern "C" void StepEngine(float dt)
 {
-    if (!g_dataModel) return;
+    if (!g_dataModel || dt <= 0.0f) return;
     RBX::DataModel::Lock lock(g_dataModel);
-    float stepped = g_dataModel->step(dt);
-    if (!g_playing) return;
+    if (!g_playing) {
+        g_dataModel->step(dt);
+        return;
+    }
     RBX::RunService* run = RBX::ServiceProvider::create<RBX::RunService>(g_dataModel.get());
     g_eventElapsed += dt;
-    g_eventStepped += stepped;
-    if (g_eventElapsed >= 1.0f / 30.0f) {
-        float interval = g_eventElapsed, simulated = g_eventStepped;
-        g_eventElapsed = g_eventStepped = 0.0f;
-        run->raiseStepped(g_dataModel->getSimTime(), simulated);
+    while (g_eventElapsed >= 1.0f / 30.0f) {
+        const float interval = 1.0f / 30.0f;
+        g_eventElapsed -= interval;
+        float stepped = g_dataModel->step(interval);
+        run->raiseStepped(g_dataModel->getSimTime(), stepped);
         run->raiseHeartbeat(g_dataModel->getSimTime(), interval);
     }
+}
+
+extern "C" float GetSimulationTime()
+{
+    return g_dataModel ? g_dataModel->getSimTime() : 0.0f;
 }
 
 extern "C" void MovePartTo(float x, float y, float z)
@@ -489,7 +495,7 @@ extern "C" int GetContactState(float* expectedY,float* floorY,int* anchored)
 extern "C" void ClosePlace()
 {
     g_playing = false;
-    g_eventElapsed = g_eventStepped = 0.0f;
+    g_eventElapsed = 0.0f;
     if (g_input && g_dataModel) {
         RBX::DataModel::Lock lock(g_dataModel);
         RBX::ControllerService* service=RBX::ServiceProvider::find<RBX::ControllerService>(g_dataModel.get());
