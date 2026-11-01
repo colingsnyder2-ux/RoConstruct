@@ -1,0 +1,8 @@
+{
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "original_presets_sha256": "68dedc44d800698221fb35e35074de491efa3c5a7ef52567e23b069ac9f1def4",
+  "rebuilt_presets_sha256": "68dedc44d800698221fb35e35074de491efa3c5a7ef52567e23b069ac9f1def4",
+  "presets_compared": 24,
+  "different_indices": [],
+  "invalid_indices_and_null_system_skipped": true
+}

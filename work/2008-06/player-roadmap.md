@@ -1,5 +1,16 @@
 # Current player checkpoint
 
+At sourcebf6f987578, recovered StockSound constructor005bd250 and SoundService
+stats item005bcc40/005bcd80. A real stats-constructor test exposed a pre-existing
+use-after-free: two Stats overlay templates dropped shared ownership before
+parenting. Both now retain the child until parent ownership is established.
+Stats test verifies four children and live memory/value/function counters;
+sound/24-preset FMOD tests, app/player builds, P3 regressions and user-place
+render counts784 visible/8 transparent all pass. Sound deserialization still
+retains0 and P4 audio remains open. Evidence: p4-sound-stats-build-bf6f987578/,
+p4-sound-stats-runtime-bf6f987578/, p4-sound-stats-load-bf6f987578/ and
+p4-sound-stats-lifetime-bf6f987578/. User input stays private.
+
 SoundService heartbeat005bc2c0 recovered at source91fa2d1c88 with real
 Workspace/Camera/PVInstance/Part types, listener sanitization, five-second cache
 collection and FMOD update. Original RTTI00947f1c identifies PVInstance; the

@@ -1,0 +1,10 @@
+layer rbxgs: 0 compile errors
+layer net: 0 compile errors
+layer appdraw: 0 compile errors
+layer renderlib: 0 compile errors
+layer view: 0 compile errors
+layer lua: 0 compile errors
+layer glue: 0 compile errors
+verified layer: 111 exact symbols swapped in
+RbxgsApp: linked=True test_exit=0; 95328 object functions, 3318 byte-identical to unique 2008 functions (3061 of >=16 bytes)
+rebuild progress written: C:\Users\colin\RoConstruct\docs\rebuild-progress.json
