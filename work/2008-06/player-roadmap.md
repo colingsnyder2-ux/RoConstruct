@@ -1,5 +1,11 @@
 # Current player checkpoint
 
+Audio cache cleanup005ba2e0 integrated at source288f3ac6f4. The diagnostic
+compiles the same body with public test access (VS2008 encodes private access in
+symbol names): seeded in-use retention, probabilistic eviction, detach and reload
+pass with real FMOD. The production private symbol and heartbeat remain untested.
+Evidence: p4-sound-gc-288f3ac6f4/ and p4-sound-gc-runtime-288f3ac6f4/.
+
 Audio progress at source075c77b59f: SoundService destructor 005bb120 now uses
 genuine automatic member/base destruction and locally identifies the target in
 the owned-symbol report. Sound asset diagnostic still passes, but the destructor
