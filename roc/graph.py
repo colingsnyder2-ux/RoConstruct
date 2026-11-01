@@ -176,8 +176,7 @@ class Graph:
 
 
 def build(client, root=ROOT):
-    from roc.native_adapt import symbol_unit
-    from roc.integration_site import readable
+    from roc.native_adapt import symbol_unit, readable
     from roc import libs, match
     root = Path(root)
     work, rebuild = root/'work'/client, root/'rebuild'/client

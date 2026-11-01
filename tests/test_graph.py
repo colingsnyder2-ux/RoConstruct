@@ -208,3 +208,13 @@ def test_live_native_claim_lookup_uses_existing_inventory(tmp_path):
                         inventory={'OtherWorker':['00401000']})
     graph.active_claims(g,root,API())
     assert '00401000' not in [r['addr'] for r in g.rank()]
+
+
+def test_graph_build_without_server_site_module(tmp_path, monkeypatch):
+    import sys
+    root = fixture(tmp_path)
+    names = root / 'rebuild/test/out/native-names.json'
+    names.parent.mkdir(parents=True, exist_ok=True)
+    names.write_text(json.dumps({'00401000': {'symbol': '?askSetParent@Camera@RBX@@UBEXPAVInstance@2@@Z'}}))
+    monkeypatch.setitem(sys.modules, 'roc.integration_site', None)
+    assert graph.build('test', root).nodes['00401000']['name'] == 'RBX::Camera::askSetParent'

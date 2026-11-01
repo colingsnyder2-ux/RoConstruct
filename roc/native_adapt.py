@@ -34,6 +34,19 @@ def declared_types(text):
     return types
 
 
+def readable(symbol):
+    """MSVC decorated name -> Namespace::Class::method (enough for labels; full name stays in 'symbol')."""
+    m = re.match(r"\?\?([01])([A-Za-z_]\w*)@((?:[A-Za-z_]\w*@)*)@", symbol)
+    if m:
+        scope = [m[2]] + [p for p in m[3].split("@") if p]
+        cls = "::".join(reversed(scope))
+        return "%s::%s%s" % (cls, "~" if m[1] == "1" else "", m[2])
+    m = re.match(r"\?([A-Za-z_]\w*)@((?:[A-Za-z_]\w*@)+)@", symbol)
+    if m:
+        return "::".join(list(reversed([p for p in m[2].split("@") if p])) + [m[1]])
+    return symbol
+
+
 def symbol_unit(symbol):
     found = re.match(r'(?:\?[^@]+@|\?\?[01])(\w+)@((?:\w+@)+)@', symbol or '')
     return '::'.join(list(reversed(found[2].rstrip('@').split('@'))) + [found[1]]) if found else None

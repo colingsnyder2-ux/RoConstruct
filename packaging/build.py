@@ -268,6 +268,22 @@ def verify(staged):
            "import ast\n" \
            "ast.parse(open('roc.py', encoding='utf-8').read())\n" \
            "print('imported', len(%r), 'modules')\n" % (modules, modules)
+    if 'graph' in modules:
+        code += r"""
+import json, tempfile
+from pathlib import Path
+from roc import graph
+with tempfile.TemporaryDirectory() as folder:
+    root = Path(folder)
+    inventory = root / 'work/test/functions.jsonl'
+    inventory.parent.mkdir(parents=True)
+    inventory.write_text(json.dumps({'addr': '00401000', 'size': 20}) + '\n')
+    names = root / 'rebuild/test/out/native-names.json'
+    names.parent.mkdir(parents=True)
+    names.write_text(json.dumps({'00401000': {'symbol': '?run@Test@RBX@@QAEXXZ'}}))
+    assert graph.build('test', root).nodes['00401000']['name'] == 'RBX::Test::run'
+print('dependency graph build passed')
+"""
     run = subprocess.run([sys.executable, "-c", code], cwd=staged, capture_output=True, text=True)
     if run.returncode:
         raise SystemExit("package does not import:\n%s" % (run.stderr.strip() or run.stdout.strip()))
