@@ -29,17 +29,23 @@ while not found and time.time() < deadline:
 if not found:
     process.kill()
     sys.exit("no window")
-user.keybd_event(0x12, 0, 0, 0)  # Alt press permits the foreground change
+user.keybd_event(0x10, 0, 0, 0)  # Shift, not Alt: Alt arms menu mnemonics and W would open Window
 user.SetForegroundWindow(found[0])
-user.keybd_event(0x12, 0, 2, 0)
+user.keybd_event(0x10, 0, 2, 0)
 if not ready.wait(20):
     process.kill()
     sys.exit("engine not ready")
 time.sleep(2.0)  # spawn falls and lands first
 focused = user.GetForegroundWindow() == found[0]
 user.keybd_event(0x57, 0x11, 0, 0)
-time.sleep(1.5)
+held = 0
+foreground = set()
+for _ in range(30):
+    time.sleep(0.05)
+    foreground.add(user.GetForegroundWindow())
+    held += (user.GetAsyncKeyState(0x57) & 0x8000) != 0
 user.keybd_event(0x57, 0x11, 2, 0)
+print("held samples", held, "foreground windows", len(foreground), "lost focus", foreground != {found[0]})
 try:
     process.wait(timeout=15)
 except subprocess.TimeoutExpired:

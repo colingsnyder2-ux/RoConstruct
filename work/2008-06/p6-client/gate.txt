@@ -1,0 +1,13 @@
+save exit 0
+reopen exit 0
+p6: select Renamed found
+p6: part 3 4 5
+bad path exit 1
+run 1 exit 0
+run 2 exit 0
+p6: moved -1 0 0
+selected True exit 0
+alive True windows 1
+title Roblox - [gate.rbxl]
+focused True exit 0, Shift foreground, 3 of 3
+p6: actor z=18.989 (wall)

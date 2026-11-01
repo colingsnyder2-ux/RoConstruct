@@ -21,6 +21,8 @@ static const UINT ID_VIEW_PROPERTIES = 32783;      // CMainFrame map, handler 00
 static const UINT ID_RUN = 32966;                  // toolbar 137: Run, Pause, Reset
 static const UINT ID_PAUSE = 32967;
 static const UINT ID_RESET = 32968;
+static const UINT ID_HELP_OBJECT_BROWSER = 32990;  // CRobloxApp map, handler 0044a2e0
+static const UINT ID_VIEW_FULLSCREEN = 33012;      // CMainFrame map, handler 00431ce0
 static const UINT ID_VIEW_OUTPUT = 32927;          // CMainFrame map, handler 0042fbb0
 static const UINT ID_VIEW_EXPLORER = 32792;        // CMainFrame map, handler 0042e5e0
 static const UINT ID_TOOLS_EXECUTE_SCRIPT = 33009; // CRobloxApp map, handler 0044a300
@@ -32,16 +34,15 @@ public:
     bool visible;
     bool play;
     bool pickTest;
-    bool holdW;
     CString* expecting;
-    CString capture, script, saveAs, post, runFile, select, setProperty, editScript;
-    CRobloxCommandLineInfo() : autoClose(false), visible(false), play(false), pickTest(false), holdW(false), expecting(NULL) {}
+    CString holdDelay, capture, script, saveAs, post, runFile, select, setProperty, editScript;
+    CRobloxCommandLineInfo() : autoClose(false), visible(false), play(false), pickTest(false), expecting(NULL) {}
     virtual void ParseParam(const char* param, BOOL flag, BOOL last) {
         if (expecting) { *expecting = param; expecting = NULL; return; }
         if (flag && !lstrcmpiA(param, "p6-autoclose")) { autoClose = true; return; }
         if (flag && !lstrcmpiA(param, "p6-visible")) { autoClose = visible = true; return; }
         if (flag && !lstrcmpiA(param, "p6-play")) { play = true; return; }
-        if (flag && !lstrcmpiA(param, "p6-holdw")) { holdW = true; return; }
+        if (flag && !lstrcmpiA(param, "p6-holdw")) { expecting = &holdDelay; return; }
         if (flag && !lstrcmpiA(param, "p6-pick-test")) { pickTest = true; return; }
         if (flag && !lstrcmpiA(param, "p6-capture")) { expecting = &capture; return; }
         if (flag && !lstrcmpiA(param, "p6-script")) { expecting = &script; return; }
@@ -79,6 +80,7 @@ class CMainFrame : public CXTPMDIFrameWnd {
     DECLARE_DYNAMIC(CMainFrame)
     CXTPStatusBar statusBar;
     CXTPTabClientWnd tabs;
+    bool fullScreen;
     int fpsFrames;
     DWORD fpsTick;
     CXTPDockingPaneManager panes;
@@ -254,6 +256,12 @@ public:
         }
         return 0;
     }
+    afx_msg void OnFullScreen() {
+        fullScreen = !fullScreen;
+        ShowWindow(fullScreen ? SW_MAXIMIZE : SW_RESTORE);
+        printf("p6: fullscreen %d\n", fullScreen);
+    }
+    afx_msg void OnUpdateFullScreen(CCmdUI* ui) { ui->SetCheck(fullScreen); }
     afx_msg void OnViewProperties() {
         if (panes.IsPaneClosed(ID_VIEW_PROPERTIES)) panes.ShowPane(ID_VIEW_PROPERTIES);
         else panes.ClosePane(ID_VIEW_PROPERTIES);
@@ -290,6 +298,7 @@ public:
         if (!statusBar.Create(this) || !statusBar.SetIndicators(indicators, 2)) return -1;
         statusBar.SetPaneInfo(1, ID_INDICATOR_CAPS, SBPS_NORMAL, 60);
         fpsFrames = 0;
+        fullScreen = false;
         fpsTick = GetTickCount();
         if (!InitCommandBars()) return -1;
         CXTPCommandBars* bars = GetCommandBars();
@@ -324,7 +333,8 @@ public:
         return 0;
     }
     afx_msg void OnTimer(UINT_PTR id) {
-        if (id == 3) { KillTimer(id); P6EngineHoldW(0); return; }
+        if (id == 3) { KillTimer(id); P6EngineHoldW(0); printf("p6: hold off\n"); P6EngineReport(); return; }
+        if (id == 4) { KillTimer(id); printf("p6: hold on\n"); P6EngineReport(); P6EngineHoldW(1); SetTimer(3, 1500, NULL); return; }
         if (id == ID_P6_COMMAND) {
             KillTimer(id);
             printf("p6: command %u\n", g_post);
@@ -368,6 +378,8 @@ BEGIN_MESSAGE_MAP(CMainFrame, CXTPMDIFrameWnd)
     ON_COMMAND(ID_VIEW_EXPLORER, &CMainFrame::OnViewExplorer)
     ON_COMMAND(ID_VIEW_PROPERTIES, &CMainFrame::OnViewProperties)
     ON_COMMAND(ID_VIEW_OUTPUT, &CMainFrame::OnViewOutput)
+    ON_COMMAND(ID_VIEW_FULLSCREEN, &CMainFrame::OnFullScreen)
+    ON_UPDATE_COMMAND_UI(ID_VIEW_FULLSCREEN, &CMainFrame::OnUpdateFullScreen)
     ON_UPDATE_COMMAND_UI(ID_VIEW_OUTPUT, &CMainFrame::OnUpdateViewOutput)
     ON_UPDATE_COMMAND_UI(ID_VIEW_PROPERTIES, &CMainFrame::OnUpdateViewProperties)
     ON_NOTIFY(TVN_SELCHANGED, 1, &CMainFrame::OnExplorerSelect)
@@ -457,10 +469,54 @@ public:
 };
 IMPLEMENT_DYNCREATE(CScriptDoc, CDocument)
 
+class CNullDoc : public CDocument {
+    DECLARE_DYNCREATE(CNullDoc)
+};
+IMPLEMENT_DYNCREATE(CNullDoc, CDocument)
+
+// Help > Object Browser: classes and summaries from ReflectionMetadata.xml.
+class CObjectBrowser : public CView {
+    DECLARE_DYNCREATE(CObjectBrowser)
+    CTreeCtrl tree;
+public:
+    virtual void OnDraw(CDC*) {}
+    afx_msg int OnCreate(LPCREATESTRUCT create) {
+        if (CView::OnCreate(create) == -1) return -1;
+        if (!tree.Create(WS_CHILD | WS_VISIBLE | TVS_HASLINES | TVS_HASBUTTONS | TVS_LINESATROOT, CRect(0, 0, 0, 0), this, 1)) return -1;
+        char path[MAX_PATH];
+        GetModuleFileName(NULL, path, MAX_PATH);
+        CString file(path);
+        file = file.Left(file.ReverseFind('\\') + 1) + "ReflectionMetadata.xml";
+        CStdioFile metadata;
+        if (!metadata.Open(file, CFile::modeRead)) return 0;
+        CString line;
+        HTREEITEM item = NULL;
+        while (metadata.ReadString(line)) {
+            int at = line.Find("name=\"Name\">");
+            if (at >= 0) item = tree.InsertItem(line.Mid(at + 12, line.Find('<', at + 12) - at - 12));
+            at = line.Find("name=\"summary\">");
+            if (at >= 0 && item) tree.InsertItem(line.Mid(at + 15, line.Find('<', at + 15) - at - 15), item);
+        }
+        printf("p6: object browser nodes=%u\n", tree.GetCount());
+        return 0;
+    }
+    afx_msg void OnSize(UINT type, int width, int height) {
+        CView::OnSize(type, width, height);
+        if (tree.m_hWnd) tree.MoveWindow(0, 0, width, height);
+    }
+    DECLARE_MESSAGE_MAP()
+};
+IMPLEMENT_DYNCREATE(CObjectBrowser, CView)
+BEGIN_MESSAGE_MAP(CObjectBrowser, CView)
+    ON_WM_CREATE()
+    ON_WM_SIZE()
+END_MESSAGE_MAP()
+
 class CRobloxView : public CView {
     DECLARE_DYNCREATE(CRobloxView)
 public:
     CPoint dragFrom;
+    CButton strip[5];
     void* dragged;
     float dragStart[3];
 public:
@@ -505,6 +561,23 @@ public:
             g_runFile.Empty();
         }
         static_cast<CMainFrame*>(AfxGetMainWnd())->RefreshExplorer();
+    }
+    virtual BOOL PreCreateWindow(CREATESTRUCT& create) {
+        create.style |= WS_CLIPCHILDREN;
+        return CView::PreCreateWindow(create);
+    }
+    afx_msg int OnCreate(LPCREATESTRUCT create) {
+        if (CView::OnCreate(create) == -1) return -1;
+        static const struct { LPCTSTR title; UINT id; } items[] = {{_T("Tools"), 0}, {_T("Insert"), 0}, {_T("Fullscreen"), ID_VIEW_FULLSCREEN}, {_T("Help..."), ID_APP_ABOUT}, {_T("Exit"), ID_APP_EXIT}};
+        for (int i = 0; i < 5; ++i) {
+            strip[i].Create(items[i].title, WS_CHILD | WS_VISIBLE | BS_FLAT | BS_PUSHBUTTON, CRect(i * 100, 0, (i + 1) * 100, 20), this, items[i].id ? items[i].id : 100 + i);
+            strip[i].EnableWindow(items[i].id != 0);
+        }
+        return 0;
+    }
+    virtual BOOL OnCommand(WPARAM wParam, LPARAM lParam) { // strip buttons act as frame commands
+        if (lParam && (HIWORD(wParam) == BN_CLICKED)) { AfxGetMainWnd()->PostMessage(WM_COMMAND, LOWORD(wParam)); return TRUE; }
+        return CView::OnCommand(wParam, lParam);
     }
     afx_msg void OnLButtonDown(UINT, CPoint point) {
         CRect rect;
@@ -561,6 +634,7 @@ public:
 };
 IMPLEMENT_DYNCREATE(CRobloxView, CView)
 BEGIN_MESSAGE_MAP(CRobloxView, CView)
+    ON_WM_CREATE()
     ON_WM_SIZE()
     ON_WM_LBUTTONDOWN()
     ON_WM_LBUTTONUP()
@@ -580,16 +654,18 @@ BEGIN_MESSAGE_MAP(CRobloxView, CView)
     ON_UPDATE_COMMAND_UI(ID_TOOLS_PLAY_SOLO, &CRobloxView::OnUpdatePlaySolo)
 END_MESSAGE_MAP()
 
-// 00449910 owns templates 129, 185, 207 and 138; 185 and 207 are absent here.
+// 00449910 owns 129 place, 185 browser, 207 script and 138 object browser. 185 is online-only and absent.
 class CIDEDocManager : public CDocManager {
 public:
     CDocTemplate* placeTemplate;
     CDocTemplate* scriptTemplate;
+    CDocTemplate* browserTemplate;
     CIDEDocManager() {
         placeTemplate = new CMultiDocTemplate(IDR_PLACE, RUNTIME_CLASS(CRobloxDoc), RUNTIME_CLASS(CMDIChildWnd), RUNTIME_CLASS(CRobloxView));
         AddDocTemplate(placeTemplate);
         // Not added to the manager, so File New and Open stay place-only.
-        scriptTemplate = new CMultiDocTemplate(138, RUNTIME_CLASS(CScriptDoc), RUNTIME_CLASS(CMDIChildWnd), RUNTIME_CLASS(CScriptView));
+        scriptTemplate = new CMultiDocTemplate(207, RUNTIME_CLASS(CScriptDoc), RUNTIME_CLASS(CMDIChildWnd), RUNTIME_CLASS(CScriptView));
+        browserTemplate = new CMultiDocTemplate(138, RUNTIME_CLASS(CNullDoc), RUNTIME_CLASS(CMDIChildWnd), RUNTIME_CLASS(CObjectBrowser));
     }
 };
 
@@ -665,7 +741,7 @@ public:
         Stage("00449bf0", "frame ready");
         if (command.m_nShellCommand == CCommandLineInfo::FileOpen && !ProcessShellCommand(command)) return FALSE;
         if (command.autoClose) frame->SetTimer(ID_P6_AUTOCLOSE, 5000, NULL);
-        if (command.holdW) { P6EngineHoldW(1); frame->SetTimer(3, 1500, NULL); }
+        if (!command.holdDelay.IsEmpty()) frame->SetTimer(4, atoi(command.holdDelay), NULL);
         g_commands = command.post;
         g_post = (UINT)atoi(command.post);
         if (g_post) frame->SetTimer(ID_P6_COMMAND, 1000, NULL);
@@ -677,6 +753,7 @@ public:
         static_cast<CMainFrame*>(m_pMainWnd)->UpdateFps();
         return P6EngineFrame() || more;
     }
+    afx_msg void OnObjectBrowser() { static_cast<CIDEDocManager*>(m_pDocManager)->browserTemplate->OpenDocumentFile(NULL); }
     afx_msg void OnAbout() {
         CDialog about(IDD_P6_ABOUT);
         g_about = &about;
@@ -737,6 +814,7 @@ BEGIN_MESSAGE_MAP(CRobloxApp, CWinApp)
     ON_COMMAND(ID_FILE_NEW, &CRobloxApp::OnFileNewPlace)
     ON_COMMAND(ID_FILE_OPEN, &CRobloxApp::OnFileOpenPlace)
     ON_COMMAND(ID_APP_ABOUT, &CRobloxApp::OnAbout)
+    ON_COMMAND(ID_HELP_OBJECT_BROWSER, &CRobloxApp::OnObjectBrowser)
     ON_COMMAND(ID_TOOLS_EXECUTE_SCRIPT, &CRobloxApp::OnExecuteScript)
 END_MESSAGE_MAP()
 

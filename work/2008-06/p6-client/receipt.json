@@ -1,20 +1,22 @@
 {
  "milestone": "P6",
- "status": "OPEN",
+ "status": "SCOPED PASS, see rebuild/2008-06/p6/p6-acceptance-audit.md",
  "scope": "XTP MFC client: edit mode, save, reopen, play mode with real input",
- "exe_sha256": "d5af8ad65e0a1b61f51c54675d4b9cc1dc55b53454aedfbcb5bb321c9b3b6038",
+ "exe_sha256": "ea3dac93fb241d62d5679d06fe43079195f214cb74a7b932263c31d2a240f077",
  "capture_sha256": "93b0646bf6d8a27f053487b7b80490872b79e6215d7674f30517832cf593c85e",
  "place": "7e44dc577dacb884e6971bd25de8c23769eba12f2978fa219080d4b45c04181d",
  "sources": {
-  "RobloxShell.cpp": "8aeac1f952f31a14c7c52bc5e06eb6d2d811b370789444cf03a7dd505367526c",
+  "RobloxShell.cpp": "dde8693f855f59f1ea30a537fc402e5320c3b3898e56413d73b847f5b1b03505",
   "P6Engine.cpp": "99b8d87560f7809bb56e0a7a3b80e5db14aded6cae6dec6f757d60dbd753ddb3",
-  "P6Data.cpp": "1aa8388835c2c711f631d6e06673c245027ded9ad0b7cb45e68c4cc3741be65a",
-  "P6Engine.h": "d87e0ce385461524bae50fc8c4820569576b446414b4a28b81e3af42da6b6ac1",
-  "build_client.py": "1c03ac121894014da38199dc9c42f9a2064411f6195372bf5f8398ebd450e477",
+  "P6Data.cpp": "c288511f66639b565d51817077aa61924a96734a39a90be71e517bb312a6b4c0",
+  "P6Engine.h": "6575395bf1db05c87358b49c4717cf5190d05d007b6fcf86d6b8037996694dc0",
+  "build_client.py": "715a443e151a2892b48711205156217c7276d4faf775b02be7383cddc9eafb35",
   "gen_res.py": "780cf9a95025f0d3f315bbac95703dfabe1378308ec5da220be5eb3e1f787497",
-  "input_test.py": "cbd32f5e7284ed6a3b116f8e1220c80c0186beec55bc6dd82543da18a51daf32",
+  "input_test.py": "49ef8f555c7afa4f49d4065c7c1122d1eb24dd1574a1e4373d7b226c913615ff",
   "click_test.py": "5891541d9212ce039647a229c7fd358ccb64faa3feb3ff8417cb1516742d3a76",
-  "original_check.py": "61e158d23bd868df42ceac4e32d52309c8d725210b0935b417724e33b811b418"
+  "original_check.py": "61e158d23bd868df42ceac4e32d52309c8d725210b0935b417724e33b811b418",
+  "ordinary_launch.py": "8640cce1c0b5ad78457b2e5b7a39a4c76b4312dea7a6ea0ca2d613498598d593",
+  "original_trace.py": "6a9832c726f3458e9b89ebf70e5b0cddd104741920f4609726edc11bca6f0046"
  },
  "player_libs": "this worktree: rbxgs-app and full player chain rebuilt from merged sources, all module tests pass",
  "runs": [
@@ -63,8 +65,8 @@
   "exit": 0,
   "keys": "real W keybd_event for 1.5 s after engine open",
   "actor_end": [
-   2.87672e-07,
-   2.99911,
+   2.91625e-07,
+   2.99909,
    18.989
   ],
   "idle_actor_end": [
@@ -74,7 +76,7 @@
   ],
   "frames": 301,
   "cleanup": "levels=0 refs=0 backends=0 spheres=0",
-  "note": "W pressed 2 s after open. Pressed at 0.3 s on merged engine moves only 0.53 studs; before cc5796493c it moved 6.5."
+  "note": "Earlier 0.53 stud results were a test artifact: Alt armed menu mnemonics and W opened Window, halting frames. Not an engine regression."
  },
  "edit_save_reopen": {
   "fixture": "lifetime-shapes.rbxl",
@@ -112,9 +114,7 @@
   "32967 Pause": "status logged",
   "32968 Reset": "reloads document, cleanup zero both opens"
  },
- "not_rerun_on_this_exe": [
-  "final relink only removed a debug trace line"
- ],
+ "not_rerun_on_this_exe": [],
  "execute_script": "RunFile via -p6-runfile moved Brick to 1,2,3; file dialog path not exercised",
  "property_edit": {
   "select": "Brick",
