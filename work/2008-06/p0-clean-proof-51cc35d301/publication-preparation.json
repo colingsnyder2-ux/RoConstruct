@@ -1,0 +1,29 @@
+{
+  "base_findings": "9dd771a8a780bec27c0ff58719483831fc979706",
+  "files": 7978,
+  "preserved": [
+    "config/boost-extra.json",
+    "config/codegen-analogs.json",
+    "config/mfc-atl.json",
+    "config/ogre.json",
+    "config/p2-player-baseline.json",
+    "tests/P2PlayerBaseline.cpp",
+    "tests/Player2008.cpp",
+    "tests/RbxEntity.h",
+    "tests/boostextra_link.cpp",
+    "tests/codegen_analogs_link.cpp",
+    "tests/mfcatl_link.cpp",
+    "tests/ogre_link.cpp",
+    "verification/accepted-integrations.json",
+    "verification/integration-jobs.json",
+    "verification/inventory.json",
+    "verification/manifests/abi-evidence.json",
+    "verification/manifests/functions.json",
+    "verification/manifests/original-pe.json",
+    "verification/manifests/tu-coverage.json",
+    "verification/native-credit.json",
+    "verification/native-source-links.json",
+    "verification/runtime-tests.json"
+  ],
+  "manifest_sha256": "00f1b4a570ff629eb2a95c6d72dc05c5424867524087051b1f6b5be86570aca2"
+}

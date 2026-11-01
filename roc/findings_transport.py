@@ -77,16 +77,23 @@ def publish_package(root, git_exe, log=print):
             old = relative
             if old not in previous['files'] and relative.startswith('src/Client/'):
                 old = relative.replace('src/Client/', 'src/rbxgs/Client/', 1)
-            same = relative != 'package.json' and manifest['files'][relative] == previous['files'].get(old)
-            blob = blobs.get('2008-06/' + old) if same else None
+            data = (folder / relative).read_bytes()
+            if relative != 'package.json' and hashlib.sha256(data).hexdigest() != manifest['files'][relative]:
+                raise ValueError('Package changed after export: ' + relative)
+            # Git text filters can change CRLF fixtures after their manifest was
+            # hashed. Compare raw blob identity, including previously bad exports.
+            raw_blob = hashlib.sha1(b'blob ' + str(len(data)).encode() + b'\0' + data).hexdigest()
+            blob = blobs.get('2008-06/' + old)
+            if blob != raw_blob:
+                blob = None
             if not blob:
-                blob = git('hash-object', '-w', '--', str(folder / relative))
+                blob = git('hash-object', '-w', '--no-filters', '--', str(folder / relative))
             rows.append('100644 ' + blob + '\t2008-06/' + relative + '\0')
         git('update-index', '-z', '--index-info', input=''.join(rows))
         tree = git('write-tree')
         if tree == git('rev-parse', parent + '^{tree}'):
             return log('Native package already current.')
-        commit = git('commit-tree', tree, '-p', parent, '-m', 'Flatten native Client source path')
+        commit = git('commit-tree', tree, '-p', parent, '-m', 'Update native source package')
         git('push', 'findings', commit + ':refs/heads/main')
         log('Native package published: ' + commit)
     finally:

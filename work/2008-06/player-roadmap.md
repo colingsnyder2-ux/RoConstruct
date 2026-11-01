@@ -1,6 +1,18 @@
 # Current player checkpoint
 
-P0 clean-build/runtime gate now proven at source51cc35d301. Detached worktree
+P0 PASSED at source51cc35d301, findings36160f15c42b980a9ea93de4a633bf597dd44617.
+Full published byte audit covers7978files,zero mismatches. Publication preserved
+22existing diagnostic/module/verification files instead of removing newer work.
+Initial publication078008c7 changed two fixture line endings through Git filters;
+retained audit proves failure. Fixed publisher validates raw blob identity and
+uses --no-filters, repairing unchanged-manifest bad blobs. Actual local bare-Git
+regression passes, plus exporter regression. Final remote audit passes every hash.
+Next open gate P3: isolated recovered player currently has cachetest, not owner's
+p3test. Preserve owner test; integrate full lifetime controls and a native non-box
+producer, compare silhouette against original. Non-box path currently omitted
+explicitly in PlayerScene.cpp; do not replace with a manual box or stock sphere.
+
+P0 clean-build/runtime gate proven at source51cc35d301. Detached worktree
 C:/Users/colin/roc-p0 started tracked-clean with zero reconstructed outputs;
 only tools junction shares pinned compilers/vendor dependencies. Official client
 fetch/analyze, doctor150021022 and canonical player build complete. Player
@@ -16,11 +28,11 @@ Found export defect: named-harness filter dropped direct-layer and included.cpp
 sources, fixtures and staging scripts. Exporter now retains test source inputs;
 regression passes. Fresh candidate from clean source51 has7959files, no missing
 module test-layer sources;71required test inputs audited. Candidate lives at
-C:/Users/colin/roc-p0/work/2008-06/p0-source-export-51cc35d301. Publication still
-pending; do not claim current findings HEAD6bfc91c8 includes this candidate.
+C:/Users/colin/roc-p0/work/2008-06/p0-source-export-51cc35d301. Final publication
+adds preserved remote files; publication-final-byte-audit.json pins result.
 Existing owner source changes stay39insertions/12deletions, unstaged.
-Next: publish exact candidate through existing package workflow while preserving
-native verification ledgers, pin published SHA, then full P3 lifetime/non-box.
+Original source/candidate receipt remains immutable; its published=false records
+pre-publication state. Final publication audit supersedes that state.
 Read-only findings status handle17424 remains live in lazy-fetch subprocess;
 do not restart it merely because output is quiet. Fresh build35318 and runtime
 60909 completed0; export96992 completed0. No builds currently active.

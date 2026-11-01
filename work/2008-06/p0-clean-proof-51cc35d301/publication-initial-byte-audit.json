@@ -1,0 +1,16 @@
+{
+  "revision": "078008c7b4bdb7dd6ff25650febb924972670930",
+  "files": 7978,
+  "mismatches": [
+    {
+      "path": "tests/fixtures/cache-blocks.rbxl",
+      "actual": "10e2e8c20ee2aebaea984b9f179142285665eb0155492d2ef62f680628e54b32",
+      "manifest": "5edbe47c0cd7eea74912275648559189c218600697e7c908480d3bc7303a1549"
+    },
+    {
+      "path": "tests/fixtures/falling.rbxl",
+      "actual": "07eb68599bafa3ccaf014a695451e7a0d66f6490fd19b2112966196096c7013e",
+      "manifest": "3ac7564b67e55441066cec382c125ece3c19e5ebcbf316ef0a5c0a74a0cab5b9"
+    }
+  ]
+}
