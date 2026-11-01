@@ -1650,3 +1650,21 @@ Original samples are wall time within 35 ms of fixed-step targets, joint
 construction differs and original termination was forced. These improvements
 do not close physics parity or P5; preserve original bouncing and investigate
 remaining state/timing and contact differences next.
+
+## P5 checkpoint: timing sensitivity and tandem ownership (be12214a62)
+
+Claude owns P6 in roc-p6; Codex continues P5 here under TANDEM.md. Both
+original-client runs below held and released the shared desktop lock; only
+observer-owned original processes were closed/terminated.
+
+The airborne observer now additionally samples rebuilt frames 13,14,16,17
+around its first comparison, retaining the original exact-time delta and
+existing early-jump gate. This diagnoses sensitivity without claiming original
+simulation-time access. At the same executable, one run had maximum exact
+sample error 0.07493 studs; a repeat had 3.14027 at the impact sample (0.5s).
+Both first samples agreed within 0.01005 studs; later settled samples within
+0.075. Therefore previous max-error comparisons can change with original
+wall-clock phase even without code changes. Do not tune physics to one such
+maximum. Next add an original Lua simulation-time marker and align observations
+by that clock. Receipts: p5-tandem-fall-timing and its -repeat. These are
+observational; fixed-step/contact parity and P5 remain open.
