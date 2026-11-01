@@ -1,5 +1,14 @@
 #define BOOST_ALL_NO_LIB
+#include "util/ContentProvider.h"
+#include "util/RunStateOwner.h"
+#include "v8datamodel/PartInstance.h"
+#include "v8datamodel/Stats.h"
+// Compile the same cleanup body with public access in this isolated test;
+// MSVC encodes access in symbol names, so this cannot call the private binary.
+#define private public
 #include "util/Sound.h"
+#include "PlayerNativeSoundGC.cpp"
+#undef private
 #include "v8datamodel/GameSettings.h"
 #include <fmod.hpp>
 #include <cstdio>
@@ -7,6 +16,7 @@
 #include <cstring>
 #include <stdexcept>
 #include <windows.h>
+#include <cstdlib>
 // DLL exports the stdcall entry without decoration; generated import library
 // preserves that export name. This is a symbol alias, not a calling-convention change.
 #pragma comment(linker,"/alternatename:_FMOD_System_Create@4=_FMOD_System_Create")
@@ -35,6 +45,32 @@ int main(int argc,char** argv){
         std::printf("fmod loaded: %s\n",dllPath);
         // Isolate loader/PCM ownership. No claim of audible or service playback.
         check(system->setOutput(FMOD_OUTPUTTYPE_NOSOUND));check(system->init(100,FMOD_INIT_NORMAL,0));
+        {
+            typedef std::map<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound> > Sounds;
+            Sounds sounds;bool retained[64];
+            for(int i=0;i<64;++i){
+                char name[32];std::sprintf(name,"rbxasset://%02d.wav",i);
+                RBX::Soundscape::SoundId id(name);
+                boost::shared_ptr<RBX::Soundscape::Sound> sound(new RBX::Soundscape::Sound(system,id,false));
+                sound->refCount=i%3==0?1:0;sounds[id]=sound;
+            }
+            std::srand(17);
+            for(int i=0;i<64;++i)retained[i]=i%3==0 || static_cast<float>(std::rand())*(1.0f/32767.0f)<.7f;
+            std::srand(17);RBX::Soundscape::SoundService::gcSounds(sounds);
+            verify(sounds.size()<64 && sounds.size()>=22);
+            for(int i=0;i<64;++i){
+                char name[32];std::sprintf(name,"rbxasset://%02d.wav",i);
+                verify((sounds.find(RBX::Soundscape::SoundId(name))!=sounds.end())==retained[i]);
+            }
+            sounds.clear();RBX::Soundscape::SoundId id("rbxasset://tone.wav");
+            boost::shared_ptr<RBX::Soundscape::Sound> sound(new RBX::Soundscape::Sound(system,id,false));
+            verify(sound->get()!=0);sounds[id]=sound;
+            int seed=1;
+            for(;;++seed){std::srand(seed);if(static_cast<float>(std::rand())*(1.0f/32767.0f)>=.7f)break;}
+            std::srand(seed);RBX::Soundscape::SoundService::gcSounds(sounds);
+            verify(sounds.empty() && sound->get()!=0);
+            std::printf("P4 Sound cache cleanup PASS retained/in-use/evicted/reload\n");
+        }
         for(int cycle=0;cycle<16;++cycle){
             RBX::Soundscape::Sound sound(system,RBX::Soundscape::SoundId("rbxasset://tone.wav"),false);
             verify(sound.refCount==0);

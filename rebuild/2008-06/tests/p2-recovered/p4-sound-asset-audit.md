@@ -101,3 +101,11 @@ report. A diagnostic that constructs the service still cannot link because
 onEvent and onServiceProvider are missing. The temporary diagnostic was removed;
 constructor, destructor and cache remain unexercised, and no server match is
 claimed. Recover those two native callbacks and their actual dependencies next.
+
+The 005ba2e0 cleanup algorithm now uses the genuine SoundId/shared_ptr map and
+Sound members. It retains in-use entries and randomly detaches/erases unused
+ones when the sample reaches the original 0.7 threshold. Its isolated FMOD
+diagnostic compiles the same body with public test access because VS2008 encodes
+private access in the symbol; it verifies seeded retention, eviction and reload
+after detachment. This does not exercise the production private symbol or the
+SoundService heartbeat. Native service linking and playback remain open.
