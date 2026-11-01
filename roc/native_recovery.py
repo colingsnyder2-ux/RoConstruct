@@ -334,7 +334,7 @@ def compile_probe(root, rel, context, matcher, addresses, method, baseline=None,
     xtp = toolkit_profile(root,unit)
     out = Path(output) if output else root/'proof'/integration.digest([rel,translation_unit,inventory(root),context.defines,context.flags,digest(Path(__file__).read_bytes())])[:16]
     world = root/NATIVE/'native-world/App/include'
-    includes = [root / NATIVE / 'native-headers', *([world] if unit.is_relative_to((root/NATIVE/'native-world').resolve()) or path.is_relative_to((root/NATIVE/'native-world').resolve()) else []), path.parent,
+    includes = [root / NATIVE / 'native-headers', *([world,*getattr(context,'includes',[])] if unit.is_relative_to((root/NATIVE/'native-world').resolve()) or path.is_relative_to((root/NATIVE/'native-world').resolve()) else []), path.parent,
                 libs.LIBS / 'mfc-9.0-rtm/atlmfc/include', libs.LIBS / 'xtp-11.2.2/Source',
                 *[libs._case_path(libs.LIBS / p).resolve() for p in libs.RECIPES['rbxgs']['include'] if p != 'WINSDK']]
     defines = context.defines+' _AFXDLL _MBCS BOOST_ALL_NO_LIB'
@@ -733,6 +733,9 @@ def run(config, control, emit):
                     lease=remote.claim(task)
                     if not lease.get('claimed'):
                         claims.update(key,owner,'cancelled',dict(task=task))
+                        if lease.get('reason')=='contributor-limit':
+                            log('Contributor lease limit reached across PCs; waiting for active work to finish')
+                            break
                         continue
                     record=claims.record(key,owner)
                     record['remote_lease']=lease

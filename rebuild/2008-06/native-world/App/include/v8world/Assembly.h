@@ -103,7 +103,9 @@ public:
 	const Primitive* getRootPrimitive() const { return rootPrimitive; }
 
 	Mechanism* getMechanism();
-	void setMechanism(Mechanism* value) { mechanism = value; }
+	void setMechanism(Mechanism* value) { job = value; }
+	void setJob(SimJob* value) { job = value; }
+	SimJob* getJob() const { return job; }
 
 	void onPrimitiveCanSleepChanged(Primitive* primitive);
 
@@ -134,7 +136,7 @@ private:
 	Primitive* rootPrimitive;               // 0x0c
 	Assembly* parent;                       // 0x10
 	std::vector<Assembly*> children;        // 0x14
-	Mechanism* mechanism;                   // 0x24
+	SimJob* job;                   // 0x24
 	ComputeProp<float, Assembly> maxRadius; // 0x28
 	ComputeProp<bool, Assembly> canSleep;   // 0x40
 };

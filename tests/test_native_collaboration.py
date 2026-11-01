@@ -273,3 +273,19 @@ def test_world_header_change_invalidates_recovery_signature(service):
     task=service.catalog()['tasks'][0]
     header.write_text('struct World { int value; int next; };')
     assert service.catalog()['tasks'][0]['signature']!=task['signature']
+
+
+def test_cross_pc_contributor_limit_waits_and_recovers_without_blocking_other_users(service,monkeypatch):
+    (service.root/REL).write_text('\n'.join('int A::f%d(){return %d;}'%(n,n) for n in range(51)))
+    monkeypatch.setattr(recovery,'nominations',lambda *a:[dict(file=REL,method='A::f%d'%n,addr='%08x'%(0x400000+n)) for n in range(51)])
+    tasks=service.catalog()['tasks']
+    def take(pair):
+        n,t=pair
+        return service.claim('Colin',dict(target=t['target'],signature=t['signature'],worker='pc'+str(n%2)))
+    with ThreadPoolExecutor(max_workers=10) as pool:leases=list(pool.map(take,enumerate(tasks[:50])))
+    assert len({r['lease'] for r in leases})==50
+    t=tasks[50];request=dict(target=t['target'],signature=t['signature'],worker='pc3')
+    assert service.claim('Colin',request)==dict(claimed=False,reason='contributor-limit')
+    assert service.claim('Someone',request)['claimed']
+    service.renew('Colin',body(leases[0]),release=True)
+    assert take((52,tasks[0]))['claimed']

@@ -137,7 +137,7 @@ class Host:
             if old and (old[1]=='submitted' or old[0]>now and old[1]=='claimed') or done and done[0]==task['signature']:
                 return dict(claimed=False)
             count=db.execute("SELECT COUNT(*) FROM native_method_leases WHERE user=? AND state='claimed' AND expires>?",(user,now)).fetchone()[0]
-            if count>=50:raise ValueError('Contributor already holds 50 active recovery methods')
+            if count>=50:return dict(claimed=False,reason='contributor-limit')
             identifier=uuid.uuid4().hex
             db.execute('INSERT OR REPLACE INTO native_method_leases VALUES(?,?,?,?,?,?,?)',
                 (task['target'],identifier,user,worker_id,now+TTL,'claimed',json.dumps(packet)))

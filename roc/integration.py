@@ -266,12 +266,20 @@ def resume_pending(api, directory, user):
     return recovered
 
 
+def adopted_path(tree, name, workspace=None):
+    """Native source adoptions belong to this workspace, not a reused vendor checkout."""
+    value = name.replace('\\', '/')
+    if value.startswith('../../../rebuild/'):
+        return (Path(workspace or ROOT) / value[9:]).resolve()
+    return Path(os.path.abspath(Path(tree) / name))
+
+
 def overlay_text(tree, name, patches):
     path = tree/name
     text = path.read_text(errors='replace') if path.exists() else ''
     for old, new in patches.get(name, []):
         if old == '@replace':
-            text = (tree/new).read_text(errors='replace')
+            text = adopted_path(tree,new).read_text(errors='replace')
         elif old.startswith('@all:'):
             text = text.replace(old[5:], new)
         elif old:

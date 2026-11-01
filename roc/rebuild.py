@@ -864,7 +864,7 @@ def build_overlay(client, module, spec):
     import hashlib
     root = (ROOT / spec["root"]).resolve()
     patches = json.loads((ROOT / spec["patches"]).read_text(encoding="utf-8"))
-    from roc.integration import canonical_patches
+    from roc.integration import canonical_patches, adopted_path
     patches = canonical_patches(patches)
     # one stable folder: a file is rewritten only when its patched text changes, so objects that do not
     # include it stay current (compile_direct tracks each object's includes)
@@ -874,7 +874,7 @@ def build_overlay(client, module, spec):
         text = (root / rel).read_text(errors="replace") if (root / rel).exists() else ""
         for old, new in edits:
             if old == "@replace":  # adopt a whole header from a local unit; no vendor text in the patch file
-                text = (root / new).read_text(errors="replace")
+                text = adopted_path(root, new, ROOT).read_text(errors="replace")
                 continue
             if old.startswith("@all:"):  # every occurrence, e.g. a member that became a weak_ptr
                 if old[5:] not in text:

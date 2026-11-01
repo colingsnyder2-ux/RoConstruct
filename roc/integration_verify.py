@@ -14,7 +14,7 @@ import uuid
 from pathlib import Path
 
 from roc import rebuild
-from roc.integration import CLIENT, MODULE, ROOT, atomic_json, digest, merge_patches, canonical_patches
+from roc.integration import CLIENT, MODULE, ROOT, atomic_json, digest, merge_patches, canonical_patches, adopted_path
 
 WRITABLE_OUT = {"RbxgsApp", "tests"}  # out/ folders a snapshot build or milestone link writes into
 
@@ -124,7 +124,7 @@ def input_paths(root, live_only=False):
         for edits in json.loads(overlay.read_text()).values():
             for old, new in edits:
                 if old == "@replace":
-                    referenced.add(root / "tools/rbxgs/Client" / new)
+                    referenced.add(adopted_path(root / "tools/rbxgs/Client", new, root))
     for deps in (root / "rebuild/2008-06/out/RbxgsApp").glob("layer-*/*.deps"):
         referenced.update(Path(p) for p in json.loads(deps.read_text()) if Path(p).name.startswith("roc_"))
     for parent in native_tools(root):
@@ -494,7 +494,7 @@ def preflight(root, base, patches):
             existing = len(base.get(name, []))
             for index, (old, new) in enumerate(edits):
                 if old == "@replace":
-                    text = (tree / new).read_text(errors="replace")
+                    text = adopted_path(tree, new, root).read_text(errors="replace")
                 elif old.startswith("@all:"):
                     anchor = old[5:]
                     if not anchor or anchor not in text:

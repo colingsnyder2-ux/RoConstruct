@@ -590,6 +590,8 @@ def test_cli_worker_identity_is_stable_per_checkout_not_shared_by_same_pc(promot
     api = Mock()
     identities = []
     def call(path, body=None):
+        if path == "/v1/integration":
+            return {"jobs": []}
         if path.endswith("/base"):
             return promotions.baseline()
         identities.append(body["worker"])
@@ -609,9 +611,10 @@ def test_cli_compact_claim_batch_selects_only_its_own_packets(promotions, monkey
     from unittest.mock import Mock
     api = Mock()
     calls = []
+    server_base = promotions.baseline()
     def call(path, body=None, **kwargs):
         if path.endswith('/base'):
-            return promotions.baseline()
+            return server_base
         if path.endswith('/claim'):
             assert body['targets'] == 2000 and body['compact'] and kwargs['timeout'] == 300
             return promotions.claim('alice', body['worker'], targets=2000, compact=True)
@@ -1691,3 +1694,28 @@ def test_notify_records_accepted_integration_without_webhook(monkeypatch):
     integration_notify.notify(None, job, {'accepted': False})
     integration_notify.notify(None, job, {'accepted': True, 'gains': ['00500000'], 'credits': 1})
     assert events == [(('integration', 'alice', 'gpt-6.1-sol'), {'gains': ['00500000'], 'credits': 1})]
+
+
+def test_native_adoption_stays_in_private_workspace_with_reused_vendor_junction(tmp_path,monkeypatch):
+    import os,subprocess
+    from roc import rebuild,integration_verify
+    root=tmp_path/'private';vendor=tmp_path/'other/tools/rbxgs/Client'
+    vendor.mkdir(parents=True);tree=root/'tools/rbxgs/Client';tree.parent.mkdir(parents=True)
+    if os.name=='nt':
+        subprocess.run(['cmd','/c','mklink','/J',str(tree),str(vendor)],check=True,capture_output=True)
+    else:tree.symlink_to(vendor,target_is_directory=True)
+    rel='rebuild/2008-06/native-world/App/include/A.h'
+    own=root/rel;own.parent.mkdir(parents=True);own.write_text('private typed declaration')
+    other=tmp_path/'other'/rel;other.parent.mkdir(parents=True);other.write_text('other agent declaration')
+    name='../../../'+rel;patches={'App/include/A.h':[['@replace',name]]}
+    patch=root/'patches.json';patch.write_text(json.dumps(patches))
+    monkeypatch.setattr(integration,'ROOT',root);monkeypatch.setattr(rebuild,'ROOT',root)
+    assert integration.overlay_text(tree.resolve(),'App/include/A.h',patches)=='private typed declaration'
+    _,overlay=rebuild.build_overlay('2008-06','fixture',dict(root='tools/rbxgs/Client',patches='patches.json'))
+    assert (overlay/'App/include/A.h').read_text()=='private typed declaration'
+    combined,kept,dropped=integration_verify.preflight(root,{},patches)
+    assert kept==patches and not dropped
+    registry=root/'rebuild/2008-06/patches/rbxgs-client.json';registry.parent.mkdir(parents=True);registry.write_text(json.dumps(patches))
+    paths,_=integration_verify.input_paths(root)
+    assert own.resolve() in paths and other.resolve() not in paths
+    assert other.read_text()=='other agent declaration'

@@ -148,7 +148,7 @@ bool Assembly::getAnchored() const
 // FUNCTION: WEBSERVICE 0x10102ba0
 Mechanism* Assembly::getMechanism()
 {
-	return mechanism;
+	return dynamic_cast<Mechanism*>(job);
 }
 
 // FUNCTION: WEBSERVICE 0x10102bb0
@@ -289,7 +289,7 @@ void Assembly::onPrimitiveCanSleepChanged(Primitive* p)
 
 // FUNCTION: WEBSERVICE 0x101034e0
 Assembly::Assembly(Primitive* root)
-	: sleepInfo(NULL), rootPrimitive(root), parent(NULL), mechanism(NULL), maxRadius(this, &Assembly::computeMaxRadius),
+	: sleepInfo(NULL), rootPrimitive(root), parent(NULL), job(NULL), maxRadius(this, &Assembly::computeMaxRadius),
 	  canSleep(this, &Assembly::computeCanSleep)
 {
 	root->setClump(static_cast<Clump*>(this));

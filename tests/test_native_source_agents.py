@@ -454,9 +454,10 @@ def test_world_compilation_prefers_corresponding_published_headers(tmp_path,monk
     def compile(client,units,out,includes,defines,flags):
         seen.extend(includes);return {str(units[0]):(False,'fixture stops after collecting include profile')}
     monkeypatch.setattr(recovery.rebuild,'compile_direct',compile)
-    recovery.compile_probe(tmp_path,rel,SimpleNamespace(defines='',flags=[]),None,set(),'A::f')
+    recovery.compile_probe(tmp_path,rel,SimpleNamespace(defines='',flags=[],includes=[tmp_path/'accepted/App/include']),None,set(),'A::f')
     assert seen[0]==tmp_path/'rebuild/2008-06/native-headers'
     assert seen[1]==tmp_path/'rebuild/2008-06/native-world/App/include'
+    assert seen[2]==tmp_path/'accepted/App/include'
 
 
 def test_canonical_body_transfer_preserves_typed_signature_and_member_names():
