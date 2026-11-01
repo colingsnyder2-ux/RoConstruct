@@ -9,4 +9,6 @@ SoundService::SoundService()
       nextGarbageCollectTime(G3D::System::getTick()),mySoundDisabled(false){
     setName("Soundscape");
 }
+// 005bb120: ordinary member/base destruction; detachment owns FMOD shutdown.
+SoundService::~SoundService(){}
 } }

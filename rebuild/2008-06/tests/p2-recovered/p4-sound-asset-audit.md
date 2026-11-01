@@ -92,3 +92,12 @@ their static/global ownership and correct declarations before integrating the
 service. Even after removing those instance descriptors, its base/member prefix
 still differs by8 bytes. Do not fill that difference with invented padding.
 Witness files: `work/2008-06/p4-sound-layout/` and native factory disassemblies.
+
+This raw-donor layout warning is superseded by the application overlay correction
+in `work/2008-06/player-roadmap.md`: the canonical types have the measured sizes.
+The genuine SoundService destructor body is empty; its compiler-generated member
+and base destruction locally identifies target 005bb120 in the owned-symbols
+report. A diagnostic that constructs the service still cannot link because
+onEvent and onServiceProvider are missing. The temporary diagnostic was removed;
+constructor, destructor and cache remain unexercised, and no server match is
+claimed. Recover those two native callbacks and their actual dependencies next.
