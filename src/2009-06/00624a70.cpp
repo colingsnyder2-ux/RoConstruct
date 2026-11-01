@@ -1,4 +1,54 @@
+// from server: 100% by EspClaude
 // from server: 73% by EspClaude
+// roc 2009-06 00624a70  unit: RBX::P8HopperBin::?$SetImpl  size: 185 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 00624a70
+//
+// 00624a70  6aff                 push -1
+// 00624a72  68a88c8600           push 0x868ca8
+// 00624a77  64a100000000         mov eax, dword ptr fs:[0]
+// 00624a7d  50                   push eax
+// 00624a7e  64892500000000       mov dword ptr fs:[0], esp
+// 00624a85  83ec24               sub esp, 0x24
+// 00624a88  56                   push esi
+// 00624a89  8bf1                 mov esi, ecx
+// 00624a8b  89742404             mov dword ptr [esp + 4], esi
+// 00624a8f  e86cffffff           call 0x624a00
+// 00624a94  33c0                 xor eax, eax
+// 00624a96  33c9                 xor ecx, ecx
+// 00624a98  33d2                 xor edx, edx
+// 00624a9a  c706049d8d00         mov dword ptr [esi], 0x8d9d04
+// 00624aa0  c74614f49c8d00       mov dword ptr [esi + 0x14], 0x8d9cf4
+// 00624aa7  c74618ec9c8d00       mov dword ptr [esi + 0x18], 0x8d9cec
+// 00624aae  c74620e49c8d00       mov dword ptr [esi + 0x20], 0x8d9ce4
+// 00624ab5  c7868c000000dc9c8d00 mov dword ptr [esi + 0x8c], 0x8d9cdc
+// 00624abf  89442430             mov dword ptr [esp + 0x30], eax
+// 00624ac3  66898ec0000000       mov word ptr [esi + 0xc0], cx
+// 00624aca  668996c2000000       mov word ptr [esi + 0xc2], dx
+// 00624ad1  c744240802000000     mov dword ptr [esp + 8], 2
+// 00624ad9  8944240c             mov dword ptr [esp + 0xc], eax
+// 00624add  66894c2410           mov word ptr [esp + 0x10], cx
+// 00624ae2  6689542412           mov word ptr [esp + 0x12], dx
+// 00624ae7  89442414             mov dword ptr [esp + 0x14], eax
+// 00624aeb  e8603df5ff           call 0x578850
+// 00624af0  d900                 fld dword ptr [eax]
+// 00624af2  d95c2418             fstp dword ptr [esp + 0x18]
+// 00624af6  8bce                 mov ecx, esi
+// 00624af8  d94004               fld dword ptr [eax + 4]
+// 00624afb  d95c241c             fstp dword ptr [esp + 0x1c]
+// 00624aff  d94008               fld dword ptr [eax + 8]
+// 00624b02  d95c2420             fstp dword ptr [esp + 0x20]
+// 00624b06  d9400c               fld dword ptr [eax + 0xc]
+// 00624b09  8d442408             lea eax, [esp + 8]
+// 00624b0d  50                   push eax
+// 00624b0e  d95c2428             fstp dword ptr [esp + 0x28]
+// 00624b12  e8192bfeff           call 0x607630
+// 00624b17  8b4c2428             mov ecx, dword ptr [esp + 0x28]
+// 00624b1b  8bc6                 mov eax, esi
+// 00624b1d  5e                   pop esi
+// 00624b1e  64890d00000000       mov dword ptr fs:[0], ecx
+// 00624b25  83c430               add esp, 0x30
+// 00624b28  c3                   ret 
+
 // from server: 100% by colin
 // roc 2008-06 005cf770  unit: RBX::P8HopperBin::?$SetImpl  size: 236 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005cf770
@@ -128,71 +178,13 @@ struct Value
     Color color;
 };
 
-struct A0
-{
-    virtual void f0();
-    unsigned long padding[3];
-};
+struct A0 { virtual void f0(); unsigned long padding[4]; };
+struct A1 { virtual void f1(); };
+struct A2 { virtual void f2(); unsigned long padding[1]; };
+struct A3 { virtual void f3(); unsigned long padding[26]; };
+struct A4 { virtual void f4(); unsigned long padding[12]; };
 
-struct A1
-{
-    virtual void f1();
-};
-
-struct A2
-{
-    virtual void f2();
-    unsigned long padding[2];
-};
-
-struct A3
-{
-    virtual void f3();
-};
-
-struct A4
-{
-    virtual void f4();
-    unsigned long padding[7];
-};
-
-struct A5
-{
-    virtual void f5();
-    unsigned long padding[7];
-};
-
-struct A6
-{
-    virtual void f6();
-    unsigned long padding[7];
-};
-
-struct A7
-{
-    virtual void f7();
-    unsigned long padding[7];
-};
-
-struct A8
-{
-    virtual void f8();
-    unsigned long padding[7];
-};
-
-struct A9
-{
-    virtual void f9();
-    unsigned long padding[26];
-};
-
-struct A10
-{
-    virtual void f10();
-    unsigned long padding[12];
-};
-
-struct Base : A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10
+struct Base : A0, A1, A2, A3, A4
 {
     Base();
     ~Base();
@@ -210,12 +202,6 @@ struct S : Base
     virtual void f2();
     virtual void f3();
     virtual void f4();
-    virtual void f5();
-    virtual void f6();
-    virtual void f7();
-    virtual void f8();
-    virtual void f9();
-    virtual void f10();
 
     S();
 };

@@ -1,9 +1,8 @@
-// from server: 74% by EspClaude
-// from server: 100% by coldek
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// roc-lib: openrbx-client-dll roc_claudeB_touchext_682448307d062d42.cpp
+// roc-lib: openrbx-client-dll roc_espclaude_6b372e66ecbfcbdf.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include "v8world/Primitive.h"
@@ -38,6 +37,7 @@ struct ExLevel {
 
 extern int exNumLevels;
 int exToGrid(float, int);
+Extents exFuzzy(const Primitive*);
 void exOnGrid(int, int, G3D::Array<Primitive*>&);
 
 // exe inlines Extents::overlapsOrTouches here
@@ -56,7 +56,7 @@ static inline bool exOverlapsOrTouches(const Extents& self, const Extents& other
 
 class ExSpatialHash {
 public:
-	char pad[0x0c];
+	char pad[0x18];
 	ExLevel levels[4];              // 0x0c
 
 	static void computeMinMax(int level, const Extents& extents, Vector3int32& min, Vector3int32& max);
@@ -85,7 +85,7 @@ void ExSpatialHash::getPrimitivesTouchingExtents(
 	Vector3int32 max;
 	G3D::Array<Primitive*> foundThisGrid;
 
-	for (int level = 0; level < exNumLevels; level++) {
+	for (int level = 0; level < 4; level++) {
 		if (levels[level].nodes.size() != 0) {
 			computeMinMax(level, extents, min, max);
 
@@ -99,7 +99,7 @@ void ExSpatialHash::getPrimitivesTouchingExtents(
 						for (int index = 0; index < foundThisGrid.size(); index++) {
 							Primitive* p = foundThisGrid[index];
 
-							if (p != ignore && !answer.contains(p) && exOverlapsOrTouches(extents, p->getFastFuzzyExtents())) {
+							if (p != ignore && !answer.contains(p) && exOverlapsOrTouches(extents, exFuzzy(p))) {
 								answer.append(p);
 							}
 						}
@@ -111,3 +111,4 @@ void ExSpatialHash::getPrimitivesTouchingExtents(
 }
 
 }
+

@@ -1,5 +1,6 @@
-// from server: 74% by EspClaude
-// from server: 100% by king_originala
+// from server: 100% by EspClaude
+//
+
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
@@ -40,6 +41,7 @@ template<class T>class shared_ptr {T*px;detail::shared_count pn;
 template<class Y>friend class shared_ptr;
 public:shared_ptr():px(0),pn(){}
  template<class Y>shared_ptr(const shared_ptr<Y>&r):px(r.px),pn(r.pn){}
+ shared_ptr(const shared_ptr&r);
  T*get()const{return px;}T&operator*()const{return *px;}T*operator->()const{return px;}
  typedef T*shared_ptr::*unspecified_bool_type;
  operator unspecified_bool_type()const{return px==0?0:&shared_ptr::px;}
@@ -127,7 +129,7 @@ RunService*findAppearanceRunService(const Instance*); //004651c0
 ContentProvider*findAppearanceContentProvider(const Instance*); //00465210
 namespace Network {
 class Player:public Instance {public:
- char observed04[0x10c];std::string nativeName;char observed12c[0x44];boost::shared_ptr<ModelInstance>character;char observed178[0x1c];std::string characterAppearance;
+ char observed04[0x50];std::string nativeName;
  void removeCharacterAppearance(); //0048c3e0
  void loadCharacterAppearance(bool);
  void loadCharacter(bool);void setCharacter(ModelInstance*);const std::string&getName()const{return nativeName;}
@@ -138,30 +140,12 @@ class Players {public:static bool backendProcessing(const Instance*,bool);}; //0
 // Genuine recovered native helper signatures: bind type matches exact PE RTTI935658.
 void setAppearanceParent(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>); //0048a690
 void onAppearanceLoaded(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::RunService>,RBX::ContentProvider::RequestResult,boost::shared_ptr<AppearanceInstances>); //00492360
-void RBX::Network::Player::loadCharacterAppearance(bool blocking){
- if(!Players::backendProcessing(this,true))throw std::runtime_error("LoadCharacterAppearance can only be called by the backend server");
- removeCharacterAppearance();
- if(character&&!characterAppearance.empty()){
-  std::vector<std::string>strings;
-  boost::algorithm::split(strings,characterAppearance,boost::algorithm::is_any_of(";"),boost::algorithm::token_compress_off);
-  if(blocking){
-   std::vector<boost::shared_ptr<RBX::Instance> >instances;
-   {std::vector<std::string>strings;
-    boost::algorithm::split(strings,characterAppearance,boost::algorithm::is_any_of(";"),boost::algorithm::token_compress_off);
-    for(size_t i=0;i<strings.size();++i)findAppearanceContentProvider(this)->load(ContentId(strings[i]),instances);
-   }
-   std::for_each(instances.begin(),instances.end(),boost::bind(setAppearanceParent,character,_1));
-  }else{
-   for(size_t i=0;i<strings.size();++i)findAppearanceContentProvider(this)->load(ContentId(strings[i]),boost::bind(onAppearanceLoaded,character,shared_from(findAppearanceRunService(this)),_1,_2));
-  }
- }
-}
 namespace G3D {class Vector3 {public:float x,y,z;Vector3(float x,float y,float z):x(x),y(y),z(z){}Vector3(const Vector3&v):x(v.x),y(v.y),z(v.z){}};}
 namespace RBX {
-class RootInstance:public ModelInstance {public:void moveToPoint(PVInstance*,G3D::Vector3);};
+class RootInstance:public ModelInstance {public:struct Ext{G3D::Vector3 lo,hi;Ext(const Ext&e):lo(e.lo),hi(e.hi){}};void moveToPoint(PVInstance*,const Ext&);Ext spawnPoint();};
 class Workspace:public RootInstance{};
 class Humanoid:public Instance {public:static Humanoid*modelIsCharacter(const Instance*);void buildJoints();};
-class SpawnerService:public Instance {public:void SpawnPlayer(boost::shared_ptr<ModelInstance>,Network::Player*);};
+class SpawnerService:public Instance {public:bool SpawnPlayer(boost::shared_ptr<ModelInstance>,Network::Player*);};
 Workspace*findCharacterWorkspace(const Instance*); //00491e50
 SpawnerService*findCharacterSpawner(const Instance*); //00491ea0
 namespace Reflection {class DescribedBase;}
@@ -179,6 +163,8 @@ typedef Reflection::TypedPropertyDescriptor<bool>::GetSet NativeArchivableSetter
 extern NativeArchivableSetter*characterArchivableSetter; // static descriptor getset field973e8c
 }
 void addCharacterChild(const boost::shared_ptr<RBX::ModelInstance>&parent,const boost::shared_ptr<RBX::Instance>&child); //0048a670
+template<> std::vector<boost::shared_ptr<RBX::Instance> >::iterator std::vector<boost::shared_ptr<RBX::Instance> >::begin() throw();
+template<> std::vector<boost::shared_ptr<RBX::Instance> >::iterator std::vector<boost::shared_ptr<RBX::Instance> >::end() throw();
 void RBX::Network::Player::loadCharacter(bool flag){
  Workspace*workspace=findCharacterWorkspace(this);
  if(!workspace)throw std::runtime_error("LoadCharacter can only be called when Player is in the world");
@@ -203,28 +189,13 @@ void RBX::Network::Player::loadCharacter(bool flag){
   std::for_each(extra.begin(),extra.end(),boost::bind(addCharacterChild,model,_1));
  }
  model->setName(getName());
- if(flag)humanoid->buildJoints();
- characterArchivableSetter->setValue(model?reinterpret_cast<Reflection::DescribedBase*>(reinterpret_cast<char*>(model.get())+0x14):0,false);
- setCharacter(model.get());model->setParent(workspace);
+ humanoid->buildJoints();
+ characterArchivableSetter->setValue(model?reinterpret_cast<Reflection::DescribedBase*>(reinterpret_cast<char*>(model.get())+0x18):0,false);
+ setCharacter(model.get());
+ RootInstance::Ext pos=workspace->spawnPoint();
+ model->setParent(workspace);
  loadCharacterAppearance(!flag);
+ if(!flag)humanoid->buildJoints();
  SpawnerService*spawner=findCharacterSpawner(this);
- if(spawner)spawner->SpawnPlayer(model,this);else workspace->moveToPoint(model.get(),G3D::Vector3(0.0f,20.0f,25.0f));
+ if(!spawner||!spawner->SpawnPlayer(model,this))workspace->moveToPoint(model.get(),pos);
 }
-
-typedef boost::shared_ptr<RBX::ModelInstance>CharacterModel;
-typedef boost::shared_ptr<RBX::Instance>CharacterInstance;
-typedef std::vector<CharacterInstance>CharacterInstances;
-typedef boost::_bi::bind_t<void,void(*)(const CharacterModel&,const CharacterInstance&),boost::_bi::list2<boost::_bi::value<CharacterModel>,boost::arg<1> > >CharacterBind;
-
-typedef char character_string_size[sizeof(std::string)==28?1:-1];
-typedef char character_model_shared_size[sizeof(CharacterModel)==8?1:-1];
-typedef char character_instance_shared_size[sizeof(CharacterInstance)==8?1:-1];
-typedef char character_vector_size[sizeof(CharacterInstances)==24?1:-1];
-typedef char character_content_size[sizeof(RBX::ContentId)==32?1:-1];
-typedef char character_vector3_size[sizeof(G3D::Vector3)==12?1:-1];
-typedef char character_getset_size[sizeof(RBX::NativeArchivableSetter)==4?1:-1];
-typedef char character_bind_size[sizeof(CharacterBind)==12?1:-1];
-typedef char character_count_size[sizeof(boost::detail::shared_count)==4?1:-1];
-typedef char character_name_offset[offsetof(RBX::Network::Player,nativeName)==0x110?1:-1];
-typedef char character_model_offset[offsetof(RBX::Network::Player,character)==0x170?1:-1];
-typedef char character_url_offset[offsetof(RBX::Network::Player,characterAppearance)==0x194?1:-1];

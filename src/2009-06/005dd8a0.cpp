@@ -1,9 +1,10 @@
+// from server: 100% by EspClaude
 // from server: 73% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client-dll roc_espeon_assetinitial_0fe224b0e0cb5600.cpp
+// roc-lib: openrbx-client-dll roc_espclaude_6d86f883379a502c.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <boost/shared_ptr.hpp>
@@ -52,7 +53,7 @@ struct Exception : std::exception { String text; Exception(const String& s):text
 extern String __cdecl construct();
 extern Shared __cdecl getLogger();
 extern void __cdecl logMessage(void*, int, const char*, ...);
-extern String __cdecl format(const char*, ...);
+extern std::runtime_error __cdecl format(const char*, ...);
 
 void __cdecl setAssetFolder(const char* folder)
 {
@@ -65,11 +66,12 @@ void __cdecl setAssetFolder(const char* folder)
     Path path(folder);
 
     if (pathIsRelative(path.text))
-        throw Exception(format("The path '%s' is a relative path", path.text));
+        throw format("The path '%s' is a relative path", path.text);
 
     if (!pathIsDirectory(path.text))
-        throw Exception(format("The path '%s' does not exist", path.text));
+        throw format("The path '%s' does not exist", path.text);
 
     path.normalize();
     assetFolder = path.text;
 }
+

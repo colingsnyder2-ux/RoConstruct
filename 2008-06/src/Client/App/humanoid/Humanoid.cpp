@@ -313,6 +313,8 @@ namespace RBX
 				PVInstance* parent = static_cast<PVInstance*>(getParent());
 
 				setState(prevState->onStep(event.step, *parent->getTopPVController()));
+				if (currentState.get() && (currentState->getName()=="Freefall" || currentState->getName()=="Landed" || currentState->getName()=="Running" || currentState->getName()=="Climbing"))
+					ApplyRecoveredClimbCollision(this,true,false);
 			}
 
 			if (getTorsoPrimitive())

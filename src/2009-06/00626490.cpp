@@ -1,4 +1,47 @@
+// from server: 100% by EspClaude
 // from server: 72% by EspClaude
+// roc 2009-06 00626490  unit: RBX::LegacyHopperService  size: 94 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 00626490
+//
+// 00626490  57                   push edi
+// 00626491  8bf9                 mov edi, ecx
+// 00626493  8b4c240c             mov ecx, dword ptr [esp + 0xc]
+// 00626497  85c9                 test ecx, ecx
+// 00626499  744f                 je 0x6264ea
+// 0062649b  53                   push ebx
+// 0062649c  e83f6fe9ff           call 0x4bd3e0
+// 006264a1  8bcf                 mov ecx, edi
+// 006264a3  8bd8                 mov ebx, eax
+// 006264a5  e846e9e8ff           call 0x4b4df0
+// 006264aa  85c0                 test eax, eax
+// 006264ac  7632                 jbe 0x6264e0
+// 006264ae  55                   push ebp
+// 006264af  8b2dace98900         mov ebp, dword ptr [0x89e9ac]
+// 006264b5  56                   push esi
+// 006264b6  8b774c               mov esi, dword ptr [edi + 0x4c]
+// 006264b9  8b4610               mov eax, dword ptr [esi + 0x10]
+// 006264bc  2b460c               sub eax, dword ptr [esi + 0xc]
+// 006264bf  c1f803               sar eax, 3
+// 006264c2  85c0                 test eax, eax
+// 006264c4  7702                 ja 0x6264c8
+// 006264c6  ffd5                 call ebp
+// 006264c8  8b4e0c               mov ecx, dword ptr [esi + 0xc]
+// 006264cb  8b09                 mov ecx, dword ptr [ecx]
+// 006264cd  53                   push ebx
+// 006264ce  e87db9faff           call 0x5d1e50
+// 006264d3  8bcf                 mov ecx, edi
+// 006264d5  e816e9e8ff           call 0x4b4df0
+// 006264da  85c0                 test eax, eax
+// 006264dc  77d8                 ja 0x6264b6
+// 006264de  5e                   pop esi
+// 006264df  5d                   pop ebp
+// 006264e0  6a00                 push 0
+// 006264e2  8bcf                 mov ecx, edi
+// 006264e4  e867b9faff           call 0x5d1e50
+// 006264e9  5b                   pop ebx
+// 006264ea  5f                   pop edi
+// 006264eb  c20800               ret 8
+
 // from server: 100% by king_originala
 // roc 2008-06 005d0910  unit: RBX::LegacyHopperService  size: 107 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005d0910
@@ -65,7 +108,7 @@ struct Entries {
 };
 
 struct S {
-    char reserved[0x108];
+    char reserved[0x4c];
     Entries* entries;
 
     unsigned int count();

@@ -1,9 +1,10 @@
+// from server: 100% by EspClaude
 // from server: 73% by EspClaude
 // from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD /fp:fast
-// roc-lib: openrbx-client-dll roc_espclaude_16516c3533c1d74c.cpp
+// roc-lib: openrbx-client-dll roc_espclaude_5a37cf98b2f5ceb6.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <boost/shared_ptr.hpp>
@@ -46,22 +47,22 @@ typedef std::vector<boost::shared_ptr<Instance> > Instances;
 class Instance {
 public:
     virtual ~Instance();
-    char padding[0x104];
+    char padding[0x48];
     boost::shared_ptr<Instances> children;
     size_t numChildren() const { return children ? children->size() : 0; }
     Instance* getChild(size_t i) const { return (*children)[i].get(); }
 };
-class ILocation {
+class IHasLocation {
 public:
     virtual const CoordinateFrame getLocation() const = 0;
 };
-class ISelectable3d {
+class ISelectable3D {
 public:
     virtual void s0();
 };
 class RenderDevice {
 public:
-    char padding[0x130];
+    char padding[0x98];
     GCamera camera;
 };
 class IRenderableProvider {
@@ -71,7 +72,7 @@ public:
 };
 class Workspace : public Instance {
 public:
-    char more[0x288 - 0x110];
+    char more[0x118 - 0x54];
     IRenderableProvider provider;
 };
 struct Vector2int16 { short x, y; };
@@ -88,9 +89,8 @@ void BoxSelectCommand::select(std::set<Instance*>& result, const UIEvent& event,
     RenderDevice* device = workspace->provider.getRenderDevice();
     Rect2D viewport = Rect2D::xywh(0, 0, event.mousePosition.x, event.mousePosition.y);
     for (size_t i = 0; i < workspace->numChildren(); ++i) {
-        ILocation* location = dynamic_cast<ILocation*>(workspace->getChild(i));
-        ISelectable3d* selectable = dynamic_cast<ISelectable3d*>(workspace->getChild(i));
-        if (location && selectable) {
+        IHasLocation* location = dynamic_cast<IHasLocation*>(workspace->getChild(i));
+        if (location && dynamic_cast<ISelectable3D*>(workspace->getChild(i))) {
             Instance* child = workspace->getChild(i);
             if (!isLocked(child)) {
                 Vector3 pos = location->getLocation().translation;
@@ -102,3 +102,4 @@ void BoxSelectCommand::select(std::set<Instance*>& result, const UIEvent& event,
     }
 }
 }
+

@@ -1,4 +1,31 @@
+// from server: 100% by EspClaude
 // from server: 72% by EspClaude
+// roc 2009-06 00466290  unit: RBX::VInstance::$$A6AXV?$shared_ptr::?$signal::slot  size: 66 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 00466290
+//
+// 00466290  56                   push esi
+// 00466291  8bf1                 mov esi, ecx
+// 00466293  e88e2a2b00           call 0x718d26
+// 00466298  85c0                 test eax, eax
+// 0046629a  7429                 je 0x4662c5
+// 0046629c  8b86f0000000         mov eax, dword ptr [esi + 0xf0]
+// 004662a2  85c0                 test eax, eax
+// 004662a4  7507                 jne 0x4662ad
+// 004662a6  6816d28a00           push 0x8ad216
+// 004662ab  eb0a                 jmp 0x4662b7
+// 004662ad  8d4854               lea ecx, [eax + 0x54]
+// 004662b0  ff15bce48900         call dword ptr [0x89e4bc]
+// 004662b6  50                   push eax
+// 004662b7  8bce                 mov ecx, esi
+// 004662b9  e8682a2b00           call 0x718d26
+// 004662be  8bc8                 mov ecx, eax
+// 004662c0  e8272b2b00           call 0x718dec
+// 004662c5  8bce                 mov ecx, esi
+// 004662c7  e8d4fcffff           call 0x465fa0
+// 004662cc  33c0                 xor eax, eax
+// 004662ce  5e                   pop esi
+// 004662cf  c20800               ret 8
+
 // from server: 100% by king_originala
 // roc 2008-06 004659a0  unit: CScriptEditor  size: 69 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 004659a0
@@ -36,13 +63,13 @@ struct TextTarget
 
 struct Document
 {
-    char padding[0x110];
+    char padding[0x54];
     char text[1];
 };
 
 struct CScriptEditor
 {
-    char padding[0x144];
+    char padding[0xf0];
     Document* document;
 
     TextTarget* getTextTarget();

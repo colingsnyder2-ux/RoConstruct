@@ -1,5 +1,5 @@
 #include "humanoid/Freefall.h"
-namespace RBX { bool DetectClimb(Humanoid*); Humanoid::State* CreateRecoveredClimbing(Humanoid*); }
+namespace RBX { bool DetectClimb(Humanoid*); Humanoid::State* CreateRecoveredClimbing(Humanoid*); Humanoid::State* CreateRecoveredLanded(Humanoid*); }
 
 #include "humanoid/Running.h"
 #include "v8datamodel/PartInstance.h"
@@ -29,7 +29,7 @@ namespace RBX
 		{
 			if (DetectClimb(humanoid)) return CreateRecoveredClimbing(humanoid);
 			if (floorPart)
-				return new Running(humanoid);
+				return CreateRecoveredLanded(humanoid);
 			else
 				return this;
 		}

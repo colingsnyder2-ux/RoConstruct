@@ -1,6 +1,14 @@
 {
   "name": "P2RecoveredPlayer",
   "description": "Isolated recovered block producer player; preserves local player diagnostics",
+  "refresh_dependencies": [
+    "rbxgs-app",
+    "p2-image-core",
+    "p2-texture-interop",
+    "p4-sound-asset",
+    "p2-native-material",
+    "p2-lighting"
+  ],
   "depends": [
     "p4-sound-asset",
     "p2-native-material",

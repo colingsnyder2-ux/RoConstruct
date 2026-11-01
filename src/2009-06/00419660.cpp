@@ -1,17 +1,10 @@
-// from server: 74% by EspClaude
-// from server: 100% by Espeon
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-dll roc_espeon_insertobjectfirstthrowdfdd4ad660b8bbf6.cpp
+// roc-lib: rbxgs-dll roc_espclaude_472242d75ea1ab08.cpp
 
 // Candidate translation unit (score above; library headers required).
-#pragma include_alias(<v8tree/Verb.h>, <roc_espeon_insertnativeheader1a746c4cc8c6ae06.cpp>)
-#pragma include_alias("v8tree/Verb.h", "roc_espeon_insertnativeheader1a746c4cc8c6ae06.cpp")
-#pragma include_alias(<util/Name.h>, <roc_espeon_insertnativeheader115b7bccd0a9061e.cpp>)
-#pragma include_alias("util/Name.h", "roc_espeon_insertnativeheader115b7bccd0a9061e.cpp")
-#pragma include_alias(<util/Debug.h>, <roc_espeon_insertnativeheader5fe96130a83d2e88.cpp>)
-#pragma include_alias("util/Debug.h", "roc_espeon_insertnativeheader5fe96130a83d2e88.cpp")
 #pragma include_alias(<afxwin.h>, <roc_espeon_mfcnativeheader280d8d01456bb571.cpp>)
 #pragma include_alias("afxwin.h", "roc_espeon_mfcnativeheader280d8d01456bb571.cpp")
 #pragma include_alias(<afx.h>, <roc_espeon_mfcnativeheaderf430fdc1f4655d18.cpp>)
@@ -101,7 +94,6 @@
 #define _AFXDLL
 #pragma include_alias(<atlsimpstr.h>, <roc_espeon_editorcstringheaderfb14fe2507201232.cpp>)
 #pragma include_alias(<xstring>, <roc_dom_native_stdstring_cstr_boundary_header3da8e64d105bf835.cpp>)
-#pragma include_alias("v8tree/Instance.h", "roc_espeon_nativeinstanceguidportablea1682bda32c99cd2.cpp")
 #include <afxwin.h>
 #include <afxdlgs.h>
 
@@ -110,7 +102,6 @@
 #include <stdexcept>
 namespace RBX {
 class Instance;
-class IDataState;
 typedef boost::shared_ptr<Instance> Shared;
 class CInsertObjectDialog : public CDialog {
 public:
@@ -118,32 +109,45 @@ public:
  std::vector<Shared> objects;
  CString title;
  Shared result;
- // External ctor/dtor manage unknown tail; stack object spans 0xfc bytes.
  unsigned char tail[0x5c];
  CInsertObjectDialog(Shared,CWnd*);
  virtual ~CInsertObjectDialog();
 };
 typedef char verifyDialogSize[sizeof(CInsertObjectDialog)==0xfc?1:-1];
-}
 
-#include "v8tree/Verb.h"
-#include "v8tree/Instance.h"
-#include "v8datamodel/Selection.h"
-namespace RBX {
+class Instance {
+public:
+ char ipad[0x50];
+ std::string name;
+ const std::string& getName() const { return name; }
+ bool canAccept(Instance* child);
+ std::string className();
+ void setParent(Instance* parent);
+ virtual ~Instance();
+};
+class PartInstance : public Instance { public: virtual ~PartInstance(); };
+class Workspace : public Instance { public: void insertInstances(const std::vector<Shared>& items, Instance* parent, bool a, bool b); };
+class Selection { public: void setSelection(Instance* i); };
+class DataModel {
+public:
+ char dpad[0x20c];
+ Workspace* workspace;
+ Workspace* getWorkspace() { return workspace; }
+ Selection* selection();
+ struct Lock { void* p; Lock(DataModel* dm, bool write); ~Lock(); };
+};
+class ChangeHistoryService { public: static void requestWaypoint(const char* name, DataModel* dm); };
 Shared parentShared(Instance*);
 std::string format(const char*,...);
-class InsertParentView {public:bool canAccept(Instance*);};
-class InsertChildView {public:std::string className();};
-class InsertDataModelView {public:Selection* selection();};
-void markInsertAction(const char*,InsertDataModelView*);
-class InsertObjectRecovery : public Verb {
+std::runtime_error runtime_error(const char*,...);
+class InsertObjectRecovery {
 public:
- template<class T>T& field(unsigned offset){return *reinterpret_cast<T*>(reinterpret_cast<char*>(this)+offset);}
- virtual bool isEnabled()const;
- virtual void doIt(IDataState*);
+ void* vptr;
+ DataModel* dataModel;
  Instance* target();
+ void doIt();
 };
-void InsertObjectRecovery::doIt(IDataState*) {
+void InsertObjectRecovery::doIt() {
  if(!target()) {
   throw std::runtime_error("InsertObject: Target Instance is NULL");
  }
@@ -158,11 +162,21 @@ void InsertObjectRecovery::doIt(IDataState*) {
    std::string message(error);
    throw std::runtime_error(message);
   }
-  if(parent && !reinterpret_cast<InsertParentView*>(parent.get())->canAccept(instance.get()))
-   throw std::runtime_error(format("%s cannot be a child of %s",reinterpret_cast<InsertChildView*>(instance.get())->className().c_str(),parent->getName().c_str()));
-  instance->setParent(parent.get());
-  (field<InsertDataModelView*>(0xc)?field<InsertDataModelView*>(0xc)->selection():0)->setSelection(instance.get());
-  markInsertAction(getName().c_str(),field<InsertDataModelView*>(0xc));
+  {
+  DataModel::Lock lock(dataModel,true);
+  if(parent && !parent->canAccept(instance.get()))
+   throw RBX::runtime_error("%s cannot be a child of %s",instance->className().c_str(),parent->getName().c_str());
+  if(dataModel->getWorkspace()==parent.get() && dynamic_cast<PartInstance*>(instance.get())) {
+   std::vector<Shared> items;
+   items.push_back(instance);
+   dataModel->getWorkspace()->insertInstances(items,parent.get(),true,true);
+  }
+  else
+   instance->setParent(parent.get());
+  (dataModel?dataModel->selection():0)->setSelection(instance.get());
+  std::string waypoint=format("Insert %s",instance->getName().c_str());
+  ChangeHistoryService::requestWaypoint(waypoint.c_str(),dataModel);
+  }
  }
 }
 }

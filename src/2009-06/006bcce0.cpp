@@ -1,9 +1,10 @@
+// from server: 100% by EspClaude
 // from server: 73% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: rbxgs-dll roc_espeon_luacallguard9bb4950e0e8f22c0.cpp
+// roc-lib: rbxgs-dll roc_espclaude_1792b807b844a5c3.cpp
 
 // Candidate translation unit (score above; library headers required).
 namespace RBX {
@@ -50,7 +51,6 @@ inline const char* String::c_str() const
 
 struct Name
 {
-    unsigned int unused;
     String text;
 };
 
@@ -71,7 +71,7 @@ struct Descriptor
 
 struct Instance
 {
-    unsigned int unused[2];
+    unsigned int unused[1];
     Descriptor* descriptor;
 };
 
@@ -144,7 +144,7 @@ extern Notification* __stdcall notify(void*, const char*);
 extern bool __cdecl getObject(void*, int, Shared*);
 extern void* __cdecl dynamicCastObject(void*, int, const void*, const void*, int);
 extern void __cdecl prepare();
-extern String __cdecl format(const char*, ...);
+extern Error __cdecl format(const char*, ...);
 extern int __cdecl pushValues(Pair*, void*);
 
 extern char describedType;
@@ -158,7 +158,7 @@ int __cdecl f(void* state)
 
     Shared object = { 0, 0 };
     if (!getObject(state, 1, &object) || !object.object)
-    throw Error(format(
+    throw (format(
         "Did you forget a semicolon?  The first argument of member function %s must be an Object",
         descriptor->name->text.c_str()));
 
@@ -170,7 +170,7 @@ int __cdecl f(void* state)
         if (!descriptor->accepts(instance))
         {
             Descriptor* type = instance->descriptor;
-            throw Error(format(
+            throw (format(
                 "The function %s is not a member of \"%s\"",
                 descriptor->name->text.c_str(),
                 type->name->text.c_str()));
@@ -181,3 +181,4 @@ int __cdecl f(void* state)
         return pushValues(&arguments.values, arguments.state);
     
 }
+

@@ -1,9 +1,8 @@
-// from server: 74% by EspClaude
-// from server: 100% by king_originala
+// from server: 89% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs-dll roc_unit_1d8338cf2f16d51c.cpp
+// roc-lib: rbxgs-dll roc_espclaude_c66cc41f429e916b.cpp
 
 // Candidate translation unit (score above; library headers required).
 #pragma include_alias(<vector>, <roc_native_vector_cleanup_81d2f7b5fd70c773.cpp>)
@@ -163,7 +162,7 @@ public:
         This is not called from the destructor because it needs to be invoked
         before the subclass destructor.
       */
-    __forceinline void ReferenceCountedObject_zeroWeakPointers() {
+    __declspec(noinline) void ReferenceCountedObject_zeroWeakPointers() {
         // Tell all of my weak pointers that I'm gone.
         
         _WeakPtrLinkedList* node = ReferenceCountedObject_weakPointer;
@@ -268,7 +267,7 @@ private:
         called in contexts like the copy constructor or initial
         constructor where it is known that the reference count will
         not hit zero on some other thread. */
-    __forceinline void setPointer(T* x) {
+    __declspec(noinline) void setPointer(T* x) {
         if (x != m_pointer) {
             zeroPointer();
 
@@ -621,6 +620,7 @@ protected:
 #include "G3D/GImage.h"
 #include "GLG3D/Sky.h"
 
+template<> void std::vector<std::string>::_Tidy();
 typedef char proven_content_id_size[sizeof(RBX::ContentId)==32?1:-1];
 typedef char proven_image_error_size[sizeof(G3D::GImage::Error)==96?1:-1];
 
@@ -644,6 +644,7 @@ namespace RBX {
 class Sky { public: static G3D::SkyRef getG3DSky(Sky* sky); };
 ContentProvider* skyContentProvider(Sky* sky); // 00465210, cdecl receiver pointer
 std::string skyAssetFolder(); // 0055c4c0, cdecl string return
+struct StandardOutExt { void print(MessageType type, const std::string& message); };
 
 G3D::SkyRef Sky::getG3DSky(Sky* sky)
 {
@@ -653,22 +654,22 @@ G3D::SkyRef Sky::getG3DSky(Sky* sky)
             std::string* filenames = &storage[0];
             {
                 // Each offset is an observed 32-byte ContentId copy in 005ebbb0.
-                filenames[0] = skyContentProvider(sky)->getFile(*reinterpret_cast<const ContentId*>(reinterpret_cast<const char*>(sky)+0x1b0));
+                filenames[0] = skyContentProvider(sky)->getFile(*reinterpret_cast<const ContentId*>(reinterpret_cast<const char*>(sky)+0x10c));
                 G3D::GImage image;
                 image.load(filenames[0]);
-                filenames[1] = testImage(skyContentProvider(sky)->getFile(*reinterpret_cast<const ContentId*>(reinterpret_cast<const char*>(sky)+0x190)), image);
-                filenames[2] = testImage(skyContentProvider(sky)->getFile(*reinterpret_cast<const ContentId*>(reinterpret_cast<const char*>(sky)+0x130)), image);
-                filenames[3] = testImage(skyContentProvider(sky)->getFile(*reinterpret_cast<const ContentId*>(reinterpret_cast<const char*>(sky)+0x1d0)), image);
-                filenames[4] = testImage(skyContentProvider(sky)->getFile(*reinterpret_cast<const ContentId*>(reinterpret_cast<const char*>(sky)+0x170)), image);
-                filenames[5] = testImage(skyContentProvider(sky)->getFile(*reinterpret_cast<const ContentId*>(reinterpret_cast<const char*>(sky)+0x150)), image);
+                filenames[1] = testImage(skyContentProvider(sky)->getFile(*reinterpret_cast<const ContentId*>(reinterpret_cast<const char*>(sky)+0xec)), image);
+                filenames[2] = testImage(skyContentProvider(sky)->getFile(*reinterpret_cast<const ContentId*>(reinterpret_cast<const char*>(sky)+0x8c)), image);
+                filenames[3] = testImage(skyContentProvider(sky)->getFile(*reinterpret_cast<const ContentId*>(reinterpret_cast<const char*>(sky)+0x12c)), image);
+                filenames[4] = testImage(skyContentProvider(sky)->getFile(*reinterpret_cast<const ContentId*>(reinterpret_cast<const char*>(sky)+0xcc)), image);
+                filenames[5] = testImage(skyContentProvider(sky)->getFile(*reinterpret_cast<const ContentId*>(reinterpret_cast<const char*>(sky)+0xac)), image);
             }
             std::string directory = skyAssetFolder() + "Sky\\";
-            G3D::SkyRef result = G3D::Sky::fromFile(NULL, directory, filenames, *reinterpret_cast<const bool*>(reinterpret_cast<const char*>(sky)+0x1f0), 1.0);
+            G3D::SkyRef result = G3D::Sky::fromFile(NULL, directory, filenames, *reinterpret_cast<const bool*>(reinterpret_cast<const char*>(sky)+0x14c), 1.0);
             if (result.notNull())
-                result->setNumStars(*reinterpret_cast<const int*>(reinterpret_cast<const char*>(sky)+0x1f4));
+                result->setNumStars(*reinterpret_cast<const int*>(reinterpret_cast<const char*>(sky)+0x150));
             return result;
         } catch (G3D::GImage::Error& e) {
-            StandardOut::singleton()->print(MESSAGE_WARNING, e.reason.c_str());
+            reinterpret_cast<StandardOutExt*>(StandardOut::singleton().get())->print(MESSAGE_WARNING, e.reason);
         } catch (std::exception& e) {
             StandardOut::singleton()->print(MESSAGE_WARNING, e);
         }
@@ -676,4 +677,5 @@ G3D::SkyRef Sky::getG3DSky(Sky* sky)
     return G3D::Sky::fromFile(NULL, skyAssetFolder()+"Sky\\", "null_plainsky512_*.jpg");
 }
 }
+
 

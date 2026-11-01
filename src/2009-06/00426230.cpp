@@ -1,4 +1,32 @@
+// from server: 100% by EspClaude
 // from server: 72% by EspClaude
+// roc 2009-06 00426230  unit: boost::any::H::?$holder  size: 65 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 00426230
+//
+// 00426230  ff05a8a5a400         inc dword ptr [0xa4a5a8]
+// 00426236  56                   push esi
+// 00426237  8bf1                 mov esi, ecx
+// 00426239  e872f91b00           call 0x5e5bb0
+// 0042623e  6a08                 push 8
+// 00426240  8906                 mov dword ptr [esi], eax
+// 00426242  e8f1272f00           call 0x718a38
+// 00426247  83c404               add esp, 4
+// 0042624a  85c0                 test eax, eax
+// 0042624c  7418                 je 0x426266
+// 0042624e  8b4c2408             mov ecx, dword ptr [esp + 8]
+// 00426252  c700900c8b00         mov dword ptr [eax], 0x8b0c90
+// 00426258  d901                 fld dword ptr [ecx]
+// 0042625a  d95804               fstp dword ptr [eax + 4]
+// 0042625d  894604               mov dword ptr [esi + 4], eax
+// 00426260  8bc6                 mov eax, esi
+// 00426262  5e                   pop esi
+// 00426263  c20400               ret 4
+// 00426266  33c0                 xor eax, eax
+// 00426268  894604               mov dword ptr [esi + 4], eax
+// 0042626b  8bc6                 mov eax, esi
+// 0042626d  5e                   pop esi
+// 0042626e  c20400               ret 4
+
 // from server: 100% by king_originala
 // roc 2008-06 0042d200  unit: boost::any::H::?$holder  size: 59 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0042d200
@@ -48,8 +76,10 @@ struct S {
     S(const float& value);
 };
 
+extern int exeCounter;
 S::S(const float& value)
 {
+    ++exeCounter;
     type = get_type();
     holder = new Holder(value);
 }

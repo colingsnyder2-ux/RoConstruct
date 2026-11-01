@@ -20,7 +20,8 @@ namespace RBX
 
 	Humanoid::State* Jumping::onStep(const float stepDt, Controller& controller)
 	{
-		if (done)
+		timeout -= stepDt;
+		if (done || timeout <= 0.0f)
 		{
 			return new Freefall(humanoid);
 		}

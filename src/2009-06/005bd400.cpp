@@ -1,8 +1,8 @@
-// from server: 74% by EspClaude
-// from server: 100% by colin
+// from server: 100% by EspClaude
+// roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /Od /Ob0 /GS /EHsc /MD
-// roc-lib: rbxgs-render roc_manual_aggregate_6f70ce73a8fc22b3.cpp
+// roc-flags: /Od /Ob0 /GS- /EHsc /MD
+// roc-lib: rbxgs-render roc_espclaude_e9b9195743750fa9.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include "RenderLib/TextureProxy.h"
@@ -29,7 +29,7 @@ public:
 Material* createMaterial();
 
 class __declspec(novtable) Chunk : public G3D::ReferenceCountedObject {
-    char oldBaseMembers[12];
+    char oldBaseMembers[4];
 public:
     const float polygonOffset;
     float radius;
@@ -85,3 +85,4 @@ AggregateChunk::AggregateChunk(const G3D::ReferenceCountedPointer<Chunk>& firstC
     }
 }
 } }
+

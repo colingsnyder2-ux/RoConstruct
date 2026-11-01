@@ -1,10 +1,8 @@
-// from server: 74% by EspClaude
-// from server: 100% by colin
-// from server: 0% by Espeon
+// from server: 92% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: atl-9.0-dll-rtm roc_espeon_contentdistinctstringtemps61ed3b750b05af46.cpp
+// roc-lib: atl-9.0-dll-rtm roc_espclaude_7187d71750636bea.cpp
 
 // Candidate translation unit (score above; library headers required).
 #ifndef _CPPUNWIND
@@ -78,7 +76,7 @@ public:
     ~UrlContent();
     void load(std::iostream& stream, bool binary, std::string& error);
 private:
-    char data[0x38];
+    char data[0x54];
 };
 
 HRESULT STDMETHODCALLTYPE CContent::Load(BSTR url)
@@ -101,3 +99,4 @@ HRESULT STDMETHODCALLTYPE CContent::Load(BSTR url)
     }
     return S_OK;
 }
+

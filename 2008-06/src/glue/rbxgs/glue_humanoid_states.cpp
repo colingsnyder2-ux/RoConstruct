@@ -24,6 +24,30 @@ namespace RBX
 {
 	bool DetectClimb(Humanoid*);
 	Humanoid::State* CreateRecoveredClimbing(Humanoid*);
+	// Original state 5: Landed waits 0.45 seconds before entering Running.
+	class RecoveredLanded : public Running
+	{
+		float remaining;
+		virtual Humanoid::State* onStep(float dt, Controller& controller)
+		{
+			Humanoid::State* next = Balancing::onStep(dt, controller);
+			if (next != this) return next;
+			if (DetectClimb(humanoid)) return CreateRecoveredClimbing(humanoid);
+			if (!floorPart) return new Freefall(humanoid);
+			remaining -= dt;
+			if (remaining <= 0.0f) {
+				Running* running = new Running(humanoid);
+				running->resumeFromLanding(*this, controller);
+				return running;
+			}
+			updateGoals(controller);
+			return this;
+		}
+	public:
+		RecoveredLanded(Humanoid* humanoid) : Running(humanoid), remaining(0.45f) {}
+		virtual const Name& getName() const { return Name::declare("Landed", -1); }
+	};
+	Humanoid::State* CreateRecoveredLanded(Humanoid* humanoid) { return new RecoveredLanded(humanoid); }
 	HitTestFilter::Result Balancing::filterResult(const Primitive* testMe) const
 	{
 		Primitive* torsoPrimitive = humanoid->getTorsoPrimitive();
@@ -110,15 +134,22 @@ namespace RBX
 		body->accumulateTorque(G3D::Vector3(0, desiredTorqueY, 0));
 	}
 
-	// a jump is a flight whose first step pushes the body up
+	// Adapted from 00667a40: drive torso velocity toward 50 and react on floor.
 	void Jumping::onComputeForce(const float dt)
 	{
 		Flying::onComputeForce(dt);
-		if (!done)
-		{
-			if (Body* body = humanoid->getRootBody())
-				body->accumulateForceAtBranchCofm(G3D::Vector3(0, body->getBranchMass() * 50.0f / dt, 0));
-			done = true;
+		if (done) return;
+		Body* torso = humanoid->getTorsoBody();
+		if (!torso) { done = true; return; }
+		float acceleration = (50.0f - torso->getVelocity().linear.y) * 5000.0f;
+		if (acceleration <= 0.0f) { done = true; return; }
+		if (!floorPart) return;
+		Body* floor = floorPart->getPrimitive()->getBody();
+		Body* root = humanoid->getRootBody();
+		float force = std::min(torso->getBranchMass(), floor->getBranchMass()) * acceleration - torso->getBranchForce().y;
+		if (force > 0.0f) {
+			root->accumulateForceAtBranchCofm(G3D::Vector3(0, force, 0));
+			floor->accumulateForce(G3D::Vector3(0, -force, 0), floorTouchInWorld);
 		}
 	}
 
