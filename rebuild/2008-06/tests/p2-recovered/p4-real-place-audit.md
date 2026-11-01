@@ -71,3 +71,15 @@ comparisons and resource lifecycle checks. Do not claim the map fully rendered.
 Normal P4 asset, reflection and Humanoid tests, mixed P3 lifetime/selftest/cache
 regressions and eight rebuild-tool tests pass. P4 native SoundService playback,
 remaining geometry, camera, full real-place fidelity and P5-P10 remain open.
+
+## Large-block integration in progress
+
+The 004f4cb0 surface branch now uses the recovered 004f1eb0 builder, six
+004f3650..004f44b0 face builders and their 004f2110..004f35cf emitters.
+The 004f2030 random normal perturbation reads amplitude 0.05 at 00826e3c;
+the position inset at 00826e38 is zero in the original image. Face wrappers
+pass a 1-by-1 grid, while the constructor's strips remain genuine stored
+members. The 004edb20 factory retains up to four random variations per key.
+The scene dispatch selects this path for non-mega blocks and uses the ordinary
+surface material. The shadow branch and original-client image comparison
+remain open; do not treat this as full P4 fidelity.

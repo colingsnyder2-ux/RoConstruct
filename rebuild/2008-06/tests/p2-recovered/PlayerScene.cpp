@@ -41,6 +41,7 @@
 
 #include <vector>
 #include <algorithm>
+#include <cmath>
 #include <cstdio>
 #include <cstdlib>
 
@@ -91,7 +92,6 @@ public:
     {
         models->push_back(chunk);
     }
-
     // Called from signal handlers, possibly while the renderer is walking the
     // model list, so the chunk is only unlinked here and deleted at the next
     // SceneBeginFrame().
@@ -235,21 +235,23 @@ void PartChunk::updateMesh()
     }
     // 004e5f80 -> 004e58b0 -> 004e53c0 -> 004e2c80 ordinary small block path.
     // Ball shape0:004f00a4 ->004eea30 ->004fcfb0.
+    bool megaBlock=!specialShape && partInstance->getPartType()==RBX::Part::BLOCK_PART &&
+        std::max(std::fabs(meshData.size.x),std::max(std::fabs(meshData.size.y),std::fabs(meshData.size.z)))<30.0f;
     meshData.geometry=PlayerBlockMesh::MeshRef();
     if(specialShape){
         if(specialShape->getMeshType()==RBX::SpecialShape::FILE_MESH){
             meshData.geometry=PlayerBlockMesh::FileMesh::create(&RBX::ContentProvider::singleton(),specialShape->getScale(),specialShape->getMeshId());
             if(meshData.geometry.isNull())std::printf("file mesh unavailable: %s\n",specialShape->getMeshId().c_str());
         }
-    }else if(partInstance->getPartType()==RBX::Part::BLOCK_PART &&
-       std::max(meshData.size.x,std::max(meshData.size.y,meshData.size.z))<30.0f)
+    }else if(megaBlock)
         meshData.geometry=PlayerBlockMesh::BlockMesh::create(meshData.size,surfaces,partInstance->getColor());
+    else if(partInstance->getPartType()==RBX::Part::BLOCK_PART)
+        meshData.geometry=PlayerBlockMesh::PBBMesh::create(meshData.size,surfaces);
     else if(partInstance->getPartType()==RBX::Part::BALL_PART)
         meshData.geometry=PlayerBlockMesh::SphereMesh::create(meshData.size,surfaces);
     // 004eb190 ordinary mega-material branch; native cache owns only weak refs.
     PlayerNativeMaterial::Attributes attributes={partInstance->getColor(),partInstance->alpha(),partInstance->getReflectance()};
-    meshData.material=(specialShape || partInstance->getPartType()==RBX::Part::BALL_PART) ?
-        view->materialFactory.getMaterial(attributes) : view->materialFactory.getMegaMaterial(attributes);
+    meshData.material=megaBlock ? view->materialFactory.getMegaMaterial(attributes) : view->materialFactory.getMaterial(attributes);
     // 004eba71..004ebb10: file texture, VertexColor, specular0/shiny.1,
     // reflectance0 and actual parent alpha. Missing texture uses standard material.
     if(specialShape && specialShape->getMeshType()==RBX::SpecialShape::FILE_MESH){

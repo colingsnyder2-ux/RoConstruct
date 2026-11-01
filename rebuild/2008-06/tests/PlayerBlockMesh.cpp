@@ -13,6 +13,7 @@
 #include <boost/thread/once.hpp>
 #include <G3D/Table.h>
 #include <G3D/Vector2int16.h>
+#include <G3D/Vector3int16.h>
 #include <exception>
 #include "util/MeshId.h"
 
@@ -103,8 +104,8 @@ public:
     virtual void buildBack(Purpose)=0;
 
     typedef void (*Function)(Vector3&,Vector3&,Vector2&,const Vector3&,const Vector2int16&);
-    template<RBX::NormalId id>
-    void emit(Function function,Vector2 minimum,Vector2 maximum,float depth,
+    template<RBX::NormalId id,class Deformation>
+    void emit(Deformation function,Vector2 minimum,Vector2 maximum,float depth,
         Vector2 origin,Vector2 extent,int axis,Vector2int16 divisions){
         Vector3 mapped=RBX::uvwToObject<id>(halfSize);
         Vector3 radius(fabs(mapped.x),fabs(mapped.y),fabs(mapped.z));
@@ -135,8 +136,8 @@ public:
         for(unsigned i=0;i<count;++i)release(vertices[i]);
         delete[] vertices;
     }
-    template<RBX::NormalId id>
-    void buildFace(Function function,Vector2int16 grid,Purpose purpose){
+    template<RBX::NormalId id,class Deformation>
+    void buildFace(Deformation function,Vector2int16 grid,Purpose purpose){
         unsigned surface=(surfaceTypes.data>>(3*id))&7;
         Vector3 mapped=RBX::uvwToObject<id>(halfSize);
         Vector3 size(fabs(mapped.x),fabs(mapped.y),fabs(mapped.z));
@@ -182,6 +183,37 @@ public:
     void buildFront(Purpose p){buildFace<RBX::NORM_Z_NEG>(sphereTransform,Vector2int16(elements,elements),p);}
     void buildBack(Purpose p){buildFace<RBX::NORM_Z>(sphereTransform,Vector2int16(elements,elements),p);}
 };
+// 004f2030 and 004f2110..004f35cf: per-face normal perturbation.
+struct PBBFace {
+    Vector2 perturbation;
+    bool bulge[2];
+    PBBFace(){
+        perturbation.x=-.05f+.1f*rand()*(1.0f/32767.0f);
+        perturbation.y=-.05f+.1f*rand()*(1.0f/32767.0f);
+        bulge[0]=rand()*(1.0f/32767.0f)>.5f;
+        bulge[1]=rand()*(1.0f/32767.0f)>.5f;
+    }
+    void operator()(Vector3& vertex,Vector3& normal,Vector2&,const Vector3& size,const Vector2int16&) const {
+        for(int k=0;k<2;++k)normal[k]=bulge[k]?vertex[k]/size[k]*perturbation[k]:perturbation[k];
+    }
+};
+// The face and side inset global at 00826e38 is zero in the original image.
+class PBBBuilder : public SphereLevelBuilder {
+public:
+    Vector3int16 strips;
+    PBBBuilder(LevelRef& level,Vector3 size,RenderSurfaceTypes surfaces):SphereLevelBuilder(level,size,surfaces){
+        strips.x=std::max<int>(1,static_cast<int>(size.x/6.0f));
+        strips.y=std::max<int>(1,static_cast<int>(size.y/6.0f));
+        strips.z=std::max<int>(1,static_cast<int>(size.z/6.0f));
+        strips.x=std::min<int>(4,strips.x);strips.y=std::min<int>(4,strips.y);strips.z=std::min<int>(4,strips.z);
+    }
+    void buildTop(Purpose p){buildFace<RBX::NORM_Y>(PBBFace(),Vector2int16(1,1),p);}
+    void buildBottom(Purpose p){buildFace<RBX::NORM_Y_NEG>(PBBFace(),Vector2int16(1,1),p);}
+    void buildLeft(Purpose p){buildFace<RBX::NORM_X_NEG>(PBBFace(),Vector2int16(1,1),p);}
+    void buildRight(Purpose p){buildFace<RBX::NORM_X>(PBBFace(),Vector2int16(1,1),p);}
+    void buildFront(Purpose p){buildFace<RBX::NORM_Z_NEG>(PBBFace(),Vector2int16(1,1),p);}
+    void buildBack(Purpose p){buildFace<RBX::NORM_Z>(PBBFace(),Vector2int16(1,1),p);}
+};
 typedef char NativeBuilderSize[sizeof(SphereLevelBuilder)==0x20?1:-1];
 typedef char NativeBuilderHalf[offsetof(SphereLevelBuilder,halfSize)==4?1:-1];
 typedef char NativeBuilderSurfaces[offsetof(SphereLevelBuilder,surfaceTypes)==0x10?1:-1];
@@ -189,6 +221,9 @@ typedef char NativeBuilderLevel[offsetof(SphereLevelBuilder,level)==0x14?1:-1];
 typedef char NativeBuilderTexture[offsetof(SphereLevelBuilder,textureScale)==0x18?1:-1];
 typedef char NativeSphereBuilder[sizeof(SphereBuilder)==0x24?1:-1];
 typedef char NativeSphereElements[offsetof(SphereBuilder,elements)==0x20?1:-1];
+typedef char NativePBBFace[sizeof(PBBFace)==12?1:-1];
+typedef char NativePBBBuilder[sizeof(PBBBuilder)==0x28?1:-1];
+typedef char NativePBBStrips[offsetof(PBBBuilder,strips)==0x20?1:-1];
 
 struct SphereVariations { MeshRef meshes[1]; };
 // Genuine unused decal/texture key members from MeshFactory.h. These paths are
@@ -213,11 +248,65 @@ typedef char NativeSphereCounter[offsetof(SphereCache,count)==0x5c?1:-1];
 SphereCache* sphereCache;
 boost::once_flag sphereOnce=BOOST_ONCE_INIT;
 void initializeSphereCache(){sphereCache=new SphereCache;} // 004d97b0; persistent singleton.
+struct PBBVariations { MeshRef meshes[4]; };
+typedef G3D::Table<Vector3,PBBVariations> PBBSizes;
+typedef G3D::Table<unsigned,PBBSizes> PBBSurfaces;
+struct PBBCache {
+    PBBSurfaces cache1;
+    boost::recursive_mutex mutex;
+    std::map<SphereDecalKey,MeshRef> decalCache;
+    std::map<SphereTextureKey,MeshRef> textureCache;
+    int count;
+    PBBCache():count(0){}
+};
+typedef char NativePBBMesh[sizeof(PBBMesh)==0x8c?1:-1];
+typedef char NativePBBCache[sizeof(PBBCache)==0x60?1:-1];
+PBBCache* pbbCache;
+boost::once_flag pbbOnce=BOOST_ONCE_INIT;
+void initializePBBCache(){pbbCache=new PBBCache;}
 }
 
 SphereMesh::SphereMesh(const Vector3& size,RenderSurfaceTypes surfaces){
     geometryKind=2;levels.push_back(new Level(RenderDevice::QUADS));
     SphereBuilder builder(levels.last(),size,surfaces);builder.build(SphereLevelBuilder::Surface);
+}
+// 004f4cb0 surface branch; factory, shadow and scene dispatch remain separate.
+PBBMesh::PBBMesh(const Vector3& size,RenderSurfaceTypes surfaces){
+    levels.push_back(new Level(RenderDevice::QUADS));
+    PBBBuilder builder(levels.last(),size,surfaces);builder.build(SphereLevelBuilder::Surface);
+}
+// 004edb20: four independently generated variations for each size/surface key.
+template<> PBBMesh* MeshFactory<PBBMesh,4>::create(const Vector3& size,RenderSurfaceTypes surfaces){
+    boost::call_once(initializePBBCache,pbbOnce);
+    boost::recursive_mutex::scoped_lock lock(pbbCache->mutex);
+    if(!pbbCache->cache1.containsKey(surfaces.data))pbbCache->cache1.set(surfaces.data,PBBSizes());
+    PBBSizes& sizes=pbbCache->cache1.get(surfaces.data);
+    if(!sizes.containsKey(size))sizes.set(size,PBBVariations());
+    PBBVariations& variation=sizes.get(size);
+    int index=G3D::iRandom(0,3);
+    PBBMesh* mesh=static_cast<PBBMesh*>(variation.meshes[index].getPointer());
+    if(!mesh){
+        mesh=new PBBMesh(size,surfaces);variation.meshes[index]=mesh;
+        if(++pbbCache->count%100==0){MeshRef keep=variation.meshes[index];PlayerBlockMesh::flushUnused();}
+    }
+    return mesh;
+}
+template<> void MeshFactory<PBBMesh,4>::flushUnused(){
+    boost::call_once(initializePBBCache,pbbOnce);
+    boost::recursive_mutex::scoped_lock lock(pbbCache->mutex);
+    for(PBBSurfaces::Iterator i=pbbCache->cache1.begin();i!=pbbCache->cache1.end();++i)
+        for(PBBSizes::Iterator j=i->value.begin();j!=i->value.end();++j)
+            for(int k=0;k<4;++k)
+                if(j->value.meshes[k].notNull() && j->value.meshes[k].isLastReference())j->value.meshes[k]=MeshRef();
+}
+template<> unsigned MeshFactory<PBBMesh,4>::cachedMeshes(){
+    boost::call_once(initializePBBCache,pbbOnce);
+    boost::recursive_mutex::scoped_lock lock(pbbCache->mutex);
+    unsigned count=0;
+    for(PBBSurfaces::Iterator i=pbbCache->cache1.begin();i!=pbbCache->cache1.end();++i)
+        for(PBBSizes::Iterator j=i->value.begin();j!=i->value.end();++j)
+            for(int k=0;k<4;++k)if(j->value.meshes[k].notNull())++count;
+    return count;
 }
 template<> SphereMesh* MeshFactory<SphereMesh,1>::create(const Vector3& size,RenderSurfaceTypes surfaces){
     boost::call_once(initializeSphereCache,sphereOnce);
@@ -379,6 +468,7 @@ MeshRef BlockMesh::create(const Vector3& size,RenderSurfaceTypes surfaces,RBX::B
 // 004e5710 drops cache-only references without erasing keys or resetting count.
 void flushUnused(){
     SphereMesh::flushUnused();
+    PBBMesh::flushUnused();
     boost::call_once(initializeCache,cacheOnce);
     boost::recursive_mutex::scoped_lock lock(cache->mutex);
     for(std::map<Lookup,Variations>::iterator it=cache->entries.begin();it!=cache->entries.end();++it)
@@ -387,12 +477,12 @@ void flushUnused(){
                 it->second.meshes[i]=MeshRef();
 }
 unsigned cachedMeshes(){
-    if(!cache)return SphereMesh::cachedMeshes();
+    if(!cache)return SphereMesh::cachedMeshes()+PBBMesh::cachedMeshes();
     boost::recursive_mutex::scoped_lock lock(cache->mutex);
     unsigned count=0;
     for(std::map<Lookup,Variations>::iterator it=cache->entries.begin();it!=cache->entries.end();++it)
         for(int i=0;i<4;++i)if(it->second.meshes[i].notNull())++count;
-    return count+SphereMesh::cachedMeshes();
+    return count+SphereMesh::cachedMeshes()+PBBMesh::cachedMeshes();
 }
 template<RBX::NormalId id>
 static inline G3D::Vector3 faceHalf(const G3D::Vector3& size,float inset){
