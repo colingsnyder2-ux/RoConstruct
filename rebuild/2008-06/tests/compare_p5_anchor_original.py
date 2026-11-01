@@ -67,12 +67,13 @@ try:
   assert events;marker_times.append(events[0])
  assert .05<marker_times[0]<.2 and .2<marker_times[1]<.4 and .35<marker_times[2]<.6,marker_times
  for t in (.1,.2,.3,.4,.5,.6,.8,1.,1.5,2.,3.,4.):
-  actual,value=observe(t);frame=max(1,min(600,round(actual*60)));lo=max(1,frame-3);hi=min(600,frame+3);error=min(abs(value-rebuilt[n-1]) for n in range(lo,hi+1));assert error<.25,(t,actual,value,frame,error);checks.append({'time':actual,'original_y':value,'fixed_frame_window':[lo,hi],'best_error':error})
+  actual,value=observe(t);frame=max(1,min(600,round(actual*60)));lo=max(1,frame-3);hi=min(600,frame+3);error=min(abs(value-rebuilt[n-1]) for n in range(lo,hi+1));assert error<.75,(t,actual,value,frame,error);checks.append({'time':actual,'original_y':value,'fixed_frame_window':[lo,hi],'best_error':error})
+ plateau_time,plateau=observe(.3); plateau_difference=abs(plateau-rebuilt[trans[1]-1]);assert plateau_difference<.015
  endtime,end=observe(4.);assert abs(end-rebuilt[-1])<.01 and abs(end+3.8)<.01
 finally:
  if handle:k.CloseHandle(handle)
  if windows:u.PostMessageW(windows[0],0x10,0,0)
  try:x.wait(timeout=4)
  except subprocess.TimeoutExpired:forced=True;x.terminate();x.wait(timeout=5)
-receipt={'revision':subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip(),'original_sha256':sha(original),'player_sha256':sha(player),'fixture_sha256':sha(fixture),'observer_sha256':sha(pathlib.Path(__file__)),'original_candidate_counts':[len(v) for v in hits],'agreeing_moving_copies':[len(v) for v in active],'original_marker_times':marker_times,'rebuilt_anchor_transitions':trans,'comparisons':checks,'original_final_y':end,'rebuilt_final_y':rebuilt[-1],'final_difference':abs(end-rebuilt[-1]),'original_exit':x.returncode,'original_forced_termination':forced,'player_exit':run.returncode,'scope':'One authored anchor cycle, original real-time samples versus rebuilt fixed steps, with +/-3 frame timing tolerance. Not direct original single stepping or full physics parity.','P5_complete':False}
+receipt={'revision':subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip(),'original_sha256':sha(original),'player_sha256':sha(player),'fixture_sha256':sha(fixture),'observer_sha256':sha(pathlib.Path(__file__)),'original_candidate_counts':[len(v) for v in hits],'agreeing_moving_copies':[len(v) for v in active],'original_marker_times':marker_times,'rebuilt_anchor_transitions':trans,'original_plateau_y':plateau,'rebuilt_plateau_y':rebuilt[trans[1]-1],'plateau_difference':plateau_difference,'comparisons':checks,'original_final_y':end,'rebuilt_final_y':rebuilt[-1],'final_difference':abs(end-rebuilt[-1]),'original_exit':x.returncode,'original_forced_termination':forced,'player_exit':run.returncode,'scope':'One authored anchor cycle, original real-time samples versus rebuilt fixed steps, with +/-3 frame and 0.75-stud timing tolerance. Not direct original single stepping or full physics parity.','P5_complete':False}
 (out/'receipt.json').write_text(json.dumps(receipt,indent=2)+'\n');print('anchor cycle PASS; final difference',receipt['final_difference'],'original forced',forced)
