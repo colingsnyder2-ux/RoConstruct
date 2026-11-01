@@ -15,7 +15,11 @@
 #include <cmath>
 #include <cstring>
 #include <stdexcept>
+#include <limits>
 #include <windows.h>
+namespace RBX { namespace Soundscape {
+bool sanitizeSoundVector(const G3D::Vector3&,G3D::Vector3&);
+} }
 #include <cstdlib>
 // DLL exports the stdcall entry without decoration; generated import library
 // preserves that export name. This is a symbol alias, not a calling-convention change.
@@ -36,6 +40,15 @@ int main(int argc,char** argv){
     try{
         verify(std::strcmp(RBX::Soundscape::sSoundChannel,"Sound")==0);
         verify(std::strcmp(RBX::Soundscape::sSoundService,"SoundService")==0);
+        {
+            float denormal=std::numeric_limits<float>::denorm_min();
+            G3D::Vector3 result(9,9,9);
+            verify(RBX::Soundscape::sanitizeSoundVector(G3D::Vector3(denormal,6000,-7000),result));
+            verify(result==G3D::Vector3(0,5000,-5000));
+            verify(!RBX::Soundscape::sanitizeSoundVector(G3D::Vector3(std::numeric_limits<float>::infinity(),0,0),result));
+            verify(result==G3D::Vector3(0,5000,-5000));
+            std::printf("P4 Sound listener vector PASS denormal/clamp/infinity\n");
+        }
         std::string path=__FILE__;path=path.substr(0,path.find_last_of("/\\"))+"/fixtures/p4-assets";
         RBX::ContentProvider::singleton().setAssetFolder(argc>1?argv[1]:path.c_str());
         RBX::GameSettings::singleton().softwareSound=true;

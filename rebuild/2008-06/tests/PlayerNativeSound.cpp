@@ -4,6 +4,7 @@
 #include "util/Sound.h"
 #include "v8datamodel/GameSettings.h"
 #include "util/StandardOut.h"
+#include "util/Math.h"
 #include <fmod.hpp>
 #include <fmod_errors.h>
 #include <cstring>
@@ -13,6 +14,15 @@ namespace RBX { namespace Soundscape {
 typedef char NativeSoundSize[sizeof(Sound)==0x30?1:-1];
 typedef char NativeSoundIdSize[sizeof(SoundId)==0x20?1:-1];
 typedef char NativeCreateSoundInfoSize[sizeof(FMOD_CREATESOUNDEXINFO)==0x6c?1:-1];
+
+// 005b70c0: sanitize FMOD listener vectors before submission.
+bool sanitizeSoundVector(const G3D::Vector3& input,G3D::Vector3& output){
+    G3D::Vector3 value=input;
+    Math::fixDenorm(value);
+    if(Math::isNanInfDenormVector3(value))return false;
+    output=value.clamp(-5000.0f,5000.0f);
+    return true;
+}
 
 Sound::Sound(FMOD::System* system,SoundId id,bool is3D)
     :fmod_sound(0),system(system),refCount(0),id(id),is3D(is3D){}

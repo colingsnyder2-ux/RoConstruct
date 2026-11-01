@@ -109,3 +109,8 @@ diagnostic compiles the same body with public test access because VS2008 encodes
 private access in the symbol; it verifies seeded retention, eviction and reload
 after detachment. This does not exercise the production private symbol or the
 SoundService heartbeat. Native service linking and playback remain open.
+
+The listener-vector helper 005b70c0 is integrated with genuine Math/Vector3
+types. Original constants at 00837604 and 00826de0 are -5000 and +5000. The
+diagnostic checks denormal-to-zero, component clamping, infinity rejection and
+unchanged output after rejection. Heartbeat does not yet call this helper.
