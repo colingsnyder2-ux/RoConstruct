@@ -1,0 +1,190 @@
+{
+  "SoundChannel": {
+    "vtable": "008376fc",
+    "col": [
+      "00000000",
+      "00000000",
+      "00000000",
+      "0094db64",
+      "0089e404"
+    ],
+    "hierarchy": [
+      {
+        "name": ".?AVSoundChannel@Soundscape@RBX@@",
+        "offset": 0,
+        "contained": 21,
+        "pdisp": 4294967295,
+        "vdisp": 0,
+        "attributes": 64
+      },
+      {
+        "name": ".?AV?$DescribedCreatable@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@",
+        "offset": 0,
+        "contained": 19,
+        "pdisp": 4294967295,
+        "vdisp": 0,
+        "attributes": 64
+      },
+      {
+        "name": ".?AV?$Described@VSoundChannel@Soundscape@RBX@@$1?sSoundChannel@23@3PADAV?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@3@@Reflection@RBX@@",
+        "offset": 0,
+        "contained": 18,
+        "pdisp": 4294967295,
+        "vdisp": 0,
+        "attributes": 64
+      },
+      {
+        "name": ".?AV?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@",
+        "offset": 0,
+        "contained": 17,
+        "pdisp": 4294967295,
+        "vdisp": 0,
+        "attributes": 64
+      },
+      {
+        "name": ".?AVInstance@RBX@@",
+        "offset": 0,
+        "contained": 16,
+        "pdisp": 4294967295,
+        "vdisp": 0,
+        "attributes": 64
+      },
+      {
+        "name": ".?AV?$enable_shared_from_this@VInstance@RBX@@@boost@@",
+        "offset": 228,
+        "contained": 0,
+        "pdisp": 4294967295,
+        "vdisp": 0,
+        "attributes": 64
+      },
+      {
+        "name": ".?AV?$GuidItem@VInstance@RBX@@@RBX@@",
+        "offset": 0,
+        "contained": 0,
+        "pdisp": 4294967295,
+        "vdisp": 0,
+        "attributes": 64
+      },
+      {
+        "name": ".?AV?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@",
+        "offset": 16,
+        "contained": 2,
+        "pdisp": 4294967295,
+        "vdisp": 0,
+        "attributes": 64
+      },
+      {
+        "name": ".?AV?$Creatable@VInstance@RBX@@@RBX@@",
+        "offset": 16,
+        "contained": 1,
+        "pdisp": 4294967295,
+        "vdisp": 0,
+        "attributes": 64
+      },
+      {
+        "name": ".?AVObject@RBX@@",
+        "offset": 16,
+        "contained": 0,
+        "pdisp": 4294967295,
+        "vdisp": 0,
+        "attributes": 64
+      },
+      {
+        "name": ".?AV?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@",
+        "offset": 20,
+        "contained": 2,
+        "pdisp": 4294967295,
+        "vdisp": 0,
+        "attributes": 64
+      },
+      {
+        "name": ".?AVDescribedBase@Reflection@RBX@@",
+        "offset": 20,
+        "contained": 1,
+        "pdisp": 4294967295,
+        "vdisp": 0,
+        "attributes": 64
+      },
+      {
+        "name": ".?AVSignalSource@Reflection@RBX@@",
+        "offset": 20,
+        "contained": 0,
+        "pdisp": 4294967295,
+        "vdisp": 0,
+        "attributes": 64
+      },
+      {
+        "name": ".?AVDebugable@RBX@@",
+        "offset": 32,
+        "contained": 0,
+        "pdisp": 4294967295,
+        "vdisp": 0,
+        "attributes": 64
+      },
+      {
+        "name": ".?AV?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@",
+        "offset": 36,
+        "contained": 0,
+        "pdisp": 4294967295,
+        "vdisp": 0,
+        "attributes": 64
+      },
+      {
+        "name": ".?AV?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@",
+        "offset": 68,
+        "contained": 0,
+        "pdisp": 4294967295,
+        "vdisp": 0,
+        "attributes": 64
+      },
+      {
+        "name": ".?AV?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@",
+        "offset": 100,
+        "contained": 0,
+        "pdisp": 4294967295,
+        "vdisp": 0,
+        "attributes": 64
+      },
+      {
+        "name": ".?AV?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@",
+        "offset": 132,
+        "contained": 0,
+        "pdisp": 4294967295,
+        "vdisp": 0,
+        "attributes": 64
+      },
+      {
+        "name": ".?AV?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@",
+        "offset": 164,
+        "contained": 0,
+        "pdisp": 4294967295,
+        "vdisp": 0,
+        "attributes": 64
+      },
+      {
+        "name": ".?AV?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@",
+        "offset": 196,
+        "contained": 0,
+        "pdisp": 4294967295,
+        "vdisp": 0,
+        "attributes": 64
+      },
+      {
+        "name": ".?AVnoncopyable@noncopyable_@boost@@",
+        "offset": 236,
+        "contained": 0,
+        "pdisp": 4294967295,
+        "vdisp": 0,
+        "attributes": 64
+      },
+      {
+        "name": ".?AV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@",
+        "offset": 304,
+        "contained": 0,
+        "pdisp": 4294967295,
+        "vdisp": 0,
+        "attributes": 64
+      }
+    ]
+  }
+}

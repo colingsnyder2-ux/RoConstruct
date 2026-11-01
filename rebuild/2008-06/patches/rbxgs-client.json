@@ -2430,5 +2430,23 @@
    "static Type type(\"ContentId\", typeid(ContentId));",
    "static Type type(\"Content\", typeid(ContentId));"
   ]
- ]
+ ],
+ "App/include/util/Sound.h": [
+  [
+    "\t\t\tReflection::BoundProp<float, 1> prop_dopplerscale;",
+    "\t\t\tstatic Reflection::BoundProp<float, 1> prop_dopplerscale;"
+  ],
+  [
+    "\t\t\tReflection::BoundProp<float, 1> prop_distancefactor;",
+    "\t\t\tstatic Reflection::BoundProp<float, 1> prop_distancefactor;"
+  ],
+  [
+    "\t\t\tReflection::BoundProp<float, 1> prop_rolloffscale;",
+    "\t\t\tstatic Reflection::BoundProp<float, 1> prop_rolloffscale;"
+  ],
+  [
+    "\t\t\tReflection::EnumPropDescriptor<SoundService, ReverbType> prop_AmbientReverb;",
+    "\t\t\tstatic Reflection::EnumPropDescriptor<SoundService, ReverbType> prop_AmbientReverb;"
+  ]
+]
 }

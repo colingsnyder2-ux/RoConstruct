@@ -1,5 +1,18 @@
 # Current player checkpoint
 
+P4 sound overlay correction IN PROGRESS. Prior a67fa9d7e2 diagnostic compiled
+raw donor headers; canonical app already had GuidItem<Instance> in its overlay.
+Thus previous 560-byte service layout witness describes raw donor, not canonical
+engine; earlier sound test wrote the software setting using an inconsistent header.
+Native RTTI confirms GuidItem base; original descriptor initializers007f5220,
+007f5250,007f5280,007f52b0 construct global descriptors. Sound module now uses
+the same app overlay and static descriptor declarations; compile-time checks for
+Instance0x130, SoundChannel0x170, SoundService0x1c8 pass in first build. Shared
+app, diagnostic and player rebuild running sequentially; verify all before
+recording a new revision and rerunning normal tests. Preserve prior evidence as
+superseded, do not claim audible playback.
+
+
 P4 audio prerequisite PASSED at sourcea67fa9d7e2, not full audio/P4. New
 PlayerNativeSound.cpp integrates real Sound constructor/get/detach/destructor
 using genuine Sound.h members and existing005bc6f0 algorithm; no padded mining

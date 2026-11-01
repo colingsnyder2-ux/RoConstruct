@@ -42,5 +42,9 @@
   "import_dlls": [
     "fmodex.dll"
   ],
-  "test_defines": "WIN32 NDEBUG _RELEASE"
+  "test_defines": "WIN32 NDEBUG _RELEASE",
+  "overlay": {
+    "root": "tools/rbxgs/Client",
+    "patches": "rebuild/2008-06/patches/rbxgs-client.json"
+  }
 }

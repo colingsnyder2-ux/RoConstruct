@@ -11,6 +11,11 @@
 // preserves that export name. This is a symbol alias, not a calling-convention change.
 #pragma comment(linker,"/alternatename:_FMOD_System_Create@4=_FMOD_System_Create")
 
+// Native RTTI/constructors and factory allocation witnesses; no padding aliases.
+typedef char NativeInstanceSize[sizeof(RBX::Instance)==0x130?1:-1];
+typedef char NativeSoundChannelSize[sizeof(RBX::Soundscape::SoundChannel)==0x170?1:-1];
+typedef char NativeSoundServiceSize[sizeof(RBX::Soundscape::SoundService)==0x1c8?1:-1];
+
 static void check(FMOD_RESULT result){
     if(result!=FMOD_OK){std::printf("FMOD error %d\n",result);throw std::runtime_error("FMOD diagnostic failed");}
 }

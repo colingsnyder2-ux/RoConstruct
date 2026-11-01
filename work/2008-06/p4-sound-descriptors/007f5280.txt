@@ -1,0 +1,14 @@
+007f5280  6a05                 push 5
+007f5282  33c9                 xor ecx, ecx
+007f5284  51                   push ecx
+007f5285  b820a05b00           mov eax, 0x5ba020
+007f528a  50                   push eax
+007f528b  6864010000           push 0x164
+007f5290  6890248200           push 0x822490
+007f5295  68a4838300           push 0x8383a4
+007f529a  b9e0709700           mov ecx, 0x9770e0
+007f529f  e89c66dcff           call 0x5bb940
+007f52a4  6810e37f00           push 0x7fe310
+007f52a9  e801c5eaff           call 0x6a17af
+007f52ae  59                   pop ecx
+007f52af  c3                   ret 

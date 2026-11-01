@@ -20,6 +20,9 @@ def main():
     names = ['rebuild/2008-06/tests/PlayerNativeSound.cpp', 'rebuild/2008-06/tests/P4SoundAssetTest.cpp',
              'rebuild/2008-06/modules/p4-sound-asset.json', 'rebuild/2008-06/tests/record_p4_sound.py',
              'rebuild/2008-06/glue/rbxgs/glue_link_stubs.cpp',
+             'rebuild/2008-06/patches/rbxgs-client.json',
+             'rebuild/2008-06/out/P4SoundAsset/overlay/App/include/util/Sound.h',
+             'rebuild/2008-06/out/P4SoundAsset/overlay/App/include/v8tree/Instance.h',
              'tools/rbxgs/Client/App/include/util/Sound.h', 'tools/rbxgs/Client/App/include/util/ContentProvider.h',
              'tools/openrbx/3rdparty/fmod/api/inc/fmod.h', 'tools/openrbx/3rdparty/fmod/api/inc/fmod.hpp',
              'tools/openrbx/3rdparty/fmod/api/inc/fmod_errors.h']
