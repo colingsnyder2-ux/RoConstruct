@@ -1,0 +1,26 @@
+{
+  "revision": "0948e83baca971ecc5cee65388f0236841e7169a",
+  "exe_sha256": "357029c3785c6e220bd785c610281d6d1837a6ee693b0be69e77db89d549a989",
+  "map_sha256": "bc75b6805a02b8107cd816ec350889521dd58250770cdcf876ca68c89d958584",
+  "fixture_sha256": "6f01dca31dffeffc4748e25f1b9666ea2fda4e8d9ceccd7ee18ce4ecc6ffc8c2",
+  "original_exe_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "original_capture_sha256": "0ba8cf67c4b02f910354e976b9f3bec2962388b81bf1d66939566ae9ee044534",
+  "rebuilt_capture_sha256": "3fcacf2cc34063936152f45e6cb4f261879763ee127ba257534cb1ed9a593c19",
+  "comparison": {
+    "normalized_silhouette_iou": 0.9912033650329188,
+    "gate": 0.98,
+    "pass": true
+  },
+  "user_map_sha256": "f06e50fbfd097e24178e279b721ad8c5a27d5839f3197ca555dfa9fbafe6be00",
+  "user_model_count": 792,
+  "status_counts": {
+    "0": 784,
+    "4": 8
+  },
+  "cleanup_zero": true,
+  "limitations": [
+    "User map and private output excluded.",
+    "Original capture used authored fixture and original client; close required termination.",
+    "Comparison is silhouette only."
+  ]
+}

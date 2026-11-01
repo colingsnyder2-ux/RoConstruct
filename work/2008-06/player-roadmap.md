@@ -1,5 +1,22 @@
 # Current player checkpoint
 
+P4 cylinder path integrated at source0948e83bac. Native constructor004fd6b0,
+builder004fd430, endcap004fd4a0, side004fd530 and one-variation factory004eef30
+now render through the shared bank and ordinary material. Unit test checks
+geometry,32 clean lifetimes, shared cache and 100-creation purge. Rotated authored
+fixture matches original-client silhouette at IoU0.991203 (gate0.98); comparison
+is silhouette only. Same-source PBB/sphere/player builds and P3 lifetime,
+selftest/cachetest pass. Evidence: p4-cylinder-0948e83bac/ and
+p4-cylinder-lifetime-0948e83bac/. User Bread Factory:784 visible models,
+8 valid geometries with empty materials, 0 missing geometry; its XML has8 fully
+transparent Parts. User place and derived captures remain private. Older counts
+below describe earlier revisions. P4 and full roadmap remain open.
+
+Next: native SoundService/Channel factory, reflection, lifecycle and audible
+playback; original large-block and additional real-place coverage, then P5-P10.
+SoundService constructor/cache sources exist but have not run; no padding or
+fabricated ABI. Preserve newer local Player2008/PlayerEngine/RbxEntity work.
+
 P4 real-place crash FIXED on source3cd3585b2d: verified Humanoid destructor
 object supplied vtable with extra onGuidChanged slot. Instance::readProperties
 called bare ret as readProperty, corrupting stack. Module config now explicitly
