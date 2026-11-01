@@ -1,5 +1,5 @@
 {
-  "revision": "0254dea8e6399e841aed21fdfc98d89c21a9f489",
+  "revision": "30f5fbbd6b0bf5fa85e79940314e67bcd289559a",
   "compiler_build": "21022",
   "flags": [
     "/nologo",
@@ -22,11 +22,11 @@
   "compile_exit": 0,
   "sources": {
     "rebuild\\2008-06\\tests\\NativeBinderLayout.cpp": "af5b9bfafc16e663265febd9e5266d25304cb00161a1f7edf0de864c4fc4ba26",
-    "rebuild\\2008-06\\native-headers\\VerbBinder.h": "b3fb5e89a48f4b17b7f5e9249f6f320945353396264dae84b2b90bd019c310db",
+    "rebuild\\2008-06\\native-headers\\VerbBinder.h": "1ac1e80445323ff34c3fda01cfa6c9076ffe483ab772b17db44e0f538c4e2876",
     "rebuild\\2008-06\\tests\\record_native_binder.py": "7833e8442eb05cebd38338af0f0cba6f62cf9ed976024a38041b873120a4254f"
   },
   "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
-  "object_sha256": "6257e482f260bb4ca7503a9d153ba991bf7bf8d0e79325a5796d2d208f0c182a",
+  "object_sha256": "39fffa37603b6ba5d6076db0a682b7695b327902162edbb874bbf4f458439b1c",
   "compile_log_sha256": "6e85c11fd184d040ae7f7dbb3cad0af768bdb559004dd96938630e70476f3475",
   "static_size_gates": {
     "CDocument": 84,

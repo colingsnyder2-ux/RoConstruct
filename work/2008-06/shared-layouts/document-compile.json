@@ -1,0 +1,337 @@
+{
+  "revision": "30f5fbbd6b0bf5fa85e79940314e67bcd289559a",
+  "compiler_build": 21022,
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoNativeDocumentLayout.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeDocumentLayout.cpp"
+  ],
+  "compile_exit": 0,
+  "sources": {
+    "rebuild\\2008-06\\tests\\NativeDocumentLayout.cpp": "37c6b196f47f3c5f94cd7fb103fbc4ad9ff243a2f3cdcc219e2a349d2d5bd5b4",
+    "rebuild\\2008-06\\native-headers\\CRobloxDoc.h": "779de08177f01e324cb3ae9d358bf34eb89bbaa5fa5d914cc06dc9f172aa140d",
+    "rebuild\\2008-06\\native-headers\\VerbBinder.h": "1ac1e80445323ff34c3fda01cfa6c9076ffe483ab772b17db44e0f538c4e2876",
+    "rebuild\\2008-06\\tests\\record_native_document.py": "2e565e0a5e483fa154dc6c95dc04b779d2bac9b8e0bec030bb34c8acf3777e3d",
+    "rebuild\\2008-06\\native-classes\\CRobloxDoc.cpp": "1a06cbacb475cf21fc03fa9b9c8e8f487997e96e56aa460dfbd2f355e3c2805e",
+    "tools\\rbxgs\\Client\\App\\include\\v8xml\\XmlElement.h": "360674a8dd4e0ab4b6321bc2d282309cb0c4725019604d7a37ffee45e6bac8ef"
+  },
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "object_sha256": "b3373e544700eb8728a665d9a50f38063158aac73dd0e75aca5e0f028cfa2037",
+  "compile_log_sha256": "c4e76fdceab90fb871c4bb1f784fe8d5f7929f22b03cddc483ae05ff0a8b4819",
+  "static_layout_gates": {
+    "size": 152,
+    "savedState": 116,
+    "ownedVerbs": 120,
+    "standardVerbs": 144,
+    "workspace": 148
+  },
+  "constructor": {
+    "address": "00451ac0",
+    "symbol": "??0CRobloxDoc@@QAE@XZ",
+    "size": 124,
+    "relocation_normalized_exact": true,
+    "target_relocations": [
+      3,
+      42
+    ],
+    "candidate_relocations": [
+      3,
+      34,
+      42,
+      64
+    ]
+  },
+  "bind_methods": [
+    {
+      "address": "00451a10",
+      "symbol": "?bindExisting@CRobloxDoc@@QAEXIPAVVerb@RBX@@@Z",
+      "size": 78,
+      "relocation_normalized_exact": true,
+      "target_relocations": [],
+      "candidate_relocations": [
+        32,
+        44,
+        67
+      ]
+    },
+    {
+      "address": "00451a60",
+      "symbol": "?bindOwned@CRobloxDoc@@QAEXIPAVVerb@RBX@@@Z",
+      "size": 91,
+      "relocation_normalized_exact": true,
+      "target_relocations": [],
+      "candidate_relocations": [
+        21,
+        45,
+        57,
+        80
+      ]
+    }
+  ],
+  "virtual_slots": [
+    {
+      "slot": 0,
+      "source_symbol": "?GetRuntimeClass@CRobloxDoc@@UBEPAUCRuntimeClass@@XZ",
+      "original_address": "0x44f200"
+    },
+    {
+      "slot": 1,
+      "source_symbol": "??_ECRobloxDoc@@UAEPAXI@Z",
+      "original_address": "0x451b40"
+    },
+    {
+      "slot": 2,
+      "source_symbol": "?Serialize@CObject@@UAEXAAVCArchive@@@Z",
+      "original_address": "0x70bdf0"
+    },
+    {
+      "slot": 3,
+      "source_symbol": "?AssertValid@CObject@@UBEXXZ",
+      "original_address": "0x47d410"
+    },
+    {
+      "slot": 4,
+      "source_symbol": "?Dump@CObject@@UBEXAAVCDumpContext@@@Z",
+      "original_address": "0x70bdf0"
+    },
+    {
+      "slot": 5,
+      "source_symbol": "?OnCmdMsg@?$VerbBinder@VCRobloxDoc@@VCDocument@@@@UAEHIHPAXPAUAFX_CMDHANDLERINFO@@@Z",
+      "original_address": "0x451690"
+    },
+    {
+      "slot": 6,
+      "source_symbol": "?OnFinalRelease@CDocument@@UAEXXZ",
+      "original_address": "0x6a098c"
+    },
+    {
+      "slot": 7,
+      "source_symbol": "?IsInvokeAllowed@CCmdTarget@@UAEHJ@Z",
+      "original_address": "0x6a069e"
+    },
+    {
+      "slot": 8,
+      "source_symbol": "?GetDispatchIID@CCmdTarget@@UAEHPAU_GUID@@@Z",
+      "original_address": "0x6a06a4"
+    },
+    {
+      "slot": 9,
+      "source_symbol": "?GetTypeInfoCount@CCmdTarget@@UAEIXZ",
+      "original_address": "0x6a06aa"
+    },
+    {
+      "slot": 10,
+      "source_symbol": "?GetTypeLibCache@CCmdTarget@@UAEPAVCTypeLibCache@@XZ",
+      "original_address": "0x6a06b0"
+    },
+    {
+      "slot": 11,
+      "source_symbol": "?GetTypeLib@CCmdTarget@@UAEJKPAPAUITypeLib@@@Z",
+      "original_address": "0x6a06b6"
+    },
+    {
+      "slot": 12,
+      "source_symbol": "?GetMessageMap@CRobloxDoc@@MBEPBUAFX_MSGMAP@@XZ",
+      "original_address": "0x455d20"
+    },
+    {
+      "slot": 13,
+      "source_symbol": "?GetCommandMap@CCmdTarget@@MBEPBUAFX_OLECMDMAP@@XZ",
+      "original_address": "0x6a06bc"
+    },
+    {
+      "slot": 14,
+      "source_symbol": "?GetDispatchMap@CCmdTarget@@MBEPBUAFX_DISPMAP@@XZ",
+      "original_address": "0x6a06c2"
+    },
+    {
+      "slot": 15,
+      "source_symbol": "?GetConnectionMap@CCmdTarget@@MBEPBUAFX_CONNECTIONMAP@@XZ",
+      "original_address": "0x6a06c8"
+    },
+    {
+      "slot": 16,
+      "source_symbol": "?GetInterfaceMap@CCmdTarget@@MBEPBUAFX_INTERFACEMAP@@XZ",
+      "original_address": "0x6a0992"
+    },
+    {
+      "slot": 17,
+      "source_symbol": "?GetEventSinkMap@CCmdTarget@@MBEPBUAFX_EVENTSINKMAP@@XZ",
+      "original_address": "0x6a0998"
+    },
+    {
+      "slot": 18,
+      "source_symbol": "?OnCreateAggregates@CCmdTarget@@UAEHXZ",
+      "original_address": "0x6a06d4"
+    },
+    {
+      "slot": 19,
+      "source_symbol": "?GetInterfaceHook@CCmdTarget@@UAEPAUIUnknown@@PBX@Z",
+      "original_address": "0x6a06da"
+    },
+    {
+      "slot": 20,
+      "source_symbol": "?GetExtraConnectionPoints@CCmdTarget@@MAEHPAVCPtrArray@@@Z",
+      "original_address": "0x6a06e0"
+    },
+    {
+      "slot": 21,
+      "source_symbol": "?GetConnectionHook@CCmdTarget@@MAEPAUIConnectionPoint@@ABU_GUID@@@Z",
+      "original_address": "0x6a06e6"
+    },
+    {
+      "slot": 22,
+      "source_symbol": "?SetTitle@CRobloxDoc@@UAEXPBD@Z",
+      "original_address": "0x44fb80"
+    },
+    {
+      "slot": 23,
+      "source_symbol": "?SetPathName@CDocument@@UAEXPBDH@Z",
+      "original_address": "0x6a09a4"
+    },
+    {
+      "slot": 24,
+      "source_symbol": "?IsModified@CRobloxDoc@@UAEHXZ",
+      "original_address": "0x4508f0"
+    },
+    {
+      "slot": 25,
+      "source_symbol": "?SetModifiedFlag@CRobloxDoc@@UAEXH@Z",
+      "original_address": "0x44fad0"
+    },
+    {
+      "slot": 26,
+      "source_symbol": "?GetFirstViewPosition@CDocument@@UBEPAU__POSITION@@XZ",
+      "original_address": "0x6a09aa"
+    },
+    {
+      "slot": 27,
+      "source_symbol": "?GetNextView@CDocument@@UBEPAVCView@@AAPAU__POSITION@@@Z",
+      "original_address": "0x6a09b0"
+    },
+    {
+      "slot": 28,
+      "source_symbol": "?OnChangedViewList@CDocument@@UAEXXZ",
+      "original_address": "0x6a09b6"
+    },
+    {
+      "slot": 29,
+      "source_symbol": "?DeleteContents@CRobloxDoc@@UAEXXZ",
+      "original_address": "0x4513c0"
+    },
+    {
+      "slot": 30,
+      "source_symbol": "?OnNewDocument@CRobloxDoc@@UAEHXZ",
+      "original_address": "0x452f60"
+    },
+    {
+      "slot": 31,
+      "source_symbol": "?OnOpenDocument@CRobloxDoc@@UAEHPBD@Z",
+      "original_address": "0x4533f0"
+    },
+    {
+      "slot": 32,
+      "source_symbol": "?OnSaveDocument@CRobloxDoc@@UAEHPBD@Z",
+      "original_address": "0x44f9b0"
+    },
+    {
+      "slot": 33,
+      "source_symbol": "?OnCloseDocument@CRobloxDoc@@UAEXXZ",
+      "original_address": "0x44f210"
+    },
+    {
+      "slot": 34,
+      "source_symbol": "?ReportSaveLoadException@CDocument@@UAEXPBDPAVCException@@HI@Z",
+      "original_address": "0x6a09da"
+    },
+    {
+      "slot": 35,
+      "source_symbol": "?GetFile@CDocument@@UAEPAVCFile@@PBDIPAVCFileException@@@Z",
+      "original_address": "0x6a09e0"
+    },
+    {
+      "slot": 36,
+      "source_symbol": "?ReleaseFile@CDocument@@UAEXPAVCFile@@H@Z",
+      "original_address": "0x6a09e6"
+    },
+    {
+      "slot": 37,
+      "source_symbol": "?CanCloseFrame@CDocument@@UAEHPAVCFrameWnd@@@Z",
+      "original_address": "0x6a09ec"
+    },
+    {
+      "slot": 38,
+      "source_symbol": "?SaveModified@CRobloxDoc@@UAEHXZ",
+      "original_address": "0x455060"
+    },
+    {
+      "slot": 39,
+      "source_symbol": "?PreCloseFrame@CDocument@@UAEXPAVCFrameWnd@@@Z",
+      "original_address": "0x6a09f2"
+    },
+    {
+      "slot": 40,
+      "source_symbol": "?DoSave@CRobloxDoc@@UAEHPBDH@Z",
+      "original_address": "0x44f8d0"
+    },
+    {
+      "slot": 41,
+      "source_symbol": "?DoFileSave@CDocument@@UAEHXZ",
+      "original_address": "0x6a09fe"
+    },
+    {
+      "slot": 42,
+      "source_symbol": "?UpdateFrameCounts@CDocument@@UAEXXZ",
+      "original_address": "0x6a0a04"
+    },
+    {
+      "slot": 43,
+      "source_symbol": "?GetDefaultMenu@CDocument@@UAEPAUHMENU__@@XZ",
+      "original_address": "0x6a0a0a"
+    },
+    {
+      "slot": 44,
+      "source_symbol": "?GetDefaultAccelerator@CDocument@@UAEPAUHACCEL__@@XZ",
+      "original_address": "0x6a0a10"
+    },
+    {
+      "slot": 45,
+      "source_symbol": "?OnIdle@CDocument@@UAEXXZ",
+      "original_address": "0x6a0a16"
+    }
+  ],
+  "active_client_changed": false,
+  "scope": "Compiler-only complete document storage, declared virtual-slot positions, constructor and two bind-method proofs. Virtual method bodies and relocated targets remain unverified. Owning XML pointer template spelling remains a codegen choice. No active class swap, linked-function increase or server verification claimed."
+}

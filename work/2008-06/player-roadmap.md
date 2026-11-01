@@ -2014,3 +2014,33 @@ checks pass; Doc binder constructor 00451590 matches all 86 bytes after masking
 relocations. Evidence: shared-layouts/binder-compile.json. No active class swap
 or executable-count gain claimed. Next recover routing definitions and Doc
 owned members before integration; P5/P6 remain on the unchanged passing binary.
+
+
+## Shared Doc storage and exact binding checkpoint (30f5fbbd6b)
+
+CRobloxDoc candidate now has complete 0x98 storage with no padding fields:
+owned XML snapshot 0x74, vector<Verb*> 0x78, StandardVerbs* 0x90 and
+CWorkspace* 0x94. Original run/stop and destruction independently identify
+these ownership edges; auto_ptr is a supported owning-pointer codegen choice,
+not a recovered original template spelling. All original Doc virtual override
+positions are declared; their bodies still need recovery.
+
+Pinned MSVC 21022 probe passes complete size, four member offsets and 46-slot
+COFF vtable shape. Constructor 00451ac0 matches 124 bytes; bindExisting
+00451a10 matches 78; bindOwned 00451a60 matches 91 (relocations masked).
+Bodies use shared native fields. Binding compilation refined the initial UINT
+map hypothesis to DWORD keys with UINT arguments, and recovered name-read
+before map-update ordering. Binder constructor 00451590 remains exact, 86 bytes.
+Evidence: shared-layouts/document-compile.json, binder-compile.json and updated
+original-evidence.json, all pinned to 30f5fbbd6b and source hashes.
+
+No active class swap yet. Passing merged client SHA is unchanged; current
+selected count remains 2997/14344, P5 stop-line PASS and P6 scoped PASS. Real
+native P6 remains open. Next Doc command routing and lifecycle bodies, followed
+by View/Frame/Humanoid shared declarations. Native View construction also
+identifies embedded CRobloxWnd at 0xb0, CMenu at 0x178, CReflectorWnd at 0x180;
+these are leads pending their full member declarations, not padded replacements.
+The source pointer for native CRobloxWnd constructor 0045c730 names generated
+mfc-9.0-shared/roc_ui_network_window_ee9082b9a35d3d1a.cpp, absent from this local
+recipe tree and generated-unit registry. Original constructor bytes remain
+available; recover or retrieve its actual source before integrating that edge.

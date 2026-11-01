@@ -1,7 +1,7 @@
 {
-  "revision": "0254dea8e6399e841aed21fdfc98d89c21a9f489",
+  "revision": "30f5fbbd6b0bf5fa85e79940314e67bcd289559a",
   "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
-  "observer_sha256": "8ef88115eb65188489275f726cbf651e0e94e93a248df1207acceb22c1cef881",
+  "observer_sha256": "f69dfd5c6859ff9cab8e496206fbd2e2640045474552c21ef6df087a8a08600e",
   "runtime_classes_sha256": "bf63791688d842003eaaa27757425e8b1b4f07afcfb42553322974fcbedd6f67",
   "runtime_sizes": {
     "CRobloxDoc": {
@@ -3320,6 +3320,1831 @@
         {
           "address": "0x451888",
           "instruction": "ret 0x10"
+        }
+      ]
+    },
+    "0x451940": {
+      "role": "document destruction: StandardVerbs, vector, owned XML, binder, CDocument",
+      "window_length": 198,
+      "window_sha256": "1a8577b43d6c7ca25f908f10a8a03a2797672b8c093e51f972707eb6b1dcc8bc",
+      "instructions": [
+        {
+          "address": "0x451940",
+          "instruction": "push -1"
+        },
+        {
+          "address": "0x451942",
+          "instruction": "push 0x7c1d26"
+        },
+        {
+          "address": "0x451947",
+          "instruction": "mov eax, dword ptr fs:[0]"
+        },
+        {
+          "address": "0x45194d",
+          "instruction": "push eax"
+        },
+        {
+          "address": "0x45194e",
+          "instruction": "mov dword ptr fs:[0], esp"
+        },
+        {
+          "address": "0x451955",
+          "instruction": "push ecx"
+        },
+        {
+          "address": "0x451956",
+          "instruction": "push ebx"
+        },
+        {
+          "address": "0x451957",
+          "instruction": "push esi"
+        },
+        {
+          "address": "0x451958",
+          "instruction": "mov esi, ecx"
+        },
+        {
+          "address": "0x45195a",
+          "instruction": "push edi"
+        },
+        {
+          "address": "0x45195b",
+          "instruction": "mov dword ptr [esp + 0xc], esi"
+        },
+        {
+          "address": "0x45195f",
+          "instruction": "mov dword ptr [esi], 0x817ce4"
+        },
+        {
+          "address": "0x451965",
+          "instruction": "mov edi, dword ptr [esi + 0x90]"
+        },
+        {
+          "address": "0x45196b",
+          "instruction": "xor ebx, ebx"
+        },
+        {
+          "address": "0x45196d",
+          "instruction": "mov dword ptr [esp + 0x18], 2"
+        },
+        {
+          "address": "0x451975",
+          "instruction": "cmp edi, ebx"
+        },
+        {
+          "address": "0x451977",
+          "instruction": "je 0x451989"
+        },
+        {
+          "address": "0x451979",
+          "instruction": "mov ecx, edi"
+        },
+        {
+          "address": "0x45197b",
+          "instruction": "call 0x450450"
+        },
+        {
+          "address": "0x451980",
+          "instruction": "push edi"
+        },
+        {
+          "address": "0x451981",
+          "instruction": "call 0x6a067a"
+        },
+        {
+          "address": "0x451986",
+          "instruction": "add esp, 4"
+        },
+        {
+          "address": "0x451989",
+          "instruction": "mov eax, dword ptr [esi + 0x84]"
+        },
+        {
+          "address": "0x45198f",
+          "instruction": "cmp eax, ebx"
+        },
+        {
+          "address": "0x451991",
+          "instruction": "je 0x45199c"
+        },
+        {
+          "address": "0x451993",
+          "instruction": "push eax"
+        },
+        {
+          "address": "0x451994",
+          "instruction": "call 0x6a067a"
+        },
+        {
+          "address": "0x451999",
+          "instruction": "add esp, 4"
+        },
+        {
+          "address": "0x45199c",
+          "instruction": "mov eax, dword ptr [esi + 0x78]"
+        },
+        {
+          "address": "0x45199f",
+          "instruction": "push eax"
+        },
+        {
+          "address": "0x4519a0",
+          "instruction": "mov dword ptr [esi + 0x84], ebx"
+        },
+        {
+          "address": "0x4519a6",
+          "instruction": "mov dword ptr [esi + 0x88], ebx"
+        },
+        {
+          "address": "0x4519ac",
+          "instruction": "mov dword ptr [esi + 0x8c], ebx"
+        },
+        {
+          "address": "0x4519b2",
+          "instruction": "call 0x6a067a"
+        },
+        {
+          "address": "0x4519b7",
+          "instruction": "mov edi, dword ptr [esi + 0x74]"
+        },
+        {
+          "address": "0x4519ba",
+          "instruction": "add esp, 4"
+        },
+        {
+          "address": "0x4519bd",
+          "instruction": "mov byte ptr [esp + 0x18], bl"
+        },
+        {
+          "address": "0x4519c1",
+          "instruction": "cmp edi, ebx"
+        },
+        {
+          "address": "0x4519c3",
+          "instruction": "je 0x4519d5"
+        },
+        {
+          "address": "0x4519c5",
+          "instruction": "mov ecx, edi"
+        },
+        {
+          "address": "0x4519c7",
+          "instruction": "call 0x413a70"
+        },
+        {
+          "address": "0x4519cc",
+          "instruction": "push edi"
+        },
+        {
+          "address": "0x4519cd",
+          "instruction": "call 0x6a067a"
+        },
+        {
+          "address": "0x4519d2",
+          "instruction": "add esp, 4"
+        },
+        {
+          "address": "0x4519d5",
+          "instruction": "lea ecx, [esi + 0x54]"
+        },
+        {
+          "address": "0x4519d8",
+          "instruction": "mov dword ptr [esp + 0x18], 3"
+        },
+        {
+          "address": "0x4519e0",
+          "instruction": "call 0x553d80"
+        },
+        {
+          "address": "0x4519e5",
+          "instruction": "mov ecx, esi"
+        },
+        {
+          "address": "0x4519e7",
+          "instruction": "mov dword ptr [esp + 0x18], 0xffffffff"
+        },
+        {
+          "address": "0x4519ef",
+          "instruction": "call 0x6a0a1c"
+        },
+        {
+          "address": "0x4519f4",
+          "instruction": "mov ecx, dword ptr [esp + 0x10]"
+        },
+        {
+          "address": "0x4519f8",
+          "instruction": "pop edi"
+        },
+        {
+          "address": "0x4519f9",
+          "instruction": "pop esi"
+        },
+        {
+          "address": "0x4519fa",
+          "instruction": "pop ebx"
+        },
+        {
+          "address": "0x4519fb",
+          "instruction": "mov dword ptr fs:[0], ecx"
+        },
+        {
+          "address": "0x451a02",
+          "instruction": "add esp, 0x10"
+        },
+        {
+          "address": "0x451a05",
+          "instruction": "ret "
+        }
+      ]
+    },
+    "0x455820": {
+      "role": "document run: create and retain XML snapshot before running",
+      "window_length": 504,
+      "window_sha256": "d7e0ce708c77071ee19953791a6f1e1f580e937c429a7412220bcfc01a9c30a5",
+      "instructions": [
+        {
+          "address": "0x455820",
+          "instruction": "push -1"
+        },
+        {
+          "address": "0x455822",
+          "instruction": "push 0x7c2288"
+        },
+        {
+          "address": "0x455827",
+          "instruction": "mov eax, dword ptr fs:[0]"
+        },
+        {
+          "address": "0x45582d",
+          "instruction": "push eax"
+        },
+        {
+          "address": "0x45582e",
+          "instruction": "mov dword ptr fs:[0], esp"
+        },
+        {
+          "address": "0x455835",
+          "instruction": "sub esp, 0x1c"
+        },
+        {
+          "address": "0x455838",
+          "instruction": "push ebx"
+        },
+        {
+          "address": "0x455839",
+          "instruction": "push ebp"
+        },
+        {
+          "address": "0x45583a",
+          "instruction": "push esi"
+        },
+        {
+          "address": "0x45583b",
+          "instruction": "push edi"
+        },
+        {
+          "address": "0x45583c",
+          "instruction": "mov esi, ecx"
+        },
+        {
+          "address": "0x45583e",
+          "instruction": "mov ecx, dword ptr [esi + 0x94]"
+        },
+        {
+          "address": "0x455844",
+          "instruction": "lea eax, [esp + 0x18]"
+        },
+        {
+          "address": "0x455848",
+          "instruction": "push eax"
+        },
+        {
+          "address": "0x455849",
+          "instruction": "call 0x46a940"
+        },
+        {
+          "address": "0x45584e",
+          "instruction": "mov edx, dword ptr [eax]"
+        },
+        {
+          "address": "0x455850",
+          "instruction": "sub esp, 8"
+        },
+        {
+          "address": "0x455853",
+          "instruction": "mov ecx, esp"
+        },
+        {
+          "address": "0x455855",
+          "instruction": "mov dword ptr [ecx], edx"
+        },
+        {
+          "address": "0x455857",
+          "instruction": "mov eax, dword ptr [eax + 4]"
+        },
+        {
+          "address": "0x45585a",
+          "instruction": "mov dword ptr [esp + 0x3c], 0"
+        },
+        {
+          "address": "0x455862",
+          "instruction": "mov dword ptr [esp + 0x18], esp"
+        },
+        {
+          "address": "0x455866",
+          "instruction": "mov dword ptr [ecx + 4], eax"
+        },
+        {
+          "address": "0x455869",
+          "instruction": "test eax, eax"
+        },
+        {
+          "address": "0x45586b",
+          "instruction": "je 0x455879"
+        },
+        {
+          "address": "0x45586d",
+          "instruction": "add eax, 4"
+        },
+        {
+          "address": "0x455870",
+          "instruction": "mov ecx, 1"
+        },
+        {
+          "address": "0x455875",
+          "instruction": "lock xadd dword ptr [eax], ecx"
+        },
+        {
+          "address": "0x455879",
+          "instruction": "lea ecx, [esp + 0x28]"
+        },
+        {
+          "address": "0x45587d",
+          "instruction": "call 0x411b40"
+        },
+        {
+          "address": "0x455882",
+          "instruction": "mov edi, dword ptr [esp + 0x1c]"
+        },
+        {
+          "address": "0x455886",
+          "instruction": "mov byte ptr [esp + 0x34], 2"
+        },
+        {
+          "address": "0x45588b",
+          "instruction": "test edi, edi"
+        },
+        {
+          "address": "0x45588d",
+          "instruction": "je 0x4558b9"
+        },
+        {
+          "address": "0x45588f",
+          "instruction": "lea edx, [edi + 4]"
+        },
+        {
+          "address": "0x455892",
+          "instruction": "or eax, 0xffffffff"
+        },
+        {
+          "address": "0x455895",
+          "instruction": "lock xadd dword ptr [edx], eax"
+        },
+        {
+          "address": "0x455899",
+          "instruction": "jne 0x4558b9"
+        },
+        {
+          "address": "0x45589b",
+          "instruction": "mov edx, dword ptr [edi]"
+        },
+        {
+          "address": "0x45589d",
+          "instruction": "mov eax, dword ptr [edx + 4]"
+        },
+        {
+          "address": "0x4558a0",
+          "instruction": "mov ecx, edi"
+        },
+        {
+          "address": "0x4558a2",
+          "instruction": "call eax"
+        },
+        {
+          "address": "0x4558a4",
+          "instruction": "lea ecx, [edi + 8]"
+        },
+        {
+          "address": "0x4558a7",
+          "instruction": "or edx, 0xffffffff"
+        },
+        {
+          "address": "0x4558aa",
+          "instruction": "lock xadd dword ptr [ecx], edx"
+        },
+        {
+          "address": "0x4558ae",
+          "instruction": "jne 0x4558b9"
+        },
+        {
+          "address": "0x4558b0",
+          "instruction": "mov eax, dword ptr [edi]"
+        },
+        {
+          "address": "0x4558b2",
+          "instruction": "mov edx, dword ptr [eax + 8]"
+        },
+        {
+          "address": "0x4558b5",
+          "instruction": "mov ecx, edi"
+        },
+        {
+          "address": "0x4558b7",
+          "instruction": "call edx"
+        },
+        {
+          "address": "0x4558b9",
+          "instruction": "lea eax, [esp + 0x10]"
+        },
+        {
+          "address": "0x4558bd",
+          "instruction": "push eax"
+        },
+        {
+          "address": "0x4558be",
+          "instruction": "mov ecx, esi"
+        },
+        {
+          "address": "0x4558c0",
+          "instruction": "call 0x403040"
+        },
+        {
+          "address": "0x4558c5",
+          "instruction": "mov ecx, dword ptr [eax]"
+        },
+        {
+          "address": "0x4558c7",
+          "instruction": "mov byte ptr [esp + 0x34], 3"
+        },
+        {
+          "address": "0x4558cc",
+          "instruction": "call 0x4530f0"
+        },
+        {
+          "address": "0x4558d1",
+          "instruction": "cmp dword ptr [eax + 0x1b4], 0"
+        },
+        {
+          "address": "0x4558d8",
+          "instruction": "mov eax, dword ptr [esp + 0x14]"
+        },
+        {
+          "address": "0x4558dc",
+          "instruction": "sete bl"
+        },
+        {
+          "address": "0x4558df",
+          "instruction": "mov byte ptr [esp + 0x34], 2"
+        },
+        {
+          "address": "0x4558e4",
+          "instruction": "test eax, eax"
+        },
+        {
+          "address": "0x4558e6",
+          "instruction": "je 0x455914"
+        },
+        {
+          "address": "0x4558e8",
+          "instruction": "mov edi, eax"
+        },
+        {
+          "address": "0x4558ea",
+          "instruction": "add eax, 4"
+        },
+        {
+          "address": "0x4558ed",
+          "instruction": "or ecx, 0xffffffff"
+        },
+        {
+          "address": "0x4558f0",
+          "instruction": "lock xadd dword ptr [eax], ecx"
+        },
+        {
+          "address": "0x4558f4",
+          "instruction": "jne 0x455914"
+        },
+        {
+          "address": "0x4558f6",
+          "instruction": "mov edx, dword ptr [edi]"
+        },
+        {
+          "address": "0x4558f8",
+          "instruction": "mov eax, dword ptr [edx + 4]"
+        },
+        {
+          "address": "0x4558fb",
+          "instruction": "mov ecx, edi"
+        },
+        {
+          "address": "0x4558fd",
+          "instruction": "call eax"
+        },
+        {
+          "address": "0x4558ff",
+          "instruction": "lea ecx, [edi + 8]"
+        },
+        {
+          "address": "0x455902",
+          "instruction": "or edx, 0xffffffff"
+        },
+        {
+          "address": "0x455905",
+          "instruction": "lock xadd dword ptr [ecx], edx"
+        },
+        {
+          "address": "0x455909",
+          "instruction": "jne 0x455914"
+        },
+        {
+          "address": "0x45590b",
+          "instruction": "mov eax, dword ptr [edi]"
+        },
+        {
+          "address": "0x45590d",
+          "instruction": "mov edx, dword ptr [eax + 8]"
+        },
+        {
+          "address": "0x455910",
+          "instruction": "mov ecx, edi"
+        },
+        {
+          "address": "0x455912",
+          "instruction": "call edx"
+        },
+        {
+          "address": "0x455914",
+          "instruction": "test bl, bl"
+        },
+        {
+          "address": "0x455916",
+          "instruction": "je 0x455994"
+        },
+        {
+          "address": "0x455918",
+          "instruction": "call 0x591a30"
+        },
+        {
+          "address": "0x45591d",
+          "instruction": "mov ebp, dword ptr [esi + 0x74]"
+        },
+        {
+          "address": "0x455920",
+          "instruction": "mov edi, eax"
+        },
+        {
+          "address": "0x455922",
+          "instruction": "cmp edi, ebp"
+        },
+        {
+          "address": "0x455924",
+          "instruction": "je 0x45593a"
+        },
+        {
+          "address": "0x455926",
+          "instruction": "test ebp, ebp"
+        },
+        {
+          "address": "0x455928",
+          "instruction": "je 0x45593a"
+        },
+        {
+          "address": "0x45592a",
+          "instruction": "mov ecx, ebp"
+        },
+        {
+          "address": "0x45592c",
+          "instruction": "call 0x413a70"
+        },
+        {
+          "address": "0x455931",
+          "instruction": "push ebp"
+        },
+        {
+          "address": "0x455932",
+          "instruction": "call 0x6a067a"
+        },
+        {
+          "address": "0x455937",
+          "instruction": "add esp, 4"
+        },
+        {
+          "address": "0x45593a",
+          "instruction": "lea eax, [esp + 0x10]"
+        },
+        {
+          "address": "0x45593e",
+          "instruction": "push eax"
+        },
+        {
+          "address": "0x45593f",
+          "instruction": "mov ecx, esi"
+        },
+        {
+          "address": "0x455941",
+          "instruction": "mov dword ptr [esi + 0x74], edi"
+        },
+        {
+          "address": "0x455944",
+          "instruction": "call 0x403040"
+        },
+        {
+          "address": "0x455949",
+          "instruction": "mov edx, dword ptr [esi + 0x74]"
+        },
+        {
+          "address": "0x45594c",
+          "instruction": "mov eax, dword ptr [eax]"
+        },
+        {
+          "address": "0x45594e",
+          "instruction": "push edx"
+        },
+        {
+          "address": "0x45594f",
+          "instruction": "mov ecx, eax"
+        },
+        {
+          "address": "0x455951",
+          "instruction": "mov byte ptr [esp + 0x38], 4"
+        },
+        {
+          "address": "0x455956",
+          "instruction": "call 0x558110"
+        },
+        {
+          "address": "0x45595b",
+          "instruction": "mov eax, dword ptr [esp + 0x14]"
+        },
+        {
+          "address": "0x45595f",
+          "instruction": "mov byte ptr [esp + 0x34], 2"
+        },
+        {
+          "address": "0x455964",
+          "instruction": "test eax, eax"
+        },
+        {
+          "address": "0x455966",
+          "instruction": "je 0x455994"
+        },
+        {
+          "address": "0x455968",
+          "instruction": "mov edi, eax"
+        },
+        {
+          "address": "0x45596a",
+          "instruction": "add eax, 4"
+        },
+        {
+          "address": "0x45596d",
+          "instruction": "or ecx, 0xffffffff"
+        },
+        {
+          "address": "0x455970",
+          "instruction": "lock xadd dword ptr [eax], ecx"
+        },
+        {
+          "address": "0x455974",
+          "instruction": "jne 0x455994"
+        },
+        {
+          "address": "0x455976",
+          "instruction": "mov edx, dword ptr [edi]"
+        },
+        {
+          "address": "0x455978",
+          "instruction": "mov eax, dword ptr [edx + 4]"
+        },
+        {
+          "address": "0x45597b",
+          "instruction": "mov ecx, edi"
+        },
+        {
+          "address": "0x45597d",
+          "instruction": "call eax"
+        },
+        {
+          "address": "0x45597f",
+          "instruction": "lea ecx, [edi + 8]"
+        },
+        {
+          "address": "0x455982",
+          "instruction": "or edx, 0xffffffff"
+        },
+        {
+          "address": "0x455985",
+          "instruction": "lock xadd dword ptr [ecx], edx"
+        },
+        {
+          "address": "0x455989",
+          "instruction": "jne 0x455994"
+        },
+        {
+          "address": "0x45598b",
+          "instruction": "mov eax, dword ptr [edi]"
+        },
+        {
+          "address": "0x45598d",
+          "instruction": "mov edx, dword ptr [eax + 8]"
+        },
+        {
+          "address": "0x455990",
+          "instruction": "mov ecx, edi"
+        },
+        {
+          "address": "0x455992",
+          "instruction": "call edx"
+        },
+        {
+          "address": "0x455994",
+          "instruction": "lea eax, [esp + 0x10]"
+        },
+        {
+          "address": "0x455998",
+          "instruction": "push eax"
+        },
+        {
+          "address": "0x455999",
+          "instruction": "mov ecx, esi"
+        },
+        {
+          "address": "0x45599b",
+          "instruction": "call 0x403040"
+        },
+        {
+          "address": "0x4559a0",
+          "instruction": "mov ecx, dword ptr [eax]"
+        },
+        {
+          "address": "0x4559a2",
+          "instruction": "mov byte ptr [esp + 0x34], 5"
+        },
+        {
+          "address": "0x4559a7",
+          "instruction": "test ecx, ecx"
+        },
+        {
+          "address": "0x4559a9",
+          "instruction": "je 0x4559b2"
+        },
+        {
+          "address": "0x4559ab",
+          "instruction": "call 0x4530f0"
+        },
+        {
+          "address": "0x4559b0",
+          "instruction": "jmp 0x4559b4"
+        },
+        {
+          "address": "0x4559b2",
+          "instruction": "xor eax, eax"
+        },
+        {
+          "address": "0x4559b4",
+          "instruction": "push 1"
+        },
+        {
+          "address": "0x4559b6",
+          "instruction": "mov ecx, eax"
+        },
+        {
+          "address": "0x4559b8",
+          "instruction": "call 0x554da0"
+        },
+        {
+          "address": "0x4559bd",
+          "instruction": "mov esi, dword ptr [esp + 0x14]"
+        },
+        {
+          "address": "0x4559c1",
+          "instruction": "mov byte ptr [esp + 0x34], 2"
+        },
+        {
+          "address": "0x4559c6",
+          "instruction": "test esi, esi"
+        },
+        {
+          "address": "0x4559c8",
+          "instruction": "je 0x4559f4"
+        },
+        {
+          "address": "0x4559ca",
+          "instruction": "lea ecx, [esi + 4]"
+        },
+        {
+          "address": "0x4559cd",
+          "instruction": "or edx, 0xffffffff"
+        },
+        {
+          "address": "0x4559d0",
+          "instruction": "lock xadd dword ptr [ecx], edx"
+        },
+        {
+          "address": "0x4559d4",
+          "instruction": "jne 0x4559f4"
+        },
+        {
+          "address": "0x4559d6",
+          "instruction": "mov eax, dword ptr [esi]"
+        },
+        {
+          "address": "0x4559d8",
+          "instruction": "mov edx, dword ptr [eax + 4]"
+        },
+        {
+          "address": "0x4559db",
+          "instruction": "mov ecx, esi"
+        },
+        {
+          "address": "0x4559dd",
+          "instruction": "call edx"
+        },
+        {
+          "address": "0x4559df",
+          "instruction": "lea eax, [esi + 8]"
+        },
+        {
+          "address": "0x4559e2",
+          "instruction": "or ecx, 0xffffffff"
+        },
+        {
+          "address": "0x4559e5",
+          "instruction": "lock xadd dword ptr [eax], ecx"
+        },
+        {
+          "address": "0x4559e9",
+          "instruction": "jne 0x4559f4"
+        },
+        {
+          "address": "0x4559eb",
+          "instruction": "mov edx, dword ptr [esi]"
+        },
+        {
+          "address": "0x4559ed",
+          "instruction": "mov eax, dword ptr [edx + 8]"
+        },
+        {
+          "address": "0x4559f0",
+          "instruction": "mov ecx, esi"
+        },
+        {
+          "address": "0x4559f2",
+          "instruction": "call eax"
+        },
+        {
+          "address": "0x4559f4",
+          "instruction": "lea ecx, [esp + 0x20]"
+        },
+        {
+          "address": "0x4559f8",
+          "instruction": "mov dword ptr [esp + 0x34], 0xffffffff"
+        },
+        {
+          "address": "0x455a00",
+          "instruction": "call 0x5773c0"
+        },
+        {
+          "address": "0x455a05",
+          "instruction": "mov ecx, dword ptr [esp + 0x2c]"
+        },
+        {
+          "address": "0x455a09",
+          "instruction": "pop edi"
+        },
+        {
+          "address": "0x455a0a",
+          "instruction": "pop esi"
+        },
+        {
+          "address": "0x455a0b",
+          "instruction": "pop ebp"
+        },
+        {
+          "address": "0x455a0c",
+          "instruction": "mov dword ptr fs:[0], ecx"
+        },
+        {
+          "address": "0x455a13",
+          "instruction": "pop ebx"
+        },
+        {
+          "address": "0x455a14",
+          "instruction": "add esp, 0x28"
+        },
+        {
+          "address": "0x455a17",
+          "instruction": "ret "
+        }
+      ]
+    },
+    "0x455580": {
+      "role": "document stop: load retained XML then clear snapshot ownership",
+      "window_length": 669,
+      "window_sha256": "41ac808d8aa359d58291d1f6ffca4be318ffcb1d2501dab6432693f95f5472d3",
+      "instructions": [
+        {
+          "address": "0x455580",
+          "instruction": "push -1"
+        },
+        {
+          "address": "0x455582",
+          "instruction": "push 0x7c2248"
+        },
+        {
+          "address": "0x455587",
+          "instruction": "mov eax, dword ptr fs:[0]"
+        },
+        {
+          "address": "0x45558d",
+          "instruction": "push eax"
+        },
+        {
+          "address": "0x45558e",
+          "instruction": "mov dword ptr fs:[0], esp"
+        },
+        {
+          "address": "0x455595",
+          "instruction": "sub esp, 0x1c"
+        },
+        {
+          "address": "0x455598",
+          "instruction": "push ebx"
+        },
+        {
+          "address": "0x455599",
+          "instruction": "push esi"
+        },
+        {
+          "address": "0x45559a",
+          "instruction": "push edi"
+        },
+        {
+          "address": "0x45559b",
+          "instruction": "mov esi, ecx"
+        },
+        {
+          "address": "0x45559d",
+          "instruction": "mov ecx, dword ptr [esi + 0x94]"
+        },
+        {
+          "address": "0x4555a3",
+          "instruction": "lea eax, [esp + 0x14]"
+        },
+        {
+          "address": "0x4555a7",
+          "instruction": "push eax"
+        },
+        {
+          "address": "0x4555a8",
+          "instruction": "call 0x46a940"
+        },
+        {
+          "address": "0x4555ad",
+          "instruction": "mov edx, dword ptr [eax]"
+        },
+        {
+          "address": "0x4555af",
+          "instruction": "sub esp, 8"
+        },
+        {
+          "address": "0x4555b2",
+          "instruction": "mov ecx, esp"
+        },
+        {
+          "address": "0x4555b4",
+          "instruction": "mov dword ptr [ecx], edx"
+        },
+        {
+          "address": "0x4555b6",
+          "instruction": "mov eax, dword ptr [eax + 4]"
+        },
+        {
+          "address": "0x4555b9",
+          "instruction": "mov dword ptr [esp + 0x38], 0"
+        },
+        {
+          "address": "0x4555c1",
+          "instruction": "mov dword ptr [esp + 0x14], esp"
+        },
+        {
+          "address": "0x4555c5",
+          "instruction": "mov dword ptr [ecx + 4], eax"
+        },
+        {
+          "address": "0x4555c8",
+          "instruction": "test eax, eax"
+        },
+        {
+          "address": "0x4555ca",
+          "instruction": "je 0x4555d8"
+        },
+        {
+          "address": "0x4555cc",
+          "instruction": "add eax, 4"
+        },
+        {
+          "address": "0x4555cf",
+          "instruction": "mov ecx, 1"
+        },
+        {
+          "address": "0x4555d4",
+          "instruction": "lock xadd dword ptr [eax], ecx"
+        },
+        {
+          "address": "0x4555d8",
+          "instruction": "lea ecx, [esp + 0x24]"
+        },
+        {
+          "address": "0x4555dc",
+          "instruction": "call 0x411b40"
+        },
+        {
+          "address": "0x4555e1",
+          "instruction": "mov edi, dword ptr [esp + 0x18]"
+        },
+        {
+          "address": "0x4555e5",
+          "instruction": "mov byte ptr [esp + 0x30], 2"
+        },
+        {
+          "address": "0x4555ea",
+          "instruction": "test edi, edi"
+        },
+        {
+          "address": "0x4555ec",
+          "instruction": "je 0x455618"
+        },
+        {
+          "address": "0x4555ee",
+          "instruction": "lea edx, [edi + 4]"
+        },
+        {
+          "address": "0x4555f1",
+          "instruction": "or eax, 0xffffffff"
+        },
+        {
+          "address": "0x4555f4",
+          "instruction": "lock xadd dword ptr [edx], eax"
+        },
+        {
+          "address": "0x4555f8",
+          "instruction": "jne 0x455618"
+        },
+        {
+          "address": "0x4555fa",
+          "instruction": "mov edx, dword ptr [edi]"
+        },
+        {
+          "address": "0x4555fc",
+          "instruction": "mov eax, dword ptr [edx + 4]"
+        },
+        {
+          "address": "0x4555ff",
+          "instruction": "mov ecx, edi"
+        },
+        {
+          "address": "0x455601",
+          "instruction": "call eax"
+        },
+        {
+          "address": "0x455603",
+          "instruction": "lea ecx, [edi + 8]"
+        },
+        {
+          "address": "0x455606",
+          "instruction": "or edx, 0xffffffff"
+        },
+        {
+          "address": "0x455609",
+          "instruction": "lock xadd dword ptr [ecx], edx"
+        },
+        {
+          "address": "0x45560d",
+          "instruction": "jne 0x455618"
+        },
+        {
+          "address": "0x45560f",
+          "instruction": "mov eax, dword ptr [edi]"
+        },
+        {
+          "address": "0x455611",
+          "instruction": "mov edx, dword ptr [eax + 8]"
+        },
+        {
+          "address": "0x455614",
+          "instruction": "mov ecx, edi"
+        },
+        {
+          "address": "0x455616",
+          "instruction": "call edx"
+        },
+        {
+          "address": "0x455618",
+          "instruction": "lea eax, [esp + 0xc]"
+        },
+        {
+          "address": "0x45561c",
+          "instruction": "push eax"
+        },
+        {
+          "address": "0x45561d",
+          "instruction": "mov ecx, esi"
+        },
+        {
+          "address": "0x45561f",
+          "instruction": "call 0x403040"
+        },
+        {
+          "address": "0x455624",
+          "instruction": "mov ecx, dword ptr [eax]"
+        },
+        {
+          "address": "0x455626",
+          "instruction": "mov byte ptr [esp + 0x30], 3"
+        },
+        {
+          "address": "0x45562b",
+          "instruction": "call 0x4530f0"
+        },
+        {
+          "address": "0x455630",
+          "instruction": "cmp dword ptr [eax + 0x1b4], 0"
+        },
+        {
+          "address": "0x455637",
+          "instruction": "mov eax, dword ptr [esp + 0x10]"
+        },
+        {
+          "address": "0x45563b",
+          "instruction": "setne bl"
+        },
+        {
+          "address": "0x45563e",
+          "instruction": "mov byte ptr [esp + 0x30], 2"
+        },
+        {
+          "address": "0x455643",
+          "instruction": "test eax, eax"
+        },
+        {
+          "address": "0x455645",
+          "instruction": "je 0x455673"
+        },
+        {
+          "address": "0x455647",
+          "instruction": "mov edi, eax"
+        },
+        {
+          "address": "0x455649",
+          "instruction": "add eax, 4"
+        },
+        {
+          "address": "0x45564c",
+          "instruction": "or ecx, 0xffffffff"
+        },
+        {
+          "address": "0x45564f",
+          "instruction": "lock xadd dword ptr [eax], ecx"
+        },
+        {
+          "address": "0x455653",
+          "instruction": "jne 0x455673"
+        },
+        {
+          "address": "0x455655",
+          "instruction": "mov edx, dword ptr [edi]"
+        },
+        {
+          "address": "0x455657",
+          "instruction": "mov eax, dword ptr [edx + 4]"
+        },
+        {
+          "address": "0x45565a",
+          "instruction": "mov ecx, edi"
+        },
+        {
+          "address": "0x45565c",
+          "instruction": "call eax"
+        },
+        {
+          "address": "0x45565e",
+          "instruction": "lea ecx, [edi + 8]"
+        },
+        {
+          "address": "0x455661",
+          "instruction": "or edx, 0xffffffff"
+        },
+        {
+          "address": "0x455664",
+          "instruction": "lock xadd dword ptr [ecx], edx"
+        },
+        {
+          "address": "0x455668",
+          "instruction": "jne 0x455673"
+        },
+        {
+          "address": "0x45566a",
+          "instruction": "mov eax, dword ptr [edi]"
+        },
+        {
+          "address": "0x45566c",
+          "instruction": "mov edx, dword ptr [eax + 8]"
+        },
+        {
+          "address": "0x45566f",
+          "instruction": "mov ecx, edi"
+        },
+        {
+          "address": "0x455671",
+          "instruction": "call edx"
+        },
+        {
+          "address": "0x455673",
+          "instruction": "test bl, bl"
+        },
+        {
+          "address": "0x455675",
+          "instruction": "je 0x4557fa"
+        },
+        {
+          "address": "0x45567b",
+          "instruction": "lea eax, [esp + 0xc]"
+        },
+        {
+          "address": "0x45567f",
+          "instruction": "push eax"
+        },
+        {
+          "address": "0x455680",
+          "instruction": "mov ecx, esi"
+        },
+        {
+          "address": "0x455682",
+          "instruction": "call 0x403040"
+        },
+        {
+          "address": "0x455687",
+          "instruction": "mov ecx, dword ptr [eax]"
+        },
+        {
+          "address": "0x455689",
+          "instruction": "mov byte ptr [esp + 0x30], 4"
+        },
+        {
+          "address": "0x45568e",
+          "instruction": "test ecx, ecx"
+        },
+        {
+          "address": "0x455690",
+          "instruction": "je 0x455699"
+        },
+        {
+          "address": "0x455692",
+          "instruction": "call 0x4530f0"
+        },
+        {
+          "address": "0x455697",
+          "instruction": "jmp 0x45569b"
+        },
+        {
+          "address": "0x455699",
+          "instruction": "xor eax, eax"
+        },
+        {
+          "address": "0x45569b",
+          "instruction": "push 0"
+        },
+        {
+          "address": "0x45569d",
+          "instruction": "mov ecx, eax"
+        },
+        {
+          "address": "0x45569f",
+          "instruction": "call 0x554da0"
+        },
+        {
+          "address": "0x4556a4",
+          "instruction": "mov edi, dword ptr [esp + 0x10]"
+        },
+        {
+          "address": "0x4556a8",
+          "instruction": "mov byte ptr [esp + 0x30], 2"
+        },
+        {
+          "address": "0x4556ad",
+          "instruction": "test edi, edi"
+        },
+        {
+          "address": "0x4556af",
+          "instruction": "je 0x4556db"
+        },
+        {
+          "address": "0x4556b1",
+          "instruction": "lea ecx, [edi + 4]"
+        },
+        {
+          "address": "0x4556b4",
+          "instruction": "or edx, 0xffffffff"
+        },
+        {
+          "address": "0x4556b7",
+          "instruction": "lock xadd dword ptr [ecx], edx"
+        },
+        {
+          "address": "0x4556bb",
+          "instruction": "jne 0x4556db"
+        },
+        {
+          "address": "0x4556bd",
+          "instruction": "mov eax, dword ptr [edi]"
+        },
+        {
+          "address": "0x4556bf",
+          "instruction": "mov edx, dword ptr [eax + 4]"
+        },
+        {
+          "address": "0x4556c2",
+          "instruction": "mov ecx, edi"
+        },
+        {
+          "address": "0x4556c4",
+          "instruction": "call edx"
+        },
+        {
+          "address": "0x4556c6",
+          "instruction": "lea eax, [edi + 8]"
+        },
+        {
+          "address": "0x4556c9",
+          "instruction": "or ecx, 0xffffffff"
+        },
+        {
+          "address": "0x4556cc",
+          "instruction": "lock xadd dword ptr [eax], ecx"
+        },
+        {
+          "address": "0x4556d0",
+          "instruction": "jne 0x4556db"
+        },
+        {
+          "address": "0x4556d2",
+          "instruction": "mov edx, dword ptr [edi]"
+        },
+        {
+          "address": "0x4556d4",
+          "instruction": "mov eax, dword ptr [edx + 8]"
+        },
+        {
+          "address": "0x4556d7",
+          "instruction": "mov ecx, edi"
+        },
+        {
+          "address": "0x4556d9",
+          "instruction": "call eax"
+        },
+        {
+          "address": "0x4556db",
+          "instruction": "lea ecx, [esp + 0xc]"
+        },
+        {
+          "address": "0x4556df",
+          "instruction": "push ecx"
+        },
+        {
+          "address": "0x4556e0",
+          "instruction": "mov ecx, esi"
+        },
+        {
+          "address": "0x4556e2",
+          "instruction": "call 0x403040"
+        },
+        {
+          "address": "0x4556e7",
+          "instruction": "mov ecx, dword ptr [eax]"
+        },
+        {
+          "address": "0x4556e9",
+          "instruction": "mov byte ptr [esp + 0x30], 5"
+        },
+        {
+          "address": "0x4556ee",
+          "instruction": "call 0x578ef0"
+        },
+        {
+          "address": "0x4556f3",
+          "instruction": "mov eax, dword ptr [esp + 0x10]"
+        },
+        {
+          "address": "0x4556f7",
+          "instruction": "mov byte ptr [esp + 0x30], 2"
+        },
+        {
+          "address": "0x4556fc",
+          "instruction": "test eax, eax"
+        },
+        {
+          "address": "0x4556fe",
+          "instruction": "je 0x45572c"
+        },
+        {
+          "address": "0x455700",
+          "instruction": "mov edi, eax"
+        },
+        {
+          "address": "0x455702",
+          "instruction": "add eax, 4"
+        },
+        {
+          "address": "0x455705",
+          "instruction": "or edx, 0xffffffff"
+        },
+        {
+          "address": "0x455708",
+          "instruction": "lock xadd dword ptr [eax], edx"
+        },
+        {
+          "address": "0x45570c",
+          "instruction": "jne 0x45572c"
+        },
+        {
+          "address": "0x45570e",
+          "instruction": "mov eax, dword ptr [edi]"
+        },
+        {
+          "address": "0x455710",
+          "instruction": "mov edx, dword ptr [eax + 4]"
+        },
+        {
+          "address": "0x455713",
+          "instruction": "mov ecx, edi"
+        },
+        {
+          "address": "0x455715",
+          "instruction": "call edx"
+        },
+        {
+          "address": "0x455717",
+          "instruction": "lea eax, [edi + 8]"
+        },
+        {
+          "address": "0x45571a",
+          "instruction": "or ecx, 0xffffffff"
+        },
+        {
+          "address": "0x45571d",
+          "instruction": "lock xadd dword ptr [eax], ecx"
+        },
+        {
+          "address": "0x455721",
+          "instruction": "jne 0x45572c"
+        },
+        {
+          "address": "0x455723",
+          "instruction": "mov edx, dword ptr [edi]"
+        },
+        {
+          "address": "0x455725",
+          "instruction": "mov eax, dword ptr [edx + 8]"
+        },
+        {
+          "address": "0x455728",
+          "instruction": "mov ecx, edi"
+        },
+        {
+          "address": "0x45572a",
+          "instruction": "call eax"
+        },
+        {
+          "address": "0x45572c",
+          "instruction": "lea ecx, [esp + 0xc]"
+        },
+        {
+          "address": "0x455730",
+          "instruction": "push ecx"
+        },
+        {
+          "address": "0x455731",
+          "instruction": "mov ecx, esi"
+        },
+        {
+          "address": "0x455733",
+          "instruction": "call 0x403040"
+        },
+        {
+          "address": "0x455738",
+          "instruction": "mov eax, dword ptr [eax]"
+        },
+        {
+          "address": "0x45573a",
+          "instruction": "mov ecx, dword ptr [esi + 0x74]"
+        },
+        {
+          "address": "0x45573d",
+          "instruction": "push eax"
+        },
+        {
+          "address": "0x45573e",
+          "instruction": "push ecx"
+        },
+        {
+          "address": "0x45573f",
+          "instruction": "mov byte ptr [esp + 0x38], 6"
+        },
+        {
+          "address": "0x455744",
+          "instruction": "call 0x593500"
+        },
+        {
+          "address": "0x455749",
+          "instruction": "mov eax, dword ptr [esp + 0x18]"
+        },
+        {
+          "address": "0x45574d",
+          "instruction": "add esp, 8"
+        },
+        {
+          "address": "0x455750",
+          "instruction": "mov byte ptr [esp + 0x30], 2"
+        },
+        {
+          "address": "0x455755",
+          "instruction": "test eax, eax"
+        },
+        {
+          "address": "0x455757",
+          "instruction": "je 0x455785"
+        },
+        {
+          "address": "0x455759",
+          "instruction": "mov edi, eax"
+        },
+        {
+          "address": "0x45575b",
+          "instruction": "add eax, 4"
+        },
+        {
+          "address": "0x45575e",
+          "instruction": "or edx, 0xffffffff"
+        },
+        {
+          "address": "0x455761",
+          "instruction": "lock xadd dword ptr [eax], edx"
+        },
+        {
+          "address": "0x455765",
+          "instruction": "jne 0x455785"
+        },
+        {
+          "address": "0x455767",
+          "instruction": "mov eax, dword ptr [edi]"
+        },
+        {
+          "address": "0x455769",
+          "instruction": "mov edx, dword ptr [eax + 4]"
+        },
+        {
+          "address": "0x45576c",
+          "instruction": "mov ecx, edi"
+        },
+        {
+          "address": "0x45576e",
+          "instruction": "call edx"
+        },
+        {
+          "address": "0x455770",
+          "instruction": "lea eax, [edi + 8]"
+        },
+        {
+          "address": "0x455773",
+          "instruction": "or ecx, 0xffffffff"
+        },
+        {
+          "address": "0x455776",
+          "instruction": "lock xadd dword ptr [eax], ecx"
+        },
+        {
+          "address": "0x45577a",
+          "instruction": "jne 0x455785"
+        },
+        {
+          "address": "0x45577c",
+          "instruction": "mov edx, dword ptr [edi]"
+        },
+        {
+          "address": "0x45577e",
+          "instruction": "mov eax, dword ptr [edx + 8]"
+        },
+        {
+          "address": "0x455781",
+          "instruction": "mov ecx, edi"
+        },
+        {
+          "address": "0x455783",
+          "instruction": "call eax"
+        },
+        {
+          "address": "0x455785",
+          "instruction": "lea ecx, [esp + 0xc]"
+        },
+        {
+          "address": "0x455789",
+          "instruction": "push ecx"
+        },
+        {
+          "address": "0x45578a",
+          "instruction": "mov ecx, esi"
+        },
+        {
+          "address": "0x45578c",
+          "instruction": "call 0x403040"
+        },
+        {
+          "address": "0x455791",
+          "instruction": "mov eax, dword ptr [eax]"
+        },
+        {
+          "address": "0x455793",
+          "instruction": "mov ecx, dword ptr [eax + 0x204]"
+        },
+        {
+          "address": "0x455799",
+          "instruction": "mov byte ptr [esp + 0x30], 7"
+        },
+        {
+          "address": "0x45579e",
+          "instruction": "call 0x5a0de0"
+        },
+        {
+          "address": "0x4557a3",
+          "instruction": "mov eax, dword ptr [esp + 0x10]"
+        },
+        {
+          "address": "0x4557a7",
+          "instruction": "mov byte ptr [esp + 0x30], 2"
+        },
+        {
+          "address": "0x4557ac",
+          "instruction": "test eax, eax"
+        },
+        {
+          "address": "0x4557ae",
+          "instruction": "je 0x4557dc"
+        },
+        {
+          "address": "0x4557b0",
+          "instruction": "mov edi, eax"
+        },
+        {
+          "address": "0x4557b2",
+          "instruction": "add eax, 4"
+        },
+        {
+          "address": "0x4557b5",
+          "instruction": "or edx, 0xffffffff"
+        },
+        {
+          "address": "0x4557b8",
+          "instruction": "lock xadd dword ptr [eax], edx"
+        },
+        {
+          "address": "0x4557bc",
+          "instruction": "jne 0x4557dc"
+        },
+        {
+          "address": "0x4557be",
+          "instruction": "mov eax, dword ptr [edi]"
+        },
+        {
+          "address": "0x4557c0",
+          "instruction": "mov edx, dword ptr [eax + 4]"
+        },
+        {
+          "address": "0x4557c3",
+          "instruction": "mov ecx, edi"
+        },
+        {
+          "address": "0x4557c5",
+          "instruction": "call edx"
+        },
+        {
+          "address": "0x4557c7",
+          "instruction": "lea eax, [edi + 8]"
+        },
+        {
+          "address": "0x4557ca",
+          "instruction": "or ecx, 0xffffffff"
+        },
+        {
+          "address": "0x4557cd",
+          "instruction": "lock xadd dword ptr [eax], ecx"
+        },
+        {
+          "address": "0x4557d1",
+          "instruction": "jne 0x4557dc"
+        },
+        {
+          "address": "0x4557d3",
+          "instruction": "mov edx, dword ptr [edi]"
+        },
+        {
+          "address": "0x4557d5",
+          "instruction": "mov eax, dword ptr [edx + 8]"
+        },
+        {
+          "address": "0x4557d8",
+          "instruction": "mov ecx, edi"
+        },
+        {
+          "address": "0x4557da",
+          "instruction": "call eax"
+        },
+        {
+          "address": "0x4557dc",
+          "instruction": "mov edi, dword ptr [esi + 0x74]"
+        },
+        {
+          "address": "0x4557df",
+          "instruction": "test edi, edi"
+        },
+        {
+          "address": "0x4557e1",
+          "instruction": "je 0x4557f3"
+        },
+        {
+          "address": "0x4557e3",
+          "instruction": "mov ecx, edi"
+        },
+        {
+          "address": "0x4557e5",
+          "instruction": "call 0x413a70"
+        },
+        {
+          "address": "0x4557ea",
+          "instruction": "push edi"
+        },
+        {
+          "address": "0x4557eb",
+          "instruction": "call 0x6a067a"
+        },
+        {
+          "address": "0x4557f0",
+          "instruction": "add esp, 4"
+        },
+        {
+          "address": "0x4557f3",
+          "instruction": "mov dword ptr [esi + 0x74], 0"
+        },
+        {
+          "address": "0x4557fa",
+          "instruction": "lea ecx, [esp + 0x1c]"
+        },
+        {
+          "address": "0x4557fe",
+          "instruction": "mov dword ptr [esp + 0x30], 0xffffffff"
+        },
+        {
+          "address": "0x455806",
+          "instruction": "call 0x5773c0"
+        },
+        {
+          "address": "0x45580b",
+          "instruction": "mov ecx, dword ptr [esp + 0x28]"
+        },
+        {
+          "address": "0x45580f",
+          "instruction": "pop edi"
+        },
+        {
+          "address": "0x455810",
+          "instruction": "pop esi"
+        },
+        {
+          "address": "0x455811",
+          "instruction": "mov dword ptr fs:[0], ecx"
+        },
+        {
+          "address": "0x455818",
+          "instruction": "pop ebx"
+        },
+        {
+          "address": "0x455819",
+          "instruction": "add esp, 0x28"
+        },
+        {
+          "address": "0x45581c",
+          "instruction": "ret "
         }
       ]
     },
