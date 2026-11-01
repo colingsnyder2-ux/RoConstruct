@@ -1,5 +1,102 @@
 # Native integration with an agent (Codex, Claude)
 
+## Native recovery loop (default)
+
+Trace original code, reconstruct native pieces, compile focused probes, record
+proof, and keep incomplete candidates inactive. This is the default manual Codex /
+Claude workflow. Discovery does not require a full linked baseline or a server job
+for each recovered body. The integration sections below apply when a coherent batch
+is ready to link or submit. Neither a probe nor an inactive candidate grants credit.
+
+1. **Trace by address.** Use `roc source 2008-06 ADDRESS --json`, target assembly,
+   RTTI, allocation sizes, original class metadata and recovered source. Choose one
+   class or shared ownership cause. Derive fields, inheritance, ABI and lifetimes
+   from evidence; do not copy placeholder declarations as native truth.
+2. **Edit native pieces directly.** Work in the assigned shared headers and source
+   files under `rebuild/2008-06/native-headers/` and `native-classes/`, or the project's
+   established inactive candidate area. Helpers respect layout-owner boundaries.
+   Resolve related methods together: document lifecycle, workspace serialization,
+   DataModel::Lock and RunService are examples, not mandatory assignments. Preserve
+   the active player and accepted overlays while the candidate is incomplete.
+3. **Compile the smallest relevant probe.** Reuse the original historical compiler
+   and source dependencies. For June 2008 native probes this is normally MSVC 21022;
+   use target-specific evidence for other profiles. Run only the probe affected by
+   the edit, or a small group affected by a shared header. Compare generated object
+   code to the original EXE. Record relocation-masked byte results separately from
+   verified call/data targets. Unknown relocation targets remain unverified; a masked
+   instruction match alone is not full code/data, ABI or linked ownership proof.
+4. **Record evidence and keep moving.** Update this checkout's
+   `work/2008-06/player-roadmap.md` and receipts under
+   `work/2008-06/shared-layouts/`. Record original/compiler/source hashes, flags,
+   symbols, addresses, matched/failed bodies, checked calls/data, unresolved edges
+   and next hypothesis. Keep exploratory work uncommitted; commit a coherent
+   checkpoint when useful or requested, not after each method. Do not count source
+   edits, probe matches or uncommitted candidates as executable gains.
+5. **Keep incomplete work inactive.** Missing fields, binder constructor/destructor
+   conflicts, handlers, COM ownership or unresolved links are recovery tasks. Keep
+   their source and receipts; work on the next evidence-backed gap. Do not patch in
+   padding, invented fields, stubs or unverified glue to force an active swap.
+   Do not rerun the player build or P5/P6 merely because an inactive source changed.
+
+Example commands, from the selected checkout (not an assumed path on Colin's PC):
+
+```powershell
+. .\local\config\reuse-tools.ps1
+.\roc.cmd source 2008-06 00455820 --json
+Get-ChildItem rebuild/2008-06/tests -Filter 'record_native*.py'
+# Example: run the document probe only when working on that class and inputs exist:
+python rebuild/2008-06/tests/record_native_document.py shared-layouts/document-working.json
+```
+
+Other owner-checkout examples include `record_native_run_service.py`,
+`record_native_workspace.py`, `record_native_lock.py` and
+`record_native_serializer_root.py`, writing run-service/workspace/lock/serializer
+receipts in the same folder. Some active recovery probes/candidates may not yet
+ship in a released Worker. Enumerate existing files first; a missing optional
+class probe is a reason to author a focused one for the assigned class, not to
+redownload the Worker or reinstall compilers. Never assume all examples pass.
+
+These are class-specific probe examples, not a command list to rerun in full after
+an edit. Inspect the selected script's prerequisites: some existing probes expect a
+pinned original-reference file or a Git checkout. Resolve those inputs from the
+verified registered client/package provenance; never substitute a candidate EXE,
+claim a probe passed, or run a large setup/build sequence to hide a missing input.
+Use reviewed project probes; extend a focused probe under `rebuild/2008-06/tests/`
+when the current class lacks one. Probe scripts may use project APIs; do not bypass
+acceptance gates with ad-hoc imports or manually fabricated receipts.
+
+### When to link, test runtime and submit
+
+Keep submission enabled. When a class or inseparable batch has complete proven
+layouts, real method bodies and resolved dependencies, move it to the supported
+integration path. Make a linked build of the affected module/player (for example,
+`roc rebuild 2008-06 player --no-notify`) and inspect all source-layer errors; a passing smoke or exit code with failed source files is
+not a clean baseline. Fix the named build error once, then reuse content-checked
+objects and baseline caches. Do not rebuild everything after each small probe.
+
+For edits to methods already present in the accepted tree, use the editable
+`native-try` path below to capture/recheck them, then submit the coherent passing
+batch with the actual model. `native-try submit` performs the required combined
+linked/runtime/ABI/global ownership proof before queuing independent server
+verification; avoid running an identical standalone preflight immediately before
+submit unless diagnosing a gate or explicitly requested.
+
+For a genuine new native declaration/build unit, use
+`roc native-promote submit packet.json` with the required source/RTTI/ABI witnesses.
+Promotion review/quarantine is not acceptance. If the server cannot represent the
+new class/source yet, retain the inactive candidate and proof and report that exact
+boundary; do not pretend a local probe is a submitted integration or upload arbitrary
+new sources through a body-only endpoint.
+
+Before and after each active player class swap, preserve/recheck the applicable
+P5 and scoped P6 gates. Existing `p5-stopline-gate/receipt.json` and
+`p6-merged-gate-final/receipt.json` are historical evidence tied to their recorded
+EXE hashes/revisions; they cannot prove a future swap. Source-only discovery needs
+no rerun of those runtime gates. Report four states separately: inactive probe
+matches, local linked/runtime proof, queued job ID, independently accepted credits.
+Submit ready supported batches promptly; incomplete recovery is allowed to stay
+inactive while its real blockers are resolved. Never weaken any acceptance gate.
+
 ## Local prerequisites first (mandatory)
 
 After selecting the client, search for installed inputs BEFORE `roc install`,
@@ -55,9 +152,11 @@ credentials, server databases or an entire mutable work tree into the new Worker
 Do not rerun the setup download list after a successful unchanged setup. On resume,
 reuse the recorded inventory; rescan only missing/moved paths or changed requirements.
 
-## Direct editing workflow (default)
+## Editable integration workspace (when ready)
 
-Use a current Worker with `roc native-try edit --help` and native workflow version 15.
+Use a current Worker with `roc native-try edit --help` and native workflow version 16.
+This workspace is for edits against the accepted tree after the native recovery
+loop produces a coherent supported change; it is not mandatory for inactive probes.
 Edit real C++/header files in the editable workspace printed by the tool. No hand-written
 SEARCH/REPLACE blocks or JSON edit packets are needed. Work by shared cause/class:
 change the related methods together, keep unrelated methods unchanged, then check
@@ -78,7 +177,6 @@ translation units, run `edit` for each CPP; include its required genuine headers
 ```text
 roc native-try check App/tool/PartDragTool.cpp
 roc native-try check --all
-roc native-try preflight
 roc native-try submit --model YOUR_ACTUAL_MODEL
 ```
 
@@ -100,7 +198,7 @@ preserve the draft. To start again from the current effective baseline, use
 use `edit HEADER --only ADDR` to select its genuine caller; the draft remembers it.
 Legacy `check FILE blocks.txt` remains compatible for existing automation only.
 
-## Current batch-first process
+## Linked integration batch checks (when ready)
 
 Use the existing private contributor checkout. One writer and one build at a
 time per mutable checkout; never build in the server's or another person's
@@ -207,7 +305,8 @@ roc integrator --model YOUR_ACTUAL_MODEL --workers 4 --rounds 3 --output-budget 
 
 Use remote prompts only within the operator's authorization. The GUI offers
 signed-in CLIs, API providers and local models. Selecting a model does not change
-the independent acceptance gates. The manual agent path below edits exported C++/headers directly through native-try; it follows the same evidence/acceptance goals
+the independent acceptance gates. The accepted-tree editing path below uses
+exported C++/headers through native-try; it follows the same acceptance goals
 but does not automatically acquire the GUI's scheduling or shared compiler jobs.
 Do not launch a second editor or continuous session in its mutable staging tree.
 
@@ -269,15 +368,17 @@ Other contributors can submit packets from their own PCs; the owner does not
 need their local lane-map file. Send the packet ID when escalating. Do not claim
 the class is promoted until its server job is accepted.
 
-Paste this file into a Codex or Claude Code session opened in a RoConstruct checkout. It follows the native
-conversion workflow used by the automatic Integrator. You write the edits; the tools compile the real
-2008-06 file, check exact bytes and referenced data, minimize your edits, and submit verified batches.
+Paste this file into a Codex or Claude Code session. The default manual path is
+native class recovery with focused compiler probes. The automatic Integrator and
+editable integration workspace remain available for supported accepted-tree edits
+and ready submissions. Discovery and server acceptance are separate milestones.
 
 ## Continuous, terse operation
 
 Continue until the user stops the run or a configured provider/budget limit requires action.
 After setup succeeds, do not repeat readiness checks, ask to continue, or end after submitting.
-One status line per meaningful change: `FILE: +N local, queued JOB; next FILE`.
+One status line per meaningful change: `CLASS: +N inactive probe matches; blocker X; next Y`
+or, after integration starts, `FILE: +N local linked, queued JOB; next FILE`.
 Do not narrate every command or foreground-wait on a queued rebuild. Byte/data preflight
 and independent server acceptance remain mandatory.
 
@@ -285,8 +386,9 @@ Select once. Reuse client, checkout, installed dependencies and successful setup
 retries/restarts. Repeat setup only for actual missing dependencies or changed build inputs.
 Read this guide once; prefer `--brief` evidence and small method excerpts afterwards.
 
-Submit each completed passing fix immediately; do not accumulate 10–30 targets or wait
-for the rest of a file list. Include only inseparable supporting edits in its coherent batch.
+Submit each completed integration-ready passing fix promptly; do not accumulate 10–30 targets or wait
+for the rest of a file list once the batch is integration-ready. Include only inseparable
+supporting edits. Incomplete native recovery stays inactive with its evidence.
 Save the submitted job ID, then immediately discover more proposals: submit restores the private baseline. Check pending jobs once per batch or every
 few minutes. Use `integrate watch` only when the user requests waiting or a dependent step
 requires acceptance. Revalidate after baseline changes, not after every status poll.
@@ -438,7 +540,7 @@ report both versions; do not repeatedly download the same incompatible archive.
 
 Do not ask the user to locate or attach a Worker ZIP. If `roc/native_try.py`, `research/native-units.json`,
 or `research/native-source-lock.json` is missing, `roc native-try --help` is unavailable, or a package marker
-reports `native_workflow_version` below 15, download the current Worker package yourself:
+reports `native_workflow_version` below 16, download the current Worker package yourself:
 
 - Manifest: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.json
 - Package: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.zip
@@ -452,7 +554,7 @@ into a new folder without overwriting the user's existing checkout or edits:
 $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 $nativeManifest = Invoke-RestMethod ('https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.json?t=' + [guid]::NewGuid().ToString('N'))
-if ($nativeManifest.workflow_version -lt 15 -or
+if ($nativeManifest.workflow_version -lt 16 -or
     $nativeManifest.url -ne 'https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.zip' -or
     $nativeManifest.sha256 -notmatch '^[0-9a-fA-F]{64}$') { throw 'Invalid Worker manifest' }
 $nativeWorkspace = (Get-Location).Path
@@ -507,11 +609,13 @@ indefinitely. Never require the nonexistent `integrate work / packet` actions.
 
 ## Goal
 
-Make byte-exact mined 2008 functions come out of the real rbxgs C++ (native integration). A target is a function
-that is already 100% mined and whose method already exists in the rebuild but compiles differently. Credit comes
-only from the server's independent linked rebuild.
+Recover genuine native class layouts and method bodies from original evidence,
+then integrate coherent proven pieces into the running rebuild. Native recovery
+can include missing declarations and inactive bodies. The accepted-tree repair
+lane handles existing methods which differ from exact-mined references. Only the
+server's independent linked re-verification grants native integration credit.
 
-## Setup (execute before mining)
+## Setup (only missing inputs for the current phase)
 
 Install missing dependencies yourself; downloads are authorized. Do not stop at a setup plan or ask the
 user to download dependencies manually. Reuse installed files. Group setup commands into one terminal
@@ -574,6 +678,7 @@ roc rebuild 2008-06 install
 roc pull 2008-06
 roc lib-fetch rbxgs rbxgs-net rbxgs-appdraw rbxgs-render rbxgs-view openrbx-client
 roc libs-bundle fetch mfc-9.0-rtm
+# Integration-ready batches only; do not run these for every inactive probe:
 roc rebuild 2008-06 prepare
 roc integrate sync
 roc rebuild 2008-06 doctor
@@ -606,7 +711,7 @@ is unavailable, report the named missing dependency and download error; do not r
 If doctor cannot find an installed SDK, set `ROC_WINSDK` to this PC's SDK folder containing `Include` and
 `Lib/kernel32.lib`; never copy the owner's absolute paths. Resolve compiler/SDK errors before continuing.
 
-## Local trial setup
+## Accepted-tree integration trial setup
 
 - `check` edits one source/header. For a header fix, use `--only ADDR` to identify a real caller;
   the tool compiles that caller against the trial header and restores the private overlay afterwards.
@@ -618,7 +723,7 @@ If doctor cannot find an installed SDK, set `ROC_WINSDK` to this PC's SDK folder
 - Drive everything through `roc native-try`. Read headers with your own file tools, but do not import `roc`
   modules in ad-hoc scripts; ask for `--only` or `--context file` instead.
 
-## Loop
+## Accepted-tree integration loop (when ready)
 
 1. `roc native-try targets --limit 20` lists files with waiting near-miss targets, most first. Take the top file.
 2. `roc native-try evidence FILE --context methods [--only ADDR,ADDR]` prints everything you need
@@ -646,7 +751,7 @@ If doctor cannot find an installed SDK, set `ROC_WINSDK` to this PC's SDK folder
 5. Read the diff and make one hypothesis per try. Complete checks for the coherent class/shared-cause batch, then submit passing
    proposals immediately; do not accumulate unrelated work.
    Stop a file after about 3 tries without progress; record its blocker and move on.
-6. **Submit after every completed passing fix.** Run `roc integrate sync`, then
+6. **Submit the completed integration-ready batch promptly.** Run `roc integrate sync`, then
    `roc native-try submit --model YOUR_ACTUAL_MODEL`. It rechecks the required gates,
    claims, stages and queues the fix. Do not wait for 10–30 targets, all files, or session end.
    - When the accepted baseline moves, submit recompiles versioned saved edits against
