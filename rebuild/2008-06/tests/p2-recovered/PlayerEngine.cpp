@@ -4,6 +4,7 @@
 #include "v8datamodel/JointInstance.h"
 #include "humanoid/Humanoid.h"
 #include "humanoid/Freefall.h"
+#include "v8world/Mechanism.h"
 #include "v8xml/SerializerV2.h"
 #include "script/ScriptContext.h"
 #include "script/LuaArguments.h"
@@ -191,6 +192,22 @@ extern "C" int CheckLuaObjectConversion()
 }
 
 static void RecordFreefall(std::vector<int>* values,bool active){values->push_back(active?1:0);}
+extern "C" int CheckJobTrackerOwnership()
+{
+    RBX::Mechanism* first=new RBX::Mechanism;
+    RBX::Mechanism* second=new RBX::Mechanism;
+    RBX::MechanismTracker a,b,c;
+    a.setMechanism(first);b.setMechanism(first);c.setMechanism(second);
+    RBX::MechanismTracker::transferTrackers(first,second);
+    delete first;
+    if(!a.tracking() || !b.tracking() || !c.tracking() ||
+       a.getMechanism()!=second || b.getMechanism()!=second || c.getMechanism()!=second)return 1;
+    b.setMechanism(NULL);
+    if(b.tracking())return 2;
+    RBX::MechanismTracker::transferTrackers(second,NULL);
+    delete second;
+    return a.tracking() || b.tracking() || c.tracking() ? 3 : 0;
+}
 extern "C" int CheckFreefallTransitions()
 {
     if(!g_dataModel)return 1;

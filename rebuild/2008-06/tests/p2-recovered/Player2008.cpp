@@ -44,6 +44,7 @@ extern "C" int BeginClimbObservation();
 extern "C" int EndClimbObservation(float*);
 extern "C" int CheckLuaObjectConversion();
 extern "C" int CheckFreefallTransitions();
+extern "C" int CheckJobTrackerOwnership();
 extern "C" int GetActorTorsoPosition(float*,float*,float*);
 extern "C" int GetPlayerCameraPose(float*);
 extern "C" void SetPlayerCameraTestKey(int);
@@ -765,6 +766,7 @@ int main(int argc, char** argv)
     bool p5ClimbObserve = false;
     bool p5LuaObjectCheck = false;
     bool p5FreefallCheck = false;
+    bool p5JobTrackerCheck = false;
     bool anchorTrace = false;
     bool anchorFlagsTest = false;
     int stabilityExit = 0;
@@ -802,6 +804,7 @@ int main(int argc, char** argv)
         else if (std::strcmp(argv[i], "--p5-climb-watch") == 0) {p5ClimbObserve=true;p5Join=true;p5Play=true;}
         else if (std::strcmp(argv[i], "--p5-lua-object-check") == 0) p5LuaObjectCheck = true;
         else if (std::strcmp(argv[i], "--p5-freefall-check") == 0) p5FreefallCheck = true;
+        else if (std::strcmp(argv[i], "--p5-job-tracker-check") == 0) p5JobTrackerCheck = true;
         else if (std::strcmp(argv[i], "--p5-controller-check") == 0) {p5Control=true;p5ControllerCheck=true;}
         else if (std::strcmp(argv[i], "--p5-input-test") == 0) {p5Control=true;p5InputTest=true;}
         else if (std::strcmp(argv[i], "--anchor-trace") == 0) anchorTrace = true;
@@ -862,6 +865,7 @@ int main(int argc, char** argv)
 
     if(p5LuaObjectCheck){int result=CheckLuaObjectConversion();std::printf("Lua object conversion: %s (%d)\n",result?"FAIL":"PASS",result);ClosePlace();return result;}
     if(p5FreefallCheck){int result=CheckFreefallTransitions();std::printf("freefall transitions: %s (%d)\n",result?"FAIL":"PASS",result);ClosePlace();return result;}
+    if(p5JobTrackerCheck){int result=CheckJobTrackerOwnership();std::printf("job tracker ownership: %s (%d)\n",result?"FAIL":"PASS",result);ClosePlace();return result;}
     if(p5Join && BuildPlayerJoints()){std::printf("actor joint build failed\n");ClosePlace();return 1;}
     if(p5ClimbProbe){StepEngine(1.0f/60.0f);int result=CheckClimbProbe();std::printf("climb probe: %d\n",result);ClosePlace();return result<0?1:0;}
     if(p5Control && AttachPlayerController(p5Spawn?1:0)){std::printf("local controller attach failed\n");ClosePlace();return 1;}

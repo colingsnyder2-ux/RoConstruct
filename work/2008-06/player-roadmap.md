@@ -1712,3 +1712,130 @@ integration and state handoff next. Receipts: p5-simtime-jump-verified and
 p5-simtime-air-verified. Original joint construction still differs, closure
 needed forced termination, and desktop locks were released in TANDEM. P5
 and complete jump/air parity remain open.
+
+## P5 checkpoint: initialize replacement Jumping state (cdc32458ec)
+
+The frozen velocity fixture established a one-tick takeoff delay: at 1.0667s
+original torso velocity was 48.424 while rebuilt was still near zero; at 1.1s
+rebuilt reached 48.328, producing the apparent 6.44-stud/s flight difference.
+This was not evidence to change jump gain or gravity. Jumping now refreshes
+its floor before first force, adapting the same 006453a0 immediate replacement
+update used for Landed. The engine and player were explicitly rebuilt.
+
+At cdc32458ec, simulation timestamps align and the committed gates pass:
+maximum sampled jump-position difference 0.1035 studs (bound 0.12); in-flight
+velocity difference 0.0961 studs/s (bound 0.12 after 1.05s). Pre-jump original
+velocity remains about -1 versus rebuilt near zero. P3 lifetime/cache and
+Novetus animation pass. Receipts: p5-jump-prime-verified-{position,velocity,p3,
+animation}. The Jump flag probe sampled zeros in both clients; it does not
+establish request timing or callback order independently.
+
+Spawn movement regression had an old 10..14 final-Z range from before recovered
+air control. Holding forward at frames 12..71 now moves 16.0016 studs, consistent
+with original 16-stud/s goals. At 51065029a9 its gate checks displacement against
+idle baseline at 16 +/-0.15 studs; idle remains separately bounded. Receipt:
+p5-jump-prime-spawn-current. Original joint construction and callback/state
+lifetime still differ. This closes bounded jump position/flight velocity for
+this fixture, not complete humanoid parity or P5. Desktop locks released.
+
+## P5 checkpoint: initialize replacement air goal (5d94151e0d)
+
+Original transition wrapper 00645450 calls replacement update and goal update
+before the next force; Flying/Freefall goal update 00667510 obtains walk
+velocity through 00643b60. Donor Flying initialized desired velocity to zero
+until a later step. Its constructor now adapts the immediate goal initialization
+from Humanoid walk direction. No class layout changed; engine/player rebuilt.
+
+At 5d94151e0d, frozen air X samples remain within 0.000001 studs through one
+second and improve from 0.5304 to 0.0031 studs error at three/four seconds.
+The temporary 0.532/0.531 offset at 1.5/2s remains. The gate now covers early
+and late intervals at 0.01 studs and keeps that intermediate gap observational.
+Frozen jump, original walking, P3 lifetime/cache, spawn and Novetus animation
+pass. Receipts: p5-air-prime-verified and its -jump, -walk, -p3, -spawn,
+-animation siblings. Desktop lock released in TANDEM.
+
+Full state lifetime/order remains donor-based. Original RunningNoPhysics
+constructor 00667370 and StrafingNoPhysics 00667210 use base 0066f070; these
+states are absent from the donor path. Trace their entry/exit and common
+velocity implementation before deciding whether they explain the remaining
+landing offset. Do not claim complete air/state parity or P5 from these gates.
+
+## P5 checkpoint: native active-state and job registration (590c4c73f4)
+
+Observer now audits live original states after frozen sampling. The pinned
+binary's RTTI identifies twelve primary state vtables. Native Humanoid callback
+005dc740 uses listener offset 0x1a4 and state-holder offset 0x7c, proving owner
+base+0x220. Each candidate must be referenced back from that owner's active
+state holder; stale heap vtables alone are not accepted.
+
+At 590c4c73f4 the settled fall has one active RunningNoPhysics state
+(vtable 0084ce10). The moving fixture has one active Dead state (0084cce0)
+after leaving the bounded floor by the later audit. Frozen comparison gates
+still pass. Receipts: p5-native-state-all-fall and p5-native-state-all-air.
+Initial limited coverage failed the moving audit; expanding to all twelve
+RTTI-verified state types resolved it without weakening owner validation.
+
+Recovered MovingNoPhysicsBase constructor 0066f070 sets Primitive flag aa,
+holds torso/control-scope ownership and registers its SimJob. Direct calls
+0066f267 ->005e93b0 (stage type 6 lookup) and 0066f26e ->0064d1e0 ->0064d0f0
+connect that registration. Existing source for 0064d0f0 pushes the job into a
+stage list and stores its iterator; source analog Edge names are provisional.
+Moving update 0066f2c0 sets frame and velocity directly, including signed
+vertical correction; this explains why matching force-only movement does not
+prove native RunningNoPhysics behavior. Donor SimJobStage only manages
+Mechanisms and lacks this registration interface. Next integrate the existing
+job source with removal/stepping ownership verified, then native state entry
+and exit. Do not substitute another guessed state before that edge is proven.
+No shared ABI edits made. Desktop locks released; P5 remains open.
+
+## P5 checkpoint: SimJob registration/removal contract (ba2e1b7dfe)
+
+Live RunningNoPhysics now verifies its secondary SimJob at state+0xa0,
+secondary vtable 0084cdf8, saved iterator owner/node at job+0x1c/+0x20,
+node payload back to the job, and both reciprocal ring links. Owner active-state
+validation remains required. Receipt: p5-simjob-links-verified. Frozen fall
+gate still passes. This proves a registered live job, not merely matching
+vtable bytes in stale memory.
+
+Dispatch correction: secondary virtual entries at 0084cdf8 are destructor
+00667400 and two copies of thunk 00667160. The latter adjusts this by -0xa0
+and reaches 0066eaa0, returning the torso assembly via 005d90a0/005e7570;
+these are identity queries, not movement callbacks. Actual motion is the state
+goal-update virtual 006672b0 ->0066f2c0. Do not invent a virtual step interface
+on SimJob. Native stage registration is part of assembly/simulation ownership.
+
+Removal: scalar destructor 00667410 ->MovingNoPhysicsBase destructor 0066ee10
+->release 0066ed50 clears torso flag aa with 005e8140, disconnects ancestry,
+finds stage through 005e93b0, removes job through 0064d1f0 ->0064d180,
+releases control-scope ownership through 005e9040 and resets torso shared_ptr.
+The stage removal first updates job grouping via 005e53a0, erases saved list
+iterator, and clears assembly+0x40 through job's assembly query. Next resolve
+005e53a0's vector element/assembly contract and stage ownership before adding
+this native dependency; donor SimJobStage is not ABI-compatible. No shared ABI
+changes made. Desktop released; full P5 remains open.
+
+## P5 checkpoint: tracker collection and linked lifetime gate (fc6d0dd4ce)
+
+005e53a0 is not an assembly-vector transfer: its elements are tracker observers
+whose first field is their tracked owner. Recovered source removes each tracker
+from its old owner's vector, then appends/reassigns it to the destination (or
+clears it). Existing donor MechanismTracker::setMechanism/transferTrackers in
+Mechanism.cpp implement this contract and already serve stage removal. This
+resolves the opaque collection role in SimJob constructor 005e50f0; it does
+not establish an original C++ declaration from the analog names alone.
+
+New --p5-job-tracker-check exercises three trackers across two owners,
+transfer followed by old-owner deletion, individual detach, then transfer to
+null and last-owner deletion. It runs in the linked player and passes at
+fc6d0dd4ce; map selects transferTrackers from linked:Mechanism.obj. Local COFF
+comparison finds no byte-identical original address for that donor body, so
+no native byte credit is claimed. P3 lifetime/self/cache regressions pass.
+Receipts: p5-job-tracker-verified and p5-job-tracker-verified-p3.
+
+Native single-assembly SimJob wrapper constructor 005e51e0 extends the 36-byte
+base by one assembly pointer at +0x24; both identity slots return that pointer
+through 0074eed0. Donor Mechanism instead stores an assembly set. Next split
+base tracker/list ownership from donor mechanism grouping, preserving this
+linked lifecycle gate and verified native registration/removal contracts.
+Log shared layout changes in TANDEM before implementation. Full native job
+and no-physics state integration, and P5, remain open.
