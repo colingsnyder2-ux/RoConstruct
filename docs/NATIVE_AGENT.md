@@ -154,7 +154,7 @@ reuse the recorded inventory; rescan only missing/moved paths or changed require
 
 ## Editable integration workspace (when ready)
 
-Use a current Worker with `roc native-try edit --help` and native workflow version 16.
+Use a current Worker with `roc native-try edit --help` and native workflow version 17.
 This workspace is for edits against the accepted tree after the native recovery
 loop produces a coherent supported change; it is not mandatory for inactive probes.
 Edit real C++/header files in the editable workspace printed by the tool. No hand-written
@@ -540,7 +540,7 @@ report both versions; do not repeatedly download the same incompatible archive.
 
 Do not ask the user to locate or attach a Worker ZIP. If `roc/native_try.py`, `research/native-units.json`,
 or `research/native-source-lock.json` is missing, `roc native-try --help` is unavailable, or a package marker
-reports `native_workflow_version` below 16, download the current Worker package yourself:
+reports `native_workflow_version` below 17, download the current Worker package yourself:
 
 - Manifest: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.json
 - Package: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.zip
@@ -554,7 +554,7 @@ into a new folder without overwriting the user's existing checkout or edits:
 $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 $nativeManifest = Invoke-RestMethod ('https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.json?t=' + [guid]::NewGuid().ToString('N'))
-if ($nativeManifest.workflow_version -lt 16 -or
+if ($nativeManifest.workflow_version -lt 17 -or
     $nativeManifest.url -ne 'https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.zip' -or
     $nativeManifest.sha256 -notmatch '^[0-9a-fA-F]{64}$') { throw 'Invalid Worker manifest' }
 $nativeWorkspace = (Get-Location).Path
@@ -710,6 +710,22 @@ preserve modified initialized submodules. Do not patch vendor files by hand. If 
 is unavailable, report the named missing dependency and download error; do not replace it with stubs.
 If doctor cannot find an installed SDK, set `ROC_WINSDK` to this PC's SDK folder containing `Include` and
 `Lib/kernel32.lib`; never copy the owner's absolute paths. Resolve compiler/SDK errors before continuing.
+
+## Reproducible rebuild source and dependency failures
+
+The versioned `rebuild/2008-06/patches/rebuild-baseline.json` preserves the committed
+rebuild/P5 overlay which the glue sources require. The generator validates that
+snapshot, accounts for the exact historical accepted batches already reconciled
+there, then strictly applies newer accepted batches. `integrate sync` must reproduce
+that same source baseline; it must not drop the humanoid/SimJob declarations while
+keeping newer glue. This source snapshot grants no credits and swaps no player EXE.
+
+A failed or empty source layer invalidates build readiness even if an old archive
+links or a subset smoke passes. Inspect `compile_errors` / `source_layers` in the
+module report and `layer-*/errors.json`. Prepare rebuilds known-bad dependencies;
+remaining errors stop it. A failed rebuild leaves the last successful report for
+comparison, not as proof that the current sources passed. Repair the named source
+configuration; do not reinstall compilers or suppress source failures.
 
 ## Accepted-tree integration trial setup
 

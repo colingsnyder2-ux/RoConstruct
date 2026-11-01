@@ -13,6 +13,7 @@ import time
 import uuid
 from pathlib import Path
 
+from roc import rebuild
 from roc.integration import CLIENT, MODULE, ROOT, atomic_json, digest, merge_patches, canonical_patches
 
 WRITABLE_OUT = {"RbxgsApp", "tests"}  # out/ folders a snapshot build or milestone link writes into
@@ -320,6 +321,9 @@ else:
 def collect(root):
     out = root / "rebuild" / CLIENT / "out"
     report = json.loads((out / "RbxgsApp/report.json").read_text())
+    errors = rebuild.source_errors(out / 'RbxgsApp', report=report)
+    if errors:
+        report['compile_errors'] = errors
     status = (root / "integration-status.log").read_text(encoding="utf-8", errors="replace")
     import re
     distinct = re.search(r"distinct 2008 functions reproduced by linked rebuilt code: (\d+)", status)
@@ -337,7 +341,7 @@ def other_module_owned(root):
     for report in (root / "rebuild" / CLIENT / "out").glob("*/report.json"):
         if report.parent.name != "RbxgsApp":
             data = json.loads(report.read_text())
-            if data.get("linked"):
+            if data.get("linked") and not rebuild.source_errors(report.parent, report=data):
                 owned.update(data.get("owned_addrs", []))
     return owned
 
@@ -365,7 +369,7 @@ def check_credited(root, report, addresses):
     for path in (Path(root)/'rebuild'/CLIENT/'out').glob('*/report.json'):
         if path.parent.name != report['module']:
             other = json.loads(path.read_text())
-            if other.get('linked') and other.get('test_exit') == 0:
+            if other.get('linked') and other.get('test_exit') == 0 and not rebuild.source_errors(path.parent, report=other):
                 candidates.append(other)
     for current in candidates:
         present = missing & set(current.get('owned_addrs', []))
@@ -435,6 +439,8 @@ def check_gates(result, baseline=None, elsewhere=frozenset(), require_gain=True)
     """elsewhere: addresses another module still owns; RbxgsApp may stop claiming them (e.g. a coincidental
     match that a real layout fix moves away) because global coverage does not drop."""
     report = result["report"]
+    if report.get('compile_errors'):
+        raise ValueError('Module source compilation gate failed')
     if not report["linked"] or report.get("test_exit") != 0:
         raise ValueError("Module build/runtime gate failed")
     for milestone in ("M2", "M4a", "M5"):

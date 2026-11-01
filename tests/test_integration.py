@@ -1016,12 +1016,13 @@ def test_runtime_failure_includes_test_and_windows_exception():
         integration_verify.check_gates(result)
 
 
-@pytest.mark.parametrize("failure", ["runtime", "milestone", "size", "base", "probe", "coverage", "lost", "distinct"])
+@pytest.mark.parametrize("failure", ["source", "runtime", "milestone", "size", "base", "probe", "coverage", "lost", "distinct"])
 def test_every_gate_rejects_regression(failure):
     before = gate_result()
     after = copy.deepcopy(before)
     after["report"]["owned_addrs"].append("00500001")
     after["distinct"] += 1
+    if failure == "source": after["report"]["compile_errors"] = {"glue": {"unit.cpp": "compile failed"}}
     if failure == "runtime": after["report"]["test_exit"] = 1
     if failure == "milestone": after["milestones"]["M5"]["exit"] = 1
     if failure == "size": after["size"]["rows"][0]["delta"] = 4
@@ -1045,6 +1046,14 @@ def test_loss_allowed_only_when_another_module_still_owns_it():
     after["report"]["owned_addrs"] = []  # nothing new: still rejected even if the loss is covered
     with pytest.raises(ValueError, match="losing"):
         integration_verify.check_gates(after, before, elsewhere={"00500000"})
+
+
+def test_failed_source_module_cannot_cover_ownership_loss(tmp_path):
+    out = tmp_path / 'rebuild/2008-06/out/Dependency'
+    (out / 'layer-upstream').mkdir(parents=True)
+    (out / 'report.json').write_text(json.dumps(dict(linked=True, test_exit=0, owned_addrs=['00500000'])))
+    (out / 'layer-upstream/errors.json').write_text(json.dumps({'unit.cpp': 'compile failed'}))
+    assert integration_verify.other_module_owned(tmp_path) == set()
 
 
 def test_two_pcs_use_http_without_shared_client_files(promotions):

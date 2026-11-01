@@ -163,6 +163,20 @@ def merge_patches(base, additions):
     return result
 
 
+
+def project_patches(base, project, accepted):
+    """Reproduce a pinned project source baseline, then strictly replay newer accepted batches."""
+    if project:
+        base = merge_patches(base, project['patches'])
+        if digest(base) != project['overlay_digest']:
+            raise ValueError('Rebuild source snapshot differs from its pinned overlay')
+    included = set(project.get('included_accepted_batches', []))
+    for batch in accepted:
+        if digest(batch) not in included:
+            base = merge_patches(base, batch)
+    return base
+
+
 def overlay_delta(base, candidate):
     """Add recipes, or replace an existing recipe with an exact baseline guard."""
     base = canonical_patches(base)

@@ -11,6 +11,7 @@
    "recipe": "g3d-6.09-rbx2008",
    "files": "GLG3Dcpp/*.cpp",
    "direct": true,
+   "extra_defines": "NO_SDL_MAIN",
    "flags": "/O2 /GS- /EHsc /MD"
   },
   {
@@ -19,6 +20,7 @@
    "recipe": "g3d-6.09-rbx2008",
    "files": "contrib/ArticulatedModel/ToneMap.cpp",
    "direct": true,
+   "extra_defines": "NO_SDL_MAIN",
    "flags": "/O2 /GS- /EHsc /MD"
   }
  ],

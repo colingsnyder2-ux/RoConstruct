@@ -212,7 +212,7 @@ def stage(slug, spec, out):
     shutil.copytree(ROOT / "roc" / "web", out / "roc" / "web", dirs_exist_ok=True)
     (out / "roc" / "__init__.py").write_text("", encoding="utf-8")
     (out / "roconstruct-package.json").write_text(json.dumps(
-        {"package": slug, "revision": version(), "native_workflow": True, "native_workflow_version": 16,
+        {"package": slug, "revision": version(), "native_workflow": True, "native_workflow_version": 17,
          "matching_workflow_version": 4}, indent=2) + "\n", encoding="utf-8")
     for name, text in spec["docs"].items():
         (out / name).write_text(text, encoding="utf-8")
@@ -376,7 +376,8 @@ def prepare_downloads(package):
         marker = json.loads(zipped.read("roconstruct-package.json"))
         if marker.get("matching_workflow_version", 0) < 4 or not {
                 "docs/MATCHING_AGENT.md", "docs/NATIVE_AGENT.md",
-                "rebuild/2008-06/manifests/abi-evidence.json"} <= set(zipped.namelist()):
+                "rebuild/2008-06/manifests/abi-evidence.json",
+                "rebuild/2008-06/patches/rebuild-baseline.json"} <= set(zipped.namelist()):
             raise ValueError("Worker ZIP lacks the matching/native workflows; rebuild it")
         abi = zipped.read('rebuild/2008-06/manifests/abi-evidence.json')
     folder = ROOT / "local/findings/data"
@@ -388,7 +389,7 @@ def prepare_downloads(package):
     shutil.copy2(package, archive)
     for name in ("NATIVE_AGENT.md", "MATCHING_AGENT.md"):
         shutil.copy2(ROOT / "docs" / name, folder / name)
-    data.update(schema=1, workflow_version=16, matching_workflow_version=4,
+    data.update(schema=1, workflow_version=17, matching_workflow_version=4,
                 abi_manifest_sha256=hashlib.sha256(abi).hexdigest(), abi_manifest_classes=len(json.loads(abi)),
                 url=base + archive.name, sha256=hashlib.sha256(archive.read_bytes()).hexdigest(),
                 size=archive.stat().st_size, guide=base + "NATIVE_AGENT.md", matching_guide=base + "MATCHING_AGENT.md",

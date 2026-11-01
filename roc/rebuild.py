@@ -974,6 +974,18 @@ def dll_import_lib(client, dll):
     return lib
 
 
+def source_errors(out, spec=None, report=None):
+    """Include legacy per-layer failures even when an old link/smoke report says success."""
+    errors = dict((report or {}).get('compile_errors', {}))
+    paths = [out / ('layer-' + layer['name']) / 'errors.json' for layer in spec['layers']] if spec else out.glob('layer-*/errors.json')
+    for path in paths:
+        if path.exists():
+            failed = json.loads(path.read_text(encoding='utf-8'))
+            if failed:
+                errors[path.parent.name.removeprefix('layer-')] = failed
+    return errors
+
+
 def build_module(client, name, log=print):
     """Build every layer of modules/<name>.json, resolve the link, run its test, write a report."""
     from roc import libs
@@ -993,7 +1005,7 @@ def build_module(client, name, log=print):
         tests.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(mfc_import_lib(client), tests / "mfc90.lib")
     ov = build_overlay(client, spec["name"], spec.get("overlay"))
-    layer_dirs = []
+    layer_dirs, layer_errors, source_layers = [], {}, {}
     for layer in spec["layers"]:
         folder = out / ("layer-" + layer["name"])
         if layer["mode"] == "recipe":
@@ -1052,9 +1064,21 @@ def build_module(client, name, log=print):
         for obj in folder.glob("*.obj"):
             if obj.name not in live_objects:
                 obj.unlink()
+        if not live_objects:
+            errors['<sources>'] = 'No source files matched this declared layer'
+        source_layers[layer['name']] = len(live_objects)
+        if errors:
+            layer_errors[layer['name']] = errors
         _dump(folder / "errors.json", errors)
         log("layer %s: %d compile errors%s" % (layer["name"], len(errors), (" (" + ", ".join(sorted(errors)) + ")") if errors else ""))
         layer_dirs.append(folder)
+    if layer_errors:
+        report = dict(module=spec['name'], linked=False, test_exit=None, test_output='Source compilation failed',
+                      compile_errors=layer_errors, source_layers=source_layers, unresolved=[], object_functions=0,
+                      owned_2008=0, owned_2008_16b=0, owned_addrs=[], choices={}, owned_symbols_file='owned-symbols.json')
+        _dump(out / 'report.json', report)
+        log('%s: source compilation failed; link/smoke skipped (see report.json)' % spec['name'])
+        return report
     deps, pending = [], list(spec.get("depends", []))
     while pending:  # transitive: G3D needs zlib-winapi wherever G3D goes
         dep = pending.pop(0)
@@ -1062,8 +1086,13 @@ def build_module(client, name, log=print):
         dep_lib = workspace(client) / "out" / dep_spec["name"] / "linked" / "linked.lib"
         if dep_lib in deps:
             continue
-        if not dep_lib.exists():
-            build_module(client, dep, log=log)
+        dep_report_path = dep_lib.parent.parent / 'report.json'
+        dep_report = json.loads(dep_report_path.read_text()) if dep_report_path.exists() else {}
+        if not dep_lib.exists() or not dep_report.get('linked') or source_errors(dep_lib.parent.parent, dep_spec, dep_report):
+            dep_report = build_module(client, dep, log=log)
+        if not dep_report.get('linked') or source_errors(dep_lib.parent.parent, dep_spec, dep_report) or \
+                dep_spec.get('test') and dep_report.get('test_exit') != 0:
+            raise RuntimeError('Dependency source build/link/smoke failed: ' + dep)
         deps.append(dep_lib)
         pending += dep_spec.get("depends", [])
     deps += [dll_import_lib(client, dll) for dll in spec.get("import_dlls", [])]
@@ -1139,9 +1168,12 @@ def build_module(client, name, log=print):
     owned, owned16 = len(owned_addrs), len(owned16_addrs)
     report = {"module": spec["name"], "linked": result["linked"], "test_exit": result["exit"], "test_output": result["output"][-500:],
               "unresolved": result["unresolved"], "object_functions": funcs, "owned_2008": owned, "owned_2008_16b": owned16,
-              "choices": result.get("choices"), "owned_addrs": sorted(owned_addrs), "owned_symbols_file": "owned-symbols.json"}
+              "choices": result.get("choices"), "owned_addrs": sorted(owned_addrs), "owned_symbols_file": "owned-symbols.json",
+              "compile_errors": {}, "source_layers": source_layers}
     _dump(out / "owned-symbols.json", owned_symbols)
     _dump(out / "report.json", report)
+    if report['linked'] and report['test_exit'] == 0:
+        _dump(out / 'last-successful-report.json', report)
     log("%s: linked=%s test_exit=%s; %d object functions, %d byte-identical to unique 2008 functions (%d of >=16 bytes)"
         % (spec["name"], result["linked"], result["exit"], funcs, owned, owned16))
     try:
@@ -1279,15 +1311,16 @@ def status(client="2008-06", log=print):
             rows.append((spec_path.stem, "not built", "", "", ""))
             continue
         r = json.loads(report_path.read_text(encoding="utf-8"))
+        errors = source_errors(report_path.parent, spec, r)
         compiled_all.update(r.get("owned_addrs", []))
         linked = workspace(client) / "out" / spec["name"] / "linked"
-        for obj in linked.glob("*.obj") if r["linked"] else ():
+        for obj in linked.glob("*.obj") if r["linked"] and not errors else ():
             for _, size, h in pair(client, match.coff_functions(obj.read_bytes())):
                 if len(h) == 1:
                     owned_all.update(h)
                 elif size >= 16:  # identical 2008 functions (e.g. template copies): reproduced, address ambiguous
                     shared_all.update(h)
-        rows.append((spec_path.stem, "linked" if r["linked"] else "LINK FAIL",
+        rows.append((spec_path.stem, "SOURCE FAIL" if errors else "linked" if r["linked"] else "LINK FAIL",
                      "test ok" if r.get("test_exit") == 0 else "test %s" % r.get("test_exit"),
                      r["object_functions"], r["owned_2008"]))
     for name, state, test, funcs, owned in rows:
@@ -1337,7 +1370,8 @@ def progress(client="2008-06", log=print, notify=True):
         if not report_path.exists():
             continue
         report = json.loads(report_path.read_text(encoding="utf-8"))
-        linked = bool(report.get("linked"))
+        errors = source_errors(report_path.parent, spec, report)
+        linked = bool(report.get("linked")) and not errors
         if linked:
             linked_count += 1
             linked_dir = out_dir / spec["name"] / "linked"
@@ -1350,7 +1384,8 @@ def progress(client="2008-06", log=print, notify=True):
             "name": spec["name"],
             "linked": linked,
             "test": report.get("test_exit"),
-            "exact": report.get("owned_2008", 0),
+            "exact": 0 if errors else report.get("owned_2008", 0),
+            "compileErrors": sum(len(failed) for failed in errors.values()),
             "objectFunctions": report.get("object_functions", 0),
             "unresolved": len(unresolved),
         })
