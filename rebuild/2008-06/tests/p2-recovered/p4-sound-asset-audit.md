@@ -152,6 +152,15 @@ not proven. Reverb and service attachment remain unresolved, so this method is
 not linked into the diagnostic executable or runtime-tested. Error reporting
 uses the same documented user-setting gate adaptation as other sound pieces.
 
+The original 005b8880 reverb switch is now adapted to the real 0x7c FMOD SDK
+structure and 24 native presets. ReverbType::Room intentionally uses the same
+padded-cell preset as PaddedCell; native jump-table cases 2 and 3 confirm it.
+`compare_p4_reverb.py` executes the original switch under x86 emulation and
+compares all 24 emitted structures byte-for-byte with the diagnostic output;
+invalid enum and null-system paths make no FMOD call. The NOSOUND diagnostic
+also submits the Room preset to the actual FMOD DLL. This tests preset data and
+SDK interoperation; the service method is not yet called by player lifecycle.
+
 An authored fixture with one Workspace Sound currently loads but retains zero
 Sounds. The load-only class-name traversal agrees with the independent Humanoid
 RTTI count on a control. A supplied place containing eight serialized Sounds

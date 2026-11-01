@@ -18,6 +18,8 @@ def main():
     binary = root / 'rebuild/2008-06/out/tests/P4SoundAssetTest/P4SoundAssetTest.exe'
     content = root / 'rebuild/2008-06/tests/fixtures/p4-assets'
     names = ['rebuild/2008-06/tests/PlayerNativeSound.cpp', 'rebuild/2008-06/tests/PlayerNativeSoundService.cpp',
+             'rebuild/2008-06/tests/PlayerNativeSoundGC.cpp', 'rebuild/2008-06/tests/PlayerNativeSoundChannel.cpp',
+             'rebuild/2008-06/tests/PlayerNativeReverb.cpp', 'rebuild/2008-06/tests/PlayerNativeReverb.h',
              'rebuild/2008-06/tests/P4SoundAssetTest.cpp',
              'rebuild/2008-06/modules/p4-sound-asset.json', 'rebuild/2008-06/tests/record_p4_sound.py',
              'rebuild/2008-06/glue/rbxgs/glue_link_stubs.cpp',
@@ -38,6 +40,7 @@ def main():
                'exe_sha256': sha(binary), 'map_sha256': sha(binary.with_suffix('.map')),
                'sources_sha256': {name: sha(root / name) for name in names},
                'tone_sha256': sha(content / 'tone.wav'), 'command': command, 'cwd': str(output),
+               'reverb_presets_sha256': sha(output / 'reverb-presets.bin'),
                'exit': run.returncode, 'P4_complete': False,
                'scope': 'Native Sound memory loader, decoded PCM and ownership; NOSOUND diagnostic.',
                'remaining': ['Sound service/factory/reflection/heartbeat integration', 'audible output and original audio comparison']}
@@ -49,6 +52,7 @@ def main():
     assert run.returncode == 0, stdout
     assert len(lines) == 1 and sha(dll) == sha(root / 'clients/2008-06/fmodex.dll')
     assert 'P4 Sound loader PASS version=00041406 cycles=16 pcm_bytes=11024 samples=5512 2D/3D/cache/detach/missing' in stdout
+    assert 'P4 Sound reverb PASS 24 presets/invalid/original room/FMOD' in stdout
     print('P4 Sound asset prerequisite PASS; service/audible gate open')
 
 

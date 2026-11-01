@@ -11,6 +11,7 @@
 #undef private
 #include "v8datamodel/GameSettings.h"
 #include <fmod.hpp>
+#include "PlayerNativeReverb.h"
 #include <cstdio>
 #include <cmath>
 #include <cstring>
@@ -58,6 +59,23 @@ int main(int argc,char** argv){
         std::printf("fmod loaded: %s\n",dllPath);
         // Isolate loader/PCM ownership. No claim of audible or service playback.
         check(system->setOutput(FMOD_OUTPUTTYPE_NOSOUND));check(system->init(100,FMOD_INIT_NORMAL,0));
+        {
+            FMOD_REVERB_PROPERTIES preset;
+            FILE* presets=std::fopen("reverb-presets.bin","wb");verify(presets!=0);
+            for(int i=0;i<24;++i){
+                verify(RBX::Soundscape::nativeReverbPreset(static_cast<RBX::Soundscape::ReverbType>(i),preset));
+                verify(std::fwrite(&preset,sizeof(preset),1,presets)==1);
+            }
+            std::fclose(presets);
+            verify(!RBX::Soundscape::nativeReverbPreset(static_cast<RBX::Soundscape::ReverbType>(24),preset));
+            verify(!RBX::Soundscape::nativeReverbPreset(static_cast<RBX::Soundscape::ReverbType>(-1),preset));
+            verify(RBX::Soundscape::nativeReverbPreset(RBX::Soundscape::NoReverb,preset));
+            verify(preset.Environment==-1 && preset.Room==-10000 && preset.Flags==0x33f);
+            verify(RBX::Soundscape::nativeReverbPreset(RBX::Soundscape::Room,preset));
+            verify(preset.Environment==1 && preset.RoomHF==-6000); // Original shares padded-cell preset.
+            check(system->setReverbProperties(&preset));
+            std::printf("P4 Sound reverb PASS 24 presets/invalid/original room/FMOD\n");
+        }
         {
             typedef std::map<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound> > Sounds;
             Sounds sounds;bool retained[64];
