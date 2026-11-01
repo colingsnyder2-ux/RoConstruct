@@ -17,6 +17,7 @@ class StarterPackService;
 class GuiRoot;
 class GuiTarget;
 class IMetric;
+class Selection;
 extern const char* sDataModel;
 
 // Inactive candidate: RTTI, constructor and recovered 0057a1b0 source define
@@ -53,5 +54,7 @@ public:
     virtual void setDirty(bool value) { dirty = value; }
     virtual bool isDirty() const { return dirty; }
     Workspace* getWorkspace() const { return workspace.get(); }
+    Selection* getSelection(); // Original service lookup 004153b0; linkage pending.
+    static void closeDataModel(boost::shared_ptr<DataModel>, bool);
 };
 }
