@@ -42,7 +42,8 @@ def test_existing_expected_abi_is_not_replaced_with_candidate_data(tmp_path, mon
     assert path.read_bytes() == content
 
 
-def test_cold_prepare_generates_rtti_and_builds_dependencies_with_declared_profiles(tmp_path, monkeypatch):
+@pytest.mark.parametrize("boost_present", [False, True])
+def test_cold_prepare_generates_rtti_and_builds_dependencies_with_declared_profiles(tmp_path, monkeypatch, boost_present):
     monkeypatch.setattr(rebuild, 'ROOT', tmp_path)
     monkeypatch.setattr(rebuild_install, 'install', lambda *a: None)
     monkeypatch.setattr(clients, 'load', lambda: {'2008-06': {}})
@@ -65,17 +66,31 @@ def test_cold_prepare_generates_rtti_and_builds_dependencies_with_declared_profi
     monkeypatch.setattr(libs, 'winsdk_include', lambda: 'SDK')
     monkeypatch.setattr(rebuild, 'toolchain', lambda *a: {k: 'installed' for k in
         ('cl', 'link', 'lib', 'vc_include', 'sdk_include', 'sdk_lib', 'atlmfc_include')})
-    specs = {'rbxgs-app': dict(name='RbxgsApp', depends=['g3d'], layers=[{'cl':21022}]),
+    specs = {'rbxgs-app': dict(name='RbxgsApp', depends=['g3d', 'boost'], layers=[{'cl':21022}]),
              'g3d': dict(name='G3D', depends=['zlib'], layers=[{'cl':21022}], test='g3d-smoke'),
              'zlib': dict(name='Zlib', layers=[{'cl':50727}])}
+    specs['boost'] = json.loads((Path(__file__).resolve().parents[1] / 'rebuild/2008-06/modules/boost.json').read_text())
+    monkeypatch.setattr(libs, 'LIBS', tmp_path / 'tools/libs')
+    boost = libs.LIBS / 'boost_1_34_1'
+    if boost_present:
+        boost.mkdir(parents=True)
+    fetched = []
+    def fetch(recipe):
+        assert recipe == 'boost-1.34.1'
+        fetched.append(recipe)
+        boost.mkdir(parents=True)
+    monkeypatch.setattr(libs, 'fetch', fetch)
     monkeypatch.setattr(rebuild, 'load_module', lambda client, name: specs[name])
     built = []
     def build(client, name):
         assert 50727 in installed and (work / 'vtables.json').exists()
+        assert boost.is_dir(), 'Fetch standalone Boost before compiling dependencies'
         built.append(name)
         return {'linked':True, 'test_exit':0}
     monkeypatch.setattr(rebuild, 'build_module', build)
     rebuild_install.prepare(log=lambda *a: None)
+    assert fetched == ([] if boost_present else ['boost-1.34.1'])
+    assert built == ['zlib', 'g3d', 'boost']
 
 
 def test_install_restores_missing_milestone_inputs_when_module_exists(tmp_path):

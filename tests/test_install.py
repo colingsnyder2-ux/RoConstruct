@@ -400,7 +400,7 @@ def test_packages_split_keeps_maintainer_modules_out():
         assert set(build.PACKAGES[slug]["modules"]) == worker_modules
     # One launcher: roc.cmd (plus install.cmd for first-time bootstrap) in every package.
     for spec in build.PACKAGES.values():
-        assert {"roc.cmd", "install.cmd", "roc.sh", "install.sh"} <= set(spec["files"])
+        assert {".gitattributes", "roc.cmd", "install.cmd", "roc.sh", "install.sh"} <= set(spec["files"])
         assert {"docs/NATIVE_AGENT.md", "docs/MATCHING_AGENT.md", "research/libs-bundle.json", "research/native-units.json"} <= set(spec["files"])
         assert not [f for f in spec["files"] if f.endswith(".cmd") and f not in ("roc.cmd", "install.cmd")]
 
@@ -1047,3 +1047,13 @@ def test_worker_stages_repository_native_dependency(tmp_path, monkeypatch):
     assert json.loads((staged / 'research/native-units.json').read_text()) == {'../rbxgs/Client/App': {}}
     with pytest.raises(SystemExit, match='Missing packaged native dependency'):
         build.stage('worker', {'files': list(files)[1:], 'modules': [], 'docs': {}}, tmp_path / 'missing')
+
+
+def test_package_rejects_crlf_generator_before_publication(tmp_path):
+    import pytest
+    build = load_build()
+    generator = tmp_path / 'rebuild/2008-06/patches/make_rbxgs_client.py'
+    generator.parent.mkdir(parents=True)
+    generator.write_bytes(b'pass\r\n')
+    with pytest.raises(SystemExit, match='LF line endings'):
+        build.verify(tmp_path)

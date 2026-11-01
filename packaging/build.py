@@ -45,7 +45,7 @@ WORKER_MODULES += ["integration_local", "integration_context", "integration_poli
 WORKER_MODULES += ["rebuild_audit", "graph", "source"]
 SERVER_MODULES += ["integration_notify", "integration_site", "agent_inbox"]
 
-COMMON_FILES = ["roc.py", "roc.cmd", "roc.sh", "install.cmd", "install.sh",
+COMMON_FILES = [".gitattributes", "roc.py", "roc.cmd", "roc.sh", "install.cmd", "install.sh",
                 "packaging/organize-local.ps1", "research/repair-patterns.json", "docs/SETUP.md", "docs/SERVER.md",
                 "research/log.jsonl",
                 "CLAUDE.md", "AGENTS.md", "docs/AGENT_GUIDE.md", "research/lessons.json", "research/reports.json",
@@ -262,6 +262,9 @@ def audit(staged, spec):
 
 def verify(staged):
     """Import every module in the staged tree, from that tree, with the repo off the path."""
+    generator = staged / 'rebuild/2008-06/patches/make_rbxgs_client.py'
+    if b'\r' in generator.read_bytes():
+        raise SystemExit('Native generator must use LF line endings for server fingerprint compatibility')
     modules = sorted(p.stem for p in (staged / "roc").glob("*.py") if p.stem != "__init__")
     code = "import importlib,sys\n" \
            "for name in %r:\n    importlib.import_module('roc.' + name)\n" \
