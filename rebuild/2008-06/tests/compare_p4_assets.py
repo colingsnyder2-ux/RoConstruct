@@ -1,6 +1,7 @@
 """Compare bounded P4 asset regions in original UI and rebuilt backbuffer captures."""
 import hashlib
 import json
+import sys
 from pathlib import Path
 
 import numpy as np
@@ -10,10 +11,13 @@ from PIL import Image
 def main():
     root = Path(__file__).resolve().parents[3]
     original = root / 'work/2008-06/original-p4-reference'
-    player = root / 'work/2008-06/p4-disk-assets-88e67662d4'
+    player = root / 'work/2008-06' / (sys.argv[1] if len(sys.argv) > 1 else 'p4-disk-assets-88e67662d4')
+    player_receipt = json.loads((player / 'receipt.json').read_text())
     result = {'scope': 'Texture quadrant orientation, tinted fallback, sphere color; not pixel/UI parity.',
               'original_sha256': '2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764',
-              'player_revision': '88e67662d4', 'captures': {}, 'checks': {}}
+              'player_revision': player_receipt['revision'], 'player_exe_sha256': player_receipt['exe_sha256'],
+              'observer_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+              'captures': {}, 'checks': {}}
 
     def read(path):
         result['captures'][str(path.relative_to(root))] = hashlib.sha256(path.read_bytes()).hexdigest()
@@ -53,8 +57,8 @@ def main():
     result['checks']['missing_mesh'] = {'original': 'visually absent; capture retained',
                                        'rebuilt': 'zero foreground; separate runtime receipt'}
     result['asset_comparison_pass'] = True
-    (original / 'asset-comparison.json').write_text(json.dumps(result, indent=2)+'\n')
-    print('P4 original asset-region comparison PASS; audio remains open')
+    (player / 'asset-comparison.json').write_text(json.dumps(result, indent=2)+'\n')
+    print('P4 original asset-region comparison PASS; scope limited to recorded controls')
 
 
 if __name__ == '__main__':
