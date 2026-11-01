@@ -1,4 +1,4 @@
-// from server: 96% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc 2008-06 00468520  unit: DxUserInput  size: 132 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00468520
@@ -69,7 +69,7 @@ inline LockGuard::~LockGuard()
 
 struct DxUserInput
 {
-    char padding0[0x34];
+    char padding0[0x2c];
     char criticalSection[0x18];
     char padding1[0x12C];
     int state;

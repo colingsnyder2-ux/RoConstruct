@@ -1,4 +1,4 @@
-// from server: 95% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc 2008-06 005e5da0  unit: RBX::MotorJoint  size: 88 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005e5da0
@@ -52,7 +52,7 @@ struct State {
 struct S {
     int padding0;
     Link* parent;
-    char padding1[0x80];
+    char padding1[0x90];
     State* state;
     float value;
 
@@ -66,7 +66,7 @@ void S::setValue(float v)
     if (value != v) {
         value = v;
         if (parent) {
-            Link* p = parent->type() == 7 ? parent->parent : parent;
+            Link* p = parent->type() == 15 ? parent->parent : parent;
             if (p->active) {
                 State* s = state;
                 s->value = v;

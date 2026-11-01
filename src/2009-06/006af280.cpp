@@ -1,9 +1,9 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by nuck16
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// roc-lib: openrbx-client-dll roc_unit_dee6fd6a2f626bde.cpp
+// roc-lib: openrbx-client-dll roc_espclaude_653ab48bc8032f29.cpp
 
 // Candidate translation unit (score above; library headers required).
 // exe-layout OpenRBX headers: Body pv at 0x94 without updatePV, Primitive +0x28 before oldSpatialMin
@@ -185,7 +185,7 @@ private:
 	Matrix3 moment;                             // 0x5c
 	float mass;                                 // 0x80
 	mutable int stateIndex;                     // 0x84
-	int exBodyPad[3];                           // exe: pv at 0x94
+	int exBodyPad[5];                           // exe: pv at 0x94
 	mutable PV pv;                              // 0x94
 };
 
@@ -341,6 +341,7 @@ public:
 
 private:
 	Sim::EdgeState edgeState; // 0x08
+	int exEdgePad2009;
 	Primitive* prim0;         // 0x0c
 	Primitive* prim1;         // 0x10
 	Edge* next0;              // 0x14
@@ -390,7 +391,7 @@ private:
 	Clump* clump;                // 0x30
 	int clumpDepth;              // 0x34
 	int traverseId;              // 0x38
-	char exSpatialPad[0x28];     // exe: oldSpatialMin at 0x68
+	char exSpatialPad[0x6c];     // exe: oldSpatialMin at 0x68
 
 	SpatialNode* spatialNodes;       // 0x3c
 	Vector3int32 oldSpatialMin;      // 0x40
@@ -728,7 +729,7 @@ private:
 	G3D::Array<ContactConnector*> connectors;  // exe: 0x34
 	G3D::Array<bool> matched;                  // exe: 0x40
 
-	char exContactPadA[0xc];
+	char exContactPadA[0x8];
 	int separatingBodyId; // 0x58
 	bool planeContact; // 0x5c
 	int separatingAxisId; // 0x60
@@ -1512,6 +1513,7 @@ bool BlockBlockContact::getBestPlaneEdge(float overlapIgnored)
 }
 
 } // namespace RBX
+
 
 
 

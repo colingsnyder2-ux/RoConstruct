@@ -1,4 +1,4 @@
-// from server: 95% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00405e30  unit: boost::detail::sp_counted_base  size: 41 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00405e30
@@ -24,7 +24,7 @@ struct Object {
 };
 
 struct S {
-    unsigned char padding[16];
+    unsigned char padding[20];
     Object object;
 };
 

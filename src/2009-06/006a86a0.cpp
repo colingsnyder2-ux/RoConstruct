@@ -1,4 +1,4 @@
-// from server: 96% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 005fb1f0  unit: RBX::Kernel  size: 97 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005fb1f0
@@ -60,7 +60,7 @@ struct Source {
 };
 
 struct Kernel {
-    char padding[16];
+    char padding[20];
     Source* source;
     NodeArray pending;
     void remove(Node* node);

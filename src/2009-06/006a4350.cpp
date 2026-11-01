@@ -1,4 +1,4 @@
-// from server: 96% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00608aa0  unit: RBX::VModelInstance::?$FactoryProduct  size: 186 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00608aa0
@@ -114,7 +114,7 @@ struct Receiver {
 };
 
 struct S {
-    char padding[0x134];
+    char padding[0x90];
     int* vbtable;
     void apply(Receiver*);
 };
@@ -122,7 +122,7 @@ struct S {
 void S::apply(Receiver* receiver)
 {
     Base* base = reinterpret_cast<Base*>(
-        reinterpret_cast<char*>(this) + 0x134 + vbtable[2]);
+        reinterpret_cast<char*>(this) + 0x90 + vbtable[1]);
 
     receiver->setMatrix(base->getMatrix());
 

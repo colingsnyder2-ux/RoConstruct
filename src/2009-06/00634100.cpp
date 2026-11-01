@@ -1,4 +1,4 @@
-// from server: 94% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 005a92d0  unit: RBX::VScriptContext::?$FactoryProduct  size: 78 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005a92d0
@@ -45,7 +45,7 @@ int __cdecl f(lua_State *L)
     lua_rawget(L, -10002);
     void *context = lua_touserdata(L, -1);
     lua_settop(L, -2);
-    void *object = *(void **)((char *)context + 0x1a0);
-    lua_pushnumber(L, *(double *)((char *)object + 0x1b8));
+    void *object = *(void **)((char *)context + 0xf0);
+    lua_pushnumber(L, *(double *)((char *)object + 0xa0));
     return 1;
 }

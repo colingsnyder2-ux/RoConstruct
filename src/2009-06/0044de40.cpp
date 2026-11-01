@@ -1,4 +1,4 @@
-// from server: 96% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0044fad0  unit: CRobloxDoc  size: 166 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0044fad0
@@ -94,7 +94,7 @@ struct Property
 
 struct Object
 {
-    char padding[0x1f0];
+    char padding[0xf8];
     Property property;
 };
 
@@ -120,7 +120,7 @@ struct CRobloxDoc
 {
     char padding0[0x48];
     int state;
-    char padding1[0x48];
+    char padding1[0x50];
     Source* source;
 
     void func_0044fad0(int value);

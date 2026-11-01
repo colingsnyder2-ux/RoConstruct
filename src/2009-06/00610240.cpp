@@ -1,9 +1,9 @@
-// from server: 95% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by coldek
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs-dll roc_claudeNA_0b091297c4a19e75.cpp
+// roc-lib: rbxgs-dll roc_espclaude_320d4dd2736ea6fa.cpp
 
 // Candidate translation unit (score above; library headers required).
 #define _CPPUNWIND 1
@@ -40,12 +40,11 @@ public:
     virtual void v17();
     virtual void v18();
     virtual void v19();
-    virtual void v20();
     virtual Extents getExtentsWorld() const;
 };
 class Selection {
 public:
-    char pad[0x13c];
+    char pad[0x98];
     std::vector<PVInstance*> items;
     size_t size() const { return items.size(); }
     const std::vector<PVInstance*>& getItems() const { return items; }
@@ -68,7 +67,7 @@ public:
     void setCameraCoordinateFrame(const G3D::CoordinateFrame& cf);
 };
 class ICameraOwner { public: virtual ~ICameraOwner(); virtual Camera* getCamera(); };
-class Workspace { public: char pad[0x288]; ICameraOwner cameraOwner; };
+class Workspace { public: char pad[0x118]; ICameraOwner cameraOwner; };
 class IDataState { public: virtual void setDirty(bool dirty) = 0; };
 
 class CameraCenterCommand {
@@ -100,3 +99,4 @@ void CameraCenterCommand::doIt(IDataState& dataState)
     dataState.setDirty(true);
 }
 }
+

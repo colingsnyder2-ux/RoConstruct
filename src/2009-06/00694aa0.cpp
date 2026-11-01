@@ -1,9 +1,9 @@
-// from server: 97% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: openrbx-client-dll roc_espeon_rocketowner_a8616a44ec3d76f1.cpp
+// roc-lib: openrbx-client-dll roc_espclaude_55dd965b6a7b0a1b.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <boost/shared_ptr.hpp>
@@ -77,7 +77,7 @@ Pair __cdecl lookup(void*);
 extern char property;
 
 struct Rocket {
-    char storage[0x14c];
+    char storage[0x160];
     Pair value;
     char padding[0x10];
     bool flag;
@@ -94,3 +94,4 @@ void Rocket::set(void* p)
         notify(&property);
     }
 }
+

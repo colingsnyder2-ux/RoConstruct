@@ -1,9 +1,9 @@
-// from server: 96% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc-cl: 21022
 // roc-flags: /O1 /GS- /EHsc /MD
 struct State {
-    char padding[0x104];
+    char padding[0x108];
     bool enabled;
 };
 

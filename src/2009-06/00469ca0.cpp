@@ -1,4 +1,4 @@
-// from server: 96% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc 2008-06 004677f0  unit: DxUserInput  size: 131 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 004677f0
@@ -75,7 +75,7 @@ struct Device {
 };
 
 struct DxUserInput {
-    char storage[0x17c];
+    char storage[0x174];
     Device *device;
     char padding[0x11];
     bool requested;
@@ -87,7 +87,7 @@ struct DxUserInput {
 };
 
 void DxUserInput::updateInput() {
-    Lock lock(storage + 0x34);
+    Lock lock(storage + 0x2c);
     if (device && active != requested) {
         if (requested) {
             enableInput();

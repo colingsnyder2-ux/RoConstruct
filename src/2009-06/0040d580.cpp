@@ -1,4 +1,4 @@
-// from server: 95% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc 2008-06 0040e7f0  unit: CBrowserView  size: 304 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0040e7f0
@@ -336,7 +336,7 @@ extern "C" __declspec(dllimport) long __stdcall SendMessageA(void*, unsigned int
                                                              unsigned int, long);
 
 struct CBrowserView {
-    char pad[0x118];
+    char pad[0xfc];
     Combo* combo;
 
     void navigate(const char*, unsigned long, const char*, const char*,

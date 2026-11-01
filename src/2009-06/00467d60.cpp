@@ -1,4 +1,4 @@
-// from server: 97% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00466fa0  unit: CSettingsDialog  size: 91 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00466fa0
@@ -33,7 +33,7 @@ void* __cdecl operator new(unsigned int);
 void __cdecl operator delete(void*);
 
 struct CSettingsDialog {
-    char storage[0x3D4];
+    char storage[0x408];
     CSettingsDialog(int);
 };
 

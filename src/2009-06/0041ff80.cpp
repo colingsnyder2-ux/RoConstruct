@@ -1,4 +1,4 @@
-// from server: 97% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc 2008-06 00424eb0  unit: CRobloxTreeCtrlNode  size: 208 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00424eb0
@@ -197,7 +197,7 @@ struct Iterator {
 };
 
 struct S {
-    unsigned char padding[0x154];
+    unsigned char padding[0x8c];
     Container* container;
     bool f(void*);
 };

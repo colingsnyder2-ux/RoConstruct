@@ -1,4 +1,4 @@
-// from server: 97% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00459170  unit: HelpCommand  size: 98 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00459170
@@ -61,7 +61,7 @@ struct Window {
 struct HelpCommand {
     char padding0[0x20];
     void* window;
-    char padding1[0x8c];
+    char padding1[0x7c];
     Window child;
 
     int initialize(int arg);

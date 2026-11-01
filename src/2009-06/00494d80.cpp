@@ -1,9 +1,9 @@
-// from server: 97% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD
-// roc-lib: ogre-1.4.5-dll roc_listener_vertex_buffer_28806614eb3a450c.cpp
+// roc-lib: ogre-1.4.9-dll roc_espclaude_3d9ab8a421965e85.cpp
 
 // Candidate translation unit (score above; library headers required).
 #undef OGRE_NONCLIENT_BUILD
@@ -21,6 +21,7 @@ public:
     SceneManager* manager;
     bool options[3];
     void* data;
+    char exePad2009[8];
     RenderOperation operation;
     HardwareVertexBufferSharedPtr vertices;
     HardwareIndexBufferSharedPtr indices;
@@ -51,3 +52,4 @@ void Listener::initializeVertexBuffer(size_t vertexCount)
 }
 
 }
+

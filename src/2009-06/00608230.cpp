@@ -1,4 +1,4 @@
-// from server: 96% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00574170  unit: RBX::UnifiedWidget  size: 267 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00574170
@@ -119,8 +119,9 @@ struct Renderer {
 };
 
 struct S {
-    char padding[0x110];
+    char padding[0x54];
     char textData[0x34];
+    char exePad2009[0x18];
     int selected;
 
     Color4 transform(const Color4&);

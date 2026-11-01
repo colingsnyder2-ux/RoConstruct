@@ -1,9 +1,9 @@
-// from server: 97% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-dll roc_espeon_kernelindexoffset_1f119e5d97fd81c5.cpp
+// roc-lib: rbxgs-dll roc_espclaude_f37714ed253cfc13.cpp
 
 // Candidate translation unit (score above; library headers required).
 #undef _RELEASEASSERT
@@ -15,8 +15,9 @@ struct KernelDataRecovered {
  RBX::IndexArray<RBX::Connector,&RBX::Connector::getKernelIndex> connectors;
 };
 struct KernelRecovered {
- char preceding[0x10];
+ char preceding[0x14];
  KernelDataRecovered* kernelData;
  void insertConnector(RBX::Connector*);
 };
 void KernelRecovered::insertConnector(RBX::Connector*c){kernelData->connectors.fastAppend(c);}
+

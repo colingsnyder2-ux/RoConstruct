@@ -1,4 +1,4 @@
-// from server: 96% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00406f60  unit: VCApp::?$CComObject  size: 381 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00406f60
@@ -175,6 +175,7 @@ struct Result {
 };
 
 struct Collector {
+    virtual ~Collector() {}
     virtual void slot0() = 0;
     virtual void append(StringStorage*) = 0;
     virtual void slot2() = 0;
@@ -229,7 +230,7 @@ int S::f(DWORD unused, BSTR* output)
         result.assign(resultStringData(
             constructResultString(&temporary.resultString, collector->result())));
         destructResultString(&temporary.resultString);
-        destroyObject(collector);
+        delete collector;
         value = result.value;
     }
 

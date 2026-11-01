@@ -289,6 +289,10 @@
   [
    "\t\t\tcurrentElement->pushBackChild(newElement);\n",
    "\t\t\tif (currentElement)\n\t\t\t\tcurrentElement->pushBackChild(newElement);\n"
+  ],
+  [
+   "if (xsiNilAttribute && xsiNilAttribute->getValue(isXsiNil) && !isXsiNil)",
+   "if (!xsiNilAttribute || !xsiNilAttribute->getValue(isXsiNil) || !isXsiNil)"
   ]
  ],
  "App/v8datamodel/Gyro.cpp": [
@@ -2419,6 +2423,12 @@
   [
    "",
    "\n\nnamespace RBX\n{\n\tHitTestFilter::Result UnlockedPartByLocalCharacter::filterResult(const Primitive* testMe) const\n\t{\n\t\tHitTestFilter::Result result = HitTestFilter::INCLUDE_PRIM;\n\t\tif (character && head)\n\t\t{\n\t\t\tconst PartInstance* p = PartInstance::fromPrimitiveConst(testMe);\n\t\t\tif (p->isDescendentOf(character.get()))\n\t\t\t\tresult = head->getIsTransparent() ? HitTestFilter::IGNORE_PRIM : HitTestFilter::STOP_TEST;\n\t\t}\n\t\tif (result == HitTestFilter::INCLUDE_PRIM)\n\t\t\tresult = Unlocked::unlocked(testMe) ? HitTestFilter::INCLUDE_PRIM : HitTestFilter::STOP_TEST;\n\t\treturn result;\n\t}\n}\n"
+  ]
+ ],
+ "App/v8tree/EnumProperty.cpp": [
+  [
+   "static Type type(\"ContentId\", typeid(ContentId));",
+   "static Type type(\"Content\", typeid(ContentId));"
   ]
  ]
 }

@@ -1,4 +1,4 @@
-// from server: 95% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00671f90  unit: RBX::AdornRbxGfx  size: 61 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00671f90
@@ -30,7 +30,7 @@ struct TableA {
 };
 
 struct TableB {
-    void* unused[60];
+    void* unused[73];
     void (__thiscall *invoke)(DeviceB*);
 };
 
@@ -43,7 +43,7 @@ struct DeviceB {
 };
 
 struct Holder {
-    char unused[4];
+    char unused[16];
     DeviceB* device;
 };
 

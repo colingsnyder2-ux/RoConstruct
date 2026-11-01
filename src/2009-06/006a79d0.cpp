@@ -1,9 +1,9 @@
-// from server: 96% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs roc_unifiedwidget_metric_sum_1724d92846676ee2.cpp
+// roc-lib: rbxgs roc_espclaude_b39d2e66efa401a6.cpp
 
 // Candidate translation unit (score above; library headers required).
 struct Metric
@@ -27,7 +27,7 @@ namespace RBX
 {
     struct UnifiedWidget
     {
-        char reserved[0x10];
+        char reserved[0x14];
         MetricCollection* metrics;
 
         float sampleMetrics();
@@ -47,3 +47,4 @@ float RBX::UnifiedWidget::sampleMetrics()
     }
     return total;
 }
+

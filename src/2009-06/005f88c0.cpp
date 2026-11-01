@@ -1,9 +1,9 @@
-// from server: 96% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: rbxgs-dll roc_espeon_alignmentorder_0056bee020af745f8d105caa.cpp
+// roc-lib: rbxgs-dll roc_espclaude_fe5440221ec92c97.cpp
 
 // Candidate translation unit (score above; library headers required).
 #pragma once
@@ -359,4 +359,5 @@ struct S;
 struct VTable {void*unused;bool(__thiscall*check)(S*);void*reserved[8];void(__thiscall*fill)(S*,void*,Result*);};
 struct Metadata{unsigned reserved[3];const RBX::Name*value;};
 struct S{VTable*table;const RBX::Name*name;unsigned reserved[2];unsigned flags;Metadata*metadata;Result*f(void*,bool);};
-Result*S::f(void*argument,bool force){if(!force){if(table->check(this))return 0;if(!static_cast<unsigned char>((flags>>1)&1))return 0;}Result*result=new Result(*metadata->value);result->addAttribute(name_name,name);table->fill(this,argument,result);return result;}
+Result*S::f(void*argument,bool force){if(!force){if(table->check(this))return 0;if(!static_cast<unsigned char>((flags>>2)&1))return 0;}Result*result=new Result(*metadata->value);result->addAttribute(name_name,name);table->fill(this,argument,result);return result;}
+

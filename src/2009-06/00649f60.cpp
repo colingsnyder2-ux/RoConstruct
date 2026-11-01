@@ -1,4 +1,4 @@
-// from server: 94% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc 2008-06 005bd4f0  unit: VStockSound::?$FactoryProduct  size: 69 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005bd4f0
@@ -26,11 +26,12 @@
 // 005bd534  c3                   ret 
 
 struct VStockSound {
-    char pad[0x168];
+    char pad[0xc8];
     int field168;
     void method();
 };
 
+extern char g_name[];
 struct VMember {
     void set(const char*);
 };
@@ -47,5 +48,5 @@ void VStockSound::method() {
     else
         p = &v;
     field168 = *p;
-    ((VMember*)this)->set((const char*)0x977010);
+    ((VMember*)this)->set(g_name);
 }

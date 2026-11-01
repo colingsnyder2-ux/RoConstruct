@@ -1,4 +1,4 @@
-// from server: 97% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc 2008-06 005bd820  unit: RBX::VNetworkSettings::?$BoundPropGetSet  size: 98 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005bd820
@@ -122,7 +122,7 @@ struct Tree {
 };
 
 struct S {
-    char reserved[316];
+    char reserved[0x94];
     Tree tree;
 
     void f(int key);

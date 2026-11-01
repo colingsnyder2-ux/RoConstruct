@@ -1,4 +1,4 @@
-// from server: 96% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0062e2e0  unit: RBX::VDecal::?$FactoryProduct  size: 61 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0062e2e0
@@ -31,12 +31,12 @@ struct Object {
 };
 
 struct Holder {
-    char padding[0x2c];
+    char padding[0x34];
     Object* object;
 };
 
 struct S {
-    char padding[0x10];
+    char padding[0x2c];
     Holder* holder;
     const Vector3& f();
 };

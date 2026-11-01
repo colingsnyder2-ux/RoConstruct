@@ -1,4 +1,4 @@
-// from server: 96% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0058ba70  unit: RBX::ChangeHistoryService  size: 193 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0058ba70
@@ -125,7 +125,7 @@ struct History {
 };
 
 struct ChangeHistoryService {
-    unsigned char padding0[0x134];
+    unsigned char padding0[0x90];
     History* history;
     unsigned char padding1[0x2c];
     bool blocked;

@@ -12,7 +12,7 @@ extern "C" {
 typedef struct SceneModel
 {
     const void* id;
-    PlayerBlockMesh::BlockMesh* geometry; // Borrowed until next scene update; renderer retains it.
+    PlayerBlockMesh::Mesh* geometry; // Borrowed until next scene update; renderer retains it.
     PlayerNativeMaterial::MaterialBase* material; // Same borrowed/retained contract.
     float rotation[9]; // R00,R01,R02,R10,R11,R12,R20,R21,R22
     float position[3];

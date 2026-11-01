@@ -1,4 +1,4 @@
-// from server: 95% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00601fd0  unit: RBX::UnifiedImageWidget  size: 197 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00601fd0
@@ -63,12 +63,7 @@
 
 typedef unsigned int size_t;
 
-extern "C" void* (__cdecl *allocate)(size_t);
-
-inline void* __cdecl operator new(size_t size)
-{
-    return allocate(size);
-}
+void* __cdecl operator new(size_t size);
 
 void __cdecl operator delete(void*);
 
@@ -101,7 +96,7 @@ namespace std {
 struct EmptyDeleter {};
 
 struct Object {
-    char storage[348];
+    char storage[0xb8];
     Object(const std::string&, int, bool);
 };
 

@@ -1,10 +1,10 @@
-// from server: 97% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00403040  unit: ATL::CRegObject  size: 47 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00403040
 //
 // 00403040  51                   push ecx
-// 00403041  8b8994000000         mov ecx, dword ptr [ecx + 0x94]
+// 00403041  8b8994000000         mov ecx, dword ptr [ecx + 0x9c]
 // 00403047  33d2                 xor edx, edx
 // 00403049  891424               mov dword ptr [esp], edx
 // 0040304c  3bca                 cmp ecx, edx
@@ -33,7 +33,7 @@ struct Source {
 };
 
 struct S {
-    unsigned char padding[0x94];
+    unsigned char padding[0x9c];
     Source* source;
     Result* f(Result* output);
 };

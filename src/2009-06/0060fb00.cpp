@@ -1,4 +1,4 @@
-// from server: 96% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 005827c0  unit: RBX::ResetCommand  size: 56 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005827c0
@@ -8,7 +8,7 @@
 // 005827c3  6a01                 push 1
 // 005827c5  8d4e10               lea ecx, [esi + 0x10]
 // 005827c8  e833f4ffff           call 0x581c00
-// 005827cd  8b80b4010000         mov eax, dword ptr [eax + 0x1b4]
+// 005827cd  8b80b4010000         mov eax, dword ptr [eax + 0x9c]
 // 005827d3  83f801               cmp eax, 1
 // 005827d6  7405                 je 0x5827dd
 // 005827d8  83f802               cmp eax, 2
@@ -27,7 +27,7 @@
 // 005827f7  c3                   ret 
 
 struct State {
-    char pad[0x1b4];
+    char pad[0x9c];
     int value;
 };
 

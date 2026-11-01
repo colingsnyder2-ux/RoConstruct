@@ -1,4 +1,4 @@
-// from server: 96% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
@@ -16,7 +16,7 @@ public:
 
 class Chunk {
 public:
-    char header[0x0c];
+    char header[0x10];
     Array<int> indices;
     void* buffer;
 };

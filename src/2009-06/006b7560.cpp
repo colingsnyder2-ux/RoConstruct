@@ -1,9 +1,9 @@
-// from server: 96% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by coldek
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-dll roc_claudeM_8be16f10aab64e51.cpp
+// roc-lib: rbxgs-dll roc_espclaude_f72ba7cac2dc8214.cpp
 
 // Candidate translation unit (score above; library headers required).
 #pragma include_alias("util/Object.h", "roc_espeon_arrowfactoryheader347662b16dc22b66.cpp")
@@ -153,7 +153,7 @@ namespace RBX
 		static G3D::Ray getUnitMouseRay(const UIEvent& uiEvent, ICameraOwner* _workspace);
 		static inline G3D::Ray getSearchRay(const G3D::Ray& unitRay);
 		static G3D::Ray getSearchRay(const UIEvent& uiEvent, ICameraOwner* _workspace);
-		static Instance* getTopSelectable3d(PartInstance* part);
+		Instance* getTopSelectable3d(PartInstance* part);
 		static PartInstance* getMousePart(const G3D::Ray& unitRay, const ContactManager& contactManager, const std::vector<const Primitive*>& ignore, const HitTestFilter* filter, G3D::Vector3& hitPoint, float maxSearchGrid);
 		static PartInstance* getMousePart(const G3D::Ray& unitRay, const ContactManager& contactManager, const Primitive* ignore, const HitTestFilter* filter, G3D::Vector3& hitPoint, float maxSearchGrid);
 	};
@@ -170,6 +170,7 @@ namespace RBX
 namespace RBX
 {
  __declspec(noalias) boost::shared_ptr<Decal> shared_from(Decal*);
+ inline const std::vector<Instance*>& exeItems2009(FilteredSelection<Instance>* s){return *reinterpret_cast<const std::vector<Instance*>*>(reinterpret_cast<char*>(s)+0x98);}
 	MouseCommand* ArrowToolBase::onMouseDown(const UIEvent& uiEvent)
 	{
 		RBXASSERT(uiEvent.eventType == UIEvent::MOUSE_LEFT_BUTTON_DOWN);
@@ -193,7 +194,7 @@ namespace RBX
                 else
                     selection->setSelection(top);
                 ServiceClient<FilteredSelection<Instance> > instanceSelection(workspace);
-                return DragTool::onMouseDown(part,hitWorld,instanceSelection->items(),uiEvent,workspace,decal);
+                return DragTool::onMouseDown(part,hitWorld,exeItems2009(instanceSelection.operator->()),uiEvent,workspace,decal);
 
 			}
 			else
@@ -215,3 +216,4 @@ namespace RBX
 
 
 }
+

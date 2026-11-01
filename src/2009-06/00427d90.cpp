@@ -1,4 +1,4 @@
-// from server: 94% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0042ef10  unit: CMainFrame  size: 38 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0042ef10
@@ -21,7 +21,7 @@ struct Message {
 };
 
 struct CMainFrame {
-    char padding[0xF8];
+    char padding[0xFC];
     unsigned char enabled;
     unsigned char reserved;
     unsigned char blocked;

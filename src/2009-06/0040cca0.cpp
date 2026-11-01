@@ -1,4 +1,4 @@
-// from server: 96% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0040dfe0  unit: CBrowserView  size: 92 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0040dfe0
@@ -45,7 +45,7 @@
 extern "C" int (__stdcall *InvalidateRect)(void *, const void *, int);
 
 struct CBrowserView {
-    char reserved0[0x13c];
+    char reserved0[0x120];
     void *window;
     char reserved1[0x188];
     bool flag2;

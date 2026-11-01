@@ -1,9 +1,9 @@
-// from server: 96% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// roc-lib: openrbx-client roc_turn_on_lights_2008_b4f608dafb30ded3.cpp
+// roc-lib: openrbx-client roc_espclaude_80324d328ae482aa.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include "renderlib/EffectSettings.h"
@@ -13,7 +13,7 @@
 namespace RBX { namespace Render {
 
 class RenderScene2008 {
-    char pad[0x2d4];
+    char pad[0x94];
     EffectSettings effectSettings;
     G3D::ReferenceCountedPointer<G3D::Lighting> desiredLighting;
     G3D::ReferenceCountedPointer<G3D::Lighting> lighting;
@@ -45,3 +45,4 @@ void RenderScene2008::turnOnLights(G3D::RenderDevice* rd, bool allLights) const 
 }
 
 } }
+

@@ -1,4 +1,4 @@
-// from server: 96% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc 2008-06 00607ea0  unit: RBX::BlockBlockContact  size: 238 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00607ea0
@@ -94,7 +94,7 @@ struct FaceMap {
 };
 
 struct Body {
-    char reserved[0x9c];
+    char reserved[0xe0];
     FaceMap* faces;
     int geometry;
 };
@@ -110,7 +110,7 @@ struct Contact {
 };
 
 struct S {
-    int reserved[3];
+    int reserved[4];
     Body* bodies[2];
 
     Contact* create(int first, int second, int kind, int firstIndex, int secondIndex);

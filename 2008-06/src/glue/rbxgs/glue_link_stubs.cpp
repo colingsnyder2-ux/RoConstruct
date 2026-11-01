@@ -165,7 +165,7 @@ namespace RBX
 	XmlElement* Network::Server::write() { return NULL; }  // STUB
 
 	// sound statics
-	const char* Soundscape::sSoundChannel = "SoundChannel";
+	const char* Soundscape::sSoundChannel = "Sound";
 	const char* Soundscape::sSoundService = "SoundService";
 
 	// value statics

@@ -1,4 +1,4 @@
-// from server: 97% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00608030  unit: RBX::BlockBlockContact  size: 296 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00608030
@@ -115,7 +115,7 @@ struct Geometry {
 };
 
 struct Primitive {
-    char reserved[0x9c];
+    char reserved[0xe0];
     Geometry* geometry;
     void* data;
 };
@@ -133,9 +133,9 @@ struct Contact {
 };
 
 struct BlockBlockContact {
-    char reserved0[12];
+    char reserved0[16];
     Primitive* primitive[2];
-    char reserved1[0x60];
+    char reserved1[0x5c];
     int value;
 
     Contact* create(void*, void*, int, int, int);

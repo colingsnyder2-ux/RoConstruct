@@ -1,4 +1,4 @@
-// from server: 95% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 004e6b50  unit: RBX::ViewNew::PartChunk  size: 61 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 004e6b50
@@ -28,7 +28,7 @@
 struct Chunk;
 
 struct ChunkVTable {
-    void *unused[10];
+    void *unused[11];
     void (__thiscall *initialize)(Chunk *);
 };
 
@@ -39,7 +39,7 @@ struct StrongPointer {
 
 struct Chunk {
     ChunkVTable *vtable;
-    unsigned char padding[200];
+    unsigned char padding[0x84];
     void *cached;
     StrongPointer get();
 };

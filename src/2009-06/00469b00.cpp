@@ -1,9 +1,9 @@
-// from server: 95% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs-dll roc_espeon_dxinputcentervector98f9a346a508877e.cpp
+// roc-lib: rbxgs-dll roc_espclaude_9918cc5be539161d.cpp
 
 // Candidate translation unit (score above; library headers required).
 #pragma float_control(precise,off)
@@ -31,7 +31,7 @@ extern Vec2 __cdecl adjust(const Vec2 &, int);
 
 struct DxUserInput
 {
-    char reserved0[0x59];
+    char reserved0[0x51];
     unsigned char flag;
     char reserved1[6];
     Vec2 delta;
@@ -60,3 +60,4 @@ void DxUserInput::update(const Vec2 &point)
     active = 1;
     flag = 0;
 }
+

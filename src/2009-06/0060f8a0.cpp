@@ -1,4 +1,4 @@
-// from server: 95% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc 2008-06 00582230  unit: RBX::BoolPropertyVerb  size: 200 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00582230
@@ -95,7 +95,7 @@ struct Range {
 };
 
 struct Object {
-    unsigned char padding[0x154];
+    unsigned char padding[0x8c];
     Range* range;
 };
 
@@ -115,7 +115,6 @@ struct String {
 };
 
 struct Property {
-    unsigned unknown;
     String name;
 };
 

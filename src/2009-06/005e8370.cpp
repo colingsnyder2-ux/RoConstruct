@@ -1,4 +1,4 @@
-// from server: 95% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 006156c0  unit: RBX::VContentId::?$TypedPropertyDescriptor  size: 191 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 006156c0
@@ -153,11 +153,13 @@ struct S
     void f();
 };
 
+extern int changeCount;
 void S::f()
 {
     if (stringType == *descriptor->type)
     {
         holder.swap(Holder(Value(convert(holder))));
+        ++changeCount;
         descriptor = valueDescriptor();
     }
     finish();

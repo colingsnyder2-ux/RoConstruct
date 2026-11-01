@@ -1,4 +1,4 @@
-// from server: 97% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 005e5350  unit: RBX::SimJob  size: 71 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005e5350
@@ -46,7 +46,7 @@ extern "C" void __cdecl detach(Listener* listener, void** owner);
 void SimJob::setObject(void* value) {
     if (object) {
         void* owner = this;
-        detach(reinterpret_cast<Listener*>(static_cast<char*>(object) + 4),
+        detach(reinterpret_cast<Listener*>(static_cast<char*>(object) + 0xc),
                &owner);
         object = 0;
     }
@@ -54,7 +54,7 @@ void SimJob::setObject(void* value) {
     void* next = value;
     if (next) {
         value = this;
-        reinterpret_cast<Listener*>(static_cast<char*>(next) + 4)->attach(&value);
+        reinterpret_cast<Listener*>(static_cast<char*>(next) + 0xc)->attach(&value);
         object = next;
     }
 }

@@ -1,4 +1,4 @@
-// from server: 97% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0059e3d0  unit: VCRenderSettings::?$EnumPropDescriptor  size: 85 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0059e3d0
@@ -51,7 +51,7 @@ extern unsigned char propertyA;
 extern unsigned char propertyB;
 
 struct Settings {
-    unsigned char padding[0x1e4];
+    unsigned char padding[0x120];
     unsigned int value;
 
     void notify(void*);

@@ -1,9 +1,9 @@
-// from server: 95% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc-flags: /O2 /GS- /EHsc /MD /fp:fast
 struct MotorData
 {
-    char padding[0x8c];
+    char padding[0x9c];
     float value;
 
     void setValue(float value);
@@ -13,7 +13,7 @@ extern const char property;
 
 struct Motor
 {
-    char padding[0x150];
+    char padding[0xac];
     MotorData* data;
 
     void setValue(float value);

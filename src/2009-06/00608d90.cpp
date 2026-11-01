@@ -1,4 +1,4 @@
-// from server: 97% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00574bf0  unit: RBX::TopMenuBar  size: 181 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00574bf0
@@ -90,7 +90,7 @@ struct Rectangle {
 struct Base;
 
 struct VTable {
-    char padding[84];
+    char padding[88];
     bool (__thiscall *enabled)(Base *);
 };
 
@@ -110,7 +110,7 @@ struct S {
 Result S::f(Event *event)
 {
     Base *base = reinterpret_cast<Base *>(
-        reinterpret_cast<char *>(this) - 304);
+        reinterpret_cast<char *>(this) - 0x8c);
 
     if (base->vtable->enabled(base)) {
         {

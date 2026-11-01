@@ -1,10 +1,10 @@
-// from server: 97% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by EspClaude
 // from server: 98% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs-dll roc_espclaude_082fafcb387d2616.cpp
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// roc-lib: rbxgs-dll roc_espclaude_b0247d611b6e1b84.cpp
 
 // Candidate translation unit (score above; library headers required).
 
@@ -26,13 +26,13 @@ struct Body
 
 struct Link
 {
-    char pad[0x2c];
+    char pad[0x34];
     Body* body;
 };
 
 struct Attachment
 {
-    char pad[0x10];
+    char pad[0x2c];
     Link* link;
 };
 
@@ -48,7 +48,7 @@ struct PartInstance
     virtual void slot1();
     virtual void slot2();
     virtual float size();
-    char pad[0x9c];
+    char pad[0xe0];
     Attachment* attachment;
     Transform* transform();
     void detach();
@@ -73,7 +73,7 @@ struct Parts
 
 struct Explosion
 {
-    char pad[0x148];
+    char pad[0xac];
     Vec3 position;
     float radius;
     float pressure;
@@ -143,3 +143,4 @@ void Explosion::explode(Parts* parts)
         }
     }
 }
+

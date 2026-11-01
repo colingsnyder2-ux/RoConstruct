@@ -1,61 +1,21 @@
-// from server: 94% by EspClaude
-// from server: 100% by auto
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client App/v8datamodel/Team.cpp
+// roc-lib: openrbx-client roc_espclaude_29df21c9e89a24d1.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "v8datamodel/Team.h"
-
-#include "reflection/property.h"
-
+#include "util/object.h"
 namespace RBX {
-
-const char sTeam[] = "Team";
-
-using namespace Reflection;
-
-static PropDescriptor<Team, int> prop_Score("Score", "Data", &RBX::Team::getScore, &RBX::Team::setScore);
-
-static PropDescriptor<Team, BrickColor> prop_Color(
-	"TeamColor",
-	"Data",
-	&RBX::Team::getTeamColor,
-	&RBX::Team::setTeamColor
-);
-
-static PropDescriptor<Team, bool> prop_AutoAssignable(
-	"AutoAssignable",
-	"Data",
-	&RBX::Team::getAutoAssignable,
-	&RBX::Team::setAutoAssignable
-);
-
-// FUNCTION: WEBSERVICE 0x100be710
-void Team::setScore(int score)
-{
-	this->score = score;
-	raisePropertyChanged(prop_Score);
+class Instance : public boost::enable_shared_from_this<Instance> {
+public:
+    virtual ~Instance();
+    static void predelete(Instance*);
+};
+class Team : public Instance {
+public:
+    Team();
+    char pad[0x8c];
+};
+template boost::shared_ptr<Team> Creatable<Instance>::create<Team>();
 }
-
-// FUNCTION: WEBSERVICE 0x100be730
-void Team::setTeamColor(BrickColor color)
-{
-	this->color = color;
-	raisePropertyChanged(prop_Color);
-}
-
-// FUNCTION: WEBSERVICE 0x100be750
-void Team::setAutoAssignable(bool autoAssign)
-{
-	autoAssignable = autoAssign;
-	raisePropertyChanged(prop_AutoAssignable);
-}
-
-} // namespace RBX
-
-template class RBX::FactoryProduct<RBX::Team, RBX::Instance, RBX::sTeam>;
-template class RBX::Reflection::
-	Described<RBX::Team, RBX::sTeam, RBX::FactoryProduct<RBX::Team, RBX::Instance, RBX::sTeam> >;
-template class RBX::DescribedCreatable<RBX::Team, RBX::Instance, RBX::sTeam>;

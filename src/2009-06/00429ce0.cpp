@@ -1,4 +1,4 @@
-// from server: 95% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by EspClaude
 // roc 2008-06 00430b40  unit: CMainFrame  size: 132 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00430b40
@@ -113,7 +113,7 @@ struct Finalizer
 
 struct CMainFrame
 {
-    char reserved0[0xf8];
+    char reserved0[0xfc];
     bool fullscreen;
     bool alternateFullscreen;
     char reserved1[0x0a];

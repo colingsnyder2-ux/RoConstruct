@@ -1,4 +1,4 @@
-// from server: 97% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by tester
 // roc 2008-06 0045ba10  unit: CRobloxWnd  size: 80 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0045ba10
@@ -40,7 +40,7 @@ inline String::~String()
 
 struct Base
 {
-    char storage[0x138];
+    char storage[0x98];
     ~Base();
 };
 

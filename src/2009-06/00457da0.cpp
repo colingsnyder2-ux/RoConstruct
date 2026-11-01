@@ -1,4 +1,4 @@
-// from server: 95% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by tester
 // roc 2008-06 00459270  unit: CRobloxView  size: 49 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00459270
@@ -50,7 +50,7 @@ public:
 struct Item;
 
 struct Owner {
-    char padding[0x170];
+    char padding[0x1a4];
     boost::shared_ptr<Item> item;
     boost::shared_ptr<Item> get() const;
 };

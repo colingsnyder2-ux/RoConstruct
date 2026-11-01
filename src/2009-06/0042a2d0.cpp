@@ -1,4 +1,4 @@
-// from server: 97% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00430f50  unit: VCMDIFrameWnd::?$CXTPFrameWndBase  size: 226 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00430f50
@@ -91,14 +91,14 @@ struct State
 
 struct Frame
 {
-    char padding0[0x104];
+    char padding0[0x108];
     unsigned char pending;
     unsigned char blocked;
     char padding1[2];
     String name;
     char padding2[0x178];
     Switch option;
-    char padding3[0x15B];
+    char padding3[0x163];
     State state;
 
     void load(int value);

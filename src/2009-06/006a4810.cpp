@@ -1,4 +1,4 @@
-// from server: 97% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00642f10  unit: RBX::VWidget::?$NonFactoryProduct  size: 99 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00642f10
@@ -82,7 +82,7 @@ namespace std {
 }
 
 struct S {
-    char padding[0x164];
+    char padding[0xc0];
     int active;
 
     void f();

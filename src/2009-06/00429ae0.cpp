@@ -1,4 +1,4 @@
-// from server: 97% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 004309f0  unit: CSelectionPropGrid  size: 230 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 004309f0
@@ -95,7 +95,7 @@ struct Panel {
 };
 
 struct Control {
-    char storage[0x15C];
+    char storage[0x164];
     void reset(int);
 };
 
@@ -113,7 +113,7 @@ struct S {
     VirtualOperation *vtable;
     char padding04[0xE8];
     CommandBars *commandBars;
-    char paddingF0[0x14];
+    char paddingF0[0x18];
     unsigned char initialized;
     char padding105[3];
     Item item;

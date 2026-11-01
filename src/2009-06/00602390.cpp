@@ -1,4 +1,4 @@
-// from server: 97% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc 2008-06 00578ef0  unit: RBX::VDataModel::?$SignalDesc  size: 174 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00578ef0
@@ -62,7 +62,7 @@
 
 struct Object
 {
-    char padding[20];
+    char padding[24];
     char value;
 
     void setFirst(int);
@@ -91,7 +91,7 @@ extern Dispatcher* dispatcher;
 
 struct S
 {
-    char padding[0x204];
+    char padding[0x20c];
     Object* first;
     char gap[12];
     Object* second;

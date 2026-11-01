@@ -1,4 +1,4 @@
-// from server: 95% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00431ce0  unit: CDataModelPropGrid  size: 20 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00431ce0
@@ -13,7 +13,7 @@
 struct CDataModelPropGrid {
     void f(bool);
     void Update();
-    char padding[0xf8];
+    char padding[0xfc];
     unsigned char field_0xf8;
 };
 

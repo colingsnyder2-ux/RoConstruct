@@ -1,4 +1,4 @@
-// from server: 95% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0041faa0  unit: CListCtrl  size: 131 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0041faa0
@@ -73,7 +73,7 @@ extern StringCompare stringCompare;
 
 struct Name
 {
-    unsigned int value;
+
     String text;
     static int isLocal(const Name *);
 };

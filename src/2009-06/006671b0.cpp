@@ -1,4 +1,4 @@
-// from server: 94% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 005d7c30  unit: RBX::P8Humanoid::?$GetSetImpl  size: 59 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005d7c30
@@ -37,9 +37,9 @@ struct S
 
 void S::f(void *object, const float *value)
 {
-    char *base = object ? static_cast<char *>(object) - 0x14 : 0;
+    char *base = object ? static_cast<char *>(object) - 0x18 : 0;
     float argument = *value;
     int offset = *reinterpret_cast<int *>(
-        *reinterpret_cast<char **>(base + 0x150) + virtualOffset);
-    setter(base + 0x150 + offset + adjustment, argument);
+        *reinterpret_cast<char **>(base + 0x140) + virtualOffset);
+    setter(base + 0x140 + offset + adjustment, argument);
 }

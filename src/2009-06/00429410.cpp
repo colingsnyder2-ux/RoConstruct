@@ -1,4 +1,4 @@
-// from server: 96% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by tester
 // roc 2008-06 00430360  unit: CWrapperView  size: 53 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00430360
@@ -21,7 +21,7 @@
 // 00430392  c20800               ret 8
 
 struct CWrapperView {
-    char pad[0xf8];
+    char pad[0xfc];
     char field_f8;
     char pad2;
     char field_fa;

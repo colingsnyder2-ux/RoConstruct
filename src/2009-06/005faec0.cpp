@@ -1,9 +1,9 @@
-// from server: 96% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 005756e0  unit: RBX::ServiceProvider  size: 31 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005756e0
 //
-// 005756e0  8b8104020000         mov eax, dword ptr [ecx + 0x204]
+// 005756e0  8b8104020000         mov eax, dword ptr [ecx + 0x20c]
 // 005756e6  83ec08               sub esp, 8
 // 005756e9  50                   push eax
 // 005756ea  51                   push ecx
@@ -22,7 +22,7 @@ struct T {
 };
 
 struct S {
-    char padding[0x204];
+    char padding[0x20c];
     void* value;
     void __thiscall f(void* argument);
 };

@@ -1,4 +1,4 @@
-// from server: 96% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00582180  unit: RBX::BoolPropertyVerb  size: 170 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00582180
@@ -73,7 +73,7 @@ struct Container {
 };
 
 struct Object {
-    unsigned char padding[0x154];
+    unsigned char padding[0x8c];
     Container* container;
 };
 

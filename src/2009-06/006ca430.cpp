@@ -1,7 +1,7 @@
-// from server: 96% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// roc-flags: /O2 /GS- /EHsc /MD
 #include <vector>
 #include <intrin.h>
 #include <utility>
@@ -45,7 +45,7 @@ namespace RBX {
 class Instance;class Adorn;
 typedef std::vector<boost::shared_ptr<Instance> > Instances;
 struct Children {boost::shared_ptr<Instances> object;operator boost::shared_ptr<Instances>::unspecified_bool_type()const{return object;}__declspec(noinline) boost::shared_ptr<const Instances> read()const{return object;}};
-class Instance {public:virtual ~Instance();char prefix[0x108-4];Children children;};
+class Instance {public:virtual ~Instance();char prefix[0x4c-4];Children children;};
 class PartInstance:public Instance {public:bool getLocked()const;};
 Instance* findUnlockedPart(Instance* instance){
  PartInstance* part=dynamic_cast<PartInstance*>(instance);

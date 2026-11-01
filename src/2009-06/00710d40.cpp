@@ -1,9 +1,9 @@
-// from server: 97% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: openrbx-client-dll roc_espeon_settingsreturn_3f2a8f1adda8f010.cpp
+// roc-lib: openrbx-client-dll roc_espclaude_ce9d38e88e985901.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <string>
@@ -19,7 +19,7 @@ struct StringVector {
 };
 
 struct Settings {
-    char reserved[136];
+    char reserved[140];
     StringVector strings;
 
     String get(const int& index);
@@ -40,3 +40,4 @@ String Settings::get(const int& index)
 
     return String(vector->at(static_cast<unsigned int>(value)));
 }
+

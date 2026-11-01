@@ -30,6 +30,7 @@ extern "C" void RemovePart(void);
 extern "C" void SetPartYaw(float);
 extern "C" int GetContactState(float*,float*,int*);
 extern "C" int ExecutePlayerScript(const char*);
+extern "C" int ConfigureContentRoot(const char*);
 
 static const char* kPartPlace =
     "<roblox version=\"4\"><Item class=\"Workspace\"><Properties></Properties>"
@@ -46,17 +47,7 @@ static const char* kEmptyPlace =
     "<roblox version=\"4\"><Item class=\"Workspace\"><Properties></Properties>"
     "</Item></roblox>";
 
-static const char* kDemoPlace =
-    "<roblox version=\"4\"><Item class=\"Workspace\"><Properties></Properties>"
-    "<Item class=\"Part\" referent=\"RBX1\"><Properties>"
-    "<string name=\"Name\">Brick</string><bool name=\"Anchored\">true</bool>"
-    "<Vector3 name=\"size\"><X>4</X><Y>1.2</Y><Z>2</Z></Vector3>"
-    "<Color3 name=\"Color\"><R>1</R><G>0</G><B>0</B></Color3>"
-    "<token name=\"TopSurface\">3</token><token name=\"BottomSurface\">0</token>"
-    "<CoordinateFrame name=\"CFrame\"><X>0</X><Y>0</Y><Z>0</Z>"
-    "<R00>1</R00><R01>0</R01><R02>0</R02><R10>0</R10><R11>1</R11><R12>0</R12>"
-    "<R20>0</R20><R21>0</R21><R22>1</R22></CoordinateFrame>"
-    "</Properties></Item></Item></roblox>";
+
 
 static std::string readPlace(const char* path)
 {
@@ -246,7 +237,7 @@ static std::map<const void*, DrawEntry> g_drawn;
 
 // Geometry is produced by recovered 004e2c80 and uploaded by 00549a50.
 // Ogre Mesh here supplies entity bounds only; Level owns the detached RbxSubMesh.
-static Ogre::MeshPtr createRecoveredMesh(const char* name, PlayerBlockMesh::BlockMesh* geometry)
+static Ogre::MeshPtr createRecoveredMesh(const char* name, PlayerBlockMesh::Mesh* geometry)
 {
     Ogre::MeshPtr existing=Ogre::MeshManager::getSingleton().getByName(name);
     if(!existing.isNull())return existing;
@@ -259,7 +250,8 @@ static Ogre::MeshPtr createRecoveredMesh(const char* name, PlayerBlockMesh::Bloc
     // Native00684fd0 binds detached submesh data directly. No fabricated parent
     // link or adoption into this bounds-only Mesh's deletion list is required.
     mesh->_setBounds(bounds);mesh->_setBoundingSphereRadius(level.backend->radius);mesh->load();
-    std::printf("recovered block: producer=004e2c80 upload=00549a50 calls=%u indices=%u\n",PlayerBlockMesh::producerCalls(),static_cast<unsigned>(level.backend->indexData->indexCount));
+    std::printf("native mesh: producer=%s upload=00549a50 block_calls=%u indices=%u\n",
+        geometry->geometryKind==2?"004fcfb0":geometry->geometryKind==1?"004e2c80":"00500780",PlayerBlockMesh::producerCalls(),static_cast<unsigned>(level.backend->indexData->indexCount));
     return mesh;
 }
 
@@ -514,7 +506,7 @@ static int runCacheTest(Ogre::Root* root,Ogre::RenderWindow* win,const std::stri
         if(SceneAttach())return 2;
         drawModels();
         if(g_drawn.size()!=9)return 3;
-        std::map<PlayerBlockMesh::BlockMesh*,int> users;
+        std::map<PlayerBlockMesh::Mesh*,int> users;
         for(std::map<const void*,DrawEntry>::iterator it=g_drawn.begin();it!=g_drawn.end();++it){
             DrawEntry& entry=it->second;
             if(entry.geometry->levels.size()!=2 || entry.geometry->level0().backend->parent)return 4;
@@ -523,7 +515,7 @@ static int runCacheTest(Ogre::Root* root,Ogre::RenderWindow* win,const std::stri
             ++users[entry.geometry.getPointer()];
         }
         bool shared=false;
-        for(std::map<PlayerBlockMesh::BlockMesh*,int>::iterator it=users.begin();it!=users.end();++it)
+        for(std::map<PlayerBlockMesh::Mesh*,int>::iterator it=users.begin();it!=users.end();++it)
             if(it->second>1)shared=true;
         if(!shared)return 5;
         if(PlayerSphereCache::size()!=users.size())return 13;
@@ -555,28 +547,30 @@ static int runCacheTest(Ogre::Root* root,Ogre::RenderWindow* win,const std::stri
 // P3 block lifetime gate. Non-box/reference silhouette remains a separate gate.
 static bool lifetimeFrame(Ogre::Root* root,Ogre::RenderWindow* win,int cycle,
     const char* stage,int expected,bool green,const void* stationaryId,
-    Ogre::SceneNode* stationaryNode,PlayerBlockMesh::BlockMesh* stationaryMesh,
-    int& redBaseline,std::ofstream& records)
+    Ogre::SceneNode* stationaryNode,PlayerBlockMesh::Mesh* stationaryMesh,const float* stationarySize,
+    std::vector<unsigned char>& stationaryPixels,std::ofstream& records)
 {
     drawModels();
     char name[96];_snprintf(name,sizeof(name),"p3_%d_%s.png",cycle,stage);
     Image image;
     if(!capture(root,win,name,image))return false;
     int red=0;
+    std::vector<unsigned char> silhouette;
     for(int y=0;y<image.height;++y)for(int x=0;x<image.width;++x){
         const unsigned char* pixel=&image.rgb[(y*image.width+x)*3];
         if(pixel[0]>50 && pixel[0]>2*pixel[1] && 2*pixel[0]>3*pixel[2])++red;
+        if(x>=image.width/2)silhouette.push_back(pixel[0]!=255 || pixel[1]!=0 || pixel[2]!=255);
     }
     int greenPixels=countGreen(image,0,0,image.width,image.height);
-    if(redBaseline<0)redBaseline=red;
+    if(stationaryPixels.empty())stationaryPixels=silhouette;
     std::map<const void*,DrawEntry>::iterator stationary=g_drawn.find(stationaryId);
     bool stable=stationary!=g_drawn.end() && stationary->second.node==stationaryNode &&
         stationary->second.geometry.getPointer()==stationaryMesh &&
         stationaryNode->getPosition()==Ogre::Vector3(2,0,0) &&
         stationaryNode->getOrientation()==Ogre::Quaternion::IDENTITY &&
-        stationary->second.size[0]==1 && stationary->second.size[1]==2.4f && stationary->second.size[2]==1;
+        std::memcmp(stationary->second.size,stationarySize,sizeof(stationary->second.size))==0;
     bool pass=SceneModelCount()==expected && g_drawn.size()==static_cast<unsigned>(expected) &&
-        stable && red>100 && red==redBaseline && (green?greenPixels>100:greenPixels<30);
+        stable && red>100 && silhouette==stationaryPixels && (green?greenPixels>100:greenPixels<30);
     records<<cycle<<","<<stage<<","<<SceneModelCount()<<","<<g_drawn.size()<<","<<red<<","<<greenPixels<<","<<stable<<","<<pass<<"\n";
     std::printf("p3 cycle=%d %s models=%d red=%d green=%d stationary=%d %s\n",
         cycle,stage,SceneModelCount(),red,greenPixels,stable,pass?"PASS":"FAIL");
@@ -602,9 +596,10 @@ static int runLifetimeTest(Ogre::Root* root,Ogre::RenderWindow* win,const std::s
         if(!stationaryId)return 4;
         DrawEntry& stationary=g_drawn.find(stationaryId)->second;
         Ogre::SceneNode* stationaryNode=stationary.node;
-        PlayerBlockMesh::BlockMesh* stationaryMesh=stationary.geometry.getPointer();
-        int red=-1;
-        if(!lifetimeFrame(root,win,cycle,"loaded",2,true,stationaryId,stationaryNode,stationaryMesh,red,records))return 5;
+        PlayerBlockMesh::Mesh* stationaryMesh=stationary.geometry.getPointer();
+        float stationarySize[3];std::memcpy(stationarySize,stationary.size,sizeof(stationarySize));
+        std::vector<unsigned char> stationaryPixels;
+        if(!lifetimeFrame(root,win,cycle,"loaded",2,true,stationaryId,stationaryNode,stationaryMesh,stationarySize,stationaryPixels,records))return 5;
         const char* commands[]={
             "game.Workspace.Brick.Size=Vector3.new(3,1.2,1); game.Workspace.Brick.CFrame=CFrame.new(-2,.5,0)*CFrame.fromEulerAnglesXYZ(0,0,.6)",
             "p3Group=Instance.new('Model');p3Group.Name='Group';p3Group.Parent=game.Workspace;p3Held=game.Workspace.Brick;p3Held.Parent=p3Group",
@@ -619,7 +614,7 @@ static int runLifetimeTest(Ogre::Root* root,Ogre::RenderWindow* win,const std::s
         for(int step=0;step<7;++step){
             if(ExecutePlayerScript(commands[step]))return 6;
             if(!lifetimeFrame(root,win,cycle,stages[step],counts[step],step!=2 && step!=6,
-                stationaryId,stationaryNode,stationaryMesh,red,records))return 7;
+                stationaryId,stationaryNode,stationaryMesh,stationarySize,stationaryPixels,records))return 7;
             if(step==0){
                 bool transformed=false;
                 for(int i=0;i<SceneModelCount();++i){
@@ -665,6 +660,7 @@ int main(int argc, char** argv)
     bool demo = false;
     bool skytest = false;
     bool stability = false;
+    bool inspectPlace = false;
     int stabilityExit = 0;
     int spinFrames = 0;
     std::string contentRoot;
@@ -678,6 +674,7 @@ int main(int argc, char** argv)
         else if (std::strcmp(argv[i], "--p3test") == 0) lifetest = true;
         else if (std::strcmp(argv[i], "--demo") == 0) demo = true;
         else if (std::strcmp(argv[i], "--stability-test") == 0) stability = true;
+        else if (std::strcmp(argv[i], "--inspect-place") == 0) inspectPlace = true;
         else if (std::strcmp(argv[i], "--capture-sky") == 0) { demo=true;skytest=true; }
         else if (std::strcmp(argv[i], "--capture-spin") == 0 && i+1<argc) { spinFrames=std::atoi(argv[++i]);demo=true; }
         else if (std::strcmp(argv[i], "--content-root") == 0 && i+1<argc) contentRoot=argv[++i];
@@ -686,20 +683,22 @@ int main(int argc, char** argv)
         else if (argv[i][0] != '-') placePath = argv[i];
     }
     if(stability && (!frames || frameCount<240)){std::printf("stability test requires --frames 240 or more\n");return 1;}
+    if(inspectPlace && !frames){std::printf("inspect-place requires --frames\n");return 1;}
 
-    if(contentRoot.empty()){
-        char path[MAX_PATH];GetModuleFileNameA(0,path,sizeof(path));
-        contentRoot=std::string(path).substr(0,std::string(path).find_last_of("\\/"))+"/Content";
-    }
+    char path[MAX_PATH];GetModuleFileNameA(0,path,sizeof(path));
+    std::string moduleRoot=std::string(path).substr(0,std::string(path).find_last_of("\\/"));
+    if(contentRoot.empty())contentRoot=moduleRoot+"/Content";
+    GetFullPathNameA(contentRoot.c_str(),sizeof(path),path,0);contentRoot=path;
     if(!getenv("ROC_TEXTURE_STRIP"))_putenv(("ROC_TEXTURE_STRIP="+contentRoot+"/textures/SurfacesStrip.png").c_str());
     if(!std::ifstream(getenv("ROC_TEXTURE_STRIP"),std::ios::binary)){
         std::printf("missing SurfacesStrip.png; provide original Content with --content-root\n");return 1;
     }
     if(!selftest && !cachetest && !lifetest && !frames && placePath.empty())demo=true;
+    if(ConfigureContentRoot(contentRoot.c_str()))return 1;
+    if(demo && placePath.empty())placePath=moduleRoot+"/Places/default.rbxl";
 
     if (selftest)
         placeText = kPartPlace;
-    else if(demo)placeText=kDemoPlace;
     else
         placeText = placePath.empty() ? "" : readPlace(placePath.c_str());
     if(cachetest && placeText.empty()){std::printf("cachetest requires readable fixture\n");return 1;}
@@ -722,6 +721,7 @@ int main(int argc, char** argv)
     }
     if (!rs) { std::printf("no d3d9 renderer\n"); delete root; ClosePlace(); return 3; }
     root->setRenderSystem(rs);
+    Ogre::ResourceGroupManager::getSingleton().addResourceLocation(contentRoot,"FileSystem","General");
     rs->setConfigOption("Full Screen", "No");
     rs->setConfigOption("Video Mode", demo?"800 x 600 @ 32-bit colour":"320 x 240 @ 32-bit colour");
     Ogre::RenderWindow* win = root->initialise(true, "Player2008");
@@ -827,6 +827,20 @@ int main(int argc, char** argv)
         std::printf("after %d frames: Brick at (%g,%g,%g), models=%d\n", frameCount, x, y, z, SceneModelCount());
         drawModels();
         root->renderOneFrame(); if(!writeBackbuffer(win,"last.png"))return 7;
+        if(inspectPlace){
+            std::ofstream snapshot("place_snapshot.csv",std::ios::binary);snapshot.precision(9);
+            snapshot<<"index,status,x,y,z,sx,sy,sz,kind,levels,source_indices,backend_indices\n";
+            for(int i=0;i<SceneModelCount();++i){
+                SceneModel model;int status=SceneModelGet(i,&model);
+                snapshot<<i<<","<<status;
+                if(!status)snapshot<<","<<model.position[0]<<","<<model.position[1]<<","<<model.position[2]
+                    <<","<<model.size[0]<<","<<model.size[1]<<","<<model.size[2]<<","<<model.geometry->geometryKind
+                    <<","<<model.geometry->levels.size()<<","<<model.geometry->level0().indexArray.size()
+                    <<","<<model.geometry->level0().backend->indexData->indexCount;
+                snapshot<<"\n";
+            }
+            if(!snapshot)return 7;
+        }
     }
     else
     {

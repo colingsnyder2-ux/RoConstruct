@@ -1,4 +1,4 @@
-// from server: 94% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0045eff0  unit: RBX::Stats::H::?$TypedStatsItem  size: 34 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0045eff0
@@ -24,7 +24,7 @@ struct EventHandler
 
 struct StatsItem
 {
-    char storage[0x158];
+    char storage[0xb8];
     EventHandler handler;
 
     void update(const int* value);

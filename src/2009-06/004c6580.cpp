@@ -1,4 +1,4 @@
-// from server: 97% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
@@ -49,14 +49,14 @@ public:
 namespace RBX {
 class Player {
 public:
-    char pad[0x1b4];
+    char pad[0xc8];
     int userId;
 };
 
 namespace Network {
 class Players {
 public:
-    char pad[0x198];
+    char pad[0xd4];
     std::vector<shared_ptr<Player> >* players;
     shared_ptr<Player> playerFromId(int userId);
 };

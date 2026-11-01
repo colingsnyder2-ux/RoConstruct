@@ -1,4 +1,4 @@
-// from server: 95% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 005cce80  unit: RBX::P8Camera::?$GetSetImpl  size: 150 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005cce80
@@ -64,7 +64,7 @@ struct Frame {
 struct Subject;
 
 struct SubjectTable {
-    void* unused[4];
+    void* unused[7];
     bool (__thiscall *update)(Subject*, float, Frame*, Frame*);
 };
 
@@ -79,11 +79,11 @@ extern "C" void* __cdecl __RTDynamicCast(
     void*, long, void*, void*, int);
 
 struct Camera {
-    char padding[0x174];
+    char padding[0xdc];
     Frame first;
     Frame second;
     int mode;
-    int reserved;
+
     void* subject;
 
     bool update(float);

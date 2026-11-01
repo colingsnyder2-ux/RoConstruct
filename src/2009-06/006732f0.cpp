@@ -1,4 +1,4 @@
-// from server: 95% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 006334f0  unit: RBX::Network::VPlayer::?$BoundPropGetSet  size: 44 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 006334f0
@@ -33,7 +33,7 @@ struct S
 
 Result S::f(void* object)
 {
-    char* base = object ? static_cast<char*>(object) - 20 : 0;
+    char* base = object ? static_cast<char*>(object) - 24 : 0;
     Result result;
     result.value = *reinterpret_cast<int*>(base + offset);
     return result;

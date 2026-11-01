@@ -1,9 +1,9 @@
-// from server: 97% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs-dll roc_espeon_guimenuaccessorcount6054553ba0d6e8b9.cpp
+// roc-lib: rbxgs-dll roc_espclaude_156a2a91c3ee01bb.cpp
 
 // Candidate translation unit (score above; library headers required).
 #define _DLL
@@ -47,9 +47,15 @@ namespace RBX { class GuidStub { public: typedef Guid::Data Data; void assign(co
 #include "gui/MenuItem.h"
 namespace RBX
 {
+	// 2009 exe layout: Instance is 0x8c bytes (children shared_ptr @0x4c), GuiItem guiSize @0x98, Workspace VerbContainer @0x158
+	class ExeGui2009 {
+	public:
+		const boost::shared_ptr<Instances>& children() const { return *(const boost::shared_ptr<Instances>*)((const char*)this+0x4c); }
+		void setGuiSize(const G3D::Vector2& value) { *(G3D::Vector2*)((char*)this+0x98)=value; }
+	};
 	Verb* GuiBuilder::getVerb(const std::string& name)
 	{
-		Verb* verb = workspace->getVerb(name);
+		Verb* verb = ((VerbContainer*)((char*)workspace+0x158))->getVerb(name);
 		return verb;
 	}
 
@@ -69,14 +75,15 @@ namespace RBX
 		panel->addGuiItem(Creatable<Instance>::create<MenuItem>(getVerb("Help"), "Help..."));
 		panel->addGuiItem(Creatable<Instance>::create<MenuItem>(getVerb("Exit"), "   Exit"));
 
-		for (size_t i = 0; i < (panel->getChildren() ? panel->getChildren()->size() : 0); ++i)
+		for (size_t i = 0; i < (((ExeGui2009*)panel.get())->children() ? ((ExeGui2009*)panel.get())->children()->size() : 0); ++i)
 		{
 			if (GuiItem* guiItem = panel->getGuiItem((int)i))
 			{
-				guiItem->setGuiSize(G3D::Vector2(100.0f, 20.0f));
+				((ExeGui2009*)guiItem)->setGuiSize(G3D::Vector2(100.0f, 20.0f));
 			}
 		}
 
 		return panel;
 	}
 }
+

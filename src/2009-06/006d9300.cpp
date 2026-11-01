@@ -1,4 +1,4 @@
-// from server: 96% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
@@ -19,7 +19,6 @@ public:
     virtual void v0();
     virtual void v1();
     virtual void v2();
-    virtual void v3();
     virtual void onEdgeAdded(Edge*);
     virtual void onEdgeRemoving(Edge*);
 };
@@ -31,7 +30,7 @@ public:
 };
 class SleepStage : public IStage {
 public:
-    char pad1[0x1b8 - 12];
+    char pad1[0x1d0 - 12];
     std::set<Joint*> steppingJoints;
     IWorldStage* getDownstreamWS() { return downstream; }
     void changeJointState(Joint* j, Sim::EdgeState newState);

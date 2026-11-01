@@ -1,4 +1,4 @@
-// from server: 96% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 005e81b0  unit: RBX::Primitive  size: 66 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005e81b0
@@ -29,7 +29,7 @@
 // 005e81ef  c20800               ret 8
 
 struct Source {
-    char reserved[0x94];
+    char reserved[0x9c];
     char data;
     const void* get();
 };
@@ -40,7 +40,7 @@ struct Temporary {
 };
 
 struct Primitive {
-    char reserved[0xA0];
+    char reserved[0xe4];
     Source* source;
 
     Temporary* process(Temporary*, const void*, void*, const void*);

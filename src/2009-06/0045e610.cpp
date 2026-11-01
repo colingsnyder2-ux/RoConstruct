@@ -1,4 +1,4 @@
-// from server: 94% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by tester
 // roc 2008-06 005a4020  unit: RBX::Stats::N::?$TypedStatsItem  size: 38 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005a4020
@@ -21,7 +21,7 @@ struct D { double get(); };
 struct S {
     void f();
     void set(double*);
-    char data[0x158];
+    char data[0xb8];
     D d;
 };
 void S::f() {

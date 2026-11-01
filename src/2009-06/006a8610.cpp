@@ -1,4 +1,4 @@
-// from server: 96% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by EspClaude
 // roc 2008-06 005fb160  unit: RBX::Kernel  size: 60 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005fb160
@@ -84,7 +84,7 @@ public:
 
 class Kernel {
 public:
-    char pad[0x10];
+    char pad[0x14];
     KernelData* data;
     void insertBody(Body* b);
 };

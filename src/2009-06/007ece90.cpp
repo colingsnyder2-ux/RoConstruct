@@ -1,8 +1,8 @@
-// from server: 34% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /MD /GS /EHsc /Ob1
-// roc-lib: xtp-11.2.2-shared-mfc-internals Source\PropertyGrid\XTPPropertyGridInplaceEdit.cpp
+// roc-lib: xtp-11.2.2-lib-strlen-rtm Source/PropertyGrid/XTPPropertyGridInplaceEdit.cpp
 
 // Candidate translation unit (score above; library headers required).
 // PropertyGripInplaceEdit.cpp : implementation of the CPropertyGripInplaceEdit class.

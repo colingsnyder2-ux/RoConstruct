@@ -1,4 +1,4 @@
-// from server: 96% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0042e4c0  unit: MyXTPCommandBars  size: 54 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0042e4c0
@@ -33,7 +33,7 @@ struct Helper
 
 struct S
 {
-    unsigned char padding[0x10C];
+    unsigned char padding[0x110];
     Helper helper;
     int value;
 
@@ -43,7 +43,7 @@ struct S
 
 int S::f(int enabled)
 {
-    helper.initialize(this, (const void*)0x81089C, 0);
+    helper.initialize(this, "CMainFrameV2", 0);
     int argument = enabled;
     if (argument)
         argument = value;

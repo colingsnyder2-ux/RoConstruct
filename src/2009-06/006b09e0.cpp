@@ -1,10 +1,10 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by EspClaude
 // from server: 97% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// roc-lib: openrbx-client-dll roc_espclaude_7d30727a4b451db5.cpp
+// roc-lib: openrbx-client-dll roc_espclaude_f6f485f59bad06cb.cpp
 
 // Candidate translation unit (score above; library headers required).
 // exe-layout OpenRBX headers: Body pv at 0x94 without updatePV, Primitive +0x28 before oldSpatialMin
@@ -186,7 +186,7 @@ private:
 	Matrix3 moment;                             // 0x5c
 	float mass;                                 // 0x80
 	mutable int stateIndex;                     // 0x84
-	int exBodyPad[3];                           // exe: pv at 0x94
+	int exBodyPad[5];                           // exe: pv at 0x94
 	mutable PV pv;                              // 0x94
 };
 
@@ -342,6 +342,7 @@ public:
 
 private:
 	Sim::EdgeState edgeState; // 0x08
+	int exEdgePad2009;
 	Primitive* prim0;         // 0x0c
 	Primitive* prim1;         // 0x10
 	Edge* next0;              // 0x14
@@ -391,7 +392,7 @@ private:
 	Clump* clump;                // 0x30
 	int clumpDepth;              // 0x34
 	int traverseId;              // 0x38
-	char exSpatialPad[0x28];     // exe: oldSpatialMin at 0x68
+	char exSpatialPad[0x6c];     // exe: oldSpatialMin at 0x68
 
 	SpatialNode* spatialNodes;       // 0x3c
 	Vector3int32 oldSpatialMin;      // 0x40
@@ -728,7 +729,7 @@ private:
 
 	int separatingAxisId; // 0x58
 	int separatingBodyId; // 0x5c
-	char exContactPad[0x10];                   // exe: feature at 0x64
+	char exContactPad[0xc];                   // exe: feature at 0x64
 
 	int feature[2]; // 0x60
 
@@ -1482,5 +1483,6 @@ bool BlockBlockContact::stepContact()
 }
 
 } // namespace RBX
+
 
 

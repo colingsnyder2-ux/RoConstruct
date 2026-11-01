@@ -1,4 +1,4 @@
-// from server: 94% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00573670  unit: RBX::TextDisplay  size: 119 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00573670
@@ -76,9 +76,10 @@ struct TextDisplay {
     virtual void v22();
     virtual void v23();
     virtual void v24();
+    virtual void v25();
     virtual String text();
 
-    char padding[0x160];
+    char padding[0xbc];
     float first[4];
     float second[4];
     int value;

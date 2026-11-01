@@ -1,4 +1,4 @@
-// from server: 94% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 005a4160  unit: RBX::Stats::M::?$TypedStatsItem  size: 34 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005a4160
@@ -24,7 +24,7 @@ struct Value
 
 struct S
 {
-    char padding[0x158];
+    char padding[0xb8];
     Value value;
 
     void setValue(const float &value);

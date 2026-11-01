@@ -1,17 +1,20 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-dll roc_espclaude_1f29ee3c3c2214e7.cpp
+// roc-lib: rbxgs-dll roc_espclaude_92b894da876d899a.cpp
 
 // Candidate translation unit (score above; library headers required).
+#define Heartbeat HeartbeatHdr
 #define YieldingThreads YieldingThreadsHeader
 #include "script/ScriptContext.h"
 #include "script/ThreadRef.h"
 #include "util/RunStateOwner.h"
 #include "lua.h"
 #undef YieldingThreads
+#undef Heartbeat
+namespace RBX { class Heartbeat { public: const double time; const double step; double exeExtra[2]; Heartbeat(double t, double s) : time(t), step(s) {} }; }
 
 namespace RBX
 {
@@ -50,7 +53,7 @@ namespace RBX
                 if (it->thread->empty())
                     continue;
 
-                it->elapsedTime += heartbeat.step;
+                WaitingThread& w = *it; w.elapsedTime += heartbeat.step;
 
                 if (it->elapsedTime < it->requestedDelay)
                 {
@@ -68,3 +71,5 @@ namespace RBX
         }
     }
 }
+
+

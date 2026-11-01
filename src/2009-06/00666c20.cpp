@@ -1,9 +1,9 @@
-// from server: 96% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: openrbx-client-dll roc_espclaude_242988241b41be39.cpp
+// roc-lib: openrbx-client-dll roc_espclaude_4150e8c922bb80cb.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <boost/shared_ptr.hpp>
@@ -19,7 +19,7 @@ public:
 };
 }
 namespace RBX {
-class Instance { public: char padding[0x1bc]; };
+class Instance { public: char padding[0x1a8]; };
 class PartInstance : public Instance {
 public:
     const G3D::CoordinateFrame& getCoordinateFrame() const;
@@ -45,3 +45,4 @@ bool Humanoid::hasWalkToPoint(G3D::Vector3& worldPosition) const
     return false;
 }
 }
+

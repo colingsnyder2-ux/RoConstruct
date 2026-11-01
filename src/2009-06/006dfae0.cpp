@@ -1,4 +1,4 @@
-// from server: 94% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0064e840  unit: RBX::UnifiedImageWidget  size: 92 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0064e840
@@ -68,9 +68,10 @@ struct Widget {
     virtual void slot18();
     virtual void slot19();
     virtual void slot20();
+    virtual void slot21();
     virtual bool visible();
 
-    char padding[0x140];
+    char padding[0x9c];
     int state;
     Image image;
 

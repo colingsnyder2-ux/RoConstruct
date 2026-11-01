@@ -1,9 +1,9 @@
-// from server: 97% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs roc_unit_5f85e86853fbb260.cpp
+// roc-lib: rbxgs roc_espclaude_8895fecd0a4410fc.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include "util/Rect.h"
@@ -28,6 +28,7 @@ struct GuiTarget {
     virtual void v15();
     virtual void v16();
     virtual void v17();
+    virtual void v17b();
     virtual Vector2 getPosition();
     virtual void v19();
     virtual void v20();

@@ -1,4 +1,4 @@
-// from server: 97% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00467bf0  unit: DxUserInput  size: 83 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00467bf0
@@ -55,7 +55,7 @@ struct Window {
 };
 
 struct DxUserInput {
-    char padding0[0x34];
+    char padding0[0x2c];
     char criticalSection[0x18];
     char padding1[0x120];
     Window* window;

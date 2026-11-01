@@ -1,8 +1,5 @@
-// from server: 80% by Intel
-extern char g_0_bc6954, g_0_bc671c, g_4_bc6710, g_18_bc6704, g_1c_bc66f8, g_80_bc66cc;
-extern "C" void base_811a80(void*);
-
-struct VMotor_FactoryProduct {
+// from server: 92% by Intel
+struct X_00812800 {
     void* f_0;
     void* f_4;
     char pad_8[20];
@@ -10,17 +7,17 @@ struct VMotor_FactoryProduct {
     void* f_1c;
     char pad_20[96];
     void* f_80;
-    char pad_84[76];
+    char pad_84[44];
     void* f_ac;
-    void init();
+    X_00812800* base();
+    X_00812800* run() {
+        f_ac = (void*)0xbc6954;
+        f_0 = (void*)0xbc671c;
+        f_4 = (void*)0xbc6710;
+        f_18 = (void*)0xbc6704;
+        f_1c = (void*)0xbc66f8;
+        f_80 = (void*)0xbc66cc;
+        return base();
+    }
 };
-
-void VMotor_FactoryProduct::init() {
-    f_ac = &g_0_bc6954;
-    f_0 = &g_0_bc671c;
-    f_4 = &g_4_bc6710;
-    f_18 = &g_18_bc6704;
-    f_1c = &g_1c_bc66f8;
-    f_80 = &g_80_bc66cc;
-    base_811a80(this);
-}
+X_00812800* func_00812800(X_00812800* x) { return x->run(); }

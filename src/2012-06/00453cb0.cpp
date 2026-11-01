@@ -1,21 +1,17 @@
-// from server: 75% by atomic.potato
+// from server: 78% by Intel
 struct CProgressDialog
 {
-    int m_data0[4];
-    int* m_ptr;
-    int m_data[2];
-
     void f();
 };
 
 void CProgressDialog::f()
 {
-    if (m_ptr != 0)
+    typedef void (__thiscall *Callback)(void *, int, void *);
+    Callback cb = *reinterpret_cast<Callback *>(this + 0x10);
+    if (cb)
     {
-        typedef void (*Function)(int*, int*, int);
-        Function p = *(Function*)m_ptr;
-        if (p != 0)
-            p(&m_data[1], &m_data[1], 2);
-        m_ptr = 0;
+        void *context = reinterpret_cast<void *>(reinterpret_cast<char *>(this) + 0x18);
+        cb(context, 2, context);
+        *reinterpret_cast<int *>(this + 0x10) = 0;
     }
 }

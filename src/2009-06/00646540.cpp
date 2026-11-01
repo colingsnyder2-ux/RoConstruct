@@ -1,15 +1,19 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-dll roc_reverb_enum_native_owner_9611c02c0e2527a8.cpp
+// roc-lib: rbxgs-dll roc_espclaude_142f3a073290d44d.cpp
 
 // Candidate translation unit (score above; library headers required).
 #pragma include_alias("reflection/enumconverter.h", "../roc_enum_native_owner_header_b9f24b80cd6bff22.cpp")
 #undef _RELEASEASSERT
-#include "util/Sound.h"
+#include "reflection/type.h"
+namespace RBX { namespace Reflection { struct ExePad2009 { int exePad2009; }; } }
+#define Type Type, public ExePad2009
 #include "reflection/enumconverter.h"
+#undef Type
+#include "util/Sound.h"
 namespace RBX { namespace Reflection {
 using namespace Soundscape;
 template<>
@@ -42,3 +46,5 @@ EnumDesc<Soundscape::ReverbType>::EnumDesc()
 	addPair(UnderWater, "UnderWater");
 }
 } }
+
+

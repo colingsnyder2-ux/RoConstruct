@@ -1,9 +1,9 @@
-// from server: 97% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /O2 /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs-dll roc_espclaude_afc4a3b2cbb2c51e.cpp
+// roc-lib: rbxgs-dll roc_espclaude_28ba25a47eb3e7f5.cpp
 
 // Candidate translation unit (score above; library headers required).
 #pragma float_control(precise,off)
@@ -19,7 +19,7 @@ extern bool __cdecl specialMode();
 
 struct DxUserInput
 {
-    char padding0[0x59];
+    char padding0[0x51];
     bool flag;
     char padding1[2];
     int mode;
@@ -50,4 +50,5 @@ void DxUserInput::f(float* x, float* y)
         break;
     }
 }
+
 

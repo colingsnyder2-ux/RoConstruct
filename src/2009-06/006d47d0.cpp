@@ -1,4 +1,4 @@
-// from server: 96% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00614560  unit: RBX::RevoluteLink  size: 113 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00614560
@@ -55,7 +55,7 @@ extern void __cdecl combine(Matrix*, const Matrix*, const Matrix*);
 extern void __cdecl evaluate(Result*, const Result&, const Result&, const Matrix&, float);
 
 struct S {
-    char reserved0[0x68];
+    char reserved0[0x70];
     Matrix rotation;
     float angle;
     char reserved1[4];

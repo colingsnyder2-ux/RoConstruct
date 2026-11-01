@@ -1,4 +1,4 @@
-// from server: 96% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 005c8f20  unit: RBX::LaserTool  size: 114 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005c8f20
@@ -67,7 +67,7 @@ namespace std {
 }
 
 struct S {
-    char reserved[0x130];
+    char reserved[0x90];
     double value;
     String text;
 };

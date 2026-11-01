@@ -1,13 +1,15 @@
-// from server: 96% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// roc-lib: openrbx-client roc_espclaude_872167d21248def9.cpp
+// roc-lib: openrbx-client roc_espclaude_9034cae0439f6aca.cpp
 
 // Candidate translation unit (score above; library headers required).
 #define private public
+#define jointOwner jointOwner; char exePad2009[0x10]
 #include "v8world/Joint.h"
+#undef jointOwner
 #include "v8world/World.h"
 #include "v8world/IWorldStage.h"
 #undef private
@@ -25,7 +27,7 @@ static inline World* exGetWorld(IPipelined* p)
 
 	IStage* stage;
 
-	if (p->currentStage->getStageType() != (IStage::StageType)7) {
+	if (p->currentStage->getStageType() != (IStage::StageType)15) {
 		stage = p->currentStage;
 	}
 	else {
@@ -53,3 +55,4 @@ void Joint::setJointCoord(int i, const CoordinateFrame& c)
 }
 
 }
+

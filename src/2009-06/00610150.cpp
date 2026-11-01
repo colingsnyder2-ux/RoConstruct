@@ -1,4 +1,4 @@
-// from server: 96% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by nuck16
 // roc 2008-06 00582300  unit: RBX::CameraCenterCommand  size: 229 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00582300
@@ -158,13 +158,13 @@ struct Control {
 };
 
 struct Selection {
-    char padding[0x148];
+    char padding[0xa4];
     void** first;
     void** last;
 };
 
 struct Camera {
-    char padding[0x1d4];
+    char padding[0x13c];
     int state;
 };
 
@@ -174,7 +174,7 @@ struct CameraSource {
 };
 
 struct World {
-    char padding[0x288];
+    char padding[0x118];
     CameraSource camera;
 };
 

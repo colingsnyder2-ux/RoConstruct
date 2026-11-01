@@ -11,9 +11,10 @@
 
 // Typed integration of the touched native Level prefix; no donor Mesh/GL state.
 // BlockMesh owns levels through the original G3D reference-counting contract.
+namespace RBX { class MeshId;class ContentProvider; }
 namespace PlayerBlockMesh {
-class BlockMesh;
-typedef G3D::ReferenceCountedPointer<BlockMesh> MeshRef;
+class Mesh;
+typedef G3D::ReferenceCountedPointer<Mesh> MeshRef;
 class Level : public G3D::ReferenceCountedObject {
 public:
     G3D::Array<unsigned> indexArray;
@@ -45,14 +46,33 @@ public:
     int geometryKind;
     Mesh();
     ~Mesh();
+    Level& level0() { return *levels[0]; }
 };
 class BlockMesh : public Mesh {
     void populate(const G3D::Vector3&,RBX::View::RenderSurfaceTypes,RBX::BrickColor);
 public:
     BlockMesh(const G3D::Vector3&,RBX::View::RenderSurfaceTypes,RBX::BrickColor);
     static MeshRef create(const G3D::Vector3&,RBX::View::RenderSurfaceTypes,RBX::BrickColor);
-    Level& level0() { return *levels[0]; }
 };
+// Genuine static factory base accounts for native sphere allocation0x8c.
+template<class T,size_t variations> class MeshFactory {
+public:
+    static T* create(const G3D::Vector3&,RBX::View::RenderSurfaceTypes);
+    static void flushUnused();
+    static unsigned cachedMeshes();
+};
+class SphereMesh : public Mesh, public MeshFactory<SphereMesh,1> {
+public:
+    SphereMesh(const G3D::Vector3&,RBX::View::RenderSurfaceTypes);
+};
+class FileMesh : public Mesh {
+public:
+    bool loadFromMeshFile(RBX::ContentProvider*,const G3D::Vector3&,RBX::MeshId);
+    static MeshRef create(RBX::ContentProvider*,const G3D::Vector3&,RBX::MeshId);
+};
+template<> SphereMesh* MeshFactory<SphereMesh,1>::create(const G3D::Vector3&,RBX::View::RenderSurfaceTypes);
+template<> void MeshFactory<SphereMesh,1>::flushUnused();
+template<> unsigned MeshFactory<SphereMesh,1>::cachedMeshes();
 void flushUnused();
 unsigned cachedMeshes();
 unsigned activeReferences();

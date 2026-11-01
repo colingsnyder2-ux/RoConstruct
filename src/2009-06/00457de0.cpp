@@ -1,4 +1,4 @@
-// from server: 95% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by EspClaude
 // roc 2008-06 004592b0  unit: CRobloxView  size: 223 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 004592b0
@@ -262,11 +262,11 @@ struct CWnd {
 };
 
 struct CRobloxView : CWnd {
-    char pad24[0xb0 - 0x24];
+    char pad24[0xa0 - 0x24];
     CWnd viewPane;
-    char pad_d4[0x180 - 0xd4];
+    char pad_c4[0x1b4 - 0xc4];
     CWnd statusPane;
-    char pad_1a4[0x1d8 - 0x1a4];
+    char pad_1d8[0x20c - 0x1d8];
     CWnd *sidePane;
     void OnSize();
 };

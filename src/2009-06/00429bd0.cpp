@@ -1,4 +1,4 @@
-// from server: 96% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00430ae0  unit: CMainFrame  size: 93 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00430ae0
@@ -52,10 +52,10 @@ struct CXTPDockingPaneManager {
 struct CMainFrame {
     char pad0[0xec];
     CommandBars* field_ec;
-    char pad1[0x104 - 0xf0];
+    char pad1[0x108 - 0xf0];
     char field_104;
-    char pad2[0x138 - 0x105];
-    char field_138[0x284 - 0x138];
+    char pad2[0x13c - 0x109];
+    char field_138[0x288 - 0x13c];
     TabClient field_284;
 
     void sub_6a0db8(int, int);

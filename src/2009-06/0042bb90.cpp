@@ -1,4 +1,4 @@
-// from server: 97% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00431b40  unit: CDataModelPropGrid  size: 169 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00431b40
@@ -81,7 +81,7 @@ struct CDataModelPropGrid {
     PropGridVTable *vtable;
     char padding04[0x1C];
     void *window;
-    char padding24[0xD4];
+    char padding24[0xD8];
     unsigned char flagF8;
     char paddingF9[0x2F];
     Rect savedRect;

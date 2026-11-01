@@ -1,61 +1,30 @@
-// from server: 97% by EspClaude
-// from server: 100% by auto
-// roc-lang: cpp
+// from server: 100% by EspClaude
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client App/v8datamodel/Team.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/Team.h"
-
-#include "reflection/property.h"
-
 namespace RBX {
-
-const char sTeam[] = "Team";
-
-using namespace Reflection;
-
-static PropDescriptor<Team, int> prop_Score("Score", "Data", &RBX::Team::getScore, &RBX::Team::setScore);
-
-static PropDescriptor<Team, BrickColor> prop_Color(
-	"TeamColor",
-	"Data",
-	&RBX::Team::getTeamColor,
-	&RBX::Team::setTeamColor
-);
-
-static PropDescriptor<Team, bool> prop_AutoAssignable(
-	"AutoAssignable",
-	"Data",
-	&RBX::Team::getAutoAssignable,
-	&RBX::Team::setAutoAssignable
-);
-
-// FUNCTION: WEBSERVICE 0x100be710
-void Team::setScore(int score)
+class BrickColor { public: BrickColor(const BrickColor& o) : number(o.number) {} int number; };
+namespace Reflection {
+class DescribedBase { public: virtual ~DescribedBase(); void* descriptor; };
+template<class C, class V> class PropDescriptor {
+public:
+    class GetSet { public: virtual V getValue(const DescribedBase* object) const = 0; int pad; };
+    template<class G, class S> class GetSetImpl : public GetSet {
+    public:
+        G get; S set;
+        virtual V getValue(const DescribedBase* object) const;
+    };
+};
+template<class C, class V> template<class G, class S>
+V PropDescriptor<C,V>::GetSetImpl<G,S>::getValue(const DescribedBase* object) const
 {
-	this->score = score;
-	raisePropertyChanged(prop_Score);
+    return (static_cast<const C*>(object)->*get)();
 }
-
-// FUNCTION: WEBSERVICE 0x100be730
-void Team::setTeamColor(BrickColor color)
-{
-	this->color = color;
-	raisePropertyChanged(prop_Color);
 }
-
-// FUNCTION: WEBSERVICE 0x100be750
-void Team::setAutoAssignable(bool autoAssign)
-{
-	autoAssignable = autoAssign;
-	raisePropertyChanged(prop_AutoAssignable);
+class InstancePad { public: virtual ~InstancePad(); char pad[0x14]; };
+class Team : public InstancePad, public Reflection::DescribedBase {
+public:
+    BrickColor getTeamColor() const;
+    void setTeamColor(BrickColor);
+};
+template class Reflection::PropDescriptor<Team, BrickColor>::GetSetImpl<BrickColor (Team::*)() const, void (Team::*)(BrickColor)>;
 }
-
-} // namespace RBX
-
-template class RBX::FactoryProduct<RBX::Team, RBX::Instance, RBX::sTeam>;
-template class RBX::Reflection::
-	Described<RBX::Team, RBX::sTeam, RBX::FactoryProduct<RBX::Team, RBX::Instance, RBX::sTeam> >;
-template class RBX::DescribedCreatable<RBX::Team, RBX::Instance, RBX::sTeam>;

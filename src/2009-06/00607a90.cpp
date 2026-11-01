@@ -1,4 +1,4 @@
-// from server: 95% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 005738e0  unit: RBX::PercentPanel  size: 122 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005738e0
@@ -64,7 +64,7 @@ struct UserInputBase {
 };
 
 struct PercentPanel {
-    char padding[0x15c];
+    char padding[0xb8];
     int steerMode;
     int throttleMode;
     Vector2 value;
