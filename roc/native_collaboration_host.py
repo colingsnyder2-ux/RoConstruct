@@ -54,6 +54,8 @@ class Host:
         canonical=self.promotions.source_root
         registry=self.promotions.overlay
         if registry.exists():inputs[str(registry)]=[registry.stat().st_size,registry.stat().st_mtime_ns]
+        project_registry=self.root/'rebuild/2008-06/patches/rbxgs-client.json'
+        if project_registry.exists():inputs[str(project_registry)]=[project_registry.stat().st_size,project_registry.stat().st_mtime_ns]
         key=integration.digest(inputs)
         if key!=self.cache_key:
             files={Path(p).relative_to(self.root).as_posix():Path(p).read_text(encoding='utf-8-sig')
@@ -67,6 +69,10 @@ class Host:
                 if not isinstance(extra,list):raise ValueError('Host task manifest must be a list')
                 tasks+=extra
             headers={p:recovery.digest(t.encode()) for p,t in files.items() if Path(p).suffix in ('.h','.hpp','.inl')}
+            project=json.loads(project_registry.read_text(encoding='utf-8')) if project_registry.exists() else {}
+            probe_headers={rel[len('App/include/'):]:integration.overlay_text(self.root/'tools/rbxgs/Client',rel,project,workspace=self.root)
+                           for rel in project if rel.startswith('App/include/') and Path(rel).suffix in ('.h','.hpp','.inl')}
+            probe_revision=integration.digest(probe_headers)
             analysis=self.root/'work/2008-06/functions.jsonl'
             if analysis.exists():
                 from roc import match
@@ -104,7 +110,7 @@ class Host:
                 target=integration.digest([task['file'].casefold(),method,task['addr']])
                 if target in seen:continue
                 seen.add(target)
-                task.update(target=target,signature=integration.digest([text,headers,files.get(task.get('translation_unit'))]),scope='method-body-only',class_name=method.rsplit('::',1)[0])
+                task.update(target=target,signature=integration.digest([text,headers,probe_revision,files.get(task.get('translation_unit'))]),scope='method-body-only',class_name=method.rsplit('::',1)[0])
                 clean.append(task)
             # Prefer bodies that can use the existing independent integration route.
             mappings={}
@@ -113,7 +119,7 @@ class Host:
             sources={p.relative_to(tree).as_posix() for p in tree.glob('App/*/*.cpp')}
             sources.update(p for p in patches if p.startswith('App/') and p.endswith('.cpp'))
             for rel in sorted(sources):
-                for method in sweep.methods(integration.overlay_text(tree,rel,patches)):
+                for method in sweep.methods(integration.overlay_text(tree,rel,patches,workspace=canonical)):
                     mappings.setdefault(method,[]).append(rel)
             for task in clean:
                 paths=mappings.get(task['method'],[])
@@ -121,7 +127,7 @@ class Host:
             clean.sort(key=lambda t:(not bool(t['integration_mapping']),len(files[t['file']][slice(*native_methods.methods(files[t['file']]).get(t['method'],(0,len(files[t['file']]))))]),t['file'],t['method']))
             if any(not Path(p).exists() or [Path(p).stat().st_size,Path(p).stat().st_mtime_ns]!=stamp for p,stamp in inputs.items()):
                 raise ValueError('Native inputs changed while publishing; refresh catalog')
-            self.cached=dict(revision=integration.digest(files),files=files,tasks=clean,
+            self.cached=dict(revision=integration.digest(files),files=files,tasks=clean,probe_headers=probe_headers,probe_revision=probe_revision,
                 classes=sorted({t['class_name'] for t in clean}),layout_policy='owner-only; no invented fields',lease_seconds=TTL)
             self.cache_key=key
         with self.store.lock:
@@ -213,6 +219,10 @@ class Host:
         try:
             context=sweep.native_context({},api);base=self.promotions.baseline()
             matcher=sweep.Matcher(set(match._functions('2008-06')))
+            from roc.native_collaboration import materialize_probe_headers
+            published=self.catalog()
+            probe_context=materialize_probe_headers(published,folder/'context')
+            if probe_context:context.probe_includes=[probe_context]
             def prove(snapshot,rel):
                 unit=task.get('translation_unit')
                 if unit and Path(unit).name.startswith('NativeRecovery'):
@@ -222,7 +232,11 @@ class Host:
                     target=snapshot_path(snapshot,unit)
                     target.parent.mkdir(parents=True,exist_ok=True)
                     target.write_text(probe,encoding='utf-8')
+                if self.catalog().get('probe_revision')!=published.get('probe_revision'):
+                    raise ValueError('Probe declarations changed; candidate retained for fresh verification')
                 result=recovery.compile_probe(snapshot,rel,context,matcher,{task['addr']},task['method'],translation_unit=task.get('translation_unit'))
+                if self.catalog().get('probe_revision')!=published.get('probe_revision'):
+                    raise ValueError('Probe declarations changed during compilation; candidate retained')
                 if result.get('target_exact'):
                     refs=native_refs.import_checks(Path(result['object']).read_bytes(),result['symbol'],task['addr'])
                     result['references']=refs

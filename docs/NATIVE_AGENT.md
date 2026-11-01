@@ -1,6 +1,6 @@
 # Native integration with an agent (Codex, Claude)
 
-## Native source recovery with real Codex agents (Worker 31)
+## Native source recovery with real Codex agents (Worker 32)
 
 Open `roc gui`, choose **Workers → Integrator**, select your Codex model and
 launch cap, then **Start native recovery**. This panel exposes native C++ recovery
@@ -1098,3 +1098,9 @@ server announces a changed baseline. All accepted-body, ABI, runtime and referen
 
 Worker 31 retains current cold-build dependency compatibility: G3D-GL `NO_SDL_MAIN`,
 RakNet `/FImalloc.h`, and Boost source recipe metadata. Canonical application source stays separate.
+
+Worker 32 carries read-only host probe declaration context separately from frozen canonical
+integration headers. Source workers use current genuine declarations; canonical submissions keep
+the accepted ABI/profile and all independent gates. Header context is content-addressed, validated
+and fenced when it changes. No owner fields or layouts are synthesized. Host scheduling prioritizes
+unintegrated targets and recognizes methods supplied by accepted overlay units.

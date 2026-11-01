@@ -274,12 +274,12 @@ def adopted_path(tree, name, workspace=None):
     return Path(os.path.abspath(Path(tree) / name))
 
 
-def overlay_text(tree, name, patches):
+def overlay_text(tree, name, patches, workspace=None):
     path = tree/name
     text = path.read_text(errors='replace') if path.exists() else ''
     for old, new in patches.get(name, []):
         if old == '@replace':
-            text = adopted_path(tree,new).read_text(errors='replace')
+            text = adopted_path(tree,new,workspace).read_text(errors='replace')
         elif old.startswith('@all:'):
             text = text.replace(old[5:], new)
         elif old:
@@ -395,7 +395,7 @@ class Promotions:
                 p = tree/name
                 if p.name.startswith("roc_"):
                     continue
-                for cls in set(re.findall(r"\b(\w+)::~?\w+\s*\(", overlay_text(tree, name, accepted_overlay))):
+                for cls in set(re.findall(r"\b(\w+)::~?\w+\s*\(", overlay_text(tree, name, accepted_overlay, workspace=self.source_root))):
                     self.native_paths.setdefault(cls, set()).add(p.relative_to(tree).as_posix())
             owned = set()
             for coverage in coverage_reports:

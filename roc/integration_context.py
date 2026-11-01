@@ -58,7 +58,7 @@ def context(promotions, identifier, addr):
         raise ValueError('Claim baseline evidence is missing')
     patches = json.loads(baseline[0])['overlay']
     for name in sorted(promotions.native_paths.get(row[0], promotions.native_paths.get(row[0].rsplit('::', 1)[-1], []))):
-        result['native_files'][name] = integration.overlay_text(root / 'tools/rbxgs/Client', name, patches)
+        result['native_files'][name] = integration.overlay_text(root / 'tools/rbxgs/Client', name, patches, workspace=root)
     module = root / 'rebuild/2008-06/modules/rbxgs-app.json'
     from roc import rebuild
     result['native_profiles'] = [dict(layer, compiler_build=layer.get('cl', rebuild.BUILD))

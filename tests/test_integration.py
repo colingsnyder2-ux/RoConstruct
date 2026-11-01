@@ -1759,3 +1759,18 @@ def test_canonical_source_pin_cannot_modify_receipt_artifacts_or_escape_state(tm
     integration.atomic_json(tmp_path/'work/integration/source-root.json',dict(path=selected))
     with pytest.raises(ValueError,match='inside work/integration/sources'):
         integration.source_root(tmp_path)
+
+
+def test_external_canonical_evidence_uses_its_adopted_headers_not_launcher_headers(tmp_path,monkeypatch):
+    from roc import native_adapt
+    launcher=tmp_path/'launcher';selected=tmp_path/'accepted'
+    relative='rebuild/2008-06/native-headers/A.h'
+    for root,name in [(launcher,'WrongLauncherType'),(selected,'AcceptedType')]:
+        path=root/relative;path.parent.mkdir(parents=True);path.write_text('namespace RBX { class '+name+' {}; }')
+    monkeypatch.setattr(integration,'ROOT',launcher)
+    tree=tmp_path/'shared-vendor';tree.mkdir()
+    patches={'App/include/A.h':[['@replace','../../../'+relative]]}
+    text=integration.overlay_text(tree,'App/include/A.h',patches,workspace=selected)
+    assert 'AcceptedType' in text and 'WrongLauncherType' not in text
+    paths,_=native_adapt.type_paths(selected,patches)
+    assert 'RBX::AcceptedType' in paths and 'RBX::WrongLauncherType' not in paths

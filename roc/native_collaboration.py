@@ -31,6 +31,8 @@ class Remote:
             raise ValueError('Invalid shared snapshot revision')
         folder=Path(folder)/revision
         payload['workspace']=str(folder)
+        context=materialize_probe_headers(payload,folder/'context')
+        if context:payload['probe_context']=str(context)
         if not isinstance(files, dict) or len(files)>4096 or len(json.dumps(files).encode())>integration.MAX_OVERLAY_BYTES:
             raise ValueError('Invalid shared native snapshot size')
         if len({rel.casefold() for rel in files})!=len(files):raise ValueError('Case-colliding shared source paths')
@@ -61,6 +63,28 @@ class Remote:
 
     def close(self):
         self.api.close()
+
+
+def materialize_probe_headers(payload, directory):
+    """Separate immutable compiler fallback declarations from editable native source files."""
+    headers=payload.get('probe_headers',{})
+    if not isinstance(headers,dict) or len(headers)>2048 or len(json.dumps(headers).encode())>integration.MAX_OVERLAY_BYTES:
+        raise ValueError('Invalid native probe header context')
+    if not headers:return None
+    revision=integration.digest(headers)
+    if payload.get('probe_revision')!=revision or len({name.casefold() for name in headers})!=len(headers):
+        raise ValueError('Invalid native probe header revision')
+    directory=(Path(directory)/revision).resolve()
+    for name,text in headers.items():
+        relative=Path(name)
+        if not isinstance(text,str) or '\\' in name or ':' in name or relative.is_absolute() or '..' in relative.parts or relative.suffix not in ('.h','.hpp','.inl'):
+            raise ValueError('Invalid native probe header path')
+        target=directory/relative
+        if not target.resolve().is_relative_to(directory):raise ValueError('Native probe header escaped context')
+        target.parent.mkdir(parents=True,exist_ok=True)
+        if not target.exists():target.write_text(text,encoding='utf-8')
+        elif target.read_text(encoding='utf-8')!=text:raise ValueError('Immutable native probe context was modified')
+    return directory
 
 
 def seed_missing(shared, files):

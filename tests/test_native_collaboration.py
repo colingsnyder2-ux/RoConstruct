@@ -324,3 +324,31 @@ def test_recovery_prioritizes_unintegrated_work_without_changing_source_leases(s
     assert [t['addr'] for t in tasks]==['00400001','00400000']
     assert tasks[1]['integration_state']=='integrated' and tasks[1]['signature']==signature
     assert all(t['available'] for t in tasks)
+
+
+def test_project_probe_headers_fence_tasks_without_replacing_canonical_sources(service):
+    path=service.promotions.overlay
+    integration.atomic_json(path,{'App/include/Stage.h':[['','struct GenuineStage {};']]})
+    first=service.catalog();task=first['tasks'][0]
+    assert first['probe_headers']=={'Stage.h':'struct GenuineStage {};'}
+    integration.atomic_json(path,{'App/include/Stage.h':[['','struct RevisedStage {};']]})
+    second=service.catalog()
+    assert first['probe_revision']!=second['probe_revision']
+    assert first['revision']==second['revision']
+    assert task['signature']!=second['tasks'][0]['signature']
+
+
+def test_probe_context_is_immutable_versioned_and_cannot_escape(tmp_path):
+    headers={'v8world/Mechanism.h':'struct SimJob {};'}
+    payload=dict(probe_headers=headers,probe_revision=integration.digest(headers))
+    first=client.materialize_probe_headers(payload,tmp_path)
+    assert (first/'v8world/Mechanism.h').read_text()=='struct SimJob {};'
+    assert client.materialize_probe_headers(payload,tmp_path)==first
+    newer={'v8world/Mechanism.h':'struct NewJob {};'}
+    second=client.materialize_probe_headers(dict(probe_headers=newer,probe_revision=integration.digest(newer)),tmp_path)
+    assert second!=first and (first/'v8world/Mechanism.h').read_text()=='struct SimJob {};'
+    (first/'v8world/Mechanism.h').write_text('modified')
+    with pytest.raises(ValueError,match='modified'):client.materialize_probe_headers(payload,tmp_path)
+    for name in ('../escape.h','C:/escape.h','bad.py','a\\b.h'):
+        bad={name:'contents'}
+        with pytest.raises(ValueError):client.materialize_probe_headers(dict(probe_headers=bad,probe_revision=integration.digest(bad)),tmp_path)

@@ -499,3 +499,35 @@ def test_reference_source_uses_current_overlay_and_requires_unique_method(tmp_pa
     assert recovery.canonical_methods(context,'A::f')==[('App/gui/GUI.cpp','int A::f(){return 2;}')]
     (tree/'App/gui/Other.cpp').write_text('int A::f(){return 3;}')
     assert len(recovery.canonical_methods(context,'A::f'))==2
+
+
+def test_relative_world_snapshot_keeps_its_headers_before_canonical_fallbacks(tmp_path,monkeypatch):
+    root=tmp_path/'shared';rel='rebuild/2008-06/native-world/App/v8world/Stage.cpp'
+    path=root/rel;path.parent.mkdir(parents=True);path.write_text('int A::f(){return 1;}')
+    monkeypatch.chdir(tmp_path)
+    captured=[]
+    def compile(client,sources,out,includes,*args):
+        captured.extend(includes)
+        return {str(sources[0]):(False,'compile intentionally stopped')}
+    monkeypatch.setattr(recovery.rebuild,'compile_direct',compile)
+    canonical=tmp_path/'canonical'
+    result=recovery.compile_probe(Path('shared'),rel,SimpleNamespace(defines='',flags='/O2',includes=[canonical]),None,set(),'A::f')
+    world=root/'rebuild/2008-06/native-world/App/include'
+    assert world in captured and captured.index(world)<captured.index(canonical)
+    assert all(p.is_absolute() for p in captured[:3])
+    assert not result['ok']
+
+
+def test_probe_fallback_headers_do_not_mutate_canonical_compiler_context(tmp_path,monkeypatch):
+    root=tmp_path/'shared';rel='rebuild/2008-06/native-world/App/v8world/Stage.cpp'
+    path=root/rel;path.parent.mkdir(parents=True);path.write_text('int A::f(){return 1;}')
+    canonical=tmp_path/'canonical';published=tmp_path/'published'
+    context=SimpleNamespace(defines='',flags='/O2',includes=[canonical],probe_includes=[published])
+    seen=[]
+    def compile(client,sources,out,includes,*args):
+        seen.extend(includes);return {str(sources[0]):(False,'test stop')}
+    monkeypatch.setattr(recovery.rebuild,'compile_direct',compile)
+    recovery.compile_probe(root,rel,context,None,set(),'A::f')
+    world=root/'rebuild/2008-06/native-world/App/include'
+    assert seen.index(world)<seen.index(published)<seen.index(canonical)
+    assert context.includes==[canonical]
