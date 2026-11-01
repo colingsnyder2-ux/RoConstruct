@@ -1,6 +1,7 @@
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Workspace.h"
 #include "v8datamodel/PartInstance.h"
+#include "v8datamodel/JointInstance.h"
 #include "humanoid/Humanoid.h"
 #include "humanoid/Freefall.h"
 #include "v8xml/SerializerV2.h"
@@ -302,6 +303,64 @@ extern "C" int GetPlayerCameraPose(float* values)
     values[12]=float(camera->getGCamera().getFieldOfView());values[13]=float(fabs(camera->getGCamera().getNearPlaneZ()));values[14]=float(fabs(camera->getGCamera().getFarPlaneZ()));
     return 0;
 }
+namespace {
+struct NotifierTestEvent {};
+class NotifierTestSource : public RBX::Notifier<NotifierTestSource, NotifierTestEvent> {
+public:
+    void emit() { raise(NotifierTestEvent()); }
+};
+class NotifierTestListener : public RBX::Listener<NotifierTestSource, NotifierTestEvent> {
+public:
+    NotifierTestSource* source; NotifierTestListener* remove; std::vector<int>* calls;
+    int id; bool recurse;
+    NotifierTestListener(NotifierTestSource* s, std::vector<int>* c, int n)
+        : source(s), remove(NULL), calls(c), id(n), recurse(false) {}
+    virtual void onEvent(const NotifierTestSource*, NotifierTestEvent) {
+        calls->push_back(id);
+        if (remove) { NotifierTestListener* target=remove; remove=NULL; RBX::Notifier<NotifierTestSource, NotifierTestEvent>::disconnect(source,target); }
+        if (recurse) { recurse=false; source->emit(); }
+    }
+};
+}
+extern "C" int CheckNotifierMutation()
+{
+    for (int scenario=0; scenario<4; ++scenario) {
+        NotifierTestSource source; std::vector<int> calls;
+        NotifierTestListener a(&source,&calls,1), b(&source,&calls,2), c(&source,&calls,3);
+        RBX::Notifier<NotifierTestSource, NotifierTestEvent>::connect(&source,&a);
+        RBX::Notifier<NotifierTestSource, NotifierTestEvent>::connect(&source,&b);
+        RBX::Notifier<NotifierTestSource, NotifierTestEvent>::connect(&source,&c);
+        if (scenario==0) a.remove=&a;
+        if (scenario==1) a.remove=&b;
+        if (scenario==2) b.remove=&a;
+        if (scenario==3) { a.recurse=true; b.remove=&a; }
+        source.emit();
+        const int simple[]={1,2,3}, next[]={1,3}, nested[]={1,1,2,3,2,3};
+        const int* expected=scenario==1?next:(scenario==3?nested:simple);
+        size_t count=scenario==1?2:(scenario==3?6:3);
+        if (calls.size()!=count) return scenario+1;
+        for(size_t i=0;i<count;++i) if(calls[i]!=expected[i]) return scenario+1;
+    }
+    return 0;
+}
+
+extern "C" int GetActorMotorAngles(float* values)
+{
+    if (!g_dataModel || !g_actor) return 1;
+    RBX::DataModel::Lock lock(g_dataModel);
+    RBX::Humanoid* humanoid = RBX::Humanoid::modelIsCharacter(g_actor);
+    RBX::PartInstance* torso = humanoid ? humanoid->getTorso() : NULL;
+    if (!torso) return 1;
+    const char* names[] = {"Right Shoulder", "Left Shoulder", "Right Hip", "Left Hip"};
+    for (int i = 0; i < 4; ++i) {
+        RBX::Motor* motor = dynamic_cast<RBX::Motor*>(torso->findFirstChildByName(names[i]));
+        if (!motor) return 2;
+        values[2*i] = motor->getDesiredAngle();
+        values[2*i+1] = motor->getCurrentAngle();
+    }
+    return 0;
+}
+
 extern "C" int GetActorTorsoPosition(float* x,float* y,float* z)
 {
     if (!g_dataModel) return 1;

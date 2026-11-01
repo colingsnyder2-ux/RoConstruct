@@ -123,7 +123,14 @@ namespace RBX
 	Reflection::BoundProp<float, 1> Humanoid::propMaxHealth("MaxHealth", "Data", &Humanoid::maxHealth, Reflection::PropertyDescriptor::STANDARD);
 
 	// events range
-	void RaiseRange::removeIndex(unsigned int) {}  // STUB
+	// Original 00420740: adjust every active dispatch after a listener is removed.
+	void RaiseRange::removeIndex(unsigned int removed)
+	{
+		for (RaiseRange* range = this; range; range = range->previous) {
+			if (range->upper > removed) --range->upper;
+			if (range->index >= removed) --range->index;
+		}
+	}
 
 	// backpack rendering
 	void BackpackItem::render2d(Adorn*) {}  // STUB
