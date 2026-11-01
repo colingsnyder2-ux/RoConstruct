@@ -1534,3 +1534,26 @@ not alter the early samples, so they were reverted. Trace when the rebuilt
 Humanoid receives its world and first Stepped event before modifying the
 lifecycle. The clean player was rebuilt at 80641d326d; original bouncing is
 preserved. P5 remains open.
+
+## P5 checkpoint: original limb collision timing (6ab57daa3c)
+
+The donor now applies original state limb collision flags after each Humanoid
+step for Freefall, Running and Climbing. In six high-fall samples, original and
+rebuilt legs both report CanCollide=false (previously rebuilt was true for the
+first four). The target's state virtuals and 006451c0 drive the same flags;
+this is a donor-ABI adaptation, not full state-machine integration.
+
+Important build correction: `roc rebuild 2008-06 player` reuses existing
+dependency libraries. Earlier trial edits to rbxgs-client.json and engine glue
+were not compiled into the player; their negative results are invalid. Rebuild
+`roc rebuild 2008-06 module rbxgs-app --no-notify` before the player whenever
+engine overlay or glue changes, then verify the executable and receipts. Both
+modules were rebuilt before this change's tests.
+
+At 6ab57daa3c, original leg-property comparison, original walking, climbing,
+P3 lifetime/self/cache and Novetus animation pass. Original high-fall
+comparison remains observational: maximum sampled vertical difference is
+14.29 studs, so collision flags alone did not resolve rebound. Receipts:
+p5-limb-verified-{original,walk,climb,p3,animation,airborne}. Original process
+closure required forced termination. Native state machine, start-up, character
+fall and remaining P5 gates remain open.
