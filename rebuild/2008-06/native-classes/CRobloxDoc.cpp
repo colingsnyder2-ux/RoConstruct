@@ -34,6 +34,15 @@ void CRobloxDoc::SetTitle(LPCTSTR title) {
     }
 }
 
+// 004508f0: query dirty state while holding the DataModel lock.
+BOOL CRobloxDoc::IsModified() {
+    if (getDataModel()) {
+        RBX::DataModel::Lock lock(getDataModel());
+        return getDataModel()->isDirty();
+    }
+    return FALSE;
+}
+
 // 0044fad0: synchronize MFC modification flag with native IDataState.
 void CRobloxDoc::SetModifiedFlag(BOOL modified) {
     m_bModified = modified;

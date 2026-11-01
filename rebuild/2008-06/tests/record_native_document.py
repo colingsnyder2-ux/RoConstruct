@@ -38,7 +38,7 @@ body, candidate_relocations = next((body, relocs) for name, body, relocs in matc
 assert match.exact_match(target, relocations, body, candidate_relocations)
 methods = []
 for address, method in (('00451a10', 'bindExisting'), ('00451a60', 'bindOwned'),
-                        ('00403040', 'getDataModel'), ('0044fad0', 'SetModifiedFlag'), ('0044fb80', 'SetTitle'),
+                        ('00403040', 'getDataModel'), ('0044fad0', 'SetModifiedFlag'), ('0044fb80', 'SetTitle'), ('004508f0', 'IsModified'),
                         ('004513c0', 'DeleteContents'),
                         ('00452f60', 'OnNewDocument'), ('0044f210', 'OnCloseDocument'),
                         ('0044f200', 'GetRuntimeClass'), ('00452f00', 'CreateObject')):
@@ -103,7 +103,7 @@ receipt = dict(revision=subprocess.check_output(['git', 'rev-parse', 'HEAD'], cw
                virtual_slots=[dict(slot=slot, source_symbol=name, original_address=hex(native[slot]))
                               for slot, name in sorted(slots.items())],
                active_client_changed=False,
-               scope='Compiler-only document storage, virtual-slot declarations, eleven document bodies and three destructor proofs, including the document destructor. Other virtual bodies and relocated targets remain unverified. No active class swap, linked-function increase or server verification claimed.')
+               scope='Compiler-only document storage, virtual-slot declarations, twelve document bodies and three destructor proofs, including the document destructor. Other virtual bodies and relocated targets remain unverified. No active class swap, linked-function increase or server verification claimed.')
 output = ROOT / 'work/2008-06' / sys.argv[1]
 output.parent.mkdir(parents=True, exist_ok=True)
 output.write_text(json.dumps(receipt, indent=2) + '\n')
