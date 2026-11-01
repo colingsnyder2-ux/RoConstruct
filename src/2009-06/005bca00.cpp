@@ -1,5 +1,16 @@
-// from server: 79% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /Od /Ob1 /GS- /MT
-// roc-lib: wildmagic-2-core Containment/WmlConvexHull3.cpp
+struct Item { int x; };
+struct Holder;
+void helper(Holder* h, Item* i, int a);
+struct Holder {
+    int a;
+    Item item;
+    void f(int v);
+};
+void Holder::f(int v)
+{
+    helper(this, &item, v);
+}

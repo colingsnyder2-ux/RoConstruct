@@ -1,27 +1,25 @@
-// from server: 78% by atomic.potato
-struct S_func_006f6210 {
-    int __cdecl f(int a1, int a2, int a3);
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct Obj {
+    virtual ~Obj();
+    virtual bool less(Obj* other);
 };
-
-int S_func_006f6210::f(int a1, int a2, int a3)
+struct Node {
+    int a;
+    Node* parent;
+    char pad[0x1c];
+    Obj* obj;
+};
+Node* __cdecl stepUp(int side, Node* node, Obj** best, int* bestSide)
 {
-    int *p = (int *)a1;
-    int v = p[9];
-    if (v == 0)
-        return p[1];
-
-    int *q = (int *)a2;
-    int c = *q;
-    if (c != 0)
-    {
-        int *vt = (int *)c;
-        char (__thiscall *fn)(int *, int) = (char (__thiscall *)(int *, int))vt[1];
-        if (!fn((int *)c, v))
-            return p[1];
+    Obj* o = node->obj;
+    if (o) {
+        if (*best == 0 || (*best)->less(o)) {
+            *best = o;
+            *bestSide = side;
+        }
     }
-
-    int *r = (int *)a3;
-    *q = v;
-    *r = a1;
-    return p[1];
+    return node->parent;
 }

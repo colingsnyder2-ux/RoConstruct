@@ -1,48 +1,36 @@
-// from server: 78% by atomic.potato
-// roc 2009-06 00637b30  unit: RBX::VScriptContext::?$FactoryProduct  size: 56 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 00637b30
-//
-// 00637b30  51                   push ecx
-// 00637b31  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 00637b35  50                   push eax
-// 00637b36  c744240400000000     mov dword ptr [esp + 4], 0
-// 00637b3e  e8adfcffff           call 0x6377f0
-// 00637b43  8bc8                 mov ecx, eax
-// 00637b45  8b11                 mov edx, dword ptr [ecx]
-// 00637b47  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 00637b4b  8910                 mov dword ptr [eax], edx
-// 00637b4d  8b4904               mov ecx, dword ptr [ecx + 4]
-// 00637b50  83c404               add esp, 4
-// 00637b53  894804               mov dword ptr [eax + 4], ecx
-// 00637b56  85c9                 test ecx, ecx
-// 00637b58  740c                 je 0x637b66
-// 00637b5a  83c104               add ecx, 4
-// 00637b5d  ba01000000           mov edx, 1
-// 00637b62  f00fc111             lock xadd dword ptr [ecx], edx
-// 00637b66  59                   pop ecx
-// 00637b67  c3                   ret 
-
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
-
-struct Inner {
-    int a;
-    volatile long ref;
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+extern "C" long __cdecl _InterlockedIncrement(volatile long*);
+#pragma intrinsic(_InterlockedIncrement)
+namespace boost {
+namespace detail {
+class sp_counted_base {
+public:
+    virtual ~sp_counted_base();
+    long use_count_;
+    long weak_count_;
+    void add_ref_copy() { _InterlockedIncrement(&use_count_); }
 };
-
-struct Outer {
-    int a;
-    Inner* p;
+class shared_count {
+public:
+    sp_counted_base* pi_;
+    shared_count(const shared_count& r) : pi_(r.pi_) { if (pi_ != 0) pi_->add_ref_copy(); }
+    ~shared_count();
 };
-
-extern Outer* __cdecl sub_6377f0(int);
-
-Outer* __cdecl sub_637b30(Outer* out, int arg)
-{
-    Outer* r = sub_6377f0(arg);
-    out->a = r->a;
-    out->p = r->p;
-    if (out->p)
-        _InterlockedExchangeAdd(&out->p->ref, 1);
-    return out;
 }
+template<class T> class shared_ptr {
+public:
+    T* px;
+    detail::shared_count pn;
+};
+class any;
+template<typename ValueType> ValueType any_cast(any& operand);
+template<typename ValueType> inline ValueType any_cast(const any& operand)
+{
+    return any_cast<const ValueType&>(const_cast<any&>(operand));
+}
+}
+namespace RBX { class ScriptContext; }
+template boost::shared_ptr<RBX::ScriptContext> boost::any_cast<boost::shared_ptr<RBX::ScriptContext> >(const boost::any&);

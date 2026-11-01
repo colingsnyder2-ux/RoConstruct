@@ -1,4 +1,90 @@
+// from server: 100% by EspClaude
 // from server: 78% by EspClaude
+// roc 2009-06 0065c130  unit: RBX::PartInstance  size: 201 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 0065c130
+//
+// 0065c130  51                   push ecx
+// 0065c131  53                   push ebx
+// 0065c132  56                   push esi
+// 0065c133  57                   push edi
+// 0065c134  8bf9                 mov edi, ecx
+// 0065c136  8b8f18010000         mov ecx, dword ptr [edi + 0x118]
+// 0065c13c  32db                 xor bl, bl
+// 0065c13e  885c240f             mov byte ptr [esp + 0xf], bl
+// 0065c142  e8e93f0100           call 0x670130
+// 0065c147  8bf0                 mov esi, eax
+// 0065c149  85f6                 test esi, esi
+// 0065c14b  0f84a1000000         je 0x65c1f2
+// 0065c151  8b06                 mov eax, dword ptr [esi]
+// 0065c153  8b5010               mov edx, dword ptr [eax + 0x10]
+// 0065c156  8bce                 mov ecx, esi
+// 0065c158  ffd2                 call edx
+// 0065c15a  85c0                 test eax, eax
+// 0065c15c  7513                 jne 0x65c171
+// 0065c15e  8b06                 mov eax, dword ptr [esi]
+// 0065c160  8b5014               mov edx, dword ptr [eax + 0x14]
+// 0065c163  8bce                 mov ecx, esi
+// 0065c165  ffd2                 call edx
+// 0065c167  83f801               cmp eax, 1
+// 0065c16a  7420                 je 0x65c18c
+// 0065c16c  83f802               cmp eax, 2
+// 0065c16f  741b                 je 0x65c18c
+// 0065c171  8b06                 mov eax, dword ptr [esi]
+// 0065c173  8b5010               mov edx, dword ptr [eax + 0x10]
+// 0065c176  8bce                 mov ecx, esi
+// 0065c178  ffd2                 call edx
+// 0065c17a  85c0                 test eax, eax
+// 0065c17c  754c                 jne 0x65c1ca
+// 0065c17e  8b06                 mov eax, dword ptr [esi]
+// 0065c180  8b5014               mov edx, dword ptr [eax + 0x14]
+// 0065c183  8bce                 mov ecx, esi
+// 0065c185  ffd2                 call edx
+// 0065c187  83f803               cmp eax, 3
+// 0065c18a  753e                 jne 0x65c1ca
+// 0065c18c  8b8718010000         mov eax, dword ptr [edi + 0x118]
+// 0065c192  3b4610               cmp eax, dword ptr [esi + 0x10]
+// 0065c195  750e                 jne 0x65c1a5
+// 0065c197  8d4e38               lea ecx, [esi + 0x38]
+// 0065c19a  51                   push ecx
+// 0065c19b  e8106d0200           call 0x682eb0
+// 0065c1a0  83c404               add esp, 4
+// 0065c1a3  eb12                 jmp 0x65c1b7
+// 0065c1a5  8d5668               lea edx, [esi + 0x68]
+// 0065c1a8  52                   push edx
+// 0065c1a9  e8026d0200           call 0x682eb0
+// 0065c1ae  50                   push eax
+// 0065c1af  e89c6b0200           call 0x682d50
+// 0065c1b4  83c408               add esp, 8
+// 0065c1b7  83f801               cmp eax, 1
+// 0065c1ba  7504                 jne 0x65c1c0
+// 0065c1bc  8ad8                 mov bl, al
+// 0065c1be  eb0a                 jmp 0x65c1ca
+// 0065c1c0  83f804               cmp eax, 4
+// 0065c1c3  7505                 jne 0x65c1ca
+// 0065c1c5  c644240f01           mov byte ptr [esp + 0xf], 1
+// 0065c1ca  8b8f18010000         mov ecx, dword ptr [edi + 0x118]
+// 0065c1d0  56                   push esi
+// 0065c1d1  e87a3f0100           call 0x670150
+// 0065c1d6  8bf0                 mov esi, eax
+// 0065c1d8  85f6                 test esi, esi
+// 0065c1da  0f8571ffffff         jne 0x65c151
+// 0065c1e0  84db                 test bl, bl
+// 0065c1e2  740e                 je 0x65c1f2
+// 0065c1e4  3844240f             cmp byte ptr [esp + 0xf], al
+// 0065c1e8  7408                 je 0x65c1f2
+// 0065c1ea  5f                   pop edi
+// 0065c1eb  8d4601               lea eax, [esi + 1]
+// 0065c1ee  5e                   pop esi
+// 0065c1ef  5b                   pop ebx
+// 0065c1f0  59                   pop ecx
+// 0065c1f1  c3                   ret 
+// 0065c1f2  5f                   pop edi
+// 0065c1f3  5e                   pop esi
+// 0065c1f4  33c0                 xor eax, eax
+// 0065c1f6  5b                   pop ebx
+// 0065c1f7  59                   pop ecx
+// 0065c1f8  c3                   ret 
+
 // from server: 100% by king_originala
 // roc 2008-06 00599530  unit: RBX::VPartInstance::?$FactoryProduct  size: 191 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00599530
@@ -99,13 +185,13 @@ struct Edge {
     virtual void slot0();
     virtual void slot1();
     virtual void slot2();
+    virtual void slot3();
     virtual int blocked();
-    virtual void slot4();
     virtual int kind();
 
-    char padding0[8];
+    char padding0[12];
     Geometry* g0;
-    char padding1[24];
+    char padding1[36];
     Transform firstTransform;
     Transform secondTransform;
 };
@@ -114,8 +200,8 @@ extern int __cdecl normalId(const Transform*);
 extern int __cdecl normalIdOpposite(int);
 
 struct S {
-    char padding[0x228];
-    Geometry geometry;
+    char padding[0x118];
+    Geometry* geometry;
     int f();
 };
 
@@ -123,16 +209,15 @@ int S::f()
 {
     bool first = false;
     bool second = false;
-    Geometry* g = &geometry;
-    Edge* e = g->getFirst();
+    Edge* e = geometry->getFirst();
 
     while (e) {
         int type;
         if ((!e->blocked() &&
-             ((type = e->kind()) == 6 || type == 7)) ||
-            (!e->blocked() && e->kind() == 8)) {
+             ((type = e->kind()) == 1 || type == 2)) ||
+            (!e->blocked() && e->kind() == 3)) {
             int normal;
-            if (g == e->g0)
+            if (geometry == e->g0)
                 normal = normalId(&e->firstTransform);
             else
                 normal = normalIdOpposite(normalId(&e->secondTransform));
@@ -142,7 +227,7 @@ int S::f()
             else if (normal == 4)
                 second = true;
         }
-        e = g->getNextB(e);
+        e = geometry->getNextB(e);
     }
 
     if (first && second)

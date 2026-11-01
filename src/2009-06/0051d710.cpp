@@ -1,10 +1,11 @@
+// from server: 100% by EspClaude
 // from server: 79% by EspClaude
 // from server: 100% by EspClaude
 // from server: 90% by king_originala_sol_resume_high
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: rbxgs-view roc_espclaude_8db6c33f163e0aa1.cpp
+// roc-lib: rbxgs-view roc_espclaude_d4e5b5a287c7e163.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <boost/shared_ptr.hpp>
@@ -14,10 +15,16 @@ namespace RBX {
 class Instance {
 public:
 	virtual ~Instance();
-	char pad[0x100];
+	char pad[0x44];
 	Instance* parent;
 	Instance* getParent() const { return parent; }
-	bool isDescendentOf(const Instance*) const;
+	bool isDescendentOf2(const Instance*) const;
+	inline bool isDescendentOf(const Instance* ancestor) const
+	{
+		if (ancestor == parent) return true;
+		if (!parent) return false;
+		return parent->isDescendentOf2(ancestor);
+	}
 };
 class PartInstance : public Instance {
 public:
@@ -32,7 +39,7 @@ template<class T> boost::shared_ptr<T> shared_from(T*);
 namespace Render {
 class Chunk : public G3D::ReferenceCountedObject {
 public:
-	char pad[0xb0];
+	char pad[0x6c];
 };
 class SceneManager {
 public:
@@ -82,3 +89,4 @@ void Decal::onDecalAncestorChanged(boost::shared_ptr<Instance> ancestor)
 }
 }
 }
+

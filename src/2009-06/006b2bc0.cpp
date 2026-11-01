@@ -1,152 +1,75 @@
-// from server: 79% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs tool/MegaDragger.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "tool/MegaDragger.h"
-#include "tool/DragUtilities.h"
-#include "tool/Dragger.h"
-#include "v8world/ContactManager.h"
-#include "v8datamodel/PartInstance.h"
-#include "v8datamodel/RootInstance.h"
-#include "v8datamodel/MouseCommand.h"
-
-namespace RBX
+#include <intrin.h>
+#include <vector>
+namespace boost {
+namespace detail {
+inline long atomic_increment(long* pw) { return _InterlockedIncrement(pw); }
+inline long atomic_decrement(long* pw) { return _InterlockedDecrement(pw); }
+class sp_counted_base {
+public:
+    long use_count_;
+    long weak_count_;
+    virtual ~sp_counted_base() {}
+    virtual void dispose() = 0;
+    virtual void destroy() { delete this; }
+    void weak_add_ref() { atomic_increment(&weak_count_); }
+    void weak_release() { if (atomic_decrement(&weak_count_) == 0) destroy(); }
+    void release() { if (atomic_decrement(&use_count_) == 0) { dispose(); weak_release(); } }
+};
+class shared_count {
+public:
+    sp_counted_base* pi_;
+    ~shared_count() { if (pi_ != 0) pi_->release(); }
+};
+class weak_count {
+public:
+    sp_counted_base* pi_;
+    weak_count(shared_count const& r) : pi_(r.pi_) { if (pi_ != 0) pi_->weak_add_ref(); }
+    ~weak_count() { if (pi_ != 0) pi_->weak_release(); }
+};
+}
+template<class T> class shared_ptr {
+public:
+    T* px;
+    detail::shared_count pn;
+};
+template<class T> class weak_ptr {
+public:
+    T* px;
+    detail::weak_count pn;
+    template<class Y> weak_ptr(shared_ptr<Y> const& r) : px(r.px), pn(r.pn) {}
+};
+}
+namespace RBX {
+class PartInstance;
+class ContactManager;
+class World { public: char pad[0xb0]; ContactManager* contactManager; ContactManager* getContactManager() { return contactManager; } };
+class RootInstance { public: char pad[0x150]; World* world; World* getWorld() { return world; } };
+template<class T> boost::shared_ptr<T> shared_from(T* p);
+typedef std::vector<boost::weak_ptr<PartInstance> > PartArray;
+class PVArray;
+namespace DragUtilities { void pvsToParts(const PVArray&, PartArray&); }
+class MegaDragger {
+public:
+    boost::weak_ptr<PartInstance> mousePart;
+    PartArray dragParts;
+    bool joined;
+    int extra;
+    RootInstance* rootInstance;
+    ContactManager* contactManager;
+    MegaDragger(PartInstance* mousePartPtr, const PVArray& pvInstances, RootInstance* rootInstance, int extra);
+};
+MegaDragger::MegaDragger(PartInstance* mousePartPtr, const PVArray& pvInstances, RootInstance* rootInstance, int extra)
+    : mousePart(shared_from(mousePartPtr)),
+      dragParts(),
+      joined(true),
+      rootInstance(rootInstance),
+      extra(extra),
+      contactManager(rootInstance->getWorld()->getContactManager())
 {
-	MegaDragger::MegaDragger(PartInstance* mousePartPtr, const std::vector<PVInstance*>& pvInstances, RootInstance* rootInstance)
-		: mousePart(shared_from(mousePartPtr)),
-		  dragParts(),
-		  joined(true),
-		  rootInstance(rootInstance),
-          contactManager(rootInstance->getWorld()->getContactManager())
-	{
-		DragUtilities::pvsToParts(pvInstances, dragParts);
-	}
-
-	MegaDragger::MegaDragger(PartInstance* mousePartPtr, const std::vector<boost::weak_ptr<PartInstance>>& partArray, RootInstance* rootInstance)
-		: mousePart(shared_from(mousePartPtr)),
-		  dragParts(partArray),
-		  rootInstance(rootInstance),
-		  joined(true),
-		  contactManager(rootInstance->getWorld()->getContactManager())
-	{
-	}
-
-
-	MegaDragger::~MegaDragger()
-	{
-		if (!joined)
-		{
-			RBXASSERT(0);
-			DragUtilities::joinAndStopDragging(dragParts);
-		}
-	}
-
-	void MegaDragger::startDragging()
-	{
-		DragUtilities::unJoinAndSetDragging(dragParts);
-
-		if (PartInstance::nonNullInWorkspace(mousePart.lock()))
-		{
-			rootInstance->setCameraIgnoreParts(mousePart.lock().get());
-		}
-		joined = false;
-	}
-
-	void MegaDragger::continueDragging()
-	{
-		RBXASSERT(!joined);
-		DragUtilities::unJoinAndSetDragging(dragParts);
-	}
-
-	void MegaDragger::finishDragging()
-	{
-		RBXASSERT(!joined);
-		rootInstance->clearCameraIgnoreParts();
-		DragUtilities::joinAndStopDragging(dragParts);
-		if (DragUtilities::anyPartAlive(dragParts))
-		{
-			rootInstance->setInsertPoint(DragUtilities::computeExtents(dragParts).topCenter());
-		}
-		joined = true;
-	}
-
-	G3D::Vector3 MegaDragger::hitObjectOrPlane(const UIEvent& uiEvent)
-	{
-		G3D::Vector3 result;
-		G3D::Array<Primitive*> primitives;
-		DragUtilities::partsToPrimitives(dragParts, primitives);
-		DragUtilities::hitObjectOrPlane(contactManager, MouseCommand::getUnitMouseRay(uiEvent, rootInstance), &primitives, result);
-		return result;
-	}
-
-	void MegaDragger::alignAndCleanParts()
-	{
-		RBXASSERT(!joined);
-		if (PartInstance::nonNullInWorkspace(mousePart.lock()))
-		{
-			PartInstance* part = mousePart.lock().get();
-
-			if (!part->aligned())
-			{
-				G3D::CoordinateFrame snap = part->worldSnapLocation();
-				G3D::CoordinateFrame snapToGrid = Math::snapToGrid(snap, Dragger::dragSnap());
-				DragUtilities::move(dragParts, snap, snapToGrid);
-			}
-		}
-		DragUtilities::clean(dragParts);
-	}
-
-	G3D::Vector3 MegaDragger::safeMoveYDrop(const G3D::Vector3& tryDrag)
-	{
-		RBXASSERT(!joined);
-		RBXASSERT(tryDrag == Math::toGrid(tryDrag, 0.1f));
-
-		G3D::Array<Primitive*> primitives;
-		DragUtilities::partsToPrimitives(dragParts, primitives);
-
-		RBXASSERT(primitives.size() > 0);
-
-		G3D::Vector3 result = Dragger::safeMoveYDrop(primitives, tryDrag, contactManager);
-
-		RBXASSERT(!contactManager.intersectingOthers(primitives, 0.01f));
-		return result;
-	}
-
-	G3D::Vector3 MegaDragger::safeMoveNoDrop(const G3D::Vector3& tryDrag)
-	{
-		RBXASSERT(!joined);
-		RBXASSERT(tryDrag == Math::toGrid(tryDrag, 0.1f));
-
-		G3D::Array<Primitive*> primitives;
-		DragUtilities::partsToPrimitives(dragParts, primitives);
-
-		RBXASSERT(primitives.size() > 0);
-
-		G3D::Vector3 result = Dragger::safeMoveNoDrop(primitives, tryDrag, contactManager);
-
-		RBXASSERT(!contactManager.intersectingOthers(primitives, 0.01f));
-		return result;
-	}
-
-	void MegaDragger::safeRotate(const G3D::Matrix3& rotMatrix)
-	{
-		RBXASSERT(!joined);
-
-		G3D::Array<Primitive*> primitives;
-		DragUtilities::partsToPrimitives(dragParts, primitives);
-
-		RBXASSERT(primitives.size() > 0);
-
-		Dragger::safeRotate(primitives, rotMatrix, contactManager);
-
-		RBXASSERT(!contactManager.intersectingOthers(primitives, 0.01f));
-	}
-
-	bool MegaDragger::mousePartAlive()
-	{
-		return PartInstance::nonNullInWorkspace(mousePart.lock());
-	}
+    DragUtilities::pvsToParts(pvInstances, dragParts);
+}
 }

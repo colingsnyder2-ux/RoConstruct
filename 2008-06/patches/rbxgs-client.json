@@ -1,4 +1,20 @@
 {
+ "App/script/ScriptEvent.cpp": [["                lua_pushnumber(L, it->elapsedTime);\n                context->resume(L, 1);", "                lua_pushnumber(L, it->elapsedTime);\n                lua_pushnumber(L, heartbeat.time);\n                context->resume(L, 2);"]],
+ "App/include/script/ScriptEvent.h": [["                float requestedDelay;\n                float elapsedTime;", "                double requestedDelay;\n                double elapsedTime;"]],
+ "App/script/LuaSignalBridge.cpp": [
+   [
+     "#include \"script/LuaInstanceBridge.h\"",
+     "#include \"script/LuaInstanceBridge.h\"\n#include \"script/LuaAtomicClasses.h\""
+   ],
+   [
+     "        else if (argType == typeid(const Reflection::PropertyDescriptor*))",
+     "        else if (argType == typeid(G3D::Vector3))\n            Vector3Bridge::pushVector3(L, boost::any_cast<G3D::Vector3>(*iter));\n        else if (argType == typeid(G3D::Color3))\n            Color3Bridge::pushColor3(L, boost::any_cast<G3D::Color3>(*iter));\n        else if (argType == typeid(BrickColor))\n            BrickColorBridge::pushNewObject(L, boost::any_cast<BrickColor>(*iter));\n        else if (argType == typeid(G3D::CoordinateFrame))\n            CoordinateFrameBridge::pushCoordinateFrame(L, boost::any_cast<G3D::CoordinateFrame>(*iter));\n        else if (argType == typeid(const Reflection::PropertyDescriptor*))"
+   ],
+   [
+     "            argType.name();",
+     "            lua_pushnil(L);"
+   ]
+ ],
  "App/humanoid/Freefall.cpp": [
   ["#include \"humanoid/Freefall.h\"", "#include \"humanoid/Freefall.h\"\nnamespace RBX { bool DetectClimb(Humanoid*); Humanoid::State* CreateRecoveredClimbing(Humanoid*); }\n"],
   ["\t\tif (newState == this)\n\t\t{\n\t\t\tif (floorPart)", "\t\tif (newState == this)\n\t\t{\n\t\t\tif (DetectClimb(humanoid)) return CreateRecoveredClimbing(humanoid);\n\t\t\tif (floorPart)"],
@@ -252,6 +268,9 @@
   ]
  ],
  "App/script/ScriptContext.cpp": [
+  ["void ScriptContext::addScript(Script* script)\n{", "void ScriptContext::addScript(Script* script)\n{\n    if (!script->getParent()) return;"],
+  ["void ScriptContext::startScript(boost::shared_ptr<Script> script)\n{", "void ScriptContext::startScript(boost::shared_ptr<Script> script)\n{\n    if (!script->getParent()) return;"],
+  ["    else \n    {\n        return NULL; \n    }\n}\n\n// TODO: 99.78%", "    else \n    {\n        return instance->getName();\n    }\n}\n\n// TODO: 99.78%"],
   [
    "@all:StandardOut::singleton()->print(MESSAGE_ERROR, lua_tostring(thread, -1));",
    "StandardOut::singleton()->print(MESSAGE_ERROR, \"%s\", lua_tostring(thread, -1) ? lua_tostring(thread, -1) : \"(error object)\");"
@@ -1055,6 +1074,7 @@
   ]
  ],
  "App/v8world/Contact.cpp": [
+  ["\tvoid BallBlockContact::deleteAllConnectors()\n\t{\n\t\tthis->deleteConnector(this->ballBlockConnector);\n\t}\n", "\tvoid BallBlockContact::deleteAllConnectors()\n\t{\n\t\tif (this->ballBlockConnector)\n\t\t\tthis->deleteConnector(this->ballBlockConnector);\n\t}\n"],
   [
    "\t\t:Contact(p0, p1),\n\t\tseparatingAxisId(0),\n\t\tseparatingBodyId(0)\n",
    "\t\t:Contact(p0, p1),\n\t\tunknown0x54(1e9f),\n\t\tseparatingAxisId(0),\n\t\tseparatingBodyId(0)\n"

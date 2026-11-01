@@ -1,26 +1,15 @@
-// from server: 78% by EspClaude
-// from server: 100% by colin
+// from server: 100% by EspClaude
 // roc-cl: 21022
-// roc-flags: /Od /Ob0 /GS /EHsc /MD
+// roc-flags: /Od /Ob0 /GS- /EHsc /MD
 #pragma optimize("g", off)
 
-struct B {
-    char pad[4];
-    void f();
+struct R {
+    int pad[3];
+    ~R();
 };
 
-struct S {
-    char pad[8];
-    B b;
-    ~S();
-};
-
-struct M {
-    ~M();
-};
-
-struct T : S {
-    M m;
+struct T : R {
+    R m;
     ~T();
 };
 

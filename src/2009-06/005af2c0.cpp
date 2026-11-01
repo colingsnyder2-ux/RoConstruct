@@ -1,8 +1,8 @@
-// from server: 78% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /Od /Ob0 /GS /EHsc /MD
+// roc-flags: /Od /Ob0 /GS- /EHsc /MD
 // Constructor analog for 00551b30: base ctor 00551bf0, 4-byte smart-pointer
 // members (default ctor 004f0810) at 0x30/0x40/0x44, trivial member (007188c0)
 // at 0x48, and std::string::operator= on the base's string at +0xc.

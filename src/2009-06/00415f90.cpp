@@ -1,9 +1,8 @@
-// from server: 80% by EspClaude
-// from server: 100% by Espeon
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: rbxgs-dll roc_espeon_clipboarddirectrange9f920a6de726796c.cpp
+// roc-lib: rbxgs-dll roc_espclaude_d4fff74e1917cc58.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <algorithm>
@@ -90,7 +89,7 @@ typedef Selection::iterator Iterator;
 
 struct Document
 {
-    unsigned char reserved[0x154];
+    unsigned char reserved[0x8c];
     Selection* selection;
 };
 
@@ -148,7 +147,21 @@ struct Context
 
 extern Context* __cdecl getContext();
 extern Application* __cdecl getApplication();
-extern void __cdecl freeContext(void*);
+extern "C" void (__stdcall* EnterCriticalSection)(void*);
+extern "C" void (__stdcall* LeaveCriticalSection)(void*);
+extern "C" long (__stdcall* InterlockedDecrement)(long volatile*);
+struct Pool { unsigned char cs[0x18]; void* head; };
+extern Pool* __cdecl getPool();
+extern long poolCount;
+inline void freeContext(void* p)
+{
+    Pool* pool = getPool();
+    EnterCriticalSection(pool);
+    *static_cast<void**>(p) = pool->head;
+    pool->head = p;
+    LeaveCriticalSection(pool);
+    InterlockedDecrement(&poolCount);
+}
 extern void __cdecl copyItem(Context*,boost::shared_ptr<void>);
 extern void* serializerTable;
 extern unsigned long clipboardInitialized;

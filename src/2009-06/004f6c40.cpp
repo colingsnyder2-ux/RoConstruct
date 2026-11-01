@@ -1,11 +1,35 @@
-// from server: 80% by EspClaude
-// from server: 100% by auto
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: openrbx-raknet ReliabilityLayer.cpp
+// roc-lib: openrbx-raknet roc_espclaude_dd1612801f824ac7.cpp
 
 // Candidate translation unit (score above; library headers required).
+#include <malloc.h>
+#include <stdlib.h>
+
+extern void (*rakFree)(void*);
+extern void* (*rakMalloc)(size_t);
+#define free rakFree
+#include "BitStream.h"
+#include "DataBlockEncryptor.h"
+#define messageNumber messageNumber; int exePad2009IP
+#define data data; int exeTail2009
+#include "InternalPacket.h"
+#undef messageNumber
+#undef data
+#define numberOfSplitMessages numberOfSplitMessages; unsigned exePadStat2009[12]
+#include "RakNetStatistics.h"
+#undef numberOfSplitMessages
+#define waitingForOrderedPacketWriteIndex exePadBS[0x300/sizeof(OrderingIndexType)], waitingForOrderedPacketWriteIndex
+#define histogramBitsSent histogramBitsSent; char exePadA[0x18]
+#define throughputCapCountdown throughputCapCountdown; char exePadB[0x800]
+#define freeThreadedMemoryOnNextUpdate freeThreadedMemoryOnNextUpdate; char exePadC[0x10]
+#include "ReliabilityLayer.h"
+#undef waitingForOrderedPacketWriteIndex
+#undef histogramBitsSent
+#undef throughputCapCountdown
+#undef freeThreadedMemoryOnNextUpdate
 /// \file
 ///
 /// This file is part of RakNet Copyright 2003 Kevin Jenkins.
@@ -29,6 +53,7 @@
 #include "RakAssert.h"
 #include "Rand.h"
 #include "MessageIdentifiers.h"
+#define ID_DOWNLOAD_PROGRESS 0x1f
 
 // alloca
 #ifdef _COMPATIBILITY_1
@@ -1995,12 +2020,12 @@ void ReliabilityLayer::SplitPacket( InternalPacket *internalPacket, int MTUSize 
 	maximumSendBlock = maxDataSize - headerLength;
 
 	// Calculate how many packets we need to create
-	internalPacket->splitPacketCount = ( ( dataByteLength - 1 ) / ( maximumSendBlock ) + 1 );
+	internalPacket->splitPacketCount = ( ( unsigned ) ( dataByteLength - 1 ) / ( maximumSendBlock ) + 1 );
 
 	statistics.totalSplits += internalPacket->splitPacketCount;
 
 	// Optimization
-	// internalPacketArray = new InternalPacket*[internalPacket->splitPacketCount];
+	// internalPacketArray = ( InternalPacket** ) rakMalloc( sizeof( InternalPacket* ) * internalPacket->splitPacketCount );
 	bool usedAlloca=false;
 	#if !defined(_COMPATIBILITY_1)
 	if (sizeof( InternalPacket* ) * internalPacket->splitPacketCount < MAX_ALLOCA_STACK_ALLOCATION)
@@ -2010,7 +2035,7 @@ void ReliabilityLayer::SplitPacket( InternalPacket *internalPacket, int MTUSize 
 	}
 	else
 	#endif
-		internalPacketArray = new InternalPacket*[internalPacket->splitPacketCount];
+		internalPacketArray = ( InternalPacket** ) rakMalloc( sizeof( InternalPacket* ) * internalPacket->splitPacketCount );
 
 	for ( i = 0; i < ( int ) internalPacket->splitPacketCount; i++ )
 	{
@@ -2033,7 +2058,7 @@ void ReliabilityLayer::SplitPacket( InternalPacket *internalPacket, int MTUSize 
 			bytesToSend = maximumSendBlock;
 
 		// Copy over our chunk of data
-		internalPacketArray[ splitPacketIndex ]->data = new unsigned char[ bytesToSend ];
+		internalPacketArray[ splitPacketIndex ]->data = ( unsigned char* ) rakMalloc( bytesToSend );
 
 		memcpy( internalPacketArray[ splitPacketIndex ]->data, internalPacket->data + byteOffset, bytesToSend );
 
@@ -2079,11 +2104,11 @@ void ReliabilityLayer::SplitPacket( InternalPacket *internalPacket, int MTUSize 
 	}
 
 	// Delete the original
-	delete [] internalPacket->data;
+	free( internalPacket->data );
 	internalPacketPool.Release( internalPacket );
 
 	if (usedAlloca==false)
-		delete [] internalPacketArray;
+		free( internalPacketArray );
 }
 
 //-------------------------------------------------------------------------------------------------------
@@ -2121,7 +2146,7 @@ void ReliabilityLayer::InsertIntoSplitPacketList( InternalPacket * internalPacke
 		// Write data, splitPacketChannelList[index]->splitPacketList[0]->data
 		InternalPacket *progressIndicator = internalPacketPool.Allocate();
 		unsigned int length = sizeof(MessageID) + sizeof(unsigned int)*2 + sizeof(unsigned int) + BITS_TO_BYTES(splitPacketChannelList[index]->splitPacketList[0]->dataBitLength);
-		progressIndicator->data = new unsigned char [length];
+		progressIndicator->data = (unsigned char*) rakMalloc(length);
 		progressIndicator->dataBitLength=BYTES_TO_BITS(length);
 		progressIndicator->data[0]=(MessageID)ID_DOWNLOAD_PROGRESS;
 		unsigned int temp;

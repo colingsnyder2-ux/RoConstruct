@@ -1,4 +1,73 @@
+// from server: 100% by EspClaude
 // from server: 79% by EspClaude
+// roc 2009-06 005cda70  unit: VAuthoringSettings::?$FactoryProduct  size: 237 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 005cda70
+//
+// 005cda70  6aff                 push -1
+// 005cda72  68c23f8700           push 0x873fc2
+// 005cda77  64a100000000         mov eax, dword ptr fs:[0]
+// 005cda7d  50                   push eax
+// 005cda7e  64892500000000       mov dword ptr fs:[0], esp
+// 005cda85  83ec3c               sub esp, 0x3c
+// 005cda88  56                   push esi
+// 005cda89  8bf1                 mov esi, ecx
+// 005cda8b  8b4e48               mov ecx, dword ptr [esi + 0x48]
+// 005cda8e  c744240400000000     mov dword ptr [esp + 4], 0
+// 005cda96  85c9                 test ecx, ecx
+// 005cda98  0f849a000000         je 0x5cdb38
+// 005cda9e  83794800             cmp dword ptr [ecx + 0x48], 0
+// 005cdaa2  7470                 je 0x5cdb14
+// 005cdaa4  8d442424             lea eax, [esp + 0x24]
+// 005cdaa8  50                   push eax
+// 005cdaa9  e8c2ffffff           call 0x5cda70
+// 005cdaae  68a4d08b00           push 0x8bd0a4
+// 005cdab3  50                   push eax
+// 005cdab4  8d4c2410             lea ecx, [esp + 0x10]
+// 005cdab8  51                   push ecx
+// 005cdab9  c744245400000000     mov dword ptr [esp + 0x54], 0
+// 005cdac1  ff1548e48900         call dword ptr [0x89e448]
+// 005cdac7  83c654               add esi, 0x54
+// 005cdaca  56                   push esi
+// 005cdacb  8b742460             mov esi, dword ptr [esp + 0x60]
+// 005cdacf  50                   push eax
+// 005cdad0  56                   push esi
+// 005cdad1  c644246001           mov byte ptr [esp + 0x60], 1
+// 005cdad6  ff150ce58900         call dword ptr [0x89e50c]
+// 005cdadc  83c418               add esp, 0x18
+// 005cdadf  8d4c2408             lea ecx, [esp + 8]
+// 005cdae3  c644244800           mov byte ptr [esp + 0x48], 0
+// 005cdae8  ff15c4e48900         call dword ptr [0x89e4c4]
+// 005cdaee  8d4c2424             lea ecx, [esp + 0x24]
+// 005cdaf2  c7442448ffffffff     mov dword ptr [esp + 0x48], 0xffffffff
+// 005cdafa  ff15c4e48900         call dword ptr [0x89e4c4]
+// 005cdb00  8bc6                 mov eax, esi
+// 005cdb02  5e                   pop esi
+// 005cdb03  8b4c243c             mov ecx, dword ptr [esp + 0x3c]
+// 005cdb07  64890d00000000       mov dword ptr fs:[0], ecx
+// 005cdb0e  83c448               add esp, 0x48
+// 005cdb11  c20400               ret 4
+// 005cdb14  83c654               add esi, 0x54
+// 005cdb17  56                   push esi
+// 005cdb18  8b742454             mov esi, dword ptr [esp + 0x54]
+// 005cdb1c  8bce                 mov ecx, esi
+// 005cdb1e  ff15b8e48900         call dword ptr [0x89e4b8]
+// 005cdb24  8bc6                 mov eax, esi
+// 005cdb26  5e                   pop esi
+// 005cdb27  8b4c243c             mov ecx, dword ptr [esp + 0x3c]
+// 005cdb2b  64890d00000000       mov dword ptr fs:[0], ecx
+// 005cdb32  83c448               add esp, 0x48
+// 005cdb35  c20400               ret 4
+// 005cdb38  8b742450             mov esi, dword ptr [esp + 0x50]
+// 005cdb3c  6816d28a00           push 0x8ad216
+// 005cdb41  8bce                 mov ecx, esi
+// 005cdb43  ff15b4e48900         call dword ptr [0x89e4b4]
+// 005cdb49  8b4c2440             mov ecx, dword ptr [esp + 0x40]
+// 005cdb4d  8bc6                 mov eax, esi
+// 005cdb4f  5e                   pop esi
+// 005cdb50  64890d00000000       mov dword ptr fs:[0], ecx
+// 005cdb57  83c448               add esp, 0x48
+// 005cdb5a  c20400               ret 4
+
 // from server: 100% by colin
 // roc 2008-06 005574d0  unit: RBX::VInstance::?$NonFactoryProduct  size: 249 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005574d0
@@ -143,7 +212,7 @@
 typedef std::string String;
 
 struct Instance {
-    char padding[0x104];
+    char padding[0x48];
     Instance *parent;
     char reserved[8];
     String name;

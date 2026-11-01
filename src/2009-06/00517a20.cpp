@@ -1,32 +1,36 @@
-// from server: 78% by atomic.potato
-extern "C" long __stdcall InterlockedDecrement(long volatile *);
-
-struct Inner {
-    void Release();
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+extern "C" __declspec(dllimport) long __stdcall InterlockedDecrement(long volatile *);
+namespace G3D {
+class ReferenceCountedObject {
+public:
+    long ReferenceCountedObject_refCount;
+    void ReferenceCountedObject_zeroWeakPointers();
+    virtual ~ReferenceCountedObject();
 };
-
-struct Holder {
-    Inner *ptr;
-};
-
-struct Outer {
-    char pad[8];
-    Holder *h;
-    void f();
-};
-
-void Outer::f() {
-    Holder *p = h;
-    Inner *q = p->ptr;
-    if (q) {
-        if (InterlockedDecrement((long *)((char *)q + 4)) == 0) {
-            q->Release();
-            Inner *r = p->ptr;
-            if (r) {
-                void (__thiscall *fn)(Inner *, int) = *(void (__thiscall **)(Inner *, int))*(void **)r;
-                fn(r, 1);
+template<class T> class ReferenceCountedPointer {
+public:
+    T* m_pointer;
+    void zero() {
+        if (m_pointer != 0) {
+            if (InterlockedDecrement(&m_pointer->ReferenceCountedObject_refCount) == 0) {
+                m_pointer->ReferenceCountedObject_zeroWeakPointers();
+                delete m_pointer;
             }
+            m_pointer = 0;
         }
-        p->ptr = 0;
     }
+};
+}
+namespace RBX {
+class Material : public G3D::ReferenceCountedObject {};
+class MaterialBaseRefMaterialAdapter {
+    char pad[8];
+    G3D::ReferenceCountedPointer<Material>* ref;
+public:
+    void release();
+};
+void MaterialBaseRefMaterialAdapter::release() { ref->zero(); }
 }

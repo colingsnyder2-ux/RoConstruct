@@ -1,4 +1,143 @@
+// from server: 100% by EspClaude
 // from server: 78% by EspClaude
+// roc 2009-06 005e7f50  unit: RBX::VContentId::?$TypedPropertyDescriptor  size: 352 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 005e7f50
+//
+// 005e7f50  51                   push ecx
+// 005e7f51  53                   push ebx
+// 005e7f52  55                   push ebp
+// 005e7f53  8b2da4e98900         mov ebp, dword ptr [0x89e9a4]
+// 005e7f59  56                   push esi
+// 005e7f5a  57                   push edi
+// 005e7f5b  8bf9                 mov edi, ecx
+// 005e7f5d  8b07                 mov eax, dword ptr [edi]
+// 005e7f5f  8b4008               mov eax, dword ptr [eax + 8]
+// 005e7f62  50                   push eax
+// 005e7f63  b9dcf29d00           mov ecx, 0x9df2dc
+// 005e7f68  ffd5                 call ebp
+// 005e7f6a  84c0                 test al, al
+// 005e7f6c  7450                 je 0x5e7fbe
+// 005e7f6e  8d7704               lea esi, [edi + 4]
+// 005e7f71  56                   push esi
+// 005e7f72  e889fbffff           call 0x5e7b00
+// 005e7f77  85c0                 test eax, eax
+// 005e7f79  6a08                 push 8
+// 005e7f7b  0f95c3               setne bl
+// 005e7f7e  e8b50a1300           call 0x718a38
+// 005e7f83  83c408               add esp, 8
+// 005e7f86  85c0                 test eax, eax
+// 005e7f88  740b                 je 0x5e7f95
+// 005e7f8a  c700a0d38a00         mov dword ptr [eax], 0x8ad3a0
+// 005e7f90  885804               mov byte ptr [eax + 4], bl
+// 005e7f93  eb02                 jmp 0x5e7f97
+// 005e7f95  33c0                 xor eax, eax
+// 005e7f97  8d542410             lea edx, [esp + 0x10]
+// 005e7f9b  8bc8                 mov ecx, eax
+// 005e7f9d  3bd6                 cmp edx, esi
+// 005e7f9f  7404                 je 0x5e7fa5
+// 005e7fa1  8b0e                 mov ecx, dword ptr [esi]
+// 005e7fa3  8906                 mov dword ptr [esi], eax
+// 005e7fa5  85c9                 test ecx, ecx
+// 005e7fa7  7408                 je 0x5e7fb1
+// 005e7fa9  8b01                 mov eax, dword ptr [ecx]
+// 005e7fab  8b10                 mov edx, dword ptr [eax]
+// 005e7fad  6a01                 push 1
+// 005e7faf  ffd2                 call edx
+// 005e7fb1  ff05f4a5a400         inc dword ptr [0xa4a5f4]
+// 005e7fb7  e884dbffff           call 0x5e5b40
+// 005e7fbc  8907                 mov dword ptr [edi], eax
+// 005e7fbe  8b07                 mov eax, dword ptr [edi]
+// 005e7fc0  8b4008               mov eax, dword ptr [eax + 8]
+// 005e7fc3  50                   push eax
+// 005e7fc4  b9e8f29d00           mov ecx, 0x9df2e8
+// 005e7fc9  ffd5                 call ebp
+// 005e7fcb  84c0                 test al, al
+// 005e7fcd  7461                 je 0x5e8030
+// 005e7fcf  8d7704               lea esi, [edi + 4]
+// 005e7fd2  56                   push esi
+// 005e7fd3  e878f9ffff           call 0x5e7950
+// 005e7fd8  d81d5c3b8b00         fcomp dword ptr [0x8b3b5c]
+// 005e7fde  83c404               add esp, 4
+// 005e7fe1  dfe0                 fnstsw ax
+// 005e7fe3  f6c444               test ah, 0x44
+// 005e7fe6  7b04                 jnp 0x5e7fec
+// 005e7fe8  b301                 mov bl, 1
+// 005e7fea  eb02                 jmp 0x5e7fee
+// 005e7fec  32db                 xor bl, bl
+// 005e7fee  6a08                 push 8
+// 005e7ff0  e8430a1300           call 0x718a38
+// 005e7ff5  83c404               add esp, 4
+// 005e7ff8  85c0                 test eax, eax
+// 005e7ffa  740b                 je 0x5e8007
+// 005e7ffc  c700a0d38a00         mov dword ptr [eax], 0x8ad3a0
+// 005e8002  885804               mov byte ptr [eax + 4], bl
+// 005e8005  eb02                 jmp 0x5e8009
+// 005e8007  33c0                 xor eax, eax
+// 005e8009  8d542410             lea edx, [esp + 0x10]
+// 005e800d  8bc8                 mov ecx, eax
+// 005e800f  3bd6                 cmp edx, esi
+// 005e8011  7404                 je 0x5e8017
+// 005e8013  8b0e                 mov ecx, dword ptr [esi]
+// 005e8015  8906                 mov dword ptr [esi], eax
+// 005e8017  85c9                 test ecx, ecx
+// 005e8019  7408                 je 0x5e8023
+// 005e801b  8b01                 mov eax, dword ptr [ecx]
+// 005e801d  8b10                 mov edx, dword ptr [eax]
+// 005e801f  6a01                 push 1
+// 005e8021  ffd2                 call edx
+// 005e8023  ff05f4a5a400         inc dword ptr [0xa4a5f4]
+// 005e8029  e812dbffff           call 0x5e5b40
+// 005e802e  8907                 mov dword ptr [edi], eax
+// 005e8030  8b07                 mov eax, dword ptr [edi]
+// 005e8032  8b4008               mov eax, dword ptr [eax + 8]
+// 005e8035  50                   push eax
+// 005e8036  b9f4f29d00           mov ecx, 0x9df2f4
+// 005e803b  ffd5                 call ebp
+// 005e803d  84c0                 test al, al
+// 005e803f  7461                 je 0x5e80a2
+// 005e8041  8d7704               lea esi, [edi + 4]
+// 005e8044  56                   push esi
+// 005e8045  e896f9ffff           call 0x5e79e0
+// 005e804a  dc1d08188b00         fcomp qword ptr [0x8b1808]
+// 005e8050  83c404               add esp, 4
+// 005e8053  dfe0                 fnstsw ax
+// 005e8055  f6c444               test ah, 0x44
+// 005e8058  7b04                 jnp 0x5e805e
+// 005e805a  b301                 mov bl, 1
+// 005e805c  eb02                 jmp 0x5e8060
+// 005e805e  32db                 xor bl, bl
+// 005e8060  6a08                 push 8
+// 005e8062  e8d1091300           call 0x718a38
+// 005e8067  83c404               add esp, 4
+// 005e806a  85c0                 test eax, eax
+// 005e806c  740b                 je 0x5e8079
+// 005e806e  c700a0d38a00         mov dword ptr [eax], 0x8ad3a0
+// 005e8074  885804               mov byte ptr [eax + 4], bl
+// 005e8077  eb02                 jmp 0x5e807b
+// 005e8079  33c0                 xor eax, eax
+// 005e807b  8d542410             lea edx, [esp + 0x10]
+// 005e807f  8bc8                 mov ecx, eax
+// 005e8081  3bd6                 cmp edx, esi
+// 005e8083  7404                 je 0x5e8089
+// 005e8085  8b0e                 mov ecx, dword ptr [esi]
+// 005e8087  8906                 mov dword ptr [esi], eax
+// 005e8089  85c9                 test ecx, ecx
+// 005e808b  7408                 je 0x5e8095
+// 005e808d  8b01                 mov eax, dword ptr [ecx]
+// 005e808f  8b10                 mov edx, dword ptr [eax]
+// 005e8091  6a01                 push 1
+// 005e8093  ffd2                 call edx
+// 005e8095  ff05f4a5a400         inc dword ptr [0xa4a5f4]
+// 005e809b  e8a0daffff           call 0x5e5b40
+// 005e80a0  8907                 mov dword ptr [edi], eax
+// 005e80a2  8bcf                 mov ecx, edi
+// 005e80a4  5f                   pop edi
+// 005e80a5  5e                   pop esi
+// 005e80a6  5d                   pop ebp
+// 005e80a7  5b                   pop ebx
+// 005e80a8  83c404               add esp, 4
+// 005e80ab  e9c0e0ffff           jmp 0x5e6170
+
 // from server: 100% by king_originala
 // roc 2008-06 0056ebb0  unit: G3D::VVector3::?$TypedPropertyDescriptor  size: 334 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0056ebb0
@@ -193,6 +332,7 @@ __forceinline const TypeInfo& Descriptor::getType() const
 }
 
 extern Descriptor* __cdecl bool_descriptor();
+extern int exe_counter;
 
 struct S {
     Descriptor* descriptor;
@@ -219,6 +359,7 @@ void S::func_0056ebb0()
             temporary.pointer = holder;
             temporary.swap(value);
         }
+        ++exe_counter;
         descriptor = bool_descriptor();
     }
 
@@ -236,6 +377,7 @@ void S::func_0056ebb0()
             temporary.pointer = holder;
             temporary.swap(value);
         }
+        ++exe_counter;
         descriptor = bool_descriptor();
     }
 
@@ -253,6 +395,7 @@ void S::func_0056ebb0()
             temporary.pointer = holder;
             temporary.swap(value);
         }
+        ++exe_counter;
         descriptor = bool_descriptor();
     }
 

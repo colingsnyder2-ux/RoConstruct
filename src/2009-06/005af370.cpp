@@ -1,8 +1,8 @@
-// from server: 78% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /Od /Ob0 /GS /EHsc /MD
+// roc-flags: /Od /Ob0 /GS- /EHsc /MD
 // Constructor analog for 00551bf0 (base of 00551b30): root ctor 00472990,
 // std::string at +0xc, then 1 and 1.0f at +0x28/+0x2c.
 #include <string>

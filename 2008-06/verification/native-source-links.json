@@ -3028,7 +3028,7 @@
   "path": "2008-06/src/Client/App/include/gui/Gui.h"
  },
  "005cf870": {
-  "line": 51,
+  "line": 52,
   "path": "2008-06/src/glue/rbxgs/glue_misc.cpp"
  },
  "005cf8d0": {
@@ -4692,7 +4692,7 @@
   "path": "2008-06/src/Client/App/v8world/Contact.cpp"
  },
  "0060d500": {
-  "line": 266,
+  "line": 267,
   "path": "2008-06/src/Client/App/v8world/Contact.cpp"
  },
  "0060d770": {
@@ -5432,7 +5432,7 @@
   "path": "2008-06/src/Client/App/include/lua/LuaBridge.h"
  },
  "0061f410": {
-  "line": 160,
+  "line": 169,
   "path": "2008-06/src/Client/App/script/LuaSignalBridge.cpp"
  },
  "0061f480": {
@@ -5448,11 +5448,11 @@
   "path": "2008-06/src/Client/App/include/reflection/signal.h"
  },
  "0061fb20": {
-  "line": 42,
+  "line": 43,
   "path": "2008-06/src/Client/App/script/LuaSignalBridge.cpp"
  },
  "00620190": {
-  "line": 160,
+  "line": 169,
   "path": "2008-06/src/Client/App/script/LuaSignalBridge.cpp"
  },
  "00620210": {
@@ -6340,7 +6340,7 @@
   "path": "2008-06/src/Client/App/include/reflection/reflection.h"
  },
  "00637ae0": {
-  "line": 78,
+  "line": 79,
   "path": "2008-06/src/glue/rbxgs/glue_misc.cpp"
  },
  "0063b2b0": {

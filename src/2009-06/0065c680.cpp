@@ -1,9 +1,10 @@
+// from server: 100% by EspClaude
 // from server: 79% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD /fp:fast
-// roc-lib: openrbx-client-dll roc_espeon_rayextents6315b1980ab637ee.cpp
+// roc-lib: openrbx-client-dll roc_espclaude_4b80595ed6878660.cpp
 
 // Candidate translation unit (score above; library headers required).
 
@@ -16,18 +17,19 @@ typedef G3D::Vector3 Vector3;
 typedef G3D::Ray Ray;
 typedef G3D::AABox Box;
 struct Extents {Vector3 low,high;Extents(const Vector3& a,const Vector3& b):low(a),high(b){}};
+struct SizeData {
+    unsigned int tag;
+    Vector3 size;
+};
 struct Primitive {
+    char pad[0xe0];
+    SizeData* sizeData;
     const G3D::CoordinateFrame& getValue();
 };
 
 struct Faces {
     char storage[0x34];
     int get(int index);
-};
-
-struct SizeData {
-    unsigned int tag;
-    Vector3 size;
 };
 
 extern float halfScale;
@@ -43,10 +45,10 @@ extern void __cdecl collide(
     bool& inside);
 
 struct S {
-    char padding[0x1f4];
+    char padding[0x118];
+    Primitive* primitive;
+    char padding2[0x134-0x11c];
     Faces faces;
-    char primitiveStorage[0x9c];
-    SizeData* sizeData;
 
     int f(const Ray& source, int* faceIndex);
 };
@@ -54,10 +56,10 @@ struct S {
 int S::f(const Ray& source, int* faceIndex)
 {
     const G3D::CoordinateFrame& frame =
-        reinterpret_cast<Primitive*>(primitiveStorage)->getValue();
+        primitive->getValue();
     Ray ray = frame.toObjectSpace(source);
 
-    const Vector3& size = sizeData->size;
+    const Vector3& size = primitive->sizeData->size;
     float x = size.x * halfScale;
     float y = size.y * halfScale;
     float z = size.z * halfScale;

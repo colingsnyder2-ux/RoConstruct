@@ -1,17 +1,50 @@
+// from server: 100% by EspClaude
 // from server: 79% by EspClaude
 // from server: 100% by coldek
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs-dll roc_claude_occlusion_smul_24c238c1f78bc808.cpp
+// roc-lib: rbxgs-dll roc_espclaude_eae2e8304ea40792.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "v8datamodel/ICharacterSubject.h"
-#include "v8world/ContactManager.h"
-#include "v8world/Primitive.h"
+#include <G3D/Vector3.h>
+#include <G3D/CoordinateFrame.h>
+#include <G3D/Ray.h>
+#include <G3D/g3dmath.h>
+#include <vector>
 namespace RBX {
+class Primitive;
+class Instance { public: virtual ~Instance(); };
+class HitTestFilter { public: enum Result { a }; virtual Result filterResult(const Primitive*) const = 0; };
+class ContactManager {
+public:
+	static bool ignoreBool;
+	Primitive* getHit(const G3D::Ray& worldRay, const std::vector<Primitive const*>* ignorePrim, const HitTestFilter* filter, G3D::Vector3& hitPoint, bool& inside = ignoreBool) const;
+};
+class World { char pad[0xb0]; ContactManager* contactManager; public: ContactManager& getContactManager() { return *contactManager; } };
+class Workspace { public: static World* getWorldIfInWorkspace(const Instance* context); };
+class __declspec(novtable) ILocation { public: virtual const G3D::CoordinateFrame getLocation() const = 0; };
+class __declspec(novtable) CameraSubject : public virtual ILocation {
+public:
+	virtual ~CameraSubject() {}
+	virtual void onCameraNear(float distance) {}
+	virtual void getCameraIgnorePrimitives(std::vector<const Primitive*>& primitives) {}
+	virtual float getLerp() const { return 0.9f; }
+	ContactManager* getContactManager()
+	{
+		if (Instance* instance = dynamic_cast<Instance*>(this))
+			if (World* world = Workspace::getWorldIfInWorkspace(instance))
+				return &world->getContactManager();
+		return NULL;
+	}
+};
+class __declspec(novtable) ICharacterSubject : public CameraSubject {
+	static G3D::CoordinateFrame getFocusLookingAtGoal(const G3D::CoordinateFrame& cameraFocus, const G3D::CoordinateFrame& cameraGoal);
+	bool testOcclusion(const G3D::CoordinateFrame& cameraFocus, const G3D::CoordinateFrame& cameraGoal, float& distance);
+public:
+	virtual void getIgnorePrims(std::vector<const Primitive*>&);
+};
 class FilterCharacterOcclusion: public HitTestFilter {public: FilterCharacterOcclusion(int); virtual Result filterResult(const Primitive*) const;};
-	//98.58% match
 	bool ICharacterSubject::testOcclusion(const G3D::CoordinateFrame& cameraFocus, const G3D::CoordinateFrame& cameraGoal, float& distance)
 	{
 		ContactManager* contactManager = getContactManager();

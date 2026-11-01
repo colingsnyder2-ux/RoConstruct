@@ -1,5 +1,12 @@
-// from server: 79% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /Od /Ob1 /GS- /MT
-// roc-lib: wildmagic-2-core Containment/WmlConvexHull2.cpp
+struct B { B(int a); int x; int y; };
+struct V { float x, y, z; };
+struct D {
+    B b;
+    V v;
+    D(int a, const V& v);
+};
+D::D(int a, const V& v) : b(a), v(v) {}

@@ -1,9 +1,8 @@
-// from server: 80% by EspClaude
-// from server: 100% by coldek
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs-dll roc_claudeM_854f25b05ca3c1ba.cpp
+// roc-lib: rbxgs-dll roc_espclaude_3342138f2d104748.cpp
 
 // Candidate translation unit (score above; library headers required).
 // Native324B allocation0045b425, ctor674210, dtor673a90.
@@ -166,11 +165,86 @@ namespace Ogre {
 class RbxFont { public: ~RbxFont(); };
 SharedPtr<RbxFont> loadRbxFont(const std::string&); //684eb0 cdecl hidden result.
 }
+namespace Ogre {
+class ExeSceneManager2009 {
+public:
+    virtual void exeSlot0();
+    virtual void exeSlot1();
+    virtual void exeSlot2();
+    virtual void exeSlot3();
+    virtual void exeSlot4();
+    virtual void exeSlot5();
+    virtual void exeSlot6();
+    virtual void exeSlot7();
+    virtual void exeSlot8();
+    virtual void exeSlot9();
+    virtual void exeSlot10();
+    virtual void exeSlot11();
+    virtual void exeSlot12();
+    virtual void exeSlot13();
+    virtual void exeSlot14();
+    virtual void exeSlot15();
+    virtual void exeSlot16();
+    virtual void exeSlot17();
+    virtual void exeSlot18();
+    virtual void exeSlot19();
+    virtual void exeSlot20();
+    virtual void exeSlot21();
+    virtual void exeSlot22();
+    virtual void exeSlot23();
+    virtual void exeSlot24();
+    virtual void exeSlot25();
+    virtual void exeSlot26();
+    virtual void exeSlot27();
+    virtual void exeSlot28();
+    virtual void exeSlot29();
+    virtual void exeSlot30();
+    virtual void exeSlot31();
+    virtual void exeSlot32();
+    virtual void exeSlot33();
+    virtual void exeSlot34();
+    virtual void exeSlot35();
+    virtual void exeSlot36();
+    virtual void exeSlot37();
+    virtual void exeSlot38();
+    virtual void exeSlot39();
+    virtual void exeSlot40();
+    virtual void exeSlot41();
+    virtual void exeSlot42();
+    virtual void exeSlot43();
+    virtual void exeSlot44();
+    virtual void exeSlot45();
+    virtual void exeSlot46();
+    virtual void exeSlot47();
+    virtual void exeSlot48();
+    virtual void exeSlot49();
+    virtual void exeSlot50();
+    virtual void exeSlot51();
+    virtual void exeSlot52();
+    virtual void exeSlot53();
+    virtual void exeSlot54();
+    virtual void exeSlot55();
+    virtual void exeSlot56();
+    virtual void exeSlot57();
+    virtual void exeSlot58();
+    virtual void exeSlot59();
+    virtual void exeSlot60();
+    virtual void exeSlot61();
+    virtual void exeSlot62();
+    virtual void exeSlot63();
+    virtual void exeSlot64();
+    virtual void exeSlot65();
+    virtual void exeSlot66();
+    virtual void exeSlot67();
+    virtual ManualObject* createManualObject(const String& name);
+};
+void exeSetSubMeshSphere(SubMesh*, const Sphere&);
+}
 namespace RBX {
 // Opaque context view: only observed SceneManager slot4 is accessed.
 class AdornContextView { public:
-    Ogre::SceneManager* sceneManager() {return *(Ogre::SceneManager**)((char*)this+4);}
-    Ogre::Camera* camera() {return *(Ogre::Camera**)((char*)this+8);}
+    Ogre::SceneManager* sceneManager() {return *(Ogre::SceneManager**)((char*)this+0x10);}
+    Ogre::Camera* camera() {return *(Ogre::Camera**)((char*)this+0x14);}
     void* renderContext() {return (char*)this+0x18;}
 };
 extern Ogre::SharedPtr<Ogre::RbxFont> nativeAdornFont; //962da8.
@@ -237,6 +311,7 @@ typedef char NativeEntitySize[sizeof(Ogre::RbxEntity)==0x2bc?1:-1];
 typedef char NativeSceneNodeSize[sizeof(Ogre::RbxSceneNode)==0x248?1:-1];
 static Ogre::MeshPtr adornQuadMesh;
 extern std::string adornMeshSuffix; // native 0097da68.
+extern std::string adornQuadMeshName;
 void AdornRbxGfx::quad(const G3D::Vector3& v0,const G3D::Vector3& v1,const G3D::Vector3& v2,const G3D::Vector3& v3,const G3D::Color4& color) {
     float y = v0.y-v2.y;
     float z = v0.z-v2.z;
@@ -254,7 +329,7 @@ void AdornRbxGfx::quad(const G3D::Vector3& v0,const G3D::Vector3& v1,const G3D::
     if (!(v0.x==v1.x && v1.x==v2.x && v2.x==v3.x))
         throw std::runtime_error("Bad: quad not handled");
     if (adornQuadMesh.isNull()) {
-        Ogre::ManualObject* object = sceneManager()->createManualObject("ln"+uniqueName());
+        Ogre::ManualObject* object = reinterpret_cast<Ogre::ExeSceneManager2009*>(sceneManager())->createManualObject("ln"+uniqueName());
         object->begin("",Ogre::RenderOperation::OT_TRIANGLE_LIST);
         object->position(0,0.5f,0.5f); object->normal(Ogre::Vector3(1,0,0)); object->index(0);
         object->position(0,-0.5f,0.5f); object->normal(Ogre::Vector3(1,0,0)); object->index(1);
@@ -263,11 +338,11 @@ void AdornRbxGfx::quad(const G3D::Vector3& v0,const G3D::Vector3& v1,const G3D::
         object->position(0,-0.5f,-0.5f); object->normal(Ogre::Vector3(1,0,0)); object->index(4);
         object->position(0,0.5f,-0.5f); object->normal(Ogre::Vector3(1,0,0)); object->index(5);
         object->end();
-        adornQuadMesh = object->convertToMesh(sceneManager()->getName()+adornMeshSuffix,Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+        adornQuadMesh = object->convertToMesh(adornQuadMeshName,Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
         Ogre::Mesh* mesh=adornQuadMesh.getPointer();
         float radius=mesh->getBoundingSphereRadius();
         Ogre::Sphere parameter(mesh->getBounds().getCenter(),radius,0);
-        renderNode->setSphere(reinterpret_cast<unsigned long>(adornQuadMesh->getSubMesh(0)),parameter);
+        Ogre::exeSetSubMeshSphere(adornQuadMesh->getSubMesh(0),parameter);
     }
     Ogre::Matrix4 world;
     worldMatrix(world);
@@ -278,3 +353,4 @@ void AdornRbxGfx::quad(const G3D::Vector3& v0,const G3D::Vector3& v1,const G3D::
 }
 
 }
+

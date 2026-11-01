@@ -15,6 +15,7 @@
 
 namespace RBX
 {
+	void registerRecoveredValues();
 	Hole::~Hole() {}
 	MotorFeature::~MotorFeature() {}
 	LocalScript::~LocalScript() {}
@@ -77,6 +78,7 @@ namespace RBX
 
 	void registerValueClasses()
 	{
+		registerRecoveredValues();
 		IntValue::classDescriptor();
 		BoolValue::classDescriptor();
 		FloatValue::classDescriptor();

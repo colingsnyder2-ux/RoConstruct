@@ -1,10 +1,8 @@
-// from server: 78% by EspClaude
-// from server: 100% by EspClaude
-// from server: 93% by Espeon
+// from server: 97% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: openrbx-client-dll roc_espclaude_768b9e348dd2905f.cpp
+// roc-lib: openrbx-client-dll roc_espclaude_4ffd0f7c23ad1fb0.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <map>
@@ -14,7 +12,7 @@ struct Object;
 typedef boost::shared_ptr<Object> Shared;
 
 struct Connection {
-    char data[16];
+    char data[8];
     Connection(const Connection&);
     ~Connection();
     void disconnect();
@@ -34,11 +32,11 @@ struct Entry {
 
 #pragma pointers_to_members(full_generality, multiple_inheritance)
 struct Object {
-    template<class F> void connect(F);
+    template<class F> void connect(const F&);
 };
 
 struct S {
-    char padding[0x2c38];
+    char padding[0x2b94];
     std::map<Object*, Entry> joints;
     bool remove(Shared);
 };
@@ -62,3 +60,4 @@ bool S::remove(Shared value) {
     joints.erase(it);
     return true;
 }
+

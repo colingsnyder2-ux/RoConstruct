@@ -1,4 +1,385 @@
+// from server: 100% by EspClaude
 // from server: 81% by EspClaude
+// roc 2009-06 006e6060  unit: RBX::ScoreHud  size: 1195 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 006e6060
+//
+// 006e6060  64a100000000         mov eax, dword ptr fs:[0]
+// 006e6066  6aff                 push -1
+// 006e6068  684a1f8700           push 0x871f4a
+// 006e606d  50                   push eax
+// 006e606e  64892500000000       mov dword ptr fs:[0], esp
+// 006e6075  8b89a4000000         mov ecx, dword ptr [ecx + 0xa4]
+// 006e607b  83ec50               sub esp, 0x50
+// 006e607e  53                   push ebx
+// 006e607f  55                   push ebp
+// 006e6080  56                   push esi
+// 006e6081  57                   push edi
+// 006e6082  33ff                 xor edi, edi
+// 006e6084  3bcf                 cmp ecx, edi
+// 006e6086  0f84db030000         je 0x6e6467
+// 006e608c  8d442420             lea eax, [esp + 0x20]
+// 006e6090  50                   push eax
+// 006e6091  e8aaf8ddff           call 0x4c5940
+// 006e6096  8b6c2420             mov ebp, dword ptr [esp + 0x20]
+// 006e609a  8b4d10               mov ecx, dword ptr [ebp + 0x10]
+// 006e609d  2b4d0c               sub ecx, dword ptr [ebp + 0xc]
+// 006e60a0  8b742470             mov esi, dword ptr [esp + 0x70]
+// 006e60a4  c1f903               sar ecx, 3
+// 006e60a7  897c2468             mov dword ptr [esp + 0x68], edi
+// 006e60ab  897c2410             mov dword ptr [esp + 0x10], edi
+// 006e60af  85c9                 test ecx, ecx
+// 006e60b1  0f869c020000         jbe 0x6e6353
+// 006e60b7  897c2470             mov dword ptr [esp + 0x70], edi
+// 006e60bb  eb07                 jmp 0x6e60c4
+// 006e60bd  8d4900               lea ecx, [ecx]
+// 006e60c0  8b7c2410             mov edi, dword ptr [esp + 0x10]
+// 006e60c4  57                   push edi
+// 006e60c5  8bcd                 mov ecx, ebp
+// 006e60c7  e824c3ffff           call 0x6e23f0
+// 006e60cc  8b18                 mov ebx, dword ptr [eax]
+// 006e60ce  68e4d78e00           push 0x8ed7e4
+// 006e60d3  8d4c242c             lea ecx, [esp + 0x2c]
+// 006e60d7  895c2418             mov dword ptr [esp + 0x18], ebx
+// 006e60db  ff15b4e48900         call dword ptr [0x89e4b4]
+// 006e60e1  8d542428             lea edx, [esp + 0x28]
+// 006e60e5  52                   push edx
+// 006e60e6  8bcb                 mov ecx, ebx
+// 006e60e8  c644246c01           mov byte ptr [esp + 0x6c], 1
+// 006e60ed  e87e7eeeff           call 0x5cdf70
+// 006e60f2  8d4c2428             lea ecx, [esp + 0x28]
+// 006e60f6  8bd8                 mov ebx, eax
+// 006e60f8  c644246800           mov byte ptr [esp + 0x68], 0
+// 006e60fd  ff15c4e48900         call dword ptr [0x89e4c4]
+// 006e6103  85db                 test ebx, ebx
+// 006e6105  0f8471030000         je 0x6e647c
+// 006e610b  8b4b4c               mov ecx, dword ptr [ebx + 0x4c]
+// 006e610e  85c9                 test ecx, ecx
+// 006e6110  740b                 je 0x6e611d
+// 006e6112  8b4110               mov eax, dword ptr [ecx + 0x10]
+// 006e6115  2b410c               sub eax, dword ptr [ecx + 0xc]
+// 006e6118  c1f803               sar eax, 3
+// 006e611b  eb02                 jmp 0x6e611f
+// 006e611d  33c0                 xor eax, eax
+// 006e611f  40                   inc eax
+// 006e6120  50                   push eax
+// 006e6121  8b4510               mov eax, dword ptr [ebp + 0x10]
+// 006e6124  2b450c               sub eax, dword ptr [ebp + 0xc]
+// 006e6127  8bce                 mov ecx, esi
+// 006e6129  c1f803               sar eax, 3
+// 006e612c  50                   push eax
+// 006e612d  e81ef8ffff           call 0x6e5950
+// 006e6132  6a00                 push 0
+// 006e6134  83ec1c               sub esp, 0x1c
+// 006e6137  8bcc                 mov ecx, esp
+// 006e6139  89642438             mov dword ptr [esp + 0x38], esp
+// 006e613d  68048e8e00           push 0x8e8e04
+// 006e6142  ff15b4e48900         call dword ptr [0x89e4b4]
+// 006e6148  8bce                 mov ecx, esi
+// 006e614a  e851bfffff           call 0x6e20a0
+// 006e614f  8bcb                 mov ecx, ebx
+// 006e6151  33ff                 xor edi, edi
+// 006e6153  e898ecdcff           call 0x4b4df0
+// 006e6158  85c0                 test eax, eax
+// 006e615a  7651                 jbe 0x6e61ad
+// 006e615c  8d642400             lea esp, [esp]
+// 006e6160  8b6b4c               mov ebp, dword ptr [ebx + 0x4c]
+// 006e6163  8b4d10               mov ecx, dword ptr [ebp + 0x10]
+// 006e6166  2b4d0c               sub ecx, dword ptr [ebp + 0xc]
+// 006e6169  8d4701               lea eax, [edi + 1]
+// 006e616c  c1f903               sar ecx, 3
+// 006e616f  89442418             mov dword ptr [esp + 0x18], eax
+// 006e6173  50                   push eax
+// 006e6174  3bf9                 cmp edi, ecx
+// 006e6176  7206                 jb 0x6e617e
+// 006e6178  ff15ace98900         call dword ptr [0x89e9ac]
+// 006e617e  8b550c               mov edx, dword ptr [ebp + 0xc]
+// 006e6181  8b3cfa               mov edi, dword ptr [edx + edi*8]
+// 006e6184  83ec1c               sub esp, 0x1c
+// 006e6187  83c754               add edi, 0x54
+// 006e618a  8bcc                 mov ecx, esp
+// 006e618c  8964243c             mov dword ptr [esp + 0x3c], esp
+// 006e6190  57                   push edi
+// 006e6191  ff15b8e48900         call dword ptr [0x89e4b8]
+// 006e6197  8bce                 mov ecx, esi
+// 006e6199  e802bfffff           call 0x6e20a0
+// 006e619e  8b7c2418             mov edi, dword ptr [esp + 0x18]
+// 006e61a2  8bcb                 mov ecx, ebx
+// 006e61a4  e847ecdcff           call 0x4b4df0
+// 006e61a9  3bf8                 cmp edi, eax
+// 006e61ab  72b3                 jb 0x6e6160
+// 006e61ad  8b4e10               mov ecx, dword ptr [esi + 0x10]
+// 006e61b0  2b4e0c               sub ecx, dword ptr [esi + 0xc]
+// 006e61b3  b8abaaaa2a           mov eax, 0x2aaaaaab
+// 006e61b8  f7e9                 imul ecx
+// 006e61ba  c1fa02               sar edx, 2
+// 006e61bd  8bc2                 mov eax, edx
+// 006e61bf  c1e81f               shr eax, 0x1f
+// 006e61c2  03c2                 add eax, edx
+// 006e61c4  39442410             cmp dword ptr [esp + 0x10], eax
+// 006e61c8  7206                 jb 0x6e61d0
+// 006e61ca  ff15ace98900         call dword ptr [0x89e9ac]
+// 006e61d0  8b7e0c               mov edi, dword ptr [esi + 0xc]
+// 006e61d3  037c2470             add edi, dword ptr [esp + 0x70]
+// 006e61d7  b893244992           mov eax, 0x92492493
+// 006e61dc  8b4f10               mov ecx, dword ptr [edi + 0x10]
+// 006e61df  2b4f0c               sub ecx, dword ptr [edi + 0xc]
+// 006e61e2  f7e9                 imul ecx
+// 006e61e4  03d1                 add edx, ecx
+// 006e61e6  c1fa04               sar edx, 4
+// 006e61e9  8bca                 mov ecx, edx
+// 006e61eb  c1e91f               shr ecx, 0x1f
+// 006e61ee  03ca                 add ecx, edx
+// 006e61f0  7506                 jne 0x6e61f8
+// 006e61f2  ff15ace98900         call dword ptr [0x89e9ac]
+// 006e61f8  8b542414             mov edx, dword ptr [esp + 0x14]
+// 006e61fc  8b4f0c               mov ecx, dword ptr [edi + 0xc]
+// 006e61ff  83c254               add edx, 0x54
+// 006e6202  52                   push edx
+// 006e6203  ff1564e48900         call dword ptr [0x89e464]
+// 006e6209  8bcb                 mov ecx, ebx
+// 006e620b  33ed                 xor ebp, ebp
+// 006e620d  e8deebdcff           call 0x4b4df0
+// 006e6212  85c0                 test eax, eax
+// 006e6214  0f8616010000         jbe 0x6e6330
+// 006e621a  c74424141c000000     mov dword ptr [esp + 0x14], 0x1c
+// 006e6222  8b7b4c               mov edi, dword ptr [ebx + 0x4c]
+// 006e6225  8b4710               mov eax, dword ptr [edi + 0x10]
+// 006e6228  2b470c               sub eax, dword ptr [edi + 0xc]
+// 006e622b  c1f803               sar eax, 3
+// 006e622e  3be8                 cmp ebp, eax
+// 006e6230  7206                 jb 0x6e6238
+// 006e6232  ff15ace98900         call dword ptr [0x89e9ac]
+// 006e6238  8b4f0c               mov ecx, dword ptr [edi + 0xc]
+// 006e623b  8b04e9               mov eax, dword ptr [ecx + ebp*8]
+// 006e623e  6a00                 push 0
+// 006e6240  681c59a000           push 0xa0591c
+// 006e6245  6840be9d00           push 0x9dbe40
+// 006e624a  6a00                 push 0
+// 006e624c  50                   push eax
+// 006e624d  e8283a0300           call 0x719c7a
+// 006e6252  8b7b4c               mov edi, dword ptr [ebx + 0x4c]
+// 006e6255  8b5710               mov edx, dword ptr [edi + 0x10]
+// 006e6258  2b570c               sub edx, dword ptr [edi + 0xc]
+// 006e625b  83c414               add esp, 0x14
+// 006e625e  c1fa03               sar edx, 3
+// 006e6261  3bea                 cmp ebp, edx
+// 006e6263  7206                 jb 0x6e626b
+// 006e6265  ff15ace98900         call dword ptr [0x89e9ac]
+// 006e626b  8b470c               mov eax, dword ptr [edi + 0xc]
+// 006e626e  8b04e8               mov eax, dword ptr [eax + ebp*8]
+// 006e6271  85c0                 test eax, eax
+// 006e6273  7405                 je 0x6e627a
+// 006e6275  83c018               add eax, 0x18
+// 006e6278  eb02                 jmp 0x6e627c
+// 006e627a  33c0                 xor eax, eax
+// 006e627c  8b0d54eba400         mov ecx, dword ptr [0xa4eb54]
+// 006e6282  8b11                 mov edx, dword ptr [ecx]
+// 006e6284  50                   push eax
+// 006e6285  8b4208               mov eax, dword ptr [edx + 8]
+// 006e6288  ffd0                 call eax
+// 006e628a  8d4c2418             lea ecx, [esp + 0x18]
+// 006e628e  51                   push ecx
+// 006e628f  8d542448             lea edx, [esp + 0x48]
+// 006e6293  52                   push edx
+// 006e6294  89442420             mov dword ptr [esp + 0x20], eax
+// 006e6298  e853f1e7ff           call 0x5653f0
+// 006e629d  83c408               add esp, 8
+// 006e62a0  89442418             mov dword ptr [esp + 0x18], eax
+// 006e62a4  8b4e10               mov ecx, dword ptr [esi + 0x10]
+// 006e62a7  2b4e0c               sub ecx, dword ptr [esi + 0xc]
+// 006e62aa  b8abaaaa2a           mov eax, 0x2aaaaaab
+// 006e62af  f7e9                 imul ecx
+// 006e62b1  c1fa02               sar edx, 2
+// 006e62b4  8bc2                 mov eax, edx
+// 006e62b6  c1e81f               shr eax, 0x1f
+// 006e62b9  03c2                 add eax, edx
+// 006e62bb  c644246802           mov byte ptr [esp + 0x68], 2
+// 006e62c0  39442410             cmp dword ptr [esp + 0x10], eax
+// 006e62c4  7206                 jb 0x6e62cc
+// 006e62c6  ff15ace98900         call dword ptr [0x89e9ac]
+// 006e62cc  8b7e0c               mov edi, dword ptr [esi + 0xc]
+// 006e62cf  037c2470             add edi, dword ptr [esp + 0x70]
+// 006e62d3  b893244992           mov eax, 0x92492493
+// 006e62d8  8b4f10               mov ecx, dword ptr [edi + 0x10]
+// 006e62db  2b4f0c               sub ecx, dword ptr [edi + 0xc]
+// 006e62de  45                   inc ebp
+// 006e62df  f7e9                 imul ecx
+// 006e62e1  03d1                 add edx, ecx
+// 006e62e3  c1fa04               sar edx, 4
+// 006e62e6  8bca                 mov ecx, edx
+// 006e62e8  c1e91f               shr ecx, 0x1f
+// 006e62eb  03ca                 add ecx, edx
+// 006e62ed  3be9                 cmp ebp, ecx
+// 006e62ef  7206                 jb 0x6e62f7
+// 006e62f1  ff15ace98900         call dword ptr [0x89e9ac]
+// 006e62f7  8b4f0c               mov ecx, dword ptr [edi + 0xc]
+// 006e62fa  8b542418             mov edx, dword ptr [esp + 0x18]
+// 006e62fe  8b7c2414             mov edi, dword ptr [esp + 0x14]
+// 006e6302  52                   push edx
+// 006e6303  03cf                 add ecx, edi
+// 006e6305  ff1564e48900         call dword ptr [0x89e464]
+// 006e630b  8d4c2444             lea ecx, [esp + 0x44]
+// 006e630f  c644246800           mov byte ptr [esp + 0x68], 0
+// 006e6314  ff15c4e48900         call dword ptr [0x89e4c4]
+// 006e631a  83c71c               add edi, 0x1c
+// 006e631d  8bcb                 mov ecx, ebx
+// 006e631f  897c2414             mov dword ptr [esp + 0x14], edi
+// 006e6323  e8c8eadcff           call 0x4b4df0
+// 006e6328  3be8                 cmp ebp, eax
+// 006e632a  0f82f2feffff         jb 0x6e6222
+// 006e6330  8b6c2420             mov ebp, dword ptr [esp + 0x20]
+// 006e6334  8b5510               mov edx, dword ptr [ebp + 0x10]
+// 006e6337  2b550c               sub edx, dword ptr [ebp + 0xc]
+// 006e633a  8b442410             mov eax, dword ptr [esp + 0x10]
+// 006e633e  8344247018           add dword ptr [esp + 0x70], 0x18
+// 006e6343  40                   inc eax
+// 006e6344  c1fa03               sar edx, 3
+// 006e6347  89442410             mov dword ptr [esp + 0x10], eax
+// 006e634b  3bc2                 cmp eax, edx
+// 006e634d  0f826dfdffff         jb 0x6e60c0
+// 006e6353  8b4510               mov eax, dword ptr [ebp + 0x10]
+// 006e6356  2b450c               sub eax, dword ptr [ebp + 0xc]
+// 006e6359  33db                 xor ebx, ebx
+// 006e635b  c1f803               sar eax, 3
+// 006e635e  85c0                 test eax, eax
+// 006e6360  0f86c7000000         jbe 0x6e642d
+// 006e6366  895c2470             mov dword ptr [esp + 0x70], ebx
+// 006e636a  8d9b00000000         lea ebx, [ebx]
+// 006e6370  8b4e10               mov ecx, dword ptr [esi + 0x10]
+// 006e6373  2b4e0c               sub ecx, dword ptr [esi + 0xc]
+// 006e6376  b8abaaaa2a           mov eax, 0x2aaaaaab
+// 006e637b  f7e9                 imul ecx
+// 006e637d  c1fa02               sar edx, 2
+// 006e6380  8bca                 mov ecx, edx
+// 006e6382  c1e91f               shr ecx, 0x1f
+// 006e6385  03ca                 add ecx, edx
+// 006e6387  3bd9                 cmp ebx, ecx
+// 006e6389  7206                 jb 0x6e6391
+// 006e638b  ff15ace98900         call dword ptr [0x89e9ac]
+// 006e6391  8b7e0c               mov edi, dword ptr [esi + 0xc]
+// 006e6394  037c2470             add edi, dword ptr [esp + 0x70]
+// 006e6398  b893244992           mov eax, 0x92492493
+// 006e639d  8b4f10               mov ecx, dword ptr [edi + 0x10]
+// 006e63a0  2b4f0c               sub ecx, dword ptr [edi + 0xc]
+// 006e63a3  f7e9                 imul ecx
+// 006e63a5  03d1                 add edx, ecx
+// 006e63a7  c1fa04               sar edx, 4
+// 006e63aa  8bc2                 mov eax, edx
+// 006e63ac  c1e81f               shr eax, 0x1f
+// 006e63af  03c2                 add eax, edx
+// 006e63b1  7506                 jne 0x6e63b9
+// 006e63b3  ff15ace98900         call dword ptr [0x89e9ac]
+// 006e63b9  8b7f0c               mov edi, dword ptr [edi + 0xc]
+// 006e63bc  837f1410             cmp dword ptr [edi + 0x14], 0x10
+// 006e63c0  7654                 jbe 0x6e6416
+// 006e63c2  8b4e10               mov ecx, dword ptr [esi + 0x10]
+// 006e63c5  2b4e0c               sub ecx, dword ptr [esi + 0xc]
+// 006e63c8  b8abaaaa2a           mov eax, 0x2aaaaaab
+// 006e63cd  f7e9                 imul ecx
+// 006e63cf  c1fa02               sar edx, 2
+// 006e63d2  8bca                 mov ecx, edx
+// 006e63d4  c1e91f               shr ecx, 0x1f
+// 006e63d7  03ca                 add ecx, edx
+// 006e63d9  3bd9                 cmp ebx, ecx
+// 006e63db  7206                 jb 0x6e63e3
+// 006e63dd  ff15ace98900         call dword ptr [0x89e9ac]
+// 006e63e3  8b7e0c               mov edi, dword ptr [esi + 0xc]
+// 006e63e6  037c2470             add edi, dword ptr [esp + 0x70]
+// 006e63ea  b893244992           mov eax, 0x92492493
+// 006e63ef  8b4f10               mov ecx, dword ptr [edi + 0x10]
+// 006e63f2  2b4f0c               sub ecx, dword ptr [edi + 0xc]
+// 006e63f5  f7e9                 imul ecx
+// 006e63f7  03d1                 add edx, ecx
+// 006e63f9  c1fa04               sar edx, 4
+// 006e63fc  8bc2                 mov eax, edx
+// 006e63fe  c1e81f               shr eax, 0x1f
+// 006e6401  03c2                 add eax, edx
+// 006e6403  7506                 jne 0x6e640b
+// 006e6405  ff15ace98900         call dword ptr [0x89e9ac]
+// 006e640b  8b4f0c               mov ecx, dword ptr [edi + 0xc]
+// 006e640e  6a10                 push 0x10
+// 006e6410  ff15bce68900         call dword ptr [0x89e6bc]
+// 006e6416  8b4d10               mov ecx, dword ptr [ebp + 0x10]
+// 006e6419  2b4d0c               sub ecx, dword ptr [ebp + 0xc]
+// 006e641c  8344247018           add dword ptr [esp + 0x70], 0x18
+// 006e6421  43                   inc ebx
+// 006e6422  c1f903               sar ecx, 3
+// 006e6425  3bd9                 cmp ebx, ecx
+// 006e6427  0f8243ffffff         jb 0x6e6370
+// 006e642d  8b742424             mov esi, dword ptr [esp + 0x24]
+// 006e6431  c7442468ffffffff     mov dword ptr [esp + 0x68], 0xffffffff
+// 006e6439  85f6                 test esi, esi
+// 006e643b  742a                 je 0x6e6467
+// 006e643d  8d5604               lea edx, [esi + 4]
+// 006e6440  83c8ff               or eax, 0xffffffff
+// 006e6443  f00fc102             lock xadd dword ptr [edx], eax
+// 006e6447  751e                 jne 0x6e6467
+// 006e6449  8b16                 mov edx, dword ptr [esi]
+// 006e644b  8b4204               mov eax, dword ptr [edx + 4]
+// 006e644e  8bce                 mov ecx, esi
+// 006e6450  ffd0                 call eax
+// 006e6452  8d4e08               lea ecx, [esi + 8]
+// 006e6455  83caff               or edx, 0xffffffff
+// 006e6458  f00fc111             lock xadd dword ptr [ecx], edx
+// 006e645c  7509                 jne 0x6e6467
+// 006e645e  8b06                 mov eax, dword ptr [esi]
+// 006e6460  8b5008               mov edx, dword ptr [eax + 8]
+// 006e6463  8bce                 mov ecx, esi
+// 006e6465  ffd2                 call edx
+// 006e6467  8b4c2460             mov ecx, dword ptr [esp + 0x60]
+// 006e646b  5f                   pop edi
+// 006e646c  5e                   pop esi
+// 006e646d  5d                   pop ebp
+// 006e646e  64890d00000000       mov dword ptr fs:[0], ecx
+// 006e6475  5b                   pop ebx
+// 006e6476  83c45c               add esp, 0x5c
+// 006e6479  c20400               ret 4
+// 006e647c  8b4510               mov eax, dword ptr [ebp + 0x10]
+// 006e647f  2b450c               sub eax, dword ptr [ebp + 0xc]
+// 006e6482  6a01                 push 1
+// 006e6484  c1f803               sar eax, 3
+// 006e6487  50                   push eax
+// 006e6488  8bce                 mov ecx, esi
+// 006e648a  e8c1f4ffff           call 0x6e5950
+// 006e648f  6a00                 push 0
+// 006e6491  83ec1c               sub esp, 0x1c
+// 006e6494  8bcc                 mov ecx, esp
+// 006e6496  8964243c             mov dword ptr [esp + 0x3c], esp
+// 006e649a  68f0d78e00           push 0x8ed7f0
+// 006e649f  ff15b4e48900         call dword ptr [0x89e4b4]
+// 006e64a5  8bce                 mov ecx, esi
+// 006e64a7  e8f4bbffff           call 0x6e20a0
+// 006e64ac  8b4e10               mov ecx, dword ptr [esi + 0x10]
+// 006e64af  2b4e0c               sub ecx, dword ptr [esi + 0xc]
+// 006e64b2  b8abaaaa2a           mov eax, 0x2aaaaaab
+// 006e64b7  f7e9                 imul ecx
+// 006e64b9  c1fa02               sar edx, 2
+// 006e64bc  8bca                 mov ecx, edx
+// 006e64be  c1e91f               shr ecx, 0x1f
+// 006e64c1  03ca                 add ecx, edx
+// 006e64c3  3bf9                 cmp edi, ecx
+// 006e64c5  7206                 jb 0x6e64cd
+// 006e64c7  ff15ace98900         call dword ptr [0x89e9ac]
+// 006e64cd  8b7e0c               mov edi, dword ptr [esi + 0xc]
+// 006e64d0  037c2470             add edi, dword ptr [esp + 0x70]
+// 006e64d4  b893244992           mov eax, 0x92492493
+// 006e64d9  8b4f10               mov ecx, dword ptr [edi + 0x10]
+// 006e64dc  2b4f0c               sub ecx, dword ptr [edi + 0xc]
+// 006e64df  f7e9                 imul ecx
+// 006e64e1  03d1                 add edx, ecx
+// 006e64e3  c1fa04               sar edx, 4
+// 006e64e6  8bc2                 mov eax, edx
+// 006e64e8  c1e81f               shr eax, 0x1f
+// 006e64eb  03c2                 add eax, edx
+// 006e64ed  7506                 jne 0x6e64f5
+// 006e64ef  ff15ace98900         call dword ptr [0x89e9ac]
+// 006e64f5  8b4c2414             mov ecx, dword ptr [esp + 0x14]
+// 006e64f9  83c154               add ecx, 0x54
+// 006e64fc  51                   push ecx
+// 006e64fd  8b4f0c               mov ecx, dword ptr [edi + 0xc]
+// 006e6500  ff1564e48900         call dword ptr [0x89e464]
+// 006e6506  e929feffff           jmp 0x6e6334
+
 // from server: 100% by coldek
 // roc 2008-06 00654d20  unit: RBX::ScoreHud  size: 1214 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00654d20
@@ -429,7 +810,7 @@ public:operator typename boost::shared_ptr<T>::unspecified_bool_type()const{retu
 };
 class Instance;
 typedef std::vector<boost::shared_ptr<Instance> >Instances;
-class Instance {public:char unobserved00[0x108];CopyOnWrite<Instances>children;std::string name;
+class Instance {public:char unobserved00[0x4c];CopyOnWrite<Instances>children;std::string name;
  size_t numChildren()const{return children?children->size():0;}
  Instance*getChild(size_t i){return (*children)[i].get();}
  const std::string&getName()const{return name;}
@@ -451,7 +832,7 @@ template<class T>class TypedPropertyDescriptor {public:
 // Actual pointer storage read at97d39c in IntValue's native descriptor.
 extern Reflection::TypedPropertyDescriptor<int>::GetSet*nativeIntValueGetSet;
 // Native Instance's actual DescribedBase subobject is at+14; preserve the null conversion.
-const Reflection::DescribedBase*observedDescribedBase(const Instance*p){return p?reinterpret_cast<const Reflection::DescribedBase*>(reinterpret_cast<const char*>(p)+0x14):0;}
+const Reflection::DescribedBase*observedDescribedBase(const Instance*p){return p?reinterpret_cast<const Reflection::DescribedBase*>(reinterpret_cast<const char*>(p)+0x18):0;}
 extern const type_info nativeInstanceType,nativeIntValueType;
 extern "C" void*__cdecl __RTDynamicCast(void*,long,void*,void*,int);
 namespace Network {class Players {public:__declspec(noalias) boost::shared_ptr<const Instances>getPlayers();};}
@@ -459,14 +840,14 @@ class BoardData {public:std::vector<std::vector<std::string> >data;std::vector<s
  void SetSize(int,int);
  void AddField(std::string,int);
 };
-class ScoreHud {public:char unobserved00[0x150];Network::Players*players;void BuildBoardData(BoardData&);};
+class ScoreHud {public:char unobserved00[0xa4];Network::Players*players;void BuildBoardData(BoardData&);};
 typedef char native_owner_size[sizeof(boost::shared_ptr<const Instances>)==8?1:-1];
 typedef char native_counted_base_size[sizeof(boost::detail::sp_counted_base)==12?1:-1];
 typedef char native_cow_size[sizeof(CopyOnWrite<Instances>)==8?1:-1];
 typedef char native_board_size[sizeof(BoardData)==48?1:-1];
-typedef char native_instance_children[offsetof(Instance,children)==0x108?1:-1];
-typedef char native_instance_name[offsetof(Instance,name)==0x110?1:-1];
-typedef char native_hud_players[offsetof(ScoreHud,players)==0x150?1:-1];
+typedef char native_instance_children[offsetof(Instance,children)==0x4c?1:-1];
+typedef char native_instance_name[offsetof(Instance,name)==0x54?1:-1];
+typedef char native_hud_players[offsetof(ScoreHud,players)==0xa4?1:-1];
 void ScoreHud::BuildBoardData(BoardData&data){
  if(!players)return;
  boost::shared_ptr<const Instances>playerList=players->getPlayers();

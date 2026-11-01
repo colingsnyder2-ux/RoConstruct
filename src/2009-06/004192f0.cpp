@@ -1,9 +1,8 @@
-// from server: 80% by EspClaude
-// from server: 100% by Espeon
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-dll roc_espeon_insertservicenamedmessagee12f41fda0da5bfe.cpp
+// roc-lib: rbxgs-dll roc_espclaude_98e16af22e9308cf.cpp
 
 // Candidate translation unit (score above; library headers required).
 #pragma include_alias(<v8tree/Verb.h>, <roc_espeon_insertnativeheader1a746c4cc8c6ae06.cpp>)
@@ -130,9 +129,10 @@ Instance* requestService(void*,void*);
 class InsertServiceRecovery {
 public:
  template<class T>T& field(unsigned offset){return *reinterpret_cast<T*>(reinterpret_cast<char*>(this)+offset);}
- void doIt(IDataState*);
+ void doIt();
 };
-void InsertServiceRecovery::doIt(IDataState*) {
+struct ExeLock { void* p; ExeLock(void* dm, bool write); ~ExeLock(); };
+void InsertServiceRecovery::doIt() {
  Shared empty;
  CInsertObjectDialog dialog(empty,NULL);
  dialog.title=AfxGetApp()->GetProfileString("InsertService","ClassName",NULL).GetBuffer();
@@ -144,8 +144,9 @@ void InsertServiceRecovery::doIt(IDataState*) {
    std::string message(error);
    throw std::runtime_error(message);
   }
-  void* descriptor=reinterpret_cast<DescriptorView*>(reinterpret_cast<char*>(instance.get())+0x10)->descriptor();
-  if(!requestService(field<void*>(0xc),descriptor)) {
+  ExeLock lock(field<void*>(4),true);
+  void* descriptor=reinterpret_cast<DescriptorView*>(reinterpret_cast<char*>(instance.get())+0x14)->descriptor();
+  if(!requestService(field<void*>(4),descriptor)) {
    CString error;error.Format(137,dialog.title);
    std::string message(error);
    throw std::runtime_error(message);

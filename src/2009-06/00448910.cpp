@@ -1,10 +1,11 @@
+// from server: 100% by EspClaude
 // from server: 79% by EspClaude
 // from server: 100% by EspClaude
 // from server: 95% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: openrbx-client-dll roc_espclaude_f8ab8247c52ec0b7.cpp
+// roc-lib: openrbx-client-dll roc_espclaude_f92b82bed706ba95.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <boost/shared_ptr.hpp>
@@ -66,7 +67,6 @@ typedef MemberDescriptorContainer<PropertyDescriptor>::Iterator PropertyIterator
 class DescribedBase {
 public:
     virtual ~DescribedBase() {}
-    void* signalSource;
     const ClassDescriptor* descriptor;
     const ClassDescriptor& getDescriptor() const { return *descriptor; }
     PropertyIterator properties_begin() { return getDescriptor().MemberDescriptorContainer<PropertyDescriptor>::begin(this); }
@@ -74,9 +74,9 @@ public:
 };
 }}
 struct Object {
-    unsigned char padding[0x14];
+    unsigned char padding[0x18];
     RBX::Reflection::DescribedBase range;
-    unsigned char padding2[0x110 - 0x14 - sizeof(RBX::Reflection::DescribedBase)];
+    unsigned char padding2[0x54 - 0x18 - sizeof(RBX::Reflection::DescribedBase)];
     String text;
 };
 
@@ -95,3 +95,4 @@ void __cdecl process(Shared value) {
             value->text.c_str()));
     visitRange(value->range.properties_begin(), value->range.properties_end(), visitElement);
 }
+

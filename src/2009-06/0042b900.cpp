@@ -1,4 +1,9 @@
+// from server: 100% by EspClaude
 // from server: 79% by EspClaude
+// roc 2009-06 0042b900  unit: RBX::$$A6AXVBrickColor::?$signal::slot  size: 643 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 0042b900
+//
+
 // from server: 100% by EspClaude
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
 typedef void* HWND; typedef void* HMONITOR; typedef unsigned long DWORD; typedef int BOOL; typedef long LONG; typedef unsigned int UINT;
@@ -56,7 +61,8 @@ enum MessageType { MESSAGE_OUTPUT, MESSAGE_INFO, MESSAGE_WARNING, MESSAGE_ERROR 
 class StandardOut {
 public:
     static boost::shared_ptr<StandardOut> singleton();
-    void __cdecl print(MessageType type, const char* format, ...);
+    void print(MessageType type, const char* message);
+    void __cdecl printf(MessageType type, const char* format, ...);
 };
 struct Vector2int16 {
     short x, y;
@@ -64,7 +70,9 @@ struct Vector2int16 {
 };
 }
 
-struct Settings { RBX::Vector2int16 getResolution(); };
+struct SettingsBase { virtual ~SettingsBase(); char pad[0x88]; };
+struct ResolutionHolder { char pad[0x32]; RBX::Vector2int16 resolution; RBX::Vector2int16 getResolution() const { return resolution; } };
+struct Settings : SettingsBase, ResolutionHolder { };
 Settings* __cdecl settings();
 DEVMODEA findDisplayMode(const char* device, int pixels);
 struct RectSource { RECT getRect(void* wnd); };
@@ -84,7 +92,7 @@ public:
     virtual ~CMainFrame();
     char pad0[0x1c];
     HWND m_hWnd;
-    char pad1[0xfa - 0x24];
+    char pad1[0xfe - 0x24];
     bool m_changingResolution;
     HMONITOR m_hMonitor;
     BOOL ModifyStyle(DWORD dwRemove, DWORD dwAdd, UINT nFlags = 0);
@@ -117,6 +125,6 @@ void CMainFrame::ChangeResolution()
         SetWindowPos(NULL, r.left - cxBorder, r.top - cyBorder,
                      r.right - r.left + 2 * cxBorder, r.bottom - r.top + 2 * cyBorder, SWP_NOZORDER);
     } else {
-        RBX::StandardOut::singleton()->print(RBX::MESSAGE_ERROR, "ChangeDisplaySettings == %d", result);
+        RBX::StandardOut::singleton()->printf(RBX::MESSAGE_ERROR, "ChangeDisplaySettings == %d", result);
     }
 }

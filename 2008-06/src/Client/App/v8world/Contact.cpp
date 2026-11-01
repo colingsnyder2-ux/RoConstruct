@@ -260,7 +260,8 @@ namespace RBX
 
 	void BallBlockContact::deleteAllConnectors()
 	{
-		this->deleteConnector(this->ballBlockConnector);
+		if (this->ballBlockConnector)
+			this->deleteConnector(this->ballBlockConnector);
 	}
 
 	BlockBlockContact::BlockBlockContact(Primitive* p0, Primitive* p1)

@@ -1,5 +1,6 @@
 #include "script/LuaSignalBridge.h"
 #include "script/LuaInstanceBridge.h"
+#include "script/LuaAtomicClasses.h"
 #include "G3D/format.h"
 
 using namespace RBX;
@@ -76,6 +77,14 @@ static size_t pushArgs(lua_State* L, const Arguments& arguments)
         {
             ObjectBridge::push(L, boost::any_cast<boost::shared_ptr<Instance>>(*iter));
         }
+        else if (argType == typeid(G3D::Vector3))
+            Vector3Bridge::pushVector3(L, boost::any_cast<G3D::Vector3>(*iter));
+        else if (argType == typeid(G3D::Color3))
+            Color3Bridge::pushColor3(L, boost::any_cast<G3D::Color3>(*iter));
+        else if (argType == typeid(BrickColor))
+            BrickColorBridge::pushNewObject(L, boost::any_cast<BrickColor>(*iter));
+        else if (argType == typeid(G3D::CoordinateFrame))
+            CoordinateFrameBridge::pushCoordinateFrame(L, boost::any_cast<G3D::CoordinateFrame>(*iter));
         else if (argType == typeid(const Reflection::PropertyDescriptor*))
         {
             lua_pushstring(L, boost::any_cast<const Reflection::PropertyDescriptor*>(*iter)->name.c_str());
@@ -88,7 +97,7 @@ static size_t pushArgs(lua_State* L, const Arguments& arguments)
         {
             // ¯\_(ツ)_/¯
             // maybe they meant to print it? lol
-            argType.name();
+            lua_pushnil(L);
         }
     }
 
