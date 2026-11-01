@@ -55,7 +55,7 @@ dependencies = []
 unresolved = []
 for address, prefix, required in (('00413a70', '??1XmlElement@@', True),
                                   ('00450450', '??1StandardVerbs@RBX@@', True),
-                                  ('00451940', '??1CRobloxDoc@@', False)):
+                                  ('00451940', '??1CRobloxDoc@@', True)):
     expected, expected_relocations, _ = match.target('2008-06', address)
     dependency_symbol, dependency_body, dependency_relocations = next(
         (name, body, relocs) for name, body, relocs in match.coff_functions(obj) if name.startswith(prefix))
@@ -107,6 +107,4 @@ receipt = dict(revision=subprocess.check_output(['git', 'rev-parse', 'HEAD'], cw
 output = ROOT / 'work/2008-06' / sys.argv[1]
 output.parent.mkdir(parents=True, exist_ok=True)
 output.write_text(json.dumps(receipt, indent=2) + '\n')
-print('PASS: document storage, %d document bodies and XML/StandardVerbs destructors. Document destructor:' % (len(methods) + 1),
-      'exact' if unresolved[0]['relocation_normalized_exact'] else 'OPEN (%d/%d bytes)' %
-      (unresolved[0]['compiled_size'], unresolved[0]['target_size']))
+print('PASS: document storage, %d document bodies and XML/StandardVerbs destructors; document destructor exact' % (len(methods) + 1))
