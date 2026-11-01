@@ -4,6 +4,7 @@
 #include "v8xml/SerializerV2.h"
 #include "script/ScriptContext.h"
 #include "security/SecurityContext.h"
+#include "util/ContentProvider.h"
 #include "util/standardout.h"
 #include "util/Utilities.h"
 #include <G3D/Vector3.h>
@@ -14,6 +15,13 @@
 static boost::shared_ptr<RBX::DataModel> g_dataModel;
 static boost::shared_ptr<RBX::PartInstance> g_brickRef;
 static RBX::PartInstance* g_brick = NULL;
+
+extern "C" int ConfigureContentRoot(const char* path)
+{
+    try { RBX::ContentProvider::singleton().setAssetFolder(path); }
+    catch(std::exception& e){std::printf("content root: %s\n",e.what());return 1;}
+    return 0;
+}
 
 struct Echo : RBX::Listener<RBX::StandardOut, RBX::StandardOutMessage>
 {
@@ -30,7 +38,7 @@ extern "C" int LoadPlace(const char* text)
     try { serializer.loadXML(stream, g_dataModel.get()); }
     catch (std::exception& e) { std::printf("load: %s\n", e.what()); return 1; }
     RBX::Workspace* workspace = g_dataModel->getWorkspace();
-    g_brick = dynamic_cast<RBX::PartInstance*>(workspace->findFirstChildByName("Brick"));
+    g_brick = dynamic_cast<RBX::PartInstance*>(workspace->findFirstChildByNameRecursive("Brick"));
     if (!g_brick && workspace->getChildren()) {
         const std::vector<boost::shared_ptr<RBX::Instance> >& children = *workspace->getChildren();
         for (size_t i = 0; i < children.size(); ++i) {

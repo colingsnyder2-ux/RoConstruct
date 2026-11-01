@@ -28,6 +28,7 @@
 #include "v8datamodel/Workspace.h"
 #include "v8datamodel/PartInstance.h"
 #include "v8datamodel/Lighting.h"
+#include "v8datamodel/custommesh.h"
 #include "reflection/property.h"
 #include "../PlayerLighting.h"
 
@@ -140,12 +141,16 @@ protected:
     void updateMesh();
     void onAncestryChanged(boost::shared_ptr<RBX::Instance> ancestor);
     void onPropertyChanged(const RBX::Reflection::PropertyDescriptor* descriptor);
+    void onChildAdded(boost::shared_ptr<RBX::Instance>);
+    void onChildRemoved(boost::shared_ptr<RBX::Instance>);
 
 private:
     boost::shared_ptr<RBX::PartInstance> partInstance;
     View* view;
     G3D::CoordinateFrame coordinateFrame;
     MeshData meshData;
+    RBX::SpecialShape* specialShape;
+    boost::signals::scoped_connection childAddedConnection,childRemovedConnection,shapePropertyChangedConnection;
     boost::signals::scoped_connection ancestorChangedConnection;
     boost::signals::scoped_connection propertyChangedConnection;
 };
@@ -185,7 +190,7 @@ PartChunk::PartChunk(float polygonOffset,
                      View* view)
     : Chunk(polygonOffset),
       partInstance(partInstance),
-      view(view)
+      view(view),specialShape(0)
 {
     view->sceneManager.addModel(this);
 
@@ -193,6 +198,24 @@ PartChunk::PartChunk(float polygonOffset,
         partInstance.get(), boost::bind(&PartChunk::onAncestryChanged, this, _1));
     propertyChangedConnection = RBX::Instance::event_propertyChanged.connect(
         partInstance.get(), boost::bind(&PartChunk::onPropertyChanged, this, _1));
+    childAddedConnection=RBX::Instance::event_childAdded.connect(partInstance.get(),boost::bind(&PartChunk::onChildAdded,this,_1));
+    childRemovedConnection=RBX::Instance::event_childRemoved.connect(partInstance.get(),boost::bind(&PartChunk::onChildRemoved,this,_1));
+    if(partInstance->getChildren()){
+        boost::shared_ptr<const std::vector<boost::shared_ptr<RBX::Instance> > > children=partInstance->getChildren().read();
+        for(size_t i=0;i<children->size();++i)onChildAdded((*children)[i]);
+    }
+}
+
+void PartChunk::onChildAdded(boost::shared_ptr<RBX::Instance> child){
+    RBX::SpecialShape* shape=dynamic_cast<RBX::SpecialShape*>(child.get());
+    if(!shape)return;
+    specialShape=shape;
+    shapePropertyChangedConnection=RBX::Instance::event_propertyChanged.connect(shape,boost::bind(&PartChunk::invalidateMesh,this));
+    invalidateMesh();
+}
+void PartChunk::onChildRemoved(boost::shared_ptr<RBX::Instance> child){
+    if(child.get()!=specialShape)return;
+    shapePropertyChangedConnection.disconnect();specialShape=0;invalidateMesh();
 }
 
 void PartChunk::updateMesh()
@@ -213,15 +236,30 @@ void PartChunk::updateMesh()
     // 004e5f80 -> 004e58b0 -> 004e53c0 -> 004e2c80 ordinary small block path.
     // Ball shape0:004f00a4 ->004eea30 ->004fcfb0.
     meshData.geometry=PlayerBlockMesh::MeshRef();
-    if(partInstance->getPartType()==RBX::Part::BLOCK_PART &&
+    if(specialShape){
+        if(specialShape->getMeshType()==RBX::SpecialShape::FILE_MESH){
+            meshData.geometry=PlayerBlockMesh::FileMesh::create(&RBX::ContentProvider::singleton(),specialShape->getScale(),specialShape->getMeshId());
+            if(meshData.geometry.isNull())std::printf("file mesh unavailable: %s\n",specialShape->getMeshId().c_str());
+        }
+    }else if(partInstance->getPartType()==RBX::Part::BLOCK_PART &&
        std::max(meshData.size.x,std::max(meshData.size.y,meshData.size.z))<30.0f)
         meshData.geometry=PlayerBlockMesh::BlockMesh::create(meshData.size,surfaces,partInstance->getColor());
     else if(partInstance->getPartType()==RBX::Part::BALL_PART)
         meshData.geometry=PlayerBlockMesh::SphereMesh::create(meshData.size,surfaces);
     // 004eb190 ordinary mega-material branch; native cache owns only weak refs.
     PlayerNativeMaterial::Attributes attributes={partInstance->getColor(),partInstance->alpha(),partInstance->getReflectance()};
-    meshData.material=partInstance->getPartType()==RBX::Part::BALL_PART ?
+    meshData.material=(specialShape || partInstance->getPartType()==RBX::Part::BALL_PART) ?
         view->materialFactory.getMaterial(attributes) : view->materialFactory.getMegaMaterial(attributes);
+    // 004eba71..004ebb10: file texture, VertexColor, specular0/shiny.1,
+    // reflectance0 and actual parent alpha. Missing texture uses standard material.
+    if(specialShape && specialShape->getMeshType()==RBX::SpecialShape::FILE_MESH){
+        std::string filename;
+        if(RBX::ContentProvider::singleton().requestContentFile(specialShape->getTextureId(),filename)){
+            meshData.material=new PlayerNativeMaterial::Material;
+            meshData.material->appendLevel(PlayerNativeMaterial::TextureRef(new PlayerNativeMaterial::TextureProxy(0,filename,false)),
+                G3D::Color3(specialShape->getVertColor()),0,.1f,0,specialShape->getAlpha());
+        }else if(!specialShape->getTextureId().isNull())std::printf("file texture unavailable: %s\n",specialShape->getTextureId().c_str());
+    }
     meshData.valid = true;
 }
 

@@ -30,6 +30,7 @@ extern "C" void RemovePart(void);
 extern "C" void SetPartYaw(float);
 extern "C" int GetContactState(float*,float*,int*);
 extern "C" int ExecutePlayerScript(const char*);
+extern "C" int ConfigureContentRoot(const char*);
 
 static const char* kPartPlace =
     "<roblox version=\"4\"><Item class=\"Workspace\"><Properties></Properties>"
@@ -46,17 +47,7 @@ static const char* kEmptyPlace =
     "<roblox version=\"4\"><Item class=\"Workspace\"><Properties></Properties>"
     "</Item></roblox>";
 
-static const char* kDemoPlace =
-    "<roblox version=\"4\"><Item class=\"Workspace\"><Properties></Properties>"
-    "<Item class=\"Part\" referent=\"RBX1\"><Properties>"
-    "<string name=\"Name\">Brick</string><bool name=\"Anchored\">true</bool>"
-    "<Vector3 name=\"size\"><X>4</X><Y>1.2</Y><Z>2</Z></Vector3>"
-    "<Color3 name=\"Color\"><R>1</R><G>0</G><B>0</B></Color3>"
-    "<token name=\"TopSurface\">3</token><token name=\"BottomSurface\">0</token>"
-    "<CoordinateFrame name=\"CFrame\"><X>0</X><Y>0</Y><Z>0</Z>"
-    "<R00>1</R00><R01>0</R01><R02>0</R02><R10>0</R10><R11>1</R11><R12>0</R12>"
-    "<R20>0</R20><R21>0</R21><R22>1</R22></CoordinateFrame>"
-    "</Properties></Item></Item></roblox>";
+
 
 static std::string readPlace(const char* path)
 {
@@ -260,7 +251,7 @@ static Ogre::MeshPtr createRecoveredMesh(const char* name, PlayerBlockMesh::Mesh
     // link or adoption into this bounds-only Mesh's deletion list is required.
     mesh->_setBounds(bounds);mesh->_setBoundingSphereRadius(level.backend->radius);mesh->load();
     std::printf("native mesh: producer=%s upload=00549a50 block_calls=%u indices=%u\n",
-        geometry->geometryKind==2?"004fcfb0":"004e2c80",PlayerBlockMesh::producerCalls(),static_cast<unsigned>(level.backend->indexData->indexCount));
+        geometry->geometryKind==2?"004fcfb0":geometry->geometryKind==1?"004e2c80":"00500780",PlayerBlockMesh::producerCalls(),static_cast<unsigned>(level.backend->indexData->indexCount));
     return mesh;
 }
 
@@ -669,6 +660,7 @@ int main(int argc, char** argv)
     bool demo = false;
     bool skytest = false;
     bool stability = false;
+    bool inspectPlace = false;
     int stabilityExit = 0;
     int spinFrames = 0;
     std::string contentRoot;
@@ -682,6 +674,7 @@ int main(int argc, char** argv)
         else if (std::strcmp(argv[i], "--p3test") == 0) lifetest = true;
         else if (std::strcmp(argv[i], "--demo") == 0) demo = true;
         else if (std::strcmp(argv[i], "--stability-test") == 0) stability = true;
+        else if (std::strcmp(argv[i], "--inspect-place") == 0) inspectPlace = true;
         else if (std::strcmp(argv[i], "--capture-sky") == 0) { demo=true;skytest=true; }
         else if (std::strcmp(argv[i], "--capture-spin") == 0 && i+1<argc) { spinFrames=std::atoi(argv[++i]);demo=true; }
         else if (std::strcmp(argv[i], "--content-root") == 0 && i+1<argc) contentRoot=argv[++i];
@@ -690,20 +683,22 @@ int main(int argc, char** argv)
         else if (argv[i][0] != '-') placePath = argv[i];
     }
     if(stability && (!frames || frameCount<240)){std::printf("stability test requires --frames 240 or more\n");return 1;}
+    if(inspectPlace && !frames){std::printf("inspect-place requires --frames\n");return 1;}
 
-    if(contentRoot.empty()){
-        char path[MAX_PATH];GetModuleFileNameA(0,path,sizeof(path));
-        contentRoot=std::string(path).substr(0,std::string(path).find_last_of("\\/"))+"/Content";
-    }
+    char path[MAX_PATH];GetModuleFileNameA(0,path,sizeof(path));
+    std::string moduleRoot=std::string(path).substr(0,std::string(path).find_last_of("\\/"));
+    if(contentRoot.empty())contentRoot=moduleRoot+"/Content";
+    GetFullPathNameA(contentRoot.c_str(),sizeof(path),path,0);contentRoot=path;
     if(!getenv("ROC_TEXTURE_STRIP"))_putenv(("ROC_TEXTURE_STRIP="+contentRoot+"/textures/SurfacesStrip.png").c_str());
     if(!std::ifstream(getenv("ROC_TEXTURE_STRIP"),std::ios::binary)){
         std::printf("missing SurfacesStrip.png; provide original Content with --content-root\n");return 1;
     }
     if(!selftest && !cachetest && !lifetest && !frames && placePath.empty())demo=true;
+    if(ConfigureContentRoot(contentRoot.c_str()))return 1;
+    if(demo && placePath.empty())placePath=moduleRoot+"/Places/default.rbxl";
 
     if (selftest)
         placeText = kPartPlace;
-    else if(demo)placeText=kDemoPlace;
     else
         placeText = placePath.empty() ? "" : readPlace(placePath.c_str());
     if(cachetest && placeText.empty()){std::printf("cachetest requires readable fixture\n");return 1;}
@@ -832,6 +827,20 @@ int main(int argc, char** argv)
         std::printf("after %d frames: Brick at (%g,%g,%g), models=%d\n", frameCount, x, y, z, SceneModelCount());
         drawModels();
         root->renderOneFrame(); if(!writeBackbuffer(win,"last.png"))return 7;
+        if(inspectPlace){
+            std::ofstream snapshot("place_snapshot.csv",std::ios::binary);snapshot.precision(9);
+            snapshot<<"index,status,x,y,z,sx,sy,sz,kind,levels,source_indices,backend_indices\n";
+            for(int i=0;i<SceneModelCount();++i){
+                SceneModel model;int status=SceneModelGet(i,&model);
+                snapshot<<i<<","<<status;
+                if(!status)snapshot<<","<<model.position[0]<<","<<model.position[1]<<","<<model.position[2]
+                    <<","<<model.size[0]<<","<<model.size[1]<<","<<model.size[2]<<","<<model.geometry->geometryKind
+                    <<","<<model.geometry->levels.size()<<","<<model.geometry->level0().indexArray.size()
+                    <<","<<model.geometry->level0().backend->indexData->indexCount;
+                snapshot<<"\n";
+            }
+            if(!snapshot)return 7;
+        }
     }
     else
     {

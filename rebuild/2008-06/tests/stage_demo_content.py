@@ -21,3 +21,28 @@ for name in files:
     hashes[name] = hashlib.sha256(data).hexdigest()
 (target / 'demo-assets.json').write_text(json.dumps({'source': str(source), 'sha256': hashes}, indent=2) + '\n')
 print('Staged original demo assets:', target)
+
+place = root / "rebuild/2008-06/tests/fixtures/default.rbxl"
+destination = target.parent / "Places/default.rbxl"
+destination.parent.mkdir(exist_ok=True)
+if destination.exists():
+    assert destination.read_bytes() == place.read_bytes(), f"Preserve different default place: {destination}"
+else:
+    shutil.copyfile(place, destination)
+print("Staged authored default place:", destination)
+
+fixtures = root / "rebuild/2008-06/tests/fixtures"
+for asset in (fixtures / "p4-assets").iterdir():
+    destination = target / "p4" / asset.name
+    destination.parent.mkdir(exist_ok=True)
+    if destination.exists():
+        assert destination.read_bytes() == asset.read_bytes(), f"Preserve different test asset: {destination}"
+    else:
+        shutil.copyfile(asset, destination)
+for name in ("local-panel.rbxl", "local-gallery.rbxl"):
+    destination = target.parent / "Places" / name
+    if destination.exists():
+        assert destination.read_bytes() == (fixtures / name).read_bytes(), f"Preserve different place: {destination}"
+    else:
+        shutil.copyfile(fixtures / name, destination)
+print("Staged authored P4 place/assets separately from original Content inputs")

@@ -13,6 +13,8 @@
 #include <boost/thread/once.hpp>
 #include <G3D/Table.h>
 #include <G3D/Vector2int16.h>
+#include <exception>
+#include "util/MeshId.h"
 
 namespace PlayerBlockMesh {
 using namespace G3D;
@@ -248,6 +250,41 @@ template<> unsigned MeshFactory<SphereMesh,1>::cachedMeshes(){
     return count;
 }
 unsigned activeReferences(){return references;}
+// Existing00500b90/00500780 bodies with genuine Mesh/Level/bank types.
+// Local provider's bool-ready API bridges the native Succeeded status1.
+typedef char NativeFileMeshSize[sizeof(FileMesh)==0x88?1:-1];
+MeshRef FileMesh::create(RBX::ContentProvider* provider,const Vector3& scale,RBX::MeshId id){
+    FileMesh* value=new FileMesh;
+    MeshRef mesh=value;
+    return value->loadFromMeshFile(provider,scale,id)?mesh:MeshRef();
+}
+bool FileMesh::loadFromMeshFile(RBX::ContentProvider* provider,const Vector3& scale,RBX::MeshId id){
+    try{
+        std::string filename;
+        if(!provider->requestContentFile(id,filename))return false;
+        LevelRef level=new Level(RenderDevice::TRIANGLES);levels.append(level);
+        std::vector<unsigned> vertices;
+        FILE* file=fopen(filename.c_str(),"r");
+        if(!file)return false; // File may disappear after provider resolution.
+        fscanf(file,"version 1.00\n");
+        int faces;fscanf(file,"%d\n",&faces);
+        for(int i=0;i<faces;++i){
+            for(int j=0;j<3;++j){
+                float x,y,z,nx,ny,nz,u,v,w;
+                fscanf(file,"[%f,%f,%f][%f,%f,%f][%f,%f,%f]",&x,&y,&z,&nx,&ny,&nz,&u,&v,&w);
+                Vector3 vertex=Vector3(x,y,z)*.5f;
+                Vector3 normal=Vector3(nx,ny,nz).direction();
+                vertices.push_back(allocate(vertex*scale,normal,Vector2(u,1-v),true));
+            }
+            level->indexArray.append(addReferences(vertices[0],1),addReferences(vertices[1],1),addReferences(vertices[2],1));
+            for(int j=0;j<3;++j)release(vertices[j]);
+            vertices.clear();
+        }
+        fclose(file);
+        std::printf("file mesh loaded: id=%s path=%s faces=%d indices=%d\n",id.c_str(),filename.c_str(),faces,level->indexArray.size());
+        return true;
+    }catch(std::exception&){return false;}
+}
 unsigned liveLevels(){return levelsAlive;}
 unsigned producerCalls(){return builds;}
 Level::Level(RenderDevice::Primitive p):primitive(p),dirty(true),sharedIndex(-1),backend(0){++levelsAlive;}

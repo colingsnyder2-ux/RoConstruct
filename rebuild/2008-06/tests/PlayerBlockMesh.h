@@ -11,6 +11,7 @@
 
 // Typed integration of the touched native Level prefix; no donor Mesh/GL state.
 // BlockMesh owns levels through the original G3D reference-counting contract.
+namespace RBX { class MeshId;class ContentProvider; }
 namespace PlayerBlockMesh {
 class Mesh;
 typedef G3D::ReferenceCountedPointer<Mesh> MeshRef;
@@ -63,6 +64,11 @@ public:
 class SphereMesh : public Mesh, public MeshFactory<SphereMesh,1> {
 public:
     SphereMesh(const G3D::Vector3&,RBX::View::RenderSurfaceTypes);
+};
+class FileMesh : public Mesh {
+public:
+    bool loadFromMeshFile(RBX::ContentProvider*,const G3D::Vector3&,RBX::MeshId);
+    static MeshRef create(RBX::ContentProvider*,const G3D::Vector3&,RBX::MeshId);
 };
 template<> SphereMesh* MeshFactory<SphereMesh,1>::create(const G3D::Vector3&,RBX::View::RenderSurfaceTypes);
 template<> void MeshFactory<SphereMesh,1>::flushUnused();
