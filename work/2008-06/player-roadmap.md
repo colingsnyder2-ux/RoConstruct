@@ -1690,3 +1690,25 @@ Original joint construction still differs and closure required forced
 termination of the observer-owned process. Desktop locks released in TANDEM.
 Next apply frozen simulation-time sampling to grounded jump and air movement,
 then continue native frame/state lifetime integration and other P5 gates.
+
+## P5 checkpoint: simulation-time jump and air samples (8599e32205)
+
+Frozen callback sampling now supports two additional authored fixtures. Jump
+records torso Y around the scripted one-second request; air records torso X
+through a 30-stud fall with WalkDirection set after 0.2 seconds. Thirteen
+original/rebuilt timestamps agree within 0.0001 seconds for each run; at least
+two updated original memory copies agree. Air checks X within 0.01 studs
+through one second, then records later positions without claiming parity.
+Receipt fields retain delta_y as the scalar difference; measured_coordinate
+identifies X versus Y explicitly.
+
+At 8599e32205, air X agrees within 0.000001 studs through one second, then
+lags original by about 0.532 at 1.5 seconds and 0.530 thereafter. Jump differs
+by 1.415 at 1.1 seconds, 0.126 at 1.3, and -1.807 at 1.6, with original
+minus rebuilt velocity differing by roughly -6.44 studs/s over that interval.
+This confirms a real jump trajectory difference after removing wall-time
+phase; its cause is not established. Check original and donor force/substep
+integration and state handoff next. Receipts: p5-simtime-jump-verified and
+p5-simtime-air-verified. Original joint construction still differs, closure
+needed forced termination, and desktop locks were released in TANDEM. P5
+and complete jump/air parity remain open.
