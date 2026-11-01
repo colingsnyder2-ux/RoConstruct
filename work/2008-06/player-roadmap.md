@@ -1759,3 +1759,31 @@ constructor 00667370 and StrafingNoPhysics 00667210 use base 0066f070; these
 states are absent from the donor path. Trace their entry/exit and common
 velocity implementation before deciding whether they explain the remaining
 landing offset. Do not claim complete air/state parity or P5 from these gates.
+
+## P5 checkpoint: native active-state and job registration (590c4c73f4)
+
+Observer now audits live original states after frozen sampling. The pinned
+binary's RTTI identifies twelve primary state vtables. Native Humanoid callback
+005dc740 uses listener offset 0x1a4 and state-holder offset 0x7c, proving owner
+base+0x220. Each candidate must be referenced back from that owner's active
+state holder; stale heap vtables alone are not accepted.
+
+At 590c4c73f4 the settled fall has one active RunningNoPhysics state
+(vtable 0084ce10). The moving fixture has one active Dead state (0084cce0)
+after leaving the bounded floor by the later audit. Frozen comparison gates
+still pass. Receipts: p5-native-state-all-fall and p5-native-state-all-air.
+Initial limited coverage failed the moving audit; expanding to all twelve
+RTTI-verified state types resolved it without weakening owner validation.
+
+Recovered MovingNoPhysicsBase constructor 0066f070 sets Primitive flag aa,
+holds torso/control-scope ownership and registers its SimJob. Direct calls
+0066f267 ->005e93b0 (stage type 6 lookup) and 0066f26e ->0064d1e0 ->0064d0f0
+connect that registration. Existing source for 0064d0f0 pushes the job into a
+stage list and stores its iterator; source analog Edge names are provisional.
+Moving update 0066f2c0 sets frame and velocity directly, including signed
+vertical correction; this explains why matching force-only movement does not
+prove native RunningNoPhysics behavior. Donor SimJobStage only manages
+Mechanisms and lacks this registration interface. Next integrate the existing
+job source with removal/stepping ownership verified, then native state entry
+and exit. Do not substitute another guessed state before that edge is proven.
+No shared ABI edits made. Desktop locks released; P5 remains open.
