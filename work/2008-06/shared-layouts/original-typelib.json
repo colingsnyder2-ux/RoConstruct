@@ -1,0 +1,324 @@
+{
+  "revision": "56d1dad3f3754aff9b53940b3d2193ed99be3ce3",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "observer_sha256": "9f01a9c04e71496b9d3c47a858e6699128b87a79ee735c0f46e837ccfc179148",
+  "interface_header_sha256": "c50a698ffa0ac0b01f2140d12a3fc74f8842a778098cbeb9ef5dff9869acfff5",
+  "registration": "REGKIND_NONE",
+  "automation_host_pointer_size": 8,
+  "native_x86_pointer_size": 4,
+  "types": {
+    "IWorkspace": {
+      "guid": "0730c3c6-092d-4f45-b8b9-bdeb82de1c7b",
+      "kind": 3,
+      "flags": 4544,
+      "host_vtable_size": 120,
+      "native_x86_vtable_size": 60,
+      "methods": [
+        {
+          "names": [
+            "SaveToFile",
+            "pathName"
+          ],
+          "id": 3,
+          "kind": 1,
+          "invoke": 1,
+          "convention": 4,
+          "host_vtable_offset": 56,
+          "native_x86_vtable_offset": 28,
+          "result": {
+            "vt": 25
+          },
+          "parameters": [
+            {
+              "type": {
+                "vt": 8
+              },
+              "flags": 1
+            }
+          ]
+        },
+        {
+          "names": [
+            "SaveSelectionToFile",
+            "pathName"
+          ],
+          "id": 4,
+          "kind": 1,
+          "invoke": 1,
+          "convention": 4,
+          "host_vtable_offset": 64,
+          "native_x86_vtable_offset": 32,
+          "result": {
+            "vt": 25
+          },
+          "parameters": [
+            {
+              "type": {
+                "vt": 8
+              },
+              "flags": 1
+            }
+          ]
+        },
+        {
+          "names": [
+            "Insert",
+            "url"
+          ],
+          "id": 5,
+          "kind": 1,
+          "invoke": 1,
+          "convention": 4,
+          "host_vtable_offset": 72,
+          "native_x86_vtable_offset": 36,
+          "result": {
+            "vt": 25
+          },
+          "parameters": [
+            {
+              "type": {
+                "vt": 8
+              },
+              "flags": 1
+            }
+          ]
+        },
+        {
+          "names": [
+            "Write",
+            "result"
+          ],
+          "id": 6,
+          "kind": 1,
+          "invoke": 1,
+          "convention": 4,
+          "host_vtable_offset": 80,
+          "native_x86_vtable_offset": 40,
+          "result": {
+            "vt": 25
+          },
+          "parameters": [
+            {
+              "type": {
+                "vt": 26,
+                "element": {
+                  "vt": 26,
+                  "element": {
+                    "vt": 29,
+                    "name": "IContent"
+                  }
+                }
+              },
+              "flags": 10
+            }
+          ]
+        },
+        {
+          "names": [
+            "WriteSelection",
+            "result"
+          ],
+          "id": 7,
+          "kind": 1,
+          "invoke": 1,
+          "convention": 4,
+          "host_vtable_offset": 88,
+          "native_x86_vtable_offset": 44,
+          "result": {
+            "vt": 25
+          },
+          "parameters": [
+            {
+              "type": {
+                "vt": 26,
+                "element": {
+                  "vt": 26,
+                  "element": {
+                    "vt": 29,
+                    "name": "IContent"
+                  }
+                }
+              },
+              "flags": 10
+            }
+          ]
+        },
+        {
+          "names": [
+            "ExecScript",
+            "script",
+            "arg1",
+            "arg2",
+            "arg3",
+            "arg4",
+            "result"
+          ],
+          "id": 8,
+          "kind": 1,
+          "invoke": 1,
+          "convention": 4,
+          "host_vtable_offset": 96,
+          "native_x86_vtable_offset": 48,
+          "result": {
+            "vt": 25
+          },
+          "parameters": [
+            {
+              "type": {
+                "vt": 8
+              },
+              "flags": 1
+            },
+            {
+              "type": {
+                "vt": 12
+              },
+              "flags": 17
+            },
+            {
+              "type": {
+                "vt": 12
+              },
+              "flags": 17
+            },
+            {
+              "type": {
+                "vt": 12
+              },
+              "flags": 17
+            },
+            {
+              "type": {
+                "vt": 12
+              },
+              "flags": 17
+            },
+            {
+              "type": {
+                "vt": 26,
+                "element": {
+                  "vt": 27,
+                  "element": {
+                    "vt": 12
+                  }
+                }
+              },
+              "flags": 10
+            }
+          ]
+        },
+        {
+          "names": [
+            "ExecUrlScript",
+            "url",
+            "arg1",
+            "arg2",
+            "arg3",
+            "arg4",
+            "result"
+          ],
+          "id": 9,
+          "kind": 1,
+          "invoke": 1,
+          "convention": 4,
+          "host_vtable_offset": 104,
+          "native_x86_vtable_offset": 52,
+          "result": {
+            "vt": 25
+          },
+          "parameters": [
+            {
+              "type": {
+                "vt": 8
+              },
+              "flags": 1
+            },
+            {
+              "type": {
+                "vt": 12
+              },
+              "flags": 17
+            },
+            {
+              "type": {
+                "vt": 12
+              },
+              "flags": 17
+            },
+            {
+              "type": {
+                "vt": 12
+              },
+              "flags": 17
+            },
+            {
+              "type": {
+                "vt": 12
+              },
+              "flags": 17
+            },
+            {
+              "type": {
+                "vt": 26,
+                "element": {
+                  "vt": 27,
+                  "element": {
+                    "vt": 12
+                  }
+                }
+              },
+              "flags": 10
+            }
+          ]
+        },
+        {
+          "names": [
+            "Close"
+          ],
+          "id": 10,
+          "kind": 1,
+          "invoke": 1,
+          "convention": 4,
+          "host_vtable_offset": 112,
+          "native_x86_vtable_offset": 56,
+          "result": {
+            "vt": 25
+          },
+          "parameters": []
+        }
+      ]
+    },
+    "IContent": {
+      "guid": "d63f927a-1170-4239-9c1d-06e8a658f300",
+      "kind": 3,
+      "flags": 4544,
+      "host_vtable_size": 64,
+      "native_x86_vtable_size": 32,
+      "methods": [
+        {
+          "names": [
+            "Upload",
+            "url"
+          ],
+          "id": 1,
+          "kind": 1,
+          "invoke": 1,
+          "convention": 4,
+          "host_vtable_offset": 56,
+          "native_x86_vtable_offset": 28,
+          "result": {
+            "vt": 25
+          },
+          "parameters": [
+            {
+              "type": {
+                "vt": 8
+              },
+              "flags": 1
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

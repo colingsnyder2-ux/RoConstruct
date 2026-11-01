@@ -1,7 +1,7 @@
 {
-  "revision": "30f5fbbd6b0bf5fa85e79940314e67bcd289559a",
+  "revision": "56d1dad3f3754aff9b53940b3d2193ed99be3ce3",
   "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
-  "observer_sha256": "f69dfd5c6859ff9cab8e496206fbd2e2640045474552c21ef6df087a8a08600e",
+  "observer_sha256": "ad4b5150872d1c3ed9d5f9f6fb4dd743086d3855480a2cd1bc6e1bdbaf75b77d",
   "runtime_classes_sha256": "bf63791688d842003eaaa27757425e8b1b4f07afcfb42553322974fcbedd6f67",
   "runtime_sizes": {
     "CRobloxDoc": {
@@ -33,6 +33,1163 @@
     }
   },
   "classes": {
+    ".?AV?$CComObject@VCWorkspace@@@ATL@@": {
+      "type_descriptor": "0x9281b0",
+      "tables": [
+        {
+          "vtable": "0x80ae6c",
+          "locator": "0x87642c",
+          "subobject_offset": 0,
+          "construction_displacement": 0,
+          "hierarchy": {
+            "address": "0x876440",
+            "attributes": 1,
+            "bases": [
+              {
+                "type": ".?AV?$CComObject@VCWorkspace@@@ATL@@",
+                "descriptor": "0x8764a4",
+                "contained_bases": 19,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCWorkspace@@",
+                "descriptor": "0x8764c0",
+                "contained_bases": 18,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$IDispatchImpl@UIWorkspace@@$1?IID_IWorkspace@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$01VCComTypeInfoHolder@ATL@@@ATL@@",
+                "descriptor": "0x876540",
+                "contained_bases": 3,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIWorkspace@@",
+                "descriptor": "0x876580",
+                "contained_bases": 2,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIDispatch@@",
+                "descriptor": "0x8765bc",
+                "contained_bases": 1,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIUnknown@@",
+                "descriptor": "0x876628",
+                "contained_bases": 0,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 66
+              },
+              {
+                "type": ".?AV?$CComObjectRootEx@VCComSingleThreadModel@ATL@@@ATL@@",
+                "descriptor": "0x876644",
+                "contained_bases": 1,
+                "member_displacement": 32,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCComObjectRootBase@ATL@@",
+                "descriptor": "0x8766cc",
+                "contained_bases": 0,
+                "member_displacement": 32,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$CComCoClass@VCWorkspace@@$1?CLSID_Workspace@@3U_GUID@@B@ATL@@",
+                "descriptor": "0x8766e8",
+                "contained_bases": 0,
+                "member_displacement": 36,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$ISupportErrorInfoImpl@$1?IID_IWorkspace@@3U_GUID@@B@ATL@@",
+                "descriptor": "0x876738",
+                "contained_bases": 2,
+                "member_displacement": 4,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUISupportErrorInfo@@",
+                "descriptor": "0x8767c8",
+                "contained_bases": 1,
+                "member_displacement": 4,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIUnknown@@",
+                "descriptor": "0x8767e4",
+                "contained_bases": 0,
+                "member_displacement": 4,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 66
+              },
+              {
+                "type": ".?AV?$IObjectSafetyRobloxImpl@VCWorkspace@@$00@@",
+                "descriptor": "0x876800",
+                "contained_bases": 2,
+                "member_displacement": 8,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIObjectSafety@@",
+                "descriptor": "0x876890",
+                "contained_bases": 1,
+                "member_displacement": 8,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIUnknown@@",
+                "descriptor": "0x8768ac",
+                "contained_bases": 0,
+                "member_displacement": 8,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 66
+              },
+              {
+                "type": ".?AV?$IObjectWithSiteImpl@VCWorkspace@@@ATL@@",
+                "descriptor": "0x8768c8",
+                "contained_bases": 2,
+                "member_displacement": 16,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIObjectWithSite@@",
+                "descriptor": "0x876958",
+                "contained_bases": 1,
+                "member_displacement": 16,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIUnknown@@",
+                "descriptor": "0x876974",
+                "contained_bases": 0,
+                "member_displacement": 16,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 66
+              },
+              {
+                "type": ".?AV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@",
+                "descriptor": "0x876990",
+                "contained_bases": 0,
+                "member_displacement": 24,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$Listener@VWorkspace@RBX@@VDrawChanged@2@@RBX@@",
+                "descriptor": "0x8769e0",
+                "contained_bases": 0,
+                "member_displacement": 28,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              }
+            ]
+          }
+        },
+        {
+          "vtable": "0x80ae58",
+          "locator": "0x876a30",
+          "subobject_offset": 4,
+          "construction_displacement": 0,
+          "hierarchy": {
+            "address": "0x876440",
+            "attributes": 1,
+            "bases": [
+              {
+                "type": ".?AV?$CComObject@VCWorkspace@@@ATL@@",
+                "descriptor": "0x8764a4",
+                "contained_bases": 19,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCWorkspace@@",
+                "descriptor": "0x8764c0",
+                "contained_bases": 18,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$IDispatchImpl@UIWorkspace@@$1?IID_IWorkspace@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$01VCComTypeInfoHolder@ATL@@@ATL@@",
+                "descriptor": "0x876540",
+                "contained_bases": 3,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIWorkspace@@",
+                "descriptor": "0x876580",
+                "contained_bases": 2,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIDispatch@@",
+                "descriptor": "0x8765bc",
+                "contained_bases": 1,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIUnknown@@",
+                "descriptor": "0x876628",
+                "contained_bases": 0,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 66
+              },
+              {
+                "type": ".?AV?$CComObjectRootEx@VCComSingleThreadModel@ATL@@@ATL@@",
+                "descriptor": "0x876644",
+                "contained_bases": 1,
+                "member_displacement": 32,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCComObjectRootBase@ATL@@",
+                "descriptor": "0x8766cc",
+                "contained_bases": 0,
+                "member_displacement": 32,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$CComCoClass@VCWorkspace@@$1?CLSID_Workspace@@3U_GUID@@B@ATL@@",
+                "descriptor": "0x8766e8",
+                "contained_bases": 0,
+                "member_displacement": 36,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$ISupportErrorInfoImpl@$1?IID_IWorkspace@@3U_GUID@@B@ATL@@",
+                "descriptor": "0x876738",
+                "contained_bases": 2,
+                "member_displacement": 4,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUISupportErrorInfo@@",
+                "descriptor": "0x8767c8",
+                "contained_bases": 1,
+                "member_displacement": 4,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIUnknown@@",
+                "descriptor": "0x8767e4",
+                "contained_bases": 0,
+                "member_displacement": 4,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 66
+              },
+              {
+                "type": ".?AV?$IObjectSafetyRobloxImpl@VCWorkspace@@$00@@",
+                "descriptor": "0x876800",
+                "contained_bases": 2,
+                "member_displacement": 8,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIObjectSafety@@",
+                "descriptor": "0x876890",
+                "contained_bases": 1,
+                "member_displacement": 8,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIUnknown@@",
+                "descriptor": "0x8768ac",
+                "contained_bases": 0,
+                "member_displacement": 8,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 66
+              },
+              {
+                "type": ".?AV?$IObjectWithSiteImpl@VCWorkspace@@@ATL@@",
+                "descriptor": "0x8768c8",
+                "contained_bases": 2,
+                "member_displacement": 16,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIObjectWithSite@@",
+                "descriptor": "0x876958",
+                "contained_bases": 1,
+                "member_displacement": 16,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIUnknown@@",
+                "descriptor": "0x876974",
+                "contained_bases": 0,
+                "member_displacement": 16,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 66
+              },
+              {
+                "type": ".?AV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@",
+                "descriptor": "0x876990",
+                "contained_bases": 0,
+                "member_displacement": 24,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$Listener@VWorkspace@RBX@@VDrawChanged@2@@RBX@@",
+                "descriptor": "0x8769e0",
+                "contained_bases": 0,
+                "member_displacement": 28,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              }
+            ]
+          }
+        },
+        {
+          "vtable": "0x80ae40",
+          "locator": "0x876a44",
+          "subobject_offset": 8,
+          "construction_displacement": 0,
+          "hierarchy": {
+            "address": "0x876440",
+            "attributes": 1,
+            "bases": [
+              {
+                "type": ".?AV?$CComObject@VCWorkspace@@@ATL@@",
+                "descriptor": "0x8764a4",
+                "contained_bases": 19,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCWorkspace@@",
+                "descriptor": "0x8764c0",
+                "contained_bases": 18,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$IDispatchImpl@UIWorkspace@@$1?IID_IWorkspace@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$01VCComTypeInfoHolder@ATL@@@ATL@@",
+                "descriptor": "0x876540",
+                "contained_bases": 3,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIWorkspace@@",
+                "descriptor": "0x876580",
+                "contained_bases": 2,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIDispatch@@",
+                "descriptor": "0x8765bc",
+                "contained_bases": 1,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIUnknown@@",
+                "descriptor": "0x876628",
+                "contained_bases": 0,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 66
+              },
+              {
+                "type": ".?AV?$CComObjectRootEx@VCComSingleThreadModel@ATL@@@ATL@@",
+                "descriptor": "0x876644",
+                "contained_bases": 1,
+                "member_displacement": 32,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCComObjectRootBase@ATL@@",
+                "descriptor": "0x8766cc",
+                "contained_bases": 0,
+                "member_displacement": 32,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$CComCoClass@VCWorkspace@@$1?CLSID_Workspace@@3U_GUID@@B@ATL@@",
+                "descriptor": "0x8766e8",
+                "contained_bases": 0,
+                "member_displacement": 36,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$ISupportErrorInfoImpl@$1?IID_IWorkspace@@3U_GUID@@B@ATL@@",
+                "descriptor": "0x876738",
+                "contained_bases": 2,
+                "member_displacement": 4,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUISupportErrorInfo@@",
+                "descriptor": "0x8767c8",
+                "contained_bases": 1,
+                "member_displacement": 4,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIUnknown@@",
+                "descriptor": "0x8767e4",
+                "contained_bases": 0,
+                "member_displacement": 4,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 66
+              },
+              {
+                "type": ".?AV?$IObjectSafetyRobloxImpl@VCWorkspace@@$00@@",
+                "descriptor": "0x876800",
+                "contained_bases": 2,
+                "member_displacement": 8,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIObjectSafety@@",
+                "descriptor": "0x876890",
+                "contained_bases": 1,
+                "member_displacement": 8,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIUnknown@@",
+                "descriptor": "0x8768ac",
+                "contained_bases": 0,
+                "member_displacement": 8,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 66
+              },
+              {
+                "type": ".?AV?$IObjectWithSiteImpl@VCWorkspace@@@ATL@@",
+                "descriptor": "0x8768c8",
+                "contained_bases": 2,
+                "member_displacement": 16,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIObjectWithSite@@",
+                "descriptor": "0x876958",
+                "contained_bases": 1,
+                "member_displacement": 16,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIUnknown@@",
+                "descriptor": "0x876974",
+                "contained_bases": 0,
+                "member_displacement": 16,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 66
+              },
+              {
+                "type": ".?AV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@",
+                "descriptor": "0x876990",
+                "contained_bases": 0,
+                "member_displacement": 24,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$Listener@VWorkspace@RBX@@VDrawChanged@2@@RBX@@",
+                "descriptor": "0x8769e0",
+                "contained_bases": 0,
+                "member_displacement": 28,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              }
+            ]
+          }
+        },
+        {
+          "vtable": "0x80ae24",
+          "locator": "0x876a58",
+          "subobject_offset": 16,
+          "construction_displacement": 0,
+          "hierarchy": {
+            "address": "0x876440",
+            "attributes": 1,
+            "bases": [
+              {
+                "type": ".?AV?$CComObject@VCWorkspace@@@ATL@@",
+                "descriptor": "0x8764a4",
+                "contained_bases": 19,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCWorkspace@@",
+                "descriptor": "0x8764c0",
+                "contained_bases": 18,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$IDispatchImpl@UIWorkspace@@$1?IID_IWorkspace@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$01VCComTypeInfoHolder@ATL@@@ATL@@",
+                "descriptor": "0x876540",
+                "contained_bases": 3,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIWorkspace@@",
+                "descriptor": "0x876580",
+                "contained_bases": 2,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIDispatch@@",
+                "descriptor": "0x8765bc",
+                "contained_bases": 1,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIUnknown@@",
+                "descriptor": "0x876628",
+                "contained_bases": 0,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 66
+              },
+              {
+                "type": ".?AV?$CComObjectRootEx@VCComSingleThreadModel@ATL@@@ATL@@",
+                "descriptor": "0x876644",
+                "contained_bases": 1,
+                "member_displacement": 32,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCComObjectRootBase@ATL@@",
+                "descriptor": "0x8766cc",
+                "contained_bases": 0,
+                "member_displacement": 32,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$CComCoClass@VCWorkspace@@$1?CLSID_Workspace@@3U_GUID@@B@ATL@@",
+                "descriptor": "0x8766e8",
+                "contained_bases": 0,
+                "member_displacement": 36,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$ISupportErrorInfoImpl@$1?IID_IWorkspace@@3U_GUID@@B@ATL@@",
+                "descriptor": "0x876738",
+                "contained_bases": 2,
+                "member_displacement": 4,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUISupportErrorInfo@@",
+                "descriptor": "0x8767c8",
+                "contained_bases": 1,
+                "member_displacement": 4,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIUnknown@@",
+                "descriptor": "0x8767e4",
+                "contained_bases": 0,
+                "member_displacement": 4,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 66
+              },
+              {
+                "type": ".?AV?$IObjectSafetyRobloxImpl@VCWorkspace@@$00@@",
+                "descriptor": "0x876800",
+                "contained_bases": 2,
+                "member_displacement": 8,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIObjectSafety@@",
+                "descriptor": "0x876890",
+                "contained_bases": 1,
+                "member_displacement": 8,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIUnknown@@",
+                "descriptor": "0x8768ac",
+                "contained_bases": 0,
+                "member_displacement": 8,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 66
+              },
+              {
+                "type": ".?AV?$IObjectWithSiteImpl@VCWorkspace@@@ATL@@",
+                "descriptor": "0x8768c8",
+                "contained_bases": 2,
+                "member_displacement": 16,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIObjectWithSite@@",
+                "descriptor": "0x876958",
+                "contained_bases": 1,
+                "member_displacement": 16,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIUnknown@@",
+                "descriptor": "0x876974",
+                "contained_bases": 0,
+                "member_displacement": 16,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 66
+              },
+              {
+                "type": ".?AV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@",
+                "descriptor": "0x876990",
+                "contained_bases": 0,
+                "member_displacement": 24,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$Listener@VWorkspace@RBX@@VDrawChanged@2@@RBX@@",
+                "descriptor": "0x8769e0",
+                "contained_bases": 0,
+                "member_displacement": 28,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              }
+            ]
+          }
+        },
+        {
+          "vtable": "0x80ae18",
+          "locator": "0x876a6c",
+          "subobject_offset": 24,
+          "construction_displacement": 0,
+          "hierarchy": {
+            "address": "0x876440",
+            "attributes": 1,
+            "bases": [
+              {
+                "type": ".?AV?$CComObject@VCWorkspace@@@ATL@@",
+                "descriptor": "0x8764a4",
+                "contained_bases": 19,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCWorkspace@@",
+                "descriptor": "0x8764c0",
+                "contained_bases": 18,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$IDispatchImpl@UIWorkspace@@$1?IID_IWorkspace@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$01VCComTypeInfoHolder@ATL@@@ATL@@",
+                "descriptor": "0x876540",
+                "contained_bases": 3,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIWorkspace@@",
+                "descriptor": "0x876580",
+                "contained_bases": 2,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIDispatch@@",
+                "descriptor": "0x8765bc",
+                "contained_bases": 1,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIUnknown@@",
+                "descriptor": "0x876628",
+                "contained_bases": 0,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 66
+              },
+              {
+                "type": ".?AV?$CComObjectRootEx@VCComSingleThreadModel@ATL@@@ATL@@",
+                "descriptor": "0x876644",
+                "contained_bases": 1,
+                "member_displacement": 32,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCComObjectRootBase@ATL@@",
+                "descriptor": "0x8766cc",
+                "contained_bases": 0,
+                "member_displacement": 32,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$CComCoClass@VCWorkspace@@$1?CLSID_Workspace@@3U_GUID@@B@ATL@@",
+                "descriptor": "0x8766e8",
+                "contained_bases": 0,
+                "member_displacement": 36,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$ISupportErrorInfoImpl@$1?IID_IWorkspace@@3U_GUID@@B@ATL@@",
+                "descriptor": "0x876738",
+                "contained_bases": 2,
+                "member_displacement": 4,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUISupportErrorInfo@@",
+                "descriptor": "0x8767c8",
+                "contained_bases": 1,
+                "member_displacement": 4,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIUnknown@@",
+                "descriptor": "0x8767e4",
+                "contained_bases": 0,
+                "member_displacement": 4,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 66
+              },
+              {
+                "type": ".?AV?$IObjectSafetyRobloxImpl@VCWorkspace@@$00@@",
+                "descriptor": "0x876800",
+                "contained_bases": 2,
+                "member_displacement": 8,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIObjectSafety@@",
+                "descriptor": "0x876890",
+                "contained_bases": 1,
+                "member_displacement": 8,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIUnknown@@",
+                "descriptor": "0x8768ac",
+                "contained_bases": 0,
+                "member_displacement": 8,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 66
+              },
+              {
+                "type": ".?AV?$IObjectWithSiteImpl@VCWorkspace@@@ATL@@",
+                "descriptor": "0x8768c8",
+                "contained_bases": 2,
+                "member_displacement": 16,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIObjectWithSite@@",
+                "descriptor": "0x876958",
+                "contained_bases": 1,
+                "member_displacement": 16,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIUnknown@@",
+                "descriptor": "0x876974",
+                "contained_bases": 0,
+                "member_displacement": 16,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 66
+              },
+              {
+                "type": ".?AV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@",
+                "descriptor": "0x876990",
+                "contained_bases": 0,
+                "member_displacement": 24,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$Listener@VWorkspace@RBX@@VDrawChanged@2@@RBX@@",
+                "descriptor": "0x8769e0",
+                "contained_bases": 0,
+                "member_displacement": 28,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              }
+            ]
+          }
+        },
+        {
+          "vtable": "0x80ae0c",
+          "locator": "0x876a80",
+          "subobject_offset": 28,
+          "construction_displacement": 0,
+          "hierarchy": {
+            "address": "0x876440",
+            "attributes": 1,
+            "bases": [
+              {
+                "type": ".?AV?$CComObject@VCWorkspace@@@ATL@@",
+                "descriptor": "0x8764a4",
+                "contained_bases": 19,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCWorkspace@@",
+                "descriptor": "0x8764c0",
+                "contained_bases": 18,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$IDispatchImpl@UIWorkspace@@$1?IID_IWorkspace@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$01VCComTypeInfoHolder@ATL@@@ATL@@",
+                "descriptor": "0x876540",
+                "contained_bases": 3,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIWorkspace@@",
+                "descriptor": "0x876580",
+                "contained_bases": 2,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIDispatch@@",
+                "descriptor": "0x8765bc",
+                "contained_bases": 1,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIUnknown@@",
+                "descriptor": "0x876628",
+                "contained_bases": 0,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 66
+              },
+              {
+                "type": ".?AV?$CComObjectRootEx@VCComSingleThreadModel@ATL@@@ATL@@",
+                "descriptor": "0x876644",
+                "contained_bases": 1,
+                "member_displacement": 32,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCComObjectRootBase@ATL@@",
+                "descriptor": "0x8766cc",
+                "contained_bases": 0,
+                "member_displacement": 32,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$CComCoClass@VCWorkspace@@$1?CLSID_Workspace@@3U_GUID@@B@ATL@@",
+                "descriptor": "0x8766e8",
+                "contained_bases": 0,
+                "member_displacement": 36,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$ISupportErrorInfoImpl@$1?IID_IWorkspace@@3U_GUID@@B@ATL@@",
+                "descriptor": "0x876738",
+                "contained_bases": 2,
+                "member_displacement": 4,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUISupportErrorInfo@@",
+                "descriptor": "0x8767c8",
+                "contained_bases": 1,
+                "member_displacement": 4,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIUnknown@@",
+                "descriptor": "0x8767e4",
+                "contained_bases": 0,
+                "member_displacement": 4,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 66
+              },
+              {
+                "type": ".?AV?$IObjectSafetyRobloxImpl@VCWorkspace@@$00@@",
+                "descriptor": "0x876800",
+                "contained_bases": 2,
+                "member_displacement": 8,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIObjectSafety@@",
+                "descriptor": "0x876890",
+                "contained_bases": 1,
+                "member_displacement": 8,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIUnknown@@",
+                "descriptor": "0x8768ac",
+                "contained_bases": 0,
+                "member_displacement": 8,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 66
+              },
+              {
+                "type": ".?AV?$IObjectWithSiteImpl@VCWorkspace@@@ATL@@",
+                "descriptor": "0x8768c8",
+                "contained_bases": 2,
+                "member_displacement": 16,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIObjectWithSite@@",
+                "descriptor": "0x876958",
+                "contained_bases": 1,
+                "member_displacement": 16,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AUIUnknown@@",
+                "descriptor": "0x876974",
+                "contained_bases": 0,
+                "member_displacement": 16,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 66
+              },
+              {
+                "type": ".?AV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@",
+                "descriptor": "0x876990",
+                "contained_bases": 0,
+                "member_displacement": 24,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$Listener@VWorkspace@RBX@@VDrawChanged@2@@RBX@@",
+                "descriptor": "0x8769e0",
+                "contained_bases": 0,
+                "member_displacement": 28,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              }
+            ]
+          }
+        }
+      ]
+    },
     ".?AVCRobloxView@@": {
       "type_descriptor": "0x928a08",
       "tables": [
@@ -987,6 +2144,209 @@
                 "descriptor": "0x876258",
                 "contained_bases": 0,
                 "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              }
+            ]
+          }
+        }
+      ]
+    },
+    ".?AVCRobloxWnd@@": {
+      "type_descriptor": "0x932a60",
+      "tables": [
+        {
+          "vtable": "0x8199f4",
+          "locator": "0x8849bc",
+          "subobject_offset": 0,
+          "construction_displacement": 0,
+          "hierarchy": {
+            "address": "0x8849d0",
+            "attributes": 1,
+            "bases": [
+              {
+                "type": ".?AVCRobloxWnd@@",
+                "descriptor": "0x8849fc",
+                "contained_bases": 5,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCWnd@@",
+                "descriptor": "0x8761e4",
+                "contained_bases": 2,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCCmdTarget@@",
+                "descriptor": "0x876220",
+                "contained_bases": 1,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCObject@@",
+                "descriptor": "0x876258",
+                "contained_bases": 0,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVIRunView@RBX@@",
+                "descriptor": "0x884a18",
+                "contained_bases": 0,
+                "member_displacement": 84,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVIMetric@RBX@@",
+                "descriptor": "0x884a68",
+                "contained_bases": 0,
+                "member_displacement": 88,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              }
+            ]
+          }
+        },
+        {
+          "vtable": "0x8199e8",
+          "locator": "0x884ab8",
+          "subobject_offset": 84,
+          "construction_displacement": 0,
+          "hierarchy": {
+            "address": "0x8849d0",
+            "attributes": 1,
+            "bases": [
+              {
+                "type": ".?AVCRobloxWnd@@",
+                "descriptor": "0x8849fc",
+                "contained_bases": 5,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCWnd@@",
+                "descriptor": "0x8761e4",
+                "contained_bases": 2,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCCmdTarget@@",
+                "descriptor": "0x876220",
+                "contained_bases": 1,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCObject@@",
+                "descriptor": "0x876258",
+                "contained_bases": 0,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVIRunView@RBX@@",
+                "descriptor": "0x884a18",
+                "contained_bases": 0,
+                "member_displacement": 84,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVIMetric@RBX@@",
+                "descriptor": "0x884a68",
+                "contained_bases": 0,
+                "member_displacement": 88,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              }
+            ]
+          }
+        },
+        {
+          "vtable": "0x8199dc",
+          "locator": "0x884acc",
+          "subobject_offset": 88,
+          "construction_displacement": 0,
+          "hierarchy": {
+            "address": "0x8849d0",
+            "attributes": 1,
+            "bases": [
+              {
+                "type": ".?AVCRobloxWnd@@",
+                "descriptor": "0x8849fc",
+                "contained_bases": 5,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCWnd@@",
+                "descriptor": "0x8761e4",
+                "contained_bases": 2,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCCmdTarget@@",
+                "descriptor": "0x876220",
+                "contained_bases": 1,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCObject@@",
+                "descriptor": "0x876258",
+                "contained_bases": 0,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVIRunView@RBX@@",
+                "descriptor": "0x884a18",
+                "contained_bases": 0,
+                "member_displacement": 84,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVIMetric@RBX@@",
+                "descriptor": "0x884a68",
+                "contained_bases": 0,
+                "member_displacement": 88,
                 "vbtable_displacement": -1,
                 "virtual_displacement": 0,
                 "attributes": 64
@@ -5148,6 +6508,225 @@
         }
       ]
     },
+    "0x452f60": {
+      "role": "document OnNewDocument including std::exception reference handler",
+      "window_length": 149,
+      "window_sha256": "87fa81d7bda9d21d717f5fa2fbdeffa739e88431321e39511d6b35cd974edb12",
+      "instructions": [
+        {
+          "address": "0x452f60",
+          "instruction": "push ebp"
+        },
+        {
+          "address": "0x452f61",
+          "instruction": "mov ebp, esp"
+        },
+        {
+          "address": "0x452f63",
+          "instruction": "push -1"
+        },
+        {
+          "address": "0x452f65",
+          "instruction": "push 0x7c1e90"
+        },
+        {
+          "address": "0x452f6a",
+          "instruction": "mov eax, dword ptr fs:[0]"
+        },
+        {
+          "address": "0x452f70",
+          "instruction": "push eax"
+        },
+        {
+          "address": "0x452f71",
+          "instruction": "mov dword ptr fs:[0], esp"
+        },
+        {
+          "address": "0x452f78",
+          "instruction": "sub esp, 8"
+        },
+        {
+          "address": "0x452f7b",
+          "instruction": "push ebx"
+        },
+        {
+          "address": "0x452f7c",
+          "instruction": "push esi"
+        },
+        {
+          "address": "0x452f7d",
+          "instruction": "push edi"
+        },
+        {
+          "address": "0x452f7e",
+          "instruction": "mov dword ptr [ebp - 0x10], esp"
+        },
+        {
+          "address": "0x452f81",
+          "instruction": "mov esi, ecx"
+        },
+        {
+          "address": "0x452f83",
+          "instruction": "call 0x6a09c2"
+        },
+        {
+          "address": "0x452f88",
+          "instruction": "test eax, eax"
+        },
+        {
+          "address": "0x452f8a",
+          "instruction": "je 0x452fe2"
+        },
+        {
+          "address": "0x452f8c",
+          "instruction": "mov ecx, esi"
+        },
+        {
+          "address": "0x452f8e",
+          "instruction": "mov dword ptr [ebp - 4], 0"
+        },
+        {
+          "address": "0x452f95",
+          "instruction": "call 0x451b60"
+        },
+        {
+          "address": "0x452f9a",
+          "instruction": "mov eax, dword ptr [esi]"
+        },
+        {
+          "address": "0x452f9c",
+          "instruction": "mov edx, dword ptr [eax + 0x64]"
+        },
+        {
+          "address": "0x452f9f",
+          "instruction": "push 0"
+        },
+        {
+          "address": "0x452fa1",
+          "instruction": "mov ecx, esi"
+        },
+        {
+          "address": "0x452fa3",
+          "instruction": "mov dword ptr [ebp - 4], 0xffffffff"
+        },
+        {
+          "address": "0x452faa",
+          "instruction": "call edx"
+        },
+        {
+          "address": "0x452fac",
+          "instruction": "mov eax, 1"
+        },
+        {
+          "address": "0x452fb1",
+          "instruction": "mov ecx, dword ptr [ebp - 0xc]"
+        },
+        {
+          "address": "0x452fb4",
+          "instruction": "mov dword ptr fs:[0], ecx"
+        },
+        {
+          "address": "0x452fbb",
+          "instruction": "pop edi"
+        },
+        {
+          "address": "0x452fbc",
+          "instruction": "pop esi"
+        },
+        {
+          "address": "0x452fbd",
+          "instruction": "pop ebx"
+        },
+        {
+          "address": "0x452fbe",
+          "instruction": "mov esp, ebp"
+        },
+        {
+          "address": "0x452fc0",
+          "instruction": "pop ebp"
+        },
+        {
+          "address": "0x452fc1",
+          "instruction": "ret "
+        },
+        {
+          "address": "0x452fc2",
+          "instruction": "mov eax, dword ptr [ebp - 0x14]"
+        },
+        {
+          "address": "0x452fc5",
+          "instruction": "push eax"
+        },
+        {
+          "address": "0x452fc6",
+          "instruction": "call 0x428850"
+        },
+        {
+          "address": "0x452fcb",
+          "instruction": "add esp, 4"
+        },
+        {
+          "address": "0x452fce",
+          "instruction": "push 0"
+        },
+        {
+          "address": "0x452fd0",
+          "instruction": "push 0x30"
+        },
+        {
+          "address": "0x452fd2",
+          "instruction": "push 0x817e74"
+        },
+        {
+          "address": "0x452fd7",
+          "instruction": "call 0x6a0c50"
+        },
+        {
+          "address": "0x452fdc",
+          "instruction": "mov eax, 0x452fe2"
+        },
+        {
+          "address": "0x452fe1",
+          "instruction": "ret "
+        },
+        {
+          "address": "0x452fe2",
+          "instruction": "mov ecx, dword ptr [ebp - 0xc]"
+        },
+        {
+          "address": "0x452fe5",
+          "instruction": "pop edi"
+        },
+        {
+          "address": "0x452fe6",
+          "instruction": "pop esi"
+        },
+        {
+          "address": "0x452fe7",
+          "instruction": "xor eax, eax"
+        },
+        {
+          "address": "0x452fe9",
+          "instruction": "mov dword ptr fs:[0], ecx"
+        },
+        {
+          "address": "0x452ff0",
+          "instruction": "pop ebx"
+        },
+        {
+          "address": "0x452ff1",
+          "instruction": "mov esp, ebp"
+        },
+        {
+          "address": "0x452ff3",
+          "instruction": "pop ebp"
+        },
+        {
+          "address": "0x452ff4",
+          "instruction": "ret "
+        }
+      ]
+    },
     "0x66f070": {
       "role": "MovingNoPhysicsBase constructor",
       "window_length": 384,
@@ -5782,6 +7361,23 @@
         }
       ]
     }
+  },
+  "document_new_exception": {
+    "handler": "0x7c1e90",
+    "function_info": "0x8d9074",
+    "magic": "0x19930522",
+    "states": 2,
+    "unwind_map": "0x8d9050",
+    "try_map": "0x8d9060",
+    "try_low": 0,
+    "try_high": 0,
+    "catch_high": 1,
+    "handler_type": "0x8d9040",
+    "adjectives": 8,
+    "type_descriptor": "0x928588",
+    "type": ".?AVexception@std@@",
+    "catch_object_displacement": -20,
+    "catch_body": "0x452fc2"
   },
   "scope": "Original RTTI supplies inheritance and PMD offsets. Runtime metadata supplies complete MFC class sizes. Constructor instructions supply accessed offsets; unresolved member types remain open. Mined codegen analog declarations are not ABI proof."
 }
