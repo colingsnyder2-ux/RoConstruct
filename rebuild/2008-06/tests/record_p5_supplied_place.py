@@ -23,7 +23,7 @@ def main():
     statuses={str(i):sum(r['status']==str(i) for r in rows) for i in range(5)}
     receipt={'revision':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
              'exe_sha256':sha(EXE.read_bytes()),'observer_sha256':sha(Path(__file__).read_bytes()),
-             'place_name':place.name,'compressed_sha256':sha(raw),'decoded_sha256':sha(decoded),'decoded_bytes':len(decoded),
+             'input_sha256':sha(raw),'decoded_sha256':sha(decoded),'decoded_bytes':len(decoded),
              'exit':run.returncode,'initial_models':int(match[1]),'final_models':len(rows),'statuses':statuses,
              'script_error_stacks':run.stdout.count('[output]    stack end'),
              'missing_member_messages':sum('is not a valid member of' in line for line in run.stdout.splitlines()),
