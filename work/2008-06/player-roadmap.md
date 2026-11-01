@@ -1610,3 +1610,22 @@ wall samples are within 35 ms; joint construction differs and original needed
 forced termination. Receipts p5-jump-force-verified-*. This source-aligned
 change does not close jump/contact parity; investigate landing and floor force
 ordering next. High-fall discrepancy and remaining P5 gates remain open.
+
+## P5 checkpoint: recovered horizontal air control (6cc844c0df)
+
+Original 00667510 updates desired velocity through 00643b60 (walk direction
+scaled by 16). Original 006675d0 applies gain 1250, acceleration limits from
+00666350/006663a0, branch mass, and explicitly zeroes vertical force. The
+donor Flying path previously supplied only yaw torque. Its desired velocity
+and horizontal force now adapt those recovered behaviors. Engine and player
+were rebuilt; original state layouts and timing remain donor adaptations.
+
+A high-fall walking fixture passes the bounded horizontal check at 0.5 s
+(error 0.533 studs, bound 0.8). Later observations remain mismatched: about
+1.60 studs horizontal error at 2 s, alongside the known vertical rebound.
+The air observer explicitly treats later samples and vertical motion as
+observations, not parity passes. Ground walking, early jump (maximum 0.162
+studs), P3 lifetime/cache and Novetus animation pass at 6cc844c0df. Receipts:
+p5-air-verified, p5-air-verified-{walk,early,p3,animation}. Original uses wall
+samples within 35 ms, different joint construction, and forced termination.
+Full air/landing physics, native frame/state integration and P5 remain open.
