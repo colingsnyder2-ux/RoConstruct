@@ -159,10 +159,14 @@ def prepare(client='2008-06', log=print):
     for name, spec in modules[:-1]:
         out = root / 'rebuild' / client / 'out' / spec['name']
         report = json.loads((out / 'report.json').read_text()) if (out / 'report.json').exists() else {}
-        if not (out / 'linked/linked.lib').exists() or not report.get('linked') or \
+        if not (out / 'linked/linked.lib').exists() or not report.get('linked') or rebuild.source_errors(out, spec, report) or \
                 spec.get('test') and report.get('test_exit') != 0:
             log('Native setup: building declared dependency ' + name)
             result = rebuild.build_module(client, name)
+            errors = rebuild.source_errors(out, spec, result)
+            if errors:
+                raise ValueError('Dependency source compilation failed: %s (%s)' % (name,
+                                 '; '.join(layer + ': ' + ', '.join(failed) for layer, failed in errors.items())))
             if not result.get('linked') or spec.get('test') and result.get('test_exit') != 0:
                 raise ValueError('Dependency build/smoke failed: ' + name)
     log('Native setup: ABI, RTTI, compiler profiles and declared libraries ready')

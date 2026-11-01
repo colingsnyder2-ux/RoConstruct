@@ -416,13 +416,14 @@ def test_worker_bootstrap_publishes_both_guides_and_verified_archive(tmp_path):
     package = tmp_path / 'worker.zip'
     with zipfile.ZipFile(package, 'w') as zipped:
         zipped.writestr('roconstruct-package.json', json.dumps({'matching_workflow_version': 4}))
+        zipped.writestr('rebuild/2008-06/patches/rebuild-baseline.json', '{}')
         zipped.writestr('rebuild/2008-06/manifests/abi-evidence.json', '{"Fixture":{"confidence":"observed","vtables":[]}}')
         for name in ('MATCHING_AGENT.md', 'NATIVE_AGENT.md'):
             zipped.writestr('docs/' + name, name)
     build.prepare_downloads(package)
     folder = tmp_path / 'local/findings/data'
     manifest = json.loads((folder / 'native-worker.json').read_text())
-    assert manifest['workflow_version'] == 16
+    assert manifest['workflow_version'] == 17
     assert manifest['matching_workflow_version'] == 4
     assert manifest['abi_manifest_classes'] == 1
     assert manifest['sha256'] == hashlib.sha256((folder / 'native-worker.zip').read_bytes()).hexdigest()

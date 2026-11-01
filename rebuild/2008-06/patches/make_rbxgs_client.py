@@ -1653,16 +1653,16 @@ patch(BODY_CPP,
       "\t\tinitialize();\n"
       "\treturn gWorldBody;\n"
       "}\n")
-# Independently accepted promotions are declarative edits, never uploaded Python.
-# The server verifier validates anchors and all ABI/runtime gates before publishing.
+# Preserve the committed rebuild/P5 source baseline across accepted-ledger sync.
+# Exact historical batch hashes are pinned in that snapshot; newer batches remain strict.
+import sys
+sys.path.insert(0, str(ROOT))
+from roc.integration import project_patches
+rebuild_baseline = out.with_name("rebuild-baseline.json")
+project = json.loads(rebuild_baseline.read_text(encoding="utf-8"))
 native_promotions = out.with_name("native-promotions.json")
-if native_promotions.exists():
-    import sys
-    sys.path.insert(0, str(ROOT))
-    from roc.integration import merge_patches
-    batches = json.loads(native_promotions.read_text(encoding="utf-8"))
-    for batch in batches if isinstance(batches, list) else [batches]:
-        patches = merge_patches(patches, batch)
+accepted = json.loads(native_promotions.read_text(encoding="utf-8")) if native_promotions.exists() else []
+patches = project_patches(patches, project, accepted if isinstance(accepted, list) else [accepted])
 
 out.write_text(json.dumps(patches, indent=1) + "\n", encoding="utf-8")
 print("%d files, %d patches -> %s" % (len(patches), sum(map(len, patches.values())), out))

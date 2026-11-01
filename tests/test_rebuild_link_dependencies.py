@@ -196,3 +196,36 @@ def test_layer_exclusion_cannot_link_stale_objects(tmp_path, monkeypatch):
         monkeypatch.setattr(rebuild, 'verified_layer', archive)
         with pytest.raises(ReachedArchive):
             rebuild.build_module('test', 'app', log=lambda _: None)
+
+
+def test_module_source_failure_skips_link_and_preserves_last_success(tmp_path, monkeypatch):
+    source = tmp_path/'source'
+    source.mkdir()
+    (source/'bad.cpp').write_text('invalid C++')
+    out = tmp_path/'out/App'
+    out.mkdir(parents=True)
+    previous = {'linked':True,'test_exit':0,'owned_addrs':['00400000']}
+    (out/'last-successful-report.json').write_text(json.dumps(previous))
+    monkeypatch.setattr(rebuild, 'workspace', lambda client: tmp_path)
+    monkeypatch.setattr(rebuild, 'load_module', lambda *args: dict(name='App',test='smoke',layers=[dict(
+        name='upstream',mode='direct',dir=str(source),files='*.cpp',flags='/O2')]))
+    monkeypatch.setattr(rebuild, 'build_overlay', lambda *args: None)
+    monkeypatch.setattr(rebuild, 'compile_direct', lambda *args,**kwargs: {str(source/'bad.cpp'):(False,'error C1234')})
+    monkeypatch.setattr(rebuild, 'verified_layer', lambda *a,**k: (_ for _ in ()).throw(AssertionError('Must not link partial sources')))
+    result = rebuild.build_module('test','app',log=lambda *a:None)
+    assert not result['linked'] and result['test_exit'] is None
+    assert result['compile_errors'] == {'upstream':{'bad.cpp':'error C1234'}}
+    assert json.loads((out/'last-successful-report.json').read_text()) == previous
+    assert json.loads((out/'report.json').read_text()) == result
+
+
+def test_module_empty_source_layer_is_not_a_success(tmp_path, monkeypatch):
+    source = tmp_path/'empty'
+    source.mkdir()
+    monkeypatch.setattr(rebuild, 'workspace', lambda client: tmp_path)
+    monkeypatch.setattr(rebuild, 'load_module', lambda *a: dict(name='App',test='smoke',layers=[dict(
+        name='upstream',mode='direct',dir=str(source),files='*.cpp',flags='/O2')]))
+    monkeypatch.setattr(rebuild, 'build_overlay', lambda *a: None)
+    monkeypatch.setattr(rebuild, 'compile_direct', lambda *a,**k: {})
+    result = rebuild.build_module('test','app',log=lambda *a:None)
+    assert not result['linked'] and '<sources>' in result['compile_errors']['upstream']

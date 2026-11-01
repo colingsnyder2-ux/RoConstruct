@@ -66,9 +66,9 @@ def test_cold_prepare_generates_rtti_and_builds_dependencies_with_declared_profi
     monkeypatch.setattr(libs, 'winsdk_include', lambda: 'SDK')
     monkeypatch.setattr(rebuild, 'toolchain', lambda *a: {k: 'installed' for k in
         ('cl', 'link', 'lib', 'vc_include', 'sdk_include', 'sdk_lib', 'atlmfc_include')})
-    specs = {'rbxgs-app': dict(name='RbxgsApp', depends=['g3d', 'boost'], layers=[{'cl':21022}]),
-             'g3d': dict(name='G3D', depends=['zlib'], layers=[{'cl':21022}], test='g3d-smoke'),
-             'zlib': dict(name='Zlib', layers=[{'cl':50727}])}
+    specs = {'rbxgs-app': dict(name='RbxgsApp', depends=['g3d', 'boost'], layers=[{'name':'upstream','cl':21022}]),
+             'g3d': dict(name='G3D', depends=['zlib'], layers=[{'name':'upstream','cl':21022}], test='g3d-smoke'),
+             'zlib': dict(name='Zlib', layers=[{'name':'upstream','cl':50727}])}
     specs['boost'] = json.loads((Path(__file__).resolve().parents[1] / 'rebuild/2008-06/modules/boost.json').read_text())
     monkeypatch.setattr(libs, 'LIBS', tmp_path / 'tools/libs')
     boost = libs.LIBS / 'boost_1_34_1'
@@ -132,3 +132,57 @@ def test_rebuild_milestones_command_exits_nonzero_on_failed_link(monkeypatch):
     with pytest.raises(SystemExit) as exc:
         roc_cli.cmd_rebuild(args)
     assert exc.value.code == 1
+
+
+@pytest.mark.parametrize('cached', [False, True])
+def test_prepare_rejects_dependency_source_errors_despite_passing_smoke(tmp_path, monkeypatch, cached):
+    monkeypatch.setattr(rebuild, 'ROOT', tmp_path)
+    monkeypatch.setattr(rebuild_install, 'install', lambda *a: None)
+    monkeypatch.setattr(clients, 'load', lambda: {'2008-06':{}})
+    monkeypatch.setattr(clients, 'status', lambda *a: 'ok')
+    work = tmp_path/'work/2008-06'
+    work.mkdir(parents=True)
+    (work/'functions.jsonl').write_text('{}')
+    (work/'vtables.json').write_text('[{}]')
+    monkeypatch.setattr(setup, 'compilers', lambda: {21022:'cl'})
+    monkeypatch.setattr(libs, 'winsdk_include', lambda: 'SDK')
+    monkeypatch.setattr(rebuild, 'toolchain', lambda *a: {key:'installed' for key in
+        ('cl','link','lib','vc_include','sdk_include','sdk_lib','atlmfc_include')})
+    dep = dict(name='Dependency', layers=[dict(name='upstream')], test='smoke')
+    monkeypatch.setattr(rebuild, 'load_module', lambda client,name: dep if name=='dependency' else dict(
+        name='RbxgsApp',depends=['dependency'],layers=[]))
+    out = tmp_path/'rebuild/2008-06/out/Dependency'
+    if cached:
+        (out/'linked').mkdir(parents=True)
+        (out/'linked/linked.lib').write_bytes(b'old library')
+        (out/'report.json').write_text(json.dumps({'linked':True,'test_exit':0}))
+        (out/'layer-upstream').mkdir()
+        (out/'layer-upstream/errors.json').write_text(json.dumps({'unit.cpp':'error C1234'}))
+    attempted = []
+    def build(*args):
+        attempted.append(True)
+        return dict(linked=True,test_exit=0,compile_errors={'upstream':{'unit.cpp':'error C1234'}})
+    monkeypatch.setattr(rebuild, 'build_module', build)
+    with pytest.raises(ValueError, match='Dependency source compilation failed: dependency'):
+        rebuild_install.prepare(log=lambda *a: None)
+    assert attempted == [True]
+
+
+def test_project_rebuild_baseline_replays_only_new_accepted_batches():
+    from roc import integration
+    base = {'App/A.cpp': [['raw', 'generated']]}
+    historical = {'App/A.cpp': {'before': [['raw','generated']], 'after': [['raw','older accepted']]}}
+    project_overlay = {'App/A.cpp': [['raw','project source'], ['project source','working source']]}
+    project = dict(patches={'App/A.cpp':dict(before=base['App/A.cpp'],after=project_overlay['App/A.cpp'])},
+                   overlay_digest=integration.digest(project_overlay), included_accepted_batches=[integration.digest(historical)])
+    added = {'App/A.cpp': [['working source','new accepted method']]}
+    result = integration.project_patches(base,project,[historical,added])
+    assert result['App/A.cpp'] == project_overlay['App/A.cpp'] + added['App/A.cpp']
+    assert integration.project_patches(base,{},[historical]) == {'App/A.cpp':historical['App/A.cpp']['after']}
+    changed_history = {'App/A.cpp':dict(historical['App/A.cpp'],after=[['raw','different accepted']])}
+    with pytest.raises(ValueError,match='Stale recipe replacement'):
+        integration.project_patches(base,project,[changed_history])
+    with pytest.raises(ValueError,match='pinned overlay'):
+        integration.project_patches(base,dict(project,overlay_digest='bad'),[])
+    with pytest.raises(ValueError,match='Stale recipe replacement'):
+        integration.project_patches({'App/A.cpp':[['changed','generator']]},project,[])
