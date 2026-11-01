@@ -2044,3 +2044,29 @@ The source pointer for native CRobloxWnd constructor 0045c730 names generated
 mfc-9.0-shared/roc_ui_network_window_ee9082b9a35d3d1a.cpp, absent from this local
 recipe tree and generated-unit registry. Original constructor bytes remain
 available; recover or retrieve its actual source before integrating that edge.
+
+
+## Doc lifecycle dependency evidence (56d1dad3f3)
+
+Pinned compiler verifies seven Doc bodies: constructor124, bindExisting78,
+bindOwned91, OnNewDocument149, OnCloseDocument5, GetRuntimeClass6, CreateObject89.
+Original EH metadata proves a std::exception reference catch. Initialization
+00451b60 and logging00428850 remain explicit unlinked edges. Shared native
+StandardVerbs composition yields exact998-byte destructor. Recovered XML union
+includes double: size40/alignment8, exact138-byte destructor. Doc destructor
+remains OPEN204/198 (extra binder vptr store); rejected compiler profiles and
+source provenance are in native-classes/source-manifest.json.
+
+Original dual TYPELIB proves shared IWorkspace/IContent GUIDs, HRESULT/retval
+signatures, VARIANT arguments and x86 slots. Original RTTI supplies the COM
+workspace base order. Its shared-pointer pointee at0x2c still needs proof before
+a complete CWorkspace header and Doc cleanup/routing integration.
+
+Four receipts in shared-layouts (document-compile, binder-compile,
+original-evidence, original-typelib) pin source revision56d1dad3f3. All nine
+proof source hashes were rechecked against current files and that committed
+revision after unrelated concurrent commits advanced HEAD. Stronger verifier
+checks were restored after a stale overwrite; incoming copy preserved locally
+in TANDEM. No class swap occurred: merged exe hash unchanged, P5 stop-line
+PASS/P6 scoped PASS, selected code2997/14344 unchanged. Native P6, remaining
+shared classes and P9/P10 remain open. Other agent edits preserved.
