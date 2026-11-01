@@ -22,6 +22,13 @@
   ["return new Running(humanoid);", "return CreateRecoveredLanded(humanoid);"],
   ["\t\t: Base(humanoid)\n\t{\n\t}", "\t\t: Base(humanoid), savedHeadFriction(0), savedTorsoFriction(0)\n\t{\n\t\tHumanoid::event_FreeFalling.fire(humanoid, true);\n\t\tif (humanoid->getHead()) { savedHeadFriction=humanoid->getHead()->getFriction(); humanoid->getHead()->setFriction(0); }\n\t\tif (humanoid->getTorso()) { savedTorsoFriction=humanoid->getTorso()->getFriction(); humanoid->getTorso()->setFriction(0); }\n\t}\n\n\tFreefall::~Freefall()\n\t{\n\t\tHumanoid::event_FreeFalling.fire(humanoid, false);\n\t\tif (humanoid->getHead()) humanoid->getHead()->setFriction(savedHeadFriction);\n\t\tif (humanoid->getTorso()) humanoid->getTorso()->setFriction(savedTorsoFriction);\n\t}"]
  ],
+ "App/include/humanoid/Flying.h": [
+  ["\t\tfloat desiredYRotationalVelocity;", "\t\tfloat desiredYRotationalVelocity;\n\t\tG3D::Vector3 desiredVelocity;"]
+ ],
+ "App/humanoid/Flying.cpp": [
+  ["desiredYRotationalVelocity(0.0f)", "desiredYRotationalVelocity(0.0f), desiredVelocity(G3D::Vector3::zero())"],
+  ["desiredYRotationalVelocity = controller.getValue(Controller::RIGHT_LEFT_INPUT) * 6.0f;", "desiredYRotationalVelocity = controller.getValue(Controller::RIGHT_LEFT_INPUT) * 6.0f;\n\t\t\t\tdesiredVelocity = humanoid->updateWalkDirection() * 16.0f;"]
+ ],
  "App/humanoid/Jumping.cpp": [
   ["\t\tif (done)\n", "\t\ttimeout -= stepDt;\n\t\tif (done || timeout <= 0.0f)\n"]
  ],

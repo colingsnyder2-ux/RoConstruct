@@ -1,7 +1,7 @@
 """Compare scripted character walking or moving-platform behavior across clients."""
 import csv,ctypes,hashlib,json,pathlib,statistics,struct,subprocess,sys,time
 from ctypes import wintypes
-root=pathlib.Path(__file__).resolve().parents[3];original=root/'work/2008-06/original-p4-reference/Roblox.exe';player=root/'rebuild/2008-06/out/tests/P2RecoveredPlayer/P2RecoveredPlayer.exe';mode=sys.argv[2] if len(sys.argv)>2 else 'walk';assert mode in ('walk','floor','tall');fixture=root/'rebuild/2008-06/tests/fixtures'/({'walk':'p5-original-humanoid-probe.rbxl','floor':'p5-original-moving-floor.rbxl','tall':'p5-original-tall-humanoid.rbxl'}[mode]);out=root/'work/2008-06'/sys.argv[1];out.mkdir(exist_ok=False);sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();rebuilt={}
+root=pathlib.Path(__file__).resolve().parents[3];original=root/'work/2008-06/original-p4-reference/Roblox.exe';player=root/'rebuild/2008-06/out/tests/P2RecoveredPlayer/P2RecoveredPlayer.exe';mode=sys.argv[2] if len(sys.argv)>2 else 'walk';assert mode in ('walk','floor','tall','air');fixture=root/'rebuild/2008-06/tests/fixtures'/({'walk':'p5-original-humanoid-probe.rbxl','floor':'p5-original-moving-floor.rbxl','tall':'p5-original-tall-humanoid.rbxl','air':'p5-original-air-control.rbxl'}[mode]);out=root/'work/2008-06'/sys.argv[1];out.mkdir(exist_ok=False);sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();rebuilt={}
 for frames in (30,60,90,120):
  folder=out/str(frames);folder.mkdir();run=subprocess.run([str(player),'--p5-join','--p5-play','--frames',str(frames),'--inspect-place',str(fixture)],cwd=folder,capture_output=True,text=True,timeout=90)
  assert run.returncode==0 and 'mesh cleanup: levels=0 refs=0 backends=0 spheres=0' in run.stdout and '[output]    stack end' not in run.stdout
@@ -27,7 +27,7 @@ try:
  assert windows;time.sleep(8);h=windows[0];handle=k.OpenProcess(0x410,False,x.pid);assert handle
  def read(addr,n):
   buf=ctypes.create_string_buffer(n);got=ctypes.c_size_t();ok=k.ReadProcessMemory(handle,ctypes.c_void_p(addr),buf,n,ctypes.byref(got));return buf.raw[:got.value] if ok else b''
- needles=[struct.pack('<3f',137.25,y,71.75) for y in ((5,6.5,-1) if mode=='floor' else ((7,8.5) if mode=='tall' else (5,6.5)))];hits=[[] for _ in needles];addr=0;mbi=MBI()
+ needles=[struct.pack('<3f',137.25,y,71.75) for y in ((5,6.5,-1) if mode=='floor' else ((30,31.5) if mode=='air' else ((7,8.5) if mode=='tall' else (5,6.5))))];hits=[[] for _ in needles];addr=0;mbi=MBI()
  while addr<0x80000000 and k.VirtualQueryEx(handle,ctypes.c_void_p(addr),ctypes.byref(mbi),ctypes.sizeof(mbi)):
   start=mbi.BaseAddress or 0;size=mbi.RegionSize
   if mbi.State==0x1000 and not mbi.Protect&0x101 and (mbi.Protect&0xff) in (2,4,8,0x20,0x40,0x80) and size<=64*1024*1024:
@@ -65,7 +65,8 @@ try:
    if len(positions)==len(hits) and max(abs(positions[1][i]-positions[0][i]-(1.5 if i==1 else 0)) for i in range(3))<.05:candidates.append((actual,positions))
   assert candidates,frames
   actual,positions=min(candidates,key=lambda z:abs(z[0]-target));delta=[positions[0][i]-rebuilt[frames]['torso'][i] for i in range(3)]
-  assert abs(delta[0])<.8 and abs(delta[1])<.16 and abs(delta[2])<.05,(frames,delta)
+  if mode!='air' or frames==30:
+   assert abs(delta[0])<.8 and (mode=='air' or abs(delta[1])<.16) and abs(delta[2])<.05,(frames,delta)
   check={'frame':frames,'original_time':actual,'original_torso':positions[0],'original_head':positions[1],'delta':delta}
   if mode=='floor':
    floor_delta=[positions[2][i]-rebuilt[frames]['floor'][i] for i in range(3)]
@@ -78,5 +79,5 @@ finally:
  if windows:u.PostMessageW(windows[0],0x10,0,0)
  try:x.wait(timeout=4)
  except subprocess.TimeoutExpired:forced=True;x.terminate();x.wait(timeout=5)
-receipt={'revision':subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip(),'original_sha256':sha(original),'player_sha256':sha(player),'fixture_sha256':sha(fixture),'observer_sha256':sha(pathlib.Path(__file__)),'candidate_counts':[len(v) for v in hits],'moving_copies':[len(v) for v in active],'rebuilt':rebuilt,'comparisons':comparisons,'original_exit':x.returncode,'original_forced_termination':forced,'mode':mode,'scope':'One authored walk, tall character walk, or moving floor; original wall-time vs rebuilt fixed steps, +/-35 ms sampling, torso x tolerance 0.8 and y tolerance 0.16 studs. Joint construction differs and native parity is unproven.','P5_complete':False}
+receipt={'revision':subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip(),'original_sha256':sha(original),'player_sha256':sha(player),'fixture_sha256':sha(fixture),'observer_sha256':sha(pathlib.Path(__file__)),'candidate_counts':[len(v) for v in hits],'moving_copies':[len(v) for v in active],'rebuilt':rebuilt,'comparisons':comparisons,'original_exit':x.returncode,'original_forced_termination':forced,'mode':mode,'scope':('Air control: only 0.5-second horizontal error bounded to 0.8 studs; later samples and all vertical motion observational. ' if mode=='air' else '')+'One authored walk, tall character walk, or moving floor; original wall-time vs rebuilt fixed steps, +/-35 ms sampling, torso x tolerance 0.8 and y tolerance 0.16 studs. Joint construction differs and native parity is unproven.','P5_complete':False}
 (out/'receipt.json').write_text(json.dumps(receipt,indent=2)+'\n');print('original/rebuilt humanoid',mode,'comparison PASS')

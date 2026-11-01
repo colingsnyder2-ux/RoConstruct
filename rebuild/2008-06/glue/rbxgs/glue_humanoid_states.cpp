@@ -132,6 +132,14 @@ namespace RBX
 		float maxTorqueY = body->getBranchIBodyV3().y * kTurnAccelMax;
 		desiredTorqueY = G3D::clamp(desiredTorqueY, -maxTorqueY, maxTorqueY);
 		body->accumulateTorque(G3D::Vector3(0, desiredTorqueY, 0));
+		// Original 006675d0 applies bounded horizontal air control, no vertical force.
+		Body* torso = humanoid->getTorsoBody();
+		if (torso) {
+			G3D::Vector3 acceleration = ((desiredVelocity - body->getVelocity().linear) * 1250.0f).clamp(
+				G3D::Vector3(-1000,0,-1000), G3D::Vector3(1000,10000,1000));
+			acceleration.y = 0;
+			body->accumulateForceAtBranchCofm(acceleration * torso->getBranchMass());
+		}
 	}
 
 	// Adapted from 00667a40: drive torso velocity toward 50 and react on floor.
