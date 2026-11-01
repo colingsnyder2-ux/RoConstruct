@@ -1,5 +1,12 @@
 # Current player checkpoint
 
+At sourced7fe02f730, native SoundChannel releaseChannel005b97f0 and listener
+subscription005bc5b0 are recovered; provider detach shares the release body.
+Sound asset/cache/vector diagnostics pass, but the channel methods remain
+unselected because onAncestorChanged and dependencies are not yet linked.
+Evidence: p4-sound-listener-d7fe02f730/ and
+p4-sound-listener-runtime-d7fe02f730/.
+
 SoundChannel pieces at source2a68b59182: constructor005bc480, destructor
 005b7680, parent acceptance00565ff0, provider detach005b9840, heartbeat005ba3d0,
 and spatial update005b9920 use genuine application types. Constructor and
