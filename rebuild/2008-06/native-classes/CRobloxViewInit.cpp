@@ -45,6 +45,11 @@ public:
     virtual void doIt(RBX::IDataState*);
 };
 
+// Inline in the original; same shape as CRobloxDoc::bindExisting.
+inline void CRobloxView::bindExisting(UINT id, RBX::Verb* verb) {
+    commandNames[id] = verb ? &verb->getName() : &RBX::Name::getNullName();
+}
+
 // 0045a4a0
 void CRobloxView::OnInitialUpdate() {
     try {
@@ -74,20 +79,20 @@ void CRobloxView::OnInitialUpdate() {
     slot_1e4.assign(new ToggleFullScreenVerb(model));
     slot_1e8.assign(new Verb458fd0(model));
     slot_1ec.assign(new LockPlayModeVerb(model));
-    { RBX::Verb* v = cameraVerbs(owner_170.get())->getVerb(std::string("CameraPanLeft")); commandNames[0x8027] = v ? &v->getName() : &RBX::Name::getNullName(); }
-    { RBX::Verb* v = cameraVerbs(owner_170.get())->getVerb(std::string("CameraPanRight")); commandNames[0x8028] = v ? &v->getName() : &RBX::Name::getNullName(); }
-    { RBX::Verb* v = cameraVerbs(owner_170.get())->getVerb(std::string("CameraTiltUp")); commandNames[0x8029] = v ? &v->getName() : &RBX::Name::getNullName(); }
-    { RBX::Verb* v = cameraVerbs(owner_170.get())->getVerb(std::string("CameraTiltDown")); commandNames[0x802a] = v ? &v->getName() : &RBX::Name::getNullName(); }
-    { RBX::Verb* v = cameraVerbs(owner_170.get())->getVerb(std::string("CameraZoomIn")); commandNames[0x802b] = v ? &v->getName() : &RBX::Name::getNullName(); }
-    { RBX::Verb* v = cameraVerbs(owner_170.get())->getVerb(std::string("CameraZoomOut")); commandNames[0x802c] = v ? &v->getName() : &RBX::Name::getNullName(); }
-    { RBX::Verb* v = cameraVerbs(owner_170.get())->getVerb(std::string("CameraCenter")); commandNames[0x80a6] = v ? &v->getName() : &RBX::Name::getNullName(); }
-    { RBX::Verb* v = cameraVerbs(owner_170.get())->getVerb(std::string("CameraZoomExtents")); commandNames[0x802d] = v ? &v->getName() : &RBX::Name::getNullName(); }
-    { RBX::Verb* v = cameraVerbs(owner_170.get())->getVerb(std::string("CameraModelView")); commandNames[0x80d7] = v ? &v->getName() : &RBX::Name::getNullName(); }
-    { RBX::Verb* v = cameraVerbs(owner_170.get())->getVerb(std::string("FixedCamera")); commandNames[0x802f] = v ? &v->getName() : &RBX::Name::getNullName(); }
-    { RBX::Verb* v = cameraVerbs(owner_170.get())->getVerb(std::string("AttachCamera")); commandNames[0x8030] = v ? &v->getName() : &RBX::Name::getNullName(); }
-    { RBX::Verb* v = cameraVerbs(owner_170.get())->getVerb(std::string("TrackCamera")); commandNames[0x80a3] = v ? &v->getName() : &RBX::Name::getNullName(); }
-    { RBX::Verb* v = cameraVerbs(owner_170.get())->getVerb(std::string("FollowCamera")); commandNames[0x8032] = v ? &v->getName() : &RBX::Name::getNullName(); }
-    { RBX::Verb* v = cameraVerbs(owner_170.get())->getVerb(std::string("WatchCamera")); commandNames[0x80a2] = v ? &v->getName() : &RBX::Name::getNullName(); }
+    bindExisting(0x8027, cameraVerbs(owner_170.get())->getVerb(std::string("CameraPanLeft")));
+    bindExisting(0x8028, cameraVerbs(owner_170.get())->getVerb(std::string("CameraPanRight")));
+    bindExisting(0x8029, cameraVerbs(owner_170.get())->getVerb(std::string("CameraTiltUp")));
+    bindExisting(0x802a, cameraVerbs(owner_170.get())->getVerb(std::string("CameraTiltDown")));
+    bindExisting(0x802b, cameraVerbs(owner_170.get())->getVerb(std::string("CameraZoomIn")));
+    bindExisting(0x802c, cameraVerbs(owner_170.get())->getVerb(std::string("CameraZoomOut")));
+    bindExisting(0x80a6, cameraVerbs(owner_170.get())->getVerb(std::string("CameraCenter")));
+    bindExisting(0x802d, cameraVerbs(owner_170.get())->getVerb(std::string("CameraZoomExtents")));
+    bindExisting(0x80d7, cameraVerbs(owner_170.get())->getVerb(std::string("CameraModelView")));
+    bindExisting(0x802f, cameraVerbs(owner_170.get())->getVerb(std::string("FixedCamera")));
+    bindExisting(0x8030, cameraVerbs(owner_170.get())->getVerb(std::string("AttachCamera")));
+    bindExisting(0x80a3, cameraVerbs(owner_170.get())->getVerb(std::string("TrackCamera")));
+    bindExisting(0x8032, cameraVerbs(owner_170.get())->getVerb(std::string("FollowCamera")));
+    bindExisting(0x80a2, cameraVerbs(owner_170.get())->getVerb(std::string("WatchCamera")));
     commandNames[0x8043] = &RBX::Name::lookup("SelectionRotate");
     commandNames[0x8044] = &RBX::Name::lookup("SelectionTilt");
     window.finishAttach();                                            // 0045ead0

@@ -9,6 +9,7 @@
 
 namespace RBX {
 class ServiceProvider;
+class Verb;
 class DataModel;
 struct ServiceAdded;
 struct ServiceRemoving;
@@ -97,6 +98,7 @@ public:
     CRobloxView();
     virtual ~CRobloxView(); // 00459ba0, scalar deleting wrapper 00459fb0
     virtual void OnInitialUpdate(); // 0045a4a0
+    void bindExisting(UINT, RBX::Verb*);
     void detachDataModel();         // 0045a2f0
     DECLARE_MESSAGE_MAP()
 };
