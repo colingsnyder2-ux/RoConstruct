@@ -664,3 +664,20 @@ Read tests/p2-recovered/README.md for scope. No later milestone advanced.
 Next: prove/integrate full native Mesh factory/owner and material path, preserving
 this passing isolated target. Then P3 shape/lifecycle/resource baseline, followed
 by remaining roadmap. Do not overwrite local Player2008/PlayerEngine/RbxEntity.h.
+
+## P4 checkpoint: large blocks (bc2b8d80a4)
+
+This checkpoint supersedes the older open-status notes above. P2 and P3 ordinary
+block/sphere paths passed their recorded acceptance tests. P4 remains open.
+The 004f4cb0 large-block surface builder and four-variation factory now render
+through the existing native mesh bank and ordinary surface material. At source
+revision bc2b8d80a4, PBB GPU/lifetime/cache tests, P3 sphere and mixed lifetime
+regressions, player build and selftest passed. In the supplied Bread Factory map,
+780 of 792 models render (formerly 480); 12 remain status 3. Cleanup counters
+return to zero. Sanitized evidence is in p4-pbb-bc2b8d80a4 and
+p4-pbb-lifetime-bc2b8d80a4; user map and captures stay private. Original-client
+large-block comparison and shadow branch are unproven. No server exact claimed.
+
+Next: trace cylinder builder 004fd430 and transforms 004fd4a0/004fd530, compare
+the original, integrate and test remaining shapes. Then complete P4 native sound,
+real-place fidelity and the remaining roadmap. Preserve newer local player files.
