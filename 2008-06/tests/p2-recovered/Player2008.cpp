@@ -1,4 +1,5 @@
 #include <Ogre.h>
+#include <OgreWindowEventUtilities.h>
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -15,6 +16,7 @@
 #include "zlib.h"
 #include "PlayerScene.h"
 #include "RbxEntity.h"
+#include "../PlayerSkybox.h"
 
 extern "C" int LoadPlace(const char* text);
 extern "C" void GetPartPosition(float* x, float* y, float* z);
@@ -25,6 +27,8 @@ extern "C" void MovePartTo(float x, float y, float z);
 extern "C" void StepEngine(float dt);
 extern "C" void ClosePlace();
 extern "C" void RemovePart(void);
+extern "C" void SetPartYaw(float);
+extern "C" int GetContactState(float*,float*,int*);
 
 static const char* kPartPlace =
     "<roblox version=\"4\"><Item class=\"Workspace\"><Properties></Properties>"
@@ -40,6 +44,18 @@ static const char* kPartPlace =
 static const char* kEmptyPlace =
     "<roblox version=\"4\"><Item class=\"Workspace\"><Properties></Properties>"
     "</Item></roblox>";
+
+static const char* kDemoPlace =
+    "<roblox version=\"4\"><Item class=\"Workspace\"><Properties></Properties>"
+    "<Item class=\"Part\" referent=\"RBX1\"><Properties>"
+    "<string name=\"Name\">Brick</string><bool name=\"Anchored\">true</bool>"
+    "<Vector3 name=\"size\"><X>4</X><Y>1.2</Y><Z>2</Z></Vector3>"
+    "<Color3 name=\"Color\"><R>1</R><G>0</G><B>0</B></Color3>"
+    "<token name=\"TopSurface\">3</token><token name=\"BottomSurface\">0</token>"
+    "<CoordinateFrame name=\"CFrame\"><X>0</X><Y>0</Y><Z>0</Z>"
+    "<R00>1</R00><R01>0</R01><R02>0</R02><R10>0</R10><R11>1</R11><R12>0</R12>"
+    "<R20>0</R20><R21>0</R21><R22>1</R22></CoordinateFrame>"
+    "</Properties></Item></Item></roblox>";
 
 static std::string readPlace(const char* path)
 {
@@ -239,9 +255,8 @@ static Ogre::MeshPtr createRecoveredMesh(const char* name, PlayerBlockMesh::Bloc
     PlayerSphereCache::set(reinterpret_cast<PlayerSphereCache::Key>(level.backend),
         Ogre::Sphere(bounds.getCenter(),bounds.getHalfSize().length())); // 007aba1d ->00682350.
     Ogre::MeshPtr mesh=Ogre::MeshManager::getSingleton().createManual(name,Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
-    // SDK SubMesh::getVertexAnimationType dereferences parent. Mesh is metadata
-    // only: it does not adopt this Level-owned submesh into its deletion list.
-    level.backend->parent=mesh.getPointer();
+    // Native00684fd0 binds detached submesh data directly. No fabricated parent
+    // link or adoption into this bounds-only Mesh's deletion list is required.
     mesh->_setBounds(bounds);mesh->_setBoundingSphereRadius(level.backend->radius);mesh->load();
     std::printf("recovered block: producer=004e2c80 upload=00549a50 calls=%u indices=%u\n",PlayerBlockMesh::producerCalls(),static_cast<unsigned>(level.backend->indexData->indexCount));
     return mesh;
@@ -407,6 +422,7 @@ static int runSelftest(Ogre::Root* root, Ogre::RenderWindow* win)
 
     if (LoadPlace(kPartPlace) != 0) { std::printf("selftest: place load failed\n"); return 1; }
     if (SceneAttach() != 0) { std::printf("selftest: scene attach failed\n"); return 1; }
+    if(getenv("ROC_TRACE_STAGES"))OutputDebugStringA("P2_STAGE_LOADED");
 
     float sx, sy, sz;
     GetPartExtent(&sx, &sy, &sz);
@@ -425,6 +441,7 @@ static int runSelftest(Ogre::Root* root, Ogre::RenderWindow* win)
         SceneModelCount(), initialA, initialB, okInitial ? "PASS" : "FAIL");
     if (!okInitial) ++failures;
 
+    if(getenv("ROC_TRACE_STAGES"))OutputDebugStringA("P2_STAGE_BEFORE_MOVE");
     MovePartTo(4.0f, 0.0f, 0.0f);
     drawModels();
     Image moved;
@@ -436,10 +453,12 @@ static int runSelftest(Ogre::Root* root, Ogre::RenderWindow* win)
         SceneModelCount(), movedA, movedB, okMoved ? "PASS" : "FAIL");
     if (!okMoved) ++failures;
 
+    if(getenv("ROC_TRACE_STAGES"))OutputDebugStringA("P2_STAGE_BEFORE_REMOVE");
     RemovePart();
     SceneBeginFrame();
     drawModels();
     Image removed;
+    if(getenv("ROC_TRACE_STAGES"))OutputDebugStringA("P2_STAGE_AFTER_REMOVE");
     if (!capture(root, win, "selftest_removed.png", removed)) return 1;
     int removedAll = countGreen(removed, 0, 0, removed.width, removed.height);
     bool okRemoved = SceneModelCount() == 0 && removedAll < 30;
@@ -497,7 +516,7 @@ static int runCacheTest(Ogre::Root* root,Ogre::RenderWindow* win,const std::stri
         std::map<PlayerBlockMesh::BlockMesh*,int> users;
         for(std::map<const void*,DrawEntry>::iterator it=g_drawn.begin();it!=g_drawn.end();++it){
             DrawEntry& entry=it->second;
-            if(entry.geometry->levels.size()!=2 || entry.geometry->level0().backend->parent!=entry.mesh.getPointer())return 4;
+            if(entry.geometry->levels.size()!=2 || entry.geometry->level0().backend->parent)return 4;
             PlayerSphereCache::Key key=reinterpret_cast<PlayerSphereCache::Key>(entry.geometry->level0().backend);
             if(!PlayerSphereCache::has(key) || PlayerSphereCache::get(key).getRadius()!=entry.geometry->level0().backend->radius)return 12;
             ++users[entry.geometry.getPointer()];
@@ -513,7 +532,7 @@ static int runCacheTest(Ogre::Root* root,Ogre::RenderWindow* win,const std::stri
         if(g_drawn.size()!=8)return 7;
         for(std::map<const void*,DrawEntry>::iterator it=g_drawn.begin();it!=g_drawn.end();++it){
             DrawEntry& entry=it->second;
-            if(entry.geometry->level0().backend->parent!=entry.mesh.getPointer() ||
+            if(entry.geometry->level0().backend->parent ||
                entry.entity->getMesh().getPointer()!=entry.mesh.getPointer() ||
                Ogre::MeshManager::getSingleton().getByName(entry.mesh->getName()).getPointer()!=entry.mesh.getPointer() ||
                entry.node->getPosition()!=Ogre::Vector3::ZERO)return 8;
@@ -534,10 +553,15 @@ static int runCacheTest(Ogre::Root* root,Ogre::RenderWindow* win,const std::stri
 
 int main(int argc, char** argv)
 {
-    if(!getenv("ROC_TEXTURE_STRIP")){std::printf("ROC_TEXTURE_STRIP must name the original SurfacesStrip.png\n");return 1;}
     bool selftest = false;
     bool cachetest = false;
     bool frames = false;
+    bool demo = false;
+    bool skytest = false;
+    bool stability = false;
+    int stabilityExit = 0;
+    int spinFrames = 0;
+    std::string contentRoot;
     int frameCount = 0;
     std::string placeText;
     std::string placePath;
@@ -545,20 +569,36 @@ int main(int argc, char** argv)
     for (int i = 1; i < argc; ++i)
     {
         if (std::strcmp(argv[i], "--selftest") == 0) selftest = true;
+        else if (std::strcmp(argv[i], "--demo") == 0) demo = true;
+        else if (std::strcmp(argv[i], "--stability-test") == 0) stability = true;
+        else if (std::strcmp(argv[i], "--capture-sky") == 0) { demo=true;skytest=true; }
+        else if (std::strcmp(argv[i], "--capture-spin") == 0 && i+1<argc) { spinFrames=std::atoi(argv[++i]);demo=true; }
+        else if (std::strcmp(argv[i], "--content-root") == 0 && i+1<argc) contentRoot=argv[++i];
         else if (std::strcmp(argv[i], "--cachetest") == 0) cachetest = true;
         else if (std::strcmp(argv[i], "--frames") == 0 && i + 1 < argc) { frames = true; frameCount = std::atoi(argv[++i]); }
         else if (argv[i][0] != '-') placePath = argv[i];
     }
+    if(stability && (!frames || frameCount<240)){std::printf("stability test requires --frames 240 or more\n");return 1;}
+
+    if(contentRoot.empty()){
+        char path[MAX_PATH];GetModuleFileNameA(0,path,sizeof(path));
+        contentRoot=std::string(path).substr(0,std::string(path).find_last_of("\\/"))+"/Content";
+    }
+    if(!getenv("ROC_TEXTURE_STRIP"))_putenv(("ROC_TEXTURE_STRIP="+contentRoot+"/textures/SurfacesStrip.png").c_str());
+    if(!std::ifstream(getenv("ROC_TEXTURE_STRIP"),std::ios::binary)){
+        std::printf("missing SurfacesStrip.png; provide original Content with --content-root\n");return 1;
+    }
+    if(!selftest && !cachetest && !frames && placePath.empty())demo=true;
 
     if (selftest)
         placeText = kPartPlace;
+    else if(demo)placeText=kDemoPlace;
     else
         placeText = placePath.empty() ? "" : readPlace(placePath.c_str());
     if(cachetest && placeText.empty()){std::printf("cachetest requires readable fixture\n");return 1;}
     if (!selftest && placeText.empty())
     {
-        std::printf("could not read %s; using built-in part place\n", placePath.empty() ? "(none)" : placePath.c_str());
-        placeText = kPartPlace;
+        std::printf("could not read place: %s\n",placePath.c_str());return 1;
     }
 
     if (!selftest && LoadPlace(placeText.c_str()) != 0) { std::printf("place load failed\n"); return 1; }
@@ -575,7 +615,7 @@ int main(int argc, char** argv)
     if (!rs) { std::printf("no d3d9 renderer\n"); delete root; ClosePlace(); return 3; }
     root->setRenderSystem(rs);
     rs->setConfigOption("Full Screen", "No");
-    rs->setConfigOption("Video Mode", "320 x 240 @ 32-bit colour");
+    rs->setConfigOption("Video Mode", demo?"800 x 600 @ 32-bit colour":"320 x 240 @ 32-bit colour");
     Ogre::RenderWindow* win = root->initialise(true, "Player2008");
     if (!win) { std::printf("window failed\n"); delete root; ClosePlace(); return 4; }
     Ogre::SceneManager* sm = root->createSceneManager(Ogre::ST_GENERIC, "sm");
@@ -584,8 +624,25 @@ int main(int argc, char** argv)
     cam->setPosition(0, 0, 10);
     cam->lookAt(0, 0, 0);
     cam->setNearClipDistance(0.1f);
+    if(demo){cam->setPosition(6,4.5f,8);cam->lookAt(0,0,0);}
     Ogre::Viewport* vp = win->addViewport(cam);
     vp->setBackgroundColour(Ogre::ColourValue(1, 0, 1));
+    if(demo){
+        try{PlayerSkybox::apply(*sm,contentRoot);}
+        catch(const std::exception& error){std::printf("skybox failed: %s\n",error.what());delete root;ClosePlace();return 8;}
+    }
+    if(skytest){
+        cam->setPosition(0,0,0);cam->setFOVy(Ogre::Degree(90));
+        const char* names[]={"front","back","left","right","up","down"};
+        Ogre::Quaternion views[]={Ogre::Quaternion::IDENTITY,Ogre::Quaternion(Ogre::Degree(180),Ogre::Vector3::UNIT_Y),
+            Ogre::Quaternion(Ogre::Degree(90),Ogre::Vector3::UNIT_Y),Ogre::Quaternion(Ogre::Degree(-90),Ogre::Vector3::UNIT_Y),
+            Ogre::Quaternion(Ogre::Degree(90),Ogre::Vector3::UNIT_X),Ogre::Quaternion(Ogre::Degree(-90),Ogre::Vector3::UNIT_X)};
+        for(int i=0;i<6;++i){
+            cam->setOrientation(views[i]);std::string path=std::string("sky_")+names[i]+".png";
+            if(!writeBackbuffer(win,path.c_str()))return 7;
+        }
+        delete root;ClosePlace();return 0;
+    }
 
     if (selftest || cachetest)
     {
@@ -603,7 +660,15 @@ int main(int argc, char** argv)
     if (SceneAttach() != 0) { std::printf("scene attach failed\n"); delete root; ClosePlace(); return 6; }
 
     bool quick = (getenv("ROC_BUILD") != NULL);
-    if (quick)
+    if(demo && spinFrames>0){
+        for(int i=0;i<spinFrames;++i){
+            SetPartYaw(i*6.28318530718f/spinFrames);drawModels();
+            char name[64];_snprintf(name,sizeof(name),"spin_%04d.png",i);
+            if(!writeBackbuffer(win,name))return 7;
+        }
+        std::printf("spin captured: frames=%d size=%ux%u\n",spinFrames,win->getWidth(),win->getHeight());
+    }
+    else if (quick)
     {
         drawModels();
         root->renderOneFrame(); if(!writeBackbuffer(win,"frame1.png"))return 7; std::printf("frame1 written\n");
@@ -613,11 +678,41 @@ int main(int argc, char** argv)
     }
     else if (frames)
     {
+        float expectedY=0,initialFloorY=0,minY=1e30f,maxY=-1e30f;
+        int anchored=0,tailSamples=0;bool stable=true,floorStable=true;
+        std::ofstream samples;
+        if(stability){
+            if(GetContactState(&expectedY,&initialFloorY,&anchored)){std::printf("stability fixture needs Brick and Floor\n");return 9;}
+            samples.open("stability_samples.csv",std::ios::binary);samples.precision(9);
+            if(!samples)return 7;
+            samples<<"frame,brick_y,floor_y,expected_y,anchored\n";
+        }
         for (int i = 0; i < frameCount; ++i)
         {
             StepEngine(1.0f / 60.0f);
             drawModels();
             root->renderOneFrame(); win->update();
+            if(stability){
+                float x,y,z,currentExpected,floorY;
+                GetPartPosition(&x,&y,&z);
+                if(GetContactState(&currentExpected,&floorY,&anchored))return 9;
+                floorStable=floorStable && anchored && std::fabs(floorY-initialFloorY)<.0001f && std::fabs(currentExpected-expectedY)<.0001f;
+                samples<<(i+1)<<","<<y<<","<<floorY<<","<<currentExpected<<","<<anchored<<"\n";
+                if(i>=frameCount/2){
+                    ++tailSamples;stable=stable && std::fabs(y-expectedY)<=.01f;
+                    minY=std::min(minY,y);maxY=std::max(maxY,y);
+                }
+            }
+        }
+        if(stability){
+            stable=stable && floorStable && tailSamples>=120 && maxY-minY<=.002f;
+            std::ofstream result("stability_result.json",std::ios::binary);result.precision(9);
+            result<<"{\"pass\":"<<(stable?"true":"false")<<",\"frames\":"<<frameCount<<",\"expected_y\":"<<expectedY
+                  <<",\"initial_floor_y\":"<<initialFloorY<<",\"floor_stable_and_anchored\":"<<(floorStable?"true":"false")
+                  <<",\"tail_samples\":"<<tailSamples<<",\"tail_min_y\":"<<minY<<",\"tail_max_y\":"<<maxY<<"}\n";
+            if(!result || !samples)return 7;
+            std::printf("stability: %s tail=%d y=[%g,%g] expected=%g anchored=%d\n",stable?"PASS":"FAIL",tailSamples,minY,maxY,expectedY,anchored);
+            if(!stable)stabilityExit=9;
         }
         float x, y, z;
         GetPartPosition(&x, &y, &z);
@@ -632,6 +727,8 @@ int main(int argc, char** argv)
         bool moved = false, removed = false;
         while (!win->isClosed())
         {
+            Ogre::WindowEventUtilities::messagePump();
+            if(win->isClosed())break;
             unsigned long now = timer.getMilliseconds();
             float dt = (now - last) / 1000.0f;
             if (dt <= 0) dt = 1.0f / 60.0f;
@@ -663,5 +760,5 @@ int main(int argc, char** argv)
     std::printf("mesh cleanup: levels=%u refs=%u backends=%u spheres=%u\n",PlayerBlockMesh::liveLevels(),PlayerBlockMesh::activeReferences(),PlayerMeshBackend::liveMeshes(),PlayerSphereCache::size());
     delete root;
     ClosePlace();
-    return 0;
+    return stabilityExit;
 }

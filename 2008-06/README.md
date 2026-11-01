@@ -6,7 +6,7 @@ Run compile_test.bat with ROC_ROOT set to a configured RoConstruct checkout cont
 - src/glue/: build glue.
 - ../src/2008-06/: recovered functions and library build recipes (stable URLs).
 - config/ and patches/: module definitions, overlays and their provenance. Native source already has the overlay applied.
-- tests/: only runtime harnesses required by module definitions and compile_test.bat.
+- tests/: runtime harnesses, auxiliary sources, fixtures and launch scripts.
 - scripts/: build and ABI checks used by RoConstruct.
 - verification/: accepted integration history, proposal states, source locations and required binary-analysis manifests.
 
