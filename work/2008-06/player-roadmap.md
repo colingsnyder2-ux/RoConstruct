@@ -2118,3 +2118,6 @@ Native IDataState recovered as a four-byte interface, two virtual slots setDirty
 
 
 Native GuidItem<Instance> shared declaration recovered from existing openrbx source. MSVC21022 confirms Guid size8 and GuidItem size0x10, consistent with original RTTI: primary GuidItem at0 followed by AbstractFactoryProduct at0x10. Probe currently uses donor Guid type, so method semantics remain unproven and declaration is inactive. Evidence shared-layouts/guiditem-compile.json at 8b27441d91. Full native Instance/ServiceProvider remains open.
+
+
+Native Instance hierarchy candidate at 5ac7039870 uses GuidItem primary base, original RTTI order, native event-type spellings and recovered member types. MSVC21022 confirms size0x130, association0xec and parent0x104; compiler layout evidence in shared-layouts/instance-compile.json and instance-layout.log. Full virtual signatures, ownership lifetimes and dependent classes remain open; source is inactive and donor runtime unchanged.
