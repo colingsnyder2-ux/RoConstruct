@@ -1089,3 +1089,20 @@ zero. Reconstructed factory registration calls classDescriptor but does not
 establish these creators; forcing getCreator references alone did not change
 the counts. Creator/descriptor implementation and serialized Value properties
 still need recovery and verification before claiming script compatibility.
+
+## P5 checkpoint: value instances (62955063a7)
+
+Behavioral glue now creates IntValue, StringValue, BoolValue, NumberValue and
+ObjectValue, registers Value properties, resolves object references and emits
+Changed on mutations. The 2008 executable contains NumberValue, not FloatValue.
+These bodies are reconstructions, not byte-verified original code. Other value
+types, native event ordering/parity and wider gameplay remain unproven.
+
+At 62955063a7, authored XML and Lua verify serialized values, object reference,
+mutations, nil reference and Changed callbacks. Build, P0, lifetime, P4 assets
+and script scheduling regressions pass. On the same supplied place, inventory
+now reports all 91 IntValue, 9 StringValue, 201 ObjectValue and 8 NumberValue
+objects; 30-frame script error stacks fall from 74 to 6. This is not proof of
+playability. Exact-revision receipts are in p5-values-*-62955063a7 and
+p5-supplied-values-62955063a7. Next investigate remaining missing-member
+errors and integrate the remaining value classes without claiming P5 complete.
