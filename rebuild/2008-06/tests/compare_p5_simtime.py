@@ -9,6 +9,7 @@ assert mode in ('fall','jump','air','jumpvelocity','jumpflag')
 fixture=root/'rebuild/2008-06/tests/fixtures'/('p5-simtime-'+mode+'.rbxl')
 out=root/'work/2008-06'/sys.argv[1];out.mkdir(exist_ok=False)
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+assert sha(original)=='2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764'
 run=subprocess.run([str(player),'--p5-join','--p5-play','--frames','246','--inspect-place',str(fixture)],cwd=out,capture_output=True,text=True,timeout=90)
 (out/'stdout.txt').write_text(run.stdout+run.stderr)
 assert run.returncode==0 and '[output]    stack end' not in run.stdout
@@ -64,11 +65,30 @@ try:
  if mode=='air':assert max(abs(r['delta_y']) for r in records if r['original_time']<=1.0001 or r['original_time']>=2.9999)<.01, records
  if mode=='jump':assert max(abs(r['delta_y']) for r in records)<.12, records
  if mode=='jumpvelocity':assert max(abs(r['delta_y']) for r in records if r['original_time']>1.05)<.12, records
+ # Native onEvent 005dc740 adjusts listener this by -0x1a4 and passes
+ # the state holder at +0x7c: Humanoid+0x220 owns the active state.
+ state_types={0x84ce10:'RunningNoPhysics',0x84cdb0:'StrafingNoPhysics',0x84cc94:'Running',0x84ac9c:'Landed',0x84cea0:'Freefall'}
+ active_states=[];addr=0
+ while addr<0x80000000 and k.VirtualQueryEx(handle,ctypes.c_void_p(addr),ctypes.byref(mbi),ctypes.sizeof(mbi)):
+  start=mbi.BaseAddress or 0;size=mbi.RegionSize
+  if mbi.State==0x1000 and not mbi.Protect&0x101 and (mbi.Protect&0xff) in (2,4,8,0x20,0x40,0x80) and size<=64*1024*1024:
+   data=read(start,size)
+   for vtable,name in state_types.items():
+    needle=struct.pack('<I',vtable);pos=data.find(needle)
+    while pos>=0:
+     if pos+12<=len(data):
+      owner=struct.unpack_from('<I',data,pos+8)[0]
+      if owner and read(owner+0x220,4)==struct.pack('<I',start+pos):
+       active_states.append(dict(address=hex(start+pos),owner=hex(owner),vtable=hex(vtable),state=name))
+     pos=data.find(needle,pos+1)
+  addr=start+size
+ assert len(active_states)==1,active_states
 finally:
  if handle:k.CloseHandle(handle)
  if windows:u.PostMessageW(windows[0],0x10,0,0)
  try:x.wait(timeout=4)
  except subprocess.TimeoutExpired:forced=True;x.terminate();x.wait(timeout=5)
 receipt=dict(mode=mode,measured_coordinate='torso x' if mode=='air' else ('torso velocity y' if mode=='jumpvelocity' else ('Jump flag' if mode=='jumpflag' else 'torso y')),revision=subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip(),original_sha256=sha(original),player_sha256=sha(player),fixture_sha256=sha(fixture),observer_sha256=sha(pathlib.Path(__file__)),records=records,original_forced_termination=forced,scope='Frozen Stepped callback samples with encoded simulation time. Different joint construction; comparisons are observational.',P5_complete=False)
+receipt['original_final_active_states']=active_states
 (out/'receipt.json').write_text(json.dumps(receipt,indent=2)+'\n')
 for r in records:print(r['sample'],r['original_time'],r['rebuilt_time'],r['delta_y'])
