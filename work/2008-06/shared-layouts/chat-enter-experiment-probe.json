@@ -1,0 +1,59 @@
+{
+  "revision": "9cf9f160fd4ff19f4d93b21f546ba0302b53b658",
+  "sources": {
+    "rebuild\\2008-06\\tests\\NativeChatEnterLayout.cpp": "d0c49ec4a9449f64841e571430fb4e7f4bc000accc444678d0b2ecb705819f0e",
+    "rebuild\\2008-06\\native-headers\\ChatEnter.h": "42be5a74cba117030ede1fe3846887c7daad22a2ecab4392002eb4442b1b79d6",
+    "rebuild\\2008-06\\native-classes\\ChatEnter.cpp": "06707737bd78a33542a3362429837631129b5d15523648f3e10e726b95c13530",
+    "rebuild\\2008-06\\native-headers\\v8tree\\Instance.h": "81c1c2636e91e0cbad2c49ab7e19bca00a71c1b28cf68210217394a63c37db78",
+    "rebuild\\2008-06\\tests\\record_native_chat_enter.py": "83b1d3646876eb0b636068ae6858cd7bed81e28951569def173333fef552fbad"
+  },
+  "compiler_build": 21022,
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoNativeChatEnterLayout.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeChatEnterLayout.cpp"
+  ],
+  "compile_exit": 0,
+  "methods": [
+    {
+      "address": "00411720",
+      "symbol": "??0ChatEnter@@QAE@XZ",
+      "size": 100,
+      "relocation_normalized_exact": true
+    }
+  ],
+  "scope": "Inactive candidate using donor GuiItem; complete base vtable, lifetime, call targets and runtime linkage remain unverified."
+}

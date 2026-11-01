@@ -1,0 +1,50 @@
+{
+  "source_sha256": "9ae20ded8da0939139e96139bd2cca92ad6ec19f80681252b3b3d5ead85238fa",
+  "overlay_property_sha256": "ab0f605d3c3d7ba56c7e0746faf5eae2d1ebe06f75d5200cf7187862269f05ec",
+  "object_sha256": "72e624b7db3ee2fd229f52319dc037318d4f7f7855aaf4e70b41b9332657ecb6",
+  "address": "0043a7d0",
+  "match": true,
+  "flags": [
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\property-write-include",
+    "/nologo",
+    "/c",
+    "/O2",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DBOOST_ALL_NO_LIB",
+    "/D_XTP_STATICLINK",
+    "/D_XTPLIB_NOAUTOLINK",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\PropertyGridWriteOverlay.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\PropertyGridWriteTrial.cpp"
+  ],
+  "scope": "Inactive trial using existing player property overlay; verify bindings before adoption.",
+  "verified_direct_calls": {
+    "?doLock@Lock@DataModel@RBX@@AAEXPBV23@@Z": "0x576f00",
+    "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0"
+  },
+  "virtual_set_slot": "0x0c",
+  "overlay_provenance": {
+    "path": "rebuild\\2008-06\\patches\\rbxgs-client.json",
+    "sha256": "e3f3419ab65569c27b40348bebd67a9b7bc8cabce0d55ddc063ebd3bad22fc1f"
+  },
+  "remaining": "Exception handler/data binding, complete GetSet ABI, and runtime integration unverified."
+}

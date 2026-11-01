@@ -42,7 +42,7 @@ receipt = dict(revision=subprocess.check_output(['git', 'rev-parse', 'HEAD'], cw
                                 relocation_normalized_exact=True, target_relocations=relocations,
                                 candidate_relocations=candidate_relocations),
                active_client_changed=False,
-               scope='Compiler-only shared binder size and constructor proof. OnCmdMsg remains declared for later recovery; its explicit-instantiation warnings are expected. No active class swap, linked-function increase or server verification is claimed.')
+               scope='Compiler-only shared binder size and constructor proof. OnCmdMsg is verified separately in the document probe; explicit-instantiation warnings are expected. No active class swap, linked-function increase or server verification is claimed.')
 output = ROOT / 'work/2008-06' / sys.argv[1]
 output.parent.mkdir(parents=True, exist_ok=True)
 output.write_text(json.dumps(receipt, indent=2) + '\n')

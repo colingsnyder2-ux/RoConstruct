@@ -17,7 +17,10 @@ WEBHOOK = re.compile(rb'https://(?:canary\.|ptb\.)?discord(?:app)?\.com/api/webh
 
 def files(root):
     for directory, folders, names in os.walk(root, followlinks=False):
-        folders[:] = sorted(name for name in folders if name not in {'.git', '__pycache__', '.pytest_cache'})
+        folders[:] = sorted(name for name in folders
+                            if name not in {'.git', '__pycache__', '.pytest_cache'}
+                            and not (Path(directory) / name).is_symlink()
+                            and not (Path(directory) / name).is_junction())
         for name in sorted(names):
             path = Path(directory) / name
             if path.suffix.lower() not in {'.key', '.pem'} and name.lower() not in {
@@ -43,7 +46,7 @@ def mapped(relative):
 
 def export(root, destination):
     """Export the usable source package; archive old generated exports locally."""
-    root, destination = Path(root), Path(destination)
+    root, destination = Path(root).resolve(), Path(destination).resolve()
     source = root / 'rebuild/2008-06'
     destination.mkdir(parents=True, exist_ok=True)
     previous = destination / 'package.json'
@@ -88,7 +91,7 @@ def export(root, destination):
         relative = path.relative_to(source)
         # Canonical views and compatibility aliases can coexist in the live checkout.
         # Export each authoritative tree once.
-        if relative.parts[0] in {'src', 'work', 'config', 'scripts', 'out'}:
+        if relative.parts[0] in {'Source', 'src', 'work', 'config', 'scripts', 'out'}:
             return
         # Harnesses include auxiliary .cpp files and direct module layers compile
         # more sources than the named test. Keep their fixtures and launch scripts.
@@ -107,6 +110,21 @@ def export(root, destination):
     overlay = json.loads(overlay_path.read_text(encoding='utf-8')) if overlay_path.exists() else {}
     adopted_units = {new.replace('\\', '/').casefold() for edits in overlay.values() for old, new in edits if old == '@replace'}
     overlay_names = {name.replace('\\', '/').casefold(): edits for name, edits in overlay.items()}
+    def apply_edits(text, edits, relative):
+        for old, new in edits:
+            if old == '@replace':
+                adopted = (tree / new).resolve()
+                if not (adopted.is_relative_to(tree.resolve())
+                        or adopted.is_relative_to((source / 'native-world').resolve())):
+                    raise ValueError('Adoption escapes native source roots')
+                text = adopted.read_text(errors='replace')
+            else:
+                needle = old[5:] if old.startswith('@all:') else old
+                if needle and needle not in text:
+                    raise ValueError('Overlay anchor missing: ' + str(relative))
+                text = text.replace(needle, new) if old.startswith('@all:') else text.replace(old, new, 1) if old else text + new
+        return text
+
     def copy_native(path):
         relative = path.relative_to(tree)
         if path.name.startswith('roc_') and relative.as_posix().casefold() not in adopted_units:
@@ -120,19 +138,7 @@ def export(root, destination):
         edits = overlay_names.get(relative.as_posix().casefold())
         data = None
         if edits:
-            text = path.read_text(errors='replace')
-            for old, new in edits:
-                if old == '@replace':
-                    adopted = (tree / new).resolve()
-                    if not adopted.is_relative_to(tree.resolve()):
-                        raise ValueError('Adoption escapes native source tree')
-                    text = adopted.read_text(errors='replace')
-                else:
-                    needle = old[5:] if old.startswith('@all:') else old
-                    if needle and needle not in text:
-                        raise ValueError('Overlay anchor missing: ' + relative.as_posix())
-                    text = text.replace(needle, new) if old.startswith('@all:') else text.replace(old, new, 1) if old else text + new
-            data = text.encode(locale.getpreferredencoding(False))
+            data = apply_edits(path.read_text(errors='replace'), edits, relative).encode(locale.getpreferredencoding(False))
         copy(path, Path('src/Client') / relative, data)
     native_files = list(files(tree))
     native_names = {path.relative_to(tree).as_posix().casefold() for path in native_files}
@@ -141,9 +147,8 @@ def export(root, destination):
     for relative, edits in overlay.items():
         if relative.replace('\\', '/').casefold() in native_names:
             continue
-        if any(old for old, _ in edits):
-            raise ValueError('Overlay source missing: ' + relative)
-        write(Path('src/Client') / relative, ''.join(new for _, new in edits).encode())
+        write(Path('src/Client') / relative,
+              apply_edits('', edits, relative).encode(locale.getpreferredencoding(False)))
 
     # The current build helpers are retained for diagnostics. The package launcher
     # builds a private legacy view so existing ROC commands keep their proven paths.
@@ -151,6 +156,9 @@ def export(root, destination):
     copy(launcher, Path('scripts/compile_test.py'))
     write('compile_test.bat', b'@echo off\r\nsetlocal\r\npython "%~dp0scripts\\compile_test.py" %*\r\nset "result=%errorlevel%"\r\nif "%~1"=="" pause\r\nexit /b %result%\r\n')
     write('README.md', b'# 2008-06 native rebuild\n\nRun compile_test.bat with ROC_ROOT set to a configured RoConstruct checkout containing the historical compilers and dependencies. The default builds engine modules and runs their runtime harnesses. --smoke-only checks the toolchain; --tests-only relinks against a prior local build. Renderer failures are reported honestly; this is not yet a complete playable client.\n\n- src/Client/: assembled native C++ and required assets.\n- src/glue/: build glue.\n- ../src/2008-06/: recovered functions and library build recipes (stable URLs).\n- config/ and patches/: module definitions, overlays and their provenance. Native source already has the overlay applied.\n- tests/: runtime harnesses, auxiliary sources, fixtures and launch scripts.\n- scripts/: build and ABI checks used by RoConstruct.\n- verification/: accepted integration history, proposal states, source locations and required binary-analysis manifests.\n\nBuild outputs stay local under work/. Compiler installs and external library dependencies are supplied by RoConstruct. Original vendor license notices remain with their sources. Package metadata is not a new acceptance receipt.\n')
+    status = source / 'integration-status.json'
+    if status.exists():
+        copy(status, Path('verification/integration-status.json'))
     for name in ('accepted-integrations.json', 'integration-jobs.json', 'native-credit.json', 'inventory.json', 'runtime-tests.json'):
         path = destination / 'verification' / name
         if path.exists():

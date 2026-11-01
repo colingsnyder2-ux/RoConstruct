@@ -2157,3 +2157,302 @@ Doc IsModified 004508f0 recovered at 2daa5d7d1b: DataModel lock and virtual dirt
 Doc DoSave 0044f8d0 recovered at 7320c51b95: 213-byte relocation-masked match, regression probe passes 13 Doc bodies and three destructors. Two guarded predicate calls target original 00495e60/00495e70; semantic names and linkage remain unresolved, as do other virtual bodies. Candidate inactive; running-exe count and P5/P6 gates unchanged.
 
 Doc save predicate identities at 514ce31479: original call chains reach cached NetworkClient and NetworkServer service lookups, with original name initializers pointing to those strings. Recovered Client/Server source supplies matching static method symbols; candidate now uses them. 13 Doc body/compiler checks pass. Full network declarations and linked implementations remain unverified; no runtime swap. Evidence shared-layouts/document-save-predicates.json.
+
+Working-tree Doc OnOpenDocument candidate: existing recovered 004533f0 source integrated into shared class. MSVC21022 probe matches 628 bytes with relocations masked; 14 Doc bodies and three destructors pass. Workspace load, history-service create/setEnabled, reporting targets and full history ABI remain unlinked/unverified. Probe document-open-working-probe.json hashes working-tree sources; no active swap or runtime gate change.
+
+Working-tree DataModel::Lock implementation recovered from existing source. Constructor 00411b40 (152 bytes), doLock 00576f00 (128), destructor 005773c0 (145) match with relocations masked; new repeatable compiler probe datamodel-lock-working-probe.json pins source hashes. This closes candidate Doc lock bodies, but relocated targets and native linking remain unverified; no runtime swap.
+
+Working-tree Doc OnSaveDocument 0044f9b0 recovered via native IWorkspace::SaveToFile and CComBSTR: 279-byte relocation-masked match. Doc compiler gate now checks 15 methods and three destructors. Full COM workspace implementation and relocation targets remain open; candidate inactive, runtime unchanged.
+
+Working-tree CWorkspace::writeXmlModel 0046ab90 integrated from recovered source. Constructor, DataModel getter, XML writer pass repeatable compiler probe (writer 245 bytes relocation-masked); Doc, DataModel and lock probes also pass. XmlElement/serializer and writeChildren targets must still be linked and validated; runtime unchanged.
+
+Working-tree command routing: native Doc getVerbContainer 00450890 (95 bytes) and VerbBinder::OnCmdMsg 00451690 (507) match with relocations masked. UINT map key matches routing; explicit DWORD casts preserve bindExisting/bindOwned body matches. Doc compiler gate passes 16 bodies, routing and three destructors. Independent standalone binder constructor probe fails 80/86 after prior novtable change: original constructor writes binder vtable, while Doc destructor match requires suppressing a binder vtable write. Treat shared binder ABI as unresolved; no active swap until reconciled. Receipts document-routing-working-probe.json; failed binder probe not overwritten.
+
+DataModel lock probe now verifies six direct call relocations against original target addresses, including constructor -> doLock and lock/unlock routines; compiler proof passes. Binder conflict confirmed: original Doc constructor 00451ac0 calls 00451590, whose 86-byte body writes binder vtable 00817c24. Current novtable candidate suppresses that store, compiling to 80 bytes; Doc destructor matches only after suppression. This remains an ABI/codegen mismatch, not a passed constructor.
+
+Working-tree Instance::writeChildren 00558110 integrated from existing source: 160-byte relocation-masked match. Corrected native Instance XML declarations to global XmlElement, consistent with original headers and serializer; Doc, DataModel and Workspace probes pass. writeChildren call target and XML child operations still require linked verification; no runtime swap. Earlier statement that original binder itself was proven novtable is withdrawn: recovered surrogate used novtable, but original constructor store contradicts it.
+
+Workspace XML writer working probe now verifies five original direct call targets, including SerializerV2::newRootElement 00591a30, Instance::writeChildren 00558110 and native lock ctor/dtor. Recovered SerializerV2::newRootElement from existing source: compiler match 401 bytes with relocations masked. Dependency data and final linking unverified; inactive candidates only.
+
+Serializer root compiler gate now also checks emitted XmlElement::addAttribute<const char*> body against 00591970 (118-byte relocation-masked match), plus three original attribute-call targets and Name::declare target. Data globals, initialization order and final linked runtime remain unverified; no active class swap.
+
+Original Doc MFC message map recovered as data inventory: getter 00455d20 returns map 00817f0c, entries 00817f18 contain 39 command/notification records plus terminator. document-message-map-working.json records each ID, signature and original handler address; handler bodies/names and linked map remain open. Serializer probe additionally matches 0058c920 XmlNameValuePair string constructor (103 bytes) and verifies attribute->constructor call. No active swap.
+
+Working-tree Doc MFC message map reconstructed from original 39 records. Compiler probe verifies all IDs/codes/signatures, terminator, handler relocation symbols, base map pointer, GetMessageMap (6 bytes) and common enable handler (18 bytes); 18 Doc bodies, routing and three destructors match. Address-named handler declarations remain unresolved, original map handler targets/data still need runtime linkage; no active swap.
+
+Doc pause handler 00455460 recovered from existing source: locks DataModel and requests RunService paused state; MSVC21022 emits 281-byte relocation-masked match. Message map binds handler; compiler probe now checks 19 Doc bodies plus routing, map and destructors. RunService creation/setRunState linked targets and full runtime remain unverified; donor RunService header requires native-layout validation before activation.
+
+Native RunService working candidate replaces incompatible donor layout: donor sizeof 0x22c vs original factory allocation 0x2d8; corrected candidate 0x2d8, state 0x1b4 and nine constructor-observed fields match offsets. Recovered 00556b00 constructor (531 bytes) and 00554da0 setRunState (106 bytes) match with relocations masked; RunService, Doc and DataModel compiler probes pass. Some fields, runDisabled, bases, call/data relocations and runtime integration remain unverified. No active swap.
+
+Native notifier recovery: original raises increment the listener cursor before callback. Shared native Events header now follows recovered iteration and exception signature; RunService state and transition notifier bodies match 00554ae0 (131 bytes) and 00554a60 (123). RunService constructor/state methods still match; four notifier base displacements agree with original RTTI and compiler output. Doc, workspace and DataModel probes pass. Relocated targets, other Notifier instantiations and runtime ABI remain unverified; no active swap.
+
+RunService notifier callbacks now independently verified: state callback 00554750 (185 bytes), transition callback 00554690 (full 189 bytes). Function index truncates transition callback at 66-byte exception boundary; full PE comparison checks operand-aligned relocation fields and three INT3 bytes before next function. Four state->raise->callback direct call targets verified. Candidate remains inactive; data/EH relocation identity and runtime gates remain open.
+
+Working-tree Doc play handler 00455820 snapshots XML then starts RunService: 504-byte relocation-masked match. Pause and play probe additionally verifies all 19 direct-call relocation targets, including service creation, state transition, XML root and child serialization. RunService and Doc compiler gates pass; service creation implementation and runtime linkage remain open; no active swap.
+
+Native ServiceProvider::create<RunService> 004530f0 integrated from existing source, matching 228 bytes with relocations masked. Probe checks original find/create/setParent call targets; RunService lookup 00452c80 remains 404/320 bytes. Doc and RunService probes pass; candidates remain unlinked/inactive, P5/P6 runtime unchanged.
+
+Binder constructor/destructor conflict resolved in working tree: remove surrogate novtable and explicit empty destructor; inherited virtual destructor remains implicit. Standalone binder constructor 00451590 (86 bytes), Doc destructor 00451940 (198 bytes), Doc constructor, routing and all 20 Doc body checks now match with relocations masked. Both binder and Doc probes pass against same source hashes. Original vtable targets, EH data and runtime linking remain open; inactive candidate.
+
+CRobloxView native base-only compiler probe now matches original RTTI: VerbContainer +0x78, service listeners +0xa0/+0xa4, Players listener +0xa8; base extent 0xac. Evidence view-bases-working-probe.json. Complete 0x1f0 View storage, CRobloxWnd/CMultiPlayerPane fields and virtual methods remain open; no fake padding and no runtime swap. Service lookup /Ob0-/Ob1 and inline-depth experiments did not match and were discarded.
+
+View member CMultiPlayerPane candidate: native CWnd-derived 0x58 size, child pointer +0x54. Original 00432e60 creates CChatPrompt via CRuntimeClass 0080df88 and stores it at +0x54; RTTI identifies pane vtable. Constructor 00432e30 (25 bytes) and destructor 00432e50 (11 bytes) match with relocations masked. Remaining virtual methods and linkage open; candidate inactive.
+
+Native CRobloxWnd base-only probe matches original RTTI: CWnd +0, IRunView +0x54, IMetric +0x58; base extent 0x5c. Original View constructor and component RTTI verify embedded CRobloxWnd +0xb0, CMenu +0x178, CMultiPlayerPane +0x180. Full window/View member types, virtual methods and linkage remain open; candidates inactive.
+
+CMultiPlayerPane working candidate now includes native MFC runtime class, two-entry message map and OnSize/OnDestroy. Six bodies match with relocations masked; both original message records and handler symbols match. OnSize second call is provisional updateLayout alias for original MFC thunk 006a0c68 (ordinal 2069); actual imported symbol remains unverified and must be resolved before linking. Full pane vtable/runtime not yet gated; no active swap.
+
+CMultiPlayerPane OnSize alias resolved: original 006a0c68 thunk imports mfc90.dll ordinal 2069, SDK mfc90.def identifies CWnd::Default(). Replaced provisional updateLayout call with Default(). Probe verifies original thunk/import/export mapping for Default, MoveWindow (4529), and OnDestroy (4760), plus six body matches and message map. Runtime integration remains open.
+
+CChatPrompt native candidate: CEditView base, size 0xa8; selection +0x88, shared chat +0x8c, CBrush +0x94, shared context +0x9c, result +0xa4. Original allocation/RTTI corroborate size, CEditView/CBrush/ChatEnter; constructor 00411be0 matches 72 bytes with relocations masked. Pointee types, destructor, virtual slots and linkage still require proof. Multiplayer pane now uses typed CChatPrompt pointer; its probe still passes. No runtime swap.
+
+CMultiPlayerPane initialize 00432e60 reconstructed: 180-byte relocation-masked match; two additional MFC thunks verified against SDK export ordinals. ChatPrompt bind target 00412800 remains declared pending real body/linkage. Corrected ChatPrompt +0x9c context from GuiItem to DataModel: shared pointer is passed to native DataModel::Lock; +0xa4 is Players pointer, traced through creation factory and original RTTI. Prior GuiItem spelling was based on folded shared_from implementation and was not type proof. ChatPrompt/pane compiler probes pass; no active runtime swap.
+
+Chat binding 00412800 recovered in shared candidate: 446-byte relocation-masked match, 11 original direct-call targets verified. Added ChatEnter candidate using donor GuiItem: size 0x148, owner +0x144 and constructor 00411720 (100 bytes) match. Constructor deliberately does not initialize owner, matching original. GuiRoot parent adapter, GuiItem vtable, service implementations and runtime linkage remain open; no active swap.
+
+Chat bind parent conversion corrected: original GuiRoot RTTI shows GuiRoot, GuiItem and Instance at offset zero; replaced provisional reinterpret cast with typed conversion using recovered hierarchy. ChatPrompt binding and ChatEnter constructor probes pass. GuiItem complete virtual ABI still unverified; no active swap.
+
+ABI correction: original ChatEnter, GuiRoot, RunService and Workspace primary vtable slot 0 points to 0047d410 (ret); current shared GuidItem candidate emits deleting destructors there. Added explicit OPEN vtable diagnostics to ChatEnter and RunService probes; relocation-masked constructor matches did not prove vtable contents. Experiment with a non-destructor virtual slot produced matching slot shape but was reverted: original method identity and GuidItem lifetime semantics remain unproven. No native Instance-derived class is cleared for active swap until resolved.
+
+GuidItem primary-slot mismatch resolved in working tree using existing 2008 recovered declaration roc_instance_guid_callback_5e8a3f385d045a38.cpp: primary virtual slot is onGuidChanged(), not a virtual destructor. Candidate callback emits ret, matching original slot 0047d410; ChatEnter and RunService vtable probes now pass this slot. Doc, DataModel, Workspace, ChatPrompt and affected constructor probes pass. Other virtual slots, GUID registration/destruction, relocated targets and runtime linkage remain unverified; no active swap.
+
+Native GuiItem getChildPosition corrected against original 00411810: donor assertion absent in original; zero-vector behavior remains. ChatEnter primary-table comparison now compiles and matches nine GuiItem bodies plus ChatEnter constructor, including 24-byte getChildPosition. ChatPrompt, pane and Doc compiler probes pass. Other inherited virtuals, data and runtime linkage remain unverified; no active swap.
+
+GuiItem lifetime recovered from existing source: native constructor 005739d0 matches 236 bytes and implicit destructor 00411540 matches 122 bytes with relocations masked. Original constructor/destructor calls to Instance ctor/dtor and setName verified. Explicit user-written destructor emitted extra vtable stores, so retained compiler-generated implicit destructor. ChatEnter probe still passes; Instance lifetime implementation and runtime integration remain open.
+
+Instance lifetime candidate compiled against shared native header: constructor 0055b7e0 is 377 vs original 375 bytes; destructor 0055a540 is 557 vs original 572 bytes. Neither relocation-masked body matches. Existing ctor source uses surrogate layout (62%); destructor source uses surrogate types. Candidate remains inactive; compare instructions and resolve base/member lifetime before linking. No runtime swap or P5/P6 gate claim.
+
+Instance lifetime candidate now matches: ctor 0055b7e0 (375 bytes), dtor 0055a540 (572 bytes), relocation-masked. Original construction order requires enable_shared_from_this first; GuidItem needs false initialization, nonvirtual destructor and novtable. Probe verifies selected original direct calls including GuidItem destructor 004b3760. ChatEnter, GuiItem and RunService probes pass after changes. Destructor implementation, remaining virtuals, relocation data and runtime linkage still open; no active swap. Evidence instance-lifetime-working-probe.json.
+
+GuidItem<Instance> destructor 004b3760 reconstructed from recovered source against shared native layout: 149-byte relocation-masked match; four direct calls verified. Registry interfaces and globals remain provisional pending symbol/data proof and implementation; candidate inactive. Evidence guid-item-working-probe.json. No P5/P6 runtime swap.
+
+Guid constructor 005a8300 integrated from recovered source into inactive shared candidate: 46-byte relocation-masked match; boost::call_once target 00557330 verified. GuidItem destructor now calls actual boost::call_once rather than provisional alias; its body and four direct targets still match. Globals, registry implementation, data relocations and runtime linkage remain open. Evidence guid-working-probe.json and guid-item-working-probe.json.
+
+GUID initialization chain recovered: initializer 005a8260 (116 bytes), generateGUID 005a8140 (178), helper 005a80d0 (110) match relocation-masked original alongside constructor. Original generation calls out-of-line helper then prefixes RBX; adapted donor combined them. Selected calls to generation, helper, Name::declare and boost::call_once verified. Name registry, data identity and runtime linkage open; inactive, no gate change. Evidence guid-working-probe.json.
+
+CMainFrame native base-only compiler probe now matches original RTTI: real CXTPMDIFrameWnd at 0, Listener<FillToolColor, BrickColor> at +0xf0, combined extent 0xf4. Original full runtime size 0x4b4; members and virtuals remain open. Uses actual XTP 11.2.2 headers, no padding substitute. Evidence main-frame-bases-working-probe.json; inactive, no runtime gate change.
+
+CMainFrame original constructor 004321f0 confirms embedded CXTWindowPos +10c, CXTPDockingPaneManager +138, CXTPTabClientWnd +284, CXTThemeManager +3b4 and CXTPStatusBar +3e0. Actual XTP headers compile with respective 2c/14c/124/2c/d4 sizes; theme vtable RTTI confirms class. Unknown intervening members still open; no padding or runtime swap. Updated main-frame-bases-working-probe.json.
+
+CMainFrame native shared base header now includes typed contiguous XTP components and three pane pointers: CXTSplitterWnd +3a8, CDataModelPropGrid +3ac, CSelectionCaption +3b0. Original allocation/constructor sites and each class RTTI vtable verified; compiler validates component/pointer ordering and sizes. Ownership cleanup, intervening members, complete class and runtime integration remain open. Updated main-frame-bases-working-probe.json.
+
+Inactive full-size CMainFrame layout candidate now compiles at 0x4b4 with major member offsets verified; no padding arrays. Original MFC imports verify CString +108; MonitorFromWindow result verifies HMONITOR +fc. The pointer identities at +f4/+100, exact ownership, state semantics, virtuals and class linkage remain provisional. CMainFrameBases and grouped members are layout probes, not proof of original class hierarchy or construction ABI; no runtime swap. Updated main-frame-bases-working-probe.json.
+
+CMainFrame candidate now uses original direct base classes and direct embedded members instead of probe-only grouping; size/offsets remain verified. Recovered FillToolColor listener onEvent 0042fb20 compiles to 95-byte relocation-masked match, with four original call targets verified including CXTPControlPopupColor::SetColor. Inactive; remaining virtual ABI, pointer ownership and runtime gates open. Evidence main-frame-color-working-probe.json and main-frame-bases-working-probe.json.
+
+CMainFrame listener vtable slot confirmed against original 0042fb20. Fixed previously inherited XTP primary GetRuntimeClass: DECLARE_DYNAMIC/IMPLEMENT_DYNAMIC now emit CMainFrame primary slot and 0042e460 body matches. Class metadata data and remaining vtable/runtime linkage still open. Pane reset 00430440 matches boost::scoped_ptr<CWnd>::reset in separate compiler probe, but template identity is not uniquely proven; retained provisional raw fields. Evidence main-frame-color-working-probe.json, frame-pane-owner-working-probe.json. No active swap.
+
+CMainFrame native MFC message map reconstructed: all 40 records and handler symbols match original 00811630; GetMessageMap 004321c0 relocation-masked body matches, parent resolves to CMDIFrameWnd via original mfc90 ordinal 4000. Most handlers are declarations pending recovery; OnPaint calls original thunk target CWnd::Default. Color callback probe still passes. Inactive; class vtable, handler implementations and runtime gates open. Evidence main-frame-map-working-probe.json.
+
+CMainFrame pane helper 0042e570 and six message handlers now match original relocation-masked bodies; recovered helper uses real CXTPDockingPane::SetFocus rather than surrogate return-value guess. Six direct call targets verified. Layout, 40-entry map and color callback probes revalidated against current header. Other handlers/ownership and runtime swap open. Evidence main-frame-commands-working-probe.json.
+
+Five more CMainFrame command/update handlers recovered, including property-pane docking and fullscreen toggle; eleven handler bodies plus pane helper match relocation-masked originals. Selected call targets verified; show/hide/fullscreen implementations and other handlers remain open. Frame layout, map and color probes pass current header. No active swap; P5/P6 executable unchanged.
+
+CMainFrame fullscreen transition 00431b40 (169 bytes) and display restore 00430160 (330 bytes) now match relocation-masked original against shared native fields. Verified selected direct call targets and original fullscreen Win32 imports; restore source previously reported 91% with surrogate fields. Layout/map/color probes pass. Display configuration path and runtime linkage remain open; no runtime swap. Evidence main-frame-commands-working-probe.json.
+
+Recovered CMainFrame OnActivate 00431bf0, OnActivateApp 00430360 and OnWindowPosChanging 0042ef10: all relocation-masked exact. Original MFC import thunks/ordinals for CFrameWnd::OnActivate, CWnd::Default, ShowWindow and ModifyStyle verified. configureFullscreen 004318b0 and full class integration remain open; no runtime swap. Evidence main-frame-commands-working-probe.json.
+
+CMainFrame OnGetMinMaxInfo 00431c40 now matches 152 bytes relocation-masked and selected call targets. Original writes ptMaxPosition to zero, not ptMinTrackSize as surrogate source implied; real MINMAXINFO declaration corrected behavior. Frame-size settings class/singleton names remain provisional although target addresses verified; runtime linkage open. Evidence main-frame-commands-working-probe.json.
+
+CMainFrame OnDestroy 00430b40 recovered with real MFC/XTP types: 132-byte relocation-masked match; native calls to restore, SaveWindowPos, persistent-state handler, CMDIFrameWnd::OnDestroy and tail-jump tab detach verified. Layout/map/color probes pass current header. Frame-state persistence dependency and runtime swap remain open. Evidence main-frame-commands-working-probe.json.
+
+Correction to prior OnDestroy note: target 004307e0 initializes menu/toolbars and returns bool; it is not frame-state persistence. Updated candidate declaration/call to initializeToolbars(false); OnDestroy still matches and dependent probes pass. Original toolbars include Standard, Mouse, Test, Camera and Command; exact initializer remains open.
+
+Native toolbar initializer 004307e0 now matches 448 bytes relocation-masked using real XTP types; all 11 direct call operands and 26 hidden-command data values match original. Setter at 006c1ea0 and global 0096617c use provisional names/types pending identity and linkage; positionToolbar 004303a0 remains open. Frame layout/map/color/commands probes pass current header. No runtime swap. Evidence main-frame-toolbars-working-probe.json.
+
+Toolbar provisional methods resolved to original XTP source: 004303a0 is CXTPCommandBarsSiteBase<CMDIFrameWnd>::DockRightOf (146-byte relocation-masked match), and 006c1ea0 is CXTPToolBar::EnableDocking (13-byte match). Initializer now calls these real methods, no surrogate setter or frame wrapper. Toolbar and frame probes pass. Global 0096617c identity, remaining integration and runtime gates still open. Evidence main-frame-toolbars-working-probe.json.
+
+Resolved original global 0096617c to CXTPCommandBar::s_nExpandDelay: original SetPopuped 006b6ed0 (252 bytes) matches vendored XTP source and references that exact address at corresponding relocation; used real static member in initializer. Toolbar initializer and docking probes pass; original data linkage and runtime swap remain open. Evidence main-frame-toolbars-working-probe.json.
+
+Frame layout-save candidate 004309f0 now uses real CXTPPropExchangeXMLNode, ShowWorkspace, RemoveAll and DestroyAll. It is NOT exact: 224 vs 230 bytes because candidate inlines CString conversion where original calls mfc90 ordinal 910; exchangeLayout dependency remains open. Compiler probe records this mismatch, other frame probes pass. No runtime swap.
+
+CMainFrame exchangeLayout 0042f9d0 reconstructed with native XTP prop-exchange types: 336-byte relocation-masked match, selected five original direct-call targets verified. Uses real section ownership and command-bars, shortcut, options and docking serializers. Layout-save caller remains 224/230 bytes due CString conversion import; frame probes pass. No runtime swap. Evidence main-frame-commands-working-probe.json.
+
+Frame editor-chrome restore 00430f50 now uses native XTP XML loader and actual pane handlers; corrected boolean toolbar flag and reversed misleading show/hide candidate names. Candidate remains nonexact at 220/226 bytes due same CString conversion import; hide path remains 224/230. Both mismatches explicitly recorded, all other frame probes pass. Runtime swap open.
+
+CMainFrame OnClose 00431f10 candidate now covers keep-alive deletion, fullscreen state and XTP layout save; 230/236 bytes, nonexact for same CString conversion import. Verified original destructor and fullscreen call targets, but keep-alive class identity/ABI remains provisional. Command probe separately reports this partial; repeated docking and section-release call sites now verified. No runtime swap.
+
+Frame keep-alive owner corrected from provisional CFrameKeepAlive to RBX::worker_thread: original 004273a0 jumps to worker_thread destructor 00595cb0; existing 2008 source compiles to its 178-byte relocation-masked match, and actual worker_thread is 0x14 bytes as allocated by OnCreate. OnClose candidate keeps same 230/236 mismatch due CString. Synchronization/data linkage and runtime swap remain open; related frame probes pass.
+
+LoginRenewer constructor 004277d0 recovered with worker_thread base: 162-byte relocation-masked match, URL/callback/bind/worker constructor targets verified; source names still provisional. Frame monitor setup 004302b0 matches 161 bytes using actual MonitorFromWindow and warning logging. Candidate keepAlive now uses scoped_ptr<worker_thread>, consistent with observed reset/destruction, but exact template identity remains unproven. Frame probes pass; no runtime swap. Evidence login-renewer-working-probe.json and main-frame-commands-working-probe.json.
+
+CMainFrame OnCreate 00431d00 now matches 524 bytes relocation-masked, using actual XTP classes, LoginRenewer and scoped owner. Probe also matches inherited InitCommandBars 0042ef40 and scoped reset 00430ec0, verifies 25 selected direct targets, six status indicator values and original MyXTPCommandBars runtime class name. Corrected prior surrogate interpretation: docking enables alpha context and stickers, not show-contents dragging. MyXTPCommandBars metadata, icon initializer, remaining ABI and runtime gates remain open; no active swap. Evidence main-frame-create-working-probe.json.
+
+MyXTPCommandBars candidate now uses real CXTPCommandBars base and MFC dynamic creation: original runtime metadata size 0xcc and schema verified; CreateObject 0042f950, GetRuntimeClass 0042e4b0 and base getter 0042e4a0 match relocation-masked bodies. OnCreate now references actual class metadata symbol rather than provisional global and still matches. Remaining vtable targets, metadata relocations and runtime gates open. Evidence my-xtp-command-bars-working-probe.json.
+
+MyXTPCommandBars original vtable slot 33 is an AddCustomBar override, not inherited: reconstructed 0042e470 (48-byte relocation-masked match), verifying base AddCustomBar and EnableDocking calls; candidate slot corrected. Fifteen inherited XTP slots (22-32,34-37) match original target bodies using existing XTP objects. MFC slots/data relocations and runtime gates remain open; no active swap. Evidence my-xtp-command-bars-working-probe.json.
+
+MyXTPCommandBars audit: scalar-deleting destructor body 0042f9b0 matches (30 bytes); candidate vector-deleting vtable symbol may fold to scalar body but link identity remains unverified. Original MFC slots 5-21 resolve to exact candidate decorated symbols through mfc90 import ordinals; slots 2-4 are folded release no-ops. Together with 15 XTP body matches and AddCustomBar override, vtable evidence strengthened. Native class not yet linked or gated. Evidence my-xtp-command-bars-working-probe.json.
+
+Active native swap: MyXTPCommandBars now integrated into merged P6 shell via real runtime class; build passes, P6 scoped gate passes on executable SHA-256 54ad66b0ee792b8835eda9d577a75ce89683b54f04771add2d7b1b7afce82bf4. P5 combined idle/play/reopen/live passes; P5 stop-line executable hash unchanged 6c961826d69371da5f63758e4902a95076b00528fe366e57d146ca6eb28146cb, preserving prior fall/jump tolerance evidence. Five MyXTPCommandBars functions verified in linked exe against original with relocations masked; original target/data relocations and overall exact object-function count not newly measured. Dirty worktree: evidence binds source and artifact hashes, not HEAD alone. Evidence p6-myxtp-swap-20261101/swap-evidence.json. Native P6 and later roadmap remain open.
+
+Post-swap executable comparison: 3,002/14,370 selected known-source PE functions match relocation-masked code, versus prior 2,997/14,344 using same selected-code observer. This is a different metric from the requested 331/4,152 object functions: current player module archive report is 335/4,277, not PE selection and excludes the new P6 class. Do not present either as exact linked object-function count; that requested measurement remains open. P5/P6 gate status remains PASS as scoped in swap-evidence.json.
+
+Resolved three frame CString mismatches via existing xtp-11.2.2-lib-imports recipe: its preprocessing explicitly marks imported CString conversion noinline. With that recipe, hide-editor 004309f0 (230), show-editor 00430f50 (226), and OnClose 00431f10 (236) all match relocation-masked code; each references the original mfc90 ordinal 910 conversion. Normal-compile probe remains correctly marked partial; actual future build must use matching preprocessing recipe. Native runtime integration remains open. Also removed duplicate concurrent roc integrator options that prevented all CLI commands; roc --help and py_compile pass. Evidence main-frame-string-recipe-working-probe.json.
+
+Frame OnCreate now calls actual recovered InitializeAllIcons symbol at 0042f490 rather than a provisional alias; its 524-byte code and direct call still match. Full icon TU remains blocked on missing roc_espeon_nativeatlimagewidthdecl2e5804ac680a6dd9.cpp include alias and non-RTM recipe references; RTM replay confirms the alias is missing. A manual substitution using stock atlimage generated different icon code and was discarded. roc source lookup and py_compile pass after removing duplicate CLI options while preserving unrelated changes. No runtime swap.
+
+Recovered usable icon TU from existing 21022 preprocessed cache despite missing ATL alias source: cache dependency manifest confirms present server source hash. Recompilation matches InitializeAllIcons 0042f490 (1211), InitializeIcons 0042f380 (271), SetIcon 0042f290 (237), loadIcon 0042f0a0 (485) relocation-masked; selected direct targets verified. Cache is not a substitute for missing alias source: fresh preprocessing, full data linkage and runtime swap remain open. Evidence frame-icons-cached-working-probe.json.
+
+Fresh icon TU replay now works without historical ATL alias: reconstruct from installed RTM atlimage.h by removing GetWidth definition and marking CImage constructor, destructor, HBITMAP conversion, Create and GetPixelAddress overloads noinline, consistent with cached preprocessed unit. All four original icon functions match relocation-masked bodies (1211, 271, 237, 485 bytes). Historical alias bytes, remaining relocation/data linkage and runtime integration remain unverified. Reproducible evidence: shared-layouts/frame-icons-fresh-working-probe.json; test: rebuild/2008-06/tests/record_native_frame_icons_fresh.py. No active swap or new gate claim.
+
+DataModel notifier coordination: shared native DataModel typed casts compile to ServiceAdded +0x150 and ServiceRemoving +0x170, matching View registration offsets; ServiceProvider RTTI separately supports the inherited base types. Reproducible evidence shared-layouts/datamodel-notifier-working-probe.json; Claude response logged in TANDEM.md. Candidate remains inactive; no new runtime gate claim.
+
+Merged Claude P6 commit 6da8e40862 as f6e8dccfd3; no conflicts, existing local changes retained. After merge, record_native_document.py passes 20 Doc bodies and destructor checks; record_native_view.py passes 242-byte ctor and 371-byte dtor relocation-masked after compiling NativeViewLayout.cpp. Tests include existing dirty shared headers; evidence is source/object scoped, not clean HEAD alone. Active client unchanged; previous P5/P6 gates remain prior-swap evidence.
+
+Native frame icons: recovered separate ATL::CImage::GetWidth definition, matching original 00442c80 (4 bytes) and preserving icon caller out-of-line. Existing P2ImageCore GImage object has memory constructor 005105b0 (187 bytes) and destructor 0050e230 (44 bytes) matching relocation-masked; icon caller relocations verified against both originals and width getter. Evidence frame-icons-fresh-working-probe.json and frame-icon-image-deps-working-probe.json. Full GImage layout/data, other dependencies, active linkage and runtime gates remain open.
+
+Native icon dependency link probe: real GImage header compiles with size 0x14 and width/height/channels offsets 8/c/10, consistent with original destructor pixel-pointer access +4. Isolated P6 link succeeds with fresh icon and GetWidth objects when gdiplus.lib is added; map confirms icon initializer, getter and GImage memory constructor linked. Initial link without GDI+ failed on GdiplusShutdown. Output is separate and initializer is forced but never called; no active swap or P5/P6 gate claim. Evidence shared-layouts/frame-icons-isolated-link-working-probe.json.
+
+Native icon initializer active in merged shell: original XTP image manager ownership/call sequence wired, fresh original icon TU and separate width getter built and linked with GDI+. Five icon bodies confirmed in running PE with relocations masked. P6 scoped gate full retry PASS; first attempt had ordinary-launch second close hang, cause unresolved; two standalone subsequent twice-launch checks also passed. P5 combined gate PASS and stop-line player hash unchanged. Selected known-source observer reports 3002/14368 (excludes icon objects in native-layouts; not requested total). Scope and hashes in p6-native-icons-retry-20261101/swap-evidence.json. Full native CMainFrame, data/relocations and raw exe match remain open.
+
+P6 ordinary-close hang follow-up: six instrumented runs each found the main Roblox frame and exited 0; first gate hang remains unexplained, not declared fixed. Logs and exact executable/observer hashes: p6-close-investigation-20261101/receipt.json. Native icon generator was force-added because rebuild tree is gitignored.
+
+Native HumanoidState prefix: inactive shared declaration uses RTTI-proven INamed +0 and HitTestFilter +4; MSVC probe verifies humanoid pointer +8, float +c and bools +10/+11 against original 00643e00 constructor. Constructor also calls G3D::CoordinateFrame ctor at +40 and +70. Prefix is deliberately incomplete, not native object size; remaining fields, semantics, virtual ABI, lifecycle and runtime swap open. Evidence shared-layouts/humanoid-state-prefix-working-probe.json. No P5/P6 gate claim for this inactive declaration.
+
+Humanoid floor-state inactive relative layout now compiles: bool +20, shared ownership +24/+28, contact vector +2c, float fields +38/+3c, CoordinateFrames +40/+70. Original 006451c0 directly verifies flag, reference, vector and frame accesses; 006435c0 verifies shared-control decrement and G3D alignedFree-backed array at +14; getter 00643d30 returns stored object +228. PartInstance identity and field meanings are inferred; array element type and full native state remain open. Evidence shared-layouts/humanoid-floor-working-probe.json. No runtime swap or new gate claim.
+
+Humanoid factory 00643660 audited against original jump table, allocator call, constructor calls and constructor-installed primary-vtable RTTI: enum cases 0..11 = FallingDown(a0), GettingUp(a8), Jumping(a8), Freefall(c0), Flying(a8), Landed(cc), Running(cc), RunningNoPhysics(114), StrafingNoPhysics(114), Climbing(cc), Seated(a0), Dead(a0). Hex sizes. Previously mined 100% factory source labels were misleading (e.g. case 1 Ragdoll and case 6 Landed); do not reuse its names or sizes without this evidence. Does not yet prove state members or runtime behavior. Evidence shared-layouts/humanoid-factory-working-probe.json.
+
+Selected-code observer now includes the two externally built native icon objects when their names appear in the P6 link map; missing linked objects cause failure. Current PE yields 3018/14394 relocation-masked matches, zero COFF-to-PE mismatches, including 16 uniquely matched icon-object functions. This expands observer scope versus 3002/14368; not a same-scope gain and not the requested exact-function count. Receipt p6-native-icons-retry-20261101/selected-including-icons.json. Gate status unchanged.
+
+CMainFrame constructor 004321f0 trial: recovered cached-source semantics against real XTP/MFC types; adding provisional scoped ownership for three pane fields and marking std::string size/c_str noinline yields 483-byte relocation-masked match with ten original call targets verified. Constructor accesses actual FileSystem::getUserAppDataDirectory(true,NULL) and FillTool::color listener. Raw-pointer current candidate still differs; scoped_ptr versus auto_ptr identity, pane class/destructor ABI, lock globals, exception metadata and active runtime linkage unproven. Trial is generated in out; shared header remains raw pending proof. Evidence shared-layouts/main-frame-constructor-trial-working-probe.json. No runtime swap or new gate claim.
+
+CMainFrame destructor 00432000 inactive trial now matches 309 bytes relocation-masked with provisional pane scoped owners and synthetic first vtable slots; selected calls verified, including XTP destructors, listener removal, worker_thread, and MFC ordinal 4262 CCmdTarget::InternalRelease. Original pane destructors use virtual slot +4, unlike earlier one-slot stubs. Constructor trial still matches after adjusting those stubs. Actual pane types/ownership template, resource pointee, globals, EH metadata and runtime linkage remain unproven; shared candidate is not swapped. Evidence shared-layouts/main-frame-destructor-trial-working-probe.json.
+
+Frame pane RTTI verified in original PE: CSelectionCaption derives CXTCaption/CWnd, CDataModelPropGrid derives CSelectionPropGrid/CPropGrid/CXTPPropertyGrid/CWnd, CXTSplitterWnd derives CSplitterWnd/CWnd. Primary deleting-destructor slot +4 resolves respectively to wrappers 00466920/00431140/00708d30 and destructors 00466510/004310f0/00708280. Constructor/destructor trials now use incomplete declarations based on real XTP bases instead of synthetic vtable slots; both still match relocation-masked. Actual complete pane layouts, virtual ABI and owner template remain open. Evidence main-frame-pane-rtti-working-probe.json and updated frame constructor/destructor trial receipts. No active swap.
+
+Frame docking handler 004314e0 calls the same replacement function 00430440 for all three pane owners at 00431587/004315f5/00431699. A real boost::scoped_ptr<CWnd>::reset emits an exact 32-byte relocation-masked match; std::auto_ptr<CWnd>::reset emits 34 different bytes with different ordering/self-check. This supports scoped ownership and rules out that standard auto_ptr implementation as the directly called reset, but folding means exact original template identity remains unproven. Inactive compiler evidence shared-layouts/frame-pane-ownership-working-probe.json. No runtime swap or new gate claim.
+
+Recovered inactive ActiveDocView native interface and lifetime: constructor 00405d50 (43), destructor 00405d80 (26), std::set insert 005e8c40 (239) and erase 005e9f60 (106) all match relocation-masked; original calls and pure virtual RTTI/vtable verified. Global registry at 0096c23c corresponds to set shape; its initialization/data identity, callback pointee types and remaining exception/relocation ABI remain unverified. Original CDataModelPropGrid callback 00442900 returns with ret 0x10, consistent with two by-value shared_ptr arguments. Evidence shared-layouts/active-doc-view-working-probe.json. Inactive, no gates rerun.
+
+Cleanup/native-source checkpoint 2026-11-01: old nested packages, pilot folders, root build outputs, unused diagnostics and redundant findings Source archived with hash receipts; newer sources retained. Source/{App,Network,RbxView,Rendering,Recovered,Include} exposes canonical project divisions. Player and P6 rebuild pass; P5 combined and P6 scoped gates pass current artifacts. Fall max y error 0.07493234 < .10. Jump original Run failed before measurements, so no fresh jump pass. Selected PE observer 3018/14394 unchanged (no integration gain). Recovered CRobloxDHtmlDialog constructor/destructor/runtime class/deleting destructor/OnInitDialog/eventsink getter/external dispatch/two browser callbacks/URL trust wrapper: ten relocation-masked matches; inactive pending complete vtable/data/EH and runtime gate. Evidence cleanup-rebuild-verification-20261101/receipt.json and shared-layouts/dhtml-dialog-working-probe.json. Full native roadmap remains open.
+
+Native dialog continuation: CRobloxDHtmlDialog has ten matching bodies, 121 original virtual slots verified against MFC ordinals or local bodies, native runtime size 0x130 and event entry data checked. Constructor-forced isolated link retains 19 class bodies; primary vector-deleting slot resolves to scalar deleting destructor as expected. Native CAboutRobloxDialog now has ten matching constructor/destruction/runtime/message/HTML events/init/document-complete/OK/factory/base-getter bodies. Explicit derived destructor required original vptr stores; base destructor remains compiler-generated. DoDataExchange 00401390 and its CFileVersionInfo/G3D helpers remain next missing native edge. Existing generated DoDataExchange source uses provisional aliases; actual 00509840 is G3D::System::describeSystem, GL methods are G3D::GLCaps, and 0046a440 requests FileVersion (not ProductVersion). Do not activate base alone: About HTML ButtonOK needs derived DHTML map and UpdateData(FALSE). No runtime swap or integration gain; active P5/P6 artifacts still match previous gates. Evidence shared-layouts/dhtml-dialog-working-probe.json and shared-layouts/dhtml-dialog-isolated-link/receipt.json.
+
+Native About swap: full CAboutRobloxDialog and CRobloxDHtmlDialog now replace generic CDialog in adapted OnAbout. Existing native DoDataExchange source adopted with real G3D::System/GLCaps and shared CFileVersionInfo types; 732-byte DDX body and four GL display helpers match. File-version constructor/Create/GetFileVersion/Reset match; typed GetVersionInfo remains 203-byte register mismatch and receives zero exact credit. Fresh P5 combined and P6 scoped gates PASS. Original About HTML shows version 0, 3, 809, 0 and system info. Physical Escape stopped Computer Use before manual OK activation; that UI action is unproven. Same observer, reconstructed old shell COFF checked against saved old PE, zero COFF/PE mismatches: 3018/14394 -> 3049/14468 selected relocation-masked matches (+31 net). This differs from original 331/4152 metric and raw PE identity. Exact source/artifact evidence p6-native-about-swap-20261101/swap-evidence.json. Native CRobloxApp/CMainFrame and remaining roadmap open.
+
+Typed frame-pane recovery: original RTTI identifies RBX::CMarshalWindow : ATL::CWindowImpl<CMarshalWindow,CWindow,CWinTraits<0x56000000,0>>. Real ATL::CCriticalSection (not CComAutoCriticalSection) makes constructor 00432c50 match 140 bytes and critical ctor 004328c0 match 113. Native post 00432950, OnFinalMessage 00432a70, message map 00432a90, inherited GetWindowProc 0041a400 and deleting dtor 00432b10 match. Explicit marshal-window dtor required original vptr store. OnDestroy remains 179-byte/8-byte-difference mismatch, no credit. Native EventData RTTI identifies EventDataBase and weak ownership +4/+8; weak pointee is not yet verified. MarshaledListener actual std::vector<EventDataBase*> + thread id + CMarshalWindow pointer gives size 0x24, ctor 004661e0 118 and dtor 004663c0 113 both match. FilteredListener adds no storage. Typed CSelectionCaption : CXTCaption + ActiveDocView + FilteredListener, with DataModel/Selection shared owners, gives native size 0x1c8 and offsets 0x1b8/0x1c0; ctor 00466880 150, GetRuntimeClass 00465de0 6 and filter 00466670 5 match. Complete message/virtual ABI, callback pointee identities, registry globals/dispatch and property-grid layout remain open. Frame ctor/destructor trials now include this real caption header and still match 483/309. Evidence shared-layouts/frame-marshalling-working-probe.json. Inactive: active native About EXE and player hashes match prior P5/P6 gates; no new runtime count credit (3049/14468 selected matches retained).
+
+Property-grid/shared-frame checkpoint: CPropGrid/CSelectionPropGrid/CDataModelPropGrid use real CXTPPropertyGrid, Listener bases, boost::recursive_mutex, pointer vector/maps/set and string set. Sizes 0x238/0x244/0x248 and member offsets pass. Eight lifecycle/runtime bodies match in separate TUs; four tree-ctor call sites bind to matching native helpers (three distinct constructors). Prior mined TU incorrectly treated last two trees as pointer maps; corrected from native node widths/calls. Pointer payload identities and full virtual/message/selection behavior remain open. Canonical CMainFrame now owns actual recovered pane types with scoped_ptr; ctor/dtor remain 483/309-byte matches without generated header substitutions. All seven coupled frame probes pass. Fixed stale color-vtable fixture to compile real ctor; restored original CString conversion at save/restore/close sites after detecting wrong GetString import hidden by relocation masking. Three obsolete generated header/trial stubs archived with hashes. Active EXEs unchanged; prior P5/P6 gates remain artifact-valid, running selected metric 3049/14468, no runtime gain. Findings export copied 8336 files but exact verification found concurrently modified launcher/four verification indexes and unowned Source reappeared; clean export NOT claimed, live files preserved. Evidence shared-layouts/frame-property-grid-checkpoint.json. Next: selection/property callbacks and caption/marshal behavior/vtables before frame runtime swap.
+
+# Native frame pane callback checkpoint
+
+Recovered 14 relocation-masked bodies across active-document activation/refresh,
+property-grid model changes, caption lifecycle, selection changes and text.
+00405aa0 gets both current/previous models through CRobloxDoc::getDataModel;
+ActiveDocView second argument corrected from Instance to DataModel. Native
+571-byte activation and 75-byte refresh use real Boost/STL/shared declarations.
+Caption text uses AbstractFactoryProduct::getClassName/Name, not the mined
+fake reflection descriptor. Message map at 0081bb1c, CWnd parent import ordinal
+4030, WM_CREATE and selected calls/global references verified.
+
+Evidence: shared-layouts/pane-callbacks-working-probe.json. Coupled marshalling,
+property-grid and frame constructor probes pass. Sources remain inactive;
+P5/P6 executable hashes still match About-swap gate receipts. No runtime
+credit added; runtime gates not repeated without a swap. Next: marshaled
+selection dispatch/detach and window registry, then remaining pane/frame ABI.
+
+# Native marshal/window checkpoint
+
+27/27 selected window, registry, listener, event and caption lifecycle bodies
+match. Native queue insertion/removal, dispatch/filter and detach recovered.
+GetWndClassInfo uses inherited ATL implementation; Create 00432b50 matches.
+Old EventDataBase 0x0c/weak-pointer hypothesis disproven by destructor00421110:
+base4, derived strong source owner+4/+8, listener+0x0c, event+0x10, total0x20.
+Real remove body resolves EventData destructor unwind state; corrected base
+lifetime resolves OnDestroy. Six physical layouts verified.
+
+Isolated NativeMarshalWindowRuntime PE retains11 selected exact-body matches.
+Three hidden runs prove two-thread window reuse, reference counts, dispatch,
+queued-event deletion, destroyed HWNDs and empty registry: executed2/deleted4.
+Fixture event is diagnostic; this does not prove native Selection payload
+delivery or game integration. Original global initialization remains open.
+14 pane callbacks, property-grid layouts and frame ctor/dtor probes pass.
+Evidence: shared-layouts/marshal-dispatch-checkpoint.json and bound receipts.
+P5/P6 game hashes unchanged; metric stays3049/14468, zero game credit here.
+Next edge: CSelectionPropGrid::setSelection00442650 (destructor00430700),
+then remaining property behavior before native frame swap and P5/P6 gates.
+
+# Native property-grid behavior checkpoint
+
+Twelve selected bodies match using shared headers and real Boost/STL/MFC/XTP:
+selection setter00442650 (680), grouping add/remove00442350/00439660,
+instance add/remove004423f0/00439cd0, selection event00442490 (325), property
+event00439370 (267), OnCreate004385f0 (62), GetMessageMap00440d20 (6),
+refresh00439d70 (754), reflection rebuild004391d0 (327), and slot90 dispatch
+thunk00438010 (8). Selected call/storage/message bindings verified separately.
+
+Corrected provisional types: +0x218 groups ClassDescriptor pointers to vectors
+of shared Instances, not strings. Original RTTI type0092f58c/COL008802e8 and
+one-slot pure vtable008137a4 prove CPropGrid::Item; vector+19c, map+1b4 values
+and set+1f8 hold Item pointers, not Instance or primary XTP item pointers.
+Physical grid sizes remain238/244/248 hex. Native map008145dc routes WM_CREATE
+and WM_USER+101. SDK primary vtable has90 slots; CPropGrid adds slot90 for
+property-row creation00440e30. Existing CPropGridItem lifecycle tests did not
+prove these payload identities; earlier placeholder hypotheses are superseded.
+
+Refresh matches with actual DataModelLock.cpp definitions visible in the same
+translation unit. Recorded compiler recipe pairs existing genuine sources;
+no copied anonymous lock layout or placeholder body. Rebuild walks authentic
+ClassDescriptor derived classes and property containers under reflection sync.
+Its addProperty callback is virtual:00438010 is a dispatch thunk, not the body.
+
+Coupled eight grid lifecycle bodies, 14 pane callbacks, frame ctor483/dtor309
+and physical layouts pass. Evidence: shared-layouts/selection-grid-checkpoint.json.
+Sources remain inactive. P5/P6 artifact hashes unchanged; selected game count
+stays3049/14468 with zero integration gain. Next: native property-row factory
+00440e30 (1321 bytes), concrete editor layouts/constructors, reverse-map type
+and complete bindings before native frame swap and runtime gates.
+
+# Native editor constructor / Item-layout checkpoint
+
+Corrected CPropGrid::Item size4 hypothesis: one RTTI slot proves virtual order,
+not storage extent. Constructor0043a070 (125) and collector00439600 (91) now
+match using real vector<const ClassDescriptor*>+4 and grid pointer+1c, size32.
+Collector recursively caches actual derived-class descriptors. Outer grid sizes
+remain238/244/248 hex because they store Item pointers. Earlier size4 assertion
+is superseded; do not use it as layout evidence.
+
+Six editor constructor bodies match: bool XItem0043a0f0 and XBoolItem0043d330,
+float0043a650, int0043ab10, Color30043af00, string0043b860. Five of12 actual
+factory constructor paths covered. Generic rows use genuine SDK bases, Item32
+and descriptor pointer. SDK field+fc is m_bHidden, not m_nFlags: rows start
+hidden until update. Native std::string c_str import verified by exact named
+MSVCP90 import using existing noinline getter recipe. Real category lookup
+00438630 (83) matches genuine FindItem/AddCategory/Expand behavior. Constructor
+units and category compile separately; source pairing changes MSVC inlining.
+
+Original factory allocations and RTTI/base offsets mapped for all12 branches.
+No anonymous storage/editor placeholder classes introduced. Current evidence:
+shared-layouts/property-editor-checkpoint.json binds14 grid bodies, seven
+editor/category bodies, physical layouts, frame ctor/dtor and14 pane callbacks.
+Editor update and SDK override bodies are still unresolved, so constructors
+do not establish complete classes or runtime equivalence.
+
+Source audit: mined row attachment unit roc_claudeA_selgridbd1b79475b721655.cpp
+uses fake static Map::find storage to force caller stack reuse. Preserved as
+experiment, excluded from native adoption; audit receipt records its hash.
+Recover actual category insertion, descriptor map and Item-vector attachment
+00439ba0 instead. Next: remaining editor fields/constructors/virtual behavior,
+real attachment and factory00440e30 before frame swap and runtime gates.
+P5/P6 executable hashes unchanged. Selected game metric remains3049/14468;
+zero game integration gain from these inactive sources. No commit.
+
+# Native property attachment and value checkpoint
+
+Four real row-attachment bodies and six editor value-operation bodies match relocation-masked original code. Three attachment callees also match. Six constructor bodies cover five of twelve factory paths. Float equality and two numeric parsers remain nonexact; editor update, write, apply and factory remain open. Receipts: shared-layouts/property-attachment-working-probe.json and editor-values-working-probe.json. Source hashes checked against current tree. These candidates remain inactive; no executable integration credit or new runtime gate claimed.
+
+# Doc live-swap preparation
+
+Native Doc now has five additional relocation-masked matching handlers: undo 00453670, redo 004538b0, their enable/caption handlers 00453750/00453990, and selection enable 00453af0. Direct history/selection calls verified in shared-layouts/document-history-working.json; history query names remain provisional, imported bindings and live linkage open. Original compiler recipe marks std::string::c_str and CString conversion noinline. Baseline 20-body Doc constructor/destructor probe also passes. Candidate remains inactive. Message-map handlers still need complete implementations; no live swap or new P5/P6 gate claimed.
+
+Doc/View and server follow-up: five Doc history/selection handlers now pass reproducible profile and direct-call checks, alongside the 20-body Doc constructor/destructor probe. View service scaffolding at 00452a00/0058c5e0 replaced with typed ChangeHistoryService factory and method declarations; target calls and original binary type string verified. View full OnInitialUpdate remains nonmatching; service layout, names and linkage unproven. DataModel notifier bases at +150/+170 use typed inheritance. No live swap. Read-only server DB: last accepted integration 2026-10-31 17:06:56 UTC; subsequent RunService jobs failed on missing P2Lighting ownership artifact and 39 credited bodies missing from refreshed baseline. Server ownership guard should remain; investigate baseline preservation. Evidence shared-layouts/server-gap-investigation.json.
+
+Doc command continuation: pause enable 00454040 (303), stop enable 00454170 (396), and run enable 00454300 (393) now match relocation-masked original code. Original RunService, Players::findLocalPlayer and network client call targets verified by record_native_document_history.py; existing 20 Doc bodies and constructor/destructor probe still pass. Eight additional Doc handlers are inactive, leaving 20 of the previously identified 28 handler symbols unresolved. P5/P6 unchanged; no live swap.
+
+Doc status handlers 00450a70 and 00450c00 each match 387 bytes relocation-masked; original direct targets 005757d0/005757e0 verified. DataModel now declares nonvirtual timing accessors; their implementation, names and linked behavior remain open. Ten additional Doc command bodies and baseline 20 plus constructor/destructor probe pass. No live swap or P5/P6 rerun.
+
+DataModel timing accessors 005757d0 and 005757e0 now use typed RunService game time and G3D Stopwatch::smoothFPS; both match original 13-byte bodies. Added inline accessors do not change storage. Evidence shared-layouts/datamodel-timing-working.json; full RunService lifetime and linked runtime remain open. Existing Doc 20-body constructor/destructor and ten-command probes pass. No runtime swap or new gates.
+
+Doc script enable 00454490 matches 309 bytes with genuine donor ScriptContext declaration and inline globalState check. Factory target 0042de90 verified. This proves accessed field offset 0x138 only; complete ScriptContext constructor/destructor and runtime ABI remain unproven. Eleven additional Doc command bodies and original 20-body Doc lifecycle probe pass. No live swap.

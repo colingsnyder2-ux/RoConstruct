@@ -559,6 +559,8 @@ def test_pipeline_recompiles_minimal_fix_before_claim_and_apply(tmp_path, monkey
         def close(self):
             pass
     class Matcher:
+        def with_targets(self, addresses):
+            return self
         def __init__(self, addresses, cache_dir=None):
             assert addresses == ({'00500000', '00500001'} if existing_owned else {'00500001'})
         def scan(self, obj):

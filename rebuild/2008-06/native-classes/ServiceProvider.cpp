@@ -1,6 +1,7 @@
 #include <boost/thread/once.hpp>
 #pragma include_alias("util/Name.h", "../roc_name_native_declare_header_cb8db0995b353ca7.cpp")
 #include "../native-headers/v8datamodel/Selection.h"
+#include "util/RunStateOwner.h"
 
 // Existing recovered ServiceProvider template, instantiated for Selection.
 namespace RBX {
@@ -29,5 +30,18 @@ template<class Class> Class* ServiceProvider::find() const {
     serviceArray[index] = item;
     return service;
 }
+template<class Class> Class* ServiceProvider::create() const {
+    Class* service = find<Class>();
+    if (service == NULL) {
+        boost::shared_ptr<Class> value = Creatable<Instance>::create<Class>();
+        service = value.get();
+        size_t index = getClassIndex<Class>();
+        serviceArray[index] = value;
+        service->setParent(const_cast<ServiceProvider*>(this));
+    }
+    return service;
+}
 template Selection* ServiceProvider::find<Selection>() const;
+template RunService* ServiceProvider::find<RunService>() const;
+template RunService* ServiceProvider::create<RunService>() const;
 }

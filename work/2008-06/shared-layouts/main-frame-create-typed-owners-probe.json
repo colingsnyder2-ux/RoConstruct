@@ -1,0 +1,70 @@
+{
+  "revision": "54e50084f4de40ae7db714e465f219be23e75b32",
+  "sources": {
+    "rebuild\\2008-06\\tests\\..\\native-classes\\CMainFrameCreate.cpp": "dc81f3c5c2c3e9479e9fd092e994a3f5945b174db99c19434a0b9c65567bb450",
+    "rebuild\\2008-06\\native-headers\\CMainFrame.h": "b26893d5aeb9a91b09720d4b7ca80cc9697946b40eca9576a141a17c4aa9a5eb",
+    "rebuild\\2008-06\\native-headers\\LoginRenewer.h": "d1c6e83adbbf21bd52bf79c7b363493aa5855c3e750dbed5ab173b47173466db",
+    "rebuild\\2008-06\\native-headers\\MyXTPCommandBars.h": "199f26ebd2c2761b8a804fffdc8ca8fc1e9981d835edc161364b0c11148f197f",
+    "rebuild\\2008-06\\tests\\record_native_main_frame_create.py": "7583102c0ac7375c6142e95fa1fbfa31aec0374154f15f1b9e93a7a8bfdc07a6"
+  },
+  "compiler_build": 21022,
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/D_XTP_STATICLINK",
+    "/D_XTPLIB_NOAUTOLINK",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source",
+    "/FoNativeMainFrameCreate.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\..\\native-classes\\CMainFrameCreate.cpp"
+  ],
+  "methods": [
+    {
+      "address": "00431d00",
+      "symbol": "?OnCreate@CMainFrame@@QAEHPAUtagCREATESTRUCTA@@@Z",
+      "size": 524
+    },
+    {
+      "address": "0042ef40",
+      "symbol": "?InitCommandBars@?$CXTPCommandBarsSiteBase@VCMDIFrameWnd@@@@QAEHPAUCRuntimeClass@@@Z",
+      "size": 54
+    },
+    {
+      "address": "00430ec0",
+      "symbol": "?reset@?$scoped_ptr@Vworker_thread@RBX@@@boost@@QAEXPAVworker_thread@RBX@@@Z",
+      "size": 33
+    }
+  ],
+  "verified_calls": 25,
+  "scope": "Selected direct calls and status data verified; MyXTPCommandBars remaining vtable/data, icon TU alias and image initialization, remaining ABI and runtime gates open."
+}

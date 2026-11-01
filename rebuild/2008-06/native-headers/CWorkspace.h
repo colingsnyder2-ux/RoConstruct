@@ -3,6 +3,8 @@
 #include <atlcom.h>
 #include <objsafe.h>
 #include <boost/shared_ptr.hpp>
+#include <iosfwd>
+#include <memory>
 #include "util/Events.h"
 #include "RobloxLib.h"
 
@@ -20,6 +22,8 @@ public:
     STDMETHOD(GetInterfaceSafetyOptions)(REFIID, DWORD*, DWORD*);
     STDMETHOD(SetInterfaceSafetyOptions)(REFIID, DWORD, DWORD);
 };
+
+class XmlElement;
 
 namespace RBX {
     class DataModel;
@@ -47,4 +51,6 @@ public:
     CWorkspace();
     boost::shared_ptr<RBX::DataModel> getDataModel();
     void cleanup();
+    std::auto_ptr<XmlElement> writeXmlModel();
+    void load(std::istream&); // 0046aa70; original symbol linkage pending.
 };

@@ -418,6 +418,8 @@ def test_direct_edit_historical_compiler_roundtrip(tmp_path, monkeypatch):
     for addr, method in [('00000001', 'change'), ('00000002', 'keep')]:
         wanted[addr] = next((name, code, relocations) for name, code, relocations in functions if name.startswith('?'+method+'@Fixture@RBX@@'))
     class Matcher:
+        def with_targets(self, addresses):
+            return self
         def scan(self, data):
             actual = {name: (code, relocations) for name, code, relocations in match.coff_functions(data)}
             return [{'addr': addr, 'symbol': name} for addr, (name, code, relocations) in wanted.items()

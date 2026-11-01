@@ -1,0 +1,105 @@
+{
+  "revision": "f6ee81dd52a25a4f1a76133a5a0d76db5b94f1d5",
+  "sources": {
+    "rebuild\\2008-06\\native-classes\\DataModelLock.cpp": "91b5b385524cf57fedd5dbbf7a5b4bcb6557ef969e105d11ace5416776a625f1",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\DataModel.h": "03a60c05db0c141988384d7b648970ea261f2c33bdfb8e85135feb9c49e31baf",
+    "rebuild\\2008-06\\tests\\record_native_lock.py": "69709abda454620a1665c58c96461f5f343feabd5bd6e116ecbcfc7ce034ecf1"
+  },
+  "compiler_build": 21022,
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoNativeDataModelLock.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\DataModelLock.cpp"
+  ],
+  "compile_exit": 0,
+  "methods": [
+    {
+      "address": "00411b40",
+      "symbol": "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z",
+      "size": 152,
+      "relocation_normalized_exact": true,
+      "verified_direct_calls": [
+        {
+          "offset": 69,
+          "symbol": "?doLock@Lock@DataModel@RBX@@AAEXPBV23@@Z",
+          "target": "0x576f00"
+        }
+      ]
+    },
+    {
+      "address": "005773c0",
+      "symbol": "??1Lock@DataModel@RBX@@QAE@XZ",
+      "size": 145,
+      "relocation_normalized_exact": true,
+      "verified_direct_calls": [
+        {
+          "offset": 54,
+          "symbol": "?do_unlock@recursive_mutex@boost@@AAEXXZ",
+          "target": "0x5630e0"
+        },
+        {
+          "offset": 64,
+          "symbol": "??3@YAXPAX@Z",
+          "target": "0x6a067a"
+        }
+      ]
+    },
+    {
+      "address": "00576f00",
+      "symbol": "?doLock@Lock@DataModel@RBX@@AAEXPBV23@@Z",
+      "size": 128,
+      "relocation_normalized_exact": true,
+      "verified_direct_calls": [
+        {
+          "offset": 51,
+          "symbol": "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z",
+          "target": "0x4025b0"
+        },
+        {
+          "offset": 58,
+          "symbol": "??2@YAPAXI@Z",
+          "target": "0x6a0920"
+        },
+        {
+          "offset": 94,
+          "symbol": "?do_lock@recursive_mutex@boost@@AAEXXZ",
+          "target": "0x563090"
+        }
+      ]
+    }
+  ],
+  "scope": "Inactive compiler proof; selected direct-call targets checked against original. Full data relocations and runtime linking remain unverified."
+}

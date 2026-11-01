@@ -98,8 +98,9 @@ def recheck_proposal(proposal, ctx, texts, output, revision, log, recover=False)
                             ctx.includes, ctx.defines, ctx.flags, **options)
     if not baseline['ok']:
         raise ValueError('Saved proposal baseline compile failed: ' + rel)
-    keep = {h['addr'] for h in ctx.matcher.scan(Path(baseline['object']).read_bytes())}
     wanted = {h['addr'] for h in proposal['witnesses']}
+    matcher = ctx.matcher.with_targets(wanted)
+    keep = {h['addr'] for h in matcher.scan(Path(baseline['object']).read_bytes())}
     if recover:
         wanted -= keep | ctx.integrated
         if not wanted:
@@ -121,10 +122,10 @@ def recheck_proposal(proposal, ctx, texts, output, revision, log, recover=False)
     missing = set(proposal.get('proof', {}).get('defined_symbols', ())).intersection(final.get('undefined_symbols', ()))
     if missing:
         raise SavedProposalError('Saved proposal lost required definitions: ' + ', '.join(sorted(missing)))
-    hits = ctx.matcher.scan(Path(final['object']).read_bytes())
+    hits = matcher.scan(Path(final['object']).read_bytes())
     found = {h['addr'] for h in hits}
     if not wanted <= found or keep - found:
-        raise SavedProposalError('Saved proposal lost exact matches; rerun roc native-try check ' + rel)
+        raise SavedProposalError('Saved proposal lost exact matches; missing targets: ' + ','.join(sorted(wanted-found)) + '; regressions: ' + ','.join(sorted(keep-found)) + '; rerun roc native-try check ' + rel)
     ownership = ownership_candidates(Path(final['object']).read_bytes(), [h for h in hits if h['addr'] in wanted])
     if not any(candidates == [addr] for addr, candidates in ownership.items()):
         log('no unique module ownership candidates; proposal retained locally: ' + rel)
@@ -603,6 +604,10 @@ class Matcher:
                                            hashlib.sha256(Path(match.__file__).read_bytes()).hexdigest(),
                                            hashlib.sha256(Path(fingerprint.__file__).read_bytes()).hexdigest(),
                                            hashlib.sha256(Path(__file__).read_bytes()).hexdigest()]) if cache_dir else None
+
+    def with_targets(self, addresses):
+        indexed = {addr for group in self.index.values() for addr in group}
+        return self if set(addresses) <= indexed else Matcher(indexed | set(addresses), self.cache_dir, self.client)
 
     def candidates(self, code, relocs):
         """Prune by relocated prefix; same() and data_check() remain authoritative."""

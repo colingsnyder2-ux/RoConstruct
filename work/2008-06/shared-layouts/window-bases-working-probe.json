@@ -1,0 +1,16 @@
+{
+  "revision": "9cf9f160fd4ff19f4d93b21f546ba0302b53b658",
+  "sources": {
+    "rebuild\\2008-06\\tests\\NativeWindowBases.cpp": "40944bfaebcbeab2342d62368585eab4a8607054d39ab9280de5ee64ec0d1bf3",
+    "rebuild\\2008-06\\native-headers\\util\\RunStateOwner.h": "e8b9bf3b52000cdbed5d4e9ee31cbe20528aa36d3ed0a50b202101249866035a",
+    "rebuild\\2008-06\\tests\\record_native_window_bases.py": "8ac3a6c977cbd718477273be8c65378bd24a01617b01e72c6a31e70ad33ef05c"
+  },
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "compiler_build": 21022,
+  "base_extent": 92,
+  "bases": {
+    "IRunView": 84,
+    "IMetric": 88
+  },
+  "scope": "Base hierarchy probe only; complete 0xc0 window members, virtual bodies and runtime linkage remain open."
+}

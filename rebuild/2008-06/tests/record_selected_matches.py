@@ -30,7 +30,18 @@ for name in names:
     native = {(entry['symbol'], entry['object']): address
               for address, entries in ownership.items() for entry in entries}
     selected, matched, mismatches, rows = set(), set(), set(), []
-    for obj in sorted((folder if name == 'p6' else folder / 'linked').glob('*.obj')):
+    objects = list((folder if name == 'p6' else folder / 'linked').glob('*.obj'))
+    if name == 'p6':
+        native_out = ROOT / 'rebuild/2008-06/out/native-layouts'
+        for obj_name in ('NativeFrameIconsFresh.obj', 'NativeFrameIconWidth.obj',
+                         'NativeDHtmlDialog.obj', 'NativeAboutDialog.obj', 'NativeAboutDialogData.obj',
+                         'NativeFileVersionInfo.obj', 'NativeGLCaps.obj'):
+            path = native_out / obj_name
+            if any(owner == obj_name for _, owner in mapped):
+                if not path.is_file():
+                    raise FileNotFoundError('Linked object required for count: ' + str(path))
+                objects.append(path)
+    for obj in sorted(objects):
         functions = match.coff_functions(obj.read_bytes())
         if name == 'p6':
             for symbol, _, addresses in rebuild.pair('2008-06', functions):
@@ -59,7 +70,7 @@ sha = lambda path: hashlib.sha256(path.read_bytes()).hexdigest()
 receipt = dict(revision=subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
                exe_sha256=sha(exe), map_sha256=sha(link_map), observer_sha256=sha(Path(__file__)),
                selected_functions=len(selected_all), selected_code_matches=len(matched_all), modules=modules,
-               scope='Known player/engine and optional P6 COFF functions selected by this final PE map, with code bytes rechecked in the PE. Relocated operands are masked; data, ABI, other system-library functions, runtime coverage and raw PE identity are separate gates.')
+               scope='Known player/engine and optional P6 COFF functions selected by this final PE map, including externally built native icon objects, with code bytes rechecked in the PE. Relocated operands are masked; data, ABI, other system-library functions, runtime coverage and raw PE identity are separate gates.')
 output = ROOT / 'work/2008-06' / sys.argv[1]
 output.parent.mkdir(parents=True, exist_ok=True)
 output.write_text(json.dumps(receipt, indent=2) + '\n')

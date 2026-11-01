@@ -1,0 +1,26 @@
+{
+  "revision": "f6e8dccfd35b95e2551f0675f8875045af2c8e43",
+  "objects": {
+    "rebuild\\2008-06\\out\\native-layouts\\NativeFrameIconsFresh.obj": "7d71050b937dd017683f389645de0e9eae8f59aed63c0c518f79aedd36c977b5",
+    "rebuild\\2008-06\\out\\P2ImageCore\\linked\\GImage.obj": "412dfd5f21e30b4abafbcbf8e3c7b86a2abcd549098bfd7315839e912fc7bd6e"
+  },
+  "methods": [
+    {
+      "address": "005105b0",
+      "symbol": "??0GImage@G3D@@QAE@PBEHW4Format@01@@Z",
+      "size": 187
+    },
+    {
+      "address": "0050e230",
+      "symbol": "??1GImage@G3D@@UAE@XZ",
+      "size": 44
+    }
+  ],
+  "verified_calls": [
+    "0x7e",
+    "0x11e",
+    "0x1cc",
+    "0x138"
+  ],
+  "scope": "Object bodies and selected icon call targets only; GImage runtime layout and data, all other relocations, and active linkage remain unverified."
+}

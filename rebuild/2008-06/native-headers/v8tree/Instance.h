@@ -12,11 +12,12 @@
 #include "util/Debug.h"
 #include "reflection/reflection.h"
 
+class XmlElement;
+
 namespace RBX {
 class Instance;
 class ServiceProvider;
 class IReferenceBinder;
-class XmlElement;
 class Name;
 struct ChildAdded;
 struct ChildRemoved;
@@ -28,7 +29,8 @@ extern const char* sInstance;
 
 // Native hierarchy from RTTI and the existing 004b9bd0 recovered source.
 // Inactive until every virtual body, member lifetime and dependent ABI is proven.
-class Instance : public GuidItem<Instance>,
+class Instance : public boost::enable_shared_from_this<Instance>,
+                 public GuidItem<Instance>,
                  public AbstractFactoryProduct<Instance>,
                  public Reflection::Described<Instance, &sInstance, Reflection::DescribedBase>,
                  public Debugable,
@@ -38,9 +40,9 @@ class Instance : public GuidItem<Instance>,
                  public Notifier<Instance, DescendantRemoving>,
                  public Notifier<Instance, AncestorChanged>,
                  public Notifier<Instance, PropertyChanged>,
-                 public boost::enable_shared_from_this<Instance>,
                  public boost::noncopyable {
 public:
+    Instance();
     virtual ~Instance();
     virtual void setName(const std::string&);
     virtual bool askAddChild(const Instance*) const;
@@ -55,6 +57,16 @@ public:
     virtual void readProperty(const XmlElement*, IReferenceBinder&);
     virtual void onServiceProvider(const ServiceProvider*, const ServiceProvider*);
     virtual boost::shared_ptr<Instance> createChild(const Name&);
+    const std::string& getName() const { return name; }
+    size_t numChildren() const
+    {
+        if (children) return children->size();
+        return 0;
+    }
+    const Instance* getChild(size_t i) const { return (*children)[i].get(); }
+    Instance* getChild(size_t i) { return (*children)[i].get(); }
+    void setParent(Instance*);
+    void writeChildren(::XmlElement*);
     virtual XmlElement* write();
     virtual void onChildChanged(Instance*, const PropertyChanged&);
 

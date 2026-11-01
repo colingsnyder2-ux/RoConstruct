@@ -45,7 +45,10 @@ try:
     while pos>=0:hits[j].append(start+pos);pos=data.find(needle,pos+1)
   addr=start+size
  assert all(len(group)>=2 for group in hits)
- u.ShowWindow(h,9);u.SetForegroundWindow(h);time.sleep(.4);rect=wintypes.RECT();assert u.GetWindowRect(h,ctypes.byref(rect)) and u.GetForegroundWindow()==h and rect.right-rect.left>=800 and rect.bottom-rect.top>=600
+ # Normalize only the owned oracle window; the fixed toolbar click needs this geometry.
+ u.ShowWindow(h,9);u.SetWindowPos(h,None,100,100,816,638,0x14)
+ u.keybd_event(0x10,0,0,0);u.SetForegroundWindow(h);u.keybd_event(0x10,0,2,0)
+ time.sleep(.4);rect=wintypes.RECT();assert u.GetWindowRect(h,ctypes.byref(rect)) and u.GetForegroundWindow()==h and rect.right-rect.left>=800 and rect.bottom-rect.top>=600
  u.SetCursorPos(rect.left+390,rect.top+70);u.mouse_event(2,0,0,0,0);u.mouse_event(4,0,0,0,0);time.sleep(4.5)
  records=[]
  for j,group in enumerate(hits):

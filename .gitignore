@@ -55,3 +55,6 @@ docs/integration.json
 /*.err
 /*.out
 /*_trials.zip
+
+# Preserved historical checkouts and build artifacts (external archive view).
+/Archive/

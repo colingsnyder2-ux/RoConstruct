@@ -1,0 +1,93 @@
+{
+  "revision": "f6ee81dd52a25a4f1a76133a5a0d76db5b94f1d5",
+  "sources": {
+    "rebuild\\2008-06\\native-classes\\SerializerRoot.cpp": "7f40a376b2d37e8fb85d06fafe36692097fc7107e7c9b84d435150c4bd386ba5",
+    "rebuild\\2008-06\\native-headers\\v8tree\\Instance.h": "296825c930a4706b4204dc626bc9f3d2998a8f35e87ce2d19e65cec348045c43",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\DataModel.h": "03a60c05db0c141988384d7b648970ea261f2c33bdfb8e85135feb9c49e31baf",
+    "rebuild\\2008-06\\tests\\record_native_serializer_root.py": "f52711a84335421fc98da4aff947c9bbfb1d82e6ef46b15a1946f25a9712c318"
+  },
+  "compiler_build": 21022,
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoNativeSerializerRoot.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\SerializerRoot.cpp"
+  ],
+  "compile_exit": 0,
+  "methods": [
+    {
+      "address": "00591a30",
+      "symbol": "?newRootElement@SerializerV2@@SAPAVXmlElement@@XZ",
+      "size": 401,
+      "relocation_normalized_exact": true,
+      "verified_direct_calls": [
+        {
+          "offset": 58,
+          "symbol": "?declare@Name@RBX@@SAABV12@PBDH@Z",
+          "target": "0x553f90"
+        },
+        {
+          "offset": 138,
+          "symbol": "??$addAttribute@PBD@XmlElement@@QAEXABVName@RBX@@PBD@Z",
+          "target": "0x591970"
+        },
+        {
+          "offset": 157,
+          "symbol": "??$addAttribute@PBD@XmlElement@@QAEXABVName@RBX@@PBD@Z",
+          "target": "0x591970"
+        },
+        {
+          "offset": 176,
+          "symbol": "??$addAttribute@PBD@XmlElement@@QAEXABVName@RBX@@PBD@Z",
+          "target": "0x591970"
+        }
+      ]
+    },
+    {
+      "address": "00591970",
+      "symbol": "??$addAttribute@PBD@XmlElement@@QAEXABVName@RBX@@PBD@Z",
+      "size": 118,
+      "relocation_normalized_exact": true,
+      "verified_constructor_target": "0x58c920"
+    },
+    {
+      "address": "0058c920",
+      "symbol": "??0XmlNameValuePair@@QAE@ABVName@RBX@@PBD@Z",
+      "size": 103,
+      "relocation_normalized_exact": true
+    }
+  ],
+  "scope": "Inactive compiler proof; call targets and runtime linking remain unverified."
+}

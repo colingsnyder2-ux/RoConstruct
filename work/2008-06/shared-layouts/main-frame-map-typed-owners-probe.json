@@ -1,0 +1,253 @@
+{
+  "revision": "54e50084f4de40ae7db714e465f219be23e75b32",
+  "sources": {
+    "rebuild\\2008-06\\tests\\..\\native-classes\\CMainFrameMap.cpp": "6158f5961a2bfbac35f86288b34fcc365d42a2e904fe9036e3412357259d326e",
+    "rebuild\\2008-06\\native-headers\\CMainFrame.h": "b26893d5aeb9a91b09720d4b7ca80cc9697946b40eca9576a141a17c4aa9a5eb",
+    "rebuild\\2008-06\\native-headers\\CMainFrameBases.h": "3e10b26ea2691550e68ba105aab1b10e1ce95fe76f36c13edd5ddeb55b8ee1f0",
+    "rebuild\\2008-06\\tests\\record_native_main_frame_map.py": "fede614c0140a832843de1331685ce8eb0f704f9d5e74339b2d68dfe89bcb9a1"
+  },
+  "compiler_build": 21022,
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/D_XTP_STATICLINK",
+    "/D_XTPLIB_NOAUTOLINK",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source",
+    "/FoNativeMainFrameMap.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\..\\native-classes\\CMainFrameMap.cpp"
+  ],
+  "entries": [
+    {
+      "index": 0,
+      "original_handler": "0x431bf0",
+      "candidate_symbol": "?OnActivate@CMainFrame@@QAEXIPAVCWnd@@H@Z"
+    },
+    {
+      "index": 1,
+      "original_handler": "0x431c40",
+      "candidate_symbol": "?OnGetMinMaxInfo@CMainFrame@@QAEXPAUtagMINMAXINFO@@@Z"
+    },
+    {
+      "index": 2,
+      "original_handler": "0x430360",
+      "candidate_symbol": "?OnActivateApp@CMainFrame@@QAEXHK@Z"
+    },
+    {
+      "index": 3,
+      "original_handler": "0x431d00",
+      "candidate_symbol": "?OnCreate@CMainFrame@@QAEHPAUtagCREATESTRUCTA@@@Z"
+    },
+    {
+      "index": 4,
+      "original_handler": "0x42fbf0",
+      "candidate_symbol": "?handle_42fbf0@CMainFrame@@QAEXXZ"
+    },
+    {
+      "index": 5,
+      "original_handler": "0x4314e0",
+      "candidate_symbol": "?handle_4314e0@CMainFrame@@QAEJIJ@Z"
+    },
+    {
+      "index": 6,
+      "original_handler": "0x431f10",
+      "candidate_symbol": "?OnClose@CMainFrame@@QAEXXZ"
+    },
+    {
+      "index": 7,
+      "original_handler": "0x6c4ce0",
+      "candidate_symbol": "?OnPaint@CMainFrame@@QAEXXZ"
+    },
+    {
+      "index": 8,
+      "original_handler": "0x42fbb0",
+      "candidate_symbol": "?handle_42fbb0@CMainFrame@@QAEXXZ"
+    },
+    {
+      "index": 9,
+      "original_handler": "0x42e550",
+      "candidate_symbol": "?handle_42e550@CMainFrame@@QAEXPAVCCmdUI@@@Z"
+    },
+    {
+      "index": 10,
+      "original_handler": "0x42fb80",
+      "candidate_symbol": "?handle_42fb80@CMainFrame@@QAEXXZ"
+    },
+    {
+      "index": 11,
+      "original_handler": "0x42e550",
+      "candidate_symbol": "?handle_42e550@CMainFrame@@QAEXPAVCCmdUI@@@Z"
+    },
+    {
+      "index": 12,
+      "original_handler": "0x42e5e0",
+      "candidate_symbol": "?handle_42e5e0@CMainFrame@@QAEXXZ"
+    },
+    {
+      "index": 13,
+      "original_handler": "0x42e550",
+      "candidate_symbol": "?handle_42e550@CMainFrame@@QAEXPAVCCmdUI@@@Z"
+    },
+    {
+      "index": 14,
+      "original_handler": "0x42e610",
+      "candidate_symbol": "?handle_42e610@CMainFrame@@QAEXXZ"
+    },
+    {
+      "index": 15,
+      "original_handler": "0x42e550",
+      "candidate_symbol": "?handle_42e550@CMainFrame@@QAEXPAVCCmdUI@@@Z"
+    },
+    {
+      "index": 16,
+      "original_handler": "0x42fcf0",
+      "candidate_symbol": "?handle_42fcf0@CMainFrame@@QAEHPAX@Z"
+    },
+    {
+      "index": 17,
+      "original_handler": "0x42fe00",
+      "candidate_symbol": "?handle_42fe00@CMainFrame@@QAEHPAX@Z"
+    },
+    {
+      "index": 18,
+      "original_handler": "0x431260",
+      "candidate_symbol": "?handle_431260@CMainFrame@@QAEXPAUtagNMHDR@@PAJ@Z"
+    },
+    {
+      "index": 19,
+      "original_handler": "0x4300d0",
+      "candidate_symbol": "?handle_4300d0@CMainFrame@@QAEXPAVCCmdUI@@@Z"
+    },
+    {
+      "index": 20,
+      "original_handler": "0x431160",
+      "candidate_symbol": "?handle_431160@CMainFrame@@QAEXPAUtagNMHDR@@PAJ@Z"
+    },
+    {
+      "index": 21,
+      "original_handler": "0x42e550",
+      "candidate_symbol": "?handle_42e550@CMainFrame@@QAEXPAVCCmdUI@@@Z"
+    },
+    {
+      "index": 22,
+      "original_handler": "0x430b40",
+      "candidate_symbol": "?OnDestroy@CMainFrame@@QAEXXZ"
+    },
+    {
+      "index": 23,
+      "original_handler": "0x42ecf0",
+      "candidate_symbol": "?handle_42ecf0@CMainFrame@@QAEXXZ"
+    },
+    {
+      "index": 24,
+      "original_handler": "0x42e550",
+      "candidate_symbol": "?handle_42e550@CMainFrame@@QAEXPAVCCmdUI@@@Z"
+    },
+    {
+      "index": 25,
+      "original_handler": "0x42ed00",
+      "candidate_symbol": "?handle_42ed00@CMainFrame@@QAEXPAVCCmdUI@@@Z"
+    },
+    {
+      "index": 26,
+      "original_handler": "0x42ed00",
+      "candidate_symbol": "?handle_42ed00@CMainFrame@@QAEXPAVCCmdUI@@@Z"
+    },
+    {
+      "index": 27,
+      "original_handler": "0x42ed00",
+      "candidate_symbol": "?handle_42ed00@CMainFrame@@QAEXPAVCCmdUI@@@Z"
+    },
+    {
+      "index": 28,
+      "original_handler": "0x42ed20",
+      "candidate_symbol": "?handle_42ed20@CMainFrame@@QAEXPAVCCmdUI@@@Z"
+    },
+    {
+      "index": 29,
+      "original_handler": "0x42edd0",
+      "candidate_symbol": "?handle_42edd0@CMainFrame@@QAEXPAVCCmdUI@@@Z"
+    },
+    {
+      "index": 30,
+      "original_handler": "0x430bd0",
+      "candidate_symbol": "?handle_430bd0@CMainFrame@@QAEXXZ"
+    },
+    {
+      "index": 31,
+      "original_handler": "0x42ee80",
+      "candidate_symbol": "?handle_42ee80@CMainFrame@@QAEXXZ"
+    },
+    {
+      "index": 32,
+      "original_handler": "0x42e550",
+      "candidate_symbol": "?handle_42e550@CMainFrame@@QAEXPAVCCmdUI@@@Z"
+    },
+    {
+      "index": 33,
+      "original_handler": "0x42ee90",
+      "candidate_symbol": "?handle_42ee90@CMainFrame@@QAEXXZ"
+    },
+    {
+      "index": 34,
+      "original_handler": "0x42e550",
+      "candidate_symbol": "?handle_42e550@CMainFrame@@QAEXPAVCCmdUI@@@Z"
+    },
+    {
+      "index": 35,
+      "original_handler": "0x42eec0",
+      "candidate_symbol": "?handle_42eec0@CMainFrame@@QAEXPAVCCmdUI@@@Z"
+    },
+    {
+      "index": 36,
+      "original_handler": "0x4314c0",
+      "candidate_symbol": "?handle_4314c0@CMainFrame@@QAEXXZ"
+    },
+    {
+      "index": 37,
+      "original_handler": "0x431ce0",
+      "candidate_symbol": "?handle_431ce0@CMainFrame@@QAEXXZ"
+    },
+    {
+      "index": 38,
+      "original_handler": "0x42eef0",
+      "candidate_symbol": "?handle_42eef0@CMainFrame@@QAEXPAVCCmdUI@@@Z"
+    },
+    {
+      "index": 39,
+      "original_handler": "0x42ef10",
+      "candidate_symbol": "?OnWindowPosChanging@CMainFrame@@QAEXPAUtagWINDOWPOS@@@Z"
+    }
+  ],
+  "scope": "40 message records and handler symbols match; handlers and runtime linkage remain open; parent map import ordinal verified."
+}

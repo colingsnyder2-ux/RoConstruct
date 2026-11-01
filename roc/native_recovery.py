@@ -107,7 +107,7 @@ class Claims:
         with self.connect() as db:
             db.execute('BEGIN IMMEDIATE')
             previous = db.execute('SELECT signature,expires,state,record FROM tasks WHERE key=?', (key,)).fetchone()
-            if previous and (previous[2] in ('recovered','merging','draft','submitted','remote-submitted') or previous[1] > time.time() or previous[0] == signature and previous[2] not in ('running', 'cancelled')):
+            if previous and (previous[2] in ('recovered','merging','draft','submitted','remote-submitted','canonical-blocked') or previous[1] > time.time() or previous[0] == signature and previous[2] not in ('running', 'cancelled')):
                 return None
             if previous and previous[2] in ('running','cancelled'):
                 saved = json.loads(previous[3])
@@ -135,9 +135,16 @@ class Claims:
         with self.connect() as db:
             return [(k,o,json.loads(r)) for k,o,r in db.execute("SELECT key,owner,record FROM tasks WHERE state='submitted'")]
 
-    def remote_submitted(self):
+    def remote_submitted(self, input_signature=None):
         with self.connect() as db:
-            return [(k,o,json.loads(r)) for k,o,r in db.execute("SELECT key,owner,record FROM tasks WHERE state='remote-submitted'")]
+            rows = db.execute("SELECT key,owner,state,record FROM tasks WHERE state IN ('remote-submitted','canonical-blocked')").fetchall()
+        return [(k,o,json.loads(r)) for k,o,state,r in rows if state=='remote-submitted' or
+                input_signature is not None and json.loads(r).get('canonical_blocked_signature')!=input_signature]
+
+    def block_canonical(self, key, owner, record, error, signature):
+        record['canonical_retry']=str(error)
+        record['canonical_blocked_signature']=signature
+        self.update(key,owner,'canonical-blocked',record)
 
     def pending(self, include_drafts=False, input_signature=None):
         with self.connect() as db:
@@ -508,7 +515,9 @@ def stage_submission(record, context, base, output, log, recheck=True):
             path = output/'submission-proposals.json'
             integration.atomic_json(path, [proposal])
             return dict(state='ready' if recheck else 'mapped', proposals=str(path))
-        return dict(state='already-integrated')
+        if record['task']['addr'] in context.integrated:
+            return dict(state='already-integrated')
+        return dict(state='pending-linkage',reason='Canonical body already exact; linked ownership still required')
     except (ValueError, OSError) as error:
         return dict(state='pending-linkage', reason=str(error))
 
@@ -528,7 +537,10 @@ def submit_batch(records, context, base, output, server, model, log):
         verified = sweep.recheck_proposal(proposal,context,{},output,base['revision'],log,recover=True)
         if verified: checked.append(verified)
     if not checked:
-        return dict(state='already-integrated')
+        addresses={h['addr'] for p in grouped.values() for h in p['witnesses']}
+        if addresses <= context.integrated:
+            return dict(state='already-integrated')
+        return dict(state='pending-linkage',reason='Canonical body already exact; linked ownership still required')
     path = output/'batch-proposals.json'
     integration.atomic_json(path,checked)
     spec = dict(client='2008-06',native_sweep=dict(proposals_file=str(path),model=model,
@@ -584,7 +596,8 @@ def run(config, control, emit):
     try:
         if remote:
             canonical_ready={}
-            for key,owner,record in claims.remote_submitted():
+            canonical_signature=integration.digest([inventory(shared_root),base['revision'],digest(Path(__file__).read_bytes()),digest(Path(sweep.__file__).read_bytes())])
+            for key,owner,record in claims.remote_submitted(canonical_signature):
                 state=remote.status(record['collaboration_submission']['job'])
                 record['host_receipt']=state
                 if state['state'] in ('merged','already-exact','retained'):
@@ -620,7 +633,15 @@ def run(config, control, emit):
                     result=submit_batch([r for _,_,r in group],context,base,output/'batches'/uuid.uuid4().hex,config['server'],model,log)
                     totals['submitted']+=bool(result.get('job'))
                     for key,owner,record in group:
-                        claims.update(key,owner,submission_state(result,record,remote=True),record)
+                        if result.get('state')=='pending-linkage':
+                            record['submission']=result
+                            claims.block_canonical(key,owner,record,result['reason'],canonical_signature)
+                        else:
+                            claims.update(key,owner,submission_state(result,record,remote=True),record)
+                except sweep.SavedProposalError as error:
+                    for key,owner,record in group:
+                        claims.block_canonical(key,owner,record,error,canonical_signature)
+                    log('Canonical proof blocked until source/baseline changes; candidates retained: '+str(error))
                 except (ValueError,OSError,worker.ApiFailure) as error:
                     log('Canonical submissions retained for next pass: '+str(error))
         server_jobs = {}
@@ -939,6 +960,8 @@ def run(config, control, emit):
             for future in as_completed([pool.submit(one, slot, assignment) for slot, assignment in enumerate(tasks)]):
                 future.result()
         merge_pending()
+        with claims.connect() as db:
+            totals['canonical_blocked']=db.execute("SELECT COUNT(*) FROM tasks WHERE state='canonical-blocked'").fetchone()[0]
         totals['remote_pending']=len(claims.remote_submitted())
         totals['integration_pending']=len(claims.submitted())
         integration.atomic_json(output/'summary.json', totals)

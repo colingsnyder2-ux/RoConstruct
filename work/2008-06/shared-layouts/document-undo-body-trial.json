@@ -1,0 +1,9 @@
+{
+  "source_sha256": "60ec4e962c4e4cf0719d01642f7d3c30f2755246688deba96d2db3b9c4f77930",
+  "object_sha256": "1273c5792b3f4eed17aaafc047050e19e5b65bd0297085c87bf20805d231958b",
+  "address": "00453670",
+  "candidate_size": 273,
+  "target_size": 209,
+  "match": false,
+  "scope": "Inactive source candidate, unplay target identity inferred from mined history implementation; linkage unverified."
+}

@@ -1,0 +1,61 @@
+{
+  "sources": {
+    "rebuild\\2008-06\\tests\\record_native_datamodel_timing.py": "b58d3970bdc71ec3b36df857e2705e3fe829529cd5b256b00a7502a494cee429",
+    "rebuild\\2008-06\\native-classes\\DataModelTiming.cpp": "1a2784c0af81acaa6f4ebff9f3703e26b5a3f18d62a75fd27874b6b9eb497ebe",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\DataModel.h": "eb785af6c82c30802e8df8be411c69cb7a0ed6e40e385cac821108d093c1b64b",
+    "rebuild\\2008-06\\native-headers\\util\\RunStateOwner.h": "ca5f8d17986bd817b89240a9704c5a3a1172bb279621a4c7b110523b7eabd435",
+    "tools\\rbxgs\\Client\\Rendering\\g3d\\include\\G3D\\Stopwatch.h": "f188df98be4df918e5521d716d38bd4eef5c4af7f6d56ee8da4974e117c1cc2e"
+  },
+  "object_sha256": "418bf01db70b1a38aa05443c0b1dab3797aa9d8ef2db330264795e85192e13a2",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeDataModelTiming.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\DataModelTiming.cpp"
+  ],
+  "methods": [
+    {
+      "address": "005757d0",
+      "symbol": "?getGameTime@DataModel@RBX@@QBENXZ",
+      "size": 13
+    },
+    {
+      "address": "005757e0",
+      "symbol": "?getFrameRate@DataModel@RBX@@QBENXZ",
+      "size": 13
+    }
+  ],
+  "scope": "Inactive typed accessors, relocation-masked original code; full RunService ABI and runtime linkage remain open."
+}

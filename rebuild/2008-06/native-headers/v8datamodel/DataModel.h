@@ -54,6 +54,8 @@ public:
     virtual void setDirty(bool value) { dirty = value; }
     virtual bool isDirty() const { return dirty; }
     Workspace* getWorkspace() const { return workspace.get(); }
+    double getGameTime() const;
+    double getFrameRate() const;
     static void closeDataModel(boost::shared_ptr<DataModel>, bool);
 };
 }

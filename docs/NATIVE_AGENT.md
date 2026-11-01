@@ -1,6 +1,6 @@
 # Native integration with an agent (Codex, Claude)
 
-## Native source recovery with real Codex agents (Worker 28)
+## Native source recovery with real Codex agents (Worker 29)
 
 Open `roc gui`, choose **Workers → Integrator**, select your Codex model and
 launch cap, then **Start native recovery**. This panel exposes native C++ recovery
@@ -1084,3 +1084,8 @@ counted separately, including when canonical linking is pending or already integ
 Tasks now include the real declaration headers and bounded genuine source context.
 The GUI defaults new Codex model selections to GPT-5.6 Terra. Clear the launch cap
 for continuous watching; worker count remains adjustable and can be set to one.
+
+Worker 29 rechecks explicitly assigned targets even when discovery eligibility omits them.
+A canonical body already exact but not linked stays pending linkage and earns no credit.
+Failed saved canonical proofs wait for changed source/baseline inputs; candidates remain saved.
+GUI reports canonical blockers separately from active host checks.
