@@ -170,6 +170,23 @@ This compiled source is not selected or runtime-tested until provider attachment
 and the channel ancestry dependencies are linked. Error reporting retains the
 documented warning-gate adaptation.
 
+The provider's native StockSound constructor 005bd250 sets the inherited
+archivable property false. SoundServiceStatsItem constructor 005bcc40 binds
+Current, Max, # Sounds and # Unused; its update 005bcd80 uses FMOD memory stats
+and the two Sound caches. The compiler identifies the StockSound constructor,
+stats constructor and sound-count helper 005b83d0 locally. No server credit is
+claimed. The service overlay adds only a compile-time friendship for the stats
+item; it adds no fields or layout padding.
+
+Executing the stats constructor exposed a use-after-free in the pre-existing
+Stats template overlay: it extracted a raw child pointer from a temporary
+shared_ptr before parenting. Both bound-counter and function-counter template
+paths now keep a strong reference until parenting. The diagnostic constructs
+the four native stats children and verifies bound memory, bound value and
+function-backed counters follow changed values. TypedMemItem 005c9bd0/005c9c50,
+bound-memory creation 005c9dc0 and numeric getter 005c8e50 were integrated for
+this test. Stats update against a live SoundService remains untested.
+
 An authored fixture with one Workspace Sound currently loads but retains zero
 Sounds. The load-only class-name traversal agrees with the independent Humanoid
 RTTI count on a control. A supplied place containing eight serialized Sounds

@@ -62,3 +62,6 @@ void SoundChannel::onEvent(const RunService*,Heartbeat){
     }
 }
 } }
+
+// 005bd250 sets the inherited archivable property to false.
+StockSound::StockSound(){RBX::Instance::propArchivable.setValue(this,false);}

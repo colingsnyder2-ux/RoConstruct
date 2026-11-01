@@ -19,12 +19,14 @@ def main():
     content = root / 'rebuild/2008-06/tests/fixtures/p4-assets'
     names = ['rebuild/2008-06/tests/PlayerNativeSound.cpp', 'rebuild/2008-06/tests/PlayerNativeSoundService.cpp',
              'rebuild/2008-06/tests/PlayerNativeSoundGC.cpp', 'rebuild/2008-06/tests/PlayerNativeSoundChannel.cpp',
+             'rebuild/2008-06/tests/PlayerNativeSoundStats.cpp',
              'rebuild/2008-06/tests/PlayerNativeReverb.cpp', 'rebuild/2008-06/tests/PlayerNativeReverb.h',
              'rebuild/2008-06/tests/P4SoundAssetTest.cpp',
              'rebuild/2008-06/modules/p4-sound-asset.json', 'rebuild/2008-06/tests/record_p4_sound.py',
              'rebuild/2008-06/glue/rbxgs/glue_link_stubs.cpp',
              'rebuild/2008-06/patches/rbxgs-client.json',
              'rebuild/2008-06/out/P4SoundAsset/overlay/App/include/util/Sound.h',
+             'rebuild/2008-06/out/P4SoundAsset/overlay/App/include/v8datamodel/Stats.h',
              'rebuild/2008-06/out/P4SoundAsset/overlay/App/include/v8tree/Instance.h',
              'tools/rbxgs/Client/App/include/util/Sound.h', 'tools/rbxgs/Client/App/include/util/ContentProvider.h',
              'tools/openrbx/3rdparty/fmod/api/inc/fmod.h', 'tools/openrbx/3rdparty/fmod/api/inc/fmod.hpp',
@@ -53,6 +55,7 @@ def main():
     assert len(lines) == 1 and sha(dll) == sha(root / 'clients/2008-06/fmodex.dll')
     assert 'P4 Sound loader PASS version=00041406 cycles=16 pcm_bytes=11024 samples=5512 2D/3D/cache/detach/missing' in stdout
     assert 'P4 Sound reverb PASS 24 presets/invalid/original room/FMOD' in stdout
+    assert 'P4 Sound stats PASS four children/bound counters/lifetimes' in stdout
     print('P4 Sound asset prerequisite PASS; service/audible gate open')
 
 

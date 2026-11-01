@@ -36,11 +36,25 @@ static void check(FMOD_RESULT result){
 }
 
 static void verify(bool condition){if(!condition)throw std::runtime_error("Sound assertion failed");}
+static size_t readCounter(const size_t* value){return *value;}
 
 int main(int argc,char** argv){
     try{
         verify(std::strcmp(RBX::Soundscape::sSoundChannel,"Sound")==0);
         verify(std::strcmp(RBX::Soundscape::sSoundService,"SoundService")==0);
+        {
+            SoundServiceStatsItem stats(0);
+            verify(stats.getName()=="Sound" && stats.getChildren() && stats.getChildren().read()->size()==4);
+            size_t bytes=1234,count=7;
+            RBX::Stats::Item* memory=stats.createBoundMemChildItem("Probe memory",bytes);
+            RBX::Stats::Item* counter=stats.createBoundChildItem("Probe count",count);
+            boost::function0<size_t> read=boost::bind(&readCounter,&count);
+            RBX::Stats::Item* functionCounter=stats.createChildItem("Probe function",read);
+            verify(memory->getValue()==1234 && counter->getValue()==7 && functionCounter->getValue()==7);
+            bytes=4321;count=11;
+            verify(memory->getValue()==4321 && counter->getValue()==11 && functionCounter->getValue()==11);
+            std::printf("P4 Sound stats PASS four children/bound counters/lifetimes\n");
+        }
         {
             float denormal=std::numeric_limits<float>::denorm_min();
             G3D::Vector3 result(9,9,9);
