@@ -155,9 +155,10 @@ def test_ten_tool_agents_probe_and_merge_distinct_bodies_without_losing_neighbor
     monkeypatch.setattr(recovery,'nominations',lambda *a:assignments)
     monkeypatch.setattr(sweep,'model_evidence',lambda *a:{'asm':'genuine test fixture'})
     monkeypatch.setattr(recovery,'stage_submission',lambda *a,**kw:dict(state='pending-mapping'))
-    active=peak=0;lock=threading.Lock()
+    active=peak=0;lock=threading.Lock();baseline_calls=[]
     def compile(root,rel,ctx,matcher,addresses,method,baseline=None,**kw):
         nonlocal active,peak
+        if '/snapshots/' in root.as_posix(): baseline_calls.append(rel)
         with lock:active+=1;peak=max(peak,active)
         try:
             time.sleep(.003)
@@ -185,6 +186,7 @@ def test_ten_tool_agents_probe_and_merge_distinct_bodies_without_losing_neighbor
     assert sorted(seen)==list(range(10))
     assert result['recovered']==10 and result['merged']==10 and result['conflicts']==0
     assert control.budget.requests==10 and peak<=2
+    assert baseline_calls==[REL]
     final=(shared/REL).read_text()
     assert all('A::f%d(){return %d;}'%(n,n+100) in final for n in range(10))
     assert len(list((private/'work/native-recovery/receipts').glob('*.json')))==10
@@ -335,3 +337,29 @@ def test_failed_submission_waits_for_changed_inputs_instead_of_rebuilding_foreve
     claims.update('a',owner,'draft',dict(candidate='saved.cpp',blocked_signature='same-build-inputs'))
     assert claims.pending(include_drafts=True,input_signature='same-build-inputs')==[]
     assert claims.pending(include_drafts=True,input_signature='new-header-or-base')[0][2]['candidate']=='saved.cpp'
+
+
+def test_xtp_profile_follows_native_header_chain_without_changing_other_profiles(tmp_path):
+    path=source(tmp_path,'#include "Frame.h"\nint A::f(){return 1;}')
+    headers=tmp_path/'rebuild/2008-06/native-headers';headers.mkdir()
+    (headers/'Frame.h').write_text('#include "FrameBases.h"')
+    (headers/'FrameBases.h').write_text('#include <XTToolkitPro.h>')
+    assert recovery.toolkit_profile(tmp_path,path)
+    (headers/'FrameBases.h').write_text('// plain native class')
+    assert not recovery.toolkit_profile(tmp_path,path)
+
+
+def test_xtp_compiler_profile_adds_toolkit_defines_without_nominmax(tmp_path,monkeypatch):
+    path=source(tmp_path,'#include "Frame.h"\nint A::f(){return 1;}')
+    headers=tmp_path/'rebuild/2008-06/native-headers';headers.mkdir()
+    (headers/'Frame.h').write_text('#include <XTToolkitPro.h>')
+    captured=[]
+    def compile(client,sources,out,includes,defines,flags):
+        captured.append((includes,defines))
+        return {str(sources[0]):(False,'synthetic compiler stop')}
+    monkeypatch.setattr(recovery.rebuild,'compile_direct',compile)
+    recovery.compile_probe(tmp_path,REL,SimpleNamespace(defines='WIN32',flags='/O2'),None,set(),'A::f')
+    includes,defines=captured[0]
+    assert '_XTP_STATICLINK' in defines and '_XTPLIB_NOAUTOLINK' in defines
+    assert 'NOMINMAX' not in defines
+    assert any(str(p).replace('\\','/').endswith('xtp-11.2.2/Source') for p in includes)

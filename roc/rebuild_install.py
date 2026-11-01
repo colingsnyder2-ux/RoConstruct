@@ -157,6 +157,12 @@ def prepare(client='2008-06', log=print, build_dependencies=True):
                         log('Native setup: fetching source recipe ' + recipe)
                         libs.fetch(recipe)
     if not build_dependencies:
+        headers = root / 'rebuild' / client / 'native-headers'
+        if any('XTToolkitPro.h' in p.read_text(encoding='utf-8',errors='replace') for p in headers.rglob('*.h')):
+            toolkit = libs._case_path(libs.LIBS / libs.RECIPES['xtp-11.2.2']['src'])
+            if not toolkit.is_dir():
+                log('Native setup: fetching required XTP source headers')
+                libs.fetch('xtp-11.2.2')
         log('Native setup: source/compiler inputs ready; linked dependencies deferred until submission')
         return
     for name, spec in modules[:-1]:

@@ -199,6 +199,9 @@ vm.runInContext(source.slice(source.indexOf("function tabModel("),source.indexOf
 vm.runInContext(source.slice(source.indexOf("function terminalMessage("),source.indexOf("function setChatFollow(")),feedContext);
 vm.runInContext(source.slice(source.indexOf("function logText("),source.indexOf("function filteredLogs(")),feedContext);
 feedContext.codeBlock=(text)=>`<pre>${text}</pre>`;
+const blockedNative=feedContext.terminalMessage({job:"native",seq:1,time:1,event:"native_result",slot:2,file:"App/Frame.cpp",local_exact:0,seconds:3,error:"C:/very/long/path/Frame.h(7): fatal error C1083: Cannot open include file: XTToolkitPro.h",error_summary:"fatal error C1083: Cannot open include file: XTToolkitPro.h"},new Map(),true);
+assert.match(blockedNative,/<details/);
+assert.match(blockedNative,/C:\/very\/long\/path/);
 const nativeResult=feedContext.terminalMessage({job:"native",seq:1,time:1,event:"native_result",slot:2,file:"App/Block.cpp",local_exact:3,seconds:19.8},new Map(),true);
 assert.match(nativeResult,/native_result exact/);
 assert.match(nativeResult,/w3/);

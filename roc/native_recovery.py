@@ -263,6 +263,26 @@ def nominations(root, texts, names):
     return result
 
 
+def toolkit_profile(root, unit):
+    """Follow native includes only; match the existing XTP probe's macro environment."""
+    pending, seen = [unit], set()
+    headers = root / NATIVE / 'native-headers'
+    while pending:
+        path = pending.pop()
+        if path in seen:
+            continue
+        seen.add(path)
+        for name in re.findall(r'^\s*#\s*include\s*[<"]([^>"\n]+)', path.read_text(encoding='utf-8',errors='replace'), re.M):
+            if Path(name).name == 'XTToolkitPro.h':
+                return True
+            for candidate in (path.parent/name,headers/name):
+                candidate = candidate.resolve()
+                if candidate.is_relative_to((root/NATIVE).resolve()) and candidate.is_file():
+                    pending.append(candidate)
+                    break
+    return False
+
+
 def compile_probe(root, rel, context, matcher, addresses, method, baseline=None, output=None, translation_unit=None):
     path = native_path(root, rel)
     if translation_unit:
@@ -276,12 +296,14 @@ def compile_probe(root, rel, context, matcher, addresses, method, baseline=None,
         raise ValueError('Header method requires an explicit consuming translation unit')
     else:
         unit = path
-    out = Path(output) if output else root/'proof'/integration.digest([inventory(root),context.defines,context.flags])[:16]
+    xtp = toolkit_profile(root,unit)
+    out = Path(output) if output else root/'proof'/integration.digest([rel,translation_unit,inventory(root),context.defines,context.flags,digest(Path(__file__).read_bytes())])[:16]
     includes = [root / NATIVE / 'native-headers', path.parent,
-                libs.LIBS / 'mfc-9.0-rtm/atlmfc/include',
+                libs.LIBS / 'mfc-9.0-rtm/atlmfc/include', libs.LIBS / 'xtp-11.2.2/Source',
                 *[libs._case_path(libs.LIBS / p).resolve() for p in libs.RECIPES['rbxgs']['include'] if p != 'WINSDK']]
-    result = rebuild.compile_direct('2008-06', [unit], out, includes,
-                                   context.defines+' _AFXDLL _MBCS NOMINMAX BOOST_ALL_NO_LIB', context.flags)
+    defines = context.defines+' _AFXDLL _MBCS BOOST_ALL_NO_LIB'
+    defines += ' _XTP_STATICLINK _XTPLIB_NOAUTOLINK' if xtp else ' NOMINMAX'
+    result = rebuild.compile_direct('2008-06', [unit], out, includes, defines, context.flags)
     ok, error = result[str(unit)]
     obj = out / (unit.stem + '.obj')
     command_file = obj.with_suffix('.command.json')
@@ -464,7 +486,7 @@ def run(config, control, emit):
     matcher = sweep.Matcher(set(match._functions('2008-06')))
     slots = sweep.resolve_compile_workers(config['native_compile_workers'], control.workers)
     broker = ProbeServer(slots, lambda: control.stopping)
-    totals = dict(recovered=0, merged=0, conflicts=0, submitted=0, accepted=0, pending=0, attempted=0)
+    totals = dict(recovered=0, merged=0, conflicts=0, submitted=0, accepted=0, pending=0, attempted=0, already_exact=0, baseline_blocked=0)
     tasks = []
     try:
         server_jobs = {}
@@ -564,12 +586,25 @@ def run(config, control, emit):
         headers = {k:v for k,v in before.items() if '/native-headers/' in k}
         for task in available:
             key = integration.digest([os.path.normcase(str(native_path(root,task['file']))), task['method']])
-            signature = integration.digest([before[task['file']], headers, config['model'], config['native_agent_checks'], config['native_agent_minutes']])
+            signature = integration.digest([before[task['file']], headers, config['model'], config['native_agent_checks'], config['native_agent_minutes'],digest(Path(__file__).read_bytes())])
             owner = claims.take(key, signature, dict(task=task))
             if owner:
                 tasks.append((key, owner, task))
             if len(tasks) >= min(control.workers, config['native_batch_files']):
                 break
+
+        baseline_cache, baseline_locks, baseline_lock = {}, {}, threading.Lock()
+        def baseline_for(task):
+            key = (task['file'],task.get('translation_unit'))
+            with baseline_lock:
+                lock = baseline_locks.setdefault(key,threading.Lock())
+            with lock:
+                if key not in baseline_cache:
+                    with broker.slots:
+                        baseline_cache[key] = compile_probe(snapshot,task['file'],context,matcher,set(),'',translation_unit=task.get('translation_unit'))
+                result = dict(baseline_cache[key])
+                result['target_exact'] = any(h['addr']==task['addr'] and sweep.symbol_method(h['symbol'])==task['method'] for h in result.get('hits',[]))
+                return result
 
         def one(slot, assignment):
             key, owner, task = assignment
@@ -585,15 +620,16 @@ def run(config, control, emit):
                     return
                 copy_sources(snapshot, folder)
                 original_inputs = inventory(folder)
-                probe = lambda: compile_probe(folder, task['file'], context, matcher, {task['addr']}, task['method'], translation_unit=task.get('translation_unit'))
-                with broker.slots:
-                    baseline = probe()
+                baseline = baseline_for(task)
                 if control.stopping:
                     claims.update(key,owner,'cancelled',record)
                     return
                 if not baseline['ok']:
+                    totals['baseline_blocked'] += 1
                     raise ValueError('Native baseline blocked: '+baseline['error'])
                 if baseline['target_exact']:
+                    totals['already_exact'] += 1
+                    emit('log',slot=slot,message=task['method']+': baseline already code/data exact locally; AI skipped')
                     claims.update(key, owner, 'already-exact', record)
                     return
                 record['baseline'] = [h['addr'] for h in baseline['hits']]
@@ -684,7 +720,9 @@ def run(config, control, emit):
                     control.command({'action':'stop'})
                 else:
                     claims.update(key, owner, 'blocked', record)
-                emit('native_result', slot=slot, file=task['file'], local_exact=0, seconds=round(time.monotonic()-started,1), error=str(error)[:240])
+                diagnostic = re.search(r'(?:fatal )?error [A-Z]\d{4}:[^\r\n]+',str(error))
+                emit('native_result', slot=slot, file=task['file'], local_exact=0, seconds=round(time.monotonic()-started,1),
+                     error=str(error),error_summary=diagnostic[0] if diagnostic else str(error).split('\n')[0])
             finally:
                 integration.atomic_json(ticket, record)
                 totals['attempted'] += 1
