@@ -18,6 +18,7 @@ namespace RBX
 		  stopRequested(false)
 	{
 		setName("Run Service");
+		runDisabled = false;
 		unknownStopwatch0x1e8.tick();
 	}
 

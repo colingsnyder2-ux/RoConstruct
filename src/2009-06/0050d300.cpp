@@ -1,4 +1,89 @@
+// from server: 100% by EspClaude
 // from server: 80% by EspClaude
+// roc 2009-06 0050d300  unit: RBX::Network::InterpolatingPhysicsReceiver::Nugget::UHistory::?$sp_counted_impl_p  size: 202 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 0050d300
+//
+// 0050d300  55                   push ebp
+// 0050d301  56                   push esi
+// 0050d302  57                   push edi
+// 0050d303  8bf9                 mov edi, ecx
+// 0050d305  85ff                 test edi, edi
+// 0050d307  7405                 je 0x50d30e
+// 0050d309  8d47f4               lea eax, [edi - 0xc]
+// 0050d30c  eb02                 jmp 0x50d310
+// 0050d30e  33c0                 xor eax, eax
+// 0050d310  8b4004               mov eax, dword ptr [eax + 4]
+// 0050d313  8b4024               mov eax, dword ptr [eax + 0x24]
+// 0050d316  85c0                 test eax, eax
+// 0050d318  7405                 je 0x50d31f
+// 0050d31a  83c0e0               add eax, -0x20
+// 0050d31d  eb02                 jmp 0x50d321
+// 0050d31f  33c0                 xor eax, eax
+// 0050d321  8b742414             mov esi, dword ptr [esp + 0x14]
+// 0050d325  8b6c2410             mov ebp, dword ptr [esp + 0x10]
+// 0050d329  3bf0                 cmp esi, eax
+// 0050d32b  7441                 je 0x50d36e
+// 0050d32d  85f6                 test esi, esi
+// 0050d32f  7409                 je 0x50d33a
+// 0050d331  8d4e20               lea ecx, [esi + 0x20]
+// 0050d334  894c2414             mov dword ptr [esp + 0x14], ecx
+// 0050d338  eb08                 jmp 0x50d342
+// 0050d33a  c744241400000000     mov dword ptr [esp + 0x14], 0
+// 0050d342  8d542414             lea edx, [esp + 0x14]
+// 0050d346  52                   push edx
+// 0050d347  e814b6ffff           call 0x508960
+// 0050d34c  8b442418             mov eax, dword ptr [esp + 0x18]
+// 0050d350  83c404               add esp, 4
+// 0050d353  85c0                 test eax, eax
+// 0050d355  7405                 je 0x50d35c
+// 0050d357  83c0e0               add eax, -0x20
+// 0050d35a  eb02                 jmp 0x50d35e
+// 0050d35c  33c0                 xor eax, eax
+// 0050d35e  8b4d08               mov ecx, dword ptr [ebp + 8]
+// 0050d361  3b4808               cmp ecx, dword ptr [eax + 8]
+// 0050d364  7308                 jae 0x50d36e
+// 0050d366  5f                   pop edi
+// 0050d367  5e                   pop esi
+// 0050d368  32c0                 xor al, al
+// 0050d36a  5d                   pop ebp
+// 0050d36b  c20c00               ret 0xc
+// 0050d36e  85f6                 test esi, esi
+// 0050d370  7409                 je 0x50d37b
+// 0050d372  83c620               add esi, 0x20
+// 0050d375  89742414             mov dword ptr [esp + 0x14], esi
+// 0050d379  eb08                 jmp 0x50d383
+// 0050d37b  c744241400000000     mov dword ptr [esp + 0x14], 0
+// 0050d383  8d542414             lea edx, [esp + 0x14]
+// 0050d387  52                   push edx
+// 0050d388  e883b9ffff           call 0x508d10
+// 0050d38d  8b442418             mov eax, dword ptr [esp + 0x18]
+// 0050d391  83c404               add esp, 4
+// 0050d394  85c0                 test eax, eax
+// 0050d396  7405                 je 0x50d39d
+// 0050d398  8d48e0               lea ecx, [eax - 0x20]
+// 0050d39b  eb02                 jmp 0x50d39f
+// 0050d39d  33c9                 xor ecx, ecx
+// 0050d39f  85ff                 test edi, edi
+// 0050d3a1  7405                 je 0x50d3a8
+// 0050d3a3  8d47f4               lea eax, [edi - 0xc]
+// 0050d3a6  eb02                 jmp 0x50d3aa
+// 0050d3a8  33c0                 xor eax, eax
+// 0050d3aa  3b4804               cmp ecx, dword ptr [eax + 4]
+// 0050d3ad  7410                 je 0x50d3bf
+// 0050d3af  8b4108               mov eax, dword ptr [ecx + 8]
+// 0050d3b2  3b4508               cmp eax, dword ptr [ebp + 8]
+// 0050d3b5  7308                 jae 0x50d3bf
+// 0050d3b7  5f                   pop edi
+// 0050d3b8  5e                   pop esi
+// 0050d3b9  33c0                 xor eax, eax
+// 0050d3bb  5d                   pop ebp
+// 0050d3bc  c20c00               ret 0xc
+// 0050d3bf  5f                   pop edi
+// 0050d3c0  5e                   pop esi
+// 0050d3c1  b801000000           mov eax, 1
+// 0050d3c6  5d                   pop ebp
+// 0050d3c7  c20c00               ret 0xc
+
 // from server: 100% by king_originala
 // roc 2008-06 004c71d0  unit: RBX::VInstance::?$Association::Item  size: 218 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 004c71d0
@@ -95,7 +180,7 @@ struct Header {
     unsigned long reserved0;
     unsigned long reserved1;
     unsigned long order;
-    char padding[0x280 - 12];
+    char padding[0x20 - 12];
 };
 
 struct Object : Header, Link {

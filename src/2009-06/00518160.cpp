@@ -1,9 +1,10 @@
+// from server: 100% by EspClaude
 // from server: 84% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD /fp:fast
-// roc-lib: openrbx-client-dll roc_espeon_nativeownerref_9eccb474e84ed3cb.cpp
+// roc-lib: openrbx-client-dll roc_espclaude_e296458f2466ef58.cpp
 
 // Candidate translation unit (score above; library headers required).
 extern const float minimumValue;
@@ -17,7 +18,7 @@ struct Ref {
 };
 typedef G3D::ReferenceCountedPointer<Ref> Handle;
 struct State {
-    char padding[0x1c8];
+    char padding[0xa4];
     int enabled;
 };
 
@@ -31,7 +32,7 @@ struct Holder {
 };
 
 struct S : Ref {
-    char padding[0xb4];
+    char padding[0x70];
     State* state;
     char padding2[12];
     Handle cached;
@@ -69,3 +70,4 @@ void S::f()
         }
     }
 }
+

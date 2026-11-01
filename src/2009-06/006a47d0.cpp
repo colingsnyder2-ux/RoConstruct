@@ -1,4 +1,22 @@
+// from server: 100% by EspClaude
 // from server: 80% by EspClaude
+// roc 2009-06 006a47d0  unit: RBX::P8PVInstance::?$SetImpl  size: 61 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 006a47d0
+//
+// 006a47d0  8b442404             mov eax, dword ptr [esp + 4]
+// 006a47d4  8b10                 mov edx, dword ptr [eax]
+// 006a47d6  89918c000000         mov dword ptr [ecx + 0x8c], edx
+// 006a47dc  8b5004               mov edx, dword ptr [eax + 4]
+// 006a47df  899190000000         mov dword ptr [ecx + 0x90], edx
+// 006a47e5  8b5008               mov edx, dword ptr [eax + 8]
+// 006a47e8  899194000000         mov dword ptr [ecx + 0x94], edx
+// 006a47ee  8b500c               mov edx, dword ptr [eax + 0xc]
+// 006a47f1  899198000000         mov dword ptr [ecx + 0x98], edx
+// 006a47f7  8b4010               mov eax, dword ptr [eax + 0x10]
+// 006a47fa  89819c000000         mov dword ptr [ecx + 0x9c], eax
+// 006a4800  c7818c00000000000000 mov dword ptr [ecx + 0x8c], 0
+// 006a480a  c20400               ret 4
+
 // from server: 100% by king_originala
 // roc 2008-06 0064df60  unit: RBX::ToolMouseCommand  size: 61 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0064df60
@@ -22,7 +40,7 @@ struct Value {
 };
 
 struct S {
-    char pad[0x130];
+    char pad[0x8c];
     Value value;
     void set(const Value& source);
 };

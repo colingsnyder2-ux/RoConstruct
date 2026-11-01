@@ -1,4 +1,9 @@
+// from server: 100% by EspClaude
 // from server: 83% by EspClaude
+// roc 2009-06 004cca90  unit: RBX::Network::Players  size: 468 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 004cca90
+//
+
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
@@ -91,26 +96,21 @@ inline bool backendProcessing(const Instance* context, bool testInDatamodel)
     return findBackend(context) && !isClient(context, testInDatamodel);
 }
 class Player : public Instance {
-    char pad0[0x130 - 4];
-public:
-    Notifier<Player, CharacterAdded> characterNotifier;
-private:
-    char pad1[0x1b4 - 0x131];
+    char pad0[0xc8 - 4];
     int userId;
 public:
     int getUserID() const { return userId; }
     void rebuildBackpack();
 };
-class PlayersBase : public Instance { char pad[0x14 - 4]; };
-class PlayersSignals : public Reflection::SignalSource { char pad[0x170 - 0x18]; };
-class Players : public PlayersBase, public PlayersSignals, public Listener<Player, CharacterAdded> {
-    char pad[0x198 - 0x174];
+struct PlayerSignal { void operator()(boost::shared_ptr<Instance> arg); };
+class Players : public Instance {
+    char pad[0xd4 - 4];
     CopyOnWrite<PtrVector<boost::shared_ptr<Instance> > > players;
+    char pad2[0xec - 0xd5];
 public:
-    static Reflection::SignalDesc<Players, void(boost::shared_ptr<Instance>)> event_PlayerAdded;
+    PlayerSignal playerAddedSignal;
     boost::shared_ptr<Instance> getPlayerByID(int userID);
     virtual void onChildAdded(Instance* child);
-    virtual void onEvent(const Player*, CharacterAdded);
 };
 void Players::onChildAdded(Instance* child)
 {
@@ -130,13 +130,12 @@ void Players::onChildAdded(Instance* child)
 
     if (backendProcessing(this, true))
     {
-        player->characterNotifier.addListener(this);
         player->rebuildBackpack();
 
         if (Teams* teams = ServiceProvider::find<Teams>(this))
             teams->assignNewPlayerToTeam(player);
 
-        event_PlayerAdded.fire(this, shared_from(player));
+        playerAddedSignal(shared_from(player));
     }
 }
 }

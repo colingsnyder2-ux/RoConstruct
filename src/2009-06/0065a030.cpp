@@ -1,9 +1,10 @@
+// from server: 100% by EspClaude
 // from server: 81% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// roc-lib: openrbx-client-dll roc_espeon_cameraupdategoalinstanceabia051c9e544407a5d.cpp
+// roc-lib: openrbx-client-dll roc_espclaude_30eaa6250df6d74d.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include "util/ICameraSubject.h"
@@ -23,7 +24,13 @@ namespace RBX
 	class ICameraOwner;
 
 	extern char sCamera[];
-	class Camera : public DescribedCreatable<Camera, Instance, sCamera>
+	struct CameraSubject2009 {
+		virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
+		virtual void v4(); virtual void v5(); virtual void v6(); virtual void v7();
+		virtual void stepGoalAndFocus(G3D::CoordinateFrame& goal, G3D::CoordinateFrame& focus, double dt);
+	};
+	struct CameraPad2009 { char pad[0x98]; };
+	class Camera : public CameraPad2009
 	{
 	private:
 		enum AnimationType
@@ -61,7 +68,7 @@ namespace RBX
 	private:
 		ICameraOwner* getCameraOwner();
 		void updateFocus();
-		void updateGoal();
+		void updateGoal(double dt);
 		bool characterZoom(float in);
 		bool nonCharacterZoom(float in);
 		void tryZoomExtents(float low, float current, float high, const RBX::Extents& extents, const G3D::Rect2D& viewPort);
@@ -76,10 +83,8 @@ namespace RBX
 		void setHeadingElevationDistance(float, float, float);
 		void tellCameraMoved();
 		void getIgnorePrims(G3D::Array<const Primitive*>&);
-		virtual bool askSetParent(const Instance* instance) const;
 	public:
 		Camera();
-		virtual ~Camera();
 	public:
 		const G3D::GCamera& getGCamera() const
 		{
@@ -90,7 +95,7 @@ namespace RBX
 		void alwaysMode();
 		bool isCharacterCamera() const;
 		bool isFirstPersonCamera() const;
-		ICameraSubject* getCameraSubject() const;
+		CameraSubject2009* getCameraSubject() const;
 		Instance* getCameraSubjectInstance() const;
 		void setCameraSubject(Instance* newSubject);
 		const G3D::CoordinateFrame& getCameraFocus() const
@@ -143,7 +148,7 @@ namespace RBX
 }
 
 namespace RBX {
-	void Camera::updateGoal()
+	void Camera::updateGoal(double dt)
 	{
 		switch (cameraType)
 		{
@@ -186,10 +191,8 @@ namespace RBX {
 			}
 			case CUSTOM_CAMERA:
 			{
-				if (ICameraSubject* cameraSubject = getCameraSubject())
-					cameraSubject->stepGoalAndFocus(cameraGoal, cameraFocus, cameraExternallyAdjusted);
-
-				cameraExternallyAdjusted = false;
+				if (CameraSubject2009* cameraSubject = getCameraSubject())
+					cameraSubject->stepGoalAndFocus(cameraGoal, cameraFocus, dt);
 				break;
 			}
 		}
@@ -199,3 +202,4 @@ namespace RBX {
 
 
 }
+

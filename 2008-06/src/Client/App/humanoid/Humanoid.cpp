@@ -1,5 +1,7 @@
 #pragma float_control(precise, off)
 #include "humanoid/Humanoid.h"
+namespace RBX { void ApplyRecoveredClimbCollision(Humanoid*,bool,bool); }
+
 #include "humanoid/Running.h"
 #include "humanoid/FallingDown.h"
 #include "v8datamodel/Tool.h"
@@ -413,8 +415,13 @@ namespace RBX
 
 	void Humanoid::setState(State* value)
 	{
-		if (value != currentState.get())
+		if (value != currentState.get()) {
+			bool previousClimb=currentState.get() && currentState->getName()=="Climbing";
+			bool climbing=value && value->getName()=="Climbing";
+			bool running=value && value->getName()=="Running";
 			currentState.reset(value);
+			if(previousClimb || climbing) ApplyRecoveredClimbCollision(this,climbing,running);
+		}
 	}
 
 	void Humanoid::moveTo(const G3D::Vector3& worldPosition, PartInstance* part)

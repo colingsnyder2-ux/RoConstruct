@@ -1,4 +1,43 @@
+// from server: 100% by EspClaude
 // from server: 80% by EspClaude
+// roc 2009-06 005c8680  unit: seg_005c0000  size: 114 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 005c8680
+//
+// 005c8680  55                   push ebp
+// 005c8681  8bec                 mov ebp, esp
+// 005c8683  6aff                 push -1
+// 005c8685  68e1208600           push 0x8620e1
+// 005c868a  64a100000000         mov eax, dword ptr fs:[0]
+// 005c8690  50                   push eax
+// 005c8691  64892500000000       mov dword ptr fs:[0], esp
+// 005c8698  83ec10               sub esp, 0x10
+// 005c869b  8b4508               mov eax, dword ptr [ebp + 8]
+// 005c869e  8945f0               mov dword ptr [ebp - 0x10], eax
+// 005c86a1  8b4df0               mov ecx, dword ptr [ebp - 0x10]
+// 005c86a4  51                   push ecx
+// 005c86a5  6a04                 push 4
+// 005c86a7  e85489e3ff           call 0x401000
+// 005c86ac  83c408               add esp, 8
+// 005c86af  8945e8               mov dword ptr [ebp - 0x18], eax
+// 005c86b2  c745fc00000000       mov dword ptr [ebp - 4], 0
+// 005c86b9  837de800             cmp dword ptr [ebp - 0x18], 0
+// 005c86bd  7411                 je 0x5c86d0
+// 005c86bf  8b550c               mov edx, dword ptr [ebp + 0xc]
+// 005c86c2  52                   push edx
+// 005c86c3  8b4de8               mov ecx, dword ptr [ebp - 0x18]
+// 005c86c6  e8d54aedff           call 0x49d1a0
+// 005c86cb  8945e4               mov dword ptr [ebp - 0x1c], eax
+// 005c86ce  eb07                 jmp 0x5c86d7
+// 005c86d0  c745e400000000       mov dword ptr [ebp - 0x1c], 0
+// 005c86d7  8b45e4               mov eax, dword ptr [ebp - 0x1c]
+// 005c86da  8945ec               mov dword ptr [ebp - 0x14], eax
+// 005c86dd  c745fcffffffff       mov dword ptr [ebp - 4], 0xffffffff
+// 005c86e4  8b4df4               mov ecx, dword ptr [ebp - 0xc]
+// 005c86e7  64890d00000000       mov dword ptr fs:[0], ecx
+// 005c86ee  8be5                 mov esp, ebp
+// 005c86f0  5d                   pop ebp
+// 005c86f1  c3                   ret 
+
 // from server: 100% by colin
 // roc 2008-06 00546f50  unit: seg_00540000  size: 125 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00546f50
@@ -48,7 +87,7 @@
 // 4-byte Vertex (target passes 4 to the placement operator new, not 0x18).
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /Od /Ob0 /GS /EHsc /MD
+// roc-flags: /Od /Ob0 /GS- /EHsc /MD
 
 #include <memory>
 #include <xmemory>

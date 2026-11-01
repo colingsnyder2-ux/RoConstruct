@@ -1,5 +1,7 @@
 {
  "App/humanoid/Freefall.cpp": [
+  ["#include \"humanoid/Freefall.h\"", "#include \"humanoid/Freefall.h\"\nnamespace RBX { bool DetectClimb(Humanoid*); Humanoid::State* CreateRecoveredClimbing(Humanoid*); }\n"],
+  ["\t\tif (newState == this)\n\t\t{\n\t\t\tif (floorPart)", "\t\tif (newState == this)\n\t\t{\n\t\t\tif (DetectClimb(humanoid)) return CreateRecoveredClimbing(humanoid);\n\t\t\tif (floorPart)"],
   ["#include \"humanoid/Running.h\"", "#include \"humanoid/Running.h\"\n#include \"v8datamodel/PartInstance.h\""],
   ["\t\t: Base(humanoid)\n\t{\n\t}", "\t\t: Base(humanoid), savedHeadFriction(0), savedTorsoFriction(0)\n\t{\n\t\tHumanoid::event_FreeFalling.fire(humanoid, true);\n\t\tif (humanoid->getHead()) { savedHeadFriction=humanoid->getHead()->getFriction(); humanoid->getHead()->setFriction(0); }\n\t\tif (humanoid->getTorso()) { savedTorsoFriction=humanoid->getTorso()->getFriction(); humanoid->getTorso()->setFriction(0); }\n\t}\n\n\tFreefall::~Freefall()\n\t{\n\t\tHumanoid::event_FreeFalling.fire(humanoid, false);\n\t\tif (humanoid->getHead()) humanoid->getHead()->setFriction(savedHeadFriction);\n\t\tif (humanoid->getTorso()) humanoid->getTorso()->setFriction(savedTorsoFriction);\n\t}"]
  ],
@@ -167,6 +169,7 @@
   ]
  ],
  "App/include/reflection/type.h": [
+  ["", "\n#include <boost/shared_ptr.hpp>\nnamespace RBX { class Instance; namespace Reflection {\ntemplate<> boost::shared_ptr<Instance>& Value::convert<boost::shared_ptr<Instance> >();\n}}\n"],
   [
    "",
    "\n// rebuild overlay: template bodies rbxgs declares but never defines\n#include <stdexcept>\n#include <stdio.h>\n#include \"util/Utilities.h\"\nnamespace RBX\n{\n\tnamespace Reflection\n\t{\n\t\t// types without a StringConverter never convert from text\n\t\ttemplate<typename T>\n\t\tinline bool rebuildFromString(const std::string&, T&) { return false; }\n#define RBX_REBUILD_FROM_STRING(T) \\\n\t\ttemplate<> inline bool rebuildFromString<T>(const std::string& text, T& value) { return StringConverter<T>::convertToValue(text, value); }\n\t\tRBX_REBUILD_FROM_STRING(bool) RBX_REBUILD_FROM_STRING(int) RBX_REBUILD_FROM_STRING(unsigned)\n\t\tRBX_REBUILD_FROM_STRING(float) RBX_REBUILD_FROM_STRING(double)\n#undef RBX_REBUILD_FROM_STRING\n\n\t\ttemplate<typename T>\n\t\tT& Value::convert()\n\t\t{\n\t\t\tif (T* held = boost::any_cast<T>(&value))\n\t\t\t\treturn *held;\n\t\t\tif (const std::string* text = boost::any_cast<std::string>(&value))\n\t\t\t{\n\t\t\t\tT converted;\n\t\t\t\tif (rebuildFromString(*text, converted))\n\t\t\t\t{\n\t\t\t\t\tset(converted);\n\t\t\t\t\treturn *boost::any_cast<T>(&value);\n\t\t\t\t}\n\t\t\t}\n\t\t\tchar message[256];\n\t\t\t_snprintf(message, sizeof(message), \"Unable to cast %s to %s\", type().name.c_str(), Type::singleton<T>().name.c_str());\n\t\t\tthrow std::runtime_error(message);\n\t\t}\n\n\t\ttemplate<typename T>\n\t\tT& Value::genericConvert()\n\t\t{\n\t\t\treturn convert<T>();\n\t\t}\n\n\t\ttemplate<typename T>\n\t\tT Value::get() const\n\t\t{\n\t\t\treturn boost::any_cast<T>(value);\n\t\t}\n\t}\n}\n"
@@ -271,6 +274,7 @@
   ]
  ],
  "App/include/lua/LuaBridge.h": [
+  ["                        if (lua_rawequal(L, -1, -2))\n                        {\n                            lua_pop(L, 2);\n                            value = *object;\n                            return true;\n                        }\n                    }\n                    else\n                    {\n                        lua_pop(L, 1);\n                    }", "                        bool matches = lua_rawequal(L, -1, -2) != 0;\n                        lua_pop(L, 2);\n                        if (matches)\n                        {\n                            value = *object;\n                            return true;\n                        }\n                    }"],
   [
    "const Object* object = static_cast<const Object*>(lua_touserdata(L,static_cast<int>(index)));",
    "const T* object = static_cast<const T*>(lua_touserdata(L,static_cast<int>(index)));"
@@ -443,6 +447,8 @@
   ]
  ],
  "App/humanoid/Humanoid.cpp": [
+  ["#include \"humanoid/Humanoid.h\"", "#include \"humanoid/Humanoid.h\"\nnamespace RBX { void ApplyRecoveredClimbCollision(Humanoid*,bool,bool); }\n"],
+  ["\tvoid Humanoid::setState(State* value)\n\t{\n\t\tif (value != currentState.get())\n\t\t\tcurrentState.reset(value);\n\t}", "\tvoid Humanoid::setState(State* value)\n\t{\n\t\tif (value != currentState.get()) {\n\t\t\tbool previousClimb=currentState.get() && currentState->getName()==\"Climbing\";\n\t\t\tbool climbing=value && value->getName()==\"Climbing\";\n\t\t\tbool running=value && value->getName()==\"Running\";\n\t\t\tcurrentState.reset(value);\n\t\t\tif(previousClimb || climbing) ApplyRecoveredClimbCollision(this,climbing,running);\n\t\t}\n\t}"],
   [
    "@all:AutoJoint",
    "JointInstance"
@@ -2015,7 +2021,7 @@
  "App/util/RunStateOwner.cpp": [
   [
    "\tRunService::RunService()\n\t\t: framePeriod(1.0f/30.0f),\n\t\t  runState(RS_NORMAL),\n\t\t  invalidRunViewCount(0),\n\t\t  stopRequested(false),\n\t\t  runDisabled(false)\n\t{\n\t\tsetName(\"Run Service\");\n\t}\n",
-   "\tRunService::RunService()\n\t\t: framePeriod(1.0f/30.0f),\n\t\t  runState(RS_NORMAL),\n\t\t  unknown0x1b8(0.0),\n\t\t  unknown0x1c8(0.0), unknown0x1d0(0.0), unknown0x1d8(0.0), unknown0x1e0(0.0),\n\t\t  invalidRunViewCount(0),\n\t\t  stopRequested(false)\n\t{\n\t\tsetName(\"Run Service\");\n\t\tunknownStopwatch0x1e8.tick();\n\t}\n"
+   "\tRunService::RunService()\n\t\t: framePeriod(1.0f/30.0f),\n\t\t  runState(RS_NORMAL),\n\t\t  unknown0x1b8(0.0),\n\t\t  unknown0x1c8(0.0), unknown0x1d0(0.0), unknown0x1d8(0.0), unknown0x1e0(0.0),\n\t\t  invalidRunViewCount(0),\n\t\t  stopRequested(false)\n\t{\n\t\tsetName(\"Run Service\");\n\t\trunDisabled = false;\n\t\tunknownStopwatch0x1e8.tick();\n\t}\n"
   ],
   [
    "RunService::start()\n\t{\n\t\tRBXASSERT(!runThread);\n\n\t\tboost::shared_ptr<DataModel> dataModel = shared_from(dynamic_cast<DataModel*>(getParent()));\n\t\trunThread.reset(new boost::thread(background_function(boost::bind(&RunService::runProc, shared_from(this), dataModel), \"rbx_runProc\")));\n\t}",
@@ -2079,6 +2085,7 @@
   ]
  ],
  "App/v8datamodel/Camera.cpp": [
+  ["cameraSubject = shared_from((ModelInstance*) newSubject);", "cameraSubject = shared_from(newSubject);"],
   [
    "#include \"v8datamodel/Camera.h\"",
    "#pragma float_control(precise,off)\n#include \"v8datamodel/Camera.h\""

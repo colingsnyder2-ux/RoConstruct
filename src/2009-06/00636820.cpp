@@ -1,4 +1,64 @@
+// from server: 100% by EspClaude
 // from server: 84% by EspClaude
+// roc 2009-06 00636820  unit: RBX::VScriptContext::?$FactoryProduct  size: 135 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 00636820
+//
+// 00636820  53                   push ebx
+// 00636821  8b5c240c             mov ebx, dword ptr [esp + 0xc]
+// 00636825  56                   push esi
+// 00636826  8b74240c             mov esi, dword ptr [esp + 0xc]
+// 0063682a  57                   push edi
+// 0063682b  53                   push ebx
+// 0063682c  56                   push esi
+// 0063682d  e82e2a0800           call 0x6b9260
+// 00636832  8bf8                 mov edi, eax
+// 00636834  83c408               add esp, 8
+// 00636837  85ff                 test edi, edi
+// 00636839  7466                 je 0x6368a1
+// 0063683b  53                   push ebx
+// 0063683c  56                   push esi
+// 0063683d  e8ce2e0800           call 0x6b9710
+// 00636842  83c408               add esp, 8
+// 00636845  85c0                 test eax, eax
+// 00636847  744d                 je 0x636896
+// 00636849  a1ec2aa200           mov eax, dword ptr [0xa22aec]
+// 0063684e  50                   push eax
+// 0063684f  68f0d8ffff           push 0xffffd8f0
+// 00636854  56                   push esi
+// 00636855  e8762d0800           call 0x6b95d0
+// 0063685a  6afe                 push -2
+// 0063685c  6aff                 push -1
+// 0063685e  56                   push esi
+// 0063685f  e8ec270800           call 0x6b9050
+// 00636864  83c418               add esp, 0x18
+// 00636867  85c0                 test eax, eax
+// 00636869  7436                 je 0x6368a1
+// 0063686b  6afd                 push -3
+// 0063686d  56                   push esi
+// 0063686e  e81d250800           call 0x6b8d90
+// 00636873  ff052ca5a400         inc dword ptr [0xa4a52c]
+// 00636879  83c408               add esp, 8
+// 0063687c  e83ff6faff           call 0x5e5ec0
+// 00636881  8b4c2418             mov ecx, dword ptr [esp + 0x18]
+// 00636885  8901                 mov dword ptr [ecx], eax
+// 00636887  57                   push edi
+// 00636888  83c104               add ecx, 4
+// 0063688b  e850eefaff           call 0x5e56e0
+// 00636890  5f                   pop edi
+// 00636891  5e                   pop esi
+// 00636892  b001                 mov al, 1
+// 00636894  5b                   pop ebx
+// 00636895  c3                   ret 
+// 00636896  6afe                 push -2
+// 00636898  56                   push esi
+// 00636899  e8f2240800           call 0x6b8d90
+// 0063689e  83c408               add esp, 8
+// 006368a1  5f                   pop edi
+// 006368a2  5e                   pop esi
+// 006368a3  32c0                 xor al, al
+// 006368a5  5b                   pop ebx
+// 006368a6  c3                   ret 
+
 // from server: 100% by king_originala
 // roc 2008-06 005ac1e0  unit: RBX::VScriptContext::?$FactoryProduct  size: 129 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005ac1e0
@@ -66,6 +126,7 @@ extern "C" void __cdecl setTop(void* state, int index);
 extern "C" void* __cdecl getDescriptor();
 
 extern const char* fieldName;
+extern int exeCounter;
 
 struct Reference
 {
@@ -89,6 +150,7 @@ bool __cdecl convert(void* state, int index, Result* result)
             if (rawEqual(state, -1, -2))
             {
                 setTop(state, -3);
+                ++exeCounter;
                 result->descriptor = getDescriptor();
                 result->reference.assign(object);
                 return true;

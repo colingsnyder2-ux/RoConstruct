@@ -1,4 +1,124 @@
+// from server: 100% by EspClaude
 // from server: 84% by EspClaude
+// roc 2009-06 005182c0  unit: RBX::PartChunk  size: 358 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 005182c0
+//
+// 005182c0  6aff                 push -1
+// 005182c2  6808dd8500           push 0x85dd08
+// 005182c7  64a100000000         mov eax, dword ptr fs:[0]
+// 005182cd  50                   push eax
+// 005182ce  64892500000000       mov dword ptr fs:[0], esp
+// 005182d5  51                   push ecx
+// 005182d6  56                   push esi
+// 005182d7  8bf1                 mov esi, ecx
+// 005182d9  837e7800             cmp dword ptr [esi + 0x78], 0
+// 005182dd  0f8433010000         je 0x518416
+// 005182e3  8b8680000000         mov eax, dword ptr [esi + 0x80]
+// 005182e9  53                   push ebx
+// 005182ea  8b1da4e18900         mov ebx, dword ptr [0x89e1a4]
+// 005182f0  85c0                 test eax, eax
+// 005182f2  7431                 je 0x518325
+// 005182f4  83c004               add eax, 4
+// 005182f7  50                   push eax
+// 005182f8  ffd3                 call ebx
+// 005182fa  85c0                 test eax, eax
+// 005182fc  751d                 jne 0x51831b
+// 005182fe  8b8e80000000         mov ecx, dword ptr [esi + 0x80]
+// 00518304  e877caf2ff           call 0x444d80
+// 00518309  8b8e80000000         mov ecx, dword ptr [esi + 0x80]
+// 0051830f  85c9                 test ecx, ecx
+// 00518311  7408                 je 0x51831b
+// 00518313  8b01                 mov eax, dword ptr [ecx]
+// 00518315  8b10                 mov edx, dword ptr [eax]
+// 00518317  6a01                 push 1
+// 00518319  ffd2                 call edx
+// 0051831b  c7868000000000000000 mov dword ptr [esi + 0x80], 0
+// 00518325  8d4604               lea eax, [esi + 4]
+// 00518328  50                   push eax
+// 00518329  c6868400000001       mov byte ptr [esi + 0x84], 1
+// 00518330  8974240c             mov dword ptr [esp + 0xc], esi
+// 00518334  ff15d0e18900         call dword ptr [0x89e1d0]
+// 0051833a  8b868c000000         mov eax, dword ptr [esi + 0x8c]
+// 00518340  8b4804               mov ecx, dword ptr [eax + 4]
+// 00518343  8b4678               mov eax, dword ptr [esi + 0x78]
+// 00518346  83b8a400000000       cmp dword ptr [eax + 0xa4], 0
+// 0051834d  8b11                 mov edx, dword ptr [ecx]
+// 0051834f  8b12                 mov edx, dword ptr [edx]
+// 00518351  0f94c0               sete al
+// 00518354  0fb6c0               movzx eax, al
+// 00518357  50                   push eax
+// 00518358  8d44240c             lea eax, [esp + 0xc]
+// 0051835c  50                   push eax
+// 0051835d  c744241c00000000     mov dword ptr [esp + 0x1c], 0
+// 00518365  ffd2                 call edx
+// 00518367  8b442408             mov eax, dword ptr [esp + 8]
+// 0051836b  c7442414ffffffff     mov dword ptr [esp + 0x14], 0xffffffff
+// 00518373  85c0                 test eax, eax
+// 00518375  742b                 je 0x5183a2
+// 00518377  83c004               add eax, 4
+// 0051837a  50                   push eax
+// 0051837b  ffd3                 call ebx
+// 0051837d  85c0                 test eax, eax
+// 0051837f  7519                 jne 0x51839a
+// 00518381  8b4c2408             mov ecx, dword ptr [esp + 8]
+// 00518385  e8f6c9f2ff           call 0x444d80
+// 0051838a  8b4c2408             mov ecx, dword ptr [esp + 8]
+// 0051838e  85c9                 test ecx, ecx
+// 00518390  7408                 je 0x51839a
+// 00518392  8b01                 mov eax, dword ptr [ecx]
+// 00518394  8b10                 mov edx, dword ptr [eax]
+// 00518396  6a01                 push 1
+// 00518398  ffd2                 call edx
+// 0051839a  c744240800000000     mov dword ptr [esp + 8], 0
+// 005183a2  8b4678               mov eax, dword ptr [esi + 0x78]
+// 005183a5  8b16                 mov edx, dword ptr [esi]
+// 005183a7  83b8a400000000       cmp dword ptr [eax + 0xa4], 0
+// 005183ae  8b4224               mov eax, dword ptr [edx + 0x24]
+// 005183b1  5b                   pop ebx
+// 005183b2  8bce                 mov ecx, esi
+// 005183b4  7430                 je 0x5183e6
+// 005183b6  ffd0                 call eax
+// 005183b8  d9054cad8b00         fld dword ptr [0x8bad4c]
+// 005183be  d8d1                 fcom st(1)
+// 005183c0  dfe0                 fnstsw ax
+// 005183c2  ddd9                 fstp st(1)
+// 005183c4  f6c441               test ah, 0x41
+// 005183c7  754b                 jne 0x518414
+// 005183c9  8b16                 mov edx, dword ptr [esi]
+// 005183cb  8b4220               mov eax, dword ptr [edx + 0x20]
+// 005183ce  51                   push ecx
+// 005183cf  8bce                 mov ecx, esi
+// 005183d1  d91c24               fstp dword ptr [esp]
+// 005183d4  ffd0                 call eax
+// 005183d6  5e                   pop esi
+// 005183d7  8b4c2404             mov ecx, dword ptr [esp + 4]
+// 005183db  64890d00000000       mov dword ptr fs:[0], ecx
+// 005183e2  83c410               add esp, 0x10
+// 005183e5  c3                   ret 
+// 005183e6  ffd0                 call eax
+// 005183e8  d81d00a58b00         fcomp dword ptr [0x8ba500]
+// 005183ee  dfe0                 fnstsw ax
+// 005183f0  f6c405               test ah, 5
+// 005183f3  7a21                 jp 0x518416
+// 005183f5  8b16                 mov edx, dword ptr [esi]
+// 005183f7  d9ee                 fldz 
+// 005183f9  8b4220               mov eax, dword ptr [edx + 0x20]
+// 005183fc  51                   push ecx
+// 005183fd  8bce                 mov ecx, esi
+// 005183ff  d91c24               fstp dword ptr [esp]
+// 00518402  ffd0                 call eax
+// 00518404  5e                   pop esi
+// 00518405  8b4c2404             mov ecx, dword ptr [esp + 4]
+// 00518409  64890d00000000       mov dword ptr fs:[0], ecx
+// 00518410  83c410               add esp, 0x10
+// 00518413  c3                   ret 
+// 00518414  ddd8                 fstp st(0)
+// 00518416  8b4c2408             mov ecx, dword ptr [esp + 8]
+// 0051841a  5e                   pop esi
+// 0051841b  64890d00000000       mov dword ptr fs:[0], ecx
+// 00518422  83c410               add esp, 0x10
+// 00518425  c3                   ret 
+
 // from server: 100% by colin
 // roc 2008-06 004e68b0  unit: RBX::ViewNew::Part  size: 367 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 004e68b0
@@ -165,7 +285,7 @@ inline Ptr::~Ptr()
 }
 
 struct Model {
-    char padding[0x1c8];
+    char padding[0xa4];
     int state;
 };
 
@@ -189,7 +309,7 @@ struct S : Ref {
     virtual void setValue(float);
     virtual float getValue();
 
-    char padding[0xb4];
+    char padding[0x70];
     Model* model;
     int unused;
     Ptr pending;

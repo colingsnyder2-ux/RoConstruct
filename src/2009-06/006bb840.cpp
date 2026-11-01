@@ -1,4 +1,96 @@
+// from server: 100% by EspClaude
 // from server: 82% by EspClaude
+// roc 2009-06 006bb840  unit: RBX::Lua::LuaArguments  size: 226 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 006bb840
+//
+// 006bb840  83ec08               sub esp, 8
+// 006bb843  53                   push ebx
+// 006bb844  55                   push ebp
+// 006bb845  56                   push esi
+// 006bb846  8bf1                 mov esi, ecx
+// 006bb848  8b5e10               mov ebx, dword ptr [esi + 0x10]
+// 006bb84b  2b5e0c               sub ebx, dword ptr [esi + 0xc]
+// 006bb84e  33ed                 xor ebp, ebp
+// 006bb850  c1fb02               sar ebx, 2
+// 006bb853  57                   push edi
+// 006bb854  85db                 test ebx, ebx
+// 006bb856  7649                 jbe 0x6bb8a1
+// 006bb858  eb06                 jmp 0x6bb860
+// 006bb85a  8d9b00000000         lea ebx, [ebx]
+// 006bb860  8b4610               mov eax, dword ptr [esi + 0x10]
+// 006bb863  2b460c               sub eax, dword ptr [esi + 0xc]
+// 006bb866  8d3c2b               lea edi, [ebx + ebp]
+// 006bb869  d1ef                 shr edi, 1
+// 006bb86b  c1f802               sar eax, 2
+// 006bb86e  3bf8                 cmp edi, eax
+// 006bb870  7206                 jb 0x6bb878
+// 006bb872  ff15ace98900         call dword ptr [0x89e9ac]
+// 006bb878  8b4e0c               mov ecx, dword ptr [esi + 0xc]
+// 006bb87b  8b14b9               mov edx, dword ptr [ecx + edi*4]
+// 006bb87e  8b4204               mov eax, dword ptr [edx + 4]
+// 006bb881  8b4c2420             mov ecx, dword ptr [esp + 0x20]
+// 006bb885  3bc8                 cmp ecx, eax
+// 006bb887  7443                 je 0x6bb8cc
+// 006bb889  50                   push eax
+// 006bb88a  ff155ce48900         call dword ptr [0x89e45c]
+// 006bb890  85c0                 test eax, eax
+// 006bb892  7d04                 jge 0x6bb898
+// 006bb894  8bdf                 mov ebx, edi
+// 006bb896  eb05                 jmp 0x6bb89d
+// 006bb898  7e32                 jle 0x6bb8cc
+// 006bb89a  8d6f01               lea ebp, [edi + 1]
+// 006bb89d  3beb                 cmp ebp, ebx
+// 006bb89f  72bf                 jb 0x6bb860
+// 006bb8a1  8b5e10               mov ebx, dword ptr [esi + 0x10]
+// 006bb8a4  8b7c241c             mov edi, dword ptr [esp + 0x1c]
+// 006bb8a8  c70700000000         mov dword ptr [edi], 0
+// 006bb8ae  395e0c               cmp dword ptr [esi + 0xc], ebx
+// 006bb8b1  7606                 jbe 0x6bb8b9
+// 006bb8b3  ff15ace98900         call dword ptr [0x89e9ac]
+// 006bb8b9  8b06                 mov eax, dword ptr [esi]
+// 006bb8bb  8907                 mov dword ptr [edi], eax
+// 006bb8bd  895f04               mov dword ptr [edi + 4], ebx
+// 006bb8c0  8bc7                 mov eax, edi
+// 006bb8c2  5f                   pop edi
+// 006bb8c3  5e                   pop esi
+// 006bb8c4  5d                   pop ebp
+// 006bb8c5  5b                   pop ebx
+// 006bb8c6  83c408               add esp, 8
+// 006bb8c9  c20800               ret 8
+// 006bb8cc  8b5e0c               mov ebx, dword ptr [esi + 0xc]
+// 006bb8cf  3b5e10               cmp ebx, dword ptr [esi + 0x10]
+// 006bb8d2  7606                 jbe 0x6bb8da
+// 006bb8d4  ff15ace98900         call dword ptr [0x89e9ac]
+// 006bb8da  8b36                 mov esi, dword ptr [esi]
+// 006bb8dc  8bee                 mov ebp, esi
+// 006bb8de  895c2414             mov dword ptr [esp + 0x14], ebx
+// 006bb8e2  85f6                 test esi, esi
+// 006bb8e4  7518                 jne 0x6bb8fe
+// 006bb8e6  ff15ace98900         call dword ptr [0x89e9ac]
+// 006bb8ec  33c0                 xor eax, eax
+// 006bb8ee  8d3cbb               lea edi, [ebx + edi*4]
+// 006bb8f1  3b7810               cmp edi, dword ptr [eax + 0x10]
+// 006bb8f4  7713                 ja 0x6bb909
+// 006bb8f6  85f6                 test esi, esi
+// 006bb8f8  7408                 je 0x6bb902
+// 006bb8fa  8b36                 mov esi, dword ptr [esi]
+// 006bb8fc  eb06                 jmp 0x6bb904
+// 006bb8fe  8b06                 mov eax, dword ptr [esi]
+// 006bb900  ebec                 jmp 0x6bb8ee
+// 006bb902  33f6                 xor esi, esi
+// 006bb904  3b7e0c               cmp edi, dword ptr [esi + 0xc]
+// 006bb907  7306                 jae 0x6bb90f
+// 006bb909  ff15ace98900         call dword ptr [0x89e9ac]
+// 006bb90f  8b44241c             mov eax, dword ptr [esp + 0x1c]
+// 006bb913  897804               mov dword ptr [eax + 4], edi
+// 006bb916  5f                   pop edi
+// 006bb917  5e                   pop esi
+// 006bb918  8928                 mov dword ptr [eax], ebp
+// 006bb91a  5d                   pop ebp
+// 006bb91b  5b                   pop ebx
+// 006bb91c  83c408               add esp, 8
+// 006bb91f  c20800               ret 8
+
 // from server: 100% by Espeon
 // roc 2008-06 0061ba10  unit: RBX::Lua::LuaArguments  size: 232 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0061ba10
@@ -196,7 +288,6 @@ struct String {
 extern int (__thiscall *string_compare)(const String *, const String &);
 
 struct Key {
-    unsigned int tag;
     String text;
 };
 

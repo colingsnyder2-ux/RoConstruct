@@ -1,3 +1,4 @@
+// from server: 100% by EspClaude
 // from server: 84% by EspClaude
 // from server: 100% by EspClaude
 // from server: 99% by EspClaude
@@ -5,7 +6,7 @@
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD /fp:fast
-// roc-lib: openrbx-client-dll roc_espclaude_53f7087b0addb13e.cpp
+// roc-lib: openrbx-client-dll roc_espclaude_f463969b9f3ef5d5.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <boost/shared_ptr.hpp>
@@ -33,14 +34,14 @@ struct Geometry
 
 struct World
 {
-    unsigned char padding[0x84];
+    unsigned char padding[0xb0];
     Geometry* geometry;
     Geometry* getContactManager() { return geometry; }
 };
 
 struct Context
 {
-    unsigned char padding[0x2e4];
+    unsigned char padding[0x150];
     World* world;
     World* getWorld() { return world; }
 };
@@ -50,13 +51,13 @@ extern const unsigned char intersectionOption;
 
 struct S
 {
-    unsigned char padding[0x130];
+    unsigned char padding[0x8c];
     Context* context;
 
-    Vector f(const Shared&, Ray);
+    Vector f(const Shared&, Ray, Primitive**);
 };
 
-Vector S::f(const Shared& input, Ray ray)
+Vector S::f(const Shared& input, Ray ray, Primitive** hitOut)
 {
     if (!context)
         return defaultVector;
@@ -70,6 +71,7 @@ Vector S::f(const Shared& input, Ray ray)
     List list;
 
     Primitive* hit = geometry->intersect(ray, list, shared, result, &intersectionOption);
+    *hitOut = hit;
     if (hit == NULL)
     {
         result = ray.transformed().direction + ray.origin;
@@ -77,5 +79,6 @@ Vector S::f(const Shared& input, Ray ray)
 
     return result;
 }
+
 
 

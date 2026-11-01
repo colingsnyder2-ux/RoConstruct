@@ -1,9 +1,10 @@
+// from server: 100% by EspClaude
 // from server: 83% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: openrbx-client-dll roc_espeon_verified_0789bdc26aae476a.cpp
+// roc-lib: openrbx-client-dll roc_espclaude_08cfcbac688fcc4a.cpp
 
 // Candidate translation unit (score above; library headers required).
 // roc-cl: 21022
@@ -40,7 +41,7 @@ struct EndIterator {
 };
 
 struct PartTool {
-    unsigned char padding[0x108];
+    unsigned char padding[0x4c];
     Children* children;
     void* findCamera();
 };
@@ -91,3 +92,4 @@ void* PartTool::findCamera()
     }
     return 0;
 }
+

@@ -1,4 +1,60 @@
+// from server: 100% by EspClaude
 // from server: 83% by EspClaude
+// roc 2009-06 0060f280  unit: RBX::RotateAxisCommand  size: 137 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 0060f280
+//
+// 0060f280  83ec24               sub esp, 0x24
+// 0060f283  56                   push esi
+// 0060f284  57                   push edi
+// 0060f285  8bf9                 mov edi, ecx
+// 0060f287  8b7720               mov esi, dword ptr [edi + 0x20]
+// 0060f28a  e851b7ffff           call 0x60a9e0
+// 0060f28f  8b4f20               mov ecx, dword ptr [edi + 0x20]
+// 0060f292  85c9                 test ecx, ecx
+// 0060f294  7407                 je 0x60f29d
+// 0060f296  e815e6ffff           call 0x60d8b0
+// 0060f29b  eb02                 jmp 0x60f29f
+// 0060f29d  33c0                 xor eax, eax
+// 0060f29f  0598000000           add eax, 0x98
+// 0060f2a4  50                   push eax
+// 0060f2a5  8b07                 mov eax, dword ptr [edi]
+// 0060f2a7  8b5014               mov edx, dword ptr [eax + 0x14]
+// 0060f2aa  8d4c240c             lea ecx, [esp + 0xc]
+// 0060f2ae  51                   push ecx
+// 0060f2af  8bcf                 mov ecx, edi
+// 0060f2b1  ffd2                 call edx
+// 0060f2b3  50                   push eax
+// 0060f2b4  8bcf                 mov ecx, edi
+// 0060f2b6  e825c0ffff           call 0x60b2e0
+// 0060f2bb  8b4f20               mov ecx, dword ptr [edi + 0x20]
+// 0060f2be  85c9                 test ecx, ecx
+// 0060f2c0  7407                 je 0x60f2c9
+// 0060f2c2  e8a925ffff           call 0x601870
+// 0060f2c7  eb02                 jmp 0x60f2cb
+// 0060f2c9  33c0                 xor eax, eax
+// 0060f2cb  6a04                 push 4
+// 0060f2cd  8bc8                 mov ecx, eax
+// 0060f2cf  e8dcac0300           call 0x649fb0
+// 0060f2d4  8b4704               mov eax, dword ptr [edi + 4]
+// 0060f2d7  83781810             cmp dword ptr [eax + 0x18], 0x10
+// 0060f2db  7205                 jb 0x60f2e2
+// 0060f2dd  8b4004               mov eax, dword ptr [eax + 4]
+// 0060f2e0  eb03                 jmp 0x60f2e5
+// 0060f2e2  83c004               add eax, 4
+// 0060f2e5  8b4f20               mov ecx, dword ptr [edi + 0x20]
+// 0060f2e8  51                   push ecx
+// 0060f2e9  50                   push eax
+// 0060f2ea  e8b1e10000           call 0x61d4a0
+// 0060f2ef  8b4c2438             mov ecx, dword ptr [esp + 0x38]
+// 0060f2f3  8b11                 mov edx, dword ptr [ecx]
+// 0060f2f5  83c408               add esp, 8
+// 0060f2f8  5f                   pop edi
+// 0060f2f9  5e                   pop esi
+// 0060f2fa  83c424               add esp, 0x24
+// 0060f2fd  c744240401000000     mov dword ptr [esp + 4], 1
+// 0060f305  8b02                 mov eax, dword ptr [edx]
+// 0060f307  ffe0                 jmp eax
+
 // from server: 100% by king_originala
 // roc 2008-06 005812b0  unit: RBX::RotateAxisCommand  size: 164 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005812b0
@@ -89,7 +145,7 @@ static __declspec(noinline) void checkPermissions(Instance* instance)
 
 namespace RBX {
 struct Matrix3 {float data[9];Matrix3(const Matrix3&);};
-struct Name {int id;std::string text;const char* c_str()const{return text.c_str();}};
+struct Name {std::string text;const char* c_str()const{return text.c_str();}};
 struct Flag {bool value;Flag():value(false){}};
 struct Changed {void notify(Flag);};
 struct Workspace {char pad[0x344];Changed changed;};
@@ -117,10 +173,9 @@ struct RotateAxisCommand {
 void RotateAxisCommand::doIt(IDataState* state){
  checkPermissions(reinterpret_cast<Instance*>(context));
  Selection* selected=context?context->selection():0;
- apply(axis(),reinterpret_cast<char*>(selected)+0x13c);
+ apply(axis(),reinterpret_cast<char*>(selected)+0x98);
  History* history=context?context->history():0;
  history->record(4);
- workspace->changed.notify(Flag());
  trackVerb(name->c_str(),context);
  state->setDirty(true);
 }

@@ -79,16 +79,13 @@ namespace RBX
                     if (lua_getmetatable(L, static_cast<int>(index)))
                     {
                         luaL_getmetatable(L, className);
-                        if (lua_rawequal(L, -1, -2))
+                        bool matches = lua_rawequal(L, -1, -2) != 0;
+                        lua_pop(L, 2);
+                        if (matches)
                         {
-                            lua_pop(L, 2);
                             value = *object;
                             return true;
                         }
-                    }
-                    else
-                    {
-                        lua_pop(L, 1);
                     }
                 }
 

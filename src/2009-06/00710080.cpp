@@ -1,9 +1,10 @@
+// from server: 86% by EspClaude
 // from server: 85% by EspClaude
 // from server: 100% by auto
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: g3d-6.09 G3Dcpp/RegistryUtil.cpp
+// roc-lib: g3d-6.09 roc_espclaude_b9effa281dc14314.cpp
 
 // Candidate translation unit (score above; library headers required).
 /**
@@ -55,7 +56,7 @@ bool RegistryUtil::keyExists(const std::string& key) {
 
     debugAssert(key.size() > (pos + 1));
     HKEY openKey;
-    int32 result = RegOpenKeyEx(hkey, (key.c_str() + pos + 1), 0, KEY_ALL_ACCESS, &openKey);
+    int32 result = RegOpenKeyEx(hkey, (key.c_str() + pos + 1), 0, KEY_READ, &openKey);
 
     if ( result == ERROR_SUCCESS ) {
         RegCloseKey(openKey);
@@ -87,7 +88,7 @@ bool RegistryUtil::readInt32(const std::string& key, int32& valueData) {
         std::string value = key.substr(valuePos + 1, key.size() - valuePos);
 
         HKEY openKey;
-        int32 result = RegOpenKeyEx(hkey, subKey.c_str(), 0, KEY_ALL_ACCESS, &openKey);
+        int32 result = RegOpenKeyEx(hkey, subKey.c_str(), 0, KEY_READ, &openKey);
 
         if ( result == ERROR_SUCCESS ) {
             uint32 dataSize = sizeof(int32);
@@ -123,7 +124,7 @@ bool RegistryUtil::readBytes(const std::string& key, uint8* valueData, uint32& d
         std::string value = key.substr(valuePos + 1, key.size() - valuePos);
 
         HKEY openKey;
-        int32 result = RegOpenKeyEx(hkey, subKey.c_str(), 0, KEY_ALL_ACCESS, &openKey);
+        int32 result = RegOpenKeyEx(hkey, subKey.c_str(), 0, KEY_READ, &openKey);
 
         if ( result == ERROR_SUCCESS ) {
 
@@ -164,7 +165,7 @@ bool RegistryUtil::readString(const std::string& key, std::string& valueData) {
         std::string value = key.substr(valuePos + 1, key.size() - valuePos);
 
         HKEY openKey;
-        int32 result = RegOpenKeyEx(hkey, subKey.c_str(), 0, KEY_ALL_ACCESS, &openKey);
+        int32 result = RegOpenKeyEx(hkey, subKey.c_str(), 0, KEY_READ, &openKey);
 
         if ( result == ERROR_SUCCESS ) {
             uint32 dataSize = 0;
@@ -179,6 +180,9 @@ bool RegistryUtil::readString(const std::string& key, std::string& valueData) {
                 
                 if ( result == ERROR_SUCCESS ) {
                     valueData = tmpStr;
+                }
+                System::free(tmpStr);
+                {
                 }
             }
             debugAssertM(result == ERROR_SUCCESS, "Could not read registry key value.");

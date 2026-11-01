@@ -1,11 +1,13 @@
+// from server: 100% by EspClaude
 // from server: 84% by EspClaude
 // from server: 100% by tester
-// roc-lang: c
+// roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /MD /fp:fast
-// roc-lib: g3d-6.09-png pngrtran.c
+// roc-lib: g3d-6.09-png roc_espclaude_f870cf52d7ecf641.cpp
 
 // Candidate translation unit (score above; library headers required).
+extern "C" {
 
 /* pngrtran.c - transforms the data in a row for PNG readers
  *
@@ -3902,8 +3904,8 @@ png_do_dither(png_row_infop row_info, png_bytep row,
 
 #ifdef PNG_FLOATING_POINT_SUPPORTED
 #if defined(PNG_READ_GAMMA_SUPPORTED)
-static int png_gamma_shift[] =
-   {0x10, 0x21, 0x42, 0x84, 0x110, 0x248, 0x550, 0xff0};
+static PNG_CONST int png_gamma_shift[] =
+   {0x10, 0x21, 0x42, 0x84, 0x110, 0x248, 0x550, 0xff0, 0x00};
 
 /* We build the 8- or 16-bit gamma tables here.  Note that for 16-bit
  * tables, we don't make a full table if we are reducing to 8-bit in
@@ -3914,8 +3916,8 @@ void /* PRIVATE */
 png_build_gamma_table(png_structp png_ptr)
 {
   png_debug(1, "in png_build_gamma_table\n");
-  if(png_ptr->gamma != 0.0)
-  {
+
+
    if (png_ptr->bit_depth <= 8)
    {
       int i;
@@ -4117,7 +4119,7 @@ png_build_gamma_table(png_structp png_ptr)
       }
 #endif /* PNG_READ_BACKGROUND_SUPPORTED || PNG_RGB_TO_GRAY_SUPPORTED */
    }
- }
+
 }
 #endif
 /* To do: install integer version of png_build_gamma_table here */
@@ -4183,3 +4185,5 @@ png_do_read_intrapixel(png_row_infop row_info, png_bytep row)
    }
 }
 #endif /* PNG_MNG_FEATURES_SUPPORTED */
+
+}

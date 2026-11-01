@@ -1,4 +1,64 @@
+// from server: 100% by EspClaude
 // from server: 81% by EspClaude
+// roc 2009-06 005d2250  unit: VAuthoringSettings::?$FactoryProduct  size: 137 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 005d2250
+//
+// 005d2250  83ec08               sub esp, 8
+// 005d2253  55                   push ebp
+// 005d2254  8be9                 mov ebp, ecx
+// 005d2256  56                   push esi
+// 005d2257  8b754c               mov esi, dword ptr [ebp + 0x4c]
+// 005d225a  85f6                 test esi, esi
+// 005d225c  7471                 je 0x5d22cf
+// 005d225e  53                   push ebx
+// 005d225f  57                   push edi
+// 005d2260  8b7e10               mov edi, dword ptr [esi + 0x10]
+// 005d2263  397e0c               cmp dword ptr [esi + 0xc], edi
+// 005d2266  7606                 jbe 0x5d226e
+// 005d2268  ff15ace98900         call dword ptr [0x89e9ac]
+// 005d226e  8b36                 mov esi, dword ptr [esi]
+// 005d2270  8bde                 mov ebx, esi
+// 005d2272  897c2414             mov dword ptr [esp + 0x14], edi
+// 005d2276  85f6                 test esi, esi
+// 005d2278  7518                 jne 0x5d2292
+// 005d227a  ff15ace98900         call dword ptr [0x89e9ac]
+// 005d2280  33c0                 xor eax, eax
+// 005d2282  8d4ff8               lea ecx, [edi - 8]
+// 005d2285  3b4810               cmp ecx, dword ptr [eax + 0x10]
+// 005d2288  7713                 ja 0x5d229d
+// 005d228a  85f6                 test esi, esi
+// 005d228c  7408                 je 0x5d2296
+// 005d228e  8b36                 mov esi, dword ptr [esi]
+// 005d2290  eb06                 jmp 0x5d2298
+// 005d2292  8b06                 mov eax, dword ptr [esi]
+// 005d2294  ebec                 jmp 0x5d2282
+// 005d2296  33f6                 xor esi, esi
+// 005d2298  3b4e0c               cmp ecx, dword ptr [esi + 0xc]
+// 005d229b  7306                 jae 0x5d22a3
+// 005d229d  ff15ace98900         call dword ptr [0x89e9ac]
+// 005d22a3  8d77f8               lea esi, [edi - 8]
+// 005d22a6  85db                 test ebx, ebx
+// 005d22a8  752b                 jne 0x5d22d5
+// 005d22aa  ff15ace98900         call dword ptr [0x89e9ac]
+// 005d22b0  33c0                 xor eax, eax
+// 005d22b2  3b7010               cmp esi, dword ptr [eax + 0x10]
+// 005d22b5  7206                 jb 0x5d22bd
+// 005d22b7  ff15ace98900         call dword ptr [0x89e9ac]
+// 005d22bd  8b0e                 mov ecx, dword ptr [esi]
+// 005d22bf  6a00                 push 0
+// 005d22c1  e88afbffff           call 0x5d1e50
+// 005d22c6  8b754c               mov esi, dword ptr [ebp + 0x4c]
+// 005d22c9  85f6                 test esi, esi
+// 005d22cb  7593                 jne 0x5d2260
+// 005d22cd  5f                   pop edi
+// 005d22ce  5b                   pop ebx
+// 005d22cf  5e                   pop esi
+// 005d22d0  5d                   pop ebp
+// 005d22d1  83c408               add esp, 8
+// 005d22d4  c3                   ret 
+// 005d22d5  8b03                 mov eax, dword ptr [ebx]
+// 005d22d7  ebd9                 jmp 0x5d22b2
+
 // from server: 100% by king_originala
 // roc 2008-06 0055afd0  unit: RBX::VInstance::?$NonFactoryProduct  size: 143 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0055afd0
@@ -94,7 +154,7 @@ struct Vector {
 };
 
 struct Object {
-    unsigned char reserved[0x108];
+    unsigned char reserved[0x4c];
     Vector* children;
 
     void setParent(Object*);

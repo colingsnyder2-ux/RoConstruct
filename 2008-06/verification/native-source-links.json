@@ -996,7 +996,7 @@
   "path": "2008-06/src/Client/App/util/Name.cpp"
  },
  "00554440": {
-  "line": 38,
+  "line": 39,
   "path": "2008-06/src/Client/App/util/RunStateOwner.cpp"
  },
  "00555020": {
@@ -1004,7 +1004,7 @@
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "00555350": {
-  "line": 68,
+  "line": 69,
   "path": "2008-06/src/Client/App/util/RunStateOwner.cpp"
  },
  "00556b00": {
@@ -1422,6 +1422,38 @@
  "0056c650": {
   "line": 17,
   "path": "2008-06/src/Client/App/reflection/reflection_property.cpp"
+ },
+ "0056d090": {
+  "line": 13,
+  "path": "2008-06/src/glue/rbxgs/glue_instance_value.cpp"
+ },
+ "0056ea60": {
+  "line": 13,
+  "path": "2008-06/src/glue/rbxgs/glue_instance_value.cpp"
+ },
+ "0056ebb0": {
+  "line": 13,
+  "path": "2008-06/src/glue/rbxgs/glue_instance_value.cpp"
+ },
+ "0056ee50": {
+  "line": 13,
+  "path": "2008-06/src/glue/rbxgs/glue_instance_value.cpp"
+ },
+ "0056efa0": {
+  "line": 13,
+  "path": "2008-06/src/glue/rbxgs/glue_instance_value.cpp"
+ },
+ "0056eff0": {
+  "line": 13,
+  "path": "2008-06/src/glue/rbxgs/glue_instance_value.cpp"
+ },
+ "0056f0b0": {
+  "line": 13,
+  "path": "2008-06/src/glue/rbxgs/glue_instance_value.cpp"
+ },
+ "0056f8c0": {
+  "line": 13,
+  "path": "2008-06/src/glue/rbxgs/glue_instance_value.cpp"
  },
  "0056fe10": {
   "line": 36,
@@ -2556,7 +2588,7 @@
   "path": "2008-06/src/Client/App/include/script/LuaAtomicClasses.h"
  },
  "005a97c0": {
-  "line": 149,
+  "line": 146,
   "path": "2008-06/src/Client/App/include/lua/LuaBridge.h"
  },
  "005aa000": {
@@ -3252,23 +3284,23 @@
   "path": "2008-06/src/Client/App/include/humanoid/Humanoid.h"
  },
  "005d75a0": {
-  "line": 52,
+  "line": 54,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d7670": {
-  "line": 77,
+  "line": 79,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d76a0": {
-  "line": 57,
+  "line": 59,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d7750": {
-  "line": 62,
+  "line": 64,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d77b0": {
-  "line": 67,
+  "line": 69,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d7980": {
@@ -3276,19 +3308,19 @@
   "path": "2008-06/src/Client/App/include/humanoid/Humanoid.h"
  },
  "005d7990": {
-  "line": 72,
+  "line": 74,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d79b0": {
-  "line": 89,
+  "line": 91,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d7a30": {
-  "line": 102,
+  "line": 104,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d7a90": {
-  "line": 111,
+  "line": 113,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d7b60": {
@@ -3304,11 +3336,11 @@
   "path": "2008-06/src/Client/App/include/humanoid/Humanoid.h"
  },
  "005d80c0": {
-  "line": 150,
+  "line": 152,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d8420": {
-  "line": 682,
+  "line": 689,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d8540": {
@@ -3316,107 +3348,107 @@
   "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
  },
  "005d8a10": {
-  "line": 185,
+  "line": 187,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d8b10": {
-  "line": 193,
+  "line": 195,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d8c10": {
-  "line": 201,
+  "line": 203,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d8d10": {
-  "line": 209,
+  "line": 211,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d8e10": {
-  "line": 217,
+  "line": 219,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d8f10": {
-  "line": 225,
+  "line": 227,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d9010": {
-  "line": 116,
+  "line": 118,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d9160": {
-  "line": 257,
+  "line": 259,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d9180": {
-  "line": 263,
+  "line": 265,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d9210": {
-  "line": 332,
+  "line": 334,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d9a20": {
-  "line": 155,
+  "line": 157,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d9d10": {
-  "line": 609,
+  "line": 616,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d9df0": {
-  "line": 623,
+  "line": 630,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005db280": {
-  "line": 31,
+  "line": 33,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005db560": {
-  "line": 128,
+  "line": 130,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005db600": {
-  "line": 557,
+  "line": 564,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005db9e0": {
-  "line": 617,
+  "line": 624,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005dc150": {
-  "line": 482,
+  "line": 489,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005dc270": {
-  "line": 494,
+  "line": 501,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005dc2b0": {
-  "line": 503,
+  "line": 510,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005dc3d0": {
-  "line": 420,
+  "line": 427,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005dc480": {
-  "line": 530,
+  "line": 537,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005dc540": {
-  "line": 539,
+  "line": 546,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005dc600": {
-  "line": 548,
+  "line": 555,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005dc7f0": {
-  "line": 650,
+  "line": 657,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005dca00": {
-  "line": 434,
+  "line": 441,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005dcad0": {
@@ -5348,7 +5380,7 @@
   "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
  },
  "0061c8c0": {
-  "line": 99,
+  "line": 96,
   "path": "2008-06/src/Client/App/include/lua/LuaBridge.h"
  },
  "0061ca60": {
@@ -5388,11 +5420,11 @@
   "path": "2008-06/src/Client/App/script/LuaAtomicClasses.cpp"
  },
  "0061d640": {
-  "line": 99,
+  "line": 96,
   "path": "2008-06/src/Client/App/include/lua/LuaBridge.h"
  },
  "0061e690": {
-  "line": 99,
+  "line": 96,
   "path": "2008-06/src/Client/App/include/lua/LuaBridge.h"
  },
  "0061ec30": {
@@ -5404,7 +5436,7 @@
   "path": "2008-06/src/Client/App/script/LuaSignalBridge.cpp"
  },
  "0061f480": {
-  "line": 99,
+  "line": 96,
   "path": "2008-06/src/Client/App/include/lua/LuaBridge.h"
  },
  "0061f650": {
@@ -5436,7 +5468,7 @@
   "path": "2008-06/src/Client/App/include/reflection/signal.h"
  },
  "00620760": {
-  "line": 99,
+  "line": 96,
   "path": "2008-06/src/Client/App/include/lua/LuaBridge.h"
  },
  "00621330": {

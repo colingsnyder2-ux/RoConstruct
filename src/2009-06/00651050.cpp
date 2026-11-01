@@ -1,4 +1,33 @@
+// from server: 97% by EspClaude
 // from server: 83% by EspClaude
+// roc 2009-06 00651050  unit: RBX::VExplosion::?$EventDesc  size: 78 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 00651050
+//
+// 00651050  56                   push esi
+// 00651051  8bf1                 mov esi, ecx
+// 00651053  c7064cf98d00         mov dword ptr [esi], 0x8df94c
+// 00651059  dd05d8ffa000         fld qword ptr [0xa0ffd8]
+// 0065105f  dd5e08               fstp qword ptr [esi + 8]
+// 00651062  33d2                 xor edx, edx
+// 00651064  d9ee                 fldz 
+// 00651066  895610               mov dword ptr [esi + 0x10], edx
+// 00651069  8d4618               lea eax, [esi + 0x18]
+// 0065106c  b9ff070000           mov ecx, 0x7ff
+// 00651071  dd10                 fst qword ptr [eax]
+// 00651073  895010               mov dword ptr [eax + 0x10], edx
+// 00651076  dd5008               fst qword ptr [eax + 8]
+// 00651079  83c018               add eax, 0x18
+// 0065107c  83e901               sub ecx, 1
+// 0065107f  79f0                 jns 0x651071
+// 00651081  8b442408             mov eax, dword ptr [esp + 8]
+// 00651085  dd9e18c00000         fstp qword ptr [esi + 0xc018]
+// 0065108b  50                   push eax
+// 0065108c  8d8e20c00000         lea ecx, [esi + 0xc020]
+// 00651092  ff15b4e48900         call dword ptr [0x89e4b4]
+// 00651098  8bc6                 mov eax, esi
+// 0065109a  5e                   pop esi
+// 0065109b  c20400               ret 4
+
 // from server: 100% by king_originala
 // roc 2008-06 005c4340  unit: RBX::Profiling::Profiler  size: 85 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005c4340
@@ -67,6 +96,6 @@ Profiler::Profiler(const char* text)
         ++sample;
     } while (--remaining >= 0);
 
-    startTime = currentTime();
+    startTime = 0.0;
     constructString(name, text);
 }

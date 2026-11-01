@@ -1,4 +1,9 @@
+// from server: 100% by EspClaude
 // from server: 81% by EspClaude
+// roc 2009-06 0056a550  unit: RBX::RbxG3D::RenderScene  size: 876 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 0056a550
+//
+
 // from server: 100% by king_originala
 // roc-lang: cpp
 // roc-cl: 21022
@@ -280,8 +285,6 @@ public:
     static G3D::ToneMap* getToneMap();
 
     G3D::ReferenceCountedPointer<G3D::Lighting> update(
-        float shadingDetail,
-        float meshDetail,
         bool shadows,
         float cameraDistanceFromCharacters,
         const G3D::ReferenceCountedPointer<G3D::Lighting>& desiredLighting,
@@ -290,8 +293,6 @@ public:
 };
 
 G3D::ReferenceCountedPointer<G3D::Lighting> EffectSettings::update(
-    float shadingDetail,
-    float meshDetail,
     bool shadows,
     float cameraDistanceFromCharacters,
     const G3D::ReferenceCountedPointer<G3D::Lighting>& desiredLighting,
@@ -321,17 +322,9 @@ G3D::ReferenceCountedPointer<G3D::Lighting> EffectSettings::update(
 
     G3D::glGetInteger(0xd57);
 
-    if (shadingDetail >= 10) {
-        _skyBox = true;
-    }
-
-    _groundLOD = meshDetail * 0.01f;
-
-    if (shadingDetail >= 30.0f) {
-        _hemisphereLighting = true;
-    }
-
-    _LODShift = meshDetail * 0.02f - 1.0f;
+    _skyBox = true;
+    _groundLOD = 0.5f;
+    _LODShift = 0.0f;
 
     if (shadows && numShadowLights > 0) {
         _stencilShadows = true;

@@ -1,4 +1,41 @@
+// from server: 100% by EspClaude
 // from server: 85% by EspClaude
+// roc 2009-06 004dd200  unit: RBX::Network::ConcurrentRakPeer::PacketJob  size: 115 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 004dd200
+//
+// 004dd200  64a100000000         mov eax, dword ptr fs:[0]
+// 004dd206  6aff                 push -1
+// 004dd208  6849b88500           push 0x85b849
+// 004dd20d  50                   push eax
+// 004dd20e  8b442414             mov eax, dword ptr [esp + 0x14]
+// 004dd212  64892500000000       mov dword ptr fs:[0], esp
+// 004dd219  83ec44               sub esp, 0x44
+// 004dd21c  56                   push esi
+// 004dd21d  8b742458             mov esi, dword ptr [esp + 0x58]
+// 004dd221  50                   push eax
+// 004dd222  8bce                 mov ecx, esi
+// 004dd224  e837f9ffff           call 0x4dcb60
+// 004dd229  84c0                 test al, al
+// 004dd22b  7534                 jne 0x4dd261
+// 004dd22d  68bc658c00           push 0x8c65bc
+// 004dd232  8d4c2408             lea ecx, [esp + 8]
+// 004dd236  ff15b4e48900         call dword ptr [0x89e4b4]
+// 004dd23c  8d4c2404             lea ecx, [esp + 4]
+// 004dd240  51                   push ecx
+// 004dd241  8d4c2424             lea ecx, [esp + 0x24]
+// 004dd245  c744245400000000     mov dword ptr [esp + 0x54], 0
+// 004dd24d  e8bec1f2ff           call 0x409410
+// 004dd252  6850a79700           push 0x97a750
+// 004dd257  8d542424             lea edx, [esp + 0x24]
+// 004dd25b  52                   push edx
+// 004dd25c  e8e9c72300           call 0x719a4a
+// 004dd261  8b4c2448             mov ecx, dword ptr [esp + 0x48]
+// 004dd265  8bc6                 mov eax, esi
+// 004dd267  5e                   pop esi
+// 004dd268  64890d00000000       mov dword ptr fs:[0], ecx
+// 004dd26f  83c450               add esp, 0x50
+// 004dd272  c3                   ret 
+
 // from server: 100% by colin
 // roc 2008-06 004a62d0  unit: RBX::VHint::?$FactoryProduct::Creator  size: 119 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 004a62d0
@@ -88,12 +125,12 @@ namespace std {
 }
 
 struct Stream {
-    bool read(void*, int, bool);
+    bool read(long&);
 };
 
 Stream& readLong(Stream& stream, long& value)
 {
-    if (!stream.read(&value, 32, true)) {
+    if (!stream.read(value)) {
         std::string message("BitStream >> size_t failed");
         throw std::runtime_error(message);
     }

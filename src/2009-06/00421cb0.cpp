@@ -1,9 +1,10 @@
+// from server: 100% by EspClaude
 // from server: 80% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: openrbx-client-dll roc_espeon_selectiontree_70d84558fbd832d7.cpp
+// roc-lib: openrbx-client-dll roc_espclaude_423b4549b1337dbf.cpp
 
 // Candidate translation unit (score above; library headers required).
 // from server: 97% by king_originala
@@ -38,7 +39,7 @@ struct PrimaryBase {
 
 struct SecondaryBase {
     virtual ~SecondaryBase();
-    char data[0x78];
+    char data[0x7c];
 };
 
 struct Base : PrimaryBase, SecondaryBase {
@@ -53,7 +54,7 @@ struct RegistrationSecondary {
     virtual ~RegistrationSecondary();
 };
 
-struct Registration : RegistrationPrimary, RegistrationSecondary {
+struct Registration : RegistrationPrimary {
     virtual ~Registration();
 };
 
@@ -80,7 +81,18 @@ struct Connection {
     ~Connection();
 };
 
+struct XBase {
+    unsigned long data[2];
+    ~XBase();
+    void release();
+};
+
+struct X : XBase {
+    ~X() { release(); }
+};
+
 struct S : Base, Registration {
+    X x;
     Member member;
     Collection collection;
     Connection connection;

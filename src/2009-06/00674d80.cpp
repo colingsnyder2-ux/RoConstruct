@@ -1,9 +1,10 @@
+// from server: 100% by EspClaude
 // from server: 83% by EspClaude
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-dll roc_unit_bf87d4f75e01e735.cpp
+// roc-lib: rbxgs-dll roc_espclaude_55e2c3077de71f55.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include "v8datamodel/BrickColor.h"
@@ -12,7 +13,7 @@
 namespace RBX {
     class Instance { public:
         virtual ~Instance();
-        char pad[0x100];
+        char pad[0x44];
         Instance* next;
     };
 
@@ -25,7 +26,7 @@ namespace RBX {
 
     namespace Network {
         class Player : public Instance { public:
-            char pad[0x70];
+            char pad[0x48];
             BrickColor value;
             bool flag;
             BrickColor getTeamColor() const { return value; }
@@ -52,3 +53,4 @@ int RBX::VTeams::count(BrickColor value)
     }
     return result;
 }
+

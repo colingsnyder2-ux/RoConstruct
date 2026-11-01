@@ -1,4 +1,39 @@
+// from server: 100% by EspClaude
 // from server: 83% by EspClaude
+// roc 2009-06 0042d450  unit: CMemberTreeView  size: 73 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 0042d450
+//
+// 0042d450  56                   push esi
+// 0042d451  57                   push edi
+// 0042d452  8b7c240c             mov edi, dword ptr [esp + 0xc]
+// 0042d456  8bf1                 mov esi, ecx
+// 0042d458  8b4f04               mov ecx, dword ptr [edi + 4]
+// 0042d45b  ff15bce48900         call dword ptr [0x89e4bc]
+// 0042d461  680200ffff           push 0xffff0002
+// 0042d466  680000ffff           push 0xffff0000
+// 0042d46b  6a00                 push 0
+// 0042d46d  6a00                 push 0
+// 0042d46f  6a00                 push 0
+// 0042d471  6a0a                 push 0xa
+// 0042d473  6a0a                 push 0xa
+// 0042d475  50                   push eax
+// 0042d476  6a23                 push 0x23
+// 0042d478  8bce                 mov ecx, esi
+// 0042d47a  e8bdc02e00           call 0x71953c
+// 0042d47f  57                   push edi
+// 0042d480  6a00                 push 0
+// 0042d482  6a00                 push 0
+// 0042d484  6a00                 push 0
+// 0042d486  6a00                 push 0
+// 0042d488  6a00                 push 0
+// 0042d48a  6a04                 push 4
+// 0042d48c  50                   push eax
+// 0042d48d  8bce                 mov ecx, esi
+// 0042d48f  e828bf2e00           call 0x7193bc
+// 0042d494  5f                   pop edi
+// 0042d495  5e                   pop esi
+// 0042d496  c20400               ret 4
+
 // from server: 100% by colin
 // roc 2008-06 00433ea0  unit: CMemberTreeView  size: 76 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00433ea0
@@ -42,7 +77,6 @@ struct String {
 extern const char* (__thiscall *string_c_str)(const String*);
 
 struct ItemData {
-    unsigned char padding[4];
     String text;
 };
 

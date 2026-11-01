@@ -1,9 +1,10 @@
+// from server: 100% by EspClaude
 // from server: 84% by EspClaude
 // from server: 100% by nuck16
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs-dll roc_unit_b7e4c02ad8531df9.cpp
+// roc-lib: rbxgs-dll roc_espclaude_caa32d082e75b138.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include "util/Rect.h"
@@ -33,8 +34,8 @@ class Instance {public:
  virtual bool askAddChild(const Instance*)const;virtual bool askSetParent(const Instance*)const;
  virtual void onAncestorChanged(const AncestorChanged&);virtual void onDescendentAdded(Instance*);virtual void onDescendentRemoving(const boost::shared_ptr<Instance>&);
  virtual void onChildAdded(Instance*);virtual void onChildRemoving(Instance*);virtual void onChildRemoved(Instance*);virtual void onLastChildRemoved();
- virtual void readProperty(const XmlElement*,IReferenceBinder&);virtual void onServiceProvider(const ServiceProvider*,const ServiceProvider*);virtual boost::shared_ptr<Instance>createChild(const Name&);virtual XmlElement*write();virtual void onChildChanged(Instance*,const PropertyChanged&);
- char opaque[0x108-4];CopyOnWrite<std::vector<boost::shared_ptr<Instance> > >children;std::string name;bool archivable;
+ virtual void readProperty(const XmlElement*,IReferenceBinder&);virtual void onServiceProvider(const ServiceProvider*,const ServiceProvider*);virtual boost::shared_ptr<Instance>createChild(const Name&);virtual XmlElement*write();virtual void onChildChanged(Instance*,const PropertyChanged&);virtual void exeInstanceV17();
+ char opaque[0x4c-4];CopyOnWrite<std::vector<boost::shared_ptr<Instance> > >children;std::string name;bool archivable;char exeInstTail[0x8c-0x74];
  unsigned numChildren()const;
 };
 struct Adorn {
@@ -71,15 +72,16 @@ struct UserInputBase {
  virtual void setWrapMode(WrapMode)=0;virtual WrapMode getWrapMode()const=0;virtual void centerCursor()=0;virtual bool keyDown(int)const=0;virtual void setKeyState(int,bool)=0;virtual void setCursorId(Adorn*,const TextureId&);
  void renderGameCursor(Adorn*);
 };
-struct ControllerService {char opaque[0x130];UserInputBase*hardwareDevice;};
-struct WorkspacePrefix:Instance {char opaqueWorkspace[0x1a0-sizeof(Instance)];};
+struct ControllerService {char opaque[0x8c];UserInputBase*hardwareDevice;};
+struct WorkspacePrefix:Instance {char opaqueWorkspace[0x9c-sizeof(Instance)];};
 struct Workspace:WorkspacePrefix,IRenderable {void setCursor(Adorn*);};
 namespace Network {
 struct Player:Instance {};
-struct Players {char opaque[0x1a0];boost::shared_ptr<Player>localPlayer;static Player*findLocalPlayer(const Instance*);};
+struct Players {char opaque[0xdc];boost::shared_ptr<Player>localPlayer;static Player*findLocalPlayer(const Instance*);};
 }
-struct DataModelPrefix:Instance {char opaqueDataModel[0x1f4-sizeof(Instance)];};
+struct DataModelPrefix:Instance {char opaqueDataModel[0xfc-sizeof(Instance)];};
 struct DataModel:DataModelPrefix,Evaluator,Listener<RunService,RunTransition> {
+ char exeDataModelPad[0x100];
  boost::shared_ptr<Instance>localBackpack;boost::shared_ptr<Workspace>workspace;boost::shared_ptr<RunService>runService;boost::shared_ptr<Instance>starterPack;boost::shared_ptr<GuiRoot>guiRoot,guiHooks;
  GuiTarget*guiTarget;bool forceArrowCursor;std::string uiMessage;int drawId;IMetric*tempMetric;bool dirty;bool renderEnabled;
  Network::Players*getPlayers();ControllerService*getControllerService();
@@ -131,19 +133,3 @@ void DataModel::renderPass2d(Adorn*adorn,IMetric*metric){
  tempMetric=0;
 }
 }
-typedef char instance_size[sizeof(RBX::Instance)==0x130?1:-1];
-typedef char children_offset[offsetof(RBX::Instance,children)==0x108?1:-1];
-typedef char model_workspace_offset[offsetof(RBX::DataModel,workspace)==0x204?1:-1];
-typedef char model_message_offset[offsetof(RBX::DataModel,uiMessage)==0x234?1:-1];
-typedef char model_metric_offset[offsetof(RBX::DataModel,tempMetric)==0x254?1:-1];
-typedef char model_enabled_offset[offsetof(RBX::DataModel,renderEnabled)==0x259?1:-1];
-typedef char texture_size[sizeof(RBX::TextureId)==32?1:-1];
-
-typedef char input_offset[offsetof(RBX::ControllerService,hardwareDevice)==0x130?1:-1];
-typedef char local_player_offset[offsetof(RBX::Network::Players,localPlayer)==0x1a0?1:-1];
-typedef char root_offset[offsetof(RBX::DataModel,guiRoot)==0x21c?1:-1];
-typedef char cursor_offset[offsetof(RBX::DataModel,forceArrowCursor)==0x230?1:-1];
-typedef char renderable_offset[offsetof(RBX::Workspace,index2d)==0x1a4?1:-1];
-typedef char vector_extent[sizeof(G3D::Vector2)==8?1:-1];
-typedef char rectangle_extent[sizeof(G3D::Rect2D)==16?1:-1];
-typedef char color_extent[sizeof(G3D::Color4)==16?1:-1];

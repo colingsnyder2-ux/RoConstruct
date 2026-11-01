@@ -1,20 +1,26 @@
+// from server: 100% by EspClaude
 // from server: 83% by EspClaude
 // from server: 100% by auto
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs script/ThreadRef.cpp
+// roc-lib: rbxgs roc_espclaude_5929742d482b0ab8.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include "script/ThreadRef.h"
 #include "script/ScriptContext.h"
 #include "lua.h"
 #include "lauxlib.h"
+struct ExeLock { boost::mutex* m; ExeLock(boost::mutex&); ~ExeLock(); };
 
 namespace RBX
 {
     namespace Lua
     {
+		const char* Bridge<boost::shared_ptr<ThreadRef::Node>, true>::className = "shared_ptr<ThreadRef::Node>";
+
+		boost::shared_ptr<boost::mutex> ThreadRef::syncSingleton(new boost::mutex);
+
         ThreadRef::ThreadRef(lua_State* thread)
             : sync(syncSingleton),
               node(NULL),
@@ -23,7 +29,7 @@ namespace RBX
               L(thread),
               threadId(0)
         {
-            boost::mutex::scoped_lock lock(*sync);
+            ExeLock lock(*sync);
 
             node = Node::get(thread).get();
             addToNode();

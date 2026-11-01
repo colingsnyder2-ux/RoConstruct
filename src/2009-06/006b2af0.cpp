@@ -1,9 +1,10 @@
+// from server: 100% by EspClaude
 // from server: 81% by EspClaude
 // from server: 100% by nuck16
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs-dll roc_unit_1c570c469dec2599.cpp
+// roc-lib: rbxgs-dll roc_espclaude_7fbe0ff65d01014e.cpp
 
 // Candidate translation unit (score above; library headers required).
 #pragma float_control(precise, off)
@@ -34,11 +35,12 @@ struct Data {
 };
 
 extern void __cdecl prepare(Data*);
+extern void __cdecl initData(Data*);
 extern bool __cdecl valid(Data*);
 extern RBX::Extents __cdecl getBounds(Data*);
 
 struct Object {
-    char reserved[0x28c];
+    char reserved[0x11c];
     Container container;
 
     void setVector(const G3D::Vector3&);
@@ -49,6 +51,7 @@ struct BlockBlockContact {
     Data data;
     unsigned char updated;
     char padding[3];
+    void* extra;
     Object* object;
 
     void update();
@@ -78,6 +81,9 @@ void BlockBlockContact::update()
 
     container->erase(first, last);
 
+    if (!extra)
+        initData(&data);
+
     Data* value = &data;
     prepare(value);
     if (valid(value)) {
@@ -86,4 +92,5 @@ void BlockBlockContact::update()
     }
     updated = 1;
 }
+
 

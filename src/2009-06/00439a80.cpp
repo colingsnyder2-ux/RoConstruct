@@ -1,9 +1,10 @@
+// from server: 97% by EspClaude
 // from server: 83% by EspClaude
 // from server: 100% by coldek
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs-dll roc_claudeA_valueitemv3727620bc493d2c5b.cpp
+// roc-lib: rbxgs-dll roc_espclaude_b09c09ce38556b26.cpp
 
 // Candidate translation unit (score above; library headers required).
 #define _CPPUNWIND 1
@@ -22,16 +23,14 @@ namespace RBX {
 class Instance;
 template<class E> struct ImpStr : std::basic_string<E> { __declspec(noinline) const E* c_str() const { return std::basic_string<E>::c_str(); } };
 extern template struct __declspec(dllimport) ImpStr<char>;
-class Name { int dictionaryIndex; public: const std::string name; const char* c_str() const { return static_cast<const ImpStr<char>&>(name).c_str(); } };
+class Name { public: const std::string name; const char* c_str() const { return static_cast<const ImpStr<char>&>(name).c_str(); } };
 namespace Reflection { class PropertyDescriptor { public: virtual ~PropertyDescriptor(); const Name& name; }; }
 class IDataState { public: virtual void setDirty(bool); };
-class DataModel { char prefix[0x1f0]; public: IDataState state; void setDirty(bool dirty) { state.setDirty(dirty); }
+class DataModel { char prefix[0xf8]; public: IDataState state; void setDirty(bool dirty) { state.setDirty(dirty); }
 	class Lock {
-		boost::shared_ptr<void> mutex;
 		void* lock;
-		void doLock(const DataModel* dataModel);
 	public:
-		Lock(const DataModel* dataModel) : lock(0) { doLock(dataModel); }
+		Lock(const DataModel* dataModel, bool b);
 		~Lock();
 	};
 };
@@ -46,9 +45,9 @@ typedef std::vector<boost::shared_ptr<RBX::Instance> > Instances;
 typedef std::map<KeyBase*, Instances> InstanceMap;
 
 struct OwnerPrefix {
-    char pad[0x198];
+    char pad[0x1a0];
     RBX::DataModel* dataModel;
-    char pad19c[0x218 - 0x19c];
+    char pad19c[0x240 - 0x1a4];
 };
 // claudeA 2026-10-26: find goes through a by-value KeyBase* wrapper of a map-owning base at +0x218
 // (owner->findB(*it)): yields owner in ecx, add ecx,0x218 as base adjust, and the target's arg scheduling.
@@ -97,12 +96,14 @@ void ValueItem<Base, T>::setValue(const T& value)
             }
             ++it;
         }
+        {
+        RBX::DataModel::Lock lock(owner->dataModel, true);
         std::for_each(instances.begin(), instances.end(),
             boost::bind(&ValueItem::apply, this, boost::bind(&boost::shared_ptr<RBX::Instance>::get, _1), value));
         if (owner->dataModel) {
-            RBX::DataModel::Lock lock(owner->dataModel);
             RBX::ChangeHistoryService::requestWaypoint(descriptor->name.c_str(), owner->dataModel);
             owner->dataModel->setDirty(true);
+        }
         }
     } catch (std::exception& e) {
         AfxMessageBox(e.what());
@@ -117,3 +118,4 @@ namespace RBX { class ContentId { std::string id; const Name* mimeTypePtr; }; }
 // end of the body: the for(;;++it) form of the other items gives the latch reloads in the opposite order here.
 template class ValueItem<GridItemBase, G3D::Vector3>;
 template class ValueItem<IntGridItemBase, G3D::Vector3>;
+

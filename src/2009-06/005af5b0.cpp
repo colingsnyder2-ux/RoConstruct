@@ -1,4 +1,4 @@
-// from server: 81% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
@@ -37,6 +37,13 @@ struct EmptyState {
     EmptyState();
 };
 
+struct Holder {
+    void* a;
+    void* b;
+    Holder();
+    ~Holder();
+};
+
 struct TexturePtr {
     void* object;
     void* control;
@@ -49,9 +56,11 @@ struct TextureProxy : Base {
     bool flag;
     void* owner;
     bool option;
+    bool option2;
     Reference first;
     Reference second;
     EmptyState state;
+    Holder holder;
     TexturePtr texture;
 
     TextureProxy(void*, const String&, bool);
@@ -64,9 +73,11 @@ TextureProxy::TextureProxy(void* p, const String& s, bool b)
       flag(false),
       owner(p),
       option(b),
+      option2(false),
       first(),
       second(),
       state(),
+      holder(),
       texture()
 {
     assignString(&name, s);

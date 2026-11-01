@@ -1,30 +1,22 @@
-// from server: 45% by atomic.potato
-struct String
-{
-    String(const String&);
+// from server: 58% by Intel
+struct ScriptImpl {
+    int field_8;
+    int field_C;
+    int (__thiscall *callback)(int, int);
+
+    int __thiscall func(int a2, int a3);
 };
 
-typedef void (*Function)(void*, void*);
+extern "C" void __stdcall string_ctor(void *this_ptr, const void *other);
 
-extern "C" String* StringCopy(String*, const String&);
-extern Function g_function;
-
-struct S
-{
-    int f(String*);
-};
-
-int S::f(String* value)
-{
-    String* result = 0;
-    void* object = 0;
-
-    if (value != 0)
-        object = (char*)value - 0x1c;
-
-    object = (char*)object + *(int*)((char*)this + 0xc);
-    result = ((String* (__thiscall *)(void*, void*))(*(int*)((char*)this + 8)))(object, 0);
-
-    StringCopy((String*)value, *result);
-    return (int)value;
+int __thiscall ScriptImpl::func(int a2, int a3) {
+    int v3 = 0;
+    int v4 = 0;
+    if (a3) {
+        v4 = a3 - 0x1C;
+    }
+    int ecx_val = field_C + v4;
+    int eax_val = callback(ecx_val, a2);
+    string_ctor((void *)a3, &eax_val);
+    return a3;
 }

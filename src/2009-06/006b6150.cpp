@@ -1,9 +1,10 @@
+// from server: 100% by EspClaude
 // from server: 80% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD /fp:fast
-// roc-lib: openrbx-client-dll roc_espeon_pickrayconstants7f4be0a0b4b3a9ea.cpp
+// roc-lib: openrbx-client-dll roc_espclaude_391750c676835068.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <G3D/Ray.h>
@@ -18,18 +19,19 @@ extern const float g8439d8, g82746c;
 
 typedef G3D::Vector3 Vec3;typedef G3D::Ray Ray;typedef std::vector<void*> Collection;
 
-struct Subject
-{
-    char padding[0x1dc];
-    int f1dc;
-    int method();
-};
-
 struct CharacterSubject
 {
     virtual void slot0() = 0;
     virtual void slot1() = 0;
+    virtual void slot2() = 0;
+    virtual void slot3() = 0;
+    virtual void slot4() = 0;
     virtual void collect(Collection*) = 0;
+};
+
+struct Subject
+{
+    CharacterSubject* method();
 };
 
 struct Camera
@@ -56,23 +58,19 @@ int S::f(void* input, void* argument, Vec3* output)
     Ray ray = makeRay(input);
 
     void* context = *reinterpret_cast<void**>(
-        *reinterpret_cast<char**>(object + 0x2e4) + 0x84);
+        *reinterpret_cast<char**>(object + 0x150) + 0xb0);
 
     Collection collection;
-    Camera* camera = object
-        ? reinterpret_cast<Camera*>(object + 0x288)
-        : 0;
+    Camera* camera = reinterpret_cast<Camera*>(object + 0x118);
     camera->collect(&collection);
 
     Subject* subject =
-        reinterpret_cast<Camera*>(object + 0x288)->subject();
+        reinterpret_cast<Camera*>(object + 0x118)->subject();
 
     if (subject)
     {
         CharacterSubject* character =
-            static_cast<CharacterSubject*>(
-                sub_6a17c6(subject->method(), 0,
-                           g948304, g9516c8, 0));
+            subject->method();
         if (character)
             character->collect(&collection);
     }

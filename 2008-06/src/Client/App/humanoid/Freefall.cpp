@@ -1,4 +1,6 @@
 #include "humanoid/Freefall.h"
+namespace RBX { bool DetectClimb(Humanoid*); Humanoid::State* CreateRecoveredClimbing(Humanoid*); }
+
 #include "humanoid/Running.h"
 #include "v8datamodel/PartInstance.h"
 
@@ -25,6 +27,7 @@ namespace RBX
 
 		if (newState == this)
 		{
+			if (DetectClimb(humanoid)) return CreateRecoveredClimbing(humanoid);
 			if (floorPart)
 				return new Running(humanoid);
 			else

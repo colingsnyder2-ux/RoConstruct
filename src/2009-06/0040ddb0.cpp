@@ -1,4 +1,44 @@
+// from server: 100% by EspClaude
 // from server: 80% by EspClaude
+// roc 2009-06 0040ddb0  unit: VCBrowserViewExternal::?$CProxy_IBrowserViewExternalEvents  size: 138 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 0040ddb0
+//
+// 0040ddb0  6aff                 push -1
+// 0040ddb2  6823d48400           push 0x84d423
+// 0040ddb7  64a100000000         mov eax, dword ptr fs:[0]
+// 0040ddbd  50                   push eax
+// 0040ddbe  64892500000000       mov dword ptr fs:[0], esp
+// 0040ddc5  51                   push ecx
+// 0040ddc6  53                   push ebx
+// 0040ddc7  56                   push esi
+// 0040ddc8  8bf1                 mov esi, ecx
+// 0040ddca  89742408             mov dword ptr [esp + 8], esi
+// 0040ddce  e8cd8a0500           call 0x4668a0
+// 0040ddd3  33db                 xor ebx, ebx
+// 0040ddd5  899ef8000000         mov dword ptr [esi + 0xf8], ebx
+// 0040dddb  8d8e00010000         lea ecx, [esi + 0x100]
+// 0040dde1  895c2414             mov dword ptr [esp + 0x14], ebx
+// 0040dde5  c70634e18a00         mov dword ptr [esi], 0x8ae134
+// 0040ddeb  899efc000000         mov dword ptr [esi + 0xfc], ebx
+// 0040ddf1  e8eac43200           call 0x73a2e0
+// 0040ddf6  899ea8020000         mov dword ptr [esi + 0x2a8], ebx
+// 0040ddfc  8d8eb0020000         lea ecx, [esi + 0x2b0]
+// 0040de02  889eac020000         mov byte ptr [esi + 0x2ac], bl
+// 0040de08  889ead020000         mov byte ptr [esi + 0x2ad], bl
+// 0040de0e  ff15bcfc8900         call dword ptr [0x89fcbc]
+// 0040de14  c644241403           mov byte ptr [esp + 0x14], 3
+// 0040de19  e8a2b53200           call 0x7393c0
+// 0040de1e  50                   push eax
+// 0040de1f  e85ca40100           call 0x428280
+// 0040de24  8b4c2410             mov ecx, dword ptr [esp + 0x10]
+// 0040de28  83c404               add esp, 4
+// 0040de2b  8bc6                 mov eax, esi
+// 0040de2d  5e                   pop esi
+// 0040de2e  5b                   pop ebx
+// 0040de2f  64890d00000000       mov dword ptr fs:[0], ecx
+// 0040de36  83c410               add esp, 0x10
+// 0040de39  c3                   ret 
+
 // from server: 100% by colin
 // roc 2008-06 004108b0  unit: UIEnumConnections::V?$CComEnum::?$CComObject  size: 154 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 004108b0
@@ -175,7 +215,6 @@ extern void * __cdecl getContext();
 extern void __cdecl registerContext(void *);
 
 struct S : Parent {
-    Member member;
     unsigned long count;
     Buffer buffer;
     Connection connection;

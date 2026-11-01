@@ -1,4 +1,73 @@
+// from server: 100% by EspClaude
 // from server: 82% by EspClaude
+// roc 2009-06 0067c420  unit: RBX::JointInstance  size: 169 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 0067c420
+//
+// 0067c420  8b442404             mov eax, dword ptr [esp + 4]
+// 0067c424  53                   push ebx
+// 0067c425  56                   push esi
+// 0067c426  57                   push edi
+// 0067c427  50                   push eax
+// 0067c428  8bf9                 mov edi, ecx
+// 0067c42a  e82156f5ff           call 0x5d1a50
+// 0067c42f  8bb7ac000000         mov esi, dword ptr [edi + 0xac]
+// 0067c435  837e0400             cmp dword ptr [esi + 4], 0
+// 0067c439  7504                 jne 0x67c43f
+// 0067c43b  33db                 xor ebx, ebx
+// 0067c43d  eb1d                 jmp 0x67c45c
+// 0067c43f  8b4e04               mov ecx, dword ptr [esi + 4]
+// 0067c442  8b11                 mov edx, dword ptr [ecx]
+// 0067c444  8b4204               mov eax, dword ptr [edx + 4]
+// 0067c447  ffd0                 call eax
+// 0067c449  83f80f               cmp eax, 0xf
+// 0067c44c  7405                 je 0x67c453
+// 0067c44e  8b7604               mov esi, dword ptr [esi + 4]
+// 0067c451  eb06                 jmp 0x67c459
+// 0067c453  8b4e04               mov ecx, dword ptr [esi + 4]
+// 0067c456  8b7104               mov esi, dword ptr [ecx + 4]
+// 0067c459  8b5e0c               mov ebx, dword ptr [esi + 0xc]
+// 0067c45c  8b4748               mov eax, dword ptr [edi + 0x48]
+// 0067c45f  85c0                 test eax, eax
+// 0067c461  742d                 je 0x67c490
+// 0067c463  8b701c               mov esi, dword ptr [eax + 0x1c]
+// 0067c466  e885e0d8ff           call 0x40a4f0
+// 0067c46b  50                   push eax
+// 0067c46c  8bce                 mov ecx, esi
+// 0067c46e  e8fdc4f7ff           call 0x5f8970
+// 0067c473  84c0                 test al, al
+// 0067c475  7419                 je 0x67c490
+// 0067c477  57                   push edi
+// 0067c478  e8f32ce4ff           call 0x4bf170
+// 0067c47d  83c404               add esp, 4
+// 0067c480  85c0                 test eax, eax
+// 0067c482  7408                 je 0x67c48c
+// 0067c484  8bb050010000         mov esi, dword ptr [eax + 0x150]
+// 0067c48a  eb0f                 jmp 0x67c49b
+// 0067c48c  33f6                 xor esi, esi
+// 0067c48e  eb0b                 jmp 0x67c49b
+// 0067c490  57                   push edi
+// 0067c491  e8aa1dfbff           call 0x62e240
+// 0067c496  83c404               add esp, 4
+// 0067c499  8bf0                 mov esi, eax
+// 0067c49b  3bde                 cmp ebx, esi
+// 0067c49d  7424                 je 0x67c4c3
+// 0067c49f  85db                 test ebx, ebx
+// 0067c4a1  740e                 je 0x67c4b1
+// 0067c4a3  8b97ac000000         mov edx, dword ptr [edi + 0xac]
+// 0067c4a9  52                   push edx
+// 0067c4aa  8bcb                 mov ecx, ebx
+// 0067c4ac  e84f2d0000           call 0x67f200
+// 0067c4b1  85f6                 test esi, esi
+// 0067c4b3  740e                 je 0x67c4c3
+// 0067c4b5  8b87ac000000         mov eax, dword ptr [edi + 0xac]
+// 0067c4bb  50                   push eax
+// 0067c4bc  8bce                 mov ecx, esi
+// 0067c4be  e85d360000           call 0x67fb20
+// 0067c4c3  5f                   pop edi
+// 0067c4c4  5e                   pop esi
+// 0067c4c5  5b                   pop ebx
+// 0067c4c6  c20400               ret 4
+
 // from server: 100% by Espeon
 // roc 2008-06 005e3a80  unit: RBX::JointInstance  size: 172 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005e3a80
@@ -166,14 +235,14 @@ struct World {
 };
 
 struct Provider {
-    char pad0[0x2e4];
+    char pad0[0x150];
     World* world;
 };
 
 struct Joint {
-    char pad[0x104];
+    char pad[0x48];
     Parent* parent;
-    char pad1[0x48];
+    char pad1[0x60];
     Node* node;
     void update(void* argument);
     void f(void* argument);
@@ -193,7 +262,7 @@ void Joint::f(void* argument)
     if (!n->link) {
         oldWorld = 0;
     } else {
-        if (n->link->kind() != 7)
+        if (n->link->kind() != 15)
             n = n->link;
         else
             n = n->link->link;

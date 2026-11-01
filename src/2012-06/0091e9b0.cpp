@@ -1,127 +1,40 @@
-// from server: 65% by atomic.potato
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8world/MotorJoint.cpp
+// from server: 75% by Intel
+typedef unsigned long DWORD;
+typedef void* LPVOID;
 
-// Candidate translation unit (score above; library headers required).
-#include "v8world/MotorJoint.h"
-#include "v8world/World.h"
-#include "v8world/Primitive.h"
-#include "v8world/Assembly.h"
-#include "util/Math.h"
+extern "C" void __stdcall InitializeCriticalSection(LPVOID lpCriticalSection);
+extern "C" void __cdecl sub_9831f5(DWORD);
 
-namespace RBX
-{
-	// TODO: check which of these belong in the header file
+DWORD g_initFlag = 0;
+DWORD g_criticalSection = 0xE56B44;
+DWORD g_unk1 = 0xE56B5C;
+DWORD g_unk2 = 0xE56B60;
+DWORD g_unk3 = 0xE56B64;
+DWORD g_unk4 = 0xE56B68;
+DWORD g_unk5 = 0xE56B6C;
+DWORD g_unk6 = 0xE56B70;
+DWORD g_initializeCriticalSectionPtr = 0xB221DC;
+DWORD g_sub9831f5Param = 0xB21300;
 
-	MotorJoint::MotorJoint()
-		: currentAngle(0.0f),
-		  link(new RevoluteLink()),
-		  maxVelocity(0.0f),
-		  desiredAngle(0.0f),
-		  polarity(1.0f)
-	{
-	}
+DWORD* GetMotorJointCriticalSection() {
+    if (g_initFlag & 1) {
+        return (DWORD*)g_criticalSection;
+    }
 
-	MotorJoint::~MotorJoint()
-	{
-		delete link;
-	}
+    g_initFlag |= 1;
 
-	G3D::CoordinateFrame MotorJoint::getMeInOther(Primitive* me)
-	{
-		G3D::CoordinateFrame rotatedCoord0 = G3D::CoordinateFrame(
-			Math::rotateAboutZ(jointCoord0.rotation, currentAngle),
-			jointCoord0.translation);
+    typedef void (__stdcall *InitCritSecFn)(LPVOID);
+    ((InitCritSecFn)g_initializeCriticalSectionPtr)((LPVOID)g_criticalSection);
 
-		G3D::CoordinateFrame p1InP0 = rotatedCoord0 * jointCoord1.inverse();
-		if (me == getPrimitive(1))
-		{
-			return p1InP0;
-		}
-		else
-		{
-			RBXASSERT(me == getPrimitive(0));
-			return p1InP0.inverse();
-		}
-	}
+    g_unk1 = 0;
+    g_unk2 = 0;
+    g_unk3 = 0;
 
-	size_t MotorJoint::hashCode() const
-	{
-		const int magic = 1640531527;
-		size_t h;
+    g_unk4 = 0xD0;
+    g_unk5 = 0x20;
+    g_unk6 = 0x20;
 
-		h = (Math::hash(jointCoord0.translation) - magic);
-		h = (Math::hash(jointCoord1.translation) - magic + (h >> 2) + (h << 6)) ^ h;
-		return h;
-	}
+    sub_9831f5(g_sub9831f5Param);
 
-	void MotorJoint::setCurrentAngle(float value)
-	{
-		if (currentAngle != value)
-		{
-			currentAngle = value;
-			World* world = getWorld();
-			if (world)
-				world->onMotorAngleChanged(this);
-			setJointAngle(value);
-		}
-	}
-
-	void MotorJoint::setJointAngle(float value)
-	{
-		RBXASSERT(link);
-		if (polarity == -1)
-		{
-			RBXASSERT(0);
-
-			Primitive* p0 = getPrimitive(0);
-
-			G3D::CoordinateFrame oldParentCoord = p0->getCoordinateFrame();
-			link->setJointAngle(-value);
-			Assembly* assembly = getPrimitive(1)->getAssembly();
-			if (!assembly->getAnchored())
-			{
-				Primitive* mainPrim = assembly->getMainPrimitive();
-				G3D::CoordinateFrame newParentCoord = p0->getCoordinateFrame();
-				G3D::CoordinateFrame parentInRoot = mainPrim->getCoordinateFrame().toObjectSpace(newParentCoord);
-				G3D::CoordinateFrame newRoot = oldParentCoord * parentInRoot.inverse();
-				mainPrim->getBody()->setCoordinateFrame(newRoot);
-			}
-		}
-		else
-		{
-			link->setJointAngle(value);
-		}
-	}
-
-	bool MotorJoint::isAligned()
-	{
-		G3D::CoordinateFrame baseWorld = getPrimitive(0)->getCoordinateFrame() * jointCoord0;
-		G3D::CoordinateFrame otherBaseWorld = getPrimitive(1)->getCoordinateFrame() * jointCoord1;
-
-		if (Math::fuzzyEq(baseWorld.translation, otherBaseWorld.translation, 0.00001f))
-		{
-			if (Math::fuzzyEq(baseWorld.rotation.getColumn(2), otherBaseWorld.rotation.getColumn(2), 0.00001f))
-				return true;
-		}
-
-		return false;
-	}
-
-	void MotorJoint::stepUi(int uiStepId)
-	{
-		if (fabs(desiredAngle - currentAngle) < fabs(maxVelocity))
-		{
-			setCurrentAngle(desiredAngle);
-		}
-		else
-		{
-			if (fabs(maxVelocity) > 0.0f)
-				setCurrentAngle(currentAngle + fabs(maxVelocity));
-			else
-				setCurrentAngle(currentAngle - fabs(maxVelocity));
-		}
-	}
+    return (DWORD*)g_criticalSection;
 }

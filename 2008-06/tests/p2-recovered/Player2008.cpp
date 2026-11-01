@@ -9,6 +9,7 @@
 #include <map>
 #include <vector>
 #include <iterator>
+#include <limits>
 #include <cmath>
 #include <float.h>
 #include <G3D/System.h>
@@ -34,8 +35,15 @@ extern "C" void SetPlayerTestKey(int);
 extern "C" int CheckPlayerController();
 extern "C" int CheckShortTimer();
 extern "C" int CheckNativeMD5();
+extern "C" int CheckRunServiceInitialization();
+extern "C" int CheckClimbProbe();
+extern "C" int BeginClimbObservation();
+extern "C" int EndClimbObservation(float*);
+extern "C" int CheckLuaObjectConversion();
 extern "C" int CheckFreefallTransitions();
 extern "C" int GetActorTorsoPosition(float*,float*,float*);
+extern "C" int GetPlayerCameraPose(float*);
+extern "C" void SetPlayerCameraTestKey(int);
 extern "C" void ClosePlace();
 extern "C" void RemovePart(void);
 extern "C" void SetPartYaw(float);
@@ -73,7 +81,20 @@ static std::string readPlace(const char* path)
     if (!f) return "";
     std::ostringstream ss;
     ss << f.rdbuf();
-    return ss.str();
+    std::string data=ss.str();
+    if(data.size()<2 || (unsigned char)data[0]!=0x1f || (unsigned char)data[1]!=0x8b)return data;
+    if(data.size()>static_cast<size_t>(std::numeric_limits<uInt>::max()))return "";
+    z_stream stream;std::memset(&stream,0,sizeof(stream));
+    stream.next_in=reinterpret_cast<Bytef*>(&data[0]);stream.avail_in=static_cast<uInt>(data.size());
+    if(inflateInit2(&stream,15+16)!=Z_OK)return "";
+    std::string output;char buffer[16384];int status;
+    do{
+        stream.next_out=reinterpret_cast<Bytef*>(buffer);stream.avail_out=sizeof(buffer);
+        status=inflate(&stream,Z_NO_FLUSH);
+        output.append(buffer,sizeof(buffer)-stream.avail_out);
+    }while(status==Z_OK);
+    inflateEnd(&stream);
+    return status==Z_STREAM_END?output:std::string();
 }
 
 // ---------------------------------------------------------------- PNG input
@@ -249,6 +270,22 @@ struct DrawEntry
 
     DrawEntry() : node(NULL), entity(NULL) { size[0] = size[1] = size[2] = 0; color[0] = color[1] = color[2] = 0; }
 };
+
+// Synchronize Ogre with the active DataModel camera, including its rotation.
+static bool SyncPlayerCamera(Ogre::Camera* camera,Ogre::Viewport* viewport)
+{
+    float pose[15];if(GetPlayerCameraPose(pose))return false;
+    Ogre::Matrix3 rotation(pose[0],pose[1],pose[2],pose[3],pose[4],pose[5],pose[6],pose[7],pose[8]);
+    camera->setPosition(pose[9],pose[10],pose[11]);
+    camera->setOrientation(Ogre::Quaternion(rotation));
+    if(viewport->getActualWidth()>0 && viewport->getActualHeight()>0){
+        float aspect=float(viewport->getActualWidth())/float(viewport->getActualHeight());
+        camera->setAspectRatio(aspect);
+        camera->setFOVy(Ogre::Radian(float(2.0*atan(tan(pose[12]*.5)/aspect))));
+    }
+    if(pose[13]>0 && pose[14]>pose[13]){camera->setNearClipDistance(pose[13]);camera->setFarClipDistance(pose[14]);}
+    return true;
+}
 
 static Ogre::SceneManager* g_sceneManager = NULL;
 static std::map<const void*, DrawEntry> g_drawn;
@@ -681,14 +718,21 @@ int main(int argc, char** argv)
     bool inspectPlace = false;
     bool loadOnly = false;
     bool p5Play = false;
+    bool playRequested = argc==1;
     bool p5Join = false;
     bool p5Control = false;
+    bool p5NativeCamera = false;
+    bool p5CameraTurnTest = false;
     bool p5Spawn = false;
     bool p5InputTest = false;
     bool p5ControllerCheck = false;
     bool p5LiveObserve = false;
     bool p5ClockCheck = false;
     bool p5HashCheck = false;
+    bool p5RunInitCheck = false;
+    bool p5ClimbProbe = false;
+    bool p5ClimbObserve = false;
+    bool p5LuaObjectCheck = false;
     bool p5FreefallCheck = false;
     bool anchorTrace = false;
     bool anchorFlagsTest = false;
@@ -708,12 +752,20 @@ int main(int argc, char** argv)
         else if (std::strcmp(argv[i], "--inspect-place") == 0) inspectPlace = true;
         else if (std::strcmp(argv[i], "--load-only") == 0) loadOnly = true;
         else if (std::strcmp(argv[i], "--p5-play") == 0) p5Play = true;
+        else if (std::strcmp(argv[i], "--play") == 0) playRequested = true;
         else if (std::strcmp(argv[i], "--p5-join") == 0) p5Join = true;
         else if (std::strcmp(argv[i], "--p5-control") == 0) p5Control = true;
+        else if (std::strcmp(argv[i], "--p5-native-camera") == 0) {p5NativeCamera=true;p5Control=true;p5Play=true;}
+        else if (std::strcmp(argv[i], "--p5-camera-turn-test") == 0) {p5CameraTurnTest=true;p5NativeCamera=true;p5Control=true;p5Play=true;}
         else if (std::strcmp(argv[i], "--p5-spawn") == 0) {p5Spawn=true;p5Control=true;p5Play=true;}
         else if (std::strcmp(argv[i], "--p5-live-observe") == 0) p5LiveObserve = true;
         else if (std::strcmp(argv[i], "--p5-clock-check") == 0) p5ClockCheck = true;
         else if (std::strcmp(argv[i], "--p5-hash-check") == 0) p5HashCheck = true;
+        else if (std::strcmp(argv[i], "--p5-run-init-check") == 0) p5RunInitCheck = true;
+        else if (std::strcmp(argv[i], "--p5-climb-probe") == 0) {p5ClimbProbe=true;p5Join=true;}
+        else if (std::strcmp(argv[i], "--p5-climb-observe") == 0) {p5ClimbObserve=true;p5Join=true;p5Control=true;p5Play=true;}
+        else if (std::strcmp(argv[i], "--p5-climb-watch") == 0) {p5ClimbObserve=true;p5Join=true;p5Play=true;}
+        else if (std::strcmp(argv[i], "--p5-lua-object-check") == 0) p5LuaObjectCheck = true;
         else if (std::strcmp(argv[i], "--p5-freefall-check") == 0) p5FreefallCheck = true;
         else if (std::strcmp(argv[i], "--p5-controller-check") == 0) {p5Control=true;p5ControllerCheck=true;}
         else if (std::strcmp(argv[i], "--p5-input-test") == 0) {p5Control=true;p5InputTest=true;}
@@ -726,6 +778,7 @@ int main(int argc, char** argv)
         else if (std::strcmp(argv[i], "--frames") == 0 && i + 1 < argc) { frames = true; frameCount = std::atoi(argv[++i]); }
         else if (argv[i][0] != '-') placePath = argv[i];
     }
+    if(playRequested){p5Spawn=true;p5Control=true;p5Play=true;p5NativeCamera=true;}
     if(stability && (!frames || frameCount<240)){std::printf("stability test requires --frames 240 or more\n");return 1;}
     if(inspectPlace && !frames){std::printf("inspect-place requires --frames\n");return 1;}
     if(anchorTrace && !frames){std::printf("anchor-trace requires --frames\n");return 1;}
@@ -740,6 +793,7 @@ int main(int argc, char** argv)
     if(!std::ifstream(getenv("ROC_TEXTURE_STRIP"),std::ios::binary)){
         std::printf("missing SurfacesStrip.png; provide original Content with --content-root\n");return 1;
     }
+    if(playRequested && placePath.empty())placePath=moduleRoot+"/Places/p5-playable.rbxl";
     if(!selftest && !cachetest && !lifetest && !frames && placePath.empty())demo=true;
     if(ConfigureContentRoot(contentRoot.c_str()))return 1;
     if(demo && placePath.empty())placePath=moduleRoot+"/Places/default.rbxl";
@@ -758,6 +812,7 @@ int main(int argc, char** argv)
     if(loadOnly && selftest){std::fprintf(stderr,"load-only requires a disk place\n");return 1;}
     if(loadOnly){std::fprintf(stderr,"load-only: deserializing\n");std::fflush(stderr);}
     if (!selftest && LoadPlace(placeText.c_str()) != 0) { std::printf("place load failed\n"); return 1; }
+    if(p5RunInitCheck){int result=CheckRunServiceInitialization();std::printf("RunService initialization: %s (%d)\n",result?"FAIL":"PASS",result);ClosePlace();return result;}
     if(p5HashCheck){
         int result=CheckNativeMD5();std::printf("MD5 vectors: %s (%d)\n",result?"FAIL":"PASS",result);
         ClosePlace();return result;
@@ -767,15 +822,19 @@ int main(int argc, char** argv)
         std::printf("anchor flags: %s\n",result?"FAIL":"PASS");
         ClosePlace();return result;
     }
-    if(loadOnly){std::fprintf(stderr,"load-only: humanoids=%d; closing\n",CountHumanoids());std::fprintf(stderr,"load-only: named humanoids=%d sounds=%d\n",CountInstancesByClass("Humanoid"),CountInstancesByClass("Sound"));std::fprintf(stderr,"load-only: scripts=%d\n",CountInstancesByClass("Script"));std::fflush(stderr);ClosePlace();std::fprintf(stderr,"load-only: complete\n");std::fflush(stderr);}
+    if(loadOnly){const char* classes[]={"Workspace","Model","Part","Script","Humanoid","Sound","IntValue","StringValue","ObjectValue","FloatValue","NumberValue"};for(size_t i=0;i<sizeof(classes)/sizeof(classes[0]);++i)std::fprintf(stderr,"load-only: %s=%d\n",classes[i],CountInstancesByClass(classes[i]));std::fflush(stderr);ClosePlace();std::fprintf(stderr,"load-only: complete\n");std::fflush(stderr);return 0;}
 
+    if(p5LuaObjectCheck){int result=CheckLuaObjectConversion();std::printf("Lua object conversion: %s (%d)\n",result?"FAIL":"PASS",result);ClosePlace();return result;}
     if(p5FreefallCheck){int result=CheckFreefallTransitions();std::printf("freefall transitions: %s (%d)\n",result?"FAIL":"PASS",result);ClosePlace();return result;}
     if(p5Join && BuildPlayerJoints()){std::printf("actor joint build failed\n");ClosePlace();return 1;}
+    if(p5ClimbProbe){StepEngine(1.0f/60.0f);int result=CheckClimbProbe();std::printf("climb probe: %d\n",result);ClosePlace();return result<0?1:0;}
     if(p5Control && AttachPlayerController(p5Spawn?1:0)){std::printf("local controller attach failed\n");ClosePlace();return 1;}
+    if(p5NativeCamera){float pose[15];int status=GetPlayerCameraPose(pose);std::printf("player camera subject: %s (%d)\n",status?"missing":"attached",status);if(status){ClosePlace();return 1;}}
     if(p5ControllerCheck){
         int result=CheckPlayerController();std::printf("controller checks: %s (%d)\n",result?"FAIL":"PASS",result);
         ClosePlace();return result;
     }
+    if(p5ClimbObserve && BeginClimbObservation()){ClosePlace();return 1;}
     if(p5Play)StartPlay();
 
     Ogre::Root* root = new Ogre::Root("", "", "player.log");
@@ -811,8 +870,9 @@ int main(int argc, char** argv)
     cam->setNearClipDistance(0.1f);
     if(demo){cam->setPosition(6,4.5f,8);cam->lookAt(0,0,0);}
     Ogre::Viewport* vp = win->addViewport(cam);
+    if(p5NativeCamera && !SyncPlayerCamera(cam,vp)){delete root;ClosePlace();return 1;}
     vp->setBackgroundColour(Ogre::ColourValue(1, 0, 1));
-    if(demo){
+    if(demo || p5NativeCamera){
         try{PlayerSkybox::apply(*sm,contentRoot);}
         catch(const std::exception& error){std::printf("skybox failed: %s\n",error.what());delete root;ClosePlace();return 8;}
     }
@@ -863,6 +923,8 @@ int main(int argc, char** argv)
     }
     else if (frames)
     {
+        float actorStart[3]={0,0,0};Ogre::Vector3 cameraStart=cam->getPosition(),lookStart=cam->getDirection();
+        if(p5NativeCamera && GetActorTorsoPosition(&actorStart[0],&actorStart[1],&actorStart[2]))return 1;
         float expectedY=0,initialFloorY=0,minY=1e30f,maxY=-1e30f;
         int anchored=0,tailSamples=0;bool stable=true,floorStable=true;
         std::ofstream samples, anchorSamples;
@@ -881,7 +943,10 @@ int main(int argc, char** argv)
         {
             if(p5InputTest && i==12)SetPlayerTestKey(1);
             if(p5InputTest && i==72)SetPlayerTestKey(0);
+            if(p5CameraTurnTest && i==12)SetPlayerCameraTestKey(1);
+            if(p5CameraTurnTest && i==42)SetPlayerCameraTestKey(0);
             StepEngine(1.0f / 60.0f);
+            if(p5NativeCamera && !SyncPlayerCamera(cam,vp))return 1;
             drawModels();
             root->renderOneFrame(); win->update();
             if(anchorTrace){
@@ -918,6 +983,15 @@ int main(int argc, char** argv)
         std::printf("after %d frames: Brick at (%g,%g,%g), models=%d\n", frameCount, x, y, z, SceneModelCount());
         drawModels();
         root->renderOneFrame(); if(!writeBackbuffer(win,"last.png"))return 7;
+        if(p5NativeCamera){
+            float actorEnd[3],pose[15];if(GetActorTorsoPosition(&actorEnd[0],&actorEnd[1],&actorEnd[2]) || GetPlayerCameraPose(pose))return 1;
+            Ogre::Vector3 end=cam->getPosition();Ogre::Matrix3 rotation;cam->getOrientation().ToRotationMatrix(rotation);
+            std::ofstream observation("p5_camera.csv",std::ios::binary);observation.precision(9);
+            observation<<"actor_start_x,actor_start_y,actor_start_z,actor_end_x,actor_end_y,actor_end_z,camera_start_x,camera_start_y,camera_start_z,camera_end_x,camera_end_y,camera_end_z,native_x,native_y,native_z,rotation_error,native_fov_x,renderer_fov_y,aspect,near_clip,far_clip,look_start_x,look_start_y,look_start_z,look_end_x,look_end_y,look_end_z\n";
+            float error=0;for(int r=0;r<3;++r)for(int c=0;c<3;++c)error=std::max(error,float(fabs(rotation[r][c]-pose[r*3+c])));
+            observation<<actorStart[0]<<","<<actorStart[1]<<","<<actorStart[2]<<","<<actorEnd[0]<<","<<actorEnd[1]<<","<<actorEnd[2]<<","<<cameraStart.x<<","<<cameraStart.y<<","<<cameraStart.z<<","<<end.x<<","<<end.y<<","<<end.z<<","<<pose[9]<<","<<pose[10]<<","<<pose[11]<<","<<error<<","<<pose[12]<<","<<cam->getFOVy().valueRadians()<<","<<cam->getAspectRatio()<<","<<cam->getNearClipDistance()<<","<<cam->getFarClipDistance()<<","<<lookStart.x<<","<<lookStart.y<<","<<lookStart.z<<","<<cam->getDirection().x<<","<<cam->getDirection().y<<","<<cam->getDirection().z<<"\n";
+            if(!observation)return 7;
+        }
         if(inspectPlace){
             std::ofstream snapshot("place_snapshot.csv",std::ios::binary);snapshot.precision(9);
             snapshot<<"index,status,x,y,z,sx,sy,sz,kind,levels,source_indices,backend_indices\n";
@@ -936,7 +1010,7 @@ int main(int argc, char** argv)
     else
     {
         float actorX=0,actorY=0,actorZ=0;
-        Ogre::Vector3 cameraStart=cam->getPosition();
+        Ogre::Vector3 cameraStart=cam->getPosition(),lookStart=cam->getDirection();
         if(p5LiveObserve && GetActorTorsoPosition(&actorX,&actorY,&actorZ))return 1;
         Ogre::Timer timer;
         unsigned long last = timer.getMilliseconds();
@@ -966,20 +1040,22 @@ int main(int argc, char** argv)
             if (GetAsyncKeyState(VK_ESCAPE) & 0x8000) break;
 
             StepEngine(dt);
+            if(p5NativeCamera && !SyncPlayerCamera(cam,vp))return 1;
             drawModels();
             root->renderOneFrame();
             win->update();
         }
         if(p5LiveObserve){
             float x,y,z;if(GetActorTorsoPosition(&x,&y,&z))return 1;
-            Ogre::Vector3 cameraEnd=cam->getPosition();
+            Ogre::Vector3 cameraEnd=cam->getPosition(),lookEnd=cam->getDirection();
             std::ofstream observation("p5_live.csv",std::ios::binary);observation.precision(9);
-            observation<<"actor_start_x,actor_start_y,actor_start_z,actor_end_x,actor_end_y,actor_end_z,camera_start_x,camera_start_y,camera_start_z,camera_end_x,camera_end_y,camera_end_z\n";
-            observation<<actorX<<","<<actorY<<","<<actorZ<<","<<x<<","<<y<<","<<z<<","<<cameraStart.x<<","<<cameraStart.y<<","<<cameraStart.z<<","<<cameraEnd.x<<","<<cameraEnd.y<<","<<cameraEnd.z<<"\n";
+            observation<<"actor_start_x,actor_start_y,actor_start_z,actor_end_x,actor_end_y,actor_end_z,camera_start_x,camera_start_y,camera_start_z,camera_end_x,camera_end_y,camera_end_z,look_start_x,look_start_y,look_start_z,look_end_x,look_end_y,look_end_z\n";
+            observation<<actorX<<","<<actorY<<","<<actorZ<<","<<x<<","<<y<<","<<z<<","<<cameraStart.x<<","<<cameraStart.y<<","<<cameraStart.z<<","<<cameraEnd.x<<","<<cameraEnd.y<<","<<cameraEnd.z<<","<<lookStart.x<<","<<lookStart.y<<","<<lookStart.z<<","<<lookEnd.x<<","<<lookEnd.y<<","<<lookEnd.z<<"\n";
             if(!observation)return 7;
         }
     }
 
+    if(p5ClimbObserve){float speed=0;int count=EndClimbObservation(&speed);std::printf("climb events: %d max_speed=%g detected=%d\n",count,speed,CheckClimbProbe());}
     SceneDetach();
     drawModels();
     PlayerBlockMesh::flushUnused();

@@ -22,6 +22,8 @@
 
 namespace RBX
 {
+	bool DetectClimb(Humanoid*);
+	Humanoid::State* CreateRecoveredClimbing(Humanoid*);
 	HitTestFilter::Result Balancing::filterResult(const Primitive* testMe) const
 	{
 		Primitive* torsoPrimitive = humanoid->getTorsoPrimitive();
@@ -179,6 +181,8 @@ namespace RBX
 		Humanoid::State* next = Balancing::onStep(stepDt, controller);
 		if (next != this)
 			return next;
+		if (DetectClimb(humanoid))
+			return CreateRecoveredClimbing(humanoid);
 		if (!floorPart)
 			return new Freefall(humanoid);
 

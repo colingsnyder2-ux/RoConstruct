@@ -1,7 +1,12 @@
+// from server: 100% by EspClaude
 // from server: 82% by EspClaude
+// roc 2009-06 005c0050  unit: RBX::VChunk::?$WeakReferenceCountedPointer  size: 163 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 005c0050
+//
+
 // from server: 100% by colin
 // roc-cl: 21022
-// roc-flags: /Od /Ob0 /GS /EHsc /MD
+// roc-flags: /Od /Ob0 /GS- /EHsc /MD
 #pragma optimize("", off)
 
 typedef unsigned int size_t;
