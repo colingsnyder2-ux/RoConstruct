@@ -4,6 +4,11 @@
 #include "../tests/p2-recovered/Player2008.cpp"
 #undef main
 #include "P6Engine.h"
+#include <OgreOverlayManager.h>
+#include <OgreOverlayContainer.h>
+#include <OgreTextAreaOverlayElement.h>
+#include <OgreFontManager.h>
+#include <OgreMaterialManager.h>
 
 extern "C" int P6DataCamera(float* values);
 extern "C" int P6DataSave(const char* path);
@@ -42,6 +47,49 @@ static void frameModels()
     g_focus = bounds.getCenter();
     g_distance = std::max(4.0f, bounds.getSize().length() * 1.6f);
     g_framed = true;
+}
+
+// In-view strip: the original draws Fonts\\comics.fnt through G3D over a grey bar.
+// ponytail: system comic.ttf stands in until comics.fnt is located.
+static void createStrip()
+{
+    Ogre::ResourceGroupManager::getSingleton().addResourceLocation("C:/Windows/Fonts", "FileSystem", "General");
+    Ogre::FontPtr font = Ogre::FontManager::getSingleton().create("P6Comic", "General");
+    font->setType(Ogre::FT_TRUETYPE);
+    font->setSource("comic.ttf");
+    font->setTrueTypeSize(13);
+    font->setTrueTypeResolution(96);
+    font->load();
+    Ogre::MaterialPtr material = Ogre::MaterialManager::getSingleton().create("P6Strip", "General");
+    Ogre::Pass* pass = material->getTechnique(0)->getPass(0);
+    pass->setLightingEnabled(false);
+    pass->setSceneBlending(Ogre::SBT_TRANSPARENT_ALPHA);
+    pass->setDepthWriteEnabled(false);
+    pass->setDiffuse(0.55f, 0.55f, 0.55f, 0.55f);
+    pass->setAmbient(0.55f, 0.55f, 0.55f);
+    pass->setVertexColourTracking(Ogre::TVC_NONE);
+    pass->createTextureUnitState()->setColourOperationEx(Ogre::LBX_SOURCE1, Ogre::LBS_MANUAL, Ogre::LBS_CURRENT, Ogre::ColourValue(0.55f, 0.55f, 0.55f));
+    pass->getTextureUnitState(0)->setAlphaOperation(Ogre::LBX_SOURCE1, Ogre::LBS_MANUAL, Ogre::LBS_CURRENT, 0.55f);
+    Ogre::OverlayManager& manager = Ogre::OverlayManager::getSingleton();
+    Ogre::Overlay* overlay = manager.create("P6Strip");
+    Ogre::OverlayContainer* bar = static_cast<Ogre::OverlayContainer*>(manager.createOverlayElement("Panel", "P6StripBar"));
+    bar->setMetricsMode(Ogre::GMM_PIXELS);
+    bar->setDimensions(500, 20);
+    bar->setMaterialName("P6Strip");
+    static const char* const items[] = {"Tools", "Insert", "Fullscreen", "Help...", "Exit"};
+    for (int i = 0; i < 5; ++i) {
+        Ogre::TextAreaOverlayElement* text = static_cast<Ogre::TextAreaOverlayElement*>(manager.createOverlayElement("TextArea", std::string("P6StripText") + items[i]));
+        text->setMetricsMode(Ogre::GMM_PIXELS);
+        text->setPosition(i * 100.0f + 28, 3);
+        text->setDimensions(90, 16);
+        text->setFontName("P6Comic");
+        text->setCharHeight(15);
+        text->setColour(i < 2 ? Ogre::ColourValue(0.3f, 0.3f, 0.3f, 0.6f) : Ogre::ColourValue(0.1f, 0.1f, 0.1f));
+        text->setCaption(items[i]);
+        bar->addChild(text);
+    }
+    overlay->add2D(bar);
+    overlay->show();
 }
 
 static void syncEditCamera()
@@ -124,6 +172,7 @@ extern "C" int P6EngineOpen(void* window, const char* path, int width, int heigh
         if (!SyncPlayerCamera(g_camera, g_viewport)) return 7;
     } else syncEditCamera();
     PlayerSkybox::apply(*scene, content);
+    createStrip();
     if (SceneAttach()) return 8;
     g_timer = new Ogre::Timer;
     g_last = g_timer->getMilliseconds();

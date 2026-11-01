@@ -534,7 +534,6 @@ class CRobloxView : public CView {
     DECLARE_DYNCREATE(CRobloxView)
 public:
     CPoint dragFrom;
-    CButton strip[5];
     void* dragged;
     float dragStart[3];
 public:
@@ -584,23 +583,15 @@ public:
         create.style |= WS_CLIPCHILDREN;
         return CView::PreCreateWindow(create);
     }
-    afx_msg int OnCreate(LPCREATESTRUCT create) {
-        if (CView::OnCreate(create) == -1) return -1;
-        static const struct { LPCTSTR title; UINT id; } items[] = {{_T("Tools"), 0}, {_T("Insert"), 0}, {_T("Fullscreen"), ID_VIEW_FULLSCREEN}, {_T("Help..."), ID_APP_ABOUT}, {_T("Exit"), ID_APP_EXIT}};
-        for (int i = 0; i < 5; ++i) {
-            strip[i].Create(items[i].title, WS_CHILD | WS_VISIBLE | BS_FLAT | BS_PUSHBUTTON, CRect(i * 100, 0, (i + 1) * 100, 20), this, items[i].id ? items[i].id : 100 + i);
-            strip[i].EnableWindow(items[i].id != 0);
-        }
-        return 0;
-    }
-    virtual BOOL OnCommand(WPARAM wParam, LPARAM lParam) { // strip buttons act as frame commands
-        if (lParam && (HIWORD(wParam) == BN_CLICKED)) { AfxGetMainWnd()->PostMessage(WM_COMMAND, LOWORD(wParam)); return TRUE; }
-        return CView::OnCommand(wParam, lParam);
-    }
     afx_msg void OnLButtonDown(UINT, CPoint point) {
         CRect rect;
         GetClientRect(rect);
         SetFocus();
+        if (point.y < 20 && point.x < 500) { // strip drawn by the engine: Tools, Insert, Fullscreen, Help, Exit
+            static const UINT commands[] = {0, 0, ID_VIEW_FULLSCREEN, ID_APP_ABOUT, ID_APP_EXIT};
+            if (commands[point.x / 100]) AfxGetMainWnd()->PostMessage(WM_COMMAND, commands[point.x / 100]);
+            return;
+        }
         dragged = P6EngineDragBegin(float(point.x) / rect.Width(), float(point.y) / rect.Height(), dragStart);
         if (!dragged) return;
         static_cast<CMainFrame*>(AfxGetMainWnd())->SelectHandle(dragged);
@@ -682,7 +673,6 @@ public:
 };
 IMPLEMENT_DYNCREATE(CRobloxView, CView)
 BEGIN_MESSAGE_MAP(CRobloxView, CView)
-    ON_WM_CREATE()
     ON_WM_SIZE()
     ON_WM_LBUTTONDOWN()
     ON_WM_LBUTTONUP()
