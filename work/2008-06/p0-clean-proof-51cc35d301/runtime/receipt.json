@@ -1,0 +1,125 @@
+{
+  "revision": "51cc35d301b18785db4795040871dbb207e248c4",
+  "checkout": "C:\\Users\\colin\\roc-p0",
+  "exe_sha256": "8b7be500dd2ff2af312b969f83376bb2752618463036a3cd0c6d58db42d2a4b7",
+  "map_sha256": "8de2c4d9f1b71c54822cd40d1522e0dffb14050f90a0768879b8020780f36af5",
+  "fixture_sha256": "3ac7564b67e55441066cec382c125ece3c19e5ebcbf316ef0a5c0a74a0cab5b9",
+  "environment_removed": [
+    "ROC_BUILD",
+    "ROC_TEXTURE_STRIP",
+    "ROC_SKY_SPHERE",
+    "ROC_TRACE_STAGES"
+  ],
+  "runs": {
+    "selftest": {
+      "command": [
+        "C:\\Users\\colin\\roc-p0\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\P2RecoveredPlayer.exe",
+        "--selftest"
+      ],
+      "cwd": "C:\\Users\\colin\\roc-p0\\work\\2008-06\\p0-clean-runtime-51cc35d301\\selftest",
+      "exit": 0,
+      "result": {
+        "pixel_metric": "lit green: G>50, G>2R, 2G>3B",
+        "initial": {
+          "models": 1,
+          "greenA": 1879,
+          "greenB": 0,
+          "pass": true
+        },
+        "moved": {
+          "models": 1,
+          "greenA": 0,
+          "greenB": 2080,
+          "pass": true
+        },
+        "removed": {
+          "models": 0,
+          "green": 0,
+          "pass": true
+        },
+        "empty": {
+          "models": 0,
+          "green": 0,
+          "pass": true
+        },
+        "failures": 0
+      },
+      "files": {
+        "player.log": "3fa22a024d16409c126e7b5a950b4b324590a05a48eb9571fb7b16782fe08222",
+        "selftest_empty.png": "43b90f1bd66171f89cd34a1f8320045431e7e41db921e3572405f83f9ad955de",
+        "selftest_initial.png": "c45f954cbf174bb689c58c6dc7eab0fc2de0cd4b5c9c5c4ff86b0c57b8263844",
+        "selftest_moved.png": "f88f0fd09c79c139f3313fdfa418acc84adb8b2b2ae89f703052f0d1db5b02b4",
+        "selftest_removed.png": "43b90f1bd66171f89cd34a1f8320045431e7e41db921e3572405f83f9ad955de",
+        "selftest_result.json": "a4e8122cd39a76909bc0129b0405f306368add686bd710f7b1307b9720467b69",
+        "stdout.txt": "e3eb6ce4b0e9f0764bb85c36799eef1560e7ed599f268f513183d0410957fcb6"
+      }
+    },
+    "falling240": {
+      "command": [
+        "C:\\Users\\colin\\roc-p0\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\P2RecoveredPlayer.exe",
+        "--frames",
+        "240",
+        "C:\\Users\\colin\\roc-p0\\rebuild\\2008-06\\tests\\fixtures\\falling.rbxl"
+      ],
+      "cwd": "C:\\Users\\colin\\roc-p0\\work\\2008-06\\p0-clean-runtime-51cc35d301\\falling240",
+      "exit": 0,
+      "files": {
+        "last.png": "332c041b53f2fce78f79d21d4af03d26985eeedd88a22ad095564c20737bd3bd",
+        "player.log": "0b0a3e8edafe66eb5a43b4e57d89c9b41141d252e498a1ae41b676459a113d7b",
+        "stdout.txt": "4b41de6a78caccf14400aeb15c7409f6ea8888b5523ad8567bb7e02f2d0b14c2"
+      }
+    },
+    "stability600": {
+      "command": [
+        "C:\\Users\\colin\\roc-p0\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\P2RecoveredPlayer.exe",
+        "--frames",
+        "600",
+        "--stability-test",
+        "C:\\Users\\colin\\roc-p0\\rebuild\\2008-06\\tests\\fixtures\\falling.rbxl"
+      ],
+      "cwd": "C:\\Users\\colin\\roc-p0\\work\\2008-06\\p0-clean-runtime-51cc35d301\\stability600",
+      "exit": 0,
+      "result": {
+        "pass": true,
+        "frames": 600,
+        "expected_y": -3.79999995,
+        "initial_floor_y": -5,
+        "floor_stable_and_anchored": true,
+        "tail_samples": 300,
+        "tail_min_y": -3.8027389,
+        "tail_max_y": -3.8027389
+      },
+      "independent_csv_audit": {
+        "samples": 600,
+        "tail": 300,
+        "min": -3.8027389,
+        "max": -3.8027389
+      },
+      "files": {
+        "last.png": "332c041b53f2fce78f79d21d4af03d26985eeedd88a22ad095564c20737bd3bd",
+        "player.log": "a21ac6900b3fcfe0de2e6b7bc15df7aa64a98159a1081fb271af91019892d29a",
+        "stability_result.json": "f5f20509461042573e6b6871d5a100f013f83e82a709cb4bad3bb8f483b544ef",
+        "stability_samples.csv": "0185faa62888887b9120c34554e32c1b8c691fec503553aee38fefee4546c83a",
+        "stdout.txt": "d39cd646dbdf65a5eb78ff6d190705a2969fbcc751510ce8f734cdf9a10ff859"
+      }
+    },
+    "missing-place": {
+      "command": [
+        "C:\\Users\\colin\\roc-p0\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\P2RecoveredPlayer.exe",
+        "--frames",
+        "240",
+        "C:\\Users\\colin\\roc-p0\\work\\2008-06\\p0-clean-runtime-51cc35d301\\absent.rbxl"
+      ],
+      "cwd": "C:\\Users\\colin\\roc-p0\\work\\2008-06\\p0-clean-runtime-51cc35d301\\missing-place",
+      "exit": 1,
+      "files": {
+        "stdout.txt": "85c42e44e306de9beb1ae12f7cdc1f13720f1b9e8445b0da225f2f5fa443e131"
+      }
+    }
+  },
+  "loaded_dlls": {
+    "C:\\Users\\colin\\roc-p0\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\rgmain.dll": "b67d2e96c5bf28fe48799a96c7927c57b91c74e483b30975ee58ca45f470153c",
+    "C:\\Users\\colin\\roc-p0\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\rgdx.dll": "dfce3291ea1214f37aae8e009af1891c45ab7843eb639a914d9791418559a50e"
+  },
+  "scope": "Direct runtime evidence only; source export and clean-build provenance require separate audit."
+}

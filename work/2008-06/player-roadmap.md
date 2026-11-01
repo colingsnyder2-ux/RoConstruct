@@ -1,5 +1,30 @@
 # Current player checkpoint
 
+P0 clean-build/runtime gate now proven at source51cc35d301. Detached worktree
+C:/Users/colin/roc-p0 started tracked-clean with zero reconstructed outputs;
+only tools junction shares pinned compilers/vendor dependencies. Official client
+fetch/analyze, doctor150021022 and canonical player build complete. Player
+linked=True/test_exit=0. Separate normal processes selftest0,falling240=0,
+stability600=0,missing-place=1. CSV independently verifies all600 anchored/stable
+floor samples and final300 Brick samples exactly-3.8027389, ideal-3.8 tolerance.01.
+Evidence:work/2008-06/p0-clean-proof-51cc35d301/ includes actual loaded DLL paths,
+EXE/map/fixture hashes,28 library/tool pins,721 command hashes and build reports.
+Cold native-material test exit1 was absent ROC_TEXTURE_STRIP; unchanged binary
+with staged original strip exits0. Original failure retained, no blanket green.
+
+Found export defect: named-harness filter dropped direct-layer and included.cpp
+sources, fixtures and staging scripts. Exporter now retains test source inputs;
+regression passes. Fresh candidate from clean source51 has7959files, no missing
+module test-layer sources;71required test inputs audited. Candidate lives at
+C:/Users/colin/roc-p0/work/2008-06/p0-source-export-51cc35d301. Publication still
+pending; do not claim current findings HEAD6bfc91c8 includes this candidate.
+Existing owner source changes stay39insertions/12deletions, unstaged.
+Next: publish exact candidate through existing package workflow while preserving
+native verification ledgers, pin published SHA, then full P3 lifetime/non-box.
+Read-only findings status handle17424 remains live in lazy-fetch subprocess;
+do not restart it merely because output is quiet. Fresh build35318 and runtime
+60909 completed0; export96992 completed0. No builds currently active.
+
 Requested demo COMPLETE / user accepted. Sourceb8cd526f04 builds/exits0. Default
 launch now shows red4x1.2x2 anchored block, full2x4 stud rows, period default sky.
 Original004d9e00 material template byte-confirmed at00940660; polar UV basis

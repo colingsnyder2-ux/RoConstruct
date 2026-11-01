@@ -1,0 +1,1 @@
+could not read place: C:\Users\colin\roc-p0\work\2008-06\p0-clean-runtime-51cc35d301\absent.rbxl

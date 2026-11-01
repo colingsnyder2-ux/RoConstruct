@@ -1,0 +1,2 @@
+2008-06: 41175 functions (22356 real code, 18819 skipped: compiler stubs or bad splits)
+2008-06: 469 catch funclets folded into owners; 538 code starts rest only on alignment (review list)

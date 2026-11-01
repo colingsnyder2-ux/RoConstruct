@@ -49,11 +49,6 @@ def export(root, destination):
     previous = destination / 'package.json'
     owned = set(json.loads(previous.read_text(encoding='utf-8'))['files']) if previous.exists() else set()
     hashes, large, wanted, pending, locks = {}, {}, set(), [], {}
-    harnesses = {'m2_window.cpp', 'm4_datamodel.cpp', 'm4_render.cpp', 'm5_place.cpp'}
-    for path in (source / 'modules').glob('*.json'):
-        spec = json.loads(path.read_text(encoding='utf-8'))
-        if spec.get('test'):
-            harnesses.add(spec['test'] + '.cpp')
 
     def write(relative, data):
         name = Path(relative).as_posix()
@@ -95,9 +90,9 @@ def export(root, destination):
         # Export each authoritative tree once.
         if relative.parts[0] in {'src', 'work', 'config', 'scripts', 'out'}:
             return
-        if relative.parts[0] == 'tests' and path.suffix not in {'.cpp', '.h', '.hpp', '.inl'}:
-            return
-        if relative.parts[0] == 'tests' and path.suffix == '.cpp' and path.name not in harnesses:
+        # Harnesses include auxiliary .cpp files and direct module layers compile
+        # more sources than the named test. Keep their fixtures and launch scripts.
+        if relative.parts[0] == 'tests' and path.suffix not in {'.c', '.cpp', '.h', '.hpp', '.inl', '.py', '.md', '.rbxl', '.rbxlx'}:
             return
         if path.name in {'POLICY.md', 'README.md', '.gitignore', 'compile_test.bat'}:
             return
@@ -155,7 +150,7 @@ def export(root, destination):
     launcher = Path(__file__).with_name('rebuild_package_launcher.py')
     copy(launcher, Path('scripts/compile_test.py'))
     write('compile_test.bat', b'@echo off\r\nsetlocal\r\npython "%~dp0scripts\\compile_test.py" %*\r\nset "result=%errorlevel%"\r\nif "%~1"=="" pause\r\nexit /b %result%\r\n')
-    write('README.md', b'# 2008-06 native rebuild\n\nRun compile_test.bat with ROC_ROOT set to a configured RoConstruct checkout containing the historical compilers and dependencies. The default builds engine modules and runs their runtime harnesses. --smoke-only checks the toolchain; --tests-only relinks against a prior local build. Renderer failures are reported honestly; this is not yet a complete playable client.\n\n- src/Client/: assembled native C++ and required assets.\n- src/glue/: build glue.\n- ../src/2008-06/: recovered functions and library build recipes (stable URLs).\n- config/ and patches/: module definitions, overlays and their provenance. Native source already has the overlay applied.\n- tests/: only runtime harnesses required by module definitions and compile_test.bat.\n- scripts/: build and ABI checks used by RoConstruct.\n- verification/: accepted integration history, proposal states, source locations and required binary-analysis manifests.\n\nBuild outputs stay local under work/. Compiler installs and external library dependencies are supplied by RoConstruct. Original vendor license notices remain with their sources. Package metadata is not a new acceptance receipt.\n')
+    write('README.md', b'# 2008-06 native rebuild\n\nRun compile_test.bat with ROC_ROOT set to a configured RoConstruct checkout containing the historical compilers and dependencies. The default builds engine modules and runs their runtime harnesses. --smoke-only checks the toolchain; --tests-only relinks against a prior local build. Renderer failures are reported honestly; this is not yet a complete playable client.\n\n- src/Client/: assembled native C++ and required assets.\n- src/glue/: build glue.\n- ../src/2008-06/: recovered functions and library build recipes (stable URLs).\n- config/ and patches/: module definitions, overlays and their provenance. Native source already has the overlay applied.\n- tests/: runtime harnesses, auxiliary sources, fixtures and launch scripts.\n- scripts/: build and ABI checks used by RoConstruct.\n- verification/: accepted integration history, proposal states, source locations and required binary-analysis manifests.\n\nBuild outputs stay local under work/. Compiler installs and external library dependencies are supplied by RoConstruct. Original vendor license notices remain with their sources. Package metadata is not a new acceptance receipt.\n')
     for name in ('accepted-integrations.json', 'integration-jobs.json', 'native-credit.json', 'inventory.json', 'runtime-tests.json'):
         path = destination / 'verification' / name
         if path.exists():
