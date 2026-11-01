@@ -1,6 +1,6 @@
 # Native integration with an agent (Codex, Claude)
 
-## Native source recovery with real Codex agents (Worker 25)
+## Native source recovery with real Codex agents (Worker 26)
 
 Open `roc gui`, choose **Workers → Integrator**, select your Codex model and
 launch cap, then **Start native recovery**. This panel exposes native C++ recovery
@@ -1063,3 +1063,9 @@ an active recovery. The GUI hides legacy Integrator presets/output modes.
 Existing owner-established Win32 casts may remain unchanged while another part
 of the same method body is recovered. New/changed casts and offset views remain
 blocked; the actual unmodified casts still compile and appear in proof receipts.
+
+Worker 26 restores the genuine `Mechanism*` declaration in the inactive world
+Assembly port; Assembly, AssemblyStage and SleepStage compile with original MSVC.
+Their June ABI/behavior still needs recovery; compilation grants no credit.
+Saved recovery proposals now carry an evidence mode, including older drafts,
+so linked preflight can proceed into normal independent submission.
