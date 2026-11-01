@@ -26,6 +26,7 @@ while pending:
     if lib not in libs:
         libs.append(lib)
         pending += dep.get("depends", [])
+libs.append(SNAPSHOT / "XTP" / "linked" / "linked.lib")
 libs += [rebuild.dll_import_lib(client, dll) for dll in spec["import_dlls"]]
 
 # Same overlay-first include order the player test compiles with.
@@ -38,7 +39,9 @@ for item in spec["test_includes"]:
         includes.append(overlay / path.relative_to(tree))
     includes.append(path)
 
-mfc_flags = ["/nologo", "/c", "/O2", "/GS-", "/EHsc", "/MD", "/DWIN32", "/DNDEBUG", "/D_MBCS", "/D_AFXDLL", "/I" + str(mfc)]
+xtp = ROOT / "tools" / "libs" / "xtp-11.2.2" / "Source"
+mfc_flags = ["/nologo", "/c", "/O2", "/GS-", "/EHsc", "/MD", "/DWIN32", "/DNDEBUG", "/D_MBCS", "/D_AFXDLL", "/D_XTP_STATICLINK", "/D_XTPLIB_NOAUTOLINK",
+             "/I" + str(mfc), "/I" + str(xtp)]
 units = [("RobloxShell.obj", HERE / "RobloxShell.cpp", mfc_flags + ["/I" + str(HERE)]),
          ("appmodul.obj", mfc.parent / "src" / "mfc" / "appmodul.cpp", mfc_flags + ["/I" + str(mfc.parent / "src" / "mfc")]),  # WinMain, AfxInitialize
          ("P6Engine.obj", HERE / "P6Engine.cpp", ["/nologo", "/c", "/O2", "/GS-", "/EHsc", "/MD"] + ["/D" + d for d in spec["test_defines"].split()]

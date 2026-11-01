@@ -5,6 +5,7 @@
 #include <afxole.h>
 #include <afxcmn.h>
 #include <afxext.h>
+#include <XTToolkitPro.h>
 #include <stdio.h>
 #include "P6Engine.h"
 
@@ -31,11 +32,23 @@ public:
 static CString g_capture;
 static bool g_openFailed;
 
-class CMainFrame : public CMDIFrameWnd {
+// 00431d00: status bar 0000e801, then command bars with the frame menu.
+class CMainFrame : public CXTPMDIFrameWnd {
     DECLARE_DYNAMIC(CMainFrame)
+    CXTPStatusBar statusBar;
 public:
+    afx_msg int OnCreate(LPCREATESTRUCT create) {
+        if (CXTPMDIFrameWnd::OnCreate(create) == -1) return -1;
+        static const UINT indicators[] = {ID_SEPARATOR};
+        if (!statusBar.Create(this) || !statusBar.SetIndicators(indicators, 1)) return -1;
+        if (!InitCommandBars()) return -1;
+        CXTPCommandBars* bars = GetCommandBars();
+        XTPPaintManager()->SetTheme(xtpThemeOffice2003);
+        CXTPCommandBar* menu = bars->SetMenu(_T("Menu Bar"), IDR_MAINFRAME_ROBLOX);
+        return menu ? 0 : -1;
+    }
     afx_msg void OnTimer(UINT_PTR id) {
-        if (id != ID_P6_AUTOCLOSE) { CMDIFrameWnd::OnTimer(id); return; }
+        if (id != ID_P6_AUTOCLOSE) { CXTPMDIFrameWnd::OnTimer(id); return; }
         KillTimer(id);
         printf("p6: autoclose frames=%d\n", P6EngineFrames());
         P6EngineReport();
@@ -44,8 +57,9 @@ public:
     }
     DECLARE_MESSAGE_MAP()
 };
-IMPLEMENT_DYNAMIC(CMainFrame, CMDIFrameWnd)
-BEGIN_MESSAGE_MAP(CMainFrame, CMDIFrameWnd)
+IMPLEMENT_DYNAMIC(CMainFrame, CXTPMDIFrameWnd)
+BEGIN_MESSAGE_MAP(CMainFrame, CXTPMDIFrameWnd)
+    ON_WM_CREATE()
     ON_WM_TIMER()
 END_MESSAGE_MAP()
 
@@ -101,8 +115,8 @@ public:
         CMainFrame* frame = new CMainFrame;
         if (!frame->LoadFrame(IDR_MAINFRAME_ROBLOX)) { delete frame; return FALSE; }
         m_pMainWnd = frame;
-        CMenu* menu = frame->GetMenu();
-        printf("p6: frame=%p menus=%d\n", frame->m_hWnd, menu ? menu->GetMenuItemCount() : -1);
+        CXTPCommandBar* menu = frame->GetCommandBars()->GetMenuBar();
+        printf("p6: frame=%p menus=%d\n", frame->m_hWnd, menu ? menu->GetControlCount() : -1);
         frame->ShowWindow(command.autoClose && !command.visible ? SW_HIDE : m_nCmdShow);
         frame->UpdateWindow();
         if (command.m_nShellCommand == CCommandLineInfo::FileOpen && !ProcessShellCommand(command)) return FALSE;
