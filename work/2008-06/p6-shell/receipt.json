@@ -1,0 +1,55 @@
+{
+ "milestone": "P6",
+ "status": "OPEN",
+ "scope": "MFC shell only: no engine, no document, no XTP frame, no editing",
+ "base": "40cbe42fa2f32ce45e060b4bef3ec0450df6fa02",
+ "exe_sha256": "49cc54bdb6241f08c63be4d42d3f4ef54e61675c5d46c9bda8786f98e09a5521",
+ "res_sha256": "d5d2373dc401a271ff764f16cb92558da4009c7215210b4938e533821187bb42",
+ "sources": {
+  "RobloxShell.cpp": "829e5c6be8927be5dcc8598735a47b6e058046c0b1eef49fdf805ab5cb60c62b",
+  "build_shell.py": "b96d5365389822579d7e25c9de0d828aa43ca2c640691a44301d9f4cd86955f8",
+  "gen_res.py": "780cf9a95025f0d3f315bbac95703dfabe1378308ec5da220be5eb3e1f787497"
+ },
+ "map_symbols": [
+  "?InitInstance@CRobloxApp@@UAEHXZ",
+  "_WinMain@16"
+ ],
+ "runs": [
+  {
+   "command": "Roblox.exe -p6-autoclose",
+   "exit": 0,
+   "observed": [
+    "p6: frame=04030F56 menus=8",
+    "p6: shown",
+    "p6: updated",
+    "p6: init done",
+    "p6: Run",
+    "p6: autoclose",
+    "p6: OnDestroy",
+    "p6: PostNcDestroy",
+    "p6: ExitInstance"
+   ]
+  },
+  {
+   "command": "Roblox.exe -p6-autoclose",
+   "exit": 0,
+   "observed": [
+    "p6: frame=04040F56 menus=8",
+    "p6: shown",
+    "p6: updated",
+    "p6: init done",
+    "p6: Run",
+    "p6: autoclose",
+    "p6: OnDestroy",
+    "p6: PostNcDestroy",
+    "p6: ExitInstance"
+   ]
+  }
+ ],
+ "hidden_window": true,
+ "shims": [
+  "_afxForceEXCLUDE/_afxForceSTDAFX defined locally",
+  "RT resources copied from original into generated res, not tracked",
+  "CMainFrame is plain CMDIFrameWnd, original is XTP-based"
+ ]
+}
