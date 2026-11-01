@@ -7,6 +7,11 @@
 #include "security/SecurityContext.h"
 #include "util/ContentProvider.h"
 #include "util/Sound.h"
+#include "../PlayerNativeInput.h"
+#include "Network/Players.h"
+#include "v8datamodel/UserController.h"
+#include "v8datamodel/Camera.h"
+#include "v8datamodel/TimerService.h"
 #include "util/standardout.h"
 #include "util/Utilities.h"
 #include <G3D/Vector3.h>
@@ -18,6 +23,7 @@ static boost::shared_ptr<RBX::DataModel> g_dataModel;
 static boost::shared_ptr<RBX::PartInstance> g_brickRef;
 static RBX::PartInstance* g_brick = NULL;
 static bool g_playing = false;
+static PlayerNativeInput* g_input = NULL;
 
 extern "C" int ConfigureContentRoot(const char* path)
 {
@@ -132,6 +138,110 @@ extern "C" int PartAlive(void)
     return g_brick && g_brickRef && g_brick->getParent() != NULL;
 }
 
+// Diagnostic: use the existing Humanoid joint builder on the authored actor.
+extern "C" int BuildPlayerJoints()
+{
+    if (!g_dataModel) return 1;
+    RBX::DataModel::Lock lock(g_dataModel);
+    RBX::Instance* actor=g_dataModel->getWorkspace()->findFirstChildByName("Actor");
+    RBX::Humanoid* humanoid=RBX::Humanoid::modelIsCharacter(actor);
+    if (!humanoid || !humanoid->getTorso() || !humanoid->getHead() || !humanoid->getLeftArm() ||
+        !humanoid->getRightArm() || !humanoid->getLeftLeg() || !humanoid->getRightLeg()) return 1;
+    humanoid->buildJoints();
+    return 0;
+}
+
+// Diagnostic local-player/controller attachment to the authored Actor.
+extern "C" int AttachPlayerController()
+{
+    if (!g_dataModel) return 1;
+    RBX::DataModel::Lock lock(g_dataModel);
+    RBX::ModelInstance* actor=dynamic_cast<RBX::ModelInstance*>(g_dataModel->getWorkspace()->findFirstChildByName("Actor"));
+    if (!actor || !RBX::Humanoid::modelIsCharacter(actor)) return 2;
+    RBX::Network::Players* players=RBX::ServiceProvider::create<RBX::Network::Players>(g_dataModel.get());
+    if (!players) {
+        try {
+            boost::shared_ptr<RBX::Network::Players> service=RBX::Creatable<RBX::Instance>::create<RBX::Network::Players>();
+            service->setParent(g_dataModel.get());players=service.get();
+        } catch(const std::exception& error) {std::fprintf(stderr,"controller: %s\n",error.what());return 4;}
+    }
+    RBX::Security::Impersonator trusted(RBX::Security::CmdLine);
+    RBX::Network::Player* player=players->getLocalPlayer();
+    try { if (!player) player=dynamic_cast<RBX::Network::Player*>(players->createLocalPlayer(1).get()); }
+    catch(const std::exception& error){std::fprintf(stderr,"controller: local player %s\n",error.what());std::fflush(stderr);return 5;}
+    if (!player) return 3;
+    player->setCharacter(actor);
+    static PlayerNativeInput input;g_input=&input;
+    RBX::ServiceProvider::create<RBX::ControllerService>(g_dataModel.get())->setHardwareDevice(g_input);
+    actor->setControllerType(RBX::Controller::PLAYER_CONTROLLER);
+    actor->getTopPVController();
+    return 0;
+}
+extern "C" int GetActorTorsoPosition(float* x,float* y,float* z)
+{
+    if (!g_dataModel) return 1;
+    RBX::DataModel::Lock lock(g_dataModel);
+    RBX::Instance* actor=g_dataModel->getWorkspace()->findFirstChildByName("Actor");
+    RBX::Humanoid* humanoid=RBX::Humanoid::modelIsCharacter(actor);
+    RBX::PartInstance* torso=humanoid?humanoid->getTorso():NULL;
+    if (!torso) return 1;
+    G3D::Vector3 position=torso->getCoordinateFrame().translation;
+    *x=position.x;*y=position.y;*z=position.z;return 0;
+}
+extern "C" void SetPlayerTestKey(int down){if(g_input)g_input->setKeyState(SDLK_w,down!=0);}
+extern "C" int CheckPlayerController()
+{
+    if (!g_dataModel || !g_input) return 1;
+    RBX::DataModel::Lock lock(g_dataModel);
+    RBX::ModelInstance* actor=RBX::Network::Players::findLocalCharacter(g_dataModel.get());
+    RBX::Humanoid* humanoid=RBX::Humanoid::modelIsCharacter(actor);
+    RBX::Camera* camera=g_dataModel->getWorkspace()->getCamera();
+    RBX::RunService* run=RBX::ServiceProvider::create<RBX::RunService>(g_dataModel.get());
+    if (!humanoid || !camera || !run) return 2;
+    camera->setCameraCoordinateFrameNoLerp(G3D::CoordinateFrame());
+    g_input->setKeyState(SDLK_w,true);g_input->setKeyState(SDLK_s,true);
+    run->raiseHeartbeat(0,1.0f/60.0f);
+    G3D::Vector3 walk=humanoid->getWalkDirection();
+    if ((walk-G3D::Vector3(0,0,-1)).squaredLength()>1e-6f) return 3;
+    g_input->setKeyState(SDLK_s,false);g_input->setKeyState(SDLK_d,true);
+    run->raiseHeartbeat(0,1.0f/60.0f);walk=humanoid->getWalkDirection();
+    if (fabs(walk.magnitude()-1.0f)>1e-4f || walk.x<0.6f || walk.z>-0.6f) return 4;
+    G3D::Vector3 oldLook=camera->getCameraCoordinateFrame().lookVector();
+    g_input->setKeyState(SDLK_LEFT,true);
+    run->raiseHeartbeat(0,1.0f/60.0f);
+    if (humanoid->getWalkDirection().squaredLength()>1e-6f) return 5;
+    camera->goalToCamera();
+    if ((camera->getCameraCoordinateFrame().lookVector()-oldLook).squaredLength()<1e-6f) return 8;
+    g_input->setKeyState(SDLK_LEFT,false);g_input->setKeyState(SDLK_w,false);g_input->setKeyState(SDLK_d,false);
+    g_input->setKeyState(SDLK_SPACE,true);humanoid->setSit(true);
+    run->raiseHeartbeat(0,1.0f/60.0f);
+    if (!humanoid->getJump() || humanoid->getSit()) return 6;
+    g_input->setKeyState(SDLK_SPACE,false);humanoid->setJump(false);
+    run->raiseHeartbeat(0,1.0f/60.0f);
+    return humanoid->getWalkDirection().squaredLength()>1e-6f ? 7 : 0;
+}
+
+
+static RBX::TimerService* g_clockProbeTimer=NULL;
+static int g_clockProbeCalls=0;
+static void clockProbeCallback()
+{
+    ++g_clockProbeCalls;
+    if (g_clockProbeCalls<4) g_clockProbeTimer->delay(&clockProbeCallback,0.01);
+}
+// Exercise a timer that schedules another timer while a heartbeat is running.
+extern "C" int CheckShortTimer()
+{
+    if (!g_dataModel) return -1;
+    RBX::DataModel::Lock lock(g_dataModel);
+    g_clockProbeTimer=RBX::ServiceProvider::create<RBX::TimerService>(g_dataModel.get());
+    RBX::RunService* run=RBX::ServiceProvider::create<RBX::RunService>(g_dataModel.get());
+    if (!g_clockProbeTimer || !run) return -1;
+    g_clockProbeCalls=0;g_clockProbeTimer->delay(&clockProbeCallback,0.0);
+    run->raiseHeartbeat(g_dataModel->getSimTime(),1.0f/60.0f);
+    int result=g_clockProbeCalls;g_clockProbeTimer=NULL;return result;
+}
+
 // Diagnostic play transition: use the existing RunService state change.
 extern "C" void StartPlay()
 {
@@ -244,6 +354,12 @@ extern "C" int GetContactState(float* expectedY,float* floorY,int* anchored)
 extern "C" void ClosePlace()
 {
     g_playing = false;
+    if (g_input && g_dataModel) {
+        RBX::DataModel::Lock lock(g_dataModel);
+        RBX::ControllerService* service=RBX::ServiceProvider::find<RBX::ControllerService>(g_dataModel.get());
+        if (service) service->setHardwareDevice(NULL);
+        g_input->setKeyState(SDLK_w,false);g_input=NULL;
+    }
     g_brick = NULL;
     g_brickRef.reset();
     if (g_dataModel) { RBX::DataModel::closeDataModel(g_dataModel, true); g_dataModel.reset(); }

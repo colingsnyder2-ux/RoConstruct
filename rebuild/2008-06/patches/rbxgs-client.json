@@ -2460,5 +2460,11 @@
     "\t\t\tReflection::EnumPropDescriptor<SoundService, ReverbType> prop_AmbientReverb;",
     "\t\t\tstatic Reflection::EnumPropDescriptor<SoundService, ReverbType> prop_AmbientReverb;"
   ]
-]
+],
+ "App/include/v8datamodel/ICharacterSubject.h": [
+  [
+   "\t\tbool getCursorCenterLocked() const;",
+   "\t\tbool getCursorCenterLocked() const { return cursorLocked; }"
+  ]
+ ]
 }

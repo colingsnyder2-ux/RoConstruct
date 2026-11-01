@@ -10,6 +10,8 @@
 #include <vector>
 #include <iterator>
 #include <cmath>
+#include <float.h>
+#include <G3D/System.h>
 
 #include <windows.h>
 #include <d3d9.h>
@@ -26,6 +28,12 @@ extern "C" int  PartAlive(void);
 extern "C" void MovePartTo(float x, float y, float z);
 extern "C" void StepEngine(float dt);
 extern "C" void StartPlay();
+extern "C" int BuildPlayerJoints();
+extern "C" int AttachPlayerController();
+extern "C" void SetPlayerTestKey(int);
+extern "C" int CheckPlayerController();
+extern "C" int CheckShortTimer();
+extern "C" int GetActorTorsoPosition(float*,float*,float*);
 extern "C" void ClosePlace();
 extern "C" void RemovePart(void);
 extern "C" void SetPartYaw(float);
@@ -669,6 +677,12 @@ int main(int argc, char** argv)
     bool inspectPlace = false;
     bool loadOnly = false;
     bool p5Play = false;
+    bool p5Join = false;
+    bool p5Control = false;
+    bool p5InputTest = false;
+    bool p5ControllerCheck = false;
+    bool p5LiveObserve = false;
+    bool p5ClockCheck = false;
     bool anchorTrace = false;
     bool anchorFlagsTest = false;
     int stabilityExit = 0;
@@ -687,6 +701,12 @@ int main(int argc, char** argv)
         else if (std::strcmp(argv[i], "--inspect-place") == 0) inspectPlace = true;
         else if (std::strcmp(argv[i], "--load-only") == 0) loadOnly = true;
         else if (std::strcmp(argv[i], "--p5-play") == 0) p5Play = true;
+        else if (std::strcmp(argv[i], "--p5-join") == 0) p5Join = true;
+        else if (std::strcmp(argv[i], "--p5-control") == 0) p5Control = true;
+        else if (std::strcmp(argv[i], "--p5-live-observe") == 0) p5LiveObserve = true;
+        else if (std::strcmp(argv[i], "--p5-clock-check") == 0) p5ClockCheck = true;
+        else if (std::strcmp(argv[i], "--p5-controller-check") == 0) {p5Control=true;p5ControllerCheck=true;}
+        else if (std::strcmp(argv[i], "--p5-input-test") == 0) {p5Control=true;p5InputTest=true;}
         else if (std::strcmp(argv[i], "--anchor-trace") == 0) anchorTrace = true;
         else if (std::strcmp(argv[i], "--anchor-flags-test") == 0) anchorFlagsTest = true;
         else if (std::strcmp(argv[i], "--capture-sky") == 0) { demo=true;skytest=true; }
@@ -699,6 +719,7 @@ int main(int argc, char** argv)
     if(stability && (!frames || frameCount<240)){std::printf("stability test requires --frames 240 or more\n");return 1;}
     if(inspectPlace && !frames){std::printf("inspect-place requires --frames\n");return 1;}
     if(anchorTrace && !frames){std::printf("anchor-trace requires --frames\n");return 1;}
+    if(p5LiveObserve && (!p5Control || frames)){std::printf("p5-live-observe requires interactive p5-control\n");return 1;}
 
     char path[MAX_PATH];GetModuleFileNameA(0,path,sizeof(path));
     std::string moduleRoot=std::string(path).substr(0,std::string(path).find_last_of("\\/"));
@@ -734,6 +755,12 @@ int main(int argc, char** argv)
     }
     if(loadOnly){std::fprintf(stderr,"load-only: humanoids=%d; closing\n",CountHumanoids());std::fprintf(stderr,"load-only: named humanoids=%d sounds=%d\n",CountInstancesByClass("Humanoid"),CountInstancesByClass("Sound"));std::fprintf(stderr,"load-only: scripts=%d\n",CountInstancesByClass("Script"));std::fflush(stderr);ClosePlace();std::fprintf(stderr,"load-only: complete\n");std::fflush(stderr);return 0;}
 
+    if(p5Join && BuildPlayerJoints()){std::printf("actor joint build failed\n");ClosePlace();return 1;}
+    if(p5Control && AttachPlayerController()){std::printf("local controller attach failed\n");ClosePlace();return 1;}
+    if(p5ControllerCheck){
+        int result=CheckPlayerController();std::printf("controller checks: %s (%d)\n",result?"FAIL":"PASS",result);
+        ClosePlace();return result;
+    }
     if(p5Play)StartPlay();
 
     Ogre::Root* root = new Ogre::Root("", "", "player.log");
@@ -748,10 +775,19 @@ int main(int argc, char** argv)
     if (!rs) { std::printf("no d3d9 renderer\n"); delete root; ClosePlace(); return 3; }
     root->setRenderSystem(rs);
     Ogre::ResourceGroupManager::getSingleton().addResourceLocation(contentRoot,"FileSystem","General");
+    // Original renderer setup 0067ab34 forces consistent floating-point mode.
+    rs->setConfigOption("Floating-point mode", "Consistent");
     rs->setConfigOption("Full Screen", "No");
     rs->setConfigOption("Video Mode", demo?"800 x 600 @ 32-bit colour":"320 x 240 @ 32-bit colour");
     Ogre::RenderWindow* win = root->initialise(true, "Player2008");
     if (!win) { std::printf("window failed\n"); delete root; ClosePlace(); return 4; }
+    if(p5ClockCheck){
+        volatile double now=G3D::System::getLocalTime();
+        volatile double later=now+0.01;
+        int calls=CheckShortTimer();
+        std::printf("timer check: precision=%08x delta=%.9g calls=%d\n",_controlfp(0,0)&_MCW_PC,later-now,calls);
+        delete root;ClosePlace();return calls==1?0:11;
+    }
     Ogre::SceneManager* sm = root->createSceneManager(Ogre::ST_GENERIC, "sm");
     g_sceneManager = sm;
     Ogre::Camera* cam = sm->createCamera("cam");
@@ -828,6 +864,8 @@ int main(int argc, char** argv)
         }
         for (int i = 0; i < frameCount; ++i)
         {
+            if(p5InputTest && i==12)SetPlayerTestKey(1);
+            if(p5InputTest && i==72)SetPlayerTestKey(0);
             StepEngine(1.0f / 60.0f);
             drawModels();
             root->renderOneFrame(); win->update();
@@ -882,6 +920,9 @@ int main(int argc, char** argv)
     }
     else
     {
+        float actorX=0,actorY=0,actorZ=0;
+        Ogre::Vector3 cameraStart=cam->getPosition();
+        if(p5LiveObserve && GetActorTorsoPosition(&actorX,&actorY,&actorZ))return 1;
         Ogre::Timer timer;
         unsigned long last = timer.getMilliseconds();
         bool moved = false, removed = false;
@@ -895,10 +936,12 @@ int main(int argc, char** argv)
             last = now;
 
             Ogre::Vector3 camMove(0, 0, 0);
-            if (GetAsyncKeyState('A') & 0x8000) camMove.x -= 1;
-            if (GetAsyncKeyState('D') & 0x8000) camMove.x += 1;
-            if (GetAsyncKeyState('W') & 0x8000) camMove.z -= 1;
-            if (GetAsyncKeyState('S') & 0x8000) camMove.z += 1;
+            if (!p5Control) {
+                if (GetAsyncKeyState('A') & 0x8000) camMove.x -= 1;
+                if (GetAsyncKeyState('D') & 0x8000) camMove.x += 1;
+                if (GetAsyncKeyState('W') & 0x8000) camMove.z -= 1;
+                if (GetAsyncKeyState('S') & 0x8000) camMove.z += 1;
+            }
             if (GetAsyncKeyState('Q') & 0x8000) camMove.y += 1;
             if (GetAsyncKeyState('E') & 0x8000) camMove.y -= 1;
             cam->moveRelative(camMove * dt * 5.0f);
@@ -911,6 +954,14 @@ int main(int argc, char** argv)
             drawModels();
             root->renderOneFrame();
             win->update();
+        }
+        if(p5LiveObserve){
+            float x,y,z;if(GetActorTorsoPosition(&x,&y,&z))return 1;
+            Ogre::Vector3 cameraEnd=cam->getPosition();
+            std::ofstream observation("p5_live.csv",std::ios::binary);observation.precision(9);
+            observation<<"actor_start_x,actor_start_y,actor_start_z,actor_end_x,actor_end_y,actor_end_z,camera_start_x,camera_start_y,camera_start_z,camera_end_x,camera_end_y,camera_end_z\n";
+            observation<<actorX<<","<<actorY<<","<<actorZ<<","<<x<<","<<y<<","<<z<<","<<cameraStart.x<<","<<cameraStart.y<<","<<cameraStart.z<<","<<cameraEnd.x<<","<<cameraEnd.y<<","<<cameraEnd.z<<"\n";
+            if(!observation)return 7;
         }
     }
 
