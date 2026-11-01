@@ -288,6 +288,19 @@ extern "C" int AttachPlayerController(int spawn)
     actor->getTopPVController();
     return 0;
 }
+extern "C" int GetPlayerCameraPose(float* values)
+{
+    if(!g_dataModel || !values)return 1;
+    RBX::DataModel::Lock lock(g_dataModel);
+    RBX::Camera* camera=g_dataModel->getWorkspace()->getCamera();
+    RBX::Humanoid* humanoid=g_actor?RBX::Humanoid::modelIsCharacter(g_actor):NULL;
+    if(!camera || !humanoid || dynamic_cast<RBX::Humanoid*>(camera->getCameraSubject())!=humanoid)return 2;
+    const G3D::CoordinateFrame frame=camera->getCameraCoordinateFrame();
+    for(int r=0;r<3;++r)for(int c=0;c<3;++c)values[r*3+c]=frame.rotation[r][c];
+    values[9]=frame.translation.x;values[10]=frame.translation.y;values[11]=frame.translation.z;
+    values[12]=float(camera->getGCamera().getFieldOfView());values[13]=float(fabs(camera->getGCamera().getNearPlaneZ()));values[14]=float(fabs(camera->getGCamera().getFarPlaneZ()));
+    return 0;
+}
 extern "C" int GetActorTorsoPosition(float* x,float* y,float* z)
 {
     if (!g_dataModel) return 1;
@@ -300,6 +313,7 @@ extern "C" int GetActorTorsoPosition(float* x,float* y,float* z)
     *x=position.x;*y=position.y;*z=position.z;return 0;
 }
 extern "C" void SetPlayerTestKey(int down){if(g_input)g_input->setKeyState(SDLK_w,down!=0);}
+extern "C" void SetPlayerCameraTestKey(int down){if(g_input)g_input->setKeyState(SDLK_LEFT,down!=0);}
 extern "C" int CheckPlayerController()
 {
     if (!g_dataModel || !g_input) return 1;

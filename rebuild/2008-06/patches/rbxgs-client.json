@@ -2085,6 +2085,7 @@
   ]
  ],
  "App/v8datamodel/Camera.cpp": [
+  ["cameraSubject = shared_from((ModelInstance*) newSubject);", "cameraSubject = shared_from(newSubject);"],
   [
    "#include \"v8datamodel/Camera.h\"",
    "#pragma float_control(precise,off)\n#include \"v8datamodel/Camera.h\""
