@@ -1157,3 +1157,21 @@ model. P0, script scheduling, value, contact, scene lifetime and P4 asset
 regressions pass. Receipts are in p5-*-3e7fa3c6ec; only hashes and aggregates
 from the supplied place are saved. Longer gameplay, other lifecycle cases,
 original-client comparison, P5 and later milestones remain unproven.
+
+## P5 checkpoint: combined play scenario (3090182770)
+
+An authored place now combines visible character input, camera turning,
+collision-triggered Lua, two anchor transitions and final release onto an
+anchored floor. At 3090182770 fixed-step movement triggers transitions at
+frames 43, 51 and 60, then the block settles at y=1.00014246; idle control
+stays anchored at y=12. Reopening reproduces the same sample hash. A focused
+visible run moves the character about 6.44 studs, turns the camera, triggers
+both changes and exits cleanly. Receipt: p5-combined-3090182770.
+
+Three independently supplied places also complete 240 frames with clean
+shutdown and no reported script error stacks: final model counts 881, 1,796
+and 7,469; five of the first place's models report status 4. Receipts:
+p5-long-map-*-3090182770. These are bounded smoke tests, not gameplay or asset
+parity. The combined run uses reconstructed frame, camera and anchor adapters;
+the required original-client fixed-step comparison and later milestones remain
+open. Do not mark P5 complete on this evidence.
