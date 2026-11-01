@@ -1,5 +1,11 @@
 # Current player checkpoint
 
+Audio listener-vector helper005b70c0 integrated at source113d3a3fb5 with real
+Math/Vector3 types and original +/-5000 limits. Diagnostic verifies denormal
+cleanup, clamp, infinity rejection and untouched output on rejection; previous
+cache and FMOD loader tests also pass. Evidence: p4-sound-vector-113d3a3fb5/
+and p4-sound-vector-runtime-113d3a3fb5/. It is not yet called by heartbeat.
+
 Audio cache cleanup005ba2e0 integrated at source288f3ac6f4. The diagnostic
 compiles the same body with public test access (VS2008 encodes private access in
 symbol names): seeded in-use retention, probabilistic eviction, detach and reload
