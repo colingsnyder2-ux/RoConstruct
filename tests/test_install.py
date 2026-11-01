@@ -390,6 +390,7 @@ def test_packages_split_keeps_maintainer_modules_out():
     worker_modules = set(build.WORKER_MODULES)
     server_modules = set(build.SERVER_MODULES)
     assert server_modules == {"cluster", "server", "reports", "progress", "integration_notify", "integration_site", "agent_inbox"}
+    assert {"graph", "source"} <= worker_modules
     assert not (worker_modules & server_modules), "helper packages must not carry server code"
     for helper in ("worker", "link", "doctor", "setup", "analyze", "draft", "providers",
                    "native_try", "native_sweep", "native_search", "native_transforms", "native_promotions", "standins", "rebuild_install", "integration_verify"):

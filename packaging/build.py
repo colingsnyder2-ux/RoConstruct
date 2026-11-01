@@ -42,7 +42,7 @@ WORKER_MODULES += ["integration", "integrator", "rebuild", "rebuild_install", "m
 WORKER_MODULES += ["integration_verify", "native_search", "native_transforms", "native_promotions"]  # contributor linked preflight shares authoritative build/gates
 WORKER_MODULES += ["native_repair"]
 WORKER_MODULES += ["integration_local", "integration_context", "integration_policy", "integration_audit", "native_adapt", "native_refs"]
-WORKER_MODULES += ["rebuild_audit"]
+WORKER_MODULES += ["rebuild_audit", "graph", "source"]
 SERVER_MODULES += ["integration_notify", "integration_site", "agent_inbox"]
 
 COMMON_FILES = ["roc.py", "roc.cmd", "roc.sh", "install.cmd", "install.sh",
