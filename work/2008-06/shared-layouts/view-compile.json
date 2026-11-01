@@ -99,7 +99,7 @@
    "576f00": "RBX::DataModel::Lock::doLock"
   },
   "note": "Mined unit labels for these addresses are unreliable; confirm each from bytes before use.",
-  "estimate": "Callee recoveries remaining: about 8. The function tail after 0x45a6b9 is unread and may add more.",
+  "estimate": "Not one pass: blocked on DataModel members and about 20 verb and helper recoveries. Realistic effort is a day or more of focused work, best split with Codex.",
   "real_remaining": [
    "45a2f0 body after +0x45a3c8",
    "45f7b0 (+55a8f0,45dce0,555830,5773c0)",
@@ -133,7 +133,13 @@
    ],
    "note": "Camera verbs look like donor RBX::Camera*Command types (mined unit label for 5833e0 is CameraZoomExtentsCommand). Their constructors may already exist in mined or donor code."
   },
-  "plan": "Write OnInitialUpdate in one source against the shared headers with the Help, ToggleFullScreen and LockPlayMode verbs as inline derived classes, then match 1897 bytes. It is a single large function, not twenty separate callees."
+  "plan": "Write OnInitialUpdate in one source against the shared headers with the Help, ToggleFullScreen and LockPlayMode verbs as inline derived classes, then match 1897 bytes. It is a single large function, not twenty separate callees.",
+  "blockers": {
+   "DataModel header (Codex owns)": "OnInitialUpdate reads DataModel+0x150 and +0x170 (listener notifiers the view subscribes to through 4218a0), DataModel+0x1c8 (VerbContainer base, already present), and +0x204 then +0x2ec (a verb container reached from the workspace pointer). The native DataModel.h does not declare the notifier members or whatever sits at +0x204.",
+   "CRobloxWnd+0xfc": "45a597-45a5c8 reads and replaces an owned pointer at offset 0xfc of the object stored at View+0x1d8, so that type needs recovery before this function can compile.",
+   "camera and selection verbs": "No donor or native classes exist for the 16 camera and selection verbs; each constructor must be recovered or its mined body adapted. Mined unit labels name them RBX::Camera*Command.",
+   "45f7b0 chain": "55a8f0, 45dce0, 555830, 5773c0 plus DataModel::Lock bodies 411b40 and 576f00"
+  }
  },
  "owned_slot_type_hint": "Verb-derived objects created in OnInitialUpdate; replace OwnedPolymorphic once their class is recovered"
 }
