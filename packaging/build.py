@@ -41,6 +41,7 @@ WORKER_MODULES += ["bounds_proof", "agent_memory", "research", "agent_recovery",
 WORKER_MODULES += ["integration", "integrator", "rebuild", "rebuild_install", "mutsearch", "twinpatch", "native_try", "native_sweep", "native_batch", "standins"]
 WORKER_MODULES += ["integration_verify", "native_search", "native_transforms", "native_promotions"]  # contributor linked preflight shares authoritative build/gates
 WORKER_MODULES += ["native_repair"]
+WORKER_MODULES += ["native_edit"]
 WORKER_MODULES += ["integration_local", "integration_context", "integration_policy", "integration_audit", "native_adapt", "native_refs"]
 WORKER_MODULES += ["rebuild_audit", "graph", "source"]
 SERVER_MODULES += ["integration_notify", "integration_site", "agent_inbox"]
@@ -211,7 +212,7 @@ def stage(slug, spec, out):
     shutil.copytree(ROOT / "roc" / "web", out / "roc" / "web", dirs_exist_ok=True)
     (out / "roc" / "__init__.py").write_text("", encoding="utf-8")
     (out / "roconstruct-package.json").write_text(json.dumps(
-        {"package": slug, "revision": version(), "native_workflow": True, "native_workflow_version": 12,
+        {"package": slug, "revision": version(), "native_workflow": True, "native_workflow_version": 14,
          "matching_workflow_version": 4}, indent=2) + "\n", encoding="utf-8")
     for name, text in spec["docs"].items():
         (out / name).write_text(text, encoding="utf-8")
@@ -287,6 +288,25 @@ with tempfile.TemporaryDirectory() as folder:
     assert graph.build('test', root).nodes['00401000']['name'] == 'RBX::Test::run'
 print('dependency graph build passed')
 """
+    if 'native_edit' in modules:
+        code += r"""
+from types import SimpleNamespace
+from roc import native_edit, native_sweep
+with tempfile.TemporaryDirectory() as folder:
+    root = Path(folder)
+    rel = 'App/Fixture.cpp'
+    original = root / 'tree' / rel
+    original.parent.mkdir(parents=True)
+    original.write_text('int value() { return 1; }\n')
+    ctx = SimpleNamespace(tree=root/'tree', overlay=root/'overlay', base_revision='fixture')
+    state = native_edit.prepare(ctx, root/'out', rel, [], {})
+    draft = native_edit.folder(root/'out', rel) / rel
+    draft.write_text('int value() { return 2; }\n')
+    edits, _ = native_edit.capture(ctx, root/'out', rel, state, {})
+    assert native_sweep.apply_edits(original.read_text(), edits[rel]) == draft.read_text()
+    assert 'return 1' in original.read_text()
+print('direct edit capture passed')
+"""
     run = subprocess.run([sys.executable, "-c", code], cwd=staged, capture_output=True, text=True)
     if run.returncode:
         raise SystemExit("package does not import:\n%s" % (run.stderr.strip() or run.stdout.strip()))
@@ -295,6 +315,10 @@ print('dependency graph build passed')
     if help_run.returncode or not all(action in help_run.stdout for action in
                                       ("next", "context", "check", "submit", "header-report")):
         raise SystemExit("package lacks required native integration CLI actions")
+    edit_help = subprocess.run([sys.executable, "roc.py", "native-try", "edit", "--help"],
+                               cwd=staged, capture_output=True, text=True)
+    if edit_help.returncode or not all(flag in edit_help.stdout for flag in ("--related", "--all", "--fresh")):
+        raise SystemExit("package lacks direct native editing commands")
     return run.stdout.strip()
 
 
@@ -354,7 +378,7 @@ def prepare_downloads(package):
     shutil.copy2(package, archive)
     for name in ("NATIVE_AGENT.md", "MATCHING_AGENT.md"):
         shutil.copy2(ROOT / "docs" / name, folder / name)
-    data.update(schema=1, workflow_version=13, matching_workflow_version=4,
+    data.update(schema=1, workflow_version=14, matching_workflow_version=4,
                 abi_manifest_sha256=hashlib.sha256(abi).hexdigest(), abi_manifest_classes=len(json.loads(abi)),
                 url=base + archive.name, sha256=hashlib.sha256(archive.read_bytes()).hexdigest(),
                 size=archive.stat().st_size, guide=base + "NATIVE_AGENT.md", matching_guide=base + "MATCHING_AGENT.md",

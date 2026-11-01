@@ -1,24 +1,20 @@
-"""Agent-driven native integration: the DeepSeek native pass as four commands any agent (Codex, Claude) can drive.
+"""Agent-driven native integration with editable C++/header workspaces.
 
-  roc native-try targets [--limit N]            files whose rebuilt methods are exact-mined near misses
-  roc native-try evidence FILE [--context ...] [--only ADDR,...]
-                                                the exact prompt the model pass sends (rules, code, targets, diffs)
-  roc native-try check FILE BLOCKS.txt          apply SEARCH/REPLACE blocks, compile the real file, report;
-                                                a new exact with no loss is minimized and saved as a proposal
-  roc native-try check FILE                     revalidate saved edits after syncing a new baseline
-  roc native-try preflight                      independently build/link saved batch and run acceptance gates
-  roc native-try submit --model MODEL           claim, stage and submit every saved proposal as one verified batch
+  roc native-try edit FILE [--related HEADER ...]  export effective source for direct editing
+  roc native-try check FILE                       automatically capture and prove its diff
+  roc native-try check --all                      check a coherent batch with one context
+  roc native-try preflight                        independently build/link and run acceptance gates
+  roc native-try submit --model MODEL             claim, stage and queue saved proofs
 
-Saved proposals live in work/native-try/proposals.json; later checks of a file build on its saved edits.
-Contributor PCs without rebuild artifacts read the evidence from the server (/v1/integration/evidence).
-Run it only in a private checkout: it writes rebuild/2008-06/out, and refuses the server's checkout.
-`check` edits one source/header; header trials identify a real caller with --only ADDR."""
+Legacy SEARCH/REPLACE files remain supported. Editable files stay under work/native-try/edit;
+vendor sources stay unchanged. Only independently accepted submissions grant credit.
+"""
 import hashlib
 import json
 import re
 from pathlib import Path
 
-from roc import integration, native_sweep, worker
+from roc import integration, native_edit, native_sweep, worker
 
 OUT = native_sweep.ROOT / "work/native-try"
 PROPOSALS = OUT / "proposals.json"
@@ -106,7 +102,7 @@ def header_caller(ctx, args):
     if Path(args.file).suffix.lower() not in (".h", ".hpp", ".inl"):
         return
     previous = next((p for p in saved() if p["file"] == args.file), {})
-    caller = previous.get("translation_unit")
+    caller = previous.get("translation_unit") or getattr(ctx, 'translation_unit', None)
     if not caller:
         selected = set((getattr(args, "only", None) or "").split(",")) - {""}
         if not selected:
@@ -164,29 +160,50 @@ def cmd_evidence(ctx, args):
     if getattr(args, "brief", False):
         for item in items:
             item.pop("target_asm", None)
-        print("FILE %s\n```cpp\n%s\n```\nHEADERS (compiler-selected)\n%s\nTARGETS\n%s" %
-              (args.file, shown, json.dumps(getattr(ctx, "evidence_headers", {}), indent=1), json.dumps(items, indent=1)))
-    else:
-        print("HEADERS (compiler-selected)\n" + json.dumps(getattr(ctx, "evidence_headers", {}), indent=1))
-        print(native_sweep.model_prompt(args.file, shown, items))
+    print("FILE %s\n```cpp\n%s\n```\nHEADERS (compiler-selected)\n%s\nTARGETS\n%s" %
+          (args.file, shown, json.dumps(getattr(ctx, "evidence_headers", {}), indent=1), json.dumps(items, indent=1)))
+
+
+def cmd_edit(ctx, args):
+    draft = native_edit.load(OUT, args.file)
+    if draft and draft.get('translation_unit'):
+        ctx.translation_unit = draft['translation_unit']
+    header_caller(ctx, args)
+    previous = next((p for p in saved() if p['file'] == args.file), {})
+    related = list(dict.fromkeys([*previous.get('related_headers', {}),
+                                 *(name for name in (draft or {}).get('files', {}) if name != args.file),
+                                 *getattr(args, 'related', [])]))
+    native_edit.prepare(ctx, OUT, args.file, related, previous, fresh=getattr(args, 'fresh', False))
+    print('Edit these files directly, then: roc native-try check ' + args.file, flush=True)
 
 
 def cmd_check(ctx, args):
+    draft = native_edit.load(OUT, args.file) if not args.blocks else None
+    if hasattr(ctx, 'translation_unit'):
+        del ctx.translation_unit
+    if draft and draft.get('translation_unit'):
+        ctx.translation_unit = draft['translation_unit']
     header_caller(ctx, args)
     previous_proposal = next((p for p in saved() if p["file"] == args.file), {})
     ctx.related_headers = {name: list(pairs) for name, pairs in previous_proposal.get("related_headers", {}).items()}
     text, edits, addrs, baseline, _ = file_state(ctx, args.file)
     previous = [w for p in saved() if p["file"] == args.file for w in p["witnesses"]]
-    if not args.blocks and not previous:
-        raise ValueError("check requires a blocks file, or saved edits to recheck")
+    if not args.blocks and not previous and not draft:
+        raise ValueError("Run roc native-try edit FILE first, or supply legacy blocks / saved edits")
     blocks = Path(args.blocks).read_text(encoding="utf-8-sig") if args.blocks else ""
     headers = {}
-    if blocks.lstrip().startswith("{"):
-        bundle = json.loads(blocks)
-        if args.file not in bundle or Path(args.file).suffix.lower() != ".cpp":
-            raise ValueError("Paired JSON edits need the primary CPP file and its header edits")
-        new_edits = bundle.pop(args.file)
-        headers = bundle
+    if draft or blocks.lstrip().startswith("{"):
+        if draft:
+            bundle, captured = native_edit.capture(ctx, OUT, args.file, draft, previous_proposal)
+        else:
+            bundle = json.loads(blocks)
+        if draft and Path(args.file).suffix.lower() in ('.h', '.hpp', '.inl'):
+            new_edits = bundle.pop(args.file)
+        else:
+            if args.file not in bundle or Path(args.file).suffix.lower() != ".cpp":
+                raise ValueError("Paired edits need the primary CPP file and its header edits")
+            new_edits = bundle.pop(args.file)
+        headers = {name: pairs for name, pairs in bundle.items() if pairs}
         for name, pairs in dict(headers, **{args.file: new_edits}).items():
             if name != args.file and Path(name).suffix.lower() not in (".h", ".hpp", ".inl"):
                 raise ValueError("Related files must be headers")
@@ -276,17 +293,21 @@ def cmd_check(ctx, args):
         if not archive.exists():
             integration.atomic_json(archive, json.loads(PROPOSALS.read_text()))
     integration.atomic_json(PROPOSALS, rest + [proposal])
+    if draft:
+        native_edit.refresh(ctx, OUT, args.file, draft, captured, proposal)
     print("saved: %d edit(s) for %s" % (len(proposal["edits"]), ", ".join(w["addr"] for w in proposal["witnesses"])))
 
 
 def cmd_preflight(args):
     native_sweep.require_private_workspace()
+    proposals = saved()
+    if not proposals:
+        raise ValueError("no saved proposals")
+    native_edit.require_checked(OUT, proposals)
     from roc.rebuild_install import prepare
     prepare()
     context()  # sync the accepted baseline before combining saved recipes
     proposals = saved()
-    if not proposals:
-        raise ValueError("no saved proposals")
     additions = {}
     for proposal in proposals:
         for name, edits in dict(proposal.get("related_headers", {}), **{proposal["file"]: proposal["edits"]}).items():
@@ -299,8 +320,10 @@ def cmd_preflight(args):
 
 
 def cmd_submit(args):
-    if not saved():
+    proposals = saved()
+    if not proposals:
         raise SystemExit("no saved proposals")
+    native_edit.require_checked(OUT, proposals)
     spec = {"client": "2008-06", "native_sweep": {"proposals_file": str(PROPOSALS), "apply": True, "submit": True,
                                                   "model": args.model, "wait": False}, "targets": {}}
     summary = native_sweep.run(spec, "native-try", output=OUT / "submit", log=lambda message: print(message, flush=True))
@@ -342,20 +365,44 @@ def dispatch(args):
             return print("saved proposal cleared: " + args.file)
         PROPOSALS.unlink(missing_ok=True)
         return print("saved proposals cleared")
-    if args.action in ("evidence", "check") and not args.file:
+    if args.action == 'check' and getattr(args, 'all', False):
+        if args.file or getattr(args, 'blocks', None):
+            raise ValueError('Use check FILE or check --all')
+        from copy import copy
+        failures = []
+        paths = sorted((OUT / 'edit').glob('*/edit.json'))
+        if not paths:
+            raise ValueError('No editable files; run roc native-try edit FILE first')
+        ctx = context()
+        for path in paths:
+            trial = copy(args)
+            trial.file = json.loads(path.read_text(encoding='utf-8'))['file']
+            trial.all = False
+            try:
+                cmd_check(ctx, trial)
+            except (ValueError, SystemExit) as error:
+                failures.append(trial.file)
+                print('%s: check failed: %s; edits preserved' % (trial.file, error), flush=True)
+        if failures:
+            raise SystemExit('Batch checks failed: ' + ', '.join(failures))
+        return
+    if args.action in ("evidence", "edit", "check") and not args.file:
         raise ValueError(args.action + " requires a source FILE")
     ctx = context()
     if getattr(args, "file", None):
         registry = native_sweep.ROOT / "rebuild/2008-06/patches/rbxgs-client.json"
         if registry.exists():
             args.file = next(iter(integration.canonical_patches({args.file: []}, json.loads(registry.read_text()))))
-    {"targets": cmd_targets, "evidence": cmd_evidence, "check": cmd_check}[args.action](ctx, args)
+    {"targets": cmd_targets, "evidence": cmd_evidence, "edit": cmd_edit, "check": cmd_check}[args.action](ctx, args)
 
 
 def register(cmd):
-    cmd("native-try", main, "agent-driven native integration: targets, evidence, check, submit (docs/NATIVE_AGENT.md)",
-        (["action"], {"choices": ["targets", "evidence", "check", "preflight", "submit", "reset"]}),
+    cmd("native-try", main, "direct native edits: targets, evidence, edit, check, submit (docs/NATIVE_AGENT.md)",
+        (["action"], {"choices": ["targets", "evidence", "edit", "check", "preflight", "submit", "reset"]}),
         (["file"], {"nargs": "?"}), (["blocks"], {"nargs": "?"}),
+        (["--related"], {"nargs": "+", "default": [], "help": "edit: genuine headers to edit with this CPP"}),
+        (["--all"], {"action": "store_true", "help": "check every editable translation unit; retain failed drafts"}),
+        (["--fresh"], {"action": "store_true", "help": "edit: archive the draft and export the current effective baseline"}),
         (["--context"], {"choices": ["file", "methods"], "default": "file"}),
         (["--limit"], {"type": int, "default": 25}), (["--model"], {}),
         (["--min-score"], {"type": int, "default": 0}),

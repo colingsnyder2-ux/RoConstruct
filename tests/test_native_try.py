@@ -286,3 +286,166 @@ def test_submit_without_job_reports_failure_and_retains_proposals(tmp_path, monk
     with pytest.raises(SystemExit, match='No submission queued; saved proposals retained'):
         native_try.cmd_submit(SimpleNamespace(model='test'))
     assert proposals.read_bytes() == original
+
+
+@pytest.fixture
+def editable_trial(trial, tmp_path, monkeypatch):
+    ctx, found, proposals, blocks = trial
+    monkeypatch.setattr(native_try, 'OUT', tmp_path / 'native-try')
+    ctx.tree, ctx.overlay = tmp_path / 'tree', tmp_path / 'overlay'
+    for rel, text in [('App/A.cpp', 'old'), ('App/include/A.h', 'field')]:
+        path = ctx.tree / rel
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(text)
+    return ctx, found, proposals
+
+
+def test_direct_edit_captures_saved_baseline_and_retains_original_tree(editable_trial):
+    ctx, _, proposals = editable_trial
+    args = SimpleNamespace(file='App/A.cpp', related=[], blocks=None)
+    native_try.cmd_edit(ctx, args)
+    draft = native_try.native_edit.folder(native_try.OUT, args.file) / args.file
+    assert draft.read_text() == 'saved'
+    draft.write_text('new', encoding='utf-8')
+    native_try.cmd_check(ctx, args)
+    result = json.loads(proposals.read_text())[0]
+    assert result['edits'] == [['old', 'saved'], ['saved', 'new']]
+    assert draft.read_text() == 'new'
+    assert (ctx.tree / args.file).read_text() == 'old'
+    assert list(draft.parents[1].glob('archive/*.json'))
+
+
+def test_direct_edit_failure_preserves_candidate_and_saved_proof(editable_trial):
+    ctx, found, proposals = editable_trial
+    args = SimpleNamespace(file='App/A.cpp', related=[], blocks=None)
+    native_try.cmd_edit(ctx, args)
+    draft = native_try.native_edit.folder(native_try.OUT, args.file) / args.file
+    draft.write_text('new', encoding='utf-8')
+    original = proposals.read_bytes()
+    found.remove('00000001')
+    with pytest.raises(SystemExit):
+        native_try.cmd_check(ctx, args)
+    assert proposals.read_bytes() == original
+    assert draft.read_text() == 'new'
+    native_try.cmd_edit(ctx, args)
+    assert draft.read_text() == 'new'
+
+
+def test_direct_edit_paired_header_uses_same_minimization_gate(editable_trial):
+    ctx, _, proposals = editable_trial
+    args = SimpleNamespace(file='App/A.cpp', related=['App/include/A.h'], blocks=None)
+    native_try.cmd_edit(ctx, args)
+    folder = native_try.native_edit.folder(native_try.OUT, args.file)
+    (folder / args.file).write_text('new', encoding='utf-8')
+    (folder / args.related[0]).write_text('correct field', encoding='utf-8')
+    compile_original = ctx.compile
+    def compile_trial(*args):
+        if ['field', 'correct field'] not in ctx.related_headers.get('App/include/A.h', []):
+            return {'ok': False, 'error': 'missing declaration'}
+        return compile_original(*args)
+    ctx.compile = compile_trial
+    native_try.cmd_check(ctx, args)
+    result = json.loads(proposals.read_text())[0]
+    assert result['related_headers'] == {'App/include/A.h': [['field', 'correct field']]}
+    assert (folder / args.file).read_text() == 'saved'  # unnecessary CPP edit minimized away
+    assert (ctx.tree / args.related[0]).read_text() == 'field'
+
+
+def test_direct_edit_preserves_concurrent_candidate(editable_trial):
+    ctx, _, _ = editable_trial
+    args = SimpleNamespace(file='App/A.cpp', related=[], blocks=None)
+    native_try.cmd_edit(ctx, args)
+    path = native_try.native_edit.folder(native_try.OUT, args.file) / args.file
+    path.write_text('new', encoding='utf-8')
+    compile_original = ctx.compile
+    def compile_trial(*args):
+        path.write_text('newer unsaved work', encoding='utf-8')
+        return compile_original(*args)
+    ctx.compile = compile_trial
+    native_try.cmd_check(ctx, args)
+    assert path.read_text() == 'newer unsaved work'
+
+
+def test_batch_direct_checks_reuse_context_and_continue_after_failure(tmp_path, monkeypatch):
+    monkeypatch.setattr(native_try, 'OUT', tmp_path)
+    for index, rel in enumerate(['App/A.cpp', 'App/B.cpp']):
+        path = tmp_path / 'edit' / str(index) / 'edit.json'
+        path.parent.mkdir(parents=True)
+        path.write_text(json.dumps({'file': rel}))
+    contexts, checked = [], []
+    ctx = object()
+    monkeypatch.setattr(native_try, 'context', lambda: contexts.append(True) or ctx)
+    def check(context, args):
+        assert context is ctx
+        checked.append(args.file)
+        if args.file == 'App/A.cpp':
+            raise SystemExit(1)
+    monkeypatch.setattr(native_try, 'cmd_check', check)
+    with pytest.raises(SystemExit, match='App/A.cpp'):
+        native_try.dispatch(SimpleNamespace(action='check', file=None, blocks=None, all=True))
+    assert contexts == [True] and checked == ['App/A.cpp', 'App/B.cpp']
+
+
+def test_direct_header_edit_remembers_real_caller(editable_trial):
+    ctx, _, _ = editable_trial
+    rel = 'App/include/A.h'
+    ctx.translation_unit = 'App/A.cpp'
+    native_try.native_edit.prepare(ctx, native_try.OUT, rel, [], {})
+    del ctx.translation_unit
+    native_try.cmd_edit(ctx, SimpleNamespace(file=rel, related=[], only=None))
+    assert ctx.translation_unit == 'App/A.cpp'
+
+
+def test_direct_edit_historical_compiler_roundtrip(tmp_path, monkeypatch):
+    # Synthetic targets verify the actual historical compiler/cache path, never native credit.
+    from roc import match, setup
+    from roc import native_sweep as sweep
+    if 21022 not in setup.compilers():
+        pytest.skip('Historical MSVC 21022 not installed')
+    tree, overlay, output = tmp_path/'tree', tmp_path/'overlay', tmp_path/'out'
+    rel = 'App/v8world/Fixture.cpp'
+    text = 'namespace RBX { struct Fixture { static int change(); static int keep(); }; }\nint RBX::Fixture::change() { return 1; }\nint RBX::Fixture::keep() { return 7; }\n'
+    target = text.replace('return 1', 'return 2')
+    original = tree/rel
+    original.parent.mkdir(parents=True)
+    original.write_text(text)
+    def compile_source(source, rel, label):
+        return sweep.compile_unit(source, rel, label, output, tree, overlay, [], '', '/O2 /GS- /EHsc /MD')
+    proof = compile_source(target, rel, 'synthetic-target')
+    assert proof['ok'], proof['error']
+    functions = list(match.coff_functions(Path(proof['object']).read_bytes()))
+    wanted = {}
+    for addr, method in [('00000001', 'change'), ('00000002', 'keep')]:
+        wanted[addr] = next((name, code, relocations) for name, code, relocations in functions if name.startswith('?'+method+'@Fixture@RBX@@'))
+    class Matcher:
+        def scan(self, data):
+            actual = {name: (code, relocations) for name, code, relocations in match.coff_functions(data)}
+            return [{'addr': addr, 'symbol': name} for addr, (name, code, relocations) in wanted.items()
+                    if name in actual and match.exact_match(code, relocations, *actual[name])]
+    ctx = SimpleNamespace(tree=tree, overlay=overlay, targets=set(wanted), owned=set(), base_revision='synthetic',
+                          names={addr: {'symbol': row[0]} for addr,row in wanted.items()},
+                          by_addr={addr: {'unit': 'RBX::Fixture'} for addr in wanted}, matcher=Matcher(), compile=compile_source)
+    monkeypatch.setattr(native_try, 'OUT', output)
+    monkeypatch.setattr(native_try, 'PROPOSALS', output/'proposals.json')
+    monkeypatch.setattr(sweep, 'target_files', lambda *a: {rel: ['00000001']})
+    monkeypatch.setattr(sweep, 'ownership_candidates', lambda obj,hits: {h['addr']: [h['addr']] for h in hits})
+    args = SimpleNamespace(file=rel, related=[], blocks=None, only=None)
+    native_try.cmd_edit(ctx, args)
+    draft = native_try.native_edit.folder(output,rel)/rel
+    draft.write_text(target, encoding='utf-8')
+    native_try.cmd_check(ctx,args)
+    assert native_try.saved()[0]['witnesses'][0]['addr'] == '00000001'
+    native_try.cmd_check(ctx,args)
+    assert native_try.saved()[0]['proof']['compile_cache_hit']
+    assert original.read_text() == text
+
+
+def test_direct_submit_refuses_newer_unchecked_edits(editable_trial):
+    ctx, _, _ = editable_trial
+    args = SimpleNamespace(file='App/A.cpp', related=[], blocks=None)
+    native_try.cmd_edit(ctx, args)
+    draft = native_try.native_edit.folder(native_try.OUT, args.file) / args.file
+    draft.write_text('unfinished change', encoding='utf-8')
+    with pytest.raises(ValueError, match='Unverified direct edits'):
+        native_try.cmd_submit(SimpleNamespace(model='test'))
+    assert draft.read_text() == 'unfinished change'

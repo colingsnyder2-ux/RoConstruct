@@ -1,5 +1,50 @@
 # Native integration with an agent (Codex, Claude)
 
+## Direct editing workflow (default)
+
+Use a current Worker with `roc native-try edit --help` and native workflow version 14.
+Edit real C++/header files in the editable workspace printed by the tool. No hand-written
+SEARCH/REPLACE blocks or JSON edit packets are needed. Work by shared cause/class:
+change the related methods together, keep unrelated methods unchanged, then check
+that coherent batch. Compilation caches, minimization and all independent acceptance
+gates still apply. Speed gains must be measured; direct editing grants no credit.
+
+```text
+roc native-try targets --limit 20
+roc native-try evidence App/tool/PartDragTool.cpp --context methods --brief
+roc native-try edit App/tool/PartDragTool.cpp --related App/include/tool/PartDragTool.h
+```
+
+Open the printed files under `work/native-try/edit/` and edit them with normal file
+or editor tools. These contain the effective accepted source plus saved passing
+edits. Leave vendor files under `tools/` unchanged. For a batch spanning multiple
+translation units, run `edit` for each CPP; include its required genuine headers.
+
+```text
+roc native-try check App/tool/PartDragTool.cpp
+roc native-try check --all
+roc native-try preflight
+roc native-try submit --model YOUR_ACTUAL_MODEL
+```
+
+`check` captures the diff automatically, compiles the real translation unit, checks
+code/data and no-loss, minimizes the change, and saves a proposal. Successful checks
+archive the captured draft and refresh editable files to the minimized passing source.
+Failed checks preserve both the draft and earlier saved proofs. Batch checks reuse
+one context, continue after individual failures and report them; fix failing files
+before submitting an inseparable batch. Linked/runtime/ABI/global ownership checks
+and independent server acceptance remain mandatory. Preflight/submit refuse newer
+unchecked edits for a saved proposal; rerun check after editing. Never upload the editable folder
+as an alternate submission path.
+
+Repeat `edit` to locate existing files without overwriting them. After a baseline
+advance, `check` rebases only unique unchanged anchors, then recompiles; conflicts
+preserve the draft. To start again from the current effective baseline, use
+`roc native-try edit FILE --fresh`: old work is archived beside the editable files.
+`reset` clears saved proposals only; editable files remain. For a standalone header,
+use `edit HEADER --only ADDR` to select its genuine caller; the draft remembers it.
+Legacy `check FILE blocks.txt` remains compatible for existing automation only.
+
 ## Current batch-first process
 
 Use the existing private contributor checkout. One writer and one build at a
@@ -64,7 +109,7 @@ batch process takes precedence over later single-method examples.
 
 ## Command compatibility
 
-This guide's manual loop uses `roc native-try targets / evidence / check / submit`.
+This guide's manual loop uses `roc native-try targets / evidence / edit / check / submit`.
 The GUI's continuous session uses `roc integrator`. Keep these supported paths;
 `roc integrate work` and `roc integrate packet` do not exist. Earlier workflow
 instructions requiring those actions were incorrect. Their absence in Worker v12
@@ -73,7 +118,7 @@ is not a reason to download that same package again or stop native-try work.
 Before setup, inspect the installed CLI once:
 
 ```text
-roc native-try --help
+roc native-try edit --help
 roc integrate --help
 ```
 
@@ -107,8 +152,7 @@ roc integrator --model YOUR_ACTUAL_MODEL --workers 4 --rounds 3 --output-budget 
 
 Use remote prompts only within the operator's authorization. The GUI offers
 signed-in CLIs, API providers and local models. Selecting a model does not change
-the independent acceptance gates. The manual agent path below writes its own
-anchored edits through native-try; it follows the same evidence/acceptance goals
+the independent acceptance gates. The manual agent path below edits exported C++/headers directly through native-try; it follows the same evidence/acceptance goals
 but does not automatically acquire the GUI's scheduling or shared compiler jobs.
 Do not launch a second editor or continuous session in its mutable staging tree.
 
@@ -118,7 +162,7 @@ Do not launch a second editor or continuous session in its mutable staging tree.
 | Parallel local compilers | Independent compiler limit; `auto` caps at 8 slots subject to CPU capacity. |
 | Files per integration batch | Set 1 for immediate per-file submission (program default: 40). This does not promise acceptance. |
 | Methods per shared compile | Default 4 independent edits per file; split conflicting/failing combinations, recompile retained edits. |
-| Source context / AI output | Default `methods` / `auto`: one complete method, then anchored repairs. Manual native-try still consumes SEARCH/REPLACE blocks. |
+| Source context / AI output | Default `methods` / `auto`: one complete method, then anchored repairs. Manual native-try exports editable C++/headers and captures diffs. |
 | Rounds / Output tokens | New native sessions start at 3 / 3072; configured presets or edits can override these values. |
 | Request / Token / Estimated spend caps | Session-wide limits. Editing a cap retains usage already spent; unknown pricing is not zero cost. CLI subscription dollar caps are unsupported. |
 
@@ -339,7 +383,7 @@ report both versions; do not repeatedly download the same incompatible archive.
 
 Do not ask the user to locate or attach a Worker ZIP. If `roc/native_try.py`, `research/native-units.json`,
 or `research/native-source-lock.json` is missing, `roc native-try --help` is unavailable, or a package marker
-reports `native_workflow_version` below 12, download the current Worker package yourself:
+reports `native_workflow_version` below 14, download the current Worker package yourself:
 
 - Manifest: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.json
 - Package: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.zip
@@ -353,7 +397,7 @@ into a new folder without overwriting the user's existing checkout or edits:
 $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 $nativeManifest = Invoke-RestMethod ('https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.json?t=' + [guid]::NewGuid().ToString('N'))
-if ($nativeManifest.workflow_version -lt 12 -or
+if ($nativeManifest.workflow_version -lt 14 -or
     $nativeManifest.url -ne 'https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.zip' -or
     $nativeManifest.sha256 -notmatch '^[0-9a-fA-F]{64}$') { throw 'Invalid Worker manifest' }
 $nativeWorkspace = (Get-Location).Path
@@ -419,8 +463,8 @@ user to download dependencies manually. Reuse installed files. Group setup comma
 invocation, run sequentially, and stop on the first failure. Retry a failed download before reporting a blocker.
 Use existing `roc` commands; do not import project modules from ad-hoc scripts.
 
-Use a current Worker package or checkout with `roc native-try --help`. The Worker package must include
-`native_try`, `native_sweep`, `standins`, `rebuild_install`, this document and `research/libs-bundle.json`.
+Use a current Worker package or checkout with `roc native-try edit --help`. The Worker package must include
+`native_try`, `native_edit`, `native_sweep`, `standins`, `rebuild_install`, this document and `research/libs-bundle.json`.
 If a public clone lacks `roc/native_try.py`, use Automatic Worker download above rather than cloning
 that same public revision again. A pasted copy of this guide is sufficient to obtain the package.
 Reuse a compatible private checkout; extract into a fresh authorized folder only
@@ -534,47 +578,20 @@ If doctor cannot find an installed SDK, set `ROC_WINSDK` to this PC's SDK folder
      the job is to close that gap in the real C++.
    - When `current_diff` shows calls where the target has inlined code (or the reverse), the fix usually sits in
      a helper. Rerun with `--context file` to see it.
-3. Write SEARCH/REPLACE blocks for FILE into a scratch file (for example `blocks.txt`):
-
-   ```text
-   <<<<<<< SEARCH
-   exact old text, copied verbatim from the file
-   =======
-   new text
-   >>>>>>> REPLACE
-   ```
-
-4. `roc native-try check FILE blocks.txt` applies the blocks, compiles the real file and reports:
-   newly exact, lost, still not exact, plus fresh diffs.
-   It also saves an `.evidence.json` beside the compiled object with proof metadata,
-   gains/losses, full ownership candidates and displayed diffs. The printed evidence
-   path avoids extra inspection commands; ambiguous bodies print candidate counts.
-   - **Compile error:** fix the blocks.
-   - **Lost:** undo what broke the existing exacts.
-   - **New exact with no loss:** the edits are minimized to what the proof needs and saved to
-     `work/native-try/proposals.json`.
-   - Minimization preserves helper definitions still called by retained code. A compile
-     that turns a previously defined symbol into an unresolved external cannot remove
-     that edit, even when the caller's bytes still match. Submit rechecks this invariant.
-
-   When a genuine declaration and its source must change together, the same command
-   accepts a JSON blocks file mapping the primary `.cpp` and its headers to
-   `[["SEARCH", "REPLACE"], ...]`. For example,
-   `roc native-try check App/tool/PartDragTool.cpp paired.json` compiles the C++
-   against those temporary header edits, minimizes both, and restores the original
-   header bytes. The saved proposal retains the paired headers and their hashes;
-   submit rechecks the pair and stages all files in one server batch.
-
-   Later checks of the same file build on its saved edits.
-   To discard one experiment while retaining other files' proofs, use
-   `roc native-try reset FILE`. Without FILE, reset clears every saved proposal.
-   They must preserve both existing exacts and every previously saved gain.
-   After syncing a changed baseline, revalidate saved edits without a blocks file:
-   `roc native-try check FILE`. If anchors changed, reconcile the edits before checking again.
-   For example, `roc native-try check App/include/util/Events.h blocks.txt --only 0055ae20`
-   automatically finds and compiles `Instance.cpp`; it never compiles the header as a standalone TU.
-5. Read the diff and make one hypothesis per try. If a check saves a new exact proposal
-   with no loss, go immediately to step 6 before trying another unrelated target or file.
+3. `roc native-try edit FILE [--related HEADER ...]` exports editable files and prints
+   their absolute paths. Edit those files directly. Group related methods sharing
+   the same cause; do not rewrite neighbours or manually encode edit blocks.
+4. `roc native-try check FILE` captures the diff and proves the real translation unit.
+   `roc native-try check --all` checks all prepared editable translation units with
+   one context. Inspect newly exact/lost counts and the printed `.evidence.json`.
+   Failed checks preserve editable files and earlier proposals. Passing edits are
+   minimized, saved to `work/native-try/proposals.json` and reflected in the editable
+   files; originals remain archived. Header dependencies are checked with their
+   real callers, including definitions still required by retained calls.
+   A header-only trial starts with `roc native-try edit HEADER --only ADDR`.
+   Older blocks files remain supported but are not the manual workflow.
+5. Read the diff and make one hypothesis per try. Complete checks for the coherent class/shared-cause batch, then submit passing
+   proposals immediately; do not accumulate unrelated work.
    Stop a file after about 3 tries without progress; record its blocker and move on.
 6. **Submit after every completed passing fix.** Run `roc integrate sync`, then
    `roc native-try submit --model YOUR_ACTUAL_MODEL`. It rechecks the required gates,
