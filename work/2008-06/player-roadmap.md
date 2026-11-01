@@ -1,5 +1,14 @@
 # Current player checkpoint
 
+Audio progress at source075c77b59f: SoundService destructor 005bb120 now uses
+genuine automatic member/base destruction and locally identifies the target in
+the owned-symbol report. Sound asset diagnostic still passes, but the destructor
+object is not selected or exercised. A direct service/cache test could not link:
+onEvent and onServiceProvider are missing. That temporary test was removed.
+Recover those callbacks and their real dependencies before claiming service or
+audible playback. Evidence: p4-sound-destructor-075c77b59f/ and
+p4-sound-destructor-runtime-075c77b59f/.
+
 P4 cylinder path integrated at source0948e83bac. Native constructor004fd6b0,
 builder004fd430, endcap004fd4a0, side004fd530 and one-variation factory004eef30
 now render through the shared bank and ordinary material. Unit test checks
