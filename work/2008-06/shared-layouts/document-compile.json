@@ -1,5 +1,5 @@
 {
-  "revision": "2daa5d7d1bc1446cd3bda023ffb588a9ba661d8c",
+  "revision": "7320c51b959d41c34949dd629f14076863b9e621",
   "compiler_build": 21022,
   "flags": [
     "/nologo",
@@ -44,8 +44,8 @@
     "rebuild\\2008-06\\tests\\NativeDocumentLayout.cpp": "46c6138324eff27502f3c69b3eb12a8e23aaefecb25dba8772bd2c5250313d9c",
     "rebuild\\2008-06\\native-headers\\CRobloxDoc.h": "7f58c820c6867601ea38e3151fc65f8a401148786774304a91ba908c293508f7",
     "rebuild\\2008-06\\native-headers\\VerbBinder.h": "7a4fac48dd0eb40c6f12c0a713812e087589ebb2e19a26434ecc8e3954f17952",
-    "rebuild\\2008-06\\tests\\record_native_document.py": "8acf396b3ae1b92abe8451889a0e05b57b264d0b50e564527e43ea59083e33fb",
-    "rebuild\\2008-06\\native-classes\\CRobloxDoc.cpp": "bdf7b9f6e3edf945e9ac7293aa2d335e4766a0c14ad7f00d55856712532c614b",
+    "rebuild\\2008-06\\tests\\record_native_document.py": "f969f3476c6f93cbf72b6cdd2bce1876cbdc24b6a3b62a2f0e41a499f7290a5e",
+    "rebuild\\2008-06\\native-classes\\CRobloxDoc.cpp": "732414ef351edf948fd5b0703fc1854bbaca5a031ef5837c786bffb93b1632b1",
     "rebuild\\2008-06\\native-classes\\StandardVerbs.cpp": "497b7e172bdfcb34b4595c5c5661c159e580e2b6d5f0804bbd595fcd7a0e5710",
     "rebuild\\2008-06\\native-headers\\StandardVerbs.h": "7a48e0178f955854b8a4c16c06476388e4ffcbc1f171a97886379fadaaa3d0cd",
     "rebuild\\2008-06\\native-headers\\v8xml\\XmlElement.h": "dd6594e4312f376e95960b5cbd27d14fb83e4c796d08ecd1ea19ea98333502c4",
@@ -55,7 +55,7 @@
     "rebuild\\2008-06\\native-headers\\v8tree\\Service.h": "3b5db75fe3f81e8861d44ce6ee44026f41388b380c9a632fb2defb1c23df9d54"
   },
   "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
-  "object_sha256": "c53a788adb8cc2843a0161ced13bac6be4e962adc6e3a3360b55e64fac77d09a",
+  "object_sha256": "57b9571c60fb7e35a7b442c28fcc558b12e4ff81d6c283fd0940d3c190998d89",
   "compile_log_sha256": "c4e76fdceab90fb871c4bb1f784fe8d5f7929f22b03cddc483ae05ff0a8b4819",
   "static_layout_gates": {
     "size": 152,
@@ -167,6 +167,22 @@
         165,
         233,
         333
+      ]
+    },
+    {
+      "address": "0044f8d0",
+      "symbol": "?DoSave@CRobloxDoc@@UAEHPBDH@Z",
+      "size": 213,
+      "relocation_normalized_exact": true,
+      "target_relocations": [
+        3
+      ],
+      "candidate_relocations": [
+        3,
+        41,
+        59,
+        74,
+        189
       ]
     },
     {
@@ -510,5 +526,5 @@
     }
   ],
   "active_client_changed": false,
-  "scope": "Compiler-only document storage, virtual-slot declarations, twelve document bodies and three destructor proofs, including the document destructor. Other virtual bodies and relocated targets remain unverified. No active class swap, linked-function increase or server verification claimed."
+  "scope": "Compiler-only document storage, virtual-slot declarations, thirteen document bodies and three destructor proofs, including the document destructor. Other virtual bodies and relocated targets remain unverified. No active class swap, linked-function increase or server verification claimed."
 }

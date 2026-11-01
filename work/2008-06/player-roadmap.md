@@ -2153,3 +2153,5 @@ Document destructor resolved at 9235c01ed5: original recovered VerbBinder is __d
 Doc native methods at 6373c250da: SetModifiedFlag 0044fad0 (166 bytes) and SetTitle 0044fb80 (199 bytes) match original with relocations masked. Probe now enforces 11 Doc bodies plus three destructors; all pass. Call-target linkage and remaining virtual methods still open. Candidate inactive; no P5/P6 rerun or running-exe count change.
 
 Doc IsModified 004508f0 recovered at 2daa5d7d1b: DataModel lock and virtual dirty query compile to original 377 bytes with relocations masked. Regression probe passes 12 Doc bodies and three destructors. Call-target linkage and remaining virtual methods unverified; no active swap or running-exe count change.
+
+Doc DoSave 0044f8d0 recovered at 7320c51b95: 213-byte relocation-masked match, regression probe passes 13 Doc bodies and three destructors. Two guarded predicate calls target original 00495e60/00495e70; semantic names and linkage remain unresolved, as do other virtual bodies. Candidate inactive; running-exe count and P5/P6 gates unchanged.
