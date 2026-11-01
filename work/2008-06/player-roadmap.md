@@ -2097,3 +2097,6 @@ Workspace cleanup boundary: MSVC21022 compiled donor DataModel::getWorkspace to 
 
 
 Original DataModel RTTI recorded at 89c4a45b9d: ServiceProvider at0, VerbContainer at0x1c8, IDataState at0x1f0, Evaluator at0x1f4, RunTransition listener at0x1f8. Instance hierarchy includes GuidItem at0 and enable_shared_from_this at0xe4; donor declarations differ. Evidence shared-layouts/datamodel-rtti.json, generated from original executable by record_native_layouts.py. Native full fields/size remain open; no active ABI swap.
+
+
+Native DataModel factory0057c080 allocates0x264 bytes and calls constructor0057b9f0; constructor writes original DataModel RTTI vtable008303cc and initializes workspace member at0x204. Destructor0057ad70 independently writes the same vtable. Original-binary instructions and hashes saved in shared-layouts/datamodel-rtti.json at aedd5224d9. Remaining fields and inherited layouts require recovery; no class swap.
