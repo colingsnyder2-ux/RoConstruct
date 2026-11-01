@@ -1,0 +1,22 @@
+{
+ "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+ "object_sha256": "9cc77c6bf8010a214c1ab74c268d339ca5bf9e34c9fb80383fd170aacadfe520",
+ "methods": [
+  {
+   "address": "00459eb0",
+   "symbol": "??0CRobloxView@@QAE@XZ",
+   "target_size": 242,
+   "compiled_size": 242,
+   "relocation_normalized_exact": true,
+   "first_difference": 3
+  },
+  {
+   "address": "00459ba0",
+   "symbol": "??1CRobloxView@@UAE@XZ",
+   "target_size": 371,
+   "compiled_size": 371,
+   "relocation_normalized_exact": true,
+   "first_difference": 3
+  }
+ ]
+}
