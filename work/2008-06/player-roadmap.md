@@ -1185,8 +1185,7 @@ agreed; two static copies were excluded. Twelve original wall-time observations
 were compared against the rebuilt 60 Hz fixed-step trace within a two-frame
 timing window. Two independent runs pass: maximum best-window error 0.079
 studs; original settles at y=-3.8072393 and rebuilt at y=-3.80272245, difference
-0.004517. Original floor remains represented at its authored position; rebuilt
-floor anchoring and mesh cleanup pass. Exact-revision receipts are in
+0.004517. Rebuilt floor anchoring and mesh cleanup pass. Exact-revision receipts are in
 p5-original-fall-*-0bc4b85c42.
 
 This measures one authored fall and bounce, not direct original single-step
