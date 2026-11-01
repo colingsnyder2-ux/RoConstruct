@@ -1,26 +1,24 @@
 {
  "class": "CRobloxView",
- "status": "INACTIVE, size probe FAILS (short 0x18)",
+ "status": "INACTIVE layout candidate; size and offset probe PASSES; constructor bytes not yet compared",
  "compiler": "MSVC 21022 /O2 shared MFC",
- "header_sha256": "13e68309df65fc78a52da2c547ee94d9a91824fae68dee048cddc83f63cc9a6e",
- "matches": {
-  "VerbBinder<CRobloxView,CView> size": "0x78 (original: VerbContainer at 0x78)",
-  "VerbContainer size": "0x28 so listeners start at 0xa0",
-  "Listener size": "4 each, three at 0xa0/a4/a8",
-  "CReflectorWnd size": "0x58",
-  "CMenu size": "8"
+ "header_sha256": "002941fbe60a9dbc641a65571760f2f9b0e162d27c63af4e4e7f2c63ff3f39a3",
+ "verified": [
+  "CRobloxWnd 0xc0",
+  "CReflectorWnd 0x58",
+  "CMenu 8",
+  "CRobloxView 0x1f0",
+  "window +0xb0",
+  "CMenu +0x178",
+  "CReflectorWnd +0x180",
+  "tail +0x1d8",
+  "binder 0x78",
+  "VerbContainer 0x28",
+  "listeners 0xa0/a4/a8"
+ ],
+ "evidence_notes": {
+  "unaccessed_8c / unaccessed_bc": "No constructor write and no read in 53 mined CRobloxWnd methods; size is fixed by CRuntimeClass 0xc0.",
+  "8-byte alignment": "Original leaves View+0xac unwritten and places the window at +0xb0. Alignment is the cheapest explanation, not independently proven."
  },
- "mismatches": {
-  "CRobloxWnd size": "candidate 0xac (after fixing 7 slots: 0xb0), original 0xc0",
-  "CRobloxView size": "candidate 0x1d8, original 0x1f0",
-  "window offset": "candidate 0xac, original 0xb0"
- },
- "hypothesis": "CRobloxWnd has 8-byte alignment (double member) which pads View+0xac to 0xb0; unwritten bytes 0x8c-0x97 and 0xbc-0xbf inside CRobloxWnd are unrecovered readers",
- "next": "Find readers of CRobloxWnd offsets 0x8c-0x97 (callers of 0045b0d0..0045d3a0 methods) to type them; then re-run probe and compare ctor 00459eb0 (242 bytes) and 0045c730",
- "sources": {
-  "ctor": "00459eb0",
-  "window ctor": "0045c730",
-  "reflector ctor": "00432e30",
-  "binder ctor": "00459890"
- }
+ "next": "Compile constructor 00459eb0 (242 bytes) and CRobloxWnd ctor 0045c730 against this header and compare relocation-masked bytes"
 }

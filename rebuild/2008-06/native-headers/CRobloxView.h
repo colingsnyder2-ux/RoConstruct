@@ -16,15 +16,16 @@ namespace Network { class Players; struct SuperSafeChanged; }
 // Original RTTI (0081933c complete object locator) and constructor 00459eb0 prove
 // the bases and member offsets below. Names for members the constructor only
 // zeroes stay offset-based until their readers are recovered; no padding.
-// Inactive: not used by the shell. Native size 0x1f0. NOT YET MATCHING: the
-// compiled candidate is short by 0x18 bytes; see work/2008-06/shared-layouts/view-compile.json.
+// Inactive: not used by the shell. Native size 0x1f0. Size and offsets are checked by
+// tests/NativeViewLayout.cpp; see work/2008-06/shared-layouts/view-compile.json.
 // Unrecovered: CRobloxWnd bytes 0x8c-0x97 and 0xbc-0xbf are never written by the
 // constructor, and whether CRobloxWnd has 8-byte alignment (which would explain
 // the 4-byte gap before the window at View+0xb0). Fill from readers, not padding.
 
 // 0045c730 constructs this at View+0xb0. RTTI: CWnd at 0, IRunView at +0x54,
 // IMetric at +0x58. Only offsets the constructor writes are named.
-class CRobloxWnd : public CWnd, public RBX::IRunView, public RBX::IMetric {
+// 8-byte aligned: the original places it at View+0xb0 with View+0xac never written.
+__declspec(align(8)) class CRobloxWnd : public CWnd, public RBX::IRunView, public RBX::IMetric {
 public:
     int mode_5c;          // 0045cbf0 selects renderer mode here (3 = RbxGfx)
     int retries_60;       // incremented once after a renderer failure
@@ -32,11 +33,13 @@ public:
     bool flag_80;         // set to 1
     void* slot_84;
     bool flags_88_8b[4];  // 0x88 depends on startup context, 0x8b set to 1
+    unsigned unaccessed_8c[3]; // no constructor write and no read in 53 mined CRobloxWnd methods; size from CRuntimeClass 0xc0
     void* source_98;      // 005c43a0 result
     bool flag_9c;
     void* slots_a0_a4[2];
     bool flag_a8;
     void* slots_ac_b8[4];
+    unsigned unaccessed_bc;    // same evidence as unaccessed_8c
     CRobloxWnd();
     // Interface overrides; bodies not recovered here. IRunView vtable 008199e8, IMetric 008199dc.
     virtual void InvalidateRunView();
