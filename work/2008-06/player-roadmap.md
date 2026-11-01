@@ -1,5 +1,12 @@
 # Current player checkpoint
 
+At source50fff4e96c, SoundService 3D settings005b97b0 and reflection callback
+005ba020 are recovered; original initializer007f5220 identifies the callback.
+Sound diagnostic passes; these methods are unselected/unexecuted until service
+attachment works. Evidence: p4-sound-settings-50fff4e96c/ and
+p4-sound-settings-runtime-50fff4e96c/. Of58 readable supplied compressed XML
+places,39 contain Sound instances; four further files were unreadable/non-XML.
+
 SoundService shutdown005ba970 recovered at source73bde390ae: clear stock
 channels/children, detach both sound caches, clear them, release FMOD. The
 diagnostic builds and existing tests pass; shutdown is not yet selected or
