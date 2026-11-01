@@ -140,7 +140,13 @@ namespace RBX
 		desiredYRotationalVelocity = humanoid->getWalkRotationalVelocity();
 		if (direction.squaredLength() > 0.0001f)
 			intendedYRotation = atan2f(-direction.x, -direction.z);
-		desiredAltitude = floorTouchInWorld.y + 3.0f;
+		// Original 00643360: torso half-height plus left leg, or right leg if absent.
+		desiredAltitude = floorTouchInWorld.y;
+		Primitive* torso = humanoid->getTorsoPrimitive();
+		if (torso) desiredAltitude += torso->getGridSize().y * 0.5f;
+		Primitive* leg = humanoid->getLeftLegPrimitive();
+		if (!leg) leg = humanoid->getRightLegPrimitive();
+		if (leg) desiredAltitude += leg->getGridSize().y;
 	}
 
 	bool Running::isFacingStairs()
