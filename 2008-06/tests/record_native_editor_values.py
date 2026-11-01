@@ -17,9 +17,11 @@ jobs=(('Virtuals',Path(__file__).with_name('NativePropertyEditorConstructors.cpp
 def compile_job(job):
     name,source,profile=job
     pre=[f for f in flags if f!='/c']+['/P',str(source)]
-    c,log=rebuild.run(rebuild.toolchain(21022),'cl',pre,OUT)
+    pre_dir=OUT/('editor-values-'+name)
+    pre_dir.mkdir(exist_ok=True)
+    c,log=rebuild.run(rebuild.toolchain(21022),'cl',pre,pre_dir)
     assert c==0,log
-    body=(OUT/(source.stem+'.i')).read_text(errors='replace')
+    body=(pre_dir/(source.stem+'.i')).read_text(errors='replace')
     for needle in profile:
         assert body.count(needle)==1,needle
         body=body.replace(needle,'__declspec(noinline) '+needle)

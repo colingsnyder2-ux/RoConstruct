@@ -3,25 +3,16 @@
 #include "../native-headers/CWorkspace.h"
 #include "../native-headers/ToggleToolboxVerb.h"
 #include "../native-headers/v8datamodel/DataModel.h"
+#include "../native-headers/v8datamodel/ChangeHistoryService.h"
 
 // Inline in the original, as in CRobloxDoc.cpp.
 inline const RBX::Name& RBX::Verb::getName() const { return name; }
 
-// Scaffolding, not recovered declarations: DataModel+0x150 and +0x170 are Notifier
-// bases the native DataModel.h does not declare yet; 004218a0 is their addListener.
-struct ListenerSite { void addListener(void*); };
-inline ListenerSite* notifierAt(RBX::DataModel* model, unsigned offset) {
-    return reinterpret_cast<ListenerSite*>(reinterpret_cast<char*>(model) + offset);
-}
 // Workspace+0x2ec holds the camera and selection verbs; member not declared yet.
 inline RBX::VerbContainer* cameraVerbs(RBX::DataModel* model) {
     return reinterpret_cast<RBX::VerbContainer*>(reinterpret_cast<char*>(model->getWorkspace()) + 0x2ec);
 }
 
-// Scaffolding for tail calls: 00452a00 is a DataModel method returning a service with
-// method 0058c5e0 (ChangeHistoryService per the mined label); 0044aa70 reports a caught exception.
-struct HistorySite { void touch(); };
-struct ModelSite { HistorySite* history(); };
 void reportViewException(const std::exception&);
 
 // Inline derived verbs from 0045a4a0. Sizes come from operator new in the original.
@@ -64,10 +55,6 @@ inline void CRobloxView::bindExisting(UINT id, RBX::Verb* verb) {
     }
 }
 
-// Same shape as Listener::connect in util/Events.h: argument first, then the null test.
-inline void connectAt(const RBX::DataModel* notifier, unsigned offset, void* listener) {
-    if (notifier) notifierAt(const_cast<RBX::DataModel*>(notifier), offset)->addListener(listener);
-}
 // Null-safe base conversion; Workspace's VerbContainer base sits at +0x2ec.
 inline RBX::VerbContainer* workspaceVerbs(RBX::Workspace* workspace) {
     return workspace ? reinterpret_cast<RBX::VerbContainer*>(reinterpret_cast<char*>(workspace) + 0x2ec) : 0;
@@ -96,8 +83,8 @@ void CRobloxView::OnInitialUpdate() {
             *site = workspace;
         }
     }
-    connectAt(owner_170.get(), 0x150, static_cast<RBX::Listener<RBX::ServiceProvider, RBX::ServiceAdded>*>(this));
-    connectAt(owner_170.get(), 0x170, static_cast<RBX::Listener<RBX::ServiceProvider, RBX::ServiceRemoving>*>(this));
+    RBX::Notifier<RBX::ServiceProvider, RBX::ServiceAdded>::connect(owner_170.get(), this);
+    RBX::Notifier<RBX::ServiceProvider, RBX::ServiceRemoving>::connect(owner_170.get(), this);
     setVerbParent(workspaceVerbs(DM()->getWorkspace()));                    // 00583210
     slot_1e0.assign(new ToggleToolboxVerb(this, DM()));              // 00458ec0
     slot_1dc.assign(new HelpVerb(this, DM()));
@@ -121,8 +108,9 @@ void CRobloxView::OnInitialUpdate() {
     bindName(0x8043, RBX::Name::lookup("SelectionRotate"));
     bindName(0x8044, RBX::Name::lookup("SelectionTilt"));
     window.finishAttach();                                            // 0045ead0
-    if (HistorySite* history = reinterpret_cast<ModelSite*>(DM())->history()) history->touch();  // 00452a00, 0058c5e0
+    if (RBX::ChangeHistoryService* history = DM()->create<RBX::ChangeHistoryService>()) history->initializeBase(); // 00452a00, 0058c5e0
     } catch (std::exception& error) {
         reportViewException(error);                                   // 0044aa70
     }
 }
+

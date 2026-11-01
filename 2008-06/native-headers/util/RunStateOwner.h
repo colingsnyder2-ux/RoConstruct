@@ -128,6 +128,9 @@ namespace RBX
 		void raiseHeartbeat(float time, float step);
 		void raiseStepped(float time, float step);
 		RunState getRunState() const { return runState; }
+		double gameTime() const { return unknown0x1b8; }
+		double frameRate() const { return stopwatch.smoothFPS(); }
+		double dutyCycle() const { return (unknown0x1d8 + unknown0x1d0 + unknown0x1c8) * (1.0 / framePeriod); }
 		bool isEditState() const;
 		bool isRunState() const;
 		bool isPauseState() const;

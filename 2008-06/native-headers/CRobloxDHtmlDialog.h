@@ -10,6 +10,7 @@ class CRobloxDHtmlDialog : public CDHtmlDialog {
 public:
     std::string url;
     CRobloxDHtmlDialog(UINT, UINT, CWnd* = NULL);
+    CRobloxDHtmlDialog(UINT, const char*, CWnd* = NULL);
     virtual BOOL OnInitDialog();
     virtual BOOL IsExternalDispatchSafe();
     void BeforeNavigate2(LPDISPATCH, VARIANT*, VARIANT*, VARIANT*, VARIANT*, VARIANT*, BOOL*);

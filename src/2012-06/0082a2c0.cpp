@@ -1,93 +1,48 @@
-// from server: 35% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/IRenderable.cpp
+// from server: 100% by tajop
+struct Target {
+};
 
-// Candidate translation unit (score above; library headers required).
-#include "util/IRenderable.h"
+typedef void (Target::*Pmf)(void*, int, int, int);
 
-namespace RBX 
-{
-	IRenderable::~IRenderable()
-	{
-		RBXASSERT(index2d == -1);
-		RBXASSERT(index3d == -1);
-		RBXASSERT(bucket == NULL);
-	}
+struct Bucket {
+    Bucket* next_;
+};
 
-	void IRenderable::shouldRenderSetDirty()
-	{
-		if (bucket)
-			bucket->recomputeShouldRender(this);
-	}
+struct ValueBase {
+    void* value;
+};
 
-	IRenderableBucket::~IRenderableBucket()
-	{
-		RBXASSERT(renderable2ds.size() == 0);
-		RBXASSERT(renderable3ds.size() == 0);
-	}
+struct Node : ValueBase, Bucket {
+};
 
-	void IRenderableBucket::onAdded(IRenderable* iR)
-	{
-		RBXASSERT(iR->index2d == -1);
-		RBXASSERT(iR->index3d == -1);
-		RBXASSERT(iR->bucket == NULL);
+struct Iter {
+    Bucket* bucket_;
+    Bucket* node_;
+};
 
-		iR->bucket = this;
-		recomputeShouldRender(iR);
-	}
+struct Func {
+    Pmf f;
+    Target* t;
+    int a1;
+    int a2;
+    int a3;
 
-	void IRenderableBucket::onRemoving(IRenderable* iR)
-	{
-		RBXASSERT(iR->bucket == this);
+    void operator()(void* x) {
+        (t->*f)(x, a1, a2, a3);
+    }
+};
 
-		if (iR->index2d >= 0)
-			renderable2ds.fastRemove(iR);
-
-		if (iR->index3d >= 0)
-			renderable3ds.fastRemove(iR);
-
-		iR->bucket = NULL;
-
-		RBXASSERT(iR->index2d == -1);
-		RBXASSERT(iR->index3d == -1);
-	}
-
-	void IRenderableBucket::recomputeShouldRender(IRenderable* iR)
-	{
-		RBXASSERT(iR->bucket == this);
-
-		if (iR->shouldRender2d())
-		{
-			if (iR->index2d < 0)
-				renderable2ds.fastAppend(iR);
-		}
-		else if (iR->index2d >= 0)
-		{
-			renderable2ds.fastRemove(iR);
-		}
-
-		if (iR->shouldRender3dAdorn())
-		{
-			if (iR->index3d < 0)
-				renderable3ds.fastAppend(iR);
-		}
-		else if (iR->index3d >= 0)
-		{
-			renderable3ds.fastRemove(iR);
-		}
-	}
-
-	void IRenderableBucket::render2dItems(Adorn* adorn)
-	{
-		for (int i = 0; i < renderable2ds.size(); ++i)
-			renderable2ds[i]->render2d(adorn);
-	}
-
-	void IRenderableBucket::render3dAdornItems(Adorn* adorn)
-	{
-		for (int i = 0; i < renderable3ds.size(); ++i)
-			renderable3ds[i]->render3dAdorn(adorn);
-	}
+Func for_each_value(Iter first, Iter last, Func fn) {
+    Iter end = last;
+    Bucket* node = first.node_;
+    Bucket* bucket = first.bucket_;
+    for (; node != end.node_; ) {
+        fn(static_cast<Node*>(node)->value);
+        node = node->next_;
+        while (!node) {
+            node = bucket[1].next_;
+            ++bucket;
+        }
+    }
+    return fn;
 }

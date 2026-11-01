@@ -24,9 +24,11 @@ category_source = ROOT / 'rebuild/2008-06/native-classes/CPropGridCategory.cpp'
 
 def compile_source(pair):
     source, name = pair
-    code, log = rebuild.run(tc, 'cl', [f for f in flags if f != '/c'] + ['/P', str(source)], OUT)
+    pre_dir = OUT / ('editor-constructors-' + name)
+    pre_dir.mkdir(exist_ok=True)
+    code, log = rebuild.run(tc, 'cl', [f for f in flags if f != '/c'] + ['/P', str(source)], pre_dir)
     assert code == 0, log
-    body = (OUT / (source.stem + '.i')).read_text(errors='replace')
+    body = (pre_dir / (source.stem + '.i')).read_text(errors='replace')
     needle = 'const _Elem * c_str() const'
     assert body.count(needle) == 1
     body = body.replace(needle, '__declspec(noinline) ' + needle)

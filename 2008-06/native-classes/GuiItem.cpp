@@ -38,3 +38,20 @@ const G3D::Color4& RBX::GuiItem::translucentBackdrop()
     static const G3D::Color4 c(0.6f, 0.6f, 0.6f, 0.6f);
     return c;
 }
+
+RBX::GuiResponse RBX::GuiItem::processNonFocus(const GuiEvent& event)
+{
+    for (size_t i = 0; i < numChildren(); ++i) {
+        GuiItem* item = dynamic_cast<GuiItem*>(getChild(i));
+        if (item && item != focus.get()) {
+            GuiResponse response = item->process(event);
+            if (response.wasUsed()) {
+                loseFocus();
+                focus = shared_from(item);
+                focus->loseFocus();
+                return response;
+            }
+        }
+    }
+    return GuiResponse::notUsed();
+}

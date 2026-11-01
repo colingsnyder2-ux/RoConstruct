@@ -1,12 +1,18 @@
 #include <afxwin.h>
+#include <afxdlgs.h>
 #include "v8xml/XmlElement.h"
 #include "v8xml/SerializerV2.h"
 #include "v8tree/Verb.h"
 #include "v8datamodel/DataModel.h"
+#include "v8datamodel/Selection.h"
+#include "v8datamodel/ChangeHistoryService.h"
+#include "script/ScriptContext.h"
 #include "../native-headers/CRobloxDoc.h"
 #include "../native-headers/StandardVerbs.h"
 #include "../native-headers/CWorkspace.h"
 #include "util/RunStateOwner.h"
+#include "util/Log.h"
+#include "Network/Players.h"
 #include <exception>
 #include <fstream>
 #include <shlobj.h>
@@ -60,7 +66,6 @@ END_MESSAGE_MAP()
 // Original 00428850 logs std::exception::what(); recovery/linking remains open.
 void reportDocumentCreateException(const std::exception&);
 void reportOpenException(const std::exception&);
-namespace RBX { class ChangeHistoryService { public: void setEnabled(bool); }; }
 extern CRobloxDoc* currentDocument;
 void setCurrentDocument(int, CRobloxDoc*);
 // Native predicates 00495e60/00495e70 resolve to NetworkClient/NetworkServer lookups.
@@ -98,6 +103,160 @@ void CRobloxDoc::OnUpdateAlwaysEnable(CCmdUI* ui) { ui->Enable(TRUE); }
 inline RBX::RunService* documentRunService(const boost::shared_ptr<RBX::DataModel>& model) {
     return model ? model->create<RBX::RunService>() : 0;
 }
+// 00453670: invoke undo under the document model lock.
+void CRobloxDoc::handle_453670() {
+    boost::shared_ptr<RBX::DataModel> model = workspace->getDataModel();
+    RBX::DataModel::Lock lock(model);
+    model->create<RBX::ChangeHistoryService>()->unplay();
+}
+
+// 004538b0: redo the next recorded change.
+void CRobloxDoc::handle_4538b0() {
+    boost::shared_ptr<RBX::DataModel> model = workspace->getDataModel();
+    RBX::DataModel::Lock lock(model);
+    model->create<RBX::ChangeHistoryService>()->play();
+}
+
+// Original undo/redo command captions and availability.
+void CRobloxDoc::handle_453750(CCmdUI* ui) {
+    boost::shared_ptr<RBX::DataModel> model = workspace->getDataModel();
+    RBX::DataModel::Lock lock(model);
+    RBX::ChangeHistoryService* history = model->create<RBX::ChangeHistoryService>();
+    std::string name;
+    ui->Enable(history->queryUnplay(name, 0));
+    CString caption;
+    caption.Format(0x82, name.c_str());
+    ui->SetText(caption);
+}
+void CRobloxDoc::handle_453990(CCmdUI* ui) {
+    boost::shared_ptr<RBX::DataModel> model = workspace->getDataModel();
+    RBX::DataModel::Lock lock(model);
+    RBX::ChangeHistoryService* history = model->create<RBX::ChangeHistoryService>();
+    std::string name;
+    ui->Enable(history->queryPlay(name, 0));
+    CString caption;
+    caption.Format(0x83, name.c_str());
+    ui->SetText(caption);
+}
+
+// 00453af0: enable command when selection has entries.
+void CRobloxDoc::handle_453af0(CCmdUI* ui) {
+    RBX::DataModel::Lock lock(workspace->getDataModel());
+    RBX::Selection* selected = RBX::ServiceProvider::create<RBX::Selection>(workspace->getDataModel().get());
+    ui->Enable(selected->selection->size() > 0);
+}
+
+// 00454040: pause is available while simulation runs.
+void CRobloxDoc::handle_454040(CCmdUI* ui) {
+    RBX::DataModel::Lock lock(workspace->getDataModel());
+    ui->Enable(getDataModel()->create<RBX::RunService>()->getRunState() == RBX::RS_RUNNING);
+}
+
+// 00454170: stop is available for local simulation without a local player.
+void CRobloxDoc::handle_454170(CCmdUI* ui) {
+    RBX::DataModel::Lock lock(workspace->getDataModel());
+    RBX::RunState state = getDataModel()->create<RBX::RunService>()->getRunState();
+    bool player = RBX::Network::Players::findLocalPlayer(getDataModel().get()) != 0;
+    ui->Enable(state && !player);
+}
+
+// 00454300: run is unavailable for remote clients or an active simulation.
+void CRobloxDoc::handle_454300(CCmdUI* ui) {
+    RBX::DataModel::Lock lock(workspace->getDataModel());
+    RBX::RunService* state = getDataModel()->create<RBX::RunService>();
+    bool client = RBX::Network::Client::clientIsPresent(getDataModel().get(), true);
+    ui->Enable(!client && state->getRunState() != RBX::RS_RUNNING);
+}
+
+// Original status bar game-time and frame-rate updates.
+void CRobloxDoc::handle_450a70(CCmdUI* ui) {
+    if (getDataModel()) {
+        char text[32];
+        {
+            RBX::DataModel::Lock lock(workspace->getDataModel());
+            sprintf(text, "t %.4g", getDataModel()->getGameTime());
+        }
+        ui->SetText(text);
+    }
+}
+void CRobloxDoc::handle_450c00(CCmdUI* ui) {
+    if (getDataModel()) {
+        char text[32];
+        {
+            RBX::DataModel::Lock lock(workspace->getDataModel());
+            sprintf(text, "%.3gfps", getDataModel()->getFrameRate());
+            ui->SetText(text);
+        }
+    }
+}
+
+inline bool RBX::ScriptContext::hasState() const { return globalState != 0; }
+// 00454490: enable script operations when a Lua state exists.
+void CRobloxDoc::handle_454490(CCmdUI* ui) {
+    RBX::DataModel::Lock lock(workspace->getDataModel());
+    RBX::ScriptContext* context = RBX::ServiceProvider::create<RBX::ScriptContext>(getDataModel().get());
+    ui->Enable(context && context->hasState());
+}
+
+// 004547b0: display active script thread count.
+void CRobloxDoc::handle_4547b0(CCmdUI* ui) {
+    RBX::DataModel::Lock lock(workspace->getDataModel());
+    RBX::ScriptContext* context = RBX::ServiceProvider::create<RBX::ScriptContext>(getDataModel().get());
+    if (context && context->allocator) {
+        char text[32];
+        sprintf(text, "%d threads", context->getThreadCount());
+        ui->SetText(text);
+        ui->Enable(TRUE);
+    } else {
+        ui->SetText("");
+        ui->Enable(FALSE);
+    }
+}
+
+// 00450d90: display simulation duty cycle.
+void CRobloxDoc::handle_450d90(CCmdUI* ui) {
+    if (getDataModel()) {
+        RBX::DataModel::Lock lock(workspace->getDataModel());
+        double value = getDataModel()->getDutyCycle() * 100.0;
+        char text[32];
+        sprintf(text, "%.3g%%", value);
+        ui->SetText(text);
+    }
+}
+
+// 00454920: display script allocator heap usage.
+void CRobloxDoc::handle_454920(CCmdUI* ui) {
+    RBX::DataModel::Lock lock(workspace->getDataModel());
+    RBX::ScriptContext* context = RBX::ServiceProvider::create<RBX::ScriptContext>(getDataModel().get());
+    if (context && context->allocator) {
+        size_t bytes, blocks;
+        context->allocator->getHeapStats(bytes, blocks);
+        std::string text = RBX::Log::formatMem(bytes);
+        ui->SetText(text.c_str());
+        ui->Enable(TRUE);
+    } else {
+        ui->SetText("");
+        ui->Enable(FALSE);
+    }
+}
+
+// 00454f30: enable abuse reporting when the players service supports it.
+void CRobloxDoc::handle_454f30(CCmdUI* ui) {
+    RBX::DataModel::Lock lock(workspace->getDataModel());
+    ui->Enable(getDataModel()->create<RBX::Network::Players>()->canReportAbuse());
+}
+
+// 0044f7c0: save selected instances to a model file.
+void CRobloxDoc::handle_44f7c0() {
+    CString filter;
+    filter.LoadString(184);
+    CFileDialog dialog(FALSE, "rbxm", NULL, 6, filter, NULL, 0, TRUE);
+    if (dialog.DoModal() == IDOK) {
+        ATL::CComBSTR filename((LPCSTR)dialog.GetPathName());
+        workspace->SaveSelectionToFile(filename);
+    }
+}
+
 // 00455460: pause the current simulation.
 void CRobloxDoc::handle_455460() {
     RBX::DataModel::Lock lock(workspace->getDataModel());

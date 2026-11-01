@@ -61,15 +61,15 @@
     },
     {
       "name": "CPropGrid / CSelectionPropGrid / CDataModelPropGrid",
-      "status": "inactive:14 selected grid bodies plus8 lifecycle bodies match. Item layout corrected to32 bytes (vector+4/grid+1c), not prior unsupported size4. Category lookup and six editor constructors separately match. 91-slot primary ABI and selected bindings verified. Concrete editor behavior, full virtual bindings, real row attachment/factory and game integration open",
+      "status": "Inactive: 14 selected grid bodies and 8 lifecycle bodies match. Four real row-attachment bodies and three attachment callees match. Factory, complete editor behavior and runtime integration remain open.",
       "source": "native-headers/CDataModelPropGrid.h",
-      "evidence": "work/2008-06/shared-layouts/property-editor-checkpoint.json"
+      "evidence": "work/2008-06/shared-layouts/property-attachment-working-probe.json"
     },
     {
       "name": "XItem / XBoolItem / property editor family",
-      "status": "inactive partial family: six constructor bodies match (five of12 factory constructor paths); genuine SDK sizes/member offsets verified. Original RTTI/allocation metadata mapped for all12 editor branches. Native m_bHidden at+fc starts rows hidden. Template update and SDK override bodies remain unresolved; no runtime credit",
+      "status": "Inactive: six constructor bodies cover five of 12 factory paths; six value-operation bodies match. Float equality and two numeric parsers remain nonexact. Update, write and apply operations and runtime integration remain open.",
       "source": "native-headers/PropertyGridItems.h",
-      "evidence": "work/2008-06/shared-layouts/property-editor-checkpoint.json"
+      "evidence": "work/2008-06/shared-layouts/editor-values-working-probe.json"
     }
   ],
   "gates": {

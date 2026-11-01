@@ -12,3 +12,8 @@ Instance::~Instance()
     InterlockedDecrement(&instanceCount);
 }
 }
+
+boost::shared_ptr<RBX::Instance> RBX::Instance::createChild(const Name& className)
+{
+    return AbstractFactoryProduct::create(className);
+}

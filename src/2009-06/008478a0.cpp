@@ -1,10 +1,13 @@
-// from server: 35% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: g3d-6.09 GLG3Dcpp/GFont.cpp
+// roc-flags: /O2 /GS- /EHsc /MD /fp:fast
+// roc-lib: rbxgs-g3d roc_espclaude_940785d17757aeb1.cpp
 
 // Candidate translation unit (score above; library headers required).
+#define _DLL
+#include <malloc.h>
+#include <algorithm>
 /**
  @file GFont.cpp
  
@@ -14,7 +17,9 @@
  @edited  2006-02-10
  */
 
+#define computePackedArray computePackedArray(const std::string&, double, double, double, double, Spacing, Vector2*, int) const; Vector2 computePackedArray_old
 #include "GLG3D/GFont.h"
+#undef computePackedArray
 #include "GLG3D/RenderDevice.h"
 #include "GLG3D/TextureFormat.h"
 #include "G3D/Vector2.h"
@@ -168,7 +173,8 @@ Vector2 GFont::computePackedArray(
     double              w,
     double              h,
     Spacing             spacing,
-    Vector2*            array) const {
+    Vector2*            array,
+    int                 maxChars) const {
 
     const double propW = w / charWidth;
     const int n = s.length();
@@ -239,6 +245,8 @@ Vector2 GFont::computePackedArray(
     return Vector2(x - x0, h);
 }
 
+
+static const unsigned int maxChars2009 = 512;
 
 Vector2 GFont::draw2D(
     RenderDevice*               renderDevice,
@@ -315,7 +323,7 @@ Vector2 GFont::draw2D(
         }
 
 
-        int numChars = 0;
+        unsigned int numChars = 0;
         for (unsigned int i = 0; i < s.length(); ++i) {
             numChars += ((s[i] % 128) != ' ') ? 1 : 0;
         }
@@ -330,11 +338,13 @@ Vector2 GFont::draw2D(
         // MSVC 6 cannot use static allocation with a variable size argument
         // so we revert to the more compiler specific alloca call. Gcc does not
         // implement array[variable] well, so we use this everywhere.
-        Vector2* array = (Vector2*)System::malloc(numChars * 4 * 2 * sizeof(Vector2));
+        unsigned int numVisible = numChars;
+        const int n = std::min(numVisible, maxChars2009);
+        Vector2* array = (Vector2*)alloca(n * 4 * 2 * sizeof(Vector2));
 
-        const Vector2 bounds = computePackedArray(s, x, y, w, h, spacing, array);
+        const Vector2 bounds = computePackedArray(s, x, y, w, h, spacing, array, n);
 
-        int N = numChars * 4;
+        int N = n * 4;
 
         renderDevice->beforePrimitive();
 
@@ -373,7 +383,6 @@ Vector2 GFont::draw2D(
         renderDevice->afterPrimitive();
     renderDevice->popState();
 
-    System::free(array);
     debugAssertGLOk();
 
     return bounds;

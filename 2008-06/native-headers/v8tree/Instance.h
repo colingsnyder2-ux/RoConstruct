@@ -18,6 +18,7 @@ namespace RBX {
 class Instance;
 class ServiceProvider;
 class IReferenceBinder;
+class XmlState;
 class Name;
 struct ChildAdded;
 struct ChildRemoved;
@@ -65,6 +66,15 @@ public:
     }
     const Instance* getChild(size_t i) const { return (*children)[i].get(); }
     Instance* getChild(size_t i) { return (*children)[i].get(); }
+    template<class T> const T* getTypedParent() const { return rbx_static_cast<const T*>(parent); }
+    template<class T> T* getTypedParent() { return rbx_static_cast<T*>(parent); }
+    template<class T> const T* getTypedRoot() const {
+        RBXASSERT(dynamic_cast<const T*>(this));
+        const T* typedParent = dynamic_cast<const T*>(parent);
+        return typedParent ? typedParent->getTypedRoot<T>() : static_cast<const T*>(this);
+    }
+    template<class T> const T* queryTypedParent() const { return dynamic_cast<T*>(parent); }
+    template<class T> T* queryTypedParent() { return dynamic_cast<T*>(parent); }
     void setParent(Instance*);
     void writeChildren(::XmlElement*);
     virtual XmlElement* write();

@@ -8417,11 +8417,13 @@
         ]
       ]
     },
-    "phase": "baseline: building",
-    "receipt": {},
-    "state": "verifying",
+    "phase": "complete",
+    "receipt": {
+      "accepted": false
+    },
+    "state": "rejected",
     "unit": "RBX::RunService",
-    "updated": 1793571012.9534283,
+    "updated": 1793571935.7499456,
     "user": "colin"
   }
 ]
