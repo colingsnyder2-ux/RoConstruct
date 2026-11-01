@@ -80,7 +80,20 @@ try:
      if pos+12<=len(data):
       owner=struct.unpack_from('<I',data,pos+8)[0]
       if owner and read(owner+0x220,4)==struct.pack('<I',start+pos):
-       active_states.append(dict(address=hex(start+pos),owner=hex(owner),vtable=hex(vtable),state=name))
+       state=dict(address=hex(start+pos),owner=hex(owner),vtable=hex(vtable),state=name)
+       if name in ('RunningNoPhysics','StrafingNoPhysics'):
+        job=start+pos+0xa0
+        raw=read(job,36)
+        assert len(raw)==36
+        words=struct.unpack('<9I',raw)
+        assert words[0]==(0x84cdf8 if name=='RunningNoPhysics' else 0x84cd98)
+        node=words[8]
+        links=read(node,12)
+        assert len(links)==12 and struct.unpack('<3I',links)[2]==job,(hex(job),words,links.hex())
+        forward,backward,_=struct.unpack('<3I',links)
+        assert read(forward+4,4)==struct.pack('<I',node) and read(backward,4)==struct.pack('<I',node)
+        state['job_registration']=dict(address=hex(job),vtable=hex(words[0]),iterator_owner=hex(words[7]),iterator_node=hex(node),node_words=[hex(v) for v in struct.unpack('<3I',links)])
+       active_states.append(state)
      pos=data.find(needle,pos+1)
   addr=start+size
  assert len(active_states)==1,active_states
