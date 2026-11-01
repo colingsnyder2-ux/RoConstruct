@@ -584,7 +584,6 @@ void ScriptContext::onChangedScriptEnabled(const Reflection::PropertyDescriptor&
 
 void ScriptContext::addScript(Script* script)
 {
-    if (!script->getParent()) return;
     if (scripts.insert(script).second == true)
     {
         if (!script->isDisabled())
@@ -696,7 +695,7 @@ static std::string getFullName(Instance* instance)
     }
     else 
     {
-        return instance->getName();
+        return NULL; 
     }
 }
 
@@ -704,7 +703,6 @@ static std::string getFullName(Instance* instance)
 // use of registers swapped in codegen
 void ScriptContext::startScript(boost::shared_ptr<Script> script)
 {
-    if (!script->getParent()) return;
     if (scriptsDisabled)
     {
         pendingScripts.push_back(script);

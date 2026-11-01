@@ -197,6 +197,14 @@ namespace RBX
 			Notifier<Players, ChatMessage>::raise(event);
 		}
 
+		bool Players::superSafeOn() const
+		{
+			if (localPlayer)
+				return Player::prop_SuperSafeChat.getValue(localPlayer.get());
+
+			return false;
+		}
+
 		bool Players::backendProcessing(const Instance* context, bool testInDatamodel)
 		{
 			const ServiceProvider* sp = ServiceProvider::findServiceProvider(context);

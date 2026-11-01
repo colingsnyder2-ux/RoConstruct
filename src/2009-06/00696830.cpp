@@ -1,7 +1,18 @@
-// from server: 67% by atomic.potato
-extern "C" void __stdcall sub_6966F0(float a, float b, int c);
-
-void __stdcall sub_696830(float a, float b)
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+namespace G3D { class Vector2 { public: float x, y;
+  Vector2(float _x, float _y) : x(_x), y(_y) {}
+  Vector2(const Vector2& o) : x(o.x), y(o.y) {} }; }
+namespace RBX {
+class VVirtualUser {
+public:
+    void sendMouse(int button, G3D::Vector2 pos);
+    void onMouseDown(float x, float y);
+};
+void VVirtualUser::onMouseDown(float x, float y)
 {
-    sub_6966F0(a, b, 1);
+    sendMouse(1, G3D::Vector2(x, y));
+}
 }

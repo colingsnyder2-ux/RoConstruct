@@ -1,22 +1,15 @@
-// from server: 29% by atomic.potato
-struct S
-{
-    char state;
-    float x;
-    float y;
-    float z;
-    int a;
-    int b;
-
-    void f();
+// from server: 38% by Intel
+struct Flag {
+    Flag();
 };
 
-void S::f()
-{
-    a = 0;
-    b = 0;
-    state = 1;
-    x = 0.0f;
-    y = 0.0f;
-    z = 0.0f;
+Flag::Flag() {
+    char* thisPtr = reinterpret_cast<char*>(this);
+    thisPtr[0] = 1;
+    float zero = 0.0f;
+    *reinterpret_cast<float*>(thisPtr + 4) = zero;
+    *reinterpret_cast<float*>(thisPtr + 8) = zero;
+    *reinterpret_cast<float*>(thisPtr + 12) = zero;
+    *reinterpret_cast<int*>(thisPtr + 16) = 0;
+    *reinterpret_cast<int*>(thisPtr + 20) = 0;
 }

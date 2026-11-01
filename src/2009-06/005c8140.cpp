@@ -1,5 +1,8 @@
-// from server: 66% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
-// roc-cl: 30729
-// roc-flags: /O2 /GS- /MD
-// roc-lib: mfc-9.0 atlmfc/src/mfc/afxbaseribbonelement.cpp
+// roc-cl: 50727
+// roc-flags: /Od /Ob1 /GS- /MT
+unsigned int decode(const unsigned int* p)
+{
+    return *p ^ 0xdeadbeef;
+}

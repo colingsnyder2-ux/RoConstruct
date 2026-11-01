@@ -1,91 +1,25 @@
-// from server: 28% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-view MaterialFactory.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "MaterialFactory.h"
-#include "util/ContentProvider.h"
-
-static const float specular = 0.9f;
-static const float shiny = 50.0f;
-
-namespace RBX
+extern "C" {
+    bool __cdecl sub_4C3F30(int, int);
+    bool __cdecl sub_4C3F40(int, int);
+    int __cdecl sub_4CAF90(int);
+    bool __cdecl sub_4CADD0(int);
+}
+int __cdecl f(int a)
 {
-	namespace View
-	{
-		MaterialFactory::MaterialFactory(G3D::TextureManager* textureManager)
-		{
-			surfacesTexture = new Render::TextureProxy(*textureManager, ContentProvider::singleton().getAssetFile("textures\\surfaces.png"), true);
-			fileMeshTexture = new Render::TextureProxy(*textureManager, ContentProvider::singleton().getAssetFile("textures\\JohnTex.png"), false);
-			megaTexture = new MegaTextureProxy(*textureManager, ContentProvider::singleton().getAssetFile("textures\\SurfacesStrip.png"));
-		}
-
-		G3D::ReferenceCountedPointer<Render::Material> MaterialFactory::getMaterial(Attributes attributes)
-		{
-			G3D::ReferenceCountedPointer<Render::Material> material;
-
-			std::map<Attributes, G3D::WeakReferenceCountedPointer<Render::Material>>::iterator iter = database.find(attributes);
-			if (iter != database.end())
-			{
-				material = iter->second.createStrongPtr();
-			}
-
-			if (material.isNull())
-			{
-				G3D::Color3 color3 = attributes.color.color3();
-				G3D::ReferenceCountedPointer<Render::TextureProxy> surfacesTexture = getSurfacesTexture(color3);
-
-				material = new Render::Material;
-				if (attributes.transparency == 1.0f)
-				{
-					material->appendEmptyLevel();
-				}
-				else
-				{
-					material->appendLevel(surfacesTexture, G3D::Color3::WHITE, specular, shiny, attributes.reflectance, attributes.transparency);
-				}
-
-				database[attributes] = material;
-			}
-
-			return material;
-		}
-
-		G3D::ReferenceCountedPointer<Render::Material> MaterialFactory::getMegaMaterial(Attributes attributes)
-		{
-			Attributes filteredAttributes = {BrickColor::defaultColor(), attributes.transparency, attributes.reflectance};
-
-			G3D::ReferenceCountedPointer<Render::Material> material;
-
-			std::map<Attributes, G3D::WeakReferenceCountedPointer<Render::Material>>::iterator iter = megaDatabase.find(filteredAttributes);
-			if (iter != megaDatabase.end())
-			{
-				material = iter->second.createStrongPtr();
-			}
-
-			if (material.isNull())
-			{
-				material = new Render::Material;
-				if (attributes.transparency == 1.0f)
-				{
-					material->appendEmptyLevel();
-				}
-				else
-				{
-					material->appendLevel(megaTexture, G3D::Color3::white(), specular, shiny, attributes.reflectance, attributes.transparency);
-				}
-
-				megaDatabase[filteredAttributes] = material;
-			}
-
-			return material;
-		}
-
-		G3D::ReferenceCountedPointer<Render::TextureProxy> MaterialFactory::getSurfacesTexture(G3D::Color3 tint)
-		{
-			return surfacesTexture->shade(tint, NULL);
-		}
-	}
+    bool v1 = sub_4C3F30(a, 1);
+    bool v2 = sub_4C3F40(a, 1);
+    bool v3 = (sub_4CAF90(a) != 0);
+    bool v4 = sub_4CADD0(a);
+    if (v2)
+        return v4 ? 1 : 0;
+    if (v1) {
+        if (v3)
+            return v4 ? 3 : 2;
+        return 4;
+    }
+    return v3 ? 5 : 6;
 }

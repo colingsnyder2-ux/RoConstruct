@@ -1,16 +1,12 @@
-// from server: 67% by atomic.potato
-struct CleanStage {
-    int field0;
-    void* field4;
-    bool compare(void* other);
-};
-
-bool CleanStage::compare(void* other) {
-    if (field4 == 0)
-        return false;
-    if (other == 0)
-        return false;
-    int a = ((int (__thiscall*)(void*))((*(void***)field4)[1]))(field4);
-    int b = ((int (__thiscall*)(void*))((*(void***)other)[1]))(other);
-    return a >= b;
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+struct V { virtual void v0(); virtual int get(); };
+struct S { int a; V* p; int f(V* o); };
+int S::f(V* o)
+{
+    if (p && o && p->get() >= o->get())
+        return 1;
+    return 0;
 }

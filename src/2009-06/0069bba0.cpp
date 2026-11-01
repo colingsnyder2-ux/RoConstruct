@@ -1,4 +1,75 @@
+// from server: 100% by EspClaude
 // from server: 77% by EspClaude
+// roc 2009-06 0069bba0  unit: RBX::Flag  size: 147 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 0069bba0
+//
+// 0069bba0  51                   push ecx
+// 0069bba1  53                   push ebx
+// 0069bba2  55                   push ebp
+// 0069bba3  56                   push esi
+// 0069bba4  57                   push edi
+// 0069bba5  8bf9                 mov edi, ecx
+// 0069bba7  8b774c               mov esi, dword ptr [edi + 0x4c]
+// 0069bbaa  85f6                 test esi, esi
+// 0069bbac  747d                 je 0x69bc2b
+// 0069bbae  8b4610               mov eax, dword ptr [esi + 0x10]
+// 0069bbb1  8b1dace98900         mov ebx, dword ptr [0x89e9ac]
+// 0069bbb7  89442410             mov dword ptr [esp + 0x10], eax
+// 0069bbbb  39460c               cmp dword ptr [esi + 0xc], eax
+// 0069bbbe  7602                 jbe 0x69bbc2
+// 0069bbc0  ffd3                 call ebx
+// 0069bbc2  8b2e                 mov ebp, dword ptr [esi]
+// 0069bbc4  8b774c               mov esi, dword ptr [edi + 0x4c]
+// 0069bbc7  8b7e0c               mov edi, dword ptr [esi + 0xc]
+// 0069bbca  3b7e10               cmp edi, dword ptr [esi + 0x10]
+// 0069bbcd  7602                 jbe 0x69bbd1
+// 0069bbcf  ffd3                 call ebx
+// 0069bbd1  8b36                 mov esi, dword ptr [esi]
+// 0069bbd3  85f6                 test esi, esi
+// 0069bbd5  7404                 je 0x69bbdb
+// 0069bbd7  3bf5                 cmp esi, ebp
+// 0069bbd9  7402                 je 0x69bbdd
+// 0069bbdb  ffd3                 call ebx
+// 0069bbdd  3b7c2410             cmp edi, dword ptr [esp + 0x10]
+// 0069bbe1  7448                 je 0x69bc2b
+// 0069bbe3  85f6                 test esi, esi
+// 0069bbe5  753c                 jne 0x69bc23
+// 0069bbe7  ffd3                 call ebx
+// 0069bbe9  33c0                 xor eax, eax
+// 0069bbeb  3b7810               cmp edi, dword ptr [eax + 0x10]
+// 0069bbee  7202                 jb 0x69bbf2
+// 0069bbf0  ffd3                 call ebx
+// 0069bbf2  8b07                 mov eax, dword ptr [edi]
+// 0069bbf4  6a00                 push 0
+// 0069bbf6  68b0c5a000           push 0xa0c5b0
+// 0069bbfb  6840be9d00           push 0x9dbe40
+// 0069bc00  6a00                 push 0
+// 0069bc02  50                   push eax
+// 0069bc03  e872e00700           call 0x719c7a
+// 0069bc08  83c414               add esp, 0x14
+// 0069bc0b  85c0                 test eax, eax
+// 0069bc0d  751e                 jne 0x69bc2d
+// 0069bc0f  85f6                 test esi, esi
+// 0069bc11  7514                 jne 0x69bc27
+// 0069bc13  ffd3                 call ebx
+// 0069bc15  33c0                 xor eax, eax
+// 0069bc17  3b7810               cmp edi, dword ptr [eax + 0x10]
+// 0069bc1a  7202                 jb 0x69bc1e
+// 0069bc1c  ffd3                 call ebx
+// 0069bc1e  83c708               add edi, 8
+// 0069bc21  ebb0                 jmp 0x69bbd3
+// 0069bc23  8b06                 mov eax, dword ptr [esi]
+// 0069bc25  ebc4                 jmp 0x69bbeb
+// 0069bc27  8b06                 mov eax, dword ptr [esi]
+// 0069bc29  ebec                 jmp 0x69bc17
+// 0069bc2b  33c0                 xor eax, eax
+// 0069bc2d  5f                   pop edi
+// 0069bc2e  5e                   pop esi
+// 0069bc2f  5d                   pop ebp
+// 0069bc30  5b                   pop ebx
+// 0069bc31  59                   pop ecx
+// 0069bc32  c3                   ret 
+
 // from server: 100% by colin
 // roc 2008-06 0062bf20  unit: RBX::P8FlagStand::?$GetSetImpl  size: 160 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0062bf20
@@ -97,7 +168,7 @@ struct Storage {
 };
 
 struct S {
-    unsigned char padding[0x108];
+    unsigned char padding[0x4c];
     Storage* storage;
     void* f();
 };

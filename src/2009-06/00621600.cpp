@@ -1,8 +1,8 @@
-// from server: 96% by EspClaude
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs-dll roc_espclaude_c13a3e5cf94b0124.cpp
+// roc-lib: rbxgs-dll roc_espclaude_1cb231131a2ddbb7.cpp
 
 // Candidate translation unit (score above; library headers required).
 #pragma float_control(precise, off)
@@ -85,7 +85,8 @@ void RootInstance::insert(Collection* input, Collection* output, int suppressPro
         moveTo(output, &pos);
         Bounds bounds = computeExtents(output);
         G3D::Vector3& v = reinterpret_cast<G3D::Vector3&>(pos);
-        v = bounds.center();
+        G3D::Vector3 lo = bounds.low; G3D::Vector3 s = bounds.high + lo; v.x = s.x * 0.5f; v.y = s.y * 0.5f; v.z = s.z * 0.5f;
         position.getCamera()->lookAt(v);
     }
 }
+

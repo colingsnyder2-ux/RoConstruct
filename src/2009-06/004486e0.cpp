@@ -1,9 +1,8 @@
-// from server: 71% by EspClaude
-// from server: 100% by Espeon
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-dll roc_espeon_commandlineportable3e9e1e18cd76cc7c.cpp
+// roc-lib: rbxgs-dll roc_espclaude_c56876c0ca984937.cpp
 
 // Candidate translation unit (score above; library headers required).
 #pragma include_alias(<afxwin.h>, <roc_espeon_mfcnativeheader280d8d01456bb571.cpp>)
@@ -93,20 +92,24 @@
 #include <afxwin.h>
 #include <vector>
 #include <string>
-#include "util/standardout.h"
+#include <boost/shared_ptr.hpp>
+namespace RBX { enum MessageType { MESSAGE_OUTPUT, MESSAGE_INFO, MESSAGE_WARNING, MESSAGE_ERROR };
+class StandardOut { public: static boost::shared_ptr<StandardOut> singleton(); void print(MessageType, const std::string&); }; }
 #include <stdlib.h>
 class CommandLineInfo : public CCommandLineInfo {
- bool b28,b29,b2a,b2b,b2c,b2d,b2e,b2f;
+ bool b28,b29,b2a,b2b,b2c,b2d,b2e,b2f,b30,b31;
  std::vector<std::string> arguments;
+ std::string extra;
 public:
  CommandLineInfo();
  virtual ~CommandLineInfo();
  virtual void ParseParam(const TCHAR*,BOOL,BOOL);
 };
-CommandLineInfo::CommandLineInfo():b28(false),b29(false),b2a(false),b2b(false),b2c(false),b2d(false),b2e(false),b2f(false){
+CommandLineInfo::CommandLineInfo():b28(false),b29(false),b2a(false),b2b(false),b2c(false),b2d(false),b2e(false),b2f(false),b30(false),b31(false){
  if(__argc>0){
  std::string command;
  for(int i=0;i<__argc;++i){if(i)command+=" ";command+=__argv[i];}
- RBX::StandardOut::singleton()->print(RBX::MESSAGE_INFO,command.c_str());
+ RBX::StandardOut::singleton()->print(RBX::MESSAGE_INFO,command);
  }
 }
+

@@ -1,62 +1,32 @@
-// from server: 70% by EspClaude
-// from server: 100% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client App/reflection/reflection_object.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "reflection/reflection.h"
-
-namespace RBX {
-namespace Reflection {
-
-// GLOBAL: WEBSERVICE 0x102f59a1
-bool ClassDescriptor::lockedDown;
-
-// FUNCTION: WEBSERVICE 0x10047430
-bool ClassDescriptor::operator==(const ClassDescriptor& other) const
+#include <vector>
+namespace RBX { namespace Reflection {
+class PropertyDescriptor;
+template <class T>
+class MemberDescriptorContainer
 {
-	return this == &other;
-}
-
-// FUNCTION: WEBSERVICE 0x10047800
-ClassDescriptor::ClassDescriptor()
-	: Descriptor("<<<ROOT>>>"), MemberDescriptorContainer<PropertyDescriptor>(NULL),
-	  MemberDescriptorContainer<SignalDescriptor>(NULL), MemberDescriptorContainer<FunctionDescriptor>(NULL), base(NULL)
+public:
+	typedef std::vector<T*> Collection;
+	typedef std::vector<MemberDescriptorContainer*> DerivedContainers;
+	MemberDescriptorContainer(MemberDescriptorContainer* base);
+	void mergeMembers(const MemberDescriptorContainer* source);
+	Collection descriptors;
+	DerivedContainers derivedContainers;
+	const MemberDescriptorContainer* base;
+};
+}}
+template<> void std::vector<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::PropertyDescriptor>*>::push_back(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::PropertyDescriptor>* const&);
+namespace RBX { namespace Reflection {
+template <class T>
+MemberDescriptorContainer<T>::MemberDescriptorContainer(MemberDescriptorContainer* base) : base(base)
 {
+	if (base != NULL) {
+		mergeMembers(base);
+		base->derivedContainers.push_back(this);
+	}
 }
-
-// FUNCTION: WEBSERVICE 0x100478c0
-ClassDescriptor::ClassDescriptor(ClassDescriptor& base, const char* name)
-	: Descriptor(name), MemberDescriptorContainer<PropertyDescriptor>(&base),
-	  MemberDescriptorContainer<SignalDescriptor>(&base), MemberDescriptorContainer<FunctionDescriptor>(&base),
-	  base(&base)
-{
-	boost::recursive_mutex::scoped_lock lock(sync());
-
-	base.derivedClasses.push_back(this);
-}
-
-// FUNCTION: WEBSERVICE 0x100479c0
-bool MemberDescriptor::isMemberOf(const ClassDescriptor& classDescriptor) const
-{
-	const ClassDescriptor* c = &classDescriptor;
-
-	do {
-		if (c == &owner) {
-			return true;
-		}
-	} while ((c = c->getBase()) != &ClassDescriptor::rootDescriptor());
-
-	return false;
-}
-
-// FUNCTION: WEBSERVICE 0x10047a60
-bool MemberDescriptor::isMemberOf(const DescribedBase* instance) const
-{
-	return isMemberOf(instance->getDescriptor());
-}
-
-} // namespace Reflection
-} // namespace RBX
+template class MemberDescriptorContainer<PropertyDescriptor>;
+}}

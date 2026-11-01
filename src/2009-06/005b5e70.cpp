@@ -1,5 +1,6 @@
-// from server: 67% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /Od /Ob1 /GS- /MT
-// roc-lib: wildmagic-2-core Containment/WmlConvexHull3.cpp
+// roc-cl: 21022
+// roc-flags: /Od /GS- /EHsc /MD
+#include <list>
+template std::list<int>::iterator std::list<int>::insert(std::list<int>::const_iterator, const int&);

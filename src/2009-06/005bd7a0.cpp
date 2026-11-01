@@ -1,8 +1,8 @@
-// from server: 70% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /Od /Ob0 /GS /EHsc /MD
+// roc-flags: /Od /Ob0 /GS- /EHsc /MD
 // Analog for 00552300 (AggregateChunk render): rebuilds the merged geometry
 // when the lighting changes (shadow extrusion along -direction * lod), narrows
 // indices to 16 bits when possible, uploads a VAR and draws it (G3D RenderDevice).
@@ -104,7 +104,7 @@ public:
     virtual void v6();
     virtual const CFrame& frame();
     void render(RenderDevice* rd, const Lighting& lighting, bool caps, float lod);
-    int header[0x20 / 4];
+    int header[0x18 / 4];
     Ref<Owner> owner;
     Ref<Builder> builder;
     int middle[0x38 / 4];

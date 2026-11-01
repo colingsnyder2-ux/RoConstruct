@@ -1,9 +1,8 @@
-// from server: 70% by EspClaude
-// from server: 100% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs-dll roc_adorn_ray_native_orientation4aeecbaf163133f1.cpp
+// roc-lib: rbxgs-dll roc_espclaude_f4df7c1d0387f7d9.cpp
 
 // Candidate translation unit (score above; library headers required).
 // Native324B allocation0045b425, ctor674210, dtor673a90.
@@ -77,12 +76,13 @@ public:
 namespace Ogre {
 // Opaque pointee only.684b10 initializes character metrics at0; no font vptr.
 class RbxFont { public: ~RbxFont(); };
+void setSubMeshSphere(SubMesh*,const Sphere&);
 SharedPtr<RbxFont> loadRbxFont(const std::string&); //684eb0 cdecl hidden result.
 }
 namespace RBX {
 // Opaque context view: only observed SceneManager slot4 is accessed.
 class AdornContextView { public:
-    Ogre::SceneManager* sceneManager() {return *(Ogre::SceneManager**)((char*)this+4);}
+    Ogre::SceneManager* sceneManager() {return *(Ogre::SceneManager**)((char*)this+0x10);}
     Ogre::Camera* camera() {return *(Ogre::Camera**)((char*)this+8);}
     void* renderContext() {return (char*)this+0x18;}
 };
@@ -153,7 +153,7 @@ typedef char NativeSceneNodeSize[sizeof(Ogre::RbxSceneNode)==0x248?1:-1];
 void AdornRbxGfx::ray(const G3D::Ray& value,const G3D::Color4& color,float) {
     updateColor(color,false);
     Ogre::AdornQuadric unusedQuadric;
-    std::string key("ray0001");
+    std::string key=sceneManager()->getName()+"ray0001";
     Ogre::MeshPtr mesh=findMesh(key);
     if(mesh.isNull()) {
         Ogre::AdornQuadric quadric;
@@ -166,13 +166,13 @@ void AdornRbxGfx::ray(const G3D::Ray& value,const G3D::Color4& color,float) {
         quadric.disk(sceneManager(),uniqueName(),object,0,0.05f,12,1);
         for(int i=0;i<4;++i)
             object->setMaterialName(i,textureMaterial->getName());
-        mesh=object->convertToMesh(sceneManager()->getName()+"amsh"+Ogre::StringConverter::toString(meshes.size()),Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+        mesh=object->convertToMesh(key,Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
         meshes[key]=mesh;
         Ogre::Mesh* rawMesh=mesh.getPointer();
         float radius=rawMesh->getBoundingSphereRadius();
         Ogre::Sphere parameter(rawMesh->getBounds().getCenter(),radius);
         for(int i=0;i<mesh->getNumSubMeshes();++i) {
-            renderNode->setSphere(reinterpret_cast<unsigned long>(mesh->getSubMesh((unsigned short)i)),parameter);
+            Ogre::setSubMeshSphere(mesh->getSubMesh((unsigned short)i),parameter);
         }
     }
     float length=std::sqrt(value.direction.x*value.direction.x+value.direction.y*value.direction.y+value.direction.z*value.direction.z)*0.7692307829856873f;
@@ -182,3 +182,4 @@ void AdornRbxGfx::ray(const G3D::Ray& value,const G3D::Color4& color,float) {
     drawMesh(mesh,world,textureMaterial);
 }
 }
+

@@ -83,11 +83,6 @@ namespace RBX
 
 	// replication
 
-	// assembly
-	// the root clump's root primitive, as Assembly::getMainPrimitive
-	Primitive* Assembly::getAssemblyPrimitive() const { return rootClump->getRootPrimitive(); }
-	const Primitive* Assembly::getAssemblyPrimitiveConst() const { return rootClump->getRootPrimitive(); }
-
 	// replication player state
 
 	// gui

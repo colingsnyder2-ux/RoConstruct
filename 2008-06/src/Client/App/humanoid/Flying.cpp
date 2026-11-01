@@ -6,7 +6,7 @@ namespace RBX
 {
 	Flying::Flying(Humanoid* humanoid)
 		: Base(humanoid, 300.0f, 50.0f),
-		  desiredYRotationalVelocity(0.0f), desiredVelocity(humanoid->updateWalkDirection() * 16.0f)
+		  desiredYRotationalVelocity(0.0f)
 	{
 	}
 
@@ -24,7 +24,6 @@ namespace RBX
 			else
 			{
 				desiredYRotationalVelocity = controller.getValue(Controller::RIGHT_LEFT_INPUT) * 6.0f;
-				desiredVelocity = humanoid->updateWalkDirection() * 16.0f;
 				return this;
 			}
 		}

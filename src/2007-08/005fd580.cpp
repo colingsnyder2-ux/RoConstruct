@@ -1,113 +1,173 @@
-// from server: 42% by colin
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 100% by Espeon
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// roc-lib: rbxgs roc_espeon_aug2007_laser_click_native_e0205be88069ce75.cpp
 
-struct RefCounted {
-    void* vptr;
-    volatile long refCount;
-    volatile long weakCount;
+// Candidate translation unit (score above; library headers required).
+#pragma include_alias("v8datamodel/MouseCommand.h", "../roc_espeon_aug2007_mouse_vtable_header_b06315d9923c865b.cpp")
+#pragma include_alias(<v8datamodel/MouseCommand.h>, <../roc_espeon_aug2007_mouse_vtable_header_b06315d9923c865b.cpp>)
+#pragma include_alias("util/UserInputBase.h", "../roc_espeon_aug2007_mouse_vtable_header_ee9ac83360f53d88.cpp")
+#pragma include_alias(<util/UserInputBase.h>, <../roc_espeon_aug2007_mouse_vtable_header_ee9ac83360f53d88.cpp>)
+#undef _RELEASEASSERT
+#pragma include_alias("v8world/Edge.h", "../roc_espeon_aug2007_edge_header_cb216aa0cb409651.cpp")
+#pragma include_alias(<v8world/Edge.h>, <../roc_espeon_aug2007_edge_header_cb216aa0cb409651.cpp>)
+#pragma include_alias("v8world/Contact.h", "../roc_espeon_aug2007_contact_header_5ec74239b50ff6ca.cpp")
+#pragma include_alias(<v8world/Contact.h>, <../roc_espeon_aug2007_contact_header_5ec74239b50ff6ca.cpp>)
+#define _MT 1
+#define _DLL 1
+#pragma include_alias("v8kernel/KernelIndex.h", "../roc_espeon_aug2007_kernelindex_header_d7778b4d74bcf4c0.cpp")
+#pragma include_alias("v8kernel/Body.h", "../roc_espeon_aug2007_body_header_b251c002665e01af.cpp")
+#pragma include_alias("util/Extents.h", "../roc_espeon_aug2007_extents_inline_58e475d56d206314.cpp")
+#pragma include_alias("reflection/object.h", "../roc_espeon_aug2007_describedbase_e64c736f24da029d.cpp")
+#pragma include_alias("util/Debug.h", "../roc_espeon_aug2007_ctor_debugable_025e0cb3bb8217d3.cpp")
+#pragma include_alias(<util/Debug.h>, <../roc_espeon_aug2007_ctor_debugable_025e0cb3bb8217d3.cpp>)
+#pragma include_alias("util/Events.h", "../roc_espeon_aug2007_datamodel_header_e4d5a36bea2e4f16.cpp")
+#pragma include_alias("reflection/reflection.h", "../roc_espeon_aug2007_described_arg_header_14221fd67bb3ca43.cpp")
+#pragma include_alias("v8tree/Instance.h", "../roc_espeon_aug2007_instance_header_47f25dc9e4368119.cpp")
+#pragma include_alias("v8datamodel/PartInstance.h", "../roc_espeon_aug2007_part_flags_header_a6acc69782cd7c29.cpp")
+#pragma include_alias("v8world/Primitive.h", "../roc_espeon_aug2007_primitive_trivial_header_ac300ff64c6fc5e6.cpp")
+#pragma include_alias("v8datamodel/DataModel.h", "../roc_espeon_aug2007_datamodel_mutex_header_321a3c67de644a82.cpp")
+#pragma include_alias("v8tree/Verb.h", "../roc_espeon_aug2007_datamodel_header_c06d28d1a6b724f6.cpp")
+#pragma include_alias("util/Evaluator.h", "../roc_espeon_aug2007_datamodel_header_4ba4cf67c400aa66.cpp")
+#pragma include_alias(<boost/signals/signal_template.hpp>, <../roc_espeon_boost133_signals_header_a54048d539243d2e.cpp>)
+#pragma include_alias("boost/signals/signal_template.hpp", "../roc_espeon_boost133_signals_header_a54048d539243d2e.cpp")
+#include "roc_espeon_boost133_header_d432d72f8740aec3.cpp"
+#include "roc_espeon_boost133_header_d9eb4711b7fc841c.cpp"
+#include "roc_espeon_boost133_signals_header_be197e98651271fa.cpp"
+
+#pragma include_alias("v8world/Joint.h", "../roc_espeon_aug2007_joint_header_bb71fe27a95b99c9.cpp")
+#pragma include_alias(<v8world/Joint.h>, <../roc_espeon_aug2007_joint_header_bb71fe27a95b99c9.cpp>)
+#pragma include_alias("v8world/IPipelined.h", "../roc_espeon_aug2007_ipipelined_header_459cfa06a40ba136.cpp")
+#pragma include_alias(<v8world/IPipelined.h>, <../roc_espeon_aug2007_ipipelined_header_459cfa06a40ba136.cpp>)
+#pragma include_alias("v8world/Joint.h", "../roc_espeon_aug2007_joint_accessor_header_d77e5f1c0b32672c.cpp")
+#pragma include_alias(<v8world/Joint.h>, <../roc_espeon_aug2007_joint_accessor_header_d77e5f1c0b32672c.cpp>)
+#pragma include_alias("util/IRenderable.h", "../roc_espeon_aug2007_bucket_header_1deff476fbc5a7ac.cpp")
+#pragma include_alias(<util/IRenderable.h>, <../roc_espeon_aug2007_bucket_header_1deff476fbc5a7ac.cpp>)
+#pragma include_alias("v8datamodel/JointInstance.h", "../roc_espeon_aug2007_jointinstance_header_2070a5362277cad1.cpp")
+#pragma include_alias(<v8datamodel/JointInstance.h>, <../roc_espeon_aug2007_jointinstance_header_2070a5362277cad1.cpp>)
+#pragma include_alias("v8world/IMoving.h", "../roc_espeon_aug2007_imoving_header_a7323a6be498a3c4.cpp")
+#pragma include_alias(<v8world/IMoving.h>, <../roc_espeon_aug2007_imoving_header_a7323a6be498a3c4.cpp>)
+#pragma include_alias("v8kernel/IStage.h", "../roc_espeon_aug2007_istage_header_b0262a91d28a95d1.cpp")
+#pragma include_alias(<v8kernel/IStage.h>, <../roc_espeon_aug2007_istage_header_b0262a91d28a95d1.cpp>)
+#pragma include_alias("reflection/function.h", "../roc_espeon_aug2007_abstract_header_991b5e9635f5d75d.cpp")
+#pragma include_alias(<reflection/function.h>, <../roc_espeon_aug2007_abstract_header_991b5e9635f5d75d.cpp>)
+#pragma include_alias("reflection/member.h", "../roc_espeon_aug2007_abstract_header_56ab3d07f46302ce.cpp")
+#pragma include_alias(<reflection/member.h>, <../roc_espeon_aug2007_abstract_header_56ab3d07f46302ce.cpp>)
+#pragma include_alias("reflection/property.h", "../roc_espeon_aug2007_abstract_header_4b7af236c124d7bd.cpp")
+#pragma include_alias(<reflection/property.h>, <../roc_espeon_aug2007_abstract_header_4b7af236c124d7bd.cpp>)
+#pragma include_alias("reflection/signal.h", "../roc_espeon_aug2007_abstract_header_35400af2df14a7cc.cpp")
+#pragma include_alias(<reflection/signal.h>, <../roc_espeon_aug2007_abstract_header_35400af2df14a7cc.cpp>)
+#pragma include_alias("script/Script.h", "../roc_espeon_aug2007_abstract_header_206648adc176eff8.cpp")
+#pragma include_alias(<script/Script.h>, <../roc_espeon_aug2007_abstract_header_206648adc176eff8.cpp>)
+#pragma include_alias("util/ICameraSubject.h", "../roc_espeon_aug2007_abstract_header_15846f007cad7f25.cpp")
+#pragma include_alias(<util/ICameraSubject.h>, <../roc_espeon_aug2007_abstract_header_15846f007cad7f25.cpp>)
+#pragma include_alias("util/IControllable.h", "../roc_espeon_aug2007_abstract_header_134fb1e5a9dd6b81.cpp")
+#pragma include_alias(<util/IControllable.h>, <../roc_espeon_aug2007_abstract_header_134fb1e5a9dd6b81.cpp>)
+#pragma include_alias("util/ILocation.h", "../roc_espeon_aug2007_abstract_header_b220b165aaf2f641.cpp")
+#pragma include_alias(<util/ILocation.h>, <../roc_espeon_aug2007_abstract_header_b220b165aaf2f641.cpp>)
+#pragma include_alias("v8datamodel/ICameraOwner.h", "../roc_espeon_aug2007_abstract_header_328a7f313eb894b0.cpp")
+#pragma include_alias(<v8datamodel/ICameraOwner.h>, <../roc_espeon_aug2007_abstract_header_328a7f313eb894b0.cpp>)
+#pragma include_alias("v8datamodel/ICharacterSubject.h", "../roc_espeon_aug2007_abstract_header_72d3fec55ed90c1f.cpp")
+#pragma include_alias(<v8datamodel/ICharacterSubject.h>, <../roc_espeon_aug2007_abstract_header_72d3fec55ed90c1f.cpp>)
+#pragma include_alias("v8datamodel/IPrimaryPart.h", "../roc_espeon_aug2007_abstract_header_d558c6e252d36c0e.cpp")
+#pragma include_alias(<v8datamodel/IPrimaryPart.h>, <../roc_espeon_aug2007_abstract_header_d558c6e252d36c0e.cpp>)
+#pragma include_alias("v8datamodel/PVInstance.h", "../roc_espeon_aug2007_abstract_header_e7c5a66547093118.cpp")
+#pragma include_alias(<v8datamodel/PVInstance.h>, <../roc_espeon_aug2007_abstract_header_e7c5a66547093118.cpp>)
+#pragma include_alias("v8tree/Service.h", "../roc_espeon_aug2007_abstract_header_cf6415ca14eaa52c.cpp")
+#pragma include_alias(<v8tree/Service.h>, <../roc_espeon_aug2007_abstract_header_cf6415ca14eaa52c.cpp>)
+#pragma include_alias("util/UIEvent.h", "../roc_espeon_aug2007_uievent_viewport_header_04331f71cbc5bc08.cpp")
+#pragma include_alias(<util/UIEvent.h>, <../roc_espeon_aug2007_uievent_viewport_header_04331f71cbc5bc08.cpp>)
+#pragma include_alias("v8datamodel/Workspace.h", "../roc_espeon_aug2007_workspace_header_d38fc45c16cb1519.cpp")
+#pragma include_alias(<v8datamodel/Workspace.h>, <../roc_espeon_aug2007_workspace_header_d38fc45c16cb1519.cpp>)
+#pragma include_alias("v8datamodel/ICharacterSubject.h", "../roc_espeon_aug2007_character_state_f342eee04d017582.cpp")
+#pragma include_alias(<v8datamodel/ICharacterSubject.h>, <../roc_espeon_aug2007_character_state_f342eee04d017582.cpp>)
+#pragma include_alias("humanoid/Humanoid.h", "../roc_espeon_aug2007_humanoid_state_f78ef0aa0660622a.cpp")
+#pragma include_alias(<humanoid/Humanoid.h>, <../roc_espeon_aug2007_humanoid_state_f78ef0aa0660622a.cpp>)
+#pragma include_alias("humanoid/Running.h", "../roc_espeon_aug2007_running_balance_hook_875f0bb95aec50f5.cpp")
+#pragma include_alias(<humanoid/Running.h>, <../roc_espeon_aug2007_running_balance_hook_875f0bb95aec50f5.cpp>)
+#pragma include_alias("humanoid/Balancing.h", "../roc_espeon_aug2007_balancing_balance_hook_37ced1d1de755090.cpp")
+#pragma include_alias(<humanoid/Balancing.h>, <../roc_espeon_aug2007_balancing_balance_hook_37ced1d1de755090.cpp>)
+#pragma include_alias("humanoid/FallingDown.h", "../roc_espeon_aug2007_fallingdown_state_7499778b68c8dff0.cpp")
+#pragma include_alias(<humanoid/FallingDown.h>, <../roc_espeon_aug2007_fallingdown_state_7499778b68c8dff0.cpp>)
+#pragma include_alias("humanoid/Flying.h", "../roc_espeon_aug2007_flying_balance_hook_a9eee8e762225c01.cpp")
+#pragma include_alias(<humanoid/Flying.h>, <../roc_espeon_aug2007_flying_balance_hook_a9eee8e762225c01.cpp>)
+#pragma include_alias("humanoid/Freefall.h", "../roc_espeon_aug2007_freefall_state_671ebe3411c8030d.cpp")
+#pragma include_alias(<humanoid/Freefall.h>, <../roc_espeon_aug2007_freefall_state_671ebe3411c8030d.cpp>)
+#pragma include_alias("humanoid/GettingUp.h", "../roc_espeon_aug2007_gettingup_balance_hook_972ad7ec2ed27c84.cpp")
+#pragma include_alias(<humanoid/GettingUp.h>, <../roc_espeon_aug2007_gettingup_balance_hook_972ad7ec2ed27c84.cpp>)
+#pragma include_alias("humanoid/Jumping.h", "../roc_espeon_aug2007_jumping_state_9af9b1e45a772018.cpp")
+#pragma include_alias(<humanoid/Jumping.h>, <../roc_espeon_aug2007_jumping_state_9af9b1e45a772018.cpp>)
+#pragma include_alias("humanoid/Seated.h", "../roc_espeon_aug2007_seated_state_df5e271a3b8e21cd.cpp")
+#pragma include_alias(<humanoid/Seated.h>, <../roc_espeon_aug2007_seated_state_df5e271a3b8e21cd.cpp>)
+#pragma include_alias("RbxGraphics/Adorn.h", "../roc_espeon_aug2007_adorn_header_6887d8bb2eb92360.cpp")
+#pragma include_alias(<RbxGraphics/Adorn.h>, <../roc_espeon_aug2007_adorn_header_6887d8bb2eb92360.cpp>)
+#pragma include_alias("AppDraw/AdornG3D.h", "../roc_espeon_aug2007_adorng3d_header_62d495574bf52995.cpp")
+#pragma include_alias(<AppDraw/AdornG3D.h>, <../roc_espeon_aug2007_adorng3d_header_62d495574bf52995.cpp>)
+#pragma include_alias("v8kernel/Kernel.h", "../roc_espeon_aug2007_kernel_inline_header_359388a626d15479.cpp")
+#pragma include_alias(<v8kernel/Kernel.h>, <../roc_espeon_aug2007_kernel_inline_header_359388a626d15479.cpp>)
+#pragma include_alias("v8kernel/Point.h", "../roc_espeon_aug2007_point_inline_header_aac7baa3a10948cb.cpp")
+#pragma include_alias(<v8kernel/Point.h>, <../roc_espeon_aug2007_point_inline_header_aac7baa3a10948cb.cpp>)
+
+#include "v8datamodel/MouseCommand.h"
+#include "RbxGraphics/Adorn.h"
+namespace RBX {
+extern const char* sLaserTool;
+class LaserTool:public Named<MouseCommand,&sLaserTool>{
+ int renderFrames;
+ G3D::Vector3 start,end;
+ virtual MouseCommand* onMouseDown(const UIEvent&);
+ virtual const std::string getCursorName()const;
+ virtual void render3dAdorn(Adorn*);
+public:
+ LaserTool(Workspace*w):Named<MouseCommand,&sLaserTool>(w),renderFrames(0){}
+ virtual MouseCommand* isSticky()const{return new LaserTool(workspace);}
+};
+typedef char laser_tool_size_3c[sizeof(LaserTool)==0x3c?1:-1];
+void LaserTool::render3dAdorn(Adorn* adorn){if(renderFrames>0){--renderFrames;G3D::Color4 color(G3D::Color3::red(),1.0f);adorn->lineSegment(G3D::LineSegment::fromTwoPoints(start,end),color,5.0f);}}
+}
+#include "v8tree/Verb.h"
+#include "v8datamodel/DataModel.h"
+#include "util/RunStateOwner.h"
+namespace RBX {
+inline RunState RunService::getRunState() const { return runState; }
+class RunStateVerb : public Verb {
+protected:
+    DataModel* dataModel;
+    ServiceClient<RunService> runService;
+public:
+    RunStateVerb(std::string name, DataModel* model);
 };
 
-struct Tool {
-    char pad0[0x18];
-    int field18;
-    char pad1[0x20 - 0x1c];
-    int field20;
-    float field24;
-    float field28;
-    float field2c;
-
-    int doActivate(int);
+template<class Tool,class Base> class TToolVerb:public Base {
+public:virtual bool isChecked()const;virtual void doIt(IDataState*);
+virtual MouseCommand* createTool(){return new Tool(this->dataModel->getWorkspace());}
 };
-
-extern "C" {
-    void* __cdecl sub_5A4AA0(int);
-    void* __cdecl sub_573F80();
-    int __cdecl sub_5E3DC0();
-    void __cdecl sub_58E8C0(void*);
-    void __cdecl sub_541630(int, int);
-    void __cdecl sub_531530();
-    void* __cdecl sub_561B10(int, int);
-    void __cdecl sub_58C810();
+template class TToolVerb<LaserTool,RunStateVerb>;
 }
 
-extern void* g_8c6f88;
-extern void* g_8c6fa4;
-
-int Tool::doActivate(int param)
-{
-    void* obj = sub_5A4AA0(this->field18);
-    if (obj == 0) {
-        return 0;
-    }
-
-    void* result = sub_573F80();
-    float* f = (float*)((char*)result + 0x24);
-    this->field24 = f[0];
-    this->field28 = f[1];
-    this->field2c = f[2];
-
-    int local10 = 0;
-    int local14 = 0;
-    int local18 = 0;
-    int local1c = 0;
-
-    int r = sub_5E3DC0();
-    int edi = r;
-    if (edi == 0) {
-        this->field20 = 4;
-        return 0;
-    }
-
-    void* local8 = 0;
-    sub_58E8C0(&local8);
-
-    void* eax = local8;
-    if (eax != 0) {
-        eax = (char*)eax + 4;
-    } else {
-        eax = 0;
-    }
-
-    void* ecx = g_8c6f88;
-    void** vtable = *(void***)ecx;
-    void* fn = vtable[2];
-    ((void (__stdcall*)(void*, void*, void*))fn)(eax, &local14, &local10);
-
-    float fzero = 0.0f;
-    void* eax2 = local8;
-    if (eax2 != 0) {
-        eax2 = (char*)eax2 + 4;
-    } else {
-        eax2 = 0;
-    }
-
-    void* ecx2 = g_8c6fa4;
-    void** vtable2 = *(void***)ecx2;
-    void* fn2 = vtable2[2];
-    ((void (__stdcall*)(void*, void*, void*))fn2)(eax2, &fzero, &local10);
-
-    sub_541630(this->field18, local10);
-
-    if (*(char*)((char*)edi + 0x1a0) == 0) {
-        sub_531530();
-    }
-
-    void* v = sub_561B10(this->field18, 9);
-    sub_58C810();
-
-    RefCounted* rc = (RefCounted*)local8;
-    if (rc != 0) {
-        if (_InterlockedExchangeAdd(&rc->refCount, -1) == 1) {
-            void** vt = *(void***)rc;
-            ((void (__stdcall*)(void*))vt[1])(rc);
-            if (_InterlockedExchangeAdd(&rc->weakCount, -1) == 1) {
-                void** vt2 = *(void***)rc;
-                ((void (__stdcall*)(void*))vt2[2])(rc);
-            }
-        }
-    }
-
-    this->field20 = 4;
-    return 0;
+#include "humanoid/Humanoid.h"
+#include "v8datamodel/Workspace.h"
+#include "v8datamodel/PartInstance.h"
+#include "v8datamodel/Explosion.h"
+#include "util/Sound.h"
+namespace RBX {
+typedef char native_explosion_size_114[sizeof(Explosion)==0x114?1:-1];
+const std::string LaserTool::getCursorName()const{return "GunCursor";}
+MouseCommand* LaserTool::onMouseDown(const UIEvent&e){
+ if(PartInstance*head=Humanoid::getLocalHeadFromContext(workspace)){
+  start=head->getCoordinateFrame().translation;
+  G3D::Vector3 hitPoint;
+  if(PartInstance*part=getPart(e,NULL,hitPoint)){
+   boost::shared_ptr<Explosion> explosion=Creatable<Instance>::create<Explosion>();
+   Explosion::propPosition.setValue(explosion.get(),hitPoint);
+   Explosion::propBlastPressure.setValue(explosion.get(),0.0f);
+   explosion->setParent(workspace);
+   if(!part->getPartLocked())part->remove();
+   ServiceProvider::create<Soundscape::SoundService>(workspace)->playSound(SNAP_SOUND);
+  }
+  renderFrames=4;
+ }
+ return this;
+}
 }

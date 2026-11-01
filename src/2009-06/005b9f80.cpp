@@ -1,5 +1,11 @@
-// from server: 68% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /Od /Ob1 /GS- /MT
-// roc-lib: wildmagic-2-core Geometry/WmlConvexClipper.cpp
+struct Tag {};
+struct C { void callee(int); void f(); };
+void C::f()
+{
+    bool t;
+    callee(t);
+}

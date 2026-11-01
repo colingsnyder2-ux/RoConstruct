@@ -1,89 +1,35 @@
-// from server: 72% by EspClaude
-// from server: 100% by auto
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client App/reflection/reflection_property.cpp
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Name;
+const Name* __cdecl declareName(const char*);
+extern bool crashOnDeclare;
+void crash();
+extern const char typeTag[];
 
-// Candidate translation unit (score above; library headers required).
-#include "reflection/enumconverter.h"
-#include "reflection/object.h"
-#include "reflection/property.h"
-#include "v8xml/XmlElement.h"
+class Descriptor {
+public:
+    Descriptor(const char* n) : name(declareName(n))
+    {
+        if (crashOnDeclare)
+            crash();
+    }
+    virtual ~Descriptor();
+    const Name* name;
+};
 
-namespace RBX {
-namespace Reflection {
+class Type : public Descriptor {
+public:
+    Type(const char* name, const char* tagName, int);
+    virtual ~Type();
+    const char* tag;
+    const Name* tagName;
+    bool a;
+    bool b;
+};
 
-// FUNCTION: WEBSERVICE 0x10094120
-void PropertyDescriptor::read(DescribedBase* instance, const XmlElement* element, IReferenceBinder& binder) const
+Type::Type(const char* name, const char* tn, int)
+    : Descriptor(name), tag(typeTag), tagName(declareName(tn)), a(false), b(false)
 {
-	readValue(instance, element, binder);
 }
-
-// FUNCTION: WEBSERVICE 0x10094130
-template <>
-const Type& Type::singleton<const PropertyDescriptor*>()
-{
-	static Type type("Property", typeid(const PropertyDescriptor*));
-
-	return type;
-}
-
-// FUNCTION: WEBSERVICE 0x100941a0
-XmlElement* PropertyDescriptor::write(const DescribedBase* instance, bool ignoreWriteProtection) const
-{
-	if (!ignoreWriteProtection) {
-		if (isReadOnly()) {
-			return NULL;
-		}
-
-		if (!canStreamWrite()) {
-			return NULL;
-		}
-	}
-
-	XmlElement* element = new XmlElement(type.tag);
-
-	element->addAttribute<const RBX::Name*>(name_name, &name);
-
-	writeValue(instance, element);
-
-	return element;
-}
-
-// FUNCTION: WEBSERVICE 0x10094250
-std::vector<const EnumDescriptor*>& EnumDescriptor::allEnums()
-{
-	static std::vector<const EnumDescriptor*> s;
-
-	return s;
-}
-
-// FUNCTION: WEBSERVICE 0x100942b0
-EnumDescriptor::~EnumDescriptor()
-{
-	allEnums().erase(std::find(allEnums().begin(), allEnums().end(), this));
-}
-
-// FUNCTION: WEBSERVICE 0x10094390
-EnumDescriptor::EnumDescriptor(const char* typeName, const std::type_info& type)
-	: Type(typeName, type, "token"), enumCount(0), enumCountMSB(0)
-{
-	allEnums().push_back(this);
-}
-
-// FUNCTION: WEBSERVICE 0x10094410
-PropertyDescriptor::PropertyDescriptor(
-	ClassDescriptor& classDescriptor,
-	const Type& type,
-	const char* name,
-	const char* category,
-	Functionality flags
-)
-	: MemberDescriptor(classDescriptor, name, category), type(type), bIsPublic(flags), bCanStreamWrite(flags >> 2)
-{
-	classDescriptor.MemberDescriptorContainer<PropertyDescriptor>::declare(this);
-}
-
-} // namespace Reflection
-} // namespace RBX

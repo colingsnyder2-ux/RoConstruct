@@ -121,19 +121,19 @@ namespace RBX
 		template<typename T>
 		Item* Item::createBoundChildItem(const char* name, const T& value)
 		{
-			boost::shared_ptr<TypedStatsItem<T> > item = Creatable<Instance>::create<TypedStatsItem<T> >(&value);
+			Item* item = Creatable<Instance>::create<TypedStatsItem<T> >(&value).get();
 			item->setName(name);
 			item->setParent(this);
-			return item.get();
+			return item;
 		}
 
 		template<typename T>
 		Item* Item::createChildItem(const char* name, boost::function0<T> func)
 		{
-			boost::shared_ptr<TypedStatsItem<T> > item = Creatable<Instance>::create<TypedStatsItem<T> >(func);
+			Item* item = Creatable<Instance>::create<TypedStatsItem<T> >(func).get();
 			item->setName(name);
 			item->setParent(this);
-			return item.get();
+			return item;
 		}
 	}
 }

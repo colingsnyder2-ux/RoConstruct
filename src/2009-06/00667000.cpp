@@ -1,25 +1,23 @@
-// from server: 69% by atomic.potato
-struct S {
-    char pad0[0x18];
-    int (__stdcall *fn)(void*, int);
-    int offset1c;
-    int offset20;
-    int method(void* arg1, int* arg2);
+// from server: 100% by EspClaude
+// roc 2009-06 00667000  unit: RBX::P8Humanoid::?$GetSetImpl  size: 56 bytes
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+
+struct S
+{
+    char padding[0x18];
+    void (__thiscall *setter)(void *, int);
+    int adjustment;
+    int virtualOffset;
+
+    void f(void *object, const int *value);
 };
 
-int S::method(void* arg1, int* arg2) {
-    char* p = (char*)arg1;
-    if (p != 0) {
-        p -= 0x18;
-    } else {
-        p = 0;
-    }
-    int v = *arg2;
-    int idx = *(int*)((char*)this + 0x20);
-    int base = *(int*)(p + 0x140);
-    int val = *(int*)(base + idx);
-    val += *(int*)((char*)this + 0x1c);
-    int (__stdcall *f)(void*, int) = *(int (__stdcall**)(void*, int))((char*)this + 0x18);
-    char* addr = (char*)p + 0x140 + val;
-    return f(addr, v);
+void S::f(void *object, const int *value)
+{
+    char *base = object ? static_cast<char *>(object) - 0x18 : 0;
+    int argument = *value;
+    int offset = *reinterpret_cast<int *>(
+        *reinterpret_cast<char **>(base + 0x140) + virtualOffset);
+    setter(base + 0x140 + offset + adjustment, argument);
 }

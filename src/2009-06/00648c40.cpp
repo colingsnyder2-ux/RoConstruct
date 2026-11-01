@@ -1,86 +1,122 @@
-// from server: 70% by EspClaude
-// from server: 100% by auto
-// from server: 100% by nuck16
+// from server: 94% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-dll roc_unit_c17b7ffeb42a1fea.cpp
-
-// Candidate translation unit (score above; library headers required).
-#define _CPPUNWIND 1
-#include "util/Sound.h"
-#include "util/StandardOut.h"
-#include "v8datamodel/GameSettings.h"
-#include "../../../openrbx/3rdparty/fmod/api/inc/fmod.hpp"
-#include "../../../openrbx/3rdparty/fmod/api/inc/fmod_errors.h"
+// SoundService::openFmod (2009-06). True extent 0x250 bytes (server extent 0x213 cuts the epilogue + catch funclet).
 #include <stdexcept>
+
+typedef int FMOD_RESULT;
+typedef unsigned int FMOD_CAPS;
+typedef unsigned int FMOD_INITFLAGS;
+typedef int FMOD_SPEAKERMODE;
+struct FMOD_SYSTEM;
+extern "C" {
+FMOD_RESULT __stdcall FMOD_System_Create(FMOD_SYSTEM** system);
+FMOD_RESULT __stdcall FMOD_System_Release(FMOD_SYSTEM* system);
+FMOD_RESULT __stdcall FMOD_System_GetVersion(FMOD_SYSTEM* system, unsigned int* version);
+FMOD_RESULT __stdcall FMOD_System_GetDriver(FMOD_SYSTEM* system, int* driver);
+FMOD_RESULT __stdcall FMOD_System_GetDriverCaps(FMOD_SYSTEM* system, int id, FMOD_CAPS* caps, int* minfrequency, int* maxfrequency, FMOD_SPEAKERMODE* controlpanelspeakermode);
+FMOD_RESULT __stdcall FMOD_System_SetSpeakerMode(FMOD_SYSTEM* system, FMOD_SPEAKERMODE speakermode);
+FMOD_RESULT __stdcall FMOD_System_SetDSPBufferSize(FMOD_SYSTEM* system, unsigned int bufferlength, int numbuffers);
+FMOD_RESULT __stdcall FMOD_System_Init(FMOD_SYSTEM* system, int maxchannels, FMOD_INITFLAGS flags, void* extradriverdata);
+}
 
 void checkResult(FMOD_RESULT result);
 void logResult(FMOD_RESULT result);
 
 namespace FFlag { extern bool SoundDisabled; }
 
-namespace RBX { namespace Soundscape {
-
-// 2008-06 field offsets read from the target (rbxgs layout is 8 bytes shorter)
-struct SoundServiceLayout2008 {
-	char opaque0[0x134];
-	FMOD::System* system;
-	unsigned fmod_version;
-	char opaque1[0x170 - 0x13c];
-	ReverbType ambientReverb;
-	char opaque2[0x1c0 - 0x174];
-	bool mySoundDisabled;
+namespace boost {
+template<class T> class shared_ptr {
+public:
+	T* px; void* pn;
+	~shared_ptr();
+	T* operator->() const { return px; }
 };
-struct GameSettingsLayout2008 {
-	char opaque0[0x138];
+}
+
+namespace RBX {
+
+enum MessageType { MESSAGE_OUTPUT, MESSAGE_INFO, MESSAGE_WARNING, MESSAGE_ERROR };
+
+class StandardOut {
+public:
+	static boost::shared_ptr<StandardOut> singleton();
+	void print(MessageType type, const char* message);
+};
+
+class GameSettings {
+public:
+	static GameSettings& singleton();
+	char pad0[0x94];
 	bool soundEnabled;
+	char pad1[0x9a - 0x95];
+	bool softwareSound;
+};
+
+namespace Soundscape {
+
+enum ReverbType { NoReverb };
+
+class SoundService {
+	char pad0[0x8c];
+	FMOD_SYSTEM* system;
+	unsigned int fmod_version;
+	char pad1[0xc8 - 0x94];
+	ReverbType ambientReverb;
+	char pad2[0x118 - 0xcc];
+	bool mySoundDisabled;
+	void update3DSettings();
+	void updateAmbientReverb();
+	void openFmod();
 };
 
 void SoundService::openFmod()
 {
-	SoundServiceLayout2008& self = *reinterpret_cast<SoundServiceLayout2008*>(this);
-	if (!FFlag::SoundDisabled && !self.mySoundDisabled && reinterpret_cast<GameSettingsLayout2008&>(GameSettings::singleton()).soundEnabled)
+	if (!FFlag::SoundDisabled && !mySoundDisabled && GameSettings::singleton().soundEnabled)
 	{
 		try
 		{
-			checkResult(FMOD::System_Create(&self.system));
-			checkResult(self.system->getVersion(&self.fmod_version));
-			if (self.fmod_version < 0x00041406)
+			checkResult(FMOD_System_Create(&system));
+			checkResult(FMOD_System_GetVersion(system, &fmod_version));
+			if (fmod_version < 0x00042001)
 				throw std::runtime_error("Incorrect FMODEX DLL version");
 
 			int driver = -1;
-			logResult(self.system->getDriver(&driver));
+			logResult(FMOD_System_GetDriver(system, &driver));
 			if (driver < 0)
 				StandardOut::singleton()->print(MESSAGE_WARNING, "No active sound driver detected");
 
-			unsigned caps;
+			FMOD_CAPS caps;
 			FMOD_SPEAKERMODE speakerMode;
-			checkResult(self.system->getDriverCaps(0, &caps, 0, 0, &speakerMode));
-			checkResult(self.system->setSpeakerMode(speakerMode));
-			if (caps & FMOD_CAPS_HARDWARE_EMULATED)
+			checkResult(FMOD_System_GetDriverCaps(system, 0, &caps, 0, 0, &speakerMode));
+			checkResult(FMOD_System_SetSpeakerMode(system, speakerMode));
+			if (caps & 2)
 			{
 				StandardOut::singleton()->print(MESSAGE_WARNING, "The acceleration slider in the Sound Control Panel set to 'off'");
-				checkResult(self.system->setDSPBufferSize(1024, 10));
+				checkResult(FMOD_System_SetDSPBufferSize(system, 1024, 10));
 			}
 
-			if (self.system->init(100, FMOD_INIT_NORMAL, 0) == FMOD_ERR_OUTPUT_CREATEBUFFER)
+			FMOD_INITFLAGS flags = 0;
+			if (GameSettings::singleton().softwareSound)
+				flags = 0x20;
+			if (FMOD_System_Init(system, 100, flags, 0) == 0x39)
 			{
 				StandardOut::singleton()->print(MESSAGE_WARNING, "The speaker mode selected isn't supported by this soundcard.  Using Stereo");
-				checkResult(self.system->setSpeakerMode(FMOD_SPEAKERMODE_STEREO));
-				checkResult(self.system->init(100, FMOD_INIT_NORMAL, 0));
+				checkResult(FMOD_System_SetSpeakerMode(system, 2));
+				checkResult(FMOD_System_Init(system, 100, flags, 0));
 			}
 
 			update3DSettings();
-			if (self.ambientReverb != NoReverb)
+			if (ambientReverb != NoReverb)
 				updateAmbientReverb();
 		}
 		catch (const std::exception&)
 		{
-			if (self.system)
+			if (system)
 			{
-				logResult(self.system->release());
-				self.system = 0;
+				logResult(FMOD_System_Release(system));
+				system = 0;
 			}
 		}
 	}

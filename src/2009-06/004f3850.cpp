@@ -1,17 +1,25 @@
-// from server: 66% by why2
-struct RBX_Reflection_EventSource {
-    char pad[0x10];
-    void* field_0x10;
-    void func_004f3850();
-};
-
-extern "C" void __cdecl func_00474dc0(void*);
-
-void RBX_Reflection_EventSource::func_004f3850()
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+namespace RBX { namespace Reflection {
+struct Slot;
+void disconnectSlot(Slot* s);
+class SlotList
 {
-    void* p = this->field_0x10;
-    if (p != 0)
-    {
-        func_00474dc0((void*)0x474d50);
-    }
+public:
+	void visit(void (*fn)(Slot*));
+};
+class EventSource
+{
+	char pad[0x10];
+	SlotList* slots;
+public:
+	void disconnectAll();
+};
+void EventSource::disconnectAll()
+{
+	if (slots)
+		slots->visit(&disconnectSlot);
 }
+}}

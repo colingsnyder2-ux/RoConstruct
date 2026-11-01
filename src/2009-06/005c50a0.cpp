@@ -1,5 +1,7 @@
-// from server: 66% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /Od /Ob1 /GS- /MT
-// roc-lib: wildmagic-2-core Containment/WmlConvexHull3.cpp
+// roc-cl: 21022
+// roc-flags: /Od /GS- /EHsc /MD
+#define __analysis_assume(e) do {} while (0)
+#include <list>
+template class std::list<int>::_Const_iterator<false>;

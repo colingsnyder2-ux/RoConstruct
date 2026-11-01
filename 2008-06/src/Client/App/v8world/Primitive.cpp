@@ -35,7 +35,7 @@ namespace RBX
 		anchored(false),
 		flag0xaa(false),
 		canCollide(true),
-		canSleep(true),
+		canSleep(false),
 		JointK(this, &Primitive::computeJointK),
 		controller(NullController::getStaticNullController())
 	{
@@ -295,19 +295,12 @@ namespace RBX
 		{
 			dragging = _dragging;
 			bool isAnchored = dragging || anchored || flag0xaa;
-			if (isAnchored != wasAnchored)
+			if (isAnchored != wasAnchored && world)
 			{
 				if (isAnchored)
-				{
-					setAnchorObject(new Anchor(this));
-					if (world) world->onPrimitiveAddedAnchor(this);
-				}
+					world->onPrimitiveAddedAnchor(this);
 				else
-				{
-					if (world) world->onPrimitiveRemovingAnchor(this);
-					delete getAnchorObject();
-					setAnchorObject(NULL);
-				}
+					world->onPrimitiveRemovingAnchor(this);
 			}
 		}
 	}
@@ -319,23 +312,12 @@ namespace RBX
 		{
 			anchored = _anchored;
 			bool isAnchored = dragging || anchored || flag0xaa;
-			if (isAnchored != wasAnchored)
+			if (isAnchored != wasAnchored && world)
 			{
 				if (isAnchored)
-				{
-					RBXASSERT(!getAnchorObject());
-					setAnchorObject(new Anchor(this));
-					if (world)
-						world->onPrimitiveAddedAnchor(this);
-				}
+					world->onPrimitiveAddedAnchor(this);
 				else
-				{
-					RBXASSERT(getAnchorObject());
-					if (world)
-						world->onPrimitiveRemovingAnchor(this);
-					delete getAnchorObject();
-					setAnchorObject(NULL);
-				}
+					world->onPrimitiveRemovingAnchor(this);
 			}
 		}
 	}
@@ -347,19 +329,12 @@ namespace RBX
 		{
 			flag0xaa = value;
 			bool isAnchored = dragging || anchored || flag0xaa;
-			if (isAnchored != wasAnchored)
+			if (isAnchored != wasAnchored && world)
 			{
 				if (isAnchored)
-				{
-					setAnchorObject(new Anchor(this));
-					if (world) world->onPrimitiveAddedAnchor(this);
-				}
+					world->onPrimitiveAddedAnchor(this);
 				else
-				{
-					if (world) world->onPrimitiveRemovingAnchor(this);
-					delete getAnchorObject();
-					setAnchorObject(NULL);
-				}
+					world->onPrimitiveRemovingAnchor(this);
 			}
 		}
 	}
@@ -372,28 +347,18 @@ namespace RBX
 
 	void Primitive::setCanCollide(bool value)
 	{
-		bool oldDrag = !dragging && canCollide;
-
-		if (canCollide != value)
+		if (value != canCollide)
 		{
 			canCollide = value;
 			if (world)
-			{
-				bool newDrag = !dragging && value;
-				if (oldDrag != newDrag)
-					world->onPrimitiveCanCollideChanged(this);
-			}
+				world->onPrimitiveCanCollideChanged(this);
 		}
 	}
 
 	void Primitive::setCanSleep(bool _canSleep)
 	{
 		if (_canSleep != canSleep)
-		{
 			canSleep = _canSleep;
-			if (world)
-				world->onPrimitiveCanSleepChanged(this);
-		}
 	}
 
 	void Primitive::setFriction(float _friction)

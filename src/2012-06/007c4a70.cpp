@@ -1,4 +1,4 @@
-// from server: 40% by Intel
+// from server: 54% by Intel
 struct String {
     char _buf[28];
     String() {}
@@ -19,6 +19,15 @@ struct PartInstance {
 };
 
 void* PartInstance::GetSetImpl(String* a1, String* a2) {
+    struct SEHFrame {
+        SEHFrame* next;
+        void* handler;
+    };
+    SEHFrame frame;
+    frame.next = *(SEHFrame**)0;
+    frame.handler = (void*)0xACB6F2;
+    *(SEHFrame**)0 = &frame;
+
     String local_str;
     int state = 0;
     sub_B22654(&local_str, 0);
@@ -27,5 +36,7 @@ void* PartInstance::GetSetImpl(String* a1, String* a2) {
     sub_B22644(a2, &local_str);
     state = 0;
     sub_B2263C(&local_str, 1);
+
+    *(SEHFrame**)0 = frame.next;
     return a2;
 }

@@ -1,108 +1,64 @@
-// from server: 32% by intel
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+// from server: 40% by Intel
+struct VInstance {
+    void* vfptr;
+};
 
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
+struct NonFactoryProduct {
+    void* vfptr;
 
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
+    int __cdecl method(int a1, VInstance* a2, int* a3);
+};
 
-boost::mutex& moo2()
-{
-	static boost::mutex mutex2;
-	return mutex2;
-}
+extern "C" void* __cdecl operator_new(unsigned int size);
+extern "C" void __cdecl operator_delete(void* ptr);
+extern "C" int __stdcall type_info_equals(void* a, void* b);
+extern "C" void __stdcall unknown_call_0xdd5248(int a1, int a2);
 
-void initMoo()
-{
-	moo2();
-}
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
+int NonFactoryProduct::method(int a1, VInstance* a2, int* a3) {
+    if (!a1) {
+        VInstance* v = a2;
+        NonFactoryProduct* obj = (NonFactoryProduct*)operator_new(0x38);
+        if (obj) {
+            obj->vfptr = v->vfptr;
+            *a3 = (int)obj;
+        } else {
+            *a3 = 0;
+        }
+        return 0;
+    }
+    if (a1 == 1) {
+        *a3 = *(int*)a2;
+        *(int*)a2 = 0;
+        return 0;
+    }
+    if (a1 == 2) {
+        int* ptr = (int*)*a3;
+        if (ptr) {
+            int vfptr_val = ptr[0];
+            if (vfptr_val) {
+                typedef void (__thiscall* FuncType)(int*, int, int);
+                FuncType func = (FuncType)*(int*)vfptr_val;
+                if (func) {
+                    func(ptr + 2, 2, 2);
+                }
+            }
+            *ptr = 0;
+            operator_delete(ptr);
+        }
+        *a3 = 0;
+        return 0;
+    }
+    if (a1 == 3) {
+        int* ptr = (int*)*a3;
+        if (type_info_equals(ptr, (void*)0xdd5248)) {
+            *a3 = *(int*)a2;
+            return 0;
+        }
+        *a3 = 0;
+        return 0;
+    }
+    *a3 = 0xdd5248;
+    *(char*)(*a3 + 4) = 0;
+    *(char*)(*a3 + 5) = 0;
+    return 0;
 }

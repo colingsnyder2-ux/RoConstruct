@@ -1,237 +1,44 @@
-// from server: 28% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: g3d-6.09 G3Dcpp/stringutils.cpp
-
-// Candidate translation unit (score above; library headers required).
-/**
- @file stringutils.cpp
-
- @maintainer Morgan McGuire, matrix@graphics3d.com
-
- @created 2000-09-09
- @edited  2005-09-10
-*/
-
-#include "G3D/platform.h"
-#include "G3D/stringutils.h"
-#include "G3D/BinaryInput.h"
-#include <algorithm>
-
-namespace G3D {
-
-#ifdef G3D_WIN32
-    // disable: "C++ exception handler used"
-#   pragma warning (push)
-#   pragma warning (disable : 4530)
-    const char* NEWLINE = "\r\n";
-#else
-    const char* NEWLINE = "\n";
-    static bool iswspace(int ch) { return (ch==' ' || ch=='\t' || ch=='\n'); }
-#endif
-
-bool beginsWith(
-    const std::string& test,
-    const std::string& pattern) {
-
-    if (test.size() >= pattern.size()) {
-        for (int i = 0; i < (int)pattern.size(); ++i) {
-            if (pattern[i] != test[i]) {
-                return false;
-            }
-        }
-        return true;
-    } else {
-        return false;
-    }
-}
-
-
-bool endsWith(
-    const std::string& test,
-    const std::string& pattern) {
-
-    if (test.size() >= pattern.size()) {
-        int te = test.size() - 1;
-        int pe = pattern.size() - 1;
-        for (int i = pattern.size() - 1; i >= 0; --i) {
-            if (pattern[pe - i] != test[te - i]) {
-                return false;
-            }
-        }
-        return true;
-    } else {
-        return false;
-    }
-}
-
-
-std::string wordWrap(
-    const std::string&      input,
-    int                     numCols) {
-
-    std::string output;
-    size_t      c = 0;
-    int         len;
-
-    // Don't make lines less than this length
-    int         minLength = numCols / 4;
-    size_t      inLen = input.size();
-
-    bool first = true;
-    while (c < inLen) {
-        if (first) {
-            first = false;
-        } else {
-            output += NEWLINE;
-        }
-
-        if ((int)inLen - (int)c - 1 < numCols) {
-            // The end
-            output += input.substr(c, inLen - c);
-            break;
-        }
-
-        len = numCols;
-
-        // Look at character c + numCols, see if it is a space.
-        while ((len > minLength) &&
-               (input[c + len] != ' ')) {
-            len--;
-        }
-
-        if (len == minLength) {
-            // Just crop
-            len = numCols;
-
-        }
-
-        output += input.substr(c, len);
-        c += len;
-        if (c < input.size()) {
-            // Collapse multiple spaces.
-            while ((input[c] == ' ') && (c < input.size())) {
-                c++;
-            }
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+#include <memory>
+namespace boost {
+namespace detail { namespace function {
+union function_buffer { void* obj_ptr; double align; char data[0x18]; };
+enum functor_manager_operation_type { clone_functor_tag, move_functor_tag, destroy_functor_tag, check_functor_type_tag, get_functor_type_tag };
+struct vtable_base {
+    void (*manager)(const function_buffer&, function_buffer&, functor_manager_operation_type);
+};
+} }
+class function_base {
+public:
+    detail::function::vtable_base* vtable;
+    mutable detail::function::function_buffer functor;
+    function_base() : vtable(0) {}
+};
+template<class R, class T0, class Allocator = std::allocator<void> >
+class function1 : public function_base {
+public:
+    function1() {}
+    ~function1() { clear(); }
+    void clear() {
+        if (vtable) {
+            void (*m)(const detail::function::function_buffer&, detail::function::function_buffer&, detail::function::functor_manager_operation_type) = vtable->manager;
+            if (m)
+                m(functor, functor, detail::function::destroy_functor_tag);
         }
     }
-
-    return output;
-}
-
-
-int stringCompare(
-    const std::string&      s1,
-    const std::string&      s2) {
-
-    return stringPtrCompare(&s1, &s2);
-}
-
-
-int stringPtrCompare(
-    const std::string*      s1,
-    const std::string*      s2) {
-
-    return s1->compare(*s2);
-}
-
-
-std::string toUpper(const std::string& x) {
-    std::string result = x;
-    std::transform(result.begin(), result.end(), result.begin(), toupper);
-    return result;
-}
-
-
-std::string toLower(const std::string& x) {
-    std::string result = x;
-    std::transform(result.begin(), result.end(), result.begin(), tolower);
-    return result;
-}
-
-
-Array<std::string> stringSplit(
-    const std::string&          x,
-    char                        splitChar) {
-
-    size_t prev, cur = 0;
-    Array<std::string> out;
-
-    while (cur < x.size()) {
-        prev = cur;
-        cur = x.find(splitChar, prev + 1);
-
-        if (cur == std::string::npos) {
-            cur = x.size();
-        }
-
-        out.append(x.substr(prev, cur - prev));
-        ++cur;
+    void swap(function1& other)
+    {
+        if (&other == this)
+            return;
+        function1 tmp;
+        tmp.move_assign(*this);
+        this->move_assign(other);
+        other.move_assign(tmp);
     }
-
-    return out;
+    void move_assign(function1& f);
+};
+template void function1<void, bool>::swap(function1<void, bool>&);
 }
-
-
-std::string stringJoin(
-    const Array<std::string>&   a,
-    char                        joinChar) {
-
-    std::string out;
-
-    for (int i = 0; i < (int)a.size() - 1; ++i) {
-        out += a[i] + joinChar;
-    }
-
-    if (a.size() > 0) {
-        return out + a.last();
-    } else {
-        return out;
-    }
-}
-
-
-std::string stringJoin(
-    const Array<std::string>&   a,
-    const std::string&          joinStr) {
-
-    std::string out;
-
-    for (int i = 0; i < (int)a.size() - 1; ++i) {
-        out += a[i] + joinStr;
-    }
-
-    if (a.size() > 0) {
-        return out + a.last();
-    } else {
-        return out;
-    }
-}
-
-
-std::string trimWhitespace(
-    const std::string&              s) {
-
-    size_t left = 0;
-    
-    // Trim from left
-    while ((left < s.length()) && iswspace(s[left])) {
-        ++left;
-    }
-
-    int right = s.length() - 1;
-    // Trim from right
-    while ((right > (int)left) && iswspace(s[right])) {
-        --right;
-    }
-    
-    return s.substr(left, right - left + 1);
-}
-
-}; // namespace
-
-#undef NEWLINE
-#ifdef G3D_WIN32
-#   pragma warning (pop)
-#endif

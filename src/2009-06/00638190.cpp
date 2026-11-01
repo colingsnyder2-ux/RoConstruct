@@ -1,768 +1,839 @@
-// from server: 9% by colin
+// from server: 100% by EspClaude
+// from server: 100% by colin
 // roc-lang: cpp
-// roc-cl: 50727
+// roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs script/ScriptContext.cpp
+// roc-lib: rbxgs-dll roc_espclaude_3e040f0c42933ad7.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "script/ScriptContext.h"
-#include "script/Script.h"
-#include "script/ScriptEvent.h"
-#include "script/LuaMemory.h"
-#include "script/LuaAtomicClasses.h"
-#include "script/LuaInstanceBridge.h"
-#include "script/LuaSignalBridge.h"
-#include "script/LuaArguments.h"
-#include "lua/lua.hpp"
-#include "lua/LuaBridge.h"
-#include "v8datamodel/Workspace.h"
-#include "v8datamodel/DebugSettings.h"
-#include "v8datamodel/Stats.h"
-#include "util/standardout.h"
-#include "util/Debug.h"
-#include "boost/date_time/posix_time/posix_time.hpp"
-#include "lua.h"
-#include "lualib.h"
-#include "lstate.h"
+#ifndef BOOST_SHARED_PTR_HPP_INCLUDED
+#define BOOST_SHARED_PTR_HPP_INCLUDED
 
-static int contextCount = 0;
-bool vvvvv;
+//
+//  shared_ptr.hpp
+//
+//  (C) Copyright Greg Colvin and Beman Dawes 1998, 1999.
+//  Copyright (c) 2001-2006 Peter Dimov
+//
+//  Distributed under the Boost Software License, Version 1.0. (See
+//  accompanying file LICENSE_1_0.txt or copy at
+//  http://www.boost.org/LICENSE_1_0.txt)
+//
+//  See http://www.boost.org/libs/smart_ptr/shared_ptr.htm for documentation.
+//
 
-using namespace RBX;
-using namespace boost::posix_time;
+#include <boost/config.hpp>   // for broken compiler workarounds
 
-// unidentified inlines
+#if defined(BOOST_NO_MEMBER_TEMPLATES) && !defined(BOOST_MSVC6_MEMBER_TEMPLATES)
+#include <boost/detail/shared_ptr_nmt.hpp>
+#else
 
-static inline void _openLibInline(lua_State* L, lua_CFunction f, const char* name)
+#include <memory>               // for std::auto_ptr
+
+#include <boost/assert.hpp>
+#include <boost/checked_delete.hpp>
+#include <boost/throw_exception.hpp>
+#include <boost/detail/shared_count.hpp>
+#include <boost/detail/workaround.hpp>
+
+#include <algorithm>            // for std::swap
+#include <functional>           // for std::less
+#include <typeinfo>             // for std::bad_cast
+#include <iosfwd>               // for std::basic_ostream
+
+#ifdef BOOST_MSVC  // moved here to work around VC++ compiler crash
+# pragma warning(push)
+# pragma warning(disable:4284) // odd return type for operator->
+#endif
+
+namespace boost
 {
-    lua_pushcfunction(L, f);
-    lua_pushstring(L, name);
-    lua_call(L, 1, 0);
+namespace detail { struct sp_empty {}; }
+
+template<class T> class weak_ptr;
+template<class T> class enable_shared_from_this;
+
+namespace detail
+{
+
+struct static_cast_tag {};
+struct const_cast_tag {};
+struct dynamic_cast_tag {};
+struct polymorphic_cast_tag {};
+
+template<class T> struct shared_ptr_traits
+{
+    typedef T & reference;
+};
+
+template<> struct shared_ptr_traits<void>
+{
+    typedef void reference;
+};
+
+#if !defined(BOOST_NO_CV_VOID_SPECIALIZATIONS)
+
+template<> struct shared_ptr_traits<void const>
+{
+    typedef void reference;
+};
+
+template<> struct shared_ptr_traits<void volatile>
+{
+    typedef void reference;
+};
+
+template<> struct shared_ptr_traits<void const volatile>
+{
+    typedef void reference;
+};
+
+#endif
+
+// enable_shared_from_this support
+
+template<class T, class Y> void sp_enable_shared_from_this( shared_count const & pn, boost::enable_shared_from_this<T> const * pe, Y const * px )
+{
+    if(pe != 0) pe->_internal_weak_this._internal_assign(const_cast<Y*>(px), pn);
 }
 
-// end unidentified inlines
+#ifdef sgi
+// Turn off: the last argument of the varargs function "sp_enable_shared_from_this" is unnamed
+# pragma set woff 3506
+#endif
 
-Reflection::BoundProp<bool, true> ScriptContext::propScriptsDisabled("ScriptsDisabled", "State", &ScriptContext::scriptsDisabled, &ScriptContext::onChangedScriptEnabled, Reflection::PropertyDescriptor::LEGACY); 
-
-static int panic(lua_State* L)
+inline void sp_enable_shared_from_this( shared_count const & /*pn*/, ... )
 {
-    std::string message = lua_tostring(L, -1);
-    StandardOut::singleton()->print(MESSAGE_ERROR, "Unprotected error in call to Lua API (%s)\n", message.c_str());
-    RBXCRASH();
-    return 0;
 }
 
-const char* RBX::sScriptContext = "ScriptContext";
+#ifdef sgi
+# pragma reset woff 3506
+#endif
 
-void ScriptContext::openState()
+#if !defined( BOOST_NO_SFINAE ) && !defined( BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION ) && !defined( BOOST_NO_AUTO_PTR )
+
+// rvalue auto_ptr support based on a technique by Dave Abrahams
+
+template< class T, class R > struct sp_enable_if_auto_ptr
 {
-    if (!globalState)
+};
+
+template< class T, class R > struct sp_enable_if_auto_ptr< std::auto_ptr< T >, R >
+{
+    typedef R type;
+}; 
+
+#endif
+
+} // namespace detail
+
+
+//
+//  shared_ptr
+//
+//  An enhanced relative of scoped_ptr with reference counted copy semantics.
+//  The object pointed to is deleted when the last shared_ptr pointing to it
+//  is destroyed or reset.
+//
+
+template<class T> class shared_ptr
+{
+private:
+
+    // Borland 5.5.1 specific workaround
+    typedef shared_ptr<T> this_type;
+
+public:
+
+    typedef T element_type;
+    typedef T value_type;
+    typedef T * pointer;
+    typedef typename boost::detail::shared_ptr_traits<T>::reference reference;
+
+    shared_ptr(): px(0), pn() // never throws in 1.30+
     {
-        // ???
-        if (vvvvv)
+    }
+
+    template<class Y>
+    explicit shared_ptr( Y * p ): px( p ), pn( p ) // Y must be complete
+    {
+        boost::detail::sp_enable_shared_from_this( pn, p, p );
+    }
+
+    //
+    // Requirements: D's copy constructor must not throw
+    //
+    // shared_ptr will release p by calling d(p)
+    //
+
+    template<class Y, class D> shared_ptr(Y * p, D d): px(p), pn(p, d)
+    {
+        boost::detail::sp_enable_shared_from_this( pn, p, p );
+    }
+
+    // As above, but with allocator. A's copy constructor shall not throw.
+
+    template<class Y, class D, class A> shared_ptr( Y * p, D d, A a ): px( p ), pn( p, d, a )
+    {
+        boost::detail::sp_enable_shared_from_this( pn, p, p );
+    }
+
+//  generated copy constructor, assignment, destructor are fine...
+
+//  except that Borland C++ has a bug, and g++ with -Wsynth warns
+#if defined(__BORLANDC__) || defined(__GNUC__)
+
+    shared_ptr & operator=(shared_ptr const & r) // never throws
+    {
+        px = r.px;
+        pn = r.pn; // shared_count::op= doesn't throw
+        return *this;
+    }
+
+#endif
+
+    template<class Y>
+    explicit shared_ptr(weak_ptr<Y> const & r): pn(r.pn) // may throw
+    {
+        // it is now safe to copy r.px, as pn(r.pn) did not throw
+        px = r.px;
+    }
+
+    template<class Y>
+    shared_ptr(shared_ptr<Y> const & r, boost::detail::sp_empty = boost::detail::sp_empty()): px(r.px), pn(r.pn) // never throws
+    {
+    }
+
+    template<class Y>
+    shared_ptr(shared_ptr<Y> const & r, boost::detail::static_cast_tag): px(static_cast<element_type *>(r.px)), pn(r.pn)
+    {
+    }
+
+    template<class Y>
+    shared_ptr(shared_ptr<Y> const & r, boost::detail::const_cast_tag): px(const_cast<element_type *>(r.px)), pn(r.pn)
+    {
+    }
+
+    template<class Y>
+    shared_ptr(shared_ptr<Y> const & r, boost::detail::dynamic_cast_tag): px(dynamic_cast<element_type *>(r.px)), pn(r.pn)
+    {
+        if(px == 0) // need to allocate new counter -- the cast failed
         {
-            lua_getstack(NULL, NULL, NULL);
-            lua_getinfo(NULL, NULL, NULL);
-            lua_getlocal(NULL, NULL, NULL);
-            lua_setlocal(NULL, NULL, NULL);
-            lua_getupvalue(NULL, NULL, NULL);
-            lua_setupvalue(NULL, NULL, NULL);
-            lua_sethook(NULL, NULL, NULL, NULL);
-            lua_gethook(NULL);
-            lua_gethookmask(NULL);
-            lua_gethookcount(NULL);
+            pn = boost::detail::shared_count();
         }
-
-        allocator.reset(new LuaAllocator());
-        lua_State* L = lua_newstate(LuaAllocator::alloc, allocator.get());
-        globalState = L;
-
-        if (!globalState)
-            throw std::runtime_error("Failed to create Lua state");
-
-        contextCount++;
-
-        lua_atpanic(L, panic);
-
-        lua_pushlightuserdata(globalState, RBX_LUA_GLOBAL_SCRIPTCONTEXT);
-        lua_pushlightuserdata(globalState, this);
-        lua_settable(globalState, LUA_GLOBALSINDEX);
-
-        lua_pop(globalState, luaopen_base(globalState));
-
-        _openLibInline(globalState, luaopen_string, LUA_STRLIBNAME);
-        _openLibInline(globalState, luaopen_math, LUA_MATHLIBNAME);
-        _openLibInline(globalState, luaopen_table, LUA_TABLIBNAME);
-
-        Lua::ObjectBridge::registerClass(globalState);
-        Lua::SignalBridge::registerClass(globalState);
-        Lua::SignalConnectionBridge::registerClass(globalState);
-        Lua::CoordinateFrameBridge::registerClass(globalState);
-        Lua::Vector3Bridge::registerClass(globalState);
-        Lua::Color3Bridge::registerClass(globalState);
-        Lua::BrickColorBridge::registerClass(globalState);
-        Lua::ThreadRef::NodeBridge::registerClass(globalState);
-
-        Lua::CoordinateFrameBridge::registerClassLibrary(globalState);
-        Lua::Vector3Bridge::registerClassLibrary(globalState);
-        Lua::Color3Bridge::registerClassLibrary(globalState);
-        Lua::BrickColorBridge::registerClassLibrary(globalState);
-        Lua::ObjectBridge::registerClassLibrary(globalState);
-        Lua::ObjectBridge::registerInstanceClassLibrary(globalState);
-        Lua::SignalBridge::registerClassLibrary(globalState);
-
-        Lua::ThreadRef::Node::create(globalState);
-
-        lua_pushstring(globalState, "game");
-        Lua::ObjectBridge::push(globalState, getRootAncestor()->shared_from_this());
-        lua_settable(globalState, LUA_GLOBALSINDEX);
-
-        lua_pushstring(globalState, "workspace");
-        Lua::ObjectBridge::push(globalState, ServiceProvider::find<Workspace>(this)->shared_from_this());
-        lua_settable(globalState, LUA_GLOBALSINDEX);
-
-        lua_pushstring(globalState, "shared");
-        lua_newtable(globalState);
-        lua_settable(globalState, LUA_GLOBALSINDEX);
-
-        lua_pushstring(globalState, "print");
-        lua_pushcfunction(globalState, ScriptContext::print);
-        lua_settable(globalState, LUA_GLOBALSINDEX);
-
-        lua_pushstring(globalState, "tick");
-        lua_pushcfunction(globalState, ScriptContext::tick);
-        lua_settable(globalState, LUA_GLOBALSINDEX);
-
-        lua_pushstring(globalState, "wait");
-        lua_pushcfunction(globalState, ScriptContext::wait);
-        lua_settable(globalState, LUA_GLOBALSINDEX);
-
-        lua_pushstring(globalState, "delay");
-        lua_pushcfunction(globalState, ScriptContext::delay);
-        lua_settable(globalState, LUA_GLOBALSINDEX);
-
-        lua_pushstring(globalState, "trustedThread");
-        lua_pushcfunction(globalState, ScriptContext::trustedThread);
-        lua_settable(globalState, LUA_GLOBALSINDEX);
-
-        lua_pushstring(globalState, "dofile");
-        lua_pushcfunction(globalState, ScriptContext::dofile);
-        lua_settable(globalState, LUA_GLOBALSINDEX);
-
-        lua_pushstring(globalState, "loadfile");
-        lua_pushcfunction(globalState, ScriptContext::loadfile);
-        lua_settable(globalState, LUA_GLOBALSINDEX);
-
-        lua_pushstring(globalState, "stats");
-        lua_pushcfunction(globalState, ScriptContext::stats);
-        lua_settable(globalState, LUA_GLOBALSINDEX);
-
-        yieldEvent.reset(new Lua::YieldingThreads(this));
     }
-}
 
-// TODO: 99.79% (functional match)
-// stack offsets not the same
-void ScriptContext::closeState()
-{
-    if (globalState)
+    template<class Y>
+    shared_ptr(shared_ptr<Y> const & r, boost::detail::polymorphic_cast_tag): px(dynamic_cast<element_type *>(r.px)), pn(r.pn)
     {
-        commandLineSandbox.reset();
-
-        try
+        if(px == 0)
         {
-            Lua::ThreadRef::Node::get(globalState)->eraseAllRefs();
-
-            std::set<Script*> copy = scripts;
-            std::for_each(copy.begin(), copy.end(), boost::bind(&ScriptContext::disassociateState, this, _1));
-
-            yieldEvent.reset(NULL);
+            boost::throw_exception(std::bad_cast());
         }
-        catch (std::exception& e)
-        {
-            StandardOut::singleton()->print(MESSAGE_ERROR, "Exception thrown while cleaning up Lua: %s", e.what()); 
-        }
-
-        lua_close(globalState);
-        contextCount--;
-
-        size_t heapSize, heapCount, maxHeapSize, maxHeapCount;
-        allocator->getHeapStats(heapSize, heapCount, maxHeapSize, maxHeapCount);
-        StandardOut::singleton()->print(MESSAGE_INFO, "Script Heap Stats: Max Size = %d bytes, Max Count = %d blocks", maxHeapSize, maxHeapCount);
-
-        allocator->clearHeapMax();
-
-        if (contextCount == 0 && (heapSize > 0 || heapCount > 0))
-            StandardOut::singleton()->print(MESSAGE_ERROR, "Script memory leaks: %d bytes, %d blocks", heapSize, heapCount);
-
-        globalState = NULL;
-    }
-}
-
-ScriptContext::ScriptContext()
-    : globalState(NULL),
-      nextPendingScripts(second_clock::local_time()),
-      scriptsDisabled(false)
-{
-    setName("Script Context");
-}
-
-ScriptContext::~ScriptContext()
-{
-    RBXASSERT(globalState == NULL);
-}
-
-void ScriptContext::sandboxThread(lua_State* thread)
-{
-    lua_newtable(thread);
-    lua_newtable(thread);
-    lua_pushliteral(thread, "__index");
-    lua_pushvalue(thread, LUA_GLOBALSINDEX);
-    lua_settable(thread, -3);
-    lua_setmetatable(thread, -2);
-    lua_replace(thread, LUA_GLOBALSINDEX);
-}
-
-void ScriptContext::setThreadIdentity(lua_State* thread, Security::Identities identity)
-{
-    lua_pushlightuserdata(thread, RBX_LUA_GLOBAL_IDENTITY);
-    lua_pushinteger(thread, identity);
-    lua_settable(thread, LUA_GLOBALSINDEX);
-
-    if (DebugSettings::singleton().getioEnabled())
-        _openLibInline(thread, luaopen_io, LUA_IOLIBNAME);
-
-    lua_pushstring(thread, "settings");
-    lua_pushcfunction(thread, ScriptContext::settings);
-    lua_settable(thread, LUA_GLOBALSINDEX);
-}
-
-size_t ScriptContext::getThreadCount() const
-{
-    if (globalState)
-        return RobloxExtraSpace::get(globalState)->getThreadCount();
-    else
-        return 0;
-}
-
-ScriptContext& ScriptContext::getContext(lua_State* thread)
-{
-    lua_pushlightuserdata(thread, RBX_LUA_GLOBAL_SCRIPTCONTEXT);
-    lua_gettable(thread, LUA_GLOBALSINDEX);
-
-    RBXASSERT(lua_type(thread, -1) == LUA_TLIGHTUSERDATA);
-    ScriptContext* sc = static_cast<ScriptContext*>(lua_touserdata(thread, -1));
-    lua_pop(thread, 1);
-
-    return *sc;
-}
-
-static size_t pushArguments(const Reflection::ValueCollection& arguments, lua_State* thread)
-{
-    size_t result = 0;
-
-    Reflection::ValueCollection::const_iterator it = arguments.begin();
-    Reflection::ValueCollection::const_iterator end = arguments.end();
-
-    for (; it != end; it++)
-        result += Lua::LuaArguments::push(*it, thread);
-
-    return result;
-}
-
-static void readResults(std::auto_ptr<Reflection::ValueCollection>& result, lua_State *thread, size_t returnCount)
-{
-    result.reset(new Reflection::ValueCollection(returnCount));
-
-    if (returnCount)
-    {
-        for (size_t i = 0; i < returnCount; i++)
-            Lua::LuaArguments::get(thread, static_cast<int>(i+1), result.get()->at(i));
-    }
-}
-
-std::auto_ptr<Reflection::ValueCollection> ScriptContext::executeInNewThread(Security::Identities identity, const char* script, const char* name, const Reflection::ValueCollection& arguments)
-{
-    std::auto_ptr<Reflection::ValueCollection> result;
-    executeInNewThread(
-        identity,
-        script,
-        name,
-        boost::bind(&pushArguments, boost::cref(arguments), _1),
-        boost::bind(&readResults, boost::ref(result), _1, _2)
-    );
-    return result;
-}
-
-void ScriptContext::executeInNewThread(Security::Identities identity, const char* script, const char* name, PushArgumentsClosure pushArguments, ReadResultsClosure readResults)
-{
-    openState();
-
-    lua_State* L;
-    lua_State* newThread;
-
-    if (identity == Security::CmdLine)
-    {
-        if (commandLineSandbox.empty())
-        {
-            {
-                Lua::ThreadRef threadRef(lua_newthread(globalState));
-                commandLineSandbox = threadRef;
-            }
-
-            if (commandLineSandbox.empty())
-                throw std::runtime_error("Unable to create trusted sandbox thread");
-
-            sandboxThread(commandLineSandbox.thread());
-            setThreadIdentity(commandLineSandbox.thread(), Security::CmdLine);
-            lua_pop(globalState, 1);
-        }
-
-        L = commandLineSandbox.thread();
-        newThread = lua_newthread(L);
-    }
-    else
-    {
-        L = globalState;
-        newThread = lua_newthread(L);
-        sandboxThread(newThread);
-        setThreadIdentity(newThread, identity);
     }
 
-    if (!newThread)
+#ifndef BOOST_NO_AUTO_PTR
+
+    template<class Y>
+    explicit shared_ptr(std::auto_ptr<Y> & r): px(r.get()), pn()
     {
-        StandardOut::singleton()->print(MESSAGE_ERROR, "ScriptContext::execute: Unable to create a new thread");
-        throw std::runtime_error("Unable to create a new thread");
+        Y * tmp = r.get();
+        pn = boost::detail::shared_count(r);
+        boost::detail::sp_enable_shared_from_this( pn, tmp, tmp );
     }
 
-    Lua::ScopedPopper popper(L, 1);
+#if !defined( BOOST_NO_SFINAE ) && !defined( BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION )
 
-    std::string sName("=");
-
-    if (name)
-        sName += name;
-    else
-        sName += "Script";
-
-    if (luaL_loadbuffer(newThread, script, strlen(script), sName.c_str()))
+    template<class Ap>
+    explicit shared_ptr( Ap r, typename boost::detail::sp_enable_if_auto_ptr<Ap, int>::type = 0 ): px( r.get() ), pn()
     {
-        std::string err = lua_tostring(newThread, -1);
-        lua_pop(newThread, 1);
-
-        StandardOut::singleton()->print(MESSAGE_ERROR, err.c_str());
-        throw std::runtime_error(err);
+        typename Ap::element_type * tmp = r.get();
+        pn = boost::detail::shared_count( r );
+        boost::detail::sp_enable_shared_from_this( pn, tmp, tmp );
     }
 
-    resume(newThread, pushArguments, readResults);
-}
 
-void ScriptContext::resume(lua_State* thread, PushArgumentsClosure pushArguments, ReadResultsClosure readResults)
-{
-    int nStack = lua_gettop(thread);
-    size_t nArgs = pushArguments(thread);
+#endif // BOOST_NO_SFINAE, BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
 
-    if (resume(thread, static_cast<int>(nArgs)) != Error)
+#endif // BOOST_NO_AUTO_PTR
+
+#if !defined(BOOST_MSVC) || (BOOST_MSVC >= 1300)
+
+    template<class Y>
+    shared_ptr & operator=(shared_ptr<Y> const & r) // never throws
     {
-        int returnCount = lua_gettop(thread) - nStack + 1;
-
-        try
-        {
-            readResults(thread, returnCount);
-        }
-        catch (std::exception)
-        {
-            lua_pop(thread, returnCount);
-            throw;
-        }
-
-        lua_pop(thread, returnCount);
-    }
-    else
-    {
-        std::string err = lua_tostring(thread, -1);
-        lua_settop(thread, 0);
-        throw std::runtime_error(err);
-    }
-}
-
-int ScriptContext::delay(lua_State* thread)
-{
-    // yes that's spelled correctly
-    float timout = static_cast<float>(lua_tonumber(thread, 1));
-
-    lua_State* newThread = lua_newthread(thread);
-    Lua::ThreadRef functor(newThread);
-
-    lua_pushvalue(thread, 2);
-    lua_xmove(thread, functor.thread(), 1);
-
-    getContext(thread).yieldEvent->queueWaiter(functor.thread(), timout);
-
-    lua_pop(thread, 1);
-    return 0;
-}
-
-int ScriptContext::wait(lua_State* thread)
-{
-    // this too
-    float timout = static_cast<float>(lua_tonumber(thread, 1));
-    getContext(thread).yieldEvent->queueWaiter(thread, timout);
-    return lua_yield(thread, 0);
-}
-
-int ScriptContext::settings(lua_State* thread)
-{
-    Security::Context::current().requirePermission(Security::Administrator, NULL);
-    Lua::ObjectBridge::push(thread, GlobalSettings::singleton());
-    return 1;
-}
-
-int ScriptContext::trustedThread(lua_State* thread)
-{
-    bool trusted = Security::Context::current().hasPermission(Security::Administrator);
-    lua_pushboolean(thread, trusted != false);
-    return 1;
-}
-
-int ScriptContext::loadfile(lua_State* L)
-{
-    Security::Context::current().requirePermission(Security::Administrator, "loadfile");
-
-    RBX::ContentId contentId = lua_tostring(L, -1);
-    const std::string& file = ContentProvider::singleton().getFile(contentId);
-
-    int n;
-
-    if (luaL_loadfile(L, file.c_str()) == 0)
-    {
-        n = 1;
-    }
-    else
-    {
-        lua_pushnil(L);
-        lua_insert(L, -2);
-        n = 2;
+        px = r.px;
+        pn = r.pn; // shared_count::op= doesn't throw
+        return *this;
     }
 
-    return n;
-}
+#endif
 
-int ScriptContext::stats(lua_State* L)
-{
-    Security::Context::current().requirePermission(Security::Administrator, "Stats");
-    Lua::ObjectBridge::push(L, shared_from(ServiceProvider::create<Stats::StatsService>(&getContext(L))));
-    return 1;
-}
+#ifndef BOOST_NO_AUTO_PTR
 
-int ScriptContext::dofile(lua_State* L)
-{
-    Security::Context::current().requirePermission(Security::Administrator, "dofile");
-
-    const char* path = luaL_optstring(L, 1, 0);
-    int n = lua_gettop(L);
-
-    RBX::ContentId contentId = path;
-    const std::string& file = ContentProvider::singleton().getFile(contentId);
-
-    if (luaL_loadfile(L, file.c_str()) != 0)
-        lua_error(L);
-
-    lua_call(L, 0, -1);
-    return lua_gettop(L) - n;
-}
-
-int ScriptContext::tick(lua_State* L)
-{
-    lua_pushnumber(L, G3D::System::getTick());
-    return 1;
-}
-
-int ScriptContext::print(lua_State* L)
-{
-    std::string msg;
-    int top = lua_gettop(L);
-
-    lua_getglobal(L, "tostring");
-
-    for (int i = 1; i <= top; i++)
+    template<class Y>
+    shared_ptr & operator=( std::auto_ptr<Y> & r )
     {
-        if (i > 1)
-            msg += ' ';
-
-        lua_pushvalue(L, -1);
-        lua_pushvalue(L, i);
-        lua_call(L, 1, 1);
-
-        const char* str = lua_tostring(L, -1);
-
-        if (!str)
-            throw std::runtime_error("'tostring' must return a string to 'print'");
-
-        msg += str;
-
-        if (i > 1)
-            fputs("\t", stdout);
-
-        lua_pop(L, 1);
+        this_type(r).swap(*this);
+        return *this;
     }
 
-    StandardOut::singleton()->print(MESSAGE_OUTPUT, msg.c_str());
+#if !defined( BOOST_NO_SFINAE ) && !defined( BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION )
 
-    return 0;
-}
-
-void ScriptContext::onEvent(const RunService* source, Heartbeat event)
-{
-    ptime t(second_clock::local_time());
-
-    if (t >= nextPendingScripts)
+    template<class Ap>
+    typename boost::detail::sp_enable_if_auto_ptr< Ap, shared_ptr & >::type operator=( Ap r )
     {
-        startPendingScripts();
-        nextPendingScripts = second_clock::local_time() + seconds(1);
+        this_type( r ).swap( *this );
+        return *this;
     }
 
-    if (yieldEvent)
-        yieldEvent->resume(event);
 
-    if (globalState)
-        lua_gc(globalState, LUA_GCSTEP, 1);
-}
+#endif // BOOST_NO_SFINAE, BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
 
-void ScriptContext::startPendingScripts()
-{
-    if (!scriptsDisabled)
+#endif // BOOST_NO_AUTO_PTR
+
+    void reset() // never throws in 1.30+
     {
-        std::vector<boost::shared_ptr<Script>> copy(pendingScripts);
-        pendingScripts.erase(pendingScripts.begin(), pendingScripts.end());
-        std::for_each(copy.begin(), copy.end(), boost::bind(&ScriptContext::startScript, this, _1));
-    }
-}
-
-void ScriptContext::onEvent(const RunService* source, RunTransition event)
-{
-    gc();
-}
-
-void ScriptContext::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-{
-	Notifier<RunService, RunTransition>::disconnect(runService, this);
-    Notifier<RunService, Heartbeat>::disconnect(runService, this);
-
-    if (oldProvider && !newProvider)
-        closeState();
-
-    if (statsItem)
-    {
-        statsItem->setParent(NULL);
-        statsItem.reset();
+        this_type().swap(*this);
     }
 
-    Instance::onServiceProvider(oldProvider, newProvider);
-
-    RunService* newRunService;
-
-    if (newProvider)
+    template<class Y> void reset(Y * p) // Y must be complete
     {
-        Stats::StatsService* statsService = newProvider->create<Stats::StatsService>();
-        if (statsService)
-        {
-            statsItem = Creatable<Instance>::create<Stats::Item>("Lua");
-            statsItem->setParent(statsService);
-            statsItem->createBoundChildItem("disabled", scriptsDisabled);
-            statsItem->createChildItem<int>("threads", boost::bind(&ScriptContext::getThreadCount, this));
-        }
-
-        newRunService = newProvider->create<RunService>();
-    }
-    else
-    {
-        newRunService = NULL;
+        BOOST_ASSERT(p == 0 || p != px); // catch self-reset errors
+        this_type(p).swap(*this);
     }
 
-    runService = shared_from(newRunService);
-    Notifier<RunService, RunTransition>::connect(runService, this);
-    Notifier<RunService, Heartbeat>::connect(runService, this);
-}
-
-void ScriptContext::onChangedScriptEnabled(const Reflection::PropertyDescriptor&)
-{
-    if (scriptsDisabled)
-        startPendingScripts();
-}
-
-void ScriptContext::addScript(Script* script)
-{
-    if (scripts.insert(script).second == true)
+    template<class Y, class D> void reset( Y * p, D d )
     {
-        if (!script->isDisabled())
-            startScript(shared_from(script));
+        this_type( p, d ).swap( *this );
     }
-}
 
-void ScriptContext::disassociateState(Script* script)
-{
-    Association<Instance>& assoc = script->association();
-
-    if (assoc.contains<Lua::ThreadRef::NodePtr>())
+    template<class Y, class D, class A> void reset( Y * p, D d, A a )
     {
-        assoc.get<Lua::ThreadRef::NodePtr>()->eraseAllRefs();
-        assoc.remove<Lua::ThreadRef::NodePtr>();
+        this_type( p, d, a ).swap( *this );
     }
-}
 
-void ScriptContext::removeScript(Script* script)
-{
-    if (scripts.erase(script))
+    reference operator* () const // never throws
     {
-        disassociateState(script);
-
-        std::vector<boost::shared_ptr<Script>>::iterator it = std::find(pendingScripts.begin(), pendingScripts.end(), shared_from(script));
-        if (it != pendingScripts.end())
-            pendingScripts.erase(it);
+        BOOST_ASSERT(px != 0);
+        return *px;
     }
-}
 
-void ScriptContext::reportError(lua_State* thread)
-{
-    lua_Debug ar;
-    int level = 0;
-
-    if (lua_getstack(thread, level++, &ar))
+    T * operator-> () const // never throws
     {
-        StandardOut::singleton()->print(MESSAGE_ERROR, lua_tostring(thread, -1));
-
-        if (!DebugSettings::singleton().getStackTracingEnabled())
-            return;
-
-        bool hasStack = false;
-        while (lua_getstack(thread, level++, &ar))
-        {
-            hasStack = true;
-            lua_getinfo(thread, "nSlu", &ar);
-
-            StandardOut::singleton()->print(
-                MESSAGE_INFO,
-                "   stack %s, line %d: %s %s",
-                ar.source,
-                ar.currentline,
-                ar.namewhat,
-                ar.name);
-        }
-
-        if (hasStack)
-            StandardOut::singleton()->print(MESSAGE_INFO, "   stack end");
-    }
-    else
-    {
-        StandardOut::singleton()->print(MESSAGE_ERROR, lua_tostring(thread, -1));
-    }
-}
-
-ScriptContext::ScriptImpersonator::ScriptImpersonator(lua_State* thread)
-    : Security::Impersonator(getThreadIdentity(thread))
-{
-}
-
-ScriptContext::Result ScriptContext::resume(lua_State* thread, int narg)
-{
-    int n;
-    {
-        ScriptImpersonator impersonate(thread);
-        n = lua_resume(thread, narg);
+        BOOST_ASSERT(px != 0);
+        return px;
     }
     
-    switch (n)
+    T * get() const // never throws
     {
-        case 0:
-            return Success;
-
-        case 1:
-            if (!RobloxExtraSpace::get(thread)->yieldCaptured)
-                yieldEvent->queueWaiter(thread);
-
-            return Yield;
-
-        default:
-            reportError(thread);
-            return Error;
+        return px;
     }
-}
 
-static std::string getFullName(Instance* instance)
+    // implicit conversion to "bool"
+
+#if defined(__SUNPRO_CC) && BOOST_WORKAROUND(__SUNPRO_CC, <= 0x580)
+
+    operator bool () const
+    {
+        return px != 0;
+    }
+
+#elif defined( _MANAGED )
+
+    static void unspecified_bool( this_type*** )
+    {
+    }
+
+    typedef void (*unspecified_bool_type)( this_type*** );
+
+    operator unspecified_bool_type() const // never throws
+    {
+        return px == 0? 0: unspecified_bool;
+    }
+
+#elif \
+    ( defined(__MWERKS__) && BOOST_WORKAROUND(__MWERKS__, < 0x3200) ) || \
+    ( defined(__GNUC__) && (__GNUC__ * 100 + __GNUC_MINOR__ < 304) )
+
+    typedef T * (this_type::*unspecified_bool_type)() const;
+    
+    operator unspecified_bool_type() const // never throws
+    {
+        return px == 0? 0: &this_type::get;
+    }
+
+#else 
+
+    typedef T * this_type::*unspecified_bool_type;
+
+    operator unspecified_bool_type() const // never throws
+    {
+        return px == 0? 0: &this_type::px;
+    }
+
+#endif
+
+    // operator! is redundant, but some compilers need it
+
+    bool operator! () const // never throws
+    {
+        return px == 0;
+    }
+
+    bool unique() const // never throws
+    {
+        return pn.unique();
+    }
+
+    long use_count() const // never throws
+    {
+        return pn.use_count();
+    }
+
+    void swap(shared_ptr<T> & other) // never throws
+    {
+        std::swap(px, other.px);
+        pn.swap(other.pn);
+    }
+
+    template<class Y> bool _internal_less(shared_ptr<Y> const & rhs) const
+    {
+        return pn < rhs.pn;
+    }
+
+    void * _internal_get_deleter(std::type_info const & ti) const
+    {
+        return pn.get_deleter(ti);
+    }
+
+// Tasteless as this may seem, making all members public allows member templates
+// to work in the absence of member template friends. (Matthew Langston)
+
+#ifndef BOOST_NO_MEMBER_TEMPLATE_FRIENDS
+
+private:
+
+    template<class Y> friend class shared_ptr;
+    template<class Y> friend class weak_ptr;
+
+
+#endif
+
+    T * px;                     // contained pointer
+    boost::detail::shared_count pn;    // reference counter
+
+};  // shared_ptr
+
+template<class T, class U> inline bool operator==(shared_ptr<T> const & a, shared_ptr<U> const & b)
 {
-    Instance* parent = instance->getParent();
-
-    if (parent)
-    {
-        if (parent->getParent())
-            return getFullName(parent) + "." + instance->getName();
-        else
-            return instance->getName();
-    }
-    else 
-    {
-        return NULL; 
-    }
+    return a.get() == b.get();
 }
 
-// TODO: 99.78% (functional match)
-// use of registers swapped in codegen
-void ScriptContext::startScript(boost::shared_ptr<Script> script)
+template<class T, class U> inline bool operator!=(shared_ptr<T> const & a, shared_ptr<U> const & b)
 {
-    if (scriptsDisabled)
-    {
-        pendingScripts.push_back(script);
-        return;
-    }
-
-    boost::shared_ptr<const std::string> code = script->requestCode();
-
-    if (!code)
-    {
-        pendingScripts.push_back(script);
-        return;
-    }
-
-    openState();
-    lua_State* thread = lua_newthread(globalState);
-
-    if (!thread)
-    {
-        StandardOut::singleton()->print(MESSAGE_ERROR, "Unable to create a new thread for %s. It did not execute", script->getName().c_str());
-        return;
-    }
-
-    Lua::ScopedPopper popper(globalState, 1);
-
-    // interestingly this is just ScriptContext::sandboxThread
-    lua_newtable(thread);
-    lua_newtable(thread);
-    lua_pushliteral(thread, "__index");
-    lua_pushvalue(thread, LUA_GLOBALSINDEX);
-    lua_settable(thread, -3);
-    lua_setmetatable(thread, -2);
-    lua_replace(thread, LUA_GLOBALSINDEX);
-
-    setThreadIdentity(thread, Security::GameScript);
-
-    RBXASSERT(!script->association().contains<Lua::ThreadRef::NodePtr>());
-    script->association().get<Lua::ThreadRef::NodePtr>() = Lua::ThreadRef::Node::create(thread);
-
-    RBXASSERT(lua_gettop(thread) == 0);
-    Lua::ObjectBridge::push(thread, script);
-    lua_setfield(thread, LUA_GLOBALSINDEX, "script");
-
-    std::string name = std::string("=") + getFullName(script.get());
-
-    if (luaL_loadbuffer(thread, code->c_str(), code->length(), name.c_str()))
-    {
-        StandardOut::singleton()->print(MESSAGE_ERROR, lua_tostring(thread, -1));
-        lua_pop(thread, 1);
-    }
-    else
-    {
-        resume(thread, 0);
-    }
-
-    lua_settop(thread, 0);
+    return a.get() != b.get();
 }
+
+#if __GNUC__ == 2 && __GNUC_MINOR__ <= 96
+
+// Resolve the ambiguity between our op!= and the one in rel_ops
+
+template<class T> inline bool operator!=(shared_ptr<T> const & a, shared_ptr<T> const & b)
+{
+    return a.get() != b.get();
+}
+
+#endif
+
+template<class T, class U> inline bool operator<(shared_ptr<T> const & a, shared_ptr<U> const & b)
+{
+    return a._internal_less(b);
+}
+
+template<class T> inline void swap(shared_ptr<T> & a, shared_ptr<T> & b)
+{
+    a.swap(b);
+}
+
+template<class T, class U> shared_ptr<T> static_pointer_cast(shared_ptr<U> const & r)
+{
+    return shared_ptr<T>(r, boost::detail::static_cast_tag());
+}
+
+template<class T, class U> shared_ptr<T> const_pointer_cast(shared_ptr<U> const & r)
+{
+    return shared_ptr<T>(r, boost::detail::const_cast_tag());
+}
+
+template<class T, class U> shared_ptr<T> dynamic_pointer_cast(shared_ptr<U> const & r)
+{
+    return shared_ptr<T>(r, boost::detail::dynamic_cast_tag());
+}
+
+// shared_*_cast names are deprecated. Use *_pointer_cast instead.
+
+template<class T, class U> shared_ptr<T> shared_static_cast(shared_ptr<U> const & r)
+{
+    return shared_ptr<T>(r, boost::detail::static_cast_tag());
+}
+
+template<class T, class U> shared_ptr<T> shared_dynamic_cast(shared_ptr<U> const & r)
+{
+    return shared_ptr<T>(r, boost::detail::dynamic_cast_tag());
+}
+
+template<class T, class U> shared_ptr<T> shared_polymorphic_cast(shared_ptr<U> const & r)
+{
+    return shared_ptr<T>(r, boost::detail::polymorphic_cast_tag());
+}
+
+template<class T, class U> shared_ptr<T> shared_polymorphic_downcast(shared_ptr<U> const & r)
+{
+    BOOST_ASSERT(dynamic_cast<T *>(r.get()) == r.get());
+    return shared_static_cast<T>(r);
+}
+
+// get_pointer() enables boost::mem_fn to recognize shared_ptr
+
+template<class T> inline T * get_pointer(shared_ptr<T> const & p)
+{
+    return p.get();
+}
+
+// operator<<
+
+#if defined(__GNUC__) &&  (__GNUC__ < 3)
+
+template<class Y> std::ostream & operator<< (std::ostream & os, shared_ptr<Y> const & p)
+{
+    os << p.get();
+    return os;
+}
+
+#else
+
+// in STLport's no-iostreams mode no iostream symbols can be used
+#ifndef _STLP_NO_IOSTREAMS
+
+# if defined(BOOST_MSVC) && BOOST_WORKAROUND(BOOST_MSVC, < 1300 && __SGI_STL_PORT)
+// MSVC6 has problems finding std::basic_ostream through the using declaration in namespace _STL
+using std::basic_ostream;
+template<class E, class T, class Y> basic_ostream<E, T> & operator<< (basic_ostream<E, T> & os, shared_ptr<Y> const & p)
+# else
+template<class E, class T, class Y> std::basic_ostream<E, T> & operator<< (std::basic_ostream<E, T> & os, shared_ptr<Y> const & p)
+# endif 
+{
+    os << p.get();
+    return os;
+}
+
+#endif // _STLP_NO_IOSTREAMS
+
+#endif // __GNUC__ < 3
+
+// get_deleter (experimental)
+
+#if ( defined(__GNUC__) && BOOST_WORKAROUND(__GNUC__, < 3) ) || \
+    ( defined(__EDG_VERSION__) && BOOST_WORKAROUND(__EDG_VERSION__, <= 238) ) || \
+    ( defined(__HP_aCC) && BOOST_WORKAROUND(__HP_aCC, <= 33500) )
+
+// g++ 2.9x doesn't allow static_cast<X const *>(void *)
+// apparently EDG 2.38 and HP aCC A.03.35 also don't accept it
+
+template<class D, class T> D * get_deleter(shared_ptr<T> const & p)
+{
+    void const * q = p._internal_get_deleter(typeid(D));
+    return const_cast<D *>(static_cast<D const *>(q));
+}
+
+#else
+
+template<class D, class T> D * get_deleter(shared_ptr<T> const & p)
+{
+    return static_cast<D *>(p._internal_get_deleter(typeid(D)));
+}
+
+#endif
+
+} // namespace boost
+
+#ifdef BOOST_MSVC
+# pragma warning(pop)
+#endif    
+
+#endif  // #if defined(BOOST_NO_MEMBER_TEMPLATES) && !defined(BOOST_MSVC6_MEMBER_TEMPLATES)
+
+#endif  // #ifndef BOOST_SHARED_PTR_HPP_INCLUDED
+
+
+#include "reflection/reflection.h"
+#include "script/ThreadRef.h"
+#include "script/LuaAtomicClasses.h"
+#include "script/LuaInstanceBridge.h"
+#include "lua.h"
+
+#include "G3D/Vector2.h"
+namespace RBX { namespace Reflection {
+struct ExeType2009 { void* vptr; const void* name; const void* type; const void* tag; bool isEnum; bool isNumber; };
+struct Tuple {
+    ValueCollection values;
+    Tuple() {}
+    Tuple(size_t count):values(count) {}
+    Tuple(const Tuple& other):values(other.values) {}
+    Value& at(size_t i) { return values[i]; }
+    const Value& at(size_t i) const { return values[i]; }
+};
+} }
+namespace RBX
+{
+    namespace Lua
+    {
+        class LuaArguments : public Reflection::FunctionDescriptor::Arguments 
+        {
+        private:
+            const int offset;
+            lua_State* L;
+  
+        public:
+            LuaArguments(lua_State* L, int offset)
+                : offset(offset),
+                  L(L)
+            {
+            }
+            virtual size_t size() const
+            {
+                // TODO: check match
+                return lua_gettop(L)-1;
+            }
+            virtual void get(int index, Reflection::Value& value) const
+            {
+                // TODO: check match
+                int pos = index + offset;
+                RBXASSERT(pos > 0);
+                get(L, pos, value);
+            }
+            int push(const Reflection::Value& value) const
+            {
+                return push(value, L);
+            }
+            int pushReturnValue() const
+            {
+                return push(returnValue);
+            }
+
+        public:
+            // TODO: 97.00%
+            static void get(lua_State* L, int luaIndex, Reflection::Value& value)
+            {
+                // (018310)  S_BPREL32: [FFFFFF80], Type:             0x11DC, n ; const int
+                // (018320)  S_BPREL32: [FFFFFF84], Type:             0x928D, values ; *std::vector<RBX::Reflection::Value> / *ValueCollection
+
+                if (luaIndex <= lua_gettop(L))
+                {
+                    switch (lua_type(L, luaIndex))
+                    {
+                    case LUA_TNUMBER:
+                    {
+                        float rhs = lua_tonumber(L, luaIndex);
+                        value = rhs;
+                        return;
+                    }
+
+                    case LUA_TBOOLEAN:
+                    {
+                        bool rhs = lua_toboolean(L, luaIndex) != 0;
+                        value = rhs;
+                        return;
+                    }
+
+                    case LUA_TSTRING:
+                    {
+                        const char* str = lua_tostring(L, luaIndex);
+                        value = std::string(str);
+                        return;
+                    }
+
+                    case LUA_TTABLE:
+                    {
+                        const int n = static_cast<const int>(lua_objlen(L, luaIndex));
+                        value = Reflection::ValueCollection(n);
+                        Reflection::ValueCollection& values = value.cast<Reflection::ValueCollection&>();
+
+                        if (n >= 1)
+                        {
+                            int i = 1;
+                            do
+                            {
+                                Reflection::Value& ival = values[i-1];
+                                lua_rawgeti(L, luaIndex, i);
+                                LuaArguments::get(L, -1, ival);
+                                lua_pop(L, 1);
+                                i++;
+                            } while (i <= n);
+                        }
+
+                        return;
+                    }
+
+                    case LUA_TNIL:
+                        value = Reflection::Value();
+                        break;
+
+                    case LUA_TFUNCTION:
+                        value = lua_tofunction(L, luaIndex);
+                        return;
+
+                    case LUA_TUSERDATA:
+                        if (CoordinateFrameBridge::getValue(L, luaIndex, value)
+                            || Vector3Bridge::getValue(L, luaIndex, value)
+                            || Color3Bridge::getValue(L, luaIndex, value)
+                            || BrickColorBridge::getValue(L, luaIndex, value)
+                            || ObjectBridge::getPtr(L, luaIndex, value))
+                            return;
+
+                        value = Reflection::Value();
+                        break;
+
+                    default:
+                        value = Reflection::Value();
+                        break;
+                    }
+                }
+            }
+
+            static int push(const Reflection::Value& value, lua_State* const L);
+        public:
+            template <typename T>
+            static int pushTable(T _First, T _Last, lua_State* const L)
+            {
+                lua_createtable(L, _Last-_First, 0);
+
+                int i = 0;
+                for (; _First != _Last; _First++)
+                {
+                    push(*_First, L);
+                    lua_rawseti(L, -2, ++i);
+                }
+
+                return 1;
+            }
+        };
+    }
+}
+
+int RBX::Lua::LuaArguments::push(const Reflection::Value& value, lua_State* const L)
+{
+                if (value.isType<void>())
+                    return 0;
+
+                if (value.isType<bool>())
+                {
+                    lua_pushboolean(L, value.cast<const bool&>());
+                    return 1;
+                }
+
+                bool isNumber = reinterpret_cast<const Reflection::ExeType2009&>(value.type()).isNumber;
+                if (isNumber)
+                {
+                    lua_pushnumber(L, value.get<double>());
+                    return 1;
+                }
+
+                if (value.isType<FunctionRef>())
+                {
+                    lua_pushfunction(L, value.cast<const FunctionRef&>());
+                    return 1;
+                }
+
+                if (value.isType<std::string>())
+                {
+                    lua_pushstring(L, value.cast<const std::string&>().c_str());
+                    return 1;
+                }
+
+                if (value.isType<G3D::Vector3>())
+                {
+                    Vector3Bridge::pushVector3(L, value.cast<const G3D::Vector3&>());
+                    return 1;
+                }
+
+                if (value.isType<G3D::Vector2>())
+                {
+                    Bridge<G3D::Vector2, true>::pushNewObject(L, value.cast<const G3D::Vector2&>());
+                    return 1;
+                }
+
+                if (value.isType<G3D::CoordinateFrame>())
+                {
+                    CoordinateFrameBridge::pushCoordinateFrame(L, value.cast<const G3D::CoordinateFrame&>());
+                    return 1;
+                }
+
+                if (value.isType<G3D::Color3>())
+                {
+                    Color3Bridge::pushColor3(L, value.cast<const G3D::Color3&>());
+                    return 1;
+                }
+
+                if (value.isType<BrickColor>())
+                {
+                    BrickColorBridge::pushNewObject(L, value.cast<const BrickColor&>());
+                    return 1;
+                }
+
+                if (value.isType<ContentId>())
+                {
+                    lua_pushstring(L, value.cast<const ContentId&>().c_str());
+                    return 1;
+                }
+
+                if (value.isType<boost::shared_ptr<Instance>>())
+                {
+                    ObjectBridge::push(L, value.cast<const boost::shared_ptr<Instance>&>());
+                    return 1;
+                }
+
+                if (value.isType<boost::shared_ptr<Reflection::DescribedBase>>())
+                {
+                    ObjectBridge::push(L, value.cast<const boost::shared_ptr<Reflection::DescribedBase>&>());
+                    return 1;
+                }
+
+                if (value.isType<Reflection::ValueCollection>())
+                {
+                    const Reflection::ValueCollection& collection = value.cast<const Reflection::ValueCollection&>();
+                    return pushTable(collection.begin(), collection.end(), L);
+                }
+
+                if (value.isType<Reflection::Tuple>())
+                {
+                    const Reflection::Tuple& tuple = value.cast<const Reflection::Tuple&>();
+                    int count = 0;
+                    Reflection::ValueCollection::const_iterator iter = tuple.values.begin();
+                    Reflection::ValueCollection::const_iterator end = tuple.values.end();
+                    while (iter != end) {
+                        count += push(*iter, L);
+                        ++iter;
+                    }
+                    return count;
+                }
+
+                if (value.isType<boost::shared_ptr<const Instances>>())
+                {
+                    boost::shared_ptr<const Instances> values = value.cast<boost::shared_ptr<const Instances>>();
+
+                    if (values)
+                    {
+                        return pushTable(values->begin(), values->end(), L);
+                    }
+                    else
+                    {
+                        lua_newtable(L);
+                        return 1;
+                    }
+                }
+
+                return 0;
+            }
+

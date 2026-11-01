@@ -46,8 +46,7 @@ namespace RBX
                 lua_State* L = it->thread->thread();
                 const int oldTop = lua_gettop(L);
                 lua_pushnumber(L, it->elapsedTime);
-                lua_pushnumber(L, heartbeat.time);
-                context->resume(L, 2);
+                context->resume(L, 1);
                 lua_settop(L, oldTop);
             }
         }

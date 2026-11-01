@@ -160,11 +160,6 @@ namespace RBX
 	}
 }
 
-#include <boost/shared_ptr.hpp>
-namespace RBX { class Instance; namespace Reflection {
-template<> boost::shared_ptr<Instance>& Value::convert<boost::shared_ptr<Instance> >();
-}}
-
 // rebuild overlay: template bodies rbxgs declares but never defines
 #include <stdexcept>
 #include <stdio.h>

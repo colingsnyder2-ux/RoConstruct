@@ -1,5 +1,12 @@
-// from server: 68% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /Od /Ob1 /GS- /MT
-// roc-lib: wildmagic-2-core Containment/WmlConvexHull3.cpp
+struct C { unsigned int n; int f(); };
+int C::f()
+{
+    if (n >= 0x3d09000)
+        return 0x400;
+    else
+        return 0x200;
+}

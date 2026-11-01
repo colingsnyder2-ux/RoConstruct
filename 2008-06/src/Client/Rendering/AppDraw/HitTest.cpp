@@ -1,3 +1,5 @@
+// 2008 rbxgs-appdraw was compiled with /fp:fast
+#pragma float_control(precise, off)
 #include "AppDraw/HitTest.h"
 #include "G3D/CollisionDetection.h"
 #include "G3D/AABox.h"

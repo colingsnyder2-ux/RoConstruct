@@ -17,8 +17,8 @@ namespace RBX
             {
             public:
                 boost::shared_ptr<ThreadRef> thread;
-                double requestedDelay;
-                double elapsedTime;
+                float requestedDelay;
+                float elapsedTime;
   
             public: 
                 WaitingThread(lua_State* L, float requestedDelay)

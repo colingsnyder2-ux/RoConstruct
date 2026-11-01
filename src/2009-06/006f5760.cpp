@@ -1,208 +1,60 @@
-// from server: 65% by colin
+// from server: 84% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client App/v8world/JointStage.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "v8world/JointStage.h"
-
-#include "decomp.h"
-#include "v8world/ClumpStage2.h"
-#include "v8world/Joint.h"
-#include "v8world/Primitive.h"
-
-#include <cstddef>
-#include <vector>
-
+#include <map>
+#include <set>
 namespace RBX {
-ClumpStage* JointStage::getClumpStage()
-{
-	return static_cast<ClumpStage*>(getDownstream());
-}
-
-void JointStage::moveEdgeToDownstream(Edge* e)
-{
-	getDownstreamWS()->onEdgeAdded(e);
-}
-
-void JointStage::removeEdgeFromDownstream(Edge* e)
-{
-	getDownstreamWS()->onEdgeRemoving(e);
-}
-
-void JointStage::removeFromList(Joint* j)
-{
-	incompleteJoints.erase(j);
-}
-
-void JointStage::insertToList(Joint* j)
-{
-	incompleteJoints.insert(j);
-}
-
-void JointStage::insertToMap(Joint* j, Primitive* p)
-{
-	if (p != NULL) {
-		jointMap.insert(std::make_pair(p, j));
-	}
-}
-
-bool JointStage::edgeHasPrimitivesDownstream(Edge* e)
-{
-	Primitive* prim0 = e->getPrimitive(0);
-	Primitive* prim1 = e->getPrimitive(1);
-
-	return prim0 != NULL && prim1 != NULL && prim0->inPipeline() && prim1->inPipeline() &&
-		   prim0->downstreamOfStage(this) && prim1->downstreamOfStage(this);
-}
-
-// FUNCTION: WEBSERVICE 0x10118350
-void JointStage::removeFromMap(Joint* j, Primitive* p)
-{
-	do {
-		if (p == NULL) {
-			break;
-		}
-
-		JointMap::iterator pos;
-
-		for (pos = jointMap.lower_bound(p); pos != jointMap.upper_bound(p); ++pos) {
-			if (pos->second == j) {
-				jointMap.erase(pos);
-				return;
-			}
-		}
-	} while (0);
-}
-
-// FUNCTION: WEBSERVICE 0x10118480
-void JointStage::onJointPrimitiveNulling(Joint* j, Primitive* nulling)
-{
-	if (j->downstreamOfStage(this)) {
-		removeEdgeFromDownstream(j);
-
-		insertToList(j);
-
-		insertToMap(j, j->otherPrimitive(nulling));
-	}
-	else {
-		removeFromMap(j, nulling);
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x10118510
-void JointStage::onJointPrimitiveSet(Joint* j, Primitive* p)
-{
-	if (edgeHasPrimitivesDownstream(j)) {
-		removeFromList(j);
-
-		removeFromMap(j, j->otherPrimitive(p));
-
-		moveEdgeToDownstream(j);
-	}
-	else {
-		insertToMap(j, p);
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x101185c0
-void JointStage::onEdgeAdded(Edge* e)
-{
-	e->putInPipeline(this);
-
-	if (edgeHasPrimitivesDownstream(e)) {
-		moveEdgeToDownstream(e);
-	}
-	else {
-		Joint* j = static_cast<Joint*>(e);
-
-		insertToList(j);
-		insertToMap(j, j->getPrimitive(0));
-		insertToMap(j, j->getPrimitive(1));
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x10118680
-void JointStage::onEdgeRemoving(Edge* e)
-{
-	if (e->downstreamOfStage(this)) {
-		removeEdgeFromDownstream(e);
-	}
-	else {
-		Joint* j = static_cast<Joint*>(e);
-
-		removeFromList(j);
-		removeFromMap(j, j->getPrimitive(0));
-		removeFromMap(j, j->getPrimitive(1));
-	}
-
-	e->removeFromPipeline(this);
-}
-
-// FUNCTION: WEBSERVICE 0x10118700
-JointStage::JointStage(IStage* upstream, World* world) : IWorldStage(upstream, new ClumpStage(this, world), world)
+class Kernel;
+class Edge;
+class World;
+class Joint;
+class Primitive;
+class __declspec(novtable) IStage {
+public:
+    IStage(IStage* upstream, IStage* downstream) : upstream(upstream), downstream(downstream) {}
+    virtual ~IStage() { delete downstream; }
+    virtual int getStageType() = 0;
+    virtual void stepWorld(int worldStepId, int uiStepId, bool throttling);
+    virtual Kernel* getKernel();
+private:
+    IStage* upstream;
+    IStage* downstream;
+};
+class __declspec(novtable) IWorldStage : public IStage {
+public:
+    IWorldStage(IStage* upstream, IStage* downstream, World* world)
+        : IStage(upstream, downstream), world(world) {}
+    virtual void onEdgeAdded(Edge* edge);
+    virtual void onEdgeRemoving(Edge* edge);
+    virtual int getMetric(int metricType);
+private:
+    World* world;
+};
+class ClumpStage : public IStage {
+    int pad;
+public:
+    ClumpStage(IStage* upstream, World* world);
+    virtual int getStageType();
+};
+class JointStage : public IWorldStage {
+public:
+    typedef std::multimap<Primitive*, Joint*> JointMap;
+    JointStage(IStage* upstream, World* world);
+    virtual ~JointStage() {}
+    virtual int getStageType() { return 0; }
+    virtual void onEdgeAdded(Edge* edge);
+    virtual void onEdgeRemoving(Edge* edge);
+private:
+    int a;
+    int b;
+    JointMap jointMap;
+    std::set<Joint*> incompleteJoints;
+    std::set<Joint*> incompleteJoints2;
+};
+JointStage::JointStage(IStage* upstream, World* world)
+    : IWorldStage(upstream, new ClumpStage(this, world), world), a(0), b(0)
+    , jointMap(JointMap::key_compare(), JointMap::allocator_type())
 {
 }
-
-// STUB: WEBSERVICE 0x101188f0
-void JointStage::onPrimitiveAdded(Primitive* p)
-{
-	p->putInPipeline(this);
-
-	getClumpStage()->onPrimitiveAdded(p);
-
-	std::vector<Joint*> jointsToPush;
-
-	JointMap::iterator pos;
-
-	for (pos = jointMap.lower_bound(p); pos != jointMap.upper_bound(p); ++pos) {
-		if (edgeHasPrimitivesDownstream(pos->second)) {
-			jointsToPush.push_back(pos->second);
-		}
-	}
-
-	for (unsigned int i = 0; i < jointsToPush.size(); ++i) {
-		Joint* j = jointsToPush[i];
-
-		removeFromList(j);
-		removeFromMap(j, p);
-		removeFromMap(j, j->otherPrimitive(p));
-
-		moveEdgeToDownstream(j);
-	}
 }
-
-// FUNCTION: WEBSERVICE 0x10118b40
-void JointStage::onPrimitiveRemoving(Primitive* p)
-{
-	std::vector<Joint*> jointsToPop;
-
-	Joint* j = p->getFirstJoint();
-
-	while (j != NULL) {
-		if (j->getJointType() != Joint::ANCHOR_JOINT && j->getJointType() != Joint::FREE_JOINT) {
-
-			jointsToPop.push_back(j);
-		}
-
-		j = p->getNextJoint(j);
-	}
-
-	for (unsigned int i = 0; i < jointsToPop.size(); ++i) {
-
-		Joint* joint = jointsToPop[i];
-
-		removeEdgeFromDownstream(joint);
-
-		insertToList(joint);
-		insertToMap(joint, p);
-		insertToMap(joint, joint->otherPrimitive(p));
-	}
-
-	getClumpStage()->onPrimitiveRemoving(p);
-
-	p->removeFromPipeline(this);
-}
-
-} // namespace RBX

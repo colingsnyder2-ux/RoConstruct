@@ -1,4 +1,4 @@
-// from server: 70% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by nuck16
 // roc 2008-06 00425c90  unit: CRobloxTreeCtrl  size: 240 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00425c90
@@ -160,9 +160,13 @@ struct Primary {
 
 struct Secondary {
     virtual void secondaryFunction();
-    char padding[0x78];
+    char padding[0x7c];
 };
 
+extern "C" __declspec(dllimport) long __stdcall InterlockedIncrement(long volatile*);
+extern long g_counter;
+struct CountedBase { CountedBase() { InterlockedIncrement(&g_counter); } };
+struct Weak : CountedBase { void* a; void* b; Weak() : a(0), b(0) {} ~Weak(); };
 struct Base : Primary, Secondary {
     Base();
     ~Base();
@@ -238,7 +242,8 @@ inline PointerMember::PointerMember() : value(0)
 }
 
 struct RegBase { RegBase(); ~RegBase(); virtual void regFunction(); };
-struct CRobloxTreeCtrl : Base, RegBase, Interface {
+struct CRobloxTreeCtrl : Base, RegBase {
+    Weak weak;
     Menu menu;
     unsigned char flag0;
     unsigned char flag1;

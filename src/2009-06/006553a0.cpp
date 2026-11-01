@@ -1,37 +1,38 @@
-// from server: 69% by colin
+// from server: 100% by EspClaude
+// roc 2009-06 006553a0  unit: RBX::VArrowTool::?$TToolVerb  size: 70 bytes
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+
+struct MouseCommand;
+struct Workspace {
+    void setNullMouseCommand();
+    void setMouseCommand(MouseCommand* c);
+};
+struct Owner { char pad[0x20c]; Workspace* workspace; };
+struct IDataState;
+
 struct Verb {
-    virtual bool isEnabled();
-    virtual bool isChecked();
-    virtual bool isSelected();
-    virtual void getText();
-    virtual void doIt(int);
-    virtual bool isToggled();
+    virtual ~Verb();
+    virtual bool isEnabled() const;
+    virtual bool isChecked() const;
+    virtual bool isSelected() const;
+    virtual void doIt(IDataState*);
+    virtual MouseCommand* newMouseCommand();
+    char pad[8];
+    Owner* owner;
 };
 
 struct TToolVerb : Verb {
-    char pad[0x18];
+    char pad2[0xc];
     bool toggle;
-    int field_0xc;
-    bool isEnabled();
-    void doIt(int);
+    void doIt(IDataState*);
 };
 
-bool TToolVerb::isEnabled() {
-    if (!Verb::isEnabled())
-        return false;
-    if (!toggle)
-        return false;
-    return true;
-}
-
-void TToolVerb::doIt(int param) {
-    if (Verb::isEnabled() && toggle) {
-        extern void __stdcall func_62b750(int);
-        func_62b750(*(int*)(field_0xc + 0x20c));
-    } else {
-        extern void __stdcall func_62b7a0(int, int);
-        int v = *(int*)(field_0xc + 0x20c);
-        int r = ((int (__thiscall*)(TToolVerb*))*(void**)(*(int*)this + 0x14))(this);
-        func_62b7a0(v, r);
+void TToolVerb::doIt(IDataState*) {
+    if (isSelected() && toggle)
+        owner->workspace->setNullMouseCommand();
+    else {
+        Workspace* w = owner->workspace;
+        w->setMouseCommand(newMouseCommand());
     }
 }

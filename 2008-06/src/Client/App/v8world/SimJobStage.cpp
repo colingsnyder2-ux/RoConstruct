@@ -46,28 +46,10 @@ namespace RBX
 #pragma warning (pop)
 
 	SimJobStage::~SimJobStage()
-	{ RBXASSERT(jobs.empty()); }
-
-	// 0064d0f0 / 0064d180 list and tracker contract. Assembly binding is separate
-	// while donor Mechanism still groups multiple assemblies. Jobs stay caller-owned.
-	void SimJobStage::insertJob(SimJob* job)
-	{
-		jobs.push_back(job);
-		job->jobIterator = --jobs.end();
-	}
-
-	void SimJobStage::removeJob(SimJob* job)
-	{
-		std::list<SimJob*>::iterator next = job->jobIterator;
-		++next;
-		if (next == jobs.end()) next = jobs.begin();
-		MechanismTracker::transferTrackers(job, jobs.size() > 1 ? *next : NULL);
-		jobs.erase(job->jobIterator);
-	}
+	{}
 
 	void SimJobStage::insertMechanism(Mechanism* m)
 	{
-		insertJob(m);
 		this->mechanisms.push_back(m);
 		std::list<Mechanism*>::iterator mechEnd = this->mechanisms.end();
 		mechEnd--;
@@ -88,7 +70,8 @@ namespace RBX
 	void SimJobStage::destroyMechanism(Mechanism* m)
 	{
 		RBXASSERT(std::find(this->mechanisms.begin(), this->mechanisms.end(), m) == m->myIt);
-		removeJob(m);
+		Mechanism* next = this->mechanisms.size() > 1 ? this->nextMechanism(this->mechanisms, m) : NULL;
+		MechanismTracker::transferTrackers(m, next);
 		this->mechanisms.erase(m->myIt);
 		delete m;
 	}

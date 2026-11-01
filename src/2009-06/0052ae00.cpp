@@ -1,21 +1,23 @@
-// from server: 70% by atomic.potato
-extern "C" int __cdecl sub_719EB6(int, int, int);
-
-struct RBX_MeshPartSkinedKey
-{
-    int f(int, int);
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+#include <string.h>
+#include <algorithm>
+namespace RBX {
+struct MeshTrussPartKey {
+    char data[0x31];
+    size_t copyTo(void* dst, size_t n) const;
 };
-
-int RBX_MeshPartSkinedKey::f(int a, int b)
+size_t MeshTrussPartKey::copyTo(void* dst, size_t n) const
 {
-    int v = 0x31;
-    if ((unsigned)a > 0)
-    {
-        int t = a;
-        int *p = ((unsigned)a > 0x31) ? &v : &t;
-        int s = *p;
-        sub_719EB6(a, v, s);
-        return s;
+    size_t size = sizeof(data);
+    if (n > 0) {
+        size_t len = n;
+        len = std::min(len, size);
+        memcpy(dst, this, len);
+        return len;
     }
-    return v;
+    return n;
+}
 }

@@ -1,4 +1,4 @@
-// from server: 89% by EspClaude
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
@@ -13,9 +13,15 @@ public:
     Instance();
     virtual ~Instance();
 };
+template<class Base>
+class Mid2009 : public Base {
+public:
+    Mid2009() {}
+    virtual const char* getClassName() const;
+};
 extern const char* const sMouse;
 template<class Base, const char* const& name>
-class NonFactoryProduct : public Base {
+class __declspec(novtable) NonFactoryProduct : public Mid2009<Base> {
 public:
     static int count;
     static ClassDescriptor& classDescriptor();

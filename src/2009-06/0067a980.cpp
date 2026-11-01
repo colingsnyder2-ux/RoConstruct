@@ -1,7 +1,8 @@
+// from server: 100% by EspClaude
 // from server: 80% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
 class Instance;
 class PropertyDescriptor;
 struct Color3 {
@@ -25,7 +26,7 @@ public:
 };
 void Lighting::setColor(Color3 value)
 {
-    if (color != value) {
+    if (value != color) {
         color = value;
         raisePropertyChanged(prop_color);
         Visitor v = { &update, false };

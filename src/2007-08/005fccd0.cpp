@@ -1,166 +1,188 @@
-// from server: 32% by colin
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 100% by Espeon
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// roc-lib: rbxgs roc_espeon_aug2007_resize_find_target_iterator_assignment_dbfe44a79df1613d.cpp
 
-extern "C" void __stdcall _invalid_parameter_noinfo();
+// Candidate translation unit (score above; library headers required).
+#pragma include_alias("v8datamodel/MouseCommand.h", "../roc_espeon_aug2007_mouse_vtable_header_b06315d9923c865b.cpp")
+#pragma include_alias(<v8datamodel/MouseCommand.h>, <../roc_espeon_aug2007_mouse_vtable_header_b06315d9923c865b.cpp>)
+#pragma include_alias("util/UserInputBase.h", "../roc_espeon_aug2007_mouse_vtable_header_ee9ac83360f53d88.cpp")
+#pragma include_alias(<util/UserInputBase.h>, <../roc_espeon_aug2007_mouse_vtable_header_ee9ac83360f53d88.cpp>)
+#undef _RELEASEASSERT
+#pragma include_alias("v8world/Edge.h", "../roc_espeon_aug2007_edge_header_cb216aa0cb409651.cpp")
+#pragma include_alias(<v8world/Edge.h>, <../roc_espeon_aug2007_edge_header_cb216aa0cb409651.cpp>)
+#pragma include_alias("v8world/Contact.h", "../roc_espeon_aug2007_contact_header_5ec74239b50ff6ca.cpp")
+#pragma include_alias(<v8world/Contact.h>, <../roc_espeon_aug2007_contact_header_5ec74239b50ff6ca.cpp>)
+#define _MT 1
+#define _DLL 1
+#pragma include_alias("v8kernel/KernelIndex.h", "../roc_espeon_aug2007_kernelindex_header_d7778b4d74bcf4c0.cpp")
+#pragma include_alias("v8kernel/Body.h", "../roc_espeon_aug2007_body_header_b251c002665e01af.cpp")
+#pragma include_alias("util/Extents.h", "../roc_espeon_aug2007_extents_inline_58e475d56d206314.cpp")
+#pragma include_alias("reflection/object.h", "../roc_espeon_aug2007_describedbase_e64c736f24da029d.cpp")
+#pragma include_alias("util/Debug.h", "../roc_espeon_aug2007_ctor_debugable_025e0cb3bb8217d3.cpp")
+#pragma include_alias(<util/Debug.h>, <../roc_espeon_aug2007_ctor_debugable_025e0cb3bb8217d3.cpp>)
+#pragma include_alias("util/Events.h", "../roc_espeon_aug2007_datamodel_header_e4d5a36bea2e4f16.cpp")
+#pragma include_alias("reflection/reflection.h", "../roc_espeon_aug2007_described_arg_header_14221fd67bb3ca43.cpp")
+#pragma include_alias("v8tree/Instance.h", "../roc_espeon_aug2007_instance_header_47f25dc9e4368119.cpp")
+#pragma include_alias("v8datamodel/PartInstance.h", "../roc_espeon_aug2007_part_resize_friend_header_9b5386e41c8467cb.cpp")
+#pragma include_alias("v8world/Primitive.h", "../roc_espeon_aug2007_primitive_trivial_header_ac300ff64c6fc5e6.cpp")
+#pragma include_alias("v8datamodel/DataModel.h", "../roc_espeon_aug2007_datamodel_mutex_header_321a3c67de644a82.cpp")
+#pragma include_alias("v8tree/Verb.h", "../roc_espeon_aug2007_datamodel_header_c06d28d1a6b724f6.cpp")
+#pragma include_alias("util/Evaluator.h", "../roc_espeon_aug2007_datamodel_header_4ba4cf67c400aa66.cpp")
+#pragma include_alias(<boost/signals/signal_template.hpp>, <../roc_espeon_boost133_signals_header_a54048d539243d2e.cpp>)
+#pragma include_alias("boost/signals/signal_template.hpp", "../roc_espeon_boost133_signals_header_a54048d539243d2e.cpp")
+#include "roc_espeon_boost133_header_d432d72f8740aec3.cpp"
+#include "roc_espeon_boost133_header_d9eb4711b7fc841c.cpp"
+#include "roc_espeon_boost133_signals_header_be197e98651271fa.cpp"
 
-struct RefCounted {
-    void* vptr;
-    long refCount;
-    long weakRefCount;
+#pragma include_alias("v8world/Joint.h", "../roc_espeon_aug2007_joint_header_bb71fe27a95b99c9.cpp")
+#pragma include_alias(<v8world/Joint.h>, <../roc_espeon_aug2007_joint_header_bb71fe27a95b99c9.cpp>)
+#pragma include_alias("v8world/IPipelined.h", "../roc_espeon_aug2007_ipipelined_header_459cfa06a40ba136.cpp")
+#pragma include_alias(<v8world/IPipelined.h>, <../roc_espeon_aug2007_ipipelined_header_459cfa06a40ba136.cpp>)
+#pragma include_alias("v8world/Joint.h", "../roc_espeon_aug2007_joint_accessor_header_d77e5f1c0b32672c.cpp")
+#pragma include_alias(<v8world/Joint.h>, <../roc_espeon_aug2007_joint_accessor_header_d77e5f1c0b32672c.cpp>)
+#pragma include_alias("util/IRenderable.h", "../roc_espeon_aug2007_bucket_header_1deff476fbc5a7ac.cpp")
+#pragma include_alias(<util/IRenderable.h>, <../roc_espeon_aug2007_bucket_header_1deff476fbc5a7ac.cpp>)
+#pragma include_alias("v8datamodel/JointInstance.h", "../roc_espeon_aug2007_jointinstance_header_2070a5362277cad1.cpp")
+#pragma include_alias(<v8datamodel/JointInstance.h>, <../roc_espeon_aug2007_jointinstance_header_2070a5362277cad1.cpp>)
+#pragma include_alias("v8world/IMoving.h", "../roc_espeon_aug2007_imoving_header_a7323a6be498a3c4.cpp")
+#pragma include_alias(<v8world/IMoving.h>, <../roc_espeon_aug2007_imoving_header_a7323a6be498a3c4.cpp>)
+#pragma include_alias("v8kernel/IStage.h", "../roc_espeon_aug2007_istage_header_b0262a91d28a95d1.cpp")
+#pragma include_alias(<v8kernel/IStage.h>, <../roc_espeon_aug2007_istage_header_b0262a91d28a95d1.cpp>)
+#pragma include_alias("reflection/function.h", "../roc_espeon_aug2007_abstract_header_991b5e9635f5d75d.cpp")
+#pragma include_alias(<reflection/function.h>, <../roc_espeon_aug2007_abstract_header_991b5e9635f5d75d.cpp>)
+#pragma include_alias("reflection/member.h", "../roc_espeon_aug2007_abstract_header_56ab3d07f46302ce.cpp")
+#pragma include_alias(<reflection/member.h>, <../roc_espeon_aug2007_abstract_header_56ab3d07f46302ce.cpp>)
+#pragma include_alias("reflection/property.h", "../roc_espeon_aug2007_abstract_header_4b7af236c124d7bd.cpp")
+#pragma include_alias(<reflection/property.h>, <../roc_espeon_aug2007_abstract_header_4b7af236c124d7bd.cpp>)
+#pragma include_alias("reflection/signal.h", "../roc_espeon_aug2007_abstract_header_35400af2df14a7cc.cpp")
+#pragma include_alias(<reflection/signal.h>, <../roc_espeon_aug2007_abstract_header_35400af2df14a7cc.cpp>)
+#pragma include_alias("script/Script.h", "../roc_espeon_aug2007_abstract_header_206648adc176eff8.cpp")
+#pragma include_alias(<script/Script.h>, <../roc_espeon_aug2007_abstract_header_206648adc176eff8.cpp>)
+#pragma include_alias("util/ICameraSubject.h", "../roc_espeon_aug2007_abstract_header_15846f007cad7f25.cpp")
+#pragma include_alias(<util/ICameraSubject.h>, <../roc_espeon_aug2007_abstract_header_15846f007cad7f25.cpp>)
+#pragma include_alias("util/IControllable.h", "../roc_espeon_aug2007_abstract_header_134fb1e5a9dd6b81.cpp")
+#pragma include_alias(<util/IControllable.h>, <../roc_espeon_aug2007_abstract_header_134fb1e5a9dd6b81.cpp>)
+#pragma include_alias("util/ILocation.h", "../roc_espeon_aug2007_abstract_header_b220b165aaf2f641.cpp")
+#pragma include_alias(<util/ILocation.h>, <../roc_espeon_aug2007_abstract_header_b220b165aaf2f641.cpp>)
+#pragma include_alias("v8datamodel/ICameraOwner.h", "../roc_espeon_aug2007_abstract_header_328a7f313eb894b0.cpp")
+#pragma include_alias(<v8datamodel/ICameraOwner.h>, <../roc_espeon_aug2007_abstract_header_328a7f313eb894b0.cpp>)
+#pragma include_alias("v8datamodel/ICharacterSubject.h", "../roc_espeon_aug2007_abstract_header_72d3fec55ed90c1f.cpp")
+#pragma include_alias(<v8datamodel/ICharacterSubject.h>, <../roc_espeon_aug2007_abstract_header_72d3fec55ed90c1f.cpp>)
+#pragma include_alias("v8datamodel/IPrimaryPart.h", "../roc_espeon_aug2007_abstract_header_d558c6e252d36c0e.cpp")
+#pragma include_alias(<v8datamodel/IPrimaryPart.h>, <../roc_espeon_aug2007_abstract_header_d558c6e252d36c0e.cpp>)
+#pragma include_alias("v8datamodel/PVInstance.h", "../roc_espeon_aug2007_abstract_header_e7c5a66547093118.cpp")
+#pragma include_alias(<v8datamodel/PVInstance.h>, <../roc_espeon_aug2007_abstract_header_e7c5a66547093118.cpp>)
+#pragma include_alias("v8tree/Service.h", "../roc_espeon_aug2007_abstract_header_cf6415ca14eaa52c.cpp")
+#pragma include_alias(<v8tree/Service.h>, <../roc_espeon_aug2007_abstract_header_cf6415ca14eaa52c.cpp>)
+#pragma include_alias("util/UIEvent.h", "../roc_espeon_aug2007_uievent_viewport_header_04331f71cbc5bc08.cpp")
+#pragma include_alias(<util/UIEvent.h>, <../roc_espeon_aug2007_uievent_viewport_header_04331f71cbc5bc08.cpp>)
+#pragma include_alias("v8datamodel/Workspace.h", "../roc_espeon_aug2007_workspace_header_d38fc45c16cb1519.cpp")
+#pragma include_alias(<v8datamodel/Workspace.h>, <../roc_espeon_aug2007_workspace_header_d38fc45c16cb1519.cpp>)
+#pragma include_alias("v8datamodel/ICharacterSubject.h", "../roc_espeon_aug2007_character_state_f342eee04d017582.cpp")
+#pragma include_alias(<v8datamodel/ICharacterSubject.h>, <../roc_espeon_aug2007_character_state_f342eee04d017582.cpp>)
+#pragma include_alias("humanoid/Humanoid.h", "../roc_espeon_aug2007_humanoid_state_f78ef0aa0660622a.cpp")
+#pragma include_alias(<humanoid/Humanoid.h>, <../roc_espeon_aug2007_humanoid_state_f78ef0aa0660622a.cpp>)
+#pragma include_alias("humanoid/Running.h", "../roc_espeon_aug2007_running_balance_hook_875f0bb95aec50f5.cpp")
+#pragma include_alias(<humanoid/Running.h>, <../roc_espeon_aug2007_running_balance_hook_875f0bb95aec50f5.cpp>)
+#pragma include_alias("humanoid/Balancing.h", "../roc_espeon_aug2007_balancing_balance_hook_37ced1d1de755090.cpp")
+#pragma include_alias(<humanoid/Balancing.h>, <../roc_espeon_aug2007_balancing_balance_hook_37ced1d1de755090.cpp>)
+#pragma include_alias("humanoid/FallingDown.h", "../roc_espeon_aug2007_fallingdown_state_7499778b68c8dff0.cpp")
+#pragma include_alias(<humanoid/FallingDown.h>, <../roc_espeon_aug2007_fallingdown_state_7499778b68c8dff0.cpp>)
+#pragma include_alias("humanoid/Flying.h", "../roc_espeon_aug2007_flying_balance_hook_a9eee8e762225c01.cpp")
+#pragma include_alias(<humanoid/Flying.h>, <../roc_espeon_aug2007_flying_balance_hook_a9eee8e762225c01.cpp>)
+#pragma include_alias("humanoid/Freefall.h", "../roc_espeon_aug2007_freefall_state_671ebe3411c8030d.cpp")
+#pragma include_alias(<humanoid/Freefall.h>, <../roc_espeon_aug2007_freefall_state_671ebe3411c8030d.cpp>)
+#pragma include_alias("humanoid/GettingUp.h", "../roc_espeon_aug2007_gettingup_balance_hook_972ad7ec2ed27c84.cpp")
+#pragma include_alias(<humanoid/GettingUp.h>, <../roc_espeon_aug2007_gettingup_balance_hook_972ad7ec2ed27c84.cpp>)
+#pragma include_alias("humanoid/Jumping.h", "../roc_espeon_aug2007_jumping_state_9af9b1e45a772018.cpp")
+#pragma include_alias(<humanoid/Jumping.h>, <../roc_espeon_aug2007_jumping_state_9af9b1e45a772018.cpp>)
+#pragma include_alias("humanoid/Seated.h", "../roc_espeon_aug2007_seated_state_df5e271a3b8e21cd.cpp")
+#pragma include_alias(<humanoid/Seated.h>, <../roc_espeon_aug2007_seated_state_df5e271a3b8e21cd.cpp>)
+#pragma include_alias("RbxGraphics/Adorn.h", "../roc_espeon_aug2007_adorn_header_6887d8bb2eb92360.cpp")
+#pragma include_alias(<RbxGraphics/Adorn.h>, <../roc_espeon_aug2007_adorn_header_6887d8bb2eb92360.cpp>)
+#pragma include_alias("AppDraw/AdornG3D.h", "../roc_espeon_aug2007_adorng3d_header_62d495574bf52995.cpp")
+#pragma include_alias(<AppDraw/AdornG3D.h>, <../roc_espeon_aug2007_adorng3d_header_62d495574bf52995.cpp>)
+#pragma include_alias("v8kernel/Kernel.h", "../roc_espeon_aug2007_kernel_inline_header_359388a626d15479.cpp")
+#pragma include_alias(<v8kernel/Kernel.h>, <../roc_espeon_aug2007_kernel_inline_header_359388a626d15479.cpp>)
+#pragma include_alias("v8kernel/Point.h", "../roc_espeon_aug2007_point_inline_header_aac7baa3a10948cb.cpp")
+#pragma include_alias(<v8kernel/Point.h>, <../roc_espeon_aug2007_point_inline_header_aac7baa3a10948cb.cpp>)
+
+#include "tool/ToolsArrow.h"
+#include "v8datamodel/PartInstance.h"
+#include "v8datamodel/Workspace.h"
+#include "util/Sound.h"
+#include "AppDraw/DrawAdorn.h"
+#include "v8datamodel/Selection.h"
+namespace RBX {
+extern const char* sResizeTool;
+class ResizeTool:public Named<ArrowToolBase,&sResizeTool>{
+ boost::weak_ptr<PVInstance> target;
+ bool overHandle;
+ NormalId face;
+ G3D::Vector3 handlePosition;
+ G3D::Vector2int16 mouseDownView;
+ int accumulatedResize;
+ unsigned int resetState;
+ void findTargetPV(const UIEvent&);
+ virtual MouseCommand* onMouseDown(const UIEvent&);
+ virtual void onMouseMove(const UIEvent&);
+ virtual MouseCommand* onMouseUp(const UIEvent&);
+ virtual void onMouseHover(const UIEvent&);
+ virtual void render2d(Adorn*);
+ virtual void render3dAdorn(Adorn*);
+ virtual const std::string getCursorName()const;
+ virtual void writeSize(XmlState*);
+ void resize(int);
+public:
+ __declspec(noinline) ResizeTool(Workspace*);
+ virtual MouseCommand* isSticky()const{return new ResizeTool(workspace);}
 };
-
-struct InputObject {
-    void* vptr;
-};
-
-struct Instance {
-    void* vptr;
-    char pad[0xec];
-    void* getSomething();
-};
-
-struct ResizeTool {
-    char pad0[0x18];
-    void* field18;
-    char pad1[0x8];
-    void* field24;
-    void* field28;
-    char pad2[0x4];
-    int field30;
-    int field34;
-    void findTargetPV(InputObject* inputObject);
-    void capturedDrag(int axisDelta);
-    void doResize(int arg);
-};
-
-extern "C" void* __cdecl sub_562300(void* p);
-extern "C" void* __cdecl sub_5e3b90(void* p, void* a, void* b);
-extern "C" void* __cdecl sub_5e49e0(void* a, void* b);
-extern "C" bool __cdecl sub_625490(void* p);
-extern "C" void* __cdecl sub_630d36(void* a, void* b, void* c, void* d, void* e);
-
-void ResizeTool::doResize(int arg)
-{
-    void* local18 = field18;
-    void* local1c = 0;
-    void* local20 = 0;
-    void* local10 = 0;
-    void* local14 = 0;
-
-    void* p1 = sub_562300(&local1c);
-    RefCounted* rc = *(RefCounted**)((char*)p1 + 0x104);
-    void* begin = (void*)rc->refCount;
-    void* end = (void*)rc->weakRefCount;
-    if (begin > end) {
-        _invalid_parameter_noinfo();
-    }
-    local10 = rc;
-    void* it = begin;
-
-    while (true) {
-        void* p2 = sub_562300(&local1c);
-        RefCounted* rc2 = *(RefCounted**)((char*)p2 + 0x104);
-        void* end2 = (void*)rc2->weakRefCount;
-        if ((void*)rc2->refCount > end2) {
-            _invalid_parameter_noinfo();
-        }
-        void* cur = local10;
-        if (cur == 0 || cur != rc2) {
-            _invalid_parameter_noinfo();
-            cur = local10;
-        }
-        if (it == end2) {
-            field24 = 0;
-            void* old = field28;
-            field28 = 0;
-            if (old != 0) {
-                RefCounted* orc = (RefCounted*)old;
-                if (_InterlockedExchangeAdd(&orc->weakRefCount, -1) == 1) {
-                    void** vt = *(void***)old;
-                    void (*fn)(void*) = (void (*)(void*))vt[2];
-                    fn(old);
-                }
-            }
-            break;
-        }
-        if (cur == 0) {
-            _invalid_parameter_noinfo();
-            cur = local10;
-        }
-        if (it >= (void*)rc2->weakRefCount) {
-            _invalid_parameter_noinfo();
-        }
-        void* obj = *(void**)it;
-        void* result = sub_630d36(obj, 0, (void*)0x881f4c, (void*)0x884a28, 0);
-        void* inst = result;
-        if (inst != 0) {
-            findTargetPV((InputObject*)arg);
-            void* v = *(void**)((char*)inst + 0xec);
-            void* v2 = *(void**)((char*)v + 8);
-            void* a = (void*)((char*)this + 0x30);
-            void* b = (void*)((char*)this + 0x34);
-            void* c = &local14;
-            void* d = &local18;
-            void* fn = *(void**)((char*)v2 + (int)inst + 0xec);
-            void* fn2 = *(void**)fn;
-            void* r = ((void* (*)(void*, void*, void*, void*, void*))fn2)((char*)v2 + (int)inst + 0xec, d, c, b, a);
-            void** vt = *(void***)inst;
-            void* fn3 = vt[0x5c/4];
-            void* r2 = ((void* (*)(void*, void*, void*))fn3)(inst, &local14, r);
-            if (sub_625490(r2)) {
-                void* r3 = sub_5e49e0(&local10, inst);
-                field24 = *(void**)r3;
-                void* newRef = *(void**)((char*)r3 + 4);
-                if (newRef != 0) {
-                    _InterlockedExchangeAdd((volatile long*)((char*)newRef + 8), 1);
-                }
-                void* oldRef = field28;
-                if (oldRef != 0) {
-                    RefCounted* orc = (RefCounted*)oldRef;
-                    if (_InterlockedExchangeAdd(&orc->weakRefCount, -1) == 1) {
-                        void** vt2 = *(void***)oldRef;
-                        void (*fn4)(void*) = (void (*)(void*))vt2[2];
-                        fn4(oldRef);
-                    }
-                }
-                field28 = newRef;
-                void* tmp = local14;
-                if (tmp != 0) {
-                    RefCounted* trc = (RefCounted*)tmp;
-                    if (_InterlockedExchangeAdd(&trc->refCount, -1) == 1) {
-                        void** vt3 = *(void***)tmp;
-                        void (*fn5)(void*) = (void (*)(void*))vt3[1];
-                        fn5(tmp);
-                        if (_InterlockedExchangeAdd(&trc->weakRefCount, -1) == 1) {
-                            void** vt4 = *(void***)tmp;
-                            void (*fn6)(void*) = (void (*)(void*))vt4[2];
-                            fn6(tmp);
-                        }
-                    }
-                }
-                local18 = (void*)0x7a0604;
-                break;
-            }
-        }
-        if (it >= (void*)rc2->weakRefCount) {
-            _invalid_parameter_noinfo();
-        }
-        it = (char*)it + 8;
-    }
-
-    void* tmp2 = local20;
-    if (tmp2 != 0) {
-        RefCounted* trc2 = (RefCounted*)tmp2;
-        if (_InterlockedExchangeAdd(&trc2->refCount, -1) == 1) {
-            void** vt5 = *(void***)tmp2;
-            void (*fn7)(void*) = (void (*)(void*))vt5[1];
-            fn7(tmp2);
-            if (_InterlockedExchangeAdd(&trc2->weakRefCount, -1) == 1) {
-                void** vt6 = *(void***)tmp2;
-                void (*fn8)(void*) = (void (*)(void*))vt6[2];
-                fn8(tmp2);
-            }
-        }
-    }
+std::vector<boost::shared_ptr<Instance> >::const_iterator Selection::begin()const{return selection->begin();}
+std::vector<boost::shared_ptr<Instance> >::const_iterator Selection::end()const{return selection->end();}
+void ResizeTool::render2d(Adorn*adorn){
+ ServiceClient<Selection> selection(workspace);
+ std::vector<boost::shared_ptr<Instance> >::const_iterator it;
+ for(it=selection->begin();it!=selection->end();++it){
+  if(PartInstance*part=dynamic_cast<PartInstance*>(it->get())){
+   static G3D::Color3 color(0.1f,0.6f,1.0f);
+   DrawAdorn::handles2d(part->getPartSizeXml(),part->getCoordinateFrame(),workspace->getGCamera(),adorn,color);
+  }
+ }
+}
+void ResizeTool::render3dAdorn(Adorn*adorn){
+ ServiceClient<Selection> selection(workspace);
+ std::vector<boost::shared_ptr<Instance> >::const_iterator it;
+ for(it=selection->begin();it!=selection->end();++it){
+  if(PartInstance*part=dynamic_cast<PartInstance*>(it->get())){
+   DrawAdorn::handles3d(part->getPartSizeXml(),part->getCoordinateFrame(),adorn,HANDLE_RESIZE,workspace->getGCamera().getCoordinateFrame().translation);
+  }
+ }
+}
+bool hitResizeHandles(const Extents&,const G3D::CoordinateFrame&,const G3D::Ray&,G3D::Vector3&,NormalId&);
+void ResizeTool::findTargetPV(const UIEvent&e){
+ ServiceClient<Selection> selection(workspace);
+ std::vector<boost::shared_ptr<Instance> >::const_iterator it;
+ for(it=selection->begin();it!=selection->end();++it){
+  if(PartInstance*part=dynamic_cast<PartInstance*>(it->get())){
+   G3D::Ray ray=getUnitMouseRay(e);
+   if(hitResizeHandles(part->getExtentsLocal(),part->getLocation(),ray,handlePosition,face)){
+    target=shared_from<PVInstance>(part);return;
+   }
+  }
+ }
+ target.reset();
+}
+typedef char resize_tool_size_4c[sizeof(ResizeTool)==0x4c?1:-1];
+ResizeTool::ResizeTool(Workspace*w):Named<ArrowToolBase,&sResizeTool>(w),overHandle(false),accumulatedResize(0),resetState(0){}
+const std::string ResizeTool::getCursorName()const{return overHandle?std::string("ResizeCursor"):ArrowToolBase::getCursorName();}
+void ResizeTool::writeSize(XmlState*state){if(PartInstance*part=dynamic_cast<PartInstance*>(target.lock().get()))part->writeSize(state);}
+void ResizeTool::onMouseHover(const UIEvent&e){findTargetPV(e);overHandle=!target.expired();ArrowToolBase::onMouseHover(e);}
+void ResizeTool::resize(int amount){if(!target.expired()){
+ PartInstance* part=static_cast<PartInstance*>(target.lock().get());
+ part->destroyJoints();
+ if(part->resize(face,amount))ServiceProvider::create<Soundscape::SoundService>(workspace)->playSound(CLICK_SOUND);
+ part->join();
+}}
 }

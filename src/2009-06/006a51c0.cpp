@@ -1,4 +1,8 @@
-// from server: 96% by EspClaude
+// from server: 100% by EspClaude
+// roc 2009-06 006a51c0  unit: RBX::Network::VPlayer::?$RefPropDescriptor  size: 205 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 006a51c0
+//
+
 // 2009 SignalDesc<X, void(key)> "KeyDown"(Signal Instance::*, name, arg1name) (self-contained)
 // roc-lang: cpp
 // roc-cl: 21022
@@ -48,7 +52,7 @@ struct SignatureDescriptor {
         }
     } arguments;
 };
-class __declspec(novtable) SignalDescriptor {
+class SignalDescriptor {
 public:
     SignalDescriptor(const ClassDescriptor& c, const char* name);
     virtual ~SignalDescriptor();
@@ -58,18 +62,22 @@ protected:
 };
 template<class S> struct ArgOf;
 template<class A> struct ArgOf<void(A)> { typedef A type; };
-template<class C, class Sig> class SignalDesc : public SignalDescriptor {
+template<class C, class Sig> class __declspec(novtable) TSignalDesc : public SignalDescriptor {
+protected:
     void* C::* member;
+    TSignalDesc(void* C::* m, const char* name) : SignalDescriptor(C::classDescriptor(), name), member(m) {}
+};
+template<class C, class Sig> class SignalDesc : public TSignalDesc<C, Sig> {
 public:
     SignalDesc(void* C::* m, const char* name, const char* arg1name);
     virtual ~SignalDesc();
 };
 template<class C, class Sig>
 SignalDesc<C, Sig>::SignalDesc(void* C::* m, const char* name, const char* arg1name)
-    : SignalDescriptor(C::classDescriptor(), name), member(m)
+    : TSignalDesc<C, Sig>(m, name)
 {
     SignatureDescriptor::Item arg1 = { &Name::declare(arg1name), &singleton<typename ArgOf<Sig>::type>() };
-    signature.arguments.push_back(arg1);
+    this->signature.arguments.push_back(arg1);
 }
 }
 class Instance { public: static const Reflection::ClassDescriptor& classDescriptor(); };

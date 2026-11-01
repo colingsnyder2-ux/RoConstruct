@@ -1,9 +1,8 @@
-// from server: 70% by EspClaude
 // from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD /fp:fast
-// roc-lib: g3d-6.09 roc_espclaude_bfbc69262bc77fbf.cpp
+// roc-lib: g3d-6.09 roc_espclaude_d6fe27cc6bd1dcba.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include "G3D/Vector3.h"
@@ -30,14 +29,16 @@ public:
  virtual void box()=0;virtual void sphere()=0;virtual void explosion()=0;
  virtual void cylinderAlongX(float,float,const G3D::Color4&,const G3D::Color4&)=0;virtual void ray(const G3D::Ray&,const G3D::Color4&,float)=0;virtual void lineSegment(const G3D::LineSegment&,const G3D::Color4&,float)=0;
 };
-class Instance {public: virtual ~Instance();char opaque[0x104-4];Instance*parent; Instance* getParent() const { return parent; }};
-class Body {public: char opaque[0x94];G3D::CoordinateFrame frame;void updatePV()const;const G3D::CoordinateFrame&getCoordinateFrame()const{updatePV();return frame;}};
+class Instance {public: virtual ~Instance();char opaque[0x48-4];Instance*parent; Instance* getParent() const { return parent; }};
+class Body {public: const G3D::CoordinateFrame&getCoordinateFrame()const;};
+class Primitive;
+class PartInstance {public: virtual void v0();virtual void v1();virtual void v2();virtual void v3();virtual void v4();virtual void v5();virtual void v6();virtual void v7();virtual void v8();virtual void v9();virtual void v10();virtual void v11();virtual void v12();virtual void v13();virtual void v14();virtual void v15();virtual void v16();virtual void v17();virtual void v18();virtual void v19();virtual void v20();virtual void v21();virtual void v22();virtual int getPartType()const; static PartInstance* fromPrimitive(Primitive*);};
 class Humanoid:public Instance {public: Body*getTorsoBody();};
-class RayQuery {public: G3D::Vector3 raycast(Instance*,G3D::Ray);};
+class RayQuery {public: G3D::Vector3 raycast(Instance*,G3D::Ray,Primitive**);};
 RayQuery* __cdecl findRayQuery(Instance*);
 G3D::LineSegment __cdecl segmentFrom(const G3D::Vector3&,const G3D::Vector3&);
-class DrawAdorn {public: static void cylinder(Adorn*,const G3D::CoordinateFrame&,int,float,float,const G3D::Color3&);};
-class Name;class Primitive;
+class DrawAdorn {public: static void cylinder(Adorn*,const G3D::CoordinateFrame&,int,float,float,const G3D::Color3&,int);};
+class Name;
 class INamed {public: virtual const Name&getName()const=0;};
 class HitTestFilter {public: enum Result{STOP_TEST,IGNORE_PRIM,INCLUDE_PRIM};virtual Result filterResult(const Primitive*)const=0;};
 namespace HUMAN {
@@ -57,7 +58,9 @@ bool HumanoidState::detectClimb(Adorn*adorn){
   G3D::Ray ray;
   G3D::Vector3 origin=frame.translation+verticalOffset;
   ray.origin=origin;ray.direction=direction;
-  G3D::Vector3 hit=query->raycast(roc_val(humanoid->parent),ray);
+  Primitive*hitPrim=0;
+  G3D::Vector3 hit=query->raycast(roc_val(humanoid->parent),ray,&hitPrim);
+  if(hitPrim){PartInstance*part=PartInstance::fromPrimitive(hitPrim);if(part&&part->getPartType()==3)return true;}
   if((hit-origin).magnitude()<0.7f){if(first){first=false;firstHeight=height;inContact=true;color=G3D::Color3::green();}}
   else{if(inContact){inContact=false;span=height-firstHeight;color=G3D::Color3::red();}}
   if(adorn){
@@ -67,10 +70,11 @@ bool HumanoidState::detectClimb(Adorn*adorn){
   }
  }
  if(firstHeight<2.45f&&span>0&&span<2.45f){
-  if(adorn)DrawAdorn::cylinder(adorn,G3D::CoordinateFrame(frame.translation+G3D::Vector3(0,5,0)),1,.2f,1,G3D::Color3::purple());
+  if(adorn)DrawAdorn::cylinder(adorn,G3D::CoordinateFrame(frame.translation+G3D::Vector3(0,5,0)),1,.2f,1,G3D::Color3::purple(),1);
   return true;
  }
  return false;
 }
 }
 }
+

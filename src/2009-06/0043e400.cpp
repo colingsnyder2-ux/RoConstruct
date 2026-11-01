@@ -1,130 +1,82 @@
-// from server: 57% by colin
-// roc-lang: cpp
-// roc-cl: 30729
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs script/Script.cpp
+// from server: 100% by EspClaude
+// from server: 100% by colin
+// roc 2008-06 00443b00  unit: RBX::Reflection::H::?$TypedPropertyDescriptor  size: 73 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 00443b00
+//
+// 00443b00  8b8930010000         mov ecx, dword ptr [ecx + 0x8c]
+// 00443b06  56                   push esi
+// 00443b07  8b742408             mov esi, dword ptr [esp + 8]
+// 00443b0b  85c9                 test ecx, ecx
+// 00443b0d  7411                 je 0x443b20
+// 00443b0f  8b460c               mov eax, dword ptr [esi + 0xc]
+// 00443b12  8b4004               mov eax, dword ptr [eax + 4]
+// 00443b15  83c004               add eax, 4
+// 00443b18  50                   push eax
+// 00443b19  e8323e1100           call 0x557950
+// 00443b1e  eb02                 jmp 0x443b22
+// 00443b20  33c0                 xor eax, eax
+// 00443b22  85c0                 test eax, eax
+// 00443b24  741d                 je 0x443b43
+// 00443b26  8bc8                 mov ecx, eax
+// 00443b28  e8f3fcffff           call 0x443820
+// 00443b2d  85c0                 test eax, eax
+// 00443b2f  7412                 je 0x443b43
+// 00443b31  8b5604               mov edx, dword ptr [esi + 4]
+// 00443b34  83c204               add edx, 4
+// 00443b37  5e                   pop esi
+// 00443b38  89542404             mov dword ptr [esp + 4], edx
+// 00443b3c  8bc8                 mov ecx, eax
+// 00443b3e  e90d3e1100           jmp 0x557950
+// 00443b43  33c0                 xor eax, eax
+// 00443b45  5e                   pop esi
+// 00443b46  c20400               ret 4
 
-// Candidate translation unit (score above; library headers required).
-#include "script/Script.h"
-#include "script/ScriptContext.h"
-#include "v8tree/Service.h"
-#include "boost/thread/once.hpp"
+struct Storage;
 
-using namespace RBX;
+struct Node {
+    Storage* convert();
+};
 
-const Reflection::PropDescriptor<Script, std::string> Script::prop_EmbeddedSourceCode("Source", "Data", &Script::getEmbeddedCode, &Script::setEmbeddedCode, Reflection::PropertyDescriptor::LEGACY);
-const Reflection::PropDescriptor<Script, ContentId> Script::prop_SourceCodeId("LinkedSource", "Data", &Script::getScriptId, &Script::setScriptId, Reflection::PropertyDescriptor::LEGACY);
-Reflection::BoundProp<bool, true> Script::prop_Disabled("Disabled", "Behavior", &Script::disabled, Reflection::PropertyDescriptor::STANDARD);
+struct Storage {
+    Node* find(const char* key);
+    Node* lookup(const char* key);
+};
 
-static boost::shared_ptr<const std::string> helloWorld;
-static boost::once_flag flagInitScriptCpp = BOOST_ONCE_INIT;
+struct Link {
+    void* reserved;
+    const char* key;
+};
 
-void initScriptCpp()
+struct Argument {
+    void* reserved0;
+    const char* key;
+    void* reserved8;
+    Link* parent;
+};
+
+struct Descriptor {
+    char reserved[0x8c];
+    Storage* storage;
+    Node* find(Argument* argument);
+};
+
+Node* Storage::lookup(const char* key)
 {
-    helloWorld.reset(new std::string("print(\"Hello world!\")\r\n"));
+    if (this)
+        return find(key);
+    return 0;
 }
 
-const char* RBX::sScript = "Script";
-
-Script::Script()
-    : DescribedCreatable("Script"),
-      disabled(false),
-      owner(NULL)
+Node* Descriptor::find(Argument* argument)
 {
-    boost::call_once(&initScriptCpp, flagInitScriptCpp);
-    embeddedSource = helloWorld;
-}
-
-const char* RBX::sLocalScript = "LocalScript";
-
-LocalScript::LocalScript()
-{
-    setName("LocalScript");
-}
-
-Script::~Script()
-{
-    RBXASSERT(owner == NULL);
-}
-
-void Script::setEmbeddedCode(const std::string& value)
-{
-    if (getEmbeddedCode() != value)
-    {
-        embeddedSource.reset(new std::string(value));
-        raisePropertyChanged(prop_EmbeddedSourceCode);
-    }
-}
-
-void Script::setScriptId(const ContentId& value)
-{
-    if (getScriptId() != value)
-    {
-        scriptId = value;
-        requestCode();
-        raisePropertyChanged(prop_SourceCodeId);
-    }
-}
-
-void Script::onAncestorChanged(const AncestorChanged& event)
-{
-    Instance::onAncestorChanged(event);
-
-    IScriptOwner* newOwner = NULL;
-    Instance* parent = this->getParent();
-
-    while (parent)
-    {
-        IScriptOwner* parentOwner = dynamic_cast<IScriptOwner*>(parent);
-
-        if (parentOwner)
-        {
-            newOwner = parentOwner->scriptShouldRun(this);
-
-            if (newOwner)
-                break;
-        }
-
-        parent = parent->getParent();
-    }
-
-    if (newOwner != owner)
-    {
-        if (owner)
-            owner->releaseScript(this);
-
-        owner = newOwner;
-
-        ScriptContext* sc = ServiceProvider::find<ScriptContext>(this);
-
-        if (sc)
-        {
-            sc->removeScript(this);
-
-            if (owner)
-                owner->runScript(this, sc);
+    Storage* s = storage;
+    Node* node = s ? s->lookup(argument->parent->key) : 0;
+    if (node) {
+        Storage* next = node->convert();
+        if (next) {
+            const char* key = argument->key;
+            return next->find(key);
         }
     }
-}
-
-void Script::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-{
-	if (ScriptContext* sc = ServiceProvider::find<ScriptContext>(oldProvider))
-	{
-		sc->removeScript(this);
-	}
-
-	Instance::onServiceProvider(oldProvider, newProvider);
-}
-
-boost::shared_ptr<const std::string> Script::requestCode()
-{
-    if (scriptId.isNull())
-    {
-        return embeddedSource;
-    }
-    else 
-    {
-        return ContentProvider::singleton().requestContentString(scriptId);
-    }
+    return 0;
 }

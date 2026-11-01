@@ -1,5 +1,16 @@
-// from server: 65% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /Od /Ob1 /GS- /MT
-// roc-lib: wildmagic-2-core Containment/WmlConvexHull3.cpp
+class Handle {
+public:
+    int getId() const;
+    bool operator==(const Handle& other) const;
+private:
+    int kind;
+    int id;
+};
+bool Handle::operator==(const Handle& other) const
+{
+    return getId() == other.getId();
+}

@@ -1,19 +1,20 @@
-// from server: 58% by atomic.potato
-extern "C" int __cdecl sub_751750();
-
-struct S
-{
-    int f();
+// from server: 62% by Intel
+struct VMegaClusterInstance {
+    int FactoryProduct();
 };
 
-volatile unsigned char g_00E31ABE;
-int g_00E4CEA0;
+extern "C" void __stdcall sub_751750();
 
-int S::f()
-{
-    if (g_00E31ABE != 1)
-        return g_00E4CEA0;
+int VMegaClusterInstance::FactoryProduct() {
+    extern unsigned char byte_E31ABE;
+    extern int dword_E4CEA0;
 
-    int value = *(int *)((char *)this + 0x84);
-    return sub_751750();
+    if (byte_E31ABE) {
+        return dword_E4CEA0;
+    }
+
+    int v1 = *(int *)((char *)this + 0x84);
+    int v2 = *(int *)v1;
+    sub_751750();
+    return 0;
 }

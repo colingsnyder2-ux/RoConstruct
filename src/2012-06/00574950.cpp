@@ -1,4 +1,4 @@
-// from server: 96% by Intel
+// from server: 97% by Intel
 // roc 2012-06 00574950  unit: AsyncResult  size: 112 bytes
 // Make this compile to the exact bytes below, then: roc check 2012-06 00574950
 //
@@ -54,18 +54,18 @@ void sub_574950()
     if (!cb)
         goto LABEL_86;
 
-    if (cb(0xCF, 0xB42FA8, 0xB42F90))
+    if (cb(0xB42F90, 0xB42FA8, 0xCF))
         goto LABEL_9B;
 
 LABEL_86:
-    sub_972290(g_flag_e580b3, 0xB42F20);
+    sub_972290(0xB42F20, g_flag_e580b3);
 
 LABEL_9B:
     if (!g_global_bc5b00)
         sub_67f480();
     else
     {
-        sub_4015a0(0x571EA0, 0xE24708);
+        sub_4015a0(0xE24708, 0x571EA0);
         sub_5702e0();
     }
 }

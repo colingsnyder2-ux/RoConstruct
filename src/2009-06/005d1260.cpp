@@ -1,4 +1,8 @@
-// from server: 96% by EspClaude
+// from server: 100% by EspClaude
+// roc 2009-06 005d1260  unit: VAuthoringSettings::?$FactoryProduct  size: 205 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 005d1260
+//
+
 // 2009 SignalDesc<Instance, void(shared_ptr<Instance>)>(Signal Instance::*, name, arg1name) (self-contained)
 // roc-lang: cpp
 // roc-cl: 21022
@@ -48,7 +52,7 @@ struct SignatureDescriptor {
         }
     } arguments;
 };
-class __declspec(novtable) SignalDescriptor {
+class SignalDescriptor {
 public:
     SignalDescriptor(const ClassDescriptor& c, const char* name);
     virtual ~SignalDescriptor();
@@ -56,18 +60,22 @@ protected:
     char pad[0x10];
     SignatureDescriptor signature;
 };
-template<class C, class Sig> class SignalDesc : public SignalDescriptor {
+template<class C, class Sig> class __declspec(novtable) TSignalDesc : public SignalDescriptor {
+protected:
     void* C::* member;
+    TSignalDesc(void* C::* m, const char* name) : SignalDescriptor(C::classDescriptor(), name), member(m) {}
+};
+template<class C, class Sig> class SignalDesc : public TSignalDesc<C, Sig> {
 public:
     SignalDesc(void* C::* m, const char* name, const char* arg1name);
     virtual ~SignalDesc();
 };
 template<class C, class Sig>
 SignalDesc<C, Sig>::SignalDesc(void* C::* m, const char* name, const char* arg1name)
-    : SignalDescriptor(C::classDescriptor(), name), member(m)
+    : TSignalDesc<C, Sig>(m, name)
 {
     SignatureDescriptor::Item arg1 = { &Name::declare(arg1name), &singleton<boost::shared_ptr<C> >() };
-    signature.arguments.push_back(arg1);
+    this->signature.arguments.push_back(arg1);
 }
 }
 class Instance { public: static const Reflection::ClassDescriptor& classDescriptor(); };

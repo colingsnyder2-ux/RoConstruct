@@ -10,7 +10,6 @@ namespace RBX
 	{
 	private:
 		float desiredYRotationalVelocity;
-		G3D::Vector3 desiredVelocity;
 
 		static const float turnSpeed;
 		static const float kTurnP;

@@ -17,8 +17,5 @@ namespace RBX
 
 	public:
 		Freefall(Humanoid* humanoid);
-		virtual ~Freefall();
-	private:
-		float savedHeadFriction, savedTorsoFriction;
 	};
 }

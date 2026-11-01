@@ -1,138 +1,180 @@
-// from server: 37% by colin
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 100% by Espeon
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
+// roc-lib: rbxgs roc_espeon_aug2007_axis_mouse_move_strict_cf4994d7f1032dc1.cpp
 
-extern "C" double __cdecl sqrt(double);
+// Candidate translation unit (score above; library headers required).
+#pragma include_alias("v8datamodel/MouseCommand.h", "../roc_espeon_aug2007_mouse_vtable_header_b06315d9923c865b.cpp")
+#pragma include_alias(<v8datamodel/MouseCommand.h>, <../roc_espeon_aug2007_mouse_vtable_header_b06315d9923c865b.cpp>)
+#pragma include_alias("util/UserInputBase.h", "../roc_espeon_aug2007_mouse_vtable_header_ee9ac83360f53d88.cpp")
+#pragma include_alias(<util/UserInputBase.h>, <../roc_espeon_aug2007_mouse_vtable_header_ee9ac83360f53d88.cpp>)
+#undef _RELEASEASSERT
+#pragma include_alias("v8world/Edge.h", "../roc_espeon_aug2007_edge_header_cb216aa0cb409651.cpp")
+#pragma include_alias(<v8world/Edge.h>, <../roc_espeon_aug2007_edge_header_cb216aa0cb409651.cpp>)
+#pragma include_alias("v8world/Contact.h", "../roc_espeon_aug2007_contact_header_5ec74239b50ff6ca.cpp")
+#pragma include_alias(<v8world/Contact.h>, <../roc_espeon_aug2007_contact_header_5ec74239b50ff6ca.cpp>)
+#define _MT 1
+#define _DLL 1
+#pragma include_alias("v8kernel/KernelIndex.h", "../roc_espeon_aug2007_kernelindex_header_d7778b4d74bcf4c0.cpp")
+#pragma include_alias("v8kernel/Body.h", "../roc_espeon_aug2007_body_header_b251c002665e01af.cpp")
+#pragma include_alias("util/Extents.h", "../roc_espeon_aug2007_extents_inline_58e475d56d206314.cpp")
+#pragma include_alias("reflection/object.h", "../roc_espeon_aug2007_describedbase_e64c736f24da029d.cpp")
+#pragma include_alias("util/Debug.h", "../roc_espeon_aug2007_ctor_debugable_025e0cb3bb8217d3.cpp")
+#pragma include_alias(<util/Debug.h>, <../roc_espeon_aug2007_ctor_debugable_025e0cb3bb8217d3.cpp>)
+#pragma include_alias("util/Events.h", "../roc_espeon_aug2007_datamodel_header_e4d5a36bea2e4f16.cpp")
+#pragma include_alias("reflection/reflection.h", "../roc_espeon_aug2007_described_arg_header_14221fd67bb3ca43.cpp")
+#pragma include_alias("v8tree/Instance.h", "../roc_espeon_aug2007_instance_header_47f25dc9e4368119.cpp")
+#pragma include_alias("v8datamodel/PartInstance.h", "../roc_espeon_aug2007_part_flags_header_a6acc69782cd7c29.cpp")
+#pragma include_alias("v8world/Primitive.h", "../roc_espeon_aug2007_primitive_trivial_header_ac300ff64c6fc5e6.cpp")
+#pragma include_alias("v8datamodel/DataModel.h", "../roc_espeon_aug2007_datamodel_mutex_header_321a3c67de644a82.cpp")
+#pragma include_alias("v8tree/Verb.h", "../roc_espeon_aug2007_datamodel_header_c06d28d1a6b724f6.cpp")
+#pragma include_alias("util/Evaluator.h", "../roc_espeon_aug2007_datamodel_header_4ba4cf67c400aa66.cpp")
+#pragma include_alias(<boost/signals/signal_template.hpp>, <../roc_espeon_boost133_signals_header_a54048d539243d2e.cpp>)
+#pragma include_alias("boost/signals/signal_template.hpp", "../roc_espeon_boost133_signals_header_a54048d539243d2e.cpp")
+#include "roc_espeon_boost133_header_d432d72f8740aec3.cpp"
+#include "roc_espeon_boost133_header_d9eb4711b7fc841c.cpp"
+#include "roc_espeon_boost133_signals_header_be197e98651271fa.cpp"
 
-struct Vector3 {
-    float x, y, z;
+#pragma include_alias("v8world/Joint.h", "../roc_espeon_aug2007_joint_header_bb71fe27a95b99c9.cpp")
+#pragma include_alias(<v8world/Joint.h>, <../roc_espeon_aug2007_joint_header_bb71fe27a95b99c9.cpp>)
+#pragma include_alias("v8world/IPipelined.h", "../roc_espeon_aug2007_ipipelined_header_459cfa06a40ba136.cpp")
+#pragma include_alias(<v8world/IPipelined.h>, <../roc_espeon_aug2007_ipipelined_header_459cfa06a40ba136.cpp>)
+#pragma include_alias("v8world/Joint.h", "../roc_espeon_aug2007_joint_accessor_header_d77e5f1c0b32672c.cpp")
+#pragma include_alias(<v8world/Joint.h>, <../roc_espeon_aug2007_joint_accessor_header_d77e5f1c0b32672c.cpp>)
+#pragma include_alias("util/IRenderable.h", "../roc_espeon_aug2007_bucket_header_1deff476fbc5a7ac.cpp")
+#pragma include_alias(<util/IRenderable.h>, <../roc_espeon_aug2007_bucket_header_1deff476fbc5a7ac.cpp>)
+#pragma include_alias("v8datamodel/JointInstance.h", "../roc_espeon_aug2007_jointinstance_header_2070a5362277cad1.cpp")
+#pragma include_alias(<v8datamodel/JointInstance.h>, <../roc_espeon_aug2007_jointinstance_header_2070a5362277cad1.cpp>)
+#pragma include_alias("v8world/IMoving.h", "../roc_espeon_aug2007_imoving_header_a7323a6be498a3c4.cpp")
+#pragma include_alias(<v8world/IMoving.h>, <../roc_espeon_aug2007_imoving_header_a7323a6be498a3c4.cpp>)
+#pragma include_alias("v8kernel/IStage.h", "../roc_espeon_aug2007_istage_header_b0262a91d28a95d1.cpp")
+#pragma include_alias(<v8kernel/IStage.h>, <../roc_espeon_aug2007_istage_header_b0262a91d28a95d1.cpp>)
+#pragma include_alias("reflection/function.h", "../roc_espeon_aug2007_abstract_header_991b5e9635f5d75d.cpp")
+#pragma include_alias(<reflection/function.h>, <../roc_espeon_aug2007_abstract_header_991b5e9635f5d75d.cpp>)
+#pragma include_alias("reflection/member.h", "../roc_espeon_aug2007_abstract_header_56ab3d07f46302ce.cpp")
+#pragma include_alias(<reflection/member.h>, <../roc_espeon_aug2007_abstract_header_56ab3d07f46302ce.cpp>)
+#pragma include_alias("reflection/property.h", "../roc_espeon_aug2007_abstract_header_4b7af236c124d7bd.cpp")
+#pragma include_alias(<reflection/property.h>, <../roc_espeon_aug2007_abstract_header_4b7af236c124d7bd.cpp>)
+#pragma include_alias("reflection/signal.h", "../roc_espeon_aug2007_abstract_header_35400af2df14a7cc.cpp")
+#pragma include_alias(<reflection/signal.h>, <../roc_espeon_aug2007_abstract_header_35400af2df14a7cc.cpp>)
+#pragma include_alias("script/Script.h", "../roc_espeon_aug2007_abstract_header_206648adc176eff8.cpp")
+#pragma include_alias(<script/Script.h>, <../roc_espeon_aug2007_abstract_header_206648adc176eff8.cpp>)
+#pragma include_alias("util/ICameraSubject.h", "../roc_espeon_aug2007_abstract_header_15846f007cad7f25.cpp")
+#pragma include_alias(<util/ICameraSubject.h>, <../roc_espeon_aug2007_abstract_header_15846f007cad7f25.cpp>)
+#pragma include_alias("util/IControllable.h", "../roc_espeon_aug2007_abstract_header_134fb1e5a9dd6b81.cpp")
+#pragma include_alias(<util/IControllable.h>, <../roc_espeon_aug2007_abstract_header_134fb1e5a9dd6b81.cpp>)
+#pragma include_alias("util/ILocation.h", "../roc_espeon_aug2007_abstract_header_b220b165aaf2f641.cpp")
+#pragma include_alias(<util/ILocation.h>, <../roc_espeon_aug2007_abstract_header_b220b165aaf2f641.cpp>)
+#pragma include_alias("v8datamodel/ICameraOwner.h", "../roc_espeon_aug2007_abstract_header_328a7f313eb894b0.cpp")
+#pragma include_alias(<v8datamodel/ICameraOwner.h>, <../roc_espeon_aug2007_abstract_header_328a7f313eb894b0.cpp>)
+#pragma include_alias("v8datamodel/ICharacterSubject.h", "../roc_espeon_aug2007_abstract_header_72d3fec55ed90c1f.cpp")
+#pragma include_alias(<v8datamodel/ICharacterSubject.h>, <../roc_espeon_aug2007_abstract_header_72d3fec55ed90c1f.cpp>)
+#pragma include_alias("v8datamodel/IPrimaryPart.h", "../roc_espeon_aug2007_abstract_header_d558c6e252d36c0e.cpp")
+#pragma include_alias(<v8datamodel/IPrimaryPart.h>, <../roc_espeon_aug2007_abstract_header_d558c6e252d36c0e.cpp>)
+#pragma include_alias("v8datamodel/PVInstance.h", "../roc_espeon_aug2007_abstract_header_e7c5a66547093118.cpp")
+#pragma include_alias(<v8datamodel/PVInstance.h>, <../roc_espeon_aug2007_abstract_header_e7c5a66547093118.cpp>)
+#pragma include_alias("v8tree/Service.h", "../roc_espeon_aug2007_abstract_header_cf6415ca14eaa52c.cpp")
+#pragma include_alias(<v8tree/Service.h>, <../roc_espeon_aug2007_abstract_header_cf6415ca14eaa52c.cpp>)
+#pragma include_alias("util/UIEvent.h", "../roc_espeon_aug2007_uievent_viewport_header_04331f71cbc5bc08.cpp")
+#pragma include_alias(<util/UIEvent.h>, <../roc_espeon_aug2007_uievent_viewport_header_04331f71cbc5bc08.cpp>)
+#pragma include_alias("v8datamodel/Workspace.h", "../roc_espeon_aug2007_workspace_header_d38fc45c16cb1519.cpp")
+#pragma include_alias(<v8datamodel/Workspace.h>, <../roc_espeon_aug2007_workspace_header_d38fc45c16cb1519.cpp>)
+#pragma include_alias("v8datamodel/ICharacterSubject.h", "../roc_espeon_aug2007_character_state_f342eee04d017582.cpp")
+#pragma include_alias(<v8datamodel/ICharacterSubject.h>, <../roc_espeon_aug2007_character_state_f342eee04d017582.cpp>)
+#pragma include_alias("humanoid/Humanoid.h", "../roc_espeon_aug2007_humanoid_state_f78ef0aa0660622a.cpp")
+#pragma include_alias(<humanoid/Humanoid.h>, <../roc_espeon_aug2007_humanoid_state_f78ef0aa0660622a.cpp>)
+#pragma include_alias("humanoid/Running.h", "../roc_espeon_aug2007_running_balance_hook_875f0bb95aec50f5.cpp")
+#pragma include_alias(<humanoid/Running.h>, <../roc_espeon_aug2007_running_balance_hook_875f0bb95aec50f5.cpp>)
+#pragma include_alias("humanoid/Balancing.h", "../roc_espeon_aug2007_balancing_balance_hook_37ced1d1de755090.cpp")
+#pragma include_alias(<humanoid/Balancing.h>, <../roc_espeon_aug2007_balancing_balance_hook_37ced1d1de755090.cpp>)
+#pragma include_alias("humanoid/FallingDown.h", "../roc_espeon_aug2007_fallingdown_state_7499778b68c8dff0.cpp")
+#pragma include_alias(<humanoid/FallingDown.h>, <../roc_espeon_aug2007_fallingdown_state_7499778b68c8dff0.cpp>)
+#pragma include_alias("humanoid/Flying.h", "../roc_espeon_aug2007_flying_balance_hook_a9eee8e762225c01.cpp")
+#pragma include_alias(<humanoid/Flying.h>, <../roc_espeon_aug2007_flying_balance_hook_a9eee8e762225c01.cpp>)
+#pragma include_alias("humanoid/Freefall.h", "../roc_espeon_aug2007_freefall_state_671ebe3411c8030d.cpp")
+#pragma include_alias(<humanoid/Freefall.h>, <../roc_espeon_aug2007_freefall_state_671ebe3411c8030d.cpp>)
+#pragma include_alias("humanoid/GettingUp.h", "../roc_espeon_aug2007_gettingup_balance_hook_972ad7ec2ed27c84.cpp")
+#pragma include_alias(<humanoid/GettingUp.h>, <../roc_espeon_aug2007_gettingup_balance_hook_972ad7ec2ed27c84.cpp>)
+#pragma include_alias("humanoid/Jumping.h", "../roc_espeon_aug2007_jumping_state_9af9b1e45a772018.cpp")
+#pragma include_alias(<humanoid/Jumping.h>, <../roc_espeon_aug2007_jumping_state_9af9b1e45a772018.cpp>)
+#pragma include_alias("humanoid/Seated.h", "../roc_espeon_aug2007_seated_state_df5e271a3b8e21cd.cpp")
+#pragma include_alias(<humanoid/Seated.h>, <../roc_espeon_aug2007_seated_state_df5e271a3b8e21cd.cpp>)
+#pragma include_alias("RbxGraphics/Adorn.h", "../roc_espeon_aug2007_adorn_header_6887d8bb2eb92360.cpp")
+#pragma include_alias(<RbxGraphics/Adorn.h>, <../roc_espeon_aug2007_adorn_header_6887d8bb2eb92360.cpp>)
+#pragma include_alias("AppDraw/AdornG3D.h", "../roc_espeon_aug2007_adorng3d_header_62d495574bf52995.cpp")
+#pragma include_alias(<AppDraw/AdornG3D.h>, <../roc_espeon_aug2007_adorng3d_header_62d495574bf52995.cpp>)
+#pragma include_alias("v8kernel/Kernel.h", "../roc_espeon_aug2007_kernel_inline_header_359388a626d15479.cpp")
+#pragma include_alias(<v8kernel/Kernel.h>, <../roc_espeon_aug2007_kernel_inline_header_359388a626d15479.cpp>)
+#pragma include_alias("v8kernel/Point.h", "../roc_espeon_aug2007_point_inline_header_aac7baa3a10948cb.cpp")
+#pragma include_alias(<v8kernel/Point.h>, <../roc_espeon_aug2007_point_inline_header_aac7baa3a10948cb.cpp>)
+
+#pragma include_alias("tool/Dragger.h", "../roc_espeon_aug2007_dragger_grid_header_d5a4fc7c9620bdf6.cpp")
+
+#include "tool/ToolsArrow.h"
+#include "tool/MegaDragger.h"
+#include "v8datamodel/Workspace.h"
+#include "G3D/Ray.h"
+#include "util/NormalId.h"
+#include "tool/Dragger.h"
+#include "util/Math.h"
+#include "v8datamodel/Selection.h"
+#include "v8datamodel/PVInstance.h"
+namespace RBX {
+extern const char* sAxisMoveTool;
+class AxisMoveTool:public Named<ArrowToolBase,&sAxisMoveTool>{
+ std::auto_ptr<MegaDragger> megaDragger;
+ std::string cursor;
+ bool dragging;
+ G3D::Vector2int16 mouseDownView;
+ G3D::Ray dragRay;
+ int axis;
+ G3D::Vector3 dragPoint;
+ bool hitHandle(const UIEvent&,G3D::Vector3&,NormalId&);
+ virtual MouseCommand* onMouseDown(const UIEvent&);
+ virtual void onMouseMove(const UIEvent&);
+ virtual MouseCommand* onMouseUp(const UIEvent&);
+ virtual void onMouseIdle(const UIEvent&);
+ virtual void render2d(Adorn*);
+ virtual void render3dAdorn(Adorn*);
+ virtual const std::string getCursorName()const{return cursor;}
+public:
+ __declspec(noinline) AxisMoveTool(Workspace*);
+
+ virtual MouseCommand* isSticky()const{return new AxisMoveTool(workspace);}
 };
-
-struct AxisMoveTool {
-    char pad0[0x18];
-    void* field18;
-    char pad1[0x24 - 0x1c];
-    void* field24;
-    char pad2[0x44 - 0x28];
-    unsigned char field44;
-    char pad3[0x46 - 0x45];
-    short field46;
-    short field48;
-    char pad4[0x4c - 0x4a];
-    char field4c[0x6c - 0x4c];
-    float field6c;
-    float field70;
-    float field74;
-
-    void method();
-};
-
-extern float g_79f2fc;
-extern float g_7aa8b4;
-extern float g_8bd12c;
-extern float g_8bd130;
-extern float g_8bd134;
-extern unsigned int g_8bd138;
-extern float g_8c7fb8;
-extern float g_8c7fbc;
-extern float g_8c7fc0;
-extern unsigned int g_8c7fc4;
-
-extern "C" void* __cdecl sub_62fef6(unsigned int size);
-extern "C" void __cdecl sub_62fc62(void* p);
-extern "C" void __cdecl sub_5623c0(void* p, int a);
-extern "C" void __cdecl sub_5e0d50(void* p, void* a, int b, void* c);
-extern "C" void __cdecl sub_5e0ef0(void* p);
-extern "C" void __cdecl sub_5e0660(void* p);
-extern "C" void __cdecl sub_5e07e0(void* p);
-extern "C" int __cdecl sub_5e05d0(void* p);
-extern "C" void __cdecl sub_5e05c0(void* p);
-extern "C" void __cdecl sub_5e0a60(void* p, void* a, void* b);
-extern "C" void __cdecl sub_5e3b90(void* p, void* a, void* b);
-extern "C" void __cdecl sub_5abf60(void* a, void* b, void* c);
-extern "C" void __cdecl sub_5ac2c0(void* a, void* b, void* c);
-extern "C" void* __cdecl sub_475020();
-extern "C" int __cdecl sub_5736f0(void* p, void* a);
-extern "C" void* __cdecl sub_5fe120();
-
-void AxisMoveTool::method()
-{
-    if (field44 == 0) {
-        int a = field46;
-        int b = field48;
-        float fa = (float)a;
-        float fb = (float)b;
-        float dx = (float)(*(short*)((char*)this + 0x80 + 8)) - fa;
-        float dy = (float)(*(short*)((char*)this + 0x80 + 0xa)) - fb;
-        float len = dx * dy + dx * dy;
-        len = (float)sqrt((double)len);
-        if (len >= g_79f2fc) {
-            void* p18 = field18;
-            void* p = sub_62fef6(0x24);
-            void* edi = p;
-            if (p != 0) {
-                sub_5623c0((char*)p + 0x10, 1);
-                void* r = (void*)((char*)p + 0xf4);
-                sub_5e0d50(edi, r, 0, p18);
-                edi = r;
-            } else {
-                edi = 0;
-            }
-            void* ebx = field24;
-            if (edi != ebx) {
-                if (ebx != 0) {
-                    sub_5e0ef0(ebx);
-                    sub_62fc62(ebx);
-                }
-            }
-            field24 = edi;
-            sub_5e0660(edi);
-            sub_5e07e0(field24);
-            field44 = 1;
-        }
-    }
-    if (field44 != 0) {
-        if (sub_5e05d0(field24)) {
-            void* arg = (void*)((char*)this + 0x80);
-            sub_5e3b90(this, arg, (char*)this + 0x4c);
-            sub_5ac2c0((char*)this + 0x4c, arg, (char*)this + 0x4c);
-            if ((g_8c7fc4 & 1) == 0) {
-                g_8c7fc4 |= 1;
-                g_8c7fb8 = 1.0f;
-                g_8c7fbc = g_7aa8b4;
-                g_8c7fc0 = 0.0f;
-            }
-            sub_5abf60(&g_8c7fb8, (char*)this + 0x4c, (char*)this + 0x4c);
-            if ((g_8c7fc4 & 1) == 0) {
-                g_8c7fc4 |= 1;
-                g_8c7fb8 = 1.0f;
-                g_8c7fbc = g_7aa8b4;
-                g_8c7fc0 = 0.0f;
-            }
-            sub_5abf60(&g_8c7fb8, (char*)this + 0x4c, (char*)this + 0x4c);
-            if ((g_8bd138 & 1) == 0) {
-                g_8bd138 |= 1;
-                g_8bd12c = 0.0f;
-                g_8bd130 = 0.0f;
-                g_8bd134 = 0.0f;
-            }
-            if (g_8bd12c != *(float*)((char*)this + 0x4c) ||
-                g_8bd130 != *(float*)((char*)this + 0x50) ||
-                g_8bd134 != *(float*)((char*)this + 0x54)) {
-                sub_5e05c0(field24);
-                sub_5e0a60(field24, (char*)this + 0x4c, (char*)this + 0x4c);
-                void* r = sub_475020();
-                if (sub_5736f0((char*)this + 0x4c, r)) {
-                    float fx = field6c + *(float*)((char*)this + 0x4c);
-                    float fy = field70 + *(float*)((char*)this + 0x50);
-                    float fz = field74 + *(float*)((char*)this + 0x54);
-                    void* r2 = sub_5fe120();
-                    sub_5abf60(&fx, r2, (char*)this + 0x4c);
-                    field6c = fx;
-                    field70 = fy;
-                    field74 = fz;
-                }
-            }
-        }
-    }
+void AxisMoveTool::onMouseMove(const UIEvent&e){
+ if(!dragging){
+  if((G3D::Vector2(e.mousePosition)-G3D::Vector2(mouseDownView)).length()>4.0f){
+   ServiceClient<FilteredSelection<PVInstance> > selection(workspace);
+   megaDragger.reset(new MegaDragger(NULL,selection->items(),workspace));
+   megaDragger->startDragging();
+   megaDragger->alignAndCleanParts();
+   dragging=true;
+  }
+ }
+ if(dragging&&megaDragger->anyDragPartAlive()){
+  G3D::Vector3 point=Math::closestPointOnRay(dragRay,getUnitMouseRay(e));
+  point=Math::toGrid(point,Dragger::dragSnap());
+  G3D::Vector3 delta=Math::toGrid(point-dragPoint,Dragger::dragSnap());
+  if(delta!=G3D::Vector3::zero()){
+   megaDragger->continueDragging();
+   G3D::Vector3 moved=megaDragger->safeMoveAlongLine(delta);
+   if(moved!=G3D::Vector3::zero())dragPoint=Math::toGrid(dragPoint+moved,Dragger::dragSnap());
+  }
+ }
+}
+typedef char axis_tool_size_78[sizeof(AxisMoveTool)==0x78?1:-1];
+AxisMoveTool::AxisMoveTool(Workspace*w):Named<ArrowToolBase,&sAxisMoveTool>(w),cursor("ArrowCursor"),dragging(false){}
+MouseCommand* AxisMoveTool::onMouseUp(const UIEvent&){if(dragging){megaDragger->finishDragging();megaDragger.release();dragging=false;}releaseCapture();return NULL;}
+void AxisMoveTool::onMouseIdle(const UIEvent&e){
+ ArrowToolBase::onMouseIdle(e);
+ if(captured())cursor="DragCursor";
+ else{
+  G3D::Vector3 point;
+  NormalId face;
+  if(hitHandle(e,point,face))cursor="ResizeCursor";
+  else cursor=ArrowToolBase::getCursorName();
+ }
+}
 }

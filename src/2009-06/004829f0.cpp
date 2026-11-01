@@ -1,25 +1,21 @@
-// from server: 69% by atomic.potato
-extern "C" void __stdcall _invalid_parameter_noinfo();
-
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <vector>
+struct Entry { void* key; void* value; };
 struct S {
-    char pad[0x6c];
-    int* begin;
-    int* end;
-    void f();
+    char pad[0x60];
+    std::vector<Entry> entries;
+    void* find();
 };
-
-void S::f() {
-    void (__stdcall *handler)() = _invalid_parameter_noinfo;
-    int i = 0;
-    int result = 0;
-    do {
-        if (result == 0) {
-            int count = (int)((char*)end - (char*)begin) >> 3;
-            if ((unsigned)i >= (unsigned)count) {
-                handler();
-            }
-            result = begin[i * 2 + 1];
-        }
-        i++;
-    } while ((unsigned)i < 0x2000);
+void* S::find()
+{
+    void* result = 0;
+    for (unsigned int i = 0; i < 0x2000; ++i) {
+        if (result)
+            break;
+        result = entries[i].value;
+    }
+    return result;
 }

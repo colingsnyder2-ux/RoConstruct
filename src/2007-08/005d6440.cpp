@@ -1,569 +1,125 @@
-// from server: 62% by colin
+// from server: 100% by Espeon
 // roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: boost-1.34.1 libs/program_options/src/options_description.cpp
+// roc-cl: 50727
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// roc-lib: rbxgs roc_espeon_aug2007_gui_relative_image_ctor_9e7697b2a32d225a.cpp
 
 // Candidate translation unit (score above; library headers required).
-// Copyright Vladimir Prus 2002-2004.
-// Copyright Bertolt Mildner 2004.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
+#undef _RELEASEASSERT
+#pragma include_alias("v8world/Edge.h", "../roc_espeon_aug2007_edge_header_cb216aa0cb409651.cpp")
+#pragma include_alias(<v8world/Edge.h>, <../roc_espeon_aug2007_edge_header_cb216aa0cb409651.cpp>)
+#pragma include_alias("v8world/Contact.h", "../roc_espeon_aug2007_contact_header_5ec74239b50ff6ca.cpp")
+#pragma include_alias(<v8world/Contact.h>, <../roc_espeon_aug2007_contact_header_5ec74239b50ff6ca.cpp>)
+#define _MT 1
+#define _DLL 1
+#pragma include_alias("v8kernel/KernelIndex.h", "../roc_espeon_aug2007_kernelindex_header_d7778b4d74bcf4c0.cpp")
+#pragma include_alias("v8kernel/Body.h", "../roc_espeon_aug2007_body_header_b251c002665e01af.cpp")
+#pragma include_alias("util/Extents.h", "../roc_espeon_aug2007_extents_inline_58e475d56d206314.cpp")
+#pragma include_alias("reflection/object.h", "../roc_espeon_aug2007_describedbase_e64c736f24da029d.cpp")
+#pragma include_alias("util/Debug.h", "../roc_espeon_aug2007_ctor_debugable_025e0cb3bb8217d3.cpp")
+#pragma include_alias(<util/Debug.h>, <../roc_espeon_aug2007_ctor_debugable_025e0cb3bb8217d3.cpp>)
+#pragma include_alias("util/Events.h", "../roc_espeon_aug2007_datamodel_header_e4d5a36bea2e4f16.cpp")
+#pragma include_alias("reflection/reflection.h", "../roc_espeon_aug2007_described_arg_header_14221fd67bb3ca43.cpp")
+#pragma include_alias("v8tree/Instance.h", "../roc_espeon_aug2007_instance_header_47f25dc9e4368119.cpp")
+#pragma include_alias("v8datamodel/PartInstance.h", "../roc_espeon_aug2007_part_flags_header_a6acc69782cd7c29.cpp")
+#pragma include_alias("v8world/Primitive.h", "../roc_espeon_aug2007_primitive_trivial_header_ac300ff64c6fc5e6.cpp")
+#pragma include_alias("v8datamodel/DataModel.h", "../roc_espeon_aug2007_datamodel_mutex_header_321a3c67de644a82.cpp")
+#pragma include_alias("v8tree/Verb.h", "../roc_espeon_aug2007_datamodel_header_c06d28d1a6b724f6.cpp")
+#pragma include_alias("util/Evaluator.h", "../roc_espeon_aug2007_datamodel_header_4ba4cf67c400aa66.cpp")
+#pragma include_alias(<boost/signals/signal_template.hpp>, <../roc_espeon_boost133_signals_header_a54048d539243d2e.cpp>)
+#pragma include_alias("boost/signals/signal_template.hpp", "../roc_espeon_boost133_signals_header_a54048d539243d2e.cpp")
+#include "roc_espeon_boost133_header_d432d72f8740aec3.cpp"
+#include "roc_espeon_boost133_header_d9eb4711b7fc841c.cpp"
+#include "roc_espeon_boost133_signals_header_be197e98651271fa.cpp"
 
+#pragma include_alias("v8world/Joint.h", "../roc_espeon_aug2007_joint_header_bb71fe27a95b99c9.cpp")
+#pragma include_alias(<v8world/Joint.h>, <../roc_espeon_aug2007_joint_header_bb71fe27a95b99c9.cpp>)
+#pragma include_alias("v8world/IPipelined.h", "../roc_espeon_aug2007_ipipelined_header_459cfa06a40ba136.cpp")
+#pragma include_alias(<v8world/IPipelined.h>, <../roc_espeon_aug2007_ipipelined_header_459cfa06a40ba136.cpp>)
+#pragma include_alias("v8world/Joint.h", "../roc_espeon_aug2007_joint_accessor_header_d77e5f1c0b32672c.cpp")
+#pragma include_alias(<v8world/Joint.h>, <../roc_espeon_aug2007_joint_accessor_header_d77e5f1c0b32672c.cpp>)
+#pragma include_alias("util/IRenderable.h", "../roc_espeon_aug2007_bucket_header_1deff476fbc5a7ac.cpp")
+#pragma include_alias(<util/IRenderable.h>, <../roc_espeon_aug2007_bucket_header_1deff476fbc5a7ac.cpp>)
+#pragma include_alias("v8datamodel/JointInstance.h", "../roc_espeon_aug2007_jointinstance_header_2070a5362277cad1.cpp")
+#pragma include_alias(<v8datamodel/JointInstance.h>, <../roc_espeon_aug2007_jointinstance_header_2070a5362277cad1.cpp>)
+#pragma include_alias("v8world/IMoving.h", "../roc_espeon_aug2007_imoving_header_a7323a6be498a3c4.cpp")
+#pragma include_alias(<v8world/IMoving.h>, <../roc_espeon_aug2007_imoving_header_a7323a6be498a3c4.cpp>)
+#pragma include_alias("v8kernel/IStage.h", "../roc_espeon_aug2007_istage_header_b0262a91d28a95d1.cpp")
+#pragma include_alias(<v8kernel/IStage.h>, <../roc_espeon_aug2007_istage_header_b0262a91d28a95d1.cpp>)
+#pragma include_alias("reflection/function.h", "../roc_espeon_aug2007_abstract_header_991b5e9635f5d75d.cpp")
+#pragma include_alias(<reflection/function.h>, <../roc_espeon_aug2007_abstract_header_991b5e9635f5d75d.cpp>)
+#pragma include_alias("reflection/member.h", "../roc_espeon_aug2007_abstract_header_56ab3d07f46302ce.cpp")
+#pragma include_alias(<reflection/member.h>, <../roc_espeon_aug2007_abstract_header_56ab3d07f46302ce.cpp>)
+#pragma include_alias("reflection/property.h", "../roc_espeon_aug2007_abstract_header_4b7af236c124d7bd.cpp")
+#pragma include_alias(<reflection/property.h>, <../roc_espeon_aug2007_abstract_header_4b7af236c124d7bd.cpp>)
+#pragma include_alias("reflection/signal.h", "../roc_espeon_aug2007_abstract_header_35400af2df14a7cc.cpp")
+#pragma include_alias(<reflection/signal.h>, <../roc_espeon_aug2007_abstract_header_35400af2df14a7cc.cpp>)
+#pragma include_alias("script/Script.h", "../roc_espeon_aug2007_abstract_header_206648adc176eff8.cpp")
+#pragma include_alias(<script/Script.h>, <../roc_espeon_aug2007_abstract_header_206648adc176eff8.cpp>)
+#pragma include_alias("util/ICameraSubject.h", "../roc_espeon_aug2007_abstract_header_15846f007cad7f25.cpp")
+#pragma include_alias(<util/ICameraSubject.h>, <../roc_espeon_aug2007_abstract_header_15846f007cad7f25.cpp>)
+#pragma include_alias("util/IControllable.h", "../roc_espeon_aug2007_abstract_header_134fb1e5a9dd6b81.cpp")
+#pragma include_alias(<util/IControllable.h>, <../roc_espeon_aug2007_abstract_header_134fb1e5a9dd6b81.cpp>)
+#pragma include_alias("util/ILocation.h", "../roc_espeon_aug2007_abstract_header_b220b165aaf2f641.cpp")
+#pragma include_alias(<util/ILocation.h>, <../roc_espeon_aug2007_abstract_header_b220b165aaf2f641.cpp>)
+#pragma include_alias("v8datamodel/ICameraOwner.h", "../roc_espeon_aug2007_abstract_header_328a7f313eb894b0.cpp")
+#pragma include_alias(<v8datamodel/ICameraOwner.h>, <../roc_espeon_aug2007_abstract_header_328a7f313eb894b0.cpp>)
+#pragma include_alias("v8datamodel/ICharacterSubject.h", "../roc_espeon_aug2007_abstract_header_72d3fec55ed90c1f.cpp")
+#pragma include_alias(<v8datamodel/ICharacterSubject.h>, <../roc_espeon_aug2007_abstract_header_72d3fec55ed90c1f.cpp>)
+#pragma include_alias("v8datamodel/IPrimaryPart.h", "../roc_espeon_aug2007_abstract_header_d558c6e252d36c0e.cpp")
+#pragma include_alias(<v8datamodel/IPrimaryPart.h>, <../roc_espeon_aug2007_abstract_header_d558c6e252d36c0e.cpp>)
+#pragma include_alias("v8datamodel/PVInstance.h", "../roc_espeon_aug2007_abstract_header_e7c5a66547093118.cpp")
+#pragma include_alias(<v8datamodel/PVInstance.h>, <../roc_espeon_aug2007_abstract_header_e7c5a66547093118.cpp>)
+#pragma include_alias("v8tree/Service.h", "../roc_espeon_aug2007_abstract_header_cf6415ca14eaa52c.cpp")
+#pragma include_alias(<v8tree/Service.h>, <../roc_espeon_aug2007_abstract_header_cf6415ca14eaa52c.cpp>)
+#pragma include_alias("util/UIEvent.h", "../roc_espeon_aug2007_uievent_viewport_header_04331f71cbc5bc08.cpp")
+#pragma include_alias(<util/UIEvent.h>, <../roc_espeon_aug2007_uievent_viewport_header_04331f71cbc5bc08.cpp>)
+#pragma include_alias("v8datamodel/Workspace.h", "../roc_espeon_aug2007_workspace_header_d38fc45c16cb1519.cpp")
+#pragma include_alias(<v8datamodel/Workspace.h>, <../roc_espeon_aug2007_workspace_header_d38fc45c16cb1519.cpp>)
+#pragma include_alias("v8datamodel/ICharacterSubject.h", "../roc_espeon_aug2007_character_state_f342eee04d017582.cpp")
+#pragma include_alias(<v8datamodel/ICharacterSubject.h>, <../roc_espeon_aug2007_character_state_f342eee04d017582.cpp>)
+#pragma include_alias("humanoid/Humanoid.h", "../roc_espeon_aug2007_humanoid_state_f78ef0aa0660622a.cpp")
+#pragma include_alias(<humanoid/Humanoid.h>, <../roc_espeon_aug2007_humanoid_state_f78ef0aa0660622a.cpp>)
+#pragma include_alias("humanoid/Running.h", "../roc_espeon_aug2007_running_balance_hook_875f0bb95aec50f5.cpp")
+#pragma include_alias(<humanoid/Running.h>, <../roc_espeon_aug2007_running_balance_hook_875f0bb95aec50f5.cpp>)
+#pragma include_alias("humanoid/Balancing.h", "../roc_espeon_aug2007_balancing_balance_hook_37ced1d1de755090.cpp")
+#pragma include_alias(<humanoid/Balancing.h>, <../roc_espeon_aug2007_balancing_balance_hook_37ced1d1de755090.cpp>)
+#pragma include_alias("humanoid/FallingDown.h", "../roc_espeon_aug2007_fallingdown_state_7499778b68c8dff0.cpp")
+#pragma include_alias(<humanoid/FallingDown.h>, <../roc_espeon_aug2007_fallingdown_state_7499778b68c8dff0.cpp>)
+#pragma include_alias("humanoid/Flying.h", "../roc_espeon_aug2007_flying_balance_hook_a9eee8e762225c01.cpp")
+#pragma include_alias(<humanoid/Flying.h>, <../roc_espeon_aug2007_flying_balance_hook_a9eee8e762225c01.cpp>)
+#pragma include_alias("humanoid/Freefall.h", "../roc_espeon_aug2007_freefall_state_671ebe3411c8030d.cpp")
+#pragma include_alias(<humanoid/Freefall.h>, <../roc_espeon_aug2007_freefall_state_671ebe3411c8030d.cpp>)
+#pragma include_alias("humanoid/GettingUp.h", "../roc_espeon_aug2007_gettingup_balance_hook_972ad7ec2ed27c84.cpp")
+#pragma include_alias(<humanoid/GettingUp.h>, <../roc_espeon_aug2007_gettingup_balance_hook_972ad7ec2ed27c84.cpp>)
+#pragma include_alias("humanoid/Jumping.h", "../roc_espeon_aug2007_jumping_state_9af9b1e45a772018.cpp")
+#pragma include_alias(<humanoid/Jumping.h>, <../roc_espeon_aug2007_jumping_state_9af9b1e45a772018.cpp>)
+#pragma include_alias("humanoid/Seated.h", "../roc_espeon_aug2007_seated_state_df5e271a3b8e21cd.cpp")
+#pragma include_alias(<humanoid/Seated.h>, <../roc_espeon_aug2007_seated_state_df5e271a3b8e21cd.cpp>)
+#pragma include_alias("RbxGraphics/Adorn.h", "../roc_espeon_aug2007_adorn_header_6887d8bb2eb92360.cpp")
+#pragma include_alias(<RbxGraphics/Adorn.h>, <../roc_espeon_aug2007_adorn_header_6887d8bb2eb92360.cpp>)
+#pragma include_alias("AppDraw/AdornG3D.h", "../roc_espeon_aug2007_adorng3d_header_62d495574bf52995.cpp")
+#pragma include_alias(<AppDraw/AdornG3D.h>, <../roc_espeon_aug2007_adorng3d_header_62d495574bf52995.cpp>)
+#pragma include_alias("v8kernel/Kernel.h", "../roc_espeon_aug2007_kernel_inline_header_359388a626d15479.cpp")
+#pragma include_alias(<v8kernel/Kernel.h>, <../roc_espeon_aug2007_kernel_inline_header_359388a626d15479.cpp>)
+#pragma include_alias("v8kernel/Point.h", "../roc_espeon_aug2007_point_inline_header_aac7baa3a10948cb.cpp")
+#pragma include_alias(<v8kernel/Point.h>, <../roc_espeon_aug2007_point_inline_header_aac7baa3a10948cb.cpp>)
 
-#define BOOST_PROGRAM_OPTIONS_SOURCE
-#include <boost/program_options/config.hpp>
-#include <boost/program_options/options_description.hpp>
-// FIXME: this is only to get multiple_occureces class
-// should move that to a separate headers.
-#include <boost/program_options/parsers.hpp>
-
-
-#include <boost/lexical_cast.hpp>
-#include <boost/tokenizer.hpp>
-#include <boost/detail/workaround.hpp>
-#include <boost/throw_exception.hpp>
-
-#include <cassert>
-#include <climits>
-#include <cstring>
-#include <cstdarg>
-#include <sstream>
-#include <iterator>
-using namespace std;
-
-namespace boost { namespace program_options {
-
-    option_description::option_description()
-    {
-    }
-    
-    option_description::
-    option_description(const char* name,
-                       const value_semantic* s)
-    : m_value_semantic(s)
-    {
-        this->set_name(name);
-    }
-                                           
-
-    option_description::
-    option_description(const char* name,
-                       const value_semantic* s,
-                       const char* description)
-    : m_description(description), m_value_semantic(s)
-    {
-        this->set_name(name);
-    }
-
-    option_description::~option_description()
-    {
-    }
-
-    option_description::match_result
-    option_description::match(const std::string& option, bool approx) const
-    {
-        match_result result = no_match;
-        if (!m_long_name.empty()) {
-
-            if (*m_long_name.rbegin() == '*')
-            {
-                // The name ends with '*'. Any specified name with the given
-                // prefix is OK.
-                if (option.find(m_long_name.substr(0, m_long_name.length()-1))
-                    == 0)
-                    result = approximate_match;
-            }
-
-            if (approx)
-            {
-                if (m_long_name.find(option) == 0)
-                    if (m_long_name == option)
-                        result = full_match;
-                    else
-                        result = approximate_match;
-            }
-            else
-            {
-                if (m_long_name == option)
-                    result = full_match;
-            }
-        }
-         
-        if (m_short_name == option)
-            result = full_match;
-
-        return result;        
-    }
-
-    const std::string& 
-    option_description::key(const std::string& option) const
-    {        
-        if (!m_long_name.empty()) 
-            if (m_long_name.find('*') != string::npos)
-                // The '*' character means we're long_name
-                // matches only part of the input. So, returning
-                // long name will remove some of the information,
-                // and we have to return the option as specified
-                // in the source.
-                return option;
-            else
-                return m_long_name;
-        else
-            return m_short_name;
-    }
-
-    const std::string&
-    option_description::long_name() const
-    {
-        return m_long_name;
-    }
-
-    option_description&
-    option_description::set_name(const char* _name)
-    {
-        std::string name(_name);
-        string::size_type n = name.find(',');
-        if (n != string::npos) {
-            assert(n == name.size()-2);
-            m_long_name = name.substr(0, n);
-            m_short_name = '-' + name.substr(n+1,1);
-        } else {
-            m_long_name = name;
-        }
-        return *this;
-    }
-
-    const std::string&
-    option_description::description() const
-    {
-        return m_description;
-    }
-
-    shared_ptr<const value_semantic>
-    option_description::semantic() const
-    {
-        return m_value_semantic;
-    }
-    
-    std::string 
-    option_description::format_name() const
-    {
-        if (!m_short_name.empty())
-            return string(m_short_name).append(" [ --").
-            append(m_long_name).append(" ]");
-        else
-            return string("--").append(m_long_name);
-    }
-
-    std::string 
-    option_description::format_parameter() const
-    {
-        if (m_value_semantic->max_tokens() != 0)
-            return m_value_semantic->name();
-        else
-            return "";
-    }
-
-    options_description_easy_init::
-    options_description_easy_init(options_description* owner)
-    : owner(owner)
-    {}
-
-    options_description_easy_init&
-    options_description_easy_init::
-    operator()(const char* name,
-               const char* description)
-    {
-        // Create untypes semantic which accepts zero tokens: i.e. 
-        // no value can be specified on command line.
-        // FIXME: does not look exception-safe
-        shared_ptr<option_description> d(
-            new option_description(name, new untyped_value(true), description));
-
-        owner->add(d);
-        return *this;
-    }
-
-    options_description_easy_init&
-    options_description_easy_init::
-    operator()(const char* name,
-               const value_semantic* s)
-    {
-        shared_ptr<option_description> d(new option_description(name, s));
-        owner->add(d);
-        return *this;
-    }
-
-    options_description_easy_init&
-    options_description_easy_init::
-    operator()(const char* name,
-               const value_semantic* s,
-               const char* description)
-    {
-        shared_ptr<option_description> d(new option_description(name, s, description));
-
-        owner->add(d);
-        return *this;
-    }
-
-    options_description::options_description(unsigned line_length)
-    : m_line_length(line_length)
-    {}
-
-    options_description::options_description(const string& caption,
-                                             unsigned line_length)
-    : m_caption(caption), m_line_length(line_length)
-    {}
-
-    void
-    options_description::add(shared_ptr<option_description> desc)
-    {
-        m_options.push_back(desc);
-        belong_to_group.push_back(false);
-    }
-
-    options_description&
-    options_description::add(const options_description& desc)
-    {
-        shared_ptr<options_description> d(new options_description(desc));
-        groups.push_back(d);
-
-        for (size_t i = 0; i < desc.m_options.size(); ++i) {
-            add(desc.m_options[i]);
-            belong_to_group.back() = true;
-        }
-
-        return *this;
-    }
-
-    options_description_easy_init
-    options_description::add_options()
-    {       
-        return options_description_easy_init(this);
-    }
-
-    const option_description&
-    options_description::find(const std::string& name, bool approx) const
-    {
-        const option_description* d = find_nothrow(name, approx);
-        if (!d)
-            boost::throw_exception(unknown_option(name));
-        return *d;
-    }
-
-    const std::vector< shared_ptr<option_description> >& 
-    options_description::options() const
-    {
-        return m_options;
-    }
-
-    const option_description* 
-    options_description::find_nothrow(const std::string& name, 
-                                      bool approx) const
-    {
-        int found = -1;
-        // We use linear search because matching specified option
-        // name with the declared option name need to take care about
-        // case sensitivity and trailing '*' and so we can't use simple map.
-        for(unsigned i = 0; i < m_options.size(); ++i)
-        {
-            option_description::match_result r = 
-                m_options[i]->match(name, approx);
-
-            if (r == option_description::no_match)
-                continue;
-
-            // If we have a full patch, and an approximate match,
-            // ignore approximate match instead of reporting error.
-            // Say, if we have options "all" and "all-chroots", then
-            // "--all" on the command line should select the first one,
-            // without ambiguity.
-            //
-            // For now, we don't check the situation when there are 
-            // two full matches. 
-                            
-            if (r == option_description::full_match)
-            {
-                return m_options[i].get();                
-            }
-
-            if (found != -1)
-            {
-                vector<string> alts;
-                // FIXME: the use of 'key' here might not
-                // be the best approach.
-                alts.push_back(m_options[found]->key(name));
-                alts.push_back(m_options[i]->key(name));
-                boost::throw_exception(ambiguous_option(name, alts));
-            }
-            else
-            {
-                found = i;
-            }
-        }
-        if (found != -1) {
-            return m_options[found].get();
-        } else {
-            return 0;
-        }
-    }
-
-    BOOST_PROGRAM_OPTIONS_DECL
-    std::ostream& operator<<(std::ostream& os, const options_description& desc)
-    {
-        desc.print(os);
-        return os;
-    }
-
-    namespace {
-
-        /* Given a string 'par', that contains no newline characters
-           outputs it to 'os' with wordwrapping, that is, as several
-           line.
-
-           Each output line starts with 'indent' space characters, 
-           following by characters from 'par'. The total length of
-           line is no longer than 'line_length'.
-                                      
-        */
-        void format_paragraph(std::ostream& os,
-                              std::string par,
-                              unsigned indent,
-                              unsigned line_length)
-        {                    
-            // Through reminder of this function, 'line_length' will
-            // be the length available for characters, not including
-            // indent.
-            assert(indent < line_length);
-            line_length -= indent;
-
-            // index of tab (if present) is used as additional indent relative
-            // to first_column_width if paragrapth is spanned over multiple
-            // lines if tab is not on first line it is ignored
-            string::size_type par_indent = par.find('\t');
-
-            if (par_indent == string::npos)
-            {
-                par_indent = 0;
-            }
-            else
-            {
-                // only one tab per paragraph allowed
-                if (count(par.begin(), par.end(), '\t') > 1)
-                {
-                    boost::throw_exception(program_options::error(
-                        "Only one tab per paragraph is allowed"));
-                }
-          
-                // erase tab from string
-                par.erase(par_indent, 1);
-
-                // this assert may fail due to user error or 
-                // environment conditions!
-                assert(par_indent < line_length);
-
-                // ignore tab if not on first line
-                if (par_indent >= line_length)
-                {
-                    par_indent = 0;
-                }            
-            }
-          
-            if (par.size() < line_length)
-            {
-                os << par;
-            }
-            else
-            {
-                string::const_iterator       line_begin = par.begin();
-                const string::const_iterator par_end = par.end();
-
-                bool first_line = true; // of current paragraph!        
-            
-                while (line_begin < par_end)  // paragraph lines
-                {
-                    if (!first_line)
-                    {
-                        // If line starts with space, but second character
-                        // is not space, remove the leading space.
-                        // We don't remove double spaces because those
-                        // might be intentianal.
-                        if ((*line_begin == ' ') &&
-                            ((line_begin + 1 < par_end) &&
-                             (*(line_begin + 1) != ' ')))
-                        {
-                            line_begin += 1;  // line_begin != line_end
-                        }
-                    }
-
-                    // Take care to never increment the iterator past
-                    // the end, since MSVC 8.0 (brokenly), assumes that
-                    // doing that, even if no access happens, is a bug.
-                    unsigned remaining = distance(line_begin, par_end);
-                    string::const_iterator line_end = line_begin + 
-                        ((remaining < line_length) ? remaining : line_length);
-            
-                    // prevent chopped words
-                    // Is line_end between two non-space characters?
-                    if ((*(line_end - 1) != ' ') &&
-                        ((line_end < par_end) && (*line_end != ' ')))
-                    {
-                        // find last ' ' in the second half of the current paragraph line
-                        string::const_iterator last_space =
-                            find(reverse_iterator<string::const_iterator>(line_end),
-                                 reverse_iterator<string::const_iterator>(line_begin),
-                                 ' ')
-                            .base();
-                
-                        if (last_space != line_begin)
-                        {                 
-                            // is last_space within the second half of the 
-                            // current line
-                            if ((unsigned)std::distance(last_space, line_end) < 
-                                (line_length - indent) / 2)
-                            {
-                                line_end = last_space;
-                            }
-                        }                                                
-                    } // prevent chopped words
-             
-                    // write line to stream
-                    copy(line_begin, line_end, ostream_iterator<char>(os));
-              
-                    if (first_line)
-                    {
-                        indent += par_indent;
-                        first_line = false;
-                    }
-
-                    // more lines to follow?
-                    if (line_end != par_end)
-                    {
-                        os << '\n';
-                
-                        for(unsigned pad = indent; pad > 0; --pad)
-                        {
-                            os.put(' ');
-                        }                                                        
-                    }
-              
-                    // next line starts after of this line
-                    line_begin = line_end;              
-                } // paragraph lines
-            }          
-        }                              
-        
-        void format_description(std::ostream& os,
-                                const std::string& desc, 
-                                unsigned first_column_width,
-                                unsigned line_length)
-        {
-            // we need to use one char less per line to work correctly if actual
-            // console has longer lines
-            assert(line_length > 1);
-            if (line_length > 1)
-            {
-                --line_length;
-            }
-
-            // line_length must be larger than first_column_width
-            // this assert may fail due to user error or environment conditions!
-            assert(line_length > first_column_width);
-
-            // Note: can't use 'tokenizer' as name of typedef -- borland
-            // will consider uses of 'tokenizer' below as uses of
-            // boost::tokenizer, not typedef.
-            typedef boost::tokenizer<boost::char_separator<char> > tok;
-          
-            tok paragraphs(
-                desc,
-                char_separator<char>("\n", "", boost::keep_empty_tokens));
-          
-            tok::const_iterator       par_iter = paragraphs.begin();                
-            const tok::const_iterator par_end = paragraphs.end();
-
-            while (par_iter != par_end)  // paragraphs
-            {
-                format_paragraph(os, *par_iter, first_column_width, 
-                                 line_length);
-            
-                ++par_iter;
-            
-                // prepair next line if any
-                if (par_iter != par_end)
-                {
-                    os << '\n';
-              
-                    for(unsigned pad = first_column_width; pad > 0; --pad)
-                    {
-                        os.put(' ');
-                    }                    
-                }            
-            }  // paragraphs
-        }
-    
-        void format_one(std::ostream& os, const option_description& opt, 
-                        unsigned first_column_width, unsigned line_length)
-        {
-            stringstream ss;
-            ss << "  " << opt.format_name() << ' ' << opt.format_parameter();
-            
-            // Don't use ss.rdbuf() since g++ 2.96 is buggy on it.
-            os << ss.str();
-
-            if (!opt.description().empty())
-            {
-                for(unsigned pad = first_column_width - ss.str().size(); 
-                    pad > 0; 
-                    --pad)
-                {
-                    os.put(' ');
-                }
-            
-                format_description(os, opt.description(),
-                                   first_column_width, line_length);
-            }
-        }
-    }
-
-    void 
-    options_description::print(std::ostream& os) const
-    {
-        if (!m_caption.empty())
-            os << m_caption << ":\n";
-
-        /* Find the maximum width of the option column */
-        unsigned width(23);
-        unsigned i; // vc6 has broken for loop scoping
-        for (i = 0; i < m_options.size(); ++i)
-        {
-            const option_description& opt = *m_options[i];
-            stringstream ss;
-            ss << "  " << opt.format_name() << ' ' << opt.format_parameter();
-            width = (max)(width, static_cast<unsigned>(ss.str().size()));            
-        }
-        
-        /* add an additional space to improve readability */
-        ++width;
-            
-        /* The options formatting style is stolen from Subversion. */
-        for (i = 0; i < m_options.size(); ++i)
-        {
-            if (belong_to_group[i])
-                continue;
-
-            const option_description& opt = *m_options[i];
-
-            format_one(os, opt, width, m_line_length);
-
-            os << "\n";
-        }
-
-        for (unsigned j = 0; j < groups.size(); ++j) {            
-            os << "\n" << *groups[j];
-        }
-    }
-
-}}
+#include "gui/Gui.h"
+#include "gui/ChatWidget.h"
+#include "v8datamodel/Tool.h"
+#include "v8xml/SerializerV2.h"
+namespace RBX {
+RelativePanel::RelativePanel(const Layout&layout){init(layout);}
+UnifiedImageWidget::UnifiedImageWidget(Adorn*adorn,const std::string&image):guiImageDraw(adorn,image){}
+PercentPanel::PercentPanel(Rect::Location x,Rect::Location y,const G3D::Vector2 pos):xLocation(x),yLocation(y),position(pos){}
+void Tool::readProperty(const XmlElement*element,IReferenceBinder&binder){
+ const Name*name=NULL;
+ if(const XmlAttribute*attribute=element->findAttribute(name_name)){
+  if(attribute->getValue(name)){
+   if(name->toString()=="BackendToolState"||name->toString()=="ActivationState")return;
+  }
+ }
+ Instance::readProperty(element,binder);
+}
+}

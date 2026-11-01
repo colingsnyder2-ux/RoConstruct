@@ -1,108 +1,31 @@
-// from server: 50% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
-
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
-
-boost::mutex& moo2()
-{
-	static boost::mutex mutex2;
-	return mutex2;
-}
-
-void initMoo()
-{
-	moo2();
-}
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
-}
+namespace std { template<class T> class auto_ptr { T* p; public: auto_ptr(auto_ptr& o) : p(o.release()) {} ~auto_ptr() { delete p; } T* release() { T* t = p; p = 0; return t; } }; }
+void __cdecl operator delete(void* p) throw();
+namespace RBX { namespace Reflection {
+class ClassDescriptor; class DescribedBase;
+template<class T> struct ExeCounter { static int count; };
+class Type { public: template<class T> static const Type& singleton(); };
+class PropertyDescriptor {
+public:
+	enum Functionality { };
+	PropertyDescriptor(ClassDescriptor& cd, const Type& type, const char* name, const char* category, Functionality f);
+	virtual ~PropertyDescriptor();
+	char pad[0x14];
+};
+template<class T> inline const Type& typeOf() { ++ExeCounter<T>::count; return Type::singleton<T>(); }
+template<class T> class TypedPropertyDescriptor : public PropertyDescriptor {
+public:
+	class __declspec(novtable) GetSet { public:
+		virtual bool isReadOnly() const = 0;
+		virtual T getValue(const DescribedBase* instance) const = 0;
+		virtual void setValue(DescribedBase* instance, const T& value) const = 0; };
+protected:
+	TypedPropertyDescriptor(ClassDescriptor& cd, const char* name, const char* category, std::auto_ptr<GetSet> getset, Functionality f)
+		: PropertyDescriptor(cd, typeOf<T>(), name, category, f), getset(getset) {}
+	std::auto_ptr<GetSet> getset;
+};
+template class TypedPropertyDescriptor<bool>;
+}}

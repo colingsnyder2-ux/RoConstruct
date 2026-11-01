@@ -1,17 +1,13 @@
-// from server: 67% by atomic.potato
-struct Job {
-    char pad[0x70];
-    Job* next;
-};
-
-void __cdecl insert(Job* job, Job** list) {
-    if (job) {
-        job = (Job*)((char*)job + 0x70);
-        job->next = *list;
-        *list = job;
-    } else {
-        Job* p = 0;
-        p->next = *list;
-        *list = p;
-    }
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct Pad { char pad[0x70]; };
+struct Link { Link* next; };
+struct Job : Pad, Link { };
+void insert(Job* job, Link** list)
+{
+    Link* l = job;
+    l->next = *list;
+    *list = l;
 }

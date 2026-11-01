@@ -1,71 +1,36 @@
-// from server: 71% by EspClaude
-// from server: 100% by auto
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /EHsc /MD
-// roc-lib: openrbx-raknet DataBlockEncryptor.cpp
+// roc-lib: openrbx-raknet roc_espclaude_68dbe7e72397cc88.cpp
 
 // Candidate translation unit (score above; library headers required).
-/// \file
-///
-/// This file is part of RakNet Copyright 2003 Kevin Jenkins.
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-/// Creative Commons Licensees are subject to the
-/// license found at
-/// http://creativecommons.org/licenses/by-nc/2.5/
-/// Single application licensees are subject to the license found at
-/// http://www.rakkarsoft.com/SingleApplicationLicense.html
-/// Custom license users are subject to the terms therein.
-/// GPL license users are subject to the GNU General Public
-/// License as published by the Free
-/// Software Foundation; either version 2 of the License, or (at your
-/// option) any later version.
-
-#include "DataBlockEncryptor.h"
+#define __DATA_BLOCK_ENCRYPTOR_H
+#include "Rijndael.h"
+namespace RakNet { class RakNetRandom { public: unsigned int RandomMT(void); }; }
+class DataBlockEncryptor
+{
+public:
+	DataBlockEncryptor();
+	~DataBlockEncryptor();
+	bool IsKeySet( void ) const;
+	void SetKey( const unsigned char key[ 16 ] );
+	void UnsetKey( void );
+	void Encrypt( unsigned char *input, unsigned int inputLength, unsigned char *output, unsigned int *outputLength, RakNet::RakNetRandom *rnr );
+protected:
+ 	keyInstance keyEncrypt;
+	keyInstance keyDecrypt;
+	cipherInstance cipherInst;
+	bool keySet;
+};
 #include "CheckSum.h"
 #include "GetTime.h"
 #include "Rand.h"
 #include <assert.h>
 #include <string.h>
-#include "Rijndael.h"
 #include "Types.h"
-
-// FUNCTION: WEBSERVICE 0x101c38c0
-DataBlockEncryptor::DataBlockEncryptor()
-{
-	keySet = false;
-}
-
-// FUNCTION: WEBSERVICE 0x1015b610 FOLDED
-DataBlockEncryptor::~DataBlockEncryptor()
-{
-}
-
-// FUNCTION: WEBSERVICE 0x101c38d0
-bool DataBlockEncryptor::IsKeySet( void ) const
-{
-	return keySet;
-}
-
-// FUNCTION: WEBSERVICE 0x101c38e0
-void DataBlockEncryptor::SetKey( const unsigned char key[ 16 ] )
-{
-	keySet = true;
-	//secretKeyAES128.set_key( key );
-	makeKey(&keyEncrypt, DIR_ENCRYPT, 16, (char*)key);
-	makeKey(&keyDecrypt, DIR_DECRYPT, 16, (char*)key);
-	cipherInit(&cipherInst, MODE_ECB, 0); // ECB is not secure except that I chain manually farther down.
-}
-
-// FUNCTION: WEBSERVICE 0x101c3930
-void DataBlockEncryptor::UnsetKey( void )
-{
-	keySet = false;
-}
-
-// FUNCTION: WEBSERVICE 0x101c3940
-void DataBlockEncryptor::Encrypt( unsigned char *input, int inputLength, unsigned char *output, int *outputLength )
+#define RakAssert assert
+void DataBlockEncryptor::Encrypt( unsigned char *input, unsigned int inputLength, unsigned char *output, unsigned int *outputLength, RakNet::RakNetRandom *rnr )
 {
 	unsigned index, byteIndex, lastBlock;
 	unsigned int checkSum;
@@ -76,14 +41,14 @@ void DataBlockEncryptor::Encrypt( unsigned char *input, int inputLength, unsigne
 
 #ifdef _DEBUG
 
-	assert( keySet );
+	RakAssert( keySet );
 #endif
 
-	assert( input && inputLength );
+	RakAssert( input && inputLength );
 
 
 	// randomChar will randomize the data so the same data sent twice will not look the same
-	randomChar = (unsigned char) randomMT();
+	randomChar = (unsigned char) rnr->RandomMT();
 
 	// 16-(((x-1) % 16)+1)
 
@@ -91,7 +56,7 @@ void DataBlockEncryptor::Encrypt( unsigned char *input, int inputLength, unsigne
 	paddingBytes = (unsigned char) ( 16 - ( ( ( inputLength + sizeof( randomChar ) + sizeof( checkSum ) + sizeof( encodedPad ) - 1 ) % 16 ) + 1 ) );
 
 	// Randomize the pad size variable
-	encodedPad = (unsigned char) randomMT();
+	encodedPad = (unsigned char) rnr->RandomMT();
 	encodedPad <<= 4;
 	encodedPad |= paddingBytes;
 
@@ -112,7 +77,7 @@ void DataBlockEncryptor::Encrypt( unsigned char *input, int inputLength, unsigne
 
 	// Write the padding
 	for ( index = 0; index < paddingBytes; index++ )
-		*( output + sizeof( checkSum ) + sizeof( randomChar ) + sizeof( encodedPad ) + index ) = (unsigned char) randomMT();
+		*( output + sizeof( checkSum ) + sizeof( randomChar ) + sizeof( encodedPad ) + index ) = (unsigned char) rnr->RandomMT();
 
 	// Calculate the checksum on the data
 	checkSumCalculator.Add( output + sizeof( checkSum ), inputLength + sizeof( randomChar ) + sizeof( encodedPad ) + paddingBytes );
@@ -148,76 +113,3 @@ void DataBlockEncryptor::Encrypt( unsigned char *input, int inputLength, unsigne
 	}
 }
 
-// FUNCTION: WEBSERVICE 0x101c3aa0
-bool DataBlockEncryptor::Decrypt( unsigned char *input, int inputLength, unsigned char *output, int *outputLength )
-{
-	unsigned index, byteIndex, lastBlock;
-	unsigned int checkSum;
-	unsigned char paddingBytes;
-	unsigned char encodedPad;
-	unsigned char randomChar;
-	CheckSum checkSumCalculator;
-#ifdef _DEBUG
-
-	assert( keySet );
-#endif
-
-	if ( input == 0 || inputLength < 16 || ( inputLength % 16 ) != 0 )
-	{
-		return false;
-	}
-
-	// Unchain in reverse order
-	for ( index = 16; ( int ) index <= inputLength - 16;index += 16 )
-	{
-	//	secretKeyAES128.decrypt16( input + index );
-		blockDecrypt(&cipherInst, &keyDecrypt, input + index, 16, input + index);
-
-		for ( byteIndex = 0; byteIndex < 16; byteIndex++ )
-		{
-			if ( index + 16 == ( unsigned ) inputLength )
-				input[ index + byteIndex ] ^= input[ byteIndex ];
-			else
-				input[ index + byteIndex ] ^= input[ index + 16 + byteIndex ];
-		}
-
-		lastBlock = index;
-	};
-
-	// Decrypt the first block
-	//secretKeyAES128.decrypt16( input );
-	blockDecrypt(&cipherInst, &keyDecrypt, input, 16, input);
-
-	// Read checksum
-#ifdef HOST_ENDIAN_IS_BIG
-	checkSum = (unsigned int)input[0] | (unsigned int)(input[1]<<8) |
-		(unsigned int)(input[2]<<16)|(unsigned int)(input[3]<<24);
-#else
-	memcpy( ( char* ) & checkSum, input, sizeof( checkSum ) );
-#endif
-
-	// Read the pad size variable
-	memcpy( ( char* ) & encodedPad, input + sizeof( randomChar ) + sizeof( checkSum ), sizeof( encodedPad ) );
-
-	// Ignore the high 4 bytes
-	paddingBytes = encodedPad & 0x0F;
-
-
-	// Get the data length
-	*outputLength = inputLength - sizeof( randomChar ) - sizeof( checkSum ) - sizeof( encodedPad ) - paddingBytes;
-
-	// Calculate the checksum on the data.
-	checkSumCalculator.Add( input + sizeof( checkSum ), *outputLength + sizeof( randomChar ) + sizeof( encodedPad ) + paddingBytes );
-
-	if ( checkSum != checkSumCalculator.Get() )
-		return false;
-
-	// Read the data
-	if ( input == output )
-		memmove( output, input + sizeof( randomChar ) + sizeof( checkSum ) + sizeof( encodedPad ) + paddingBytes, *outputLength );
-	else
-		memcpy( output, input + sizeof( randomChar ) + sizeof( checkSum ) + sizeof( encodedPad ) + paddingBytes, *outputLength );
-
-
-	return true;
-}

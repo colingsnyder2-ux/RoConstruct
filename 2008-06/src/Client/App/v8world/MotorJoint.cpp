@@ -55,11 +55,8 @@ namespace RBX
 		if (currentAngle != value)
 		{
 			currentAngle = value;
-			if (World* world = getWorld2008()) {
-				// The donor clump graph requires this invalidation when the motor moves.
-				world->onMotorAngleChanged(this);
+			if (getWorld2008())
 				link->setJointAngle(value);
-			}
 		}
 	}
 

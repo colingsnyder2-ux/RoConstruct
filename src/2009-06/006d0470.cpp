@@ -1,10 +1,6 @@
-// from server: 71% by EspClaude
-// from server: 100% by king_originala
+// from server: 81% by EspClaude
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD /fp:fast
-// Minimal target-backed ABI views; unused native APIs are omitted.
-// updateFloor is a descriptive name for the complete measured member routine.
-// G3D 6.09 supplies Ray/Vector3/CoordinateFrame; Boost 1.34.1 supplies nested counts.
 #include <stddef.h>
 #include <intrin.h>
 namespace G3D {
@@ -44,39 +40,32 @@ struct Name;struct Primitive;
 struct INamed {virtual const Name&getName()const=0;};
 struct HitTestFilter {enum Result{STOP_TEST,IGNORE_PRIM,INCLUDE_PRIM};virtual Result filterResult(const Primitive*)const=0;};
 struct Geometry {virtual ~Geometry();G3D::Vector3 gridSize;const G3D::Vector3&getGridSize()const{return gridSize;}};
-struct Primitive {char opaque[0x9c];Geometry*geometry;const G3D::CoordinateFrame&getCoordinateFrame()const;const G3D::Vector3&getGridSize()const{return geometry->getGridSize();}};
-struct Body;struct PartInstance;
-struct Humanoid {Body*getTorsoBody();Primitive*getTorsoPrimitive()const;Primitive*getLeftLegPrimitive();Primitive*getRightLegPrimitive();};
+struct Body;
+struct Primitive {char opaque[0xe0];Geometry*geometry;Body*getBody()const;const G3D::CoordinateFrame&getCoordinateFrame()const;const G3D::Vector3&getGridSize()const{return geometry->getGridSize();}};
+struct PartInstance {char opaque[0x118];Primitive*primitive;Primitive*getPartPrimitive()const{return primitive;}};
+struct Humanoid {Primitive*getTorsoPrimitive()const;PartInstance*getLeftLeg();PartInstance*getRightLeg();};
 namespace HUMAN {
 struct HumanoidState:INamed,HitTestFilter {
- Humanoid*humanoid;char opaque0c[0x24-0xc];boost::shared_ptr<PartInstance>floorPart;G3D::Vector3 floorTouchInWorld;
- boost::shared_ptr<PartInstance>tryFloor(const G3D::Ray&,float);void updateFloor();
+ Humanoid*humanoid;char opaque0c[0x2c-0xc];boost::shared_ptr<PartInstance>floorPart;G3D::Vector3 floorTouchInWorld;
+ boost::shared_ptr<PartInstance>tryFloor(const G3D::Ray&,float,Body*);void updateFloor();
 };
 void HumanoidState::updateFloor(){
- if(!humanoid->getTorsoBody())return;
- const G3D::CoordinateFrame&frame=humanoid->getTorsoPrimitive()->getCoordinateFrame();
- G3D::Vector3 halfSize=humanoid->getTorsoPrimitive()->getGridSize()*.5f;
+ Primitive*torso=humanoid->getTorsoPrimitive();
+ if(!torso)return;
+ const G3D::CoordinateFrame&frame=torso->getCoordinateFrame();
+ G3D::Vector3 halfSize=torso->getGridSize()*.5f;
  float maxDistance=1.0f;float factor=!!floorPart?1.5f:1.1f;
- if(humanoid->getLeftLegPrimitive())maxDistance=humanoid->getLeftLegPrimitive()->getGridSize().y*factor+1.0f;
- else if(humanoid->getRightLegPrimitive())maxDistance=humanoid->getRightLegPrimitive()->getGridSize().y*factor+1.0f;
+ if(PartInstance*leg=humanoid->getLeftLeg())maxDistance=leg->getPartPrimitive()->getGridSize().y*factor+1.0f;
+ else if(PartInstance*leg=humanoid->getRightLeg())maxDistance=leg->getPartPrimitive()->getGridSize().y*factor+1.0f;
  G3D::Vector3 origin=frame.pointToWorldSpace(G3D::Vector3(0,-halfSize.y,0));
  G3D::Ray ray=G3D::Ray::fromOriginAndDirection(origin,-G3D::Vector3::unitY());
- if((floorPart=tryFloor(ray,maxDistance)).get()!=0)return;
+ Body*body=torso->getBody();
+ if((floorPart=tryFloor(ray,maxDistance,body)).get()!=0)return;
  for(int x=-1;x<=1;x+=2)for(int z=-1;z<=1;z+=2){
   origin=frame.pointToWorldSpace(G3D::Vector3(x*halfSize.x,-halfSize.y,z*halfSize.z));
   ray=G3D::Ray::fromOriginAndDirection(origin,-G3D::Vector3::unitY());
-  if((floorPart=tryFloor(ray,maxDistance)).get()!=0)return;
+  if((floorPart=tryFloor(ray,maxDistance,body)).get()!=0)return;
  }
 }
 }
 }
-typedef char ray_size[sizeof(G3D::Ray)==28?1:-1];
-typedef char frame_size[sizeof(G3D::CoordinateFrame)==48?1:-1];
-typedef char shared_size[sizeof(boost::shared_ptr<RBX::PartInstance>)==8?1:-1];
-typedef char primitive_geometry[offsetof(RBX::Primitive,geometry)==0x9c?1:-1];
-typedef char geometry_size[offsetof(RBX::Geometry,gridSize)==4?1:-1];
-typedef char state_humanoid[offsetof(RBX::HUMAN::HumanoidState,humanoid)==8?1:-1];
-typedef char state_floor[offsetof(RBX::HUMAN::HumanoidState,floorPart)==0x24?1:-1];
-typedef char state_touch[offsetof(RBX::HUMAN::HumanoidState,floorTouchInWorld)==0x2c?1:-1];
-
-

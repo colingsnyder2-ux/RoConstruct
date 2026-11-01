@@ -1,5 +1,25 @@
-// from server: 65% by colin
+// from server: 100% by EspClaude
+// roc 2009-06 00891f40
 // roc-lang: cpp
-// roc-cl: 30729
-// roc-flags: /O2 /GS- /MD
-// roc-lib: xtp-15.2.1 Source/Chart/XTPChartSeriesPoint.cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+namespace RBX {
+struct ExeVBase { virtual ~ExeVBase(); };
+class Owner : public virtual ExeVBase {
+public:
+    int getTeamColor() const;
+    void setTeamColor(int);
+};
+namespace Reflection {
+template<class C, class V>
+class PropDescriptor {
+public:
+    template<class Getter, class Setter>
+    PropDescriptor(const char* name, const char* category, Getter getter, Setter setter, int f);
+    ~PropDescriptor();
+private:
+    char data[0x50];
+};
+}
+static Reflection::PropDescriptor<Owner, int> desc_TeamColor("TeamColor", "Data", &Owner::getTeamColor, &Owner::setTeamColor, 7);
+}

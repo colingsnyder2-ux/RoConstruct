@@ -1,5 +1,21 @@
-// from server: 67% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: boost-1.36.0 libs/thread/src/win32/thread.cpp
+#include <intrin.h>
+extern "C" __declspec(dllimport) int __stdcall CloseHandle(void*);
+struct handle_manager {
+    void* h;
+    ~handle_manager() { if (h && h != (void*)-1) CloseHandle(h); }
+};
+struct thread_data {
+    handle_manager thread_handle;
+    handle_manager interruption_handle;
+    int a, b;
+    long count;
+};
+void intrusive_ptr_release(thread_data* p)
+{
+    if (!_InterlockedDecrement(&p->count))
+        delete p;
+}

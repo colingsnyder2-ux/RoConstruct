@@ -64,6 +64,19 @@ namespace RBX
 		getCamera()->zoomExtents(viewPort);
 	}
 
+	void Workspace::onWrapMouse(const G3D::Vector2& wrapMouseDelta)
+	{
+		getCamera()->onWrapMouse(wrapMouseDelta);
+	}
+
+	// Camera.h declares Camera::onWrapMouse but no unit defines it; define it beside its
+	// only caller, kept out of line as in the 2008 binary (thiscall at 005cce40).
+	__declspec(noinline) void Camera::onWrapMouse(const G3D::Vector2& wrapMouseDelta)
+	{
+		tiltRadians(wrapMouseDelta.y * (-0.3f * Math::pi() / 180.0f));
+		panRadians(wrapMouseDelta.x * (-0.4f * Math::pi() / 180.0f));
+	}
+
 	void Workspace::insertItems(XmlElement* root, std::vector<boost::shared_ptr<Instance>>& instances, InsertMode insertMode, PromptMode promptMode)
 	{
 		RBXASSERT(instances.size() == 0);
@@ -117,15 +130,7 @@ namespace RBX
 
 	Camera* Workspace::getCamera() const
 	{
-		if (!currentCamera || !currentCamera->isDescendentOf(this))
-		{
-			boost::shared_ptr<Camera> newCamera = Creatable::create<Camera>();
-			newCamera->setParent(const_cast<Workspace*>(this));
-			currentCamera = newCamera;
-		}
-
-		RBXASSERT(currentCamera->isDescendentOf(this));
-		return currentCamera.get();
+		return currentCamera ? currentCamera.get() : cameraTemplate.get();
 	}
 
 	void Workspace::onChildChanged(Instance* instance, const PropertyChanged& event)
@@ -363,6 +368,14 @@ namespace RBX
 
 	return (Workspace*) workspace;
 }
+
+	Instance* Workspace::findTopInstance(Instance* context)
+	{
+		Workspace* workspace = getMyWorkspaceFast(context);
+		while (context->getParent() != workspace)
+			context = context->getParent();
+		return context;
+	}
 
 	World* Workspace::getMyWorldFast(const Instance* context)
 	{

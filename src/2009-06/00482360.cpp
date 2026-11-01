@@ -1,27 +1,19 @@
-// from server: 67% by colin
-struct NodeVisiter {
-    float f_1c;
-    float f_20;
-    float f_24;
-    float get(float* p);
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD /fp:fast
+struct Vector3 {
+    float x, y, z;
+    Vector3(float a, float b, float c) : x(a), y(b), z(c) {}
+    float dotProduct(const Vector3& v) const { return x * v.x + y * v.y + z * v.z; }
 };
-
-float NodeVisiter::get(float* p) {
-    float a, b, c;
-    if (f_24 >= 0.0f) {
-        a = p[2];
-    } else {
-        a = p[5];
-    }
-    if (f_20 < 0.0f) {
-        b = p[1];
-    } else {
-        b = p[4];
-    }
-    if (f_1c < 0.0f) {
-        c = p[0];
-    } else {
-        c = p[3];
-    }
-    return c * f_1c + b * f_20 + a * f_24;
+struct Box { Vector3 mn, mx; };
+struct NodeVisiter {
+    char pad[0x1c];
+    Vector3 normal;
+    float nearDistance(const Box& b) const;
+};
+float NodeVisiter::nearDistance(const Box& b) const
+{
+Vector3 p(normal.x > 0 ? b.mn.x : b.mx.x, normal.y > 0 ? b.mn.y : b.mx.y, normal.z > 0 ? b.mn.z : b.mx.z); return normal.dotProduct(p);
 }
