@@ -64,7 +64,13 @@
  "lua-5.1": {
   "url": "https://www.lua.org/ftp/lua-5.1.tar.gz",
   "kind": "archive",
-  "files": []
+  "files": [
+   "roc_espclaude_52519d5cdba2c8f9.cpp",
+   "roc_espclaude_8fce38ea29d82ea4.cpp",
+   "roc_espclaude_92abe1daa4d618bf.cpp",
+   "roc_espclaude_caa54b11349034cf.cpp",
+   "roc_ltable_cpp_e4929b9c47845379.cpp"
+  ]
  },
  "lua-5.1.1": {
   "url": "https://www.lua.org/ftp/lua-5.1.1.tar.gz",
@@ -74,7 +80,12 @@
  "lua-5.1.2": {
   "url": "https://www.lua.org/ftp/lua-5.1.2.tar.gz",
   "kind": "archive",
-  "files": []
+  "files": [
+   "roc_espeon_nativeparlistcontext810a97d37dd18cf0.cpp",
+   "roc_unit_6495e238f1ebcec5.cpp",
+   "roc_unit_6878e048cc528e62.cpp",
+   "roc_unit_f1a645ffa1da17e2.cpp"
+  ]
  },
  "lua-5.1.3": {
   "url": "https://www.lua.org/ftp/lua-5.1.3.tar.gz",
@@ -110,6 +121,15 @@
    "lundump.c",
    "lvm.c",
    "lzio.c",
+   "roc_espclaude_2c4c80f55a28b088.cpp",
+   "roc_espclaude_33c2374e97704ede.cpp",
+   "roc_espclaude_6495e238f1ebcec5.cpp",
+   "roc_espclaude_7bdb34618ef3f16b.cpp",
+   "roc_espclaude_7d5f967ec4d1c87f.cpp",
+   "roc_espclaude_96558f667a514fbc.cpp",
+   "roc_espclaude_c86b57451e619507.cpp",
+   "roc_espclaude_d90d48967661b392.cpp",
+   "roc_espclaude_fab950bb9ff90b97.cpp",
    "roc_espeon_luastringnogfind_92071a0221e9258a.cpp"
   ]
  },
@@ -151,6 +171,7 @@
    "crc32.c",
    "deflate.c",
    "inflate.c",
+   "roc_unit_cc0da05a02dcd115.cpp",
    "trees.c",
    "uncompr.c"
   ]
@@ -366,8 +387,19 @@
    "GLG3Dcpp/roc_line_c1ec18302c3703eb.cpp",
    "GLG3Dcpp/roc_line_eb2a2907090c8b55.cpp",
    "GLG3Dcpp/tesselate.cpp",
+   "roc_espclaude_0506ea206a17dc75.cpp",
+   "roc_espclaude_1d98d142ddbf272b.cpp",
+   "roc_espclaude_45e48292b420267c.cpp",
    "roc_espclaude_4e0b061628ffee6c.cpp",
+   "roc_espclaude_51dca2687369259e.cpp",
+   "roc_espclaude_7a9287a48d254a8b.cpp",
+   "roc_espclaude_7be3015c3e9e1d53.cpp",
+   "roc_espclaude_846662a4aa8afd4b.cpp",
+   "roc_espclaude_88a388e4c34bc291.cpp",
    "roc_espclaude_bfbc69262bc77fbf.cpp",
+   "roc_espclaude_d6fe27cc6bd1dcba.cpp",
+   "roc_espclaude_e5312d95d90248d5.cpp",
+   "roc_espclaude_faca38399cb4236b.cpp",
    "roc_g3d_bmp_exception_38498d93767fe727.cpp",
    "roc_g3d_log_guard_18744d5ad0bb680e.cpp",
    "roc_g3d_vector_strong_b0beb8bf4f1ef12a.cpp",
@@ -390,7 +422,9 @@
    "pngrutil.c",
    "pngset.c",
    "pngwrite.c",
-   "pngwutil.c"
+   "pngwutil.c",
+   "roc_espclaude_238de0ea943f1802.cpp",
+   "roc_espclaude_f870cf52d7ecf641.cpp"
   ]
  },
  "g3d-6.09-ijg": {
@@ -496,6 +530,8 @@
    "libs/thread/src/tss.cpp",
    "libs/thread/src/tss_hooks.cpp",
    "libs/thread/src/xtime.cpp",
+   "roc_espeon_aug2007_boost_threaded_eh_418598d33645e618.cpp",
+   "roc_espeon_aug2007_boost_threaded_eh_6cfddd4595691f7f.cpp",
    "roc_event_handler_for_each_044c64d9154ca774.cpp"
   ]
  },
@@ -507,7 +543,11 @@
  "boost-1.35.0": {
   "url": "https://archives.boost.io/release/1.35.0/source/boost_1_35_0.tar.gz",
   "kind": "archive",
-  "files": []
+  "files": [
+   "roc_espeon_scriptargumentbind135bf95ed9e0b65612b.cpp",
+   "roc_espeon_scriptdefaultbind1358c320093deaa2206.cpp",
+   "roc_espeon_scriptthreadbind1357faa61c775a47f40.cpp"
+  ]
  },
  "boost-1.37.0": {
   "url": "https://archives.boost.io/release/1.37.0/source/boost_1_37_0.tar.gz",
@@ -527,7 +567,21 @@
  "boost-1.40.0": {
   "url": "https://archives.boost.io/release/1.40.0/source/boost_1_40_0.tar.gz",
   "kind": "archive",
-  "files": []
+  "files": [
+   "roc_bf139_3095a0e32ec5068e.cpp",
+   "roc_bf139_b5c2acb2406f46de.cpp",
+   "roc_espclaude_103e0396f72331de.cpp",
+   "roc_espclaude_13a81cd5a5b48c1c.cpp",
+   "roc_espclaude_3b21515b2ad75bf8.cpp",
+   "roc_espclaude_6457ab676483db30.cpp",
+   "roc_espclaude_94bf03fd925cb760.cpp",
+   "roc_espclaude_a5e0c8d9485a3eda.cpp",
+   "roc_espclaude_ac8e781d5a232937.cpp",
+   "roc_espclaude_ae4d8787be273a7e.cpp",
+   "roc_espclaude_b8dd3c6ee7f40e32.cpp",
+   "roc_espclaude_c9cb6d1c5e546da5.cpp",
+   "roc_espclaude_e547168d0424882c.cpp"
+  ]
  },
  "boost-1.44.0": {
   "url": "https://archives.boost.io/release/1.44.0/source/boost_1_44_0.tar.gz",
@@ -576,7 +630,6 @@
    "tool/PartDragTool.cpp",
    "tool/RunDragger.cpp",
    "tool/ToolsArrow.cpp",
-   "util/Debug.cpp",
    "util/ExponentialRunningAverage.cpp",
    "util/Extents.cpp",
    "util/Face.cpp",
@@ -712,7 +765,6 @@
    "FileListTransfer.cpp",
    "FileOperations.cpp",
    "GetTime.cpp",
-   "LightweightDatabaseClient.cpp",
    "LightweightDatabaseServer.cpp",
    "LogCommandParser.cpp",
    "NetworkIDManager.cpp",
@@ -731,26 +783,26 @@
    "rijndael.cpp"
   ],
   "functions": {
-   "?Deserialize@?$RangeList@I@DataStructures@@QAE_NPAVBitStream@RakNet@@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_RangeList.h#L92",
-   "?ShiftNodeLeft@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXPAU?$Page@IPAUInternalPacket@@$0CA@@2@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L482",
-   "?FreePages@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXXZ": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L928",
+   "?Insert@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@QAE_NIABQAUInternalPacket@@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L812",
+   "?CanRotateLeft@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAE_NPAU?$Page@IPAUInternalPacket@@$0CA@@2@H@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L639",
+   "?FindDeleteRebalance@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAE_NIPAU?$Page@IPAUInternalPacket@@$0CA@@2@PA_NIPAUReturnAction@12@AAPAUInternalPacket@@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L208",
+   "?Clear@?$SingleProducerConsumer@PAURemoteClient@@@DataStructures@@QAEXXZ": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/SingleProducerConsumer.h#L217",
+   "?DeleteFromPageAtIndex@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXHPAU?$Page@IPAUInternalPacket@@$0CA@@2@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L144",
    "?Insert@?$RangeList@I@DataStructures@@QAEXI@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_RangeList.h#L134",
-   "?InsertBranchDown@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEPAU?$Page@IPAUInternalPacket@@$0CA@@2@IABQAUInternalPacket@@PAU32@PAUReturnAction@12@PA_N@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L704",
-   "?Serialize@?$RangeList@I@DataStructures@@QAEIPAVBitStream@RakNet@@H_N@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_RangeList.h#L48",
+   "?FreePages@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXXZ": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L928",
    "?FixUnderflow@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAE_NHPAU?$Page@IPAUInternalPacket@@$0CA@@2@IPAUReturnAction@12@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L283",
+   "?Insert@?$OrderedList@PADUMapNode@?$Map@PADPAUDatabaseTable@LightweightDatabaseServer@@$1?DatabaseTableComp@2@SAHABQAD0@Z@DataStructures@@$1?NodeComparisonFunc@23@SAHABQADABU123@@Z@DataStructures@@QAEIABQADABUMapNode@?$Map@PADPAUDatabaseTable@LightweightDatabaseServer@@$1?DatabaseTableComp@2@SAHABQAD0@Z@2@_NP6AH01@Z@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_OrderedList.h#L167",
+   "?InsertIntoNode@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEPAU?$Page@IPAUInternalPacket@@$0CA@@2@IABQAUInternalPacket@@HPAU32@1PAUReturnAction@12@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L500",
+   "?ShiftNodeLeft@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXPAU?$Page@IPAUInternalPacket@@$0CA@@2@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L482",
    "?ShiftNodeRight@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXPAU?$Page@IPAUInternalPacket@@$0CA@@2@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L463",
    "?Clear@?$RangeList@I@DataStructures@@QAEXXZ": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_RangeList.h#L196",
-   "?Insert@?$OrderedList@USystemAddress@@U1@$1??$defaultOrderedListComparison@USystemAddress@@U1@@DataStructures@@YAHABU1@0@Z@DataStructures@@QAEIABUSystemAddress@@0_NP6AH00@Z@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_OrderedList.h#L167",
-   "?CanRotateRight@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAE_NPAU?$Page@IPAUInternalPacket@@$0CA@@2@H@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L664",
-   "?CanRotateLeft@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAE_NPAU?$Page@IPAUInternalPacket@@$0CA@@2@H@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L639",
-   "?DeleteFromPageAtIndex@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXHPAU?$Page@IPAUInternalPacket@@$0CA@@2@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L144",
-   "?FindDeleteRebalance@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAE_NIPAU?$Page@IPAUInternalPacket@@$0CA@@2@PA_NIPAUReturnAction@12@AAPAUInternalPacket@@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L208",
-   "?RotateLeft@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXPAU?$Page@IPAUInternalPacket@@$0CA@@2@HPAUReturnAction@12@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L645",
-   "?Insert@?$OrderedList@PADUMapNode@?$Map@PADPAUDatabaseTable@LightweightDatabaseServer@@$1?DatabaseTableComp@2@SAHABQAD0@Z@DataStructures@@$1?NodeComparisonFunc@23@SAHABQADABU123@@Z@DataStructures@@QAEIABQADABUMapNode@?$Map@PADPAUDatabaseTable@LightweightDatabaseServer@@$1?DatabaseTableComp@2@SAHABQAD0@Z@2@_NP6AH01@Z@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_OrderedList.h#L167",
    "?RotateRight@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXPAU?$Page@IPAUInternalPacket@@$0CA@@2@HPAUReturnAction@12@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L670",
-   "?Clear@?$SingleProducerConsumer@PAURemoteClient@@@DataStructures@@QAEXXZ": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/SingleProducerConsumer.h#L217",
-   "?Insert@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@QAE_NIABQAUInternalPacket@@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L812",
-   "?InsertIntoNode@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEPAU?$Page@IPAUInternalPacket@@$0CA@@2@IABQAUInternalPacket@@HPAU32@1PAUReturnAction@12@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L500"
+   "?InsertBranchDown@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEPAU?$Page@IPAUInternalPacket@@$0CA@@2@IABQAUInternalPacket@@PAU32@PAUReturnAction@12@PA_N@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L704",
+   "?Deserialize@?$RangeList@I@DataStructures@@QAE_NPAVBitStream@RakNet@@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_RangeList.h#L92",
+   "?Insert@?$OrderedList@USystemAddress@@U1@$1??$defaultOrderedListComparison@USystemAddress@@U1@@DataStructures@@YAHABU1@0@Z@DataStructures@@QAEIABUSystemAddress@@0_NP6AH00@Z@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_OrderedList.h#L167",
+   "?RotateLeft@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXPAU?$Page@IPAUInternalPacket@@$0CA@@2@HPAUReturnAction@12@@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L645",
+   "?CanRotateRight@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAE_NPAU?$Page@IPAUInternalPacket@@$0CA@@2@H@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_BPlusTree.h#L664",
+   "?Serialize@?$RangeList@I@DataStructures@@QAEIPAVBitStream@RakNet@@H_N@Z": "https://github.com/RBLXDecomp/raknet/blob/229f52f35b9f35d5bc90379a620fe0e50f8d711f/Source/DS_RangeList.h#L48"
   }
  },
  "rbxgs-view": {
@@ -891,13 +943,17 @@
  "ogre-1.4.9": {
   "url": "https://downloads.sourceforge.net/project/ogre/ogre/1.4.9/ogre-v1-4-9.tar.bz2",
   "kind": "archive",
-  "files": []
+  "files": [
+   "roc_espclaude_133c6b933f6e91c6.cpp"
+  ]
  },
  "ogre-1.4.5": {
   "url": "https://downloads.sourceforge.net/project/ogre/ogre/1.4.5/ogre-win32-v1-4-5.zip",
   "kind": "archive",
   "files": [
    "roc_claudeL_a8c771929549b29e.cpp",
+   "roc_espclaude_1d3c7bd20cc2d515.cpp",
+   "roc_espclaude_ccb00e92ab41cda6.cpp",
    "roc_espeon_renderprimitive6529969e3c0e9a10.cpp",
    "roc_espeon_renderrectangle6060094c19a0a0f2.cpp",
    "roc_observed_3db354efc99e4c09.cpp",
@@ -944,7 +1000,9 @@
  "lua-5.1.2-dll": {
   "url": "https://www.lua.org/ftp/lua-5.1.2.tar.gz",
   "kind": "archive",
-  "files": []
+  "files": [
+   "roc_unit_6878e048cc528e62.cpp"
+  ]
  },
  "lua-5.1.3-dll": {
   "url": "https://www.lua.org/ftp/lua-5.1.3.tar.gz",
@@ -966,6 +1024,7 @@
    "lobject.c",
    "lstrlib.c",
    "lvm.c",
+   "roc_espclaude_607e624c69baf716.cpp",
    "roc_unit_9835aad68266b897.cpp"
   ]
  },
@@ -1002,7 +1061,9 @@
  "zlib-1.2.3-winapi-dll": {
   "url": "https://zlib.net/fossils/zlib-1.2.3.tar.gz",
   "kind": "archive",
-  "files": []
+  "files": [
+   "roc_unit_cc0da05a02dcd115.cpp"
+  ]
  },
  "zlib-1.1.4-dll": {
   "url": "https://zlib.net/fossils/zlib-1.1.4.tar.gz",
@@ -1108,6 +1169,7 @@
    "G3Dcpp/debugAssert.cpp",
    "GLG3Dcpp/Texture.cpp",
    "GLG3Dcpp/VARArea.cpp",
+   "roc_espclaude_c4871518d8c00d36.cpp",
    "roc_large_glcaps_11e595a340f00f1c.cpp",
    "roc_unit_9b45941eceb68c25.cpp",
    "roc_vrbxfont_compute_packed_458dceda9d4228a0.cpp",
@@ -1126,7 +1188,8 @@
    "pngrutil.c",
    "pngset.c",
    "pngwrite.c",
-   "pngwutil.c"
+   "pngwutil.c",
+   "roc_espclaude_fe634362cd870ed1.cpp"
   ]
  },
  "g3d-6.09-ijg-dll": {
@@ -1218,7 +1281,10 @@
  "boost-1.35.0-dll": {
   "url": "https://archives.boost.io/release/1.35.0/source/boost_1_35_0.tar.gz",
   "kind": "archive",
-  "files": []
+  "files": [
+   "roc_espeon_dhtmlnativefunction034ab6d87e50f0c3f.cpp",
+   "roc_espeon_humanoidstateslotff087c81fef193c1.cpp"
+  ]
  },
  "boost-1.37.0-dll": {
   "url": "https://archives.boost.io/release/1.37.0/source/boost_1_37_0.tar.gz",
@@ -1369,7 +1435,14 @@
  "ogre-1.4.9-dll": {
   "url": "https://downloads.sourceforge.net/project/ogre/ogre/1.4.9/ogre-v1-4-9.tar.bz2",
   "kind": "archive",
-  "files": []
+  "files": [
+   "roc_client_map_bounds.cpp",
+   "roc_espclaude_3d9ab8a421965e85.cpp",
+   "roc_espclaude_532a9d9bd6976259.cpp",
+   "roc_espclaude_d00614e597055395.cpp",
+   "roc_fork_ccf250026627378f.cpp",
+   "roc_ogre_map_string_value84_300b0b85e3ca9437.cpp"
+  ]
  },
  "ogre-1.4.5-dll": {
   "url": "https://downloads.sourceforge.net/project/ogre/ogre/1.4.5/ogre-win32-v1-4-5.zip",
@@ -1393,9 +1466,11 @@
    "roc_client_scene_update.cpp",
    "roc_client_short_methods_5b192b39c746b09e.cpp",
    "roc_client_texture_copy.cpp",
+   "roc_espclaude_0e3f5c0f17aba51a.cpp",
    "roc_espclaude_3a38bc51a49d03ed.cpp",
    "roc_espclaude_610f7f834b7be5f0.cpp",
    "roc_espclaude_66d95e9814d0fd44.cpp",
+   "roc_espclaude_803c1e096cfe982c.cpp",
    "roc_espclaude_9260ba432ec6e8a6.cpp",
    "roc_espclaude_be1af347978f4727.cpp",
    "roc_espeon_materiallevelnative3737af79d4bf57eb.cpp",
