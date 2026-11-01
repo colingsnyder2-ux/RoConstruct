@@ -25,6 +25,12 @@ boost::shared_ptr<RBX::DataModel> CRobloxDoc::getDataModel() {
     return boost::shared_ptr<RBX::DataModel>();
 }
 
+// 0044fad0: synchronize MFC modification flag with native IDataState.
+void CRobloxDoc::SetModifiedFlag(BOOL modified) {
+    m_bModified = modified;
+    if (workspace) workspace->getDataModel()->setDirty(modified == TRUE);
+}
+
 void CRobloxDoc::OnCloseDocument() { CDocument::OnCloseDocument(); }
 
 void CRobloxDoc::DeleteContents() {
