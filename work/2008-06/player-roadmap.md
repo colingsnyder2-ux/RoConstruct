@@ -1,5 +1,18 @@
 # Current player checkpoint
 
+P4 overlay correction verified at sourcea225dbb170. Prior raw-donor sound
+diagnostic witness and software-setting result are superseded: actual app overlay
+already restores GuidItem<Instance>. Native RTTI and global descriptor initializers
+prove correct bases/ownership. Sound module now uses app overlay; static descriptors
+yield Instance0x130, SoundChannel0x170, SoundService0x1c8 without padding. Shared
+rbxgs-app, sound diagnostic, canonical player build/test0. Normal sound, five disk
+asset controls, P3 lifetime/selftest/cachetest all pass. Receipts:
+p4-sound-overlay-a225dbb170/, p4-assets-overlay-a225dbb170/,
+p4-lifetime-overlay-a225dbb170/. Audible SoundService/Channel path remains open.
+Next: recover genuine SoundService constructor/cache and SoundChannel factory,
+reflection, lifecycle and heartbeat; then play authored tone and compare original.
+
+
 P4 sound overlay correction IN PROGRESS. Prior a67fa9d7e2 diagnostic compiled
 raw donor headers; canonical app already had GuidItem<Instance> in its overlay.
 Thus previous 560-byte service layout witness describes raw donor, not canonical
