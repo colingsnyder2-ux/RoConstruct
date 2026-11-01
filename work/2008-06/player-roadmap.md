@@ -2094,3 +2094,6 @@ Doc DeleteContents004513c0 now matches449 bytes with relocation fields masked. C
 
 
 Workspace cleanup boundary: MSVC21022 compiled donor DataModel::getWorkspace to offset0x218, while original getter0046a970 reads0x204. Evidence shared-layouts/datamodel-workspace-boundary.json and NativeDataModelProbe.cpp. The existing donor accessor cannot safely implement native CWorkspace::cleanup; recover native DataModel layout/accessor before connecting this ownership edge. No runtime or gate change.
+
+
+Original DataModel RTTI recorded at 89c4a45b9d: ServiceProvider at0, VerbContainer at0x1c8, IDataState at0x1f0, Evaluator at0x1f4, RunTransition listener at0x1f8. Instance hierarchy includes GuidItem at0 and enable_shared_from_this at0xe4; donor declarations differ. Evidence shared-layouts/datamodel-rtti.json, generated from original executable by record_native_layouts.py. Native full fields/size remain open; no active ABI swap.
