@@ -1490,9 +1490,25 @@ at 0.5s to y=9.164 at 0.797s. Preserve bouncing; do not force zero restitution.
 The 3dc292489e probe and receipt p5-elasticity-source-322f7a5c31 pin the bytes
 and prior observation. This does not establish character landing parity.
 
-The original state factory 00643660 includes a distinct Landed state (6);
-its constructor 00666ac0 initializes a 0.25-second value at 0084cc84 and its
-vtable includes 00666b20 and recovered force 00666550. The donor Freefall
-onStep switches directly to Running. The native transition conditions and
-Landed timer semantics remain unproven; do not infer that the missing state
-alone causes the high-fall discrepancy. Trace state transitions before editing.
+Correction: source analog names in factory 00643660 were misleading. RTTI
+identifies state 5 as Landed (constructor 00643550, timer 0.45 seconds),
+and state 6 as Running (constructor 00666ac0, timer 0.25 seconds). The
+donor Freefall onStep switches directly to Running.
+
+
+## P5 checkpoint: Landed identity and transitions (df7973e8c7)
+
+Original RTTI and 00644670 predicate jump table identify state 3 Freefall,
+state 5 Landed, state 6 Running. Transition table 0084a92c maps Freefall +
+floor to Landed, Landed + no floor back to Freefall, and Landed + expired
+timer to Running. The state-5 constructor stores 0.45 seconds; common update
+006451c0 subtracts step time. The prior checkpoint's state-6 identification
+was wrong. Static receipt: p5-landed-source-verify/receipt.json.
+
+A donor-ABI trial inserted a separate timed Landed state; observed high-fall
+and early-jump trajectories remained unchanged, while walking passed. Trial
+was reverted: extra donor Running warmup and transition ordering need tracing
+before a correct integration. Observational receipts p5-landed-probe-* cover
+the trial executable only; they are not exact committed-source evidence.
+Original bouncing remains intentional. Restored player build and P3 lifetime,
+selftest and cache checks pass at df7973e8c7. P5 remains open.
