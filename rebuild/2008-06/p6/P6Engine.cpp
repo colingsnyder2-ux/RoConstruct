@@ -17,6 +17,8 @@ static unsigned long g_last;
 static int g_frames;
 static bool g_placeOpen;
 static bool g_play;
+static bool g_running;
+static bool g_started;
 
 static void syncEditCamera()
 {
@@ -58,6 +60,8 @@ extern "C" int P6EngineOpen(void* window, const char* path, int width, int heigh
     if (place.empty() || LoadPlace(place.c_str())) return 3;
     g_placeOpen = true;
     g_play = play != 0;
+    g_running = false;
+    g_started = g_play;
     if (g_play) {
         if (AttachPlayerController(1)) return 4;
         float pose[15];
@@ -107,8 +111,8 @@ extern "C" int P6EngineFrame(void)
     }
     float dt = (now - g_last) / 1000.0f;
     g_last = now;
+    if (g_play || g_running) StepEngine(dt);
     if (g_play) {
-        StepEngine(dt);
         if (!SyncPlayerCamera(g_camera, g_viewport)) return 0;
     } else syncEditCamera();
     drawModels();
@@ -139,9 +143,23 @@ extern "C" int P6EnginePlay(void)
     if (AttachPlayerController(1)) return 2;
     float pose[15];
     if (GetPlayerCameraPose(pose)) return 3;
-    StartPlay();
-    g_play = true;
+    if (!g_started) StartPlay();
+    g_started = g_play = true;
     return 0;
+}
+
+// Toolbar 137 Run and Pause: simulate without a character.
+extern "C" void P6EngineSetRunning(int running)
+{
+    if (!g_timer) return;
+    if (running && !g_started) StartPlay();
+    g_started = g_started || running != 0;
+    g_running = running != 0;
+}
+
+extern "C" int P6EngineRunning(void)
+{
+    return g_play || g_running;
 }
 
 extern "C" int P6EngineIsOpen(void)

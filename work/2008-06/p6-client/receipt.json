@@ -2,14 +2,14 @@
  "milestone": "P6",
  "status": "OPEN",
  "scope": "XTP MFC client: edit mode, save, reopen, play mode with real input",
- "exe_sha256": "3cb14137928f74dd2cc7491764f3f9b7287124bf2dce7ba77f252810e5358b86",
+ "exe_sha256": "d65e216482ad4f5049c6c6aeff02e1c027d02d252ad2295051f51fa8a3a05480",
  "capture_sha256": "93b0646bf6d8a27f053487b7b80490872b79e6215d7674f30517832cf593c85e",
  "place": "7e44dc577dacb884e6971bd25de8c23769eba12f2978fa219080d4b45c04181d",
  "sources": {
-  "RobloxShell.cpp": "1bb09c4c576a7d6d56ed0bf302c0692d1fe8fbd01e68006ce1c8f6baaf7927c0",
-  "P6Engine.cpp": "ee9a0ceb29f8ee0883748076fd0b996cae284f47639c8a77974963d3cb3b8cb4",
-  "P6Data.cpp": "5770b8f61744a49d25249acf32f4bb90573acd8765e9a38140b879e0e20774c8",
-  "P6Engine.h": "e71833f5788b0c251e4c4b275ceaf9fe7b7a61cd17d95ec351e46513d4e18b9e",
+  "RobloxShell.cpp": "3cff46581e4678739f9fa633ea72f15debd77cbbeebcffe9ae7c0d26643af1b5",
+  "P6Engine.cpp": "da88892bb9bedcafb5b46963faffa4866ba1cb039b201c4bd583e6dc698e907d",
+  "P6Data.cpp": "513268792257f0373fd7d06fa1f5819ec2e20587b2346e93eb4ab935acabca56",
+  "P6Engine.h": "0f56824f2204c4b248c2a7c724eba8a1dc66373562363421a5fb4bec128312a0",
   "build_client.py": "883a911fc951ac8d3c4c41dce96bc548d765fe707d3e0054ecb70e3bdaeaad66",
   "gen_res.py": "780cf9a95025f0d3f315bbac95703dfabe1378308ec5da220be5eb3e1f787497",
   "input_test.py": "d8201e701c37d76f11d1ab2e9f53bc4ff7ff67f42538afb407c44c6b3087c7f2",
@@ -62,7 +62,7 @@
   "exit": 0,
   "keys": "real W keybd_event for 1.5 s after engine open",
   "actor_end": [
-   -1.00758e-06,
+   -1.01146e-06,
    2.9984,
    18.9892
   ],
@@ -104,11 +104,17 @@
   "33028 Play Solo": "WM_COMMAND switches edit to play; status 0; explorer nodes 14 to 56",
   "32792 Explorer": "XTP docking pane with live DataModel tree",
   "57600 File New": "replaces document in process, Ogre restart, cleanup zero both times",
-  "57664 About": "dialog 117 DoModal returned IDCANCEL (2)"
+  "57664 About": "dialog 117 DoModal returned IDCANCEL (2)",
+  "32966 Run": "toolbar command runs simulation, status logged, cleanup zero"
  },
- "not_rerun_on_this_exe": [
-  "edit_save_reopen",
-  "visible_input_run"
- ],
- "execute_script": "RunFile via -p6-runfile moved Brick to 1,2,3; file dialog path not exercised"
+ "not_rerun_on_this_exe": [],
+ "execute_script": "RunFile via -p6-runfile moved Brick to 1,2,3; file dialog path not exercised",
+ "property_edit": {
+  "select": "Brick",
+  "properties_listed": 50,
+  "set": "Name=Renamed via SetProperty, status 0",
+  "reopened": "Renamed found",
+  "skipped": "CoordinateFrame string conversion hangs",
+  "limit": "Grid notify path shares SetProperty but was not driven by real typing"
+ }
 }
