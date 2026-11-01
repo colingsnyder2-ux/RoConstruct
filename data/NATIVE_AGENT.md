@@ -1,6 +1,6 @@
 # Native integration with an agent (Codex, Claude)
 
-## Native source recovery with real Codex agents (Worker 23)
+## Native source recovery with real Codex agents (Worker 24)
 
 For tool-using batch recovery, open `roc gui`, choose **Workers → Integrator →
 10 Codex agents · shared native files**, select your signed-in Codex model and
@@ -54,7 +54,7 @@ a manifest alone is not a recoverable C++ body. An explicit `add_method: true` t
 may append one missing qualified definition to an existing source; its genuine header
 declaration must already exist and compile. It cannot add fields or declarations.
 
-Worker 23 collaborates across PCs using the **same server URL**. Server method
+Worker 24 collaborates across PCs using the **same server URL**. Server method
 leases last 120 seconds and renew every 20 seconds, including baseline compilation.
 An expired/replaced lease cannot upload, renew or release another worker's method.
 Local SQLite still protects multiple sessions on one PC. An older server prints a
@@ -63,7 +63,7 @@ local-only warning; update/restart the host before relying on cross-PC coordinat
 The server publishes its current native source/header catalog, so classes added by
 owners become available without downloading another compiler or waiting for a new
 Worker ZIP. Agents compile private server snapshots. New host files can be created
-locally; existing local files are never replaced wholesale. A proven body uses the
+locally; existing local files are never replaced wholesale. After host verification, a proven body uses the
 same guarded merge against current local headers. Header tasks edit existing public
 inline/out-of-line method bodies only; private force-emission probes use genuine
 member declarations. Fields, bases, signatures and layouts remain owner-only.
@@ -79,6 +79,8 @@ class linkage stays pending. No contributor text is queued into a coding chat.
 
 The agent preset selects Terra when no explicit Codex model was chosen and caps
 the initial batch at ten agent launches; explicit model choices are preserved.
+Reaching the AI budget stops new agents while queued host checks and canonical
+submissions finish without additional model calls.
 Snapshots/proofs use a persistent short path printed at startup (Windows:
 `%LOCALAPPDATA%/RoConstruct/nr/<session-hash>`), avoiding historical MSVC path limits.
 Restarting the same GUI session retains private work; expired claims can be recovered.
