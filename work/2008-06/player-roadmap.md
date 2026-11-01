@@ -1228,3 +1228,32 @@ original heartbeat cadence and scheduler/clock ordering remain unproven. The
 probe, anchor cycle, combined live play, script/lifetime, P0, value, P4 assets
 and 240-frame supplied-place tests pass. Receipts are in p5-*-6c7b1ff3a8.
 The original required forced termination after close. P5 remains incomplete.
+
+## P5 checkpoint: original script cadence (396376bf09)
+
+Direct original-client Lua probes show Heartbeat and Stepped each at about
+1/30 second, not the harness's previous 1/60 second. Six long waits and six
+sub-frame waits confirm the same 30 Hz quantization. The harness now emits Lua
+Stepped and Heartbeat at the observed cadence while retaining 60 Hz internal
+Stepped notifications and physics calls for the donor humanoid. That split is
+an explicit compatibility shim: changing the donor humanoid to 30 Hz caused
+its character to launch upward. The original frame loop and humanoid behavior
+still need recovery.
+
+At executable SHA 46c7be1227e9..., original and rebuilt heartbeat, stepped,
+and all twelve wait observations agree within 1e-5 seconds. Anchor transitions
+now occur at rebuilt frames 6, 16 and 26; original re-anchor plateau y=17.27142
+versus rebuilt y=17.27860, difference 0.00718 studs (previously 0.525). The
+later bounce comparison uses a +/-3-frame, 0.75-stud window and observed maximum
+best-window error about 0.193 studs; final difference is 0.00452. Original
+process still needed forced termination after window close. Receipts are
+p5-cadence-{heartbeat,stepped,short,wait}-396376bf09 and
+p5-cadence-anchor-28a9ad64a4; later observer-only commits preserve the same exe.
+
+Combined visible play, controller, climb, anchor, P0, scripts, value, assets and
+a 240-frame supplied place pass; corresponding p5-cadence-* receipts name their
+exact revisions. A concurrent removal test exposed that independent scripts can
+start in either order; its fixture now waits before the removed script's marker,
+so it verifies cancellation without assuming startup ordering. P5 remains open:
+native frame-loop/humanoid reconstruction, exact step parity and other roadmap
+acceptance remain unproven.

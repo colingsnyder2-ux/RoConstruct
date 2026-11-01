@@ -1,0 +1,45 @@
+{
+  "revision": "396376bf09e8b088a209557779622b5a60568985",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "player_sha256": "46c7be1227e92daf892695b556d56621bbcb24a480b7f7d371e2941358fa4136",
+  "fixture_sha256": "4b8d4deef67413693400af7533da449c9e9d75579f8acbfc6640a20503015951",
+  "observer_sha256": "a749f2aadd848e496636103d147a9b7f8d757cdc2fa45fd804850a287c455823",
+  "mode": "stepped",
+  "original_candidate_counts": [
+    4,
+    4,
+    5,
+    4,
+    4,
+    5
+  ],
+  "agreeing_moving_copies": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+  ],
+  "original_wait_seconds": [
+    0.033333206176757814,
+    0.033333206176757814,
+    0.03333358764648438,
+    0.03333358764648438,
+    0.03333358764648438,
+    0.03333358764648438
+  ],
+  "rebuilt_wait_seconds": [
+    0.03333320999999998,
+    0.03333320999999998,
+    0.03333358999999945,
+    0.03333358999999945,
+    0.03333358999999945,
+    0.033333600000000276
+  ],
+  "original_exit": 1,
+  "original_forced_termination": true,
+  "player_exit": 0,
+  "scope": "Six Lua cadence or wait observations, original real-time against rebuilt fixed-step; no claim of complete scheduler parity.",
+  "P5_complete": false
+}
