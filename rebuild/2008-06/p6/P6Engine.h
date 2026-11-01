@@ -15,6 +15,7 @@ void* P6EnginePick(float x, float y);
 void* P6DataPartAt(float x, float y, float z);
 typedef void (*P6OutputSink)(const char* message);
 void P6DataSetOutput(P6OutputSink sink);
+int P6DataRemove(void* item);
 int P6DataGetPosition(void* item, float* position);
 int P6DataSetPosition(void* item, const float* position);
 void* P6EngineDragBegin(float x, float y, float* start);

@@ -195,6 +195,13 @@ public:
         else panes.ClosePane(ID_VIEW_OUTPUT);
     }
     afx_msg void OnUpdateViewOutput(CCmdUI* ui) { ui->SetCheck(!panes.IsPaneClosed(ID_VIEW_OUTPUT)); }
+    void RemoveSelected() {
+        printf("p6: remove %d\n", P6DataRemove(selected));
+        g_undo.clear(); // ponytail: removal is not undoable and may invalidate moves
+        selected = NULL;
+        properties.ResetContent();
+        RefreshExplorer();
+    }
     void ShowProperties(void* item) {
         selected = item;
         properties.ResetContent();
@@ -236,6 +243,7 @@ public:
         }
         int split = g_setProperty.Find('=');
         if (item && split > 0) SetProperty(g_setProperty.Left(split), g_setProperty.Mid(split + 1));
+        if (item && g_setProperty == "delete") { CFrameWnd* child = GetActiveFrame(); child->GetActiveView()->SendMessage(WM_COMMAND, ID_EDIT_CLEAR); }
         g_select.Empty();
     }
     void RefreshExplorer() {
@@ -498,6 +506,7 @@ public:
         printf("p6: undo %d\n", P6DataSetPosition(move.item, move.position));
     }
     afx_msg void OnUpdateUndo(CCmdUI* ui) { ui->Enable(!g_undo.empty()); }
+    afx_msg void OnClear() { static_cast<CMainFrame*>(AfxGetMainWnd())->RemoveSelected(); GetDocument()->SetModifiedFlag(); }
     afx_msg void OnRButtonDown(UINT, CPoint point) { dragFrom = point; SetCapture(); }
     afx_msg void OnRButtonUp(UINT, CPoint) { ReleaseCapture(); }
     afx_msg void OnMouseMove(UINT flags, CPoint point) {
@@ -528,6 +537,7 @@ BEGIN_MESSAGE_MAP(CRobloxView, CView)
     ON_WM_LBUTTONDOWN()
     ON_WM_LBUTTONUP()
     ON_COMMAND(ID_EDIT_UNDO, &CRobloxView::OnUndo)
+    ON_COMMAND(ID_EDIT_CLEAR, &CRobloxView::OnClear)
     ON_UPDATE_COMMAND_UI(ID_EDIT_UNDO, &CRobloxView::OnUpdateUndo)
     ON_WM_RBUTTONDOWN()
     ON_WM_RBUTTONUP()

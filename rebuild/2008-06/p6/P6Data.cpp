@@ -110,6 +110,17 @@ static RBX::PartInstance* livePart(void* handle)
     return dynamic_cast<RBX::PartInstance*>(static_cast<RBX::Instance*>(handle));
 }
 
+extern "C" int P6DataRemove(void* handle)
+{
+    RBX::DataModel* model = EngineDataModel();
+    if (!model) return 1;
+    RBX::DataModel::Lock lock(model);
+    RBX::PartInstance* part = livePart(handle);
+    if (!part) return 2;
+    part->setParent(NULL);
+    return 0;
+}
+
 extern "C" int P6DataProperties(void* handle, P6PropertyVisitor visitor, void* context)
 {
     RBX::DataModel* model = EngineDataModel();
