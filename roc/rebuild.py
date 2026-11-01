@@ -1050,6 +1050,7 @@ def build_module(client, name, log=print):
     deps += [dll_import_lib(client, dll) for dll in spec.get("import_dlls", [])]
     excluded_path = out / "verified" / "excluded.json"
     excluded = set(json.loads(excluded_path.read_text())) if excluded_path.exists() else set()
+    excluded.update(spec.get("verified_exclude", []))
     vdrop_path = out / "verified" / "vdrop.json"
     vdrop = set(json.loads(vdrop_path.read_text())) if vdrop_path.exists() else set()
     helpers_path = out / "verified" / "helpers.json"
