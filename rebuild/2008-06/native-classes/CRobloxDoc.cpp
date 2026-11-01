@@ -3,6 +3,7 @@
 #include "v8tree/Verb.h"
 #include "../native-headers/CRobloxDoc.h"
 #include "../native-headers/StandardVerbs.h"
+#include "../native-headers/CWorkspace.h"
 #include <exception>
 
 IMPLEMENT_DYNCREATE(CRobloxDoc, CDocument)
@@ -15,6 +16,10 @@ CRobloxDoc::CRobloxDoc() : standardVerbs(0), workspace(0) {}
 
 // 00451940: DeleteContents owns the workspace/verb cleanup before destruction.
 CRobloxDoc::~CRobloxDoc() { delete standardVerbs; }
+
+boost::shared_ptr<RBX::DataModel> CRobloxDoc::getDataModel() {
+    return workspace ? workspace->getDataModel() : boost::shared_ptr<RBX::DataModel>();
+}
 
 void CRobloxDoc::OnCloseDocument() { CDocument::OnCloseDocument(); }
 

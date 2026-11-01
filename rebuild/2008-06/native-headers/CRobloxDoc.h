@@ -2,10 +2,11 @@
 #include "VerbBinder.h"
 #include <memory>
 #include <vector>
+#include <boost/shared_ptr.hpp>
 
 class XmlElement;
 class CWorkspace;
-namespace RBX { class Verb; struct StandardVerbs; }
+namespace RBX { class Verb; class DataModel; struct StandardVerbs; }
 
 // Candidate shared declaration, not yet used by the shell. Native constructor
 // 00451ac0, destructor 00451940, run/stop 00455820/00455580 and command setup
@@ -25,6 +26,7 @@ public:
     void bindExisting(UINT, RBX::Verb*);
     void bindOwned(UINT, RBX::Verb*);
     void initializeCommands();
+    boost::shared_ptr<RBX::DataModel> getDataModel();
     virtual void SetTitle(LPCTSTR);
     virtual BOOL IsModified();
     virtual void SetModifiedFlag(BOOL = TRUE);

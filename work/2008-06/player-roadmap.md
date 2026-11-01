@@ -2079,3 +2079,6 @@ CWorkspace shared storage candidate added: genuine ATL bases in original RTTI or
 
 
 CWorkspace constructor0046ab60 now matches33 bytes; typed DataModel getter0046a940 matches43. Native MIDL interfaces require novtable: omitting it emitted an extra primary interface-vptr store (39-byte constructor). Shared RobloxLib interfaces now carry that SDK convention. Storage checks still pass. Candidate inactive; callbacks/COM methods and Doc cleanup remain open. Running executable/count unchanged.
+
+
+Doc typed getDataModel candidate: original00403040 is47 bytes; straightforward shared_ptr ternary compiles274 bytes, including with noinline on the workspace getter. Candidate remains inactive and unverified; avoid claiming an exact match. Next inspect return-value construction and lifetime behavior before integration. Existing runtime unchanged.
