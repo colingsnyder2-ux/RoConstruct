@@ -1,6 +1,6 @@
 # Native integration with an agent (Codex, Claude)
 
-## Native source recovery with real Codex agents (Worker 26)
+## Native source recovery with real Codex agents (Worker 27)
 
 Open `roc gui`, choose **Workers → Integrator**, select your Codex model and
 launch cap, then **Start native recovery**. This panel exposes native C++ recovery
@@ -1064,8 +1064,14 @@ Existing owner-established Win32 casts may remain unchanged while another part
 of the same method body is recovered. New/changed casts and offset views remain
 blocked; the actual unmodified casts still compile and appear in proof receipts.
 
-Worker 26 restores the genuine `Mechanism*` declaration in the inactive world
-Assembly port; Assembly, AssemblyStage and SleepStage compile with original MSVC.
-Their June ABI/behavior still needs recovery; compilation grants no credit.
+Worker 27 makes world probes consume accepted overlay declarations after their
+published world headers, preserving the genuine SimJob/Mechanism hierarchy and
+Assembly job accessors. A raw vendor header alone is insufficient ABI evidence.
 Saved recovery proposals now carry an evidence mode, including older drafts,
 so linked preflight can proceed into normal independent submission.
+Shared contributor lease limits return a wait condition across PCs; active work
+continues and other contributors can still claim distinct work.
+
+Native source adoptions resolve inside the current Worker workspace even when
+installed vendor tools are junctions to another checkout. Private rechecks must
+never read another agent's live native headers through a reused tools path.
