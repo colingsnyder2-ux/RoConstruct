@@ -83,6 +83,8 @@ class CMainFrame : public CXTPMDIFrameWnd {
     DWORD fpsTick;
     CXTPDockingPaneManager panes;
     CTreeCtrl explorer;
+    CImageList classImages;
+    CMapStringToPtr classIndex;
     CEdit output;
     CXTPPropertyGrid properties;
     void* selected;
@@ -93,6 +95,29 @@ class CMainFrame : public CXTPMDIFrameWnd {
         CXTPPropertyGridItem* item = group->AddChildItem(new CXTPPropertyGridItem(name, value));
         item->SetReadOnly(readOnly);
         group->Expand();
+    }
+    // IDB_CLASSIMAGES 133 per 00413230; indices come from ReflectionMetadata.xml.
+    void LoadClassImages() {
+        BOOL alpha = FALSE;
+        CBitmap bitmap;
+        bitmap.Attach(CXTPImageManagerIcon::LoadBitmapFromResource(MAKEINTRESOURCE(133), &alpha));
+        classImages.Create(16, 16, ILC_COLOR32, 0, 0);
+        classImages.Add(&bitmap, (CBitmap*)NULL);
+        explorer.SetImageList(&classImages, TVSIL_NORMAL);
+        char path[MAX_PATH];
+        GetModuleFileName(NULL, path, MAX_PATH);
+        CString file(path);
+        file = file.Left(file.ReverseFind('\\') + 1) + "ReflectionMetadata.xml";
+        CStdioFile metadata;
+        if (!metadata.Open(file, CFile::modeRead)) return;
+        CString line, name;
+        while (metadata.ReadString(line)) {
+            int at = line.Find("name=\"Name\">");
+            if (at >= 0) name = line.Mid(at + 12, line.Find('<', at + 12) - at - 12);
+            at = line.Find("name=\"ExplorerImageIndex\">");
+            if (at >= 0) classIndex[name] = (void*)(INT_PTR)atoi(line.Mid(at + 26));
+        }
+        printf("p6: class images=%d indexed=%d\n", classImages.GetImageCount(), (int)classIndex.GetCount());
     }
     HTREEITEM findNode(HTREEITEM item, const CString& name) {
         for (; item; item = explorer.GetNextSiblingItem(item)) {
@@ -112,7 +137,9 @@ class CMainFrame : public CXTPMDIFrameWnd {
                 if (!lstrcmpA(className, services[i])) frame->shown = true;
         }
         if (!frame->shown) return;
-        frame->path[depth] = frame->explorer.InsertItem(name, depth > 1 ? frame->path[depth - 1] : TVI_ROOT);
+        void* index = NULL;
+        frame->classIndex.Lookup(className, index);
+        frame->path[depth] = frame->explorer.InsertItem(name, (int)(INT_PTR)index, (int)(INT_PTR)index, depth > 1 ? frame->path[depth - 1] : TVI_ROOT);
         frame->explorer.SetItemData(frame->path[depth], (DWORD_PTR)handle);
     }
     HTREEITEM path[64];
@@ -276,6 +303,7 @@ public:
             if (!bar || !bar->LoadToolBar(toolbars[i].id)) return -1;
         }
         if (!explorer.Create(WS_CHILD | WS_VISIBLE | TVS_HASLINES | TVS_HASBUTTONS | TVS_LINESATROOT, CRect(0, 0, 0, 0), this, 1)) return -1;
+        LoadClassImages();
         panes.InstallDockingPanes(this);
         panes.SetTheme(xtpPaneThemeOffice2003);
         CXTPDockingPane* pane = panes.CreatePane(ID_VIEW_EXPLORER, CRect(0, 0, 240, 400), xtpPaneDockRight);

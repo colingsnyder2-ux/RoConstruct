@@ -14,6 +14,7 @@ SNAPSHOT = Path(sys.argv[1]) if len(sys.argv) > 1 else rebuild.workspace(client)
 out = rebuild.workspace(client) / "out" / "p6"
 out.mkdir(parents=True, exist_ok=True)
 tc = rebuild.toolchain()
+shutil.copyfile(ROOT / "clients" / client / "ReflectionMetadata.xml", out / "ReflectionMetadata.xml")
 gen_res.generate(str(ROOT / "clients" / client / "Roblox.exe"), str(out / "roblox.res"))
 shutil.copyfile(rebuild.mfc_import_lib(client), out / "mfc90.lib")
 mfc = ROOT / "tools" / "libs" / "mfc-9.0-rtm" / "atlmfc" / "include"
