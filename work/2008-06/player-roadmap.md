@@ -1839,3 +1839,28 @@ base tracker/list ownership from donor mechanism grouping, preserving this
 linked lifecycle gate and verified native registration/removal contracts.
 Log shared layout changes in TANDEM before implementation. Full native job
 and no-physics state integration, and P5, remain open.
+
+## P5 checkpoint: shared SimJob ownership base (9919e46fd5)
+
+The engine overlay now extracts SimJob's tracker vector and list iterator from
+donor Mechanism grouping. SimJob has the evidenced destructor/assembly-identity
+slots and compiles to 36 bytes with the historical compiler; its two identity
+queries stay separate from movement dispatch. Mechanism derives from this base
+while retaining the donor assembly set and its existing stage iterator. This is
+an intermediate ownership integration, not the native single-assembly wrapper
+or native job-stage registration. Native and donor grouping remain distinct.
+
+MechanismTracker now accepts SimJob owners through setJob/getJob, while existing
+setMechanism/getMechanism callers retain their source API. getMechanism returns
+null for a non-mechanism job; such jobs are not yet registered in active player
+stage traversal. Tests cover transfer between mechanism and non-mechanism owners,
+old-owner destruction, individual detach and final-owner destruction. Stage
+traversal must use the generic API when native jobs are added next.
+
+Engine/player rebuilt successfully. At 9919e46fd5, cross-job lifetime/base size,
+P3 lifetime/self/cache, spawn, original frozen fall/jump and Novetus animation
+all pass. Receipts: p5-simjob-base-verified plus -p3, -spawn, -fall, -jump,
+-animation. Layout change and rebuild completion logged in TANDEM; header users
+must merge the matching source before relinking. No server native-byte credit
+claimed. Next integrate stage registration/removal using this shared base and
+existing recovered source; RunningNoPhysics and full P5 remain open.
