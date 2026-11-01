@@ -4,7 +4,9 @@ from ctypes import wintypes
 root=pathlib.Path(__file__).resolve().parents[3]
 original=root/'work/2008-06/original-p4-reference/Roblox.exe'
 player=root/'rebuild/2008-06/out/tests/P2RecoveredPlayer/P2RecoveredPlayer.exe'
-fixture=root/'rebuild/2008-06/tests/fixtures/p5-simtime-fall.rbxl'
+mode=sys.argv[2] if len(sys.argv)>2 else 'fall'
+assert mode in ('fall','jump','air')
+fixture=root/'rebuild/2008-06/tests/fixtures'/('p5-simtime-'+mode+'.rbxl')
 out=root/'work/2008-06'/sys.argv[1];out.mkdir(exist_ok=False)
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 run=subprocess.run([str(player),'--p5-join','--p5-play','--frames','246','--inspect-place',str(fixture)],cwd=out,capture_output=True,text=True,timeout=90)
@@ -42,7 +44,7 @@ try:
     while pos>=0:hits[j].append(start+pos);pos=data.find(needle,pos+1)
   addr=start+size
  assert all(len(group)>=2 for group in hits)
- u.SetForegroundWindow(h);time.sleep(.4);rect=wintypes.RECT();assert u.GetWindowRect(h,ctypes.byref(rect)) and u.GetForegroundWindow()==h and rect.right-rect.left>=800 and rect.bottom-rect.top>=600
+ u.ShowWindow(h,9);u.SetForegroundWindow(h);time.sleep(.4);rect=wintypes.RECT();assert u.GetWindowRect(h,ctypes.byref(rect)) and u.GetForegroundWindow()==h and rect.right-rect.left>=800 and rect.bottom-rect.top>=600
  u.SetCursorPos(rect.left+390,rect.top+70);u.mouse_event(2,0,0,0,0);u.mouse_event(4,0,0,0,0);time.sleep(4.5)
  records=[]
  for j,group in enumerate(hits):
@@ -51,19 +53,20 @@ try:
    d=read(address,12)
    if len(d)==12:
     mx,y,z=struct.unpack('<3f',d)
-    if 177.25<mx<182 and -10<y<40 and abs(z-(100+j*3))<.01:values.append((mx-177.25,y))
+    if 177.25<mx<182 and ((100<y<250) if mode=='air' else (-10<y<40)) and abs(z-(100+j*3))<.01:values.append((mx-177.25,y))
   assert len(values)>=2,(j,values)
   assert max(v[0] for v in values)-min(v[0] for v in values)<.0001
   assert max(v[1] for v in values)-min(v[1] for v in values)<.001
   t,y=map(statistics.median,zip(*values));bt,by=rebuilt[j]
   records.append(dict(sample=j,original_time=t,rebuilt_time=bt,aligned=abs(t-bt)<.0001,original_y=y,rebuilt_y=by,delta_y=y-by,copies=len(values)))
  assert all(r['aligned'] for r in records), records
- assert max(abs(r['delta_y']) for r in records)<.1, records
+ if mode=='fall':assert max(abs(r['delta_y']) for r in records)<.1, records
+ if mode=='air':assert max(abs(r['delta_y']) for r in records if r['original_time']<=1.0001)<.01, records
 finally:
  if handle:k.CloseHandle(handle)
  if windows:u.PostMessageW(windows[0],0x10,0,0)
  try:x.wait(timeout=4)
  except subprocess.TimeoutExpired:forced=True;x.terminate();x.wait(timeout=5)
-receipt=dict(revision=subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip(),original_sha256=sha(original),player_sha256=sha(player),fixture_sha256=sha(fixture),observer_sha256=sha(pathlib.Path(__file__)),records=records,original_forced_termination=forced,scope='Frozen Stepped callback samples with encoded simulation time. Different joint construction; comparisons are observational.',P5_complete=False)
+receipt=dict(mode=mode,measured_coordinate='torso x' if mode=='air' else 'torso y',revision=subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip(),original_sha256=sha(original),player_sha256=sha(player),fixture_sha256=sha(fixture),observer_sha256=sha(pathlib.Path(__file__)),records=records,original_forced_termination=forced,scope='Frozen Stepped callback samples with encoded simulation time. Different joint construction; comparisons are observational.',P5_complete=False)
 (out/'receipt.json').write_text(json.dumps(receipt,indent=2)+'\n')
 for r in records:print(r['sample'],r['original_time'],r['rebuilt_time'],r['delta_y'])
