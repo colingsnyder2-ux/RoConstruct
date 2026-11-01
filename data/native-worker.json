@@ -5,8 +5,8 @@
   "abi_manifest_sha256": "3d8ebf8ea63859c156cce6f28068598ef1df3249565a7e1a717c83ed1310b92a",
   "abi_manifest_classes": 2001,
   "url": "https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.zip",
-  "sha256": "e6fff3b8048b95a630e11ec9d41111ce6e160745f07714c850cad551891fe5e9",
-  "size": 3669415,
+  "sha256": "012a900084db576e89cdd1a8c3c148e9515640a07e3ff1123c9bd267dd779dd3",
+  "size": 3675499,
   "guide": "https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/NATIVE_AGENT.md",
   "matching_guide": "https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/MATCHING_AGENT.md",
   "native_clients": [
