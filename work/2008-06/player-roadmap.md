@@ -1319,3 +1319,12 @@ causal improvement over earlier samples. Original joint construction and
 wall-time sampling differ, and original closure required forced termination.
 This is an adaptation, not byte-identical integration; native loop, state ABI,
 full humanoid parity, P5 acceptance and later milestones remain open.
+
+## P5 native frame-loop investigation
+
+Recovered source locates RunService::runProc at 00555190, its DataModel lock
+and step at 00554880, the gated outer step at 00578e50, and the run-mode,
+Workspace/idle and event dispatch at 00578ca0. The original has deadline,
+view wait, scheduler-item and interruptible wait behavior absent from the
+current reconstructed loop. See p5-native-frame-loop-trace.md. No native
+frame-loop integration or full P5 acceptance is claimed.
