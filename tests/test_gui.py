@@ -399,11 +399,14 @@ class DashboardTests(unittest.TestCase):
                     dict(event="native_progress", slot=2, file="App/Block.cpp", message="Compiling baseline"),
                     dict(event='native_partial', slot=2, file='App/Block.cpp', addr='00500000', previous=75, score=82),
                     dict(event="native_result", slot=2, file="App/Block.cpp", local_exact=3, seconds=20),
+                    dict(event="native_recovery", host_merged=1),
+                    dict(event="native_recovery", host_merged=0),
                     dict(event="benchmark", completed=1, matched=0, improved=0)]
             process = Mock(stdout=io.StringIO("".join("ROC_EVENT " + json.dumps(row) + "\n" for row in rows)), stdin=None)
             process.wait.return_value = 0
             self.app.consume(identifier, process)
         self.assertEqual(self.app.jobs[identifier]["local_exact"], 3)
+        self.assertEqual(self.app.jobs[identifier]["host_merged"], 1)
         self.assertEqual(self.app.jobs[identifier]['native_partials'], 1)
         self.assertEqual(self.app.jobs[identifier]["matched"], 0)
         self.assertEqual(self.app.jobs[identifier]["attempted"], 1)

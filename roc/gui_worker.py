@@ -349,7 +349,7 @@ def native_loop(config, control, emit):
             break
         if current['native_generation'] == 'agent':
             from roc import native_recovery
-            emit('stage', message='Native source recovery: %d real Codex agents; guarded shared-folder merge' % control.workers)
+            emit('stage', message='Native recovery: up to %d Codex agents; server leases and guarded shared-folder merge' % control.workers)
             try:
                 summary = native_recovery.run(current, control, emit)
                 control.completed += summary.get('attempted', 0)

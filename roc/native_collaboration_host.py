@@ -63,7 +63,7 @@ class Host:
                 extra=json.loads(manifest.read_text(encoding='utf-8'))
                 if not isinstance(extra,list):raise ValueError('Host task manifest must be a list')
                 tasks+=extra
-            headers={p:recovery.digest(t.encode()) for p,t in files.items() if '/native-headers/' in p}
+            headers={p:recovery.digest(t.encode()) for p,t in files.items() if Path(p).suffix in ('.h','.hpp','.inl')}
             analysis=self.root/'work/2008-06/functions.jsonl'
             if analysis.exists():
                 from roc import match

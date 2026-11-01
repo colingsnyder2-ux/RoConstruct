@@ -145,9 +145,40 @@ function modelChoices(config, choice="openai") {
   if(modelBase(config.model) && !seen.has(modelBase(config.model))) choices.push([modelBase(config.model), modelBase(config.model)+" · custom"]);
   return choices;
 }
+function nativeRecoveryConfig(config) {
+  const fresh=config.native_generation!=="agent" || !String(config.model||"").startsWith("codex:");
+  return {...config,lease_mode:"native",client:"2008-06",native_generation:"agent",native_escalation_model:"",source_only:false,max_cloud_cost:null,
+    model:String(config.model||"").startsWith("codex:") && config.model!=="codex:default" ? config.model : "codex:gpt-6.1-terra",
+    workers:fresh ? 10 : config.workers ?? 10,cloud_concurrency:fresh ? 10 : config.cloud_concurrency ?? 10,
+    native_compile_workers:config.native_compile_workers && config.native_compile_workers!=="auto" ? config.native_compile_workers : 2,
+    max_cloud_requests:config.max_cloud_requests ?? 10};
+}
+function nativeRecoveryForm(input) {
+  const config=nativeRecoveryConfig(input);
+  return `<form id="worker-form" class="panel panel-pad"><h2>${editing ? "Tune native recovery" : "Native C++ recovery"}</h2>
+    <p class="help-note">Recover class, world and header method bodies with signed-in Codex. Server leases coordinate PCs; host checks protect shared edits.</p>
+    <input type="hidden" name="native_generation" value="agent"><input type="hidden" name="model_provider" value="codex">
+    <div class="field-grid">`+
+    field("Client","client","2008-06",{choices:[["2008-06","2008-06"]]})+field("Username","user",config.user)+
+    field("Server","server",config.server,{full:true})+field("Codex model","model",config.model,{choices:modelChoices(config,"codex"),full:true})+
+    field("Concurrent AI workers","workers",config.workers,{type:"number",min:1,max:256})+
+    field("Parallel local compilers","native_compile_workers",config.native_compile_workers,{type:"number",min:1,max:64})+
+    field("Agent launch cap","max_cloud_requests",config.max_cloud_requests,{type:"number",min:1})+
+    field("Minutes per agent","native_agent_minutes",config.native_agent_minutes ?? 4,{type:"number",min:1,max:60})+
+    field("Probes per agent","native_agent_checks",config.native_agent_checks ?? 6,{type:"number",min:1,max:30})+
+    `</div><div class="form-section">${check("Submit linkable recoveries after independent preflight","native_agent_submit",config.native_agent_submit ?? true)}</div>`+
+    `<details class="form-section"><summary>Advanced limits</summary><div class="field-grid">`+
+    field("Token cap","max_cloud_tokens",config.max_cloud_tokens,{type:"number",min:1,placeholder:"Optional"})+
+    field("Native task manifest (optional)","native_agent_tasks",config.native_agent_tasks||"",{full:true})+
+    `</div><p class="help-note">Launch caps stop new agents. Running agents and queued checks finish. Token usage arrives after each run; time/probe limits bound work. Layouts remain owner-only.</p></details>`+
+    `<div class="consent">${check("Allow cloud prompts for this session","cloud_allowed",config.cloud_allowed)}<p>Target assembly and source go to your selected Codex model.</p></div>`+
+    `<div class="form-footer">${button(editing ? "Apply changes" : "Start native recovery",'type="submit"')}</div>`+
+    `<button type="button" class="text-button" data-agent-setup="codex">Codex sign-in</button><button type="button" class="text-button" id="refresh-models">Refresh models</button></form>`;
+}
 function workerForm(config) {
   if(config.model) {const provider=modelBase(config.model).split(":")[0];matchProvider=WORKER_PROVIDERS.some(([name])=>name===provider) ? provider : "custom";}
   const native = config.lease_mode === "native" || !editing && workerMode === "native";
+  if(native) return nativeRecoveryForm(config);
   const preset = config.rounds==="auto" && config.max_tokens==="auto" ? "automatic" : config.rounds===2 && config.max_size===96 ? "fast" : config.rounds===6 && config.max_size===0 ? "deep" : config.rounds===4 && config.max_size===256 ? "balanced" : "";
   return `<form id="worker-form" class="panel panel-pad"><div class="section-heading"><h2>${editing ? "Tune active session" : (native ? "Configure Integrator" : "Configure Worker")}</h2>${editing ? `<button type="button" class="text-button" data-new-worker>New session →</button>` : ""}</div><div class="preset-row">${native ? '<button type="button" data-native-agents>10 Codex agents · shared native files</button><button type="button" data-native-batch>10-worker recovery</button>' : ""}${["automatic","fast","balanced","deep"].map(mode=>`<button type="button" data-preset="${mode}" class="${preset===mode ? "active" : ""}">${mode[0].toUpperCase()+mode.slice(1)}</button>`).join("")}</div><div class="field-grid">` +
     field("Client", "client", native ? "2008-06" : config.client, {choices:native ? [["2008-06","2008-06 · native rebuild"]] : [["","All available clients"],...meta.clients.map(client=>[client.name,client.name])]}) +
@@ -334,7 +365,7 @@ function workerCards() {
     : `<b>${Object.keys(current.slots).length}</b> loops`;
   const batchPhase=current.config.lease_mode==="native"&&!Object.values(current.slots).some(slot=>slot.busy)
     ? [...logs].reverse().find(row=>row.job===current.id&&["log","stage"].includes(row.event)&&row.message)?.message || current.stage : "";
-  return `<div class="live-session"><span class="session-summary">${badge(current.status)} ${slotSummary} · ${current.config.lease_mode==="native" ? `<b>${current.local_exact || 0}</b> local exact · <b>${current.native_partials || 0}</b> partial improvements · <b>${current.matched}</b> server verified` : `<b>${current.matched}</b> exact · <b>${current.improved}</b> improved`} · ${current.attempted} ${current.kind==="agent_worker" ? "server gains" : "tried"}</span>${current.config.lease_mode==="native" ? `<span class="native-slots">${Object.entries(current.slots).map(([slot,state])=>`<span title="${esc(state.phase || "Waiting")}"><b>w${Number(slot)+1}</b> ${esc(state.file?.split("/").pop() || "Waiting for file")} · ${esc(state.busy ? state.phase || "Working" : state.local_exact ? "Proof saved" : "File checked")}</span>`).join("")}</span>` : ""}${batchPhase ? `<span class="native-batch-phase" title="${esc(batchPhase)}">${esc(batchPhase)}</span>` : ""}${active(current) ? (current.kind==="worker" ? `<button class="text-button" data-action="${current.status==="paused" ? "resume" : "pause"}" data-id="${current.id}" ${current.status==="stopping" ? "disabled" : ""}>${current.status==="paused" ? "Resume" : "Pause"}</button>` : "")+`${endRun(current)}<button class="text-button" data-action="kill" data-id="${current.id}" aria-label="Stop immediately">×</button>` : ""}</div>`;
+  return `<div class="live-session"><span class="session-summary">${badge(current.status)} ${slotSummary} · ${current.config.lease_mode==="native" ? `<b>${current.local_exact || 0}</b> local exact · <b>${current.host_merged || 0}</b> host source merges · <b>${current.native_partials || 0}</b> partial improvements · <b>${current.matched}</b> server verified` : `<b>${current.matched}</b> exact · <b>${current.improved}</b> improved`} · ${current.attempted} ${current.kind==="agent_worker" ? "server gains" : "tried"}</span>${current.config.lease_mode==="native" ? `<span class="native-slots">${Object.entries(current.slots).map(([slot,state])=>`<span title="${esc(state.phase || "Waiting")}"><b>w${Number(slot)+1}</b> ${esc(state.file?.split("/").pop() || "Waiting for file")} · ${esc(state.busy ? state.phase || "Working" : state.local_exact ? "Proof saved" : "File checked")}</span>`).join("")}</span>` : ""}${batchPhase ? `<span class="native-batch-phase" title="${esc(batchPhase)}">${esc(batchPhase)}</span>` : ""}${active(current) ? (current.kind==="worker" ? `<button class="text-button" data-action="${current.status==="paused" ? "resume" : "pause"}" data-id="${current.id}" ${current.status==="stopping" ? "disabled" : ""}>${current.status==="paused" ? "Resume" : "Pause"}</button>` : "")+`${endRun(current)}<button class="text-button" data-action="kill" data-id="${current.id}" aria-label="Stop immediately">×</button>` : ""}</div>`;
 }
 function commands() {
   const command = meta.commands.find(command=>command.name===selectedCommand), names = meta.clients.map(client=>client.name);
@@ -456,7 +487,7 @@ function readWorker() {
     config.model=form.elements.model_variant.value ? modelParts[0]+"#"+form.elements.model_variant.value : modelParts[0];
   if(!editing) { const addresses=(form.elements.addresses?.value || "").split(/[,\s]+/).filter(Boolean).map(value=>value.toLowerCase().replace(/^0x/,"")); config.targets=addresses.length ? addresses.map(addr=>({client:config.client,addr})) : null; }
   if(!editing) config.lease_mode=workerMode==="native" ? "native" : (config.lease_mode==="native" ? "function" : config.lease_mode);
-  return config;
+  return config.lease_mode==="native" ? nativeRecoveryConfig(config) : config;
 }
 function readCommand() { const form=$("#command-form"), data={command:selectedCommand}; for(const input of form.querySelectorAll("[name]")) data[input.name]=input.type==="checkbox" ? input.checked : input.type==="number" ? Number(input.value) : input.value; return data; }
 async function previewCommand() { const data=readCommand(); if(data.command==="research" && ["plan","run"].includes(data.research_action) && !data.recipe) {$("#command-preview").textContent="roc research "+data.research_action+" <recipe>";return;} if(data.command==="install"&&!data.accept_downloads) { $("#command-preview").textContent="roc install --yes"+(data.client&&data.client!=="all" ? " --client "+data.client : "")+"  (download consent required)"; return; } const result=await api("preview",data); if($("#command-preview")) $("#command-preview").textContent="roc "+result.args.join(" "); }
@@ -546,8 +577,8 @@ document.addEventListener("click", event=>act(async()=>{
   if(target.dataset.workerMode) {workerMode=target.dataset.workerMode;editing=null;controlsOpen=true;render();return;}
   if(target.hasAttribute("data-worker-memory-refresh")) {await loadWorkerMemory(true);return;}
   if(target.hasAttribute("data-new-agent-worker")) {workerMode="agent";editing=null;controlsOpen=true;navigate("workers");return;}
-  if(target.hasAttribute("data-new-worker") || target.hasAttribute("data-new-session")) { workerMode="function";editing=null;controlsOpen=true;navigate("workers"); }
-  if(target.hasAttribute("data-configure")) {const current=jobs.find(j=>isWorker(j)&&active(j)&&(!workerRun||j.id===workerRun));editing=current?.kind==="worker" ? current.id : null;workerMode=current?.kind==="agent_worker" ? "agent" : "function";controlsOpen=true;render();}
+  if(target.hasAttribute("data-new-worker") || target.hasAttribute("data-new-session")) { if(target.hasAttribute("data-new-worker"))workerMode="function";editing=null;controlsOpen=true;navigate("workers"); }
+  if(target.hasAttribute("data-configure")) {const current=jobs.find(j=>isWorker(j)&&active(j)&&(!workerRun||j.id===workerRun))||jobs.find(j=>j.id===workerRun);editing=current?.kind==="worker"&&active(current) ? current.id : null;workerMode=current?.config?.lease_mode==="native" ? "native" : current?.kind==="agent_worker" ? "agent" : workerMode;controlsOpen=true;render(editing ? undefined : current?.config);}
   if(target.hasAttribute("data-close-controls")) {controlsOpen=false;$(".worker-drawer").classList.remove("open");}
   if(target.hasAttribute("data-copy-code")) {await navigator.clipboard.writeText(target.closest(".chat-code").querySelector("code").textContent);toast("Code copied");}
   if(target.id==="chat-follow"||target.id==="jump-live") {setChatFollow(true);chatSignature="";renderWorkerChat();scrollToLatest($("#worker-chat"),true);}

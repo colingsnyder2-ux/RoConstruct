@@ -1,11 +1,11 @@
 # Native integration with an agent (Codex, Claude)
 
-## Native source recovery with real Codex agents (Worker 24)
+## Native source recovery with real Codex agents (Worker 25)
 
-For tool-using batch recovery, open `roc gui`, choose **Workers → Integrator →
-10 Codex agents · shared native files**, select your signed-in Codex model and
-budget, then start. The existing **10-worker recovery** preset remains the smaller
-method-generation mode; it does not merge into shared native folders.
+Open `roc gui`, choose **Workers → Integrator**, select your Codex model and
+launch cap, then **Start native recovery**. This panel exposes native C++ recovery
+only. It defaults to ten worker slots, two compiler slots and at most ten agent
+launches. Worker count, time/probe limits and independent submissions stay adjustable.
 
 Equivalent CLI (worker count defaults to ten):
 
@@ -1054,3 +1054,12 @@ roc integrate header-report --class-name CRobloxDoc --exact N --total 49 --note 
 ```
 
 The feed is a contributor report only and earns no credit.
+
+
+Worker 25 prefers addresses from owner compiler probes over rebuilt-name hints,
+including truncated decorated-symbol prefixes. Hitting an agent admission cap
+skips unstarted work while already admitted agents finish; it does not cancel
+an active recovery. The GUI hides legacy Integrator presets/output modes.
+Existing owner-established Win32 casts may remain unchanged while another part
+of the same method body is recovered. New/changed casts and offset views remain
+blocked; the actual unmodified casts still compile and appear in proof receipts.

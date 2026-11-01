@@ -158,7 +158,8 @@ def test_http_two_pcs_share_real_server_lease_routes(service):
     finally:a.close();b.close();http.shutdown();http.server_close();thread.join()
 
 
-def test_controller_two_pcs_host_recheck_and_restart_without_extra_ai(service,tmp_path,monkeypatch):
+@pytest.mark.parametrize('cold_resume',[False,True])
+def test_controller_two_pcs_host_recheck_and_restart_without_extra_ai(service,tmp_path,monkeypatch,cold_resume):
     from roc import native_sweep as sweep,gui_worker,match,native_refs
     service.promotions.recovery=service
     service.promotions.baseline=lambda:dict(revision='base',features=dict(native_recovery_collaboration=1))
@@ -186,14 +187,30 @@ def test_controller_two_pcs_host_recheck_and_restart_without_extra_ai(service,tm
     url='http://127.0.0.1:'+str(http.server_port)
     config=dict(gui_worker.DEFAULTS,workers=1,model='codex:gpt-6.1-terra',user='Colin',server=url,cloud_allowed=True,max_cloud_requests=1)
     controls={}
+    folders={}
+    if cold_resume:
+        original_submit=client.Remote.submit
+        disconnected=[]
+        def submit_once_offline(self,*args,**kwargs):
+            if not disconnected:
+                disconnected.append(True)
+                raise OSError('Connection dropped before candidate upload')
+            return original_submit(self,*args,**kwargs)
+        monkeypatch.setattr(client.Remote,'submit',submit_once_offline)
     def run(pc):
         shared=tmp_path/pc;p=shared/REL;p.parent.mkdir(parents=True,exist_ok=True)
         if not p.exists():p.write_text(BEFORE.replace('return 2;','return 77;'))
-        monkeypatch.setenv('ROC_NATIVE_EVIDENCE_ROOT',str(shared));monkeypatch.setenv('ROC_NATIVE_RECOVERY_OUTPUT',str(tmp_path/(pc+'-proofs')))
+        monkeypatch.setenv('ROC_NATIVE_EVIDENCE_ROOT',str(shared));monkeypatch.setenv('ROC_NATIVE_RECOVERY_OUTPUT',str(tmp_path/folders.get(pc,pc+'-proofs')))
         control=controls.setdefault(pc,gui_worker.Control(config,lambda *a,**kw:None))
         return recovery.run(config,control,lambda *a,**kw:None)
     try:
-        first=run('pc1');assert first['recovered']==1 and first['merged']==0 and first['remote_submitted']==1 and first['remote_pending']==1
+        first=run('pc1');assert first['recovered']==1 and first['merged']==0
+        if cold_resume:
+            assert first['remote_submitted']==0 and first['pending']==1
+            with service.store.lock,service.store.db as db:db.execute('UPDATE native_method_leases SET expires=0')
+            folders['pc1']='pc1-cold-proof'
+            first=run('pc1')
+        assert first['remote_submitted']==1 and first['remote_pending']==1
         second=run('pc2');assert second['attempted']==0 and calls==['A::f']
         assert 'return 77;' in (tmp_path/'pc1'/REL).read_text()
         result=service.process(service.take());assert result['receipt']['state']=='merged'
@@ -249,3 +266,10 @@ def test_catalog_retries_only_observed_source_races(service,monkeypatch):
         return {'revision':'fresh'}
     monkeypatch.setattr(service,'_catalog',snapshot)
     assert service.catalog()=={'revision':'fresh'} and len(calls)==2
+
+
+def test_world_header_change_invalidates_recovery_signature(service):
+    header=service.root/'rebuild/2008-06/native-world/App/include/World.h';header.parent.mkdir(parents=True);header.write_text('struct World { int value; };')
+    task=service.catalog()['tasks'][0]
+    header.write_text('struct World { int value; int next; };')
+    assert service.catalog()['tasks'][0]['signature']!=task['signature']

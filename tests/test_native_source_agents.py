@@ -133,7 +133,8 @@ def test_agent_config_requires_codex_and_no_dollar_budget():
         gui_worker.validate(dict(config,max_cloud_cost=1),check_model=False)
 
 
-def test_ten_tool_agents_probe_and_merge_distinct_bodies_without_losing_neighbors(tmp_path,monkeypatch):
+@pytest.mark.parametrize('cap',[10,1])
+def test_ten_tool_agents_probe_and_merge_distinct_bodies_without_losing_neighbors(tmp_path,monkeypatch,cap):
     import re
     from roc import native_sweep as sweep, match
     shared=tmp_path/'shared'; private=tmp_path/'controller'
@@ -169,10 +170,12 @@ def test_ten_tool_agents_probe_and_merge_distinct_bodies_without_losing_neighbor
         finally:
             with lock:active-=1
     monkeypatch.setattr(recovery,'compile_probe',compile)
-    barrier=threading.Barrier(10);seen=[]
+    barrier=threading.Barrier(cap);seen=[]
     def codex(folder,model,seconds,stopping,log):
         task=json.loads((folder/'task.json').read_text());n=int(task['addr'],16)
         seen.append(n);barrier.wait(timeout=10)
+        time.sleep(.1)
+        assert not stopping(), "Denied budget reservations must not cancel an admitted agent"
         path=folder/task['file'];path.write_text(path.read_text().replace('A::f%d(){return %d;}'%(n,n),'A::f%d(){return %d;}'%(n,n+100)))
         probe=subprocess.run([sys.executable,'check.py'],cwd=folder,capture_output=True,text=True,timeout=10)
         assert probe.returncode==0,probe.stderr
@@ -180,16 +183,16 @@ def test_ten_tool_agents_probe_and_merge_distinct_bodies_without_losing_neighbor
         return dict(input_tokens=10,output_tokens=10,cancelled=False)
     monkeypatch.setattr(recovery,'run_codex',codex)
     config={**gui_worker.DEFAULTS,**dict(lease_mode='native',native_generation='agent',model='codex:gpt-6-luna',
-             workers=10,user='test',server='localhost:8765',cloud_allowed=True,native_compile_workers=2,max_cloud_requests=10)}
+             workers=10,user='test',server='localhost:8765',cloud_allowed=True,native_compile_workers=2,max_cloud_requests=cap)}
     control=gui_worker.Control(config,lambda *a,**kw:None)
     result=recovery.run(config,control,lambda *a,**kw:None)
-    assert sorted(seen)==list(range(10))
-    assert result['recovered']==10 and result['merged']==10 and result['conflicts']==0
-    assert control.budget.requests==10 and peak<=2
+    assert len(set(seen))==cap
+    assert result['recovered']==cap and result['merged']==cap and result['conflicts']==0
+    assert control.budget.requests==cap and peak<=2
     assert baseline_calls==[REL]
     final=(shared/REL).read_text()
-    assert all('A::f%d(){return %d;}'%(n,n+100) in final for n in range(10))
-    assert len(list((private/'work/native-recovery/receipts').glob('*.json')))==10
+    assert all('A::f%d(){return %d;}'%(n,n+100 if n in seen else n) in final for n in range(10))
+    assert len(list((private/'work/native-recovery/receipts').glob('*.json')))==cap
 
 
 def test_submission_adapter_uses_current_canonical_method_and_rechecks_before_export(tmp_path,monkeypatch):
@@ -416,3 +419,50 @@ def test_direct_target_proof_accepts_tiny_symbol_hidden_by_sweep(monkeypatch):
     assert recovery.target_proof(b'object',matcher,'00400000','A::f')['target_exact']
     monkeypatch.setattr(recovery.match,'data_check',lambda *a:([],['wrong string']))
     assert not recovery.target_proof(b'object',matcher,'00400000','A::f')['target_exact']
+
+
+def test_probe_addresses_override_misleading_rebuilt_names_and_truncated_symbols(tmp_path):
+    probes=tmp_path/'rebuild/2008-06/tests';probes.mkdir(parents=True)
+    (probes/'record_native_marshalling.py').write_text("targets=[('00432970','?OnDestroy@CMarshalWindow')]\n")
+    names={'00430b40':dict(symbol='?OnDestroy@CMarshalWindow@@QAEXXZ')}
+    rows=recovery.nominations(tmp_path,{'rebuild/2008-06/native-classes/CMarshalWindow.cpp':'int CMarshalWindow::OnDestroy(){return 0;}'},names)
+    assert rows[0]['addr']=='00432970'
+
+
+def test_existing_typed_win32_cast_does_not_block_other_body_edits():
+    before='int A::f(){delete reinterpret_cast<EventDataBase*>(message.lParam);return 0;}'
+    after=before.replace('return 0;','return 1;')
+    assert recovery.method_change(before,after,'A::f')
+    with pytest.raises(ValueError,match='offset views'):
+        recovery.method_change(before,after.replace('message.lParam','other.lParam'),'A::f')
+    with pytest.raises(ValueError,match='offset views'):
+        recovery.method_change(before,after.replace('return 1;','delete reinterpret_cast<EventDataBase*>(message.lParam);return 1;'),'A::f')
+
+
+def test_merging_record_keeps_fence_until_expiry(tmp_path):
+    claims=recovery.Claims(tmp_path);owner=claims.take('method','snapshot',{})
+    claims.update('method',owner,'merging',{'candidate':'saved'})
+    assert claims.pending()==[]
+    assert claims.take('method','new-snapshot',{}) is None
+
+
+def test_world_compilation_prefers_corresponding_published_headers(tmp_path,monkeypatch):
+    rel='rebuild/2008-06/native-world/App/v8world/A.cpp';unit=tmp_path/rel;unit.parent.mkdir(parents=True);unit.write_text('#include "v8world/A.h"\nint A::f(){return value;}')
+    seen=[]
+    def compile(client,units,out,includes,defines,flags):
+        seen.extend(includes);return {str(units[0]):(False,'fixture stops after collecting include profile')}
+    monkeypatch.setattr(recovery.rebuild,'compile_direct',compile)
+    recovery.compile_probe(tmp_path,rel,SimpleNamespace(defines='',flags=[]),None,set(),'A::f')
+    assert seen[0]==tmp_path/'rebuild/2008-06/native-headers'
+    assert seen[1]==tmp_path/'rebuild/2008-06/native-world/App/include'
+
+
+def test_canonical_body_transfer_preserves_typed_signature_and_member_names():
+    native='void RunService::setRunState(RunState newState) { original(); }'
+    body='RunService::setRunState(RunState next) { consume(next); object.next(); const char* name="next"; }'
+    edits=recovery.native_methods.canonical_edits(native,body,'RunService::setRunState')
+    changed=recovery.sweep.apply_edits(native,edits)
+    assert 'RunState newState' in changed and 'consume(newState)' in changed
+    assert 'object.next()' in changed and '"next"' in changed
+    with pytest.raises(ValueError):recovery.native_methods.canonical_edits(native,body.replace('RunState next','int next'),'RunService::setRunState')
+    with pytest.raises(ValueError):recovery.native_methods.canonical_edits(native,body.replace('consume(next)','consume(next,newState)'),'RunService::setRunState')

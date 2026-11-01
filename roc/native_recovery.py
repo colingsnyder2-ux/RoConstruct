@@ -81,7 +81,7 @@ def method_change(before, after, method, allow_add=False):
         raise ValueError('Changes outside the assigned method body')
     if before == after:
         raise ValueError('No source change')
-    integration.validate_patches({'App/util/recovery.cpp': edits})
+    integration.validate_patches({'App/util/recovery.cpp': native_methods.validation_edits(edits)})
     return edits
 
 
@@ -125,7 +125,7 @@ class Claims:
     def update(self, key, owner, state, record):
         with self.connect() as db:
             db.execute('UPDATE tasks SET expires=?,state=?,record=? WHERE key=? AND owner=?',
-                       (time.time()+90 if state == 'running' else 0, state, json.dumps(record), key, owner))
+                       (time.time()+90 if state in ('running','merging') else 0, state, json.dumps(record), key, owner))
 
     def refresh(self, key, owner):
         with self.connect() as db:
@@ -237,7 +237,7 @@ def merge(root, snapshot, rel, original, candidate, method, prove, receipt, allo
 def nominations(root, texts, names):
     """Evidence nominates addresses; only compiler comparison can establish a match."""
     from roc.native_adapt import readable
-    known = {}
+    known, declared = {}, {}
     for addr, row in names.items():
         method = sweep.symbol_method(row.get('symbol', ''))
         if method:
@@ -247,13 +247,13 @@ def nominations(root, texts, names):
             if isinstance(node, ast.Tuple) and len(node.elts) >= 2:
                 a, b = node.elts[:2]
                 if isinstance(a, ast.Constant) and isinstance(b, ast.Constant) and isinstance(a.value, str) and isinstance(b.value, str) and re.fullmatch('[0-9a-f]{8}', a.value):
-                    method = sweep.symbol_method(b.value) if b.value.startswith('?') else b.value
+                    method = sweep.symbol_method(b.value if b.value.endswith('@') else b.value+'@') if b.value.startswith('?') else b.value
                     if re.fullmatch(r'[\w:~]+', method or ''):
-                        known.setdefault(method, set()).add(a.value)
+                        declared.setdefault(method, set()).add(a.value)
     result = []
     for rel, text in texts.items():
         for method, (start, end) in native_methods.methods(text).items():
-            addresses = set(known.get(method, ())) | set(known.get(method.split('::')[-1], ()))
+            addresses = set(declared.get(method, known.get(method, ())))
             prefix = text[max(0, start-240):start]
             annotation = re.search(r'//\s*(00[4-9a-f][0-9a-f]{5})[^\n]*\n\s*$', prefix)
             if annotation:
@@ -333,7 +333,8 @@ def compile_probe(root, rel, context, matcher, addresses, method, baseline=None,
         unit = path
     xtp = toolkit_profile(root,unit)
     out = Path(output) if output else root/'proof'/integration.digest([rel,translation_unit,inventory(root),context.defines,context.flags,digest(Path(__file__).read_bytes())])[:16]
-    includes = [root / NATIVE / 'native-headers', path.parent,
+    world = root/NATIVE/'native-world/App/include'
+    includes = [root / NATIVE / 'native-headers', *([world] if unit.is_relative_to((root/NATIVE/'native-world').resolve()) or path.is_relative_to((root/NATIVE/'native-world').resolve()) else []), path.parent,
                 libs.LIBS / 'mfc-9.0-rtm/atlmfc/include', libs.LIBS / 'xtp-11.2.2/Source',
                 *[libs._case_path(libs.LIBS / p).resolve() for p in libs.RECIPES['rbxgs']['include'] if p != 'WINSDK']]
     defines = context.defines+' _AFXDLL _MBCS BOOST_ALL_NO_LIB'
@@ -435,7 +436,7 @@ def run_codex(folder, model, seconds, stopping, log):
                         usage[key] += measured.get('cached_input_tokens', 0) if key == 'cached_tokens' else measured.get(key, 0)
                     usage['usage_reported'] = True
                 elif event.get('type') == 'item.completed':
-                    detail = item.get('text') or item.get('command') or item.get('aggregated_output') or item.get('type', '')
+                    detail = item.get('text') or item.get('command') or item.get('aggregated_output') or item.get('message') or item.get('type', '')
                     log(str(detail)[:1500])
     reader = threading.Thread(target=output, daemon=True)
     reader.start()
@@ -481,7 +482,7 @@ def stage_submission(record, context, base, output, log, recheck=True):
     try:
         body=candidate[span[0]:span[1]]
         if '::' not in body.split('(',1)[0]:body=method.rsplit('::',1)[0]+'::'+body
-        edits = sweep.method_edits(text, body, method)
+        edits = native_methods.canonical_edits(text, body, method)
         proposal = dict(file=rel, edits=edits, witnesses=[dict(addr=record['task']['addr'])], base_revision=base['revision'])
         if recheck:
             proposal = sweep.recheck_proposal(proposal, context, {rel:text}, output, base['revision'], log, recover=True)
@@ -631,11 +632,14 @@ def run(config, control, emit):
                                 if current is None:raise ValueError('Published method changed; candidate retained')
                                 renewed=remote.claim(current)
                                 if not renewed.get('claimed'):raise worker.ApiFailure('server_fail','Server method lease busy; candidate retained for retry')
+                                record['remote_lease']=renewed
+                                claims.update(key,owner,'merging',record)
                                 original=published['files'][task['file']]
                                 edits=method_change(record['original'],candidate,task['method'],task.get('add_method',False))
                                 candidate=sweep.apply_edits(original,edits) if edits[0][0] else original+edits[0][1]
                                 method_change(original,candidate,task['method'],task.get('add_method',False))
                                 rebased=output/'candidates'/('resumed-'+uuid.uuid4().hex+'.cpp')
+                                rebased.parent.mkdir(parents=True,exist_ok=True)
                                 rebased.write_text(candidate,encoding='utf-8')
                                 record.update(remote_lease=renewed,original=original,candidate=str(rebased),task=current)
                                 submitted=remote.submit(renewed,record)
@@ -717,7 +721,7 @@ def run(config, control, emit):
         with control.budget._lock:
             if any(limit is not None and used>=limit for used,limit in ((control.budget.requests,control.budget.max_requests),(control.budget.tokens,control.budget.max_tokens))):
                 available=[]
-        headers = {k:v for k,v in before.items() if '/native-headers/' in k}
+        headers = {k:v for k,v in before.items() if Path(k).suffix in ('.h','.hpp','.inl')}
         library_inputs = sorted((p.name,str(p.resolve())) for p in libs.LIBS.iterdir() if p.is_dir()) if libs.LIBS.is_dir() else []
         for task in available:
             key = integration.digest([os.path.normcase(str(native_path(shared_root,task['file']))), task['method']])
@@ -870,7 +874,9 @@ def run(config, control, emit):
                 emit('native_result', slot=slot, file=task['file'], local_exact=1, seconds=round(time.monotonic()-started,1), error='')
             except Exception as error:
                 record['blocker'] = str(error)
-                if getattr(error,'category','') == 'cloud_budget' or getattr(error,'category','') in providers.FATAL_ERRORS:
+                if getattr(error,'category','') == 'cloud_budget':
+                    claims.update(key,owner,'cancelled',record)
+                elif getattr(error,'category','') in providers.FATAL_ERRORS:
                     claims.update(key, owner, 'cancelled', record)
                     control.command({'action':'stop'})
                 else:
