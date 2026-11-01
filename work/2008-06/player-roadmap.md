@@ -2082,3 +2082,6 @@ CWorkspace constructor0046ab60 now matches33 bytes; typed DataModel getter0046a9
 
 
 Doc typed getDataModel candidate: original00403040 is47 bytes; straightforward shared_ptr ternary compiles274 bytes, including with noinline on the workspace getter. Candidate remains inactive and unverified; avoid claiming an exact match. Next inspect return-value construction and lifetime behavior before integration. Existing runtime unchanged.
+
+
+Doc getter00403040 now matches all47 bytes with relocations masked: explicit early return avoids ternary shared_ptr temporaries. Typed workspace call retained. Receipt shared-layouts/document-compile.json pins 1945d77c23. Inactive; runtime and gates unchanged.
