@@ -2,14 +2,14 @@
  "milestone": "P6",
  "status": "OPEN",
  "scope": "XTP MFC client: edit mode, save, reopen, play mode with real input",
- "exe_sha256": "183c8fe87cfc506eef881e424be1cf20a298ef62b83adfcb291e2b7f3143eaa5",
+ "exe_sha256": "f8bcb0e7df380fd725be3b0ae55f6acad52a422f8ba7404449a6a9d6e17576f2",
  "capture_sha256": "93b0646bf6d8a27f053487b7b80490872b79e6215d7674f30517832cf593c85e",
  "place": "7e44dc577dacb884e6971bd25de8c23769eba12f2978fa219080d4b45c04181d",
  "sources": {
-  "RobloxShell.cpp": "742b6cfcbc324c7be5ca8860880d1cdfd40a434632cdceed1e79de4dd25cdfb6",
+  "RobloxShell.cpp": "c4dcfd9adc19d5acdafc6256b491e52c284d87284e7974c0cb1cda6628ad42f6",
   "P6Engine.cpp": "4c928418d62e0d149ee4a4e6d163bbe5cdabc5412ba7316de5082aaf71a63706",
-  "P6Data.cpp": "879c97044664d452b4e835709d18d9070e641f322533f28a0552196a0c5b908a",
-  "P6Engine.h": "73f0eca8d9c3d51d959aca0bc1ef9fa1f2d3302b45728d0eef24133234d42426",
+  "P6Data.cpp": "1aa8388835c2c711f631d6e06673c245027ded9ad0b7cb45e68c4cc3741be65a",
+  "P6Engine.h": "e392a36d8ccc93d5974ca04f17691572b77de26407d676f0faf67148ac00b402",
   "build_client.py": "1c03ac121894014da38199dc9c42f9a2064411f6195372bf5f8398ebd450e477",
   "gen_res.py": "780cf9a95025f0d3f315bbac95703dfabe1378308ec5da220be5eb3e1f787497",
   "input_test.py": "d8201e701c37d76f11d1ab2e9f53bc4ff7ff67f42538afb407c44c6b3087c7f2",
@@ -107,7 +107,9 @@
   "32792 Explorer": "XTP docking pane with live DataModel tree",
   "57600 File New": "replaces document in process, Ogre restart, cleanup zero both times",
   "57664 About": "dialog 117 DoModal returned IDCANCEL (2)",
-  "32966 Run": "toolbar command runs simulation, status logged, cleanup zero"
+  "32966 Run": "toolbar command runs simulation, status logged, cleanup zero",
+  "32967 Pause": "status logged",
+  "32968 Reset": "reloads document, cleanup zero both opens"
  },
  "not_rerun_on_this_exe": [],
  "execute_script": "RunFile via -p6-runfile moved Brick to 1,2,3; file dialog path not exercised",
@@ -137,7 +139,7 @@
  },
  "drag": {
   "real_mouse": "Brick -2 0 0 to -1 0 0, exit 0, on this exe",
-  "undo": "bound to Edit Undo, not driven in a test",
+  "undo": "WM_COMMAND Edit Undo restored -2 0 0",
   "limit": "horizontal plane, whole-stud snap only, no collision check"
  },
  "regressions": {
@@ -148,5 +150,6 @@
   "real_drag": "-2 to -1",
   "real_w": "z 25.5 to 18.99",
   "saved_sha256": "d8e809ea7df458db0bcfbc4cdb154003b007e9e6eac3a5a9ecf1e00abeaed49b"
- }
+ },
+ "output_pane": "print marker reached the pane on hidden run"
 }

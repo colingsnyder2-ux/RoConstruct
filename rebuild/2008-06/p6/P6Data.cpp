@@ -3,6 +3,7 @@
 #include "v8datamodel/Workspace.h"
 #include "v8datamodel/Camera.h"
 #include "v8datamodel/PartInstance.h"
+#include "util/standardout.h"
 #include "v8xml/SerializerV2.h"
 #include "v8xml/XmlSerializer.h"
 #include <boost/scoped_ptr.hpp>
@@ -25,6 +26,21 @@ extern "C" void P6DataWalk(P6TreeVisitor visitor, void* context)
     if (!model) return;
     RBX::DataModel::Lock lock(model);
     walk(model, 0, visitor, context);
+}
+
+struct OutputForward : RBX::Listener<RBX::StandardOut, RBX::StandardOutMessage> {
+    P6OutputSink sink;
+    OutputForward() : sink(NULL) {}
+    virtual void onEvent(const RBX::StandardOut*, RBX::StandardOutMessage message) {
+        if (sink) sink(message.message.c_str());
+    }
+};
+static OutputForward g_output;
+
+extern "C" void P6DataSetOutput(P6OutputSink sink)
+{
+    if (!g_output.sink) RBX::StandardOut::singleton()->addListener(&g_output);
+    g_output.sink = sink;
 }
 
 static RBX::Instance* partAt(RBX::Instance* item, const G3D::Vector3& position)

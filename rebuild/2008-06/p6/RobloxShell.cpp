@@ -5,6 +5,7 @@
 #include <afxole.h>
 #include <afxcmn.h>
 #include <afxext.h>
+#include <afxmt.h>
 #include <XTToolkitPro.h>
 #include <stdio.h>
 #include <vector>
@@ -20,6 +21,7 @@ static const UINT ID_VIEW_PROPERTIES = 32783;      // CMainFrame map, handler 00
 static const UINT ID_RUN = 32966;                  // toolbar 137: Run, Pause, Reset
 static const UINT ID_PAUSE = 32967;
 static const UINT ID_RESET = 32968;
+static const UINT ID_VIEW_OUTPUT = 32927;          // CMainFrame map, handler 0042fbb0
 static const UINT ID_VIEW_EXPLORER = 32792;        // CMainFrame map, handler 0042e5e0
 static const UINT ID_TOOLS_EXECUTE_SCRIPT = 33009; // CRobloxApp map, handler 0044a300
 static const UINT ID_TOOLS_PLAY_SOLO = 33028;      // Tools > Test > Play Solo
@@ -53,7 +55,16 @@ public:
 static CString g_capture, g_script, g_saveAs, g_runFile;
 static CString g_select, g_setProperty;
 static CDialog* g_about;
+static CString g_commands;
 struct UndoMove { void* item; float position[3]; };
+static CCriticalSection g_outputLock;
+static CString g_outputPending;
+// Script threads may report from anywhere; the UI thread drains this in OnIdle.
+static void queueOutput(const char* message) {
+    CSingleLock lock(&g_outputLock, TRUE);
+    g_outputPending += message;
+    g_outputPending += "\r\n";
+}
 static std::vector<UndoMove> g_undo; // ponytail: moves only, unbounded; original undo covers every edit
 static bool g_play;
 static UINT g_post;
@@ -66,6 +77,7 @@ class CMainFrame : public CXTPMDIFrameWnd {
     CXTPStatusBar statusBar;
     CXTPDockingPaneManager panes;
     CTreeCtrl explorer;
+    CEdit output;
     CXTPPropertyGrid properties;
     void* selected;
     static void addProperty(const char* category, const char* name, const char* value, int readOnly, void* context) {
@@ -127,8 +139,25 @@ public:
             printf("p6: drag to %d\n", P6EngineDragTo(0.45f, 0.55f));
             P6DataGetPosition(item, end);
             printf("p6: drag %g %g %g to %g %g %g\n", start[0], start[1], start[2], end[0], end[1], end[2]);
+            UndoMove move = {item, {start[0], start[1], start[2]}};
+            g_undo.push_back(move);
+            SendMessage(WM_COMMAND, ID_EDIT_UNDO);
+            P6DataGetPosition(item, end);
+            printf("p6: undone to %g %g %g\n", end[0], end[1], end[2]);
         }
     }
+    void DrainOutput() {
+        CSingleLock lock(&g_outputLock, TRUE);
+        if (g_outputPending.IsEmpty()) return;
+        output.SetSel(output.GetWindowTextLength(), -1);
+        output.ReplaceSel(g_outputPending);
+        g_outputPending.Empty();
+    }
+    afx_msg void OnViewOutput() {
+        if (panes.IsPaneClosed(ID_VIEW_OUTPUT)) panes.ShowPane(ID_VIEW_OUTPUT);
+        else panes.ClosePane(ID_VIEW_OUTPUT);
+    }
+    afx_msg void OnUpdateViewOutput(CCmdUI* ui) { ui->SetCheck(!panes.IsPaneClosed(ID_VIEW_OUTPUT)); }
     void ShowProperties(void* item) {
         selected = item;
         properties.ResetContent();
@@ -205,6 +234,11 @@ public:
         CXTPDockingPane* grid = panes.CreatePane(ID_VIEW_PROPERTIES, CRect(0, 0, 240, 300), xtpPaneDockBottom, pane);
         grid->SetTitle(_T("Properties"));
         grid->Attach(&properties);
+        if (!output.Create(WS_CHILD | WS_VISIBLE | WS_VSCROLL | ES_MULTILINE | ES_AUTOVSCROLL | ES_READONLY, CRect(0, 0, 0, 0), this, 3)) return -1;
+        CXTPDockingPane* log = panes.CreatePane(ID_VIEW_OUTPUT, CRect(0, 0, 500, 120), xtpPaneDockBottom);
+        log->SetTitle(_T("Output"));
+        log->Attach(&output);
+        P6DataSetOutput(queueOutput);
         return 0;
     }
     afx_msg void OnTimer(UINT_PTR id) {
@@ -212,6 +246,10 @@ public:
             KillTimer(id);
             printf("p6: command %u\n", g_post);
             PostMessage(WM_COMMAND, g_post);
+            int comma = g_commands.Find(',');
+            g_post = comma < 0 ? 0 : (UINT)atoi(g_commands.Mid(comma + 1));
+            g_commands = comma < 0 ? CString() : g_commands.Mid(comma + 1);
+            if (g_post) SetTimer(ID_P6_COMMAND, 700, NULL);
             return;
         }
         if (id != ID_P6_AUTOCLOSE) { CXTPMDIFrameWnd::OnTimer(id); return; }
@@ -222,6 +260,10 @@ public:
             return;
         }
         printf("p6: autoclose frames=%d\n", P6EngineFrames());
+        DrainOutput();
+        CString text;
+        output.GetWindowText(text);
+        printf("p6: output chars=%d marker=%d\n", text.GetLength(), text.Find("p6-output-marker") >= 0);
         P6EngineReport();
         if (g_pickTest) TestPicks();
         if (!g_saveAs.IsEmpty()) {
@@ -241,6 +283,8 @@ BEGIN_MESSAGE_MAP(CMainFrame, CXTPMDIFrameWnd)
     ON_WM_CREATE()
     ON_COMMAND(ID_VIEW_EXPLORER, &CMainFrame::OnViewExplorer)
     ON_COMMAND(ID_VIEW_PROPERTIES, &CMainFrame::OnViewProperties)
+    ON_COMMAND(ID_VIEW_OUTPUT, &CMainFrame::OnViewOutput)
+    ON_UPDATE_COMMAND_UI(ID_VIEW_OUTPUT, &CMainFrame::OnUpdateViewOutput)
     ON_UPDATE_COMMAND_UI(ID_VIEW_PROPERTIES, &CMainFrame::OnUpdateViewProperties)
     ON_NOTIFY(TVN_SELCHANGED, 1, &CMainFrame::OnExplorerSelect)
     ON_MESSAGE(XTPWM_PROPERTYGRID_NOTIFY, &CMainFrame::OnGridNotify)
@@ -463,12 +507,14 @@ public:
         Stage("00449bf0", "frame ready");
         if (command.m_nShellCommand == CCommandLineInfo::FileOpen && !ProcessShellCommand(command)) return FALSE;
         if (command.autoClose) frame->SetTimer(ID_P6_AUTOCLOSE, 5000, NULL);
+        g_commands = command.post;
         g_post = (UINT)atoi(command.post);
         if (g_post) frame->SetTimer(ID_P6_COMMAND, 1000, NULL);
         return TRUE;
     }
     virtual BOOL OnIdle(LONG count) {
         BOOL more = CWinApp::OnIdle(count);
+        static_cast<CMainFrame*>(m_pMainWnd)->DrainOutput();
         return P6EngineFrame() || more;
     }
     afx_msg void OnAbout() {
